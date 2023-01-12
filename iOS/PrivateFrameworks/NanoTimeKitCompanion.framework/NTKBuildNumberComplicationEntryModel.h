@@ -8,8 +8,8 @@
 
 @interface NTKBuildNumberComplicationEntryModel
 {
+    NSString *prefixString;
     NSString *buildNum;
-    NSString *trainName;
 }
 
 + (id)modelWithBuildNum:(id)arg1;

@@ -17,6 +17,7 @@
 @property(getter=isReachabilityEventNotificationEnabled) _Bool reachabilityEventNotificationEnabled; // @dynamic reachabilityEventNotificationEnabled;
 @property(copy) NSPredicate *smartBulletinBoardNotificationCondition; // @dynamic smartBulletinBoardNotificationCondition;
 @property(getter=isSmartBulletinBoardNotificationEnabled) _Bool smartBulletinBoardNotificationEnabled; // @dynamic smartBulletinBoardNotificationEnabled;
+@property long long version; // @dynamic version;
 
 @end
 

@@ -12,7 +12,10 @@
 {
     unsigned long long _timestamp;
     int _type;
-    CDStruct_1769069f _has;
+    struct {
+        unsigned int timestamp:1;
+        unsigned int type:1;
+    } _has;
 }
 
 @property(nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;

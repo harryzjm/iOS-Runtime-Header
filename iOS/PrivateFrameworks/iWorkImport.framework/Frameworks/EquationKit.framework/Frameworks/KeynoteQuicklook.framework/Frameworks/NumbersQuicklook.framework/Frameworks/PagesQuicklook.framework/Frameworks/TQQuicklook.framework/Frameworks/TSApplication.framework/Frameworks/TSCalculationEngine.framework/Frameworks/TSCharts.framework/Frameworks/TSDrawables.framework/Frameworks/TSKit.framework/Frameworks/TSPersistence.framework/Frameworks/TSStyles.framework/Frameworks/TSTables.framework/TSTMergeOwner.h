@@ -8,47 +8,48 @@
 
 #import <TSTables/TSCEFormulaOwning-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSTFormulaStore, TSTMergeChangeDistributor, TSTMergeRangeCache, TSTTableModel;
+@class NSString, TSCECalculationEngine, TSCellRangeCache, TSTFormulaStore, TSTMergeChangeDistributor, TSTTableModel;
 
 @interface TSTMergeOwner : NSObject <TSCEFormulaOwning>
 {
-    unordered_map_c82faa35 _mergeOriginsMap;
-    unordered_map_c82faa35 _reverseOriginsMap;
-    _Bool _needsMergeCacheLoad;
+    struct unordered_map<TSUModelCellCoord, TSUModelCellCoord, std::hash<TSUModelCellCoord>, std::equal_to<TSUModelCellCoord>, std::allocator<std::pair<const TSUModelCellCoord, TSUModelCellCoord>>> _mergeOriginsMap;
+    struct unordered_map<TSUModelCellCoord, TSUModelCellCoord, std::hash<TSUModelCellCoord>, std::equal_to<TSUModelCellCoord>, std::allocator<std::pair<const TSUModelCellCoord, TSUModelCellCoord>>> _reverseOriginsMap;
+    _Bool _mergeCacheLoaded;
     TSTFormulaStore *_formulaStore;
-    TSTMergeRangeCache *_mergeRangeCache;
+    TSCellRangeCache *_mergeRangeCache;
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calculationEngine;
     TSTMergeChangeDistributor *_mergeChangeDistributor;
-    UUIDData_5fbc143e _ownerUID;
+    struct TSKUIDStruct _ownerUID;
 }
 
++ (vector_fad096c6)mergeListFromModelMergeList:(const void *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSTMergeChangeDistributor *mergeChangeDistributor; // @synthesize mergeChangeDistributor=_mergeChangeDistributor;
 @property(nonatomic) __weak TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
 @property(readonly, nonatomic) __weak TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
-@property(nonatomic) _Bool needsMergeCacheLoad; // @synthesize needsMergeCacheLoad=_needsMergeCacheLoad;
-@property(retain, nonatomic) TSTMergeRangeCache *mergeRangeCache; // @synthesize mergeRangeCache=_mergeRangeCache;
-@property(readonly, nonatomic) const unordered_map_c82faa35 *reverseOriginsMap; // @synthesize reverseOriginsMap=_reverseOriginsMap;
-@property(readonly, nonatomic) const unordered_map_c82faa35 *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;
-@property(nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
+@property(retain, nonatomic) TSCellRangeCache *mergeRangeCache; // @synthesize mergeRangeCache=_mergeRangeCache;
+@property(nonatomic) _Bool mergeCacheLoaded; // @synthesize mergeCacheLoaded=_mergeCacheLoaded;
+@property(readonly, nonatomic) const void *reverseOriginsMap; // @synthesize reverseOriginsMap=_reverseOriginsMap;
+@property(readonly, nonatomic) const void *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;
+@property(nonatomic) struct TSKUIDStruct ownerUID; // @synthesize ownerUID=_ownerUID;
 @property(retain, nonatomic) TSTFormulaStore *formulaStore; // @synthesize formulaStore=_formulaStore;
 - (void)assertCollaborationConvergence;
 - (void)invalidateForCalcEngine:(id)arg1;
 - (void)writeResultsForCalcEngine:(id)arg1;
-- (struct TSCERecalculationState)multiEvaluateFormulasAt:(const struct TSCECellCoordSet *)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
+- (struct TSCERecalculationState)multiEvaluateFormulasAt:(const void *)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
 - (long long)evaluationMode;
 - (id)linkedResolver;
 - (unsigned short)ownerKind;
 - (void)unregisterFromCalcEngine;
-- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
-- (void)rewriteMergesForInsertedRange:(struct _NSRange)arg1 uids:(const vector_4dc5f307 *)arg2 isRows:(_Bool)arg3;
-- (void)rewriteMergesForRemovedRange:(struct _NSRange)arg1 uids:(const vector_4dc5f307 *)arg2 isRows:(_Bool)arg3;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const struct TSKUIDStruct *)arg2;
+- (void)rewriteMergesForInsertedRange:(struct _NSRange)arg1 uids:(const void *)arg2 isRows:(_Bool)arg3;
+- (void)rewriteMergesForRemovedRange:(struct _NSRange)arg1 uids:(const void *)arg2 isRows:(_Bool)arg3;
 - (struct TSUModelCellRect)rewroteFormula:(id)arg1 atCoordinate:(struct TSUModelCellCoord)arg2 withRewriteSpec:(id)arg3 isUndo:(_Bool)arg4;
 - (void)commitRewritingTransaction;
 - (void)openRewritingTransaction;
-- (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_71b9b5e2 *)arg1 calcEngine:(id)arg2;
+- (void)remapTableUIDsInFormulasWithMap:(const void *)arg1 calcEngine:(id)arg2;
 - (_Bool)hasRangeSpanningRowsForCellRegion:(id)arg1;
 - (_Bool)hasRangeSpanningRowsForCellRange:(struct TSUModelCellRect)arg1;
 - (id)expandBaseCellRegionToCoverMergedCells:(id)arg1;
@@ -61,10 +62,12 @@
 - (_Bool)hasMergeRangesIntersectingBaseCellRegion:(id)arg1;
 - (_Bool)hasMergeRangesIntersectingBaseCellRect:(const struct TSUModelCellRect *)arg1;
 - (_Bool)hasMergeRanges;
-- (vector_54ceaeac)mergeRangesAndCrumbsIntersectingBaseCellRect:(struct TSUModelCellRect)arg1;
-- (vector_54ceaeac)mergeRangesIntersectingBaseCellRegion:(id)arg1;
-- (vector_54ceaeac)mergeRangesIntersectingBaseCellRect:(struct TSUModelCellRect)arg1;
-- (vector_54ceaeac)mergeRanges;
+- (vector_4df5d6c6)mergeRangesAndCrumbsIntersectingBaseCellRect:(struct TSUModelCellRect)arg1;
+- (vector_4df5d6c6)mergeRangesIntersectingBaseCellRegion:(id)arg1;
+- (vector_4df5d6c6)mergeRangesIntersectingBaseCellRect:(struct TSUModelCellRect)arg1;
+- (vector_4df5d6c6)mergeRanges;
+- (void)clearAllMergeRanges;
+- (vector_4df5d6c6)allValidMergesForMergeList:(const void *)arg1;
 - (id)mergedGridIndicesForDimension:(long long)arg1;
 - (void)enumerateMergeFormulasUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMergesIntersectingBaseCellRegion:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -94,13 +97,13 @@
 - (id)mergeIndexesForBaseCellRegion:(id)arg1;
 - (id)mergeIndexesForRange:(struct TSUModelCellRect)arg1;
 - (void)resetMergeOriginMap;
-- (void)saveToArchive:(struct MergeOwnerArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct MergeOwnerArchive *)arg1 unarchiver:(id)arg2 forTableModel:(id)arg3;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2 forTableModel:(id)arg3;
 - (id)allMergesAsString;
 - (void)rollbackToMark:(unsigned long long)arg1;
 - (unsigned long long)markForRollback;
 - (id)initWithTableModel:(id)arg1;
-- (id)initWithTableModel:(id)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;
+- (id)initWithTableModel:(id)arg1 ownerUID:(const struct TSKUIDStruct *)arg2;
 - (id)init;
 
 // Remaining properties

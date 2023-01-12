@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_eb305189)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_eb305189)addObjectToBuffer:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct QssAckResponse *)arg2 verify:(_Bool)arg3;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct QssAckResponse *)arg2;

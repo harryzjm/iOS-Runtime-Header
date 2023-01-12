@@ -11,9 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)accessibilityLabel;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

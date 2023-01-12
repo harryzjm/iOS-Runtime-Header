@@ -11,6 +11,7 @@
 @class NSString;
 @protocol BCSItemCacheSkipping, BCSItemCaching, BCSItemRemoteFetching, BCSMetricFactoryProtocol;
 
+__attribute__((visibility("hidden")))
 @interface BCSItemResolver : NSObject <BCSItemResolving>
 {
     id <BCSItemCaching> _itemCache;
@@ -20,15 +21,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <BCSMetricFactoryProtocol> metricFactory; // @synthesize metricFactory=_metricFactory;
-@property(readonly, retain, nonatomic) id <BCSItemRemoteFetching> itemRemoteFetcher; // @synthesize itemRemoteFetcher=_itemRemoteFetcher;
-@property(readonly, retain, nonatomic) id <BCSItemCacheSkipping> itemCacheSkipper; // @synthesize itemCacheSkipper=_itemCacheSkipper;
-@property(readonly, retain, nonatomic) id <BCSItemCaching> itemCache; // @synthesize itemCache=_itemCache;
-- (id)_firstItemInBucket:(id)arg1 matching:(id)arg2;
-- (CDStruct_912cb5d2)_bucketRangeForItemIdentifier:(id)arg1 bucketCount:(long long)arg2;
 - (void)itemMatching:(id)arg1 config:(id)arg2 clientBundleID:(id)arg3 metric:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)cachedItemMatching:(id)arg1;
-- (id)initWithItemCache:(id)arg1 cacheSkipper:(id)arg2 remoteFetcher:(id)arg3 metricFactory:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

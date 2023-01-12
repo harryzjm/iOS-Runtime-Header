@@ -19,12 +19,6 @@
 + (id)defaultPolicy;
 - (void).cxx_destruct;
 - (id)description;
-- (_Bool)_deleteAllLocationsFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 maxAgeSeconds:(double)arg3 error:(id *)arg4;
-- (_Bool)_deleteAllLocationsExceedingMaxAgeSeconds:(double)arg1 error:(id *)arg2;
-- (_Bool)_deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 maxAgeSeconds:(double)arg3 error:(id *)arg4;
-- (_Bool)_deleteAllTopicsExceedingMaxAgeSeconds:(double)arg1 error:(id *)arg2;
-- (_Bool)_deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 maxAgeSeconds:(double)arg3 error:(id *)arg4;
-- (_Bool)_deleteAllNamedEntitiesExceedingMaxAgeSeconds:(double)arg1 error:(id *)arg2;
 - (_Bool)applyPolicyWithError:(id *)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithRules:(id)arg1 namedEntityStore:(id)arg2 topicStore:(id)arg3 locationStore:(id)arg4;

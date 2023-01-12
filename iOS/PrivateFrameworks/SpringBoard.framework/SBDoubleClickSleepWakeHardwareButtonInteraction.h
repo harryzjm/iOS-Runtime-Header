@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBHIDUILockAssertion;
+@class SBHIDUILockAssertion, SBProximitySensorManager;
 
 @interface SBDoubleClickSleepWakeHardwareButtonInteraction
 {
     SBHIDUILockAssertion *_proxLockAssertion;
+    SBProximitySensorManager *_proximitySensorManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBProximitySensorManager *proximitySensorManager; // @synthesize proximitySensorManager=_proximitySensorManager;
 @property(retain, nonatomic) SBHIDUILockAssertion *proxLockAssertion; // @synthesize proxLockAssertion=_proxLockAssertion;
 - (void)_cancelPreviousResumeProxRequests;
 - (void)_resumeProxAfterMultiplePressIntervalForReason:(id)arg1;
@@ -24,6 +26,7 @@
 - (_Bool)consumeSecondPressDown;
 - (_Bool)consumeInitialPressUp;
 - (_Bool)consumeInitialPressDown;
+- (id)initWithProximitySensorManager:(id)arg1;
 
 @end
 

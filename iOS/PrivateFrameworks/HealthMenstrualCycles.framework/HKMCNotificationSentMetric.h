@@ -13,13 +13,18 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_eventPayload;
     NSString *_category;
+    long long _numberOfDaysShiftedForFertileWindow;
+    long long _numberOfDaysBeforePredictionEnd;
 }
 
 + (id)eventName;
 - (void).cxx_destruct;
+@property(nonatomic) long long numberOfDaysBeforePredictionEnd; // @synthesize numberOfDaysBeforePredictionEnd=_numberOfDaysBeforePredictionEnd;
+@property(nonatomic) long long numberOfDaysShiftedForFertileWindow; // @synthesize numberOfDaysShiftedForFertileWindow=_numberOfDaysShiftedForFertileWindow;
 @property(retain, nonatomic) NSString *category; // @synthesize category=_category;
 @property(copy, nonatomic) NSDictionary *eventPayload; // @synthesize eventPayload=_eventPayload;
 - (id)description;
+- (id)initWithCategory:(id)arg1 numberOfDaysShiftedForFertileWindow:(long long)arg2 numberOfDaysBeforePredictionEnd:(long long)arg3;
 - (id)initWithCategory:(id)arg1;
 
 @end

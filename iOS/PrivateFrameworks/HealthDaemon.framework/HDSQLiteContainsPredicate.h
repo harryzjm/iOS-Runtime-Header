@@ -14,8 +14,6 @@
     NSArray *_values;
 }
 
-+ (id)_arrayFromValues:(id)arg1;
-+ (id)_containsPredicateWithProperty:(id)arg1 values:(id)arg2 contains:(_Bool)arg3;
 + (id)doesNotContainPredicateWithProperty:(id)arg1 values:(id)arg2;
 + (id)containsPredicateWithProperty:(id)arg1 values:(id)arg2;
 - (void).cxx_destruct;

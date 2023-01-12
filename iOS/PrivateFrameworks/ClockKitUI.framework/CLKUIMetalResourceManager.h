@@ -12,6 +12,7 @@
     id <MTLTexture> _nilTexture;
 }
 
++ (void)addCompletedErrorCheckToCommandBuffer:(id)arg1 forCase:(id)arg2;
 + (id)sharedNilTexture;
 + (id)sharedCommandQueue;
 + (id)sharedDevice;

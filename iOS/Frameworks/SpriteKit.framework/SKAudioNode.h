@@ -10,7 +10,7 @@
 
 @interface SKAudioNode <NSSecureCoding>
 {
-    struct SKCAudioNode *_skcAudioNode;
+    void *_skcAudioNode;
     _Bool _autoplayLooped;
     _Bool _positional;
 }
@@ -38,7 +38,7 @@
 - (id)init;
 - (void)commonInit;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 
 @end
 

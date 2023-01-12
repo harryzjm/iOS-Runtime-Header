@@ -8,20 +8,26 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, PBDataReader, PBUnknownFields;
+@class GEOFormattedString, GEOPBTransitArtwork, PBDataReader, PBUnknownFields;
 
 @interface GEOAdvisoryCard : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPBTransitArtwork *_artworkOverride;
     GEOFormattedString *_details;
+    GEOFormattedString *_metadata;
+    GEOFormattedString *_timeString;
     GEOFormattedString *_title;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_artworkOverride:1;
         unsigned int read_details:1;
+        unsigned int read_metadata:1;
+        unsigned int read_timeString:1;
         unsigned int read_title:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -44,6 +50,12 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOFormattedString *timeString;
+@property(readonly, nonatomic) _Bool hasTimeString;
+@property(retain, nonatomic) GEOFormattedString *metadata;
+@property(readonly, nonatomic) _Bool hasMetadata;
+@property(retain, nonatomic) GEOPBTransitArtwork *artworkOverride;
+@property(readonly, nonatomic) _Bool hasArtworkOverride;
 @property(retain, nonatomic) GEOFormattedString *details;
 @property(readonly, nonatomic) _Bool hasDetails;
 @property(retain, nonatomic) GEOFormattedString *title;

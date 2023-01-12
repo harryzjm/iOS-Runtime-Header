@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSHashTable *cards; // @synthesize cards=_cards;
 - (id)initWithSlot:(id)arg1;
 - (void)cardSessionRequested;
-- (void)notifyWithParameters:(id)arg1;
+- (void)notifyWithParameters:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end
 

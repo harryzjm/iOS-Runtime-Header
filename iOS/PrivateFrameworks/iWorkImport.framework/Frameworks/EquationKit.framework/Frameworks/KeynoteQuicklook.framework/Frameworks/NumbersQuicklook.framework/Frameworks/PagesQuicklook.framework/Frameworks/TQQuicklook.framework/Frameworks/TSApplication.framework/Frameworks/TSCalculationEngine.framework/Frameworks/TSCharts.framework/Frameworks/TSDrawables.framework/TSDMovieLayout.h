@@ -17,8 +17,6 @@
 - (struct CGRect)computeAlignmentFrameInRoot:(_Bool)arg1;
 - (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (id)computeLayoutGeometry;
-@property(readonly, nonatomic) struct CGRect fullReflectionFrame;
-- (struct CGRect)fullReflectionBoundsForRect:(struct CGRect)arg1;
 @property(readonly, nonatomic) TSDMovieInfo *movieInfo;
 - (id)layoutGeometryFromInfo;
 - (_Bool)supportsRotation;

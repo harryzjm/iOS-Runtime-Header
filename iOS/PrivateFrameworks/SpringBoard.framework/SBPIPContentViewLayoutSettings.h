@@ -6,58 +6,37 @@
 
 #import <objc/NSObject.h>
 
+@class SBPIPContentViewLayoutContext, SBPIPContentViewLayoutMetrics, SBPIPDefaults;
+
 @interface SBPIPContentViewLayoutSettings : NSObject
 {
-    _Bool _defaultToMinimumPreferredContentSize;
-    _Bool _sizeChanged;
-    double _defaultSize;
-    double _minimumSize;
-    double _maximumSize;
-    double _currentSize;
-    double _minimumSizePreference;
-    double _maximumSizePreference;
-    double _minimumSizeSpanBetweenPreferredSizes;
-    double _maximumSizeSpanForPreferredSizeTuning;
-    unsigned long long _currentPosition;
+    SBPIPContentViewLayoutContext *_context;
+    SBPIPContentViewLayoutMetrics *_platformMetrics;
+    SBPIPDefaults *_pipDefaults;
 }
 
-+ (double)_maximumSize;
-+ (double)_minimumSize;
-+ (double)_defaultSize;
-+ (struct CGSize)minimumStashTabSize;
-+ (struct CGSize)_maximumContentViewSizeForAspectRatio:(struct CGSize)arg1 maximumReferenceSize:(double)arg2;
-+ (struct CGSize)_minimumContentViewSizeForAspectRatio:(struct CGSize)arg1 minimumReferenceSize:(double)arg2;
-+ (struct CGSize)maximumPreferredContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (struct CGSize)minimumPreferredContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (struct CGSize)maximumPossibleContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (struct CGSize)minimumPossibleContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (struct CGSize)currentContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (struct CGSize)_contentViewSizeForAspectRatio:(struct CGSize)arg1 currentSize:(double)arg2;
-+ (struct CGSize)defaultContentViewSizeForAspectRatio:(struct CGSize)arg1;
-+ (void)setShouldDefaultToMinimumPreferredContentSize:(_Bool)arg1;
-+ (void)setMaximumSizeSpanForPreferredSizeTuning:(double)arg1;
-+ (void)setMinimumSizeSpanBetweenPreferredSizes:(double)arg1;
-+ (void)setContentViewSize:(struct CGSize)arg1;
-+ (unsigned long long)currentContentViewPosition;
-+ (void)setContentViewPosition:(unsigned long long)arg1;
-+ (double)contentViewPadding;
-+ (id)_sharedInstance;
-@property(readonly, nonatomic, getter=hasSizeChanged) _Bool sizeChanged; // @synthesize sizeChanged=_sizeChanged;
-@property(nonatomic) _Bool defaultToMinimumPreferredContentSize; // @synthesize defaultToMinimumPreferredContentSize=_defaultToMinimumPreferredContentSize;
-@property(nonatomic) unsigned long long currentPosition; // @synthesize currentPosition=_currentPosition;
-@property(nonatomic) double maximumSizeSpanForPreferredSizeTuning; // @synthesize maximumSizeSpanForPreferredSizeTuning=_maximumSizeSpanForPreferredSizeTuning;
-@property(nonatomic) double minimumSizeSpanBetweenPreferredSizes; // @synthesize minimumSizeSpanBetweenPreferredSizes=_minimumSizeSpanBetweenPreferredSizes;
-@property(nonatomic) double maximumSizePreference; // @synthesize maximumSizePreference=_maximumSizePreference;
-@property(nonatomic) double minimumSizePreference; // @synthesize minimumSizePreference=_minimumSizePreference;
-@property(nonatomic) double currentSize; // @synthesize currentSize=_currentSize;
-@property(nonatomic) double maximumSize; // @synthesize maximumSize=_maximumSize;
-@property(nonatomic) double minimumSize; // @synthesize minimumSize=_minimumSize;
-@property(nonatomic) double defaultSize; // @synthesize defaultSize=_defaultSize;
-- (void)setSize:(double)arg1;
-- (double)size;
-- (void)setPosition:(unsigned long long)arg1;
-- (unsigned long long)position;
-- (id)init;
+- (void).cxx_destruct;
+- (double)defaultCornerRadius;
+- (double)contentViewPaddingWhileStashed;
+- (double)contentViewPadding;
+- (unsigned long long)currentContentViewPosition;
+- (void)setContentViewPosition:(unsigned long long)arg1;
+- (struct CGSize)minimumStashedTabSize;
+- (struct CGSize)_maximumContentViewSizeForAspectRatio:(struct CGSize)arg1 maximumReferenceSize:(double)arg2;
+- (struct CGSize)_minimumContentViewSizeForAspectRatio:(struct CGSize)arg1 minimumReferenceSize:(double)arg2;
+- (struct CGSize)maximumPreferredContentViewSizeForAspectRatio:(struct CGSize)arg1;
+- (struct CGSize)minimumPreferredContentViewSizeForAspectRatio:(struct CGSize)arg1;
+- (struct CGSize)maximumPossibleContentViewSizeForAspectRatio:(struct CGSize)arg1;
+- (struct CGSize)minimumPossibleContentViewSizeForAspectRatio:(struct CGSize)arg1;
+- (struct CGSize)currentContentViewSizeForAspectRatio:(struct CGSize)arg1;
+- (struct CGSize)_contentViewSizeForAspectRatio:(struct CGSize)arg1 currentSize:(double)arg2;
+- (struct CGSize)defaultContentViewSizeForAspectRatio:(struct CGSize)arg1;
+- (void)setMaximumSizeSpanForPreferredSizeTuning:(double)arg1;
+- (void)setMinimumSizeSpanBetweenPreferredSizes:(double)arg1;
+- (void)setContentViewSize:(struct CGSize)arg1;
+- (void)updatePlatformMetrics:(id)arg1;
+- (id)platformMetrics;
+- (id)initWithPlatformMetrics:(id)arg1 contentSize:(struct CGSize)arg2;
 
 @end
 

@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *mRegistrarConnection;
     id <AUPBRegistrarHosting> mProxyInterface;
     NSMutableArray *mRemoteServers;
-    struct vector<PropertyListener, std::__1::allocator<PropertyListener>> mPropertyListeners;
-    struct vector<NewServerListener, std::__1::allocator<NewServerListener>> mNewServerListeners;
+    struct vector<PropertyListener, std::allocator<PropertyListener>> mPropertyListeners;
+    struct vector<NewServerListener, std::allocator<NewServerListener>> mNewServerListeners;
     unsigned int mServerRefCounter;
     NSObject<OS_dispatch_queue> *mTouchServersQueue;
     int mNotifyToken;

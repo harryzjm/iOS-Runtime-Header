@@ -9,27 +9,27 @@
 #import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
 #import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
 #import <TSCharts/TSCHStyleOwning-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 
 @class NSString, TSCHChartGridAdapter, TSCHChartModel, TSCHChartSeriesType, TSCHDownsampleData, TSCHErrorBarData, TSCHTrendLineData, TSUFastReadInvalidatingCache, TSUIntegerKeyDictionary;
-@protocol TSCHStyleActAlike, TSCHUnretainedParent;
+@protocol TSCHStyleActAlike;
 
-@interface TSCHChartSeries : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHUnretainedParent, TSCHStyleOwning>
+@interface TSCHChartSeries : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning>
 {
-    TSCHChartModel *mChartModel;
-    unsigned long long mSeriesIndex;
-    TSCHChartSeriesType *mSeriesType;
-    TSUIntegerKeyDictionary *mAxisTable;
-    TSCHChartGridAdapter *mNameAdapter;
-    unsigned long long mBarGapIndex;
-    id <TSCHStyleActAlike> mStyle;
-    id <TSCHStyleActAlike> mNonStyle;
-    _Bool mStyleIsPrivate;
-    TSCHTrendLineData *mTrendLineData;
-    TSCHErrorBarData *mErrorBarData;
-    NSObject<TSCHUnretainedParent> *mSeriesStorage;
-    _Bool mIsFakeSeriesForHiddenDataExport;
-    TSUFastReadInvalidatingCache *mDownsampleDataCache;
+    _Bool _styleIsPrivate;
+    _Bool _isFakeSeriesForHiddenDataExport;
+    id <TSCHStyleActAlike> _style;
+    TSCHChartModel *_model;
+    unsigned long long _seriesIndex;
+    TSCHChartSeriesType *_seriesType;
+    NSObject *_seriesStorage;
+    unsigned long long _barGapIndex;
+    TSCHChartModel *_chartModel;
+    TSUIntegerKeyDictionary *_axisTable;
+    TSCHChartGridAdapter *_nameAdapter;
+    id <TSCHStyleActAlike> _nonStyle;
+    TSCHTrendLineData *_trendLineData;
+    TSCHErrorBarData *_errorBarData;
+    TSUFastReadInvalidatingCache *_downsampleDataCache;
 }
 
 + (id)computedFillOrStroke:(id)arg1 forSeriesIndex:(unsigned long long)arg2 numberOfThemeSeries:(unsigned long long)arg3;
@@ -38,12 +38,20 @@
 + (id)defaultNumberFormat;
 + (unsigned char)styleOwnerPathType;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isFakeSeriesForHiddenDataExport; // @synthesize isFakeSeriesForHiddenDataExport=mIsFakeSeriesForHiddenDataExport;
-@property(nonatomic) unsigned long long barGapIndex; // @synthesize barGapIndex=mBarGapIndex;
-@property(readonly, nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=mSeriesIndex;
-@property(readonly, nonatomic) NSObject<TSCHUnretainedParent> *seriesStorage; // @synthesize seriesStorage=mSeriesStorage;
-@property(nonatomic) __weak TSCHChartSeriesType *seriesType; // @synthesize seriesType=mSeriesType;
-@property(readonly, nonatomic) __weak TSCHChartModel *model; // @synthesize model=mChartModel;
+@property(nonatomic) _Bool isFakeSeriesForHiddenDataExport; // @synthesize isFakeSeriesForHiddenDataExport=_isFakeSeriesForHiddenDataExport;
+@property(retain, nonatomic) TSUFastReadInvalidatingCache *downsampleDataCache; // @synthesize downsampleDataCache=_downsampleDataCache;
+@property(retain, nonatomic) TSCHErrorBarData *errorBarData; // @synthesize errorBarData=_errorBarData;
+@property(retain, nonatomic) TSCHTrendLineData *trendLineData; // @synthesize trendLineData=_trendLineData;
+@property(nonatomic) _Bool styleIsPrivate; // @synthesize styleIsPrivate=_styleIsPrivate;
+@property(retain, nonatomic) id <TSCHStyleActAlike> nonStyle; // @synthesize nonStyle=_nonStyle;
+@property(retain, nonatomic) TSCHChartGridAdapter *nameAdapter; // @synthesize nameAdapter=_nameAdapter;
+@property(retain, nonatomic) TSUIntegerKeyDictionary *axisTable; // @synthesize axisTable=_axisTable;
+@property(nonatomic) __weak TSCHChartModel *chartModel; // @synthesize chartModel=_chartModel;
+@property(nonatomic) unsigned long long barGapIndex; // @synthesize barGapIndex=_barGapIndex;
+@property(retain, nonatomic) NSObject *seriesStorage; // @synthesize seriesStorage=_seriesStorage;
+@property(retain, nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=_seriesType;
+@property(nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=_seriesIndex;
+@property(readonly, nonatomic) __weak TSCHChartModel *model; // @synthesize model=_model;
 - (unsigned long long)valueIndexAtGroupIndex:(unsigned long long)arg1;
 - (unsigned long long)groupIndexOfValueIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool isDownsampled;
@@ -53,10 +61,8 @@
 - (id)p_seriesNonStyleOrDefaultNonStyle;
 - (id)operationPropertyNameFromGenericProperty:(int)arg1;
 - (id)defaultProperties;
-- (void)setNonStyle:(id)arg1;
 - (id)nonstyle;
-- (void)setStyle:(id)arg1;
-- (id)style;
+@property(retain, nonatomic) id <TSCHStyleActAlike> style; // @synthesize style=_style;
 - (id)context;
 - (id)chartInfo;
 - (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2;
@@ -74,20 +80,19 @@
 - (id)p_representativeThemeSeries;
 - (_Bool)p_seriesIndexWithinThemeStyleCount;
 - (id)p_genericToDefaultPropertyMap;
-- (void)clearParent;
 - (void)modelSyncSetStyle:(id)arg1;
 - (void)modelSyncSetNonStyle:(id)arg1;
-- (unsigned int)valueLabelPosition;
+- (id)fillForSeries;
+@property(readonly, nonatomic) unsigned int valueLabelPosition;
 - (id)valueLabelStringForGroupIndex:(unsigned long long)arg1;
 - (id)seriesNameStringForGroupIndex:(unsigned long long)arg1;
 - (id)formattedValueLabelStringForGroupIndex:(unsigned long long)arg1;
 - (id)axisTypesForValueLabelString;
 - (_Bool)hasCustomFormatForGridValueType:(int)arg1;
-- (int)adjustedNumberFormatType;
-- (int)gridValueType;
+@property(readonly, nonatomic) int adjustedNumberFormatType;
+@property(readonly, nonatomic) int gridValueType;
 - (id)customFormatForGridValueType:(int)arg1;
 - (void)resetSeriesStorage;
-- (void)setSeriesStorage:(id)arg1;
 - (_Bool)renderSeriesForClass:(Class)arg1;
 - (id)multiDataValueEnumeratorForAxisID:(id)arg1;
 - (void)setValue:(id)arg1 forAxisID:(id)arg2 index:(unsigned long long)arg3;
@@ -108,17 +113,15 @@
 - (void)setAxisID:(id)arg1 forAxisType:(int)arg2;
 - (id)axisForAxisType:(int)arg1;
 - (id)axisIDForAxisType:(int)arg1;
-- (unsigned long long)numberOfValues;
+@property(readonly, nonatomic) unsigned long long numberOfValues;
 - (unsigned long long)multiDataSetIndex;
 - (_Bool)isMultiData;
-@property(readonly, nonatomic) TSCHErrorBarData *errorBarData;
 @property(readonly, nonatomic) NSString *trendLineLegendText;
 @property(readonly, nonatomic) _Bool showTrendLineLegendText;
-@property(readonly, nonatomic) TSCHTrendLineData *trendLineData;
 - (id)p_axisStorageForType:(int)arg1 create:(_Bool)arg2;
-@property(retain, nonatomic) NSString *name;
+@property(nonatomic) int seriesElementType;
+@property(copy, nonatomic) NSString *name;
 - (id)drawableInfo;
-- (void)dealloc;
 - (id)initWithChartModel:(id)arg1 index:(unsigned long long)arg2;
 - (id)g_operationPropertyNameForGenericProperty:(int)arg1;
 - (id)g_genericToDefaultPropertyMap;

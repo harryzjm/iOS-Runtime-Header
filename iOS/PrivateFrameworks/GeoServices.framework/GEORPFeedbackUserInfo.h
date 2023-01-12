@@ -8,14 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPUserCredentials, NSData, NSString, PBDataReader, PBUnknownFields;
+@class GEORPAppAttestInfo, GEORPUserCredentials, NSData, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackUserInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEORPAppAttestInfo *_anonUserInfo;
     NSData *_devicePushToken;
     NSString *_preferredEmail;
+    GEORPAppAttestInfo *_rolloverInfo;
     NSString *_ugcUserId;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
@@ -24,8 +26,10 @@
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_anonUserInfo:1;
         unsigned int read_devicePushToken:1;
         unsigned int read_preferredEmail:1;
+        unsigned int read_rolloverInfo:1;
         unsigned int read_ugcUserId:1;
         unsigned int read_userCredentials:1;
         unsigned int read_userEmail:1;
@@ -50,6 +54,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPAppAttestInfo *rolloverInfo;
+@property(readonly, nonatomic) _Bool hasRolloverInfo;
+@property(retain, nonatomic) GEORPAppAttestInfo *anonUserInfo;
+@property(readonly, nonatomic) _Bool hasAnonUserInfo;
 @property(retain, nonatomic) NSString *ugcUserId;
 @property(readonly, nonatomic) _Bool hasUgcUserId;
 @property(retain, nonatomic) NSString *preferredEmail;

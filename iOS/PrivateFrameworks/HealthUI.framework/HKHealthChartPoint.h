@@ -33,7 +33,7 @@
 - (id)minXValueAsGenericType;
 - (id)xValueAsGenericType;
 - (id)initWithDataSourceValue:(id)arg1 options:(unsigned long long)arg2 unit:(id)arg3 displayType:(id)arg4;
-- (id)initWithStatistics:(id)arg1 options:(unsigned long long)arg2 unit:(id)arg3 displayType:(id)arg4;
+- (id)initWithStatistics:(id)arg1 options:(unsigned long long)arg2 unit:(id)arg3 displayType:(id)arg4 sourceTimeZone:(id)arg5;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties

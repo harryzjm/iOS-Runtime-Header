@@ -10,7 +10,7 @@
 }
 
 - (struct CGSize)boundsSize;
-- (id)configurationWithUpdatedLayerScreenEnvironment:(id)arg1;
+- (id)configurationWithUpdatedLayerScreenEnvironment;
 - (id)layerHost;
 - (_Bool)isSceneRenderingEnabled;
 - (_Bool)isMetalEnabled;

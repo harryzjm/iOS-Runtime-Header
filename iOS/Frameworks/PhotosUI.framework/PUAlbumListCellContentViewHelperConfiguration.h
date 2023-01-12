@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
     _Bool _showsDeleteButtonOnCellContentView;
     _Bool _hasRoundedCorners;
     _Bool _shouldUseTableView;
+    _Bool _shouldCenterTextHorizontally;
+    _Bool _hasClearBackgroundColor;
+    _Bool _cornerOverlaysDisabled;
     long long _cellContentViewLayout;
     unsigned long long _stackViewStyle;
     unsigned long long _folderStackViewStyle;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double dynamicTopLeading; // @synthesize dynamicTopLeading=_dynamicTopLeading;
 @property(nonatomic) double dynamicSubtitleleading; // @synthesize dynamicSubtitleleading=_dynamicSubtitleleading;
 @property(nonatomic) double dynamicTitleLeading; // @synthesize dynamicTitleLeading=_dynamicTitleLeading;
+@property(nonatomic) _Bool cornerOverlaysDisabled; // @synthesize cornerOverlaysDisabled=_cornerOverlaysDisabled;
 @property(nonatomic) double posterSubitemCornerRadius; // @synthesize posterSubitemCornerRadius=_posterSubitemCornerRadius;
 @property(nonatomic) double posterSquareCornerRadius; // @synthesize posterSquareCornerRadius=_posterSquareCornerRadius;
 @property(nonatomic) double gridItemSpacing; // @synthesize gridItemSpacing=_gridItemSpacing;
@@ -65,6 +69,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long folderStackViewStyle; // @synthesize folderStackViewStyle=_folderStackViewStyle;
 @property(nonatomic) unsigned long long stackViewStyle; // @synthesize stackViewStyle=_stackViewStyle;
 @property(nonatomic) long long cellContentViewLayout; // @synthesize cellContentViewLayout=_cellContentViewLayout;
+@property(nonatomic) _Bool hasClearBackgroundColor; // @synthesize hasClearBackgroundColor=_hasClearBackgroundColor;
+@property(nonatomic) _Bool shouldCenterTextHorizontally; // @synthesize shouldCenterTextHorizontally=_shouldCenterTextHorizontally;
 @property(nonatomic) _Bool shouldUseTableView; // @synthesize shouldUseTableView=_shouldUseTableView;
 @property(nonatomic) _Bool hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
 @property(nonatomic) _Bool showsDeleteButtonOnCellContentView; // @synthesize showsDeleteButtonOnCellContentView=_showsDeleteButtonOnCellContentView;

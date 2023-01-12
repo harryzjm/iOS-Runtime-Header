@@ -9,13 +9,14 @@
 #import <FileProviderDaemon/FPDDaemon-Protocol.h>
 
 @class FPDServer, NSHashTable, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_log;
 
 __attribute__((visibility("hidden")))
 @interface FPDXPCServicer : NSObject <FPDDaemon>
 {
     NSHashTable *_providerServicers;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_os_log> *_log;
     FPDServer *_server;
     NSXPCConnection *_connection;
 }
@@ -28,20 +29,23 @@ __attribute__((visibility("hidden")))
 - (void)_test_callRemoveTrashedItemsOlderThanDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_test_callFileProviderManagerAPIs:(CDUnknownBlockType)arg1;
 - (void)_test_retrieveItemWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)ingestFromCacheItemWithID:(id)arg1 requestedFields:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)startAccessingServiceForItemURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_test_setDocIDResolutionPolicy:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)forceIndexingInForeground:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)startAccessingServiceWithName:(id)arg1 itemURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startAccessingServiceForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startAccessingOperationServiceForProviderDomainID:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)startAccessingExtensionForProviderDomainID:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)currentMaterializedSetSyncAnchorForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)enumerateMaterializedSetForDomain:(id)arg1 inProvider:(id)arg2 syncAnchor:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)fetchDaemonOperationWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDaemonOperationIDsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)scheduleActionOperationWithInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsForBundleIDs:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
+- (void)waitForStabilizationOfDomainWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)waitForChangesOnItemsBelowItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSyncedRootsURLs:(CDUnknownBlockType)arg1;
-- (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)copyDatabaseForFPCKStartingAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)createDatabaseCopyOutputPathForDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2 providerFilter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAlternateContentsURL:(id)arg1 onDocumentURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -49,11 +53,14 @@ __attribute__((visibility("hidden")))
 - (void)setEnabled:(_Bool)arg1 forDomainIdentifier:(id)arg2 providerIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getDomainsForProviderIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAllDomainsForProviderIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)removeDomain:(id)arg1 forProviderIdentifier:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)removeDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeDomain:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)removeDomainWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)removeDomainAndPreserveDataWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addDomain:(id)arg1 forProviderIdentifier:(id)arg2 byImportingDirectoryAtURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)restoreUserURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)backUpUserURL:(id)arg1 outputUserURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateBlacklistedProcessNamesForProvider:(id)arg1 processNames:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateBlockedProcessNamesForProvider:(id)arg1 processNames:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getURLForContainerWithItemID:(id)arg1 inDataScopeDomainWithIdentifier:(id)arg2 documentsScopeDomainIdentifier:(id)arg3 documentsFolderItemIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)makeTopologicallySortedItemsOnDisk:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)writeMetadata:(id)arg1 onURL:(id)arg2 error:(id *)arg3;
@@ -62,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)materializeURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startOperation:(id)arg1 toFetchIconsForAppBundleIDs:(id)arg2 requestedSize:(struct CGSize)arg3 scale:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchListOfMonitoredApps:(CDUnknownBlockType)arg1;
+- (void)updateIgnoreState:(_Bool)arg1 forItemAtURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)valuesForAttributes:(id)arg1 forItemAtURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateLastUsedDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)trashItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -82,7 +90,6 @@ __attribute__((visibility("hidden")))
 - (void)providerDomainsCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)unpinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setDownloadPolicy:(unsigned long long)arg1 forItemWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)evictItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)evictItemAtURL:(id)arg1 evenIfEnumeratingFP:(_Bool)arg2 andClearACLForConsumer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)startDownloadingItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -91,10 +98,12 @@ __attribute__((visibility("hidden")))
 - (void)extendBookmarkForFileURL:(id)arg1 toConsumerID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extendBookmarkForItemID:(id)arg1 consumerID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)wakeUpForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)startAccessingServiceForItemID:(id)arg1 connection:(id)arg2 enumerateEntitlementRequired:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)startAccessingServiceWithName:(id)arg1 itemID:(id)arg2 connection:(id)arg3 enumerateEntitlementRequired:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)createDomainServicerForProviderDomainID:(id)arg1 enumerateEntitlementRequired:(_Bool)arg2 error:(id *)arg3;
+- (id)_providerForIdentifier:(id)arg1 enumerateEntitlementRequired:(_Bool)arg2 error:(id *)arg3;
 - (id)providerForIdentifier:(id)arg1 enumerateEntitlementRequired:(_Bool)arg2 error:(id *)arg3;
-- (id)providerForCurrentConnection;
+- (id)providersForCurrentConnection;
+- (id)defaultProviderForCurrentConnection:(id *)arg1;
 - (_Bool)clientHasSandboxAccessToFile:(id)arg1;
 - (_Bool)_isNonSandboxedConnection;
 - (void)invalidate;

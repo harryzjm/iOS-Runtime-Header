@@ -11,6 +11,6 @@
 @protocol AVTransitionDelegate <NSObject>
 - (UIColor *)transitionBackgroundViewBackgroundColor:(AVTransition *)arg1;
 - (UIColor *)transitionPresentedViewBackgroundColor:(AVTransition *)arg1;
-- (void)transitionWillComplete:(AVTransition *)arg1 success:(_Bool)arg2;
+- (void)transitionWillComplete:(AVTransition *)arg1 success:(_Bool)arg2 continueBlock:(void (^)(_Bool))arg3;
 @end
 

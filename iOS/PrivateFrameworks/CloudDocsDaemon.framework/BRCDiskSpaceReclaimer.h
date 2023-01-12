@@ -23,10 +23,11 @@ __attribute__((visibility("hidden")))
 
 + (double)onDiskAccessTimeDeltaForUrgency:(int)arg1;
 + (double)accessTimeDeltaForUrgency:(int)arg1;
-+ (int)urgencyForCacheDeleteUrgency:(int)arg1;
 + (int)simpleUrgencyForCacheDeleteUrgency:(int)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (unsigned long long)totalSize;
+- (unsigned long long)_recursivelySizeDirectoryAtPath:(id)arg1;
 - (_Bool)performOptimizeStorageWithTimeDelta:(double)arg1 onDiskAccessTimeDelta:(double)arg2 error:(id *)arg3;
 - (void)requestPurgeSpace;
 - (long long)cachedPurgeableSpaceForUrgency:(int)arg1;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)lowDiskStatusChangedForDevice:(int)arg1 hasEnoughSpace:(_Bool)arg2;
 - (_Bool)renameAndUnlinkInBackgroundItemAt:(int)arg1 path:(id)arg2;
 - (_Bool)renameAndUnlinkInBackgroundItemAtRelpath:(id)arg1;
+- (int)urgencyForCacheDeleteUrgency:(int)arg1;
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;
 - (void)_enumerateItemsForEvictSyncWithBlock:(CDUnknownBlockType)arg1 withUrgency:(int)arg2;
 - (void)_enumerateItemsForEvictSyncWithBlock:(CDUnknownBlockType)arg1 withTimeDelta:(double)arg2 onDiskAccessTimeDelta:(double)arg3;

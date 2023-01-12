@@ -11,6 +11,7 @@
 @class NSString;
 @protocol BCSMetricFactoryProtocol, BCSShardCacheSkipping, BCSShardCaching, BCSShardRemoteFetching;
 
+__attribute__((visibility("hidden")))
 @interface BCSShardResolver : NSObject <BCSShardResolving>
 {
     id <BCSShardCaching> _shardCache;
@@ -20,12 +21,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) id <BCSMetricFactoryProtocol> metricFactory; // @synthesize metricFactory=_metricFactory;
-@property(readonly, retain, nonatomic) id <BCSShardRemoteFetching> shardRemoteFetcher; // @synthesize shardRemoteFetcher=_shardRemoteFetcher;
-@property(readonly, retain, nonatomic) id <BCSShardCacheSkipping> shardCacheSkipper; // @synthesize shardCacheSkipper=_shardCacheSkipper;
-@property(readonly, retain, nonatomic) id <BCSShardCaching> shardCache; // @synthesize shardCache=_shardCache;
 - (void)shardItemMatching:(id)arg1 clientBundleID:(id)arg2 metric:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)initWithShardCache:(id)arg1 cacheSkipper:(id)arg2 remoteFetcher:(id)arg3 metricFactory:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

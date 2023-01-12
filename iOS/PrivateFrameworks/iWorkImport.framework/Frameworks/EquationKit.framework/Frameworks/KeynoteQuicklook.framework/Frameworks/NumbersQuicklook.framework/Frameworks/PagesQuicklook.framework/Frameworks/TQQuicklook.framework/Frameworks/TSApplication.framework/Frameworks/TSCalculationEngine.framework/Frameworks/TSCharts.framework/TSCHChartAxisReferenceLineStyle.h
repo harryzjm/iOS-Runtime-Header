@@ -10,13 +10,13 @@
 
 @interface TSCHChartAxisReferenceLineStyle : NSObject
 {
-    TSCHChartAxisID *mAxisIdentifier;
-    NSArray *mReferenceLineStyles;
+    TSCHChartAxisID *_axisIdentifier;
+    NSArray *_referenceLineStyles;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *referenceLineStyles; // @synthesize referenceLineStyles=mReferenceLineStyles;
-@property(copy, nonatomic) TSCHChartAxisID *axisIdentifier; // @synthesize axisIdentifier=mAxisIdentifier;
+@property(copy, nonatomic) NSArray *referenceLineStyles; // @synthesize referenceLineStyles=_referenceLineStyles;
+@property(copy, nonatomic) TSCHChartAxisID *axisIdentifier; // @synthesize axisIdentifier=_axisIdentifier;
 - (void)didInitFromSOS;
 
 @end

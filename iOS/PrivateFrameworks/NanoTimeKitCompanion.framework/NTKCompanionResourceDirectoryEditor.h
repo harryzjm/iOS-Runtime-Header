@@ -21,6 +21,7 @@
 + (unsigned long long)_subsampleFactorForScale:(double)arg1;
 + (struct CGSize)_watchPhotoVideoSize;
 + (struct CGSize)_watchPhotoImageSize;
++ (void)_imageForAsset:(id)arg1 forSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_imageDataForAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)_cropAndScaleUIImage:(id)arg1 cropRect:(struct CGRect)arg2 outputSize:(struct CGSize)arg3;
 + (id)_videoAssetOf:(id)arg1;

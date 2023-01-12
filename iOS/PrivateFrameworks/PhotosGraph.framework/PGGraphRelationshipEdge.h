@@ -27,26 +27,51 @@
     double _weekendAppearanceRatio;
     double _momentsAtWorkAppearanceRate;
     double _calendarAttendanceRatio;
+    unsigned long long _status;
 }
 
++ (id)familyRelationshipLabels;
++ (id)inferredVipFilter;
 + (id)vipFilter;
++ (id)inferredAcquaintanceFilter;
 + (id)acquaintanceFilter;
++ (id)inferredCoworkerSocialGroupFilter;
 + (id)coworkerSocialGroupFilter;
++ (id)inferredCoworkerFilter;
 + (id)coworkerFilter;
++ (id)inferredFriendFilter;
 + (id)friendFilter;
++ (id)inferredChildFilter;
 + (id)childFilter;
++ (id)inferredFamilySocialGroupFilter;
 + (id)familySocialGroupFilter;
++ (id)inferredFamilyFilter;
 + (id)familyFilter;
++ (id)inferredParentFilter;
 + (id)parentFilter;
++ (id)inferredSonFilter;
 + (id)sonFilter;
++ (id)inferredDaughterFilter;
 + (id)daughterFilter;
++ (id)inferredSisterFilter;
 + (id)sisterFilter;
++ (id)inferredBrotherFilter;
 + (id)brotherFilter;
++ (id)inferredMotherFilter;
 + (id)motherFilter;
++ (id)inferredFatherFilter;
 + (id)fatherFilter;
++ (id)inferredPartnerFilter;
 + (id)partnerFilter;
++ (id)filterWithInferredRelationship:(id)arg1;
++ (id)filterWithConfirmedRelationship:(id)arg1;
++ (id)filterWithRelationship:(id)arg1 status:(unsigned long long)arg2;
++ (id)filterWithRelationship:(id)arg1;
++ (id)inferredRelationshipFilter;
++ (id)confirmedRelationshipFilter;
 + (id)filter;
 - (void).cxx_destruct;
+@property(readonly) unsigned long long status; // @synthesize status=_status;
 @property(readonly) _Bool isPersonYoungEnoughToBeMeNodeChild; // @synthesize isPersonYoungEnoughToBeMeNodeChild=_isPersonYoungEnoughToBeMeNodeChild;
 @property(readonly) _Bool isPersonOldEnoughToBeParentOrGrandparent; // @synthesize isPersonOldEnoughToBeParentOrGrandparent=_isPersonOldEnoughToBeParentOrGrandparent;
 @property(readonly) _Bool isPersonAgeDifferentThanMeNode; // @synthesize isPersonAgeDifferentThanMeNode=_isPersonAgeDifferentThanMeNode;
@@ -67,16 +92,14 @@
 @property(readonly) float confidence; // @synthesize confidence=_confidence;
 @property(readonly) NSString *relationship; // @synthesize relationship=_relationship;
 - (id)_readableStringForProperty:(id)arg1;
-@property(readonly) unsigned long long status;
 - (float)weight;
 - (unsigned short)domain;
 - (id)label;
 - (id)edgeDescription;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
-- (id)initWithRelationship:(id)arg1 fromPersonNode:(id)arg2 toPersonNode:(id)arg3 withConfidence:(float)arg4;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
+- (id)initWithRelationship:(id)arg1 fromPersonNode:(id)arg2 toPersonNode:(id)arg3 confidence:(float)arg4 status:(unsigned long long)arg5 familyHolidayAttendanceRate:(double)arg6 hasParentContactName:(_Bool)arg7 hasSameFamilyNameAsMePerson:(_Bool)arg8 numberOfMomentsAtHome:(unsigned long long)arg9 hasAnniversaryDate:(_Bool)arg10 isTopTwoPersonsSocialGroup:(_Bool)arg11 numberOfLoveEmojisExchanged:(unsigned long long)arg12 isTopPerson:(_Bool)arg13 friendNightOutAttendanceRate:(double)arg14 partnerTripAttendanceRate:(double)arg15 friendsAndFamilyTripAttendanceRate:(double)arg16 weekendAppearanceRatio:(double)arg17 momentsAtWorkAppearanceRate:(double)arg18 calendarAttendanceRatio:(double)arg19 isPersonAgeDifferentThanMeNode:(_Bool)arg20 isPersonOldEnoughToBeParentOrGrandparent:(_Bool)arg21 isPersonYoungEnoughToBeMeNodeChild:(_Bool)arg22;
 
 @end
 

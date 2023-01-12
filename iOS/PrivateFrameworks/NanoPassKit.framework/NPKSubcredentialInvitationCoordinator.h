@@ -23,8 +23,8 @@
     NPKWatchSubcredentialProvisioningService *_subcredentialProvisioningService;
 }
 
-+ (_Bool)_canAddSecureElementPassWithConfiguration:(id)arg1;
-+ (_Bool)canAddSecureElementPass;
++ (_Bool)canAddSecureElementPassWithConfiguration:(id)arg1 outError:(id *)arg2;
++ (_Bool)canAddSecureElementPassWithInvitation:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NPKWatchSubcredentialProvisioningService *subcredentialProvisioningService; // @synthesize subcredentialProvisioningService=_subcredentialProvisioningService;
 @property(retain, nonatomic) NPKStandaloneFirstUnlockCoordinator *firstUnlockCoordinator; // @synthesize firstUnlockCoordinator=_firstUnlockCoordinator;
@@ -43,7 +43,6 @@
 - (void)_makeConfigurationForInvitation:(id)arg1 session:(id)arg2 metadata:(id)arg3 paymentWebService:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_fetchInvitationMatchingInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchInvitationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)_deviceSupportsSubcredentialProvisioning;
 - (_Bool)_isInvitationUniqueForPairedReaderIdentifier:(id)arg1;
 - (id)_paymentWebService;
 - (void)_setUpSharingSessionWithSubcredentialProvisioningController:(id)arg1;
@@ -63,11 +62,12 @@
 - (void)_queue_listSubcredentialInvitationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_canAcceptInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)subcredentialProvisioningController:(id)arg1 didFinishWithPass:(id)arg2;
-- (void)subcredentialProvisioningController:(id)arg1 didFinishWithError:(id)arg2;
+- (void)subcredentialProvisioningController:(id)arg1 didFinishWithError:(id)arg2 inState:(long long)arg3;
 - (void)statusForReceivedInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)statusForSentInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startSubcredentialProvisioningOnLocalDeviceMatchingInvitation:(id)arg1 shouldFetchAnonymizationSaltFromRemoteDevice:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startSubcredentialProvisioningOnRemoteDeviceForInvitation:(id)arg1;
+- (void)canAcceptInvitationOnRemoteDeviceForInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchOrInitializeAccountAttestationAnonymizationSaltIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)declineRelatedInvitationsIfNecessaryForInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeSharingInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;

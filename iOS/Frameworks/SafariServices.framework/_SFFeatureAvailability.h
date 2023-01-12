@@ -10,8 +10,10 @@
 {
 }
 
++ (_Bool)supportsVoiceSearch;
 + (_Bool)supportsCVV;
 + (_Bool)isTabBarAvailableForScreenSize:(struct CGSize)arg1;
++ (_Bool)_shouldShowRussianFeatures;
 + (_Bool)_shouldShowChineseFeatures;
 
 @end

@@ -31,6 +31,7 @@
     struct UIEdgeInsets _initialInsets;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *composeController; // @synthesize composeController=_composeController;
 @property(nonatomic) double initialCustomizeMessageBottomConstraintConstant; // @synthesize initialCustomizeMessageBottomConstraintConstant=_initialCustomizeMessageBottomConstraintConstant;
 @property(nonatomic) NSLayoutConstraint *customizeMessageBottomConstraint; // @synthesize customizeMessageBottomConstraint=_customizeMessageBottomConstraint;
@@ -72,7 +73,6 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithChallenge:(id)arg1 initiallySelectedPlayers:(id)arg2;
 
 // Remaining properties

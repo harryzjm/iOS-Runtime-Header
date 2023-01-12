@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemonFoundation/HDAssertion.h>
+
 @class NSDate, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDClientKeepAliveAssertion
+@interface HDClientKeepAliveAssertion : HDAssertion
 {
     long long _launchCount;
     NSDate *_lastLaunchAttempt;
@@ -16,11 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSDictionary *payloadOptions; // @synthesize payloadOptions=_payloadOptions;
-@property(readonly, copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
-@property(copy, nonatomic) NSDate *lastLaunchAttempt; // @synthesize lastLaunchAttempt=_lastLaunchAttempt;
-@property(nonatomic) long long launchCount; // @synthesize launchCount=_launchCount;
-- (id)initWithOwnerIdentifier:(id)arg1 clientBundleIdentifier:(id)arg2 payloadOptions:(id)arg3;
 
 @end
 

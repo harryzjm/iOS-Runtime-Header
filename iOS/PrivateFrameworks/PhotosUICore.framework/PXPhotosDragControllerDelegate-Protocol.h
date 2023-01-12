@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, NSObject, NSSet, PXAssetReference, PXPhotosDragController, PXRegionOfInterest, UIScrollView;
+@class NSArray, NSItemProvider, NSObject, NSSet, PXAssetReference, PXPhotosDragController, PXRegionOfInterest, UIScrollView;
 @protocol PXAnonymousViewController;
 
 @protocol PXPhotosDragControllerDelegate <NSObject>
@@ -21,5 +21,8 @@
 - (PXRegionOfInterest *)dragController:(PXPhotosDragController *)arg1 regionOfInterestForAssetReference:(PXAssetReference *)arg2 image:(id *)arg3;
 - (PXAssetReference *)dragController:(PXPhotosDragController *)arg1 draggableAssetReferenceAtLocation:(struct CGPoint)arg2;
 - (PXAssetReference *)dragControllerAssetReferenceForBeginningSession:(PXPhotosDragController *)arg1;
+
+@optional
+- (NSItemProvider *)dragController:(PXPhotosDragController *)arg1 itemProviderForAssetReference:(PXAssetReference *)arg2;
 @end
 

@@ -21,6 +21,8 @@
     NSString *_filename;
 }
 
++ (unsigned long long)defaultIntervalInMicroseconds;
++ (unsigned long long)defaultDurationInMilliseconds;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly) NSString *filename; // @synthesize filename=_filename;

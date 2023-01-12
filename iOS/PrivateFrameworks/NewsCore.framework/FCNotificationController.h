@@ -16,6 +16,7 @@
     _Bool _publisherNotificationsAllowed;
     _Bool _appleNewsNotificationsAllowed;
     _Bool _shouldUseNewsUINotificationHandling;
+    int _deviceDigestMode;
     NSString *_notificationsUserID;
     NSString *_deviceToken;
     FCUserInfo *_userInfo;
@@ -27,6 +28,7 @@
 @property(nonatomic) _Bool shouldUseNewsUINotificationHandling; // @synthesize shouldUseNewsUINotificationHandling=_shouldUseNewsUINotificationHandling;
 @property(nonatomic) _Bool appleNewsNotificationsAllowed; // @synthesize appleNewsNotificationsAllowed=_appleNewsNotificationsAllowed;
 @property(nonatomic) _Bool publisherNotificationsAllowed; // @synthesize publisherNotificationsAllowed=_publisherNotificationsAllowed;
+@property(nonatomic) int deviceDigestMode; // @synthesize deviceDigestMode=_deviceDigestMode;
 @property(retain, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property(retain, nonatomic) FCCommandQueue *commandQueue; // @synthesize commandQueue=_commandQueue;
 @property(retain, nonatomic) FCUserInfo *userInfo; // @synthesize userInfo=_userInfo;
@@ -41,8 +43,9 @@
 - (_Bool)refreshNotificationsForChannelIDs:(id)arg1 paidChannelIDs:(id)arg2;
 - (_Bool)unregisterNotificationsForTagID:(id)arg1;
 - (_Bool)registerNotificationsForTagID:(id)arg1 isPaid:(_Bool)arg2;
-- (void)_registerDeviceToken:(id)arg1;
-- (void)registerDeviceToken:(id)arg1;
+- (void)_registerDeviceToken:(id)arg1 deviceDigestMode:(int)arg2;
+- (void)deviceDigestModeDidUpdateToDigestMode:(int)arg1;
+- (void)registerDeviceToken:(id)arg1 deviceDigestMode:(int)arg2;
 - (void)dealloc;
 - (id)initWithUserInfo:(id)arg1 commandQueue:(id)arg2 configurationManager:(id)arg3 publisherNotificationsAllowed:(_Bool)arg4 appleNewsNotificationsAllowed:(_Bool)arg5;
 - (id)init;

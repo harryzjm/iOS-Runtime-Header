@@ -42,10 +42,6 @@
 - (struct UIEdgeInsets)contentInsets;
 - (struct UIEdgeInsets)transcriptTextAlignmentInsets;
 - (id)description;
-- (_Bool)_shouldShowContactPhotosInTranscript;
-- (_Bool)wantsAvatarViewForLayoutEnvironment:(id)arg1;
-- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
-- (Class)collectionViewCellClass;
 - (unsigned long long)layoutType;
 
 @end

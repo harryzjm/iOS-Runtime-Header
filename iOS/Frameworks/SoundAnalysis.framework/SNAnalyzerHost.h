@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
     long long _requestState;
 }
 
-+ (CDStruct_e83c9415)convertTimeRange:(CDStruct_e83c9415)arg1 fromBox:(struct Box *)arg2 usingConverter:(id)arg3;
-+ (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromBox:(struct Box *)arg2 usingConverter:(id)arg3;
++ (CDStruct_e83c9415)convertTimeRange:(CDStruct_e83c9415)arg1 fromBox:(void *)arg2 usingConverter:(id)arg3;
++ (CDStruct_1b6d18a9)convertTime:(CDStruct_1b6d18a9)arg1 fromBox:(void *)arg2 usingConverter:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) long long requestState; // @synthesize requestState=_requestState;
 - (void)primeAnalyzerGraph;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)clientResultsFromProcessorResults:(id)arg1;
 - (void)handleAnalyzerError:(id)arg1;
 - (void)handleAnalyzerCompletion;
-- (void)handleDSPGraphPostRenderCallbackFromBox:(struct Box *)arg1 numFrames:(int)arg2;
+- (void)handleDSPGraphPostRenderCallbackFromBox:(void *)arg1 numFrames:(int)arg2;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)initWithAnalyzer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3 timeConverter:(id)arg4;
 

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)configureDisplayTypes:(id)arg1 timeScope:(long long)arg2 stackOffset:(long long)arg3;
 - (id)initWithProfile:(id)arg1;
 
 // Remaining properties

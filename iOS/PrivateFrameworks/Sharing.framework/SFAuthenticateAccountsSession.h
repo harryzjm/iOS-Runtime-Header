@@ -8,7 +8,7 @@
 
 #import <Sharing/AAUIGenericTermsRemoteUIDelegate-Protocol.h>
 
-@class AAUIGenericTermsRemoteUI, ACAccountStore, NSMutableArray, NSString, SFDevice, SFSession, TROperationQueue, TRSession, UIViewController;
+@class AAUIGenericTermsRemoteUI, ACAccountStore, HMHomeManager, NSMutableArray, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFAuthenticateAccountsSession : NSObject <AAUIGenericTermsRemoteUIDelegate>
@@ -27,12 +27,16 @@
     int _pairSetupState;
     int _infoExchangeState;
     unsigned int _targetedAccountTypes;
+    unsigned long long _problemFlags;
+    HMHomeManager *_homeManager;
     int _trSessionState;
     TRSession *_trSession;
     NSMutableArray *_trOperations;
     TROperationQueue *_trOperationQueue;
     _Bool _trAuthenticationEnabled;
     int _trAuthenticationState;
+    SFDeviceOperationHomeKitSetup *_homeKitSetupOperation;
+    int _homeKitSetupState;
     int _finishState;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     SFDevice *_peerDevice;
@@ -55,6 +59,7 @@
 - (int)_validateAccounts;
 - (void)__runFinishWithSFSession:(id)arg1;
 - (int)_runFinish;
+- (int)_runHomeKitSetup;
 - (id)_trTargetedServices;
 - (int)_runTRAuthentication;
 - (int)_runTRSessionStart;

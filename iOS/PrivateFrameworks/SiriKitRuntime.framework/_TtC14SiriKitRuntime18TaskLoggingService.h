@@ -10,8 +10,8 @@
 
 @interface _TtC14SiriKitRuntime18TaskLoggingService : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *metricsLogger;
-    MISSING_TYPE *aceServiceInvoker;
+    MISSING_TYPE *aceServiceInvokerSupplier;
+    MISSING_TYPE *biomeDonator;
 }
 
 @end

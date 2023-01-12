@@ -4,44 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <GeoServices/GEORequestCounterTicket-Protocol.h>
-
-@class GEORequestCounterPersistence, NSString;
-@protocol OS_nw_activity;
+@class GEORequestCounterPersistence;
 
 __attribute__((visibility("hidden")))
-@interface _GEOLocalRequestCounterTicket : NSObject <GEORequestCounterTicket>
+@interface _GEOLocalRequestCounterTicket
 {
-    long long _subTaskXmitBytes;
-    long long _subTaskRecvBytes;
-    NSString *_appId;
-    NSString *_requestId;
     GEORequestCounterPersistence *_persistence;
-    NSObject<OS_nw_activity> *_nwActivity;
-    _GEOLocalRequestCounterTicket *_parentTask;
-    _Bool _logNetworkActivityOnly;
-    _Bool _complete;
-    CDStruct_d1a7ebee _type;
-    unsigned char _subtasks;
-    unsigned long long _signpostId;
 }
 
 + (id)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2 persistence:(id)arg3;
-+ (id)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2;
-+ (id)_requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2 withParent:(id)arg3 logNetworkActivityOnly:(_Bool)arg4;
 - (void).cxx_destruct;
-@property(readonly, copy) NSString *description;
-- (void)requestCompletedWithResult:(unsigned char)arg1 xmitBytes:(long long)arg2 recvBytes:(long long)arg3;
-- (void)_subTask:(id)arg1 completedWithResult:(unsigned char)arg2 xmitBytes:(long long)arg3 recvBytes:(long long)arg4;
-- (void)startingRequestWithTask:(id)arg1;
-- (id)createSubtask:(_Bool)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)_incrementForApp:(id)arg1 startTime:(id)arg2 endTime:(id)arg3 requestType:(CDStruct_d1a7ebee)arg4 result:(unsigned char)arg5 xmitBytes:(long long)arg6 recvBytes:(long long)arg7 usedInterfaces:(unsigned long long)arg8;
 
 @end
 

@@ -46,8 +46,7 @@ struct ccec_cp;
 
 struct ccec_full_ctx {
     struct ccec_cp *_field1;
-    unsigned char _field2[8];
-    struct ccec_projective_point _field3[0];
+    struct ccec_projective_point _field2[0];
 };
 
 struct ccec_projective_point {

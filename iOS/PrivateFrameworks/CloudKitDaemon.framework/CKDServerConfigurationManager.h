@@ -17,6 +17,7 @@
     int _iCloudEnvNotifToken;
     NSObject<OS_dispatch_source> *_switchNotifSource;
     NSOperationQueue *_configurationQueue;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
     CKDServerConfiguration *_globalConfiguration;
     NSMutableSet *_globalConfigurationOps;
     NSOperationQueue *_containerSpecificInfoQueue;
@@ -35,23 +36,23 @@
 @property(retain, nonatomic) NSOperationQueue *containerSpecificInfoQueue; // @synthesize containerSpecificInfoQueue=_containerSpecificInfoQueue;
 @property(retain, nonatomic) NSMutableSet *globalConfigurationOps; // @synthesize globalConfigurationOps=_globalConfigurationOps;
 @property(retain, nonatomic) CKDServerConfiguration *globalConfiguration; // @synthesize globalConfiguration=_globalConfiguration;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property(retain, nonatomic) NSOperationQueue *configurationQueue; // @synthesize configurationQueue=_configurationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *switchNotifSource; // @synthesize switchNotifSource=_switchNotifSource;
 - (id)CKStatusReportArray;
-- (void)expireConfigurationForContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
+- (void)expireConfigurationForContainer:(id)arg1;
 - (void)expireGlobalConfiguration;
-- (void)_writeOutiCloudHostnames:(id)arg1;
-- (void)_behaviorOptionsChanged:(id)arg1;
-- (void)_dropAllConfigurations;
+- (void)_writeOutiCloudAppSiteAssociationData:(id)arg1;
+- (void)wipeAllConfigurations;
 - (void)_reallyDropAllConfigurations;
-- (void)containerInfoForOperation:(id)arg1 requireUserIDs:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)containerServerInfoForOperation:(id)arg1 requireUserIDs:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)configurationForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchContainerSpecificInfoForOperation:(id)arg1 requireUserIDs:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchGlobalConfigForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)_watchForSwitchPrefFileChanges;
-- (id)_uniqueStringForContext:(id)arg1 account:(id)arg2;
+- (id)_uniqueStringForContainer:(id)arg1;
 - (_Bool)systemAvailabilityChanged:(unsigned long long)arg1;
 
 // Remaining properties

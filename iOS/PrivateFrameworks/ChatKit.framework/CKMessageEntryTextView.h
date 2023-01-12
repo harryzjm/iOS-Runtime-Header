@@ -15,9 +15,11 @@
     _Bool _showingDictationPlaceholder;
     _Bool _inPencilMode;
     _Bool _pencilWriting;
+    _Bool _shouldStripEmojis;
     _Bool _sendCurrentLocationFromKeyboardEnabled;
     _Bool _updatesFontOnTextChange;
     _Bool _hideCaret;
+    _Bool _hideCaretUntilUserTypes;
     _Bool _preventShowingCalloutMenu;
     UIColor *_placeholderColor;
     double _placeHolderWidth;
@@ -36,11 +38,13 @@
 @property(retain, nonatomic) UILabel *placeholderLabel; // @synthesize placeholderLabel=_placeholderLabel;
 @property(nonatomic) double adjustedLineFragmentPadding; // @synthesize adjustedLineFragmentPadding=_adjustedLineFragmentPadding;
 @property(nonatomic) _Bool preventShowingCalloutMenu; // @synthesize preventShowingCalloutMenu=_preventShowingCalloutMenu;
+@property(nonatomic) _Bool hideCaretUntilUserTypes; // @synthesize hideCaretUntilUserTypes=_hideCaretUntilUserTypes;
 @property(nonatomic) _Bool hideCaret; // @synthesize hideCaret=_hideCaret;
 @property(nonatomic) _Bool updatesFontOnTextChange; // @synthesize updatesFontOnTextChange=_updatesFontOnTextChange;
 @property(nonatomic) _Bool sendCurrentLocationFromKeyboardEnabled; // @synthesize sendCurrentLocationFromKeyboardEnabled=_sendCurrentLocationFromKeyboardEnabled;
 @property(copy, nonatomic) NSString *responseContext; // @synthesize responseContext=_responseContext;
 @property(copy, nonatomic) NSString *autocorrectionContext; // @synthesize autocorrectionContext=_autocorrectionContext;
+@property(nonatomic) _Bool shouldStripEmojis; // @synthesize shouldStripEmojis=_shouldStripEmojis;
 @property(nonatomic, getter=isPencilWriting) _Bool pencilWriting; // @synthesize pencilWriting=_pencilWriting;
 @property(nonatomic, getter=isInPencilMode) _Bool inPencilMode; // @synthesize inPencilMode=_inPencilMode;
 @property(nonatomic, getter=isShowingDictationPlaceholder) _Bool showingDictationPlaceholder; // @synthesize showingDictationPlaceholder=_showingDictationPlaceholder;
@@ -49,6 +53,7 @@
 @property(copy, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 - (void)textViewDidChange:(id)arg1;
 - (void)updateTextView;
+- (void)_stripEmojisIfNecessary;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)scribbleInteractionDidFinishWriting:(id)arg1;
 - (void)scribbleInteractionWillBeginWriting:(id)arg1;

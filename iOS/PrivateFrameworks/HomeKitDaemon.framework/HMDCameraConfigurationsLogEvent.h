@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface HMDCameraConfigurationsLogEvent <HMDAWDLogEvent>
+@interface HMDCameraConfigurationsLogEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     NSArray *_homeSettingsConfigurations;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *homeSettingsConfigurations; // @synthesize homeSettingsConfigurations=_homeSettingsConfigurations;
 - (id)initWithHomes:(id)arg1;

@@ -6,26 +6,23 @@
 
 #import <AdCore/ADIDManager_XPC-Protocol.h>
 
-@class DSIDRecord, NSArray, NSDictionary;
+@class DSIDRecord, NSArray;
 
 @interface ADIDManager <ADIDManager_XPC>
 {
     DSIDRecord *_activeDSIDRecord;
-    NSDictionary *_usageVectors;
     NSArray *_monthlyResetArray;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain) NSArray *monthlyResetArray; // @synthesize monthlyResetArray=_monthlyResetArray;
-@property(retain, nonatomic) NSDictionary *usageVectors; // @synthesize usageVectors=_usageVectors;
 @property(retain) DSIDRecord *activeDSIDRecord; // @synthesize activeDSIDRecord=_activeDSIDRecord;
 - (id)retrieveDeviceIDs;
 - (void)logIDs:(id)arg1;
 - (id)deviceIdentifiers;
 - (void)reloadRecords:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)reloadRecords:(id)arg1;
-- (id)readUsageVectors:(id)arg1;
 - (id)dsidRecord:(id)arg1 fromDict:(id)arg2;
 @property(readonly, nonatomic) long long PersonalizedAdsMonthResetCount;
 - (id)encryptedIDForClientType:(long long)arg1;

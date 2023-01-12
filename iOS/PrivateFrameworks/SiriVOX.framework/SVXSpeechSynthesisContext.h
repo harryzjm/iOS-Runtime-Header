@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 @interface SVXSpeechSynthesisContext : NSObject
 {
     CDUnknownBlockType _preparation;
+    unsigned long long _audioChunkCount;
+    CDUnknownBlockType _audioChunkHandler;
     CDUnknownBlockType _finalization;
     _Bool _handledPresynthesizedAudioRequest;
     _Bool _handledSpeechRequest;
@@ -20,6 +22,7 @@ __attribute__((visibility("hidden")))
     long long _operationType;
     SVXSpeechSynthesisRequest *_request;
     NSString *_languageCode;
+    NSString *_voiceName;
     long long _gender;
     NSDictionary *_analyticsContext;
     VSPresynthesizedAudioRequest *_presynthesizedAudioRequest;
@@ -42,12 +45,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSDictionary *analyticsContext; // @synthesize analyticsContext=_analyticsContext;
 @property(readonly, nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(readonly, nonatomic) long long gender; // @synthesize gender=_gender;
+@property(readonly, copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
 @property(readonly, copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property(readonly, copy, nonatomic) SVXSpeechSynthesisRequest *request; // @synthesize request=_request;
 @property(readonly, nonatomic) long long operationType; // @synthesize operationType=_operationType;
 - (void)finalizeWithResultType:(long long)arg1 utteranceInfo:(id)arg2 error:(id)arg3;
+- (void)handleAudioChunkData:(id)arg1;
 - (void)prepare;
-- (id)initWithOperationType:(long long)arg1 request:(id)arg2 languageCode:(id)arg3 gender:(long long)arg4 audioSessionID:(unsigned int)arg5 preparation:(CDUnknownBlockType)arg6 finalization:(CDUnknownBlockType)arg7 taskTracker:(id)arg8 analyticsContext:(id)arg9;
+- (id)initWithOperationType:(long long)arg1 request:(id)arg2 languageCode:(id)arg3 voiceName:(id)arg4 gender:(long long)arg5 audioSessionID:(unsigned int)arg6 preparation:(CDUnknownBlockType)arg7 audioChunkHandler:(CDUnknownBlockType)arg8 finalization:(CDUnknownBlockType)arg9 taskTracker:(id)arg10 analyticsContext:(id)arg11;
 - (id)description;
 - (void)dealloc;
 

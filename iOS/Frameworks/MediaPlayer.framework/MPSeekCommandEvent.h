@@ -6,10 +6,12 @@
 
 @interface MPSeekCommandEvent
 {
+    unsigned int _commandType;
     unsigned long long _type;
 }
 
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+- (unsigned int)mediaRemoteCommandType;
 - (id)initWithCommand:(id)arg1 mediaRemoteType:(unsigned int)arg2 options:(id)arg3;
 
 @end

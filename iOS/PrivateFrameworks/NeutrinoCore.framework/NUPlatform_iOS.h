@@ -8,6 +8,7 @@
 {
 }
 
+- (_Bool)supportsANE;
 - (_Bool)defaultSupportsLiveVideoRendering;
 - (id)mainDisplay;
 - (id)displays;

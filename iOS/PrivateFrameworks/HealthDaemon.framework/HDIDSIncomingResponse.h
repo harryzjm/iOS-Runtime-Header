@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDIDSMessageCenter, HDIDSParticipant, NSData, NSDate, NSDictionary, NSString;
+@class HDIDSMessageCenter, HDIDSParticipant, NSData, NSDate, NSDictionary, NSString, PBCodable;
 
 @interface HDIDSIncomingResponse : NSObject <HDNanoSyncDescription>
 {
@@ -20,20 +20,18 @@
     NSDate *_requestSent;
     NSDictionary *_requestPersistentUserInfo;
     HDIDSMessageCenter *_messageCenter;
-    id _pbResponse;
+    PBCodable *_pbResponse;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id pbResponse; // @synthesize pbResponse=_pbResponse;
-@property(nonatomic) __weak HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
-@property(retain, nonatomic) NSDictionary *requestPersistentUserInfo; // @synthesize requestPersistentUserInfo=_requestPersistentUserInfo;
-@property(retain, nonatomic) NSDate *requestSent; // @synthesize requestSent=_requestSent;
-@property(copy, nonatomic) NSString *requestIDSIdentifier; // @synthesize requestIDSIdentifier=_requestIDSIdentifier;
-@property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-@property(nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
-@property(retain, nonatomic) HDIDSParticipant *fromParticipant; // @synthesize fromParticipant=_fromParticipant;
-- (void)setPbResponse:(id)arg1;
+@property(readonly, nonatomic) PBCodable *pbResponse; // @synthesize pbResponse=_pbResponse;
+@property(readonly, nonatomic) NSDictionary *requestPersistentUserInfo;
+@property(readonly, nonatomic) NSDate *requestSent;
+@property(readonly, copy, nonatomic) NSString *requestIDSIdentifier;
+@property(readonly, copy, nonatomic) NSString *idsIdentifier;
+@property(readonly, nonatomic) NSData *data;
+@property(readonly, nonatomic) unsigned short messageID;
+@property(readonly, nonatomic) HDIDSParticipant *fromParticipant;
 @property(readonly, copy) NSString *description;
 - (id)nanoSyncDescription;
 

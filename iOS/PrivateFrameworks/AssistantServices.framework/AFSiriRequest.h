@@ -14,12 +14,14 @@
 {
     NSString *_originatingAceID;
     NSUUID *_identifier;
+    NSUUID *_turnId;
     NSString *__refId;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setRefId:) NSString *_refId; // @synthesize _refId=__refId;
+@property(copy, nonatomic, setter=_setTurnId:) NSUUID *_turnId; // @synthesize _turnId;
 @property(copy, nonatomic, setter=_setOriginatingAceID:) NSString *_originatingAceID; // @synthesize _originatingAceID;
 - (_Bool)_makeAppFrontmost;
 - (id)initWithCoder:(id)arg1;
@@ -30,7 +32,7 @@
 - (id)description;
 - (id)init;
 - (id)_initWithOriginatingAceID:(id)arg1;
-- (id)_initWithOriginatingAceID:(id)arg1 identifier:(id)arg2;
+- (id)_initWithOriginatingAceID:(id)arg1 identifier:(id)arg2 turnId:(id)arg3;
 - (id)_af_analyticsContextDescription;
 
 @end

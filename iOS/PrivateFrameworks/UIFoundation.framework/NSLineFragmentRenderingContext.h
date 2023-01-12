@@ -35,6 +35,7 @@
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
     __NSImmutableTextStorage *_textStorage;
+    long long _appContext;
 }
 
 + (void)initialize;
@@ -54,7 +55,7 @@
 @property(nonatomic, getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:) _Bool usesSimpleTextEffects;
 - (void)finalize;
 - (void)dealloc;
-- (id)initWithTextStorage:(id)arg1 runs:(struct __CFArray *)arg2 glyphOrigin:(double)arg3 lineFragmentWidth:(double)arg4 elasticWidth:(double)arg5 usesScreenFonts:(_Bool)arg6 isRTL:(_Bool)arg7;
+- (id)initWithTextStorage:(id)arg1 runs:(struct __CFArray *)arg2 glyphOrigin:(double)arg3 lineFragmentWidth:(double)arg4 elasticWidth:(double)arg5 usesScreenFonts:(_Bool)arg6 isRTL:(_Bool)arg7 applicationFrameworkContext:(long long)arg8;
 - (oneway void)release;
 
 // Remaining properties

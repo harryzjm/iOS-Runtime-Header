@@ -6,8 +6,8 @@
 
 #import <Metal/MTLFunctionSPI-Protocol.h>
 
-@class MTLType, NSArray, NSData, NSDictionary, NSObject, NSString;
-@protocol MTLDevice, OS_dispatch_data;
+@class MTLDebugInstrumentationData, MTLType, NSArray, NSData, NSDictionary, NSObject, NSString;
+@protocol MTLDevice, MTLFunctionHandle, OS_dispatch_data;
 
 @interface _MTLFunction <MTLFunctionSPI>
 {
@@ -21,12 +21,19 @@
     NSDictionary *_functionConstantDictionary;
     unsigned long long _options;
     NSObject<OS_dispatch_data> *_precompiledOutput;
+    MTLDebugInstrumentationData *_debugInstrumentationData;
     MTLType *_returnType;
     NSArray *_arguments;
     NSString *_unpackedFilePath;
     CDStruct_41a22ec7 _functionConstantSpecializationHash;
+    NSArray *_relocations;
+    NSArray *_importedSymbols;
+    NSArray *_importedLibraries;
 }
 
+@property(readonly) NSArray *importedLibraries; // @synthesize importedLibraries=_importedLibraries;
+@property(readonly) NSArray *importedSymbols; // @synthesize importedSymbols=_importedSymbols;
+@property(retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData; // @synthesize debugInstrumentationData=_debugInstrumentationData;
 @property(readonly) unsigned long long options; // @synthesize options=_options;
 @property(copy) NSString *unpackedFilePath; // @synthesize unpackedFilePath=_unpackedFilePath;
 @property(readonly) id vendorPrivate; // @synthesize vendorPrivate=_vendorPrivate;
@@ -34,6 +41,7 @@
 @property(readonly) NSString *name; // @synthesize name=_name;
 @property(readonly) unsigned long long functionType; // @synthesize functionType=_functionType;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
+@property(readonly, nonatomic) id <MTLFunctionHandle> functionHandle;
 - (const CDStruct_41a22ec7 *)functionConstantSpecializationHash;
 - (id)bitcodeData;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 functionReflection:(id)arg3;
@@ -73,6 +81,7 @@
 @property(readonly) unsigned long long patchType; // @dynamic patchType;
 @property NSData *pluginData; // @dynamic pluginData;
 @property NSObject<OS_dispatch_data> *precompiledOutput; // @dynamic precompiledOutput;
+@property(copy, nonatomic) NSArray *relocations; // @dynamic relocations;
 @property(readonly) unsigned long long renderTargetArrayIndexType; // @dynamic renderTargetArrayIndexType;
 @property MTLType *returnType; // @dynamic returnType;
 @property(readonly) NSArray *stageInputAttributes; // @dynamic stageInputAttributes;

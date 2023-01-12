@@ -7,13 +7,15 @@
 #import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationSectionSettings, NSString;
+@class NCNotificationRequest, NCNotificationSectionSettings, NSDate, NSString;
 
 @protocol NCNotificationListComponent <NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting>
+@property(readonly, copy, nonatomic) NSDate *comparisonDate;
 @property(copy, nonatomic) NSString *logDescription;
 @property(nonatomic, getter=isDeviceAuthenticated) _Bool deviceAuthenticated;
 @property(readonly, nonatomic) unsigned long long notificationCount;
 @property(readonly, nonatomic) unsigned long long count;
+- (_Bool)containsNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)notificationsLoadedForSectionIdentifier:(NSString *)arg1;
 - (void)updateNotificationSectionSettings:(NCNotificationSectionSettings *)arg1 previousSectionSettings:(NCNotificationSectionSettings *)arg2;
 - (void)reloadNotificationRequest:(NCNotificationRequest *)arg1;

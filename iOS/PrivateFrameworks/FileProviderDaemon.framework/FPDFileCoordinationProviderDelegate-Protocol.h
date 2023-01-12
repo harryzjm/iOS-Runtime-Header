@@ -8,6 +8,7 @@
 @protocol FPDFileCoordinationProviderDelegate;
 
 @protocol FPDFileCoordinationProviderDelegate
+- (void)_movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)_providedItemAtURL:(NSURL *)arg1 withPresenterWithID:(id)arg2 didMoveToURL:(NSURL *)arg3;
 - (void)_providedItemAtURL:(NSURL *)arg1 didLosePresenterWithID:(id)arg2;
 - (void)_providedItemAtURL:(NSURL *)arg1 didGainPresenterWithID:(id)arg2;

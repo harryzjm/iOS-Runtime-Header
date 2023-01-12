@@ -10,7 +10,7 @@
 #import <UserNotificationsUIKit/BNBannerSourceProvidingPrivate-Protocol.h>
 #import <UserNotificationsUIKit/BNPresentableObserving-Protocol.h>
 
-@class BNBannerSource, BSTimer, NSPointerArray, NSString;
+@class BNBannerSource, NSPointerArray, NSString, NSTimer;
 @protocol BNBannerSourceDelegate;
 
 @interface NCCarPlayBannerSource : NSObject <BNBannerSourceDelegate, BNPresentableObserving, BNBannerSourceProvidingPrivate>
@@ -18,27 +18,28 @@
     BNBannerSource *_bannerSource;
     NSPointerArray *_postedPresentables;
     id <BNBannerSourceDelegate> delegate;
-    BSTimer *_dismissTimer;
-    BSTimer *_replaceTimer;
+    NSTimer *_dismissTimer;
+    NSTimer *_replaceTimer;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic, getter=_replaceTimer, setter=_setReplaceTimer:) BSTimer *replaceTimer; // @synthesize replaceTimer=_replaceTimer;
-@property(retain, nonatomic, getter=_dismissTimer, setter=_setDismissTimer:) BSTimer *dismissTimer; // @synthesize dismissTimer=_dismissTimer;
+@property(retain, nonatomic, getter=_replaceTimer, setter=_setReplaceTimer:) NSTimer *replaceTimer; // @synthesize replaceTimer=_replaceTimer;
+@property(retain, nonatomic, getter=_dismissTimer, setter=_setDismissTimer:) NSTimer *dismissTimer; // @synthesize dismissTimer=_dismissTimer;
 @property(nonatomic) __weak id <BNBannerSourceDelegate> delegate; // @synthesize delegate;
 - (void)_cancelReplaceTimer;
 - (void)_startReplaceTimer;
 - (void)_revokePreviouslyPostedPresentableIfPossible;
 - (void)_cancelDismissTimer;
+- (void)_startDismissTimerWithTimeInterval:(double)arg1;
 - (void)_startDismissTimer;
 - (void)_allPresentablesDidDisappear;
-- (void)_presentableWithRequestIdentifierDidDisappear:(id)arg1;
+- (void)_presentableWithIdentificationDidDisappear:(id)arg1;
 - (void)_presentableDidDisappear:(id)arg1;
 - (unsigned long long)_postedPresentableCount;
 - (id)_pullPostedPresentableAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_indexOfPostedPresentable:(id)arg1;
-- (id)_postedPresentablesWithRequestIdentifier:(id)arg1;
+- (id)_postedPresentablesWithIdentification:(id)arg1;
 - (id)_peekPostedPresentable;
 - (void)_enqueuePostedPresentable:(id)arg1;
 - (_Bool)_setSuspended:(_Bool)arg1 forReason:(id)arg2 revokingCurrent:(_Bool)arg3;
@@ -49,14 +50,18 @@
 - (void)presentableDidAppearAsBanner:(id)arg1;
 - (_Bool)setSuspended:(_Bool)arg1 forReason:(id)arg2 revokingCurrent:(_Bool)arg3 error:(out id *)arg4;
 - (id)keyWindowForScreen:(id)arg1;
+- (id)revokePresentableWithIdentification:(id)arg1 reason:(id)arg2 animated:(_Bool)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (void)invalidate;
-- (_Bool)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
-- (_Bool)revokePresentableWithRequestIdentifier:(id)arg1 animated:(_Bool)arg2 reason:(id)arg3 userInfo:(id)arg4 error:(out id *)arg5;
+- (id)revokeAllPresentablesWithReason:(id)arg1 userInfo:(id)arg2 error:(out id *)arg3;
+- (id)revokePresentableWithRequestIdentifier:(id)arg1 reason:(id)arg2 animated:(_Bool)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (_Bool)postPresentable:(id)arg1 options:(unsigned long long)arg2 userInfo:(id)arg3 error:(out id *)arg4;
 - (id)layoutDescriptionWithError:(out id *)arg1;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
 @property(readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property(readonly, nonatomic) long long destination;
+- (void)_startAnnounceDismissalTimer;
+- (void)didFinishAnnounceForNotificationRequest:(id)arg1;
+- (void)didBeginAnnounceForNotificationRequest:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -38,6 +38,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityCustomActions;
 - (id)accessibilityValue;
+- (id)accessibilityPath;
 - (_Bool)_accessibilityIsVisibleByCompleteHitTest;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
@@ -45,6 +46,8 @@
 - (struct CGRect)accessibilityFrame;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (id)_accessibilityCustomActionGroupIdentifier;
+- (_Bool)_accessibilityIsInAppSwitcher;
+- (id)_accessibilityBundleIdentifier;
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (_Bool)isAccessibilityElement;
 - (_Bool)accessibilityActivate;

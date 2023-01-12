@@ -8,7 +8,7 @@
 
 @interface GKQuadtree : NSObject
 {
-    struct GKCQuadTree<NSObject> *_cQuadTree;
+    void *_cQuadTree;
 }
 
 + (id)quadtreeWithBoundingQuad:(struct GKQuad)arg1 minimumCellSize:(float)arg2;

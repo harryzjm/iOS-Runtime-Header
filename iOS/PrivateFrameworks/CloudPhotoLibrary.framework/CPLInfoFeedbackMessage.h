@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *info; // @synthesize info=_info;
 - (id)serverMessage;
-- (id)initWithInfo:(id)arg1;
+- (id)initWithInfo:(id)arg1 libraryIdentifier:(id)arg2;
 
 @end
 

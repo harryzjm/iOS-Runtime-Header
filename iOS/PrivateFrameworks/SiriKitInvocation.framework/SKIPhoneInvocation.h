@@ -10,5 +10,14 @@
 {
 }
 
++ (id)announceGroupFaceTimeInviteNotification:(id)arg1 synchronousBurstIndex:(id)arg2 isSameTypeAsLastAnnouncement:(_Bool)arg3 appBundleIdOfLastAnnouncement:(id)arg4 timeSinceLastAnnouncement:(double)arg5;
++ (id)announceGroupFaceTimeInviteNotification:(id)arg1 synchronousBurstIndex:(id)arg2;
++ (id)announceVoicemailRequestForNotification:(id)arg1 synchronousBurstIndex:(id)arg2 isSameTypeAsLastAnnouncement:(_Bool)arg3 appBundleIdOfLastAnnouncement:(id)arg4 timeSinceLastAnnouncement:(double)arg5;
++ (id)announceVoicemailRequestForNotification:(id)arg1 synchronousBurstIndex:(id)arg2;
++ (id)startPhoneCallRequestFromApp:(id)arg1;
++ (id)announceIncomingCallerRequestForCallUUID:(id)arg1 callProviderIdentifier:(id)arg2 callProviderBundleId:(id)arg3 callerContactIdentifiers:(id)arg4 handle:(id)arg5 isVideo:(_Bool)arg6 isCallerIDBlocked:(_Bool)arg7;
++ (id)readHomeAnnouncementRequestFromApp:(id)arg1;
++ (id)announceHomeAnnouncementRequestFromApp:(id)arg1 withAnnouncementIdentifier:(id)arg2 withUserNotificationType:(long long)arg3 synchronousBurstIndex:(id)arg4;
+
 @end
 

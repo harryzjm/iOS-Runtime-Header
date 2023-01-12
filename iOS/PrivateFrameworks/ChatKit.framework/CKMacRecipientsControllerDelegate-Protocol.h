@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKMacRecipientsController;
+@class CKMacRecipientsController, NSString;
 
 @protocol CKMacRecipientsControllerDelegate
+- (NSString *)innermostToolbarItemIdentifier;
 - (void)macRecipientsControllerDidUpdateToFieldSizing:(CKMacRecipientsController *)arg1;
 @end
 

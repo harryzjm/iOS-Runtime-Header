@@ -18,6 +18,7 @@
 - (void)_presentToUserOptionsFromActionPerformers:(id)arg1 forAssetCollectionReference:(id)arg2;
 - (void)performUserInteractionTask;
 - (id)buttonSpriteReference;
+- (_Bool)presentsMenu;
 - (_Bool)performerResetsAfterCompletion;
 - (id)initWithViewModel:(id)arg1 assetCollectionReference:(id)arg2 actionManager:(id)arg3;
 - (id)initWithActionType:(id)arg1 viewModel:(id)arg2 assetCollectionReference:(id)arg3;

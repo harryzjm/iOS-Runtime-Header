@@ -8,5 +8,7 @@
 
 @interface NSString (ICLinguistics)
 - (id)ic_guessedWords;
+- (id)icaxAttributedStringWithLowPitchPrefix:(id)arg1;
+- (id)icaxLowPitchAttributedString;
 @end
 

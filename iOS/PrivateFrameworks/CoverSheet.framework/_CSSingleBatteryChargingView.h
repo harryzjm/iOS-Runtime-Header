@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CSBatteryFillView, NSArray, NSLayoutConstraint, SBUILegibilityLabel, UIImage, UIView, _UIBackdropView;
+@class CSBatteryFillView, NSArray, NSLayoutConstraint, SBUILegibilityLabel, UIImage, UIImageView, UIView, _UIBackdropView;
 
 @interface _CSSingleBatteryChargingView
 {
@@ -15,11 +15,15 @@
     NSArray *_batteryConstraints;
     NSLayoutConstraint *_batteryTopOffset;
     UIImage *_batteryImage;
+    UIImage *_boltImage;
+    UIImageView *_boltImageView;
     _Bool _horizontalLayoutNeeded;
+    _Bool _includesBoltImage;
     struct CGSize _batterySize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool includesBoltImage; // @synthesize includesBoltImage=_includesBoltImage;
 @property(nonatomic) _Bool horizontalLayoutNeeded; // @synthesize horizontalLayoutNeeded=_horizontalLayoutNeeded;
 @property(nonatomic) struct CGSize batterySize; // @synthesize batterySize=_batterySize;
 - (id)_chargePercentFont;

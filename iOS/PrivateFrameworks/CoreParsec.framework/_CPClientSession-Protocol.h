@@ -12,6 +12,9 @@
 @property(readonly, nonatomic) NSData *jsonData;
 @property(copy, nonatomic) NSArray *feedbacks;
 @property(copy, nonatomic) NSData *jsonFeedback;
+@property(nonatomic) _Bool isInternalCarry;
+@property(nonatomic) int privateRelayStatus;
+@property(nonatomic) unsigned int devicePersistentD20;
 @property(retain, nonatomic) _CPUsageEnvelope *cohortsFeedback;
 @property(retain, nonatomic) _CPUsageSinceLookback *usageSinceLookback;
 @property(copy, nonatomic) NSString *locale;

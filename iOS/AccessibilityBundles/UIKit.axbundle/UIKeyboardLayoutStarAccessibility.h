@@ -17,17 +17,11 @@
 - (id)_accessibilityScannerGroupElements;
 - (id)iOSGetKeyboardRowsByNumber;
 - (id)atvGetKeyboardRowsByNumber;
-- (id)_accessibilityGetKeyboardRowsByRowNumber;
-- (id)_rowNumberOverrideForSplitEmojiKey:(id)arg1;
-- (double)_axGetSortingNumberForEmojiCell:(id)arg1;
 - (_Bool)canProduceString:(id)arg1;
+- (id)_accessibilityFocusContainers:(_Bool)arg1;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (long long)accessibilityElementCount;
-- (_Bool)_accessibilityBiasEscapeButtonIsFirst;
-- (_Bool)_accessibilityHasBiasEscapeButton;
-- (id)_accessibilityBiasEscapeButton;
-- (id)_axKBModalView;
 - (_Bool)isAccessibilityElement;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -38,11 +32,8 @@
 - (id)_accessibilityUserTestingChildren;
 - (void)didBeginContinuousPath;
 - (void)setKeyplaneName:(id)arg1;
-- (_Bool)_isSmallLetterKeyplane:(id)arg1;
-- (_Bool)_isCapitalLetterKeyplane:(id)arg1;
 - (void)setReturnKeyEnabled:(_Bool)arg1 withDisplayName:(id)arg2 withType:(int)arg3;
 - (void)setLabel:(id)arg1 forKey:(id)arg2;
-- (void)_axClearReturnKeyLabel;
 - (id)_accessibilitySortedUnstoredKeys;
 - (id)_accessibilityVisibleKeysByRow;
 - (id)_accessibilityKeys;
@@ -52,26 +43,19 @@
 - (_Bool)_accessibilityKeyboardSupportsGestureMode;
 - (_Bool)accessibilityElementsHidden;
 - (void)dealloc;
-- (void)_accessibilityResetInternalData;
-- (id)_accessibilityInternalData;
 - (void)setActiveKey:(id)arg1;
 - (void)continueFromInternationalActionForTouchUp:(id)arg1 withActions:(unsigned long long)arg2 timestamp:(double)arg3 interval:(double)arg4 didLongPress:(_Bool)arg5 prevActions:(unsigned long long)arg6 executionContext:(id)arg7;
 - (void)_axHandleEmojiPopupLayoutChangeAfterAnnouncement;
-- (void)_axSetIsWaitingForEmojiPopupAnnouncement:(_Bool)arg1;
-- (_Bool)_axIsWaitingForEmojiPopupAnnouncement;
 - (void)touchDragged:(id)arg1 executionContext:(id)arg2;
 - (void)touchUp:(id)arg1 executionContext:(id)arg2;
 - (void)touchDown:(id)arg1 executionContext:(id)arg2;
 - (_Bool)_accessibilityFingerIsDown;
-- (id)_accessibilityCreateElementForKey:(id)arg1;
 - (_Bool)accessibilityPerformEscape;
 - (void)didMoveToWindow;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (long long)accessibilityContainerType;
 - (unsigned long long)accessibilityTraits;
 - (void)addContinuousPathPoint:(struct CGPoint)arg1 withTimestamp:(double)arg2;
-- (void)_accessibilitySetStickyPopupKeys:(id)arg1;
-- (id)_accessibilityStickyPopupKeys;
 
 @end
 

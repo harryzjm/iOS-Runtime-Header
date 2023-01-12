@@ -17,6 +17,7 @@
     NSArray *_signatureVerificationPublicKeys;
 }
 
++ (_Bool)verifyPairedMetadataFromRecord:(id)arg1 signatureVerificationPublicKeys:(id)arg2 error:(id *)arg3;
 + (_Bool)verifyNetworkDeclarationsFromRecord:(id)arg1 signatureVerificationPublicKeys:(id)arg2 error:(id *)arg3;
 + (_Bool)verifyNetworkDeclarationsFromRecord:(id)arg1 signatureVerificationPublicKeys:(id)arg2 baseAccessoryIdentifier:(id *)arg3 data:(id *)arg4 error:(id *)arg5;
 + (_Bool)__verifyDataFromRecord:(id)arg1 signatureVerificationPublicKeys:(id)arg2 dataKey:(id)arg3 dataAssetKey:(id)arg4 maxDataSize:(unsigned long long)arg5 signatureKey:(id)arg6 signatureAssetKey:(id)arg7 maxSignatureSize:(unsigned long long)arg8 baseAccessoryIdentifier:(id *)arg9 data:(id *)arg10 error:(id *)arg11;

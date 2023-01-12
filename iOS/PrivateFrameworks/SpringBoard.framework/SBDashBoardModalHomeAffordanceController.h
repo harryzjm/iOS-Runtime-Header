@@ -8,20 +8,23 @@
 
 #import <SpringBoard/CSModalHomeAffordanceControlling-Protocol.h>
 
-@class NSString, SBHomeGestureArbiter, SBHomeGestureParticipant, UIScreenEdgePanGestureRecognizer;
+@class NSString, SBFZStackParticipant, SBFZStackResolver, SBHomeGestureArbiter, SBHomeGestureParticipant, UIScreenEdgePanGestureRecognizer;
 
 @interface SBDashBoardModalHomeAffordanceController : NSObject <CSModalHomeAffordanceControlling>
 {
     SBHomeGestureArbiter *_homeGestureArbiter;
-    SBHomeGestureParticipant *_participant;
+    SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackResolver *_zStackResolver;
+    SBFZStackParticipant *_zStackParticipant;
     UIScreenEdgePanGestureRecognizer *_homeGestureRecognizer;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIScreenEdgePanGestureRecognizer *homeGestureRecognizer; // @synthesize homeGestureRecognizer=_homeGestureRecognizer;
+- (_Bool)ownsHomeGesture;
 - (void)unregisterHomeGestureParticipant;
-- (void)_addGrabberView:(id)arg1;
-- (void)registerHomeGestureParticipant:(id)arg1;
+- (void)_addGrabberView:(id)arg1 clientBridge:(id)arg2;
+- (_Bool)registerHomeGestureParticipant:(id)arg1;
 - (id)init;
 
 // Remaining properties

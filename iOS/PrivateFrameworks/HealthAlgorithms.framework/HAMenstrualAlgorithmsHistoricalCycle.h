@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+@class NSArray, NSNumber;
 
 @interface HAMenstrualAlgorithmsHistoricalCycle : NSObject
 {
@@ -15,9 +15,11 @@
     unsigned int _julianDayOfMenstruationEnd;
     NSNumber *_fertilityStartJulianDay;
     NSNumber *_fertilityEndJulianDay;
+    NSArray *_phases;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *phases; // @synthesize phases=_phases;
 @property(nonatomic) _Bool isDeterminant; // @synthesize isDeterminant=_isDeterminant;
 @property(nonatomic) unsigned int julianDayOfMenstruationEnd; // @synthesize julianDayOfMenstruationEnd=_julianDayOfMenstruationEnd;
 @property(nonatomic) unsigned int julianDayOfMenstruationStart; // @synthesize julianDayOfMenstruationStart=_julianDayOfMenstruationStart;

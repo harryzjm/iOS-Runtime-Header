@@ -8,7 +8,7 @@
 
 #import <Rapport/RPAuthenticatable-Protocol.h>
 
-@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSData, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon;
+@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSArray, NSData, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, NSUUID, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon;
 @protocol CUReadWriteRequestable, OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPConnection : NSObject <RPAuthenticatable>
@@ -27,7 +27,8 @@
     int _internalState;
     _Bool _stepDone;
     NSError *_stepError;
-    CDStruct_798ebea5 _frameHeader;
+    unsigned long long _highPriorityAuthTagLength;
+    CUPairingStream *_highPriorityStream;
     NSString *_homeKitIdentityIdentifier;
     NSData *_homeKitIdentitySignature;
     unsigned long long _mainAuthTagLength;
@@ -40,9 +41,9 @@
     int _pairVerifyIdentityType;
     CUPairingSession *_pairVerifySession;
     _Bool _pairVerifyUsedIdentity;
+    CDStruct_f8a3a8cf _readFrame;
+    CDStruct_f8a3a8cf _readFrameBTPipeHighPriority;
     id <CUReadWriteRequestable> _requestable;
-    _Bool _receivingHeader;
-    _Bool _readRequested;
     NSMutableDictionary *_requests;
     int _retryCount;
     NSMutableArray *_sendArray;
@@ -66,6 +67,8 @@
     int _preferredIdentityType;
     int _state;
     unsigned int _trafficFlags;
+    NSArray *_allowedMACAddresses;
+    NSArray *_pairSetupACL;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
     CDUnknownBlockType _showPasswordHandler;
@@ -87,6 +90,7 @@
     RPIdentity *_forcedPeerIdentity;
     RPIdentity *_forcedSelfIdentity;
     CUHomeKitManager *_homeKitManager;
+    CDUnknownBlockType _homeKitUserIdentifierHandler;
     NSString *_identifierOverride;
     RPIdentityDaemon *_identityDaemon;
     RPIdentity *_identityResolved;
@@ -99,6 +103,7 @@
     RPCompanionLinkDevice *_peerDeviceInfo;
     NSString *_peerIdentifier;
     CDUnknownBlockType _peerUpdatedHandler;
+    CDUnknownBlockType _proxyDeviceUpdateHandler;
     NSData *_pskData;
     CDUnknownBlockType _receivedEventHandler;
     CDUnknownBlockType _receivedRequestHandler;
@@ -106,9 +111,13 @@
     CDUnknownBlockType _stateChangedHandler;
     unsigned long long _statusFlags;
     CUTCPConnection *_tcpConnection;
+    NSMutableArray *_proxyDevices;
+    CUBluetoothScalablePipe *_btPipeHighPriority;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CUBluetoothScalablePipe *btPipeHighPriority; // @synthesize btPipeHighPriority=_btPipeHighPriority;
+@property(retain, nonatomic) NSMutableArray *proxyDevices; // @synthesize proxyDevices=_proxyDevices;
 @property(nonatomic) unsigned int trafficFlags; // @synthesize trafficFlags=_trafficFlags;
 @property(retain, nonatomic) CUTCPConnection *tcpConnection; // @synthesize tcpConnection=_tcpConnection;
 @property(readonly, nonatomic) unsigned long long statusFlags; // @synthesize statusFlags=_statusFlags;
@@ -118,12 +127,14 @@
 @property(copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedEventHandler; // @synthesize receivedEventHandler=_receivedEventHandler;
 @property(copy, nonatomic) NSData *pskData; // @synthesize pskData=_pskData;
+@property(copy, nonatomic) CDUnknownBlockType proxyDeviceUpdateHandler; // @synthesize proxyDeviceUpdateHandler=_proxyDeviceUpdateHandler;
 @property(nonatomic) _Bool present; // @synthesize present=_present;
 @property(nonatomic) int preferredIdentityType; // @synthesize preferredIdentityType=_preferredIdentityType;
 @property(nonatomic) _Bool preAuthEnabled; // @synthesize preAuthEnabled=_preAuthEnabled;
 @property(copy, nonatomic) CDUnknownBlockType peerUpdatedHandler; // @synthesize peerUpdatedHandler=_peerUpdatedHandler;
 @property(copy, nonatomic) NSString *peerIdentifier; // @synthesize peerIdentifier=_peerIdentifier;
 @property(readonly, nonatomic) RPCompanionLinkDevice *peerDeviceInfo; // @synthesize peerDeviceInfo=_peerDeviceInfo;
+@property(readonly, nonatomic) NSString *peerAddrString; // @synthesize peerAddrString=_peerAddrString;
 @property(copy, nonatomic) CDUnknownBlockType pairVerifyCompletion; // @synthesize pairVerifyCompletion=_pairVerifyCompletion;
 @property(retain, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property(retain, nonatomic) RPCompanionLinkDevice *localDeviceInfo; // @synthesize localDeviceInfo=_localDeviceInfo;
@@ -136,6 +147,7 @@
 @property(retain, nonatomic) RPIdentity *identityResolved; // @synthesize identityResolved=_identityResolved;
 @property(retain, nonatomic) RPIdentityDaemon *identityDaemon; // @synthesize identityDaemon=_identityDaemon;
 @property(copy, nonatomic) NSString *identifierOverride; // @synthesize identifierOverride=_identifierOverride;
+@property(copy, nonatomic) CDUnknownBlockType homeKitUserIdentifierHandler; // @synthesize homeKitUserIdentifierHandler=_homeKitUserIdentifierHandler;
 @property(retain, nonatomic) CUHomeKitManager *homeKitManager; // @synthesize homeKitManager=_homeKitManager;
 @property(retain, nonatomic) RPIdentity *forcedSelfIdentity; // @synthesize forcedSelfIdentity=_forcedSelfIdentity;
 @property(retain, nonatomic) RPIdentity *forcedPeerIdentity; // @synthesize forcedPeerIdentity=_forcedPeerIdentity;
@@ -164,6 +176,9 @@
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(nonatomic) unsigned int pairVerifyFlags; // @synthesize pairVerifyFlags=_pairVerifyFlags;
 @property(nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
+@property(retain, nonatomic) NSArray *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
+@property(retain, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
+- (id)_allowedMACAddressesForMCFeature:(id)arg1;
 - (id)_systeminfo;
 - (void)_receivedSystemInfo:(id)arg1 xid:(id)arg2;
 - (void)_idleTimerFired;
@@ -182,12 +197,12 @@
 - (void)_receivedObject:(id)arg1 ctx:(CDStruct_5577c19c *)arg2;
 - (void)_receivedHeader:(const CDStruct_798ebea5 *)arg1 encryptedObjectData:(id)arg2 ctx:(CDStruct_5577c19c *)arg3;
 - (void)_receivedHeader:(const CDStruct_798ebea5 *)arg1 body:(id)arg2 ctx:(CDStruct_5577c19c *)arg3;
-- (void)_receiveCompletion:(id)arg1;
-- (void)_receiveStart:(id)arg1;
+- (void)_receiveCompletion:(id)arg1 readFrame:(CDStruct_f8a3a8cf *)arg2 requestable:(id)arg3;
+- (void)_receiveStart:(id)arg1 readFrame:(CDStruct_f8a3a8cf *)arg2 requestable:(id)arg3;
 - (void)sendReachabilityProbe:(const char *)arg1;
 - (void)_sendFrameType:(unsigned char)arg1 unencryptedObject:(id)arg2;
 - (void)_sendFrameType:(unsigned char)arg1 body:(id)arg2;
-- (void)_sendEncryptedResponse:(id)arg1 error:(id)arg2 xid:(id)arg3 requestID:(id)arg4;
+- (void)_sendEncryptedResponse:(id)arg1 error:(id)arg2 xid:(id)arg3 requestID:(id)arg4 highPriority:(_Bool)arg5 isChatty:(_Bool)arg6;
 - (void)_sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 options:(id)arg4 sendEntry:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
 - (void)sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)_sendEncryptedEventID:(id)arg1 data:(id)arg2 xid:(unsigned int)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -203,7 +218,6 @@
 - (void)_serverPreAuthRequestWithData:(id)arg1;
 - (void)_serverNetworkError:(id)arg1 label:(const char *)arg2;
 - (void)_serverError:(id)arg1;
-- (id)_serverAllowMACAddresses;
 - (void)_serverAcceptTCP;
 - (void)_serverAcceptBTPipe;
 - (void)_serverAcceptBLE;

@@ -22,7 +22,7 @@
     _Bool _ignoreNextCall;
 }
 
-+ (const struct TSWPLineFragment *)p_lineFragmentForCharIndex:(unsigned long long)arg1 knobTag:(unsigned long long)arg2 selectionType:(int)arg3 rep:(id)arg4;
++ (const void *)p_lineFragmentForCharIndex:(unsigned long long)arg1 knobTag:(unsigned long long)arg2 selectionType:(int)arg3 rep:(id)arg4;
 @property(nonatomic) _Bool ignoreNextCall; // @synthesize ignoreNextCall=_ignoreNextCall;
 @property(readonly, nonatomic) _Bool didShowMagnifier; // @synthesize didShowMagnifier=_didShowMagnifier;
 @property(retain, nonatomic) TSWPEditingController *editingController; // @synthesize editingController=_editingController;

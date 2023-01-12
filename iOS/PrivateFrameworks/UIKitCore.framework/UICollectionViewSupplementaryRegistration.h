@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UINib;
+@class NSString, UICollectionView, UINib;
 
 @interface UICollectionViewSupplementaryRegistration : NSObject
 {
-    NSString *_reuseIdentifier;
     Class _supplementaryClass;
     UINib *_supplementaryNib;
     NSString *_elementKind;
     CDUnknownBlockType _configurationHandler;
+    UICollectionView *__collectionViewRequestingViewWhenCreated;
+    NSString *_reuseIdentifier;
 }
 
 + (id)registrationWithSupplementaryNib:(id)arg1 elementKind:(id)arg2 configurationHandler:(CDUnknownBlockType)arg3;
 + (id)registrationWithSupplementaryClass:(Class)arg1 elementKind:(id)arg2 configurationHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
+@property(readonly, nonatomic) __weak UICollectionView *_collectionViewRequestingViewWhenCreated; // @synthesize _collectionViewRequestingViewWhenCreated=__collectionViewRequestingViewWhenCreated;
 @property(readonly, nonatomic) CDUnknownBlockType configurationHandler; // @synthesize configurationHandler=_configurationHandler;
 @property(readonly, nonatomic) NSString *elementKind; // @synthesize elementKind=_elementKind;
 @property(readonly, nonatomic) UINib *supplementaryNib; // @synthesize supplementaryNib=_supplementaryNib;
 @property(readonly, nonatomic) Class supplementaryClass; // @synthesize supplementaryClass=_supplementaryClass;
-- (_Bool)hasSupplementaryNib;
-- (_Bool)hasSupplementaryClass;
-- (id)reuseIdentifier;
+@property(readonly, nonatomic) _Bool hasSupplementaryNib;
+@property(readonly, nonatomic) _Bool hasSupplementaryClass;
 - (id)initWithSupplementaryClass:(Class)arg1 supplementaryNib:(id)arg2 elementKind:(id)arg3 configurationHandler:(CDUnknownBlockType)arg4 reuseIdentifier:(id)arg5;
 
 @end

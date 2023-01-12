@@ -15,7 +15,7 @@
 - (id)debugDescription;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (id)initWithFieldDescriptor:(const struct FieldDescriptor *)arg1 fieldInfo:(const struct FieldInfo *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
+- (id)initWithFieldDescriptor:(const void *)arg1 fieldInfo:(const void *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4;
 
 @end
 

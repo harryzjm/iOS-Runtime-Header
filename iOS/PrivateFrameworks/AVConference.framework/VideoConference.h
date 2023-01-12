@@ -28,8 +28,8 @@
     struct opaqueVCAudioBufferList *_sinkBufferMix;
     VideoConferenceManager *manager;
     struct _opaque_pthread_rwlock_t stateLock;
-    NSMutableDictionary *sessionDict;
-    NSArray *sessionArray;
+    NSMutableDictionary *_sessionDict;
+    NSArray *_sessionArray;
     NSMutableArray *_startedSessions;
     _Bool outputMeteringEnabled;
     _Bool inputMeteringEnabled;
@@ -101,11 +101,16 @@
     int _deviceRole;
     _Bool isValid;
     VCMoments *_vcMoments;
+    void *_spatialMetadataEntry;
+    unsigned int _audioChannelIndex;
+    void *_spatialMetadata;
     int localFrameWidth;
     int localFrameHeight;
     VCVideoRule *conferenceCaptureRule;
 }
 
+@property(retain, nonatomic) NSMutableDictionary *sessionDict; // @synthesize sessionDict=_sessionDict;
+@property(nonatomic) NSArray *sessionArray; // @synthesize sessionArray=_sessionArray;
 @property(readonly, nonatomic) VCMoments *vcMoments; // @synthesize vcMoments=_vcMoments;
 @property(readonly, nonatomic) long long outputAudioPowerSpectrumToken; // @synthesize outputAudioPowerSpectrumToken=_outputAudioPowerSpectrumToken;
 @property(readonly, nonatomic) long long inputAudioPowerSpectrumToken; // @synthesize inputAudioPowerSpectrumToken=_inputAudioPowerSpectrumToken;
@@ -171,7 +176,9 @@
 @property NSObject<VideoConferenceChannelQualityDelegate> *qualityDelegate;
 - (_Bool)setActive:(_Bool)arg1;
 - (_Bool)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(_Bool)arg4 capabilities:(id)arg5 idsSocket:(int)arg6 destination:(id)arg7 error:(id *)arg8;
-- (void)setUpAudioIO:(int)arg1;
+- (void)cleanupSpatialAudioForCallID:(unsigned int)arg1;
+- (int)setupSpatialAudioWithCallID:(unsigned int)arg1;
+- (void)setUpAudioIO:(int)arg1 callID:(unsigned int)arg2;
 - (_Bool)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(_Bool)arg4 relayResponseDict:(id)arg5 didOriginateRelayRequest:(_Bool)arg6 capabilities:(id)arg7 idsSocket:(int)arg8 destination:(id)arg9 error:(id *)arg10;
 - (_Bool)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 oldCallID:(unsigned int)arg3 usingInviteData:(id)arg4 isCaller:(_Bool)arg5 relayResponseDict:(id)arg6 didOriginateRelayRequest:(_Bool)arg7 capabilities:(id)arg8 idsSocket:(int)arg9 destination:(id)arg10 error:(id *)arg11;
 - (int)conferenceOperatingMode;
@@ -263,12 +270,12 @@
 - (void)wrlock;
 - (void)session:(id)arg1 didReceiveMomentsRequest:(id)arg2;
 - (unsigned int)momentsCapabilitiesWithNegotiationBlobMomentsSettings_Capabilities:(int)arg1;
-- (void)session:(id)arg1 setMomentsCapabilities:(int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
+- (void)session:(id)arg1 setMomentsCapabilities:(unsigned int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
 - (struct AudioStreamBasicDescription)audioIOFormat;
 - (void)session:(id)arg1 setRemoteBasebandCodecType:(unsigned int)arg2 sampleRate:(double)arg3;
 - (void)session:(id)arg1 stopAudioWithCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)session:(id)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg2 internalFormat:(struct AudioStreamBasicDescription)arg3 internalSamplesPerFrame:(unsigned int)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)session:(id)arg1 changeVideoRulesToCaptureRule:(id)arg2 encodeRule:(id)arg3 featuresListString:(id)arg4;
+- (void)session:(id)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg2 internalFrameFormat:(const struct tagVCAudioFrameFormat *)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)session:(id)arg1 changeVideoRulesToCaptureRule:(id)arg2 encodeRule:(id)arg3 featureListString:(id)arg4;
 - (void)setBWEOptions:(_Bool)arg1 UseNewBWEMode:(_Bool)arg2 FakeLargeFrameMode:(_Bool)arg3 ProbingSenderLog:(_Bool)arg4;
 - (void)session:(id)arg1 remoteCallingModeChanged:(unsigned int)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(id)arg1 localAudioEnabled:(_Bool)arg2 withCallID:(unsigned int)arg3 error:(id)arg4;

@@ -16,6 +16,7 @@
     long long _previousConsumer;
     _Bool _isiMessage;
     _Bool _isPrimaryViewController;
+    _Bool _shouldDisableSnapshotView;
     _Bool _isTransitioningToExpandedPresentation;
     NSObject<CKBrowserViewControllerSendDelegate> *_sendDelegate;
     IMBalloonPlugin *_balloonPlugin;
@@ -33,6 +34,7 @@
 @property(nonatomic) _Bool isTransitioningToExpandedPresentation; // @synthesize isTransitioningToExpandedPresentation=_isTransitioningToExpandedPresentation;
 @property(retain, nonatomic) CKBrowserDragManager *browserDragManager; // @synthesize browserDragManager=_browserDragManager;
 @property(nonatomic) __weak UIView *dragTargetView; // @synthesize dragTargetView=_dragTargetView;
+@property(nonatomic) _Bool shouldDisableSnapshotView; // @synthesize shouldDisableSnapshotView=_shouldDisableSnapshotView;
 @property(nonatomic) _Bool isPrimaryViewController; // @synthesize isPrimaryViewController=_isPrimaryViewController;
 @property(nonatomic) long long currentBrowserConsumer; // @synthesize currentBrowserConsumer=_currentBrowserConsumer;
 @property(retain, nonatomic) UIViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;

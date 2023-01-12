@@ -16,7 +16,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)longLookContentProvidingViewControllerForNotificationViewController:(id)arg1;
+- (id)customContentViewControllerForNotificationRequest:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

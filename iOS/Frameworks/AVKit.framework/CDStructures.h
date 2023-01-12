@@ -79,6 +79,11 @@ typedef struct {
 } CDStruct_c3b9c2ee;
 
 typedef struct {
+    int _field1;
+    int _field2;
+} CDStruct_1ef3fb1f;
+
+typedef struct {
     long long value;
     int timescale;
     unsigned int flags;

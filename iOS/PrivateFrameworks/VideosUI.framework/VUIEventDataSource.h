@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
     VUIAction *_postAction;
 }
 
-+ (id)_actionForKey:(id)arg1 eventDict:(id)arg2 viewElement:(id)arg3 appContext:(id)arg4;
-+ (id)_documentDataSourceWithDict:(id)arg1 viewElement:(id)arg2;
++ (id)_actionForKey:(id)arg1 eventDict:(id)arg2 appContext:(id)arg3;
++ (id)_documentDataSourceWithDict:(id)arg1;
 + (id)attachPrefetchedDict:(id)arg1 eventDict:(id)arg2;
-+ (id)eventDataSourceWithEventDict:(id)arg1 viewElement:(id)arg2 appContext:(id)arg3;
++ (id)eventDataSourceWithEventDict:(id)arg1 appContext:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) VUIAction *postAction; // @synthesize postAction=_postAction;
 @property(retain, nonatomic) VUIDocumentDataSource *postActionDocumentDataSource; // @synthesize postActionDocumentDataSource=_postActionDocumentDataSource;

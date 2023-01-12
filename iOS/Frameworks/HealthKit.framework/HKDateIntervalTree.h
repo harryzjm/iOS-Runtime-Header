@@ -8,14 +8,16 @@
 
 @interface HKDateIntervalTree : NSObject
 {
-    struct unique_ptr<HKIntervalTree<double>, std::__1::default_delete<HKIntervalTree<double>>> _tree;
+    struct unique_ptr<HKIntervalTree<double>, std::default_delete<HKIntervalTree<double>>> _tree;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)mergedIntervals;
+- (_Bool)hasOverlapWithStartTime:(double)arg1 endTime:(double)arg2;
 - (_Bool)hasOverlapWithInterval:(id)arg1;
 - (void)insertInterval:(id)arg1;
+- (void)insertIntervalWithStartTime:(double)arg1 endTime:(double)arg2;
 - (id)init;
 
 @end

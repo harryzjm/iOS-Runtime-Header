@@ -4,9 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol BSInvalidatable;
+
 @interface CSModalPresentationViewController
 {
+    id <BSInvalidatable> _stateCaptureBlock;
 }
+
+- (void).cxx_destruct;
+- (void)_addStateCaptureHandlers;
+- (void)dealloc;
+- (id)init;
 
 @end
 

@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBWelcomeController.h>
-
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 
 @class NSString;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanUserConsentViewController : OBWelcomeController <TSSetupFlowItem>
+@interface TSCellularPlanUserConsentViewController <TSSetupFlowItem>
 {
     _Bool _didReceiveResponse;
     NSString *_confirmationCode;

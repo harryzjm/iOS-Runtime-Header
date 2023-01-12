@@ -6,14 +6,15 @@
 
 #import <GameCenterFoundation/GKGameService-Protocol.h>
 
-@class GKGameInternal, GKPlayerInternal, NSArray, NSDictionary, NSNumber, NSString;
+@class GKPlayerInternal, NSArray, NSDictionary, NSNumber, NSString;
 
 @protocol GKGameServicePrivate <GKGameService>
+- (oneway void)submitFriendListAccess:(NSString *)arg1 value:(NSString *)arg2 handler:(void (^)(NSError *))arg3;
+- (oneway void)getFriendListAccessForAllGames:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)getGamesPlayedMetaData:(NSString *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getGamesPlayedSummaries:(NSString *)arg1 limit:(NSNumber *)arg2 withinSecs:(NSNumber *)arg3 handler:(void (^)(NSArray *, NSError *))arg4;
 - (oneway void)getGamesPlayedSummaries:(NSString *)arg1 limit:(NSNumber *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)loadTellAFriendMessageForGameWithAdamID:(NSNumber *)arg1 handler:(void (^)(NSString *, NSString *, NSString *, NSError *))arg2;
-- (oneway void)submitRating:(float)arg1 forGame:(GKGameInternal *)arg2 handler:(void (^)(void))arg3;
 - (oneway void)getRatingForGameDescriptor:(NSDictionary *)arg1 handler:(void (^)(float, NSError *))arg2;
 - (oneway void)getGameMetadataForBundleIDs:(NSArray *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getGamesWithAchievementStatsForPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSArray *, NSString *, NSError *))arg2;

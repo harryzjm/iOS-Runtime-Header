@@ -15,6 +15,9 @@
     NSString *_localizedName;
 }
 
++ (id)publicEventOfCategory;
++ (id)filterWithCategories:(id)arg1;
++ (id)filterWithCategory:(id)arg1;
 + (id)filter;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
@@ -25,9 +28,8 @@
 @property(readonly, copy) NSString *description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithLabel:(id)arg1 localizedName:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

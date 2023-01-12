@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOComposedTransitTripRouteSegment, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
+@class GEOComposedTransitTripRouteSegment, GEOTransitBoardingInfo, GEOTransitVehicleInfo, NSArray, NSDate, NSTimeZone;
 @protocol GEOTransitLine, GEOTransitSystem;
 
 @interface GEOComposedTransitTripRouteStep
@@ -39,6 +39,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
+@property(readonly, nonatomic) GEOTransitBoardingInfo *boardingInfo;
 @property(readonly, nonatomic) _Bool canPreloadTilesForThisStep;
 - (unsigned int)duration;
 - (_Bool)hasDuration;

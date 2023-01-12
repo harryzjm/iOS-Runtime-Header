@@ -7,6 +7,9 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (AppleAccountUI)
++ (id)circularImageFromCGImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
++ (id)_circularImageFromIcon:(id)arg1 size:(double)arg2 scale:(double)arg3;
++ (id)circularImageForBundleID:(id)arg1 size:(double)arg2 scale:(double)arg3;
 + (id)aaui_imageFromColor:(id)arg1;
 - (id)_imageByCroppingCIImageToRect:(struct CGRect)arg1;
 - (id)_imageByCroppingCGImageToRect:(struct CGRect)arg1;

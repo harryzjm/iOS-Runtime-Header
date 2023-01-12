@@ -22,7 +22,7 @@
         _Bool respondsToCanPerformActionType;
         _Bool respondsToShouldEnableActionType;
         _Bool respondsToWillTransitionToSize;
-        _Bool respondsToDidPressFileSizeButton;
+        _Bool respondsToFileSizeMenu;
     } _delegateFlags;
     _Bool __lowMemoryMode;
     id <PUAssetExplorerReviewScreenViewControllerDelegate> _delegate;
@@ -87,9 +87,9 @@
 - (void)assetExplorerReviewScreenActionManager:(id)arg1 didToggleLivePhoto:(id)arg2;
 - (void)_handleProgressControllerCanceled:(id)arg1;
 - (void)_handleCompletionAction:(unsigned long long)arg1;
-- (id)_titleForSelectionCount:(long long)arg1;
+- (id)_fileSizeMenuForSelectedUUIDs:(id)arg1;
+- (id)_titleForSelectedAssetUUIDs:(id)arg1;
 - (void)_handleSelectionChanged;
-- (void)assetExplorerReviewScreenActionManagerDidPressFileSize:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDeselectAll:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSelectAll:(id)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDone:(id)arg1;

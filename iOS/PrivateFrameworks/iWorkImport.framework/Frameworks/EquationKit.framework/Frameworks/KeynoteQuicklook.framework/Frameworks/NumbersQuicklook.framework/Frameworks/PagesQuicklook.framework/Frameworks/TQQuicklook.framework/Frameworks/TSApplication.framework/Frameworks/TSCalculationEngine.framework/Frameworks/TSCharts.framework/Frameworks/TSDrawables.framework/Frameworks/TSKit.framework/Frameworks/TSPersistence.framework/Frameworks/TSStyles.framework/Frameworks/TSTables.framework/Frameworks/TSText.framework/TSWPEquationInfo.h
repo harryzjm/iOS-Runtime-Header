@@ -30,7 +30,6 @@
 + (id)eqKitEquationWithWithContext:(id)arg1 source:(id)arg2 error:(id *)arg3;
 + (id)equationInfoWithContext:(id)arg1 string:(id)arg2 textStorage:(id)arg3 charIndex:(unsigned long long)arg4;
 + (id)equationInfoWithContext:(id)arg1 equationInfo:(id)arg2 textStorage:(id)arg3 charIndex:(unsigned long long)arg4;
-+ (id)equationAttachmentWithEquationAttachment:(id)arg1;
 + (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 + (_Bool)archiveHasEquationSource:(id)arg1;
 - (void).cxx_destruct;
@@ -45,12 +44,13 @@
 - (id)promisedDataForType:(id)arg1;
 - (id)typesToPromiseWhenCopyingSingleDrawable;
 - (void)acceptVisitor:(id)arg1;
-- (void)saveToArchive:(struct ImageArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ImageArchive *)arg1 unarchiver:(id)arg2;
+- (id)typeName;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)didFinalizeUnarchivingFromWPStorage:(id)arg1;
 - (id)propertiesForParentAttachment;
-- (void)saveCharacterStylePropertiesFromPropertyMap:(id)arg1 toArchive:(struct CharacterStylePropertiesArchive *)arg2 archiver:(id)arg3;
-- (void)loadCharacterStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct CharacterStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
+- (void)saveCharacterStylePropertiesFromPropertyMap:(id)arg1 toArchive:(void *)arg2 archiver:(id)arg3;
+- (void)loadCharacterStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const void *)arg2 unarchiver:(id)arg3;
 - (id)imageDataWithObjectContext:(id)arg1;
 - (void)rebuildEquationPDFIncludingGeometry:(_Bool)arg1;
 - (void)replaceSourceWithNewSource:(id)arg1;
@@ -64,6 +64,7 @@
 - (struct CGSize)rawDataSize;
 - (struct CGSize)defaultOriginalSize;
 - (unsigned int)elementKind;
+- (_Bool)shouldGenerateThumbnails;
 - (_Bool)canBeMediaPlaceholder;
 - (_Bool)canResetMediaSize;
 - (_Bool)canAdjustImage;

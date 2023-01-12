@@ -41,6 +41,7 @@
 @property(readonly, nonatomic, getter=isSwitcherEligible) _Bool switcherEligible;
 @property(readonly, nonatomic) _Bool isScreenshotMarkup;
 @property(readonly, nonatomic, getter=isActivatingForSiri) _Bool activatingForSiri;
+- (void)didTransitionToAttachedToWindowedAccessory:(_Bool)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (_Bool)shouldPendAlertItems;
 - (_Bool)shouldDisableSiri;
 - (_Bool)shouldDisableInteractiveScreenshotGesture;
@@ -50,7 +51,7 @@
 - (_Bool)shouldDisableBanners;
 - (void)setIdleTimerCoordinator:(id)arg1;
 - (void)setContainerOrientation:(long long)arg1;
-- (int)preferredStatusBarStyleOverridesToCancel;
+- (unsigned long long)preferredStatusBarStyleOverridesToCancel;
 - (void)restoreInputViewsAnimated:(_Bool)arg1;
 - (void)preserveInputViewsAnimated:(_Bool)arg1;
 - (_Bool)prefersStatusBarActivityItemVisible;
@@ -61,6 +62,7 @@
 - (long long)preferredLockedGestureDismissalStyle;
 - (id)preferredDisplayLayoutElementIdentifier;
 - (int)pictureInPictureProcessIdentifier;
+- (_Bool)isPresentedByProcess:(id)arg1;
 - (_Bool)isContentOpaque;
 - (_Bool)hasServiceProcessIdentifier:(int)arg1;
 - (void)handleGestureDismissal;

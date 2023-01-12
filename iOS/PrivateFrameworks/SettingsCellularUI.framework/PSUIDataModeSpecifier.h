@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)setFooterText;
 - (void)prepareDataModeDrillDown;
 - (void)prepareLowDataModeSwitch;
-- (id)initWithFactory:(id)arg1 hostController:(id)arg2 parentSpecifier:(id)arg3;
+- (id)initWithCTClient:(id)arg1 hostController:(id)arg2 parentSpecifier:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

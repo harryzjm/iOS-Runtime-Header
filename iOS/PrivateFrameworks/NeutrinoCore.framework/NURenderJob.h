@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioMix, AVComposition, AVVideoComposition, CIImage, NSArray, NSError, NSString, NUComposition, NUGeometrySpaceMap, NUImageGeometry, NUObservatory, NUPriority, NURenderJobStatistics, NURenderNode, NURenderPipeline, NURenderRequest;
+@class AVAudioMix, AVComposition, AVVideoComposition, CIImage, NSArray, NSDate, NSError, NSMutableString, NSString, NUComposition, NUGeometrySpaceMap, NUImageGeometry, NUObservatory, NUPriority, NURenderJobStatistics, NURenderNode, NURenderPipeline, NURenderRequest;
 @protocol NUDevice, NUExtentPolicy, NURenderStatistics, NUScalePolicy, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NURenderJob : NSObject
@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_stateQueue;
     NUObservatory *_observatory;
     NURenderJobStatistics *_stats;
+    NSDate *_jobCreationDate;
     NSError *_error;
     _Bool _isAborted;
     _Bool _failed;
@@ -23,15 +24,17 @@
     _Bool _isExecuting;
     _Bool _isCanceled;
     _Bool _isFinished;
+    _Bool _shouldWriteJobDebugFile;
     int _rendererType;
     long long _currentStage;
     NURenderRequest *_request;
-    unsigned long long _number;
+    unsigned long long _jobNumber;
     NSArray *_dependentJobs;
     NURenderNode *_prepareNode;
     NURenderNode *_renderNode;
     NUImageGeometry *_outputGeometry;
     NSObject<OS_dispatch_group> *_replyGroup;
+    NSString *_nodeCacheAtStartOfJob;
     id <NUDevice> _device;
     NUComposition *_composition;
     NURenderPipeline *_renderPipeline;
@@ -58,14 +61,17 @@
 @property(retain, nonatomic) NUComposition *composition; // @synthesize composition=_composition;
 @property(readonly, nonatomic) int rendererType; // @synthesize rendererType=_rendererType;
 @property(readonly, nonatomic) id <NUDevice> device; // @synthesize device=_device;
+@property(retain, nonatomic) NSString *nodeCacheAtStartOfJob; // @synthesize nodeCacheAtStartOfJob=_nodeCacheAtStartOfJob;
+@property(nonatomic) _Bool shouldWriteJobDebugFile; // @synthesize shouldWriteJobDebugFile=_shouldWriteJobDebugFile;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *replyGroup; // @synthesize replyGroup=_replyGroup;
 @property(retain, nonatomic) NUImageGeometry *outputGeometry; // @synthesize outputGeometry=_outputGeometry;
 @property(retain, nonatomic) NURenderNode *renderNode; // @synthesize renderNode=_renderNode;
 @property(retain, nonatomic) NURenderNode *prepareNode; // @synthesize prepareNode=_prepareNode;
 @property(readonly) _Bool isAborted; // @synthesize isAborted=_isAborted;
 @property(retain) NSArray *dependentJobs; // @synthesize dependentJobs=_dependentJobs;
-@property(readonly) unsigned long long number; // @synthesize number=_number;
+@property(readonly) unsigned long long jobNumber; // @synthesize jobNumber=_jobNumber;
 @property(readonly) NURenderRequest *request; // @synthesize request=_request;
+@property(readonly, nonatomic) NSDate *jobCreationDate; // @synthesize jobCreationDate=_jobCreationDate;
 @property(readonly, nonatomic) id <NURenderStatistics> statistics; // @synthesize statistics=_stats;
 @property(readonly) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
 - (void)_notifyCanceled:(long long)arg1;
@@ -149,8 +155,16 @@
 - (id)initWithRequest:(id)arg1;
 - (id)init;
 - (id)renderImage:(id)arg1 into:(id)arg2 colorSpace:(id)arg3 roi:(id)arg4 imageSize:(CDStruct_912cb5d2)arg5 error:(out id *)arg6;
-- (_Bool)renderVideoFrames:(id)arg1 intoPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 colorSpace:(id)arg4 error:(out id *)arg5;
-@property(readonly, copy, nonatomic) NSString *additionalDebugInfo;
+- (_Bool)renderVideoFrames:(id)arg1 videoMetadataSamples:(id)arg2 intoPixelBuffer:(struct __CVBuffer *)arg3 time:(CDStruct_1b6d18a9)arg4 colorSpace:(id)arg5 error:(out id *)arg6;
+- (void)writeRenderDebugFileToDisk;
+- (void)writeRenderJobDebugTombstone;
+- (void)renderJobDebugResponded;
+- (void)renderJobDebugCanceled;
+- (void)renderJobDebugInit;
+- (_Bool)shouldWriteCanceledJob;
+- (_Bool)shouldWriteTombstone;
+- (id)debugFilePath;
+@property(readonly, nonatomic) NSMutableString *additionalDebugInfo;
 
 @end
 

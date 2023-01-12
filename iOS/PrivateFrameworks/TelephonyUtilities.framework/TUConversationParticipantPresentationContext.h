@@ -16,9 +16,11 @@
     unsigned long long _videoQuality;
     NSNumber *_visibility;
     NSNumber *_prominence;
+    struct CGRect _spatialPosition;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) struct CGRect spatialPosition; // @synthesize spatialPosition=_spatialPosition;
 @property(readonly, nonatomic) NSNumber *prominence; // @synthesize prominence=_prominence;
 @property(readonly, nonatomic) NSNumber *visibility; // @synthesize visibility=_visibility;
 @property(readonly, nonatomic) unsigned long long videoQuality; // @synthesize videoQuality=_videoQuality;
@@ -26,7 +28,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithParticipantIdentifier:(unsigned long long)arg1 videoQuality:(unsigned long long)arg2 visibility:(id)arg3 prominence:(id)arg4;
+- (id)initWithParticipantIdentifier:(unsigned long long)arg1 videoQuality:(unsigned long long)arg2 visibility:(id)arg3 prominence:(id)arg4 spatialPosition:(struct CGRect)arg5;
 
 @end
 

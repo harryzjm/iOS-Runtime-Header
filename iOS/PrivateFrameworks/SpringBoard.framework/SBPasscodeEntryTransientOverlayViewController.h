@@ -19,6 +19,7 @@
     SBUIPasscodeViewWithLockScreenStyle *_passcodeView;
     CSLockScreenPearlSettings *_pearlSettings;
     CSPoseidonViewController *_poseidonViewController;
+    _Bool _keyboardVisible;
     _Bool _showEmergencyCallButton;
     _Bool _useBiometricPresentation;
     int _intent;
@@ -33,7 +34,7 @@
 @property(nonatomic) _Bool showEmergencyCallButton; // @synthesize showEmergencyCallButton=_showEmergencyCallButton;
 @property(nonatomic) __weak id <SBPasscodeEntryTransientOverlayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updatePrototypeSettings;
-- (void)_passcodeLockViewPasscodeEntered:(id)arg1 viaMesa:(_Bool)arg2;
+- (void)_passcodeLockViewPasscodeEntered:(id)arg1 authenticationType:(unsigned long long)arg2;
 - (void)_attemptUnlock:(id)arg1 passcode:(id)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)passcodeLockViewEmergencyCallButtonPressed:(id)arg1;
@@ -44,13 +45,16 @@
 - (long long)idleWarnMode;
 - (long long)idleTimerMode;
 - (long long)idleTimerDuration;
+- (void)handleWillShowKeyboard:(_Bool)arg1;
 - (void)handleInvalidAuthenticationRequest:(id)arg1;
 - (void)handleFailedAuthenticationRequest:(id)arg1 error:(id)arg2;
 - (void)handleSuccessfulAuthenticationRequest:(id)arg1;
 - (id)preferredDisplayLayoutElementIdentifier;
 - (id)newTransientOverlayPresentationTransitionCoordinator;
 - (id)newTransientOverlayDismissalTransitionCoordinator;
+- (_Bool)canBecomeLocalFirstResponder;
 - (_Bool)isContentOpaque;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (int)_preferredStatusBarVisibility;
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillAppear:(_Bool)arg1;

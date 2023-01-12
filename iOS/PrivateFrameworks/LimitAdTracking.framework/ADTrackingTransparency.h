@@ -10,11 +10,23 @@
 {
 }
 
-- (id)personalizedAdsProxy:(id)arg1;
-- (id)personalizedXPCConnection:(CDUnknownBlockType)arg1 withInvalidation:(CDUnknownBlockType)arg2;
+- (id)appTrackingServiceProxy:(id)arg1;
+- (id)appTrackingXPCConnection:(CDUnknownBlockType)arg1 withInvalidation:(CDUnknownBlockType)arg2;
 @property(nonatomic) _Bool personalizedAds;
+@property(nonatomic) long long acknowledgedVersionForPersonalizedAds;
+@property(readonly, nonatomic) _Bool personalizedAdsAvailableForAppStore;
+- (void)personalizedAdsAvailable:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool personalizedAdsAvailable;
+@property(readonly, nonatomic) long long personalizedAdsSwitchDisabledReason;
 @property(readonly, nonatomic) _Bool personalizedAdsSwitchEnabled;
+- (_Bool)isPersonalizedAdsScreenTimeRestricted;
 @property(nonatomic) _Bool crossAppTrackingAllowed;
+@property(readonly, nonatomic) long long crossAppTrackingAllowedSwitchDisabledReason;
+- (long long)accountRestrictionReason;
+- (_Bool)shouldDisplayPAUI;
+- (long long)accountLevelSwitchDisabledReason;
+- (_Bool)_isUserManagedRestricted;
+- (_Bool)_isUserEDURestricted;
 @property(readonly, nonatomic) _Bool crossAppTrackingAllowedSwitchEnabled;
 - (_Bool)_userAllowedToChangeSettings;
 

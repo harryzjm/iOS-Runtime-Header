@@ -11,6 +11,6 @@
 - (void)redundancyController:(id <VCRedundancyControllerProtocol>)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 
 @optional
-- (void)redundancyController:(id <VCRedundancyControllerProtocol>)arg1 redundancyVectorDidChange:(CDStruct_cd7ddd1c)arg2;
+- (void)redundancyController:(id <VCRedundancyControllerProtocol>)arg1 redundancyVectorDidChange:(CDStruct_d7e2e0ee)arg2;
 @end
 

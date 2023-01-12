@@ -6,13 +6,14 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFHomeBuilder, HFItem, HUUserNotificationTopicListModule;
+#import <HomeUI/HFPinCodeManagerObserver-Protocol.h>
 
-@interface HUEditLocationItemManager : HFItemManager
+@class HFHomeBuilder, HFItem, HFItemProvider, HFPinCodeManager, HUUserNotificationTopicListModule, NSString;
+
+@interface HUEditLocationItemManager : HFItemManager <HFPinCodeManagerObserver>
 {
     HUUserNotificationTopicListModule *_notificationSettingsModule;
     HFItem *_nameItem;
-    HFItem *_usersItem;
     HFItem *_inviteUsersItem;
     HFItem *_wallpaperPickerItem;
     HFItem *_cameraItem;
@@ -23,7 +24,12 @@
     HFItem *_accessControlItem;
     HFItem *_bridgesAndResidentDevicesItem;
     HFItem *_networkRoutersListItem;
+    HFItem *_guestsItem;
+    HFPinCodeManager *_pinCodeManager;
     HFItem *_removeItem;
+    HFItem *_connectedEcosystemsItem;
+    HFItemProvider *_userItemProvider;
+    HFItemProvider *_inviteItemProvider;
     unsigned long long _context;
     HFHomeBuilder *_homeBuilder;
 }
@@ -31,7 +37,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HFHomeBuilder *homeBuilder; // @synthesize homeBuilder=_homeBuilder;
 @property(readonly, nonatomic) unsigned long long context; // @synthesize context=_context;
+@property(retain, nonatomic) HFItemProvider *inviteItemProvider; // @synthesize inviteItemProvider=_inviteItemProvider;
+@property(retain, nonatomic) HFItemProvider *userItemProvider; // @synthesize userItemProvider=_userItemProvider;
+@property(retain, nonatomic) HFItem *connectedEcosystemsItem; // @synthesize connectedEcosystemsItem=_connectedEcosystemsItem;
 @property(retain, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
+@property(retain, nonatomic) HFPinCodeManager *pinCodeManager; // @synthesize pinCodeManager=_pinCodeManager;
+@property(retain, nonatomic) HFItem *guestsItem; // @synthesize guestsItem=_guestsItem;
 @property(retain, nonatomic) HFItem *networkRoutersListItem; // @synthesize networkRoutersListItem=_networkRoutersListItem;
 @property(retain, nonatomic) HFItem *bridgesAndResidentDevicesItem; // @synthesize bridgesAndResidentDevicesItem=_bridgesAndResidentDevicesItem;
 @property(retain, nonatomic) HFItem *accessControlItem; // @synthesize accessControlItem=_accessControlItem;
@@ -42,9 +53,10 @@
 @property(retain, nonatomic) HFItem *cameraItem; // @synthesize cameraItem=_cameraItem;
 @property(retain, nonatomic) HFItem *wallpaperPickerItem; // @synthesize wallpaperPickerItem=_wallpaperPickerItem;
 @property(retain, nonatomic) HFItem *inviteUsersItem; // @synthesize inviteUsersItem=_inviteUsersItem;
-@property(retain, nonatomic) HFItem *usersItem; // @synthesize usersItem=_usersItem;
 @property(retain, nonatomic) HFItem *nameItem; // @synthesize nameItem=_nameItem;
 @property(retain, nonatomic) HUUserNotificationTopicListModule *notificationSettingsModule; // @synthesize notificationSettingsModule=_notificationSettingsModule;
+- (void)_unregisterForExternalUpdates;
+- (void)_registerForExternalUpdates;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_itemsToHideInSet:(id)arg1;
 - (id)_homeFuture;
@@ -53,6 +65,12 @@
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithHomeBuilder:(id)arg1 delegate:(id)arg2;
 - (id)initWithHomeBuilder:(id)arg1 delegate:(id)arg2 context:(unsigned long long)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <EmbeddedAcousticRecognition/_EARSpeechRecognitionResultStream-Protocol.h>
 
-@class NSArray, NSError, NSString;
+@class NSArray, NSError, NSMutableArray, NSString;
 @protocol OS_dispatch_semaphore;
 
 @interface _EARSyncResultStreamHelper : NSObject <_EARSpeechRecognitionResultStream>
@@ -16,16 +16,20 @@
     NSObject<OS_dispatch_semaphore> *_finishSemaphore;
     NSError *_error;
     NSArray *_results;
+    NSMutableArray *_taggedResults;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *taggedResults; // @synthesize taggedResults=_taggedResults;
 @property(readonly, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
+- (id)addPartialFinalTag:(basic_string_0ec669f3)arg1 result:(id)arg2;
 - (void)speechRecognizer:(id)arg1 didRecognizeFinalResults:(id)arg2;
 - (void)speechRecognizer:(id)arg1 didFinishRecognitionWithError:(id)arg2;
 - (void)speechRecognizer:(id)arg1 didRecognizePartialResult:(id)arg2;
 - (void)waitForCompletion;
 - (id)init;
+- (id)initWithTagResults:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

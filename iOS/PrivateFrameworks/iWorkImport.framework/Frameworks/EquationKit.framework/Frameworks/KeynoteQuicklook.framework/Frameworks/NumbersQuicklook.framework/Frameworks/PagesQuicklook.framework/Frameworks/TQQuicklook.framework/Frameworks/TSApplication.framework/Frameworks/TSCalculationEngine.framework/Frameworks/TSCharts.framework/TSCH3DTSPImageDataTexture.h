@@ -8,20 +8,21 @@
 
 @interface TSCH3DTSPImageDataTexture
 {
-    TSCH3DTSPImageData *mData;
-    TSCH3DTSPMipmapData *mOptimizedMipmapData;
-    NSNumber *mCachedHash;
-    TSDColorFill *mColorFill;
-    NSString *mTextureSetId;
-    NSString *mImageName;
-    TSUOnce *mCachedHashOnce;
+    TSCH3DTSPImageData *_data;
+    TSCH3DTSPMipmapData *_optimizedMipmapData;
+    NSNumber *_cachedHash;
+    TSDColorFill *_colorFill;
+    NSString *_textureSetId;
+    NSString *_imageName;
+    TSUOnce *_cachedHashOnce;
 }
 
 + (id)textureWithImageData:(id)arg1 optimizedMipmapData:(id)arg2 textureSetId:(id)arg3 imageName:(id)arg4;
 + (id)textureWithImageData:(id)arg1 colorFill:(id)arg2 textureSetId:(id)arg3 imageName:(id)arg4;
 + (id)textureWithImageData:(id)arg1 colorFill:(id)arg2 optimizedMipmapData:(id)arg3 textureSetId:(id)arg4 imageName:(id)arg5;
-+ (id)instanceWithArchive:(const struct Chart3DTSPImageDataTextureArchive *)arg1 unarchiver:(id)arg2;
-@property(readonly, nonatomic) TSCH3DTSPImageData *data; // @synthesize data=mData;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DTSPImageData *data; // @synthesize data=_data;
 - (void)setChanged:(_Bool)arg1;
 - (id)optimizedMipmapBuffer;
 - (id)representativeColorBuffer;
@@ -31,10 +32,9 @@
 - (_Bool)hasCompleteData;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithImageData:(id)arg1 colorFill:(id)arg2 optimizedMipmapData:(id)arg3 textureSetId:(id)arg4 imageName:(id)arg5;
-- (void)saveToArchive:(struct Chart3DTSPImageDataTextureArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DTSPImageDataTextureArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)p_setOptimizedMipMapData:(id)arg1;
 
 @end

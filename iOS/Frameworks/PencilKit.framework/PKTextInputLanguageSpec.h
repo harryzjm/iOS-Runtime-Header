@@ -6,24 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale, NSString;
+@class NSArray;
 
 @interface PKTextInputLanguageSpec : NSObject
 {
-    long long __currentLanguage;
-    NSLocale *__locale;
+    long long __languageBehavior;
+    NSArray *__locales;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSLocale *_locale; // @synthesize _locale=__locale;
-@property(readonly, nonatomic) long long _currentLanguage; // @synthesize _currentLanguage=__currentLanguage;
-@property(readonly, nonatomic) NSString *debugLocaleDescription;
-@property(readonly, nonatomic) double singleCharacterCommitDelay;
-@property(readonly, nonatomic) double standardCommitDelay;
-@property(readonly, nonatomic) double strokeFadeOutDuration;
-@property(readonly, nonatomic) long long uncommittedTokenColumnCount;
-- (void)configureLocaleForRecognitionManager:(id)arg1;
-- (id)initWithLocale:(id)arg1;
 
 @end
 

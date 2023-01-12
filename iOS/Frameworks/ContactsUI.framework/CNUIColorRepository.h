@@ -48,6 +48,8 @@
 + (id)carPlayTableViewBackgroundColor;
 + (id)carPlayContactCardRecentBadgeTextColor;
 + (id)carPlayContactCardLabeledBadgeBackgroundColor;
++ (id)groupHeaderSubTitleLabelColor;
++ (id)groupHeaderSubTitleImageColor;
 + (id)groupsInsetBackgroundColor;
 + (id)groupsOutlineBackgroundColor;
 + (id)catalystAudienceDetailLabelTextColor;
@@ -88,6 +90,7 @@
 + (id)contactStyleDefaultPlaceholderTextColor;
 + (id)contactStyleLightStyleHighlightedTextColor;
 + (id)contactStyleDefaultHighlightedTextColor;
++ (id)contactStyleDefaultBlueSelectionSecondaryTextColor;
 + (id)contactStyleDefaultDisabledTextColor;
 + (id)contactStyleDefaultTaglineTextColor;
 + (id)contactStyleDefaultTextColor;
@@ -100,6 +103,7 @@
 + (id)quickActionContentColorPlatterHitActionColor;
 + (id)quickActionContentColorPlatterUnhighlightedColor;
 + (id)quickActionContentColorPlatterHighlightedColor;
++ (id)quickActionContentColorDisabledPill;
 + (id)quickActionContentColorDisabledVibrant;
 + (id)quickActionContentColorDisabled;
 + (id)quickActionContentColor;
@@ -152,6 +156,7 @@
 + (id)navigationListCellBackgroundExpandedColorRegular;
 + (id)navigationListCellBackgroundColorRegular;
 + (id)siriTintColor;
++ (id)transparentBackgroundColor;
 + (id)popoverBackgroundColor;
 + (id)contactsApplicationTintColor;
 

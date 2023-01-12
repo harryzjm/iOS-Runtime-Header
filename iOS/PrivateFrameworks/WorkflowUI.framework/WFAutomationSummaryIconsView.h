@@ -27,7 +27,7 @@
 - (void)setActionIcons:(id)arg1;
 - (void)configureIconView:(id)arg1;
 - (void)setHomeTriggerIcon:(id)arg1;
-- (void)setTriggerIcon:(id)arg1;
+- (void)setTriggerIcon:(id)arg1 tintColor:(id)arg2 withTrigger:(id)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 

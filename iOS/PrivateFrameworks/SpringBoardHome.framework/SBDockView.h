@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class SBDockIconListView, SBHighlightView, UIColor, UIImageView, _UILegibilitySettings;
+#import <SpringBoardHome/SBUICoronaAnimationControllerParticipant-Protocol.h>
+
+@class NSString, SBDockIconListView, SBHighlightView, UIColor, UIImageView, _UILegibilitySettings;
 @protocol SBDockViewDelegate;
 
-@interface SBDockView : UIView
+@interface SBDockView : UIView <SBUICoronaAnimationControllerParticipant>
 {
     SBDockIconListView *_iconListView;
     SBHighlightView *_highlightView;
@@ -30,6 +32,7 @@
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(readonly, nonatomic) SBDockIconListView *dockListView; // @synthesize dockListView=_iconListView;
+- (void)coronaAnimationController:(id)arg1 willAnimateCoronaTransitionWithAnimator:(id)arg2;
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)_visualConfiguration;
@@ -45,6 +48,7 @@
 - (void)layoutSubviews;
 - (struct UIEdgeInsets)_dockOverhangInsets;
 - (void)didMoveToWindow;
+- (void)willMoveToWindow:(id)arg1;
 - (void)getDockViewMetrics:(CDStruct_cafad96f *)arg1;
 @property(readonly, nonatomic) struct CGRect dockListViewFrame;
 @property(readonly, nonatomic, getter=isDockInset) _Bool dockInset;
@@ -52,6 +56,12 @@
 @property(readonly, nonatomic) double dockHeight;
 - (void)dealloc;
 - (id)initWithDockListView:(id)arg1 forSnapshot:(_Bool)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

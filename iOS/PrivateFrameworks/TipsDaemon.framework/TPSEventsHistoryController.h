@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSDictionary, NSMutableDictionary, TPSTipStatusController;
 @protocol OS_dispatch_queue;
 
 @interface TPSEventsHistoryController : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSDictionary *_contextualEventsForIdentifiers;
+    TPSTipStatusController *_tipStatusController;
     NSMutableDictionary *_contextualEventIdentifierToContextualEventMap;
 }
 
++ (void)removeEventHistoryCache;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *contextualEventIdentifierToContextualEventMap; // @synthesize contextualEventIdentifierToContextualEventMap=_contextualEventIdentifierToContextualEventMap;
+@property(retain, nonatomic) TPSTipStatusController *tipStatusController; // @synthesize tipStatusController=_tipStatusController;
 @property(copy, nonatomic) NSDictionary *contextualEventsForIdentifiers; // @synthesize contextualEventsForIdentifiers=_contextualEventsForIdentifiers;
 - (id)debugDescription;
 - (void)removeCacheData;
@@ -25,6 +28,7 @@
 - (void)restartTrackingForEventIdentifiers:(id)arg1 date:(id)arg2;
 - (void)removeObserverIdentifiers:(id)arg1 fromEventIdentifiers:(id)arg2;
 - (void)removeObserverIdentifiers:(id)arg1;
+- (void)_persistUserInfo:(id)arg1 forObserverIdentifiers:(id)arg2;
 - (void)processEventProviderQueryResults:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addEventsFromTriggerEvents:(id)arg1 desiredOutcomeEvents:(id)arg2 contentIdentifier:(id)arg3 eventSinceDate:(id)arg4;
 - (void)_addEvents:(id)arg1 contentIdentifier:(id)arg2 eventSinceDate:(id)arg3 minObservationCount:(unsigned long long)arg4;

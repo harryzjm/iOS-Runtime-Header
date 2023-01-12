@@ -8,25 +8,37 @@
 
 #import <SensorKit/SRSensorKitServiceClientAuthorizationListening-Protocol.h>
 
-@class NSMapTable, NSNumber, NSSet, NSXPCConnection;
+@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSNumber, NSString, NSXPCConnection;
 
-__attribute__((visibility("hidden")))
 @interface SRAuthorizationClient : NSObject <SRSensorKitServiceClientAuthorizationListening>
 {
     int _registrationToken;
     NSXPCConnection *_connection;
     NSMapTable *_listeners;
-    NSSet *_actualAuthorizedServices;
-    NSSet *_deniedServices;
+    NSMutableDictionary *_actualAuthorizedServices;
+    NSMutableDictionary *_deniedServices;
+    NSMutableDictionary *_lastModifiedTimes;
     NSNumber *_prerequisites;
 }
 
++ (id)sharedInstance;
++ (void)setAuthClient:(id)arg1;
++ (id)authClient;
 + (void)initialize;
-- (void)authorizedServicesDidChange:(id)arg1 deniedServices:(id)arg2 prerequisites:(long long)arg3 bundleIdentifier:(id)arg4;
+- (void)authorizedServicesDidChange:(id)arg1 deniedServices:(id)arg2 prerequisites:(long long)arg3 lastModifiedTimes:(id)arg4 bundleIdentifier:(id)arg5;
+- (void)removeListener:(id)arg1;
+- (void)addListener:(id)arg1 forBundleId:(id)arg2;
+- (void)addListener:(id)arg1;
+@property(readonly, nonatomic) _Bool onboardingAirGapEnabled;
+@property(readonly, nonatomic) NSString *legacyResearchStudyEntitlement;
+@property(readonly, nonatomic) NSArray *legacyResearchStudyBundleIDs;
 @property(nonatomic) _Bool firstRunOnboardingCompleted;
 @property(nonatomic) _Bool dataCollectionEnabled;
+@property(readonly, copy) NSDictionary *authorizedServices;
 - (void)reregisterAfterInterruption:(id)arg1 effectiveBundleId:(id)arg2;
 - (void)dealloc;
+- (void)invalidate;
+- (id)initWithConnection:(id)arg1;
 - (id)init;
 
 @end

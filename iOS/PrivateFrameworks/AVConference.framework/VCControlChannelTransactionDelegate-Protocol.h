@@ -6,10 +6,13 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class NSData;
+@class NSData, NSNumber;
 
 @protocol VCControlChannelTransactionDelegate <NSObject>
 @property(readonly) _Bool isEncryptionEnabled;
+@property(readonly, nonatomic) unsigned long long nextTransactionID;
+- (void)reportSignificantHandshakeDelaySymptomForParticipantID:(NSNumber *)arg1;
+- (int)protocolVersionforParticipantID:(NSNumber *)arg1;
 - (NSData *)lastUsedMKIBytes;
 - (void)scheduleAfter:(unsigned int)arg1 block:(void (^)(void))arg2;
 - (_Bool)isParticipantActive:(unsigned long long)arg1;

@@ -11,21 +11,22 @@
 
 @interface PXGOneColumnLayout <PXZoomablePhotosContentLayout, PXGItemsGeometry>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     _Bool _isUpdating;
     _Bool _didAlreadyUpdateLoadedItems;
     _Bool _enableBestCropRect;
     _Bool _enableEffects;
+    _Bool _enablePerItemCornerRadius;
     _Bool _fillSafeAreaTopInset;
     int _mediaKind;
     int _presentationType;
-    double _interItemSpacing;
     double _itemCaptionSpacing;
     double _overrideAspectRatio;
     double _overrideAspectRatioAmount;
     double _aspectRatioLimit;
     id _anchorObjectReference;
     long long _anchorItem;
+    struct CGSize _interItemSpacing;
     struct CGPoint _anchorViewportCenter;
     struct CGPoint _anchorItemCenter;
     struct UIEdgeInsets _padding;
@@ -40,10 +41,11 @@
 @property(nonatomic) double aspectRatioLimit; // @synthesize aspectRatioLimit=_aspectRatioLimit;
 @property(nonatomic) double overrideAspectRatioAmount; // @synthesize overrideAspectRatioAmount=_overrideAspectRatioAmount;
 @property(nonatomic) double overrideAspectRatio; // @synthesize overrideAspectRatio=_overrideAspectRatio;
+@property(nonatomic) _Bool enablePerItemCornerRadius; // @synthesize enablePerItemCornerRadius=_enablePerItemCornerRadius;
 @property(nonatomic) _Bool enableEffects; // @synthesize enableEffects=_enableEffects;
 @property(nonatomic) _Bool enableBestCropRect; // @synthesize enableBestCropRect=_enableBestCropRect;
 @property(nonatomic) double itemCaptionSpacing; // @synthesize itemCaptionSpacing=_itemCaptionSpacing;
-@property(nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
+@property(nonatomic) struct CGSize interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property(nonatomic) int presentationType; // @synthesize presentationType=_presentationType;
 @property(nonatomic) int mediaKind; // @synthesize mediaKind=_mediaKind;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
@@ -59,6 +61,7 @@
 - (_Bool)canHandleVisibleRectRejection;
 - (void)visibleRectDidChange;
 - (void)alphaDidChange;
+- (void)entityManagerDidChange;
 - (void)screenScaleDidChange;
 - (void)referenceSizeDidChange;
 - (void)setVisibleRect:(struct CGRect)arg1;
@@ -75,12 +78,14 @@
 - (void)_updateSprites;
 - (void)update;
 @property(readonly, copy) NSString *description;
+- (_Bool)allowsDanglingUpdatesAssertions;
 - (id)init;
+@property(nonatomic) _Bool enablePerItemInsets;
 @property(nonatomic) double accessoryAlpha;
-- (struct CGRect)frameForItem:(long long)arg1 usingInterItemSpacing:(double)arg2;
+- (struct CGRect)frameForItem:(long long)arg1 usingInterItemSpacing:(struct CGSize)arg2;
 @property(nonatomic) _Bool loadItemsOutsideAnchorViewport;
 @property(readonly, nonatomic) struct CGRect loadedItemsRect;
-@property(nonatomic) _Bool hideIncompleteLastRow;
+@property(nonatomic) _Bool hideIncompleteLastRowOrColumn;
 @property(readonly, nonatomic) long long visualItemShift;
 - (_Bool)shiftItem:(long long)arg1 toColumn:(long long)arg2 hideIncompleteRows:(_Bool)arg3;
 - (long long)columnForItem:(long long)arg1;
@@ -88,7 +93,9 @@
 @property(readonly, nonatomic) double rowHeight;
 @property(readonly, nonatomic) _Bool itemCaptionsVisible;
 @property(readonly, nonatomic) _Bool supportsContentMode;
-@property(nonatomic) unsigned char mediaFlags;
+@property(nonatomic) unsigned char spriteInfoFlags;
+@property(nonatomic) CDStruct_2bd92d94 itemCornerRadius;
+@property(nonatomic) double itemAspectRatio;
 
 // Remaining properties
 @property(nonatomic) long long contentMode;

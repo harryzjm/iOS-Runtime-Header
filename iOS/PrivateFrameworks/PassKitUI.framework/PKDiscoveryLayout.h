@@ -13,11 +13,13 @@
     NSMutableDictionary *_attributesPerIndexPath;
     NSMutableDictionary *_headersPerIndexPath;
     struct CGSize _currentSize;
+    _Bool _isScrollable;
     double _interimSpacing;
     double _lineSpacing;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isScrollable; // @synthesize isScrollable=_isScrollable;
 @property(nonatomic) double lineSpacing; // @synthesize lineSpacing=_lineSpacing;
 @property(nonatomic) double interimSpacing; // @synthesize interimSpacing=_interimSpacing;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;

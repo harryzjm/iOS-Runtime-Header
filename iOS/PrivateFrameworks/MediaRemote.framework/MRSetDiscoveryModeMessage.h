@@ -4,15 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
+@class MRAVRoutingDiscoverySessionConfiguration;
+
 @interface MRSetDiscoveryModeMessage
 {
+    unsigned int _mode;
+    MRAVRoutingDiscoverySessionConfiguration *_configuration;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) MRAVRoutingDiscoverySessionConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly, nonatomic) unsigned int mode; // @synthesize mode=_mode;
 - (unsigned long long)type;
-@property(readonly, nonatomic) unsigned int features;
-@property(readonly, nonatomic) unsigned int mode;
 - (id)initWithMode:(unsigned int)arg1 features:(unsigned int)arg2;
+- (id)initWithMode:(unsigned int)arg1 configuration:(id)arg2;
+- (id)initWithUnderlyingCodableMessage:(id)arg1 error:(id)arg2;
 
 @end
 

@@ -4,44 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotoLibraryServices/PLUniformTypeIdentifierIdentity-Protocol.h>
+#import <objc/NSObject.h>
 
-@class NSNumber, NSString;
+#import <PhotoLibraryServices/NSCopying-Protocol.h>
 
-@interface PLUniformTypeIdentifier <PLUniformTypeIdentifierIdentity>
+@class NSString;
+
+@interface PLUniformTypeIdentifier : NSObject <NSCopying>
 {
-    NSNumber *_isLosslessEncoding;
-    NSNumber *_conformsToJPEG;
+    short _conformanceHint;
+    unsigned int _wellKnownFileType;
+    NSString *_identifier;
 }
 
++ (id)plistUniformTypeIdentifier;
++ (id)videoComplementUniformTypeIdentifier;
++ (id)quicktimeUniformTypeIdentifier;
++ (id)jpegUniformTypeIdentifier;
 + (_Bool)isPlayableVideoTypeIdentifierString:(id)arg1;
-+ (id)utisConformingToRAWInContext:(id)arg1;
-+ (id)plistUniformTypeIdentifierInContext:(id)arg1;
-+ (id)videoComplementUniformTypeIdentifierInContext:(id)arg1;
-+ (id)jpegUniformTypeIdentifierInContext:(id)arg1;
-+ (id)uniformTypeIdentifierFromString:(id)arg1 createIfMissing:(_Bool)arg2 context:(id)arg3;
-+ (id)entityName;
++ (id)utiWithCompactRepresentation:(id)arg1 conformanceHint:(short)arg2;
++ (id)utiWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isPlayableVideo;
-@property(readonly, nonatomic, getter=isPrimaryImageFormat) _Bool primaryImageFormat;
-@property(readonly, nonatomic, getter=isDynamic) _Bool dynamic;
-@property(readonly, nonatomic) _Bool isLosslessEncoding;
-@property(readonly, nonatomic) _Bool conformsToJPEG;
-@property(readonly, nonatomic) _Bool conformsToData;
-@property(readonly, nonatomic) _Bool conformsToAudio;
-@property(readonly, copy, nonatomic) NSString *preferredExtension;
-- (_Bool)supportsCloudUpload;
-- (_Bool)validateForDelete:(id *)arg1;
-
-// Remaining properties
-@property(nonatomic) _Bool conformsToImage; // @dynamic conformsToImage;
-@property(nonatomic) _Bool conformsToMovie; // @dynamic conformsToMovie;
-@property(nonatomic) _Bool conformsToRawImage; // @dynamic conformsToRawImage;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
-@property(readonly) Class superclass;
+@property(readonly, nonatomic) short conformanceHint; // @synthesize conformanceHint=_conformanceHint;
+@property(readonly, nonatomic) unsigned int wellKnownFileType; // @synthesize wellKnownFileType=_wellKnownFileType;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (_Bool)isDynamic;
+- (_Bool)isLosslessEncoding;
+- (id)preferredExtension;
+- (_Bool)conformsToJPEG;
+- (_Bool)conformsToData;
+- (_Bool)conformsToAudio;
+- (_Bool)isPlayableVideo;
+- (_Bool)conformsToMovie;
+- (_Bool)conformsToRawImage;
+- (_Bool)conformsToImage;
+- (_Bool)isPrimaryImageFormat;
+@property(readonly, nonatomic) NSString *compactRepresentation;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToUniformTypeIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 compactRepresentation:(id)arg2 conformanceHint:(short)arg3;
 
 @end
 

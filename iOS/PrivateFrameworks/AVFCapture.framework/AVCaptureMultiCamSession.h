@@ -11,9 +11,10 @@
 }
 
 + (_Bool)isMultiCamSupported;
-- (id)_constituentDeviceFormatFromVirtualDeviceFormat:(id)arg1 virtualDevice:(id)arg2 constituentDevice:(id)arg3;
 - (id)_physicalDevicePowerInfoSet;
 - (void)_updateSystemPressureCost;
+- (float)_nandCostWithFormatWidth:(int)arg1 height:(int)arg2 maxFrameRate:(float)arg3;
+- (float)_computeNANDCostForOutputs;
 - (float)_computeEncoderCostForOutputs;
 - (unsigned int)_computeMemoryUsageForOutputs;
 - (void)_updateHardwareCost;

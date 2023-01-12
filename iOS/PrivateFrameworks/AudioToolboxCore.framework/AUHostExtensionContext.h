@@ -16,6 +16,7 @@
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
++ (id)_allowedItemPayloadClasses;
 - (void).cxx_destruct;
 @property(retain, nonatomic) AUHostDelegate *delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;

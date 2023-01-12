@@ -6,12 +6,12 @@
 
 #import <EventKitUI/EKCalendarItemEditItemDelegate-Protocol.h>
 
-@class EKEventAutocompleteResultsEditItem, EKUIAutocompleteSearchResult;
+@class EKAutocompleteSearchResult, EKEventAutocompleteResultsEditItem;
 
 @protocol EKEventAutocompleteResultsEditItemDelegate <EKCalendarItemEditItemDelegate>
 
 @optional
-- (void)autocompleteResultsEditItem:(EKEventAutocompleteResultsEditItem *)arg1 resultSelected:(EKUIAutocompleteSearchResult *)arg2;
+- (void)autocompleteResultsEditItem:(EKEventAutocompleteResultsEditItem *)arg1 resultSelected:(EKAutocompleteSearchResult *)arg2;
 - (void)autocompleteResultsEditItemDidHideResults:(EKEventAutocompleteResultsEditItem *)arg1;
 - (void)autocompleteResultsEditItemDidShowResults:(EKEventAutocompleteResultsEditItem *)arg1;
 @end

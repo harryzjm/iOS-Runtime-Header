@@ -30,6 +30,7 @@
 - (void)_cancelTrim:(id)arg1;
 - (void)videoRemakerDidEndRemaking:(id)arg1 temporaryPath:(id)arg2;
 - (void)didChooseVideoAtURL:(id)arg1 options:(id)arg2;
+- (void)viewDidLoad;
 - (void)loadView;
 - (void)setViewClass:(Class)arg1;
 - (Class)_viewClass;

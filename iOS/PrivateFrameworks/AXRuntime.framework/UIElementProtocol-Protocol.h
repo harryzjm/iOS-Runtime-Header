@@ -7,7 +7,7 @@
 #import <AXRuntime/NSCopying-Protocol.h>
 #import <AXRuntime/NSObject-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSNumber, NSObject, NSString;
+@class NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSObject, NSString;
 @protocol UIElementProtocol;
 
 @protocol UIElementProtocol <NSObject, NSCopying>
@@ -16,7 +16,8 @@
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 + (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
-@property(readonly, copy, nonatomic) NSMutableDictionary *cachedAttributes;
+@property(readonly, nonatomic) NSMutableDictionary *copyCachedAttributes;
+@property(readonly, nonatomic) NSDictionary *cachedAttributes;
 - (_Bool)isMockElement;
 - (_Bool)isMLElement;
 - (struct _NSRange)nextCursorRangeInDirection:(unsigned long long)arg1 unit:(unsigned long long)arg2 outputRange:(struct _NSRange *)arg3 currentCursorRange:(struct _NSRange)arg4;
@@ -34,6 +35,8 @@
 - (void)setAXAttribute:(long long)arg1 withLong:(long long)arg2;
 - (void)setAXAttribute:(long long)arg1 withString:(NSString *)arg2;
 - (void)setAXAttribute:(long long)arg1 withBOOL:(_Bool)arg2;
+- (NSArray *)previousElementsWithParameters:(NSDictionary *)arg1;
+- (NSArray *)nextElementsWithParameters:(NSDictionary *)arg1;
 - (NSArray *)previousElementsWithCount:(unsigned long long)arg1;
 - (NSArray *)nextElementsWithCount:(unsigned long long)arg1;
 - (void)updateCacheWithAttributes:(NSArray *)arg1;

@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableDictionary;
+
 @interface HFAccessoryBatteryStatusItem
 {
+    NSMutableDictionary *_batteryLevelItems;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *batteryLevelItems; // @synthesize batteryLevelItems=_batteryLevelItems;
 - (id)_subclass_updateWithOptions:(id)arg1;
 
 @end

@@ -41,8 +41,8 @@
 @property(readonly, nonatomic) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)debugDescription;
 - (id)description;
+- (id)debugDescription;
 - (id)initWithID:(id)arg1 titles:(id)arg2 details:(id)arg3 variableOverrides:(id)arg4 distanceDetailLevel:(int)arg5 junction:(id)arg6 artworkOverride:(id)arg7 shieldText:(id)arg8 shieldID:(int)arg9 shieldStringID:(id)arg10 composedGuidanceEventIndex:(int)arg11;
 
 @end

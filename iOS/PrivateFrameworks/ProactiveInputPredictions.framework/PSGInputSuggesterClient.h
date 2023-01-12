@@ -39,9 +39,12 @@
 - (id)_getZKWResultsForRequest:(id)arg1 explanationSet:(id)arg2;
 - (id)_combineMLAndRKItems:(id)arg1 mlItems:(id)arg2;
 - (id)_wordBoundaryPredictionsForContext:(id)arg1 localeIdentifier:(id)arg2 textContentType:(id)arg3 recipientNames:(id)arg4 availableApps:(id)arg5 request:(id)arg6 explanationSet:(id)arg7;
+- (id)_maybeModifyTrigger:(id)arg1 bundleIdentifier:(id)arg2;
+- (_Bool)_isFTLinkShareEnabled;
+- (id)_getFTLinkShareTrigger;
 - (id)_fillSuggestionsForResponseItems:(id)arg1 localeIdentifier:(id)arg2 recipients:(id)arg3 recipientNames:(id)arg4 bundleIdentifier:(id)arg5 timeoutSeconds:(double)arg6 structuredInfoFetchLimit:(unsigned long long)arg7 availableApps:(id)arg8 textualResponseLimit:(unsigned long long)arg9 structuredInfoLimit:(unsigned long long)arg10 totalSuggestionsLimit:(unsigned long long)arg11 explanationSet:(id)arg12 error:(id *)arg13;
 - (id)_rewriteMoneyAttributes:(id)arg1;
-- (id)_responseKitPredictionsForContext:(id)arg1 conversationTurns:(id)arg2 languageID:(id)arg3 adaptationContextID:(id)arg4 shouldDisableAutoCaps:(_Bool)arg5 maximumResponses:(unsigned long long)arg6 isBlacklisted:(_Bool)arg7;
+- (id)_responseKitPredictionsForContext:(id)arg1 bundleIdentifier:(id)arg2 conversationTurns:(id)arg3 languageID:(id)arg4 adaptationContextID:(id)arg5 shouldDisableAutoCaps:(_Bool)arg6 maximumResponses:(unsigned long long)arg7 isBlacklisted:(_Bool)arg8;
 - (id)_rkResponsesForContext:(id)arg1 conversationTurns:(id)arg2 languageID:(id)arg3 maximumResponses:(unsigned long long)arg4 shouldDisableAutoCaps:(_Bool)arg5 adaptationContextID:(id)arg6;
 - (id)_remoteObjectProxy;
 - (id)initWithStructuredInfoCache:(id)arg1;

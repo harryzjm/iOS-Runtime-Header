@@ -16,6 +16,7 @@
 + (id)amperes;
 + (id)kiloamperes;
 + (id)megaamperes;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

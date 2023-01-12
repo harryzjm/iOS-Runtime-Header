@@ -9,12 +9,12 @@
 #import <NewsToday/NTTodayResultsAggregator-Protocol.h>
 
 @class NSDate, NSString;
-@protocol FCCoreConfigurationManager, FCFeedPersonalizing, FCTodayPrivateData;
+@protocol FCCoreConfigurationManager, FCFeedPersonalizing><FCPersonalizationFunctionProviding, FCTodayPrivateData;
 
 @interface NTNewsTodayResultsExplicitAllocationAggregator : NSObject <NTTodayResultsAggregator>
 {
     id <FCCoreConfigurationManager> _configurationManager;
-    id <FCFeedPersonalizing> _feedPersonalizer;
+    id <FCFeedPersonalizing><FCPersonalizationFunctionProviding> _feedPersonalizer;
     NSDate *_filterDate;
     NSObject<FCTodayPrivateData> *_todayData;
 }
@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSObject<FCTodayPrivateData> *todayData; // @synthesize todayData=_todayData;
 @property(copy, nonatomic) NSDate *filterDate; // @synthesize filterDate=_filterDate;
-@property(retain, nonatomic) id <FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
+@property(retain, nonatomic) id <FCFeedPersonalizing><FCPersonalizationFunctionProviding> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
 @property(retain, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 - (id)_sectionFilterTransformationWithDescriptor:(id)arg1 priorClusterIDsInOtherSections:(id)arg2 priorClusterIDsInSection:(id)arg3 otherArticleIDs:(id)arg4 embedsLimit:(unsigned long long)arg5;
 - (id)_itemsForSection:(id)arg1 items:(id)arg2 withBudgetInfo:(id)arg3 previouslyChosenItems:(id)arg4 priorClusterIDsInOtherSections:(id)arg5 sectionItemsLimit:(unsigned long long)arg6 otherArticleIDs:(id)arg7 embedsLimit:(unsigned long long)arg8 remainingSlots:(double)arg9 slotsUsed:(double *)arg10 noMoreItemsToGive:(_Bool *)arg11 noRoomForMoreItems:(_Bool *)arg12 slotAllocationByDynamicSlotItemID:(id)arg13;

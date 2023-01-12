@@ -4,23 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString, UIFont;
+
 @interface SearchUISymbolImage
 {
+    _Bool _punchThroughBackground;
+    int _backgroundColor;
+    int _primaryColor;
+    int _secondaryColor;
+    NSString *_symbolName;
+    UIFont *_symbolFont;
+    long long _symbolScale;
+    long long _symbolWeight;
 }
 
++ (id)uiImageWithSymbolName:(id)arg1 font:(id)arg2 scale:(long long)arg3 weight:(long long)arg4 isTemplate:(_Bool)arg5 primaryColor:(int)arg6 secondaryColor:(int)arg7 appearance:(id)arg8;
++ (id)uiImageWithSymbolName:(id)arg1 font:(id)arg2 scale:(long long)arg3 weight:(long long)arg4 isTemplate:(_Bool)arg5;
++ (id)uiImageWithSymbolName:(id)arg1 font:(id)arg2 scale:(long long)arg3;
++ (id)uiImageWithSymbolName:(id)arg1;
 + (id)chevronImage;
-+ (id)systemImageName:(id)arg1 withConfiguration:(id)arg2;
+- (void).cxx_destruct;
+@property int secondaryColor; // @synthesize secondaryColor=_secondaryColor;
+@property int primaryColor; // @synthesize primaryColor=_primaryColor;
+@property int backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property _Bool punchThroughBackground; // @synthesize punchThroughBackground=_punchThroughBackground;
+@property long long symbolWeight; // @synthesize symbolWeight=_symbolWeight;
+@property long long symbolScale; // @synthesize symbolScale=_symbolScale;
+@property(retain) UIFont *symbolFont; // @synthesize symbolFont=_symbolFont;
+@property(retain) NSString *symbolName; // @synthesize symbolName=_symbolName;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (int)defaultCornerRoundingStyle;
-- (id)initWithSymbolName:(id)arg1 pointSize:(double)arg2;
-- (id)initWithSymbolName:(id)arg1 textStyle:(id)arg2 scale:(long long)arg3 font:(id)arg4;
-- (id)initWithSymbolName:(id)arg1 textStyle:(id)arg2 scale:(long long)arg3;
+- (void)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2;
+- (double)aspectRatio;
+- (_Bool)drawsOnBackground;
+- (id)initWithSymbolName:(id)arg1 font:(id)arg2 scale:(long long)arg3 weight:(long long)arg4;
 - (id)initWithSymbolName:(id)arg1 font:(id)arg2 scale:(long long)arg3;
-- (id)initWithSymbolName:(id)arg1 font:(id)arg2;
-- (id)initWithSymbolName:(id)arg1 textStyle:(id)arg2;
-- (id)initWithSymbolName:(id)arg1 scale:(long long)arg2;
 - (id)initWithSymbolName:(id)arg1;
+- (id)initWithSFImage:(id)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <HomeAI/NSCopying-Protocol.h>
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
 @interface HMIPersonSourceUUIDPair : HMFObject <NSCopying, NSSecureCoding>
 {
@@ -28,6 +28,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)attributeDescriptions;
+@property(readonly, copy) NSString *UUIDPairString;
+- (id)initWithUUIDPairString:(id)arg1;
 - (id)initWithPersonUUID:(id)arg1 sourceUUID:(id)arg2;
 
 @end

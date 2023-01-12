@@ -4,18 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PUAssetReference;
+@class NSString, PUAssetReference;
 
 __attribute__((visibility("hidden")))
 @interface PUSingleAssetLayout
 {
     PUAssetReference *_assetReference;
+    double _cornerRadius;
+    NSString *_cornerCurve;
+    unsigned long long _cornerMask;
     struct CGRect _assetRect;
     struct UIEdgeInsets _cropInsets;
     struct CGRect _contentsRect;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long cornerMask; // @synthesize cornerMask=_cornerMask;
+@property(copy, nonatomic) NSString *cornerCurve; // @synthesize cornerCurve=_cornerCurve;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property(nonatomic) struct UIEdgeInsets cropInsets; // @synthesize cropInsets=_cropInsets;
 @property(nonatomic) struct CGRect assetRect; // @synthesize assetRect=_assetRect;

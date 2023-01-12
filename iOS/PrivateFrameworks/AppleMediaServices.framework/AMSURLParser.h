@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 - (void)_waitForPromises:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)_correctURL:(id)arg1;
 - (_Bool)_matchURL:(id)arg1 toPatterns:(id)arg2;
 - (id)_legacyWebAllowedForURL:(id)arg1;
 - (id)_dynamicUIAllowedForURL:(id)arg1;

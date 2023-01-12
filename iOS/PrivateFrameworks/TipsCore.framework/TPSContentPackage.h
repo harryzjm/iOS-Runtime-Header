@@ -20,7 +20,6 @@
     TPSAssetSizes *_assetSizes;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TPSAssetSizes *assetSizes; // @synthesize assetSizes=_assetSizes;

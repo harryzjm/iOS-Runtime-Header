@@ -10,10 +10,10 @@
 
 @interface _TtC12NewsArticles30ArticleViewerTitleViewRenderer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *styler;
     MISSING_TYPE *publisherLogoImageCache;
     MISSING_TYPE *titleViewReuseProtector;
     MISSING_TYPE *toolbarItemReuseProtector;
+    MISSING_TYPE *styler;
 }
 
 @end

@@ -10,6 +10,11 @@
 {
     unsigned long long _rippleWidth;
     unsigned long long _rippleHeight;
+    unsigned long long _rippleResolution;
+    unsigned long long _rippleStyle;
+    double _rippleTouchRadius;
+    double _rippleTimeStep;
+    double _rippleTouchHeight;
     double *_positionBuffer;
     double *_velocityBuffer;
     _Bool _settled;
@@ -19,11 +24,11 @@
 - (struct CATransform3D)transformForGridCoordinate:(struct CGPoint)arg1;
 - (double)zPositionForGridCoordinate:(struct CGPoint)arg1;
 - (void)step:(double)arg1;
-- (void)createRippleAtGridCoordinate:(struct CGPoint)arg1;
+- (void)createRippleAtGridCoordinate:(struct CGPoint)arg1 strength:(double)arg2;
 - (struct CGPoint)convertGridToRippleCoordinate:(struct CGPoint)arg1;
 - (void)clear;
 - (void)dealloc;
-- (id)initWithRows:(unsigned long long)arg1 columns:(unsigned long long)arg2;
+- (id)initWithRows:(unsigned long long)arg1 columns:(unsigned long long)arg2 resolution:(unsigned long long)arg3 style:(unsigned long long)arg4;
 
 @end
 

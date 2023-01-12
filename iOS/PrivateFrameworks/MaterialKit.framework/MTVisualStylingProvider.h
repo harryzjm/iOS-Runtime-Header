@@ -32,12 +32,16 @@
 @property(retain, nonatomic, getter=_coreMaterialVisualStylingProvider) MTCoreMaterialVisualStylingProvider *coreMaterialVisualStylingProvider; // @synthesize coreMaterialVisualStylingProvider=_coreMaterialVisualStylingProvider;
 @property(readonly, copy) NSString *description;
 - (void)_updateVisualStyleOfViewOrLayer:(id)arg1;
+- (_Bool)_isAutomaticallyUpdatingViewOrLayer:(id)arg1;
 - (void)_stopAutomaticallyUpdatingViewOrLayer:(id)arg1;
 - (void)_automaticallyUpdateViewOrLayer:(id)arg1 withStyleNamed:(id)arg2 andObserverBlock:(CDUnknownBlockType)arg3;
 - (void)providedStylesDidChangeForProvider:(id)arg1;
+- (id)newAutomaticallyUpdatingViewWithStyle:(long long)arg1;
+- (_Bool)isAutomaticallyUpdatingLayer:(id)arg1;
 - (void)stopAutomaticallyUpdatingLayer:(id)arg1;
 - (void)automaticallyUpdateLayer:(id)arg1 withStyle:(long long)arg2 andObserverBlock:(CDUnknownBlockType)arg3;
 - (void)automaticallyUpdateLayer:(id)arg1 withStyle:(long long)arg2;
+- (_Bool)isAutomaticallyUpdatingView:(id)arg1;
 - (void)stopAutomaticallyUpdatingView:(id)arg1;
 - (void)automaticallyUpdateView:(id)arg1 withStyle:(long long)arg2 andObserverBlock:(CDUnknownBlockType)arg3;
 - (void)automaticallyUpdateView:(id)arg1 withStyle:(long long)arg2;

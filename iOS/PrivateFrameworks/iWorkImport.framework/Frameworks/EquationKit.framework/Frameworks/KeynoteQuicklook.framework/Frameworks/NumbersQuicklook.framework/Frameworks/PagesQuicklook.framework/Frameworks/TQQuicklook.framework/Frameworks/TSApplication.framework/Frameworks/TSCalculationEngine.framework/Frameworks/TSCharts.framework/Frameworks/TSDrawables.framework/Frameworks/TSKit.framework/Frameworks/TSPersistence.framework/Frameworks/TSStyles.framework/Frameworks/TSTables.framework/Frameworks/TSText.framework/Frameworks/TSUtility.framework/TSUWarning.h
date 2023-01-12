@@ -16,6 +16,8 @@
     NSDictionary *_userInfo;
 }
 
++ (id)mediaUploadWarningWithMessage:(id)arg1 data:(id)arg2 isFromUploader:(_Bool)arg3;
++ (id)missingMediaWarningWithMessage:(id)arg1 data:(id)arg2;
 + (id)fontWarningWithMessage:(id)arg1 fontNames:(id)arg2;
 + (id)warningWithKind:(long long)arg1 message:(id)arg2;
 + (id)warningWithMessage:(id)arg1 affectedObjects:(id)arg2;
@@ -26,6 +28,7 @@
 @property(copy, nonatomic) NSString *detailMessage; // @synthesize detailMessage=_detailMessage;
 @property(readonly, nonatomic) NSString *message; // @synthesize message=_message;
 @property(readonly, nonatomic) long long kind; // @synthesize kind=_kind;
+- (_Bool)isUploaderWarning;
 - (_Bool)isFontWarning;
 - (void)addAffectedObjects:(id)arg1;
 - (void)setAffectedObjects:(id)arg1;

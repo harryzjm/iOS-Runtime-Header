@@ -7,6 +7,7 @@
 @protocol MFQueuePlayerItem;
 
 @protocol MFQueueManagement
+- (void)reloadCurrentItemWithReason:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)clearPlaybackQueue;
 - (void)reloadItemsKeepingCurrentItem:(_Bool)arg1;
 - (void)restoreQueue:(void (^)(NSError *))arg1;

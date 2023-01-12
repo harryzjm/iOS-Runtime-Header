@@ -7,6 +7,7 @@
 #import <WebKit/WKNavigationAction.h>
 
 @interface WKNavigationAction (SafariSharedUIExtras)
+@property(readonly, nonatomic) _Bool safari_isNewWindowNavigationActionSpecifiedByAnchorTargetAttribute;
 - (_Bool)safari_isEligibleForContinuedTranslationWithPolicy:(long long)arg1;
 @end
 

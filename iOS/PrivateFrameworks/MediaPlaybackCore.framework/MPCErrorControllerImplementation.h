@@ -11,6 +11,7 @@
 @class MPAVItem, MPCMediaFoundationTranslator, MPCPlaybackEngine, NSMutableSet, NSString;
 @protocol MPCExternalPlaybackRouter;
 
+__attribute__((visibility("hidden")))
 @interface MPCErrorControllerImplementation : NSObject <MFErrorController>
 {
     _Bool itemsHavePlayed;
@@ -30,9 +31,17 @@
 @property(nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) _Bool itemsHavePlayed; // @synthesize itemsHavePlayed;
 @property(copy, nonatomic) NSString *preferredFirstContentItemID; // @synthesize preferredFirstContentItemID;
+- (_Bool)shouldHandleFirstItemFailure:(id)arg1 item:(id)arg2;
+- (_Bool)isAssetUnavailableFailure:(id)arg1;
+- (_Bool)isUnrecoverableAssetLoadingError:(id)arg1;
+- (_Bool)isQueueLoadingFailure:(id)arg1;
+- (_Bool)isFirstItemFailure:(id)arg1 item:(id)arg2;
+- (_Bool)canHandleFirstItemFailure;
+- (void)_notifyObserversForError:(id)arg1 item:(id)arg2;
 - (long long)_resolutionForPlaybackError:(id)arg1 item:(id)arg2;
 - (void)_playbackFailedWithError:(id)arg1 item:(id)arg2 canResolve:(_Bool)arg3 proposedResolution:(long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)resolve:(id)arg1 forItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)reportCriticalError:(id)arg1 forItem:(id)arg2;
+- (void)resolveError:(id)arg1 forItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)reset;
 - (id)initWithPlaybackEngine:(id)arg1 translator:(id)arg2 externalPlaybackRouter:(id)arg3;
 

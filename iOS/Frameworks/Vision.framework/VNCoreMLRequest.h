@@ -12,7 +12,6 @@
 }
 
 + (Class)configurationClass;
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) VNCoreMLModel *model; // @synthesize model=_model;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;

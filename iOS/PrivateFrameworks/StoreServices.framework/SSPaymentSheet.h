@@ -32,6 +32,7 @@
     NSAttributedString *_salableInfoLabel;
     NSString *_storeName;
     NSString *_accountName;
+    NSArray *_attributedList;
     long long _confirmationTitleType;
     NSString *_countryCode;
     NSString *_currencyCode;
@@ -64,6 +65,7 @@
 @property(copy) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property(copy) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property long long confirmationTitleType; // @synthesize confirmationTitleType=_confirmationTitleType;
+@property(readonly) NSArray *attributedList; // @synthesize attributedList=_attributedList;
 @property(copy) NSString *accountName; // @synthesize accountName=_accountName;
 @property _Bool shouldShowCardPicker; // @synthesize shouldShowCardPicker=_shouldShowCardPicker;
 @property(copy) NSString *dialogId; // @synthesize dialogId=_dialogId;
@@ -76,6 +78,7 @@
 - (id)_replaceBreakingSpaceMarkupForMutableAttributedString:(id)arg1;
 - (long long)_payeeTypeInferredFromEnumeratedTitle;
 - (long long)_payeeTypeForRequestorValue:(id)arg1;
+- (id)_attributedListForFlexList:(id)arg1;
 - (void)_parseResponse:(id)arg1;
 - (void)_lock;
 - (long long)_inferSalableIconTypeWithBuyParams:(id)arg1;
@@ -85,6 +88,8 @@
 - (id)_attributedStringForStringArray:(id)arg1 useGrey:(_Bool)arg2;
 - (id)_attributedStringForString:(id)arg1;
 - (id)_attributedStringForSalableInfoStringArray:(id)arg1;
+- (id)_attributedStringForAttributedDictionary:(id)arg1;
+- (id)_attributedStringForAttributedArray:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 - (id)copyXPCEncoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -105,6 +110,7 @@
 - (id)initWithServerResponse:(id)arg1 buyParams:(id)arg2;
 - (id)initWithServerResponse:(id)arg1;
 - (id)init;
+- (id)authKitAuthenticationContextForAccount:(id)arg1;
 - (id)defaultAuthKitAuthenticationContext;
 
 @end

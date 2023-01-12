@@ -14,7 +14,9 @@
 + (id)assetCollectionForAlbumSearchResult:(id)arg1;
 + (id)assetCollectionForAssetAggregationSearchResult:(id)arg1;
 + (id)personForPersonSearchResult:(id)arg1;
++ (id)storyConfigurationForCollectionSearchResult:(id)arg1;
 + (id)photosDetailsContextForCollectionSearchResult:(id)arg1;
++ (id)_fetchAssetCollectionsForCollectionSearchResult:(id)arg1;
 + (id)photosViewConfigurationForAlbumSearchResult:(id)arg1;
 + (id)photosViewConfigurationForAssetAggregationSearchResult:(id)arg1;
 

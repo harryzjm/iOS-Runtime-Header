@@ -22,7 +22,7 @@
 - (id)description;
 @property(readonly) NSString *fileSignature;
 @property(readonly) NSString *fileType;
-- (id)typeIdentifierFromFileExtensionWithError:(id *)arg1;
+- (id)typeFromFileExtensionWithError:(id *)arg1;
 - (_Bool)isAssetBundle;
 - (_Bool)isImage;
 - (_Bool)isVideo;

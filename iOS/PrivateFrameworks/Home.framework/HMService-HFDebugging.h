@@ -13,11 +13,13 @@
 #import <Home/HFRoomContextProviding-Protocol.h>
 #import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFUIRepresentableHomeObject-Protocol.h>
 #import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
-@class HFServiceNameComponents, HFUserNotificationServiceSettings, HMCharacteristic, HMHome, HMRoom, NSDate, NSString, NSUUID;
+@class HFServiceNameComponents, HFUserNotificationServiceSettings, HMCharacteristic, HMHome, HMRoom, NSDate, NSSet, NSString, NSUUID;
+@protocol HFUIRepresentableHomeObject;
 
-@interface HMService (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeStatusVisible, HFHomeContainedObject, HFRoomContextProviding, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
+@interface HMService (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFUIRepresentableHomeObject, HFHomeStatusVisible, HFHomeContainedObject, HFRoomContextProviding, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
 + (id)hf_allRequiredCharacteristicTypesForStandardServices;
 + (id)hf_requiredCharacteristicTypesForDisplayMetadataWithServiceType:(id)arg1;
 + (id)hf_sensorCharacteristicTypeForServiceType:(id)arg1;
@@ -40,10 +42,10 @@
 @property(readonly, nonatomic) _Bool hf_shouldShowInFavorites;
 @property(readonly, nonatomic) _Bool hf_hasSetFavorite;
 @property(readonly, nonatomic) _Bool hf_isFavorite;
-- (id)hf_topLevelAccessoryLikeHomeObject;
-- (id)hf_accessories;
-- (id)hf_profiles;
-- (id)hf_services;
+@property(readonly, nonatomic) id <HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
+@property(readonly, nonatomic) NSSet *hf_accessories;
+@property(readonly, nonatomic) NSSet *hf_profiles;
+@property(readonly, nonatomic) NSSet *hf_services;
 - (id)hf_requiredCharacteristicTypesForDisplayMetadata;
 - (_Bool)hf_isDisplayableSensor;
 - (_Bool)hf_supportsNaturalLighting;

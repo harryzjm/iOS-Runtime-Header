@@ -30,6 +30,7 @@
 - (struct UIEdgeInsets)layoutMarginsForContainer;
 - (id)platterVisualEffectView;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)navigationViewDidInvalidateSizeAnimated:(_Bool)arg1;

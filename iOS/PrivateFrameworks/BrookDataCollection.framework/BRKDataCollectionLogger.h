@@ -6,32 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class BRKDataCollectionScheduler, NSDate, NSMutableArray, NSString;
+@class BRKDataCollectionScheduler, NSDate, NSDateFormatter, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface BRKDataCollectionLogger : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSString *_storageDirectory;
-    unsigned long long _authorization;
-    _Bool _needsAuthorizationUpdate;
     BRKDataCollectionScheduler *_uploadScheduler;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_idsFilesList;
     NSString *_dailyIdentifier;
     NSDate *_dailyIdentifierRefreshDate;
     unsigned long long _dailySessionUploadCount;
+    NSDateFormatter *_dateFormatter;
 }
 
 + (id)sharedInstance;
-+ (unsigned long long)dataCollectionAuthorization;
 - (void).cxx_destruct;
 - (void)_scheduleUploadTimer;
 - (void)_triggerUpload:(_Bool)arg1;
 - (void)_forceUpload;
 - (void)_logUploadWithPath:(id)arg1;
-- (void)_logEvent:(id)arg1;
 - (_Bool)_shouldAllowDataCollectionUpload;
+- (_Bool)_dataCollectionEnabled;
 - (void)clearCollectedData;
 - (id)markFileForUpload:(id)arg1;
 @property(readonly, nonatomic) NSString *deviceIdentifier;
@@ -40,15 +38,10 @@
 - (void)_purgeOutdatedFiles;
 - (void)_purgeFilesForOSUpdate;
 - (id)_idsFileListPath;
-- (unsigned long long)_determineDataCollectionAuthorization;
-- (unsigned long long)_dataCollectionAuthorization;
-- (unsigned long long)_lock_dataCollectionAuthorization;
-- (void)_makeNeedsAuthorizationUpdate;
 - (_Bool)_dataCollectionIsAllowedToRunInCurrentProcess;
-- (_Bool)_dcsEnabled;
-- (id)_dcsManager;
 - (void)_refreshDailyMetadata;
 - (id)_deviceIdentifier;
+- (id)_internalDeviceIdentifier;
 - (void)dealloc;
 - (id)_init;
 

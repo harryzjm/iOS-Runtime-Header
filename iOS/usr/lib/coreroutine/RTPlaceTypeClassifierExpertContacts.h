@@ -8,7 +8,7 @@
 
 #import <coreroutine/RTPlaceTypeProvider-Protocol.h>
 
-@class NSString, RTContactsManager, RTDistanceCalculator, RTLearnedLocationStore, RTMapServiceManager, RTMapsSupportManager;
+@class NSString, RTContactsManager, RTDistanceCalculator, RTLearnedLocationStore, RTMapServiceManager, RTMapsSupportManager, RTPlaceTypeClassifierMetricsCalculator;
 
 @interface RTPlaceTypeClassifierExpertContacts : NSObject <RTPlaceTypeProvider>
 {
@@ -17,9 +17,11 @@
     RTLearnedLocationStore *_learnedLocationStore;
     RTMapServiceManager *_mapServiceManager;
     RTMapsSupportManager *_mapsSupportManager;
+    RTPlaceTypeClassifierMetricsCalculator *_placeTypeClassifierMetricsCalculator;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) RTPlaceTypeClassifierMetricsCalculator *placeTypeClassifierMetricsCalculator; // @synthesize placeTypeClassifierMetricsCalculator=_placeTypeClassifierMetricsCalculator;
 @property(retain, nonatomic) RTMapsSupportManager *mapsSupportManager; // @synthesize mapsSupportManager=_mapsSupportManager;
 @property(retain, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
 @property(retain, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
@@ -29,7 +31,7 @@
 - (id)_postalAddressMapItemsOfContact:(id)arg1 error:(id *)arg2;
 - (id)_correctedMapItemsFromUserWithError:(id *)arg1;
 - (id)_meCardContactWithError:(id *)arg1;
-- (id)initWithContactsManager:(id)arg1 distanceCalculator:(id)arg2 learnedLocationStore:(id)arg3 mapServiceManager:(id)arg4 mapsSupportManager:(id)arg5;
+- (id)initWithContactsManager:(id)arg1 distanceCalculator:(id)arg2 learnedLocationStore:(id)arg3 mapServiceManager:(id)arg4 mapsSupportManager:(id)arg5 placeTypeClassifierMetricsCalculator:(id)arg6;
 - (id)init;
 
 // Remaining properties

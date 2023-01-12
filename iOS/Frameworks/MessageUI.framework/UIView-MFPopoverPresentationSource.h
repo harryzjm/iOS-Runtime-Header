@@ -6,11 +6,8 @@
 
 #import <UIKit/UIView.h>
 
-#import <MessageUI/MFPopoverPresentationSource-Protocol.h>
-
-@class NSString;
-
-@interface UIView (MFPopoverPresentationSource) <MFPopoverPresentationSource>
+@interface UIView (MFPopoverPresentationSource)
+- (void)mf_setAsTargetedSourceOnSceneConfiguration:(id)arg1;
 - (void)mf_setAsSourceWithExtendedRectForPopoverPresentationController:(id)arg1;
 - (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
 - (id)_mf_anchorForEdge:(unsigned long long)arg1 relativeToMargin:(_Bool)arg2;
@@ -19,11 +16,5 @@
 - (double)mf_currentScreenScale;
 - (id)mf_frontSibling;
 - (id)mf_enclosingScrollView;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @end
 

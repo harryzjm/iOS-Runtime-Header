@@ -12,6 +12,7 @@
     _Bool _automaticImageScaleEstimationEnabled;
     _Bool _collaborationEnabled;
     _Bool _userFaceTrackingEnabled;
+    _Bool _appClipCodeTrackingEnabled;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
     ARWorldMap *_initialWorldMap;
@@ -23,9 +24,11 @@
 
 + (id)new;
 + (_Bool)supportsSceneReconstruction:(unsigned long long)arg1;
++ (_Bool)supportsAppClipCodeTracking;
 + (_Bool)supportsUserFaceTracking;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long sceneReconstruction; // @synthesize sceneReconstruction=_sceneReconstruction;
+@property(nonatomic) _Bool appClipCodeTrackingEnabled; // @synthesize appClipCodeTrackingEnabled=_appClipCodeTrackingEnabled;
 @property(nonatomic, getter=userFaceTrackingEnabled) _Bool userFaceTrackingEnabled; // @synthesize userFaceTrackingEnabled=_userFaceTrackingEnabled;
 @property(nonatomic, getter=isCollaborationEnabled) _Bool collaborationEnabled; // @synthesize collaborationEnabled=_collaborationEnabled;
 @property(copy, nonatomic) NSSet *detectionObjects; // @synthesize detectionObjects=_detectionObjects;

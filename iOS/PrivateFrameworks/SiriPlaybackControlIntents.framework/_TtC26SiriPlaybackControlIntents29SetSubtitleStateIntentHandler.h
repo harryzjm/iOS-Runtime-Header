@@ -15,6 +15,8 @@
     MISSING_TYPE *playbackController;
     MISSING_TYPE *deviceSelector;
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *aceServiceHelper;
+    MISSING_TYPE *deviceState;
 }
 
 - (void).cxx_destruct;

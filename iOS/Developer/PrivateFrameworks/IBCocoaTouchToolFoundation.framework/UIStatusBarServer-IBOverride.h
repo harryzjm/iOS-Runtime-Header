@@ -7,6 +7,6 @@
 #import <UIKit/UIStatusBarServer.h>
 
 @interface UIStatusBarServer (IBOverride)
-+ (const CDStruct_3ada4cd2 *)ibSwizzled_getStatusBarData;
++ (const CDStruct_85bde7ba *)ibSwizzled_getStatusBarData;
 @end
 

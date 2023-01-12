@@ -55,7 +55,7 @@
 - (id)articleID;
 - (id)identifier;
 - (id)initWithDictionary:(id)arg1 path:(id)arg2 channel:(id)arg3;
-- (id)contentManifestWithContext:(id)arg1;
+- (id)contentWithContext:(id)arg1;
 
 @end
 

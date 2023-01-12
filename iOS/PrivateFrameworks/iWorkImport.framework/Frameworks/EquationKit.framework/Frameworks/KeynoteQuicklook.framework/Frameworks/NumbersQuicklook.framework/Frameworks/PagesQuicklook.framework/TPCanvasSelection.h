@@ -25,8 +25,8 @@
 + (Class)archivedSelectionClass;
 - (void).cxx_destruct;
 - (void)p_commonCopyTo:(id)arg1;
-- (void)saveToArchive:(struct CanvasSelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CanvasSelectionArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyExcludingInfo:(id)arg1;
 - (id)copyIncludingInfo:(id)arg1;
@@ -57,7 +57,7 @@
 - (id)UUIDDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool isEmpty;
-@property(readonly, nonatomic) int canvasSelectionKind;
+@property(readonly, nonatomic) unsigned long long canvasSelectionKind;
 - (id)initWithType:(int)arg1 range:(struct _NSRange)arg2 styleInsertionBehavior:(int)arg3 caretAffinity:(int)arg4 smartFieldRange:(struct _NSRange)arg5 leadingEdge:(_Bool)arg6 leadingCharIndex:(unsigned long long)arg7 infos:(id)arg8 excludedInfos:(id)arg9 additionalInfos:(id)arg10;
 
 // Remaining properties

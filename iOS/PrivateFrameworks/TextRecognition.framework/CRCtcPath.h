@@ -10,10 +10,10 @@
 
 @interface CRCtcPath : NSObject
 {
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _tokenString;
-    struct vector<unsigned int, std::__1::allocator<unsigned int>> _histWordTokenIDs;
+    struct vector<unsigned int, std::allocator<unsigned int>> _tokenString;
+    struct vector<unsigned int, std::allocator<unsigned int>> _histWordTokenIDs;
     unsigned long long _beginningCurrentWord;
-    struct vector<_NSRange, std::__1::allocator<_NSRange>> _whitespaceRanges;
+    struct vector<_NSRange, std::allocator<_NSRange>> _whitespaceRanges;
     unsigned long long _numCustomWords;
     NSString *_string;
     double _probBlank;

@@ -13,12 +13,14 @@
     NSArray *_responseActivations;
     NSArray *_responseConfigurations;
     NSArray *_responseAssets;
+    NSArray *_responseManagement;
 }
 
-+ (id)buildRequiredOnlyWithActivations:(id)arg1 configurations:(id)arg2 assets:(id)arg3;
-+ (id)buildWithActivations:(id)arg1 configurations:(id)arg2 assets:(id)arg3;
++ (id)buildRequiredOnlyWithActivations:(id)arg1 configurations:(id)arg2 assets:(id)arg3 management:(id)arg4;
++ (id)buildWithActivations:(id)arg1 configurations:(id)arg2 assets:(id)arg3 management:(id)arg4;
 + (id)allowedResponseKeys;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *responseManagement; // @synthesize responseManagement=_responseManagement;
 @property(copy, nonatomic) NSArray *responseAssets; // @synthesize responseAssets=_responseAssets;
 @property(copy, nonatomic) NSArray *responseConfigurations; // @synthesize responseConfigurations=_responseConfigurations;
 @property(copy, nonatomic) NSArray *responseActivations; // @synthesize responseActivations=_responseActivations;

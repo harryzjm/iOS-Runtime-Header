@@ -13,36 +13,34 @@
 }
 
 + (id)momentSharesReferencedInUploadBatchContainer:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (void)createOrUpdateShareWithScopeChange:(id)arg1 photoLibrary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)supportsCPLScopeType:(long long)arg1;
 + (void)forceSyncMomentShares:(id)arg1 photoLibrary:(id)arg2;
 + (id)listOfSyncedProperties;
-+ (long long)_cloudDeletionTypeForStatus:(short)arg1;
-+ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)pickCuratedAssetUUIDsFromCollectionOfSourceAssets:(id)arg1;
 + (id)momentShareWithOriginatingScopeIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityName;
 + (id)scopeIdentifierPrefix;
-+ (id)updateOrInsertWithCPLMomentShare:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (id)createOwnedMomentShareWithUUID:(id)arg1 creationDate:(id)arg2 title:(id)arg3 inPhotoLibrary:(id)arg4;
++ (id)insertOrUpdateShareWithCPLScopeChange:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)createOwnedShareWithUUID:(id)arg1 creationDate:(id)arg2 title:(id)arg3 inPhotoLibrary:(id)arg4;
 - (unsigned long long)estimateUploadSize;
 - (_Bool)_isOwnerInContacts;
 - (id)_contactStore;
 - (void)trash;
-- (_Bool)shouldAutoAccept;
+- (_Bool)_shouldAutoAccept;
+- (void)autoAcceptShareIfNecessary;
 - (void)publishWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)updateWithScopeChange:(id)arg1;
 - (id)cplScopeChange;
 - (_Bool)isSyncableChange;
 - (_Bool)supportsCloudUpload;
 - (void)calculatePropertyValues;
-@property(readonly) long long cloudDeletionType;
 - (void)willSave;
 - (void)prepareForDeletion;
-- (void)_updateSharingStatusFromCurrentUser:(id)arg1;
+- (void)_updateWithScopeChange:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) int assetCount; // @dynamic assetCount;
 @property(nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
+@property(readonly) long long cloudDeletionType;
 @property(readonly, copy) NSString *cloudUUIDForDeletion;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

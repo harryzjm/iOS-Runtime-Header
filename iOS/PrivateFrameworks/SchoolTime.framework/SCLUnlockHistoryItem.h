@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(readonly, nonatomic) NSDateInterval *unlockedInterval; // @synthesize unlockedInterval=_unlockedInterval;
+- (id)description;
 - (void)_loadEffectiveRecurrence;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

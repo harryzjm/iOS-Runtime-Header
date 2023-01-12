@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _LSLocalizedStringRecord
@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
 - (id)description;
 @property(readonly) NSString *defaultStringValue;
 @property(readonly) NSDictionary *allStringValues;
+- (void)_LSRecord_resolve__missingBundleLocs;
+@property(readonly) NSArray *_missingBundleLocs;
+- (id)_missingBundleLocsWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LocalizedString *)arg4;
 - (void)_LSRecord_resolve__allUnsanitizedStringValues;
 @property(readonly) NSDictionary *_allUnsanitizedStringValues;
 - (id)_allUnsanitizedStringValuesWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LocalizedString *)arg4;

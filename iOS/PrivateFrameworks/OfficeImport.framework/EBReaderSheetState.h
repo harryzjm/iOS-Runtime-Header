@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     EBReaderState *mReaderState;
     EDSheet *mEDSheet;
-    struct map<int, unsigned long, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, unsigned long>>> mSharedFormulas;
+    struct map<int, unsigned long, std::less<int>, std::allocator<std::pair<const int, unsigned long>>> mSharedFormulas;
     unsigned long long mChartIndex;
 }
 
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)edSheet;
 - (id)resources;
 - (id)workbook;
-- (struct XlBinaryReader *)xlReader;
+- (void *)xlReader;
 - (id)readerState;
 - (id)initWithReaderState:(id)arg1;
 

@@ -11,6 +11,7 @@
 }
 
 + (id)lux;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

@@ -53,6 +53,7 @@
 - (void)registerForSynchronizedDefaults;
 - (long long)generationCount;
 - (struct __CFDictionary *)copyDictionary;
+- (id)dictionaryRepresentationWithError:(id *)arg1;
 - (struct __CFArray *)copyKeyList;
 - (void)discardExternalChangesForChangeCount:(long long)arg1;
 - (id)copyExternalChangesWithChangeCount:(long long *)arg1;
@@ -67,7 +68,9 @@
 - (void)_cachePlistFromDisk;
 - (void)setCache:(struct __CFDictionary *)arg1;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2;
+- (_Bool)setObject:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void *)getValueForKey:(struct __CFString *)arg1;
+- (id)objectForKey:(id)arg1 error:(id *)arg2;
 - (void)_locked_syd_end_transaction;
 - (void)_locked_syd_start_transaction;
 - (void)_forceRegistrationNow;

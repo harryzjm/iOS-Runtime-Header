@@ -39,12 +39,11 @@
 - (void)_sendEvents:(id)arg1 numberOfRetries:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)boostQueuedEvents:(CDUnknownBlockType)arg1;
 - (oneway void)flushStagedEventsWithReply:(CDUnknownBlockType)arg1;
+- (oneway void)stageUEIEventData:(id)arg1 timestamp:(unsigned long long)arg2;
 - (oneway void)logInstrumentationOfType:(id)arg1 machAbsoluteTime:(unsigned long long)arg2 turnIdentifier:(id)arg3;
 - (oneway void)endEventsGrouping;
 - (oneway void)beginEventsGrouping;
 - (oneway void)stageEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (oneway void)stageEvents:(id)arg1;
-- (oneway void)stageEvent:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

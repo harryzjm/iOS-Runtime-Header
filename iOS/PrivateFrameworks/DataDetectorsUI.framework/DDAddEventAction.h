@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
 - (id)notificationURL;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
+- (id)compactTitle;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (int)interactionType;
-- (id)icon;
+- (id)variantIconName;
+- (id)iconName;
 - (id)localizedName;
 - (void)invalidate;
 

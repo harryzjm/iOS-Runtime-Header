@@ -12,6 +12,8 @@
 + (_Bool)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
 + (id)_orderedComplicationSlots;
 + (id)_complicationSlotDescriptors;
++ (id)sortableFaceWithAssets:(id)arg1;
++ (_Bool)supportsExternalAssets;
 - (_Bool)_sanitizeFaceConfiguration:(id *)arg1;
 - (_Bool)_shouldSanitizeFaceConfigurationWhenAddingSharedFace;
 - (_Bool)_createResourceDirectorySuitableForSharingAtPath:(id)arg1 error:(id *)arg2;
@@ -26,6 +28,9 @@
 - (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_customEditModes;
+- (id)addFaceDetailViewController;
+- (id)libraryDetailViewController;
+- (void)companionEditorWithAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

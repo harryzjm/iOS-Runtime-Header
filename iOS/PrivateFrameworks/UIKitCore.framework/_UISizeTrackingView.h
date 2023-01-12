@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (_Bool)canBecomeFocused;
 @property(readonly, nonatomic) _UIRemoteViewController *remoteViewController;
+- (void)_prepareForWindowDealloc;
+- (void)_prepareForWindowHostingSceneRemoval;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_updateSceneGeometries:(id)arg1;
 - (void)_willMoveToWindow:(id)arg1;

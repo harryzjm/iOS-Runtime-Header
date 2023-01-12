@@ -14,6 +14,7 @@
     long long _personalizationStyle;
 }
 
++ (id)_lightweightPersonalizationPropertiesForLyrics;
 + (id)_lightweightPersonalizationPropertiesForStoreAsset;
 + (id)_lightweightPersonalizationPropertiesForPlaybackPosition;
 + (id)lightweightPersonalizationPropertiesForModelClass:(Class)arg1;

@@ -13,22 +13,26 @@
 #import <CoreTelephony/CTXPCServiceCellMonitorInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceCellularPlanManagerInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceCellularUsagePolicyInterface-Protocol.h>
+#import <CoreTelephony/CTXPCServiceCoreTelephonyInternalSettingsInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceDataInterface-Protocol.h>
+#import <CoreTelephony/CTXPCServiceDataUsagePolicyInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceDeviceManagementInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceEmergencyInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceFTInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServicePNRInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServicePhonebookInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServicePostponementInterface-Protocol.h>
+#import <CoreTelephony/CTXPCServiceProvisioningInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceRadioInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceRegistrationInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceSIMToolkitInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceSMSInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceSubscriberInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceSuppServicesInterface-Protocol.h>
+#import <CoreTelephony/CTXPCServiceVinylInterface-Protocol.h>
 #import <CoreTelephony/CTXPCServiceVoicemailInterface-Protocol.h>
 #import <CoreTelephony/NSObject-Protocol.h>
 
-@protocol CTXPCServiceInterface <NSObject, CTXPCServiceBaseInterface, CTXPCServiceRegistrationInterface, CTXPCServiceDataInterface, CTXPCServiceSubscriberInterface, CTXPCServiceEmergencyInterface, CTXPCServiceCarrierBundleInterface, CTXPCServiceVoicemailInterface, CTXPCServiceCellMonitorInterface, CTXPCServicePostponementInterface, CTXPCServiceDeviceManagementInterface, CTXPCServicePNRInterface, CTXPCServiceSuppServicesInterface, CTXPCServiceCapabilitiesInterface, CTXPCServiceFTInterface, CTXPCServiceRadioInterface, CTXPCServiceCallInterface, CTXPCServicePhonebookInterface, CTXPCServiceCellularPlanManagerInterface, CTXPCServiceSMSInterface, CTXPCServiceAppDataUsageInterface, CTXPCServiceCellularUsagePolicyInterface, CTXPCServiceCarrierServicesInterface, CTXPCServiceSIMToolkitInterface>
+@protocol CTXPCServiceInterface <NSObject, CTXPCServiceBaseInterface, CTXPCServiceRegistrationInterface, CTXPCServiceDataInterface, CTXPCServiceDataUsagePolicyInterface, CTXPCServiceSubscriberInterface, CTXPCServiceEmergencyInterface, CTXPCServiceCarrierBundleInterface, CTXPCServiceVoicemailInterface, CTXPCServiceCellMonitorInterface, CTXPCServicePostponementInterface, CTXPCServiceDeviceManagementInterface, CTXPCServicePNRInterface, CTXPCServiceProvisioningInterface, CTXPCServiceSuppServicesInterface, CTXPCServiceCapabilitiesInterface, CTXPCServiceFTInterface, CTXPCServiceRadioInterface, CTXPCServiceCallInterface, CTXPCServicePhonebookInterface, CTXPCServiceCellularPlanManagerInterface, CTXPCServiceSMSInterface, CTXPCServiceAppDataUsageInterface, CTXPCServiceCellularUsagePolicyInterface, CTXPCServiceCarrierServicesInterface, CTXPCServiceSIMToolkitInterface, CTXPCServiceVinylInterface, CTXPCServiceCoreTelephonyInternalSettingsInterface>
 @end
 

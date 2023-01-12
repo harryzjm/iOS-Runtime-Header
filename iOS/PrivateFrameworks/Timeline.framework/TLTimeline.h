@@ -31,6 +31,7 @@
 @property(nonatomic) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic) __weak id <TLTimelineDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_recycleAllNodes;
+- (void)_trimTimeline;
 - (void)_updateNowWindow;
 - (id)_nowNode;
 - (id)_sortedEntries:(id)arg1;
@@ -43,7 +44,7 @@
 - (void)_updateTimer;
 - (id)description;
 @property(readonly, nonatomic) NSDate *endOfVisibilityForNowEntry;
-@property(readonly, nonatomic) long long nodeCapacity;
+@property(readonly, nonatomic) unsigned long long nodeCapacity;
 - (id)nowWindow;
 @property(readonly, nonatomic) id <TLTimelineEntry> nowEntry;
 - (void)extendRightFromDate:(id)arg1 withEntries:(id)arg2;

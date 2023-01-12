@@ -13,7 +13,7 @@
 
 @interface PXPhotosSectionHeaderLayout <PXGStringSource, PXGSolidColorSource, PXGNamedImageSource, PXPhotosSectionedLayoutHeader>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     unsigned short _dividerVersion;
     unsigned short _titleVersion;
     unsigned short _subtitleVersion;

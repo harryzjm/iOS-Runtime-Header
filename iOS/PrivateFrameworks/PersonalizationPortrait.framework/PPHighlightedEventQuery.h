@@ -10,6 +10,7 @@
 }
 
 @property(nonatomic) int highlightsOptions; // @synthesize highlightsOptions=_highlightsOptions;
+- (id)description;
 
 @end
 

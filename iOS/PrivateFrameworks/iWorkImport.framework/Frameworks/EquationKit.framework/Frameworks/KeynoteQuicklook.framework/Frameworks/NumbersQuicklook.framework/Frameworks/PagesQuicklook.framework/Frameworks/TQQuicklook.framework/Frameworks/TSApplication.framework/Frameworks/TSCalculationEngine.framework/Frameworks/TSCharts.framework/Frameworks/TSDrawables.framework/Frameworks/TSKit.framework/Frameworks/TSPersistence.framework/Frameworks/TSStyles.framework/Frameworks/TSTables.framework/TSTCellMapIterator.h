@@ -14,15 +14,14 @@
     TSTCellUIDIterator *_cellUIDIterator;
     unsigned long long _index;
     _Bool _oneToMany;
-    struct TSTCellUID _currentCellUID;
+    struct TSKUIDStructCoord _currentCellUID;
     TSTCell *_currentCell;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)currentCell;
-- (const struct TSTCellUID *)currentCellUID;
-- (pair_4d5b4bcf)nextCellAndCellUID;
+- (const struct TSKUIDStructCoord *)currentCellUID;
+- (pair_94b15996)nextCellAndCellUID;
 - (id)initWithCellMap:(id)arg1;
 
 @end

@@ -85,26 +85,26 @@ struct UIEdgeInsets {
     double right;
 };
 
-struct vector<ASVControlPoint, std::__1::allocator<ASVControlPoint>> {
+struct vector<ASVControlPoint, std::allocator<ASVControlPoint>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<ASVControlPoint *, std::__1::allocator<ASVControlPoint>> {
+    struct __compressed_pair<ASVControlPoint *, std::allocator<ASVControlPoint>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<ASVPatchData, std::__1::allocator<ASVPatchData>> {
+struct vector<ASVPatchData, std::allocator<ASVPatchData>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<ASVPatchData *, std::__1::allocator<ASVPatchData>> {
+    struct __compressed_pair<ASVPatchData *, std::allocator<ASVPatchData>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned short, std::__1::allocator<unsigned short>> {
+struct vector<unsigned short, std::allocator<unsigned short>> {
     unsigned short *__begin_;
     unsigned short *__end_;
-    struct __compressed_pair<unsigned short *, std::__1::allocator<unsigned short>> {
+    struct __compressed_pair<unsigned short *, std::allocator<unsigned short>> {
         unsigned short *__value_;
     } __end_cap_;
 };
@@ -114,6 +114,12 @@ struct vector<unsigned short, std::__1::allocator<unsigned short>> {
 typedef struct {
     MISSING_TYPE *vector;
 } CDStruct_0e8a9a91;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+} CDStruct_14f26992;
 
 typedef struct {
     unsigned long long footprint;
@@ -126,6 +132,11 @@ typedef struct {
 
 typedef struct {
     float _field1;
+    float _field2;
+} CDStruct_b2fbf00d;
+
+typedef struct {
+    float _field1;
 } CDStruct_37a3040a;
 
 typedef struct {
@@ -134,4 +145,9 @@ typedef struct {
 } CDStruct_e791d03f;
 
 typedef struct CDStruct_183601bc;
+
+typedef struct {
+    CDStruct_14f26992 _field1;
+    CDStruct_14f26992 _field2;
+} CDStruct_4c83c94d;
 

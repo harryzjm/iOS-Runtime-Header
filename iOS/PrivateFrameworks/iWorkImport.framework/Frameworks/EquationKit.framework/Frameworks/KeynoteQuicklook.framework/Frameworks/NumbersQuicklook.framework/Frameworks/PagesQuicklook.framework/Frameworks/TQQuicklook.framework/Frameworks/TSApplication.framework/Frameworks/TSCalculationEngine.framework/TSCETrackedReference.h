@@ -16,17 +16,16 @@
 
 @property(nonatomic) struct TSUCellCoord formulaCoord; // @synthesize formulaCoord=_formulaCoord;
 - (id)initWithTrackedReferenceTSPObjectDeprecated:(id)arg1;
-- (id)initFromExpandedArchive:(const struct ExpandedTrackedReferenceArchive *)arg1;
-- (id)initFromArchive:(const struct TrackedReferenceArchive *)arg1;
-- (void)encodeToExpandedArchive:(struct ExpandedTrackedReferenceArchive *)arg1 archiver:(id)arg2;
-- (void)encodeToArchive:(struct TrackedReferenceArchive *)arg1 archiver:(id)arg2;
+- (id)initFromExpandedArchive:(const void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
+- (void)encodeToExpandedArchive:(void *)arg1 archiver:(id)arg2;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
 - (id)description;
-- (_Bool)isValidWithReferenceTracker:(id)arg1;
-- (void)registerWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (id)precedentsWithCalcEngine:(id)arg1 hostOwnerUID:(const UUIDData_5fbc143e *)arg2;
-- (id)getPrecedentsWithCalcEngine:(id)arg1 hostOwnerUID:(const UUIDData_5fbc143e *)arg2;
-- (id)referencesForCalcEngine:(id)arg1 referenceTrackerUID:(const UUIDData_5fbc143e *)arg2;
-- (struct TSCECellRef)refersToCellRefForCalculationEngine:(id)arg1 referenceTrackerUID:(const UUIDData_5fbc143e *)arg2;
+- (void)registerWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (id)precedentsWithCalcEngine:(id)arg1 hostOwnerUID:(const struct TSKUIDStruct *)arg2;
+- (id)getPrecedentsWithCalcEngine:(id)arg1 hostOwnerUID:(const struct TSKUIDStruct *)arg2;
+- (id)referencesForCalcEngine:(id)arg1 referenceTrackerUID:(const struct TSKUIDStruct *)arg2;
+- (struct TSCECellRef)refersToCellRefForCalculationEngine:(id)arg1 referenceTrackerUID:(const struct TSKUIDStruct *)arg2;
 - (struct TSCEASTNodeArray *)ast;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)replaceContentsWithContentsOfTrackedReference:(id)arg1;
@@ -34,6 +33,7 @@
 - (id)initWithSpanningRangeRef:(const struct TSCESpanningRangeRef *)arg1;
 - (id)initWithRangeRef:(const struct TSCERangeRef *)arg1;
 - (id)initWithCellRef:(const struct TSCECellRef *)arg1;
+- (_Bool)isEqualToTrackedReference:(id)arg1;
 - (void)dealloc;
 
 @end

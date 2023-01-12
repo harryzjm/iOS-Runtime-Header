@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     float simulatedAperture;
     CDStruct_1b6d18a9 videoMinFrameDurationOverride;
     float maxGainOverride;
+    _Bool centerStageAllowed;
+    _Bool backgroundBlurAllowed;
     _Bool ready;
     float portraitLightingEffectStrength;
     AVWeakReference *weakReference;

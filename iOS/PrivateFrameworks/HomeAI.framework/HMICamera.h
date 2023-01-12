@@ -16,6 +16,7 @@
     NSUUID *_identifier;
     NSString *_manufacturer;
     NSString *_model;
+    NSString *_firmwareVersion;
     NSString *_name;
 }
 
@@ -23,6 +24,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(readonly) NSString *name; // @synthesize name=_name;
+@property(readonly) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
 @property(readonly) NSString *model; // @synthesize model=_model;
 @property(readonly) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
@@ -31,6 +33,7 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)attributeDescriptions;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 manufacturer:(id)arg3 model:(id)arg4 firmwareVersion:(id)arg5;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 manufacturer:(id)arg3 model:(id)arg4;
 
 // Remaining properties

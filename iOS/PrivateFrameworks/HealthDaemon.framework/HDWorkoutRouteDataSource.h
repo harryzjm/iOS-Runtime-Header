@@ -41,8 +41,6 @@
 - (id)exportedInterface;
 - (id)_queue_createLocationDataCollectorWithActivityType:(unsigned long long)arg1 workoutUUID:(id)arg2;
 - (void)_queue_setupLocationDataCollector;
-- (id)_workoutBuilderServer;
-- (void)_queue_recoverCurrentElevation;
 - (void)altitudeUpdated:(double)arg1;
 - (void)workoutRouteUpdated:(id)arg1;
 - (void)elevationUpdated:(unsigned long long)arg1;

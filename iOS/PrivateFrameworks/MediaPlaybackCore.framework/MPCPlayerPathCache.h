@@ -25,7 +25,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *endpointObservers; // @synthesize endpointObservers=_endpointObservers;
 @property(readonly, nonatomic) NSMutableDictionary *playerPathObservers; // @synthesize playerPathObservers=_playerPathObservers;
 @property(readonly, nonatomic) NSMutableDictionary *playerPathResolutions; // @synthesize playerPathResolutions=_playerPathResolutions;
-- (void)_onQueue_registerForEndpointChangeWithUnresolvedPlayerPath:(id)arg1;
+- (void)_onQueue_registerForEndpointChangeWithUnresolvedPlayerPath:(id)arg1 routeResolvedPlayerPath:(id)arg2;
 - (void)_onQueue_registerForInvalidationWithUnresolvedPlayerPath:(id)arg1 invalidationPlayerPath:(void *)arg2;
 - (id)resolvedPlayerPathForPlayerPath:(id)arg1;
 - (id)observationTokenDescriptionForPlayerPath:(id)arg1;

@@ -9,22 +9,25 @@
 #import <FileProvider/NSCopying-Protocol.h>
 #import <FileProvider/NSSecureCoding-Protocol.h>
 
-@class FPItemCollection, NSArray, NSError, NSFileProviderDomain, NSFileProviderManager, NSProgress, NSString, NSURL;
+@class FPItemCollection, NSArray, NSDictionary, NSError, NSFileProviderDomain, NSFileProviderManager, NSProgress, NSString, NSURL;
 
 @interface FPProviderDomain : NSObject <NSSecureCoding, NSCopying>
 {
     FPItemCollection *_itemCollection;
     _Bool _keepLocalStorageUpToDate;
     _Bool _readOnly;
+    _Bool _useFPFS;
     _Bool _supportsEnumeration;
     _Bool _isAvailableSystemWide;
     _Bool _enabled;
-    _Bool _isConnectedToAppExtension;
     _Bool _canDisable;
-    _Bool _hidden;
     _Bool _usesUniqueItemIdentifiersAcrossDevices;
     _Bool _supportsPickingFolders;
     _Bool _needsAuthentication;
+    _Bool _allowsUserControlledEviction;
+    _Bool _allowsSystemDeleteAlerts;
+    _Bool _appliesChangesAtomically;
+    _Bool _hidden;
     _Bool _ejectable;
     _Bool _shouldHideExtensionName;
     _Bool _shouldHideDomainDisplayName;
@@ -34,7 +37,9 @@
     NSString *_topLevelBundleIdentifier;
     NSURL *_extensionBundleURL;
     NSArray *_storageURLs;
+    unsigned long long _disconnectionState;
     NSArray *_supportedSearchFilters;
+    NSDictionary *_domainUserInfo;
     NSProgress *_progress;
     NSFileProviderManager *_manager;
     NSString *_providerDisplayName;
@@ -43,6 +48,8 @@
     NSString *_version;
 }
 
++ (void)removeDomainWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)removeDomainAndPreserveDataWithID:(id)arg1 mode:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)fetchProviderDomainForItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)providerDomainForItem:(id)arg1 error:(id *)arg2;
 + (id)providerDomainsWithError:(id *)arg1;
@@ -50,6 +57,7 @@
 + (void)fetchProviderDomainWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)providerDomainForURL:(id)arg1 error:(id *)arg2;
 + (_Bool)supportsSecureCoding;
++ (void)_t_discardCache;
 + (void)endMonitoringProviderDomainChanges:(id)arg1;
 + (id)beginMonitoringProviderDomainChangesWithHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
@@ -58,17 +66,21 @@
 @property(retain, nonatomic) NSString *version; // @synthesize version=_version;
 @property(retain, nonatomic) NSString *purposeIdentifier; // @synthesize purposeIdentifier=_purposeIdentifier;
 @property(nonatomic, getter=isEjectable) _Bool ejectable; // @synthesize ejectable=_ejectable;
+@property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(retain, nonatomic) NSFileProviderDomain *domain; // @synthesize domain=_domain;
 @property(retain, nonatomic) NSString *providerDisplayName; // @synthesize providerDisplayName=_providerDisplayName;
 @property(readonly, nonatomic) NSFileProviderManager *manager; // @synthesize manager=_manager;
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+@property(nonatomic) _Bool appliesChangesAtomically; // @synthesize appliesChangesAtomically=_appliesChangesAtomically;
+@property(nonatomic) _Bool allowsSystemDeleteAlerts; // @synthesize allowsSystemDeleteAlerts=_allowsSystemDeleteAlerts;
+@property(nonatomic) _Bool allowsUserControlledEviction; // @synthesize allowsUserControlledEviction=_allowsUserControlledEviction;
+@property(retain, nonatomic) NSDictionary *domainUserInfo; // @synthesize domainUserInfo=_domainUserInfo;
 @property(nonatomic) _Bool needsAuthentication; // @synthesize needsAuthentication=_needsAuthentication;
 @property(nonatomic) _Bool supportsPickingFolders; // @synthesize supportsPickingFolders=_supportsPickingFolders;
 @property(nonatomic) _Bool usesUniqueItemIdentifiersAcrossDevices; // @synthesize usesUniqueItemIdentifiersAcrossDevices=_usesUniqueItemIdentifiersAcrossDevices;
 @property(retain, nonatomic) NSArray *supportedSearchFilters; // @synthesize supportedSearchFilters=_supportedSearchFilters;
-@property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(nonatomic) _Bool canDisable; // @synthesize canDisable=_canDisable;
-@property(nonatomic) _Bool isConnectedToAppExtension; // @synthesize isConnectedToAppExtension=_isConnectedToAppExtension;
+@property(nonatomic) unsigned long long disconnectionState; // @synthesize disconnectionState=_disconnectionState;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool isAvailableSystemWide; // @synthesize isAvailableSystemWide=_isAvailableSystemWide;
 @property(retain, nonatomic) NSArray *storageURLs; // @synthesize storageURLs=_storageURLs;
@@ -76,11 +88,15 @@
 @property(retain, nonatomic) NSString *topLevelBundleIdentifier; // @synthesize topLevelBundleIdentifier=_topLevelBundleIdentifier;
 @property(nonatomic) _Bool supportsEnumeration; // @synthesize supportsEnumeration=_supportsEnumeration;
 @property(retain, nonatomic) NSArray *supportedFileTypes; // @synthesize supportedFileTypes=_supportedFileTypes;
+@property(nonatomic, getter=isUsingFPFS) _Bool useFPFS; // @synthesize useFPFS=_useFPFS;
 @property(nonatomic, getter=isReadOnly) _Bool readOnly; // @synthesize readOnly=_readOnly;
 @property(readonly, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) NSError *error;
+@property(readonly, copy, nonatomic) NSString *personaIdentifier;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+@property(readonly, nonatomic) _Bool isDataSeparatedDomain;
+@property(readonly, nonatomic) _Bool isEnterpriseDomain;
 @property(readonly, nonatomic) _Bool isMainiCloudDriveDomain;
 @property(readonly, nonatomic) _Bool isiCloudDriveProvider;
 - (void)setEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -88,6 +104,10 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) NSString *spotlightMountPoint;
+@property(readonly, nonatomic) NSString *localizedDisconnectionBannerText;
+@property(readonly, nonatomic) unsigned long long testingModes;
+@property(readonly, nonatomic) _Bool isConnectedToAppExtension;
+@property(readonly, nonatomic) NSString *disconnectionReason;
 @property(readonly, nonatomic) NSString *iCloudAccountIdentifier;
 @property(readonly, nonatomic) _Bool containsPhotos;
 @property(readonly, nonatomic) _Bool canDisconnect;
@@ -97,7 +117,6 @@
 @property(readonly, nonatomic) NSString *domainDisplayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)debugDescription;
 - (id)description;
 - (id)initWithProviderID:(id)arg1 domain:(id)arg2;
 - (id)init;

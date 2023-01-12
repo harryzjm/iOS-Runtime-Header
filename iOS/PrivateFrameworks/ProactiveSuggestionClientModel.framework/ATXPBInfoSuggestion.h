@@ -19,6 +19,7 @@
     double _startDate;
     NSString *_appBundleIdentifier;
     NSData *_archivedIntent;
+    NSData *_archivedIntentDescription;
     NSData *_archivedMetadata;
     NSString *_clientModelId;
     NSString *_criterion;
@@ -36,6 +37,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *archivedIntentDescription; // @synthesize archivedIntentDescription=_archivedIntentDescription;
 @property(retain, nonatomic) NSString *criterion; // @synthesize criterion=_criterion;
 @property(nonatomic) double endDate; // @synthesize endDate=_endDate;
 @property(nonatomic) double startDate; // @synthesize startDate=_startDate;
@@ -59,6 +61,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasArchivedIntentDescription;
 @property(readonly, nonatomic) _Bool hasCriterion;
 @property(nonatomic) _Bool hasEndDate;
 @property(nonatomic) _Bool hasStartDate;

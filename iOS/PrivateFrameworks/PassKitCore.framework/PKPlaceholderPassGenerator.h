@@ -12,15 +12,19 @@
 {
     NSURL *_templateDirectory;
     PKPass *_templatePass;
+    CDUnknownBlockType _updateUrlsBlock;
     NSMutableDictionary *_passContent;
 }
 
 + (id)manifestSignatureForDirectory:(id)arg1 passCertificate:(id)arg2 appleWWDRCertificate:(id)arg3 certificatePassword:(id)arg4 error:(id *)arg5;
++ (id)addManifestToPass:(id)arg1;
 + (id)manifestForDirectory:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *passContent; // @synthesize passContent=_passContent;
 - (id)generateAndSignPassWithPassCertificate:(id)arg1 appleWWDRCertificate:(id)arg2 certificatePassword:(id)arg3 error:(id *)arg4;
 - (id)generatePass;
+- (void)_updatePassURLsConfigrationPassUrl:(id)arg1;
+- (void)setUpdatePassRemoteAssetConfigrationsWithBlock:(CDUnknownBlockType)arg1;
 - (long long)updatePassUpgradeRequestsWithBlock:(CDUnknownBlockType)arg1;
 - (long long)updatePaymentApplicationsWithBlock:(CDUnknownBlockType)arg1;
 - (void)insertPaymentApplication:(id)arg1;

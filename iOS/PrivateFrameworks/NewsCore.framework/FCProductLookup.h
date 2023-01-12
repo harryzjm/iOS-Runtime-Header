@@ -23,18 +23,9 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSError *productLookupError; // @synthesize productLookupError=_productLookupError;
-@property(retain, nonatomic) SKProduct *product; // @synthesize product=_product;
-@property(readonly, nonatomic) SKProductsRequest *request; // @synthesize request=_request;
-@property(readonly, nonatomic) NSObject<OS_dispatch_group> *productRequestGroup; // @synthesize productRequestGroup=_productRequestGroup;
-@property(readonly, nonatomic) NSNumber *storeExternalVersionID; // @synthesize storeExternalVersionID=_storeExternalVersionID;
-@property(readonly, nonatomic) NSNumber *appAdamID; // @synthesize appAdamID=_appAdamID;
-@property(readonly, nonatomic) NSString *offerName; // @synthesize offerName=_offerName;
 - (void)request:(id)arg1 didFailWithError:(id)arg2;
 - (void)requestDidFinish:(id)arg1;
 - (void)productsRequest:(id)arg1 didReceiveResponse:(id)arg2;
-- (id)lookup;
-- (id)initWithOfferName:(id)arg1 appAdamID:(id)arg2 storeExternalVersionID:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

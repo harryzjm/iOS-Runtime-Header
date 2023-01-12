@@ -11,6 +11,7 @@
 @interface WFQueuedRunRequest : NSObject
 {
     _Bool _shouldNotifyObservers;
+    unsigned long long _type;
     WFWorkflowRunRequest *_runRequest;
     WFWorkflowRunningContext *_runningContext;
     CDUnknownBlockType _completionHandler;
@@ -21,7 +22,9 @@
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly, nonatomic) WFWorkflowRunningContext *runningContext; // @synthesize runningContext=_runningContext;
 @property(readonly, nonatomic) WFWorkflowRunRequest *runRequest; // @synthesize runRequest=_runRequest;
-- (id)initWithRunRequest:(id)arg1 runningContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+- (id)description;
+- (id)initWithType:(unsigned long long)arg1 runRequest:(id)arg2 runningContext:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

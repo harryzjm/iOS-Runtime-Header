@@ -6,7 +6,7 @@
 
 #import <Silex/WKNavigationDelegate-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, NSURLRequest, WKBackForwardListItem, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView, WKWebpagePreferences, _WKContentRuleListAction;
+@class NSArray, NSData, NSError, NSString, NSURL, NSURLAuthenticationChallenge, NSURLRequest, WKBackForwardListItem, WKDownload, WKFrameInfo, WKNavigation, WKNavigationAction, WKWebView, WKWebpagePreferences, _WKContentRuleListAction;
 @protocol NSSecureCoding;
 
 @protocol WKNavigationDelegatePrivate <WKNavigationDelegate>
@@ -28,14 +28,13 @@
 - (void)_webView:(WKWebView *)arg1 didFailNavigation:(WKNavigation *)arg2 withError:(NSError *)arg3 userInfo:(id <NSSecureCoding>)arg4;
 - (void)_webView:(WKWebView *)arg1 didStartProvisionalNavigation:(WKNavigation *)arg2 userInfo:(id <NSSecureCoding>)arg3;
 - (void)_webView:(WKWebView *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 preferences:(WKWebpagePreferences *)arg3 userInfo:(id <NSSecureCoding>)arg4 decisionHandler:(void (^)(long long, WKWebpagePreferences *))arg5;
-- (void)_webView:(WKWebView *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 userInfo:(id <NSSecureCoding>)arg3 decisionHandler:(void (^)(long long, _WKWebsitePolicies *))arg4;
-- (void)_webView:(WKWebView *)arg1 decidePolicyForNavigationAction:(WKNavigationAction *)arg2 decisionHandler:(void (^)(long long, _WKWebsitePolicies *))arg3;
 - (void)_webViewDidRemoveNavigationGestureSnapshot:(WKWebView *)arg1;
 - (void)_webView:(WKWebView *)arg1 willSnapshotBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)_webViewWillEndNavigationGesture:(WKWebView *)arg1 withNavigationToBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)_webViewDidEndNavigationGesture:(WKWebView *)arg1 withNavigationToBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)_webViewDidBeginNavigationGesture:(WKWebView *)arg1;
-- (void)_webView:(WKWebView *)arg1 didNegotiateModernTLS:(NSURLAuthenticationChallenge *)arg2;
+- (void)_webView:(WKWebView *)arg1 contextMenuDidCreateDownload:(WKDownload *)arg2;
+- (void)_webView:(WKWebView *)arg1 didNegotiateModernTLSForURL:(NSURL *)arg2;
 - (void)_webView:(WKWebView *)arg1 authenticationChallenge:(NSURLAuthenticationChallenge *)arg2 shouldAllowLegacyTLS:(void (^)(_Bool))arg3;
 - (NSData *)_webCryptoMasterKeyForWebView:(WKWebView *)arg1;
 - (void)_webViewWebProcessDidBecomeUnresponsive:(WKWebView *)arg1;

@@ -10,6 +10,7 @@
 
 @interface _TtC7VFXCore16DebugVoxelSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *voxelQuery;
     MISSING_TYPE *isMenuItemEnabled;
 }
 

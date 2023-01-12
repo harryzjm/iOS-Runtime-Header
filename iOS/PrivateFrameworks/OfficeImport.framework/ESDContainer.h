@@ -35,11 +35,11 @@ __attribute__((visibility("hidden")))
 - (void)addChild:(id)arg1;
 - (id)childAt:(unsigned long long)arg1;
 - (unsigned long long)childCount;
-- (struct EshContainer *)eshContainer;
+- (void *)eshContainer;
 - (id)initFromReader:(struct OcReader *)arg1 type:(unsigned short)arg2 version:(unsigned short)arg3;
 - (id)initWithEshObject:(struct EshObject *)arg1;
 - (id)shapeContainer;
-- (struct EshGroup *)eshGroup;
+- (void *)eshGroup;
 - (id)initForExcelBinaryWithType:(unsigned short)arg1 version:(unsigned short)arg2 state:(id)arg3;
 - (id)initPBWithType:(unsigned short)arg1 version:(unsigned short)arg2 state:(id)arg3;
 - (void)addCStringWithChar2String:(const unsigned short *)arg1 instance:(int)arg2;

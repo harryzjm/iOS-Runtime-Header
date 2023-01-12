@@ -14,7 +14,7 @@
 {
     struct __CVBuffer *_origPixelBuffer;
     struct CGImage *_origCGImage;
-    struct __CFArray *_pixelBufferReps;
+    struct __CFDictionary *_pixelBufferReps;
     struct os_unfair_lock_s _pixelBufferRepsLock;
     CIImage *_origCIImage;
     CIContext *_passedInCIContext;
@@ -27,19 +27,13 @@
 }
 
 + (struct CGColorSpace *)copyColorspaceForFormat:(unsigned int)arg1 bitmapInfo:(unsigned int *)arg2;
-+ (int)_VNVTImageRotationSessionCreate:(struct OpaqueVTImageRotationSession **)arg1 rotation:(unsigned int)arg2;
-+ (int)_VNVTPixelTransferSessionCreate:(struct OpaqueVTPixelTransferSession **)arg1;
 + (struct CGRect)computeCenterCropRectFromCropRect:(struct CGRect)arg1 inImageSize:(struct CGSize)arg2 calculatedScaleX:(double *)arg3 calculatedScaleY:(double *)arg4;
 + (int)_helpReadOrientationFromOptionsDictionary:(id)arg1;
 + (const struct __CFDictionary *)ioSurfaceBackedPixelBufferAttributes;
++ (id)createPixelBufferRepsCacheKeyForCropRect:(struct CGRect)arg1 format:(unsigned int)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4;
 - (void).cxx_destruct;
-- (void)_dumpIntermediateImage:(struct __CVBuffer *)arg1 withOptions:(id)arg2;
-- (_Bool)_useCoreImageForFormat:(unsigned int)arg1;
-- (id)_optionsWithOverridingOptions:(id)arg1;
 - (id)augmentedCroppedBuffersWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 cropRect:(struct CGRect)arg4 options:(id)arg5 augmentationOptions:(id)arg6 error:(id *)arg7;
 - (id)augmentedBuffersWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 options:(id)arg4 augmentationOptions:(id)arg5 error:(id *)arg6;
-- (struct __CVBuffer *)_baseCVPixelBuffer;
-- (id)_baseCIImage;
 - (id)sequencedRequestPreviousObservationsKey;
 - (_Bool)wantsSequencedRequestObservationsRecording;
 - (void)purgeCachedRepresentations;
@@ -54,17 +48,14 @@
 - (_Bool)getPixelFocalLengthIfAvailable:(float *)arg1;
 @property(readonly) unsigned long long height;
 @property(readonly) unsigned long long width;
-- (void)calculateOrientationCorrectedImageDimensions;
 @property(readonly) CDStruct_d2aef016 timingInfo;
 - (int)orientation;
+- (struct __CVBuffer *)cropAndScaleBufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 cropRect:(struct CGRect)arg3 format:(unsigned int)arg4 imageCropAndScaleOption:(unsigned long long)arg5 options:(id)arg6 error:(id *)arg7 calculatedNormalizedOriginOffset:(struct CGPoint *)arg8 calculatedScaleX:(double *)arg9 calculatedScaleY:(double *)arg10 pixelBufferRepsCacheKey:(id *)arg11;
 - (struct __CVBuffer *)cropAndScaleBufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 cropRect:(struct CGRect)arg3 format:(unsigned int)arg4 imageCropAndScaleOption:(unsigned long long)arg5 options:(id)arg6 error:(id *)arg7 calculatedNormalizedOriginOffset:(struct CGPoint *)arg8 calculatedScaleX:(double *)arg9 calculatedScaleY:(double *)arg10;
+- (struct __CVBuffer *)croppedBufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 cropRect:(struct CGRect)arg4 options:(id)arg5 error:(id *)arg6 pixelBufferRepsCacheKey:(id *)arg7;
 - (struct __CVBuffer *)croppedBufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 cropRect:(struct CGRect)arg4 options:(id)arg5 error:(id *)arg6;
-- (struct __CVBuffer *)_retrieveBufferFromCacheIfFoundWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3;
-- (_Bool)_cropImageSourceManager:(id)arg1 outBuffer:(struct __CVBuffer **)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect)arg6 performCrop:(_Bool)arg7 options:(id)arg8 error:(id *)arg9;
-- (_Bool)_cropCIImage:(id)arg1 outBuffer:(struct __CVBuffer **)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect)arg6 performCrop:(_Bool)arg7 options:(id)arg8 error:(id *)arg9;
-- (_Bool)_isRectOutOfBounds:(struct CGRect)arg1;
-- (struct CGRect)_calculateTargetRectFromCropRect:(struct CGRect)arg1;
-- (_Bool)_cropCVPixelBuffer:(struct __CVBuffer *)arg1 outBuffer:(struct __CVBuffer **)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect)arg6 performCrop:(_Bool)arg7 options:(id)arg8 error:(id *)arg9;
+- (struct __CVBuffer *)cachedPixelBufferRepresentationForKey:(id)arg1;
+- (struct __CVBuffer *)bufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 options:(id)arg4 error:(id *)arg5 pixelBufferRepsCacheKey:(id *)arg6;
 - (struct __CVBuffer *)bufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 options:(id)arg4 error:(id *)arg5;
 - (struct CGImage *)originalCGImage;
 - (struct __CVBuffer *)originalPixelBuffer;
@@ -81,7 +72,6 @@
 - (id)initWithCGImage:(struct CGImage *)arg1 options:(id)arg2;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2;
-- (id)initWithOptions:(id)arg1 orientation:(unsigned int)arg2;
 
 @end
 

@@ -19,15 +19,15 @@ __attribute__((visibility("hidden")))
     int _olmcsMergeCountDelta;
     float _smartThreshold;
     float _smartDistanceFactor;
-    NSArray *_filterThreshold;
+    NSArray *_filterThresholds;
 }
 
 + (struct CGSize)getSuggestedImageSize:(struct CGSize)arg1;
 + (float)networkThreshold;
 + (id)processingDeviceDetectorWithEspressoNetwork:(CDStruct_2bc666a5)arg1 espressoPlan:(void *)arg2;
-+ (id)processingDeviceDetectorWithEspressoNetwork:(CDStruct_2bc666a5)arg1 espressoPlan:(void *)arg2 networkThreshold:(float)arg3 filterThreshold:(id)arg4;
++ (id)processingDeviceDetectorWithEspressoNetwork:(CDStruct_2bc666a5)arg1 espressoPlan:(void *)arg2 networkThreshold:(float)arg3 filterThresholds:(id)arg4;
 + (id)processingDeviceDetectorWithModelPath:(id)arg1 preferredDeviceID:(int)arg2 engineID:(int)arg3 storageType:(int)arg4;
-+ (id)processingDeviceDetectorWithModelPath:(id)arg1 networkThreshold:(float)arg2 filterThreshold:(id)arg3 preferredDeviceID:(int)arg4 engineID:(int)arg5 storageType:(int)arg6;
++ (id)processingDeviceDetectorWithModelPath:(id)arg1 networkThreshold:(float)arg2 filterThresholds:(id)arg3 preferredDeviceID:(int)arg4 engineID:(int)arg5 storageType:(int)arg6;
 + (id)supportedLabelKeys;
 + (float)inputImageAspectRatio;
 + (float)inputImageMaxDimension;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float olmcsThreshold; // @synthesize olmcsThreshold=_olmcsThreshold;
 @property(nonatomic) float osfsSizeRatio; // @synthesize osfsSizeRatio=_osfsSizeRatio;
 @property(nonatomic) float osfsThreshold; // @synthesize osfsThreshold=_osfsThreshold;
-@property(retain, nonatomic) NSArray *filterThreshold; // @synthesize filterThreshold=_filterThreshold;
+@property(retain, nonatomic) NSArray *filterThresholds; // @synthesize filterThresholds=_filterThresholds;
 @property(nonatomic) float nmsThreshold; // @synthesize nmsThreshold=_nmsThreshold;
 - (id)enforceSquareFaces:(id)arg1 withHeight:(float)arg2 andWidth:(float)arg3;
 - (id)detectAndProcessObjects:(const struct vImage_Buffer *)arg1 inputIsBGR:(_Bool)arg2;
@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)overlappingSmallFacesSuppression:(id)arg1;
 @property(nonatomic) float threshold;
 - (id)initWithNetwork:(id)arg1;
-- (id)initWithNetwork:(id)arg1 filterThreshold:(id)arg2;
+- (id)initWithNetwork:(id)arg1 filterThresholds:(id)arg2;
 
 @end
 

@@ -14,8 +14,10 @@
 + (struct CGRect)constrainFrameToScreen:(struct CGRect)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_canBecomeKeyWindow;
+- (id)autorotationPreventionReasons;
+- (_Bool)isContentHidden;
 @property(readonly, nonatomic) SBHomeScreenViewController *homeScreenViewController;
-- (id)_initWithScreen:(id)arg1 layoutStrategy:(id)arg2 debugName:(id)arg3 rootViewController:(id)arg4 scene:(id)arg5;
+- (id)initWithScreen:(id)arg1 scene:(id)arg2 rootViewController:(id)arg3 layoutStrategy:(id)arg4 role:(id)arg5 debugName:(id)arg6;
 
 @end
 

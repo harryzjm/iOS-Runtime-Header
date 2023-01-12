@@ -9,20 +9,14 @@
 }
 
 + (const char *)debugQueueName;
-- (_Bool)_executeDeleteBusinessItemSQLQuery:(const char *)arg1;
 - (_Bool)deleteBusinessItemWithPhoneNumber:(id)arg1;
 - (_Bool)deleteBusinessItemWithBizID:(id)arg1;
 - (_Bool)deleteBusinessItem:(id)arg1;
-- (id)_executeFetchPersistentBusinessItemObjectSQLQuery:(const char *)arg1;
 - (id)fetchPersistentBusinessItemObjectWithPhoneNumber:(id)arg1;
 - (id)fetchPersistentBusinessItemObjectWithBizID:(id)arg1;
-- (_Bool)_updateToLastRetrievedDate:(id)arg1 forBusinessItem:(id)arg2;
 - (_Bool)updateLastRetrievedDateForBusinessItem:(id)arg1;
 - (_Bool)updateTTL:(double)arg1 forBusinessItem:(id)arg2;
-- (_Bool)_insertBusinessItem:(id)arg1 withTTL:(double)arg2;
-- (_Bool)_insertOrReplaceBusinessItem:(id)arg1 withTTL:(double)arg2;
 - (_Bool)insertOrReplaceBusinessItem:(id)arg1 withTTL:(double)arg2;
-- (id)_databasePath;
 - (const char *)schema;
 - (long long)schemaVersion;
 - (id)databasePath;

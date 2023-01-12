@@ -9,6 +9,7 @@
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
 @class CALayer, CLKDevice, NSCalendar, NSDate, NSNumber, NSString, NSTimeZone, NSTimer, NTKColoringImageView, NTKHandView, UIColor;
+@protocol NTKAnalogHandsViewDelegate;
 
 @interface NTKAnalogHandsView : UIView <NTKTimeView>
 {
@@ -25,9 +26,6 @@
     CALayer *_minuteHandTransitionPegLayer;
     CALayer *_hourHandTransitionBodyLayer;
     CALayer *_hourHandTransitionStemLayer;
-    UIView *_hourShadowView;
-    UIView *_minuteShadowView;
-    UIView *_secondShadowView;
     _Bool _shadowCompositingEnabled;
     _Bool _useDirectionalShadows;
     UIView *_directionalShadowContainerView;
@@ -39,10 +37,13 @@
     NTKHandView *_hourHandView;
     NTKHandView *_minuteHandView;
     NTKHandView *_secondHandView;
+    double _secondHandDotDiameter;
+    double _minuteHandDotDiameter;
     NSDate *_overrideDate;
     NSCalendar *_calendar;
     long long _dataMode;
     UIColor *_inlayColor;
+    id <NTKAnalogHandsViewDelegate> _delegate;
     NTKHandView *_hourHandView_clientSide;
     NTKHandView *_minuteHandView_clientSide;
     NTKHandView *_secondHandView_clientSide;
@@ -59,12 +60,15 @@
 @property(readonly, nonatomic) NTKHandView *secondHandView_clientSide; // @synthesize secondHandView_clientSide=_secondHandView_clientSide;
 @property(readonly, nonatomic) NTKHandView *minuteHandView_clientSide; // @synthesize minuteHandView_clientSide=_minuteHandView_clientSide;
 @property(readonly, nonatomic) NTKHandView *hourHandView_clientSide; // @synthesize hourHandView_clientSide=_hourHandView_clientSide;
+@property(nonatomic) __weak id <NTKAnalogHandsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIColor *inlayColor; // @synthesize inlayColor=_inlayColor;
 @property(nonatomic, getter=isFrozen) _Bool frozen; // @synthesize frozen=_frozen;
 @property(nonatomic) long long dataMode; // @synthesize dataMode=_dataMode;
 @property(readonly, nonatomic) _Bool timeScrubbing; // @synthesize timeScrubbing=_timeScrubbing;
 @property(readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(readonly, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
+@property(nonatomic) double minuteHandDotDiameter; // @synthesize minuteHandDotDiameter=_minuteHandDotDiameter;
+@property(nonatomic) double secondHandDotDiameter; // @synthesize secondHandDotDiameter=_secondHandDotDiameter;
 @property(retain, nonatomic) NTKHandView *secondHandView; // @synthesize secondHandView=_secondHandView;
 @property(retain, nonatomic) NTKHandView *minuteHandView; // @synthesize minuteHandView=_minuteHandView;
 @property(retain, nonatomic) NTKHandView *hourHandView; // @synthesize hourHandView=_hourHandView;
@@ -73,7 +77,6 @@
 - (void)_repointDebugHandsToCurrentTime;
 - (void)_handleDisplayLink;
 - (_Bool)_dontRepointDebugHands;
-- (double)_minuteHandDotDiameter;
 @property(readonly, nonatomic) UIView *minuteHandDot;
 @property(readonly, nonatomic) UIView *secondHandDot;
 - (void)_deregisterFromDisplayLinkManager;
@@ -110,6 +113,7 @@
 - (void)_enumerateShadowViews:(CDUnknownBlockType)arg1;
 - (void)_enumerateHandViews:(CDUnknownBlockType)arg1;
 - (void)layoutShadowViews;
+- (void)layoutHandViews;
 - (void)layoutSubviews;
 - (void)dealloc;
 - (id)initForDevice:(id)arg1;

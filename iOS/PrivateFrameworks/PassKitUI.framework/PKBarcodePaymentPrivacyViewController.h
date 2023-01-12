@@ -4,37 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitUI/PKLinkedApplicationObserver-Protocol.h>
+@class NSString;
 
-@class NSString, PKLinkedApplication, PKPaymentPass, PKPaymentSetupProduct;
-
-@interface PKBarcodePaymentPrivacyViewController <PKLinkedApplicationObserver>
+@interface PKBarcodePaymentPrivacyViewController
 {
     unsigned long long _displayContext;
-    PKPaymentPass *_pass;
-    PKPaymentSetupProduct *_product;
-    PKLinkedApplication *_linkedApplication;
+    NSString *_issuerName;
 }
 
 - (void).cxx_destruct;
-- (id)_partnerName;
 - (void)_dismiss;
-- (void)_openAppButtonPressed:(id)arg1;
 - (void)_closeButtonPressed:(id)arg1;
-- (void)_updateOpenApplicationButtonVisibility;
 - (void)explanationViewDidSelectContinue:(id)arg1;
-- (void)linkedApplicationDidChangeState:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
-- (id)_initWithPaymentPass:(id)arg1 paymentSetupProduct:(id)arg2 linkedApplication:(id)arg3 displayContext:(unsigned long long)arg4 paymentSetupContext:(long long)arg5;
-- (id)initWithPaymentSetupProduct:(id)arg1 linkedApplication:(id)arg2 displayContext:(unsigned long long)arg3 paymentSetupContext:(long long)arg4;
-- (id)initWithPaymentPass:(id)arg1 linkedApplication:(id)arg2 displayContext:(unsigned long long)arg3 paymentSetupContext:(long long)arg4;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithIssuerName:(id)arg1 displayContext:(unsigned long long)arg2 paymentSetupContext:(long long)arg3;
 
 @end
 

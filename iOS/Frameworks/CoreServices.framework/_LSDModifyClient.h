@@ -6,13 +6,19 @@
 
 #import <CoreServices/_LSDModifyProtocol-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface _LSDModifyClient <_LSDModifyProtocol>
 {
 }
 
+- (void)performUninstallCall:(id)arg1 withOptions:(id)arg2 uninstallType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)performInstallCall:(id)arg1 withOptions:(id)arg2 installType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)setPreferenceValueForCallingApplication:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPreferenceValue:(id)arg1 forKey:(id)arg2 forApplicationAtURL:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)garbageCollectDatabaseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setUpdateAvailabilities:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshContentInFrameworkAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)unregisterApplicationAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)uninstallApplication:(id)arg1 withOptions:(id)arg2 uninstallType:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
@@ -23,13 +29,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)clientHasMIEntitlement:(id)arg1;
 - (void)resetServerStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)relaxApplicationTypeRequirements:(_Bool)arg1 forBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)removeAllHandlerPrefsForBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAllHandlersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeHandlerForURLScheme:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setHandler:(id)arg1 version:(struct LSVersionNumber)arg2 forURLScheme:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)removeHandlerForContentType:(id)arg1 roles:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setHandler:(id)arg1 version:(struct LSVersionNumber)arg2 roles:(unsigned int)arg3 forContentType:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)unregisterExtensionPoint:(id)arg1 platform:(unsigned int)arg2 withVersion:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)registerExtensionPoint:(id)arg1 platform:(unsigned int)arg2 withInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)registerExtensionPoint:(id)arg1 platform:(unsigned int)arg2 declaringURL:(id)arg3 withInfo:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)updateContainerUnit:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerContainerURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unregisterBundleUnit:(unsigned int)arg1 options:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -37,6 +44,12 @@ __attribute__((visibility("hidden")))
 - (void)setDatabaseIsSeeded:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)willHandleInvocation:(id)arg1 isReply:(_Bool)arg2;
 - (_Bool)canRegisterWithOptions:(unsigned int)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -11,6 +11,7 @@
 
 @interface CPLScopeChange <NSSecureCoding, NSCopying>
 {
+    _Bool _containerHasBeenWiped;
     _Bool _activated;
     long long _scopeType;
     CPLShare *_share;
@@ -35,7 +36,9 @@
 @property(retain, nonatomic) CPLLibraryState *libraryState; // @synthesize libraryState=_libraryState;
 @property(nonatomic, getter=isActivated) _Bool activated; // @synthesize activated=_activated;
 @property(retain, nonatomic) CPLShare *share; // @synthesize share=_share;
+@property(readonly, nonatomic) _Bool containerHasBeenWiped; // @synthesize containerHasBeenWiped=_containerHasBeenWiped;
 @property(nonatomic) long long scopeType; // @synthesize scopeType=_scopeType;
+- (_Bool)isScopeChange;
 - (void)udpateScopeFromScopeChange:(id)arg1 direction:(unsigned long long)arg2 didHaveChanges:(_Bool *)arg3;
 - (long long)defaultFlags;
 - (id)redactedDescription;

@@ -9,27 +9,21 @@
 #import <SpringBoard/BSInvalidatable-Protocol.h>
 
 @class NSDate, NSString, SBApplication;
-@protocol BSTimer, SBApplicationWakeLifecycleHandling;
+@protocol BSTimerScheduleQuerying><BSInvalidatable, SBApplicationWakeLifecycleHandling;
 
 @interface SBApplicationWakeScheduler : NSObject <BSInvalidatable>
 {
     id <SBApplicationWakeLifecycleHandling> _lifecycleTracker;
     SBApplication *_application;
     _Bool _invalidated;
-    id <BSTimer> _wakeTimer;
-    id <BSTimer> _wakeSuspendTimer;
+    id <BSTimerScheduleQuerying><BSInvalidatable> _wakeTimer;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <BSTimer> wakeSuspendTimer; // @synthesize wakeSuspendTimer=_wakeSuspendTimer;
-@property(retain, nonatomic) id <BSTimer> wakeTimer; // @synthesize wakeTimer=_wakeTimer;
+@property(retain, nonatomic) id <BSTimerScheduleQuerying><BSInvalidatable> wakeTimer; // @synthesize wakeTimer=_wakeTimer;
 - (void)_applicationProcessStateDidChange:(id)arg1;
-- (id)_createPersistentTimerWithFireDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)_createTimerWithFireDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)_safelyScheduleTimerForDate:(id)arg1 persistent:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_expectedFireDateForTimer:(id)arg1;
 - (void)_forceInvalidate;
-- (id)suspensionDate;
 - (void)invalidate;
 - (void)endResumeIfAwoken;
 - (void)wakeImmediately;

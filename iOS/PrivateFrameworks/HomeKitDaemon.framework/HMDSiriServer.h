@@ -11,12 +11,13 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDNotificationRegistration, HMDSiriAccessoryMonitor, HMDSiriRemoteInputServer, HMDSiriSession, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_workloop;
 
 @interface HMDSiriServer : NSObject <HMDDataStreamBulkSendListener, HMDSiriAccessoryMonitorDelegate, HMFLogging>
 {
     unsigned int _targetControlIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_workloop> *_audioWorkloop;
     HMDNotificationRegistration *_notificationRegistration;
     HMDSiriRemoteInputServer *_siriInputServer;
     HMDSiriAccessoryMonitor *_siriAccessoryMonitor;
@@ -31,6 +32,7 @@
 @property(retain, nonatomic) HMDSiriAccessoryMonitor *siriAccessoryMonitor; // @synthesize siriAccessoryMonitor=_siriAccessoryMonitor;
 @property(retain, nonatomic) HMDSiriRemoteInputServer *siriInputServer; // @synthesize siriInputServer=_siriInputServer;
 @property(readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
+@property(retain, nonatomic) NSObject<OS_dispatch_workloop> *audioWorkloop; // @synthesize audioWorkloop=_audioWorkloop;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)accessoryDidCloseDataStream:(id)arg1;
 - (void)accessoryDidStartListening:(id)arg1;
@@ -49,6 +51,7 @@
 - (void)_setupSiriUIContext;
 - (void)_maybeTearDownSiriPlugin;
 - (void)_setupSiriPlugin;
+- (void)_handleDisconnectForAccessory:(id)arg1;
 - (void)handleAccessoryRemoved:(id)arg1;
 - (void)handleAccessoryDisconnected:(id)arg1;
 - (void)handleAccessoryConnected:(id)arg1;

@@ -6,16 +6,18 @@
 
 #import <UIKit/UIActivity.h>
 
-@class HMCameraClip, HMCameraProfile;
+@class HMCameraClip, HMCameraProfile, UINavigationController;
 
 @interface HUCameraRecordingFeedbackActivity : UIActivity
 {
     HMCameraClip *_cameraClip;
     HMCameraProfile *_cameraProfile;
     CDUnknownBlockType _submissionHandler;
+    UINavigationController *_previewNavigationController;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UINavigationController *previewNavigationController; // @synthesize previewNavigationController=_previewNavigationController;
 @property(copy, nonatomic) CDUnknownBlockType submissionHandler; // @synthesize submissionHandler=_submissionHandler;
 @property(retain, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property(retain, nonatomic) HMCameraClip *cameraClip; // @synthesize cameraClip=_cameraClip;

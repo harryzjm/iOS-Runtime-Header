@@ -17,6 +17,7 @@
     SBHIconModel *_iconModel;
     NSHashTable *_executingQueryContexts;
     NSHashTable *_observers;
+    _Bool _isShutdown;
     NSObject<OS_dispatch_queue> *_processingQueue;
 }
 
@@ -44,8 +45,13 @@
 - (void)_processingQueue_observerDispatchError:(id)arg1 forQuery:(id)arg2;
 - (void)_processingQueue_observerDispatchQueryResultsWereUpdated:(id)arg1;
 - (void)executeQuery:(id)arg1;
+@property(readonly, nonatomic) _Bool isShutdown;
+- (_Bool)_processingQueue_isShutdown;
+- (void)shutdown;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)_teardownNotifications;
+- (void)_setupNotifications;
 - (_Bool)_processingQueue_isIconModelReloading;
 - (id)init;
 - (id)initWithIconModel:(id)arg1;

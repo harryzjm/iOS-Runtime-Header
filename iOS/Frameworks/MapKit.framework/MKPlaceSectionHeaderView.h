@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKVibrantLabel, NSArray, NSLayoutConstraint, NSString, UIImage, _MKRightImageButton;
+@class MKVibrantLabel, NSArray, NSLayoutConstraint, NSString, UIFont, UIImage, _MKRightImageButton;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceSectionHeaderView
@@ -17,7 +17,9 @@ __attribute__((visibility("hidden")))
     _Bool _contentChanged;
     double _width;
     _Bool _showSeeMoreButton;
+    _Bool _seeMoreButtonAlwaysOnNewLine;
     NSString *_seeMoreButtonText;
+    UIFont *_seeMoreButtonFont;
     NSString *_providerName;
     MKVibrantLabel *_sectionHeaderLabel;
     _MKRightImageButton *_seeMoreButton;
@@ -35,9 +37,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *seeMoreButtonConstraints; // @synthesize seeMoreButtonConstraints=_seeMoreButtonConstraints;
 @property(retain, nonatomic) _MKRightImageButton *seeMoreButton; // @synthesize seeMoreButton=_seeMoreButton;
 @property(retain, nonatomic) MKVibrantLabel *sectionHeaderLabel; // @synthesize sectionHeaderLabel=_sectionHeaderLabel;
+@property(nonatomic) _Bool seeMoreButtonAlwaysOnNewLine; // @synthesize seeMoreButtonAlwaysOnNewLine=_seeMoreButtonAlwaysOnNewLine;
 @property(nonatomic) _Bool showSeeMoreButton; // @synthesize showSeeMoreButton=_showSeeMoreButton;
 @property(nonatomic) struct CGSize iconDisplaySize; // @synthesize iconDisplaySize=_iconDisplaySize;
 @property(retain, nonatomic) NSString *providerName; // @synthesize providerName=_providerName;
+@property(retain, nonatomic) UIFont *seeMoreButtonFont; // @synthesize seeMoreButtonFont=_seeMoreButtonFont;
 @property(retain, nonatomic) NSString *title;
 - (void)setTarget:(id)arg1 action:(SEL)arg2;
 @property(retain, nonatomic) UIImage *icon;

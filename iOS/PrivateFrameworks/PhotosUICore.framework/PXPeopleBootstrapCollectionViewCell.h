@@ -39,6 +39,7 @@
 - (void)_updateCellSizing;
 - (_Bool)_isRTL;
 @property(retain, nonatomic) UIImage *image;
+- (void)setImage:(id)arg1 contentsRect:(struct CGRect)arg2;
 - (void)prepareForReuse;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

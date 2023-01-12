@@ -7,12 +7,16 @@
 #import <FileProvider/FPSpotlightDataSourceDelegate-Protocol.h>
 
 @class FPQueryEnumerationSettings, NSArray, NSNumber, NSPredicate, NSString;
+@protocol FPIndexingAssertion;
 
 @interface FPQueryCollection <FPSpotlightDataSourceDelegate>
 {
     FPQueryEnumerationSettings *_settings;
     Class _descriptorClass;
     NSPredicate *_predicate;
+    _Bool _isFetchingAssertion;
+    _Bool _isObserving;
+    id <FPIndexingAssertion> _assertion;
     unsigned long long _itemsOrigin;
     NSString *_descriptionName;
 }
@@ -27,6 +31,8 @@
 @property(copy) NSString *descriptionName; // @synthesize descriptionName=_descriptionName;
 @property(readonly, nonatomic) unsigned long long itemsOrigin; // @synthesize itemsOrigin=_itemsOrigin;
 @property(copy) NSString *tagIdentifier;
+- (void)stopObserving;
+- (void)startObserving;
 - (id)_enumerationSettingsPredicate;
 - (id)_createDescriptorWithSortDescriptors:(id)arg1;
 - (id)underlyingQueryStringForMountPoint:(id)arg1;
@@ -41,6 +47,9 @@
 - (id)initWithQueryDescriptorClass:(Class)arg1 predicate:(id)arg2 paced:(_Bool)arg3;
 - (id)initWithQueryDescriptorClass:(Class)arg1 predicate:(id)arg2;
 - (id)initWithQueryDescriptorClass:(Class)arg1;
+
+// Remaining properties
+@property(readonly) unsigned long long lastForcedUpdate;
 
 @end
 

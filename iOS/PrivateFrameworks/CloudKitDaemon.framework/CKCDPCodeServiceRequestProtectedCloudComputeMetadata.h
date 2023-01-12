@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestProtectedCloudComputeMetadata : PBCodable <NSCopying>
 {
     NSMutableArray *_cryptoSessions;

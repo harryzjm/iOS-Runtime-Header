@@ -19,6 +19,7 @@
     _Bool mIsOpaque;
     _Bool mIsValid;
     unsigned long long mValidationStatus;
+    _Bool mIsRawImage;
     unsigned long long mDPI;
     NSObject<OS_dispatch_queue> *mImageQueue;
     TSUOnce *mCheckIfValidOnce;
@@ -27,22 +28,16 @@
     unsigned long long mEstimatedSize;
 }
 
-+ (struct CGImageSource *)p_newImageSourceFromFilePath:(id)arg1;
-+ (struct CGImageSource *)p_newImageSourceFromCacheForData:(id)arg1 withFilenameSuffix:(id)arg2;
-+ (void)clearCacheForDataUniqueIdentifier:(id)arg1 context:(id)arg2;
-+ (id)p_cacheStringForData:(id)arg1;
-+ (id)p_cacheDirectoryForDigestString:(id)arg1 isApplicationData:(_Bool)arg2 context:(id)arg3;
-+ (id)p_cacheDirectoryForData:(id)arg1;
-+ (void)initialize;
 + (struct CGSize)naturalSizeForImageData:(id)arg1;
 + (id)TSUImageForImageData:(id)arg1;
 + (struct CGImage *)CGImageForImageData:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long validationStatus; // @synthesize validationStatus=mValidationStatus;
 @property(readonly, nonatomic) struct CGImageSource *CGImageSource;
-- (struct CGImageSource *)p_newImageOfSize:(struct CGSize)arg1 andWriteToCacheWithSuffix:(id)arg2;
+- (struct CGImageSource *)p_newImageOfSize:(struct CGSize)arg1;
 - (struct CGImage *)p_newImageOfSize:(struct CGSize)arg1 fromSource:(struct CGImageSource *)arg2;
 - (struct CGImageSource *)p_newCGImageSourceForTemporaryUse;
+- (void)p_configureRawBehaviorFromImageSource:(struct CGImageSource *)arg1;
 - (void)p_configureOrientationAndSizeFromImageSource:(struct CGImageSource *)arg1 andImage:(struct CGImage *)arg2;
 - (struct CGImage *)p_newImageFromSource:(struct CGImageSource *)arg1;
 - (struct CGImageSource *)p_newCGImageSource;
@@ -62,9 +57,8 @@
 @property(readonly, nonatomic) _Bool isOpaque;
 @property(readonly, nonatomic) long long orientation;
 - (struct CGImage *)p_resampledImageOfReciprocalScale:(unsigned long long)arg1;
-- (struct CGImage *)p_loadOrCreateResampledImageWithReciprocalScale:(unsigned long long)arg1;
+- (struct CGImage *)p_createResampledImageWithReciprocalScale:(unsigned long long)arg1;
 - (struct CGImage *)CGImageResampledToSize:(struct CGSize)arg1 lowQuality:(_Bool)arg2;
-- (id)p_cacheSuffixForScale:(unsigned long long)arg1;
 - (long long)p_reciprocalScaleForImageSize:(struct CGSize)arg1;
 - (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orContentsScaleProvider:(id)arg3;
 - (struct CGImage *)CGImageForNaturalSize;

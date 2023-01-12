@@ -12,13 +12,11 @@
 - (NSDictionary *)powerState;
 - (void)deleteCloudKitZoneWithCompletion:(void (^)(NSError *))arg1;
 - (void)suggestionsFromEmailContent:(NSString *)arg1 headers:(NSData *)arg2 source:(NSString *)arg3 options:(unsigned long long)arg4 withCompletion:(void (^)(NSArray *, NSError *))arg5;
-- (void)suggestionsFromMockData:(id)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (_Bool)sleep:(id *)arg1;
 - (void)sleepWithCompletion:(void (^)(NSError *))arg1;
 - (_Bool)daemonExit:(id *)arg1;
 - (void)daemonExitWithCompletion:(void (^)(NSError *))arg1;
 - (void)removeAllStoredPseudoContactsWithCompletion:(void (^)(NSError *))arg1;
-- (void)drainQueueCompletelyWithCompletion:(void (^)(NSError *))arg1;
 - (_Bool)sendRTCLogs:(id *)arg1;
 - (void)suggestionsFromSimpleMailMessage:(SGSimpleMailMessage *)arg1 headers:(NSData *)arg2 options:(unsigned long long)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
 - (NSArray *)suggestionsFromSimpleMailMessage:(SGSimpleMailMessage *)arg1 headers:(NSData *)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
@@ -33,6 +31,8 @@
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 domainIdentifiers:(_PASDomainSelection *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 uniqueIdentifiers:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)rebuildNamesForDetailCacheWithCompletion:(void (^)(NSError *))arg1;
+- (_Bool)rebuildNamesForDetailCache:(id *)arg1;
 - (void)resetConfirmationAndRejectionHistoryWithCompletion:(void (^)(NSError *))arg1;
 - (_Bool)resetConfirmationAndRejectionHistory:(id *)arg1;
 - (void)suggestEventsInFutureLimitTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
@@ -44,6 +44,7 @@
 - (void)emailAddressIsSignificant:(NSString *)arg1 withCompletion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)spotlightReimportFromIdentifier:(NSString *)arg1 forPersonHandle:(NSString *)arg2 startDate:(NSDate *)arg3 endDate:(NSDate *)arg4 withCompletion:(void (^)(NSError *))arg5;
 - (void)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
+- (void)addSearchableItemMetadata:(NSData *)arg1 htmlData:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(NSError *))arg2;
 @end
 

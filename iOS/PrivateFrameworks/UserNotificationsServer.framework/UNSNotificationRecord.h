@@ -8,15 +8,20 @@
 
 #import <UserNotificationsServer/BSDescriptionProviding-Protocol.h>
 
-@class CLRegion, NSArray, NSDate, NSDateComponents, NSDictionary, NSNumber, NSSet, NSString, NSTimeZone, NSURL;
+@class CLRegion, NSArray, NSDate, NSDateComponents, NSDictionary, NSNumber, NSSet, NSString, NSTimeZone, NSURL, UNSContactRecord;
 
 @interface UNSNotificationRecord : NSObject <BSDescriptionProviding>
 {
+    _Bool _communicationContextSystemImage;
+    _Bool _communicationContextMentionsCurrentUser;
+    _Bool _communicationContextNotifyRecipientAnyway;
+    _Bool _communicationContextReplyToCurrentUser;
     _Bool _hasDefaultAction;
     _Bool _hasCriticalAlertSound;
     _Bool _shouldBadgeApplicationIcon;
     _Bool _shouldHideDate;
     _Bool _shouldHideTime;
+    _Bool _shouldIgnoreAccessibilityDisabledVibrationSetting;
     _Bool _shouldIgnoreDoNotDisturb;
     _Bool _shouldIgnoreDowntime;
     _Bool _shouldIgnoreRingerSwitch;
@@ -26,17 +31,28 @@
     _Bool _shouldAuthenticateDefaultAction;
     _Bool _shouldBackgroundDefaultAction;
     _Bool _shouldPreventNotificationDismissalAfterDefaultAction;
+    _Bool _shouldShowSubordinateIcon;
     _Bool _shouldSoundRepeat;
     _Bool _shouldSuppressSyncDismissalWhenRemoved;
     _Bool _shouldUseRequestIdentifierForDismissalSync;
     _Bool _shouldPreemptPresentedNotification;
+    _Bool _shouldDisplayActionsInline;
     _Bool _allowsDefaultDestinations;
     _Bool _allowsAlertDestination;
     _Bool _allowsLockScreenDestination;
     _Bool _allowsNotificationCenterDestination;
     _Bool _allowsCarPlayDestination;
-    _Bool _allowsSpokenDestination;
     _Bool _triggerRepeats;
+    NSString *_contentType;
+    NSString *_communicationContextIdentifier;
+    NSString *_communicationContextBundleIdentifier;
+    NSString *_communicationContextAssociatedObjectUri;
+    NSString *_communicationContextDisplayName;
+    UNSContactRecord *_communicationContextSender;
+    NSArray *_communicationContextRecipients;
+    NSURL *_communicationContextContentURL;
+    NSString *_communicationContextImageName;
+    unsigned long long _communicationContextRecipientCount;
     NSString *_accessoryImageName;
     NSArray *_attachments;
     NSNumber *_badge;
@@ -49,6 +65,7 @@
     NSNumber *_contentAvailable;
     NSNumber *_mutableContent;
     NSDate *_date;
+    unsigned long long _interruptionLevel;
     NSString *_defaultActionTitle;
     NSString *_defaultActionTitleLocalizationKey;
     NSURL *_defaultActionURL;
@@ -56,9 +73,13 @@
     NSString *_header;
     NSArray *_headerLocalizationArguments;
     NSString *_headerLocalizationKey;
+    NSString *_footer;
+    NSArray *_footerLocalizationArguments;
+    NSString *_footerLocalizationKey;
     NSString *_iconApplicationIdentifier;
     NSString *_iconName;
     NSString *_iconPath;
+    NSString *_iconSystemImageName;
     NSString *_identifier;
     NSString *_launchImageName;
     NSDate *_requestDate;
@@ -94,9 +115,11 @@
     NSDictionary *_userInfo;
     NSString *_vibrationIdentifier;
     NSURL *_vibrationPatternFileURL;
+    double _relevanceScore;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double relevanceScore; // @synthesize relevanceScore=_relevanceScore;
 @property(copy, nonatomic) NSURL *vibrationPatternFileURL; // @synthesize vibrationPatternFileURL=_vibrationPatternFileURL;
 @property(copy, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
@@ -109,7 +132,6 @@
 @property(copy, nonatomic) NSString *triggerRepeatCalendarIdentifier; // @synthesize triggerRepeatCalendarIdentifier=_triggerRepeatCalendarIdentifier;
 @property(copy, nonatomic) NSDateComponents *triggerDateComponents; // @synthesize triggerDateComponents=_triggerDateComponents;
 @property(copy, nonatomic) NSDate *triggerDate; // @synthesize triggerDate=_triggerDate;
-@property(nonatomic) _Bool allowsSpokenDestination; // @synthesize allowsSpokenDestination=_allowsSpokenDestination;
 @property(nonatomic) _Bool allowsCarPlayDestination; // @synthesize allowsCarPlayDestination=_allowsCarPlayDestination;
 @property(nonatomic) _Bool allowsNotificationCenterDestination; // @synthesize allowsNotificationCenterDestination=_allowsNotificationCenterDestination;
 @property(nonatomic) _Bool allowsLockScreenDestination; // @synthesize allowsLockScreenDestination=_allowsLockScreenDestination;
@@ -135,10 +157,12 @@
 @property(nonatomic) double soundMaximumDuration; // @synthesize soundMaximumDuration=_soundMaximumDuration;
 @property(copy, nonatomic) NSNumber *audioVolume; // @synthesize audioVolume=_audioVolume;
 @property(copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
+@property(nonatomic) _Bool shouldDisplayActionsInline; // @synthesize shouldDisplayActionsInline=_shouldDisplayActionsInline;
 @property(nonatomic) _Bool shouldPreemptPresentedNotification; // @synthesize shouldPreemptPresentedNotification=_shouldPreemptPresentedNotification;
 @property(nonatomic) _Bool shouldUseRequestIdentifierForDismissalSync; // @synthesize shouldUseRequestIdentifierForDismissalSync=_shouldUseRequestIdentifierForDismissalSync;
 @property(nonatomic) _Bool shouldSuppressSyncDismissalWhenRemoved; // @synthesize shouldSuppressSyncDismissalWhenRemoved=_shouldSuppressSyncDismissalWhenRemoved;
 @property(nonatomic) _Bool shouldSoundRepeat; // @synthesize shouldSoundRepeat=_shouldSoundRepeat;
+@property(nonatomic) _Bool shouldShowSubordinateIcon; // @synthesize shouldShowSubordinateIcon=_shouldShowSubordinateIcon;
 @property(nonatomic) _Bool shouldPreventNotificationDismissalAfterDefaultAction; // @synthesize shouldPreventNotificationDismissalAfterDefaultAction=_shouldPreventNotificationDismissalAfterDefaultAction;
 @property(nonatomic) _Bool shouldBackgroundDefaultAction; // @synthesize shouldBackgroundDefaultAction=_shouldBackgroundDefaultAction;
 @property(nonatomic) _Bool shouldAuthenticateDefaultAction; // @synthesize shouldAuthenticateDefaultAction=_shouldAuthenticateDefaultAction;
@@ -149,15 +173,20 @@
 @property(nonatomic) _Bool shouldIgnoreRingerSwitch; // @synthesize shouldIgnoreRingerSwitch=_shouldIgnoreRingerSwitch;
 @property(nonatomic) _Bool shouldIgnoreDowntime; // @synthesize shouldIgnoreDowntime=_shouldIgnoreDowntime;
 @property(nonatomic) _Bool shouldIgnoreDoNotDisturb; // @synthesize shouldIgnoreDoNotDisturb=_shouldIgnoreDoNotDisturb;
+@property(nonatomic) _Bool shouldIgnoreAccessibilityDisabledVibrationSetting; // @synthesize shouldIgnoreAccessibilityDisabledVibrationSetting=_shouldIgnoreAccessibilityDisabledVibrationSetting;
 @property(nonatomic) _Bool shouldHideTime; // @synthesize shouldHideTime=_shouldHideTime;
 @property(nonatomic) _Bool shouldHideDate; // @synthesize shouldHideDate=_shouldHideDate;
 @property(nonatomic) _Bool shouldBadgeApplicationIcon; // @synthesize shouldBadgeApplicationIcon=_shouldBadgeApplicationIcon;
 @property(copy, nonatomic) NSDate *requestDate; // @synthesize requestDate=_requestDate;
 @property(copy, nonatomic) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSString *iconSystemImageName; // @synthesize iconSystemImageName=_iconSystemImageName;
 @property(copy, nonatomic) NSString *iconPath; // @synthesize iconPath=_iconPath;
 @property(copy, nonatomic) NSString *iconName; // @synthesize iconName=_iconName;
 @property(copy, nonatomic) NSString *iconApplicationIdentifier; // @synthesize iconApplicationIdentifier=_iconApplicationIdentifier;
+@property(copy, nonatomic) NSString *footerLocalizationKey; // @synthesize footerLocalizationKey=_footerLocalizationKey;
+@property(copy, nonatomic) NSArray *footerLocalizationArguments; // @synthesize footerLocalizationArguments=_footerLocalizationArguments;
+@property(copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property(copy, nonatomic) NSString *headerLocalizationKey; // @synthesize headerLocalizationKey=_headerLocalizationKey;
 @property(copy, nonatomic) NSArray *headerLocalizationArguments; // @synthesize headerLocalizationArguments=_headerLocalizationArguments;
 @property(copy, nonatomic) NSString *header; // @synthesize header=_header;
@@ -167,6 +196,7 @@
 @property(copy, nonatomic) NSString *defaultActionTitleLocalizationKey; // @synthesize defaultActionTitleLocalizationKey=_defaultActionTitleLocalizationKey;
 @property(copy, nonatomic) NSString *defaultActionTitle; // @synthesize defaultActionTitle=_defaultActionTitle;
 @property(nonatomic) _Bool hasDefaultAction; // @synthesize hasDefaultAction=_hasDefaultAction;
+@property(nonatomic) unsigned long long interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(copy, nonatomic) NSNumber *mutableContent; // @synthesize mutableContent=_mutableContent;
 @property(copy, nonatomic) NSNumber *contentAvailable; // @synthesize contentAvailable=_contentAvailable;
@@ -179,6 +209,20 @@
 @property(copy, nonatomic) NSNumber *badge; // @synthesize badge=_badge;
 @property(copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property(copy, nonatomic) NSString *accessoryImageName; // @synthesize accessoryImageName=_accessoryImageName;
+@property(nonatomic) unsigned long long communicationContextRecipientCount; // @synthesize communicationContextRecipientCount=_communicationContextRecipientCount;
+@property(nonatomic) _Bool communicationContextReplyToCurrentUser; // @synthesize communicationContextReplyToCurrentUser=_communicationContextReplyToCurrentUser;
+@property(nonatomic) _Bool communicationContextNotifyRecipientAnyway; // @synthesize communicationContextNotifyRecipientAnyway=_communicationContextNotifyRecipientAnyway;
+@property(nonatomic) _Bool communicationContextMentionsCurrentUser; // @synthesize communicationContextMentionsCurrentUser=_communicationContextMentionsCurrentUser;
+@property(nonatomic) _Bool communicationContextSystemImage; // @synthesize communicationContextSystemImage=_communicationContextSystemImage;
+@property(copy, nonatomic) NSString *communicationContextImageName; // @synthesize communicationContextImageName=_communicationContextImageName;
+@property(copy, nonatomic) NSURL *communicationContextContentURL; // @synthesize communicationContextContentURL=_communicationContextContentURL;
+@property(copy, nonatomic) NSArray *communicationContextRecipients; // @synthesize communicationContextRecipients=_communicationContextRecipients;
+@property(copy, nonatomic) UNSContactRecord *communicationContextSender; // @synthesize communicationContextSender=_communicationContextSender;
+@property(copy, nonatomic) NSString *communicationContextDisplayName; // @synthesize communicationContextDisplayName=_communicationContextDisplayName;
+@property(copy, nonatomic) NSString *communicationContextAssociatedObjectUri; // @synthesize communicationContextAssociatedObjectUri=_communicationContextAssociatedObjectUri;
+@property(copy, nonatomic) NSString *communicationContextBundleIdentifier; // @synthesize communicationContextBundleIdentifier=_communicationContextBundleIdentifier;
+@property(copy, nonatomic) NSString *communicationContextIdentifier; // @synthesize communicationContextIdentifier=_communicationContextIdentifier;
+@property(copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -187,6 +231,7 @@
 @property(readonly, nonatomic) _Bool hasSound;
 @property(readonly, nonatomic) _Bool hasBadge;
 @property(readonly, nonatomic) _Bool hasAlertContent;
+- (_Bool)hasCommunicationContext;
 - (_Bool)willNotifyUser;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

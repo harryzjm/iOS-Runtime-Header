@@ -12,6 +12,8 @@
 {
 }
 
++ (id)predicateToExcludeBodyOnlyDetection;
++ (id)predicateForIncludedDetectionTypes:(id)arg1;
 + (id)predicateForFaceCountTrigger;
 + (id)predicateForArchival;
 + (id)predicatesForFacesNeedingFaceCropGeneration;
@@ -37,6 +39,7 @@
 - (id)debugLogDescription;
 - (void)removeFaceprint;
 - (void)_verifyAssetRelationship;
+- (_Bool)isTorsoOnly;
 @property(readonly, nonatomic) _Bool isTrainingFace;
 - (void)_updateFaceGroupIfNeeded;
 - (void)_touchPersonForPersistenceIfNeeded;
@@ -47,7 +50,7 @@
 - (id)payloadIDForTombstone:(id)arg1;
 - (id)payloadForChangedKeys:(id)arg1;
 - (id)payloadID;
-- (_Bool)isValidForPersistence;
+- (_Bool)isValidForJournalPersistence;
 - (double)photosFaceRepresentationQuality;
 - (double)photosFaceRepresentationRoll;
 - (id)photosFaceRepresentationLocalIdentifier;
@@ -74,8 +77,11 @@
 @property(nonatomic) unsigned short ageType; // @dynamic ageType;
 @property(retain, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property(readonly, nonatomic) _Bool assetVisible; // @dynamic assetVisible;
-@property(nonatomic) unsigned short baldType; // @dynamic baldType;
 @property(nonatomic) double blurScore; // @dynamic blurScore;
+@property(nonatomic) double bodyCenterX; // @dynamic bodyCenterX;
+@property(nonatomic) double bodyCenterY; // @dynamic bodyCenterY;
+@property(nonatomic) double bodyHeight; // @dynamic bodyHeight;
+@property(nonatomic) double bodyWidth; // @dynamic bodyWidth;
 @property(nonatomic) double centerX; // @dynamic centerX;
 @property(nonatomic) double centerY; // @dynamic centerY;
 @property(nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
@@ -85,20 +91,30 @@
 @property(nonatomic) short confirmedFaceCropGenerationState; // @dynamic confirmedFaceCropGenerationState;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) NSSet *detectionTraits; // @dynamic detectionTraits;
+@property(nonatomic) short detectionType; // @dynamic detectionType;
+@property(nonatomic) unsigned short ethnicityType; // @dynamic ethnicityType;
 @property(nonatomic) unsigned short eyeMakeupType; // @dynamic eyeMakeupType;
 @property(nonatomic) unsigned short eyesState; // @dynamic eyesState;
 @property(nonatomic) int faceAlgorithmVersion; // @dynamic faceAlgorithmVersion;
 @property(retain, nonatomic) PLFaceCrop *faceCrop; // @dynamic faceCrop;
+@property(nonatomic) unsigned short faceExpressionType; // @dynamic faceExpressionType;
 @property(retain, nonatomic) PLDetectedFaceGroup *faceGroup; // @dynamic faceGroup;
 @property(retain, nonatomic) PLDetectedFaceGroup *faceGroupBeingKeyFace; // @dynamic faceGroupBeingKeyFace;
 @property(retain, nonatomic) PLDetectedFaceprint *faceprint; // @dynamic faceprint;
 @property(nonatomic) unsigned short facialHairType; // @dynamic facialHairType;
+@property(nonatomic) double gazeCenterX; // @dynamic gazeCenterX;
+@property(nonatomic) double gazeCenterY; // @dynamic gazeCenterY;
+@property(nonatomic) unsigned short gazeType; // @dynamic gazeType;
 @property(nonatomic) unsigned short genderType; // @dynamic genderType;
 @property(nonatomic) unsigned short glassesType; // @dynamic glassesType;
 @property(retain, nonatomic) NSString *groupingIdentifier; // @dynamic groupingIdentifier;
 @property(nonatomic) unsigned short hairColorType; // @dynamic hairColorType;
+@property(nonatomic) unsigned short hairType; // @dynamic hairType;
+@property(nonatomic) _Bool hasFaceMask; // @dynamic hasFaceMask;
 @property(nonatomic) _Bool hasSmile; // @dynamic hasSmile;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) unsigned short headgearType; // @dynamic headgearType;
 @property(nonatomic) _Bool hidden; // @dynamic hidden;
 @property(nonatomic) _Bool isInTrash; // @dynamic isInTrash;
 @property(nonatomic) _Bool isLeftEyeClosed; // @dynamic isLeftEyeClosed;
@@ -113,6 +129,7 @@
 @property(nonatomic) int nameSource; // @dynamic nameSource;
 @property(retain, nonatomic) PLPerson *person; // @dynamic person;
 @property(retain, nonatomic) PLPerson *personBeingKeyFace; // @dynamic personBeingKeyFace;
+@property(nonatomic) unsigned short poseType; // @dynamic poseType;
 @property(nonatomic) double poseYaw; // @dynamic poseYaw;
 @property(nonatomic) double quality; // @dynamic quality;
 @property(nonatomic) int qualityMeasure; // @dynamic qualityMeasure;
@@ -122,6 +139,7 @@
 @property(nonatomic) double rightEyeY; // @dynamic rightEyeY;
 @property(nonatomic) double roll; // @dynamic roll;
 @property(nonatomic) double size; // @dynamic size;
+@property(nonatomic) unsigned short skintoneType; // @dynamic skintoneType;
 @property(nonatomic) unsigned short smileType; // @dynamic smileType;
 @property(nonatomic) long long sourceHeight; // @dynamic sourceHeight;
 @property(nonatomic) long long sourceWidth; // @dynamic sourceWidth;

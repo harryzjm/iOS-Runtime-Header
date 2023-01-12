@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <SpeakerRecognition/CSEndpointAnalyzerDelegate-Protocol.h>
 #import <SpeakerRecognition/CSVTUIAudioSessionDelegate-Protocol.h>
+#import <SpeakerRecognition/CSVTUIEndpointAnalyzerDelegate-Protocol.h>
 #import <SpeakerRecognition/CSVTUITrainingSessionDelegate-Protocol.h>
 
-@class CSAsset, CSNNVADEndpointAnalyzer, CSPlainAudioFileWriter, CSVTUIKeywordDetector, CSVTUITrainingSession, NSMutableArray, NSString, SFSpeechRecognizer, SSRVoiceProfile;
+@class CSAsset, CSDispatchGroup, CSPlainAudioFileWriter, CSVTUIEndpointAnalyzer, CSVTUIKeywordDetector, CSVTUITrainingSession, NSMutableArray, NSString, SFSpeechRecognizer, SSRVoiceProfile;
 @protocol CSVTUIAudioSession, OS_dispatch_queue, SSRVTUITrainingManagerDelegate;
 
-@interface SSRVTUITrainingManager : NSObject <CSVTUITrainingSessionDelegate, CSVTUIAudioSessionDelegate, CSEndpointAnalyzerDelegate>
+@interface SSRVTUITrainingManager : NSObject <CSVTUITrainingSessionDelegate, CSVTUIAudioSessionDelegate, CSVTUIEndpointAnalyzerDelegate>
 {
     _Bool _performRMS;
     NSString *_locale;
     id <CSVTUIAudioSession> _audioSession;
-    CSNNVADEndpointAnalyzer *_audioAnalyzer;
+    CSVTUIEndpointAnalyzer *_audioAnalyzer;
     CSVTUIKeywordDetector *_keywordDetector;
     NSMutableArray *_trainingSessions;
     CSVTUITrainingSession *_currentTrainingSession;
@@ -29,6 +29,7 @@
     SFSpeechRecognizer *_speechRecognizer;
     CSAsset *_currentAsset;
     SSRVoiceProfile *_profile;
+    CSDispatchGroup *_didStopWaitingGroup;
     _Bool _speechRecognizerAvailable;
     float _rms;
     id <SSRVTUITrainingManagerDelegate> _delegate;
@@ -43,7 +44,7 @@
 @property(nonatomic) __weak id <SSRVTUITrainingManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property float rms; // @synthesize rms=_rms;
 - (void)didDetectForceEndPoint;
-- (void)endpointer:(id)arg1 didDetectHardEndpointAtTime:(double)arg2 withMetrics:(id)arg3;
+- (void)endpointer:(id)arg1 didDetectHardEndpointAtTime:(double)arg2;
 - (void)endpointer:(id)arg1 didDetectStartpointAtTime:(double)arg2;
 - (void)audioSessionUnsupportedAudioRoute;
 - (void)audioSessionErrorDidOccur:(id)arg1;
@@ -72,7 +73,7 @@
 - (void)_endOfSpeechDetected;
 - (void)_beginOfSpeechDetected;
 - (void)_destroyAudioSession;
-- (void)_stopAudioSession;
+- (_Bool)_stopAudioSession;
 - (void)prepareWithCompletion:(CDUnknownBlockType)arg1;
 - (void)createSpeechRecognizer;
 - (_Bool)createKeywordDetector;

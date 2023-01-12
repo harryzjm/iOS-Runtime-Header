@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)activationArrayFromActivationMap:(vector_00ef371e)arg1 codeMapIndex:(id *)arg2;
++ (id)activationArrayFromActivationMap:(vector_39e320a3)arg1 codeMapIndex:(id *)arg2;
 
 @end
 

@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)wideShadowPaddleInsets;
 - (struct CGPoint)dictationKeyTextOffset;
 - (struct CGPoint)globeKeyTextOffset;
+- (long long)assetIdiom;
 
 @end
 

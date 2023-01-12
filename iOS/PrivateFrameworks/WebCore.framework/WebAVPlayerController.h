@@ -14,6 +14,8 @@
     WebAVMediaSelectionOption *_currentLegibleMediaSelectionOption;
     _Bool _pictureInPictureInterrupted;
     _Bool _muted;
+    double _defaultPlaybackRate;
+    double _rate;
     _Bool _liveStreamEventModePossible;
     _Bool _isScrubbing;
     _Bool _allowsPictureInPicture;
@@ -30,9 +32,8 @@
     _Bool _externalPlaybackActive;
     _Bool _allowsExternalPlayback;
     AVPlayerController *_playerControllerProxy;
-    struct PlaybackSessionModel *_delegate;
-    struct PlaybackSessionInterfaceAVKit *_playbackSessionInterface;
-    double _rate;
+    void *_delegate;
+    void *_playbackSessionInterface;
     double _contentDuration;
     double _contentDurationWithinEndTimes;
     NSArray *_loadedTimeRanges;
@@ -85,14 +86,13 @@
 @property struct CGSize contentDimensions; // @synthesize contentDimensions=_contentDimensions;
 @property double contentDuration; // @synthesize contentDuration=_contentDuration;
 @property _Bool canSeek; // @synthesize canSeek=_canSeek;
-@property double rate; // @synthesize rate=_rate;
 @property _Bool canTogglePlayback; // @synthesize canTogglePlayback=_canTogglePlayback;
 @property _Bool canPause; // @synthesize canPause=_canPause;
 @property _Bool canPlay; // @synthesize canPlay=_canPlay;
 @property(readonly) _Bool hasContentChapters; // @synthesize hasContentChapters=_hasContentChapters;
 @property _Bool canScanBackward; // @synthesize canScanBackward=_canScanBackward;
-@property struct PlaybackSessionInterfaceAVKit *playbackSessionInterface; // @synthesize playbackSessionInterface=_playbackSessionInterface;
-@property struct PlaybackSessionModel *delegate; // @synthesize delegate=_delegate;
+@property void *playbackSessionInterface; // @synthesize playbackSessionInterface=_playbackSessionInterface;
+@property void *delegate; // @synthesize delegate=_delegate;
 @property(retain) AVPlayerController *playerControllerProxy; // @synthesize playerControllerProxy=_playerControllerProxy;
 - (_Bool)hasSeekableLiveStreamingContent;
 - (void)updateMinMaxTiming;
@@ -137,6 +137,8 @@
 - (void)seekToTime:(double)arg1;
 - (void)endScrubbing:(id)arg1;
 - (void)beginScrubbing:(id)arg1;
+@property double rate;
+@property double defaultPlaybackRate;
 @property(getter=isPlaying) _Bool playing;
 - (void)togglePlaybackEvenWhenInBackground:(id)arg1;
 - (void)togglePlayback:(id)arg1;

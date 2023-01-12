@@ -6,11 +6,11 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class PGContextualOptions, PGHighlightItemList;
+@class CLSCurationContext, PGContextualOptions, PGHighlightItemList;
 @protocol PGHighlightItemModelReader;
 
 @protocol PGContextualRule <NSObject>
-- (void)enumerateContextualKeyAssetsForYearHighlight:(PGHighlightItemList *)arg1 withOptions:(PGContextualOptions *)arg2 modelReader:(id <PGHighlightItemModelReader>)arg3 usingBlock:(void (^)(PHAsset *, double, id <PGHighlightItem>, id <PGHighlightItem>, _Bool *))arg4;
+- (void)enumerateContextualKeyAssetsForYearHighlight:(PGHighlightItemList *)arg1 withOptions:(PGContextualOptions *)arg2 modelReader:(id <PGHighlightItemModelReader>)arg3 curationContext:(CLSCurationContext *)arg4 usingBlock:(void (^)(PHAsset *, double, id <PGHighlightItem>, id <PGHighlightItem>, _Bool *))arg5;
 - (_Bool)canProvideContextualKeyAssetsWithOptions:(PGContextualOptions *)arg1;
 @end
 

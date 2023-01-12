@@ -22,7 +22,7 @@
 - (void)_layoutContentView;
 - (void)_updateRingColors;
 - (void)setForegroundColor:(id)arg1;
-- (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;
+- (void)applyFaceColorPalette:(id)arg1 units:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

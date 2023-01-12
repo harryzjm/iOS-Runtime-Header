@@ -6,42 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class CLSInvestigationPhotoKitFeeder, NSArray, NSDictionary, NSSet, NSString, PGGraphHighlightNode;
-@protocol PGHighlightModel;
+@class CLSCurationContext, PGNeighborScoreComputer, PGTitleGenerationContext, PHPhotoLibrary;
+@protocol OS_os_log;
 
 @interface PGHighlightTailorContext : NSObject
 {
-    _Bool _babyIsPresent;
-    _Bool _petIsPresent;
-    id <PGHighlightModel> _highlight;
-    PGGraphHighlightNode *_highlightNode;
-    NSSet *_meaningLabels;
-    NSDictionary *_meaningLabelsByChildHighlightUUID;
-    NSSet *_momentNodes;
-    CLSInvestigationPhotoKitFeeder *_feeder;
-    NSString *_keyAssetUUID;
-    double _promotionScore;
-    unsigned long long numberOfExtendedAssets;
-    NSArray *_childHighlights;
-    NSSet *_verifiedPersonLocalIdentifiers;
+    PHPhotoLibrary *_photoLibrary;
+    PGNeighborScoreComputer *_neighborScoreComputer;
+    CLSCurationContext *_curationContext;
+    NSObject<OS_os_log> *_loggingConnection;
+    PGTitleGenerationContext *_titleGenerationContext;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *verifiedPersonLocalIdentifiers; // @synthesize verifiedPersonLocalIdentifiers=_verifiedPersonLocalIdentifiers;
-@property(retain, nonatomic) NSArray *childHighlights; // @synthesize childHighlights=_childHighlights;
-@property(nonatomic) unsigned long long numberOfExtendedAssets; // @synthesize numberOfExtendedAssets;
-@property(nonatomic) double promotionScore; // @synthesize promotionScore=_promotionScore;
-@property(copy, nonatomic) NSString *keyAssetUUID; // @synthesize keyAssetUUID=_keyAssetUUID;
-@property(readonly, nonatomic) CLSInvestigationPhotoKitFeeder *feeder; // @synthesize feeder=_feeder;
-@property(readonly, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
-@property(readonly, nonatomic) _Bool petIsPresent; // @synthesize petIsPresent=_petIsPresent;
-@property(readonly, nonatomic) _Bool babyIsPresent; // @synthesize babyIsPresent=_babyIsPresent;
-@property(readonly, nonatomic) NSDictionary *meaningLabelsByChildHighlightUUID; // @synthesize meaningLabelsByChildHighlightUUID=_meaningLabelsByChildHighlightUUID;
-@property(retain, nonatomic) NSSet *meaningLabels; // @synthesize meaningLabels=_meaningLabels;
-@property(readonly, nonatomic) PGGraphHighlightNode *highlightNode; // @synthesize highlightNode=_highlightNode;
-@property(readonly, nonatomic) id <PGHighlightModel> highlight; // @synthesize highlight=_highlight;
-- (id)initForTestingWithHighlight:(id)arg1;
-- (id)initWithHighlight:(id)arg1 forManager:(id)arg2;
+@property(readonly) PGTitleGenerationContext *titleGenerationContext; // @synthesize titleGenerationContext=_titleGenerationContext;
+@property(readonly) NSObject<OS_os_log> *loggingConnection; // @synthesize loggingConnection=_loggingConnection;
+@property(readonly) CLSCurationContext *curationContext; // @synthesize curationContext=_curationContext;
+@property(readonly) PGNeighborScoreComputer *neighborScoreComputer; // @synthesize neighborScoreComputer=_neighborScoreComputer;
+@property(readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+- (id)initForTesting;
+- (id)initWithPhotoLibrary:(id)arg1 graph:(id)arg2 loggingConnection:(id)arg3;
 
 @end
 

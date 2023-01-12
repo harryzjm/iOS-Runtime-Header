@@ -11,12 +11,13 @@
 #import <SetupAssistantUI/BFFNavigationControllerDelegate-Protocol.h>
 
 @class BFFFlowStarter, BFFNavigationController, NSArray, NSMutableArray, NSString, UIViewController;
-@protocol BFFFlowDelegate, BFFFlowItem, BFFNavigationFlowDelegate;
+@protocol BFFFlowDelegate, BFFFlowItem, BFFFlowItemDelegate, BFFNavigationFlowDelegate;
 
 @interface BFFFlow : NSObject <BFFFlowItemDelegate, BFFNavigationControllerDelegate, BFFFlowItem>
 {
     BFFNavigationController *_navigationController;
     id <BFFNavigationFlowDelegate> _navigationFlowDelegate;
+    id <BFFFlowItemDelegate> _flowItemDelegate;
     id <BFFFlowDelegate> _delegate;
     BFFFlowStarter *_starter;
     NSArray *_classList;
@@ -34,9 +35,18 @@
 @property(retain, nonatomic) NSArray *classList; // @synthesize classList=_classList;
 @property(readonly, nonatomic) __weak BFFFlowStarter *starter; // @synthesize starter=_starter;
 @property(nonatomic) __weak id <BFFFlowDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <BFFFlowItemDelegate> flowItemDelegate; // @synthesize flowItemDelegate=_flowItemDelegate;
 @property(readonly, nonatomic) __weak id <BFFNavigationFlowDelegate> navigationFlowDelegate; // @synthesize navigationFlowDelegate=_navigationFlowDelegate;
 @property(readonly, nonatomic) __weak BFFNavigationController *navigationController; // @synthesize navigationController=_navigationController;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
+- (void)removeViewControllersOnNextPush:(id)arg1;
+- (void)pushFlowItem:(id)arg1 inFlow:(id)arg2 withExtendedInitialization:(_Bool)arg3 animated:(_Bool)arg4;
+- (void)pushFlowItem:(id)arg1 inFlow:(id)arg2 animated:(_Bool)arg3;
+- (void)pushFlowItem:(id)arg1 animated:(_Bool)arg2;
+- (id)popToBuddyControllerWithClass:(Class)arg1 withOffset:(unsigned long long)arg2 animated:(_Bool)arg3;
+- (id)popToBuddyControllerWithClass:(Class)arg1 animated:(_Bool)arg2;
+- (_Bool)isFlowItemOnTop:(id)arg1;
+- (_Bool)controllerNeedsToRunForClass:(Class)arg1;
 - (void)flowItemCancelled:(id)arg1;
 - (void)flowItemDone:(id)arg1;
 - (void)flowItemDone:(id)arg1 nextItemClass:(Class)arg2;

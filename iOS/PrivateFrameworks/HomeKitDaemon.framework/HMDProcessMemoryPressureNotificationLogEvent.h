@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDProcessMemoryPressureNotificationLogEvent <HMDCoreAnalyticsLogging, HMDAWDLogEvent>
+@interface HMDProcessMemoryPressureNotificationLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging, HMDAWDLogEvent>
 {
     NSString *_processMemoryState;
     NSString *_dataSyncState;
 }
 
 + (id)createEventWithProcessMemoryState:(id)arg1 dataSyncState:(id)arg2;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *dataSyncState; // @synthesize dataSyncState=_dataSyncState;
 @property(readonly, nonatomic) NSString *processMemoryState; // @synthesize processMemoryState=_processMemoryState;
@@ -28,6 +28,7 @@
 - (unsigned int)AWDMessageType;
 
 // Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

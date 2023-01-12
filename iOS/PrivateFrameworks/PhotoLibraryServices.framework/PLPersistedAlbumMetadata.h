@@ -25,6 +25,7 @@
     NSMutableOrderedSet *_assetUUIDs;
     NSString *_importSessionID;
     NSData *_userQueryData;
+    NSString *_importedByBundleIdentifier;
     NSString *_projectDocumentType;
     PLGenericAlbum *_genericAlbum;
     NSURL *_metadataURL;
@@ -36,6 +37,7 @@
 @property(retain, nonatomic) PLGenericAlbum *genericAlbum; // @synthesize genericAlbum=_genericAlbum;
 @property(nonatomic) _Bool allowsOverwrite; // @synthesize allowsOverwrite=_allowsOverwrite;
 @property(retain, nonatomic) NSString *projectDocumentType; // @synthesize projectDocumentType=_projectDocumentType;
+@property(retain, nonatomic) NSString *importedByBundleIdentifier; // @synthesize importedByBundleIdentifier=_importedByBundleIdentifier;
 @property(retain, nonatomic) NSData *userQueryData; // @synthesize userQueryData=_userQueryData;
 @property(retain, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property(retain, nonatomic) NSMutableOrderedSet *assetUUIDs; // @synthesize assetUUIDs=_assetUUIDs;

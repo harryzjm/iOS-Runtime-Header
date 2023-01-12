@@ -13,7 +13,9 @@
 __attribute__((visibility("hidden")))
 @interface _TtC26SiriPlaybackControlSupport11HomeManager : NSObject <HMHomeManagerDelegate>
 {
+    MISSING_TYPE *homeManagerInitTimeout;
     MISSING_TYPE *hmHomeManager;
+    MISSING_TYPE *hmHomeManagerOptions;
     MISSING_TYPE *homeData;
     MISSING_TYPE *loadSucceeded;
     MISSING_TYPE *readyGroup;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)init;
 
 @end

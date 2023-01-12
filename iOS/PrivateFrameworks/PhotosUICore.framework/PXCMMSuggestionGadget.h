@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
 #import <PhotosUICore/PXGadget-Protocol.h>
 
-@class NSString, PXCMMSuggestionView, PXCMMSuggestionViewModel, PXGadgetSpec, PXPersonFaceTileImageCombiner;
+@class NSString, PXCMMSuggestionView, PXCMMSuggestionViewModel, PXFaceTileImageCombiner, PXGadgetSpec;
 @protocol PXCMMSuggestion, PXCMMWorkflowPresenting, PXGadgetDelegate;
 
 @interface PXCMMSuggestionGadget : NSObject <PXCMMSuggestionViewDelegate, PXDiagnosticsEnvironment, PXGadget>
@@ -22,7 +22,7 @@
     struct CGSize _requestedPosterImageSize;
     double _requestedWidth;
     _Bool _didRequestCachingOfPosterImage;
-    PXPersonFaceTileImageCombiner *_faceTileImageCombiner;
+    PXFaceTileImageCombiner *_faceTileImageCombiner;
     PXGadgetSpec *_gadgetSpec;
     id <PXGadgetDelegate> _delegate;
     id <PXCMMWorkflowPresenting> _workflowPresenter;
@@ -50,6 +50,7 @@
 - (void)prefetchDuringScrollingForWidth:(double)arg1;
 - (void)contentHasBeenSeen;
 - (id)uniqueGadgetIdentifier;
+- (void)userDidSelectGadget;
 - (_Bool)supportsHighlighting;
 - (void)gadgetControllerHasAppeared;
 - (void)prepareCollectionViewItem:(id)arg1;

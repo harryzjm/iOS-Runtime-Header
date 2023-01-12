@@ -10,7 +10,6 @@
 
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPProtectionInfo : PBCodable <NSCopying>
 {
     NSData *_protectionInfo;

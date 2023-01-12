@@ -97,7 +97,6 @@
 - (id)modelSpecificInfo;
 - (id)MACAddress;
 - (id)groupID;
-- (void)setGroupID:(id)arg1;
 - (id)firmwareVersion;
 - (id)modelID;
 - (id)logicalDeviceID;

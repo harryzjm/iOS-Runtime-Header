@@ -11,18 +11,12 @@
 @interface RMProtocolSynchronizationTokens : RMModelPayloadBase
 {
     NSDate *_tokensTimestamp;
-    NSString *_tokensCapabilitiesToken;
-    NSString *_tokensCommandToken;
     NSString *_tokensDeclarationsToken;
-    NSString *_tokensOrganizationDetailsToken;
 }
 
-+ (id)requestWithTimestamp:(id)arg1 capabilitiesToken:(id)arg2 commandToken:(id)arg3 declarationsToken:(id)arg4 organizationDetailsToken:(id)arg5;
++ (id)requestWithTimestamp:(id)arg1 declarationsToken:(id)arg2;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *tokensOrganizationDetailsToken; // @synthesize tokensOrganizationDetailsToken=_tokensOrganizationDetailsToken;
 @property(copy, nonatomic) NSString *tokensDeclarationsToken; // @synthesize tokensDeclarationsToken=_tokensDeclarationsToken;
-@property(copy, nonatomic) NSString *tokensCommandToken; // @synthesize tokensCommandToken=_tokensCommandToken;
-@property(copy, nonatomic) NSString *tokensCapabilitiesToken; // @synthesize tokensCapabilitiesToken=_tokensCapabilitiesToken;
 @property(copy, nonatomic) NSDate *tokensTimestamp; // @synthesize tokensTimestamp=_tokensTimestamp;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithType:(short)arg1;

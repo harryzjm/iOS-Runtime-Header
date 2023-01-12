@@ -17,6 +17,8 @@
 
 @property(readonly, nonatomic) CMOdometerProxy *odometerProxy; // @synthesize odometerProxy=_odometerProxy;
 @property(nonatomic) id <CMOdometerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)stopCyclingWorkoutDistanceUpdates;
+- (void)startCyclingWorkoutDistanceUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopOdometerUpdates;
 - (void)startOdometerUpdatesForActivity:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

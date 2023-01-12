@@ -6,25 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <SiriVOX/AFMemoryPressureListening-Protocol.h>
 #import <SiriVOX/SVXModuleInstance-Protocol.h>
+#import <SiriVOX/SVXSessionActivationListening-Protocol.h>
 
-@class NSMutableDictionary, NSString, SVXModule, SVXSessionManager, SVXSpeechSynthesizer;
+@class NSDate, NSMutableDictionary, NSString, SVXDeviceSetupAnnouncer, SVXDeviceSetupContext, SVXDeviceSetupFlowScene, SVXModule, SVXSessionManager, SVXSpeechSynthesizer;
 
 __attribute__((visibility("hidden")))
-@interface SVXDeviceSetupManager : NSObject <SVXModuleInstance>
+@interface SVXDeviceSetupManager : NSObject <SVXModuleInstance, SVXSessionActivationListening, AFMemoryPressureListening>
 {
     SVXModule *_module;
     SVXSpeechSynthesizer *_speechSynthesizer;
     SVXSessionManager *_sessionManager;
     NSMutableDictionary *_cachedSceneMapsByVoiceKey;
+    SVXDeviceSetupAnnouncer *_announcer;
+    NSMutableDictionary *_contextsByUUID;
+    NSDate *_beginDate;
+    NSDate *_endDate;
+    SVXDeviceSetupFlowScene *_activatedDeviceSetupFlowScene;
+    SVXDeviceSetupContext *_effectiveContext;
 }
 
 - (void).cxx_destruct;
 - (void)_cacheScene:(id)arg1 forLanguageCode:(id)arg2 andGender:(long long)arg3;
 - (id)_cachedSceneWithID:(long long)arg1 forLanguageCode:(id)arg2 andGender:(long long)arg3 siriCapabilitiesHint:(id)arg4;
 - (void)_evictCachedContents;
-- (void)_endSetup;
-- (void)_beginSetupWithContext:(id)arg1;
+- (void)_setEffectiveContext:(id)arg1;
+- (void)_updateEffectiveContext;
+- (void)_setContext:(id)arg1 forUUID:(id)arg2;
 - (void)_prepareTryHeySiriWeatherSceneWithLanguageCode:(id)arg1 gender:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prepareTryHeySiriNewsSceneWithLanguageCode:(id)arg1 gender:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prepareTryHeySiriMusicSceneWithLanguageCode:(id)arg1 gender:(long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -32,12 +41,15 @@ __attribute__((visibility("hidden")))
 - (void)_prepareTryHeySiriCapabilitiesSceneWithLanguageCode:(id)arg1 gender:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prepareSiriIntroSceneWithLanguageCode:(id)arg1 gender:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prepareForSetupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sessionManager:(id)arg1 didActivateWithContext:(id)arg2;
+- (void)memoryPressureObserver:(id)arg1 didChangeFromCondition:(long long)arg2 toCondition:(long long)arg3;
 - (void)stopWithModuleInstanceProvider:(id)arg1;
 - (void)startWithModuleInstanceProvider:(id)arg1 platformDependencies:(id)arg2;
 - (id)initWithModule:(id)arg1;
-- (void)evictCachedContents;
-- (void)endSetup;
-- (void)beginSetupWithContext:(id)arg1;
+- (void)removeListener:(id)arg1;
+- (void)addListener:(id)arg1;
+- (void)getContextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setContext:(id)arg1 forUUID:(id)arg2;
 - (void)prepareForSetupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 // Remaining properties

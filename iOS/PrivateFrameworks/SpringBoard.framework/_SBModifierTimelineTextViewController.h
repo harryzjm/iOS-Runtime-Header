@@ -6,17 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSString, UITextView;
+@class NSAttributedString, NSString, UITextView;
 
 @interface _SBModifierTimelineTextViewController : UIViewController
 {
     UITextView *_textView;
     NSString *_text;
+    NSAttributedString *_attributedText;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property(retain, nonatomic) NSString *text; // @synthesize text=_text;
 - (void)viewWillLayoutSubviews;
+- (void)prepareForReuse;
 - (void)viewDidLoad;
 
 @end

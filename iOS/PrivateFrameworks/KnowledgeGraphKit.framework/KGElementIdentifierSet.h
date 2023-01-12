@@ -6,37 +6,54 @@
 
 #import <objc/NSObject.h>
 
+#import <KnowledgeGraphKit/NSCopying-Protocol.h>
+
 @class NSArray, NSIndexSet;
 
-@interface KGElementIdentifierSet : NSObject
+@interface KGElementIdentifierSet : NSObject <NSCopying>
 {
     struct Bitmap _bitmap;
 }
 
++ (void)drainBitsetPool;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)mutableCopy;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copy;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToElementIdentifierSet:(id)arg1;
 - (void)enumerateIdentifiersWithBlock:(CDUnknownBlockType)arg1;
+- (id)identifierSetByFilteringUsingBlock:(CDUnknownBlockType)arg1;
+- (id)identifierSetByFormingSymmetricDifferenceWithIdentifierSet:(id)arg1;
 - (id)identifierSetBySubtractingIdentifierSet:(id)arg1;
 - (id)identifierSetByIntersectingIdentifierSet:(id)arg1;
 - (id)identifierSetByFormingUnion:(id)arg1;
 - (id)identifierSetByRemovingIdentifier:(unsigned long long)arg1;
 - (id)identifierSetByAddingIdentifier:(unsigned long long)arg1;
+- (id)prefix:(unsigned long long)arg1;
 - (id)extractRangeByIndex:(struct _NSRange)arg1;
+- (struct KGElementIdentifierSetIndex)indexAfterIndex:(struct KGElementIdentifierSetIndex)arg1;
+- (struct KGElementIdentifierSetIndex)endIndex;
+- (struct KGElementIdentifierSetIndex)startIndex;
+- (struct KGElementIdentifierSetIndex)indexWithIterator:(const void *)arg1;
 - (unsigned long long)randomElement;
 - (unsigned long long)elementAtOffset:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long count;
+@property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) unsigned long long firstElement;
 @property(readonly, copy, nonatomic) NSArray *indexArray;
 @property(readonly, copy, nonatomic) NSIndexSet *indexSet;
+- (_Bool)containsIdentifierSet:(id)arg1;
+- (_Bool)isSubsetOfIdentifierSet:(id)arg1;
+- (_Bool)intersectsIdentifierSet:(id)arg1;
 - (_Bool)containsIdentifier:(unsigned long long)arg1;
-- (struct Bitmap *)mutableBitmap;
-- (const struct Bitmap *)bitmap;
-- (id)initWithBitmap:(const struct Bitmap *)arg1;
+- (void *)mutableBitmap;
+- (const void *)bitmap;
+- (id)initWithBitmap:(const void *)arg1;
+- (id)initWithIndexCollection:(id)arg1;
 - (id)initWithIndexArray:(id)arg1;
 - (id)initWithIndexSet:(id)arg1;
 - (id)initWithElementIdentifier:(unsigned long long)arg1;

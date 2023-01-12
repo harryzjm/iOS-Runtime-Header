@@ -16,12 +16,11 @@
     NSSet *_extensions;
     NSMutableOrderedSet *_observers;
     _Bool _errorEncounteredDuringLastExtensionDiscovery;
-    NSSet *_extensionsSync;
+    struct os_unfair_recursive_lock_s _observerLock;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSSet *extensionsSync; // @synthesize extensionsSync=_extensionsSync;
 - (_Bool)shouldShowConfigurationUIForEnablingExtension:(id)arg1;
 - (id)displayNameForExtension:(id)arg1;
 - (void)setExtension:(id)arg1 isEnabled:(_Bool)arg2;
@@ -31,6 +30,7 @@
 @property(readonly, nonatomic) NSExtension *primaryExtensionSync;
 @property(readonly, nonatomic) NSExtension *primaryExtension;
 - (id)_extensions;
+@property(readonly, nonatomic) NSSet *extensionsSync;
 @property(readonly, nonatomic) NSSet *extensions;
 - (void)_notifyObservers:(id)arg1;
 - (void)_updateExtensions:(id)arg1;

@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface LPFetcherConfiguration : NSObject <NSCopying>
 {
+    _Bool _loadingIsNonAppInitiated;
     WKWebView *_webViewForProcessSharing;
     long long _maximumResponseCount;
     LPEvent *_rootEvent;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPEvent *rootEvent; // @synthesize rootEvent=_rootEvent;
 @property(nonatomic) long long maximumResponseCount; // @synthesize maximumResponseCount=_maximumResponseCount;
+@property(nonatomic) _Bool loadingIsNonAppInitiated; // @synthesize loadingIsNonAppInitiated=_loadingIsNonAppInitiated;
 @property(retain, nonatomic) WKWebView *webViewForProcessSharing; // @synthesize webViewForProcessSharing=_webViewForProcessSharing;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;

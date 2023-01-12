@@ -9,7 +9,6 @@
 @class NSData, NSDate, NSDecimalNumber, NSNumber, NSString, NSURL, PKCurrencyAmount, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentWebServiceContext, PKRemoteRegistrationRequest;
 
 @protocol PDPeerPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
-- (void)sendAppleCashCapabilitiesRequestForHandle:(NSString *)arg1 completion:(void (^)(long long, NSError *))arg2;
 - (void)remoteRegistrationRequest:(PKRemoteRegistrationRequest *)arg1 forHandle:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)checkTLKsMissingWithCompletion:(void (^)(_Bool, NSError *))arg1;
@@ -22,7 +21,6 @@
 - (void)balanceForPass:(PKPaymentPass *)arg1 completion:(void (^)(PKCurrencyAmount *))arg2;
 - (void)updateMessageReceivedDate:(NSDate *)arg1 forTransactionWithIdentifier:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)receivedPeerPaymentMessageData:(NSData *)arg1 handler:(void (^)(void))arg2;
-- (void)noteAccountDeletedWithCompletion:(void (^)(void))arg1;
 - (void)presentPeerPaymentTermsAndConditionsWithTermsURL:(NSURL *)arg1 termsIdentifier:(NSString *)arg2 passUniqueID:(NSString *)arg3 orientation:(NSNumber *)arg4 completion:(void (^)(_Bool))arg5;
 - (void)presentRegistrationFlowWithAccount:(PKPeerPaymentAccount *)arg1 amount:(PKCurrencyAmount *)arg2 state:(unsigned long long)arg3 senderAddress:(NSString *)arg4 orientation:(NSNumber *)arg5 completion:(void (^)(_Bool))arg6;
 - (void)presentIdentityVerificationFlowWithResponseData:(NSData *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(_Bool))arg3;
@@ -40,7 +38,7 @@
 - (void)updateAssociatedAccountsWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (void)updateAccountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
 - (void)accountWithCompletion:(void (^)(PKPeerPaymentAccount *))arg1;
-- (void)setSharedPeerPaymentWebServiceContext:(PKPeerPaymentWebServiceContext *)arg1 handler:(void (^)(void))arg2;
-- (void)sharedPeerPaymentWebServiceContextWithHandler:(void (^)(PKPeerPaymentWebServiceContext *))arg1;
+- (void)usingSynchronousProxy:(_Bool)arg1 fetchSharedPeerPaymentWebServiceContextWithHandler:(void (^)(PKPeerPaymentWebServiceContext *))arg2;
+- (void)usingSynchronousProxy:(_Bool)arg1 setSharedPeerPaymentWebServiceContext:(PKPeerPaymentWebServiceContext *)arg2 withCompletion:(void (^)(void))arg3;
 @end
 

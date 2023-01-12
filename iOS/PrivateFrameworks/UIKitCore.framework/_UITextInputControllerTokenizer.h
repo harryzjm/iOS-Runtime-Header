@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 {
     UITextInputController *_textInput;
     struct __CFStringTokenizer *_tokenizer;
+    struct {
+        long long location;
+        long long length;
+    } _tokenizerRange;
     int _tokenizerType;
     _Bool _tokenizerIsInvalid;
 }
@@ -20,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (long long)_indexForTextPosition:(id)arg1;
 - (id)_positionFromPosition:(id)arg1 offset:(unsigned long long)arg2 affinity:(long long)arg3;
 - (_Bool)_isDownstreamForDirection:(long long)arg1 atPosition:(id)arg2;
-- (long long)_writingDirectionAtPosition:(id)arg1;
 - (void)invalidateTokenizer;
 - (void)dealloc;
 - (id)initWithTextInputController:(id)arg1;

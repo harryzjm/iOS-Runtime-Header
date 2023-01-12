@@ -10,23 +10,48 @@
 {
 }
 
++ (_Bool)hasActivePairedDevice;
++ (id)activePairedDevice;
++ (_Bool)setBoolForPreferenceKey:(id)arg1 newValue:(_Bool)arg2 forPairedWatch:(_Bool)arg3 error:(id *)arg4;
 + (id)_sharedAudioDataAnalysisManager;
-+ (id)_numbersForPreferenceKeys:(id)arg1 error:(id *)arg2;
++ (_Bool)_setBoolForWatchPreferenceKey:(id)arg1 newValue:(_Bool)arg2 error:(id *)arg3;
++ (_Bool)_setBoolForPhonePreferenceKey:(id)arg1 newValue:(_Bool)arg2 error:(id *)arg3;
++ (_Bool)_setBoolForPreferenceKey:(id)arg1 newValue:(_Bool)arg2 error:(id *)arg3;
 + (_Bool)_boolForPreferenceKey:(id)arg1 defaultValue:(_Bool)arg2 fromValues:(id)arg3;
++ (id)_numbersForWatchPreferenceKeys:(id)arg1;
++ (id)_numbersForPhonePreferenceKeys:(id)arg1;
++ (id)_numbersForPreferenceKeys:(id)arg1 error:(id *)arg2;
++ (id)_numbersForPreferenceKeys:(id)arg1 fromActiveWatch:(_Bool)arg2;
 + (id)sharedInstance;
 + (void)unitTesting_overrideForceDefaultHeadphoneDataCollectionInterval:(id)arg1;
 + (_Bool)unitTesting_forceDefaultHeadphoneDataCollectionInterval;
 + (void)unitTesting_overrideSimulateLocalHeadphonePlayback:(id)arg1;
 + (_Bool)unitTesting_simulateLocalHeadphonePlayback;
 + (void)unitTesting_overrideIsHeadphoneExposureNotificationsEnabled:(id)arg1;
++ (_Bool)_isMeasureOtherHeadphonesEnabledOnActiveWatchWithError:(id *)arg1;
++ (_Bool)_isHeadphoneExposureDataTransientOnActiveWatchWithError:(id *)arg1;
++ (void)startObservingForChanges;
++ (_Bool)_isMeasureOtherHeadphonesEnabled;
++ (_Bool)_isHeadphoneExposureDataTransient;
++ (_Bool)_setHeadphoneExposureMeasureLevelsEnabledOnActiveWatch:(_Bool)arg1 error:(id *)arg2;
++ (_Bool)_setHeadphoneExposureNotificationsEnabledOnActiveWatch:(_Bool)arg1 error:(id *)arg2;
++ (_Bool)_setHeadphoneExposureMeasureLevelsEnabled:(_Bool)arg1 error:(id *)arg2;
++ (_Bool)_setHeadphoneExposureNotificationsEnabled:(_Bool)arg1 error:(id *)arg2;
++ (_Bool)areHeadphoneExposureNotificationsMandatoryOnActiveWatchWithError:(id *)arg1;
++ (_Bool)isHeadphoneExposureMeasureLevelsEnabledOnActiveWatchWithError:(id *)arg1;
++ (_Bool)isHeadphoneExposureNotificationsEnabledOnActiveWatchWithError:(id *)arg1;
++ (_Bool)isHeadphoneExposureNotificationsSupportedOnActiveWatch;
++ (_Bool)areHeadphoneExposureNotificationsMandatory;
++ (_Bool)isHeadphoneExposureMeasureLevelsEnabled;
 + (_Bool)isHeadphoneExposureNotificationsEnabled;
 - (void)_adasPreferenceDidChange:(id)arg1;
-- (void)_stopObserveringForChanges;
+- (void)_stopObservingForChanges;
+- (void)_startObservingForChangesOnActiveWatch;
 - (void)_startObservingForChanges;
-- (_Bool)isHeadphoneExposureNotificationsEnabled;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
+- (_Bool)swizzled_isHAENFeatureEnabled;
 
 @end
 

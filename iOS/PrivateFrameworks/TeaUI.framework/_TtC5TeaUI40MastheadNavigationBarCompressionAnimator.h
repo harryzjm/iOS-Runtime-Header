@@ -22,6 +22,7 @@
 - (_Bool)animationShouldBeginForScrollView:(id)arg1 currentlyFullyCompressed:(_Bool)arg2;
 - (void)scrollViewIsAtTop:(_Bool)arg1;
 - (void)updateWithPercentage:(double)arg1;
+- (void)prepareForUpdates;
 @property(nonatomic) double topOffset;
 @property(nonatomic, readonly) _Bool shouldCompressAtTop;
 @property(nonatomic, readonly) _Bool shouldCloseGapOnScroll;

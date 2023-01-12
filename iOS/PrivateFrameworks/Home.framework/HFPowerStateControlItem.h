@@ -22,6 +22,7 @@
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)toggleValue;
+- (id)readValueAndPopulateStandardResults;
 - (id)writePrimaryState:(long long)arg1;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (_Bool)canCopyWithCharacteristicOptions:(id)arg1;

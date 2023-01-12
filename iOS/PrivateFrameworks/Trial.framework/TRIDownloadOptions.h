@@ -13,15 +13,17 @@
 @interface TRIDownloadOptions : NSObject <NSSecureCoding>
 {
     _Bool _allowsCellularAccess;
+    _Bool _allowsBatteryUsage;
     unsigned long long _discretionaryBehavior;
     NSObject<OS_xpc_object> *_activity;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)defaultOptions;
++ (id)inexpensiveOptions;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property(nonatomic) unsigned long long discretionaryBehavior; // @synthesize discretionaryBehavior=_discretionaryBehavior;
+@property(nonatomic) _Bool allowsBatteryUsage; // @synthesize allowsBatteryUsage=_allowsBatteryUsage;
 @property(nonatomic) _Bool allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -30,6 +32,9 @@
 - (id)serializeToPersistedBehavior;
 - (id)initWithCoder:(id)arg1;
 - (id)initFromPersistedBehavior:(id)arg1;
+@property(readonly, nonatomic) unsigned long long requiredCapability;
+- (id)initWithAllowsCellular:(_Bool)arg1 discretionaryBehavior:(unsigned long long)arg2;
+- (id)init;
 
 @end
 

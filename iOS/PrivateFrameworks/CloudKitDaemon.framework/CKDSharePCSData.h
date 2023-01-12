@@ -9,7 +9,6 @@
 
 @class CKRecordID, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDSharePCSData <NSSecureCoding, NSCopying>
 {
     CKRecordID *_shareID;

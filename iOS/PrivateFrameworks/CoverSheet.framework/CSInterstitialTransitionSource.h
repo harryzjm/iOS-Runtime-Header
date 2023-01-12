@@ -10,7 +10,7 @@
 #import <CoverSheet/CSExternalAppearanceProviding-Protocol.h>
 #import <CoverSheet/CSExternalBehaviorProviding-Protocol.h>
 
-@class CSComponent, NSSet, NSString, UIColor, _UILegibilitySettings;
+@class CSComponent, NSSet, NSString, _UILegibilitySettings;
 @protocol CSInterstitialTransitionDelegate;
 
 @interface CSInterstitialTransitionSource : NSObject <CSCoverSheetViewTransitionSource, CSExternalAppearanceProviding, CSExternalBehaviorProviding>
@@ -37,8 +37,6 @@
 - (void)conformsToCSBehaviorProviding;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(readonly, copy, nonatomic) NSSet *components;
-@property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 - (void)conformsToCSAppearanceProviding;
 @property(readonly, nonatomic) long long participantState; // @synthesize participantState=_participantState;

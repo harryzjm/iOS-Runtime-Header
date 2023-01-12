@@ -9,8 +9,7 @@
 @class UIHoverGestureRecognizer, UIView;
 
 @protocol _UIPointerInteractionDriverSink <NSObject>
-- (void)_cursorDidHide;
-- (void)_cursorDidExit;
+- (void)_pointerDidExit;
 - (void)_configureHoverGestureRecognizer:(UIHoverGestureRecognizer *)arg1 forView:(UIView *)arg2;
 - (void)_updatePointerWithPoint:(struct CGPoint)arg1 modifiers:(long long)arg2 buttonMask:(long long)arg3 forReason:(long long)arg4;
 @end

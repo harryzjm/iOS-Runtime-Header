@@ -14,8 +14,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *timerHolders; // @synthesize timerHolders=_timerHolders;
 - (id)newTimer;
+- (void)heartBeat:(id)arg1;
 - (void)afterInterval:(double)arg1 async:(CDUnknownBlockType)arg2;
-- (void)updateLatchedAbsoluteTimestamp;
+- (void)prepareAndRunBlock:(CDUnknownBlockType)arg1;
 - (void)setLatchedAbsoluteTimestamp:(double)arg1;
 - (id)initWithUnderlyingQueue:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;

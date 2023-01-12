@@ -9,12 +9,14 @@
 @class NSArray, NSString, TRILevel;
 
 @protocol TRINamespaceFactorProviding <NSObject>
+- (void)dispose;
 - (NSArray *)factorLevels;
 - (TRILevel *)levelForFactor:(NSString *)arg1;
 - (NSString *)rolloutId;
 - (NSString *)treatmentId;
+- (int)deploymentId;
+- (NSString *)experimentId;
 - (unsigned int)namespaceCompatibilityVersion;
-- (unsigned int)namespaceVersion;
 - (NSString *)namespaceName;
 - (unsigned int)namespaceId;
 @end

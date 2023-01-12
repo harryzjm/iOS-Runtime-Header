@@ -6,9 +6,9 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
-@class CSAsset, CSVoiceTriggerAssetHandler;
+@class CSAsset, CSVoiceTriggerAssetHandler, NSString;
 
 @protocol CSVoiceTriggerAssetHandlerDelegate <NSObject>
-- (void)voiceTriggerAssetHandler:(CSVoiceTriggerAssetHandler *)arg1 didChangeCachedAsset:(CSAsset *)arg2;
+- (void)voiceTriggerAssetHandler:(CSVoiceTriggerAssetHandler *)arg1 endpointId:(NSString *)arg2 didChangeCachedAsset:(CSAsset *)arg3;
 @end
 

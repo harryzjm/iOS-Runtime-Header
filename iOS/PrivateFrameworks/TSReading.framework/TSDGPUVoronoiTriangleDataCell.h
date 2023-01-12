@@ -22,9 +22,9 @@
 @property(readonly, nonatomic) unsigned long long triangleCount; // @synthesize triangleCount=_triangleCount;
 - (void)dealloc;
 - (id)initWithTrianglePoints:(CDStruct_6e3f967a *)arg1;
-- (id)initWithEdges:(vector_5a9f1b73)arg1;
+- (id)initWithEdges:(vector_a5fcbc61)arg1;
 - (id)cellsBySplittingCellIntoTriangles;
-- (void)p_setupTriangleDataWithEdges:(vector_5a9f1b73)arg1;
+- (void)p_setupTriangleDataWithEdges:(vector_a5fcbc61)arg1;
 
 @end
 

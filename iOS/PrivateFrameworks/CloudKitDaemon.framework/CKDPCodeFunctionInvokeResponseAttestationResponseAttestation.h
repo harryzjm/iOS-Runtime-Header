@@ -10,7 +10,6 @@
 
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCodeFunctionInvokeResponseAttestationResponseAttestation : PBCodable <NSCopying>
 {
     NSData *_appQuote;

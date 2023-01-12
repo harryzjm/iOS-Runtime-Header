@@ -8,18 +8,16 @@
 
 #import <DACardDAV/CardDAVDelegateInfoProvider-Protocol.h>
 
-@class ACAccountStore, ACAccountType, NSString;
+@class ACAccountType, NSString;
 
 @interface CardDAViCloudDelegateInfoProvider : NSObject <CardDAVDelegateInfoProvider>
 {
-    ACAccountStore *_accountStore;
     ACAccountType *_accountsType;
 }
 
 + (id)delegateInfoForFamilyMembers:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ACAccountType *accountsType; // @synthesize accountsType=_accountsType;
-@property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 - (_Bool)fetchGuardianStatus:(_Bool *)arg1 family:(id)arg2 account:(id)arg3 error:(id *)arg4;
 - (id)nonParentsInFamily:(id)arg1 error:(id *)arg2;
 - (id)appleIDsOfExistingDelegates:(id)arg1;

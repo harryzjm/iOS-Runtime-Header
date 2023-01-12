@@ -65,6 +65,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)_templateURLRequiresAssetKey:(id)arg1;
 + (id)_canonicalizeTemplateURL:(id)arg1;
 + (id)_expandTemplateURL:(id)arg1 fieldValues:(id)arg2;
 + (id)getFileMetadataAtPath:(id)arg1 error:(id *)arg2;

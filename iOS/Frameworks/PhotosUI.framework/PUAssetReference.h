@@ -9,7 +9,7 @@
 #import <PhotosUI/NSCopying-Protocol.h>
 #import <PhotosUI/PXAssetReferenceProtocol-Protocol.h>
 
-@class NSIndexPath, NSString;
+@class NSIndexPath, NSString, PXAssetReference;
 @protocol PUDisplayAsset, PUDisplayAssetCollection;
 
 @interface PUAssetReference : NSObject <NSCopying, PXAssetReferenceProtocol>
@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property(readonly, nonatomic) id <PUDisplayAssetCollection> assetCollection; // @synthesize assetCollection=_assetCollection;
 @property(readonly, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
+@property(readonly, nonatomic) PXAssetReference *pxAssetReference;
 @property(readonly, nonatomic) struct PXSimpleIndexPath simpleIndexPath;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

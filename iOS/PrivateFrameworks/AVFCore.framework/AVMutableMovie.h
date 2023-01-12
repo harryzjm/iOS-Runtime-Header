@@ -29,6 +29,7 @@
 - (struct OpaqueFigFormatReader *)_formatReader;
 - (struct OpaqueFigMutableMovie *)_figMutableMovie;
 @property(nonatomic, getter=isModified) _Bool modified;
+- (id)trackReferences;
 - (id)tracksWithMediaCharacteristic:(id)arg1;
 - (id)tracksWithMediaType:(id)arg1;
 - (id)trackWithTrackID:(int)arg1;

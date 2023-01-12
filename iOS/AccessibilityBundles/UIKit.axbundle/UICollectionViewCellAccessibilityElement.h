@@ -66,9 +66,9 @@
 - (id)_accessibilityTextViewTextOperationResponder;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
+- (id)automationCustomProperties;
 - (_Bool)accessibilityScrollToVisibleWithChild:(id)arg1;
 - (_Bool)_accessibilityShouldAttemptScrollToFrameOnParentView;
-- (_Bool)_accessibilityIsOutsideParentBounds;
 - (struct CGRect)accessibilityFrame;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (id)accessibilityElementAtIndex:(long long)arg1;
@@ -76,7 +76,6 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)isAccessibilityElement;
 - (_Bool)_accessibilityBackingElementIsValid;
-- (id)realCell;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (void)dealloc;
 

@@ -28,7 +28,7 @@
 @property(nonatomic) long long transactionState; // @synthesize transactionState=_transactionState;
 @property(copy, nonatomic) NSString *productID; // @synthesize productID=_productID;
 @property(nonatomic) __weak id <FCPaymentTransactionManagerDelegate> delegate; // @synthesize delegate;
-- (void)startPurchaseWithTagID:(id)arg1 productID:(id)arg2 purchaseID:(id)arg3 appAdamID:(id)arg4 storeExternalVersion:(id)arg5 price:(id)arg6 webAccessOptIn:(_Bool)arg7 payment:(id)arg8;
+- (void)startPurchaseWithTagID:(id)arg1 productID:(id)arg2 purchaseID:(id)arg3 bundleID:(id)arg4 appAdamID:(id)arg5 storeExternalVersion:(id)arg6 price:(id)arg7 webAccessOptIn:(_Bool)arg8 payment:(id)arg9;
 - (void)registerOngoingPurchaseTransactionsWithEntry:(id)arg1;
 - (_Bool)canMakePayments;
 

@@ -23,6 +23,7 @@
     NSDictionary *_activitiesByUUID;
     NSArray *_applicationActivities;
     NSArray *_orderedUUIDs;
+    NSArray *_excludedActivityTypes;
     long long _activityCategory;
     _UIActivityUserDefaults *_userDefaults;
     UIImage *_placeholderImage;
@@ -40,6 +41,7 @@
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property(retain, nonatomic) _UIActivityUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(nonatomic) long long activityCategory; // @synthesize activityCategory=_activityCategory;
+@property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property(retain, nonatomic) NSArray *orderedUUIDs; // @synthesize orderedUUIDs=_orderedUUIDs;
 @property(retain, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
 @property(retain, nonatomic) NSDictionary *activitiesByUUID; // @synthesize activitiesByUUID=_activitiesByUUID;
@@ -74,7 +76,7 @@
 - (void)configureSwitchForCell:(id)arg1 activityProxy:(id)arg2;
 - (void)updateUserDefaultsAnimated:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithFavoritesProxies:(id)arg1 suggestionProxies:(id)arg2 activitiesByUUID:(id)arg3 applicationActivities:(id)arg4 orderedUUIDs:(id)arg5 activityCategory:(long long)arg6;
+- (id)initWithFavoritesProxies:(id)arg1 suggestionProxies:(id)arg2 activitiesByUUID:(id)arg3 applicationActivities:(id)arg4 orderedUUIDs:(id)arg5 excludedActivityTypes:(id)arg6 activityCategory:(long long)arg7;
 - (id)initWithActivities:(id)arg1 userDefaults:(id)arg2;
 
 // Remaining properties

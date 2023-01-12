@@ -13,12 +13,16 @@
 @interface BCSConfigPrefetchMetric <BCSCoreAnalyticsEventDescribing, BCSConfigItemIdentifying, BCSPrefetchMetricProtocol>
 {
     _Bool successful;
+    unsigned long long reason;
     long long hoursSinceLastSuccessfulPrefetch;
+    long long errorCode;
 }
 
 + (id)metricForConfigType:(long long)arg1 postProcessingMetricHandlers:(id)arg2;
+@property(nonatomic) long long errorCode; // @synthesize errorCode;
 @property(nonatomic) long long hoursSinceLastSuccessfulPrefetch; // @synthesize hoursSinceLastSuccessfulPrefetch;
 @property(nonatomic) _Bool successful; // @synthesize successful;
+@property(nonatomic) unsigned long long reason; // @synthesize reason;
 @property(readonly, nonatomic) long long type;
 @property(readonly, nonatomic) NSDictionary *coreAnalyticsPayload;
 @property(readonly, nonatomic) NSString *coreAnalyticsEventName;

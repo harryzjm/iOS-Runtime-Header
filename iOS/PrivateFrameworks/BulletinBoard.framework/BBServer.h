@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <BulletinBoard/AFSiriUserNotificationRequestCapabilityObserving-Protocol.h>
+#import <BulletinBoard/AFSiriAnnouncementRequestCapabilityObserving-Protocol.h>
 #import <BulletinBoard/BBDataProviderManagerDelegate-Protocol.h>
+#import <BulletinBoard/BBMuteExpirationManagerDelegate-Protocol.h>
 #import <BulletinBoard/BBSectionAuthorizationManagerDelegate-Protocol.h>
 #import <BulletinBoard/BBServerConduitServerInterface-Protocol.h>
 #import <BulletinBoard/BBSettingsGatewayServerInterface-Protocol.h>
 #import <BulletinBoard/BBSyncServiceDelegate-Protocol.h>
 #import <BulletinBoard/NSXPCListenerDelegate-Protocol.h>
 
-@class BBBiometricResource, BBDataProviderManager, BBDismissalSyncCache, BBMaskedSet, BBSectionAuthorizationManager, BBSyncService, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
+@class AFSiriAnnouncementRequestCapabilityManager, BBBiometricResource, BBDataProviderManager, BBDismissalSyncCache, BBMaskedSet, BBMuteExpirationManager, BBSectionAuthorizationManager, BBSyncService, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface BBServer : NSObject <BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, NSXPCListenerDelegate, AFSiriUserNotificationRequestCapabilityObserving, BBSectionAuthorizationManagerDelegate, BBSyncServiceDelegate>
+@interface BBServer : NSObject <BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, NSXPCListenerDelegate, AFSiriAnnouncementRequestCapabilityObserving, BBSectionAuthorizationManagerDelegate, BBMuteExpirationManagerDelegate, BBSyncServiceDelegate>
 {
     NSMutableDictionary *_bulletinRequestsByID;
     NSMutableDictionary *_sectionInfoByID;
@@ -53,9 +54,12 @@
     NSMutableSet *_suspendedConnections;
     BBDismissalSyncCache *_dismissalSyncCache;
     BBSectionAuthorizationManager *_sectionAuthorizationManager;
+    BBMuteExpirationManager *_muteManager;
     BBBiometricResource *_biometricResource;
     _Bool _siriAllowedWhenLocked;
     _Bool _siriEnabled;
+    AFSiriAnnouncementRequestCapabilityManager *_announcementCapabilityManagerForHeadphones;
+    AFSiriAnnouncementRequestCapabilityManager *_announcementCapabilityManagerForCarPlay;
 }
 
 + (unsigned long long)pairedDeviceCount;
@@ -81,8 +85,9 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (unsigned long long)_pairedDeviceCount;
+- (void)didChangeMuteAssertionForSectionID:(id)arg1;
 - (void)didChangeEffectiveAuthorizationStatusForSectionID:(id)arg1;
-- (id)syncService:(id)arg1 sectionIdentifierForUniversalSectionIdentifier:(id)arg2;
+- (id)syncService:(id)arg1 sectionIdentifiersForUniversalSectionIdentifier:(id)arg2;
 - (id)syncService:(id)arg1 universalSectionIdentifierForSectionIdentifier:(id)arg2;
 - (_Bool)syncService:(id)arg1 shouldAbortDelayedDismissalForBulletin:(id)arg2;
 - (void)syncService:(id)arg1 receivedDismissalDictionaries:(id)arg2 dismissalIDs:(id)arg3 inSection:(id)arg4 forFeeds:(unsigned long long)arg5;
@@ -128,6 +133,7 @@
 - (void)_publishBulletinsForAllDataProviders;
 - (void)_loadDataProvidersAndSettings;
 - (void)_loadSystemCapabilities;
+- (void)_migrateGlobalAnnounceSettingIfNeeded;
 - (void)_migrateSectionInfoIfNeeded;
 - (void)loadDataProvidersAndSettings;
 - (void)_migrateContentPreviewSettings:(id)arg1;
@@ -146,22 +152,53 @@
 - (id)bulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2;
 - (id)bulletinsRequestsForBulletinIDs:(id)arg1;
 - (void)getUniversalSectionIDForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (id)sectionIDForUniversalSectionID:(id)arg1;
+- (id)sectionIDsForUniversalSectionID:(id)arg1;
 - (id)universalSectionIDForSectionID:(id)arg1;
-- (void)setEffectiveGlobalSpokenNotificationSetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)getEffectiveGlobalSpokenNotificationSettingWithHandler:(CDUnknownBlockType)arg1;
-- (long long)_effectiveGlobalSpokenNotificationSetting;
-- (void)_setGlobalSpokenNotificationSetting:(long long)arg1;
-- (long long)_globalSpokenNotificationSetting;
-- (void)_updateSpokenNotificationSettings;
-- (void)_setSpokenNotificationsSupported:(_Bool)arg1;
-- (_Bool)_isSpokenNotificationsSupported;
-- (void)_saveGlobalSpokenNotificationSettingEnabledEvent;
-- (void)_updateSpokenNotificationControlCenterModuleAvailability;
+- (void)setEffectiveGlobalScheduledDeliveryShowNextSummarySetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getEffectiveGlobalScheduledDeliveryShowNextSummarySettingWithHandler:(CDUnknownBlockType)arg1;
+- (long long)_effectiveGlobalScheduledDeliveryShowNextSummarySetting;
+- (void)_setGlobalScheduledDeliveryShowNextSummarySetting:(long long)arg1;
+- (long long)_globalScheduledDeliveryShowNextSummarySetting;
+- (void)setEffectiveGlobalScheduledDeliveryTimes:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getEffectiveGlobalScheduledDeliveryTimesWithHandler:(CDUnknownBlockType)arg1;
+- (id)_effectiveGlobalScheduledDeliveryTimes;
+- (void)_setGlobalScheduledDeliveryTimes:(id)arg1;
+- (id)_globalScheduledDeliveryTimes;
+- (id)_encodedScheduledDeliveryTimesForDeliveryTimes:(id)arg1;
+- (id)_scheduledDeliveryTimesForEncodedDeliveryTimes:(id)arg1;
+- (void)setEffectiveGlobalScheduledDeliverySetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getEffectiveGlobalScheduledDeliverySettingWithHandler:(CDUnknownBlockType)arg1;
+- (long long)_effectiveGlobalScheduledDeliverySetting;
+- (void)_setGlobalScheduledDeliverySetting:(long long)arg1;
+- (long long)_globalScheduledDeliverySetting;
+- (void)setEffectiveGlobalAnnounceCarPlaySetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getEffectiveGlobalAnnounceCarPlaySettingWithHandler:(CDUnknownBlockType)arg1;
+- (long long)_effectiveGlobalAnnounceCarPlaySetting;
+- (void)_setGlobalAnnounceCarPlaySetting:(long long)arg1;
+- (long long)_globalAnnounceCarPlaySetting;
+- (void)_setPairedVehiclesForCarPlay:(_Bool)arg1;
+- (_Bool)_hasPairedVehiclesForCarPlay;
+- (void)_setAnnounceSupportedForCarPlay:(_Bool)arg1;
+- (_Bool)_isAnnounceSupportedForCarPlay;
+- (void)setEffectiveGlobalAnnounceHeadphonesSetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getEffectiveGlobalAnnounceHeadphonesSettingWithHandler:(CDUnknownBlockType)arg1;
+- (long long)_effectiveGlobalAnnounceHeadphonesSetting;
+- (void)_setGlobalAnnounceHeadphonesSetting:(long long)arg1;
+- (long long)_globalAnnounceHeadphonesSetting;
+- (void)_setAnnounceSupportedForHeadphones:(_Bool)arg1;
+- (_Bool)_isAnnounceSupportedForHeadphones;
+- (void)setEffectiveGlobalAnnounceSetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getEffectiveGlobalAnnounceSettingWithHandler:(CDUnknownBlockType)arg1;
+- (long long)_effectiveGlobalAnnounceSetting;
+- (void)_setGlobalAnnounceSetting:(long long)arg1;
+- (long long)_globalAnnounceSetting;
+- (void)_updateAnnounceSettings;
+- (void)_saveGlobalAnnounceSettingEnabledEvent;
+- (void)_updateAnnounceControlCenterModuleAvailability;
 - (void)_updateSiriPreferences;
 - (void)_siriPreferencesDidChange:(id)arg1;
-- (void)requestCanBeHandledChanged:(_Bool)arg1;
-- (void)hasEligibleSetupChanged:(_Bool)arg1;
+- (void)availableAnnouncementRequestTypesChanged:(unsigned long long)arg1 onPlatform:(long long)arg2;
+- (void)eligibleAnnouncementRequestTypesChanged:(unsigned long long)arg1 onPlatform:(long long)arg2;
 - (void)setEffectiveGlobalContentPreviewsSetting:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getEffectiveGlobalContentPreviewsSettingWithHandler:(CDUnknownBlockType)arg1;
 - (long long)_effectiveGlobalContentPreviewsSetting;
@@ -282,6 +319,7 @@
 - (void)withdrawBulletinRequestsWithRecordID:(id)arg1 forSectionID:(id)arg2;
 - (void)updateSection:(id)arg1 inFeed:(unsigned long long)arg2 withBulletinRequests:(id)arg3;
 - (void)publishBulletinRequest:(id)arg1 destinations:(unsigned long long)arg2;
+- (void)_updateInterruptionLevelForBulletin:(id)arg1;
 - (void)_updateShowsMessagePreviewForBulletin:(id)arg1;
 - (void)deliverResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)noteFinishedWithBulletinID:(id)arg1;

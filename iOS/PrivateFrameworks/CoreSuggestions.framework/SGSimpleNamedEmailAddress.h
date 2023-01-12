@@ -35,7 +35,9 @@
 - (id)serialized;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithNamedHandle:(id)arg1;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2;
+- (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

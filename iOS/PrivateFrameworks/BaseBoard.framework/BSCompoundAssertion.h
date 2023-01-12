@@ -10,21 +10,24 @@
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 
 @class NSMutableOrderedSet, NSOrderedSet, NSSet, NSString;
+@protocol OS_os_log;
 
 @interface BSCompoundAssertion : NSObject <BSCompoundAssertionState, BSInvalidatable>
 {
+    NSString *_identifierPrefix;
     struct os_unfair_lock_s _syncLock;
     _Bool _syncLock_invalid;
     CDUnknownBlockType _syncLock_block;
     struct os_unfair_lock_s _dataLock;
-    NSMutableOrderedSet *_dataLock_acquisitions;
-    NSString *_dataLock_identifierPrefix;
+    NSMutableOrderedSet *_dataLock_acquisitionRecords;
+    NSObject<OS_os_log> *_dataLock_log;
 }
 
 + (id)assertionWithIdentifier:(id)arg1 stateDidChangeHandler:(CDUnknownBlockType)arg2;
 + (id)assertionWithIdentifier:(id)arg1;
 + (id)new;
 - (void).cxx_destruct;
+@property NSObject<OS_os_log> *log;
 - (id)acquireForReason:(id)arg1 withContext:(id)arg2;
 - (id)acquireForReason:(id)arg1;
 @property(readonly) NSOrderedSet *orderedReasons;

@@ -10,17 +10,19 @@
 #import <MobileTimer/MTAgentNotificationListener-Protocol.h>
 
 @class NSString;
-@protocol MTSystemStateDelegate;
+@protocol MTScheduler, MTSystemStateDelegate;
 
 @interface MTSystemStateListener : NSObject <MTAgentNotificationListener, MTAgentDiagnosticDelegate>
 {
     _Bool _restoreDoneHandled;
     id <MTSystemStateDelegate> _delegate;
+    id <MTScheduler> _serializer;
 }
 
 + (id)_restoreNotification;
 + (_Bool)isSystemRestoreDone;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <MTScheduler> serializer; // @synthesize serializer=_serializer;
 @property(nonatomic) _Bool restoreDoneHandled; // @synthesize restoreDoneHandled=_restoreDoneHandled;
 @property(nonatomic) __weak id <MTSystemStateDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)gatherDiagnostics;

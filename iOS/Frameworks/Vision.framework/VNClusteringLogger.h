@@ -26,11 +26,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool logEnabled; // @synthesize logEnabled=_logEnabled;
 @property(readonly) NSURL *logFileURL; // @synthesize logFileURL=_logFileURL;
 @property(readonly) NSURL *logFolderURL; // @synthesize logFolderURL=_logFolderURL;
-- (void)logClusterLookupMapL1:(const map_2e2a8070 *)arg1;
-- (void)logClusterMapL1:(const map_2e2a8070 *)arg1;
-- (void)logClusterLookupMapL0:(const map_2e2a8070 *)arg1;
-- (void)logClusterMapL0:(const map_2e2a8070 *)arg1;
-- (void)logClusterMap:(const map_2e2a8070 *)arg1 level:(id)arg2;
+- (void)logClusterLookupMapL1:(const void *)arg1;
+- (void)logClusterMapL1:(const void *)arg1;
+- (void)logClusterLookupMapL0:(const void *)arg1;
+- (void)logClusterMapL0:(const void *)arg1;
+- (void)logClusterMap:(const void *)arg1 level:(id)arg2;
 - (void)logString:(id)arg1;
 - (void)resetFileNameURLWithCurentDateTime;
 - (id)initWithOptions:(id)arg1 logEnabled:(_Bool)arg2;

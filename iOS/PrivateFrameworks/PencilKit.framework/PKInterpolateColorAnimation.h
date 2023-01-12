@@ -18,9 +18,6 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)isDoneAtTime:(double)arg1;
-- (id)colorAtTime:(double)arg1;
-- (id)initWithStartColor:(id)arg1 endColor:(id)arg2 startTime:(double)arg3 duration:(double)arg4;
 
 @end
 

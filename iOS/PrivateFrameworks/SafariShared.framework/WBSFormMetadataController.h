@@ -8,7 +8,7 @@
 
 @interface WBSFormMetadataController : NSObject
 {
-    struct HashMap<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>> _framesToMetadataMap;
+    struct HashMap<OpaqueFormAutoFillFrame *, std::unique_ptr<SafariShared::FrameMetadata>, WTF::DefaultHash<OpaqueFormAutoFillFrame *>, WTF::HashTraits<OpaqueFormAutoFillFrame *>, WTF::HashTraits<std::unique_ptr<SafariShared::FrameMetadata>>, WTF::HashTableTraits> _framesToMetadataMap;
 }
 
 + (_Bool)convertNumber:(id)arg1 toFormMetadataRequestType:(unsigned long long *)arg2;
@@ -59,7 +59,7 @@
 - (void)getMetadataForAllFormsInPageWithMainFrame:(id)arg1 requestType:(unsigned long long)arg2 frames:(id *)arg3 formMetadata:(id *)arg4;
 - (_Bool)recursivelyCollectAncestorFramesOfFrame:(id)arg1 startingFromFrame:(id)arg2 ancestorFrames:(id)arg3;
 - (void)recursivelyCollectMetadataInFrame:(id)arg1 requestType:(unsigned long long)arg2 frames:(id)arg3 formMetadata:(id)arg4;
-- (struct FrameMetadata *)metadataForFrame:(id)arg1 requestType:(unsigned long long)arg2;
+- (void *)metadataForFrame:(id)arg1 requestType:(unsigned long long)arg2;
 - (void)recursivelyClearMetadataForFrames:(id)arg1;
 - (void)clearMetadataForFrame:(id)arg1;
 - (_Bool)isFrameOrChildAnnotated:(id)arg1;
@@ -73,9 +73,10 @@
 - (void)fillField:(id)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
 - (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3 focusedFieldControlID:(id)arg4;
 - (void)setFormControls:(id)arg1 inFrame:(id)arg2 asAutoFilled:(_Bool)arg3;
+- (void)finishedAutoFillingOneTimeCodeInFrame:(id)arg1 shouldSubmit:(_Bool)arg2;
 - (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)focusFormForStreamlinedLogin:(double)arg1 inFrame:(id)arg2;
-- (void)autoFillOneTimeCodeFieldsInFrame:(id)arg1 withValue:(id)arg2;
+- (void)autoFillOneTimeCodeFieldsInFrame:(id)arg1 withValue:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 fillSynchronously:(_Bool)arg3 setAutoFilled:(_Bool)arg4 focusFieldAfterFilling:(_Bool)arg5 fieldToFocus:(id)arg6 submitForm:(_Bool)arg7;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 fillSynchronously:(_Bool)arg3 setAutoFilled:(_Bool)arg4 focusFieldAfterFilling:(_Bool)arg5 fieldToFocus:(id)arg6;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 fillSynchronously:(_Bool)arg3 setAutoFilled:(_Bool)arg4 selectFieldAfterFilling:(id)arg5;

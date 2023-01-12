@@ -6,12 +6,15 @@
 
 #import <TemplateKit/TLKImageView.h>
 
-@class SFImage, SearchUIButton, UIView;
+#import <SearchUI/TLKImageViewDelegate-Protocol.h>
 
-@interface SearchUIImageView : TLKImageView
+@class NSString, SFImage, SearchUIButton, UIView;
+
+@interface SearchUIImageView : TLKImageView <TLKImageViewDelegate>
 {
     SFImage *_currentImage;
     SearchUIButton *_overlayPlayButton;
+    SFImage *_fallbackImage;
     UIView *_tintView;
 }
 
@@ -19,14 +22,22 @@
 + (id)imageViewWithImage:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *tintView; // @synthesize tintView=_tintView;
+@property(retain, nonatomic) SFImage *fallbackImage; // @synthesize fallbackImage=_fallbackImage;
 @property(retain, nonatomic) SearchUIButton *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
 @property(retain, nonatomic) SFImage *currentImage; // @synthesize currentImage=_currentImage;
 - (void)layoutSubviews;
-- (void)updateWithImage:(id)arg1 needsOverlayButton:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateWithImage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)didFailToLoadImage;
+- (void)didUpdateWithImage:(id)arg1;
+- (void)updateWithImage:(id)arg1 fallbackImage:(id)arg2 needsOverlayButton:(_Bool)arg3;
 - (void)updateWithImage:(id)arg1;
 - (void)appIconDidChange:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

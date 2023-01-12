@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <BiomeStreams/BMProtoBufWrapper-Protocol.h>
+#import <BiomeStreams/BMStoreData-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface BMAppClipLaunchEvent : NSObject
+@interface BMAppClipLaunchEvent <BMStoreData, BMProtoBufWrapper>
 {
     NSString *_URLHash;
     NSString *_clipBundleID;
@@ -20,6 +21,7 @@
     NSString *_referrerBundleID;
 }
 
++ (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *referrerBundleID; // @synthesize referrerBundleID=_referrerBundleID;
 @property(readonly, copy, nonatomic) NSURL *referrerURL; // @synthesize referrerURL=_referrerURL;
@@ -29,9 +31,21 @@
 @property(readonly, copy, nonatomic) NSString *appBundleID; // @synthesize appBundleID=_appBundleID;
 @property(readonly, copy, nonatomic) NSString *clipBundleID; // @synthesize clipBundleID=_clipBundleID;
 @property(readonly, copy, nonatomic) NSString *URLHash; // @synthesize URLHash=_URLHash;
-- (id)description;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (id)proto;
+- (id)initWithProtoData:(id)arg1;
+- (id)initWithProto:(id)arg1;
+- (id)encodeAsProto;
+- (id)serialize;
+@property(readonly, nonatomic) unsigned int dataVersion;
+@property(readonly, copy) NSString *description;
 - (id)initWithURLHash:(id)arg1 clipBundleID:(id)arg2 appBundleID:(id)arg3 webAppBundleID:(id)arg4 launchReason:(id)arg5 fullURL:(id)arg6 referrerURL:(id)arg7 referrerBundleID:(id)arg8;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

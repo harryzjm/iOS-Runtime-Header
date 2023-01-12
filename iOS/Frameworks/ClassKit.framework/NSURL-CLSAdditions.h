@@ -7,15 +7,19 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (CLSAdditions)
-+ (id)cls_documentsURLAndReturnError:(id *)arg1;
-+ (id)cls_documentsURL;
 + (id)cls_draftsURLAndReturnError:(id *)arg1;
 + (id)cls_draftsURL;
++ (id)cls_documentsURLAndReturnError:(id *)arg1;
++ (id)cls_documentsURL;
 + (void)cls_getUbiquitousContainerURLWithCompletion:(CDUnknownBlockType)arg1;
 + (id)cls_ubiquitousContainerURL;
 + (id)cls_configURL;
 + (id)cls_libraryURL;
++ (_Bool)cls_deleteFileAtURL:(id)arg1 error:(id *)arg2;
++ (void)cls_deleteFileAtExpectedURL:(id)arg1 containerURL:(id)arg2 itemID:(id)arg3 ownerName:(id)arg4 zoneName:(id)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)cls_urlSuitableForOpeningForExpectedURL:(id)arg1 containerURL:(id)arg2 itemID:(id)arg3 ownerName:(id)arg4 zoneName:(id)arg5 completion:(CDUnknownBlockType)arg6;
 + (id)cls_ubiquitousContainerURL_Imp:(id *)arg1;
+- (unsigned long long)_cls_stableHash;
 - (void)cls_removeCachedResourceValueForKeys:(id)arg1;
 - (id)cls_createDirectoryIfNeeded:(id *)arg1;
 - (_Bool)cls_isParentOfURL:(id)arg1;
@@ -23,5 +27,8 @@
 @property(readonly, nonatomic) _Bool cls_isUploaded;
 @property(readonly, nonatomic) _Bool cls_isUbiquitous;
 - (id)cls_pathRelativeToURL:(id)arg1;
+- (void)cls_performWithSandboxAccess:(CDUnknownBlockType)arg1;
+- (void)cls_checkForCKShareWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cls_createShareIfNeededWithOrgAdminUserRecordID:(id)arg1 userRecordID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 @end
 

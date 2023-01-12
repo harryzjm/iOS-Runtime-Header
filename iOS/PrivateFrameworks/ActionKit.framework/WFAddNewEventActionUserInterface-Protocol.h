@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSDictionary;
 
-@protocol WFAddNewEventActionUserInterface <WFRemoteUserInterface>
+@protocol WFAddNewEventActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithEventParameters:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 @end
 

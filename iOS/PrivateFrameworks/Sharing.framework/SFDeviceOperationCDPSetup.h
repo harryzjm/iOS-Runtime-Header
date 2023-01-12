@@ -20,6 +20,8 @@
     _Bool _invalidateCalled;
     unsigned long long _startTicks;
     NSObject<OS_dispatch_source> *_timeoutTimer;
+    _Bool _skipSetupRequest;
+    _Bool _skipEscrowFetches;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     double _metricSeconds;
@@ -28,6 +30,8 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool skipEscrowFetches; // @synthesize skipEscrowFetches=_skipEscrowFetches;
+@property(nonatomic) _Bool skipSetupRequest; // @synthesize skipSetupRequest=_skipSetupRequest;
 @property(retain, nonatomic) SFSession *sfSession; // @synthesize sfSession=_sfSession;
 @property(retain, nonatomic) id presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(readonly, nonatomic) double metricSeconds; // @synthesize metricSeconds=_metricSeconds;

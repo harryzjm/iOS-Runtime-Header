@@ -5,11 +5,12 @@
 //
 
 #import <WorkflowKit/WFCodableAttributeBackedParameter-Protocol.h>
+#import <WorkflowKit/WFParameterValuePickable-Protocol.h>
 
 @class INCodableAttribute, INStringLocalizer, NSString;
 @protocol WFDynamicResolveParameterDataSource, WFDynamicResolveParameterDelegate;
 
-@interface WFDynamicResolveParameter <WFCodableAttributeBackedParameter>
+@interface WFDynamicResolveParameter <WFParameterValuePickable, WFCodableAttributeBackedParameter>
 {
     INCodableAttribute *_codableAttribute;
     INStringLocalizer *_stringLocalizer;
@@ -28,6 +29,18 @@
 - (id)localizedLabelForState:(id)arg1;
 - (Class)singleStateClass;
 - (id)initWithDefinition:(id)arg1;
+@property(readonly, nonatomic) _Bool wf_alwaysScaleIconImage;
+- (void)wf_reloadFromAttributesDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)wf_pickerLocalizedImageForState:(id)arg1;
+- (id)wf_pickerLocalizedSubtitleForState:(id)arg1;
+- (id)wf_pickerLocalizedTitleForState:(id)arg1;
+- (void)wf_loadStatesWithSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) NSString *wf_displayLocalizedPrompt;
+@property(readonly, nonatomic) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
+@property(readonly, nonatomic) _Bool wf_usesGroupTableViewStyle;
+@property(readonly, nonatomic) _Bool wf_usesTogglesForSelection;
+@property(readonly, nonatomic) _Bool wf_allowsMultipleSelection;
+@property(readonly, nonatomic) _Bool wf_supportsSearch;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

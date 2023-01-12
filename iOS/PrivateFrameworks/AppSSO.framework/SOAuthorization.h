@@ -9,7 +9,7 @@
 #import <AppSSO/SOExtensionDelegate-Protocol.h>
 #import <AppSSO/SOUIAuthorizationViewControllerDelegate-Protocol.h>
 
-@class NSDictionary, NSString, SOAuthorizationCore, SOExtension, SORemoteExtensionViewController;
+@class NSDictionary, NSString, SOAuthorizationCore, SOExtension, SORemoteExtensionViewController, SOUIAuthorizationViewController;
 @protocol OS_dispatch_queue, SOAuthorizationDelegate;
 
 @interface SOAuthorization : NSObject <SOExtensionDelegate, SOUIAuthorizationViewControllerDelegate>
@@ -17,13 +17,18 @@
     SOAuthorizationCore *_authorizationCore;
     SOExtension *_extension;
     SORemoteExtensionViewController *_extensionViewController;
+    SOUIAuthorizationViewController *_authorizationViewController;
     CDUnknownBlockType _pendingFinishAuthorizationBlock;
     _Bool _enableEmbeddedAuthorizationViewController;
     id <SOAuthorizationDelegate> _delegate;
 }
 
++ (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 callerBundleIdentifier:(id)arg3 useInternalExtensions:(_Bool)arg4;
 + (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 useInternalExtensions:(_Bool)arg3;
 + (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2;
++ (id)originatorBundleIdentifier;
++ (void)setOriginatorBundleIdentifier:(id)arg1;
++ (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool enableEmbeddedAuthorizationViewController; // @synthesize enableEmbeddedAuthorizationViewController=_enableEmbeddedAuthorizationViewController;
 @property __weak id <SOAuthorizationDelegate> delegate; // @synthesize delegate=_delegate;
@@ -35,12 +40,14 @@
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)_finishAuthorizationWithCredential:(id)arg1 error:(id)arg2;
 - (void)_cancelAuthorization;
+- (void)_finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelAuthorization;
 - (void)beginAuthorizationWithParameters:(id)arg1;
 - (void)beginAuthorizationWithOperation:(id)arg1 url:(id)arg2 httpHeaders:(id)arg3 httpBody:(id)arg4;
 - (void)beginAuthorizationWithURL:(id)arg1 httpHeaders:(id)arg2 httpBody:(id)arg3;
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+@property(nonatomic, getter=isUserInteractionEnabled) _Bool enableUserInteraction;
 @property(retain, nonatomic) NSDictionary *authorizationOptions;
 @property(retain) NSObject<OS_dispatch_queue> *delegateDispatchQueue;
 - (void)dealloc;

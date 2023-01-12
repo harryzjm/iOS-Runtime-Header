@@ -10,11 +10,12 @@
 #import <TSText/TSKChangeSourceObserver-Protocol.h>
 #import <TSText/TSWPLayoutOwner-Protocol.h>
 #import <TSText/TSWPLayoutTarget-Protocol.h>
+#import <TSText/TSWPStyleProviding-Protocol.h>
 
 @class NSMutableArray, NSMutableSet, NSObject, NSString, TSDCanvas, TSPObject, TSUBezierPath, TSWPLayoutManager, TSWPStorage;
 @protocol TSDHint, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPLayoutParent, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
-@interface TSWPLayout : TSDLayout <TSKChangeSourceObserver, TSWPLayoutTarget, TSWPLayoutOwner, TSDWrapInvalidationParent>
+@interface TSWPLayout : TSDLayout <TSKChangeSourceObserver, TSWPLayoutTarget, TSWPLayoutOwner, TSDWrapInvalidationParent, TSWPStyleProviding>
 {
     TSWPLayoutManager *_layoutManager;
     NSMutableArray *_columns;
@@ -37,6 +38,9 @@
 - (void)markHiddenInlineDrawableLayout:(id)arg1;
 - (void)clearHiddenInlineDrawableLayoutMarks;
 @property(readonly, nonatomic) TSUBezierPath *interiorClippingPath;
+- (id)p_styleProvidingAncestor;
+- (_Bool)wantsToProvideStylesForTextLayout:(id)arg1;
+- (id)styleProviderForTextLayout:(id)arg1;
 - (id)styleProvider;
 - (struct CGRect)p_rectInRootForSelectionPath:(id)arg1 useParagraphModeRects:(_Bool)arg2 forZoom:(_Bool)arg3;
 - (struct CGRect)p_rectForSelectionPath:(id)arg1 useParagraphModeRects:(_Bool)arg2;
@@ -67,7 +71,7 @@
 @property(readonly, nonatomic) double maxAnchorInBlockDirection;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
-- (void)addAttachmentLayout:(id)arg1;
+- (id)addPartitionableAttachmentLayout:(id)arg1;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
 - (id)layoutForInlineDrawable:(id)arg1;
 @property(readonly, nonatomic) TSDCanvas *canvas;
@@ -88,8 +92,7 @@
 @property(readonly, nonatomic) id <TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
 @property(readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
+@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumberHints;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 @property(readonly, nonatomic) _Bool isOverflowing;
@@ -125,6 +128,7 @@
 - (id)computeLayoutGeometry;
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (void)validate;
+@property(readonly, nonatomic) struct _NSRange restrictedLayoutCharRange;
 - (_Bool)shouldValidate;
 - (_Bool)p_shouldAssertDependenciesAreCorrect;
 - (void)i_validateTextLayout;
@@ -138,6 +142,8 @@
 - (_Bool)shouldInvalidateSizeWhenInvalidateSizeOfReliedOnLayout:(id)arg1;
 @property(readonly, nonatomic) struct _NSRange containedTextRange;
 - (_Bool)descendersCannotClip;
+@property(readonly, nonatomic) Class inlineTableOfContentsLayoutClass;
+@property(readonly, nonatomic) _Bool supportsPageNumbers;
 @property(readonly, nonatomic) _Bool isInstructional;
 - (_Bool)caresAboutStorageChanges;
 - (void)i_setTextLayoutValid:(_Bool)arg1;
@@ -149,15 +155,17 @@
 - (id)initWithInfo:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceAfter;
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceBefore;
 @property(retain, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) struct __CFLocale *hyphenationLocale;
 @property(readonly, nonatomic) _Bool marginsAreMirrored;
-@property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property(readonly, nonatomic) _Bool repShouldPreventCaret;
 @property(readonly, nonatomic) _Bool shouldHyphenate;
+@property(readonly, nonatomic) _Bool shouldIgnoreAnchoredAttachments;
 @property(readonly) Class superclass;
 
 @end

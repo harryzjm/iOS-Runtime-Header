@@ -33,6 +33,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)allManageableStoreAccountDSIDsWithError:(id *)arg1;
+- (id)allStoreAccountDSIDsWithError:(id *)arg1;
 - (_Bool)setLocalStoreAccountProperties:(id)arg1 error:(id *)arg2;
 - (id)localStoreAccountPropertiesWithError:(id *)arg1;
 - (id)verificationContextForDSID:(id)arg1 error:(id *)arg2;

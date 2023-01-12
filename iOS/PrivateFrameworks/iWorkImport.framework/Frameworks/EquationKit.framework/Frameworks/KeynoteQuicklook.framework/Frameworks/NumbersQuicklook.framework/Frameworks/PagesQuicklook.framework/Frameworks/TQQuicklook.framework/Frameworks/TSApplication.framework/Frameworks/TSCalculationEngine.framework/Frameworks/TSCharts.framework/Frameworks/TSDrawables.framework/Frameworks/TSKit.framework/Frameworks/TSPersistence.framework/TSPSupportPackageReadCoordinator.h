@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, TSPPackage;
+@class NSObject, TSPPackage, TSPPackageReadCoordinator;
 @protocol OS_dispatch_queue;
 
 @interface TSPSupportPackageReadCoordinator
 {
     TSPPackage *_documentPackage;
+    TSPPackageReadCoordinator *_documentPackageReadCoordinator;
     NSObject<OS_dispatch_queue> *_documentComponentReadQueue;
 }
 
 - (void).cxx_destruct;
+- (id)externalObjectForIdentifier:(long long)arg1 componentIdentifier:(long long)arg2 isReadFinished:(_Bool)arg3;
 - (long long)metadataObjectIdentifier;
 - (void)prepareToReadComponentWithIdentifier:(long long)arg1 forObjectIdentifier:(long long)arg2 isWeakReference:(_Bool)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)endReading;
-- (id)initWithContext:(id)arg1 package:(id)arg2 packageURL:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(_Bool)arg5 skipDocumentUpgrade:(_Bool)arg6 archiveValidationMode:(long long)arg7 documentPackage:(id)arg8;
-- (id)initWithContext:(id)arg1 package:(id)arg2 packageURL:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(_Bool)arg5 skipDocumentUpgrade:(_Bool)arg6 archiveValidationMode:(long long)arg7;
+- (void)setDocumentPackageReadCoordinator:(id)arg1;
+- (id)initWithContext:(id)arg1 package:(id)arg2 packageURL:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(_Bool)arg5 skipDocumentUpgrade:(_Bool)arg6 documentLoadValidationPolicy:(id)arg7 documentPackage:(id)arg8;
+- (id)initWithContext:(id)arg1 package:(id)arg2 packageURL:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(_Bool)arg5 skipDocumentUpgrade:(_Bool)arg6 documentLoadValidationPolicy:(id)arg7;
 
 @end
 

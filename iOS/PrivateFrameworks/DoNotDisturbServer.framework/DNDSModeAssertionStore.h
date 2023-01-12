@@ -21,8 +21,11 @@
 
 + (id)messageDateForSyncDictionaryRepresentation:(id)arg1;
 + (id)newWithSyncDictionaryRepresentation:(id)arg1;
-+ (id)newWithDictionaryRepresentation:(id)arg1;
++ (CDStruct_c4e2040f)syncMessageKeys;
++ (id)newWithDictionaryRepresentation:(id)arg1 context:(id)arg2;
++ (CDStruct_c4e2040f)backingRecordKeys;
 + (id)upgradeDictionaryRepresentation:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
++ (CDStruct_c4e2040f)sysdiagnoseRecordKeys;
 + (id)messageDateForPeaceSyncDictionaryRepresentation:(id)arg1;
 + (id)newWithPeaceSyncDictionaryRepresentation:(id)arg1;
 - (void).cxx_destruct;
@@ -37,7 +40,7 @@
 - (id)_initWithStore:(id)arg1;
 - (id)init;
 - (id)syncDictionaryRepresentationWithDate:(id)arg1 messageUUID:(id)arg2;
-- (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationWithContext:(id)arg1;
 - (id)sysdiagnoseDictionaryRepresentation;
 - (id)peaceSyncDictionaryRepresentationWithDate:(id)arg1 messageUUID:(id)arg2 userRequestedClientIdentifierHandler:(CDUnknownBlockType)arg3;
 - (id)lastUpdateDate;

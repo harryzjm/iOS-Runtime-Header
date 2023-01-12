@@ -7,15 +7,16 @@
 #import <objc/NSObject.h>
 
 @class MTXPCConnectionInfo, NSDate, NSXPCConnection;
-@protocol MTScheduler, NAScheduler;
+@protocol NAScheduler;
 
 @interface MTXPCConnectionProvider : NSObject
 {
     NSXPCConnection *_connection;
+    _Bool _alive;
+    struct os_unfair_lock_s _connectionLock;
     MTXPCConnectionInfo *_info;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _reconnectHandler;
-    id <MTScheduler> _serializer;
     id <NAScheduler> _callbackScheduler;
     NSDate *_lastLifecycleNotification;
 }
@@ -23,9 +24,9 @@
 + (id)providerWithConnectionInfo:(id)arg1 reconnectHandler:(CDUnknownBlockType)arg2;
 + (id)providerWithConnectionInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct os_unfair_lock_s connectionLock; // @synthesize connectionLock=_connectionLock;
 @property(retain, nonatomic) NSDate *lastLifecycleNotification; // @synthesize lastLifecycleNotification=_lastLifecycleNotification;
 @property(retain, nonatomic) id <NAScheduler> callbackScheduler; // @synthesize callbackScheduler=_callbackScheduler;
-@property(retain, nonatomic) id <MTScheduler> serializer; // @synthesize serializer=_serializer;
 @property(copy, nonatomic) CDUnknownBlockType reconnectHandler; // @synthesize reconnectHandler=_reconnectHandler;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(retain, nonatomic) MTXPCConnectionInfo *info; // @synthesize info=_info;
@@ -43,7 +44,6 @@
 - (void)_didInvalidateConnection;
 - (void)_didInterruptConnection;
 - (id)connection;
-- (id)connectionFuture;
 - (id)_connectionRebuildingIfNecessary;
 - (void)dealloc;
 - (id)initWithConnectionInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2 reconnectHandler:(CDUnknownBlockType)arg3;

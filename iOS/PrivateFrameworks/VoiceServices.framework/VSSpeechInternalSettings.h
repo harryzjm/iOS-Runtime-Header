@@ -10,16 +10,15 @@
 
 @interface VSSpeechInternalSettings : NSObject
 {
-    _Bool _internalBuild;
-    _Bool _isInternalBuild;
     NSUserDefaults *_internalDefaults;
 }
 
 + (id)standardInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
-@property(nonatomic) _Bool isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
-@property(readonly, nonatomic) _Bool internalBuild; // @synthesize internalBuild=_internalBuild;
+@property(nonatomic) _Bool defaultToNonDiscretionaryDownloads;
+@property(nonatomic) _Bool disableAssetUpdate;
+@property(nonatomic) _Bool enableTrial;
 @property(nonatomic) _Bool ignorePowerAndThermalState;
 @property(readonly, nonatomic) _Bool disableMobileAssetURLReset;
 @property(readonly, nonatomic) _Bool useSSMLInput;
@@ -29,15 +28,15 @@
 @property(nonatomic) _Bool useBetaVoice;
 @property(nonatomic) float streamBufferDuration;
 @property(nonatomic) _Bool disableOspreyStreaming;
-@property(nonatomic) _Bool forceOsprey;
-@property(nonatomic) _Bool disableOsprey;
 @property(nonatomic) _Bool disableDeviceRacing;
+@property(nonatomic) _Bool disableInlineStreamTTS;
 @property(nonatomic) _Bool disableServerTTS;
 @property(nonatomic) _Bool forceServerTTS;
 @property(nonatomic) float defaultVolume;
 @property(nonatomic) float serverTTSTimeout;
 @property(nonatomic) _Bool whisper;
 @property(nonatomic) _Bool enableLocalVoices;
+@property(nonatomic) _Bool allowAnyAssetSubscriber;
 @property(nonatomic) _Bool disableAssetCleaning;
 @property(nonatomic) _Bool disableCache;
 @property(nonatomic) _Bool logSensitiveText;

@@ -30,7 +30,7 @@
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 - (void)_configureContentViewIfNecessaryWithTitle:(id)arg1;
 - (void)_configureMaterialViewsIfNecessary;
-- (id)_newMaterialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
+- (id)_newMaterialViewWithRecipe:(long long)arg1;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)adjustForContentSizeCategoryChange;

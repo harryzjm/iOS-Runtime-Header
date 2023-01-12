@@ -11,6 +11,7 @@
 @protocol PXGRendererDelegate <NSObject>
 - (void)rendererPerformRender:(id <PXGRenderer>)arg1;
 - (void)rendererNeedsUpdate:(id <PXGRenderer>)arg1;
+- (void)rendererDidChangeTextureConverter:(id <PXGRenderer>)arg1;
 - (void)renderer:(id <PXGRenderer>)arg1 viewportSizeWillChange:(struct CGSize)arg2;
 @end
 

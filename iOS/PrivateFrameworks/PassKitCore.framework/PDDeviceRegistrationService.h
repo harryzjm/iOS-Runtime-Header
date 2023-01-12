@@ -16,7 +16,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PDDeviceRegistrationServiceCoordinator *deviceRegistrationServiceCoordinator; // @synthesize deviceRegistrationServiceCoordinator=_deviceRegistrationServiceCoordinator;
-- (void)performDeviceRegistrationForReason:(id)arg1 actionType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performDeviceRegistrationForReason:(id)arg1 brokerURL:(id)arg2 actionType:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithConnection:(id)arg1;
 
 // Remaining properties

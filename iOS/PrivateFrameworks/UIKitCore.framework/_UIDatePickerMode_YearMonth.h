@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 + (unsigned long long)extractableCalendarUnits;
 + (long long)datePickerMode;
+- (id)localizedFormatString;
 - (unsigned long long)nextUnitSmallerThanUnit:(unsigned long long)arg1;
 - (unsigned long long)nextUnitLargerThanUnit:(unsigned long long)arg1;
 

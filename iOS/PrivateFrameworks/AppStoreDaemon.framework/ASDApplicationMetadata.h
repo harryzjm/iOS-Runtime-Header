@@ -25,6 +25,7 @@
     NSString *_deviceVendorID;
     NSNumber *_downloaderID;
     NSNumber *_externalVersionIdentifier;
+    NSNumber *_familyID;
     NSNumber *_installOrder;
     NSNumber *_itemID;
     NSString *_itemName;
@@ -44,6 +45,7 @@
 @property(copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property(copy, nonatomic) NSNumber *installOrder; // @synthesize installOrder=_installOrder;
 @property(nonatomic) _Bool isBeta; // @synthesize isBeta=_isBeta;
+@property(copy, nonatomic) NSNumber *familyID; // @synthesize familyID=_familyID;
 @property(copy, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;
 @property(copy, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
 @property(nonatomic) _Bool deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;

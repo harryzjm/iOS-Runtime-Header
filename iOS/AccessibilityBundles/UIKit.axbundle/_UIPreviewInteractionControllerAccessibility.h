@@ -13,14 +13,11 @@
 + (id)safeCategoryTargetClassName;
 - (void)commitInteractivePreview;
 - (void)_dismissPreviewViewControllerIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_accessibilityTeardownPresentationState;
 - (void)_accessibilityDismissPresentation;
 - (_Bool)_accessibilityShowMoreActions;
 - (_Bool)_accessibilityPerformLeadingAction;
 - (_Bool)_accessibilityPerformTrailingAction;
-- (_Bool)_axPerformPreviewAction:(int)arg1;
 - (_Bool)_preparePreviewViewControllerPresentationFromPreviewInteraction:(id)arg1;
-- (id)_accessibilityCustomActionsFromPresentedViewController:(id)arg1;
 
 @end
 

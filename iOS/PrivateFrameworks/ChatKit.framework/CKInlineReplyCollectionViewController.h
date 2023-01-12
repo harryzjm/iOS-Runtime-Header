@@ -35,6 +35,7 @@
 - (_Bool)_canUseOpaqueMask;
 - (id)transcriptBackgroundColor;
 - (_Bool)isInline;
+- (_Bool)isModal;
 - (id)initWithConversation:(id)arg1 delegate:(id)arg2 notifications:(id)arg3 balloonMaxWidth:(double)arg4 marginInsets:(struct UIEdgeInsets)arg5;
 
 @end

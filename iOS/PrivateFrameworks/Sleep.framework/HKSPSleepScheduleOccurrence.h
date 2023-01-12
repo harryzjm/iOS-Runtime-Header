@@ -7,14 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <Sleep/BSDescriptionProviding-Protocol.h>
+#import <Sleep/HKSPDictionarySerializable-Protocol.h>
 #import <Sleep/HKSPObject-Protocol.h>
 #import <Sleep/NAEquatable-Protocol.h>
 #import <Sleep/NAHashable-Protocol.h>
 #import <Sleep/NSMutableCopying-Protocol.h>
 
-@class HKSPAlarmConfiguration, HKSPSleepScheduleDayOccurrence, NSDate, NSDateComponents, NSSet, NSString;
+@class HKSPAlarmConfiguration, HKSPSleepScheduleDayOccurrence, NSDate, NSDateComponents, NSDictionary, NSSet, NSString;
 
-@interface HKSPSleepScheduleOccurrence : NSObject <BSDescriptionProviding, HKSPObject, NAEquatable, NAHashable, NSMutableCopying>
+@interface HKSPSleepScheduleOccurrence : NSObject <BSDescriptionProviding, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
 {
     unsigned long long _version;
     unsigned long long _weekdays;
@@ -23,13 +24,6 @@
 
 + (id)occurrenceWithWeekdays:(unsigned long long)arg1 backingOccurrence:(id)arg2;
 + (_Bool)supportsSecureCoding;
-+ (id)testOverrideSleepScheduleOccurrence;
-+ (id)testSleepScheduleOccurrenceWithAllPropertiesSet;
-+ (id)testSleepScheduleOccurrenceWithWeekdays:(unsigned long long)arg1 alarmEnabled:(_Bool)arg2;
-+ (id)testSleepScheduleOccurrenceWithWeekdays:(unsigned long long)arg1 alarmEnabled:(_Bool)arg2 includeToneIds:(_Bool)arg3;
-+ (id)testSleepScheduleOccurrenceWithWeekdays:(unsigned long long)arg1;
-+ (id)testSleepScheduleOccurrenceWithAlarmEnabled:(_Bool)arg1;
-+ (id)testSleepScheduleOccurrence;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKSPSleepScheduleDayOccurrence *backingOccurrence; // @synthesize backingOccurrence=_backingOccurrence;
 @property(readonly, nonatomic) unsigned long long weekdays; // @synthesize weekdays=_weekdays;
@@ -54,6 +48,8 @@
 - (long long)overrideDayInCalendar:(id)arg1;
 - (_Bool)overrideAppliesToOccurrence:(id)arg1 gregorianCalendar:(id)arg2;
 - (_Bool)overridesWakeUpForOccurrenceOnDate:(id)arg1 gregorianCalendar:(id)arg2;
+- (id)changesFromOccurrence:(id)arg1;
+- (id)convertToScheduledOccurrenceOnSameDaysAsOccurrence:(id)arg1;
 - (id)overrideOccurrenceTemplateForCurrentDate:(id)arg1 gregorianCalendar:(id)arg2;
 - (id)overrideOccurrenceWithWakeUpComponents:(id)arg1 bedtimeComponents:(id)arg2;
 @property(readonly, nonatomic) _Bool isInitialized;
@@ -75,6 +71,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly) Class superclass;
 

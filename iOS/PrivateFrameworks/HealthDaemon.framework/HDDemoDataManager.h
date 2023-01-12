@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
-@class HDDemoDataGenerator, HDProfile, NSString;
+@class HDDemoDataGenerator, HDProfile;
 @protocol OS_dispatch_queue;
 
-@interface HDDemoDataManager : NSObject <HDHealthDaemonReadyObserver>
+@interface HDDemoDataManager : NSObject <HDProfileReadyObserver>
 {
     NSObject<OS_dispatch_queue> *_demoDataQueue;
     HDProfile *_profile;
@@ -21,15 +21,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDDemoDataGenerator *generator; // @synthesize generator=_generator;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void)daemonReady:(id)arg1;
-- (void)_queue_generateDemoDataIfNeeded;
+- (void)profileDidBecomeReady:(id)arg1;
 - (id)initWithProfile:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

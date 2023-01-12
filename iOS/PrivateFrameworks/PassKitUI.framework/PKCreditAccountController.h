@@ -8,14 +8,15 @@
 {
 }
 
++ (_Bool)shouldShowCardNumbersWithAccount:(id)arg1 andPass:(id)arg2;
 + (unsigned long long)paymentEducationStateForAccount:(id)arg1 mostRecentTransactions:(id)arg2 upcomingScheduledPayments:(id)arg3;
 + (id)relevantScheduledPaymentFromScheduledPayments:(id)arg1 account:(id)arg2;
 + (_Bool)_shouldDisplayTransactionsForAccount:(id)arg1;
 + (_Bool)_shouldDisplayBalanceForAccount:(id)arg1;
-+ (_Bool)_shouldDisplayBalanceAndTransactionsForTransactionSource:(id)arg1;
-+ (_Bool)shouldDisplayTransactionsForTransactionSource:(id)arg1 withAccount:(id)arg2;
-+ (_Bool)shouldDisplayAccountInformationForTransactionSource:(id)arg1 withAccount:(id)arg2;
-+ (void)resolutionToReceiveCashbackForAccount:(id)arg1 withPeerPaymentAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (_Bool)_shouldDisplayBalanceAndTransactionsForTransactionSourceCollection:(id)arg1;
++ (_Bool)shouldDisplayTransactionsForTransactionSourceCollection:(id)arg1 withAccount:(id)arg2;
++ (_Bool)shouldDisplayAccountInformationForTransactionSourceCollection:(id)arg1 withAccount:(id)arg2;
++ (void)resolutionToReceiveCashbackForAccount:(id)arg1 accountUser:(id)arg2 withPeerPaymentAccount:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

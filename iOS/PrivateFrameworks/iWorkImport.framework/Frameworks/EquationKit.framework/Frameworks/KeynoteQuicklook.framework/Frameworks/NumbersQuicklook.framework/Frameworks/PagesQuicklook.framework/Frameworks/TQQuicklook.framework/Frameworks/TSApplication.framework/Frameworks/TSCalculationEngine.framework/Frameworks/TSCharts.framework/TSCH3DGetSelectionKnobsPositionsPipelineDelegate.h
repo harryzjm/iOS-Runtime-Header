@@ -9,24 +9,24 @@
 #import <TSCharts/TSCH3DChartAllSceneObjectDelegate-Protocol.h>
 #import <TSCharts/TSCH3DChartElementSceneObjectGeometryDelegate-Protocol.h>
 #import <TSCharts/TSCH3DSceneDelegate-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, TSCH3DChartRep, TSCH3DGeometry, TSCH3DScene;
 
-@interface TSCH3DGetSelectionKnobsPositionsPipelineDelegate : NSObject <TSCHUnretainedParent, TSCH3DSceneDelegate, TSCH3DChartAllSceneObjectDelegate, TSCH3DChartElementSceneObjectGeometryDelegate>
+@interface TSCH3DGetSelectionKnobsPositionsPipelineDelegate : NSObject <TSCH3DSceneDelegate, TSCH3DChartAllSceneObjectDelegate, TSCH3DChartElementSceneObjectGeometryDelegate>
 {
-    TSCH3DChartRep *mRep;
-    NSArray *mSelection;
-    NSMutableArray *mProjectedPoints;
-    TSCH3DGeometry *mGeometry;
-    NSMutableDictionary *mLabelsBoundsForMerging;
-    TSCH3DScene *mScene;
-    int mCurrentLabelType;
-    int mKnobsMode;
+    TSCH3DChartRep *_rep;
+    NSArray *_selection;
+    NSMutableArray *_projectedPoints;
+    TSCH3DGeometry *_geometry;
+    NSMutableDictionary *_labelsBoundsForMerging;
+    TSCH3DScene *_scene;
+    int _currentLabelType;
+    int _knobsMode;
 }
 
-@property(retain, nonatomic) NSMutableArray *projectedPoints; // @synthesize projectedPoints=mProjectedPoints;
-@property(retain, nonatomic) TSCH3DGeometry *geometry; // @synthesize geometry=mGeometry;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *projectedPoints; // @synthesize projectedPoints=_projectedPoints;
+@property(retain, nonatomic) TSCH3DGeometry *geometry; // @synthesize geometry=_geometry;
 - (id)p_selectedSeries;
 - (_Bool)p_labelSelectedForType:(int)arg1 alignment:(unsigned long long)arg2 elementIndex:(long long)arg3;
 - (_Bool)willSubmitGeometry:(id)arg1;
@@ -37,8 +37,8 @@
 - (void)labelsResourcesSessionWillEndForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)labelsResourcesSessionWillBeginForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)addLabelBoundsForMerging:(struct CGRect)arg1;
-- (void)setOffset:(const tvec3_17f03ce0 *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
-- (void)didGenerateShaderEffectsForSeriesAtIndex:(const tvec2_3b141483 *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
+- (void)setOffset:(const void *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
+- (void)didGenerateShaderEffectsForSeriesAtIndex:(const void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
 - (_Bool)willProcessSeries:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (struct ElementRenderPass)renderPassForSceneObject:(id)arg1;
 - (_Bool)renderPassDelayDisallowedForSceneObject:(id)arg1 pipeline:(id)arg2;
@@ -57,8 +57,6 @@
 - (void)didGenerateShaderEffects:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (void)didRunForScene:(id)arg1 pipeline:(id)arg2;
 - (void)willRunForScene:(id)arg1 pipeline:(id)arg2;
-- (void)clearParent;
-- (void)dealloc;
 - (id)initWithRep:(id)arg1 selection:(id)arg2;
 
 // Remaining properties

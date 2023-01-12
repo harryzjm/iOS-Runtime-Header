@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, NSURL, PLManagedAsset, PLThumbnailManager;
+@class NSArray, NSData, NSString, NSURL, PLManagedAsset, PLThumbnailManager;
 
 @interface PHAssetCreationDerivativeContext : NSObject
 {
@@ -25,17 +25,19 @@
     NSString *_assetExtension;
     NSData *_imageData;
     NSString *_fullsizeRenderImagePath;
-    NSString *_originalVideoPath;
+    NSString *_pathForOriginalFile;
     NSString *_pathForVideoPreviewFile;
     NSString *_fullsizeRenderVideoPath;
+    NSArray *_auxiliaryImageRecords;
     struct CGSize _assetOrientedImageSize;
     struct CGSize _embeddedThumbnailSize;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *auxiliaryImageRecords; // @synthesize auxiliaryImageRecords=_auxiliaryImageRecords;
 @property(copy, nonatomic) NSString *fullsizeRenderVideoPath; // @synthesize fullsizeRenderVideoPath=_fullsizeRenderVideoPath;
 @property(copy, nonatomic) NSString *pathForVideoPreviewFile; // @synthesize pathForVideoPreviewFile=_pathForVideoPreviewFile;
-@property(copy, nonatomic) NSString *originalVideoPath; // @synthesize originalVideoPath=_originalVideoPath;
+@property(copy, nonatomic) NSString *pathForOriginalFile; // @synthesize pathForOriginalFile=_pathForOriginalFile;
 @property(copy, nonatomic) NSString *fullsizeRenderImagePath; // @synthesize fullsizeRenderImagePath=_fullsizeRenderImagePath;
 @property(retain, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(copy, nonatomic) NSString *assetExtension; // @synthesize assetExtension=_assetExtension;

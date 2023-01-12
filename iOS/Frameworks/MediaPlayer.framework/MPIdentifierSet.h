@@ -13,12 +13,11 @@
 #import <MediaPlayer/MPMutableUniversalStoreIdentifiers-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPModelKind, NSArray, NSString;
 @protocol MPLocalLibraryIdentifiers, MPPersonalStoreIdentifiers, MPRadioIdentifiers, MPUniversalStoreIdentifiers;
 
-@interface MPIdentifierSet : NSObject <MPMutableLocalLibraryIdentifiers, MPMutablePersonalStoreIdentifiers, MPMutableUniversalStoreIdentifiers, MPMutableRadioIdentifiers, MPMutableIdentifierSet, _MPStateDumpPropertyListTransformable, NSCopying, NSSecureCoding>
+@interface MPIdentifierSet : NSObject <MPMutableLocalLibraryIdentifiers, MPMutablePersonalStoreIdentifiers, MPMutableUniversalStoreIdentifiers, MPMutableRadioIdentifiers, MPMutableIdentifierSet, NSCopying, NSSecureCoding>
 {
     _Bool _shouldExcludeFromShuffle;
     _Bool _placeholder;
@@ -39,14 +38,18 @@
     NSString *_socialProfileID;
     NSString *_informalMediaClipID;
     NSString *_informalStaticAssetID;
+    long long _reportingAdamID;
+    long long _assetAdamID;
     NSString *_stationStringID;
     NSString *_stationHash;
     long long _stationID;
+    NSString *_stationEventID;
     NSString *_containerUniqueID;
     NSString *_handoffCorrelationID;
     NSString *_contentItemID;
     NSString *_lyricsID;
     NSString *_vendorID;
+    NSString *_playbackAuthorizationToken;
     MPModelKind *_modelKind;
 }
 
@@ -56,14 +59,18 @@
 @property(nonatomic, getter=isPlaceholder) _Bool placeholder; // @synthesize placeholder=_placeholder;
 @property(nonatomic) _Bool shouldExcludeFromShuffle; // @synthesize shouldExcludeFromShuffle=_shouldExcludeFromShuffle;
 @property(readonly, nonatomic) MPModelKind *modelKind; // @synthesize modelKind=_modelKind;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(copy, nonatomic) NSString *vendorID; // @synthesize vendorID=_vendorID;
 @property(copy, nonatomic) NSString *lyricsID; // @synthesize lyricsID=_lyricsID;
 @property(copy, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
 @property(copy, nonatomic) NSString *handoffCorrelationID; // @synthesize handoffCorrelationID=_handoffCorrelationID;
 @property(copy, nonatomic) NSString *containerUniqueID; // @synthesize containerUniqueID=_containerUniqueID;
+@property(copy, nonatomic) NSString *stationEventID; // @synthesize stationEventID=_stationEventID;
 @property(nonatomic) long long stationID; // @synthesize stationID=_stationID;
 @property(copy, nonatomic) NSString *stationHash; // @synthesize stationHash=_stationHash;
 @property(copy, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
+@property(nonatomic) long long assetAdamID; // @synthesize assetAdamID=_assetAdamID;
+@property(nonatomic) long long reportingAdamID; // @synthesize reportingAdamID=_reportingAdamID;
 @property(copy, nonatomic) NSString *informalStaticAssetID; // @synthesize informalStaticAssetID=_informalStaticAssetID;
 @property(copy, nonatomic) NSString *informalMediaClipID; // @synthesize informalMediaClipID=_informalMediaClipID;
 @property(copy, nonatomic) NSString *socialProfileID; // @synthesize socialProfileID=_socialProfileID;

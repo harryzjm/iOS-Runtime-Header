@@ -10,8 +10,5 @@
 
 @protocol HDSPIDSMessage <HKSPDictionarySerializable>
 @property(readonly, copy, nonatomic) NSString *identifier;
-
-@optional
-@property(readonly, nonatomic) double timeout;
 @end
 

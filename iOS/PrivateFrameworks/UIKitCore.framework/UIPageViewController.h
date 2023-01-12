@@ -93,7 +93,7 @@
 - (_Bool)_shouldNavigateInDirection:(long long *)arg1 inResponseToTapGestureRecognizer:(id)arg2;
 - (struct CGRect *)_tapRegions;
 - (id)_incomingViewControllersForGestureDrivenCurlInDirection:(long long)arg1;
-- (id)_deepestUnambiguousResponder;
+- (id)_deepestActionResponder;
 - (void)setViewControllers:(id)arg1 direction:(long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setViewControllers:(id)arg1 withScrollInDirection:(long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_cacheViewControllerForScroll:(id)arg1;

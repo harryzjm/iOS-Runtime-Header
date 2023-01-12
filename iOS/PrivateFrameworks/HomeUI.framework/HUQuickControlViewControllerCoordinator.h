@@ -16,6 +16,7 @@
 @interface HUQuickControlViewControllerCoordinator : NSObject <HFItemManagerDelegate, HFOverrideCharacteristicValueProvider, HUQuickControlViewControllerDelegate>
 {
     _Bool _controlsVisible;
+    _Bool _shouldIncludeRoomNameInHeaderTitle;
     _Bool _showIconOffState;
     _Bool _reachable;
     HMHome *_home;
@@ -46,6 +47,7 @@
 @property(copy, nonatomic) NSString *primaryStatusText; // @synthesize primaryStatusText=_primaryStatusText;
 @property(readonly, nonatomic) _Bool showIconOffState; // @synthesize showIconOffState=_showIconOffState;
 @property(readonly, nonatomic) id <HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;
+@property(nonatomic) _Bool shouldIncludeRoomNameInHeaderTitle; // @synthesize shouldIncludeRoomNameInHeaderTitle=_shouldIncludeRoomNameInHeaderTitle;
 @property(nonatomic, getter=areControlsVisible) _Bool controlsVisible; // @synthesize controlsVisible=_controlsVisible;
 @property(retain, nonatomic) HUQuickControlViewController *activeController; // @synthesize activeController=_activeController;
 @property(nonatomic) __weak id <HUQuickControlContentHosting> controlHost; // @synthesize controlHost=_controlHost;

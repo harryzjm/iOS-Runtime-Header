@@ -49,6 +49,7 @@
 - (id)dateFilterGroupSnapshot;
 - (id)firstSearchTextGroupSnapshot;
 - (id)fullSearchTextGroupSnapshot;
+- (id)lookupIdentifiersForSearchIndexCategories:(id)arg1;
 - (_Bool)isMatchedByIdentifierAtIndex:(long long)arg1;
 - (_Bool)isContentStringTextSearchableAtIndex:(long long)arg1;
 - (long long)categoryAtIndex:(long long)arg1;
@@ -63,6 +64,7 @@
 @property(readonly, nonatomic) NSArray *contentStrings;
 @property(readonly, nonatomic) NSArray *groupsSearchTokens;
 @property(readonly, nonatomic) unsigned long long matchCount;
+@property(readonly, nonatomic) _Bool containsFilterSearchTokens;
 @property(readonly, nonatomic) unsigned long long collectionMatchCount;
 @property(readonly, nonatomic) unsigned long long assetMatchCount;
 @property(readonly) NSMutableSet *sceneGroupsIds;

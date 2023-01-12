@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIFoundation/UIFont.h>
 
 @interface UIFont (Bridge)
 + (id)ts_preferredFontForTextStyle:(unsigned long long)arg1;

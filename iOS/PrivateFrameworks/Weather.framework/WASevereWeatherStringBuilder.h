@@ -11,11 +11,16 @@
 }
 
 + (id)_capitalizeFirstWordOfString:(id)arg1;
++ (id)_displayDescriptionForEvent:(id)arg1 useSentenceCase:(_Bool)arg2 isFirstEvent:(_Bool)arg3;
++ (id)atttributedDescriptionForEvents:(id)arg1 includeLearnMore:(_Bool)arg2 useSentenceCase:(_Bool)arg3;
 + (id)atttributedDescriptionForEvents:(id)arg1 includeLearnMore:(_Bool)arg2;
 + (id)atttributedHeadlineForEvents:(id)arg1;
 + (_Bool)_hasImportantEvent:(id)arg1;
++ (id)importantHeadlineForEvents:(id)arg1;
 + (id)attributedImportantHeadlineForEvents:(id)arg1;
++ (id)descriptionForEvents:(id)arg1 includeLearnMore:(_Bool)arg2 useSentenceCase:(_Bool)arg3;
 + (id)descriptionForEvents:(id)arg1 includeLearnMore:(_Bool)arg2;
++ (id)headlineForEvents:(id)arg1 shouldUppercase:(_Bool)arg2;
 + (id)headlineForEvents:(id)arg1;
 
 @end

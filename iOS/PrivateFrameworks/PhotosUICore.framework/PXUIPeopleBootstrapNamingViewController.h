@@ -14,8 +14,9 @@
 
 @interface PXUIPeopleBootstrapNamingViewController : UIViewController <PXPeopleNamePickerViewControllerDelegate, PXPeopleFlowViewController>
 {
+    _Bool _wantsCancelButton;
     _Bool _textDidChange;
-    id _context;
+    PXPeopleBootstrapContext *_bootstrapContext;
     id <PXPeopleFlowViewControllerActionDelegate> actionDelegate;
     PXPeopleNamePickerViewController *_namePicker;
     PXPeopleNameSelection *_selection;
@@ -30,17 +31,17 @@
 @property(retain, nonatomic) PXPeopleNameSelection *selection; // @synthesize selection=_selection;
 @property(retain, nonatomic) PXPeopleNamePickerViewController *namePicker; // @synthesize namePicker=_namePicker;
 @property(nonatomic) __weak id <PXPeopleFlowViewControllerActionDelegate> actionDelegate; // @synthesize actionDelegate;
-@property(retain, nonatomic) id context; // @synthesize context=_context;
+@property(readonly, nonatomic) PXPeopleBootstrapContext *bootstrapContext; // @synthesize bootstrapContext=_bootstrapContext;
 - (void)namePickerControllerWillChangeText:(id)arg1;
 - (void)namePickerController:(id)arg1 didPickString:(id)arg2;
 - (void)namePickerController:(id)arg1 didPickContact:(id)arg2;
 - (void)namePickerController:(id)arg1 didPickPerson:(id)arg2;
 - (void)willTransitionToNextInFlow;
+@property(readonly, nonatomic) _Bool wantsCancelButton; // @synthesize wantsCancelButton=_wantsCancelButton;
 - (void)_captureStringSelectionIfNeeded;
 - (id)_localizedTitleString;
 - (void)_updateNavigationBarForCurrentTraitCollection;
 @property(readonly, nonatomic) unsigned long long type;
-@property(readonly, nonatomic) PXPeopleBootstrapContext *bootstrapContext;
 @property(readonly, nonatomic) PHPerson *person;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -48,6 +49,7 @@
 - (id)initWithContext:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool controlsAdvancementInternally;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

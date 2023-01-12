@@ -10,7 +10,6 @@
 
 @class GEOAbAssignInfo, GEOLocalTime, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAnalyticMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;

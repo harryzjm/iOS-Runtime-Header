@@ -6,17 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary;
+@class NSArray, NSMutableDictionary, NSMutableSet;
 
 @interface SBSwitcherModelRemovalResults : NSObject
 {
+    NSMutableSet *_appLayouts;
     NSMutableDictionary *_appLayoutToAction;
+    NSMutableDictionary *_displayItemToHide;
+    NSMutableDictionary *_appLayoutToReplacement;
 }
 
 - (void).cxx_destruct;
-- (void)setAction:(id)arg1 forAppLayout:(id)arg2;
-- (id)actionForAppLayout:(id)arg1;
+- (id)replacementAppLayoutForAppLayout:(id)arg1;
+- (_Bool)willHideDisplayItem:(id)arg1;
+- (void)executeActionForAppLayout:(id)arg1;
+- (void)setReplacementAppLayout:(id)arg1 forAppLayout:(id)arg2;
+- (void)setHide:(_Bool)arg1 forDisplayItem:(id)arg2;
+- (void)removeAppLayout:(id)arg1;
+- (void)setAction:(CDUnknownBlockType)arg1 forAppLayout:(id)arg2;
 @property(readonly, copy, nonatomic) NSArray *appLayouts;
+- (id)init;
 
 @end
 

@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CNPhotoPickerActionsModel *actionsModel; // @synthesize actionsModel=_actionsModel;
 @property(nonatomic) __weak id <CNPhotoPickerActionsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)presentationControllerDidDismiss:(id)arg1;
-- (void)actionsModel:(id)arg1 didDelete:(id)arg2 atIndexPath:(id)arg3;
+- (void)actionsModel:(id)arg1 didDelete:(id)arg2 atIndexPath:(id)arg3 withSourceView:(id)arg4;
 - (void)actionsModel:(id)arg1 didDuplicate:(id)arg2 atIndexPath:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)actionsModel:(id)arg1 didEdit:(id)arg2 atIndexPath:(id)arg3;
 - (void)actionsModel:(id)arg1 didAssignToContact:(id)arg2 atIndexPath:(id)arg3;
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (double)duplicateScaleDelay;
 - (double)duplicateScaleDuration;
 - (void)updateActionsModelWithProviderItem:(id)arg1;
-- (void)presentDeleteConfirmationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentDeleteConfirmationWithSourceView:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)didTapDone;
 - (void)applyLayout:(id)arg1;
 - (void)updateButtonsFromModel:(id)arg1;

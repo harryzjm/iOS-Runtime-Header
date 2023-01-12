@@ -4,21 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
-@class MISSING_TYPE, UILabel;
-
-@interface _TtC18HealthExperienceUI38DataTypeDetailFavoritesDescriptionCell : UICollectionViewCell
+__attribute__((visibility("hidden")))
+@interface _TtC18HealthExperienceUI38DataTypeDetailFavoritesDescriptionCell
 {
-    MISSING_TYPE *descriptionLabel;
-    MISSING_TYPE *item;
 }
 
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)awakeFromNib;
-@property(nonatomic) __weak UILabel *descriptionLabel; // @synthesize descriptionLabel;
 
 @end
 

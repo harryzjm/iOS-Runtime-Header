@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UILabel, UIView;
+@class UIImageView, UILabel, UIView, _UIPortalView;
 
-__attribute__((visibility("hidden")))
 @interface _UIPrototypingMenuSlider
 {
     _Bool _didBringKnobToFront;
     double _stepSize;
     UIView *_knobView;
     UIImageView *_knobBGView;
+    _UIPortalView *_knobPortal;
     UILabel *_currentValueLabel;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *currentValueLabel; // @synthesize currentValueLabel=_currentValueLabel;
+@property(retain, nonatomic) _UIPortalView *knobPortal; // @synthesize knobPortal=_knobPortal;
 @property(retain, nonatomic) UIImageView *knobBGView; // @synthesize knobBGView=_knobBGView;
 @property(retain, nonatomic) UIView *knobView; // @synthesize knobView=_knobView;
 @property(nonatomic) double stepSize; // @synthesize stepSize=_stepSize;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

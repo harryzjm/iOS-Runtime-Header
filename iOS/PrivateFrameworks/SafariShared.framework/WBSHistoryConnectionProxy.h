@@ -36,7 +36,7 @@
 - (void)getVisitedLinksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServiceInfo:(CDUnknownBlockType)arg1;
 - (void)ensureConnected:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)_setupConnection;
 - (id)_createConnection;

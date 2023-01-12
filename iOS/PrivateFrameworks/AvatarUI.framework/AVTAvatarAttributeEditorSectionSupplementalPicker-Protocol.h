@@ -9,7 +9,6 @@
 @class NSArray, NSString;
 
 @protocol AVTAvatarAttributeEditorSectionSupplementalPicker <NSObject>
-@property(readonly, nonatomic) _Bool alwaysPresentAlert;
 @property(readonly, copy, nonatomic) NSString *localizedTitle;
 @property(readonly, copy, nonatomic) NSArray *choices;
 @end

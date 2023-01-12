@@ -12,9 +12,7 @@
 
 + (id)fetchLocationOfInterestByType:(long long)arg1;
 + (id)locationsOfInterestVisitedBetweenStartDate:(id)arg1 endDate:(id)arg2;
-+ (void)importCoreRoutineDataWithCompletion:(CDUnknownBlockType)arg1;
-+ (id)_scoredNamedEntitiesForAddress:(id)arg1 placemark:(id)arg2 locationLookupTable:(id)arg3;
-+ (id)_generateLocationNameLookupTable;
++ (_Bool)importCoreRoutineDataWithError:(id *)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -22,6 +20,7 @@ struct IMPreviewConstraints {
     struct CGSize _field2;
     double _field3;
     _Bool _field4;
+    _Bool _field5;
 };
 
 struct _FZChatRoomValidity {

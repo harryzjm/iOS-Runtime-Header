@@ -20,19 +20,12 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *sourceZoneNames; // @synthesize sourceZoneNames=_sourceZoneNames;
-@property(copy, nonatomic) CDUnknownBlockType deprecatedBlock; // @synthesize deprecatedBlock=_deprecatedBlock;
-@property(retain, nonatomic) id <FCCKDatabaseRecordMiddleware> recordEncryptionMiddleware; // @synthesize recordEncryptionMiddleware=_recordEncryptionMiddleware;
-@property(retain, nonatomic) FCCKPrivateDatabaseSchema *sourceSchema; // @synthesize sourceSchema=_sourceSchema;
-- (_Bool)_isEnabledForDatabase:(id)arg1;
-- (_Bool)_shouldMigrateRecord:(id)arg1 database:(id)arg2;
 - (void)databaseMigrationDidFinishForDatabase:(id)arg1 result:(long long)arg2;
 - (id)databaseMigrationMigrateRecord:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (_Bool)databaseMigrationShouldDropRecord:(id)arg1 database:(id)arg2;
 - (id)databaseMigrationRecordNamesToMigrateInZone:(id)arg1 database:(id)arg2;
 - (_Bool)databaseMigrationShouldMigrateEntireZone:(id)arg1 database:(id)arg2;
 - (id)databaseMigrationZoneNamesForDatabase:(id)arg1;
-- (id)initWithSourceSchema:(id)arg1 recordEncryptionMiddleware:(id)arg2 deprecatedBlock:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,6 +10,7 @@
 
 @class _MPCProtoItemIdentifierSet;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoItem : PBCodable <NSCopying>
 {
     _MPCProtoItemIdentifierSet *_identifierSet;
@@ -22,9 +23,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool excludeFromShuffle; // @synthesize excludeFromShuffle=_excludeFromShuffle;
-@property(retain, nonatomic) _MPCProtoItemIdentifierSet *identifierSet; // @synthesize identifierSet=_identifierSet;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,10 +30,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasExcludeFromShuffle;
-@property(readonly, nonatomic) _Bool hasIdentifierSet;
-@property(nonatomic) _Bool hasMediaType;
-@property(nonatomic) int mediaType; // @synthesize mediaType=_mediaType;
 
 @end
 

@@ -15,6 +15,7 @@
     NSSet *_itemProviders;
     NSSet *_cameraProfiles;
     HFConditionCollection *_conditionCollection;
+    HFStaticItem *_aClipIsRecordedItem;
     HFStaticItem *_anyMotionDetectedItem;
     HFStaticItem *_specificMotionDetectedItem;
     HFItemProvider *_motionDetectionSettingsItemProvider;
@@ -23,6 +24,20 @@
     HFCameraSmartDetectionCondition *_condition;
 }
 
++ (id)notificationConfiguration:(id)arg1 forRecordingTriggers:(unsigned long long)arg2;
++ (id)recordingConfiguration:(id)arg1 withCurrentConfiguration:(id)arg2 forProfile:(id)arg3;
++ (id)specificMotionNotificationConfigurationForCameraProfile:(id)arg1;
++ (id)notificationConfigurationForAClipIsRecorded;
++ (_Bool)isSpecificMotionSelectedForConfiguration:(id)arg1 withCurrentConfiguration:(id)arg2;
++ (id)_updatedCurrentSignificantEventConfiguration:(id)arg1 withSelectedConfiguration:(id)arg2 context:(unsigned long long)arg3;
++ (id)_updatedNotificationCurrentSignificantEventConfiguration:(id)arg1 withSelectedConfiguration:(id)arg2 cameraProfile:(id)arg3;
++ (id)_updatedRecordingCurrentSignificantEventConfiguration:(id)arg1 withSelectedConfiguration:(id)arg2 cameraProfile:(id)arg3;
++ (id)updateCurrentSignificantEventConfiguration:(id)arg1 withSelectedConfiguration:(id)arg2 cameraProfile:(id)arg3 context:(unsigned long long)arg4;
++ (id)selectedNotificationConfigurationForSmartMotion;
++ (id)selectedNotificationConfigurationForAnyMotion;
++ (id)selectedNotificationConfigurationForAClipIsRecorded;
++ (id)selectedRecordingConfigurationForSmartMotion;
++ (id)selectedRecordingConfigurationForAnyMotion;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HFCameraSmartDetectionCondition *condition; // @synthesize condition=_condition;
 @property(readonly, nonatomic) unsigned long long settingsContext; // @synthesize settingsContext=_settingsContext;
@@ -30,6 +45,7 @@
 @property(readonly, nonatomic) HFItemProvider *motionDetectionSettingsItemProvider; // @synthesize motionDetectionSettingsItemProvider=_motionDetectionSettingsItemProvider;
 @property(retain, nonatomic) HFStaticItem *specificMotionDetectedItem; // @synthesize specificMotionDetectedItem=_specificMotionDetectedItem;
 @property(retain, nonatomic) HFStaticItem *anyMotionDetectedItem; // @synthesize anyMotionDetectedItem=_anyMotionDetectedItem;
+@property(retain, nonatomic) HFStaticItem *aClipIsRecordedItem; // @synthesize aClipIsRecordedItem=_aClipIsRecordedItem;
 @property(readonly, nonatomic) HFConditionCollection *conditionCollection; // @synthesize conditionCollection=_conditionCollection;
 @property(readonly, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
 - (_Bool)isItemHeader:(id)arg1;

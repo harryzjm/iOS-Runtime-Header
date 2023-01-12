@@ -11,7 +11,7 @@
     CLKImageProvider *_imageProvider;
 }
 
-+ (struct CGSize)_imageSize;
++ (void)_imageSDKSize:(struct CGSize *)arg1 deviceSize:(struct CGSize *)arg2 forSDKVersion:(long long)arg3;
 + (id)templateWithImageProvider:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CLKImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;

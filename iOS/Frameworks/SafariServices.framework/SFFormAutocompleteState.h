@@ -13,7 +13,7 @@
 #import <SafariServices/_ASPasswordCredentialAuthenticationViewControllerDelegate-Protocol.h>
 #import <SafariServices/_SFCreditCardCaptureViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, SFFormAutoFillFrameHandle, UIView, WBSFormAutoFillMetadataCorrector, WBSFormControlMetadata, WBSFormMetadata, WBSMultiRoundAutoFillManager, _ASPasswordCredentialAuthenticationViewController, _SFFormAutoFillController, _SFFormAutoFillInputSession, _SFFormDataController;
+@class NSArray, NSDictionary, NSString, SFFormAutoFillFrameHandle, UIView, WBSFormAutoFillMetadataCorrector, WBSFormControlMetadata, WBSFormMetadata, WBSHideMyEmailRecord, WBSMultiRoundAutoFillManager, _ASPasswordCredentialAuthenticationViewController, _SFFormAutoFillController, _SFFormAutoFillInputSession, _SFFormDataController;
 
 __attribute__((visibility("hidden")))
 @interface SFFormAutocompleteState : NSObject <CNContactPickerDelegate, SFContactAutoFillViewControllerFiller, _SFCreditCardCaptureViewControllerDelegate, SFAppAutoFillOneTimeCodeProviderObserver, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate>
@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
     _Bool _gatheringFormValues;
     _Bool _hasNotedThatTextDidChangeInPasswordField;
     _SFFormAutoFillInputSession *_inputSession;
-    WBSMultiRoundAutoFillManager *_multiRoundAutoFillManager;
     NSString *_prefixForSuggestions;
     WBSFormControlMetadata *_textFieldMetadata;
     NSArray *_cachedCredentialMatches;
@@ -47,11 +46,15 @@ __attribute__((visibility("hidden")))
     _ASPasswordCredentialAuthenticationViewController *_externalCredentialViewController;
     CDUnknownBlockType _externalCredentialListCompletionHandler;
     _Bool _submitExternalCredential;
+    _Bool _performingPageLevelAutoFill;
+    WBSHideMyEmailRecord *_hideMyEmailRecord;
+    WBSMultiRoundAutoFillManager *_multiRoundAutoFillManager;
 }
 
 + (_Bool)_shouldSaveCredentialsInProtectionSpace:(id)arg1;
 + (void)_getMatchesFromFormProtectionSpace:(id)arg1 matchesFromOtherProtectionSpaces:(id)arg2 withFormURL:(id)arg3 credentialMatches:(id)arg4 lastGeneratedPassword:(id)arg5 currentUser:(id)arg6 currentPassword:(id)arg7 forUserNamesOnly:(_Bool)arg8;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WBSMultiRoundAutoFillManager *multiRoundAutoFillManager; // @synthesize multiRoundAutoFillManager=_multiRoundAutoFillManager;
 @property(readonly, nonatomic) _SFFormAutoFillInputSession *inputSession; // @synthesize inputSession=_inputSession;
 - (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
@@ -76,10 +79,23 @@ __attribute__((visibility("hidden")))
 - (void)_autoFillDisplayData:(id)arg1 setAutoFilled:(_Bool)arg2;
 - (void)_offerToAutoFillContact;
 - (void)_autoFillWithSet:(id)arg1;
+- (id)_hideMyEmailCreationSuggestion;
+- (id)_hideMyEmailSuggestionForRecord:(id)arg1;
+- (id)_addHideMyEmailSuggestionsIfNecessary:(id)arg1 hideMyEmailRecord:(id)arg2;
+- (void)_provisionHideMyEmailRecord;
+- (void)_autoFillHideMyEmailRecord:(id)arg1;
+- (void)_startHideMyEmailRecordUpdate;
 - (id)_suggestionsForAutoFillDisplayData:(id)arg1;
 - (void)_gatherAndShowAddressBookAutoFillSuggestions;
 - (void)creditCardCaptureViewController:(id)arg1 didCaptureCreditCard:(id)arg2;
 - (void)creditCardCaptureViewControllerDidCancel:(id)arg1;
+- (id)_messageForPageLevelAutoFillNotAvailableAlertForResult:(long long)arg1;
+- (id)_titleForPageLevelAutoFillNotAvailableAlertForResult:(long long)arg1;
+- (void)_showPageLevelAutoFillNotAvailableAlertForResult:(long long)arg1;
+- (void)_finishPageLevelAutoFillWithResult:(long long)arg1;
+- (void)_performPageLevelContactAutoFill;
+- (void)_performPageLevelCredentialAutoFill;
+- (void)performPageLevelAutoFill;
 - (void)_autoFillCreditCardData;
 - (void)_updateCreditCardSuggestionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_autoFillSingleCreditCardData:(long long)arg1;
@@ -109,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (id)_textSuggestionForCredentialDisplayData:(id)arg1 submitForm:(_Bool)arg2;
 - (void)_getMatchingKeychainCredentialsIncludingCredentialsWithEmptyUsernames:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_suggestLoginCredentialsShowingQuickTypeKey:(_Bool)arg1;
+- (void)_fillOneTimeCodeAfterAuthenticationIfNeeded:(id)arg1 inFrame:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)_fillCredentialAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(_Bool)arg2 submitForm:(_Bool)arg3;
 - (void)_offerToAutoFillFromPotentialCredentialMatches;
 - (void)_fillCredential:(id)arg1 setAutoFilled:(_Bool)arg2 setAsDefaultCredential:(_Bool)arg3 focusFieldAfterFilling:(_Bool)arg4 submitForm:(_Bool)arg5;

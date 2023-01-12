@@ -8,7 +8,7 @@
 
 #import <RunningBoard/RBProcessMonitorObserving-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, RBProcess, RBProcessMap, RBSProcessStateDescriptor;
+@class NSMutableArray, NSMutableDictionary, NSSet, NSString, RBProcess, RBProcessMap, RBSProcessHandle, RBSProcessStateDescriptor;
 @protocol OS_dispatch_queue, RBProcessMonitorObserverConnection, RBProcessMonitoring;
 
 @interface RBProcessMonitorObserver : NSObject <RBProcessMonitorObserving>
@@ -24,7 +24,7 @@
     NSSet *_pendingPreventLaunchPredicates;
     NSMutableDictionary *_configurations;
     RBSProcessStateDescriptor *_stateDescriptor;
-    NSHashTable *_matchedHandles;
+    RBSProcessHandle *_lastMatchedHandle;
     _Bool _extantStateUpdate;
     _Bool _extantEventUpdate;
     _Bool _didClearState;
@@ -35,7 +35,7 @@
 @property(readonly, copy) NSString *description;
 - (void)_lock_sendPendingStateUpdates;
 - (void)_lock_clearPendingNonterminalStates;
-- (void)_lock_checkForBadActorWithPendingStates:(id)arg1;
+- (void)_checkForBadActorWithPendingStates:(id)arg1;
 - (void)_lock_rebuildConfiguration;
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;

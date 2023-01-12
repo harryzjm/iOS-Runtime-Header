@@ -6,9 +6,11 @@
 
 #import <PrototypeTools/PTSettings.h>
 
+#import <PhotosUICore/PXTapToRadarDiagnosticProvider-Protocol.h>
+
 @class NSArray, NSMutableSet, NSSet;
 
-@interface PXSettings : PTSettings
+@interface PXSettings : PTSettings <PXTapToRadarDiagnosticProvider>
 {
     NSMutableSet *_archivedSettings;
     NSSet *_cachedTransientProperties;
@@ -29,6 +31,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *reparentedRootSettings; // @synthesize reparentedRootSettings=_reparentedRootSettings;
 @property(nonatomic) long long version; // @synthesize version=_version;
+- (void)collectTapToRadarDiagnosticsIntoContainer:(id)arg1;
 - (void)addDeferredKeyPathObserver:(id)arg1;
 - (void)addDeferredKeyObserver:(id)arg1;
 - (void)removeKeyPathObserver:(id)arg1;
@@ -42,6 +45,7 @@
 - (void)_validateArchivableValue:(id)arg1 forKey:(id)arg2;
 - (id)archiveDictionary;
 - (void)_willArchiveSettings:(id)arg1;
+- (id)_archiveDictionaryWithSignature;
 - (void)save;
 - (void)clearManualOverrides;
 @property(readonly, nonatomic) _Bool hasDefaultValues;

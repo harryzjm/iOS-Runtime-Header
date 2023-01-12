@@ -8,19 +8,20 @@
 
 #import <PhotosGraph/PGNamingAnalyzer-Protocol.h>
 
-@class NSString, PGGraphNamingProcessor;
+@class NSString, PGGraphNamingProcessor, PGManager;
 
 @interface PGNamingCMMAnalyzer : NSObject <PGNamingAnalyzer>
 {
+    PGManager *_manager;
     PGGraphNamingProcessor *_processor;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak PGGraphNamingProcessor *processor; // @synthesize processor=_processor;
 - (id)name;
 - (void)findCMMMatchesFromSharingRecords:(id)arg1 graph:(id)arg2 withProgressBlock:(CDUnknownBlockType)arg3;
 - (void)runAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)initWithNamingProcessor:(id)arg1;
+- (id)initWithNamingProcessor:(id)arg1 manager:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

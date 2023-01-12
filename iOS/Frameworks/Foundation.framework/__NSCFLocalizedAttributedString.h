@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     NSDictionary *_formatConfiguration;
 }
 
-+ (id)whitelistedStringWithAttributedString:(id)arg1;
++ (id)stringEncapsulatingBaseAttributedString:(id)arg1;
 + (const struct __CFString *)createStringRequiringInflectionWithFormat:(struct __CFString *)arg1 formatOptions:(struct __CFDictionary *)arg2 arguments:(char *)arg3;
-+ (const struct __CFString *)copyStringWithMarkup:(struct __CFString *)arg1 formatConfiguration:(struct __CFDictionary *)arg2;
++ (const struct __CFString *)copyStringWithMarkdown:(struct __CFString *)arg1 formatConfiguration:(struct __CFDictionary *)arg2 tableURL:(struct __CFURL *)arg3;
 - (const char *)_fastCStringContents:(_Bool)arg1;
 - (const unsigned short *)_fastCharacterContents;
 - (_Bool)isEqualToString:(id)arg1;
@@ -32,9 +32,10 @@ __attribute__((visibility("hidden")))
 - (id)__baseAttributedString;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)formatConfiguration;
 - (void)dealloc;
 - (id)_initWithAttributedString:(id)arg1;
-- (id)initWithAttributedStringMarkup:(id)arg1 formatConfiguration:(id)arg2;
+- (id)initWithAttributedStringMarkdown:(id)arg1 formatConfiguration:(id)arg2 tableURL:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (Class)classForCoder;
 - (id)initWithCoder:(id)arg1;

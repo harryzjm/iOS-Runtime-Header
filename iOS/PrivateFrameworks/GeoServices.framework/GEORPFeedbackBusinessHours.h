@@ -8,12 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDHours, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDHours, NSString, PBDataReader;
 
 @interface GEORPFeedbackBusinessHours : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    PBUnknownFields *_unknownFields;
     NSString *_comments;
     unsigned long long _end;
     unsigned long long _start;
@@ -26,7 +25,6 @@
         unsigned int has_end:1;
         unsigned int has_start:1;
         unsigned int has_hoursType:1;
-        unsigned int read_unknownFields:1;
         unsigned int read_comments:1;
         unsigned int read_weeklyHours:1;
         unsigned int wrote_anyField:1;
@@ -35,8 +33,6 @@
 
 + (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

@@ -10,18 +10,18 @@
 
 @interface TSCECellCoordinateVector : NSObject
 {
-    vector_38b190b0 _cellCoordinates;
+    vector_7f5598a1 _cellCoordinates;
     NSObject<OS_dispatch_semaphore> *_sem;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)saveToArchive:(struct CellCoordinateVectorArchive *)arg1;
-- (id)initWithArchive:(const struct CellCoordinateVectorArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (void)removeAllCellCoordinates;
 - (void)addCellCoordinate:(struct TSUCellCoord)arg1;
-- (unordered_set_c5f37819)cellCoordinatesSet;
-- (vector_38b190b0 *)cellCoordinates;
+- (unordered_set_831dc953)cellCoordinatesSet;
+- (void *)cellCoordinates;
 - (id)init;
 
 @end

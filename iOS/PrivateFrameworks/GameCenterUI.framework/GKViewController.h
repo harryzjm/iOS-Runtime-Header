@@ -16,6 +16,7 @@
 }
 
 + (_Bool)_shouldForwardViewWillTransitionToSize;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool shouldUpdateContentOnlyWhenAuthenticated; // @synthesize shouldUpdateContentOnlyWhenAuthenticated=_shouldUpdateContentOnlyWhenAuthenticated;
 @property(retain, nonatomic) GKColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
 @property(retain, nonatomic) GKViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
@@ -25,7 +26,6 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (_Bool)displayUsingSplitNavigationBar;
 - (void)loadView;
-- (void)dealloc;
 
 @end
 

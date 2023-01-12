@@ -17,7 +17,10 @@
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
+- (struct CGSize)_layoutSizeThatFits:(struct CGSize)arg1 fixedAxes:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic) _Bool scrollEnabled;
+- (_Bool)isScrollEnabled;
 
 @end
 

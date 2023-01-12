@@ -9,7 +9,7 @@
 #import <GeoServices/GEOResourceLoadOperation-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOReportedProgress, NSData, NSDate, NSMutableData, NSProgress, NSString, NSURL, NSURLSession, NSURLSessionTask;
+@class GEOApplicationAuditToken, GEOReportedProgress, NSDate, NSMutableData, NSProgress, NSString, NSURL, NSURLSession, NSURLSessionTask;
 @protocol GEORequestCounterTicket, OS_dispatch_queue, OS_os_log;
 
 @interface GEOResourceLoadOperation : NSObject <NSURLSessionDataDelegate, GEOResourceLoadOperation>
@@ -22,8 +22,6 @@
     NSURLSessionTask *_task;
     id <GEORequestCounterTicket> _requestCounterTicket;
     NSString *_eTag;
-    NSMutableData *_data;
-    _Bool _expectsPartialContent;
     GEOApplicationAuditToken *_auditToken;
     NSURL *_authProxyURL;
     struct os_unfair_lock_s _lock;
@@ -33,22 +31,25 @@
     NSObject<OS_os_log> *_log;
     NSString *_serviceAddress;
     NSDate *_starttime;
+    NSURL *_downloadedFileURL;
+    NSMutableData *_data;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool preferDirectNetworking; // @synthesize preferDirectNetworking=_preferDirectNetworking;
 @property(nonatomic) _Bool requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
-@property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didBecomeDownloadTask:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)cancel;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 @property(readonly) NSProgress *progress;
 - (void)dealloc;
-- (id)initWithResource:(id)arg1 existingPartialData:(id)arg2 eTag:(id)arg3 auditToken:(id)arg4 baseURL:(id)arg5 alternateURLs:(id)arg6 proxyURL:(id)arg7 log:(id)arg8;
+- (id)initWithResource:(id)arg1 eTag:(id)arg2 auditToken:(id)arg3 baseURL:(id)arg4 alternateURLs:(id)arg5 proxyURL:(id)arg6 log:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

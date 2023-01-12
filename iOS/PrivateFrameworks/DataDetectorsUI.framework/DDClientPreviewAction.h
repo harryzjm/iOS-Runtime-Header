@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)menuActions;
 - (id)viewController;
 - (void)performFromView:(id)arg1;
-- (id)icon;
+- (id)iconName;
 - (id)localizedName;
 
 @end

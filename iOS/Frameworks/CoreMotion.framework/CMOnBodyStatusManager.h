@@ -10,7 +10,7 @@
 
 @interface CMOnBodyStatusManager : NSObject
 {
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     _Bool fSubscribedToOnBodyStatusDetection;
     NSObject<OS_dispatch_queue> *fOnBodyStatusQueue;
     CDUnknownBlockType fOnBodyStatusHandler;

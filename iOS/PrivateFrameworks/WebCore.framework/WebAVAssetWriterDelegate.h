@@ -13,15 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface WebAVAssetWriterDelegate : NSObject <AVAssetWriterDelegate>
 {
-    struct WeakPtr<WebCore::MediaRecorderPrivateWriter, WTF::EmptyCounter> m_writer;
+    void *m_writer;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)close;
 - (void)assetWriter:(id)arg1 didProduceFragmentedMediaData:(id)arg2 fragmentedMediaDataReport:(id)arg3;
 - (void)assetWriter:(id)arg1 didProduceFragmentedHeaderData:(id)arg2;
-- (id)initWithWriter:(struct MediaRecorderPrivateWriter *)arg1;
+- (id)initWithWriter:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

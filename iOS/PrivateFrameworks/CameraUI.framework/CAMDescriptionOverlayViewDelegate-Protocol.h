@@ -10,5 +10,6 @@
 
 @protocol CAMDescriptionOverlayViewDelegate <NSObject>
 - (void)descriptionOverlayViewDidAcknowledge:(CAMDescriptionOverlayView *)arg1;
+- (void)descriptionOverlayViewDidSelectDetail:(CAMDescriptionOverlayView *)arg1;
 @end
 

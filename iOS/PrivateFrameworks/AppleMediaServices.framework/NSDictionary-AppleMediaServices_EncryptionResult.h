@@ -13,6 +13,7 @@
 @interface NSDictionary (AppleMediaServices_EncryptionResult) <AMSHashable>
 + (id)ams_dictionaryWithEncryptionResult:(CDStruct_0f015c83)arg1;
 - (CDStruct_0f015c83)ams_encryptionResult;
+- (id)ams_dictionaryRemovingKeys:(id)arg1;
 - (id)ams_objectForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)ams_objectForCaseInsensitiveKey:(id)arg1;
 - (id)ams_mapWithTransform:(CDUnknownBlockType)arg1;
@@ -23,6 +24,7 @@
 - (id)ams_dictionaryByAddingEntriesFromDictionary:(id)arg1;
 - (id)ams_componentsJoinedByString:(id)arg1;
 - (id)ams_arrayUsingTransform:(CDUnknownBlockType)arg1;
+- (id)ams_sanitizedForSecureCoding;
 @property(readonly, nonatomic) NSString *hashedDescription;
 
 // Remaining properties

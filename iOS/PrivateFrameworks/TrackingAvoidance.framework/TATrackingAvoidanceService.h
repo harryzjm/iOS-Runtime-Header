@@ -21,7 +21,6 @@
     TAOutgoingRequests *_stagedIntervisitMetrics;
 }
 
-+ (unsigned long long)notificationImmediacyForDetectionType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TAOutgoingRequests *stagedIntervisitMetrics; // @synthesize stagedIntervisitMetrics=_stagedIntervisitMetrics;
 @property(retain, nonatomic) TATrackingAvoidanceServiceSettings *serviceSettings; // @synthesize serviceSettings=_serviceSettings;

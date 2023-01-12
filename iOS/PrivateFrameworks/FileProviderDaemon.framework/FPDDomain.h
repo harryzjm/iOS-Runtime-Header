@@ -9,34 +9,31 @@
 #import <FileProviderDaemon/FPDDomainIndexerDelegate-Protocol.h>
 #import <FileProviderDaemon/FPDFileCoordinationProviderDelegate-Protocol.h>
 
-@class FPDDomainIndexer, FPDProvider, FPPacer, FPProviderDomain, NSArray, NSData, NSDictionary, NSFileProviderDomain, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, NSURL;
-@protocol FPDDomainBackend, FPDDomainIndexChangeDelegate, FPDExtensionSessionProtocol, OS_dispatch_queue, OS_dispatch_source, OS_os_log;
+@class FPDDomainIndexer, FPDProvider, FPPacer, FPProviderDomain, NSArray, NSData, NSDictionary, NSFileProviderDomain, NSMutableDictionary, NSOperationQueue, NSString, NSURL;
+@protocol FPDDomainBackend, FPDExtensionSessionProtocol, OS_dispatch_queue, OS_dispatch_source, OS_os_log;
 
 @interface FPDDomain : NSObject <FPDFileCoordinationProviderDelegate, FPDDomainIndexerDelegate>
 {
     NSMutableDictionary *_coordinatorMetadataPerURL;
+    NSMutableDictionary *_providedItemRecursiveGenCountPerURL;
     NSOperationQueue *_providedItemsOperationQueue;
-    NSDictionary *_fileCoordinationProviderByURL;
     id <FPDExtensionSessionProtocol> _session;
     Class _fpfsClass;
     _Bool _cantStartup;
     _Bool _isObservingRoot;
     _Bool _indexerStarted;
+    _Bool _indexerStopped;
     _Bool _isUsingFPFS;
     _Bool _invalidated;
     NSObject<OS_dispatch_source> *_timer;
     NSURL *_previouslyAccessedSecurityScopedURL;
     FPPacer *_rootCreationPacer;
     _Bool _started;
-    _Bool _userEnabled;
     _Bool _ejectable;
     _Bool _unableToStartup;
-    _Bool _forceNoFPFSForTesting;
-    id <FPDDomainIndexChangeDelegate> _indexChangeDelegate;
     NSString *_identifier;
     NSFileProviderDomain *_nsDomainOrNilForDefault;
     NSFileProviderDomain *_nsDomain;
-    NSNumber *_shouldDropIndexOrNil;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_os_log> *_log;
     NSArray *_extensionStorageURLs;
@@ -46,14 +43,17 @@
     id <FPDDomainBackend> _deactivatedBackend;
     FPDProvider *_provider;
     NSMutableDictionary *_filePresenters;
+    NSDictionary *_domainUserInfo;
     FPDDomainIndexer *_indexer;
     NSData *_fpfsRootBookmarkData;
+    Class _fpfsTestingBackendClass;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool forceNoFPFSForTesting; // @synthesize forceNoFPFSForTesting=_forceNoFPFSForTesting;
-@property(retain, nonatomic) NSData *fpfsRootBookmarkData; // @synthesize fpfsRootBookmarkData=_fpfsRootBookmarkData;
+@property(retain, nonatomic) Class fpfsTestingBackendClass; // @synthesize fpfsTestingBackendClass=_fpfsTestingBackendClass;
+@property(copy, nonatomic) NSData *fpfsRootBookmarkData; // @synthesize fpfsRootBookmarkData=_fpfsRootBookmarkData;
 @property(retain, nonatomic) FPDDomainIndexer *indexer; // @synthesize indexer=_indexer;
+@property(retain, nonatomic) NSDictionary *domainUserInfo; // @synthesize domainUserInfo=_domainUserInfo;
 @property(retain, nonatomic) NSMutableDictionary *filePresenters; // @synthesize filePresenters=_filePresenters;
 @property(readonly, nonatomic) id <FPDExtensionSessionProtocol> session; // @synthesize session=_session;
 @property(readonly, nonatomic) __weak FPDProvider *provider; // @synthesize provider=_provider;
@@ -64,17 +64,15 @@
 @property(readonly, nonatomic) NSArray *extensionStorageURLs; // @synthesize extensionStorageURLs=_extensionStorageURLs;
 @property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
-@property(retain, nonatomic) NSNumber *shouldDropIndexOrNil; // @synthesize shouldDropIndexOrNil=_shouldDropIndexOrNil;
 @property(nonatomic) _Bool unableToStartup; // @synthesize unableToStartup=_unableToStartup;
 @property(nonatomic) _Bool ejectable; // @synthesize ejectable=_ejectable;
-@property(nonatomic) _Bool userEnabled; // @synthesize userEnabled=_userEnabled;
 @property(readonly, nonatomic) NSFileProviderDomain *nsDomain; // @synthesize nsDomain=_nsDomain;
 @property(retain, nonatomic) NSFileProviderDomain *nsDomainOrNilForDefault; // @synthesize nsDomainOrNilForDefault=_nsDomainOrNilForDefault;
 @property(nonatomic) _Bool started; // @synthesize started=_started;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(nonatomic) __weak id <FPDDomainIndexChangeDelegate> indexChangeDelegate; // @synthesize indexChangeDelegate=_indexChangeDelegate;
 - (void)dumpStateTo:(id)arg1 limitNumberOfItems:(_Bool)arg2;
 - (void)dumpInternalStateTo:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)telemetryReport;
 - (long long)nonEvictableSpace;
 - (void)downloadItemWithItemID:(id)arg1 request:(id)arg2 progress:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)forceIngestionForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -85,12 +83,11 @@
 - (void)enumerateWithSettings:(id)arg1 lifetimeExtender:(id)arg2 observer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)fetchOperationServiceOrEndpointWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)didChangeItemID:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)workingSetDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)fetchEnumeratorWithSettings:(id)arg1 observer:(id)arg2 request:(id)arg3 lifetimeExtender:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)daemonSideItemChange:(id)arg1 changedFields:(unsigned long long)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)isProviderForURL:(id)arg1;
 - (void)_unregisterFromFileCoordinator;
 - (void)_registerFileCoordinatorWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_providedItemAtURL:(id)arg1 withPresenterWithID:(id)arg2 didMoveToURL:(id)arg3;
 - (void)_providedItemAtURL:(id)arg1 didLosePresenterWithID:(id)arg2;
 - (void)_providedItemAtURL:(id)arg1 didGainPresenterWithID:(id)arg2;
@@ -98,19 +95,21 @@
 - (void)_writerWithID:(id)arg1 didFinishWritingForURL:(id)arg2;
 - (void)_cancelProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
 - (void)_provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)_isProviderBlockingConsumer:(id)arg1;
+- (void)setProvidedItemRecursiveGenerationCount:(id)arg1 forItemAtURL:(id)arg2;
+- (id)getProvidedItemRecursiveGenerationCountForItemAtURL:(id)arg1;
 - (id)_removeProgressForProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
 - (void)_provideItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_siblingDelegateForURL:(id)arg1;
 - (id)_physicalURLForURL:(id)arg1;
 - (id)_providedItemsOperationQueue;
 - (id)_fileReactorID;
-- (void)extensionIndexer:(id)arg1 didIndexOneBatchWithError:(id)arg2 updatedItems:(id)arg3 deletedIDs:(id)arg4 anchor:(id)arg5 anchorPersisted:(CDUnknownBlockType)arg6;
 - (void)extensionIndexer:(id)arg1 didChangeNeedsAuthentification:(_Bool)arg2;
-- (void)cleanupDomainKeepingArchiveFolder:(_Bool)arg1;
+- (id)cleanupDomainWithMode:(unsigned long long)arg1;
 - (void)invalidateSession;
-- (void)invalidate;
+- (void)invalidateWithReason:(id)arg1;
+- (void)stopIndexer;
 - (void)cancelPendingCoordinations;
-- (void)startInOrderToDropIndex;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_startWithCompletion:(CDUnknownBlockType)arg1;
 - (void)createRootAndObserveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
@@ -118,8 +117,8 @@
 - (void)createRootURLWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)createRootByImportingDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (void)finishSetup;
+@property(nonatomic) _Bool userEnabled; // @dynamic userEnabled;
 @property(readonly, nonatomic) FPProviderDomain *providerDomain;
-@property(readonly, nonatomic) FPDDomain *domainIfNotDisabledByFPFSSettings;
 @property(readonly, nonatomic) NSString *fp_prettyDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSString *providerDomainID;
@@ -131,6 +130,7 @@
 - (_Bool)_shouldDisconnectDueToLowDiskSpace;
 - (void)_setupRecoveryTimer;
 - (_Bool)_shouldDisconnect;
+@property(readonly, nonatomic) unsigned long long disconnectionState;
 @property(readonly, nonatomic) _Bool isConnectedToAppExtension;
 - (id)initWithIdentifier:(id)arg1 nsDomain:(id)arg2 extensionStorageURLs:(id)arg3 purposeIdentifier:(id)arg4 fpfsClass:(Class)arg5 provider:(id)arg6;
 

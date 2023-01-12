@@ -8,6 +8,7 @@
 
 @class NSIndexSet, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _ICPlayActivityFlushSessionInformation : NSObject
 {
     NSString *_endpointIdentifier;

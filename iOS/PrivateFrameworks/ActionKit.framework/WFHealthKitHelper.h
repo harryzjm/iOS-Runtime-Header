@@ -57,7 +57,6 @@
 + (void)validUnitsForQuantityType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)localizedSampleTypes;
 + (id)readableSampleTypes;
-+ (void)setupHealthKitAccessResourcesInAction:(id)arg1;
 + (id)extractHKDataFromContentQuery:(id)arg1;
 + (void)sourceWithName:(id)arg1 ofSampleType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)sourcesForSampleType:(id)arg1 completion:(CDUnknownBlockType)arg2;

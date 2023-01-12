@@ -23,6 +23,7 @@
     double _highlightProgress;
     _Bool _pronounced;
     _Bool _latching;
+    _Bool _shouldUseContinuousCorners;
     UIImage *_image;
     UIImage *_selectedImage;
     UIColor *_selectedTintColor;
@@ -36,6 +37,7 @@
 @property(copy, nonatomic) NSString *statisticsIdentifier; // @synthesize statisticsIdentifier=_statisticsIdentifier;
 @property(copy, nonatomic) NSString *backgroundEffectViewGroupName; // @synthesize backgroundEffectViewGroupName=_backgroundEffectViewGroupName;
 @property(copy, nonatomic) NSString *localizedAccessoryTitle; // @synthesize localizedAccessoryTitle=_localizedAccessoryTitle;
+@property(nonatomic) _Bool shouldUseContinuousCorners; // @synthesize shouldUseContinuousCorners=_shouldUseContinuousCorners;
 @property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property(retain, nonatomic) UIColor *selectedTintColor; // @synthesize selectedTintColor=_selectedTintColor;
 @property(retain, nonatomic) UIImage *selectedImage; // @synthesize selectedImage=_selectedImage;
@@ -58,6 +60,7 @@
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setSelected:(_Bool)arg1;
+@property(nonatomic) long long imageContentMode;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

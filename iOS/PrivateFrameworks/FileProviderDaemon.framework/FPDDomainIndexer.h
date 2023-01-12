@@ -21,13 +21,16 @@
     _Bool _enabled;
     _Bool _invalidated;
     _Bool _isStarted;
+    _Bool _clearNeedsIndexing;
     unsigned long long _batchIndexedCount;
     unsigned long long _batchIndexedCountSinceLastIndexing;
     unsigned long long _consecutiveBatchErrorCount;
     NSDate *_lastIndexingStartDate;
     NSError *_lastError;
+    _Bool _registeredWithScheduler;
     _Bool _needsAuthentication;
     id <FPDDomainIndexerDelegate> _delegate;
+    unsigned long long _maxRetryDelayInSec;
     FPDDomain *_domain;
     FPDExtension *_extension;
 }
@@ -35,6 +38,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak FPDExtension *extension; // @synthesize extension=_extension;
 @property(readonly, nonatomic) __weak FPDDomain *domain; // @synthesize domain=_domain;
+@property(nonatomic) unsigned long long maxRetryDelayInSec; // @synthesize maxRetryDelayInSec=_maxRetryDelayInSec;
 @property(nonatomic) __weak id <FPDDomainIndexerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property(nonatomic) _Bool needsAuthentication; // @synthesize needsAuthentication=_needsAuthentication;
@@ -46,20 +50,23 @@
 - (_Bool)dropIndexWithError:(id *)arg1;
 - (id)localSpotlightIndexer;
 - (void)signalNeedsReindexFromScratchWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (_Bool)canContinueIndexing;
 - (void)indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)registerAnchor:(id)arg1;
+- (void)__indexOneBatchIfPossibleClearingNeedsIndexing:(_Bool)arg1;
 - (void)_indexOneBatchIfPossibleClearingNeedsIndexing:(_Bool)arg1;
 - (void)_handleOneBatchCompletionWithError:(id)arg1 hasMoreChanges:(_Bool)arg2;
+@property(readonly, nonatomic) _Bool learnNeedsAuthenticationFromBatchError;
 - (_Bool)readNeedsAuthFromDisk;
 - (void)persistsNeedsAuthOnDisk;
 - (void)clearNeedsAuthOnDisk;
+- (void)setNeedsAuth;
+- (void)clearNeedsAuth;
 - (_Bool)readNeedsIndexingFromDisk;
 - (void)clearNeedsIndexingOnDisk;
 - (void)persistNeedsIndexingOnDisk;
 - (void)invalidate;
+- (void)_unregisterFromScheduler;
 - (void)_cancelTimer;
-- (void)startWithSyncAnchor:(id)arg1;
+- (void)start;
 - (id)description;
 - (id)initWithExtension:(id)arg1 domain:(id)arg2 enabled:(_Bool)arg3;
 

@@ -13,13 +13,11 @@
 
 @interface VMUVMRegionTracker : NSObject <NSSecureCoding>
 {
-    unsigned int _task;
     id <VMUStackLogReader> _stackLogReader;
     NSMutableArray *_regionInfoArray;
 }
 
 + (void)initialize;
-+ (void)_claimUnarchivingOfClass:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)vmRegionRangeInfoForRange:(struct _VMURange)arg1;

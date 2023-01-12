@@ -6,17 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSArray, SFPrivacyReportIconView, UIButton, UILabel;
+#import <SafariServices/UITextViewDelegate-Protocol.h>
+
+@class NSString, UITextView;
 @protocol SFPrivacyReportExplanationTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportExplanationTableViewCell : UITableViewCell
+@interface SFPrivacyReportExplanationTableViewCell : UITableViewCell <UITextViewDelegate>
 {
-    SFPrivacyReportIconView *_iconView;
-    UILabel *_textLabel;
-    UIButton *_toggleButton;
-    UIButton *_sizingToggleButton;
-    NSArray *_iconConstraints;
+    UITextView *_textLabel;
     _Bool _wideLayout;
     _Bool _expanded;
     id <SFPrivacyReportExplanationTableViewCellDelegate> _delegate;
@@ -25,14 +23,17 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SFPrivacyReportExplanationTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)privacyProxyStateChanged:(id)arg1;
 - (struct CGRect)_separatorFrame;
 - (void)_toggleExpanded:(id)arg1;
-- (void)_updateToggleButtonText;
-- (void)_updateUsesWideLayoutForSize:(struct CGSize)arg1;
-- (void)layoutSubviews;
-- (void)updateConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

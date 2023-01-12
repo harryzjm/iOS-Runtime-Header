@@ -9,8 +9,10 @@
 @interface _TtC7SwiftUI23UIViewSnapshotResponder
 {
     MISSING_TYPE *space;
-    MISSING_TYPE *targetRect;
-    MISSING_TYPE *displayList;
+    MISSING_TYPE *baseSize;
+    MISSING_TYPE *baseTransform;
+    MISSING_TYPE *_allowsHitTesting;
+    MISSING_TYPE *_displayList;
     MISSING_TYPE *displayListPosition;
 }
 

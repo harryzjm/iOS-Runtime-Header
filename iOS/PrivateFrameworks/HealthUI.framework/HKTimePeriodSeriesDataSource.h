@@ -17,8 +17,13 @@
 @property(copy, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
 @property(retain, nonatomic) NSPredicate *queryPredicate; // @synthesize queryPredicate=_queryPredicate;
 @property(retain, nonatomic) HKSampleType *sampleType; // @synthesize sampleType=_sampleType;
+- (id)chartPointsFromQueryData:(id)arg1 dataIsFromRemoteSource:(_Bool)arg2;
+- (CDUnknownBlockType)queryDataForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 healthStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)supportsChartQueryDataGeneration;
+- (id)_codableTimePeriodDataWithDictionary:(id)arg1;
+- (id)_codableDataWithSamples:(id)arg1 blockStart:(id)arg2 blockEnd:(id)arg3 intervalComponents:(id)arg4;
 - (id)_calculateTotalDurationFromSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 interval:(id)arg4 intervalOut:(id *)arg5 intervalCountsOut:(id *)arg6;
-- (void)_handleSamples:(id)arg1 blockStart:(id)arg2 blockEnd:(id)arg3 intervalComponents:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_chartPointsWithStatisticsInterval:(id)arg1 dateIntervalsToTotals:(id)arg2 intervalCounts:(id)arg3 sourceTimeZone:(id)arg4;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;
 - (CDUnknownBlockType)_startOfDayTransform;

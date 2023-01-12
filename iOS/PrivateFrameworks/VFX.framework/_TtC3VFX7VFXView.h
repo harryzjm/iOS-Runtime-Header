@@ -6,17 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE, _TtC3VFX8VFXScene;
+@class MISSING_TYPE, UIColor, _TtC3VFX8VFXScene, _TtC3VFX9VFXEffect;
 
 @interface _TtC3VFX7VFXView : UIView
 {
+    MISSING_TYPE *delegateImpl;
     MISSING_TYPE *coreView;
     MISSING_TYPE *scene;
+    MISSING_TYPE *effect;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hidden;
+- (_Bool)isHidden;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic) long long preferredFramesPerSecond;
+@property(nonatomic) double scaleFactor;
+@property(nonatomic) unsigned long long pixelFormat;
+@property(nonatomic, retain) UIColor *backgroundColor;
+@property(nonatomic) unsigned char resizingMode;
+@property(nonatomic, retain) _TtC3VFX9VFXEffect *effect; // @synthesize effect;
 @property(nonatomic, retain) _TtC3VFX8VFXScene *scene; // @synthesize scene;
 
 @end

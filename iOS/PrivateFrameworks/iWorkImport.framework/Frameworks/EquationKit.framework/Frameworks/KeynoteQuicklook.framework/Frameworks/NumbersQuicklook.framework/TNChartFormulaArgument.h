@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TSCECellTractRef;
+@class TSCECategoryRef, TSCECellTractRef, TSCEViewTractRef;
 
 @interface TNChartFormulaArgument : NSObject
 {
@@ -18,9 +18,10 @@
 - (id)description;
 - (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 plotByRow:(_Bool)arg2;
 - (_Bool)isVisible:(id)arg1;
-- (UUIDData_5fbc143e)tableUID:(id)arg1;
+- (struct TSKUIDStruct)tableUID:(id)arg1;
 @property(readonly) struct TSCEValue *staticValue;
-@property(readonly) struct TSCECategoryRef categoryReference;
+@property(readonly) TSCEViewTractRef *viewTractReference;
+@property(readonly) TSCECategoryRef *categoryReference;
 @property(readonly) TSCECellTractRef *tractReference;
 @property(readonly) struct TSCERangeRef rangeReference;
 @property(readonly) struct TSCECellRef cellReference;
@@ -28,6 +29,7 @@
 @property(readonly) _Bool isReference;
 @property(readonly) _Bool isGeometricReference;
 @property(readonly) _Bool isStaticValue;
+@property(readonly) _Bool isViewTractReference;
 @property(readonly) _Bool isCategoryReference;
 @property(readonly) _Bool isTractReference;
 @property(readonly) _Bool isRangeReference;
@@ -35,7 +37,8 @@
 - (void)dealloc;
 - (id)initWithBadRef;
 - (id)initWithStaticValue:(const struct TSCEValue *)arg1;
-- (id)initWithCategoryReference:(struct TSCECategoryRef)arg1;
+- (id)initWithViewTractReference:(id)arg1;
+- (id)initWithCategoryReference:(id)arg1;
 - (id)initWithTractReference:(id)arg1;
 - (id)initWithRangeReference:(struct TSCERangeRef)arg1;
 - (id)initWithCellReference:(struct TSCECellRef)arg1;

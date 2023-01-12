@@ -52,9 +52,10 @@
 - (void)_processMetricsOfAssetClustersInMoment:(id)arg1;
 - (_Bool)_revGeocodeAssetClusters:(id)arg1 manager:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (_Bool)revGeocodeAssets:(id)arg1 manager:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)_clusterAssets:(id)arg1 assetsWithInvalidLocationInMoment:(id *)arg2;
 - (id)_clusterAssetsInMoment:(id)arg1 assetsWithInvalidLocationInMoment:(id *)arg2 withPhotoLibrary:(id)arg3;
 - (id)_momentsRequiringRevGeocodingWithIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2 defaultToAllAssets:(_Bool)arg3 manager:(id)arg4;
-- (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (void)enrichDataModelWithManager:(id)arg1 curationContext:(id)arg2 graphUpdateInventory:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (void)invalidateReverseLocationDataForRevGeoProviderChangeUsingManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)setCurrentGeoProviderInGraphApplicationDataURL:(id)arg1;
 - (_Bool)revGeoProviderDidChangeForGraphApplicationDataURL:(id)arg1;

@@ -31,6 +31,7 @@
 - (id)notes;
 - (id)dueDateComponents;
 - (id)location;
+- (long long)suggestionActionButtonType;
 - (id)suggestionsSecondTitle;
 - (id)suggestionAttributedSubtitle;
 - (id)suggestionSubtitle;

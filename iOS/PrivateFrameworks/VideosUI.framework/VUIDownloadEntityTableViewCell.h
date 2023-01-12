@@ -9,7 +9,7 @@
 #import <VideosUI/VUIDownloadEntityDelegate-Protocol.h>
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class NSString, VUIDownloadButton, VUIDownloadEntity, VUIImageView, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView, _TVImageView;
+@class NSString, VUIDownloadButton, VUIDownloadEntity, VUIImageView, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView, VUIVideosImageView;
 @protocol VUIDownloadEntityTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
     VUILabel *_titleLabel;
-    _TVImageView *_posterImageView;
+    VUIImageView *_posterImageView;
     VUILabel *_metaDataHeaderFirstLabel;
     VUILabel *_metaDataHeaderSecondLabel;
     VUILabel *_dotSeparatorLabel;
-    VUIImageView *_rightImageView;
+    VUIVideosImageView *_rightImageView;
     VUILibraryEpisodeFrameView *_episodeImageView;
     VUIDownloadEntity *_downloadEntity;
     unsigned long long _previousDownloadState;
@@ -37,11 +37,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long previousDownloadState; // @synthesize previousDownloadState=_previousDownloadState;
 @property(retain, nonatomic) VUIDownloadEntity *downloadEntity; // @synthesize downloadEntity=_downloadEntity;
 @property(retain, nonatomic) VUILibraryEpisodeFrameView *episodeImageView; // @synthesize episodeImageView=_episodeImageView;
-@property(retain, nonatomic) VUIImageView *rightImageView; // @synthesize rightImageView=_rightImageView;
+@property(retain, nonatomic) VUIVideosImageView *rightImageView; // @synthesize rightImageView=_rightImageView;
 @property(retain, nonatomic) VUILabel *dotSeparatorLabel; // @synthesize dotSeparatorLabel=_dotSeparatorLabel;
 @property(retain, nonatomic) VUILabel *metaDataHeaderSecondLabel; // @synthesize metaDataHeaderSecondLabel=_metaDataHeaderSecondLabel;
 @property(retain, nonatomic) VUILabel *metaDataHeaderFirstLabel; // @synthesize metaDataHeaderFirstLabel=_metaDataHeaderFirstLabel;
-@property(retain, nonatomic) _TVImageView *posterImageView; // @synthesize posterImageView=_posterImageView;
+@property(retain, nonatomic) VUIImageView *posterImageView; // @synthesize posterImageView=_posterImageView;
 @property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property(retain, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;

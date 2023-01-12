@@ -6,14 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class PKContinuousButton, PKDiscoveryArticleLayout, PKDiscoveryCallToActionFooterView, PKDiscoveryCard, PKDiscoveryMedia, UIImageView, UILabel, UITapGestureRecognizer;
+@class PKContinuousButton, PKDiscoveryArticleLayout, PKDiscoveryCallToActionFooterView, PKDiscoveryCard, PKDiscoveryCardViewTemplateInformation, PKDiscoveryMedia, PKMiniDiscoveryCard, UIColor, UIImageView, UILabel, UITapGestureRecognizer;
 @protocol PKDiscoveryCardViewDelegate;
 
 @interface PKDiscoveryCardView : UIView
 {
     PKDiscoveryCard *_card;
-    PKDiscoveryMedia *_media;
+    PKMiniDiscoveryCard *_miniCard;
+    PKDiscoveryMedia *_largeCardMedia;
+    PKDiscoveryMedia *_miniCardMedia;
     UIImageView *_backgroundImageView;
+    UIView *_miniCardBackgroundColorView;
+    UIColor *_backgroundColor;
     UILabel *_headingLabel;
     UILabel *_titleLabel;
     UIImageView *_shadowView;
@@ -21,18 +25,22 @@
     PKDiscoveryCallToActionFooterView *_ctaFooterView;
     UITapGestureRecognizer *_tapRecognizer;
     PKContinuousButton *_dismissButton;
+    _Bool _shouldDisplayAsLarge;
+    long long _displayType;
+    long long _currentCardSize;
     _Bool _removing;
     _Bool _hasSafeAreaInsetOverride;
     PKDiscoveryArticleLayout *_articleLayout;
     long long _priority;
     id <PKDiscoveryCardViewDelegate> _delegate;
-    long long _displayType;
+    PKDiscoveryCardViewTemplateInformation *_cardTemplateInformation;
     CDUnknownBlockType _callToActionTappedOverride;
     CDUnknownBlockType _dismissAction;
     struct UIEdgeInsets _safeAreaOverrideInsets;
 }
 
 + (double)cornerRadius;
++ (struct CGSize)miniCompressedSize;
 + (struct CGSize)compressedSize;
 + (double)compressedHeight;
 + (double)compressedWidth;
@@ -44,8 +52,8 @@
 @property(copy, nonatomic) CDUnknownBlockType callToActionTappedOverride; // @synthesize callToActionTappedOverride=_callToActionTappedOverride;
 @property(nonatomic) struct UIEdgeInsets safeAreaOverrideInsets; // @synthesize safeAreaOverrideInsets=_safeAreaOverrideInsets;
 @property(nonatomic) _Bool hasSafeAreaInsetOverride; // @synthesize hasSafeAreaInsetOverride=_hasSafeAreaInsetOverride;
+@property(retain, nonatomic) PKDiscoveryCardViewTemplateInformation *cardTemplateInformation; // @synthesize cardTemplateInformation=_cardTemplateInformation;
 @property(nonatomic, getter=isRemoving) _Bool removing; // @synthesize removing=_removing;
-@property(nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property(nonatomic) __weak id <PKDiscoveryCardViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) PKDiscoveryArticleLayout *articleLayout; // @synthesize articleLayout=_articleLayout;
@@ -53,16 +61,20 @@
 - (id)_headingLabelTextColor;
 - (id)_titleLabelTextColor;
 - (void)_updateForDisplayType;
-- (void)_loadImageData;
+- (struct CGSize)_miniCardImageSize;
+- (void)loadAndUploadImageData;
 - (double)_yOffsetToHeadingLabel;
 - (struct UIEdgeInsets)_currentContentInsets;
 - (void)tapGestureRecognized:(id)arg1;
 - (void)_dismissButtonPressed:(id)arg1;
+- (id)_titleLabelFont;
 - (id)_headingLabelFont;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3 callToActionTappedOverride:(CDUnknownBlockType)arg4;
-- (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3;
+- (void)setCardSize:(long long)arg1;
+- (void)setDisplayType:(long long)arg1;
+- (id)initWithArticleLayout:(id)arg1 dismissImage:(id)arg2 cardTemplateInformation:(id)arg3 callToActionTappedOverride:(CDUnknownBlockType)arg4;
+- (id)initWithArticleLayout:(id)arg1 dismissImage:(id)arg2 cardTemplateInformation:(id)arg3;
 
 @end
 

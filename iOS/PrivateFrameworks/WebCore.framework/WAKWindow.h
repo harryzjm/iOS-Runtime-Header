@@ -9,7 +9,7 @@
 @interface WAKWindow
 {
     CALayer *_hostLayer;
-    struct LegacyTileCache *_tileCache;
+    void *_tileCache;
     struct CGRect _frozenVisibleRect;
     CALayer *_rootLayer;
     struct CGSize _screenSize;
@@ -34,20 +34,13 @@
 @property(nonatomic) _Bool useOrientationDependentFontAntialiasing; // @synthesize useOrientationDependentFontAntialiasing=_useOrientationDependentFontAntialiasing;
 - (id)recursiveDescription;
 - (id)description;
-- (void)setTileControllerShouldUseLowScaleTiles:(_Bool)arg1;
 - (void)dumpTiles;
-- (void)setAcceleratedDrawingEnabled:(_Bool)arg1;
-- (void)setTilePaintCountsVisible:(_Bool)arg1;
-- (void)setTileBordersVisible:(_Bool)arg1;
 - (id)hostLayer;
-- (void)unfreezeVisibleRect;
-- (void)freezeVisibleRect;
 - (void)didRotate;
 - (void)willRotate;
 - (void)displayRect:(struct CGRect)arg1;
 @property(nonatomic) struct CGImage *contentReplacementImage;
-- (_Bool)hasPendingDraw;
-- (struct LegacyTileCache *)tileCache;
+- (void *)tileCache;
 - (_Bool)keepsZoomedOutTiles;
 - (void)setKeepsZoomedOutTiles:(_Bool)arg1;
 - (float)currentTileScale;

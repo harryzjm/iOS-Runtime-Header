@@ -16,7 +16,6 @@
 
 - (void).cxx_destruct;
 - (void)invalidate;
-- (id)init;
 - (id)initWithHandler:(CDUnknownBlockType)arg1;
 
 @end

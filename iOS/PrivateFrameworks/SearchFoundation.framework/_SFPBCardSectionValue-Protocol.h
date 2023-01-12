@@ -6,10 +6,26 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAttributionFooterCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection, _SFPBWorldMapCardSection;
+@class NSData, NSDictionary, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAttributionFooterCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCollectionCardSection, _SFPBColorBarCardSection, _SFPBCombinedCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFindMyCardSection, _SFPBFlightCardSection, _SFPBGridCardSection, _SFPBHeroCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBInfoCardSection, _SFPBKeyValueDataCardSection, _SFPBLinkPresentationCardSection, _SFPBListenToCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBMiniCardSection, _SFPBNewsCardSection, _SFPBNowPlayingCardSection, _SFPBPersonHeaderCardSection, _SFPBProductCardSection, _SFPBResponseWrapperCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBSplitCardSection, _SFPBStockChartCardSection, _SFPBStrokeAnimationCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWatchNowCardSection, _SFPBWebCardSection, _SFPBWorldMapCardSection;
 
 @protocol _SFPBCardSectionValue <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _SFPBStrokeAnimationCardSection *strokeAnimationCardSection;
+@property(retain, nonatomic) _SFPBWatchNowCardSection *watchNowCardSection;
+@property(retain, nonatomic) _SFPBListenToCardSection *listenToCardSection;
+@property(retain, nonatomic) _SFPBResponseWrapperCardSection *responseWrapperCardSection;
+@property(retain, nonatomic) _SFPBCombinedCardSection *combinedCardSection;
+@property(retain, nonatomic) _SFPBCollectionCardSection *collectionCardSection;
+@property(retain, nonatomic) _SFPBInfoCardSection *infoCardSection;
+@property(retain, nonatomic) _SFPBMiniCardSection *miniCardSection;
+@property(retain, nonatomic) _SFPBNewsCardSection *newsCardSection;
+@property(retain, nonatomic) _SFPBHeroCardSection *heroCardSection;
+@property(retain, nonatomic) _SFPBFindMyCardSection *findMyCardSection;
+@property(retain, nonatomic) _SFPBLinkPresentationCardSection *linkPresentationCardSection;
+@property(retain, nonatomic) _SFPBSplitCardSection *splitCardSection;
+@property(retain, nonatomic) _SFPBColorBarCardSection *colorBarCardSection;
+@property(retain, nonatomic) _SFPBPersonHeaderCardSection *personHeaderCardSection;
+@property(retain, nonatomic) _SFPBGridCardSection *gridCardSection;
 @property(retain, nonatomic) _SFPBAttributionFooterCardSection *attributionFooterCardSection;
 @property(retain, nonatomic) _SFPBWorldMapCardSection *worldMapCardSection;
 @property(retain, nonatomic) _SFPBCompactRowCardSection *compactRowCardSection;

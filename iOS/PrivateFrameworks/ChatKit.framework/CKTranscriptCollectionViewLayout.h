@@ -6,9 +6,11 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-@class CADisplayLink, IMScheduledUpdater, NSArray, NSDate, NSIndexSet, NSMutableDictionary, NSMutableIndexSet;
+#import <ChatKit/CKTranscriptLayoutCompatibility-Protocol.h>
 
-@interface CKTranscriptCollectionViewLayout : UICollectionViewLayout
+@class CADisplayLink, IMScheduledUpdater, NSArray, NSDate, NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSString;
+
+@interface CKTranscriptCollectionViewLayout : UICollectionViewLayout <CKTranscriptLayoutCompatibility>
 {
     _Bool _holdingBoundsInvalidation;
     _Bool _useInitialLayoutAttributesForRotation;
@@ -16,6 +18,7 @@
     _Bool _inlineAnimatingOut;
     unsigned char _chatStyle;
     _Bool _isResting;
+    _Bool _disableDynamicsWhileScrolling;
     _Bool _easingUp;
     _Bool _hasLoadMore;
     _Bool _useFastQuanta;
@@ -42,6 +45,7 @@
     struct CGRect _visibleBounds;
 }
 
++ (double)bottomTranscriptSpaceWithLastChatItem:(id)arg1;
 + (Class)layoutAttributesClass;
 + (long long)translateLayoutIndexToEffectIndex:(long long)arg1;
 - (void).cxx_destruct;
@@ -57,6 +61,7 @@
 @property(copy, nonatomic) NSArray *decorationLayoutAttributes; // @synthesize decorationLayoutAttributes=_decorationLayoutAttributes;
 @property(copy, nonatomic) NSArray *associatedLayoutAttributes; // @synthesize associatedLayoutAttributes=_associatedLayoutAttributes;
 @property(copy, nonatomic) NSArray *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+@property(nonatomic) _Bool disableDynamicsWhileScrolling; // @synthesize disableDynamicsWhileScrolling=_disableDynamicsWhileScrolling;
 @property(retain, nonatomic) NSIndexSet *indicesOfReplyChatItemsToBeInserted; // @synthesize indicesOfReplyChatItemsToBeInserted=_indicesOfReplyChatItemsToBeInserted;
 @property(retain, nonatomic) NSIndexSet *indicesOfChatItemsToBeInsertedWithoutFading; // @synthesize indicesOfChatItemsToBeInsertedWithoutFading=_indicesOfChatItemsToBeInsertedWithoutFading;
 @property(retain, nonatomic) NSIndexSet *indicesOfChatItemsToBeRemovedWithoutFading; // @synthesize indicesOfChatItemsToBeRemovedWithoutFading=_indicesOfChatItemsToBeRemovedWithoutFading;
@@ -69,6 +74,10 @@
 @property(nonatomic, getter=isHoldingBoundsInvalidation) _Bool holdingBoundsInvalidation; // @synthesize holdingBoundsInvalidation=_holdingBoundsInvalidation;
 @property(nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
 @property(nonatomic) double anchorYPosition; // @synthesize anchorYPosition=_anchorYPosition;
+- (void)_setDisplayLinkForTesting:(id)arg1;
+- (void)_setVisibleBoundsForTesting:(struct CGRect)arg1;
+- (_Bool)_getEasingUpForTesting;
+- (void)_setEasingUpForTesting:(_Bool)arg1;
 - (void)reduceMotionSettingChanged:(id)arg1;
 - (void)sizeCategoryDidChange:(id)arg1;
 - (void)_applyCurrentFrameOffsetsForLayoutAttributesIfNeeded:(id)arg1;
@@ -101,6 +110,7 @@
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (struct UIEdgeInsets)_visibleRectInsectsForMaxYAnchorLayoutAttribute:(id)arg1 forVisibleBounds:(struct CGRect)arg2;
+- (void)invalidateLayoutWithContext:(id)arg1;
 - (void)prepareLayout;
 - (void)prepareLayoutForRotisserieScrolling;
 - (void)_dealloc;
@@ -111,6 +121,12 @@
 - (void)_kickDynamicsIfNeeded;
 - (id)init;
 - (long long)effectIndexForDecorationViewAtIndex:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

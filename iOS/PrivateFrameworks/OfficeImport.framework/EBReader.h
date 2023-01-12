@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isFileStructuredStorage; // @synthesize isFileStructuredStorage=mIsFileStructuredStorage;
 @property(nonatomic) _Bool useStringOptimization; // @synthesize useStringOptimization=mUseStringOptimization;
 @property(retain, nonatomic) NSString *temporaryDirectory; // @synthesize temporaryDirectory=mTemporaryDirectory;
-@property(readonly, nonatomic) struct XlBinaryReader *xlReader;
+@property(readonly, nonatomic) void *xlReader;
 - (struct OCCBinaryStreamer *)allocBinaryStreamerWithCryptoKey:(struct OCCCryptoKey *)arg1 baseOutputFilenameInUTF8:(const char *)arg2;
 - (struct OCCEncryptionInfoReader *)encryptionInfoReader;
 - (id)read;

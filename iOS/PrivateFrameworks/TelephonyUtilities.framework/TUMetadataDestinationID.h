@@ -32,7 +32,6 @@
 @property(readonly, copy, nonatomic) NSString *isoCountryCode;
 - (id)initWithHandle:(id)arg1;
 - (id)initWithDestinationID:(id)arg1 isoCountryCode:(id)arg2;
-- (id)init;
 
 @end
 

@@ -97,6 +97,7 @@
 - (void)_updateScrollViewControllerContentInset;
 - (struct PXSimpleIndexPath)_memoryIndexPathForViewController:(id)arg1;
 - (id)_memoryObjectReferenceForPhotosDetailsContext:(id)arg1;
+- (id)_photosDetailsContextForMemoryReference:(id)arg1;
 - (id)_photosDetailsContextForIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_previewActionMenusForIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_memoryTileViewForLocation:(struct CGPoint)arg1;
@@ -106,6 +107,7 @@
 - (void)_configureLayout:(id)arg1;
 - (void)_reconfigureTargetLayout;
 - (void)_handleTouch:(id)arg1;
+- (void)presentMemoryWithReference:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_presentMemoryAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)_handleScrollViewTap:(id)arg1;
 - (struct PXSimpleIndexPath)_indexPathForMemoryInScrollViewAtPoint:(struct CGPoint)arg1;
@@ -129,7 +131,6 @@
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)preferredFocusEnvironments;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

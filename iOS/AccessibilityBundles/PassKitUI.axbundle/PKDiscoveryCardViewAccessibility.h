@@ -11,8 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_dismissButtonPressed:(id)arg1;
+- (_Bool)_accessibilityScrollToVisible;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilitySupplementaryHeaderViews;
+- (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)layoutSubviews;
 
 @end
 

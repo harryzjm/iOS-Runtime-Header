@@ -11,11 +11,11 @@
 @interface PGROISceneMatcher : NSObject
 {
     NSMutableDictionary *_confidenceThresholdByWhitelistedSceneIdentifierByROILabel;
-    NSMutableDictionary *_confidenceThresholdByBlacklistedSceneIdentifierByROILabel;
+    NSMutableDictionary *_confidenceThresholdByBlockedSceneIdentifierByROILabel;
 }
 
-+ (id)confidenceThresholdBySceneIdentifierWithSceneNames:(id)arg1 blacklisted:(_Bool)arg2;
-+ (id)blacklistedSceneNamesByROILabel;
++ (id)confidenceThresholdBySceneIdentifierWithSceneNames:(id)arg1 blocked:(_Bool)arg2;
++ (id)blockedSceneNamesByROILabel;
 + (id)whitelistedSceneNamesByROILabel;
 + (id)urbanSceneNames;
 + (id)nonWaterSceneNames;
@@ -26,7 +26,7 @@
 + (id)beachSceneNames;
 + (id)sharedROISceneMatcher;
 - (void).cxx_destruct;
-- (id)confidenceThresholdByBlacklistedSceneIdentifierForROILabel:(id)arg1;
+- (id)confidenceThresholdByBlockedSceneIdentifierForROILabel:(id)arg1;
 - (id)confidenceThresholdByWhitelistedSceneIdentifierForROILabel:(id)arg1;
 
 @end

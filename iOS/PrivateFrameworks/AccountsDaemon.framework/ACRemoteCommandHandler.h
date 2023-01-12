@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_invalidateFetchedAccountsCacheWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fetchAccountsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_fetchAccountsWithCompletion:(CDUnknownBlockType)arg1 options:(id)arg2;
 - (void)_deleteAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_promptUserForAccountCredential:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_authenticateAccount:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;

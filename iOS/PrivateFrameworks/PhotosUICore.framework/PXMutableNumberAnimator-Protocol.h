@@ -6,5 +6,6 @@
 
 @protocol PXMutableNumberAnimator
 @property(nonatomic) double value;
+- (void)setValue:(double)arg1 skipFirstNumberWhenAnimationStart:(_Bool)arg2;
 @end
 

@@ -14,6 +14,7 @@
 + (void)deletePhotoStreamAssetsWithLibraryServiceManager:(id)arg1 withReason:(id)arg2 jobStreamID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (_Bool)writeBreadcrumbContent:(id)arg1 forHashString:(id)arg2;
 + (id)iCloudServiceAccount;
++ (_Bool)photoStreamsEnabledForPhotoLibraryBundle:(id)arg1;
 + (_Bool)photoStreamsEnabledForPhotoLibraryURL:(id)arg1;
 + (_Bool)_photoStreamsEnabled;
 + (id)sharedPhotoStreamsHelper;

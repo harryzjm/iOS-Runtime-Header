@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)jsonDataOptional;
 + (_Bool)supportsSecureCoding;
 
 @end

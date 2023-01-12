@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 
 @class MPAVRoute, NSArray, NSString, UIImage;
 
-@interface MPAVRoutingViewItem : NSObject <_MPStateDumpPropertyListTransformable>
+@interface MPAVRoutingViewItem : NSObject <NSObject>
 {
     _Bool _enabled;
     NSString *_localizedTitle;

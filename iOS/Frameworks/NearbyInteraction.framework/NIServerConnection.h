@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSData, NSMutableDictionary, NSMutableSet, NSUUID;
-@protocol OS_dispatch_queue, OS_os_log, OS_xpc_object, UWBSessionDelegateProxyProtocol;
+@protocol OS_dispatch_queue, OS_os_log, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NIServerConnection : NSObject
@@ -24,15 +24,16 @@ __attribute__((visibility("hidden")))
     _Bool _shouldInvalidateSessionOnXPCError;
     _Bool _isInterruptionReason_ApplicationNotVisible;
     _Bool _isDistanceUpdateRequestScheduled;
+    _Bool _isAllowedToSimulateDirection;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
-    id <UWBSessionDelegateProxyProtocol> _exportedObject;
     NSUUID *_sessionID;
+    id _exportedObject;
 }
 
 - (void).cxx_destruct;
+@property(retain) id exportedObject; // @synthesize exportedObject=_exportedObject;
 @property(readonly) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
-@property(retain) id <UWBSessionDelegateProxyProtocol> exportedObject; // @synthesize exportedObject=_exportedObject;
 @property(copy) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 - (void)stopAllowingTasksToFinishWhileInBackground;
@@ -41,13 +42,20 @@ __attribute__((visibility("hidden")))
 - (double)randomUnivariateGaussian:(double)arg1 sigma:(double)arg2;
 - (double)simulateAngleError;
 - (double)simulateRangeError;
-- (void)shareSandboxToken:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)setRangingPriorityPolicy:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getRangingPriorityPolicy:(CDUnknownBlockType)arg1;
+- (void)processBluetoothEventWithType:(long long)arg1 btcClockTicks:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)processDCKMessage:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_removeObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_addObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)notifySystemShutdownWithReason:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)pause:(CDUnknownBlockType)arg1;
 - (void)runWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)activate:(CDUnknownBlockType)arg1;
 - (void)_createAndActivateXPCConnectionToSimulatorIfNeededWithReply:(CDUnknownBlockType)arg1;
 - (id)generateDiscoveryTokenData;
 - (void)queryDeviceCapabilities:(CDUnknownBlockType)arg1;
+- (_Bool)_internalIsAllowedToSimulateDirection;
 - (_Bool)_internalIsSupported;
 - (void)handleMessageFromSimulator:(id)arg1;
 - (void)handleErrorMessageFromSimulator:(id)arg1;
@@ -69,7 +77,6 @@ __attribute__((visibility("hidden")))
 - (void)handleXPCConnectionTermination;
 - (void)handleXPCConnectionInterrupted;
 - (void)handleXPCConnectionError;
-- (_Bool)isSandboxExtensionRequired;
 - (CDStruct_6ad76789)auditTokenForConnection;
 - (void)invalidate;
 - (void)resume;
@@ -82,7 +89,7 @@ __attribute__((visibility("hidden")))
 - (id)remoteObjectProxy;
 - (void)handleAppNotification:(id)arg1;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 queue:(id)arg2 exportedObject:(id)arg3;
+- (id)initWithSessionID:(id)arg1 queue:(id)arg2 exportedObject:(id)arg3 options:(unsigned long long)arg4;
 
 @end
 

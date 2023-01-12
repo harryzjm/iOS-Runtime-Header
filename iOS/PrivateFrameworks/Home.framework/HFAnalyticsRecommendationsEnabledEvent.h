@@ -11,18 +11,22 @@
     _Bool _enabled;
     _Bool _success;
     int _rankInt;
+    int _rankVersion;
     double _rank;
     NSString *_serviceType;
     NSString *_accessoryCategory;
     NSString *_source;
     NSString *_presentationContext;
+    NSString *_configurationType;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *configurationType; // @synthesize configurationType=_configurationType;
 @property(retain, nonatomic) NSString *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(retain, nonatomic) NSString *source; // @synthesize source=_source;
 @property(retain, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
 @property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property(nonatomic) int rankVersion; // @synthesize rankVersion=_rankVersion;
 @property(nonatomic) int rankInt; // @synthesize rankInt=_rankInt;
 @property(nonatomic) double rank; // @synthesize rank=_rank;
 @property(nonatomic) _Bool success; // @synthesize success=_success;

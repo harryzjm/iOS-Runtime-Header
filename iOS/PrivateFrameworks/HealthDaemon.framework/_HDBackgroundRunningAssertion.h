@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemonFoundation/HDAssertion.h>
+
 @class BKSProcessAssertion, CLInUseAssertion, HDHealthStoreClient;
 
 __attribute__((visibility("hidden")))
-@interface _HDBackgroundRunningAssertion
+@interface _HDBackgroundRunningAssertion : HDAssertion
 {
     _Bool _shouldAcquireCLAssertion;
     HDHealthStoreClient *_client;
@@ -16,11 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CLInUseAssertion *coreLocationAssertion; // @synthesize coreLocationAssertion=_coreLocationAssertion;
-@property(retain, nonatomic) BKSProcessAssertion *bksAssertion; // @synthesize bksAssertion=_bksAssertion;
-@property(readonly, nonatomic) _Bool shouldAcquireCLAssertion; // @synthesize shouldAcquireCLAssertion=_shouldAcquireCLAssertion;
-@property(readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
-- (id)initWithOwnerIdentifier:(id)arg1 client:(id)arg2 shouldAcquireCLAssertion:(_Bool)arg3;
 
 @end
 

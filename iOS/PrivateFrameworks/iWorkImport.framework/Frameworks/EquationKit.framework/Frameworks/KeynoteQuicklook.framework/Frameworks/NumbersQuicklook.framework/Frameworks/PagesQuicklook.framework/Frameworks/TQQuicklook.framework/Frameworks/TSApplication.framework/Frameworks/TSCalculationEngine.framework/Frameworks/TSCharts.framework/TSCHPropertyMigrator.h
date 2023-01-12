@@ -10,9 +10,9 @@
 
 @interface TSCHPropertyMigrator : NSObject
 {
-    TSSPropertySet *mPropertiesToForce;
-    TSUIntToIntDictionary *mShouldForceFlags;
-    TSUIntegerKeyDictionary *mValuesToForce;
+    TSSPropertySet *_propertiesToForce;
+    TSUIntToIntDictionary *_shouldForceFlags;
+    TSUIntegerKeyDictionary *_valuesToForce;
 }
 
 - (void).cxx_destruct;

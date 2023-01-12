@@ -11,13 +11,13 @@
 
 @interface SBSRemoteAlertHandle : NSObject
 {
-    NSObject<OS_dispatch_queue> *_accessSerialQueue;
-    _Bool _active;
+    struct os_unfair_lock_s _lock;
+    _Bool _lock_active;
+    _Bool _lock_valid;
+    NSHashTable *_lock_observers;
     NSObject<OS_dispatch_queue> *_calloutSerialQueue;
-    _Bool _valid;
     id <SBSRemoteAlertHandleClient> _handleClient;
     NSString *_handleID;
-    NSHashTable *_observers;
 }
 
 + (id)handleWithConfiguration:(id)arg1;
@@ -30,6 +30,8 @@
 + (id)lookupHandlesForDefinition:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *handleID; // @synthesize handleID=_handleID;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 - (void)_invalidateWithError:(id)arg1 shouldInvalidateHandleClient:(_Bool)arg2;
 - (void)_receivedInvalidationWithError:(id)arg1;
 - (void)_didDeactivate;
@@ -39,8 +41,8 @@
 @property(readonly, nonatomic, getter=isActive) _Bool active;
 - (void)activateWithContext:(id)arg1;
 - (void)activateWithOptions:(id)arg1;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (id)_initWithHandleID:(id)arg1 handleClient:(id)arg2;
 
 @end

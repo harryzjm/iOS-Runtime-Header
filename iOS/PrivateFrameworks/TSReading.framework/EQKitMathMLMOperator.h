@@ -20,7 +20,7 @@
 - (_Bool)isEmbellishedOperator;
 - (unsigned short)operatorId;
 - (struct Schemata)layoutSchemata;
-- (const set_25e6ba53 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 - (id)initWithString:(id)arg1 environment:(id)arg2;
 

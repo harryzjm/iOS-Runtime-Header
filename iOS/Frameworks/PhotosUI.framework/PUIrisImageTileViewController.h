@@ -8,7 +8,7 @@
 #import <PhotosUI/PHLivePhotoViewDelegatePrivate-Protocol.h>
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 
-@class NSString, PHLivePhotoView, PUBrowsingViewModel, PXLivePhotoViewModulator;
+@class NSString, PHLivePhotoView, PXLivePhotoViewModulator;
 @protocol PUIrisImageTileViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,16 +24,16 @@ __attribute__((visibility("hidden")))
         _Bool respondsToDelegateForGestureRecognizer;
     } _delegateFlags;
     CDUnknownBlockType _ppt_didEndPlayingHandler;
+    _Bool _isVitalityDisabledBytransformInset;
     id <PUIrisImageTileViewControllerDelegate> _delegate;
-    PUBrowsingViewModel *_browsingViewModel;
     PHLivePhotoView *__livePhotoView;
     PXLivePhotoViewModulator *_livePhotoViewModulator;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isVitalityDisabledBytransformInset; // @synthesize isVitalityDisabledBytransformInset=_isVitalityDisabledBytransformInset;
 @property(retain, nonatomic) PXLivePhotoViewModulator *livePhotoViewModulator; // @synthesize livePhotoViewModulator=_livePhotoViewModulator;
 @property(readonly, nonatomic) PHLivePhotoView *_livePhotoView; // @synthesize _livePhotoView=__livePhotoView;
-@property(retain, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 @property(nonatomic) __weak id <PUIrisImageTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)livePhotoViewDidBeginHinting:(id)arg1;
 - (void)livePhotoViewDidEndPlayingVitality:(id)arg1;
@@ -47,7 +47,9 @@ __attribute__((visibility("hidden")))
 - (void)ppt_playLivePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updatePlayerViewInteractivePlaybackAllowed;
 - (void)_assetFocusValueDidChange;
+- (void)_updateSRLCompensation;
 - (void)_updateLivePhotoViewVitalityEnabled;
+- (void)assetDidChange;
 - (void)assetViewModelDidChange;
 - (void)setAssetViewModel:(id)arg1;
 - (void)applyLayoutInfo:(id)arg1;

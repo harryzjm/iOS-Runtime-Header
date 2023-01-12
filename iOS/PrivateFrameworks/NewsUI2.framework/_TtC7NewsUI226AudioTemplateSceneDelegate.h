@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI226AudioTemplateSceneDelegate : NSObject
 {
     MISSING_TYPE *$__lazy_storage_$_resolvers;

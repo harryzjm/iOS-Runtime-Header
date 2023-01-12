@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *contentBounds;
     MISSING_TYPE *canvasOffset;
     MISSING_TYPE *selectionFrame;
+    MISSING_TYPE *metricSelectionFrame;
     MISSING_TYPE *rulersHidden;
     MISSING_TYPE *rulerSize;
     MISSING_TYPE *verticalRulerEdgeView;

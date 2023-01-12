@@ -10,13 +10,13 @@
 
 @protocol TSCERefNamingProtocol <NSObject>
 - (NSString *)nameForWrappedRangeRef:(TSCEWrappedRangeRef *)arg1 namingContext:(TSCERefNamingContext *)arg2;
-- (NSString *)nameForChromeColumnIndex:(const struct TSUChromeColumnIndex *)arg1 inTable:(const UUIDData_5fbc143e *)arg2 useSymbolicNames:(_Bool)arg3;
-- (NSString *)cellRangeNameFromChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 namingContext:(TSCERefNamingContext *)arg2;
+- (NSString *)nameForChromeColumnIndex:(const struct TSUChromeColumnIndex *)arg1 inTable:(const struct TSKUIDStruct *)arg2 useSymbolicNames:(_Bool)arg3;
+- (NSString *)cellRangeNameFromChromeRangeRef:(const void *)arg1 namingContext:(TSCERefNamingContext *)arg2;
 - (NSString *)nameForViewTractRef:(TSCECellTractRef *)arg1 namingContext:(TSCERefNamingContext *)arg2 coordMapper:(TSCECoordMapper *)arg3;
 - (NSString *)nameForBaseTractRef:(TSCECellTractRef *)arg1 namingContext:(TSCERefNamingContext *)arg2;
-- (NSString *)nameForChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 namingContext:(TSCERefNamingContext *)arg2;
-- (NSString *)chromeNameForBaseRangeRef:(const RefTypeHolder_1140c985 *)arg1 namingContext:(TSCERefNamingContext *)arg2;
-- (NSString *)nameForBaseRangeRef:(const RefTypeHolder_1140c985 *)arg1 namingContext:(TSCERefNamingContext *)arg2;
+- (NSString *)nameForChromeRangeRef:(const void *)arg1 namingContext:(TSCERefNamingContext *)arg2;
+- (NSString *)chromeNameForBaseRangeRef:(const void *)arg1 namingContext:(TSCERefNamingContext *)arg2;
+- (NSString *)nameForBaseRangeRef:(const void *)arg1 namingContext:(TSCERefNamingContext *)arg2;
 - (id)initWithCalcEngine:(TSCECalculationEngine *)arg1;
 @end
 

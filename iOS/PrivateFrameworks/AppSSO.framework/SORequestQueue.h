@@ -16,6 +16,7 @@
     CDUnknownBlockType _processItemBlock;
 }
 
++ (void)removeQueueWithIdentifier:(id)arg1;
 + (id)debugDescription;
 + (id)requestQueueWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
@@ -23,6 +24,7 @@
 - (id)description;
 - (void)_itemCompleted;
 - (void)_processItem:(id)arg1;
+- (unsigned long long)queueCount;
 - (void)removeAllRequestsWithBlock:(CDUnknownBlockType)arg1;
 - (void)processNextRequest;
 - (void)enqueueRequest:(id)arg1;

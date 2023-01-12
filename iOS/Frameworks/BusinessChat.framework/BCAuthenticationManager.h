@@ -18,11 +18,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) BCAuthenticationRequest *authenticationRequest; // @synthesize authenticationRequest=_authenticationRequest;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)accessTokenForData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)exchangeCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)processFragments:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)processQueryItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchTokenWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchTokenWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithAuthenticationRequest:(id)arg1;
 
 // Remaining properties

@@ -55,6 +55,7 @@
 + (id)_celebrationCriteriaWithGraph:(id)arg1;
 + (id)_weddingCriteriaWithGraph:(id)arg1;
 + (void)_birthdayCriteriaWithGraph:(id)arg1 strongBirthdayCriteria:(id *)arg2 weakBirthdayCriteria:(id *)arg3;
++ (id)availablePersonActivityMeaningLabels;
 + (id)availableMeaningLabels;
 + (id)requiredCriteriaByIdentifierWithGraph:(id)arg1 inferenceType:(unsigned long long)arg2;
 + (id)_requiredCriteriaForIdentifiers:(id)arg1 inferenceType:(unsigned long long)arg2 graph:(id)arg3;

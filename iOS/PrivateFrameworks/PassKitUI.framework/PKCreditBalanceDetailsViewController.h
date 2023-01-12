@@ -8,18 +8,20 @@
 
 #import <PassKitUI/PKAccountServiceObserver-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSDictionary, NSString, PKAccount, PKBalanceSummary, PKBalanceSummaryFetcher, PKCreditAccountStatement, PKCreditAccountSummary, PKDashboardBalanceItem, PKDashboardBalancePresenter, PKDashboardBalanceSummaryItem, PKDashboardBalanceSummaryItemPresenter, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKDashboardTransactionFetcher, PKPaymentWebService, PKTransactionSource;
+@class NSArray, NSDateFormatter, NSDictionary, NSString, PKAccount, PKAccountUserCollection, PKBalanceSummary, PKBalanceSummaryFetcher, PKCreditAccountStatement, PKCreditAccountSummary, PKDashboardBalanceItem, PKDashboardBalancePresenter, PKDashboardBalanceSummaryItem, PKDashboardBalanceSummaryItemPresenter, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKDashboardTransactionFetcher, PKFamilyMemberCollection, PKPaymentWebService, PKTransactionSourceCollection;
 
 @interface PKCreditBalanceDetailsViewController : UICollectionViewController <PKAccountServiceObserver>
 {
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     unsigned long long _feature;
     PKCreditAccountStatement *_statement;
     PKCreditAccountStatement *_previousStatement;
     PKBalanceSummaryFetcher *_fetcher;
     PKCreditAccountSummary *_accountSummary;
     PKPaymentWebService *_webService;
+    PKFamilyMemberCollection *_familyCollection;
     PKDashboardTransactionFetcher *_transactionFetcher;
     PKDashboardBalancePresenter *_balancePresenter;
     PKDashboardBalanceSummaryItemPresenter *_balanceSummaryItemPresenter;
@@ -36,6 +38,9 @@
     PKDashboardBalanceSummaryItem *_totalBalanceSummaryItem;
     PKDashboardBalanceSummaryItem *_availableCreditSummaryItem;
     NSArray *_totalBalanceItems;
+    NSArray *_spendLimitItems;
+    PKDashboardBalanceSummaryItem *_accountMergingItem;
+    NSArray *_mergeBalances;
     NSArray *_usageItems;
     PKDashboardBalanceSummaryItem *_statementDownloadSummaryItem;
     PKDashboardBalanceSummaryItem *_exportTransactionDataSummaryItem;
@@ -57,11 +62,12 @@
 - (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
-- (_Bool)_shouldInset;
 - (void)_updateStatements;
 - (void)_sortStatementsForPresentation;
 - (void)_reloadData;
 - (id)_createSummaryItemOfType:(unsigned long long)arg1;
+- (_Bool)_statementIsFromMonthOfMerge;
+- (id)_footerForTransactionLimitSection;
 - (void)_configureFooterView:(id)arg1 inSectionIndex:(unsigned long long)arg2;
 - (void)_configureHeaderView:(id)arg1 inSectionIndex:(unsigned long long)arg2;
 - (_Bool)_hasFooterForSectionIndex:(unsigned long long)arg1;
@@ -86,7 +92,7 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithStyle:(long long)arg1 transactionSource:(id)arg2 webService:(id)arg3 account:(id)arg4 statement:(id)arg5 previousStatements:(id)arg6;
+- (id)initWithStyle:(long long)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3 webService:(id)arg4 account:(id)arg5 accountUserCollection:(id)arg6 statement:(id)arg7 previousStatements:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

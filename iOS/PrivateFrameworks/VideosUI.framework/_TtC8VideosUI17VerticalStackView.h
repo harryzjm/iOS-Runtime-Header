@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI17VerticalStackView : UIView
+@interface _TtC8VideosUI17VerticalStackView
 {
     MISSING_TYPE *platterView;
     MISSING_TYPE *$__lazy_storage_$_expandableView;
@@ -17,8 +15,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *footerView;
     MISSING_TYPE *layout;
     MISSING_TYPE *$__lazy_storage_$_platterContainerView;
-    MISSING_TYPE *$__lazy_storage_$_hangerView;
-    MISSING_TYPE *panGesture;
     MISSING_TYPE *topPlatterGradient;
     MISSING_TYPE *bottomExpandableGradient;
     MISSING_TYPE *bottomPlatterGradient;
@@ -36,8 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 
 @end
 

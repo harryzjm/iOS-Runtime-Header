@@ -20,6 +20,8 @@
 @property __weak HMDHome *home; // @synthesize home=_home;
 - (id)logIdentifier;
 - (id)personManagerWithUUID:(id)arg1;
+- (id)_faceClassificationForSignificantEventFaceClassifications:(id)arg1 user:(id)arg2;
+- (id)faceClassificationForSignificantEventFaceClassifications:(id)arg1 user:(id)arg2;
 - (id)faceClassificationForSignificantEventFaceClassifications:(id)arg1;
 - (id)initWithHome:(id)arg1;
 

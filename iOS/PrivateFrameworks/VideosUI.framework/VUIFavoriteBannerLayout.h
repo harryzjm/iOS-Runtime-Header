@@ -21,12 +21,10 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_subtitleLayout;
     TVImageLayout *_imageLayout;
     unsigned long long _bannerStyle;
-    struct TVCornerRadii _borderRadii;
+    struct _VUICornerRadii _borderRadii;
     struct UIEdgeInsets _margin;
 }
 
-+ (id)postModeBannerLayout;
-+ (id)preModeBannerLayout;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long bannerStyle; // @synthesize bannerStyle=_bannerStyle;
 @property(readonly, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
@@ -38,9 +36,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
-@property(nonatomic) struct TVCornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
+@property(nonatomic) struct _VUICornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
 @property(nonatomic) _Bool isPreModeBanner; // @synthesize isPreModeBanner=_isPreModeBanner;
-- (id)initWithBannerType:(_Bool)arg1;
+- (unsigned long long)bannerStyleForSizeClass:(long long)arg1;
 
 @end
 

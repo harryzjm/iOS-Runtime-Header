@@ -6,7 +6,7 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTAttributeCollectionViewCell, AVTCoreModelRowDisplayCondition, AVTUIEnvironment, UIView;
+@class AVTAttributeCollectionViewCell, AVTCoreModelPickerDisplayCondition, AVTUIEnvironment, UIView;
 @protocol AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTAvatarAttributeEditorSection, AVTAvatarAttributeEditorSectionItem, AVTAvatarAttributeEditorSectionItemPrefetching;
 
 @protocol AVTAvatarAttributeEditorSectionController <NSObject>
@@ -15,7 +15,9 @@
 @property(nonatomic) long long selectedIndex;
 @property(readonly, nonatomic) id <AVTAvatarAttributeEditorSection> section;
 @property(nonatomic) __weak id <AVTAvatarAttributeEditorControllerSubSelectionDelegate> delegate;
-- (_Bool)evaluateDisplayCondition:(AVTCoreModelRowDisplayCondition *)arg1;
+- (void)attributeSection:(id <AVTAvatarAttributeEditorSection>)arg1 didChangeValueForSectionItem:(id <AVTAvatarAttributeEditorSectionItem>)arg2;
+- (struct CGSize)sizeForFocusingItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
+- (_Bool)evaluateDisplayCondition:(AVTCoreModelPickerDisplayCondition *)arg1;
 - (void)didSelectItemAtIndex:(long long)arg1 cell:(AVTAttributeCollectionViewCell *)arg2;
 - (void)didUnhighlightItemAtIndex:(long long)arg1 cell:(AVTAttributeCollectionViewCell *)arg2 completionBlock:(void (^)(_Bool))arg3;
 - (void)didHighlightItemAtIndex:(long long)arg1 cell:(AVTAttributeCollectionViewCell *)arg2 completionBlock:(void (^)(_Bool))arg3;

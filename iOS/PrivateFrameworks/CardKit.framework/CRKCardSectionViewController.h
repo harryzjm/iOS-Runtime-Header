@@ -17,6 +17,7 @@
 @interface CRKCardSectionViewController : UIViewController <CRKCardSectionViewControllingDelegate, SFFeedbackListener, CRKFeedbackDelegate, CRKEventResponding>
 {
     CRKOverlayButton *_overlayButton;
+    _Bool _childVCDesiresInteractivity;
     _Bool _loading;
     id <CRKCardSectionViewControllerDelegate> _delegate;
     id <CRCardSection> _cardSection;

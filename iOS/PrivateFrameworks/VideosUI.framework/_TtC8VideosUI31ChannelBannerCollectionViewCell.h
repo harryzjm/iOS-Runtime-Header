@@ -4,23 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI31ChannelBannerCollectionViewCell : UICollectionViewCell
+@interface _TtC8VideosUI31ChannelBannerCollectionViewCell
 {
     MISSING_TYPE *layout;
     MISSING_TYPE *bannerView;
     MISSING_TYPE *transitionBackgroundView;
     MISSING_TYPE *bgImageViewModel;
     MISSING_TYPE *previousSize;
+    MISSING_TYPE *isBackgroundTransitioning;
+    MISSING_TYPE *isImageLoadedForBackgroundTransitioning;
 }
 
 - (void).cxx_destruct;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

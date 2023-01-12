@@ -15,6 +15,7 @@
 @interface AKToolsListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     _Bool _supportsOpacityEditing;
+    _Bool _supportsImageDescriptionEditing;
     _Bool _isDeviceLocked;
     id <AKToolsListViewControllerDelegate> _delegate;
     UITableView *_tableView;
@@ -26,6 +27,7 @@
 @property(nonatomic) _Bool isDeviceLocked; // @synthesize isDeviceLocked=_isDeviceLocked;
 @property(copy, nonatomic) NSArray *cellItemTypes; // @synthesize cellItemTypes=_cellItemTypes;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property(nonatomic) _Bool supportsImageDescriptionEditing; // @synthesize supportsImageDescriptionEditing=_supportsImageDescriptionEditing;
 @property(nonatomic) _Bool supportsOpacityEditing; // @synthesize supportsOpacityEditing=_supportsOpacityEditing;
 @property(nonatomic) __weak id <AKToolsListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (long long)_shapesCellIndexRow;
@@ -37,6 +39,7 @@
 - (id)_buttonViewForLoupe;
 - (id)_buttonViewForSignature;
 - (id)_buttonViewForText;
+- (id)_buttonViewForImageDescription;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;

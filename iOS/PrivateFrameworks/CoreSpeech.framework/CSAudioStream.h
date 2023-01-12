@@ -14,6 +14,7 @@
 @interface CSAudioStream : NSObject <CSAudioStreamProvidingDelegate>
 {
     _Bool _scheduledFutureSample;
+    _Bool _isWeakStream;
     _Bool _streaming;
     id <CSAudioStreamProviding> _streamProvider;
     id <CSAudioStreamProvidingDelegate> _delegate;
@@ -28,6 +29,7 @@
 - (void).cxx_destruct;
 @property(retain) NSUUID *streamingUUID; // @synthesize streamingUUID=_streamingUUID;
 @property _Bool streaming; // @synthesize streaming=_streaming;
+@property(nonatomic) _Bool isWeakStream; // @synthesize isWeakStream=_isWeakStream;
 @property(retain, nonatomic) CSAudioStartStreamOption *startStreamOption; // @synthesize startStreamOption=_startStreamOption;
 @property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property(retain, nonatomic) CSAudioStreamRequest *streamRequest; // @synthesize streamRequest=_streamRequest;

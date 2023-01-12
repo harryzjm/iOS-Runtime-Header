@@ -4,22 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
 
-@interface HMDRemoteDeviceReachabilityChangeLogEvent <HMDCoreAnalyticsLogging>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
+
+@class NSString;
+
+@interface HMDRemoteDeviceReachabilityChangeLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     _Bool _reachable;
     _Bool _targetSupportsIDSPresence;
     unsigned long long _reason;
 }
 
-+ (id)uuid;
 @property(readonly) _Bool targetSupportsIDSPresence; // @synthesize targetSupportsIDSPresence=_targetSupportsIDSPresence;
 @property(readonly) _Bool reachable; // @synthesize reachable=_reachable;
 @property(readonly) unsigned long long reason; // @synthesize reason=_reason;
 - (id)initWithReason:(unsigned long long)arg1 reachable:(_Bool)arg2 targetSupportsIDSPresence:(_Bool)arg3;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

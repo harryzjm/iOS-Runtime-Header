@@ -18,12 +18,13 @@
 - (void)cardDataForMerchantIdentifier:(id)arg1 countryCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (long long)cardsAvailableForAMPWithCountryCode:(id)arg1;
 - (void)cardsAvailableForAMPWithCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)paymentHardwareStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)paymentHardwareStatusWithType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)paymentHardwareStatusWithType:(unsigned long long)arg1;
 - (void)secureElementStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)secureElementStatus:(unsigned long long *)arg1;
 - (void)paymentServicesMerchantURLForAPIType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)merchantStatusCheck:(id)arg1 merchantDomain:(id)arg2 sourceApplicationSecondaryIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)presentInAppPaymentInterfaceWithPaymentRequest:(id)arg1 forHostIdentifier:(id)arg2 orientation:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)presentInAppPaymentInterfaceWithPaymentRequest:(id)arg1 forHostIdentifier:(id)arg2 hostSceneIdentifier:(id)arg3 orientation:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)retrievePaymentListenerEndpointForHostIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerPaymentListenerEndpoint:(id)arg1 forHostIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

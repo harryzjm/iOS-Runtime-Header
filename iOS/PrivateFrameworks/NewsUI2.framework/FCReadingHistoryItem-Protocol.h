@@ -12,7 +12,9 @@
 
 @protocol FCReadingHistoryItem <NSObject, NSCopying, NSMutableCopying>
 @property(nonatomic, readonly) CKRecord *asCKRecord;
+- (_Bool)isPruningDisabled;
 @property(nonatomic, readonly) unsigned long long articleLikingStatus;
+@property(nonatomic, readonly) _Bool hasArticleCompletedReading;
 @property(nonatomic, readonly) _Bool hasArticleCompletedListening;
 @property(nonatomic, readonly) _Bool hasArticleBeenConsumed;
 @property(nonatomic, readonly) _Bool hasArticleBeenMarkedOffensive;
@@ -34,5 +36,8 @@
 @property(nonatomic, readonly) NSString *sourceChannelTagID;
 @property(nonatomic, readonly) NSString *articleID;
 @property(nonatomic, readonly) NSString *identifier;
+
+// Remaining properties
+@property(nonatomic, readonly) _Bool pruningDisabled;
 @end
 

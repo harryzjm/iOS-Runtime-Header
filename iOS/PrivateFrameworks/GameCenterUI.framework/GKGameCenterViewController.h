@@ -10,13 +10,14 @@
 #import <GameCenterUI/UIViewControllerAnimatedTransitioning-Protocol.h>
 #import <GameCenterUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class GKDashboardHostViewController, GKLeaderboard, NSString, UIAlertController;
+@class GKDashboardHostViewController, GKGame, GKLeaderboard, NSString, UIAlertController;
 @protocol GKGameCenterControllerDelegate;
 
 @interface GKGameCenterViewController : UINavigationController <GKExtensionParentViewControllerProtocol, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
 {
     _Bool _isArcade;
     _Bool _presenting;
+    int _actualHostPID;
     id <GKGameCenterControllerDelegate> _gameCenterDelegate;
     long long _viewState;
     NSString *_leaderboardIdentifier;
@@ -25,15 +26,20 @@
     GKDashboardHostViewController *_remoteViewController;
     GKLeaderboard *_leaderboard;
     NSString *_achievementIdentifier;
+    NSString *_playerIdentifier;
     UIAlertController *_alertController;
+    GKGame *_actualGame;
 }
 
 + (_Bool)accessInstanceVariablesDirectly;
 + (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
+@property(nonatomic) int actualHostPID; // @synthesize actualHostPID=_actualHostPID;
+@property(retain, nonatomic) GKGame *actualGame; // @synthesize actualGame=_actualGame;
 @property(nonatomic, getter=isPresenting) _Bool presenting; // @synthesize presenting=_presenting;
 @property(nonatomic) _Bool isArcade; // @synthesize isArcade=_isArcade;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+@property(retain, nonatomic) NSString *playerIdentifier; // @synthesize playerIdentifier=_playerIdentifier;
 @property(retain, nonatomic) NSString *achievementIdentifier; // @synthesize achievementIdentifier=_achievementIdentifier;
 @property(retain, nonatomic) GKLeaderboard *leaderboard; // @synthesize leaderboard=_leaderboard;
 @property(retain, nonatomic) GKDashboardHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
@@ -65,6 +71,7 @@
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)dealloc;
+- (id)initWithPlayerID:(id)arg1 withFriendsList:(_Bool)arg2;
 - (id)initWithAchievementID:(id)arg1;
 - (id)initWithLeaderboard:(id)arg1 playerScope:(long long)arg2;
 - (id)initWithLeaderboardID:(id)arg1 playerScope:(long long)arg2 timeScope:(long long)arg3;
@@ -75,6 +82,7 @@
 - (void)setLeaderboardTimeScopeFromExtension:(long long)arg1;
 - (void)setLeaderboardIdentifierFromExtension:(id)arg1;
 - (void)setViewStateFromExtension:(long long)arg1;
+- (id)initWithGame:(id)arg1 hostPID:(int)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

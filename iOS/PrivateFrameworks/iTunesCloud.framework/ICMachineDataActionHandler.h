@@ -9,6 +9,7 @@
 @class NSOperationQueue;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ICMachineDataActionHandler : NSObject
 {
     NSObject<OS_dispatch_queue> *_callbackQueue;

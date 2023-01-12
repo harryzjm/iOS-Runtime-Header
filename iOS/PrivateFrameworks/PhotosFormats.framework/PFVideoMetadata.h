@@ -12,6 +12,10 @@
 
 + (unsigned int)videoCodecFourCharCodeNumberForAVAsset:(id)arg1;
 + (void)enumerateVideoTrackFormatDescriptionsInAsset:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
++ (_Bool)videoTrackFormatDescriptionContainsPortraitData:(struct opaqueCMFormatDescription *)arg1;
++ (_Bool)videoTrackFormatDescriptionIsHighDynamicRange:(struct opaqueCMFormatDescription *)arg1;
++ (_Bool)videoTrackFormatDescriptionHasDolby8_4Metadata:(struct opaqueCMFormatDescription *)arg1;
++ (_Bool)videoAssetIsHighDynamicRange:(id)arg1;
 + (_Bool)videoAssetIsPlayable:(id)arg1;
 + (_Bool)videoAssetIsDecodable:(id)arg1;
 + (id)arrayByRemovingMetadataItemOfType:(unsigned char)arg1 fromArray:(id)arg2 error:(id *)arg3;

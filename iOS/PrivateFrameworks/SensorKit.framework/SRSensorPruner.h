@@ -8,12 +8,12 @@
 
 #import <SensorKit/SRDaemonNotificationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSXPCConnection, SRDaemonNotification, SRDevice, SRSensorDatastore;
+@class NSDictionary, NSString, NSXPCConnection, SRDaemonNotification, SRDatastore, SRDevice;
 @protocol SRSensorPrunerDelegate;
 
 @interface SRSensorPruner : NSObject <SRDaemonNotificationDelegate>
 {
-    SRSensorDatastore *_datastore;
+    SRDatastore *_datastore;
     SRDaemonNotification *_daemonNotification;
     _Bool _connectionDidInterrupt;
     _Bool _connectionDidInvalidate;
@@ -24,6 +24,8 @@
     NSXPCConnection *_connection;
 }
 
++ (void)removeAllSamplesForAllSensors;
++ (void)removeAllSamplesForAllSensorsWithConnection:(id)arg1;
 + (id)connectionToDaemon;
 + (id)remoteInterface;
 + (id)clientInterface;
@@ -36,12 +38,11 @@
 @property(retain) NSDictionary *nextDatastoreFiles; // @synthesize nextDatastoreFiles=_nextDatastoreFiles;
 @property(copy) NSString *sensor; // @synthesize sensor=_sensor;
 @property __weak id <SRSensorPrunerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)removeAllSamplesForAllSensors;
 - (void)removeAllSamples;
 - (void)continuePruneFrom:(double)arg1 to:(double)arg2 withDatastoreFiles:(id)arg3;
 - (void)removeSamplesFrom:(double)arg1 to:(double)arg2 inSegment:(id)arg3;
 - (void)removeSamplesFrom:(double)arg1 to:(double)arg2;
-@property(readonly, retain) SRSensorDatastore *datastore;
+@property(readonly, retain) SRDatastore *datastore;
 - (void)resetDatastoreFiles:(id)arg1;
 - (void)registerWithDaemonIfNeededWithReply:(CDUnknownBlockType)arg1;
 - (void)setupConnection;

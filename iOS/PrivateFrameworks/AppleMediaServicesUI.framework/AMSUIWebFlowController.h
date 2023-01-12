@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) __weak AMSUIWebContainerViewController *rootContainer; // @synthesize rootContainer=_rootContainer;
 - (void)_takeSnapshotFromContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setWindowSize:(struct CGSize)arg1 onContainer:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_refreshPageWithForContainer:(id)arg1 options:(id)arg2 isRetry:(_Bool)arg3;
 - (void)stopTimeoutInterruption;
 - (void)startTimeout:(double)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
@@ -33,7 +34,9 @@ __attribute__((visibility("hidden")))
 - (void)replaceWithPageModel:(id)arg1 forContainer:(id)arg2 options:(id)arg3;
 - (void)pushWithOptions:(id)arg1;
 - (void)presentWithOptions:(id)arg1;
+- (void)popViewControllerToRelativeIndex:(long long)arg1;
 - (void)popViewController;
+- (void)performSafeTransitionFrom:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)dismissViewController;
 @property(readonly, nonatomic) __weak AMSUIWebContainerViewController *currentContainer;
 - (id)initWithRootContainer:(id)arg1 context:(id)arg2;

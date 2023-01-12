@@ -11,7 +11,6 @@
 }
 
 + (void)_initializeAXRuntime;
-+ (id)_axElementForUID:(CDStruct_4bcfbbae)arg1;
 + (void)accessibilityInitializeBundle;
 
 @end

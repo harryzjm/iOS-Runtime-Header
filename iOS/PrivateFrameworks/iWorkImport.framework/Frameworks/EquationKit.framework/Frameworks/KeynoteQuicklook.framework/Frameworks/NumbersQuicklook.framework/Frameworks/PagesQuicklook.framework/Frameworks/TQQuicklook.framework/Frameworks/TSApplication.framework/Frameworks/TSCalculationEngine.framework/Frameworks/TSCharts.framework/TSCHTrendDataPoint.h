@@ -8,9 +8,9 @@
 
 @interface TSCHTrendDataPoint : NSObject
 {
-    double mDataPointX;
-    double mDataPointY;
-    unsigned long long mValueIndex;
+    double _dataPointX;
+    double _dataPointY;
+    unsigned long long _valueIndex;
 }
 
 - (long long)xValueCompare:(id)arg1;

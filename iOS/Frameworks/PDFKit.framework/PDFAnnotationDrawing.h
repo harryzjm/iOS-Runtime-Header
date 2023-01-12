@@ -57,6 +57,8 @@ __attribute__((visibility("hidden")))
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withFreeTextAnnotation:(id)arg3;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withCircleAnnotation:(id)arg3;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withAKAnnotation:(id)arg3 forAnnotation:(id)arg4;
++ (void)drawAppearance:(int)arg1 ofAnnotation:(id)arg2 withBox:(long long)arg3 inContext:(struct CGContext *)arg4 scaleProportional:(_Bool)arg5;
++ (void)drawAppearance:(int)arg1 ofAnnotation:(id)arg2 withBox:(long long)arg3 inContext:(struct CGContext *)arg4;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withAnnotation:(id)arg3;
 
 @end

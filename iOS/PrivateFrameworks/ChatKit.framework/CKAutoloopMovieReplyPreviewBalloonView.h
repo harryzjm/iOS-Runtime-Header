@@ -10,6 +10,7 @@
 
 - (void)prepareForDisplay;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

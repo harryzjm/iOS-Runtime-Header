@@ -8,17 +8,30 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphBuilder;
 
 @interface PGGraphIngestPetProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
+    _Bool _petPrintClusteringEnabled;
 }
 
++ (id)blocklistScenePetLabels;
++ (id)scenePetLabels;
+- (void).cxx_destruct;
+- (id)_petsDetectedWithType:(short)arg1 inPhotoLibrary:(id)arg2 withGraph:(id)arg3;
+- (id)momentNodesForPerson:(id)arg1 inPhotoLibrary:(id)arg2 withGraph:(id)arg3;
+- (unsigned long long)_speciesForSceneLabel:(id)arg1;
+- (unsigned long long)_speciesForDetectionType:(short)arg1;
 - (id)_petsForSceneNode:(id)arg1 inGraph:(id)arg2;
 - (void)_removeAllPetNodesForGraph:(id)arg1;
 - (id)_petSceneNodesForGraph:(id)arg1;
+- (id)_supportedPetDetectionTypes;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
+- (id)initForTesting;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

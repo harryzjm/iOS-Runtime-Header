@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface WKFullScreenViewController : UIViewController <UIGestureRecognizerDelegate, UIToolbarDelegate>
 {
+    _Bool _valid;
     struct RetainPtr<UILongPressGestureRecognizer> _touchGestureRecognizer;
     RetainPtr_1ac284e4 _animatingView;
     struct RetainPtr<WKFullscreenStackView> _stackView;
@@ -53,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_togglePiPAction:(id)arg1;
 - (void)_cancelAction:(id)arg1;
 @property(readonly, nonatomic) RectEdges_0629eaa8 _effectiveFullscreenInsets; // @dynamic _effectiveFullscreenInsets;
-@property(readonly, nonatomic) struct WebFullScreenManagerProxy *_manager; // @dynamic _manager;
+@property(readonly, nonatomic) void *_manager; // @dynamic _manager;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 @property(nonatomic) _Bool prefersStatusBarHidden; // @synthesize prefersStatusBarHidden=_prefersStatusBarHidden;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)hideUI;
 - (void)showUI;
 - (void)dealloc;
+- (void)invalidate;
 - (id)initWithWebView:(id)arg1;
 
 // Remaining properties

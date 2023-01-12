@@ -53,7 +53,9 @@
 @property(nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 @property(readonly, nonatomic) id <AVTAvatarAttributeEditorSection> section; // @synthesize section=_section;
 - (void)selectIndexPath:(id)arg1;
+- (void)attributeSection:(id)arg1 didChangeValueForSectionItem:(id)arg2;
 - (void)attributeEditorSectionControllerNeedsLayoutUpdate:(id)arg1;
+- (void)attributeEditorSectionController:(id)arg1 didDeleteSectionItems:(id)arg2;
 - (void)attributeEditorSectionController:(id)arg1 didUpdateSectionItem:(id)arg2;
 - (void)attributeEditorSectionController:(id)arg1 didSelectSectionItem:(id)arg2;
 - (void)updateSectionItem:(id)arg1 withVariation:(double)arg2;
@@ -71,6 +73,7 @@
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (struct CGSize)sizeForFocusingItemAtIndex:(long long)arg1 fittingSize:(struct CGSize)arg2;
 - (_Bool)evaluateDisplayCondition:(id)arg1;
 - (void)didUnhighlightItemAtIndex:(long long)arg1 cell:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)didHighlightItemAtIndex:(long long)arg1 cell:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

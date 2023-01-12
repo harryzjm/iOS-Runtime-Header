@@ -31,7 +31,6 @@
 @property(readonly, retain, nonatomic) NSObject<OS_xpc_object> *XPCConnection; // @synthesize XPCConnection=_xpcConnection;
 @property(readonly, retain, nonatomic) NSObject<OS_xpc_object> *message; // @synthesize message=_message;
 - (id)initWithRBSXPCCoder:(id)arg1;
-- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)_finishCoding;
 - (id)_implicitDecodeXPCObjectForKey:(id)arg1;
 - (void)_removeValueForKey:(id)arg1;

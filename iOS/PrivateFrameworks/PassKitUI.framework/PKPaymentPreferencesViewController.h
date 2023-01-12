@@ -57,7 +57,6 @@
 - (void)_setContactHandlersForPreference:(id)arg1;
 - (void)_showContactsPickerForPreference:(id)arg1;
 - (void)_showAddressPickerForPreference:(id)arg1;
-- (_Bool)_updateMeCardWithNewContact:(id)arg1 oldContact:(id)arg2 forKey:(id)arg3 usingPreference:(id)arg4;
 - (void)_presentMeCardAlertControllerWithContact:(id)arg1 contactKey:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_savePickedContact:(id)arg1 inPreference:(id)arg2;
 - (_Bool)_saveUpdatedContact:(id)arg1 contactKey:(id)arg2 preference:(id)arg3 atIndex:(long long)arg4;
@@ -76,7 +75,7 @@
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)_showAddressEditorForContact:(id)arg1 title:(id)arg2 requiredKeys:(id)arg3 highlightedKeys:(id)arg4 errors:(id)arg5;
 - (void)_editPreferenceAtIndexPath:(id)arg1;
-- (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)_hyperlinkFooterViewForPreference:(id)arg1;

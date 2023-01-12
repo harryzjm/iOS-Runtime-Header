@@ -13,8 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityKeyboardKeyHasSignificantAlternateActions;
 - (id)_accessibilityVariantKeys;
-- (void)_accessibilitySetCachedVariantKeys:(id)arg1;
-- (id)_accessibilityCachedVariantKeys;
 - (_Bool)_accessibilityHasVariantKeys;
 - (void)prepareForReuse;
 - (void)setEmoji:(id)arg1;
@@ -26,7 +24,6 @@
 - (_Bool)isAccessibilityElement;
 - (struct _NSRange)accessibilityRowRange;
 - (void)accessibilityElementDidBecomeFocused;
-- (id)_axEmoji;
 
 @end
 

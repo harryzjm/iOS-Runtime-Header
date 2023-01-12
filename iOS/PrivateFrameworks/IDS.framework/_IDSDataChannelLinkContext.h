@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSUUID;
+@class NSData, NSString, NSUUID;
 
 @interface _IDSDataChannelLinkContext : NSObject
 {
@@ -29,6 +29,8 @@
     unsigned short _remoteLinkFlags;
     unsigned int _localDataSoMask;
     unsigned int _remoteDataSoMask;
+    _Bool _isVirtualRelayLink;
+    NSString *_localInterfaceName;
 }
 
 - (void).cxx_destruct;

@@ -14,6 +14,7 @@
 - (id)accessibilityContainer;
 - (void)applyToInfo:(id)arg1;
 - (struct CGRect)accessibilityFrame;
+- (id)_axPXGScrollView;
 
 @end
 

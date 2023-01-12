@@ -12,11 +12,11 @@ __attribute__((visibility("hidden")))
 @interface _VNImageAnalyzerMultiDetectorSceneOperationPointsCache : NSObject
 {
     unsigned long long _detectorModel;
-    NSMutableDictionary *_sceneLabelOperationPointsForRequestRevision;
+    NSMutableDictionary *_originatingRequestSpecifierToOperationPoints;
 }
 
 - (void).cxx_destruct;
-- (id)sceneLabelOperationPointsForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
+- (id)sceneLabelOperationPointsForOriginatingRequestSpecifier:(id)arg1 error:(id *)arg2;
 - (id)initWithDetectorModel:(unsigned long long)arg1;
 
 @end

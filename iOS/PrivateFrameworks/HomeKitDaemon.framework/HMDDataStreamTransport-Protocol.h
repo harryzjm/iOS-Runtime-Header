@@ -11,6 +11,7 @@
 
 @protocol HMDDataStreamTransport <NSObject>
 @property(nonatomic) __weak id <HMDDataStreamTransportDelegate> delegate;
+- (void)setTrafficClass:(unsigned long long)arg1;
 - (void)close;
 - (void)connect;
 - (void)sendRawFrame:(NSData *)arg1 completion:(void (^)(NSError *))arg2;

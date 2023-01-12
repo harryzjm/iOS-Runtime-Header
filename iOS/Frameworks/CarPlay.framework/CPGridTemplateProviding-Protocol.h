@@ -6,6 +6,9 @@
 
 #import <CarPlay/CPBaseTemplateProviding-Protocol.h>
 
+@class CPGridTemplate;
+
 @protocol CPGridTemplateProviding <CPBaseTemplateProviding>
+- (void)reloadTemplate:(CPGridTemplate *)arg1;
 @end
 

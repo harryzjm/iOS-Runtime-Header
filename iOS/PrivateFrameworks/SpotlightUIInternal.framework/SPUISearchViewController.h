@@ -4,30 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
-#import <SpotlightUIInternal/SFFeedbackListener-Protocol.h>
-#import <SpotlightUIInternal/SPUIResultsViewDelegate-Protocol.h>
 #import <SpotlightUIInternal/SPUISearchHeaderDelegate-Protocol.h>
 #import <SpotlightUIInternal/SearchUIFirstTimeExperienceDelegate-Protocol.h>
-#import <SpotlightUIInternal/SearchUIResultsViewDelegate-Protocol.h>
 #import <SpotlightUIInternal/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, NSTimer, SPUILockScreenFooterView, SPUINavigationController, SPUIResultsViewController, SPUISearchFirstTimeViewController, SPUISearchHeader, SPUITestingHelper, UIView, _UILegibilitySettings;
 @protocol SPUISearchViewControllerDelegate, SPUISearchViewControllerSizingDelegate;
 
-@interface SPUISearchViewController : UIViewController <SPUISearchHeaderDelegate, SearchUIFirstTimeExperienceDelegate, SPUIResultsViewDelegate, UIGestureRecognizerDelegate, SFFeedbackListener, SearchUIResultsViewDelegate>
+@interface SPUISearchViewController <SPUISearchHeaderDelegate, SearchUIFirstTimeExperienceDelegate, UIGestureRecognizerDelegate>
 {
     _Bool _internetOverrideForPPT;
     _Bool _lastQueryWasAuthenticated;
     _Bool _clearQueryOnDismissal;
     _Bool _expandPlatterOnAppear;
-    id <SPUISearchViewControllerDelegate> _delegate;
     _UILegibilitySettings *_legibilitySettings;
     SPUISearchHeader *_searchHeader;
     NSMutableSet *_allHeaderViews;
     SPUISearchFirstTimeViewController *_firstTimeExperienceViewController;
-    SPUIResultsViewController *_searchResultViewController;
     SPUIResultsViewController *_proactiveResultViewController;
     SPUILockScreenFooterView *_lockScreenFooterView;
     UIView *_tapToRadarView;
@@ -41,7 +34,6 @@
     unsigned long long _presentationSource;
 }
 
-+ (_Bool)isFeedbackSelector:(SEL)arg1;
 + (void)_updateHeaderView:(id)arg1 fromText:(id)arg2 fromToken:(id)arg3;
 + (_Bool)shouldShowAsTypedSuggestion;
 + (_Bool)displayTapToRadar;
@@ -61,15 +53,10 @@
 @property(retain) UIView *tapToRadarView; // @synthesize tapToRadarView=_tapToRadarView;
 @property(retain) SPUILockScreenFooterView *lockScreenFooterView; // @synthesize lockScreenFooterView=_lockScreenFooterView;
 @property(retain) SPUIResultsViewController *proactiveResultViewController; // @synthesize proactiveResultViewController=_proactiveResultViewController;
-@property(retain) SPUIResultsViewController *searchResultViewController; // @synthesize searchResultViewController=_searchResultViewController;
 @property(retain) SPUISearchFirstTimeViewController *firstTimeExperienceViewController; // @synthesize firstTimeExperienceViewController=_firstTimeExperienceViewController;
 @property(retain) NSMutableSet *allHeaderViews; // @synthesize allHeaderViews=_allHeaderViews;
 @property(retain) SPUISearchHeader *searchHeader; // @synthesize searchHeader=_searchHeader;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-@property(nonatomic) __weak id <SPUISearchViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)respondsToSelector:(SEL)arg1;
-- (id)forwardingTargetForSelector:(SEL)arg1;
-@property(nonatomic) _Bool shouldShowKeyboardInputBars;
 - (_Bool)_canShowWhileLocked;
 - (void)updateResponderChainIfNeeded;
 - (void)updatePlatterMode;
@@ -94,17 +81,12 @@
 - (void)firstTimeExperienceContinueButtonPressed;
 - (void)activateFirstTimeExperienceViewAnimate:(_Bool)arg1;
 - (void)activateFirstTimeExperienceViewIfNecessary;
-- (void)activateViewController:(id)arg1 animate:(_Bool)arg2;
 - (void)resultsViewController:(id)arg1 didChangeContentSize:(struct CGSize)arg2 animated:(_Bool)arg3;
-- (id)activeViewController;
 - (void)didUpdateContentScrolledOffScreenStatus:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)currentQuery;
-- (id)contentScrollView;
 - (void)didChangeExpansionStateForSection:(id)arg1 expanded:(_Bool)arg2;
 - (_Bool)sectionShouldBeExpanded:(id)arg1;
-- (id)viewControllerForPresenting;
 - (void)didScrollPastBottomOfContent;
-- (void)didTapInEmptyRegion;
 - (void)endBackgroundTaskIfNeeded;
 - (void)spotlightDidBackground;
 - (void)searchViewDidDismissWithReason:(unsigned long long)arg1;
@@ -114,6 +96,7 @@
 - (void)performReturnKeyPressAndExpandWidowIfNeeded;
 - (void)performWebSearch;
 - (void)returnKeyPressed;
+- (void)highlightResultAfterUnmarkingText;
 - (_Bool)currentQueryIdMatchesResultInGeneralModel;
 - (void)clearTimerExpired;
 - (void)animateChunkyEnabled:(_Bool)arg1;
@@ -129,10 +112,9 @@
 - (void)enableChunky:(_Bool)arg1;
 - (void)searchViewWillPresentFromSource:(unsigned long long)arg1;
 - (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 queryKind:(unsigned long long)arg3;
-- (id)userActivityFromIntent:(id)arg1;
-- (void)getUserActivityForResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (void)launchSiriWithUtteranceText:(id)arg1 source:(long long)arg2;
+- (void)didUpdateActiveViewController;
+- (void)willUpdateActiveViewController;
 - (void)didEngageResult:(id)arg1;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)dragInitiated;
@@ -141,6 +123,7 @@
 - (void)didUpdateKeyboardFocusToResult:(id)arg1 cardSection:(id)arg2;
 - (void)updateHeaderViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)createAdditionalHeaderView;
+- (id)commandEnvironment;
 @property(readonly, nonatomic) SPUISearchHeader *headerView;
 - (void)dealloc;
 - (void)checkClearTimer;
@@ -148,6 +131,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <SPUISearchViewControllerDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(retain) SPUINavigationController *navigationController; // @dynamic navigationController;

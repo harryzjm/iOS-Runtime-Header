@@ -18,6 +18,7 @@
     NSLayoutConstraint *_heightConstraint;
 }
 
++ (id)_stringForStyle:(long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(nonatomic) double bannerHeight; // @synthesize bannerHeight=_bannerHeight;
@@ -28,8 +29,8 @@
 - (id)_mapSettings;
 - (id)_settings;
 - (void)_updateMapStyleTrait;
-- (void)_commonInit;
-- (id)_initWithFrame:(struct CGRect)arg1 debugName:(id)arg2 windowScene:(id)arg3;
+- (void)_setMapStyle:(long long)arg1;
+- (void)commonInit;
 - (id)initWithWindowScene:(id)arg1;
 
 // Remaining properties

@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@interface GEORoadMatch : NSObject
+@class GEOMultiSectionFeature, NSString;
+
+@interface GEORoadMatch : NSObject <NSSecureCoding>
 {
-    CDStruct_4da79865 *_roadFeature;
+    GEOMultiSectionFeature *_roadFeature;
     NSString *_roadName;
-    CDStruct_2c43369c _coordinateOnRoad;
+    CDStruct_071ac149 _coordinateOnRoad;
     double _courseOnRoad;
     double _distanceFromRoad;
     double _roadWidth;
@@ -20,18 +22,20 @@
     double _junctionRadius;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) double junctionRadius; // @synthesize junctionRadius=_junctionRadius;
 @property(nonatomic) double distanceFromJunction; // @synthesize distanceFromJunction=_distanceFromJunction;
 @property(nonatomic) double roadWidth; // @synthesize roadWidth=_roadWidth;
 @property(nonatomic) double distanceFromRoad; // @synthesize distanceFromRoad=_distanceFromRoad;
 @property(nonatomic) double courseOnRoad; // @synthesize courseOnRoad=_courseOnRoad;
-@property(nonatomic) CDStruct_c3b9c2ee coordinateOnRoad; // @synthesize coordinateOnRoad=_coordinateOnRoad;
+@property(nonatomic) CDStruct_39925896 coordinateOnRoad; // @synthesize coordinateOnRoad=_coordinateOnRoad;
 @property(copy, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
-@property(readonly, nonatomic) CDStruct_4da79865 *roadFeature; // @synthesize roadFeature=_roadFeature;
-- (void)setRoadFeature:(CDStruct_4da79865 *)arg1;
-- (void)dealloc;
-- (id)initWithCoordinateOnRoad:(CDStruct_c3b9c2ee)arg1 courseOnRoad:(double)arg2;
+@property(readonly, nonatomic) GEOMultiSectionFeature *roadFeature; // @synthesize roadFeature=_roadFeature;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)setRoadFeature:(id)arg1;
+- (id)initWithCoordinateOnRoad:(CDStruct_39925896)arg1 courseOnRoad:(double)arg2;
 
 @end
 

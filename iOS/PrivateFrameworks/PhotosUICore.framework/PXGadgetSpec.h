@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+@class PXExtendedTraitCollection, UIColor;
 
 @interface PXGadgetSpec : NSObject
 {
@@ -17,10 +17,12 @@
     long long _userInterfaceIdiom;
     long long _layoutSizeClass;
     long long _layoutOrientation;
+    long long _layoutDirection;
     double _displayScale;
     double _layoutReferenceWidth;
     double _layoutReferenceHeight;
     UIColor *_backgroundColor;
+    PXExtendedTraitCollection *_extendedTraitCollection;
     struct UIEdgeInsets _contentInsets;
     struct UIEdgeInsets _layoutInsets;
     struct UIEdgeInsets _accessoryViewInset;
@@ -32,6 +34,7 @@
 + (double)sectionHeaderHeightForStyle:(unsigned long long)arg1 dividerHidden:(_Bool)arg2;
 + (id)horizontalContentInsetsInterpolator;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PXExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
 @property(readonly, nonatomic) struct UIEdgeInsets accessoryViewInset; // @synthesize accessoryViewInset=_accessoryViewInset;
 @property(readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) _Bool shouldUseAccessibilityLayout; // @synthesize shouldUseAccessibilityLayout=_shouldUseAccessibilityLayout;
@@ -39,6 +42,7 @@
 @property(readonly, nonatomic) double layoutReferenceHeight; // @synthesize layoutReferenceHeight=_layoutReferenceHeight;
 @property(readonly, nonatomic) double layoutReferenceWidth; // @synthesize layoutReferenceWidth=_layoutReferenceWidth;
 @property(readonly, nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
+@property(readonly, nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property(readonly, nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property(readonly, nonatomic) long long layoutSizeClass; // @synthesize layoutSizeClass=_layoutSizeClass;
 @property(readonly, nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
@@ -50,6 +54,7 @@
 - (double)columnWidthForColumnSpan:(long long)arg1;
 - (_Bool)isEqualToGadgetSpec:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) PXExtendedTraitCollection *rootExtendedTraitCollection;
 - (id)initWithTraitCollection:(id)arg1 scrollAxis:(long long)arg2;
 - (struct UIEdgeInsets)acccessoryViewInsetForTraitCollection:(id)arg1;
 - (_Bool)shouldInsetContentForTraitCollection:(id)arg1;

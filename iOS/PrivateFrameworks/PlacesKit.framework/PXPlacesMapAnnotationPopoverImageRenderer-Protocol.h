@@ -7,6 +7,7 @@
 #import <PlacesKit/PXPlacesMapAnnotationRenderer-Protocol.h>
 
 @protocol PXPlacesMapAnnotationPopoverImageRenderer <PXPlacesMapAnnotationRenderer>
+@property(readonly) unsigned long long imageOptions;
 @property(readonly) unsigned long long popoverImageType;
 @end
 

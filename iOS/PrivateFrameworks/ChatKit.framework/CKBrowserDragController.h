@@ -13,7 +13,8 @@
     id <CKBrowserDragControllerDelegate> _delegate;
 }
 
-@property(nonatomic) id <CKBrowserDragControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <CKBrowserDragControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)initWithView:(id)arg1;
 
 @end

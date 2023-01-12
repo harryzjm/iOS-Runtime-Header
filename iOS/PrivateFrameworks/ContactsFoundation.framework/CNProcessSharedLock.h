@@ -9,7 +9,7 @@
 #import <ContactsFoundation/NSLocking-Protocol.h>
 
 @class NSString;
-@protocol CNFileServices, NSLocking;
+@protocol CNFileServices, CNInhibitor, NSLocking;
 
 @interface CNProcessSharedLock : NSObject <NSLocking>
 {
@@ -19,6 +19,7 @@
     long long _localLockCount;
     int _fileDescriptor;
     id <CNFileServices> _fileServices;
+    id <CNInhibitor> _runningBoardInhibitor;
 }
 
 + (id)semaphoreSharedLockWithLockFilePath:(id)arg1;
@@ -26,6 +27,7 @@
 + (id)sharedLockWithLockFilePath:(id)arg1;
 + (id)os_log;
 - (void).cxx_destruct;
+@property(retain) id <CNInhibitor> runningBoardInhibitor; // @synthesize runningBoardInhibitor=_runningBoardInhibitor;
 @property(readonly, copy) NSString *lockFilePath; // @synthesize lockFilePath=_lockFilePath;
 @property(copy) NSString *name; // @synthesize name=_name;
 - (id)description;

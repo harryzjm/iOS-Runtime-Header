@@ -11,6 +11,7 @@
 @protocol PKToolPickerObserverPrivate <PKToolPickerObserver>
 
 @optional
+- (void)_toolPickerVisibilityDidChange:(PKToolPicker *)arg1 isAnimationFinished:(_Bool)arg2;
 - (void)_toolPickerDidChangePosition:(PKToolPicker *)arg1;
 - (void)_toolPicker:(PKToolPicker *)arg1 didChangeColor:(UIColor *)arg2;
 @end

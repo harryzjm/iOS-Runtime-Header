@@ -10,9 +10,8 @@
 {
 }
 
-- (id)electrocardiogramInstructionsForUseHTMLURLForCountryCode:(id)arg1;
-- (id)atrialFibrillationInstructionsForUseHTMLURLForCountryCode:(id)arg1;
-- (id)instructionsForUseHTMLURLForCountryCode:(id)arg1 globalFileName:(id)arg2 fileMap:(id)arg3;
+- (id)electrocardiogramHelpControllerForAlgorithmVersion:(id)arg1 countryCode:(id)arg2;
+- (id)_electrocardiogramHelpTopicIdForAlgorithmVersion:(id)arg1 countryCode:(id)arg2;
 
 @end
 

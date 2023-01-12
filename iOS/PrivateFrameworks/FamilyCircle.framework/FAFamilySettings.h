@@ -24,6 +24,7 @@
 - (void)familySetupPrompterDidFinish:(id)arg1;
 - (void)_launchPrefsUsingDaemonWithOptions:(id)arg1;
 - (void)launchiCloudFamilySettingsWithOptions:(id)arg1;
+- (_Bool)isAccountSignedIn;
 - (void)launchiCloudFamilySettings;
 
 // Remaining properties

@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     id <MTLDevice> _device;
     NSObject<OS_dispatch_queue> *_serialQueue;
     id <MTLSerializerObjectRefAllocator> _objectIndex;
-    struct MTLSerializerIndexGenerator *_commandBufferIndex;
-    struct MTLSerializerIndexGenerator *_eventNotifications;
+    void *_commandBufferIndex;
+    void *_eventNotifications;
     _Bool _deserializerGeneratesResourceRefs;
     unsigned long long _reflectionSerializationVersion;
 }
@@ -34,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (unsigned int)newComputePipelineStateWithSerializedDescriptor:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newRenderPipelineStateWithSerializedDescriptor:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newFunctionWithIR:(id)arg1;
+- (unsigned int)newSharedTextureWithHandle:(id)arg1;
+- (unsigned int)newSharedTextureWithDescriptor:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newTiledTextureWithBuffer:(id)arg1 descriptor:(id)arg2 offset:(unsigned long long)arg3 bytesPerRow:(unsigned long long)arg4 allocator:(id)arg5;
 - (unsigned int)newTextureWithBuffer:(id)arg1 descriptor:(id)arg2 offset:(unsigned long long)arg3 bytesPerRow:(unsigned long long)arg4 allocator:(id)arg5;
 - (void)doesAliasResources:(const id *)arg1 count:(unsigned long long)arg2 all:(_Bool)arg3 resource:(id)arg4 allocator:(id)arg5;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)heapTextureSizeAndAlignWithDescriptor:(id)arg1 allocator:(id)arg2;
 - (void)argumentEncoderSetSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2 encoderRef:(unsigned int)arg3 allocator:(id)arg4;
 - (void)argumentEncoderSetTextures:(const id *)arg1 withRange:(struct _NSRange)arg2 encoderRef:(unsigned int)arg3 allocator:(id)arg4;
+- (void)sharedEventWaitSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2 eventRef:(unsigned int)arg3 allocator:(id)arg4;
 - (void)sharedEventSetSignaledValue:(unsigned long long)arg1 eventRef:(unsigned int)arg2 allocator:(id)arg3;
 - (void)sharedEventSignaledValueForEventRef:(unsigned int)arg1 allocator:(id)arg2;
 - (unsigned int)notifyListenerForEventRef:(unsigned int)arg1 atValue:(unsigned long long)arg2 allocator:(id)arg3;
@@ -61,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)argumentBufferLayoutConstantAtIndex:(unsigned long long)arg1 layoutRef:(unsigned int)arg2 allocator:(id)arg3;
 - (unsigned int)newArgumentEncoderWithLayout:(unsigned int)arg1 allocator:(id)arg2;
 - (unsigned int)newArgumentBufferLayoutWithStructType:(id)arg1 allocator:(id)arg2;
+- (unsigned int)newSharedEventWithMachPort:(unsigned int)arg1 allocator:(id)arg2;
 - (unsigned int)newSharedEventWithHandle:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newSharedEventWithAllocator:(id)arg1;
 - (unsigned int)newFenceWithAllocator:(id)arg1;

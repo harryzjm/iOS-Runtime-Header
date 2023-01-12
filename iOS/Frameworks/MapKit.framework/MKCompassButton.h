@@ -29,6 +29,7 @@
 - (void)_updateVisibility;
 - (void)didTapCompassGesture:(id)arg1;
 - (void)mapViewDidUpdateYawNotification:(id)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 mapView:(id)arg2;
 
 @end

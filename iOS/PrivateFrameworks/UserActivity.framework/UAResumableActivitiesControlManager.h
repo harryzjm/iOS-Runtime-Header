@@ -32,7 +32,7 @@
 - (void)callDidSaveDelegate:(id)arg1;
 - (void)callWillSaveDelegate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)callWillSaveDelegate:(id)arg1;
-- (void)injectBTLEItem:(id)arg1 type:(unsigned long long)arg2 identifier:(id)arg3 title:(id)arg4 activityPayload:(id)arg5 frameworkPayload:(id)arg6 payloadDelay:(double)arg7;
+- (void)injectBTLEItem:(id)arg1 type:(unsigned long long)arg2 identifier:(id)arg3 title:(id)arg4 activityPayload:(id)arg5 webPageURL:(id)arg6 remoteModel:(id)arg7 duration:(double)arg8 payloadDelay:(double)arg9;
 - (void)setDebugOption:(id)arg1 value:(id)arg2;
 - (void)terminateServer;
 - (void)restartServer;

@@ -12,19 +12,19 @@
 
 @interface TSCH3DResourceCacheKey : NSObject <NSCopying>
 {
-    TSCH3DResourceLoader *mLoader;
-    TSCH3DResource *mResource;
-    long long mVirtualScreen;
+    TSCH3DResourceLoader *_loader;
+    TSCH3DResource *_resource;
+    long long _virtualScreen;
 }
 
 + (id)keyWithLoader:(id)arg1 resource:(id)arg2 virtualScreen:(long long)arg3;
-@property(readonly, nonatomic) TSCH3DResource *resource; // @synthesize resource=mResource;
-@property(readonly, nonatomic) TSCH3DResourceLoader *loader; // @synthesize loader=mLoader;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DResource *resource; // @synthesize resource=_resource;
+@property(readonly, nonatomic) TSCH3DResourceLoader *loader; // @synthesize loader=_loader;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithLoader:(id)arg1 resource:(id)arg2 virtualScreen:(long long)arg3;
 
 @end

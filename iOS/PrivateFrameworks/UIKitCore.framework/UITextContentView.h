@@ -167,6 +167,7 @@
 - (void)_addShortcut:(id)arg1;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
 - (void)_share:(id)arg1;
+- (void)_translate:(id)arg1;
 - (void)_define:(id)arg1;
 - (void)_transliterateChinese:(id)arg1;
 - (void)_promptForReplace:(id)arg1;

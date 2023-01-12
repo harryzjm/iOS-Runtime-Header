@@ -12,8 +12,6 @@
     struct CGRect _bounds;
 }
 
-@property(nonatomic) struct CGRect textBounds; // @synthesize textBounds=_bounds;
-@property(nonatomic) struct _NSRange textRange; // @synthesize textRange=_range;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (id)accessibilityHint;

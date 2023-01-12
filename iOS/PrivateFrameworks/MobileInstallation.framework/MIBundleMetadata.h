@@ -21,11 +21,15 @@
     unsigned long long _placeholderFailureUnderlyingErrorSource;
     NSString *_watchKitAppExecutableHash;
     unsigned long long _autoInstallOverride;
+    NSString *_alternateIconName;
+    NSString *_linkedParentBundleID;
 }
 
 + (id)metadataFromURL:(id)arg1 error:(id *)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *linkedParentBundleID; // @synthesize linkedParentBundleID=_linkedParentBundleID;
+@property(copy, nonatomic) NSString *alternateIconName; // @synthesize alternateIconName=_alternateIconName;
 @property(nonatomic) unsigned long long autoInstallOverride; // @synthesize autoInstallOverride=_autoInstallOverride;
 @property(copy, nonatomic) NSString *watchKitAppExecutableHash; // @synthesize watchKitAppExecutableHash=_watchKitAppExecutableHash;
 @property(nonatomic) unsigned long long placeholderFailureUnderlyingErrorSource; // @synthesize placeholderFailureUnderlyingErrorSource=_placeholderFailureUnderlyingErrorSource;

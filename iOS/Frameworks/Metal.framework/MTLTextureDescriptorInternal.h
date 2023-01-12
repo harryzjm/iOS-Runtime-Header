@@ -16,6 +16,12 @@ __attribute__((visibility("hidden")))
 - (void)setIsDrawable:(_Bool)arg1;
 - (void)setFramebufferOnly:(_Bool)arg1;
 - (_Bool)framebufferOnly;
+- (void)setLossyCompressionMode:(long long)arg1;
+- (long long)lossyCompressionMode;
+- (void)setCompressionType:(long long)arg1;
+- (long long)compressionType;
+- (void)setCompressionFootprint:(unsigned long long)arg1;
+- (unsigned long long)compressionFootprint;
 - (void)setCompressionMode:(unsigned long long)arg1;
 - (unsigned long long)compressionMode;
 - (_Bool)writeSwizzleEnabled;

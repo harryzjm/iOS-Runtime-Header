@@ -8,14 +8,17 @@
 
 @interface HRAtrialFibrillationEducationSection : HKDataMetadataSection
 {
+    _Bool _forSinglePlayer;
 }
 
+@property(readonly, nonatomic) _Bool forSinglePlayer; // @synthesize forSinglePlayer=_forSinglePlayer;
 - (id)_viewControllerForEducationRow:(unsigned long long)arg1;
 - (id)_cellTitleForEducationRow:(unsigned long long)arg1;
 - (void)selectCellForIndex:(unsigned long long)arg1 navigationController:(id)arg2 animated:(_Bool)arg3;
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
 - (unsigned long long)numberOfRowsInSection;
 - (id)sectionTitle;
+- (id)initForSinglePlayer:(_Bool)arg1;
 
 @end
 

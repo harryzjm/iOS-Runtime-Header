@@ -25,6 +25,9 @@
 - (id)dictionaryRepresentationWithError:(id *)arg1;
 - (void)dealloc;
 - (_Bool)getFileSize:(unsigned long long *)arg1 error:(id *)arg2;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (void)getPathHash:(unsigned long long *)arg1 lastPathComponent:(id *)arg2;
 
 @end
 

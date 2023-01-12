@@ -9,7 +9,7 @@
 #import <DocumentCamera/ICDocCamZoomablePageContentViewDelegate-Protocol.h>
 #import <DocumentCamera/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, UIImage, UIImageView, UIScrollView;
+@class NSString, UIImage, UIImageView, UIScrollView, VKImageAnalysisInteraction;
 @protocol ICDocCamZoomablePageContentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     UIImage *_image;
     UIImageView *_imageView;
     unsigned long long _pageIndex;
+    VKImageAnalysisInteraction *_analysisInteraction;
     UIScrollView *_scrollView;
     struct CGSize _prevScrollViewSize;
 }
@@ -28,11 +29,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize prevScrollViewSize; // @synthesize prevScrollViewSize=_prevScrollViewSize;
 @property(nonatomic) _Bool shouldSetupScalesInViewDidLayoutSubviews; // @synthesize shouldSetupScalesInViewDidLayoutSubviews=_shouldSetupScalesInViewDidLayoutSubviews;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(retain, nonatomic) VKImageAnalysisInteraction *analysisInteraction; // @synthesize analysisInteraction=_analysisInteraction;
 @property(nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(nonatomic) __weak id <ICDocCamZoomablePageContentDelegate> pageContentDelegate; // @synthesize pageContentDelegate=_pageContentDelegate;
 - (_Bool)_canShowWhileLocked;
+- (_Bool)isTouchingAnalyzableContentAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)pageContentViewDidPencilDown;
 - (_Bool)accessibilityPerformEscape;
 - (void)setupAccessibility;
@@ -51,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)resetImageCentering;
 - (void)resetZoom;
 - (void)viewDidLoad;
+- (void)analyzeCurrentImageIfNecessary;
 - (id)init;
 
 // Remaining properties

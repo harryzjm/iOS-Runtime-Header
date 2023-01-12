@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, TRIClient, TRITrackingId;
+@class NSMutableArray, NSMutableDictionary, TRITrackingId;
 
 @interface PPTrialWrapperGuardedData : NSObject
 {
-    TRIClient *trialClient;
     TRITrackingId *trackingId;
     NSMutableArray *notificationTokens;
     NSMutableDictionary *pathOverrides;
-    NSMutableDictionary *treatmentNames;
-    NSMutableDictionary *availableFactors;
 }
 
 - (void).cxx_destruct;

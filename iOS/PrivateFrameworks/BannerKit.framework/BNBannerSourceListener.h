@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <BannerKit/BNBannerHostSceneViewControllerObserving-Protocol.h>
 #import <BannerKit/BNBannerSourceClientToHostInterface-Protocol.h>
+#import <BannerKit/BNBannerSourceListenerPresentableObserving-Protocol.h>
 #import <BannerKit/BSInvalidatable-Protocol.h>
 #import <BannerKit/BSServiceConnectionListenerDelegate-Protocol.h>
 
 @class BSServiceConnectionListener, FBSDisplayConfiguration, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol BNBannerSourceListenerDelegate, OS_dispatch_queue;
 
-@interface BNBannerSourceListener : NSObject <BSServiceConnectionListenerDelegate, BNBannerSourceClientToHostInterface, BNBannerHostSceneViewControllerObserving, BSInvalidatable>
+@interface BNBannerSourceListener : NSObject <BSServiceConnectionListenerDelegate, BNBannerSourceClientToHostInterface, BNBannerSourceListenerPresentableObserving, BSInvalidatable>
 {
     FBSDisplayConfiguration *_displayConfiguration;
     NSSet *_authorizedBundleIDs;
@@ -29,12 +29,12 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <BNBannerSourceListenerDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)_createSceneWithIdentifier:(id)arg1 forProcess:(id)arg2 preferredContentSize:(struct CGSize)arg3 contentOutsets:(struct UIEdgeInsets)arg4;
-- (void)_removeAllPresentablesFromRequesterWithIdentifier:(id)arg1;
-- (void)_removeAllPresentablesWithRequestIdentifier:(id)arg1 fromRequesterWithIdentifier:(id)arg2;
+- (id)_createSceneWithIdentifier:(id)arg1 forProcess:(id)arg2 preferredContentSize:(struct CGSize)arg3 contentOutsets:(struct UIEdgeInsets)arg4 userInfo:(id)arg5;
+- (void)_removePresentableWithIdentification:(id)arg1;
+- (void)_removePresentablesFromRequesterWithIdentifier:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)_removePresentable:(id)arg1;
 - (void)_addPresentable:(id)arg1;
-- (_Bool)_removeUnpreparedPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2;
+- (id)_removeUnpreparedPresentablesWithIdentification:(id)arg1;
 - (void)_removeUnpreparedPresentable:(id)arg1;
 - (_Bool)_isPresentableWaitingToBeMadeReady:(id)arg1;
 - (void)_addUnpreparedPresentable:(id)arg1;
@@ -42,10 +42,9 @@
 - (void)_addConnection:(id)arg1;
 - (_Bool)_isConnectingProcessAuthorized:(id)arg1 error:(out id *)arg2;
 - (_Bool)_isPrototypeFeaturesEnabled;
-- (void)sceneDidInvalidateForBannerHostSceneViewController:(id)arg1;
+- (void)sceneDidInvalidateForBannerSourceListenerPresentable:(id)arg1;
 - (void)__recommendSuspension:(id)arg1 forReason:(id)arg2 revokingCurrent:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)__revokeAllPresentablesWithRequesterIdentifier:(id)arg1 reason:(id)arg2 userInfo:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)__revokePresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 withAnimation:(id)arg3 reason:(id)arg4 userInfo:(id)arg5 reply:(CDUnknownBlockType)arg6;
+- (void)__revokePresentablesWithIdentification:(id)arg1 withAnimation:(id)arg2 reason:(id)arg3 userInfo:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)__postPresentableWithSpecification:(id)arg1 options:(id)arg2 userInfo:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)__layoutDescriptionWithReply:(CDUnknownBlockType)arg1;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;

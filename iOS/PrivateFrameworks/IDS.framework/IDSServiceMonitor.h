@@ -16,6 +16,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)description;
 @property(readonly, nonatomic) NSString *service;
 - (long long)serviceAvailability;
 - (void)updateAvailability;

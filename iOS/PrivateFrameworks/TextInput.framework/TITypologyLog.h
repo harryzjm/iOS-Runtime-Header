@@ -9,16 +9,19 @@
 #import <TextInput/NSCopying-Protocol.h>
 
 @class NSDate, NSDictionary, NSMutableSet, NSString, NSUUID, TIKeyboardState, TIRollingLog;
+@protocol TITypologyLogDelegate;
 
 @interface TITypologyLog : NSObject <NSCopying>
 {
+    id <TITypologyLogDelegate> _delegate;
+    unsigned long long _version;
     NSUUID *_uuid;
+    unsigned long long _partIndex;
     NSDate *_date;
     NSString *_systemVersion;
     NSString *_buildVersion;
     NSString *_clientIdentifier;
     NSDictionary *_config;
-    NSUUID *_lastRecordUUID;
     TIRollingLog *_records;
     TIRollingLog *_traceLog;
     NSMutableSet *_loggedRecordClasses;
@@ -30,26 +33,37 @@
 @property(retain, nonatomic) NSMutableSet *loggedRecordClasses; // @synthesize loggedRecordClasses=_loggedRecordClasses;
 @property(readonly, nonatomic) TIRollingLog *traceLog; // @synthesize traceLog=_traceLog;
 @property(readonly, nonatomic) TIRollingLog *records; // @synthesize records=_records;
-@property(copy, nonatomic) NSUUID *lastRecordUUID; // @synthesize lastRecordUUID=_lastRecordUUID;
 @property(retain, nonatomic) NSDictionary *config; // @synthesize config=_config;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property(readonly, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
+@property(readonly, nonatomic) unsigned long long partIndex; // @synthesize partIndex=_partIndex;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
+@property(nonatomic) __weak id <TITypologyLogDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)loggedRecordOfClass:(Class)arg1;
+- (id)recordUUIDsIncludedInRange:(id)arg1 endUUID:(id)arg2;
+- (id)recordsMatchingUUIDRange:(id)arg1 endUUID:(id)arg2;
+- (id)recordMatchingUUID:(id)arg1;
 - (void)enumerateHumanReadableTraceEntriesWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateRecordsWithBlockIncludingStop:(CDUnknownBlockType)arg1;
 - (void)enumerateRecordsWithBlock:(CDUnknownBlockType)arg1;
 - (void)logToHumanReadableTrace:(id)arg1;
+- (void)logRecord:(id)arg1 trace:(id)arg2;
 - (void)logRecord:(id)arg1;
+- (void)_logRecord:(id)arg1 trace:(id)arg2;
 - (id)recordSummary;
 - (id)textSummary;
 - (id)filename;
 - (id)timestamp;
 - (id)propertyList;
+@property(readonly, nonatomic) unsigned long long maxNumRecords;
+@property(readonly, nonatomic) unsigned long long numRecords;
 - (id)initWithPropertyList:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTypologyLog:(id)arg1;
+- (id)initWithUUID:(id)arg1 partIndex:(unsigned long long)arg2 date:(id)arg3 systemVersion:(id)arg4 buildVersion:(id)arg5 clientIdentifier:(id)arg6 config:(id)arg7;
 - (id)init;
 
 @end

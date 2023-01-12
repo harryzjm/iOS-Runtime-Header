@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVKeyPathDependencyManager, AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerLayer, CALayer, FigBaseCALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSSet, NSString;
+@class AVKeyPathDependencyManager, AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerLayer, AVSinkSubscriber, CALayer, FigBaseCALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -30,15 +30,16 @@ __attribute__((visibility("hidden")))
     FigVideoContainerLayer *videoLayer;
     FigSubtitleCALayer *subtitleLayer;
     FigBaseCALayer *closedCaptionLayer;
+    AVPlayerLayer *interstitialLayer;
     _Bool isLegibleDisplayEnabled;
     _Bool isForScrubbingOnly;
     AVPlayerLayer *associatedRemoteModeLayer;
     _Bool willManageSublayersAsSwappedLayers;
     long long activeMode;
     _Bool isPartOfForegroundScene;
+    _Bool showInterstitialInstead;
     _Bool isReadyForDisplay;
     AVPlayer *playerBeingObserved;
-    NSSet *KVOInvokers;
     struct CGSize latestAppliedPresentationSize;
     _Bool preventsChangesToSublayerHierarchy;
     NSDictionary *clientLayers;
@@ -48,6 +49,13 @@ __attribute__((visibility("hidden")))
     struct NSEdgeInsets legibleContentInsets;
     _Bool honorContentScale;
     double screenScale;
+    int lastWindowSceneEvent;
+    _Bool isVisible;
+    AVSinkSubscriber *playerCurrentItemSink;
+    AVSinkSubscriber *currentItemPresentationSizeSink;
+    AVSinkSubscriber *currentItemTracksSink;
+    AVSinkSubscriber *currentItemNonForcedSubtitlesEnabledSink;
+    AVSinkSubscriber *playerIsDisplayingClosedCaptionsSink;
 }
 
 @end

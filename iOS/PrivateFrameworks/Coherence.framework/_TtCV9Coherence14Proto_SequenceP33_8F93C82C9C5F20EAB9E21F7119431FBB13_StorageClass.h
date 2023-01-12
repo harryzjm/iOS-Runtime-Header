@@ -11,7 +11,7 @@
 @interface _TtCV9Coherence14Proto_SequenceP33_8F93C82C9C5F20EAB9E21F7119431FBB13_StorageClass : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_string;
-    MISSING_TYPE *_element;
+    MISSING_TYPE *_elements;
     MISSING_TYPE *_subsequence;
     MISSING_TYPE *_version;
     MISSING_TYPE *_addedByVersion;

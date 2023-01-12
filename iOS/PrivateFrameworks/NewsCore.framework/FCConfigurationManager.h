@@ -10,11 +10,12 @@
 #import <NewsCore/FCFeldsparIDProviderObserving-Protocol.h>
 #import <NewsCore/FCMagazinesConfigurationManager-Protocol.h>
 #import <NewsCore/FCNewsAppConfigurationManager-Protocol.h>
+#import <NewsCore/FCTodayFeedConfigurationManager-Protocol.h>
 
 @class FCAsyncSerialQueue, FCContextConfiguration, FCKeyValueStore, FCNewsAppConfig, NSArray, NSData, NSDictionary, NSHashTable, NSString, RCConfigurationManager;
 @protocol FCCoreConfiguration, FCFeldsparIDProvider, FCNewsAppConfiguration, FCNewsAppConfiguration><FCJSONEncodableObjectProviding, OS_dispatch_queue;
 
-@interface FCConfigurationManager : NSObject <FCFeldsparIDProviderObserving, FCNewsAppConfigurationManager, FCCoreConfigurationManager, FCMagazinesConfigurationManager>
+@interface FCConfigurationManager : NSObject <FCFeldsparIDProviderObserving, FCNewsAppConfigurationManager, FCCoreConfigurationManager, FCMagazinesConfigurationManager, FCTodayFeedConfigurationManager>
 {
     _Bool _shouldIgnoreCache;
     _Bool _attemptedAppConfigFetch;
@@ -28,57 +29,23 @@
     FCAsyncSerialQueue *_remoteConfigManagerSerialQueue;
     FCKeyValueStore *_localStore;
     FCNewsAppConfig *_currentAppConfiguration;
-    NSArray *_treatmentIDs;
-    NSArray *_segmentSetIDs;
     NSDictionary *_cachedWidgetConfigurationDict;
     NSData *_currentMagazinesConfiguration;
+    NSData *_currentTodayFeedConfiguration;
     NSHashTable *_appConfigObservers;
     NSHashTable *_coreConfigObservers;
+    NSArray *_treatmentIDs;
+    NSArray *_segmentSetIDs;
 }
 
-+ (id)overrideAppConfigID;
-+ (id)internalOverrideAdditionalSegmentSetIDs;
-+ (id)internalOverrideSegmentSetIDs;
 - (void).cxx_destruct;
-@property(nonatomic, getter=isRunningUnitTests) _Bool runningUnitTests; // @synthesize runningUnitTests=_runningUnitTests;
-@property(nonatomic) _Bool attemptedAppConfigFetch; // @synthesize attemptedAppConfigFetch=_attemptedAppConfigFetch;
-@property(retain, nonatomic) NSHashTable *coreConfigObservers; // @synthesize coreConfigObservers=_coreConfigObservers;
-@property(retain, nonatomic) NSHashTable *appConfigObservers; // @synthesize appConfigObservers=_appConfigObservers;
-@property(copy, nonatomic) NSData *currentMagazinesConfiguration; // @synthesize currentMagazinesConfiguration=_currentMagazinesConfiguration;
-@property(retain, nonatomic) NSDictionary *cachedWidgetConfigurationDict; // @synthesize cachedWidgetConfigurationDict=_cachedWidgetConfigurationDict;
-@property(nonatomic) _Bool shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property(copy, nonatomic) NSArray *segmentSetIDs; // @synthesize segmentSetIDs=_segmentSetIDs;
 @property(copy, nonatomic) NSArray *treatmentIDs; // @synthesize treatmentIDs=_treatmentIDs;
-@property(copy, nonatomic) FCNewsAppConfig *currentAppConfiguration; // @synthesize currentAppConfiguration=_currentAppConfiguration;
-@property(retain, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
-@property(readonly, nonatomic) FCAsyncSerialQueue *remoteConfigManagerSerialQueue; // @synthesize remoteConfigManagerSerialQueue=_remoteConfigManagerSerialQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *appConfigFetchQueue; // @synthesize appConfigFetchQueue=_appConfigFetchQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
-@property(readonly, copy, nonatomic) NSString *appShortVersionString; // @synthesize appShortVersionString=_appShortVersionString;
-@property(readonly, nonatomic) id <FCFeldsparIDProvider> feldsparIDProvider; // @synthesize feldsparIDProvider=_feldsparIDProvider;
-@property(readonly, nonatomic) FCContextConfiguration *contextConfiguration; // @synthesize contextConfiguration=_contextConfiguration;
-@property(readonly, nonatomic) RCConfigurationManager *remoteConfigurationManager; // @synthesize remoteConfigurationManager=_remoteConfigurationManager;
-- (id)_changeTagsInRecords:(id)arg1;
-- (id)_changeTagsInWidgetConfigurationDict:(id)arg1;
-- (id)_mergeRecords:(id)arg1 withCachedRecords:(id)arg2;
-- (id)_mergeCachedDataWithWidgetConfigurationData:(id)arg1;
-- (unsigned long long)_configurationSourceForSourceName:(id)arg1;
-- (id)_recordIDForRequestKey:(id)arg1 storefrontID:(id)arg2;
-- (id)_permanentURLForRequestKey:(id)arg1 storefrontID:(id)arg2;
-- (unsigned long long)_remoteConfigurationEnvironmentForContextIdentifier:(long long)arg1;
-- (id)_responseKeyForRequestKey:(id)arg1;
-- (id)_deviceInfo;
-- (id)_configurationSettingsWithRequestInfos:(id)arg1 feldsparID:(id)arg2 storefrontID:(id)arg3 contextConfiguration:(id)arg4 useBackgroundRefreshRate:(_Bool)arg5;
-- (id)_requestInfoForRequestKey:(id)arg1 storefrontID:(id)arg2 additionalChangeTags:(id)arg3;
 - (void)feldsparIDProviderDidChangeFeldsparID:(id)arg1;
-- (_Bool)_checkIfShouldIgnoreCache;
-- (void)_loadConfigurationFromStore:(id)arg1;
-- (void)_configurationDidChangeSignificantConfigChange:(_Bool)arg1;
-- (id)_storefrontID;
-- (void)_fetchRemoteMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_fetchRemoteAppWidgetConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_refreshAppConfigurationWithConfigurationSettings:(id)arg1 force:(_Bool)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 forceRefresh:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchTodayFeedConfigurationIfNeededWithCompletionQueue:(id)arg1 feedType:(unsigned long long)arg2 formatVersion:(id)arg3 completion:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) NSData *todayFeedConfigurationData;
+- (void)fetchMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 formatVersion:(id)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) NSData *magazinesConfigurationData;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)fetchConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -87,12 +54,10 @@
 @property(readonly, copy, nonatomic) NSString *feldsparID;
 - (void)removeAppConfigObserver:(id)arg1;
 - (void)addAppConfigObserver:(id)arg1;
-- (void)fetchMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAppWidgetConfigurationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)refreshAppConfigurationIfNeededWithCompletionQueue:(id)arg1 refreshCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAppConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSData *magazinesConfigurationData;
 @property(readonly, nonatomic) id <FCNewsAppConfiguration><FCJSONEncodableObjectProviding> jsonEncodableAppConfiguration;
 @property(readonly, nonatomic) id <FCNewsAppConfiguration> fetchedAppConfiguration;
 @property(readonly, nonatomic) id <FCNewsAppConfiguration> possiblyUnfetchedAppConfiguration;

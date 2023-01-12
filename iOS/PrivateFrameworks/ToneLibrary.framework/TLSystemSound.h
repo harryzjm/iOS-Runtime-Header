@@ -10,6 +10,7 @@
 
 @interface TLSystemSound : NSObject
 {
+    struct os_unfair_lock_s _lock;
     unsigned int _soundID;
     _Bool _shouldDisposeOfSoundID;
     _Bool _requiresLongFormPlayback;
@@ -19,8 +20,14 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool requiresLongFormPlayback; // @synthesize requiresLongFormPlayback=_requiresLongFormPlayback;
 @property(readonly, nonatomic) NSURL *soundFileURL; // @synthesize soundFileURL=_soundFileURL;
+- (void)_ensureUnderlyingSoundCreated;
+- (void)endRequiringUnderlyingSoundLoaded;
+- (void)beginRequiringUnderlyingSoundLoaded;
 @property(readonly, nonatomic) unsigned int soundID;
+@property(readonly, nonatomic, getter=isValid) _Bool valid;
+- (id)_description;
 - (id)description;
+- (void)_prepareForDealloc;
 - (void)dealloc;
 - (id)initWithSoundFileURL:(id)arg1 soundID:(unsigned int)arg2 requiresLongFormPlayback:(_Bool)arg3;
 

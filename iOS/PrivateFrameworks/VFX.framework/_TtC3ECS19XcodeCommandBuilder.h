@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *optimizationLevel;
     MISSING_TYPE *xcinfo;
-    MISSING_TYPE *platform;
+    MISSING_TYPE *target;
     MISSING_TYPE *frameworksToLink;
     MISSING_TYPE *librariesToLink;
     MISSING_TYPE *includePaths;

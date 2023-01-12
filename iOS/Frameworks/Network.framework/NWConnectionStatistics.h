@@ -14,6 +14,7 @@
     NSString *_clientIdentifier;
     NSString *_sourceIdentifier;
     NSUUID *_externallyVisibleConnectionUUID;
+    NSUUID *_externallyVisibleParentUUID;
     NSArray *_externallyVisibleActivityUUIDs;
     NWL2Report *_layer2Report;
     NWDeviceReport *_deviceReport;
@@ -30,6 +31,7 @@
 @property(retain, nonatomic) NWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property(retain, nonatomic) NWL2Report *layer2Report; // @synthesize layer2Report=_layer2Report;
 @property(retain, nonatomic) NSArray *externallyVisibleActivityUUIDs; // @synthesize externallyVisibleActivityUUIDs=_externallyVisibleActivityUUIDs;
+@property(retain, nonatomic) NSUUID *externallyVisibleParentUUID; // @synthesize externallyVisibleParentUUID=_externallyVisibleParentUUID;
 @property(retain, nonatomic) NSUUID *externallyVisibleConnectionUUID; // @synthesize externallyVisibleConnectionUUID=_externallyVisibleConnectionUUID;
 @property(retain, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
@@ -39,6 +41,7 @@
 @property(retain, nonatomic) NSString *effectiveBundleID;
 @property(retain, nonatomic) NSString *bundleID;
 - (_Bool)tlsHandshakeTimedOut;
+@property(readonly, nonatomic) NSUUID *parentUUID;
 @property(readonly, nonatomic) NSUUID *connectionUUID;
 @property(readonly, nonatomic) _Bool kernelReportingWriteStalled;
 @property(readonly, nonatomic) _Bool kernelReportingReadStalled;

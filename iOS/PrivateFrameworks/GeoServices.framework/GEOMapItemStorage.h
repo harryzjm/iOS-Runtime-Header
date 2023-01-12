@@ -9,13 +9,17 @@
 #import <GeoServices/GEOMapItemPrivate-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOAppleRating, GEOAssociatedApp, GEOFeatureStyleAttributes, GEOLatLng, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapItemStorageUserValues, GEOMapRegion, GEOMessageLink, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPDResultDetourInfo, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutConfiguration, GEOPriceDescription, GEORelatedPlaceList, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, NSArray, NSData, NSDate, NSDictionary, NSString, NSTimeZone, NSURL, PBDataReader, PBUnknownFields, _GEOMapItemStorageNotificationTrampoline, geo_isolater;
+@class GEOAddress, GEOAppleRating, GEOAssociatedApp, GEOEnclosingPlace, GEOEnhancedPlacement, GEOExploreGuides, GEOFeatureStyleAttributes, GEOLabelGeometry, GEOLatLng, GEOMapItemClientAttributes, GEOMapItemContainedPlace, GEOMapItemDetourInfo, GEOMapItemIdentifier, GEOMapItemPhotosAttribution, GEOMapItemPlaceAttribution, GEOMapItemReviewsAttribution, GEOMapItemStorageUserValues, GEOMapRegion, GEOMessageLink, GEOMiniBrowseCategories, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPDPlace, GEOPDResultDetourInfo, GEOPlace, GEOPlaceQuestionnaire, GEOPlaceResult, GEOPlacecardLayoutData, GEOPriceDescription, GEORestaurantFeaturesLink, GEOStorefrontInfo, GEOStorefrontPresentationInfo, GEOStyleAttributes, GEOViewportFrame, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSString, NSTimeZone, NSURL, PBDataReader, PBUnknownFields, _GEOMapItemStorageNotificationTrampoline, geo_isolater;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, GEOTransitVehiclePosition;
 
 @interface GEOMapItemStorage : PBCodable <GEOMapItemPrivate, NSCopying>
 {
+    _GEOMapItemStorageNotificationTrampoline *_trampoline;
+    id <GEOMapItem> _geoMapItem;
+    geo_isolater *_geoMapItemIsolater;
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_additionalPlaceDatas;
     GEOMapItemClientAttributes *_clientAttributes;
     GEOPDResultDetourInfo *_internalDetourInfo;
     NSString *_mapsURL;
@@ -29,6 +33,7 @@
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_additionalPlaceDatas:1;
         unsigned int read_clientAttributes:1;
         unsigned int read_internalDetourInfo:1;
         unsigned int read_mapsURL:1;
@@ -39,12 +44,10 @@
         unsigned int read_userValues:1;
         unsigned int wrote_anyField:1;
     } _flags;
-    _GEOMapItemStorageNotificationTrampoline *_trampoline;
-    id <GEOMapItem> _geoMapItem;
-    geo_isolater *_geoMapItemIsolater;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)additionalPlaceDatasType;
 + (id)mapItemStorageForCoordinate:(CDStruct_c3b9c2ee)arg1;
 + (id)mapItemStorageForPlaceData:(id)arg1 detourInfo:(id)arg2 userValues:(id)arg3;
 + (id)mapItemStorageForPlaceData:(id)arg1 detourInfo:(id)arg2;
@@ -67,7 +70,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -76,6 +80,11 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+- (id)additionalPlaceDatasAtIndex:(unsigned long long)arg1;
+- (unsigned long long)additionalPlaceDatasCount;
+- (void)addAdditionalPlaceDatas:(id)arg1;
+- (void)clearAdditionalPlaceDatas;
+@property(retain, nonatomic) NSMutableArray *additionalPlaceDatas;
 @property(retain, nonatomic) GEOMapItemStorageUserValues *userValues;
 @property(readonly, nonatomic) _Bool hasUserValues;
 @property(retain, nonatomic) NSString *mapsURL;
@@ -94,6 +103,17 @@
 @property(readonly, nonatomic) _Bool hasPlaceData;
 - (id)initWithData:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic, getter=_viewportFrame) GEOViewportFrame *viewportFrame;
+@property(readonly, nonatomic, getter=_labelGeometry) GEOLabelGeometry *labelGeometry;
+@property(readonly, nonatomic, getter=_enhancedPlacement) GEOEnhancedPlacement *enhancedPlacement;
+@property(readonly, nonatomic, getter=_placeDescription) NSString *placeDescription;
+@property(readonly, nonatomic, getter=_hasPlaceDescription) _Bool hasPlaceDescription;
+@property(readonly, nonatomic, getter=_areaHighlightId) unsigned long long areaHighlightId;
+@property(readonly, nonatomic, getter=_hasAreaHighlightId) _Bool hasAreaHighlightId;
+@property(readonly, nonatomic, getter=_enclosingPlace) GEOEnclosingPlace *enclosingPlace;
+@property(readonly, nonatomic, getter=_hasEnclosingPlace) _Bool hasEnclosingPlace;
+@property(readonly, nonatomic, getter=_hasCaptionedPhotoAlbum) _Bool hasCaptionedPhotoAlbum;
+@property(readonly, nonatomic, getter=_captionedPhotoAlbums) NSArray *captionedPhotoAlbums;
 @property(readonly, nonatomic, getter=_totalPhotoCount) unsigned long long totalPhotoCount;
 @property(readonly, nonatomic, getter=_canDownloadMorePhotos) _Bool canDownloadMorePhotos;
 @property(readonly, nonatomic, getter=_identifierHistory) NSArray *identifierHistory;
@@ -103,6 +123,7 @@
 @property(readonly, nonatomic, getter=_appleRatings) NSArray *appleRatings;
 @property(readonly, nonatomic, getter=_supportsAppleRatings) _Bool supportsAppleRatings;
 @property(readonly, nonatomic, getter=_showSuggestAnEditButton) _Bool showSuggestAnEditButton;
+@property(readonly, nonatomic, getter=_bestAvailableCountryCode) NSString *bestAvailableCountryCode;
 @property(readonly, nonatomic, getter=_iso3166SubdivisionCode) NSString *iso3166SubdivisionCode;
 @property(readonly, nonatomic, getter=_iso3166CountryCode) NSString *iso3166CountryCode;
 @property(readonly, nonatomic, getter=_alternateSearchableNames) NSArray *alternateSearchableNames;
@@ -135,6 +156,7 @@
 @property(readonly, nonatomic, getter=_hasWifiFingerprintLabelStatusCode) _Bool hasWifiFingerprintLabelStatusCode;
 @property(readonly, nonatomic, getter=_annotatedItemList) id <GEOAnnotatedItemList> annotatedItemList;
 @property(readonly, nonatomic, getter=_placeDisplayStyle) int placeDisplayStyle;
+@property(readonly, nonatomic, getter=_miniBrowseCategories) GEOMiniBrowseCategories *miniBrowseCategories;
 @property(readonly, nonatomic, getter=_browseCategories) NSArray *browseCategories;
 @property(readonly, nonatomic, getter=_venueInfo) id <GEOMapItemVenueInfo> venueInfo;
 @property(readonly, nonatomic, getter=_venueFeatureType) int venueFeatureType;
@@ -145,9 +167,14 @@
 - (id)addressObject;
 @property(readonly, nonatomic) _Bool hasExpiredComponents;
 @property(readonly, nonatomic) GEOMapItemDetourInfo *detourInfo;
-@property(readonly, nonatomic, getter=_placecardLayoutConfiguration) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
-@property(readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
+@property(readonly, nonatomic, getter=_placecardLayoutData) GEOPlacecardLayoutData *placecardLayoutData;
+- (id)_firstRelatedPlaceListForType:(int)arg1;
+- (id)_relatedPlaceListForComponentIdentifier:(int)arg1;
+@property(readonly, nonatomic, getter=_relatedPlaceLists) NSArray *relatedPlaceLists;
+@property(readonly, nonatomic, getter=_placeCollectionPullQuotes) NSArray *placeCollectionPullQuotes;
+@property(readonly, nonatomic, getter=_hasPlaceCollectionPullQuotes) _Bool hasPlaceCollectionPullQuotes;
 @property(readonly, nonatomic, getter=_placeCollectionsIds) NSArray *placeCollectionsIds;
+@property(readonly, nonatomic, getter=_exploreGuides) GEOExploreGuides *exploreGuides;
 @property(readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
 @property(readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property(readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
@@ -169,6 +196,7 @@
 @property(readonly, nonatomic, getter=_styleAttributes) GEOFeatureStyleAttributes *styleAttributes;
 @property(readonly, nonatomic, getter=_poiCategory) NSString *poiCategory;
 @property(readonly, nonatomic, getter=_reviewsAttribution) GEOMapItemReviewsAttribution *reviewsAttribution;
+@property(readonly, nonatomic, getter=_allPhotoAttributions) NSArray *allPhotoAttributions;
 @property(readonly, nonatomic, getter=_photosAttribution) GEOMapItemPhotosAttribution *photosAttribution;
 @property(readonly, nonatomic, getter=_attribution) GEOMapItemPlaceAttribution *attribution;
 @property(readonly, nonatomic, getter=_poiPinpointURLString) NSString *poiPinpointURLString;
@@ -186,8 +214,6 @@
 @property(readonly, nonatomic, getter=_hasEncyclopedicInfo) _Bool hasEncyclopedicInfo;
 @property(readonly, nonatomic, getter=_hasCurrentOperatingHours) _Bool hasCurrentOperatingHours;
 @property(readonly, nonatomic, getter=_hasOperatingHours) _Bool hasOperatingHours;
-- (_Bool)valueForAmenityType:(int)arg1;
-- (_Bool)hasAmenityType:(int)arg1;
 @property(readonly, nonatomic, getter=_amenities) NSArray *amenities;
 @property(readonly, nonatomic, getter=_hasAnyAmenities) _Bool hasAnyAmenities;
 - (_Bool)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
@@ -195,6 +221,7 @@
 @property(readonly, nonatomic, getter=_childItems) NSArray *childItems;
 @property(readonly, nonatomic, getter=_resultSnippetDistanceDisplayThreshold) unsigned int resultSnippetDistanceDisplayThreshold;
 @property(readonly, nonatomic, getter=_resultSnippetLocationString) NSString *resultSnippetLocationString;
+@property(readonly, nonatomic, getter=_maxScoreForPriceRange) unsigned int maxScoreForPriceRange;
 @property(readonly, nonatomic, getter=_priceRange) unsigned int priceRange;
 @property(readonly, nonatomic, getter=_hasPriceRange) _Bool hasPriceRange;
 @property(readonly, nonatomic, getter=_normalizedUserRatingScore) float normalizedUserRatingScore;
@@ -259,7 +286,7 @@
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
 - (id)_geoMapItem;
 - (id)_geoMapItemCreatingAndAssociatingIfNeeded;
-- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 clientAttributes:(id)arg3 userValues:(id)arg4;
+- (id)initWithPlaceData:(id)arg1 detourInfo:(id)arg2 clientAttributes:(id)arg3 userValues:(id)arg4 additionalPlaceDatas:(id)arg5;
 - (id)initWithPlaceResult:(id)arg1;
 - (id)initWithPlace:(id)arg1 clientAttributes:(id)arg2 userValues:(id)arg3;
 - (id)_mapItemByStrippingOptionalData;

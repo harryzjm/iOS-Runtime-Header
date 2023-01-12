@@ -35,6 +35,7 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     unsigned int _arrivalParameterIndex;
+    unsigned int _distanceCm;
     float _distanceMeters;
     unsigned int _distance;
     unsigned int _expectedTime;
@@ -44,6 +45,7 @@
     int _maneuverEndZilchIndex;
     int _maneuverStartZilchIndex;
     int _maneuverType;
+    unsigned int _maneuverStartPointOffsetCm;
     int _overrideDrivingSide;
     int _overrideTransportType;
     unsigned int _stepID;
@@ -57,6 +59,7 @@
     _Bool _tollPrior;
     struct {
         unsigned int has_arrivalParameterIndex:1;
+        unsigned int has_distanceCm:1;
         unsigned int has_distanceMeters:1;
         unsigned int has_distance:1;
         unsigned int has_expectedTime:1;
@@ -66,6 +69,7 @@
         unsigned int has_maneuverEndZilchIndex:1;
         unsigned int has_maneuverStartZilchIndex:1;
         unsigned int has_maneuverType:1;
+        unsigned int has_maneuverStartPointOffsetCm:1;
         unsigned int has_overrideDrivingSide:1;
         unsigned int has_overrideTransportType:1;
         unsigned int has_stepID:1;
@@ -110,6 +114,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -118,6 +123,14 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasManeuverStartPointOffsetCm;
+@property(nonatomic) unsigned int maneuverStartPointOffsetCm;
+@property(nonatomic) _Bool hasDistanceCm;
+@property(nonatomic) unsigned int distanceCm;
+@property(nonatomic) _Bool hasDistanceMeters;
+@property(nonatomic) float distanceMeters;
+@property(nonatomic) _Bool hasDistance;
+@property(nonatomic) unsigned int distance;
 - (id)roadDescriptionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)roadDescriptionsCount;
 - (void)addRoadDescription:(id)arg1;
@@ -174,10 +187,6 @@
 - (id)overrideTransportTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasOverrideTransportType;
 @property(nonatomic) int overrideTransportType;
-@property(nonatomic) _Bool hasHintFirstAnnouncementZilchIndex;
-@property(nonatomic) int hintFirstAnnouncementZilchIndex;
-@property(nonatomic) _Bool hasDistanceMeters;
-@property(nonatomic) float distanceMeters;
 - (id)signpostAtIndex:(unsigned long long)arg1;
 - (unsigned long long)signpostsCount;
 - (void)addSignpost:(id)arg1;
@@ -204,8 +213,8 @@
 @property(nonatomic) int maneuverType;
 @property(nonatomic) _Bool hasExpectedTime;
 @property(nonatomic) unsigned int expectedTime;
-@property(nonatomic) _Bool hasDistance;
-@property(nonatomic) unsigned int distance;
+@property(nonatomic) _Bool hasHintFirstAnnouncementZilchIndex;
+@property(nonatomic) int hintFirstAnnouncementZilchIndex;
 @property(nonatomic) _Bool hasManeuverEndZilchIndex;
 @property(nonatomic) int maneuverEndZilchIndex;
 @property(nonatomic) _Bool hasManeuverStartZilchIndex;

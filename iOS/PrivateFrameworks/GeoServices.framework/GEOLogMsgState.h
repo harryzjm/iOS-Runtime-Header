@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgStateApplicationIdentifier, GEOLogMsgStateCarPlay, GEOLogMsgStateCuratedCollection, GEOLogMsgStateDetailLookAroundLog, GEOLogMsgStateDeviceBase, GEOLogMsgStateDeviceConnection, GEOLogMsgStateDeviceIdentifier, GEOLogMsgStateDeviceLocale, GEOLogMsgStateDeviceSettings, GEOLogMsgStateDirectionsDetail, GEOLogMsgStateExperiments, GEOLogMsgStateExtension, GEOLogMsgStateLookAroundView, GEOLogMsgStateMapLaunch, GEOLogMsgStateMapRestore, GEOLogMsgStateMapSettings, GEOLogMsgStateMapUI, GEOLogMsgStateMapUIShown, GEOLogMsgStateMapView, GEOLogMsgStateMapViewLocation, GEOLogMsgStateMapsFeatures, GEOLogMsgStateMapsServer, GEOLogMsgStateMapsUserSettings, GEOLogMsgStateMarket, GEOLogMsgStateMuninResource, GEOLogMsgStateNavigation, GEOLogMsgStatePairedDevice, GEOLogMsgStatePlaceCard, GEOLogMsgStatePlaceRequest, GEOLogMsgStateRealtimeTrafficProbe, GEOLogMsgStateRoute, GEOLogMsgStateRoutingSettings, GEOLogMsgStateSuggestions, GEOLogMsgStateSummaryLookAroundLog, GEOLogMsgStateTileSet, GEOLogMsgStateTransit, GEOLogMsgStateUGCPhoto, GEOLogMsgStateUser, GEOLogMsgStateUserSession, NSString, PBDataReader;
+@class GEOLogMsgStateAccount, GEOLogMsgStateApplicationIdentifier, GEOLogMsgStateCarPlay, GEOLogMsgStateCuratedCollection, GEOLogMsgStateDetailLookAroundLog, GEOLogMsgStateDeviceBase, GEOLogMsgStateDeviceConnection, GEOLogMsgStateDeviceIdentifier, GEOLogMsgStateDeviceLocale, GEOLogMsgStateDeviceSettings, GEOLogMsgStateDirectionsDetail, GEOLogMsgStateExperiments, GEOLogMsgStateExtension, GEOLogMsgStateLookAroundView, GEOLogMsgStateMapLaunch, GEOLogMsgStateMapRestore, GEOLogMsgStateMapSettings, GEOLogMsgStateMapUI, GEOLogMsgStateMapUIShown, GEOLogMsgStateMapView, GEOLogMsgStateMapViewLocation, GEOLogMsgStateMapsFeatures, GEOLogMsgStateMapsServer, GEOLogMsgStateMapsUserSettings, GEOLogMsgStateMarket, GEOLogMsgStateMuninResource, GEOLogMsgStateNavigation, GEOLogMsgStateNearbyTransit, GEOLogMsgStatePairedDevice, GEOLogMsgStatePlaceCard, GEOLogMsgStatePlaceRequest, GEOLogMsgStatePlaceSummaryLayout, GEOLogMsgStateRAP, GEOLogMsgStateRoute, GEOLogMsgStateRoutingSettings, GEOLogMsgStateSuggestions, GEOLogMsgStateSummaryLookAroundLog, GEOLogMsgStateTileSet, GEOLogMsgStateTransit, GEOLogMsgStateTransitStep, GEOLogMsgStateUGCPhoto, GEOLogMsgStateUser, GEOLogMsgStateUserSession, NSString, PBDataReader;
 
 @interface GEOLogMsgState : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    GEOLogMsgStateAccount *_account;
     GEOLogMsgStateApplicationIdentifier *_applicationIdentifier;
     GEOLogMsgStateCarPlay *_carPlay;
     GEOLogMsgStateCuratedCollection *_curatedCollection;
@@ -39,16 +40,19 @@
     GEOLogMsgStateMarket *_market;
     GEOLogMsgStateMuninResource *_muninResource;
     GEOLogMsgStateNavigation *_navigation;
+    GEOLogMsgStateNearbyTransit *_nearbyTransit;
     GEOLogMsgStatePairedDevice *_pairedDevice;
     GEOLogMsgStatePlaceCard *_placeCard;
     GEOLogMsgStatePlaceRequest *_placeRequest;
-    GEOLogMsgStateRealtimeTrafficProbe *_realtimeTrafficProbe;
+    GEOLogMsgStatePlaceSummaryLayout *_placeSummaryLayout;
+    GEOLogMsgStateRAP *_rap;
     GEOLogMsgStateRoute *_route;
     GEOLogMsgStateRoutingSettings *_routingSettings;
     NSString *_stateOrigin;
     GEOLogMsgStateSuggestions *_suggestions;
     GEOLogMsgStateSummaryLookAroundLog *_summaryLookAroundLog;
     GEOLogMsgStateTileSet *_tileSet;
+    GEOLogMsgStateTransitStep *_transitStep;
     GEOLogMsgStateTransit *_transit;
     GEOLogMsgStateUGCPhoto *_ugcPhoto;
     GEOLogMsgStateUserSession *_userSession;
@@ -59,6 +63,7 @@
     int _stateType;
     struct {
         unsigned int has_stateType:1;
+        unsigned int read_account:1;
         unsigned int read_applicationIdentifier:1;
         unsigned int read_carPlay:1;
         unsigned int read_curatedCollection:1;
@@ -85,16 +90,19 @@
         unsigned int read_market:1;
         unsigned int read_muninResource:1;
         unsigned int read_navigation:1;
+        unsigned int read_nearbyTransit:1;
         unsigned int read_pairedDevice:1;
         unsigned int read_placeCard:1;
         unsigned int read_placeRequest:1;
-        unsigned int read_realtimeTrafficProbe:1;
+        unsigned int read_placeSummaryLayout:1;
+        unsigned int read_rap:1;
         unsigned int read_route:1;
         unsigned int read_routingSettings:1;
         unsigned int read_stateOrigin:1;
         unsigned int read_suggestions:1;
         unsigned int read_summaryLookAroundLog:1;
         unsigned int read_tileSet:1;
+        unsigned int read_transitStep:1;
         unsigned int read_transit:1;
         unsigned int read_ugcPhoto:1;
         unsigned int read_userSession:1;
@@ -110,6 +118,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -142,8 +152,6 @@
 @property(readonly, nonatomic) _Bool hasDetailLookAroundLog;
 @property(retain, nonatomic) GEOLogMsgStateSummaryLookAroundLog *summaryLookAroundLog;
 @property(readonly, nonatomic) _Bool hasSummaryLookAroundLog;
-@property(retain, nonatomic) GEOLogMsgStateRealtimeTrafficProbe *realtimeTrafficProbe;
-@property(readonly, nonatomic) _Bool hasRealtimeTrafficProbe;
 @property(retain, nonatomic) GEOLogMsgStateSuggestions *suggestions;
 @property(readonly, nonatomic) _Bool hasSuggestions;
 @property(retain, nonatomic) GEOLogMsgStateMapRestore *mapRestore;
@@ -198,6 +206,16 @@
 - (id)stateTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasStateType;
 @property(nonatomic) int stateType;
+@property(retain, nonatomic) GEOLogMsgStateNearbyTransit *nearbyTransit;
+@property(readonly, nonatomic) _Bool hasNearbyTransit;
+@property(retain, nonatomic) GEOLogMsgStateTransitStep *transitStep;
+@property(readonly, nonatomic) _Bool hasTransitStep;
+@property(retain, nonatomic) GEOLogMsgStatePlaceSummaryLayout *placeSummaryLayout;
+@property(readonly, nonatomic) _Bool hasPlaceSummaryLayout;
+@property(retain, nonatomic) GEOLogMsgStateRAP *rap;
+@property(readonly, nonatomic) _Bool hasRap;
+@property(retain, nonatomic) GEOLogMsgStateAccount *account;
+@property(readonly, nonatomic) _Bool hasAccount;
 @property(retain, nonatomic) GEOLogMsgStateUser *user;
 @property(readonly, nonatomic) _Bool hasUser;
 @property(retain, nonatomic) NSString *stateOrigin;

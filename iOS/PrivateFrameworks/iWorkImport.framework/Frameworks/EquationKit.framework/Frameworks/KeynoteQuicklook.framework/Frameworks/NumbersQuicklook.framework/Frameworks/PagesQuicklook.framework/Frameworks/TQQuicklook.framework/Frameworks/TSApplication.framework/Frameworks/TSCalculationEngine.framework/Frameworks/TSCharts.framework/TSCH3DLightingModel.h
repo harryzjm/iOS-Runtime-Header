@@ -18,7 +18,8 @@
 }
 
 + (id)lightingModel;
-+ (id)instanceWithArchive:(const struct Chart3DLightingModelArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSCH3DEnvironmentPackage *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) TSCH3DLightingPackage *lightings; // @synthesize lightings=_lightings;
 @property(retain, nonatomic) TSCH3DMaterialPackage *materials; // @synthesize materials=_materials;
@@ -32,9 +33,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)clone;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)saveToArchive:(struct Chart3DLightingModelArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DLightingModelArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

@@ -21,7 +21,8 @@
     GKDashboardChallengeDataSource *_challengeDataSource;
 }
 
-@property(nonatomic) GKDashboardChallengeDataSource *challengeDataSource; // @synthesize challengeDataSource=_challengeDataSource;
+- (void).cxx_destruct;
+@property(retain, nonatomic) GKDashboardChallengeDataSource *challengeDataSource; // @synthesize challengeDataSource=_challengeDataSource;
 @property(retain, nonatomic) NSArray *titles; // @synthesize titles=_titles;
 @property(retain, nonatomic) NSMutableDictionary *viewStateIndexes; // @synthesize viewStateIndexes=_viewStateIndexes;
 @property(retain, nonatomic) GKCollectionMultiDataSource *multiDataSource; // @synthesize multiDataSource=_multiDataSource;
@@ -45,7 +46,6 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1;
 
 @end

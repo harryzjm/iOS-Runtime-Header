@@ -9,6 +9,7 @@
 }
 
 - (_Bool)_requiresAuthorization;
+- (id)initWithIdentifier:(id)arg1;
 
 @end
 

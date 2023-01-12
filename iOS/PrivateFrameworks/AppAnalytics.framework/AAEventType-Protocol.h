@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class AASessionGroup, NSDictionary, NSString;
 
 @protocol AAEventType
 + (NSString *)eventName;
 - (id)init;
 @property(nonatomic, readonly) NSDictionary *eventProperties;
+
+@optional
++ (long long)timestampGranularity;
++ (AASessionGroup *)sessionGroup;
 @end
 

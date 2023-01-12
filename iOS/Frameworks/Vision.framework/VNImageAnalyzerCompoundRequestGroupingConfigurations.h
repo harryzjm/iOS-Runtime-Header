@@ -15,10 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (_Bool)preferBackgroundProcessing;
-- (unsigned long long)groupingConfigurationsCount;
-- (id)allGroupingConfigurations;
-- (id)groupingConfigurationForRequest:(id)arg1 kind:(unsigned long long)arg2;
 - (id)init;
 
 @end

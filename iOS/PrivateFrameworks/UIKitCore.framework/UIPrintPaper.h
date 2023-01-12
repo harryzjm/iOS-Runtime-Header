@@ -14,6 +14,7 @@
 
 + (id)_defaultPaperForOutputType:(long long)arg1;
 + (id)_defaultPaperListForOutputType:(long long)arg1;
++ (id)_genericPaperListForOutputType:(long long)arg1;
 + (id)_defaultPKPaperForOuptutType:(long long)arg1;
 + (id)_readyDocumentPaperListForPrinter:(id)arg1 withDuplexMode:(long long)arg2 contentSize:(struct CGSize)arg3 scaleUpForRoll:(_Bool)arg4;
 + (id)_readyPaperListForPrinter:(id)arg1 withDuplexMode:(long long)arg2 forContentType:(long long)arg3 contentSize:(struct CGSize)arg4;

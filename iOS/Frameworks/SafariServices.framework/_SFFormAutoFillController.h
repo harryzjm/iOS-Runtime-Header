@@ -23,6 +23,7 @@
     _Bool _isCurrentlyAuthenticating;
     long long _authenticationType;
     SFFormAutocompleteState *_state;
+    SFFormAutocompleteState *_stateForPageLevelAutoFill;
     NSTimer *_prefillTimer;
     WBSFormMetadata *_unsubmittedForm;
     SFFormAutoFillFrameHandle *_unsubmittedFormFrame;
@@ -55,6 +56,8 @@
 - (void)autoFillInputViewDidSelectMorePasswords:(id)arg1;
 - (void)autoFillInputViewDidSelectUseKeyboard:(id)arg1;
 - (void)_didFocusSensitiveFormField;
+- (void)didPerformPageLevelAutoFill:(_Bool)arg1;
+- (void)performPageLevelAutoFill;
 - (_Bool)elementIsBeingFocusedForStreamlinedLogin:(id)arg1;
 - (id)_beginAutomaticPasswordInteractionWithInputSession:(id)arg1 generatedPassword:(id)arg2 ignorePreviousDecision:(_Bool)arg3;
 - (id)beginAutomaticPasswordInteractionWithInputSession:(id)arg1;
@@ -68,6 +71,7 @@
 - (void)didRemoveAutomaticStrongPasswordInForm:(id)arg1 inputSessionUserObject:(id)arg2 inFrame:(id)arg3;
 - (void)_dismissKeyboardAndSimulateCarriageReturnKeyEvents:(_Bool)arg1;
 - (id)_simulatedWebEventForReturnKeyWithType:(int)arg1;
+- (void)didFillOneTimeCodeAndShouldSubmit:(_Bool)arg1;
 - (void)autoFillDidFinishWithUpdatedFormMetadata:(id)arg1 inFrame:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)_removeUniqueIDsOfAutoFilledForm:(id)arg1;
 - (void)_addUniqueIDsOfAutoFilledForm:(id)arg1;
@@ -75,7 +79,8 @@
 - (void)willNavigateFrame:(id)arg1 withUnsubmittedForm:(id)arg2;
 - (void)didFillGeneratedPasswordInForm:(id)arg1 inFrame:(id)arg2;
 - (void)textDidChangeInTextField:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3;
-- (void)didCollectFormMetadataForPreFilling:(id)arg1 atURL:(id)arg2 ancestorFramesOfFormToPreFill:(id)arg3;
+- (void)didCollectFormMetadataForPageLevelAutoFill:(id)arg1 atURL:(id)arg2;
+- (void)didCollectFormMetadataForPreFilling:(id)arg1 atURL:(id)arg2;
 - (id)authenticationCustomUIProgressObserverForContext:(id)arg1;
 - (_Bool)displayMessageAsTitleForContext:(id)arg1;
 - (_Bool)_showingAutoFillInputView;
@@ -95,10 +100,11 @@
 - (void)_restoreInputAssistantItemsIfNecessary;
 - (void)_hideInputAssistantItemsIfNecessary;
 - (void)fieldWillFocusWithInputSession:(id)arg1;
+- (void)suppressSoftwareKeyboardOnWebView:(_Bool)arg1;
 @property(readonly, nonatomic) UIView<WBUFormAutoFillWebView> *webView;
 - (void)willSubmitForm:(id)arg1 inFrame:(id)arg2 submissionHandler:(CDUnknownBlockType)arg3;
 - (void)setFormControls:(id)arg1 areAutoFilled:(_Bool)arg2 andClearField:(id)arg3 inFrame:(id)arg4;
-- (void)autoFillOneTimeCodeFieldsInFrame:(id)arg1 withValue:(id)arg2;
+- (void)autoFillOneTimeCodeFieldsInFrame:(id)arg1 withValue:(id)arg2 shouldSubmit:(_Bool)arg3;
 - (void)fillTextField:(id)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
 - (void)annotateForm:(long long)arg1 inFrame:(id)arg2 withValues:(id)arg3;
 - (void)autoFillForm:(long long)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;

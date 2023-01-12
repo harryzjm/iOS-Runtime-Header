@@ -10,20 +10,23 @@
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSCache, NSString;
 
 @interface HFHomePropertyCacheManager : NSObject <HFHomeObserver, HFHomeManagerObserver, HFAccessoryObserver>
 {
-    NSMutableDictionary *_objectCaches;
+    NSCache *_objectCaches;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *objectCaches; // @synthesize objectCaches=_objectCaches;
+@property(retain, nonatomic) NSCache *objectCaches; // @synthesize objectCaches=_objectCaches;
 - (void)homeKitDispatcher:(id)arg1 manager:(id)arg2 didChangeHome:(id)arg3;
+- (void)homeManagerDidFinishUnknownChange:(id)arg1;
+- (void)homeManagerDidFinishInitialDatabaseLoad:(id)arg1;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)accessoryDidUpdateServices:(id)arg1;
+- (id)cachedValuesForObject:(id)arg1;
 - (id)valueForObject:(id)arg1 key:(id)arg2 invalidationReasons:(unsigned long long)arg3 recalculationBlock:(CDUnknownBlockType)arg4;
 - (void)_clearCachedValues;
 - (id)init;

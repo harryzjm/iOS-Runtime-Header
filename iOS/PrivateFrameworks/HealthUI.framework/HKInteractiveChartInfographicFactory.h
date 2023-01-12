@@ -10,17 +10,21 @@
 {
 }
 
++ (id)_itemForAppleWalkingSteadinessInfographicWithClassification:(long long)arg1;
 + (id)_attributedSymbolForAudioClassification:(unsigned long long)arg1 textStyle:(id)arg2;
-+ (id)_tableTitleAttributes;
-+ (id)_audioTitleAttributes;
 + (id)_itemWithTitleKey:(id)arg1 valueKey:(id)arg2 hideSeparator:(_Bool)arg3;
 + (id)_itemWithTitleKey:(id)arg1 valueKey:(id)arg2;
 + (id)_whoExposureTextItem;
 + (id)_exposureLimitTextItem;
 + (id)_itemForAudioInfographicWithClassification:(unsigned long long)arg1 descriptionKey:(id)arg2;
++ (id)_tableTitleAttributes;
++ (id)_titleAttributes;
++ (id)_appleWalkingSteadinessInfographicForDisplayType:(id)arg1;
 + (id)_headphoneAudioExposureInfographic;
 + (id)_environmentalAudioExposureInfographic;
++ (id)infographicViewControllerForDisplayType:(id)arg1 secondaryDisplayType:(id)arg2 addDataViewControllerProvider:(id)arg3 healthStore:(id)arg4;
 + (id)infographicViewControllerForDisplayType:(id)arg1 healthStore:(id)arg2;
++ (_Bool)infographicSupportedForDisplayType:(id)arg1 secondaryDisplayType:(id)arg2 healthStore:(id)arg3;
 + (_Bool)infographicSupportedForDisplayType:(id)arg1 healthStore:(id)arg2;
 
 @end

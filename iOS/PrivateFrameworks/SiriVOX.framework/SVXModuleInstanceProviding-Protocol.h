@@ -6,7 +6,7 @@
 
 #import <SiriVOX/NSObject-Protocol.h>
 
-@class NSString, SVXClientServiceServer, SVXDeviceSetupManager, SVXNowPlayingObserver, SVXServiceCommandHandler, SVXSessionManager, SVXSpeechSynthesizer, SVXSystemObserver;
+@class NSString, SVXClientServiceServer, SVXDeviceSetupManager, SVXServiceCommandHandler, SVXSessionManager, SVXSpeechSynthesizer, SVXSystemObserver;
 @protocol SVXModuleInstance;
 
 @protocol SVXModuleInstanceProviding <NSObject>
@@ -15,7 +15,6 @@
 @property(readonly, nonatomic) SVXSpeechSynthesizer *speechSynthesizer;
 @property(readonly, nonatomic) SVXSessionManager *sessionManager;
 @property(readonly, nonatomic) SVXServiceCommandHandler *serviceCommandHandler;
-@property(readonly, nonatomic) SVXNowPlayingObserver *nowPlayingObserver;
 @property(readonly, nonatomic) SVXClientServiceServer *clientServiceServer;
 - (id <SVXModuleInstance>)moduleInstanceWithIdentifier:(NSString *)arg1;
 @end

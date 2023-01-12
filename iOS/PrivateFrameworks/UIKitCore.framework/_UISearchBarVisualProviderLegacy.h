@@ -163,6 +163,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowsDeleteButton:(_Bool)arg1;
 - (void)setShowsSeparator:(_Bool)arg1;
 - (void)invalidateLayout;
+@property(readonly, nonatomic, getter=isFrozenForDismissalCrossfade) _Bool frozenForDismissalCrossfade;
 - (void)setUpSearchField;
 - (void)setUpScopeBar;
 - (void)setUpPromptLabel;

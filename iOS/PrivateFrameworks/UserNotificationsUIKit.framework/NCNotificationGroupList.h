@@ -14,7 +14,7 @@
 #import <UserNotificationsUIKit/NCNotificationViewControllerDelegatePrivate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
 
-@class NCNotificationListCache, NCNotificationListCell, NCNotificationListCoalescingControlsCell, NCNotificationListCoalescingHeaderCell, NCNotificationListView, NCNotificationRequest, NCNotificationSectionSettings, NCNotificationSummaryBuilder, NSArray, NSMutableArray, NSMutableDictionary, NSString, _UILegibilitySettings;
+@class NCNotificationListCache, NCNotificationListCell, NCNotificationListCoalescingControlsCell, NCNotificationListCoalescingHeaderCell, NCNotificationListView, NCNotificationRequest, NCNotificationSectionSettings, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, _UILegibilitySettings;
 @protocol NCNotificationGroupListDelegate;
 
 @interface NCNotificationGroupList : NSObject <NCNotificationListViewDataSource, NCNotificationViewControllerDelegatePrivate, NCNotificationViewControllerObserving, NCNotificationListCellDelegate, NCNotificationListCoalescingControlsHandlerDelegate, NCNotificationManagementContentProviderDelegate, NCNotificationListComponent>
@@ -24,13 +24,13 @@
     _Bool _grouped;
     _Bool _clockNotificationGroup;
     _Bool _longLookDismissalFinalFrameCalculatedWithoutWindow;
+    _Bool _shouldReloadLeadingNotificationRequest;
     NSString *_logDescription;
     id <NCNotificationGroupListDelegate> _delegate;
     NCNotificationListCache *_notificationListCache;
     NSString *_sectionIdentifier;
     NSString *_threadIdentifier;
     NCNotificationSectionSettings *_notificationSectionSettings;
-    double _horizontalMarginInset;
     NCNotificationListView *_groupListView;
     NSMutableArray *_orderedRequests;
     NSMutableDictionary *_contentProviders;
@@ -40,18 +40,19 @@
     double _headerViewHeight;
     double _footerViewHeight;
     NCNotificationRequest *_leadingNotificationRequest;
-    NCNotificationSummaryBuilder *_summaryBuilder;
     _UILegibilitySettings *_legibilitySettings;
     NSString *_backgroundGroupNameBase;
     NCNotificationListCell *_cellRecycledWhilePresentingLongLook;
+    NSDate *_comparisonDate;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *comparisonDate; // @synthesize comparisonDate=_comparisonDate;
+@property(nonatomic) _Bool shouldReloadLeadingNotificationRequest; // @synthesize shouldReloadLeadingNotificationRequest=_shouldReloadLeadingNotificationRequest;
 @property(nonatomic) _Bool longLookDismissalFinalFrameCalculatedWithoutWindow; // @synthesize longLookDismissalFinalFrameCalculatedWithoutWindow=_longLookDismissalFinalFrameCalculatedWithoutWindow;
 @property(retain, nonatomic) NCNotificationListCell *cellRecycledWhilePresentingLongLook; // @synthesize cellRecycledWhilePresentingLongLook=_cellRecycledWhilePresentingLongLook;
 @property(copy, nonatomic) NSString *backgroundGroupNameBase; // @synthesize backgroundGroupNameBase=_backgroundGroupNameBase;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-@property(retain, nonatomic) NCNotificationSummaryBuilder *summaryBuilder; // @synthesize summaryBuilder=_summaryBuilder;
 @property(retain, nonatomic) NCNotificationRequest *leadingNotificationRequest; // @synthesize leadingNotificationRequest=_leadingNotificationRequest;
 @property(nonatomic) double footerViewHeight; // @synthesize footerViewHeight=_footerViewHeight;
 @property(nonatomic) double headerViewHeight; // @synthesize headerViewHeight=_headerViewHeight;
@@ -62,7 +63,6 @@
 @property(retain, nonatomic) NSMutableArray *orderedRequests; // @synthesize orderedRequests=_orderedRequests;
 @property(retain, nonatomic) NCNotificationListView *groupListView; // @synthesize groupListView=_groupListView;
 @property(nonatomic, getter=isClockNotificationGroup) _Bool clockNotificationGroup; // @synthesize clockNotificationGroup=_clockNotificationGroup;
-@property(nonatomic) double horizontalMarginInset; // @synthesize horizontalMarginInset=_horizontalMarginInset;
 @property(retain, nonatomic) NCNotificationSectionSettings *notificationSectionSettings; // @synthesize notificationSectionSettings=_notificationSectionSettings;
 @property(nonatomic, getter=isGrouped) _Bool grouped; // @synthesize grouped=_grouped;
 @property(readonly, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
@@ -79,6 +79,7 @@
 - (_Bool)_isContentRevealedForNotificationRequest:(id)arg1;
 - (long long)_compareNotificationRequest:(id)arg1 withNotificationRequest:(id)arg2;
 - (unsigned long long)_insertionIndexForNotificationRequest:(id)arg1;
+- (unsigned long long)_existingIndexForCriticalNotificationRequest:(id)arg1;
 - (unsigned long long)_existingIndexForNotificationRequest:(id)arg1;
 - (unsigned long long)_lockScreenPriorityForNotificationRequest:(id)arg1;
 - (unsigned long long)_lockScreenPersistenceForNotificationRequest:(id)arg1;
@@ -90,11 +91,11 @@
 - (double)_cachedHeightForNotificationRequest:(id)arg1 isLeadingNotificationRequest:(_Bool)arg2;
 - (id)_currentCellForNotificationRequest:(id)arg1;
 - (id)_cachedCellForNotificationRequest:(id)arg1 createNewIfNecessary:(_Bool)arg2 shouldConfigure:(_Bool)arg3;
-- (void)_updateSummaryTextForNewLeadingNotificationRequest:(id)arg1 oldLeadingNotificationRequest:(id)arg2;
 - (void)_hintSideSwipeForDefaultActionForNotificationRequest:(id)arg1;
 - (void)_toggleGroupedState;
 - (void)_scrollToTopIfNecessaryAndPerformBlock:(CDUnknownBlockType)arg1;
 - (void)_reloadNotificationViewForNotificationRequest:(id)arg1;
+- (void)_loadLeadingNotificationRequestCellIfNecessary;
 - (_Bool)adjustForContentSizeCategoryChange;
 - (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (void)notificationListCoalescingControlsHandler:(id)arg1 didTransitionToClearState:(_Bool)arg2;
@@ -105,7 +106,10 @@
 - (void)notificationListCoalescingControlsHandlerRequestsClearingAllNotifications:(id)arg1;
 - (void)notificationListCoalescingControlsHandlerRequestsClearingNotifications:(id)arg1;
 - (void)notificationListCoalescingControlsHandlerRequestsRestackingNotifications:(id)arg1;
+- (_Bool)notificationListCellShouldShowViewActionButton:(id)arg1;
+- (_Bool)notificationListCellShouldShowDefaultActionButton:(id)arg1;
 - (void)willTearDownNotificationListCell:(id)arg1;
+- (void)notificationListCellRequestsPresentingOptionsMenu:(id)arg1 forCellActionWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)notificationListCellRequestsPresentingManagementView:(id)arg1 withPresentingView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)notificationListCellRequestsSectionSettings:(id)arg1 sectionIdentifier:(id)arg2;
 - (void)notificationListCellRequestsPresentingLongLook:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -125,6 +129,7 @@
 - (void)notificationManagementContentProvider:(id)arg1 requestsPresentingNotificationManagementViewType:(unsigned long long)arg2 forNotificationRequest:(id)arg3 withPresentingView:(id)arg4;
 - (id)notificationViewController:(id)arg1 auxiliaryOptionsContentProviderForNotificationRequest:(id)arg2 withLongLook:(_Bool)arg3;
 - (id)notificationViewController:(id)arg1 staticContentProviderForNotificationRequest:(id)arg2;
+- (void)notificationViewController:(id)arg1 didUpdatePreferredContentSize:(struct CGSize)arg2;
 - (void)notificationViewController:(id)arg1 isPerformingHoverHighlighting:(_Bool)arg2;
 - (_Bool)notificationViewControllerShouldPerformHoverHighlighting:(id)arg1;
 - (_Bool)notificationViewControllerShouldAllowLongPressGesture:(id)arg1;
@@ -136,7 +141,9 @@
 - (struct CGRect)notificationViewController:(id)arg1 initialFrameForPresentingLongLookFromView:(id)arg2;
 - (id)notificationUsageTrackingStateForNotificationViewController:(id)arg1;
 - (void)notificationViewController:(id)arg1 shouldFinishLongLookTransitionForTrigger:(long long)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (id)notificationViewControllerContainerViewProviderForExpandedContent:(id)arg1;
 - (_Bool)notificationViewControllerShouldAllowClickPresentationInteraction:(id)arg1;
+- (_Bool)notificationViewControllerShouldAllowExpandedPlatterInteraction:(id)arg1;
 - (_Bool)showAdditionalMessageLinesForNotificationViewController:(id)arg1;
 - (long long)notificationViewControllerDateFormatStyle:(id)arg1;
 - (_Bool)notificationViewControllerIsCoalescedBundle:(id)arg1;
@@ -145,6 +152,7 @@
 - (void)notificationViewControllerWillDismissForCancelAction:(id)arg1;
 - (void)notificationViewController:(id)arg1 requestPermissionToExecuteAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)notificationViewController:(id)arg1 executeAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (double)insetHorizontalMarginForNotificationListView:(id)arg1;
 - (void)recycleView:(id)arg1;
 - (double)footerViewHeightForNotificationList:(id)arg1;
 - (double)headerViewHeightForNotificationList:(id)arg1;
@@ -154,6 +162,7 @@
 - (_Bool)notificationListViewIsGroup:(id)arg1;
 - (id)notificationListView:(id)arg1 viewForItemAtIndex:(unsigned long long)arg2;
 - (double)notificationListView:(id)arg1 heightForItemAtIndex:(unsigned long long)arg2;
+- (_Bool)containsNotificationRequest:(id)arg1;
 - (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)reloadNotificationRequest:(id)arg1;
@@ -162,7 +171,11 @@
 - (void)insertNotificationRequest:(id)arg1;
 @property(readonly, nonatomic) unsigned long long notificationCount;
 @property(readonly, nonatomic) unsigned long long count;
+- (void)updateOrderedNotificationRequests:(id)arg1;
+- (unsigned long long)indexOfNotificationRequestPassingTest:(CDUnknownBlockType)arg1;
+- (void)reloadLeadingNotificationRequestIfNecessary;
 - (_Bool)isLeadingNotificationRequest:(id)arg1;
+- (_Bool)containsCriticalNotificationRequest:(id)arg1;
 - (_Bool)isGroupForNotificationRequest:(id)arg1;
 @property(readonly, nonatomic) _Bool containsNonPersistentNotificationRequests;
 - (void)setGrouped:(_Bool)arg1 animated:(_Bool)arg2;

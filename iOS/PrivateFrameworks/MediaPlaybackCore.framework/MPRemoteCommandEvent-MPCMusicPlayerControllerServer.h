@@ -6,10 +6,20 @@
 
 #import <MediaPlayer/MPRemoteCommandEvent.h>
 
-@class ICUserIdentity;
+#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
 
-@interface MPRemoteCommandEvent (MPCMusicPlayerControllerServer)
+@class ICUserIdentity, NSString;
+
+@interface MPRemoteCommandEvent (MPCMusicPlayerControllerServer) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
++ (id)payloadValueFromJSONValue:(id)arg1;
 - (id)serverCopy;
+- (id)mpc_jsonValue;
 @property(readonly, nonatomic) ICUserIdentity *userIdentity;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

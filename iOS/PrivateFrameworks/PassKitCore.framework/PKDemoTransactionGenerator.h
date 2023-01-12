@@ -10,13 +10,17 @@
 {
 }
 
-+ (id)randomMerchant;
++ (long long)randomDemoMerchant;
++ (id)_recordSpecificKeysForConfiguration:(id)arg1;
++ (void)insertTransactionAndEventsWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)allPeople;
 + (id)allMerchants;
++ (id)itemIdentifierForAccountUser:(id)arg1;
++ (id)itemIdentifierForPass:(id)arg1;
 + (void)demoTransactionsAndEventsWithConfiguration:(id)arg1 transactions:(id *)arg2 events:(id *)arg3;
-+ (void)demoTransactionsAndEventsForPass:(id)arg1 configuration:(id)arg2 transactions:(id *)arg3 events:(id *)arg4;
-+ (void)generateDemoFilesForPasses:(id)arg1 peerPaymentPassSerialNumber:(id)arg2;
-+ (void)generateDemoFiles;
++ (void)demoTransactionsAndEventsForItemIdentifier:(id)arg1 configuration:(id)arg2 transactions:(id *)arg3 events:(id *)arg4;
++ (void)generateDemoFilesForPasses:(id)arg1 accountUsers:(id)arg2 peerPaymentPassSerialNumber:(id)arg3;
++ (void)generateDemoFilesWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

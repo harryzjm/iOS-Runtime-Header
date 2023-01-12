@@ -16,7 +16,9 @@
 
 // Remaining properties
 @property(copy, nonatomic) NSArray *accessoryUUIDs; // @dynamic accessoryUUIDs;
+@property(copy, nonatomic) NSNumber *activityNotificationsEnabledForPersonalRequests; // @dynamic activityNotificationsEnabledForPersonalRequests;
 @property(copy, nonatomic) NSNumber *requiresAuthenticationForSecureRequests; // @dynamic requiresAuthenticationForSecureRequests;
+@property(copy, nonatomic) NSArray *siriEndpointAccessoryUUIDs; // @dynamic siriEndpointAccessoryUUIDs;
 
 @end
 

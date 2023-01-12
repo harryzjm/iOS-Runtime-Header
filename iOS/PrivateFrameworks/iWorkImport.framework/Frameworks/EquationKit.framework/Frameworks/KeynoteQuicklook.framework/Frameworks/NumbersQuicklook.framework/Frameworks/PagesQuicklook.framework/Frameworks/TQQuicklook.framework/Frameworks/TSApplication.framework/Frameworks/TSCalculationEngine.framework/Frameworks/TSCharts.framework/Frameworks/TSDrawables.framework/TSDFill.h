@@ -17,26 +17,26 @@
 {
 }
 
-+ (id)instanceWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (void)registerSubclass:(Class)arg1;
 + (id)p_subclassRegistry;
 @property(readonly, nonatomic) NSString *presetKind;
 @property(readonly, nonatomic) long long fillType;
 @property(readonly, nonatomic) TSUColor *referenceColorForFontArchiving;
 @property(readonly, nonatomic) TSUColor *referenceColor;
-- (_Bool)drawsInOneStep;
-- (_Bool)isClear;
+@property(readonly, nonatomic) _Bool drawsInOneStep;
+@property(readonly, nonatomic) _Bool isClear;
 - (_Bool)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
-- (_Bool)isNearlyWhite;
-- (_Bool)isOpaque;
-- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+@property(readonly, nonatomic) _Bool isNearlyWhite;
+@property(readonly, nonatomic) _Bool isOpaque;
+- (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-- (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
+- (void)paintPath:(const struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

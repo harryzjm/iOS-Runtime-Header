@@ -9,6 +9,7 @@
 @class ICInAppMessageEntry, ICInAppMessageMetadataEntry, NSDictionary, NSSet, NSString;
 
 @protocol ICInAppMessageManagerProtocol <NSObject>
+- (void)removeApplicationBadgeForBundleIdentifier:(NSString *)arg1 fromPresentedMessageEntry:(ICInAppMessageEntry *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setProperty:(id)arg1 forKey:(NSString *)arg2 bundleIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)getPropertyForKey:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)setGlobalProperty:(id)arg1 forKey:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

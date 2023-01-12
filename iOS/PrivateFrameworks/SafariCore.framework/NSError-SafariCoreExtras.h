@@ -14,6 +14,6 @@
 @property(readonly, nonatomic) _Bool safari_isSQLiteError;
 @property(readonly, copy, nonatomic) NSString *safari_privacyPreservingDescription;
 - (id)safari_initWithDomain:(id)arg1 code:(long long)arg2 privacyPreservingDescription:(id)arg3;
-- (_Bool)safari_isClientSideNetworkError;
+@property(readonly, nonatomic) _Bool safari_isClientSideNetworkError;
 @end
 

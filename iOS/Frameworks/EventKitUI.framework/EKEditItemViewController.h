@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _showsDoneButton;
 }
 
++ (id)preferredViewControllerForPresentationsFromViewController:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
 @property(nonatomic) _Bool modal; // @synthesize modal=_modal;

@@ -20,7 +20,7 @@
     void *_transitLinkID;
 }
 
-+ (id)markerWithFeature:(CDStruct_5be08681 *)arg1 transitLink:(const CDStruct_cb3d236a *)arg2;
++ (id)markerWithFeature:(void *)arg1 transitLink:(const void *)arg2;
 @property(readonly, nonatomic) void *transitLinkID; // @synthesize transitLinkID=_transitLinkID;
 @property(readonly, nonatomic) NSString *labelLocale; // @synthesize labelLocale=_labelLocale;
 @property(readonly, nonatomic) NSString *labelText; // @synthesize labelText=_labelText;
@@ -33,7 +33,7 @@
 - (id)description;
 - (void)dealloc;
 - (id)initWithIdentifier:(id)arg1;
-- (id)initWithFeature:(CDStruct_5be08681 *)arg1 transitLink:(const CDStruct_cb3d236a *)arg2;
+- (id)initWithFeature:(void *)arg1 transitLink:(const void *)arg2;
 
 @end
 

@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class APPCOutstreamVideoInfo, MISSING_TYPE, NSString;
+@class APPCOutstreamVideoInfo, MISSING_TYPE, NSNumber, NSString;
 
 @interface APPCBannerRepresentation
 {
     MISSING_TYPE *adTag;
+    MISSING_TYPE *adamIdentifier;
+    MISSING_TYPE *appAdTemplateType;
     MISSING_TYPE *outstreamVideoInfo;
 }
 
 - (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 adType:(long long)arg2 privacyMarkerPosition:(long long)arg3 adSize:(struct CGSize)arg4 tapAction:(id)arg5 adTag:(id)arg6 outstreamVideoInfo:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 adType:(long long)arg2 desiredPosition:(long long)arg3 privacyMarkerPosition:(long long)arg4 adSize:(struct CGSize)arg5 tapAction:(id)arg6 adTag:(id)arg7 outstreamVideoInfo:(id)arg8 adamIdentifier:(id)arg9 tapActionTemplateType:(long long)arg10;
 @property(nonatomic, readonly) APPCOutstreamVideoInfo *outstreamVideoInfo; // @synthesize outstreamVideoInfo;
+@property(nonatomic, readonly) long long appAdTemplateType; // @synthesize appAdTemplateType;
+@property(nonatomic, readonly) NSNumber *adamIdentifier; // @synthesize adamIdentifier;
 @property(nonatomic, readonly) NSString *adTag;
 
 @end

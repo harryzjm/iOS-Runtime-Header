@@ -6,8 +6,8 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSObject, NSString, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetContentViewTransitionCoordinator, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSObject, NSString, PXAssetActionManager, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec;
+@protocol PXAnonymousView, PXWidgetContentViewTransitionCoordinator, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @protocol PXWidget <NSObject>
 
@@ -15,7 +15,9 @@
 + (void)preloadResources;
 @property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(readonly, nonatomic) _Bool isInEditMode;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly, nonatomic) _Bool wantsFocus;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property(nonatomic, getter=isFaceModeEnabled) _Bool faceModeEnabled;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
@@ -38,7 +40,9 @@
 @property(retain, nonatomic) PXPhotosDetailsContext *context;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
 @property(nonatomic) __weak id <PXWidgetUnlockDelegate> widgetUnlockDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 @property(nonatomic) __weak id <PXWidgetDelegate> widgetDelegate;
+- (void)spaceBarWasPressed;
 - (void)deviceDidBecomeUnlocked;
 - (void)requestExitEditWithChangesSavingMode:(long long)arg1;
 - (void)userDidSelectDisclosureControl;

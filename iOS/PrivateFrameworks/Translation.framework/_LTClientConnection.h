@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_LTClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_deleteHotfix:(CDUnknownBlockType)arg1;
+- (void)_updateHotfix:(CDUnknownBlockType)arg1;
 - (void)logWithRequestData:(id)arg1;
 - (void)provideFeedback:(id)arg1 withContext:(id)arg2;
 - (void)configInfoForLocale:(id)arg1 otherLocale:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_offlineLanguageStatus:(CDUnknownBlockType)arg1;
 - (void)logRequestOfType:(id)arg1 context:(id)arg2;
 - (void)cleanup;
+- (void)languagesForText:(id)arg1 usingModel:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)languagesForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)languageForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)preheatWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

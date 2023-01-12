@@ -8,12 +8,14 @@
 
 #import <NewsUI/NUArticleDataProvider-Protocol.h>
 
-@class FCArticle, NFEventManager, NSString, NUANFAssetLoader, NUANFContextLoader, NUANFFontLoader;
+@class FCArticle, NFEventManager, NSArray, NSString, NUANFAssetLoader, NUANFContextLoader, NUANFFontLoader, NULinkedContentManager;
 @protocol FCContentContext, NUEmbedDataManager, NUFontRegistration, SXHost;
 
 @interface NUANFArticleDataProvider : NSObject <NUArticleDataProvider>
 {
     FCArticle *_article;
+    NSArray *_linkedContentProviders;
+    long long _relativePriority;
     NSString *_articleID;
     id <FCContentContext> _contentContext;
     id <NUFontRegistration> _fontRegistration;
@@ -23,9 +25,11 @@
     NUANFAssetLoader *_assetLoader;
     id <NUEmbedDataManager> _embedDataManger;
     NFEventManager *_eventManager;
+    NULinkedContentManager *_linkedContentManager;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NULinkedContentManager *linkedContentManager; // @synthesize linkedContentManager=_linkedContentManager;
 @property(retain, nonatomic) NFEventManager *eventManager; // @synthesize eventManager=_eventManager;
 @property(retain, nonatomic) id <NUEmbedDataManager> embedDataManger; // @synthesize embedDataManger=_embedDataManger;
 @property(retain, nonatomic) NUANFAssetLoader *assetLoader; // @synthesize assetLoader=_assetLoader;
@@ -35,6 +39,8 @@
 @property(readonly, nonatomic) id <NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property(readonly, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property(copy, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
+@property(nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
+@property(readonly, nonatomic) NSArray *linkedContentProviders; // @synthesize linkedContentProviders=_linkedContentProviders;
 @property(retain, nonatomic) FCArticle *article; // @synthesize article=_article;
 - (void)setupAssetPrefetchCancellationWithOperation:(id)arg1;
 - (void)setupAssetPrefetchRequestEventsWithEvents:(id)arg1;
@@ -44,7 +50,7 @@
 - (void)prefetchAssets;
 - (void)loadContextWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithArticle:(id)arg1 contentContext:(id)arg2 fontRegistration:(id)arg3 host:(id)arg4 embedDataManager:(id)arg5;
+- (id)initWithArticle:(id)arg1 contentContext:(id)arg2 fontRegistration:(id)arg3 host:(id)arg4 embedDataManager:(id)arg5 linkedContentManager:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

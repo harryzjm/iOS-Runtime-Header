@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class AXMDataRegressionModel, NSArray, NSNumberFormatter, NSString;
+@class AXMChartDescriptor, AXMDataRegressionModel, AXMDataSeriesDescriptor, NSArray, NSNumberFormatter, NSString;
 @protocol AXMDataSummaryCategoryNameProvider;
 
 @interface AXMDataSummary : NSObject
 {
-    NSArray *_axisTitles;
-    NSArray *_xValues;
-    NSArray *_yValues;
+    AXMDataSeriesDescriptor *_series;
+    AXMChartDescriptor *_chartDescriptor;
+    NSArray *_dataFeatureDescriptions;
+    NSArray *_statsDescriptions;
     AXMDataRegressionModel *_regressionModel;
-    unsigned long long _n;
+    unsigned long long _numValues;
     double _r;
     double _rSquared;
     double _minX;
@@ -33,9 +34,15 @@
     NSArray *_outliers;
     NSObject<AXMDataSummaryCategoryNameProvider> *_categoryNameDelegate;
     NSNumberFormatter *_numberFormatter;
+    NSArray *_xValues;
+    NSArray *_yValues;
+    NSArray *_axisTitles;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *axisTitles; // @synthesize axisTitles=_axisTitles;
+@property(retain, nonatomic) NSArray *yValues; // @synthesize yValues=_yValues;
+@property(retain, nonatomic) NSArray *xValues; // @synthesize xValues=_xValues;
 @property(retain, nonatomic) NSNumberFormatter *numberFormatter; // @synthesize numberFormatter=_numberFormatter;
 @property(nonatomic) __weak NSObject<AXMDataSummaryCategoryNameProvider> *categoryNameDelegate; // @synthesize categoryNameDelegate=_categoryNameDelegate;
 @property(readonly, nonatomic) NSArray *outliers; // @synthesize outliers=_outliers;
@@ -53,12 +60,12 @@
 @property(readonly, nonatomic) double minX; // @synthesize minX=_minX;
 @property(readonly, nonatomic) double rSquared; // @synthesize rSquared=_rSquared;
 @property(readonly, nonatomic) double r; // @synthesize r=_r;
-@property(readonly, nonatomic) unsigned long long n; // @synthesize n=_n;
+@property(nonatomic) unsigned long long numValues; // @synthesize numValues=_numValues;
 @property(readonly, nonatomic) AXMDataRegressionModel *regressionModel; // @synthesize regressionModel=_regressionModel;
-@property(readonly, nonatomic) NSArray *yValues; // @synthesize yValues=_yValues;
-@property(readonly, nonatomic) NSArray *xValues; // @synthesize xValues=_xValues;
-@property(readonly, nonatomic) NSArray *axisTitles; // @synthesize axisTitles=_axisTitles;
-- (id)descriptionForXValue:(double)arg1;
+@property(retain, nonatomic) NSArray *statsDescriptions; // @synthesize statsDescriptions=_statsDescriptions;
+@property(retain, nonatomic) NSArray *dataFeatureDescriptions; // @synthesize dataFeatureDescriptions=_dataFeatureDescriptions;
+@property(nonatomic) __weak AXMChartDescriptor *chartDescriptor; // @synthesize chartDescriptor=_chartDescriptor;
+@property(nonatomic) __weak AXMDataSeriesDescriptor *series; // @synthesize series=_series;
 - (double)positionForYAxisValue:(double)arg1;
 - (double)positionForXAxisValue:(double)arg1;
 - (void)getValues:(double *)arg1 fromNSNumberArray:(id)arg2;
@@ -76,9 +83,6 @@
 - (void)computeMeans;
 - (void)computeRanges;
 - (void)compute;
-@property(readonly, nonatomic) NSString *numericalDescription;
-@property(readonly, nonatomic) NSString *simpleDescription;
-@property(readonly, nonatomic) NSString *fullDescription;
 @property(readonly, nonatomic) NSString *bestFitCurveEquation;
 @property(readonly, nonatomic) NSString *outliersDescription;
 @property(readonly, nonatomic) NSString *medianValueDescription;
@@ -90,7 +94,7 @@
 @property(readonly, nonatomic) NSString *modelDescription;
 - (void)setRegressionModel:(id)arg1;
 - (void)computeRegressionModel:(CDUnknownBlockType)arg1;
-- (id)initWithAxisTitles:(id)arg1 xValues:(id)arg2 yValues:(id)arg3;
+- (id)initWithSeries:(id)arg1 chartDescriptor:(id)arg2;
 
 @end
 

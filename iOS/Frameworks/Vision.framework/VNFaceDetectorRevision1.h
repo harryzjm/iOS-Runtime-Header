@@ -9,16 +9,21 @@
 __attribute__((visibility("hidden")))
 @interface VNFaceDetectorRevision1
 {
+    unsigned long long _metalContextPriority;
+    _Bool _useLowPriorityMode;
     struct shared_ptr<vision::mod::ObjectDetector_DCNFaceDetector> _faceDetector;
     VNFaceBBoxAligner *_faceBBoxAligner;
 }
 
++ (id)keyForDetectorWithConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
++ (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)purgeIntermediates;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
+- (_Bool)supportsProcessingDevice:(id)arg1;
 
 @end
 

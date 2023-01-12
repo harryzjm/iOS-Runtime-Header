@@ -12,6 +12,10 @@
 + (id)_subdivisionCodeFromSubdivisionTag:(id)arg1 restrictedToRegionCode:(id)arg2;
 + (id)displayNameForSelectableScriptCode:(id)arg1;
 + (void)setArchivedPreferences:(id)arg1;
++ (id)archivedPreferencesWithHashesForBundleIDs:(id)arg1;
++ (void)archivedPreferencesWithHashesForBundleIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
++ (id)_hashesFromAppPreferences:(id)arg1;
++ (id)_archivedPreferencesWithOverridingLanguages:(id)arg1 hash:(out id *)arg2;
 + (id)archivedPreferencesWithHash:(out id *)arg1;
 + (id)archivedPreferences;
 + (void)unregisterPreferredLanguageForKeyboardLanguage:(id)arg1;
@@ -20,11 +24,13 @@
 + (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1;
 + (void)enableDefaultKeyboardForPreferredLanguages;
 + (void)setLanguageToPreferredLanguages:(id)arg1 fallback:(id)arg2;
++ (void)setPreferredLanguageAndUpdateLocale:(id)arg1;
 + (id)languageArrayAfterSettingLanguage:(id)arg1 fallback:(id)arg2 toLanguageArray:(id)arg3;
 + (_Bool)shouldShowPreferredLanguages;
 + (void)updateShouldShowPreferredLanguages:(_Bool)arg1;
 + (id)canonicalLocaleIdentifierWithValidCalendarForComponents:(id)arg1;
 + (void)setLocaleAfterRegionChange:(id)arg1;
++ (id)localeIdentifierForRegionChange:(id)arg1;
 + (void)setLocaleAfterLanguageChange:(id)arg1;
 + (id)validateLocale:(id)arg1;
 + (void)resetTimeFormat;

@@ -13,7 +13,9 @@
     TRIDatabase *_db;
 }
 
-+ (_Bool)decodeContentIdentifier:(id)arg1 experimentDeployment:(id *)arg2 treatmentId:(id *)arg3 container:(id *)arg4;
++ (id)decodeContentIdentifier:(id)arg1;
++ (id)contentIdentifierForFactorPackSetWithId:(id)arg1;
++ (id)contentIdentifierForRolloutArtifactWithDeployment:(id)arg1;
 + (id)contentIdentifierForTreatmentArtifactWithTreatmentId:(id)arg1 container:(id)arg2;
 + (id)contentIdentifierForExperimentArtifactWithDeployment:(id)arg1;
 - (void).cxx_destruct;

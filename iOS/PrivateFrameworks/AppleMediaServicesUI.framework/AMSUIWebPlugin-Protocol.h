@@ -14,5 +14,8 @@
 - (AMSPromise *)runActionWithIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (NSDictionary *)generateGlobalProperties;
 - (id)initWithBag:(id <AMSBagProtocol>)arg1 account:(ACAccount *)arg2 clientInfo:(AMSProcessInfo *)arg3 propertiesChangedHandler:(void (^)(void))arg4;
+
+@optional
+- (AMSPromise *)purchaseContentWithType:(NSString *)arg1 buyParams:(NSString *)arg2;
 @end
 

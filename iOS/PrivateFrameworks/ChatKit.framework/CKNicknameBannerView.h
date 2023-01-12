@@ -6,7 +6,7 @@
 
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIButton, UIView;
+@class NSArray, NSString, UIButton;
 @protocol CKNicknameBannerViewDelegate;
 
 @interface CKNicknameBannerView <UITextViewDelegate>
@@ -14,16 +14,13 @@
     id <CKNicknameBannerViewDelegate> _delegate;
     NSArray *_nicknameUpdates;
     UIButton *_updateButton;
-    UIView *_bottomSeparatorView;
-    UIView *_topSeparatorView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
-@property(retain, nonatomic) UIView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property(retain, nonatomic) UIButton *updateButton; // @synthesize updateButton=_updateButton;
 @property(retain, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
 @property(nonatomic) id <CKNicknameBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)isLTR;
 - (id)contactStore;
 - (id)nicknameController;
 - (void)updateButtonTapped:(id)arg1;
@@ -31,21 +28,24 @@
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (id)createContactForOutgoingShare;
 - (id)createContactFromNickname:(id)arg1;
-- (id)setCatalystAttributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1;
-- (id)setAttributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1 withActionButtonString:(id)arg2;
+- (id)catalystAttributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1;
+- (id)attributedSubtitleTextBasedOnBannerStyle:(unsigned long long)arg1;
 - (void)_updateSubtitleLabel;
-- (void)overlayUpdateButtonOnSubtitleLinkAttribute;
+- (void)_updateActionButton;
+- (void)_updateCatalystActionButton;
+- (id)actionButtonString;
 - (void)_updateTitleLabel;
 - (void)layoutSubviews;
-- (double)avatarViewAlignmentX;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)titleLabelAlignmentX;
 - (double)maxLabelWidthForSize:(struct CGSize)arg1;
-- (struct UIEdgeInsets)layoutMargins;
 - (void)setupViews;
 - (id)_avatarContactForUpdate:(id)arg1;
 - (void)_updateAvatarView;
+- (_Bool)_allowUpdateForStyle:(unsigned long long)arg1;
 - (id)cancelGlyph;
 - (id)initWithFrame:(struct CGRect)arg1 style:(unsigned long long)arg2 updates:(id)arg3 useNamedTitles:(_Bool)arg4 inUpdatesMode:(_Bool)arg5;
+- (_Bool)__im_ff_uiConsistencyEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

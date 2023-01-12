@@ -11,8 +11,8 @@
 @class NATreeNode, NSString;
 
 @interface HMSettings (HFDebugging) <HFStateDumpBuildable>
-+ (id)hf_LoadSettingsWhitelist:(unsigned long long)arg1;
-+ (void)hf_resetWhiteLists;
++ (id)hf_LoadSettingsAllowlist:(unsigned long long)arg1;
++ (void)hf_resetAllowlists;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_accessorySettingItemAtKeyPath:(id)arg1;
 - (id)hf_accessorySettingAtKeyPath:(id)arg1;

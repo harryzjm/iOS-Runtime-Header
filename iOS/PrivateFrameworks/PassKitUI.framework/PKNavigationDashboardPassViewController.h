@@ -19,7 +19,7 @@
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PassKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, PKAnimatedNavigationBarTitleView, PKDashboardPassViewController, PKGroup, PKGroupsController, PKNavigationDashboardAnimatedTransitioningHandler, PKPGSVTransitionInterstitialView, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassPresentationContext, PKPassthroughView, PKSecureElement, UIPanGestureRecognizer, UIView, _UIDynamicValueAnimation;
+@class NSString, PKAccountCardNumbersPresenter, PKAnimatedNavigationBarTitleView, PKDashboardPassViewController, PKGroup, PKGroupsController, PKNavigationDashboardAnimatedTransitioningHandler, PKPGSVTransitionInterstitialView, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassPresentationContext, PKPassthroughView, PKSecureElement, UIButton, UIPanGestureRecognizer, UIView, _UIDynamicValueAnimation;
 @protocol PKDashboardPassViewControllerDelegate, PKPassGroupViewDelegate, PKPassGroupViewReceiver;
 
 @interface PKNavigationDashboardPassViewController <PKPassGroupViewDelegate, PKPassFooterViewDelegate, PKSecureElementObserver, UIViewControllerTransitioningDelegate, PKPassDeleteHandler, PKPassDeleteAnimationControllerDelegate, UIGestureRecognizerDelegate, CNAvatarViewDelegate, PKSpendingSummaryViewControllerDelegate, PKDashboardPassViewControllerDelegate, PKDashboardDelegate, PKForegroundActiveArbiterObserver, PKPassGroupViewReceiver, PKDiscoveryArticleViewControllerPresenter>
@@ -51,7 +51,9 @@
     PKPassthroughView *_portalledPassthroughView;
     PKPassFooterView *_passFooterView;
     _Bool _passGroupViewAcquired;
-    _Bool _showingFooter;
+    _Bool _passFooterViewVisible;
+    unsigned int _passFooterViewOutstandingAnimations;
+    unsigned int _passFooterViewVisibilityToken;
     _Bool _shouldPauseDynamicCard;
     _Bool _dashboardIsVisible;
     _Bool _shouldUpdateSnapshotView;
@@ -60,6 +62,8 @@
     CDStruct_973bafd3 _activeState;
     PKPassPresentationContext *_context;
     _Bool _isPendingVCPresentation;
+    UIButton *_cardNumbersButton;
+    PKAccountCardNumbersPresenter *_accountCardNumbersPresenter;
     _Bool _footerSuppressed;
     _Bool _passGroupViewIsInCollectionView;
     _Bool _invalidated;
@@ -93,6 +97,7 @@
 - (void)deleteAnimationControllerWillBeginDeleteAnimation:(id)arg1;
 - (_Bool)handleDeletePassRequestWithPass:(id)arg1 forViewController:(id)arg2;
 - (void)groupView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
+- (void)presentInvitationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentSearchWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentSearch;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
@@ -105,8 +110,10 @@
 - (void)showStatement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentBalanceDetailsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)summaryTypeDidChange;
-- (void)presentSpendingSummaryWithType:(unsigned long long)arg1 unit:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentSpendingSummaryWithType:(unsigned long long)arg1 categorization:(unsigned long long)arg2 unit:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentPassDetailsAnimated:(_Bool)arg1 action:(unsigned long long)arg2;
+- (void)presentPassDetailsAnimated:(_Bool)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)presentCardNumbers;
 - (void)infoTapped:(id)arg1;
 - (void)doneTapped:(id)arg1;
 - (void)setTransitionDuration:(double)arg1;
@@ -135,11 +142,10 @@
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (long long)modalPresentationStyle;
-- (void)_showPassFooterView:(_Bool)arg1 forPassView:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_updatePassFooterViewAnimated:(_Bool)arg1;
-- (void)_updatePassFooterViewIfNecessaryAnimated:(_Bool)arg1;
-- (long long)_footerStateForPassView:(id)arg1;
-- (_Bool)_canShowPassFooterWithFooterState:(long long)arg1;
+- (void)_updatePassFooterViewWithReload:(_Bool)arg1;
+- (void)_updatePassFooterView;
+- (void)_updatePassFooterViewIfNecessary;
+- (id)_createPassFooterConfigurationForPassView:(id)arg1;
 - (void)groupView:(id)arg1 faceViewFrameDidChangeForFrontmostPassView:(id)arg2;
 - (void)groupView:(id)arg1 frontmostPassViewDidChange:(id)arg2 withContext:(id)arg3;
 - (void)groupView:(id)arg1 didUpdatePassView:(id)arg2;
@@ -171,6 +177,11 @@
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;
+- (id)presentCardNumbersButtonForAccount:(id)arg1;
+- (id)searchButton;
+- (id)infoButton;
+- (id)doneButton;
+- (double)_navBarButtonSpaceWidth;
 - (id)initWithPassGroupView:(id)arg1 groupsController:(id)arg2 groupViewReceiver:(id)arg3 context:(id)arg4;
 - (id)init;
 

@@ -9,6 +9,7 @@
 #import <PhotoLibraryServices/NSXPCListenerDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, NSXPCInterface, NSXPCListener, PLBackgroundJobService, PLDistributedNotificationHandler, PLPhotoLibraryBundleController, PLTCCObserver, PLXPCMessageLogger;
+@protocol PLPhotoLibraryDaemonService;
 
 @interface PLAssetsdServer : NSObject <NSXPCListenerDelegate>
 {
@@ -21,11 +22,17 @@
     PLDistributedNotificationHandler *_distributedNotificationHandler;
     PLTCCObserver *_tccObserver;
     NSXPCInterface *_assetsdInterface;
+    id <PLPhotoLibraryDaemonService> _syndicationSpotlightReceiver;
+    id <PLPhotoLibraryDaemonService> _syndicationPreferencesListener;
+    id <PLPhotoLibraryDaemonService> _searchSpotlightReciever;
     CDStruct_f4d52fe1 _resourceCacheMetrics;
 }
 
 + (id)sharedServer;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <PLPhotoLibraryDaemonService> searchSpotlightReciever; // @synthesize searchSpotlightReciever=_searchSpotlightReciever;
+@property(retain, nonatomic) id <PLPhotoLibraryDaemonService> syndicationPreferencesListener; // @synthesize syndicationPreferencesListener=_syndicationPreferencesListener;
+@property(retain, nonatomic) id <PLPhotoLibraryDaemonService> syndicationSpotlightReceiver; // @synthesize syndicationSpotlightReceiver=_syndicationSpotlightReceiver;
 @property(nonatomic) CDStruct_f4d52fe1 resourceCacheMetrics; // @synthesize resourceCacheMetrics=_resourceCacheMetrics;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)handleInvalidation:(id)arg1;
@@ -34,6 +41,7 @@
 - (void)removeService:(id)arg1;
 - (void)addService:(id)arg1;
 - (void)logStatus;
+- (void)_registerSyndicationXPCActivity;
 - (void)_checkInWithLaunchd;
 - (void)start;
 - (id)init;

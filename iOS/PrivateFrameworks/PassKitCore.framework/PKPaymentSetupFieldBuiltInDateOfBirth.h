@@ -6,9 +6,12 @@
 
 @interface PKPaymentSetupFieldBuiltInDateOfBirth
 {
+    long long _minimumAge;
 }
 
+@property(readonly, nonatomic) long long minimumAge; // @synthesize minimumAge=_minimumAge;
 - (_Bool)submissionStringMeetsAllRequirements;
+- (void)updateWithConfiguration:(id)arg1;
 - (_Bool)isBuiltIn;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 

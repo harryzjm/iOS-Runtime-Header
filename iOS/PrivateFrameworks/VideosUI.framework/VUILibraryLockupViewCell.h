@@ -8,13 +8,13 @@
 
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class NSString, VUILabel, VUIRentalExpirationLabel, _TVImageView;
+@class NSString, VUIImageView, VUILabel, VUIRentalExpirationLabel;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryLockupViewCell : UICollectionViewCell <VUIRentalExpirationLabelDelegate>
 {
     _Bool _hideTitleLabel;
-    _TVImageView *_imageView;
+    VUIImageView *_imageView;
     double _imageAspectRatio;
     VUILabel *_titleLabel;
     VUIRentalExpirationLabel *_expirationLabel;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIRentalExpirationLabel *expirationLabel; // @synthesize expirationLabel=_expirationLabel;
 @property(retain, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) double imageAspectRatio; // @synthesize imageAspectRatio=_imageAspectRatio;
-@property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) VUIImageView *imageView; // @synthesize imageView=_imageView;
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (void)setHighlighted:(_Bool)arg1;

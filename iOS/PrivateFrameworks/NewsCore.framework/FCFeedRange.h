@@ -38,6 +38,7 @@
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) _Bool reachesBottomOfFeed;
 @property(readonly, nonatomic) _Bool reachesTopOfFeed;
+@property(readonly, copy, nonatomic) FCFeedCursor *middle;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

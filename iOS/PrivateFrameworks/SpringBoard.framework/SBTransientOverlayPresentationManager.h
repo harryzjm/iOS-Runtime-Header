@@ -7,16 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/SBButtonEventsHandler-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerCoordinating-Protocol.h>
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 #import <SpringBoard/SBTransientOverlayViewControllerDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSNumber, NSString, SBAlertItemsController, SBAppStatusBarSettingsAssertion, SBBannerManager, SBCoverSheetPresentationManager, SBHomeGestureArbiter, SBHomeGestureParticipant, SBIdleTimerCoordinatorHelper, SBInAppStatusBarHiddenAssertion, SBLockStateAggregator, SBReachabilityManager, SBTransientOverlayViewController, UIScreen, UIStatusBarStyleRequest, UIWindow;
+@class NSMapTable, NSMutableArray, NSNumber, NSString, SBAlertItemsController, SBAppStatusBarSettingsAssertion, SBBannerManager, SBCoverSheetPresentationManager, SBFZStackParticipant, SBHomeGestureArbiter, SBHomeGestureParticipant, SBIdleTimerCoordinatorHelper, SBInAppStatusBarHiddenAssertion, SBLockStateAggregator, SBReachabilityManager, SBTransientOverlayViewController, UIScreen, UIStatusBarStyleRequest, UIWindow;
 @protocol BSInvalidatable, CSExternalBehaviorProviding, SBIdleTimerCoordinating, SBTransientOverlayPresentationManagerDelegate;
 
-@interface SBTransientOverlayPresentationManager : NSObject <SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBIdleTimerCoordinating, SBTransientOverlayViewControllerDelegate, SBIdleTimerProviding, SBButtonEventsHandler>
+@interface SBTransientOverlayPresentationManager : NSObject <SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBIdleTimerCoordinating, SBTransientOverlayViewControllerDelegate, SBIdleTimerProviding, SBButtonEventsHandler>
 {
     SBAlertItemsController *_alertItemsController;
     SBBannerManager *_bannerManager;
@@ -28,12 +29,14 @@
     NSMapTable *_entityToSceneDeactivationAssertion;
     SBHomeGestureArbiter *_homeGestureArbiter;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
     SBIdleTimerCoordinatorHelper *_idleTimerCoordinatorHelper;
     UIWindow *_initialPresentationKeyWindow;
     id <BSInvalidatable> _interactiveScreenshotGestureDisabledAssertion;
     _Bool _isInitiatingEntityPresentation;
     _Bool _isPendingAlertItems;
     _Bool _isReachabilityTemporarilyDisabled;
+    _Bool _homeAffordanceUpdatesShouldBeAnimated;
     SBLockStateAggregator *_lockStateAggregator;
     SBReachabilityManager *_reachabilityManager;
     UIScreen *_screen;
@@ -53,11 +56,14 @@
 @property(readonly, nonatomic) long long topmostViewControllerInterfaceOrientation; // @synthesize topmostViewControllerInterfaceOrientation=_topmostViewControllerInterfaceOrientation;
 @property(readonly, nonatomic) NSNumber *preferredWhitePointAdaptivityStyleValue; // @synthesize preferredWhitePointAdaptivityStyleValue=_preferredWhitePointAdaptivityStyleValue;
 @property(readonly, nonatomic) _Bool prefersStatusBarActivityItemVisible; // @synthesize prefersStatusBarActivityItemVisible=_prefersStatusBarActivityItemVisible;
+- (void)_windowedAccessoryDidAttachOrDetach:(id)arg1;
 - (void)_updatePreferredWhitePointAdaptivityStyle;
 - (void)_updateFeaturePolicies;
 - (void)_updateDeactivationAssertions;
 - (void)_updateContentStatusBarPresentation;
 - (void)_updateStatusBarWithCurrentExternalStatusBarSettings:(id)arg1 animated:(_Bool)arg2;
+- (void)_updateZStackStateAnimated:(_Bool)arg1 reason:(id)arg2;
+- (void)_updateCurrentEntityHomeGrabberAnimated:(_Bool)arg1;
 - (void)_updateHomeGestureStateAnimated:(_Bool)arg1;
 - (void)_updateWindowHitTestingForEntity:(id)arg1;
 - (void)_updateBackgroundWindowForEntity:(id)arg1;
@@ -94,10 +100,13 @@
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (id)idleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 forReason:(id)arg3;
 - (void)homeGrabberViewDidReceiveClick:(id)arg1;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantResolvedHomeAffordanceSuppressionDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;
@@ -112,6 +121,8 @@
 @property(readonly, nonatomic) _Bool hasVisibleStatusBar;
 @property(readonly, nonatomic) _Bool shouldUseSceneBasedKeyboardFocusForActivePresentation;
 @property(readonly, nonatomic) long long presentedViewControllerCount;
+@property(readonly, nonatomic) _Bool activePresentationPreventsDragAndDrop;
+@property(readonly, nonatomic) _Bool canActivePresentationBecomeLocalFirstResponder;
 @property(readonly, nonatomic) _Bool hasActivePresentation;
 - (_Bool)hasPresentationAboveWindowLevel:(double)arg1;
 - (_Bool)handleDoubleHeightStatusBarTap;
@@ -128,7 +139,7 @@
 @property(readonly, nonatomic) _Bool hasIdleTimerBehaviors;
 @property(readonly, nonatomic) _Bool canHandleButtonEvents;
 - (void)dealloc;
-- (id)initWithScreen:(id)arg1 alertItemsController:(id)arg2 lockStateAggregator:(id)arg3 homeGestureArbiter:(id)arg4 reachabilityManager:(id)arg5;
+- (id)initWithScreen:(id)arg1 alertItemsController:(id)arg2 lockStateAggregator:(id)arg3 homeGestureArbiter:(id)arg4 zStackResolver:(id)arg5 reachabilityManager:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

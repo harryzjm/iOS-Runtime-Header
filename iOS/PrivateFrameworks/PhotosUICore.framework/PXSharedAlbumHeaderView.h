@@ -47,6 +47,7 @@
 - (void)_updateIsNew;
 - (void)_updateSubtitle;
 - (void)_updateTitle;
+- (void)_handleHeaderImage:(id)arg1 imageTag:(unsigned long long)arg2;
 - (void)_updateAvatar:(unsigned long long)arg1;
 - (void)_updateHeaderImage;
 - (void)_updateBackgroundColor;

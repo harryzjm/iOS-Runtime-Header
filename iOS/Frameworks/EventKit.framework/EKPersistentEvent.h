@@ -16,9 +16,10 @@
 - (_Bool)firedTTL;
 - (void)setSuggestionInfo:(id)arg1;
 - (id)suggestionInfo;
-- (_Bool)pushDirtyProperties:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)setConferencesSet:(id)arg1;
+- (id)conferencesSet;
 - (id)participationStatusModifiedDate;
 - (void)setParticipationStatusModifiedDate:(id)arg1;
 - (void)setRecurrenceSet:(id)arg1;
@@ -27,8 +28,8 @@
 - (id)birthdayContactName;
 - (void)setBirthdayContactIdentifier:(id)arg1;
 - (id)birthdayContactIdentifier;
-- (void)setConferenceURL:(id)arg1;
-- (id)conferenceURL;
+- (void)setConferenceURLString:(id)arg1;
+- (id)conferenceURLString;
 - (void)setActions:(id)arg1;
 - (id)actions;
 - (void)setOriginalStartDate:(id)arg1;

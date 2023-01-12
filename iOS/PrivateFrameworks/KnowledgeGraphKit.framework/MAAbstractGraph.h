@@ -15,8 +15,8 @@
 }
 
 - (void).cxx_destruct;
-- (id)addUniqueEdgeWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 didCreate:(_Bool *)arg4;
-- (id)addUniqueNodeWithLabel:(id)arg1 didCreate:(_Bool *)arg2;
+- (id)insertEdgeWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 minimum:(unsigned long long)arg4 maximum:(unsigned long long)arg5 directed:(_Bool)arg6;
+- (id)insertNodeWithLabel:(id)arg1;
 - (id)init;
 
 @end

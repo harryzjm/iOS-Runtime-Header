@@ -100,7 +100,7 @@ __attribute__((visibility("hidden")))
 - (int)playPen:(const char *)arg1 in_size:(unsigned int)arg2 objectIndex:(unsigned char)arg3;
 - (int)playBrush:(const char *)arg1 in_size:(unsigned int)arg2 objectIndex:(unsigned char)arg3;
 - (int)readBrush:(const char *)arg1 in_size:(unsigned int)arg2 returnBrush:(id *)arg3;
-- (int)readGradientBrush:(id)arg1 from:(const char **)arg2 brushFlags:(unsigned int)arg3;
+- (int)readGradientBrush:(id)arg1 from:(const char **)arg2 brushFlags:(unsigned int)arg3 in_size:(unsigned int)arg4;
 - (int)readPath:(const char *)arg1 in_size:(unsigned int)arg2 returnPath:(id *)arg3;
 - (int)readImage:(const char *)arg1 in_size:(unsigned int)arg2 pImage:(id *)arg3;
 - (int)playHeader:(const char *)arg1 in_size:(unsigned int)arg2 in_flags:(unsigned short)arg3;

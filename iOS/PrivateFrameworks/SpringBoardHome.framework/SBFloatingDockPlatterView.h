@@ -38,6 +38,7 @@
 - (void)layoutSubviews;
 - (struct UIEdgeInsets)shadowOutsetsForBounds:(struct CGRect)arg1;
 @property(readonly, nonatomic) struct UIEdgeInsets shadowOutsets;
+@property(copy, nonatomic) NSString *backdropGroupNamespace;
 @property(copy, nonatomic) NSString *backdropGroupName;
 - (id)initWithFrame:(struct CGRect)arg1;
 

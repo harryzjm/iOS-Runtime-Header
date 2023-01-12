@@ -15,6 +15,7 @@
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (_Bool)_accessibilityViewIsVisible;
+- (_Bool)accessibilityScroll:(long long)arg1;
 - (_Bool)_accessibilityOverridesInvisibility;
 - (id)accessibilityLabel;
 

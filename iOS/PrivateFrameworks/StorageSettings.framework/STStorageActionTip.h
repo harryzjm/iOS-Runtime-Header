@@ -12,8 +12,8 @@
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *significantItems; // @synthesize significantItems=_significantItems;
-@property(nonatomic) Class detailControllerClass;
+@property(copy) NSArray *significantItems; // @synthesize significantItems=_significantItems;
+@property Class detailControllerClass;
 - (id)init;
 
 @end

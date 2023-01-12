@@ -18,10 +18,11 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool invalidateEverything; // @synthesize invalidateEverything=_invalidateEverything;
 @property(nonatomic) _Bool flushEverything; // @synthesize flushEverything=_flushEverything;
-- (void)tileset:(unsigned int *)arg1 edition:(unsigned int *)arg2 provider:(unsigned int *)arg3 invalidateOnly:(_Bool *)arg4 atIndex:(unsigned long long)arg5;
+- (void)tileset:(CDUnion_23a7df3d *)arg1 edition:(unsigned int *)arg2 provider:(unsigned int *)arg3 invalidateOnly:(_Bool *)arg4 atIndex:(unsigned long long)arg5;
 - (unsigned long long)tilesetCount;
-- (void)addTileset:(unsigned int)arg1 edition:(unsigned int)arg2 provider:(unsigned int)arg3 invalidateOnly:(_Bool)arg4;
+- (void)addTileset:(CDUnion_23a7df3d)arg1 edition:(unsigned int)arg2 provider:(unsigned int)arg3 invalidateOnly:(_Bool)arg4;
 - (id)init;
+- (id)initWithActiveTileGroup:(id)arg1 oldActiveTileGroup:(id)arg2 dataSetDiffers:(_Bool)arg3 flushEverything:(_Bool)arg4;
 
 @end
 

@@ -18,6 +18,8 @@
     double _aspectFitInteritemSpacing;
     double _panoramaItemAspectRatio;
     double _panoramaInteritemSpacing;
+    double _itemAspectRatio;
+    double _itemCornerRadius;
     long long _maxColumnsForSaliency;
     NSArray *_supportedColumns;
     NSArray *_minimumAssetsRequiredByColumn;
@@ -36,6 +38,8 @@
 @property(readonly, nonatomic) NSArray *supportedColumns; // @synthesize supportedColumns=_supportedColumns;
 @property(readonly, nonatomic) long long maxColumnsForSaliency; // @synthesize maxColumnsForSaliency=_maxColumnsForSaliency;
 @property(readonly, nonatomic) _Bool useSaliency; // @synthesize useSaliency=_useSaliency;
+@property(readonly, nonatomic) double itemCornerRadius; // @synthesize itemCornerRadius=_itemCornerRadius;
+@property(readonly, nonatomic) double itemAspectRatio; // @synthesize itemAspectRatio=_itemAspectRatio;
 @property(readonly, nonatomic) double panoramaInteritemSpacing; // @synthesize panoramaInteritemSpacing=_panoramaInteritemSpacing;
 @property(readonly, nonatomic) double panoramaItemAspectRatio; // @synthesize panoramaItemAspectRatio=_panoramaItemAspectRatio;
 @property(readonly, nonatomic) double aspectFitInteritemSpacing; // @synthesize aspectFitInteritemSpacing=_aspectFitInteritemSpacing;
@@ -48,7 +52,7 @@
 @property(readonly, nonatomic) long long initialNumberOfColumns; // @synthesize initialNumberOfColumns=_initialNumberOfColumns;
 @property(readonly, nonatomic) long long defaultNumberOfColumns; // @synthesize defaultNumberOfColumns=_defaultNumberOfColumns;
 - (long long)bestColumnIndexForPreferredNumberOfColumns:(long long)arg1 allowedColumns:(id)arg2;
-- (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2 availableThumbnailSizes:(id)arg3 userDefaults:(id)arg4;
+- (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2 availableThumbnailSizes:(id)arg3 gridStyle:(long long)arg4 userDefaults:(id)arg5;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
 
 @end

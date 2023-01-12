@@ -10,6 +10,7 @@
 
 @class MPMediaLibrary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaLibraryPlaybackAssetCacheProvider : NSObject <MPCModelPlaybackAssetCacheProviding>
 {
     MPMediaLibrary *_mediaLibrary;
@@ -19,6 +20,7 @@
 + (id)_highQualityCachedAssetDestinationDirectoryForMediaLibrary:(id)arg1;
 + (id)deviceLibraryProviderWithUserIdentity:(id)arg1;
 - (void).cxx_destruct;
+- (long long)_persistentIDForModelObject:(id)arg1;
 - (void)setPlaybackAssetCacheFileAsset:(id)arg1 forGenericObject:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)getPlaybackAssetCacheDestinationURL:(id *)arg1 purchaseBundleDestinationURL:(id *)arg2 forGenericObject:(id)arg3 assetQualityType:(long long)arg4 pathExtension:(id)arg5;
 - (void)clearPlaybackAssetCacheFileAssetForGenericObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

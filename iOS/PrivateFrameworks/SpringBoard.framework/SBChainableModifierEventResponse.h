@@ -13,6 +13,7 @@
 @interface SBChainableModifierEventResponse : NSObject <BSDescriptionProviding>
 {
     NSMutableArray *_childResponses;
+    _Bool _requiresExplicitTransaction;
     _Bool _consumed;
     double _delay;
     CDUnknownBlockType _validator;
@@ -21,6 +22,7 @@
 + (id)newEventResponse;
 + (id)responseByAppendingResponse:(id)arg1 toResponse:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool requiresExplicitTransaction; // @synthesize requiresExplicitTransaction=_requiresExplicitTransaction;
 @property(readonly, nonatomic) double delay; // @synthesize delay=_delay;
 @property(readonly, copy) NSString *description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

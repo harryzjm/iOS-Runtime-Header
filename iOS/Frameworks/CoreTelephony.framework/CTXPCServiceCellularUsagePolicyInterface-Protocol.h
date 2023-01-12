@@ -7,6 +7,8 @@
 @class CTServiceDescriptor;
 
 @protocol CTXPCServiceCellularUsagePolicyInterface
+- (void)setPrivacyProxy:(CTServiceDescriptor *)arg1 enabled:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (void)privacyProxy:(CTServiceDescriptor *)arg1 completion:(void (^)(_Bool, _Bool, NSError *))arg2;
 - (void)setInterfaceCost:(CTServiceDescriptor *)arg1 expensive:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)interfaceCostExpensive:(CTServiceDescriptor *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)isHighDataModeSupported:(CTServiceDescriptor *)arg1 completion:(void (^)(_Bool))arg2;

@@ -18,6 +18,7 @@
 + (void)compositionController:(id)arg1 applyAssetVariation:(unsigned int)arg2 withRecipe:(id)arg3;
 + (id)revertComposition:(id)arg1 originalComposition:(id)arg2 isBasedOnOriginal:(_Bool)arg3 keepCrop:(_Bool)arg4 keepOrientation:(_Bool)arg5 primaryEditSource:(id)arg6 overcaptureEditSource:(id)arg7;
 + (_Bool)hasDepthEditsForCompositionController:(id)arg1;
++ (_Bool)isOrientationOnlyAdjustmentForCompositionController:(id)arg1;
 + (_Bool)isSlomoOnlyAdjustmentForCompositionController:(id)arg1;
 + (_Bool)isAdjustedBeyondDepthForCompositionController:(id)arg1;
 + (id)compositionController:(id)arg1 compositionCopyByApplyingAssetVariation:(unsigned int)arg2 withRecipe:(id)arg3;

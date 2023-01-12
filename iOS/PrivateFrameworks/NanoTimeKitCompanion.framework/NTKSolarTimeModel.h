@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, GEOAlmanac, NSDate;
+@class CLLocation, NSDate;
 
 @interface NTKSolarTimeModel : NSObject
 {
@@ -18,13 +18,19 @@
     NSDate *_endDateForReferenceDate;
     NSDate *_localSolarMidnightDate;
     double _effectiveSolarDayLength;
-    GEOAlmanac *_sunriseSunsetSolarAlmanac;
-    GEOAlmanac *_dawnDuskSolarAlmanac;
+    NSDate *_localSunriseDate;
+    NSDate *_localSunsetDate;
+    NSDate *_localDawnDate;
+    NSDate *_localDuskDate;
+    NSDate *_localSolarNoonDate;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) GEOAlmanac *dawnDuskSolarAlmanac; // @synthesize dawnDuskSolarAlmanac=_dawnDuskSolarAlmanac;
-@property(retain, nonatomic) GEOAlmanac *sunriseSunsetSolarAlmanac; // @synthesize sunriseSunsetSolarAlmanac=_sunriseSunsetSolarAlmanac;
+@property(retain, nonatomic) NSDate *localSolarNoonDate; // @synthesize localSolarNoonDate=_localSolarNoonDate;
+@property(retain, nonatomic) NSDate *localDuskDate; // @synthesize localDuskDate=_localDuskDate;
+@property(retain, nonatomic) NSDate *localDawnDate; // @synthesize localDawnDate=_localDawnDate;
+@property(retain, nonatomic) NSDate *localSunsetDate; // @synthesize localSunsetDate=_localSunsetDate;
+@property(retain, nonatomic) NSDate *localSunriseDate; // @synthesize localSunriseDate=_localSunriseDate;
 @property(nonatomic) _Bool dependentValuesNeedUpdate; // @synthesize dependentValuesNeedUpdate=_dependentValuesNeedUpdate;
 @property(nonatomic) double effectiveSolarDayLength; // @synthesize effectiveSolarDayLength=_effectiveSolarDayLength;
 @property(retain, nonatomic) NSDate *localSolarMidnightDate; // @synthesize localSolarMidnightDate=_localSolarMidnightDate;
@@ -37,6 +43,7 @@
 - (void)updateForTimeZoneChange;
 - (void)updateModelWithDate:(id)arg1;
 - (void)_updateDependentValues;
+- (id)_nextEvent:(id)arg1 ofType:(unsigned int)arg2;
 - (id)dateForPercentageThroughPeriod:(double)arg1;
 - (double)percentageThroughPeriodForDate:(id)arg1;
 - (double)percentageThroughPeriodInCurrentSolarDayForDate:(id)arg1;

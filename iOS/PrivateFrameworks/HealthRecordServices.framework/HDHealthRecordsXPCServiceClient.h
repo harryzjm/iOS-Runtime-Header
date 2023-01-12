@@ -25,6 +25,11 @@
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_synchronousPerformWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_performWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)processSignedClinicalDataContextCollection:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)processOriginalSignedClinicalDataRecords:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)reprocessOriginalSignedClinicalDataRecords:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)preprocessSignedClinicalDataFHIRResourceObject:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)preprocessSignedClinicalData:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)optInDataForFHIRDocumentWithRequest:(id)arg1 redactor:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)executeFHIRExtractionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)executeFHIRReferenceExtractionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

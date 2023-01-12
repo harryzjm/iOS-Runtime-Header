@@ -18,15 +18,18 @@
 // Remaining properties
 @property(nonatomic, copy) NSDate *boundingEndDate; // @dynamic boundingEndDate;
 @property(nonatomic, copy) NSDate *boundingStartDate; // @dynamic boundingStartDate;
+@property(nonatomic, copy) NSString *categoryIdentifier; // @dynamic categoryIdentifier;
 @property(nonatomic, copy) NSString *contentKindRawValue; // @dynamic contentKindRawValue;
 @property(nonatomic, copy) NSSet *dataTypes; // @dynamic dataTypes;
 @property(nonatomic, copy) NSDate *dateSubmitted; // @dynamic dateSubmitted;
+@property(nonatomic, copy) NSString *favoriteStatusRawValue; // @dynamic favoriteStatusRawValue;
 @property(nonatomic, copy) NSSet *featureTags; // @dynamic featureTags;
 @property(nonatomic, retain) _TtC18HealthPlatformCore11FeedSection *feedSection; // @dynamic feedSection;
 @property(nonatomic) _Bool hideInDiscover; // @dynamic hideInDiscover;
+@property(nonatomic, copy) NSString *hostingControllerClassName; // @dynamic hostingControllerClassName;
 @property(nonatomic) _Bool indexForSearch; // @dynamic indexForSearch;
-@property(nonatomic) _Bool isFavorite; // @dynamic isFavorite;
 @property(nonatomic, copy) NSSet *keywords; // @dynamic keywords;
+@property(nonatomic, copy) NSString *localizedCategoryName; // @dynamic localizedCategoryName;
 @property(nonatomic, copy) NSString *localizedDescription; // @dynamic localizedDescription;
 @property(nonatomic, copy) NSString *localizedTitle; // @dynamic localizedTitle;
 @property(nonatomic, copy) NSString *pluginPackage; // @dynamic pluginPackage;
@@ -44,6 +47,7 @@
 @property(nonatomic) double suggestionRelevanceScore; // @dynamic suggestionRelevanceScore;
 @property(nonatomic, copy) NSString *uniqueIdentifier; // @dynamic uniqueIdentifier;
 @property(nonatomic, copy) NSData *userData; // @dynamic userData;
+@property(nonatomic, copy) NSString *viewClassName; // @dynamic viewClassName;
 @property(nonatomic, copy) NSString *viewControllerClassName; // @dynamic viewControllerClassName;
 
 @end

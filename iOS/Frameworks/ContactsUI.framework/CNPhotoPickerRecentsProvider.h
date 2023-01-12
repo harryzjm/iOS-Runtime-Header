@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     CNVisualIdentity *_visualIdentity;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNVisualIdentity *visualIdentity; // @synthesize visualIdentity=_visualIdentity;
 @property(nonatomic) _Bool containsMonogram; // @synthesize containsMonogram=_containsMonogram;

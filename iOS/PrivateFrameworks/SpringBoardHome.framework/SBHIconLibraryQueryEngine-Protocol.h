@@ -10,6 +10,7 @@
 @protocol SBHIconLibraryQueryEngineObserver;
 
 @protocol SBHIconLibraryQueryEngine <NSObject>
+- (void)shutdown;
 - (void)removeObserver:(id <SBHIconLibraryQueryEngineObserver>)arg1;
 - (void)addObserver:(id <SBHIconLibraryQueryEngineObserver>)arg1;
 - (void)executeQuery:(SBHIconLibraryQuery *)arg1;

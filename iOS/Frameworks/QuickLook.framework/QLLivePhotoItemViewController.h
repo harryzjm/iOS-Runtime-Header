@@ -5,12 +5,13 @@
 //
 
 #import <QuickLook/PHLivePhotoViewDelegate-Protocol.h>
+#import <QuickLook/QLImageAnalysisManagerDelegate-Protocol.h>
 #import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSDate, NSLayoutConstraint, NSString, PHLivePhotoView, UIImageView;
+@class NSDate, NSDictionary, NSLayoutConstraint, NSNumber, NSString, PHLivePhotoView, QLImageAnalysisManager, UIImage, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLLivePhotoItemViewController <PHLivePhotoViewDelegate, UIGestureRecognizerDelegate>
+@interface QLLivePhotoItemViewController <PHLivePhotoViewDelegate, UIGestureRecognizerDelegate, QLImageAnalysisManagerDelegate>
 {
     struct CGSize _imageSize;
     PHLivePhotoView *_livePhotoView;
@@ -23,13 +24,34 @@ __attribute__((visibility("hidden")))
     _Bool _isFullScreen;
     _Bool _fullyZoomedOut;
     _Bool _transitionInProgress;
+    NSNumber *_savedFullScreenState;
     _Bool _shouldPlayHint;
+    QLImageAnalysisManager *_imageAnalysisManager;
 }
 
 - (void).cxx_destruct;
+- (_Bool)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
+- (_Bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
+- (void)_updateImageAnalysisInteractionAnimated:(_Bool)arg1;
+- (void)didScroll:(id)arg1;
+- (void)didZoom:(id)arg1;
+- (void)adjustImageInteractionForScrollEvent:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateImageAnalysisViewsConstraints;
+- (void)_setupAndStartImageAnalysis;
+- (void)imageAnalysisInteractionDidDismissVisualSearchController;
+- (void)imageAnalysisInteractionWillPresentVisualSearchController;
+- (void)imageAnalyzerWantsUpdateInfoButtonWithAnimation:(_Bool)arg1;
+@property(readonly, nonatomic) NSDictionary *clientPreviewOptions;
+@property(readonly, nonatomic) UIView *imageAnalysisView;
+@property(readonly, nonatomic) UIImage *image;
 - (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
+- (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (long long)preferredWhitePointAdaptivityStyle;
 - (_Bool)canToggleFullScreen;
 - (_Bool)canEnterFullScreen;

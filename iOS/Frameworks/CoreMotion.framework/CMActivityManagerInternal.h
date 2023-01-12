@@ -10,7 +10,7 @@
 
 @interface CMActivityManagerInternal : NSObject
 {
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     CDUnknownBlockType fActivityHandler;
     NSObject<OS_dispatch_queue> *fPrivateQueue;
     _Bool fSubscribedToMotionState;

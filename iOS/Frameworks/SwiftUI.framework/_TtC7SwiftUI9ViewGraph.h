@@ -16,6 +16,7 @@
     MISSING_TYPE *_rootTransform;
     MISSING_TYPE *_zeroPoint;
     MISSING_TYPE *_emptyViewResponders;
+    MISSING_TYPE *_emptyPlatformItemList;
     MISSING_TYPE *_proposedSize;
     MISSING_TYPE *_safeAreaInsets;
     MISSING_TYPE *_rootGeometry;
@@ -30,21 +31,24 @@
     MISSING_TYPE *_rootPhase;
     MISSING_TYPE *eventSubgraph;
     MISSING_TYPE *_defaultLayoutComputer;
+    MISSING_TYPE *_focusedItem;
     MISSING_TYPE *_focusedValues;
+    MISSING_TYPE *_focusStore;
+    MISSING_TYPE *_accessibilityFocusStore;
+    MISSING_TYPE *_accessibilityFocus;
     MISSING_TYPE *_rootResponders;
     MISSING_TYPE *_rootAccessibilityNodes;
     MISSING_TYPE *_rootLayoutComputer;
     MISSING_TYPE *_rootDisplayList;
     MISSING_TYPE *_rootPlatformItemList;
-    MISSING_TYPE *_viewDebugValues;
-    MISSING_TYPE *cachedIdealSize;
     MISSING_TYPE *cachedSizeThatFits;
     MISSING_TYPE *sizeThatFitsObserver;
     MISSING_TYPE *requestedOutputs;
     MISSING_TYPE *disabledOutputs;
+    MISSING_TYPE *mainUpdates;
     MISSING_TYPE *needsFocusUpdate;
     MISSING_TYPE *nextUpdate;
-    MISSING_TYPE *preferenceBridge;
+    MISSING_TYPE *_preferenceBridge;
     MISSING_TYPE *bridgedPreferences;
     MISSING_TYPE *accessibilityRelationshipScope;
 }

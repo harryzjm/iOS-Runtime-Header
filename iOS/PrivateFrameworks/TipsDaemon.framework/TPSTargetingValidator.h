@@ -10,9 +10,9 @@
 {
 }
 
-+ (void)_validateCondition:(id)arg1 joinType:(unsigned long long)arg2 context:(id)arg3 cache:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-+ (void)validateConditions:(id)arg1 joinType:(unsigned long long)arg2 context:(id)arg3 cache:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-+ (_Bool)validateConditions:(id)arg1 joinType:(unsigned long long)arg2 context:(id)arg3 cache:(id)arg4 completionQueue:(id)arg5 error:(id *)arg6;
++ (void)_validateCondition:(id)arg1 joinType:(long long)arg2 context:(id)arg3 cache:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (void)validateConditions:(id)arg1 joinType:(long long)arg2 context:(id)arg3 cache:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (_Bool)validateConditions:(id)arg1 joinType:(long long)arg2 context:(id)arg3 cache:(id)arg4 completionQueue:(id)arg5 error:(id *)arg6;
 
 @end
 

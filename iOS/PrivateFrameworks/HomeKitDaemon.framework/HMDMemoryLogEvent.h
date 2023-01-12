@@ -4,32 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSString;
 
-@interface HMDMemoryLogEvent <HMDCoreAnalyticsLogging, HMDDiagnosticReportLogging>
+@interface HMDMemoryLogEvent : HMMLogEvent <HMDDiagnosticReportLogging, HMMCoreAnalyticsLogging>
 {
     NSString *_reason;
-    NSNumber *_memoryUsage;
-    NSNumber *_maxMemoryUsage;
+    unsigned long long _memoryUsage;
+    unsigned long long _maxMemoryUsage;
 }
 
-+ (id)memoryLogEventWithReason:(id)arg1 memoryUsage:(id)arg2 maxMemoryUsage:(id)arg3;
-+ (id)identifier;
++ (id)memoryLogEventWithReason:(id)arg1 memoryUsage:(unsigned long long)arg2 maxMemoryUsage:(unsigned long long)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSNumber *maxMemoryUsage; // @synthesize maxMemoryUsage=_maxMemoryUsage;
-@property(readonly, nonatomic) NSNumber *memoryUsage; // @synthesize memoryUsage=_memoryUsage;
+@property(readonly) unsigned long long maxMemoryUsage; // @synthesize maxMemoryUsage=_maxMemoryUsage;
+@property(readonly) unsigned long long memoryUsage; // @synthesize memoryUsage=_memoryUsage;
 @property(readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
-- (id)__initWithReason:(id)arg1 memoryUsage:(id)arg2 maxMemoryUsage:(id)arg3;
-- (id)init;
-- (_Bool)shouldSubmitEvent;
 - (id)serializedEvent;
 - (id)eventName;
+- (id)__initWithReason:(id)arg1 memoryUsage:(unsigned long long)arg2 maxMemoryUsage:(unsigned long long)arg3;
+- (id)init;
 - (void)updateDiagnosticReportSignature:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 @property(readonly, copy) NSString *diagnosticReportEventSubType;
 @property(readonly, copy) NSString *diagnosticReportEventType;
 

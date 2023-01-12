@@ -13,12 +13,14 @@
 @interface HUViewControllerCollectionViewCell : UICollectionViewCell <HUViewControllerCell>
 {
     _Bool _allowSelfSizing;
+    _Bool _useDefaultCellBackgroundColor;
     UIViewController *_viewController;
     UIViewController *_parentViewController;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
+@property(nonatomic) _Bool useDefaultCellBackgroundColor; // @synthesize useDefaultCellBackgroundColor=_useDefaultCellBackgroundColor;
 @property(nonatomic) _Bool allowSelfSizing; // @synthesize allowSelfSizing=_allowSelfSizing;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 - (void)_removeFromParentViewControllerAndClearProperty:(_Bool)arg1;

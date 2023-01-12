@@ -21,9 +21,13 @@
     UIColor *_backgroundColor;
     MKPlaceCardActionItem *_selectedItem;
     id _value;
+    CDUnknownBlockType _actionBlock;
 }
 
++ (id)actionTypesToMenuElements:(id)arg1 menuElementCreationBlock:(CDUnknownBlockType)arg2;
++ (id)buildActionMenuForItems:(id)arg1 buildingOptions:(id)arg2 menuElementCreationBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
 @property(retain, nonatomic) id value; // @synthesize value=_value;
 @property(retain, nonatomic) MKPlaceCardActionItem *selectedItem; // @synthesize selectedItem=_selectedItem;
 @property(nonatomic) _Bool selected; // @synthesize selected=_selected;
@@ -35,6 +39,11 @@
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+- (id)menuElementWithActionHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool isDestructive;
+- (id)resolvedActionItem;
+- (id)description;
+- (id)initWithActionBlock:(CDUnknownBlockType)arg1;
 - (id)initWithType:(unsigned long long)arg1 displayString:(id)arg2 enabled:(_Bool)arg3 urlStrings:(id)arg4 attribution:(id)arg5;
 - (id)initWithType:(unsigned long long)arg1 displayString:(id)arg2 enabled:(_Bool)arg3;
 

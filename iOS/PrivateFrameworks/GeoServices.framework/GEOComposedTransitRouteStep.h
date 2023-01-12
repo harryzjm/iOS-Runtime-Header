@@ -22,10 +22,12 @@
     GEOPBTransitStop *_destinationStop;
     GEOPBTransitHall *_originHall;
     GEOPBTransitHall *_destinationHall;
+    NSArray *_advisories;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *advisories; // @synthesize advisories=_advisories;
 @property(readonly, nonatomic) GEOPBTransitHall *destinationHall; // @synthesize destinationHall=_destinationHall;
 @property(readonly, nonatomic) GEOPBTransitHall *originHall; // @synthesize originHall=_originHall;
 @property(readonly, nonatomic) GEOPBTransitStop *destinationStop; // @synthesize destinationStop=_destinationStop;
@@ -60,6 +62,7 @@
 - (id)startingStop;
 @property(readonly, nonatomic) GEOComposedTransitRouteStep *nextTransitStep;
 @property(readonly, nonatomic) GEOComposedTransitRouteStep *previousTransitStep;
+@property(readonly, nonatomic) NSArray *regionAlerts;
 @property(readonly, nonatomic) GEOTransitScheduleInfo *scheduleInfo;
 @property(readonly, nonatomic) id <GEOTransitVehicleEntries> vehicleEntries;
 - (id)instructions;

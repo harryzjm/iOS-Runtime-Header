@@ -17,8 +17,8 @@
 @property(readonly) id <NSTextLocation> endLocation; // @synthesize endLocation=_endLocation;
 @property(readonly) id <NSTextLocation> location; // @synthesize location=_location;
 - (id)terminator;
-- (id)shortDescription;
 - (id)description;
+- (id)debugDescription;
 - (id)textRangeByFormingUnionWithTextRange:(id)arg1;
 - (id)textRangeByIntersectingWithTextRange:(id)arg1;
 - (_Bool)intersectsWithTextRange:(id)arg1;

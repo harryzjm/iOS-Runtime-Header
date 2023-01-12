@@ -19,6 +19,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
+- (id)initWithResponseCode:(long long)arg1;
 - (id)initWithInputtedText:(id)arg1 cancelled:(_Bool)arg2;
 
 @end

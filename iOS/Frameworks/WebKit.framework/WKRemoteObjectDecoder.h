@@ -10,12 +10,12 @@ __attribute__((visibility("hidden")))
 @interface WKRemoteObjectDecoder : NSCoder
 {
     struct RetainPtr<_WKRemoteObjectInterface> _interface;
-    const struct Dictionary *_rootDictionary;
-    const struct Dictionary *_currentDictionary;
+    const void *_rootDictionary;
+    const void *_currentDictionary;
     SEL _replyToSelector;
-    const struct Array *_objectStream;
+    const void *_objectStream;
     unsigned long long _objectStreamPosition;
-    const struct HashSet<const void *, WTF::DefaultHash<const void *>, WTF::HashTraits<const void *>> *_allowedClasses;
+    const void *_allowedClasses;
 }
 
 - (id).cxx_construct;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)containsValueForKey:(id)arg1;
 - (_Bool)allowsKeyedCoding;
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
-- (id)initWithInterface:(id)arg1 rootObjectDictionary:(const struct Dictionary *)arg2 replyToSelector:(SEL)arg3;
+- (id)initWithInterface:(id)arg1 rootObjectDictionary:(const void *)arg2 replyToSelector:(SEL)arg3;
 
 @end
 

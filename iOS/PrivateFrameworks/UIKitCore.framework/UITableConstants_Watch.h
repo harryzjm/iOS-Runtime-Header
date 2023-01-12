@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedConstants;
 - (id)defaultCheckmarkImageForCell:(id)arg1;
-- (id)defaultHeaderFooterBackgroundColorForTableViewStyle:(long long)arg1 tableBackgroundColor:(id)arg2 floatingHeaderFooter:(_Bool)arg3;
+- (struct _UITableConstantsBackgroundProperties)defaultHeaderFooterBackgroundPropertiesForTableViewStyle:(long long)arg1 tableBackgroundColor:(id)arg2 floating:(_Bool)arg3;
+- (_Bool)useChromelessSectionHeadersAndFootersForTableStyle:(long long)arg1;
 
 @end
 

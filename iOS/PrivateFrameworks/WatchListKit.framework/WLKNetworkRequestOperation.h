@@ -52,6 +52,7 @@
 - (void)prepareAndStartNetworkRequest;
 - (void)configureSession;
 - (void)prepareURLRequest:(CDUnknownBlockType)arg1;
+- (id)shortDescription;
 - (id)initWithURLRequest:(id)arg1 options:(long long)arg2;
 - (id)init;
 - (id)originalExpirationDate;

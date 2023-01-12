@@ -11,6 +11,7 @@
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (unsigned int)payloadVersion;
 + (id)payloadClassID;
++ (id)persistedPropertyNamesForEntityNames;
 + (id)modelProperties;
 + (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;

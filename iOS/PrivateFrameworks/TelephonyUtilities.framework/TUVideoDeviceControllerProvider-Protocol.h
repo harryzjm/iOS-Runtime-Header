@@ -6,15 +6,19 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class CALayer, NSArray, NSString, VideoAttributes;
+@class AVCaptureDevice, CALayer, NSArray, NSString, VideoAttributes;
 @protocol TUVideoDeviceControllerProviderDelegate;
 
 @protocol TUVideoDeviceControllerProvider <NSObject>
 @property(nonatomic) __weak id <TUVideoDeviceControllerProviderDelegate> delegate;
+@property(nonatomic, getter=isCameraBlurEnabled) _Bool cameraBlurEnabled;
+@property(nonatomic) _Bool allowsCameraBlurToggling;
+@property(nonatomic, getter=isCinematicFramingEnabled) _Bool cinematicFramingEnabled;
 @property(copy, nonatomic) VideoAttributes *localVideoAttributes;
 @property(readonly, copy, nonatomic) NSArray *inputDevices;
 @property(readonly, copy, nonatomic) NSString *localCameraUID;
 @property(readonly, nonatomic, getter=isPreviewRunning) _Bool previewRunning;
+- (_Bool)supportsCameraBlurForDevice:(AVCaptureDevice *)arg1;
 - (void)endPIPToPreviewAnimation;
 - (void)beginPIPToPreviewAnimation;
 - (void)endPreviewToPIPAnimation;

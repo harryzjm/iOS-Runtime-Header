@@ -29,6 +29,8 @@
 @property(readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_descriptionForRedacted:(_Bool)arg1;
+- (id)redactedDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

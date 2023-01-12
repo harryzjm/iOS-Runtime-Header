@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *entityManager;
     MISSING_TYPE *encodedVersion;
+    MISSING_TYPE *classComponentTag;
     MISSING_TYPE *codingEntity;
     MISSING_TYPE *codingComponent;
     MISSING_TYPE *isLoadingForAuthoring;

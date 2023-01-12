@@ -11,6 +11,7 @@
 
 @class CRDocument, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CRRegister : NSObject <CRDataType, CRCoding>
 {
     CRDocument *_document;

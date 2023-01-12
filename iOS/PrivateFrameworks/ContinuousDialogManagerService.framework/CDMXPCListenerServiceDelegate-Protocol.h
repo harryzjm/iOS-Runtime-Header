@@ -6,9 +6,11 @@
 
 #import <ContinuousDialogManagerService/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSError, SIRINLUResponse;
 
 @protocol CDMXPCListenerServiceDelegate <NSObject>
+- (void)handleServiceErrorResponse:(NSError *)arg1;
+- (void)handleServiceNLUResponse:(SIRINLUResponse *)arg1;
 - (void)handleServiceAceUpdate:(NSDictionary *)arg1;
 @end
 

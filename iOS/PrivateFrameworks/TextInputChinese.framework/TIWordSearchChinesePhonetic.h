@@ -25,10 +25,9 @@
 @property(nonatomic) _Bool fuzzyPinyinEnabled; // @synthesize fuzzyPinyinEnabled=_fuzzyPinyinEnabled;
 - (void)updateAddressBook;
 - (void)addContact:(id)arg1 toVocabulary:(void *)arg2 toReadingPairs:(id)arg3;
-- (id)transLiterateReading:(id)arg1 withName:(id)arg2;
 - (id)uncachedCandidatesForOperation:(id)arg1;
 - (id)candidatesCacheKeyForOperation:(id)arg1;
-- (void)clearCacheForInputString:(id)arg1 keyboardInput:(id)arg2 selectedDisambiguationCandidateIndex:(unsigned long long)arg3;
+- (void)clearCacheForInputString:(id)arg1 keyboardInput:(id)arg2 unambiguousSyllableCount:(unsigned long long)arg3 selectedDisambiguationCandidateIndex:(unsigned long long)arg4;
 - (unsigned long long)mecabraAnalysisOptionsWithAutocorrectionEnabled:(_Bool)arg1 firstSyllableLocked:(_Bool)arg2 reanalysisMode:(_Bool)arg3 hardwareKeyboardMode:(_Bool)arg4 predictionEnabled:(_Bool)arg5;
 - (void)dealloc;
 - (int)mecabraInputMethodType;

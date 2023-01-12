@@ -11,7 +11,7 @@
 @interface REMAppleAccountUtilities : NSObject
 {
     _Bool _primaryICloudACAccountIsValid;
-    ACAccount *_primaryICloudACAccount;
+    ACAccount *_unsafeUntilSystemReady_primaryICloudACAccount;
     ACAccountStore *_accountStore;
     ACAccount *__debug_primaryICloudACAccount;
 }
@@ -25,14 +25,15 @@
 @property(retain, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 - (void)_setPrimaryICloudACAccount:(id)arg1;
 - (void)_unsetMigrationFlagsWithACAccount:(id)arg1 inStore:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)primaryICloudAccountCalDavService;
-@property(readonly) _Bool primaryICloudAccountEnabled;
+- (id)status;
+- (id)unsafeUntilSystemReady_primaryICloudAccountCalDavService;
+@property(readonly) _Bool unsafeUntilSystemReady_primaryICloudAccountEnabled;
 - (void)saveDidChooseToMigrate:(_Bool)arg1 didFinishMigration:(_Bool)arg2 toACAccount:(id)arg3 inStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)accountStoreDidChange:(id)arg1;
 - (void)invalidatePrimaryICloudACAccount;
 - (void)internalInvalidatePrimaryICloudACAccount;
-- (id)allICloudAccountsWithCloudKitEnabled;
-@property(readonly) ACAccount *primaryICloudACAccount; // @synthesize primaryICloudACAccount=_primaryICloudACAccount;
+- (id)unsafeUntilSystemReady_allICloudAccountsWithCloudKitEnabled;
+@property(readonly) ACAccount *unsafeUntilSystemReady_primaryICloudACAccount; // @synthesize unsafeUntilSystemReady_primaryICloudACAccount=_unsafeUntilSystemReady_primaryICloudACAccount;
 - (id)accessQueue;
 - (void)dealloc;
 - (id)initForObservingAccountStoreChanges:(_Bool)arg1;

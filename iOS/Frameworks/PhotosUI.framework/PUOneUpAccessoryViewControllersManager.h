@@ -9,7 +9,7 @@
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PXPhotosDetailsUIViewControllerDelegate-Protocol.h>
 
-@class NSMapTable, NSString, PUBrowsingSession;
+@class NSMapTable, NSString, PUBrowsingSession, PUOneUpViewControllerSpec;
 @protocol PUOneUpAccessoryViewControllersManagerDelegate;
 
 @interface PUOneUpAccessoryViewControllersManager : NSObject <PUBrowsingViewModelChangeObserver, PXPhotosDetailsUIViewControllerDelegate>
@@ -17,31 +17,40 @@
     struct {
         _Bool preventRevealInMomentActionForAssetReference;
         _Bool requestDismissal;
-    } _delegateRepondsTo;
+        _Bool invalidateAccessoryLayout;
+        _Bool preventInternalFileRadarActionForAssetReference;
+    } _delegateRespondsTo;
     PUBrowsingSession *_browsingSession;
     id <PUOneUpAccessoryViewControllersManagerDelegate> _delegate;
     CDUnknownBlockType _unlockDeviceStatus;
     CDUnknownBlockType _unlockDeviceHandler;
     NSMapTable *__accessoryViewControllers;
+    PUOneUpViewControllerSpec *__spec;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PUOneUpViewControllerSpec *_spec; // @synthesize _spec=__spec;
 @property(readonly, nonatomic) NSMapTable *_accessoryViewControllers; // @synthesize _accessoryViewControllers=__accessoryViewControllers;
 @property(copy, nonatomic) CDUnknownBlockType unlockDeviceHandler; // @synthesize unlockDeviceHandler=_unlockDeviceHandler;
 @property(copy, nonatomic) CDUnknownBlockType unlockDeviceStatus; // @synthesize unlockDeviceStatus=_unlockDeviceStatus;
 @property(nonatomic) __weak id <PUOneUpAccessoryViewControllersManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
+- (void)photosDetailsUIViewControllerCompositionDidChange:(id)arg1;
 - (_Bool)photosDetailsUIViewControllerRequestDismissal:(id)arg1;
 - (id)_createAccessoryViewControllerForAssetReference:(id)arg1;
 - (long long)_accessoryViewTypeForAsset:(id)arg1;
 - (void)_invalidateAccessoryViewControllersForAssetReferences:(id)arg1;
 - (id)assetReferenceForAccessoryViewController:(id)arg1;
+- (id)createAccessoryViewControllerForAssetReference:(id)arg1;
 - (id)accessoryViewControllerForAssetReference:(id)arg1 createIfNeeded:(_Bool)arg2;
 - (id)accessoryViewControllerForAssetReference:(id)arg1;
+- (_Bool)shouldHideStatusBarWhenShowingAccessoryViewControllerForAssetReference:(id)arg1;
+- (_Bool)shouldHideNavigationBarWhenShowingAccessoryViewControllerForAssetReference:(id)arg1;
 - (_Bool)shouldHideToolbarWhenShowingAccessoryViewControllerForAssetReference:(id)arg1;
+- (_Bool)_isPhoneAndLandscape;
 - (long long)accessoryViewTypeForAsset:(id)arg1;
-- (id)initWithBrowsingSession:(id)arg1;
+- (id)initWithBrowsingSession:(id)arg1 spec:(id)arg2;
 - (id)init;
 
 // Remaining properties

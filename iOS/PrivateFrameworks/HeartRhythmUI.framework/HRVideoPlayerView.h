@@ -34,6 +34,7 @@
 @property(retain, nonatomic) UIImageView *thumbnailImageView; // @synthesize thumbnailImageView=_thumbnailImageView;
 @property(retain, nonatomic) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(retain, nonatomic) NSArray *items; // @synthesize items=_items;
+- (void)_didReceivePlayerNotification:(id)arg1;
 - (void)_setUpNotifications;
 - (void)_setUpUI;
 - (void)setPlayer:(id)arg1;

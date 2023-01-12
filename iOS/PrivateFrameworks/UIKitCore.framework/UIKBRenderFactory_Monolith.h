@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
+- (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (id)_variantTraitsForLetterKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)_disabledTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)_activeTraitsForKeyplaneSwitchKey:(id)arg1 onKeyplane:(id)arg2;
@@ -18,6 +19,10 @@ __attribute__((visibility("hidden")))
 - (void)configureCornersOnGeometry:(id)arg1 forKey:(id)arg2;
 - (void)configureSymbolStyle:(id)arg1 forActiveKeyplaneSwitchKey:(id)arg2;
 - (void)configureSymbolStyle:(id)arg1 forEnabledKeyplaneSwitchKey:(id)arg2;
+- (id)_disabledTraitsForControlKey:(id)arg1;
+- (id)_activeTraitsForControlKey:(id)arg1;
+- (id)_highlightedTraitsForControlKey:(id)arg1;
+- (id)_enabledTraitsForControlKey:(id)arg1;
 - (id)_disabledTraitsForLetterKey:(id)arg1;
 - (id)_activeTraitsForLetterKey:(id)arg1;
 - (id)_highlightedTraitsForLetterKey:(id)arg1;
@@ -30,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_secondaryTextOffsetForKey:(id)arg1;
 - (struct CGPoint)_textOffsetForKey:(id)arg1;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
+- (struct CGRect)_insetRectForSpaceClearSymbolFrame:(struct CGRect)arg1;
 - (_Bool)forceVariantsInsideKeyplane;
 - (_Bool)smallTextForSpaceAndClear;
 - (_Bool)spaceKeyIsPressed;
@@ -58,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (id)highlightedKeyColor;
 - (id)displayContentsForKey:(id)arg1;
 - (void)lowQualityTraits:(id)arg1;
+- (long long)assetIdiom;
 
 @end
 

@@ -18,6 +18,7 @@
     PKCredentialProvisioningView *_provisioningView;
     _Bool _isCancelling;
     _Bool _isAdvancing;
+    _Bool _outstandingAlert;
     PKIdleTimerAssertion *_idleTimerAssertion;
     PKSubcredentialPairingFlowControllerContext *_provisioningContext;
     id <PKSubcredentialPairingFlowControllerProtocol> _flowController;

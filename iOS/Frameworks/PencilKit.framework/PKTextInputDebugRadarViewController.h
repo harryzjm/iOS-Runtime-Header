@@ -6,46 +6,57 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PencilKit/PKTextInputDebugReplayViewDelegate-Protocol.h>
+#import <PencilKit/PKTextInputDebugRadarEntryCellDelegate-Protocol.h>
+#import <PencilKit/UICollectionViewDataSource-Protocol.h>
 
-@class NSArray, NSString, PKTextInputDebugReplayView, PKTextInputDebugSharpenerLog, UIBarButtonItem, UIButton, UISegmentedControl;
+@class NSMutableArray, NSMutableIndexSet, NSString, PKTextInputDebugSharpenerLog, UIBarButtonItem, UICollectionView, UISegmentedControl;
+@protocol PKTextInputDebugRadarViewControllerDelegate;
 
-@interface PKTextInputDebugRadarViewController : UIViewController <PKTextInputDebugReplayViewDelegate>
+@interface PKTextInputDebugRadarViewController : UIViewController <UICollectionViewDataSource, PKTextInputDebugRadarEntryCellDelegate>
 {
     PKTextInputDebugSharpenerLog *_sharpenerLog;
-    UISegmentedControl *_detailControl;
-    NSArray *_contextLabels;
-    NSArray *_intendedTexts;
-    PKTextInputDebugReplayView *_replayView;
-    UIButton *_replayPlayPauseButton;
-    UIBarButtonItem *_submitButton;
+    id <PKTextInputDebugRadarViewControllerDelegate> _delegate;
+    UISegmentedControl *__contextDetailControl;
+    UIBarButtonItem *__submitButton;
+    UICollectionView *__entriesCollectionView;
+    double __keyboardVerticalOverlap;
+    NSMutableArray *__intendedTexts;
+    NSMutableIndexSet *__includedEntryIndexes;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIBarButtonItem *submitButton; // @synthesize submitButton=_submitButton;
-@property(retain, nonatomic) UIButton *replayPlayPauseButton; // @synthesize replayPlayPauseButton=_replayPlayPauseButton;
-@property(retain, nonatomic) PKTextInputDebugReplayView *replayView; // @synthesize replayView=_replayView;
-@property(retain, nonatomic) NSArray *intendedTexts; // @synthesize intendedTexts=_intendedTexts;
-@property(retain, nonatomic) NSArray *contextLabels; // @synthesize contextLabels=_contextLabels;
-@property(retain, nonatomic) UISegmentedControl *detailControl; // @synthesize detailControl=_detailControl;
+@property(retain, nonatomic) NSMutableIndexSet *_includedEntryIndexes; // @synthesize _includedEntryIndexes=__includedEntryIndexes;
+@property(retain, nonatomic) NSMutableArray *_intendedTexts; // @synthesize _intendedTexts=__intendedTexts;
+@property(nonatomic, setter=_setKeyboardVerticalOverlap:) double _keyboardVerticalOverlap; // @synthesize _keyboardVerticalOverlap=__keyboardVerticalOverlap;
+@property(retain, nonatomic) UICollectionView *_entriesCollectionView; // @synthesize _entriesCollectionView=__entriesCollectionView;
+@property(retain, nonatomic) UIBarButtonItem *_submitButton; // @synthesize _submitButton=__submitButton;
+@property(retain, nonatomic) UISegmentedControl *_contextDetailControl; // @synthesize _contextDetailControl=__contextDetailControl;
+@property(nonatomic) __weak id <PKTextInputDebugRadarViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PKTextInputDebugSharpenerLog *sharpenerLog; // @synthesize sharpenerLog=_sharpenerLog;
+- (void)_dismiss;
 - (void)_launchTTRAndDismiss;
 - (id)_generateLaunchURLWithLogFilename:(id)arg1;
 - (id)_logEntryTextForRadarTitle;
-- (id)_loggedLocaleDescription;
+- (id)_loggedMainLocaleDescription;
 - (id)_accumulatedLogEntryTextsForRadar;
 - (id)_buildString;
 - (id)_deviceString;
-- (void)debugReplayViewDidFinishReplay:(id)arg1;
+- (void)_handleKeyboardWillHide:(id)arg1;
+- (void)_handleKeyboardWillShow:(id)arg1;
+- (void)_handleSubmitRadarButton:(id)arg1;
+- (void)_handleDetailControlChanged:(id)arg1;
+- (void)_handleCancelButton:(id)arg1;
+- (long long)_selectedContentLevel;
+- (void)entryCellIntendedTextDidChange:(id)arg1;
+- (void)entryCellIncludedEntryDidChange:(id)arg1;
+- (void)_configureCell:(id)arg1 atIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)_updateScrollView;
+- (void)_updateSubmitButton;
+- (void)_setupViews;
+- (void)_loadIntendedTexts;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)handleSubmitRadarButton:(id)arg1;
-- (void)handlePlayPauseButton:(id)arg1;
-- (void)handleDetailControl:(id)arg1;
-- (void)handleCancelButton:(id)arg1;
-- (void)updateCurrentLogEntries;
-- (id)_contextStringForLogEntry:(id)arg1;
-- (void)updatePlayPauseButtonTitle;
-- (void)setupViews;
 - (void)viewDidLoad;
 - (id)initWithSharpenerLog:(id)arg1;
 - (_Bool)_canShowWhileLocked;

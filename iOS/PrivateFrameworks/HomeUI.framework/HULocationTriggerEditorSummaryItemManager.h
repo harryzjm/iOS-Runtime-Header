@@ -8,11 +8,11 @@
 
 #import <HomeUI/HUPresenceUserPickerItemModuleDelegate-Protocol.h>
 
-@class HFItem, HFLocationTriggerBuilder, HUPresenceUserPickerItemModule, HUTriggerConditionEditorItemModule, NSString;
+@class HFEventTriggerBuilder, HFItem, HUPresenceUserPickerItemModule, HUTriggerConditionEditorItemModule, NSString;
 
 @interface HULocationTriggerEditorSummaryItemManager : HFItemManager <HUPresenceUserPickerItemModuleDelegate>
 {
-    HFLocationTriggerBuilder *_triggerBuilder;
+    HFEventTriggerBuilder *_triggerBuilder;
     HUPresenceUserPickerItemModule *_userPickerModule;
     HUTriggerConditionEditorItemModule *_conditionEditorModule;
     HFItem *_locationItem;
@@ -28,7 +28,7 @@
 @property(retain, nonatomic) HFItem *locationItem; // @synthesize locationItem=_locationItem;
 @property(readonly, nonatomic) HUTriggerConditionEditorItemModule *conditionEditorModule; // @synthesize conditionEditorModule=_conditionEditorModule;
 @property(readonly, nonatomic) HUPresenceUserPickerItemModule *userPickerModule; // @synthesize userPickerModule=_userPickerModule;
-@property(readonly, nonatomic) HFLocationTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
+@property(readonly, nonatomic) HFEventTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
 - (void)userPickerModule:(id)arg1 didUpdatePresenceEvent:(id)arg2;
 - (_Bool)_hasCustomLocation;
 - (_Bool)_canEditLocation;

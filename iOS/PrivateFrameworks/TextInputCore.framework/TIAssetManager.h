@@ -9,22 +9,18 @@
 #import <TextInputCore/DDSAssetCenterDelegate-Protocol.h>
 #import <TextInputCore/TIAssetManaging-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, TIMobileAssetTimer, TIRequestedInputModes;
-@protocol OS_dispatch_queue, TIInputModePreferenceProvider, TIMobileAssetMediator;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, NSTimer, TIRequestedInputModes;
+@protocol OS_dispatch_queue, TIInputModePreferenceProvider;
 
 @interface TIAssetManager : NSObject <DDSAssetCenterDelegate, TIAssetManaging>
 {
     NSMutableArray *_notificationTokens;
     NSMutableSet *_languagesWithWarmedAssets;
-    _Bool _assetDownloadingEnabled;
     CDUnknownBlockType _enabledInputModeIdentifiersProviderBlock;
+    CDUnknownBlockType _preferencesProviderBlock;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
-    id <TIMobileAssetMediator> _mobileAssetMediator;
-    NSMutableDictionary *_assetsByInputMode;
-    NSMutableDictionary *_assetsByInputModeLevel;
     NSArray *_requestedInputModes_mainThreadCache;
     id <TIInputModePreferenceProvider> _inputModePreferenceProvider;
-    TIMobileAssetTimer *_timer;
     NSArray *_currentActiveRegions;
     NSArray *_currentNormalizedActiveRegions;
     NSTimer *_didUpdateAssetsTimer;
@@ -42,26 +38,11 @@
 @property(retain, nonatomic) NSTimer *didUpdateAssetsTimer; // @synthesize didUpdateAssetsTimer=_didUpdateAssetsTimer;
 @property(retain, nonatomic) NSArray *currentNormalizedActiveRegions; // @synthesize currentNormalizedActiveRegions=_currentNormalizedActiveRegions;
 @property(retain, nonatomic) NSArray *currentActiveRegions; // @synthesize currentActiveRegions=_currentActiveRegions;
-@property(readonly, nonatomic) _Bool assetDownloadingEnabled; // @synthesize assetDownloadingEnabled=_assetDownloadingEnabled;
-@property(retain, nonatomic) TIMobileAssetTimer *timer; // @synthesize timer=_timer;
 @property(readonly, nonatomic) id <TIInputModePreferenceProvider> inputModePreferenceProvider; // @synthesize inputModePreferenceProvider=_inputModePreferenceProvider;
 @property(copy, nonatomic) NSArray *requestedInputModes_mainThreadCache; // @synthesize requestedInputModes_mainThreadCache=_requestedInputModes_mainThreadCache;
-@property(readonly, nonatomic) NSMutableDictionary *assetsByInputModeLevel; // @synthesize assetsByInputModeLevel=_assetsByInputModeLevel;
-@property(readonly, nonatomic) NSMutableDictionary *assetsByInputMode; // @synthesize assetsByInputMode=_assetsByInputMode;
-@property(readonly, nonatomic) id <TIMobileAssetMediator> mobileAssetMediator; // @synthesize mobileAssetMediator=_mobileAssetMediator;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property(copy, nonatomic) CDUnknownBlockType preferencesProviderBlock; // @synthesize preferencesProviderBlock=_preferencesProviderBlock;
 @property(copy, nonatomic) CDUnknownBlockType enabledInputModeIdentifiersProviderBlock; // @synthesize enabledInputModeIdentifiersProviderBlock=_enabledInputModeIdentifiersProviderBlock;
-- (_Bool)purgeAsset:(id)arg1;
-- (id)purgeableAssets;
-- (void)performMaintenance;
-- (void)updateInputModesAndLevels;
-- (void)addAssets:(id)arg1;
-- (void)submitStatistics:(id)arg1;
-- (void)gatherStatistics:(id)arg1;
-- (void)scheduleNextDownload;
-- (void)startDownloadingUninstalledAssetsForInputModeLevels:(id)arg1 regions:(id)arg2;
-- (void)updateInstalledAssets;
-- (void)updateAssetDownloadingEnabled;
 - (void)getActiveRegionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)topActiveRegions;
 - (void)normalizedRegionsForGeoCodedAddresses:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -74,34 +55,31 @@
 - (id)levelsForInputMode:(id)arg1;
 - (void)didUpdateAssets;
 - (void)scheduleAssetsDidChangeNotificationWithDelay:(double)arg1;
-- (void)newAssetInstalled:(id)arg1;
 - (_Bool)inputModeHasRegions:(id)arg1;
 - (id)ddsLanguageIdentifierFromInputMode:(id)arg1;
 - (id)ddsAssertionIDFromInputMode:(id)arg1 withPotentialRegions:(id)arg2;
 - (void)addAssertionWithInputMode:(id)arg1 assertionID:(id)arg2 potentialRegions:(id)arg3;
 - (void)updateAssertionsForInputModes:(id)arg1;
 - (void)appleKeyboardsPreferencesChanged:(id)arg1;
-- (void)appleKeyboardsInternalSettingsChanged:(id)arg1;
 - (void)didUpdateAssetsWithType:(id)arg1;
 - (void)unregisterForNotifications;
 - (void)registerForNotifications;
 - (void)removeLinguisticAssetsAssertionWithIdentifier:(id)arg1 forClientID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)addLinguisticAssetsAssertionForLanguage:(id)arg1 assertionID:(id)arg2 region:(id)arg3 clientID:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)requestAssetDownloadForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)assetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2;
 - (void)_warmAssetQueryForLanguage:(id)arg1;
 - (void)_warmAssetQueriesForInputModes:(id)arg1;
 - (id)_ddsContentItemsFromAssets:(id)arg1 contentType:(id)arg2 filteredWithRegion:(_Bool)arg3;
 - (id)_ddsAssetsForLanguageIdentifier:(id)arg1 cachedOnly:(_Bool)arg2;
+- (void)ddsAssetsForInputMode:(id)arg1 cachedOnly:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)ddsAssetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2 filteredWithRegion:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)ddsAssetContentItemsWithContentType:(id)arg1 inputMode:(id)arg2 filteredWithRegion:(_Bool)arg3;
 @property(readonly, nonatomic) NSMutableSet *languagesWithWarmedAssets;
 @property(readonly, nonatomic) double requestExpirationInterval;
-- (id)recursiveDescription;
 - (void)dealloc;
-- (id)initWithMobileAssetMediator:(id)arg1 requestedInputModes:(id)arg2 inputModePreferenceProvider:(id)arg3 enabledInputModesProvider:(CDUnknownBlockType)arg4;
+- (id)initWithRequestedInputModes:(id)arg1 inputModePreferenceProvider:(id)arg2 enabledInputModesProvider:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)initForTestingWithMobileAssetMediator:(id)arg1 requestedInputModes:(id)arg2 inputModePreferenceProvider:(id)arg3 enabledInputModesProvider:(CDUnknownBlockType)arg4;
+- (id)initForTestingWithRequestedInputModes:(id)arg1 inputModePreferenceProvider:(id)arg2 enabledInputModesProvider:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, AVCStatisticsCollector, VCRateControlMediaController;
+@class AVCBasebandCongestionDetector, AVCRateControlFeedbackController, AVCStatisticsCollector, VCNetworkFeedbackController, VCRateControlMediaController;
 
 __attribute__((visibility("hidden")))
 @interface VCSessionParticipantOneToOneConfig
@@ -19,10 +19,16 @@ __attribute__((visibility("hidden")))
     VCRateControlMediaController *_mediaController;
     struct tagHANDLE *_mediaQueue;
     struct tagVCMediaQueue *_vcMediaQueue;
+    VCNetworkFeedbackController *_networkFeedbackController;
     _Bool _negotiatedVideoEnabled;
+    _Bool _negotiatedScreenEnabled;
+    _Bool _initUsingWifiTiers;
 }
 
+@property(nonatomic) _Bool initUsingWifiTiers; // @synthesize initUsingWifiTiers=_initUsingWifiTiers;
+@property(nonatomic) _Bool negotiatedScreenEnabled; // @synthesize negotiatedScreenEnabled=_negotiatedScreenEnabled;
 @property(nonatomic) _Bool negotiatedVideoEnabled; // @synthesize negotiatedVideoEnabled=_negotiatedVideoEnabled;
+@property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
 @property(nonatomic) struct tagVCMediaQueue *vcMediaQueue; // @synthesize vcMediaQueue=_vcMediaQueue;
 @property(nonatomic) struct tagHANDLE *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property(retain, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;

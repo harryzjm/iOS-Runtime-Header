@@ -67,6 +67,7 @@
 @property(readonly, nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property(nonatomic) _Bool constrainSize; // @synthesize constrainSize=_constrainSize;
 @property(readonly, copy, nonatomic) _DUIPreview *preview; // @synthesize preview=_preview;
+- (_Bool)_isEligibleForFocusOcclusion;
 - (void)_unmaskPlatterView;
 - (void)updateTransform;
 - (void)didMoveToSuperview;

@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_fc1e4a4a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_fc1e4a4a)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSArray *neural_phoneme_sequence;
 @property(readonly, nonatomic) NSArray *replacement;
 @property(readonly, nonatomic) NSArray *prompts;
 @property(readonly, nonatomic) NSArray *phoneme_sequence;

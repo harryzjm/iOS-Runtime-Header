@@ -14,6 +14,7 @@
 
 @interface CKFunCameraViewController : UIViewController <CKBrowserViewControllerSendDelegate, CKCamPhysicalCaptureNotifierDelegate>
 {
+    _Bool _isDismissing;
     id <CKFunCameraViewControllerDelegate> _delegate;
     IMBalloonPlugin *_balloonPlugin;
     UIView *_funCameraView;
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) CKCamPhysicalCaptureNotifier *physicalCaptureNotifier; // @synthesize physicalCaptureNotifier=_physicalCaptureNotifier;
 @property(retain, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *funCameraAppViewController; // @synthesize funCameraAppViewController=_funCameraAppViewController;
 @property(retain, nonatomic) UIView *funCameraView; // @synthesize funCameraView=_funCameraView;
+@property(nonatomic) _Bool isDismissing; // @synthesize isDismissing=_isDismissing;
 @property(retain, nonatomic) IMBalloonPlugin *balloonPlugin; // @synthesize balloonPlugin=_balloonPlugin;
 @property(nonatomic) __weak id <CKFunCameraViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)physicalCaptureNotifierDidChangeState:(id)arg1;

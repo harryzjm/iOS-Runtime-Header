@@ -23,9 +23,11 @@
 - (void)updateViewConstraints;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3 contentLayout:(long long)arg4;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
-- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 itemTableViewController:(id)arg4;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4 itemTableViewController:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

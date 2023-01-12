@@ -25,7 +25,6 @@
 @property(readonly, nonatomic) _Bool hasActiveEnergy; // @synthesize hasActiveEnergy=_hasActiveEnergy;
 @property(readonly, nonatomic) unsigned short heartRate; // @synthesize heartRate=_heartRate;
 @property(readonly, nonatomic) _Bool hasHeartRate; // @synthesize hasHeartRate=_hasHeartRate;
-- (_Bool)_appendUInt16Value:(unsigned short)arg1 type:(unsigned char)arg2 toData:(char **)arg3 before:(const char *)arg4;
 - (void)addAverageHeartRate:(unsigned short)arg1;
 - (void)addTotalEnergy:(unsigned short)arg1;
 - (void)addActiveEnergy:(unsigned short)arg1;

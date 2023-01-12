@@ -113,6 +113,8 @@
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) unsigned long long compressionFootprint;
+@property(readonly) long long compressionType;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) unsigned long long protectionOptions;

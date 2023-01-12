@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class MRCommandResult;
 
 @interface MRSendCommandResultMessage
 {
-    NSArray *_results;
+    MRCommandResult *_commandResult;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *results;
-@property(readonly, nonatomic) unsigned int sendError;
+@property(readonly, nonatomic) MRCommandResult *commandResult;
+- (unsigned int)sendError;
 - (unsigned long long)type;
-- (id)initWithCommandID:(id)arg1 sendError:(unsigned int)arg2 results:(id)arg3;
+- (id)initWithCommandID:(id)arg1 commandResult:(id)arg2;
 
 @end
 

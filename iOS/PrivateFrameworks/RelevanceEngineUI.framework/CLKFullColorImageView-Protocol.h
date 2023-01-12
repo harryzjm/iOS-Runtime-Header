@@ -16,8 +16,6 @@
 - (id)initFullColorImageViewWithDevice:(CLKDevice *)arg1;
 
 @optional
-+ (_Bool)tritium_wantsCrossfadeAnimation;
 - (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(NSObject<OS_dispatch_group> *)arg2;
-- (void)enumerateQuadViewsWithBlock:(void (^)(CLKUIQuadView *))arg1;
 @end
 

@@ -8,10 +8,11 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class CUMobileDevice, CUPairedPeer, CURangingMeasurement, NSData, NSDictionary, NSString, NSUUID, SFDevice;
+@class CUMobileDevice, CUPairedPeer, CURangingMeasurement, NSData, NSDate, NSDictionary, NSString, NSUUID, SFDevice;
 
 @interface RPDevice : NSObject <NSSecureCoding>
 {
+    _Bool _idsDeviceIdentifierConflict;
     unsigned char _deviceActionType;
     _Bool _needsSetup;
     int _activityLevel;
@@ -23,6 +24,7 @@
     unsigned int _systemPairState;
     unsigned int _wifiDeviceIEFlags;
     NSString *_accountID;
+    NSDate *_activityLevelTimeStamp;
     NSData *_bleAuthTag;
     NSString *_contactID;
     NSString *_identifier;
@@ -81,11 +83,13 @@
 @property(readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
+@property(readonly, nonatomic) _Bool idsDeviceIdentifierConflict; // @synthesize idsDeviceIdentifierConflict=_idsDeviceIdentifierConflict;
 @property(readonly, copy, nonatomic) NSString *idsDeviceIdentifier; // @synthesize idsDeviceIdentifier=_idsDeviceIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property(readonly, copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property(readonly, copy, nonatomic) NSData *bleAuthTag; // @synthesize bleAuthTag=_bleAuthTag;
+@property(readonly, nonatomic) NSDate *activityLevelTimeStamp; // @synthesize activityLevelTimeStamp=_activityLevelTimeStamp;
 @property(readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;
 @property(readonly, copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 - (void)updateWithWiFiDevice:(id)arg1 changes:(unsigned int)arg2;
@@ -94,6 +98,7 @@
 - (unsigned int)updateWithMobileDevice:(id)arg1;
 - (unsigned int)updateWithBonjourDevice:(id)arg1;
 - (void)_updateTXTDictionary:(id)arg1;
+- (double)timeSinceLastActivityLevelChange;
 - (id)descriptionWithLevel:(int)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

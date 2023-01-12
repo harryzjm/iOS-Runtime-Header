@@ -6,7 +6,6 @@
 
 @class BRCProgress, BRCServerZone, NSIndexSet;
 
-__attribute__((visibility("hidden")))
 @interface BRCDownloadContent
 {
     unsigned long long _liveFileID;

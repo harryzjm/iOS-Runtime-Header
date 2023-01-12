@@ -48,8 +48,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_itemCountChanged;
 - (_Bool)_wantsProportionalDistribution;
 - (void)_insertIndividualGuidesAndConstraintsAsNecessary;
-- (void)_setUpMultilineTextWidthDisambiguationConstraintForItem:(id)arg1;
-- (double)_constantForMultilineTextWidthDisambiguationConstraintWithNumberOfVisibleItems:(unsigned long long)arg1;
+- (void)_setUpMultilineTextWidthDisambiguationConstraintForItem:(id)arg1 numberOfVisibleMultilineItems:(unsigned long long)arg2;
+- (id)_preparedImprovedMultilineTextWidthDisambiguationConstraintForItem:(id)arg1 numberOfVisibleMultilineItems:(unsigned long long)arg2;
+- (id)_preparedFaultyCompatibleMultilineTextWidthDisambiguationConstraintForItem:(id)arg1;
+- (double)_constantForMultilineTextWidthDisambiguationConstraintWithNumberOfRelevantItems:(unsigned long long)arg1;
 - (void)_setUpHidingDimensionConstraintForItem:(id)arg1;
 - (void)_setUpDimensionConstraintForItem:(id)arg1 referenceItem:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_setUpSpacingOrCenteringGuideForGapIndex:(unsigned long long)arg1;

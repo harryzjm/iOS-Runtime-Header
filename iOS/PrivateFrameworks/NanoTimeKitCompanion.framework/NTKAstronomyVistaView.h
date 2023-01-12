@@ -6,15 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-#import <NanoTimeKitCompanion/NUAnimationObserver-Protocol.h>
-#import <NanoTimeKitCompanion/NUViewDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NUNIAnimationObserver-Protocol.h>
+#import <NanoTimeKitCompanion/NUNIViewDelegate-Protocol.h>
 
-@class CLKDevice, CLKUIQuadView, NSMutableSet, NSString, NUScene, NUView, UIImageView;
+@class CLKDevice, CLKUIQuadView, NSMutableSet, NSString, NUNIScene, NUNIView, UIImageView;
 @protocol NTKAstronomyVistaViewObserver;
 
-@interface NTKAstronomyVistaView : UIView <NUAnimationObserver, NUViewDelegate>
+@interface NTKAstronomyVistaView : UIView <NUNIAnimationObserver, NUNIViewDelegate>
 {
-    NUView *_viewer;
+    NUNIView *_viewer;
     UIImageView *_fallbackImageView;
     unsigned long long _fallbackVista;
     NSMutableSet *_activeContentsAnimations;
@@ -22,15 +22,22 @@
     unsigned int _isSupplemental:1;
     unsigned int _isDisplayOn:1;
     unsigned int _isAnimating:1;
+    float _supplementalSpheroidSize;
+    float _supplementalHorizontalInset;
+    float _supplementalTopInset;
+    float _supplementalBottomInset;
     CLKDevice *_device;
     id <NTKAstronomyVistaViewObserver> _observer;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) float supplementalBottomInset; // @synthesize supplementalBottomInset=_supplementalBottomInset;
+@property(nonatomic) float supplementalTopInset; // @synthesize supplementalTopInset=_supplementalTopInset;
+@property(nonatomic) float supplementalHorizontalInset; // @synthesize supplementalHorizontalInset=_supplementalHorizontalInset;
+@property(nonatomic) float supplementalSpheroidSize; // @synthesize supplementalSpheroidSize=_supplementalSpheroidSize;
 @property(nonatomic) __weak id <NTKAstronomyVistaViewObserver> observer; // @synthesize observer=_observer;
 @property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 - (void)viewWillDisplay:(id)arg1 forTime:(double)arg2;
-- (void)setZoomFraction:(float)arg1 targetDiameter:(float)arg2;
 - (void)universeAnimationFinished:(id)arg1;
 - (void)_setVista:(unsigned long long)arg1 scene:(id)arg2;
 - (void)setVista:(unsigned long long)arg1;
@@ -46,11 +53,13 @@
 - (void)updateSunLocationAnimated:(_Bool)arg1;
 - (void)setMinFrameInterval:(int)arg1;
 - (void)setOpaque:(_Bool)arg1;
-@property(retain, nonatomic) NUScene *scene;
+@property(retain, nonatomic) NUNIScene *scene;
 - (id)_fallbackImageForVista:(unsigned long long)arg1;
 @property(readonly, nonatomic) CLKUIQuadView *quadView;
 - (id)snapshotImage;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2 textureSuffix:(id)arg3 colorSpace:(long long)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2 textureSuffix:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 
 // Remaining properties

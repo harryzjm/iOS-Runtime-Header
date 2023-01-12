@@ -6,12 +6,12 @@
 
 @interface TSCHChartGridCountAdapter
 {
-    _Bool mCountFromOne;
-    unsigned long long mIndexFactor;
+    _Bool _countFromOne;
+    unsigned long long _indexFactor;
 }
 
-@property(nonatomic) unsigned long long indexFactor; // @synthesize indexFactor=mIndexFactor;
-@property(nonatomic) _Bool countFromOne; // @synthesize countFromOne=mCountFromOne;
+@property(nonatomic) unsigned long long indexFactor; // @synthesize indexFactor=_indexFactor;
+@property(nonatomic) _Bool countFromOne; // @synthesize countFromOne=_countFromOne;
 - (void)setValue:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)valueAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;

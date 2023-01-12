@@ -9,7 +9,7 @@
 @interface GKMeshGraph
 {
     NSMutableArray *_sourceObstacles;
-    struct GKCMeshGraph *_cMeshGraph;
+    void *_cMeshGraph;
     Class _nodeClass;
 }
 
@@ -38,8 +38,8 @@
 - (void)setMakeNodesFromTriangleCenters:(_Bool)arg1;
 @property(nonatomic) unsigned long long triangulationMode;
 @property(readonly, nonatomic) NSArray *obstacles;
-- (struct GKCMeshGraph *)cMeshGraph;
-- (struct GKCGraph *)makeCGraph;
+- (void *)cMeshGraph;
+- (void *)makeCGraph;
 
 @end
 

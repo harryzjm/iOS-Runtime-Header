@@ -27,7 +27,7 @@
 @property(retain, nonatomic) NSArray *suggestionsForCluster; // @synthesize suggestionsForCluster=_suggestionsForCluster;
 @property(retain, nonatomic) NSArray *clusters; // @synthesize clusters=_clusters;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

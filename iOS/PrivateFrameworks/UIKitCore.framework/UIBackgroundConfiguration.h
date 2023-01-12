@@ -10,7 +10,7 @@
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 #import <UIKitCore/_UIBackgroundConfigurationInternal-Protocol.h>
 
-@class NSString, UIColor, UIView, UIVisualEffect;
+@class NSString, UIColor, UIImage, UIView, UIVisualEffect;
 
 @interface UIBackgroundConfiguration : NSObject <_UIBackgroundConfigurationInternal, NSCopying, NSSecureCoding>
 {
@@ -22,6 +22,8 @@
         unsigned int hasCustomizedBackgroundColor:1;
         unsigned int hasCustomizedBackgroundColorTransformer:1;
         unsigned int hasCustomizedVisualEffect:1;
+        unsigned int hasCustomizedImage:1;
+        unsigned int hasCustomizedImageContentMode:1;
         unsigned int hasCustomizedStrokeColor:1;
         unsigned int hasCustomizedStrokeColorTransformer:1;
         unsigned int hasCustomizedStrokeWidth:1;
@@ -33,6 +35,8 @@
     UIColor *_backgroundColor;
     CDUnknownBlockType _backgroundColorTransformer;
     UIVisualEffect *_visualEffect;
+    UIImage *_image;
+    long long _imageContentMode;
     UIColor *_strokeColor;
     CDUnknownBlockType _strokeColorTransformer;
     double _strokeWidth;
@@ -49,6 +53,8 @@
 + (id)listAccompaniedSidebarCellConfiguration;
 + (id)listSidebarCellConfiguration;
 + (id)listSidebarHeaderConfiguration;
++ (id)_listInsetGroupedHeaderFooterConfiguration;
++ (id)_listInsetGroupedCellConfiguration;
 + (id)listGroupedHeaderFooterConfiguration;
 + (id)listGroupedCellConfiguration;
 + (id)listPlainHeaderFooterConfiguration;
@@ -58,13 +64,17 @@
 @property(nonatomic, setter=_setShadowType:) long long _shadowType; // @synthesize _shadowType;
 @property(nonatomic, getter=_maskedCorners, setter=_setMaskedCorners:) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property(nonatomic, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
+- (_Bool)_isEqualToInternalConfigurationQuick:(id)arg1;
 - (id)_updatedConfigurationForState:(id)arg1;
 - (id)resolvedStrokeColorForTintColor:(id)arg1;
+@property(readonly, nonatomic) _Bool isTintBackgroundColor;
 - (id)resolvedBackgroundColorForTintColor:(id)arg1;
 @property(nonatomic) double strokeOutset;
 @property(nonatomic) double strokeWidth;
 @property(copy, nonatomic) CDUnknownBlockType strokeColorTransformer;
 @property(retain, nonatomic) UIColor *strokeColor;
+@property(nonatomic) long long imageContentMode;
+@property(retain, nonatomic) UIImage *image;
 @property(copy, nonatomic) UIVisualEffect *visualEffect;
 @property(copy, nonatomic) CDUnknownBlockType backgroundColorTransformer;
 @property(retain, nonatomic) UIColor *backgroundColor;

@@ -22,7 +22,6 @@
 }
 
 + (id)notificationCacheWithCollectionIdentifier:(id)arg1 document:(id)arg2 type:(unsigned long long)arg3;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;

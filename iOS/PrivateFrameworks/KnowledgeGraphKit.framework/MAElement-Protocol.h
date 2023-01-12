@@ -6,17 +6,13 @@
 
 #import <KnowledgeGraphKit/NSObject-Protocol.h>
 
-@class MABaseGraph, NSDictionary, NSSet, NSString;
+@class NSDictionary, NSSet, NSString;
+@protocol MAGraphProxy;
 
 @protocol MAElement <NSObject>
-- (void)setObject:(id)arg1 forKeyedSubscript:(NSString *)arg2;
-- (id)objectForKeyedSubscript:(NSString *)arg1;
 - (NSString *)visualString;
-- (void)setProperties:(NSDictionary *)arg1;
-- (void)setPropertyValue:(id)arg1 forKey:(NSString *)arg2;
-- (void)removeAllProperties;
-- (void)removePropertyForKey:(NSString *)arg1;
 - (void)enumeratePropertiesUsingBlock:(void (^)(NSString *, id, _Bool *))arg1;
+- (NSDictionary *)propertyDictionary;
 - (NSSet *)propertyKeys;
 - (unsigned long long)propertiesCount;
 - (_Bool)hasProperties;
@@ -27,7 +23,7 @@
 @property(nonatomic, readonly) float weight;
 @property(nonatomic, readonly) unsigned short domain;
 @property(nonatomic, readonly) NSString *label;
-@property(nonatomic, readonly) unsigned int identifier;
-@property(nonatomic, readonly) MABaseGraph *graph;
+@property(nonatomic, readonly) unsigned long long identifier;
+@property(nonatomic, readonly) id <MAGraphProxy> graph;
 @end
 

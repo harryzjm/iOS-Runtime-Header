@@ -16,13 +16,13 @@
     NSUUID *_uuid;
     NSMutableSet *_ignoredWords;
     _Bool _didRemoveMissingAttachments;
-    id <TSWPTOCController> _tocController;
+    id <TSWPTOCController> _tocInfoController;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <TSWPTOCController> tocController; // @synthesize tocController=_tocController;
+@property(readonly, nonatomic) id <TSWPTOCController> tocInfoController; // @synthesize tocInfoController=_tocInfoController;
 @property(nonatomic) _Bool didRemoveMissingAttachments; // @synthesize didRemoveMissingAttachments=_didRemoveMissingAttachments;
-- (_Bool)isMasterInfo:(id)arg1;
+- (_Bool)isSectionTemplateInfo:(id)arg1;
 - (_Bool)isSectionModel:(id)arg1;
 - (double)bodyWidth;
 - (void)fontUpdatedForStyleClient:(id)arg1;
@@ -33,7 +33,7 @@
 - (int)fullyJustifiedAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 - (int)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 @property(readonly, nonatomic, getter=isChangeTrackingEnabled) _Bool changeTrackingEnabled;
-- (_Bool)isDrawableOnPageMaster:(id)arg1;
+- (_Bool)isDrawableOnSectionTemplatePage:(id)arg1;
 - (id)flowInfoContainer;
 @property(readonly, nonatomic) double stickyCommentScaleMultiplier;
 - (_Bool)cellCommentsAllowedOnInfo:(id)arg1;

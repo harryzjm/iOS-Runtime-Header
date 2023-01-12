@@ -10,19 +10,20 @@
 
 @interface TSCH3DSession : NSObject
 {
-    _Bool mInteractiveCanvas;
-    unsigned long long mFailures;
-    TSCH3DContext *mContext;
-    TSCH3DResourceCache *mCache;
-    TSCH3DGPUSharegroup *mSharegroup;
-    NSMutableSet *mActiveResourceSet;
-    NSMutableSet *mAllResourceSet;
-    NSCountedSet *mScopeProtectedResourceSet;
-    long long mVirtualScreen;
-    TSCH3DDocumentDataCache *mDataCache;
+    _Bool _interactiveCanvas;
+    unsigned long long _failures;
+    TSCH3DContext *_context;
+    TSCH3DResourceCache *_cache;
+    TSCH3DGPUSharegroup *_sharegroup;
+    NSMutableSet *_activeResourceSet;
+    NSMutableSet *_allResourceSet;
+    NSCountedSet *_scopeProtectedResourceSet;
+    long long _virtualScreen;
+    TSCH3DDocumentDataCache *_dataCache;
 }
 
-@property(readonly, nonatomic) TSCH3DDocumentDataCache *dataCache; // @synthesize dataCache=mDataCache;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DDocumentDataCache *dataCache; // @synthesize dataCache=_dataCache;
 - (void)p_unlock;
 - (void)p_lock;
 @property(nonatomic) int performance;

@@ -10,7 +10,7 @@
 #import <SystemStatus/STStatusDomainData-Protocol.h>
 #import <SystemStatus/STStatusDomainDataDifferencing-Protocol.h>
 
-@class NSSet, NSString, STActivityAttributionCatalog;
+@class NSArray, NSSet, NSString, STActivityAttributionCatalog;
 
 @interface STMediaStatusDomainData : NSObject <STStatusDomainDataDifferencing, NSSecureCoding, STStatusDomainData>
 {
@@ -36,6 +36,9 @@
 @property(readonly, copy, nonatomic) NSSet *cameraCaptureAttributions;
 @property(readonly, copy, nonatomic) NSSet *mutedAudioRecordingAttributions;
 @property(readonly, copy, nonatomic) NSSet *audioRecordingAttributions;
+@property(readonly, copy, nonatomic) NSArray *cameraCaptureAttributionList;
+@property(readonly, copy, nonatomic) NSArray *mutedAudioRecordingAttributionList;
+@property(readonly, copy, nonatomic) NSArray *audioRecordingAttributionList;
 - (id)_initWithAttributionCatalog:(id)arg1;
 - (id)initWithAttributionCatalog:(id)arg1;
 - (id)initWithData:(id)arg1;

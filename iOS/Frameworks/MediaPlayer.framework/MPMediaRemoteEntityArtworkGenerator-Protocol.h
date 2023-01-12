@@ -9,6 +9,6 @@
 @class MPNowPlayingContentItem;
 
 @protocol MPMediaRemoteEntityArtworkGenerator <NSObject>
-- (MPArtworkCatalog * (^)(MPModelObject *))artworkCatalogBlockForContentItem:(MPNowPlayingContentItem *)arg1;
+- (MPArtworkCatalog * (^)(void))artworkCatalogBlockForContentItem:(MPNowPlayingContentItem *)arg1;
 @end
 

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_3f389c08)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_3f389c08)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTCancelRequest *contentAsFTCancelRequest;
 @property(readonly, nonatomic) FTFinishAudio *contentAsFTFinishAudio;
 @property(readonly, nonatomic) FTAudioPacket *contentAsFTAudioPacket;

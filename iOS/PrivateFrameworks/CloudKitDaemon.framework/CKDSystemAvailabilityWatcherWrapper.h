@@ -9,7 +9,6 @@
 @class NSString;
 @protocol CKDSystemAvailabilityWatcher;
 
-__attribute__((visibility("hidden")))
 @interface CKDSystemAvailabilityWatcherWrapper : NSObject
 {
     id <CKDSystemAvailabilityWatcher> _delegate;

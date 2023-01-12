@@ -10,9 +10,12 @@
 
 @protocol CSDismissableModalViewControllerDelegate <NSObject>
 - (void)dismissForHomeButton;
+- (void)addGrabberView:(UIView *)arg1;
+
+@optional
+- (void)handleBarSwipeHomeGesturePerformed;
 - (void)handleBottomEdgeGestureEnded:(UIScreenEdgePanGestureRecognizer *)arg1;
 - (void)handleBottomEdgeGestureChanged:(UIScreenEdgePanGestureRecognizer *)arg1;
 - (void)handleBottomEdgeGestureBegan:(UIScreenEdgePanGestureRecognizer *)arg1;
-- (void)addGrabberView:(UIView *)arg1;
 @end
 

@@ -9,6 +9,8 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) unsigned int highFrameRateReason; // @dynamic highFrameRateReason;
+@property(nonatomic) struct CAFrameRateRange frameRateRange; // @dynamic frameRateRange;
 @property(nonatomic) double friction; // @dynamic friction;
 @property(nonatomic) double tension; // @dynamic tension;
 @property(nonatomic, getter=isInteractive) _Bool interactive; // @dynamic interactive;

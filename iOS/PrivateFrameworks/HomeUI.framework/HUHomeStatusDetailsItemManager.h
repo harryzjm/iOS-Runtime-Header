@@ -6,16 +6,14 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFNoRemoteAccessStatusDetailsItem, HFResidentDeviceStatusDetailsItemProvider, HFStaticItem, HUFirmwareUpdateItemProvider, HUSoftwareUpdateActionAndProgressItem, HUSoftwareUpdateInfoItemProvider, NSArray, NSMutableDictionary, NSMutableSet;
+@class HFNoRemoteAccessStatusDetailsItem, HFResidentDeviceStatusDetailsItemProvider, HUFirmwareUpdateItemProvider, HUSoftwareUpdateInfoItemProvider, NSArray, NSMutableDictionary, NSMutableSet;
 
 @interface HUHomeStatusDetailsItemManager : HFItemManager
 {
-    HFStaticItem *_learnMoreItem;
     HFResidentDeviceStatusDetailsItemProvider *_residentDeviceStatusItemProvider;
     HUFirmwareUpdateItemProvider *_firmwareUpdateItemProvider;
     HUSoftwareUpdateInfoItemProvider *_softwareUpdateItemProvider;
     HFNoRemoteAccessStatusDetailsItem *_noRemoteAccessItem;
-    HUSoftwareUpdateActionAndProgressItem *_softwareUpdateActionAndProgressItem;
     NSMutableSet *_representedHomeKitObjects;
     NSArray *_cachedSectionIdentifiers;
     NSMutableDictionary *_cachedRoomNamesByIdentifier;
@@ -27,12 +25,10 @@
 @property(retain, nonatomic) NSMutableDictionary *cachedRoomNamesByIdentifier; // @synthesize cachedRoomNamesByIdentifier=_cachedRoomNamesByIdentifier;
 @property(retain, nonatomic) NSArray *cachedSectionIdentifiers; // @synthesize cachedSectionIdentifiers=_cachedSectionIdentifiers;
 @property(retain, nonatomic) NSMutableSet *representedHomeKitObjects; // @synthesize representedHomeKitObjects=_representedHomeKitObjects;
-@property(retain, nonatomic) HUSoftwareUpdateActionAndProgressItem *softwareUpdateActionAndProgressItem; // @synthesize softwareUpdateActionAndProgressItem=_softwareUpdateActionAndProgressItem;
 @property(retain, nonatomic) HFNoRemoteAccessStatusDetailsItem *noRemoteAccessItem; // @synthesize noRemoteAccessItem=_noRemoteAccessItem;
 @property(retain, nonatomic) HUSoftwareUpdateInfoItemProvider *softwareUpdateItemProvider; // @synthesize softwareUpdateItemProvider=_softwareUpdateItemProvider;
 @property(retain, nonatomic) HUFirmwareUpdateItemProvider *firmwareUpdateItemProvider; // @synthesize firmwareUpdateItemProvider=_firmwareUpdateItemProvider;
 @property(retain, nonatomic) HFResidentDeviceStatusDetailsItemProvider *residentDeviceStatusItemProvider; // @synthesize residentDeviceStatusItemProvider=_residentDeviceStatusItemProvider;
-@property(retain, nonatomic) HFStaticItem *learnMoreItem; // @synthesize learnMoreItem=_learnMoreItem;
 - (_Bool)shouldReloadItemProvidersOnSourceItemChange;
 - (_Bool)shouldShowServiceGroupTiles;
 - (_Bool)shouldShowAccessoryTiles;
@@ -46,6 +42,7 @@
 - (long long)_effectivePriorityForItem:(id)arg1;
 - (_Bool)_shouldHideHomeKitObject:(id)arg1;
 - (_Bool)shouldHideItem:(id)arg1;
+- (id)currentSectionIdentifiersSnapshot;
 - (id)matchingItemForHomeKitObject:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
 - (CDUnknownBlockType)_sectionComparator;

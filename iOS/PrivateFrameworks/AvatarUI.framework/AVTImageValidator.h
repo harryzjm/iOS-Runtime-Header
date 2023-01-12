@@ -6,12 +6,34 @@
 
 #import <objc/NSObject.h>
 
+@class AVTImageValidatorConfiguration, NSMutableDictionary;
+@protocol AVTUILogger, OS_dispatch_queue;
+
 @interface AVTImageValidator : NSObject
 {
+    NSObject<OS_dispatch_queue> *_duplicateValidationQueue;
+    id <AVTUILogger> _logger;
+    AVTImageValidatorConfiguration *_configuration;
+    NSMutableDictionary *_fileNameToImageHashesMap;
+    NSMutableDictionary *_imageHashesToAvatarDataHashesMap;
+    NSMutableDictionary *_imageHashesToFileNameMap;
 }
 
++ (id)sharedValidator;
 + (_Bool)isImageValid:(id)arg1 error:(id *)arg2;
 + (CDStruct_afa449f9)_calculateStatistics:(struct CGImage *)arg1 withSize:(struct CGSize)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *imageHashesToFileNameMap; // @synthesize imageHashesToFileNameMap=_imageHashesToFileNameMap;
+@property(retain, nonatomic) NSMutableDictionary *imageHashesToAvatarDataHashesMap; // @synthesize imageHashesToAvatarDataHashesMap=_imageHashesToAvatarDataHashesMap;
+@property(retain, nonatomic) NSMutableDictionary *fileNameToImageHashesMap; // @synthesize fileNameToImageHashesMap=_fileNameToImageHashesMap;
+@property(retain, nonatomic) AVTImageValidatorConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(retain, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *duplicateValidationQueue; // @synthesize duplicateValidationQueue=_duplicateValidationQueue;
+- (void)nts_addHash:(id)arg1 forKey:(id)arg2 avatarDataHash:(id)arg3;
+- (_Bool)validateImageDataIsNotDuplicate:(id)arg1 forFileName:(id)arg2 avatarDataHash:(id)arg3;
+- (_Bool)validateImageIsNotTransparent:(id)arg1 error:(id *)arg2;
+- (id)initWithConfiguration:(id)arg1 environment:(id)arg2;
+- (id)init;
 
 @end
 

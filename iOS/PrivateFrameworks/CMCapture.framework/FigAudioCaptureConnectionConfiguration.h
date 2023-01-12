@@ -8,8 +8,10 @@
 {
     _Bool _builtInMicrophoneStereoAudioCaptureEnabled;
     int _builtInMicrophonePosition;
+    double _builtInMicrophoneRequiredSampleRate;
 }
 
+@property(nonatomic) double builtInMicrophoneRequiredSampleRate; // @synthesize builtInMicrophoneRequiredSampleRate=_builtInMicrophoneRequiredSampleRate;
 @property(nonatomic) int builtInMicrophonePosition; // @synthesize builtInMicrophonePosition=_builtInMicrophonePosition;
 @property(nonatomic) _Bool builtInMicrophoneStereoAudioCaptureEnabled; // @synthesize builtInMicrophoneStereoAudioCaptureEnabled=_builtInMicrophoneStereoAudioCaptureEnabled;
 - (_Bool)isEqual:(id)arg1;

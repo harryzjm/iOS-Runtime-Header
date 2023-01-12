@@ -9,23 +9,24 @@
 @interface IMFileTransfer (IMFileTransfer_CKRecord)
 + (_Bool)validateMD5HashForRecord:(id)arg1;
 + (id)md5HashForRecord:(id)arg1;
++ (void)cleanUpAssetsOnDiskForRecord:(id)arg1;
 + (_Bool)attachmentRecordHasAsset:(id)arg1;
 + (id)transferGUIDOfRecord:(id)arg1;
 + (long long)sizeOfAssetForRecord:(id)arg1;
 + (id)utiTypeForRecord:(id)arg1;
 + (_Bool)_recordIsInvalid:(id)arg1;
++ (void)cleanUpAsset:(id)arg1;
 + (id)transferMetaDataFromRecord:(id)arg1;
 + (id)_recordType;
 - (id)_fileManager;
 - (id)initWithCKRecord:(id)arg1 writeAssetToDisk:(_Bool)arg2;
-- (void)moveTransferAssertFromRecord:(id)arg1;
-- (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2 useStingRay:(_Bool)arg3;
-- (void)_setRecordPropertiesBasedOnExistingRecord:(id)arg1 useStingRay:(_Bool)arg2;
-- (_Bool)_isUsingStingRay;
+- (void)moveAssetFromRecord:(id)arg1;
+- (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
+- (void)_setRecordPropertiesBasedOnExistingRecord:(id)arg1;
 - (id)md5HashForTransfer;
 - (id)md5HashForURL:(id)arg1;
 - (id)ckRecordIDFromExistingMetadata;
-- (id)_copyCKRecordFromExistingCKMetadata:(_Bool)arg1;
+- (id)_copyCKRecordFromExistingCKMetadata;
 - (id)_assetURLToInsertToRecord;
 - (id)_ckUniqueID;
 @end

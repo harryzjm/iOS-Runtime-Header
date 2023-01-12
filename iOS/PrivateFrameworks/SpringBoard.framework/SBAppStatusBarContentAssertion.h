@@ -11,12 +11,17 @@
 @interface SBAppStatusBarContentAssertion : BSSimpleAssertion
 {
     UIStatusBar *_statusBar;
+    _Bool _statusBarPartLeadingHidden;
+    _Bool _statusBarPartTrailingHidden;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
-- (void)hideStatusBarPartLeading:(_Bool)arg1;
-- (id)initWithIdentifier:(id)arg1 forReason:(id)arg2;
+@property(readonly, nonatomic, getter=isStatusBarPartTrailingHidden) _Bool statusBarPartTrailingHidden; // @synthesize statusBarPartTrailingHidden=_statusBarPartTrailingHidden;
+@property(readonly, nonatomic, getter=isStatusBarPartLeadingHidden) _Bool statusBarPartLeadingHidden; // @synthesize statusBarPartLeadingHidden=_statusBarPartLeadingHidden;
+- (void)_setStatusBarPartIdentifier:(id)arg1 hidden:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)setStatusBarPartTrailingHidden:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setStatusBarPartLeadingHidden:(_Bool)arg1 animated:(_Bool)arg2;
+- (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2 forReason:(id)arg3;
 
 @end
 

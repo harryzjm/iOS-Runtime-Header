@@ -12,6 +12,8 @@
 {
     NSArray *_videoResources;
     NSArray *_playableVideos;
+    _Bool _masterVideoIsPresent;
+    _Bool _masterVideoIsPlayable;
 }
 
 - (void).cxx_destruct;

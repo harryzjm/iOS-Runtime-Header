@@ -18,7 +18,7 @@
 @property(readonly, nonatomic) NSArray *roads; // @synthesize roads=_roads;
 - (id)description;
 - (void)dealloc;
-- (id)initWithMuninJunction:(const struct MuninJunction *)arg1 localize:(_Bool)arg2;
+- (id)initWithMuninJunction:(const void *)arg1 localize:(_Bool)arg2;
 
 @end
 

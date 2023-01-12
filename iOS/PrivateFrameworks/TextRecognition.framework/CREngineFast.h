@@ -20,6 +20,8 @@
     CRLanguageCorrection *_languageCorrection;
 }
 
++ (struct CGSize)detectorImageSizeForOptions:(id)arg1 imageSize:(struct CGSize)arg2;
++ (_Bool)preheatModelsForOptions:(id)arg1 revision:(long long)arg2 error:(id *)arg3;
 + (id)supportedLanguagesForRevision:(long long)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property _Bool shouldCancel; // @synthesize shouldCancel=_shouldCancel;
@@ -34,8 +36,10 @@
 - (id)applyLanguageCorrectionToResults:(id)arg1 image:(id)arg2 latticeResults:(id *)arg3 progressHandler:(CDUnknownBlockType)arg4;
 - (id)filterResultsForTextFeatures:(id)arg1;
 - (id)textResultsInImage:(id)arg1 options:(id)arg2 withProgressHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
-@property(readonly) float highConfidenceThreshold;
-@property(readonly) float mediumConfidenceThreshold;
+- (unsigned long long)subfeatureOutputType;
+- (float)highConfidenceThreshold;
+- (float)mediumConfidenceThreshold;
+- (id)thresholdsForTextFeature:(id)arg1;
 - (struct CGSize)smallestImageSizeForTextWithRelativeHeight:(double)arg1 originalImageSize:(struct CGSize)arg2;
 - (void)cancel;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;

@@ -33,6 +33,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (unsigned long long)landmarkPointSizeInBytes;
 - (void).cxx_destruct;
 @property(readonly) VNFaceLandmarkRegion3D *innerLips; // @synthesize innerLips=_innerLips;
@@ -47,11 +48,10 @@
 @property(readonly) VNFaceLandmarkRegion3D *faceContour; // @synthesize faceContour=_faceContour;
 @property(readonly) VNFaceLandmarkRegion3D *allPoints; // @synthesize allPoints=_allPoints;
 - (void *)_createPointArray:(const int *)arg1 count:(unsigned long long)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_initLocks;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 pointsData:(id)arg2 pointCount:(unsigned long long)arg3 userFacingBBox:(struct CGRect)arg4 alignedBBox:(struct _Geometry2D_rect2D_)arg5 landmarkScore:(float)arg6;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 pointsData:(id)arg2 pointCount:(unsigned long long)arg3 userFacingBBox:(struct CGRect)arg4 alignedBBox:(struct _Geometry2D_rect2D_)arg5 landmarkScore:(float)arg6;
 
 @end
 

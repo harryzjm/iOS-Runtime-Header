@@ -22,8 +22,8 @@
 @property(copy, nonatomic) NSArray *errors; // @synthesize errors=_errors;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPaymentSummaryItems:(id)arg1;
 - (id)initWithErrors:(id)arg1 paymentSummaryItems:(id)arg2;
+- (id)initWithPaymentSummaryItems:(id)arg1;
 
 @end
 

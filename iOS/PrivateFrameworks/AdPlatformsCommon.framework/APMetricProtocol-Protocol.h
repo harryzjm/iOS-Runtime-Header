@@ -9,7 +9,7 @@
 #import <AdPlatformsCommon/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSString;
-@protocol APMetricProtocol;
+@protocol APMetricProtocol, NSSecureCoding;
 
 @protocol APMetricProtocol <NSObject, NSCopying, NSSecureCoding>
 @property(readonly, nonatomic) _Bool areNetworkDates;
@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) NSString *userIdentifier;
 @property(readonly, nonatomic) NSString *deviceIdentifier;
 @property(readonly, nonatomic) NSString *clientBundleIdentifier;
+@property(readonly, nonatomic) NSString *bundleIdentifier;
 @property(readonly, nonatomic) NSString *deviceModel;
 @property(readonly, nonatomic) NSString *osBuild;
 @property(readonly, nonatomic) NSString *osVersion;
@@ -30,6 +31,7 @@
 @property(readonly, nonatomic) NSDate *timestamp;
 @property(readonly, nonatomic) long long metric;
 @property(readonly, nonatomic) long long route;
+- (void)addInternalPropertyValue:(id <NSSecureCoding>)arg1 forKey:(NSString *)arg2;
 - (id <APMetricProtocol>)duplicateMetricReplacingIdentifier:(NSString *)arg1;
 - (id <APMetricProtocol>)initWithRoute:(long long)arg1 metric:(long long)arg2 contentIdentifier:(NSString *)arg3 contextIdentifier:(NSString *)arg4 identifier:(NSString *)arg5 properties:(NSDictionary *)arg6 internalProperties:(NSDictionary *)arg7 options:(long long)arg8;
 @end

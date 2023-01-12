@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSHashTable, PKAppletSubcredential, PKPaymentPass, PKPaymentWebService, PKPeerPaymentContactResolver;
+@class NSArray, NSHashTable, PKAppletSubcredential, PKContactResolver, PKPaymentPass, PKPaymentWebService;
 @protocol OS_dispatch_queue;
 
 @interface PKSharedCredentialsGroupController : NSObject
 {
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     PKPaymentWebService *_webService;
     PKAppletSubcredential *_credential;
     NSObject<OS_dispatch_queue> *_queue;

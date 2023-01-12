@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)createViewControllerFor:(id)arg1 options:(id)arg2;
+- (id)createViewControllerFor:(id)arg1 presentationOptions:(id)arg2;
 
 @end
 

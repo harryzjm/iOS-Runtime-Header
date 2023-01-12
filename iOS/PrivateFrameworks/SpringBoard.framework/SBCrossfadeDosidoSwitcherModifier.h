@@ -17,10 +17,11 @@
 - (_Bool)_shouldEnsureHomeScreenVisible;
 - (_Bool)_isToAppLayoutAtIndex:(unsigned long long)arg1;
 - (_Bool)_isFromAppLayoutAtIndex:(unsigned long long)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)appLayoutsToCacheSnapshots;
 - (unsigned long long)transactionCompletionOptions;
 - (id)topMostLayoutElements;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (long long)wallpaperStyle;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;

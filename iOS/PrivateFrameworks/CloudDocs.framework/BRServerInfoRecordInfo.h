@@ -10,6 +10,7 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface BRServerInfoRecordInfo : PBCodable <NSCopying>
 {
     unsigned long long _bounceNo;

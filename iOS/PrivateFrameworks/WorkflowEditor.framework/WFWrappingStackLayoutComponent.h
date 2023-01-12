@@ -7,10 +7,10 @@
 @interface WFWrappingStackLayoutComponent
 {
     struct WFWrappingStackLayoutComponentStyle _style;
-    vector_e48f0605 _children;
+    struct vector<CKComponent *, std::allocator<CKComponent *>> _children;
 }
 
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2 style:(const struct WFWrappingStackLayoutComponentStyle *)arg3 children:(const vector_e48f0605 *)arg4;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2 style:(const struct WFWrappingStackLayoutComponentStyle *)arg3 children:(const void *)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1;

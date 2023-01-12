@@ -8,7 +8,7 @@
 
 #import <CoreUtils/PRSharingSessionDelegate-Protocol.h>
 
-@class NSArray, NSString, PRContactWhitelist, PRSharingSession;
+@class NSArray, NSString, PRContactAllowlist, PRSharingSession;
 @protocol OS_dispatch_queue;
 
 @interface CURangingSession : NSObject <PRSharingSessionDelegate>
@@ -18,7 +18,7 @@
     _Bool _invalidateDone;
     _Bool _peersChanged;
     NSArray *_peersRanging;
-    PRContactWhitelist *_prResponder;
+    PRContactAllowlist *_prResponder;
     int _prRangingInitiated;
     PRSharingSession *_prRangingSession;
     struct LogCategory *_ucat;

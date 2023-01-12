@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIsDisplayedInBanner;
+- (id)_accessibilityFuzzyHitTestElements;
+- (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (_Bool)accessibilityViewIsModal;
 - (_Bool)isAccessibilityElement;
 - (void)updateParticipantsAnimated:(_Bool)arg1;

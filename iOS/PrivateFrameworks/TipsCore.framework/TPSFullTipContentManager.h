@@ -21,7 +21,8 @@
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_performWithProxyHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)tipsAppActive;
-- (void)markTipViewed:(id)arg1;
+- (void)removeNotificationForIdentifier:(id)arg1;
+- (void)markTipIdentifierViewed:(id)arg1;
 - (void)contentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (id)init;

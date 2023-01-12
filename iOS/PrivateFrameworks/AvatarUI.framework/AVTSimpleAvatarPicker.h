@@ -16,21 +16,23 @@
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class AVTAvatarPickerDataSource, AVTEdgeDisappearingCollectionViewLayout, AVTImageStore, AVTRenderingScope, AVTSimpleAvatarPickerHeaderView, AVTViewSessionProvider, NSMutableDictionary, NSString, UICollectionView, UIView, _AVTAvatarRecordImageProvider;
-@protocol AVTAvatarPickerDelegate, AVTPresenterDelegate, AVTTaskScheduler;
+@protocol AVTAvatarPickerDelegate, AVTPresenterDelegate, AVTStickerTaskScheduler, AVTStickerViewControllerImageDelegate;
 
 @interface AVTSimpleAvatarPicker : NSObject <AVTAvatarEditorViewControllerDelegate, AVTAvatarActionsViewControllerDelegate, AVTNotifyingContainerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTObjectViewController, AVTAvatarPicker>
 {
     _Bool _allowEditing;
+    _Bool _shouldHideUserInfoView;
     id <AVTPresenterDelegate> presenterDelegate;
     id <AVTAvatarPickerDelegate> avatarPickerDelegate;
     double _minimumInteritemSpacing;
+    id <AVTStickerViewControllerImageDelegate> _imageDelegate;
     UIView *_view;
     UICollectionView *_collectionView;
     AVTEdgeDisappearingCollectionViewLayout *_collectionViewLayout;
     AVTAvatarPickerDataSource *_dataSource;
     AVTImageStore *_imageStore;
     NSMutableDictionary *_itemsToTasksMap;
-    id <AVTTaskScheduler> _scheduler;
+    id <AVTStickerTaskScheduler> _taskScheduler;
     _AVTAvatarRecordImageProvider *_imageProvider;
     AVTViewSessionProvider *_viewSessionProvider;
     AVTRenderingScope *_renderingScope;
@@ -43,18 +45,21 @@
 @property(readonly, nonatomic) AVTRenderingScope *renderingScope; // @synthesize renderingScope=_renderingScope;
 @property(readonly, nonatomic) AVTViewSessionProvider *viewSessionProvider; // @synthesize viewSessionProvider=_viewSessionProvider;
 @property(readonly, nonatomic) _AVTAvatarRecordImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
-@property(readonly, nonatomic) id <AVTTaskScheduler> scheduler; // @synthesize scheduler=_scheduler;
+@property(readonly, nonatomic) id <AVTStickerTaskScheduler> taskScheduler; // @synthesize taskScheduler=_taskScheduler;
 @property(retain, nonatomic) NSMutableDictionary *itemsToTasksMap; // @synthesize itemsToTasksMap=_itemsToTasksMap;
 @property(retain, nonatomic) AVTImageStore *imageStore; // @synthesize imageStore=_imageStore;
 @property(retain, nonatomic) AVTAvatarPickerDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) AVTEdgeDisappearingCollectionViewLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
+@property(nonatomic) _Bool shouldHideUserInfoView; // @synthesize shouldHideUserInfoView=_shouldHideUserInfoView;
+@property(nonatomic) __weak id <AVTStickerViewControllerImageDelegate> imageDelegate; // @synthesize imageDelegate=_imageDelegate;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property(nonatomic) double minimumInteritemSpacing; // @synthesize minimumInteritemSpacing=_minimumInteritemSpacing;
 @property(nonatomic) _Bool allowEditing; // @synthesize allowEditing=_allowEditing;
 @property(nonatomic) __weak id <AVTAvatarPickerDelegate> avatarPickerDelegate; // @synthesize avatarPickerDelegate;
 @property(nonatomic) __weak id <AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
+- (void)updateCell:(id)arg1 withImage:(id)arg2 animated:(_Bool)arg3;
 - (void)notifyingContainerViewDidChangeSize:(struct CGSize)arg1;
 - (void)notifyingContainerViewWillChangeSize:(struct CGSize)arg1;
 - (id)avatarActionsViewController:(id)arg1 recordUpdateForDeletingRecord:(id)arg2;
@@ -71,6 +76,8 @@
 - (void)cancelCurrentRenderingTaskForRecordItem:(id)arg1;
 - (void)registerRenderingTask:(CDUnknownBlockType)arg1 forRecordItem:(id)arg2;
 - (CDUnknownBlockType)currentRenderingTaskForRecordItem:(id)arg1;
+- (void)scheduleRenderingTask:(CDUnknownBlockType)arg1 forRecordItem:(id)arg2;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didUnhighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
@@ -95,8 +102,9 @@
 - (long long)indexForSelectedAvatar;
 - (void)reloadDataSource;
 - (void)reloadData;
+- (void)renderThumbnailsIfNeeded;
 - (void)loadView;
-- (id)initWithDataSource:(id)arg1 recordImageProvider:(id)arg2 scheduler:(id)arg3 allowEditing:(_Bool)arg4;
+- (id)initWithDataSource:(id)arg1 recordImageProvider:(id)arg2 avtViewSessionProvider:(id)arg3 taskScheduler:(id)arg4 allowEditing:(_Bool)arg5;
 - (id)initWithStore:(id)arg1 environment:(id)arg2 allowAddItem:(_Bool)arg3;
 - (void)presentActionsForAvatarForPPT:(id)arg1;
 

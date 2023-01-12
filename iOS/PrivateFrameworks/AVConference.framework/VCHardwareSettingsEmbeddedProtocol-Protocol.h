@@ -6,14 +6,18 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
+@class NSArray;
+
 @protocol VCHardwareSettingsEmbeddedProtocol <NSObject>
+@property(readonly, nonatomic) NSArray *supportedVideoPayloads;
+@property(readonly, nonatomic) _Bool isSpatialAudioSupported;
+@property(readonly, nonatomic) _Bool isHEVC444DecodeSupported;
 @property(readonly, nonatomic) _Bool isPixelFormatAvailable;
 @property(readonly, nonatomic) _Bool isSecondDisplaySupportEnabled;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
 @property(readonly, nonatomic) _Bool hasAppleNeuralEngine;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
 @property(readonly, nonatomic) _Bool supportsMultiway720pStream;
-@property(readonly, nonatomic) unsigned int maxMultiwayFramerateSupported;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
 @property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
 @property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
@@ -21,7 +25,7 @@
 @property(readonly, nonatomic) long long videoEncoderType;
 @property(readonly, nonatomic) long long chipId;
 @property(readonly, nonatomic) long long deviceClass;
-@property(readonly, nonatomic) int screenHeight;
-@property(readonly, nonatomic) int screenWidth;
+@property(readonly, nonatomic) unsigned int screenHeight;
+@property(readonly, nonatomic) unsigned int screenWidth;
 @end
 

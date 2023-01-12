@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CKContainer, CKRecordID, NSString, VCCKApplicationStateObserver, VCCKShortcutSyncService;
-@protocol OS_dispatch_queue, OS_nw_path_monitor, VCDatabaseProvider;
+@protocol OS_dispatch_queue, OS_nw_path_monitor, WFDatabaseProvider;
 
 @interface VCCKShortcutSyncCoordinator : NSObject
 {
@@ -15,7 +15,7 @@
     _Bool _syncEnabled;
     VCCKShortcutSyncService *_currentSyncService;
     long long _accountStatus;
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
     CKContainer *_container;
     NSObject<OS_dispatch_queue> *_stateAccessQueue;
     NSObject<OS_nw_path_monitor> *_pathMonitor;
@@ -33,7 +33,7 @@
 @property(readonly, nonatomic) NSObject<OS_nw_path_monitor> *pathMonitor; // @synthesize pathMonitor=_pathMonitor;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;
 @property(readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property(nonatomic) long long accountStatus; // @synthesize accountStatus=_accountStatus;
 @property(retain, nonatomic) VCCKShortcutSyncService *currentSyncService; // @synthesize currentSyncService=_currentSyncService;
 - (void)handleAccountChangedNotification:(id)arg1;

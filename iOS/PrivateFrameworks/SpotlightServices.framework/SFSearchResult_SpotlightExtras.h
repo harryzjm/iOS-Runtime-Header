@@ -8,12 +8,14 @@
 
 #import <SpotlightServices/NSSecureCoding-Protocol.h>
 
-@class MISSING_TYPE, NSData, NSDate, NSMutableArray, NSNumber, NSString, PRSRankingItem, SFPunchout;
+@class MISSING_TYPE, NSData, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSString, PRSRankingItem, SFPunchout;
 
 @interface SFSearchResult_SpotlightExtras : SFSearchResult <NSSecureCoding>
 {
     SFPunchout *_cachedPunchout;
     _Bool _hasCommunicationContent;
+    _Bool _hasTextContent;
+    _Bool _hasTextContentMatch;
     _Bool _forceNoTopHit;
     _Bool _isAppClip;
     _Bool _isWebClip;
@@ -30,24 +32,34 @@
     NSString *_userActivityType;
     NSMutableArray *_duplicatedItems;
     NSString *_contentURL;
+    NSString *_personIdentifier;
+    NSString *_personQueryIdentifier;
     PRSRankingItem *_rankingItem;
     NSData *_suggestionsFeedbackData;
     unsigned long long _predictionsFeedbackActionType;
+    NSData *_attributeData;
+    NSMutableDictionary *_backendData;
     MISSING_TYPE *_score;
 }
 
 + (void)initialize;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *backendData; // @synthesize backendData=_backendData;
+@property(retain, nonatomic) NSData *attributeData; // @synthesize attributeData=_attributeData;
 @property(nonatomic) _Bool isSafariTopHit; // @synthesize isSafariTopHit=_isSafariTopHit;
 @property(nonatomic) _Bool isWebClip; // @synthesize isWebClip=_isWebClip;
 @property(nonatomic) _Bool isAppClip; // @synthesize isAppClip=_isAppClip;
 @property(nonatomic) _Bool forceNoTopHit; // @synthesize forceNoTopHit=_forceNoTopHit;
 @property(nonatomic) unsigned long long predictionsFeedbackActionType; // @synthesize predictionsFeedbackActionType=_predictionsFeedbackActionType;
+@property(nonatomic) _Bool hasTextContentMatch; // @synthesize hasTextContentMatch=_hasTextContentMatch;
+@property(nonatomic) _Bool hasTextContent; // @synthesize hasTextContent=_hasTextContent;
 @property(nonatomic) _Bool hasCommunicationContent; // @synthesize hasCommunicationContent=_hasCommunicationContent;
 @property(nonatomic) unsigned int feedbackBlockId; // @synthesize feedbackBlockId=_feedbackBlockId;
 @property(retain, nonatomic) NSData *suggestionsFeedbackData; // @synthesize suggestionsFeedbackData=_suggestionsFeedbackData;
 @property(retain) PRSRankingItem *rankingItem; // @synthesize rankingItem=_rankingItem;
+@property(retain, nonatomic) NSString *personQueryIdentifier; // @synthesize personQueryIdentifier=_personQueryIdentifier;
+@property(retain, nonatomic) NSString *personIdentifier; // @synthesize personIdentifier=_personIdentifier;
 @property(retain, nonatomic) NSString *contentURL; // @synthesize contentURL=_contentURL;
 @property(retain, nonatomic) NSMutableArray *duplicatedItems; // @synthesize duplicatedItems=_duplicatedItems;
 @property(retain, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
@@ -60,6 +72,7 @@
 @property(retain, nonatomic) NSNumber *parentFileIdentifier; // @synthesize parentFileIdentifier=_parentFileIdentifier;
 @property(retain, nonatomic) NSNumber *fileIdentifier; // @synthesize fileIdentifier=_fileIdentifier;
 @property(retain, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
+- (id)valueForAttribute:(id)arg1 withType:(Class)arg2;
 - (_Bool)isSafariTopHitForQuery:(id)arg1;
 - (id)punchout;
 - (id)debugDescription;
@@ -69,6 +82,7 @@
 - (id)init;
 - (id)objectForFeedback;
 - (void)setPropertiesOnResultCopy:(id)arg1;
+- (void)clearBackendData;
 
 @end
 

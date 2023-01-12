@@ -21,7 +21,6 @@
     SAConnectionPolicy *_policy;
     _Bool _prefersWWAN;
     _Bool _connectByPOPEnabled;
-    _Bool _enforceEV;
     _Bool _isMPTCP;
     SiriCoreConnectionType *_connectionType;
     int _interfaceIndex;
@@ -52,7 +51,6 @@
 - (void)writeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)readData:(CDUnknownBlockType)arg1;
 - (void)setStaleInterval:(double)arg1;
-- (void)setEnforceExtendedValidation:(_Bool)arg1;
 - (void)setConnectByPOPMethod:(_Bool)arg1;
 - (void)setPrefersWWAN:(_Bool)arg1;
 - (void)setProviderConnectionPolicy:(id)arg1;
@@ -83,7 +81,6 @@
 - (void)_setupStaleConnectionTimer;
 - (void)_streamDidBecomeUnviable;
 - (void)URLSession:(id)arg1 streamTask:(id)arg2 didBecomeInputStream:(id)arg3 outputStream:(id)arg4;
-- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 betterRouteDiscoveredForStreamTask:(id)arg2;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;

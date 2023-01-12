@@ -47,6 +47,7 @@
 @property(copy, nonatomic) NSArray *airPlayRouteIdentifiers;
 @property(readonly, nonatomic) INExtensionContext *extensionContext; // @synthesize extensionContext=_extensionContext;
 - (void)resetExternalResources;
+- (void)handleCommand:(id)arg1 fromRemoteDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSArray *commandIdentifiers;
 @property(readonly, copy, nonatomic) NSString *groupIdentifier;

@@ -11,6 +11,7 @@
 
 @protocol PSPointerDefaultServiceClientToServerInterface <NSObject>
 - (oneway void)setSystemCursorInteractionContextID:(NSNumber *)arg1;
+- (oneway void)setPointerPersistentlyVisibleForReasons:(NSArray<__NSNumber__> *)arg1;
 - (oneway void)setPointerPersistentlyHiddenForReasons:(NSArray<__NSNumber__> *)arg1;
 - (oneway void)autohidePointerForReason:(NSNumber *)arg1;
 - (oneway void)setActiveHoverRegion:(PSPointerHoverRegion *)arg1 transitionCompletion:(void (^)(NSError *))arg2;

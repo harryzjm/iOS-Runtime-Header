@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIViewControllerStatusBarPartStyleProvider-Protocol.h>
+
 @class NSArray, NSString, UIBarButtonItem, UIScreenEdgePanGestureRecognizer, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest;
 @protocol UISplitViewControllerDelegate, UISplitViewControllerImpl;
 
-@interface UISplitViewController
+@interface UISplitViewController <UIViewControllerStatusBarPartStyleProvider>
 {
     id <UISplitViewControllerImpl> _impl;
     _Bool __lockedForDelegateCallback;
@@ -20,9 +22,10 @@
 + (_Bool)_devicePrefersOverlayInRegularWidth;
 - (void).cxx_destruct;
 @property(nonatomic, getter=_isLockedForDelegateCallback, setter=_setLockedForDelegateCallback:) _Bool _lockedForDelegateCallback; // @synthesize _lockedForDelegateCallback=__lockedForDelegateCallback;
-- (id)description;
-- (id)_super_deepestUnambiguousResponder;
-- (id)_deepestUnambiguousResponder;
+@property(readonly, copy) NSString *description;
+- (id)_nextResponderUsingTargetActionStrategyFromChildViewController:(id)arg1 didTraverseToParentViewController:(_Bool *)arg2;
+- (id)_super_deepestActionResponder;
+- (id)_deepestActionResponder;
 - (_Bool)_super_disableAutomaticKeyboardBehavior;
 - (_Bool)_disableAutomaticKeyboardBehavior;
 - (id)_primaryContentResponder;
@@ -61,8 +64,9 @@
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (id)_super_childViewControllerForStatusBarStyle;
 - (id)childViewControllerForStatusBarStyle;
-- (long long)preferredTrailingStatusBarStyle;
-- (long long)preferredLeadingStatusBarStyle;
+@property(readonly, nonatomic) long long preferredCenterStatusBarStyle;
+@property(readonly, nonatomic) long long preferredTrailingStatusBarStyle;
+@property(readonly, nonatomic) long long preferredLeadingStatusBarStyle;
 - (_Bool)_shouldUseSeparateStatusBarStyles;
 - (_Bool)_shouldUseNewStatusBarBehavior;
 - (_Bool)_super_shouldUpdateFocusInContext:(id)arg1;
@@ -101,6 +105,9 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
+- (void)validateCommand:(id)arg1;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)toggleSidebar:(id)arg1;
 @property(nonatomic) long long primaryBackgroundStyle;
 - (void)toggleMasterVisible:(id)arg1;
 - (void)_updateScrollEdgeBehaviorForDetailNavigationContoller;
@@ -118,15 +125,19 @@
 - (double)_primaryDividerPosition;
 - (_Bool)_isAnimating;
 - (_Bool)_isRotating;
-- (void)_triggerSidebarKeyCommandAction:(id)arg1;
 - (_Bool)_shouldUseFluidSidebarGestures;
 @property(readonly, nonatomic) UIScreenEdgePanGestureRecognizer *_fluidOpenSidebarPresentationGestureRecognizer;
+- (struct UIEdgeInsets)_tvOSColumnStyleExtraInsetsForChildViewController:(id)arg1;
 - (long long)_columnForViewController:(id)arg1;
 - (_Bool)_navigationControllerShouldNotAdjustTransitioningSizeForChildContainer:(id)arg1;
+- (id)_navigationController:(id)arg1 navigationBarAdditionalActionsForBackButtonMenu:(id)arg2;
+- (void)_navigationController:(id)arg1 navigationBar:(id)arg2 itemBackButtonUpdated:(id)arg3;
 - (void)_navigationController:(id)arg1 navigationBar:(id)arg2 topItemUpdatedContentLayout:(id)arg3;
 - (void)_navigationControllerDidChangeNavigationBarHidden:(id)arg1;
 - (void)_navigationControllerDidUpdateStack:(id)arg1;
 - (void)_tabBarControllerDidChangeSelection:(id)arg1;
+- (_Bool)_isViewControllerForObservableScrollViewAmbiguous;
+- (id)_viewControllerForObservableScrollView;
 - (void)_viewControllerChildViewControllersDidChange:(id)arg1;
 - (id)_panelImpl;
 - (void)_allowingMutationsInDelegateCallback:(CDUnknownBlockType)arg1;
@@ -162,6 +173,7 @@
 @property(nonatomic) _Bool presentsWithGesture;
 @property(nonatomic) __weak id <UISplitViewControllerDelegate> delegate;
 @property(copy, nonatomic) NSArray *viewControllers;
+@property(nonatomic) long long displayModeButtonVisibility;
 - (id)transitionCoordinator;
 @property(readonly, nonatomic) double supplementaryColumnWidth;
 @property(readonly, nonatomic) double supplementalColumnWidth;
@@ -207,6 +219,12 @@
 @property(readonly, nonatomic) UISlidingBarState *currentState;
 @property(copy, nonatomic) UISlidingBarConfiguration *configuration;
 - (_Bool)_usesPanelImpl;
+- (id)_effectiveActivityItemsConfiguration;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

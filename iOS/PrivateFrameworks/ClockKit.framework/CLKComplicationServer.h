@@ -9,7 +9,7 @@
 #import <ClockKit/CLKComplicationClient-Protocol.h>
 
 @class NSArray, NSDate, NSSet, NSString, NSXPCConnection;
-@protocol CLKComplicationDataSource;
+@protocol CLKComplicationDataSource, OS_dispatch_queue;
 
 @interface CLKComplicationServer : NSObject <CLKComplicationClient>
 {
@@ -39,6 +39,7 @@
         _Bool supportsComplicationDescriptors;
         _Bool supportsHandleSharedComplicationDescriptors;
     } _dataSourceFlags;
+    NSObject<OS_dispatch_queue> *_templateFinalizationQueue;
 }
 
 + (id)sharedInstance;

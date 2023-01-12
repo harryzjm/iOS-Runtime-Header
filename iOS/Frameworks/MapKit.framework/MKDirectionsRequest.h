@@ -18,11 +18,11 @@
     _Bool _requestsAlternateRoutes;
     _Bool _includeTravelTimes;
     _Bool _includeTrafficIncidents;
-    _Bool _includeZilchRoutePoints;
-    _Bool _includeBasicRoutePoints;
+    _Bool _includeRoutePoints;
     _Bool _includeEntryPoints;
     _Bool _resolveExtraAutomobileOptions;
     _Bool _includeDistanceInETA;
+    _Bool _useBackgroundURL;
     NSDate *_departureDate;
     NSDate *_arrivalDate;
     NSArray *_additionalTransportTypesRequested;
@@ -40,10 +40,10 @@
 @property(retain, nonatomic, getter=_automobileOptions, setter=_setAutomobileOptions:) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property(retain, nonatomic, getter=_additionalTransportTypesRequested, setter=_setAdditionalTransportTypesRequested:) NSArray *additionalTransportTypesRequested; // @synthesize additionalTransportTypesRequested=_additionalTransportTypesRequested;
 @property(nonatomic, getter=_includeDistanceInETA, setter=_setIncludeDistanceInETA:) _Bool includeDistanceInETA; // @synthesize includeDistanceInETA=_includeDistanceInETA;
+@property(nonatomic, getter=_useBackgroundURL, setter=_setUseBackgroundURL:) _Bool useBackgroundURL; // @synthesize useBackgroundURL=_useBackgroundURL;
 @property(readonly, nonatomic) _Bool _resolveExtraAutomobileOptions; // @synthesize _resolveExtraAutomobileOptions;
 @property(readonly, nonatomic) _Bool _includeEntryPoints; // @synthesize _includeEntryPoints;
-@property(readonly, nonatomic) _Bool _includeBasicRoutePoints; // @synthesize _includeBasicRoutePoints;
-@property(readonly, nonatomic) _Bool _includeZilchRoutePoints; // @synthesize _includeZilchRoutePoints;
+@property(readonly, nonatomic) _Bool _includeRoutePoints; // @synthesize _includeRoutePoints;
 @property(readonly, nonatomic) _Bool _includeTrafficIncidents; // @synthesize _includeTrafficIncidents;
 @property(readonly, nonatomic) _Bool _includeTravelTimes; // @synthesize _includeTravelTimes;
 @property(retain, nonatomic) MKMapItem *destination; // @synthesize destination=_destination;

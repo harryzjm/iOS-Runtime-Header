@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsTintColorValue;
 - (void)copy:(id)arg1;
 - (id)valueString;
+- (id)appNameForSuggestion:(id)arg1;
 - (_Bool)shouldShowSuggestionOrigin;
 - (id)labelString;
 @property(readonly, nonatomic, getter=isSuggested) _Bool suggested;

@@ -82,11 +82,13 @@
     float _capHeight;
     float _templateVersion;
     CDStruct_3c058996 _alignmentRectInsets;
+    _Bool _isInterpolatable;
 }
 
 + (int)fileEncoding;
 + (void)setFileEncoding:(int)arg1;
 + (void)initialize;
+@property(nonatomic, getter=isInterpolatable) _Bool interpolatable; // @synthesize interpolatable=_isInterpolatable;
 @property(nonatomic) float templateVersion; // @synthesize templateVersion=_templateVersion;
 @property(nonatomic) CDStruct_3c058996 alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
 @property(nonatomic) float capHeight; // @synthesize capHeight=_capHeight;

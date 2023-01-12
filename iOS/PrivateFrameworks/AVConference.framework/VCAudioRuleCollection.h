@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)addAudioPayload:(int)arg1 isSecondary:(_Bool)arg2 sbr:(_Bool)arg3;
 - (void)dealloc;
 - (id)initPrimaryPayload:(int)arg1 dtxPayload:(int)arg2 redPayload:(int)arg3 secondaryPayloads:(id)arg4 allowAudioSwitching:(_Bool)arg5 sbr:(_Bool)arg6 aacBlockSize:(int)arg7;
+- (id)initWithPhoneContinuity:(_Bool)arg1 allowAudioSwitching:(_Bool)arg2 sbr:(_Bool)arg3 aacBlockSize:(int)arg4 isLowLatencyAudio:(_Bool)arg5;
 - (id)initWithPhoneContinuity:(_Bool)arg1 allowAudioSwitching:(_Bool)arg2 sbr:(_Bool)arg3 aacBlockSize:(int)arg4;
 - (id)init;
 

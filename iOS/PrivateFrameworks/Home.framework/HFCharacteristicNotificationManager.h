@@ -23,6 +23,7 @@
 @property(retain, nonatomic) HMHome *notificationsEnabledHome; // @synthesize notificationsEnabledHome=_notificationsEnabledHome;
 @property(readonly, nonatomic) NSMutableSet *notificationsEnabledReasons; // @synthesize notificationsEnabledReasons=_notificationsEnabledReasons;
 @property(retain, nonatomic) NSDate *lastNotificationsEnableRequestDate; // @synthesize lastNotificationsEnableRequestDate=_lastNotificationsEnableRequestDate;
+- (void)_updateNotificationsEnabledWithNumberOfAppleMediaAccessories:(unsigned long long)arg1;
 - (void)_updateNotificationsEnabled;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
@@ -31,6 +32,7 @@
 @property(readonly, nonatomic) _Bool notificationsEnabled;
 - (void)disableNotificationsForSelectedHomeWithReason:(id)arg1;
 - (void)enableNotificationsForSelectedHomeWithReason:(id)arg1;
+- (void)enableNotificationsForSelectedHomeWithReason:(id)arg1 numberOfAppleMediaAccessories:(unsigned long long)arg2;
 - (id)init;
 
 // Remaining properties

@@ -6,25 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/NTKCollectionClient-Protocol.h>
+
+@class NSString;
 @protocol NTKCollectionClient;
 
-@interface _NTKCollectionClientProxy : NSObject
+@interface _NTKCollectionClientProxy : NSObject <NTKCollectionClient>
 {
     id <NTKCollectionClient> _proxy;
 }
 
 - (void).cxx_destruct;
+- (void)upgradeFaceInstanceDescriptor:(id)arg1 forUUID:(id)arg2 seqID:(id)arg3;
+- (void)addFaceInstanceDescriptor:(id)arg1 forUUID:(id)arg2 seqId:(id)arg3;
 - (void)flushCompleteForIdentifier:(id)arg1;
-- (void)resetClientCollection;
-- (void)upgradeFace:(id)arg1 forUUID:(id)arg2 seqID:(id)arg3;
+- (void)resetClientCollectionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeFaceForUUID:(id)arg1 seqId:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)addFace:(id)arg1 forUUID:(id)arg2 seqId:(id)arg3;
 - (void)updateFaceForUUID:(id)arg1 withResourceDirectory:(id)arg2 seqId:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateFaceForUUID:(id)arg1 withConfiguration:(id)arg2 seqId:(id)arg3;
 - (void)updateOrderedFaceUUIDs:(id)arg1 seqId:(id)arg2;
 - (void)updateSelectedFaceUUID:(id)arg1 seqId:(id)arg2;
-- (void)loadFullCollectionWithOrderedUUIDs:(id)arg1 selectedUUID:(id)arg2 facesByUUID:(id)arg3 seqId:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)loadFullCollectionWithOrderedUUIDs:(id)arg1 selectedUUID:(id)arg2 facesDescriptorsByUUID:(id)arg3 seqId:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)initWithWeakProxy:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

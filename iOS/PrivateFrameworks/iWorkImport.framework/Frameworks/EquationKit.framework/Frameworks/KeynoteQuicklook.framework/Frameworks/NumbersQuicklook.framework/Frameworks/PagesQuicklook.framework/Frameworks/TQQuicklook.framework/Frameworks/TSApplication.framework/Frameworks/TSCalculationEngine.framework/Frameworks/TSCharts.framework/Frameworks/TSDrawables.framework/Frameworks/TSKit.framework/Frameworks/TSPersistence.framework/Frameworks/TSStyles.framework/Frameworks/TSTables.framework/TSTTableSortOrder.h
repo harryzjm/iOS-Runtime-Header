@@ -23,8 +23,8 @@
 @property(retain, nonatomic) NSIndexSet *cachedIndexes; // @synthesize cachedIndexes=_cachedIndexes;
 @property(readonly, nonatomic) int type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSArray *rules; // @synthesize rules=_rules;
-- (void)encodeToArchive:(struct TableSortOrderArchive *)arg1;
-- (id)initFromArchive:(const struct TableSortOrderArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 - (_Bool)containsAnyRulesInBaseColumns:(id)arg1;
 - (id)sortOrderByRemovingBaseColumnIndices:(id)arg1;
 - (id)sortOrderByReplacingRulesWithRules:(id)arg1;

@@ -17,7 +17,6 @@
     MISSING_TYPE *headlineService;
     MISSING_TYPE *audioConfigurationManager;
     MISSING_TYPE *topicClusterService;
-    MISSING_TYPE *topicColorProvider;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *magazineFeedService;
     MISSING_TYPE *personalizationService;
@@ -25,6 +24,11 @@
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *suggestionClusteringService;
+    MISSING_TYPE *localAreasManager;
+    MISSING_TYPE *locationManager;
+    MISSING_TYPE *engagementInlineViewManager;
+    MISSING_TYPE *todayFeedEngagementEventHandler;
 }
 
 @end

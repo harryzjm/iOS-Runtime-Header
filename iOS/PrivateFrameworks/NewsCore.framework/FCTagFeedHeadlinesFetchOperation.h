@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCCloudContext, FCDateRange, FCFeedDescriptor, FCSingleTagHeadlinesFetchRanges, NSArray, NSSet;
+@class FCCloudContext, FCFeedDescriptor, FCFeedRange, NSArray, NSDate, NSSet;
 @protocol FCCoreConfiguration, FCFeedPersonalizing;
 
 @interface FCTagFeedHeadlinesFetchOperation
 {
+    _Bool _fetchOrdinaryItemsFromCache;
+    _Bool _resultFinished;
     CDUnknownBlockType _fetchCompletionHandler;
-    FCDateRange *_fetchDateRange;
-    FCSingleTagHeadlinesFetchRanges *_fromRanges;
-    FCSingleTagHeadlinesFetchRanges *_toRanges;
+    NSDate *_topOfFeedDate;
+    FCFeedRange *_freeFeedRange;
+    FCFeedRange *_paidFeedRange;
     long long _maxFetchCount;
     NSArray *_precedingAdjacentHeadlines;
     NSArray *_followingAdjacentHeadlines;
@@ -22,28 +24,26 @@
     FCCloudContext *_cloudContext;
     FCFeedDescriptor *_feedDescriptor;
     id <FCFeedPersonalizing> _personalizer;
+    NSArray *_resultOrdinaryHeadlines;
+    NSArray *_resultPinnedHeadlines;
+    FCFeedRange *_resultFetchedFreeRange;
+    FCFeedRange *_resultFetchedPaidRange;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
-@property(readonly, nonatomic) FCFeedDescriptor *feedDescriptor; // @synthesize feedDescriptor=_feedDescriptor;
-@property(readonly, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
-@property(readonly, copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property(copy, nonatomic) NSSet *shownClusterIDs; // @synthesize shownClusterIDs=_shownClusterIDs;
 @property(copy, nonatomic) NSSet *shownArticleIDs; // @synthesize shownArticleIDs=_shownArticleIDs;
 @property(copy, nonatomic) NSArray *followingAdjacentHeadlines; // @synthesize followingAdjacentHeadlines=_followingAdjacentHeadlines;
 @property(copy, nonatomic) NSArray *precedingAdjacentHeadlines; // @synthesize precedingAdjacentHeadlines=_precedingAdjacentHeadlines;
 @property(nonatomic) long long maxFetchCount; // @synthesize maxFetchCount=_maxFetchCount;
-@property(copy, nonatomic) FCSingleTagHeadlinesFetchRanges *toRanges; // @synthesize toRanges=_toRanges;
-@property(copy, nonatomic) FCSingleTagHeadlinesFetchRanges *fromRanges; // @synthesize fromRanges=_fromRanges;
-@property(copy, nonatomic) FCDateRange *fetchDateRange; // @synthesize fetchDateRange=_fetchDateRange;
+@property(copy, nonatomic) FCFeedRange *paidFeedRange; // @synthesize paidFeedRange=_paidFeedRange;
+@property(copy, nonatomic) FCFeedRange *freeFeedRange; // @synthesize freeFeedRange=_freeFeedRange;
+@property(copy, nonatomic) NSDate *topOfFeedDate; // @synthesize topOfFeedDate=_topOfFeedDate;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-- (void)supplementFeedItems:(id)arg1 forTag:(id)arg2 fromCursor:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)filterTransformationWithFilterOptions:(long long)arg1 additionalArticleIDs:(id)arg2;
-- (id)filterTransformationWithFilterOptions:(long long)arg1;
-- (id)feedTransformations;
-- (void)_fetchPinnedHeadlinesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_fetchOrdinaryHeadlinesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)resetForRetry;
+- (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
+- (unsigned long long)maxRetries;
+- (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (id)initWithConfiguration:(id)arg1 cloudContext:(id)arg2 feedDescriptor:(id)arg3 personalizer:(id)arg4;
 

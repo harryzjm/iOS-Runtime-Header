@@ -13,7 +13,6 @@
 
 @interface TSPMemoryEncoder : NSObject <TSPEncoder>
 {
-    _Bool _alwaysDefragmentData;
     TSPMemoryComponentWriteChannel *_metadataWriteChannel;
     TSPMemoryComponentWriteChannel *_rootComponentWriteChannel;
 }
@@ -26,8 +25,6 @@
 - (id)metadataData;
 @property(readonly, nonatomic) NSObject<OS_dispatch_data> *metadataDispatchData;
 - (id)encodedData;
-- (id)initWithAlwaysDefragmentData:(_Bool)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

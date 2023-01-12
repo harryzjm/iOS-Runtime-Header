@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSLocale, NSString;
 
 @interface _NSLexicon : NSObject
 {
-    NSData *_data;
+    NSData *_legacyData;
+    void *_languageModel;
+    NSLocale *_appropriateLocale;
+    unsigned long long _enabledTransforms;
     NSString *_languageCode;
 }
 
 + (id)systemLexiconForLanguageCode:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
+- (id)allPossibleWordAttributesForWord:(id)arg1;
+- (id)replacementWordForWord:(id)arg1 inSameLemmaMatchingAttributes:(CDStruct_be0ff5be)arg2 inLargerStringRange:(struct _NSRange)arg3 lengthLens:(CDUnknownBlockType)arg4 substringInRangeLens:(CDUnknownBlockType)arg5 enumerateWordSubstringsInRangeLens:(CDUnknownBlockType)arg6 disambiguationHints:(unsigned long long)arg7 pronouns:(id)arg8;
 - (id)lemmasForWord:(id)arg1;
 - (void)dealloc;
+- (id)initWithLegacyTrieContentsOfURL:(id)arg1 languageCode:(id)arg2 error:(id *)arg3;
 - (id)initWithContentsOfURL:(id)arg1 languageCode:(id)arg2 error:(id *)arg3;
-- (id)_lemmasInLikelihoodOrderForWord:(id)arg1 matchingWordAttributes:(CDStruct_be0ff5be)arg2;
 
 @end
 

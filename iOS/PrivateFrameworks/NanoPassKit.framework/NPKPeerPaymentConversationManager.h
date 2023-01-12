@@ -26,6 +26,7 @@
 @property(nonatomic) __weak PKPeerPaymentController *currentPeerPaymentController; // @synthesize currentPeerPaymentController=_currentPeerPaymentController;
 @property(retain, nonatomic) NSString *currentRecipientAddressLookup; // @synthesize currentRecipientAddressLookup=_currentRecipientAddressLookup;
 @property(retain, nonatomic) NPKPeerPaymentConversationContext *conversationContext; // @synthesize conversationContext=_conversationContext;
+- (id)_newPeerPaymentControllerWithQueue:(id)arg1;
 - (id)_newPeerPaymentController;
 - (id)_sharedPeerPaymentWebService;
 - (void)_postNotificationWithRecipient:(id)arg1 error:(id)arg2;

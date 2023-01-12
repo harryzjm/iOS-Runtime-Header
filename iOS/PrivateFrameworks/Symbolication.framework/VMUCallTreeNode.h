@@ -34,7 +34,7 @@
 - (id)invertedNode;
 - (void)printCallTree;
 - (void)printCallTreeToFile:(struct __sFILE *)arg1;
-- (void)printCallTreeToFile:(struct __sFILE *)arg1 options:(unsigned long long)arg2;
+- (void)printCallTreeToFile:(struct __sFILE *)arg1 cumulativeOutput:(id)arg2 options:(unsigned long long)arg3;
 - (id)stringFromCallTreeIndentIfNoBranches:(_Bool)arg1;
 - (id)stringFromCallTreeIndentIfNoBranches:(_Bool)arg1 showPseudoNodes:(_Bool)arg2;
 - (id)stringFromCallTreeWithOptions:(unsigned long long)arg1;

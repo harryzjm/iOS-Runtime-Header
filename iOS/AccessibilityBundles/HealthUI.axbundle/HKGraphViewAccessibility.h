@@ -11,23 +11,20 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityDataSeriesSupportsSonification;
-- (_Bool)_accessibilityDataSeriesSupportsSummarization;
-- (id)_accessibilityDataSeriesMinimumValueForAxis:(long long)arg1;
-- (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
-- (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;
-- (id)_accessibilityDataSeriesTitleForAxis:(long long)arg1;
-- (long long)_accessibilityDataSeriesType;
-- (id)_accessibilityDataSeriesName;
-- (long long)accessibilityContainerType;
-- (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
-- (unsigned long long)_accessibilityNumberOfSegmentsFrom:(id)arg1 toDate:(id)arg2;
+- (id)_accessibilityChartSummary;
+- (_Bool)_accessibilityIsContinuous;
+- (id)_accessibilityYAxis;
+- (id)_accessibilityXAxis;
+- (id)_accessibilitySeriesTitle;
+- (double)_accessibilityScaledYValue:(double)arg1;
+- (id)_accessibilityDataSeries;
+- (id)accessibilityChartDescriptor;
+- (_Bool)_accessibilitySupportsChartsV2;
 - (void)_accessibilityClearElements;
 - (void)_updateGraphViewConfigurationIfNecessary;
 - (void)_renderSeriesWithContext:(struct CGContext *)arg1 secondaryRenderContext:(id)arg2 chartRect:(struct CGRect)arg3;
 - (void)_accessibilitySetChartElements:(id)arg1;
 - (id)_accessibilityChartElements;
-- (id)_accessibilityStringForCurrentZoomAndDate:(id)arg1;
 
 @end
 

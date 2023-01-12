@@ -16,10 +16,12 @@
     GEORPFeedbackResult *_feedbackResult;
     int _feedbackRequestType;
     int _status;
+    _Bool _attestationNotFound;
     _Bool _discardLogs;
     struct {
         unsigned int has_feedbackRequestType:1;
         unsigned int has_status:1;
+        unsigned int has_attestationNotFound:1;
         unsigned int has_discardLogs:1;
     } _flags;
 }
@@ -41,6 +43,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAttestationNotFound;
+@property(nonatomic) _Bool attestationNotFound;
 @property(nonatomic) _Bool hasDiscardLogs;
 @property(nonatomic) _Bool discardLogs;
 @property(retain, nonatomic) GEORPFeedbackResult *feedbackResult;

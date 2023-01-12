@@ -8,15 +8,19 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSArray, NSString, PKAccount, PKCreditAccountStatement, PKCreditAccountSummary, PKPaymentTransactionGroup, PKPaymentWebService, PKTransactionSource;
+@class NSArray, NSDate, NSString, PKAccount, PKAccountUserCollection, PKCreditAccountMergeSummaryAccountDetails, PKCreditAccountStatement, PKCreditAccountSummary, PKFamilyMemberCollection, PKPaymentTransactionGroup, PKPaymentWebService, PKTransactionSourceCollection;
 
 @interface PKDashboardBalanceSummaryItem : NSObject <PKDashboardItem>
 {
     PKAccount *_account;
-    PKTransactionSource *_transactionSource;
+    PKAccountUserCollection *_accountUserCollection;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKFamilyMemberCollection *_familyCollection;
     PKPaymentWebService *_webService;
     unsigned long long _type;
     PKPaymentTransactionGroup *_transactionGroup;
+    PKCreditAccountMergeSummaryAccountDetails *_mergeSummaryAccountDetails;
+    NSDate *_mergeDate;
     PKCreditAccountStatement *_statement;
     PKCreditAccountSummary *_summary;
     NSArray *_statements;
@@ -27,10 +31,14 @@
 @property(retain, nonatomic) NSArray *statements; // @synthesize statements=_statements;
 @property(retain, nonatomic) PKCreditAccountSummary *summary; // @synthesize summary=_summary;
 @property(retain, nonatomic) PKCreditAccountStatement *statement; // @synthesize statement=_statement;
+@property(retain, nonatomic) NSDate *mergeDate; // @synthesize mergeDate=_mergeDate;
+@property(retain, nonatomic) PKCreditAccountMergeSummaryAccountDetails *mergeSummaryAccountDetails; // @synthesize mergeSummaryAccountDetails=_mergeSummaryAccountDetails;
 @property(retain, nonatomic) PKPaymentTransactionGroup *transactionGroup; // @synthesize transactionGroup=_transactionGroup;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
-@property(retain, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(retain, nonatomic) PKFamilyMemberCollection *familyCollection; // @synthesize familyCollection=_familyCollection;
+@property(retain, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
+@property(retain, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
 
 // Remaining properties

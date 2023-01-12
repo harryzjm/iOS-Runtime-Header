@@ -10,7 +10,7 @@
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 #import <WorkflowKit/WFVariableStringContent-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSString, WFImage;
+@class NSArray, NSDictionary, NSHashTable, NSSet, NSString, WFIcon, WFImage;
 @protocol WFVariableProvider;
 
 @interface WFVariable : NSObject <WFVariableStringContent, NSCopying, WFVariableSerialization>
@@ -29,6 +29,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)serializedRepresentation;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
+- (void)getFileRepresentationWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getObjectRepresentationForClass:(Class)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)retrieveContentCollectionWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -44,6 +45,7 @@
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1;
 @property(readonly, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
+@property(readonly, nonatomic) NSSet *requiredAccessResources;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) __weak id <WFVariableProvider> variableProvider;
 @property(readonly, nonatomic) _Bool requiresModernVariableSupport;
@@ -51,7 +53,9 @@
 @property(readonly, nonatomic, getter=isAvailable) _Bool available;
 @property(readonly, nonatomic) NSString *UUID;
 @property(readonly, nonatomic) NSString *name;
-@property(readonly, nonatomic) WFImage *icon;
+@property(readonly, nonatomic) WFImage *iconImage;
+@property(readonly, nonatomic) NSString *iconSymbolName;
+@property(readonly, nonatomic) WFIcon *icon;
 @property(readonly, nonatomic) NSString *type;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;
 - (id)init;

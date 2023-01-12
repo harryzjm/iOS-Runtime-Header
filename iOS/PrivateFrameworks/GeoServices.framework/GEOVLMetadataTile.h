@@ -13,6 +13,7 @@
 @interface GEOVLMetadataTile : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    CDStruct_95bda58d _purposeDenylists;
     NSMutableArray *_builds;
     GEOTileCoordinate *_coord;
     NSMutableArray *_precisions;
@@ -21,6 +22,7 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
+        unsigned int read_purposeDenylists:1;
         unsigned int read_builds:1;
         unsigned int read_coord:1;
         unsigned int read_precisions:1;
@@ -47,6 +49,14 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsPurposeDenylists:(id)arg1;
+- (id)purposeDenylistsAsString:(int)arg1;
+- (void)setPurposeDenylists:(int *)arg1 count:(unsigned long long)arg2;
+- (int)purposeDenylistAtIndex:(unsigned long long)arg1;
+- (void)addPurposeDenylist:(int)arg1;
+- (void)clearPurposeDenylists;
+@property(readonly, nonatomic) int *purposeDenylists;
+@property(readonly, nonatomic) unsigned long long purposeDenylistsCount;
 - (id)tileAtIndex:(unsigned long long)arg1;
 - (unsigned long long)tilesCount;
 - (void)addTile:(id)arg1;
@@ -64,6 +74,7 @@
 @property(retain, nonatomic) NSMutableArray *builds;
 @property(retain, nonatomic) GEOTileCoordinate *coord;
 @property(readonly, nonatomic) _Bool hasCoord;
+- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

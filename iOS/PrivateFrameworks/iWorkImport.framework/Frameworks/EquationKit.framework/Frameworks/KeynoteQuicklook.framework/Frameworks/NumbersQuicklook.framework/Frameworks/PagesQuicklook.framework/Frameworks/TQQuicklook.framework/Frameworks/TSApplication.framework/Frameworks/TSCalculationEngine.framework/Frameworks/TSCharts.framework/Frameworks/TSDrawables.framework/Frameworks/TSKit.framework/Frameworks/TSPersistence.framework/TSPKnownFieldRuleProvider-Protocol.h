@@ -8,6 +8,6 @@
 
 @protocol TSPKnownFieldRuleProvider <NSObject>
 @property(readonly, nonatomic) _Bool isContentUnknown;
-- (void)enumerateKnownFieldRulesUsingBlock:(void (^)(struct FieldPath *, struct FieldInfoRuleAttributes *, unsigned long long, _Bool *))arg1;
+- (void)enumerateKnownFieldRulesUsingBlock:(void (^)(void *, struct FieldInfoRuleAttributes *, unsigned long long, _Bool *))arg1;
 @end
 

@@ -11,6 +11,7 @@
 @protocol PKNFCTagReaderSessionDelegate <NSObject>
 
 @optional
+- (void)nfcTagReaderSessionDidTimeout:(PKNFCTagReaderSession *)arg1;
 - (void)nfcTagReaderSessionDidEndUnexpectedly:(PKNFCTagReaderSession *)arg1;
 - (void)nfcTagReaderSession:(PKNFCTagReaderSession *)arg1 didDetectTags:(NSArray *)arg2;
 @end

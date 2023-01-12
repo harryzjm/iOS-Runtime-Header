@@ -14,6 +14,7 @@
     id <ASAuthorizationCredential> _credential;
 }
 
++ (id)authorizationFromCredential:(id)arg1;
 + (id)new;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <ASAuthorizationCredential> credential; // @synthesize credential=_credential;

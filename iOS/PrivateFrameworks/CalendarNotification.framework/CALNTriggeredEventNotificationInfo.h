@@ -11,6 +11,7 @@
 @interface CALNTriggeredEventNotificationInfo : NSObject
 {
     _Bool _isAllDay;
+    _Bool _isTimeSensitive;
     _Bool _hasSuggestedLocation;
     _Bool _eventHasAlarms;
     _Bool _allowsLocationAlerts;
@@ -43,6 +44,7 @@
 @property(readonly, copy, nonatomic) NSString *eventObjectID; // @synthesize eventObjectID=_eventObjectID;
 @property(readonly, copy, nonatomic) NSString *eventOccurrenceID; // @synthesize eventOccurrenceID=_eventOccurrenceID;
 @property(readonly, copy, nonatomic) NSString *eventID; // @synthesize eventID=_eventID;
+@property(readonly, nonatomic) _Bool isTimeSensitive; // @synthesize isTimeSensitive=_isTimeSensitive;
 @property(readonly, nonatomic) _Bool isAllDay; // @synthesize isAllDay=_isAllDay;
 @property(readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -50,7 +52,7 @@
 @property(readonly, copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (id)description;
-- (id)initWithTitle:(id)arg1 location:(id)arg2 locationWithoutPrediction:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 isAllDay:(_Bool)arg6 eventID:(id)arg7 eventOccurrenceID:(id)arg8 eventObjectID:(id)arg9 eventRepresentationDictionary:(id)arg10 legacyIdentifier:(id)arg11 preferredLocation:(id)arg12 conferenceURL:(id)arg13 mailtoURL:(id)arg14 hasSuggestedLocation:(_Bool)arg15 eventHasAlarms:(_Bool)arg16 allowsLocationAlerts:(_Bool)arg17 forceDisplayOfNewTravelAdvisoryHypotheses:(_Bool)arg18;
+- (id)initWithTitle:(id)arg1 location:(id)arg2 locationWithoutPrediction:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 isAllDay:(_Bool)arg6 isTimeSensitive:(_Bool)arg7 eventID:(id)arg8 eventOccurrenceID:(id)arg9 eventObjectID:(id)arg10 eventRepresentationDictionary:(id)arg11 legacyIdentifier:(id)arg12 preferredLocation:(id)arg13 conferenceURL:(id)arg14 mailtoURL:(id)arg15 hasSuggestedLocation:(_Bool)arg16 eventHasAlarms:(_Bool)arg17 allowsLocationAlerts:(_Bool)arg18 forceDisplayOfNewTravelAdvisoryHypotheses:(_Bool)arg19;
 
 @end
 

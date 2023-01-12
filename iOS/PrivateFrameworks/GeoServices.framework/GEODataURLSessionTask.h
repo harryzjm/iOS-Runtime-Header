@@ -37,6 +37,8 @@
     id <NSObject> _parsedResponse;
     NSDate *_originalStartDate;
     NSObject<OS_voucher> *_voucher;
+    NSURL *_downloadedFileURL;
+    unsigned long long _cachedDownloadFileSize;
 }
 
 - (void).cxx_destruct;
@@ -46,7 +48,6 @@
 @property(readonly, nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(readonly, nonatomic) NSURLSessionTask *backingTask; // @synthesize backingTask=_backingTask;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
-@property(readonly, nonatomic) NSURLSessionTaskMetrics *urlTaskMetrics; // @synthesize urlTaskMetrics=_urlTaskMetrics;
 @property(readonly, nonatomic) __weak id <GEODataSessionTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) CDStruct_d1a7ebee requestKind; // @synthesize requestKind=_requestKind;
 @property(copy, nonatomic) NSData *cachedData; // @synthesize cachedData=_cachedData;
@@ -68,8 +69,10 @@
 @property(retain, nonatomic) NSError *error;
 @property(readonly, nonatomic) NSHTTPURLResponse *response;
 @property(readonly, copy, nonatomic) NSURL *downloadedFileURL;
+@property(readonly, nonatomic) unsigned long long receivedDataLength;
 @property(readonly, nonatomic) NSData *receivedData;
 @property(readonly, nonatomic) _Bool protocolBufferHasPreamble;
+@property(readonly, nonatomic) NSURLSessionTaskMetrics *urlTaskMetrics;
 @property float priority;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -82,10 +85,12 @@
 - (_Bool)validateContentLengthWithError:(id *)arg1;
 - (_Bool)validateNonEmptyResponseWithError:(id *)arg1;
 - (_Bool)validateTileResponse:(_Bool)arg1 error:(id *)arg2;
+- (void)didFinishDownloadingToURL:(id)arg1;
+- (void)backingTask:(id)arg1 didBecomeDownloadTask:(id)arg2;
 - (void)didCollectMetrics:(id)arg1;
 - (void)dataSession:(id)arg1 taskDidCompleteWithError:(id)arg2;
 - (void)didReceiveData:(id)arg1;
-- (void)didReceiveResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dataSession:(id)arg1 didReceiveResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dataSession:(id)arg1 willSendRequestForEstablishedConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)createURLRequest;

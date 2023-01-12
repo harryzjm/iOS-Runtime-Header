@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)tearDown;
-- (void)animateFinishTransition;
 - (void)_animateTransitionUserSlideDismissal;
 - (void)_animateTransition;
 - (void)animateTransition;

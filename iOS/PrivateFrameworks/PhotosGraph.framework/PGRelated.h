@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, PGGraphNode, PHPhotosHighlight;
+@class NSArray, NSDate, NSDictionary, NSString, PGGraphNode, PHMemory, PHPhotosHighlight;
 @protocol PGGraphRelatableEvent;
 
 @interface PGRelated : NSObject
@@ -28,9 +28,11 @@
     unsigned long long _memoryTripTitleType;
     long long _dateMatchingType;
     PGGraphNode<PGGraphRelatableEvent> *_eventNode;
+    PHMemory *_memory;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHMemory *memory; // @synthesize memory=_memory;
 @property(retain, nonatomic) PGGraphNode<PGGraphRelatableEvent> *eventNode; // @synthesize eventNode=_eventNode;
 @property(nonatomic) _Bool shouldGenerateTitle; // @synthesize shouldGenerateTitle=_shouldGenerateTitle;
 @property(nonatomic, getter=isGeneratingTitleBasedOnKeyAsset) _Bool generateTitleBasedOnKeyAsset; // @synthesize generateTitleBasedOnKeyAsset=_generateTitleBasedOnKeyAsset;
@@ -53,14 +55,16 @@
 @property(nonatomic) unsigned short relatedAlgorithmsVersion;
 @property(nonatomic) unsigned short graphSchemaVersion;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
-- (void)_generateTitleWithMomentNodes:(id)arg1 keyAsset:(id)arg2 referenceDateInterval:(id)arg3;
-- (void)_generateTitleWithHighlightNode:(id)arg1 referenceDateInterval:(id)arg2;
+- (void)_generateTitleWithMomentNodes:(id)arg1 keyAsset:(id)arg2 referenceDateInterval:(id)arg3 titleGenerationContext:(id)arg4;
+- (void)_generateTitleWithHighlightNode:(id)arg1 referenceDateInterval:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithMemory:(id)arg1 needsDebugInfo:(_Bool)arg2;
 - (id)initWithHighlight:(id)arg1 needsDebugInfo:(_Bool)arg2;
 - (id)initWithMoment:(id)arg1 needsDebugInfo:(_Bool)arg2;
-- (id)initWithGraphMatchingResult:(id)arg1 moments:(id)arg2 tripMemoryTitleType:(unsigned long long)arg3 tripMomentNodes:(id)arg4 needsDebugInfo:(_Bool)arg5;
+- (id)initWithGraphMatchingResult:(id)arg1 moments:(id)arg2 tripMemoryTitleType:(unsigned long long)arg3 tripMomentNodes:(id)arg4 titleGenerationContext:(id)arg5 needsDebugInfo:(_Bool)arg6;
 - (id)initWithGraphMatchingResult:(id)arg1 moment:(id)arg2 needsDebugInfo:(_Bool)arg3;
 - (id)initWithGraphMatchingResult:(id)arg1 highlight:(id)arg2 needsDebugInfo:(_Bool)arg3;
 - (id)initWithGraphMatchingResult:(id)arg1 assetCollection:(id)arg2 needsDebugInfo:(_Bool)arg3;
+- (id)initWithGraphMatchingResult:(id)arg1 memory:(id)arg2 needsDebugInfo:(_Bool)arg3;
 - (id)_initWithGraphMatchingResult:(id)arg1 highlight:(id)arg2 moments:(id)arg3 needsDebugInfo:(_Bool)arg4;
 
 @end

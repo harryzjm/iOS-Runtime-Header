@@ -8,7 +8,7 @@
 
 @interface RLMOptionalBase : NSProxy
 {
-    struct unique_ptr<(anonymous namespace)::OptionalBase, std::__1::default_delete<(anonymous namespace)::OptionalBase>> _impl;
+    struct unique_ptr<(anonymous namespace)::OptionalBase, std::default_delete<(anonymous namespace)::OptionalBase>> _impl;
 }
 
 - (id).cxx_construct;

@@ -16,6 +16,7 @@
 - (void)accessibilityIncrement;
 - (id)accessibilityValue;
 - (_Bool)isAccessibilityElement;
+- (id)_accessibilityUserTestingChildren;
 
 @end
 

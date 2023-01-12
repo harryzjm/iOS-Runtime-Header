@@ -13,6 +13,7 @@
 
 @interface RTRoutineManager : NSObject <RTFrameworkProtocol>
 {
+    _Bool _targetUserSession;
     NSXPCConnection *_xpcConnection;
     CDUnknownBlockType _visitHandler;
     CDUnknownBlockType _leechedVisitHandler;
@@ -34,6 +35,7 @@
 @property(retain, nonatomic) RTRoutineManagerRegistrantScenarioTrigger *scenarioTriggerRegistrant; // @synthesize scenarioTriggerRegistrant=_scenarioTriggerRegistrant;
 @property(retain, nonatomic) RTRoutineManagerRegistrantAction *actionRegistrant; // @synthesize actionRegistrant=_actionRegistrant;
 @property(retain, nonatomic) RTTokenBucket *clientThrottle; // @synthesize clientThrottle=_clientThrottle;
+@property(nonatomic) _Bool targetUserSession; // @synthesize targetUserSession=_targetUserSession;
 @property(retain, nonatomic) RTEventAgentHelper *eventAgentHelper; // @synthesize eventAgentHelper=_eventAgentHelper;
 @property(retain, nonatomic) NSString *restorationIdentifier; // @synthesize restorationIdentifier=_restorationIdentifier;
 @property(copy, nonatomic) CDUnknownBlockType vehicleEventsHandler; // @synthesize vehicleEventsHandler=_vehicleEventsHandler;
@@ -100,6 +102,8 @@
 - (void)fetchPredictedLocationsOfInterestAssociatedToTitle:(id)arg1 location:(id)arg2 calendarIdentifier:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)fetchNextPredictedLocationsOfInterestWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchEstimatedLocationAtDate:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchEstimatedLocationAtDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchRoutineModeFromLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)enumerateStoredLocationsWithOptions:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateObjectsWithOptions:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -118,8 +122,10 @@
 - (void)createConnection;
 - (void)_createConnection;
 - (void)dealloc;
-- (id)init;
+- (id)initWithTargetUserSession:(_Bool)arg1;
 - (id)initWithRestorationIdentifier:(id)arg1;
+- (id)init;
+- (id)initWithRestorationIdentifier:(id)arg1 targertUserSession:(_Bool)arg2;
 - (void)performBluePOIQueryLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchCurrentPredictedLocationsOfInterestLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
 

@@ -20,6 +20,7 @@
     UIViewController<HUConfigurationViewController> *_initialViewController;
 }
 
++ (id)needsOnboardingForHome:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldAbortAllOnboarding; // @synthesize shouldAbortAllOnboarding=_shouldAbortAllOnboarding;
 @property(nonatomic) _Bool shouldAbortThisOnboardingFlowGroup; // @synthesize shouldAbortThisOnboardingFlowGroup=_shouldAbortThisOnboardingFlowGroup;
@@ -28,7 +29,6 @@
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)processUserInput:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (_Bool)_shouldShowOnboardingWithOptions:(id)arg1;
 - (id)initWithUsageOptions:(id)arg1 home:(id)arg2;
 
 // Remaining properties

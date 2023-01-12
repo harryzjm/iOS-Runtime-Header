@@ -18,6 +18,7 @@
 + (id)sharedUtilities;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *routingQueue; // @synthesize routingQueue=_routingQueue;
+- (_Bool)deviceIsTinker;
 - (void)updateHearingFeatureUsage;
 - (void)addHearingFeatureUsage:(unsigned long long)arg1;
 - (void)pauseNowPlaying:(_Bool)arg1 withQueue:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;

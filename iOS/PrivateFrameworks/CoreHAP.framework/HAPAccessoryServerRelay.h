@@ -73,7 +73,6 @@
 - (void)_handleReceivedMessageData:(id)arg1 withIdentifier:(id)arg2 error:(id)arg3;
 - (void)_sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned short)_nextTransactionIdentifier;
-- (id)getLocalPairingIdentityAndAllowCreation:(_Bool)arg1 error:(id *)arg2;
 - (void)_listPairingWithCompletionQueue:(id)arg1 pairingsCharacteristic:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -35,6 +35,7 @@
 - (id)formFieldClassificationCorrector:(id)arg1 bestAddressBookLabelForControlValue:(id)arg2;
 - (id)_autoFillCorrectionManager;
 - (void)_processCorrectionsForFormWithDomain:(id)arg1 formMetadata:(id)arg2 uniqueIDsOfControlsThatWereAutoFilled:(id)arg3;
+- (void)performWhenReady:(CDUnknownBlockType)arg1;
 - (void)prepareMeCard;
 - (void)textDidChangeInForm:(id)arg1 inWebView:(id)arg2 frame:(id)arg3;
 - (void)didFillFormWithGeneratedPassword:(id)arg1 inWebView:(id)arg2 frame:(id)arg3;
@@ -54,7 +55,7 @@
 - (_Bool)_webView:(id)arg1 saveUsernameAndPasswordFromForm:(id)arg2 inFrame:(id)arg3 confirmOverwritingCurrentPassword:(_Bool)arg4 shouldPreferAnnotatedCredentials:(_Bool)arg5 submissionHandler:(CDUnknownBlockType)arg6;
 - (void)didFillFieldWithGeneratedPassword:(id)arg1 inFrame:(id)arg2 webView:(id)arg3;
 - (void)saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 andPromptToUpdateRelatedCredentialsWithWebView:(id)arg4;
-- (_Bool)_saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 formType:(unsigned long long)arg4 promptingPolicy:(long long)arg5 webView:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (_Bool)_saveUser:(id)arg1 password:(id)arg2 isGeneratedPassword:(_Bool)arg3 forURL:(id)arg4 formType:(unsigned long long)arg5 promptingPolicy:(long long)arg6 webView:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (_Bool)_webView:(id)arg1 saveUsernameAndPasswordForURL:(id)arg2 formType:(unsigned long long)arg3 inFrame:(id)arg4 username:(id)arg5 password:(id)arg6 isGeneratedPassword:(_Bool)arg7 confirmOverwritingCurrentPassword:(_Bool)arg8 submissionHandler:(CDUnknownBlockType)arg9;
 - (id)_credentialMatchesEligibleForUpdateForURL:(id)arg1 username:(id)arg2 oldPassword:(id)arg3;
 - (_Bool)_webView:(id)arg1 willSubmitFormContainingCreditCardData:(id)arg2 fromFrame:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
@@ -68,7 +69,7 @@
 - (void)_applicationWillEnterForeground:(id)arg1;
 @property(readonly, nonatomic) CNContact *me;
 - (id)uniqueIDOfContact:(id)arg1;
-- (_Bool)mayPreFillInFrame:(id)arg1 ancestorFrames:(id)arg2;
+- (_Bool)mayPreFillInFrame:(id)arg1;
 - (_Bool)mayFillCreditCardDataInFrame:(id)arg1;
 - (_Bool)shouldAutoFillFromCreditCardDataInFrame:(id)arg1;
 @property(nonatomic) _Bool shouldAutoFillFromAddressBook;

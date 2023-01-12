@@ -9,7 +9,7 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString, NSURL;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface PPConnectionsLocation : NSObject <NSSecureCoding, NSCopying>
 {
@@ -29,6 +29,8 @@
     NSNumber *_longitude;
     NSURL *_originatingWebsiteURL;
     NSURL *_mapItemURL;
+    NSArray *_contactHandles;
+    NSString *_authorHandle;
     NSString *_label;
     NSString *_value;
     NSString *_shortValue;
@@ -54,6 +56,8 @@
 @property(copy, nonatomic) NSString *value; // @synthesize value=_value;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(nonatomic) _Bool copiedToPasteboard; // @synthesize copiedToPasteboard=_copiedToPasteboard;
+@property(copy, nonatomic) NSString *authorHandle; // @synthesize authorHandle=_authorHandle;
+@property(copy, nonatomic) NSArray *contactHandles; // @synthesize contactHandles=_contactHandles;
 @property(copy, nonatomic) NSURL *mapItemURL; // @synthesize mapItemURL=_mapItemURL;
 @property(copy, nonatomic) NSURL *originatingWebsiteURL; // @synthesize originatingWebsiteURL=_originatingWebsiteURL;
 @property(copy, nonatomic) NSNumber *longitude; // @synthesize longitude=_longitude;
@@ -80,6 +84,7 @@
 - (unsigned char)_pexItemSource;
 - (id)quickTypeItem;
 - (id)init;
+- (void)setIdentifier:(id)arg1;
 - (id)initWithOriginatingBundleID:(id)arg1;
 
 @end

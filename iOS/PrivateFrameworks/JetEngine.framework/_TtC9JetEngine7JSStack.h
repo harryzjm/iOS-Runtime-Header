@@ -12,6 +12,9 @@
 {
     MISSING_TYPE *workerThread;
     MISSING_TYPE *context;
+    MISSING_TYPE *runtime;
+    MISSING_TYPE *managedSources;
+    MISSING_TYPE *sentryConfiguration;
     MISSING_TYPE *exceptionObserver;
 }
 

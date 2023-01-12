@@ -6,13 +6,14 @@
 
 #import <MapKit/UITextViewDelegate-Protocol.h>
 
-@class NSString, UIImageView, UIStackView;
+@class GEOComposedAdvisoryItem, NSString, UIImageView, UIStackView;
 
 __attribute__((visibility("hidden")))
 @interface MKIncidentExtendedDetailCell <UITextViewDelegate>
 {
     UIStackView *_stackView;
     UIImageView *_imageView;
+    GEOComposedAdvisoryItem *_advisoryItem;
 }
 
 - (void).cxx_destruct;
@@ -20,8 +21,9 @@ __attribute__((visibility("hidden")))
 - (void)_setConstraints;
 - (id)aggregatedDetailsFor:(id)arg1;
 - (id)customBodyTextView;
-- (void)configureWithNotice:(id)arg1;
-- (void)configureWithIncident:(id)arg1;
+- (void)configureWithAdvisoryItem:(id)arg1;
+- (void)configureWithGEOAdvisoryCard:(id)arg1;
+- (void)configureWithGEORouteIncident:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 
 // Remaining properties

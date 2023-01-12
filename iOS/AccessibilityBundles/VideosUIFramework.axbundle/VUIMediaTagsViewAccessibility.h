@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)didMoveToWindow;
 - (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

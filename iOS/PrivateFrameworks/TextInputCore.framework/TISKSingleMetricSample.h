@@ -27,6 +27,7 @@
 - (unsigned long long)size;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (double)sum;
 - (double)variance;
 - (double)average;
 - (void)addSample:(id)arg1;

@@ -23,6 +23,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)encodedAsUserInfo;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithBundleURL:(id)arg1;
 
 @end
 

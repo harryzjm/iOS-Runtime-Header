@@ -17,6 +17,7 @@
 - (unsigned long long)urlType;
 
 @optional
+- (NSString *)appIdForNetworkEvent;
 - (NSArray *)additionalStatesForNetworkEvent;
 - (unsigned long long)multipathServiceType;
 - (double)timeout;

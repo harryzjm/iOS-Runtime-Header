@@ -7,18 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <CoreDAV/CoreDAVSubmittable-Protocol.h>
+#import <CoreDAV/NSURLSessionDataDelegate-Protocol.h>
+#import <CoreDAV/NSURLSessionDelegate-Protocol.h>
+#import <CoreDAV/NSURLSessionTaskDelegate-Protocol.h>
 
-@class CoreDAVErrorItem, CoreDAVItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSRunLoop, NSString, NSURL, NSURLConnection, NSURLRequest;
+@class CoreDAVErrorItem, CoreDAVItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSRunLoop, NSString, NSThread, NSURL, NSURLRequest, NSURLSession, NSURLSessionDataTask;
 @protocol CoreDAVAccountInfoProvider, CoreDAVResponseBodyParser, CoreDAVTaskDelegate, CoreDAVTaskManager;
 
-@interface CoreDAVTask : NSObject <CoreDAVSubmittable>
+@interface CoreDAVTask : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, CoreDAVSubmittable>
 {
     id <CoreDAVTaskManager> _taskManager;
     id <CoreDAVAccountInfoProvider> _accountInfoProvider;
     long long _numDownloadedElements;
     int _depth;
     NSHTTPURLResponse *_response;
-    NSURLConnection *_connection;
+    NSURLSession *_session;
+    NSURLSessionDataTask *_task;
     NSURLRequest *_request;
     double _timeoutInterval;
     long long _responseStatusCode;
@@ -57,6 +61,8 @@
     _Bool _haveParsedFakeResponseData;
     CoreDAVErrorItem *_forbiddenErrorItem;
     NSString *_uniqueID;
+    NSThread *_callbackThread;
+    _Bool _callbackThreadSet;
     _Bool _ignoresGuardianRestrictions;
     _Bool _simulated;
     _Bool _totalBytesWasProcessedAsAbnormallyLarge;
@@ -92,7 +98,7 @@
 @property(nonatomic) __weak id <CoreDAVTaskManager> taskManager; // @synthesize taskManager=_taskManager;
 @property(readonly, nonatomic) CoreDAVItem *rootElement;
 - (id)_requestForLogging;
-- (id)_connectionForLogging;
+- (id)_sessionForLogging;
 - (void)reportStatusWithError:(id)arg1;
 - (long long)numDownloadedElements;
 - (void)reset;
@@ -100,22 +106,30 @@
 - (void)finishEarlyWithError:(id)arg1;
 - (void)startModal;
 @property(readonly, nonatomic) NSDictionary *responseHeaders;
-- (void)connection:(id)arg1 didFailWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
+- (void)_task:(id)arg1 didFailWithError:(id)arg2;
+- (void)_session:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)_handleUnauthorizedAccessError:(id)arg1;
-- (void)connectionDidFinishLoading:(id)arg1;
+- (void)_taskFinishedLoading:(id)arg1;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)handleWebLoginRequestWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)connection:(id)arg1 willSendRequestForAuthenticationChallenge:(id)arg2;
+- (void)_handleAuthenticationChallenge:(id)arg1 task:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_shouldCreateCredentialForBasicOrDigestAuthChallenge:(id)arg1;
-- (void)connection:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2;
-- (_Bool)connectionShouldUseCredentialStorage:(id)arg1;
-- (_Bool)connection:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2;
-- (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
+- (void)_didReceiveAuthenticationChallenge:(id)arg1 forTask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)_canAuthenticateAgainstProtectionSpace:(id)arg1;
+- (void)_session:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)lastRedirectURL;
-- (id)connection:(id)arg1 needNewBodyStream:(id)arg2;
+- (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
 - (_Bool)_shouldHandleStatusCode:(long long)arg1;
-- (void)connection:(id)arg1 didReceiveData:(id)arg2;
-- (void)connection:(id)arg1 didSendBodyData:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;
+- (void)_session:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
+- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
+- (void)_runOnCallbackThread:(CDUnknownBlockType)arg1;
+- (void)_runOnThisThread:(CDUnknownBlockType)arg1;
 - (void)_handleBadPasswordResponse;
 - (id)_applyStorageSession:(struct __CFURLStorageSession *)arg1 toRequest:(id)arg2;
 - (id)_applyAuthenticationChain:(struct __CFArray *)arg1 toRequest:(id)arg2;
@@ -135,6 +149,7 @@
 - (id)_compressBodyData:(id)arg1;
 - (void)tearDownResources;
 - (void)_logSantizedRequest:(id)arg1 withTaskID:(id)arg2;
+- (void)_assignConnectionProperties:(id)arg1 toSessionConfiguration:(id)arg2;
 - (void)loadRequest:(id)arg1;
 - (_Bool)shouldLogResponseBody;
 - (id)copyDefaultParserForContentType:(id)arg1;

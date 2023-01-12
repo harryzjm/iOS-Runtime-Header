@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSSecurityScopedURLWrapper;
 
-@protocol WFTrimVideoActionUserInterface <WFRemoteUserInterface>
+@protocol WFTrimVideoActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithVideo:(NSSecurityScopedURLWrapper *)arg1 completionHandler:(void (^)(NSSecurityScopedURLWrapper *, NSError *))arg2;
 @end
 

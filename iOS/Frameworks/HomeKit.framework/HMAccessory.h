@@ -12,18 +12,22 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMFObject-Protocol.h>
+#import <HomeKit/HMMediaDestination-Protocol.h>
+#import <HomeKit/HMMediaDestinationControllerDataSource-Protocol.h>
+#import <HomeKit/HMMediaDestinationInternal-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMDevice, HMFPairingIdentity, HMFSoftwareVersion, HMFUnfairLock, HMFWiFiNetworkInfo, HMHome, HMMutableArray, HMNetworkConfigurationProfile, HMRemoteLoginHandler, HMRoom, HMSoftwareUpdateController, HMSymptomsHandler, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID, _HMContext;
+@class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMDevice, HMFPairingIdentity, HMFSoftwareVersion, HMFUnfairLock, HMFWiFiNetworkInfo, HMHome, HMMediaDestination, HMMediaDestinationController, HMMutableArray, HMNetworkConfigurationProfile, HMRemoteLoginHandler, HMRoom, HMSoftwareUpdateController, HMSupportedAccessoryDiagnostics, HMSymptomsHandler, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID, _HMContext;
 @protocol HMAccessoryDelegate, OS_dispatch_queue;
 
-@interface HMAccessory : NSObject <HMFLogging, HMFObject, HMAccessorySettingsContainer, HMControllable, HMMutableApplicationData, HMObjectMerge, HMFMessageReceiver, NSSecureCoding, HMApplicationData>
+@interface HMAccessory : NSObject <HMMediaDestinationControllerDataSource, HMFLogging, HMFObject, HMAccessorySettingsContainer, HMControllable, HMMediaDestinationInternal, HMMutableApplicationData, HMObjectMerge, HMFMessageReceiver, NSSecureCoding, HMApplicationData, HMMediaDestination>
 {
     HMFUnfairLock *_lock;
     HMDevice *_device;
     HMSoftwareUpdateController *_softwareUpdateController;
+    NSUUID *_endpointIdentifier;
     _Bool _currentAccessory;
     _Bool _supportsIdentify;
     _Bool _firmwareUpdateAvailable;
@@ -31,6 +35,7 @@
     _Bool _bridgedAccessory;
     _Bool _controllable;
     _Bool _supportsMediaAccessControl;
+    _Bool _supportsCHIP;
     _Bool _supportsTargetControl;
     _Bool _supportsTargetController;
     _Bool _targetControllerHardwareSupport;
@@ -38,7 +43,13 @@
     _Bool _supportsCompanionInitiatedRestart;
     _Bool _suspendCapable;
     _Bool _hasOnboardedForNaturalLighting;
+    _Bool _supportsPreferredMediaUser;
+    _Bool _supportsAccessCodes;
+    _Bool _supportsWalletKey;
+    _Bool _supportsMusicAlarm;
+    _Bool _supportsAnnounce;
     _Bool _supportsDoorbellChime;
+    _Bool _supportsCoordinationDoorbellChime;
     _Bool _supportsThirdPartyMusic;
     _Bool _supportsDiagnosticsTransfer;
     _Bool _paired;
@@ -72,18 +83,28 @@
     NSArray *_controlTargetUUIDs;
     HMSymptomsHandler *_symptomsHandler;
     NSUUID *_networkProtectionGroupUUID;
+    unsigned long long _preferredUserSelectionType;
+    NSUUID *_preferredMediaUserUUID;
+    HMSupportedAccessoryDiagnostics *_supportedDiagnostics;
     unsigned long long _supportedStereoPairVersions;
+    unsigned long long _homePodVariant;
+    unsigned long long _suspendedState;
+    NSString *_assistantIdentifier;
+    NSString *_pendingConfigurationIdentifier;
     long long _reachableTransports;
     HMMutableArray *_currentServices;
     unsigned long long _accessoryReprovisionState;
     HMRemoteLoginHandler *_remoteLoginHandler;
     HMMutableArray *_accessoryProfiles;
     _HMContext *_context;
+    HMMediaDestinationController *_audioDestinationController;
+    HMMediaDestination *_audioDestination;
 }
 
 + (id)shortDescription;
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
++ (id)_siriEndpointProfilesForAccessoryProfiles:(id)arg1;
 + (id)_televisionProfilesForAccessoryServices:(id)arg1;
 + (id)_lightProfilesForAccessoryProfiles:(id)arg1;
 + (id)_networkRouterProfilesForAccessoryProfiles:(id)arg1;
@@ -93,6 +114,8 @@
 + (id)_networkConfigurationProfilesForCoder:(id)arg1 accessoryIdentifier:(id)arg2;
 + (id)_mediaProfilesForAccessoryProfiles:(id)arg1;
 - (void).cxx_destruct;
+@property(retain) HMMediaDestination *audioDestination; // @synthesize audioDestination=_audioDestination;
+@property(retain) HMMediaDestinationController *audioDestinationController; // @synthesize audioDestinationController=_audioDestinationController;
 @property(retain) _HMContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) HMMutableArray *accessoryProfiles; // @synthesize accessoryProfiles=_accessoryProfiles;
 @property(retain) HMRemoteLoginHandler *remoteLoginHandler; // @synthesize remoteLoginHandler=_remoteLoginHandler;
@@ -100,8 +123,8 @@
 @property(nonatomic) _Bool paired; // @synthesize paired=_paired;
 @property(copy, nonatomic) HMMutableArray *currentServices; // @synthesize currentServices=_currentServices;
 @property(nonatomic) long long reachableTransports; // @synthesize reachableTransports=_reachableTransports;
-@property _Bool hasOnboardedForNaturalLighting; // @synthesize hasOnboardedForNaturalLighting=_hasOnboardedForNaturalLighting;
-@property(readonly, nonatomic) _Bool suspendCapable; // @synthesize suspendCapable=_suspendCapable;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
+@property(nonatomic) _Bool suspendCapable; // @synthesize suspendCapable=_suspendCapable;
 @property(nonatomic) long long associationOptions; // @synthesize associationOptions=_associationOptions;
 @property(retain, nonatomic) NSNumber *accessoryFlags; // @synthesize accessoryFlags=_accessoryFlags;
 @property(nonatomic) unsigned long long additionalSetupStatus; // @synthesize additionalSetupStatus=_additionalSetupStatus;
@@ -111,14 +134,29 @@
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *shortDescription;
+- (void)_invokeDidUpdateSupportsWalletKeyDelegate:(_Bool)arg1;
+- (void)initiateDiagnosticsTransferWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)initiateDiagnosticsTransferWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) HMSupportedAccessoryDiagnostics *supportedDiagnostics; // @synthesize supportedDiagnostics=_supportedDiagnostics;
 - (void)_handleSupportsDiagnosticsTransferUpdateMessage:(id)arg1;
 - (void)_notifyClientsOfDiagnosticsTransferSupportUpdate;
 @property(nonatomic) _Bool supportsDiagnosticsTransfer; // @synthesize supportsDiagnosticsTransfer=_supportsDiagnosticsTransfer;
+- (id)mediaDestinationController:(id)arg1 destinationWithIdentifier:(id)arg2;
+- (void)updateAudioDestinationSupportedOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+@property _Bool hasOnboardedForNaturalLighting; // @synthesize hasOnboardedForNaturalLighting=_hasOnboardedForNaturalLighting;
+@property(readonly, copy) NSUUID *audioDestinationGroupIdentifier;
+@property(readonly, copy) NSArray *audioDestinationMediaProfiles;
+@property(readonly, copy) NSString *audioDestinationParentIdentifier;
+@property(readonly) _Bool supportsAudioGroup;
+@property(readonly) _Bool supportsAudioDestination;
+@property(readonly, copy) NSString *audioDestinationName;
+@property(readonly) long long audioDestinationType;
+@property(readonly, copy) NSString *audioDestinationIdentifier;
 - (void)callCompletionHandler:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (void)callCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setNetworkProtectionGroupUUID:(id)arg1;
 @property(readonly) NSUUID *networkProtectionGroupUUID; // @synthesize networkProtectionGroupUUID=_networkProtectionGroupUUID;
+- (void)_notifyClientsOfSupportsMusicAlarmUpdate;
 - (void)_handleSupportsCompanionInitiatedRestartUpdatedMessage:(id)arg1;
 - (void)_notifyClientsOfSupportsCompanionInitiatedRestartUpdate;
 - (void)_handleMultiUserSupportUpdatedMessage:(id)arg1;
@@ -174,6 +212,10 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)logIdentifier;
+- (void)notifyDelegateUpdatedPreferredMediaUser;
+- (void)notifyDelegateUpdatedSupportsPreferredMediaUser;
+- (void)notifyDelegateOfAudioDestinationControllerUpdate;
+- (void)notifyDelegateOfAudioDestinationUpdate;
 - (void)_mergeProfileObjects:(id)arg1 currentOperations:(id)arg2;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (_Bool)_mergeControlTargets:(id)arg1 operations:(id)arg2;
@@ -198,10 +240,11 @@
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property(retain, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
-- (void)setSuspendCapable:(_Bool)arg1;
+@property(nonatomic) unsigned long long suspendedState; // @synthesize suspendedState=_suspendedState;
 - (_Bool)isSuspendCapable;
 @property(readonly, nonatomic, getter=isBlocked) _Bool blocked;
 @property(readonly, copy, nonatomic) NSArray *services;
+- (void)validatePairingAuthMethodWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queryAdvertisementInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setControllable:(_Bool)arg1;
 @property(readonly, getter=isControllable) _Bool controllable; // @synthesize controllable=_controllable;
@@ -218,12 +261,22 @@
 - (void)setDevice:(id)arg1;
 - (id)device;
 - (void)pairingIdentityWithPrivateKey:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_handlePairingIdentityUpdate:(id)arg1;
 @property(readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
+- (void)updatePreferredMediaUserSelectionType:(unsigned long long)arg1 user:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updatePreferredMediaUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_notifyDelegateOfUpdatedSettings:(id)arg1;
 - (void)_handleRootSettingsUpdated:(id)arg1;
+@property(copy) NSUUID *preferredMediaUserUUID; // @synthesize preferredMediaUserUUID=_preferredMediaUserUUID;
+@property unsigned long long preferredUserSelectionType; // @synthesize preferredUserSelectionType=_preferredUserSelectionType;
+- (id)preferredMediaUser;
 - (void)setSettings:(id)arg1;
 @property(readonly) HMAccessorySettings *settings; // @synthesize settings=_settings;
-@property(nonatomic) unsigned long long supportedStereoPairVersions; // @synthesize supportedStereoPairVersions=_supportedStereoPairVersions;
+@property(copy) NSString *pendingConfigurationIdentifier; // @synthesize pendingConfigurationIdentifier=_pendingConfigurationIdentifier;
+- (void)recomputeAssistantIdentifier;
+- (void)_recomputeAssistantIdentifier;
+@property unsigned long long homePodVariant; // @synthesize homePodVariant=_homePodVariant;
+@property unsigned long long supportedStereoPairVersions; // @synthesize supportedStereoPairVersions=_supportedStereoPairVersions;
 @property(retain, nonatomic) HMFWiFiNetworkInfo *wifiNetworkInfo; // @synthesize wifiNetworkInfo=_wifiNetworkInfo;
 - (id)targetControllers;
 - (id)controlTargets;
@@ -231,13 +284,20 @@
 - (void)removeControlTargetUUIDs:(id)arg1;
 - (void)addControlTargetUUIDs:(id)arg1;
 @property(copy, nonatomic) NSArray *controlTargetUUIDs; // @synthesize controlTargetUUIDs=_controlTargetUUIDs;
+@property _Bool supportsPreferredMediaUser; // @synthesize supportsPreferredMediaUser=_supportsPreferredMediaUser;
 @property _Bool supportsThirdPartyMusic; // @synthesize supportsThirdPartyMusic=_supportsThirdPartyMusic;
+@property _Bool supportsCoordinationDoorbellChime; // @synthesize supportsCoordinationDoorbellChime=_supportsCoordinationDoorbellChime;
+@property(nonatomic) _Bool supportsWalletKey; // @synthesize supportsWalletKey=_supportsWalletKey;
+@property _Bool supportsAccessCodes; // @synthesize supportsAccessCodes=_supportsAccessCodes;
 @property _Bool supportsDoorbellChime; // @synthesize supportsDoorbellChime=_supportsDoorbellChime;
+@property(nonatomic) _Bool supportsAnnounce; // @synthesize supportsAnnounce=_supportsAnnounce;
+@property(nonatomic) _Bool supportsMusicAlarm; // @synthesize supportsMusicAlarm=_supportsMusicAlarm;
 @property(nonatomic) _Bool supportsCompanionInitiatedRestart; // @synthesize supportsCompanionInitiatedRestart=_supportsCompanionInitiatedRestart;
 @property(nonatomic) _Bool supportsMultiUser; // @synthesize supportsMultiUser=_supportsMultiUser;
 @property(nonatomic) _Bool targetControllerHardwareSupport; // @synthesize targetControllerHardwareSupport=_targetControllerHardwareSupport;
 @property(nonatomic) _Bool supportsTargetController; // @synthesize supportsTargetController=_supportsTargetController;
 @property(nonatomic) _Bool supportsTargetControl; // @synthesize supportsTargetControl=_supportsTargetControl;
+@property _Bool supportsCHIP; // @synthesize supportsCHIP=_supportsCHIP;
 @property(nonatomic) _Bool supportsMediaAccessControl; // @synthesize supportsMediaAccessControl=_supportsMediaAccessControl;
 @property(copy) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(copy, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
@@ -255,20 +315,30 @@
 @property(nonatomic, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
 @property(getter=isCurrentAccessory) _Bool currentAccessory; // @synthesize currentAccessory=_currentAccessory;
 @property(nonatomic) __weak id <HMAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)endpointIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, copy, nonatomic) NSUUID *identifier;
 @property(copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property(copy, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)dealloc;
+- (void)updateShouldProcessTransactionRemovalWithValue:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
+- (id)initWithUUID:(id)arg1;
 - (id)init;
+- (id)siriEndpointIdentifier;
+- (id)siriEndpointProfile;
 @property(readonly, copy, nonatomic) NSArray *televisionProfiles;
+- (void)wakeSuspendedAccessoryWithWakeType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)networkRouterProfile;
+- (void)updatePendingConfigurationIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy) NSDictionary *serializedDictionaryRepresentation;
 @property(readonly, copy, nonatomic) NSArray *cameraProfiles;
+- (void)setCHIPPairingModeActive:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)activateCHIPPairingModeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeCHIPPairings:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCHIPPairingsWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) HMNetworkConfigurationProfile *networkConfigurationProfile;
 - (void)setHasOnboardedForNaturalLightingWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly) NSSet *lightProfiles;

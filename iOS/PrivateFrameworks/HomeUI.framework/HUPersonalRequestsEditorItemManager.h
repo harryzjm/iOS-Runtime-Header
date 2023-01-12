@@ -10,10 +10,13 @@
 
 @interface HUPersonalRequestsEditorItemManager : HFItemManager
 {
+    _Bool _activityNotificationsEnabled;
     _Bool _onlyShowDeviceSwitches;
     HUPersonalRequestsDevicesItemModule *_prDevicesModule;
     HFItem *_requireAuthenticationForSecureRequestsItem;
     HFItem *_neverRequireAuthenticationItem;
+    HFItem *_activityNotificationsItem;
+    HFItem *_activityNotificationFooterItem;
     HMHome *_homeForUser;
     HFStaticItemProvider *_staticItemProvider;
 }
@@ -22,6 +25,9 @@
 @property(nonatomic) _Bool onlyShowDeviceSwitches; // @synthesize onlyShowDeviceSwitches=_onlyShowDeviceSwitches;
 @property(readonly, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property(readonly, nonatomic) HMHome *homeForUser; // @synthesize homeForUser=_homeForUser;
+@property(readonly, nonatomic) HFItem *activityNotificationFooterItem; // @synthesize activityNotificationFooterItem=_activityNotificationFooterItem;
+@property(nonatomic) _Bool activityNotificationsEnabled; // @synthesize activityNotificationsEnabled=_activityNotificationsEnabled;
+@property(readonly, nonatomic) HFItem *activityNotificationsItem; // @synthesize activityNotificationsItem=_activityNotificationsItem;
 @property(readonly, nonatomic) HFItem *neverRequireAuthenticationItem; // @synthesize neverRequireAuthenticationItem=_neverRequireAuthenticationItem;
 @property(readonly, nonatomic) HFItem *requireAuthenticationForSecureRequestsItem; // @synthesize requireAuthenticationForSecureRequestsItem=_requireAuthenticationForSecureRequestsItem;
 @property(retain, nonatomic) HUPersonalRequestsDevicesItemModule *prDevicesModule; // @synthesize prDevicesModule=_prDevicesModule;
@@ -34,6 +40,7 @@
 - (_Bool)_arePersonalRequestsEnabled;
 @property(readonly, nonatomic) HMAssistantAccessControl *accessControl;
 @property(readonly, nonatomic) HMUser *user;
+- (id)initWithDelegate:(id)arg1 userItem:(id)arg2 accessorySettingItem:(id)arg3 module:(id)arg4 onlyShowDeviceSwitches:(_Bool)arg5;
 - (id)initWithDelegate:(id)arg1 userItem:(id)arg2 onlyShowDeviceSwitches:(_Bool)arg3;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 

@@ -22,20 +22,19 @@
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
++ (id)ratingWithValue:(id)arg1 mediaType:(unsigned long long)arg2 storeFront:(id)arg3 clientIdentifier:(id)arg4 bag:(id)arg5;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(readonly, nonatomic) NSString *storeFront; // @synthesize storeFront=_storeFront;
 @property(readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;
-- (id)_cachedRatingsData;
-- (id)cacheTitle;
-- (id)_cachePath;
-- (id)_cacheDirectory;
-- (void)_clearCacheIfNeeded;
-- (_Bool)_hasCachedData;
+- (id)_commonQueryItems;
+- (id)_appQueryItems;
 - (id)_urlForMediaType:(unsigned long long)arg1;
 - (id)performTask;
+- (id)resultWithCachedData:(id)arg1;
 - (id)initWithMediaType:(unsigned long long)arg1 storeFront:(id)arg2 clientIdentifier:(id)arg3 bag:(id)arg4;
+- (id)initWithMediaType:(unsigned long long)arg1 clientIdentifier:(id)arg2 bag:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

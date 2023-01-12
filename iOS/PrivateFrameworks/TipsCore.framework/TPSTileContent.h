@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (id)debugDescription;
 - (id)initWithDictionary:(id)arg1 metadata:(id)arg2;

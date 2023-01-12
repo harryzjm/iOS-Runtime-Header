@@ -6,12 +6,17 @@
 
 #import <CoreData/NSCoreDataCoreSpotlightDelegate.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC18HealthPlatformCore42HealthExperienceStoreCoreSpotlightDelegate : NSCoreDataCoreSpotlightDelegate
 {
+    MISSING_TYPE *_defaultsVersion;
+    MISSING_TYPE *_defaultsLocale;
+    MISSING_TYPE *_defaultsStoreIdentifier;
 }
 
 - (void).cxx_destruct;
-- (id)initForStoreWithDescription:(id)arg1 model:(id)arg2;
+- (id)initForStoreWithDescription:(id)arg1 coordinator:(id)arg2;
 - (id)attributeSetForObject:(id)arg1;
 - (id)protectionClass;
 - (id)indexName;

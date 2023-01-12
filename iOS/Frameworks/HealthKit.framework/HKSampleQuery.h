@@ -18,6 +18,7 @@
     CDUnknownBlockType _resultHandler;
 }
 
++ (id)sortDescriptorsForMostRecentSamples;
 + (void)configureClientInterface:(id)arg1;
 + (id)clientInterfaceProtocol;
 + (Class)configurationClass;
@@ -33,6 +34,8 @@
 - (_Bool)_prepareSamplesForDelivery:(id)arg1 error:(id *)arg2;
 @property(readonly, copy) NSArray *sortDescriptors;
 @property(readonly) unsigned long long limit;
+- (id)initWithQueryDescriptors:(id)arg1 limit:(long long)arg2 sortDescriptors:(id)arg3 resultsHandler:(CDUnknownBlockType)arg4;
+- (id)initWithQueryDescriptors:(id)arg1 limit:(long long)arg2 resultsHandler:(CDUnknownBlockType)arg3;
 - (id)initWithSampleType:(id)arg1 predicate:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
 
 // Remaining properties

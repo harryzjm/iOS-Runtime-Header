@@ -6,11 +6,16 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class IKAppContext, IKViewElement, NSDictionary, UIViewController, VUIDocumentDataSource;
+@class NSDictionary, UIViewController, VUIAppContext, VUIDocumentDataSource;
+@protocol VUIRootSplitViewController, VUITabBarProtocol><VUITVAppRootViewController;
 
 @protocol VUIDocumentCreator <NSObject>
+- (UIViewController<VUITabBarProtocol><VUITVAppRootViewController> *)rootTabBarViewController;
 
 @optional
-- (UIViewController *)viewControllerWithDocumentDataSource:(VUIDocumentDataSource *)arg1 appContext:(IKAppContext *)arg2 viewElement:(IKViewElement *)arg3 documentOptions:(NSDictionary *)arg4;
+- (id <VUIRootSplitViewController>)rootSplitViewController;
+- (void)scrollViewControllerToTop:(UIViewController *)arg1;
+- (_Bool)isDocumentViewController:(UIViewController *)arg1 equalToViewController:(UIViewController *)arg2;
+- (UIViewController *)viewControllerWithDocumentDataSource:(VUIDocumentDataSource *)arg1 appContext:(VUIAppContext *)arg2 documentOptions:(NSDictionary *)arg3;
 @end
 

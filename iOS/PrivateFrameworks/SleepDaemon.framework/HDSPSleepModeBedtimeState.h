@@ -10,7 +10,8 @@
 
 - (long long)sleepMode;
 - (id)stateName;
-- (void)userDisengagedCurrentMode;
+- (void)automationTurnedOffSleepModeWithReason:(unsigned long long)arg1;
+- (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
 
 @end
 

@@ -7,8 +7,13 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class UITextRangeAdjustmentInteraction;
+@protocol UICoordinateSpace;
 
 @protocol UITextRangeAdjustmentInteractionDelegate <NSObject>
+- (void)cancelAutoscroll;
+- (void)startAutoscroll:(struct CGPoint)arg1;
+- (id <UICoordinateSpace>)containerCoordinateSpaceForTextRangeAdjustmentInteraction:(UITextRangeAdjustmentInteraction *)arg1;
+- (struct CGRect)caretRectForTextRangeAdjustmentInteraction:(UITextRangeAdjustmentInteraction *)arg1;
 - (void)textRangeAdjustmentInteractionWasCancelled:(UITextRangeAdjustmentInteraction *)arg1;
 - (void)textRangeAdjustmentInteraction:(UITextRangeAdjustmentInteraction *)arg1 didEndAtPoint:(struct CGPoint)arg2;
 - (void)textRangeAdjustmentInteraction:(UITextRangeAdjustmentInteraction *)arg1 selectionMoved:(struct CGPoint)arg2 withTouchPoint:(struct CGPoint)arg3;

@@ -6,14 +6,29 @@
 
 #import <objc/NSObject.h>
 
+@class ACAccount, ACAccountStore, geo_isolater;
+
 @interface GEOUserAccountInfo : NSObject
 {
+    geo_isolater *_isolation;
+    ACAccountStore *_accountStore;
+    _Bool _hasCheckedPrimaryAccount;
+    ACAccount *_primaryICloudAccount;
+    _Bool _hasCheckedPrimaryAuthKitAccount;
+    ACAccount *_primaryAuthKitAccount;
 }
 
 + (id)primaryICloudAccount;
-+ (_Bool)_isPrimaryAccountUnderage:(id)arg1;
 + (_Bool)isCurrentICloudAccountUnderage;
 + (_Bool)hasValidICloudAccountForAddingRatingsAndPhotos;
++ (_Bool)isAccountInfoAvailable;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (void)_accountStoreDidChange:(id)arg1;
+- (id)_primaryICloudAccountIsolated;
+- (id)primaryICloudAccount;
+- (_Bool)isCurrentICloudAccountUnderage;
+- (id)init;
 
 @end
 

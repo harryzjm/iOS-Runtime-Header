@@ -39,6 +39,9 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)isAppPredictionPanel;
+- (_Bool)isPinnedSuggestionsWidget;
+- (_Bool)isPinnedWidget;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 

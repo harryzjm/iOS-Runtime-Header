@@ -21,10 +21,7 @@
     NSMutableArray *_appSuggestionIds;
     int _eventType;
     ATXPBSpotlightEventMetadata *_metadata;
-    struct {
-        unsigned int date:1;
-        unsigned int eventType:1;
-    } _has;
+    CDStruct_7fb26528 _has;
 }
 
 + (Class)actionSuggestionIdsType;

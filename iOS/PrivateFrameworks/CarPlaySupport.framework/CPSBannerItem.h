@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 @class CPImageSet, NSArray, NSString, NSUUID;
-@protocol CPSBannerItemDelegate;
 
 @interface CPSBannerItem : NSObject
 {
@@ -17,11 +16,9 @@
     NSArray *_detailTextVariants;
     NSArray *_attributedDetailTextVariants;
     CPImageSet *_imageSet;
-    id <CPSBannerItemDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <CPSBannerItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
 @property(readonly, nonatomic) NSArray *attributedDetailTextVariants; // @synthesize attributedDetailTextVariants=_attributedDetailTextVariants;
 @property(readonly, nonatomic) NSArray *detailTextVariants; // @synthesize detailTextVariants=_detailTextVariants;
@@ -31,7 +28,7 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToBannerItem:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 textVariants:(id)arg3 detailTextVariants:(id)arg4 attributedDetailTextVariants:(id)arg5 imageSet:(id)arg6 delegate:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 textVariants:(id)arg3 detailTextVariants:(id)arg4 attributedDetailTextVariants:(id)arg5 imageSet:(id)arg6;
 
 @end
 

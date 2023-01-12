@@ -6,10 +6,10 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMFLogCategory, NSString;
+@class NSObject, NSString;
 
 @protocol HMFLogging <NSObject>
-+ (HMFLogCategory *)logCategory;
++ (NSObject *)logCategory;
 
 @optional
 - (NSString *)logIdentifier;

@@ -20,6 +20,7 @@
 + (_Bool)_shouldUseAlternativeCirlceViewAlphas;
 + (double)_numberPadButtonOuterCircleDiameter;
 + (struct UIEdgeInsets)paddingOutsideRing;
++ (double)outerCircleDiameter;
 + (struct CGSize)defaultSize;
 + (id)_stringCharacterForCharacter:(long long)arg1;
 + (int)_characterTypeForCharacter:(long long)arg1;

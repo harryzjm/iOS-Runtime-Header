@@ -40,13 +40,17 @@
 - (void)emailToOutput:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)payloadToOutputWithEntryPoint:(id)arg1 arguments:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)parseHTML:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)mergeSchemas:(id)arg1 withExpectedSchemas:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)diffSchemas:(id)arg1 withExpectedSchemas:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resolveCandidatesForJSDict:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)privacyAwareLogsForMLExtractions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)eventClassificationForEntity:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)shouldDownloadFull:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)payloadToOutputWithEntryPoint:(id)arg1 arguments:(id)arg2;
 - (id)reverseMapEntity:(id)arg1 forCategory:(id)arg2 withSchemaExpectation:(id)arg3;
+- (id)_mergeSchemas:(id)arg1 withExpectedSchemas:(id)arg2;
 - (id)_diffSchemas:(id)arg1 withExpectedSchemas:(id)arg2;
+- (id)_privacyAwareLogsForMLExtractions:(id)arg1;
 - (id)_resolveCandidatesForJSDict:(id)arg1;
 - (id)_eventClassificationForEntity:(id)arg1;
 - (_Bool)shouldDownloadFull:(id)arg1;

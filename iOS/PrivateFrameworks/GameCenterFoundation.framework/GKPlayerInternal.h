@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GKGameInternal, NSArray, NSDate, NSDictionary, NSNumber, NSString;
+@class GKGameInternal, GKMessageInboxEntryInternal, NSArray, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface GKPlayerInternal
 {
@@ -34,6 +34,7 @@
     int _achievementsVisibility;
     int _friendsVisibility;
     int _gamesPlayedVisibility;
+    int _globalFriendListAccess;
     union {
         struct {
             unsigned int _unused:8;
@@ -47,7 +48,9 @@
         } ;
         unsigned int _value;
     } _flags;
+    _Bool _isInContacts;
     NSArray *_monogramComponents;
+    GKMessageInboxEntryInternal *_inboxEntry;
 }
 
 + (Class)classForFamiliarity:(int)arg1;
@@ -55,7 +58,11 @@
 + (id)compositeNameForFirstName:(id)arg1 lastName:(id)arg2;
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) GKMessageInboxEntryInternal *inboxEntry; // @synthesize inboxEntry=_inboxEntry;
+@property(nonatomic) _Bool isInContacts; // @synthesize isInContacts=_isInContacts;
 @property(retain, nonatomic) NSArray *monogramComponents; // @synthesize monogramComponents=_monogramComponents;
+@property(nonatomic) int globalFriendListAccess; // @synthesize globalFriendListAccess=_globalFriendListAccess;
 @property(nonatomic) int friendsVisibility; // @synthesize friendsVisibility=_friendsVisibility;
 @property(nonatomic) int gamesPlayedVisibility; // @synthesize gamesPlayedVisibility=_gamesPlayedVisibility;
 @property(nonatomic) int achievementsVisibility; // @synthesize achievementsVisibility=_achievementsVisibility;
@@ -92,6 +99,7 @@
 @property(nonatomic, getter=isPhotoPending) _Bool photoPending; // @dynamic photoPending;
 @property(nonatomic, getter=isFindable) _Bool findable; // @dynamic findable;
 @property(nonatomic, getter=isUnderage) _Bool underage; // @dynamic underage;
+- (int)globalFriendListSharingStatus;
 @property(nonatomic, getter=isDefaultPrivacyVisibility) _Bool defaultPrivacyVisibility; // @dynamic defaultPrivacyVisibility;
 @property(nonatomic, getter=isDefaultNickname) _Bool defaultNickname; // @dynamic defaultNickname;
 @property(nonatomic, getter=isPurpleBuddyAccount) _Bool purpleBuddyAccount; // @dynamic purpleBuddyAccount;
@@ -122,7 +130,6 @@
 - (id)serverRepresentation;
 - (id)conciseDescription;
 - (id)cacheKey;
-- (void)dealloc;
 - (_Bool)_gkIsSameAsPlayer:(id)arg1;
 
 @end

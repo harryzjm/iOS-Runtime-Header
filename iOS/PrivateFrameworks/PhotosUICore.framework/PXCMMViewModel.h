@@ -8,7 +8,7 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXMediaTypeAggregating-Protocol.h>
 
-@class NSArray, NSDate, NSSet, NSString, NSURL, PXPhotosGlobalFooterViewModel, PXRecipient, PXSectionedSelectionManager;
+@class NSArray, NSDate, NSSet, NSString, NSURL, PXRecipient, PXSectionedSelectionManager;
 @protocol PXDisplayAsset, PXUIImageProvider;
 
 @interface PXCMMViewModel <PXMediaTypeAggregating, PXChangeObserver, PXCMMMutableViewModel>
@@ -38,12 +38,10 @@
     long long _selectedVideosCount;
     long long _selectedCount;
     NSSet *_disabledActionTypes;
-    PXPhotosGlobalFooterViewModel *_footerViewModel;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isLoadingPeopleSuggestions) _Bool loadingPeopleSuggestions; // @synthesize loadingPeopleSuggestions=_loadingPeopleSuggestions;
-@property(readonly, nonatomic) PXPhotosGlobalFooterViewModel *footerViewModel; // @synthesize footerViewModel=_footerViewModel;
 @property(readonly, nonatomic) _Bool containsUnverifiedPersons; // @synthesize containsUnverifiedPersons=_containsUnverifiedPersons;
 @property(readonly, nonatomic) _Bool shouldShowPlaceholder; // @synthesize shouldShowPlaceholder=_shouldShowPlaceholder;
 @property(readonly, nonatomic) NSSet *disabledActionTypes; // @synthesize disabledActionTypes=_disabledActionTypes;

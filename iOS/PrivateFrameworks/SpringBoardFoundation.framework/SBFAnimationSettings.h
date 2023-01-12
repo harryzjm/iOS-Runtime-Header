@@ -8,7 +8,7 @@
 
 #import <SpringBoardFoundation/PTSettingsKeyPathObserver-Protocol.h>
 
-@class BSAnimationSettings, NSString, PTPointSettings;
+@class BSAnimationSettings, NSString, PTFrameRateRangeSettings, PTPointSettings;
 
 @interface SBFAnimationSettings : PTSettings <PTSettingsKeyPathObserver>
 {
@@ -19,11 +19,13 @@
     unsigned long long _curve;
     PTPointSettings *_controlPoint1Settings;
     PTPointSettings *_controlPoint2Settings;
+    PTFrameRateRangeSettings *_preferredFrameRateRange;
     double _duration;
     double _mass;
     double _stiffness;
     double _damping;
     double _epsilon;
+    double _initialVelocity;
     double _speed;
 }
 
@@ -33,11 +35,13 @@
 + (_Bool)ignoresKey:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) double speed; // @synthesize speed=_speed;
+@property(nonatomic) double initialVelocity; // @synthesize initialVelocity=_initialVelocity;
 @property(nonatomic) double epsilon; // @synthesize epsilon=_epsilon;
 @property(nonatomic) double damping; // @synthesize damping=_damping;
 @property(nonatomic) double stiffness; // @synthesize stiffness=_stiffness;
 @property(nonatomic) double mass; // @synthesize mass=_mass;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
+@property(retain, nonatomic) PTFrameRateRangeSettings *preferredFrameRateRange; // @synthesize preferredFrameRateRange=_preferredFrameRateRange;
 @property(retain, nonatomic) PTPointSettings *controlPoint2Settings; // @synthesize controlPoint2Settings=_controlPoint2Settings;
 @property(retain, nonatomic) PTPointSettings *controlPoint1Settings; // @synthesize controlPoint1Settings=_controlPoint1Settings;
 @property(nonatomic) unsigned long long curve; // @synthesize curve=_curve;
@@ -46,6 +50,7 @@
 @property(nonatomic) long long animationType; // @synthesize animationType=_animationType;
 - (id)BSAnimationSettings;
 @property(readonly, nonatomic) double calculatedDuration;
+- (void)setFrameRateRange:(struct CAFrameRateRange)arg1 highFrameRateReason:(unsigned int)arg2;
 - (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
 - (void)setDefaultValues;
 - (void)dealloc;

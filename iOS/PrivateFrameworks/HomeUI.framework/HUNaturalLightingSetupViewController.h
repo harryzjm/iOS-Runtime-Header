@@ -32,7 +32,6 @@
 - (void)_activateNaturalLighting:(id)arg1;
 - (void)naturalLanguageSetupModule:(id)arg1 didUpdateSelectedItems:(id)arg2;
 - (id)hu_preloadContent;
-- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 itemTableViewController:(id)arg4;
 - (id)initWithHome:(id)arg1;
 
 // Remaining properties

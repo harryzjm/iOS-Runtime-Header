@@ -16,6 +16,7 @@
     NSString *_clientBundleIdentifier;
     NSNumber *_downloadSize;
     long long _errorCode;
+    double _setupTimeInterval;
     NSString *_voiceDownloadKey;
     long long _downloadBeginTimestamp;
     long long _downloadEndTimestamp;
@@ -26,6 +27,7 @@
 @property(readonly) long long downloadEndTimestamp; // @synthesize downloadEndTimestamp=_downloadEndTimestamp;
 @property(readonly) long long downloadBeginTimestamp; // @synthesize downloadBeginTimestamp=_downloadBeginTimestamp;
 @property(readonly) NSString *voiceDownloadKey; // @synthesize voiceDownloadKey=_voiceDownloadKey;
+@property double setupTimeInterval; // @synthesize setupTimeInterval=_setupTimeInterval;
 @property long long errorCode; // @synthesize errorCode=_errorCode;
 @property float downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property(copy) NSNumber *downloadSize; // @synthesize downloadSize=_downloadSize;

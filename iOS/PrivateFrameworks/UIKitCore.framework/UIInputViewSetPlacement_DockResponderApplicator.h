@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)popoverFrame;
 - (void)invalidate;
 - (void)invalidatePopover;
+- (struct CGAffineTransform)scaledPopoverTransform;
+- (id)startingPropertiesFromPlacementProperties:(id)arg1;
 - (void)prepare;
 - (void)applyChanges:(id)arg1;
 - (_Bool)isPopoverRequired;

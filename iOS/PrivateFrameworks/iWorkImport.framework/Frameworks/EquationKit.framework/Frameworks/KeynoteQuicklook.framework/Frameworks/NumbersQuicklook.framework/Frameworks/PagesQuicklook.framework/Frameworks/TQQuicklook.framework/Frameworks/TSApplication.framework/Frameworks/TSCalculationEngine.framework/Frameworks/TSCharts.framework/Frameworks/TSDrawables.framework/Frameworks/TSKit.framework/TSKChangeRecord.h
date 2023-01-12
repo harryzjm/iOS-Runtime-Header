@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary;
+
 @interface TSKChangeRecord : NSObject
 {
-    int mKind;
+    unsigned int mKind;
     id mDetails;
 }
 
-+ (id)changeRecordWithKind:(int)arg1 details:(id)arg2;
++ (id)changeRecordWithKind:(unsigned int)arg1 details:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id details; // @synthesize details=mDetails;
-@property(readonly, nonatomic) int kind; // @synthesize kind=mKind;
+@property(readonly, nonatomic) unsigned int kind; // @synthesize kind=mKind;
 @property(readonly, nonatomic) _Bool allowedInCommit;
-- (id)initWithKind:(int)arg1 details:(id)arg2;
+@property(readonly, nonatomic) NSDictionary *detailsAsDictionary;
+- (id)initWithKind:(unsigned int)arg1 details:(id)arg2;
 
 @end
 

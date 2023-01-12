@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned short width; // @synthesize width=_width;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (struct VideoCodec)nativeVideoCodec;
-- (id)initWithNativeVideoCodec:(const struct VideoCodec *)arg1;
+- (id)initWithNativeVideoCodec:(const void *)arg1;
 
 @end
 

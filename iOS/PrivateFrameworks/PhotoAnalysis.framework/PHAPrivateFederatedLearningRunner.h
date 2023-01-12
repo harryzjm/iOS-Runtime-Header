@@ -13,6 +13,7 @@
     _Bool _shouldAddNoise;
     _Bool _shouldEncrypt;
     _Bool _shouldValidateModel;
+    _Bool _skipInternalDeviceCheck;
     NSArray *_attachmentURLs;
     NSArray *_layersToTrain;
     unsigned long long _numberOfEpochs;
@@ -53,6 +54,7 @@
 @property(readonly, nonatomic) NSArray *augmenters; // @synthesize augmenters=_augmenters;
 @property(readonly, nonatomic) PGFeatureTransformersForFeatureExtractors *transformersForFeatureExtractors; // @synthesize transformersForFeatureExtractors=_transformersForFeatureExtractors;
 @property(readonly, nonatomic) NSNumber *minProcessedRate; // @synthesize minProcessedRate=_minProcessedRate;
+@property(nonatomic) _Bool skipInternalDeviceCheck; // @synthesize skipInternalDeviceCheck=_skipInternalDeviceCheck;
 @property(nonatomic) _Bool shouldValidateModel; // @synthesize shouldValidateModel=_shouldValidateModel;
 @property(nonatomic) _Bool shouldEncrypt; // @synthesize shouldEncrypt=_shouldEncrypt;
 @property(nonatomic) _Bool shouldAddNoise; // @synthesize shouldAddNoise=_shouldAddNoise;
@@ -80,7 +82,7 @@
 @property(retain, nonatomic) NSArray *layersToTrain; // @synthesize layersToTrain=_layersToTrain;
 @property(retain, nonatomic) NSArray *attachmentURLs; // @synthesize attachmentURLs=_attachmentURLs;
 - (id)runWithError:(id *)arg1;
-- (id)initWithAttachmentURLs:(id)arg1 layersToTrain:(id)arg2 numberOfEpochs:(unsigned long long)arg3 learningRate:(id)arg4 modelInputName:(id)arg5 modelOutputName:(id)arg6 lossName:(id)arg7 optimizerName:(id)arg8 iCloudAggServiceKey:(id)arg9 clippingNorm:(id)arg10 normBinCount:(id)arg11 trainingTask:(id)arg12 fingerprintVersion:(id)arg13 datasetPolicy:(id)arg14 labelPolicy:(id)arg15 positivesDatasetName:(id)arg16 positivesSubsetName:(id)arg17 negativesDatasetName:(id)arg18 negativesSubsetName:(id)arg19 totalNumberOfSamples:(id)arg20 oversamplingRate:(id)arg21 photoLibrary:(id)arg22 graphManager:(id)arg23 shouldAddNoise:(_Bool)arg24 shouldEncrypt:(_Bool)arg25 shouldValidateModel:(_Bool)arg26 minProcessedRate:(id)arg27 transformersForFeatureExtractors:(id)arg28 augmenters:(id)arg29 filtersByDatasetName:(id)arg30;
+- (id)initWithAttachmentURLs:(id)arg1 layersToTrain:(id)arg2 numberOfEpochs:(unsigned long long)arg3 learningRate:(id)arg4 modelInputName:(id)arg5 modelOutputName:(id)arg6 lossName:(id)arg7 optimizerName:(id)arg8 iCloudAggServiceKey:(id)arg9 clippingNorm:(id)arg10 normBinCount:(id)arg11 trainingTask:(id)arg12 fingerprintVersion:(id)arg13 datasetPolicy:(id)arg14 labelPolicy:(id)arg15 positivesDatasetName:(id)arg16 positivesSubsetName:(id)arg17 negativesDatasetName:(id)arg18 negativesSubsetName:(id)arg19 totalNumberOfSamples:(id)arg20 oversamplingRate:(id)arg21 photoLibrary:(id)arg22 graphManager:(id)arg23 shouldAddNoise:(_Bool)arg24 shouldEncrypt:(_Bool)arg25 shouldValidateModel:(_Bool)arg26 skipInternalDeviceCheck:(_Bool)arg27 minProcessedRate:(id)arg28 transformersForFeatureExtractors:(id)arg29 augmenters:(id)arg30 filtersByDatasetName:(id)arg31;
 
 @end
 

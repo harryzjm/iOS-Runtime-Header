@@ -13,5 +13,6 @@
 @optional
 - (double)preferredHeightForWidth:(double)arg1 inTableView:(UITableView *)arg2;
 - (double)preferredHeightForWidth:(double)arg1;
+- (void)refreshContentsWithSpecifier:(PSSpecifier *)arg1;
 @end
 

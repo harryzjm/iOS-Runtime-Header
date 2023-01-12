@@ -15,6 +15,8 @@
 - (void)xpcDiscoveryChangedEndpoint:(RPEndpoint *)arg1;
 - (void)xpcDiscoveryLostEndpoint:(RPEndpoint *)arg1;
 - (void)xpcDiscoveryFoundEndpoint:(RPEndpoint *)arg1;
+- (void)companionLinkUpdateErrorFlags:(unsigned long long)arg1;
+- (void)companionLinkHandleDisconnect;
 - (void)companionLinkReceivedRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 options:(NSDictionary *)arg3 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg4;
 - (void)companionLinkReceivedEventID:(NSString *)arg1 event:(NSDictionary *)arg2 options:(NSDictionary *)arg3;
 - (void)companionLinkLocalDeviceUpdated:(RPCompanionLinkDevice *)arg1;

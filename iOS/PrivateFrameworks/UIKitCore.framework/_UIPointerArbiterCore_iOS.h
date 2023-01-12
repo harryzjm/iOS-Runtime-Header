@@ -48,7 +48,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasRunningTransaction; // @synthesize hasRunningTransaction=_hasRunningTransaction;
 - (void)backgroundLumaView:(id)arg1 didTransitionToLevel:(unsigned long long)arg2;
 - (void)_getPointerRegion:(inout id *)arg1 andStyle:(inout id *)arg2 atLocation:(struct CGPoint)arg3 inWindow:(id)arg4;
-- (id)_pointerShapeForStyle:(id)arg1;
+- (id)_psPointerShapeFromUIPointerShape:(id)arg1 atScale:(double)arg2;
+- (id)_pointerShapeForStyle:(id)arg1 region:(id)arg2;
 - (id)_hoverRegionWithStyle:(id)arg1 forRegion:(id)arg2;
 - (id)_coordinateSpaceSourceViewForRegion:(id)arg1 withStyle:(id)arg2;
 - (void)_preparePointerPortalSourceCollectionWithCompletion:(CDUnknownBlockType)arg1;

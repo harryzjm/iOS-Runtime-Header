@@ -9,6 +9,8 @@
 @interface NSSet (PKSetAdditions)
 - (id)pk_mutableArrayCopy;
 - (id)pk_arrayCopy;
+- (id)pk_anyObjectPassingTest:(CDUnknownBlockType)arg1;
+- (_Bool)pk_hasObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)pk_setByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)pk_setByRemovingObject:(id)arg1;
 @end

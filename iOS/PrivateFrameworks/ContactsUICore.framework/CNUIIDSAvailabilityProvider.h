@@ -16,21 +16,26 @@
     id <CNUIIDSIDQueryControllerWrapper> _queryControllerWrapper;
     CNUIDSHandleAvailabilityCache *_faceTimeRequests;
     CNUIDSHandleAvailabilityCache *_iMessageRequests;
+    CNUIDSHandleAvailabilityCache *_expanseRequests;
     NSArray *_requestFutures;
     id <CNScheduler> _resourceLock;
 }
 
++ (id)makeExpanseRequestsCache;
 + (id)makeIMessageRequestsCache;
 + (id)makeFaceTimeRequestsCache;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
 @property(retain, nonatomic) NSArray *requestFutures; // @synthesize requestFutures=_requestFutures;
+@property(retain, nonatomic) CNUIDSHandleAvailabilityCache *expanseRequests; // @synthesize expanseRequests=_expanseRequests;
 @property(retain, nonatomic) CNUIDSHandleAvailabilityCache *iMessageRequests; // @synthesize iMessageRequests=_iMessageRequests;
 @property(retain, nonatomic) CNUIDSHandleAvailabilityCache *faceTimeRequests; // @synthesize faceTimeRequests=_faceTimeRequests;
 @property(retain, nonatomic) id <CNUIIDSIDQueryControllerWrapper> queryControllerWrapper; // @synthesize queryControllerWrapper=_queryControllerWrapper;
+- (id)validateHandlesForExpanse:(id)arg1 schedulerProvider:(id)arg2;
 - (id)validateHandlesForIMessage:(id)arg1 schedulerProvider:(id)arg2;
 - (id)validateHandlesForFaceTime:(id)arg1 schedulerProvider:(id)arg2;
 - (id)validateHandles:(id)arg1 forService:(long long)arg2 schedulerProvider:(id)arg3;
+- (id)cacheForService:(long long)arg1;
 - (void)startRequestForCacheMisses:(id)arg1 service:(long long)arg2 scheduler:(id)arg3;
 - (id)init;
 - (id)initWithQueryControllerWrapper:(id)arg1;

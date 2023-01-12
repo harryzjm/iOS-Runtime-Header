@@ -32,7 +32,7 @@
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (_Bool)shouldPushTerms;
 - (void)viewDidLoad;
-- (id)initWithProvisoningController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 credential:(id)arg4;
+- (id)initWithProvisoningController:(id)arg1 setupDelegate:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4 credential:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

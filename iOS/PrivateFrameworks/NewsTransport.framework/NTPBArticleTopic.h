@@ -12,15 +12,37 @@
 
 @interface NTPBArticleTopic : PBCodable <NSCopying>
 {
+    double _flowRate;
+    double _quality;
+    double _subscriptionRate;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_cohorts;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_conversionStats;
     NSString *_tagID;
     _Bool _isEligibleForGrouping;
+    _Bool _isEligibleForGroupingIfAutofavorited;
     _Bool _isEligibleForGroupingIfFavorited;
     _Bool _isHidden;
-    CDStruct_d00ad9e3 _has;
+    _Bool _isManagedTopic;
+    _Bool _isManagedTopicWinner;
+    struct {
+        unsigned int flowRate:1;
+        unsigned int quality:1;
+        unsigned int subscriptionRate:1;
+        unsigned int isEligibleForGrouping:1;
+        unsigned int isEligibleForGroupingIfAutofavorited:1;
+        unsigned int isEligibleForGroupingIfFavorited:1;
+        unsigned int isHidden:1;
+        unsigned int isManagedTopic:1;
+        unsigned int isManagedTopicWinner:1;
+    } _has;
 }
 
+@property(nonatomic) double quality; // @synthesize quality=_quality;
+@property(nonatomic) double subscriptionRate; // @synthesize subscriptionRate=_subscriptionRate;
+@property(nonatomic) double flowRate; // @synthesize flowRate=_flowRate;
+@property(nonatomic) _Bool isManagedTopicWinner; // @synthesize isManagedTopicWinner=_isManagedTopicWinner;
+@property(nonatomic) _Bool isManagedTopic; // @synthesize isManagedTopic=_isManagedTopic;
+@property(nonatomic) _Bool isEligibleForGroupingIfAutofavorited; // @synthesize isEligibleForGroupingIfAutofavorited=_isEligibleForGroupingIfAutofavorited;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property(nonatomic) _Bool isEligibleForGroupingIfFavorited; // @synthesize isEligibleForGroupingIfFavorited=_isEligibleForGroupingIfFavorited;
 @property(nonatomic) _Bool isEligibleForGrouping; // @synthesize isEligibleForGrouping=_isEligibleForGrouping;
@@ -35,6 +57,12 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasQuality;
+@property(nonatomic) _Bool hasSubscriptionRate;
+@property(nonatomic) _Bool hasFlowRate;
+@property(nonatomic) _Bool hasIsManagedTopicWinner;
+@property(nonatomic) _Bool hasIsManagedTopic;
+@property(nonatomic) _Bool hasIsEligibleForGroupingIfAutofavorited;
 @property(readonly, nonatomic) _Bool hasConversionStats;
 @property(nonatomic) _Bool hasIsEligibleForGroupingIfFavorited;
 @property(nonatomic) _Bool hasIsEligibleForGrouping;

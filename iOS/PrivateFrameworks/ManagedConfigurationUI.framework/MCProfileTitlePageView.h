@@ -6,7 +6,6 @@
 
 @class UIButton, UIView;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageView
 {
     UIView *_topBarView;

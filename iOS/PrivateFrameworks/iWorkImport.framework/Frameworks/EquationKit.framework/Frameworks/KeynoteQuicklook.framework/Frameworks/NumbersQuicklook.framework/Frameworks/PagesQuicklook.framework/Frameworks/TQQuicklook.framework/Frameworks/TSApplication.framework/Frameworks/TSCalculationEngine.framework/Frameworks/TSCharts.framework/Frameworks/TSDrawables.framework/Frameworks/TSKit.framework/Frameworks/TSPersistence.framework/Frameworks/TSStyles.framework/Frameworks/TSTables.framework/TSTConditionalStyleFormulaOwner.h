@@ -14,18 +14,14 @@
 {
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calcEngine;
-    UUIDData_5fbc143e _ownerUID;
-    struct TSCESubFormulaOwnerID _planeUID;
+    struct TSKUIDStruct _ownerUID;
     TSCECellCoordinateVector *_cellsToInvalidate;
-    struct TSCESubFormulaOwnerID _subOwnerID;
 }
 
 + (id)allCondStyleFormulasForTable:(id)arg1;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
-@property(nonatomic) struct TSCESubFormulaOwnerID subOwnerID; // @synthesize subOwnerID=_subOwnerID;
-@property(nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
+@property(nonatomic) struct TSKUIDStruct ownerUID; // @synthesize ownerUID=_ownerUID;
 - (void)invalidateForCalcEngine:(id)arg1;
 - (void)writeResultsForCalcEngine:(id)arg1;
 - (struct TSCERecalculationState)evaluateFormulaAt:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
@@ -33,7 +29,7 @@
 - (id)linkedResolver;
 - (unsigned short)ownerKind;
 - (void)unregisterFromCalcEngine;
-- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const struct TSKUIDStruct *)arg2;
 - (void)changedConditionForCellID:(struct TSUCellCoord)arg1;
 - (void)replaceFormulaForConditionalStyle:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)removeFormulasInRange:(struct TSUCellRect)arg1;
@@ -41,7 +37,7 @@
 - (void)addFormulaForConditionalStyle:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (_Bool)checkConditionForCellID:(struct TSUCellCoord)arg1 withConditionalStyle:(id)arg2 withIndex:(unsigned long long *)arg3;
 - (id)initWithTableModel:(id)arg1;
-- (id)initWithTableModel:(id)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;
+- (id)initWithTableModel:(id)arg1 ownerUID:(const struct TSKUIDStruct *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

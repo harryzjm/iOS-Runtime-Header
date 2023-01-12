@@ -6,32 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class AMSEngagementConnection, NSMutableSet;
-@protocol OS_dispatch_queue;
+@class AMSEngagementConnection, NSMapTable, NSMutableSet;
 
 @interface AMSEngagement : NSObject
 {
     AMSEngagementConnection *_connection;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSMapTable *_observerInfo;
     NSMutableSet *_runningPromises;
 }
 
-+ (id)_connectionQueue;
++ (id)_notifyQueue;
++ (id)_engagementQueue;
 + (id)_connection;
++ (id)notificationCenter;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableSet *runningPromises; // @synthesize runningPromises=_runningPromises;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(retain, nonatomic) NSMapTable *observerInfo; // @synthesize observerInfo=_observerInfo;
 @property(retain, nonatomic) AMSEngagementConnection *connection; // @synthesize connection=_connection;
 - (void)_scheduleSyncIfNeeded:(id)arg1;
 - (void)_connectionErrorNotification;
+- (void)_handleServiceResponse:(id)arg1;
+- (void)handlePushEvent:(id)arg1;
+- (void)_pushEventReceieved:(id)arg1;
 - (id)_parseActions:(id)arg1;
 - (void)_failAllRunningPromisesWithError:(id)arg1;
 - (void)_removeRunningPromise:(id)arg1;
 - (void)_manageRunningPromise:(id)arg1;
+- (void)_observeNotifications;
+- (void)removeObserver:(id)arg1 placement:(id)arg2 serviceType:(id)arg3;
+- (void)addObserver:(id)arg1 placement:(id)arg2 serviceType:(id)arg3;
 - (id)_createCombinedLogKey;
+- (id)syncMetricsIdentifiers;
 - (id)sync;
 - (id)enqueueData:(id)arg1;
+- (id)enqueueEvent:(id)arg1;
+- (void)dealloc;
 - (id)init;
+- (void)handleDialogResult:(id)arg1;
+- (id)enqueueMessageEvent:(id)arg1;
 
 @end
 

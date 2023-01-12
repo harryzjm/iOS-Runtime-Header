@@ -10,13 +10,16 @@
 
 @class MPCPlaybackEngineEventStream, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlaybackEngineEventStreamDeferralAssertion : NSObject <MPCPlaybackEngineEventStreamDeferralAssertion>
 {
+    _Bool _invalidated;
     MPCPlaybackEngineEventStream *_eventStream;
     NSString *_reason;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) __weak MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
 - (void)invalidate;

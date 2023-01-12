@@ -7,7 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface GEOMapEdgeTransitBuilder
 {
-    struct deque<geo::TransitEdgePiece, std::__1::allocator<geo::TransitEdgePiece>> _pieces;
+    struct deque<geo::TransitEdgePiece, std::allocator<geo::TransitEdgePiece>> _pieces;
 }
 
 - (id).cxx_construct;

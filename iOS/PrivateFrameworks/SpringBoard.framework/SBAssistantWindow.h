@@ -20,8 +20,9 @@
 - (_Bool)isOpaque;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 @property(readonly, nonatomic) SBAssistantRootViewController *assistantRootViewController; // @dynamic assistantRootViewController;
+- (void)setRootViewController:(id)arg1;
 - (void)dealloc;
-- (id)initWithScreen:(id)arg1 layoutStrategy:(id)arg2 debugName:(id)arg3 scene:(id)arg4;
+- (id)initWithScreen:(id)arg1 role:(id)arg2 debugName:(id)arg3;
 
 @end
 

@@ -6,13 +6,10 @@
 
 #import <Home/HFStaticItem.h>
 
-#import <HomeUI/HUItemMapsToView-Protocol.h>
-
-@interface HUInstructionsItem : HFStaticItem <HUItemMapsToView>
+@interface HUInstructionsItem : HFStaticItem
 {
 }
 
-- (Class)mapsToViewClass;
 - (id)initWithStyle:(unsigned long long)arg1 title:(id)arg2 description:(id)arg3;
 
 @end

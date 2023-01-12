@@ -25,15 +25,13 @@ struct Electrocardiogram {
     } _has;
 };
 
-struct HKIntervalTree<double>;
-
 struct HKObjectValidationConfiguration {
     unsigned long long _field1;
     unsigned int _field2;
 };
 
 struct PtrVector<binarysample::ElectrocardiogramLead> {
-    struct vector<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>, std::__1::allocator<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>>> _v;
+    struct vector<std::unique_ptr<binarysample::ElectrocardiogramLead>, std::allocator<std::unique_ptr<binarysample::ElectrocardiogramLead>>> _v;
 };
 
 struct _HKLazyLoader<bool> {
@@ -45,10 +43,6 @@ struct _HKLazyLoader<bool> {
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
 };
 
 struct _xmlHashTable;
@@ -117,13 +111,15 @@ struct atomic_flag {
     _Atomic _Bool _Value;
 };
 
-struct map<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead, std::__1::less<binarysample::ElectrocardiogramLead_Name>, std::__1::allocator<std::__1::pair<const binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
-    struct __tree<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::__map_value_compare<binarysample::ElectrocardiogramLead_Name, std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::less<binarysample::ElectrocardiogramLead_Name>, true>, std::__1::allocator<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead, std::less<binarysample::ElectrocardiogramLead_Name>, std::allocator<std::pair<const binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
+    struct __tree<std::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__map_value_compare<binarysample::ElectrocardiogramLead_Name, std::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::less<binarysample::ElectrocardiogramLead_Name>, true>, std::allocator<std::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> {
+                void *__left_;
+            } __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<binarysample::ElectrocardiogramLead_Name, std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::less<binarysample::ElectrocardiogramLead_Name>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<binarysample::ElectrocardiogramLead_Name, std::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::less<binarysample::ElectrocardiogramLead_Name>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -133,19 +129,17 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct unique_ptr<HKIntervalTree<double>, std::__1::default_delete<HKIntervalTree<double>>> {
-    struct __compressed_pair<HKIntervalTree<double>*, std::__1::default_delete<HKIntervalTree<double>>> {
-        struct HKIntervalTree<double> *__value_;
+struct unique_ptr<HKIntervalTree<double>, std::default_delete<HKIntervalTree<double>>> {
+    struct __compressed_pair<HKIntervalTree<double>*, std::default_delete<HKIntervalTree<double>>> {
+        void *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>;
-
-struct vector<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>, std::__1::allocator<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>>> {
-    struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>> *__begin_;
-    struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>> *__end_;
-    struct __compressed_pair<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>*, std::__1::allocator<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>>> {
-        struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>> *__value_;
+struct vector<std::unique_ptr<binarysample::ElectrocardiogramLead>, std::allocator<std::unique_ptr<binarysample::ElectrocardiogramLead>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::unique_ptr<binarysample::ElectrocardiogramLead>*, std::allocator<std::unique_ptr<binarysample::ElectrocardiogramLead>>> {
+        void *__value_;
     } __end_cap_;
 };
 
@@ -205,7 +199,7 @@ typedef struct {
 } CDStruct_f6aba300;
 
 typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
+    long long start;
+    long long duration;
+} CDStruct_ef5fcbe6;
 

@@ -16,7 +16,9 @@ __attribute__((visibility("hidden")))
     UIDelayedAction *_delayedSelectionAction;
     _Bool _hasPerformedInteraction;
     struct CGPoint _initialPointFromPreviousInteraction;
+    _Bool _triggeredByLongPress;
     UITextGestureTuning *_gestureTuning;
+    long long _inheritedGranularity;
     id <UITextLoupeInteractionBehaviorDelegate> _behaviorDelegate;
     _UITextLoupeResponderProxy *_responderProxy;
 }
@@ -24,7 +26,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UITextLoupeResponderProxy *responderProxy; // @synthesize responderProxy=_responderProxy;
 @property(retain, nonatomic) id <UITextLoupeInteractionBehaviorDelegate> behaviorDelegate; // @synthesize behaviorDelegate=_behaviorDelegate;
+@property(nonatomic) long long inheritedGranularity; // @synthesize inheritedGranularity=_inheritedGranularity;
 @property(readonly, nonatomic) UITextGestureTuning *gestureTuning; // @synthesize gestureTuning=_gestureTuning;
+@property(nonatomic) _Bool triggeredByLongPress; // @synthesize triggeredByLongPress=_triggeredByLongPress;
 - (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4 forTouchType:(long long)arg5;
 - (void)canBeginDragCursor:(id)arg1;
 - (void)delayedDisplayLoupe:(id)arg1;
@@ -38,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)updateVisibilityOffsetForGesture:(id)arg1;
 @property(nonatomic) _Bool strongerBiasAgainstUp;
 @property(nonatomic) _Bool shouldUseLineThreshold;
-- (void)assertInitialVerticalOffset:(double)arg1 fromTopOfCaret:(double)arg2;
 - (void)_createGestureTuningIfNecessary;
 - (struct CGPoint)pointIfPlacedCarefully:(struct CGPoint)arg1;
 - (void)willBeginExternalGesture;
@@ -52,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldAllowEnforcedTouchTypeForTouch:(id)arg1 forGestureRecognizer:(id)arg2;
 - (void)setupGestureExclusionRequirements;
 - (void)finishSetup;
-- (void)selectToHere:(id)arg1;
 - (void)updateInitialPoint:(struct CGPoint)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 @property(readonly, nonatomic) UIResponder *responder;

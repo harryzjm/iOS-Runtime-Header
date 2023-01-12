@@ -9,6 +9,7 @@
 @class _UIDigitizerGestureRecognizerImp;
 
 @protocol _UIDigitizerGestureRecognizerImpDelegate <NSObject>
+- (void)pressesHeldOverMaximum:(_UIDigitizerGestureRecognizerImp *)arg1;
 - (void)pressesNotHeldLongEnough:(_UIDigitizerGestureRecognizerImp *)arg1;
 - (void)pressesHeldForMinimum:(_UIDigitizerGestureRecognizerImp *)arg1;
 - (void)touchesBeganSuccessfully:(_UIDigitizerGestureRecognizerImp *)arg1;

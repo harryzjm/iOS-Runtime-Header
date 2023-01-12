@@ -27,7 +27,7 @@
 @property(readonly, nonatomic) unsigned int eventType; // @synthesize eventType;
 @property(readonly, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval;
 @property(readonly, nonatomic) double level; // @synthesize level;
-- (id)getEventString;
+- (id)getEventTypeString;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;

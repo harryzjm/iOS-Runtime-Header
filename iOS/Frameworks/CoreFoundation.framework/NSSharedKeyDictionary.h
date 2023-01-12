@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool _doKVO;
 }
 
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 + (id)sharedKeyDictionaryWithKeySet:(id)arg1;
 - (void)setObservationInfo:(void *)arg1;

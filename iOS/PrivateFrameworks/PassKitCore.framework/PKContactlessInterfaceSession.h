@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSObject, PKFieldProperties, PKPaymentApplication, PKPaymentPass, PKTransitAppletHistory;
+@class NSArray, NSObject, PKFieldProperties, PKPaymentApplication, PKPaymentPass, PKTransactionReleasedData, PKTransitAppletHistory;
 @protocol OS_dispatch_queue, PKContactlessInterfaceSessionDelegate;
 
 @interface PKContactlessInterfaceSession
@@ -25,6 +25,7 @@
     unsigned long long _state;
     id <PKContactlessInterfaceSessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    PKTransactionReleasedData *_dataToRelease;
 }
 
 + (id)transitAppletStateFromPaymentSession:(id)arg1 withPaymentApplication:(id)arg2;
@@ -43,8 +44,11 @@
 - (_Bool)paymentApplicationSupportsAutomaticAuthorization:(id)arg1;
 - (_Bool)resetPersistentCardEmulation;
 - (_Bool)queuePersistentCardEmulation;
+- (_Bool)cancelRKEFunction:(id)arg1;
+- (_Bool)sendRKEFunction:(id)arg1 action:(id)arg2 authorization:(id)arg3;
 - (void)resetExpressState;
 - (_Bool)stopCardEmulation;
+- (void)authorize18013RequestWithDataToRelease:(id)arg1 credential:(id)arg2;
 - (_Bool)authorizeAndStartCardEmulationWithCredential:(id)arg1 deferAuthorization:(_Bool)arg2;
 - (_Bool)authorizeAndStartCardEmulationWithCredential:(id)arg1;
 - (_Bool)activateValueAddedServicePasses:(id)arg1;

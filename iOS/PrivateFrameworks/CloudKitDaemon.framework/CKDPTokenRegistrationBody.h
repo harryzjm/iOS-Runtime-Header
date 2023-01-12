@@ -10,7 +10,6 @@
 
 @class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPTokenRegistrationBody : PBCodable <NSCopying>
 {
     int _apnsEnv;

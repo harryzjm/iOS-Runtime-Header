@@ -11,6 +11,7 @@
 @interface MPModelLibraryRequest <MPModelRequestDetailedKeepLocalStatusRequesting>
 {
     _Bool _wantsDetailedKeepLocalRequestableResponse;
+    _Bool _sortUsingAllowedItemIdentifiers;
     MPMediaLibrary *_mediaLibrary;
     NSArray *_allowedItemIdentifiers;
     NSArray *_allowedSectionIdentifiers;
@@ -24,6 +25,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) MPMediaQuery *legacyMediaQuery; // @synthesize legacyMediaQuery=_legacyMediaQuery;
+@property(nonatomic) _Bool sortUsingAllowedItemIdentifiers; // @synthesize sortUsingAllowedItemIdentifiers=_sortUsingAllowedItemIdentifiers;
 @property(nonatomic) _Bool wantsDetailedKeepLocalRequestableResponse; // @synthesize wantsDetailedKeepLocalRequestableResponse=_wantsDetailedKeepLocalRequestableResponse;
 @property(nonatomic) struct _NSRange contentRange; // @synthesize contentRange=_contentRange;
 @property(copy, nonatomic) NSString *filterText; // @synthesize filterText=_filterText;

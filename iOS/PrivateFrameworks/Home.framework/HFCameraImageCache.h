@@ -24,6 +24,7 @@
 - (id)imageForCameraClipIdentifierString:(id)arg1 withOffset:(float)arg2;
 - (id)imageForKey:(id)arg1;
 - (void)addImage:(id)arg1 forKey:(id)arg2;
+- (id)initWithUniqueIdentifier:(id)arg1;
 - (id)init;
 
 @end

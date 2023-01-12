@@ -9,10 +9,11 @@
 #import <NearbyInteraction/NSCopying-Protocol.h>
 #import <NearbyInteraction/NSSecureCoding-Protocol.h>
 
-@class NSData;
+@class NSData, NSNumber;
 
 @interface NIDiscoveryToken : NSObject <NSCopying, NSSecureCoding>
 {
+    NSNumber *_shortDeviceAddress;
     NSData *_rawToken;
 }
 
@@ -26,6 +27,8 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)shortDeviceAddress;
+- (id)initWithDeviceAddress:(unsigned short)arg1;
 - (id)initWithBytes:(id)arg1;
 
 @end

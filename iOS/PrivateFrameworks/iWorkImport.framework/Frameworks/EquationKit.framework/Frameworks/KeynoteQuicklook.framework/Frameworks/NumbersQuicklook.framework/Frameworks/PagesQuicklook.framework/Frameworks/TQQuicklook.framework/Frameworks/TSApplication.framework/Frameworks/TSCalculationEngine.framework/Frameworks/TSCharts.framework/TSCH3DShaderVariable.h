@@ -12,26 +12,27 @@
 
 @interface TSCH3DShaderVariable : NSObject <NSCopying>
 {
-    NSString *mName;
-    NSString *mType;
-    NSString *mPrecision;
-    unsigned long long mArraySize;
-    struct TSCH3DShaderType mShaderType;
-    _Bool mIsSpecial;
-    TSCH3DShaderVariable *mGenericName;
-    NSArray *mElements;
-    unsigned long long mComponentCount;
+    NSString *_name;
+    NSString *_type;
+    NSString *_precision;
+    unsigned long long _arraySize;
+    struct TSCH3DShaderType _shaderType;
+    _Bool _isSpecial;
+    TSCH3DShaderVariable *_genericName;
+    NSArray *_elements;
+    unsigned long long _componentCount;
 }
 
 + (id)variableWithName:(id)arg1 type:(id)arg2 precision:(id)arg3 arraySize:(unsigned long long)arg4 shaderType:(struct TSCH3DShaderType)arg5 isSpecial:(_Bool)arg6 generic:(id)arg7;
 - (id).cxx_construct;
-@property(readonly, nonatomic) TSCH3DShaderVariable *genericName; // @synthesize genericName=mGenericName;
-@property(readonly, nonatomic) _Bool isSpecial; // @synthesize isSpecial=mIsSpecial;
-@property(readonly, nonatomic) struct TSCH3DShaderType shaderType; // @synthesize shaderType=mShaderType;
-@property(readonly, nonatomic) unsigned long long arraySize; // @synthesize arraySize=mArraySize;
-@property(readonly, nonatomic) NSString *precision; // @synthesize precision=mPrecision;
-@property(readonly, nonatomic) NSString *type; // @synthesize type=mType;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=mName;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DShaderVariable *genericName; // @synthesize genericName=_genericName;
+@property(readonly, nonatomic) _Bool isSpecial; // @synthesize isSpecial=_isSpecial;
+@property(readonly, nonatomic) struct TSCH3DShaderType shaderType; // @synthesize shaderType=_shaderType;
+@property(readonly, nonatomic) unsigned long long arraySize; // @synthesize arraySize=_arraySize;
+@property(readonly, nonatomic) NSString *precision; // @synthesize precision=_precision;
+@property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)variableAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) struct TSCH3DShaderType initialLinkType;
 @property(readonly, nonatomic) unsigned long long componentCount;
@@ -41,7 +42,6 @@
 - (unsigned long long)hash;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithName:(id)arg1 type:(id)arg2 precision:(id)arg3 arraySize:(unsigned long long)arg4 shaderType:(struct TSCH3DShaderType)arg5 isSpecial:(_Bool)arg6 generic:(id)arg7;
 
 @end

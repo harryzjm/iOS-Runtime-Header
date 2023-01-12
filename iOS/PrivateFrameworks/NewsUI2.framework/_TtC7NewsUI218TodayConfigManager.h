@@ -13,7 +13,10 @@
     MISSING_TYPE *decoder;
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *appConfigManager;
+    MISSING_TYPE *todayFeedConfigManager;
     MISSING_TYPE *assetManager;
+    MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *test;
 }
 
 @end

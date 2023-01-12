@@ -12,8 +12,8 @@
 
 @interface MRContentItem : NSObject <NSCopying>
 {
-    NSString *_identifier;
     MRContentItemMetadata *_metadata;
+    NSString *_identifier;
     NSString *_info;
     NSArray *_availableLanguageOptions;
     NSArray *_currentLanguageOptions;
@@ -37,7 +37,6 @@
 @property(copy, nonatomic) NSArray *currentLanguageOptions; // @synthesize currentLanguageOptions=_currentLanguageOptions;
 @property(copy, nonatomic) NSArray *availableLanguageOptions; // @synthesize availableLanguageOptions=_availableLanguageOptions;
 @property(copy, nonatomic) NSString *info; // @synthesize info=_info;
-@property(copy, nonatomic) MRContentItemMetadata *metadata; // @synthesize metadata=_metadata;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -49,6 +48,7 @@
 @property(readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly, copy, nonatomic) NSData *data;
 @property(readonly, nonatomic) _MRContentItemProtobuf *protobuf;
+@property(copy, nonatomic) MRContentItemMetadata *metadata;
 - (id)initWithData:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (id)initWithNowPlayingInfo:(id)arg1;

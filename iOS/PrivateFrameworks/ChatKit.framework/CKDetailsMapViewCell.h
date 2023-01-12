@@ -6,17 +6,21 @@
 
 #import <ChatKit/CKDetailsCell-Protocol.h>
 
-@class NSString, UIView;
+@class CKDetailsLocationStringCell, NSString, UIView;
 
 __attribute__((visibility("hidden")))
 @interface CKDetailsMapViewCell <CKDetailsCell>
 {
+    _Bool _shouldShowLocationString;
     UIView *_mapView;
+    CKDetailsLocationStringCell *_locationStringView;
 }
 
 + (_Bool)shouldHighlight;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKDetailsLocationStringCell *locationStringView; // @synthesize locationStringView=_locationStringView;
+@property(nonatomic) _Bool shouldShowLocationString; // @synthesize shouldShowLocationString=_shouldShowLocationString;
 @property(retain, nonatomic) UIView *mapView; // @synthesize mapView=_mapView;
 - (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

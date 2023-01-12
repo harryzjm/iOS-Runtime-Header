@@ -28,13 +28,17 @@
 - (int)_migrateToCurrentSchemaVersionIfNecessary;
 - (void)_openDatabase;
 - (void)_openDatabaseIfNecessary;
+- (id)_queryListForPreferences:(id)arg1;
+- (void)removeAllPreferenceValuesFromPreferences:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAllPreferenceValuesFromPreference:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getAllPreferenceInformationForPreference:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getTimestampAndValueOfPreference:(long long)arg1 forDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDefaultValue:(id)arg1 forPreference:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getDefaultValueForPreference:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removePreferenceValuesForDomainPrefixes:(id)arg1 fromPreferences:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removePreferenceValuesForDomains:(id)arg1 fromPreference:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getAllDomainsConfiguredForPreference:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getValuesOfPreference:(long long)arg1 forDomains:(id)arg2 withTimeoutInterval:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getValuesOfPreferences:(id)arg1 forDomain:(id)arg2 withTimeoutInterval:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getValueOfPreference:(long long)arg1 forDomain:(id)arg2 withTimeoutInterval:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setValue:(id)arg1 ofPreference:(long long)arg2 forDomain:(id)arg3 includeTimestamp:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;

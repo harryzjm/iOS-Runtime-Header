@@ -8,7 +8,6 @@
 
 @interface WebFrame (BrowserAdditions)
 - (_Bool)isMainFrame;
-- (_Bool)containsOnlySelectableElements;
-- (_Bool)isTexty;
+- (_Bool)hasBodyElement;
 @end
 

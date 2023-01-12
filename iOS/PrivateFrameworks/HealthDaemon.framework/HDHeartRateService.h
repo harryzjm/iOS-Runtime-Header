@@ -19,9 +19,6 @@
 - (void)peripheral:(id)arg1 didDiscoverCharacteristic:(id)arg2;
 - (void)performOperation:(id)arg1 onPeripheral:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)supportsOperation:(id)arg1;
-- (void)resetEnergyExpendedOnPeripheral:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)handleBodyLocation:(id)arg1;
-- (void)handleHeartRate:(id)arg1;
 - (id)initWithServiceManager:(id)arg1 peripheral:(id)arg2 advertisementData:(id)arg3 profile:(id)arg4;
 
 @end

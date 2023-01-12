@@ -19,7 +19,7 @@
     GEOCountryConfiguration *_countryConfiguration;
     GEOResourceManifestManager *_manifestManager;
     geo_isolater *_infrequentlyChangingMetadataIsolater;
-    CDStruct_e4886f83 *_expirationRecords;
+    CDStruct_61711f31 *_expirationRecords;
     unsigned long long _expirationRecordsCount;
     _Bool _preloading;
     NSString *_devicePostureLocale;
@@ -32,6 +32,8 @@
     _Bool _createdExternalDataDirectory;
     id <GEOTileDBDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    double _timestampDeltaWriteThreshold;
+    id _timestampDeltaWriteThresholdConfigListener;
 }
 
 - (void).cxx_destruct;
@@ -41,9 +43,9 @@
 - (void)evictVeryOldTilesWithGroup:(id)arg1;
 - (void)_invalidateAllTileData;
 - (_Bool)_deleteAndRecreateDB;
-- (void)_setEdition:(unsigned int)arg1 forTileSet:(unsigned int)arg2;
-- (void)_deleteTileSet:(unsigned int)arg1;
-- (void)_invalidateTileSet:(unsigned int)arg1;
+- (void)_setEdition:(unsigned int)arg1 forTileSet:(CDUnion_23a7df3d)arg2;
+- (void)_deleteTileSet:(CDUnion_23a7df3d)arg1;
+- (void)_invalidateTileSet:(CDUnion_23a7df3d)arg1;
 - (void)_invalidateTileSetsForNewDevicePostureCountry:(id)arg1 newDevicePostureRegion:(id)arg2 oldDevicePostureCountry:(id)arg3 oldDevicePostureRegion:(id)arg4;
 - (void)_updateDevicePosture;
 - (void)evaluateDevicePostureAgainstCurrentManifest:(id)arg1;
@@ -52,13 +54,16 @@
 - (void)deleteDataForTilesets:(id)arg1;
 - (void)_deleteDataOnDBQueueForKey:(const struct _GEOTileKey *)arg1;
 - (void)deleteDataForKey:(const struct _GEOTileKey *)arg1;
+- (void)_trackFailureOnDBQueueWithKey:(const struct _GEOTileKey *)arg1 tileSet:(CDUnion_23a7df3d)arg2 shouldProactivelyLoad:(_Bool)arg3;
 - (void)_setLastAccessTimeOnDBQueue:(double)arg1 forKey:(const struct _GEOTileKey *)arg2;
-- (void)_addDataOnDBQueueWithData:(id)arg1 key:(const struct _GEOTileKey *)arg2 tileSet:(unsigned int)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
+- (void)_addDataOnDBQueueWithData:(id)arg1 key:(const struct _GEOTileKey *)arg2 tileSet:(CDUnion_23a7df3d)arg3 ETag:(id)arg4 reason:(unsigned char)arg5 externalResourceUUID:(id)arg6;
 - (_Bool)_markExistingTileDataAsCurrentOnDBQueue:(const struct _GEOTileKey *)arg1 reason:(unsigned char)arg2;
+- (void)getFailedTileKeysForProactiveLoadSince:(double)arg1 maxCount:(unsigned long long)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)trackFailureForKey:(const struct _GEOTileKey *)arg1 tileSet:(CDUnion_23a7df3d)arg2 shouldProactivelyLoad:(_Bool)arg3;
 - (void)getStaleTileKeysUsedSince:(double)arg1 fromTileSets:(id)arg2 maxCount:(unsigned long long)arg3 maxTotalSize:(unsigned long long)arg4 queue:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)getLastAccessTimestampForKey:(const struct _GEOTileKey *)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
-- (void)addData:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(unsigned int)arg4 provider:(unsigned int)arg5 etag:(id)arg6 reason:(unsigned char)arg7 isIdenticalToExistingStaleData:(_Bool)arg8;
-- (void)addData:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(unsigned int)arg4 provider:(unsigned int)arg5 etag:(id)arg6 reason:(unsigned char)arg7;
+- (void)addData:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(CDUnion_23a7df3d)arg4 provider:(unsigned int)arg5 etag:(id)arg6 reason:(unsigned char)arg7 isIdenticalToExistingStaleData:(_Bool)arg8;
+- (void)addData:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(CDUnion_23a7df3d)arg4 provider:(unsigned int)arg5 etag:(id)arg6 reason:(unsigned char)arg7;
 - (void)dataForKeys:(id)arg1 reason:(unsigned char)arg2 group:(id)arg3 callbackQueue:(id)arg4 dataHandler:(CDUnknownBlockType)arg5;
 - (_Bool)_dataForKeyOnDBQueue:(const struct _GEOTileKey *)arg1 reason:(unsigned char)arg2 callbackQueue:(id)arg3 dataHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)calculateFreeableSizeSync;
@@ -76,8 +81,8 @@
 - (void)shrinkToSize:(unsigned long long)arg1 queue:(id)arg2 finished:(CDUnknownBlockType)arg3;
 - (void)endPreloadSession;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1;
-- (_Bool)_isTileSetTTLExpired:(unsigned int)arg1 age:(double)arg2;
-- (void)setExpirationRecords:(CDStruct_e4886f83 *)arg1 count:(unsigned long long)arg2;
+- (_Bool)_isTileSetTTLExpired:(CDUnion_23a7df3d)arg1 age:(double)arg2;
+- (void)setExpirationRecords:(CDStruct_61711f31 *)arg1 count:(unsigned long long)arg2;
 @property(readonly, nonatomic) NSString *devicePostureRegion;
 @property(readonly, nonatomic) NSString *devicePostureCountry;
 - (void)_editionUpdate:(id)arg1;
@@ -90,6 +95,7 @@
 - (_Bool)_setup:(id)arg1;
 - (id)_setupDB:(id)arg1;
 - (void)tearDown;
+- (void)dealloc;
 - (id)initWithBaseDirectory:(id)arg1 manifestManager:(id)arg2 countryConfiguration:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 maximumDatabaseSize:(unsigned long long)arg6;
 - (id)initWithBaseDirectory:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (id)initWithBaseDirectory:(id)arg1;

@@ -10,7 +10,7 @@
 #import <SearchUI/SearchUIAccessoryViewDelegate-Protocol.h>
 #import <SearchUI/TLKDetailsViewDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, SearchUIAccessoryViewController, SearchUIDetailedRowModel, SearchUILeadingViewController, TLKDetailsView, TLKStackView, UIView;
+@class NSMutableArray, NSString, SearchUIAccessoryViewController, SearchUIButtonItemProvider, SearchUIDetailedRowModel, SearchUILeadingViewController, TLKDetailsView, TLKStackView, UIView;
 @protocol SearchUIDetailedViewDelegate, SearchUIFeedbackDelegate;
 
 @interface SearchUIDetailedView : NUIContainerStackView <NUIContainerViewDelegate, SearchUIAccessoryViewDelegate, TLKDetailsViewDelegate>
@@ -23,6 +23,9 @@
     SearchUILeadingViewController *_currentLeadingViewController;
     SearchUIDetailedRowModel *_rowModel;
     TLKStackView *_innerContainer;
+    TLKStackView *_buttonItemStackView;
+    TLKStackView *_buttonAndDetailViewStackView;
+    SearchUIButtonItemProvider *_buttonItemProvider;
     NSMutableArray *_leadingViewControllers;
     TLKDetailsView *_detailsView;
     NSMutableArray *_accessoryViewControllers;
@@ -34,6 +37,9 @@
 @property(retain, nonatomic) NSMutableArray *accessoryViewControllers; // @synthesize accessoryViewControllers=_accessoryViewControllers;
 @property(retain, nonatomic) TLKDetailsView *detailsView; // @synthesize detailsView=_detailsView;
 @property(retain, nonatomic) NSMutableArray *leadingViewControllers; // @synthesize leadingViewControllers=_leadingViewControllers;
+@property(retain, nonatomic) SearchUIButtonItemProvider *buttonItemProvider; // @synthesize buttonItemProvider=_buttonItemProvider;
+@property(retain, nonatomic) TLKStackView *buttonAndDetailViewStackView; // @synthesize buttonAndDetailViewStackView=_buttonAndDetailViewStackView;
+@property(retain, nonatomic) TLKStackView *buttonItemStackView; // @synthesize buttonItemStackView=_buttonItemStackView;
 @property(retain, nonatomic) TLKStackView *innerContainer; // @synthesize innerContainer=_innerContainer;
 @property(retain, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property _Bool isCompactWidth; // @synthesize isCompactWidth=_isCompactWidth;
@@ -42,6 +48,7 @@
 @property(nonatomic) __weak id <SearchUIDetailedViewDelegate> buttonDelegate; // @synthesize buttonDelegate=_buttonDelegate;
 @property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property(nonatomic) _Bool isVerticalAlignment; // @synthesize isVerticalAlignment=_isVerticalAlignment;
+- (struct UIEdgeInsets)layoutMargins;
 @property(readonly, nonatomic) UIView *leadingTextView;
 @property(readonly, nonatomic) UIView *leadingView;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -51,6 +58,9 @@
 - (void)footnoteButtonPressed;
 - (_Bool)arrangedViewMustCenter:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)initWithFeedbackDelegate:(id)arg1;
 
 // Remaining properties

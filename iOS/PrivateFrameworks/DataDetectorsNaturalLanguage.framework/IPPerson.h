@@ -23,6 +23,7 @@
 @property(readonly) NSString *fullName; // @synthesize fullName=_fullName;
 @property(readonly) NSString *email; // @dynamic email;
 @property(readonly, copy) NSString *displayableName;
+- (id)initWithSGIPPerson:(id)arg1;
 - (id)initWithString:(id)arg1;
 - (id)initWithEmail:(id)arg1 fullName:(id)arg2;
 - (id)initWithHandle:(id)arg1 handleType:(id)arg2 fullName:(id)arg3;

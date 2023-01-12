@@ -8,7 +8,7 @@
 
 #import <AppPredictionClient/ATXAppDirectoryInterface-Protocol.h>
 
-@class ATXBiomeUIStream, ATXClient, NSArray, NSXPCConnection, _DKEventStream;
+@class ATXBiomeUIStream, ATXEngagementRecordManager, ATXProactiveSuggestionClient, NSArray, NSXPCConnection, _DKEventStream;
 @protocol ATXPETEventTracker2Protocol, OS_dispatch_queue, _DKKnowledgeSaving;
 
 @interface ATXAppDirectoryClient : NSObject <ATXAppDirectoryInterface>
@@ -17,43 +17,45 @@
     id <_DKKnowledgeSaving> _knowledgeStore;
     _DKEventStream *_knowledgeStream;
     NSObject<OS_dispatch_queue> *_loggingQueue;
-    ATXClient *_atxClient;
+    ATXProactiveSuggestionClient *_blendingClient;
     id <ATXPETEventTracker2Protocol> _tracker;
     ATXBiomeUIStream *_uiStream;
-    _Bool _didSearchDuringSession;
+    ATXEngagementRecordManager *_engagementRecordManager;
     _Bool _didSendFeedbackDuringSession;
     NSArray *_topAppsVisible;
+    NSArray *_recentAppsVisible;
 }
 
 + (id)_sortedAllOtherBundleIDsFromAllBundleIDs:(id)arg1 allPlaceholderBundleIDs:(id)arg2 hardcodedAppCategoryMappings:(id)arg3;
 + (id)_allPlaceholderBundleIdsFromHomeScreenService:(id)arg1;
-+ (id)_allBundleIdsFromHomeScreenService:(id)arg1;
 + (id)_sortedDefaultCategories;
 + (id)_sortedBundleIDsByCategoryWithHardcodedAppCategoryMappings:(id)arg1;
 + (id)hardcodedAppCategoryMappings;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool didSendFeedbackDuringSession; // @synthesize didSendFeedbackDuringSession=_didSendFeedbackDuringSession;
-@property(nonatomic) _Bool didSearchDuringSession; // @synthesize didSearchDuringSession=_didSearchDuringSession;
+@property(retain) NSArray *recentAppsVisible; // @synthesize recentAppsVisible=_recentAppsVisible;
 @property(retain) NSArray *topAppsVisible; // @synthesize topAppsVisible=_topAppsVisible;
 - (void)logCloseSearchWithDate:(id)arg1;
 - (void)logDidLeaveAppDirectoryWithDate:(id)arg1 appDirectoryResponse:(id)arg2;
 - (void)logOpenSearchWithDate:(id)arg1;
 - (void)logLaunchFromSearchWithDate:(id)arg1 bundleID:(id)arg2 bundleIndex:(unsigned long long)arg3 searchQueryLength:(unsigned long long)arg4 searchTab:(unsigned long long)arg5 appDirectoryResponse:(id)arg6;
-- (void)logLaunchFromSuggestionWithDate:(id)arg1 bundleID:(id)arg2 bundleIndex:(unsigned long long)arg3 appDirectoryResponse:(id)arg4;
 - (void)logLaunchFromCategoryPreviewWithDate:(id)arg1 categoryID:(unsigned long long)arg2 categoryIndex:(unsigned long long)arg3 bundleID:(id)arg4 bundleIndex:(unsigned long long)arg5 appDirectoryResponse:(id)arg6;
 - (void)logLaunchFromExpandedCategoryWithDate:(id)arg1 categoryID:(unsigned long long)arg2 categoryIndex:(unsigned long long)arg3 bundleID:(id)arg4 bundleIndex:(unsigned long long)arg5 appDirectoryResponse:(id)arg6;
 - (void)logCategoryExitWithDate:(id)arg1 categoryID:(unsigned long long)arg2 categoryIndex:(unsigned long long)arg3;
 - (void)logCategoryExpansionWithDate:(id)arg1 categoryID:(unsigned long long)arg2 categoryIndex:(unsigned long long)arg3;
 - (void)logDidEnterAppDirectoryWithDate:(id)arg1;
-- (void)_logUserFeedbackWithAppDirectoryResponse:(id)arg1 engagementType:(unsigned long long)arg2 bundleIdentifier:(id)arg3 bundleIdsShown:(id)arg4 explicitlyRejectedBundleIds:(id)arg5;
 - (void)_resetSessionState;
 - (void)_logToDuet:(unsigned long long)arg1 metadata:(id)arg2;
 - (void)_logToBiome:(unsigned long long)arg1 metadata:(id)arg2;
+- (void)_logToBiomeWithEventType:(unsigned long long)arg1 date:(id)arg2 blendingCacheUUID:(id)arg3 shownSuggestionIds:(id)arg4 engagedSuggestionIds:(id)arg5 categoryID:(id)arg6 categoryIndex:(id)arg7 bundleId:(id)arg8 bundleIndex:(id)arg9 searchQueryLength:(id)arg10 searchTab:(id)arg11 bundleIdInTopAppsVisible:(id)arg12 userLaunchedAppBeforeLeaving:(id)arg13;
 - (void)_logCaptureRateCapture;
 - (void)_logCaptureRateDiversionWithType:(int)arg1;
+- (void)_addEngagedSuggestionToERM:(id)arg1;
 - (id)_readRecentAppsWithError:(id *)arg1;
 - (void)_updateTopAppsVisibilityWithCategories:(id)arg1;
+- (id)_suggestionsPodDedupableBundleIds;
+- (void)requestNotificationWhenCategoriesAreReady;
 - (void)notifyBookmarksDidChange;
 - (void)appLaunchDatesWithReply:(CDUnknownBlockType)arg1;
 - (void)predictedAppsAndRecentAppsWithShouldUseDefaultCategories:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;

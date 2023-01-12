@@ -26,6 +26,7 @@
     HMSettings *_settings;
 }
 
++ (id)createDefaultHomeSettingAdapterCollectionWithoutMobileTimerAdapterForProfile:(id)arg1;
 + (id)createDefaultHomeSettingAdapterCollectionForProfile:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HMSettings *settings; // @synthesize settings=_settings;
@@ -50,8 +51,8 @@
 - (_Bool)_updateRootAccessorySettingsIfNeeded;
 - (void)mediaObject:(id)arg1 didUpdateSettings:(id)arg2;
 - (void)settingsDidUpdate:(id)arg1;
-- (void)settings:(id)arg1 didUpdateSetting:(id)arg2;
-- (void)settings:(id)arg1 didWriteValueForSettings:(id)arg2 failedSettings:(id)arg3;
+- (void)settings:(id)arg1 didUpdateForIdentifier:(id)arg2 keyPath:(id)arg3;
+- (void)settings:(id)arg1 didWriteValueForSettings:(id)arg2 failedSettings:(id)arg3 homeKitObjectIdentifiers:(id)arg4;
 - (void)settings:(id)arg1 willWriteValueForSettings:(id)arg2;
 - (id)settingForKeyPath:(id)arg1;
 - (id)updateSetting:(id)arg1 value:(id)arg2;

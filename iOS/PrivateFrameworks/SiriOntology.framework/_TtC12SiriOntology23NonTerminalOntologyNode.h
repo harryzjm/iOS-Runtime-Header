@@ -13,7 +13,6 @@
     MISSING_TYPE *name;
     MISSING_TYPE *multicardinal;
     MISSING_TYPE *childNodes;
-    MISSING_TYPE *$__lazy_storage_$_recursiveParentForChildren;
 }
 
 @end

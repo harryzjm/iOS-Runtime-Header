@@ -7,6 +7,7 @@
 #import <Foundation/NSOrderedSet.h>
 
 @interface NSOrderedSet (BaseBoard)
+- (id)bs_dictionaryByPartitioning:(CDUnknownBlockType)arg1;
 - (_Bool)bs_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)bs_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)bs_reduce:(id)arg1 block:(CDUnknownBlockType)arg2;

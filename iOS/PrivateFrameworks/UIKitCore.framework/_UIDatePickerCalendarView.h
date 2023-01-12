@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     long long _viewState;
     _UIDatePickerCalendarMonthYearSelector *_monthYearSelector;
     NSLayoutConstraint *_minimumWidthConstraint;
+    NSLayoutConstraint *_maximumWidthConstraint;
     struct CGSize _lastSize;
     unsigned long long _stateUpdatesInFlight;
     UIDatePicker *_datePicker;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)defaultSize;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
 - (_Bool)usesAutoLayout;
+- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
 - (void)_setHidesLabels:(_Bool)arg1;
 @property(readonly, nonatomic, getter=_isTimeIntervalMode) _Bool isTimeIntervalMode;
 @property(nonatomic, getter=_allowsZeroTimeInterval, setter=_setAllowsZeroTimeInterval:) _Bool allowsZeroTimeInterval;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)didChangeCustomFontDescriptor;
 - (void)didChangeToday;
 - (void)didReset;
+- (void)didChangeRoundsToMinuteInterval;
 - (void)didChangeMinuteInterval;
 - (void)didChangeMaximumDate;
 - (void)didChangeMinimumDate;
@@ -59,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)didChangeMode;
 @property(readonly, nonatomic) long long datePickerStyle;
 - (void)monthYearSelector:(id)arg1 didSelectMonth:(id)arg2;
+- (id)createDatePickerForTimeView:(id)arg1;
 - (void)timeViewDidEndEditing:(id)arg1;
 - (void)timeViewDidBeginEditing:(id)arg1;
 - (void)timeViewWillBecomeFirstResponder:(id)arg1;
@@ -78,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateSelectedTime:(id)arg1 notify:(_Bool)arg2;
 - (void)_updateSelectedDay:(id)arg1 animated:(_Bool)arg2 notify:(_Bool)arg3;
 - (void)_updateSelectedDay:(id)arg1 time:(id)arg2 animated:(_Bool)arg3 notify:(_Bool)arg4;
-- (void)_updateTimeViewForSelectedTime:(id)arg1 animated:(_Bool)arg2;
+- (void)_updateTimeViewForSelectedDate:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_shouldUpdateTimeViewForSelectedTime:(id)arg1;
 - (void)_updateMonthYearSelectorForSelectedDay:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_shouldUpdateMonthYearSelectorForSelectedDay:(id)arg1;
@@ -109,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)layoutMarginsDidChange;
+- (void)_updateLayoutMargins;
 - (void)_workaround66574039_datePickerDidUpdateLayoutMargins;
 - (id)initWithFrame:(struct CGRect)arg1;
 

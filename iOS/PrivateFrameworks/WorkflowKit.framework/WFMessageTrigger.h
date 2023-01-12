@@ -13,7 +13,11 @@
     NSArray *_selectedSendersStrings;
 }
 
++ (id)messagesGreen;
 + (_Bool)supportsSecureCoding;
++ (id)displayGlyphTintColor;
++ (long long)triggerBacking;
++ (id)displayGlyph;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (_Bool)isAllowedToRunAutomatically;

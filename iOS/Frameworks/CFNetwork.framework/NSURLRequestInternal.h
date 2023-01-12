@@ -21,7 +21,7 @@
 - (void)dealloc;
 - (id)_initWithMessage:(struct __CFHTTPMessage *)arg1 bodyParts:(struct __CFArray *)arg2 cachePolicy:(unsigned long long)arg3 timeout:(double)arg4 mainDocumentURL:(struct __CFURL *)arg5 mutable:(unsigned char)arg6;
 - (id)init;
-@property(readonly) struct URLRequest *_inner; // @dynamic _inner;
+@property(readonly) void *_inner; // @dynamic _inner;
 
 @end
 

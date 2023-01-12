@@ -16,7 +16,7 @@
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (void)viewDidLoad;
-- (id)initWithUser:(id)arg1;
+- (id)initWithUser:(id)arg1 home:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

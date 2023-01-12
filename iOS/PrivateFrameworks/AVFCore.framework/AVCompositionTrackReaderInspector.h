@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigMutableComposition *_figMutableComposition;
 }
 
+- (struct OpaqueFigSampleCursorService *)_getFigSampleCursorServiceReportingTimeAccuracy:(_Bool *)arg1;
 - (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;
 - (id)segments;
 @property(readonly, nonatomic, getter=_mutableComposition) struct OpaqueFigMutableComposition *mutableComposition;

@@ -142,6 +142,7 @@
 - (void)_setSuppressesCellIndicators:(long long)arg1;
 - (void)_setSuppressesCellDataIndicator:(long long)arg1;
 @property(readonly, nonatomic) _Bool suppressesCellDataIndicator;
+- (void)_updateNetworkCountryCode:(id)arg1 inContext:(id)arg2 withCTContext:(id)arg3;
 - (void)_updateLastKnownNetworkCountryCodeInContext:(id)arg1 withCTContext:(id)arg2;
 - (void)_purgeSlot2SubscriptionState;
 - (void)_purgeSlot1SubscriptionState;
@@ -151,6 +152,7 @@
 - (void)_airplaneModeDidChange:(_Bool)arg1;
 - (void)_handleTelephonyDaemonRestart;
 - (void)_serverConnectionDidError:(CDStruct_1ef3fb1f)arg1;
+- (void)_registerForServerConnectionNotifications;
 - (struct __CTServerConnection *)_serverConnection;
 - (void)invalidate;
 - (_Bool)isSIMPresentForSlot:(long long)arg1;

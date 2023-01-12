@@ -10,38 +10,29 @@
 
 @class NSString, _MRDeviceInfoMessageProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MROriginProtobuf : PBCodable <NSCopying>
 {
     _MRDeviceInfoMessageProtobuf *_deviceInfoDeprecated;
     NSString *_displayName;
     int _identifier;
     int _type;
+    _Bool _isLocallyHosted;
     struct {
         unsigned int identifier:1;
         unsigned int type:1;
+        unsigned int isLocallyHosted:1;
     } _has;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfoDeprecated; // @synthesize deviceInfoDeprecated=_deviceInfoDeprecated;
-@property(nonatomic) int identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasDeviceInfoDeprecated;
-@property(nonatomic) _Bool hasIdentifier;
-@property(readonly, nonatomic) _Bool hasDisplayName;
-- (int)StringAsType:(id)arg1;
-- (id)typeAsString:(int)arg1;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type; // @synthesize type=_type;
 
 @end
 

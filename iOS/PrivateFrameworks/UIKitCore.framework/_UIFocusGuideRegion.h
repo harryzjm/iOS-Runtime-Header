@@ -8,12 +8,18 @@
 
 @interface _UIFocusGuideRegion
 {
-    _Bool __isFocusGuideUnoccludable;
+    _Bool __isUnoccludable;
+    _Bool __ignoresSpeedBumpEdges;
+    _Bool __isUnclippable;
     id <_UIFocusGuideRegionDelegate> _delegate;
+    double __focusPriority;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, setter=_setIsFocusGuideUnoccludable:) _Bool _isFocusGuideUnoccludable; // @synthesize _isFocusGuideUnoccludable=__isFocusGuideUnoccludable;
+@property(nonatomic, setter=_setIsUnclippable:) _Bool _isUnclippable; // @synthesize _isUnclippable=__isUnclippable;
+@property(nonatomic, setter=_setIgnoresSpeedBumpEdges:) _Bool _ignoresSpeedBumpEdges; // @synthesize _ignoresSpeedBumpEdges=__ignoresSpeedBumpEdges;
+@property(nonatomic, setter=_setFocusPriority:) double _focusPriority; // @synthesize _focusPriority=__focusPriority;
+@property(nonatomic, setter=_setIsUnoccludable:) _Bool _isUnoccludable; // @synthesize _isUnoccludable=__isUnoccludable;
 @property(nonatomic) __weak id <_UIFocusGuideRegionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (_Bool)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;

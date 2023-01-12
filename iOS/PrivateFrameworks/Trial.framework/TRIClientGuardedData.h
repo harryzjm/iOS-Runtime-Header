@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, TRITrackingId;
+@class NSMutableDictionary, TRIExcessiveStaleFactorsUsageTimer, TRITrackingId;
 
 @interface TRIClientGuardedData : NSObject
 {
     TRITrackingId *trackingId;
-    NSMutableSet *updatedNamespaceNames;
     NSMutableDictionary *namespaceUpdateHandlerTokens;
     NSMutableDictionary *namespaceCallbacks;
+    TRIExcessiveStaleFactorsUsageTimer *excessiveStaleFactorUsageTimer;
 }
 
 - (void).cxx_destruct;

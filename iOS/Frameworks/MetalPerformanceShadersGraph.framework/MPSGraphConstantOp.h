@@ -9,6 +9,7 @@
 @interface MPSGraphConstantOp
 {
     NSData *_data;
+    _Bool _isSplat;
     unsigned int _dataType;
     NSArray *_shape;
 }
@@ -16,8 +17,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int dataType; // @synthesize dataType=_dataType;
 @property(readonly, nonatomic) NSArray *shape; // @synthesize shape=_shape;
-- (struct Value)makeMLIROpWithBuilder:(struct OpBuilder *)arg1 symbolTable:(struct MPSSymbolTable *)arg2 inputValues:(vector_c90d9c45 *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
-- (id)initWithGraph:(id)arg1 data:(id)arg2 shape:(id)arg3 dataType:(unsigned int)arg4 name:(id)arg5;
+- (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
+- (id)initWithGraph:(id)arg1 data:(id)arg2 shape:(id)arg3 dataType:(unsigned int)arg4 isSplat:(_Bool)arg5 name:(id)arg6;
 
 @end
 

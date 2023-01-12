@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSURL, NSUUID;
+@class KGDatabaseNameCache, NSURL, NSUUID;
 
 @interface KGDatabase : NSObject
 {
-    struct Database *_database;
-    NSMutableDictionary *_labelIdByName;
-    NSMutableDictionary *_labelNameById;
-    NSMutableDictionary *_attrIdByPropertyName;
-    NSMutableDictionary *_propertyNameByAttrId;
+    void *_database;
+    KGDatabaseNameCache *_nameCache;
     NSURL *_url;
 }
 
@@ -25,7 +22,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-- (struct Database *)database;
+- (void *)database;
 - (void)purgeCachedEdgeStatements;
 - (void)purgeCachedNodeStatements;
 - (_Bool)rollbackTransaction;
@@ -37,56 +34,81 @@
 - (_Bool)appendNodeIdentifiersOfEdgesWithIdentifiers:(id)arg1 sourceNodeIdentifiers:(id)arg2 targetNodeIdentifiers:(id)arg3 error:(id *)arg4;
 - (id)inEdgeIdentifiersOfNodesWithIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)outEdgeIdentifiersOfNodesWithIdentifiers:(id)arg1 error:(id *)arg2;
-- (id)edgeIdentifiersForLabels:(id)arg1 error:(id *)arg2;
-- (id)filterEdgeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 edgeIdentifiers:(id)arg3 error:(id *)arg4;
+- (id)unionOfEdgesWithLabels:(id)arg1 error:(id *)arg2;
+- (id)intersectionOfEdgesWithLabels:(id)arg1 error:(id *)arg2;
+- (id)edgeIdentifiersSortedByPropertyForName:(id)arg1 dataType:(long long)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 edgeIdentifiers:(id)arg5 error:(id *)arg6;
+- (id)filterEdgeIdentifiersForPropertyName:(id)arg1 rangeValue1:(id)arg2 rangeValue2:(id)arg3 comparator:(unsigned long long)arg4 edgeIdentifiers:(id)arg5 error:(id *)arg6;
+- (id)filterEdgeIdentifiersForPropertyName:(id)arg1 values:(id)arg2 edgeIdentifiers:(id)arg3 error:(id *)arg4;
+- (id)filterEdgeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 comparator:(unsigned long long)arg3 edgeIdentifiers:(id)arg4 error:(id *)arg5;
 - (id)edgeIdentifiersForPropertyName:(id)arg1 values:(id)arg2 error:(id *)arg3;
-- (id)edgeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 error:(id *)arg3;
-- (id)nodeIdentifiersForLabels:(id)arg1 error:(id *)arg2;
-- (id)filterNodeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 nodeIdentifiers:(id)arg3 error:(id *)arg4;
+- (id)edgeIdentifiersForPropertyName:(id)arg1 rangeValue1:(id)arg2 rangeValue2:(id)arg3 comparator:(unsigned long long)arg4 error:(id *)arg5;
+- (id)edgeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 comparator:(unsigned long long)arg3 error:(id *)arg4;
+- (id)unionOfNodesWithLabels:(id)arg1 error:(id *)arg2;
+- (id)intersectionOfNodesWithLabels:(id)arg1 error:(id *)arg2;
+- (id)nodeIdentifiersSortedByPropertyForName:(id)arg1 dataType:(long long)arg2 ascending:(_Bool)arg3 limit:(long long)arg4 nodeIdentifiers:(id)arg5 error:(id *)arg6;
+- (id)filterNodeIdentifiersForPropertyName:(id)arg1 rangeValue1:(id)arg2 rangeValue2:(id)arg3 comparator:(unsigned long long)arg4 nodeIdentifiers:(id)arg5 error:(id *)arg6;
+- (id)filterNodeIdentifiersForPropertyName:(id)arg1 values:(id)arg2 nodeIdentifiers:(id)arg3 error:(id *)arg4;
+- (id)filterNodeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 comparator:(unsigned long long)arg3 nodeIdentifiers:(id)arg4 error:(id *)arg5;
 - (id)nodeIdentifiersForPropertyName:(id)arg1 values:(id)arg2 error:(id *)arg3;
 - (void)distributeValuesByType:(id)arg1 toIntegerValues:(id)arg2 floatValues:(id)arg3 stringValues:(id)arg4;
-- (id)nodeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 error:(id *)arg3;
+- (id)nodeIdentifiersForPropertyName:(id)arg1 rangeValue1:(id)arg2 rangeValue2:(id)arg3 comparator:(unsigned long long)arg4 error:(id *)arg5;
+- (id)nodeIdentifiersForPropertyName:(id)arg1 value:(id)arg2 comparator:(unsigned long long)arg3 error:(id *)arg4;
 - (_Bool)removeEdges:(id)arg1 error:(id *)arg2;
 - (_Bool)removeNodes:(id)arg1 error:(id *)arg2;
 - (_Bool)removeEdge:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)removeNode:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)addEdgeWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4 sourceNodeIdentifier:(unsigned long long)arg5 targetNodeIdentifier:(unsigned long long)arg6 error:(id *)arg7;
+- (_Bool)addEdges:(id)arg1 error:(id *)arg2;
 - (_Bool)setEdgeWeight:(float)arg1 forIdentifier:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)setEdgeProperties:(id)arg1 forIdentifier:(unsigned long long)arg2 error:(id *)arg3;
 - (unsigned long long)addNodeWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4 error:(id *)arg5;
+- (_Bool)addNodes:(id)arg1 error:(id *)arg2;
 - (_Bool)setNodeWeight:(float)arg1 forIdentifier:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)setNodeProperties:(id)arg1 forIdentifier:(unsigned long long)arg2 error:(id *)arg3;
-- (void)_enumeratePropertiesForCursor:(struct AttributeValueCursor *)arg1 block:(CDUnknownBlockType)arg2;
-- (id)propertyValueForCursor:(struct AttributeValueCursor *)arg1;
-- (id)_namesOfLabelsWithIdentifiers:(struct Bitmap *)arg1;
-- (void)_enumerateEdgesWithEdgeCursor:(struct EdgeCursor *)arg1 propertiesCursor:(struct AttributeValueCursor *)arg2 block:(CDUnknownBlockType)arg3;
-- (void)_enumerateNodesWithNodeCursor:(struct NodeCursor *)arg1 propertiesCursor:(struct AttributeValueCursor *)arg2 block:(CDUnknownBlockType)arg3;
-- (void)_enumerateEdgeTableWithEdgeCursor:(struct EdgeCursor *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateUnsignedIntegerPropertiesWithCursor:(void *)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_enumerateDoublePropertiesWithCursor:(void *)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_enumerateStringPropertiesWithCursor:(void *)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_enumerateIntegerPropertiesWithCursor:(void *)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_enumeratePropertiesForCursor:(void *)arg1 block:(CDUnknownBlockType)arg2;
+- (id)propertyValueForCursor:(void *)arg1;
+- (void)_enumerateEdgesWithEdgeCursor:(void *)arg1 propertiesCursor:(void *)arg2 block:(CDUnknownBlockType)arg3;
+- (void)_enumerateNodesWithNodeCursor:(void *)arg1 propertiesCursor:(void *)arg2 block:(CDUnknownBlockType)arg3;
+- (void)_enumerateEdgeTableWithEdgeCursor:(void *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)enumerateUnsignedIntegerPropertyValuesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateDoublePropertyValuesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateStringPropertyValuesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateIntegerPropertyValuesForEdgesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (struct AttributeValueCursor)edgeAttributeValueCursorWithIdentifiers:(id)arg1 propertyName:(id)arg2 sampleValue:(id)arg3;
 - (struct AttributeValueCursor)edgeAttributeValueCursorWithIdentifiers:(id)arg1;
 - (struct EdgeCursor)edgeCursorWithIdentifiers:(id)arg1;
-- (void)_enumerateNodeTableWithNodeCursor:(struct NodeCursor *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateNodeTableWithNodeCursor:(void *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)enumerateUnsignedIntegerPropertyValuesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateDoublePropertyValuesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateStringPropertyValuesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateIntegerPropertyValuesForNodesWithIdentifiers:(id)arg1 propertyName:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (struct AttributeValueCursor)nodeAttributeValueCursorWithIdentifiers:(id)arg1 propertyName:(id)arg2 sampleValue:(id)arg3;
 - (struct AttributeValueCursor)nodeAttributeValueCursorWithIdentifiers:(id)arg1;
 - (struct NodeCursor)nodeCursorWithIdentifiers:(id)arg1;
+- (void)enumerateSourceAndTargetIdentifiersWithEdgeIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumerateEdgesWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumerateNodesWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (int)degasEdgeDirectionFromKG:(unsigned long long)arg1;
-- (_Bool)labelIdentifiers:(struct Bitmap *)arg1 fromLabelNames:(id)arg2 insertIfNotFound:(_Bool)arg3;
 - (id)propertyNameForAttrIdentifier:(unsigned long long)arg1;
 - (unsigned long long)attributeIdentifierForPropertyName:(id)arg1 sampleValue:(id)arg2;
 - (void)loadPropertyNames;
-- (void)setPropertyName:(id)arg1 forAttrIdentifier:(id)arg2;
 @property(readonly, nonatomic) NSUUID *graphIdentifier;
 @property(nonatomic) unsigned long long graphVersion;
 - (id)edgeLabels;
 - (id)nodeLabels;
 - (id)labelNameForLabelIdentifier:(unsigned long long)arg1;
-- (unsigned long long)labelIdentifierForLabelName:(id)arg1 insertIfNotFound:(_Bool)arg2;
+- (_Bool)labelIdentifiers:(void *)arg1 forLabels:(id)arg2;
+- (struct Bitmap)upsertLabels:(id)arg1;
+- (unsigned long long)upsertLabel:(id)arg1;
 - (void)loadLabels;
-- (void)addLabelName:(id)arg1 forLabelId:(id)arg2;
 - (_Bool)copyToURL:(id)arg1 error:(id *)arg2;
 - (void)close;
 - (_Bool)openWithMode:(unsigned long long)arg1 error:(id *)arg2;
-- (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 nameCache:(id)arg2;
 
 @end
 

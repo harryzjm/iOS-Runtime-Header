@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IntentsUI/NSObject-Protocol.h>
+#import <IntentsUI/_INUIRemoteViewControllerHosting-Protocol.h>
 
 @class INIntent;
 
-@protocol _INUIExtensionContextHosting <NSObject>
+@protocol _INUIExtensionContextHosting <_INUIRemoteViewControllerHosting>
 - (void)willBeginEditing;
 - (void)requestHandlingOfIntent:(INIntent *)arg1;
 @end

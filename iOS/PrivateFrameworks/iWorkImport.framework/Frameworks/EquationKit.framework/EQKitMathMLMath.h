@@ -16,7 +16,7 @@
 @interface EQKitMathMLMath : NSObject <EQKitMathMLNode, EQKitRootNode, EQKitExpression>
 {
     EQKitMathMLNode *mExpression;
-    struct AttributeCollection *mAttributeCollection;
+    void *mAttributeCollection;
     EQKitEnvironmentInstance *mEnvironment;
 }
 
@@ -35,7 +35,7 @@
 - (id)newLayout;
 - (struct AttributeCollection *)attributeCollection;
 - (void)dealloc;
-- (const set_c5c159f9 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 - (id)init;
 

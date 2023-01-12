@@ -17,8 +17,8 @@
         _Bool registeredPlayer;
     } _playerControllerKVOFlags;
     NSMutableArray *_playerItemObservations;
+    _Bool _appliesPerFrameHDRDisplayMetadata;
     _Bool _loopsVideo;
-    _Bool _currentlySeeking;
     _Bool _muted;
     AVPlayer *_player;
     double _updateInterval;
@@ -26,11 +26,12 @@
     AVVideoComposition *_videoComposition;
     AVAudioMix *_audioMix;
     id <NUAVPlayerControllerDelegate> _delegate;
+    CDStruct_1b6d18a9 _currentSeekTime;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isMuted) _Bool muted; // @synthesize muted=_muted;
-@property(readonly, nonatomic) _Bool currentlySeeking; // @synthesize currentlySeeking=_currentlySeeking;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 currentSeekTime; // @synthesize currentSeekTime=_currentSeekTime;
 @property(nonatomic) _Bool loopsVideo; // @synthesize loopsVideo=_loopsVideo;
 @property(nonatomic) __weak id <NUAVPlayerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) AVAudioMix *audioMix; // @synthesize audioMix=_audioMix;
@@ -46,31 +47,36 @@
 - (void)_setRate:(float)arg1;
 - (void)playerItemDidReachEnd:(id)arg1;
 - (void)_removeTimeObserver;
-@property(readonly, nonatomic) CDStruct_198678f7 currentTime;
-- (CDStruct_198678f7)_effectiveTimeForTime:(CDStruct_198678f7)arg1;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
+- (CDStruct_1b6d18a9)_effectiveTimeForTime:(CDStruct_1b6d18a9)arg1;
 - (void)_addTimeObserver;
 - (void)removeObserver:(id)arg1;
 - (void)_notifyExternalPlaybackChange:(_Bool)arg1;
 - (void)addExternalPlaybackObserver:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_notifyPlayerStatusChange:(long long)arg1;
 - (void)addPlayerStatusObserver:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_notifyPlaybackTimeChange:(CDStruct_198678f7)arg1;
+- (void)_notifyPlaybackTimeChange:(CDStruct_1b6d18a9)arg1;
 - (void)addPlaybackTimeObserver:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_notifyPlaybackRateChange:(float)arg1;
 - (void)addPlaybackRateObserver:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)step:(long long)arg1;
-- (void)seek:(CDStruct_198678f7)arg1 toleranceBefore:(CDStruct_198678f7)arg2 toleranceAfter:(CDStruct_198678f7)arg3;
+- (void)seek:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 forceSeek:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)seek:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 forceSeek:(_Bool)arg4;
+- (void)seek:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3;
 - (void)seekBack;
 - (void)seekForward;
+@property(readonly, nonatomic) _Bool currentlySeeking;
 - (void)play;
 - (void)pause;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)updateAppliesPerFrameHDRDisplayMetadata:(_Bool)arg1;
 - (void)updateAudioMix:(id)arg1;
+- (void)updateWithVideoPrepareNodeFromVideoComposition:(id)arg1;
 - (void)updateVideoComposition:(id)arg1;
 - (id)_loopingPlayerItemWithVideoAsset:(id)arg1 videoComposition:(id)arg2 audioMix:(id)arg3;
 - (id)_playerItemWithVideoAsset:(id)arg1 videoComposition:(id)arg2 audioMix:(id)arg3;
 - (id)_playerItemsWithVideoAsset:(id)arg1 videoComposition:(id)arg2 audioMix:(id)arg3 loopsVideo:(_Bool)arg4;
-- (_Bool)prepareWithAVAsset:(id)arg1 videoComposition:(id)arg2 audioMix:(id)arg3 loopsVideo:(_Bool)arg4;
+- (_Bool)prepareWithAVAsset:(id)arg1 videoComposition:(id)arg2 audioMix:(id)arg3 loopsVideo:(_Bool)arg4 seekToTime:(CDStruct_1b6d18a9)arg5;
 - (void)dealloc;
 - (id)init;
 

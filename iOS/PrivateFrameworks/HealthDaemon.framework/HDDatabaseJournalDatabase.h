@@ -22,26 +22,11 @@
     CDUnknownBlockType _unitTesting_didCreateDatabaseConnectionHandler;
 }
 
-+ (long long)_maxEntryAnchorInDatabase:(id)arg1 error:(id *)arg2;
-+ (unsigned int)_enumerateEntriesInDatabase:(id)arg1 anchor:(long long *)arg2 enumeratedBytesThreshold:(long long)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
-+ (_Bool)_insertData:(id)arg1 osBuildStringID:(long long)arg2 classNameStringID:(long long)arg3 database:(id)arg4 error:(id *)arg5;
-+ (long long)_getIDForString:(id)arg1 database:(id)arg2 error:(id *)arg3;
-+ (_Bool)_appendData:(id)arg1 entryClass:(Class)arg2 database:(id)arg3 error:(id *)arg4;
-+ (_Bool)_createSchemaForDatabase:(id)arg1 error:(id *)arg2;
-+ (long long)_readSchemaVersionForDatabase:(id)arg1 error:(id *)arg2;
-+ (_Bool)_validateOrCreateSchemaForDatabase:(id)arg1 error:(id *)arg2;
-+ (_Bool)_openDatabase:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType unitTesting_didCreateDatabaseConnectionHandler; // @synthesize unitTesting_didCreateDatabaseConnectionHandler=_unitTesting_didCreateDatabaseConnectionHandler;
 @property(retain, nonatomic) HDKeyValueDomain *unitTesting_keyValueDomainOverride; // @synthesize unitTesting_keyValueDomainOverride=_unitTesting_keyValueDomainOverride;
 - (void)unitTesting_setEnumeratedBytesThreshold:(long long)arg1;
 @property(retain, nonatomic) HDSQLiteDatabase *unitTesting_underlyingDatabase;
-- (void)_clearCachedProperties;
-- (void)_faultCachedProperties;
-- (id)_getIdentifierAndCreationDate:(id *)arg1 error:(id *)arg2;
-- (long long)_hasEmptySchemaWithError:(id *)arg1;
-- (id)_keyValueDomainForProfile:(id)arg1;
-- (void)_createDatabaseConnectionWithURL:(id)arg1;
 - (_Bool)removeWithError:(id *)arg1;
 - (unsigned int)readVersionWithError:(id *)arg1;
 - (_Bool)openForReadingWithError:(id *)arg1;

@@ -4,30 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFEventBuilder, HMTrigger, NSArray, NSString, NSTimeZone;
-@protocol HFTimeEventBuilder;
+#import <objc/NSObject.h>
 
-@interface HFConcreteTimeTriggerBuilder
+@interface HFConcreteTimeTriggerBuilder : NSObject
 {
-    NSString *_name;
-    HFEventBuilder<HFTimeEventBuilder> *_eventBuilder;
-    NSArray *_recurrences;
-    NSTimeZone *_timeZone;
 }
 
-+ (id)builderForExistingTrigger:(id)arg1 inHome:(id)arg2;
-- (void).cxx_destruct;
-@property(copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
-@property(copy, nonatomic) NSArray *recurrences; // @synthesize recurrences=_recurrences;
-@property(retain, nonatomic) HFEventBuilder<HFTimeEventBuilder> *eventBuilder; // @synthesize eventBuilder=_eventBuilder;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (void)copyCurrentStateFromTriggerBuilder:(id)arg1;
-- (void)triggerEnabledStateDidChange:(_Bool)arg1;
-- (id)commitEditTrigger;
-- (id)commitCreateTrigger;
-- (id)commitItem;
-@property(retain, nonatomic) HMTrigger *trigger;
-- (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
++ (id)builderForExistingTrigger:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 
 @end
 

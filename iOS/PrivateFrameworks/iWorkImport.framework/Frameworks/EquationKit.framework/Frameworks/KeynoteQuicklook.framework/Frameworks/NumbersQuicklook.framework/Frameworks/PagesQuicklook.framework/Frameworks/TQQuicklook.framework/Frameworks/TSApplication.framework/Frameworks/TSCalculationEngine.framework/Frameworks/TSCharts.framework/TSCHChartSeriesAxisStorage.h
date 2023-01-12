@@ -10,16 +10,16 @@
 
 @interface TSCHChartSeriesAxisStorage : NSObject
 {
-    TSCHChartGridAdapter *adapter;
-    TSCHChartAxisID *axisID;
+    TSCHChartGridAdapter *_adapter;
+    TSCHChartAxisID *_axisID;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID;
-@property(retain, nonatomic) TSCHChartGridAdapter *adapter; // @synthesize adapter;
+@property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
+@property(retain, nonatomic) TSCHChartGridAdapter *adapter; // @synthesize adapter=_adapter;
 - (void)setValue:(id)arg1 atIndex:(unsigned long long)arg2 multiDataSetIndex:(unsigned long long)arg3;
 - (id)valueAtIndex:(unsigned long long)arg1 multiDataSetIndex:(unsigned long long)arg2;
-- (unsigned long long)numberOfValues;
+@property(readonly, nonatomic) unsigned long long numberOfValues;
 
 @end
 

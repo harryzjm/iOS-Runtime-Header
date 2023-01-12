@@ -12,20 +12,22 @@
 {
     NSString *_identifier;
     NSString *_title;
+    NSString *_systemImageName;
     NSURL *_url;
 }
 
-+ (id)actionWithIdentifier:(id)arg1 title:(id)arg2 url:(id)arg3;
-+ (id)actionWithIdentifier:(id)arg1 title:(id)arg2;
++ (id)actionWithIdentifier:(id)arg1 title:(id)arg2 systemImageName:(id)arg3 url:(id)arg4;
++ (id)actionWithIdentifier:(id)arg1 title:(id)arg2 systemImageName:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
+@property(readonly, copy, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
 - (_Bool)isEqualToAction:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithIdentifier:(id)arg1 title:(id)arg2 url:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 title:(id)arg2 systemImageName:(id)arg3 url:(id)arg4;
 
 @end
 

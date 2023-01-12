@@ -16,9 +16,9 @@
     double _lineWidth;
     id <CHPointFIFODrawingTarget> _drawingTarget;
     MISSING_TYPE *_lastPoint;
-    vector_74a7c1d0 _prevPoints;
-    vector_74a7c1d0 _points;
-    vector_74a7c1d0 _controlPoints;
+    vector_82477975 _prevPoints;
+    vector_82477975 _points;
+    vector_82477975 _controlPoints;
 }
 
 + (MISSING_TYPE *)interpolateFromPoint:(float)arg1 toPoint:controlPoint:time: /* Error: Ran out of types for this method. */;
@@ -26,9 +26,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <CHPointFIFODrawingTarget> drawingTarget; // @synthesize drawingTarget=_drawingTarget;
 @property(nonatomic) MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
-@property(nonatomic) vector_027a6188 controlPoints; // @synthesize controlPoints=_controlPoints;
-@property(nonatomic) vector_027a6188 points; // @synthesize points=_points;
-@property(nonatomic) vector_027a6188 prevPoints; // @synthesize prevPoints=_prevPoints;
+@property(nonatomic) vector_242c0691 controlPoints; // @synthesize controlPoints=_controlPoints;
+@property(nonatomic) vector_242c0691 points; // @synthesize points=_points;
+@property(nonatomic) vector_242c0691 prevPoints; // @synthesize prevPoints=_prevPoints;
 @property(nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property(nonatomic) struct CGPath *path; // @synthesize path=_path;
 @property(copy) CDUnknownBlockType emissionHandler; // @synthesize emissionHandler=_emissionHandler;

@@ -8,7 +8,7 @@
 
 #import <FileProviderDaemon/FPCancellable-Protocol.h>
 
-@class FPDActionOperationQueue, FPDCoordinator, FPDMoveOperation, FPMoveInfo, NSError, NSMutableArray, NSMutableDictionary, NSObservation;
+@class FPDActionOperationQueue, FPDCoordinator, FPDMoveOperation, FPMoveInfo, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSObservation;
 @protocol FPDMoveWriterExecutor, OS_dispatch_queue;
 
 @interface FPDMoveWriter : NSObject <FPCancellable>
@@ -29,6 +29,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _logSection;
     NSObservation *_importProgressObservation;
+    NSArray *_accessTokens;
     FPDMoveOperation *_operation;
     CDUnknownBlockType _itemCopyProgressBlock;
     CDUnknownBlockType _itemCompletionBlock;
@@ -53,7 +54,7 @@
 @property(copy, nonatomic) CDUnknownBlockType itemCompletionBlock; // @synthesize itemCompletionBlock=_itemCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType itemCopyProgressBlock; // @synthesize itemCopyProgressBlock=_itemCopyProgressBlock;
 @property(readonly, nonatomic) __weak FPDMoveOperation *operation; // @synthesize operation=_operation;
-- (void)performCreateFolder:(id)arg1 inside:(id)arg2 as:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performCreateFolder:(id)arg1 inside:(id)arg2 as:(id)arg3 useDiskWriter:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)performMoveOfFolder:(id)arg1 to:(id)arg2 as:(id)arg3 sourceMaterializeOption:(unsigned long long)arg4 targetMaterializeOption:(unsigned long long)arg5 atomically:(_Bool)arg6 useDiskWriter:(_Bool)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)performMoveOfItem:(id)arg1 to:(id)arg2 as:(id)arg3 sourceMaterializeOption:(unsigned long long)arg4 targetMaterializeOption:(unsigned long long)arg5 useDiskWriter:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)performCopyOfItem:(id)arg1 to:(id)arg2 as:(id)arg3 sourceMaterializeOption:(unsigned long long)arg4 targetMaterializeOption:(unsigned long long)arg5 useDiskWriter:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;

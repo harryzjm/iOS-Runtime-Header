@@ -12,15 +12,15 @@
 {
 }
 
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
 + (id)knownSceneClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (id)knownSceneClassifications;
-+ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
 + (Class)configurationClass;
-+ (id)_knownVNImageAnalyzerMultiDetectorSceneClassificationObservationsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
-+ (id)_knownVNSceneClassifierLabelsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
-+ (id)_imageAnalyzerMultiDetectorLoadedInSession:(id)arg1 forRevision:(unsigned long long)arg2 detectionLevel:(unsigned long long)arg3 processingDevice:(id)arg4 requestBackingStore:(unsigned long long)arg5 appliedDetectorOptions:(id *)arg6 error:(id *)arg7;
-+ (id)_sceneClassifierLoadedInSession:(id)arg1 forRevision:(unsigned long long)arg2 requestBackingStore:(unsigned long long)arg3 appliedDetectorOptions:(id *)arg4 error:(id *)arg5;
++ (id)_knownVNImageAnalyzerMultiDetectorSceneLabelsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
++ (id)_imageAnalyzerMultiDetectorLoadedInSession:(id)arg1 forRevision:(unsigned long long)arg2 processingDevice:(id)arg3 requestBackingStore:(unsigned long long)arg4 appliedDetectorOptions:(id *)arg5 error:(id *)arg6;
 + (const CDStruct_7d93034e *)revisionAvailability;
+- (long long)dependencyProcessingOrdinality;
 @property(readonly) NSArray *supportedImageSizeSet;
 - (id)defineCustomHierarchyWithRelationships:(id)arg1 error:(id *)arg2;
 - (_Bool)defineCustomHierarchy:(id)arg1 error:(id *)arg2;
@@ -29,11 +29,12 @@
 @property(nonatomic) unsigned long long maximumLeafObservations;
 - (void)setSceneObservation:(id)arg1;
 @property(readonly, retain, nonatomic) VNSceneObservation *sceneObservation;
+- (id)supportedIdentifiersAndReturnError:(id *)arg1;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
-- (void)setRevision:(unsigned long long)arg1;
+- (void)resolvedRevisionDidChangeFromRevision:(unsigned long long)arg1;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (void)_setCustomHierarchy:(id)arg1;
 - (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
@@ -45,6 +46,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

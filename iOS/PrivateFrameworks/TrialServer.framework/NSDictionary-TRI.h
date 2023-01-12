@@ -8,6 +8,7 @@
 
 @interface NSDictionary (TRI)
 + (void)triKeys:(id *)arg1 values:(id *)arg2 fromDictionary:(id)arg3;
+- (id)triObjectForExpectedKey:(id)arg1;
 - (void)triKeys:(id *)arg1 values:(id *)arg2;
 - (id)tri_contextValueWithName:(id)arg1;
 - (id)getContextValueWithName:(id)arg1;
@@ -16,6 +17,7 @@
 - (id)triItemsInDagWithSink:(id)arg1;
 - (id)triReversedDag;
 - (id)triDataValueFromBase64StringForField:(id)arg1;
+- (id)triDateForField:(id)arg1;
 - (id)triDataForField:(id)arg1;
 - (id)triArrayValueForField:(id)arg1 isNestedValue:(_Bool)arg2;
 - (id)triStringValueForField:(id)arg1 isNestedValue:(_Bool)arg2;

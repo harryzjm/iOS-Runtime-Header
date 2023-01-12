@@ -27,7 +27,9 @@
 @property(readonly, nonatomic) unsigned long long currentCellType; // @synthesize currentCellType=_currentCellType;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)createConstarints;
-- (void)setupLabels;
+- (id)getIconImageFromSFSymbol:(id)arg1;
+- (id)getIconImageFromBundle:(id)arg1;
+- (void)setupCell;
 - (void)loadView;
 - (id)initWithType:(unsigned long long)arg1;
 

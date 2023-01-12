@@ -34,8 +34,6 @@
 @property(readonly, nonatomic) id <NUArticleActivityFactory> articleActivityFactory; // @synthesize articleActivityFactory=_articleActivityFactory;
 @property(readonly, nonatomic) id <NUArticleHostViewControllerFactory> articleHostViewControllerFactory; // @synthesize articleHostViewControllerFactory=_articleHostViewControllerFactory;
 @property(readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
-- (id)contextProvidersForKeyPath:(id)arg1;
-- (id)adContextValueForKeyPath:(id)arg1;
 - (id)asyncOnceLoadPageStyle:(CDUnknownBlockType)arg1;
 - (void)activityProvider:(CDUnknownBlockType)arg1;
 - (void)pageStyling:(CDUnknownBlockType)arg1;

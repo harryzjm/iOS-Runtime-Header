@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchListKit/NSSecureCoding-Protocol.h>
+#import <WatchListKit/WLKMergeableCoding-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary;
 
-@interface WLKUpNextDelta : NSObject <NSSecureCoding>
+@interface WLKUpNextDelta : NSObject <WLKMergeableCoding>
 {
     NSDictionary *_backingDictionary;
     NSDate *_timestamp;
@@ -18,6 +18,7 @@
     NSArray *_items;
 }
 
++ (id)useWidgetImagesIfAvailable:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *items; // @synthesize items=_items;
@@ -26,7 +27,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)deltaByMergingItemsFromDelta:(id)arg1;
+- (id)_deltaByMergingItemsFromDelta:(id)arg1;
+- (id)dataByMergingWith:(id)arg1;
 - (_Bool)isExpired;
 @property(readonly, copy, nonatomic) NSArray *additions;
 @property(readonly, copy, nonatomic) NSArray *removals;

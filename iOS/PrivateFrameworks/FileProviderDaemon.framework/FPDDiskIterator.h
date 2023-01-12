@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)done;
 - (id)error;
 - (id)nextWithError:(id *)arg1;
-- (_Bool)skipMaterializedTreeTraversal;
 - (id)initWithURL:(id)arg1 isDirectory:(_Bool)arg2;
 
 @end

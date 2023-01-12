@@ -30,7 +30,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (CDUnknownBlockType)acceptedComparatorForSupportedNetworks:(id)arg1 merchantCapabilities:(unsigned long long)arg2 webService:(id)arg3;
++ (CDUnknownBlockType)acceptedComparatorWithPaymentSupportedQuery:(id)arg1;
 + (CDUnknownBlockType)preferenceComparator;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *supportedSetupFeatures; // @synthesize supportedSetupFeatures=_supportedSetupFeatures;

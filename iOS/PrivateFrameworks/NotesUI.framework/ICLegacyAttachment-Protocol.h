@@ -9,14 +9,13 @@
 @class NSData, NSManagedObjectContext, NSString, NSURL;
 
 @protocol ICLegacyAttachment <NSObject>
-- (NSManagedObjectContext *)managedObjectContext;
-- (void)setMimeType:(NSString *)arg1;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property(readonly, copy, nonatomic) NSURL *cidURL;
+@property(readonly, copy, nonatomic) NSString *contentID;
+@property(readonly, copy, nonatomic) NSString *typeUTI;
+@property(copy, nonatomic) NSString *mimeType;
+@property(readonly, copy, nonatomic) NSURL *fileURL;
+@property(readonly, copy, nonatomic) NSString *identifier;
 - (_Bool)persistAttachmentData:(NSData *)arg1 error:(id *)arg2;
-- (NSURL *)cidURL;
-- (NSString *)contentID;
-- (NSString *)typeUTI;
-- (NSString *)mimeType;
-- (NSURL *)fileURL;
-- (NSString *)identifier;
 @end
 

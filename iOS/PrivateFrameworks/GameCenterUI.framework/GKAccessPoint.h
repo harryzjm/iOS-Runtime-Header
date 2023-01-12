@@ -14,6 +14,7 @@
 {
     _Bool _active;
     _Bool _visible;
+    _Bool _willBecomeActive;
     _Bool _showHighlights;
     _Bool _focused;
     _Bool _isPresentingGameCenter;
@@ -46,6 +47,7 @@
 @property(nonatomic) __weak UIWindow *parentWindow; // @synthesize parentWindow=_parentWindow;
 @property(nonatomic) long long location; // @synthesize location=_location;
 @property(nonatomic) _Bool showHighlights; // @synthesize showHighlights=_showHighlights;
+@property(nonatomic) _Bool willBecomeActive;
 @property(nonatomic, getter=isVisible) _Bool visible;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (void)triggerAccessPointWithState:(long long)arg1 handler:(CDUnknownBlockType)arg2;

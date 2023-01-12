@@ -28,9 +28,10 @@
 @property(readonly, nonatomic, getter=isCellularRadioCapabilityEnabled) _Bool cellularRadioCapabilityEnabled; // @synthesize cellularRadioCapabilityEnabled=_cellularRadioCapabilityEnabled;
 @property(readonly, copy, nonatomic) STTelephonyStatusDomainSIMInfo *SIMTwoInfo; // @synthesize SIMTwoInfo=_SIMTwoInfo;
 @property(readonly, copy, nonatomic) STTelephonyStatusDomainSIMInfo *SIMOneInfo; // @synthesize SIMOneInfo=_SIMOneInfo;
+- (id)_anySIMInfoWithEmergencyOnlyService;
 - (id)_anySIMInfoWithSIMPresent;
 - (id)_dataPreferredSIMInfoIfSIMPresent;
-- (id)_otherSIMInfoIfSIMPresent:(id)arg1;
+- (id)_otherSIMInfo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)dataByApplyingDiff:(id)arg1;

@@ -26,11 +26,9 @@ __attribute__((visibility("hidden")))
         unsigned int resetRasterizationAfterAnimation:1;
         unsigned int updateZIndexAfterAnimation:1;
     } _collectionViewAnimationFlags;
-    _Bool _updateZIndexAfterAnimation;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool updateZIndexAfterAnimation; // @synthesize updateZIndexAfterAnimation=_updateZIndexAfterAnimation;
 @property(readonly, nonatomic) double endFraction; // @synthesize endFraction=_endFraction;
 @property(readonly, nonatomic) double startFraction; // @synthesize startFraction=_startFraction;
 @property(readonly, nonatomic) UICollectionViewLayoutAttributes *finalLayoutAttributes; // @synthesize finalLayoutAttributes=_finalLayoutAttributes;
@@ -42,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)start;
 @property(nonatomic) _Bool resetRasterizationAfterAnimation;
 @property(nonatomic) _Bool rasterizeAfterAnimation;
+@property(readonly, nonatomic) _Bool updateZIndexAfterAnimation;
 @property(readonly, nonatomic) _Bool deleteAfterAnimation;
 @property(readonly, nonatomic) _Bool animateFromCurrentPosition;
 - (id)description;

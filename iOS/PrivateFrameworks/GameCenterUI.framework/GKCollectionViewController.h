@@ -44,6 +44,7 @@
 
 + (id)_initializeSafeCategoryFromValidationManager;
 + (_Bool)_shouldForwardViewWillTransitionToSize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKSwipeToEditStateMachine *swipeStateMachine; // @synthesize swipeStateMachine=_swipeStateMachine;
 @property(retain) NSUUID *currentUpdateID; // @synthesize currentUpdateID=_currentUpdateID;
 @property long long batchUpdateCount; // @synthesize batchUpdateCount=_batchUpdateCount;
@@ -114,7 +115,6 @@
 - (void)dataSource:(id)arg1 didMoveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (void)dataSource:(id)arg1 didRemoveSections:(id)arg2;
 - (void)dataSource:(id)arg1 didInsertSections:(id)arg2;
-- (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2 animated:(_Bool)arg3;
 - (void)dataSource:(id)arg1 didRefreshItemsAtIndexPaths:(id)arg2;
 - (void)dataSource:(id)arg1 didRemoveItemsAtIndexPaths:(id)arg2;
 - (void)dataSource:(id)arg1 didInsertItemsAtIndexPaths:(id)arg2;

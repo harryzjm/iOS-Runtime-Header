@@ -21,9 +21,9 @@
 - (void).cxx_destruct;
 - (id)newDirectoryWithFilename:(id)arg1;
 - (void)_excludeFromBackupAsynchronously;
-- (void)_clearDirectories:(id)arg1;
-- (void)_clearDirectoriesAsynchronously:(id)arg1;
-- (id)_readDirectories;
+- (void)_removeDirectories:(id)arg1;
+- (void)_removeDirectoriesAsynchronously:(id)arg1;
+- (id)_directoriesToRemoveOnInit;
 - (id)init;
 
 @end

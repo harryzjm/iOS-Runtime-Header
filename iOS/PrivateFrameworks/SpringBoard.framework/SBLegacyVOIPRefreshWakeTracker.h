@@ -8,24 +8,20 @@
 
 #import <SpringBoard/SBApplicationWakeLifecycleHandling-Protocol.h>
 
-@class BKSProcessAssertion, FBProcessManager, NSString;
+@class NSString, RBSAssertion;
 
 @interface SBLegacyVOIPRefreshWakeTracker : NSObject <SBApplicationWakeLifecycleHandling>
 {
-    FBProcessManager *_processManager;
-    BKSProcessAssertion *_appKeepAliveAssertion;
+    RBSAssertion *_appKeepAliveAssertion;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) BKSProcessAssertion *appKeepAliveAssertion; // @synthesize appKeepAliveAssertion=_appKeepAliveAssertion;
+@property(retain, nonatomic) RBSAssertion *appKeepAliveAssertion; // @synthesize appKeepAliveAssertion=_appKeepAliveAssertion;
 - (id)_createAssertionForBundleID:(id)arg1;
-- (void)_activateAppIfNeeded:(id)arg1;
 - (double)wakeDuration;
 - (void)endWake;
 - (_Bool)beginWakeForApplication:(id)arg1;
 - (void)dealloc;
-- (id)initWithProcessManager:(id)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

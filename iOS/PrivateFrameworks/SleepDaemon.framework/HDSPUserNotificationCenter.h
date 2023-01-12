@@ -23,9 +23,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UNUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
-- (id)_weeklyCoachingContentWithCategory:(id)arg1 userInfo:(id)arg2;
-- (id)_oneDayCoachingContentWithCategory:(id)arg1 userInfo:(id)arg2;
-- (id)_baseWakeUpResultsContentWithCategoryID:(id)arg1 body:(id)arg2 userInfo:(id)arg3;
 - (id)_wakeUpResultsContentWithUserInfo:(id)arg1;
 - (id)_wakeDetectionAlertBodyForAlarmEnabled:(_Bool)arg1 sleepModeOn:(_Bool)arg2;
 - (id)_wakeDetectionAlertTitleForAlarmEnabled:(_Bool)arg1 sleepModeOn:(_Bool)arg2;

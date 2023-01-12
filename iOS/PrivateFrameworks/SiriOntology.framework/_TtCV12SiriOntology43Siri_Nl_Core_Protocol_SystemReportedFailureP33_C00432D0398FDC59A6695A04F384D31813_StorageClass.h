@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *_taskID;
     MISSING_TYPE *_reason;
+    MISSING_TYPE *_task;
 }
 
 @end

@@ -30,6 +30,7 @@
 - (void)p_upgrade3DChartProperties:(id)arg1;
 - (void)p_upgradeBubbleChartProperties:(id)arg1;
 - (void)p_upgradeSeparateVisibilityProperties:(id)arg1;
+- (void)p_upgradeRadarChartProperties:(id)arg1;
 - (void)p_upgradeMixedChartProperties:(id)arg1;
 - (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(_Bool)arg4;
 

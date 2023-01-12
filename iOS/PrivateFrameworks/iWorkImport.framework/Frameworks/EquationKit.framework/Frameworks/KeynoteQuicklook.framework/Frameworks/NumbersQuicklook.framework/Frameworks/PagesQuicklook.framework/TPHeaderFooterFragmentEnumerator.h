@@ -6,11 +6,11 @@
 
 #import <Foundation/NSEnumerator.h>
 
-@class TPPageMaster;
+@class TPSectionTemplatePage;
 
 @interface TPHeaderFooterFragmentEnumerator : NSEnumerator
 {
-    TPPageMaster *_pageMaster;
+    TPSectionTemplatePage *_pageMaster;
     long long _fragmentIndex;
     long long _headerFooterType;
 }
@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long headerFooterType; // @synthesize headerFooterType=_headerFooterType;
 @property(nonatomic) long long fragmentIndex; // @synthesize fragmentIndex=_fragmentIndex;
-@property(retain, nonatomic) TPPageMaster *pageMaster; // @synthesize pageMaster=_pageMaster;
+@property(retain, nonatomic) TPSectionTemplatePage *pageMaster; // @synthesize pageMaster=_pageMaster;
 - (void)p_incrementHeaderFooterType;
 - (void)p_incrementFragmentIndex;
 - (id)nextObject;

@@ -17,10 +17,18 @@
     NSString *_phoneNumber;
     NSString *_countryCode;
     NSString *_label;
+    NSString *_mcc;
+    NSString *_mnc;
+    NSString *_gid1;
+    NSString *_gid2;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *gid2; // @synthesize gid2=_gid2;
+@property(retain, nonatomic) NSString *gid1; // @synthesize gid1=_gid1;
+@property(retain, nonatomic) NSString *mnc; // @synthesize mnc=_mnc;
+@property(retain, nonatomic) NSString *mcc; // @synthesize mcc=_mcc;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 @property(retain, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(retain, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
@@ -30,7 +38,7 @@
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithIccid:(id)arg1 carrierName:(id)arg2 phoneNumber:(id)arg3 countryCode:(id)arg4 label:(id)arg5;
+- (id)initWithIccid:(id)arg1 carrierName:(id)arg2 phoneNumber:(id)arg3 countryCode:(id)arg4 label:(id)arg5 mcc:(id)arg6 mnc:(id)arg7 gid1:(id)arg8 gid2:(id)arg9;
 
 @end
 

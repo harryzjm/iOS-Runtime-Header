@@ -13,7 +13,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType unitTest_queryServerWillSendBatchHandler; // @synthesize unitTest_queryServerWillSendBatchHandler=_unitTest_queryServerWillSendBatchHandler;
 @property(copy, nonatomic) CDUnknownBlockType unitTest_queryServerObjectEnumerationHandler; // @synthesize unitTest_queryServerObjectEnumerationHandler=_unitTest_queryServerObjectEnumerationHandler;
-- (CDUnknownBlockType)_processBatchHandlerForResearchAppECGAccess:(CDUnknownBlockType)arg1;
+- (long long)batchObjectsWithMultitypeQueryCursor:(id)arg1 includeDeletedObjects:(_Bool)arg2 limit:(unsigned long long)arg3 error:(id *)arg4 batchHandler:(CDUnknownBlockType)arg5;
 - (long long)batchObjectsWithEnumerator:(id)arg1 includeDeletedObjects:(_Bool)arg2 error:(id *)arg3 batchHandler:(CDUnknownBlockType)arg4;
 - (long long)batchObjectsWithEnumerator:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 

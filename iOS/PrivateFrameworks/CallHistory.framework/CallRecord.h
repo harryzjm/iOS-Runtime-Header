@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsVerificationStatus;
 @property(readonly, nonatomic) _Bool supportsServiceProvider;
 @property(readonly, nonatomic) _Bool supportsRemoteParticipantHandles;
+@property(readonly, nonatomic) _Bool supportsParticipantGroupUUID;
 @property(readonly, nonatomic) _Bool supportsOutgoingLocalParticipantUUID;
 @property(readonly, nonatomic) _Bool supportsLocalParticipantUUID;
 - (_Bool)supportsJunkConfidence;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)compositeVerificationStatusForContext:(id)arg1;
 - (id)compositeServiceProviderForContext:(id)arg1;
 - (id)compositeRemoteParticipantHandlesForContext:(id)arg1;
+- (id)compositeParticipantGroupUUIDForContext:(id)arg1;
 - (id)compositeOutgoingLocalParticipantUUIDForContext:(id)arg1;
 - (id)compositeLocalParticipantUUIDForContext:(id)arg1;
 - (id)compositeJunkConfidenceForContext:(id)arg1;
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *number_availability; // @dynamic number_availability;
 @property(copy, nonatomic) NSNumber *originated; // @dynamic originated;
 @property(copy, nonatomic) NSUUID *outgoingLocalParticipantUUID; // @dynamic outgoingLocalParticipantUUID;
+@property(copy, nonatomic) NSUUID *participantGroupUUID; // @dynamic participantGroupUUID;
 @property(copy, nonatomic) NSNumber *read; // @dynamic read;
 @property(retain, nonatomic) NSSet *remoteParticipantHandles; // @dynamic remoteParticipantHandles;
 @property(copy, nonatomic) NSString *service_provider; // @dynamic service_provider;

@@ -9,7 +9,7 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class CUAppleIDClient, CUMessageSession, CUMessageSessionServer, NSDictionary, NSMutableData, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint, SDStatusMonitor, SFAppleIDContactInfo, SFDevice, SFTRSession, TRSession;
+@class CUAppleIDClient, CUMessageSession, CUMessageSessionServer, CUPairingSession, NSDictionary, NSMutableData, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint, SDStatusMonitor, SFAppleIDContactInfo, SFDevice, SFTRSession, TRSession;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface SFSession : NSObject <NSSecureCoding, SFXPCInterface>
@@ -51,7 +51,7 @@
     CDUnknownBlockType _pairSetupCompletion;
     _Bool _pairSetupEnded;
     unsigned int _pairSetupFlags;
-    struct PairingSessionPrivate *_pairSetupSession;
+    CUPairingSession *_pairSetupSession;
     unsigned int _pairSetupXID;
     CDUnknownBlockType _pairVerifyCompletion;
     _Bool _pairVerifyEnded;
@@ -80,7 +80,10 @@
     CDUnknownBlockType _invalidationHandler;
     NSDictionary *_pairSetupACL;
     NSDictionary *_pairVerifyACL;
+    CDUnknownBlockType _pairSetupCompletionHandler;
+    CDUnknownBlockType _showPINHandlerEx;
     CDUnknownBlockType _promptForPINHandler;
+    CDUnknownBlockType _hidePINHandler;
     CDUnknownBlockType _receivedObjectHandler;
     CDUnknownBlockType _receivedRequestHandler;
     CDUnknownBlockType _sessionStartedHandler;
@@ -115,7 +118,10 @@
 @property(copy, nonatomic) CDUnknownBlockType sessionStartedHandler; // @synthesize sessionStartedHandler=_sessionStartedHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedObjectHandler; // @synthesize receivedObjectHandler=_receivedObjectHandler;
+@property(copy, nonatomic) CDUnknownBlockType hidePINHandler; // @synthesize hidePINHandler=_hidePINHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
+@property(copy, nonatomic) CDUnknownBlockType showPINHandlerEx; // @synthesize showPINHandlerEx=_showPINHandlerEx;
+@property(copy, nonatomic) CDUnknownBlockType pairSetupCompletionHandler; // @synthesize pairSetupCompletionHandler=_pairSetupCompletionHandler;
 @property(copy, nonatomic) NSDictionary *pairVerifyACL; // @synthesize pairVerifyACL=_pairVerifyACL;
 @property(copy, nonatomic) NSDictionary *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
@@ -181,8 +187,10 @@
 - (void)_pairSetupTryPIN:(id)arg1;
 - (void)pairSetupTryPIN:(id)arg1;
 - (void)_pairSetup:(id)arg1 start:(_Bool)arg2;
-- (void)_pairSetupWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_pairSetupWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2 isServer:(_Bool)arg3;
+- (void)pairSetupWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2 isServer:(_Bool)arg3;
 - (void)pairSetupWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_serviceInitiatedPairSetup:(id)arg1;
 - (id)pairingDeriveKeyForIdentifier:(id)arg1 keyLength:(unsigned long long)arg2;
 - (_Bool)pairingContainsACL:(id)arg1;
 - (void)_timeoutTimerFired;

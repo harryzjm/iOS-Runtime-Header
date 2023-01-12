@@ -52,6 +52,7 @@
 - (id)_defaultLayoutOptionsForViewSize:(struct CGSize)arg1;
 - (void)_createSubviews;
 - (id)_backgroundColor;
+- (_Bool)_shouldShowNavigationBar;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -18,8 +18,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
-@property(copy) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property(copy) NSString *providerIdentifier;
+@property(copy) NSString *itemIdentifier;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

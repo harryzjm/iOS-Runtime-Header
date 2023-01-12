@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UILabel, UIView, _UIRefreshControlModernReplicatorView;
+@class UILabel, UIView, _UIRefreshControlModernReplicatorView, _UIRefreshControlSeedView;
 
 __attribute__((visibility("hidden")))
 @interface _UIRefreshControlModernContentView
@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _animationsAreValid;
     UIView *_replicatorContainer;
     _UIRefreshControlModernReplicatorView *_replicatorView;
-    UIView *_seed;
+    _UIRefreshControlSeedView *_seed;
     _Bool _hasFinishedRevealing;
     UILabel *_textLabel;
     _Bool _areAnimationsValid;

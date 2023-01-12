@@ -40,6 +40,7 @@
 @property(readonly, nonatomic) NSArray *rightBarButtonItemIdentifiers;
 @property(readonly, nonatomic) NSArray *leftBarButtonItemIdentifiers;
 - (void)updateBars;
+- (void)viewControllerDidChange;
 - (void)_updateBarsIfNeeded;
 - (void)updateIfNeeded;
 - (void)invalidateBars;

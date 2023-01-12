@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIKBCacheableView-Protocol.h>
 
-@class NSMutableDictionary, NSString, UIKBRenderConfig, UIKBRenderFactory, UIKBTree, UIKeyboardMenuView;
+@class NSMutableDictionary, NSString, UIKBRenderConfig, UIKBRenderFactory, UIKBScreenTraits, UIKBTree, UIKeyboardMenuView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBKeyView <UIKBCacheableView>
@@ -31,10 +31,12 @@ __attribute__((visibility("hidden")))
     long long _cachedSelector;
     UIKeyboardMenuView *_popupMenu;
     double _endingTransitionDuration;
+    UIKBScreenTraits *_screenTraits;
 }
 
 + (_Bool)wantsScreenTraits;
 @property(nonatomic) _Bool renderAsMask; // @synthesize renderAsMask=_renderAsMask;
+@property(retain, nonatomic) UIKBScreenTraits *screenTraits; // @synthesize screenTraits=_screenTraits;
 @property(nonatomic) double endingTransitionDuration; // @synthesize endingTransitionDuration=_endingTransitionDuration;
 @property(nonatomic) UIKeyboardMenuView *popupMenu; // @synthesize popupMenu=_popupMenu;
 @property(nonatomic) _Bool cachedControlKeyRenderingPreference; // @synthesize cachedControlKeyRenderingPreference=_cachedControlKeyRenderingPreference;

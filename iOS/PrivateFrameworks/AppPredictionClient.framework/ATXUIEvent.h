@@ -6,34 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
-#import <AppPredictionClient/BMStoreData-Protocol.h>
-#import <AppPredictionClient/NSSecureCoding-Protocol.h>
+#import <AppPredictionClient/ATXProactiveSuggestionUIInteractionProtocol-Protocol.h>
 
 @class NSString;
-@protocol NSSecureCoding><ATXProtoBufWrapper;
+@protocol ATXProactiveSuggestionUIInteractionProtocol;
 
-@interface ATXUIEvent : NSObject <NSSecureCoding, BMStoreData, ATXProtoBufWrapper>
+@interface ATXUIEvent : NSObject <ATXProactiveSuggestionUIInteractionProtocol>
 {
     unsigned char _consumerSubType;
-    NSObject<NSSecureCoding><ATXProtoBufWrapper> *_event;
+    NSObject<ATXProactiveSuggestionUIInteractionProtocol> *_event;
 }
 
 + (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
 + (_Bool)supportsSecureCoding;
++ (id)uiEventWithLockscreenEvent:(id)arg1;
 + (id)uiEventWithAppDirectoryEvent:(id)arg1;
 + (id)uiEventWithSpotlightEvent:(id)arg1;
 + (id)uiEventWithHomeScreenEvent:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<NSSecureCoding><ATXProtoBufWrapper> *event; // @synthesize event=_event;
+@property(readonly, nonatomic) NSObject<ATXProactiveSuggestionUIInteractionProtocol> *event; // @synthesize event=_event;
 @property(readonly, nonatomic) unsigned char consumerSubType; // @synthesize consumerSubType=_consumerSubType;
 - (_Bool)isEqualToATXUIEvent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)json;
 - (id)jsonDict;
-- (id)_jsonDictForATXAppDirectoryEvent:(id)arg1;
-- (id)_jsonDictForATXSpotlightEvent:(id)arg1;
-- (id)_jsonDictForATXHomeScreenEvent:(id)arg1;
 - (id)serialize;
 @property(readonly, nonatomic) unsigned int dataVersion;
 - (id)initWithCoder:(id)arg1;
@@ -43,6 +39,11 @@
 - (id)proto;
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;
+- (void)updateUIFeedbackSession:(id)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (id)blendingUICacheUpdateUUIDForUICacheConsumerSubType:(unsigned char)arg1;
+- (id)sessionIdentifierForSessionType:(long long)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (id)sessionProcessingOptionsForSessionType:(long long)arg1;
+- (id)lockscreenEvent;
 - (id)appDirectoryEvent;
 - (id)spotlightEvent;
 - (id)homeScreenEvent;

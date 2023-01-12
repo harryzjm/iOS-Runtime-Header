@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AFBulletin, NSArray, NSError, NSNumber, NSString, SiriPresentationIdentifierTransport;
+@class AFBulletin, NSArray, NSError, NSString, SiriPresentationIdentifierTransport;
 @protocol __AFBulletin__;
 
 @protocol SASPresentationClientInterface
 - (oneway void)pong;
 - (oneway void)speechRequestCancelledFromSiriOrb;
 - (oneway void)speechRequestStartedFromSiriOrb;
-- (oneway void)handleMarkBulletinWithIdentifier:(NSString *)arg1 asRead:(NSNumber *)arg2;
 - (AFBulletin *)bulletinForIdentifier:(NSString *)arg1;
 - (NSArray<__AFBulletin__> *)bulletinsOnLockScreen;
 - (NSArray<__AFBulletin__> *)allBulletins;

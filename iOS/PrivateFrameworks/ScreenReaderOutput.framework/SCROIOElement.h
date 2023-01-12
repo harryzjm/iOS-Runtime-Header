@@ -17,11 +17,11 @@
     int _identifier;
 }
 
+@property(nonatomic) int identifier; // @synthesize identifier=_identifier;
 - (int)transport;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
-- (int)identifier;
 - (unsigned int)ioObject;
 - (void)dealloc;
 - (id)initWithIOObject:(unsigned int)arg1;

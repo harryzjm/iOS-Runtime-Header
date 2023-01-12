@@ -10,49 +10,60 @@
 #import <CoreSpeech/CSEndpointAnalyzerDelegate-Protocol.h>
 #import <CoreSpeech/CSEndpointAnalyzerImplDelegate-Protocol.h>
 
-@class NSDictionary, NSString;
-@protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImpl;
+@class CSAudioRecordContext, NSString;
+@protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImpl, CSEndpointAnalyzerImplDelegate;
 
 @interface CSEndpointerProxy : NSObject <CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate, CSEndpointAnalyzer>
 {
     _Bool _recordingDidStop;
     id <CSEndpointAnalyzerDelegate> _endpointerDelegate;
+    id <CSEndpointAnalyzerImplDelegate> _endpointerImplDelegate;
     id <CSEndpointAnalyzerImpl> _hybridEndpointer;
     id <CSEndpointAnalyzerImpl> _nnvadEndpointer;
     id <CSEndpointAnalyzerImpl> _activeEndpointer;
-    NSDictionary *_recordContext;
+    CSAudioRecordContext *_recordContext;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool recordingDidStop; // @synthesize recordingDidStop=_recordingDidStop;
-@property(retain, nonatomic) NSDictionary *recordContext; // @synthesize recordContext=_recordContext;
+@property(retain, nonatomic) CSAudioRecordContext *recordContext; // @synthesize recordContext=_recordContext;
 @property(nonatomic) __weak id <CSEndpointAnalyzerImpl> activeEndpointer; // @synthesize activeEndpointer=_activeEndpointer;
 @property(retain, nonatomic) id <CSEndpointAnalyzerImpl> nnvadEndpointer; // @synthesize nnvadEndpointer=_nnvadEndpointer;
 @property(retain, nonatomic) id <CSEndpointAnalyzerImpl> hybridEndpointer; // @synthesize hybridEndpointer=_hybridEndpointer;
+@property(nonatomic) __weak id <CSEndpointAnalyzerImplDelegate> endpointerImplDelegate; // @synthesize endpointerImplDelegate=_endpointerImplDelegate;
 @property(nonatomic) __weak id <CSEndpointAnalyzerDelegate> endpointerDelegate; // @synthesize endpointerDelegate=_endpointerDelegate;
 - (void)reset;
+@property(nonatomic) double automaticEndpointingSuspensionEndTime;
+@property(nonatomic) double endWaitTime;
+@property(nonatomic) double startWaitTime;
+@property(readonly, nonatomic) double lastEndOfVoiceActivityTime;
 @property(nonatomic) _Bool saveSamplesSeenInReset;
 @property(nonatomic) double minimumDurationForEndpointer;
 @property(nonatomic) double delay;
 @property(nonatomic) double interspeechWaitTime;
 @property(nonatomic) long long endpointMode;
 @property(nonatomic) long long endpointStyle;
-@property(nonatomic) double automaticEndpointingSuspensionEndTime;
-@property(nonatomic) double endWaitTime;
-@property(nonatomic) double startWaitTime;
+- (long long)fetchCurrentEndpointerOperationMode;
+- (void)setEndpointerOperationMode:(long long)arg1;
+- (void)processFirstAudioPacketTimestamp:(id)arg1 firstAudioSampleSensorTimestamp:(unsigned long long)arg2;
+- (void)processOSDFeatures:(id)arg1 withFrameDurationMs:(double)arg2;
 - (void)logHybridEndpointFeaturesWithEvent:(id)arg1 locale:(id)arg2;
+- (void)logAnchorMachAbsTime:(unsigned long long)arg1 numSamplesProcessedBeforeAnchorTime:(unsigned long long)arg2 isAnchorTimeBuffered:(_Bool)arg3;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateEndpointerDelayedTrigger:(_Bool)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
 - (id)endpointerModelVersion;
+- (void)processTaskString:(id)arg1;
+- (void)processASRFeatures:(id)arg1 fromServer:(_Bool)arg2;
 - (void)processServerEndpointFeatures:(id)arg1;
 - (unsigned long long)endPointAnalyzerType;
 - (double)elapsedTimeWithNoSpeech;
+- (void)endpointer:(id)arg1 reportEndpointBufferHostTime:(unsigned long long)arg2 firstBufferHostTime:(unsigned long long)arg3;
 - (void)endpointer:(id)arg1 detectedTwoShotAtTime:(double)arg2;
 - (void)endpointer:(id)arg1 didDetectHardEndpointAtTime:(double)arg2 withMetrics:(id)arg3;
 - (void)endpointer:(id)arg1 didDetectStartpointAtTime:(double)arg2;
+- (void)setRequestMHUUID:(id)arg1;
 - (double)trailingSilenceDurationAtEndpoint;
-@property(readonly, nonatomic) double lastEndOfVoiceActivityTime;
 @property(readonly, nonatomic) double lastStartOfVoiceActivityTime;
 - (void)recordingStoppedForReason:(long long)arg1;
 - (void)processAudioSamplesAsynchronously:(id)arg1;
@@ -61,7 +72,7 @@
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
 - (_Bool)isWatchRTSTriggered;
 - (void)stopEndpointer;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3 voiceTriggerInfo:(id)arg4;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordOption:(id)arg3 voiceTriggerInfo:(id)arg4;
 - (void)_setupNNVADEndpointer;
 - (id)init;
 
@@ -70,6 +81,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(retain, nonatomic) NSString *mhId;
 @property(readonly) Class superclass;
 
 @end

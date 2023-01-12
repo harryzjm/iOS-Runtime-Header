@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL;
+@class NSData, NSDictionary, NSSet, NSString, NSURL, PKPaymentEligibilityFIDOProfile;
 
 @interface PKPaymentEligibilityResponse
 {
+    NSSet *_enableRequirements;
     NSString *_identifier;
     long long _eligibilityStatus;
     long long _cardType;
@@ -18,10 +19,16 @@
     NSString *_region;
     NSString *_nonce;
     NSURL *_learnMoreURL;
+    PKPaymentEligibilityFIDOProfile *_fidoProfile;
+    NSData *_fidoChallenge;
+    NSDictionary *_transactionKeyInformation;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDictionary *transactionKeyInformation; // @synthesize transactionKeyInformation=_transactionKeyInformation;
+@property(readonly, copy, nonatomic) NSData *fidoChallenge; // @synthesize fidoChallenge=_fidoChallenge;
+@property(readonly, copy, nonatomic) PKPaymentEligibilityFIDOProfile *fidoProfile; // @synthesize fidoProfile=_fidoProfile;
 @property(readonly, copy, nonatomic) NSURL *learnMoreURL; // @synthesize learnMoreURL=_learnMoreURL;
 @property(readonly, copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
 @property(readonly, copy, nonatomic) NSString *region; // @synthesize region=_region;
@@ -32,6 +39,11 @@
 @property(readonly, nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property(readonly, nonatomic) long long eligibilityStatus; // @synthesize eligibilityStatus=_eligibilityStatus;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) _Bool hasEnableRequirements;
+@property(readonly, nonatomic) _Bool shouldGenerateTransactionKey;
+@property(readonly, nonatomic) _Bool shouldGenerateISO18013EncryptionKey;
+@property(readonly, nonatomic) _Bool shouldSignFidoChallenge;
+@property(readonly, nonatomic) _Bool shouldGenerateFidoKey;
 - (id)initWithData:(id)arg1;
 
 @end

@@ -6,55 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKDSystemAvailabilityWatcher-Protocol.h>
+@class CKDLogicalDeviceContext, NSMutableDictionary, NSMutableSet;
+@protocol OS_dispatch_queue;
 
-@class NSMutableDictionary, NSMutableSet, NSString;
-@protocol CKDAccountInfoProvider, OS_dispatch_queue;
-
-@interface CKDTokenRegistrationScheduler : NSObject <CKDSystemAvailabilityWatcher>
+@interface CKDTokenRegistrationScheduler : NSObject
 {
-    _Bool _schedulerIsAvailable;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_callbackBlocks;
     NSMutableDictionary *_callbackTimers;
     NSMutableSet *_operations;
-    id <CKDAccountInfoProvider> _unitTestingAccountInfoProvider;
+    CKDLogicalDeviceContext *_deviceContext;
     NSMutableDictionary *_unitTestingPushTokens;
 }
 
-+ (id)sharedSchedulerWithUnitTestingContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
-+ (id)sharedScheduler;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *unitTestingPushTokens; // @synthesize unitTestingPushTokens=_unitTestingPushTokens;
-@property(retain, nonatomic) id <CKDAccountInfoProvider> unitTestingAccountInfoProvider; // @synthesize unitTestingAccountInfoProvider=_unitTestingAccountInfoProvider;
+@property(nonatomic) __weak CKDLogicalDeviceContext *deviceContext; // @synthesize deviceContext=_deviceContext;
 @property(retain, nonatomic) NSMutableSet *operations; // @synthesize operations=_operations;
 @property(retain, nonatomic) NSMutableDictionary *callbackTimers; // @synthesize callbackTimers=_callbackTimers;
 @property(retain, nonatomic) NSMutableDictionary *callbackBlocks; // @synthesize callbackBlocks=_callbackBlocks;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) _Bool schedulerIsAvailable; // @synthesize schedulerIsAvailable=_schedulerIsAvailable;
-- (void)registerTokenForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 accountInfoProvider:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)registerTokenForAppContainerAccountTuple:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)handlePublicPushTokenDidUpdate:(id)arg1;
 - (void)forceTokenRefreshForAllClients;
 - (void)unregisterAllTokensForAccountID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2;
-- (void)_handlePushToken:(id)arg1 forAppContainerAccountTuple:(id)arg2 applicationMetadata:(id)arg3 appContainerIntersectionMetadata:(id)arg4;
+- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1;
+- (void)_handlePushToken:(id)arg1 forContainer:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)refreshAllClientsNow:(_Bool)arg1;
-- (void)_removeApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(_Bool)arg5 completionBlock:(CDUnknownBlockType)arg6;
-- (void)_refreshApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(_Bool)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)_removeApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_refreshApsToken:(id)arg1 container:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)tokenRefreshChanged;
 - (void)registerTokenRefreshActivity;
-- (void)setSchedulerAvailable:(_Bool)arg1;
-- (_Bool)systemAvailabilityChanged:(unsigned long long)arg1;
-- (_Bool)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)initWithAccountInfoProvider:(id)arg1;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithDeviceContext:(id)arg1;
 
 @end
 

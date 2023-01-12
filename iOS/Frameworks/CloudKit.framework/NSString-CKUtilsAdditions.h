@@ -10,6 +10,7 @@
 #import <CloudKit/CKShortDescription-Protocol.h>
 
 @interface NSString (CKUtilsAdditions) <CKRecordValue, CKShortDescription>
+- (id)CKStringByReplacingUUIDsWithString:(id)arg1;
 - (id)CKBase64DecodedString;
 - (id)CKBase64EncodedURLSafeString;
 - (id)CKNilIfLengthZero;

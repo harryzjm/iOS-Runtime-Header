@@ -20,9 +20,7 @@
 @property(readonly, nonatomic) unsigned char fieldLength; // @synthesize fieldLength=_fieldLength;
 @property(readonly, nonatomic) unsigned char correspondingFlagBit; // @synthesize correspondingFlagBit=_correspondingFlagBit;
 @property(nonatomic) _Bool flagFieldFlipped; // @synthesize flagFieldFlipped=_flagFieldFlipped;
-- (void)markFieldSet;
 - (id)valueAsData;
-- (id)valueFromDouble:(double)arg1;
 - (void)setValueWithBytes:(const char **)arg1 before:(const char *)arg2;
 - (_Bool)isIncludedInFlags:(unsigned int)arg1;
 - (id)initWithCorrespondingFlagBit:(unsigned char)arg1 fieldLength:(unsigned char)arg2 factor:(unsigned char)arg3;

@@ -10,16 +10,16 @@
 
 @interface TSCH3DRenderPipeline : NSObject
 {
-    TSCH3DRenderProcessor *mProcessor;
-    TSCH3DSession *mSession;
+    TSCH3DRenderProcessor *_processor;
+    TSCH3DSession *_session;
 }
 
 + (id)pipelineWithProcessor:(id)arg1 session:(id)arg2;
-+ (id)clipRectForTargetSize:(const tvec2_3b141483 *)arg1 intermediateSize:(const tvec2_3b141483 *)arg2;
-@property(readonly, nonatomic) TSCH3DSession *session; // @synthesize session=mSession;
-@property(retain, nonatomic) TSCH3DRenderProcessor *processor; // @synthesize processor=mProcessor;
++ (id)clipRectForTargetSize:(const void *)arg1 intermediateSize:(const void *)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DSession *session; // @synthesize session=_session;
+@property(retain, nonatomic) TSCH3DRenderProcessor *processor; // @synthesize processor=_processor;
 @property(readonly, nonatomic) TSCH3DContext *context;
-- (void)dealloc;
 - (id)initWithProcessor:(id)arg1 session:(id)arg2;
 
 @end

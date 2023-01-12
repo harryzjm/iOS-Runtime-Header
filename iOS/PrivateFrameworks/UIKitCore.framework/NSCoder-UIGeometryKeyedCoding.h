@@ -25,6 +25,8 @@
 - (void)encodeCGSize:(struct CGSize)arg1 forKey:(id)arg2;
 - (void)encodeCGVector:(struct CGVector)arg1 forKey:(id)arg2;
 - (void)encodeCGPoint:(struct CGPoint)arg1 forKey:(id)arg2;
+- (struct CAFrameRateRange)_ui_decodeCAFrameRateRangeForKey:(id)arg1;
+- (void)_ui_encodeCAFrameRateRange:(struct CAFrameRateRange)arg1 forKey:(id)arg2;
 - (void)_initializeClassSwapperWithCurrentDecodingViewControllerIfNeeded:(id)arg1;
 - (id)_decodeObjectsAndTrackChildViewControllerIndexWithParent:(id)arg1 forKey:(id)arg2;
 - (id)_decodeObjectsWithSourceSegueTemplate:(id)arg1 creator:(CDUnknownBlockType)arg2 sender:(id)arg3 forKey:(id)arg4;
@@ -36,6 +38,7 @@
 - (void)_ui_encodeVector:(const double *)arg1 count:(unsigned long long)arg2 forKey:(id)arg3;
 - (id)_ui_decodeTextAttributesForKey:(id)arg1;
 - (void)_ui_encodeTextAttributes:(id)arg1 forKey:(id)arg2;
+- (_Bool)_ui_decodeBoolForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (_Bool)_ui_isInterprocess;
 @end
 

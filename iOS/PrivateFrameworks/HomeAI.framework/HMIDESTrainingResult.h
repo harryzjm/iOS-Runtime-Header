@@ -6,18 +6,24 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSArray;
+@class HMIDESMutableFloatArray, NSArray;
 
 @interface HMIDESTrainingResult : HMFObject
 {
+    float _preTrainingLoss;
+    float _postTrainingLoss;
     NSArray *_layerParameters;
     NSArray *_losses;
 }
 
 - (void).cxx_destruct;
+@property(readonly) float postTrainingLoss; // @synthesize postTrainingLoss=_postTrainingLoss;
+@property(readonly) float preTrainingLoss; // @synthesize preTrainingLoss=_preTrainingLoss;
 @property(readonly) NSArray *losses; // @synthesize losses=_losses;
 @property(readonly) NSArray *layerParameters; // @synthesize layerParameters=_layerParameters;
-- (id)initWithLayerParameters:(id)arg1 losses:(id)arg2;
+@property(readonly) float l2Norm;
+@property(readonly) HMIDESMutableFloatArray *flattedTrainingResult;
+- (id)initWithLayerParameters:(id)arg1 losses:(id)arg2 preTrainingLoss:(float)arg3 postTrainingLoss:(float)arg4;
 
 @end
 

@@ -16,11 +16,14 @@
 }
 
 - (void).cxx_destruct;
+- (void)_processDelayedMemoriesAssetUpdate:(id)arg1 library:(id)arg2 transaction:(id)arg3;
 - (void)_deleteUUIDs:(id)arg1 fromCoreDuetStreams:(id)arg2 transaction:(id)arg3;
 - (void)_processDelayedMemoriesForDuetDelete:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedAssetsForDuetDelete:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedWidgetTimelineReload:(_Bool)arg1 library:(id)arg2 transaction:(id)arg3;
+- (void)_processDelayedFeaturedContentUpdateAndWidgetTimelineReload:(_Bool)arg1 shouldReloadWidgetTimeline:(_Bool)arg2 library:(id)arg3 transaction:(id)arg4;
 - (void)_processDelayedAssetsForFileSystemPersistency:(id)arg1 library:(id)arg2 transaction:(id)arg3;
+- (void)_processDelayedImportSessionCountsAndDateRangeUpdates:(id)arg1 library:(id)arg2 transaction:(id)arg3;
 - (void)_processDelayedAlbumCountsAndDateRangeUpdates:(id)arg1 library:(id)arg2 transaction:(id)arg3;
 - (void)_processDelayedSearchIndexUpdates:(id)arg1 transaction:(id)arg2;
 - (void)_processDelayedDupeAnalysisNormalInserts:(id)arg1 cloudInserts:(id)arg2 transaction:(id)arg3;

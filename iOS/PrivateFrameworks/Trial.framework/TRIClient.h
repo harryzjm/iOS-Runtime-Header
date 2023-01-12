@@ -16,13 +16,20 @@
     id <TRIPaths> _paths;
     TRIDefaultFactorProvider *_defaultFactorProvider;
     int _projectId;
-    TRILogger *_trialDevLogger;
+    double _staleFactorsUsageGracePeriod;
     _PASLock *_lock;
     struct atomic_flag _isLazyInitComplete;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     TRILogger *_logger;
 }
 
++ (id)sysdiagnoseInfoWithError:(id *)arg1;
++ (id)printedNCVInformation;
++ (id)printedExperimentInformation:(id *)arg1;
++ (id)activeExperimentInformation:(id *)arg1;
++ (id)printedRolloutInformation:(id *)arg1;
++ (id)activeRolloutInformation:(id *)arg1;
++ (id)clientWithProjectId:(int)arg1 factorsState:(id)arg2;
 + (id)clientWithIdentifier:(int)arg1 unit:(int)arg2;
 + (id)clientWithIdentifier:(int)arg1;
 + (_Bool)requiresTrialDataVaultAccess;
@@ -30,6 +37,10 @@
 + (_Bool)isPlatformBinary;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TRILogger *logger; // @synthesize logger=_logger;
+- (_Bool)_hasAppropriatePermissionsForNamespaceName:(id)arg1;
+- (_Bool)immediateDownloadForNamespaceNames:(id)arg1 allowExpensiveNetworking:(_Bool)arg2 error:(id *)arg3;
+- (void)dispose;
+- (void)_invalidateFactors;
 - (void)downloadNamespaceWithName:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)experimentIdWithNamespace:(unsigned int)arg1;
 - (id)treatmentIdWithNamespace:(unsigned int)arg1;
@@ -37,7 +48,15 @@
 - (id)addUpdateHandlerForNamespaceId:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)factorLevelsWithNamespace:(unsigned int)arg1;
 - (id)levelForFactor:(id)arg1 withNamespace:(unsigned int)arg2;
+- (void)removeDownloadStatusHandlersWithToken:(id)arg1;
+- (unsigned long long)statusOfDownloadForFactors:(id)arg1 withNamespace:(id)arg2 token:(id *)arg3 queue:(id)arg4 progress:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
+- (_Bool)promoteFactorsForNamespace:(id)arg1 error:(id *)arg2;
+- (_Bool)setFactorsProvisionalForNamespace:(id)arg1 error:(id *)arg2;
+- (id)purgeabilityLevelsForFactorsWithNamespaceName:(id)arg1;
+- (_Bool)setPurgeabilityLevelsForFactors:(id)arg1 withNamespaceName:(id)arg2;
+- (void)removeLevelsForFactors:(id)arg1 withNamespace:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadLevelsForFactors:(id)arg1 withNamespace:(id)arg2 queue:(id)arg3 options:(id)arg4 progress:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)sizesForFactors:(id)arg1 withNamespaceName:(id)arg2 forMetric:(unsigned long long)arg3 error:(id *)arg4;
 - (void)downloadNamespaceWithName:(id)arg1 options:(id)arg2 progress:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)hasDownloadedNamespaceWithName:(id)arg1;
 - (_Bool)deregisterNamespaceName:(id)arg1 error:(id *)arg2;
@@ -47,10 +66,12 @@
 - (long long)_appContainerType:(id)arg1;
 - (id)experimentIdWithNamespaceName:(id)arg1;
 - (_Bool)trialIdentifiersWithNamespaceName:(id)arg1 experimentId:(id *)arg2 deploymentId:(int *)arg3 treatmentId:(id *)arg4;
+- (id)rolloutIdentifiersWithNamespaceName:(id)arg1;
+- (id)experimentIdentifiersWithNamespaceName:(id)arg1;
 - (id)treatmentIdWithNamespaceName:(id)arg1;
-- (void)_invalidateNamespacesWithGuardedData:(id)arg1;
 - (id)rolloutIdWithNamespaceName:(id)arg1;
-- (void)_registerUpdateHandlerForNamespaceName:(id)arg1 notificationCallback:(id)arg2;
+- (void)_registerUpdateHandlerForNamespaceName:(id)arg1 notificationCallback:(id)arg2 clientMethodNameForLogging:(const char *)arg3 callingFunctionReturnAddressForLogging:(void *)arg4;
+- (void)_setupExcessiveStaleFactorsUsageTimerWithGuardedData:(id)arg1 namespace:(id)arg2 clientMethodNameForLogging:(const char *)arg3 callingFunctionReturnAddressForLogging:(void *)arg4;
 - (void)removeUpdateHandlerForToken:(id)arg1;
 - (id)addUpdateHandlerForNamespaceName:(id)arg1 queue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)addUpdateHandlerForNamespaceName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -59,11 +80,15 @@
 - (id)newTrackingIdWithTreatmentRefresh:(_Bool)arg1;
 - (id)newTrackingId;
 @property(readonly, nonatomic) TRITrackingId *trackingId;
+- (id)_refresh:(_Bool)arg1;
+- (void)refresh;
 - (void)_checkEntitlements;
 - (void)_lazyInit;
 - (void)dealloc;
 - (id)initWithNonLoggingClientIdentifier:(int)arg1 paths:(id)arg2;
-- (id)initWithClientIdentifier:(int)arg1 paths:(id)arg2 unit:(int)arg3 logger:(id)arg4 devLogger:(id)arg5;
+- (id)initWithClientIdentifier:(int)arg1 paths:(id)arg2 unit:(int)arg3 factorsState:(id)arg4 staleFactorsUsageGracePeriod:(double)arg5 logger:(id)arg6;
+- (void)setLogger:(id)arg1;
+- (id)initWithClientIdentifier:(int)arg1 paths:(id)arg2 unit:(int)arg3 staleFactorsUsageGracePeriod:(double)arg4 logger:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

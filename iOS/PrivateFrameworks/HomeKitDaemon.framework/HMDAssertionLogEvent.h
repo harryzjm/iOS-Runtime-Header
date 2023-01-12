@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDAssertionLogEvent <HMDDiagnosticReportLogging>
+@interface HMDAssertionLogEvent : HMMLogEvent <HMDDiagnosticReportLogging>
 {
     NSString *_description;
     NSString *_reason;
 }
 
-+ (id)identifier;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *reason; // @synthesize reason=_reason;
 - (id)description;

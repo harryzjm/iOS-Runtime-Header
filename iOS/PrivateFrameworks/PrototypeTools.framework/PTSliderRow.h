@@ -8,9 +8,12 @@
 {
     double _minValue;
     double _maxValue;
+    CDUnknownBlockType _valueStringFormatter;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType valueStringFormatter; // @synthesize valueStringFormatter=_valueStringFormatter;
 @property(nonatomic) double maxValue; // @synthesize maxValue=_maxValue;
 @property(nonatomic) double minValue; // @synthesize minValue=_minValue;
 - (id)initWithCoder:(id)arg1;
@@ -18,8 +21,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)init;
+- (id)valueStringFormatter:(CDUnknownBlockType)arg1;
 - (id)minValue:(double)arg1 maxValue:(double)arg2;
+- (id)init;
 
 @end
 

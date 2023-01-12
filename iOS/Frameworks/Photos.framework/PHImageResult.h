@@ -27,6 +27,7 @@
 - (void)setImageData:(id)arg1;
 - (id)imageURL;
 - (void)setImageURL:(id)arg1;
+- (void)setHighDynamicRangeGainMap:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 averagePixelLuminance:(id)arg3;
 - (struct CGImage *)imageRef;
 - (void)setImageRef:(struct CGImage *)arg1;
 - (id)sanitizedInfoDictionary;

@@ -13,9 +13,11 @@
 {
     PKContinuousButton *_editButton;
     id <PKPGSVFooterViewDelegate> _delegate;
+    long long _expiredSectionCount;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long expiredSectionCount; // @synthesize expiredSectionCount=_expiredSectionCount;
 @property(nonatomic) __weak id <PKPGSVFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_editTapped:(id)arg1;
 - (void)layoutSubviews;

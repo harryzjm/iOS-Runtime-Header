@@ -7,17 +7,16 @@
 #import <UIKit/UIView.h>
 
 #import <WorkflowEditor/UITableViewDataSource-Protocol.h>
-#import <WorkflowEditor/UITableViewDelegate-Protocol.h>
+#import <WorkflowEditor/UITableViewDelegatePrivate-Protocol.h>
 #import <WorkflowEditor/WFModuleSummaryEditorDelegate-Protocol.h>
 #import <WorkflowEditor/WFMultipleValueEditorViewCellDelegate-Protocol.h>
 
-@class MTVisualStylingProvider, NSArray, NSIndexPath, NSSet, NSString, UIColor, UITableView, WFModuleSummaryEditor, WFMultipleValueParameterState, WFParameter;
+@class NSArray, NSIndexPath, NSSet, NSString, UIColor, UITableView, WFModuleSummaryEditor, WFMultipleValueParameterState, WFParameter;
 @protocol WFComponentNavigationContext, WFMultipleValueEditorViewDelegate, WFVariableProvider, WFVariableUIDelegate;
 
-@interface WFMultipleValueEditorView : UIView <UITableViewDataSource, UITableViewDelegate, WFMultipleValueEditorViewCellDelegate, WFModuleSummaryEditorDelegate>
+@interface WFMultipleValueEditorView : UIView <UITableViewDataSource, UITableViewDelegatePrivate, WFMultipleValueEditorViewCellDelegate, WFModuleSummaryEditorDelegate>
 {
     _Bool _variablesDisabled;
-    _Bool _standaloneVariablesAsContentItems;
     NSString *_localizedNewItemTypeName;
     NSString *_addNewItemCellTitle;
     UITableView *_tableView;
@@ -27,10 +26,10 @@
     id <WFVariableProvider> _variableProvider;
     id <WFVariableUIDelegate> _variableUIDelegate;
     NSSet *_allowedVariableTypes;
-    NSString *_widgetSizeClass;
+    long long _widgetFamily;
     id <WFComponentNavigationContext> _navigationContext;
     UIColor *_overridingCellBackgroundColor;
-    MTVisualStylingProvider *_fillProvider;
+    id _fillProvider;
     CDUnknownBlockType _updateBlock;
     NSArray *_items;
     WFModuleSummaryEditor *_currentEditor;
@@ -42,11 +41,10 @@
 @property(retain, nonatomic) WFModuleSummaryEditor *currentEditor; // @synthesize currentEditor=_currentEditor;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
-@property(retain, nonatomic) MTVisualStylingProvider *fillProvider; // @synthesize fillProvider=_fillProvider;
+@property(retain, nonatomic) id fillProvider; // @synthesize fillProvider=_fillProvider;
 @property(retain, nonatomic) UIColor *overridingCellBackgroundColor; // @synthesize overridingCellBackgroundColor=_overridingCellBackgroundColor;
 @property(nonatomic) __weak id <WFComponentNavigationContext> navigationContext; // @synthesize navigationContext=_navigationContext;
-@property(copy, nonatomic) NSString *widgetSizeClass; // @synthesize widgetSizeClass=_widgetSizeClass;
-@property(nonatomic) _Bool standaloneVariablesAsContentItems; // @synthesize standaloneVariablesAsContentItems=_standaloneVariablesAsContentItems;
+@property(nonatomic) long long widgetFamily; // @synthesize widgetFamily=_widgetFamily;
 @property(nonatomic) _Bool variablesDisabled; // @synthesize variablesDisabled=_variablesDisabled;
 @property(copy, nonatomic) NSSet *allowedVariableTypes; // @synthesize allowedVariableTypes=_allowedVariableTypes;
 @property(nonatomic) __weak id <WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
@@ -60,10 +58,10 @@
 - (void)summaryEditor:(id)arg1 didCommitParameterState:(id)arg2;
 - (id)accessibilityElements;
 - (_Bool)isAccessibilityElement;
-- (void)keyboardWillChangeFrame:(id)arg1;
 - (void)multipleValueEditorViewCellDidInvalidateSize:(id)arg1;
 - (void)multipleValueEditorViewCellDidRequestEditing:(id)arg1;
 - (void)multipleValueEditorViewCell:(id)arg1 didUpdateParameterState:(id)arg2;
+- (_Bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (_Bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
@@ -85,12 +83,10 @@
 - (void)movedItemAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)updatedItem:(id)arg1 atIndex:(unsigned long long)arg2;
-@property(nonatomic, getter=isScrollEnabled) _Bool scrollEnabled;
 @property(readonly, nonatomic) NSString *addNewItemCellTitle; // @synthesize addNewItemCellTitle=_addNewItemCellTitle;
 @property(copy, nonatomic) NSString *localizedNewItemTypeName; // @synthesize localizedNewItemTypeName=_localizedNewItemTypeName;
 @property(nonatomic, getter=isEditable) _Bool editable;
 - (void)_setState:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

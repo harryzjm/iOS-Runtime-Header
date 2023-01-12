@@ -8,7 +8,8 @@
 
 #import <PassKitUI/PKPeerPaymentAssociatedAccountSetupDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, PKFamilyMember, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentAssociatedAccountControllerDoneTapHelper, PKPeerPaymentAssociatedAccountPresentationContext, PKPeerPaymentService, UINavigationController;
+@class NSString, PKContactAvatarManager, PKFamilyMemberCollection, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentAssociatedAccountControllerDoneTapHelper, PKPeerPaymentAssociatedAccountPresentationContext, PKPeerPaymentService, UINavigationController;
+@protocol PKPassLibraryDataProvider;
 
 @interface PKPeerPaymentAssociatedAccountsController : NSObject <PKPeerPaymentAssociatedAccountSetupDelegate>
 {
@@ -16,32 +17,25 @@
     PKPaymentService *_paymentService;
     PKPeerPaymentService *_peerPaymentService;
     PKPeerPaymentAccount *_account;
-    NSArray *_familyMembers;
-    PKFamilyMember *_viewer;
-    NSDictionary *_altDSIDToImageData;
+    PKFamilyMemberCollection *_familyCollection;
+    PKContactAvatarManager *_avatarManager;
     UINavigationController *_navigationController;
     PKPeerPaymentAssociatedAccountPresentationContext *_presentationContext;
     PKPeerPaymentAssociatedAccountControllerDoneTapHelper *_doneTapHelper;
     NSString *_viewerFamilyMemberTypeAnalyticsKey;
+    id <PKPassLibraryDataProvider> _passLibraryDataProvider;
     _Bool _didBeginReporter;
-    _Bool _fetchingFamilyMembers;
-    NSMutableArray *_familyCircleCompletionHandlers;
 }
 
 - (void).cxx_destruct;
-- (void)_updateFamilyMembersWithMembers:(id)arg1;
-- (void)_callFamilyCircleCompletions;
-- (void)_fetchFamilyMembersIfNeccessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_peerPaymentAccountChanged:(id)arg1;
 - (void)_begingReportingIfNecessary;
 - (void)_endReportingSessionIfNecessary;
 - (void)addPeerPaymentAssociatedAccountDidSkipSetupForFamilyMember:(id)arg1;
 - (void)addPeerPaymentAssociatedAccountSetupCompletedWithSucess:(_Bool)arg1 updatedAccount:(id)arg2 forFamilyMember:(id)arg3;
 - (void)presentAssociatedAccountsFlowWithPresentationContext:(id)arg1 fromNavigationController:(id)arg2;
-- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2 context:(long long)arg3;
-- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2;
-- (id)initWithPKFamilyMembers:(id)arg1;
-- (id)init;
+- (id)initWithFamilyCollection:(id)arg1 avatarManager:(id)arg2 passLibraryDataProvider:(id)arg3 context:(long long)arg4;
+- (id)initWithFamilyCollection:(id)arg1 avatarManager:(id)arg2 passLibraryDataProvider:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

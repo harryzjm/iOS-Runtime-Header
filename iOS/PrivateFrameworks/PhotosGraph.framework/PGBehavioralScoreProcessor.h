@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSSet, PGGraph;
+@class NSDictionary, NSSet, PGGraph, PHPhotoLibrary;
+@protocol OS_os_log;
 
 @interface PGBehavioralScoreProcessor : NSObject
 {
+    PHPhotoLibrary *_photoLibrary;
+    NSObject<OS_os_log> *_loggingConnection;
     PGGraph *_graph;
     NSSet *_previousGoldAssetUUIDs;
     long long _algorithm;

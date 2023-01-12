@@ -6,12 +6,15 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
-@protocol BNPresentable;
+@class NSArray, NSDictionary, NSString;
+@protocol BNPresentable, BNPresentableUniquelyIdentifying;
 
 @protocol BNPosting <NSObject>
+- (NSArray *)revokePresentablesWithIdentification:(id <BNPresentableUniquelyIdentifying>)arg1 reason:(NSString *)arg2 options:(unsigned long long)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
+- (_Bool)postPresentable:(id <BNPresentable>)arg1 withOptions:(unsigned long long)arg2 userInfo:(NSDictionary *)arg3 error:(out id *)arg4;
+
+@optional
 - (_Bool)revokeAllPresentablesWithRequesterIdentifier:(NSString *)arg1 reason:(NSString *)arg2 options:(unsigned long long)arg3 userInfo:(NSDictionary *)arg4 error:(out id *)arg5;
 - (_Bool)revokePresentableWithRequestIdentifier:(NSString *)arg1 requesterIdentifier:(NSString *)arg2 reason:(NSString *)arg3 options:(unsigned long long)arg4 userInfo:(NSDictionary *)arg5 error:(out id *)arg6;
-- (_Bool)postPresentable:(id <BNPresentable>)arg1 withOptions:(unsigned long long)arg2 userInfo:(NSDictionary *)arg3 error:(out id *)arg4;
 @end
 

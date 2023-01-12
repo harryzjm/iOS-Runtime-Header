@@ -7,7 +7,6 @@
 @class CKDAssetRequestPlanner, CKDCancelTokenGroup, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDUploadAssetsOperation
 {
     _Bool _atomic;
@@ -80,11 +79,11 @@ __attribute__((visibility("hidden")))
 - (void)_didPrepareAsset:(id)arg1;
 - (void)_closeAllPackages;
 - (void)_closePackage:(id)arg1;
-- (void)_openPackage:(id)arg1;
+- (_Bool)_openPackage:(id)arg1;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)CKStatusReportLogGroups;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) unsigned long long state; // @dynamic state;

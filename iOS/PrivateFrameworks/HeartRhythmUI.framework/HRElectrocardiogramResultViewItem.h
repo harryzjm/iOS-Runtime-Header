@@ -10,6 +10,7 @@
 
 @interface HRElectrocardiogramResultViewItem : NSObject
 {
+    NSString *_badge;
     NSString *_title;
     NSString *_numberedTitle;
     NSString *_visibleBodyText;
@@ -17,7 +18,12 @@
     NSArray *_expandedContentItems;
 }
 
-+ (id)viewItemWithClassification:(unsigned long long)arg1 activeAlgorithmVersion:(long long)arg2 learnMoreDelegate:(id)arg3;
++ (id)viewItemWithClassification:(unsigned long long)arg1 sampleAlgorithmVersion:(id)arg2 forAlgorithmVersion:(long long)arg3 upgradingFromAlgorithmVersion:(long long)arg4 learnMoreDelegate:(id)arg5;
++ (id)viewItemWithClassification:(unsigned long long)arg1 sampleAlgorithmVersion:(id)arg2 forAlgorithmVersion:(long long)arg3 learnMoreDelegate:(id)arg4;
++ (id)_makeItemForPoorRecordingAlgorithmVersionTwoUpgradingFromAlgorithmVersion:(long long)arg1 withLearnMoreDelegate:(id)arg2;
++ (id)_makeItemForInconclusiveAlgorithmVersionTwoUpgradingFromAlgorithmVersion:(long long)arg1 withLearnMoreDelegate:(id)arg2;
++ (id)_makeItemForHighOrLowAbove150Below50AlgorithmVersionTwoUpgradingFromAlgorithmVersion:(long long)arg1;
++ (id)_makeItemForAtrialFibrillationAlgorithmVersionTwoUpgradingFromAlgorithmVersion:(long long)arg1;
 + (id)_makeItemForInconclusiveAlgorithmVersionOneWithLearnMoreDelegate:(id)arg1;
 + (id)_makeItemForHighOrLowAbove120Below50AlgorithmVersionOne;
 + (id)_makeItemForAtrialFibrillationAlgorithmVersionOne;
@@ -28,7 +34,8 @@
 @property(readonly, copy, nonatomic) NSString *visibleBodyText; // @synthesize visibleBodyText=_visibleBodyText;
 @property(readonly, copy, nonatomic) NSString *numberedTitle; // @synthesize numberedTitle=_numberedTitle;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (id)initWithTitle:(id)arg1 numberedTitle:(id)arg2 visibleBodyText:(id)arg3 videoPath:(id)arg4 expandedContentItems:(id)arg5;
+@property(readonly, copy, nonatomic) NSString *badge; // @synthesize badge=_badge;
+- (id)initWithBadge:(id)arg1 title:(id)arg2 numberedTitle:(id)arg3 visibleBodyText:(id)arg4 videoPath:(id)arg5 expandedContentItems:(id)arg6;
 
 @end
 

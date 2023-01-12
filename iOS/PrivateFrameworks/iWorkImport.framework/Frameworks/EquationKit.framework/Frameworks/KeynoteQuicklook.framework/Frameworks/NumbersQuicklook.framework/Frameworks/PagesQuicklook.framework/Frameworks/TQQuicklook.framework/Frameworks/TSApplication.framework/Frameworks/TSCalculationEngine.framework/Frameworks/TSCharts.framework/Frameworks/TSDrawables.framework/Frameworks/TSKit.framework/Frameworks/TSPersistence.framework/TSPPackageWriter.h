@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <TSPersistence/TSPFileCoordinatorDelegate-Protocol.h>
 #import <TSPersistence/TSPPackageDataWriter-Protocol.h>
 
-@class NSError, NSProgress, NSString, NSURL, SFUCryptoKey, TSPPackage, TSUZipFileWriter;
-@protocol OS_dispatch_queue, TSPComponentWriteChannel;
+@class NSError, NSProgress, NSString, NSURL, SFUCryptoKey, TSPDocumentMetadata, TSPDocumentSaveValidationPolicy, TSPPackage, TSUZipFileWriter;
+@protocol OS_dispatch_queue, TSPComponentWriteChannel, TSPFileCoordinatorDelegate;
 
-@interface TSPPackageWriter : NSObject <TSPPackageDataWriter>
+@interface TSPPackageWriter : NSObject <TSPFileCoordinatorDelegate, TSPPackageDataWriter>
 {
+    TSPDocumentMetadata *_documentMetadata;
     TSPPackage *_originalDocumentPackage;
     TSPPackage *_originalSupportPackage;
+    id <TSPFileCoordinatorDelegate> _fileCoordinatorDelegate;
     id <TSPComponentWriteChannel> _componentWriteChannel;
     NSObject<OS_dispatch_queue> *_errorQueue;
     NSError *_error;
@@ -24,22 +27,25 @@
     NSURL *_documentTargetURL;
     NSURL *_relativeURLForExternalData;
     long long _updateType;
+    TSPDocumentSaveValidationPolicy *_documentSaveValidationPolicy;
     SFUCryptoKey *_encryptionKey;
     TSUZipFileWriter *_zipArchiveWriter;
     NSProgress *_progress;
 }
 
-+ (id)newPackageWriterWithPackageType:(long long)arg1 URL:(id)arg2 documentTargetURL:(id)arg3 relativeURLForExternalData:(id)arg4 packageIdentifier:(unsigned char)arg5 documentProperties:(id)arg6 fileFormatVersion:(unsigned long long)arg7 updateType:(long long)arg8 cloneMode:(_Bool)arg9 encryptionKey:(id)arg10 originalDocumentPackage:(id)arg11 originalSuppportPackage:(id)arg12 fileCoordinatorDelegate:(id)arg13 progress:(id)arg14 error:(id *)arg15;
++ (id)newPackageWriterWithPackageType:(long long)arg1 URL:(id)arg2 documentTargetURL:(id)arg3 relativeURLForExternalData:(id)arg4 packageIdentifier:(unsigned char)arg5 documentProperties:(id)arg6 documentMetadata:(id)arg7 fileFormatVersion:(unsigned long long)arg8 updateType:(long long)arg9 cloneMode:(_Bool)arg10 documentSaveValidationPolicy:(id)arg11 encryptionKey:(id)arg12 originalDocumentPackage:(id)arg13 originalSupportPackage:(id)arg14 fileCoordinatorDelegate:(id)arg15 progress:(id)arg16 error:(id *)arg17;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic) TSUZipFileWriter *zipArchiveWriter; // @synthesize zipArchiveWriter=_zipArchiveWriter;
 @property(readonly, nonatomic) SFUCryptoKey *encryptionKey; // @synthesize encryptionKey=_encryptionKey;
+@property(readonly, nonatomic) TSPDocumentSaveValidationPolicy *documentSaveValidationPolicy; // @synthesize documentSaveValidationPolicy=_documentSaveValidationPolicy;
 @property(readonly, nonatomic) long long updateType; // @synthesize updateType=_updateType;
 @property(readonly, nonatomic) NSURL *relativeURLForExternalData; // @synthesize relativeURLForExternalData=_relativeURLForExternalData;
 @property(readonly, nonatomic) NSURL *documentTargetURL; // @synthesize documentTargetURL=_documentTargetURL;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (id)newRawDataWriteChannelForRelativePath:(id)arg1 originalLastModificationDate:(id)arg2 originalSize:(unsigned long long)arg3 originalCRC:(unsigned int)arg4 forceCalculatingSizeAndCRCForPreservingLastModificationDate:(_Bool)arg5;
 - (id)newPackageWithPackageIdentifier:(unsigned char)arg1 documentProperties:(id)arg2 fileFormatVersion:(unsigned long long)arg3 decryptionKey:(id)arg4 fileCoordinatorDelegate:(id)arg5;
+- (void)performReadUsingAccessor:(CDUnknownBlockType)arg1;
 - (id)writtenPackageWithURL:(id)arg1;
 - (_Bool)closeAndReturnError:(id *)arg1;
 - (void)closeWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -47,9 +53,9 @@
 - (struct CGDataConsumer *)newCGDataConsumerAtRelativePath:(id)arg1;
 - (_Bool)writeData:(id)arg1 toRelativePath:(id)arg2 allowEncryption:(_Bool)arg3 error:(id *)arg4;
 - (id)dataForZipEntry:(id)arg1 inDataToWrite:(id)arg2;
-- (id)copyData:(id)arg1 withReadChannel:(id)arg2 decryptionInfo:(id)arg3 size:(unsigned long long)arg4 preferredFilename:(id)arg5 error:(id *)arg6;
+- (id)copyData:(id)arg1 withReadChannel:(id)arg2 decryptionInfo:(id)arg3 size:(unsigned long long)arg4 calculateCRC:(_Bool)arg5 preferredFilename:(id)arg6 error:(id *)arg7;
 - (id)linkOrCopyData:(id)arg1 fromURL:(id)arg2 fromTemporaryLocation:(_Bool)arg3 decryptionInfo:(id)arg4 preferredFilename:(id)arg5 error:(id *)arg6;
-- (_Bool)addData:(id)arg1 infoMessage:(struct DataInfo *)arg2 saveOperationState:(id)arg3 error:(id *)arg4;
+- (_Bool)addData:(id)arg1 infoMessage:(void *)arg2 saveOperationState:(id)arg3 error:(id *)arg4;
 - (id)filenameForData:(id)arg1 preferredFilename:(id)arg2;
 - (void)willWriteData:(id)arg1;
 - (_Bool)flushPendingWritesReturningError:(id *)arg1;
@@ -64,7 +70,7 @@
 @property(readonly, nonatomic) TSPPackage *originalPackage;
 @property(readonly, nonatomic) _Bool canLinkData;
 - (void)dealloc;
-- (id)initWithURL:(id)arg1 documentTargetURL:(id)arg2 relativeURLForExternalData:(id)arg3 packageIdentifier:(unsigned char)arg4 documentProperties:(id)arg5 fileFormatVersion:(unsigned long long)arg6 updateType:(long long)arg7 cloneMode:(_Bool)arg8 encryptionKey:(id)arg9 originalDocumentPackage:(id)arg10 originalSuppportPackage:(id)arg11 fileCoordinatorDelegate:(id)arg12 progress:(id)arg13 error:(id *)arg14;
+- (id)initWithURL:(id)arg1 documentTargetURL:(id)arg2 relativeURLForExternalData:(id)arg3 packageIdentifier:(unsigned char)arg4 documentProperties:(id)arg5 documentMetadata:(id)arg6 fileFormatVersion:(unsigned long long)arg7 updateType:(long long)arg8 cloneMode:(_Bool)arg9 documentSaveValidationPolicy:(id)arg10 encryptionKey:(id)arg11 originalDocumentPackage:(id)arg12 originalSupportPackage:(id)arg13 fileCoordinatorDelegate:(id)arg14 progress:(id)arg15 error:(id *)arg16;
 - (id)init;
 
 // Remaining properties

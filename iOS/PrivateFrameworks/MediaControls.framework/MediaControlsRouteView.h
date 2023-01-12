@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)providedStylesDidChangeForProvider:(id)arg1;
 - (void)showMessage:(id)arg1;
 - (void)setGlyphState:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)prepareInputsOperationsWithInputs:(id)arg1;
 - (void)flushSegment;
 - (void)flush;
+- (void)transitionToFailedStatusWithError:(id)arg1;
 - (id)_transitionToFinishWritingHelperWithFinishWritingOperations:(id)arg1;
 - (id)_makeFinishWritingOperationsWithCustomFigAssetWriterFinishOperation:(id)arg1;
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;

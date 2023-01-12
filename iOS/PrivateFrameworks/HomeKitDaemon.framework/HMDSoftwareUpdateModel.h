@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSNumber;
+@class HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSDate, NSNumber;
 
 @interface HMDSoftwareUpdateModel
 {
+    NSDate *_releaseDate;
 }
 
 + (id)properties;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 
 // Remaining properties
 @property(copy, nonatomic) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @dynamic documentationMetadata;

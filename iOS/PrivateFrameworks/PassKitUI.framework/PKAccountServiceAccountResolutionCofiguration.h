@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class PKInstallmentPlan;
+@class PKCreditInstallmentPlan;
 @protocol PKBusinessChatContext;
 
 @interface PKAccountServiceAccountResolutionCofiguration : NSObject
 {
-    PKInstallmentPlan *_earlyInstallmentPlan;
+    PKCreditInstallmentPlan *_earlyInstallmentPlan;
     id <PKBusinessChatContext> _businessChatContext;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <PKBusinessChatContext> businessChatContext; // @synthesize businessChatContext=_businessChatContext;
-@property(retain, nonatomic) PKInstallmentPlan *earlyInstallmentPlan; // @synthesize earlyInstallmentPlan=_earlyInstallmentPlan;
+@property(retain, nonatomic) PKCreditInstallmentPlan *earlyInstallmentPlan; // @synthesize earlyInstallmentPlan=_earlyInstallmentPlan;
 - (id)description;
 
 @end

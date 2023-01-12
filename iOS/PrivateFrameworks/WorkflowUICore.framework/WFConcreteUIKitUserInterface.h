@@ -6,42 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <WorkflowUICore/WFIntentViewControllerDelegate-Protocol.h>
 #import <WorkflowUICore/WFUIKitUserInterface-Protocol.h>
-#import <WorkflowUICore/WFUIKitUserInterfaceImpl-Protocol.h>
 
-@class NSString, UIView, UIViewController, WFAlert, WFIntentPlatterViewController;
-@protocol WFRemoteUserInterface;
+@class NSString, UIView, UIViewController, WFAlert;
+@protocol WFActionRemoteUserInterface;
 
-@interface WFConcreteUIKitUserInterface : NSObject <WFIntentViewControllerDelegate, WFUIKitUserInterface, WFUIKitUserInterfaceImpl>
+@interface WFConcreteUIKitUserInterface : NSObject <WFUIKitUserInterface>
 {
     UIView *_view;
     UIViewController *_viewController;
     WFAlert *_presentedAlert;
-    WFIntentPlatterViewController *_intentViewController;
-    CDUnknownBlockType _confirmationCompletionHandler;
-    CDUnknownBlockType _handleCompletionHandler;
-    id <WFRemoteUserInterface> _actionUserInterface;
+    id <WFActionRemoteUserInterface> _actionUserInterface;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <WFRemoteUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
-@property(copy, nonatomic) CDUnknownBlockType handleCompletionHandler; // @synthesize handleCompletionHandler=_handleCompletionHandler;
-@property(copy, nonatomic) CDUnknownBlockType confirmationCompletionHandler; // @synthesize confirmationCompletionHandler=_confirmationCompletionHandler;
-@property(nonatomic) __weak WFIntentPlatterViewController *intentViewController; // @synthesize intentViewController=_intentViewController;
+@property(retain, nonatomic) id <WFActionRemoteUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
 @property(nonatomic) __weak WFAlert *presentedAlert; // @synthesize presentedAlert=_presentedAlert;
-@property(readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-- (void)intentViewControllerDidDismissPlatter:(id)arg1;
-- (void)intentViewControllerDidConfirmIntent:(id)arg1;
-- (void)intentViewControllerWasTapped:(id)arg1;
-- (void)showPlatterWithInteraction:(id)arg1 requiresConfirmation:(_Bool)arg2;
-- (void)showHandleInteraction:(id)arg1 prompt:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)showConfirmInteraction:(id)arg1 requireAuthentication:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)requestActionInterfacePresentationForActionClassName:(id)arg1 classNamesByType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) __weak UIViewController *viewController; // @synthesize viewController=_viewController;
+- (id)presentationAnchor;
+- (void)requestAuthorizationWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentAlert:(id)arg1;
 - (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *userInterfaceType;
-@property(readonly, nonatomic) UIView *view; // @synthesize view=_view;
+@property(readonly, nonatomic) __weak UIView *view; // @synthesize view=_view;
 - (id)initWithView:(id)arg1 viewController:(id)arg2;
 
 // Remaining properties

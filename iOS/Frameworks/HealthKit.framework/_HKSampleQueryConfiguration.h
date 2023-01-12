@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _includeAutomaticTimeZones;
     _Bool _includeContributorInformation;
     NSArray *_sortDescriptors;
+    NSArray *_queryDescriptors;
     unsigned long long _limit;
 }
 
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property(nonatomic) _Bool includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
+@property(copy, nonatomic) NSArray *queryDescriptors; // @synthesize queryDescriptors=_queryDescriptors;
 @property(copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

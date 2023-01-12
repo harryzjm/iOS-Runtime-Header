@@ -37,8 +37,8 @@
 @property(retain, nonatomic) TSSMutablePropertySet *propertySetToSet; // @synthesize propertySetToSet=_propertySetToSet;
 @property(retain, nonatomic) TSSPropertyMap *propertyMapToSet; // @synthesize propertyMapToSet=_propertyMapToSet;
 - (unsigned long long)estimatedByteSize;
-- (void)saveToArchive:(struct CellDiffArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CellDiffArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)objectApplyingDiffToObject:(id)arg1 andUpdateInverse:(id)arg2 optionalConcurrentStylesheet:(id)arg3;
 - (id)objectApplyingDiffToObject:(id)arg1 andUpdateInverse:(id)arg2;
 - (void)clear;

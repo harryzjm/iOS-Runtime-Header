@@ -13,7 +13,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *meaningLabelsForWhichToGenerateQuestions; // @synthesize meaningLabelsForWhichToGenerateQuestions=_meaningLabelsForWhichToGenerateQuestions;
-- (id)_dateNodesFromStartDate:(id)arg1 toEndDate:(id)arg2;
+- (id)_dateNodesFromStartDate:(id)arg1 toEndDate:(id)arg2 inGraph:(id)arg3;
 - (id)_expandedDateNodesFromDateNode:(id)arg1;
 - (id)_expandedDateNodesFromDateNodes:(id)arg1;
 - (id)_looseCriteriasForCriteria:(id)arg1;

@@ -19,14 +19,14 @@
 }
 
 + (id)recordForInvalidationPredicate:(id)arg1;
-+ (id)recordForDictionary:(id)arg1 keys:(const CDStruct_0a6492a9 *)arg2;
++ (id)recordForDictionary:(id)arg1 keys:(const CDStruct_c4e2040f *)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *UUIDs; // @synthesize UUIDs=_UUIDs;
 @property(retain, nonatomic) NSArray *clientIdentifiers; // @synthesize clientIdentifiers=_clientIdentifiers;
 @property(retain, nonatomic) NSNumber *date; // @synthesize date=_date;
 @property(retain, nonatomic) NSString *predicateType; // @synthesize predicateType=_predicateType;
 - (id)object;
-- (id)dictionaryWithKeys:(const CDStruct_0a6492a9 *)arg1 options:(unsigned long long)arg2;
+- (id)dictionaryWithKeys:(const CDStruct_c4e2040f *)arg1 options:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

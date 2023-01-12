@@ -9,6 +9,7 @@
 @interface _TtC15PromotedContent14StoreTapAction
 {
     MISSING_TYPE *adamIdentifier;
+    MISSING_TYPE *appStoreViewTemplate;
     MISSING_TYPE *iTunesMetadata;
 }
 

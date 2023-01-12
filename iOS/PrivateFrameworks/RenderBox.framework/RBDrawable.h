@@ -9,34 +9,31 @@
 #import <RenderBox/RBDrawableStatistics-Protocol.h>
 #import <RenderBox/_RBDrawableDelegate-Protocol.h>
 
-@class NSDictionary, RBDevice;
+@class NSDictionary, NSString, RBDevice;
 @protocol MTLTexture, RBDrawableDelegate;
 
 @interface RBDrawable : NSObject <_RBDrawableDelegate, RBDrawableStatistics>
 {
-    struct unique_ptr<RB::Drawable, std::__1::default_delete<RB::Drawable>> _drawable;
+    struct refcounted_ptr<RB::Drawable> _drawable;
     struct spin_lock _statistics_handler_lock;
     struct objc_ptr<void (^)(id<RBDrawableStatistics>)> _statistics_handler;
+    id <RBDrawableDelegate> _delegate;
+    struct objc_ptr<RBDevice *> _device;
+    struct objc_ptr<id<MTLTexture>> _texture;
     int _initialState;
-    RBDevice *_device;
     double _scale;
     unsigned long long _pixelFormat;
-    id <RBDrawableDelegate> _delegate;
-    id <MTLTexture> _texture;
     struct CGSize _size;
     CDStruct_0b1c536a _clearColor;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <MTLTexture> texture; // @synthesize texture=_texture;
 @property(nonatomic) CDStruct_0b1c536a clearColor; // @synthesize clearColor=_clearColor;
 @property(nonatomic) int initialState; // @synthesize initialState=_initialState;
-@property(nonatomic) __weak id <RBDrawableDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
-@property(readonly, nonatomic) RBDevice *device; // @synthesize device=_device;
 - (void)_RBDrawableStatisticsDidChange;
 @property(copy, nonatomic) CDUnknownBlockType statisticsHandler;
 @property(readonly, copy, nonatomic) NSDictionary *statistics;
@@ -45,7 +42,17 @@
 - (void)dumpTexture:(id)arg1 name:(id)arg2;
 - (void)finish;
 - (void)renderDisplayList:(id)arg1 flags:(unsigned int)arg2;
+@property(retain, nonatomic) id <MTLTexture> texture;
+@property(nonatomic) __weak id <RBDrawableDelegate> delegate;
+@property(readonly, nonatomic) RBDevice *device;
+- (void)dealloc;
 - (id)initWithDevice:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSAttributedString, NSDictionary, NSMutableArray, NSTextDataProvider, NSTextRange;
+@class NSAttributedString, NSDictionary, NSMutableArray, NSTextRange;
 
 @interface NSTextParagraph
 {
@@ -14,17 +14,19 @@
     NSTextRange *_paragraphSeparatorRange;
     long long _resolvedBaseDirection;
     long long _fallbackBaseDirection;
-    NSTextDataProvider *_textDataProvider;
     NSMutableArray *_textLayoutFragments;
+    unsigned char _containsTextAttachments;
     NSDictionary *_attributes;
 }
 
 + (id)textParagraphsForAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 @property(copy) NSDictionary *attributes; // @synthesize attributes=_attributes;
-- (void)setTextDataProvider:(id)arg1;
-- (id)textDataProvider;
 - (id)paragraphRange;
+- (void)_setContainsTextAttachments:(_Bool)arg1;
+- (_Bool)_containsTextAttachments;
+- (id)initWithTextAttachment:(id)arg1 attributes:(id)arg2;
 - (long long)_resolvedBaseWritingDirectionWithFallbackDirection:(long long)arg1;
+- (struct CGSize)estimatedIntrinsicContentSizeForTextLayoutManager:(id)arg1;
 - (void)synchronizeDocumentRange;
 - (void)setParagraphSeparatorRange:(id)arg1;
 @property(readonly) NSTextRange *paragraphSeparatorRange; // @dynamic paragraphSeparatorRange;
@@ -37,7 +39,7 @@
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;
 - (id)initWithAttributedString:(id)arg1;
 - (id)description;
-@property(readonly, copy) NSAttributedString *attributedString; // @dynamic attributedString;
+@property(readonly) NSAttributedString *attributedString; // @dynamic attributedString;
 - (void)setAttributedString:(id)arg1;
 
 @end

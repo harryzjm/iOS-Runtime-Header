@@ -4,11 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HMDLogEventHAPMetricsEventAnalyzer
+#import <HomeKitDaemon/HMDAggregationAnalysisEventContributing-Protocol.h>
+
+@class HMDEventCountersManager;
+
+@interface HMDLogEventHAPMetricsEventAnalyzer <HMDAggregationAnalysisEventContributing>
 {
+    HMDEventCountersManager *_eventCountersManager;
 }
 
-- (void)processLogEvent:(id)arg1;
++ (id)managedEventCounterRequestGroups;
+- (void).cxx_destruct;
+@property(readonly) HMDEventCountersManager *eventCountersManager; // @synthesize eventCountersManager=_eventCountersManager;
+- (void)resetAggregationAnalysisContext;
+- (void)populateAggregationAnalysisLogEvent:(id)arg1;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
+- (id)initWithEventCountersManager:(id)arg1;
 
 @end
 

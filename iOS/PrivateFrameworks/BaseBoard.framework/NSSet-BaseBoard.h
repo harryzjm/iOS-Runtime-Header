@@ -8,6 +8,7 @@
 
 @interface NSSet (BaseBoard)
 - (void)bs_each:(CDUnknownBlockType)arg1;
+- (id)bs_dictionaryByPartitioning:(CDUnknownBlockType)arg1;
 - (id)bs_reduce:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)bs_compactMap:(CDUnknownBlockType)arg1;
 - (id)bs_map:(CDUnknownBlockType)arg1;

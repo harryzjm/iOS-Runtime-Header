@@ -8,7 +8,6 @@
 
 @class BRCItemID, BRCServerZone, NSArray, NSNumber, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCiWorkPublishingOperation <BRCOperationSubclass>
 {
     BRCItemID *_itemID;

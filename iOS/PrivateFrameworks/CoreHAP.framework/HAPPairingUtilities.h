@@ -13,9 +13,9 @@
 + (id)parseListPairingsResponse:(id)arg1 error:(id *)arg2;
 + (id)createListPairingsRequest:(id *)arg1;
 + (_Bool)parseRemovePairingResponse:(id)arg1 error:(id *)arg2;
-+ (id)createRemovePairingRequetForPairingIdentity:(id)arg1 error:(id *)arg2;
++ (id)createRemovePairingRequestForPairingIdentity:(id)arg1 error:(id *)arg2;
 + (_Bool)parseAddPairingResponse:(id)arg1 error:(id *)arg2;
-+ (id)createAddPairingRequetForPairingIdentity:(id)arg1 error:(id *)arg2;
++ (id)createAddPairingRequestForPairingIdentity:(id)arg1 error:(id *)arg2;
 
 @end
 

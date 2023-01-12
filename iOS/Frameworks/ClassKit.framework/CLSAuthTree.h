@@ -19,6 +19,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addNode:(id)arg1 parentStatusID:(id)arg2;
+- (long long)authStatusFor:(id)arg1;
 - (long long)authStatusAtIdentifierPath:(id)arg1;
 - (void)setAuthStatus:(long long)arg1 forIdentifier:(id)arg2 statusID:(id)arg3 parentStatusID:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface VUITransactionOffer : NSObject
@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
     NSArray *_videosPlayables;
     _Bool _initiateFamilySetup;
     NSDictionary *_offer;
+    NSURL *_sharedWatchUrl;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool initiateFamilySetup; // @synthesize initiateFamilySetup=_initiateFamilySetup;
+@property(readonly, nonatomic) NSURL *sharedWatchUrl; // @synthesize sharedWatchUrl=_sharedWatchUrl;
 @property(readonly, copy, nonatomic) NSDictionary *offer; // @synthesize offer=_offer;
 - (id)getCanonicalID;
 @property(readonly, nonatomic) NSArray *videosPlayables;

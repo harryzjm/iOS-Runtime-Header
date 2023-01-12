@@ -8,14 +8,14 @@
 
 #import <ControlCenterUIKit/CCUIContentModuleBackgroundViewController-Protocol.h>
 
-@class CCUICAPackageView, MTVisualStylingProvider, NSArray, NSString, UIImageView, UILabel, UIView;
+@class CCUICAPackageView, NSArray, NSMutableDictionary, NSString, UIImageView, UILabel, UIView;
 
 @interface CCUICustomContentModuleBackgroundViewController : UIViewController <CCUIContentModuleBackgroundViewController>
 {
     UILabel *_headerTitleLabel;
     UIImageView *_headerImageView;
     CCUICAPackageView *_packageView;
-    MTVisualStylingProvider *_visualStylingProvider;
+    NSMutableDictionary *_categoriesToVisualStylingProviders;
     NSArray *_footerButtons;
     UIView *_customHeaderView;
     UIView *_customFooterView;
@@ -28,6 +28,7 @@
 @property(nonatomic) _Bool positionHeaderToRightInLandscapeRight; // @synthesize positionHeaderToRightInLandscapeRight=_positionHeaderToRightInLandscapeRight;
 @property(nonatomic) double expandedContentModuleWidth; // @synthesize expandedContentModuleWidth=_expandedContentModuleWidth;
 @property(nonatomic) double expandedContentModuleHeight; // @synthesize expandedContentModuleHeight=_expandedContentModuleHeight;
+- (void)_visualStylingProvider:(id)arg1 didChangeForCategory:(long long)arg2 outgoingVisualStylingProvider:(id)arg3;
 - (struct CGPoint)_footerCenterForBounds:(struct CGRect)arg1;
 - (void)_updateCustomFooterViewLayoutIfNecessary;
 - (void)_updateFooterButtonsLayoutIfNecessary;
@@ -35,10 +36,13 @@
 - (id)_titleFont;
 - (void)_updateTitleFont;
 - (void)_contentSizeCategoryDidChange;
-- (void)_updateHeaderGlyphVisualStyling;
+- (void)_updateHeaderGlyphVisualStylingWithProvider:(id)arg1;
 - (struct CGPoint)_headerCenterForBounds:(struct CGRect)arg1;
 - (void)_updateCustomHeaderViewLayoutIfNecessary;
 - (void)_updateHeaderLayoutIfNecessary;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
+- (id)requiredVisualStyleCategories;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGRect)effectiveContentFrameForContainerFrame:(struct CGRect)arg1;
 - (void)setGlyphState:(id)arg1;

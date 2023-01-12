@@ -13,16 +13,16 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *groups;
     MISSING_TYPE *tableView;
-    MISSING_TYPE *placeholderImage;
-    MISSING_TYPE *naImage;
-    MISSING_TYPE *images;
     MISSING_TYPE *editor;
+    MISSING_TYPE *image;
+    MISSING_TYPE *contentSizeObserver;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -9,9 +9,16 @@
 @interface CLReductiveFilterOptions : NSObject
 {
     unsigned long long _beaconType;
+    double _transmitPower;
+    double _biasRateInMeasurement;
+    double _applyRangeEstimation;
 }
 
+@property(nonatomic) double applyRangeEstimation; // @synthesize applyRangeEstimation=_applyRangeEstimation;
+@property(nonatomic) double biasRateInMeasurement; // @synthesize biasRateInMeasurement=_biasRateInMeasurement;
+@property(readonly, nonatomic) double transmitPower; // @synthesize transmitPower=_transmitPower;
 @property(readonly, nonatomic) unsigned long long beaconType; // @synthesize beaconType=_beaconType;
+- (id)initWithBeaconType:(unsigned long long)arg1 transmitPower:(double)arg2;
 - (id)initWithBeaconType:(unsigned long long)arg1;
 - (id)init;
 

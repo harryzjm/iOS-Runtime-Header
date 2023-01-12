@@ -8,13 +8,12 @@
 
 #import <TransparencyDetailsView/WKNavigationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UINavigationBar, UINavigationItem, WKWebView;
+@class NSDictionary, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, WKWebView;
 @protocol NewsTransparencyViewControllerDelegate;
 
 @interface NewsTransparencyViewController : UIViewController <WKNavigationDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
-    UINavigationItem *navBarItem;
     UIBarButtonItem *leftButton;
     UIViewController *debugViewController;
     id <NewsTransparencyViewControllerDelegate> _delegate;
@@ -26,13 +25,11 @@
     NSDictionary *_transparencyDetailsDictionary;
     UILabel *_errorLabel;
     WKWebView *_myNewsPrivacyWebView;
-    UINavigationBar *_transparencyNavBar;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isClientTodayWidget; // @synthesize isClientTodayWidget=_isClientTodayWidget;
 @property(nonatomic) _Bool isiPad; // @synthesize isiPad=_isiPad;
-@property(retain, nonatomic) UINavigationBar *transparencyNavBar; // @synthesize transparencyNavBar=_transparencyNavBar;
 @property(retain, nonatomic) WKWebView *myNewsPrivacyWebView; // @synthesize myNewsPrivacyWebView=_myNewsPrivacyWebView;
 @property(retain, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
 @property(retain, nonatomic) NSDictionary *transparencyDetailsDictionary; // @synthesize transparencyDetailsDictionary=_transparencyDetailsDictionary;
@@ -55,7 +52,6 @@
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)_showErrorMessage:(id)arg1;
 - (void)loadWebView;
-- (void)viewDidLayoutSubviews;
 - (void)_commonInit;
 - (void)requestUserPassCodeUnlockUIWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)isDeviceLocked;

@@ -38,6 +38,7 @@
 @property(readonly, nonatomic) double startTimestamp;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly, nonatomic) CHEncodedStrokeIdentifier *encodedStrokeIdentifier; // @synthesize encodedStrokeIdentifier=_encodedStrokeIdentifier;
+@property(readonly, nonatomic) _Bool isFinished;
 @property(readonly, retain, nonatomic) id <CHStrokeIdentifier> strokeIdentifier;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

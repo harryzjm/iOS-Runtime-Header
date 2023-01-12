@@ -6,11 +6,13 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICMusicSubscriptionPlaybackURLRequest
 {
     _Bool _delegatedPlayback;
     NSString *_assetSourceStorefrontID;
     NSString *_cloudUniversalLibraryID;
+    NSString *_playbackAuthorizationToken;
     long long _requestType;
     unsigned long long _storeCloudID;
     long long _storePurchasedAdamID;
@@ -23,6 +25,7 @@
 @property(nonatomic) unsigned long long storeCloudID; // @synthesize storeCloudID=_storeCloudID;
 @property(nonatomic) long long requestType; // @synthesize requestType=_requestType;
 @property(nonatomic, getter=isDelegatedPlayback) _Bool delegatedPlayback; // @synthesize delegatedPlayback=_delegatedPlayback;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
 @property(copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
 - (void)buildStoreURLRequestWithURLRequest:(id)arg1 builderProperties:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

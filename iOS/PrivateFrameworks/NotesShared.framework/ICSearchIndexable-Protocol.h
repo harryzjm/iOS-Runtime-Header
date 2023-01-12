@@ -9,24 +9,24 @@
 @class CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSManagedObjectContext, NSManagedObjectID, NSString, NSURL;
 
 @protocol ICSearchIndexable <NSObject>
-- (CSSearchableItemAttributeSet *)userActivityContentAttributeSet;
-- (CSSearchableItemAttributeSet *)searchableItemAttributeSet;
-- (NSString *)searchDomainIdentifier;
-- (NSArray *)authorsExcludingCurrentUser;
-- (_Bool)isDeletable;
-- (_Bool)isMovable;
-- (_Bool)isHiddenFromSearch;
-- (_Bool)searchResultCanBeDeletedFromNoteContext;
-- (unsigned long long)searchResultType;
-- (unsigned long long)searchResultsSection;
-- (NSDate *)modificationDate;
-- (NSDate *)creationDate;
-- (NSString *)contentIdentifier;
-- (NSString *)searchIndexingIdentifier;
-- (NSString *)dataSourceIdentifier;
-- (long long)visibilityTestingType;
-- (NSManagedObjectID *)objectID;
-- (NSManagedObjectContext *)managedObjectContext;
+@property(readonly, nonatomic) CSSearchableItemAttributeSet *userActivityContentAttributeSet;
+@property(readonly, nonatomic) CSSearchableItemAttributeSet *searchableItemAttributeSet;
+@property(readonly, copy, nonatomic) NSString *searchDomainIdentifier;
+@property(readonly, copy, nonatomic) NSString *dataSourceIdentifier;
+@property(readonly, nonatomic) NSArray *authorsExcludingCurrentUser;
+@property(readonly, nonatomic) _Bool isDeletable;
+@property(readonly, nonatomic) _Bool isMovable;
+@property(readonly, nonatomic) _Bool isHiddenFromSearch;
+@property(readonly, nonatomic) _Bool searchResultCanBeDeletedFromNoteContext;
+@property(readonly, nonatomic) unsigned long long searchResultType;
+@property(readonly, nonatomic) unsigned long long searchResultsSection;
+@property(readonly, copy, nonatomic) NSDate *modificationDate;
+@property(readonly, copy, nonatomic) NSDate *creationDate;
+@property(readonly, copy, nonatomic) NSString *contentIdentifier;
+@property(readonly, copy, nonatomic) NSString *searchIndexingIdentifier;
+@property(readonly, nonatomic) long long visibilityTestingType;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @optional
 - (NSData *)dataForTypeIdentifier:(NSString *)arg1;

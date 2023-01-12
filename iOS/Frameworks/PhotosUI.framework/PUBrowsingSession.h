@@ -30,8 +30,6 @@
     PUTileAnimator *_tileAnimator;
 }
 
-+ (id)uiKeyCommandAdditionalActions;
-+ (id)uiKeyCommandAvailableActions;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PUTileAnimator *tileAnimator; // @synthesize tileAnimator=_tileAnimator;
 @property(readonly, nonatomic) PXAssetEditOperationManager *editOperationManager; // @synthesize editOperationManager=_editOperationManager;
@@ -56,12 +54,6 @@
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4 lowMemoryMode:(_Bool)arg5;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3;
 - (id)init;
-- (void)_toggleDetails;
-- (void)_setVideoToDesiredPlayState:(long long)arg1;
-- (void)_performAdditionalKeyCommand:(long long)arg1 withDelegate:(id)arg2;
-- (void)_performActionForActionType:(unsigned long long)arg1 withDelegate:(id)arg2;
-- (void)performKeyCommand:(id)arg1 withDelegate:(id)arg2;
-- (void)addKeyCommandsIntoArray:(id)arg1 withDelegate:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

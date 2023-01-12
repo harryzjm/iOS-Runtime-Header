@@ -11,6 +11,8 @@
 
 @interface UIDeferredMenuElement <_UIMenuLeaf>
 {
+    _Bool _cacheItems;
+    _Bool _isSignalingFulfillment;
     _Bool _requiresAuthenticatedInput;
     _Bool _fulfilled;
     unsigned long long _attributes;
@@ -22,7 +24,9 @@
     NSArray *_fulfilledElements;
 }
 
++ (id)elementWithUncachedProvider:(CDUnknownBlockType)arg1;
 + (id)elementWithProvider:(CDUnknownBlockType)arg1;
++ (id)_elementCachingItems:(_Bool)arg1 provider:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool fulfilled; // @synthesize fulfilled=_fulfilled;
 @property(readonly, copy, nonatomic) NSArray *fulfilledElements; // @synthesize fulfilledElements=_fulfilledElements;
@@ -35,6 +39,7 @@
 @property(nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool keepsMenuPresented;
 - (id)_validatedLeafWithAlternate:(id)arg1 target:(id)arg2 validation:(id)arg3;
 - (id)_resolvedTargetFromFirstTarget:(id)arg1;
 - (void)_performWithTarget:(id)arg1;
@@ -42,12 +47,13 @@
 - (long long)_leafKeyModifierFlags;
 - (id)_leafKeyInput;
 - (id)_leafAlternates;
+- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3 deferredElementVisit:(CDUnknownBlockType)arg4;
 - (id)_immutableCopy;
 - (_Bool)isLoadingPlaceholder;
 - (_Bool)isLeaf;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_fulfill;
+- (void)_fulfillIfNecessary;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

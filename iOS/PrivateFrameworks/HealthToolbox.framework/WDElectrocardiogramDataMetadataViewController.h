@@ -18,20 +18,25 @@ __attribute__((visibility("hidden")))
     _Bool _firstViewDidLayoutSubviews;
     _Bool _actionsEnabled;
     HKElectrocardiogram *_sample;
+    long long _activeAlgorithmVersion;
     id <HKDataMetadataViewControllerDelegate> _delegate;
     NSMutableArray *_sections;
     WDElectrocardiogramReportDataSource *_reportDataSource;
     HRElectrocardiogramReportGenerator *_reportGenerator;
+    long long _mode;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool actionsEnabled; // @synthesize actionsEnabled=_actionsEnabled;
+@property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) HRElectrocardiogramReportGenerator *reportGenerator; // @synthesize reportGenerator=_reportGenerator;
 @property(retain, nonatomic) WDElectrocardiogramReportDataSource *reportDataSource; // @synthesize reportDataSource=_reportDataSource;
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) __weak id <HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) long long activeAlgorithmVersion; // @synthesize activeAlgorithmVersion=_activeAlgorithmVersion;
 @property(nonatomic) _Bool firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property(retain, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
+- (long long)sampleAlgorithmVersion;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)deleteSampleTriggeredBySection:(id)arg1;
 - (void)presentPDFViewController;
@@ -56,8 +61,9 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)_localeOrDisplayTypeChange:(id)arg1;
+- (long long)_fetchActiveAlgorithmVersionWithHealthStore:(id)arg1;
 - (void)dealloc;
-- (id)initWithSample:(id)arg1 delegate:(id)arg2;
+- (id)initWithSample:(id)arg1 delegate:(id)arg2 mode:(long long)arg3 activeAlgorithmVersion:(id)arg4;
 
 @end
 

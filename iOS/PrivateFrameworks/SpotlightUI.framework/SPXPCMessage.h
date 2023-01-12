@@ -19,6 +19,7 @@
     NSObject<OS_xpc_object> *_x_reply;
     NSObject<OS_xpc_object> *_x_feedbackData;
     NSObject<OS_os_transaction> *_replyTransaction;
+    struct os_unfair_lock_s _lock;
     NSString *_name;
     NSDictionary *_info;
 }
@@ -39,6 +40,7 @@
 - (id)_initWithXPCMessage:(id)arg1 onConnection:(id)arg2;
 - (id)initWithName:(id)arg1 batchSize:(unsigned long long)arg2;
 - (id)initWithName:(id)arg1;
+- (id)init;
 
 @end
 

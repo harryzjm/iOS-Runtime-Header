@@ -6,32 +6,57 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, WebBookmark;
+#import <WebBookmarks/WBChange-Protocol.h>
 
-@interface WebBookmarkChange : NSObject
+@class NSArray, NSDictionary, NSString, WebBookmark;
+
+@interface WebBookmarkChange : NSObject <WBChange>
 {
     int _bookmarkID;
     int _parentID;
+    int _associatedBookmarkID;
     long long _changeType;
     WebBookmark *_bookmark;
     unsigned long long _modifiedAttributes;
+    NSArray *_bookmarks;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)replaceChangeWithBookmarks:(id)arg1 inFolderWithID:(int)arg2;
++ (id)reorderChangeWithBookmark:(id)arg1 afterBookmark:(id)arg2;
++ (id)moveChangeWithBookmark:(id)arg1 toFolderWithID:(int)arg2;
++ (id)deleteChangeWithBookmark:(id)arg1;
 + (id)bookmarkModifyChangeWithBookmark:(id)arg1;
 + (id)bookmarkAddChangeWithBookmark:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long modifiedAttributes; // @synthesize modifiedAttributes=_modifiedAttributes;
+@property(copy, nonatomic) NSArray *bookmarks; // @synthesize bookmarks=_bookmarks;
+@property(nonatomic) unsigned long long modifiedAttributes; // @synthesize modifiedAttributes=_modifiedAttributes;
 @property(readonly, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property(readonly, nonatomic) long long changeType; // @synthesize changeType=_changeType;
+@property(nonatomic) int associatedBookmarkID; // @synthesize associatedBookmarkID=_associatedBookmarkID;
 @property(nonatomic) int parentID; // @synthesize parentID=_parentID;
 @property(nonatomic) int bookmarkID; // @synthesize bookmarkID=_bookmarkID;
+@property(readonly, copy) NSString *description;
+- (void)updateChangeAfterUpdatingInMemoryID:(int)arg1 withDatabaseID:(int)arg2;
+@property(readonly, nonatomic) _Bool shouldSync;
+@property(readonly, nonatomic) long long objectType;
 - (_Bool)attributesMarkedAsModify:(unsigned long long)arg1;
 - (void)_setModifiedAttributesIfSupported;
 @property(readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)applyModificationsToBookmark:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithBookmark:(id)arg1 bookmarkID:(int)arg2 parentID:(int)arg3 associatedBookmarkID:(int)arg4 changeType:(long long)arg5;
 - (id)initWithBookmark:(id)arg1 bookmarkID:(int)arg2 parentID:(int)arg3 changeType:(long long)arg4;
+- (id)initWithBookmarkID:(int)arg1 parentID:(int)arg2 associatedBookmarkID:(int)arg3 changeType:(long long)arg4;
 - (id)initWithBookmarkID:(int)arg1 parentID:(int)arg2 changeType:(long long)arg3;
+- (id)initWithBookmarks:(id)arg1 parentID:(int)arg2 changeType:(long long)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

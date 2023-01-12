@@ -18,6 +18,7 @@
     CPUISongDetailsView *_songDetailsView;
     CPUIShadowImageView *_artworkViewBrick;
     UIFocusContainerGuide *_controlsFocusContainerGuide;
+    UIFocusContainerGuide *_bottomRegionFocusContainerGuide;
     NSArray *_activeConstraints;
     NSArray *_verticalSpacerLayoutGuides;
     NSLayoutConstraint *_songDetailsViewHeightConstraint;
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) NSLayoutConstraint *songDetailsViewHeightConstraint; // @synthesize songDetailsViewHeightConstraint=_songDetailsViewHeightConstraint;
 @property(retain, nonatomic) NSArray *verticalSpacerLayoutGuides; // @synthesize verticalSpacerLayoutGuides=_verticalSpacerLayoutGuides;
 @property(retain, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
+@property(retain, nonatomic) UIFocusContainerGuide *bottomRegionFocusContainerGuide; // @synthesize bottomRegionFocusContainerGuide=_bottomRegionFocusContainerGuide;
 @property(retain, nonatomic) UIFocusContainerGuide *controlsFocusContainerGuide; // @synthesize controlsFocusContainerGuide=_controlsFocusContainerGuide;
 @property(readonly, nonatomic) CPUIShadowImageView *artworkViewBrick; // @synthesize artworkViewBrick=_artworkViewBrick;
 @property(readonly, nonatomic) CPUISongDetailsView *songDetailsView; // @synthesize songDetailsView=_songDetailsView;
@@ -36,7 +38,7 @@
 @property(readonly, nonatomic) id <CPUINowPlayingLayoutProtocol> nowPlayingLayout; // @synthesize nowPlayingLayout=_nowPlayingLayout;
 - (id)_constraintsForNowPlayingLayout:(id)arg1;
 - (id)_verticalSpacerLayoutGuidesForNowPlayingLayout:(id)arg1;
-- (void)recalculateLayout:(_Bool)arg1 allowsAlbumArt:(_Bool)arg2 hasDataSource:(_Bool)arg3;
+- (void)recalculateLayout:(_Bool)arg1 allowsAlbumArt:(_Bool)arg2 hasDataSource:(_Bool)arg3 viewArea:(struct CGRect)arg4 safeArea:(struct CGRect)arg5 rightHandDrive:(_Bool)arg6;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

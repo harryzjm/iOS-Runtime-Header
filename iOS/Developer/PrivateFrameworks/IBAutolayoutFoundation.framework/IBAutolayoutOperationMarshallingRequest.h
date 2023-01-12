@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBObjectBasedMarshallingRequest.h>
-
 @class IBAutolayoutArbitrationUnit, IBAutolayoutArbitrationUnitSparseRepresentation;
 
-@interface IBAutolayoutOperationMarshallingRequest : IBObjectBasedMarshallingRequest
+@interface IBAutolayoutOperationMarshallingRequest
 {
     IBAutolayoutArbitrationUnitSparseRepresentation *_sparseRepresentation;
     IBAutolayoutArbitrationUnit *_arbitrationUnit;

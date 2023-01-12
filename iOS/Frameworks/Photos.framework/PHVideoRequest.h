@@ -23,6 +23,8 @@
 @property(readonly, nonatomic) __weak id <PHMediaRequestDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)startRequest;
 - (void)cancel;
+- (long long)downloadPriority;
+- (long long)downloadIntent;
 - (_Bool)isNetworkAccessAllowed;
 - (_Bool)isSynchronous;
 - (void)_handleResultVideoURL:(id)arg1 info:(id)arg2 error:(id)arg3;

@@ -4,24 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTTransientObjectProtocol-Protocol.h>
 
 @class NSString, RTInvocationDispatcher;
-@protocol OS_dispatch_queue;
 
-@interface RTEventManager : NSObject <RTTransientObjectProtocol>
+@interface RTEventManager <RTTransientObjectProtocol>
 {
     _Bool _accessToEventsGranted;
     RTInvocationDispatcher *_invocationDispatcher;
     id _eventStore;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool accessToEventsGranted; // @synthesize accessToEventsGranted=_accessToEventsGranted;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) id eventStore; // @synthesize eventStore=_eventStore;
 @property(retain, nonatomic) RTInvocationDispatcher *invocationDispatcher; // @synthesize invocationDispatcher=_invocationDispatcher;
 - (void)fetchEventsBetweenStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -46,6 +41,7 @@
 - (id)eventsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 calendars:(id)arg3;
 - (void)transientObjectDidReleaseBackingObject:(id)arg1;
 - (void)transientObjectDidCreateBackingObject:(id)arg1;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEventStore:(id)arg1;
 - (id)init;
 

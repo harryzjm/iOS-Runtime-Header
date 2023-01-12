@@ -8,10 +8,11 @@
 
 @interface TSCH3DChartGridlinesSceneObject
 {
-    TSCH3DPrefilteredLineRenderer *mRenderer;
+    TSCH3DPrefilteredLineRenderer *_renderer;
 }
 
 + (id)partWithAxes:(id)arg1;
+- (void).cxx_destruct;
 - (void)postGetBounds:(id)arg1;
 - (void)primeRenderCaches:(id)arg1;
 - (void)getBounds:(id)arg1;
@@ -21,7 +22,6 @@
 - (_Bool)p_shouldRenderInFrontForPipeline:(id)arg1;
 - (tmat4x4_3074befe)p_gridlineTransformForPipeline:(id)arg1;
 - (id)effects;
-- (void)dealloc;
 - (id)init;
 
 @end

@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 @property __weak _QLCacheThread *cacheThread; // @synthesize cacheThread=_cacheThread;
 @property unsigned long long memoryUsed; // @synthesize memoryUsed=_memoryUsed;
+- (void)removeCachedThumbnailsFromUninstalledFileProvidersWithIdentifiers:(id)arg1;
 - (void)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(id)arg1;
 - (_Bool)hasThumbnailDataToSave;
 - (unsigned long long)thumbnailToSaveCount;

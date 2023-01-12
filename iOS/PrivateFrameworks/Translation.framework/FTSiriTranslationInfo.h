@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_aedd1960)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_aedd1960)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *translation_phrase;
 @property(readonly, nonatomic) NSArray *itn_alignments;
 @property(readonly, nonatomic) NSString *post_itn_recognition;

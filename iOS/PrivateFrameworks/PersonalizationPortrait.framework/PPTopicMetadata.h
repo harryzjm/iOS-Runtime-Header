@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) unsigned short impressionCount; // @synthesize impressionCount=_impressionCount;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToTopicMetadata:(id)arg1;
 - (unsigned long long)hash;

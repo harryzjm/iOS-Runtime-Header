@@ -48,6 +48,9 @@
     id <CLKMonochromeFilterProvider> _filterProvider;
     CDUnknownBlockType _renderStatsHandler;
     struct CGSize _maxSize;
+    struct CGAffineTransform _editingTransform;
+    struct CGAffineTransform _tritiumTransform;
+    struct CGAffineTransform _contentTransform;
 }
 
 - (void).cxx_destruct;
@@ -63,6 +66,9 @@
 @property(nonatomic) __weak id <NTKComplicationDisplayWrapperViewAnimationDelegate> animationDelegate; // @synthesize animationDelegate=_animationDelegate;
 @property(copy, nonatomic) CDUnknownBlockType touchUpInsideHandler; // @synthesize touchUpInsideHandler=_touchUpInsideHandler;
 @property(copy, nonatomic) CDUnknownBlockType touchDownHandler; // @synthesize touchDownHandler=_touchDownHandler;
+@property(nonatomic) struct CGAffineTransform contentTransform; // @synthesize contentTransform=_contentTransform;
+@property(nonatomic) struct CGAffineTransform tritiumTransform; // @synthesize tritiumTransform=_tritiumTransform;
+@property(nonatomic) struct CGAffineTransform editingTransform; // @synthesize editingTransform=_editingTransform;
 @property(nonatomic) _Bool tapEnabled; // @synthesize tapEnabled=_tapEnabled;
 @property(nonatomic) _Bool editing; // @synthesize editing=_editing;
 @property(nonatomic) _Bool paused; // @synthesize paused=_paused;
@@ -103,6 +109,8 @@
 - (void)_replaceDisplayWithDisplayClass:(Class)arg1 template:(id)arg2 reason:(long long)arg3 animation:(unsigned long long)arg4 animationType:(unsigned long long)arg5 animationFraction:(float)arg6;
 - (void)_setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3 animationType:(unsigned long long)arg4 animationFraction:(float)arg5;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
+- (void)setTransform:(struct CGAffineTransform)arg1;
+- (void)_updateConcatenatedTransform;
 - (void)dealloc;
 - (id)initWithCustomTemplateDisplay:(id)arg1 isDetachedDisplay:(_Bool)arg2 family:(long long)arg3;
 - (id)initWithLegacyDisplay:(id)arg1;

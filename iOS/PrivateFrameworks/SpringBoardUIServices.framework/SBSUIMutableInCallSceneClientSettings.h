@@ -12,15 +12,23 @@
     _Bool _transientOverlayHomeIndicatorAutoHidden;
     _Bool _shouldBecomeVisibleWhenWakingDisplay;
     _Bool _callConnected;
-    int _preferredStatusBarStyleOverridesToSuppress;
+    _Bool _prefersBannersHiddenFromClonedDisplay;
+    _Bool _prefersHiddenWhenDismissed;
+    _Bool _shouldNeverBeShownWhenLaunchingFaceTime;
     unsigned long long _preferredHardwareButtonEventTypes;
+    unsigned long long _preferredStatusBarStyleOverridesToSuppress;
+    struct UIEdgeInsets _expanseHUDDodgingInsets;
 }
 
+@property(nonatomic) _Bool shouldNeverBeShownWhenLaunchingFaceTime; // @synthesize shouldNeverBeShownWhenLaunchingFaceTime=_shouldNeverBeShownWhenLaunchingFaceTime;
+@property(nonatomic) _Bool prefersHiddenWhenDismissed; // @synthesize prefersHiddenWhenDismissed=_prefersHiddenWhenDismissed;
+@property(nonatomic) _Bool prefersBannersHiddenFromClonedDisplay; // @synthesize prefersBannersHiddenFromClonedDisplay=_prefersBannersHiddenFromClonedDisplay;
+@property(nonatomic) struct UIEdgeInsets expanseHUDDodgingInsets; // @synthesize expanseHUDDodgingInsets=_expanseHUDDodgingInsets;
 @property(nonatomic, getter=isCallConnected) _Bool callConnected; // @synthesize callConnected=_callConnected;
 @property(nonatomic) _Bool shouldBecomeVisibleWhenWakingDisplay; // @synthesize shouldBecomeVisibleWhenWakingDisplay=_shouldBecomeVisibleWhenWakingDisplay;
 @property(nonatomic) _Bool transientOverlayHomeIndicatorAutoHidden; // @synthesize transientOverlayHomeIndicatorAutoHidden=_transientOverlayHomeIndicatorAutoHidden;
 @property(nonatomic) _Bool supportsDeviceLockActions; // @synthesize supportsDeviceLockActions=_supportsDeviceLockActions;
-@property(nonatomic) int preferredStatusBarStyleOverridesToSuppress; // @synthesize preferredStatusBarStyleOverridesToSuppress=_preferredStatusBarStyleOverridesToSuppress;
+@property(nonatomic) unsigned long long preferredStatusBarStyleOverridesToSuppress; // @synthesize preferredStatusBarStyleOverridesToSuppress=_preferredStatusBarStyleOverridesToSuppress;
 @property(nonatomic) unsigned long long preferredHardwareButtonEventTypes; // @synthesize preferredHardwareButtonEventTypes=_preferredHardwareButtonEventTypes;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;

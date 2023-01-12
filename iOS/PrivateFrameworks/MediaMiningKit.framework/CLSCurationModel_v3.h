@@ -21,8 +21,9 @@
 - (void)enumerateSignalModelsUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)isShowcasingFoodWithSceneClassification:(id)arg1;
 - (id)newProcessedSignals;
+- (_Bool)filterForFoodieWithClassification:(id)arg1;
 - (_Bool)isJunkWithJunkClassification:(id)arg1;
-- (_Bool)isUtilityForMemoriesWithAsset:(id)arg1;
+- (_Bool)isUtilityForMemoriesWithAsset:(id)arg1 curationContext:(id)arg2;
 - (_Bool)isUtilityForMemoriesWithProcessedSignals:(id)arg1;
 - (_Bool)hasPoorResolutionWithAsset:(id)arg1;
 - (_Bool)avoidIfPossibleForKeyAssetWithAsset:(id)arg1;

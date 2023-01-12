@@ -50,6 +50,7 @@
 @property(copy, nonatomic) NSNumber *dsid; // @synthesize dsid=_dsid;
 @property(copy, nonatomic) NSString *serverId; // @synthesize serverId=_serverId;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)sanitizePhoneNumber:(id)arg1;
 - (_Bool)isPhoneNumber;
 - (void)clearFavoriteOrder;
 - (id)recordId;

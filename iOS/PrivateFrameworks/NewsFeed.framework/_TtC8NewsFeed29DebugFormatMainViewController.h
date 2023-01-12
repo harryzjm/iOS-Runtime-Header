@@ -18,8 +18,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *editorViewController;
     MISSING_TYPE *editorContainerController;
     MISSING_TYPE *layoutViewController;
+    MISSING_TYPE *metricViewController;
     MISSING_TYPE *bindingViewController;
     MISSING_TYPE *assetViewController;
+    MISSING_TYPE *compilerViewController;
+    MISSING_TYPE *testViewController;
     MISSING_TYPE *formatManager;
     MISSING_TYPE *packages;
 }
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewWillLayoutSubviews;
+- (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

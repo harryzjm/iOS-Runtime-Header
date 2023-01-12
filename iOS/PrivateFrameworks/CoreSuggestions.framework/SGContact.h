@@ -9,17 +9,17 @@
 #import <CoreSuggestions/NSCopying-Protocol.h>
 #import <CoreSuggestions/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, SGDateComponents, SGName, SGRecordId;
+@class NSArray, NSString, SGDateComponents, SGName, SGRecordId, _PASCachedResult;
 
 @interface SGContact : NSObject <NSCopying, NSSecureCoding>
 {
+    _PASCachedResult *_cachedDetailForRecordIdMap;
     int _updatedFields;
     SGRecordId *_recordId;
     SGName *_name;
     NSArray *_emailAddresses;
     NSArray *_phones;
     NSArray *_postalAddresses;
-    NSArray *_instantMessageAddresses;
     NSArray *_socialProfiles;
     SGDateComponents *_birthday;
     NSString *_photoPath;
@@ -28,8 +28,8 @@
 }
 
 + (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5;
-+ (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7 birthday:(id)arg8 photoPath:(id)arg9;
-+ (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7;
++ (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 socialProfiles:(id)arg6 birthday:(id)arg7 photoPath:(id)arg8;
++ (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 socialProfiles:(id)arg6;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) int updatedFields; // @synthesize updatedFields=_updatedFields;
@@ -38,7 +38,6 @@
 @property(readonly, copy, nonatomic) NSString *photoPath; // @synthesize photoPath=_photoPath;
 @property(copy, nonatomic) SGDateComponents *birthday; // @synthesize birthday=_birthday;
 @property(copy, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
-@property(copy, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
 @property(copy, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
 @property(copy, nonatomic) NSArray *phones; // @synthesize phones=_phones;
 @property(copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
@@ -46,6 +45,7 @@
 @property(readonly, nonatomic) SGRecordId *recordId; // @synthesize recordId=_recordId;
 - (_Bool)hasNonTrivialInfo;
 - (id)cnContact;
+- (void)enumerateDetailsWithBlock:(CDUnknownBlockType)arg1;
 - (id)detailForRecordId:(id)arg1;
 - (_Bool)containsDetailSuggestions;
 - (_Bool)containsSuggestions;
@@ -57,7 +57,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7 birthday:(id)arg8 photoPath:(id)arg9;
+- (id)initWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 socialProfiles:(id)arg6 birthday:(id)arg7 photoPath:(id)arg8;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

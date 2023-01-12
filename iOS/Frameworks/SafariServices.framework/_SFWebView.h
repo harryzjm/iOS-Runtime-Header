@@ -24,10 +24,12 @@
     long long _navigationGesturePolicy;
     id <_SFWebViewDelegate> _delegate;
     UIView *_clippingView;
+    CDUnknownBlockType _tapResultHandler;
     struct UIEdgeInsets _hitTestInsets;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType tapResultHandler; // @synthesize tapResultHandler=_tapResultHandler;
 @property(readonly, nonatomic) _Bool hasBeenInWindow; // @synthesize hasBeenInWindow=_hasBeenInWindow;
 @property(nonatomic, getter=isObscuringContents) _Bool obscuringContents; // @synthesize obscuringContents=_obscuringContents;
 @property(nonatomic) __weak UIView *clippingView; // @synthesize clippingView=_clippingView;
@@ -49,12 +51,14 @@
 - (void)safeAreaInsetsDidChange;
 - (void)layoutSubviews;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)_isNavigationSwipeGestureRecognizer:(id)arg1;
 - (id)_enclosingViewForExposedRectComputation;
 - (void)_close;
 - (void)_setObscuredInsets:(struct UIEdgeInsets)arg1;
 - (void)setAllowsBackForwardNavigationGestures:(_Bool)arg1;
 - (void)_updateNavigationGesturesAllowed;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;
+- (void)didTapAtPoint:(struct CGPoint)arg1 withResult:(long long)arg2;
 - (void)didMoveToWindow;
 - (void)dealloc;
 

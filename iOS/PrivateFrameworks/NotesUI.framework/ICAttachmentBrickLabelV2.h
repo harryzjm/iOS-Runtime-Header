@@ -19,8 +19,8 @@
 @property(retain, nonatomic) UIColor *defaultTextColor; // @synthesize defaultTextColor=_defaultTextColor;
 @property(nonatomic) _Bool disableVibrancy; // @synthesize disableVibrancy=_disableVibrancy;
 @property(nonatomic) _Bool vibrant; // @synthesize vibrant=_vibrant;
-@property(retain, nonatomic) NSString *ic_stringValue;
-@property(retain, nonatomic) NSAttributedString *ic_attributedStringValue;
+@property(copy, nonatomic) NSString *ic_stringValue;
+@property(copy, nonatomic) NSAttributedString *ic_attributedStringValue;
 - (void)setTextColor:(id)arg1;
 - (id)text;
 - (void)setText:(id)arg1;

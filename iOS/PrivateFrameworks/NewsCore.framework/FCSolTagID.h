@@ -22,23 +22,13 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)discardedOrphanID;
-+ (id)orphanID;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isGroupable; // @synthesize isGroupable=_isGroupable;
-@property(nonatomic) _Bool isAutoFavorited; // @synthesize isAutoFavorited=_isAutoFavorited;
-@property(nonatomic) _Bool isFavorited; // @synthesize isFavorited=_isFavorited;
-@property(nonatomic) double specificity; // @synthesize specificity=_specificity;
-@property(nonatomic) unsigned long long whitelistLevel; // @synthesize whitelistLevel=_whitelistLevel;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithID:(id)arg1 subscibedTags:(id)arg2 autoFavoritedTags:(id)arg3 groupableTags:(id)arg4 whitelistLevel:(unsigned long long)arg5 rules:(id)arg6;
-- (id)initWithID:(id)arg1;
 
 @end
 

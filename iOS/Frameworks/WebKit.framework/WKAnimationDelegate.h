@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
 @interface WKAnimationDelegate : NSObject <CAAnimationDelegate>
 {
     unsigned long long _layerID;
-    struct RemoteLayerTreeHost *_layerTreeHost;
+    void *_layerTreeHost;
 }
 
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)animationDidStart:(id)arg1;
 - (void)invalidate;
-- (id)initWithLayerID:(unsigned long long)arg1 layerTreeHost:(struct RemoteLayerTreeHost *)arg2;
+- (id)initWithLayerID:(unsigned long long)arg1 layerTreeHost:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

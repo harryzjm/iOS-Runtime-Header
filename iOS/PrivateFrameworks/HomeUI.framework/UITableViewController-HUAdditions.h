@@ -6,7 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-@interface UITableViewController (HUAdditions)
+#import <HomeUI/HUViewControllerNavigationBarStateUpdateDelegate-Protocol.h>
+
+@interface UITableViewController (HUAdditions) <HUViewControllerNavigationBarStateUpdateDelegate>
+- (_Bool)hu_shouldScrollToTop;
 - (id)hu_getSelectedCell;
 - (id)hu_actionSheetWithTitle:(id)arg1 message:(id)arg2 indexPath:(id)arg3;
 @end

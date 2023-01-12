@@ -40,7 +40,6 @@
 @property(retain, nonatomic) NSMutableDictionary *idsKeys; // @synthesize idsKeys=_idsKeys;
 @property(retain, nonatomic) HMFNetServiceBrowser *serviceBrowser; // @synthesize serviceBrowser=_serviceBrowser;
 @property(nonatomic) unsigned long long residentProvisioningStatus; // @synthesize residentProvisioningStatus=_residentProvisioningStatus;
-- (id)logIdentifier;
 - (void)netServiceBrowser:(id)arg1 didAddService:(id)arg2;
 - (void)netService:(id)arg1 didUpdateTXTRecord:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;

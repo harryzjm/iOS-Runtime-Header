@@ -5,18 +5,19 @@
 //
 
 #import <StoreKit/ASDNotificationCenterDialogObserver-Protocol.h>
+#import <StoreKit/ASDStoreKitStatusReceiverProtocol-Protocol.h>
+#import <StoreKit/ASDStoreKitTransactionReceiverProtocol-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary;
 
-@protocol ASDStoreKitClientProtocol <ASDNotificationCenterDialogObserver>
-- (void)shouldContinueTransaction:(NSDictionary *)arg1 withNewStorefront:(NSString *)arg2 replyBlock:(void (^)(_Bool))arg3;
-- (void)storefrontChanged:(NSDictionary *)arg1;
-- (void)downloadRemoved:(NSDictionary *)arg1;
-- (void)downloadStatusChanged:(NSDictionary *)arg1;
-- (void)downloadAdded:(NSDictionary *)arg1;
-- (void)removedTransactions:(NSArray *)arg1;
+@protocol ASDStoreKitClientProtocol <ASDStoreKitStatusReceiverProtocol, ASDStoreKitTransactionReceiverProtocol, ASDNotificationCenterDialogObserver>
 - (void)updatedTransactions:(NSArray *)arg1;
+- (void)storefrontChanged:(NSDictionary *)arg1;
+- (void)removedTransactions:(NSArray *)arg1;
 - (void)removedEntitlementsForProductIdentifiers:(NSArray *)arg1;
+- (void)downloadStatusChanged:(NSDictionary *)arg1;
+- (void)downloadRemoved:(NSDictionary *)arg1;
+- (void)downloadAdded:(NSDictionary *)arg1;
 - (void)askToShowMessageWithReplyBlock:(void (^)(_Bool))arg1;
 @end
 

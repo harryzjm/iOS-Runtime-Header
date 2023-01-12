@@ -10,18 +10,26 @@
 
 @interface TIKeyboardInteractionProtocolEventCandidateAccepted <TIKeyboardInteractionProtocolEvent>
 {
+    _Bool _predictionBarHit;
+    _Bool _useCandidateSelection;
     TIKeyboardCandidate *_candWord;
     TIKeyboardInput *_input;
     TIDocumentState *_documentState;
     NSString *_context;
     NSString *_inputStem;
-    _Bool _predictionBarHit;
-    _Bool _useCandidateSelection;
     long long _candidateIndex;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long candidateIndex; // @synthesize candidateIndex=_candidateIndex;
+@property(readonly, nonatomic) _Bool useCandidateSelection; // @synthesize useCandidateSelection=_useCandidateSelection;
+@property(readonly, nonatomic) _Bool predictionBarHit; // @synthesize predictionBarHit=_predictionBarHit;
+@property(readonly, nonatomic) NSString *inputStem; // @synthesize inputStem=_inputStem;
+@property(readonly, nonatomic) NSString *context; // @synthesize context=_context;
+@property(readonly, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
+@property(readonly, nonatomic) TIKeyboardInput *input; // @synthesize input=_input;
+@property(readonly, nonatomic) TIKeyboardCandidate *candWord; // @synthesize candWord=_candWord;
 @property(readonly, copy) NSString *description;
 - (void)sendTo:(id)arg1;
 - (id)initWithCoder:(id)arg1;

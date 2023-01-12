@@ -12,9 +12,12 @@
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 
 // Remaining properties
 @property(nonatomic) long long direction; // @dynamic direction;
-@property(copy, nonatomic) NSNumber *duration; // @dynamic duration;
+@property(nonatomic, retain) NSNumber *duration; // @dynamic duration;
+
 @end
 

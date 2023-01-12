@@ -14,15 +14,18 @@
 {
 }
 
-- (double)fingerDiameter;
+- (double)fingerWidth;
 - (_Bool)showInnerCircle;
 - (_Bool)showFingerOutlines;
 - (double)fingerInnerCircleInnerRadius;
-- (double)fingerOuterRadius;
 - (double)fingerInnerRadius;
-- (double)innerCircleStrokeOutlineWidth;
+- (double)innerCircleStrokeWidth;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
+- (double)unpressedScale;
+- (double)unpressedAlpha;
+- (double)pressedScale;
+- (double)pressedAlpha;
 - (_Bool)useSystemFilters;
 - (id)pressedCircularProgressFillColor;
 - (id)circularProgressFillColor;

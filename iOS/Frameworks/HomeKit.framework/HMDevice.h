@@ -10,25 +10,25 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMFKey, HMFUnfairLock, NSArray, NSString, NSUUID;
+@class HMFKey, NSArray, NSString, NSUUID;
 
 @interface HMDevice : NSObject <HMFObject, HMObjectMerge, NSSecureCoding>
 {
-    NSString *_idsDestination;
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     _Bool _currentDevice;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMFKey *_rapportIRK;
-    NSUUID *_idsIdentifier;
+    NSString *_idsDestination;
     NSUUID *_uuid;
+    NSUUID *_idsIdentifier;
 }
 
 + (id)shortDescription;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly, copy) NSUUID *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
+@property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly, getter=isCurrentDevice) _Bool currentDevice; // @synthesize currentDevice=_currentDevice;
 @property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property(readonly, copy) NSString *description;
@@ -39,11 +39,13 @@
 - (id)initWithCoder:(id)arg1;
 - (id)IDSDestinationForIDSService:(id)arg1;
 - (id)IDSDeviceForIDSService:(id)arg1;
+@property(readonly, copy) NSString *idsDestination; // @synthesize idsDestination=_idsDestination;
 @property(copy) HMFKey *rapportIRK; // @synthesize rapportIRK=_rapportIRK;
 @property(copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)initWithUUID:(id)arg1 name:(id)arg2 isCurrentDevice:(_Bool)arg3 idsIdentifier:(id)arg4 idsDestination:(id)arg5 rapportIRK:(id)arg6;
 - (id)init;
 
 // Remaining properties

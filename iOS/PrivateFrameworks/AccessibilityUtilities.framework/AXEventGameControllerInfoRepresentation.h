@@ -28,13 +28,23 @@
     double _shoulderButtonL2;
     double _leftJoystickX;
     double _leftJoystickY;
+    double _leftJoystickButton;
     double _rightJoystickX;
     double _rightJoystickY;
+    double _rightJoystickButton;
+    double _menuButton;
+    double _viewButton;
+    double _homeButton;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) double homeButton; // @synthesize homeButton=_homeButton;
+@property(nonatomic) double viewButton; // @synthesize viewButton=_viewButton;
+@property(nonatomic) double menuButton; // @synthesize menuButton=_menuButton;
+@property(nonatomic) double rightJoystickButton; // @synthesize rightJoystickButton=_rightJoystickButton;
 @property(nonatomic) double rightJoystickY; // @synthesize rightJoystickY=_rightJoystickY;
 @property(nonatomic) double rightJoystickX; // @synthesize rightJoystickX=_rightJoystickX;
+@property(nonatomic) double leftJoystickButton; // @synthesize leftJoystickButton=_leftJoystickButton;
 @property(nonatomic) double leftJoystickY; // @synthesize leftJoystickY=_leftJoystickY;
 @property(nonatomic) double leftJoystickX; // @synthesize leftJoystickX=_leftJoystickX;
 @property(nonatomic) double shoulderButtonL2; // @synthesize shoulderButtonL2=_shoulderButtonL2;
@@ -49,8 +59,14 @@
 @property(nonatomic) double directionPadLeft; // @synthesize directionPadLeft=_directionPadLeft;
 @property(nonatomic) double directionPadDown; // @synthesize directionPadDown=_directionPadDown;
 @property(nonatomic) double directionPadUp; // @synthesize directionPadUp=_directionPadUp;
+@property(readonly, nonatomic) _Bool isKeyboardTypeButtonPressed;
+@property(readonly, nonatomic) _Bool isShoulderButtonPressed;
+@property(readonly, nonatomic) _Bool isFaceButtonPressed;
+@property(readonly, nonatomic) _Bool isDirectionPadPressed;
+@property(readonly, nonatomic) _Bool isJoystickPressed;
 @property(readonly, nonatomic) _Bool leftJoystickActive;
 @property(readonly, nonatomic) _Bool rightJoystickActive;
+@property(readonly, nonatomic) NSString *description;
 - (id)accessibilityEventRepresentationTabularDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -58,7 +74,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

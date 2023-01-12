@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     double _width;
 }
 
-+ (id)configureCellWithElement:(id)arg1 existingCell:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) double width; // @synthesize width=_width;
 @property(retain, nonatomic) VUIFavoriteBannerLayout *bannerLayout; // @synthesize bannerLayout=_bannerLayout;

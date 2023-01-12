@@ -7,5 +7,8 @@
 #import <MediaPlaybackCore/MFPlayerItem-Protocol.h>
 
 @protocol MFQueuePlayerItem <MFPlayerItem>
+@property(nonatomic) double playbackStartTimeOverride;
+@property(readonly, nonatomic) _Bool isMovieOrTVShow;
+- (void)reset;
 @end
 

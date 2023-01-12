@@ -12,16 +12,20 @@
 {
     NSMutableDictionary *_fields;
     _Bool _isUpdated;
+    _Bool _isLogged;
     NSString *_name;
     NSDictionary *_desc;
 }
 
 - (void).cxx_destruct;
+@property _Bool isLogged; // @synthesize isLogged=_isLogged;
 @property(retain) NSDictionary *desc; // @synthesize desc=_desc;
 @property(retain) NSString *name; // @synthesize name=_name;
 - (void)addHistogramFieldWithSegments:(id)arg1 segments:(struct _HIDAnalyticsHistogramSegmentConfig *)arg2 count:(long long)arg3;
 - (void)setValue:(id)arg1;
 - (id)value;
+- (void)setStringValue:(id)arg1;
+- (void)setStringValue:(id)arg1 forField:(id)arg2;
 - (void)setIntegerValue:(unsigned long long)arg1;
 - (void)setIntegerValue:(unsigned long long)arg1 forField:(id)arg2;
 - (void)addField:(id)arg1;

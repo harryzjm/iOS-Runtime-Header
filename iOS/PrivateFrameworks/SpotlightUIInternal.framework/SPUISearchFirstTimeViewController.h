@@ -23,7 +23,7 @@
 @property _Bool hasBeenDisplayed; // @synthesize hasBeenDisplayed=_hasBeenDisplayed;
 - (double)idealContentHeight;
 - (void)updateViewCount;
-- (id)initWithSupportedDomains:(unsigned long long)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
+- (id)initWithDomains:(id)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
 
 @end
 

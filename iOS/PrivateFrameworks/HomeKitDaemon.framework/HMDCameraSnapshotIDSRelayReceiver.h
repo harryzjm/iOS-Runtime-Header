@@ -19,17 +19,19 @@
     HMDCameraIDSSessionInviterDeviceVerifier *_sessionInviterDeviceVerifier;
     NSUUID *_machOUUID;
     NSMutableData *_relayData;
-    unsigned long long _bytesToReceive;
-    unsigned long long _bytesSoFar;
+    NSMutableData *_expectedByteCountData;
+    unsigned long long _expectedByteCount;
+    unsigned long long _receivedByteCount;
     NSObject<OS_dispatch_source> *_socketSource;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_source> *socketSource; // @synthesize socketSource=_socketSource;
-@property unsigned long long bytesSoFar; // @synthesize bytesSoFar=_bytesSoFar;
-@property unsigned long long bytesToReceive; // @synthesize bytesToReceive=_bytesToReceive;
-@property(retain) NSMutableData *relayData; // @synthesize relayData=_relayData;
+@property unsigned long long receivedByteCount; // @synthesize receivedByteCount=_receivedByteCount;
+@property unsigned long long expectedByteCount; // @synthesize expectedByteCount=_expectedByteCount;
+@property(readonly) NSMutableData *expectedByteCountData; // @synthesize expectedByteCountData=_expectedByteCountData;
+@property(readonly) NSMutableData *relayData; // @synthesize relayData=_relayData;
 @property(readonly) NSUUID *machOUUID; // @synthesize machOUUID=_machOUUID;
 @property(readonly) HMDCameraIDSSessionInviterDeviceVerifier *sessionInviterDeviceVerifier; // @synthesize sessionInviterDeviceVerifier=_sessionInviterDeviceVerifier;
 @property(readonly) __weak id <HMDCameraSnapshotIDSRelayReceiverDelegate> delegate; // @synthesize delegate=_delegate;

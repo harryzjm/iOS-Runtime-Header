@@ -13,8 +13,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_generateRestoreEventSyncCompleteWithProfile:(id)arg1 pullCompleteDate:(id)arg2;
-- (void)_recordSuccessfulPull;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 

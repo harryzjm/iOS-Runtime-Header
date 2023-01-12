@@ -20,8 +20,8 @@
     } _flags;
     struct os_unfair_lock_s _retainedObjectsLock;
     struct os_unfair_lock_s _handlerLock;
-    struct vector<void (^)(id<MTLCommandBuffer>), std::__1::allocator<void (^)(id<MTLCommandBuffer>)>> _scheduledHandlers;
-    struct vector<void (^)(id<MTLCommandBuffer>), std::__1::allocator<void (^)(id<MTLCommandBuffer>)>> _completedHandlers;
+    struct vector<void (^)(id<MTLCommandBuffer>), std::allocator<void (^)(id<MTLCommandBuffer>)>> _scheduledHandlers;
+    struct vector<void (^)(id<MTLCommandBuffer>), std::allocator<void (^)(id<MTLCommandBuffer>)>> _completedHandlers;
     _Bool _didInvokeHandlers;
     CDUnknownBlockType _perfSampleHandlerBlock;
     _Bool _StatEnabled;
@@ -29,6 +29,7 @@
     NSMutableSet *_retainedObjects;
 }
 
++ (id)unwrapMTLComputePassDescriptorInternal:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property _Bool useRetainedObjectsLock; // @synthesize useRetainedObjectsLock=_useRetainedObjectsLock;
@@ -69,6 +70,9 @@
 - (id)unwrapMTLBlitPassDescriptor:(id)arg1;
 - (id)unwrapMTLComputePassDescriptor:(id)arg1;
 - (id)unwrapMTLRenderPassDescriptor:(id)arg1;
+- (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 values:(const unsigned long long *)arg3 indices:(const unsigned long long *)arg4 count:(unsigned long long)arg5;
+- (void)encodeDashboardFinalizeForResourceGroup:(id)arg1 dashboard:(unsigned long long)arg2 value:(unsigned long long)arg3 forIndex:(unsigned long long)arg4;
+- (void)encodeDashboardTagForResourceGroup:(id)arg1;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 - (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;

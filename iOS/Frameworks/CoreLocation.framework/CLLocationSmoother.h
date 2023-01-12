@@ -15,6 +15,7 @@
 }
 
 @property(nonatomic) id <CLLocationManagerDelegateInternal> delegate;
+- (void)smoothLocations:(id)arg1 workoutActivityType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)smoothLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)smoothLocations:(id)arg1;
 @property(readonly, retain, nonatomic) _CLLocationSmootherProxy *locationManagerSmootherProxy;

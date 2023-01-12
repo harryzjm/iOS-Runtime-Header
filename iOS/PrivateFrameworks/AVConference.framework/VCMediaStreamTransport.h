@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 @class AVCBasebandCongestionDetector, VCMediaStreamConfig;
-@protocol VCMediaStreamTransportDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaStreamTransport : NSObject
@@ -19,12 +18,17 @@ __attribute__((visibility("hidden")))
     AVCBasebandCongestionDetector *_basebandCongestionDetector;
     int _payloadType;
     CDStruct_cd00b3f0 _transportStreamInfo;
-    id _delegate;
+    struct tagVCCryptor *_receiverSframeCryptor;
+    struct tagVCCryptor *_transmitterSframeCryptor;
+    _Bool _encryptionInfoReceived;
 }
 
 + (_Bool)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
 + (int)SRTPCipherSuiteForVCMediaStreamCipherSuite:(long long)arg1;
-+ (int)getSRTPMasterKeyLength:(long long)arg1;
++ (int)getSRTPMediaKeyLength:(long long)arg1;
+@property(readonly, nonatomic) _Bool encryptionInfoReceived; // @synthesize encryptionInfoReceived=_encryptionInfoReceived;
+@property(readonly, nonatomic) struct tagVCCryptor *transmitterSframeCryptor; // @synthesize transmitterSframeCryptor=_transmitterSframeCryptor;
+@property(readonly, nonatomic) struct tagVCCryptor *receiverSframeCryptor; // @synthesize receiverSframeCryptor=_receiverSframeCryptor;
 @property(retain, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
 @property(readonly, nonatomic) struct tagHANDLE *rtpHandle; // @synthesize rtpHandle=_rtpHandle;
 @property(readonly, nonatomic) VCMediaStreamConfig *streamConfig; // @synthesize streamConfig=_streamConfig;
@@ -35,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long streamDirection;
 - (_Bool)setThrottlingInterval:(double)arg1;
 - (_Bool)sendIntervalDidElapse:(int *)arg1 remainingTime:(double *)arg2;
+@property(nonatomic) double decryptionMKMRecoveryInterval;
 @property(nonatomic) double decryptionTimeoutInterval;
 @property(nonatomic, getter=isDecryptionTimeoutEnabled) _Bool decryptionTimeoutEnabled;
 @property(nonatomic) double rtcpTimeoutInterval;
@@ -45,7 +50,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double rtcpSendInterval;
 @property(nonatomic, getter=isRTCPEnabled) _Bool rtcpEnabled;
 - (void)handleEncryptionInfoChange:(id)arg1;
-- (int)getKeyDerivationCryptoSet:(CDStruct_5b6da142 *)arg1 withKeyMaterial:(id)arg2;
 @property(readonly, nonatomic) double lastReceivedRTCPPacketTime;
 - (id)rxNetworkPayloads;
 - (void)registerRTPPayloadMappings;
@@ -56,23 +60,20 @@ __attribute__((visibility("hidden")))
 - (int)setupRTPWithTransportStreams;
 - (_Bool)setupRTPWithSockets:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
 - (int)setupSRTP;
-- (int)getCryptoSet:(struct tagSRTPExchangeInfo *)arg1 withMasterKey:(id)arg2;
-- (void)sendControlPacket:(struct _RTCP_SEND_CONTROL_PARAMETERS *)arg1;
+- (int)getCryptoSet:(struct tagSRTPExchangeInfo *)arg1 withMediaKey:(id)arg2;
+- (void)sendControlPacketWithParameters:(struct _RTCP_SEND_CONTROL_PARAMETERS *)arg1;
 - (void)resetPayloadMapping;
 - (void)reset;
-- (void)configureForMultiway;
-- (_Bool)configureWithStreamConfig:(id)arg1 setupInfo:(struct _VCMediaStreamTransportSetupInfo *)arg2 customRTCPPackets:(_Bool)arg3 statisticsCollector:(id)arg4 basebandCongestionDetector:(id)arg5 error:(id *)arg6;
+- (_Bool)setupSframeCryptorsWithError:(id *)arg1;
+- (struct tagVCCryptor *)createSframeCryptorWithStreamConfig:(id)arg1 ssrc:(unsigned int)arg2 error:(id *)arg3;
+- (_Bool)isSendingMedia:(id)arg1;
+- (_Bool)configureWithStreamConfig:(id)arg1 setupInfo:(struct _VCMediaStreamTransportSetupInfo *)arg2 reducedSizeRTCPPackets:(_Bool)arg3 hopByHopEncryptRTCPPackets:(_Bool)arg4 statisticsCollector:(id)arg5 basebandCongestionDetector:(id)arg6 error:(id *)arg7;
 - (void)onStop;
 - (int)onStart;
-- (void)onRTCPPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
-- (void)reportRTCPPackets:(struct _RTCPPacketList *)arg1;
-- (void)unregisterRTCPCallback;
-- (void)registerRTCPCallback;
+- (void)updateLastGeneratedKeyMaterial;
 - (_Bool)isSameSRTPConfig:(id)arg1;
-- (void)setDelegate:(id)arg1;
-@property(readonly, nonatomic) id <VCMediaStreamTransportDelegate> delegate;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 handle:(struct tagHANDLE *)arg2 localSSRC:(unsigned int)arg3;
+- (id)initWithHandle:(struct tagHANDLE *)arg1 localSSRC:(unsigned int)arg2;
 
 @end
 

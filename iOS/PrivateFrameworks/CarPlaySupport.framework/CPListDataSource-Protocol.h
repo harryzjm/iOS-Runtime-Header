@@ -6,11 +6,10 @@
 
 #import <CarPlaySupport/NSObject-Protocol.h>
 
-@class NSArray, NSIndexPath;
+@class NSIndexPath;
 @protocol CPListTemplateItem;
 
 @protocol CPListDataSource <NSObject>
-@property(readonly, nonatomic) NSArray *items;
 @property(readonly, nonatomic) NSIndexPath *firstItemIndexPath;
 @property(readonly, nonatomic) long long numberOfItems;
 @property(readonly, nonatomic) long long numberOfSections;

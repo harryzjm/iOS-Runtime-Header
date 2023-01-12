@@ -35,5 +35,6 @@
 - (_Bool)_accessibilityViewIsActive;
 - (void)_accessibilitySetFrameExpansion:(struct CGSize)arg1;
 - (struct CGSize)_accessibilityFrameExpansion;
+- (void)_accessibilityClearChildren;
 @end
 

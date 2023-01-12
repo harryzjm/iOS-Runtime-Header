@@ -13,6 +13,7 @@
     NSString *_canonicalSeasonID;
     NSNumber *_seasonNumber;
     NSNumber *_episodeNumber;
+    NSString *_seasonTitle;
     double _duration;
     NSDate *_releaseDate;
     WLKArtworkVariantListing *_showImages;
@@ -27,6 +28,7 @@
 @property(readonly, nonatomic) WLKArtworkVariantListing *showImages; // @synthesize showImages=_showImages;
 @property(readonly, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
+@property(readonly, nonatomic) NSString *seasonTitle; // @synthesize seasonTitle=_seasonTitle;
 @property(readonly, nonatomic) NSNumber *episodeNumber; // @synthesize episodeNumber=_episodeNumber;
 @property(readonly, nonatomic) NSNumber *seasonNumber; // @synthesize seasonNumber=_seasonNumber;
 @property(readonly, copy, nonatomic) NSString *canonicalSeasonID; // @synthesize canonicalSeasonID=_canonicalSeasonID;

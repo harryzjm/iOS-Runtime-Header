@@ -12,6 +12,7 @@
     CDUnknownBlockType _comparator;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
 @property(readonly, nonatomic) NSArray *publishers; // @synthesize publishers=_publishers;
@@ -19,6 +20,8 @@
 - (id)initWithPublishers:(id)arg1 comparator:(CDUnknownBlockType)arg2;
 - (id)initWithA:(id)arg1 b:(id)arg2 comparator:(CDUnknownBlockType)arg3;
 - (id)init;
+- (_Bool)canStoreInternalStateInBookmark;
+- (id)bookmarkableUpstreams;
 
 @end
 

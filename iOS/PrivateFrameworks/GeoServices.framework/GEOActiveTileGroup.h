@@ -187,6 +187,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -422,7 +423,7 @@
 - (void)iterateActiveTileSets:(CDUnknownBlockType)arg1;
 - (id)regionalResourcesForMapRect:(CDStruct_90e2a262)arg1;
 - (unsigned int)largestRegionalResourceZoomLevelContainingTileKey:(const struct _GEOTileKey *)arg1;
-- (id)regionalResourceKeysForMapRegions:(id)arg1 scale:(int)arg2 scenarios:(id)arg3 resourceFilter:(CDUnknownBlockType)arg4 attributionFilter:(CDUnknownBlockType)arg5;
+- (id)regionalResourcesForMapRegions:(id)arg1 resourceFilter:(CDUnknownBlockType)arg2 attributionFilter:(CDUnknownBlockType)arg3;
 - (id)regionalResourceKeysForTileKey:(const struct _GEOTileKey *)arg1 scale:(int)arg2 scenarios:(id)arg3;
 - (_Bool)hasRegionalResourcesForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)_resetBestLanguages;
@@ -440,7 +441,6 @@
 - (id)activeTileSetForStyle:(int)arg1;
 - (id)activeTileSetForStyle:(int)arg1 size:(int)arg2 scale:(int)arg3;
 - (id)activeTileSetForTileType:(int)arg1 scale:(int)arg2;
-- (void)populateRegionalResources:(id)arg1;
 - (void)clearModernFormatFields;
 - (void)populateLegacyFormat;
 

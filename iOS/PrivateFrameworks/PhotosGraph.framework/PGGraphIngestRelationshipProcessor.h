@@ -8,16 +8,19 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphBuilder;
 
 @interface PGGraphIngestRelationshipProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
 }
 
+- (void).cxx_destruct;
 - (id)personNodesToAnalyzeInGraph:(id)arg1 forAppleInternal:(_Bool)arg2;
 - (id)_personNodesToAnalyzeInGraph:(id)arg1;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

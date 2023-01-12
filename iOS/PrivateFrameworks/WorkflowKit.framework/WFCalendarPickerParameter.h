@@ -12,6 +12,7 @@
 @interface WFCalendarPickerParameter <WFDynamicEnumerationDataSource>
 {
     _Bool _allowsAllCalendars;
+    _Bool _hidesReadOnlyCalendars;
     id _defaultSerializedCalendarRepresentation;
     NSArray *_calendarStates;
     NSObject<OS_dispatch_queue> *_stateQueue;
@@ -21,6 +22,7 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateQueue; // @synthesize stateQueue=_stateQueue;
 @property(retain, nonatomic) NSArray *calendarStates; // @synthesize calendarStates=_calendarStates;
 @property(retain, nonatomic) id defaultSerializedCalendarRepresentation; // @synthesize defaultSerializedCalendarRepresentation=_defaultSerializedCalendarRepresentation;
+@property(readonly, nonatomic) _Bool hidesReadOnlyCalendars; // @synthesize hidesReadOnlyCalendars=_hidesReadOnlyCalendars;
 @property(readonly, nonatomic) _Bool allowsAllCalendars; // @synthesize allowsAllCalendars=_allowsAllCalendars;
 - (id)enumeration:(id)arg1 accessoryColorForPossibleState:(id)arg2;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;

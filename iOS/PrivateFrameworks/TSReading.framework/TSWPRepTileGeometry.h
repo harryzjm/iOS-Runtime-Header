@@ -12,7 +12,7 @@
 
 @interface TSWPRepTileGeometry : NSObject <TSDTileGeometryProviding>
 {
-    struct vector<TSWPRepBoundsAnalyzer::Info, std::__1::allocator<TSWPRepBoundsAnalyzer::Info>> _infos;
+    struct vector<TSWPRepBoundsAnalyzer::Info, std::allocator<TSWPRepBoundsAnalyzer::Info>> _infos;
     _Bool _tileGeometryDirty;
     struct CGSize _maxTileSize;
 }

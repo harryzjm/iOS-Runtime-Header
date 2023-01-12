@@ -9,6 +9,8 @@
 @class CKFullscreenEffectMessageFilter;
 
 @protocol CKTranscriptCellProtocol <NSObject>
+@property(nonatomic) _Bool isInReplyContext;
+@property(nonatomic) _Bool isAnimatingInDarkEffect;
 @property(nonatomic) double associatedItemOffset;
 @property(nonatomic) double drawerPercentRevealed;
 @property(nonatomic) BOOL orientation;

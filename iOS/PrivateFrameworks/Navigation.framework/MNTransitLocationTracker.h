@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEORoadMatcher, GEOTransitRouteMatcher, MNLocation, NSDate;
+#import <Navigation/MNLocationManagerObserver-Protocol.h>
+
+@class GEORoadMatcher, GEOTransitRouteMatcher, MNLocation, NSDate, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNTransitLocationTracker
+@interface MNTransitLocationTracker <MNLocationManagerObserver>
 {
     GEOTransitRouteMatcher *_transitRouteMatcher;
     GEORoadMatcher *_roadMatcher;
@@ -17,20 +19,48 @@ __attribute__((visibility("hidden")))
     NSDate *_startDate;
     _Bool _hasArrived;
     _Bool _debugSnapToTransitLines;
+    NSMutableDictionary *_monitoredRegions;
+    NSMutableDictionary *_transitRegions;
+    NSMutableDictionary *_transitAlerts;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool debugSnapToTransitLines; // @synthesize debugSnapToTransitLines=_debugSnapToTransitLines;
+- (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
+- (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
+- (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
+- (void)locationManagerDidResumeLocationUpdates:(id)arg1;
+- (void)locationManagerDidPauseLocationUpdates:(id)arg1;
+- (_Bool)locationManagerShouldPauseLocationUpdates:(id)arg1;
+- (void)locationManagerDidReset:(id)arg1;
+- (void)locationManagerFailedToUpdateLocation:(id)arg1 withError:(id)arg2;
+- (void)locationManagerUpdatedLocation:(id)arg1;
+- (void)_triggerAlertForRegionId:(id)arg1;
+- (id)_stepForRegionAlert:(id)arg1;
+- (void)_stopMonitoringForRegionWithIdentifier:(id)arg1;
+- (void)_stopMonitoringAllRegions;
+- (id)_clRegionWithCenter:(id)arg1 identifier:(id)arg2 signalStrength:(int)arg3;
+- (void)_startMonitoringTransitAlerts;
 - (_Bool)_isInaccurateLocation:(id)arg1;
 - (double)_timeToDisplayStaleGPSLocation;
 - (id)_roadMatchForOffRouteLocation:(id)arg1 routeMatch:(id)arg2;
 - (id)_locationForInaccurateLocation:(id)arg1;
 - (id)_correctedLocationForLocation:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
+- (void)_initRegionAlertsForRoute:(id)arg1;
+- (void)reroute:(id)arg1 reason:(unsigned long long)arg2;
 - (void)stopTracking;
 - (void)startTracking;
 - (int)transportType;
 - (id)initWithNavigationSession:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

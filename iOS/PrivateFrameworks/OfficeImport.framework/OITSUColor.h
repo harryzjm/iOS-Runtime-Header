@@ -100,7 +100,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithCGColor:(struct CGColor *)arg1;
 - (id)initWithCGColor:(struct CGColor *)arg1 colorSpace:(unsigned long long)arg2;
 @property(readonly) struct CGColor *CGColor;
-- (_Bool)isBlack;
 - (void)set;
 - (id)colorWithShadeValue:(double)arg1;
 - (id)colorWithTintValue:(double)arg1;
@@ -123,6 +122,7 @@ __attribute__((visibility("hidden")))
 - (struct EshColor)eshColor;
 - (struct CsColour)csColour;
 - (void)getRGBBytes:(char *)arg1 green:(char *)arg2 blue:(char *)arg3;
+- (_Bool)isBlack;
 
 @end
 

@@ -6,6 +6,7 @@
 
 @class ICADIProvisionSession;
 
+__attribute__((visibility("hidden")))
 @interface ICMachineDataProvisionOperation
 {
     ICADIProvisionSession *_provisionSession;

@@ -6,17 +6,29 @@
 
 #import <ChronoServices/CHSAvocadoDescriptor.h>
 
+@class NSString;
+
 @interface SBHSpecialAvocadoDescriptor : CHSAvocadoDescriptor
 {
+    NSString *_displayName;
+    NSString *_description;
     unsigned long long _type;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)accentColor;
 - (id)backgroundColor;
+- (_Bool)sbh_canBeAddedToStack;
+- (id)widgetDescription;
+- (id)displayName;
 - (id)_initWithType:(unsigned long long)arg1 supportedSizeClasses:(unsigned long long)arg2;
 - (id)initWithType:(unsigned long long)arg1 supportedSizeClasses:(unsigned long long)arg2;
 - (id)initWithType:(unsigned long long)arg1;

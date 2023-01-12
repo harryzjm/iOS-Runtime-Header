@@ -23,6 +23,7 @@
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)description;
 
 @end
 

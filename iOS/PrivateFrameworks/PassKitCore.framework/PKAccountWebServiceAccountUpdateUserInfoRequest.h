@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContact, NSString, NSURL;
+@class CNContact, NSString, NSURL, PKAccountWebServiceCertificatesResponse;
 
 @interface PKAccountWebServiceAccountUpdateUserInfoRequest
 {
     NSString *_accountIdentifier;
     NSURL *_baseURL;
     CNContact *_contact;
+    NSString *_ssn;
+    PKAccountWebServiceCertificatesResponse *_certificatesResponse;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKAccountWebServiceCertificatesResponse *certificatesResponse; // @synthesize certificatesResponse=_certificatesResponse;
+@property(retain, nonatomic) NSString *ssn; // @synthesize ssn=_ssn;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(retain, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;

@@ -10,7 +10,6 @@
 @class NSString, NSURL, PLManagedAsset, PLPhotoLibrary;
 
 @protocol _PLImageLoadingAsset <_PLThumbnailLoadingAsset, NSObject>
-- (unsigned long long)localResourcesState;
 - (_Bool)isOriginalSRGB;
 - (void)generateLargeThumbnailFileIfNecessary;
 - (_Bool)isTimelapsePlaceholder;

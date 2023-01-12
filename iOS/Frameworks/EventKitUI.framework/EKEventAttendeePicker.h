@@ -99,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)commitRemainingText;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewLayoutMarginsDidChange;
 - (void)viewDidLoad;
 - (void)loadView;

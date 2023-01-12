@@ -8,16 +8,13 @@
 
 #import <ContextKit/CKContextServiceUpdateNotifications-Protocol.h>
 
-@class CKContextSemaphore, NSMutableArray, NSSet, NSString;
-@protocol OS_dispatch_semaphore;
+@class NSMutableArray, NSSet, NSString;
 
 @interface CKContextClient : NSObject <CKContextServiceUpdateNotifications>
 {
     NSSet *_capabilities;
     NSString *_indexVersionId;
     NSMutableArray *_updateHandlers;
-    NSObject<OS_dispatch_semaphore> *_sema_capabilities;
-    CKContextSemaphore *_serviceSemaphore;
     unsigned long long _defaultRequestType;
 }
 
@@ -26,12 +23,15 @@
 + (id)clientWithDefaultRequestType:(unsigned long long)arg1;
 + (id)new;
 + (void)_observeApplicationStateNotifications;
++ (id)_serviceSemaphore;
++ (void)_updateServiceSemaphoreAsync;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long defaultRequestType; // @synthesize defaultRequestType=_defaultRequestType;
+- (void)groupResponses:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)ancestorsForTopics:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)workWithServiceSemaphore:(CDUnknownBlockType)arg1;
-- (long long)tryAcquireServiceSemaphore;
+- (long long)tryAcquireServiceSemaphoreNeedsIncPending:(_Bool)arg1;
 @property(readonly, nonatomic) NSSet *capabilities;
 - (id)indexVersionId;
 - (id)retrieveCapabilites;

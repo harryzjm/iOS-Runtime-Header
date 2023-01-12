@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
     LPCaptionBarPresentationProperties *_presentationProperties;
 }
 
-+ (id)styleSet;
-+ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
 + (id)ruleDictionaryForStyle:(id)arg1;
 + (id)baseRules;
 - (void).cxx_destruct;

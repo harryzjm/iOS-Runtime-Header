@@ -30,7 +30,8 @@
 @property(retain, nonatomic) NSArray *resourceNodes; // @synthesize resourceNodes=_resourceNodes;
 @property(retain, nonatomic) NSMutableOrderedSet *unavailableResources; // @synthesize unavailableResources=_unavailableResources;
 @property(nonatomic) _Bool resourcesRequiredForDisplayAvailable; // @synthesize resourcesRequiredForDisplayAvailable=_resourcesRequiredForDisplayAvailable;
-- (void)addResource:(id)arg1 withRequiredResources:(id)arg2;
+- (void)removeResourceNodes:(id)arg1;
+- (void)addResourceNodes:(id)arg1;
 - (void)addResource:(id)arg1;
 - (void)removeTarget:(id)arg1 selector:(SEL)arg2;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2;

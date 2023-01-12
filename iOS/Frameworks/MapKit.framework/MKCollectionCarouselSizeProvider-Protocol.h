@@ -7,7 +7,7 @@
 @protocol UITraitEnvironment;
 
 @protocol MKCollectionCarouselSizeProvider
-+ (double)verticalLayoutHeightWithNumberOfItems:(unsigned long long)arg1 maxWidth:(double)arg2 usingTraitEnvironment:(id <UITraitEnvironment>)arg3;
-+ (double)horizontalLayoutHeight;
++ (double)verticalLayoutHeightWithNumberOfItems:(unsigned long long)arg1 maxWidth:(double)arg2 usingTraitEnvironment:(id <UITraitEnvironment>)arg3 inContext:(long long)arg4;
++ (double)horizontalLayoutHeightInContext:(long long)arg1 includeExploreGuidesHeight:(_Bool)arg2 isSingleCollection:(_Bool)arg3;
 @end
 

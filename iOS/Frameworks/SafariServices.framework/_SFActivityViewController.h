@@ -13,7 +13,6 @@
 
 @interface _SFActivityViewController : UIActivityViewController <_SFActivityItemCustomizationDelegate>
 {
-    _SFPrintController *_printController;
     _SFActivityItemProviderCollection *_itemProviderCollection;
     NSArray *_initialApplicationActivities;
     NSMutableSet *_activityTypesExcludedDueToSelectedCustomization;
@@ -22,12 +21,14 @@
     _SFActivityItemCustomizationController *_customizationController;
     NSURL *_sharingURL;
     NSArray *_activityItemProviders;
+    _SFPrintController *_printController;
     NSString *_currentExtensionIdentifier;
 }
 
 + (id)activeWebPageExtensionItemForURL:(id)arg1 withPreviewImageHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *currentExtensionIdentifier; // @synthesize currentExtensionIdentifier=_currentExtensionIdentifier;
+@property(retain, nonatomic) _SFPrintController *printController; // @synthesize printController=_printController;
 @property(readonly, nonatomic) NSArray *activityItemProviders; // @synthesize activityItemProviders=_activityItemProviders;
 @property(retain, nonatomic) NSURL *sharingURL; // @synthesize sharingURL=_sharingURL;
 @property(retain, nonatomic) _SFActivityItemCustomizationController *customizationController; // @synthesize customizationController=_customizationController;
@@ -38,6 +39,7 @@
 - (id)_extensionItemForExtensionActivity:(id)arg1;
 - (id)_javaScriptProcessingFileURLInExtension:(id)arg1;
 - (void)prepareJavaScriptExtensionItemForActivity:(id)arg1;
+- (void)_updateActivityItems:(id)arg1 applicationActivities:(id)arg2;
 - (void)_updateActivityItems:(id)arg1;
 - (void)_preparePrint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_prepareActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;

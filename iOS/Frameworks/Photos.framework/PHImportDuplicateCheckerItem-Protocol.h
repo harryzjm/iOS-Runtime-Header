@@ -6,11 +6,11 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class IPAMetadata, NSArray, NSDate, NSMutableDictionary, NSSet, NSString, NSURL, PHPhotoLibrary;
+@class NSArray, NSDate, NSMutableDictionary, NSSet, NSString, NSURL, PFMetadata, PHPhotoLibrary;
 @protocol PHImportDuplicateCheckerItem;
 
 @protocol PHImportDuplicateCheckerItem <NSObject>
-@property(readonly) IPAMetadata *metadata;
+@property(readonly) PFMetadata *metadata;
 @property unsigned char duplicateStateConfidence;
 @property(retain) NSMutableDictionary *duplicates;
 @property(readonly) id <PHImportDuplicateCheckerItem> videoComplement;
@@ -21,7 +21,7 @@
 @property(readonly) id sizeKey;
 @property(readonly) id nameKey;
 @property(readonly) NSDate *fileCreationDate;
-@property(readonly) NSDate *exifImageDate;
+@property(readonly) NSDate *creationDate;
 @property(readonly) NSString *fileName;
 @property(readonly) id originatingAssetID;
 @property(readonly) id assetId;

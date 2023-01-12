@@ -28,7 +28,7 @@
     _Bool _usesSpriteSizeUniform;
     shared_ptr_394c00aa _backingProgram;
     shared_ptr_394c00aa _backingProgramWithTransform;
-    map_48758480 _attributeBuffers;
+    struct map<std::string, std::shared_ptr<jet_buffer_pool>, std::less<std::string>, std::allocator<std::pair<const std::string, std::shared_ptr<jet_buffer_pool>>>> _attributeBuffers;
     _Bool _performFullCapture;
 }
 
@@ -82,7 +82,7 @@
 - (id)fragmentPreludeMetal;
 - (id)fragmentPrelude;
 @property(copy) NSString *source;
-@property(readonly) map_48758480 *_attributeBuffers;
+@property(readonly) void *_attributeBuffers;
 @property(copy, nonatomic) NSArray *attributes;
 - (id)initWithSource:(id)arg1 uniforms:(id)arg2;
 - (id)initWithSource:(id)arg1;

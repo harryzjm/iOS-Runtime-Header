@@ -12,7 +12,7 @@
 
 @interface TSTStrokeLayer : TSPObject <NSCopying, NSMutableCopying, TSTStrokeLayerEnumerating>
 {
-    struct vector<TSTStrokeLayerRun, std::__1::allocator<TSTStrokeLayerRun>> _strokeRuns;
+    struct vector<TSTStrokeLayerRun, std::allocator<TSTStrokeLayerRun>> _strokeRuns;
     unsigned int _columnOrRowIndex;
 }
 
@@ -41,6 +41,7 @@
 - (void)enumerateStrokesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)nextStrokeAndRange:(id)arg1;
 - (id)findStrokeAndRangeAtIndex:(long long)arg1;
+- (int)startingStrokeOrder;
 - (long long)startingIndex;
 @property(readonly, nonatomic) _Bool isEmpty;
 - (id)initWithContext:(id)arg1 columnOrRowIndex:(unsigned int)arg2;

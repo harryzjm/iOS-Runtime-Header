@@ -20,6 +20,8 @@
 }
 
 + (id)logCategory;
+- (void)drawText:(id)arg1 at:(struct CGPoint)arg2;
+- (void)drawRectWithCGRect:(struct CGRect)arg1 scale:(float)arg2;
 - (void)drawPolygonWithNormalizedPoints:(id)arg1;
 - (void)drawTextHeaderBar:(id)arg1;
 - (void)draw:(CDUnknownBlockType)arg1;

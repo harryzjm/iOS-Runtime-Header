@@ -27,7 +27,6 @@
 - (void)prepareForDeletion;
 - (void)didSave;
 - (void)willSave;
-- (_Bool)validateImportSessionID:(id *)arg1 error:(id *)arg2;
 - (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (_Bool)isValidForPersistence;

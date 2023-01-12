@@ -13,13 +13,13 @@
 
 @interface MKServerFormattedStringParameters : NSObject <NSCopying, NSSecureCoding>
 {
-    NSDictionary *_variableOverides;
+    NSDictionary *_variableOverrides;
     CDStruct_57af2063 _options;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSDictionary *variableOverides; // @synthesize variableOverides=_variableOverides;
+@property(readonly, copy, nonatomic) NSDictionary *variableOverrides; // @synthesize variableOverrides=_variableOverrides;
 @property(readonly, nonatomic) CDStruct_57af2063 options; // @synthesize options=_options;
 - (unsigned long long)hash;
 - (_Bool)isEqualToServerFormattedStringParameters:(id)arg1;

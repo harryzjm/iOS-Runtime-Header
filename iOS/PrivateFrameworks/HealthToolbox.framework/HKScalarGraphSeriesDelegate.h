@@ -22,8 +22,9 @@ __attribute__((visibility("hidden")))
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;
 - (id)graphView:(id)arg1 graphSeriesForZoom:(long long)arg2 stackOffset:(long long)arg3;
 - (long long)stackCountForGraphView:(id)arg1;
+- (void)graphViewExternalSelectionEnd:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
-- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3;
+- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3 changeContext:(long long)arg4;
 - (void)graphView:(id)arg1 didUpdateYAxisWidth:(double)arg2 toWidth:(double)arg3;
 - (void)graphViewSizeChanged:(id)arg1;
 - (void)graphView:(id)arg1 didFinishUserScrollingToValueRange:(id)arg2;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)graphViewDidEndSelection:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateSelectedPoint:(id)arg2;
 - (void)graphViewDidBeginSelection:(id)arg1;
+- (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(id)arg1;
 - (id)initWithGraphSeries:(id)arg1;
 
 // Remaining properties

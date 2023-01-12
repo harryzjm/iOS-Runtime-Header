@@ -24,7 +24,6 @@
     id <CAMCameraCaptureDelegate> _captureDelegate;
     CUCaptureController *_captureController;
     CAMTimelapseController *_timelapseController;
-    CAMPersistenceController *_persistenceController;
     CAMMotionController *_motionController;
     CAMLocationController *_locationController;
     CAMPowerController *_powerController;
@@ -40,11 +39,13 @@
     CAMViewfinderViewController *_viewfinderViewController;
     id <CAMCameraViewControllerPresentationDelegate> _presentationDelegate;
     id <CAMCameraViewControllerCameraSessionDelegate> _cameraSessionDelegate;
+    CAMPersistenceController *_persistenceController;
 }
 
 + (_Bool)isEmulatingImagePicker;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CAMPersistenceController *persistenceController; // @synthesize persistenceController=_persistenceController;
 @property(nonatomic) __weak id <CAMCameraViewControllerCameraSessionDelegate> cameraSessionDelegate; // @synthesize cameraSessionDelegate=_cameraSessionDelegate;
 @property(nonatomic) _Bool automaticallyManagesCameraSession; // @synthesize automaticallyManagesCameraSession=_automaticallyManagesCameraSession;
 @property(nonatomic) __weak id <CAMCameraViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
@@ -61,7 +62,6 @@
 @property(readonly, nonatomic) CAMPowerController *powerController; // @synthesize powerController=_powerController;
 @property(readonly, nonatomic) CAMLocationController *locationController; // @synthesize locationController=_locationController;
 @property(readonly, nonatomic) CAMMotionController *motionController; // @synthesize motionController=_motionController;
-@property(readonly, nonatomic) CAMPersistenceController *persistenceController; // @synthesize persistenceController=_persistenceController;
 @property(readonly, nonatomic) CAMTimelapseController *timelapseController; // @synthesize timelapseController=_timelapseController;
 @property(readonly, nonatomic) CUCaptureController *captureController; // @synthesize captureController=_captureController;
 @property(nonatomic) __weak id <CAMCameraCaptureDelegate> captureDelegate; // @synthesize captureDelegate=_captureDelegate;
@@ -69,7 +69,7 @@
 - (id)reviewButton;
 - (void)handleReviewButtonReleased:(id)arg1;
 - (void)_renderLivePhotoWithCoordinator:(id)arg1 specifiers:(unsigned long long)arg2 photoProperties:(id)arg3 videoProperties:(id)arg4 adjustments:(id)arg5;
-- (id)_mediaConversionOptionsForAdjustments:(id)arg1 mediaType:(long long)arg2;
+- (id)_mediaConversionOptionsForAdjustments:(id)arg1 mediaType:(long long)arg2 description:(id)arg3;
 @property(readonly, nonatomic) PAVideoConversionServiceClient *_videoConversionClient; // @synthesize _videoConversionClient=__videoConversionClient;
 @property(readonly, nonatomic) PAImageConversionServiceClient *_imageConversionClient; // @synthesize _imageConversionClient=__imageConversionClient;
 - (void)stillImagePersistenceCoordinatorDidCompleteAllDispatches:(id)arg1;

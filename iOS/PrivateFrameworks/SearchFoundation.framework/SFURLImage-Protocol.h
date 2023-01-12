@@ -11,6 +11,7 @@
 @protocol SFURLImage <SFImage>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(copy, nonatomic) NSURL *darkUrlValue;
 @property(copy, nonatomic) NSURL *urlValue;
 @end
 

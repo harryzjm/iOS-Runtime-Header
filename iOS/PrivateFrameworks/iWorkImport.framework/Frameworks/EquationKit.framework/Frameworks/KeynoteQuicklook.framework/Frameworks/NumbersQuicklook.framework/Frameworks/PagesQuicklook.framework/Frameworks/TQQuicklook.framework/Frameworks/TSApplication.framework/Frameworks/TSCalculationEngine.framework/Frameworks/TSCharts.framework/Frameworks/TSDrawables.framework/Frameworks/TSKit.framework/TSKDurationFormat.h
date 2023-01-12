@@ -9,25 +9,25 @@
 @interface TSKDurationFormat <NSCopying>
 {
     _Bool _useAutomaticUnits;
-    int _durationUnitSmallest;
-    int _durationUnitLargest;
-    int _durationStyle;
+    unsigned char _durationUnitSmallest;
+    unsigned char _durationUnitLargest;
+    unsigned char _durationStyle;
 }
 
-+ (int)automaticMaxAndMinDurationUnitsForTimeInterval:(double)arg1;
-@property(readonly, nonatomic) int durationStyle; // @synthesize durationStyle=_durationStyle;
-@property(readonly, nonatomic) int durationUnitLargest; // @synthesize durationUnitLargest=_durationUnitLargest;
-@property(readonly, nonatomic) int durationUnitSmallest; // @synthesize durationUnitSmallest=_durationUnitSmallest;
++ (unsigned char)automaticMaxAndMinDurationUnitsForTimeInterval:(double)arg1;
+@property(readonly, nonatomic) unsigned char durationStyle; // @synthesize durationStyle=_durationStyle;
+@property(readonly, nonatomic) unsigned char durationUnitLargest; // @synthesize durationUnitLargest=_durationUnitLargest;
+@property(readonly, nonatomic) unsigned char durationUnitSmallest; // @synthesize durationUnitSmallest=_durationUnitSmallest;
 @property(readonly, nonatomic) _Bool useAutomaticUnits; // @synthesize useAutomaticUnits=_useAutomaticUnits;
 - (id)asDurationFormat;
 - (id)stringFromDurationTimeInterval:(double)arg1 locale:(id)arg2 showPrecision:(_Bool)arg3;
 - (id)stringFromDurationTimeInterval:(double)arg1 locale:(id)arg2;
 - (id)formatByFixingUnitsIfNecessaryForTimeInterval:(double)arg1;
-- (int)maxAndMinDurationUnitsForTimeInterval:(double)arg1;
-- (int)durationUnitLargestWithTimeInterval:(double)arg1;
+- (unsigned char)maxAndMinDurationUnitsForTimeInterval:(double)arg1;
+- (unsigned char)durationUnitLargestWithTimeInterval:(double)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithUseAutomaticUnits:(_Bool)arg1 durationUnitSmallest:(int)arg2 durationUnitLargest:(int)arg3 durationStyle:(int)arg4;
+- (id)initWithUseAutomaticUnits:(_Bool)arg1 durationUnitSmallest:(unsigned char)arg2 durationUnitLargest:(unsigned char)arg3 durationStyle:(unsigned char)arg4;
 - (id)initWithFormatType:(unsigned int)arg1;
 
 @end

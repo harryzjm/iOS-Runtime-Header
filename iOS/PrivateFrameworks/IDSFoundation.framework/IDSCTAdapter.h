@@ -34,6 +34,7 @@
 @property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property(retain, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 - (void)systemApplicationDidBecomeActive;
+- (void)didDetectSimDeactivation:(id)arg1 info:(id)arg2;
 - (void)operatorBundleChange:(id)arg1;
 - (void)carrierBundleChange:(id)arg1;
 - (void)pnrReadyStateNotification:(id)arg1 regState:(_Bool)arg2;

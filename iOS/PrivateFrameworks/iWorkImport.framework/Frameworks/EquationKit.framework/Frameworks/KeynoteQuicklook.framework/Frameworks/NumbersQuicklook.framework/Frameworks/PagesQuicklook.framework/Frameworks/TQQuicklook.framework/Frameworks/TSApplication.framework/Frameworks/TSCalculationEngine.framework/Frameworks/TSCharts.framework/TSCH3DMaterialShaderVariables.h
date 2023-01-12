@@ -23,6 +23,7 @@
 }
 
 + (id)variablesWithTexture:(id)arg1 intensity:(id)arg2 factor:(id)arg3 textureColor:(id)arg4 color:(id)arg5 modulation:(id)arg6 texcoords:(id)arg7 textureMatrix:(id)arg8;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCH3DShaderVariable *textureMatrix; // @synthesize textureMatrix=_textureMatrix;
 @property(readonly, retain, nonatomic) TSCH3DShaderVariable *texcoords; // @synthesize texcoords=_texcoords;
 @property(readonly, retain, nonatomic) TSCH3DShaderVariable *modulation; // @synthesize modulation=_modulation;
@@ -31,7 +32,6 @@
 @property(readonly, retain, nonatomic) TSCH3DShaderVariable *factor; // @synthesize factor=_factor;
 @property(readonly, retain, nonatomic) TSCH3DShaderVariable *intensity; // @synthesize intensity=_intensity;
 @property(readonly, retain, nonatomic) TSCH3DShaderVariable *texture; // @synthesize texture=_texture;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

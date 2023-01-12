@@ -12,6 +12,7 @@
 {
     GEOPDPublisherResult *_publisherResult;
     GEOPDComponent *_publisherComponent;
+    GEOPublisher *_publisher;
 }
 
 + (id)publisherResultsFromResponse:(id)arg1;

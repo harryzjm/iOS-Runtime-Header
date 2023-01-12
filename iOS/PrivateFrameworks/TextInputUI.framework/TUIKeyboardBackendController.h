@@ -6,21 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class TIKeyboardInputManagerStub;
+@class NSHashTable, TIKeyboardInputManagerStub;
+@protocol OS_dispatch_source;
 
 @interface TUIKeyboardBackendController : NSObject
 {
+    NSObject<OS_dispatch_source> *_supplementalLexiconWatchdog;
+    _Bool _applicationIsInBackground;
+    _Bool _needsRestoreSupplementalLexicons;
+    NSHashTable *_supplementalLexicons;
     TIKeyboardInputManagerStub *_inputManager;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_source> *supplementalLexiconWatchdog; // @synthesize supplementalLexiconWatchdog=_supplementalLexiconWatchdog;
 @property(retain, nonatomic) TIKeyboardInputManagerStub *inputManager; // @synthesize inputManager=_inputManager;
+@property(readonly, nonatomic) NSHashTable *supplementalLexicons; // @synthesize supplementalLexicons=_supplementalLexicons;
+- (void)applicationWillEnterForeground;
+- (void)applicationDidEnterBackground;
+- (void)removeUISupplementalLexicon:(id)arg1;
+- (void)addUISupplementalLexicon:(id)arg1;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 requestToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleKeyboardInput:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)performHitTestForTouchEvents:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_restoreSupplementalLexiconsIfNeeded;
 
 @end
 

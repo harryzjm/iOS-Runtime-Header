@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 defaultActiveMinFrameDuration;
     CDStruct_1b6d18a9 defaultActiveMaxFrameDuration;
     NSArray *supportedDepthDataFormats;
+    _Bool backgroundBlurSupported;
 }
 
 @end

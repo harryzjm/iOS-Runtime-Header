@@ -11,10 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore17ActivityScheduler : NSObject
 {
-    MISSING_TYPE *targetQueue;
-    MISSING_TYPE *lock;
-    MISSING_TYPE *service;
-    MISSING_TYPE *activityStore;
+    MISSING_TYPE *_schedulingProviderQueue;
+    MISSING_TYPE *_schedulingProvider;
+    MISSING_TYPE *_dataProtectionMonitor;
+    MISSING_TYPE *_keybagProvider;
+    MISSING_TYPE *_systemDataMigrator;
+    MISSING_TYPE *_lock;
+    MISSING_TYPE *_lock_activityStore;
+    MISSING_TYPE *_lock_completedMigration;
+    MISSING_TYPE *_lock_userManager;
+    MISSING_TYPE *_lock_enqueueActivityBlocksWaitingForMigration;
 }
 
 - (void).cxx_destruct;

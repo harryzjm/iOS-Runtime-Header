@@ -12,18 +12,18 @@
 
 @interface TSTCell : NSObject <NSCopying>
 {
-    double _valueDouble;
-    unsigned int _valueID;
-    NSObject *_valueObject;
     struct TSUDecimal _valueBigNumber;
-    unsigned char _conditionalStyleAppliedRule;
+    double _valueDouble;
     unsigned short _explicitFormatFlags;
     unsigned short _cellFlags;
-    int _valueType;
-    unsigned int _cellFormatKind;
+    unsigned char _conditionalStyleAppliedRule;
+    unsigned char _valueType;
+    unsigned char _cellFormatKind;
+    unsigned int _valueID;
+    unsigned int _conditionalStyleID;
+    NSObject *_valueObject;
     unsigned int _cellStyleID;
     unsigned int _textStyleID;
-    unsigned int _conditionalStyleID;
     unsigned int _formulaID;
     unsigned int _controlCellSpecID;
     unsigned int _numberFormatID;
@@ -50,12 +50,15 @@
     TSDCommentStorage *_commentStorage;
 }
 
-+ (id)stringForCellValueType:(int)arg1;
-+ (_Bool)mismatchBetweenValueType:(int)arg1 andFormatType:(unsigned int)arg2;
-+ (_Bool)p_mismatchBetweenValueType:(int)arg1 andCellFormatKind:(unsigned int)arg2;
-+ (unsigned int)p_cellFormatKindForValueType:(int)arg1;
++ (id)stringForCellValueType:(unsigned char)arg1;
++ (_Bool)mismatchBetweenValueType:(unsigned char)arg1 andFormatType:(unsigned int)arg2;
++ (_Bool)p_mismatchBetweenValueType:(unsigned char)arg1 andCellFormatKind:(unsigned char)arg2;
++ (unsigned char)p_cellFormatKindForValueType:(unsigned char)arg1;
 + (_Bool)formatType:(unsigned int)arg1 isSameCellFormatKindAs:(unsigned int)arg2 allowNumberCurrencyMismatch:(_Bool)arg3;
 + (_Bool)formatType:(unsigned int)arg1 isSameCellFormatKindAs:(unsigned int)arg2;
++ (_Bool)formatTypeIsExpected:(unsigned int)arg1;
++ (_Bool)cellFormatKindIsExpected:(unsigned char)arg1;
++ (_Bool)cellValueTypeIsExpected:(unsigned char)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned int importWarningSetID; // @synthesize importWarningSetID=_importWarningSetID;
@@ -71,7 +74,7 @@
 @property(nonatomic) unsigned int conditionalStyleID; // @synthesize conditionalStyleID=_conditionalStyleID;
 @property(nonatomic) unsigned int textStyleID; // @synthesize textStyleID=_textStyleID;
 @property(nonatomic) unsigned int cellStyleID; // @synthesize cellStyleID=_cellStyleID;
-@property(readonly, nonatomic) unsigned int cellFormatKind; // @synthesize cellFormatKind=_cellFormatKind;
+@property(readonly, nonatomic) unsigned char cellFormatKind; // @synthesize cellFormatKind=_cellFormatKind;
 @property(retain, nonatomic) TSDCommentStorage *commentStorage; // @synthesize commentStorage=_commentStorage;
 @property(retain, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
 @property(nonatomic) unsigned short cellFlags; // @synthesize cellFlags=_cellFlags;
@@ -89,7 +92,7 @@
 @property(retain, nonatomic) TSTConditionalStyleSet *conditionalStyle; // @synthesize conditionalStyle=_conditionalStyle;
 @property(retain, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
 @property(retain, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
-@property(nonatomic) int valueType; // @synthesize valueType=_valueType;
+@property(nonatomic) unsigned char valueType; // @synthesize valueType=_valueType;
 - (id)cellValueDescription;
 - (id)cellValueTypeDescription;
 - (id)description;
@@ -105,21 +108,22 @@
 - (void)setDefaultFormatForValue;
 @property(readonly, nonatomic) _Bool hasMismatchedFormatAndValue;
 @property(readonly, nonatomic) _Bool isMostRecentlyExplicitPercent;
+@property(readonly, nonatomic) _Bool hasAnyExplicitFormats;
 @property(readonly, nonatomic) _Bool hasAnyFormats;
-@property(readonly, nonatomic) int currentFormatNegativeStyle;
+@property(readonly, nonatomic) unsigned char currentFormatNegativeStyle;
 @property(readonly, nonatomic) _Bool currentFormatUsesAccountingStyle;
 @property(readonly, nonatomic) NSString *customFormatString;
 - (id)candidateFormatForSliderStepperControlWithIsCurrent:(_Bool *)arg1;
 @property(readonly, nonatomic) _Bool currencyIsMostRecentlySet;
-- (id)formatOfCellFormatKind:(unsigned int)arg1 isExplicit:(_Bool *)arg2;
+- (id)formatOfCellFormatKind:(unsigned char)arg1 isExplicit:(_Bool *)arg2;
 - (_Bool)hasExplicitFormatOfType:(unsigned int)arg1 allowMismatchedSpare:(_Bool)arg2;
-- (_Bool)p_hasExplicitFormatOfCellFormatKind:(unsigned int)arg1;
+- (_Bool)p_hasExplicitFormatOfCellFormatKind:(unsigned char)arg1;
 - (_Bool)hasFormatOfType:(unsigned int)arg1 allowMismatchedSpare:(_Bool)arg2;
 - (id)formatOfType:(unsigned int)arg1 allowMismatchedSpare:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool currentFormatIsExplicitForCalcEngine;
 @property(readonly, nonatomic) _Bool currentFormatIsExplicit;
 @property(readonly, nonatomic) _Bool hasCurrentFormat;
-- (void)p_setFormatExplicit:(_Bool)arg1 fromCellFormatKind:(unsigned int)arg2 setMostRecentlySet:(_Bool)arg3;
+- (void)p_setFormatExplicit:(_Bool)arg1 fromCellFormatKind:(unsigned char)arg2 setMostRecentlySet:(_Bool)arg3;
 - (void)p_setFormatFlags:(unsigned short)arg1 explicit:(_Bool)arg2;
 - (void)p_TSTCellSetMostRecentlySetNumberFormatWithCurrencyFlag:(_Bool)arg1;
 - (_Bool)p_formatTypeIsANumberFormatTypeForMostRecentlySet:(unsigned int)arg1;
@@ -136,9 +140,9 @@
 - (void)copyAllFormatsToCell:(id)arg1;
 - (void)clearAllFormats;
 - (_Bool)validateAndRepair;
-- (_Bool)p_clearIfImplicitAndNotCurrentForKind:(unsigned int)arg1 format:(id)arg2 explicitFormatMask:(unsigned short)arg3;
+- (_Bool)p_clearIfImplicitAndNotCurrentForKind:(unsigned char)arg1 format:(id)arg2 explicitFormatMask:(unsigned short)arg3;
 - (void)clearFormatOfType:(unsigned int)arg1;
-- (void)p_clearFormatOfCellFormatKind:(unsigned int)arg1;
+- (void)p_clearFormatOfCellFormatKind:(unsigned char)arg1;
 - (void)p_setFormatForFormulaResult:(id)arg1 propagation:(_Bool)arg2;
 - (void)setCurrentFormat:(id)arg1 flags:(unsigned short)arg2;
 - (void)setFormat:(id)arg1 isExplicit:(_Bool)arg2;
@@ -146,9 +150,9 @@
 - (void)setCurrentFormat:(id)arg1 isExplicit:(_Bool)arg2 forExcel:(_Bool)arg3;
 - (void)setFormat:(id)arg1 shouldSetExplFlags:(_Bool)arg2 isExplicit:(_Bool)arg3 makeCurrent:(_Bool)arg4 clearingID:(_Bool)arg5;
 @property(readonly, nonatomic) TSKFormat *currentFormat;
-- (id)p_formatOfCellFormatKind:(unsigned int)arg1 create:(_Bool)arg2 created:(_Bool *)arg3;
+- (id)p_formatOfCellFormatKind:(unsigned char)arg1 create:(_Bool)arg2 created:(_Bool *)arg3;
 @property(readonly, nonatomic) unsigned int formatType;
-- (void)suggestCellFormatKind:(unsigned int)arg1;
+- (void)suggestCellFormatKind:(unsigned char)arg1;
 @property(readonly, nonatomic) _Bool hasControl;
 @property(readonly, nonatomic) _Bool hasFormulaAnyError;
 @property(readonly, nonatomic) _Bool hasFormulaEvaluationError;
@@ -190,6 +194,7 @@
 - (void)bakeFormulaToValue;
 @property(readonly, nonatomic) TSWPStorage *richTextStorageForLayout;
 @property(readonly, nonatomic) NSString *stringForUnderlyingValue;
+@property(readonly, nonatomic) NSString *stringForDisplayWithoutColor;
 @property(readonly, nonatomic) NSString *stringForEditing;
 @property(readonly, nonatomic) NSString *formattedValue;
 @property(readonly, nonatomic) _Bool mightBeInterestedInMigration;
@@ -227,7 +232,7 @@
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) _Bool isEmptyForDataStore;
 - (id)cellByApplyingCellDiff:(id)arg1 toTable:(id)arg2 andUpdateInverse:(id)arg3 optionalConcurrentStylesheet:(id)arg4;
-- (_Bool)hasEqualContentToCell:(id)arg1 usingRichTextStyleComparisonBlock:(CDUnknownBlockType)arg2;
+- (_Bool)hasEqualContentToCell:(id)arg1 usingRichTextObjectComparisonBlock:(CDUnknownBlockType)arg2;
 - (_Bool)hasEqualContentToCell:(id)arg1;
 - (_Bool)p_currentFormatIsEqualToOtherCellFormat:(id)arg1;
 - (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2 suppressingTransmutation:(_Bool)arg3;

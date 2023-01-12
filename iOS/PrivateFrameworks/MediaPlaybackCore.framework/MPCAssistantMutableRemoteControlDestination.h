@@ -10,7 +10,9 @@
 {
 }
 
+@property(nonatomic) _Bool originatingDeviceControl; // @dynamic originatingDeviceControl;
 @property(nonatomic) _Bool singleGroup; // @dynamic singleGroup;
+@property(copy, nonatomic) NSString *originatingOutputDeviceUID; // @dynamic originatingOutputDeviceUID;
 @property(copy, nonatomic) NSString *outputGroupID; // @dynamic outputGroupID;
 @property(copy, nonatomic) NSArray *outputGroups; // @dynamic outputGroups;
 @property(copy, nonatomic) NSArray *hashedOutputDeviceUIDs; // @dynamic hashedOutputDeviceUIDs;

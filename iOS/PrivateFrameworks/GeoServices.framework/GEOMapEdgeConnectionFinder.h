@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
     GEOMapTileFinder *_tileFinder;
     NSMutableArray *_builders;
     GEOVectorTile *_tile;
-    CDStruct_3b01f0aa *_junction;
+    struct GeoCodecsConnectivityJunction *_junction;
     CDStruct_2c43369c _coordinate;
 }
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)findConnectionsIn:(CDUnknownBlockType)arg1;
 - (void)findConnectionsOut:(CDUnknownBlockType)arg1;
 - (void)cancel;
-- (id)initWithMap:(id)arg1 tile:(id)arg2 junction:(CDStruct_3b01f0aa *)arg3 coordinate:(CDStruct_c3b9c2ee)arg4;
+- (id)initWithMap:(id)arg1 tile:(id)arg2 junction:(struct GeoCodecsConnectivityJunction *)arg3 coordinate:(CDStruct_c3b9c2ee)arg4;
 
 @end
 

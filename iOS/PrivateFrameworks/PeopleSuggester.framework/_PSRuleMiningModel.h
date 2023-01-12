@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BMBehaviorRetriever, NSDictionary, _PSContactResolver, _PSRuleRankingMLModel;
+@class BMBehaviorRetriever, NSArray, NSDictionary, _PSContactResolver, _PSRuleRankingMLModel;
 @protocol _DKKnowledgeQuerying;
 
 @interface _PSRuleMiningModel : NSObject
@@ -15,6 +15,8 @@
     _Bool __PSRuleMiningIsAdaptedMLModelOK;
     id <_DKKnowledgeQuerying> _knowledgeStore;
     _PSContactResolver *_contactResolver;
+    NSArray *_behaviorRulesConsideringInTheContext;
+    NSArray *_scores;
     BMBehaviorRetriever *_behaviorRetriever;
     long long __PSRuleMiningModelDaysToPromoteRecentlyInstalledAppExtensions;
     long long __PSRuleMiningModelRegularizingContextOverlapConstraint;
@@ -34,6 +36,8 @@
 @property(nonatomic) long long _PSRuleMiningModelRegularizingContextOverlapConstraint; // @synthesize _PSRuleMiningModelRegularizingContextOverlapConstraint=__PSRuleMiningModelRegularizingContextOverlapConstraint;
 @property(nonatomic) long long _PSRuleMiningModelDaysToPromoteRecentlyInstalledAppExtensions; // @synthesize _PSRuleMiningModelDaysToPromoteRecentlyInstalledAppExtensions=__PSRuleMiningModelDaysToPromoteRecentlyInstalledAppExtensions;
 @property(readonly, nonatomic) BMBehaviorRetriever *behaviorRetriever; // @synthesize behaviorRetriever=_behaviorRetriever;
+@property(retain, nonatomic) NSArray *scores; // @synthesize scores=_scores;
+@property(retain, nonatomic) NSArray *behaviorRulesConsideringInTheContext; // @synthesize behaviorRulesConsideringInTheContext=_behaviorRulesConsideringInTheContext;
 @property(readonly, nonatomic) _PSContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property(readonly, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 - (id)suggestionArrayWithArray:(id)arg1 appendingUniqueElementsByBundleIdFromArray:(id)arg2;

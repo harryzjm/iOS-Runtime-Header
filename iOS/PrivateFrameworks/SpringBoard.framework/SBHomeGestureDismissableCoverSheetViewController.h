@@ -6,19 +6,22 @@
 
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant;
+@class NSString, SBFZStackParticipant, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant;
 
-@interface SBHomeGestureDismissableCoverSheetViewController : CSCoverSheetViewControllerBase <SBHomeGestureParticipantDelegate, SBSystemGestureRecognizerDelegate>
+@interface SBHomeGestureDismissableCoverSheetViewController : CSCoverSheetViewControllerBase <SBHomeGestureParticipantDelegate, SBSystemGestureRecognizerDelegate, SBFZStackParticipantDelegate>
 {
     _Bool _wantsHomeGestureOwnership;
     SBHomeGesturePanGestureRecognizer *_bottomEdgeRecognizer;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBFZStackParticipant *zStackParticipant; // @synthesize zStackParticipant=_zStackParticipant;
 @property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property(nonatomic) _Bool wantsHomeGestureOwnership; // @synthesize wantsHomeGestureOwnership=_wantsHomeGestureOwnership;
 @property(retain, nonatomic) SBHomeGesturePanGestureRecognizer *bottomEdgeRecognizer; // @synthesize bottomEdgeRecognizer=_bottomEdgeRecognizer;
@@ -33,7 +36,10 @@
 - (void)_addOrRemoveGestureForCurrentSettings;
 - (void)_relinquishHomeGestureOwnership;
 - (void)_requestHomeGestureOwnership;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
+@property(readonly, nonatomic) long long zStackParticipantIdentifier;
 @property(readonly, nonatomic) long long homeGestureParticipantIdentifier;
 - (_Bool)shouldDismissForHomeGestureRecognizer:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;

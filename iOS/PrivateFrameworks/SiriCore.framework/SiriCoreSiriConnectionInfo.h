@@ -16,7 +16,7 @@
     _Bool _forceReconnect;
     _Bool _imposePolicyBan;
     _Bool _requiresURLSession;
-    _Bool _enableSiriServerLogging;
+    _Bool _forceOnDeviceOnlyDictation;
     NSURL *_url;
     SAConnectionPolicyRoute *_connectionPolicyRoute;
     NSString *_aceHost;
@@ -30,7 +30,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isSiriServerLoggingEnabled) _Bool enableSiriServerLogging; // @synthesize enableSiriServerLogging=_enableSiriServerLogging;
+@property(nonatomic, getter=isForceOnDeviceOnlyDictationEnabled) _Bool forceOnDeviceOnlyDictation; // @synthesize forceOnDeviceOnlyDictation=_forceOnDeviceOnlyDictation;
 @property(copy, nonatomic) SAConnectionPolicy *connectionPolicy; // @synthesize connectionPolicy=_connectionPolicy;
 @property(nonatomic) _Bool requiresURLSession; // @synthesize requiresURLSession=_requiresURLSession;
 @property(nonatomic) _Bool imposePolicyBan; // @synthesize imposePolicyBan=_imposePolicyBan;

@@ -8,6 +8,6 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXLayoutEngineDataSourceSnapshot <NSObject, NSCopying>
-@property(readonly, nonatomic) unsigned long long identifier;
+@property(readonly, nonatomic) long long identifier;
 @end
 

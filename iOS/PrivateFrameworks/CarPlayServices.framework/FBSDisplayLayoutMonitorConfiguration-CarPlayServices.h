@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoardServices/FBSDisplayLayoutMonitorConfiguration.h>
+#import <FrontBoard/FBSDisplayLayoutMonitorConfiguration.h>
 
 @interface FBSDisplayLayoutMonitorConfiguration (CarPlayServices)
 + (id)configurationForCarInstrumentsDisplayMonitor;

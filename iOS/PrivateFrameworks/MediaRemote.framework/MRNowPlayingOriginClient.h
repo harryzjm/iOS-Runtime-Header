@@ -8,14 +8,12 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class MRApplicationActivity, MRClient, MRDeviceInfo, MROrigin, NSArray, NSMutableArray;
+@class MRApplicationActivity, MRClient, MRDeviceInfo, MROrigin, NSArray, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClient : NSObject <MRNowPlayingClientState>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    _Bool _canBeNowPlayingApp;
-    double _canBeNowPlayingAppTimestamp;
     _Bool _isOverrideApp;
     unsigned int _routeDiscoveryMode;
     NSMutableArray *_applicationPickedRoutes;
@@ -23,6 +21,7 @@
     float _volume;
     unsigned int _volumeCapabilities;
     MRApplicationActivity *_activity;
+    NSString *_routingContextID;
     MRDeviceInfo *_deviceInfo;
     CDUnknownBlockType _playbackQueueCallback;
     CDUnknownBlockType _playbackQueueTransactionCallback;
@@ -34,6 +33,7 @@
     CDUnknownBlockType _playbackSessionMigrateBeginCallback;
     CDUnknownBlockType _playbackSessionMigrateEndCallback;
     CDUnknownBlockType _playbackSessionMigrateRequestCallback;
+    CDUnknownBlockType _clientMessageCallback;
     NSMutableArray *_nowPlayingClients;
     unsigned int _hardwareRemoteBehavior;
     MRClient *_activeNowPlayingClient;
@@ -45,21 +45,20 @@
 @property(readonly, nonatomic) MROrigin *origin; // @synthesize origin=_origin;
 - (id)debugDescription;
 - (id)description;
+- (void)_restoreNowPlayingClientState;
+- (void)_prepareToRestoreClientStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)restoreNowPlayingClientState;
-- (void)_unregisterMediaServerNotifications;
-- (void)_registerMediaServerNotifications;
-- (void)_avSessionMediaServicesResetNotification:(id)arg1;
 - (void)removeClient:(id)arg1;
 - (id)nowPlayingClientForPlayerPath:(id)arg1;
 - (id)existingNowPlayingClientForPlayerPath:(id)arg1;
+@property(retain, nonatomic) MRDeviceInfo *deviceInfo;
 @property(retain, nonatomic) MRApplicationActivity *activity;
 @property(retain, nonatomic) MRClient *activeNowPlayingClient; // @synthesize activeNowPlayingClient=_activeNowPlayingClient;
-@property(nonatomic) _Bool canBeNowPlayingApp;
 @property(nonatomic) unsigned int inputMode;
 @property(nonatomic) unsigned int routeDiscoveryMode;
 @property(nonatomic) _Bool isOverrideApp;
-@property(retain, nonatomic) MRDeviceInfo *deviceInfo;
 @property(copy, nonatomic) NSArray *applicationPickedRoutes;
+@property(copy, nonatomic) CDUnknownBlockType clientMessageCallback;
 @property(copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;
 @property(copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
 @property(copy, nonatomic) CDUnknownBlockType playbackSessionMigrateRequestCallback;
@@ -72,7 +71,7 @@
 @property(readonly, nonatomic) NSArray *nowPlayingClients;
 @property(nonatomic) unsigned int volumeCapabilities;
 @property(nonatomic) float volume;
-- (void)dealloc;
+- (void)_handleDeviceInfoDidChangeNotification:(id)arg1;
 - (id)initWithOrigin:(id)arg1;
 
 @end

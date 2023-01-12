@@ -17,16 +17,10 @@
     double _chargingTime;
     double _batteryChargeAfterCharging;
     double _batteryPercentageAfterCharging;
-    double _gainedBatteryCharge;
-    double _gainedBatteryPercentage;
-    double _gainedTravelRange;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double gainedTravelRange; // @synthesize gainedTravelRange=_gainedTravelRange;
-@property(readonly, nonatomic) double gainedBatteryPercentage; // @synthesize gainedBatteryPercentage=_gainedBatteryPercentage;
-@property(readonly, nonatomic) double gainedBatteryCharge; // @synthesize gainedBatteryCharge=_gainedBatteryCharge;
 @property(readonly, nonatomic) double batteryPercentageAfterCharging; // @synthesize batteryPercentageAfterCharging=_batteryPercentageAfterCharging;
 @property(readonly, nonatomic) double batteryChargeAfterCharging; // @synthesize batteryChargeAfterCharging=_batteryChargeAfterCharging;
 @property(readonly, nonatomic) double chargingTime; // @synthesize chargingTime=_chargingTime;
@@ -35,8 +29,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithGeoETAStep:(id)arg1 withMuid:(unsigned long long)arg2 name:(id)arg3;
-- (id)initWithGeoStep:(id)arg1;
 - (id)initWithGeoEVChargingInfo:(id)arg1 muid:(unsigned long long)arg2 name:(id)arg3;
 - (id)init;
 

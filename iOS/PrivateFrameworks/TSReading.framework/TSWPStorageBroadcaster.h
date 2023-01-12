@@ -8,7 +8,7 @@
 
 @interface TSWPStorageBroadcaster : NSObject
 {
-    struct set<id<TSWPStorageObserver>, std::__1::less<id<TSWPStorageObserver>>, std::__1::allocator<id<TSWPStorageObserver>>> _observers;
+    struct set<id<TSWPStorageObserver>, std::less<id<TSWPStorageObserver>>, std::allocator<id<TSWPStorageObserver>>> _observers;
 }
 
 - (id).cxx_construct;

@@ -17,7 +17,6 @@
     UIView *_overlayView;
     double _widthForCachedLayoutInfo;
     unsigned long long _cachedSummaryLabelNumberOfLines;
-    double _cachedSummaryLabelHeight;
     NSStringDrawingContext *_drawingContext;
     _Bool _auxiliaryOptionsVisible;
     _Bool _adjustsFontForContentSizeCategory;
@@ -31,9 +30,10 @@
 @property(nonatomic) _Bool auxiliaryOptionsVisible; // @synthesize auxiliaryOptionsVisible=_auxiliaryOptionsVisible;
 @property(readonly, nonatomic) NSArray *optionButtons; // @synthesize optionButtons=_optionButtons;
 - (void)_layoutOptionsButtons;
-- (void)_layoutOptionsSummaryTextLabel;
-- (struct CGSize)_optionsSummaryLabelSizeThatFits:(struct CGSize)arg1;
-- (double)_summaryLabelHeightForBoundsSize:(struct CGSize)arg1;
+- (double)_optionsButtonWidthForBounds:(struct CGRect)arg1 optionButtonsCount:(unsigned long long)arg2;
+- (void)_layoutOptionsSummaryLabel;
+- (struct CGRect)_optionsSummaryMeasuringFrameForBounds:(struct CGRect)arg1;
+- (double)_optionsSummaryWidthForBounds:(struct CGRect)arg1;
 - (unsigned long long)_summaryLabelNumberOfLinesForBoundsSize:(struct CGSize)arg1;
 - (void)_calculateOptionsSummaryLabelLayoutInfoForBoundsSize:(struct CGSize)arg1;
 - (void)_configureOverlayIfNecessary;

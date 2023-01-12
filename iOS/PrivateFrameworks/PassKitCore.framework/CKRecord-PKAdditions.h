@@ -7,6 +7,9 @@
 #import <CloudKit/CKRecord.h>
 
 @interface CKRecord (PKAdditions)
+- (_Bool)pk_isRemoteAsset;
+- (_Bool)pk_isPassCatalog;
+- (_Bool)pk_isPass;
 - (id)_dictionaryFromStringValue:(id)arg1;
 - (id)_arrayFromStringValue:(id)arg1;
 - (id)_copyArray:(id)arg1 forNewRecordZone:(id)arg2;

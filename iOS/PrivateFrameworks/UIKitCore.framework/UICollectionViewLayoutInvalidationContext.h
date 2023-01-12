@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSMutableSet;
 
 @interface UICollectionViewLayoutInvalidationContext : NSObject
 {
@@ -19,6 +19,7 @@
     struct CGPoint _reorderingTarget;
     struct CGPoint _contentOffsetAdjustment;
     struct CGSize _contentSizeAdjustment;
+    NSMutableIndexSet *_orthogonalSectionsWithContentSizeChanges;
     struct {
         unsigned int invalidateDataSource:1;
         unsigned int invalidateEverything:1;
@@ -30,6 +31,8 @@
 - (void).cxx_destruct;
 @property(nonatomic, getter=_intent, setter=_setIntent:) long long intent; // @synthesize intent=_intent;
 @property(nonatomic, getter=_retainExistingSizingInfoForEstimates, setter=_setRetainExistingSizingInfoForEstimates:) _Bool retainExistingSizingInfoForEstimates; // @synthesize retainExistingSizingInfoForEstimates=_retainExistingSizingInfoForEstimates;
+@property(readonly, nonatomic) _Bool _shouldInvalidatePreferredAttributes;
+@property(readonly, nonatomic) NSMutableIndexSet *_orthogonalSectionsWithContentSizeChanges;
 @property(nonatomic, setter=_setInteractiveMovementTarget:) struct CGPoint interactiveMovementTarget;
 @property(copy, nonatomic, setter=_setTargetIndexPathsForInteractivelyMovingItems:) NSArray *targetIndexPathsForInteractivelyMovingItems;
 @property(copy, nonatomic, setter=_setPreviousIndexPathsForInteractivelyMovingItems:) NSArray *previousIndexPathsForInteractivelyMovingItems;

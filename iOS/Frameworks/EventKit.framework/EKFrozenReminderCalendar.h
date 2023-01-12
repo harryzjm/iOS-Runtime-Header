@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)externalID;
 - (id)symbolicColorName;
 - (id)sharees;
+- (id)allAlarms;
 - (int)allowedEntities;
 - (int)flags;
 - (id)UUID;
@@ -33,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)calendarIdentifier;
 - (id)hexColorStringFromREMColor:(id)arg1;
 - (id)REMColorFromEKHexColorString:(id)arg1;
-- (id)publishedURL;
+- (id)publishURL;
 - (_Bool)isPublished;
 - (unsigned long long)ekSharingStatusFromREMSharingStatus:(long long)arg1;
 - (unsigned long long)sharingStatus;

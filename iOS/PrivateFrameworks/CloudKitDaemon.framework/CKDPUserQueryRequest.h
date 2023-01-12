@@ -10,7 +10,6 @@
 
 @class CKDPUserAlias, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUserQueryRequest : PBRequest <NSCopying>
 {
     CKDPUserAlias *_alias;

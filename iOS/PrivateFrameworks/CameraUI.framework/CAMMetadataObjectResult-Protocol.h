@@ -12,5 +12,8 @@
 @property(readonly, nonatomic) AVMetadataObject *underlyingMetadataObject;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *metadataType;
+
+@optional
+@property(readonly, nonatomic) unsigned long long syntheticFocusMode;
 @end
 

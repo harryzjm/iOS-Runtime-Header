@@ -27,6 +27,7 @@
 @property(nonatomic) __weak id <PXVerticalSwipeGestureRecognizerHelperDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_panGestureRecognizerForVerticalSwipeGestureRecognizer:(id)arg1;
 - (_Bool)verticalSwipeGestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (_Bool)verticalSwipeGestureRecognizerShouldBegin:(id)arg1 ignoringScrollViews:(_Bool)arg2;
 - (_Bool)verticalSwipeGestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
 

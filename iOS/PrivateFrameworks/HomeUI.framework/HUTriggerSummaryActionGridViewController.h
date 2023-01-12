@@ -38,6 +38,7 @@
 - (_Bool)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (_Bool)_hasTapActionForItem:(id)arg1;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
+- (id)_defaultLayoutOptionsForViewSize:(struct CGSize)arg1;
 - (void)actionSetValueSource:(id)arg1 didUpdateValuesForActionBuilders:(id)arg2;
 - (void)reloadActions;
 - (void)viewDidLoad;

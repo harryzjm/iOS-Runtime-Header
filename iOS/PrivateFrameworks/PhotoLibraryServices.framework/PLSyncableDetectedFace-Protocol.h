@@ -13,6 +13,7 @@
 
 @protocol PLSyncableDetectedFace <NSObject, PFPhotosFaceRepresentation, PLSyncableObject>
 @property(nonatomic) short cloudLocalState;
+@property(nonatomic) short detectionType;
 @property(nonatomic) int trainingType;
 @property(nonatomic) int cloudNameSource;
 @property(nonatomic) int nameSource;

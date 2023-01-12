@@ -13,14 +13,8 @@
     _HDCloudSyncStorePersistableState *_storeState;
 }
 
++ (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
-- (void)_sequencePushesDidFinishSuccessfully;
-- (id)_pendingSequenceRecordOperationForPushWithIncludedStoreIdentifiers:(id)arg1;
-- (id)_replacePendingSequenceRecordWithIncludedStoreIdentifiers:(id)arg1;
-- (id)_validatedSequenceRecordOperationsForPush;
-- (id)_operationForExistingSequenceRecord:(id)arg1;
-- (id)_operationForNewSequenceRecord:(id)arg1 replacingSequence:(id)arg2 isRebaseline:(_Bool)arg3;
-- (id)_currentOwnedStoreIdentifiersForPush;
 - (void)main;
 @property(copy) HDCloudSyncTarget *target;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 target:(id)arg3;

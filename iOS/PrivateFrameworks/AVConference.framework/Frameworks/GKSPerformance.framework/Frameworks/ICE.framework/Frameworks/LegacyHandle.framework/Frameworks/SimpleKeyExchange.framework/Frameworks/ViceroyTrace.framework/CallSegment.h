@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSNumber, NSString, VCHistogram;
-@protocol VCAdaptiveLearningDelegate;
+@class NSDate, NSMutableDictionary, NSNumber, NSString, VCHistogram;
+@protocol OS_nw_activity, VCAdaptiveLearningDelegate;
 
 @interface CallSegment : NSObject
 {
@@ -42,6 +42,9 @@
     VCHistogram *_REDMaxDelay;
     VCHistogram *_videoStall;
     VCHistogram *_mediaStall;
+    VCHistogram *_continuousHighRTTReportCount;
+    VCHistogram *_continuousHighPLRReportCount;
+    VCHistogram *_continuousHighRTTPLRReportCount;
     int _duration;
     int _adjustedDuration;
     double _totalVideoStallTime;
@@ -126,9 +129,11 @@
     unsigned int _evictedFramesTrackedCount;
     unsigned int _evictedFramesAnalysisValidIntervals;
     double _evictedFramesAverageLatePacketDelay;
+    unsigned int _lateFramesScheduledCount;
     unsigned int _fecProcessingTime;
     VCHistogram *_lossPattern;
     NSNumber *_IPVersion;
+    _Bool _isLocalCelltechDirty;
     NSNumber *_localCelltech;
     NSNumber *_remoteCelltech;
     NSNumber *_isLocalExpensive;
@@ -154,6 +159,8 @@
     double _rttMeanTotalDelta;
     unsigned char _plrTierTotalDelta;
     CDStruct_4bc0a271 _linkProbingConfig;
+    unsigned char _coreMotionActivityValue;
+    unsigned char _coreMotionActivityConfidence;
     unsigned long long _lastReportedTotalCellDupTxDataBytes;
     unsigned long long _lastReportedTotalCellDupRxDataBytes;
     unsigned long long _lastReportedTotalUsedCellBudgetTxDataBytes;
@@ -165,13 +172,28 @@
     NSNumber *_wrmLinkTypeSuggestion;
     NSNumber *_wrmLinkTypeChangeReasonCode;
     NSNumber *_wrmLinkTypeWifiRSSI;
+    NSNumber *_wrmLinkTypeWifiRSSIThreshold;
     NSNumber *_wrmLinkTypeWifiSNR;
     NSNumber *_wrmLinkTypeWifiCCA;
     NSNumber *_wrmLinkTypeWifiPacketLoss;
     NSNumber *_wrmLinkTypeCellSignalStrength;
     NSNumber *_wrmLinkTypeCellSignalBar;
     NSNumber *_wrmLinkTypeCellServingCellType;
+    NSNumber *_wrmLinkTypeWifiRemoteRSSIThreshold;
+    _Bool _is5GHz;
+    NSObject<OS_nw_activity> *_nwActivity;
+    _Bool _useNwActivitySubmitMetrics;
+    _Bool _isNWActivityReportingEnabled;
+    NSDate *_conversationTimeBase;
+    int _startDate;
     id <VCAdaptiveLearningDelegate> _delegate;
+    unsigned int _highRTTReportCounter;
+    unsigned int _highPLRReportCounter;
+    unsigned int _highRTTPLRReportCounter;
+    int _avSyncOffsetSum;
+    int _minAVSyncOffset;
+    int _maxAVSyncOffset;
+    unsigned int _avSyncOffsetSamplesCount;
     unsigned int _videoFrameNonFECTotalCounter;
     unsigned int _videoFrameNonFECCompleteCounter;
     NSString *_suggestedLinkTypeCombo;
@@ -180,17 +202,32 @@
 + (id)connectionCategoryForType:(id)arg1;
 + (id)interfaceCategoryForType:(id)arg1;
 + (id)newSegmentNameWithComponents:(id)arg1 remoteInterface:(id)arg2 connectionType:(id)arg3 duplicationIndicator:(id)arg4;
+@property int avSyncOffsetSum; // @synthesize avSyncOffsetSum=_avSyncOffsetSum;
+@property int maxAVSyncOffset; // @synthesize maxAVSyncOffset=_maxAVSyncOffset;
+@property int minAVSyncOffset; // @synthesize minAVSyncOffset=_minAVSyncOffset;
+@property unsigned int avSyncOffsetSamplesCount; // @synthesize avSyncOffsetSamplesCount=_avSyncOffsetSamplesCount;
+@property _Bool remoteFaceTimeSwitchesAvailable; // @synthesize remoteFaceTimeSwitchesAvailable=_remoteFaceTimeSwitchesAvailable;
+@property unsigned int remoteSwitches; // @synthesize remoteSwitches=_remoteSwitches;
+@property unsigned int negotiatedSwitches; // @synthesize negotiatedSwitches=_negotiatedSwitches;
+@property unsigned int highRTTPLRReportCounter; // @synthesize highRTTPLRReportCounter=_highRTTPLRReportCounter;
+@property unsigned int highPLRReportCounter; // @synthesize highPLRReportCounter=_highPLRReportCounter;
+@property unsigned int highRTTReportCounter; // @synthesize highRTTReportCounter=_highRTTReportCounter;
+@property _Bool is5GHz; // @synthesize is5GHz=_is5GHz;
 @property double timeWeightedJitterQueueSize; // @synthesize timeWeightedJitterQueueSize=_timeWeightedJitterQueueSize;
 @property unsigned int maxJitterQueueSize; // @synthesize maxJitterQueueSize=_maxJitterQueueSize;
 @property unsigned int averageJitterQueueSizeChanges; // @synthesize averageJitterQueueSizeChanges=_averageJitterQueueSizeChanges;
 @property unsigned int averageJitterQueueSize; // @synthesize averageJitterQueueSize=_averageJitterQueueSize;
+@property unsigned char coreMotionActivityConfidence; // @synthesize coreMotionActivityConfidence=_coreMotionActivityConfidence;
+@property unsigned char coreMotionActivityValue; // @synthesize coreMotionActivityValue=_coreMotionActivityValue;
 @property double primaryConnHealthAllowedDelay; // @synthesize primaryConnHealthAllowedDelay=_primaryConnHealthAllowedDelay;
+@property NSNumber *wrmLinkTypeWifiRemoteRSSIThreshold; // @synthesize wrmLinkTypeWifiRemoteRSSIThreshold=_wrmLinkTypeWifiRemoteRSSIThreshold;
 @property NSNumber *wrmLinkTypeCellServingCellType; // @synthesize wrmLinkTypeCellServingCellType=_wrmLinkTypeCellServingCellType;
 @property NSNumber *wrmLinkTypeCellSignalBar; // @synthesize wrmLinkTypeCellSignalBar=_wrmLinkTypeCellSignalBar;
 @property NSNumber *wrmLinkTypeCellSignalStrength; // @synthesize wrmLinkTypeCellSignalStrength=_wrmLinkTypeCellSignalStrength;
 @property NSNumber *wrmLinkTypeWifiPacketLoss; // @synthesize wrmLinkTypeWifiPacketLoss=_wrmLinkTypeWifiPacketLoss;
 @property NSNumber *wrmLinkTypeWifiCCA; // @synthesize wrmLinkTypeWifiCCA=_wrmLinkTypeWifiCCA;
 @property NSNumber *wrmLinkTypeWifiSNR; // @synthesize wrmLinkTypeWifiSNR=_wrmLinkTypeWifiSNR;
+@property NSNumber *wrmLinkTypeWifiRSSIThreshold; // @synthesize wrmLinkTypeWifiRSSIThreshold=_wrmLinkTypeWifiRSSIThreshold;
 @property NSNumber *wrmLinkTypeWifiRSSI; // @synthesize wrmLinkTypeWifiRSSI=_wrmLinkTypeWifiRSSI;
 @property NSNumber *wrmLinkTypeChangeReasonCode; // @synthesize wrmLinkTypeChangeReasonCode=_wrmLinkTypeChangeReasonCode;
 @property NSNumber *wrmLinkTypeSuggestion; // @synthesize wrmLinkTypeSuggestion=_wrmLinkTypeSuggestion;
@@ -213,9 +250,11 @@
 @property(copy) NSNumber *isLocalExpensive; // @synthesize isLocalExpensive=_isLocalExpensive;
 @property(copy) NSNumber *remoteCelltech; // @synthesize remoteCelltech=_remoteCelltech;
 @property(copy) NSNumber *localCelltech; // @synthesize localCelltech=_localCelltech;
+@property _Bool isLocalCelltechDirty; // @synthesize isLocalCelltechDirty=_isLocalCelltechDirty;
 @property(copy) NSNumber *IPVersion; // @synthesize IPVersion=_IPVersion;
 @property(readonly) VCHistogram *lossPattern; // @synthesize lossPattern=_lossPattern;
 @property unsigned int fecProcessingTime; // @synthesize fecProcessingTime=_fecProcessingTime;
+@property unsigned int lateFramesScheduledCount; // @synthesize lateFramesScheduledCount=_lateFramesScheduledCount;
 @property double evictedFramesAverageLatePacketDelay; // @synthesize evictedFramesAverageLatePacketDelay=_evictedFramesAverageLatePacketDelay;
 @property unsigned int evictedFramesAnalysisValidIntervals; // @synthesize evictedFramesAnalysisValidIntervals=_evictedFramesAnalysisValidIntervals;
 @property unsigned int evictedFramesTrackedCount; // @synthesize evictedFramesTrackedCount=_evictedFramesTrackedCount;
@@ -234,9 +273,9 @@
 @property unsigned long long totalUsedCellBudgetTxDataBytes; // @synthesize totalUsedCellBudgetTxDataBytes=_totalUsedCellBudgetTxDataBytes;
 @property unsigned long long totalCellDupRxDataBytes; // @synthesize totalCellDupRxDataBytes=_totalCellDupRxDataBytes;
 @property unsigned long long totalCellDupTxDataBytes; // @synthesize totalCellDupTxDataBytes=_totalCellDupTxDataBytes;
-@property(readonly) unsigned int callTransportType; // @synthesize callTransportType=_callTransportType;
-@property(readonly) unsigned int callDeviceRole; // @synthesize callDeviceRole=_callDeviceRole;
-@property(readonly) unsigned int callMode; // @synthesize callMode=_callMode;
+@property unsigned int callTransportType; // @synthesize callTransportType=_callTransportType;
+@property unsigned int callDeviceRole; // @synthesize callDeviceRole=_callDeviceRole;
+@property unsigned int callMode; // @synthesize callMode=_callMode;
 @property(copy) NSString *duplicationConnectionFamily; // @synthesize duplicationConnectionFamily=_duplicationConnectionFamily;
 @property(copy) NSString *duplicationConnectionConfig; // @synthesize duplicationConnectionConfig=_duplicationConnectionConfig;
 @property(copy) NSString *suggestedLinkTypeCombo; // @synthesize suggestedLinkTypeCombo=_suggestedLinkTypeCombo;
@@ -293,6 +332,9 @@
 @property double maxAudioStallInterval; // @synthesize maxAudioStallInterval=_maxAudioStallInterval;
 @property double totalAudioStallTime; // @synthesize totalAudioStallTime=_totalAudioStallTime;
 @property double maxVideoStallInterval; // @synthesize maxVideoStallInterval=_maxVideoStallInterval;
+@property(readonly) VCHistogram *continuousHighRTTPLRReportCount; // @synthesize continuousHighRTTPLRReportCount=_continuousHighRTTPLRReportCount;
+@property(readonly) VCHistogram *continuousHighPLRReportCount; // @synthesize continuousHighPLRReportCount=_continuousHighPLRReportCount;
+@property(readonly) VCHistogram *continuousHighRTTReportCount; // @synthesize continuousHighRTTReportCount=_continuousHighRTTReportCount;
 @property(readonly) VCHistogram *mediaStall; // @synthesize mediaStall=_mediaStall;
 @property unsigned int mediaStallCount; // @synthesize mediaStallCount=_mediaStallCount;
 @property double maxMediaStallTime; // @synthesize maxMediaStallTime=_maxMediaStallTime;
@@ -331,6 +373,7 @@
 @property(readonly) VCHistogram *JBQSize; // @synthesize JBQSize=_JBQSize;
 @property(readonly) VCHistogram *abnormalRTT; // @synthesize abnormalRTT=_abnormalRTT;
 @property(readonly) VCHistogram *RTT; // @synthesize RTT=_RTT;
+- (void)setNWActivityReportingEnabled:(_Bool)arg1;
 - (void)changeDuplicationWithType:(unsigned short)arg1 payload:(id)arg2;
 - (id)duplicationCategoryForSegmentName:(id)arg1;
 - (id)segmentQRReport;
@@ -338,11 +381,12 @@
 - (void)addSegmentWRMReportStats:(id)arg1;
 - (id)segmentReport;
 - (id)celltechTelemetry;
+- (void)assertCleanCellTech;
 - (unsigned int)RTPeriod;
 - (void)merge:(id)arg1;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 mode:(unsigned short)arg3 deviceRole:(unsigned short)arg4 transportType:(unsigned short)arg5 relayServer:(id)arg6 relayType:(unsigned short)arg7 accessToken:(id)arg8 duplicationType:(unsigned char)arg9 switchConfig:(id)arg10 linkProbingConfig:(CDStruct_4bc0a271)arg11 delegate:(id)arg12;
+- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 mode:(unsigned short)arg3 deviceRole:(unsigned short)arg4 transportType:(unsigned short)arg5 relayServer:(id)arg6 relayType:(unsigned short)arg7 accessToken:(id)arg8 duplicationType:(unsigned char)arg9 switchConfig:(id)arg10 linkProbingConfig:(CDStruct_4bc0a271)arg11 nwActivity:(id)arg12 conversationTimeBase:(id)arg13 delegate:(id)arg14;
 
 @end
 

@@ -4,33 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSArray, NSLocale, NSString;
-
-@interface IPLanguageListGenerator : NSObject
+@interface IPLanguageListGenerator
 {
-    NSString *_systemDisplayLanguage;
-    NSArray *_preferredLanguages;
-    NSLocale *_preferredLocale;
-    NSArray *_systemLanguages;
 }
-
-+ (_Bool)canRemoveLanguages:(id)arg1 fromPreferredLanguages:(id)arg2;
-+ (id)effectiveSystemLanguagesWithUnsupportedVariant:(_Bool)arg1 forPreferredLanguages:(id)arg2;
-+ (void)sortByLocalizedLanguage:(id)arg1;
-+ (id)regionalVariantLanguagesForSystemLanguages;
-+ (id)regionalVariantLanguagesForBaseLanguage:(id)arg1;
-+ (void)preheat;
-+ (id)generator;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *systemLanguages; // @synthesize systemLanguages=_systemLanguages;
-@property(readonly, nonatomic) NSLocale *preferredLocale; // @synthesize preferredLocale=_preferredLocale;
-@property(readonly, nonatomic) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
-@property(readonly, nonatomic) NSString *systemDisplayLanguage; // @synthesize systemDisplayLanguage=_systemDisplayLanguage;
-- (id)otherLanguages;
-- (id)deviceLanguagesForChangingDeviceLanguage:(_Bool)arg1;
-- (id)initWithPreferredLanguages:(id)arg1 preferredLocale:(id)arg2 systemLanguages:(id)arg3;
 
 @end
 

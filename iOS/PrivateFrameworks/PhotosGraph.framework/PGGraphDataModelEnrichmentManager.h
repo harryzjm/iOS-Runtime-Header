@@ -6,34 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, PGManager;
+@class CLSCurationContext, NSArray, PGManager;
 @protocol PGGraphDataModelEnrichmentManagerDelegate;
 
 @interface PGGraphDataModelEnrichmentManager : NSObject
 {
+    _Bool _forceRun;
     NSArray *_enrichmentProcessors;
-    long long _enrichmentContext;
+    unsigned long long _enrichmentContext;
+    CLSCurationContext *_curationContext;
     PGManager *_manager;
     id <PGGraphDataModelEnrichmentManagerDelegate> _delegate;
 }
 
-+ (id)enrichmentProcessorsForDataModelEnrichmentContext:(long long)arg1;
++ (id)enrichmentProcessorsForDataModelEnrichmentContext:(unsigned long long)arg1;
++ (id)enrichmentProcessorsForDataModelEnrichmentContexts:(id)arg1;
 + (id)liveUpdateEnrichmentProcessors;
 + (id)lightWeightEnrichmentProcessors;
 + (id)_allEnrichmentProcessorsWithTailorOptions:(unsigned long long)arg1;
 + (id)weeklyEnrichmentProcessors;
 + (id)backgroundEnrichmentProcessors;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool forceRun; // @synthesize forceRun=_forceRun;
 @property(nonatomic) __weak id <PGGraphDataModelEnrichmentManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-@property(readonly, nonatomic) long long enrichmentContext; // @synthesize enrichmentContext=_enrichmentContext;
+@property(readonly, nonatomic) CLSCurationContext *curationContext; // @synthesize curationContext=_curationContext;
+@property(readonly, nonatomic) unsigned long long enrichmentContext; // @synthesize enrichmentContext=_enrichmentContext;
 @property(readonly, nonatomic) NSArray *enrichmentProcessors; // @synthesize enrichmentProcessors=_enrichmentProcessors;
 - (_Bool)_enrichDataModelWithGraphUpdateInventory:(id)arg1 error:(id *)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (_Bool)enrichDataModelWithError:(id *)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)enrichDataModelForHighlightUUIDs:(id)arg1 withError:(id *)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (_Bool)enrichDataModelWithGraphUpdateInventory:(id)arg1 error:(id *)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)initWithManager:(id)arg1 enrichmentProcessors:(id)arg2;
-- (id)initWithManager:(id)arg1 enrichmentContext:(long long)arg2;
+- (id)initWithManager:(id)arg1 enrichmentContext:(unsigned long long)arg2;
 
 @end
 

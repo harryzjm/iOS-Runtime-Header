@@ -18,6 +18,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *cloudRecordByDatabase; // @synthesize cloudRecordByDatabase=_cloudRecordByDatabase;
+- (id)allRecordIDs;
 - (id)allRecordNames;
 - (id)allRecordsWithRecordType:(id)arg1;
 - (id)allObjectsByDatabaseIdentifier;

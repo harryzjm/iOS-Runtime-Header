@@ -15,8 +15,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) BKSHIDEventKeyCommandsDispatchingRule *dispatchingRule; // @synthesize dispatchingRule=_dispatchingRule;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
 @end
 

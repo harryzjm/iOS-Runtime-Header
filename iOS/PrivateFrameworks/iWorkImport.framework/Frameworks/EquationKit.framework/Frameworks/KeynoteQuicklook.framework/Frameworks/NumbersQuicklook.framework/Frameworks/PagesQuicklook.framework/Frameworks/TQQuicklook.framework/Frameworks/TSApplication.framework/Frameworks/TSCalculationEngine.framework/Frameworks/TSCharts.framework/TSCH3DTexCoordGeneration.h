@@ -10,14 +10,14 @@
 
 @interface TSCH3DTexCoordGeneration : NSObject
 {
-    tmat4x4_3074befe mTransform;
-    TSCH3DNormalDirectionMapper *mNormalDirectionMapper;
+    tmat4x4_3074befe _transform;
+    TSCH3DNormalDirectionMapper *_normalDirectionMapper;
 }
 
 - (id).cxx_construct;
-@property(retain, nonatomic) TSCH3DNormalDirectionMapper *normalDirectionMapper; // @synthesize normalDirectionMapper=mNormalDirectionMapper;
-- (void)dealloc;
-- (id)initWithTransform:(const tmat4x4_3074befe *)arg1;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DNormalDirectionMapper *normalDirectionMapper; // @synthesize normalDirectionMapper=_normalDirectionMapper;
+- (id)initWithTransform:(const void *)arg1;
 - (id)init;
 
 @end

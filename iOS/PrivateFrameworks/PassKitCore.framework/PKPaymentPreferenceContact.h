@@ -27,9 +27,11 @@
 - (id)errorsForPreference:(id)arg1;
 - (void)setErrors:(id)arg1 forPreference:(id)arg2;
 - (long long)indexOfContact:(id)arg1;
+- (void)_updateSelectedIndex;
+- (void)_mergeContacts:(id)arg1;
 - (void)mergeRecentsAndMeCard;
 - (_Bool)supportsDeletion;
-- (void)_removeDuplicates;
+- (id)_removeDuplicateContacts:(id)arg1;
 @property(copy, nonatomic) NSString *contactKey;
 - (id)initWithTitle:(id)arg1 preferences:(id)arg2 selectedIndex:(unsigned long long)arg3 readOnly:(_Bool)arg4;
 @property(retain, nonatomic) PKPaymentOptionsRecents *paymentOptionsRecents;

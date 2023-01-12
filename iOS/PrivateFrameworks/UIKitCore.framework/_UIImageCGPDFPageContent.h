@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeInPixels;
 - (struct CGPDFPage *)CGPDFPage;
 - (_Bool)isCGPDFPage;
-- (_Bool)canProvideFullResCGImage;
+- (_Bool)canScaleImageToTargetResolution;
 - (void)dealloc;
 - (id)initWithScale:(double)arg1;
 - (id)initWithCGPDFPage:(struct CGPDFPage *)arg1 scale:(double)arg2;

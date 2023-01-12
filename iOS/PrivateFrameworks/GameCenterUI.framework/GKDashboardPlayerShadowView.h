@@ -18,6 +18,7 @@
 @property(retain, nonatomic) GKDashboardPlayerPhotoView *photoView; // @synthesize photoView=_photoView;
 @property(nonatomic) UICollectionViewCell *parentCell; // @synthesize parentCell=_parentCell;
 - (void)layoutSubviews;
+@property(nonatomic) _Bool dimmed;
 @property(readonly, nonatomic) _Bool isUsingPlaceholder; // @dynamic isUsingPlaceholder;
 @property(readonly, nonatomic) UIView *parentView; // @dynamic parentView;
 - (void)invalidatePhoto;

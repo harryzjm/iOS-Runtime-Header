@@ -6,11 +6,12 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString, NTKComplication, NTKEditOption, NTKFaceView, UIViewController;
+@class NSArray, NSDate, NSString, NTKComplication, NTKEditOption, NTKFaceColorPalette, NTKFaceView, UIViewController;
 
 @protocol NTKFaceViewDelegate <NSObject>
 - (void)faceViewDidUpdateCustomData:(id)arg1 forKey:(NSString *)arg2;
 - (id)faceViewDidRequestCustomDataForKey:(NSString *)arg1;
+- (NTKFaceColorPalette *)faceViewWantsFaceColorPalette;
 - (NSArray *)faceViewAllVisibleComplicationsForCurrentConfiguration;
 - (NSArray *)faceViewComplicationSlotsHiddenByEditOption:(NTKEditOption *)arg1;
 - (NTKEditOption *)faceViewEditOptionThatHidesAllComplications;

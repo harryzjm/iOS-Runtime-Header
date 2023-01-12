@@ -9,7 +9,11 @@
 }
 
 + (id)sharedGenerator;
-- (id)textRepresentationForAttendee:(id)arg1 includeEmailAddress:(_Bool)arg2;
+- (id)virtualConferenceHTMLRepresentation:(id)arg1;
+- (_Bool)_virtualConferenceUsesShortRepresentation:(id)arg1;
+- (id)_htmlStringWithURL:(id)arg1 title:(id)arg2;
+- (id)_attributedStringWithURL:(id)arg1 title:(id)arg2;
+- (id)_textRepresentationForAttendee:(id)arg1 includeEmailAddress:(_Bool)arg2;
 - (id)_showEventURLStringForEvent:(id)arg1;
 - (id)dateStringRepresentationForEvent:(id)arg1;
 - (id)textRepresentationForEvent:(id)arg1 withTextFormat:(int)arg2 showURI:(_Bool)arg3;

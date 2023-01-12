@@ -16,16 +16,17 @@
     id <NSObject><NSCopying> _outlineObject;
     PXArrayChangeDetails *_changeDetailsFromPreviousDataSection;
     PXDataSection *_previousDataSection;
-    unsigned long long _previousDataSectionIdentifier;
+    long long _previousDataSectionIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long previousDataSectionIdentifier; // @synthesize previousDataSectionIdentifier=_previousDataSectionIdentifier;
+@property(readonly, nonatomic) long long previousDataSectionIdentifier; // @synthesize previousDataSectionIdentifier=_previousDataSectionIdentifier;
 @property(readonly, nonatomic) PXDataSection *previousDataSection; // @synthesize previousDataSection=_previousDataSection;
 @property(readonly, nonatomic) PXArrayChangeDetails *changeDetailsFromPreviousDataSection; // @synthesize changeDetailsFromPreviousDataSection=_changeDetailsFromPreviousDataSection;
 @property(retain, nonatomic) id <NSObject><NSCopying> outlineObject; // @synthesize outlineObject=_outlineObject;
 @property(copy, nonatomic) NSArray *childDataSectionManagers; // @synthesize childDataSectionManagers=_childDataSectionManagers;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)setChangeProcessingPaused:(_Bool)arg1 forReason:(id)arg2;
 @property(readonly, nonatomic) unsigned long long childChangeDescriptorsInvalidatingDataSection;
 - (id)auxiliaryObjectForKey:(id)arg1 dataSectionObject:(id)arg2 hintIndex:(long long)arg3;
 - (void)childDataSectionManager:(id)arg1 didChangeDataSectionWithChangeDetails:(id)arg2;

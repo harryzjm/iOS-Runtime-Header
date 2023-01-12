@@ -11,16 +11,27 @@
 @protocol GKMultiplayerService <NSObject>
 - (oneway void)nearbyInviteWasCancelled:(NSDictionary *)arg1;
 - (oneway void)presentNearbyInvite:(NSDictionary *)arg1;
+- (oneway void)sendDataToParticipant:(NSString *)arg1 deviceID:(NSString *)arg2 data:(NSData *)arg3 handler:(void (^)(NSError *))arg4;
+- (oneway void)forgetParticipant:(NSString *)arg1 deviceID:(NSString *)arg2 handler:(void (^)(void))arg3;
+- (oneway void)setupNearbyDiscovery;
+- (oneway void)stopNearbyAdvertisingWithHandler:(void (^)(void))arg1;
+- (oneway void)startNearbyAdvertisingWithDiscoveryInfo:(NSDictionary *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)stopNearbyBrowsingWithHandler:(void (^)(void))arg1;
+- (oneway void)startNearbyBrowsingWithPlayerID:(NSString *)arg1 handler:(void (^)(void))arg2;
 - (oneway void)updateCacheWithNearbyProfileDictionary:(NSDictionary *)arg1 handler:(void (^)(GKPlayerInternal *))arg2;
 - (oneway void)cancelRelayRequest:(NSDictionary *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)updateRelayRequest:(NSDictionary *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)initiateRelayRequest:(NSDictionary *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)sendReconnectInvitation:(NSString *)arg1 toPlayer:(GKPlayerInternal *)arg2 connectionData:(NSData *)arg3 sessionToken:(NSData *)arg4 pushToken:(NSData *)arg5 handler:(void (^)(NSError *))arg6;
+- (oneway void)removeInviteSession;
 - (oneway void)getInviteSessionTokenWithHandler:(void (^)(NSData *, NSError *))arg1;
 - (oneway void)getPlayersToInviteWithHandlerV2:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)hasCanceledMultiplayerInitiateBulletinForSessionToken:(NSData *)arg1 handler:(void (^)(_Bool))arg2;
 - (oneway void)getAcceptedGameInviteWithHandler:(void (^)(GKInviteInternal *, NSError *))arg1;
 - (oneway void)declineGameInvite:(GKInviteInternal *)arg1 reason:(long long)arg2 handler:(void (^)(void))arg3;
 - (oneway void)acceptGameInvite:(GKInviteInternal *)arg1 connectionData:(NSData *)arg2 handler:(void (^)(NSDictionary *, NSError *))arg3;
+- (oneway void)getMultiPlayerGroups:(void (^)(NSMutableArray *, NSError *))arg1;
+- (oneway void)putMultiPlayerGroup:(NSString *)arg1 participants:(NSArray *)arg2 playedAt:(long long)arg3 bundleID:(NSString *)arg4 numberOfAutomatched:(long long)arg5 handler:(void (^)(NSError *))arg6;
 - (oneway void)cancelGameInviteWithHandler:(void (^)(void))arg1;
 - (oneway void)removePlayersFromGameInviteV2:(NSArray *)arg1 handler:(void (^)(void))arg2;
 - (oneway void)setShareInvitees:(NSArray *)arg1;

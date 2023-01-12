@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) MSVMultiCallback *createItemForOffsetCallbacks; // @synthesize createItemForOffsetCallbacks=_createItemForOffsetCallbacks;
 @property(readonly, nonatomic) MSVMultiCallback *createPlaybackQueueForRequestCallbacks; // @synthesize createPlaybackQueueForRequestCallbacks=_createPlaybackQueueForRequestCallbacks;
 @property(readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
+- (_Bool)removePlaybackQueueDataSourceCallback:(id)arg1;
 - (void)registerNowPlayingInfoArtworkAssetCallback:(id)arg1;
 - (void)registerNowPlayingInfoAssetCallbacks:(id)arg1;
 - (void)registerNowPlayingInfoCallbacks:(id)arg1;

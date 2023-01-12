@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, VMUDebugTimer, VMUProcessObjectGraph, VMUTaskMemoryScanner;
+@class NSMutableArray, NSMutableString, VMUDebugTimer, VMUProcessObjectGraph, VMUTaskMemoryScanner;
 @protocol VMUStackLogReader;
 
 @interface VMULeakDetector : NSObject
@@ -30,6 +30,7 @@
     unsigned int _task;
     struct __sFILE *_outputFile;
     _Bool _fcloseOutput;
+    NSMutableString *_outputString;
     unsigned int _numExcluded;
     void *_abandoned;
     void *_leakedNodes;
@@ -38,6 +39,7 @@
     _Bool _showContext;
 }
 
++ (id)referenceDescription:(CDStruct_3aaebc0a)arg1 dstDescription:(id)arg2 is64bit:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) VMUProcessObjectGraph *leakedGraph; // @synthesize leakedGraph=_leakedGraph;
 @property(retain, nonatomic) NSMutableArray *leakTreeRootsArray; // @synthesize leakTreeRootsArray=_leakTreeRootsArray;
@@ -49,6 +51,7 @@
 @property(readonly, nonatomic) unsigned int task; // @synthesize task=_task;
 @property(nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
 @property(nonatomic) _Bool fcloseOutput; // @synthesize fcloseOutput=_fcloseOutput;
+@property(retain, nonatomic) NSMutableString *outputString; // @synthesize outputString=_outputString;
 @property(nonatomic) struct __sFILE *outputFile; // @synthesize outputFile=_outputFile;
 @property(retain, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property(nonatomic) _Bool referenceTreeShowRegionVirtualSize; // @synthesize referenceTreeShowRegionVirtualSize=_referenceTreeShowRegionVirtualSize;

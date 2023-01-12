@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface GQWrapPointSet : NSObject
 {
-    set_978dc09f *mWrapPointSet;
+    void *mWrapPointSet;
 }
 
 - (void)dealloc;

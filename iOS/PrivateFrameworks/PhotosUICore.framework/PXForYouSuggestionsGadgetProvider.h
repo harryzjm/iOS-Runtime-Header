@@ -29,8 +29,8 @@
 @property(readonly, nonatomic) PXSuggestionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)keyAssetForSuggestion:(id)arg1;
-- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1 animated:(_Bool)arg2;
-- (void)presentOneUpForSuggestion:(id)arg1 animated:(_Bool)arg2;
+- (void)suggestionGadgetsWantsOneUpPresentation:(id)arg1 withMediaProvider:(id)arg2 animated:(_Bool)arg3;
+- (void)presentOneUpForSuggestion:(id)arg1 withMediaProvider:(id)arg2 animated:(_Bool)arg3;
 - (void)setDataSource:(id)arg1 changeDetails:(id)arg2;
 - (id)_gadgetForAssetReference:(id)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;

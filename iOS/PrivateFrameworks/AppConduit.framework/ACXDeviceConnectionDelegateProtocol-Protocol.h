@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSString, NSUUID;
 
 @protocol ACXDeviceConnectionDelegateProtocol <NSObject>
+- (void)observerRegistrationSuccessful;
 - (void)applicationDatabaseResyncedForDeviceWithPairingID:(NSUUID *)arg1;
 - (void)applicationsUninstalled:(NSArray *)arg1 onDeviceWithPairingID:(NSUUID *)arg2;
 - (void)applicationsUpdated:(NSArray *)arg1 onDeviceWithPairingID:(NSUUID *)arg2;

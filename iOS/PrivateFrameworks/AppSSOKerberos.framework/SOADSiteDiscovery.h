@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue, NSString;
+@class NSOperationQueue, NSString, SODNSSRVQuery;
 
 @interface SOADSiteDiscovery : NSObject
 {
     NSString *_realm;
     NSOperationQueue *_queue;
+    SODNSSRVQuery *_dns;
 }
 
 - (void).cxx_destruct;
+@property(retain) SODNSSRVQuery *dns; // @synthesize dns=_dns;
 @property(retain, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
-- (void)discoverADInfoUsingSourceAppBundleIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)performNetworkConnectionUsingService:(id)arg1 orHost:(id)arg2 port:(unsigned short)arg3 inBackground:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)performLDAPPingUsingSite:(id)arg1 bundleIdentifier:(id)arg2 auditTokenData:(id)arg3 requireTLSForLDAP:(_Bool)arg4 inBackground:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)discoverADInfoUsingSourceAppBundleIdentifier:(id)arg1 auditTokenData:(id)arg2 requireTLSForLDAP:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)initWithRealm:(id)arg1;
 
 @end

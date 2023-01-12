@@ -23,7 +23,7 @@
 - (void)viewWillLayoutSubviews;
 - (long long)preferredStatusBarStyle;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithPaymentDataProvider:(id)arg1 transactionSource:(id)arg2;
+- (id)initWithPaymentDataProvider:(id)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3;
 
 @end
 

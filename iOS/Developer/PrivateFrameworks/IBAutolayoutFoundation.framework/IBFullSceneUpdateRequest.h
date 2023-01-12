@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBObjectBasedMarshallingRequest.h>
-
 #import <IBAutolayoutFoundation/IBSceneUpdateRequest-Protocol.h>
 
 @class IBSceneUpdateProcessingRequestGroup, NSObject, NSString;
 
-@interface IBFullSceneUpdateRequest : IBObjectBasedMarshallingRequest <IBSceneUpdateRequest>
+@interface IBFullSceneUpdateRequest <IBSceneUpdateRequest>
 {
     IBSceneUpdateProcessingRequestGroup *_processingRequestGroup;
     NSString *_incrementalUpdateSessionID;

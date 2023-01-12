@@ -4,28 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+@class NSData, SISchemaCarPlayInvocationContext, SISchemaCardSectionKeyboardInvocationContext, SISchemaTVRemoteInvocationContext, SISchemaVerticalLayoutCardSectionInvocationContext, SISchemaViewContainer;
 
-@class NSData, SISchemaCarPlayInvocationContext, SISchemaViewContainer;
-
-@interface SISchemaInvocation : PBCodable
+@interface SISchemaInvocation
 {
     int _invocationAction;
     int _invocationSource;
     SISchemaViewContainer *_viewContainer;
     SISchemaCarPlayInvocationContext *_carPlayInvocationContext;
+    SISchemaVerticalLayoutCardSectionInvocationContext *_cardInvocationContext;
+    SISchemaTVRemoteInvocationContext *_tvRemoteInvocationContext;
+    SISchemaCardSectionKeyboardInvocationContext *_keyboardInvocationContext;
+    _Bool _isDeviceLocked;
     struct {
         unsigned int invocationAction:1;
         unsigned int invocationSource:1;
+        unsigned int isDeviceLocked:1;
     } _has;
     _Bool _hasViewContainer;
     _Bool _hasCarPlayInvocationContext;
+    _Bool _hasCardInvocationContext;
+    _Bool _hasTvRemoteInvocationContext;
+    _Bool _hasKeyboardInvocationContext;
     unsigned long long _whichInvocationcontext;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasKeyboardInvocationContext; // @synthesize hasKeyboardInvocationContext=_hasKeyboardInvocationContext;
+@property(nonatomic) _Bool hasTvRemoteInvocationContext; // @synthesize hasTvRemoteInvocationContext=_hasTvRemoteInvocationContext;
+@property(nonatomic) _Bool hasCardInvocationContext; // @synthesize hasCardInvocationContext=_hasCardInvocationContext;
 @property(nonatomic) _Bool hasCarPlayInvocationContext; // @synthesize hasCarPlayInvocationContext=_hasCarPlayInvocationContext;
 @property(nonatomic) _Bool hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
+@property(nonatomic) _Bool isDeviceLocked; // @synthesize isDeviceLocked=_isDeviceLocked;
 @property(retain, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 @property(nonatomic) int invocationSource; // @synthesize invocationSource=_invocationSource;
 @property(nonatomic) int invocationAction; // @synthesize invocationAction=_invocationAction;
@@ -38,6 +48,10 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasIsDeviceLocked;
+@property(retain, nonatomic) SISchemaCardSectionKeyboardInvocationContext *keyboardInvocationContext; // @synthesize keyboardInvocationContext=_keyboardInvocationContext;
+@property(retain, nonatomic) SISchemaTVRemoteInvocationContext *tvRemoteInvocationContext; // @synthesize tvRemoteInvocationContext=_tvRemoteInvocationContext;
+@property(retain, nonatomic) SISchemaVerticalLayoutCardSectionInvocationContext *cardInvocationContext; // @synthesize cardInvocationContext=_cardInvocationContext;
 @property(retain, nonatomic) SISchemaCarPlayInvocationContext *carPlayInvocationContext; // @synthesize carPlayInvocationContext=_carPlayInvocationContext;
 @property(nonatomic) _Bool hasInvocationSource;
 @property(nonatomic) _Bool hasInvocationAction;

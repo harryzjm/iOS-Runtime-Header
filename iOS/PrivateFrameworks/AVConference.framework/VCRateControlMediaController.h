@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     _Bool _isAudioStall;
     _Bool _isInThrottlingMode;
     _Bool _allowVideoStop;
+    _Bool _isRemoteAudioPaused;
     int _audioFractionTier;
     double _lastAudioFractionChangeTime;
     double _lastAudioEnoughRateTime;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
     double _lastAudioStallFlushTime;
     _Bool _isRTPFlushBasebandFromVCRateControl;
     unsigned int _basebandAverageBitrate;
+    unsigned int _basebandAverageBitrateShort;
     unsigned int _basebandTotalQueueDepth;
     unsigned int _basebandFlushableQueueDepth;
     double _basebandExpectedQueuingDelay;
@@ -75,6 +77,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldDisableLargeFrameRequestsWhenInitialRampUp; // @synthesize shouldDisableLargeFrameRequestsWhenInitialRampUp=_shouldDisableLargeFrameRequestsWhenInitialRampUp;
 @property(nonatomic) _Bool isRateLimitedMaxTimeExceeded; // @synthesize isRateLimitedMaxTimeExceeded=_isRateLimitedMaxTimeExceeded;
 @property(nonatomic) _Bool allowVideoStop; // @synthesize allowVideoStop=_allowVideoStop;
+@property(nonatomic) _Bool isRemoteAudioPaused; // @synthesize isRemoteAudioPaused=_isRemoteAudioPaused;
 @property(readonly, nonatomic) _Bool isInThrottlingMode; // @synthesize isInThrottlingMode=_isInThrottlingMode;
 @property(nonatomic) _Bool isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
 @property(nonatomic) _Bool isSenderProbingEnabled; // @synthesize isSenderProbingEnabled=_isSenderProbingEnabled;
@@ -108,7 +111,8 @@ __attribute__((visibility("hidden")))
 - (void)resumeVideoByVCRateControl;
 - (void)stopVideoByVCRateControl;
 - (void)pauseVideoByUser:(_Bool)arg1;
-- (void)updateBasebandSuggestionWithStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateAudioStallInMediaSuggestion:(struct VCRateControlMediaSuggestion *)arg1 isSuggestionNeeded:(_Bool *)arg2 atTime:(double)arg3;
+- (void)updateBasebandSuggestionWithStatistics:(CDStruct_c0785916)arg1;
 - (void)computePacketLossWithRemoteInfo:(struct VCRCMediaPLPFromRemoteInfo *)arg1;
 - (void)getMediaQueueRateChangeCounter:(unsigned int *)arg1 rateChangeTime:(double *)arg2;
 - (void)getMediaQueueInVideoBitrate:(double *)arg1 outVideoBitrate:(double *)arg2 inAudioBitrate:(double *)arg3 outAudioBitrate:(double *)arg4;

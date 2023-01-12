@@ -8,8 +8,8 @@
 {
 }
 
-- (void)_requestTextureForAttributedString:(id)arg1 string:(id)arg2 withAttributes:(id)arg3 targetSize:(struct CGSize)arg4 drawingOptions:(long long)arg5 userInterfaceDirection:(unsigned long long)arg6 verticalAlignment:(long long)arg7 screenScale:(double)arg8 textureRequestID:(int)arg9;
-- (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
+- (void)_requestTextureForAttributedString:(id)arg1 attributedStringBoundingSize:(struct CGSize)arg2 string:(id)arg3 withAttributes:(id)arg4 targetSize:(struct CGSize)arg5 drawingOptions:(long long)arg6 drawingContext:(id)arg7 userInterfaceDirection:(unsigned long long)arg8 verticalAlignment:(long long)arg9 screenScale:(double)arg10 textureRequestID:(int)arg11 padding:(struct UIEdgeInsets)arg12;
+- (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_4f725fed *)arg2 styles:(CDStruct_76b550e2 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
 
 @end
 

@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray, NSMutableArray;
 @protocol PLVideoChoosingAssetInformation, PLVideoChoosingOptions, PLVideoResourceContext;
 
 @interface PLVideoChoosingAndAvailabilitySupport : NSObject
 {
+    NSMutableArray *_resourcesNeedingRepair;
     id <PLVideoResourceContext> _context;
     id <PLVideoChoosingAssetInformation> _assetInformation;
     id <PLVideoChoosingOptions> _options;
@@ -21,10 +23,13 @@
 @property(readonly, nonatomic) id <PLVideoChoosingOptions> options; // @synthesize options=_options;
 @property(readonly, nonatomic) id <PLVideoChoosingAssetInformation> assetInformation; // @synthesize assetInformation=_assetInformation;
 @property(readonly, nonatomic) id <PLVideoResourceContext> context; // @synthesize context=_context;
-- (id)chooseResourceDownloadRequired:(_Bool *)arg1;
-- (id)_chooseResourceDownloadRequired:(_Bool *)arg1;
-- (unsigned int)_videoQualityLevelForRequest;
+- (id)chooseResourceWithLoadingMode:(long long *)arg1 needsAdjustmentData:(_Bool *)arg2 error:(id *)arg3;
+- (long long)_optimalLoadingModeForResource:(id)arg1;
+- (_Bool)_checkIsReallyLocallyAvailableAndAddToRepairListIfNeeded:(id)arg1;
+- (id)_ensureOriginalsAreHighestQuality:(id)arg1;
+- (unsigned int)_videoQualityLevelForRequestFallbackToMediumPolicy:(long long *)arg1;
 - (id)_acceptableResourceVersions;
+@property(readonly, nonatomic) NSArray *resourcesNeedingRepair;
 - (id)initWithContext:(id)arg1 assetInformation:(id)arg2 options:(id)arg3 size:(struct CGSize)arg4;
 
 @end

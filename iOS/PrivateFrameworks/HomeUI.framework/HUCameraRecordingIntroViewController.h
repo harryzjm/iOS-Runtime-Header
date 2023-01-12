@@ -34,6 +34,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)hu_preloadContent;
+- (void)showCameraRecordingLearnMore;
 - (void)_buttonTwo:(id)arg1;
 - (void)_buttonOne:(id)arg1;
 - (id)initWithIntroVariant:(unsigned long long)arg1 home:(id)arg2;

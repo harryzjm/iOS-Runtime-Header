@@ -11,10 +11,8 @@
 }
 
 + (id)makeParseWithDirectInvocationPayload:(id)arg1;
-+ (id)makeParseWithIntent:(id)arg1 appBundleId:(id)arg2;
 + (id)runSiriKitExecutorCommandWithContext:(id)arg1 parse:(id)arg2 appBundleId:(id)arg3;
 + (id)wrapCommandInStartLocalRequest:(id)arg1;
-+ (id)runSiriKitExecutorCommandWithContext:(id)arg1 intent:(id)arg2 parameterMetadata:(id)arg3 appBundleId:(id)arg4;
 + (id)runSiriKitExecutorCommandWithContext:(id)arg1 payload:(id)arg2;
 
 @end

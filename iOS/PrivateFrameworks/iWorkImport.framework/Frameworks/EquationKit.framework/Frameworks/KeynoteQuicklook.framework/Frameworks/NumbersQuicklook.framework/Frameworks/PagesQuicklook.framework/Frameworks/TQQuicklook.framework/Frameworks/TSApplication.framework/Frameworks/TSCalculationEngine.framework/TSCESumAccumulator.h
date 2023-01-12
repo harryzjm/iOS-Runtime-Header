@@ -25,7 +25,7 @@
 @property(readonly, nonatomic) struct TSCENumberValue *numberAccumulator; // @synthesize numberAccumulator=_numberAccumulator;
 @property(nonatomic) NSDate *dateAccumulator; // @synthesize dateAccumulator=_dateAccumulator;
 - (struct TSCEValue)resultForFunction:(id)arg1;
-- (void)addValue:(const struct TSCEValue *)arg1 function:(id)arg2 evaluationContext:(struct TSCEEvaluationContext *)arg3;
+- (void)addValue:(const struct TSCEValue *)arg1 function:(id)arg2 evaluationContext:(void *)arg3;
 - (id)init;
 
 @end

@@ -27,8 +27,8 @@
 - (id)initWithData:(id)arg1;
 - (id)initWithMainResource:(id)arg1 subresources:(id)arg2 subframeArchives:(id)arg3;
 - (id)init;
-- (struct LegacyWebArchive *)_coreLegacyWebArchive;
-- (id)_initWithCoreLegacyWebArchive:(RefPtr_a4a1529f *)arg1;
+- (void *)_coreLegacyWebArchive;
+- (id)_initWithCoreLegacyWebArchive:(void *)arg1;
 
 @end
 

@@ -10,7 +10,6 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)setObjectUUID:(id)arg1 forIdentifier:(long long)arg2;
-- (id)initWithIdentifierToObjectUUIDDictionary:(id)arg1 objectUUIDToIdentifierDictionary:(id)arg2;
 
 @end
 

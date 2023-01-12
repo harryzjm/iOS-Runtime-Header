@@ -16,7 +16,6 @@
     NTKDigitialUtilitarianFaceViewComplicationFactory *_faceViewComplicationFactory;
     NTKDigitalTimeLabelStyle *_digitalTimeLabelDefaultStyle;
     NTKDigitalTimeLabelStyle *_digitalTimeLabelSmallInUpperRightCornerStyle;
-    struct CGPoint _digitalTimeLabelZoomEndingCenter;
     NTKAstronomyRotationModel *_rotationModel;
     struct CLLocationCoordinate2D _initialCoordinate;
     MISSING_TYPE *_previousTranslation;
@@ -56,11 +55,8 @@
 
 - (void).cxx_destruct;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
-- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
-- (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
-- (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -79,13 +75,14 @@
 - (void)_performWristRaiseAnimation;
 - (void)_prepareWristRaiseAnimation;
 - (void)_cleanupAfterZoom;
-- (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
-- (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
-- (_Bool)_usesCustomZoom;
+- (void)_prepareToZoom;
 - (void)setTimeOffset:(double)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (_Bool)_timeLabelUsesLegibility;
+- (id)digitalTimeLabelSmallInUpperRightCornerStyle;
+- (id)digitalTimeLabelDefaultStyle;
 - (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1;
 - (unsigned long long)_timeLabelOptions;
 - (void)_setupAstronomyVistaView;
 - (unsigned long long)_detentTypeForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -98,6 +95,7 @@
 - (void)_asyncUpdateLocale;
 - (void)_hideLocationDot;
 - (void)_showLocationDotIfNeeded;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)_layoutLegacyViews;
 - (void)_layoutSpheroidLabel:(int)arg1;
@@ -132,7 +130,6 @@
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (double)_minimumBreathingScaleForComplicationSlot:(id)arg1;
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
-- (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (double)keylineStyleForComplicationSlot:(id)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (void)_loadLayoutRules;

@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/UIMultiSelectInteractionDelegate-Protocol.h>
 
-@class NSString, PXIndexPathSet, PXSectionedSelectionManager, PXUIAutoScroller, UIMultiSelectInteraction, UIScrollView;
+@class NSArray, NSString, PXIndexPathSet, PXSectionedSelectionManager, PXUIAutoScroller, UIMultiSelectInteraction, UIScrollView;
 @protocol PXSwipeSelectionManagerDelegate;
 
 @interface PXSwipeSelectionManager : NSObject <PXAutoScrollerDelegate, PXSectionedDataSourceManagerObserver, UIMultiSelectInteractionDelegate>
@@ -25,33 +25,38 @@
         _Bool respondsToShouldAutomaticallyTransitionToMultiSelectModeAtPoint;
         _Bool respondsToAutomaticallyTransitionToMultiSelectMode;
         _Bool respondsToIndexPathSetFromIndexPathToIndexPath;
+        _Bool respondsToExtendSelectionInDirection;
         _Bool respondsToDidAutoScroll;
     } _delegateFlags;
     id <PXSwipeSelectionManagerDelegate> _delegate;
     unsigned long long _state;
     UIScrollView *_scrollView;
     PXSectionedSelectionManager *_selectionManager;
-    UIMultiSelectInteraction *_multiSelectInteraction;
-    unsigned long long __currentDataSourceIdentifier;
+    long long __currentDataSourceIdentifier;
     PXIndexPathSet *__selectedIndexPathsBeforeSwipe;
     id __pausingChangesToken;
     PXUIAutoScroller *__autoScroller;
+    UIMultiSelectInteraction *_multiSelectInteraction;
     struct PXSimpleIndexPath __startingIndexPath;
     struct PXSimpleIndexPath __currentIndexPath;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIMultiSelectInteraction *multiSelectInteraction; // @synthesize multiSelectInteraction=_multiSelectInteraction;
 @property(readonly, nonatomic) PXUIAutoScroller *_autoScroller; // @synthesize _autoScroller=__autoScroller;
 @property(retain, nonatomic, setter=_setPausingChangesToken:) id _pausingChangesToken; // @synthesize _pausingChangesToken=__pausingChangesToken;
 @property(retain, nonatomic, setter=_setSelectedIndexPathsBeforeSwipe:) PXIndexPathSet *_selectedIndexPathsBeforeSwipe; // @synthesize _selectedIndexPathsBeforeSwipe=__selectedIndexPathsBeforeSwipe;
 @property(nonatomic, setter=_setCurrentIndexPath:) struct PXSimpleIndexPath _currentIndexPath; // @synthesize _currentIndexPath=__currentIndexPath;
 @property(nonatomic, setter=_setStartingIndexPath:) struct PXSimpleIndexPath _startingIndexPath; // @synthesize _startingIndexPath=__startingIndexPath;
-@property(nonatomic, setter=_setCurrentDataSourceIdentifier:) unsigned long long _currentDataSourceIdentifier; // @synthesize _currentDataSourceIdentifier=__currentDataSourceIdentifier;
-@property(readonly, nonatomic) UIMultiSelectInteraction *multiSelectInteraction; // @synthesize multiSelectInteraction=_multiSelectInteraction;
+@property(nonatomic, setter=_setCurrentDataSourceIdentifier:) long long _currentDataSourceIdentifier; // @synthesize _currentDataSourceIdentifier=__currentDataSourceIdentifier;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) __weak id <PXSwipeSelectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)multiSelectInteraction:(id)arg1 extendSelectionInDirection:(unsigned long long)arg2;
+- (_Bool)shouldAllowSelectionExtensionAtIndexPath:(id)arg1;
+- (_Bool)supportsKeyboardSelectionExtension;
+- (void)didCancelMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)didEndMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)multiSelectInteraction:(id)arg1 appendSelectionAtPoint:(struct CGPoint)arg2;
 - (_Bool)shouldAllowSelectionExtensionAtPoint:(struct CGPoint)arg1;
@@ -77,6 +82,10 @@
 - (struct PXSimpleIndexPath)_itemIndexPathClosestAboveLocation:(struct CGPoint)arg1;
 - (struct PXSimpleIndexPath)_itemIndexPathClosestLeadingLocation:(struct CGPoint)arg1;
 - (struct PXSimpleIndexPath)_itemIndexPathAtLocation:(struct CGPoint)arg1;
+@property(readonly, nonatomic) id targetForKeyCommands;
+@property(readonly, nonatomic) NSArray *keyCommandsForSelectionExtension;
+@property(readonly, nonatomic) NSArray *gesturesForFailureRequirements;
+- (void)removeFromView;
 - (id)init;
 - (id)initWithSelectionManager:(id)arg1 scrollView:(id)arg2;
 

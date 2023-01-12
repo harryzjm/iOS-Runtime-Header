@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol SBFOverlayDismissalDelegate, SBFOverlayObserving, UIViewControllerTransitionCoordinator;
+@class NSString;
+@protocol BSInvalidatable, SBFOverlayDismissalDelegate, SBFOverlayObserving, UIViewControllerTransitionCoordinator;
 
 @protocol SBFOverlayControlling
 @property(nonatomic, getter=isOccluded) _Bool occluded;
@@ -13,6 +14,7 @@
 @property(readonly, nonatomic, getter=isPresented) _Bool presented;
 @property(nonatomic) double presentationProgress;
 @property(readonly, nonatomic) double contentWidth;
+- (id <BSInvalidatable>)acquireUseSnapshotAsBackgroundViewAssertionForReason:(NSString *)arg1;
 - (void)removeHomeScreenOverlayObserver:(id <SBFOverlayObserving>)arg1;
 - (void)addHomeScreenOverlayObserver:(id <SBFOverlayObserving>)arg1;
 - (double)finalPresentationProgressForTranslation:(double)arg1 velocity:(double)arg2 initialPresentationProgress:(double)arg3 fromLeading:(_Bool)arg4;
@@ -20,6 +22,7 @@
 - (double)layerPresentationProgress;
 - (void)dismissUsingViewControllerTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg1;
 - (void)dismissAnimated:(_Bool)arg1 completionHandler:(void (^)(_Bool))arg2;
+- (void)presentAnimated:(_Bool)arg1 fromLeading:(_Bool)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)presentAnimated:(_Bool)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)presentAnimated:(_Bool)arg1 fromLeading:(_Bool)arg2;
 - (void)presentAnimated:(_Bool)arg1;

@@ -6,28 +6,36 @@
 
 #import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NUIContainerStackView;
+@class NSArray, NSMutableArray, NSString, NUIContainerFlowView;
+@protocol TLKImagesViewDelegate;
 
 @interface TLKImagesView <NUIContainerViewDelegate>
 {
     _Bool _paddingDisabled;
+    _Bool _selectionEnabled;
+    _Bool _useGridAlignment;
+    id <TLKImagesViewDelegate> _delegate;
     NSArray *_images;
-    NSMutableArray *_imageViews;
+    NSMutableArray *_imageButtons;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
+@property(retain, nonatomic) NSMutableArray *imageButtons; // @synthesize imageButtons=_imageButtons;
+@property(nonatomic) _Bool useGridAlignment; // @synthesize useGridAlignment=_useGridAlignment;
+@property(nonatomic, getter=isSelectionEnabled) _Bool selectionEnabled; // @synthesize selectionEnabled=_selectionEnabled;
 @property(nonatomic, getter=isPaddingDisabled) _Bool paddingDisabled; // @synthesize paddingDisabled=_paddingDisabled;
 @property(retain, nonatomic) NSArray *images; // @synthesize images=_images;
-- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (void)updateWithImages:(id)arg1;
-- (void)updateForPaddingDisabled:(_Bool)arg1;
+@property(nonatomic) __weak id <TLKImagesViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)imageViewAtLocation:(struct CGPoint)arg1;
+- (void)_handleTap:(id)arg1;
+- (void)_updateImages;
+- (void)_updateSpacing;
 - (void)observedPropertiesChanged;
 - (_Bool)usesDefaultLayoutMargins;
 - (id)setupContentView;
 
 // Remaining properties
-@property(retain, nonatomic) NUIContainerStackView *contentView; // @dynamic contentView;
+@property(retain, nonatomic) NUIContainerFlowView *contentView; // @dynamic contentView;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

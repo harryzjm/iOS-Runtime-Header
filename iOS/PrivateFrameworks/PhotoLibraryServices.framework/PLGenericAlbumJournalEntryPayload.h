@@ -13,6 +13,7 @@
 + (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;
 - (_Bool)comparePayloadValue:(id)arg1 toObjectDictionaryValue:(id)arg2 forPayloadProperty:(id)arg3;
+@property(readonly, nonatomic) NSString *importedByBundleIdentifier;
 @property(readonly, nonatomic) NSDate *creationDate;
 @property(retain, nonatomic) NSData *userQueryData;
 @property(readonly, nonatomic) NSString *importSessionID;
@@ -27,9 +28,8 @@
 @property(readonly, nonatomic) NSString *cloudGUID;
 - (void)updateAlbum:(id)arg1 includePendingChanges:(_Bool)arg2;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;
-- (void)updatePayloadAttributes:(id)arg1 withDecodedAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (void)updateEncodableAttributes:(id)arg1 fromPayloadAttributes:(id)arg2 forPayloadProperty:(id)arg3;
-- (_Bool)updatePayloadAttributes:(id)arg1 withManagedObject:(id)arg2 forPayloadProperty:(id)arg3;
+- (void)appendAttributeKey:(id)arg1 value:(id)arg2 toDescriptionBuilder:(id)arg3;
+- (_Bool)updatePayloadAttributes:(id)arg1 andNilAttributes:(id)arg2 withManagedObject:(id)arg3 forPayloadProperty:(id)arg4;
 
 @end
 

@@ -10,8 +10,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
-- (void)_setNullLocale;
-- (unsigned char)_nullLocale;
+- (void)_setDoesNotRequireSpecialCaseHandling;
+- (unsigned char)_doesNotRequireSpecialCaseHandling;
 - (id)_prefs;
 - (id)initWithLocaleIdentifier:(id)arg1;
 - (id)displayNameForKey:(id)arg1 value:(id)arg2;

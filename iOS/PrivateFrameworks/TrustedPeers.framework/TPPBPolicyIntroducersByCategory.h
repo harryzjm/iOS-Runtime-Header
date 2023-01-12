@@ -17,6 +17,7 @@
 }
 
 + (Class)introducersType;
++ (id)TPPBPolicyIntroducersByCategoryWithCategory:(id)arg1 introducers:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *introducers; // @synthesize introducers=_introducers;
 @property(retain, nonatomic) NSString *category; // @synthesize category=_category;

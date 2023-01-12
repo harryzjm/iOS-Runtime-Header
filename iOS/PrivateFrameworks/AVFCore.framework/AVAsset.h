@@ -25,6 +25,8 @@
 + (id)assetWithURL:(id)arg1;
 + (id)assetProxyWithPropertyList:(id)arg1;
 + (id)makeAssetLoggingIdentifier;
++ (id)inspectionOnlyAssetWithStreamDataParser:(id)arg1 tracks:(id)arg2;
++ (id)inspectionOnlyAssetWithFigAsset:(struct OpaqueFigAsset *)arg1;
 - (id)_assetAnalysisMessages;
 - (_Bool)supportsAnalysisReporting;
 - (void)_handleURLRequest:(id)arg1;
@@ -41,16 +43,21 @@
 - (_Bool)isPlayable;
 - (_Bool)hasProtectedContent;
 - (_Bool)_requiresInProcessOperation;
+- (void)findCompatibleTrackForCompositionTrack:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)compatibleTrackForCompositionTrack:(id)arg1;
 - (id)tracksWithMediaCharacteristics:(id)arg1;
+- (void)loadTracksWithMediaCharacteristic:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)tracksWithMediaCharacteristic:(id)arg1;
+- (void)loadTracksWithMediaType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)tracksWithMediaType:(id)arg1;
+- (void)loadTrackWithTrackID:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)trackWithTrackID:(int)arg1;
 - (void)_tracksDidChange;
 - (id)tracks;
 - (id)_tracksWithClass:(Class)arg1;
 - (id)_ID3Metadata;
 - (id)metadata;
+- (void)loadMetadataForFormat:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)metadataForFormat:(id)arg1;
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
@@ -60,6 +67,7 @@
 - (id)allMediaSelections;
 - (id)preferredMediaSelection;
 - (id)mediaSelectionGroupForPropertyList:(id)arg1 mediaSelectionOption:(id *)arg2;
+- (void)loadMediaSelectionGroupForMediaCharacteristic:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)mediaSelectionGroupForMediaCharacteristic:(id)arg1;
 - (id)availableMediaCharacteristicsWithMediaSelectionOptions;
 - (id)_mediaSelectionGroupDictionaries;
@@ -116,7 +124,9 @@
 @property(readonly, nonatomic) _Bool isProxy;
 - (id)makePropertyListForProxyWithOptions:(id)arg1;
 @property(readonly, nonatomic) id propertyListForProxy;
+- (void)loadChapterMetadataGroupsWithTitleLocale:(id)arg1 containingItemsWithCommonKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)chapterMetadataGroupsWithTitleLocale:(id)arg1 containingItemsWithCommonKeys:(id)arg2;
+- (void)loadChapterMetadataGroupsBestMatchingPreferredLanguages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)chapterMetadataGroupsBestMatchingPreferredLanguages:(id)arg1;
 - (id)_chapterMetadataGroupsBestMatchingPreferredLanguages:(id)arg1 containingItemsWithCommonKeys:(id)arg2;
 - (id)_chapterMetadataGroupsWithTitleLanguage:(id)arg1 containingItemsWithCommonKeys:(id)arg2;
@@ -134,6 +144,7 @@
 @property(readonly, nonatomic) long long moovAtomSize;
 @property(readonly, nonatomic) NSArray *fragments;
 @property(readonly, retain, nonatomic) id <AVLoggingIdentifier> loggingIdentifier;
+- (void)findUnusedTrackIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (int)unusedTrackID;
 
 @end

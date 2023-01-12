@@ -20,9 +20,11 @@
     long long _numberOfLevels;
     long long _playbackState;
     UIColor *_levelGuttersColor;
+    double _minimumFrameInterval;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double minimumFrameInterval; // @synthesize minimumFrameInterval=_minimumFrameInterval;
 @property(retain, nonatomic) UIColor *levelGuttersColor; // @synthesize levelGuttersColor=_levelGuttersColor;
 @property(nonatomic) _Bool showsLevelGutters; // @synthesize showsLevelGutters=_showsLevelGutters;
 @property(nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_shouldDeferEventsForFocusOnScreen:(id)arg1;
+- (_Bool)_wantsEventDeferringForFocusOnScreen:(id)arg1;
 
 @end
 

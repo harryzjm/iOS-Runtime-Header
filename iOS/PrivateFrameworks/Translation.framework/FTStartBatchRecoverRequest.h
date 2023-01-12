@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_0cd4918b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_0cd4918b)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *apg_ids;
 @property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *session_id;

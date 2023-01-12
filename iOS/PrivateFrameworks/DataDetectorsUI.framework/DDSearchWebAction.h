@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface DDSearchWebAction
 {
+    NSString *_query;
 }
 
+- (void).cxx_destruct;
 - (_Bool)canBePerformedByOpeningURL;
 - (void)performFromView:(id)arg1;
-- (id)icon;
+- (id)iconName;
 - (id)localizedName;
+- (id)initWithQueryString:(id)arg1 range:(struct _NSRange)arg2 context:(id)arg3;
 
 @end
 

@@ -17,9 +17,12 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MWFeedParser *parser; // @synthesize parser=_parser;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)feedParser:(id)arg1 didFailWithError:(id)arg2;
 - (void)feedParserDidFinish:(id)arg1;
 - (void)feedParser:(id)arg1 didParseFeedItem:(id)arg2;
+- (void)getURLsFromInputWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishRunningWithError:(id)arg1;
 - (void)cancel;
 - (void)runAsynchronouslyWithInput:(id)arg1;

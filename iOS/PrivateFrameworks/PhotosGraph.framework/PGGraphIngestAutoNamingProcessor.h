@@ -8,17 +8,20 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphBuilder;
 
 @interface PGGraphIngestAutoNamingProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
 }
 
 + (_Bool)hasMeNodeAndMeContactInGraph:(id)arg1;
 + (id)_personNodesWithoutContactInGraph:(id)arg1;
 + (id)personNodesToNameInGraph:(id)arg1;
+- (void).cxx_destruct;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

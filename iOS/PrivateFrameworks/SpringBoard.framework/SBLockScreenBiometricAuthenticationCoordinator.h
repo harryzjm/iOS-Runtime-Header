@@ -13,7 +13,7 @@
 #import <SpringBoard/SBUIPasscodeBiometricMatchingAssertionFactory-Protocol.h>
 #import <SpringBoard/SBWalletPrearmRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSMutableOrderedSet, NSString, PKPassLibrary, SBUIBiometricResource, SBWalletPreArmController, SBWalletPrearmRecognizer, _SBPendingMesaUnlockBehaviorUnlockRequest;
+@class NSHashTable, NSMutableOrderedSet, NSString, NSTimer, PKPassLibrary, SBUIBiometricResource, SBWalletPreArmController, SBWalletPrearmRecognizer, _SBPendingMesaUnlockBehaviorUnlockRequest;
 @protocol BSInvalidatable, SBBiometricUnlockBehavior, SBLockScreenBiometricAuthenticationCoordinatorDelegate;
 
 @interface SBLockScreenBiometricAuthenticationCoordinator : NSObject <BSDescriptionProviding, SBUIBiometricResourceObserver, SBBiometricUnlockBehaviorDelegate, SBWalletPrearmRecognizerDelegate, PKPassLibraryDelegate, SBUIPasscodeBiometricMatchingAssertionFactory>
@@ -31,6 +31,8 @@
     _Bool _isAuthenticated;
     id <BSInvalidatable> _matchingWantedAssertion;
     unsigned long long _matchingWantedAssertionMode;
+    NSTimer *_matchingAssertionInvalidationTimer;
+    _Bool _matchedWithResult;
     _Bool _bioAuthenticatedWhileMenuButtonDown;
     _SBPendingMesaUnlockBehaviorUnlockRequest *_pendingUnlockRequest;
     NSMutableOrderedSet *_activePasscodeMatchAssertions;
@@ -65,6 +67,7 @@
 - (void)_stateChangedFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (void)_updateMatchingForState:(unsigned long long)arg1 forReason:(id)arg2;
 - (void)_setState:(unsigned long long)arg1 forReason:(id)arg2;
+- (void)_handleIdentityMatchSuccess:(_Bool)arg1;
 - (void)contactlessInterfaceDidDismissFromSource:(long long)arg1;
 - (void)passLibraryReceivedInterruption;
 - (id)acquireMatchingAssertionWithMode:(unsigned long long)arg1 reason:(id)arg2;

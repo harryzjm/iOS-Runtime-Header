@@ -30,6 +30,7 @@
 - (void)prepareForReuse;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)layoutSubviews;
+- (double)contactImageWidth;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(readonly, copy) NSString *description;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;

@@ -36,6 +36,7 @@
 - (unsigned long long)failedAttempts;
 - (_Bool)isAttemptingRecovery;
 - (_Bool)_isInvalidICSCError:(id)arg1;
+- (void)validateCustodianRecoveryInfo:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)approveFromAnotherDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportedEscapeOfferMaskCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelApproveFromAnotherDevice;

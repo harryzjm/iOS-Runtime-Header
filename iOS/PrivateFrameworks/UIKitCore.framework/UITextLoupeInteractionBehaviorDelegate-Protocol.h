@@ -13,6 +13,7 @@
 - (struct CGPoint)velocityInView:(UIView *)arg1 forLoupeGesture:(UIGestureRecognizer *)arg2;
 - (struct CGPoint)translationInView:(UIView *)arg1 forLoupeGesture:(UIGestureRecognizer *)arg2;
 - (struct CGPoint)startPointForLoupeGesture:(UIGestureRecognizer *)arg1;
+- (_Bool)triggeredByLongPressGesture:(UIGestureRecognizer *)arg1;
 - (_Bool)usesTouchAlignment;
 - (_Bool)loupeGestureRecognizerShouldBegin:(UIGestureRecognizer *)arg1 forTextLoupeInteraction:(UITextLoupeInteraction *)arg2;
 - (_Bool)shouldAllowEnforcedTouchTypeForTouch:(UITouch *)arg1 forGestureRecognizer:(UIGestureRecognizer *)arg2;

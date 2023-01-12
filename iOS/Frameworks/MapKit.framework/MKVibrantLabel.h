@@ -9,11 +9,15 @@
 @interface MKVibrantLabel
 {
     UILabel *_label;
-    UIColor *_textColor;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
+@property(copy, nonatomic) UIColor *textColor;
+@property(nonatomic) long long lineBreakMode;
+@property(nonatomic) _Bool adjustsFontForContentSizeCategory;
+@property(nonatomic) _Bool allowsDefaultTighteningForTruncation;
+@property(readonly, nonatomic) double idealWidth;
+@property(nonatomic, setter=_setHyphenationFactor:) float _hyphenationFactor;
 @property(nonatomic) long long textAlignment;
 @property(nonatomic) long long numberOfLines;
 @property(retain, nonatomic) UIFont *font;

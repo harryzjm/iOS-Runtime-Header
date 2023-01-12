@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFComparable-Protocol.h>
+
 @class HFConditionCollection, HFDurationEventBuilder, HFMutableSetDiff, HFTriggerActionSetsBuilder, HMTrigger, NSArray, NSString;
 @protocol HFTriggerBuilderContextProviding;
 
-@interface HFTriggerBuilder
+@interface HFTriggerBuilder <HFComparable>
 {
+    _Bool _nameIsConfigured;
     _Bool _enabled;
     NSString *_name;
     NSString *_displayName;
@@ -18,6 +21,7 @@
     HFMutableSetDiff *_endEventBuildersDiff;
 }
 
++ (id)triggerBuilderForTrigger:(id)arg1 inHome:(id)arg2 context:(id)arg3 assertsFailure:(_Bool)arg4;
 + (id)triggerBuilderForTrigger:(id)arg1 inHome:(id)arg2 context:(id)arg3;
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
@@ -26,13 +30,17 @@
 @property(retain, nonatomic) id <HFTriggerBuilderContextProviding> context; // @synthesize context=_context;
 @property(retain, nonatomic) HFTriggerActionSetsBuilder *triggerActionSets; // @synthesize triggerActionSets=_triggerActionSets;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
+@property(nonatomic) _Bool nameIsConfigured; // @synthesize nameIsConfigured=_nameIsConfigured;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)_deleteTrigger:(id)arg1 fromHome:(id)arg2;
 - (id)_commitAddTriggerToHome:(id)arg1;
 - (id)_uniquelyRenameTrigger:(id)arg1 pendingReplaceByNewTrigger:(id)arg2;
 - (void)_didReplaceBackingTrigger;
+- (id)triggerBuilderWithContext:(id)arg1;
 - (id)replaceCurrentTriggerWithTrigger:(id)arg1;
+- (id)naturalLanguageDetailsWithOptions:(id)arg1;
+- (id)naturalLanguageNameWithOptions:(id)arg1;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 - (id)commitEditTrigger;
 - (id)commitCreateTrigger;
@@ -46,8 +54,6 @@
 - (id)_performValidation;
 - (id)validateTrigger;
 - (id)deleteTrigger;
-- (_Bool)markTriggerAsHomeAppCreated;
-- (void)setMarkTriggerAsHomeAppCreated:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isShortcutOwned;
 @property(readonly, nonatomic) HFDurationEventBuilder *designatedDurationEventBuilder;
 @property(readonly, nonatomic, getter=areActionsAffectedByEndEvents) _Bool actionsAffectedByEndEvents;
@@ -72,6 +78,13 @@
 - (id)initWithHome:(id)arg1;
 @property(readonly, nonatomic) _Bool supportsEndEvents;
 @property(readonly, nonatomic) _Bool supportsConditions;
+@property(readonly) unsigned long long hash;
+- (id)compareToObject:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <SpotlightUIInternal/UIGestureRecognizerDelegate-Protocol.h>
 #import <SpotlightUIInternal/UIScribbleInteractionDelegate-Protocol.h>
 
-@class MTMaterialView, NSArray, NSString, NSTimer, SPSearchEntity, SPUICompletionStringModel, SPUICompletionStringView, SPUIHeaderBlurView, UIGestureRecognizer, UIImage, UIResponder, UIScribbleInteraction, UIView;
+@class MTMaterialView, NSString, NSTimer, SPSearchEntity, SPUICompletionStringModel, SPUICompletionStringView, SPUIHeaderBlurView, UIGestureRecognizer, UIImage, UIResponder, UIScribbleInteraction, UIView;
 @protocol SPUITextFieldDelegate, UITextCursorAssertion;
 
 @interface SPUITextField : UISearchTextField <UIGestureRecognizerDelegate, UIScribbleInteractionDelegate>
@@ -20,7 +20,6 @@
     UIResponder *_responderForKeyboardInput;
     SPUICompletionStringModel *_searchFieldModel;
     long long _activeInterfaceOrientation;
-    NSArray *_suggestions;
     UIView *_tintView;
     SPUIHeaderBlurView *_blurView;
     MTMaterialView *_materialView;
@@ -36,6 +35,7 @@
 + (void)updateBlueButton;
 + (id)removeDictationCharacterInString:(id)arg1;
 + (Class)_backgroundViewClass;
++ (id)webEntityStringForEntity:(id)arg1;
 - (void).cxx_destruct;
 @property(retain) UIImage *microphoneImage; // @synthesize microphoneImage=_microphoneImage;
 @property(retain) NSTimer *switchBackToSuggestionsTimer; // @synthesize switchBackToSuggestionsTimer=_switchBackToSuggestionsTimer;
@@ -49,32 +49,35 @@
 @property(retain) MTMaterialView *materialView; // @synthesize materialView=_materialView;
 @property(retain, nonatomic) SPUIHeaderBlurView *blurView; // @synthesize blurView=_blurView;
 @property(retain) UIView *tintView; // @synthesize tintView=_tintView;
-@property(retain) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property(nonatomic) long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
 @property(retain, nonatomic) SPUICompletionStringModel *searchFieldModel; // @synthesize searchFieldModel=_searchFieldModel;
 @property(nonatomic) _Bool useChunkyMetrics; // @synthesize useChunkyMetrics=_useChunkyMetrics;
 @property(nonatomic) __weak UIResponder *responderForKeyboardInput; // @synthesize responderForKeyboardInput=_responderForKeyboardInput;
 @property(readonly) _Bool completionResultIsPotentiallyPunchout;
+- (void)updateBorderVisualStyling;
 - (void)updateCaretVisibility;
 - (void)resetMicrophoneButtonWithScale:(long long)arg1;
 - (void)updateFocusResult:(id)arg1 cardSection:(id)arg2 focusIsOnFirstResult:(_Bool)arg3;
 - (void)scribbleInteractionWillBeginWriting:(id)arg1;
 - (void)layoutSubviews;
+- (void)unmarkText;
 - (void)removeCaretAssertion;
 - (void)_promoteCompletionAndMoveForward:(_Bool)arg1;
 - (void)promoteCompletionIfPossibleAndMoveForward:(_Bool)arg1;
-- (void)rightArrowPressed;
-- (void)leftArrowPressed;
+- (void)spotlight_rightArrowPressed;
+- (void)spotlight_leftArrowPressed;
 - (void)updateCaretVisibility:(_Bool)arg1;
 - (void)escapeKeyCommand;
 - (void)commandCPressed;
 - (void)commandBPressed;
 - (void)enterKeyPressed;
-- (void)_handleKeyUIEvent:(id)arg1;
 - (void)toggleBackToCommittedSearch;
 - (void)commitToCommitedSearch;
 - (void)toggleCommitedSearch;
 - (id)keyCommands;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (long long)_focusItemDeferralMode;
+- (_Bool)canBecomeFocused;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)updateWithPrimaryColor:(id)arg1 secondaryColor:(id)arg2 isOnDarkBackground:(_Bool)arg3;
 @property(readonly) SPSearchEntity *searchEntity;
@@ -96,6 +99,7 @@
 - (struct CGRect)_shiftedBoundsForText:(struct CGRect)arg1;
 - (_Bool)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
 - (double)textFieldHeight;
+- (id)preferredFocusEnvironments;
 - (void)resetClearButtonWithScale:(long long)arg1;
 - (void)applyMetrics;
 - (void)resetPhoneClearButton;
@@ -106,7 +110,10 @@
 - (_Bool)shouldPromoteCompletion;
 - (void)selectAll:(id)arg1;
 - (void)removeCompletionAndHighlight;
+- (_Bool)becomeFirstResponder;
 - (_Bool)resignFirstResponder;
+- (void)resetDeletion;
+- (struct _NSRange)insertFilteredText:(id)arg1;
 - (void)insertText:(id)arg1;
 - (_Bool)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(_Bool)arg3;
 - (_Bool)keyboardInputShouldDelete:(id)arg1;
@@ -119,6 +126,9 @@
 @property(readonly, nonatomic) _Bool optOutOfGoButton;
 - (void)setFont:(id)arg1;
 - (void)keyboardInputChangedSelection:(id)arg1;
+- (id)focusGroupIdentifier;
+- (void)removeCompletionsOrEntitiesAndGoToSuggestions:(_Bool)arg1;
+- (void)textFieldWasTapped;
 - (id)init;
 
 // Remaining properties

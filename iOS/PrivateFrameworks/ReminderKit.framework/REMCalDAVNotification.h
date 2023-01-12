@@ -34,12 +34,12 @@
 + (id)newObjectID;
 + (_Bool)supportsSecureCoding;
 + (_Bool)isChangeTrackableModel;
-+ (CDUnknownBlockType)rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
++ (CDUnknownBlockType)rem_DA_deletedKeyFromConcealedModelObjectBlock;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromTombstoneBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDsBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDBlock;
-+ (id)rem_DA_lazyDeleteProperties;
-+ (_Bool)rem_DA_supportsLazyDelete;
++ (id)rem_DA_propertiesAffectingIsConcealed;
++ (_Bool)rem_DA_supportsConcealedObjects;
 + (_Bool)rem_DA_supportsFetching;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) REMObjectID *listID; // @synthesize listID=_listID;
@@ -51,6 +51,7 @@
 @property(copy, nonatomic) NSString *daPushKey; // @synthesize daPushKey;
 @property(copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property(copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;
+- (_Bool)shouldUseExternalIdentifierAsDeletionKey;
 @property(readonly, nonatomic) NSString *externalIdentifierForMarkedForDeletionObject;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 @property(readonly, copy) NSString *description;

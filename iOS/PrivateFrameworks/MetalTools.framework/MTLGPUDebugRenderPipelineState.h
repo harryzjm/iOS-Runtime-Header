@@ -4,38 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLGPUDebugBuffer, MTLGPUDebugFunction, MTLRenderPipelineDescriptor, MTLRenderPipelineReflection, MTLTileRenderPipelineDescriptor;
+@class MTLGPUDebugBuffer, MTLGPUDebugImageData, MTLRenderPipelineReflection, NSArray, NSMutableArray;
 
 @interface MTLGPUDebugRenderPipelineState
 {
-    MTLRenderPipelineDescriptor *_descriptor;
-    MTLTileRenderPipelineDescriptor *_tileDescriptor;
     MTLRenderPipelineReflection *_internalReflection;
     MTLRenderPipelineReflection *_userReflection;
-    struct KeyBufferPair _globalConstants;
-    unsigned long long _vertexConstantOffset;
-    unsigned long long _fragmentConstantOffset;
-    unsigned long long _tileConstantOffset;
+    NSMutableArray *_binaryFunctionData;
+    MTLGPUDebugImageData *_vertexFunctionData;
+    MTLGPUDebugImageData *_fragmentFunctionData;
+    MTLGPUDebugImageData *_tileFunctionData;
+    NSMutableArray *_retainedFunctions;
     MTLGPUDebugBuffer *_indirectStateBuffer;
     _Bool _supportsIndirectCommandBuffers;
 }
 
-- (id).cxx_construct;
+@property(readonly, nonatomic) NSArray *binaryFunctionData; // @synthesize binaryFunctionData=_binaryFunctionData;
 - (void)dealloc;
 @property(readonly, nonatomic) MTLGPUDebugBuffer *indirectStateBuffer;
-@property(readonly, nonatomic) unsigned long long tileConstantOffset;
-@property(readonly, nonatomic) unsigned long long fragmentConstantOffset;
-@property(readonly, nonatomic) unsigned long long vertexConstantOffset;
-@property(readonly, nonatomic) MTLGPUDebugBuffer *globalConstantsBuffer;
+@property(readonly, nonatomic) MTLGPUDebugBuffer *tileConstantsBuffer;
+@property(readonly, nonatomic) MTLGPUDebugBuffer *fragmentConstantsBuffer;
+@property(readonly, nonatomic) MTLGPUDebugBuffer *vertexConstantsBuffer;
 @property(readonly, nonatomic) MTLRenderPipelineReflection *userReflection;
 @property(readonly, nonatomic) MTLRenderPipelineReflection *internalReflection;
-@property(readonly, nonatomic) MTLGPUDebugFunction *tileFunction;
-- (id)fragmentLibrary;
-@property(readonly, nonatomic) MTLGPUDebugFunction *fragmentFunction;
-- (id)vertexLibrary;
-@property(readonly, nonatomic) MTLGPUDebugFunction *vertexFunction;
+@property(readonly, nonatomic) MTLGPUDebugImageData *tileFunctionData;
+@property(readonly, nonatomic) MTLGPUDebugImageData *fragmentFunctionData;
+@property(readonly, nonatomic) MTLGPUDebugImageData *vertexFunctionData;
 - (void)releaseReflection;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newTileIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newFragmentIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVertexIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newVisibleFunctionTableFromTileStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromFragmentStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromVertexStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newTileRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 fragmentAdditionalBinaryFunctions:(id)arg2 error:(id *)arg3;
+- (id)unwrapBinaryFunctions:(id)arg1;
 - (id)initWithRenderPipelineState:(id)arg1 tileDescriptor:(id)arg2 reflection:(id)arg3 device:(id)arg4;
+- (id)initWithRenderPipelineState:(id)arg1 vertexBinaryFunctions:(id)arg2 fragmentBinaryFunctions:(id)arg3 tileBinaryFunctions:(id)arg4 withState:(id)arg5 device:(id)arg6;
 - (id)initWithRenderPipelineState:(id)arg1 descriptor:(id)arg2 unwrappedDescriptor:(id)arg3 reflection:(id)arg4 device:(id)arg5 pipelineOptions:(unsigned long long)arg6;
 - (void)_initConstantsBuffer:(id)arg1 device:(id)arg2;
 

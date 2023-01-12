@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (HTMLEncoding)
++ (id)_navigation_stringForPower:(double)arg1 unit:(id)arg2;
 + (long long)_navigation_abbreviatedFromatterUnitsStyleForLocale:(id)arg1;
 + (id)_navigation_selectInstructionWithServerStringArray:(id)arg1 isSpoken:(_Bool)arg2 clientBlock:(CDUnknownBlockType)arg3;
 + (id)_navigation_selectInstructionWithServerString:(id)arg1 isSpoken:(_Bool)arg2 clientBlock:(CDUnknownBlockType)arg3;
@@ -31,6 +32,7 @@
 + (id)_navigation_stringWithSeconds:(unsigned long long)arg1 andAbbreviationType:(unsigned long long)arg2;
 + (id)_navigation_stringWithSeconds:(unsigned long long)arg1 abbreviated:(_Bool)arg2;
 + (id)_navigation_stringForDistance:(double)arg1 formatter:(id)arg2 locale:(id)arg3 shouldScale:(_Bool)arg4;
++ (id)_navigation_formatterForOptions:(id)arg1;
 + (id)_navigation_localizedStringForDistance:(double)arg1 detail:(long long)arg2 unitFormat:(long long)arg3 locale:(id)arg4 useMetric:(unsigned long long)arg5 useYards:(unsigned long long)arg6 shouldScale:(_Bool)arg7;
 + (id)_navigation_localizedStringForDistance:(double)arg1 detail:(long long)arg2 unitFormat:(long long)arg3 locale:(id)arg4 useMetric:(unsigned long long)arg5 useYards:(unsigned long long)arg6;
 + (id)_navigation_localizedStringForDistance:(double)arg1 context:(long long)arg2 extraDetail:(_Bool)arg3;
@@ -40,14 +42,20 @@
 + (id)_navigation_stringForServerFormattedString:(id)arg1;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3 allTokensExpanded:(_Bool *)arg4;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3;
-+ (id)_navigation_descriptionForFrequencyRangeWithMinFrequency:(long long)arg1 maxFrequency:(long long)arg2;
++ (id)_navigation_frequencyRangeLocalizedInMixedUnitsWithMinString:(id)arg1 maxString:(id)arg2 estimate:(_Bool)arg3 recurring:(_Bool)arg4;
++ (id)_navigation_frequencyRangeLocalizedInHoursWithMinHours:(long long)arg1 maxHours:(long long)arg2 estimate:(_Bool)arg3 recurring:(_Bool)arg4;
++ (id)_navigation_frequencyRangeLocalizedInMinutesWithMinMinutes:(long long)arg1 maxMinutes:(long long)arg2 estimate:(_Bool)arg3 recurring:(_Bool)arg4;
++ (id)_navigation_descriptionForFrequencyRangeWithMinFrequency:(long long)arg1 maxFrequency:(long long)arg2 estimate:(_Bool)arg3 recurring:(_Bool)arg4;
 + (id)_navigation_descriptionForFrequencyMinuteValue:(long long)arg1;
++ (id)_frequencyDateComponents:(long long)arg1;
 + (id)_navigation_formattedDescriptionForLiveStatus:(long long)arg1 updatedDepartureTimeString:(id)arg2;
 + (id)_navigation_formattedDescriptionForFrequency:(id)arg1;
 + (id)_frequencyStringForComponents:(id)arg1 forRange:(_Bool)arg2 forceShort:(_Bool)arg3;
 + (_Bool)_componentsWillUseShortFormat:(id)arg1;
 + (id)_navigation_stringForExpectedTravelTime:(double)arg1 dateUnitStyle:(long long)arg2;
++ (id)_navigation_formattedStringForHourRanges:(id)arg1 timeZone:(id)arg2 delimeter:(id)arg3;
 + (id)_navigation_formattedStringForHourRanges:(id)arg1 timeZone:(id)arg2;
++ (id)_navigation_formattedStringForOperatingHours:(id)arg1 timeZone:(id)arg2;
 + (id)_navigation_formatFloatForPrintedDistance:(double)arg1;
 + (id)_navigation_formattedStringForFloat:(double)arg1 useIncreasedPrecision:(_Bool)arg2;
 + (id)_navigation_formattedStringForFloat:(double)arg1;

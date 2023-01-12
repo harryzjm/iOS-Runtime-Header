@@ -6,7 +6,7 @@
 
 #import <UIKit/UIApplicationSceneSettings.h>
 
-@class CHSWidget, CHSWidgetMetrics, NSString;
+@class CHSWidget, CHSWidgetMetrics, CHUISWidgetVisibilitySettings, NSString;
 
 @interface CHUISAvocadoSceneSettings : UIApplicationSceneSettings
 {
@@ -18,9 +18,9 @@
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long style;
 @property(readonly, nonatomic, getter=areAnimationsDisabled) _Bool animationsDisabled;
-@property(readonly, nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled;
-@property(readonly, nonatomic, getter=isVisiblySettled) _Bool visiblySettled;
+@property(readonly, copy, nonatomic) CHUISWidgetVisibilitySettings *visibility;
 @property(readonly, copy, nonatomic) NSString *widgetConfigurationIdentifier;
+@property(readonly, copy, nonatomic) NSString *widgetHostIdentifier;
 @property(readonly, copy, nonatomic) CHSWidgetMetrics *metrics;
 @property(readonly, copy, nonatomic) CHSWidget *widget;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

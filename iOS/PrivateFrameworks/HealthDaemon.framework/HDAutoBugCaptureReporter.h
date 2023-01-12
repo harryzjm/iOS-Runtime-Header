@@ -18,8 +18,10 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType unitTesting_didReportHandler; // @synthesize unitTesting_didReportHandler=_unitTesting_didReportHandler;
 @property(readonly, nonatomic) __weak HDDaemon *daemon; // @synthesize daemon=_daemon;
-- (void)_reportSnapshotWithType:(id)arg1 subType:(id)arg2 context:(id)arg3 processIdentifier:(id)arg4 thresholdValues:(id)arg5;
+- (void)reportMissingSource:(id)arg1 duringSyncFromStore:(id)arg2;
+- (void)reportSummarySharingInvitationFailureForOperation:(id)arg1 error:(id)arg2;
 - (void)reportDataCollectionSeriesProblem:(id)arg1 quantityType:(id)arg2;
+- (void)reportCorruptionForDatabase:(id)arg1 resultCode:(int)arg2;
 - (void)reportDatabaseMigrationFailureWithContext:(id)arg1;
 - (void)reportQueryDurationWithServer:(id)arg1 dataCount:(long long)arg2 duration:(double)arg3;
 - (id)initWithDaemon:(id)arg1;

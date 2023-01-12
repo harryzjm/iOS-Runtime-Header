@@ -20,6 +20,7 @@
 
 + (id)_fetchAssetInfoFromLibrary:(id)arg1 forFileSizes:(id)arg2;
 + (id)_dateWithDate:(id)arg1;
++ (id)duplicatesFromResults:(id)arg1 forLibrary:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PHPhotoLibrary *library; // @synthesize library=_library;
 - (void)findDuplicatesOfItems:(id)arg1 considerItemsInTrash:(_Bool)arg2 forEach:(CDUnknownBlockType)arg3 atEnd:(CDUnknownBlockType)arg4;

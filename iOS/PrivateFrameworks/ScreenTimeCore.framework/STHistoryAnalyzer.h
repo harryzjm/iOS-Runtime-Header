@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSPersistentHistoryToken *_finalToken;
 }
 
++ (_Bool)_changedObjectBelongsToFamily:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSPersistentHistoryToken *finalToken; // @synthesize finalToken=_finalToken;
 - (_Bool)_isChangeInteresting:(id)arg1;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     NSXPCConnection *_managerConnection;
     NSMutableArray *_deviceHandles;
+    NSMutableArray *_disabledHandles;
     struct os_unfair_lock_s _deviceHandlesLock;
     NSDictionary *_deviceMatchingInfo;
     NSMutableDictionary *_devices;
@@ -22,9 +23,12 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _deviceOperationQueueLock;
     _Bool _deviceOperationQueueSuspended;
     _Bool _managerIsRunning;
+    struct os_unfair_lock_s _deviceConnectionLock;
+    _Bool _controlAuthorizedStatus;
 }
 
 @property(retain, nonatomic) NSXPCConnection *managerConnection; // @synthesize managerConnection=_managerConnection;
+@property(nonatomic) _Bool controlAuthorizedStatus; // @synthesize controlAuthorizedStatus=_controlAuthorizedStatus;
 @property(retain) NSOperationQueue *deviceOperations; // @synthesize deviceOperations=_deviceOperationQueue;
 - (void)resumeOperations;
 - (void)suspendOperations;
@@ -59,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (long long)getFileThumbnail:(id)arg1 fromDevice:(id)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)closeDevice:(id)arg1 contextInfo:(void *)arg2;
 - (long long)openDevice:(id)arg1 contextInfo:(void *)arg2;
+- (_Bool)controlAuthorized;
 - (id)deviceForUUID:(id)arg1;
 - (id)deviceForConnection:(id)arg1;
 - (void)dealloc;

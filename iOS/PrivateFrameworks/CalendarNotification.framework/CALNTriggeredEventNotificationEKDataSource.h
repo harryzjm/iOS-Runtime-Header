@@ -55,7 +55,7 @@
 - (id)_eventForSourceClientIdentifier:(id)arg1;
 - (void)_handleNotificationActionForSourceClientIdentifier:(id)arg1 acknowledgeAlarm:(_Bool)arg2 eventActions:(CDUnknownBlockType)arg3;
 - (_Bool)_shouldWithdrawNotificationWithSourceClientIdentifier:(id)arg1 event:(id)arg2 alarmID:(id)arg3;
-- (id)_filterDuplicateAlerts:(id)arg1;
+- (id)_filterAlerts:(id)arg1;
 - (_Bool)_shouldTriggerForAlertInfo:(id)arg1;
 - (void)_alertFiredForAlertInfo:(id)arg1;
 - (void)_alertsFired:(id)arg1;

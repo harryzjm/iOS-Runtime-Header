@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFoundation/AVVCAudioBuffer.h>
+#import <AVFAudio/AVVCAudioBuffer.h>
 
 @interface AVVCAudioBuffer (remoteVoiceActivityVADBuffer)
 - (id)remoteVoiceActivityVADBuffer;

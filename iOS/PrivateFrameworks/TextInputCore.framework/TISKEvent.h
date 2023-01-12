@@ -12,6 +12,7 @@
 
 @interface TISKEvent : NSObject <TISKEventProtocol>
 {
+    _Bool _emojiSearchMode;
     _Bool _hasTimestamp;
     int _type;
     TISKTap *_tap;
@@ -23,17 +24,19 @@
 @property(nonatomic) unsigned long long order; // @synthesize order=_order;
 @property(retain, nonatomic) TISKTap *tap; // @synthesize tap=_tap;
 @property(nonatomic) int type; // @synthesize type=_type;
+@property(nonatomic) _Bool emojiSearchMode; // @synthesize emojiSearchMode=_emojiSearchMode;
 - (_Bool)isValidCandidate:(id)arg1;
 - (_Bool)isMissingATouch;
 - (void)reportInterKeyTiming:(id)arg1 previousEvent:(id)arg2;
 - (void)reportToSession:(id)arg1;
+- (id)privateDescription;
 - (id)description;
 - (double)touchUpTimestamp;
 - (double)touchDownTimestamp;
 - (id)downTouchEvent;
 - (id)upTouchEvent;
-- (id)init:(int)arg1 order:(long long)arg2 tap:(id)arg3;
-- (id)init:(int)arg1 order:(long long)arg2;
+- (id)init:(int)arg1 emojiSearchMode:(_Bool)arg2 order:(long long)arg3 tap:(id)arg4;
+- (id)init:(int)arg1 emojiSearchMode:(_Bool)arg2 order:(long long)arg3;
 
 @end
 

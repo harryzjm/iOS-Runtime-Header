@@ -24,6 +24,7 @@
 - (_Bool)_shouldOverrideProxiedBundleIDForContext:(id)arg1;
 - (void)establishConnectionWithStateBroadcastHandlerEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)establishConnectionWithNotificationHandlerEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)storeAuthorization:(id)arg1 forProxiedRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)primaryApplicationInformationForWebServiceWithInfo:(id)arg1 error:(id *)arg2;
 - (void)continueFetchingIconForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAppleIDAuthorizeHTMLResponseTemplateWithCompletion:(CDUnknownBlockType)arg1;

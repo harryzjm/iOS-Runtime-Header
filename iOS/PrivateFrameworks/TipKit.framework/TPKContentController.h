@@ -7,91 +7,104 @@
 #import <objc/NSObject.h>
 
 #import <TipKit/TPKContentViewDelegate-Protocol.h>
-#import <TipKit/TPKTipContentHintViewDelegate-Protocol.h>
-#import <TipKit/TPSConstellationContentParserDelegate-Protocol.h>
-#import <TipKit/TPSEventsProviderDelegate-Protocol.h>
+#import <TipKit/TPKEligibleContentsMonitoringControllerDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSHashTable, NSString, TPKContent, TPKContentViewController, TPSDuetEventsProvider, TPSMiniTipContentManager;
+@class NSDate, NSHashTable, NSString, TPKContent, TPKContentPopoverViewController, TPKEligibleContentsMonitoringController, TPSMiniTipContentManager;
 @protocol OS_dispatch_queue;
 
-@interface TPKContentController : NSObject <TPKContentViewDelegate, TPKTipContentHintViewDelegate, TPSEventsProviderDelegate, TPSConstellationContentParserDelegate>
+@interface TPKContentController : NSObject <TPKContentViewDelegate, TPKEligibleContentsMonitoringControllerDelegate>
 {
-    _Bool _contentOnScreen;
     _Bool _enterForegroundNotificationRegistered;
-    _Bool _allowsOverrides;
-    _Bool _userPerformedDesiredOutcome;
-    _Bool _userPerformedContentDesiredOutcome;
-    _Bool _displayTestContent;
     NSDate *_nextAllowedCheckDate;
     NSDate *_lastContentValidateDate;
-    NSArray *_currentContext;
-    NSObject<OS_dispatch_queue> *_checkQueue;
-    TPSDuetEventsProvider *_duetEventsProvider;
     _Bool _contentDismissedByUser;
+    _Bool _contentCheckInProgress;
+    _Bool _contentDidDisplayDelayInProgress;
+    _Bool _displayTestContent;
     long long _state;
-    TPKContent *_content;
     NSString *_context;
+    long long _dismissalReason;
+    NSObject<OS_dispatch_queue> *_checkQueue;
+    NSString *_lastRestartDisplayTrackingIdentifier;
     NSHashTable *_delegates;
     TPSMiniTipContentManager *_miniTipContentManager;
-    NSString *__contentTitle;
-    NSString *__contentText;
-    TPKContentViewController *_currentPopOverController;
+    NSString *_testContentTitle;
+    NSString *_testContentText;
+    TPKEligibleContentsMonitoringController *_eligibleContentsMonitoringController;
+    TPKContentPopoverViewController *_currentPopOverController;
 }
 
-+ (id)_legacyIdentifierForContext:(id)arg1;
-+ (id)_identifierForContext:(id)arg1;
++ (void)_resetNotifyForDisplayForController:(id)arg1;
++ (_Bool)_setNotifyForDisplayForController:(id)arg1;
++ (void)setNotifiedContentController:(id)arg1;
++ (id)notifiedContentController;
 - (void).cxx_destruct;
-@property(retain, nonatomic) TPKContentViewController *currentPopOverController; // @synthesize currentPopOverController=_currentPopOverController;
-@property(copy, nonatomic, getter=_contentText, setter=_setContentText:) NSString *_contentText; // @synthesize _contentText=__contentText;
-@property(copy, nonatomic, getter=_contentTitle, setter=_setContentTitle:) NSString *_contentTitle; // @synthesize _contentTitle=__contentTitle;
+@property(retain, nonatomic) TPKContentPopoverViewController *currentPopOverController; // @synthesize currentPopOverController=_currentPopOverController;
+@property(retain, nonatomic) TPKEligibleContentsMonitoringController *eligibleContentsMonitoringController; // @synthesize eligibleContentsMonitoringController=_eligibleContentsMonitoringController;
+@property(retain, nonatomic) NSString *testContentText; // @synthesize testContentText=_testContentText;
+@property(retain, nonatomic) NSString *testContentTitle; // @synthesize testContentTitle=_testContentTitle;
 @property(retain, nonatomic) TPSMiniTipContentManager *miniTipContentManager; // @synthesize miniTipContentManager=_miniTipContentManager;
 @property(retain, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
+@property(retain, nonatomic) NSString *lastRestartDisplayTrackingIdentifier; // @synthesize lastRestartDisplayTrackingIdentifier=_lastRestartDisplayTrackingIdentifier;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *checkQueue; // @synthesize checkQueue=_checkQueue;
+@property(nonatomic) long long dismissalReason; // @synthesize dismissalReason=_dismissalReason;
+@property(nonatomic) _Bool displayTestContent; // @synthesize displayTestContent=_displayTestContent;
+@property(nonatomic) _Bool contentDidDisplayDelayInProgress; // @synthesize contentDidDisplayDelayInProgress=_contentDidDisplayDelayInProgress;
+@property(nonatomic) _Bool contentCheckInProgress; // @synthesize contentCheckInProgress=_contentCheckInProgress;
 @property(retain, nonatomic) NSString *context; // @synthesize context=_context;
-@property(retain, nonatomic) TPKContent *content; // @synthesize content=_content;
-@property(nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) _Bool contentDismissedByUser; // @synthesize contentDismissedByUser=_contentDismissedByUser;
-- (id)constellationContentParser:(id)arg1 personalizedStringForID:(unsigned long long)arg2;
-- (void)_contentViewWillBeRemoved:(id)arg1;
-- (void)_contentViewWillBeShown:(id)arg1;
+@property(nonatomic) long long state; // @synthesize state=_state;
+- (void)_evaluateClientContextMap:(id)arg1 forKeys:(id)arg2;
+- (id)eligibleContentsMonitoringController:(id)arg1 clientContextMapForKeys:(id)arg2;
+- (void)eligibleContentsMonitoringController:(id)arg1 restartTrackingForContents:(id)arg2;
+- (void)eligibleContentsMonitoringController:(id)arg1 shouldDismissContent:(id)arg2 reason:(long long)arg3;
+- (void)eligibleContentsMonitoringController:(id)arg1 shouldDisplayContent:(id)arg2 animated:(_Bool)arg3;
+- (id)contentView:(id)arg1 iconForCustomizationID:(long long)arg2;
+- (id)contentView:(id)arg1 personalizedStringForID:(long long)arg2;
+- (void)contentView:(id)arg1 viewTappedForIdentifier:(id)arg2;
+- (void)contentView:(id)arg1 needsLayoutForReason:(long long)arg2;
+- (void)contentView:(id)arg1 actionTapped:(id)arg2;
+- (void)contentViewCloseButtonTapped:(id)arg1;
+- (void)contentViewWillBeRemoved:(id)arg1;
+- (void)contentViewWillBeShown:(id)arg1;
+- (void)contentViewWasCreated:(id)arg1;
 - (void)contentDisplayDelay;
 - (void)cancelContentDisplayDelay;
-- (void)dataProvider:(id)arg1 didReceiveCallbackWithResult:(id)arg2;
-- (void)dataProvider:(id)arg1 didFinishQueryWithResults:(id)arg2;
-- (id)duetEventsFromContextualEvents:(id)arg1;
-- (void)_deregisterCallbackForDismissalEvents:(id)arg1;
-- (void)_registerCallbackForDismissalEvents:(id)arg1;
-- (id)_tipContentHintView:(id)arg1 iconForCustomizationID:(long long)arg2;
-- (void)_tipContentHintViewContentViewNeedsLayout:(id)arg1 reason:(unsigned long long)arg2;
-- (void)_tipContentHintView:(id)arg1 viewTappedForIdentifier:(id)arg2;
-- (void)_tipContentHintView:(id)arg1 actionTapped:(id)arg2;
-- (void)_tipContentHintViewCloseButtonTapped:(id)arg1;
+- (void)_notifyDelegate:(id)arg1 didFinishWithContent:(id)arg2 animated:(_Bool)arg3;
 - (void)notifyDelegate:(id)arg1 didFinishWithContent:(id)arg2 animated:(_Bool)arg3;
+- (void)_notifyDelegate:(id)arg1 contentDidBecomeAvailable:(id)arg2 animated:(_Bool)arg3;
 - (void)notifyDelegate:(id)arg1 contentDidBecomeAvailable:(id)arg2 animated:(_Bool)arg3;
 - (void)notifyEventOccurred:(long long)arg1 content:(id)arg2 context:(id)arg3;
-- (_Bool)_isCacheContentValidForBundleID:(id)arg1;
-- (void)_clearLegacyCachedContent;
-- (void)_clearCachedContent;
-- (void)_updateCachedContent:(id)arg1;
-- (id)_cachedContent;
+- (_Bool)_isEligibleImmediateContentAvailableError:(id)arg1;
+- (void)_isContentValid:(id)arg1 synchronous:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)notifyContentForDisplay:(id)arg1 immediateContent:(_Bool)arg2 animated:(_Bool)arg3;
+- (_Bool)prepareTipContent:(id)arg1 bundleID:(id)arg2;
 - (id)createContentViewControllerWithContent:(id)arg1 sourceViewController:(id)arg2;
 - (void)registerCustomContentView:(id)arg1;
 - (id)createContentViewWithContent:(id)arg1;
+- (id)createContentViewWithContent:(id)arg1 annotatedView:(id)arg2;
 - (id)_createContentViewWithContent:(id)arg1 asPopover:(_Bool)arg2;
-- (id)attributedStringForContent:(id)arg1 error:(id *)arg2;
 - (void)_contentDidDismiss:(id)arg1;
 - (void)_contentDidDisplay:(id)arg1;
-- (void)checkForContentForBundleID:(id)arg1;
+- (void)displayContent:(id)arg1 synchronous:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)checkCurrentEligibility;
 - (void)checkForContent;
+- (void)dismissContent:(id)arg1 reason:(long long)arg2;
+- (void)invalidateClientContextIfNeeded;
 - (void)applicationWillEnterForeground;
-- (void)showTestContent;
 - (void)unregisterEnterForegroundNotification;
 - (void)removeDelegate:(id)arg1 content:(id)arg2;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1 content:(id)arg2;
 - (void)addDelegate:(id)arg1;
+@property(readonly, nonatomic) _Bool allowsOverrides;
+@property(copy, nonatomic) TPKContent *content; // @dynamic content;
 - (id)initWithContext:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (void)showTestContent;
+@property(retain, nonatomic, getter=_contentText, setter=_setContentText:) NSString *_contentText;
+@property(retain, nonatomic, getter=_contentTitle, setter=_setContentTitle:) NSString *_contentTitle;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -31,6 +31,7 @@
     CKDPIdentifier *_userId;
     _Bool _acceptedInProcess;
     _Bool _createdInProcess;
+    _Bool _isAnonymousInvitedParticipant;
     _Bool _isInNetwork;
     _Bool _isOrgUser;
     struct {
@@ -43,12 +44,14 @@
         unsigned int state:1;
         unsigned int acceptedInProcess:1;
         unsigned int createdInProcess:1;
+        unsigned int isAnonymousInvitedParticipant:1;
         unsigned int isInNetwork:1;
         unsigned int isOrgUser:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isAnonymousInvitedParticipant; // @synthesize isAnonymousInvitedParticipant=_isAnonymousInvitedParticipant;
 @property(retain, nonatomic) CKDPDate *inviteTimestampDate; // @synthesize inviteTimestampDate=_inviteTimestampDate;
 @property(retain, nonatomic) NSData *protectionInfoPublicKey; // @synthesize protectionInfoPublicKey=_protectionInfoPublicKey;
 @property(nonatomic) _Bool isOrgUser; // @synthesize isOrgUser=_isOrgUser;
@@ -74,6 +77,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsAnonymousInvitedParticipant;
 @property(readonly, nonatomic) _Bool hasInviteTimestampDate;
 - (int)StringAsKeyHealth:(id)arg1;
 - (id)keyHealthAsString:(int)arg1;

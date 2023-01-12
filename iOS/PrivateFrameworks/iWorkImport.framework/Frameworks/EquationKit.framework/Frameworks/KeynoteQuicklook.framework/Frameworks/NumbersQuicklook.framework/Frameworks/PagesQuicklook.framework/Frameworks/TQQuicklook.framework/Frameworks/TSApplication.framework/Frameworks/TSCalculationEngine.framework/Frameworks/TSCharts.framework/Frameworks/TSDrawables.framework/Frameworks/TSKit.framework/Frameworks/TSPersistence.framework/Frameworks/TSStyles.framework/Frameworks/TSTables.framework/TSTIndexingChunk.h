@@ -8,19 +8,19 @@
 
 @interface TSTIndexingChunk : NSObject
 {
-    UUIDData_5fbc143e _tableUID;
-    vector_8f941582 _wordFragmentsList;
-    vector_aef86211 _headerCoords;
+    struct TSKUIDStruct _tableUID;
+    struct vector<std::vector<NSString *>, std::allocator<std::vector<NSString *>>> _wordFragmentsList;
+    vector_ea0127b3 _headerCoords;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
-- (void)addHeaderWordFragments:(const vector_0c920a62 *)arg1 atCoord:(const UUIDCoord_697ad09a *)arg2;
+@property(readonly, nonatomic) struct TSKUIDStruct tableUID; // @synthesize tableUID=_tableUID;
+- (void)addHeaderWordFragments:(const void *)arg1 atCoord:(const struct TSKUIDStructCoord *)arg2;
 @property(readonly, nonatomic) unsigned long long size;
-- (const vector_aef86211 *)headerCoords;
-- (const vector_8f941582 *)wordFragmentsList;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1;
+- (const void *)headerCoords;
+- (const void *)wordFragmentsList;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1;
 
 @end
 

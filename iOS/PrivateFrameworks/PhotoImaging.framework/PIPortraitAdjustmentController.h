@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 @interface PIPortraitAdjustmentController
 {
     long long _version;
 }
 
++ (id)spillMatteAllowedKey;
 + (id)strengthKey;
 + (id)kindKey;
 + (id)portraitInfoKey;
 @property(nonatomic) long long version; // @synthesize version=_version;
+@property(copy, nonatomic) NSNumber *spillMatteAllowed;
 @property(nonatomic) double strength;
 - (_Bool)canRenderPortraitEffect;
 @property(copy, nonatomic) NSDictionary *portraitInfo;

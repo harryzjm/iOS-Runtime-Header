@@ -16,6 +16,7 @@
 
 - (id)_clusterAssetsWithUnusableLocation:(id)arg1;
 - (id)_clusterAssetsWithUsableLocation:(id)arg1;
+- (id)_shareStateByAssetUUIDFromAssets:(id)arg1 momentHasMixedOwnership:(_Bool *)arg2;
 - (id)_processedLocationTypeByAssetUUIDFromAssets:(id)arg1;
 - (id)_assetClustersFromDataClusters:(id)arg1;
 - (id)_mergeAssetClustersWithLocation:(id)arg1 withAssetClustersWithoutLocation:(id)arg2;

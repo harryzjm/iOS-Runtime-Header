@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (double)keyCornerRadius;
 - (id)thinKeycapsFontName;
 - (id)lightKeycapsFontName;
+- (long long)assetIdiom;
 
 @end
 

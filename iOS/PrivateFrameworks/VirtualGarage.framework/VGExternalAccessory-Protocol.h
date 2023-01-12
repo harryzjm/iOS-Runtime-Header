@@ -7,13 +7,11 @@
 #import <VirtualGarage/NSObject-Protocol.h>
 #import <VirtualGarage/VGVehicleStateProviding-Protocol.h>
 
-@class NSString, VGExternalAccessoryState;
+@class NSString, VGVehicle;
 
 @protocol VGExternalAccessory <NSObject, VGVehicleStateProviding>
-@property(readonly, nonatomic) VGExternalAccessoryState *currentState;
-@property(readonly, nonatomic) NSString *bluetoothIdentifier;
-@property(readonly, nonatomic) NSString *identifier;
-@property(readonly, nonatomic) _Bool isConnectedToElectricVehicle;
-@property(readonly, nonatomic) _Bool isConnected;
+- (_Bool)isConnectedToCarPlayAccessory;
+- (_Bool)isConnectedToAccessoryWithIdentifier:(NSString *)arg1;
+- (_Bool)isConnectedToVehicle:(VGVehicle *)arg1;
 @end
 

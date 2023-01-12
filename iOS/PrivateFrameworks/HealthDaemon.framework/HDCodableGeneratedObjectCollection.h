@@ -23,10 +23,14 @@
     NSMutableArray *_medicationOrders;
     NSMutableArray *_medicationRecords;
     NSMutableArray *_procedureRecords;
+    NSMutableArray *_signedClinicalDataRecords;
     NSMutableArray *_unknownRecords;
     NSMutableArray *_vaccinationRecords;
+    NSMutableArray *_verifiableClinicalRecords;
 }
 
++ (Class)verifiableClinicalRecordType;
++ (Class)signedClinicalDataRecordType;
 + (Class)coverageRecordType;
 + (Class)clinicalRecordType;
 + (Class)unknownRecordType;
@@ -41,6 +45,8 @@
 + (Class)medicationDispenseRecordType;
 + (Class)medicationOrderType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *verifiableClinicalRecords; // @synthesize verifiableClinicalRecords=_verifiableClinicalRecords;
+@property(retain, nonatomic) NSMutableArray *signedClinicalDataRecords; // @synthesize signedClinicalDataRecords=_signedClinicalDataRecords;
 @property(retain, nonatomic) NSMutableArray *coverageRecords; // @synthesize coverageRecords=_coverageRecords;
 @property(retain, nonatomic) NSMutableArray *clinicalRecords; // @synthesize clinicalRecords=_clinicalRecords;
 @property(retain, nonatomic) NSMutableArray *unknownRecords; // @synthesize unknownRecords=_unknownRecords;
@@ -63,6 +69,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)verifiableClinicalRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)verifiableClinicalRecordsCount;
+- (void)addVerifiableClinicalRecord:(id)arg1;
+- (void)clearVerifiableClinicalRecords;
+- (id)signedClinicalDataRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)signedClinicalDataRecordsCount;
+- (void)addSignedClinicalDataRecord:(id)arg1;
+- (void)clearSignedClinicalDataRecords;
 - (id)coverageRecordAtIndex:(unsigned long long)arg1;
 - (unsigned long long)coverageRecordsCount;
 - (void)addCoverageRecord:(id)arg1;

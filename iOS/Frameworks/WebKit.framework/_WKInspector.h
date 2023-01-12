@@ -7,17 +7,24 @@
 #import <objc/NSObject.h>
 
 #import <WebKit/WKObject-Protocol.h>
+#import <WebKit/_WKInspectorExtensionHost-Protocol.h>
 
 @class NSString, WKWebView;
+@protocol _WKInspectorDelegate;
 
-@interface _WKInspector : NSObject <WKObject>
+@interface _WKInspector : NSObject <WKObject, _WKInspectorExtensionHost>
 {
-    struct ObjectStorage<WebKit::WebInspectorProxy> _inspector;
+    struct ObjectStorage<WebKit::WebInspectorUIProxy> _inspector;
+    struct WeakObjCPtr<id<_WKInspectorDelegate>> _delegate;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)unregisterExtension:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)registerExtensionWithID:(id)arg1 displayName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) WKWebView *extensionHostWebView;
+- (void)dealloc;
 @property(readonly) struct Object *_apiObject;
-- (void)_browserExtensionsDisabled:(id)arg1;
-- (void)_browserExtensionsEnabled:(id)arg1;
 - (void)_setDiagnosticLoggingDelegate:(id)arg1;
 - (void)printErrorToConsole:(id)arg1;
 - (void)toggleElementSelection;
@@ -36,8 +43,11 @@
 @property(readonly, nonatomic) _Bool isFront;
 @property(readonly, nonatomic) _Bool isVisible;
 @property(readonly, nonatomic) _Bool isConnected;
-- (id)inspectorWebView;
 @property(readonly, nonatomic) WKWebView *webView;
+@property(nonatomic) __weak id <_WKInspectorDelegate> delegate;
+- (void)_openURLExternallyForTesting:(id)arg1 useFrontendAPI:(_Bool)arg2;
+- (void)_fetchURLForTesting:(id)arg1;
+- (id)inspectorWebView;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

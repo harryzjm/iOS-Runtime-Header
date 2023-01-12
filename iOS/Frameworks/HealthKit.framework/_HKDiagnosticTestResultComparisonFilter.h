@@ -8,9 +8,12 @@
 {
 }
 
++ (long long)enumRepresentationForKeyPath:(id)arg1;
 + (id)allowedValueClassesForKeyPath:(id)arg1;
 + (id)allowedDataTypeClassesForKeyPath:(id)arg1;
 + (_Bool)isSupportedKeyPath:(id)arg1;
+- (_Bool)_acceptsDiagnosticTestResultWithReferenceRangeStatus:(long long)arg1;
+- (_Bool)_acceptsDiagnosticTestResultWithCategory:(id)arg1;
 - (_Bool)acceptsDataObject:(id)arg1;
 
 @end

@@ -10,30 +10,31 @@
 
 @interface TSCH3DChartBoundsLayout : NSObject
 {
-    TSCH3DScene *mScene;
-    TSCH3DScene *mBounds;
-    Class mGetBoundsClass;
-    TSCH3DChartGetProjectedBoundsPipeline *mGetBounds;
-    TSCH3DChartBoundsLayoutSceneDelegate *mSceneDelegate;
-    box_80622335 mLayoutInPage;
-    box_80622335 mBodyLayoutInPage;
-    tvec2_3b141483 mOriginalContainingViewport;
-    int mMode;
-    CDStruct_b1c75024 mLayoutSettings;
+    TSCH3DScene *_scene;
+    TSCH3DScene *_bounds;
+    Class _getBoundsClass;
+    TSCH3DChartGetProjectedBoundsPipeline *_getBounds;
+    TSCH3DChartBoundsLayoutSceneDelegate *_sceneDelegate;
+    box_c88174d1 _layoutInPage;
+    box_c88174d1 _bodyLayoutInPage;
+    tvec2_3b141483 _originalContainingViewport;
+    int _mode;
+    CDStruct_c48db077 _layoutSettings;
 }
 
 - (id).cxx_construct;
-@property(readonly, nonatomic) CDStruct_b1c75024 layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
-@property(retain, nonatomic) Class getBoundsClass; // @synthesize getBoundsClass=mGetBoundsClass;
-@property(nonatomic) int mode; // @synthesize mode=mMode;
-@property(nonatomic) tvec2_3b141483 originalContainingViewport; // @synthesize originalContainingViewport=mOriginalContainingViewport;
-@property(nonatomic) box_80622335 bodyLayoutInPage; // @synthesize bodyLayoutInPage=mBodyLayoutInPage;
-@property(nonatomic) box_80622335 layoutInPage; // @synthesize layoutInPage=mLayoutInPage;
-@property(readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=mScene;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) CDStruct_c48db077 layoutSettings; // @synthesize layoutSettings=_layoutSettings;
+@property(retain, nonatomic) Class getBoundsClass; // @synthesize getBoundsClass=_getBoundsClass;
+@property(nonatomic) int mode; // @synthesize mode=_mode;
+@property(nonatomic) tvec2_3b141483 originalContainingViewport; // @synthesize originalContainingViewport=_originalContainingViewport;
+@property(nonatomic) box_c88174d1 bodyLayoutInPage; // @synthesize bodyLayoutInPage=_bodyLayoutInPage;
+@property(nonatomic) box_c88174d1 layoutInPage; // @synthesize layoutInPage=_layoutInPage;
+@property(readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=_scene;
 - (id)debugBounds;
 - (void)resetContainingViewport;
-- (const struct ChartProjectedBoundsSpaces *)projectedBounds;
-- (const struct ChartProjectedBoundsSpaces *)p_projectedBoundsWithLabelsMode:(int)arg1;
+- (const void *)projectedBounds;
+- (const void *)p_projectedBoundsWithLabelsMode:(int)arg1;
 - (struct ResizingSize)resizingSize;
 - (void)p_updateLabelWrapBoundsPass;
 - (_Bool)isSage;
@@ -43,9 +44,8 @@
 - (void)invalidateBounds;
 - (id)cacheableGetBoundsPipeline;
 - (void)resetSceneDelegate;
-- (void)dealloc;
 - (id)init;
-- (id)initWithScene:(id)arg1 containingViewport:(const tvec2_3b141483 *)arg2 originalContainingViewport:(const tvec2_3b141483 *)arg3 layoutSettings:(const CDStruct_b1c75024 *)arg4;
+- (id)initWithScene:(id)arg1 containingViewport:(const void *)arg2 originalContainingViewport:(const void *)arg3 layoutSettings:(const CDStruct_c48db077 *)arg4;
 
 @end
 

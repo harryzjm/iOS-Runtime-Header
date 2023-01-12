@@ -37,6 +37,7 @@
 + (id)_unadjustedValueForItemPropertyRatingWithDefaultValue:(id)arg1;
 + (id)_unadjustedValueForItemPropertyVolumeAdjustmentWithDefaultValue:(id)arg1;
 + (id)_unadjustedValueForItemPropertyVolumeNormalizationWithDefaultValue:(id)arg1;
++ (id)uniqueIdentifierForLibrary:(id)arg1;
 + (id)onDiskProviders;
 - (void).cxx_destruct;
 @property(nonatomic) __weak MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
@@ -58,6 +59,7 @@
 - (_Bool)_dataProviderSupportsEntityChangeTracking;
 - (void)_postEvents;
 - (void)_coalesceEvents;
+- (void)_updateArtworkDataSourceMediaLibraryUniqueIdentifier;
 - (id)adjustedValueForMPProperty:(id)arg1 ofEntity:(id)arg2 withDefaultValue:(id)arg3;
 - (id)_adjustedItemPropertyVerifiedIntegrityOfEntity:(id)arg1 withDefaultValue:(id)arg2;
 - (id)_adjustedItemPropertyAssetURLOfEntity:(id)arg1 withDefaultValue:(id)arg2;
@@ -108,6 +110,7 @@
 - (_Bool)removePlaylistWithIdentifier:(long long)arg1;
 - (long long)sdk_addPlaylistWithValuesForProperties:(id)arg1;
 - (long long)addPlaylistWithValuesForProperties:(id)arg1;
+@property(readonly, nonatomic) long long photosMemoriesPlaylistPersistentID;
 @property(readonly, nonatomic) long long playbackHistoryPlaylistPersistentID;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 ofPlaylistWithIdentifier:(long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 ofCollectionWithIdentifier:(long long)arg3 groupingType:(long long)arg4 completionBlock:(CDUnknownBlockType)arg5;
@@ -172,7 +175,6 @@
 - (id)initWithLibrary:(id)arg1;
 
 // Remaining properties
-@property(readonly, nonatomic) id <MPArtworkDataSource> completeMyCollectionArtworkDataSource;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

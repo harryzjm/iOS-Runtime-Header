@@ -34,7 +34,8 @@
 - (void)locationsWithManagePermissionsForUserWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)locationsObserverWithSortDescriptors:(id)arg1;
 - (void)currentUserWithCompletion:(CDUnknownBlockType)arg1;
-- (id)currentUserDataObserverWithSortDescriptors:(id)arg1;
+- (id)subscribeToClassMembershipChangeEvents:(CDUnknownBlockType)arg1;
+- (id)subscribeToCurrentUserDidChangeEvents:(CDUnknownBlockType)arg1;
 - (id)makeClassWithLocationID:(id)arg1 name:(id)arg2;
 - (void)removeClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveClass:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -47,16 +48,12 @@
 - (id)objectIDsOfStudentsInClass:(id)arg1;
 - (void)removeStudent:(id)arg1 fromClass:(id)arg2;
 - (void)addStudent:(id)arg1 toClass:(id)arg2;
+- (id)personObserverWithPersonIDs:(id)arg1 sortDescriptors:(id)arg2;
 - (void)studentsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)studentObserverWithSortDescriptors:(id)arg1;
 - (void)instructorsInClassWithObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)instructorObserverWithSortDescriptors:(id)arg1;
 - (void)deregisterDataObserver:(id)arg1;
 - (void)registerDataObserver:(id)arg1;
 - (_Bool)ownsError:(id)arg1;
-@property(readonly, copy, nonatomic) NSString *studentClassMembershipChangeDarwinNotificationName;
-@property(readonly, copy, nonatomic) NSString *currentUserInfoKey;
-@property(readonly, copy, nonatomic) NSString *currentUserDidChangeNotificationName;
 @property(readonly, nonatomic) long long accountState;
 - (id)init;
 

@@ -6,7 +6,7 @@
 
 #import <HomeUI/HUServiceGridItemManagerDelegate-Protocol.h>
 
-@class HFTriggerBuilder, HUTriggerActionFlow, NSString, UINavigationItem;
+@class HFTriggerBuilder, HUTriggerActionFlow, NSSet, NSString, UINavigationItem;
 @protocol HUTriggerEditorDelegate;
 
 @interface HUTriggerActionEditorContentViewController <HUServiceGridItemManagerDelegate>
@@ -15,9 +15,15 @@
     HUTriggerActionFlow *_flow;
     UINavigationItem *_effectiveNavigationItem;
     unsigned long long _forceDisableReasonsForSecureCharacteristicControl;
+    NSSet *_existingSelectedCharacteristics;
+    NSSet *_existingSelectedActionSets;
+    NSSet *_existingAnonActionSetMediaProfiles;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *existingAnonActionSetMediaProfiles; // @synthesize existingAnonActionSetMediaProfiles=_existingAnonActionSetMediaProfiles;
+@property(retain, nonatomic) NSSet *existingSelectedActionSets; // @synthesize existingSelectedActionSets=_existingSelectedActionSets;
+@property(retain, nonatomic) NSSet *existingSelectedCharacteristics; // @synthesize existingSelectedCharacteristics=_existingSelectedCharacteristics;
 @property(nonatomic) unsigned long long forceDisableReasonsForSecureCharacteristicControl; // @synthesize forceDisableReasonsForSecureCharacteristicControl=_forceDisableReasonsForSecureCharacteristicControl;
 @property(readonly, nonatomic) UINavigationItem *effectiveNavigationItem; // @synthesize effectiveNavigationItem=_effectiveNavigationItem;
 @property(retain, nonatomic) HUTriggerActionFlow *flow; // @synthesize flow=_flow;
@@ -40,7 +46,7 @@
 - (_Bool)serviceGridItemManager:(id)arg1 shouldHideItem:(id)arg2;
 - (void)didChangeSelection;
 - (id)layoutOptionsForSection:(long long)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (_Bool)canSelectItem:(id)arg1 indexPath:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;

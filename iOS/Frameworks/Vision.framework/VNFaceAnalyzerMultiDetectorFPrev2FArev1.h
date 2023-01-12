@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
-+ (const basic_string_view_b5ef0455 *)getModelVersionForOptions:(id)arg1;
++ (const void *)modelVersionForOptions:(id)arg1;
 
 @end
 

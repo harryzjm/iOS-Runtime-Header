@@ -25,7 +25,7 @@
 - (int)operationType;
 - (void)_handleFetchedInfo:(id)arg1 withIdentity:(id)arg2 error:(id)arg3;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchShareParticipantsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

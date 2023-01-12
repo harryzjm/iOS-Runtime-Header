@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (long long)dependencyProcessingOrdinality;
 - (id)sequencedRequestPreviousObservationsKey;
 - (CDUnknownBlockType)resultsSortingComparator;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (_Bool)allowsCachingOfResults;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (id)compoundResults;

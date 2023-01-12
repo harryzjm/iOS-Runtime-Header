@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDCollectionSuggestionResult, GEOPDPublisherSuggestionResult, GEOPDSearchBrowseCategorySuggestionResult, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDCollectionSuggestionResult, GEOPDGuidesLocationsSuggestionResult, GEOPDPlaceSuggestionResult, GEOPDPublisherSuggestionResult, GEOPDSearchBrowseCategorySuggestionResult, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDMapsSearchHomeSection : PBCodable <NSCopying>
@@ -16,7 +16,9 @@ __attribute__((visibility("hidden")))
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEOPDCollectionSuggestionResult *_collectionSuggestionResult;
+    GEOPDGuidesLocationsSuggestionResult *_guidesLocationsSuggestionResult;
     NSString *_name;
+    GEOPDPlaceSuggestionResult *_placeSuggestionResult;
     GEOPDPublisherSuggestionResult *_publisherSuggestionResult;
     GEOPDSearchBrowseCategorySuggestionResult *_searchBrowseCategorySuggestionResult;
     unsigned int _readerMarkPos;
@@ -27,42 +29,24 @@ __attribute__((visibility("hidden")))
         unsigned int has_sectionType:1;
         unsigned int read_unknownFields:1;
         unsigned int read_collectionSuggestionResult:1;
+        unsigned int read_guidesLocationsSuggestionResult:1;
         unsigned int read_name:1;
+        unsigned int read_placeSuggestionResult:1;
         unsigned int read_publisherSuggestionResult:1;
         unsigned int read_searchBrowseCategorySuggestionResult:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDPublisherSuggestionResult *publisherSuggestionResult;
-@property(readonly, nonatomic) _Bool hasPublisherSuggestionResult;
-@property(retain, nonatomic) GEOPDCollectionSuggestionResult *collectionSuggestionResult;
-@property(readonly, nonatomic) _Bool hasCollectionSuggestionResult;
-@property(retain, nonatomic) GEOPDSearchBrowseCategorySuggestionResult *searchBrowseCategorySuggestionResult;
-@property(readonly, nonatomic) _Bool hasSearchBrowseCategorySuggestionResult;
-@property(retain, nonatomic) NSString *name;
-@property(readonly, nonatomic) _Bool hasName;
-- (int)StringAsSectionType:(id)arg1;
-- (id)sectionTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasSectionType;
-@property(nonatomic) int sectionType;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

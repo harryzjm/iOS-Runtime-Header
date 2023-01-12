@@ -9,6 +9,7 @@
 @interface _TtC7SwiftUI14HoverResponder
 {
     MISSING_TYPE *style;
+    MISSING_TYPE *id;
 }
 
 @end

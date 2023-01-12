@@ -8,16 +8,16 @@
 
 @interface TSCHPrefixSuffixCustomDataFormatter
 {
-    NSString *mPrefixString;
-    NSString *mSuffixString;
+    NSString *_prefixString;
+    NSString *_suffixString;
 }
 
 + (id)dataFormatterWithCustomFormat:(id)arg1 customFormatListKey:(id)arg2 formatType:(unsigned int)arg3 prefixString:(id)arg4 suffixString:(id)arg5;
+- (void).cxx_destruct;
 - (id)convertToSupportedClientFormatObjectWithLocale:(id)arg1;
 - (id)convertToPersistableStyleObject;
 - (id)chartFormattedStringForValue:(id)arg1 locale:(id)arg2;
 - (id)p_formattedStringWithBodyString:(id)arg1;
-- (void)dealloc;
 - (id)initWithCustomFormat:(id)arg1 customFormatListKey:(id)arg2 formatType:(unsigned int)arg3 prefixString:(id)arg4 suffixString:(id)arg5;
 
 @end

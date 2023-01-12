@@ -18,7 +18,6 @@
 - (id)__ck_generateAssetCatalogImageForInterfaceStyle:(long long)arg1;
 - (id)__ck_iconServicesBundleIdentifier;
 - (_Bool)__ck_preferIconServices;
-- (_Bool)__ck_isAnimojiStickersAndRunningInCameraAppsClient;
 - (id)_adamID;
 @property(readonly, nonatomic) NSString *containingBundleIdentifier;
 @end

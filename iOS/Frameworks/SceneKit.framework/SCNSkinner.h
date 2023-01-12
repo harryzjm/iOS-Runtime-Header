@@ -46,7 +46,7 @@
 - (_Bool)wantsCPUSkinning;
 @property(nonatomic) __weak SCNNode *skeleton;
 - (void)_syncObjCModel;
-- (void)_setSkeleton:(id)arg1;
+- (_Bool)_setSkeleton:(id)arg1;
 - (struct __C3DSkinner *)skinnerRef;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;

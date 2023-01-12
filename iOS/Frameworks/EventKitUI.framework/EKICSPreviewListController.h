@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     _Bool _allowsSubitems;
     _Bool _showWeekNumbers;
     id <EKICSPreviewListDelegate> _listDelegate;
+    struct CGColor *_overrideCalendarColor;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showWeekNumbers; // @synthesize showWeekNumbers=_showWeekNumbers;
+@property(nonatomic) struct CGColor *overrideCalendarColor; // @synthesize overrideCalendarColor=_overrideCalendarColor;
 @property(nonatomic) __weak id <EKICSPreviewListDelegate> listDelegate; // @synthesize listDelegate=_listDelegate;
 @property(nonatomic) _Bool allowsSubitems; // @synthesize allowsSubitems=_allowsSubitems;
 @property(nonatomic) _Bool allowsImport; // @synthesize allowsImport=_allowsImport;

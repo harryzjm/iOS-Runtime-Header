@@ -21,6 +21,8 @@
 - (id)displayRangeForDisplayType:(id)arg1;
 - (id)_longDisplayNameForUnit:(id)arg1;
 - (id)_displayNameKeyForUnit:(id)arg1 nameContext:(long long)arg2;
+- (id)_unitDisplayNameKeyForDisplayType:(id)arg1 nameContext:(long long)arg2;
+- (id)_displayNameKeyForDisplayType:(id)arg1 withNumber:(_Bool)arg2 nameContext:(long long)arg3;
 - (id)_displayNameKeyForDisplayType:(id)arg1 withNumber:(_Bool)arg2;
 - (id)_displayNameKey:(id)arg1 withNumber:(_Bool)arg2;
 - (id)_changedKeysBetweenDictionary:(id)arg1 andDictionary:(id)arg2;
@@ -39,6 +41,7 @@
 - (id)localizedLongDisplayNameForDisplayType:(id)arg1;
 - (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2 nameContext:(long long)arg3;
 - (id)localizedDisplayNameForUnit:(id)arg1 value:(id)arg2;
+- (id)localizedDisplayNameForDisplayType:(id)arg1 value:(id)arg2 nameContext:(long long)arg3;
 - (id)localizedDisplayNameForDisplayType:(id)arg1 value:(id)arg2;
 - (id)localizedDisplayNameForDisplayType:(id)arg1;
 - (id)localizedHealthUIStringForDisplayType:(id)arg1 key:(id)arg2 value:(id)arg3;

@@ -34,6 +34,11 @@ struct CGSize {
     double height;
 };
 
+struct PDFSizeIntegral {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;

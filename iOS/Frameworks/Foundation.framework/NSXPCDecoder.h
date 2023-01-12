@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     CDStruct_1b1be194 _rootObject;
     _Bool expectsUnnestedCollection;
     _Bool decodedCollection;
+    _Bool _strictSecureDecodingEnabled;
+    _Bool _enforceSubclassesMustBeExplicitlyMentionedWhenDecoded;
     unsigned int _collectionPointer;
     id _allowedClassesList[272];
     long long _allowedClassesIndex;
@@ -57,6 +59,8 @@ __attribute__((visibility("hidden")))
 - (void)decodeValueOfObjCType:(const char *)arg1 at:(void *)arg2;
 - (void)_validateAllowedXPCType:(struct _xpc_type_s *)arg1 forKey:(id)arg2;
 - (void)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(_Bool)arg3;
+- (void)_enforceSubclassesMustBeExplicitlyMentionedWhenDecoded;
+- (id)__decoderInfoForAllowedClassesWarning;
 - (_Bool)allowsKeyedCoding;
 - (id)debugDescription;
 - (void)dealloc;

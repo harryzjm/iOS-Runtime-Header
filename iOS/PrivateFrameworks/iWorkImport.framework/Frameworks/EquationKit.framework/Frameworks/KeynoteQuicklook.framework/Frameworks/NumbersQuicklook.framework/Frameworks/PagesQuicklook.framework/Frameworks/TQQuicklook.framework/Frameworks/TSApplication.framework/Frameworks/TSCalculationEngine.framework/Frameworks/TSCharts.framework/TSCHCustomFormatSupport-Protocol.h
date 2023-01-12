@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
+#import <TSCharts/NSCopying-Protocol.h>
+#import <TSCharts/NSObject-Protocol.h>
+#import <TSCharts/TSCHFormatTypeSupport-Protocol.h>
 
-@protocol TSCHCustomFormatSupport
-- (NSUUID *)customFormatListKey;
-- (_Bool)isCustom;
+@class NSUUID, TSKFormat;
+
+@protocol TSCHCustomFormatSupport <NSObject, NSCopying, TSCHFormatTypeSupport>
+@property(readonly, copy, nonatomic) TSKFormat *format;
+@property(readonly, copy, nonatomic) NSUUID *customFormatListKey;
+@property(readonly, nonatomic) _Bool isCustom;
 @end
 

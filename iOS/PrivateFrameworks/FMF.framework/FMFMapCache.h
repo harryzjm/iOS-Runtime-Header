@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *cacheMetaData; // @synthesize cacheMetaData=_cacheMetaData;
 - (double)pruneIntervalInSeconds;
 - (double)cacheExpiryInSeconds;
-- (id)mapImageKeyForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 andHeight:(double)arg5;
 - (id)noLocationKeyForWidth:(double)arg1 andHeight:(double)arg2;
 - (id)gridKeyForWidth:(double)arg1 andHeight:(double)arg2;
 - (void)pruneCacheIfNeeded;

@@ -14,6 +14,7 @@
 @interface FCSolArticle : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _accessible;
+    _Bool _evergreen;
     NSString *_identifier;
     NSString *_publisherID;
     double _score;
@@ -25,6 +26,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long groupingReason; // @synthesize groupingReason=_groupingReason;
 @property(retain, nonatomic) NSSet *whitelistedTopicIDs; // @synthesize whitelistedTopicIDs=_whitelistedTopicIDs;
+@property(nonatomic) _Bool evergreen; // @synthesize evergreen=_evergreen;
 @property(nonatomic) _Bool accessible; // @synthesize accessible=_accessible;
 @property(nonatomic) double score; // @synthesize score=_score;
 @property(retain, nonatomic) NSString *publisherID; // @synthesize publisherID=_publisherID;
@@ -35,9 +37,9 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithID:(id)arg1 publisherID:(id)arg2 accessible:(_Bool)arg3 whitelistedTopicIDs:(id)arg4;
-- (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(_Bool)arg4;
-- (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(_Bool)arg4 whitelistedTopicIDs:(id)arg5;
+- (id)initWithID:(id)arg1 publisherID:(id)arg2 accessible:(_Bool)arg3 evergreen:(_Bool)arg4 whitelistedTopicIDs:(id)arg5;
+- (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(_Bool)arg4 evergreen:(_Bool)arg5;
+- (id)initWithID:(id)arg1 publisherID:(id)arg2 score:(double)arg3 accessible:(_Bool)arg4 evergreen:(_Bool)arg5 whitelistedTopicIDs:(id)arg6;
 
 @end
 

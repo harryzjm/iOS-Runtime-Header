@@ -12,29 +12,20 @@
 __attribute__((visibility("hidden")))
 @interface VKScreenCanvas : NSObject
 {
-    struct MapEngine *_mapEngine;
+    void *_mapEngine;
     struct RunLoopController *_runLoopController;
     struct AnimationRunner *_animationRunner;
     shared_ptr_e963992e _taskContext;
-    _retain_ptr_c0a21da9 _camera;
+    _retain_ptr_c0a21da9 _vkCamera;
+    shared_ptr_46708168 _camera;
     id <MDRenderTarget> _displayTarget;
     _Bool _userIsGesturing;
     VKCameraController *_cameraController;
     struct VKEdgeInsets _edgeInsets;
     struct VKEdgeInsets _fullyOccludedEdgeInsets;
     _Bool _deallocing;
-    struct Renderer {
-        CDUnknownFunctionPointerType *;
-        shared_ptr_e963992e;
-        struct unique_ptr<md::PassList, std::__1::default_delete<md::PassList>>;
-        struct unique_ptr<md::FrameGraphResourceRegistry, std::__1::default_delete<md::FrameGraphResourceRegistry>>;
-        struct vector<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>, std::__1::allocator<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>>>;
-        struct linear_map<md::CommandBufferLocation, md::RenderLayer *, std::__1::equal_to<md::CommandBufferLocation>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>, std::__1::vector<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>>>;
-        struct RunLoopController *;
-        struct MapEngine *;
-        id;
-    } *_mapRenderer;
-    struct LayoutContext *_layoutContext;
+    void *_mapRenderer;
+    void *_layoutContext;
     id <MDMapControllerDelegate> _mapDelegate;
     struct PerspectiveView<double> _view;
     ARSession *_arSession;
@@ -42,18 +33,17 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct MapEngine *mapEngine; // @synthesize mapEngine=_mapEngine;
+@property(readonly, nonatomic) void *mapEngine; // @synthesize mapEngine=_mapEngine;
 @property(nonatomic) id <MDMapControllerDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
 @property(nonatomic) struct VKEdgeInsets fullyOccludedEdgeInsets; // @synthesize fullyOccludedEdgeInsets=_fullyOccludedEdgeInsets;
-@property(nonatomic) _retain_ptr_c0a21da9 camera; // @synthesize camera=_camera;
+@property(nonatomic) shared_ptr_46708168 camera; // @synthesize camera=_camera;
+@property(nonatomic) _retain_ptr_c0a21da9 vkCamera; // @synthesize vkCamera=_vkCamera;
 - (long long)tileSize;
-- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
-- (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
-- (_Bool)restoreViewportFromInfo:(id)arg1;
-- (id)viewportInfo;
+- (void)didBecomeInActive;
+- (void)didBecomeActive;
 - (void)transferStateFromCanvas:(id)arg1;
 - (void)didReceiveMemoryWarning:(_Bool)arg1 beAggressive:(_Bool)arg2;
-- (shared_ptr_430519ce)featureMarkerAtScreenPoint:(struct CGPoint)arg1;
+- (id)markerAtScreenPoint:(struct CGPoint)arg1 enableExtendedFeatureMarkers:(_Bool)arg2;
 - (void)cameraController:(id)arg1 requestsDisplayRate:(long long)arg2;
 - (id)cameraController;
 - (void)setCameraController:(id)arg1;
@@ -63,10 +53,10 @@ __attribute__((visibility("hidden")))
 - (void)updateCameraForFrameResize;
 - (void)didPresent;
 @property(nonatomic) struct VKEdgeInsets edgeInsets;
-- (void)updateWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
 - (_Bool)wantsTimerTick;
 - (void)dealloc;
-- (id)initWithMapEngine:(struct MapEngine *)arg1 inBackground:(_Bool)arg2;
+- (id)initWithMapEngine:(void *)arg1 inBackground:(_Bool)arg2;
 
 @end
 

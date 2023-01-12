@@ -11,6 +11,7 @@
 }
 
 + (id)descriptor;
+- (_Bool)requiresDownload;
 
 // Remaining properties
 @property(retain, nonatomic) TRIAsset *asset; // @dynamic asset;

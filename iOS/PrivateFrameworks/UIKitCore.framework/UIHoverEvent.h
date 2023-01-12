@@ -21,6 +21,8 @@
 - (void)_cancelAllGestureRecognizers;
 - (id)_deliveryTableByTouchCreateIfNeeded:(id)arg1;
 - (id)_touchesByContextId:(unsigned int)arg1 createIfNeeded:(_Bool)arg2;
+- (void)_completelyRemoveHoverTouchAndDeliveryTableForContextIdNumber:(id)arg1;
+- (void)_windowDidBecomeHidden:(id)arg1;
 - (void)_windowDidDetachContext:(id)arg1;
 - (void)removeHoverTouchForContextId:(unsigned int)arg1 pathIndex:(long long)arg2;
 - (void)setHoverTouch:(id)arg1 forContextId:(unsigned int)arg2 pathIndex:(long long)arg3;

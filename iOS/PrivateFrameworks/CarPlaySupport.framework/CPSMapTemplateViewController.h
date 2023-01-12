@@ -20,7 +20,7 @@
 #import <CarPlaySupport/CPSTripInitiating-Protocol.h>
 #import <CarPlaySupport/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BKSHIDEventDeliveryPolicyObserver, CARSessionStatus, CPMapTemplate, CPSApplicationStateMonitor, CPSLayoutHelperView, CPSNavigationAlertQueue, CPSNavigationCardViewController, CPSNavigationETAView, CPSNavigator, CPSPanViewController, CPSTripPreviewsCardView, CPTripPreviewTextConfiguration, NSArray, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIColor, UIFocusGuide, UIPanGestureRecognizer, UIStackView, UITapGestureRecognizer, UIView, _CPSFocusHoldingButton;
+@class BKSHIDEventDeliveryPolicyObserver, CPMapTemplate, CPSApplicationStateMonitor, CPSLayoutHelperView, CPSNavigationAlertQueue, CPSNavigationCardViewController, CPSNavigationETAView, CPSNavigator, CPSPanViewController, CPSTripPreviewsCardView, CPTripPreviewTextConfiguration, NSArray, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIColor, UIFocusGuide, UIPanGestureRecognizer, UIStackView, UITapGestureRecognizer, UIView, _CPSFocusHoldingButton;
 @protocol CPMapClientTemplateDelegate, CPSNavigatorObserving, CPSSafeAreaDelegate, UIFocusItem;
 
 @interface CPSMapTemplateViewController <CARSessionObserving, CPSButtonDelegate, CPSTripInitiating, UIGestureRecognizerDelegate, CPSPanEventDelegate, CPSNavigationAlertQueueDelegate, CPSNavigationDisplaying, CARNavigationOwnershipManagerDelegate, CPSEventObserving, CPSApplicationStateObserving, CPSLayoutHelperViewDelegate, BKSHIDEventDeliveryPolicyObserving, CPMapTemplateProviding, CPSLinearFocusProviding, CPNavigationSessionProviding>
@@ -42,7 +42,6 @@
     NSLayoutConstraint *_navigationCardViewLayoutViewBottomConstraint;
     CPSTripPreviewsCardView *_previewsView;
     unsigned long long _previewSelectedIndex;
-    CARSessionStatus *_sessionStatus;
     CPSNavigator *_navigator;
     UITapGestureRecognizer *_hideTapGestureRecognizer;
     UITapGestureRecognizer *_navBarHideTapGestureRecognizer;
@@ -116,7 +115,6 @@
 @property(retain, nonatomic) UITapGestureRecognizer *navBarHideTapGestureRecognizer; // @synthesize navBarHideTapGestureRecognizer=_navBarHideTapGestureRecognizer;
 @property(retain, nonatomic) UITapGestureRecognizer *hideTapGestureRecognizer; // @synthesize hideTapGestureRecognizer=_hideTapGestureRecognizer;
 @property(retain, nonatomic) CPSNavigator *navigator; // @synthesize navigator=_navigator;
-@property(retain, nonatomic) CARSessionStatus *sessionStatus; // @synthesize sessionStatus=_sessionStatus;
 @property(nonatomic) unsigned long long previewSelectedIndex; // @synthesize previewSelectedIndex=_previewSelectedIndex;
 @property(nonatomic) _Bool previewOnlyRouteChoices; // @synthesize previewOnlyRouteChoices=_previewOnlyRouteChoices;
 @property(retain, nonatomic) CPSTripPreviewsCardView *previewsView; // @synthesize previewsView=_previewsView;

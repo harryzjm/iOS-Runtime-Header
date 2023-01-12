@@ -14,12 +14,15 @@ __attribute__((visibility("hidden")))
 @interface ISEmbossedEffect : NSObject <ISEffect>
 {
     double _range;
+    unsigned long long _variant;
     struct CGSize _offset;
 }
 
+@property unsigned long long variant; // @synthesize variant=_variant;
 @property double range; // @synthesize range=_range;
 @property struct CGSize offset; // @synthesize offset=_offset;
 - (id)filterWithBackgroundImage:(id)arg1 inputImage:(id)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

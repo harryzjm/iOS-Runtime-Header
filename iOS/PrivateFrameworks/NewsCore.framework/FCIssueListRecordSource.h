@@ -9,7 +9,7 @@
 }
 
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
-- (id)recordIDPrefix;
+- (id)recordIDPrefixes;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (unsigned long long)lowThresholdDataSizeLimit;
 - (unsigned long long)storeVersion;

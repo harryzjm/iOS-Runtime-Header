@@ -14,7 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface _UIScreenFocusSystemManager : NSObject <_UIFocusSystemDelegate, _UIFocusMovementPerformerDelegate>
 {
-    _Bool _disableFocusDeferral;
     _Bool _handlesFocusMovementAction;
     _Bool _allowsForwardingFocusMovementActions;
     UIWindowScene *_windowScene;
@@ -33,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)_focusMapContainerForFocusSystem:(id)arg1;
 - (void)_focusSystem:(id)arg1 didFinishUpdatingFocusInContext:(id)arg2;
 - (_Bool)_focusSystem:(id)arg1 shouldRestoreFocusInContext:(id)arg2;
-- (_Bool)_focusSystem:(id)arg1 prefersDeferralForFocusUpdateInContext:(id)arg2;
 - (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
 - (id)initWithScene:(id)arg1 scrollManager:(id)arg2;
 

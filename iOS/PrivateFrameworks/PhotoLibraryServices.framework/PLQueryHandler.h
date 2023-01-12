@@ -16,14 +16,16 @@
 + (_Bool)_containsKey:(int)arg1 inQuery:(id)arg2;
 + (id)_predicateForQuery:(id)arg1 inLibrary:(id)arg2 changeDetectionCriteria:(id)arg3;
 + (id)predicateForQuery:(id)arg1 inLibrary:(id)arg2 changeDetectionCriteria:(id)arg3;
-+ (id)_smartAlbumAssetTypeFilter;
 + (id)_predicateForSingleQuery:(id)arg1 inLibrary:(id)arg2 changeDetectionCriteria:(id)arg3;
 + (_Bool)hasMatchingFetchingAlbumForSingleQuery:(id)arg1 outKind:(int *)arg2;
++ (id)_predicateForAbleToUploadQuery;
 + (id)_predicateForNotAbleToUploadQuery;
 + (id)_predicateForTaggedWithGPSQuery:(id)arg1 inLibrary:(id)arg2;
 + (id)_predicateFromAlbumKind:(int)arg1 negate:(_Bool)arg2;
 + (id)_predicateForLoopingQuery:(id)arg1 inLibrary:(id)arg2;
 + (id)_predicateForIsReferencedQuery:(id)arg1 inLibrary:(id)arg2;
++ (id)_assetsPredicateForPersonPredicate:(id)arg1 invert:(_Bool)arg2 inLibrary:(id)arg3;
++ (id)_predicateForPersonUUIDQuery:(id)arg1 inLibrary:(id)arg2 changeDetectionCriteria:(id)arg3;
 + (id)_predicateForPersonQuery:(id)arg1 inLibrary:(id)arg2 changeDetectionCriteria:(id)arg3;
 + (id)_personMatchesPredicateForCriteria:(id)arg1;
 + (id)_personNameQueryKeyPaths;
@@ -40,6 +42,7 @@
 + (id)_getConvertedKeys:(id)arg1;
 + (int)_convertComparatorToNumericComparator:(int)arg1;
 + (_Bool)_isTextComparator:(int)arg1;
++ (_Bool)_isTextFieldQuery:(int)arg1;
 + (id)_getConvertedQueryKey:(id)arg1;
 + (id)_convertQueryValueForAssetType:(int)arg1;
 + (id)_convertQueryKeyTypeToString:(int)arg1;

@@ -6,17 +6,20 @@
 
 #import <UIKitCore/NSCoding-Protocol.h>
 
-@class NSArray, UIColor, UIImage, UIView, _UIEdgeFeedbackGenerator, _UIModulationFeedbackGenerator, _UISliderDataModel;
+@class NSArray, UIColor, UIImage, UISliderDataModel, UIView, _UIEdgeFeedbackGenerator, _UIModulationFeedbackGenerator;
 @protocol _UISliderVisualElement;
 
 @interface UISlider <NSCoding>
 {
     UIView<_UISliderVisualElement> *_visualElement;
-    _UISliderDataModel *_data;
+    UISliderDataModel *_data;
     NSArray *_dummyViews;
+    unsigned long long _preferredBehavioralStyle;
 }
 
 + (_Bool)_allowActionsToQueue;
++ (_Bool)_allowsUnsupportedMacIdiomBehavior;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(_Bool)arg1;
 - (void).cxx_destruct;
 - (void)setTracking:(_Bool)arg1;
 - (_Bool)isTracking;
@@ -99,6 +102,8 @@
 - (void)setShowValue:(_Bool)arg1;
 - (_Bool)isAnimatingValueChange;
 - (_Bool)_alwaysHandleScrollerMouseEvent;
+@property(nonatomic) unsigned long long preferredBehavioralStyle;
+@property(readonly, nonatomic) unsigned long long behavioralStyle;
 
 @end
 

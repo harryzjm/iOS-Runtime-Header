@@ -26,5 +26,6 @@
 @property(readonly, nonatomic) struct CGVector CGVectorValue;
 @property(readonly, nonatomic) struct CGPoint CGPointValue;
 @property(readonly) CDStruct_19cde01f UIKBHandwritingPointValue;
+- (struct _UIPressTrigger)_UIPressTriggerValue;
 @end
 

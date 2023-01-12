@@ -39,6 +39,8 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) NSString *personLocalIdentifier;
+@property(readonly, nonatomic) unsigned short poseType;
+@property(readonly, nonatomic) double poseYaw;
 @property(readonly, nonatomic) double size;
 @property(readonly) Class superclass;
 @end

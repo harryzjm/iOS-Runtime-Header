@@ -8,7 +8,7 @@
 
 #import <VisualLocalization/NSSecureCoding-Protocol.h>
 
-@class MISSING_TYPE, NSData, NSUUID;
+@class GEOVLFLocation, MISSING_TYPE, NSData, NSUUID;
 
 @interface VLLocalizationDebugInfo : NSObject <NSSecureCoding>
 {
@@ -23,6 +23,7 @@
     CDStruct_14d5dc5e _transform;
     CDStruct_8e0628e6 _cameraIntrinsics;
     MISSING_TYPE *_radialDistortion;
+    double _exposureTargetOffset;
     unsigned long long _resultStatus;
     _Bool _hasStatistics;
     CDStruct_39a823be _statistics;
@@ -30,16 +31,21 @@
     int *_inlierIndices;
     float *_points2D;
     double *_points3D;
+    unsigned long long _solutionsCount;
+    float *_solverConfidences;
+    float *_fusedConfidences;
     _Bool _hasResultPose;
     CDStruct_14d5dc5e _resultTransform;
     CDStruct_c3074bf1 _resultLocation;
     float _resultConfidence;
     CDStruct_2972252c _resultCovariance;
+    GEOVLFLocation *_analyticsLocation;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_resultStatus) unsigned long long resultStatus; // @synthesize resultStatus=_resultStatus;
+@property(readonly, nonatomic, getter=_exposureTargetOffset) double exposureTargetOffset; // @synthesize exposureTargetOffset=_exposureTargetOffset;
 @property(readonly, nonatomic, getter=_radialDistortion) MISSING_TYPE *radialDistortion; // @synthesize radialDistortion=_radialDistortion;
 @property(readonly, nonatomic, getter=_cameraIntrinsics) CDStruct_8e0628e6 cameraIntrinsics; // @synthesize cameraIntrinsics=_cameraIntrinsics;
 @property(readonly, nonatomic, getter=_transform) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;
@@ -47,6 +53,10 @@
 @property(readonly, nonatomic, getter=_heading) CDStruct_160d0e14 heading; // @synthesize heading=_heading;
 @property(readonly, nonatomic, getter=_location) CDStruct_6c6357c7 location; // @synthesize location=_location;
 @property(readonly, nonatomic, getter=_timestamp) double timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic, getter=_fusedConfidences) float *fusedConfidences; // @synthesize fusedConfidences=_fusedConfidences;
+@property(readonly, nonatomic, getter=_solverConfidences) float *solverConfidences; // @synthesize solverConfidences=_solverConfidences;
+@property(readonly, nonatomic, getter=_solutionsCount) unsigned long long solutionsCount; // @synthesize solutionsCount=_solutionsCount;
+@property(readonly, nonatomic, getter=_inlierIndices) int *inlierIndices; // @synthesize inlierIndices=_inlierIndices;
 @property(readonly, nonatomic) double *points3D; // @synthesize points3D=_points3D;
 @property(readonly, nonatomic) float *points2D; // @synthesize points2D=_points2D;
 @property(readonly, nonatomic) unsigned long long inliersCount; // @synthesize inliersCount=_inliersCount;
@@ -60,7 +70,7 @@
 - (void)_fixupStatsPointers;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 monotonicTimestamp:(double)arg2 timestamp:(double)arg3 duration:(double)arg4 location:(CDStruct_6c6357c7)arg5 heading:(CDStruct_160d0e14)arg6 gravity:(CDStruct_14d5dc5e)arg7 transform:(CDStruct_8e0628e6)arg8 cameraIntrinsics:(const CDStruct_39a823be *)arg9 radialDistortion:(unsigned long long)arg10 statistics:(const CDStruct_bd2735fe *)arg11 resultStatus:(_Bool)arg12 resultPose:preserveImageData: /* Error: Ran out of types for this method. */;
+- (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 monotonicTimestamp:(double)arg2 timestamp:(double)arg3 duration:(double)arg4 location:(CDStruct_6c6357c7)arg5 clLocation:(id)arg6 heading:(CDStruct_160d0e14)arg7 gravity:(CDStruct_14d5dc5e)arg8 transform:(CDStruct_8e0628e6)arg9 cameraIntrinsics:(double)arg10 radialDistortion:(const CDStruct_39a823be *)arg11 exposureTargetOffset:(unsigned long long)arg12 statistics:(const CDStruct_bd2735fe *)arg13 resultStatus:(_Bool)arg14 resultPose:preserveImageData: /* Error: Ran out of types for this method. */;
 
 @end
 

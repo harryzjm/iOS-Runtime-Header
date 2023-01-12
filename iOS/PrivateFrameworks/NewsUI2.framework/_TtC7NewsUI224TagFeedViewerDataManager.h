@@ -4,17 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI224TagFeedViewerDataManager : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI224TagFeedViewerDataManager : NSObject
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *membershipController;
+    MISSING_TYPE *channel;
 }
+
+- (void).cxx_destruct;
+- (id)init;
+- (void)dealloc;
 
 @end
 

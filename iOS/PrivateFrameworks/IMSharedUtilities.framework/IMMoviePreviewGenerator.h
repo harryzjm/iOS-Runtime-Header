@@ -9,10 +9,11 @@
 }
 
 + (id)_avAssetForURL:(id)arg1;
-+ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 outSize:(struct CGSize *)arg3 error:(id *)arg4;
++ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 balloonBundleID:(id)arg2 withPreviewConstraints:(struct IMPreviewConstraints)arg3 outSize:(struct CGSize *)arg4 error:(id *)arg5;
 + (_Bool)writesToDisk;
 + (struct CGSize)sizePreviewAtSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (struct CGImage *)createImageWithPlayButtonOverlay:(struct CGImage *)arg1 scale:(double)arg2 transferGUID:(id)arg3 error:(id *)arg4;
 + (_Bool)isAutoloopAsset:(id)arg1;
 + (id)UTITypes;
 + (id)fetchUTITypes;

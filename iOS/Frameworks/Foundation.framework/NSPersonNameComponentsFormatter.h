@@ -14,21 +14,23 @@
 @interface NSPersonNameComponentsFormatter <NSObservable, NSObserver, NSSecureCoding, NSCopying>
 {
     id _private;
+    NSString *__preferredLocalizationForExplicitlySetLocale;
 }
 
 + (id)__stringValueForShortStyle:(long long)arg1;
 + (id)__stringValueForStyle:(long long)arg1;
 + (SEL)__initialsCreatorForScript:(unsigned long long)arg1;
-+ (_Bool)__shortStyle:(long long)arg1 isRestrictedForLocale:(id)arg2;
++ (_Bool)__shortStyle:(long long)arg1 isRestrictedForLocalization:(id)arg2;
 + (_Bool)__shortStyle:(long long)arg1 isRestrictedForScript:(unsigned long long)arg2;
 + (_Bool)__style:(long long)arg1 isRestrictedForScript:(unsigned long long)arg2;
-+ (_Bool)__style:(long long)arg1 isRestrictedForLocale:(id)arg2;
-+ (long long)__shortNameFormatForLocale:(id)arg1;
++ (_Bool)__style:(long long)arg1 isRestrictedForLocalization:(id)arg2;
++ (long long)__shortNameFormatForLocalization:(id)arg1;
 + (long long)__abbreviatedNameFormatForPersonNameComponents:(id)arg1;
 + (long long)__abbreviatedNameFormatForString:(id)arg1;
-+ (long long)__nameOrderForLocale:(id)arg1 usingNativeOrdering:(_Bool)arg2;
++ (long long)__nameOrderForLocalization:(id)arg1 usingNativeOrdering:(_Bool)arg2;
 + (id)__supportedScriptDefaultsFromScriptName:(id)arg1;
-+ (id)__supportedNameDefaultsFromLocale:(id)arg1;
++ (id)__supportedNameDefaultsFromLocalization:(id)arg1;
++ (id)_preferredLocalizationFromLocale:(id)arg1;
 + (void)__registerDefaults;
 + (CDUnknownBlockType)arabicInitialsCreator;
 + (CDUnknownBlockType)tibetanInitialsCreator;
@@ -69,11 +71,12 @@
 + (id)__familyNameFirstOrdering;
 + (id)localizedStringFromPersonNameComponents:(id)arg1 style:(long long)arg2 options:(unsigned long long)arg3;
 + (id)_formatterWithStyle:(long long)arg1 options:(unsigned long long)arg2;
-+ (id)__localizedNameDefaults;
 + (_Bool)__shouldFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
 + (_Bool)__shouldCacheFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
 + (id)__preferredLanguages;
++ (id)_preferredLocalizationForCurrentLocale;
 + (id)__currentLocale;
+@property(readonly, copy) NSString *_preferredLocalizationForExplicitlySetLocale; // @synthesize _preferredLocalizationForExplicitlySetLocale=__preferredLocalizationForExplicitlySetLocale;
 - (_Bool)isEqualToFormatter:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -94,6 +97,7 @@
 - (id)stringForObjectValue:(id)arg1;
 @property long long style;
 @property(getter=isPhonetic) _Bool phonetic;
+@property(copy) NSLocale *locale;
 @property NSLocale *_locale;
 @property _Bool _ignoresFallbacks;
 @property _Bool _forceGivenNameFirst;

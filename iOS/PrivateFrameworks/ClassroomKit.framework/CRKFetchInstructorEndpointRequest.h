@@ -6,16 +6,18 @@
 
 #import <DeviceManagement/CATTaskRequest.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface CRKFetchInstructorEndpointRequest : CATTaskRequest
 {
     NSURL *_classroomAppBundleURL;
+    NSString *_instructordBundleIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *instructordBundleIdentifier; // @synthesize instructordBundleIdentifier=_instructordBundleIdentifier;
 @property(retain, nonatomic) NSURL *classroomAppBundleURL; // @synthesize classroomAppBundleURL=_classroomAppBundleURL;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

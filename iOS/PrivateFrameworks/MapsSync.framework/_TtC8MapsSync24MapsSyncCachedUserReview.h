@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, _TtC8MapsSync19MapsSyncDataSession;
+@class MISSING_TYPE, NSString, _TtC8MapsSync19MapsSyncDataSession;
 
 @interface _TtC8MapsSync24MapsSyncCachedUserReview
 {
@@ -23,6 +23,7 @@
 @property(nonatomic, readonly) short rating;
 @property(nonatomic, readonly) int numberPhotosUploaded;
 @property(nonatomic, readonly) unsigned long long muid;
+@property(nonatomic, readonly) NSString *description;
 
 @end
 

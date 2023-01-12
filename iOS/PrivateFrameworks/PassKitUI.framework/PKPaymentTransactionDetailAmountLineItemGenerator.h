@@ -18,13 +18,13 @@
 - (id)_totalSentLineItemForTransaction:(id)arg1;
 - (id)_totalTransferredItemForTransaction:(id)arg1;
 - (id)_totalPaidLineItemForTransaction:(id)arg1 isUnqualified:(_Bool)arg2;
-- (id)_primaryFundingSourceLineItemForTransaction:(id)arg1 transactionSource:(id)arg2;
+- (id)_primaryFundingSourceLineItemForTransaction:(id)arg1 transactionSourceCollection:(id)arg2;
 - (id)_secondaryFundingSourceLineItemForTransaction:(id)arg1;
-- (id)_lineItemsForPeerPaymentTransaction:(id)arg1 transactionSource:(id)arg2;
-- (id)_lineItemsForPurchaseTransaction:(id)arg1 transactionSource:(id)arg2 associatedReceipt:(id)arg3;
-- (id)_lineItemsForWithdrawalTransaction:(id)arg1 transactionSource:(id)arg2;
+- (id)_lineItemsForPeerPaymentTransaction:(id)arg1 transactionSourceCollection:(id)arg2;
+- (id)_lineItemsForPurchaseTransaction:(id)arg1 transactionSourceCollection:(id)arg2 associatedReceipt:(id)arg3;
+- (id)_lineItemsForWithdrawalTransaction:(id)arg1 transactionSourceCollection:(id)arg2;
 - (id)lineItemsForInstallmentPlan:(id)arg1;
-- (id)lineItemsForTransaction:(id)arg1 transactionSource:(id)arg2 associatedTransaction:(id)arg3 associatedReceipt:(id)arg4;
+- (id)lineItemsForTransaction:(id)arg1 transactionSourceCollection:(id)arg2 associatedTransaction:(id)arg3 associatedReceipt:(id)arg4;
 
 @end
 

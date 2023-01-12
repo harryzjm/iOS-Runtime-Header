@@ -41,7 +41,6 @@
 @property(nonatomic) long long joinButtonStyle; // @synthesize joinButtonStyle=_joinButtonStyle;
 - (void)setEnabled:(_Bool)arg1;
 - (void)layoutSubviews;
-- (struct CGSize)intrinsicContentSize;
 - (id)_imageForCurrentState;
 - (void)_setupIconImageView;
 - (id)initWithImage:(id)arg1 disabledImage:(id)arg2 text:(id)arg3 wantsLongPress:(_Bool)arg4;

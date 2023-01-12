@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardHome/SBHIconViewConfigurationInteractionDelegate-Protocol.h>
+#import <SpringBoardHome/NSObject-Protocol.h>
 
-@class SBHWidgetConfigurationInteraction;
-@protocol SBLeafIconDataSource;
+@class NSString, SBHStackConfigurationInteraction, SBIcon, SBIconView, SBWidgetIcon, UIView, UIViewController;
+@protocol SBHWidgetSheetViewControllerPresenter, SBIconDragPreview, UIDropSession;
 
-@protocol SBHStackConfigurationInteractionDelegate <SBHIconViewConfigurationInteractionDelegate>
-- (SBHWidgetConfigurationInteraction *)widgetConfigurationInteractionForDataSource:(id <SBLeafIconDataSource>)arg1;
+@protocol SBHStackConfigurationInteractionDelegate <NSObject>
+- (UIView<SBIconDragPreview> *)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
+- (void)stackConfigurationInteractionWillAnimateWidgetInsertion:(SBHStackConfigurationInteraction *)arg1;
+- (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 noteDidRemoveSuggestedWidgetIcon:(SBWidgetIcon *)arg2;
+- (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 isConsumingDropSession:(id <UIDropSession>)arg2;
+- (SBIcon *)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 draggedIconForIdentifier:(NSString *)arg2;
+- (void)stackConfigurationInteraction:(SBHStackConfigurationInteraction *)arg1 requestsPresentAddWidgetSheetFromPresenter:(UIViewController<SBHWidgetSheetViewControllerPresenter> *)arg2;
 @end
 

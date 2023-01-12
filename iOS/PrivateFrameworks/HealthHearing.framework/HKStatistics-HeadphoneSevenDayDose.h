@@ -8,7 +8,7 @@
 
 @interface HKStatistics (HeadphoneSevenDayDose)
 - (id)unitTesting_hearingSevenDayDoseCategorySampleWithNow:(id)arg1 includesPrunableData:(_Bool)arg2 error:(id *)arg3;
-- (id)hk_dateIntervalEndingBeforeDate:(id)arg1 error:(id *)arg2;
+- (id)hk_hearingSevenDayDoseDateIntervalEndingBeforeDate:(id)arg1 error:(id *)arg2;
 - (id)hk_hearingSevenDayDosePercentageWithError:(id *)arg1;
 @end
 

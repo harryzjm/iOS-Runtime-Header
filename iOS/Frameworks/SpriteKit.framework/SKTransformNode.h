@@ -8,7 +8,7 @@
 
 @interface SKTransformNode
 {
-    struct SKCTransformNode *_skcTransformLayer;
+    void *_skcTransformLayer;
     MISSING_TYPE *_euler;
 }
 
@@ -23,7 +23,7 @@
 - (void)setEulerAngles: /* Error: Ran out of types for this method. */;
 - (void)setZRotation:(double)arg1;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 
 @end
 

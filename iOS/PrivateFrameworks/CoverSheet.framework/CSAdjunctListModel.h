@@ -6,36 +6,27 @@
 
 #import <objc/NSObject.h>
 
-#import <CoverSheet/SBFActionHandling-Protocol.h>
+#import <CoverSheet/CSItemDestination-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString;
-@protocol CSAdjunctListModelDelegate, SBFActionProviding;
+@protocol CSAdjunctListModelDelegate;
 
-@interface CSAdjunctListModel : NSObject <SBFActionHandling>
+@interface CSAdjunctListModel : NSObject <CSItemDestination>
 {
     NSMutableDictionary *_identifiersToItems;
-    NSMutableSet *_pendingActions;
+    NSMutableSet *_pendingItems;
     _Bool _suspended;
     id <CSAdjunctListModelDelegate> _delegate;
-    id <SBFActionProviding> _contentActionProvider;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <SBFActionProviding> contentActionProvider; // @synthesize contentActionProvider=_contentActionProvider;
 @property(nonatomic) __weak id <CSAdjunctListModelDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_replayPendingChanges;
-- (void)_removeItemForAction:(id)arg1;
-- (id)_createItemForAction:(id)arg1;
-- (id)_itemForAction:(id)arg1;
-- (_Bool)_actionIsInRelevantSlot:(id)arg1;
-- (void)_handleLockScreenContentActionInvalidation:(id)arg1;
-- (void)_handleLockScreenContentActionAddition:(id)arg1;
-- (_Bool)_handleLockScreenContentAction:(id)arg1;
-- (_Bool)handleAction:(id)arg1 forProvider:(id)arg2;
-- (_Bool)handlesActionWithClass:(Class)arg1;
+- (void)_reallyAddOrUpdateItem:(id)arg1;
+- (void)removeItemForIdentifier:(id)arg1;
+- (void)addOrUpdateItem:(id)arg1;
 - (void)resumeItemHandling;
 - (void)suspendItemHandling;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

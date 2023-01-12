@@ -11,16 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (CDStruct_e4886f83 *)newExpiringTilesets;
-+ (unsigned long long)expiringTilesetsCount;
-+ (id)locationSensitiveTilesets;
 + (unsigned char)tileProviderIdentifier;
+- (id)additionalAnalyticsStatesForKey:(const struct _GEOTileKey *)arg1;
 - (CDStruct_d1a7ebee)kindForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
 - (_Bool)downloadsDataToDisk;
-- (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
-- (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
 
 @end
 

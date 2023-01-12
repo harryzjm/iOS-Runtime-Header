@@ -5,12 +5,13 @@
 //
 
 #import <LinkPresentation/LPLinkMetadataBackwardCompatibility-Protocol.h>
+#import <LinkPresentation/LPLinkMetadataFallbackIconTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPresentationTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPreviewTransformer-Protocol.h>
 
 @class LPImage, NSArray, NSString;
 
-@interface LPMapCollectionMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataBackwardCompatibility>
+@interface LPMapCollectionMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataFallbackIconTransformer, LPLinkMetadataBackwardCompatibility>
 {
     unsigned int _numberOfItems;
     NSString *_name;
@@ -40,6 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)populateMetadataForBackwardCompatibility:(id)arg1;
+- (id)fallbackIconForTransformer:(id)arg1;
 - (id)previewImageForTransformer:(id)arg1;
 - (id)previewSummaryForTransformer:(id)arg1;
 - (_Bool)canGeneratePresentationPropertiesForURL:(id)arg1;

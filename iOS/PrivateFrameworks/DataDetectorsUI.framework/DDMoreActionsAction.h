@@ -11,7 +11,8 @@
 - (id)viewController;
 - (id)alertActions;
 - (int)interactionType;
-- (id)icon;
+- (id)variantIconName;
+- (id)iconName;
 - (id)localizedName;
 
 @end

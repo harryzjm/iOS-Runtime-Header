@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)hasEnabledWidgets;
 - (void)setCurrentUser:(id)arg1;
 - (void)setPeerPaymentAccount:(id)arg1;
 - (void)setDelegate:(id)arg1;

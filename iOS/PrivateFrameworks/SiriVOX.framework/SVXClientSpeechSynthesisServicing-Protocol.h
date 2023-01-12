@@ -12,6 +12,7 @@
 - (void)stopRequest:(SVXSpeechSynthesisRequest *)arg1;
 - (void)cancelPendingRequest:(SVXSpeechSynthesisRequest *)arg1;
 - (void)enqueueRequest:(SVXSpeechSynthesisRequest *)arg1 completion:(void (^)(SVXSpeechSynthesisResult *))arg2;
+- (void)synthesizeRequest:(SVXSpeechSynthesisRequest *)arg1 audioChunkHandler:(void (^)(VSAudioData *, unsigned long long))arg2 completion:(void (^)(SVXSpeechSynthesisResult *))arg3;
 - (void)synthesizeRequest:(SVXSpeechSynthesisRequest *)arg1 completion:(void (^)(SVXSpeechSynthesisResult *))arg2;
 - (void)prewarmRequest:(SVXSpeechSynthesisRequest *)arg1;
 @end

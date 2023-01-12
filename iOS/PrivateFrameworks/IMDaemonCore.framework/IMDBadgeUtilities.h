@@ -16,7 +16,6 @@
     _Bool _isUnexpectedlyLogOut;
     _Bool _addedObserverForUnexpectedlyLoggedOut;
     UNUserNotificationCenter *_notificationCenter;
-    UNUserNotificationCenter *_notificationCenterCatalyst;
     IMDefaults *_sharedDefaultsInstance;
 }
 
@@ -28,7 +27,6 @@
 + (_Bool)_iMessageEnabled;
 + (id)sharedInstance;
 @property(retain, nonatomic) IMDefaults *sharedDefaultsInstance; // @synthesize sharedDefaultsInstance=_sharedDefaultsInstance;
-@property(retain, nonatomic) UNUserNotificationCenter *notificationCenterCatalyst; // @synthesize notificationCenterCatalyst=_notificationCenterCatalyst;
 @property(retain, nonatomic) UNUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 - (_Bool)_isUnexpectedlyLogOutValue;
 - (void)_saveFailureDate:(long long)arg1;

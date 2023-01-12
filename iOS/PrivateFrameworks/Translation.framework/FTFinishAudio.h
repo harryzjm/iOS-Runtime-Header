@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_4c45a82e)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_4c45a82e)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *server_feature_latency_distribution;
 @property(readonly, nonatomic) NSArray *features_at_endpoint;
 @property(readonly, nonatomic) float total_audio_recorded_seconds;

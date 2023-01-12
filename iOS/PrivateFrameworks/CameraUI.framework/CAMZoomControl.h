@@ -18,6 +18,7 @@
         _Bool respondsToCanToggleBetweenZoomFactors;
         _Bool respondsToToggleBetweenZoomFactors;
         _Bool respondsToCanPlayHaptics;
+        _Bool respondsToDidChangeShowingZoomDial;
     } _delegateFlags;
     _Bool __zoomDialEnabled;
     _Bool __shouldShowZoomDial;
@@ -29,7 +30,6 @@
     double _minAvailableZoomFactor;
     double _maxAvailableZoomFactor;
     long long _orientation;
-    NSString *_contentSizeCategory;
     CAMZoomButton *__zoomButton;
     CAMZoomDial *__zoomDial;
     UIView *__dialClippingView;
@@ -89,7 +89,6 @@
 @property(readonly, nonatomic) UIView *_dialClippingView; // @synthesize _dialClippingView=__dialClippingView;
 @property(readonly, nonatomic) CAMZoomDial *_zoomDial; // @synthesize _zoomDial=__zoomDial;
 @property(readonly, nonatomic) CAMZoomButton *_zoomButton; // @synthesize _zoomButton=__zoomButton;
-@property(nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) double maxAvailableZoomFactor; // @synthesize maxAvailableZoomFactor=_maxAvailableZoomFactor;
 @property(nonatomic) double minAvailableZoomFactor; // @synthesize minAvailableZoomFactor=_minAvailableZoomFactor;
@@ -103,7 +102,7 @@
 - (void)zoomButtonDidLayout;
 - (void)_handleButtonTappedForSingleCameraZoomPlusToggle;
 - (void)_handleButtonTappedForSelection:(id)arg1;
-- (void)_handleButtonTappedForTripleCameraMode:(id)arg1;
+- (void)_handleButtonTappedForContinuousModeWithPlatter:(id)arg1;
 - (void)_handleButtonTappedForDualCameraMode;
 - (void)_handleButtonTapped:(id)arg1;
 - (_Bool)_isPointWithinButtonPlatter:(struct CGPoint)arg1;
@@ -116,6 +115,7 @@
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)_resetSnapping;
+- (_Bool)_isWithinZoomButtonAccessoryAtLocationInZoomButton:(struct CGPoint)arg1;
 - (_Bool)_isWithinZoomButtonBoundsWithTouch:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_shouldInterceptTouchesForHidingZoomDial;
@@ -134,12 +134,13 @@
 - (void)_handleZoomDialVisibilityTimerFiredWithUserInfo:(id)arg1;
 - (void)_setShouldShowZoomDial:(_Bool)arg1 animationDuration:(long long)arg2 afterDelay:(double)arg3;
 - (void)setShouldShowZoomDial:(_Bool)arg1 animationDuration:(long long)arg2;
+@property(readonly, nonatomic, getter=isShowingZoomDial) _Bool showingZoomDial;
 @property(readonly, nonatomic) _Bool _shouldHideZoomButtonBackground;
 - (void)_updateSubviewsAlphasWithDuration:(double)arg1 forConfigurationChange:(_Bool)arg2;
 - (void)_setShouldShowZoomDial:(_Bool)arg1 animationDuration:(long long)arg2;
 - (void)_setZoomDialEnabled:(_Bool)arg1 animationDuration:(long long)arg2;
-@property(readonly, nonatomic) _Bool _shouldUpdateZoomDialContentSizeCategory;
 @property(readonly, nonatomic) _Bool _shouldUseZoomDialMask;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateZoomButtonTappableEdgeInsets;
 @property(readonly, nonatomic) double zoomDialBorderWidth;
 @property(nonatomic) double zoomDialContentMaskingHeight;

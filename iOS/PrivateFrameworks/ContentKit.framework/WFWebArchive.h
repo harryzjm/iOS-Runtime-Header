@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) NSData *data;
 - (id)initWithData:(id)arg1;
 - (id)initWithMainResource:(id)arg1 subresources:(id)arg2 subframeArchives:(id)arg3;
+- (id)containedImageFiles;
 
 @end
 

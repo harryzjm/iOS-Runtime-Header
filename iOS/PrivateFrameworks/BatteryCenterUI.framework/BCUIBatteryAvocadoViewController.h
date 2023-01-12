@@ -8,12 +8,15 @@
 
 #import <BatteryCenterUI/BCBatteryDeviceObserving-Protocol.h>
 
-@class BCBatteryDeviceController, BCUIAvocadoViewController, NSString;
+@class BCBatteryDeviceController, BCUIAvocadoViewController, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface BCUIBatteryAvocadoViewController : UIViewController <BCBatteryDeviceObserving>
 {
     BCBatteryDeviceController *_batteryDeviceController;
+    NSObject<OS_dispatch_queue> *_queue;
     long long _avocadoSize;
+    double _scaleFactor;
     NSString *_debugIdentifier;
     BCUIAvocadoViewController *_avocadoViewController;
 }
@@ -23,6 +26,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic, getter=_avocadoViewController, setter=_setAvocadoViewController:) BCUIAvocadoViewController *avocadoViewController; // @synthesize avocadoViewController=_avocadoViewController;
 @property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
+@property(nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(nonatomic) long long avocadoSize; // @synthesize avocadoSize=_avocadoSize;
 - (id)_synthesizedDebugIdentifier;
 - (void)_configureAvocadoViewControllerIfNecessary;
@@ -32,6 +36,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 
 // Remaining properties

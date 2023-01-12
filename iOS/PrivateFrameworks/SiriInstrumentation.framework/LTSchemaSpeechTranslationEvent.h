@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class LTSchemaError, LTSchemaTask, NSData, NSString;
 
-@interface LTSchemaSpeechTranslationEvent : PBCodable
+@interface LTSchemaSpeechTranslationEvent
 {
     LTSchemaTask *_task;
     NSString *_sessionID;
@@ -18,10 +16,20 @@
     LTSchemaError *_error;
     int _uiMode;
     NSString *_mobileAssetConfigVersion;
+    unsigned int _timeToFirstPartialDisplayed;
+    unsigned int _timeToRecordingDialogDismissed;
+    unsigned int _timeToShowTranslationCard;
+    unsigned int _timeToCancel;
+    int _status;
     struct {
         unsigned int inRestrictedMode:1;
         unsigned int isAutomaticLID:1;
         unsigned int uiMode:1;
+        unsigned int timeToFirstPartialDisplayed:1;
+        unsigned int timeToRecordingDialogDismissed:1;
+        unsigned int timeToShowTranslationCard:1;
+        unsigned int timeToCancel:1;
+        unsigned int status:1;
     } _has;
     _Bool _hasTask;
     _Bool _hasSessionID;
@@ -36,6 +44,11 @@
 @property(nonatomic) _Bool hasRequestID; // @synthesize hasRequestID=_hasRequestID;
 @property(nonatomic) _Bool hasSessionID; // @synthesize hasSessionID=_hasSessionID;
 @property(nonatomic) _Bool hasTask; // @synthesize hasTask=_hasTask;
+@property(nonatomic) int status; // @synthesize status=_status;
+@property(nonatomic) unsigned int timeToCancel; // @synthesize timeToCancel=_timeToCancel;
+@property(nonatomic) unsigned int timeToShowTranslationCard; // @synthesize timeToShowTranslationCard=_timeToShowTranslationCard;
+@property(nonatomic) unsigned int timeToRecordingDialogDismissed; // @synthesize timeToRecordingDialogDismissed=_timeToRecordingDialogDismissed;
+@property(nonatomic) unsigned int timeToFirstPartialDisplayed; // @synthesize timeToFirstPartialDisplayed=_timeToFirstPartialDisplayed;
 @property(copy, nonatomic) NSString *mobileAssetConfigVersion; // @synthesize mobileAssetConfigVersion=_mobileAssetConfigVersion;
 @property(nonatomic) int uiMode; // @synthesize uiMode=_uiMode;
 @property(retain, nonatomic) LTSchemaError *error; // @synthesize error=_error;
@@ -52,6 +65,11 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasStatus;
+@property(nonatomic) _Bool hasTimeToCancel;
+@property(nonatomic) _Bool hasTimeToShowTranslationCard;
+@property(nonatomic) _Bool hasTimeToRecordingDialogDismissed;
+@property(nonatomic) _Bool hasTimeToFirstPartialDisplayed;
 @property(nonatomic) _Bool hasUiMode;
 @property(nonatomic) _Bool hasIsAutomaticLID;
 @property(nonatomic) _Bool hasInRestrictedMode;

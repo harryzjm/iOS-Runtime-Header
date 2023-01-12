@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) NSIndexSet *axSelectedSpriteIndexes;
 @property(readonly, nonatomic) NSIndexSet *axVisibleSpriteIndexes;
 @property(readonly, nonatomic) NSIndexSet *axSpriteIndexes;
+- (_Bool)axCanFocusOnSpriteAtIndex:(unsigned int)arg1;
 - (NSIndexSet *)axSpriteIndexesInRect:(struct CGRect)arg1;
 - (unsigned int)axSpriteIndexClosestToSpriteIndex:(unsigned int)arg1 inDirection:(unsigned long long)arg2;
 - (id <PXGAXInfo>)axContentInfoAtSpriteIndex:(unsigned int)arg1;

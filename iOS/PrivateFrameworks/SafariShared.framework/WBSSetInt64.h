@@ -12,7 +12,7 @@
 
 @interface WBSSetInt64 : NSObject <NSCoding, NSSecureCoding, NSCopying>
 {
-    unordered_set_da619913 _set;
+    struct unordered_set<long long, std::hash<long long>, std::equal_to<long long>, std::allocator<long long>> _set;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -22,13 +22,13 @@
 - (id)commaSeparatedValues;
 @property(readonly, nonatomic) unsigned long long count;
 - (_Bool)contains:(long long)arg1;
-@property(readonly, nonatomic) const unordered_set_da619913 *set;
+@property(readonly, nonatomic) const void *set;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copy;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMovableSet:(unordered_set_da619913 *)arg1;
-- (id)initWithSet:(const unordered_set_da619913 *)arg1;
+- (id)initWithMovableSet:(void *)arg1;
+- (id)initWithSet:(const void *)arg1;
 - (id)initWithInt64:(long long)arg1;
 - (id)init;
 

@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *kvoProxyIdentifier; // @synthesize kvoProxyIdentifier=_kvoProxyIdentifier;
 @property(nonatomic) __weak id <PXVideoViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool toneMapToStandardDynamicRange;
 - (void)_layerReadyForDisplayDidChange;
 @property(readonly, nonatomic) _Bool videoIsReadyForDisplay;
 @property(retain, nonatomic) ISWrappedAVPlayer *player;

@@ -8,7 +8,7 @@
 
 #import <ChronoKit/NSSecureCoding-Protocol.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface CHSWidgetPreviewInfo : NSObject <NSSecureCoding>
 {
@@ -23,6 +23,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic, readonly) long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(nonatomic, readonly) NSString *description;
 
 @end
 

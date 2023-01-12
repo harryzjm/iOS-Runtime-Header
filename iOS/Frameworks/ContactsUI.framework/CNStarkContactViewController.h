@@ -26,7 +26,7 @@
 - (void)queryComplete;
 - (void)_initiateBestiMessagePropertyQuery;
 - (_Bool)isScrollViewControllingHeaderResizeAnimation:(id)arg1;
-- (_Bool)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)setupConstraints;

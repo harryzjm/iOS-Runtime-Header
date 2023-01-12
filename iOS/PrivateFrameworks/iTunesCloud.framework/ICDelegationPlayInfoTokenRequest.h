@@ -10,6 +10,7 @@
 
 @class NSData, NSMutableDictionary, NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationPlayInfoTokenRequest : NSObject <NSCopying>
 {
     NSNumber *_DSID;

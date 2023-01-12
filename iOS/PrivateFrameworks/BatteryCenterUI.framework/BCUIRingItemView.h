@@ -49,6 +49,7 @@
 - (void)layoutSubviews;
 - (void)didMoveToWindow;
 - (void)didMoveToSuperview;
+@property(nonatomic) double scaleFactor;
 @property(retain, nonatomic) UIImage *glyph;
 @property(nonatomic, getter=isLowPowerModeEnabled) _Bool lowPowerModeEnabled;
 @property(nonatomic, getter=isCharging) _Bool charging;

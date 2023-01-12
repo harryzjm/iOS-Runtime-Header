@@ -12,9 +12,8 @@
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (Class)configurationClass;
 + (id)knownClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (CDUnknownBlockType)resultsSortingComparator;
@@ -25,6 +24,7 @@
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 @property(readonly) NSArray *supportedImageSizeSet;
 @property unsigned long long imageCropAndScaleOption;
+- (id)supportedIdentifiersAndReturnError:(id *)arg1;
 - (id)_applicableDetectorLoadedInSession:(id)arg1 appliedConfigurationOptions:(id *)arg2 error:(id *)arg3;
 
 // Remaining properties

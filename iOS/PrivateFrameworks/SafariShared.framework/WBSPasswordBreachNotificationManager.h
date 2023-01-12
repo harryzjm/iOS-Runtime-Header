@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class UNUserNotificationCenter;
+@class UNUserNotificationCenter, WBSPasswordWarningTopFraudTargetsManager;
 
 @interface WBSPasswordBreachNotificationManager : NSObject
 {
     UNUserNotificationCenter *_notificationCenter;
+    WBSPasswordWarningTopFraudTargetsManager *_topFraudTargetsManager;
 }
 
++ (id)_bodyForHighLevelDomains:(id)arg1 deviceClass:(int)arg2 topFraudTargets:(id)arg3;
++ (_Bool)_highLevelDomain:(id)arg1 isIncludedInTopFraudTargets:(id)arg2;
++ (unsigned long long)_bodyStyleForTopFraudTargetDomains:(id)arg1 sensitiveDomains:(id)arg2 passwordsCount:(unsigned long long)arg3;
++ (id)_bodyForSavedPasswords:(id)arg1 withTopFraudTargets:(id)arg2;
 - (void).cxx_destruct;
-- (id)_bodyForSavedPasswords:(id)arg1;
 - (id)_titleForSavedPasswords:(id)arg1;
-- (id)_contentWithSavedPasswords:(id)arg1;
+- (id)_contentWithSavedPasswords:(id)arg1 topFraudTargets:(id)arg2;
 - (void)addBreachNotificationForSavedPasswords:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 

@@ -10,11 +10,10 @@
 
 @interface TSKShuffleMapping : NSObject <NSCopying>
 {
-    vector_12da65de _mapping;
-    vector_12da65de _reverseMapping;
+    struct vector<unsigned int, std::allocator<unsigned int>> _mapping;
+    struct vector<unsigned int, std::allocator<unsigned int>> _reverseMapping;
     _Bool _reverseMappingValid;
     _Bool _isMoveOperation;
-    _Bool _isVertical;
     unsigned int _startIndex;
     unsigned int _endIndex;
     unsigned int _firstMovedIndex;
@@ -27,11 +26,10 @@
 @property(nonatomic) unsigned int numberOfIndexesMoved; // @synthesize numberOfIndexesMoved=_numberOfIndexesMoved;
 @property(nonatomic) unsigned int destinationIndexForMove; // @synthesize destinationIndexForMove=_destinationIndexForMove;
 @property(nonatomic) unsigned int firstMovedIndex; // @synthesize firstMovedIndex=_firstMovedIndex;
-@property(nonatomic) _Bool isVertical; // @synthesize isVertical=_isVertical;
 @property(readonly, nonatomic) _Bool isMoveOperation; // @synthesize isMoveOperation=_isMoveOperation;
 @property(readonly, nonatomic) unsigned int endIndex; // @synthesize endIndex=_endIndex;
 @property(readonly, nonatomic) unsigned int startIndex; // @synthesize startIndex=_startIndex;
-@property(readonly, nonatomic) vector_12da65de *mapping; // @synthesize mapping=_mapping;
+@property(readonly, nonatomic) void *mapping; // @synthesize mapping=_mapping;
 - (void)swapIndex:(unsigned int)arg1 withIndex:(unsigned int)arg2;
 - (void)remove:(unsigned int)arg1 IndexesAtIndex:(unsigned int)arg2;
 - (void)insert:(unsigned int)arg1 IndexesAtIndex:(unsigned int)arg2 insertingBefore:(_Bool)arg3;
@@ -47,13 +45,11 @@
 - (void)p_buildReverseMapping;
 - (void)p_invalidateReverseMapping;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)p_copyWithZone:(struct _NSZone *)arg1 mapping:(const vector_12da65de *)arg2;
+- (id)p_copyWithZone:(struct _NSZone *)arg1 mapping:(const void *)arg2;
 @property(readonly, nonatomic) unsigned int mappingSize;
-- (void)saveToArchive:(struct ShuffleMappingArchive *)arg1;
-- (id)initWithArchive:(const struct ShuffleMappingArchive *)arg1;
-- (id)initForMovedIndexesStartingAtIndex:(unsigned int)arg1 destinationIndex:(unsigned int)arg2 numberOfIndexes:(unsigned int)arg3 vertical:(_Bool)arg4;
+- (id)initForMovedIndexesStartingAtIndex:(unsigned int)arg1 destinationIndex:(unsigned int)arg2 numberOfIndexes:(unsigned int)arg3;
 - (id)initWithStartIndex:(unsigned int)arg1 endIndex:(unsigned int)arg2;
-- (id)initWithStartIndex:(unsigned int)arg1 endIndex:(unsigned int)arg2 mapping:(const vector_12da65de *)arg3;
+- (id)initWithStartIndex:(unsigned int)arg1 endIndex:(unsigned int)arg2 mapping:(const void *)arg3;
 
 @end
 

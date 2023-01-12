@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface WebElementDictionary : NSDictionary
 {
-    struct HitTestResult *_result;
+    void *_result;
     NSMutableDictionary *_cache;
     NSMutableSet *_nilValues;
     _Bool _cacheComplete;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)count;
 - (void)_fillCache;
 - (void)dealloc;
-- (id)initWithHitTestResult:(const struct HitTestResult *)arg1;
+- (id)initWithHitTestResult:(const void *)arg1;
 
 @end
 

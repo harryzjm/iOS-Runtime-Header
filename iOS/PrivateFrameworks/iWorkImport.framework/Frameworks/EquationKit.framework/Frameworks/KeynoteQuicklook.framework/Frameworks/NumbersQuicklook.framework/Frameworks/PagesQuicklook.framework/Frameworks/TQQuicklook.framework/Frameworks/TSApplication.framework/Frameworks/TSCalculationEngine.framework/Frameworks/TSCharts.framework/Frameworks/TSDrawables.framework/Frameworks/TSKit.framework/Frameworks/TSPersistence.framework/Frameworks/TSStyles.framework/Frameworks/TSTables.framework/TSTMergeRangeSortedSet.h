@@ -8,7 +8,7 @@
 
 @interface TSTMergeRangeSortedSet : NSObject
 {
-    struct set<TSTMergeRangeElem, TSTMergeRangeElemCompare, std::__1::allocator<TSTMergeRangeElem>> _set;
+    struct set<TSTMergeRangeElem, TSTMergeRangeElemCompare, std::allocator<TSTMergeRangeElem>> _set;
     struct os_unfair_lock_s _lock;
 }
 

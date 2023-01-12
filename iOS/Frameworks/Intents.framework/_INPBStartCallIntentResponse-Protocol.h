@@ -6,15 +6,21 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBConnectedCall;
+@class NSArray, NSString, _INPBConnectedCall, _INPBContactValue;
 
 @protocol _INPBStartCallIntentResponse <NSObject>
++ (Class)restrictedContactsType;
 @property(readonly, nonatomic) _Bool hasStartedCall;
 @property(retain, nonatomic) _INPBConnectedCall *startedCall;
 @property(nonatomic) _Bool hasShouldDoEmergencyCountdown;
 @property(nonatomic) _Bool shouldDoEmergencyCountdown;
+@property(readonly, nonatomic) unsigned long long restrictedContactsCount;
+@property(copy, nonatomic) NSArray *restrictedContacts;
 @property(nonatomic) _Bool hasConfirmationReason;
 @property(nonatomic) int confirmationReason;
+- (_INPBContactValue *)restrictedContactsAtIndex:(unsigned long long)arg1;
+- (void)addRestrictedContacts:(_INPBContactValue *)arg1;
+- (void)clearRestrictedContacts;
 - (int)StringAsConfirmationReason:(NSString *)arg1;
 - (NSString *)confirmationReasonAsString:(int)arg1;
 @end

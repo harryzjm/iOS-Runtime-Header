@@ -18,12 +18,12 @@
 + (id)tp_sharedPropertiesProvider;
 - (void)p_inputMethodsChanged:(id)arg1;
 - (void)p_localeChanged:(id)arg1;
-- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (void)registerSOSClassTypeMappings;
 - (_Bool)supportsRTL;
 - (_Bool)imageGalleryCaptionsUsePlaceholderText;
 - (_Bool)supportsLinkedTextBoxes;
 - (_Bool)supportsAutosizingTextboxes;
+- (_Bool)supportsQuickFormatBar;
 - (id)stringForEquationChoiceUseEQKitButtonTitle;
 - (id)stringForEquationChoiceBody;
 - (id)stringForEquationChoiceTitle;
@@ -31,13 +31,11 @@
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)universalPreviewImageNameForDocumentType:(id)arg1;
 - (id)equationEditorAPDID;
-- (id)appChartPropertyOverrides;
 - (id)createCompatibilityDelegate;
 - (void)customizeHyperlinkViewController:(id)arg1 documentRoot:(id)arg2;
 - (_Bool)isValidURLForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(_Bool)arg3;
 - (void)dealloc;
 - (Class)propertiesProviderClass;
-- (Class)documentRootClass;
 - (id)init;
 - (_Bool)textInspectorShowsMoreSubpane;
 - (_Bool)tableHeaderInspectorShowsRepeatHeaderRowsSwitch;

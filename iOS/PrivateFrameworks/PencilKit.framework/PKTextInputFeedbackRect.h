@@ -11,7 +11,6 @@
     struct CGRect _rect;
 }
 
-+ (id)rectWithFrame:(struct CGRect)arg1;
 - (struct CGRect)rect;
 
 @end

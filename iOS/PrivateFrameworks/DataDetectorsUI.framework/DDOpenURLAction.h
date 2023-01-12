@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
 - (id)notificationURL;
 - (id)notificationIconBundleIdentifier;
 - (_Bool)canBePerformedByOpeningURL;
+- (_Bool)canBePerformedWhenDeviceIsLocked;
 - (void)performFromView:(id)arg1;
+- (id)compactTitle;
 - (id)localizedName;
 - (id)companionAction;
 - (id)appLink;
-- (id)icon;
+- (id)iconName;
 
 @end
 

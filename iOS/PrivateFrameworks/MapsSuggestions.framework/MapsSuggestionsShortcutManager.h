@@ -33,8 +33,8 @@
 - (id)routine;
 - (id)suggestor;
 - (id)storage;
-- (void)removeMeCardObserver:(id)arg1;
-- (void)addMeCardObserver:(id)arg1;
+- (void)unregisterMeCardObserver:(id)arg1;
+- (void)registerMeCardObserver:(id)arg1;
 - (BOOL)readMeCardWithHandler:(CDUnknownBlockType)arg1;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
 @property(readonly, nonatomic) NSString *uniqueName;

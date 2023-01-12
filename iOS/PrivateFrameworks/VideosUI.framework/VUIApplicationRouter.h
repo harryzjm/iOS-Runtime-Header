@@ -15,18 +15,16 @@
 + (id)topPresentedViewController;
 + (id)currentNavigationController;
 + (void)_dismissPresentedViewControllerWithCompletion:(CDUnknownBlockType)arg1;
-+ (void)_amsBagURLForKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-+ (_Bool)_handleDocumentDataSource:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 documentOptions:(id)arg5 completion:(CDUnknownBlockType)arg6;
-+ (void)_handleAccountSettingsPresentationWithViewController:(id)arg1 shouldEmbedInNavController:(_Bool)arg2;
 + (void)dismissOrPopLastViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 + (void)dismissOrPopViewControllerWithId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)dismissPresentedViewController;
++ (_Bool)_handleDocumentDataSource:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 documentOptions:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_amsBagURLForKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (void)_handleAccountSettingsPresentationWithViewController:(id)arg1 shouldEmbedInNavController:(_Bool)arg2;
++ (void)_performForType:(long long)arg1 targetResponder:(id)arg2 appContext:(id)arg3 eventDataSource:(id)arg4 documentOptions:(id)arg5;
++ (_Bool)_handleEvent:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 eventDataSource:(id)arg4 documentOptions:(id)arg5 extraInfo:(id *)arg6;
 + (_Bool)handleAccountSettingsEvent:(id)arg1 url:(id)arg2 amsBagKey:(id)arg3 useAMSWebView:(_Bool)arg4;
-+ (void)_performForType:(long long)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 eventDataSource:(id)arg5 documentOptions:(id)arg6;
-+ (_Bool)_handleEvent:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 viewElement:(id)arg4 eventDataSource:(id)arg5 documentOptions:(id)arg6 extraInfo:(id *)arg7;
-+ (_Bool)handleEvent:(id)arg1 targetResponder:(id)arg2 viewElement:(id)arg3 extraInfo:(id *)arg4;
-+ (id)_eventDataSourceForEvent:(id)arg1 routerDataSource:(id)arg2;
-+ (id)eventDataSourceForEvent:(id)arg1 viewElement:(id)arg2;
++ (id)eventDataSourceForEvent:(id)arg1 routerDataSource:(id)arg2;
 + (_Bool)handleEvent:(id)arg1 targetResponder:(id)arg2 appContext:(id)arg3 routerDataSource:(id)arg4 supplementaryData:(id)arg5 extraInfo:(id *)arg6;
 
 @end

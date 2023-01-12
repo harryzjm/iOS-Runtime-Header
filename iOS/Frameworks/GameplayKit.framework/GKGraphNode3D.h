@@ -8,7 +8,7 @@
 
 @interface GKGraphNode3D
 {
-    struct GKCGraphNode3D *_cGraphNode3D;
+    void *_cGraphNode3D;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -22,8 +22,8 @@
 - (id)initWithPoint: /* Error: Ran out of types for this method. */;
 - (void)deleteCGraphNode;
 @property(nonatomic) MISSING_TYPE *position;
-- (struct GKCGraphNode *)makeCGraphNode;
-- (struct GKCGraphNode3D *)cGraphNode3D;
+- (void *)makeCGraphNode;
+- (void *)cGraphNode3D;
 
 @end
 

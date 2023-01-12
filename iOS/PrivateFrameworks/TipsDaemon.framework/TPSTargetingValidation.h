@@ -16,12 +16,12 @@
     NSString *_identifier;
     NSString *_name;
     NSDictionary *_targetContext;
-    unsigned long long _joinType;
+    long long _joinType;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool ignoreCache; // @synthesize ignoreCache=_ignoreCache;
-@property(nonatomic) unsigned long long joinType; // @synthesize joinType=_joinType;
+@property(nonatomic) long long joinType; // @synthesize joinType=_joinType;
 @property(copy, nonatomic) NSDictionary *targetContext; // @synthesize targetContext=_targetContext;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -30,6 +30,7 @@
 - (void)validateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)arrayValue;
 - (id)stringValue;
+- (unsigned long long)unsignedIntegerValue;
 - (long long)integerValue;
 - (_Bool)boolValue;
 - (id)value;

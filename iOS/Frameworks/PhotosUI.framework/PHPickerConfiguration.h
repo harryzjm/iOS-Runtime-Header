@@ -8,25 +8,34 @@
 
 #import <PhotosUI/NSCopying-Protocol.h>
 
-@class PHPhotoLibrary, PHPickerFilter;
+@class NSArray, PHPhotoLibrary, PHPickerFilter;
 
 @interface PHPickerConfiguration : NSObject <NSCopying>
 {
+    _Bool __onlyReturnsIdentifiers;
+    _Bool __allowsContinuousSelection;
+    _Bool __usesEmbeddedMessagesLayout;
     long long _preferredAssetRepresentationMode;
+    long long _selection;
     long long _selectionLimit;
     PHPickerFilter *_filter;
+    NSArray *_preselectedAssetIdentifiers;
     PHPhotoLibrary *_photoLibrary;
-    unsigned long long _resultOptions;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long resultOptions; // @synthesize resultOptions=_resultOptions;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(nonatomic, setter=_setUsesEmbeddedMessagesLayout:) _Bool _usesEmbeddedMessagesLayout; // @synthesize _usesEmbeddedMessagesLayout=__usesEmbeddedMessagesLayout;
+@property(nonatomic, setter=_setAllowsContinuousSelection:) _Bool _allowsContinuousSelection; // @synthesize _allowsContinuousSelection=__allowsContinuousSelection;
+@property(readonly, nonatomic) _Bool _onlyReturnsIdentifiers; // @synthesize _onlyReturnsIdentifiers=__onlyReturnsIdentifiers;
+@property(copy, nonatomic) NSArray *preselectedAssetIdentifiers; // @synthesize preselectedAssetIdentifiers=_preselectedAssetIdentifiers;
 @property(copy, nonatomic) PHPickerFilter *filter; // @synthesize filter=_filter;
 @property(nonatomic) long long selectionLimit; // @synthesize selectionLimit=_selectionLimit;
+@property(nonatomic) long long selection; // @synthesize selection=_selection;
 @property(nonatomic) long long preferredAssetRepresentationMode; // @synthesize preferredAssetRepresentationMode=_preferredAssetRepresentationMode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithPhotoLibrary:(id)arg1 resultOptions:(unsigned long long)arg2;
+- (void)_setOverlayFlag:(_Bool)arg1;
+- (id)initWithPhotoLibraryAndOnlyReturnsIdentifiers:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)init;

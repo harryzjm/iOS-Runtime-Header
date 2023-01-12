@@ -36,7 +36,6 @@
 @property(readonly) CDStruct_1b6d18a9 presentationTime; // @synthesize presentationTime=_presentationTime;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)JPEGRepresentationWithDownscaleFactor:(float)arg1 outSize:(struct CGSize *)arg2;
 - (id)initWithJPEGData:(id)arg1 presentationTime:(CDStruct_1b6d18a9)arg2 frameId:(unsigned long long)arg3 fragmentSequenceNumber:(unsigned long long)arg4 size:(struct CGSize)arg5;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 presentationTime:(CDStruct_1b6d18a9)arg2 frameId:(unsigned long long)arg3 fragmentSequenceNumber:(unsigned long long)arg4;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1;

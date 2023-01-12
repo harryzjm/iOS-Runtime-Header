@@ -26,13 +26,9 @@
 - (void)workoutBuilderServer:(id)arg1 addedSamples:(id)arg2;
 - (void)didInvalidateTaskServer:(id)arg1;
 - (void)didCreateTaskServer:(id)arg1;
-- (void)_queue_scheduleHistoricalQuery;
-- (void)_queue_performHistoricalQuery;
 - (void)_queue_start;
 - (_Bool)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (_Bool)_shouldObserveDatabaseProtectedDataAvailability;
-- (_Bool)_shouldObserveOnPause;
-- (id)workoutBuilderSampleQueryClientWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties

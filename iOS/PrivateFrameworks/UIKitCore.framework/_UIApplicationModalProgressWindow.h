@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)_roleHint;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

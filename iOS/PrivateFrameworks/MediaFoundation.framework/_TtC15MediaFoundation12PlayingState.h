@@ -9,6 +9,9 @@
 @interface _TtC15MediaFoundation12PlayingState
 {
     MISSING_TYPE *resumeOnEnter;
+    MISSING_TYPE *isStalled;
+    MISSING_TYPE *playbackDidStopEvent;
+    MISSING_TYPE *disarmingTimer;
 }
 
 @end

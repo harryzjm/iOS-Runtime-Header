@@ -22,8 +22,6 @@
 }
 
 + (id)endpointWithClient:(id)arg1 healthDaemon:(id)arg2;
-+ (_Bool)_isClientEntitled:(id)arg1 error:(id *)arg2;
-+ (_Bool)_isDeviceSupportedWithBehavior:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDHealthStoreServer *server; // @synthesize server=_server;
 @property(readonly, nonatomic) HDXPCClient *client; // @synthesize client=_client;
@@ -34,8 +32,6 @@
 - (id)exportedInterface;
 @property(readonly, nonatomic) HKProfileIdentifier *profileIdentifier;
 - (void)invalidate;
-- (_Bool)_validateAccessToProfile:(id)arg1 byClient:(id)arg2;
-- (_Bool)_validateSourceBundleIdentifier:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void)remote_serverForConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithClient:(id)arg1 daemon:(id)arg2;
 

@@ -6,7 +6,7 @@
 
 #import <TSDrawables/TSDWrappableParent-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableSet, NSObject, NSSet, TSDInfoGeometry, TSDLayoutGeometry, TSDStroke, TSUBezierPath;
+@class NSArray, NSMutableSet, NSObject, NSSet, TSDInfoGeometry, TSDLayoutGeometry, TSDScrollableContainerLayout, TSDStroke, TSUBezierPath;
 @protocol TSDInfo;
 
 @interface TSDLayout <TSDWrappableParent>
@@ -20,9 +20,6 @@
         unsigned int genericInvalidated:1;
         unsigned int sizeInvalidated:1;
     } mAlreadyInvalidatedFlags;
-    NSHashTable *mDependentLayoutsForLastInvalidate;
-    NSHashTable *mDependentLayoutsForLastInvalidateSize;
-    NSHashTable *mBidirectionalSizeDependentLayoutsForLastInvalidateSize;
     struct {
         unsigned int position:1;
         unsigned int size:1;
@@ -32,8 +29,11 @@
     struct CGPoint mCapturedInfoGeometryPositionForAttached;
     NSMutableSet *mConnectedLayouts;
     struct CGSize mMaximumInlineFrameSize;
+    TSDScrollableContainerLayout *_i_scrollableContainerParentLayout;
 }
 
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSDScrollableContainerLayout *i_scrollableContainerParentLayout; // @synthesize i_scrollableContainerParentLayout=_i_scrollableContainerParentLayout;
 @property(nonatomic) struct CGSize maximumInlineFrameSize; // @synthesize maximumInlineFrameSize=mMaximumInlineFrameSize;
 @property(readonly, nonatomic) NSSet *connectedLayouts; // @synthesize connectedLayouts=mConnectedLayouts;
 @property(readonly, nonatomic) int layoutState; // @synthesize layoutState=mLayoutState;
@@ -104,10 +104,11 @@
 - (void)dynamicOverrideDidChange;
 @property(readonly, nonatomic) NSObject *dynamicOverride;
 @property(readonly, nonatomic) _Bool supportsParentFlipping;
-@property(readonly, nonatomic) _Bool canFlip;
 @property(readonly, nonatomic) struct CGAffineTransform originalPureTransformInRoot;
 @property(readonly, nonatomic) struct CGAffineTransform pureTransformInRoot;
 @property(readonly, nonatomic) _Bool canInspectGeometry;
+@property(readonly, nonatomic) double inspectorGeometryAngleInDegrees;
+- (_Bool)inspectorGeometryIsAffectedByChangeRecord:(id)arg1;
 @property(readonly, nonatomic) TSDLayoutGeometry *inspectorGeometry;
 - (struct CGAffineTransform)p_additionalTransformForInlineRoot;
 @property(readonly, nonatomic) TSDLayoutGeometry *pureGeometryInParent;
@@ -182,6 +183,9 @@
 - (void)invalidateFrame;
 - (void)invalidateSize;
 - (_Bool)shouldInvalidateSizeWhenInvalidateSizeOfReliedOnLayout:(id)arg1;
+- (void)i_counterScrollingChildLayoutsDidChange;
+- (id)originPinnedCounterScrollingChildLayouts;
+- (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)invalidatePosition;
 - (void)i_clearInvalidationCache;
 - (void)i_recursivelyClearInvalidationCache;
@@ -191,12 +195,11 @@
 @property(readonly, nonatomic) _Bool shouldValidate;
 @property(readonly, nonatomic) struct CGRect frameForPartitioning;
 - (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
-- (struct CGRect)p_frameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
+- (struct CGRect)i_frameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)baseFrameForFrameForCullingWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)frameForCulling;
 @property(copy, nonatomic) TSDLayoutGeometry *dynamicGeometry;
 - (void)setGeometry:(id)arg1;
-- (void)dealloc;
 - (id)initWithInfo:(id)arg1;
 @property(readonly, nonatomic) struct CGPoint commentPoleUnscaledOffset;
 - (_Bool)containsStartOfPencilAnnotation:(id)arg1;

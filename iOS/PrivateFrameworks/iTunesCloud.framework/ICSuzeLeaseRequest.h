@@ -10,6 +10,7 @@
 
 @class ICStoreRequestContext, NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICSuzeLeaseRequest : NSObject <NSCopying>
 {
     NSData *_clientData;

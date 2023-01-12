@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)sequences;
 - (void)addSequence:(id)arg1;
+- (id)recognizedTextFeatures;
 - (struct CGRect)normalizedFrame;
 - (struct CGRect)frame;
 

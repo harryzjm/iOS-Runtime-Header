@@ -15,20 +15,24 @@
     UIImage *_rawImage;
     long long _scaleMode;
     double _scale;
+    double _sdkDeviceScale;
     long long _maskMode;
     double _cornerRadius;
-    struct CGSize _maxSize;
+    struct CGSize _maxSDKSize;
+    struct CGSize _maxDeviceSize;
 }
 
-+ (id)keyWithRawImage:(id)arg1 maxSize:(struct CGSize)arg2 cornerRadius:(double)arg3;
-+ (id)keyWithRawImage:(id)arg1 maxSize:(struct CGSize)arg2 maskMode:(long long)arg3;
-+ (id)keyWithRawImage:(id)arg1 scale:(double)arg2 cornerRadius:(double)arg3;
-+ (id)keyWithRawImage:(id)arg1 scale:(double)arg2 maskMode:(long long)arg3;
++ (id)keyWithRawImage:(id)arg1 maxSDKSize:(struct CGSize)arg2 maxDeviceSize:(struct CGSize)arg3 cornerRadius:(double)arg4;
++ (id)keyWithRawImage:(id)arg1 maxSDKSize:(struct CGSize)arg2 maxDeviceSize:(struct CGSize)arg3 maskMode:(long long)arg4;
++ (id)keyWithRawImage:(id)arg1 scale:(double)arg2 sdkDeviceScale:(double)arg3 cornerRadius:(double)arg4;
++ (id)keyWithRawImage:(id)arg1 scale:(double)arg2 sdkDeviceScale:(double)arg3 maskMode:(long long)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(readonly, nonatomic) long long maskMode; // @synthesize maskMode=_maskMode;
+@property(readonly, nonatomic) double sdkDeviceScale; // @synthesize sdkDeviceScale=_sdkDeviceScale;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
-@property(readonly, nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
+@property(readonly, nonatomic) struct CGSize maxDeviceSize; // @synthesize maxDeviceSize=_maxDeviceSize;
+@property(readonly, nonatomic) struct CGSize maxSDKSize; // @synthesize maxSDKSize=_maxSDKSize;
 @property(readonly, nonatomic) long long scaleMode; // @synthesize scaleMode=_scaleMode;
 @property(readonly, nonatomic) UIImage *rawImage; // @synthesize rawImage=_rawImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;

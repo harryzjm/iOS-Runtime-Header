@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)refreshFromCalendarItemAndStore;
 - (id)searchStringForEventAutocomplete;
 - (_Bool)isSaveable;
 - (void)tableViewDidScroll;

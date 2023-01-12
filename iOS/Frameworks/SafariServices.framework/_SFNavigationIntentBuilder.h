@@ -14,12 +14,14 @@
     long long _modifierFlags;
     long long _navigationType;
     long long _preferredTabOrder;
+    unsigned long long _neverPromptWhenOpeningMultipleIntents;
 }
 
 + (_Bool)canCreateNavigationIntentForDropSession:(id)arg1;
 + (void)registerBookmarkCollectionFactory:(CDUnknownBlockType)arg1;
 + (id)builderWithModifierFlags:(long long)arg1;
 + (id)builder;
+@property(nonatomic) unsigned long long neverPromptWhenOpeningMultipleIntents; // @synthesize neverPromptWhenOpeningMultipleIntents=_neverPromptWhenOpeningMultipleIntents;
 @property(nonatomic) _Bool prefersRelationToSourceTab; // @synthesize prefersRelationToSourceTab=_prefersRelationToSourceTab;
 @property(nonatomic) _Bool prefersOpenInNewWindow; // @synthesize prefersOpenInNewWindow=_prefersOpenInNewWindow;
 @property(nonatomic) _Bool prefersOpenInNewTab; // @synthesize prefersOpenInNewTab=_prefersOpenInNewTab;

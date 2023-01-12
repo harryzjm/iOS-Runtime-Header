@@ -23,6 +23,9 @@
     FCCKPRecordType *_type;
 }
 
++ (Class)conflictLoserEtagsType;
++ (Class)fieldsType;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *modifiedByDevice; // @synthesize modifiedByDevice=_modifiedByDevice;
 @property(retain, nonatomic) NSMutableArray *conflictLoserEtags; // @synthesize conflictLoserEtags=_conflictLoserEtags;
 @property(retain, nonatomic) FCCKPIdentifier *modifiedBy; // @synthesize modifiedBy=_modifiedBy;
@@ -36,7 +39,6 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
@@ -56,7 +58,6 @@
 @property(readonly, nonatomic) _Bool hasType;
 @property(readonly, nonatomic) _Bool hasRecordIdentifier;
 @property(readonly, nonatomic) _Bool hasEtag;
-- (void)dealloc;
 
 @end
 

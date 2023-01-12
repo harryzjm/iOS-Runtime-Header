@@ -50,7 +50,9 @@
 - (void)_updateFloatingOverlay;
 - (void)setFloatingOverlay:(id)arg1 withInsets:(struct UIEdgeInsets)arg2 parallax:(_Bool)arg3;
 - (void)_PXImageUIViewInitialization;
+@property(nonatomic) _Bool drawsFocusRing;
 @property(nonatomic) _Bool allowsFocus;
+- (id)focusEffect;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

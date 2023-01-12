@@ -10,31 +10,36 @@
 
 @interface FPPreflightUserInteraction : NSObject
 {
+    _Bool _hasSuppressionIdentifier;
     FPPreflightUserInteractionAlert *_alert;
     NSString *_providerIdentifier;
+    NSString *_domainIdentifier;
     NSArray *_subInteractions;
+    NSString *_helpURL;
     NSPredicate *_predicate;
+    NSString *_userInteractionIdentifier;
 }
 
-+ (id)userInteractionErrorsForAction:(id)arg1 sourceItems:(id)arg2 destinationItem:(id)arg3 hierarchyServicer:(id)arg4;
-+ (id)userInteractionErrorsInInfoPlistDict:(id)arg1 forAction:(id)arg2 bundleID:(id)arg3 hierarchyServicer:(id)arg4 sourceItems:(id)arg5 destinationItem:(id)arg6 localizationLookup:(id)arg7;
-+ (id)userInteractionItemsForDestinationItem:(id)arg1;
-+ (id)evaluationObjectsForAction:(id)arg1 sourceItems:(id)arg2 destinationItem:(id)arg3 hierarchyServicer:(id)arg4;
++ (id)evaluationObjectsForAction:(id)arg1 sourceItems:(id)arg2 destinationItem:(id)arg3 domainUserInfo:(id)arg4 sourceItemKeysAllowList:(id)arg5;
++ (id)interactionsForArray:(id)arg1 localizationLookup:(id)arg2 providerIdentifier:(id)arg3 domainIdentifier:(id)arg4;
++ (id)interactionsForBundle:(id)arg1 providerIdentifier:(id)arg2 domainIdentifier:(id)arg3;
++ (void)propagateConfigurationKeysDownInteractionTreeWithObject:(id)arg1 key:(id)arg2 value:(id)arg3;
++ (id)interactionFromDictionary:(id)arg1 localizationLookup:(id)arg2 providerIdentifier:(id)arg3 domainIdentifier:(id)arg4;
++ (id)gatherErrorsForInteractions:(id)arg1 evaluationObjects:(id)arg2 suppressionDelegate:(id)arg3;
++ (id)interactionsForProviderItem:(id)arg1 error:(id *)arg2;
 + (id)userInteractionErrorsInInfoPlistDict:(id)arg1 forAction:(id)arg2 bundleID:(id)arg3 hierarchyServicer:(id)arg4 sourceNSFPItems:(id)arg5 destinationNSFPItem:(id)arg6 localizationLookup:(id)arg7 provider:(id)arg8 domain:(id)arg9 extensionCapabilities:(unsigned long long)arg10 useFPFS:(_Bool)arg11;
-+ (id)userInteractionErrorsInInfoPlistInteractions:(id)arg1 evaluationObjectsByName:(id)arg2 localizationLookup:(id)arg3 providerIdentifier:(id)arg4;
-+ (void)_setupEvaluationObjectsByName:(id)arg1 hierarchyServicer:(id)arg2;
-+ (id)_retrieveFPItemHierarchyLookupForItem:(id)arg1 itemsHierarchyCache:(id)arg2 hierarchyServicer:(id)arg3;
-+ (id)interactionFromDictionary:(id)arg1 localizationLookup:(id)arg2 providerIdentifier:(id)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) NSString *userInteractionIdentifier; // @synthesize userInteractionIdentifier=_userInteractionIdentifier;
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
+@property(nonatomic) NSString *helpURL; // @synthesize helpURL=_helpURL;
+@property(nonatomic) _Bool hasSuppressionIdentifier; // @synthesize hasSuppressionIdentifier=_hasSuppressionIdentifier;
 @property(retain, nonatomic) NSArray *subInteractions; // @synthesize subInteractions=_subInteractions;
+@property(retain, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property(retain, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
 @property(retain, nonatomic) FPPreflightUserInteractionAlert *alert; // @synthesize alert=_alert;
 - (id)description;
-- (id)_evaluateWithObjectsByName:(id)arg1 sourceItems:(id)arg2 sourceItemsLookups:(id)arg3 errorIndex:(unsigned long long *)arg4;
-- (id)evaluateWithObjectsByName:(id)arg1;
-- (_Bool)_shouldSetupDestinationItemHierarchyLookup;
-- (_Bool)_shouldSetupSourceItemHierarchyLookup;
+- (id)_evaluateWithObjectsByName:(id)arg1 sourceItems:(id)arg2 suppressionDelegate:(id)arg3 errorIndex:(unsigned long long *)arg4;
+- (id)evaluateWithObjectsByName:(id)arg1 suppressionDelegate:(id)arg2;
 
 @end
 

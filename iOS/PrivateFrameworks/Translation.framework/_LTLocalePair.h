@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSLocale *targetLocale; // @synthesize targetLocale=_targetLocale;
 @property(readonly, nonatomic) NSLocale *sourceLocale; // @synthesize sourceLocale=_sourceLocale;
+- (_Bool)isVariantPair;
 - (_Bool)isPassthrough;
 - (id)description;
 - (id)cannonicalLocalePair;

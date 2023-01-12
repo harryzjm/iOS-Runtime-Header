@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet, NSOrderedSet, PKDrawing, PKSelectionController, PKSpaceInsertionView, PKStroke, PKStrokeSelection, UIImageView, UIPanGestureRecognizer, UIView;
+@class NSArray, NSMutableOrderedSet, NSOrderedSet, PKDrawing, PKImageView, PKSelectionController, PKSpaceInsertionView, PKStroke, PKStrokeSelection, UIPanGestureRecognizer, UIView;
 
 @interface PKSpaceInsertionController : NSObject
 {
@@ -21,8 +21,8 @@
     UIPanGestureRecognizer *_dragBottomLollipopGR;
     PKStrokeSelection *_bottomStrokeSelection;
     PKStrokeSelection *_topStrokeSelection;
-    UIImageView *_topImageView;
-    UIImageView *_bottomImageView;
+    PKImageView *_topImageView;
+    PKImageView *_bottomImageView;
     _Bool _topHandleRemovesWhitespace;
     PKStrokeSelection *_strokeSelectionBeforeInsertingSpace;
     long long _selectionTypeBeforeInsertingSpace;
@@ -36,9 +36,11 @@
     PKStroke *_lassoStroke;
     PKDrawing *_drawing;
     PKSelectionController *_selectionController;
+    NSArray *_externalElements;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *externalElements; // @synthesize externalElements=_externalElements;
 @property(readonly, nonatomic) _Bool didMoveStrokes; // @synthesize didMoveStrokes=_didMoveStrokes;
 @property(readonly, nonatomic) __weak PKSelectionController *selectionController; // @synthesize selectionController=_selectionController;
 @property(retain, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
@@ -57,7 +59,7 @@
 - (void)_didEndCreatingSpace;
 - (void)projectPath:(struct CGPath *)arg1 toEndOfFrame:(struct CGRect)arg2;
 - (void)_addSpacingViewsWithFrame:(struct CGRect)arg1;
-- (void)didBeginCreatingSpaceWithLassoStroke:(id)arg1 drawing:(id)arg2 addDefaultSpace:(_Bool)arg3 strokesAbove:(id)arg4 strokesBelow:(id)arg5;
+- (void)didBeginCreatingSpaceWithLassoStroke:(id)arg1 drawing:(id)arg2 addDefaultSpace:(_Bool)arg3 strokesAbove:(id)arg4 strokesBelow:(id)arg5 externalElements:(id)arg6;
 - (void)_layoutViewsIfNecessary;
 - (void)_dismissSpacingResizeHandles;
 - (void)commitSpacingResize;

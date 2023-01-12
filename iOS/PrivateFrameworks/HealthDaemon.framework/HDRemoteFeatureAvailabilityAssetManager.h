@@ -22,21 +22,14 @@
     CDUnknownBlockType _unitTest_errorObserver;
 }
 
-+ (_Bool)_isInTestMode;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType unitTest_errorObserver; // @synthesize unitTest_errorObserver=_unitTest_errorObserver;
 @property(retain, nonatomic) NSUserDefaults *unitTest_defaults; // @synthesize unitTest_defaults=_unitTest_defaults;
 @property(retain, nonatomic) HDPeriodicActivity *periodicActivity; // @synthesize periodicActivity=_periodicActivity;
 @property(retain, nonatomic) _HKMobileAssetDownloadManager *downloadManager; // @synthesize downloadManager=_downloadManager;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, nonatomic) double retryInterval; // @synthesize retryInterval=_retryInterval;
-@property(readonly, nonatomic) NSURL *assetDirectoryOverride; // @synthesize assetDirectoryOverride=_assetDirectoryOverride;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_downloadDidCompleteWithError:(id)arg1;
-- (void)_queue_downloadDidCompleteWithAssets:(id)arg1;
-- (void)_updateMobileAssetsDownloadedMetricDefaultsValues;
-- (void)_configureDownloadManager;
 - (id)initWithProfile:(id)arg1;
 
 // Remaining properties

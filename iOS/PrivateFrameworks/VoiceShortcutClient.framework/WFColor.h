@@ -9,13 +9,17 @@
 #import <VoiceShortcutClient/NSCopying-Protocol.h>
 #import <VoiceShortcutClient/NSSecureCoding-Protocol.h>
 
-@class NSColor, NSString, UIColor, WFGradient;
+@class NSBundle, NSColor, NSString, UIColor, WFGradient;
 
 @interface WFColor : NSObject <NSSecureCoding, NSCopying>
 {
-    UIColor *_platformColor;
     struct CGColor *_CGColor;
+    UIColor *_platformColor;
+    unsigned long long _representationType;
     NSColor *_NSColor;
+    unsigned long long _systemColor;
+    NSString *_colorName;
+    NSBundle *_bundle;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -26,22 +30,32 @@
 + (id)workflowPaletteNames;
 + (id)workflowPalette;
 + (id)clearColor;
++ (id)blackColor;
 + (id)whiteColor;
++ (id)colorNamed:(id)arg1 inBundle:(id)arg2;
++ (id)colorWithSystemColor:(unsigned long long)arg1;
 + (id)colorWithDisplayP3Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithWhite:(double)arg1 alpha:(double)arg2;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property(readonly, nonatomic) NSString *colorName; // @synthesize colorName=_colorName;
+@property(readonly, nonatomic) unsigned long long systemColor; // @synthesize systemColor=_systemColor;
 @property(readonly, nonatomic) NSColor *NSColor; // @synthesize NSColor=_NSColor;
-@property(readonly, nonatomic) struct CGColor *CGColor; // @synthesize CGColor=_CGColor;
+@property(readonly, nonatomic) unsigned long long representationType; // @synthesize representationType=_representationType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)colorWithAlphaComponent:(double)arg1;
 - (_Bool)getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 @property(readonly, nonatomic) UIColor *UIColor;
 @property(readonly, nonatomic) UIColor *platformColor;
+@property(readonly, nonatomic) struct CGColor *CGColor;
+- (id)initWithColorName:(id)arg1 inBundle:(id)arg2;
+- (id)initWithSystemColor:(unsigned long long)arg1;
 - (id)initWithPlatformColor:(id)arg1;
 - (id)initWithDisplayP3Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 - (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;

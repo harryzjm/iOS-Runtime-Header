@@ -11,6 +11,8 @@
 @protocol CoreTelephonyClientCellularUsagePolicyDelegateInternal <NSObject>
 
 @optional
+- (void)privacyProxyChanged:(CDStruct_3d581f42)arg1;
+- (void)interfaceCostExpensiveChanged:(CTXPCServiceSubscriptionContext *)arg1 isExpensive:(_Bool)arg2;
 - (void)smartDataModeChanged:(CTXPCServiceSubscriptionContext *)arg1 userEnabled:(_Bool)arg2;
 - (void)lowDataModeChanged:(CTXPCServiceSubscriptionContext *)arg1 userEnabled:(_Bool)arg2;
 - (void)reliableNetworkFallbackChanged:(_Bool)arg1 userEnabled:(_Bool)arg2;

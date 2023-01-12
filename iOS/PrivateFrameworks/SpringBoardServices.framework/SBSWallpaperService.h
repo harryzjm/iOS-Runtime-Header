@@ -17,6 +17,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)acquireActiveWallpaperSceneAssertionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)restoreDefaultWallpaperWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)setWallpaperGradient:(id)arg1 forVariants:(unsigned long long)arg2;
 - (_Bool)setWallpaperColor:(id)arg1 darkColor:(id)arg2 forVariants:(unsigned long long)arg3;

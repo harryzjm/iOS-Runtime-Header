@@ -9,7 +9,7 @@
 #import <NetworkExtension/NEExtensionProviderHostProtocol-Protocol.h>
 #import <NetworkExtension/NEExtensionProviderProtocol-Protocol.h>
 
-@class NEUserNotification, NSData, NSString, NSUUID, NSXPCConnection;
+@class NEProcessIdentity, NEUserNotification, NSString, NSXPCConnection;
 @protocol NEExtensionProviderHostDelegate, NEExtensionProviderProtocol;
 
 @interface NEExtensionProviderHostContext : NSExtensionContext <NEExtensionProviderProtocol, NEExtensionProviderHostProtocol>
@@ -20,6 +20,7 @@
     _Bool _stopped;
     _Bool _isHostingSystemExtension;
     id <NEExtensionProviderHostDelegate> _delegate;
+    NEProcessIdentity *_extensionProcessIdentity;
     NSXPCConnection *_vendorConnection;
 }
 
@@ -29,6 +30,7 @@
 @property(readonly, nonatomic) _Bool isHostingSystemExtension; // @synthesize isHostingSystemExtension=_isHostingSystemExtension;
 @property(readonly, nonatomic) NSXPCConnection *vendorConnection; // @synthesize vendorConnection=_vendorConnection;
 @property(nonatomic) _Bool stopped; // @synthesize stopped=_stopped;
+@property(retain) NEProcessIdentity *extensionProcessIdentity; // @synthesize extensionProcessIdentity=_extensionProcessIdentity;
 @property __weak id <NEExtensionProviderHostDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly) int requiredEntitlement;
 - (_Bool)isSignedWithDeveloperID;
@@ -43,13 +45,11 @@
 - (void)wake;
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setConfiguration:(id)arg1 extensionIdentifier:(id)arg2;
-@property(readonly) NSData *auditTokenData;
-@property(readonly) NSUUID *uuid;
-@property(readonly) int pid;
+- (_Bool)deriveProcessIdentity;
 - (id)vendorContext;
 - (void)setDescription:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithVendorEndpoint:(id)arg1 delegate:(id)arg2;
+- (id)initWithVendorEndpoint:(id)arg1 processIdentity:(id)arg2 delegate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

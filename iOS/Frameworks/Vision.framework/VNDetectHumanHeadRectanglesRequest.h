@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface VNDetectHumanHeadRectanglesRequest
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

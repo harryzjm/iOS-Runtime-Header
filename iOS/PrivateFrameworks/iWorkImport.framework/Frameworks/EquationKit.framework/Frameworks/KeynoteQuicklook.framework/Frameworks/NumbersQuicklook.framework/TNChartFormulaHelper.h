@@ -25,15 +25,15 @@
 - (id)p_labelsOfType:(unsigned long long)arg1 formulaMap:(id)arg2;
 - (unsigned char)p_addFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(_Bool)arg3 toFormulaMap:(id)arg4;
 - (unsigned char)p_addFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(_Bool)arg3 toFormulaMap:(id)arg4 ofLevel:(unsigned char)arg5;
-- (unsigned char)p_firstDataCategoryLevelInFormulaMap:(id)arg1 forTable:(UUIDData_5fbc143e)arg2;
+- (unsigned char)p_firstDataCategoryLevelInFormulaMap:(id)arg1 forTable:(struct TSKUIDStruct)arg2;
 - (id)p_rangeListsForFormulas:(id)arg1 byRow:(_Bool)arg2 resolveSpanning:(_Bool)arg3;
 - (id)p_rangeListsForFormula:(id)arg1 argumentIndexes:(id)arg2 byRow:(_Bool)arg3 resolveSpanning:(_Bool)arg4;
 - (void)p_rangeListsForFormula:(id)arg1 argumentIndexes:(id)arg2 byRow:(_Bool)arg3 resolveSpanning:(_Bool)arg4 orderedListOfOwnerIDs:(id)arg5 ownerIDToRangeList:(id)arg6;
-- (id)chartFormulaByAppendingCategoryReferences:(vector_2431c21e)arg1 toFormula:(id)arg2;
+- (id)chartFormulaByAppendingCategoryReferences:(vector_0812e05b)arg1 toFormula:(id)arg2;
 - (id)chartFormulaByAppendingTractReference:(id)arg1 toFormula:(id)arg2;
 - (id)chartFormulaByAppendingRangeReference:(struct TSCERangeRef)arg1 toFormula:(id)arg2;
 - (_Bool)p_hasOneValuePerSeries;
-- (id)formulaStorageTransformTable:(UUIDData_5fbc143e)arg1 toLevel:(unsigned char)arg2;
+- (id)formulaStorageTransformTable:(struct TSKUIDStruct)arg1 toLevel:(unsigned char)arg2;
 - (id)formulaStorageForChartGridDirection:(int)arg1;
 - (id)initWithMediator:(id)arg1 createSpanningReferences:(_Bool)arg2;
 - (id)initWithMediator:(id)arg1;

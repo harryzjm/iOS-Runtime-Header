@@ -25,6 +25,7 @@
 - (_Bool)purgeDataForKey:(NSString *)arg1 forInputMode:(NSString *)arg2 beforeDate:(NSDate *)arg3;
 - (_Bool)addValue:(NSNumber *)arg1 andSecondaryValue:(NSNumber *)arg2 andRealValue:(NSNumber *)arg3 andProperties:(NSData *)arg4 forKey:(NSString *)arg5 forInputMode:(NSString *)arg6 forDate:(NSDate *)arg7;
 - (NSArray *)getAllValuesForKey:(NSString *)arg1 forInputMode:(NSString *)arg2 fromDate:(NSDate *)arg3 toDate:(NSDate *)arg4;
+- (NSArray *)getDailyAndWeeklyValuesForKeyPrefix:(NSString *)arg1 forInputMode:(NSString *)arg2 weeklyKeySuffixes:(NSArray *)arg3 endDate:(NSDate *)arg4;
 - (NSArray *)getAllValuesForKeyPrefix:(NSString *)arg1 forInputMode:(NSString *)arg2 sinceDate:(NSDate *)arg3;
 - (NSArray *)getAllValuesForKey:(NSString *)arg1 forInputMode:(NSString *)arg2 sinceDate:(NSDate *)arg3;
 @end

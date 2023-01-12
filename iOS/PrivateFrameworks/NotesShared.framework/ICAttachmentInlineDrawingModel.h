@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PKDrawing;
+
 @interface ICAttachmentInlineDrawingModel
 {
 }
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
-- (id)correctedHardlinkURLFileExtensionForExtention:(id)arg1;
+- (id)newDrawingFromMergeableData;
+- (void)setHandwritingRecognitionDrawing:(id)arg1;
+@property(readonly, nonatomic) PKDrawing *handwritingRecognitionDrawing;
+- (id)correctedHardlinkURLFileExtensionForExtension:(id)arg1;
 - (_Bool)canConvertToHTMLForSharing;
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
 - (id)searchableTextContentInNote;

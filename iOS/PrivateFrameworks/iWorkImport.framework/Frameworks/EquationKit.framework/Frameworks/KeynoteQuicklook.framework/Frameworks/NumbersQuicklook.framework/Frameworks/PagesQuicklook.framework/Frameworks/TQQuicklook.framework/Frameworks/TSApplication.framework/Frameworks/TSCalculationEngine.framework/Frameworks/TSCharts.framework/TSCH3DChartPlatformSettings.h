@@ -10,14 +10,14 @@
 
 @interface TSCH3DChartPlatformSettings : NSObject
 {
-    NSDictionary *mSettings;
+    NSDictionary *_settings;
 }
 
 + (id)sharedInstance;
 + (id)p_platformSettingsDictionary;
 + (id)p_defaultSettingsDictionary;
 + (_Bool)p_isMetalEnabled;
-+ (_Bool)isMetalBlacklistedWithCapabilities:(id)arg1;
++ (_Bool)isMetalExcludedWithCapabilities:(id)arg1;
 - (void).cxx_destruct;
 - (_Bool)shouldHandleResourceCacheOutOfMemory;
 - (_Bool)backgroundLayoutUsesTiledRendering;
@@ -28,7 +28,7 @@
 - (unsigned long long)highQualityShadowsSize;
 - (_Bool)useHighQualityShadows;
 - (float)rotationTrackerSpeed;
-- (float)normalizedLabelPickingSlackForViewScale:(double)arg1 viewport:(const tvec2_3b141483 *)arg2;
+- (float)normalizedLabelPickingSlackForViewScale:(double)arg1 viewport:(const void *)arg2;
 - (float)p_labelPickingSlack;
 - (int)p_labelPickingSlackMethod;
 - (_Bool)useLayoutInwardForInsertionIcons;

@@ -8,7 +8,7 @@
 {
 }
 
-- (void)calculateCullingPlanes:(vector_5e6a89be *)arg1;
+- (void)calculateCullingPlanes:(void *)arg1;
 - (id)frustumRectAtDistance:(float)arg1;
 - (tmat4x4_3074befe)matrix;
 

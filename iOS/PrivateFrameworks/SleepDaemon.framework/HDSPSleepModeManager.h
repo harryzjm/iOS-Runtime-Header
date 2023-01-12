@@ -13,38 +13,58 @@
 #import <SleepDaemon/HDSPSleepScheduleModelObserver-Protocol.h>
 #import <SleepDaemon/HDSPSleepScheduleStateObserver-Protocol.h>
 #import <SleepDaemon/HDSPTimeChangeObserver-Protocol.h>
+#import <SleepDaemon/HKSPSleepFocusModeBridgeDelegate-Protocol.h>
 
 @class HDSPEnvironment, HDSPSleepModeStateMachine, HKSPObserverSet, HKSPSleepScheduleModel, NSDate, NSString;
-@protocol NAScheduler;
+@protocol HDSPSleepFocusModeBridge, NAScheduler;
 
-@interface HDSPSleepModeManager : NSObject <HDSPSleepModeStateMachineDelegate, HDSPSleepModeStateMachineInfoProvider, HDSPDiagnosticsProvider, HDSPEnvironmentAware, HDSPSleepScheduleModelObserver, HDSPTimeChangeObserver, HDSPSleepScheduleStateObserver>
+@interface HDSPSleepModeManager : NSObject <HDSPSleepModeStateMachineDelegate, HDSPSleepModeStateMachineInfoProvider, HDSPDiagnosticsProvider, HKSPSleepFocusModeBridgeDelegate, HDSPEnvironmentAware, HDSPSleepScheduleModelObserver, HDSPTimeChangeObserver, HDSPSleepScheduleStateObserver>
 {
     struct os_unfair_lock_s _sleepModeLock;
     HDSPEnvironment *_environment;
     HDSPSleepModeStateMachine *_stateMachine;
     HKSPObserverSet *_sleepModeObservers;
+    id <HDSPSleepFocusModeBridge> _sleepFocusModeBridge;
 }
 
++ (unsigned long long)_sleepModeChangeReasonForBiomeReason:(unsigned long long)arg1 source:(long long)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <HDSPSleepFocusModeBridge> sleepFocusModeBridge; // @synthesize sleepFocusModeBridge=_sleepFocusModeBridge;
 @property(readonly, nonatomic) HKSPObserverSet *sleepModeObservers; // @synthesize sleepModeObservers=_sleepModeObservers;
 @property(readonly, nonatomic) HDSPSleepModeStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(readonly, nonatomic) struct os_unfair_lock_s sleepModeLock; // @synthesize sleepModeLock=_sleepModeLock;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 - (id)diagnosticInfo;
 - (id)diagnosticDescription;
-@property(readonly, nonatomic) _Bool isInDemoMode;
 - (void)_enableSleepModeControlCenterModuleIfNeeded;
+- (_Bool)deleteFocusModeWithError:(id *)arg1;
+- (_Bool)createFocusModeWithError:(id *)arg1;
+- (void)_createFocusModeIfNeeded;
+- (_Bool)isInDemoMode;
+- (_Bool)_isSleepModeDuringWindDownEnabled;
+- (_Bool)_isScheduledSleepModeEnabled;
+- (_Bool)shouldGoIntoSleepModeDuringState:(unsigned long long)arg1;
+- (void)sleepFocusModeBridge:(id)arg1 didUpdateSleepFocusConfiguration:(id)arg2;
+- (id)computeUserVisibleEndDate;
+@property(readonly, nonatomic) _Bool hasSleepFocusMode;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) NSDate *currentDate;
 - (void)scheduledEventIsDue;
 - (void)_powerLogSleepMode:(_Bool)arg1;
+- (void)notifyObserversForSleepModeChange:(long long)arg1 previousMode:(long long)arg2 reason:(unsigned long long)arg3;
 - (void)sleepModeDidChange:(long long)arg1 previousMode:(long long)arg2 reason:(unsigned long long)arg3;
 - (void)significantTimeChangeDetected:(id)arg1;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
-- (void)_userDisengagedCurrentMode;
-- (void)_userEngagedBedtimeMode;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
+- (void)_ensureFocusModeCreatedForSleepMode:(long long)arg1 reason:(unsigned long long)arg2;
+- (_Bool)_shouldHandleBiomeEvent:(id)arg1;
+- (void)_handleFocusModeEvent:(id)arg1;
+- (void)_automationTurnedOffSleepModeWithReason:(unsigned long long)arg1;
+- (void)_automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
+- (void)_userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
+- (void)_userTurnedOnSleepModeWithReason:(unsigned long long)arg1;
+- (void)setSleepMode:(long long)arg1 reason:(unsigned long long)arg2;
 @property(nonatomic) long long sleepMode;
 - (_Bool)inUserRequestedSleepMode;
 - (id)currentState;
@@ -54,6 +74,7 @@
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (void)_withLock:(CDUnknownBlockType)arg1;
+- (id)initWithEnvironment:(id)arg1 sleepFocusModeBridge:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
 
 // Remaining properties

@@ -17,13 +17,11 @@
     NSMutableArray *_barLayers;
     CALayer *_platterLayer;
     _Bool _highlighted;
-    unsigned int _playbackState;
     NSString *_stateName;
 }
 
 + (id)classSubstitions;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned int playbackState; // @synthesize playbackState=_playbackState;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(copy, nonatomic) NSString *stateName; // @synthesize stateName=_stateName;
 - (void)traitCollectionDidChange:(id)arg1;

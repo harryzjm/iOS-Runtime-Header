@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLSClueCollection, CLSInspector, CLSInvestigationFeeder, NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class CLSClueCollection, CLSInspector, CLSInvestigationFeeder, CLSInvestigationHelper, NSArray, NSMutableArray, NSMutableDictionary, NSString;
 @protocol CLSInvestigationDelegate, CLSInvestigationInterviewDelegate;
 
 @interface CLSInvestigation : NSObject
@@ -24,6 +24,7 @@
     NSMutableDictionary *_tracesLogsByURIs;
     NSMutableArray *_tracesLogsURIs;
     _Bool _enableDebuggingClues;
+    CLSInvestigationHelper *_helper;
     struct {
         unsigned int delegateWillBegin:1;
         unsigned int delegateDidEnd:1;
@@ -32,10 +33,11 @@
     } _investigationFlags;
 }
 
-+ (id)investigationWithProfiles:(id)arg1 clueDates:(id)arg2 clueLocations:(id)arg3 cluePeoples:(id)arg4;
-+ (id)investigationWithProfiles:(id)arg1;
++ (id)investigationWithProfiles:(id)arg1 clueDates:(id)arg2 clueLocations:(id)arg3 cluePeoples:(id)arg4 helper:(id)arg5;
++ (id)investigationWithProfiles:(id)arg1 helper:(id)arg2;
 - (void).cxx_destruct;
 @property _Bool enableDebuggingClues; // @synthesize enableDebuggingClues=_enableDebuggingClues;
+@property(readonly) CLSInvestigationHelper *helper; // @synthesize helper=_helper;
 @property(nonatomic) unsigned long long precision; // @synthesize precision=_precision;
 @property(readonly, retain) CLSClueCollection *clueCollection; // @synthesize clueCollection=_clueCollection;
 @property(readonly, nonatomic) __weak CLSInspector *inspector; // @synthesize inspector=_inspector;
@@ -54,10 +56,10 @@
 - (void)_willBeginInvestigation:(id)arg1;
 - (id)description:(_Bool)arg1;
 - (id)description;
-- (id)initWithProfiles:(id)arg1;
-- (id)init;
-- (id)initWithFeeder:(id)arg1 profiles:(id)arg2;
-- (id)initWithClueCollection:(id)arg1 profiles:(id)arg2;
+- (id)initWithProfiles:(id)arg1 helper:(id)arg2;
+- (id)initWithHelper:(id)arg1;
+- (id)initWithFeeder:(id)arg1 profiles:(id)arg2 helper:(id)arg3;
+- (id)initWithClueCollection:(id)arg1 profiles:(id)arg2 helper:(id)arg3;
 
 @end
 

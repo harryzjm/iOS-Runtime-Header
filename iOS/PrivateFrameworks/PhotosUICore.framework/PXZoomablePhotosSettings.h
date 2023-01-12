@@ -36,6 +36,9 @@
     double _interitemSpacing;
     double _panoramaCompactInteritemSpacing;
     double _panoramaRegularInteritemSpacing;
+    double _cardsInteritemSpacing;
+    double _cardsCornerRadius;
+    double _cardsAspectRatio;
     long long _rubberBandEffect;
     double _zoomOutRubberBanding;
     double _zoomInRubberBanding;
@@ -94,6 +97,9 @@
 @property(nonatomic) double zoomInRubberBanding; // @synthesize zoomInRubberBanding=_zoomInRubberBanding;
 @property(nonatomic) double zoomOutRubberBanding; // @synthesize zoomOutRubberBanding=_zoomOutRubberBanding;
 @property(nonatomic) long long rubberBandEffect; // @synthesize rubberBandEffect=_rubberBandEffect;
+@property(nonatomic) double cardsAspectRatio; // @synthesize cardsAspectRatio=_cardsAspectRatio;
+@property(nonatomic) double cardsCornerRadius; // @synthesize cardsCornerRadius=_cardsCornerRadius;
+@property(nonatomic) double cardsInteritemSpacing; // @synthesize cardsInteritemSpacing=_cardsInteritemSpacing;
 @property(nonatomic) double panoramaRegularInteritemSpacing; // @synthesize panoramaRegularInteritemSpacing=_panoramaRegularInteritemSpacing;
 @property(nonatomic) double panoramaCompactInteritemSpacing; // @synthesize panoramaCompactInteritemSpacing=_panoramaCompactInteritemSpacing;
 @property(nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;

@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSArray, NSOperationQueue, VSIdentityProvider;
+@class NSArray, NSOperationQueue, VSDeveloperSettingsFetchOperation, VSIdentityProvider, VSSubscriptionRegistrationCenter;
 
 __attribute__((visibility("hidden")))
 @interface VSIdentityProviderSubscriptionOperation : VSAsyncOperation
@@ -15,9 +15,13 @@ __attribute__((visibility("hidden")))
     NSArray *_subscriptionsToAdd;
     NSArray *_subscriptionsToRemoveByBundleID;
     NSOperationQueue *_privateQueue;
+    VSSubscriptionRegistrationCenter *_registrationCenter;
+    VSDeveloperSettingsFetchOperation *_developerSettingsFetchOperation;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) VSDeveloperSettingsFetchOperation *developerSettingsFetchOperation; // @synthesize developerSettingsFetchOperation=_developerSettingsFetchOperation;
+@property(retain, nonatomic) VSSubscriptionRegistrationCenter *registrationCenter; // @synthesize registrationCenter=_registrationCenter;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(copy, nonatomic) NSArray *subscriptionsToRemoveByBundleID; // @synthesize subscriptionsToRemoveByBundleID=_subscriptionsToRemoveByBundleID;
 @property(copy, nonatomic) NSArray *subscriptionsToAdd; // @synthesize subscriptionsToAdd=_subscriptionsToAdd;
@@ -27,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeSubscriptionsForBundleIdentifiers:(id)arg1 withAuthorizedBundleIdentifiers:(id)arg2;
 - (id)_authorizedBundleIdsFromAppDescriptions:(id)arg1;
 - (void)executionDidBegin;
+- (id)initWithRegistrationCenter:(id)arg1 andDeveloperSettingsFetchOperation:(id)arg2;
 - (id)init;
 
 @end

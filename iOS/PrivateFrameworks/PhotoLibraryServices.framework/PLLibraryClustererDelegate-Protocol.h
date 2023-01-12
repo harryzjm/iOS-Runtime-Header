@@ -7,11 +7,9 @@
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
 @class NSArray, NSMutableArray, NSSet, PLLibraryClusterer;
-@protocol PLMomentGenerationDataManagement, PLMomentListData;
+@protocol PLMomentGenerationDataManagement;
 
 @protocol PLLibraryClustererDelegate <NSObject>
-- (id <PLMomentListData>)libraryClusterer:(PLLibraryClusterer *)arg1 createYearListForMoments:(NSArray *)arg2 year:(long long)arg3;
-- (id <PLMomentListData>)libraryClusterer:(PLLibraryClusterer *)arg1 createMonthListForMoments:(NSArray *)arg2 month:(long long)arg3 year:(long long)arg4;
 - (NSMutableArray *)libraryClusterer:(PLLibraryClusterer *)arg1 createMomentClustersForAssetClusters:(NSArray *)arg2 existingMomentDataForAssets:(NSSet *)arg3;
 - (void)logRoutineInformation;
 - (id <PLMomentGenerationDataManagement>)dataManager;

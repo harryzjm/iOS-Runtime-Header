@@ -13,6 +13,7 @@
 @interface AWDHomeKitActionSetTriggered : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    NSString *_clientMetricIdentifier;
     unsigned int _duration;
     int _errorCode;
     unsigned int _numAccessories;
@@ -28,6 +29,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *clientMetricIdentifier; // @synthesize clientMetricIdentifier=_clientMetricIdentifier;
 @property(nonatomic) unsigned int numAccessories; // @synthesize numAccessories=_numAccessories;
 @property(retain, nonatomic) NSString *transaction; // @synthesize transaction=_transaction;
 @property(nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
@@ -42,6 +44,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasClientMetricIdentifier;
 @property(nonatomic) _Bool hasNumAccessories;
 - (int)StringAsTriggerSource:(id)arg1;
 - (id)triggerSourceAsString:(int)arg1;

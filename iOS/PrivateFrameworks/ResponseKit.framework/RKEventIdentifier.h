@@ -12,7 +12,7 @@
 {
     RKMontrealModel *_model;
     RKNLEventTokenizer *_tokenizer;
-    const struct IOMappings *_ioMappings;
+    const void *_ioMappings;
     int _outputPermutation[5];
 }
 

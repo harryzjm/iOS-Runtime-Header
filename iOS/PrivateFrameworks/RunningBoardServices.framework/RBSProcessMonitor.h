@@ -10,7 +10,7 @@
 #import <RunningBoardServices/RBSProcessMonitorConfiguring-Protocol.h>
 
 @class NSMutableDictionary, NSSet, RBSProcessMonitorConfiguration;
-@protocol RBSServiceLocalProtocol;
+@protocol OS_dispatch_queue, RBSServiceLocalProtocol;
 
 @interface RBSProcessMonitor : NSObject <RBSProcessMonitorConfiguring, NSCopying>
 {
@@ -20,6 +20,7 @@
     _Bool _configuring;
     RBSProcessMonitorConfiguration *_configuration;
     NSMutableDictionary *_stateByIdentity;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
 }
 
 + (id)_monitorWithService:(id)arg1 configuration:(CDUnknownBlockType)arg2;
@@ -28,11 +29,11 @@
 + (id)_monitorWithService:(id)arg1;
 + (id)monitor;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_handlePreventLaunchUpdate:(id)arg1;
 - (void)_handleExitEvent:(id)arg1;
 - (void)_handleProcessStateChange:(id)arg1;
-- (void)_reconnect;
 - (void)setPreventLaunchUpdateHandle:(CDUnknownBlockType)arg1;
 - (void)setUpdateHandler:(CDUnknownBlockType)arg1;
 - (void)setEvents:(unsigned long long)arg1;
@@ -48,7 +49,6 @@
 @property(readonly, copy, nonatomic) NSSet *states; // @dynamic states;
 - (id)stateForIdentity:(id)arg1;
 - (void)dealloc;
-- (id)_initWithService:(id)arg1;
 - (id)init;
 
 @end

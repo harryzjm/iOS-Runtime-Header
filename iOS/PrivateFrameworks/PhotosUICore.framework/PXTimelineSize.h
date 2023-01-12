@@ -10,6 +10,7 @@
 {
 }
 
++ (id)allSupportedSizes;
 + (struct CGSize)widgetSizeForSizeClass:(unsigned long long)arg1;
 + (id)sizeDescriptionForSizeClass:(unsigned long long)arg1;
 

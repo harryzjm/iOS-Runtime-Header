@@ -18,30 +18,34 @@
     int _pid;
     NSString *_description;
     unsigned long long _hash;
+    NSString *_angelJobLabel;
 }
 
 + (_Bool)supportsRBSXPCSecureCoding;
 + (_Bool)supportsSecureCoding;
 + (_Bool)shouldManageExtensionWithExtensionPoint:(id)arg1;
-+ (id)identityForApplicationJobLabel:(id)arg1 bundleID:(id)arg2 platform:(int)arg3;
-+ (id)identityForApplicationJobLabel:(id)arg1;
-+ (id)_identityForXPCServicePath:(id)arg1 type:(unsigned long long)arg2 pid:(int)arg3 euid:(unsigned int)arg4 host:(id)arg5 UUID:(id)arg6;
-+ (id)_identityForXPCServicePath:(id)arg1 properties:(id)arg2 pid:(int)arg3 euid:(unsigned int)arg4 host:(id)arg5;
-+ (id)identityForXPCServiceProperties:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3 host:(id)arg4;
-+ (id)identityForXPCServicePath:(id)arg1 host:(id)arg2;
++ (id)identityForXPCServiceExecutablePath:(id)arg1 pid:(int)arg2 auid:(unsigned int)arg3 host:(id)arg4 UUID:(id)arg5;
++ (id)identityForXPCServiceExecutablePath:(id)arg1 host:(id)arg2;
 + (id)extensionIdentityForPlugInKitIdentifier:(id)arg1 hostIdentifier:(id)arg2 UUID:(id)arg3;
 + (id)identityForXPCServiceIdentifier:(id)arg1;
 + (id)_identityForXPCServiceIdentifier:(id)arg1 variant:(long long)arg2;
-+ (id)_identityForXPCServiceIdentifier:(id)arg1 hostInstance:(id)arg2 UUID:(id)arg3 variant:(long long)arg4;
-+ (id)identityForExecutablePath:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3;
-+ (id)identityForLaunchProperties:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3;
++ (id)identityForExecutablePath:(id)arg1 pid:(int)arg2 auid:(unsigned int)arg3;
++ (id)identityForLaunchdJobLabel:(id)arg1 isMultiInstance:(_Bool)arg2 pid:(int)arg3 auid:(unsigned int)arg4;
++ (id)identityForAngelJobLabel:(id)arg1;
 + (id)identityForDaemonJobLabel:(id)arg1;
-+ (id)identityForEmbeddedApplicationIdentifier:(id)arg1 jobLabel:(id)arg2 euid:(unsigned int)arg3 platform:(int)arg4;
-+ (id)identityForEmbeddedApplicationIdentifier:(id)arg1 euid:(unsigned int)arg2;
++ (id)identityForMacApplicationJobLabel:(id)arg1 appID:(id)arg2 platform:(int)arg3;
++ (id)identityForMacApplicationJobLabel:(id)arg1 wrappedInfoProvider:(id)arg2 platform:(int)arg3;
++ (id)identityForApplicationJobLabel:(id)arg1;
++ (id)identityForLSApplicationIdentity:(id)arg1;
++ (id)identityForEmbeddedApplicationIdentifier:(id)arg1 auid:(unsigned int)arg2;
 + (id)identityForEmbeddedApplicationIdentifier:(id)arg1;
++ (id)identityForWrappedInfoProviderIdentity:(id)arg1;
++ (id)identityForEmbeddedApplicationIdentifier:(id)arg1 jobLabel:(id)arg2 auid:(unsigned int)arg3 platform:(int)arg4;
++ (id)identityForApplicationJobLabel:(id)arg1 bundleID:(id)arg2 platform:(int)arg3;
 + (id)identityOfCurrentProcess;
 + (id)identityForPlugInKitIdentifier:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *angelJobLabel; // @synthesize angelJobLabel=_angelJobLabel;
 @property(readonly) unsigned long long hash; // @synthesize hash=_hash;
 @property(readonly, copy) NSString *description; // @synthesize description=_description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -58,6 +62,7 @@
 - (_Bool)_matchesIdentity:(id)arg1;
 - (id)initWithDecodeFromJob:(id)arg1;
 - (id)encodeForJob;
+@property(readonly, nonatomic) NSString *personaString;
 @property(readonly, nonatomic) NSUUID *uuid;
 @property(readonly, copy, nonatomic) NSString *applicationJobLabel;
 @property(readonly, copy, nonatomic) RBSProcessIdentifier *hostIdentifier;
@@ -66,19 +71,19 @@
 @property(readonly, copy, nonatomic) NSString *embeddedApplicationIdentifier;
 @property(readonly, nonatomic, getter=isAnonymous) _Bool anonymous;
 @property(readonly, nonatomic, getter=isApplication) _Bool application;
+@property(readonly, nonatomic, getter=isAngel) _Bool angel;
 @property(readonly, nonatomic, getter=isDaemon) _Bool daemon;
 @property(readonly, copy, nonatomic) NSString *xpcServiceIdentifier;
 @property(readonly, nonatomic, getter=isXPCService) _Bool XPCService;
 @property(readonly, nonatomic, getter=isEmbeddedApplication) _Bool embeddedApplication;
 @property(readonly, nonatomic) unsigned char defaultManageFlags;
 @property(readonly, nonatomic, getter=isExtension) _Bool extension;
-- (id)copyWithEuid:(unsigned int)arg1;
-- (id)_initOpaqueWithPid:(int)arg1 name:(id)arg2 euid:(unsigned int)arg3;
+- (id)copyWithAuid:(unsigned int)arg1;
 - (id)_init;
 - (id)init;
 @property(readonly, nonatomic) NSString *shortDescription;
 @property(readonly, nonatomic) int platform;
-@property(readonly, nonatomic) unsigned int euid;
+@property(readonly, nonatomic) unsigned int auid;
 
 // Remaining properties
 @property(readonly) Class superclass;

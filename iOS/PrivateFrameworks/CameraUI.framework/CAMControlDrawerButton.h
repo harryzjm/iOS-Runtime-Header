@@ -13,7 +13,6 @@
 @interface CAMControlDrawerButton : UIControl <CAMAccessibilityHUDItemProvider>
 {
     long long _layoutStyle;
-    NSString *_contentSize;
     long long _orientation;
     UIImageView *__imageView;
     UIImageView *__backgroundView;
@@ -29,13 +28,15 @@
 @property(readonly, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property(readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
-@property(nonatomic) NSString *contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+- (id)_imageForImageName:(id)arg1;
 - (void)_updateSlashAnimated:(_Bool)arg1;
 - (void)handleButtonReleased:(id)arg1;
 - (_Bool)shouldShowSlashForCurrentState;
 - (_Bool)shouldUseSlash;
+- (_Bool)shouldUseHierarchicalSymbol;
 - (_Bool)shouldUseActiveTintForCurrentState;
+- (id)imageNameForAXHUD;
 - (id)imageNameForCurrentState;
 - (void)updateImageAnimated:(_Bool)arg1;
 - (void)updateImage;
@@ -47,6 +48,7 @@
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (void)setHighlighted:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (id)initWithLayoutStyle:(long long)arg1;

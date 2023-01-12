@@ -42,13 +42,14 @@
 - (_Bool)playersHaveImpendingCommandsForStartTime:(double)arg1 endTime:(double)arg2;
 - (void)processScheduledCommandsForStartTime:(double)arg1 endTime:(double)arg2;
 - (_Bool)readClientDataForStartTime:(double)arg1 endTime:(double)arg2;
-- (void)scheduleCommand:(const struct HapticCommand *)arg1;
+- (void)scheduleCommand:(const void *)arg1;
 - (void)logicalDeviceWasUnregistered:(id)arg1;
 - (void)spawnInputThread;
 - (void)hapticClientProxyInitialized:(id)arg1;
 - (void)removeHapticClient:(id)arg1;
 - (_Bool)acceptNewConnection:(id)arg1 fromHapticsEnabledApp:(id)arg2;
 - (id)init;
+- (void)dealloc;
 
 @end
 

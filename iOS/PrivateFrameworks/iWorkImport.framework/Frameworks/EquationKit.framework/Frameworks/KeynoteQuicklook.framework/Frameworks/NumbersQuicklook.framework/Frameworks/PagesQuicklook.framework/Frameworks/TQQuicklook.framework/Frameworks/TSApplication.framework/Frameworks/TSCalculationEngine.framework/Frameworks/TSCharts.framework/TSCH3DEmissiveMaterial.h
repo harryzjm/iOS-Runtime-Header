@@ -8,10 +8,10 @@
 {
 }
 
-+ (id)instanceWithArchive:(const struct Chart3DEmissiveMaterialArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)defaultShaderVariables;
-- (void)saveToArchive:(struct Chart3DEmissiveMaterialArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DEmissiveMaterialArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

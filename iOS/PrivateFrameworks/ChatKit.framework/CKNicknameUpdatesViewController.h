@@ -9,7 +9,7 @@
 #import <ChatKit/CKNicknameUpdatesCollectionViewCellDelegate-Protocol.h>
 #import <ChatKit/UICollectionViewDelegate-Protocol.h>
 
-@class CKNicknameUpdatesCollectionView, NSArray, NSString, UICollectionViewCompositionalLayout, _UICollectionViewDiffableDataSource;
+@class CKNicknameUpdatesCollectionView, NSArray, NSString, UICollectionViewCompositionalLayout, UICollectionViewDiffableDataSource;
 @protocol CKNicknameUpdatesViewControllerDelegate;
 
 @interface CKNicknameUpdatesViewController : UIViewController <UICollectionViewDelegate, CKNicknameUpdatesCollectionViewCellDelegate>
@@ -17,13 +17,13 @@
     id <CKNicknameUpdatesViewControllerDelegate> _delegate;
     NSArray *_nicknameUpdates;
     CKNicknameUpdatesCollectionView *_collectionView;
-    _UICollectionViewDiffableDataSource *_dataSource;
+    UICollectionViewDiffableDataSource *_dataSource;
     UICollectionViewCompositionalLayout *_collectionViewLayout;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionViewCompositionalLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;
-@property(retain, nonatomic) _UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) CKNicknameUpdatesCollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(retain, nonatomic) NSArray *nicknameUpdates; // @synthesize nicknameUpdates=_nicknameUpdates;
 @property(nonatomic) __weak id <CKNicknameUpdatesViewControllerDelegate> delegate; // @synthesize delegate=_delegate;

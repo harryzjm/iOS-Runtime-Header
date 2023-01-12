@@ -8,14 +8,13 @@
 
 #import <C2/NSCopying-Protocol.h>
 
-@class C2MPError, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface C2MPGenericEventMetricValue : PBCodable <NSCopying>
 {
     unsigned long long _dateValue;
     double _doubleValue;
-    C2MPError *_errorValue;
     NSString *_stringValue;
     struct {
         unsigned int dateValue:1;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) C2MPError *errorValue; // @synthesize errorValue=_errorValue;
 @property(nonatomic) unsigned long long dateValue; // @synthesize dateValue=_dateValue;
 @property(nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
@@ -37,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasErrorValue;
 @property(nonatomic) _Bool hasDateValue;
 @property(nonatomic) _Bool hasDoubleValue;
 @property(readonly, nonatomic) _Bool hasStringValue;

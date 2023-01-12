@@ -13,17 +13,16 @@
     GCControllerButtonInput *_paddleButton3;
     GCControllerButtonInput *_paddleButton4;
     long long _type;
-    GCControllerButtonInput *_buttonShare;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) GCControllerButtonInput *buttonShare; // @synthesize buttonShare=_buttonShare;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) GCControllerButtonInput *paddleButton4; // @synthesize paddleButton4=_paddleButton4;
 @property(readonly, nonatomic) GCControllerButtonInput *paddleButton3; // @synthesize paddleButton3=_paddleButton3;
 @property(readonly, nonatomic) GCControllerButtonInput *paddleButton2; // @synthesize paddleButton2=_paddleButton2;
 @property(readonly, nonatomic) GCControllerButtonInput *paddleButton1; // @synthesize paddleButton1=_paddleButton1;
+@property(readonly, nonatomic) GCControllerButtonInput *buttonShare;
 - (void)initializeExtraControllerElements;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

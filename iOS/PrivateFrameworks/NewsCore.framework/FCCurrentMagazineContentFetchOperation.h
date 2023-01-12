@@ -24,22 +24,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *resultTrendingHeadlines; // @synthesize resultTrendingHeadlines=_resultTrendingHeadlines;
-@property(retain, nonatomic) NSArray *resultCurrentFeatureHeadlines; // @synthesize resultCurrentFeatureHeadlines=_resultCurrentFeatureHeadlines;
-@property(retain, nonatomic) NSArray *resultCurrentIssues; // @synthesize resultCurrentIssues=_resultCurrentIssues;
-@property(retain, nonatomic) NSArray *resultConfigHeadlines; // @synthesize resultConfigHeadlines=_resultConfigHeadlines;
-@property(retain, nonatomic) NSArray *resultConfigIssues; // @synthesize resultConfigIssues=_resultConfigIssues;
-@property(retain, nonatomic) id <FCFeedTransforming> currentHeadlinesTransformation; // @synthesize currentHeadlinesTransformation=_currentHeadlinesTransformation;
-@property(copy, nonatomic) NSString *trendingArticleListID; // @synthesize trendingArticleListID=_trendingArticleListID;
-@property(retain, nonatomic) NSArray *configArticleIDs; // @synthesize configArticleIDs=_configArticleIDs;
-@property(retain, nonatomic) NSArray *configIssueIDs; // @synthesize configIssueIDs=_configIssueIDs;
-@property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property(retain, nonatomic) FCCachePolicy *cachedPolicy; // @synthesize cachedPolicy=_cachedPolicy;
-- (id)_filterInaccessibleIssues:(id)arg1;
-- (id)_filterInaccessibleHeadlines:(id)arg1;
-- (void)_fetchCurrentFeatureHeadlinesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fetchConfigContentAndCurrentIssuesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

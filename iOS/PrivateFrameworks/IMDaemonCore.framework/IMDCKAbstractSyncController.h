@@ -12,11 +12,17 @@
 @interface IMDCKAbstractSyncController : NSObject
 {
     _Bool _isSyncing;
+    unsigned long long _recordsRead;
+    unsigned long long _recordsWritten;
+    unsigned long long _recordsWriteFailed;
     id <IMDCKAbstractSyncControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property __weak id <IMDCKAbstractSyncControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) unsigned long long recordsWriteFailed; // @synthesize recordsWriteFailed=_recordsWriteFailed;
+@property(nonatomic) unsigned long long recordsWritten; // @synthesize recordsWritten=_recordsWritten;
+@property(nonatomic) unsigned long long recordsRead; // @synthesize recordsRead=_recordsRead;
 @property(nonatomic) _Bool isSyncing; // @synthesize isSyncing=_isSyncing;
 - (_Bool)_fetchedAllChangesFromCloudKit;
 - (void)syncBatchCompleted:(unsigned long long)arg1;
@@ -31,9 +37,12 @@
 - (void)setBroadcastedSyncStateStateToFinished;
 - (long long)syncControllerRecordType;
 - (void)clearLocalSyncState:(unsigned long long)arg1;
+- (id)describeRecordCounts;
+- (void)countRecordOnRead:(_Bool)arg1 didSucceed:(_Bool)arg2;
+- (void)resetRecordCounts;
 @property(readonly, nonatomic) IMDCKSyncState *syncState;
+- (id)errorAnalyzer;
 - (id)ckUtilities;
-@property(readonly, nonatomic) _Bool isUsingStingRay;
 
 @end
 

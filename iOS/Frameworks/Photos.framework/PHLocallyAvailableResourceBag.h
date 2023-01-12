@@ -17,14 +17,12 @@
     _Bool _keyIsHintBased;
     _Bool _isDegraded;
     _Bool _isPrimaryFormat;
-    _Bool _isDefaultOrientation;
     id <PLAssetID> _assetID;
     id <PLResourceDataStore> _dataStore;
     id <PLResourceDataStoreKey> _dataStoreKey;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isDefaultOrientation; // @synthesize isDefaultOrientation=_isDefaultOrientation;
 @property(nonatomic) _Bool isPrimaryFormat; // @synthesize isPrimaryFormat=_isPrimaryFormat;
 @property(nonatomic) _Bool isDegraded; // @synthesize isDegraded=_isDegraded;
 @property(nonatomic) _Bool keyIsHintBased; // @synthesize keyIsHintBased=_keyIsHintBased;

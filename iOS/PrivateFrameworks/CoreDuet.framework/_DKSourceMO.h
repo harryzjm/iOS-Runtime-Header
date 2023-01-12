@@ -18,6 +18,7 @@
 @property(copy, nonatomic) NSString *bundleID; // @dynamic bundleID;
 @property(copy, nonatomic) NSString *deviceID; // @dynamic deviceID;
 @property(copy, nonatomic) NSString *groupID; // @dynamic groupID;
+@property(copy, nonatomic) NSString *intentID; // @dynamic intentID;
 @property(copy, nonatomic) NSString *itemID; // @dynamic itemID;
 @property(retain, nonatomic) NSSet *product; // @dynamic product;
 @property(copy, nonatomic) NSString *sourceID; // @dynamic sourceID;

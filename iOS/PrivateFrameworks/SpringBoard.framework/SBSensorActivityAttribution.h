@@ -20,11 +20,13 @@
 - (id)succinctDescription;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithSBActivityAttribution:(id)arg1 sensor:(long long)arg2;
 - (id)initWithSTActivityAttribution:(id)arg1 sensor:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSString *attributionGroup;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;
+@property(readonly, copy, nonatomic) NSString *bundleIdentifierMatchingDisplayName;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSString *displayName;

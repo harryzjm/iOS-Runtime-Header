@@ -21,6 +21,9 @@
     id <CNGroupIdentityActionItemDelegate> _delegate;
 }
 
++ (id)imageForSystemImageNamed:(id)arg1 withPointSize:(double)arg2;
++ (id)imageForSystemImageNamed:(id)arg1 withTextStyle:(id)arg2;
++ (id)imageForSystemImageNamed:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <CNGroupIdentityActionItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool shouldPresentDisambiguationUI; // @synthesize shouldPresentDisambiguationUI=_shouldPresentDisambiguationUI;

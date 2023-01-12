@@ -6,11 +6,11 @@
 
 #import <AvatarUI/AVTAvatarAttributeEditorModelManagerDelegate-Protocol.h>
 
-@class AVTCoreModelRowDisplayCondition;
+@class AVTCoreModelPickerDisplayCondition;
 
 @protocol AVTAvatarAttributeEditorModelManagerDelegateInternal <AVTAvatarAttributeEditorModelManagerDelegate>
 
 @optional
-- (_Bool)shouldDisplaySectionWithDisplayCondition:(AVTCoreModelRowDisplayCondition *)arg1 inCategoryAtIndex:(unsigned long long)arg2;
+- (_Bool)shouldDisplaySectionWithDisplayCondition:(AVTCoreModelPickerDisplayCondition *)arg1 inCategoryAtIndex:(unsigned long long)arg2;
 @end
 

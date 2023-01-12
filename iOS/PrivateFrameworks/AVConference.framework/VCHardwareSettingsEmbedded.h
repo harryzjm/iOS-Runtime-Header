@@ -6,7 +6,7 @@
 
 #import <AVConference/VCHardwareSettingsEmbeddedProtocol-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VCHardwareSettingsEmbedded <VCHardwareSettingsEmbeddedProtocol>
@@ -16,35 +16,62 @@ __attribute__((visibility("hidden")))
     int _deviceClass;
     int _screenWidth;
     int _screenHeight;
+    unsigned long long _maxScreenEncodingSizeSupported;
     long long _videoEncoderType;
     _Bool _hasBasebandInitialized;
     _Bool _hasBaseband;
     _Bool _hasAppleNeuralEngine;
+    NSString *_marketingName;
+    int _productType;
 }
 
 + (long long)deviceClass;
 + (id)sharedInstance;
+- (long long)screenShareCapabilitiesIPod;
+- (long long)screenShareCapabilitiesIPad;
+- (long long)screenShareCapabilitiesIPhone;
+@property(readonly, nonatomic) long long screenShareCapabilities;
+- (_Bool)disableMLScalarDuringSharing;
+- (_Bool)supportsDedicatedSystemAudioStream;
+- (_Bool)limitCameraDownlinkBitrateDuringSharing;
+@property(readonly, nonatomic) NSArray *supportedVideoPayloads;
 @property(readonly, nonatomic) _Bool isPixelFormatAvailable;
 - (void)addPixelFormat;
+- (unsigned int)maxFpsCameraCaptureDuringSharing;
 - (unsigned int)maxRemoteParticipants30fps;
 @property(readonly, nonatomic) _Bool canDo1080p;
+@property(readonly, nonatomic) _Bool isHEVC444DecodeSupported;
 @property(readonly, nonatomic) _Bool isSecondDisplaySupportEnabled;
 @property(readonly, nonatomic) unsigned int audioPacketLossConcealmentAlgorithmAACELD;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
 @property(readonly, nonatomic) _Bool hasAppleNeuralEngine;
 @property(readonly, nonatomic) _Bool isDeviceLargeScreen;
+@property(readonly, nonatomic) unsigned int maxActiveScreenEncoders;
 @property(readonly, nonatomic) unsigned int maxActiveVideoDecoders;
 @property(readonly, nonatomic) unsigned int maxActiveVideoEncoders;
 @property(readonly, nonatomic) unsigned int maxDisplayRefreshRate;
-@property(readonly, nonatomic) unsigned int maxMultiwayFramerateSupported;
+- (unsigned int)maxMultiwayFramerateSupported;
+- (unsigned int)maxOneToOneFramerateSupported;
 @property(readonly, nonatomic) _Bool supportsMultiway720pStream;
 @property(readonly, nonatomic) _Bool useSoftFramerateSwitching;
 @property(readonly, nonatomic) long long videoEncoderType;
 @property(readonly, nonatomic) long long chipId;
 @property(readonly, nonatomic) long long deviceClass;
-@property(readonly, nonatomic) int screenHeight;
-@property(readonly, nonatomic) int screenWidth;
+- (unsigned int)maxFrameRateSupportedBackgroundBlur;
+@property(readonly, nonatomic) unsigned int maxFrameRateSupportedScreenShare;
+@property(readonly, nonatomic) unsigned long long maxScreenEncodingSizeSupported;
+@property(readonly, nonatomic) _Bool isDisplayPortrait;
+- (float)previewPreferredAspectRatio;
+@property(readonly, nonatomic) unsigned int mainDisplayHeight;
+@property(readonly, nonatomic) unsigned int mainDisplayWidth;
+@property(readonly, nonatomic) unsigned int screenHeight;
+@property(readonly, nonatomic) unsigned int screenWidth;
+@property(readonly, nonatomic) _Bool isCaptureSIFRPreferred;
+@property(readonly, nonatomic) _Bool isSpatialAudioSupported;
+- (_Bool)isSpatialAudioSupportedIPad;
+- (_Bool)isSpatialAudioSupportedIPhone;
 @property(readonly, nonatomic) _Bool hasBaseband;
+- (id)marketingName;
 @property(readonly, nonatomic) NSString *deviceName;
 - (void)_initializeScreenDimension;
 - (void)dealloc;

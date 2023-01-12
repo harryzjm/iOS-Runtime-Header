@@ -10,9 +10,18 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct _HMFFutureBlockOutcome {
+    long long _field1;
+    id _field2;
+};
+
 struct _HMFRate {
     unsigned long long value;
     double period;
+};
+
+struct atomic_flag {
+    _Atomic _Bool _Value;
 };
 
 struct hmf_unfair_data_lock_s {
@@ -64,6 +73,13 @@ struct sockaddr_in6 {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 
 typedef struct {
     unsigned int _field1[8];

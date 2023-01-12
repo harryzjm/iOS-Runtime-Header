@@ -12,6 +12,7 @@
 @protocol GEOResourceManifestServerProxyDelegate <NSObject>
 - (void)serverProxyNeedsWiFiResourceActivity:(id <GEOResourceManifestServerProxy>)arg1;
 - (oneway void)serverProxy:(id <GEOResourceManifestServerProxy>)arg1 didChangeActiveTileGroup:(GEOActiveTileGroup *)arg2 finishedCallback:(void (^)(void))arg3;
+- (void)serverProxy:(id <GEOResourceManifestServerProxy>)arg1 didLoadActiveTileGroup:(GEOActiveTileGroup *)arg2;
 - (oneway void)serverProxyDidStopLoadingResources:(id <GEOResourceManifestServerProxy>)arg1;
 - (oneway void)serverProxyWillStartLoadingResources:(id <GEOResourceManifestServerProxy>)arg1;
 - (oneway void)serverProxyDidStopUpdatingResourceManifest:(id <GEOResourceManifestServerProxy>)arg1;

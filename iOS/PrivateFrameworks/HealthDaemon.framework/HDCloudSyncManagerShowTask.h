@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableString, NSString;
+@class NSArray, NSMutableArray;
 
 @interface HDCloudSyncManagerShowTask
 {
     struct os_unfair_lock_s _lock;
-    NSMutableString *_accumulatedDescription;
-    NSString *_cloudDescription;
+    NSMutableArray *_allRepositoryDescriptions;
+    NSArray *_repositoryDescriptions;
 }
 
 - (void).cxx_destruct;
-@property(copy) NSString *cloudDescription; // @synthesize cloudDescription=_cloudDescription;
+@property(readonly, copy) NSArray *repositoryDescriptions;
 - (void)didFailWithErrors:(id)arg1;
 - (void)didFinishWithSuccess;
 - (id)pipelineForRepository:(id)arg1;

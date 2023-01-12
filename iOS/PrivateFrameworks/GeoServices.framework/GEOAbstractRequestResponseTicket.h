@@ -9,6 +9,7 @@
 @interface GEOAbstractRequestResponseTicket
 {
     GEOPDPlaceRequest *_request;
+    id _requestToken;
     GEOPDPlaceResponse *_response;
 }
 

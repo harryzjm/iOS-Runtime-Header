@@ -11,16 +11,16 @@
 
 @interface TSCHMultiDataChartRepElement : NSObject
 {
-    CALayer<TSCHMultiDataElementShapeLayer> *mElementLayer;
-    TSCHMultiDataAnimatingFrameLayer *mLabelLayer;
-    _Bool mElementUndefined;
+    CALayer<TSCHMultiDataElementShapeLayer> *_elementLayer;
+    TSCHMultiDataAnimatingFrameLayer *_labelLayer;
+    _Bool _elementUndefined;
 }
 
 + (id)elementWithElementLayer:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool elementUndefined; // @synthesize elementUndefined=mElementUndefined;
-@property(readonly, nonatomic) TSCHMultiDataAnimatingFrameLayer *labelLayer; // @synthesize labelLayer=mLabelLayer;
-@property(readonly, nonatomic) CALayer<TSCHMultiDataElementShapeLayer> *elementLayer; // @synthesize elementLayer=mElementLayer;
+@property(nonatomic) _Bool elementUndefined; // @synthesize elementUndefined=_elementUndefined;
+@property(readonly, nonatomic) TSCHMultiDataAnimatingFrameLayer *labelLayer; // @synthesize labelLayer=_labelLayer;
+@property(readonly, nonatomic) CALayer<TSCHMultiDataElementShapeLayer> *elementLayer; // @synthesize elementLayer=_elementLayer;
 - (void)addAnimationForKey:(id)arg1 values:(id)arg2 keyTimes:(id)arg3 toAnimationInfo:(id)arg4;
 - (void)setOpacity:(double)arg1;
 - (void)setContentsScale:(double)arg1;

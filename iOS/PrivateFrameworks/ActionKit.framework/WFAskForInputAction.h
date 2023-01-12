@@ -18,14 +18,13 @@
 - (void)finishRunningWithDate:(id)arg1;
 - (void)finishRunningWithResultText:(id)arg1;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)runWithSiriUserInterface:(id)arg1 input:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)datePickerModeFromInputType:(id)arg1;
 @property(readonly, nonatomic) _Bool immediatelyActivateWatchDictation;
 @property(readonly, nonatomic) NSString *defaultAnswer;
 @property(readonly, nonatomic) NSString *promptText;
 @property(readonly, nonatomic) NSString *inputType;
-- (_Bool)shouldCreateIntentAvailableResource;
+- (id)appResource;
 
 @end
 

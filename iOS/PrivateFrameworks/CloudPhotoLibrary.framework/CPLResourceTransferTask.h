@@ -8,34 +8,33 @@
 
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class CPLResource, NSString;
+@class CPLResource, CPLResourceTransferTaskOptions, NSString;
 
 @interface CPLResourceTransferTask : NSObject <NSSecureCoding>
 {
-    _Bool _highPriority;
+    CPLResourceTransferTaskOptions *_options;
     _Bool _cancelled;
     CPLResource *_resource;
     NSString *_taskIdentifier;
-    unsigned long long _intent;
 }
 
++ (_Bool)isForegroundOperationForIntent:(unsigned long long)arg1;
 + (_Bool)isHighPriorityForIntent:(unsigned long long)arg1;
-+ (id)intentsToBackgroundDownload;
 + (id)descriptionForIntent:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
-@property(nonatomic) unsigned long long intent; // @synthesize intent=_intent;
-@property(nonatomic, getter=isHighPriority) _Bool highPriority; // @synthesize highPriority=_highPriority;
 @property(readonly, copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property(readonly, nonatomic) CPLResource *resource; // @synthesize resource=_resource;
+@property(nonatomic) unsigned long long intent;
+@property(copy, nonatomic) CPLResourceTransferTaskOptions *options;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)cancelTask;
 - (void)launch;
+@property(nonatomic, getter=isHighPriority) _Bool highPriority;
 - (void)setTaskIdentifier:(id)arg1;
-- (void)setResource:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (Class)classForKeyedArchiver;

@@ -22,6 +22,7 @@
 - (_Bool)_isUserConfirmationRequired;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
+- (id)_redactedDictionaryRepresentation;
 - (void)setNote:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *note;
 - (void)setCurrencyAmount:(id)arg1;

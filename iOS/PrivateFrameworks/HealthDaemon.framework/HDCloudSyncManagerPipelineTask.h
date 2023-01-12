@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDAssertion;
+@class HDAssertion, NSArray;
 
 @interface HDCloudSyncManagerPipelineTask
 {
     struct os_unfair_lock_s _lock;
     CDUnknownBlockType _completion;
     HDAssertion *_accessibilityAssertion;
+    NSArray *_pipelines;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *pipelines; // @synthesize pipelines=_pipelines;
 @property(retain, nonatomic) HDAssertion *accessibilityAssertion; // @synthesize accessibilityAssertion=_accessibilityAssertion;
 - (_Bool)requiresExistingShareOwnerParticipant;
 - (void)callCompletionWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)didFailWithErrors:(id)arg1;
 - (void)didFinishWithSuccess;
+- (void)cancel;
 - (id)pipelineForRepository:(id)arg1;
 - (void)mainWithRepositories:(id)arg1 error:(id)arg2;
 - (void)dealloc;

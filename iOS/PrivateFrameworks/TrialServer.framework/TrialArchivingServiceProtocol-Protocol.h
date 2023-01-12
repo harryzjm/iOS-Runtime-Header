@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, NSURL;
+@class NSFileHandle, NSString, NSURL;
 
 @protocol TrialArchivingServiceProtocol
-- (void)extractArchiveFromData:(NSData *)arg1 withArchiveName:(NSString *)arg2 withExtension:(NSString *)arg3 toDirectory:(NSURL *)arg4 completion:(void (^)(_Bool))arg5;
+- (void)removeCachedANESegmentsForModelAtURL:(NSURL *)arg1 pathExtension:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)applyPatchWithFilename:(NSString *)arg1 patchExtension:(NSString *)arg2 toSrcDir:(NSString *)arg3 srcDirExtension:(NSString *)arg4 writingToDestDir:(NSString *)arg5 destDirExtension:(NSString *)arg6 postPatchCompression:(unsigned long long)arg7 completion:(void (^)(_Bool, NSError *))arg8;
+- (void)decryptAssetWithURL:(NSURL *)arg1 toDestinationFileURL:(NSURL *)arg2 namespaceName:(NSString *)arg3 sourceExtension:(NSString *)arg4 destinationExtension:(NSString *)arg5 completion:(void (^)(_Bool))arg6;
+- (void)extractArchiveFromHandle:(NSFileHandle *)arg1 withArchiveName:(NSString *)arg2 toDirectory:(NSURL *)arg3 destDirExtension:(NSString *)arg4 postExtractionCompression:(unsigned long long)arg5 completion:(void (^)(_Bool))arg6;
 @end
 

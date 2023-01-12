@@ -13,9 +13,10 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *articleRecirculationService;
-    MISSING_TYPE *legacyNativeAdService;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *readingList;
+    MISSING_TYPE *feedServiceConfigFetcher;
+    MISSING_TYPE *feedService;
+    MISSING_TYPE *accessQueue;
+    MISSING_TYPE *feedContextFactory;
 }
 
 - (void).cxx_destruct;

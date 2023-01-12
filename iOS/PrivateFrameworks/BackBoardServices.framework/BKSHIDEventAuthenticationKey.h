@@ -14,9 +14,7 @@
 @interface BKSHIDEventAuthenticationKey : NSObject <NSSecureCoding, BSProtobufSerializable>
 {
     NSData *_keyData;
-    struct {
-        unsigned int ctx[96];
-    } _hmacContext;
+    CDStruct_43cfb2c2 _hmacContext;
     struct atomic_flag _hmacInitialized;
     long long _generation;
 }

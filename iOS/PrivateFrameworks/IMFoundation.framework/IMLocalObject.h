@@ -22,10 +22,11 @@
 + (id)_imLocalObjectQueue;
 - (id)description;
 - (void)invalidate;
-@property(retain, nonatomic) NSArray *whitelistedClasses;
+@property(retain, nonatomic) NSArray *allowlistedClasses;
 @property(readonly, nonatomic) _Bool isValid;
 - (_Bool)isSameConnection:(id)arg1;
 - (_Bool)isValidSelector:(SEL)arg1;
+- (void)_enqueueInvocationWithSync:(id)arg1 xpcMessage:(id)arg2 submitToComponentQueue:(_Bool)arg3 isReply:(_Bool)arg4;
 - (void)_enqueueInvocationWithSync:(id)arg1 xpcMessage:(id)arg2 submitToComponentQueue:(_Bool)arg3;
 - (void)_enqueueInvocationWithSync:(id)arg1 xpcMessage:(id)arg2;
 - (void)_enqueueInvocationWithSync:(id)arg1;
@@ -33,7 +34,7 @@
 - (void)_enqueueInvocationWithPriority:(id)arg1 priority:(int)arg2;
 - (void)_enqueueInvocation:(id)arg1 xpcMessage:(id)arg2;
 - (void)_enqueueInvocation:(id)arg1;
-- (void)_enqueueInvocation:(id)arg1 xpcMessage:(id)arg2 submitToComponentQueue:(_Bool)arg3 isSync:(_Bool)arg4;
+- (void)_enqueueInvocation:(id)arg1 xpcMessage:(id)arg2 submitToComponentQueue:(_Bool)arg3 isSync:(_Bool)arg4 isReply:(_Bool)arg5;
 - (void)_popInvocation;
 - (id)_peekInvocation;
 - (void)_noteNewInvocation:(_Bool)arg1;
@@ -57,6 +58,7 @@
 @property(readonly, nonatomic) NSProtocolChecker *protocolChecker;
 @property(nonatomic) id target;
 - (id)initWithTarget:(id)arg1 portName:(id)arg2 protocol:(id)arg3;
+@property(retain, nonatomic) NSArray *whitelistedClasses;
 - (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3 forceSecureCoding:(_Bool)arg4 offMainThread:(_Bool)arg5;
 - (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3 forceSecureCoding:(_Bool)arg4;
 - (id)initWithTarget:(id)arg1 connection:(id)arg2 protocol:(id)arg3;

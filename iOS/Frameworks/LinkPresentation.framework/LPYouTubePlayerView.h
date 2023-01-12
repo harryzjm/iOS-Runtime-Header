@@ -8,13 +8,15 @@
 
 #import <LinkPresentation/UIScrollViewDelegate-Protocol.h>
 #import <LinkPresentation/WKNavigationDelegate-Protocol.h>
+#import <LinkPresentation/WKUIDelegate-Protocol.h>
 
-@class LPYouTubePlayerScriptMessageHandler, NSMutableArray, NSString, WKWebView;
+@class LPYouTubePlayerScriptMessageHandler, LPYouTubePlayerViewFullScreenDelegate, LPYouTubePlayerWebView, NSMutableArray, NSString;
 @protocol LPYouTubePlayerDelegate;
 
-@interface LPYouTubePlayerView : UIView <UIScrollViewDelegate, WKNavigationDelegate>
+@interface LPYouTubePlayerView : UIView <UIScrollViewDelegate, WKNavigationDelegate, WKUIDelegate>
 {
-    WKWebView *_webView;
+    LPYouTubePlayerViewFullScreenDelegate *_fullScreenDelegate;
+    LPYouTubePlayerWebView *_webView;
     NSString *_videoID;
     long long _state;
     LPYouTubePlayerScriptMessageHandler *_scriptMessageHandler;
@@ -41,10 +43,14 @@
 - (void)_webView:(id)arg1 navigation:(id)arg2 didFailProvisionalLoadInSubframe:(id)arg3 withError:(id)arg4;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (id)webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 preferences:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
+- (void)webViewWebContentProcessDidTerminate:(id)arg1;
 - (void)createVideoPlayerView;
 - (id)_parameterScript;
 - (void)exitFullScreen;
 - (void)enterFullScreen;
+- (_Bool)_shouldUseElementFullScreen;
 - (void)seekTo:(double)arg1;
 - (void)pause;
 - (void)play;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IntentsUI/NSObject-Protocol.h>
+#import <IntentsUI/_INUIRemoteViewControllerServing-Protocol.h>
 
 @class _INUIExtensionContextState;
 
-@protocol _INUIExtensionContextVending <NSObject>
+@protocol _INUIExtensionContextVending <_INUIRemoteViewControllerServing>
 - (void)setExtensionContextState:(_INUIExtensionContextState *)arg1 completion:(void (^)(void))arg2;
 @end
 

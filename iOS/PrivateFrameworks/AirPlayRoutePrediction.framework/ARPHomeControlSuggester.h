@@ -34,20 +34,19 @@
 @property(nonatomic) double scoreThresholdForMicrolocationSuggestionsConsidered; // @synthesize scoreThresholdForMicrolocationSuggestionsConsidered=_scoreThresholdForMicrolocationSuggestionsConsidered;
 @property(retain, nonatomic) NSArray *homeKitEventsSortedByStartDate; // @synthesize homeKitEventsSortedByStartDate=_homeKitEventsSortedByStartDate;
 @property(readonly, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
-- (id)homeKitScenesWithPredicate:(id)arg1 sortStartDateAscending:(_Bool)arg2;
-- (id)homeKitAccessoriesWithPredicate:(id)arg1 sortStartDateAscending:(_Bool)arg2;
-- (id)homeKitEventsWithPredicate:(id)arg1 sortStartDateAscending:(_Bool)arg2;
+- (id)mostRecentHomeKitEvent;
+- (id)homeKitEventsWithLookbackDays:(long long)arg1;
 - (id)frequencybasedSuggestionsWitMaxSuggestions:(unsigned long long)arg1;
 - (id)frequencybasedSuggestionsWitMaxSuggestions:(unsigned long long)arg1 events:(id)arg2 useScenes:(_Bool)arg3;
 - (id)frequencybasedSuggestionsWitMaxSuggestions:(unsigned long long)arg1 events:(id)arg2;
 - (id)timeBucketFrequencyBasedSuggestionsWithMaxSuggestions:(unsigned long long)arg1 events:(id)arg2 referenceDate:(id)arg3;
 - (id)timeBasedSuggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2 fallBackToFrequency:(_Bool)arg3;
 - (id)timeBasedSuggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2;
+- (id)nextActionBasedsuggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2 correlationsFile:(id)arg3;
 - (id)microlocationBasedsuggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2 correlationsFile:(id)arg3;
 - (id)suggestionsWithMaxSuggestions:(unsigned long long)arg1 referenceDate:(id)arg2 correlationsFile:(id)arg3;
 - (id)suggestionsWithMaxSuggestions:(unsigned long long)arg1;
-- (id)initWithKnowledgeStore:(id)arg1 scoreThresholdForMicrolocationSuggestionsConsidered:(double)arg2 highScoreThresholdForMicroLocationSuggestionMerge:(double)arg3 lowScoreThresholdForMicroLocationSuggestionMerge:(double)arg4 highScoreThresholdForTimeBasedSuggestionMerge:(double)arg5 lowScoreThresholdForTimeBasedSuggestionMerge:(double)arg6;
-- (id)initWithKnowledgeStore:(id)arg1;
+- (id)initWithScoreThresholdForMicrolocationSuggestionsConsidered:(double)arg1 highScoreThresholdForMicroLocationSuggestionMerge:(double)arg2 lowScoreThresholdForMicroLocationSuggestionMerge:(double)arg3 highScoreThresholdForTimeBasedSuggestionMerge:(double)arg4 lowScoreThresholdForTimeBasedSuggestionMerge:(double)arg5;
 
 @end
 

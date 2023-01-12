@@ -13,10 +13,10 @@
     HDCloudSyncMedicalIDRecord *_medicalIDRecord;
 }
 
++ (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDCloudSyncMedicalIDRecord *medicalIDRecord; // @synthesize medicalIDRecord=_medicalIDRecord;
 @property(readonly, nonatomic) _HKMedicalIDData *cloudMedicalIDData; // @synthesize cloudMedicalIDData=_cloudMedicalIDData;
-- (void)_startMedicalIDFetchForContainer:(id)arg1 database:(id)arg2;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 container:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

@@ -16,10 +16,20 @@
     NSString *_account;
     NSString *_extendedAccount;
     NSString *_payments;
+    NSString *_users;
+    NSString *_sharedAccountCloudStore;
+    NSString *_applications;
+    NSString *_physicalCards;
+    NSString *_servicingToken;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *servicingToken; // @synthesize servicingToken=_servicingToken;
+@property(copy, nonatomic) NSString *physicalCards; // @synthesize physicalCards=_physicalCards;
+@property(copy, nonatomic) NSString *applications; // @synthesize applications=_applications;
+@property(copy, nonatomic) NSString *sharedAccountCloudStore; // @synthesize sharedAccountCloudStore=_sharedAccountCloudStore;
+@property(copy, nonatomic) NSString *users; // @synthesize users=_users;
 @property(copy, nonatomic) NSString *payments; // @synthesize payments=_payments;
 @property(copy, nonatomic) NSString *extendedAccount; // @synthesize extendedAccount=_extendedAccount;
 @property(copy, nonatomic) NSString *account; // @synthesize account=_account;

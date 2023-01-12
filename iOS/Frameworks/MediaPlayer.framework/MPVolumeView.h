@@ -19,7 +19,6 @@
     _Bool _hasNonDefaultMinVolumeSliderImage;
     _Bool _hidesRouteLabelWhenNoRouteChoice;
     UIButton *_routeButton;
-    _Bool _routeButtonShowsTouchWhenHighlighted;
     _Bool _routeDiscoveryEnabled;
     UILabel *_routeLabel;
     _Bool _showingButton;
@@ -64,7 +63,6 @@
 @property(nonatomic) _Bool showsVolumeSlider;
 @property(nonatomic) _Bool showsRouteButton;
 - (void)setVolumeThumbImage:(id)arg1 forState:(unsigned long long)arg2;
-@property(nonatomic) _Bool routeButtonShowsTouchWhenHighlighted;
 - (void)setRouteButtonImage:(id)arg1 forState:(unsigned long long)arg2;
 @property(retain, nonatomic) UIImage *volumeWarningSliderImage;
 - (void)setMaximumVolumeSliderImage:(id)arg1 forState:(unsigned long long)arg2;

@@ -22,14 +22,7 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NFMutexLock *lock; // @synthesize lock=_lock;
-@property(nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
-@property(retain, nonatomic) id <FCOperationCanceling><FCOperationPrioritizing> activeOperation; // @synthesize activeOperation=_activeOperation;
-@property(retain, nonatomic) NSObject<OS_dispatch_group> *activeGroup; // @synthesize activeGroup=_activeGroup;
-@property(nonatomic) unsigned long long interest; // @synthesize interest=_interest;
-@property(nonatomic) _Bool succeeded; // @synthesize succeeded=_succeeded;
-@property(nonatomic) _Bool finished; // @synthesize finished=_finished;
-@property(copy, nonatomic) CDUnknownBlockType workBlock; // @synthesize workBlock=_workBlock;
+- (void)setRelativePriority:(long long)arg1;
 @property(readonly, nonatomic) _Bool finishedExecutingWithFailure;
 @property(readonly, nonatomic) _Bool finishedExecuting;
 - (id)executeWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

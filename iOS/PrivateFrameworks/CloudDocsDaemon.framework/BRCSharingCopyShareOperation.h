@@ -8,7 +8,6 @@
 
 @class BRCClientZone, BRCItemID, CKRecordID, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingCopyShareOperation <BRCOperationSubclass>
 {
     CKRecordID *_shareID;

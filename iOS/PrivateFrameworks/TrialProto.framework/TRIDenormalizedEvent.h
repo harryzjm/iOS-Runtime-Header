@@ -8,7 +8,7 @@
 
 #import <TrialProto/NSCopying-Protocol.h>
 
-@class NSMutableArray, TRISubject, TRISystemDimensions;
+@class NSMutableArray, TRISubject, TRISystemDimensions, TRITrialSystemTelemetry;
 
 @interface TRIDenormalizedEvent : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     TRISubject *_subject;
     TRISystemDimensions *_systemDimensions;
     NSMutableArray *_treatments;
+    TRITrialSystemTelemetry *_trialSystemTelemetry;
     NSMutableArray *_userDimensions;
 }
 
@@ -23,6 +24,7 @@
 + (Class)userDimensionType;
 + (Class)treatmentType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) TRITrialSystemTelemetry *trialSystemTelemetry; // @synthesize trialSystemTelemetry=_trialSystemTelemetry;
 @property(retain, nonatomic) NSMutableArray *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) NSMutableArray *userDimensions; // @synthesize userDimensions=_userDimensions;
 @property(retain, nonatomic) TRISystemDimensions *systemDimensions; // @synthesize systemDimensions=_systemDimensions;
@@ -37,6 +39,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasTrialSystemTelemetry;
 - (id)metricAtIndex:(unsigned long long)arg1;
 - (unsigned long long)metricsCount;
 - (void)addMetric:(id)arg1;

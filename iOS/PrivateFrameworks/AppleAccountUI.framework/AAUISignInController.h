@@ -9,7 +9,7 @@
 #import <AppleAccountUI/AAUISignInViewControllerInternalDelegate-Protocol.h>
 #import <AppleAccountUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class AAUISignInFlowControllerDelegate, CDPUIController, NSDictionary, NSString;
+@class AAUISignInFlowControllerDelegate, CDPUIController, NSArray, NSDictionary, NSString;
 @protocol AAUISignInControllerDelegate, AIDAServiceOwnerProtocol;
 
 @interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate, UIAdaptivePresentationControllerDelegate>
@@ -24,10 +24,12 @@
     _Bool __shouldForceOperation;
     NSString *_username;
     NSString *_serviceType;
+    NSArray *_privacyLinkIdentifiers;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, setter=_setShouldForceOperation:) _Bool _shouldForceOperation; // @synthesize _shouldForceOperation=__shouldForceOperation;
+@property(copy, nonatomic) NSArray *privacyLinkIdentifiers; // @synthesize privacyLinkIdentifiers=_privacyLinkIdentifiers;
 @property(retain, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(nonatomic) _Bool canEditUsername; // @synthesize canEditUsername=_canEditUsername;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;

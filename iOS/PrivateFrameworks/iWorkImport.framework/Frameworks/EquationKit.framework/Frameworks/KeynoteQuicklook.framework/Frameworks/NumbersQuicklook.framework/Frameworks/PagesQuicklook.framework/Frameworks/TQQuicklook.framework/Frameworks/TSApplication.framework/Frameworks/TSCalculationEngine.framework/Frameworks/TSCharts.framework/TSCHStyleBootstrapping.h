@@ -12,8 +12,8 @@
 {
 }
 
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3 reservedCount:(unsigned long long)arg4;
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3 reservedCount:(unsigned long long)arg4;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;
 + (void)bootstrapStylesInStylesheet:(id)arg1 numberOfPresets:(unsigned long long)arg2;
 + (id)stylePresetForStylesheet:(id)arg1 roleIndex:(unsigned long long)arg2;

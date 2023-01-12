@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
     _Bool _showsContentViewHighlight;
     _Bool _contentExtendsOverArrow;
     _Bool _chromeHidden;
+    _Bool _chromeHiddenForSizeTransition;
     UIActionSheet *_presentedActionSheet;
     UIPopoverController *_popoverController;
 }
 
 + (id)popoverViewContainingView:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool chromeHiddenForSizeTransition; // @synthesize chromeHiddenForSizeTransition=_chromeHiddenForSizeTransition;
 @property(nonatomic) _Bool chromeHidden; // @synthesize chromeHidden=_chromeHidden;
 @property(readonly, nonatomic) _Bool contentExtendsOverArrow; // @synthesize contentExtendsOverArrow=_contentExtendsOverArrow;
 @property(nonatomic) UIPopoverController *popoverController; // @synthesize popoverController=_popoverController;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long backgroundStyle;
 @property(nonatomic) unsigned long long arrowDirection;
 @property(nonatomic) double arrowOffset;
+- (void)_updateAlphaForChromeHidden;
 - (_Bool)_allowsCustomizationOfContent;
 - (void)_setPopoverContentView:(id)arg1;
 - (struct CGRect)_snapshotBounds;

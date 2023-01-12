@@ -46,6 +46,7 @@
 + (id)exabytes;
 + (id)zettabytes;
 + (id)yottabytes;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

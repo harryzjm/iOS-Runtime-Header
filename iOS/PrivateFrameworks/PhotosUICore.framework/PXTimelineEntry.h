@@ -26,8 +26,8 @@
     unsigned long long _rejectReason;
 }
 
-+ (id)_descriptionForRejectReason:(unsigned long long)arg1;
-+ (id)_descriptionForTimelineContentType:(unsigned long long)arg1;
++ (id)descriptionForRejectReason:(unsigned long long)arg1;
++ (id)descriptionForTimelineContentType:(unsigned long long)arg1;
 + (id)fallbackEntryForSize:(unsigned long long)arg1;
 + (id)placeholderEntry;
 + (id)emptyWidgetURL;
@@ -45,8 +45,12 @@
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(readonly, nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)dictionaryRepresentation;
 - (id)description;
+- (id)_utcTimeFormatter;
+- (id)_localTimeFormatter;
 - (id)_initWithTimelineEntry:(id)arg1;
 - (id)_initWithTitle:(id)arg1 subtitle:(id)arg2 localIdentifier:(id)arg3 assetLocalIdentifier:(id)arg4 deeplink:(id)arg5 contentType:(unsigned long long)arg6 relevanceScore:(double)arg7 proactiveCriterion:(id)arg8 suggestedCrop:(id)arg9 rejectReason:(unsigned long long)arg10;
 - (id)initWithFeaturedPhoto:(id)arg1 andFeaturedPhotoKeyAsset:(id)arg2 suggestedCrop:(id)arg3;

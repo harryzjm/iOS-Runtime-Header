@@ -9,7 +9,7 @@
 #import <CoreCDPInternal/CDPDCircleDelegate-Protocol.h>
 #import <CoreCDPInternal/CDPDSecureBackupDelegate-Protocol.h>
 
-@class CDPContext, CDPDCircleController, CDPDPCSController, CDPDSecureBackupController;
+@class CDPContext, CDPDCircleController, CDPDPCSController, CDPDSecureBackupController, CDPInheritanceTrustController;
 @protocol CDPStateUIProviderInternal;
 
 @interface CDPDStateMachine : NSObject <CDPDSecureBackupDelegate, CDPDCircleDelegate>
@@ -19,6 +19,7 @@
     CDPDPCSController *_pcsController;
     CDPDCircleController *_circleController;
     CDPDSecureBackupController *_secureBackupController;
+    CDPInheritanceTrustController *_inheritanceTrustController;
     _Bool _attemptedCDPEnable;
 }
 
@@ -41,11 +42,13 @@
 - (void)_enableSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_postRecoveryEnableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_disableAsyncModeRequested;
+- (void)_enableCustodianRecoveryIfAvailableForContext:(id)arg1;
 - (void)_attemptBackupRecoveryByPromptingForRemoteSecretWithLocalSecret:(id)arg1 localSecretType:(unsigned long long)arg2 useCachedSecret:(_Bool)arg3 circleJoinResult:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_attemptBackupRecoveryWithLocalSecret:(id)arg1 type:(unsigned long long)arg2 useCachedSecret:(_Bool)arg3 circleJoinResult:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_handleInteractiveRecoveryFlowWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_confirmCDPEligibilityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_enableKVSForAccount:(id)arg1 store:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_preflightAccountStateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_isICloudKeychainDisabledByManagementProfile;
 - (_Bool)shouldAllowCDPEnrollment;
@@ -64,6 +67,7 @@
 - (void)_handleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleRecoveryResetRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_enrollOrDisableCDPAfterEnabledStateVerified:(CDUnknownBlockType)arg1;
+- (void)_handleBeneficiaryTrustWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleiCDPStatusCheckError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;

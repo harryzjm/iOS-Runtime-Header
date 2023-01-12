@@ -24,6 +24,7 @@
 - (id)outOfBandSource;
 @property(readonly, nonatomic) NSString *displayName;
 - (id)displayNameWithLocale:(id)arg1;
+- (_Bool)_updateDisplayNameWithLocale:(id)arg1 fallingBackToMatchingUndeterminedAndMultilingual:(_Bool)arg2 context:(long long)arg3;
 - (id)_displayNameWithLocale:(id)arg1 fallingBackToMatchingUndeterminedAndMultilingual:(_Bool)arg2;
 - (id)_languageDisplayNameFromMetadataAccordingToPreferredLanguages:(id)arg1 fallingBackToMatchingEmptyLocale:(_Bool)arg2;
 - (id)_preferredMetadataTitleAccordingToPreferredLanguages:(id)arg1 fallingBackToMatchingEmptyLocale:(_Bool)arg2 excludeM3U8Metadata:(_Bool)arg3;

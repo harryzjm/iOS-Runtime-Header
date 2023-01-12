@@ -11,14 +11,16 @@
     SBAlertLayoutPresentationVerifier *_alertLayoutPresentationVerifier;
 }
 
++ (id)_traitsArbiterOrientationActuationRole;
 - (void).cxx_destruct;
 @property(nonatomic) __weak SBAlertLayoutPresentationVerifier *alertLayoutPresentationVerifier; // @synthesize alertLayoutPresentationVerifier=_alertLayoutPresentationVerifier;
+- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setCenter:(struct CGPoint)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
 - (_Bool)_canBecomeKeyWindow;
-- (id)initWithDebugName:(id)arg1 alertLayoutPresentationVerifier:(id)arg2;
+- (id)initWithRole:(id)arg1 debugName:(id)arg2 alertLayoutPresentationVerifier:(id)arg3;
 
 @end
 

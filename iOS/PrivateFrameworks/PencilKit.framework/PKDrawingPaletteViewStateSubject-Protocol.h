@@ -6,18 +6,23 @@
 
 #import <PencilKit/PKPaletteViewStateSubject-Protocol.h>
 
-@class NSArray, NSString;
-@protocol PKPaletteTool;
+@class NSArray, PKTool;
 
 @protocol PKDrawingPaletteViewStateSubject <PKPaletteViewStateSubject>
+@property(readonly, nonatomic) _Bool wantsMulticolorSwatchShadowInCompactSize;
+@property(readonly, nonatomic) _Bool useEqualSpacingLayoutInCompactSize;
+@property(readonly, nonatomic) double interItemUndoRedoButtonsSpacingInCompactSize;
+@property(readonly, nonatomic) double interItemUndoRedoButtonsSpacing;
+@property(readonly, nonatomic) double interItemToolsSpacingInCompactSize;
+@property(readonly, nonatomic) _Bool wantsEllipsisButtonVisibleInCompactSize;
+@property(readonly, nonatomic) _Bool wantsUndoRedoButtonsShadowInCompactSize;
+@property(readonly, nonatomic) _Bool wantsUndoRedoButtonsVisibleInCompactSize;
 @property(readonly, nonatomic) long long floatingKeyboardType;
 @property(readonly, nonatomic) _Bool enableKeyboardButtons;
 @property(readonly, nonatomic, getter=isVisible) _Bool visible;
 @property(readonly, copy, nonatomic) NSArray *inputAssistantItems;
-@property(readonly, nonatomic, getter=isHandwritingToolSelected) _Bool handwritingToolSelected;
-@property(readonly, nonatomic) NSString *handwritingToolLocaleIdentifier;
-@property(readonly, nonatomic) _Bool showsHandwritingTool;
-@property(readonly, nonatomic, getter=isAnnotationSupportEnabled) _Bool annotationSupportEnabled;
-@property(readonly, nonatomic) id <PKPaletteTool> selectedTool;
+@property(readonly, nonatomic) _Bool showsPlusButton;
+@property(readonly, nonatomic) _Bool hasHandwritingTool;
+@property(readonly, nonatomic) PKTool *selectedTool;
 @end
 

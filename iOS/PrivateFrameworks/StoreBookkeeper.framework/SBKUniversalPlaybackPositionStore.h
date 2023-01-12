@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSString, NSTimer, SBKAsynchronousTask, SBKRequestHandler;
+@class NSDate, NSMutableArray, NSNumber, NSString, NSTimer, SBKAsynchronousTask, SBKRequestHandler;
 @protocol OS_dispatch_queue, SBKUniversalPlaybackPositionDataSource;
 
 @interface SBKUniversalPlaybackPositionStore : NSObject
@@ -16,6 +16,7 @@
     _Bool _hasLocalChangesToSync;
     NSMutableArray *_pendingTaskBlocks;
     NSString *_domain;
+    NSNumber *_accountIdentifier;
     unsigned long long _automaticSynchronizeOptions;
     double _initialAutosyncInterval;
     double _pollingLimitFromBag;
@@ -34,13 +35,13 @@
 
 + (id)keyValueStoreItemIdentifierForItem:(id)arg1;
 - (void).cxx_destruct;
-@property(retain) NSTimer *timer; // @synthesize timer=_timer;
-@property(retain) NSDate *dateToFireNextTimer; // @synthesize dateToFireNextTimer=_dateToFireNextTimer;
-@property(retain) SBKRequestHandler *currentTaskRequestHandler; // @synthesize currentTaskRequestHandler=_currentTaskRequestHandler;
-@property(retain) SBKAsynchronousTask *bagLookupTask; // @synthesize bagLookupTask=_bagLookupTask;
-@property(retain) SBKAsynchronousTask *lookupDomainVersionTask; // @synthesize lookupDomainVersionTask=_lookupDomainVersionTask;
-@property(retain) SBKAsynchronousTask *currentTask; // @synthesize currentTask=_currentTask;
-@property(readonly) __weak id <SBKUniversalPlaybackPositionDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
+@property(retain, nonatomic) NSDate *dateToFireNextTimer; // @synthesize dateToFireNextTimer=_dateToFireNextTimer;
+@property(retain, nonatomic) SBKRequestHandler *currentTaskRequestHandler; // @synthesize currentTaskRequestHandler=_currentTaskRequestHandler;
+@property(retain, nonatomic) SBKAsynchronousTask *bagLookupTask; // @synthesize bagLookupTask=_bagLookupTask;
+@property(retain, nonatomic) SBKAsynchronousTask *lookupDomainVersionTask; // @synthesize lookupDomainVersionTask=_lookupDomainVersionTask;
+@property(retain, nonatomic) SBKAsynchronousTask *currentTask; // @synthesize currentTask=_currentTask;
+@property(readonly, nonatomic) __weak id <SBKUniversalPlaybackPositionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void)_onQueueStartNewTimerWithTimeIntervalSinceNow:(double)arg1;
 - (void)_onQueueStartNewTimer;
 - (void)_onQueueStopTimer;
@@ -75,8 +76,8 @@
 - (_Bool)automaticallySynchronizeLocalChangesOnResignActive;
 - (_Bool)_automaticallySynchronizeLocalChangesOnResignActive;
 - (void)setAutomaticallySynchronizeLocalChangesOnResignActive:(_Bool)arg1;
-@property _Bool hasLocalChangesToSync;
-@property unsigned long long automaticSynchronizeOptions;
+@property(nonatomic) _Bool hasLocalChangesToSync;
+@property(nonatomic) unsigned long long automaticSynchronizeOptions;
 - (void)resignActive;
 - (void)becomeActive;
 - (void)_onQueueUpdateTimerForAutomaticSyncOptionChanges;
@@ -84,6 +85,7 @@
 - (void)dealloc;
 - (id)initWithInitialUpdateDelay:(double)arg1;
 - (id)init;
+- (id)initWithDomain:(id)arg1 dataSource:(id)arg2 automaticSynchronizeOptions:(unsigned long long)arg3 accountIdentifier:(id)arg4 isActive:(_Bool)arg5;
 - (id)initWithDomain:(id)arg1 dataSource:(id)arg2 automaticSynchronizeOptions:(unsigned long long)arg3 isActive:(_Bool)arg4;
 - (void)deprecated_setDataSource:(id)arg1;
 

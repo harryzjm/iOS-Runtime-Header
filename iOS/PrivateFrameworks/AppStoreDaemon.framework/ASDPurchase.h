@@ -23,6 +23,7 @@
     _Bool _isBackgroundUpdate;
     _Bool _isRedownload;
     _Bool _shouldCancelForInstalledBundleItems;
+    _Bool _expectsIOSAppOnMac;
     _Bool _installUniversalVariant;
     _Bool _isCompatibilityUpdate;
     _Bool _isRefresh;
@@ -57,6 +58,7 @@
 @property(nonatomic) _Bool isCompatibilityUpdate; // @synthesize isCompatibilityUpdate=_isCompatibilityUpdate;
 @property(copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
 @property(nonatomic) _Bool installUniversalVariant; // @synthesize installUniversalVariant=_installUniversalVariant;
+@property(nonatomic) _Bool expectsIOSAppOnMac; // @synthesize expectsIOSAppOnMac=_expectsIOSAppOnMac;
 @property(copy) NSString *preflightURLString; // @synthesize preflightURLString=_preflightURLString;
 @property(nonatomic) _Bool shouldCancelForInstalledBundleItems; // @synthesize shouldCancelForInstalledBundleItems=_shouldCancelForInstalledBundleItems;
 @property(copy, nonatomic) NSArray *requiredCapabilities; // @synthesize requiredCapabilities=_requiredCapabilities;

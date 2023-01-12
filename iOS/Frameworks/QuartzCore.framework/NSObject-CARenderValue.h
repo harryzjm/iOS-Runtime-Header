@@ -18,6 +18,7 @@
 + (CDUnknownFunctionPointerType)CA_getterForProperty:(const struct _CAPropertyInfo *)arg1;
 + (CDUnknownFunctionPointerType)CA_setterForProperty:(const struct _CAPropertyInfo *)arg1;
 - (unsigned long long)CA_copyNumericValue:(double [20])arg1;
+- (struct Object *)CA_copyRenderValueWithColorspace:(struct CGColorSpace *)arg1;
 - (struct Object *)CA_copyRenderValue;
 - (void)CA_prepareRenderValue;
 - (double)CA_distanceToValue:(id)arg1;

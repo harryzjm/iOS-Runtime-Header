@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SilexVideo/SVVisibilityMonitor.h>
-
 @class SVKeyValueObserver;
 
-@interface SXVideoPlayerAdSlotVisibilityMonitor : SVVisibilityMonitor
+@interface SXVideoPlayerAdSlotVisibilityMonitor
 {
     SVKeyValueObserver *_observer;
 }

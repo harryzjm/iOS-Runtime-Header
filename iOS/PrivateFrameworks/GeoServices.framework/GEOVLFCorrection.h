@@ -10,9 +10,11 @@
 
 @interface GEOVLFCorrection : PBCodable <NSCopying>
 {
+    unsigned int _altitudeCorrectionMagnitude;
     unsigned int _headingCorrectionMagnitude;
     unsigned int _locationCorrectionMagnitude;
     struct {
+        unsigned int has_altitudeCorrectionMagnitude:1;
         unsigned int has_headingCorrectionMagnitude:1;
         unsigned int has_locationCorrectionMagnitude:1;
     } _flags;
@@ -32,6 +34,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAltitudeCorrectionMagnitude;
+@property(nonatomic) unsigned int altitudeCorrectionMagnitude;
 @property(nonatomic) _Bool hasHeadingCorrectionMagnitude;
 @property(nonatomic) unsigned int headingCorrectionMagnitude;
 @property(nonatomic) _Bool hasLocationCorrectionMagnitude;

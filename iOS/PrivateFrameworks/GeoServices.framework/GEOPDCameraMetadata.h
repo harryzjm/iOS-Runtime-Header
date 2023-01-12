@@ -34,37 +34,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (void)setTextureIds:(unsigned int *)arg1 count:(unsigned long long)arg2;
-- (unsigned int)textureIdAtIndex:(unsigned long long)arg1;
-- (void)addTextureId:(unsigned int)arg1;
-- (void)clearTextureIds;
-@property(readonly, nonatomic) unsigned int *textureIds;
-@property(readonly, nonatomic) unsigned long long textureIdsCount;
-@property(retain, nonatomic) GEOPDOrientedPosition *position;
-@property(readonly, nonatomic) _Bool hasPosition;
-@property(retain, nonatomic) GEOPDLensProjection *lensProjection;
-@property(readonly, nonatomic) _Bool hasLensProjection;
-@property(nonatomic) _Bool hasImageHeight;
-@property(nonatomic) int imageHeight;
-@property(nonatomic) _Bool hasImageWidth;
-@property(nonatomic) int imageWidth;
-@property(nonatomic) _Bool hasCameraNumber;
-@property(nonatomic) int cameraNumber;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

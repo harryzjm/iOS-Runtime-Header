@@ -11,14 +11,18 @@
 @interface CRLanguageResourcesManager : NSObject
 {
     NSMutableDictionary *_languageResourceStacks;
+    long long _resourceType;
 }
 
++ (id)postProcessManager;
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property long long resourceType; // @synthesize resourceType=_resourceType;
 @property(retain) NSMutableDictionary *languageResourceStacks; // @synthesize languageResourceStacks=_languageResourceStacks;
 - (_Bool)lockResourcesForLocale:(id)arg1 sender:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)removeSubscriber:(id)arg1 forLocale:(id)arg2;
 - (void)addSubscriber:(id)arg1 forLocale:(id)arg2;
+- (id)initWithType:(long long)arg1;
 
 @end
 

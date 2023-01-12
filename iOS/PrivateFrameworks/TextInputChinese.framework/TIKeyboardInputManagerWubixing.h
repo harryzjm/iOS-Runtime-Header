@@ -21,9 +21,11 @@
 - (unsigned int)inputIndex;
 - (void)updateMarkedText;
 - (void)addInput:(id)arg1 withContext:(id)arg2;
+- (_Bool)acceptAutocorrectionCommitsInline;
 - (id)sortingMethods;
 - (int)inputMethodType;
 - (_Bool)supportsNumberKeySelection;
+- (unsigned long long)initialSelectedIndex;
 - (id)keyboardBehaviors;
 - (_Bool)usesPunctuationKeysForRowNavigation;
 

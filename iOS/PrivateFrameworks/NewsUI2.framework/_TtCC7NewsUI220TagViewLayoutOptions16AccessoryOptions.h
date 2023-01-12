@@ -13,7 +13,6 @@
     MISSING_TYPE *items;
     MISSING_TYPE *compactItemSize;
     MISSING_TYPE *largeItemSize;
-    MISSING_TYPE *padding;
 }
 
 @end

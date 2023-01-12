@@ -6,7 +6,7 @@
 
 @interface VKDebugTreeDataNode
 {
-    const struct DebugTreeNode *_node;
+    const void *_node;
 }
 
 - (long long)propertyCount;
@@ -17,7 +17,7 @@
 - (id)name;
 - (_Bool)isExpandable;
 - (void)buildChildren;
-- (id)initWithDebugTreeNode:(const struct DebugTreeNode *)arg1 withParent:(id)arg2;
+- (id)initWithDebugTreeNode:(const void *)arg1 withParent:(id)arg2;
 
 @end
 

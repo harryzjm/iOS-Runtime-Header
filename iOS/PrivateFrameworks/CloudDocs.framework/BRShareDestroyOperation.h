@@ -17,6 +17,7 @@
 @property(retain, nonatomic) CKShare *share; // @synthesize share=_share;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)main;
+- (id)initWithShare:(id)arg1 fileURL:(id)arg2;
 - (id)initWithShare:(id)arg1;
 
 @end

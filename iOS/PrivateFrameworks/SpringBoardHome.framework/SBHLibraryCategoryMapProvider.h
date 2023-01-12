@@ -25,6 +25,7 @@
     _Bool _refreshIsScheduled;
     _Bool _isCategoryMapOverriddenForTesting;
     long long _sessionIdentifier;
+    id _localeNotificationHandle;
     id _clearCacheNotificationHandle;
     SBHLibraryCategoryMap *_libraryCategoryMap;
 }
@@ -40,6 +41,7 @@
 - (void)_workQueue_cancelAnyScheduledRefresh;
 - (void)_workQueue_scheduleRefreshIfNotScheduled;
 - (void)_workQueue_queueUpNextRequests:(id)arg1 runNow:(_Bool)arg2;
+- (void)_setupLocaleNotification;
 - (void)_setupClearCacheNotification;
 - (void)_kickoffInitialHydration;
 - (unsigned long long)_nextSessionIdentifier;

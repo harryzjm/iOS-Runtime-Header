@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long userInputInsertionIndex; // @synthesize userInputInsertionIndex=_userInputInsertionIndex;
 @property(readonly, copy, nonatomic) WFVariableString *variableString; // @synthesize variableString=_variableString;
+@property(readonly, nonatomic) _Bool shouldSerializeAsPlainString;
 - (id)parameterStateByRemovingAskVariablesAndPopulatingInsertionIndex;
 - (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)containedVariables;

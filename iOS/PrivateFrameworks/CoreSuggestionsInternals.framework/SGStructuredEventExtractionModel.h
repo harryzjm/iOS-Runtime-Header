@@ -15,18 +15,23 @@
     NSDictionary *_engineConfig;
 }
 
-+ (id)inputFromTaggedCharacterRanges:(id)arg1 usingInputMapping:(id)arg2 forModel:(id)arg3;
++ (id)inputFromTaggedCharacterRanges:(id)arg1 usingInputMapping:(id)arg2 forModel:(id)arg3 pflTraining:(_Bool)arg4 hasEvent:(_Bool)arg5;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)gazetteer;
+- (unsigned long long)addressComponentThreshold;
+- (unsigned long long)stripRepeatedContentForSectionLength:(id)arg1 label:(id)arg2;
 - (unsigned long long)maxMergeDistanceForSection:(id)arg1 label:(id)arg2;
 - (id)outputMapping;
 - (id)inputMapping;
 - (id)engineConfig;
+- (_Bool)isSenderSupportedForPFLTraining:(id)arg1;
+- (_Bool)isSenderSupportedForMLDefaultExtraction:(id)arg1;
 - (_Bool)isSenderSupportedForShadowExtraction:(id)arg1;
 - (_Bool)isSenderSupportedForExtraction:(id)arg1;
 - (id)supportedProviders;
 - (id)loadModel;
+- (id)modelInferences:(id)arg1 pflTraining:(_Bool)arg2 hasEvent:(_Bool)arg3;
 - (id)modelInferences:(id)arg1;
 - (void)updateAll;
 - (id)_init;

@@ -6,21 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ASDBetaAppVersion : NSObject <NSSecureCoding>
+@interface ASDBetaAppVersion : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_bundleID;
     NSString *_bundleVersion;
+    long long _platform;
     NSString *_shortVersion;
 }
 
 + (_Bool)supportsSecureCoding;
++ (long long)defaultPlatform;
++ (id)versionWithBundleID:(id)arg1 bundleVersion:(id)arg2 platform:(long long)arg3 andShortVersion:(id)arg4;
 + (id)versionWithBundleID:(id)arg1 bundleVersion:(id)arg2 andShortVersion:(id)arg3;
 - (void).cxx_destruct;
 @property(copy) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
+@property long long platform; // @synthesize platform=_platform;
 @property(copy) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)initWithCoder:(id)arg1;

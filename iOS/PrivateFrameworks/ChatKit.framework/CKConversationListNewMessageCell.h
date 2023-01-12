@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class CKAvatarView, NSObject, UIButton;
+@class CKAvatarView, CKConversation, NSObject, UIButton;
 @protocol CKConversationListCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,11 +15,14 @@ __attribute__((visibility("hidden")))
     UIButton *_closeButton;
     CKAvatarView *_avatarView;
     NSObject<CKConversationListCellDelegate> *_delegate;
+    CKConversation *_conversation;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak NSObject<CKConversationListCellDelegate> *delegate; // @synthesize delegate=_delegate;
+- (void)updateContentsForConversation:(id)arg1;
 - (_Bool)showingEditControl;
 - (double)leadingLayoutMargin;
 - (id)avatarView;

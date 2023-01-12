@@ -6,7 +6,7 @@
 
 #import <MapsSupport/NSObject-Protocol.h>
 
-@class MSPNavigationListener, NSError;
+@class MSPNavigationListener;
 
 @protocol MSPNavigationListenerDelegate <NSObject>
 - (void)navigationListenerStopped:(MSPNavigationListener *)arg1;
@@ -16,6 +16,5 @@
 - (void)navigationListenerETAUpdated:(MSPNavigationListener *)arg1;
 - (void)navigationListenerDestinationUpdated:(MSPNavigationListener *)arg1;
 - (void)navigationListenerIsReady:(MSPNavigationListener *)arg1;
-- (void)navigationListener:(MSPNavigationListener *)arg1 didFailWithError:(NSError *)arg2;
 @end
 

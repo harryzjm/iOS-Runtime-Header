@@ -6,12 +6,12 @@
 
 @interface TSCH3DLineProjector
 {
-    line_190fbfc7 mLine;
+    line_e1962432 _line;
 }
 
 - (id).cxx_construct;
-@property(nonatomic) line_190fbfc7 line; // @synthesize line=mLine;
-- (_Bool)projectPoint:(const tvec2_84d5962d *)arg1 returningPoint:(tvec3_17f03ce0 *)arg2;
+@property(nonatomic) line_e1962432 line; // @synthesize line=_line;
+- (_Bool)projectPoint:(const void *)arg1 returningPoint:(void *)arg2;
 
 @end
 

@@ -8,17 +8,18 @@
 
 @interface _PASDeviceInfo : NSObject
 {
-    int _batterySaverModeToken;
+    int _lowPowerModeToken;
 }
 
 + (id)deviceUUID;
 + (_Bool)shouldIncludePredictionLogs;
 + (_Bool)isDNUEnabled;
++ (_Bool)isiPad;
 + (_Bool)isAudioAccessory;
 + (_Bool)isBetaBuild;
 + (_Bool)isInternalBuild;
 + (_Bool)isDemoModeEnabled;
-+ (_Bool)isBatterySaverEnabled;
++ (_Bool)isLowPowerModeEnabled;
 + (_Bool)isLowEndHardware;
 + (id)sharedInstance;
 - (void)dealloc;

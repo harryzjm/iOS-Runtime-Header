@@ -11,12 +11,14 @@
 @interface NSString (FCKVSCoding) <FCKeyValueStoreCoding>
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
++ (void)fc_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)fc_hardPaywallArticleIDWithArticleID:(id)arg1;
 + (_Bool)fc_string:(id)arg1 isEqualToString:(id)arg2;
 + (id)stringWithValue:(id)arg1;
 + (id)fc_string:(CDUnknownBlockType)arg1;
 - (void)writeToKeyValuePair:(id)arg1;
-- (id)_FCCKPIdentifierWithType:(int)arg1;
+- (id)fc_domainName;
+- (id)fc_topLevelDomainUsingCFFromComponents:(id)arg1;
 - (_Bool)fc_isValidColorHexString;
 - (unsigned long long)fc_unsignedLongLongValue;
 - (_Bool)fc_isValidTagID;

@@ -18,8 +18,8 @@
 @property(retain, nonatomic) NSMutableDictionary *eventSpecMap; // @synthesize eventSpecMap=_eventSpecMap;
 - (id)replacePeriodsInString:(id)arg1;
 - (id)loadEventSpecMapFromConfig:(id)arg1;
-- (void)dispatchEventForStatisticWithName:(id)arg1 andValue:(long long *)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)dispatchEventForStatisticWithName:(id)arg1 andValue:(long long *)arg2;
+- (void)dispatchEventForStatisticWithName:(id)arg1 andValue:(long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)dispatchEventForStatisticWithName:(id)arg1 andValue:(long long)arg2;
 - (id)initFromConfig:(id)arg1;
 
 @end

@@ -11,13 +11,13 @@
     UIView *_contentView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (void)prepareForReuse;
 - (void)prepareToReuseSubviewsOfView:(id)arg1;
 - (void)setNeedsLayout;
 - (void)layoutSubviews;
 - (id)description;
-- (void)dealloc;
 
 @end
 

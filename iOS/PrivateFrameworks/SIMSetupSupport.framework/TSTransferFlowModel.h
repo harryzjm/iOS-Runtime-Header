@@ -15,6 +15,7 @@
     _Bool _isBootstrapTriggerred;
     _Bool _isProximityFlow;
     _Bool _isActivationPolicyMismatch;
+    _Bool _isDualeSIMCapablityLoss;
     _Bool _showTransferredPane;
     NSMutableArray *_transferItems;
     CTDisplayPlanList *_pendingInstallItems;
@@ -23,12 +24,14 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showTransferredPane; // @synthesize showTransferredPane=_showTransferredPane;
+@property(nonatomic) _Bool isDualeSIMCapablityLoss; // @synthesize isDualeSIMCapablityLoss=_isDualeSIMCapablityLoss;
 @property(nonatomic) _Bool isActivationPolicyMismatch; // @synthesize isActivationPolicyMismatch=_isActivationPolicyMismatch;
 @property(retain, nonatomic) CTDisplayPlanList *pendingInstallItems; // @synthesize pendingInstallItems=_pendingInstallItems;
 @property(retain, nonatomic) NSMutableArray *transferItems; // @synthesize transferItems=_transferItems;
 - (void)requestPlans:(id)arg1 transferablePlanOnSource:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestPendingInstallPlans:(CDUnknownBlockType)arg1;
 - (void)requestTransferPlans:(CDUnknownBlockType)arg1;
+- (_Bool)shouldShowTransferredPane;
 - (void)filterTransferPlans:(id)arg1;
 - (void)bootstrap:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)arePlansAvailable:(id)arg1 transferablePlanOnSource:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

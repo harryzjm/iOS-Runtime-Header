@@ -13,13 +13,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)createViewForToolbar:(id)arg1;
-- (void)_updateAccessibilityLabelForImage:(id)arg1;
-- (void)_setAXBarButtonImagePath:(id)arg1;
-- (id)_axBarButtonImagePath;
 - (id)initWithImage:(id)arg1 landscapeImagePhone:(id)arg2 style:(long long)arg3 target:(id)arg4 action:(SEL)arg5;
 - (id)initWithImage:(id)arg1 style:(long long)arg2 target:(id)arg3 action:(SEL)arg4;
 - (id)createViewForNavigationItem:(id)arg1;
-- (void)_axRememberTargetter:(id)arg1;
 - (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setAccessibilityAttributedHint:(id)arg1;
@@ -45,8 +41,6 @@
 - (id)accessibilityLocalizationBundleID;
 - (id)accessibilityLocalizedStringKey;
 - (id)accessibilityLabel;
-- (id)_accessibilityIdentifierForImage:(id)arg1;
-- (void)_accessibilityAddIdForView:(id)arg1;
 
 @end
 

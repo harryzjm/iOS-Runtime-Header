@@ -9,16 +9,16 @@
 #import <PhotosUI/PXInfoProvider-Protocol.h>
 #import <PhotosUI/PXInfoUpdaterObserver-Protocol.h>
 
-@class NSObject, NSString, PUPhotoPickerResizeTaskDescriptor, PXInfoUpdater;
+@class NSObject, NSString, PUPhotoPickerResizeTaskDescriptor, PXInfoUpdater, UIMenu;
 @protocol OS_dispatch_queue, PUPhotoPickerResizeTaskDescriptorViewModelDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoPickerResizeTaskDescriptorViewModel : PXObservable <PXInfoProvider, PXInfoUpdaterObserver>
 {
-    _Bool _downloading;
     PUPhotoPickerResizeTaskDescriptor *_resizeTaskDescriptor;
     NSString *_localizedTitle;
     NSString *_localizedFileSizeDescription;
+    UIMenu *_fileSizeMenu;
     id <PUPhotoPickerResizeTaskDescriptorViewModelDelegate> _delegate;
     PXInfoUpdater *_localizedFileSizeDescriptionUpdater;
     NSObject<OS_dispatch_queue> *_localizedFileSizeDescriptionUpdaterQueue;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *localizedFileSizeDescriptionUpdaterQueue; // @synthesize localizedFileSizeDescriptionUpdaterQueue=_localizedFileSizeDescriptionUpdaterQueue;
 @property(retain, nonatomic) PXInfoUpdater *localizedFileSizeDescriptionUpdater; // @synthesize localizedFileSizeDescriptionUpdater=_localizedFileSizeDescriptionUpdater;
 @property(nonatomic) __weak id <PUPhotoPickerResizeTaskDescriptorViewModelDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic, getter=isDownloading) _Bool downloading; // @synthesize downloading=_downloading;
+@property(readonly, nonatomic) UIMenu *fileSizeMenu; // @synthesize fileSizeMenu=_fileSizeMenu;
 @property(readonly, nonatomic) NSString *localizedFileSizeDescription; // @synthesize localizedFileSizeDescription=_localizedFileSizeDescription;
 @property(readonly, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(readonly, nonatomic) PUPhotoPickerResizeTaskDescriptor *resizeTaskDescriptor; // @synthesize resizeTaskDescriptor=_resizeTaskDescriptor;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)_infoDictionaryForLocalizedTitle:(id)arg1 localizedFileSizeDescription:(id)arg2;
 - (id)requestInfoOfKind:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void)invalidateAssetsForResizing;
-- (void)setDownloading:(_Bool)arg1;
+- (void)setFileSizeMenu:(id)arg1;
 - (void)setResizeTaskDescriptor:(id)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *description;

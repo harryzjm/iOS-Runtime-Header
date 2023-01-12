@@ -18,13 +18,9 @@
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *lastSQLStatement; // @synthesize lastSQLStatement=_lastSQLStatement;
 @property(readonly) HDSQLiteDatabase *database; // @synthesize database=_database;
-- (void)_expandLastSQLStatementIfNecessary:(struct sqlite3_stmt *)arg1;
 - (_Bool)enumerateProperties:(id)arg1 error:(id *)arg2 enumerationHandler:(CDUnknownBlockType)arg3;
 - (_Bool)enumeratePersistentIDsAndProperties:(id)arg1 error:(id *)arg2 enumerationHandler:(CDUnknownBlockType)arg3;
-- (void)enumerateEntitiesUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)deleteAllEntitiesWithError:(id *)arg1;
-- (id)copySelectSQLWithProperties:(id)arg1;
-- (void)bindToSelectStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
 @property(readonly) HDSQLiteQueryDescriptor *queryDescriptor;
 - (id)initWithDatabase:(id)arg1 descriptor:(id)arg2;
 

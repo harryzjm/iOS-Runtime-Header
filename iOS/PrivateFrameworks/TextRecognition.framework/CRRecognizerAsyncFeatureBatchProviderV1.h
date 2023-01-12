@@ -8,21 +8,19 @@
 
 #import <TextRecognition/CRRecognizerFeatureProviding-Protocol.h>
 
-@class CRRecognizerConfiguration, NSString;
+@class CRNeuralRecognizerConfiguration, NSString;
 @protocol CRTextRecognizerModelInputProvider;
 
 @interface CRRecognizerAsyncFeatureBatchProviderV1 : NSObject <CRRecognizerFeatureProviding>
 {
     NSObject<CRTextRecognizerModelInputProvider> *_inputProvider;
-    CRRecognizerConfiguration *_configuration;
+    CRNeuralRecognizerConfiguration *_configuration;
 }
 
 - (void).cxx_destruct;
-@property(retain) CRRecognizerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(retain) CRNeuralRecognizerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain) NSObject<CRTextRecognizerModelInputProvider> *inputProvider; // @synthesize inputProvider=_inputProvider;
-- (id)combinedLineFeature:(id)arg1 lineFeature:(id)arg2;
 - (long long)_indexOfBestModelForAspectRatio:(float)arg1;
-- (id)pruneAndSortRecognizedTextFeatures:(id)arg1;
 - (void)enumerateInputsForImage:(id)arg1 textFeatures:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)initWithConfiguration:(id)arg1 inputProvider:(id)arg2 error:(id *)arg3;
 

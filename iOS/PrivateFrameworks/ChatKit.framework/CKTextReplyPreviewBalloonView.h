@@ -19,6 +19,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(struct UIEdgeInsets *)arg2 isSingleLine:(_Bool *)arg3;
 - (void)prepareForReuse;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (struct UIEdgeInsets)targetTextContainerInsets;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)description;

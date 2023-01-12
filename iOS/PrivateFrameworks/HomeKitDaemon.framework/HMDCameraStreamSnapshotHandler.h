@@ -22,35 +22,22 @@
     NSMutableSet *_retiredStreamSnapshotCaptures;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSString *_logID;
     NSMutableDictionary *_serviceInstanceStreamStatus;
     NSMapTable *_delegateTable;
+    NSString *_logIdentifier;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly) NSMapTable *delegateTable; // @synthesize delegateTable=_delegateTable;
-@property(readonly) NSMutableDictionary *serviceInstanceStreamStatus; // @synthesize serviceInstanceStreamStatus=_serviceInstanceStreamStatus;
-@property(readonly) NSString *logID; // @synthesize logID=_logID;
-@property(readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly) NSMutableSet *retiredStreamSnapshotCaptures; // @synthesize retiredStreamSnapshotCaptures=_retiredStreamSnapshotCaptures;
-@property(readonly) NSMutableSet *streamSnapshotCaptures; // @synthesize streamSnapshotCaptures=_streamSnapshotCaptures;
-- (void)_callStreamSetupInProgress:(_Bool)arg1;
-- (void)callStreamSetupInProgress:(_Bool)arg1;
-- (void)_callDidGetLastSnapshot:(id)arg1;
+@property(readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 - (void)streamSnapshotCapture:(id)arg1 didGetLastSnapshot:(id)arg2;
-- (void)_callDidGetNewSnapshot:(id)arg1;
 - (void)streamSnapshotCapture:(id)arg1 didGetNewSnapshot:(id)arg2;
 - (void)getSnapshot:(unsigned long long)arg1;
 - (void)removeVideoStreamInterface:(id)arg1;
 - (void)addVideoStreamInterface:(id)arg1;
 - (void)setStreamSetupStatusForService:(id)arg1 inProgress:(_Bool)arg2;
-- (void)setStreamSetupInProgress:(_Bool)arg1;
 @property(readonly, getter=isStreamSetupInProgress) _Bool streamSetupInProgress; // @synthesize streamSetupInProgress=_streamSetupInProgress;
-- (void)setStreamAvailable:(_Bool)arg1;
 @property(readonly, getter=isStreamAvailable) _Bool streamAvailable; // @synthesize streamAvailable=_streamAvailable;
-- (id)logIdentifier;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (id)initWithWorkQueue:(id)arg1 services:(id)arg2 logID:(id)arg3;

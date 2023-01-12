@@ -11,5 +11,7 @@
 - (id)ibShadowedLargeTitleTextAttributes;
 - (_Bool)ibPrefersLargeTitles;
 - (void)setIbPrefersLargeTitles:(_Bool)arg1;
+- (id)ibCompactScrollEdgeAppearance;
+- (void)setIbCompactScrollEdgeAppearance:(id)arg1;
 @end
 

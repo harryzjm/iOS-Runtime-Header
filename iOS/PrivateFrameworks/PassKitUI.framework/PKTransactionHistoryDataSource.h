@@ -10,19 +10,19 @@
 #import <PassKitUI/PKDashboardTransactionFetcherDelegate-Protocol.h>
 #import <PassKitUI/PKWorldRegionUpdaterObserver-Protocol.h>
 
-@class CNContact, NSArray, NSCalendar, NSDateFormatter, NSIndexPath, NSString, PKAccount, PKAccountServiceAccountResolutionController, PKCoarseLocationMonitor, PKCurrencyAmount, PKDashboardTransactionFetcher, PKInstallmentPlan, PKMerchant, PKPaymentTransaction, PKPaymentTransactionGroup, PKPeerPaymentContactResolver, PKTransactionReceipt, PKTransactionSource, PKWorldRegionUpdater;
+@class CNContact, NSArray, NSCalendar, NSDateFormatter, NSIndexPath, NSString, PKAccount, PKAccountServiceAccountResolutionController, PKAccountUserCollection, PKCoarseLocationMonitor, PKContactResolver, PKCreditInstallmentPlan, PKCurrencyAmount, PKDashboardTransactionFetcher, PKFamilyMemberCollection, PKMerchant, PKPaymentTransaction, PKPaymentTransactionGroup, PKTransactionReceipt, PKTransactionSourceCollection, PKWorldRegionUpdater;
 @protocol PKDashboardDataSourceDelegate, PKPaymentDataProvider;
 
 @interface PKTransactionHistoryDataSource : NSObject <PKDashboardTransactionFetcherDelegate, PKWorldRegionUpdaterObserver, PKDashboardDataSource>
 {
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     PKDashboardTransactionFetcher *_transactionFetcher;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     NSString *_peerPaymentCounterpartHandle;
     id <PKDashboardDataSourceDelegate> _delegate;
     PKPaymentTransaction *_featuredTransaction;
     PKPaymentTransactionGroup *_selectedTransactions;
-    PKInstallmentPlan *_associatedInstallmentPlan;
+    PKCreditInstallmentPlan *_associatedInstallmentPlan;
     PKTransactionReceipt *_associatedReceipt;
     NSArray *_featuredTransactionActions;
     NSArray *_actionItems;
@@ -30,6 +30,7 @@
     id <PKPaymentDataProvider> _dataProvider;
     PKWorldRegionUpdater *_regionUpdater;
     PKCoarseLocationMonitor *_coarseLocationMonitor;
+    PKFamilyMemberCollection *_familyCollection;
     NSArray *_groups;
     NSArray *_tokens;
     _Bool _contentIsLoaded;
@@ -43,6 +44,7 @@
     NSDateFormatter *_formatterMonth;
     NSCalendar *_currentCalendar;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     unsigned long long _type;
     CNContact *_contact;
     PKMerchant *_merchant;
@@ -77,6 +79,7 @@
 - (id)_transactionItemForTransaction:(id)arg1;
 - (void)_p2pTotalsFromTransactions:(id)arg1 received:(id *)arg2 sent:(id *)arg3;
 - (id)_totalFromGroups:(id)arg1;
+- (id)_totalDailyCashRewardsFromTransactions:(id)arg1;
 - (id)_totalRewardsFromTransactions:(id)arg1;
 - (id)_totalPaymentsFromTransactions:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)_totalSpendingFromTransactions:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
@@ -92,12 +95,12 @@
 @property(readonly, nonatomic) NSString *footerTitle;
 - (void)updateGroups:(id)arg1 headerGroup:(id)arg2;
 - (void)dealloc;
-- (id)initWithTransactionGroups:(id)arg1 headerGroup:(id)arg2 regionUpdater:(id)arg3 tokens:(id)arg4 transactionSource:(id)arg5 account:(id)arg6;
-- (id)initWithInstallmentPlan:(id)arg1 transactionSource:(id)arg2 account:(id)arg3;
+- (id)initWithTransactionGroups:(id)arg1 headerGroup:(id)arg2 regionUpdater:(id)arg3 tokens:(id)arg4 transactionSourceCollection:(id)arg5 familyCollection:(id)arg6 account:(id)arg7 accountUserCollection:(id)arg8;
+- (id)initWithInstallmentPlan:(id)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5;
 - (void)_updateFooterTotalFromGroup:(id)arg1;
 - (void)updateGroup:(id)arg1;
-- (id)initWithTransactionGroup:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 fetcher:(id)arg4 transactionHistory:(id)arg5;
-- (id)initWithFetcher:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6 type:(unsigned long long)arg7;
+- (id)initWithTransactionGroup:(id)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5 fetcher:(id)arg6 transactionHistory:(id)arg7;
+- (id)initWithFetcher:(id)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5 featuredTransaction:(id)arg6 selectedTransactions:(id)arg7 transactionHistory:(id)arg8 type:(unsigned long long)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

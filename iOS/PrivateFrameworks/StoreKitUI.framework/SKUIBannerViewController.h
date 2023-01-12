@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_bannerViewAction:(id)arg1;
 - (void)itemStateCenter:(id)arg1 itemStatesChanged:(id)arg2;
 - (void)loadView;
-- (void)loadWithProductParameters:(id)arg1;
+- (void)loadWithProductParameters:(id)arg1 mainDocumentURL:(id)arg2;
 - (void)dealloc;
 
 // Remaining properties

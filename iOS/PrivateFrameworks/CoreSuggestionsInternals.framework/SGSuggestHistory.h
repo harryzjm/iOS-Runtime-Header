@@ -24,10 +24,11 @@
 - (_Bool)hasConfirmedField:(id)arg1 value:(id)arg2 forStorageEvent:(id)arg3;
 - (void)confirmFieldValues:(id)arg1 forStorageEvent:(id)arg2;
 - (id)_hashesForConfirmedField:(id)arg1 value:(id)arg2 storageEvent:(id)arg3 forMatching:(_Bool)arg4;
+- (_Bool)hasContactDetailKey:(id)arg1;
 - (_Bool)hasContactDetail:(id)arg1 forContact:(id)arg2;
 - (void)rejectEventFromExternalDevice:(id)arg1;
 - (void)confirmEventFromExternalDevice:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)addSuggestHistoryObserver:(id)arg1;
 - (_Bool)isValidSuggestion:(id)arg1;
 - (_Bool)isRejectedReminder:(id)arg1;
 - (_Bool)isConfirmedReminder:(id)arg1;
@@ -56,9 +57,9 @@
 - (void)writeAndPushConfirmedEventHashes:(id)arg1;
 - (void)confirmStorageEvent:(id)arg1;
 - (void)confirmEvent:(id)arg1;
-- (void)confirmRealtimeContact:(id)arg1;
-- (void)confirmOrRejectContact:(id)arg1;
+- (void)rejectContact:(id)arg1;
 - (void)rejectRealtimeContact:(id)arg1;
+- (void)rejectContactDetailKey:(id)arg1;
 - (void)confirmOrRejectRecordForContact:(id)arg1;
 - (void)confirmOrRejectDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetailHashes:(id)arg1;

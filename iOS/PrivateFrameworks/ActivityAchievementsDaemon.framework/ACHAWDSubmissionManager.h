@@ -28,6 +28,7 @@
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (id)_serverConnectionForComponentId:(unsigned int)arg1;
 - (_Bool)_submitMetric:(id)arg1 container:(id)arg2 connection:(id)arg3;
+- (id)_formatMetricTypeToString:(unsigned int)arg1;
 - (_Bool)_computeAndSubmitAchievementCountMetric;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;

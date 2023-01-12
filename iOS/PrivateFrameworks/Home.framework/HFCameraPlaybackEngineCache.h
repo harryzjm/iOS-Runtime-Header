@@ -6,23 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class HMCameraRecordingEventManager, NSArray, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSMutableArray, NSMutableDictionary;
 
 @interface HFCameraPlaybackEngineCache : NSObject
 {
     NSMutableDictionary *_firstOfTheDayClips;
     NSMutableDictionary *_firstOfTheDayEvents;
-    HMCameraRecordingEventManager *_eventManager;
     NSMutableArray *_allCameraEvents;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *allCameraEvents; // @synthesize allCameraEvents=_allCameraEvents;
-@property(nonatomic) __weak HMCameraRecordingEventManager *eventManager; // @synthesize eventManager=_eventManager;
 @property(retain, nonatomic) NSMutableDictionary *firstOfTheDayEvents; // @synthesize firstOfTheDayEvents=_firstOfTheDayEvents;
 @property(retain, nonatomic) NSMutableDictionary *firstOfTheDayClips; // @synthesize firstOfTheDayClips=_firstOfTheDayClips;
 - (void)dealloc;
-@property(readonly, copy, nonatomic) NSArray *datesContainingClips;
 - (void)_updateFirstOfDayEvents:(id)arg1 withEvent:(id)arg2 previousEvent:(id)arg3;
 - (void)updateFirstOfTheDayEvents:(id)arg1 firstOfTheDayClips:(id)arg2 withEvent:(id)arg3 previousEvent:(id)arg4;
 - (void)prepareFirstOfTheDayEvents;
@@ -32,10 +29,12 @@
 - (id)hfCameraRecordingEventsFromArray:(id)arg1;
 - (void)removeEventUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateForEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)resetCacheWithEvents:(id)arg1;
+- (void)loadEvents:(id)arg1;
+- (void)resetWithEvents:(id)arg1;
+- (id)timelineEligibleEventsFromEvents:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *cameraClips;
 @property(readonly, copy, nonatomic) NSArray *cameraEvents;
-- (id)initWithEventManager:(id)arg1;
+- (id)init;
 
 @end
 

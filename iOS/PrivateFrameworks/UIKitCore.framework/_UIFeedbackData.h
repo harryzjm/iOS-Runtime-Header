@@ -13,7 +13,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIFeedbackData : NSObject <_UIFeedbackData>
 {
+    _Bool _isTransientHaptic;
+    _Bool _canReuseCoreHapticsPlayer;
+    _Bool _disableEventUseVolumeEnvelope;
     unsigned int _effectiveSystemSoundID;
+    float _intensity;
+    float _sharpness;
     unsigned long long _effectiveEventType;
     double _effectiveDuration;
     double _effectiveDelay;
@@ -25,6 +30,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setDisableEventUseVolumeEnvelope:) _Bool disableEventUseVolumeEnvelope; // @synthesize disableEventUseVolumeEnvelope=_disableEventUseVolumeEnvelope;
+@property(nonatomic, setter=_setCanReuseCoreHapticsPlayer:) _Bool canReuseCoreHapticsPlayer; // @synthesize canReuseCoreHapticsPlayer=_canReuseCoreHapticsPlayer;
+@property(nonatomic, setter=_setSharpness:) float sharpness; // @synthesize sharpness=_sharpness;
+@property(nonatomic, setter=_setIntensity:) float intensity; // @synthesize intensity=_intensity;
+@property(nonatomic, setter=_setIsTransientHaptic:) _Bool isTransientHaptic; // @synthesize isTransientHaptic=_isTransientHaptic;
 @property(nonatomic, setter=_setFileFeedbackType:) unsigned long long fileFeedbackType; // @synthesize fileFeedbackType=_fileFeedbackType;
 @property(retain, nonatomic, setter=_setFileURL:) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(nonatomic, setter=_setEffectiveSystemSoundID:) unsigned int effectiveSystemSoundID; // @synthesize effectiveSystemSoundID=_effectiveSystemSoundID;

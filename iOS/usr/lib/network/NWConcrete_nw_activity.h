@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     unsigned long long investigation_identifier;
     unsigned long long start_time;
     unsigned long long end_time;
+    unsigned int fragments_quenched;
     NWConcrete_nw_activity *parent;
     struct os_unfair_lock_s lock;
     struct os_unfair_lock_s description_lock;
     unsigned int label;
     unsigned int domain;
+    unsigned int client_metric_count;
     int underlying_error_domain;
     int underlying_error_code;
     int reporting_strategy;

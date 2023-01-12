@@ -36,6 +36,10 @@
 @property(readonly, nonatomic) CKTranscriptCollectionView *collectionView;
 @property(readonly, nonatomic) IMChat *chat;
 @property(readonly, nonatomic) CKConversation *conversation;
+@property(readonly, nonatomic) NSString *transcriptIdentifier;
+- (NSArray *)selectedChatItems;
+- (void)copyChatItemsToPasteboard:(NSArray *)arg1;
+- (void)copySelectedChatItemsToPasteboard;
 - (void)updateTargetAlphaForVisibleChatItems;
 - (void)clearRecentPluginTouch;
 - (_Bool)hasRecentTouchForSendingPlugin:(NSString *)arg1;
@@ -67,7 +71,7 @@
 - (_Bool)canRaiseToListen;
 - (void)stopPlayingAudio;
 - (void)setScrollAnchor:(double)arg1;
-- (void)deleteSelectedItems:(id)arg1;
+- (void)deleteSelectedChatItems:(id)arg1;
 - (void)setSelectedItems:(NSIndexSet *)arg1;
 - (NSIndexSet *)selectedItems;
 - (void)reloadData;

@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSArray, NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebBagAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebBagAction <AMSUIWebActionRunnable>
 {
-    AMSUIWebClientContext *_context;
     NSString *_profile;
     NSString *_profileVersion;
     NSArray *_requestedKeys;
@@ -23,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *requestedKeys; // @synthesize requestedKeys=_requestedKeys;
 @property(retain, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property(retain, nonatomic) NSString *profile; // @synthesize profile=_profile;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 - (void)_fetchValuesForKeys:(id)arg1 bag:(id)arg2 startingAtIndex:(long long)arg3 valuesArray:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

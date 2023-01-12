@@ -22,12 +22,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_queue_powerSavingModeDidChange;
-- (void)_powerSavingModeDidChange;
-- (void)_stopObservingPowerSavingModeSetting;
-- (void)_startObservingPowerSavingModeSetting;
-- (void)_queue_disablePowerSavingIfNeeded;
-- (void)_queue_enablePowerSavingIfNeededForOwnerIdentifier:(id)arg1;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (void)assertionManager:(id)arg1 assertionTaken:(id)arg2;
 - (id)takeSessionAssertionForOwnerIdentifier:(id)arg1 activityType:(unsigned long long)arg2;

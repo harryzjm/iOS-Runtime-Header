@@ -31,6 +31,7 @@
 @property(retain, nonatomic) NSMutableDictionary *applicationStateObserversByEvent; // @synthesize applicationStateObserversByEvent=_applicationStateObserversByEvent;
 @property(readonly, nonatomic) _Bool canLoadShortcutsDatabase; // @synthesize canLoadShortcutsDatabase=_canLoadShortcutsDatabase;
 @property(nonatomic, getter=isIdleTimerDisabled) _Bool idleTimerDisabled;
+- (void)suspend;
 @property(readonly, nonatomic) long long userInterfaceStyle;
 - (id)applicationOrNil;
 - (id)keyWindow;

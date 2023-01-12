@@ -6,26 +6,32 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PXAssetsSharingHelperDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
-#import <PhotosUICore/PXCloudQuotaControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXCloudQuotaControllerHelperDelegate-Protocol.h>
+#import <PhotosUICore/PXFetchResultCountObserverDelegate-Protocol.h>
 
-@class NSString, PXAssetsDataSourceCountsController, PXCPLUIStatusProvider, PXCloudQuotaController, PXContentFilterFooterController, PXPhotosViewModel;
+@class NSString, PXAssetsDataSourceCountsController, PXCPLUIStatusProvider, PXCloudQuotaControllerHelper, PXFetchResultCountObserver, PXFilterFooterController, PXPhotosViewModel;
 @protocol PXPhotosGridFooterStatusControllerDelegate;
 
-@interface PXPhotosGridFooterStatusController : NSObject <PXChangeObserver, PXCloudQuotaControllerDelegate>
+@interface PXPhotosGridFooterStatusController : NSObject <PXChangeObserver, PXCloudQuotaControllerHelperDelegate, PXFetchResultCountObserverDelegate, PXAssetsSharingHelperDelegate>
 {
     PXPhotosViewModel *_viewModel;
     PXAssetsDataSourceCountsController *_countsController;
     PXCPLUIStatusProvider *_cplUIStatusProvider;
-    PXCloudQuotaController *_cloudQuotaController;
-    PXContentFilterFooterController *_filterFooterController;
+    PXCloudQuotaControllerHelper *_cloudQuotaHelper;
+    PXFilterFooterController *_filterFooterController;
+    PXFetchResultCountObserver *_renderingCountObserver;
     id <PXPhotosGridFooterStatusControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PXPhotosGridFooterStatusControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)presentingViewControllerForCloudQuotaController:(id)arg1;
-- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
+- (_Bool)assetsSharingHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)assetsSharingHelper:(id)arg1 presentViewController:(id)arg2;
+- (void)fetchResultCountObserver:(id)arg1 didChangeFetchResultCount:(long long)arg2;
+- (id)presentingViewControllerForCloudQuotaControllerHelper:(id)arg1;
+- (void)cloudQuotaControllerHelper:(id)arg1 informationViewDidChange:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_systemPhotoLibraryDidChange;
 - (void)setCplUIStatusProvider:(id)arg1;

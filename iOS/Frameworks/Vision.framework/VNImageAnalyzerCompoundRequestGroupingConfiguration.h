@@ -17,13 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (_Bool)preferBackgroundProcessing;
-- (id)processingDevice;
-- (void)enumerateOriginalRequestsByKindUsingBlock:(CDUnknownBlockType)arg1;
-- (id)originalRequests;
-- (id)detectorConfigurationOptions;
-- (void)addOriginalRequest:(id)arg1 forKind:(unsigned long long)arg2;
-- (void)setDetectorConfigurationOption:(id)arg1 value:(id)arg2;
 - (id)init;
 
 @end

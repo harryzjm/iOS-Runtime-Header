@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, VUIButton, VUILabel;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI14SearchListCell
@@ -12,20 +12,25 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *layout;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
-    MISSING_TYPE *imageView;
+    MISSING_TYPE *cellImageView;
     MISSING_TYPE *monogramView;
     MISSING_TYPE *accessoryImageView;
     MISSING_TYPE *buttonView;
-    MISSING_TYPE *bottomSeparatorView;
+    MISSING_TYPE *badgeView;
+    MISSING_TYPE *$__lazy_storage_$_bottomSeparatorView;
 }
 
 - (void).cxx_destruct;
+- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)prepareForReuse;
+- (id)initWithCoder:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, retain) VUIButton *buttonView; // @synthesize buttonView;
+@property(nonatomic, retain) VUILabel *subtitleLabel; // @synthesize subtitleLabel;
+@property(nonatomic, retain) VUILabel *titleLabel; // @synthesize titleLabel;
 
 @end
 

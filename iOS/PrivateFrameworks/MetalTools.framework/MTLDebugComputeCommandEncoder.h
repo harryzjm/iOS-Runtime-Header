@@ -24,7 +24,7 @@
     CDStruct_1e3be3a8 stageInRegion;
     _Bool hasIndirectSetStageInRegion;
     _Bool allowsNullBufferBinds;
-    struct deque<id, std::__1::allocator<id>> updatedFences;
+    struct deque<id, std::allocator<id>> updatedFences;
     id <MTLComputePipelineState> _computePipelineState;
 }
 

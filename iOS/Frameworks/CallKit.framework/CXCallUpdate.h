@@ -10,11 +10,12 @@
 #import <CallKit/NSCopying-Protocol.h>
 #import <CallKit/NSSecureCoding-Protocol.h>
 
-@class CXHandle, CXHandoffContext, NSDictionary, NSSet, NSString, NSUUID;
+@class CXHandle, CXHandoffContext, CXScreenShareAttributes, NSDictionary, NSSet, NSString, NSUUID;
 
 @interface CXCallUpdate : NSObject <CXCopying, NSSecureCoding, NSCopying>
 {
     _Bool _emergency;
+    _Bool _failureExpected;
     _Bool _usingBaseband;
     _Bool _blocked;
     _Bool _mayRequireBreakBeforeMake;
@@ -33,10 +34,15 @@
     _Bool _shouldSuppressInCallUI;
     _Bool _requiresAuthentication;
     _Bool _mutuallyExclusiveCall;
+    _Bool _conversation;
+    _Bool _mixesVoiceWithMedia;
+    _Bool _oneToOneModeEnabled;
+    _Bool _sharingScreen;
     struct os_unfair_lock_s _accessorLock;
     CXHandle *_remoteHandle;
     NSString *_localizedCallerName;
     long long _ttyType;
+    long long _bluetoothAudioFormat;
     NSString *_audioCategory;
     NSString *_audioMode;
     long long _audioInterruptionProvider;
@@ -49,9 +55,12 @@
     NSString *_ISOCountryCode;
     NSUUID *_localSenderIdentityUUID;
     NSUUID *_localSenderIdentityAccountUUID;
+    NSUUID *_participantGroupUUID;
     NSSet *_remoteParticipantHandles;
+    NSSet *_otherInvitedHandles;
     NSSet *_activeRemoteParticipantHandles;
     CXHandoffContext *_handoffContext;
+    CXScreenShareAttributes *_screenShareAttributes;
     NSDictionary *_context;
     unsigned long long _originatingUIType;
     long long _junkConfidence;
@@ -66,10 +75,14 @@
 @property(retain, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property(nonatomic) struct CXCallUpdateHasSet hasSet; // @synthesize hasSet=_hasSet;
 @property(readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
+@property(nonatomic, getter=isSharingScreen) _Bool sharingScreen; // @synthesize sharingScreen=_sharingScreen;
+@property(nonatomic, getter=isOneToOneModeEnabled) _Bool oneToOneModeEnabled; // @synthesize oneToOneModeEnabled=_oneToOneModeEnabled;
+@property(nonatomic, getter=isConversation) _Bool conversation; // @synthesize conversation=_conversation;
 @property(nonatomic, getter=isMutuallyExclusiveCall) _Bool mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
 @property(nonatomic, getter=isRemoteUplinkMuted) _Bool remoteUplinkMuted; // @synthesize remoteUplinkMuted=_remoteUplinkMuted;
 @property(nonatomic, getter=isBlocked) _Bool blocked; // @synthesize blocked=_blocked;
 @property(nonatomic, getter=isUsingBaseband) _Bool usingBaseband; // @synthesize usingBaseband=_usingBaseband;
+@property(nonatomic, getter=isFailureExpected) _Bool failureExpected; // @synthesize failureExpected=_failureExpected;
 @property(nonatomic, getter=isEmergency) _Bool emergency; // @synthesize emergency=_emergency;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -79,6 +92,10 @@
 - (id)sanitizedCopy;
 - (void)updateSanitizedCopy:(id)arg1 withZone:(struct _NSZone *)arg2;
 - (void)updateWithUpdate:(id)arg1;
+- (_Bool)sharingScreen;
+- (_Bool)oneToOneModeEnabled;
+@property(nonatomic) _Bool mixesVoiceWithMedia; // @synthesize mixesVoiceWithMedia=_mixesVoiceWithMedia;
+- (_Bool)conversation;
 @property(nonatomic) long long identificationCategory; // @synthesize identificationCategory=_identificationCategory;
 @property(nonatomic) long long junkConfidence; // @synthesize junkConfidence=_junkConfidence;
 @property(nonatomic) unsigned long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
@@ -89,9 +106,12 @@
 @property(nonatomic) _Bool supportsTTYWithVoice; // @synthesize supportsTTYWithVoice=_supportsTTYWithVoice;
 @property(nonatomic) _Bool prefersExclusiveAccessToCellularNetwork; // @synthesize prefersExclusiveAccessToCellularNetwork=_prefersExclusiveAccessToCellularNetwork;
 @property(copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
+@property(retain, nonatomic) CXScreenShareAttributes *screenShareAttributes; // @synthesize screenShareAttributes=_screenShareAttributes;
 @property(retain, nonatomic) CXHandoffContext *handoffContext; // @synthesize handoffContext=_handoffContext;
 @property(copy, nonatomic) NSSet *activeRemoteParticipantHandles; // @synthesize activeRemoteParticipantHandles=_activeRemoteParticipantHandles;
+@property(copy, nonatomic) NSSet *otherInvitedHandles; // @synthesize otherInvitedHandles=_otherInvitedHandles;
 @property(copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
+@property(retain, nonatomic) NSUUID *participantGroupUUID; // @synthesize participantGroupUUID=_participantGroupUUID;
 @property(copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property(copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property(copy, nonatomic) NSString *ISOCountryCode; // @synthesize ISOCountryCode=_ISOCountryCode;
@@ -114,9 +134,11 @@
 @property(copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
 @property(nonatomic) _Bool hasVideo; // @synthesize hasVideo=_hasVideo;
 @property(nonatomic) _Bool mayRequireBreakBeforeMake; // @synthesize mayRequireBreakBeforeMake=_mayRequireBreakBeforeMake;
+@property(nonatomic) long long bluetoothAudioFormat; // @synthesize bluetoothAudioFormat=_bluetoothAudioFormat;
 @property(nonatomic, setter=setTTYType:) long long ttyType; // @synthesize ttyType=_ttyType;
 - (_Bool)blocked;
 - (_Bool)usingBaseband;
+- (_Bool)failureExpected;
 - (_Bool)emergency;
 @property(copy, nonatomic) NSString *localizedCallerName; // @synthesize localizedCallerName=_localizedCallerName;
 @property(copy, nonatomic) CXHandle *remoteHandle; // @synthesize remoteHandle=_remoteHandle;

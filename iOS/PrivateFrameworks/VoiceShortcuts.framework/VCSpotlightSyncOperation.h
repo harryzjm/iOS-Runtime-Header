@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class CSSearchableIndex, NSDictionary, NSSet, VCSpotlightState;
-@protocol OS_dispatch_queue, OS_os_transaction, VCSpotlightSyncOperationDelegate;
+@protocol OS_dispatch_queue, VCSpotlightSyncOperationDelegate;
 
 @interface VCSpotlightSyncOperation : NSObject
 {
@@ -19,12 +19,10 @@
     VCSpotlightState *_localState;
     NSObject<OS_dispatch_queue> *_queue;
     CSSearchableIndex *_index;
-    NSObject<OS_os_transaction> *_transaction;
 }
 
 + (void)_fillIdentifiersToRemove:(id *)arg1 searchableItemRegistry:(id *)arg2 withMaximumUpdatedItems:(long long)arg3 references:(id)arg4 localState:(id)arg5;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 @property(readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) VCSpotlightState *localState; // @synthesize localState=_localState;

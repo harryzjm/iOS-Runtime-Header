@@ -8,7 +8,7 @@
 
 @interface GKOctreeNode : NSObject
 {
-    struct GKCOctreeNode<NSObject> *_cOctreeNode;
+    void *_cOctreeNode;
 }
 
 - (void)setCOctreeNode:(void *)arg1;

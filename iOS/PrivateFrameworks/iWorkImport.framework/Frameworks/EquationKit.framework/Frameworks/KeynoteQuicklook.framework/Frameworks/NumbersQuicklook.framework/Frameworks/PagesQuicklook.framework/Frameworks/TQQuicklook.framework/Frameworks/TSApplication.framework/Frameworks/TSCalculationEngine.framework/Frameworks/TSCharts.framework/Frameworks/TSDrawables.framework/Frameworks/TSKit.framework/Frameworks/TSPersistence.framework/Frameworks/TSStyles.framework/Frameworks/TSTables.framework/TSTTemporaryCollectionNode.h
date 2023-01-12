@@ -10,7 +10,7 @@
 
 @interface TSTTemporaryCollectionNode : NSObject
 {
-    struct TSCEVectorIndexPair _dimensions;
+    struct TSCEGridDimensions _dimensions;
     NSMutableArray *_children;
     NSString *_whitespaceBeforeFirstChild;
     NSMutableArray *_whitespaceAfterDelimiters;
@@ -25,7 +25,7 @@
 @property(retain, nonatomic) NSMutableArray *whitespaceAfterDelimiters; // @synthesize whitespaceAfterDelimiters=_whitespaceAfterDelimiters;
 @property(retain, nonatomic) NSString *whitespaceBeforeFirstChild; // @synthesize whitespaceBeforeFirstChild=_whitespaceBeforeFirstChild;
 @property(retain, nonatomic) NSMutableArray *children; // @synthesize children=_children;
-@property(nonatomic) struct TSCEVectorIndexPair dimensions; // @synthesize dimensions=_dimensions;
+@property(nonatomic) struct TSCEGridDimensions dimensions; // @synthesize dimensions=_dimensions;
 - (id)init;
 
 @end

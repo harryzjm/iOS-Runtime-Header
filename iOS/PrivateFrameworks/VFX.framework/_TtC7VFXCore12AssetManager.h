@@ -4,14 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7VFXCore12AssetManager : _TtCs12_SwiftObject
+@interface _TtC7VFXCore12AssetManager : NSObject
 {
-    MISSING_TYPE *containers;
+    MISSING_TYPE *savedContainer;
+    MISSING_TYPE *referencedModels;
+    MISSING_TYPE *tempContainer;
+    MISSING_TYPE *effectContainers;
+    MISSING_TYPE *documentURL;
+    MISSING_TYPE *counter;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

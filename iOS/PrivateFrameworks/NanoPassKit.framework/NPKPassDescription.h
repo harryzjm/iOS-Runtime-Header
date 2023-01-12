@@ -105,8 +105,6 @@
 - (id)fieldForKey:(id)arg1;
 - (id)transitProperties;
 @property(readonly, nonatomic) long long effectiveContactlessPaymentApplicationState;
-- (_Bool)supportsInAppPaymentOnNetworks:(id)arg1 capabilities:(unsigned long long)arg2 issuerCountryCodes:(id)arg3 paymentApplicationStates:(id)arg4;
-- (_Bool)supportsInAppPaymentOnNetworks:(id)arg1 issuerCountryCodes:(id)arg2;
 @property(retain, nonatomic) PKImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(retain, nonatomic) PKImage *logoImage; // @synthesize logoImage=_logoImage;
 @property(retain, nonatomic) NSData *backgroundImageEncoded; // @synthesize backgroundImageEncoded=_backgroundImageEncoded;

@@ -6,13 +6,14 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitBackingStore/HMFLogging-Protocol.h>
 #import <HomeKitBackingStore/NSCopying-Protocol.h>
 #import <HomeKitBackingStore/NSMutableCopying-Protocol.h>
 
-@class HMBLocalZone, HMFUnfairLock, HMFVersion, NSMapTable;
+@class HMBLocalZone, HMFUnfairLock, HMFVersion, NSMapTable, NSString;
 @protocol HMBMirrorProtocol;
 
-@interface HMBModelContainer : HMFObject <NSMutableCopying, NSCopying>
+@interface HMBModelContainer : HMFObject <HMFLogging, NSMutableCopying, NSCopying>
 {
     HMFVersion *_legacyDataVersion;
     HMFVersion *_dataVersion;
@@ -27,6 +28,7 @@
     NSMapTable *_classUnavailableVersionCache;
 }
 
++ (id)logCategory;
 + (id)decodeAsNSDictionary:(id)arg1 error:(id *)arg2;
 + (id)encodeAsNSDictionary:(id)arg1 error:(id *)arg2;
 + (id)decodeAsOPACK:(id)arg1 error:(id *)arg2;
@@ -45,6 +47,7 @@
 @property(readonly, nonatomic) HMFUnfairLock *propertyLock; // @synthesize propertyLock=_propertyLock;
 @property(readonly, copy, nonatomic) HMFVersion *dataVersion; // @synthesize dataVersion=_dataVersion;
 @property(readonly, copy, nonatomic) HMFVersion *legacyDataVersion; // @synthesize legacyDataVersion=_legacyDataVersion;
+- (Class)_modelClassFromDictionary:(id)arg1 typeName:(id)arg2 error:(id *)arg3;
 - (void)updateMirror:(id)arg1;
 - (void)updateLocalZone:(id)arg1;
 - (id)schemaHashForModel:(id)arg1;
@@ -61,6 +64,12 @@
 - (id)readOnlyVersionsForModelClass:(Class)arg1;
 - (id)initWithDataVersion:(id)arg1 legacyDataVersion:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,29 +8,34 @@
 
 #import <coreroutine/RTVisitPipelineModule-Protocol.h>
 
-@class NSString, RTLocation, RTVisitHyperParameter;
+@class NSString, RTDistanceCalculator, RTLocationManager, RTVisitHyperParameter;
 
 @interface RTVisitPipelineModuleVisitCentroidUpdater : NSObject <RTVisitPipelineModule>
 {
     unsigned int _invalidBinIndex;
     RTVisitHyperParameter *_hyperParameter;
-    RTLocation *_referenceLocation;
+    RTLocationManager *_locationManager;
     unsigned int *_binCounts;
     unsigned long long _binCountsSize;
+    RTDistanceCalculator *_distanceCalculator;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
 @property(readonly, nonatomic) unsigned long long binCountsSize; // @synthesize binCountsSize=_binCountsSize;
 @property(readonly, nonatomic) unsigned int *binCounts; // @synthesize binCounts=_binCounts;
 @property(readonly, nonatomic) unsigned int invalidBinIndex; // @synthesize invalidBinIndex=_invalidBinIndex;
-@property(readonly, nonatomic) RTLocation *referenceLocation; // @synthesize referenceLocation=_referenceLocation;
+@property(readonly, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(readonly, nonatomic) RTVisitHyperParameter *hyperParameter; // @synthesize hyperParameter=_hyperParameter;
 - (id)process:(id)arg1;
+- (id)_updateVisitCentroidBasedOnFilteredLocations:(id)arg1 maxHorizontalAccuracy:(double)arg2;
+- (id)_updateHorizontalUncertainty:(id)arg1;
+- (id)_updateVisitCentroidBasedOnMode:(id)arg1;
 - (id)modeWithReferenceLocation:(id)arg1;
 - (unsigned long long)modeBinIndex;
 - (void)updateCountFromNorthing:(double)arg1 easting:(double)arg2;
 - (void)dealloc;
-- (id)initWithHyperParameter:(id)arg1;
+- (id)initWithHyperParameter:(id)arg1 locationManager:(id)arg2 distanceCalculator:(id)arg3;
 - (id)init;
 
 // Remaining properties

@@ -14,7 +14,7 @@
 {
     TSPObjectContext *_context;
     NSURL *_resourcesFolderURL;
-    NSDictionary *_identiferToResourceNameDictionary;
+    NSDictionary *_identifierToResourceNameDictionary;
     unsigned long long _readVersion;
     NSDictionary *_identifierToObjectUUIDDictionary;
     NSDictionary *_dataInfos;
@@ -29,10 +29,11 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isCrossAppPaste; // @synthesize isCrossAppPaste=_isCrossAppPaste;
 @property(nonatomic) _Bool isCrossDocumentPaste; // @synthesize isCrossDocumentPaste=_isCrossDocumentPaste;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) unsigned long long readVersion;
 @property(readonly, nonatomic) unsigned long long fileFormatVersion;
+- (_Bool)isDecodingTransientObject;
 - (_Bool)shouldDecodeMissingDataAsRemote;
 - (id)dataInfoForIdentifier:(long long)arg1;
 - (id)cachedDataForIdentifier:(long long)arg1;

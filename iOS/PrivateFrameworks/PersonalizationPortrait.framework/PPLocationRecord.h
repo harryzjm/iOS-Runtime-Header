@@ -37,8 +37,10 @@
 @property(readonly, nonatomic) _Bool isAmbiguous; // @synthesize isAmbiguous=_isAmbiguous;
 @property(readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property(readonly, nonatomic) NSArray *contextualNamedEntities; // @synthesize contextualNamedEntities=_contextualNamedEntities;
+- (id)identifier;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
+- (id)description;
 @property(readonly, nonatomic) unsigned int extractionAssetVersion;
 @property(readonly, nonatomic) double sentimentScore;
 @property(readonly, nonatomic) double decayRate;

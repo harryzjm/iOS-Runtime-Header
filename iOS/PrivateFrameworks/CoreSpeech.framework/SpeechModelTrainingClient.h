@@ -16,8 +16,9 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)invalidate;
+- (void)generateAudioWithTexts:(id)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)buildPhoneticMatchWithLanguage:(id)arg1 saveIntermediateFsts:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)trainGlobalNNLMwithFidesSessionURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)trainGlobalNNLMwithFidesRecipe:(id)arg1 attachments:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)trainPersonalizedLMWithLanguage:(id)arg1 configuration:(id)arg2 fides:(_Bool)arg3 activity:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)trainPersonalizedLMWithLanguage:(id)arg1 configuration:(id)arg2 asset:(id)arg3 fides:(_Bool)arg4 activity:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)trainPersonalizedLMWithLanguage:(id)arg1 directory:(id)arg2 completion:(CDUnknownBlockType)arg3;

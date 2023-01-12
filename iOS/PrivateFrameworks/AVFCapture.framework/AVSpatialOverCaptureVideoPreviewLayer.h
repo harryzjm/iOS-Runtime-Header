@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer;
+@class CALayer, NSArray;
 
 @interface AVSpatialOverCaptureVideoPreviewLayer
 {
@@ -23,6 +23,11 @@
     CALayer *_topDimmingOverlay;
     CALayer *_bottomDimmingOverlay;
     double _lastAspectCenterUpdateTime;
+    _Bool _semanticStyleRenderingSupported;
+    _Bool _semanticStyleRenderingEnabled;
+    NSArray *_semanticStyles;
+    NSArray *_semanticStylesRegions;
+    unsigned long long _maxSemanticStyles;
 }
 
 + (long long)uniqueID;
@@ -37,6 +42,17 @@
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (struct CGAffineTransform)captureDeviceTransformForSensorSize:(struct CGSize)arg1 previewSize:(struct CGSize)arg2 sensorToPreviewVTScalingMode:(id)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (_Bool)performContentUpdates:(CDUnknownBlockType)arg1;
+- (void)setSemanticStyles:(id)arg1 semanticStylesRegions:(id)arg2;
+- (void)setSemanticStyle:(id)arg1 animated:(_Bool)arg2;
+- (long long)maxSemanticStyles;
+- (id)semanticStylesRegions;
+- (id)semanticStyles;
+- (id)semanticStyle;
+- (void)setSemanticStyleRenderingEnabled:(_Bool)arg1;
+- (_Bool)isSemanticStyleRenderingEnabled;
+- (void)_updateSemanticStyleRenderingSupported;
+- (_Bool)isSemanticStyleRenderingSupported;
 - (void)layoutSublayers;
 @property(nonatomic) _Bool automaticallyDimsOverCaptureRegion;
 @property(readonly, nonatomic) long long overCaptureStatus;
@@ -46,6 +62,7 @@
 @property(readonly, nonatomic) struct CGPoint primaryCaptureRectCenterPoint;
 @property(nonatomic, getter=isPrimaryAndOverCaptureCompositingEnabled) _Bool primaryAndOverCaptureCompositingEnabled;
 - (void)setPrimaryCaptureRectAspectRatio:(double)arg1 centerPoint:(struct CGPoint)arg2;
+- (void)dealloc;
 - (id)initWithLayer:(id)arg1;
 - (id)_initWithSession:(id)arg1 makeConnection:(_Bool)arg2;
 

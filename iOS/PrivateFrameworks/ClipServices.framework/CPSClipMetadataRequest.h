@@ -8,7 +8,7 @@
 
 #import <ClipServices/CPSSessionProxyDelegate-Protocol.h>
 
-@class CPSPromise, CPSSessionProxy, NSString, NSURL;
+@class CPSPromise, CPSSessionConfiguration, CPSSessionProxy, NSString, NSURL;
 
 @interface CPSClipMetadataRequest : NSObject <CPSSessionProxyDelegate>
 {
@@ -33,6 +33,7 @@
 - (id)getDownloadedIconURLSynchronously;
 - (id)getClipMetadataSynchronously;
 @property(readonly, nonatomic, getter=isLikelyAvailable) _Bool likelyAvailable;
+@property(readonly, nonatomic) CPSSessionConfiguration *sessionConfiguration;
 - (void)_setUpSessionProxyAndPromisesWithURL:(id)arg1 fallbackClipBundleID:(id)arg2;
 - (id)initWithURL:(id)arg1 fallbackClipBundleID:(id)arg2;
 - (id)initWithURL:(id)arg1;

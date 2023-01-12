@@ -12,12 +12,12 @@
 {
 }
 
-+ (id)newDataAttributesWithMessage:(const struct DataAttributes *)arg1;
++ (id)newDataAttributesWithMessage:(const void *)arg1;
 + (void)registerDataAttributesClass:(Class)arg1 forExtensionNumber:(int)arg2;
 + (id)_classRegistry;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToMessage:(struct DataAttributes *)arg1;
-- (id)initWithMessage:(const struct DataAttributes *)arg1;
+- (void)saveToMessage:(void *)arg1;
+- (id)initWithMessage:(const void *)arg1;
 
 @end
 

@@ -6,33 +6,36 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDHomeConfigurationLogEvent, HMDLogEventContextProvider, NSMapTable, NSObject;
-@protocol HMFLocking, OS_dispatch_queue;
+#import <HomeKitDaemon/HMMLogEventSubmitting-Protocol.h>
 
-@interface HMDLogEventDispatcher : HMFObject
+@class HMDMetricsManager, NSMapTable, NSObject, NSString;
+@protocol OS_dispatch_queue;
+
+@interface HMDLogEventDispatcher : HMFObject <HMMLogEventSubmitting>
 {
-    id <HMFLocking> _lock;
-    HMDHomeConfigurationLogEvent *_cachedHomeConfiguration;
-    NSMapTable *_logEventObserversByEventType;
-    unsigned long long _cachedHomeConfigurationVersion;
-    HMDLogEventContextProvider *_logEventContextProvider;
+    HMDMetricsManager *_metricsManager;
     NSObject<OS_dispatch_queue> *_clientQueue;
+    NSMapTable *_logEventObserversByClass;
 }
 
 + (id)sharedInstance;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMapTable *logEventObserversByClass; // @synthesize logEventObserversByClass=_logEventObserversByClass;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property(readonly, nonatomic) HMDLogEventContextProvider *logEventContextProvider; // @synthesize logEventContextProvider=_logEventContextProvider;
-@property(nonatomic) unsigned long long cachedHomeConfigurationVersion; // @synthesize cachedHomeConfigurationVersion=_cachedHomeConfigurationVersion;
-@property(readonly, nonatomic) NSMapTable *logEventObserversByEventType; // @synthesize logEventObserversByEventType=_logEventObserversByEventType;
-- (void)submitLogEvent:(id)arg1 error:(id)arg2;
+@property __weak HMDMetricsManager *metricsManager; // @synthesize metricsManager=_metricsManager;
 - (void)submitLogEvent:(id)arg1;
-- (void)removeObserver:(id)arg1 forEventType:(id)arg2;
-- (void)addObserver:(id)arg1 forEventTypes:(id)arg2;
-- (void)addObserver:(id)arg1 forEventType:(id)arg2;
-@property(retain, nonatomic) HMDHomeConfigurationLogEvent *cachedHomeConfiguration; // @synthesize cachedHomeConfiguration=_cachedHomeConfiguration;
+- (void)submitLogEvent:(id)arg1 error:(id)arg2;
+- (void)removeObserver:(id)arg1 forEventClass:(Class)arg2;
+- (void)addObserver:(id)arg1 forEventClasses:(id)arg2;
+- (void)addObserver:(id)arg1 forEventClass:(Class)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

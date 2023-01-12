@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface WKProcessAssertionBackgroundTaskManager : NSObject <RBSAssertionObserving>
 {
     struct RetainPtr<RBSAssertion> _backgroundTask;
+    struct atomic<bool> _backgroundTaskWasInvalidated;
     struct WeakHashSet<WebKit::ProcessAndUIAssertion, WTF::EmptyCounter> _assertionsNeedingBackgroundTask;
     CDUnknownBlockType _pendingTaskReleaseTask;
 }
@@ -31,8 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)_cancelPendingReleaseTask;
 - (void)_scheduleReleaseTask;
 - (void)_notifyAssertionsOfImminentSuspension;
-- (void)removeAssertionNeedingBackgroundTask:(struct ProcessAndUIAssertion *)arg1;
-- (void)addAssertionNeedingBackgroundTask:(struct ProcessAndUIAssertion *)arg1;
+- (void)removeAssertionNeedingBackgroundTask:(void *)arg1;
+- (void)addAssertionNeedingBackgroundTask:(void *)arg1;
 - (void)dealloc;
 - (id)init;
 

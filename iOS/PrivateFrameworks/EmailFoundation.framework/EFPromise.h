@@ -20,6 +20,7 @@
 @property(readonly) EFFuture *future; // @synthesize future=_future;
 - (void)cancel;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (id)methodSignatureForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)init;
 

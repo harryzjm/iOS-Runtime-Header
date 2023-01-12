@@ -14,6 +14,7 @@
     NSString *_identifier;
 }
 
++ (void)ensureAssertionsHaveBeenProcessedWithCompletion:(CDUnknownBlockType)arg1;
 + (id)assertionWithType:(id)arg1 identifier:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -22,7 +23,6 @@
 - (void)_notifyServerAssertionWasRelinquished;
 - (void)_notifyServerAssertionWasAcquired;
 - (_Bool)_hasValidAssertionType;
-@property(readonly, nonatomic) _Bool shouldHandleSynchronously;
 - (void)dealloc;
 - (id)initWithType:(id)arg1 identifier:(id)arg2;
 

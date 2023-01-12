@@ -18,6 +18,7 @@
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_editingDidEnd;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (id)_outerView;
 

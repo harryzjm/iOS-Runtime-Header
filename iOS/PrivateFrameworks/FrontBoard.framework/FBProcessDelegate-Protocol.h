@@ -9,6 +9,7 @@
 @class FBProcess, FBProcessState;
 
 @protocol FBProcessDelegate <FBProcessWatchdogProviding>
+- (void)noteProcessAssertionStateDidChange:(FBProcess *)arg1;
 - (void)noteProcess:(FBProcess *)arg1 didUpdateState:(FBProcessState *)arg2;
 - (void)noteProcessDidExit:(FBProcess *)arg1;
 @end

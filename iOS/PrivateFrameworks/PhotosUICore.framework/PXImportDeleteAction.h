@@ -23,8 +23,8 @@
 @property(readonly, nonatomic) NSString *sessionUuid; // @synthesize sessionUuid=_sessionUuid;
 - (void)sendActionProgress:(double)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)stopObservingDeleteProgress;
-- (void)startObservingDeleteProgress;
+- (void)_stopObservingDeleteProgress;
+- (void)_startObservingDeleteProgress;
 - (void)didRemove:(id)arg1;
 - (void)_performMockAction;
 - (void)_performRealAction;

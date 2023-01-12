@@ -8,7 +8,7 @@
 
 @interface GKGridGraph
 {
-    struct GKCGridGraph *_cGridGraph;
+    void *_cGridGraph;
     _Bool _diagonalsAllowed;
 }
 
@@ -25,11 +25,11 @@
 - (id)nodeAtGridPosition: /* Error: Ran out of types for this method. */;
 - (id)initFromGridStartingAt:(int)arg1 width:(int)arg2 height:(_Bool)arg3 diagonalsAllowed:(Class)arg4 nodeClass: /* Error: Ran out of types for this method. */;
 - (id)initFromGridStartingAt:(int)arg1 width:(int)arg2 height:(_Bool)arg3 diagonalsAllowed: /* Error: Ran out of types for this method. */;
-- (struct GKCGridGraph *)cGridGraph;
+- (void *)cGridGraph;
 @property(readonly, nonatomic) unsigned long long gridHeight;
 @property(readonly, nonatomic) unsigned long long gridWidth;
 @property(readonly, nonatomic) MISSING_TYPE *gridOrigin;
-- (struct GKCGraph *)makeCGraph;
+- (void *)makeCGraph;
 
 @end
 

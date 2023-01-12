@@ -11,8 +11,8 @@
 @interface TSTFontInfoCacheEntry : NSObject
 {
     struct os_unfair_lock_s _lock[8];
-    struct unordered_map<TSTFontInfoCacheDupContentEntry, double, std::__1::hash<TSTFontInfoCacheDupContentEntry>, std::__1::equal_to<TSTFontInfoCacheDupContentEntry>, std::__1::allocator<std::__1::pair<const TSTFontInfoCacheDupContentEntry, double>>> _dupContentEntryToHeightCache[8];
-    struct unordered_map<TSTFontInfoCacheDupContentEntry, double, std::__1::hash<TSTFontInfoCacheDupContentEntry>, std::__1::equal_to<TSTFontInfoCacheDupContentEntry>, std::__1::allocator<std::__1::pair<const TSTFontInfoCacheDupContentEntry, double>>> _dupContentEntryToWidthCache[8];
+    struct unordered_map<TSTFontInfoCacheDupContentEntry, double, std::hash<TSTFontInfoCacheDupContentEntry>, std::equal_to<TSTFontInfoCacheDupContentEntry>, std::allocator<std::pair<const TSTFontInfoCacheDupContentEntry, double>>> _dupContentEntryToHeightCache[8];
+    struct unordered_map<TSTFontInfoCacheDupContentEntry, double, std::hash<TSTFontInfoCacheDupContentEntry>, std::equal_to<TSTFontInfoCacheDupContentEntry>, std::allocator<std::pair<const TSTFontInfoCacheDupContentEntry, double>>> _dupContentEntryToWidthCache[8];
     TSWPTextMeasurerBundle *_textMeasurerBundle;
 }
 

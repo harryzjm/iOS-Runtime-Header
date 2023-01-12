@@ -15,6 +15,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (id)privateImpl;
 @property(readonly) GKConnection *connection;
 @property __weak id <GKSessionPrivateDelegate> privateDelegate;

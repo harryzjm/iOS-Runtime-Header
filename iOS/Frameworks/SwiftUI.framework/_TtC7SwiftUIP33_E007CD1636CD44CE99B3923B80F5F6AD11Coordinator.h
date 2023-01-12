@@ -11,6 +11,7 @@
 @interface _TtC7SwiftUIP33_E007CD1636CD44CE99B3923B80F5F6AD11Coordinator <UITabBarControllerDelegate>
 {
     MISSING_TYPE *selected;
+    MISSING_TYPE *$__lazy_storage_$_formatter;
 }
 
 - (void).cxx_destruct;

@@ -8,16 +8,19 @@
 
 #import <FileProvider/FPXEnumerator-Protocol.h>
 
-@class FPItemID, FPXDomainContext, NSString;
-@protocol FPXEnumeratorObserver, NSFileProviderEnumerator;
+@class FPItemID, FPXDomainContext, NSFileProviderRequest, NSString;
+@protocol FPXEnumeratorObserver, NSFileProviderEnumerator, OS_dispatch_queue, OS_os_log;
 
 @interface FPXEnumerator : NSObject <FPXEnumerator>
 {
     FPXDomainContext *_domainContext;
     id <NSFileProviderEnumerator> _vendorEnumerator;
+    NSFileProviderRequest *_nsFileProviderRequest;
     FPItemID *_observedItemID;
     _Bool _invalidated;
-    _Bool _forceFileURLs;
+    _Bool _isWorkingSetEnum;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_os_log> *_log;
     id <FPXEnumeratorObserver> _observer;
 }
 
@@ -26,16 +29,18 @@
 - (void)keepAliveConnectionForRegisteredObserver:(CDUnknownBlockType)arg1;
 - (void)alternateContentsWereUpdatedAtURL:(id)arg1 forItem:(id)arg2;
 @property(readonly) FPItemID *observedItemID;
-- (void)enumerateChangesFromToken:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)enumerateItemsFromPage:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)enumerateChangesFromToken:(id)arg1 suggestedBatchSize:(long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)enumerateItemsFromPage:(id)arg1 suggestedPageSize:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)currentSyncAnchorWithCompletion:(CDUnknownBlockType)arg1;
 - (void)forceAddFileURLsForItems:(id)arg1;
 - (void)forceItemUpdate:(id)arg1;
+- (id)vendorEnumerator;
 - (void)invalidateVendorEnumeration;
 - (void)invalidate;
+- (void)_invalidate;
 - (void)dealloc;
 @property(readonly, copy) NSString *description;
-- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 vendorEnumerator:(id)arg3 observer:(id)arg4 forceFileURLs:(_Bool)arg5;
+- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 vendorEnumerator:(id)arg3 nsFileProviderRequest:(id)arg4 observer:(id)arg5 isWorkingSetEnum:(_Bool)arg6 queue:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

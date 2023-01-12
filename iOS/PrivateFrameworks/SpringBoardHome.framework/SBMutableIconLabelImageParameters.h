@@ -22,7 +22,6 @@
 @property(nonatomic) _Bool containsEmoji; // @dynamic containsEmoji;
 @property(nonatomic) _Bool canTighten; // @dynamic canTighten;
 @property(nonatomic) _Bool canTruncate; // @dynamic canTruncate;
-@property(copy, nonatomic) NSString *iconLocation; // @dynamic iconLocation;
 @property(retain, nonatomic) UIFont *font; // @dynamic font;
 @property(nonatomic) struct CGSize maxSize; // @dynamic maxSize;
 @property(copy, nonatomic) NSString *text; // @dynamic text;

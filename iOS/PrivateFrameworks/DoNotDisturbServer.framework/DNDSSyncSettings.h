@@ -7,18 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturbServer/NSCopying-Protocol.h>
+#import <DoNotDisturbServer/NSMutableCopying-Protocol.h>
 
-@interface DNDSSyncSettings : NSObject <NSCopying>
+@interface DNDSSyncSettings : NSObject <NSMutableCopying, NSCopying>
 {
-    _Bool _syncEnabled;
+    _Bool _pairSyncEnabled;
+    _Bool _cloudSyncEnabled;
 }
 
-@property(readonly, nonatomic, getter=isSyncEnabled) _Bool syncEnabled; // @synthesize syncEnabled=_syncEnabled;
+@property(readonly, nonatomic, getter=isCloudSyncEnabled) _Bool cloudSyncEnabled; // @synthesize cloudSyncEnabled=_cloudSyncEnabled;
+@property(readonly, nonatomic, getter=isPairSyncEnabled) _Bool pairSyncEnabled; // @synthesize pairSyncEnabled=_pairSyncEnabled;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithSyncEnabled:(_Bool)arg1;
+- (id)initWithPairSyncEnabled:(_Bool)arg1 cloudSyncEnabled:(_Bool)arg2;
 
 @end
 

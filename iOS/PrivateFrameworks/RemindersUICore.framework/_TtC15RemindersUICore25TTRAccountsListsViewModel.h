@@ -13,6 +13,7 @@
     MISSING_TYPE *shouldSelectListByDefault;
     MISSING_TYPE *allSmartLists;
     MISSING_TYPE *smartListsSectionItems;
+    MISSING_TYPE *hashtagsItem;
     MISSING_TYPE *accountsCapabilities;
     MISSING_TYPE *tree;
     MISSING_TYPE *smartListDisplayability;

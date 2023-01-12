@@ -24,7 +24,10 @@
 @property(readonly, copy, nonatomic) SBHFloatyFolderVisualConfiguration *floatyFolderVisualConfiguration;
 @property(readonly, copy, nonatomic) SBHFolderIconVisualConfiguration *folderIconVisualConfiguration;
 @property(readonly, copy, nonatomic) SBHIconAccessoryVisualConfiguration *iconAccessoryVisualConfiguration;
+@property(readonly, nonatomic) long long primaryOrientationForGridCellLayoutClusterSize;
+@property(readonly, nonatomic) unsigned long long rotatedLayoutClusterGridSizeClass;
 - (void)noteIcons:(NSArray *)arg1 didDropAtCoordinate:(struct SBIconCoordinate)arg2 inList:(SBIconListModel *)arg3;
+- (double)editingAnimationStrengthForGridSizeClass:(unsigned long long)arg1;
 - (UIFont *)accessoryFontForContentSizeCategory:(NSString *)arg1 options:(unsigned long long)arg2;
 - (SBHIconLabelVisualConfiguration *)labelVisualConfigurationForContentSizeCategory:(NSString *)arg1 options:(unsigned long long)arg2;
 - (UIFont *)labelFontForContentSizeCategory:(NSString *)arg1 options:(unsigned long long)arg2;

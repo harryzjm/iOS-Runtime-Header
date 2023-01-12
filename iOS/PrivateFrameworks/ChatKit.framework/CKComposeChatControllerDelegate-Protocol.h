@@ -18,5 +18,6 @@
 @optional
 - (void)composeChatController:(CKComposeChatController *)arg1 didLoadEntryViewContentWithCompletion:(void (^)(NSValue *))arg2;
 - (void)composeChatController:(CKComposeChatController *)arg1 shouldSendComposition:(CKComposition *)arg2 inConversation:(CKConversation *)arg3 completion:(void (^)(_Bool))arg4;
+- (void)showConversation:(CKConversation *)arg1 animate:(_Bool)arg2;
 @end
 

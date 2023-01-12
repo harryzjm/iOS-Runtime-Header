@@ -8,16 +8,19 @@
 
 @protocol OS_xpc_object;
 
-__attribute__((visibility("hidden")))
 @interface BYXPCActivity : NSObject
 {
+    NSObject<OS_xpc_object> *_underlyingActivity;
     NSObject<OS_xpc_object> *_xpcActivity;
 }
 
 + (id)activityWithXPCActivity:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
+@property(retain, nonatomic) NSObject<OS_xpc_object> *underlyingActivity; // @synthesize underlyingActivity=_underlyingActivity;
 @property(copy, nonatomic) NSObject<OS_xpc_object> *criteria;
+- (_Bool)setCompletionStatus:(long long)arg1;
+- (_Bool)shouldDefer;
 - (long long)state;
 - (_Bool)setState:(long long)arg1;
 

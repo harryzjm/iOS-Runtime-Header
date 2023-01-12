@@ -15,9 +15,6 @@
     _Bool _retryPrefersWWAN;
 }
 
-+ (void)logPeriodicUsageIfNeeded;
-+ (_Bool)_timestamp:(id)arg1 isAfter:(id)arg2;
-+ (_Bool)_hadUserEventSinceIntervalAgo:(double)arg1;
 + (void)noteSuccessOfRequest:(id)arg1 inCar:(_Bool)arg2;
 + (void)noteConnectedToCarPlayHeadunit;
 + (void)logCDMAssetEvictedForAssetType:(id)arg1 language:(id)arg2;

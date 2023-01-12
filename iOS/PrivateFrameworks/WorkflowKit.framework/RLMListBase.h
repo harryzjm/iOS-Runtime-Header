@@ -12,7 +12,7 @@
 
 @interface RLMListBase : NSObject <NSFastEnumeration>
 {
-    struct unique_ptr<RLMObservationInfo, std::__1::default_delete<RLMObservationInfo>> _observationInfo;
+    struct unique_ptr<RLMObservationInfo, std::default_delete<RLMObservationInfo>> _observationInfo;
     RLMArray *__rlmArray;
 }
 

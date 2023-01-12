@@ -7,14 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <HeartHealthDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
+#import <HeartHealthDaemon/HDHRHeartNotificationsUserDefaultsProviding-Protocol.h>
 #import <HeartHealthDaemon/HDProfileExtension-Protocol.h>
+#import <HeartHealthDaemon/HDProfileReadyObserver-Protocol.h>
 
-@class HDFeatureAvailabilityManager, HDHRDailyHeartRateManager, HDHRHealthLiteDataCollector, HDHRNotificationManager, HDProfile, NSString;
+@class HDHRCardioFitnessAnalyticsDailyEventActivity, HDHRCardioFitnessFeatureAvailabilityManager, HDHRDailyHeartRateManager, HDHRHealthLiteDataCollector, HDHRIrregularRhythmNotificationsV1FeatureAvailabilityManager, HDHRNotificationManager, HDPrimaryProfile, HKFeatureStatusManager, HRAtrialFibrillationEventDetector, HRAtrialFibrillationNotificationManager, NSString, NSUserDefaults;
 
-@interface HDHeartRateProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
+@interface HDHeartRateProfileExtension : NSObject <HDProfileReadyObserver, HDHRHeartNotificationsUserDefaultsProviding, HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
 {
-    HDFeatureAvailabilityManager *_featureAvailabilityManager;
-    HDProfile *_profile;
+    HDHRCardioFitnessFeatureAvailabilityManager *_cardioFitnessFeatureAvailabilityManager;
+    HDHRCardioFitnessAnalyticsDailyEventActivity *_dailyAnalyticsActivity;
+    HDHRIrregularRhythmNotificationsV1FeatureAvailabilityManager *_irregularRhythmNotificationsAvailabilityManager;
+    HKFeatureStatusManager *_irregularRhythmNotificationsFeatureStatusManager;
+    HRAtrialFibrillationEventDetector *_atrialFibrillationEventDetector;
+    HRAtrialFibrillationNotificationManager *_atrialFibrillationNotificationManager;
+    NSUserDefaults *_heartNotificationsUserDefaults;
+    HDPrimaryProfile *_profile;
     HDHRHealthLiteDataCollector *_healthLiteDataCollector;
     HDHRDailyHeartRateManager *_dailyHeartRateManager;
     HDHRNotificationManager *_heartRateNotificationManager;
@@ -24,9 +32,13 @@
 @property(retain, nonatomic) HDHRNotificationManager *heartRateNotificationManager; // @synthesize heartRateNotificationManager=_heartRateNotificationManager;
 @property(retain, nonatomic) HDHRDailyHeartRateManager *dailyHeartRateManager; // @synthesize dailyHeartRateManager=_dailyHeartRateManager;
 @property(retain, nonatomic) HDHRHealthLiteDataCollector *healthLiteDataCollector; // @synthesize healthLiteDataCollector=_healthLiteDataCollector;
-@property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1 client:(id)arg2;
-- (id)initWithProfile:(id)arg1;
+@property(readonly, nonatomic) __weak HDPrimaryProfile *profile; // @synthesize profile=_profile;
+@property(retain, nonatomic) NSUserDefaults *heartNotificationsUserDefaults; // @synthesize heartNotificationsUserDefaults=_heartNotificationsUserDefaults;
+- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1;
+- (void)profileDidBecomeReady:(id)arg1;
+@property(readonly, nonatomic) HKFeatureStatusManager *irregularRhythmNotificationsFeatureStatusManager;
+- (void)dealloc;
+- (id)initWithProfile:(id)arg1 heartNotificationsUserDefaults:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,6 +11,7 @@
 }
 
 + (id)getStorebagValueStorebagKey:(id)arg1 defaultValue:(id)arg2;
++ (_Bool)getFeatureFlagForStorebagKey:(id)arg1 userDefaultKey:(struct __CFString *)arg2 featureFlagDomain:(char *)arg3 featureFlagName:(char *)arg4;
 + (id)getStorebagValueForStorebagKey:(id)arg1 userDefaultKey:(struct __CFString *)arg2 defaultValue:(id)arg3 isDoubleType:(_Bool)arg4;
 + (id)getVCRCSeverBagConfigWithKey:(id)arg1;
 + (double)getNoRemoteDuplicationThresholdFast;
@@ -19,6 +20,7 @@
 + (unsigned char)getAbTestingState;
 + (unsigned int)getAbTestMasterLocalSwitches;
 + (double)getThresholdForSwitch:(unsigned int)arg1;
++ (int)getWRMRSSIThresholdValue:(int)arg1;
 + (double)getLongTermValueWeightC;
 + (double)getShortTermValueWeightC;
 + (double)getAdjustmentFactorC;
@@ -34,6 +36,7 @@
 + (int)getShortTermHistoryLength;
 + (int)getAdaptiveLearningState;
 + (int)getNewSessionJoiningInterval;
++ (int)getDecryptionMKMRecoveryInterval;
 + (int)getDecryptionTimeoutInterval;
 + (int)getRateControllerType;
 + (_Bool)supportiRATRecommendation;

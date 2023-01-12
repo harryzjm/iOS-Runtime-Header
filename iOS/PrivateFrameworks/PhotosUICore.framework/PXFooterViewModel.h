@@ -22,11 +22,13 @@
     NSString *_actionConfirmationAlertButtonTitle;
     CDUnknownBlockType _action;
     UIView *_accessoryView;
+    UIView *_topAccessoryView;
     UIView *_filterView;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIView *filterView; // @synthesize filterView=_filterView;
+@property(readonly, nonatomic) UIView *topAccessoryView; // @synthesize topAccessoryView=_topAccessoryView;
 @property(readonly, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(readonly, copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
 @property(readonly, nonatomic) NSString *actionConfirmationAlertButtonTitle; // @synthesize actionConfirmationAlertButtonTitle=_actionConfirmationAlertButtonTitle;
@@ -43,6 +45,7 @@
 @property(readonly, nonatomic) long long animatedIconMode; // @synthesize animatedIconMode=_animatedIconMode;
 - (void)setAnimatedIconMode:(long long)arg1;
 - (void)setFilterView:(id)arg1;
+- (void)setTopAccessoryView:(id)arg1;
 - (void)setAccessoryView:(id)arg1;
 - (void)setAction:(CDUnknownBlockType)arg1;
 - (void)setActionConfirmationAlertButtonTitle:(id)arg1;

@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, NSURL;
 
 @interface AMSContentRating : NSObject
 {
     NSString *_contentRatingID;
+    NSURL *_imageURL;
     NSString *_kind;
     NSString *_label;
     NSString *_name;
+    NSString *_ratingDescription;
     NSNumber *_value;
 }
 
 + (id)contentRatingWithDictionary:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *value; // @synthesize value=_value;
+@property(readonly, nonatomic) NSString *ratingDescription; // @synthesize ratingDescription=_ratingDescription;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property(readonly, nonatomic) NSString *kind; // @synthesize kind=_kind;
+@property(readonly, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property(readonly, nonatomic) NSString *contentRatingID; // @synthesize contentRatingID=_contentRatingID;
 - (id)description;
 - (id)initWithDictionary:(id)arg1;

@@ -7,7 +7,6 @@
 #import <HeartRhythmUI/NSObject-Protocol.h>
 
 @class NSAttributedString, UIViewController;
-@protocol HRFeatureRegulatoryPanelDisplayUpdateDelegate;
 
 @protocol HRFeatureRegulatoryPanelDisplayable <NSObject>
 @property(readonly, nonatomic) long long cellAccessoryType;
@@ -16,7 +15,6 @@
 @property(readonly, copy, nonatomic) NSAttributedString *titleString;
 
 @optional
-@property(nonatomic) __weak id <HRFeatureRegulatoryPanelDisplayUpdateDelegate> updateDelegate;
 - (void)handleUserInteractionWithItemWithHostViewController:(UIViewController *)arg1;
 @end
 

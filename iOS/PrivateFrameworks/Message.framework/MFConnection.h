@@ -33,6 +33,7 @@
 }
 
 + (_Bool)shouldTryFallbacksAfterError:(id)arg1;
++ (id)certUIPromptScheduler;
 + (void)setLogActivityOnHosts:(id)arg1;
 + (id)logActivityOnHosts;
 + (void)setLogActivityOnPorts:(id)arg1;
@@ -79,6 +80,7 @@
 @property(readonly, nonatomic) NSArray *authenticationMechanisms;
 @property(readonly, nonatomic) NSArray *capabilities;
 - (_Bool)authenticateUsingAccount:(id)arg1;
+- (void)test_setSocket:(id)arg1;
 - (_Bool)connectUsingFallbacksForAccount:(id)arg1;
 - (_Bool)connectUsingAccount:(id)arg1;
 - (_Bool)connectUsingSettings:(id)arg1;

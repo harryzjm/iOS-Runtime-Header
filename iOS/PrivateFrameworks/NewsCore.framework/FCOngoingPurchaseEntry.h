@@ -15,6 +15,7 @@
     NSString *_tagID;
     NSString *_purchaseID;
     NSString *_productID;
+    NSString *_bundleID;
     NSNumber *_appAdamID;
     NSNumber *_storeExternalVersion;
     NSString *_vendorIdentifier;
@@ -30,13 +31,14 @@
 @property(copy, nonatomic) NSNumber *storeExternalVersion; // @synthesize storeExternalVersion=_storeExternalVersion;
 @property(copy, nonatomic) NSNumber *appAdamID; // @synthesize appAdamID=_appAdamID;
 @property(nonatomic) _Bool webAccessOptIn; // @synthesize webAccessOptIn=_webAccessOptIn;
+@property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(copy, nonatomic) NSString *productID; // @synthesize productID=_productID;
 @property(copy, nonatomic) NSString *purchaseID; // @synthesize purchaseID=_purchaseID;
 @property(copy, nonatomic) NSString *tagID; // @synthesize tagID=_tagID;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)dictionaryRepresentation;
 - (id)initWithEntryID:(id)arg1 dictionaryRepresentation:(id)arg2;
-- (id)initWithEntryID:(id)arg1 tagID:(id)arg2 purchaseID:(id)arg3 productID:(id)arg4 webAccessOptIn:(_Bool)arg5 appAdamID:(id)arg6 storeExternalVersion:(id)arg7 vendorIdentifier:(id)arg8 purchaseInitiatedTime:(id)arg9 price:(id)arg10;
+- (id)initWithEntryID:(id)arg1 tagID:(id)arg2 purchaseID:(id)arg3 productID:(id)arg4 bundleID:(id)arg5 webAccessOptIn:(_Bool)arg6 appAdamID:(id)arg7 storeExternalVersion:(id)arg8 vendorIdentifier:(id)arg9 purchaseInitiatedTime:(id)arg10 price:(id)arg11;
 
 @end
 

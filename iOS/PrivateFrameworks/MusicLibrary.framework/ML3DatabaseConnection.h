@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ML3DatabaseConnectionPool, ML3DatabaseStatementCache, NSMutableArray, NSString, NSUUID;
+@class ML3DatabaseConnectionPool, ML3DatabasePrivacyContext, ML3DatabaseStatementCache, NSMutableArray, NSString, NSUUID;
 @protocol ML3DatabaseConnectionDelegate;
 
 @interface ML3DatabaseConnection : NSObject
@@ -15,14 +15,14 @@
     _Bool _isOpen;
     ML3DatabaseStatementCache *_statementCache;
     unsigned long long _statementsSinceLastCheckpoint;
-    unsigned int _transactionLevel;
+    unsigned long long _transactionLevel;
     _Bool _nestedTransactionWantsToRollback;
     NSMutableArray *_enqueuedTransactionCommitBlocks;
     ML3DatabaseConnectionPool *_owningPool;
     NSMutableArray *_registeredFunctions;
     NSMutableArray *_registeredModules;
     const void *_iTunesExtensions;
-    int _profilingLevel;
+    long long _profilingLevel;
     NSString *_lastTracedStatement;
     int _willDeleteDatabaseNotifyToken;
     _Bool _isHandlingIOError;
@@ -32,6 +32,7 @@
     _Bool _logQueryPlans;
     id <ML3DatabaseConnectionDelegate> _connectionDelegate;
     NSString *_databasePath;
+    ML3DatabasePrivacyContext *_privacyContext;
     unsigned long long _journalingMode;
     unsigned long long _protectionLevel;
     NSUUID *_currentTransactionID;
@@ -48,6 +49,7 @@
 @property(nonatomic) unsigned long long protectionLevel; // @synthesize protectionLevel=_protectionLevel;
 @property(nonatomic) unsigned long long journalingMode; // @synthesize journalingMode=_journalingMode;
 @property(nonatomic, setter=setReadOnly:) _Bool isReadOnly; // @synthesize isReadOnly=_isReadOnly;
+@property(retain, nonatomic) ML3DatabasePrivacyContext *privacyContext; // @synthesize privacyContext=_privacyContext;
 @property(readonly, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
 @property(nonatomic) __weak id <ML3DatabaseConnectionDelegate> connectionDelegate; // @synthesize connectionDelegate=_connectionDelegate;
 - (void)_handleDatabaseProfileStatement:(const char *)arg1 executionTimeNS:(unsigned long long)arg2;
@@ -123,7 +125,7 @@
 - (_Bool)_openWithFlags:(int)arg1;
 - (_Bool)open;
 - (void)setCurrentTransactionID:(id)arg1;
-@property(nonatomic) int profilingLevel;
+@property(nonatomic) long long profilingLevel;
 @property(readonly, nonatomic) _Bool isOpen;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

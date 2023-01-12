@@ -12,7 +12,7 @@
 
 @interface TSTCellRegionRowMajorIterator : NSObject <TSTCellRegionIterating>
 {
-    set_5fd94db8 mCellRangeSet;
+    struct set<TSUCellRect, TSTCellRangeRowMajorLess, std::allocator<TSUCellRect>> mCellRangeSet;
     struct TSUCellCoord mCellID;
     struct TSUCellRect mBoundingCellRange;
 }

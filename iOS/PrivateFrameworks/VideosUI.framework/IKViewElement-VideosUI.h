@@ -16,7 +16,5 @@
 - (id)vui_title;
 @property(readonly, copy, nonatomic) NSSet *vui_updateEventDescriptors;
 @property(readonly, nonatomic) VUIViewElementDataSource *vui_DataSource;
-- (id)_backgroundImageProxyFromImageElement:(id)arg1;
-- (id)mediaInfoForEvent:(id)arg1 playbackContext:(unsigned long long)arg2 includingVideo:(_Bool)arg3;
 @end
 

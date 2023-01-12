@@ -5,6 +5,7 @@
 //
 
 @class NSDictionary, NSMutableDictionary, NSString;
+@protocol VCMediaStreamSyncSource;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoStreamConfig
@@ -25,7 +26,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _sourceFramerate;
     int _encodingMode;
     _Atomic unsigned char *_videoPriorityPointer;
-    int _captureSource;
     unsigned int _screenDisplayID;
     unsigned long long _customWidth;
     unsigned long long _customHeight;
@@ -36,9 +36,27 @@ __attribute__((visibility("hidden")))
     _Bool _ltrpEnabled;
     int _hdrMode;
     NSString *_remoteDeviceName;
+    NSString *_profileLevel;
+    unsigned int _parameterSets;
+    _Bool _temporalScalingEnabled;
+    _Bool _isVariableSliceModeEnabled;
+    _Bool _rtcpPSFB_FIREnabled;
+    _Bool _resetSendRTPTimestampOnStop;
+    id <VCMediaStreamSyncSource> _syncSource;
+    _Bool _useVideoJitterForVideoPlayout;
 }
 
++ (id)profileLevelStringForId:(unsigned int)arg1;
++ (unsigned int)profileLevelIdForString:(id)arg1;
 + (_Bool)validateClientDictionary:(id)arg1;
+@property(nonatomic) _Bool useVideoJitterForVideoPlayout; // @synthesize useVideoJitterForVideoPlayout=_useVideoJitterForVideoPlayout;
+@property(nonatomic) _Bool resetSendRTPTimestampOnStop; // @synthesize resetSendRTPTimestampOnStop=_resetSendRTPTimestampOnStop;
+@property(nonatomic) id <VCMediaStreamSyncSource> syncSource; // @synthesize syncSource=_syncSource;
+@property(nonatomic) _Bool rtcpPSFB_FIREnabled; // @synthesize rtcpPSFB_FIREnabled=_rtcpPSFB_FIREnabled;
+@property(nonatomic) _Bool isVariableSliceModeEnabled; // @synthesize isVariableSliceModeEnabled=_isVariableSliceModeEnabled;
+@property(nonatomic) _Bool temporalScalingEnabled; // @synthesize temporalScalingEnabled=_temporalScalingEnabled;
+@property(nonatomic) unsigned int parameterSets; // @synthesize parameterSets=_parameterSets;
+@property(retain, nonatomic) NSString *profileLevel; // @synthesize profileLevel=_profileLevel;
 @property(retain, nonatomic) NSString *remoteDeviceName; // @synthesize remoteDeviceName=_remoteDeviceName;
 @property(nonatomic) int hdrMode; // @synthesize hdrMode=_hdrMode;
 @property(nonatomic) _Bool ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
@@ -47,7 +65,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long customHeight; // @synthesize customHeight=_customHeight;
 @property(nonatomic) unsigned long long customWidth; // @synthesize customWidth=_customWidth;
 @property(nonatomic) unsigned int screenDisplayID; // @synthesize screenDisplayID=_screenDisplayID;
-@property(nonatomic) int captureSource; // @synthesize captureSource=_captureSource;
 @property(nonatomic) _Atomic unsigned char *videoPriorityPointer; // @synthesize videoPriorityPointer=_videoPriorityPointer;
 @property(nonatomic) int encodingMode; // @synthesize encodingMode=_encodingMode;
 @property(nonatomic) unsigned long long sourceFramerate; // @synthesize sourceFramerate=_sourceFramerate;
@@ -66,6 +83,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long txMinBitrate; // @synthesize txMinBitrate=_txMinBitrate;
 @property(nonatomic) unsigned long long framerate; // @synthesize framerate=_framerate;
 @property(nonatomic) long long videoResolution; // @synthesize videoResolution=_videoResolution;
+- (void)initializeParameterSets;
 - (void)addTxCodecFeatureListString:(id)arg1 codecType:(long long)arg2;
 - (void)addRxCodecFeatureListString:(id)arg1 codecType:(long long)arg2;
 - (_Bool)updateWithClientDictionary:(id)arg1;

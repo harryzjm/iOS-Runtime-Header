@@ -7,10 +7,13 @@
 #import <Foundation/NSEnumerator.h>
 
 @class NSDictionary, _EXExtensionPoint;
+@protocol EXEnumeratorConfig;
 
 __attribute__((visibility("hidden")))
 @interface EXExtensionPointEnumerator : NSEnumerator
 {
+    _Bool _validateExtensionPoints;
+    id <EXEnumeratorConfig> _config;
     NSDictionary *_extensionPoints;
     NSEnumerator *_extensionPointsKeyEnumerator;
     NSDictionary *_currentExtensionPointDict;
@@ -23,9 +26,15 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSDictionary *currentExtensionPointDict; // @synthesize currentExtensionPointDict=_currentExtensionPointDict;
 @property(readonly) NSEnumerator *extensionPointsKeyEnumerator; // @synthesize extensionPointsKeyEnumerator=_extensionPointsKeyEnumerator;
 @property(readonly) NSDictionary *extensionPoints; // @synthesize extensionPoints=_extensionPoints;
+@property(readonly) id <EXEnumeratorConfig> config; // @synthesize config=_config;
+@property(readonly) _Bool validateExtensionPoints; // @synthesize validateExtensionPoints=_validateExtensionPoints;
 - (id)nextObject;
+- (_Bool)validateExtensionPointIdentifier:(id)arg1 sdkDictionary:(id)arg2;
+- (id)synthesizeNSExtensionKeysInDictionary:(id)arg1 identifier:(id)arg2;
 - (id)translateXPCCacheDictionary:(id)arg1;
-- (id)initWithCacheURLs:(id)arg1;
+- (id)initWithSDKDictionary:(id)arg1 config:(id)arg2;
+- (id)initWithSDKDictionary:(id)arg1 urls:(id)arg2 config:(id)arg3;
+- (id)initWithCacheURLs:(id)arg1 config:(id)arg2;
 
 @end
 

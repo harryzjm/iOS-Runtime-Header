@@ -6,9 +6,10 @@
 
 #import <SiriVOX/NSObject-Protocol.h>
 
-@class AFXPCWrapper, NSError, NSString, SVXActivationContext, SVXDeactivationContext;
+@class AFXPCWrapper, NSError, NSString, NSUUID, SVXActivationContext, SVXDeactivationContext, VSAudioData;
 
 @protocol SVXClientServiceDelegate <NSObject>
+- (oneway void)handleSpeechSynthesisSynthesizedBufferForHandlerUUID:(NSUUID *)arg1 audioChunkData:(VSAudioData *)arg2 audioChunkIndex:(unsigned long long)arg3 reply:(void (^)(_Bool))arg4;
 - (oneway void)notifyAudioSessionDidBecomeActive:(_Bool)arg1 activationContext:(SVXActivationContext *)arg2 deactivationContext:(SVXDeactivationContext *)arg3;
 - (oneway void)notifyAudioSessionWillBecomeActive:(_Bool)arg1 activationContext:(SVXActivationContext *)arg2 deactivationContext:(SVXDeactivationContext *)arg3;
 - (oneway void)notifyDidEndUpdateAudioPowerWithType:(long long)arg1;
@@ -29,5 +30,6 @@
 - (oneway void)notifyDidActivateWithContext:(SVXActivationContext *)arg1;
 - (oneway void)notifyWillActivateWithContext:(SVXActivationContext *)arg1;
 - (oneway void)requestPermissionToActivateWithContext:(SVXActivationContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)getInstanceInfoWithCompletion:(void (^)(AFInstanceInfo *, NSError *))arg1;
 @end
 

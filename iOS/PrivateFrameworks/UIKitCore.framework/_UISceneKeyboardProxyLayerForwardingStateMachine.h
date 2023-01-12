@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     FBScene *_scene;
     FBSSceneIdentityToken *_identityToken;
     unsigned long long _state;
-    id _windowCanvasChangedNotificationToken;
+    id _windowDidMoveToSceneNotificationToken;
     _UIScenePresenter *_prioritizedPresenter;
     FBSScene *_hostingScene;
     UIWindow *_hostingWindow;

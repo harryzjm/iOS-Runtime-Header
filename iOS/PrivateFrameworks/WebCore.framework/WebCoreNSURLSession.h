@@ -11,17 +11,18 @@
 
 @interface WebCoreNSURLSession : NSObject
 {
-    struct RefPtr<WebCore::PlatformMediaResourceLoader, WTF::DumbPtrTraits<WebCore::PlatformMediaResourceLoader>> _loader;
+    struct RefPtr<WebCore::PlatformMediaResourceLoader, WTF::RawPtrTraits<WebCore::PlatformMediaResourceLoader>, WTF::DefaultRefDerefTraits<WebCore::PlatformMediaResourceLoader>> _loader;
     struct WeakObjCPtr<id<NSURLSessionDelegate>> _delegate;
     struct RetainPtr<NSOperationQueue> _queue;
     struct RetainPtr<NSString> _sessionDescription;
-    struct HashSet<WTF::RetainPtr<WebCoreNSURLSessionDataTask>, WTF::DefaultHash<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>, WTF::HashTraits<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>> _dataTasks;
-    struct HashSet<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>, WTF::DefaultHash<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>> _origins;
+    struct HashSet<WTF::RetainPtr<WebCoreNSURLSessionDataTask>, WTF::DefaultHash<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>, WTF::HashTraits<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>, WTF::HashTableTraits> _dataTasks;
+    struct HashSet<WTF::RefPtr<WebCore::SecurityOrigin>, WTF::DefaultHash<WTF::RefPtr<WebCore::SecurityOrigin>>, WTF::HashTraits<WTF::RefPtr<WebCore::SecurityOrigin>>, WTF::HashTableTraits> _origins;
     struct Lock _dataTasksLock;
     _Bool _invalidated;
     unsigned long long _nextTaskIdentifier;
     struct OSObjectPtr<NSObject<OS_dispatch_queue>*> _internalQueue;
-    int _corsResults;
+    unsigned char _corsResults;
+    struct RefPtr<WebCore::RangeResponseGenerator, WTF::RawPtrTraits<WebCore::RangeResponseGenerator>, WTF::DefaultRefDerefTraits<WebCore::RangeResponseGenerator>> _rangeResponseGenerator;
 }
 
 - (id).cxx_construct;
@@ -44,20 +45,21 @@
 - (void)resetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)invalidateAndCancel;
 - (void)finishTasksAndInvalidate;
-- (_Bool)wouldTaintOrigin:(const struct SecurityOrigin *)arg1;
+- (_Bool)wouldTaintOrigin:(const void *)arg1;
 @property(readonly) _Bool didPassCORSAccessChecks; // @dynamic didPassCORSAccessChecks;
-@property(readonly) struct PlatformMediaResourceLoader *loader; // @dynamic loader;
+@property(readonly) void *loader; // @dynamic loader;
 @property(copy) NSString *sessionDescription;
 @property(readonly, copy) NSURLSessionConfiguration *configuration; // @dynamic configuration;
 @property(readonly, retain) NSOperationQueue *delegateQueue; // @dynamic delegateQueue;
 @property(retain) id <NSURLSessionTaskDelegate> delegate; // @dynamic delegate;
-- (void)task:(id)arg1 didReceiveResponseFromOrigin:(Ref_4cc64869 *)arg2;
+- (void *)rangeResponseGenerator;
+- (void)task:(id)arg1 didReceiveResponseFromOrigin:(void *)arg2;
 - (void)task:(id)arg1 didReceiveCORSAccessCheckResult:(_Bool)arg2;
-- (void)addDelegateOperation:(Function_15535652 *)arg1;
+- (void)addDelegateOperation:(void *)arg1;
 - (void)taskCompleted:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithResourceLoader:(struct PlatformMediaResourceLoader *)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
+- (id)initWithResourceLoader:(void *)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 
 @end
 

@@ -14,8 +14,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CAShapeLayer *shapeLayer; // @synthesize shapeLayer=_shapeLayer;
 - (void)setFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

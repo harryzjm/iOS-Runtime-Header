@@ -47,6 +47,8 @@
 - (void)_updateActiveTestRecipe;
 - (void)_registerTestRecipe:(id)arg1;
 - (id)_rootSettings;
+- (id)_domainID;
+- (id)_domainInfo;
 - (void)sendActiveTestRecipeEvent:(long long)arg1;
 - (void)invokeOutletAtKeyPath:(id)arg1;
 - (void)setArchiveValue:(id)arg1 forKeyPath:(id)arg2;

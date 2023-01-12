@@ -10,7 +10,7 @@
 
 - (id)instructionalStorageForContainedStorage:(id)arg1 storageKind:(unsigned char)arg2;
 - (_Bool)supportsRotation;
-- (_Bool)canFlip;
+- (_Bool)supportsFlipping;
 
 @end
 

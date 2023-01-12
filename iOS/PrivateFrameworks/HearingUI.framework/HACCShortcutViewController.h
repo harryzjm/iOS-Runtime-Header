@@ -7,19 +7,22 @@
 #import <UIKit/UIViewController.h>
 
 #import <HearingUI/HACCContentModuleDelegate-Protocol.h>
+#import <HearingUI/HACCShortcutViewBackgroundDelegate-Protocol.h>
 #import <HearingUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AXDispatchTimer, AXRemoteHearingAidDevice, CCUIContentModuleContext, CCUIContentModuleDetailTransitioningDelegate, CCUILabeledRoundButtonViewController, HACCContentViewController, HACCShortcutViewBackgroundController, NSMutableArray, NSMutableDictionary, NSString, UIScrollView, UIView;
+@class AXDispatchTimer, AXRemoteHearingAidDevice, CCUIContentModuleContext, CCUIContentModuleDetailTransitioningDelegate, CCUILabeledRoundButtonViewController, HACCContentViewController, HACCShortcutViewBackgroundController, HACCStackView, NSMutableDictionary, NSString, UIScrollView, UIView;
 @protocol AXHAShortcutUpdateProtocol;
 
-@interface HACCShortcutViewController : UIViewController <UIGestureRecognizerDelegate, HACCContentModuleDelegate>
+@interface HACCShortcutViewController : UIViewController <UIGestureRecognizerDelegate, HACCShortcutViewBackgroundDelegate, HACCContentModuleDelegate>
 {
+    double _moduleHeight;
     double _dismissalGestureYOffset;
     struct CGPoint _backgroundViewDismissalOrigin;
     struct CGPoint _mainModuleOrigin;
     CCUIContentModuleDetailTransitioningDelegate *_detailTransitioningDelegate;
     AXDispatchTimer *_bluetoothAvailabilityTimer;
     AXDispatchTimer *_noiseControlUpdateTimer;
+    _Bool _mediaIsPlaying;
     _Bool _bluetoothAvailable;
     _Bool _listeningForHearingAidUpdates;
     _Bool _shouldDisplayOtherDevice;
@@ -27,52 +30,51 @@
     HACCShortcutViewBackgroundController *_backgroundController;
     CCUIContentModuleContext *_contentModuleContext;
     NSMutableDictionary *_moduleToViewControllerMap;
-    NSMutableDictionary *_gridToModuleMap;
-    NSMutableDictionary *_moduleToPointMap;
     UIScrollView *_scrollView;
+    HACCStackView *_stackView;
     UIView *_platterView;
-    NSMutableArray *_separatorViews;
     CCUILabeledRoundButtonViewController *_otherDevicesButtonViewController;
     AXRemoteHearingAidDevice *_currentHearingDevice;
     NSString *_currentOtherDeviceName;
     NSString *_currentOtherDeviceType;
+    HACCContentViewController *_expandedController;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldDisplayOtherDevice; // @synthesize shouldDisplayOtherDevice=_shouldDisplayOtherDevice;
+@property(retain, nonatomic) HACCContentViewController *expandedController; // @synthesize expandedController=_expandedController;
 @property(nonatomic) _Bool listeningForHearingAidUpdates; // @synthesize listeningForHearingAidUpdates=_listeningForHearingAidUpdates;
 @property(nonatomic) _Bool bluetoothAvailable; // @synthesize bluetoothAvailable=_bluetoothAvailable;
 @property(retain, nonatomic) NSString *currentOtherDeviceType; // @synthesize currentOtherDeviceType=_currentOtherDeviceType;
 @property(retain, nonatomic) NSString *currentOtherDeviceName; // @synthesize currentOtherDeviceName=_currentOtherDeviceName;
 @property(retain, nonatomic) AXRemoteHearingAidDevice *currentHearingDevice; // @synthesize currentHearingDevice=_currentHearingDevice;
 @property(retain, nonatomic) CCUILabeledRoundButtonViewController *otherDevicesButtonViewController; // @synthesize otherDevicesButtonViewController=_otherDevicesButtonViewController;
-@property(retain, nonatomic) NSMutableArray *separatorViews; // @synthesize separatorViews=_separatorViews;
 @property(retain, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
+@property(retain, nonatomic) HACCStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property(retain, nonatomic) NSMutableDictionary *moduleToPointMap; // @synthesize moduleToPointMap=_moduleToPointMap;
-@property(retain, nonatomic) NSMutableDictionary *gridToModuleMap; // @synthesize gridToModuleMap=_gridToModuleMap;
 @property(retain, nonatomic) NSMutableDictionary *moduleToViewControllerMap; // @synthesize moduleToViewControllerMap=_moduleToViewControllerMap;
 @property(retain, nonatomic) CCUIContentModuleContext *contentModuleContext; // @synthesize contentModuleContext=_contentModuleContext;
 @property(retain, nonatomic) HACCShortcutViewBackgroundController *backgroundController; // @synthesize backgroundController=_backgroundController;
 @property(nonatomic) __weak id <AXHAShortcutUpdateProtocol> delegate; // @synthesize delegate=_delegate;
-- (void)setAlpha:(double)arg1 forAllModulesExcept:(id)arg2;
 - (void)_logLiveListenAnalytics;
 - (void)controlDidActivate:(id)arg1;
+- (void)viewController:(id)arg1 didExpand:(_Bool)arg2;
 - (void)updateViewForProperties:(id)arg1;
 - (void)updateViewForModule:(unsigned long long)arg1;
 - (void)updateView;
 - (_Bool)isExpanded;
-@property(readonly, nonatomic) __weak HACCContentViewController *expandedController;
 - (double)preferredContentWidth;
 - (double)preferredExpandedContentHeight;
-- (double)separatorHeight;
 - (double)moduleHeight;
-- (void)updateAvailableControlsForSize:(struct CGSize)arg1;
+- (void)updateAvailableControls;
+- (_Bool)addPartialSeparatorAboveModule:(unsigned long long)arg1;
+- (_Bool)addSeparatorAboveModule:(unsigned long long)arg1;
 - (void)otherDeviceButtonTapped:(id)arg1;
-- (unsigned long long)numberOfColumnsForSize:(struct CGSize)arg1;
 - (_Bool)shouldDisplayControlForModule:(unsigned long long)arg1;
 - (_Bool)shouldDisplayDeviceToggle;
 - (void)contentCategoryDidChange:(id)arg1;
+- (void)quickToggle:(unsigned long long)arg1 stateChanged:(_Bool)arg2;
+- (_Bool)shouldDisplayQuickToggleFor:(unsigned long long)arg1;
 - (void)bluetoothAvailabilityDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillLayoutSubviews;
@@ -84,6 +86,9 @@
 - (_Bool)_canShowWhileLocked;
 - (void)updateRoutes;
 - (id)backgroundUpdateQueue;
+- (void)mediaPlaybackDidChange:(id)arg1;
+- (void)mediaServerDied;
+- (void)registerNotifications;
 - (id)initWithDelegate:(id)arg1;
 
 // Remaining properties

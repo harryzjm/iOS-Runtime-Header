@@ -6,33 +6,43 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/NSSecureCoding-Protocol.h>
+@class NSDate, NSString;
 
-@class NSString;
-
-@interface FPDRequest : NSObject <NSSecureCoding>
+@interface FPDRequest : NSObject
 {
     _Bool _fromPOSIX;
+    _Bool _allowsResurrection;
+    _Bool _providerInitiated;
     int _pid;
+    unsigned int _qos;
     NSString *_processName;
+    NSString *_userProcessName;
     NSString *_executablePath;
+    NSDate *_date;
+    CDStruct_4c969caf _audit_token;
 }
 
-+ (_Bool)supportsSecureCoding;
 + (id)UUIDForExecutablePath:(id)arg1;
++ (id)fixupProcessName:(id)arg1;
 + (id)requestForSelf;
 + (id)requestForPID:(int)arg1;
++ (id)requestForXPCConnection:(id)arg1;
 + (id)requestForPID:(int)arg1 fromPOSIX:(_Bool)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CDStruct_4c969caf audit_token; // @synthesize audit_token=_audit_token;
+@property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
+@property(readonly, nonatomic) unsigned int qos; // @synthesize qos=_qos;
+@property(nonatomic, getter=isProviderInitiated) _Bool providerInitiated; // @synthesize providerInitiated=_providerInitiated;
+@property(nonatomic) _Bool allowsResurrection; // @synthesize allowsResurrection=_allowsResurrection;
 @property(readonly, nonatomic, getter=isFromPOSIX) _Bool fromPOSIX; // @synthesize fromPOSIX=_fromPOSIX;
 @property(readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
+@property(readonly, nonatomic) NSString *userProcessName; // @synthesize userProcessName=_userProcessName;
 @property(readonly, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSString *shortDescription;
 - (id)description;
-- (id)nsfpRequestWithIdentifier:(id)arg1 forSession:(id)arg2;
+- (id)nsfpRequestForSession:(id)arg1;
+- (_Bool)isPermittedToAttributeRequestingExecutable:(id)arg1;
 - (id)initWithPID:(int)arg1 fromPOSIX:(_Bool)arg2;
 
 @end

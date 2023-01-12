@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)debugDescription;
 - (_Bool)_matchesIdentity:(id)arg1;
-- (id)copyWithEuid:(unsigned int)arg1;
-- (id)_initDaemonWithJobLabel:(id)arg1 pid:(int)arg2 euid:(unsigned int)arg3;
+- (id)copyWithAuid:(unsigned int)arg1;
+- (id)_initDaemonWithJobLabel:(id)arg1 pid:(int)arg2 auid:(unsigned int)arg3;
 
 @end
 

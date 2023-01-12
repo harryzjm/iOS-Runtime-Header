@@ -9,34 +9,51 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPCardSectionForFeedback-Protocol.h>
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString;
 
 @interface _CPCardSectionForFeedback : PBCodable <_CPCardSectionForFeedback, NSSecureCoding>
 {
+    int _commandType;
+    int _cardSectionType;
     NSString *_cardSectionId;
     NSString *_actionTarget;
     NSString *_actionDestination;
     NSString *_resultId;
+    NSString *_commandDetail;
+    NSArray *_cardSections;
+    NSString *_cardSectionDetail;
+    NSArray *_buttons;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
+@property(copy, nonatomic) NSString *cardSectionDetail; // @synthesize cardSectionDetail=_cardSectionDetail;
+@property(nonatomic) int cardSectionType; // @synthesize cardSectionType=_cardSectionType;
+@property(copy, nonatomic) NSArray *cardSections; // @synthesize cardSections=_cardSections;
+@property(copy, nonatomic) NSString *commandDetail; // @synthesize commandDetail=_commandDetail;
+@property(nonatomic) int commandType; // @synthesize commandType=_commandType;
 @property(copy, nonatomic) NSString *resultId; // @synthesize resultId=_resultId;
 @property(copy, nonatomic) NSString *actionDestination; // @synthesize actionDestination=_actionDestination;
 @property(copy, nonatomic) NSString *actionTarget; // @synthesize actionTarget=_actionTarget;
 @property(copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+- (id)buttonsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)buttonsCount;
+- (void)addButtons:(id)arg1;
+- (void)clearButtons;
+- (id)cardSectionsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)cardSectionsCount;
+- (void)addCardSections:(id)arg1;
+- (void)clearCardSections;
 - (id)initWithFacade:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

@@ -4,48 +4,64 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UserNotificationsUIKit/NCExpandedPlatterObserving-Protocol.h>
+#import <UserNotificationsUIKit/NCExpandedPlatterViewControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
 #import <UserNotificationsUIKit/PLClickPresentationInteractionManagerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLClickPresentationInteractionPresenting-Protocol.h>
+#import <UserNotificationsUIKit/PLExpandedPlatterInteractionHosting-Protocol.h>
+#import <UserNotificationsUIKit/PLExpandedPlatterInteractionManagerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentationControllerDelegate-Protocol.h>
-#import <UserNotificationsUIKit/PLViewControllerAnimatorDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIDragInteractionDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIPointerInteractionDelegate-Protocol.h>
 
-@class NCNotificationLongLookViewController, NCNotificationViewController, NSDate, NSString, PLClickPresentationInteractionManager, UIPointerInteraction, UITapGestureRecognizer, UIView;
+@class NCExpandedPlatterViewController, NCNotificationLongLookViewController, NSDate, NSMutableArray, NSString, PLClickPresentationInteractionManager, PLExpandedPlatterInteractionManager, UIBezierPath, UIPointerInteraction, UITapGestureRecognizer, UIView;
+@protocol PLExpandedPlatterInteractionAnimating;
 
-@interface NCNotificationShortLookViewController <NCNotificationViewControllerObserving, PLViewControllerAnimatorDelegate, UIDragInteractionDelegate, UIPointerInteractionDelegate, PLClickPresentationInteractionManagerDelegate, PLExpandedPlatterPresentationControllerDelegate, PLClickPresentationInteractionPresenting>
+@interface NCNotificationShortLookViewController <NCExpandedPlatterObserving, PLExpandedPlatterInteractionHosting, PLExpandedPlatterInteractionManagerDelegate, NCExpandedPlatterViewControllerDelegate, UIDragInteractionDelegate, UIPointerInteractionDelegate, PLClickPresentationInteractionManagerDelegate, PLExpandedPlatterPresentationControllerDelegate, PLClickPresentationInteractionPresenting, NCNotificationViewControllerObserving>
 {
     NCNotificationLongLookViewController *_longLookNotificationViewController;
+    NCExpandedPlatterViewController *_expandedPlatterViewController;
     UITapGestureRecognizer *_tapGesture;
     UIPointerInteraction *_pointerInteraction;
     NSDate *_tapBeginTime;
     struct CGRect _finalPresentedFrameOfViewForPreview;
     UIView *_lookViewWrapper;
     long long _trigger;
+    PLExpandedPlatterInteractionManager *_interactionManager;
+    NSString *_expandedPlatterDismissalReason;
+    UIView *_containerViewForExpandedContent;
+    NSMutableArray *_containerViewProviders;
+    int _expandedPlatterPresentationState;
     _Bool _didScrollPresentLongLookViewController;
     PLClickPresentationInteractionManager *_clickPresentationInteractionManager;
+    id <PLExpandedPlatterInteractionAnimating> _activeExpandedPlatterInteractionAnimator;
 }
 
++ (void)_playNegativeInteractionHaptic;
++ (void)_prepareSharedNotificationFeedbackGenerator;
++ (id)_sharedNotificationFeedbackGenerator;
 - (void).cxx_destruct;
+@property(retain, nonatomic, getter=_activeExpandedPlatterInteractionAnimator, setter=_setActiveExpandedPlatterInteractionAnimator:) id <PLExpandedPlatterInteractionAnimating> activeExpandedPlatterInteractionAnimator; // @synthesize activeExpandedPlatterInteractionAnimator=_activeExpandedPlatterInteractionAnimator;
 @property(nonatomic, getter=_didScrollPresentLongLookViewController, setter=_setDidScrollPresentLongLookViewController:) _Bool didScrollPresentLongLookViewController; // @synthesize didScrollPresentLongLookViewController=_didScrollPresentLongLookViewController;
+- (id)_presentedLongLookViewController;
 - (id)customBackgroundContainerViewForExpandedPlatterPresentationController:(id)arg1;
 - (_Bool)expandedPlatterPresentationControllerShouldProvideBackground:(id)arg1;
 - (void)notificationViewControllerDidDismiss:(id)arg1;
 - (void)notificationViewControllerWillDismiss:(id)arg1;
 - (void)notificationViewControllerDidPresent:(id)arg1;
 - (void)notificationViewControllerWillPresent:(id)arg1;
-- (void)viewControllerAnimator:(id)arg1 didEndPresentationAnimation:(_Bool)arg2 withTransitionContext:(id)arg3;
+@property(readonly, copy, nonatomic) UIBezierPath *visiblePath;
+@property(nonatomic, getter=isHighlighted) _Bool highlighted;
+@property(readonly, nonatomic) UIView *viewForPreview;
 @property(readonly, nonatomic) struct CGRect finalDismissedFrameOfViewForPreview;
 @property(readonly, nonatomic) struct CGRect finalPresentedFrameOfViewForPreview;
 @property(readonly, nonatomic) struct CGRect initialPresentedFrameOfViewForPreview;
-@property(nonatomic, getter=isHighlighted) _Bool highlighted;
 @property(readonly, nonatomic) PLClickPresentationInteractionManager *clickPresentationInteractionManager; // @synthesize clickPresentationInteractionManager=_clickPresentationInteractionManager;
-@property(readonly, nonatomic) UIView *viewForPreview;
 - (_Bool)clickPresentationInteractionManagerShouldAllowLongPressGesture:(id)arg1;
 - (void)clickPresentationInteractionManager:(id)arg1 declinedDismissingPresentedContentWithTrigger:(long long)arg2;
 - (void)clickPresentationInteractionManager:(id)arg1 willDismissPresentedContentWithTrigger:(long long)arg2;
-- (void)_handlePresentedContentDismissalWithTrigger:(long long)arg1;
+- (void)_handlePresentedContentDismissalForClickPresentationInteractionManagerWithTrigger:(long long)arg1;
 - (void)clickPresentationInteractionManager:(id)arg1 shouldFinishInteractionThatReachedForceThreshold:(_Bool)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)clickPresentationInteractionManagerDidEndUserInteraction:(id)arg1;
 - (void)clickPresentationInteractionManagerWillBeginUserInteraction:(id)arg1;
@@ -54,6 +70,24 @@
 - (id)transitioningDelegateForClickPresentationInteractionManager:(id)arg1;
 - (id)presentedViewControllerForClickPresentationInteractionManager:(id)arg1;
 - (id)_longLookNotificationViewController;
+- (void)customContent:(id)arg1 didUpdateUserNotificationActions:(id)arg2;
+- (void)expandedPlatter:(id)arg1 didDismissWithReason:(id)arg2;
+- (void)expandedPlatter:(id)arg1 willDismissWithReason:(id)arg2;
+- (void)expandedPlatterDidPresent:(id)arg1;
+- (void)expandedPlatterWillPresent:(id)arg1;
+- (void)expandedPlatterViewController:(id)arg1 requestsDismissalWithReason:(id)arg2 userInfo:(id)arg3;
+- (long long)expandedPlatterViewController:(id)arg1 dateFormatStyleForNotificationRequest:(id)arg2;
+- (id)expandedPlatterViewController:(id)arg1 staticContentProviderForNotificationRequest:(id)arg2;
+- (void)expandedPlatterInteractionManager:(id)arg1 willDismissContentWithAnimator:(id)arg2;
+- (_Bool)expandedPlatterInteractionManagerShouldAllowLongPressGesture:(id)arg1;
+- (_Bool)expandedPlatterInteractionManagerShouldAllowInitialSwipeToDismiss:(id)arg1;
+- (void)expandedPlatterInteractionManager:(id)arg1 willPresentContentWithAnimator:(id)arg2;
+- (void)expandedPlatterInteractionManager:(id)arg1 shouldCommitInteraction:(CDUnknownBlockType)arg2;
+- (_Bool)expandedPlatterInteractionManager:(id)arg1 shouldBeginInteractionWithTouchAtLocation:(struct CGPoint)arg2;
+- (id)expandedPlatterInteractionManagerContainerView:(id)arg1;
+- (id)expandedPlatterInteractionManager:(id)arg1 menuWithSuggestedActions:(id)arg2;
+- (id)expandedPlatterInteractionManagerContentViewController:(id)arg1;
+- (id)expandedPlatterInteractionManagerIdentifier:(id)arg1;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 willEndWithOperation:(unsigned long long)arg3;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
@@ -65,7 +99,7 @@
 - (_Bool)dragInteraction:(id)arg1 sessionIsRestrictedToDraggingApplication:(id)arg2;
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
 - (void)_presentLongLookForScrollAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_presentLongLookAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentLongLookViaInteractionManager:(CDUnknownBlockType)arg1;
 - (void)_presentLongLookViaClickPresentationInteraction:(CDUnknownBlockType)arg1;
 - (id)_notificationShortLookViewIfLoaded;
 - (void)_expandCoalescedNotificationBundle;
@@ -74,6 +108,12 @@
 - (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (void)_expandedPlatterInteractionManager:(id)arg1 didDismissWithReason:(id)arg2;
+- (void)_expandedPlatterInteractionManager:(id)arg1 willDismissWithReason:(id)arg2;
+- (void)contentProvider:(id)arg1 performAction:(id)arg2 animated:(_Bool)arg3;
+- (void)_askDelegateToExecuteAction:(id)arg1 withParameters:(id)arg2 animated:(_Bool)arg3;
+- (void)_dismissPresentedViewControllerAnimated:(_Bool)arg1;
+- (id)_expandedPlatterViewController;
 - (_Bool)_shouldPerformHoverHighlighting;
 - (void)_updateShortLookShadow;
 - (_Bool)_shouldUseHapticTouch;
@@ -84,19 +124,26 @@
 - (unsigned long long)_maximumNumberOfPrimaryLargeTextLinesForProvidedStaticContent;
 - (unsigned long long)_maximumNumberOfPrimaryTextLinesForProvidedStaticContent;
 - (void)_handleTapOnView:(id)arg1;
+- (void)_updateLookView:(id)arg1 withTitleFromProvidedStaticContent:(id)arg2;
 - (void)_notificationViewControllerViewDidLoad;
+- (id)_interactionManagerCreatingIfNecessary;
+- (_Bool)_shouldSupportExpandedPlatterInteraction;
 - (void)_loadLookView;
 - (_Bool)_isPresentingCustomContentProvidingViewController;
-@property(readonly, nonatomic, getter=_presentedLongLookViewController) NCNotificationViewController *presentedLongLookViewController;
+- (id)_presentedViewController;
 - (id)_newClickPresentationInteractionManager;
 - (_Bool)_setNotificationRequest:(id)arg1;
+- (id)presentedExpandedPlatterViewController;
+- (id)containerViewForExpandedContent;
 - (void)setPlatterHighlighted:(_Bool)arg1;
 - (void)setInteractionEnabled:(_Bool)arg1;
 - (_Bool)shouldRestorePresentingShortLookOnDismiss;
 - (void)expandAndPlayMedia;
 - (void)presentLongLookAnimated:(_Bool)arg1 trigger:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)shouldCommitToExpandedPlatterPresentationWithFeedback;
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (_Bool)resignFirstResponder;
 - (_Bool)canResignFirstResponder;
@@ -104,12 +151,13 @@
 - (_Bool)canBecomeFirstResponder;
 - (void)setContentReplacedWithSnapshot:(_Bool)arg1;
 - (void)setHasShadow:(_Bool)arg1;
+- (_Bool)isNotificationContentViewHidden;
 - (void)setNotificationContentViewHidden:(_Bool)arg1;
 - (void)setCustomContentHomeAffordanceGestureRecognizer:(id)arg1;
 - (void)setCustomContentHomeAffordanceVisible:(_Bool)arg1;
 - (_Bool)isContentExtensionVisible:(id)arg1;
-- (_Bool)dismissPresentedViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)didReceiveNotificationRequest:(id)arg1;
+- (_Bool)dismissPresentedViewControllerAnimated:(_Bool)arg1;
+- (_Bool)didForwardNotificationRequestToCustomContent:(id)arg1;
 - (_Bool)isNotPresentingOrHasCommittedToDismissingCustomContentProvidingViewController;
 - (_Bool)hasCommittedToPresentingCustomContentProvidingViewController;
 - (void)setMaterialGroupNameBase:(id)arg1;

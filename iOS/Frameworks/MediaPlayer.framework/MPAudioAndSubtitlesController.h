@@ -6,19 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@class UINavigationController, _MPAudioAndSubtitlesController;
-
 @interface MPAudioAndSubtitlesController : UIViewController
 {
-    _MPAudioAndSubtitlesController *_viewController;
-    UINavigationController *_navController;
     UIViewController *_viewControllerForOrientation;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController *viewControllerForOrientation; // @synthesize viewControllerForOrientation=_viewControllerForOrientation;
-- (unsigned long long)supportedInterfaceOrientations;
-- (void)viewDidLoad;
 - (id)initWithAVItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

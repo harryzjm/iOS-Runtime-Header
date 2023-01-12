@@ -20,7 +20,9 @@
 - (id)lastWord;
 - (id)description;
 - (unsigned long long)wordsCount;
-- (int)deleteWordsUptoContext:(id)arg1;
+- (id)wordsFromContext:(id)arg1;
+- (id)deleteWordsUpToContext:(id)arg1;
+- (id)_wordsFromContext:(id)arg1 shouldDelete:(_Bool)arg2;
 - (id)updateWordEntryAtIndex:(unsigned long long)arg1 withAcceptedString:(id)arg2 documentContext:(id)arg3;
 - (void)insertWord:(id)arg1 atIndex:(long long)arg2;
 - (id)wordsForContext:(id)arg1;

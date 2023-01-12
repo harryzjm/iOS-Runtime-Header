@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
 
-@class HMDAccessory;
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
-@interface HMDWiFiReconfigurationLogEvent <HMDCoreAnalyticsLogging>
+@class HMDAccessory, NSString;
+
+@interface HMDWiFiReconfigurationLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     _Bool _usingFailSafeUpdate;
     HMDAccessory *_accessory;
@@ -16,7 +18,6 @@
     HMDAccessory *_routerAccessory;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMDAccessory *routerAccessory; // @synthesize routerAccessory=_routerAccessory;
 @property(nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
@@ -25,6 +26,9 @@
 - (id)init;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

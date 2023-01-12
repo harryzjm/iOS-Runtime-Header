@@ -10,11 +10,15 @@
 
 @interface NTKAnalogHandConfiguration : NSObject <NSCopying>
 {
+    _Bool _excludePeg;
+    _Bool _roundedSecondHand;
+    _Bool _excludeSecondTail;
     unsigned long long _type;
     double _handLength;
     double _handWidth;
     double _pegRadius;
     double _pegStrokeWidth;
+    double _smoothingRadius;
     double _inlayInsetRadius;
     double _armLength;
     double _armWidth;
@@ -26,18 +30,23 @@
     struct CGSize _directionalShadowOffset;
 }
 
++ (id)defaultSubdialConfigurationForDevice:(id)arg1;
 + (id)defaultSecondConfigurationForDevice:(id)arg1;
 + (id)defaultMinuteConfigurationForDevice:(id)arg1;
 + (id)defaultHourConfigurationForDevice:(id)arg1;
+@property(nonatomic) _Bool excludeSecondTail; // @synthesize excludeSecondTail=_excludeSecondTail;
+@property(nonatomic) _Bool roundedSecondHand; // @synthesize roundedSecondHand=_roundedSecondHand;
 @property(nonatomic) struct CGSize directionalShadowOffset; // @synthesize directionalShadowOffset=_directionalShadowOffset;
 @property(nonatomic) double radialShadowOpacity; // @synthesize radialShadowOpacity=_radialShadowOpacity;
 @property(nonatomic) double radialShadowRadius; // @synthesize radialShadowRadius=_radialShadowRadius;
 @property(nonatomic) double dropShadowOpacity; // @synthesize dropShadowOpacity=_dropShadowOpacity;
 @property(nonatomic) double dropShadowRadius; // @synthesize dropShadowRadius=_dropShadowRadius;
 @property(nonatomic) double tailLength; // @synthesize tailLength=_tailLength;
+@property(nonatomic) _Bool excludePeg; // @synthesize excludePeg=_excludePeg;
 @property(nonatomic) double armWidth; // @synthesize armWidth=_armWidth;
 @property(nonatomic) double armLength; // @synthesize armLength=_armLength;
 @property(nonatomic) double inlayInsetRadius; // @synthesize inlayInsetRadius=_inlayInsetRadius;
+@property(nonatomic) double smoothingRadius; // @synthesize smoothingRadius=_smoothingRadius;
 @property(nonatomic) double pegStrokeWidth; // @synthesize pegStrokeWidth=_pegStrokeWidth;
 @property(nonatomic) double pegRadius; // @synthesize pegRadius=_pegRadius;
 @property(nonatomic) double handWidth; // @synthesize handWidth=_handWidth;
@@ -55,8 +64,8 @@
 - (id)configurationByApplyingScale:(double)arg1;
 - (id)configurationByApplyingInset:(double)arg1;
 - (struct UIEdgeInsets)inlayInsets;
-- (struct CGRect)bounds;
-- (struct CGPoint)anchorPoint;
+@property(readonly, nonatomic) struct CGRect bounds;
+@property(readonly, nonatomic) struct CGPoint anchorPoint;
 
 @end
 

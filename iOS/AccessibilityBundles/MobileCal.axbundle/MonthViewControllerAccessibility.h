@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)scrollView;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateView;

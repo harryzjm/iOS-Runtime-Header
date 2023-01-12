@@ -11,21 +11,24 @@
 
 @interface CKDRecordCachePool : NSObject
 {
-    NSMutableDictionary *_pools;
+    NSMutableDictionary *_dbsByURL;
+    NSMutableDictionary *_expiringDbsByURL;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_recordExpiryQueue;
 }
 
-+ (void)performWithClientContext:(id)arg1 scope:(long long)arg2 block:(CDUnknownBlockType)arg3;
++ (id)performWithContainer:(id)arg1 scope:(long long)arg2 block:(CDUnknownBlockType)arg3;
 + (id)sharedPool;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *recordExpiryQueue; // @synthesize recordExpiryQueue=_recordExpiryQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) NSMutableDictionary *pools; // @synthesize pools=_pools;
+@property(retain, nonatomic) NSMutableDictionary *expiringDbsByURL; // @synthesize expiringDbsByURL=_expiringDbsByURL;
+@property(retain, nonatomic) NSMutableDictionary *dbsByURL; // @synthesize dbsByURL=_dbsByURL;
 - (void)releaseCache:(id)arg1;
-- (id)acquireCacheWithContext:(id)arg1 scope:(long long)arg2;
-- (id)_poolForContext:(id)arg1;
-- (void)_purgeRecordCachesForApplicationContainerPaths:(id)arg1 expiryDate:(id)arg2;
+- (id)acquireCacheWithContainer:(id)arg1 scope:(long long)arg2 error:(id *)arg3;
+- (id)_dbForContainer:(id)arg1 error:(id *)arg2;
+- (void)_schedulePurge;
+- (void)_purgeRecordCachesForApplicationContainerURLs:(id)arg1 expiryDate:(id)arg2;
 - (id)init;
 
 @end

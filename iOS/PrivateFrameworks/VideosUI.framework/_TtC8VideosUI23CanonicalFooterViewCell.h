@@ -4,23 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI23CanonicalFooterViewCell : UICollectionViewCell
+@interface _TtC8VideosUI23CanonicalFooterViewCell
 {
     MISSING_TYPE *layout;
     MISSING_TYPE *sectionViews;
     MISSING_TYPE *airingView;
     MISSING_TYPE *separatorView;
+    MISSING_TYPE *cachedSize;
     MISSING_TYPE *bottomPadding;
 }
 
 - (void).cxx_destruct;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)layoutSubviews;
+- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)vui_prepareForReuse;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

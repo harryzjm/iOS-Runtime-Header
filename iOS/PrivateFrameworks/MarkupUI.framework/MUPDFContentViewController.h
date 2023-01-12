@@ -7,15 +7,22 @@
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
 #import <MarkupUI/PDFAKControllerDelegateProtocol-Protocol.h>
 #import <MarkupUI/PDFDocumentDelegate-Protocol.h>
+#import <MarkupUI/PDFThumbnailContextMenuDelegate-Protocol.h>
 #import <MarkupUI/PDFViewDelegatePrivate-Protocol.h>
 #import <MarkupUI/_UIViewBoundingPathChangeObserver-Protocol.h>
 
 @class MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIScrollView, UIView;
 
-@interface MUPDFContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, PDFDocumentDelegate, MUContentViewControllerProtocol>
+@interface MUPDFContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, PDFDocumentDelegate, PDFThumbnailContextMenuDelegate, MUContentViewControllerProtocol>
 {
     PDFDocument *_pdfDocument;
+    MUPDFPageLabelView *_pageLabelView;
+    long long _thumbnailViewStyle;
+    _Bool _allowsThumbnailViewPageReordering;
+    NSLayoutConstraint *pageLabelViewTopConstraint;
+    NSLayoutConstraint *pageLabelViewSideConstraint;
     _Bool _showsThumbnailView;
+    _Bool _fixedThumbnailView;
     _Bool _navigationModeHorizontal;
     _Bool _forcesPDFViewTopAlignment;
     _Bool _constraintsAreHorizontal;
@@ -27,9 +34,12 @@
     PDFThumbnailView *_thumbnailView;
     unsigned long long _inkStyle;
     UIView *_thumbnailViewHolder;
+    UIView *_scrollerBackgroundView;
     NSArray *_thumbnailViewHolderConstraints;
+    NSLayoutConstraint *_pdfViewLeadingConstraint;
+    NSLayoutConstraint *_thumbnailViewHolderWidthConstraint;
     NSLayoutConstraint *_thumbnailViewHolderRevealConstraint;
-    MUPDFPageLabelView *_pageLabelView;
+    NSLayoutConstraint *_thumbnailViewLeadingConstraint;
     PDFPage *_viewTransitionPageToCenter;
     double _viewTransitionPreviousScale;
     struct CGPoint _viewTransitionPointOnPageToCenter;
@@ -45,21 +55,26 @@
 @property struct CGPoint viewTransitionPointOnPageToCenter; // @synthesize viewTransitionPointOnPageToCenter=_viewTransitionPointOnPageToCenter;
 @property __weak PDFPage *viewTransitionPageToCenter; // @synthesize viewTransitionPageToCenter=_viewTransitionPageToCenter;
 @property _Bool viewIsTransitioningBetweenSizes; // @synthesize viewIsTransitioningBetweenSizes=_viewIsTransitioningBetweenSizes;
-@property(retain) MUPDFPageLabelView *pageLabelView; // @synthesize pageLabelView=_pageLabelView;
+@property(retain) NSLayoutConstraint *thumbnailViewLeadingConstraint; // @synthesize thumbnailViewLeadingConstraint=_thumbnailViewLeadingConstraint;
 @property(retain) NSLayoutConstraint *thumbnailViewHolderRevealConstraint; // @synthesize thumbnailViewHolderRevealConstraint=_thumbnailViewHolderRevealConstraint;
+@property(retain) NSLayoutConstraint *thumbnailViewHolderWidthConstraint; // @synthesize thumbnailViewHolderWidthConstraint=_thumbnailViewHolderWidthConstraint;
+@property(retain) NSLayoutConstraint *pdfViewLeadingConstraint; // @synthesize pdfViewLeadingConstraint=_pdfViewLeadingConstraint;
 @property(retain) NSArray *thumbnailViewHolderConstraints; // @synthesize thumbnailViewHolderConstraints=_thumbnailViewHolderConstraints;
 @property _Bool constraintsAreHorizontal; // @synthesize constraintsAreHorizontal=_constraintsAreHorizontal;
+@property(retain) UIView *scrollerBackgroundView; // @synthesize scrollerBackgroundView=_scrollerBackgroundView;
 @property(retain) UIView *thumbnailViewHolder; // @synthesize thumbnailViewHolder=_thumbnailViewHolder;
 @property(nonatomic) unsigned long long inkStyle; // @synthesize inkStyle=_inkStyle;
 @property(nonatomic) _Bool forcesPDFViewTopAlignment; // @synthesize forcesPDFViewTopAlignment=_forcesPDFViewTopAlignment;
 @property(retain) PDFThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 @property(retain) PDFView *pdfView; // @synthesize pdfView=_pdfView;
 @property(nonatomic) _Bool navigationModeHorizontal; // @synthesize navigationModeHorizontal=_navigationModeHorizontal;
+@property(nonatomic) _Bool fixedThumbnailView; // @synthesize fixedThumbnailView=_fixedThumbnailView;
 @property(nonatomic) _Bool showsThumbnailView; // @synthesize showsThumbnailView=_showsThumbnailView;
 @property(retain) NSArray *sourceContentReplacedAnnotationMaps; // @synthesize sourceContentReplacedAnnotationMaps=_sourceContentReplacedAnnotationMaps;
 @property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property(readonly) PDFDocument *pdfDocument; // @synthesize pdfDocument=_pdfDocument;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_userChangedScrollViewMagnificationNotification:(id)arg1;
 - (void)_updateMinMaxZoomFactor;
 - (struct CGSize)_medianSizeForCurrentDocumentInPDFViewWithGetter:(CDUnknownBlockType)arg1;
@@ -71,7 +86,11 @@
 - (id)contentSnapshot;
 - (struct CGRect)visibleContentRectInCoordinateSpace:(id)arg1;
 - (struct CGRect)visibleContentRect;
+- (_Bool)isTouchInThumbnailView:(id)arg1;
+@property(nonatomic) long long thumbnailViewStyle;
+@property(readonly, nonatomic) __weak UIView *pageLabelView;
 - (void)_updatePageNumberOverlayToPage:(unsigned long long)arg1 animate:(_Bool)arg2;
+- (void)_removePageLabelViewConstraints;
 - (void)pdfDocumentDidUnlock:(id)arg1;
 - (void)pdfViewDidChangeCurrentPage:(id)arg1;
 - (void)uninstallAllAnnotationControllerOverlays;
@@ -80,7 +99,12 @@
 @property(readonly, nonatomic) NSString *documentUnlockedWithPassword;
 - (void)_updateThumbnailViewAppearance;
 - (void)_updateThumbnailViewHolderConstraints;
-- (_Bool)_updateCachedThumbnailViewInsetsDidChangeRight;
+- (void)removeThumbnailViewHolderConstraints;
+- (void)_updateThumbnailViewHolderBackgroundVisibility;
+- (void)_updateThumbnailViewHolderBackgroundColor;
+- (_Bool)_updateCachedThumbnailViewInsetsDidChangeLeftOrRight;
+- (struct CGSize)_thumbnailViewCellSize;
+- (double)_thumbnailViewWidth;
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(_Bool)arg2;
 - (void)_updatePDFViewDisplayMode;
 @property(readonly) unsigned long long pageCount;
@@ -94,6 +118,7 @@
 - (id)popoverPresentingViewControllerForAnnotationController:(id)arg1;
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
 - (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
+- (id)menuElementsForPage:(id)arg1;
 - (_Bool)shouldShowAnnotationsOfType:(id)arg1;
 - (_Bool)PDFView:(id)arg1 shouldHandleLink:(id)arg2;
 @property(readonly, nonatomic) UIScrollView *contentViewScrollView;
@@ -103,10 +128,12 @@
 - (void)loadContentWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)teardown;
 - (void)setup;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (_Bool)_canShowWhileLocked;
 - (void)dealloc;
+@property(nonatomic) _Bool allowsThumbnailViewPageReordering;
 - (id)initWithPDFDocument:(id)arg1 delegate:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
 

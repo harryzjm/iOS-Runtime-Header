@@ -14,6 +14,7 @@
 {
     _Bool _shouldPreventLeaseAcquisition;
     _Bool _shouldRequireLeaseAcquisition;
+    _Bool _triggeredByLeasePrevention;
     _Bool _followUp;
     NSString *_assetSourceStorefrontID;
     ICStoreRequestContext *_requestContext;
@@ -21,10 +22,13 @@
     long long _storePurchasedAdamID;
     long long _storeSubscriptionAdamID;
     NSString *_cloudUniversalLibraryID;
+    NSString *_playbackAuthorizationToken;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(nonatomic, getter=isFollowUp) _Bool followUp; // @synthesize followUp=_followUp;
+@property(nonatomic, getter=isTriggeredByLeasePrevention) _Bool triggeredByLeasePrevention; // @synthesize triggeredByLeasePrevention=_triggeredByLeasePrevention;
 @property(nonatomic) _Bool shouldRequireLeaseAcquisition; // @synthesize shouldRequireLeaseAcquisition=_shouldRequireLeaseAcquisition;
 @property(nonatomic) _Bool shouldPreventLeaseAcquisition; // @synthesize shouldPreventLeaseAcquisition=_shouldPreventLeaseAcquisition;
 @property(copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;

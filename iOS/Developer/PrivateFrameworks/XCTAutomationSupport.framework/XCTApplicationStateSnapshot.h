@@ -28,8 +28,10 @@
 @property(readonly) unsigned long long runState; // @synthesize runState=_runState;
 @property(readonly, copy) NSString *path; // @synthesize path=_path;
 @property(readonly, copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initNotRunningWithBundleID:(id)arg1 path:(id)arg2;
 - (id)initWithBundleID:(id)arg1 path:(id)arg2 runState:(unsigned long long)arg3 processID:(int)arg4 activationPolicy:(unsigned long long)arg5 eventID:(unsigned long long)arg6;
 
 @end

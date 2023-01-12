@@ -36,6 +36,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isAllowedPixelsWide:(unsigned long long)arg1 pixelsHigh:(unsigned long long)arg2;
+- (id)initWithIdealFormat:(unsigned int)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 orientation:(unsigned int)arg4 aspectRatioHandling:(unsigned long long)arg5 orientationAgnostic:(_Bool)arg6;
 - (id)initWithIdealFormat:(unsigned int)arg1 pixelsWideRange:(id)arg2 pixelsHighRange:(id)arg3 aspectRatioHandling:(unsigned long long)arg4 idealOrientation:(unsigned int)arg5 orientationAgnostic:(_Bool)arg6;
 
 @end

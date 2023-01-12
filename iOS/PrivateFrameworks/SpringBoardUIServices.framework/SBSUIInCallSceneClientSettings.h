@@ -12,12 +12,16 @@
 
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool shouldNeverBeShownWhenLaunchingFaceTime;
+@property(readonly, nonatomic) _Bool prefersHiddenWhenDismissed;
+@property(readonly, nonatomic) _Bool prefersBannersHiddenFromClonedDisplay;
+@property(readonly, nonatomic) struct UIEdgeInsets expanseHUDDodgingInsets;
 @property(readonly, nonatomic, getter=isCallConnected) _Bool callConnected;
 @property(readonly, nonatomic) _Bool transientOverlayHomeIndicatorAutoHidden;
 @property(readonly, nonatomic) _Bool shouldBecomeVisibleWhenWakingDisplay;
 - (_Bool)homeIndicatorAutoHidden;
 @property(readonly, nonatomic) _Bool supportsDeviceLockActions;
-@property(readonly, nonatomic) int preferredStatusBarStyleOverridesToSuppress;
+@property(readonly, nonatomic) unsigned long long preferredStatusBarStyleOverridesToSuppress;
 @property(readonly, nonatomic) unsigned long long preferredHardwareButtonEventTypes;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

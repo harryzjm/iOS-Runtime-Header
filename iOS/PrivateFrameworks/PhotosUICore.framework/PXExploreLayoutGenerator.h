@@ -23,6 +23,8 @@
     struct _PXLayoutGeometry *_outputGeometries;
     long long *_outputItemIndexToParseLocation;
     CDStruct_e6148bb0 *_outputItemLocations;
+    long long _rowCount;
+    long long _rowCapacity;
     long long *_outputNumberOfColumnsAtRow;
     _Bool _isPrepared;
     struct CGPoint _origin;

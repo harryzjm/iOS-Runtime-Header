@@ -6,6 +6,7 @@
 
 @class NSNumber;
 
+__attribute__((visibility("hidden")))
 @interface ICRadioURLRequest
 {
     _Bool _backgroundRadioRequest;

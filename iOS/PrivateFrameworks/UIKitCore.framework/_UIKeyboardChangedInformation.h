@@ -14,29 +14,39 @@
 @interface _UIKeyboardChangedInformation : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _avoidIntersectability;
+    _Bool _multipleScenes;
     _Bool _keyboardOnScreen;
     _Bool _shouldTakeSnapshot;
+    _Bool _shouldRestoreKeyboard;
     NSString *_sourceSceneIdentityString;
     NSString *_sourceDisplayIdentifier;
     NSString *_sourceBundleIdentifier;
+    NSString *_hostBundleIdentifier;
     BKSAnimationFenceHandle *_animationFence;
+    NSString *_keyboardPreserveKey;
     struct CGRect _keyboardPosition;
     struct CGRect _keyboardPositionWithIAV;
     struct CGRect _keyboardPositionWithRemoteIAV;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)informationForKeyboardRestore:(id)arg1;
++ (id)informationForKeyboardPreserve:(id)arg1;
 + (id)informationForKeyboardUp:(struct CGRect)arg1 withIAV:(struct CGRect)arg2;
 + (id)informationForKeyboardDown;
 + (id)animationFence;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *keyboardPreserveKey; // @synthesize keyboardPreserveKey=_keyboardPreserveKey;
+@property(readonly) _Bool shouldRestoreKeyboard; // @synthesize shouldRestoreKeyboard=_shouldRestoreKeyboard;
 @property(nonatomic) _Bool shouldTakeSnapshot; // @synthesize shouldTakeSnapshot=_shouldTakeSnapshot;
 @property(readonly) _Bool keyboardOnScreen; // @synthesize keyboardOnScreen=_keyboardOnScreen;
 @property struct CGRect keyboardPositionWithRemoteIAV; // @synthesize keyboardPositionWithRemoteIAV=_keyboardPositionWithRemoteIAV;
 @property(readonly) struct CGRect keyboardPositionWithIAV; // @synthesize keyboardPositionWithIAV=_keyboardPositionWithIAV;
 @property(readonly) struct CGRect keyboardPosition; // @synthesize keyboardPosition=_keyboardPosition;
 @property(readonly, copy) BKSAnimationFenceHandle *animationFence; // @synthesize animationFence=_animationFence;
-@property(readonly) _Bool avoidIntersectability; // @synthesize avoidIntersectability=_avoidIntersectability;
+@property(nonatomic) _Bool multipleScenes; // @synthesize multipleScenes=_multipleScenes;
+@property(nonatomic) _Bool avoidIntersectability; // @synthesize avoidIntersectability=_avoidIntersectability;
+@property(copy, nonatomic) NSString *hostBundleIdentifier; // @synthesize hostBundleIdentifier=_hostBundleIdentifier;
 @property(copy, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property(copy, nonatomic) NSString *sourceDisplayIdentifier; // @synthesize sourceDisplayIdentifier=_sourceDisplayIdentifier;
 @property(copy, nonatomic) NSString *sourceSceneIdentityString; // @synthesize sourceSceneIdentityString=_sourceSceneIdentityString;

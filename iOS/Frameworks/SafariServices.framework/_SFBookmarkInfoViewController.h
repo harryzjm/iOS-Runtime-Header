@@ -40,10 +40,11 @@
 - (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (_Bool)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;
 - (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(_Bool)arg2;
-- (void)_saveBookmarkKeyPressed;
+- (void)saveKeyPressed;
+- (void)validateCommand:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)keyCommands;
-- (void)cancelPopoverKeyPressed;
+- (void)cancelKeyPressed;
 - (id)backgroundColorUsingTranslucentAppearance:(_Bool)arg1;
 - (void)updateTranslucentAppearance;
 - (_Bool)hasTranslucentAppearance;
@@ -60,6 +61,7 @@
 - (void)_setFolderPickerExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_didChangeEditingTextField:(id)arg1;
 - (void)_didBeginEditingTextField:(id)arg1;
+- (_Bool)tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)_iconForViewCellGivenBookmark:(id)arg1;
 - (id)_cellForParentBookmarkWithTableView:(id)arg1;

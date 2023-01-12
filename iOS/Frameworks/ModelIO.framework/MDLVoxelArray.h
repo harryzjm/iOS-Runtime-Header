@@ -8,14 +8,14 @@
 
 @interface MDLVoxelArray
 {
-    struct unordered_map<unsigned long long, int, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, int>>> _voxels;
+    struct unordered_map<unsigned long long, int, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<std::pair<const unsigned long long, int>>> _voxels;
     struct {
         MISSING_TYPE *minimumExtent__maximumExtent;
     } _extent;
     struct MDLAABB _bounds;
     float _voxelExtent;
     struct MortonCode mortonCoder;
-    struct unique_ptr<ModelIO::Octree, std::__1::default_delete<ModelIO::Octree>> _octreeData;
+    struct unique_ptr<ModelIO::Octree, std::default_delete<ModelIO::Octree>> _octreeData;
     _Bool _levelSet;
     float _interiorThickness;
     float _exteriorThickness;
@@ -31,7 +31,7 @@
 - (void)setVoxelsForMesh:(id)arg1 divisions:(int)arg2 interiorShells:(int)arg3 exteriorShells:(int)arg4 patchRadius:(float)arg5;
 - (id)initWithAsset:(id)arg1 divisions:(int)arg2 interiorNBWidth:(float)arg3 exteriorNBWidth:(float)arg4 patchRadius:(float)arg5;
 - (id)initWithAsset:(id)arg1 divisions:(int)arg2 interiorShells:(int)arg3 exteriorShells:(int)arg4 patchRadius:(float)arg5;
-- (vector_3203cf93)boxesPerLayer;
+- (vector_1d76f7fb)boxesPerLayer;
 - (id)coarseVoxelMeshWithStyle:(unsigned long long)arg1;
 - (id)meshUsingAllocator:(id)arg1;
 - (id)coarseMesh;

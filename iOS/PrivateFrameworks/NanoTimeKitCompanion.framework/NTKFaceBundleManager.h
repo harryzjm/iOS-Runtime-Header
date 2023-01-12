@@ -10,18 +10,28 @@
 
 @interface NTKFaceBundleManager : NSObject
 {
-    struct os_unfair_lock_s _bundleLock;
+    struct os_unfair_lock_s _lookupLock;
     NTKFaceBundleLoader *_loader;
     NSDictionary *_bundleIDLookup;
+    NSDictionary *_styleLookup;
 }
 
++ (_Bool)_isRunningInSnapshotService;
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *styleLookup; // @synthesize styleLookup=_styleLookup;
 @property(readonly, nonatomic) NSDictionary *bundleIDLookup; // @synthesize bundleIDLookup=_bundleIDLookup;
-@property(readonly, nonatomic) struct os_unfair_lock_s bundleLock; // @synthesize bundleLock=_bundleLock;
+@property(readonly, nonatomic) struct os_unfair_lock_s lookupLock; // @synthesize lookupLock=_lookupLock;
 @property(readonly, nonatomic) NTKFaceBundleLoader *loader; // @synthesize loader=_loader;
+- (_Bool)loadKeyDescriptor:(id)arg1;
+- (id)faceBundleForFaceStyle:(long long)arg1 onDevice:(id)arg2;
 - (id)faceBundleForBundleIdentifier:(id)arg1 onDevice:(id)arg2;
 - (void)enumerateFaceBundlesOnDevice:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateFaceBundlesOnDevice:(id)arg1 includingLegacy:(_Bool)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)_generateLookupsIfNecessary;
+- (void)argonUpdated:(id)arg1;
+- (void)_resetCaches;
+- (void)dealloc;
 - (id)_init;
 
 @end

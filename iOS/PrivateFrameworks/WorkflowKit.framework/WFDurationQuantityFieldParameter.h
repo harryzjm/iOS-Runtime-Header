@@ -8,9 +8,11 @@
 {
 }
 
++ (id)stateForDuration:(double)arg1 possibleUnits:(id)arg2;
 + (unsigned long long)calendarUnitFromUnitString:(id)arg1;
 + (_Bool)unitStringIsDurationUnit:(id)arg1;
-- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (unsigned long long)possibleCalendarUnitsForUnits:(id)arg1;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 prompt:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)defaultSerializedRepresentation;
 - (id)stateForDuration:(double)arg1;
 - (id)localizedLabelForPossibleUnit:(id)arg1 magnitude:(id)arg2 style:(unsigned long long)arg3;

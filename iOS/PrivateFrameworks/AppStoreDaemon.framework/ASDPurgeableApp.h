@@ -13,18 +13,18 @@
 
 @interface ASDPurgeableApp : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _systemApp;
     NSString *_bundleID;
     NSString *_purgeableReason;
+    long long _purgeableType;
     long long _staticDiskUsage;
     NSNumber *_storeItemID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic, getter=isSystemApp) _Bool systemApp; // @synthesize systemApp=_systemApp;
 @property(copy, nonatomic) NSNumber *storeItemID; // @synthesize storeItemID=_storeItemID;
 @property(nonatomic) long long staticDiskUsage; // @synthesize staticDiskUsage=_staticDiskUsage;
+@property(nonatomic) long long purgeableType; // @synthesize purgeableType=_purgeableType;
 @property(copy, nonatomic) NSString *purgeableReason; // @synthesize purgeableReason=_purgeableReason;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (void)encodeWithCoder:(id)arg1;

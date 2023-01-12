@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSIndexSet, NSNumber, NSString, SGCachedResult, SGHtmlParser, SGSimpleNamedEmailAddress;
+@class NSArray, NSData, NSIndexSet, NSString, SGHtmlParser, SGSimpleNamedEmailAddress, _PASCachedResult;
 
 @interface SGSimpleMailMessage
 {
-    SGCachedResult *_htmlParserCached;
-    SGCachedResult *_quotedRegionsCached;
-    SGCachedResult *_hasHumanHeadersCached;
-    SGCachedResult *_authorCached;
+    _PASCachedResult *_htmlBodyCached;
+    _PASCachedResult *_htmlContentDataCached;
+    _PASCachedResult *_htmlParserCached;
+    _PASCachedResult *_quotedRegionsCached;
+    _PASCachedResult *_hasHumanHeadersCached;
+    _PASCachedResult *_authorCached;
     _Bool _hasInhumanHeaders;
     _Bool _isPartiallyDownloaded;
     SGSimpleNamedEmailAddress *_from;
@@ -20,14 +22,16 @@
     NSArray *_cc;
     NSArray *_bcc;
     NSString *_messageId;
-    NSString *_htmlBody;
-    NSNumber *_received;
+    NSArray *_mailboxIdentifiers;
     NSArray *_headers;
     SGSimpleNamedEmailAddress *_mailingList;
+    NSString *_htmlBody;
+    NSData *_htmlContentData;
 }
 
 + (id)subjectByCleaningPrefixesInSubject:(id)arg1;
 + (_Bool)headersContainInhumanOnes:(id)arg1 keys:(id)arg2;
++ (_Bool)headerDictionaryContainsInhumanHeaders:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)parseRfc822:(id)arg1 attachmentCallback:(CDUnknownBlockType)arg2;
 + (id)parseRfc822:(id)arg1;
@@ -47,12 +51,13 @@
 + (id)addressItemsFromEmailString:(id)arg1;
 + (id)simpleMailMessageFromHeaders:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSData *htmlContentData; // @synthesize htmlContentData=_htmlContentData;
+@property(copy, nonatomic) NSString *htmlBody; // @synthesize htmlBody=_htmlBody;
 @property(copy, nonatomic) SGSimpleNamedEmailAddress *mailingList; // @synthesize mailingList=_mailingList;
 @property(copy, nonatomic) NSArray *headers; // @synthesize headers=_headers;
 @property(nonatomic) _Bool isPartiallyDownloaded; // @synthesize isPartiallyDownloaded=_isPartiallyDownloaded;
 @property(nonatomic) _Bool hasInhumanHeaders; // @synthesize hasInhumanHeaders=_hasInhumanHeaders;
-@property(copy, nonatomic) NSNumber *received; // @synthesize received=_received;
-@property(copy, nonatomic) NSString *htmlBody; // @synthesize htmlBody=_htmlBody;
+@property(copy, nonatomic) NSArray *mailboxIdentifiers; // @synthesize mailboxIdentifiers=_mailboxIdentifiers;
 @property(copy, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property(copy, nonatomic) NSArray *bcc; // @synthesize bcc=_bcc;
 @property(copy, nonatomic) NSArray *cc; // @synthesize cc=_cc;
@@ -66,6 +71,7 @@
 - (_Bool)hasRecipientFromSameDomainAsSender;
 - (id)senderDomain;
 - (id)allRecipients;
+- (id)initWithMailContentEvent:(id)arg1 contentProtection:(id)arg2;
 - (id)initWithSearchableItem:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -76,6 +82,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)uniqueIdentifier;
 - (id)author;
+- (long long)contentLength;
 - (id)body;
 - (id)textContent;
 - (id)dataDetectorMatchesWithSignature;
@@ -85,8 +92,10 @@
 @property(readonly, nonatomic) SGHtmlParser *htmlParser;
 - (id)headersDictionary;
 - (id)asDictionary;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithMessageDictionary:(id)arg1;
 - (id)initForBuilding;
+- (id)removeBrackets:(id)arg1;
+@property(readonly, nonatomic) NSString *messageIdWithoutBrackets;
 
 @end
 

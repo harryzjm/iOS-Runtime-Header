@@ -4,20 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
 
-@interface HMDPhotoLibraryImportingPersonsImportedLogEvent <HMDCoreAnalyticsLogging>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
+
+@class NSString;
+
+@interface HMDPhotoLibraryImportingPersonsImportedLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     long long _totalNumberOfImportedPersons;
     long long _numberOfNamedImportedPersons;
 }
 
-+ (id)identifier;
 @property(readonly) long long numberOfNamedImportedPersons; // @synthesize numberOfNamedImportedPersons=_numberOfNamedImportedPersons;
 @property(readonly) long long totalNumberOfImportedPersons; // @synthesize totalNumberOfImportedPersons=_totalNumberOfImportedPersons;
 - (id)initWithTotalNumberOfImportedPersons:(long long)arg1 numberOfNamedImportedPersons:(long long)arg2;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

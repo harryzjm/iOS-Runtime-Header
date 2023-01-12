@@ -28,6 +28,7 @@
 + (id)groupDialCellShimmeringTextColor;
 + (id)groupDialCellSelectedTextColor;
 + (id)groupDialCellTextColor;
++ (id)groupListBackgroundColor;
 + (id)editorBackgroundColor;
 + (id)dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
 + (id)trapOverlayBackgroundColor;

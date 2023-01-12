@@ -16,7 +16,7 @@
 + (id)secondaryFundingSourceDescriptionForTransaction:(id)arg1 secondarySource:(id)arg2 includeBankAccountSuffix:(_Bool)arg3 useGenericNameIfNoDescriptionAvailable:(_Bool)arg4;
 + (id)_statusAnnotationForTransaction:(id)arg1;
 + (id)_relativeDateForTransaction:(id)arg1;
-+ (id)presentationInformationForTransaction:(id)arg1 transactionSource:(id)arg2 secondaryTransactionSource:(id)arg3 account:(id)arg4 deviceName:(id)arg5 context:(unsigned long long)arg6;
++ (id)presentationInformationForTransaction:(id)arg1 transactionSource:(id)arg2 secondaryTransactionSource:(id)arg3 familyMember:(id)arg4 account:(id)arg5 deviceName:(id)arg6 context:(unsigned long long)arg7;
 
 @end
 

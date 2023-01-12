@@ -8,27 +8,25 @@
 
 #import <PassKitUI/PKPeerPaymentAssociatedAccountSetupDelegate-Protocol.h>
 
-@class NSArray, NSString, PKFamilyMember, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentService;
+@class NSArray, NSString, PKContactAvatarManager, PKFamilyMemberCollection, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentService;
+@protocol PKPassLibraryDataProvider;
 
 @interface PKPeerPaymentFamilyCircleViewController : UITableViewController <PKPeerPaymentAssociatedAccountSetupDelegate>
 {
     PKPaymentService *_paymentService;
+    PKFamilyMemberCollection *_familyCollection;
     PKPeerPaymentService *_peerPaymentService;
     PKPeerPaymentAccount *_account;
     _Bool _loadingFamily;
     NSArray *_sortedRows;
-    PKFamilyMember *_viewer;
+    PKContactAvatarManager *_avatarManager;
+    id <PKPassLibraryDataProvider> _passLibraryDataProvider;
 }
 
 - (void).cxx_destruct;
 - (void)_peerPaymentAccountChanged:(id)arg1;
 - (id)_familyMemberWithDSID:(id)arg1;
-- (void)_loadFamilyMemberImagesForDSIDs:(id)arg1;
-- (id)_dsidsMissingImages;
-- (void)_loadFamilyMembers;
-- (void)_loadFamilyIfNecessary;
-- (void)_processAltDSIDToImageData:(id)arg1;
-- (void)_processFamilyMembers:(id)arg1;
+- (void)_loadAvatarImagesIfNecessary;
 - (void)_reloadSortedRows;
 - (id)_pendingInvitations;
 - (void)addPeerPaymentAssociatedAccountDidSkipSetupForFamilyMember:(id)arg1;
@@ -44,9 +42,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithPKFamilyMembers:(id)arg1 altDSIDToImageData:(id)arg2;
-- (id)initWithPKFamilyMembers:(id)arg1;
-- (id)init;
+- (id)initWithFamilyCollection:(id)arg1 avatarManager:(id)arg2 passLibraryDataProvider:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

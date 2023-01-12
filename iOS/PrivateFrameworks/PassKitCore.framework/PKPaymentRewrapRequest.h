@@ -10,13 +10,15 @@
 {
     NSString *_merchantIdentifier;
     NSString *_hostApplicationIdentifier;
+    NSString *_merchantDisplayName;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *merchantDisplayName; // @synthesize merchantDisplayName=_merchantDisplayName;
 @property(copy, nonatomic) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
 @property(copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 - (id)bodyDictionary;
-- (id)endpointName;
+- (id)endpointComponents;
 
 @end
 

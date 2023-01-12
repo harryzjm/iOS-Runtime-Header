@@ -15,6 +15,7 @@
     Class _serverProxyClass;
     unsigned long long _memoryCacheCountLimit;
     unsigned long long _memoryCacheCostLimit;
+    unsigned long long _backpressureControlCountLimit;
     NSString *_diskCacheLocation;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     NSLocale *_locale;
@@ -24,6 +25,7 @@
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) GEOResourceManifestConfiguration *manifestConfiguration; // @synthesize manifestConfiguration=_manifestConfiguration;
 @property(copy, nonatomic) NSString *diskCacheLocation; // @synthesize diskCacheLocation=_diskCacheLocation;
+@property(nonatomic) unsigned long long backpressureControlCountLimit; // @synthesize backpressureControlCountLimit=_backpressureControlCountLimit;
 @property(nonatomic) unsigned long long memoryCacheCostLimit; // @synthesize memoryCacheCostLimit=_memoryCacheCostLimit;
 @property(nonatomic) unsigned long long memoryCacheCountLimit; // @synthesize memoryCacheCountLimit=_memoryCacheCountLimit;
 @property(nonatomic) Class serverProxyClass; // @synthesize serverProxyClass=_serverProxyClass;

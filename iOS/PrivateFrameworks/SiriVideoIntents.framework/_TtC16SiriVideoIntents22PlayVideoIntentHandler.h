@@ -15,6 +15,10 @@
     MISSING_TYPE *contentResolver;
     MISSING_TYPE *analyticsService;
     MISSING_TYPE *backgroundFetch;
+    MISSING_TYPE *signalRecorder;
+    MISSING_TYPE *userDefaultsProvider;
+    MISSING_TYPE *deviceState;
+    MISSING_TYPE *tipService;
 }
 
 - (void).cxx_destruct;

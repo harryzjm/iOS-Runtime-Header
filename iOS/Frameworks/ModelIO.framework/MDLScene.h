@@ -11,8 +11,8 @@
 @interface MDLScene : NSObject
 {
     struct mutex *_sceneMutex;
-    struct vector<ModelIO::RTRenderable *, std::__1::allocator<ModelIO::RTRenderable *>> _sceneObjects;
-    struct vector<MDLLight *, std::__1::allocator<MDLLight *>> _sceneLights;
+    struct vector<ModelIO::RTRenderable *, std::allocator<ModelIO::RTRenderable *>> _sceneObjects;
+    struct vector<MDLLight *, std::allocator<MDLLight *>> _sceneLights;
     NSMutableArray *_objects;
     int _signature;
 }

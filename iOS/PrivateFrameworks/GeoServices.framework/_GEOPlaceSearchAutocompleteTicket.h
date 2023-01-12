@@ -17,10 +17,15 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
+- (long long)highlightType;
+- (id)placeSummaryLayoutMetadata;
+- (_Bool)shouldUseDistanceFeatureServerResults;
 - (_Bool)showAutocompleteClientSource;
 - (_Bool)autocompleteTopSectionIsQuerySuggestions;
 - (id)sortPriorityMapping;
 - (id)clientRankingModel;
+- (_Bool)shouldEnableGrayscaleHighlighting;
+- (_Bool)hasShouldEnableGrayscaleHighlighting;
 - (_Bool)shouldDisplayNoResults;
 - (_Bool)hasShouldDisplayNoResults;
 - (double)retainSearchTime;

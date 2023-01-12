@@ -16,8 +16,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak PGGraphRelationshipProcessor *processor; // @synthesize processor=_processor;
-- (id)_familyHolidayMomentsFromMomentNodes:(id)arg1;
+- (id)_familyHolidayMomentsFromMomentNodes:(id)arg1 inGraph:(id)arg2;
 - (void)runAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)initWithRelationshipProcessor:(id)arg1;
 @property(readonly, nonatomic) NSString *name;

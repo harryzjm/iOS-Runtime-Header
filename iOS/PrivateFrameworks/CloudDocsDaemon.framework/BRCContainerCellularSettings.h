@@ -9,7 +9,6 @@
 @class NSNumber;
 @protocol NSObject, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface BRCContainerCellularSettings : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
@@ -18,11 +17,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)containerCellularSettings;
-+ (id)_notifAccountStore;
 - (void).cxx_destruct;
 - (_Bool)isCellularEnabled;
 - (void)dealloc;
-- (id)init;
+- (id)initWithPersonaID:(id)arg1;
 - (void)_accountDidChange;
 
 @end

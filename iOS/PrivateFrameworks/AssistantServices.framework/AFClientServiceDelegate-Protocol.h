@@ -19,9 +19,10 @@
 - (oneway void)audioPlaybackRequestDidStop:(AFAudioPlaybackRequest *)arg1 error:(NSError *)arg2;
 - (oneway void)audioPlaybackRequestDidStart:(AFAudioPlaybackRequest *)arg1;
 - (oneway void)audioPlaybackRequestWillStart:(AFAudioPlaybackRequest *)arg1;
-- (oneway void)audioSessionDidEndInterruption:(_Bool)arg1;
-- (oneway void)audioSessionDidBeginInterruption;
+- (oneway void)audioSessionDidEndInterruption:(_Bool)arg1 userInfo:(NSDictionary *)arg2;
+- (oneway void)audioSessionDidBeginInterruptionWithUserInfo:(NSDictionary *)arg1;
 - (oneway void)aceConnectionWillRetryOnError:(NSError *)arg1;
+- (oneway void)willStopRecordingWithSignpostID:(unsigned long long)arg1;
 - (oneway void)speechRecordingWillBeginRecognitionUpdateForTask:(NSString *)arg1;
 - (oneway void)speechRecordingDidUpdateRecognitionPhrases:(NSArray *)arg1 utterances:(NSArray *)arg2 refId:(NSString *)arg3;
 - (oneway void)speechRecognitionDidFail:(NSError *)arg1;
@@ -36,7 +37,6 @@
 - (oneway void)speechRecordingDidChangeAVRecordRoute:(NSString *)arg1 isDucking:(_Bool)arg2 isTwoShot:(_Bool)arg3 speechEndHostTime:(unsigned long long)arg4 reply:(void (^)(void))arg5;
 - (oneway void)speechRecordingDidBeginOnAVRecordRoute:(NSString *)arg1 audioSessionID:(unsigned int)arg2 reply:(void (^)(void))arg3;
 - (oneway void)speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(AFXPCWrapper *)arg1 reply:(void (^)(void))arg2;
-- (oneway void)getClockContext:(void (^)(AFClockAlarmSnapshot *, AFClockTimerSnapshot *))arg1;
 - (oneway void)getBulletinContext:(void (^)(NSArray *))arg1;
 - (oneway void)startUIRequestWithInfo:(AFRequestInfo *)arg1 completion:(void (^)(_Bool))arg2;
 - (oneway void)startUIRequestWithText:(NSString *)arg1 completion:(void (^)(_Bool))arg2;

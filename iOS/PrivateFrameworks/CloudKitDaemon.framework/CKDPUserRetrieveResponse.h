@@ -10,7 +10,6 @@
 
 @class CKDPRecord;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUserRetrieveResponse : PBCodable <NSCopying>
 {
     CKDPRecord *_user;

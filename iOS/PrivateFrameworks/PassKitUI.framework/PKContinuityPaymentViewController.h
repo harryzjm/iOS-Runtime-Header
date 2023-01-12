@@ -22,6 +22,7 @@
     UILabel *_requestingDeviceLabel;
     UILabel *_requestingSiteLabel;
     UILabel *_priceLabel;
+    UILabel *_footnoteLabel;
     UIView *_priceView;
     UIStackView *_summaryContainerView;
     PKContinuityPaymentCardSummaryView *_cardView;
@@ -58,7 +59,7 @@
 - (void)dismissPasscodeViewController;
 - (void)presentPasscodeViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_912cb5d2)arg2;
+- (void)authenticator:(id)arg1 didTransitionToEvaluationStateWithEvent:(CDStruct_2a40740a)arg2;
 - (long long)_progressStateForAuthenticationWithBiometricFailure:(_Bool)arg1;
 - (_Bool)paymentPass:(id *)arg1 paymentApplication:(id *)arg2 fromAID:(id)arg3;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
@@ -77,6 +78,9 @@
 - (_Bool)paymentAuthorizationStateMachine:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3 withParam:(id)arg4;
 - (void)invalidate;
 - (void)updatePaymentWithClientUpdate:(id)arg1;
+- (id)_formattedDateRangeWithStartDate:(id)arg1 endDate:(id)arg2;
+- (void)_updateFootnoteLabelWithTotalSummaryItem:(id)arg1;
+- (void)_updatePriceLabelWithTotalSummaryItem:(id)arg1;
 - (void)_updateCardView;
 - (void)_timeoutFired;
 - (void)_resetAndScheduleTimeout;
@@ -92,6 +96,7 @@
 - (void)_setAuthenticating:(_Bool)arg1;
 - (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(_Bool)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillLayoutSubviews;
 - (void)_updateActiveConstraints;

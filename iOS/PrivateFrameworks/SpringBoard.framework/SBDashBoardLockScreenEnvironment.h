@@ -23,12 +23,13 @@
 #import <SpringBoard/SBLockScreenMediaControlsPresenting-Protocol.h>
 #import <SpringBoard/SBLockScreenPasscodeViewPresenting-Protocol.h>
 #import <SpringBoard/SBLockScreenProximityBehaviorProviding-Protocol.h>
+#import <SpringBoard/SBLockScreenSpotlightPresenting-Protocol.h>
 #import <SpringBoard/SBLockScreenStatusBarTransitioning-Protocol.h>
 
-@class CSCoverSheetViewController, NSString, SBDashBoardAnalyticsEmitter, SBDashBoardApplicationLauncher, SBDashBoardBiometricUnlockController, SBDashBoardEmergencyDialerController, SBDashBoardIdleTimerController, SBDashBoardOrientationController, SBDashBoardPluginController, SBDashBoardPolicyBasedBehaviorProvider, SBDashBoardSetupController, SBDashBoardSpotlightPresenter, SBFLockScreenActionContext, SBLockScreenActionManager, UIViewController;
-@protocol SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBBiometricUnlockBehaviorDelegate, SBButtonEventsHandler, SBFScreenWakeAnimationTarget, SBIdleTimerProviding, SBLockScreenApplicationLaunching, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenCallHandling, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenIdleTimerControlling, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenPluginPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenStatusBarTransitioning;
+@class CSCoverSheetViewController, NSString, SBCoverSheetSpotlightPresenter, SBDashBoardAnalyticsEmitter, SBDashBoardApplicationLauncher, SBDashBoardBiometricUnlockController, SBDashBoardEmergencyDialerController, SBDashBoardIdleTimerController, SBDashBoardOrientationController, SBDashBoardPluginController, SBDashBoardPolicyBasedBehaviorProvider, SBDashBoardSetupController, SBDashBoardSpotlightPresenter, SBFLockScreenActionContext, SBLockScreenActionManager, SBSearchGesture, UIViewController;
+@protocol SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBBiometricUnlockBehaviorDelegate, SBButtonEventsHandler, SBFScreenWakeAnimationTarget, SBIdleTimerProviding, SBLockScreenApplicationLaunching, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenCallHandling, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenIdleTimerControlling, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenPluginPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenSpotlightPresenting, SBLockScreenStatusBarTransitioning, SBSWidgetMetricsProviding;
 
-@interface SBDashBoardLockScreenEnvironment : NSObject <SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBBiometricUnlockBehaviorDelegate, SBButtonEventsHandler, CSCoverSheetViewControllerObserver, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenStatusBarTransitioning, SBLockScreenEnvironment>
+@interface SBDashBoardLockScreenEnvironment : NSObject <SBApplicationHosting, SBAutoUnlockRule, SBBiometricUnlockBehavior, SBBiometricUnlockBehaviorDelegate, SBButtonEventsHandler, CSCoverSheetViewControllerObserver, SBLockScreenBacklightControlling, SBLockScreenBehaviorSuppressing, SBLockScreenBlockedStateObserving, SBLockScreenButtonObserving, SBLockScreenContentStateProviding, SBLockScreenCustomActionStoring, SBLockScreenLockingAndUnlocking, SBLockScreenMediaControlsPresenting, SBLockScreenPasscodeViewPresenting, SBLockScreenProximityBehaviorProviding, SBLockScreenStatusBarTransitioning, SBLockScreenSpotlightPresenting, SBLockScreenEnvironment>
 {
     CSCoverSheetViewController *_coverSheetViewController;
     SBDashBoardAnalyticsEmitter *_analyticsEmitter;
@@ -42,6 +43,8 @@
     SBDashBoardPolicyBasedBehaviorProvider *_policyBasedBehaviorProvider;
     SBDashBoardSetupController *_setupController;
     SBDashBoardSpotlightPresenter *_spotlightPresenter;
+    SBCoverSheetSpotlightPresenter *_coverSheetSpotlightPresenter;
+    SBSearchGesture *_searchGesture;
     _Bool _expectsFaceContact;
     id <SBBiometricUnlockBehaviorDelegate> _biometricUnlockBehaviorDelegate;
 }
@@ -50,6 +53,9 @@
 @property(readonly, nonatomic) _Bool expectsFaceContact; // @synthesize expectsFaceContact=_expectsFaceContact;
 @property(nonatomic) __weak id <SBBiometricUnlockBehaviorDelegate> biometricUnlockBehaviorDelegate; // @synthesize biometricUnlockBehaviorDelegate=_biometricUnlockBehaviorDelegate;
 @property(readonly, nonatomic) CSCoverSheetViewController *coverSheetViewController; // @synthesize coverSheetViewController=_coverSheetViewController;
+- (void)updateScaleViewWithScale:(double)arg1;
+- (void)presentOrDismissCoverSheetSpotlightAnimated:(_Bool)arg1;
+- (_Bool)shouldPresentOrDismissCoverSheetSpotlight;
 - (void)updateStatusBarForLockScreenComeback;
 - (void)updateStatusBarForLockScreenTeardown;
 @property(readonly, nonatomic) _Bool shouldShowLockStatusBarTime;
@@ -88,6 +94,7 @@
 - (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;
@@ -107,6 +114,8 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <SBLockScreenSpotlightPresenting> spotlightPresenter;
+@property(readonly, nonatomic) id <SBSWidgetMetricsProviding> widgetMetricsProvider;
 @property(readonly, nonatomic) id <SBLockScreenStatusBarTransitioning> statusBarTransitionController;
 @property(readonly, nonatomic) id <SBLockScreenProximityBehaviorProviding> proximityBehaviorProvider;
 @property(readonly, nonatomic) id <SBLockScreenPluginPresenting> pluginPresenter;

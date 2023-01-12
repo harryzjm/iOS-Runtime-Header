@@ -8,48 +8,76 @@
 
 #import <HomeKitDaemon/HMDBatchLocationDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CLLocation, CLRegion, HMDHome, HMDHomeLocationData, HMFMessageDispatcher, NSDate, NSObject, NSSet, NSString, NSTimeZone, NSUUID;
+@class CLLocation, CLRegion, HMDHome, HMDHomeLocationData, HMFMessageDispatcher, HMFTimer, HMFUnfairLock, NSDate, NSObject, NSSet, NSString, NSTimeZone, NSUUID, _HMDPendingRegionUpdate;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeLocationHandler : HMFObject <HMDBatchLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding>
+@interface HMDHomeLocationHandler : HMFObject <HMDBatchLocationDelegate, HMFLogging, HMFTimerDelegate, HMDHomeMessageReceiver, NSSecureCoding>
 {
-    int _regionStateAtHome;
-    int _regionStateNearbyHome;
-    int _locationAuthorization;
     CLLocation *_location;
     NSTimeZone *_timeZone;
     NSString *_isoCountryCode;
+    long long _regionStateAtHome;
+    long long _regionStateNearbyHome;
+    CLLocation *_homeLocationUsingHomeKitAlgorithm;
+    CLLocation *_homeLocationUsingCoreRoutineLOI;
+    NSDate *_locationUpdateTimestamp;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     HMDHome *_home;
-    NSDate *_locationUpdateTimestamp;
+    long long _locationAuthorization;
     CLRegion *_regionAtHome;
     CLRegion *_regionNearbyHome;
+    HMFTimer *_homeRegionUpdateTimer;
+    HMFUnfairLock *_lock;
+    _HMDPendingRegionUpdate *_pendingAtHomeRegionUpdate;
+    _HMDPendingRegionUpdate *_pendingNearbyHomeRegionUpdate;
+    double _coalesceRegionUpdateIntervalInSeconds;
 }
 
++ (id)logCategory;
 + (_Bool)supportsSecureCoding;
 + (_Bool)hasMessageReceiverChildren;
 + (_Bool)mergeLocationDataForLocalHome:(id)arg1 withCloudHome:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) double coalesceRegionUpdateIntervalInSeconds; // @synthesize coalesceRegionUpdateIntervalInSeconds=_coalesceRegionUpdateIntervalInSeconds;
+@property(retain, nonatomic) _HMDPendingRegionUpdate *pendingNearbyHomeRegionUpdate; // @synthesize pendingNearbyHomeRegionUpdate=_pendingNearbyHomeRegionUpdate;
+@property(retain, nonatomic) _HMDPendingRegionUpdate *pendingAtHomeRegionUpdate; // @synthesize pendingAtHomeRegionUpdate=_pendingAtHomeRegionUpdate;
+@property(retain, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property(retain, nonatomic) HMFTimer *homeRegionUpdateTimer; // @synthesize homeRegionUpdateTimer=_homeRegionUpdateTimer;
 @property(retain, nonatomic) CLRegion *regionNearbyHome; // @synthesize regionNearbyHome=_regionNearbyHome;
 @property(retain, nonatomic) CLRegion *regionAtHome; // @synthesize regionAtHome=_regionAtHome;
-@property(nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
-@property(retain, nonatomic) NSDate *locationUpdateTimestamp; // @synthesize locationUpdateTimestamp=_locationUpdateTimestamp;
+@property(nonatomic) long long locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(nonatomic) int regionStateNearbyHome; // @synthesize regionStateNearbyHome=_regionStateNearbyHome;
-@property(nonatomic) int regionStateAtHome; // @synthesize regionStateAtHome=_regionStateAtHome;
+@property(retain, nonatomic) NSDate *locationUpdateTimestamp; // @synthesize locationUpdateTimestamp=_locationUpdateTimestamp;
+@property(retain, nonatomic) CLLocation *homeLocationUsingCoreRoutineLOI; // @synthesize homeLocationUsingCoreRoutineLOI=_homeLocationUsingCoreRoutineLOI;
+@property(retain, nonatomic) CLLocation *homeLocationUsingHomeKitAlgorithm; // @synthesize homeLocationUsingHomeKitAlgorithm=_homeLocationUsingHomeKitAlgorithm;
+@property(nonatomic) long long regionStateNearbyHome; // @synthesize regionStateNearbyHome=_regionStateNearbyHome;
+@property(nonatomic) long long regionStateAtHome; // @synthesize regionStateAtHome=_regionStateAtHome;
 @property(retain, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
+- (long long)__getNearByHomeCalculatedState;
+- (long long)__getAtHomeCalculatedState;
+- (void)__simulateNearByHomeRegionState:(long long)arg1;
+- (void)__simulateAtHomeRegionState:(long long)arg1;
+- (id)__initForUnitTesting:(double)arg1 home:(id)arg2 queue:(id)arg3 messageDispatcher:(id)arg4 location:(id)arg5;
+- (id)logIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (id)messageDestination;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
+- (void)_processPendingRegionStateUpdates;
+- (void)timerDidFire:(id)arg1;
+- (void)coalesceRegionUpdateState:(long long)arg1 forRegion:(id)arg2;
+- (_Bool)updateRegionStateFromLocation:(id)arg1;
+- (_Bool)calculateAndUpdateRegionState:(long long)arg1;
 - (void)getReachableIPAccessory:(unsigned long long *)arg1 btleAccessory:(unsigned long long *)arg2 mediaAccessory:(unsigned long long *)arg3;
 - (void)didDetermineState:(long long)arg1 forRegion:(id)arg2;
 - (void)didDetermineBatchLocation:(id)arg1;
@@ -58,7 +86,7 @@
 - (_Bool)isLocation:(id)arg1 closeToLocation:(id)arg2;
 @property(readonly, nonatomic) HMDHomeLocationData *locationData;
 - (void)_sendLocationUpdate;
-- (void)runTransactionWithLocation:(id)arg1 updateTime:(id)arg2;
+- (void)runTransactionWithLocation:(id)arg1 updateTime:(id)arg2 source:(long long)arg3;
 - (id)_handleHomeLocationData:(id)arg1 message:(id)arg2;
 - (void)_updateTimeZone:(id)arg1;
 - (void)_evaluateHomeRegionStateForCurrentDeviceLocation:(id)arg1;
@@ -68,7 +96,7 @@
 - (void)accessoriesBecomeReachable;
 - (void)updateHomeLocation;
 - (void)_handleRetrieveLocation:(id)arg1;
-- (void)_handleLocationAuthorization:(int)arg1;
+- (void)_handleLocationAuthorization:(long long)arg1;
 - (void)_handleLocationAuthorizationChangedNotification:(id)arg1;
 - (void)_registerForRegionUpdate;
 - (void)_registerForMessages;

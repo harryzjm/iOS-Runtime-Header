@@ -8,15 +8,17 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSObject, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface WKObject : NSProxy <WKObject>
 {
     _Bool _hasInitializedTarget;
-    NSObject *_target;
+    struct RetainPtr<NSObject> _target;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly) struct Object *_apiObject;
 - (_Bool)isNSValue__;
 - (_Bool)isNSTimeZone__;

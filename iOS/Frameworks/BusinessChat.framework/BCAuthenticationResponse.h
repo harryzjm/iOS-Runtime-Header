@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChat/BCDictionaryImageSerializable-Protocol.h>
+#import <BusinessChat/BCDictionarySerializable-Protocol.h>
 
 @class BCError, NSArray, NSDictionary, NSString;
 
-@interface BCAuthenticationResponse : NSObject <BCDictionaryImageSerializable>
+@interface BCAuthenticationResponse : NSObject <BCDictionarySerializable>
 {
     NSString *_status;
     NSString *_token;
@@ -18,13 +18,12 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *errors; // @synthesize errors=_errors;
-@property(retain, nonatomic) NSString *token; // @synthesize token=_token;
-@property(nonatomic) NSString *status; // @synthesize status=_status;
+@property(readonly, nonatomic) NSArray *errors;
+@property(readonly, nonatomic) NSString *token;
+@property(readonly, nonatomic) NSString *status;
 @property(readonly, nonatomic) BCError *error;
 @property(readonly, nonatomic) NSDictionary *dictionaryValue;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithDictionary:(id)arg1 imageDictionary:(id)arg2;
 - (id)initWithToken:(id)arg1 error:(id)arg2;
 
 @end

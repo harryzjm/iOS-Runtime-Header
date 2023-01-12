@@ -8,11 +8,12 @@
 
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVLayoutItemAttributes, AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIViewPropertyAnimator, UIVisualEffectView;
+@class AVLayoutItemAttributes, AVMicaPackage, AVUserInteractionObserverGestureRecognizer, NSNumber, NSString, NSTimer, UIFont, UIViewPropertyAnimator, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface AVButton : UIButton <AVPlaybackControlsViewItem>
 {
+    NSString *_accessibilityLabelOverride;
     _Bool _collapsed;
     _Bool _included;
     _Bool _removed;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool _treatsForcePressAsLongPress;
     _Bool _usesBackgroundEffectViewForTextOnlyButtons;
     _Bool _multipleTouchesEndsTracking;
+    _Bool _appliesTransformToImageViewWhenHighlighted;
     _Bool _disablesHighlightWhenLongPressed;
     _Bool _clampsHitRectInsetsWhenContainedInScrollableView;
     _Bool _wasForcePressTriggered;
@@ -30,11 +32,14 @@ __attribute__((visibility("hidden")))
     double _forceThreshold;
     double _force;
     double _maximumForceSinceTrackingBegan;
+    NSString *_activeImageName;
     NSString *_imageName;
-    NSString *_fullScreenImageName;
-    NSString *_inlineImageName;
-    NSString *_fullScreenAlternateImageName;
-    NSString *_inlineAlternateImageName;
+    NSString *_alternateImageName;
+    double _alternateImagePadding;
+    double _fullscreenAlternateImagePadding;
+    UIFont *_inlineFont;
+    UIFont *_fullScreenFont;
+    UIFont *_alternateFullScreenFont;
     AVMicaPackage *_micaPackage;
     double _micaSnapshotAlpha;
     UIViewPropertyAnimator *_highlightAnimator;
@@ -44,12 +49,15 @@ __attribute__((visibility("hidden")))
     NSTimer *_longPressTimer;
     AVUserInteractionObserverGestureRecognizer *_userInteractionGestureRecognizer;
     UIVisualEffectView *_backgroundEffectView;
+    UIFont *_activeFont;
     struct CGSize _extrinsicContentSize;
     struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
++ (id)buttonWithAccessibilityIdentifier:(id)arg1 accessibilityLabel:(id)arg2;
 + (id)buttonWithAccessibilityIdentifier:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIFont *activeFont; // @synthesize activeFont=_activeFont;
 @property(retain, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property(retain, nonatomic) AVUserInteractionObserverGestureRecognizer *userInteractionGestureRecognizer; // @synthesize userInteractionGestureRecognizer=_userInteractionGestureRecognizer;
 @property(nonatomic) __weak NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
@@ -63,11 +71,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool disablesHighlightWhenLongPressed; // @synthesize disablesHighlightWhenLongPressed=_disablesHighlightWhenLongPressed;
 @property(nonatomic) double micaSnapshotAlpha; // @synthesize micaSnapshotAlpha=_micaSnapshotAlpha;
 @property(retain, nonatomic) AVMicaPackage *micaPackage; // @synthesize micaPackage=_micaPackage;
-@property(copy, nonatomic) NSString *inlineAlternateImageName; // @synthesize inlineAlternateImageName=_inlineAlternateImageName;
-@property(copy, nonatomic) NSString *fullScreenAlternateImageName; // @synthesize fullScreenAlternateImageName=_fullScreenAlternateImageName;
-@property(copy, nonatomic) NSString *inlineImageName; // @synthesize inlineImageName=_inlineImageName;
-@property(copy, nonatomic) NSString *fullScreenImageName; // @synthesize fullScreenImageName=_fullScreenImageName;
+@property(retain, nonatomic) UIFont *alternateFullScreenFont; // @synthesize alternateFullScreenFont=_alternateFullScreenFont;
+@property(retain, nonatomic) UIFont *fullScreenFont; // @synthesize fullScreenFont=_fullScreenFont;
+@property(retain, nonatomic) UIFont *inlineFont; // @synthesize inlineFont=_inlineFont;
+@property(nonatomic) _Bool appliesTransformToImageViewWhenHighlighted; // @synthesize appliesTransformToImageViewWhenHighlighted=_appliesTransformToImageViewWhenHighlighted;
+@property(nonatomic) double fullscreenAlternateImagePadding; // @synthesize fullscreenAlternateImagePadding=_fullscreenAlternateImagePadding;
+@property(nonatomic) double alternateImagePadding; // @synthesize alternateImagePadding=_alternateImagePadding;
+@property(copy, nonatomic) NSString *alternateImageName; // @synthesize alternateImageName=_alternateImageName;
 @property(copy, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+@property(copy, nonatomic) NSString *activeImageName; // @synthesize activeImageName=_activeImageName;
 @property(nonatomic) _Bool multipleTouchesEndsTracking; // @synthesize multipleTouchesEndsTracking=_multipleTouchesEndsTracking;
 @property(nonatomic) double maximumForceSinceTrackingBegan; // @synthesize maximumForceSinceTrackingBegan=_maximumForceSinceTrackingBegan;
 @property(nonatomic) double force; // @synthesize force=_force;
@@ -85,6 +97,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
 @property(readonly, copy) NSString *debugDescription;
 - (double)_imageViewAlpha;
+- (id)_preferredFont;
 - (id)_preferredImageName;
 - (void)_updateBackgroundEffectViewIsHidden;
 - (void)_updateEdgeInsets;
@@ -100,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
 - (void)setBounds:(struct CGRect)arg1;
+- (id)accessibilityLabel;
 - (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;

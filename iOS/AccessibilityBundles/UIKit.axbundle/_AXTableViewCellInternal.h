@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, UITableViewCellAccessibilityElement;
+@class NSMutableArray, NSMutableDictionary, UIAccessibilityElementMockView, UITableTextAccessibilityElement, UITableViewCellAccessibilityElement;
 
 @interface _AXTableViewCellInternal : NSObject
 {
     NSMutableArray *children;
     _Bool cellOrAncestorHiddenWhileFetchingChildren;
-    id removeMinusButton;
-    id text;
-    id removeConfirmButton;
+    UIAccessibilityElementMockView *removeMinusButton;
+    UITableTextAccessibilityElement *text;
+    UIAccessibilityElementMockView *removeConfirmButton;
     id accessoryButton;
     NSMutableArray *mockSubviews;
     UITableViewCellAccessibilityElement *mockParent;

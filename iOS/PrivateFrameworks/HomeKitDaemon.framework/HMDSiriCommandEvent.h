@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSString;
 
-@interface HMDSiriCommandEvent <HMDAWDLogEvent>
+@interface HMDSiriCommandEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     unsigned long long _duration;
     NSString *_actionType;
@@ -19,12 +21,12 @@
     unsigned long long _configurationVersion;
     unsigned long long _lastSyncedConfigurationVersion;
     unsigned long long _serverConfigurationVersion;
+    NSString *_clientMetricIdentifier;
 }
 
 + (id)commandEventWithDuration:(unsigned long long)arg1 actionType:(id)arg2 outcome:(id)arg3 numberOfEntities:(unsigned long long)arg4 numberOfFailures:(unsigned long long)arg5 numberOfIncompletions:(unsigned long long)arg6 serverConfigurationVersion:(unsigned long long)arg7 configurationVersion:(unsigned long long)arg8 lastSyncedConfigurationVersion:(unsigned long long)arg9;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *clientMetricIdentifier; // @synthesize clientMetricIdentifier=_clientMetricIdentifier;
 @property(readonly, nonatomic) unsigned long long serverConfigurationVersion; // @synthesize serverConfigurationVersion=_serverConfigurationVersion;
 @property(readonly, nonatomic) unsigned long long lastSyncedConfigurationVersion; // @synthesize lastSyncedConfigurationVersion=_lastSyncedConfigurationVersion;
 @property(readonly, nonatomic) unsigned long long configurationVersion; // @synthesize configurationVersion=_configurationVersion;

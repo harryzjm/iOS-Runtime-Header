@@ -14,7 +14,7 @@
 - (id)preferredContactForImageEventWithPreferredContact:(id)arg1 unifiedContact:(id)arg2;
 - (id)preferredContactForNameEventWithPreferredContact:(id)arg1 unifiedContact:(id)arg2;
 - (id)unlinkContactEventWithContact:(id)arg1;
-- (id)linkContactsEventWithFromContact:(id)arg1 toContact:(id)arg2;
+- (id)linkContactsEventWithFromContact:(id)arg1 toContact:(id)arg2 unifiedContact:(id)arg3;
 - (id)removeSubgroupFromGroupEventWithSubgroup:(id)arg1 group:(id)arg2;
 - (id)addSubgroupToGroupEventWithSubgroup:(id)arg1 group:(id)arg2;
 - (id)removeMemberFromGroupEventWithMember:(id)arg1 group:(id)arg2;
@@ -25,6 +25,7 @@
 - (id)addGroupEventWithGroup:(id)arg1 containerIdentifier:(id)arg2;
 - (id)deleteContactEventWithContactIdentifier:(id)arg1 externalURI:(id)arg2 externalModificationTag:(id)arg3;
 - (id)deleteContactEventWithContactIdentifier:(id)arg1;
+- (id)updateContactEventWithContact:(id)arg1 imagesChanged:(_Bool)arg2;
 - (id)updateContactEventWithContact:(id)arg1;
 - (id)addContactEventWithContact:(id)arg1 containerIdentifier:(id)arg2;
 - (id)dropEverythingEvent;

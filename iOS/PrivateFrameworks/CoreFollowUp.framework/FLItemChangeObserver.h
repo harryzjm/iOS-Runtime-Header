@@ -15,6 +15,7 @@
 + (id)observerWithChangeHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)timerUpdated;
 - (void)setItemChangeHandler:(CDUnknownBlockType)arg1;
 
 @end

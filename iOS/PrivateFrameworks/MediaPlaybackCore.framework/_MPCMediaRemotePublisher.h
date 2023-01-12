@@ -10,17 +10,21 @@
 #import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSourcePrivate-Protocol.h>
 
 @class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSArray, NSString, NSUserDefaults;
+@protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPCPlaybackEngineEventObserving>
 {
     MPLibraryAddStatusObserver *_libraryAddStatusObserver;
-    NSString *_lastContextID;
+    struct os_unfair_lock_s _libraryAddStatusObserverLock;
     NSArray *_accounts;
     _Bool _activeAccountAllowsSubscriptionPlayback;
     NSString *_activeAccountStoreFrontIdentifier;
     NSUserDefaults *_ipodDefaults;
     _Bool _hasBeganFastForward;
     _Bool _hasBeganRewind;
+    NSObject<OS_dispatch_source> *_nextPreviousTrackCooldownTimer;
+    long long _deferredTrackChangeDelta;
     _Bool _initializedSupportedCommands;
     _Bool _engineRestoringState;
     _Bool _mediaServerAvailable;
@@ -37,16 +41,18 @@
 @property(nonatomic, getter=hasInitializedSupportedCommands) _Bool initializedSupportedCommands; // @synthesize initializedSupportedCommands=_initializedSupportedCommands;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performDebugEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateSupportedCommands;
 - (_Bool)_playbackStateIsIdle:(long long)arg1;
 - (void)_updateLaunchCommands;
 - (id)_supportedSessionTypes;
 - (id)_exportableSessionTypes;
-- (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 play:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_becomeActiveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
+- (void)_commandEventDidTimeoutNotification:(id)arg1;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndLyricsEvent:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didBeginLyricsEvent:(id)arg2;
 - (void)engineDidResetMediaServices:(id)arg1;
@@ -54,12 +60,14 @@
 - (void)engine:(id)arg1 didChangeAccounts:(id)arg2;
 - (void)engineDidEndStateRestoration:(id)arg1;
 - (void)engineWillBeginStateRestoration:(id)arg1;
+- (void)engine:(id)arg1 didChangeCurrentItemVariantID:(id)arg2;
 - (void)engine:(id)arg1 didChangeActionAtQueueEnd:(long long)arg2;
 - (void)engine:(id)arg1 didChangeShuffleType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engine:(id)arg1 didChangeToItem:(id)arg2;
+- (void)leaveSharedSessionWithCommandID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getShouldRestoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reportUserBackgroundedApplication;
 - (void)publishIfNeeded;

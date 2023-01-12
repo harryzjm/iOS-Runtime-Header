@@ -23,6 +23,7 @@
 - (CUINamedRenditionInfo *)renditionInfoForIdentifier:(unsigned short)arg1;
 - (CUICommonAssetStorage *)themeStore;
 - (NSString *)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
+- (void)removeImagesNamed:(NSString *)arg1;
 - (void)removeImageNamed:(NSString *)arg1 withDescription:(CUINamedImageDescription *)arg2;
 - (void)insertCGImage:(struct CGImage *)arg1 withName:(NSString *)arg2 andDescription:(CUINamedImageDescription *)arg3;
 @end

@@ -8,6 +8,7 @@
 
 @protocol TSPObjectDelegate
 @property(readonly, nonatomic) TSPObjectContext *context;
+- (unsigned long long)fileFormatVersion;
 - (_Bool)isObjectInDocument:(TSPObject *)arg1;
 - (TSPObjectUUIDMap *)objectUUIDMap;
 - (_Bool)canSetObjectUUIDForObject:(TSPObject *)arg1;

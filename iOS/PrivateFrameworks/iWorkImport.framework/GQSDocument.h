@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
     _Bool mGeneratingThumbnail;
     _Bool mThumbnailGenerationDone;
     unsigned int mTextScale;
-    set_978dc09f *mWrapPoints;
+    void *mWrapPoints;
     struct __CFDictionary *mBundleResourceUriMap;
     GQDSStylesheet *mStylesheet;
     _Bool mIsReadingStorageAttachments;
@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)currentWrapPointGenerator;
 - (struct __CFString *)uriForBundleResource:(struct __CFString *)arg1 ofType:(struct __CFString *)arg2;
 - (void)clearWrapPoints;
-- (vector_dadce35e *)createListOfWrapPointsAlongY:(float)arg1 minX:(float)arg2 maxX:(float)arg3 zIndex:(int)arg4;
-- (const set_978dc09f *)wrapPoints;
+- (void *)createListOfWrapPointsAlongY:(float)arg1 minX:(float)arg2 maxX:(float)arg3 zIndex:(int)arg4;
+- (const void *)wrapPoints;
 - (void)addWrapPoint:(id)arg1;
 - (void)setThumbnailGenerationDone:(_Bool)arg1;
 - (_Bool)isThumbnailGenerationDone;

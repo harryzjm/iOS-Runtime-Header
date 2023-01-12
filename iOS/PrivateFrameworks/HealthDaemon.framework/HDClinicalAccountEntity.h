@@ -12,6 +12,7 @@
 + (id)propertyForSyncProvenance;
 + (id)propertyForSyncAnchor;
 + (long long)protectionClass;
++ (id)checkConstraints;
 + (id)foreignKeys;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;

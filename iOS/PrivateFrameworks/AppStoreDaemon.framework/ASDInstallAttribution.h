@@ -16,8 +16,14 @@
 + (id)interface;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)updateConversionValueForTestInstallAttributionPingbackForApp:(id)arg1 conversionValue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)registerTestInstallAttributionPingbackForApp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)addTestInstallAttributionPingbackWithDictionary:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addInstallAttributionParamsWithConfig:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addInstallAttributionParamsWithConfig:(id)arg1;
+- (void)startPingbackTaskWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)endImpressionWithConfig:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)startImpressionWithConfig:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_initWithServiceBroker:(id)arg1;
 - (id)init;
 

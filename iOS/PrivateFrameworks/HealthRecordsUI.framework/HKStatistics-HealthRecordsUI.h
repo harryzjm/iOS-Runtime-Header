@@ -8,6 +8,5 @@
 
 @interface HKStatistics (HealthRecordsUI)
 - (void)updateMinMaxWithChartableCodedQuantity:(id)arg1;
-- (id)initWithDataType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 @end
 

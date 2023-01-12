@@ -15,9 +15,6 @@
 
 - (void).cxx_destruct;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (void)_markPendingOwnerForSeizureTargets;
-- (id)_updatedStoreRecordsForContainer:(id)arg1;
-- (void)_computeTargetsForSeizure;
 - (void)main;
 
 // Remaining properties

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, RUIObjectModel, UIAlertController;
+@class NSString, RUIObjectModel, UIAlertController, UIColor;
 @protocol RUIAlertViewDelegate, RUIPresentationHandling;
 
 @interface RUIAlertView
@@ -15,12 +15,14 @@
     NSString *_title;
     NSString *_message;
     long long _buttonIndex;
+    UIColor *_tintColor;
     CDUnknownBlockType _completion;
 }
 
 + (void)_enableTestMode;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, nonatomic) long long buttonIndex; // @synthesize buttonIndex=_buttonIndex;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;

@@ -6,7 +6,6 @@
 
 @class LSApplicationProxy, MCUIProfile;
 
-__attribute__((visibility("hidden")))
 @interface MCManagedAppDetailsViewController
 {
     MCUIProfile *_UIProfile;
@@ -16,11 +15,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) LSApplicationProxy *managedAppProxy; // @synthesize managedAppProxy=_managedAppProxy;
 @property(retain, nonatomic) MCUIProfile *UIProfile; // @synthesize UIProfile=_UIProfile;
-- (void)_profileChanged:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)_profileChanged:(id)arg1;
 - (void)_setup;
 - (id)initWithUIProfile:(id)arg1 managedAppID:(id)arg2;
 - (id)initWithUIProfile:(id)arg1 managedApp:(id)arg2;

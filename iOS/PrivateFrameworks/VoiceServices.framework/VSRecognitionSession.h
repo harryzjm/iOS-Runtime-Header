@@ -27,6 +27,7 @@
         unsigned int delegateWillBegin:1;
         unsigned int delegateBegin:1;
         unsigned int delegateOpenURL:1;
+        unsigned int delegateOpenURLAsync:1;
         unsigned int delegateFinishedSpeaking:1;
         unsigned int delegateComplete:1;
         unsigned int debugDumpEnabled:1;
@@ -75,7 +76,7 @@
 - (id)_recognitionResultHandlingThread;
 - (id)_currentRecognizeAction;
 - (void)_setAction:(id)arg1;
-- (id)_notifyDelegateOpenURL:(id)arg1;
+- (void)_notifyDelegateOpenURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_notifyDelegateActionStarted;
 - (_Bool)_actionStarted:(id)arg1;
 - (void)_actionCompleted:(id)arg1 nextAction:(id)arg2 error:(id)arg3;

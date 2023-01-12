@@ -6,14 +6,16 @@
 
 #import <HomeAI/NSObject-Protocol.h>
 
-@class HMICameraVideoFrame, HMICameraVideoFrameResult, HMINMSConfiguration, NSArray, NSDictionary, NSString, NSUUID;
+@class HMIAnalysisStateUpdate, HMICameraVideoFrame, HMICameraVideoFrameResult, HMIVideoAnalyzerConfiguration, NSArray, NSDictionary, NSSet, NSUUID;
 
 @protocol HMICameraVideoFrameAnalyzer <NSObject>
 + (NSDictionary *)classHierarchyMap;
-- (HMICameraVideoFrameResult *)analyze:(HMICameraVideoFrame *)arg1 targetEventTypes:(long long)arg2 enableFaceClassification:(_Bool)arg3 sessionIdentifier:(NSUUID *)arg4 homeUUID:(NSUUID *)arg5 error:(id *)arg6;
-- (void)handleMotionDetection:(NSArray *)arg1 sessionPTS:(CDStruct_1b6d18a9)arg2 frameDimensions:(struct CGSize)arg3 sessionIdentifier:(NSUUID *)arg4;
+- (HMIAnalysisStateUpdate *)flushAndGetAnalysisStateUpdateForHome:(NSUUID *)arg1 enableFaceClassification:(_Bool)arg2;
+- (NSSet *)analyzePixelBuffer:(struct __CVBuffer *)arg1 regionOfInterest:(struct CGRect)arg2 error:(id *)arg3;
+- (HMICameraVideoFrameResult *)analyze:(HMICameraVideoFrame *)arg1 targetEventTypes:(long long)arg2 enableFaceClassification:(_Bool)arg3 homeUUID:(NSUUID *)arg4 error:(id *)arg5;
+- (void)handleMotionDetection:(NSArray *)arg1 inFrame:(struct opaqueCMSampleBuffer *)arg2;
 - (void)preAnalyze:(HMICameraVideoFrame *)arg1;
-- (id)initWithMediumConfidenceThresholds:(NSDictionary *)arg1 highConfidenceThresholds:(NSDictionary *)arg2 nmsConfiguration:(HMINMSConfiguration *)arg3 assetPath:(NSString *)arg4 error:(id *)arg5;
+- (id)initWithMediumConfidenceThresholds:(NSDictionary *)arg1 highConfidenceThresholds:(NSDictionary *)arg2 analyzerConfiguration:(HMIVideoAnalyzerConfiguration *)arg3 error:(id *)arg4;
 - (id)init;
 @end
 

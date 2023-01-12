@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 @interface STContentPrivacyViewModelCoordinator : NSObject <NSFetchedResultsControllerDelegate, STContentPrivacyViewModelCoordinator>
 {
     _Bool _isLocalDevice;
-    STContentPrivacyViewModel *_viewModel;
     id <STPersistenceControllerProtocol> _persistenceController;
     NSString *_organizationIdentifier;
     NSNumber *_userDSID;
@@ -25,11 +24,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_configurationPayloadsByType;
     NSArray *_fetchedResultsControllers;
     unsigned long long _numExpectedChanges;
+    STContentPrivacyViewModel *_viewModel;
 }
 
++ (id)_coreAnalyticsEventWithRestrictionsEnabled:(_Bool)arg1 valuesByRestriction:(id)arg2 userType:(unsigned long long)arg3 userIsManaged:(_Bool)arg4;
 + (id)_localDeviceRestrictions;
 + (id)_remoteDeviceRestrictions;
 - (void).cxx_destruct;
+@property(retain, nonatomic) STContentPrivacyViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property unsigned long long numExpectedChanges; // @synthesize numExpectedChanges=_numExpectedChanges;
 @property(retain, nonatomic) NSArray *fetchedResultsControllers; // @synthesize fetchedResultsControllers=_fetchedResultsControllers;
 @property(retain, nonatomic) NSMutableDictionary *configurationPayloadsByType; // @synthesize configurationPayloadsByType=_configurationPayloadsByType;
@@ -39,7 +41,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 @property(copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
 @property(readonly, nonatomic) id <STPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
-@property(retain, nonatomic) STContentPrivacyViewModel *viewModel; // @synthesize viewModel=_viewModel;
+- (void)_reportCoreAnalyticsEventForChangedCommunicationLimits:(id)arg1 userType:(unsigned long long)arg2 userIsRemote:(_Bool)arg3;
+- (void)_reportCoreAnalyticsEventWithRestrictionsEnabled:(_Bool)arg1 valuesByRestriction:(id)arg2 userType:(unsigned long long)arg3 userIsManaged:(_Bool)arg4;
+- (id)createValuesForRestrictions:(id)arg1 multiplayerRestriction:(id)arg2;
 - (void)saveRestrictionValue:(id)arg1 forItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveValuesForRestrictions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveCommunicationLimits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

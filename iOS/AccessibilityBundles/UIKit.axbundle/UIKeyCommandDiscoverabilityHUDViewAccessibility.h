@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
-
 @interface UIKeyCommandDiscoverabilityHUDViewAccessibility
 {
 }
@@ -15,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
 - (_Bool)accessibilityPerformEscape;
-@property(retain, nonatomic, setter=_accessibilitySetCachedHudElements:) NSMutableArray *_accessibilityCachedHudElements;
 
 @end
 

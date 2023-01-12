@@ -12,13 +12,17 @@ __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles24RSSArticleViewController : UIViewController
 {
     MISSING_TYPE *identifier;
+    MISSING_TYPE *pageDelegate;
     MISSING_TYPE *article;
     MISSING_TYPE *contentContext;
+    MISSING_TYPE *webViewControllerFactory;
     MISSING_TYPE *contentViewController;
     MISSING_TYPE *contentBackgroundColor;
     MISSING_TYPE *observableScrollView;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
+    MISSING_TYPE *keyCommandManager;
+    MISSING_TYPE *completedReadingDebouncer;
 }
 
 - (void).cxx_destruct;

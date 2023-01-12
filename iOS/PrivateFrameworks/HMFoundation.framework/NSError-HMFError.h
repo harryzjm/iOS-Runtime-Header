@@ -11,6 +11,7 @@
 @class NSArray, NSString;
 
 @interface NSError (HMFError) <HMFObject>
++ (id)hmfUnspecifiedError;
 + (id)hmfErrorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)hmfErrorWithCode:(long long)arg1;
 + (id)hmfErrorWithCode:(long long)arg1 description:(id)arg2 reason:(id)arg3 suggestion:(id)arg4;

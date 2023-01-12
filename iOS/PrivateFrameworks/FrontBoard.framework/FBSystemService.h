@@ -23,6 +23,7 @@
     FBServiceFacilityServer *_server;
 }
 
++ (id)sharedInstanceIfExists;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) FBServiceFacilityServer *server; // @synthesize server=_server;
@@ -41,8 +42,8 @@
 - (void)_reallyActivateApplication:(id)arg1 requestID:(id)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 isTrusted:(_Bool)arg6 sequenceNumber:(unsigned long long)arg7 cacheGUID:(id)arg8 ourSequenceNumber:(unsigned long long)arg9 ourCacheGUID:(id)arg10 withResult:(CDUnknownBlockType)arg11;
 - (_Bool)_shouldPendRequestForClientSequenceNumber:(unsigned long long)arg1 clientCacheGUID:(id)arg2 ourSequenceNumber:(unsigned long long)arg3 ourCacheGUID:(id)arg4;
 - (void)_activateBundleID:(id)arg1 requestID:(id)arg2 isTrusted:(_Bool)arg3 options:(id)arg4 source:(id)arg5 originalSource:(id)arg6 withResult:(CDUnknownBlockType)arg7;
-- (void)terminateApplicationGroup:(long long)arg1 forReason:(long long)arg2 andReport:(_Bool)arg3 withDescription:(id)arg4 source:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)terminateApplication:(id)arg1 forReason:(long long)arg2 andReport:(_Bool)arg3 withDescription:(id)arg4 source:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)terminateApplicationGroup:(long long)arg1 forReason:(long long)arg2 andReport:(_Bool)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)terminateApplication:(id)arg1 forReason:(long long)arg2 andReport:(_Bool)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_terminateProcesses:(id)arg1 forReason:(long long)arg2 andReport:(_Bool)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)exitAndRelaunch:(_Bool)arg1 withOptions:(unsigned long long)arg2;
 - (void)setPendingExit:(_Bool)arg1;
@@ -58,6 +59,7 @@
 - (void)shutdownWithOptions:(unsigned long long)arg1 forSource:(long long)arg2;
 - (void)shutdownAndReboot:(_Bool)arg1;
 - (void)dealloc;
+- (id)init;
 - (id)initWithQueue:(id)arg1;
 
 // Remaining properties

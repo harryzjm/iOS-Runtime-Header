@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class PKAccount, PKBusinessChatController, PKTransactionSource, UIViewController;
+@class PKAccount, PKAccountUserCollection, PKBusinessChatController, PKTransactionSourceCollection, UIViewController;
 @protocol PKAccountBillPaymentObserver, PKAccountServiceAccountResolutionControllerDelegate;
 
 @interface PKAccountServiceAccountResolutionController : NSObject
 {
     PKBusinessChatController *_businessChatController;
     PKAccount *_account;
-    PKTransactionSource *_transactionSource;
+    PKAccountUserCollection *_accountUserCollection;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     id <PKAccountServiceAccountResolutionControllerDelegate> _delegate;
     id <PKAccountBillPaymentObserver> _billPaymentObserver;
     UIViewController *_presentingViewController;
@@ -23,7 +24,8 @@
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(nonatomic) __weak id <PKAccountBillPaymentObserver> billPaymentObserver; // @synthesize billPaymentObserver=_billPaymentObserver;
 @property(nonatomic) __weak id <PKAccountServiceAccountResolutionControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(retain, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
+@property(retain, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
 - (void)_openBusinessChatWithContext:(id)arg1;
 - (void)_callIssuer;
@@ -32,7 +34,7 @@
 - (void)_presentViewController:(id)arg1;
 - (void)_presentAccountServiceAction:(unsigned long long)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentFlowForAccountResolution:(unsigned long long)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithAccount:(id)arg1 transactionSource:(id)arg2;
+- (id)initWithAccount:(id)arg1 accountUserCollection:(id)arg2 transactionSourceCollection:(id)arg3;
 
 @end
 

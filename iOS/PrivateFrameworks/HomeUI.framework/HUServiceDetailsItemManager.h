@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUServiceDetailsControlAndCharacteristicStateItemModuleDelegate-Protocol.h>
 
-@class ACAccount, HFAccessoryInfoDetailsItemProvider, HFAssociatedServiceTypeOptionItemProvider, HFItem, HFItemBuilder, HFItemProvider, HFRemoteControlItemModule, HFSelectedRoomItemProvider, HFStaticItemProvider, HMAccessory, HMHome, HUAccessoryDebugModule, HUAccessoryServicesItemModule, HUAccessorySettingsItemModule, HUAssociatedSceneAndTriggerModule, HUAvailableRelatedTriggerItemModule, HUFirmwareUpdateItemProvider, HUInputSourceItemModule, HULinkedApplicationItemProvider, HUNameItemModule, HUServiceDetailsControlAndCharacteristicStateItemModule, HUServiceDetailsProgrammableSwitchItemModule, HUSoftwareUpdateItemModule, HUTelevisionSettingsItemModule, HUValveItemModule, NSArray, NSString;
+@class ACAccount, HFAccessoryInfoDetailsItemProvider, HFAssociatedServiceTypeOptionItemProvider, HFItem, HFItemBuilder, HFItemProvider, HFRemoteControlItemModule, HFSelectedRoomItemProvider, HFStaticItemProvider, HMAccessory, HMAccessorySettingsController, HMHome, HMHomeManager, HUAccessoryDebugModule, HUAccessoryServicesItemModule, HUAccessorySettingsItemModule, HUAssociatedSceneAndTriggerModule, HUAvailableRelatedTriggerItemModule, HUFirmwareUpdateItemProvider, HUInputSourceItemModule, HULinkedApplicationItemProvider, HUNameItemModule, HUServiceDetailsControlAndCharacteristicStateItemModule, HUServiceDetailsProgrammableSwitchItemModule, HUSoftwareUpdateItemModule, HUTelevisionSettingsItemModule, HUValveItemModule, NSArray, NSString;
 @protocol HFHomeKitObject, HFItemBuilderItem, HFServiceLikeBuilder, HFServiceLikeItem, HUServiceDetailsItemManagerDelegate;
 
 @interface HUServiceDetailsItemManager : HFItemManager <HUServiceDetailsControlAndCharacteristicStateItemModuleDelegate>
@@ -49,10 +49,14 @@
     HFItem *_favoriteItem;
     HFItem *_alarmItem;
     HFItem *_statusAndNotificationItem;
+    HFItem *_connectedEcosystemsItem;
     HFItem *_separateTileItem;
+    HFItem *_homeTheaterAudioOutputItem;
+    NSArray *_homeKitAccessorySettingsModules;
     NSArray *_supportedVoiceRecognitionLanguages;
     ACAccount *_homeMediaAccount;
     HFItem *_removeItem;
+    HFItem *_primaryUserItem;
     HFItem *_resetItem;
     HFItem *_accessoryItem;
     HFItem *_audioSettingsItem;
@@ -65,6 +69,8 @@
     HFItem *_collectDiagnosticsItem;
     HFItem *_internalDebuggingItem;
     HFItem *_restartItem;
+    HFItem *_lockPinCodesItem;
+    HFItem *_lockAddHomeKeyToWalletItem;
     HMHome *_overrideHome;
     HUServiceDetailsProgrammableSwitchItemModule *_programmableSwitchItemModule;
     HUServiceDetailsControlAndCharacteristicStateItemModule *_serviceDetailsControlStateAndCharacteristicItemModule;
@@ -74,6 +80,7 @@
     NSArray *_relatedTriggerSections;
     NSArray *_programmableSwitchSections;
     NSArray *_accessorySettingsSections;
+    NSArray *_homeKitAccessorySettingsSections;
     NSArray *_softwareUpdateSections;
     NSArray *_valveEditorSections;
     NSArray *_sceneAndTriggerSections;
@@ -85,22 +92,28 @@
     NSArray *_cameraActivityZonesSections;
     NSArray *_doorbellMuteSections;
     NSArray *_collectDiagnosticsSections;
-    NSArray *_lockAuthenticatedNFCSections;
+    NSArray *_lockAddHomeKeyToWalletSections;
+    NSArray *_homeTheaterAudioSections;
     HFAssociatedServiceTypeOptionItemProvider *_associatedServiceTypeOptionItemProvider;
     HFStaticItemProvider *_staticItemProvider;
     HULinkedApplicationItemProvider *_linkedApplicationItemProvider;
     HUFirmwareUpdateItemProvider *_firmwareUpdateItemProvider;
+    HMHomeManager *_homeManager;
+    HMAccessorySettingsController *_settingsController;
     id <HUServiceDetailsItemManagerDelegate> _serviceDetailsDelegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HUServiceDetailsItemManagerDelegate> serviceDetailsDelegate; // @synthesize serviceDetailsDelegate=_serviceDetailsDelegate;
+@property(retain, nonatomic) HMAccessorySettingsController *settingsController; // @synthesize settingsController=_settingsController;
+@property(retain, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(nonatomic) _Bool groupedAccessoryReachableOverRapport; // @synthesize groupedAccessoryReachableOverRapport=_groupedAccessoryReachableOverRapport;
 @property(retain, nonatomic) HUFirmwareUpdateItemProvider *firmwareUpdateItemProvider; // @synthesize firmwareUpdateItemProvider=_firmwareUpdateItemProvider;
 @property(retain, nonatomic) HULinkedApplicationItemProvider *linkedApplicationItemProvider; // @synthesize linkedApplicationItemProvider=_linkedApplicationItemProvider;
 @property(retain, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property(retain, nonatomic) HFAssociatedServiceTypeOptionItemProvider *associatedServiceTypeOptionItemProvider; // @synthesize associatedServiceTypeOptionItemProvider=_associatedServiceTypeOptionItemProvider;
-@property(retain, nonatomic) NSArray *lockAuthenticatedNFCSections; // @synthesize lockAuthenticatedNFCSections=_lockAuthenticatedNFCSections;
+@property(retain, nonatomic) NSArray *homeTheaterAudioSections; // @synthesize homeTheaterAudioSections=_homeTheaterAudioSections;
+@property(retain, nonatomic) NSArray *lockAddHomeKeyToWalletSections; // @synthesize lockAddHomeKeyToWalletSections=_lockAddHomeKeyToWalletSections;
 @property(retain, nonatomic) NSArray *collectDiagnosticsSections; // @synthesize collectDiagnosticsSections=_collectDiagnosticsSections;
 @property(retain, nonatomic) NSArray *doorbellMuteSections; // @synthesize doorbellMuteSections=_doorbellMuteSections;
 @property(retain, nonatomic) NSArray *cameraActivityZonesSections; // @synthesize cameraActivityZonesSections=_cameraActivityZonesSections;
@@ -112,6 +125,7 @@
 @property(retain, nonatomic) NSArray *sceneAndTriggerSections; // @synthesize sceneAndTriggerSections=_sceneAndTriggerSections;
 @property(retain, nonatomic) NSArray *valveEditorSections; // @synthesize valveEditorSections=_valveEditorSections;
 @property(retain, nonatomic) NSArray *softwareUpdateSections; // @synthesize softwareUpdateSections=_softwareUpdateSections;
+@property(retain, nonatomic) NSArray *homeKitAccessorySettingsSections; // @synthesize homeKitAccessorySettingsSections=_homeKitAccessorySettingsSections;
 @property(retain, nonatomic) NSArray *accessorySettingsSections; // @synthesize accessorySettingsSections=_accessorySettingsSections;
 @property(retain, nonatomic) NSArray *programmableSwitchSections; // @synthesize programmableSwitchSections=_programmableSwitchSections;
 @property(retain, nonatomic) NSArray *relatedTriggerSections; // @synthesize relatedTriggerSections=_relatedTriggerSections;
@@ -121,6 +135,8 @@
 @property(retain, nonatomic) HUServiceDetailsControlAndCharacteristicStateItemModule *serviceDetailsControlStateAndCharacteristicItemModule; // @synthesize serviceDetailsControlStateAndCharacteristicItemModule=_serviceDetailsControlStateAndCharacteristicItemModule;
 @property(retain, nonatomic) HUServiceDetailsProgrammableSwitchItemModule *programmableSwitchItemModule; // @synthesize programmableSwitchItemModule=_programmableSwitchItemModule;
 @property(readonly, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
+@property(retain, nonatomic) HFItem *lockAddHomeKeyToWalletItem; // @synthesize lockAddHomeKeyToWalletItem=_lockAddHomeKeyToWalletItem;
+@property(retain, nonatomic) HFItem *lockPinCodesItem; // @synthesize lockPinCodesItem=_lockPinCodesItem;
 @property(nonatomic) _Bool showAssociatedServiceTypeList; // @synthesize showAssociatedServiceTypeList=_showAssociatedServiceTypeList;
 @property(nonatomic) _Bool showRoomsList; // @synthesize showRoomsList=_showRoomsList;
 @property(nonatomic) _Bool shouldHideSeparateTileItem; // @synthesize shouldHideSeparateTileItem=_shouldHideSeparateTileItem;
@@ -137,10 +153,14 @@
 @property(retain, nonatomic) HFItem *audioSettingsItem; // @synthesize audioSettingsItem=_audioSettingsItem;
 @property(retain, nonatomic) HFItem *accessoryItem; // @synthesize accessoryItem=_accessoryItem;
 @property(retain, nonatomic) HFItem *resetItem; // @synthesize resetItem=_resetItem;
+@property(readonly, nonatomic) HFItem *primaryUserItem; // @synthesize primaryUserItem=_primaryUserItem;
 @property(retain, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
 @property(retain, nonatomic) ACAccount *homeMediaAccount; // @synthesize homeMediaAccount=_homeMediaAccount;
 @property(retain, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
+@property(retain, nonatomic) NSArray *homeKitAccessorySettingsModules; // @synthesize homeKitAccessorySettingsModules=_homeKitAccessorySettingsModules;
+@property(retain, nonatomic) HFItem *homeTheaterAudioOutputItem; // @synthesize homeTheaterAudioOutputItem=_homeTheaterAudioOutputItem;
 @property(retain, nonatomic) HFItem *separateTileItem; // @synthesize separateTileItem=_separateTileItem;
+@property(retain, nonatomic) HFItem *connectedEcosystemsItem; // @synthesize connectedEcosystemsItem=_connectedEcosystemsItem;
 @property(retain, nonatomic) HFItem *statusAndNotificationItem; // @synthesize statusAndNotificationItem=_statusAndNotificationItem;
 @property(retain, nonatomic) HFItem *alarmItem; // @synthesize alarmItem=_alarmItem;
 @property(retain, nonatomic) HFItem *favoriteItem; // @synthesize favoriteItem=_favoriteItem;
@@ -172,8 +192,8 @@
 @property(retain, nonatomic) HFItemProvider *existingRoomItemProvider; // @synthesize existingRoomItemProvider=_existingRoomItemProvider;
 @property(retain, nonatomic) HFItemBuilder<HFServiceLikeBuilder> *serviceLikeBuilder; // @synthesize serviceLikeBuilder=_serviceLikeBuilder;
 @property(readonly, nonatomic) HFItem<HFItemBuilderItem> *builderItem; // @synthesize builderItem=_builderItem;
-- (void)settingsDidUpdate:(id)arg1;
-- (void)settings:(id)arg1 didUpdateSetting:(id)arg2;
+- (id)_itemsToUpdateWhenApplicationDidBecomeActive;
+- (id)_getHomeTheaterAppleTVForSourceItem;
 - (_Bool)_shouldShowSplitAccountUI;
 - (_Bool)_shouldShowAccessoryInfoItems;
 - (void)accessoryReachableOverRapport:(_Bool)arg1;
@@ -201,9 +221,11 @@
 - (_Bool)controlAndCharacteristicStateItemModule:(id)arg1 shouldShowControlPanelItem:(id)arg2;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
 - (id)_allItemsForSectionIdentifier:(id)arg1;
+- (id)_transformedUpdateOutcomeForItem:(id)arg1 proposedOutcome:(id)arg2;
 - (id)_itemsToHideInSet:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
+- (void)resetServiceLikeItemBuilder;
 - (id)_buildItemModulesForHome:(id)arg1;
 - (void)updateDoorbellChimeMuteMode:(_Bool)arg1;
 - (void)updateCameraNightMode:(_Bool)arg1;
@@ -227,6 +249,7 @@
 @property(readonly, nonatomic) _Bool isItemGroup;
 - (void)_unregisterForExternalUpdates;
 - (void)_registerForExternalUpdates;
+- (void)tearDown;
 @property(readonly, nonatomic) HFItem<HFServiceLikeItem> *sourceServiceItem;
 - (id)_homeFuture;
 - (id)initWithServiceItem:(id)arg1 delegate:(id)arg2;

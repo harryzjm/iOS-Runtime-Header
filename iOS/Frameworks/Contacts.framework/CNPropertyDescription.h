@@ -20,6 +20,7 @@
     _Bool _isNonnull;
 }
 
++ (id)os_log;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isNonnull; // @synthesize isNonnull=_isNonnull;

@@ -8,7 +8,7 @@
 
 #import <SpringBoardHome/SBHLegibility-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, SBIcon, SBIconView, UILabel, UIView, _UILegibilitySettings;
+@class NSArray, NSString, SBIcon, SBIconView, UILabel, UIView, _UILegibilitySettings;
 @protocol SBIconLabelAccessoryView;
 
 @interface SBHIconTableViewCell : UITableViewCell <SBHLegibility>
@@ -25,14 +25,12 @@
     UIView *_iconViewContainerView;
     UIView *_labelContainerView;
     NSArray *_iconViewContainerViewConstraints;
-    NSLayoutConstraint *_imageLeadingConstraint;
 }
 
-+ (struct UIEdgeInsets)defaultTableViewCellSeperatorInsetForIconImageInfo:(struct SBIconImageInfo)arg1 referenceLayout:(id)arg2;
-+ (double)leadingImageMarginForIconImageInfo:(struct SBIconImageInfo)arg1 referenceLayout:(id)arg2;
++ (struct UIEdgeInsets)defaultTableViewCellSeparatorInsetsForIconImageInfo:(struct SBIconImageInfo)arg1;
 + (double)defaultTableViewCellHeightForIconImageInfo:(struct SBIconImageInfo)arg1;
++ (double)defaultTableViewCellHorizontalMargin;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSLayoutConstraint *imageLeadingConstraint; // @synthesize imageLeadingConstraint=_imageLeadingConstraint;
 @property(copy, nonatomic) NSArray *iconViewContainerViewConstraints; // @synthesize iconViewContainerViewConstraints=_iconViewContainerViewConstraints;
 @property(readonly, nonatomic) UIView *labelContainerView; // @synthesize labelContainerView=_labelContainerView;
 @property(readonly, nonatomic) UIView *iconViewContainerView; // @synthesize iconViewContainerView=_iconViewContainerView;

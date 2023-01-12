@@ -6,9 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
+@class UIView;
 @protocol UIScenePresenter;
 
 @protocol UIScenePresentation <NSObject>
+@property(retain, nonatomic) UIView *backgroundView;
 @property(readonly, nonatomic) __weak id <UIScenePresenter> presenter;
 @end
 

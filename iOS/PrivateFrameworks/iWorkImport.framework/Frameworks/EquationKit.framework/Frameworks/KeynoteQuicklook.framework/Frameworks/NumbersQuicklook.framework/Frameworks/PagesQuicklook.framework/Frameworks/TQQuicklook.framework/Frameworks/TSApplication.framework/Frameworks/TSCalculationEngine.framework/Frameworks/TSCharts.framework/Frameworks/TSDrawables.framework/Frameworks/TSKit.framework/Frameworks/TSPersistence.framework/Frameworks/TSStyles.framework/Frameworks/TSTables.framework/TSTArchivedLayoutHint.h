@@ -15,11 +15,11 @@
     TSTLayoutHint *mHint;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSTLayoutHint *hint; // @synthesize hint=mHint;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)initWithContext:(id)arg1 hint:(id)arg2;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

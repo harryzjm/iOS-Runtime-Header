@@ -12,12 +12,13 @@
 {
 }
 
-+ (id)managedObjectWithLatitude:(double)arg1 longitude:(double)arg2 source:(long long)arg3 date:(id)arg4 inManagedObjectContext:(id)arg5;
++ (id)managedObjectWithLatitude:(double)arg1 longitude:(double)arg2 horizontalUncertainty:(double)arg3 source:(long long)arg4 date:(id)arg5 inManagedObjectContext:(id)arg6;
 + (id)managedObjectWithHint:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchRequest;
 
 // Remaining properties
 @property(copy, nonatomic) NSDate *date; // @dynamic date;
+@property(nonatomic) double horizontalUncertainty; // @dynamic horizontalUncertainty;
 @property(nonatomic) double latitude; // @dynamic latitude;
 @property(nonatomic) double longitude; // @dynamic longitude;
 @property(nonatomic) long long source; // @dynamic source;

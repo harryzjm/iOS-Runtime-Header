@@ -6,7 +6,10 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol PGMemoryProtocol <NSObject>
+- (NSString *)notificationQualityString;
 - (_Bool)isGreat;
 - (_Bool)isStellar;
 - (_Bool)isMustSee;

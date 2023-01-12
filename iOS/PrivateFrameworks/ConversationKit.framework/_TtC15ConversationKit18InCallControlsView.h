@@ -15,8 +15,10 @@
     MISSING_TYPE *muteButton;
     MISSING_TYPE *flipCameraButton;
     MISSING_TYPE *joinLeaveButton;
+    MISSING_TYPE *screenShareButton;
     MISSING_TYPE *audioRouteButton;
     MISSING_TYPE *toggleCameraButton;
+    MISSING_TYPE *toggleCinematicFramingButton;
     MISSING_TYPE *buttonsByRow;
     MISSING_TYPE *joinLeaveConfiguration;
     MISSING_TYPE *buttonLabelWidthConstraints;

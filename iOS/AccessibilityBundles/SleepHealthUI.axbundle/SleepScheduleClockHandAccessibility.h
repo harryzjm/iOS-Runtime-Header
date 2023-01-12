@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axEditCell;
 - (id)accessibilityPath;
 - (void)_axSpeakClockAlertIfNeeded;
 - (id)decrementComponents:(id)arg1;

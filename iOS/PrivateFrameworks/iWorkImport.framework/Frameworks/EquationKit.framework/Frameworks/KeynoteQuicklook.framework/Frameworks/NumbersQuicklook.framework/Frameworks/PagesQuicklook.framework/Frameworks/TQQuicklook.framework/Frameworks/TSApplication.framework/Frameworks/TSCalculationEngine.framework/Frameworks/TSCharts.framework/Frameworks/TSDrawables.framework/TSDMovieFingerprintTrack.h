@@ -40,8 +40,8 @@
 @property(readonly, nonatomic) struct CGSize naturalSize; // @synthesize naturalSize=_naturalSize;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
-- (void)saveToMessage:(struct MovieFingerprintTrack *)arg1 archiver:(id)arg2;
-- (id)initFromMessage:(const struct MovieFingerprintTrack *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (id)initFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) float preferredVolume;
 @property(readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property(readonly, nonatomic) NSString *extendedLanguageTag;

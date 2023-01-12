@@ -26,9 +26,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly) double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
-- (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+- (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;
-@property(readonly, nonatomic) struct Box *resultsBox;
+@property(readonly, nonatomic) void *resultsBox;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
 - (id)initWithAudioFile:(id)arg1 overlapFactor:(double)arg2;
 

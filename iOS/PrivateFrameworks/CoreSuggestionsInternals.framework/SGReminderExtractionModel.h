@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSRegularExpression, _PASNotificationToken;
+@class NSDictionary, _PASLock, _PASNotificationToken;
 
 @interface SGReminderExtractionModel
 {
@@ -13,7 +13,7 @@
     NSDictionary *_inputTokenMapping;
     NSDictionary *_outputConfig;
     NSDictionary *_reminderOverrides;
-    NSRegularExpression *_whitelistRegex;
+    _PASLock *_lock;
 }
 
 + (id)enrichTaggedCharacterRangesWithModelOutput:(id)arg1 usingInputCharacterRanges:(id)arg2;

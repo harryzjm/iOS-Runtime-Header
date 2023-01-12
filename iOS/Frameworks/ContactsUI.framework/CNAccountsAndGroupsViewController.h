@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <CNAccountsAndGroupsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) CNAccountsAndGroupsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 - (void)toggleSelectionOfItem:(id)arg1;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)done:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)applicationDidResume;

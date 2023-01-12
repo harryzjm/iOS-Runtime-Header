@@ -17,6 +17,7 @@
     NSMutableArray *_footerPinnableAttributes;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *footerPinnableAttributes; // @synthesize footerPinnableAttributes=_footerPinnableAttributes;
 @property(retain, nonatomic) NSMutableArray *headerPinnableAttributes; // @synthesize headerPinnableAttributes=_headerPinnableAttributes;
 @property(nonatomic) unsigned long long filteredTotalItemCount; // @synthesize filteredTotalItemCount=_filteredTotalItemCount;
@@ -28,7 +29,6 @@
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
 - (id)localDescription;
-- (void)dealloc;
 - (id)init;
 
 @end

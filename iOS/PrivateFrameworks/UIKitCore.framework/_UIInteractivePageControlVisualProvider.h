@@ -5,14 +5,14 @@
 //
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIControlEventsGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIPageIndicatorFeedDelegate-Protocol.h>
 #import <UIKitCore/_UIPageIndicatorStoreDelegate-Protocol.h>
-#import <UIKitCore/_UITrackingGestureRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, CAMediaTimingFunction, NSString, UIDelayedAction, UIGestureRecognizer, UIImpactFeedbackGenerator, UISelectionFeedbackGenerator, UIViewFloatAnimatableProperty, UIVisualEffectView, _UIPageControlContentView, _UIPageControlIndicatorContentView, _UIPageControlInteractor, _UIPageIndicatorFeed, _UIPageIndicatorStore;
+@class CADisplayLink, CAMediaTimingFunction, NSString, UIDelayedAction, UIImpactFeedbackGenerator, UILongPressGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer, UIViewFloatAnimatableProperty, UIVisualEffectView, _UIPageControlContentView, _UIPageControlIndicatorContentView, _UIPageControlInteractor, _UIPageIndicatorFeed, _UIPageIndicatorStore;
 
 __attribute__((visibility("hidden")))
-@interface _UIInteractivePageControlVisualProvider <_UIPageIndicatorFeedDelegate, _UIPageIndicatorStoreDelegate, UIGestureRecognizerDelegate, _UITrackingGestureRecognizerDelegate>
+@interface _UIInteractivePageControlVisualProvider <_UIPageIndicatorFeedDelegate, _UIPageIndicatorStoreDelegate, UIGestureRecognizerDelegate, _UIControlEventsGestureRecognizerDelegate>
 {
     struct {
         unsigned int scrubbing:1;
@@ -31,7 +31,8 @@ __attribute__((visibility("hidden")))
     _UIPageControlIndicatorContentView *_indicatorContentView;
     UIVisualEffectView *_backgroundView;
     CADisplayLink *_displayLink;
-    UIGestureRecognizer *_scrubbingGestureRecognizer;
+    UITapGestureRecognizer *_tapGestureRecognizer;
+    UILongPressGestureRecognizer *_scrubbingGestureRecognizer;
     UIDelayedAction *_successiveTapAction;
     long long _previousMoveDirection;
     _UIPageIndicatorFeed *_indicatorFeed;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
     UIViewFloatAnimatableProperty *_continuousDisplayedPage;
     UIViewFloatAnimatableProperty *_scrubProgress;
     CAMediaTimingFunction *_indicatorTransformCurve;
+    long long _resolvedDirection;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
     UIImpactFeedbackGenerator *_joggingFeedbackGenerator;
     struct CGPoint _previousTouchLocation;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImpactFeedbackGenerator *joggingFeedbackGenerator; // @synthesize joggingFeedbackGenerator=_joggingFeedbackGenerator;
 @property(retain, nonatomic) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
+@property(readonly, nonatomic) long long resolvedDirection; // @synthesize resolvedDirection=_resolvedDirection;
 @property(retain, nonatomic) CAMediaTimingFunction *indicatorTransformCurve; // @synthesize indicatorTransformCurve=_indicatorTransformCurve;
 @property(retain, nonatomic) UIViewFloatAnimatableProperty *scrubProgress; // @synthesize scrubProgress=_scrubProgress;
 @property(retain, nonatomic) UIViewFloatAnimatableProperty *continuousDisplayedPage; // @synthesize continuousDisplayedPage=_continuousDisplayedPage;
@@ -57,68 +60,44 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint previousTouchLocation; // @synthesize previousTouchLocation=_previousTouchLocation;
 @property(nonatomic) long long previousMoveDirection; // @synthesize previousMoveDirection=_previousMoveDirection;
 @property(retain, nonatomic) UIDelayedAction *successiveTapAction; // @synthesize successiveTapAction=_successiveTapAction;
-@property(retain, nonatomic) UIGestureRecognizer *scrubbingGestureRecognizer; // @synthesize scrubbingGestureRecognizer=_scrubbingGestureRecognizer;
+@property(retain, nonatomic) UILongPressGestureRecognizer *scrubbingGestureRecognizer; // @synthesize scrubbingGestureRecognizer=_scrubbingGestureRecognizer;
+@property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) _UIPageControlIndicatorContentView *indicatorContentView; // @synthesize indicatorContentView=_indicatorContentView;
 @property(retain, nonatomic) _UIPageControlContentView *contentView; // @synthesize contentView=_contentView;
-- (id)_visibleRightIndicator;
-- (id)_visibleLeftIndicator;
-- (void)_transitionIndicatorForPage:(long long)arg1 toEnabled:(_Bool)arg2;
-- (void)animateTransitionIndicatorsFromPage:(long long)arg1 toPage:(long long)arg2 ripple:(_Bool)arg3;
-- (id)_indicatorColorForEnabled:(_Bool)arg1;
-- (id)_indicatorColorForPage:(long long)arg1;
-- (_Bool)_currentDisplayModeHasContentPadding;
-- (void)_updateCurrentPlatterMode;
 @property(nonatomic) _Bool isPlatterExpanded;
 @property(nonatomic) _Bool isScrubbing;
-- (double)_displayLinkTickThresholdForTouchPage:(double)arg1 scrubPage:(double)arg2;
-- (_Bool)_isPageWithinValidJoggingOffset:(double)arg1;
 - (void)displayLinkTicked:(id)arg1;
 - (void)didScrubPageControl:(id)arg1;
 - (void)didTapPageControl:(id)arg1;
 - (void)resetSuccessiveTapInfo;
-- (void)_resetSuccessiveTapAction;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (void)trackingGestureRecognizer:(id)arg1 recognizedControlEvent:(unsigned long long)arg2 withEvent:(id)arg3;
-- (void)_updateCurrentPage:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (double)_currentIndicatorContentViewOffsetForMovingDirection:(long long)arg1;
-- (double)_preciseIndicatorPageForPoint:(struct CGPoint)arg1;
-- (long long)_numberOfJoggingIndicators;
-- (double)_currentJogDistance;
+- (void)controlEventsGestureRecognizer:(id)arg1 recognizedControlEvent:(unsigned long long)arg2 withEvent:(id)arg3;
 - (id)preferredIndicatorImage;
 - (void)setPreferredIndicatorImage:(id)arg1;
 - (void)setCustomIndicatorImage:(id)arg1 forPage:(long long)arg2;
 - (id)customIndicatorImageForPage:(long long)arg1;
-- (void)_updateReuseQueue;
 - (void)configureIndicator:(id)arg1 atPage:(long long)arg2;
 - (id)indicatorImageForPage:(long long)arg1;
 - (unsigned long long)maxVisibleIndicators;
-- (unsigned long long)defaultVisibleIndicators;
 - (struct CGSize)indicatorSizeForImage:(id)arg1;
 - (struct CGSize)sizeForNumberOfPages:(long long)arg1;
-- (_Bool)_isPageWithinPermittedDisplayedRange:(long long)arg1;
-- (double)_indicatorScaleForPage:(long long)arg1;
 - (void)invalidateIndicators;
 - (void)layoutSubviews;
-- (double)retargetedStartIndexForNumberOfVisibleIndicators:(long long)arg1;
-- (void)_layoutImmediately;
-- (void)_setDisplayedPage:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateDisplayedPageToCurrentPage;
 - (void)didUpdateCurrentPageIndicatorTintColor;
 - (void)didUpdatePageIndicatorTintColor;
-- (void)updateScrubbingGestureRecognizer;
-- (void)didUpdateAllowsContinuousInteraction;
+- (void)didUpdateInteractionTypeAvailability;
 - (void)didUpdateCustomLayoutValues;
+- (void)didUpdateBackgroundEffect;
 - (void)didUpdateBackgroundStyle;
 - (void)didUpdateNumberOfPages;
 - (void)traitCollectionDidChangeOnSubtree:(id)arg1;
+- (void)didUpdateLayoutDirection;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (struct CGSize)_intrinsicContentSizeWithPageControlSize:(struct CGSize)arg1;
-- (long long)_numberOfVisibleIndicatorsFittingContentWidthForStartIndex:(long long)arg1;
-- (double)_defaultContentWidthForNumberOfIndicators:(long long)arg1;
 - (_Bool)shouldDisableTouchTracking;
 - (void)pruneArchivedSubviews:(id)arg1;
 - (void)prepare;

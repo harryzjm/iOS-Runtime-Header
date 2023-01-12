@@ -19,7 +19,7 @@
 @property(copy, nonatomic) FCJSONRecordSourceSchema *schema; // @synthesize schema=_schema;
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
 - (id)keyValueRepresentationOfRecord:(id)arg1;
-- (id)recordIDPrefix;
+- (id)recordIDPrefixes;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (unsigned long long)lowThresholdDataSizeLimit;
 - (unsigned long long)storeVersion;

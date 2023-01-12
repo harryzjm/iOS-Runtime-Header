@@ -18,6 +18,7 @@
     NSMutableSet *_suggestedAssetsFromPreviousBatch;
     NSMutableSet *_candidateAssetsFromPreviousBatch;
     NSString *_meNodeLocalIdentifier;
+    double _topTierAestheticScoreThreshold;
 }
 
 + (unsigned long long)randomIntegerWithUpperBound:(unsigned long long)arg1 seed:(unsigned int)arg2;
@@ -32,8 +33,8 @@
 - (id)_candidateByAssetUUIDsFromAssets:(id)arg1;
 - (id)_eligibleAssetUUIDsWithProgress:(CDUnknownBlockType)arg1;
 - (id)allInterestingMomentsFromGraph:(id)arg1 progress:(CDUnknownBlockType)arg2;
-- (_Bool)isMomentNodeInteresting:(id)arg1;
-- (id)highlightedAssetPredicate;
+- (_Bool)isMomentNodeInteresting:(id)arg1 withNeighborScoreComputer:(id)arg2;
+- (id)highlightedAssetInternalPredicate;
 - (id)_batchOfRandomAssetsWithCount:(unsigned long long)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)_fetchVerifiedPersonUUIDsByAssetUUIds:(id)arg1;
 - (unsigned long long)_longTailScoreWithAsset:(id)arg1 withAdditionalOptions:(id)arg2;
@@ -43,6 +44,7 @@
 - (void)reset;
 - (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;
 - (void)startSuggestingWithOptions:(id)arg1;
+- (void)captureInformationFromGraph:(id)arg1;
 - (_Bool)canGenerateSuggestionWithAsset:(id)arg1 onDate:(id)arg2;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 

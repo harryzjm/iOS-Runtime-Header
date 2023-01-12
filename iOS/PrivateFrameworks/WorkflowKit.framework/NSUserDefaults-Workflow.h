@@ -7,7 +7,10 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (Workflow)
-+ (_Bool)useNewLayout;
++ (_Bool)kettleEnabled;
++ (_Bool)signedShortcutEnabled;
++ (_Bool)contextualSuggestionsEnabled;
++ (_Bool)uiConsistencyEnabled;
 + (id)siriAssistantUserDefaults;
 + (id)systemShortcutsUserDefaults;
 + (id)workflowUserDefaults;

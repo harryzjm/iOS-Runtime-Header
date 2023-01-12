@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_tryRetain;
 - (oneway void)release;
 - (id)retain;
+- (id)description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)removeAllObjects;

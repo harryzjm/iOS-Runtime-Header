@@ -15,6 +15,7 @@
 }
 
 - (id)succinctDescriptionBuilder;
+@property(nonatomic, getter=sb_isStashedPIP, setter=sb_setStashedPIP:) _Bool sb_stashedPIP;
 @property(nonatomic, getter=sb_isTransitioning, setter=sb_setTransitioning:) _Bool sb_transitioning;
 @property(nonatomic) long long layoutRole;
 @property(readonly, nonatomic, getter=isSpringBoardElement) _Bool springBoardElement;

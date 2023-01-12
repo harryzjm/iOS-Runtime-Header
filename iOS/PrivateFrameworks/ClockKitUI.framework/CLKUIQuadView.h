@@ -41,9 +41,13 @@
 - (void)addQuadsFromArray:(id)arg1;
 - (void)addQuad:(id)arg1;
 @property(readonly, nonatomic) NSArray *quads;
+@property(readonly, nonatomic) struct CGSize drawableSize;
 @property(readonly, nonatomic) unsigned long long frameNum;
 @property(nonatomic, getter=isPaused) _Bool paused;
 @property(nonatomic) long long preferredFramesPerSecond;
+- (void)didMoveToWindow;
+- (void)willMoveToWindow:(id)arg1;
+- (void)enumerateHierarchyObserversFromView:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_prepareAndRenderForTime:(double)arg1 inGroup:(id)arg2 checkForDrawable:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeDisabledRenderingReason:(id)arg1;
 - (void)addDisabledRenderingReason:(id)arg1;

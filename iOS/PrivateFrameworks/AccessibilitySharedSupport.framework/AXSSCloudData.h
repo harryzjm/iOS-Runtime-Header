@@ -9,6 +9,7 @@
 @class CKServerChangeToken, NSArray;
 @protocol OS_os_transaction;
 
+__attribute__((visibility("hidden")))
 @interface AXSSCloudData : NSObject
 {
     CKServerChangeToken *_serverChangeToken;

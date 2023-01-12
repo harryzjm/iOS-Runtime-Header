@@ -10,7 +10,8 @@ __attribute__((visibility("hidden")))
 @interface BCSURLAction
 {
     NSArray *_appLinks;
-    LSApplicationRecord *_applicationRecord;
+    LSApplicationRecord *_userVisibleAppRecord;
+    NSArray *_upiApplicationRecords;
     _Bool _deviceDataIsUnavailable;
     NSURL *_appStoreSearchURLForUnsupportedScheme;
     _Bool _hasPreferredAppLink;
@@ -18,13 +19,21 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasPreferredAppLink; // @synthesize hasPreferredAppLink=_hasPreferredAppLink;
+- (unsigned long long)menuElementsCount;
+- (id)menuElements;
+- (id)_menuElementForActionPicker:(id)arg1;
+- (id)contentPreviewString;
+- (_Bool)isAMSAction;
+- (_Bool)_isVisualCode;
 - (_Bool)_isCodeFromQRScanner;
 - (_Bool)_shouldBlockHandlingURL:(id)arg1;
 - (_Bool)_shouldOpenInAppForAppLink:(id)arg1;
 - (id)_actionDescriptionWithoutTargetApplicationForURL:(id)arg1;
 - (id)_actionDescriptionForURL:(id)arg1 application:(id)arg2 shouldShowHostNameForSafariURL:(_Bool)arg3;
 - (id)_actionDescriptionForAppClip;
+- (id)preferredBundleID;
 @property(readonly, nonatomic) LSApplicationRecord *targetApplication;
+- (void)_queryApplicationRecordForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_resolveTargetApplicationForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) unsigned long long appLinkCount;
 - (id)appLinks;
@@ -34,11 +43,22 @@ __attribute__((visibility("hidden")))
 - (void)performAction;
 - (void)performDefaultAction;
 - (void)performDefaultActionWithFBOptions:(id)arg1;
+- (void)performActionWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)hasSensitiveURL;
+- (id)_appclipLaunchReason;
 - (id)actionPickerItems;
+- (id)_actionPickerItemsForLockScreenVisibleApps;
+- (id)actionIcon;
+- (id)shortDescription;
+- (_Bool)_willOpenInSafari;
+- (id)_actionPickerItemsForAppClip;
+- (id)_additionalActionPickerItems;
+- (id)_commonActionPickerItemsForURL;
 - (id)debugDescriptionExtraInfoDictionary;
 - (id)defaultActionTargetApplicationBundleIdentifier;
 - (id)localizedDefaultActionDescription;
 - (id)localizedDefaultActionTitle;
+- (_Bool)shouldRequireUserToPickTargetApp;
 - (id)url;
 - (id)urlThatCanBeOpened;
 - (id)initWithData:(id)arg1 codePayload:(id)arg2;

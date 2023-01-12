@@ -15,7 +15,7 @@
 }
 
 + (_Bool)saveAppleTextClassifierModelToURL:(id)arg1 textClassifierParameters:(id)arg2 error:(id *)arg3;
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly) MLAppleTextClassifierParameters *parameters; // @synthesize parameters=_parameters;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;

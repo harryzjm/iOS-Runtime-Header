@@ -4,18 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
-
 __attribute__((visibility("hidden")))
 @interface _UITextFieldPasscodeBackgroundProvider
 {
-    UIView *_cutoutView;
 }
 
-- (void).cxx_destruct;
-- (id)_contentSnapshot;
-- (void)layoutIfNeeded;
-- (void)addToTextField:(id)arg1;
 - (Class)systemBackgroundViewClass;
 
 @end

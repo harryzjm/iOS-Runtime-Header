@@ -8,7 +8,7 @@
 
 @interface TSCH3DBarResourceCacheKey : NSObject
 {
-    struct BarExtrusionSetting mSetting;
+    struct BarExtrusionSetting _setting;
 }
 
 + (id)keyWithExtrusionSetting:(const struct BarExtrusionSetting *)arg1;

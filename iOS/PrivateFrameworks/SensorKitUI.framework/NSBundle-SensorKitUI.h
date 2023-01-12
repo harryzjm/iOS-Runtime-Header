@@ -8,6 +8,10 @@
 
 @interface NSBundle (SensorKitUI)
 + (id)skui_bundleForAuthorizationService:(id)arg1;
-+ (id)skui_viewServiceBundle;
++ (id)skui_bundle;
+- (id)srui_localizedAuthorizationConfirmationDetail;
+- (id)srui_localizedStudyDataAlertTitleWithAuthGroupName:(id)arg1;
+- (id)srui_localizedResearchPurpose;
+- (id)srui_localizedPrivacyPolicyLinkTitle;
 @end
 

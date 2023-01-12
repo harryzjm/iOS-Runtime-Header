@@ -9,11 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface WebPolicyDecisionListenerPrivate : NSObject
 {
-    id target;
+    struct RetainPtr<id> target;
     SEL action;
 }
 
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 
 @end

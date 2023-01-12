@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (struct BindingEvaluator)bindingEvaluatorForScheme:(id)arg1;
 - (void).cxx_destruct;
 - (void)resetSchemeQueryLimitForApplicationWithIdentifier:(id)arg1;
+@property(readonly) unsigned long long schemeQueryLimit;
 - (long long)schemeTypeOfScheme:(id)arg1;
 - (_Bool)canOpenURL:(id)arg1 publicSchemes:(_Bool)arg2 privateSchemes:(_Bool)arg3 XPCConnection:(id)arg4 error:(id *)arg5;
 - (id)init;

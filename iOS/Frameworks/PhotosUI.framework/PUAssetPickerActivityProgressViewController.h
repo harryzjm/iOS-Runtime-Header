@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)setProgress:(id)arg1;
 - (void)viewDidLoad;
+- (id)init;
 
 @end
 

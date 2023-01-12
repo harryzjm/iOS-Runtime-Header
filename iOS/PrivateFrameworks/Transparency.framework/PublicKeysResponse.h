@@ -18,11 +18,13 @@
 // Remaining properties
 @property(retain, nonatomic) NSMutableArray *appLeafsArray; // @dynamic appLeafsArray;
 @property(readonly, nonatomic) unsigned long long appLeafsArray_Count; // @dynamic appLeafsArray_Count;
+@property(nonatomic) _Bool hasPatClosedProof; // @dynamic hasPatClosedProof;
 @property(nonatomic) _Bool hasPatConfigProof; // @dynamic hasPatConfigProof;
 @property(nonatomic) _Bool hasTltConfigProof; // @dynamic hasTltConfigProof;
 @property(nonatomic) _Bool hasVrfSignature; // @dynamic hasVrfSignature;
 @property(retain, nonatomic) NSMutableArray *intermediatesArray; // @dynamic intermediatesArray;
 @property(readonly, nonatomic) unsigned long long intermediatesArray_Count; // @dynamic intermediatesArray_Count;
+@property(retain, nonatomic) PatInclusionProof *patClosedProof; // @dynamic patClosedProof;
 @property(retain, nonatomic) PatInclusionProof *patConfigProof; // @dynamic patConfigProof;
 @property(nonatomic) int status; // @dynamic status;
 @property(nonatomic) unsigned long long tltBeginningMs; // @dynamic tltBeginningMs;

@@ -14,12 +14,12 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(retain, nonatomic) GKGameRecordInternal *game; // @synthesize game=_game;
 @property(retain, nonatomic) GKPlayerInternal *player; // @synthesize player=_player;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 
 @end
 

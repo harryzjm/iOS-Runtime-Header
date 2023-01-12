@@ -7,9 +7,11 @@
 #import <UIKitCore/UITextDraggable-Protocol.h>
 
 @class NSArray, UITextRange;
-@protocol UITextDragFinishState, UITextDraggableGeometry;
+@protocol UITextDragFinishState, UITextDraggableGeometry, _UITextPreviewRenderer;
 
 @protocol UITextDragSupporting <UITextDraggable>
+- (struct CGRect)_boundingRectForRange:(UITextRange *)arg1;
+- (id <_UITextPreviewRenderer>)_previewRendererForRange:(UITextRange *)arg1 unifyRects:(_Bool)arg2;
 - (void)draggingFinished:(id <UITextDragFinishState>)arg1;
 - (void)draggingStarted;
 - (_Bool)allowsDraggingAttachments;

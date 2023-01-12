@@ -8,17 +8,23 @@
 
 #import <PersonalizationPortrait/PPClientStore-Protocol.h>
 #import <PersonalizationPortrait/PPFeedbackAccepting-Protocol.h>
+#import <PersonalizationPortrait/PPUniversalSearchSpotlightFeedbackAccepting-Protocol.h>
 
 @class NSString;
 
-@interface PPTopicStore : NSObject <PPFeedbackAccepting, PPClientStore>
+@interface PPTopicStore : NSObject <PPFeedbackAccepting, PPUniversalSearchSpotlightFeedbackAccepting, PPClientStore>
 {
 }
 
 + (double)decayValue:(double)arg1 withDecayRate:(double)arg2 forTimeElapsed:(double)arg3;
 + (id)defaultStore;
+- (void)registerUniversalSearchSpotlightFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) NSString *clientIdentifier;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)topicCacheSandboxExtensionToken:(id *)arg1;
+- (_Bool)clearTopicScoresCache:(id *)arg1;
+- (_Bool)computeAndCacheTopicScores:(id *)arg1;
+- (id)cachedTopicScores;
 - (_Bool)clearWithError:(id *)arg1 deletedCount:(unsigned long long *)arg2;
 - (_Bool)clearWithError:(id *)arg1;
 - (_Bool)cloudSyncWithError:(id *)arg1;
@@ -36,6 +42,7 @@
 - (_Bool)iterScoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
 - (id)rankedTopicsWithQuery:(id)arg1 error:(id *)arg2;
 - (_Bool)iterRankedTopicsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (id)cachePath:(id *)arg1;
 - (id)_initFromSubclass;
 - (id)init;
 

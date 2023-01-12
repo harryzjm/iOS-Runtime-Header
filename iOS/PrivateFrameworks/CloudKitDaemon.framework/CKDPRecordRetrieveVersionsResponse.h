@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordRetrieveVersionsResponse : PBCodable <NSCopying>
 {
     NSMutableArray *_recordVersions;

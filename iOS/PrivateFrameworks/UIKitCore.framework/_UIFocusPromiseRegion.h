@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)_loadContentFocusRegionContainer;
 - (unsigned long long)_focusableBoundaries;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
-- (_Bool)_shouldCropRegionToSearchArea;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

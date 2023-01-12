@@ -22,7 +22,7 @@
 + (id)URLForUnit:(unsigned int)arg1 inTable:(unsigned int)arg2;
 + (_Bool)unitDescription:(id)arg1 referencesUnit:(unsigned int)arg2 inTable:(unsigned int)arg3;
 + (void)enumerateReferencesToUnitsInUnitDescription:(id)arg1 block:(CDUnknownBlockType)arg2;
-+ (void)breakDownTable:(const struct Table *)arg1 inStore:(const struct Store *)arg2 buffer:(char *)arg3;
++ (void)breakDownTable:(const struct Table *)arg1 inStore:(const void *)arg2 buffer:(char *)arg3;
 + (id)predicateForSearchingDescriptionWithString:(id)arg1 error:(id *)arg2;
 + (void)enumerateValuesForTitlesInDescription:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (struct _NSRange)rangeOfValueForTitle:(id)arg1 inDescription:(id)arg2;

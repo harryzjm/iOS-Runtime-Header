@@ -37,8 +37,8 @@
 @property(retain, nonatomic) UIColor *secondaryForegroundColor; // @synthesize secondaryForegroundColor=_secondaryForegroundColor;
 @property(retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(nonatomic) _Bool hidesOverlapShadow; // @synthesize hidesOverlapShadow=_hidesOverlapShadow;
-@property(retain, nonatomic) NSMutableArray *ringsFillFractions; // @synthesize ringsFillFractions=_ringsFillFractions;
-@property(retain, nonatomic) NSArray *ringColors; // @synthesize ringColors=_ringColors;
+@property(copy, nonatomic) NSMutableArray *ringsFillFractions; // @synthesize ringsFillFractions=_ringsFillFractions;
+@property(copy, nonatomic) NSArray *ringColors; // @synthesize ringColors=_ringColors;
 @property(retain, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 - (double)radiusForRingAtIndex:(long long)arg1;
 - (void)_setDiameter:(double)arg1;

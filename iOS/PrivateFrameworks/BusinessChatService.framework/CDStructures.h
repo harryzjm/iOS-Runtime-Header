@@ -21,13 +21,18 @@ typedef struct {
     unsigned int _field1[8];
 } CDStruct_6ad76789;
 
-typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
-
 // Ambiguous groups
+typedef struct {
+    unsigned int count:1;
+    unsigned int index:1;
+    unsigned int ttl:1;
+} CDStruct_db572d93;
+
 typedef struct {
     unsigned int isDefault:1;
 } CDStruct_d3bb80d3;
+
+typedef struct {
+    unsigned int modTime:1;
+} CDStruct_14b7a8ea;
 

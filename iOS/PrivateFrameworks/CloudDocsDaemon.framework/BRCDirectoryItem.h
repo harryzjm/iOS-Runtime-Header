@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_deleteFromDB:(id)arg1 keepAliases:(_Bool)arg2;
 - (_Bool)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
 - (_Bool)_insertInDB:(id)arg1 dbRowID:(unsigned long long)arg2;
+- (_Bool)_recomputeChildItemCount;
 - (_Bool)_updateRecursiveProperties;
 - (_Bool)_insertRecursiveProperties;
+- (_Bool)_repopulateRecursivePropertiesOnDocumentsDirectoryIfNecessary;
 - (void)_retryPostponedIfNeededForDiffs:(unsigned long long)arg1;
 - (void)markRemovedFromFilesystemForServerEdit:(_Bool)arg1;
 - (void)_markLostDirectoryAsAlmostDead;

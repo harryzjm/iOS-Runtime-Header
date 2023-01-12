@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol ML3AccountInformationProviding, MLMediaLibraryAccountChangeObserver, MLMediaLibraryResourcesServiceProtocol;
+@protocol MLMediaLibraryAccountChangeObserver, MLMediaLibraryResourcesServiceProtocol, _MSVAccountInformationProviding;
 
 @interface ML3MusicLibraryResourcesManagerContext : NSObject
 {
     _Bool _runningInDaemon;
     _Bool _multiUserSupported;
     id <MLMediaLibraryResourcesServiceProtocol> _resourcesService;
-    id <ML3AccountInformationProviding> _accountInfo;
+    id <_MSVAccountInformationProviding> _accountInfo;
     id <MLMediaLibraryAccountChangeObserver> _accountChangeObserver;
     NSString *_libraryContainerIdentifier;
 }
@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *libraryContainerIdentifier; // @synthesize libraryContainerIdentifier=_libraryContainerIdentifier;
 @property(readonly, nonatomic) id <MLMediaLibraryAccountChangeObserver> accountChangeObserver; // @synthesize accountChangeObserver=_accountChangeObserver;
-@property(readonly, nonatomic) id <ML3AccountInformationProviding> accountInfo; // @synthesize accountInfo=_accountInfo;
+@property(readonly, nonatomic) id <_MSVAccountInformationProviding> accountInfo; // @synthesize accountInfo=_accountInfo;
 @property(readonly, nonatomic) id <MLMediaLibraryResourcesServiceProtocol> resourcesService; // @synthesize resourcesService=_resourcesService;
 @property(readonly, nonatomic, getter=isMultiUserSupported) _Bool multiUserSupported; // @synthesize multiUserSupported=_multiUserSupported;
 @property(readonly, nonatomic, getter=isRunningInDaemon) _Bool runningInDaemon; // @synthesize runningInDaemon=_runningInDaemon;

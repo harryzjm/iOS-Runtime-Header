@@ -11,30 +11,30 @@
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
-@class BSMachPortSendRight, NSString;
+@class CAFenceHandle, NSString;
 
 @interface BKSAnimationFenceHandle : NSObject <BSXPCCoding, NSSecureCoding, NSCopying, BSInvalidatable>
 {
+    CAFenceHandle *_caFence;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)newFenceHandleForCAFenceHandle:(id)arg1;
 + (id)newFenceHandleForContext:(id)arg1;
-+ (id)newSystemFenceHandle;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) _Bool shouldIgnoreTrigger;
-@property(readonly, nonatomic) BSMachPortSendRight *trigger;
 - (id)CAFenceHandle;
 - (unsigned int)CAPort;
 - (void)invalidate;
 @property(readonly, nonatomic, getter=isUsable) _Bool usable;
 @property(readonly, nonatomic) unsigned long long fenceName;
-- (id)_init;
+- (void)dealloc;
+- (id)_initWithCAFenceHandle:(id)arg1;
 - (id)init;
 
 // Remaining properties

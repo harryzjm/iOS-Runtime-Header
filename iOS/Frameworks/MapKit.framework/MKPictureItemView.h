@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setupSubviews;
 - (void)setTitleLabelProviderName;
 - (void)updateLabelsSettings;
+- (void)addShadowToLabel:(id)arg1;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (id)initWithPictureItem:(id)arg1 providerName:(id)arg2;
 

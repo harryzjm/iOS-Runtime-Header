@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <PencilKit/UIInputResponderControllerVisibilityObserver-Protocol.h>
+#import <PencilKit/UIKeyboardSceneDelegateVisibilityObserver-Protocol.h>
 
 @class NSNotification, NSNotificationCenter, NSString, PKTextInputWindowFirstResponder;
 @protocol PKTextInputWindowFirstResponderControllerDelegate;
 
-@interface PKTextInputWindowFirstResponderController : NSObject <UIInputResponderControllerVisibilityObserver>
+@interface PKTextInputWindowFirstResponderController : NSObject <UIKeyboardSceneDelegateVisibilityObserver>
 {
     _Bool _paletteFloatingMode;
     id <PKTextInputWindowFirstResponderControllerDelegate> _delegate;
@@ -27,7 +27,8 @@
 @property(retain, nonatomic) PKTextInputWindowFirstResponder *firstResponder; // @synthesize firstResponder=_firstResponder;
 @property(nonatomic) __weak id <PKTextInputWindowFirstResponderControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_isResponderEditableTextInput:(id)arg1;
-- (void)inputResponderController:(id)arg1 inputViewSetVisibilityDidChange:(_Bool)arg2 includedReset:(_Bool)arg3;
+- (void)keyboardSceneDelegate:(id)arg1 inputViewSetVisibilityDidChange:(_Bool)arg2 includedReset:(_Bool)arg3;
+- (void)_forceControllerToReload:(id)arg1;
 - (void)textInputSourceDidChange:(id)arg1;
 - (void)_textInputResponderDidChangeNotificationHandler:(id)arg1;
 - (void)updateFirstResponderFromWindowScene:(id)arg1;

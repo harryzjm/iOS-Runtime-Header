@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityModalizePresentationView;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)_accessibilityPresentationControllerModalizes;
 
 @end
 

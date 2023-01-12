@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMapTable;
+@class BKSHIDEventPointerAttributes, NSMapTable;
 
 @interface UITransformEvent
 {
@@ -17,6 +17,7 @@
     unsigned long long _scalePhase;
     unsigned long long _rotationPhase;
     unsigned long long _translationPhase;
+    BKSHIDEventPointerAttributes *_pointerAttributes;
     double _scale;
     double _rotation;
     struct CGPoint _translation;

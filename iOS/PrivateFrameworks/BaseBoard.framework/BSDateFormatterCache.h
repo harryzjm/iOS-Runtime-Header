@@ -28,6 +28,7 @@
     NSDateFormatter *_longYMDHMSZPosixLocaleFormatter;
     NSDateFormatter *_longYMDHMSNoSpaceFormatter;
     NSNumberFormatter *_decimalFormatter;
+    NSDateComponentsFormatter *_durationFormatter;
     NSNumberFormatter *_timerNumberFormatter;
     NSDateComponentsFormatter *_abbreviatedTimerFormatter;
     NSDateComponentsFormatter *_alarmSnoozeFormatter;
@@ -40,6 +41,7 @@
 - (id)formatAlarmSnoozeDuration:(double)arg1;
 - (id)formatAbbreviatedTimerDuration:(double)arg1;
 - (id)formatTimerDuration:(double)arg1;
+- (id)formatDuration:(double)arg1;
 - (id)formatDateAsRelativeDateStyle:(id)arg1;
 - (id)formatDateAsLongYMDHMSNoSpacesWithDate:(id)arg1;
 - (id)formatDateAsLongYMDHMSZPosixLocaleWithDate:(id)arg1;

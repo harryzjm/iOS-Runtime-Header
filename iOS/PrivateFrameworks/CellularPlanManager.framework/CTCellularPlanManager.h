@@ -66,6 +66,8 @@
 - (void)setUserInPurchaseFlow:(_Bool)arg1;
 - (void)didTransferPlanForCsn:(id)arg1 iccid:(id)arg2 srcIccid:(id)arg3 profileServer:(id)arg4 state:(id)arg5;
 - (void)didTransferPlanForCsn:(id)arg1 iccid:(id)arg2 profileServer:(id)arg3 state:(id)arg4;
+- (void)didPurchasePlanForCarrier:(id)arg1 mnc:(id)arg2 gid1:(id)arg3 gid2:(id)arg4 state:(id)arg5;
+- (void)didPurchasePlanForCsn:(id)arg1 iccid:(id)arg2 profileServer:(id)arg3 state:(id)arg4;
 - (void)didPurchasePlanForCsn:(id)arg1 iccid:(id)arg2 profileServer:(id)arg3;
 - (void)planLaunchInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)eraseAllRemotePlansWithCSN:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -77,6 +79,7 @@
 - (id)didSelectPlanForDefaultVoice:(id)arg1;
 - (void)didSelectPlanForDefaultVoice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)setLabelForPlan:(id)arg1 label:(id)arg2;
+- (id)didEnablePlanItems:(id)arg1;
 - (id)didSelectPlanForData:(id)arg1;
 - (void)didSelectPlanForData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)didSelectPlanItem:(id)arg1 isEnable:(_Bool)arg2;

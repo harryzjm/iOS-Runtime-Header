@@ -10,6 +10,8 @@
 {
 }
 
+- (void)appendToken:(id)arg1;
+@property(nonatomic) struct CGRect bounds; // @dynamic bounds;
 @property(nonatomic) long long substrokeCount; // @dynamic substrokeCount;
 @property(nonatomic) unsigned long long properties; // @dynamic properties;
 @property(nonatomic) double alignmentScore; // @dynamic alignmentScore;

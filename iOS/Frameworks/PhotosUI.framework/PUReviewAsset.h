@@ -98,6 +98,7 @@
 - (_Bool)_linkFileAtURL:(id)arg1 toURL:(id)arg2;
 - (id)_uniqueDestinationURLForFileURL:(id)arg1 inDirectory:(id)arg2;
 - (id)_ensureLinkDestinationDirectoryFromBaseDirectory:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *accessibilityDescription;
 @property(readonly, nonatomic) unsigned long long reframeVariation;
 - (_Bool)isOriginalRaw;
 @property(readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;
@@ -105,6 +106,7 @@
 @property(readonly, copy, nonatomic) NSString *pathForOriginalImageFile;
 @property(readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) _Bool cloudPhotoLibraryEnabled;
 @property(readonly, nonatomic, getter=isResourceDownloadPossible) _Bool resourceDownloadPossible;
+@property(readonly, nonatomic) _Bool containsAllMetadata;
 @property(readonly, nonatomic) int originalEXIFOrientation;
 @property(readonly, nonatomic) NSDictionary *imageProperties;
 - (void)cancelContentEditingInputRequest:(unsigned long long)arg1;
@@ -118,6 +120,7 @@
 @property(readonly, nonatomic, getter=isContentAdjustmentAllowed) _Bool contentAdjustmentAllowed;
 @property(readonly, nonatomic, getter=isAdjusted) _Bool adjusted;
 @property(readonly, nonatomic, getter=isHighFramerateVideo) _Bool highFramerateVideo;
+@property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly, nonatomic) unsigned long long deferredLogInfo;
@@ -161,6 +164,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool hasSyndicationInformation;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;

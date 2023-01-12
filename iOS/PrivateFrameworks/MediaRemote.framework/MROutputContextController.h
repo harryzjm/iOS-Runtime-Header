@@ -24,15 +24,17 @@
 - (void).cxx_destruct;
 @property(nonatomic) unsigned int localVolumeControlCapabilities; // @synthesize localVolumeControlCapabilities=_localVolumeControlCapabilities;
 @property(nonatomic) float localVolume; // @synthesize localVolume=_localVolume;
+- (void)_handleOutputDevicesReloadedNotification:(id)arg1;
 - (void)_handleOutputDeviceRemovedNotification:(id)arg1;
+- (void)_handleOutputDeviceDidChangeNotification:(id)arg1;
 - (void)_handleOutputDeviceAddedNotification:(id)arg1;
 - (void)_handleOutputDeviceVolumeControlCapabilitiesDidChangeNotification:(id)arg1;
 - (void)_handleOutputDeviceVolumeDidChangeNotification:(id)arg1;
 - (void)_handleLocalDeviceVolumeControlCapabilitiesDidChangeNotification:(id)arg1;
 - (void)_handleLocalDeviceVolumeDidChangeNotification:(id)arg1;
 - (id)setVolume:(float)arg1 outputDeviceUID:(id)arg2;
-- (unsigned int)volumeControlCapabilitiesForOutputDeviceUID:(id)arg1;
-- (float)volumeForOutputDeviceUID:(id)arg1;
+- (unsigned int)volumeControlCapabilitiesForOutputDeviceUID:(id)arg1 error:(id *)arg2;
+- (float)volumeForOutputDeviceUID:(id)arg1 error:(id *)arg2;
 - (id)uniqueIdentifier;
 - (id)outputDevices;
 @property(readonly, nonatomic) NSString *localDeviceUID;
@@ -40,6 +42,7 @@
 - (float)volume;
 - (id)description;
 - (void)dealloc;
+- (id)initWithOutputContext:(id)arg1;
 
 @end
 

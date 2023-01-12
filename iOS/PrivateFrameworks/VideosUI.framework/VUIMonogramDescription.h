@@ -9,12 +9,13 @@
 #import <VideosUI/NSCopying-Protocol.h>
 
 @class NSString, NSURL, UIColor, UIFont, UIImage;
-@protocol IKNetworkRequestLoader;
+@protocol VUINetworkRequestLoader;
 
 __attribute__((visibility("hidden")))
 @interface VUIMonogramDescription : NSObject <NSCopying>
 {
     _Bool _shouldFallBackToSilhouette;
+    _Bool _optimizedImageRendering;
     NSString *_firstName;
     NSString *_lastName;
     NSString *_text;
@@ -28,15 +29,16 @@ __attribute__((visibility("hidden")))
     UIColor *_fillColor;
     double _borderWidth;
     UIColor *_borderColor;
-    id <IKNetworkRequestLoader> _requestLoader;
+    id <VUINetworkRequestLoader> _requestLoader;
     UIImage *_placeholderImage;
     struct CGSize _size;
     struct UIEdgeInsets _padding;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool optimizedImageRendering; // @synthesize optimizedImageRendering=_optimizedImageRendering;
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
-@property(nonatomic) __weak id <IKNetworkRequestLoader> requestLoader; // @synthesize requestLoader=_requestLoader;
+@property(nonatomic) __weak id <VUINetworkRequestLoader> requestLoader; // @synthesize requestLoader=_requestLoader;
 @property(retain, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 @property(nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property(nonatomic) _Bool shouldFallBackToSilhouette; // @synthesize shouldFallBackToSilhouette=_shouldFallBackToSilhouette;

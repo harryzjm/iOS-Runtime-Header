@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_04095319)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_04095319)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTAcousticFeature *value;
 @property(readonly, nonatomic) NSString *key;
 - (id)copyWithZone:(struct _NSZone *)arg1;

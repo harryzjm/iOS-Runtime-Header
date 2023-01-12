@@ -10,7 +10,7 @@
 @protocol OS_xpc_object;
 
 @protocol BCSBloomFilterAndConfigRemoteFetching <NSObject>
-- (void)fetchBloomFilterAndConfigItemWithType:(long long)arg1 clientBundleID:(NSString *)arg2 xpcActivity:(NSObject<OS_xpc_object> *)arg3 completion:(void (^)(NSArray *, BCSConfigItem *, NSError *))arg4;
-- (void)fetchBloomFilterAndConfigItemWithType:(long long)arg1 clientBundleID:(NSString *)arg2 completion:(void (^)(NSArray *, BCSConfigItem *, NSError *))arg3;
+- (void)fetchBloomFilterAndConfigItemWithType:(long long)arg1 clientBundleID:(NSString *)arg2 xpcActivity:(NSObject<OS_xpc_object> *)arg3 completion:(void (^)(NSArray *, NSArray *, BCSConfigItem *, NSError *))arg4;
+- (void)fetchBloomFilterAndConfigItemWithType:(long long)arg1 clientBundleID:(NSString *)arg2 completion:(void (^)(NSArray *, NSArray *, BCSConfigItem *, NSError *))arg3;
 @end
 

@@ -7,39 +7,57 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDDataObserver-Protocol.h>
+#import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
+#import <HealthDaemon/HDHealthRecordsAccountExistenceObserver-Protocol.h>
+#import <HealthDaemon/HDOntologyDatabaseAvailabilityObserver-Protocol.h>
+#import <HealthDaemon/HDOntologyImportStatusObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
-@class HDConceptIndexer, HDProfile, HKObserverSet, NSMutableArray, NSString;
-@protocol HDBlockDispatcher;
+@class HDProfile, HKObserverSet, NSMutableArray, NSString, _HKDelayedOperation;
+@protocol OS_dispatch_queue;
 
-@interface HDConceptIndexManager : NSObject <HDDataObserver>
+@interface HDConceptIndexManager : NSObject <HDDataObserver, HDDatabaseProtectedDataObserver, HDProfileReadyObserver, HDHealthRecordsAccountExistenceObserver, HDOntologyDatabaseAvailabilityObserver, HDOntologyImportStatusObserver>
 {
-    id <HDBlockDispatcher> _dispatcher;
     unsigned long long _batchSize;
     HDProfile *_profile;
-    _Bool _isEnabled;
     HKObserverSet *_observerSet;
-    NSMutableArray *_completionBlocks;
-    struct os_unfair_lock_s _executionStateLock;
-    unsigned long long _executionState;
-    HDConceptIndexer *_conceptIndexer;
+    _Atomic _Bool _isOntologyUpdating;
+    _Atomic _Bool _isInvalidated;
+    Class _conceptIndexerClass;
+    struct os_unfair_lock_s _stateLock;
+    _Bool _hasScheduledIndexing;
+    _Bool _shouldResetIndexNextExecution;
+    NSObject<OS_dispatch_queue> *_delayedOperationQueue;
+    NSMutableArray *_cachedReasonsForReindex;
+    _HKDelayedOperation *_updateIndexOperation;
+    double _conceptIndexUpdateDebounceIntervalOverride;
+    _Bool _ignoresAutomaticProcessingTriggers;
+    CDUnknownBlockType _unitTesting_conceptIndexManagerDidFinish;
 }
 
-+ (void)_updateConceptIndexWithBlockDispatcher:(id)arg1 conceptIndexer:(id)arg2 batchSize:(long long)arg3 initialCount:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HDConceptIndexer *conceptIndexer; // @synthesize conceptIndexer=_conceptIndexer;
-- (void)stopWithDescription:(id)arg1;
-- (void)startWithDescription:(id)arg1;
+@property(copy, nonatomic) CDUnknownBlockType unitTesting_conceptIndexManagerDidFinish; // @synthesize unitTesting_conceptIndexManagerDidFinish=_unitTesting_conceptIndexManagerDidFinish;
+@property(nonatomic) _Bool ignoresAutomaticProcessingTriggers; // @synthesize ignoresAutomaticProcessingTriggers=_ignoresAutomaticProcessingTriggers;
+- (void)unitTest_debounceUpdateDelayOverride:(double)arg1;
+- (_Bool)performanceTest_triggerConceptIndexing;
+- (void)unitTest_triggerConceptIndexing;
+- (void)unitTest_scheduleUpdateWithDescription:(id)arg1;
+- (void)ontologyDatabaseReferenceOntologyFinishedImport:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
+- (void)ontologyDatabaseReferenceOntologyWillImport:(id)arg1;
+- (void)ontologyDatabase:(id)arg1 didBecomeAvailable:(_Bool)arg2;
+- (void)profileDidBecomeReady:(id)arg1;
+- (void)accountExistenceNotifier:(id)arg1 didChangeHealthRecordAccountExistence:(_Bool)arg2;
+- (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (void)dealloc;
 @property(readonly) unsigned long long currentExecutionState;
 - (void)invalidateAndWait;
-- (void)setEnabled:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)resetWithReindex:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)updateConceptIndexWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateWithDescription:(id)arg1;
-- (id)initWithBlockDispatcher:(id)arg1 batchSize:(unsigned long long)arg2 profile:(id)arg3;
+- (void)resetWithReindex;
+- (id)initWithConceptIndexerClass:(Class)arg1 batchSize:(unsigned long long)arg2 profile:(id)arg3;
+- (id)initWithProfile:(id)arg1;
 - (id)init;
 
 // Remaining properties

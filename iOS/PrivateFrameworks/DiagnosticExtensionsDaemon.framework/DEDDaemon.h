@@ -33,7 +33,6 @@
 @property(retain) NSOperationQueue *backgroundOpQueue; // @synthesize backgroundOpQueue=_backgroundOpQueue;
 @property(retain) DEDConfiguration *config; // @synthesize config=_config;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
-- (id)_blockOnFakeSysidagnoseWithIdentifer:(id)arg1 withBugSession:(id)arg2;
 - (void)_logOperations;
 - (void)_streamOperationStatus;
 - (_Bool)observesOperations;

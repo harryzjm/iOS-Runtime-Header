@@ -11,7 +11,7 @@
 #import <DataDetectorsUI/UINavigationControllerDelegate-Protocol.h>
 #import <DataDetectorsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class DDParsecRemoteCollectionViewController, DDScannerResult, NSArray, NSDictionary, NSString, UITapGestureRecognizer, _UIRemoteViewController;
+@class DDDelegateMultiplexer, DDParsecRemoteCollectionViewController, DDScannerResult, NSArray, NSDictionary, NSString, RVQuery, UITapGestureRecognizer, _UIRemoteViewController;
 @protocol DDParsecCollectionDelegate;
 
 @interface DDParsecCollectionViewController : UINavigationController <DDParsecHostVCInterface, UINavigationControllerDelegate, UIAdaptivePresentationControllerDelegate, _UIRemoteViewControllerContaining>
@@ -19,15 +19,21 @@
     DDParsecRemoteCollectionViewController *_remoteViewController;
     _Bool _previewMode;
     _Bool _sheetMode;
+    _Bool _popoverMode;
     _Bool _needsBackground;
+    _Bool _dismissed;
     NSString *_queryString;
     struct _NSRange _queryRange;
     DDScannerResult *_result;
     NSDictionary *_context;
+    RVQuery *_query;
     _Bool _showingError;
     _Bool _showingFTE;
     UITapGestureRecognizer *_tapGesture;
     long long _previousStatusBarStyle;
+    DDDelegateMultiplexer *_presentationDelegateProxy;
+    _Bool _requestingPopoverPresentationController;
+    DDDelegateMultiplexer *_presentationDelegateMultiplexer;
     CDUnknownBlockType _dismissCompletionHandler;
     long long _style;
     NSArray *_actions;
@@ -40,10 +46,12 @@
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(copy) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 - (_Bool)_canShowWhileLocked;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)presentationControllerDidDismiss:(id)arg1;
+- (_Bool)presentationControllerShouldDismiss:(id)arg1;
+- (void)_presentationController:(id)arg1 prepareAdaptivePresentationController:(id)arg2;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
 - (_Bool)_allowsStylingSheetsAsCards;
 @property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
@@ -57,6 +65,8 @@
 - (void)replaceControllerWithController:(id)arg1;
 - (void)showSpinner;
 - (void)showError:(id)arg1;
+- (void)performClientQueryWithServerAccessPermitted:(_Bool)arg1 localSearchPermitted:(_Bool)arg2;
+- (void)remoteVCIsReady;
 - (void)presentRemoteCollection:(id)arg1;
 - (void)appWillEnterForeground;
 - (void)appDidEnterBackground;
@@ -64,11 +74,20 @@
 - (void)doneButtonPressed:(id)arg1 punchout:(_Bool)arg2;
 - (void)doneButtonPressed:(id)arg1;
 - (void)updateVisualMode;
-- (void)_updatePreferredContentSize;
+- (id)overrideTraitCollectionForChildViewController:(id)arg1;
+- (struct CGSize)preferredContentSize;
 - (void)setSheetMode:(_Bool)arg1;
+- (void)adaptForPresentationInPopover:(_Bool)arg1;
 - (void)setPreviewMode:(_Bool)arg1;
+- (long long)_preferredModalPresentationStyle;
+- (long long)modalPresentationStyle;
+- (id)presentationController;
+- (id)popoverPresentationController;
+- (void)updateDelegateOfPresentationController:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithResult:(struct __DDResult *)arg1 context:(id)arg2;
+- (void)setTitle:(id)arg1;
+- (id)initWithQuery:(id)arg1;
 - (id)initWithString:(id)arg1 range:(struct _NSRange)arg2;
 
 // Remaining properties

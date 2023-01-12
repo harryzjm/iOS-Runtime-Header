@@ -26,29 +26,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)localizedNameType;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)localizedNameAtIndex:(unsigned long long)arg1;
-- (unsigned long long)localizedNamesCount;
-- (void)addLocalizedName:(id)arg1;
-- (void)clearLocalizedNames;
-@property(retain, nonatomic) NSMutableArray *localizedNames;
-@property(retain, nonatomic) NSString *key;
-@property(readonly, nonatomic) _Bool hasKey;
 - (id)initWithData:(id)arg1;
 - (id)init;
 - (id)displayTitle;

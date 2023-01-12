@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     AUAudioUnitBusArray *_inputBusArray;
     AUAudioUnitBus *_outputBus;
     AUAudioUnitBusArray *_outputBusArray;
-    struct unique_ptr<boost::lockfree::queue<GainRampCommand>, std::__1::default_delete<boost::lockfree::queue<GainRampCommand>>> _rampGainQueue;
+    struct unique_ptr<re::audio::FixedSpscAudioQueue<GainRampCommand>, std::default_delete<re::audio::FixedSpscAudioQueue<GainRampCommand>>> _rampGainQueue;
     float _targetGain;
     unsigned int _remainingRampFrames;
     float _currentGain;

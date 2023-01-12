@@ -4,21 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString;
 
-@interface LTSchemaASRSpeechTranslationEvent : PBCodable
+@interface LTSchemaASRSpeechTranslationEvent
 {
     NSString *_requestID;
     NSString *_selectedLocale;
     unsigned int _timeToFirstPartialMs;
     unsigned int _timeToFinalResultMs;
     unsigned int _latencyFinalResultMs;
+    unsigned int _timeToSendFirstAudioPacket;
+    unsigned int _timeToReceiveFirstAudioPacket;
+    unsigned int _numAudioPacket;
+    unsigned int _timeToSendFinishAudio;
     struct {
         unsigned int timeToFirstPartialMs:1;
         unsigned int timeToFinalResultMs:1;
         unsigned int latencyFinalResultMs:1;
+        unsigned int timeToSendFirstAudioPacket:1;
+        unsigned int timeToReceiveFirstAudioPacket:1;
+        unsigned int numAudioPacket:1;
+        unsigned int timeToSendFinishAudio:1;
     } _has;
     _Bool _hasRequestID;
     _Bool _hasSelectedLocale;
@@ -27,6 +33,10 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasSelectedLocale; // @synthesize hasSelectedLocale=_hasSelectedLocale;
 @property(nonatomic) _Bool hasRequestID; // @synthesize hasRequestID=_hasRequestID;
+@property(nonatomic) unsigned int timeToSendFinishAudio; // @synthesize timeToSendFinishAudio=_timeToSendFinishAudio;
+@property(nonatomic) unsigned int numAudioPacket; // @synthesize numAudioPacket=_numAudioPacket;
+@property(nonatomic) unsigned int timeToReceiveFirstAudioPacket; // @synthesize timeToReceiveFirstAudioPacket=_timeToReceiveFirstAudioPacket;
+@property(nonatomic) unsigned int timeToSendFirstAudioPacket; // @synthesize timeToSendFirstAudioPacket=_timeToSendFirstAudioPacket;
 @property(nonatomic) unsigned int latencyFinalResultMs; // @synthesize latencyFinalResultMs=_latencyFinalResultMs;
 @property(nonatomic) unsigned int timeToFinalResultMs; // @synthesize timeToFinalResultMs=_timeToFinalResultMs;
 @property(nonatomic) unsigned int timeToFirstPartialMs; // @synthesize timeToFirstPartialMs=_timeToFirstPartialMs;
@@ -40,6 +50,10 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasTimeToSendFinishAudio;
+@property(nonatomic) _Bool hasNumAudioPacket;
+@property(nonatomic) _Bool hasTimeToReceiveFirstAudioPacket;
+@property(nonatomic) _Bool hasTimeToSendFirstAudioPacket;
 @property(nonatomic) _Bool hasLatencyFinalResultMs;
 @property(nonatomic) _Bool hasTimeToFinalResultMs;
 @property(nonatomic) _Bool hasTimeToFirstPartialMs;

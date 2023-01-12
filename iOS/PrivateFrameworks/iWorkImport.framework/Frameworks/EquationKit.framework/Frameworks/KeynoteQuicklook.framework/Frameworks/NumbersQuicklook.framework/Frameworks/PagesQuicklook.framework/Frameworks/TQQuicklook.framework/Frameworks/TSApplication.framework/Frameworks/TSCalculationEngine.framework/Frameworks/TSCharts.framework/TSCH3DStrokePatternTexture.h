@@ -8,12 +8,12 @@
 
 @interface TSCH3DStrokePatternTexture
 {
-    TSDStroke *mStroke;
+    TSDStroke *_stroke;
 }
 
-@property(readonly, nonatomic) TSDStroke *stroke; // @synthesize stroke=mStroke;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSDStroke *stroke; // @synthesize stroke=_stroke;
 - (id)get;
-- (void)dealloc;
 - (id)initWithStroke:(id)arg1;
 
 @end

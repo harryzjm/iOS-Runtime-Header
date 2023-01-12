@@ -15,7 +15,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double radius; // @synthesize radius=_radius;
 @property(readonly, nonatomic) UIImage *maskImage; // @synthesize maskImage=_maskImage;
-- (id)_newPickerView;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithMaskImage:(id)arg1 radius:(double)arg2;

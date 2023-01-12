@@ -11,7 +11,7 @@
 #import <PassKitUI/QLPreviewItemDataProvider-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class NSData, NSString, QLItem, QLPreviewController, RemoteUIController;
+@class NSData, NSString, QLItem, QLPreviewController, RemoteUIController, UINavigationController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKFeatureTermsAndConditionsViewController <QLPreviewItemDataProvider, QLPreviewControllerDelegate, QLPreviewControllerDataSource, RemoteUIControllerDelegate, PKPaymentSetupPresentationProtocol, PKViewControllerPreflightable>
@@ -26,9 +26,11 @@
     _Bool _useModalPresentation;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
     long long _context;
+    UINavigationController *_containerNavigationController;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UINavigationController *containerNavigationController; // @synthesize containerNavigationController=_containerNavigationController;
 @property(nonatomic) _Bool useModalPresentation; // @synthesize useModalPresentation=_useModalPresentation;
 @property(nonatomic) long long context; // @synthesize context=_context;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
@@ -48,6 +50,7 @@
 - (void)presentErrorAlert;
 - (void)termsAccepted:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)termsShown;
+- (void)reportAnalyticsForTermsLink:(id)arg1;
 - (void)pdfTermsDataWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)htmlTermsDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalTermsDataWithCompletion:(CDUnknownBlockType)arg1;

@@ -15,6 +15,7 @@
 
 // Remaining properties
 @property(copy, nonatomic) NSString *abbreviation; // @dynamic abbreviation;
+@property(copy, nonatomic) NSString *cityName; // @dynamic cityName;
 @property(copy, nonatomic) NSNumber *latitude; // @dynamic latitude;
 @property(copy, nonatomic) NSNumber *longditude; // @dynamic longditude;
 @property(copy, nonatomic) NSString *timeZoneName; // @dynamic timeZoneName;

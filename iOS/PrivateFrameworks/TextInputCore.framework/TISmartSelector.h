@@ -11,7 +11,7 @@
 
 @interface TISmartSelector : NSObject
 {
-    struct unique_ptr<KB::StaticDictionary, std::__1::default_delete<KB::StaticDictionary>> _staticDictionary;
+    struct unique_ptr<KB::StaticDictionary, std::default_delete<KB::StaticDictionary>> _staticDictionary;
     struct _LXLexicon *_contactDictionary;
     CDUnknownBlockType _contactObserver;
     unsigned long long _options;

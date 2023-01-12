@@ -9,7 +9,6 @@
 @interface PHPhotosHighlight
 {
     unsigned long long _assetsCount;
-    _Bool _curated;
     _Bool _enriched;
     _Bool _recent;
     unsigned short _kind;
@@ -58,8 +57,6 @@
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyMap;
 + (id)identifierCode;
-+ (_Bool)managedObjectSupportsRejectedState;
-+ (_Bool)managedObjectSupportsPendingState;
 + (_Bool)managedObjectSupportsTrashedState;
 + (id)fetchType;
 + (id)managedEntityName;
@@ -85,7 +82,6 @@
 @property(readonly, nonatomic) double promotionScore; // @synthesize promotionScore=_promotionScore;
 @property(readonly, nonatomic) long long endTimeZoneOffset; // @synthesize endTimeZoneOffset=_endTimeZoneOffset;
 @property(readonly, nonatomic) long long startTimeZoneOffset; // @synthesize startTimeZoneOffset=_startTimeZoneOffset;
-@property(readonly, nonatomic, getter=isCurated) _Bool curated; // @synthesize curated=_curated;
 @property(readonly, nonatomic) unsigned short visibilityState; // @synthesize visibilityState=_visibilityState;
 @property(readonly, nonatomic) unsigned short category; // @synthesize category=_category;
 @property(readonly, nonatomic) unsigned short type; // @synthesize type=_type;

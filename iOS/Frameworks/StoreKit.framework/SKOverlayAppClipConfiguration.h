@@ -13,6 +13,8 @@
 - (id)additionalValueForKey:(id)arg1;
 - (void)setAdditionalValue:(id)arg1 forKey:(id)arg2;
 @property(nonatomic) long long position; // @dynamic position;
+@property(retain, nonatomic) NSString *latestReleaseID;
+@property(retain, nonatomic) NSString *customProductPageIdentifier;
 @property(retain, nonatomic) NSString *providerToken;
 @property(retain, nonatomic) NSString *campaignToken; // @dynamic campaignToken;
 - (id)initWithBacking:(id)arg1;

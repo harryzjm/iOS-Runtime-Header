@@ -10,14 +10,14 @@
 
 @interface TSCHCompositeRenderer <TSCHCompositeRendering>
 {
-    NSArray *mSubRenderers;
-    TSCHRenderer *mEventHandler;
+    NSArray *_subRenderers;
+    TSCHRenderer *_eventHandler;
 }
 
 + (void)renderTSCHCompositeRendering:(id)arg1 intoContext:(struct CGContext *)arg2 visible:(struct CGRect)arg3;
 + (void)p_delegateSelector:(SEL)arg1 toRenderer:(id)arg2 transparencyLayer:(int)arg3 inContext:(struct CGContext *)arg4;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *renderers; // @synthesize renderers=mSubRenderers;
+@property(readonly, nonatomic) NSArray *renderers; // @synthesize renderers=_subRenderers;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (void)didEndTransparencyLayer:(int)arg1 inContext:(struct CGContext *)arg2;
 - (void)willEndTransparencyLayer:(int)arg1 inContext:(struct CGContext *)arg2;

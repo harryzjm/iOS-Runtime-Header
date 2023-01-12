@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoard/FBSceneManagerObserver-Protocol.h>
+#import <FrontBoard/FBSceneObserver-Protocol.h>
 
-@class FBScene, FBSceneManager, NSString;
+@class FBScene, NSString;
 
-@interface FBWaitForSceneDestructionTransaction <FBSceneManagerObserver>
+@interface FBWaitForSceneDestructionTransaction <FBSceneObserver>
 {
-    FBSceneManager *_sceneManager;
     FBScene *_sceneToWaitForDeath;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) FBScene *scene; // @synthesize scene=_sceneToWaitForDeath;
-- (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
+- (void)sceneDidInvalidate:(id)arg1;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
 - (_Bool)_canBeInterrupted;

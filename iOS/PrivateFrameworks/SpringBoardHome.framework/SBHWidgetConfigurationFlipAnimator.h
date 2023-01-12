@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoardHome/SBHWidgetConfigurationAnimating-Protocol.h>
+#import <SpringBoardHome/SBHViewControllerTransitionAnimating-Protocol.h>
 #import <SpringBoardHome/SBIconViewObserver-Protocol.h>
 
 @class NSString, SBFTouchPassThroughView, SBHWidgetConfigurationTransformView, SBHWidgetSettings, UIView, UIViewFloatAnimatableProperty;
 
-@interface SBHWidgetConfigurationFlipAnimator : NSObject <SBIconViewObserver, SBHWidgetConfigurationAnimating>
+@interface SBHWidgetConfigurationFlipAnimator : NSObject <SBIconViewObserver, SBHViewControllerTransitionAnimating>
 {
     SBHWidgetSettings *_widgetSettings;
     SBFTouchPassThroughView *_matchMoveView;
@@ -46,6 +46,7 @@
 @property(retain, nonatomic) SBHWidgetConfigurationTransformView *sourceContainerView; // @synthesize sourceContainerView=_sourceContainerView;
 @property(retain, nonatomic) SBFTouchPassThroughView *matchMoveView; // @synthesize matchMoveView=_matchMoveView;
 @property(readonly, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;
+- (void)iconViewDidBecomeWindowless:(id)arg1;
 - (void)iconViewWasRecycled:(id)arg1;
 - (void)_configureForEndpoint:(long long)arg1 context:(id)arg2 inMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)finalizeAnimationAtEndpoint:(long long)arg1 withContext:(id)arg2;

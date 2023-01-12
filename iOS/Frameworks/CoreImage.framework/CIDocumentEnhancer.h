@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 @property(copy, nonatomic) NSNumber *inputAmount; // @synthesize inputAmount;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 
 @end

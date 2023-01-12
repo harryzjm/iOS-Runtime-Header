@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, MRPlayerPath, NSArray, NSMutableArray, NSMutableSet;
+@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, MRNowPlayingSessionServiceClient, MRPlayerPath, NSArray, NSHashTable, NSMutableArray, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface MRMediaRemoteServiceClient : NSObject
@@ -16,7 +16,10 @@
     MRAVRoutingClientController *_routingClientController;
     MRPlayerPath *_activePlayerPath;
     NSMutableSet *_playerPathInvalidationHandlers;
+    NSHashTable *_weakEndpointObservers;
+    NSHashTable *_weakNowPlayingControllers;
     MRNotificationServiceClient *_notificationService;
+    MRNowPlayingSessionServiceClient *_nowPlayingSessionService;
     MRMediaRemoteService *_service;
     MRNotificationClient *_notificationClient;
     NSObject<OS_dispatch_queue> *_playbackQueueDispatchQueue;
@@ -27,6 +30,10 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *playbackQueueDispatchQueue; // @synthesize playbackQueueDispatchQueue=_playbackQueueDispatchQueue;
 @property(readonly, nonatomic) MRNotificationClient *notificationClient; // @synthesize notificationClient=_notificationClient;
 @property(readonly, nonatomic) MRMediaRemoteService *service; // @synthesize service=_service;
+- (void)removeNowPlayingController:(id)arg1;
+- (void)addNowPlayingController:(id)arg1;
+- (void)removeEndpointObserver:(id)arg1;
+- (void)addEndpointObserver:(id)arg1;
 - (void)processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (void)processPlayerPathInvalidationHandlersWithInvalidOrigin:(id)arg1;
 - (void)removeInvalidationHandler:(id)arg1;

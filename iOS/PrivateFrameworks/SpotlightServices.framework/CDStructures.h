@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGSize {
+    double _field1;
+    double _field2;
+};
+
 struct FeatureInfo {
     id _field1;
     unsigned short _field2;
@@ -72,6 +77,14 @@ struct prs_feature_population_ctx_t {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    long long _field1;
+    unsigned long long _field2[3];
+    unsigned long long _field3[3];
+    unsigned long long _field4[3];
+    void *_field5[0];
+} CDStruct_ff5cd05b;
 
 typedef struct {
     char *containerBytes;

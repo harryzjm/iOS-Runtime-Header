@@ -7,6 +7,7 @@
 @class CNKStagingAreaViewController, UIViewController;
 
 @protocol CNKStagingAreaViewControllerDelegate
+- (_Bool)isStagingViewControllerShowingInMiniWindow;
 - (void)viewControllerDidRequestTemporaryPreventSuspension:(UIViewController *)arg1;
 - (void)didRequestTransitionToCanvasFromStagingAreaViewController:(CNKStagingAreaViewController *)arg1;
 @end

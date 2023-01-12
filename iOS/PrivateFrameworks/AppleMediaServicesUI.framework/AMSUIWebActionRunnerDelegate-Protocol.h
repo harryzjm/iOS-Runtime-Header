@@ -11,7 +11,9 @@
 
 @protocol AMSUIWebActionRunnerDelegate <NSObject>
 - (AMSPromise *)action:(id <AMSUIWebActionRunnable>)arg1 pauseTimeouts:(_Bool)arg2 handleDialogRequest:(AMSDialogRequest *)arg3;
+- (AMSPromise *)action:(id <AMSUIWebActionRunnable>)arg1 pauseTimeouts:(_Bool)arg2 handleAuthenticateCloudRequest:(AMSAuthenticateRequest *)arg3;
 - (AMSPromise *)action:(id <AMSUIWebActionRunnable>)arg1 pauseTimeouts:(_Bool)arg2 handleAuthenticateRequest:(AMSAuthenticateRequest *)arg3;
+- (AMSPromise *)action:(id <AMSUIWebActionRunnable>)arg1 didResolveWithResult:(NSDictionary *)arg2 error:(NSError *)arg3;
 - (AMSPromise *)action:(id <AMSUIWebActionRunnable>)arg1 handleActionObject:(NSDictionary *)arg2;
 - (void)action:(id <AMSUIWebActionRunnable>)arg1 didEncodeNetworkRequest:(NSMutableURLRequest *)arg2;
 - (void)actionDidFinishPurchaseWithResult:(AMSPurchaseResult *)arg1 error:(NSError *)arg2;

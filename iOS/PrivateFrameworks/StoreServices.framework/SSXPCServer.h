@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface SSXPCServer : NSObject
@@ -17,9 +17,11 @@
     NSObject<OS_dispatch_queue> *_observerQueue;
     NSMutableDictionary *_observers;
     NSString *_serviceName;
+    NSMutableSet *_xpcRequestsCache;
 }
 
 + (id)mainServer;
+- (void)_recordCoreAnalyticsEventForClient:(id)arg1 andSelector:(id)arg2;
 - (void)_dispatchMessage:(id)arg1 connection:(id)arg2;
 - (void)start;
 - (void)removeObserver:(id)arg1 selector:(SEL)arg2 forMessage:(long long)arg3;

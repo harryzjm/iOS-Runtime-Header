@@ -6,15 +6,16 @@
 
 #import <CoreCDP/NSObject-Protocol.h>
 
-@class CDPContext, KCPairingChannel, NSDictionary, NSError, NSSet, NSString, OTClique;
+@class CDPContext, CDPCustodianRecoveryInfo, KCPairingChannel, NSDictionary, NSError, NSSet, NSString, OTClique;
 
 @protocol CDPDCircleProxy <NSObject>
 @property(readonly, nonatomic) CDPContext *cdpContext;
+- (void)recoverOctagonUsingCustodianInfo:(CDPCustodianRecoveryInfo *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)reportFailure:(NSError *)arg1;
 - (void)reportSuccess;
 - (void)waitForUpdate;
-- (KCPairingChannel *)pairingChannelAcceptor:(id *)arg1;
-- (KCPairingChannel *)pairingChannelInitiator:(id *)arg1;
+- (KCPairingChannel *)pairingChannelAcceptor;
+- (KCPairingChannel *)pairingChannelInitiator;
 - (_Bool)tryRegisteringCredentials;
 - (_Bool)registerCredentialsIfMissing;
 - (_Bool)registerCredentials;
@@ -22,11 +23,10 @@
 - (_Bool)isLastBackupMakingPeer:(id *)arg1;
 - (_Bool)removeNonViewAwarePeers:(id *)arg1;
 - (_Bool)hasNonViewAwarePeers;
+- (_Bool)setUserControllableViewsSyncStatus:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)setViewsWithEnableSet:(NSSet *)arg1 disableSet:(NSSet *)arg2;
 - (_Bool)anyPeerHasEnabledViewsInSet:(NSSet *)arg1 error:(id *)arg2;
-- (_Bool)viewMemberForAutofillPasswords:(id *)arg1;
-- (_Bool)requestToResetCloudKitDataForReason:(NSString *)arg1 error:(id *)arg2;
-- (_Bool)requestToResetCircle:(id *)arg1;
+- (_Bool)fetchUserControllableViewsSyncingEnabled:(id *)arg1;
 - (OTClique *)requestToResetProtectedData:(id *)arg1;
 - (_Bool)requestToJoinCircleAfterRestore:(id *)arg1;
 - (_Bool)requestToJoinCircle:(id *)arg1;
@@ -37,8 +37,10 @@
 - (void)didJoinCircleAfterRecovery:(OTClique *)arg1;
 - (NSDictionary *)peerDeviceNamesByPeerID;
 - (NSString *)peerId;
-- (int)cachedCircleStatus:(id *)arg1;
+- (int)cachedSOSCircleStatus:(id *)arg1;
+- (int)nonCachedSOSCircleStatus:(id *)arg1;
 - (unsigned long long)cachedCliqueStatus:(id *)arg1;
-- (unsigned long long)circleStatus:(id *)arg1;
+- (unsigned long long)combinedCachedCircleStatus:(id *)arg1;
+- (unsigned long long)combinedCircleStatus:(id *)arg1;
 @end
 

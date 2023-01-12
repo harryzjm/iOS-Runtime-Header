@@ -11,7 +11,7 @@
 
 @class NSString, UIFontDescriptor;
 
-@interface UIFont : NSObject <NSSecureCoding, NSCopying>
+@interface UIFont : NSObject <NSCopying, NSSecureCoding>
 {
 }
 
@@ -51,6 +51,12 @@
 + (id)_supportedDynamicFontStyles;
 + (_Bool)_isSupportedDynamicFontTextStyle:(id)arg1;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 weight:(id)arg3 symbolicTraits:(unsigned int)arg4 maximumContentSizeCategory:(id)arg5 compatibleWithTraitCollection:(id)arg6 pointSize:(double)arg7 pointSizeForScaling:(double)arg8;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 weight:(double)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5;
++ (id)_preferredFontForTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 design:(id)arg3 weight:(double)arg4;
++ (id)_preferredFontForTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 weight:(double)arg3;
++ (id)_preferredFontForTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 weight:(double)arg3;
++ (id)_preferredFontForTextStyle:(id)arg1 weight:(double)arg2;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5 pointSize:(double)arg6 pointSizeForScaling:(double)arg7;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5;
 + (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 compatibleWithTraitCollection:(id)arg4;
@@ -126,6 +132,7 @@
 - (_Bool)isIBFontMetricsScaledFont;
 - (_Bool)isIBTextStyleFont;
 - (id)_alternateSystemFonts;
+- (id)init;
 - (_Bool)_hasColorGlyphs;
 - (id)lastResortFont;
 - (id)bestMatchingFontForCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2 attributes:(id)arg3 actualCoveredLength:(unsigned long long *)arg4;

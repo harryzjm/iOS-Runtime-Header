@@ -47,7 +47,6 @@
 }
 
 + (id)searchDatabaseLog;
-+ (id)_scoreByUserCategory;
 + (struct sqlite3 *)_openDatabaseAtPath:(id)arg1 options:(long long)arg2;
 + (_Bool)_integrityCheckDatabase:(struct sqlite3 *)arg1;
 + (void)_dropDatabase:(struct sqlite3 *)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -55,6 +54,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long options; // @synthesize options=_options;
 @property(readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
+- (struct sqlite3 *)databaseConnection;
 - (void)_inqPerformBatch:(CDUnknownBlockType)arg1;
 - (void)_inqPrepareAndExecuteStatement:(const char *)arg1;
 - (void)_inqExecutePreparedStatement:(struct sqlite3_stmt *)arg1 withStatementBlock:(CDUnknownBlockType)arg2;
@@ -88,6 +88,7 @@
 - (unsigned long long)_inqAssetIdForUUID:(id)arg1;
 - (unsigned long long)_inqAssetIdForUUID:(id)arg1 uuid_0:(unsigned long long *)arg2 uuid_1:(unsigned long long *)arg3;
 - (void)_inqUpdateSearchTermsWithSearchableTermsByGroupIds:(id)arg1;
+- (void)_inqDeleteGroupsWithGraphCollectionsForPersonUUID:(id)arg1;
 - (void)_inqRemoveUnusedGroups;
 - (void)_inqRemoveUUID:(id)arg1 objectType:(unsigned long long)arg2 isInBatch:(_Bool)arg3;
 - (unsigned long long)_inqUpdateGroupForText:(id)arg1 normalizedText:(id)arg2 identifier:(id)arg3 category:(short)arg4 owningGroupId:(unsigned long long)arg5 shouldUpdateOwningGroupId:(_Bool)arg6 didUpdateGroup:(out _Bool *)arg7;
@@ -97,8 +98,10 @@
 - (void)_inqRecycleGroups;
 - (id)_inqDequeueGroupObjectWithId:(unsigned long long)arg1 isCachedGroup:(_Bool *)arg2;
 - (_Bool)assetExistsWithUUID:(id)arg1;
-- (id)dumpLookupStrings;
+- (id)dumpLookupStringsWithIndexCategories:(id)arg1;
+- (id)dumpPrefixStringsForAssetUUID:(id)arg1;
 - (id)dumpPrefixStrings;
+- (double)_scoreForUserCategory:(unsigned long long)arg1;
 - (id)_inqNumberOfCollectionsByGroupIdMatchingGroupsWithIds:(id)arg1;
 - (unsigned long long)_inqNumberOfCollectionsMatchingGroupWithId:(unsigned long long)arg1;
 - (id)_inqNumberOfAssetsByGroupIdMatchingGroupsWithIds:(id)arg1;
@@ -128,6 +131,7 @@
 - (_Bool)isLookupTableOutOfSync;
 - (id)allAssetUUIDsForGroupsWithCategories:(id)arg1;
 - (id)allCollectionUUIDsWithCollectionType:(unsigned long long)arg1;
+- (void)deleteGroupsWithGraphCollectionsForPersonUUIDs:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_removeUUIDs:(id)arg1 objectType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeCollectionsWithUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeCollectionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;

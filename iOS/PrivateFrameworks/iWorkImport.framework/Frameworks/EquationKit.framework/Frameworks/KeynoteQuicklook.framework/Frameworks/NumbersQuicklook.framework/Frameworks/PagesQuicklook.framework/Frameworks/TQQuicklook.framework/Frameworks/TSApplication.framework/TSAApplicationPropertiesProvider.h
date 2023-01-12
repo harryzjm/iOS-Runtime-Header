@@ -28,8 +28,6 @@
 @property(readonly, nonatomic) NSString *templateDocumentExtension;
 @property(readonly, nonatomic) NSString *templateSFFDocumentType;
 @property(readonly, nonatomic) NSString *templateDocumentType;
-@property(readonly, nonatomic) NSString *nativeDocumentExtension;
-@property(readonly, nonatomic) NSString *nativeDocumentType;
 
 @end
 

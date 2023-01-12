@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)dumpTablesToContext:(id)arg1 includeAllItems:(_Bool)arg2 error:(id *)arg3;
 - (id)initWithMangledID:(id)arg1 dbRowID:(id)arg2 db:(id)arg3 plist:(id)arg4 session:(id)arg5 initialCreation:(_Bool)arg6;
 - (void)removeAppLibrary:(id)arg1;
+- (void)addAppLibrary:(id)arg1 offline:(_Bool)arg2;
 - (void)addAppLibrary:(id)arg1;
 @property(readonly, nonatomic) NSSet *appLibraryIDs;
 - (id)pcsChainOperationForItemID:(id)arg1;

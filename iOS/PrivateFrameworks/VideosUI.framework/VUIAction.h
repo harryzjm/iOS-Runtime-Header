@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)actionWithDictionary:(id)arg1 viewElement:(id)arg2 appContext:(id)arg3;
++ (id)actionWithDictionary:(id)arg1 appContext:(id)arg2;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)isAccountRequired;
 

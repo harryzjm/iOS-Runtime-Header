@@ -8,7 +8,7 @@
 
 #import <CoreUtils/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class NSArray, NSError, NSMutableDictionary, NSString, UNUserNotificationCenter;
+@class NSArray, NSDictionary, NSError, NSMutableDictionary, NSString, UNUserNotificationCenter;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CUUserNotificationSession : NSObject <UNUserNotificationCenterDelegate>
@@ -26,6 +26,7 @@
     UNUserNotificationCenter *_unCenter;
     struct LogCategory *_ucat;
     unsigned int _flags;
+    int _interruptionLevel;
     CDUnknownBlockType _actionHandler;
     NSString *_bodyKey;
     NSArray *_bodyArguments;
@@ -36,6 +37,7 @@
     NSString *_iconAppIdentifier;
     NSString *_iconName;
     NSString *_iconPath;
+    NSString *_iconSystemName;
     NSString *_identifier;
     NSString *_label;
     long long _soundAlertType;
@@ -44,9 +46,11 @@
     double _timeoutSeconds;
     NSString *_titleKey;
     NSArray *_titleArguments;
+    NSDictionary *_userInfo;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSArray *titleArguments; // @synthesize titleArguments=_titleArguments;
 @property(copy, nonatomic) NSString *titleKey; // @synthesize titleKey=_titleKey;
 @property(nonatomic) double timeoutSeconds; // @synthesize timeoutSeconds=_timeoutSeconds;
@@ -54,7 +58,9 @@
 @property(copy, nonatomic) NSString *subtitleKey; // @synthesize subtitleKey=_subtitleKey;
 @property(nonatomic) long long soundAlertType; // @synthesize soundAlertType=_soundAlertType;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(nonatomic) int interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSString *iconSystemName; // @synthesize iconSystemName=_iconSystemName;
 @property(copy, nonatomic) NSString *iconPath; // @synthesize iconPath=_iconPath;
 @property(copy, nonatomic) NSString *iconName; // @synthesize iconName=_iconName;
 @property(copy, nonatomic) NSString *iconAppIdentifier; // @synthesize iconAppIdentifier=_iconAppIdentifier;

@@ -10,9 +10,6 @@
 {
 }
 
-+ (double)_computeOther2LeanBodyWeightFromWeight:(double)arg1 sex:(long long)arg2 waistCircumference:(double)arg3 forearmCircumference:(double)arg4 wristCircumference:(double)arg5 hipCircumference:(double)arg6;
-+ (double)_computeOther1LeanBodyWeightFromWeight:(double)arg1 height:(double)arg2 sex:(long long)arg3;
-+ (double)_computeHumeLeanBodyWeightFromWeight:(double)arg1 height:(double)arg2 sex:(long long)arg3;
 + (double)computeLeanBodyMassFromWeight:(double)arg1 height:(double)arg2 sex:(long long)arg3 waistCircumference:(double)arg4 forearmCircumference:(double)arg5 wristCircumference:(double)arg6 hipCircumference:(double)arg7;
 + (double)computeBasalMetabolicRateFromWeight:(double)arg1 height:(double)arg2 age:(double)arg3 sex:(long long)arg4;
 + (double)computeBodyFatPercentageFromWeight:(double)arg1 leanBodyMass:(double)arg2;

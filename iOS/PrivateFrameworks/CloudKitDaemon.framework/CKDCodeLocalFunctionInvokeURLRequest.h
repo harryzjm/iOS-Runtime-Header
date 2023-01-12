@@ -6,7 +6,6 @@
 
 @class NSData, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDCodeLocalFunctionInvokeURLRequest
 {
     CDUnknownBlockType _serializedResultsCallback;

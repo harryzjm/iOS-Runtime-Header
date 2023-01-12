@@ -19,7 +19,6 @@
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (void)executeForQueue:(id)arg1 delegate:(id)arg2 key:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

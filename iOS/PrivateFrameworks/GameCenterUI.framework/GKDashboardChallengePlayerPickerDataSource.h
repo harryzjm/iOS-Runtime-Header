@@ -15,6 +15,7 @@
     NSArray *_searchPlayers;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *searchPlayers; // @synthesize searchPlayers=_searchPlayers;
 @property(retain, nonatomic) NSMutableDictionary *playerAchievementDates; // @synthesize playerAchievementDates=_playerAchievementDates;
 @property(retain, nonatomic) NSMutableDictionary *playerStates; // @synthesize playerStates=_playerStates;
@@ -39,7 +40,6 @@
 - (id)currentPlayers;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)initWithChallenge:(id)arg1;
 
 @end

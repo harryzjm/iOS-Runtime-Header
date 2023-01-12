@@ -10,9 +10,15 @@
 {
 }
 
++ (void)setCustomHealthCheckIntervalMinutes:(long long)arg1;
++ (long long)customHealthCheckIntervalMinutes;
++ (void)setCustomHealthCheckIntervalEnabled:(_Bool)arg1;
++ (_Bool)isCustomHealthCheckIntervalEnabled;
 + (void)setExperimentalModeEnabled:(_Bool)arg1;
 + (_Bool)isExperimentalModeEnabled;
 + (_Bool)isRunningInStoreDemoMode;
++ (void)setShouldShowAccountContacts:(_Bool)arg1;
++ (_Bool)shouldShowAccountContacts;
 + (void)setShouldUseUnifiedLoginEndpoint:(_Bool)arg1;
 + (_Bool)shouldUseUnifiedLoginEndpoint;
 + (void)setMultipleFullAccountsEnabled:(_Bool)arg1;

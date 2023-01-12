@@ -22,9 +22,9 @@
 - (id)trailingNavigationBarButtons;
 - (void)setLeadingNavigationBarButtons:(id)arg1;
 - (id)leadingNavigationBarButtons;
-- (void)searchTemplateSearchButtonPressed:(id)arg1;
-- (void)searchTemplate:(id)arg1 selectedResult:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)searchTemplate:(id)arg1 updateSearchResultsForSearchText:(id)arg2 completionResults:(CDUnknownBlockType)arg3;
+- (void)searchTemplateSearchButtonPressedWithIdentifier:(id)arg1;
+- (void)searchTemplateWithIdentifier:(id)arg1 selectedResultWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)searchTemplateWithIdentifier:(id)arg1 updateSearchResultsForSearchText:(id)arg2 completionResults:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

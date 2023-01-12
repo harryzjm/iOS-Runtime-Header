@@ -9,16 +9,18 @@
 #import <Timeline/NSCopying-Protocol.h>
 #import <Timeline/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface TLPreviewTimelineSelectableRegion : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_path;
+    NSData *_accessibilityNode;
     struct CGRect _rect;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSData *accessibilityNode; // @synthesize accessibilityNode=_accessibilityNode;
 @property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 @property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -26,6 +28,7 @@
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithPath:(id)arg1 rect:(struct CGRect)arg2 accessibilityNode:(id)arg3;
 - (id)initWithPath:(id)arg1 rect:(struct CGRect)arg2;
 
 @end

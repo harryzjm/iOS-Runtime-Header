@@ -23,7 +23,7 @@
     SBAppStatusBarAssertionManager *_statusBarAssertionManager;
     SBMainDisplaySceneManager *_mainDisplaySceneManager;
     UIApplicationSceneSettingsDiffInspector *_applicationSceneSettingsDiffInspector;
-    int _currentStyleOverrides;
+    unsigned long long _currentStyleOverrides;
     id <SBNotchedStatusBarProximityBacklightPolicyEnablementConditionDelegate> _delegate;
     double _statusBarHeight;
     _Bool _isEnabled;
@@ -42,8 +42,8 @@
 - (void)statusBarAssertionManager:(id)arg1 statusBarSettingsDidChange:(id)arg2;
 - (void)statusBarServer:(id)arg1 didReceiveDoubleHeightStatusString:(id)arg2 forStyle:(long long)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveGlowAnimationState:(_Bool)arg2 forStyle:(long long)arg3;
-- (void)statusBarServer:(id)arg1 didReceiveStyleOverrides:(int)arg2;
-- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_3fd7985f *)arg2 withActions:(int)arg3;
+- (void)statusBarServer:(id)arg1 didReceiveStyleOverrides:(unsigned long long)arg2;
+- (void)statusBarServer:(id)arg1 didReceiveStatusBarData:(const CDStruct_e9def42b *)arg2 withActions:(int)arg3;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)invalidate;

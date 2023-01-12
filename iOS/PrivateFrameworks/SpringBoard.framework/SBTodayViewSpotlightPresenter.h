@@ -10,7 +10,7 @@
 #import <SpringBoard/SPUIRemoteSearchViewDelegate-Protocol.h>
 #import <SpringBoard/SPUISearchBarDelegate-Protocol.h>
 
-@class MTMaterialView, NSArray, NSLayoutConstraint, NSMutableSet, NSString, SBFFluidBehaviorSettings, SBHFeatherBlurView, SBHHomePullToSearchSettings, SPUISearchBarController, UIScrollView, UIView, _SBTodaySpotlightViewController, _UIPortalView;
+@class MTMaterialView, NSArray, NSLayoutConstraint, NSMutableSet, NSString, SBFFeatherBlurView, SBFFluidBehaviorSettings, SBHHomePullToSearchSettings, SPUISearchBarController, UIScrollView, UIView, _SBTodaySpotlightViewController, _UIPortalView;
 @protocol SBTodayViewSpotlightPresenterDelegate;
 
 @interface SBTodayViewSpotlightPresenter : NSObject <SPUISearchBarDelegate, SPUIRemoteSearchViewDelegate, PTSettingsKeyObserver>
@@ -24,7 +24,7 @@
     id <SBTodayViewSpotlightPresenterDelegate> _delegate;
     SBFFluidBehaviorSettings *_searchAnimationSettings;
     long long _searchState;
-    SBHFeatherBlurView *_featherBlurView;
+    SBFFeatherBlurView *_featherBlurView;
     NSLayoutConstraint *_featherBlurHeightConstraint;
     NSArray *_searchBarGradientMaskLayers;
     MTMaterialView *_searchBackdropView;
@@ -40,7 +40,7 @@
 @property(retain, nonatomic) MTMaterialView *searchBackdropView; // @synthesize searchBackdropView=_searchBackdropView;
 @property(retain, nonatomic) NSArray *searchBarGradientMaskLayers; // @synthesize searchBarGradientMaskLayers=_searchBarGradientMaskLayers;
 @property(retain, nonatomic) NSLayoutConstraint *featherBlurHeightConstraint; // @synthesize featherBlurHeightConstraint=_featherBlurHeightConstraint;
-@property(retain, nonatomic) SBHFeatherBlurView *featherBlurView; // @synthesize featherBlurView=_featherBlurView;
+@property(retain, nonatomic) SBFFeatherBlurView *featherBlurView; // @synthesize featherBlurView=_featherBlurView;
 @property(nonatomic) _Bool scrollViewBeganScrollingFromTop; // @synthesize scrollViewBeganScrollingFromTop=_scrollViewBeganScrollingFromTop;
 @property(nonatomic) long long searchState; // @synthesize searchState=_searchState;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *searchAnimationSettings; // @synthesize searchAnimationSettings=_searchAnimationSettings;
@@ -60,6 +60,7 @@
 - (void)_willPresentSpotlightAnimated:(_Bool)arg1;
 - (void)_endRequiringSearchBarPortalViewForReason:(id)arg1;
 - (void)_beginRequiringSearchBarPortalViewForReason:(id)arg1;
+- (id)sharedRemoteSearchViewController;
 - (double)_topOffset;
 - (void)_layoutSearchViews;
 - (void)_layoutSearchViewsWithMode:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;

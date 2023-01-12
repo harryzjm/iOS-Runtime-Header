@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasLoadedResource; // @synthesize hasLoadedResource=_hasLoadedResource;
 @property(readonly, copy, nonatomic) NSString *MIMEType; // @synthesize MIMEType=_MIMEType;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-- (void)ensureEvent;
+- (void)ensureEventWithSpecialization:(unsigned long long)arg1;
 - (id)initWithURL:(id)arg1 MIMEType:(id)arg2 webView:(id)arg3 hasLoadedResource:(_Bool)arg4 shouldFetchSubresources:(_Bool)arg5 allowedSpecializations:(unsigned long long)arg6;
 
 @end

@@ -6,12 +6,17 @@
 
 #import <MetalTools/MTLLibrary-Protocol.h>
 
-@class MTLFunctionConstantValues, NSArray, NSString;
-@protocol MTLFunction, MTLPipelineLibrary;
+@class MTLFunctionConstantValues, MTLFunctionDescriptor, NSArray, NSData, NSString, NSURL, NSUUID;
+@protocol MTLBinaryArchive, MTLFunction, MTLPipelineLibrary;
 
 @protocol MTLLibrarySPI <MTLLibrary>
+@property(readonly, copy) NSUUID *libraryIdentifier;
+@property(readonly) NSData *bitcodeData;
 @property(readonly) NSArray *externFunctionNames;
+@property(nonatomic) _Bool shaderValidationEnabled;
 @property(copy) NSString *overrideTriple;
+- (_Bool)serializeToURL:(NSURL *)arg1 error:(id *)arg2;
+- (id <MTLFunction>)newFunctionWithDescriptor:(MTLFunctionDescriptor *)arg1 destinationArchive:(id <MTLBinaryArchive>)arg2 error:(id *)arg3;
 - (void)newFunctionWithName:(NSString *)arg1 constantValues:(MTLFunctionConstantValues *)arg2 pipelineLibrary:(id <MTLPipelineLibrary>)arg3 completionHandler:(void (^)(id <MTLFunction>, NSError *))arg4;
 - (id <MTLFunction>)newFunctionWithName:(NSString *)arg1 constantValues:(MTLFunctionConstantValues *)arg2 pipelineLibrary:(id <MTLPipelineLibrary>)arg3 error:(id *)arg4;
 - (id <MTLFunction>)newExternFunctionWithName:(NSString *)arg1;

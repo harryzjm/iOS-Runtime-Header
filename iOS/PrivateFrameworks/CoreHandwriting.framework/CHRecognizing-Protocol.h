@@ -16,6 +16,7 @@
 @property(retain, nonatomic) NSCharacterSet *activeCharacterSet;
 @property(nonatomic) unsigned long long maxRecognitionResultCount;
 @property(readonly, copy, nonatomic) NSLocale *locale;
+@property(nonatomic) int autoCorrectionMode;
 @property(nonatomic) int autoCapitalizationMode;
 @property(nonatomic) int contentType;
 @property(readonly, nonatomic) int recognitionMode;

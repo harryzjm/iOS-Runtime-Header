@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completionCallback;
     CDUnknownBlockType _connectionCallback;
     struct mutex _mapMutex;
-    struct map<unsigned long, AVHapticSequenceEntry *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, AVHapticSequenceEntry *>>> _sequenceEntryMap;
+    struct map<unsigned long, AVHapticSequenceEntry *, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, AVHapticSequenceEntry *>>> _sequenceEntryMap;
     NSObject<OS_dispatch_queue> *_completionQueue;
     int _state;
     _Bool _disconnecting;
@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)detachHapticSequence:(unsigned long long)arg1;
 - (_Bool)clearSequenceEvents:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)setSequenceChannelParameter:(unsigned long long)arg1 atTime:(double)arg2 value:(float)arg3 sequenceID:(unsigned long long)arg4 channel:(unsigned long long)arg5;
+- (_Bool)resetHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)seekHapticSequence:(unsigned long long)arg1 toTime:(double)arg2;
 - (_Bool)resumeHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;
 - (_Bool)pauseHapticSequence:(unsigned long long)arg1 atTime:(double)arg2;

@@ -8,8 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class GEORPIncidentField;
+
 @interface GEORPFeedbackLayoutFieldName : PBCodable <NSCopying>
 {
+    GEORPIncidentField *_incidentField;
     int _addressFieldName;
     int _curatedCollectionFieldName;
     int _groundviewFieldName;
@@ -31,6 +34,7 @@
 }
 
 + (_Bool)isValid:(id)arg1;
+- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -44,6 +48,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPIncidentField *incidentField;
+@property(readonly, nonatomic) _Bool hasIncidentField;
 - (int)StringAsCuratedCollectionFieldName:(id)arg1;
 - (id)curatedCollectionFieldNameAsString:(int)arg1;
 @property(nonatomic) _Bool hasCuratedCollectionFieldName;

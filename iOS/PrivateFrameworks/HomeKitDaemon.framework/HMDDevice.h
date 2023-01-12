@@ -6,6 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreModelBackedObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDRemoteAddressable-Protocol.h>
@@ -17,7 +18,7 @@
 @class HMDAccount, HMDDeviceCapabilities, HMDHomeKitVersion, HMDRPIdentity, HMFNetService, HMFProductInfo, HMFUnfairLock, NSArray, NSData, NSSet, NSString, NSUUID;
 @protocol HMFCancellable;
 
-@interface HMDDevice : HMFObject <HMFObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, HMFMerging, NSSecureCoding>
+@interface HMDDevice : HMFObject <HMBModelObjectCoder, HMFObject, HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, HMFMerging, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     NSSet *_handles;
@@ -43,13 +44,13 @@
 + (id)deviceWithHandle:(id)arg1;
 + (id)deviceWithDestination:(id)arg1;
 + (id)destinationForDevice:(id)arg1 service:(id)arg2;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(getter=isCloudTracked) _Bool cloudTracked; // @synthesize cloudTracked=_cloudTracked;
 @property(getter=isLocallyTracked) _Bool locallyTracked; // @synthesize locallyTracked=_locallyTracked;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSUUID *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 - (void)startObservingIsPublishingForService:(id)arg1;
-- (_Bool)swapToNetServiceKVOCancellation:(id)arg1 swapToObservedNetService:(id)arg2;
 - (_Bool)isPublishingOnObservedNetService;
 - (_Bool)isBackingStorageEqual:(id)arg1;
 - (id)modelBackedObjects;
@@ -96,6 +97,7 @@
 - (id)deviceForIDSService:(id)arg1;
 - (id)initWithService:(id)arg1 device:(id)arg2;
 @property(readonly, copy) NSArray *identities;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 @property(readonly, getter=isCurrentDevice) _Bool currentDevice;
 
 // Remaining properties

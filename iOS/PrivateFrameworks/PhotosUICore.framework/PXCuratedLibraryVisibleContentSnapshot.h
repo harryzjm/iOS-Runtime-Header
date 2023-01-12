@@ -14,7 +14,7 @@
 {
     CDUnknownBlockType _dateIntervalFuture;
     CDUnknownBlockType _locationNamesFuture;
-    unsigned long long _dataSourceIdentifier;
+    long long _dataSourceIdentifier;
     _Bool _isFiltering;
 }
 

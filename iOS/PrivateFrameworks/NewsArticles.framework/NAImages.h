@@ -18,7 +18,8 @@
 + (id)openInSafariActivity;
 + (id)reportActivity;
 + (id)copyLinkActivity;
-+ (id)delete;
++ (id)reload;
++ (id)remove;
 + (id)readStory;
 + (id)playLast;
 + (id)playNext;
@@ -28,6 +29,9 @@
 + (id)rightArrow;
 + (id)sharrowCompact;
 + (id)sharrow;
++ (id)moreActions;
++ (id)iconTextSizeControlSmaller;
++ (id)iconTextSizeControlLarger;
 + (id)iconTextSizeControlCompact;
 + (id)iconTextSizeControl;
 - (void).cxx_destruct;

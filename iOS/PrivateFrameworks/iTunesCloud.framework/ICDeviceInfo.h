@@ -45,6 +45,7 @@
 + (id)currentDeviceInfo;
 - (void).cxx_destruct;
 - (int)_gestaltDeviceClass;
+@property(readonly, nonatomic) _Bool supportsMultipleITunesAccounts;
 @property(readonly, nonatomic) _Bool supportsMusicStreaming;
 @property(readonly, nonatomic) _Bool supportsSideLoadedMediaContent;
 @property(readonly, copy, nonatomic) NSString *currentLocale;

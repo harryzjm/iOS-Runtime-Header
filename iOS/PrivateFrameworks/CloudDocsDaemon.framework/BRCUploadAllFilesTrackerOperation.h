@@ -9,7 +9,6 @@
 
 @class BRCAccountSession, NSMutableArray, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCUploadAllFilesTrackerOperation <BRCAllItemsDidUploadTracker, BRCOperationSubclass>
 {
     BRCAccountSession *_session;

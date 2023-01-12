@@ -11,11 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilitySetBorderFloatValue:(double)arg1;
-- (double)_accessibilitySplitViewControllerWidth;
-- (double)_accessibilityMaximumColumnWidth;
-- (double)_accessibilityMinimumColumnWidth;
-- (double)_accessibilityColumnWidth;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (long long)_accessibilityOrientation;
@@ -29,10 +24,6 @@
 - (unsigned long long)accessibilityTraits;
 - (id)_accessibilityUIViewAccessibilityFrame;
 - (_Bool)isAccessibilityElement;
-- (void)_axSetIsPrimaryBorder:(_Bool)arg1;
-- (_Bool)_axIsPrimaryBorder;
-- (void)_axSetSplitViewControllerImplementation:(id)arg1;
-- (id)_axSplitViewControllerImplementation;
 
 @end
 

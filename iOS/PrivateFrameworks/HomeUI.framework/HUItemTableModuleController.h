@@ -14,11 +14,13 @@
 @interface HUItemTableModuleController : NSObject <HUItemTableTextEditingController>
 {
     id <HUItemTableModuleControllerHosting> _host;
+    unsigned long long _hostType;
     HFItemModule *_module;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HFItemModule *module; // @synthesize module=_module;
+@property(nonatomic) unsigned long long hostType; // @synthesize hostType=_hostType;
 @property(nonatomic) __weak id <HUItemTableModuleControllerHosting> host; // @synthesize host=_host;
 - (id)textFieldForVisibleItem:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
@@ -28,6 +30,8 @@
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
 - (_Bool)shouldManageTextFieldForItem:(id)arg1;
+- (_Bool)shouldHideHeaderAboveSectionWithIdentifier:(id)arg1;
+- (_Bool)shouldHideFooterBelowSectionWithIdentifier:(id)arg1;
 - (id)trailingSwipeActionsForItem:(id)arg1;
 - (id)leadingSwipeActionsForItem:(id)arg1;
 - (long long)rowAnimationForOperationType:(unsigned long long)arg1 item:(id)arg2 suggestedAnimation:(long long)arg3;
@@ -35,8 +39,10 @@
 - (unsigned long long)didSelectItem:(id)arg1;
 - (_Bool)canSelectDisabledItem:(id)arg1;
 - (_Bool)canSelectItem:(id)arg1;
+- (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
+- (Class)collectionCellClassForItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
 

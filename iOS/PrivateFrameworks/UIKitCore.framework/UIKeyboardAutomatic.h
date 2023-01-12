@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class _UIStringAndPositionPair;
 @protocol UITextCursorAssertion;
 
 __attribute__((visibility("hidden")))
@@ -13,11 +14,17 @@ __attribute__((visibility("hidden")))
     _Bool showsCandidateInline;
     _Bool receivedCandidatesInCurrentInputMode;
     id <UITextCursorAssertion> _blinkAssertion;
+    _UIStringAndPositionPair *_lastMatchedSupplementalCandidate;
+    _UIStringAndPositionPair *_pendingSupplementalCandidateToInsert;
+    unsigned long long _lastChooseSupplementalItemToInsertCallbackIdentifier;
 }
 
 + (id)activeInstance;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long lastChooseSupplementalItemToInsertCallbackIdentifier; // @synthesize lastChooseSupplementalItemToInsertCallbackIdentifier=_lastChooseSupplementalItemToInsertCallbackIdentifier;
+@property(retain, nonatomic) _UIStringAndPositionPair *pendingSupplementalCandidateToInsert; // @synthesize pendingSupplementalCandidateToInsert=_pendingSupplementalCandidateToInsert;
+@property(retain, nonatomic) _UIStringAndPositionPair *lastMatchedSupplementalCandidate; // @synthesize lastMatchedSupplementalCandidate=_lastMatchedSupplementalCandidate;
 @property(retain, nonatomic) id <UITextCursorAssertion> blinkAssertion; // @synthesize blinkAssertion=_blinkAssertion;
 @property(nonatomic) _Bool receivedCandidatesInCurrentInputMode; // @synthesize receivedCandidatesInCurrentInputMode;
 @property(nonatomic) _Bool showsCandidateInline; // @synthesize showsCandidateInline;

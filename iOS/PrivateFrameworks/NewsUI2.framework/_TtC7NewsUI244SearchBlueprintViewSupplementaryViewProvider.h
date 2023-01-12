@@ -13,6 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *headerRenderer;
     MISSING_TYPE *footerRenderer;
+    MISSING_TYPE *feedItemSupplementaryRenderer;
 }
 
 @end

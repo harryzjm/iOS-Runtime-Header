@@ -29,6 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)filterOuterRegions:(id)arg1;
 - (id)autoFavoriteTagIDsForLocation:(id)arg1;
+- (id)areasForLocation:(id)arg1;
 - (id)regionsForLocation:(id)arg1;
 @property(readonly, nonatomic) unsigned long long count;
 - (id)init;

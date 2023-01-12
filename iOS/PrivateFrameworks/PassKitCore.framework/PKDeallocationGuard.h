@@ -6,16 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@interface PKDeallocationGuard : NSObject
+#import <PassKitCore/PKInvalidatable-Protocol.h>
+
+@class NSString;
+
+@interface PKDeallocationGuard : NSObject <PKInvalidatable>
 {
+    _Atomic _Bool _invalidated;
     CDUnknownBlockType _block;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
+@property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
 - (void)invalidate;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

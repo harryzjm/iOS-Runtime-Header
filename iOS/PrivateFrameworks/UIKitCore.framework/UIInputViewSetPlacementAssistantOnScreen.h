@@ -11,13 +11,18 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)infoWithPoint:(struct CGPoint)arg1 isCompact:(_Bool)arg2 frame:(struct CGRect)arg3 position:(unsigned long long)arg4;
 + (_Bool)supportsSecureCoding;
+- (struct UIEdgeInsets)inputAccessoryViewPadding;
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(_Bool)arg2;
 - (double)inputAssistantViewHeightForInputViewSet:(id)arg1;
-- (_Bool)inputViewWillAppear;
 - (_Bool)accessoryViewWillAppear;
+- (_Bool)inputViewWillAppear;
+- (_Bool)showsEditItems;
 - (_Bool)showsInputOrAssistantViews;
 - (_Bool)showsInputViews;
+- (_Bool)isFloatingAssistantView;
+- (double)verticalOffset;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (Class)applicatorClassForKeyboard:(_Bool)arg1;
 

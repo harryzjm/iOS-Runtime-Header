@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)classDefaultsForClass:(Class)arg1;
++ (void)clearCache;
++ (id)cache;
 
 @end
 

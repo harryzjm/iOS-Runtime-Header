@@ -6,14 +6,17 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSSet, PKAppletSubcredentialSharingInvitation, PKBarcodeEventMetadataRequest;
+@class NSSet, PKAppletSubcredentialSharingInvitation, PKBarcodeEventMetadataRequest, PKPaymentPass, PKPaymentTransaction;
 
 @protocol NPKNanoPassDaemonConnectionProtocol <PDXPCServiceExportedInterface>
 - (void)noteWillDeleteAccountsWithCompletion:(void (^)(void))arg1;
+- (void)identityPassPrearmStatusWithCompletion:(void (^)(long long))arg1;
 - (void)statusForReceivedInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 completion:(void (^)(unsigned long long))arg2;
 - (void)statusForSentInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 completion:(void (^)(unsigned long long))arg2;
 - (void)startSubcredentialProvisioningOnLocalDeviceMatchingInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 shouldFetchAnonymizationSaltFromRemoteDevice:(_Bool)arg2 completion:(void (^)(PKPaymentPass *, NSError *))arg3;
 - (void)startSubcredentialProvisioningOnRemoteDeviceForInvitation:(PKAppletSubcredentialSharingInvitation *)arg1;
+- (void)canAcceptInvitationOnRemoteDeviceForInvitation:(PKAppletSubcredentialSharingInvitation *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)handleApplicationRedirectRequestOnPairedDeviceForPaymentPass:(PKPaymentPass *)arg1 transaction:(PKPaymentTransaction *)arg2;
 - (void)handleMetadataRequestOnPairedDevice:(PKBarcodeEventMetadataRequest *)arg1 withAssociatedApplicationIdentifiers:(NSSet *)arg2 completion:(void (^)(PKBarcodeEventMetadataResponse *, NSError *))arg3;
 @end
 

@@ -10,7 +10,7 @@
 
 @interface CCVegaAccessibilityHelper : NSObject
 {
-    struct stack<CCVegaAccessibilityHelperState, std::__1::deque<CCVegaAccessibilityHelperState, std::__1::allocator<CCVegaAccessibilityHelperState>>> _stateStack;
+    struct stack<CCVegaAccessibilityHelperState, std::deque<CCVegaAccessibilityHelperState>> _stateStack;
     struct {
         struct CGPoint origin;
         _Bool ariaHidden;

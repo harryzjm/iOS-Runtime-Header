@@ -10,7 +10,7 @@
 #import <CallKit/CXTransactionManagerDelegate-Protocol.h>
 #import <CallKit/NSXPCListenerDelegate-Protocol.h>
 
-@class CXTransactionGroup, CXTransactionManager, NSArray, NSMutableSet, NSString, NSXPCListener;
+@class CXTransactionGroup, CXTransactionManager, NSArray, NSMutableDictionary, NSString, NSXPCListener;
 @protocol CXCallSourceManagerDelegate, OS_dispatch_queue;
 
 @interface CXCallSourceManager : NSObject <NSXPCListenerDelegate, CXCallSourceDelegate, CXTransactionManagerDelegate>
@@ -18,20 +18,20 @@
     NSObject<OS_dispatch_queue> *_queue;
     id <CXCallSourceManagerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSXPCListener *_xpcListener;
-    NSMutableSet *_mutableCallSources;
-    CXTransactionGroup *_uncommittedTransactionGroup;
+    NSMutableDictionary *_identifierToCallSource;
     CXTransactionManager *_transactionManager;
+    CXTransactionGroup *_uncommittedTransactionGroup;
+    NSXPCListener *_xpcListener;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CXTransactionManager *transactionManager; // @synthesize transactionManager=_transactionManager;
+@property(readonly, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 @property(retain, nonatomic) CXTransactionGroup *uncommittedTransactionGroup; // @synthesize uncommittedTransactionGroup=_uncommittedTransactionGroup;
-@property(retain, nonatomic) NSMutableSet *mutableCallSources; // @synthesize mutableCallSources=_mutableCallSources;
-@property(retain, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(nonatomic) __weak id <CXCallSourceManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) CXTransactionManager *transactionManager; // @synthesize transactionManager=_transactionManager;
+@property(readonly, nonatomic) NSMutableDictionary *identifierToCallSource; // @synthesize identifierToCallSource=_identifierToCallSource;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property(readonly, nonatomic) __weak id <CXCallSourceManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)transactionManager:(id)arg1 transactionGroupCompleted:(id)arg2;
 - (void)transactionManager:(id)arg1 actionTimedOut:(id)arg2 forCallSource:(id)arg3;
 - (void)callSource:(id)arg1 actionCompleted:(id)arg2;
@@ -58,8 +58,8 @@
 - (void)addAction:(id)arg1 toUncommittedTransactionForCallSource:(id)arg2;
 - (void)commitTransaction:(id)arg1 toCallSource:(id)arg2;
 - (void)removeCallSource:(id)arg1;
-- (void)addCallSource:(id)arg1;
 - (id)callSourceWithIdentifier:(id)arg1;
+- (void)addCallSource:(id)arg1;
 @property(readonly, nonatomic) NSArray *callSources;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)init;

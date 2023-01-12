@@ -11,6 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface NSISVariableObservation : NSObject
 {
+    NSISVariableObservation *_nextDirtyObservation;
+    NSISVariableObservation *_prevDirtyObservation;
     NSISVariable *_variable;
     double _lastValue;
     _Bool _valueIsDirtied;

@@ -6,13 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <CarPlay/CPAccNavPrimaryUpdateProtocol-Protocol.h>
 #import <CarPlay/NSCopying-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class CPImageSet, CPTravelEstimates, NSArray, NSMeasurement, NSSet, NSUUID, UIImage;
+@class CPImageSet, CPLaneGuidance, CPTravelEstimates, NSArray, NSMeasurement, NSSet, NSString, NSUUID, UIImage;
 
-@interface CPManeuver : NSObject <NSCopying, NSSecureCoding>
+@interface CPManeuver : NSObject <CPAccNavPrimaryUpdateProtocol, NSCopying, NSSecureCoding>
 {
+    unsigned char _maneuverType;
+    unsigned char _trafficSide;
+    unsigned char _junctionType;
+    unsigned short _componentID;
+    unsigned short _linkedLaneGuidanceIndex;
+    unsigned short _index;
+    NSUUID *_identifier;
     CPImageSet *_symbolSet;
     NSArray *_instructionVariants;
     CPTravelEstimates *_initialTravelEstimates;
@@ -22,37 +30,42 @@
     NSArray *_notificationInstructionVariants;
     NSArray *_notificationAttributedInstructionVariants;
     id _userInfo;
-    NSUUID *_identifier;
-    unsigned long long _maneuverType;
-    NSArray *_roadFollowingManeuverVariants;
-    unsigned long long _trafficSide;
-    unsigned long long _junctionType;
-    NSMeasurement *_junctionExitAngle;
-    NSSet *_junctionElementAngles;
+    NSArray *_stringInstructionVariants;
     long long _displayStyle;
     CPImageSet *_junctionImageSet;
     CPImageSet *_dashboardSymbolImageSet;
     CPImageSet *_dashboardJunctionImageSet;
     CPImageSet *_notificationSymbolImageSet;
+    NSArray *_roadFollowingManeuverVariants;
+    NSMeasurement *_junctionExitAngle;
+    NSSet *_junctionElementAngles;
+    CPLaneGuidance *_linkedLaneGuidance;
+    NSString *_exitInfo;
 }
 
-+ (id)_descriptionForJunctionType:(unsigned long long)arg1;
-+ (id)_descriptionForTrafficSide:(unsigned long long)arg1;
-+ (id)_descriptionForManeuverType:(unsigned long long)arg1;
++ (id)_descriptionForJunctionType:(unsigned char)arg1;
++ (id)_descriptionForTrafficSide:(unsigned char)arg1;
++ (id)_descriptionForManeuverType:(unsigned char)arg1;
 + (_Bool)supportsSecureCoding;
++ (id)accNavParameters;
 - (void).cxx_destruct;
+@property(copy) NSString *exitInfo; // @synthesize exitInfo=_exitInfo;
+@property(nonatomic) CPLaneGuidance *linkedLaneGuidance; // @synthesize linkedLaneGuidance=_linkedLaneGuidance;
+@property(copy, nonatomic) NSSet *junctionElementAngles; // @synthesize junctionElementAngles=_junctionElementAngles;
+@property(copy, nonatomic) NSMeasurement *junctionExitAngle; // @synthesize junctionExitAngle=_junctionExitAngle;
+@property(nonatomic) unsigned char junctionType; // @synthesize junctionType=_junctionType;
+@property(nonatomic) unsigned char trafficSide; // @synthesize trafficSide=_trafficSide;
+@property(copy, nonatomic) NSArray *roadFollowingManeuverVariants; // @synthesize roadFollowingManeuverVariants=_roadFollowingManeuverVariants;
+@property(nonatomic) unsigned char maneuverType; // @synthesize maneuverType=_maneuverType;
+@property(nonatomic) unsigned short index; // @synthesize index=_index;
+@property(nonatomic) unsigned short linkedLaneGuidanceIndex; // @synthesize linkedLaneGuidanceIndex=_linkedLaneGuidanceIndex;
+@property(nonatomic) unsigned short componentID; // @synthesize componentID=_componentID;
 @property(retain, nonatomic) CPImageSet *notificationSymbolImageSet; // @synthesize notificationSymbolImageSet=_notificationSymbolImageSet;
 @property(retain, nonatomic) CPImageSet *dashboardJunctionImageSet; // @synthesize dashboardJunctionImageSet=_dashboardJunctionImageSet;
 @property(retain, nonatomic) CPImageSet *dashboardSymbolImageSet; // @synthesize dashboardSymbolImageSet=_dashboardSymbolImageSet;
 @property(retain, nonatomic) CPImageSet *junctionImageSet; // @synthesize junctionImageSet=_junctionImageSet;
 @property(nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
-@property(copy, nonatomic) NSSet *junctionElementAngles; // @synthesize junctionElementAngles=_junctionElementAngles;
-@property(copy, nonatomic) NSMeasurement *junctionExitAngle; // @synthesize junctionExitAngle=_junctionExitAngle;
-@property(nonatomic) unsigned long long junctionType; // @synthesize junctionType=_junctionType;
-@property(nonatomic) unsigned long long trafficSide; // @synthesize trafficSide=_trafficSide;
-@property(copy, nonatomic) NSArray *roadFollowingManeuverVariants; // @synthesize roadFollowingManeuverVariants=_roadFollowingManeuverVariants;
-@property(nonatomic) unsigned long long maneuverType; // @synthesize maneuverType=_maneuverType;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) NSArray *stringInstructionVariants; // @synthesize stringInstructionVariants=_stringInstructionVariants;
 @property(retain, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSArray *notificationAttributedInstructionVariants; // @synthesize notificationAttributedInstructionVariants=_notificationAttributedInstructionVariants;
 @property(copy, nonatomic) NSArray *notificationInstructionVariants; // @synthesize notificationInstructionVariants=_notificationInstructionVariants;
@@ -62,18 +75,25 @@
 @property(retain, nonatomic) CPTravelEstimates *initialTravelEstimates; // @synthesize initialTravelEstimates=_initialTravelEstimates;
 @property(copy, nonatomic) NSArray *instructionVariants; // @synthesize instructionVariants=_instructionVariants;
 @property(retain, nonatomic) CPImageSet *symbolSet; // @synthesize symbolSet=_symbolSet;
+@property(retain, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (_Bool)isEqual:(id)arg1;
 @property(retain, nonatomic) UIImage *notificationSymbolImage;
 @property(retain, nonatomic) UIImage *dashboardJunctionImage;
 @property(retain, nonatomic) UIImage *dashboardSymbolImage;
 @property(retain, nonatomic) UIImage *junctionImage;
 @property(retain, nonatomic) UIImage *symbolImage;
-- (id)description;
-@property(readonly) NSArray *stringInstructionVariants;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+@property(retain, nonatomic) NSMeasurement *initialDistanceDisplay;
+@property(retain, nonatomic) NSMeasurement *initialDistance;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

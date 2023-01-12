@@ -10,7 +10,6 @@
 
 @class CKDPStreamingAssetIdentifier, CKDPStreamingAssetRetrieveAssetResponse, CKDPStreamingAssetSaveAssetRequest, CKDPStreamingAssetSaveAssetResponse;
 
-__attribute__((visibility("hidden")))
 @interface CKDPStreamingAsset : PBCodable <NSCopying>
 {
     CKDPStreamingAssetIdentifier *_assetId;

@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithName:(id)arg1;
 - (id)__initWithName:(id)arg1 cache:(_Bool)arg2;
 - (id)initWithName:(id)arg1 data:(id)arg2;
-- (id)__initWithName:(id)arg1 data:(id)arg2 cache:(_Bool)arg3;
+- (id)__initWithName:(id)arg1 data:(id)arg2 secondsFromGMT:(int)arg3 cache:(_Bool)arg4;
 
 @end
 

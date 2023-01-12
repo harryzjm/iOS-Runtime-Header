@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MapsSuggestions/MapsSuggestionsJSONable-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
 @protocol MapsSuggestionsTriggerObserver;
 
-@protocol MapsSuggestionsTrigger <MapsSuggestionsObject>
+@protocol MapsSuggestionsTrigger <MapsSuggestionsObject, MapsSuggestionsJSONable>
 - (_Bool)hasObservers;
-- (void)removeObserver:(id <MapsSuggestionsTriggerObserver>)arg1;
-- (void)addObserver:(id <MapsSuggestionsTriggerObserver>)arg1;
+- (void)unregisterObserver:(id <MapsSuggestionsTriggerObserver>)arg1;
+- (void)registerObserver:(id <MapsSuggestionsTriggerObserver>)arg1;
 @end
 

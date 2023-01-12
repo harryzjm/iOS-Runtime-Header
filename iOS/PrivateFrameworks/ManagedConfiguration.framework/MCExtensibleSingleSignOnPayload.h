@@ -15,12 +15,16 @@
     NSDictionary *_esso_extensionData;
     NSArray *_esso_URLs;
     NSArray *_esso_hosts;
+    NSString *_esso_screenLockedBehavior;
+    NSArray *_esso_deniedBundleIdentifiers;
 }
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *esso_deniedBundleIdentifiers; // @synthesize esso_deniedBundleIdentifiers=_esso_deniedBundleIdentifiers;
+@property(retain, nonatomic) NSString *esso_screenLockedBehavior; // @synthesize esso_screenLockedBehavior=_esso_screenLockedBehavior;
 @property(retain, nonatomic) NSArray *esso_hosts; // @synthesize esso_hosts=_esso_hosts;
 @property(retain, nonatomic) NSArray *esso_URLs; // @synthesize esso_URLs=_esso_URLs;
 @property(retain, nonatomic) NSDictionary *esso_extensionData; // @synthesize esso_extensionData=_esso_extensionData;

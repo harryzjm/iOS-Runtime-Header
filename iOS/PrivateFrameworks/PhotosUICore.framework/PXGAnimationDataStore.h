@@ -20,7 +20,7 @@
     unsigned short _mappedAnimationCount;
     unsigned int _spriteCount;
     unsigned int _mappedSpriteCount;
-    CDStruct_866a3d3a *_spriteInfos;
+    CDStruct_067bb244 *_spriteInfos;
     CDStruct_14c8b8c5 *_groupInfos;
     unsigned short *_animationIndexBySpriteIndex;
     unsigned short *_groupIndexByAnimationIndex;
@@ -32,7 +32,7 @@
 @property(readonly, nonatomic) unsigned short *animationIndexBySpriteIndex; // @synthesize animationIndexBySpriteIndex=_animationIndexBySpriteIndex;
 @property(nonatomic) unsigned int mappedSpriteCount; // @synthesize mappedSpriteCount=_mappedSpriteCount;
 @property(readonly, nonatomic) CDStruct_14c8b8c5 *groupInfos; // @synthesize groupInfos=_groupInfos;
-@property(readonly, nonatomic) CDStruct_866a3d3a *spriteInfos; // @synthesize spriteInfos=_spriteInfos;
+@property(readonly, nonatomic) CDStruct_067bb244 *spriteInfos; // @synthesize spriteInfos=_spriteInfos;
 @property(nonatomic) unsigned int spriteCount; // @synthesize spriteCount=_spriteCount;
 @property(readonly, copy, nonatomic) NSString *diagnosticDescription;
 - (void)increaseMappedSpriteCountBy:(unsigned int)arg1 usingAnimationIndex:(unsigned short)arg2;

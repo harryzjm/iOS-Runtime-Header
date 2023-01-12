@@ -9,12 +9,11 @@
 #import <TSText/TSWPContainerTextEditingRep-Protocol.h>
 #import <TSText/TSWPShapeLayoutDelegate-Protocol.h>
 
-@class CALayer, NSObject, NSString, TSWPRep;
+@class NSObject, NSString, TSWPRep;
 @protocol TSDContainerInfo;
 
 @interface TSWPShapeRep : TSDShapeRep <TSWPContainerTextEditingRep, TSWPShapeLayoutDelegate>
 {
-    CALayer *_overflowGlyphLayer;
     struct CGPoint _originalAutosizePositionOffset;
     TSWPRep *_containedRep;
 }

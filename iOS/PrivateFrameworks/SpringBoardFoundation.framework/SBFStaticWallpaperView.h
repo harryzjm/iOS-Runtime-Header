@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, SBFColorBoxes, UIImage;
+@class NSData, NSString, NSURL, SBFColorBoxes, UIImage;
 
 @interface SBFStaticWallpaperView
 {
     double _overallContrast;
     SBFColorBoxes *_colorBoxes;
     UIImage *_displayedImage;
+    NSURL *_displayedImageURL;
     UIImage *_sampleImage;
     NSData *_displayedImageHashData;
     NSString *_displayedImageHashString;
@@ -24,6 +25,7 @@
 @property(copy, nonatomic) NSString *displayedImageHashString; // @synthesize displayedImageHashString=_displayedImageHashString;
 @property(copy, nonatomic) NSData *displayedImageHashData; // @synthesize displayedImageHashData=_displayedImageHashData;
 @property(retain, nonatomic, getter=_sampleImage, setter=_setSampleImage:) UIImage *sampleImage; // @synthesize sampleImage=_sampleImage;
+@property(retain, nonatomic, getter=_displayedImageURL, setter=_setDisplayedImageURL:) NSURL *displayedImageURL; // @synthesize displayedImageURL=_displayedImageURL;
 @property(retain, nonatomic, getter=_displayedImage, setter=_setDisplayedImage:) UIImage *displayedImage; // @synthesize displayedImage=_displayedImage;
 @property(retain, nonatomic) SBFColorBoxes *colorBoxes;
 - (void)_updateColorBoxesWithKey:(id)arg1 image:(id)arg2;
@@ -43,6 +45,7 @@
 - (_Bool)imageRequiresLuminanceTreatment;
 - (void)setContentsRect:(struct CGRect)arg1;
 - (_Bool)hasContentOutsideVisibleBounds;
+- (id)snapshotImageURL;
 - (id)snapshotImage;
 - (id)_computeAverageColor;
 - (id)wallpaperImage;
@@ -50,7 +53,7 @@
 - (void)preheatImageData;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 - (id)cacheUniqueIdentifier;
-- (void)_generateImageForImage:(id)arg1 cacheKey:(id)arg2 options:(unsigned long long)arg3 downsampleFactor:(double)arg4 needsDimmingTreatment:(_Bool)arg5 averageColor:(id)arg6 generationHandler:(CDUnknownBlockType)arg7;
+- (void)_generateImageForImage:(id)arg1 cacheKey:(id)arg2 options:(unsigned long long)arg3 downsampleFactor:(double)arg4 needsDimmingTreatment:(_Bool)arg5 averageColorProvider:(CDUnknownBlockType)arg6 generationHandler:(CDUnknownBlockType)arg7;
 - (void)_setupWallpaperImageFromConfiguration:(id)arg1 options:(unsigned long long)arg2;
 - (long long)wallpaperType;
 

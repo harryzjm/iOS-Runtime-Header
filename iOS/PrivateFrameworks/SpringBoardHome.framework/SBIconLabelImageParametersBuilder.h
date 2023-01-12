@@ -60,7 +60,6 @@
 - (id)listLayout;
 - (void)setIcon:(id)arg1;
 - (void)setIcon:(id)arg1 forLocation:(id)arg2;
-- (void)setFont:(id)arg1 insets:(struct UIEdgeInsets)arg2;
 - (id)buildParameters;
 - (id)init;
 

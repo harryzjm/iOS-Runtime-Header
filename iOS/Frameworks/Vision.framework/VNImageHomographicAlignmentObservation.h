@@ -9,11 +9,12 @@
     CDStruct_8e0628e6 _warpTransform;
 }
 
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) CDStruct_8e0628e6 warpTransform; // @synthesize warpTransform=_warpTransform;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

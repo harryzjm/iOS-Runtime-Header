@@ -40,6 +40,8 @@
     _Bool _showsDateView;
 }
 
++ (double)_modalViewBottomBaselineOffsetPortrait;
++ (double)_bottomBaselineOffsetForPortrait:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showsDateView; // @synthesize showsDateView=_showsDateView;
 @property(nonatomic) _Bool wantsEnhancedSecondaryActionButton; // @synthesize wantsEnhancedSecondaryActionButton=_wantsEnhancedSecondaryActionButton;
@@ -53,7 +55,8 @@
 @property(nonatomic) _Bool showsStatusText; // @synthesize showsStatusText=_showsStatusText;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic) __weak id <CSModalViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (double)_bottomBaselineOffset;
+- (_Bool)_hasPortraitDimensions;
+- (_Bool)_isPortraitForDelegate:(id)arg1;
 - (double)_timeToSubtitleLabelBaselineDifferenceY;
 - (double)_timeLabelBaselineY;
 - (struct CGRect)_dateTimeFrame;

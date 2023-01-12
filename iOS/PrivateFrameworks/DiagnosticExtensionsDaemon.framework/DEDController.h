@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <DiagnosticExtensionsDaemon/DEDPairingProtocol-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDIDSInboundDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
-#import <DiagnosticExtensionsDaemon/DEDXPCConnectorDaemonDelegate-Protocol.h>
-#import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDSharingInboundDelegate-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDXPCConnectorDelegate-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDXPCInboundDelegate-Protocol.h>
 
-@class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection;
+@class DEDXPCConnector, NSDictionary, NSMutableDictionary, NSMutableSet, NSString;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
-@interface DEDController : NSObject <DEDXPCConnectorDaemonDelegate, DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
+@interface DEDController : NSObject <DEDXPCConnectorDelegate, DEDXPCInboundDelegate, DEDSharingInboundDelegate, DEDIDSInboundDelegate, DEDSecureArchiving>
 {
     _Bool _isDaemon;
     _Bool _started;
@@ -23,8 +24,6 @@
     _Bool _embeddedInApp;
     NSObject<OS_dispatch_queue> *_bugSessionCallbackQueue;
     DEDXPCConnector *_xpcConnector;
-    DEDXPCInbound *_xpcInbound;
-    NSXPCConnection *_xpcOutboundConnection;
     id <DEDClientProtocol> _clientDelegate;
     id <DEDWorkerProtocol> _workerDelegate;
     id <DEDPairingProtocol> _pairingDelegate;
@@ -33,28 +32,26 @@
     CDUnknownBlockType _sessionExistsCompletion;
     NSMutableDictionary *_sessionStartBlocks;
     NSMutableDictionary *_sessionDidStartBlocks;
-    DEDIDSConnection *__idsConnection;
-    DEDSharingConnection *__sharingConnection;
     NSMutableSet *_recentlyFinishedSessions;
     NSObject<OS_dispatch_queue> *_replyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_os_log> *_log;
     CDUnknownBlockType _didCancelCompletion;
+    CDUnknownBlockType _xpcConnectionsCompletion;
     NSMutableDictionary *_devices;
-    NSMutableDictionary *_sessions;
+    NSDictionary *_sessions;
 }
 
 + (id)archivedClasses;
 - (void).cxx_destruct;
-@property(retain) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
+@property(retain) NSDictionary *sessions; // @synthesize sessions=_sessions;
 @property(retain) NSMutableDictionary *devices; // @synthesize devices=_devices;
+@property(copy) CDUnknownBlockType xpcConnectionsCompletion; // @synthesize xpcConnectionsCompletion=_xpcConnectionsCompletion;
 @property(copy) CDUnknownBlockType didCancelCompletion; // @synthesize didCancelCompletion=_didCancelCompletion;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(retain) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain) NSObject<OS_dispatch_queue> *replyQueue; // @synthesize replyQueue=_replyQueue;
 @property(retain) NSMutableSet *recentlyFinishedSessions; // @synthesize recentlyFinishedSessions=_recentlyFinishedSessions;
-@property(retain) DEDSharingConnection *_sharingConnection; // @synthesize _sharingConnection=__sharingConnection;
-@property(retain) DEDIDSConnection *_idsConnection; // @synthesize _idsConnection=__idsConnection;
 @property(retain) NSMutableDictionary *sessionDidStartBlocks; // @synthesize sessionDidStartBlocks=_sessionDidStartBlocks;
 @property(retain) NSMutableDictionary *sessionStartBlocks; // @synthesize sessionStartBlocks=_sessionStartBlocks;
 @property(copy) CDUnknownBlockType sessionExistsCompletion; // @synthesize sessionExistsCompletion=_sessionExistsCompletion;
@@ -68,11 +65,8 @@
 @property __weak id <DEDPairingProtocol> pairingDelegate; // @synthesize pairingDelegate=_pairingDelegate;
 @property __weak id <DEDWorkerProtocol> workerDelegate; // @synthesize workerDelegate=_workerDelegate;
 @property __weak id <DEDClientProtocol> clientDelegate; // @synthesize clientDelegate=_clientDelegate;
-@property __weak NSXPCConnection *xpcOutboundConnection; // @synthesize xpcOutboundConnection=_xpcOutboundConnection;
-@property(retain) DEDXPCInbound *xpcInbound; // @synthesize xpcInbound=_xpcInbound;
 @property(retain) DEDXPCConnector *xpcConnector; // @synthesize xpcConnector=_xpcConnector;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *bugSessionCallbackQueue; // @synthesize bugSessionCallbackQueue=_bugSessionCallbackQueue;
-- (void)connector:(id)arg1 didLooseConnectionToProcessWithPid:(int)arg2;
 - (id)sharingConnection;
 - (id)idsConnection;
 - (void)logDeviceCounts;
@@ -81,32 +75,55 @@
 - (void)purgeStaleSessions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)induceTimeOutIfNeededAndReturnCanProceedWithDevice:(id)arg1 sessionId:(id)arg2;
 - (void)didFinishSessionWithIdentifier:(id)arg1;
-- (_Bool)hasRecentlyFinishedSessionWithIdentifier:(id)arg1;
-- (void)hasActiveSession:(id)arg1;
-- (void)sessionWithIdentifier:(id)arg1 isActive:(_Bool)arg2;
 - (void)didStartBugSessionWithInfo:(id)arg1;
-- (void)startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4;
-- (void)gotDeviceUpdate:(id)arg1;
-- (void)didDiscoverDevices:(id)arg1;
-- (void)stopDeviceDiscovery;
-- (void)discoverAllAvailableDevices;
-- (void)pong;
-- (void)ping;
+- (void)startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4 fromInbound:(id)arg5;
+- (id)idsInbound_sessionForIdentifier:(id)arg1;
+- (void)idsInbound_didAbortSessionWithID:(id)arg1;
+- (void)idsInbound_didStartBugSessionWithInfo:(id)arg1;
+- (void)idsInbound_startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4;
+- (id)sharingInbound_sessionForIdentifier:(id)arg1;
+- (void)sharingInbound_didAbortSessionWithID:(id)arg1;
+- (void)sharingInbound_didStartBugSessionWithInfo:(id)arg1;
+- (void)sharingInbound_startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4;
+- (void)sharingInbound_successPINForDevice:(id)arg1 fromInbound:(id)arg2;
+- (void)sharingInbound_promptPINForDevice:(id)arg1 fromInbound:(id)arg2;
+- (void)xpcInbound_successPINForDevice:(id)arg1;
+- (void)xpcInbound_tryPIN:(id)arg1 forDevice:(id)arg2 fromInbound:(id)arg3;
+- (void)xpcInbound_promptPINForDevice:(id)arg1;
+- (void)xpcInbound_startPairSetupForDevice:(id)arg1 fromInbound:(id)arg2;
+- (void)xpcInbound_listClientXPCConnectionsReply:(id)arg1;
+- (void)xpc_listClientXPCConnectionsFromInbound:(id)arg1;
+- (void)xpcInbound_didAbortSessionWithID:(id)arg1;
+- (id)xpcInbound_sessionForIdentifier:(id)arg1;
+- (void)xpcInbound_hasActiveSessionReply:(id)arg1 isActive:(_Bool)arg2;
+- (void)xpcInbound_hasActiveSession:(id)arg1 fromInbound:(id)arg2;
+- (void)xpcInbound_didStartBugSessionWithInfo:(id)arg1;
+- (void)xpcInbound_startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4 fromInbound:(id)arg5;
+- (void)xpcInbound_stopDeviceDiscovery:(id)arg1;
+- (void)xpcInbound_didDiscoverDevices:(id)arg1;
+- (void)xpcInbound_gotDeviceUpdate:(id)arg1;
+- (void)xpcInbound_discoverAllAvailableDevices:(id)arg1;
+- (void)xpcInbound_pong;
+- (void)xpcInbound_ping:(id)arg1;
+- (id)connector:(id)arg1 needsXPCInboundForPid:(id)arg2;
+- (void)connector:(id)arg1 didLooseConnectionToProcessWithPid:(int)arg2;
+- (_Bool)hasRecentlyFinishedSessionWithIdentifier:(id)arg1;
 - (void)hasActiveSessionForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didAbortSessionWithID:(id)arg1;
 - (void)abortSession:(id)arg1;
 - (void)abortSession:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)listXPCConnections:(CDUnknownBlockType)arg1;
 - (void)reset;
 - (id)knownSessions;
+- (void)removeSessionWithIdentifier:(id)arg1;
+- (void)insertNewSession:(id)arg1;
 - (id)sessionForIdentifier:(id)arg1;
 - (void)startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 target:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_deviceForIncomingDevice:(id)arg1;
 - (_Bool)hasDevice:(id)arg1;
 - (id)_deviceForIncomingDevice:(id)arg1 needsReady:(_Bool)arg2;
 - (id)_sharingDeviceForIncomingDevice:(id)arg1;
-- (void)successPINForDevice:(id)arg1;
 - (void)tryPIN:(id)arg1 forDevice:(id)arg2;
-- (void)promptPINForDevice:(id)arg1;
 - (void)startPairSetupForDevice:(id)arg1;
 - (id)devicesWithIdentifier:(id)arg1;
 - (id)_allKnownDevicesWithIdentifier:(id)arg1;
@@ -114,7 +131,6 @@
 - (void)stopDiscovery;
 - (void)discoverDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pingDaemonWithCompletion:(CDUnknownBlockType)arg1;
-- (id)remoteXPCObject;
 - (void)start;
 - (void)configureForIDS:(_Bool)arg1;
 - (void)configureForSharing:(_Bool)arg1;

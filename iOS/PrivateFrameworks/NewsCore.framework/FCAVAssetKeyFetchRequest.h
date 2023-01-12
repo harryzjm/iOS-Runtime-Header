@@ -18,12 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(readonly, nonatomic) NSMutableArray *errorsEncountered; // @synthesize errorsEncountered=_errorsEncountered;
-@property(readonly, nonatomic) _Bool forceRefresh; // @synthesize forceRefresh=_forceRefresh;
-@property(readonly, nonatomic) NSMutableSet *remainingKeyURIs; // @synthesize remainingKeyURIs=_remainingKeyURIs;
-@property(readonly, nonatomic) AVContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
-- (id)initWithContentKeySession:(id)arg1 keyURIs:(id)arg2 forceRefresh:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

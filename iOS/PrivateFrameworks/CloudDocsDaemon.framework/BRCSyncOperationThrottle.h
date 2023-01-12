@@ -10,7 +10,6 @@
 
 @class BRMangledID;
 
-__attribute__((visibility("hidden")))
 @interface BRCSyncOperationThrottle : NSObject <NSSecureCoding>
 {
     _Bool _isSyncDown;
@@ -24,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int lastErrorKind; // @synthesize lastErrorKind=_lastErrorKind;
 @property(retain, nonatomic) BRMangledID *mangledID; // @synthesize mangledID=_mangledID;
+@property(readonly, nonatomic) _Bool isSyncDown; // @synthesize isSyncDown=_isSyncDown;
 @property(readonly, nonatomic) double delay; // @synthesize delay=_delay;
 @property(readonly, nonatomic) double nextTry; // @synthesize nextTry=_nextTry;
 - (void)clear;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMangledID:(id)arg1 isSyncDown:(_Bool)arg2;
+- (_Bool)scheduleIfPossibleWithCurrentTimestamp:(long long)arg1 signalSourceIfFailed:(id)arg2 description:(id)arg3;
 
 @end
 

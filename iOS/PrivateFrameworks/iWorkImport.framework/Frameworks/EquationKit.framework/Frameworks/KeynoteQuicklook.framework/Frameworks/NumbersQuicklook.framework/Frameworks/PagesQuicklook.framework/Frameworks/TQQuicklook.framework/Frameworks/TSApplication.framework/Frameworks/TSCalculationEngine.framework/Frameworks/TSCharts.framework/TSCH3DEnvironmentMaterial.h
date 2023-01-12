@@ -9,14 +9,14 @@
     _Bool _decalMode;
 }
 
-+ (id)instanceWithArchive:(const struct Chart3DEnvironmentMaterialArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(nonatomic) _Bool decalMode; // @synthesize decalMode=_decalMode;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defaultShaderVariables;
-- (void)saveToArchive:(struct Chart3DEnvironmentMaterialArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DEnvironmentMaterialArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

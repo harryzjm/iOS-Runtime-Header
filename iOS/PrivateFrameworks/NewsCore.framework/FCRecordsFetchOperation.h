@@ -19,8 +19,6 @@
 - (void).cxx_destruct;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
-- (id)initWithRecordSource:(id)arg1 recordIdentifiers:(id)arg2 ignoreCacheForRecordIDs:(id)arg3;
-- (id)initWithRecordSource:(id)arg1 recordIdentifiers:(id)arg2;
 
 @end
 

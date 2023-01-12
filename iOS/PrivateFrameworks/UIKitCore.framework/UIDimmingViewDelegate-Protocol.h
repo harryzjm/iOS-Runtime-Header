@@ -11,6 +11,7 @@
 @protocol UIDimmingViewDelegate <NSObject>
 
 @optional
+- (_Bool)_allowsFocusBehindDimmingView;
 - (void)dimmingViewWasTapped:(UIDimmingView *)arg1;
 @end
 

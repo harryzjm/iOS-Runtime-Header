@@ -27,6 +27,7 @@
 @property(readonly, nonatomic) id <SXLayoutBlueprintProvider> layoutBlueprintProvider; // @synthesize layoutBlueprintProvider=_layoutBlueprintProvider;
 @property(nonatomic) __weak id <SXLayoutInvalidationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)invalidateQueuedComponents;
+- (id)invalidateComponent:(id)arg1 invalidation:(CDUnknownBlockType)arg2 priority:(unsigned long long)arg3;
 - (id)invalidateComponent:(id)arg1 state:(id)arg2 suggestedSize:(struct CGSize)arg3 priority:(unsigned long long)arg4;
 - (id)invalidateComponent:(id)arg1 suggestedSize:(struct CGSize)arg2 priority:(unsigned long long)arg3;
 - (id)invalidateComponent:(id)arg1 state:(id)arg2 suggestedSize:(struct CGSize)arg3;

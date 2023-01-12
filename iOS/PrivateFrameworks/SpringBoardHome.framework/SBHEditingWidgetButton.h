@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)defaultContentImage;
+- (id)initWithFrame:(struct CGRect)arg1 backgroundView:(id)arg2;
 
 @end
 

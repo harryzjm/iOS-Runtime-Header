@@ -9,6 +9,7 @@
 @class MNEVChargingStateMonitor, NSMeasurement;
 
 @protocol MNEVChargingStateMonitorDelegate <NSObject>
+- (void)evChargingStateMonitor:(MNEVChargingStateMonitor *)arg1 didChangeChargingState:(_Bool)arg2;
 - (void)evChargingStateMonitor:(MNEVChargingStateMonitor *)arg1 didReachTargetBatteryCharge:(NSMeasurement *)arg2;
 - (void)evChargingStateMonitorShouldShowChargingInfo:(MNEVChargingStateMonitor *)arg1;
 @end

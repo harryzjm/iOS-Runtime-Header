@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (int)_tryPerformBlockWithSourceID:(id)arg1 forAction:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (int)_tryPerformBlockWithSourceID:(id)arg1 forAction:(unsigned long long)arg2 entityType:(int)arg3 withBlock:(CDUnknownBlockType)arg4;
 - (void)CADSourceGetManagedConfigurationAccountAccess:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADSourceUpdateGrantedDelegatePermission:(id)arg1 sourceID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADSourceUpdateGrantedDelegate:(id)arg1 action:(long long)arg2 sourceID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADSourceGetGrantedDelegatesList:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADRemoveCalendarItemsOlderThanDate:(id)arg1 ofType:(int)arg2 inSource:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADCountCalendarItemsOfType:(int)arg1 inSource:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)CADSourceGetNotificationCollection:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADSourceGetConstraints:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetLocalBirthdaySource:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseGetLocalSource:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseGetLocalSourceWithEnableIfNeeded:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetSourcesWithFaultedProperties:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

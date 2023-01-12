@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class UISegmentedControl, UISwitch;
+@class UILabel, UISegmentedControl, UISwitch;
 @protocol _PXFeedbackTapToRadarViewControllerDelegate;
 
 @interface _PXFeedbackTapToRadarViewController : UIViewController
@@ -15,9 +15,11 @@
     UISwitch *_diagnoseSwitch;
     id <_PXFeedbackTapToRadarViewControllerDelegate> _delegate;
     UISegmentedControl *_segmentedControl;
+    UILabel *_routesDescriptionLabel;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *routesDescriptionLabel; // @synthesize routesDescriptionLabel=_routesDescriptionLabel;
 @property(retain, nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 @property(retain, nonatomic) id <_PXFeedbackTapToRadarViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UISwitch *diagnoseSwitch; // @synthesize diagnoseSwitch=_diagnoseSwitch;

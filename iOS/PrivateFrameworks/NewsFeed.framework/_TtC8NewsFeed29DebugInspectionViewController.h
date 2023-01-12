@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *tableView;
     MISSING_TYPE *sections;
+    MISSING_TYPE *coverViewManager;
 }
 
 - (void).cxx_destruct;

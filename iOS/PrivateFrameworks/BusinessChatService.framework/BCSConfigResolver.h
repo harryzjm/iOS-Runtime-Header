@@ -11,6 +11,7 @@
 @class NSString;
 @protocol BCSConfigCacheSkipping, BCSConfigCaching, BCSConfigRemoteFetching, BCSMetricFactoryProtocol;
 
+__attribute__((visibility("hidden")))
 @interface BCSConfigResolver : NSObject <BCSConfigResolving>
 {
     id <BCSConfigCaching> _configCache;
@@ -20,12 +21,7 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <BCSMetricFactoryProtocol> metricFactory; // @synthesize metricFactory=_metricFactory;
-@property(retain, nonatomic) id <BCSConfigRemoteFetching> configRemoteFetcher; // @synthesize configRemoteFetcher=_configRemoteFetcher;
-@property(retain, nonatomic) id <BCSConfigCacheSkipping> configCacheSkipper; // @synthesize configCacheSkipper=_configCacheSkipper;
-@property(retain, nonatomic) id <BCSConfigCaching> configCache; // @synthesize configCache=_configCache;
 - (void)configItemWithType:(long long)arg1 clientBundleID:(id)arg2 metric:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)initWithConfigCache:(id)arg1 cacheSkipper:(id)arg2 remoteFetcher:(id)arg3 metricFactory:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

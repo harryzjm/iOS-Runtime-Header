@@ -15,7 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)addNotificationRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (unsigned long long)currentCallCount;
+- (unsigned long long)currentAudioAndVideoCallCount;
 - (void)addAlertRequestForCellBroadcastMessage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithUserNotificationCenter:(id)arg1;
 - (id)init;

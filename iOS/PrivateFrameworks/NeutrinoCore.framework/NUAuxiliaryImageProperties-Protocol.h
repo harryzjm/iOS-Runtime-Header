@@ -6,12 +6,14 @@
 
 #import <NeutrinoCore/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class AVCameraCalibrationData, NSDictionary, NSString;
 @protocol NUAuxiliaryImage;
 
 @protocol NUAuxiliaryImageProperties <NSObject>
 @property(readonly) NSString *auxiliaryImageTypeCGIdentifier;
 @property(readonly) CDStruct_912cb5d2 size;
+- (const struct CGImageMetadata *)auxiliaryDataInfoMetadata;
+- (AVCameraCalibrationData *)depthCameraCalibrationData;
 - (id <NUAuxiliaryImage>)auxiliaryImage:(out id *)arg1;
 - (NSDictionary *)auxiliaryCoreGraphicsInfoDictionary:(out id *)arg1;
 @end

@@ -6,11 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HFWallpaperSlice, HUNavigationBarLayoutOptions, NSArray;
+@class HUNavigationBarLayoutOptions, NSArray;
 
 @protocol HUDashboardNavigationHost <NSObject>
 @property(copy, nonatomic) HUNavigationBarLayoutOptions *layoutOptions;
-@property(retain, nonatomic) HFWallpaperSlice *blurredWallpaperSlice;
 @property(retain, nonatomic) NSArray *rightDashboardNavigationButtons;
 @property(retain, nonatomic) NSArray *leftDashboardNavigationButtons;
 @end

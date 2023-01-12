@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString, NSUUID, TSUCustomFormat;
+@class NSSet;
 
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct Arena;
-
-struct ArenaStringPtr {
-    basic_string_7c0a1c0b *_field1;
-};
 
 struct AttributeSpecs {
     unsigned long long _field1;
@@ -68,8 +62,8 @@ struct BarExtrusionSpineDetails {
 };
 
 struct BlendState {
-    _Bool mBlend;
-    int mBlendMode;
+    _Bool _blend;
+    int _blendMode;
 };
 
 struct CGAffineTransform {
@@ -96,613 +90,15 @@ struct CGSize {
     double height;
 };
 
-struct CachedSize {
-    struct atomic<int> _field1;
-};
-
-struct Chart3DBaseImageTextureTilingArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Chart3DVectorArchive *_field5;
-    float _field6;
-};
-
-struct Chart3DDiffuseMaterialArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DImageTextureTilingArchive> _field5;
-    struct Chart3DTexturesMaterialArchive *_field6;
-};
-
-struct Chart3DDirectionalLightArchive;
-
-struct Chart3DEmissiveMaterialArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DImageTextureTilingArchive> _field5;
-    struct Chart3DTexturesMaterialArchive *_field6;
-};
-
-struct Chart3DEnvironmentMaterialArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DBaseImageTextureTilingArchive> _field5;
-    struct RepeatedPtrField<TSCH::Chart3DImageTextureTilingArchive> _field6;
-    struct Chart3DTexturesMaterialArchive *_field7;
-    _Bool _field8;
-};
-
-struct Chart3DEnvironmentPackageArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DEnvironmentMaterialArchive> _field5;
-};
-
-struct Chart3DFillArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct Chart3DLightingModelArchive *_field6;
-    int _field7;
-    unsigned int _field8;
-};
-
-struct Chart3DFixedFunctionLightingModelArchive;
-
-struct Chart3DImageTextureTilingArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Chart3DBaseImageTextureTilingArchive *_field5;
-    int _field6;
-    int _field7;
-    int _field8;
-    int _field9;
-    int _field10;
-    int _field11;
-    int _field12;
-    _Bool _field13;
-};
-
-struct Chart3DLightArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct Chart3DVectorArchive *_field6;
-    struct Chart3DVectorArchive *_field7;
-    struct Chart3DVectorArchive *_field8;
-    struct Chart3DVectorArchive *_field9;
-    struct Chart3DPointLightArchive *_field10;
-    struct Chart3DDirectionalLightArchive *_field11;
-    struct Chart3DSpotLightArchive *_field12;
-    float _field13;
-    unsigned int _field14;
-    _Bool _field15;
-};
-
-struct Chart3DLightingModelArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Chart3DPhongLightingModelArchive *_field5;
-    struct Chart3DFixedFunctionLightingModelArchive *_field6;
-    struct Chart3DEnvironmentPackageArchive *_field7;
-};
-
-struct Chart3DLightingPackageArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DLightArchive> _field5;
-    struct ArenaStringPtr _field6;
-};
-
-struct Chart3DModulateMaterialArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DImageTextureTilingArchive> _field5;
-    struct Chart3DTexturesMaterialArchive *_field6;
-};
-
-struct Chart3DPhongLightingModelArchive;
-
-struct Chart3DPhongMaterialPackageArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Chart3DEmissiveMaterialArchive *_field5;
-    struct Chart3DDiffuseMaterialArchive *_field6;
-    struct Chart3DModulateMaterialArchive *_field7;
-    struct Chart3DSpecularMaterialArchive *_field8;
-    struct Chart3DShininessMaterialArchive *_field9;
-};
-
-struct Chart3DPointLightArchive;
-
-struct Chart3DShininessMaterialArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DImageTextureTilingArchive> _field5;
-    struct Chart3DTexturesMaterialArchive *_field6;
-};
-
-struct Chart3DSpecularMaterialArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DImageTextureTilingArchive> _field5;
-    struct Chart3DTexturesMaterialArchive *_field6;
-};
-
-struct Chart3DSpotLightArchive;
-
-struct Chart3DTSPImageDataTextureArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    struct Reference *_field6;
-    struct DataReference *_field7;
-    struct DataReference *_field8;
-};
-
-struct Chart3DTexturesMaterialArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::Chart3DTSPImageDataTextureArchive> _field5;
-    struct Chart3DVectorArchive *_field6;
-};
-
-struct Chart3DVectorArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-};
-
-struct ChartArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<1> _field4;
-    struct CachedSize _field5;
-    struct RepeatedPtrField<TSP::Reference> _field6;
-    struct RepeatedPtrField<TSP::Reference> _field7;
-    struct RepeatedPtrField<TSP::Reference> _field8;
-    struct RepeatedPtrField<TSP::Reference> _field9;
-    struct RepeatedPtrField<TSP::Reference> _field10;
-    struct RepeatedPtrField<TSP::Reference> _field11;
-    struct RectArchive *_field12;
-    struct Reference *_field13;
-    struct ChartGridArchive *_field14;
-    struct Reference *_field15;
-    struct Reference *_field16;
-    struct Reference *_field17;
-    struct Reference *_field18;
-    struct Reference *_field19;
-    struct SparseReferenceArray *_field20;
-    struct SparseReferenceArray *_field21;
-    struct Reference *_field22;
-    int _field23;
-    int _field24;
-    int _field25;
-    _Bool _field26;
-    _Bool _field27;
-    _Bool _field28;
-    unsigned int _field29;
-};
-
-struct ChartAxisGenericPropertyMapArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<2> _field3;
-    struct ArenaStringPtr _field4;
-    struct FormatStructArchive *_field5;
-    struct FormatStructArchive *_field6;
-    struct StrokeArchive *_field7;
-    struct FormatStructArchive *_field8;
-    struct FormatStructArchive *_field9;
-    struct ShadowArchive *_field10;
-    struct StrokeArchive *_field11;
-    struct ShadowArchive *_field12;
-    struct StrokeArchive *_field13;
-    struct FormatStructArchive *_field14;
-    struct ChartsNSNumberDoubleArchive *_field15;
-    struct ChartsNSNumberDoubleArchive *_field16;
-    float _field17;
-    int _field18;
-    int _field19;
-    int _field20;
-    float _field21;
-    float _field22;
-    float _field23;
-    int _field24;
-    int _field25;
-    int _field26;
-    int _field27;
-    int _field28;
-    _Bool _field29;
-    _Bool _field30;
-    _Bool _field31;
-    _Bool _field32;
-    _Bool _field33;
-    _Bool _field34;
-    _Bool _field35;
-    _Bool _field36;
-    _Bool _field37;
-    _Bool _field38;
-    _Bool _field39;
-    int _field40;
-    int _field41;
-    int _field42;
-    struct CachedSize _field43;
-};
-
-struct ChartAxisIDArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    int _field5;
-    unsigned int _field6;
-};
-
-struct ChartCDESelectionArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned int _field10;
-};
-
-struct ChartGenericPropertyMapArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<2> _field3;
-    struct ArenaStringPtr _field4;
-    struct Chart3DLightingPackageArchive *_field5;
-    struct Chart3DVectorArchive *_field6;
-    struct Chart3DVectorArchive *_field7;
-    struct Chart3DVectorArchive *_field8;
-    struct FillArchive *_field9;
-    struct StrokeArchive *_field10;
-    struct ShadowArchive *_field11;
-    struct StrokeArchive *_field12;
-    struct FillArchive *_field13;
-    struct Color *_field14;
-    int _field15;
-    float _field16;
-    float _field17;
-    float _field18;
-    _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    _Bool _field22;
-    int _field23;
-    float _field24;
-    int _field25;
-    int _field26;
-    float _field27;
-    float _field28;
-    float _field29;
-    float _field30;
-    int _field31;
-    float _field32;
-    float _field33;
-    _Bool _field34;
-    _Bool _field35;
-    _Bool _field36;
-    _Bool _field37;
-    _Bool _field38;
-    int _field39;
-    struct CachedSize _field40;
-};
-
-struct ChartGridArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<std::__1::basic_string<char>> _field5;
-    struct RepeatedPtrField<std::__1::basic_string<char>> _field6;
-    struct RepeatedPtrField<TSCH::PreUFF::ChartGridArchive_ValueRow> _field7;
-    int _field8;
-    _Bool _field9;
-};
-
-struct ChartInfoArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSP::Reference> _field5;
-    struct RepeatedPtrField<TSP::Reference> _field6;
-    struct RepeatedPtrField<TSP::Reference> _field7;
-    struct RepeatedPtrField<TSP::Reference> _field8;
-    struct RepeatedPtrField<TSP::Reference> _field9;
-    struct RepeatedPtrField<TSP::Reference> _field10;
-    struct DrawableArchive *_field11;
-    struct ChartModelArchive *_field12;
-    struct Reference *_field13;
-    struct LegendModelArchive *_field14;
-    struct RectArchive *_field15;
-    struct SparseReferenceArray *_field16;
-    struct SparseReferenceArray *_field17;
-    struct Reference *_field18;
-    struct Reference *_field19;
-    struct Point *_field20;
-    struct Reference *_field21;
-    int _field22;
-    int _field23;
-    int _field24;
-    int _field25;
-    _Bool _field26;
-};
-
-struct ChartMediatorArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedField<unsigned int> _field5;
-    struct RepeatedField<unsigned int> _field6;
-    struct Reference *_field7;
-};
-
-struct ChartModelArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedField<unsigned int> _field5;
-    struct Reference *_field6;
-    struct Reference *_field7;
-    struct ChartGridArchive *_field8;
-    unsigned int _field9;
-    unsigned int _field10;
-};
-
-struct ChartProjectedBoundsConverter {
-    struct ChartProjectedBoundsSpaces *_field1;
-    float _field2;
-    _Bool _field3;
-    tvec2_84d5962d _field4;
-};
-
 struct ChartProjectedBoundsSpaces {
-    box_80622335 mChart;
-    box_80622335 mOrient;
-    box_80622335 mDrawing;
-    box_80622335 mLayout;
-    box_80622335 mLayoutInPage;
-    box_80622335 mBodyLayout;
-    box_80622335 mBodyLayoutInPage;
-    box_80622335 mContainingViewport;
-};
-
-struct ChartReferenceLineNonStyleItem {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    struct UUID *_field6;
-};
-
-struct ChartSelectionArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::ChartSelectionPathArchive> _field5;
-    struct Reference *_field6;
-    struct DrawableSelectionArchive *_field7;
-};
-
-struct ChartSelectionPathArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::ChartSelectionPathArgumentArchive> _field5;
-    struct ChartSelectionPathTypeArchive *_field6;
-    struct ChartSelectionPathArchive *_field7;
-};
-
-struct ChartSelectionPathTypeArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct ArenaStringPtr _field6;
-};
-
-struct ChartSeriesGenericPropertyMapArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<3> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct FormatStructArchive *_field6;
-    struct FormatStructArchive *_field7;
-    struct LineEndArchive *_field8;
-    struct LineEndArchive *_field9;
-    struct StrokeArchive *_field10;
-    struct FormatStructArchive *_field11;
-    struct FormatStructArchive *_field12;
-    struct ChartsNSArrayOfNSNumberDoubleArchive *_field13;
-    struct ChartsNSArrayOfNSNumberDoubleArchive *_field14;
-    struct ChartsNSArrayOfNSNumberDoubleArchive *_field15;
-    struct ChartsNSArrayOfNSNumberDoubleArchive *_field16;
-    struct LineEndArchive *_field17;
-    struct LineEndArchive *_field18;
-    struct ShadowArchive *_field19;
-    struct StrokeArchive *_field20;
-    struct StrokeArchive *_field21;
-    struct FillArchive *_field22;
-    struct FormatStructArchive *_field23;
-    struct FormatStructArchive *_field24;
-    struct ShadowArchive *_field25;
-    struct StrokeArchive *_field26;
-    struct FillArchive *_field27;
-    struct StrokeArchive *_field28;
-    struct ShadowArchive *_field29;
-    struct StrokeArchive *_field30;
-    float _field31;
-    float _field32;
-    int _field33;
-    float _field34;
-    float _field35;
-    float _field36;
-    float _field37;
-    int _field38;
-    int _field39;
-    int _field40;
-    int _field41;
-    float _field42;
-    float _field43;
-    int _field44;
-    int _field45;
-    float _field46;
-    int _field47;
-    int _field48;
-    int _field49;
-    float _field50;
-    int _field51;
-    int _field52;
-    _Bool _field53;
-    _Bool _field54;
-    _Bool _field55;
-    _Bool _field56;
-    _Bool _field57;
-    _Bool _field58;
-    _Bool _field59;
-    _Bool _field60;
-    int _field61;
-    _Bool _field62;
-    _Bool _field63;
-    _Bool _field64;
-    _Bool _field65;
-    float _field66;
-    int _field67;
-    float _field68;
-    float _field69;
-    int _field70;
-    int _field71;
-    float _field72;
-    float _field73;
-    _Bool _field74;
-    _Bool _field75;
-    _Bool _field76;
-    int _field77;
-    float _field78;
-    int _field79;
-    float _field80;
-    int _field81;
-    int _field82;
-    int _field83;
-    int _field84;
-    float _field85;
-    int _field86;
-};
-
-struct ChartUIState {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<1> _field4;
-    struct CachedSize _field5;
-    struct Reference *_field6;
-    int _field7;
-    int _field8;
-    int _field9;
-    int _field10;
-    int _field11;
-    _Bool _field12;
-    _Bool _field13;
-};
-
-struct ChartsNSArrayOfNSNumberDoubleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedField<double> _field5;
-};
-
-struct ChartsNSNumberDoubleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    double _field5;
-};
-
-struct ChartsNumberFormatArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<std::__1::basic_string<char>> _field5;
-    struct ArenaStringPtr _field6;
-    struct ArenaStringPtr _field7;
-    struct ArenaStringPtr _field8;
-    struct ArenaStringPtr _field9;
-    struct ArenaStringPtr _field10;
-    struct IndexSet *_field11;
-    int _field12;
-    unsigned int _field13;
-    int _field14;
-    int _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    _Bool _field18;
-    _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    unsigned int _field22;
-    double _field23;
-    _Bool _field24;
-    unsigned int _field25;
-    unsigned int _field26;
-    unsigned int _field27;
-    unsigned int _field28;
+    box_c88174d1 _chart;
+    box_c88174d1 _orient;
+    box_c88174d1 _drawing;
+    box_c88174d1 _layout;
+    box_c88174d1 _layoutInPage;
+    box_c88174d1 _bodyLayout;
+    box_c88174d1 _bodyLayoutInPage;
+    box_c88174d1 _containingViewport;
 };
 
 struct Color {
@@ -717,34 +113,15 @@ struct ColorResult {
     struct Color _field2;
 };
 
-struct CustomFormatArchive;
-
-struct DEPRECATEDChart3DFillArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct FillArchive *_field6;
-    struct Chart3DLightingModelArchive *_field7;
-    int _field8;
-    unsigned int _field9;
-};
-
-struct Data {
-    tvec2_84d5962d _field1;
-    tvec2_84d5962d _field2;
-};
-
 struct DataBuffer2DDimension {
-    tvec2_3b141483 mSize;
-    unsigned long long mComponents;
-    _Bool mHasLevels;
+    tvec2_3b141483 _size;
+    unsigned long long _components;
+    _Bool _hasLevels;
 };
 
 struct DataBuffer3DDimension {
-    tvec3_c2818ced mSize;
-    unsigned long long mComponents;
+    tvec3_c2818ced _size;
+    unsigned long long _components;
 };
 
 struct DataBufferInfo {
@@ -761,16 +138,10 @@ struct DataBufferLevelData {
     tvec3_c2818ced _field2;
 };
 
-struct DataReference;
-
 struct DepthState {
     _Bool depthTest;
     _Bool depthMask;
 };
-
-struct DrawableArchive;
-
-struct DrawableSelectionArchive;
 
 struct EdgeDetectionParameters {
     _Bool detectSilhouetteEdges;
@@ -786,80 +157,9 @@ struct EnableClipDistances {
     struct array<bool, 8> states;
 };
 
-struct ExtensionSet {
-    struct Arena *_field1;
-    unsigned short _field2;
-    unsigned short _field3;
-    union AllocatedData _field4;
-};
-
-struct FillArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<1> _field4;
-    struct CachedSize _field5;
-    struct Color *_field6;
-    struct GradientArchive *_field7;
-    struct ImageFillArchive *_field8;
-};
-
 struct FlushResult {
     _Bool _field1;
     _Bool _field2;
-};
-
-struct FormatStructArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<2> _field4;
-    struct RepeatedPtrField<std::__1::basic_string<char>> _field5;
-    struct ArenaStringPtr _field6;
-    struct ArenaStringPtr _field7;
-    struct ArenaStringPtr _field8;
-    struct ArenaStringPtr _field9;
-    struct ArenaStringPtr _field10;
-    struct IndexSet *_field11;
-    struct UUID *_field12;
-    struct CustomFormatArchive *_field13;
-    unsigned int _field14;
-    unsigned int _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    unsigned int _field18;
-    _Bool _field19;
-    _Bool _field20;
-    _Bool _field21;
-    _Bool _field22;
-    unsigned int _field23;
-    unsigned int _field24;
-    unsigned int _field25;
-    unsigned int _field26;
-    double _field27;
-    unsigned int _field28;
-    unsigned int _field29;
-    double _field30;
-    double _field31;
-    double _field32;
-    unsigned int _field33;
-    unsigned int _field34;
-    _Bool _field35;
-    _Bool _field36;
-    _Bool _field37;
-    _Bool _field38;
-    unsigned int _field39;
-    unsigned int _field40;
-    unsigned int _field41;
-    unsigned int _field42;
-    unsigned int _field43;
-    unsigned int _field44;
-    unsigned int _field45;
-    unsigned int _field46;
-    unsigned int _field47;
-    _Bool _field48;
-    _Bool _field49;
-    struct CachedSize _field50;
 };
 
 struct FramebufferAttributes {
@@ -873,52 +173,13 @@ struct FramebufferAttributes {
     _Bool useIOSurfaceBacking;
 };
 
-struct GradientArchive;
-
-struct GridRow {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSCH::GridValue> _field5;
-};
-
-struct GridValue {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    double _field5;
-    double _field6;
-    double _field7;
-    double _field8;
-};
-
-struct HasBits<1> {
-    unsigned int _field1[1];
-};
-
-struct HasBits<2> {
-    unsigned int _field1[2];
-};
-
-struct HasBits<3> {
-    unsigned int _field1[3];
-};
-
-struct ImageFillArchive;
-
-struct IndexSet;
-
-struct InternalMetadataWithArena {
+struct InternalMetadata {
     void *_field1;
 };
 
 struct IteratorRange<const char *> {
     struct pair<const char *, const char *> _field1;
 };
-
-struct KeyValue;
 
 struct LabelRenderInfo {
     tvec2_84d5962d sampledLabelSize;
@@ -935,46 +196,13 @@ struct LabelTransform {
     _Bool _field5;
 };
 
-struct LegendGenericPropertyMapArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct FillArchive *_field5;
-    struct ShadowArchive *_field6;
-    struct StrokeArchive *_field7;
-    int _field8;
-    float _field9;
-};
-
-struct LegendModelArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    struct RectArchive *_field6;
-    struct Reference *_field7;
-    struct Reference *_field8;
-};
-
 struct LightingPackageShaderEffectState {
     struct array<glm::detail::tmat4x4<float>, 2> transforms;
 };
 
-struct LineEndArchive;
-
-struct LineExtrusionGeometryXRangeInfo {
-    tvec2_84d5962d _field1;
-    _Bool _field2;
-};
-
-struct Lookup<TSCH3D::AttributeSpecs>;
-
-struct Lookup<TSCH3D::TextureAttributes>;
-
 struct Message {
     CDUnknownFunctionPointerType *_field1;
+    struct InternalMetadata _field2;
 };
 
 struct ObjcSharedPtr<NSSet> {
@@ -982,82 +210,22 @@ struct ObjcSharedPtr<NSSet> {
 };
 
 struct ObjectBounds {
-    box_a3bd9649 mBounds;
-    box_a3bd9649 mProjected;
-    box_a3bd9649 m2DProjected;
-    struct vector<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>, std::__1::allocator<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>>> mBoxes;
+    box_c9ef104e _bounds;
+    box_c9ef104e _projected;
+    box_c9ef104e _2DProjected;
+    struct vector<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>, std::allocator<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>>> _boxes;
 };
 
 struct ObjectState {
-    struct ObjcSharedPtr<NSSet> mEffects;
-    struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>, std::__1::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>>> mAttributes;
-    struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>, std::__1::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>>> mTextures;
+    struct ObjcSharedPtr<NSSet> _effects;
+    struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>, std::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>>> _attributes;
+    struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>, std::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>>> _textures;
 };
 
 struct ObjectStateMatchObject {
-    struct ObjcSharedPtr<NSSet> mEffects;
-    struct vector<TSCH3D::ResourceAttributeState, std::__1::allocator<TSCH3D::ResourceAttributeState>> mAttributes;
-    struct vector<TSCH3D::TextureAttributeState, std::__1::allocator<TSCH3D::TextureAttributeState>> mTextures;
-};
-
-struct ObjectTransforms {
-    struct deque<TSCH3D::Transform, std::__1::allocator<TSCH3D::Transform>> _field1;
-    struct deque<TSCH3D::Transform, std::__1::allocator<TSCH3D::Transform>> _field2;
-};
-
-struct PODType<unsigned char>;
-
-struct PODType<unsigned short>;
-
-struct Point;
-
-struct PrefilteredLineVertexProperties {
-    tvec3_17f03ce0 *_field1;
-    tvec3_17f03ce0 *_field2;
-    tvec4_ac57c72d *_field3;
-    int _field4;
-    box_80622335 _field5;
-};
-
-struct PropertyValueStorageContainerArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<1> _field4;
-    struct CachedSize _field5;
-    struct Reference *_field6;
-    struct Reference *_field7;
-    struct Reference *_field8;
-    struct Reference *_field9;
-    struct SparseReferenceArray *_field10;
-    struct SparseReferenceArray *_field11;
-    struct SparseReferenceArray *_field12;
-    struct SparseReferenceArray *_field13;
-    struct SparseReferenceArray *_field14;
-    struct SparseReferenceArray *_field15;
-    struct SparseReferenceArray *_field16;
-    struct SparseReferenceArray *_field17;
-};
-
-struct RectArchive;
-
-struct Reference;
-
-struct ReferenceLineGenericPropertyMapArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct ArenaStringPtr _field5;
-    struct ChartsNSNumberDoubleArchive *_field6;
-    struct ShadowArchive *_field7;
-    struct StrokeArchive *_field8;
-    int _field9;
-    _Bool _field10;
-    _Bool _field11;
-    _Bool _field12;
-    int _field13;
-    int _field14;
+    struct ObjcSharedPtr<NSSet> _effects;
+    struct vector<TSCH3D::ResourceAttributeState, std::allocator<TSCH3D::ResourceAttributeState>> _attributes;
+    struct vector<TSCH3D::TextureAttributeState, std::allocator<TSCH3D::TextureAttributeState>> _textures;
 };
 
 struct RenderHints {
@@ -1073,132 +241,6 @@ struct RenderState {
     float polygonOffsetFactor;
     float polygonOffsetUnits;
     struct EnableClipDistances enableClipDistances;
-};
-
-struct Rep;
-
-struct RepeatedField<double> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-};
-
-struct RepeatedField<unsigned int> {
-    int _field1;
-    int _field2;
-    union Pointer _field3;
-};
-
-struct RepeatedPtrField<TSCH::Chart3DBaseImageTextureTilingArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::Chart3DEnvironmentMaterialArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::Chart3DImageTextureTilingArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::Chart3DLightArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::Chart3DTSPImageDataTextureArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::ChartSelectionPathArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::ChartSelectionPathArgumentArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::GridRow> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::GridValue> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::PreUFF::ChartGridArchive_ValueRow> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::StyleSwapUndoTupleArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSCH::StyleSwapUndoTuplesArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSP::Color> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSP::Reference> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<TSP::UUID> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-};
-
-struct RepeatedPtrField<std::__1::basic_string<char>> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
 };
 
 struct ResizeData {
@@ -1218,57 +260,22 @@ struct ResizingSize {
 
 struct ResourceAttributeState;
 
-struct ShadowArchive;
-
-struct SparseReferenceArray;
-
 struct StateStack<TSCH3D::ObjectState, 6> {
-    unsigned long long mIndex;
-    struct ObjectState mCurrent;
-    struct ObjectState mStack[6];
+    unsigned long long _index;
+    struct ObjectState _current;
+    struct ObjectState _stack[6];
 };
 
 struct StateStack<TSCH3D::RenderState, 10> {
-    unsigned long long mIndex;
-    struct RenderState mCurrent;
-    struct RenderState mStack[10];
+    unsigned long long _index;
+    struct RenderState _current;
+    struct RenderState _stack[10];
 };
 
 struct StateStack<glm::detail::tmat4x4<float>, 8> {
-    unsigned long long mIndex;
-    tmat4x4_3074befe mCurrent;
-    tmat4x4_3074befe mStack[8];
-};
-
-struct StrokeArchive;
-
-struct StyleOwnerPath {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct RepeatedPtrField<TSP::UUID> _field5;
-};
-
-struct StyleSwapUndoTupleArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    struct Reference *_field5;
-    struct Reference *_field6;
-    struct Reference *_field7;
-    struct UUID *_field8;
-    unsigned int _field9;
-    int _field10;
-};
-
-struct StyleSwapUndoTuplesArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct InternalMetadataWithArena _field2;
-    struct HasBits<1> _field3;
-    struct CachedSize _field4;
-    RepeatedPtrField_6c786866 _field5;
+    unsigned long long _index;
+    tmat4x4_3074befe _current;
+    tmat4x4_3074befe _stack[8];
 };
 
 struct TSCH3DChartRotationLimit {
@@ -1287,20 +294,26 @@ struct TSCH3DChartSceneAreaLayoutItemCacheValues {
     struct CGSize chartBodyLayoutSize;
     struct CGSize requestChartBodyLayoutSize;
     tvec2_3b141483 modelSize;
-    CDStruct_b1c75024 layoutSettings;
+    CDStruct_c48db077 layoutSettings;
     _Bool forcedValid;
 };
 
 struct TSCH3DShaderType {
-    unsigned long long mValue;
+    unsigned long long _value;
 };
 
 struct TSCH3DShaderVariableScopeType {
-    unsigned long long mValue;
+    unsigned long long _value;
 };
 
 struct TSCH3DShaderVariableScopes {
-    struct array<TSCH3DShaderVariableScopeType, 2> mScopes;
+    struct array<TSCH3DShaderVariableScopeType, 2> _scopes;
+};
+
+struct TSCHBaseFormatProperties {
+    unsigned char _field1;
+    unsigned char _field2;
+    _Bool _field3;
 };
 
 struct TSCHChartDrawableLayoutLegendResizerFrames {
@@ -1331,6 +344,23 @@ struct TSCHChartPieWedgeElementLayoutSystem {
     struct CGPoint centerPoint;
 };
 
+struct TSCHCurrencyFormatProperties {
+    struct TSCHNumericFormatProperties _field1;
+    _Bool _field2;
+    id _field3;
+};
+
+struct TSCHDurationFormatProperties {
+    _Bool _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+};
+
+struct TSCHFractionFormatProperties {
+    char _field1;
+};
+
 struct TSCHLegendAnchorLine {
     struct CGPoint normal;
     double distance;
@@ -1341,14 +371,16 @@ struct TSCHLegendAnchorRange {
     double _field2;
 };
 
+struct TSCHNumericFormatProperties {
+    unsigned long long _field1;
+    unsigned char _field2;
+    _Bool _field3;
+};
+
 struct TSCHTextLayoutResults {
     struct CGRect _field1;
     double _field2;
     _Bool _field3;
-};
-
-struct TexCoordTilingShaderEffectState {
-    struct array<TSCH3D::TexCoordTilingShaderEffectState::Data, 3> _field1;
 };
 
 struct TextureAttributeState;
@@ -1364,26 +396,12 @@ struct TextureAttributes {
 };
 
 struct TextureCoordinateConverter {
-    box_80622335 _field1;
+    box_c88174d1 _field1;
 };
 
 struct TextureSizeHint {
     int _field1;
     tvec2_3b141483 _field2;
-};
-
-struct ThemeArchive {
-    CDUnknownFunctionPointerType *_field1;
-    struct ExtensionSet _field2;
-    struct InternalMetadataWithArena _field3;
-    struct HasBits<1> _field4;
-    struct CachedSize _field5;
-    struct RepeatedPtrField<TSP::UUID> _field6;
-    struct RepeatedPtrField<TSP::UUID> _field7;
-    struct RepeatedPtrField<TSP::Color> _field8;
-    struct ArenaStringPtr _field9;
-    struct Reference *_field10;
-    struct Reference *_field11;
 };
 
 struct Transform {
@@ -1401,13 +419,11 @@ struct UIEdgeInsets {
     double _field4;
 };
 
-struct UUID;
-
 struct ValueEnumerator {
-    _Bool mForward;
-    unsigned long long mIndex;
-    unsigned long long mMax;
-    double mValue;
+    _Bool _forward;
+    unsigned long long _index;
+    unsigned long long _max;
+    double _value;
 };
 
 struct Vector3 {
@@ -1425,10 +441,6 @@ struct array<TSCH3D::BarExtrusionDetails, 2> {
     struct BarExtrusionDetails __elems_[2];
 };
 
-struct array<TSCH3D::TexCoordTilingShaderEffectState::Data, 3> {
-    struct Data _field1[3];
-};
-
 struct array<TSCH3DShaderVariableScopeType, 2> {
     struct TSCH3DShaderVariableScopeType __elems_[2];
 };
@@ -1441,75 +453,29 @@ struct array<glm::detail::tmat4x4<float>, 2> {
     tmat4x4_3074befe __elems_[2];
 };
 
-struct atomic<int> {
-    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
-        _Atomic int _field1;
-    } _field1;
-};
-
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
-                struct __short {
-                    char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
-};
-
 struct bitset<5> {
     unsigned long long __first_;
 };
 
 struct box<glm::detail::tvec2<float>> {
-    tvec2_84d5962d mMin;
-    tvec2_84d5962d mMax;
+    tvec2_84d5962d _min;
+    tvec2_84d5962d _max;
 };
 
 struct box<glm::detail::tvec2<int>> {
-    tvec2_3b141483 mMin;
-    tvec2_3b141483 mMax;
+    tvec2_3b141483 _min;
+    tvec2_3b141483 _max;
 };
 
 struct box<glm::detail::tvec3<float>> {
-    tvec3_17f03ce0 mMin;
-    tvec3_17f03ce0 mMax;
-};
-
-struct deque<TSCH3D::Transform, std::__1::allocator<TSCH3D::Transform>> {
-    struct __split_buffer<TSCH3D::Transform *, std::__1::allocator<TSCH3D::Transform *>> {
-        struct Transform **_field1;
-        struct Transform **_field2;
-        struct Transform **_field3;
-        struct __compressed_pair<TSCH3D::Transform **, std::__1::allocator<TSCH3D::Transform *>> {
-            struct Transform **_field1;
-        } _field4;
-    } _field1;
-    unsigned long long _field2;
-    struct __compressed_pair<unsigned long, std::__1::allocator<TSCH3D::Transform>> {
-        unsigned long long _field1;
-    } _field3;
+    tvec3_17f03ce0 _min;
+    tvec3_17f03ce0 _max;
 };
 
 struct line<glm::detail::tvec3<float>> {
-    tvec3_17f03ce0 mPosition;
-    tvec3_17f03ce0 mDirection;
+    tvec3_17f03ce0 _position;
+    tvec3_17f03ce0 _direction;
 };
-
-struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension>>>;
 
 struct pair<TSCH3D::IteratorRange<const char *>, TSCH3D::IteratorRange<const char *>> {
     IteratorRange_617e5e79 _field1;
@@ -1532,13 +498,8 @@ struct pair<const char *, const char *> {
 };
 
 struct plane<glm::detail::tvec3<float>> {
-    tvec3_17f03ce0 mNormal;
-    float mDistance;
-};
-
-struct range<double> {
-    double _field1;
-    double _field2;
+    tvec3_17f03ce0 _normal;
+    float _distance;
 };
 
 struct range<unsigned int> {
@@ -1560,8 +521,6 @@ struct tquat<float> {
     float z;
     float w;
 };
-
-struct tvec1<float>;
 
 struct tvec2<bool> {
     union {
@@ -1613,177 +572,146 @@ struct tvec4<float> {
     } ;
 };
 
-struct tvec4<int> {
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field1;
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field2;
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field3;
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field4;
-};
-
-struct vector<TSCH3D::BarElementInfo, std::__1::allocator<TSCH3D::BarElementInfo>> {
+struct vector<TSCH3D::BarElementInfo, std::allocator<TSCH3D::BarElementInfo>> {
     struct BarElementInfo *__begin_;
     struct BarElementInfo *__end_;
-    struct __compressed_pair<TSCH3D::BarElementInfo *, std::__1::allocator<TSCH3D::BarElementInfo>> {
+    struct __compressed_pair<TSCH3D::BarElementInfo *, std::allocator<TSCH3D::BarElementInfo>> {
         struct BarElementInfo *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>, std::__1::allocator<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>>> {
-    box_a3bd9649 *__begin_;
-    box_a3bd9649 *__end_;
-    struct __compressed_pair<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>*, std::__1::allocator<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>>> {
-        box_a3bd9649 *__value_;
+struct vector<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>, std::allocator<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>*, std::allocator<TSCH3D::Math::ExtendedTypesDetails::box<glm::detail::tvec3<float>>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>, std::__1::allocator<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>>> {
-    plane_849e6053 *_field1;
-    plane_849e6053 *_field2;
-    struct __compressed_pair<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>*, std::__1::allocator<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>>> {
-        plane_849e6053 *_field1;
-    } _field3;
-};
-
-struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>, std::__1::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>>> {
-    struct Lookup<TSCH3D::AttributeSpecs> *__begin_;
-    struct Lookup<TSCH3D::AttributeSpecs> *__end_;
-    struct __compressed_pair<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>*, std::__1::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>>> {
-        struct Lookup<TSCH3D::AttributeSpecs> *__value_;
+struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>, std::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>*, std::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::AttributeSpecs>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>, std::__1::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>>> {
-    struct Lookup<TSCH3D::TextureAttributes> *__begin_;
-    struct Lookup<TSCH3D::TextureAttributes> *__end_;
-    struct __compressed_pair<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>*, std::__1::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>>> {
-        struct Lookup<TSCH3D::TextureAttributes> *__value_;
+struct vector<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>, std::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>*, std::allocator<TSCH3D::ObjectState::Lookup<TSCH3D::TextureAttributes>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3D::PODType<unsigned char>, std::__1::allocator<TSCH3D::PODType<unsigned char>>> {
-    struct PODType<unsigned char> *__begin_;
-    struct PODType<unsigned char> *__end_;
-    struct __compressed_pair<TSCH3D::PODType<unsigned char>*, std::__1::allocator<TSCH3D::PODType<unsigned char>>> {
-        struct PODType<unsigned char> *__value_;
+struct vector<TSCH3D::PODType<unsigned char>, std::allocator<TSCH3D::PODType<unsigned char>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<TSCH3D::PODType<unsigned char>*, std::allocator<TSCH3D::PODType<unsigned char>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3D::PODType<unsigned short>, std::__1::allocator<TSCH3D::PODType<unsigned short>>> {
-    struct PODType<unsigned short> *__begin_;
-    struct PODType<unsigned short> *__end_;
-    struct __compressed_pair<TSCH3D::PODType<unsigned short>*, std::__1::allocator<TSCH3D::PODType<unsigned short>>> {
-        struct PODType<unsigned short> *__value_;
+struct vector<TSCH3D::PODType<unsigned short>, std::allocator<TSCH3D::PODType<unsigned short>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<TSCH3D::PODType<unsigned short>*, std::allocator<TSCH3D::PODType<unsigned short>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3D::ResourceAttributeState, std::__1::allocator<TSCH3D::ResourceAttributeState>> {
+struct vector<TSCH3D::ResourceAttributeState, std::allocator<TSCH3D::ResourceAttributeState>> {
     struct ResourceAttributeState *__begin_;
     struct ResourceAttributeState *__end_;
-    struct __compressed_pair<TSCH3D::ResourceAttributeState *, std::__1::allocator<TSCH3D::ResourceAttributeState>> {
+    struct __compressed_pair<TSCH3D::ResourceAttributeState *, std::allocator<TSCH3D::ResourceAttributeState>> {
         struct ResourceAttributeState *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3D::TextureAttributeState, std::__1::allocator<TSCH3D::TextureAttributeState>> {
+struct vector<TSCH3D::TextureAttributeState, std::allocator<TSCH3D::TextureAttributeState>> {
     struct TextureAttributeState *__begin_;
     struct TextureAttributeState *__end_;
-    struct __compressed_pair<TSCH3D::TextureAttributeState *, std::__1::allocator<TSCH3D::TextureAttributeState>> {
+    struct __compressed_pair<TSCH3D::TextureAttributeState *, std::allocator<TSCH3D::TextureAttributeState>> {
         struct TextureAttributeState *__value_;
     } __end_cap_;
 };
 
-struct vector<TSCH3DShaderVariableScopeType, std::__1::allocator<TSCH3DShaderVariableScopeType>> {
+struct vector<TSCH3DShaderVariableScopeType, std::allocator<TSCH3DShaderVariableScopeType>> {
     struct TSCH3DShaderVariableScopeType *__begin_;
     struct TSCH3DShaderVariableScopeType *__end_;
-    struct __compressed_pair<TSCH3DShaderVariableScopeType *, std::__1::allocator<TSCH3DShaderVariableScopeType>> {
+    struct __compressed_pair<TSCH3DShaderVariableScopeType *, std::allocator<TSCH3DShaderVariableScopeType>> {
         struct TSCH3DShaderVariableScopeType *__value_;
     } __end_cap_;
 };
 
-struct vector<double, std::__1::allocator<double>> {
+struct vector<double, std::allocator<double>> {
     double *__begin_;
     double *__end_;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
+    struct __compressed_pair<double *, std::allocator<double>> {
         double *__value_;
     } __end_cap_;
 };
 
-struct vector<float, std::__1::allocator<float>> {
+struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
+    struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
     } __end_cap_;
 };
 
-struct vector<glm::detail::tvec1<float>, std::__1::allocator<glm::detail::tvec1<float>>> {
-    struct tvec1<float> *__begin_;
-    struct tvec1<float> *__end_;
-    struct __compressed_pair<glm::detail::tvec1<float>*, std::__1::allocator<glm::detail::tvec1<float>>> {
-        struct tvec1<float> *__value_;
+struct vector<glm::detail::tvec1<float>, std::allocator<glm::detail::tvec1<float>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<glm::detail::tvec1<float>*, std::allocator<glm::detail::tvec1<float>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<glm::detail::tvec2<float>, std::__1::allocator<glm::detail::tvec2<float>>> {
-    tvec2_84d5962d *__begin_;
-    tvec2_84d5962d *__end_;
-    struct __compressed_pair<glm::detail::tvec2<float>*, std::__1::allocator<glm::detail::tvec2<float>>> {
-        tvec2_84d5962d *__value_;
+struct vector<glm::detail::tvec2<float>, std::allocator<glm::detail::tvec2<float>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<glm::detail::tvec2<float>*, std::allocator<glm::detail::tvec2<float>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<glm::detail::tvec2<int>, std::__1::allocator<glm::detail::tvec2<int>>> {
-    tvec2_3b141483 *__begin_;
-    tvec2_3b141483 *__end_;
-    struct __compressed_pair<glm::detail::tvec2<int>*, std::__1::allocator<glm::detail::tvec2<int>>> {
-        tvec2_3b141483 *__value_;
+struct vector<glm::detail::tvec2<int>, std::allocator<glm::detail::tvec2<int>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<glm::detail::tvec2<int>*, std::allocator<glm::detail::tvec2<int>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<glm::detail::tvec3<float>, std::__1::allocator<glm::detail::tvec3<float>>> {
-    tvec3_17f03ce0 *__begin_;
-    tvec3_17f03ce0 *__end_;
-    struct __compressed_pair<glm::detail::tvec3<float>*, std::__1::allocator<glm::detail::tvec3<float>>> {
-        tvec3_17f03ce0 *__value_;
+struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<glm::detail::tvec3<float>*, std::allocator<glm::detail::tvec3<float>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<glm::detail::tvec4<float>, std::__1::allocator<glm::detail::tvec4<float>>> {
-    tvec4_ac57c72d *__begin_;
-    tvec4_ac57c72d *__end_;
-    struct __compressed_pair<glm::detail::tvec4<float>*, std::__1::allocator<glm::detail::tvec4<float>>> {
-        tvec4_ac57c72d *__value_;
+struct vector<glm::detail::tvec4<float>, std::allocator<glm::detail::tvec4<float>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<glm::detail::tvec4<float>*, std::allocator<glm::detail::tvec4<float>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct vector<long, std::__1::allocator<long>> {
+struct vector<long, std::allocator<long>> {
     long long *__begin_;
     long long *__end_;
-    struct __compressed_pair<long *, std::__1::allocator<long>> {
+    struct __compressed_pair<long *, std::allocator<long>> {
         long long *__value_;
     } __end_cap_;
 };
 
-struct vector<unsigned char, std::__1::allocator<unsigned char>> {
+struct vector<unsigned char, std::allocator<unsigned char>> {
     char *__begin_;
     char *__end_;
-    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
+    struct __compressed_pair<unsigned char *, std::allocator<unsigned char>> {
         char *__value_;
     } __end_cap_;
 };
@@ -1796,11 +724,12 @@ typedef struct {
     _Bool forceOmitAxisTitle;
     _Bool forceOmitLabelPlacement;
     _Bool forceTitleAtTop;
+    _Bool forceLegendAtBottom;
     _Bool enable3DTightBounds;
     _Bool enable3DScaledDepthBounds;
     long long maxDepthRatioType;
     unsigned long long max3DLimitingSeries;
-} CDStruct_b1c75024;
+} CDStruct_c48db077;
 
 typedef struct {
     unsigned long long _field1;
@@ -1860,122 +789,32 @@ typedef struct {
     id _field1;
     id _field2;
     struct CGRect _field3;
-    id _field4;
-    id _field5;
-} CDStruct_e0d92598;
-
-typedef struct {
-    unsigned int mFormatType;
-    union {
-        struct {
-            unsigned int mCurrencyCodeIndex:16;
-            unsigned int mDecimalPlaces:8;
-            unsigned int mNegativeStyle:3;
-            unsigned int mShowThousandsSeparator:1;
-            unsigned int mUseAccountingStyle:1;
-        } mNumberFormatStruct;
-        struct {
-            unsigned int mFractionAccuracy:8;
-        } mFractionFormatStruct;
-        struct {
-            unsigned int mBase:8;
-            unsigned int mBasePlaces:8;
-            unsigned int mBaseUseMinusSign:1;
-        } mBaseFormatStruct;
-        struct {
-            unsigned int mSuppressDateFormat:1;
-            unsigned int mSuppressTimeFormat:1;
-            NSString *mDateTimeFormat;
-        } mDateFormatStruct;
-        struct {
-            unsigned int mUseAutomaticUnits:1;
-            int mDurationUnitSmallest;
-            int mDurationUnitLargest;
-            int mDurationStyle;
-        } mDurationFormatStruct;
-        struct {
-            NSUUID *mCustomFormatKey;
-            TSUCustomFormat *mCustomFormat;
-            unsigned int mLegacyID;
-            unsigned char mAppliedConditionKey;
-        } mCustomFormatStruct;
-    } ;
-} CDStruct_4f52a90b;
+} CDStruct_1cb6887c;
 
 // Template types
 typedef struct IteratorRange<const char *> {
     struct pair<const char *, const char *> _field1;
 } IteratorRange_617e5e79;
 
-typedef struct RepeatedPtrField<TSCH::GridRow> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-} RepeatedPtrField_36342b27;
-
-typedef struct RepeatedPtrField<TSCH::StyleSwapUndoTupleArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-} RepeatedPtrField_6c786866;
-
-typedef struct RepeatedPtrField<TSCH::StyleSwapUndoTuplesArchive> {
-    struct Arena *_field1;
-    int _field2;
-    int _field3;
-    struct Rep *_field4;
-} RepeatedPtrField_e6d64692;
-
-typedef struct StateStack<TSCH3D::ObjectState, 6> {
-    unsigned long long mIndex;
-    struct ObjectState mCurrent;
-    struct ObjectState mStack[6];
-} StateStack_2a9a65b0;
-
-typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-        struct __rep {
-            union {
-                struct __long {
-                    char *_field1;
-                    unsigned long long _field2;
-                    unsigned long long _field3;
-                } _field1;
-                struct __short {
-                    char _field1[23];
-                    struct {
-                        unsigned char _field1;
-                    } _field2;
-                } _field2;
-                struct __raw {
-                    unsigned long long _field1[3];
-                } _field3;
-            } _field1;
-        } _field1;
-    } _field1;
-} basic_string_7c0a1c0b;
-
 typedef struct box<glm::detail::tvec2<float>> {
-    tvec2_84d5962d mMin;
-    tvec2_84d5962d mMax;
-} box_80622335;
+    tvec2_84d5962d _min;
+    tvec2_84d5962d _max;
+} box_c88174d1;
 
 typedef struct box<glm::detail::tvec2<int>> {
-    tvec2_3b141483 mMin;
-    tvec2_3b141483 mMax;
-} box_0260e9b3;
+    tvec2_3b141483 _min;
+    tvec2_3b141483 _max;
+} box_ce64ce81;
 
 typedef struct box<glm::detail::tvec3<float>> {
-    tvec3_17f03ce0 mMin;
-    tvec3_17f03ce0 mMax;
-} box_a3bd9649;
+    tvec3_17f03ce0 _min;
+    tvec3_17f03ce0 _max;
+} box_c9ef104e;
 
 typedef struct line<glm::detail::tvec3<float>> {
-    tvec3_17f03ce0 mPosition;
-    tvec3_17f03ce0 mDirection;
-} line_190fbfc7;
+    tvec3_17f03ce0 _position;
+    tvec3_17f03ce0 _direction;
+} line_e1962432;
 
 typedef struct pair<TSCH3D::IteratorRange<const char *>, TSCH3D::IteratorRange<const char *>> {
     IteratorRange_617e5e79 _field1;
@@ -1991,16 +830,6 @@ typedef struct pair<bool, TSCH3DShaderVariableLinkage *> {
     _Bool _field1;
     id _field2;
 } pair_64bf96b1;
-
-typedef struct plane<glm::detail::tvec3<float>> {
-    tvec3_17f03ce0 mNormal;
-    float mDistance;
-} plane_849e6053;
-
-typedef struct range<double> {
-    double _field1;
-    double _field2;
-} range_2a4e38ce;
 
 typedef struct range<unsigned int> {
     unsigned int _field1;
@@ -2072,129 +901,6 @@ typedef struct tvec4<float> {
     } ;
 } tvec4_ac57c72d;
 
-typedef struct tvec4<int> {
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field1;
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field2;
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field3;
-    union {
-        int _field1;
-        int _field2;
-        int _field3;
-    } _field4;
-} tvec4_f99fd489;
-
-typedef struct vector<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>, std::__1::allocator<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>>> {
-    plane_849e6053 *_field1;
-    plane_849e6053 *_field2;
-    struct __compressed_pair<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>*, std::__1::allocator<TSCH3D::Math::ExtendedTypesDetails::plane<glm::detail::tvec3<float>>>> {
-        plane_849e6053 *_field1;
-    } _field3;
-} vector_5e6a89be;
-
-typedef struct vector<TSCH3D::PODType<unsigned char>, std::__1::allocator<TSCH3D::PODType<unsigned char>>> {
-    struct PODType<unsigned char> *__begin_;
-    struct PODType<unsigned char> *__end_;
-    struct __compressed_pair<TSCH3D::PODType<unsigned char>*, std::__1::allocator<TSCH3D::PODType<unsigned char>>> {
-        struct PODType<unsigned char> *__value_;
-    } __end_cap_;
-} vector_1798193c;
-
-typedef struct vector<TSCH3D::PODType<unsigned short>, std::__1::allocator<TSCH3D::PODType<unsigned short>>> {
-    struct PODType<unsigned short> *__begin_;
-    struct PODType<unsigned short> *__end_;
-    struct __compressed_pair<TSCH3D::PODType<unsigned short>*, std::__1::allocator<TSCH3D::PODType<unsigned short>>> {
-        struct PODType<unsigned short> *__value_;
-    } __end_cap_;
-} vector_e28bcd8e;
-
-typedef struct vector<TSCH3DShaderVariableScopeType, std::__1::allocator<TSCH3DShaderVariableScopeType>> {
-    struct TSCH3DShaderVariableScopeType *__begin_;
-    struct TSCH3DShaderVariableScopeType *__end_;
-    struct __compressed_pair<TSCH3DShaderVariableScopeType *, std::__1::allocator<TSCH3DShaderVariableScopeType>> {
-        struct TSCH3DShaderVariableScopeType *__value_;
-    } __end_cap_;
-} vector_22c20f1a;
-
-typedef struct vector<float, std::__1::allocator<float>> {
-    float *__begin_;
-    float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *__value_;
-    } __end_cap_;
-} vector_7584168e;
-
-typedef struct vector<glm::detail::tvec1<float>, std::__1::allocator<glm::detail::tvec1<float>>> {
-    struct tvec1<float> *__begin_;
-    struct tvec1<float> *__end_;
-    struct __compressed_pair<glm::detail::tvec1<float>*, std::__1::allocator<glm::detail::tvec1<float>>> {
-        struct tvec1<float> *__value_;
-    } __end_cap_;
-} vector_9ed239ac;
-
-typedef struct vector<glm::detail::tvec2<float>, std::__1::allocator<glm::detail::tvec2<float>>> {
-    tvec2_84d5962d *__begin_;
-    tvec2_84d5962d *__end_;
-    struct __compressed_pair<glm::detail::tvec2<float>*, std::__1::allocator<glm::detail::tvec2<float>>> {
-        tvec2_84d5962d *__value_;
-    } __end_cap_;
-} vector_d73af98f;
-
-typedef struct vector<glm::detail::tvec3<float>, std::__1::allocator<glm::detail::tvec3<float>>> {
-    tvec3_17f03ce0 *__begin_;
-    tvec3_17f03ce0 *__end_;
-    struct __compressed_pair<glm::detail::tvec3<float>*, std::__1::allocator<glm::detail::tvec3<float>>> {
-        tvec3_17f03ce0 *__value_;
-    } __end_cap_;
-} vector_7200ab52;
-
-typedef struct vector<glm::detail::tvec4<float>, std::__1::allocator<glm::detail::tvec4<float>>> {
-    tvec4_ac57c72d *__begin_;
-    tvec4_ac57c72d *__end_;
-    struct __compressed_pair<glm::detail::tvec4<float>*, std::__1::allocator<glm::detail::tvec4<float>>> {
-        tvec4_ac57c72d *__value_;
-    } __end_cap_;
-} vector_ccfc515b;
-
-typedef struct vector<long, std::__1::allocator<long>> {
-    long long *__begin_;
-    long long *__end_;
-    struct __compressed_pair<long *, std::__1::allocator<long>> {
-        long long *__value_;
-    } __end_cap_;
-} vector_afed86a5;
-
-typedef struct vector<unsigned char, std::__1::allocator<unsigned char>> {
-    char *__begin_;
-    char *__end_;
-    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
-        char *__value_;
-    } __end_cap_;
-} vector_aab22ae2;
-
-#pragma mark Named Unions
-
-union AllocatedData {
-    struct KeyValue *_field1;
-    struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension>>> *_field2;
-};
-
-union Pointer {
-    struct Arena *_field1;
-    struct Rep *_field2;
-};
-
 #pragma mark Typedef'd Unions
 
 // Ambiguous groups
@@ -2215,12 +921,6 @@ typedef union {
     float b;
     float p;
 } CDUnion_47fe3727;
-
-typedef union {
-    int _field1;
-    int _field2;
-    int _field3;
-} CDUnion_58123c5d;
 
 typedef union {
     int x;

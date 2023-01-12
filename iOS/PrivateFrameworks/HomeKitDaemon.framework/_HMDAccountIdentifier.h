@@ -22,6 +22,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)updateAppleAccountSenderCorrelationIdentifier:(id)arg1;
 @property(readonly, copy) NSString *senderCorrelationIdentifier;
 @property(readonly, getter=isAuthenticated) _Bool authenticated;
 - (_Bool)isEqual:(id)arg1;

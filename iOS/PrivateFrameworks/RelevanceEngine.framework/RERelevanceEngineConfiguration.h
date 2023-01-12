@@ -25,6 +25,7 @@
 + (id)defaultUpNextConfiguration;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *whitelistedDataSourceClassNames; // @synthesize whitelistedDataSourceClassNames=_whitelistedDataSourceClassNames;
+@property(readonly, nonatomic) _Bool disableAutomaticContentManagement;
 @property(readonly, nonatomic) _Bool ignoresInstalledApplications;
 @property(readonly, nonatomic) id <RERelevanceEngineMetricsRecorder> metricsRecorder;
 @property(readonly, nonatomic) _Bool allowsDiagnosticExtension;

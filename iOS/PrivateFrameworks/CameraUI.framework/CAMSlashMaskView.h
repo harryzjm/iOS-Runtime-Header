@@ -18,6 +18,7 @@
 - (void)_updateShapeLayerAnimated:(_Bool)arg1;
 - (void)updateMaskAnimated;
 - (void)setSlashBounds:(struct CGRect)arg1 animated:(_Bool)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(readonly, nonatomic) CAShapeLayer *_shapeLayer;

@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectID, NSString;
+@class NSManagedObjectID, PLPhotoLibraryPathManagerIdentifier;
 
 @interface PLLocalVideoKeyFrameGenerationJob : NSObject
 {
     _Bool _networkAccessAllowed;
     NSManagedObjectID *_assetObjectID;
-    NSString *_libraryID;
+    PLPhotoLibraryPathManagerIdentifier *_libraryID;
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(copy, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
+@property(copy, nonatomic) PLPhotoLibraryPathManagerIdentifier *libraryID; // @synthesize libraryID=_libraryID;
 @property(nonatomic) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(retain, nonatomic) NSManagedObjectID *assetObjectID; // @synthesize assetObjectID=_assetObjectID;
 - (unsigned long long)hash;

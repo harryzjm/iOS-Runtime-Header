@@ -11,7 +11,8 @@
 
 @protocol CSModalHomeAffordanceControlling <NSObject>
 @property(retain, nonatomic) UIScreenEdgePanGestureRecognizer *homeGestureRecognizer;
+- (_Bool)ownsHomeGesture;
 - (void)unregisterHomeGestureParticipant;
-- (void)registerHomeGestureParticipant:(id <CSModalHomeGestureParticipating>)arg1;
+- (_Bool)registerHomeGestureParticipant:(id <CSModalHomeGestureParticipating>)arg1;
 @end
 

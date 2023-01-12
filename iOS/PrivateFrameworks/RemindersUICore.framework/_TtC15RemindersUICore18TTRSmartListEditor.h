@@ -11,7 +11,6 @@
 @interface _TtC15RemindersUICore18TTRSmartListEditor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *changeItem;
-    MISSING_TYPE *currentOrder;
     MISSING_TYPE *undoManager;
     MISSING_TYPE *unitTest_oneShotSyncSaveForUndo;
 }

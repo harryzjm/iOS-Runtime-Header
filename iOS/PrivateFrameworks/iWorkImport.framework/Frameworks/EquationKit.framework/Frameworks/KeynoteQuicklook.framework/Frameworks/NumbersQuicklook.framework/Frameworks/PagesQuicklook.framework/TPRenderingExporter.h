@@ -6,7 +6,7 @@
 
 #import <TSApplication/TSARenderingExporter.h>
 
-@class NSMutableArray, TPPdfHyperlinkController;
+@class NSMutableArray, TPPaginatedPageController, TPPdfHyperlinkController;
 
 @interface TPRenderingExporter : TSARenderingExporter
 {
@@ -14,14 +14,18 @@
     _Bool _includePencilAnnotations;
     _Bool _includeComments;
     _Bool _includeBackgrounds;
+    _Bool _tornDown;
     long long _lastPageIndexForLayout;
     NSMutableArray *_outputPageList;
     TPPdfHyperlinkController *_hyperlinkController;
     unsigned long long _pageIndex;
     unsigned long long _internalPageCount;
+    TPPaginatedPageController *_pageController;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool tornDown; // @synthesize tornDown=_tornDown;
+@property(retain, nonatomic) TPPaginatedPageController *pageController; // @synthesize pageController=_pageController;
 @property(nonatomic) unsigned long long internalPageCount; // @synthesize internalPageCount=_internalPageCount;
 @property(nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property(retain, nonatomic) TPPdfHyperlinkController *hyperlinkController; // @synthesize hyperlinkController=_hyperlinkController;

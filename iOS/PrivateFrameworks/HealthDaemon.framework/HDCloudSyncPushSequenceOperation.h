@@ -5,44 +5,34 @@
 //
 
 #import <HealthDaemon/HDSyncSessionDelegate-Protocol.h>
+#import <HealthDaemon/HDSynchronousTaskGroupDelegate-Protocol.h>
 
-@class HDCloudSyncSequenceRecord, HDCloudSyncSessionContext, HDCloudSyncTarget, NSMutableArray, NSObject, NSString;
+@class HDCloudSyncSequenceRecord, HDCloudSyncSessionContext, HDCloudSyncTarget, HDSynchronousTaskGroup, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDCloudSyncPushSequenceOperation <HDSyncSessionDelegate>
+@interface HDCloudSyncPushSequenceOperation <HDSynchronousTaskGroupDelegate, HDSyncSessionDelegate>
 {
     HDCloudSyncTarget *_target;
     HDCloudSyncSequenceRecord *_sequenceRecord;
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_syncQueue;
+    HDSynchronousTaskGroup *_taskGroup;
     HDCloudSyncSessionContext *_sessionContext;
     NSMutableArray *_changeRecordsPendingPush;
     NSMutableArray *_recordsPendingDeletion;
+    _Bool _isPerformingRecentRecordRoll;
     _Bool _hasMadeForwardProgress;
 }
 
++ (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasMadeForwardProgress; // @synthesize hasMadeForwardProgress=_hasMadeForwardProgress;
+- (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
 - (void)syncSession:(id)arg1 didFinishSuccessfully:(_Bool)arg2 error:(id)arg3;
 - (_Bool)syncSession:(id)arg1 didEndTransactionWithError:(id *)arg2;
 - (void)syncSession:(id)arg1 sendChanges:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)syncSession:(id)arg1 willSyncAnchorRanges:(id)arg2;
 - (void)syncSessionWillBegin:(id)arg1;
-- (void)_recordForwardProgressDate;
-- (void)_setInitialForwardProgressDateIfNecessary;
-- (int)_protocolVersionForPush;
-- (void)_endSyncSessionWithSuccess:(_Bool)arg1 error:(id)arg2;
-- (void)_finalizePushForSession:(id)arg1;
-- (void)_pushRecords:(id)arg1 recordIDsToDelete:(id)arg2 containerID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_uploadChangesForSyncSession:(id)arg1 isFinalUpload:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)_lock_finalizeNextChangeRecordForUploadToSession:(id)arg1 shouldFreeze:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)_validateArchiveFileHandle:(id)arg1 error:(id *)arg2;
-- (long long)nextSyncAnchorForEntity:(Class)arg1 session:(id)arg2 startSyncAnchor:(long long)arg3 error:(id *)arg4;
-- (id)_estimateSyncEntityClassesWithChangesForSession:(id)arg1;
-- (id)_excludedSyncStoresForPush;
-- (void)_syncQueue_performSyncWithSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_synthesizeEmptySyncForSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)_prepareLocalSyncAnchorMapForStore:(id)arg1 error:(id *)arg2;
-- (void)_updateStoreRecordProperties;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 target:(id)arg3 sequence:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

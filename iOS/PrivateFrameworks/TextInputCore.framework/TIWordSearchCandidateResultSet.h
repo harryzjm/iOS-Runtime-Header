@@ -12,7 +12,6 @@
 
 @interface TIWordSearchCandidateResultSet : NSObject <NSCopying>
 {
-    _Bool _empty;
     NSMutableArray *_mutableCandidates;
     NSMutableDictionary *_mutableCandidateRefsDictionary;
     NSArray *_disambiguationCandidates;
@@ -31,7 +30,6 @@
 @property(retain, nonatomic) NSString *autoconvertedInputString; // @synthesize autoconvertedInputString=_autoconvertedInputString;
 @property(retain, nonatomic) NSString *autoconvertedCandidateString; // @synthesize autoconvertedCandidateString=_autoconvertedCandidateString;
 @property(copy, nonatomic) NSArray *autoconvertedCandidates; // @synthesize autoconvertedCandidates=_autoconvertedCandidates;
-@property(nonatomic, getter=isEmpty) _Bool empty; // @synthesize empty=_empty;
 @property(retain, nonatomic) NSArray *proactiveCandidates; // @synthesize proactiveCandidates=_proactiveCandidates;
 @property(copy, nonatomic) TIKeyboardCandidate *candidateAfterSegmentBreak; // @synthesize candidateAfterSegmentBreak=_candidateAfterSegmentBreak;
 @property(nonatomic) unsigned long long selectedDisambiguationCandidateIndex; // @synthesize selectedDisambiguationCandidateIndex=_selectedDisambiguationCandidateIndex;
@@ -55,6 +53,7 @@
 - (void)addSyntheticMecabraCandidateWithSurface:(id)arg1 input:(id)arg2 isExtension:(_Bool)arg3;
 - (void)addSyntheticMecabraCandidateWithSurface:(id)arg1 input:(id)arg2;
 - (void)addCandidates:(id)arg1 candidateRefsDictionary:(id)arg2;
+@property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 @property(readonly, nonatomic) NSDictionary *candidateRefsDictionary;
 @property(readonly, nonatomic) NSArray *candidates;
 @property(readonly, nonatomic) NSArray *proactiveTriggers;

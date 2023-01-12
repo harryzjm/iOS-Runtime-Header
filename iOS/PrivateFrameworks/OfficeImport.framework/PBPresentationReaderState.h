@@ -12,11 +12,11 @@
 __attribute__((visibility("hidden")))
 @interface PBPresentationReaderState : NSObject
 {
-    struct PptBinaryReader *mPptBinaryReader;
+    void *mPptBinaryReader;
     PDPresentation *mTgtPresentation;
     ESDRoot *mDocumentRoot;
     ESDContainer *mSrcSlideListHolder;
-    ChVector_811a7989 *mCurrentSlideTextBlockRecordIndexRangeVector;
+    void *mCurrentSlideTextBlockRecordIndexRangeVector;
     unsigned int mSrcSlideId;
     NSMutableArray *mSlideIndexes;
     OITSUNoCopyDictionary *mSlideMasterToMasterStyles;
@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
     PBOutlineBulletDictionary *mPlaceholderMacCharStyles;
     ESDObject *mCurrentBulletStyle;
     ESDObject *mCurrentMacCharStyle;
-    ChVector_7fbb5a88 *mSrcDocMasterStyleInfoVector;
-    ChVector_7fbb5a88 *mSrcCurrentMasterStyleInfoVector;
+    void *mSrcDocMasterStyleInfoVector;
+    void *mSrcCurrentMasterStyleInfoVector;
     PBSlideState *mSlideState;
     id <TCCancelDelegate> mCancel;
     _Bool mHasSlideNumberPlaceholder;
@@ -47,10 +47,10 @@ __attribute__((visibility("hidden")))
 - (id)hyperlinkInfoWithId:(unsigned int)arg1 createIfAbsent:(_Bool)arg2;
 - (_Bool)isCancelled;
 - (void)setSourceSlideId:(unsigned int)arg1;
-- (ChVector_811a7989 *)currentSlideTextBlockRecordIndexRangeVector;
+- (void *)currentSlideTextBlockRecordIndexRangeVector;
 - (struct PBReaderMasterStyleInfo *)currentSourceMasterStyleInfoOfType:(int)arg1;
 - (struct PBReaderMasterStyleInfo *)docSourceMasterStyleInfoOfType:(int)arg1;
-- (void)setCurrentSourceMasterStyleInfoVector:(ChVector_7fbb5a88 *)arg1;
+- (void)setCurrentSourceMasterStyleInfoVector:(void *)arg1;
 - (_Bool)hasCurrentSourceMasterStyleInfoVector;
 - (void)resetSlideState;
 - (id)slideState;
@@ -79,9 +79,9 @@ __attribute__((visibility("hidden")))
 - (id)tgtPresentation;
 - (void)setDocumentRoot:(id)arg1;
 - (id)documentRoot;
-- (struct PptBinaryReader *)reader;
+- (void *)reader;
 - (void)dealloc;
-- (id)initWithReader:(struct PptBinaryReader *)arg1 tgtPresentation:(id)arg2;
+- (id)initWithReader:(void *)arg1 tgtPresentation:(id)arg2;
 
 @end
 

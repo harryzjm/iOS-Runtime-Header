@@ -47,12 +47,11 @@
 - (void)voiceControllerDidFinishRecording:(id)arg1 successfully:(_Bool)arg2;
 - (void)voiceControllerDidStartRecording:(id)arg1;
 - (void)voiceControllerDidDetectStartpoint:(id)arg1;
+@property(readonly, nonatomic, getter=isRecordingForRaiseGesture) _Bool recordingForRaiseGesture;
 - (void)cancelRecording;
 - (void)stopRecordingAndPlaySound:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopRecording:(CDUnknownBlockType)arg1;
 - (void)startRecordingForRaiseGesture:(_Bool)arg1 shouldPlaySound:(_Bool)arg2;
-- (void)startRecordingAndPlaySound:(_Bool)arg1;
-- (void)startRecordingForRaiseGesture;
 @property(readonly, nonatomic) double duration;
 - (id)init;
 - (void)dealloc;

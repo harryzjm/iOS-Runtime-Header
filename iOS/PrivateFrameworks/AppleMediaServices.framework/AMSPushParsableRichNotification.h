@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)shouldSkipAccountCheck;
-+ (void)userNotification:(id)arg1 selectedButtonAction:(id)arg2;
++ (void)userNotification:(id)arg1 selectedButtonAction:(id)arg2 bag:(id)arg3;
 + (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bag:(id)arg3;
 
 // Remaining properties

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *uniqueName;
+- (id)contactForIdentifier:(id)arg1;
 - (void)receivedNotification:(id)arg1;
 - (id)singleLineStringFromPostalAddress:(id)arg1 addCountryName:(_Bool)arg2;
 - (id)_crossPlatformUnifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;

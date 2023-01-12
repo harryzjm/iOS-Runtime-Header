@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) unsigned long long settingsContext; // @synthesize settingsContext=_settingsContext;
 @property(readonly, copy, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
 - (id)items;
+- (_Bool)_homeSupportsPackageDetection;
 - (id)reloadItems;
 - (id)init;
 - (id)initWithCameraProfiles:(id)arg1 settingsContext:(unsigned long long)arg2;

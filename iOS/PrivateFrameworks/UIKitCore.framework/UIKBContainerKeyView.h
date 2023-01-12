@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)displayLayer:(id)arg1;
 - (_Bool)hasRendered;
 - (_Bool)requiresSublayers;
+- (void)setScreenTraits:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 

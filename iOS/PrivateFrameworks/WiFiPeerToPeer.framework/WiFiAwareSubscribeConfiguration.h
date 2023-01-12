@@ -8,23 +8,27 @@
 
 #import <WiFiPeerToPeer/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, WiFiAwareFastDiscoveryConfiguration;
 
 @interface WiFiAwareSubscribeConfiguration : NSObject <NSSecureCoding>
 {
     NSString *_serviceName;
     NSData *_serviceSpecificInfo;
     long long _authenticationType;
+    WiFiAwareFastDiscoveryConfiguration *_fastDiscoveryConfiguration;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) WiFiAwareFastDiscoveryConfiguration *fastDiscoveryConfiguration; // @synthesize fastDiscoveryConfiguration=_fastDiscoveryConfiguration;
 @property(nonatomic) long long authenticationType; // @synthesize authenticationType=_authenticationType;
-@property(readonly, nonatomic) NSData *serviceSpecificInfo; // @synthesize serviceSpecificInfo=_serviceSpecificInfo;
+@property(copy, nonatomic) NSData *serviceSpecificInfo; // @synthesize serviceSpecificInfo=_serviceSpecificInfo;
 @property(readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (_Bool)fastDiscoveryConfigEqual:(id)arg1;
 - (_Bool)serviceSpecificInfoEqual:(id)arg1;
+- (id)initWithServiceName:(id)arg1;
 - (id)initWithServiceName:(id)arg1 serviceSpecificInfo:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

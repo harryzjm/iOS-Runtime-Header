@@ -8,32 +8,44 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNEntityIdentificationModelObservation-Protocol.h>
+#import <Vision/VNObjectCloning-Protocol.h>
+#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
 #import <Vision/VNRequestRevisionProviding-Protocol.h>
 
-@class NSUUID;
+@class NSUUID, VNRequestSpecifier;
 
-@interface VNObservation : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
+@interface VNObservation : NSObject <VNEntityIdentificationModelObservation, VNObjectCloning, VNOriginatingRequestSpecifierProviding, NSCopying, NSSecureCoding, VNRequestRevisionProviding>
 {
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
     float _confidence;
     NSUUID *_uuid;
     CDStruct_e83c9415 _timeRange;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestSpecifierForRevision:(unsigned long long)arg1;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(nonatomic) float confidence; // @synthesize confidence=_confidence;
 @property(retain, nonatomic, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
+- (id)getDataDetectorResultsForString:(id)arg1 error:(id *)arg2;
+- (id)getDataDetectorResults:(id *)arg1;
+@property(readonly) VNRequestSpecifier *originatingRequestSpecifier; // @synthesize originatingRequestSpecifier=_originatingRequestSpecifier;
+@property(readonly, nonatomic) unsigned long long requestRevision;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-@property(readonly, nonatomic) unsigned long long requestRevision;
 - (id)description;
+- (id)vn_cloneObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1;
 - (id)init;
+- (id)observationWithOriginatingRequestSpecifier:(id)arg1;
+- (id)VNEntityIdentificationModelPrintWithOriginatingRequestSpecifier:(id)arg1 error:(id *)arg2;
 
 @end
 

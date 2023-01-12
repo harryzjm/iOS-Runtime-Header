@@ -10,6 +10,10 @@
 
 @protocol CDPDSecureBackupProxy <NSObject>
 @property(retain, nonatomic) CDPContext *cdpContext;
+- (void)canUpdateDataPrivacyStatusWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)dataPrivacyStatusWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
+- (void)setDataPrivacyEnabled:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)recoveryKeyAvailabilityWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)uncacheAllSecrets;
 - (void)cacheRecoveryKey:(NSString *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)enableWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;

@@ -14,6 +14,8 @@
 + (id)routineSubclassesOfClass:(Class)arg1;
 + (id)routineClassStrings;
 + (id)routineImageNames;
++ (id)objToDictionary:(id)arg1 filterProperties:(id)arg2;
++ (id)objToString:(id)arg1 filterProperties:(id)arg2;
 + (id)classesFromImages:(id)arg1;
 + (id)directSubclassesOfClass:(Class)arg1 images:(id)arg2 includeParentClass:(_Bool)arg3;
 + (id)subclassesOfClass:(Class)arg1 images:(id)arg2 includeParentClass:(_Bool)arg3;

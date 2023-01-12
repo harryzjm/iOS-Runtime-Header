@@ -15,6 +15,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 @property(readonly, nonatomic) float angle;
 @property(readonly, nonatomic) int direction;
 - (void)encodeWithCoder:(id)arg1;

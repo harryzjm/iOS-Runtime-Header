@@ -9,7 +9,7 @@
 #import <AuthenticationServices/NSCopying-Protocol.h>
 #import <AuthenticationServices/NSSecureCoding-Protocol.h>
 
-@class ASCredentialServiceIdentifier, NSString;
+@class ASCredentialServiceIdentifier, NSString, SFExternalCredentialIdentityStoreIdentifier;
 
 @interface ASPasswordCredentialIdentity : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,13 +17,13 @@
     NSString *_user;
     NSString *_recordIdentifier;
     long long _rank;
-    id _credentialIdentityStoreIdentifier;
+    SFExternalCredentialIdentityStoreIdentifier *_credentialIdentityStoreIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)identityWithServiceIdentifier:(id)arg1 user:(id)arg2 recordIdentifier:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id credentialIdentityStoreIdentifier; // @synthesize credentialIdentityStoreIdentifier=_credentialIdentityStoreIdentifier;
+@property(readonly, nonatomic) SFExternalCredentialIdentityStoreIdentifier *credentialIdentityStoreIdentifier; // @synthesize credentialIdentityStoreIdentifier=_credentialIdentityStoreIdentifier;
 @property(nonatomic) long long rank; // @synthesize rank=_rank;
 @property(readonly, copy, nonatomic) NSString *recordIdentifier; // @synthesize recordIdentifier=_recordIdentifier;
 @property(readonly, copy, nonatomic) NSString *user; // @synthesize user=_user;

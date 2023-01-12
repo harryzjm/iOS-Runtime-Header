@@ -8,10 +8,11 @@
 
 @interface TSCH3DLabelsAtlasMeshRenderer
 {
-    TSCH3DTextureAtlas *mAtlas;
-    TSUNoCopyDictionary *mExternalAttributeVariables;
+    TSCH3DTextureAtlas *_atlas;
+    TSUNoCopyDictionary *_externalAttributeVariables;
 }
 
+- (void).cxx_destruct;
 - (void)renderWithMeshRenderLabelInfo:(id)arg1;
 - (void)flushCache;
 - (void)submitResourcesWithProcessor:(id)arg1;
@@ -24,7 +25,6 @@
 - (id)p_resourceAtIndex:(unsigned long long)arg1 childIndex:(unsigned long long)arg2 dimension:(unsigned long long)arg3 createIfAbsent:(_Bool)arg4;
 - (void)beginResources:(id)arg1 samples:(float)arg2;
 - (void)allocateDynamicResourcesIntoArray:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

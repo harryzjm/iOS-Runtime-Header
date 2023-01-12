@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
+struct os_activity_scope_state_s {
+    unsigned long long opaque[2];
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
+    struct os_activity_scope_state_s state;
+    NSObject *osActivity;
+} CDStruct_dfa98e2d;
 

@@ -7,12 +7,12 @@
 @interface CKStackLayoutComponent
 {
     struct CKStackLayoutComponentStyle _style;
-    vector_9f8546e7 _children;
+    struct vector<CKStackLayoutComponentChild, std::allocator<CKStackLayoutComponentChild>> _children;
 }
 
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2;
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2 style:(const struct CKStackLayoutComponentStyle *)arg3 children:(const vector_9f8546e7 *)arg4;
-+ (id)newRTLCompatibleWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2 style:(const struct CKStackLayoutComponentStyle *)arg3 children:(const vector_9f8546e7 *)arg4;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2 style:(const struct CKStackLayoutComponentStyle *)arg3 children:(const void *)arg4;
++ (id)newRTLCompatibleWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2 style:(const struct CKStackLayoutComponentStyle *)arg3 children:(const void *)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1;

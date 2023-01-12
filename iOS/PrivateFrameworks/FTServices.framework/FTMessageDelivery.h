@@ -33,6 +33,7 @@
 @property _Bool logToRegistration; // @synthesize logToRegistration=_logToRegistration;
 @property(copy) NSString *userAgent; // @synthesize userAgent=_userAgent;
 - (void)_signMessage:(id)arg1 useDataSignatures:(_Bool)arg2 body:(id)arg3 queryString:(id)arg4 intoDictionary:(id)arg5;
+- (void)_correctServerTimestampForDriftOnMessage:(id)arg1 currentDate:(id)arg2;
 - (void)networkStateChanged;
 @property(readonly) long long maxLargeMessageSize;
 @property(readonly) long long maxMessageSize;

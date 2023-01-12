@@ -6,19 +6,20 @@
 
 #import <HealthDaemon/HDSynchronousTaskGroupDelegate-Protocol.h>
 
-@class HDSynchronousTaskGroup, NSString;
+@class HDSynchronousTaskGroup, NSArray, NSString;
 
 @interface HDCloudSyncHandleMissingManateeIdentityOperation <HDSynchronousTaskGroupDelegate>
 {
     HDSynchronousTaskGroup *_taskGroup;
+    struct os_unfair_lock_s _lock;
+    NSArray *_zoneIdentifiersWithIdentityLost;
 }
 
 - (void).cxx_destruct;
+@property(copy) NSArray *zoneIdentifiersWithIdentityLost; // @synthesize zoneIdentifiersWithIdentityLost=_zoneIdentifiersWithIdentityLost;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (void)_leaveSharesForLostManateeIdentitiesInZones:(id)arg1 container:(id)arg2 database:(id)arg3;
-- (void)_deleteZonesForLostManateeIdentitiesInZones:(id)arg1 container:(id)arg2 database:(id)arg3;
-- (void)_handleLostManateeIdentitiesForZones:(id)arg1 container:(id)arg2;
 - (void)main;
+- (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

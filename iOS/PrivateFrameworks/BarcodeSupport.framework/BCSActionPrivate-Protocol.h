@@ -9,7 +9,11 @@
 @class CPSClipMetadataRequest, NSArray, NSDictionary, NSString;
 
 @protocol BCSActionPrivate <BCSAction>
+@property(readonly, nonatomic) _Bool isAMSAction;
 @property(retain, nonatomic) CPSClipMetadataRequest *clipMetadataRequest;
+@property(readonly, nonatomic) _Bool hasSensitiveURL;
+@property(readonly, nonatomic) _Bool shouldRequireUserToPickTargetApp;
+@property(readonly, nonatomic) long long codeType;
 @property(readonly, nonatomic) _Bool isWiFiAction;
 @property(readonly, nonatomic) _Bool isInvalidDataAction;
 @property(readonly, copy, nonatomic) NSArray *appLinks;

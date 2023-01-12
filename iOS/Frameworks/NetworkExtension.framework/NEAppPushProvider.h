@@ -18,6 +18,7 @@
 - (void)handleTimerEvent;
 - (void)reportIncomingCallWithUserInfo:(id)arg1;
 - (void)stopWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)start;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

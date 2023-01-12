@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class GEOExploreGuides, GEOPDCollectionSuggestionResult, NSArray;
 
 @interface GEOCollectionSuggestionResult : NSObject
 {
+    GEOPDCollectionSuggestionResult *_collectionSuggestionResult;
     NSArray *_collections;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *collections; // @synthesize collections=_collections;
+@property(readonly, nonatomic) GEOExploreGuides *exploreGuides;
 - (id)initWithCollectionSuggestionResult:(id)arg1 mapsResults:(id)arg2;
 
 @end

@@ -9,7 +9,7 @@
 @class NSURL;
 
 @interface NSFileManager (FeedbackLogger)
-- (id)urlForApplication:(id)arg1;
+- (id)urlForStoreWithId:(id)arg1;
 @property(readonly, nonatomic) NSURL *feedbackLoggerDirectoryURL;
 @end
 

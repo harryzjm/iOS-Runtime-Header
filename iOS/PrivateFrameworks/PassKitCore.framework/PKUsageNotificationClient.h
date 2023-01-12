@@ -15,11 +15,14 @@
     PKXPCService *_connection;
     CDUnknownBlockType _handler;
     CDUnknownBlockType _paymentHandler;
+    CDUnknownBlockType _paymentPassUsageHandler;
 }
 
 - (void).cxx_destruct;
+- (void)usedPaymentPassWithTransactionIdentifier:(id)arg1 info:(id)arg2;
 - (void)usedPaymentPassWithUniqueIdentifier:(id)arg1 transactionIdentifier:(id)arg2 info:(id)arg3;
 - (void)usedPassFromSource:(long long)arg1 withTypeIdentifier:(id)arg2 info:(id)arg3;
+- (void)setPaymentPassUsageHandler:(CDUnknownBlockType)arg1;
 - (void)setPaymentUsageHandler:(CDUnknownBlockType)arg1;
 - (void)setPassUsageHandler:(CDUnknownBlockType)arg1;
 - (id)init;

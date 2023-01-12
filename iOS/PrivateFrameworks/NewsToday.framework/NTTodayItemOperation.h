@@ -44,6 +44,7 @@
 @property(copy, nonatomic) NSDictionary *catchUpOperationResultsBySectionDescriptor; // @synthesize catchUpOperationResultsBySectionDescriptor=_catchUpOperationResultsBySectionDescriptor;
 - (void)_fetchProtoitemsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_extractFeedItemsFromInputs;
+- (void)_saveWithCompletion:(CDUnknownBlockType)arg1;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

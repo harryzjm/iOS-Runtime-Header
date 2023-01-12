@@ -26,7 +26,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *deviceDict; // @synthesize deviceDict=_deviceDict;
-@property(retain) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
+@property(readonly) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
 @property(readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

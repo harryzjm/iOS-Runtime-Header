@@ -21,7 +21,6 @@
 - (id)reasonsForSuggestion:(id)arg1;
 - (id)suggestedAssetsInAssets:(id)arg1 options:(id)arg2;
 - (id)suggestedAssetsInAssets:(id)arg1;
-- (_Bool)hasInterestingScenesWithAsset:(id)arg1;
 - (id)niceAssetsBetweenStartDate:(id)arg1 andEndDate:(id)arg2 matchingAssetUUID:(id)arg3 progress:(CDUnknownBlockType)arg4;
 - (void)reset;
 - (id)nextSuggestionWithProgress:(CDUnknownBlockType)arg1;

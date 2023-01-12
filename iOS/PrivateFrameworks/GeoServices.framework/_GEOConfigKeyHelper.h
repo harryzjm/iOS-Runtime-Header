@@ -14,22 +14,16 @@ __attribute__((visibility("hidden")))
 @interface _GEOConfigKeyHelper : NSObject <NSCopying>
 {
     id _lastValue;
+    long long _keySource;
     NSNumber *_keyNumber;
     NSString *_keyString;
     CDStruct_065526f1 configKey;
 }
 
-+ (id)helperForGEOConfigKey:(CDStruct_065526f1)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CDStruct_065526f1 configKey; // @synthesize configKey;
 - (id)description;
-- (_Bool)isEqualTo_GEOConfigKeyHelper:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-@property(readonly, nonatomic) _Bool valueChanged;
-- (id)_currentValue;
-@property(readonly, nonatomic) NSNumber *keyNumber; // @synthesize keyNumber=_keyNumber;
-@property(readonly, nonatomic) NSString *keyString; // @synthesize keyString=_keyString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

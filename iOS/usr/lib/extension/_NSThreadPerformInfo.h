@@ -11,15 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _NSThreadPerformInfo : NSObject
 {
-    id target;
-    SEL selector;
-    id argument;
+    id _target;
+    SEL _selector;
+    id _argument;
     NSMutableArray *modes;
     NSCondition *waiter;
     char *signalled;
 }
 
 - (void)dealloc;
+- (id)init;
 
 @end
 

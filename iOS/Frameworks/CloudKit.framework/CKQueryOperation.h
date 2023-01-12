@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKQueryOperationCallbacks-Protocol.h>
 
-@class CKQuery, CKQueryCursor, CKQueryOperationInfo, CKRecordZoneID, NSArray, NSDictionary;
+@class CKQuery, CKQueryCursor, CKQueryOperationInfo, CKRecordZoneID, NSArray, NSDictionary, NSMutableDictionary;
 @protocol CKQueryOperationCallbacks;
 
 @interface CKQueryOperation <CKQueryOperationCallbacks>
@@ -14,6 +14,7 @@
     _Bool _shouldFetchAssetContent;
     _Bool _fetchAllResults;
     CDUnknownBlockType _recordFetchedBlock;
+    CDUnknownBlockType _recordMatchedBlock;
     CDUnknownBlockType _queryCompletionBlock;
     CDUnknownBlockType _queryCursorFetchedBlock;
     CKQuery *_query;
@@ -22,6 +23,7 @@
     unsigned long long _resultsLimit;
     NSArray *_desiredKeys;
     CKQueryCursor *_resultsCursor;
+    NSMutableDictionary *_recordErrors;
     NSDictionary *_assetTransferOptionsByKey;
 }
 
@@ -30,6 +32,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *assetTransferOptionsByKey; // @synthesize assetTransferOptionsByKey=_assetTransferOptionsByKey;
 @property(nonatomic) _Bool fetchAllResults; // @synthesize fetchAllResults=_fetchAllResults;
+@property(retain, nonatomic) NSMutableDictionary *recordErrors; // @synthesize recordErrors=_recordErrors;
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property(copy, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
@@ -42,13 +45,14 @@
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)handleOperationDidCompleteWithCursor:(id)arg1 metrics:(id)arg2 error:(id)arg3;
 - (void)handleQueryDidFetchCursor:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)handleQueryDidFetchRecord:(id)arg1;
+- (void)handleQueryDidFetchForRecordID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
 - (_Bool)hasCKOperationCallbacksSet;
 - (id)activityCreate;
 @property(copy, nonatomic) CDUnknownBlockType queryCursorFetchedBlock; // @synthesize queryCursorFetchedBlock=_queryCursorFetchedBlock;
 @property(copy, nonatomic) CDUnknownBlockType queryCompletionBlock; // @synthesize queryCompletionBlock=_queryCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType recordMatchedBlock; // @synthesize recordMatchedBlock=_recordMatchedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
 - (id)initWithCursor:(id)arg1;
 - (id)initWithQuery:(id)arg1;

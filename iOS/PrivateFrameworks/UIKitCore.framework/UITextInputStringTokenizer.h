@@ -23,6 +23,7 @@
 - (_Bool)isPosition:(id)arg1 atBoundary:(long long)arg2 inDirection:(long long)arg3;
 - (_Bool)_isDownstreamForDirection:(long long)arg1 atPosition:(id)arg2;
 - (id)_closestTokenSubrangeForPosition:(id)arg1 granularity:(long long)arg2 downstream:(_Bool)arg3;
+- (long long)_distanceForTokenizerWithGranularity:(long long)arg1;
 - (long long)_indexForTextPosition:(id)arg1;
 - (id)initWithTextInput:(id)arg1;
 

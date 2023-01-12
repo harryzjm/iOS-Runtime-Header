@@ -11,9 +11,10 @@
     unsigned int _destinationDataType;
     int _scanOp;
     unsigned long long _scanImpl;
+    _Bool _useSpinLockVersion;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
++ (const struct MPSLibraryInfo *)libraryInfo:(void *)arg1;
 @property(nonatomic) unsigned long long scanImpl; // @synthesize scanImpl=_scanImpl;
 @property(readonly, nonatomic) unsigned int destinationDataType; // @synthesize destinationDataType=_destinationDataType;
 @property(readonly, nonatomic) unsigned int sourceDataType; // @synthesize sourceDataType=_sourceDataType;

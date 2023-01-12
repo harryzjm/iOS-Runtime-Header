@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
-@class NSDate, NSSet, NSString, PLCloudMasterMediaMetadata, PLMomentShare;
+@class CPLScopedIdentifier, NSDate, NSSet, NSString, PLCloudMasterMediaMetadata, PLMomentShare;
 
 @interface PLCloudMaster <PLSyncableObject>
 {
@@ -16,6 +16,7 @@
 + (unsigned long long)fullSizeJPEGSourceForUTI:(id)arg1 andImageDimensions:(struct CGSize)arg2;
 + (id)listOfSyncedProperties;
 + (id)_originalTypes;
++ (void)deleteOrphanedMastersWithManagedObjectContext:(id)arg1;
 + (void)resetCloudMastersStateInManagedObjectContext:(id)arg1;
 + (void)deleteAllCloudMastersInManagedObjectContext:(id)arg1;
 + (id)cloudMastersWithScopedIdentifiers:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 inLibrary:(id)arg3;
@@ -23,6 +24,7 @@
 + (id)cloudMastersByScopedIdentifiers:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 inLibrary:(id)arg3;
 + (id)cloudMasterWithGUID:(id)arg1 inMomentShare:(id)arg2 prefetchResources:(_Bool)arg3 inManagedObjectContext:(id)arg4;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2 inMomentShare:(id)arg3;
+@property(retain, nonatomic) CPLScopedIdentifier *sourceMasterForDuplicationCPLScopedIdentifier; // @dynamic sourceMasterForDuplicationCPLScopedIdentifier;
 - (_Bool)isSyncableChange;
 - (id)originalFilenameForResourceType:(unsigned long long)arg1 filePath:(id)arg2;
 - (void)_promptForNilScopeIdentifierRadar;
@@ -35,6 +37,8 @@
 - (_Bool)allOriginalsAreUploaded;
 - (unsigned long long)sizeOfOriginal;
 @property(readonly, copy) NSString *description;
+- (void)updateImportedByDisplayName:(id)arg1;
+- (void)updateImportedByBundleIdentifier:(id)arg1;
 - (void)applyPropertiesFromCPLMasterChange:(id)arg1;
 - (void)awakeFromInsert;
 - (_Bool)supportsCloudUpload;
@@ -46,6 +50,7 @@
 - (id)rm_cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (id)rm_cloudResourcesForResourceType:(unsigned long long)arg1;
 - (id)payloadsForChangedKeys:(id)arg1;
+- (id)payloadID;
 
 // Remaining properties
 @property(retain, nonatomic) NSSet *assets; // @dynamic assets;
@@ -59,6 +64,8 @@
 @property(retain, nonatomic) NSDate *importDate; // @dynamic importDate;
 @property(retain, nonatomic) NSString *importSessionID; // @dynamic importSessionID;
 @property(nonatomic) short importedBy; // @dynamic importedBy;
+@property(retain, nonatomic) NSString *importedByBundleIdentifier; // @dynamic importedByBundleIdentifier;
+@property(retain, nonatomic) NSString *importedByDisplayName; // @dynamic importedByDisplayName;
 @property(retain, nonatomic) PLCloudMasterMediaMetadata *mediaMetadata; // @dynamic mediaMetadata;
 @property(retain, nonatomic) NSString *mediaMetadataType; // @dynamic mediaMetadataType;
 @property(retain, nonatomic) PLMomentShare *momentShare; // @dynamic momentShare;
@@ -67,6 +74,8 @@
 @property(copy, nonatomic) NSString *originatingAssetIdentifier; // @dynamic originatingAssetIdentifier;
 @property(nonatomic) short placeholderState; // @dynamic placeholderState;
 @property(retain, nonatomic) NSSet *resources; // @dynamic resources;
+@property(retain, nonatomic) NSString *sourceMasterForDuplicationIdentifier; // @dynamic sourceMasterForDuplicationIdentifier;
+@property(retain, nonatomic) NSString *sourceMasterForDuplicationScopeIdentifier; // @dynamic sourceMasterForDuplicationScopeIdentifier;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) NSSet *transientModernResources; // @dynamic transientModernResources;
 @property(retain, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;

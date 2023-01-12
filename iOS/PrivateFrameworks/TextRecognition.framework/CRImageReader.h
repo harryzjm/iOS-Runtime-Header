@@ -17,11 +17,16 @@
     NSObject<CREngine> *_engine;
 }
 
++ (unsigned long long)_typeForFeature:(id)arg1 enginePreferredRegionType:(unsigned long long)arg2;
 + (id)_engineFromOptions:(id)arg1 error:(id *)arg2;
 + (Class)_engineClassFromOptions:(id)arg1 error:(id *)arg2;
 + (id)descriptionForErrorCode:(long long)arg1;
 + (id)defaultOptions;
++ (id)prioritizationForOptions:(id)arg1;
++ (struct CGSize)detectorImageSizeForOptions:(id)arg1 imageSize:(struct CGSize)arg2;
++ (_Bool)preheatModelsForOptions:(id)arg1 revision:(long long)arg2 error:(id *)arg3;
 + (id)errorWithErrorCode:(long long)arg1;
++ (_Bool)languageIsChinese:(id)arg1;
 + (id)languageSetFromOptionsDictionary:(id)arg1;
 + (unsigned long long)defaultRevisionNumber;
 + (id)supportedLanguagesForOptions:(id)arg1 revision:(long long)arg2 error:(id *)arg3;
@@ -29,6 +34,11 @@
 @property(retain, nonatomic) NSObject<CREngine> *engine; // @synthesize engine=_engine;
 @property _Bool shouldCancel; // @synthesize shouldCancel=_shouldCancel;
 @property(retain, nonatomic) NSDictionary *userOptions; // @synthesize userOptions=_userOptions;
+- (id)_regionsFromTextFeatures:(id)arg1 imageSize:(struct CGSize)arg2 titleFeature:(id)arg3 title:(id *)arg4;
+- (id)_lineRegionsFromTextFeatures:(id)arg1 imageSize:(struct CGSize)arg2 titleFeature:(id)arg3 title:(id *)arg4;
+- (id)_lineRegionFromTextFeature:(id)arg1 imageSize:(struct CGSize)arg2 titleFeature:(id)arg3 title:(id *)arg4;
+- (id)documentOutputRegionForImage:(id)arg1 roi:(struct CGRect)arg2 error:(id *)arg3 withProgressHandler:(CDUnknownBlockType)arg4;
+- (id)textGroupingStats;
 - (id)detectorInferenceStats;
 - (id)recognizerDecodingStats;
 - (id)recognizerInferenceStats;
@@ -37,9 +47,10 @@
 - (id)detectorStats;
 - (void)cancel;
 - (id)textResultsForImage:(id)arg1 roi:(struct CGRect)arg2 options:(id)arg3 error:(id *)arg4 withProgressHandler:(CDUnknownBlockType)arg5;
-- (id)signpostLog;
+- (id)recognizeDetectedBlocks:(id)arg1 inImage:(id)arg2 error:(id *)arg3 withProgressHandler:(CDUnknownBlockType)arg4;
 - (id)textDetectorResultsForImage:(id)arg1 error:(id *)arg2;
 - (id)textRecognizerResultsForTextFeatures:(id)arg1 forImageAtURL:(id)arg2 options:(id)arg3;
+- (id)documentOutputRegionForTextFeatures:(id)arg1 image:(id)arg2;
 - (id)textRecognizerResultsForTextFeatures:(id)arg1 inImage:(id)arg2 options:(id)arg3;
 - (id)textResultsForImage:(id)arg1 options:(id)arg2 withProgressHandler:(CDUnknownBlockType)arg3;
 - (id)textResultsForImage:(id)arg1 options:(id)arg2;
@@ -47,6 +58,8 @@
 - (id)confidenceThresholdProvider;
 - (_Bool)purgeCaches:(id)arg1;
 - (struct CGSize)smallestImageSizeForTextWithRelativeHeight:(double)arg1 originalImageSize:(struct CGSize)arg2;
+- (id)documentOutputRegionForImage:(id)arg1 options:(id)arg2 roi:(struct CGRect)arg3 error:(id *)arg4 withProgressHandler:(CDUnknownBlockType)arg5;
+- (id)resultsForCRImage:(id)arg1 roi:(struct CGRect)arg2 options:(id)arg3 error:(id *)arg4 withProgressHandler:(CDUnknownBlockType)arg5;
 - (id)resultsForPixelBuffer:(struct __CVBuffer *)arg1 roi:(struct CGRect)arg2 options:(id)arg3 error:(id *)arg4 withProgressHandler:(CDUnknownBlockType)arg5;
 - (id)resultsForPixelBuffer:(struct __CVBuffer *)arg1 roi:(struct CGRect)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)resultsForPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2 error:(id *)arg3;

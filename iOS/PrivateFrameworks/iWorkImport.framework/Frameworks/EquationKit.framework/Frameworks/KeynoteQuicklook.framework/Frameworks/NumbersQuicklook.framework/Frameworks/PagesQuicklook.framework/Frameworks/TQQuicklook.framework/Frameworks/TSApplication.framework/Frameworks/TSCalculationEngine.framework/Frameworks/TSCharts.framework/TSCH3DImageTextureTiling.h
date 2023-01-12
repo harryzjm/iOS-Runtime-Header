@@ -16,7 +16,7 @@
     _Bool _reveal;
 }
 
-+ (id)instanceWithArchive:(const struct Chart3DImageTextureTilingArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(nonatomic) _Bool reveal; // @synthesize reveal=_reveal;
 @property(nonatomic) int tcontinuity; // @synthesize tcontinuity=_tContinuity;
 @property(nonatomic) int scontinuity; // @synthesize scontinuity=_sContinuity;
@@ -30,8 +30,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToArchive:(struct Chart3DImageTextureTilingArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DImageTextureTilingArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

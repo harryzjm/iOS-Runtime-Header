@@ -60,6 +60,7 @@
 - (void)_handleChatItemDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithConversation:(id)arg1 plugin:(id)arg2;
+- (_Bool)__im_ff_uiConsistencyEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

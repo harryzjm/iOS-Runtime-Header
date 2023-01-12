@@ -13,7 +13,7 @@
 - (NSProgress *)fetchShareWithCompletion:(void (^)(CKShare *, NSError *))arg1;
 - (void)startPreparingForShareWhenForcing:(_Bool)arg1;
 - (NSProgress *)fetchParticipantListAndPublicPermission:(void (^)(NSArray *, long long, NSError *))arg1;
-- (NSProgress *)preflightCheckIfCurrentlyShareableWithCompletion:(void (^)(_Bool, id <BRFileProviderItem>, NSArray<BRFileProviderItem> *, NSArray<BRFileProviderItem> *, NSError *))arg1;
+- (NSProgress *)preflightCheckIfCurrentlyShareableWithCompletion:(void (^)(_Bool, id <BRFileProviderItem>, NSArray *, NSArray *, NSError *))arg1;
 - (void)fetchSharingInfo:(void (^)(_Bool, id <BRFileProviderItem>, NSError *))arg1;
 @end
 

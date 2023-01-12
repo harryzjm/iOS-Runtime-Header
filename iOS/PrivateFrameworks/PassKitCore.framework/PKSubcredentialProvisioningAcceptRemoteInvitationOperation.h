@@ -21,6 +21,7 @@
 - (void)acceptInvitation:(id)arg1 withMetadata:(id)arg2;
 - (void)metadataForInvitation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getMatchingInvitation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)canAcceptInvitation:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)performOperation;
 - (id)initWithConfiguration:(id)arg1 context:(id)arg2 delegate:(id)arg3;
 

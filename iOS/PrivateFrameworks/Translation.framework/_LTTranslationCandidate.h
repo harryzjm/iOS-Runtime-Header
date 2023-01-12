@@ -34,11 +34,11 @@
 @property(nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(copy, nonatomic) NSString *sanitizedFormattedString; // @synthesize sanitizedFormattedString=_sanitizedFormattedString;
 @property(copy, nonatomic) NSString *formattedString; // @synthesize formattedString=_formattedString;
-- (void)updateWithEngineMeta:(id)arg1;
+- (void)updateWithEngineMeta:(id)arg1 locale:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFormattedString:(id)arg1 sanitizedFormattedString:(id)arg2 confidence:(double)arg3 lowConfidence:(_Bool)arg4 tokens:(id)arg5 preToPostITN:(id)arg6;
-- (id)initWithOspreyMtResponsePhrase:(id)arg1;
+- (id)initWithOspreyMtResponsePhrase:(id)arg1 locale:(id)arg2;
 - (id)initWithOspreyPhrase:(id)arg1;
 
 @end

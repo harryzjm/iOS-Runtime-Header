@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)photoEditStylisticFontForSize:(double)arg1;
++ (double)changeValueOfSlider:(id)arg1 reverse:(_Bool)arg2 coarse:(_Bool)arg3;
 + (_Bool)photoWasTakenWithoutFlashWithImageProperties:(id)arg1;
 + (_Bool)currentDeviceShouldAllowRawDecode;
 

@@ -8,6 +8,7 @@
 {
 }
 
+- (unsigned long long)_concurrentOverlayDismissalOptions;
 - (unsigned long long)_serialOverlayPreDismissalOptions;
 - (_Bool)_shouldResignActiveForAnimation;
 - (void)synchronizedTransactionReadyToCommit:(id)arg1;

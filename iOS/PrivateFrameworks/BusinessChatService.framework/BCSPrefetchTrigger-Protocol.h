@@ -7,7 +7,7 @@
 #import <BusinessChatService/NSObject-Protocol.h>
 
 @protocol BCSPrefetchTrigger <NSObject>
-- (void)triggerPrefetchWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)schedulePrefetchBlock:(void (^)(NSObject<OS_xpc_object> *, void (^)(_Bool, NSError *)))arg1;
+- (void)triggerPrefetchForReason:(unsigned long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)schedulePrefetchBlock:(void (^)(NSObject<OS_xpc_object> *, unsigned long long, void (^)(_Bool, NSError *)))arg1;
 @end
 

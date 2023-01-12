@@ -19,7 +19,8 @@
 }
 
 + (struct CGSize)smallestImageSizeForTextWithRelativeHeight:(double)arg1 originalImageSize:(struct CGSize)arg2;
-+ (id)textFeaturesFromPolygons:(vector_ef8269a8 *)arg1 withScale:(const float *)arg2;
++ (id)textFeaturesFromPolygons:(void *)arg1 withScale:(const float *)arg2;
++ (struct CGSize)scaledImageSizeForOptions:(id)arg1 imageSize:(struct CGSize)arg2;
 + (id)detectorForRevision:(unsigned long long)arg1 imageReaderOptions:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *tileRects; // @synthesize tileRects=_tileRects;
@@ -30,6 +31,7 @@
 @property(retain) CRDetectorConfiguration *configuration; // @synthesize configuration=_configuration;
 - (id)detectInImage:(id)arg1 error:(id *)arg2;
 - (void)enumerateTilesForImage:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (_Bool)preheatWithError:(id *)arg1;
 - (void)cancel;
 - (id)init;
 

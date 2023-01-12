@@ -43,11 +43,6 @@
 - (double)namedEntitySourceLookBackSeconds;
 - (double)userActivityExpirySeconds;
 - (long long)expirySeconds;
-- (_Bool)boolValueForKey:(id)arg1 default:(_Bool)arg2;
-- (double)doubleValueForKey:(id)arg1 default:(long long)arg2;
-- (long long)integerValueForKey:(id)arg1 default:(long long)arg2;
-- (long long)unsignedIntegerValueForKey:(id)arg1 default:(long long)arg2;
-- (id)assetValueForKey:(id)arg1;
 - (id)init;
 
 @end

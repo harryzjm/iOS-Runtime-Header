@@ -41,8 +41,8 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <HMDDataStreamProtocolDelegate> dataStream; // @synthesize dataStream=_dataStream;
 - (void)timerDidFire:(id)arg1;
-- (void)_openSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
-- (void)openSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)_openSessionForFileType:(id)arg1 reason:(id)arg2 metadata:(id)arg3 queue:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)openSessionForFileType:(id)arg1 reason:(id)arg2 metadata:(id)arg3 queue:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)_sendAckMessageWithIdentifier:(id)arg1;
 - (void)_sendCloseMessageWithIdentifier:(id)arg1 reason:(unsigned short)arg2;
 - (void)_cancelSessionWithIdentifier:(id)arg1 reason:(unsigned short)arg2 hadReceivedEof:(_Bool)arg3;
@@ -50,6 +50,7 @@
 - (void)_pumpMessage:(id)arg1 session:(id)arg2;
 - (void)_handleDataMessage:(id)arg1;
 - (void)_handleCloseMessage:(id)arg1;
+- (void)_maybeSubmitMetricForDroppedOpenRequestOfType:(id)arg1;
 - (void)_handleOpenWithRequestHeader:(id)arg1 payload:(id)arg2;
 - (void)_removeBulkSendSessionForSessionIdentifier:(id)arg1;
 - (id)_getBulkSendSessionForSessionIdentifier:(id)arg1;
@@ -60,7 +61,7 @@
 - (void)_sendOpenResponseWithRequestHeader:(id)arg1 bulkSendStatus:(unsigned short)arg2;
 - (void)_sendOpenResponseWithRequestHeader:(id)arg1 streamIdentifier:(id)arg2;
 - (id)_createSessionFromCandidate:(id)arg1 queue:(id)arg2;
-- (id)_createSessionCandidateWithRequestHeader:(id)arg1;
+- (id)_createSessionCandidateWithRequestHeader:(id)arg1 metadata:(id)arg2;
 - (void)asyncBulkSendSessionDidCancelSessionWithIdentifier:(id)arg1 reason:(unsigned short)arg2 hadReceivedEof:(_Bool)arg3;
 - (void)asyncBulkSendSessionCandidate:(id)arg1 didRejectWithStatus:(unsigned short)arg2;
 - (void)asyncBulkSendSessionCandidate:(id)arg1 didAcceptOnQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
@@ -69,6 +70,7 @@
 - (void)dataStream:(id)arg1 didReceiveEvent:(id)arg2 header:(id)arg3 payload:(id)arg4;
 - (void)dataStreamDidOpen:(id)arg1;
 - (void)dataStreamDidClose:(id)arg1;
+- (void)dataStreamInitiatedClose:(id)arg1;
 - (void)dataStream:(id)arg1 didFailWithError:(id)arg2;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
 - (void)_closeAllSessionsWithError:(id)arg1;

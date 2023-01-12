@@ -13,6 +13,7 @@
 
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (_Bool)isTransparentFocusItem;
 - (void)applyIdentityFilterEffects;
 - (void)applyRequestedFilterEffects;
 - (void)_applyScaleHintAsRequested:(_Bool)arg1;

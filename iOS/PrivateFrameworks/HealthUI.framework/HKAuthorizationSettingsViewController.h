@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthUI/HKDocumentPickerViewControllerDelegate-Protocol.h>
+#import <HealthUI/HKHealthPrivacyServicePickerControllerDelegate-Protocol.h>
 #import <HealthUI/HKHealthPrivacyServicePromptController-Protocol.h>
 #import <HealthUI/HKSourceAuthorizationControllerDelegate-Protocol.h>
 #import <HealthUI/HKSwitchTableViewCellDelegate-Protocol.h>
@@ -12,11 +12,14 @@
 @class HKDisplayCategoryController, HKHealthStore, HKSource, HKSourceAuthorizationController, NSArray, NSSet, NSString, UIBarButtonItem;
 @protocol HKHealthPrivacyServicePromptControllerDelegate;
 
-@interface HKAuthorizationSettingsViewController <HKSwitchTableViewCellDelegate, HKDocumentPickerViewControllerDelegate, HKSourceAuthorizationControllerDelegate, HKHealthPrivacyServicePromptController>
+@interface HKAuthorizationSettingsViewController <HKSwitchTableViewCellDelegate, HKSourceAuthorizationControllerDelegate, HKHealthPrivacyServicePickerControllerDelegate, HKHealthPrivacyServicePromptController>
 {
     NSArray *_documents;
     NSArray *_actualSections;
     NSArray *_readingTypeOrdering;
+    _Bool _requiresBackgroundAppRefreshDisclosure;
+    _Bool _hasFetchedBackgroundAppRefreshStatus;
+    _Bool _isBackgroundAppRefreshEnabled;
     id <HKHealthPrivacyServicePromptControllerDelegate> _delegate;
     HKHealthStore *_healthStore;
     HKSource *_source;
@@ -59,7 +62,7 @@
 - (id)sectionsForAuthController:(id)arg1;
 - (void)authorizationController:(id)arg1 subTypesEnabled:(id)arg2 forType:(id)arg3 inSection:(long long)arg4;
 - (void)authorizationController:(id)arg1 parentTypeIsDisabled:(id)arg2 forType:(id)arg3 inSection:(long long)arg4;
-- (void)documentPickerViewControllerDidFinish:(id)arg1 error:(id)arg2;
+- (void)pickerControllerDidFinish:(id)arg1 error:(id)arg2;
 - (void)switchCellValueChanged:(id)arg1 value:(_Bool)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)_authorizationSettingCellForRowAtIndexPath:(id)arg1;
@@ -69,9 +72,11 @@
 - (id)_toggleAllCell;
 - (id)_researchStudyExplanationCell;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)_localizedSourceExplanationWithDescription:(id)arg1;
+- (void)_fetchBackgroundAppRefreshStatusWithHandler:(CDUnknownBlockType)arg1;
+- (id)_localizedSourceExplanationWithDescription:(id)arg1 forReadingSection:(_Bool)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)updateAllowButtonEnabledState;
@@ -82,6 +87,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)reloadAuthorizationSettings;
+- (void)_didFetchBackgroundAppRefreshStatus:(_Bool)arg1;
 - (id)initWithHealthStore:(id)arg1 style:(long long)arg2;
 - (id)init;
 

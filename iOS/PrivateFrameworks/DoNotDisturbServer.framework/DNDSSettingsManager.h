@@ -23,18 +23,22 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <DNDSSettingsManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)sysdiagnoseDataForDate:(id)arg1;
+- (id)fallbackConfiguration;
+- (id)sysdiagnoseDataForDate:(id)arg1 redacted:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
 - (void)syncSettingsProvider:(id)arg1 didReceiveUpdatedSyncSettings:(id)arg2;
-- (unsigned long long)_saveBehaviorSettings:(id)arg1 phoneCallBypassSettings:(id)arg2 scheduleSettings:(id)arg3 error:(id *)arg4;
+- (unsigned long long)_writeSettingsRecord:(id)arg1 error:(id *)arg2;
+- (unsigned long long)_saveConfiguration:(id)arg1 forModeIdentifier:(id)arg2 error:(id *)arg3;
+- (unsigned long long)_saveBehaviorSettings:(id)arg1 scheduleSettings:(id)arg2 error:(id *)arg3;
 - (id)_readSettingsReturningError:(id *)arg1;
+- (void)setPairSyncEnabled:(_Bool)arg1;
 - (id)syncSettingsWithError:(id *)arg1;
 - (_Bool)setScheduleSettings:(id)arg1 withError:(id *)arg2;
 - (id)scheduleSettingsWithError:(id *)arg1;
-- (_Bool)setPhoneCallBypassSettings:(id)arg1 withError:(id *)arg2;
 - (id)phoneCallBypassSettingsWithError:(id *)arg1;
 - (_Bool)setBehaviorSettings:(id)arg1 withError:(id *)arg2;
 - (id)behaviorSettingsWithError:(id *)arg1;
+- (void)pairedDeviceDidChange;
 - (void)dealloc;
 - (id)initWithBackingStore:(id)arg1 contactStore:(id)arg2;
 

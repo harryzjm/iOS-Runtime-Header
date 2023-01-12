@@ -9,7 +9,7 @@
 }
 
 - (_Bool)schemataIsQuoted;
-- (const set_c5c159f9 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 
 @end
 

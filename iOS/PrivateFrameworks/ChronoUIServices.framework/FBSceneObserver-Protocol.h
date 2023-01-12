@@ -6,16 +6,19 @@
 
 #import <ChronoUIServices/NSObject-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneTransitionContext, FBScene, FBSceneUpdateContext, NSError;
+@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneTransitionContext, FBScene, FBSceneClientHandle, FBSceneUpdateContext, NSError;
 
 @protocol FBSceneObserver <NSObject>
 
 @optional
-- (void)sceneDidInvalidate:(FBScene *)arg1;
 - (void)scene:(FBScene *)arg1 didUpdateClientSettingsWithDiff:(FBSSceneClientSettingsDiff *)arg2 oldClientSettings:(FBSSceneClientSettings *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
 - (void)scene:(FBScene *)arg1 didCompleteUpdateWithContext:(FBSceneUpdateContext *)arg2 error:(NSError *)arg3;
 - (void)scene:(FBScene *)arg1 didApplyUpdateWithContext:(FBSceneUpdateContext *)arg2;
 - (void)scene:(FBScene *)arg1 didPrepareUpdateWithContext:(FBSceneUpdateContext *)arg2;
+- (void)scene:(FBScene *)arg1 clientDidConnect:(FBSceneClientHandle *)arg2;
+- (void)sceneDidInvalidate:(FBScene *)arg1;
+- (void)sceneWillDeactivate:(FBScene *)arg1 withError:(NSError *)arg2;
+- (void)sceneDidActivate:(FBScene *)arg1;
 - (void)sceneContentStateDidChange:(FBScene *)arg1;
 @end
 

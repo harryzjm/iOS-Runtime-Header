@@ -74,14 +74,6 @@
 @property(nonatomic) _Bool hasType;
 @property(readonly, nonatomic) _Bool hasSample;
 - (_Bool)applyToObject:(id)arg1;
-- (id)decodedGoal;
-- (unsigned long long)decodedGoalType;
-- (id)decodedTotalFlightsClimbed;
-- (id)decodedTotalSwimmingStrokeCount;
-- (id)decodedTotalDistance;
-- (id)decodedTotalBasalEnergyBurned;
-- (id)decodedTotalEnergyBurned;
-- (id)decodedWorkoutEvents;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

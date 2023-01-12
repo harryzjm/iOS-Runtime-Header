@@ -13,6 +13,7 @@
 + (id)properties;
 
 // Remaining properties
+@property(retain, nonatomic) NSString *changeToken; // @dynamic changeToken;
 @property(retain, nonatomic) NSNumber *confirmed; // @dynamic confirmed;
 @property(retain, nonatomic) HMDDevice *device; // @dynamic device;
 @property(retain, nonatomic) NSString *deviceUUID; // @dynamic deviceUUID;

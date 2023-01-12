@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithFileURL:(id)arg1;
-- (_Bool)loadFromContents:(id)arg1 ofType:(id)arg2 error:(id *)arg3;
+- (_Bool)readFromURL:(id)arg1 error:(id *)arg2;
 - (id)contentsForType:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 

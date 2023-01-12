@@ -10,7 +10,7 @@
 
 @interface TPSCapability : TPSSerializableObject
 {
-    unsigned long long _joinType;
+    long long _joinType;
     NSString *_key;
     id _value;
 }
@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) id value; // @synthesize value=_value;
 @property(copy, nonatomic) NSString *key; // @synthesize key=_key;
-@property(nonatomic) unsigned long long joinType; // @synthesize joinType=_joinType;
+@property(nonatomic) long long joinType; // @synthesize joinType=_joinType;
 - (id)debugDescription;
 - (id)initWithDictionary:(id)arg1;
 

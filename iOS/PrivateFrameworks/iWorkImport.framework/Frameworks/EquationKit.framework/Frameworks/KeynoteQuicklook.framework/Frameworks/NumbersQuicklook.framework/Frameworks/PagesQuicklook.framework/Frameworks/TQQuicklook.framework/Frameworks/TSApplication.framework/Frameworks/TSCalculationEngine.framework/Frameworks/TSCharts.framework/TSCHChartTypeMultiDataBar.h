@@ -8,6 +8,7 @@
 {
 }
 
+- (id)name;
 - (long long)userInterfaceTag;
 - (id)defaultDataFileName;
 - (Class)presetImagerClass;

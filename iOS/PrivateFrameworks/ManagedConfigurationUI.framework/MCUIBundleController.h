@@ -7,39 +7,39 @@
 #import <Preferences/PSBundleController.h>
 
 @class NPSDomainAccessor, PSListController, PSSpecifier;
+@protocol MCUIDataManagerProtocol;
 
 @interface MCUIBundleController : PSBundleController
 {
+    id <MCUIDataManagerProtocol> _dataManager;
     PSListController *_parentController;
     PSSpecifier *_specifier;
     NPSDomainAccessor *_nanoDomainAccessor;
 }
 
-+ (id)provisioningProfiles;
-+ (id)provisioningProfilesWithValidityCheck:(_Bool)arg1;
-+ (id)configurationProfiles;
++ (_Bool)isRunningInBridge;
 + (id)sharedInstance;
-+ (_Bool)isForPairedDevice;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NPSDomainAccessor *nanoDomainAccessor; // @synthesize nanoDomainAccessor=_nanoDomainAccessor;
 @property(retain, nonatomic) PSSpecifier *specifier; // @synthesize specifier=_specifier;
 @property(nonatomic) __weak PSListController *parentController; // @synthesize parentController=_parentController;
-- (void)_unpairedNotification:(id)arg1;
-- (void)updateUI:(id)arg1;
+@property(retain, nonatomic) id <MCUIDataManagerProtocol> dataManager; // @synthesize dataManager=_dataManager;
+- (void)_reloadTopLevelSpecifier;
+- (void)_mcuiUpdated:(id)arg1;
+- (_Bool)_updateTopLevelSpecifier;
+- (_Bool)_swizzlingFromSpecifier:(id)arg1;
 - (id)specifiersWithSpecifier:(id)arg1;
-- (void)_updateSpecifierControllerClass;
-- (void)_updateSpecifierProfileInfo;
-- (id)_profileInfoForSpecifier:(id)arg1;
-- (Class)_controllerClassForCurrentProfilesAndUpdatedUserInfo:(id)arg1;
+- (id)_detailsFromSpecifier:(id)arg1;
+- (void)_watchUnpaired:(id)arg1;
 - (void)decrementNanoProfileCount;
 - (void)incrementNanoProfileCount;
 @property(nonatomic) unsigned long long nanoProfileCount;
-- (_Bool)_isProfileSectionEmpty;
-- (id)_specifier;
 - (void)unload;
 - (void)load;
 - (void)dealloc;
+- (id)initWithParentListController:(id)arg1 dataManager:(id)arg2;
 - (id)initWithParentListController:(id)arg1 properties:(id)arg2;
+- (id)_initWithDataManager:(id)arg1;
 
 @end
 

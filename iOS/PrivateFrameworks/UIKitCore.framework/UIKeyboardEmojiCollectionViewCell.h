@@ -11,13 +11,17 @@ __attribute__((visibility("hidden")))
 {
     UILabel *_emojiLabel;
     _Bool _unreleasedHighlight;
+    _Bool _noResultsCell;
     UILabel *_unreleasedBanner;
     UIKeyboardEmoji *_emoji;
     UIView *_navigationHighlightView;
+    UILabel *_noResultsLabel;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UILabel *noResultsLabel; // @synthesize noResultsLabel=_noResultsLabel;
 @property(retain, nonatomic) UIView *navigationHighlightView; // @synthesize navigationHighlightView=_navigationHighlightView;
+@property(nonatomic) _Bool noResultsCell; // @synthesize noResultsCell=_noResultsCell;
 @property(nonatomic) _Bool unreleasedHighlight; // @synthesize unreleasedHighlight=_unreleasedHighlight;
 @property(copy, nonatomic) UIKeyboardEmoji *emoji; // @synthesize emoji=_emoji;
 @property(retain, nonatomic) UILabel *unreleasedBanner; // @synthesize unreleasedBanner=_unreleasedBanner;

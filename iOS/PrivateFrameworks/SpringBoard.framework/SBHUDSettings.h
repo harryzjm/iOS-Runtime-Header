@@ -8,10 +8,16 @@
 
 @interface SBHUDSettings : PTSettings
 {
+    _Bool _volumeButtonRemappingEnabled;
+    _Bool _lockVolumePolarityForHUD;
+    _Bool _listenToDeviceOrientationWhileScreenIsOff;
     float _defaultHUDPresentationAnimationDuration;
 }
 
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool listenToDeviceOrientationWhileScreenIsOff; // @synthesize listenToDeviceOrientationWhileScreenIsOff=_listenToDeviceOrientationWhileScreenIsOff;
+@property(nonatomic) _Bool lockVolumePolarityForHUD; // @synthesize lockVolumePolarityForHUD=_lockVolumePolarityForHUD;
+@property(nonatomic) _Bool volumeButtonRemappingEnabled; // @synthesize volumeButtonRemappingEnabled=_volumeButtonRemappingEnabled;
 @property(nonatomic) float defaultHUDPresentationAnimationDuration; // @synthesize defaultHUDPresentationAnimationDuration=_defaultHUDPresentationAnimationDuration;
 - (void)setDefaultValues;
 

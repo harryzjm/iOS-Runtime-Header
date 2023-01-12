@@ -52,6 +52,7 @@
     int _sectionType;
     int _seenArticlesFilterMethod;
     NTPBTagTodaySectionSpecificConfig *_tagTodaySectionConfig;
+    _Bool _filterNonSubscribedInFavoritesOnlyMode;
     _Bool _glanceable;
     _Bool _presenceDeterminedByPersonalization;
     _Bool _shownInFavoritesOnlyMode;
@@ -69,12 +70,14 @@
         unsigned int readArticlesFilterMethod:1;
         unsigned int sectionType:1;
         unsigned int seenArticlesFilterMethod:1;
+        unsigned int filterNonSubscribedInFavoritesOnlyMode:1;
         unsigned int glanceable:1;
         unsigned int presenceDeterminedByPersonalization:1;
         unsigned int shownInFavoritesOnlyMode:1;
     } _has;
 }
 
+@property(nonatomic) _Bool filterNonSubscribedInFavoritesOnlyMode; // @synthesize filterNonSubscribedInFavoritesOnlyMode=_filterNonSubscribedInFavoritesOnlyMode;
 @property(retain, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
 @property(retain, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
 @property(retain, nonatomic) NSString *groupNameActionUrl; // @synthesize groupNameActionUrl=_groupNameActionUrl;
@@ -116,6 +119,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasFilterNonSubscribedInFavoritesOnlyMode;
 @property(readonly, nonatomic) _Bool hasBackgroundColorDark;
 @property(readonly, nonatomic) _Bool hasBackgroundColorLight;
 @property(readonly, nonatomic) _Bool hasGroupNameActionUrl;

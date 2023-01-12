@@ -12,6 +12,7 @@
 @class ICDelegationServicePairingSession, ICDelegationServiceSecuritySettings, MSVMessageParser, MSVStreamReader, MSVStreamWriter, NSMutableDictionary, NSString;
 @protocol ICDelegationServiceConnectionDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationServiceConnection : NSObject <ICDelegationServicePairingSessionDelegate, MSVMessageParserDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

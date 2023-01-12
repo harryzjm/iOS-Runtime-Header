@@ -13,11 +13,11 @@
     UIImage *_actualImage;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *actualImage; // @synthesize actualImage=_actualImage;
 - (void)invalidateIntrinsicContentSize;
 - (void)setImage:(id)arg1;
 - (id)image;
-- (void)dealloc;
 
 @end
 

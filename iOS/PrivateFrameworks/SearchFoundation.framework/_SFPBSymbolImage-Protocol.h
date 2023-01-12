@@ -10,6 +10,10 @@
 
 @protocol _SFPBSymbolImage <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int secondaryColor;
+@property(nonatomic) int primaryColor;
+@property(nonatomic) int backgroundColor;
+@property(nonatomic) _Bool punchThroughBackground;
 @property(copy, nonatomic) NSString *symbolName;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

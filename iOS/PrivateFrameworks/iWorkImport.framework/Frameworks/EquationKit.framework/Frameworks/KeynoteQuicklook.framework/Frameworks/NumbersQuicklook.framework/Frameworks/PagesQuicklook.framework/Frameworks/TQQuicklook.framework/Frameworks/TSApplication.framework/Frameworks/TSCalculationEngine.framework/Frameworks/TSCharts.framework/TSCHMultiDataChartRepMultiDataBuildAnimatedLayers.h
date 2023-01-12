@@ -10,24 +10,24 @@
 
 @interface TSCHMultiDataChartRepMultiDataBuildAnimatedLayers : NSObject
 {
-    CALayer *legendLayer;
-    CALayer *backgroundLayer;
-    CALayer *dataSetNameLayer;
-    NSArray *elementLayers;
-    NSArray *referenceLineLayers;
+    CALayer *_legendLayer;
+    CALayer *_backgroundLayer;
+    NSArray *_referenceLineLayers;
+    CALayer *_dataSetNameLayer;
+    NSArray *_elementLayers;
 }
 
 + (id)animatedLayers;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *referenceLineLayers; // @synthesize referenceLineLayers;
-@property(copy, nonatomic) NSArray *elementLayers; // @synthesize elementLayers;
-@property(retain, nonatomic) CALayer *dataSetNameLayer; // @synthesize dataSetNameLayer;
-@property(retain, nonatomic) CALayer *backgroundLayer; // @synthesize backgroundLayer;
-@property(retain, nonatomic) CALayer *legendLayer; // @synthesize legendLayer;
-- (id)layersAlreadyHaveProperTransforms;
+@property(copy, nonatomic) NSArray *elementLayers; // @synthesize elementLayers=_elementLayers;
+@property(retain, nonatomic) CALayer *dataSetNameLayer; // @synthesize dataSetNameLayer=_dataSetNameLayer;
+@property(copy, nonatomic) NSArray *referenceLineLayers; // @synthesize referenceLineLayers=_referenceLineLayers;
+@property(retain, nonatomic) CALayer *backgroundLayer; // @synthesize backgroundLayer=_backgroundLayer;
+@property(retain, nonatomic) CALayer *legendLayer; // @synthesize legendLayer=_legendLayer;
+@property(readonly, nonatomic) NSArray *layersAlreadyHaveProperTransforms;
 - (id)layersRequiringGeometryTransformsBackgroundOnly:(_Bool)arg1;
-- (id)elementFadingLayers;
-- (id)allBackgroundFadingLayers;
+@property(readonly, nonatomic) NSArray *elementFadingLayers;
+@property(readonly, nonatomic) NSArray *allBackgroundFadingLayers;
 
 @end
 

@@ -14,10 +14,6 @@ __attribute__((visibility("hidden")))
     struct CGPoint _frameOffset;
 }
 
-@property(nonatomic) long long supplementaryIndexOffset; // @synthesize supplementaryIndexOffset=_supplementaryIndexOffset;
-@property(nonatomic) long long indexOffset; // @synthesize indexOffset=_indexOffset;
-@property(nonatomic) struct CGPoint frameOffset; // @synthesize frameOffset=_frameOffset;
-- (id)initWithFrameOffset:(struct CGPoint)arg1 indexOffset:(long long)arg2 supplementaryIndexOffset:(long long)arg3;
 - (id)init;
 
 @end

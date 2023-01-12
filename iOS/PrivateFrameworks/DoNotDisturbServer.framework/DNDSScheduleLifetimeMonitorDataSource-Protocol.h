@@ -6,10 +6,10 @@
 
 #import <DoNotDisturbServer/DNDSLifetimeMonitorDataSource-Protocol.h>
 
-@class DNDSScheduleSettings;
+@class NSDictionary;
 @protocol DNDSLifetimeMonitor;
 
 @protocol DNDSScheduleLifetimeMonitorDataSource <DNDSLifetimeMonitorDataSource>
-- (DNDSScheduleSettings *)scheduleSettingsForScheduleLifetimeMonitor:(id <DNDSLifetimeMonitor>)arg1;
+- (NSDictionary *)scheduleSettingsByModeIdentifierForScheduleLifetimeMonitor:(id <DNDSLifetimeMonitor>)arg1;
 @end
 

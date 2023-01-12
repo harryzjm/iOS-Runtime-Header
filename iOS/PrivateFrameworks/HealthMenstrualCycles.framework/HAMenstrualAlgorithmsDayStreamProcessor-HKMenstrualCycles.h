@@ -7,6 +7,8 @@
 #import <HealthAlgorithms/HAMenstrualAlgorithmsDayStreamProcessor.h>
 
 @interface HAMenstrualAlgorithmsDayStreamProcessor (HKMenstrualCycles)
+- (void)hkmc_appendStartedCycleFactors:(id)arg1 calendar:(id)arg2;
+- (void)hkmc_appendCycleFactorsFromDaySummary:(id)arg1;
 - (void)hkmc_appendEmptyDayAtIndex:(long long)arg1;
 @end
 

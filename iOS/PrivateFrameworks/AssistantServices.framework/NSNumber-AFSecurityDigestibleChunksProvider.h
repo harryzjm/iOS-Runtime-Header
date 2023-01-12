@@ -6,12 +6,15 @@
 
 #import <Foundation/NSNumber.h>
 
+#import <AssistantServices/AFContextSnapshot-Protocol.h>
 #import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
 
 @class NSString;
 
-@interface NSNumber (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
+@interface NSNumber (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding, AFContextSnapshot>
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)initWithSerializedBackingStore:(id)arg1;
+- (id)serializedBackingStore;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

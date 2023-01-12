@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UITextItemInteractionHandler-Protocol.h>
 
-@class NSString, UIAction, UIView;
+@class NSString, UIAction, UIView, _UITextInteractableItem;
 @protocol _UITextContent;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     struct _NSRange _range;
     struct CGRect _rect;
     UIView<_UITextContent> *_view;
+    _UITextInteractableItem *_item;
     UIAction *_defaultAction;
 }
 
@@ -25,9 +26,9 @@ __attribute__((visibility("hidden")))
 - (id)contextMenuConfiguration;
 - (id)actionSheetTitle;
 - (id)_defaultDDAction;
-- (id)_defaultAction;
-- (id)defaultAction;
-- (id)initWithRange:(struct _NSRange)arg1 rect:(struct CGRect)arg2 inTextContentView:(id)arg3;
+- (id)defaultActionWithContextMenuInteraction:(id)arg1;
+- (struct CGRect)rectAtItemLocation;
+- (id)initWithItem:(id)arg1 inTextContentView:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

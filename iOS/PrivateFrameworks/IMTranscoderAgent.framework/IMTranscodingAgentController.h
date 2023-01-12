@@ -22,7 +22,8 @@
 + (id)sharedInstance;
 - (void)decodeiMessageAppPayload:(id)arg1 bundleID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)sizePreview:(id)arg1 constraints:(struct IMPreviewConstraints)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)generatePreview:(id)arg1 previewURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)generatePreviewMetadata:(id)arg1 destinationURL:(id)arg2 constraints:(struct IMPreviewConstraints)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)generatePreview:(id)arg1 previewURL:(id)arg2 balloonBundleID:(id)arg3 constraints:(struct IMPreviewConstraints)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)generateSnapshotForMessageGUID:(id)arg1 payloadURL:(id)arg2 balloonBundleID:(id)arg3 isFromMe:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)validateTextRenderingForMessage:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)validateFileTransfer:(id)arg1 utiType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

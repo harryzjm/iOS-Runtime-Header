@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(readonly, nonatomic) __weak UIView *emptyListView; // @synthesize emptyListView=_emptyListView;
 @property(nonatomic) __weak id <WFGiphyViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(copy, nonatomic) NSString *query; // @synthesize query=_query;
-@property(nonatomic) _Bool selectMultiple; // @synthesize selectMultiple=_selectMultiple;
+@property(readonly, copy, nonatomic) NSString *query; // @synthesize query=_query;
+@property(readonly, nonatomic) _Bool selectMultiple; // @synthesize selectMultiple=_selectMultiple;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -43,9 +43,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)accessibilityPerformEscape;
 - (void)cancel;
 - (void)done;
+- (void)updateResults;
+- (void)setQuery:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithQuery:(id)arg1 selectMultiple:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

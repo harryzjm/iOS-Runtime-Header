@@ -32,12 +32,13 @@
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)itemType;
 - (id)primaryIdentifier;
-- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
-- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
-- (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
+- (void)_encodeServerDataWithCloudStoreCoder:(id)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1 codingType:(unsigned long long)arg2;
 - (id)_rewardItemsFromRecord:(id)arg1;
 - (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
+- (_Bool)containsItemOfType:(unsigned long long)arg1;
 - (id)jsonString;
 - (id)jsonArrayRepresentation;
 - (id)initWithJsonString:(id)arg1;

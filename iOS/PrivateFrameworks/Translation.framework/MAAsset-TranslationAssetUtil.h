@@ -7,6 +7,7 @@
 #import <MobileAsset/MAAsset.h>
 
 @interface MAAsset (TranslationAssetUtil)
+- (long long)downloadSize;
 - (_Bool)matchesAsset:(id)arg1;
 - (_Bool)isANEModel;
 - (long long)requiredCapabilityIdentifier;

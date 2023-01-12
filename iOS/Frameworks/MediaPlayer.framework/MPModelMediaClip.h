@@ -15,6 +15,7 @@
 + (id)__previewArtworkCatalogBlock_KEY;
 + (id)kind;
 + (id)classesForSecureCoding;
++ (long long)genericObjectType;
 - (id)previewArtworkCatalog;
 - (id)humanDescription;
 

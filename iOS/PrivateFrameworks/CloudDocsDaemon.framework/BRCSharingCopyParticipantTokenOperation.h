@@ -8,7 +8,6 @@
 
 @class CKRecordID, NSError, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingCopyParticipantTokenOperation <BRCOperationSubclass>
 {
     CKRecordID *_shareID;

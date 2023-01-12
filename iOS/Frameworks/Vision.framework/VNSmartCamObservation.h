@@ -13,6 +13,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (id)smartCamprintCurrentVersion;
 + (id)observationWithSmartCamprints:(id)arg1;
 - (void).cxx_destruct;
@@ -20,9 +21,10 @@
 @property(copy, nonatomic) NSArray *smartCamprints; // @synthesize smartCamprints=_smartCamprints;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 smartCamprints:(id)arg2;
 - (id)initWithRequestRevision:(unsigned long long)arg1 smartCamprints:(id)arg2;
 
 @end

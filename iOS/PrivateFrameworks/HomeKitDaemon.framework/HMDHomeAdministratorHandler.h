@@ -17,20 +17,23 @@
     NSOperationQueue *_queue;
     NSMapTable *_receivers;
     HMDHome *_home;
+    HMFMessageDispatcher *_dispatcher;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) HMFMessageDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property(readonly) __weak HMDHome *home; // @synthesize home=_home;
 - (id)logIdentifier;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)addOperation:(id)arg1;
 - (id)operationForMessage:(id)arg1 error:(id *)arg2;
+@property(readonly) _Bool shouldRelayMessages;
 - (void)deregisterReceiver:(id)arg1;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 selector:(SEL)arg4;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 messageHandler:(CDUnknownBlockType)arg4;
 - (id)syncOperationManager;
-@property(readonly) HMFMessageDispatcher *dispatcher;
+- (id)initWithHome:(id)arg1 dispatcher:(id)arg2;
 - (id)initWithHome:(id)arg1;
 - (id)initWithTransport:(id)arg1;
 

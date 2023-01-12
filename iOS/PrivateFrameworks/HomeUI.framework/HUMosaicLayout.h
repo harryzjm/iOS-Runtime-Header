@@ -14,14 +14,12 @@
 
 @interface HUMosaicLayout : UICollectionViewLayout <HUControllableCollectionViewLayout, HUProvidesMosaicFrames>
 {
-    _Bool _layoutInvalidatedForBoundsChange;
     id <HUMosaicLayoutDelegate> _delegate;
     NSMutableArray *_attributeCache;
     struct CGRect _contentBounds;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool layoutInvalidatedForBoundsChange; // @synthesize layoutInvalidatedForBoundsChange=_layoutInvalidatedForBoundsChange;
 @property(retain, nonatomic) NSMutableArray *attributeCache; // @synthesize attributeCache=_attributeCache;
 @property(nonatomic) id <HUMosaicLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct CGRect contentBounds; // @synthesize contentBounds=_contentBounds;
@@ -32,7 +30,6 @@
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (struct CGSize)collectionViewContentSize;
-- (void)invalidateLayout;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (void)prepareLayout;
 

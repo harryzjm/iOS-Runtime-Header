@@ -26,11 +26,13 @@
 + (id)summaryItemWithLabel:(id)arg1 amount:(id)arg2 type:(unsigned long long)arg3;
 + (id)summaryItemWithLabel:(id)arg1 amount:(id)arg2;
 + (long long)version;
++ (id)_deferredSummaryItemWithProtobuf:(id)arg1;
++ (id)_recurringSummaryItemWithProtobuf:(id)arg1;
 + (id)itemWithProtobuf:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool useLargeFont; // @synthesize useLargeFont=_useLargeFont;
 @property(nonatomic) _Bool useDarkColor; // @synthesize useDarkColor=_useDarkColor;
-@property(retain, nonatomic) NSString *localizedAmount; // @synthesize localizedAmount=_localizedAmount;
+@property(copy, nonatomic) NSString *localizedAmount; // @synthesize localizedAmount=_localizedAmount;
 @property(copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
@@ -43,6 +45,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_protobufDeferredSummaryItemForItem:(id)arg1;
+- (id)_protobufRecurringSummaryItemForItem:(id)arg1;
 - (id)protobuf;
 
 @end

@@ -12,12 +12,14 @@
 {
     short _category;
     NSString *_synonym;
+    NSString *_identifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) short category; // @synthesize category=_category;
 @property(copy, nonatomic) NSString *synonym; // @synthesize synonym=_synonym;
-- (id)initWithSynonym:(id)arg1 category:(short)arg2;
+- (id)initWithSynonym:(id)arg1 category:(short)arg2 identifier:(id)arg3;
 
 @end
 

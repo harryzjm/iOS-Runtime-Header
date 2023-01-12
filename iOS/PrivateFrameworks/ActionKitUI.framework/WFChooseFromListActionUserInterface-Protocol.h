@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSString, WFContentCollection;
 
-@protocol WFChooseFromListActionUserInterface <WFRemoteUserInterface>
+@protocol WFChooseFromListActionUserInterface <WFActionRemoteUserInterface>
 - (void)showImagesWithPrompt:(NSString *)arg1 canSelectAll:(_Bool)arg2 canSelectMultiple:(_Bool)arg3 inputItems:(WFContentCollection *)arg4 completionHandler:(void (^)(WFContentCollection *, NSError *))arg5;
 @end
 

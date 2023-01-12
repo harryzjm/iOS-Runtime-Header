@@ -30,6 +30,7 @@
 - (id)assetDownloadOperationForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)asyncLoadAssetsOnceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)asyncLoadAssetURLsOnceWithCompletion:(CDUnknownBlockType)arg1;
+- (id)fallbackResourceForID:(id)arg1;
 - (id)resourceForID:(id)arg1;
 - (id)resourceIDForResourceURL:(id)arg1;
 - (id)loadAssetWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;

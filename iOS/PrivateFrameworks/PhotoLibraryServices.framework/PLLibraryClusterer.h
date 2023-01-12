@@ -26,12 +26,12 @@
 - (id)_momentsWithLocationClusteredByPossibleSource:(id)arg1;
 - (id)_momentsGroupedByDayWithMomentsSortedByDate:(id)arg1;
 - (id)_startDateComponentsForMomentCluster:(id)arg1;
+- (id)_momentsSplitBetweenOriginatorsWithMoments:(id)arg1;
 - (id)_momentsSeparatedOnLocationTypeWithMoments:(id)arg1;
 - (id)_momentsSplitWithinDayWithMoments:(id)arg1;
 - (_Bool)_shouldSplitMomentsWithTimeDistance:(double)arg1 locationDistance:(double)arg2;
 - (void)_mergeMomentsIntoClustersBasedOnTimeWithMoments:(id)arg1 clusters:(id)arg2;
 - (id)locationBasedMomentClustersForMomentsSortedByDate:(id)arg1;
-- (void)processMonthsAndYearsForMomentClusters:(id)arg1;
 - (void)_createMomentsForDailyAssets:(id)arg1 currentMomentExistingMomentData:(id)arg2;
 - (void)processMomentsWithAssets:(id)arg1;
 - (id)initWithLocalCreationDateCreator:(id)arg1 frequentLocationManager:(id)arg2;

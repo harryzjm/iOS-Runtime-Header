@@ -12,8 +12,9 @@
 {
 }
 
-+ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedProcessing:(id)arg3 outputFacesThatNeed2DLandmarks:(id)arg4;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
@@ -23,6 +24,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSArray *inputFaceObservations;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

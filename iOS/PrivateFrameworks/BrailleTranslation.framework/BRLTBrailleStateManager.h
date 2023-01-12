@@ -27,7 +27,6 @@
     struct _NSRange _brailleSelection;
     struct _NSRange _brailleFocus;
     _Bool _brailleDirty;
-    _Bool _brailleDirtyForMixedMode;
     _Bool _scriptDirty;
     id <BRLTBrailleStateManagerDelegate> _delegate;
     id <BRLTBrailleTranslationDelegateProtocol> _translationDelegate;

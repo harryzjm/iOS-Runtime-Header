@@ -6,12 +6,16 @@
 
 @class NSArray, NSDate, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICMutableMusicSubscriptionStatus
 {
     long long _statusCode;
 }
 
 @property(nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
+@property(copy, nonatomic) NSArray *eligibleOffers; // @dynamic eligibleOffers;
+@property(nonatomic, getter=isBundleOnwer) _Bool bundleOwner; // @dynamic bundleOwner;
+@property(nonatomic, getter=isPartOfBundle) _Bool partOfBundle; // @dynamic partOfBundle;
 @property(nonatomic) long long carrierBundlingErrorCode; // @dynamic carrierBundlingErrorCode;
 @property(copy, nonatomic) NSString *sessionIdentifier; // @dynamic sessionIdentifier;
 @property(copy, nonatomic) NSString *cellularOperatorName; // @dynamic cellularOperatorName;

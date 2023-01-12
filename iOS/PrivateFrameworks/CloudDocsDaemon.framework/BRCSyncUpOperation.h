@@ -8,7 +8,6 @@
 
 @class BRCLocalItem, BRCServerZone, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSyncUpOperation <BRCOperationSubclass>
 {
     unsigned long long _requestID;

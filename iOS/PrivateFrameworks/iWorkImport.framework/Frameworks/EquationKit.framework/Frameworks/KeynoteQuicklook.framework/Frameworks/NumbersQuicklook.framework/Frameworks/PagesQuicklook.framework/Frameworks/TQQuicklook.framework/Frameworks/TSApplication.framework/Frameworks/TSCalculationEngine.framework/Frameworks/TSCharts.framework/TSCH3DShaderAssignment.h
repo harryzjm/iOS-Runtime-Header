@@ -12,22 +12,22 @@
 
 @interface TSCH3DShaderAssignment : NSObject <TSCH3DShaderStatement>
 {
-    TSCH3DShaderVariableLinkage *mAssignee;
-    struct TSCH3DShaderVariableScopeType mAssigneeScope;
-    NSString *mStatement;
-    NSArray *mDependees;
-    TSCH3DShaderProgram *mProgram;
-    struct TSCH3DShaderType mLinkageType;
-    vector_22c20f1a mDependeeScopes;
+    TSCH3DShaderVariableLinkage *_assignee;
+    struct TSCH3DShaderVariableScopeType _assigneeScope;
+    NSString *_statement;
+    NSArray *_dependees;
+    TSCH3DShaderProgram *_program;
+    struct TSCH3DShaderType _linkageType;
+    struct vector<TSCH3DShaderVariableScopeType, std::allocator<TSCH3DShaderVariableScopeType>> _dependeeScopes;
 }
 
 + (id)assignmentWithAssignee:(id)arg1 statement:(id)arg2 dependees:(id)arg3 program:(id)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct TSCH3DShaderVariableScopeType assigneeScope; // @synthesize assigneeScope=mAssigneeScope;
-@property(nonatomic) struct TSCH3DShaderType linkageType; // @synthesize linkageType=mLinkageType;
-@property(readonly, nonatomic) NSArray *dependees; // @synthesize dependees=mDependees;
-@property(readonly, nonatomic) TSCH3DShaderVariableLinkage *assignee; // @synthesize assignee=mAssignee;
+@property(readonly, nonatomic) struct TSCH3DShaderVariableScopeType assigneeScope; // @synthesize assigneeScope=_assigneeScope;
+@property(nonatomic) struct TSCH3DShaderType linkageType; // @synthesize linkageType=_linkageType;
+@property(readonly, nonatomic) NSArray *dependees; // @synthesize dependees=_dependees;
+@property(readonly, nonatomic) TSCH3DShaderVariableLinkage *assignee; // @synthesize assignee=_assignee;
 - (void)setAssigneeScopeToType:(struct TSCH3DShaderVariableScopeType)arg1;
 - (void)setGeneratedForType:(struct TSCH3DShaderType)arg1;
 @property(readonly, nonatomic) NSString *string;
@@ -41,11 +41,10 @@
 - (id)updateDependeesWithPreviousType:(struct TSCH3DShaderType)arg1;
 - (id)updateVaryingAssignmentForLinkage:(id)arg1;
 - (id)varyingAssignmentForLinkage:(id)arg1;
-- (vector_22c20f1a *)dependeeScopes;
+- (void *)dependeeScopes;
 @property(readonly, nonatomic) _Bool isLinked;
 - (_Bool)isMetal;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithAssigneeLinkage:(id)arg1 statement:(id)arg2 dependees:(id)arg3 program:(id)arg4;
 
 // Remaining properties

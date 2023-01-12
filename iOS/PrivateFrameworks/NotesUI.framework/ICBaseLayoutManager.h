@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSLayoutManager.h>
+#import <UIFoundation/NSLayoutManager.h>
 
 @class UITextView;
 
@@ -13,6 +13,7 @@
     UITextView *_textView;
 }
 
++ (id)linkTextAttributesForHighlightValue:(double)arg1;
 + (id)defaultLinkTextAttributes;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UITextView *textView; // @synthesize textView=_textView;

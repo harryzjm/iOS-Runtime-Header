@@ -8,7 +8,7 @@
 
 #import <Calculate/NSXMLParserDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSMutableString, NSNumber, NSString;
+@class NSDate, NSDictionary, NSMutableDictionary, NSMutableString, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CurrencyCache : NSObject <NSXMLParserDelegate>
@@ -19,6 +19,7 @@
     NSString *_currentCurrency;
     NSNumber *_currentRate;
     NSMutableString *_currentString;
+    NSMutableDictionary *_mutableCurrencyCache;
     NSObject<OS_dispatch_queue> *_serializer;
 }
 
@@ -27,6 +28,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serializer; // @synthesize serializer=_serializer;
 @property(retain, nonatomic) NSDictionary *currencyData; // @synthesize currencyData=_currencyData;
 @property(readonly) unsigned long long uuid; // @synthesize uuid=_uuid;
+- (_Bool)updateCurrencyCacheWithData:(id)arg1;
 - (void)_queue_loadPersistedCurrencyCache;
 - (void)_loadPersistedCurrencyCache;
 - (void)_queue_persistCurrencyCache;

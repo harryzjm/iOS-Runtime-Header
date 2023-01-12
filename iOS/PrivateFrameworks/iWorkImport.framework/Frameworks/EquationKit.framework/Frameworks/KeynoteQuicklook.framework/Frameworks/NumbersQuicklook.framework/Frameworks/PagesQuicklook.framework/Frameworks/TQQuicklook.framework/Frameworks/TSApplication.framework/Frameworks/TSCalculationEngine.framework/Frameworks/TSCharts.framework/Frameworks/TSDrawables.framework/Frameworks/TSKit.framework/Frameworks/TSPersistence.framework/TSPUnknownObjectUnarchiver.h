@@ -21,8 +21,8 @@
 - (_Bool)canValidateReferences;
 - (shared_ptr_bafc106c)archiveInfo;
 - (const struct Message *)message;
-- (id)initWithIdentifier:(long long)arg1 archiveInfo:(shared_ptr_bafc106c)arg2 messagesData:(id)arg3 packageLocator:(id)arg4 objectDelegate:(id)arg5 lazyReferenceDelegate:(id)arg6 delegate:(id)arg7;
-- (id)initWithMessageType:(unsigned int)arg1 message:(unique_ptr_1c88daa6)arg2 identifier:(long long)arg3 strongReferences:(unique_ptr_375828ba)arg4 messageVersion:(unsigned long long)arg5 unknownContent:(id)arg6 objectDelegate:(id)arg7 lazyReferenceDelegate:(id)arg8 delegate:(id)arg9;
+- (id)initWithIdentifier:(long long)arg1 archiveInfo:(shared_ptr_bafc106c)arg2 messagesData:(id)arg3 packageLocator:(id)arg4 hasAlternateMessages:(_Bool)arg5 objectDelegate:(id)arg6 lazyReferenceDelegate:(id)arg7 delegate:(id)arg8;
+- (id)initWithMessageType:(unsigned int)arg1 unarchiveClass:(Class)arg2 message:(unique_ptr_f0def102)arg3 identifier:(long long)arg4 strongReferences:(unique_ptr_3df01401)arg5 messageVersion:(unsigned long long)arg6 unknownContent:(id)arg7 hasAlternateMessages:(_Bool)arg8 objectDelegate:(id)arg9 lazyReferenceDelegate:(id)arg10 delegate:(id)arg11;
 
 @end
 

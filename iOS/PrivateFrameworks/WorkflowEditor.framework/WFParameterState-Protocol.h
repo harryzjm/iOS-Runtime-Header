@@ -12,7 +12,7 @@
 
 @protocol WFParameterState <NSCopying, WFVariableSerialization>
 - (id)initWithVariable:(WFVariable *)arg1;
-- (void)processWithContext:(WFParameterStateProcessingContext *)arg1 userInputRequiredHandler:(void (^)(id <WFParameterState>))arg2 valueHandler:(void (^)(id <NSSecureCoding>, NSError *))arg3;
+- (void)processWithContext:(WFParameterStateProcessingContext *)arg1 userInputRequiredHandler:(void (^)(NSString *, id <WFParameterState>))arg2 valueHandler:(void (^)(id <NSSecureCoding>, NSError *))arg3;
 - (NSArray *)containedVariables;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

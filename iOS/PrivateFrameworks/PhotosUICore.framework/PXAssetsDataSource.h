@@ -21,7 +21,6 @@
 - (void)prefetchIndexPaths:(id)arg1 level:(unsigned long long)arg2;
 - (id)assetCollectionReferenceNearestToObjectReference:(id)arg1;
 - (id)objectReferenceNearestToObjectReference:(id)arg1 inSection:(long long)arg2;
-- (id)objectReferenceNearestToObjectReference:(id)arg1;
 @property(readonly, nonatomic) _Bool areAllSectionsConsideredAccurate;
 @property(readonly, nonatomic) unsigned long long numberOfAssets;
 - (_Bool)isFilteringDisabledForAssetCollection:(id)arg1;
@@ -35,6 +34,7 @@
 - (long long)numberOfUncuratedItemsInAssetCollection:(id)arg1;
 - (long long)numberOfCuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfUncuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)uncuratedAssetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 @property(readonly, nonatomic) id <PXDisplayAsset> keyAsset;
 - (id)keyAssetsForAssetCollection:(id)arg1;
 - (struct PXSimpleIndexPath)keyAssetIndexPathForSectionIndexPath:(struct PXSimpleIndexPath)arg1;

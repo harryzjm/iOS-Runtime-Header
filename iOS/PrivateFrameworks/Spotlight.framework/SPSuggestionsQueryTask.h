@@ -10,18 +10,15 @@
 
 - (void)clearInternal:(int)arg1 invalidate:(_Bool)arg2;
 - (id)unsafeSections;
-- (id)_makeSuggestionsSectionFromSuggestions:(id)arg1 andResultSection:(id)arg2 withSectionBundleIdentifier:(id)arg3;
 - (id)makeSearchThroughSuggestions;
 - (id)_newSuggestionSection;
-- (id)searchThroughSuggestions:(id)arg1 maxCount:(long long)arg2;
-- (void)filterSearchThroughStringsNotInShowMore:(id)arg1 excludedBundleIdentifiers:(id)arg2;
 - (id)bundleIdentifiersForHiddenSections;
 - (id)sectionsForCompletions;
 - (id)committedSearchSections;
 - (void)addAsYouTypeRelatedSearchResultToSections:(id)arg1 withRelatedSearchSection:(id)arg2;
 - (id)showMoreButtonResultSection;
 - (id)_originalTopResultFromSections:(id)arg1;
-- (id)_whiteListedTopResultFromSection:(id)arg1;
+- (id)_allowListedTopResultFromSection:(id)arg1;
 - (id)_appResultSection;
 - (void)processAppResults:(id)arg1 maxAppResults:(unsigned long long)arg2 section:(id)arg3 topHitsIndex:(unsigned long long *)arg4;
 - (id)_topResultOnlySectionFrom:(id)arg1;

@@ -14,6 +14,7 @@
 }
 
 + (id)fragmentedAssetWithURL:(id)arg1 options:(id)arg2;
++ (_Bool)expectsPropertyRevisedNotifications;
 - (void)_setIsAssociatedWithFragmentMinder:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isAssociatedWithFragmentMinder) _Bool associatedWithFragmentMinder;
 - (id)tracksWithMediaCharacteristic:(id)arg1;

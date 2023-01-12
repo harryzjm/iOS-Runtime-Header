@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
 @interface CKEffectPickerMacViewController : UIViewController <CKEffectPreviewCollectionViewControllerDelegate, CKEffectSelectionViewControllerDelegate, CKEffectPickerViewControllerProtocol>
 {
     BOOL _color;
-    _Bool _isFirstLayout;
+    _Bool _hasSelectedDefaultEffect;
+    _Bool _showingInStandAloneWindow;
     id <CKEffectPickerViewControllerDelegate> _delegate;
     CKBalloonView *_balloonView;
     CKEffectPreviewCollectionViewController *_effectCollectionViewController;
@@ -37,9 +38,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showingInStandAloneWindow; // @synthesize showingInStandAloneWindow=_showingInStandAloneWindow;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) CKFullScreenEffectManager *fsem; // @synthesize fsem=_fsem;
-@property(nonatomic) _Bool isFirstLayout; // @synthesize isFirstLayout=_isFirstLayout;
+@property(nonatomic) _Bool hasSelectedDefaultEffect; // @synthesize hasSelectedDefaultEffect=_hasSelectedDefaultEffect;
 @property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(nonatomic) BOOL color; // @synthesize color=_color;
 @property(nonatomic) struct CGPoint balloonViewOrigin; // @synthesize balloonViewOrigin=_balloonViewOrigin;
@@ -70,9 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)touchUpInsideSendButton:(id)arg1;
 - (void)keyCommandReturn:(id)arg1;
 - (id)keyCommands;
-- (_Bool)canBecomeFirstResponder;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithComposition:(id)arg1 balloonViewOrigin:(struct CGPoint)arg2 color:(BOOL)arg3;
 

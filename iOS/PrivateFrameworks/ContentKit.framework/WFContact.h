@@ -28,13 +28,18 @@
 + (_Bool)supportsSecureCoding;
 + (void)removeContactsChangeObserver:(id)arg1;
 + (id)addContactsChangeObserver:(CDUnknownBlockType)arg1;
++ (long long)predictedTypeForHandleValue:(id)arg1 allowsCustomHandles:(_Bool)arg2;
 + (long long)predictedTypeForHandleValue:(id)arg1;
++ (id)firstContactWithPhoneNumber:(id)arg1;
++ (id)firstContactWithEmailAddress:(id)arg1;
 + (id)contactWithVCardData:(id)arg1 propertyID:(int)arg2 multivalueIndex:(long long)arg3;
 + (id)contactsWithVCardData:(id)arg1;
 + (id)contactsWithName:(id)arg1;
 + (id)allContactsWithSortOrder:(long long)arg1;
 + (id)allContactsWithSortOrder:(long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (Class)preferredConcreteSubclass;
++ (id)cnContactWithINPerson:(id)arg1;
++ (id)labelFromINPersonHandleLabel:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
 @property(readonly, nonatomic) _Bool hasImageData; // @synthesize hasImageData=_hasImageData;
@@ -44,7 +49,6 @@
 - (id)wfSerializedRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSString *wfName;
@@ -72,6 +76,8 @@
 - (id)contactWithPropertyID:(int)arg1 multivalueIndex:(long long)arg2;
 - (id)valueForPropertyID:(int)arg1;
 - (_Bool)hasValueForPropertyID:(int)arg1;
+- (id)contactIdentifierForINPerson;
+- (id)INPersonRepresentation;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

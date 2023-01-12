@@ -6,32 +6,35 @@
 
 #import <objc/NSObject.h>
 
+@class NSNumber, PHPhotoLibrary;
+
 @interface PUStorageManagementUtility : NSObject
 {
+    PHPhotoLibrary *_photoLibrary;
 }
 
-+ (_Bool)isCPLInInitialUploadingState;
-+ (id)significantItems;
-+ (unsigned long long)totalReclaimableSizeFromPurgingVideoClips;
-+ (id)_deleteableVideoAssets;
-+ (id)fetchVideoAssetsBySizeWithSortOrder:(_Bool)arg1;
-+ (id)_defaultVideoAssetFetchOptionsWithSortOrder:(_Bool)arg1 fetchLimit:(unsigned long long)arg2 minimumFileSize:(unsigned long long)arg3;
 + (id)stringWithSizeUnitForValue:(id)arg1;
-+ (void)expungeTrashedSpatialOverCaptureResourcesWithCompletionBlock:(CDUnknownBlockType)arg1;
-+ (void)expungeRecentlyDeletedItemsWithCompletionBlock:(CDUnknownBlockType)arg1;
-+ (void)enableCPLWithCompletionBlock:(CDUnknownBlockType)arg1;
-+ (void)enableOptimizedMode:(_Bool)arg1;
-+ (_Bool)isOptimizedModeOn;
-+ (id)sizeForTrashedSpatialOvercaptureResources;
-+ (id)_assetsWithSpatialOvercaptureResources;
-+ (_Bool)isDeletableItemsInTrash;
-+ (id)sizeForRecentlyDeletedItems;
-+ (id)_assetsInTrash;
-+ (_Bool)shouldHideCPL;
-+ (_Bool)isCPLInExitMode;
-+ (_Bool)isCPLEnabled;
-+ (id)systemPhotoLibrary;
-+ (void)purgeableSizeAndOriginalsInLibrary:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
+- (id)significantItems;
+@property(readonly, nonatomic) unsigned long long totalReclaimableSizeFromPurgingVideoClips;
+- (id)_deleteableVideoAssets;
+- (id)fetchVideoAssetsBySizeWithSortOrder:(_Bool)arg1;
+- (id)_defaultVideoAssetFetchOptionsWithSortOrder:(_Bool)arg1 fetchLimit:(unsigned long long)arg2 minimumFileSize:(unsigned long long)arg3;
+- (void)expungeTrashedSpatialOverCaptureResourcesWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)expungeRecentlyDeletedItemsWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)enableCPLWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)enableOptimizedMode:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool isOptimizedModeOn;
+@property(readonly, nonatomic) NSNumber *sizeForTrashedSpatialOvercaptureResources;
+- (id)_assetsWithSpatialOvercaptureResources;
+@property(readonly, nonatomic) _Bool isDeletableItemsInTrash;
+@property(readonly, nonatomic) NSNumber *sizeForRecentlyDeletedItems;
+- (id)_assetsInTrash;
+@property(readonly, nonatomic) _Bool shouldHideCPL;
+@property(readonly, nonatomic) _Bool isCPLInExitMode;
+@property(readonly, nonatomic) _Bool isCPLEnabled;
+- (void)purgeableSizeAndOriginalsInLibrary:(CDUnknownBlockType)arg1;
+- (id)initWithPhotoLibrary:(id)arg1;
 
 @end
 

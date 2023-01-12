@@ -13,17 +13,26 @@
     _Bool _isDownloadedLocally;
     NSString *_type;
     NSString *_filename;
+    unsigned long long _size;
     NSString *_path;
 }
 
++ (id)testAttachmentWithType:(id)arg1 size:(unsigned long long)arg2;
 + (id)attachmentsFromSearchableItem:(id)arg1;
++ (id)attachmentsFromBiomeAttachments:(id)arg1;
 + (id)attachmentWithType:(id)arg1 filename:(id)arg2 path:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isDownloadedLocally; // @synthesize isDownloadedLocally=_isDownloadedLocally;
 @property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
+@property(readonly, nonatomic) unsigned long long size; // @synthesize size=_size;
 @property(readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
+- (void)setSize:(unsigned long long)arg1;
 - (id)description;
+- (id)mimeCategory;
+@property(readonly, nonatomic) _Bool isOthersMimeType;
+@property(readonly, nonatomic) _Bool isMediaMimeType;
+@property(readonly, nonatomic) _Bool isApplicationMimeType;
 @property(readonly, nonatomic) _Bool isCalendarMimeType; // @dynamic isCalendarMimeType;
 - (id)initWithType:(id)arg1 filename:(id)arg2 path:(id)arg3;
 

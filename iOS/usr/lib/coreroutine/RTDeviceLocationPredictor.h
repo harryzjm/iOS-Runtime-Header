@@ -69,7 +69,7 @@
 - (void)clear;
 - (void)_clear;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setup;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;

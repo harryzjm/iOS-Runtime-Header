@@ -14,17 +14,23 @@ __attribute__((visibility("hidden")))
 @interface REResourceSharingClientObject : NSObject <REResourceSharingService>
 {
     struct AssetService *_assetService;
-    struct ResourceSharingManager *_resourceSharingManager;
+    void *_resourceSharingManager;
+    unsigned long long _peerID;
 }
 
-@property(readonly, nonatomic) struct ResourceSharingManager *resourceSharingManager; // @synthesize resourceSharingManager=_resourceSharingManager;
+@property(readonly, nonatomic) unsigned long long peerID; // @synthesize peerID=_peerID;
+@property(readonly, nonatomic) void *resourceSharingManager; // @synthesize resourceSharingManager=_resourceSharingManager;
 @property(readonly, nonatomic) struct AssetService *assetService; // @synthesize assetService=_assetService;
+- (void)unsubscribeFromResourceAtAssetPath:(id)arg1;
+- (void)setSubscriptionOptions:(id)arg1 forResourceAtAssetPath:(id)arg2;
 - (void)fetchResourceAtAssetPath:(id)arg1 withReply:(CDUnknownBlockType)arg2;
-- (id)initWithAssetService:(struct AssetService *)arg1 resourceSharingManager:(struct ResourceSharingManager *)arg2;
+- (id)redactedDescription;
+@property(readonly, copy) NSString *description;
+- (void)invalidate;
+- (id)initWithAssetService:(struct AssetService *)arg1 resourceSharingManager:(void *)arg2 peerID:(unsigned long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

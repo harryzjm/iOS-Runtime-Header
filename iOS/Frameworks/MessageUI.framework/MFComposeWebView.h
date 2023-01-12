@@ -7,21 +7,20 @@
 #import <WebKit/WKWebView.h>
 
 #import <MessageUI/MFComposeBodyFieldObserver-Protocol.h>
+#import <MessageUI/MFMailMenuCommandProvider-Protocol.h>
 #import <MessageUI/WKNavigationDelegate-Protocol.h>
 #import <MessageUI/WKUIDelegatePrivate-Protocol.h>
 #import <MessageUI/_WKInputDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UIBarButtonItemGroup, UIView, _WKRemoteObjectInterface;
+@class NSArray, NSMutableDictionary, NSString, UIView, _WKRemoteObjectInterface;
 @protocol MFComposeBodyFieldController, MFComposeWebViewDelegate, MFMailComposeViewDelegate, MFMailSignatureController;
 
-@interface MFComposeWebView : WKWebView <MFComposeBodyFieldObserver, WKNavigationDelegate, _WKInputDelegate, WKUIDelegatePrivate>
+@interface MFComposeWebView : WKWebView <MFComposeBodyFieldObserver, WKNavigationDelegate, _WKInputDelegate, WKUIDelegatePrivate, MFMailMenuCommandProvider>
 {
     id <MFMailComposeViewDelegate> _mailComposeViewDelegate;
     NSString *_compositionContextID;
     id <MFMailSignatureController> _signatureControllerProxy;
     id <MFComposeBodyFieldController> _bodyFieldProxy;
-    UIBarButtonItemGroup *_leadingInputAssistantItemGroup;
-    NSArray *_trailingInputAssistantItemGroups;
     _Bool _shouldShowStandardButtons;
     unsigned long long _imageCount;
     _Bool _dirty;
@@ -36,13 +35,20 @@
     _Bool _isFinishing;
     _Bool _originalAttachmentsWereRestored;
     _Bool _attachmentDataMissingAlertDisplayed;
+    _Bool __didUpdateInputAssistantItem;
     id <MFComposeWebViewDelegate> _composeWebViewDelegate;
     UIView *_inputViewForPreservingFocus;
+    NSArray *__leadingInputAssistantItemGroups;
+    NSArray *__trailingInputAssistantItemGroups;
 }
 
++ (id)menuCommands;
 + (id)_webViewConfiguration;
++ (void)setURLCacheBlock:(CDUnknownBlockType)arg1;
 + (id)log;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *_trailingInputAssistantItemGroups; // @synthesize _trailingInputAssistantItemGroups=__trailingInputAssistantItemGroups;
+@property(retain, nonatomic) NSArray *_leadingInputAssistantItemGroups; // @synthesize _leadingInputAssistantItemGroups=__leadingInputAssistantItemGroups;
 @property(retain, nonatomic) UIView *inputViewForPreservingFocus; // @synthesize inputViewForPreservingFocus=_inputViewForPreservingFocus;
 @property(nonatomic) __weak id <MFComposeWebViewDelegate> composeWebViewDelegate; // @synthesize composeWebViewDelegate=_composeWebViewDelegate;
 - (_Bool)_sourceIsManaged;
@@ -77,15 +83,13 @@
 - (void)_increaseQuoteLevelKeyCommandInvoked:(id)arg1;
 - (void)_pasteAsQuotationKeyCommandInvoked:(id)arg1;
 - (void)_removeInlineAttachment:(id)arg1;
-- (void)_didTapScanDocumentButton:(id)arg1;
-- (void)_didTapImportDocumentButton:(id)arg1;
+- (void)_scanDocumentCommandInvoked:(id)arg1;
+- (void)_importDocumentCommandInvoked:(id)arg1;
 - (void)_didTapInsertDrawingOrMarkupButton:(id)arg1;
 - (void)_didTapInsertPhotoButton:(id)arg1;
 - (void)_didTapCameraButton:(id)arg1;
-@property(retain, nonatomic, setter=_setTrailingInputAssistantItemGroups:) NSArray *_trailingInputAssistantItemGroups;
-@property(retain, nonatomic, setter=_setLeadingInputAssistantItemGroup:) UIBarButtonItemGroup *_leadingInputAssistantItemGroup;
-@property(readonly, nonatomic) NSArray *_mailComposeEditingTrailingInputAssistantGroups;
-@property(readonly, nonatomic) UIBarButtonItemGroup *_mailComposeEditingLeadingInputAssistantGroup;
+- (id)_mailComposeEditingTrailingInputAssistantGroups;
+- (id)_mailComposeEditingLeadingInputAssistantGroups;
 - (void)compositionDidFailToFinish;
 - (void)compositionWillFinish;
 - (void)releaseFocusAfterDismissing:(_Bool)arg1;
@@ -148,6 +152,7 @@
 @property(readonly, nonatomic) id <MFMailSignatureController> signatureControllerProxy;
 - (void)markupSelectedAttachment;
 - (void)_close;
+- (_Bool)_canPerformCommandAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)keyCommands;
 - (_Bool)resignFirstResponder;

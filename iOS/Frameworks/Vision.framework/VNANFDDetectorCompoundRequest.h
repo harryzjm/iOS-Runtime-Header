@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 + (Class)configurationClass;
 + (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (long long)compoundRequestRevisionForRequest:(id)arg1;
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (void)assignOriginalRequestsResultsFromObservations:(id)arg1 obtainedInPerformingContext:(id)arg2;

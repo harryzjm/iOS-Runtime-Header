@@ -6,18 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSManagedObjectContext, NSString;
+@class NSDate, NSDictionary, NSManagedObjectContext, NSPersistentHistoryToken, NSString;
 
 @interface PLGlobalValues : NSObject
 {
     NSManagedObjectContext *_moc;
 }
 
++ (void)setSyndicationPrefetchDownloadThrottlingDate:(id)arg1 managedObjectContext:(id)arg2;
 + (void)setLibraryCreateOptions:(unsigned long long)arg1 managedObjectContext:(id)arg2;
 + (void)setJournalRebuildRequired:(_Bool)arg1 managedObjectContext:(id)arg2;
 - (void).cxx_destruct;
 - (void)_setValueUsingPerformBlockAndWait:(CDUnknownBlockType)arg1 responsibleCaller:(const char *)arg2;
 - (id)_getValueUsingPerformBlockAndWait:(CDUnknownBlockType)arg1;
+@property(copy, nonatomic) NSString *lastGuestAssetSyncTargetLibraryPath;
+@property(retain, nonatomic) NSPersistentHistoryToken *lastGuestAssetSyncToken;
+@property(retain, nonatomic) NSDate *syndicationPrefetchDownloadThrottlingDate;
+@property(retain, nonatomic) NSDate *syndicationStartDate;
+@property(retain, nonatomic) NSDate *lastDeleteSyndicationSyncDate;
+@property(retain, nonatomic) NSDate *lastChatSyndicationSyncDate;
+@property(retain, nonatomic) NSDate *lastAttachmentSyndicationSyncDate;
+@property(retain, nonatomic) NSDate *inProgressFullIndexSyndicationSyncDate;
+@property(retain, nonatomic) NSDate *lastFullIndexSyndicationSyncDate;
 - (_Bool)shouldPrefetchWidgetResources;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1;
 @property(readonly, nonatomic) unsigned long long libraryCreateOptions;

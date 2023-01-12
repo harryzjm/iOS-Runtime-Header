@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface MKPlacePhotoView : UIScrollView <UIScrollViewDelegate>
 {
+    _Bool _needsFullImageDownload;
     _Bool _isZoomed;
     UIImageView *_imageView;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isZoomed; // @synthesize isZoomed=_isZoomed;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property(nonatomic) _Bool needsFullImageDownload; // @synthesize needsFullImageDownload=_needsFullImageDownload;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (void)zoomWithGestureRecognizer:(id)arg1;
 @property(retain, nonatomic) UIImage *image;

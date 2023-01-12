@@ -6,38 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class FPXExtensionContext, FPXSpotlightIndexer, NSFileProviderDomain, NSFileProviderExtension;
-@protocol OS_os_log;
+@class FPProviderDomain, FPSpotlightIndexer, FPXExtensionContext, NSDictionary, NSFileProviderDomain, NSFileProviderDomainVersion, NSFileProviderExtension;
+@protocol NSFileProviderReplicatedExtension, OS_os_log;
 
 __attribute__((visibility("hidden")))
 @interface FPXDomainContext : NSObject
 {
+    NSFileProviderDomainVersion *_lastKnownDomainVersion;
+    NSDictionary *_lastKnownUserInfo;
+    long long _sequenceNumber;
+    int _selfPid;
     _Bool _usesFPFS;
     unsigned long long _extensionCapabilities;
     FPXExtensionContext *_extensionContext;
-    NSFileProviderExtension *_vendorInstance;
+    NSObject<NSFileProviderReplicatedExtension> *_vendorInstance;
     NSFileProviderDomain *_domain;
+    FPProviderDomain *_providerDomain;
     NSObject<OS_os_log> *_log;
-    FPXSpotlightIndexer *_spotlightIndexer;
+    FPSpotlightIndexer *_spotlightIndexer;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) FPXSpotlightIndexer *spotlightIndexer; // @synthesize spotlightIndexer=_spotlightIndexer;
+@property(readonly, nonatomic) FPSpotlightIndexer *spotlightIndexer; // @synthesize spotlightIndexer=_spotlightIndexer;
 @property(retain, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(readonly, nonatomic) _Bool usesFPFS; // @synthesize usesFPFS=_usesFPFS;
+@property(readonly, nonatomic) FPProviderDomain *providerDomain; // @synthesize providerDomain=_providerDomain;
 @property(readonly, nonatomic) NSFileProviderDomain *domain; // @synthesize domain=_domain;
-@property(readonly, nonatomic) NSFileProviderExtension *vendorInstance; // @synthesize vendorInstance=_vendorInstance;
+@property(readonly, nonatomic) NSObject<NSFileProviderReplicatedExtension> *vendorInstance; // @synthesize vendorInstance=_vendorInstance;
 @property(readonly, nonatomic) __weak FPXExtensionContext *extensionContext; // @synthesize extensionContext=_extensionContext;
 @property(readonly, nonatomic) unsigned long long extensionCapabilities; // @synthesize extensionCapabilities=_extensionCapabilities;
+- (_Bool)shouldIngestDomainUserInfoUpdateWithOldVersion:(id)arg1 newVersion:(id)arg2;
+- (id)currentResponseWithRequest:(id)arg1;
+- (void)retrieveUserInfoFromExtension;
+@property(readonly, nonatomic) NSDictionary *userInfo;
+@property(readonly, nonatomic) NSFileProviderDomainVersion *domainVersion;
+- (id)instanceWithPrivateSelector:(SEL)arg1;
+@property(readonly, nonatomic) NSFileProviderExtension *v2Instance;
 - (void)invalidate;
 - (id)itemIDsFromVendorItemIDs:(id)arg1;
 - (id)itemsFromVendorItems:(id)arg1;
 - (id)itemIDFromVendorItemID:(id)arg1;
 - (id)itemFromVendorItem:(id)arg1;
-- (id)internalErrorFromVendorError:(id)arg1;
+- (id)internalErrorFromVendorError:(id)arg1 callerDescription:(id)arg2;
 - (void)prepareForDomainRemovalWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateCapabilities;
-- (id)initWithVendorInstance:(id)arg1 domain:(id)arg2 extensionContext:(id)arg3 usesFPFS:(_Bool)arg4;
+- (id)initWithVendorInstance:(id)arg1 domain:(id)arg2 extensionContext:(id)arg3 providerDomain:(id)arg4 domainVersion:(id)arg5;
 
 @end
 

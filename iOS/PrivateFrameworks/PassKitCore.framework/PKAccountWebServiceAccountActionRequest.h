@@ -9,6 +9,7 @@
 @interface PKAccountWebServiceAccountActionRequest
 {
     NSString *_accountIdentifier;
+    NSString *_accountUserAltDSID;
     PKAccountAction *_action;
     NSURL *_baseURL;
 }
@@ -16,6 +17,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property(retain, nonatomic) PKAccountAction *action; // @synthesize action=_action;
+@property(copy, nonatomic) NSString *accountUserAltDSID; // @synthesize accountUserAltDSID=_accountUserAltDSID;
 @property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 - (id)_urlRequestWithAppleAccountInformation:(id)arg1;
 

@@ -9,11 +9,13 @@
 @interface TRSetupConfigurationResponse
 {
     _Bool _needsNetwork;
+    _Bool _useAIDA;
     NSSet *_unauthenticatedAccountServices;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useAIDA; // @synthesize useAIDA=_useAIDA;
 @property(copy, nonatomic) NSSet *unauthenticatedAccountServices; // @synthesize unauthenticatedAccountServices=_unauthenticatedAccountServices;
 @property(nonatomic) _Bool needsNetwork; // @synthesize needsNetwork=_needsNetwork;
 - (id)_stringFromAccountServices:(id)arg1;

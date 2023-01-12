@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSMapTable, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface GEODataURLSessionList : NSObject
 {
     NSMutableArray *_urlSessions;
     NSMutableArray *_lastUsedDates;
+    NSMapTable *_pendingInvalidationGroups;
 }
 
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
+- (void)finishTasksAndInvalidateSessionsMatching:(CDUnknownBlockType)arg1 group:(id)arg2;
 - (void)pruneSessionsNotInIdentifierArray:(id)arg1 agressive:(_Bool)arg2;
 - (void)addSession:(id)arg1;
 - (id)urlSessionForIdentifier:(id)arg1;

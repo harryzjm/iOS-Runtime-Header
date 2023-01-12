@@ -8,19 +8,18 @@
 
 @interface CLRunLoopSilo
 {
-    double _currentLatchedAbsoluteTimestamp;
     CLRunLoopSiloThread *_siloThread;
     _Bool _useCLPermissiveTimer;
 }
 
 - (void).cxx_destruct;
+- (void)heartBeat:(id)arg1;
 - (id)debugDescription;
 - (void)afterInterval:(double)arg1 async:(CDUnknownBlockType)arg2;
 - (void)sync:(CDUnknownBlockType)arg1;
 - (void)async:(CDUnknownBlockType)arg1;
 - (id)newTimer;
 - (double)currentLatchedAbsoluteTimestamp;
-- (void)updateLatchedAbsoluteTimestamp;
 - (_Bool)isSuspended;
 - (void)resume;
 - (void)suspend;

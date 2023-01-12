@@ -16,6 +16,8 @@
 
 // Remaining properties
 @property(copy, nonatomic) NSNumber *active; // @dynamic active;
+@property(retain, nonatomic) NSNumber *autoDelete; // @dynamic autoDelete;
+@property(retain, nonatomic) NSString *configuredName; // @dynamic configuredName;
 @property(retain, nonatomic) NSArray *currentActionSets; // @dynamic currentActionSets;
 @property(copy, nonatomic) NSDate *mostRecentFireDate; // @dynamic mostRecentFireDate;
 @property(retain, nonatomic) NSString *name; // @dynamic name;

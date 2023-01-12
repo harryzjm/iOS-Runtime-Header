@@ -27,7 +27,7 @@
 - (id)currentDeviceRegistry;
 - (id)protoMessageFromMessage:(id)arg1;
 - (id)addMessageContent:(id)arg1 forMessage:(id)arg2 mailbox:(id)arg3 isProtectedData:(_Bool)arg4;
-- (id)updateMessagesFromConversation:(id)arg1 withNotifyConversationState:(_Bool)arg2 mailbox:(id)arg3;
+- (id)updateMessagesFromConversation:(id)arg1 withState:(unsigned long long)arg2 include:(_Bool)arg3 mailbox:(id)arg4;
 - (id)deleteMessagesWithIds:(id)arg1 mailbox:(id)arg2;
 - (id)updateMessagesStatus:(id)arg1 mailbox:(id)arg2;
 - (id)addMessagesToResend:(id)arg1 mailbox:(id)arg2 isProtectedData:(_Bool)arg3;

@@ -29,6 +29,7 @@
 + (_Bool)useContactsFramerwork;
 + (_Bool)alwaysUseCalendarHomeSync;
 + (_Bool)babysitterEnabled;
++ (_Bool)enableAutomaticAttachmentDownloads;
 + (_Bool)isInHoldingPattern;
 + (_Bool)sendMeCardEverywhere;
 + (_Bool)writeOutBrokenCancelationRequests;

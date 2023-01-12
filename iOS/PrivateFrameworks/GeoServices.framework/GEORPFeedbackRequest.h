@@ -43,6 +43,7 @@
 
 + (_Bool)isValid:(id)arg1;
 + (Class)displayLanguageType;
++ (id)clientTestingDebugSettings;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -53,6 +54,8 @@
 - (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -89,8 +92,9 @@
 - (_Bool)isPOIEnrichment;
 - (void)_setupSubmissionParameters;
 - (void)_initForSubmissionParameters;
-- (void)_sharedInitWithRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3;
+- (void)_sharedInitWithRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3 debugSettings:(id)arg4;
 - (id)initWithFeedbackRequestParameters:(id)arg1 userCredentials:(id)arg2 pushToken:(id)arg3 allowContactBackAtEmailAddress:(id)arg4 traits:(id)arg5;
+- (id)initWithFeedbackRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3 debugSettings:(id)arg4;
 - (id)initWithFeedbackRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3;
 - (id)initWithFeedbackRequestParameters:(id)arg1 traits:(id)arg2;
 

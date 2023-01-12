@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, NSMutableArray, NSMutableDictionary, NSTextStorage, PDFAnnotation, PDFPage, PDFPageLayer, PDFPageLayerEffect, PDFPageViewAnnotationController, PDFRenderingProperties, UIImage;
-@protocol PDFPageLayerGeometryInterface;
+@class CALayer, NSMutableArray, NSMutableDictionary, NSTextStorage, PDFAnnotation, PDFPage, PDFPageLayerEffect, PDFPageViewAnnotationController, PDFRenderingProperties, UIImage;
+@protocol PDFPageLayerGeometryInterface, PDFPageLayerInterface;
 
 __attribute__((visibility("hidden")))
 @interface PDFPageViewPrivate : NSObject
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     NSObject<PDFPageLayerGeometryInterface> *geometryInterface;
     PDFRenderingProperties *renderingProperties;
     PDFPage *page;
-    PDFPageLayer *pageLayer;
+    CALayer<PDFPageLayerInterface> *pageLayer;
     PDFPageLayerEffect *searchLayer;
     NSMutableArray *pageAnnotationEffects;
     PDFAnnotation *activeAnnotation;

@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/HMDAggregationAnalysisEventContributing-Protocol.h>
+
 @class HMDEventCountersManager, HMDEventFlagsManager;
 
-@interface HMDLogEventUserActivityAnalyzer
+@interface HMDLogEventUserActivityAnalyzer <HMDAggregationAnalysisEventContributing>
 {
     HMDEventFlagsManager *_eventFlagsManager;
     HMDEventCountersManager *_eventCountersManager;
 }
 
++ (id)managedEventCounterRequestGroups;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMDEventCountersManager *eventCountersManager; // @synthesize eventCountersManager=_eventCountersManager;
 @property(retain, nonatomic) HMDEventFlagsManager *eventFlagsManager; // @synthesize eventFlagsManager=_eventFlagsManager;
+- (void)resetAggregationAnalysisContext;
+- (void)populateAggregationAnalysisLogEvent:(id)arg1;
 - (void)_markUserActivityEventForEventName:(id)arg1;
 - (_Bool)_isTriggerSource:(unsigned long long)arg1;
 - (_Bool)_isUserSource:(unsigned long long)arg1;
@@ -25,9 +30,8 @@
 - (void)_handleAddActionSetLogEvent:(id)arg1;
 - (void)_handleAccessoryPairingLogEvent:(id)arg1;
 - (void)_handleReadWriteLogEvent:(id)arg1;
-- (void)processLogEvent:(id)arg1;
-- (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2 eventCountersManager:(id)arg3 eventFlagsManager:(id)arg4;
-- (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
+- (id)initWithEventCountersManager:(id)arg1 eventFlagsManager:(id)arg2;
 
 @end
 

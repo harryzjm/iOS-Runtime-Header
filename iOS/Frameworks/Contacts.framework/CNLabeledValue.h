@@ -10,7 +10,7 @@
 #import <Contacts/NSCopying-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class CNLabelValuePair, NSDictionary, NSSet, NSString, SGRecordId;
+@class CNLabelValuePair, CNValueOrigin, NSDictionary, NSSet, NSString, SGRecordId;
 @protocol NSCopying><NSSecureCoding;
 
 @interface CNLabeledValue : NSObject <CNSuggested, NSCopying, NSSecureCoding>
@@ -63,7 +63,9 @@
 - (id)initWithIdentifier:(id)arg1 label:(id)arg2 value:(id)arg3;
 - (id)initWithLabel:(id)arg1 value:(id)arg2;
 - (id)init;
-- (id)valueOrigin;
+@property(readonly, nonatomic) _Bool isBirthday;
+@property(readonly, nonatomic) NSString *localizedAppName;
+@property(readonly, nonatomic) CNValueOrigin *valueOrigin;
 @property(readonly, nonatomic) NSString *suggestionFoundInBundleId;
 @property(readonly, nonatomic) SGRecordId *suggestionRecordId;
 @property(readonly, nonatomic, getter=isSuggested) _Bool suggested;

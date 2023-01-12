@@ -6,13 +6,13 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/STUIDateTimePickerCellDelegate-Protocol.h>
+#import <ScreenTimeSettingsUI/PSDateTimePickerCellDelegate-Protocol.h>
 
-@class NSDictionary, NSString, PSSpecifier;
+@class NSDictionary, PSSpecifier;
 @protocol STCustomizeDaysListControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface STCustomizeDaysListController : PSListController <STUIDateTimePickerCellDelegate>
+@interface STCustomizeDaysListController : PSListController <PSDateTimePickerCellDelegate>
 {
     id <STCustomizeDaysListControllerDelegate> _delegate;
     NSDictionary *_timeByDay;
@@ -35,12 +35,6 @@ __attribute__((visibility("hidden")))
 - (id)_localizedDayOrder;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

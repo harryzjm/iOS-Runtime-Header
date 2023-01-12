@@ -5,12 +5,13 @@
 //
 
 #import <LinkPresentation/LPLinkMetadataBackwardCompatibility-Protocol.h>
+#import <LinkPresentation/LPLinkMetadataFallbackIconTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPresentationTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPreviewTransformer-Protocol.h>
 
 @class CNPostalAddress, LPImage, NSNumber, NSString;
 
-@interface LPMapMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataBackwardCompatibility>
+@interface LPMapMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataFallbackIconTransformer, LPLinkMetadataBackwardCompatibility>
 {
     NSString *_name;
     NSString *_address;
@@ -61,6 +62,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (void)populateMetadataForBackwardCompatibility:(id)arg1;
+- (id)fallbackIconForTransformer:(id)arg1;
 - (id)previewImageForTransformer:(id)arg1;
 - (id)previewSummaryForTransformer:(id)arg1;
 - (_Bool)canGeneratePresentationPropertiesForURL:(id)arg1;

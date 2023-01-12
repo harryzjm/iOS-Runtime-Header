@@ -15,7 +15,6 @@
     MISSING_TYPE *$__lazy_storage_$_searchResultsDataSource;
     MISSING_TYPE *mainStore;
     MISSING_TYPE *healthStore;
-    MISSING_TYPE *behaviours;
     MISSING_TYPE *sourceProfile;
     MISSING_TYPE *$__lazy_storage_$_searchResultsController;
     MISSING_TYPE *$__lazy_storage_$_tinkerProfilesController;

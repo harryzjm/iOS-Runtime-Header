@@ -8,7 +8,7 @@
 
 #import <WebKit/NSURLConnectionDelegate-Protocol.h>
 
-@class NSString, NSURLConnection;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface WKCustomProtocolLoader : NSObject <NSURLConnectionDelegate>
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     struct WeakPtr<WebKit::LegacyCustomProtocolManagerProxy, WTF::EmptyCounter> _customProtocolManagerProxy;
     ObjectIdentifier_93c10595 _customProtocolID;
     unsigned long long _storagePolicy;
-    NSURLConnection *_urlConnection;
+    struct RetainPtr<NSURLConnection> _urlConnection;
 }
 
 - (id).cxx_construct;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithLegacyCustomProtocolManagerProxy:(struct LegacyCustomProtocolManagerProxy *)arg1 customProtocolID:(ObjectIdentifier_93c10595)arg2 request:(id)arg3;
+- (id)initWithLegacyCustomProtocolManagerProxy:(void *)arg1 customProtocolID:(ObjectIdentifier_93c10595)arg2 request:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,7 +9,7 @@
 }
 
 - (void)_requestTextureForShadow:(id)arg1 cornerRadius:(double)arg2 screenScale:(double)arg3 targetSize:(struct CGSize)arg4 requestID:(int)arg5;
-- (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_3ab912e1 *)arg2 styles:(CDStruct_506f5052 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
+- (struct _NSRange)requestTexturesForSpritesInRange:(struct _PXGSpriteIndexRange)arg1 geometries:(CDStruct_4f725fed *)arg2 styles:(CDStruct_76b550e2 *)arg3 infos:(CDStruct_9d1ebe49 *)arg4 inLayout:(id)arg5;
 
 @end
 

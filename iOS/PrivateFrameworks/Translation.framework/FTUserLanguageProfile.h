@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_ac224c9d)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_ac224c9d)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *profile_checksum;
 @property(readonly, nonatomic) NSString *profile_blob_version;
 - (void)profile_blob:(CDUnknownBlockType)arg1;

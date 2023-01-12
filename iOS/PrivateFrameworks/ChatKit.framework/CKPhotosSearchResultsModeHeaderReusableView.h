@@ -13,6 +13,7 @@
 @interface CKPhotosSearchResultsModeHeaderReusableView : UICollectionReusableView <CKSearchResultSupplementryCell>
 {
     UISegmentedControl *_control;
+    double _bottomPadding;
     struct UIEdgeInsets marginInsets;
 }
 
@@ -20,6 +21,7 @@
 + (id)reuseIdentifier;
 + (id)supplementaryViewType;
 - (void).cxx_destruct;
+@property(nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property(retain, nonatomic) UISegmentedControl *control; // @synthesize control=_control;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 - (void)_controlIndexDidChange:(id)arg1;

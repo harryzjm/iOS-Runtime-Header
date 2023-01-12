@@ -8,6 +8,8 @@
 
 @protocol SGReverseTemplateJS
 - (void)parseHTML:(NSString *)arg1 reply:(void (^)(SGDOMParserResult *))arg2;
+- (void)privacyAwareLogsForMLExtractions:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *))arg2;
+- (void)mergeSchemas:(NSArray *)arg1 withExpectedSchemas:(NSArray *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)diffSchemas:(NSArray *)arg1 withExpectedSchemas:(NSArray *)arg2 reply:(void (^)(NSDictionary *))arg3;
 - (void)resolveCandidatesForJSDict:(NSDictionary *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)eventClassificationForEntity:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *))arg2;

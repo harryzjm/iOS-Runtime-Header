@@ -30,8 +30,8 @@
 - (void)deamonConnectionInterrupted;
 - (void)deamonConnectionInvalidated;
 - (void)dealloc;
-- (void)clearBeaconWhitelistWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)pushBeaconWhitelist:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)clearBeaconAllowlistWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)pushBeaconAllowlist:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 
 // Remaining properties

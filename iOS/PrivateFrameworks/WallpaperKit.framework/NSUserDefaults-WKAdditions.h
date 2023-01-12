@@ -6,9 +6,12 @@
 
 #import <Foundation/NSUserDefaults.h>
 
+@class NSString;
+
 @interface NSUserDefaults (WKAdditions)
 + (id)wk_wallpaperKitUserDefaults;
 @property(nonatomic, setter=wk_setIgnoreLogicalScreenClassForWallpaperBundle:) _Bool wk_ignoreLogicalScreenClassForWallpaperBundle;
 @property(nonatomic, setter=wk_setIgnoreProductTypesForWallpaperBundle:) _Bool wk_ignoreProductTypesForWallpaperBundle;
+@property(retain, nonatomic, setter=wk_setMigrationLastBuildVersion:) NSString *wk_migrationLastBuildVersion;
 @end
 

@@ -8,6 +8,7 @@
 
 @protocol RTCReportingDeallocNotifierDelegate;
 
+__attribute__((visibility("hidden")))
 @interface RTCReportingDeallocNotifier : NSObject
 {
     id <RTCReportingDeallocNotifierDelegate> _delegate;

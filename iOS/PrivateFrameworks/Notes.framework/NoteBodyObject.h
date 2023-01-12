@@ -9,6 +9,7 @@
 #import <Notes/ICSearchIndexableTarget-Protocol.h>
 
 @class NSData, NSString, NoteObject;
+@protocol ICSearchIndexable;
 
 @interface NoteBodyObject : NSManagedObject <ICSearchIndexableTarget>
 {
@@ -16,7 +17,7 @@
 
 - (id)contentAsPlainTextPreservingNewlines;
 @property(readonly, nonatomic) NSString *contentAsPlainText;
-- (id)targetSearchIndexable;
+@property(readonly, nonatomic) id <ICSearchIndexable> targetSearchIndexable;
 
 // Remaining properties
 @property(retain, nonatomic) NSString *content; // @dynamic content;

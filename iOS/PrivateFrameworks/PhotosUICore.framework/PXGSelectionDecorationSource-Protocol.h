@@ -9,6 +9,7 @@
 @class NSIndexSet, PXGLayout;
 
 @protocol PXGSelectionDecorationSource <PXGLayoutContentSource>
+- (long long)overallSelectionOrderAtSpriteIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (NSIndexSet *)selectedSpriteIndexesInLayout:(PXGLayout *)arg1;
 - (unsigned long long)selectionDecorationAdditionsInLayout:(PXGLayout *)arg1;
 - (long long)selectionDecorationStyleInLayout:(PXGLayout *)arg1;

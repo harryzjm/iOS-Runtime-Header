@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axHasModalView;
+- (_Bool)accessibilityViewIsModal;
 - (_Bool)_accessibilityCanBeConsideredAsMainWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -10,7 +10,7 @@
 
 @interface TSTChangeDescriptor : NSObject
 {
-    _Bool _processedByMasterLayout;
+    _Bool _processedByLayoutEngine;
     int _changeDescriptor;
     NSHashTable *_referenceIdentifiers;
     TSTCellRegion *_cellRegion;
@@ -40,7 +40,7 @@
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 strokeRegion:(id)arg3;
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool processedByMasterLayout; // @synthesize processedByMasterLayout=_processedByMasterLayout;
+@property(nonatomic) _Bool processedByLayoutEngine; // @synthesize processedByLayoutEngine=_processedByLayoutEngine;
 @property(nonatomic) unsigned long long afterCountValue; // @synthesize afterCountValue=_afterCountValue;
 @property(nonatomic) unsigned long long beforeCountValue; // @synthesize beforeCountValue=_beforeCountValue;
 @property(retain, nonatomic) NSSet *annotations; // @synthesize annotations=_annotations;

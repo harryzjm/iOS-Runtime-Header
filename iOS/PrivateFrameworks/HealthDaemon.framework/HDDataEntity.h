@@ -30,7 +30,6 @@
 + (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5 insertHandler:(CDUnknownBlockType)arg6;
 + (_Bool)supportsObjectMerging;
 + (_Bool)_removeObjectWithPersistentID:(long long)arg1 database:(id)arg2 error:(id *)arg3;
-+ (id)_insertBaseDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 error:(id *)arg4;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
 + (id)_insertDataObject:(id)arg1 withProvenanceID:(id)arg2 inDatabase:(id)arg3 error:(id *)arg4;
 + (id)orderingTermForSortDescriptor:(id)arg1;
@@ -49,24 +48,20 @@
 + (id)disambiguatedSQLForProperty:(id)arg1;
 + (id)joinClausesForProperty:(id)arg1;
 + (_Bool)generateSyncObjectsForSession:(id)arg1 syncEntityClass:(Class)arg2 predicate:(id)arg3 syncAnchorRange:(struct HDSyncAnchorRange)arg4 profile:(id)arg5 messageHandler:(id)arg6 error:(id *)arg7;
-+ (id)_objectWithPredicate:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)objectWithID:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)objectWithUUID:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)predicateForObjectsFromLocalSourceWithBundleIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)sourceIDForObjectID:(id)arg1 type:(long long)arg2 profile:(id)arg3 errorOut:(id *)arg4;
 + (id)sourceIDsForObjectsOfType:(long long)arg1 profile:(id)arg2 predicate:(id)arg3 error:(id *)arg4;
 + (id)entityEnumeratorWithProfile:(id)arg1;
++ (id)dataEntityForObject:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 + (id)dataEntityForObject:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (void)deleteDataObjects:(id)arg1 restrictedSourceEntities:(id)arg2 failIfNotFound:(_Bool)arg3 profile:(id)arg4 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
-+ (id)_sourceBundleIdentifierForSourceEntities:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (_Bool)journalObjects:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (void)insertDataObjects:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-+ (_Bool)_validateObjectsToInsert:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (_Bool)replaceExistingObject:(id)arg1 existingObjectID:(id)arg2 replacementObject:(id)arg3 replacementObjectID:(id)arg4 profile:(id)arg5 transaction:(id)arg6 error:(id *)arg7;
-+ (_Bool)_insertDataObject:(id)arg1 insertionContext:(id)arg2 provenanceEntityID:(long long)arg3 profile:(id)arg4 transaction:(id)arg5 insertedEntityID:(id *)arg6 error:(id *)arg7;
 + (long long)shouldInsertObject:(id)arg1 sourceID:(id)arg2 profile:(id)arg3 transaction:(id)arg4 objectToReplace:(id *)arg5 objectID:(id *)arg6 error:(id *)arg7;
-+ (_Bool)_shouldReplaceExistingObject:(id)arg1 withObject:(id)arg2 dataEntityClass:(Class)arg3;
-+ (id)_primitiveInsertDataObject:(id)arg1 insertionContext:(id)arg2 entityClass:(Class)arg3 provenanceEntityID:(long long)arg4 profile:(id)arg5 transaction:(id)arg6 error:(id *)arg7;
++ (id)hk_timeZoneEncodingOptions;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

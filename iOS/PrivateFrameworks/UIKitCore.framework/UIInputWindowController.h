@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _rotationState;
     _Bool _disablePlacementChanges;
     _Bool _suppressUpdateVisibilityConstraints;
+    _Bool _suppressUpdateViewConstraints;
     CDUnknownBlockType _pendingTransitionActivity;
     UIInputWindowControllerHosting *_hosting;
     UIView *_preRotationSnapshot;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
     UIInputViewSet *_transientInputViewSet;
 }
 
++ (_Bool)_isSecureForRemoteViewService;
 @property(nonatomic) _Bool dontDismissReachability; // @synthesize dontDismissReachability=_dontDismissReachability;
 @property(nonatomic) _Bool dontDismissKeyboardOnScrolling; // @synthesize dontDismissKeyboardOnScrolling=_dontDismissKeyboardOnScrolling;
 @property(readonly, nonatomic) _Bool isChangingInputViews; // @synthesize isChangingInputViews=_isChangingInputViews;
@@ -100,6 +102,8 @@ __attribute__((visibility("hidden")))
 - (void)transferPlacementStateToInputWindowController:(id)arg1;
 - (void)setPlacementChangeDisabled:(_Bool)arg1 withPlacement:(id)arg2;
 - (void)setInterfaceAutorotationDisabled:(_Bool)arg1;
+- (void)didEndIndirectSelectionGesture;
+- (void)willBeginIndirectSelectionGesture;
 - (void)keyboardHeightChangeDone;
 - (void)prepareKeyboardHeightChangeWithDelta:(double)arg1 duration:(double)arg2;
 - (void)extendKeyboardBackdropHeight:(double)arg1 withDuration:(double)arg2;
@@ -185,6 +189,13 @@ __attribute__((visibility("hidden")))
 - (void)postValidatedStartNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (void)postStartNotifications:(unsigned long long)arg1 withInfo:(id)arg2;
 - (id)initialNotificationInfo;
+- (void)updateGuideForOffscreenRotationWithDuration:(double)arg1;
+- (void)keyboardMoveWithInfo:(id)arg1;
+- (void)keyboardDismissWithInfo:(id)arg1;
+- (void)keyboardMoveOfType:(unsigned long long)arg1 info:(id)arg2;
+- (void)keyboardIsDocking:(_Bool)arg1;
+- (void)changeGuideAnimationState:(_Bool)arg1;
+- (void)changeGuideAnimationOptions:(unsigned long long)arg1 duration:(double)arg2;
 @property(readonly, nonatomic) _Bool isSnapshotting;
 - (void)didSnapshot;
 - (void)willSnapshot;
@@ -218,10 +229,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *_inputAccessoryView;
 @property(readonly, nonatomic) UIView *_inputAssistantView;
 @property(readonly, nonatomic) UIView *_inputView;
+- (void)hostViewWillenterForeground;
+- (void)hostViewDidEnterBackground;
 - (void)hostViewWillDisappear;
 - (void)didSuspend:(id)arg1;
 - (void)willResume:(id)arg1;
 - (void)updateInputAssistantViewForInputViewSet:(id)arg1;
+- (void)prepareForInputAssistant:(id)arg1 animated:(_Bool)arg2;
 - (void)setInputViewSet:(id)arg1 forKeyboardAssistantBar:(id)arg2;
 - (void)registerPowerLogEvent:(_Bool)arg1;
 - (void)setExclusiveTouch:(_Bool)arg1;
@@ -229,11 +243,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
 - (void)loadView;
-- (void)_didChangeDeepestUnambiguousResponder;
+- (void)_didChangeDeepestActionResponder;
 - (id)inputSetContainerView;
 - (void)didReceiveMemoryWarning;
 - (void)_updatePlacementWithPlacement:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (_Bool)_isSecure;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

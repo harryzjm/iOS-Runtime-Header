@@ -9,13 +9,14 @@
 
 @interface TSCH3DFramebufferTransformPipeline
 {
-    id <TSCH3DPipelineLinkable> mSource;
-    TSCH3DFramebuffer *mTarget;
-    TSCH3DFramebuffer *mInput;
+    id <TSCH3DPipelineLinkable> _source;
+    TSCH3DFramebuffer *_target;
+    TSCH3DFramebuffer *_input;
 }
 
-@property(retain, nonatomic) TSCH3DFramebuffer *target; // @synthesize target=mTarget;
-@property(retain, nonatomic) id <TSCH3DPipelineLinkable> source; // @synthesize source=mSource;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DFramebuffer *target; // @synthesize target=_target;
+@property(retain, nonatomic) id <TSCH3DPipelineLinkable> source; // @synthesize source=_source;
 - (_Bool)run;
 - (_Bool)prepareFramebuffer;
 - (void)loadSource;

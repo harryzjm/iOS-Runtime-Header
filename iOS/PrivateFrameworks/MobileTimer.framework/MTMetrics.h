@@ -22,6 +22,7 @@
 - (void)logTimerDismissed;
 - (void)logTimerUpdated;
 - (void)logTimerDeleted;
+- (void)logMultipleTimersAdded:(id)arg1;
 - (void)logTimerAdded;
 - (void)logAlarmDismissAction:(unsigned long long)arg1;
 - (void)logAlarmSnoozeAction:(unsigned long long)arg1;

@@ -10,23 +10,20 @@
 
 @class _MRVolumeControlAvailabilityProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRGetVolumeControlCapabilitiesResultMessageProtobuf : PBCodable <NSCopying>
 {
     _MRVolumeControlAvailabilityProtobuf *_capabilities;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRVolumeControlAvailabilityProtobuf *capabilities; // @synthesize capabilities=_capabilities;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasCapabilities;
 
 @end
 

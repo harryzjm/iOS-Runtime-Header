@@ -5,6 +5,7 @@
 //
 
 @interface (null) (HealthExperience)
+- (void)cloudSyncObserver:(id)arg1 didFailToPopulateStatusWithError:(id)arg2;
 - (void)cloudSyncObserverStatusUpdated:(id)arg1 status:(id)arg2;
 - (void)cloudSyncObserver:(id)arg1 syncDidStartWithProgress:(id)arg2;
 - (void)cloudSyncObserver:(id)arg1 syncFailedWithError:(id)arg2;

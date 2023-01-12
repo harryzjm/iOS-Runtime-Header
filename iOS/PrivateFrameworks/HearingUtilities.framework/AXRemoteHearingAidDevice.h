@@ -27,6 +27,9 @@
     _Bool _supportsBinauralStreaming;
     _Bool _supportsCombinedPresets;
     _Bool _supportsCombinedVolumes;
+    _Bool _requiresBinauralStreaming;
+    _Bool _requiresCombinedPresets;
+    _Bool _requiresCombinedVolumes;
     short _leftMicrophoneVolumeSteps;
     short _rightMicrophoneVolumeSteps;
     short _leftStreamVolumeSteps;
@@ -88,6 +91,9 @@
 @property(retain, nonatomic) AXHearingAidMode *leftSelectedProgram; // @synthesize leftSelectedProgram=_leftSelectedProgram;
 @property(copy, nonatomic) NSArray *leftPrograms; // @synthesize leftPrograms=_leftPrograms;
 @property(copy, nonatomic) NSArray *rightPrograms; // @synthesize rightPrograms=_rightPrograms;
+@property(nonatomic) _Bool requiresCombinedVolumes; // @synthesize requiresCombinedVolumes=_requiresCombinedVolumes;
+@property(nonatomic) _Bool requiresCombinedPresets; // @synthesize requiresCombinedPresets=_requiresCombinedPresets;
+@property(nonatomic) _Bool requiresBinauralStreaming; // @synthesize requiresBinauralStreaming=_requiresBinauralStreaming;
 @property(nonatomic) _Bool supportsCombinedVolumes; // @synthesize supportsCombinedVolumes=_supportsCombinedVolumes;
 @property(nonatomic) _Bool supportsCombinedPresets; // @synthesize supportsCombinedPresets=_supportsCombinedPresets;
 @property(nonatomic) _Bool supportsBinauralStreaming; // @synthesize supportsBinauralStreaming=_supportsBinauralStreaming;

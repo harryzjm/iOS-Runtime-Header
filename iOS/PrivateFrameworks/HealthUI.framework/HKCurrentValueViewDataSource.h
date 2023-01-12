@@ -53,8 +53,8 @@
 - (id)leftMarginViewWithOrientation:(long long)arg1;
 - (id)dateViewWithOrientation:(long long)arg1;
 - (id)_delegateValueForSelectedRangeData:(id)arg1;
-- (id)_delegateTitleForSelectedRangeData:(id)arg1;
-- (id)_annotationLabelsFromRangeData:(id)arg1;
+- (id)_delegateTitleForSelectedRangeData:(id)arg1 displayType:(id)arg2;
+- (id)_annotationLabelsFromRangeData:(id)arg1 displayType:(id)arg2;
 - (_Bool)_pendingDataForGraphView:(id)arg1;
 - (id)_delegateValueStringForGraphView:(id)arg1 timeScope:(long long)arg2;
 - (id)_dateIntervalStringForGraphView:(id)arg1 timeScope:(long long)arg2;

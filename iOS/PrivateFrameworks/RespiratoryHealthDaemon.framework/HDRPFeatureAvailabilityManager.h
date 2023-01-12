@@ -8,7 +8,7 @@
 
 #import <RespiratoryHealthDaemon/HDFeatureAvailabilityExtension-Protocol.h>
 
-@class HDFeatureAvailabilityManager, HDProfile, NSDictionary, NSString, NSUUID;
+@class HDFeatureAvailabilityManager, HDProfile, NSString;
 @protocol HDPairedDeviceCapabilityProviding, OS_os_log;
 
 __attribute__((visibility("hidden")))
@@ -16,44 +16,41 @@ __attribute__((visibility("hidden")))
 {
     HDProfile *_profile;
     NSString *_featureIdentifier;
-    long long _currentOnboardingVersion;
     HDFeatureAvailabilityManager *_manager;
     id <HDPairedDeviceCapabilityProviding> _capabilityProvider;
-    NSDictionary *_supportedCountries;
-    NSUUID *_pairedDeviceCapability;
     NSObject<OS_os_log> *_loggingCategory;
     _Bool _skipHardwareCheck;
-    long long __unitTest_currentOnboardingVersionOverride;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long _unitTest_currentOnboardingVersionOverride; // @synthesize _unitTest_currentOnboardingVersionOverride=__unitTest_currentOnboardingVersionOverride;
-- (id)_phoneAvailabilityForDevice:(id)arg1;
-- (id)_watchAvailabilityForDevice:(id)arg1;
-- (long long)_currentOnboardingVersion;
-- (id)_onboardingCompletionsForLowestVersionWithError:(id *)arg1;
-- (id)_onboardingCompletionsForHighestVersionWithError:(id *)arg1;
+@property(nonatomic) long long currentOnboardingVersion;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1 queue:(id)arg2;
-- (id)deviceForPairingID:(id)arg1;
-- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeFeatureSettingValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setFeatureSettingNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingData:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)saveOnboardingCompletion:(id)arg1 settings:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 countryCodeProvenance:(long long)arg2 date:(id)arg3 settings:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_resetOnboarding;
 - (void)resetOnboardingWithCompletion:(CDUnknownBlockType)arg1;
-- (id)isFeatureCapabilitySupportedOnDevice:(id)arg1 error:(id *)arg2;
+- (id)regionAvailabilityWithError:(id *)arg1;
+- (id)featureAvailabilityRequirementsWithError:(id *)arg1;
+- (id)pairedFeatureAttributesWithError:(id *)arg1;
 - (id)isFeatureCapabilitySupportedOnActivePairedDeviceWithError:(id *)arg1;
 - (id)isCurrentOnboardingVersionCompletedWithError:(id *)arg1;
 - (void)isCurrentOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
 - (id)highestOnboardingVersionCompletedWithError:(id *)arg1;
+- (void)getFeatureOnboardingRecordWithCompletion:(CDUnknownBlockType)arg1;
+- (id)featureOnboardingRecordWithError:(id *)arg1;
 - (id)earliestDateLowestOnboardingVersionCompletedWithError:(id *)arg1;
-- (id)onboardedCountryCodeSupportedStateForDevice:(id)arg1 error:(id *)arg2;
 - (id)onboardedCountryCodeSupportedStateWithError:(id *)arg1;
-- (long long)_determineSupportedStateWithOnboardingCompletions:(id)arg1 device:(id)arg2;
-- (id)canCompleteOnboardingForCountryCode:(id)arg1 device:(id)arg2 error:(id *)arg3;
+- (id)onboardingEligibilityForCountryCode:(id)arg1 error:(id *)arg2;
 - (id)canCompleteOnboardingForCountryCode:(id)arg1 error:(id *)arg2;
 - (id)description;
 @property(readonly, copy, nonatomic) NSString *featureIdentifier;
-- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 supportedCountries:(id)arg4 pairedDeviceCapability:(id)arg5 loggingCategory:(id)arg6 skipHardwareCheck:(_Bool)arg7 pairedDeviceCapabilityProvider:(id)arg8;
-- (id)initWithProfile:(id)arg1 supportedCountries:(id)arg2 pairedDeviceCapabilityProvider:(id)arg3;
+- (id)initWithProfile:(id)arg1 featureIdentifier:(id)arg2 currentOnboardingVersion:(long long)arg3 regionAvailabilityProvider:(id)arg4 pairedDeviceCapability:(id)arg5 loggingCategory:(id)arg6 skipHardwareCheck:(_Bool)arg7 pairedDeviceCapabilityProvider:(id)arg8 remoteAvailabilityProvider:(id)arg9;
+- (id)initWithProfile:(id)arg1 currentOnboardingVersion:(long long)arg2 regionAvailabilityProvider:(id)arg3 pairedDeviceCapabilityProvider:(id)arg4 remoteAvailabilityProvider:(id)arg5;
 - (id)initWithProfile:(id)arg1;
 
 @end

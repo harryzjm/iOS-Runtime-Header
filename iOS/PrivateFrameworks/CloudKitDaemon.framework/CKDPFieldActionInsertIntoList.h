@@ -10,7 +10,6 @@
 
 @class CKDPListPosition, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPFieldActionInsertIntoList : PBCodable <NSCopying>
 {
     CKDPListPosition *_position;

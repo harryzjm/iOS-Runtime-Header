@@ -6,7 +6,7 @@
 
 #import <ChatKit/QLPreviewControllerConformingDelegate-Protocol.h>
 
-@class CKInvisibleInkEffectController, CKQLPreviewController, NSArray;
+@class CKChatItem, CKInvisibleInkEffectController, CKMediaObject, CKMessagePartChatItem, CKQLPreviewController, NSArray;
 @protocol QLPreviewControllerConforming;
 
 @protocol CKQLPreviewControllerDelegate <QLPreviewControllerConformingDelegate>
@@ -14,6 +14,10 @@
 - (CKInvisibleInkEffectController *)invisibleInkEffectControllerForPreviewController:(CKQLPreviewController *)arg1;
 
 @optional
+- (void)sendMessageAcknowledgment:(long long)arg1 chatItem:(CKMessagePartChatItem *)arg2 previewController:(CKQLPreviewController *)arg3;
+- (_Bool)previewControllerIsInGroupConversation:(CKQLPreviewController *)arg1;
+- (CKChatItem *)chatItemForMediaObject:(CKMediaObject *)arg1 previewController:(CKQLPreviewController *)arg2;
+- (void)replyButtonTappedForMediaObject:(CKMediaObject *)arg1 previewController:(CKQLPreviewController *)arg2;
 - (NSArray *)previewActionsForPreviewController:(CKQLPreviewController *)arg1;
 @end
 

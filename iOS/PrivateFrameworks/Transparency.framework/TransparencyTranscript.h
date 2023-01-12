@@ -11,11 +11,11 @@
 @interface TransparencyTranscript : NSObject
 {
     NSString *_context;
-    NSMutableArray *_events;
+    NSMutableArray *__events;
 }
 
 - (void).cxx_destruct;
-@property(retain) NSMutableArray *events; // @synthesize events=_events;
+@property(retain) NSMutableArray *_events; // @synthesize _events=__events;
 @property(retain) NSString *context; // @synthesize context=_context;
 - (id)serialize;
 - (void)stopEventWithFailure:(id)arg1 error:(id)arg2;

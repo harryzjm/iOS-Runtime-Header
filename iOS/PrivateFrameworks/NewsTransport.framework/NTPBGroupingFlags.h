@@ -13,7 +13,11 @@
     _Bool _isEligibleForGrouping;
     _Bool _isEligibleForGroupingIfFavorited;
     _Bool _isHidden;
-    CDStruct_d00ad9e3 _has;
+    struct {
+        unsigned int isEligibleForGrouping:1;
+        unsigned int isEligibleForGroupingIfFavorited:1;
+        unsigned int isHidden:1;
+    } _has;
 }
 
 @property(nonatomic) _Bool isEligibleForGroupingIfFavorited; // @synthesize isEligibleForGroupingIfFavorited=_isEligibleForGroupingIfFavorited;

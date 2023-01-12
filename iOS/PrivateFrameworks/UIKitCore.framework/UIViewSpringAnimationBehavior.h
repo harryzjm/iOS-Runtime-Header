@@ -20,6 +20,7 @@
     double _inertialProjectionDeceleration;
 }
 
++ (id)behaviorWithDampingRatio:(double)arg1 response:(double)arg2;
 @property(nonatomic) double inertialProjectionDeceleration; // @synthesize inertialProjectionDeceleration=_inertialProjectionDeceleration;
 @property(nonatomic) double inertialTargetSmoothing; // @synthesize inertialTargetSmoothing=_inertialTargetSmoothing;
 - (CDStruct_6c8af1d9)parametersForTransitionFromState:(int)arg1 toState:(int)arg2;

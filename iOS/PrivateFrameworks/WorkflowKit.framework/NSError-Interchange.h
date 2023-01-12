@@ -14,7 +14,8 @@
 + (id)mtl_modelErrorWithException:(id)arg1;
 + (id)sharingMixedMDMContentErrorWithActionName:(id)arg1;
 - (id)interchangeErrorDictionary;
+- (_Bool)wf_isUnsupportedEnvironmentError;
 - (id)wf_localizedErrorStringWithActionName:(id)arg1;
-- (_Bool)wf_isUnsupportedOnPlatformError;
+@property(readonly, nonatomic) _Bool wf_isUnsupportedOnPlatformError;
 @end
 

@@ -14,6 +14,7 @@
 
 @interface ASDWatchAppMetadata : NSObject <ASDAppMetadata, NSCopying, NSSecureCoding>
 {
+    _Bool _userInitiated;
     _Bool _skipIfInstalled;
     NSString *_altDSID;
     NSString *_appleID;
@@ -31,6 +32,7 @@
 + (id)metadataFromStoreMetadata:(id)arg1;
 - (void).cxx_destruct;
 @property _Bool skipIfInstalled; // @synthesize skipIfInstalled=_skipIfInstalled;
+@property(getter=isUserInitiated) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(copy) NSString *redownloadParams; // @synthesize redownloadParams=_redownloadParams;
 @property(copy) NSNumber *purchaserID; // @synthesize purchaserID=_purchaserID;
 @property(copy) NSString *previousVariantID; // @synthesize previousVariantID=_previousVariantID;

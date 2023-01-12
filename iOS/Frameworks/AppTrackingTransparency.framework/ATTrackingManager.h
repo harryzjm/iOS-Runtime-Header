@@ -11,9 +11,15 @@
 }
 
 + (void)requestTrackingAuthorizationWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (_Bool)isApplicationExtension;
++ (_Bool)applicationStateActive;
 + (unsigned long long)trackingAuthorizationStatus;
++ (unsigned long long)_trackingAuthorizationStatus;
++ (void)_sendTrackingStatusAnalytic:(unsigned long long)arg1 prompted:(_Bool)arg2 deniedReason:(unsigned long long)arg3;
++ (void)_sendRequestTrackingAnalytic:(unsigned long long)arg1 prompted:(_Bool)arg2 deniedReason:(unsigned long long)arg3;
 + (_Bool)_isCrossAppTrackingAllowed;
 + (_Bool)_userAllowedToChangeSettings;
++ (_Bool)_restrictionProfileInstalled;
 + (_Bool)_applicationHasDisqualifyingEntitlement;
 
 @end

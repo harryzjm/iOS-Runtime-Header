@@ -10,7 +10,7 @@
 
 @interface GEOAutocompleteSessionData : NSObject
 {
-    struct GEOSessionID _analyticsShortSessionId;
+    double _analyticsShortSessionCreateTime;
     GEOPDAutocompleteSessionData *_autocompleteSessionData;
 }
 

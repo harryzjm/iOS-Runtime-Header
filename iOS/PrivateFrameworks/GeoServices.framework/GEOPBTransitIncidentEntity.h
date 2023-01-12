@@ -22,27 +22,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
-@property(retain, nonatomic) GEOPBTransitIncidentEntityFilter *filter;
-@property(readonly, nonatomic) _Bool hasFilter;
-@property(nonatomic) _Bool hasAffectedMuid;
-@property(nonatomic) unsigned long long affectedMuid;
 @property(readonly, nonatomic) NSSet *nextStopIDs;
 @property(readonly, nonatomic) _Bool hasNextStopIDs;
 @property(readonly, nonatomic) unsigned long long muid;

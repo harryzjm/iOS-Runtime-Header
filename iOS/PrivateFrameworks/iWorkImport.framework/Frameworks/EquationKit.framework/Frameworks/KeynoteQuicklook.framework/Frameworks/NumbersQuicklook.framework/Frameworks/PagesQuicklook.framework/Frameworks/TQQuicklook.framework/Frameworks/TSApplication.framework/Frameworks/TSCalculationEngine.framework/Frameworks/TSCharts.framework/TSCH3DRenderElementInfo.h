@@ -24,6 +24,7 @@
 
 + (id)infoWithPipeline:(id)arg1 properties:(id)arg2 series:(id)arg3 index:(tvec2_3b141483)arg4 useBoundsGeometry:(_Bool)arg5 twoPasses:(_Bool)arg6 transparent:(_Bool)arg7 geometryOnly:(_Bool)arg8;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool geometryOnly; // @synthesize geometryOnly=_geometryOnly;
 @property(nonatomic) _Bool transparent; // @synthesize transparent=_transparent;
 @property(nonatomic) _Bool twoPasses; // @synthesize twoPasses=_twoPasses;
@@ -34,7 +35,6 @@
 @property(readonly, retain, nonatomic) TSCH3DSceneRenderPipeline *pipeline; // @synthesize pipeline=_pipeline;
 @property(readonly, retain, nonatomic) TSCH3DRenderProcessor *processor;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithPipeline:(id)arg1 properties:(id)arg2 series:(id)arg3 index:(tvec2_3b141483)arg4 useBoundsGeometry:(_Bool)arg5 twoPasses:(_Bool)arg6 transparent:(_Bool)arg7 geometryOnly:(_Bool)arg8;
 
 @end

@@ -12,7 +12,7 @@
 
 @interface TSCHChartGridDurationValue : NSObject <TSCHChartGridValue>
 {
-    double mDuration;
+    double _duration;
 }
 
 + (id)durationValueWithDouble:(double)arg1;

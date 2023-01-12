@@ -12,18 +12,18 @@
 
 @interface TSCH3DShaderRawStatement : NSObject <TSCH3DShaderStatement>
 {
-    NSString *mString;
-    struct TSCH3DShaderType mLinkageType;
+    NSString *_string;
+    struct TSCH3DShaderType _linkageType;
 }
 
 + (id)statementWithString:(id)arg1 linkageType:(struct TSCH3DShaderType)arg2;
 - (id).cxx_construct;
-@property(nonatomic) struct TSCH3DShaderType linkageType; // @synthesize linkageType=mLinkageType;
-@property(readonly, nonatomic) NSString *string; // @synthesize string=mString;
+- (void).cxx_destruct;
+@property(nonatomic) struct TSCH3DShaderType linkageType; // @synthesize linkageType=_linkageType;
+@property(readonly, nonatomic) NSString *string; // @synthesize string=_string;
 - (void)setGeneratedForType:(struct TSCH3DShaderType)arg1;
 - (_Bool)isLinked;
 - (id)resolve;
-- (void)dealloc;
 - (id)initWithString:(id)arg1 linkageType:(struct TSCH3DShaderType)arg2;
 
 // Remaining properties

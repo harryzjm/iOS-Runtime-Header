@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSTextStorage.h>
+#import <UIFoundation/NSTextStorage.h>
 
 #import <NotesUI/TTMergeableStringDelegate-Protocol.h>
 #import <NotesUI/TTTextUndoTarget-Protocol.h>
 
-@class NSArray, NSAttributedString, NSMutableArray, NSMutableAttributedString, NSObject, NSString, NSUndoManager, TTMergeableAttributedString, TTMergeableStringUndoGroup, TTMergeableStringVersionedDocument;
-@protocol TTTextStorageStyler, TTTextUndoTarget;
+@class NSArray, NSDate, NSMutableArray, NSMutableAttributedString, NSNumber, NSObject, NSString, NSUUID, NSUndoManager, TTMergeableAttributedString, TTMergeableStringUndoGroup, TTMergeableStringVersionedDocument;
+@protocol TTTextStorageDelegate, TTTextStorageStyler, TTTextUndoTarget;
 
 @interface TTTextStorage : NSTextStorage <TTMergeableStringDelegate, TTTextUndoTarget>
 {
@@ -27,6 +27,7 @@
     _Bool _filterSubstringAttributes;
     _Bool _filterPastedAttributes;
     _Bool _filterSubstringAttributesForPlainText;
+    _Bool _isFixing;
     _Bool _disableUndoCoalesceBreaking;
     _Bool _isDictating;
     _Bool _isPerformingAccessibilityUndoableTextInsertion;
@@ -42,7 +43,8 @@
     _Bool _isChangingSelectionByGestures;
     _Bool _isApplyingUndoCommand;
     _Bool _isEndingEditing;
-    _Bool _isFixing;
+    _Bool _isZombie;
+    _Bool _isEditingTemporaryAttributes;
     _Bool _pendingFixupAfterEditing;
     _Bool _delayedFixupAfterEditingWantsUndoCommand;
     NSUndoManager *_undoManager;
@@ -56,29 +58,38 @@
     unsigned long long _editingCount;
     unsigned long long _ttEditedMask;
     long long _ttChangeInLength;
+    long long _skipTimestampUpdatesCount;
+    NSDate *_now;
+    NSNumber *_currentTimestamp;
     struct _NSRange _beforeEndEditedRange;
-    struct _NSRange _lastUndoEditRange;
     struct _NSRange _ttEditedRange;
+    struct _NSRange _lastUndoEditRange;
 }
 
 + (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(_Bool)arg3 forStandardizedText:(_Bool)arg4 fixAttachments:(_Bool)arg5 insertListMarkers:(_Bool)arg6;
 + (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(_Bool)arg2 forStandardizedText:(_Bool)arg3;
 + (id)removeTextAttachmentsForAttributedString:(id)arg1 translateTTFont:(_Bool)arg2;
 + (id)removeDataDetectorLinksForAttributedString:(id)arg1;
-+ (id)standardizedAttributedStringFromAttributedString:(id)arg1 withStyler:(id)arg2 fixAttachments:(_Bool)arg3 translateTTFont:(_Bool)arg4;
++ (id)standardizedAttributedStringFromAttributedString:(id)arg1 withStyler:(id)arg2 fixAttachments:(_Bool)arg3 translateTTFont:(_Bool)arg4 context:(id)arg5;
 + (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 zoomFactor:(double)arg2;
 + (id)bulletTextAttributesWithTextFont:(id)arg1 paragraphStyle:(id)arg2 zoomFactor:(double)arg3;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSNumber *currentTimestamp; // @synthesize currentTimestamp=_currentTimestamp;
+@property(nonatomic) struct _NSRange lastUndoEditRange; // @synthesize lastUndoEditRange=_lastUndoEditRange;
+@property(nonatomic) _Bool previouslyHadMarkedText; // @synthesize previouslyHadMarkedText=_previouslyHadMarkedText;
+@property(nonatomic) _Bool directlyEditing; // @synthesize directlyEditing=_directlyEditing;
+@property(copy, nonatomic) NSDate *now; // @synthesize now=_now;
+@property(nonatomic) long long skipTimestampUpdatesCount; // @synthesize skipTimestampUpdatesCount=_skipTimestampUpdatesCount;
 @property(nonatomic) _Bool delayedFixupAfterEditingWantsUndoCommand; // @synthesize delayedFixupAfterEditingWantsUndoCommand=_delayedFixupAfterEditingWantsUndoCommand;
 @property(nonatomic) long long ttChangeInLength; // @synthesize ttChangeInLength=_ttChangeInLength;
 @property(nonatomic) unsigned long long ttEditedMask; // @synthesize ttEditedMask=_ttEditedMask;
 @property(nonatomic) struct _NSRange ttEditedRange; // @synthesize ttEditedRange=_ttEditedRange;
 @property(nonatomic) _Bool pendingFixupAfterEditing; // @synthesize pendingFixupAfterEditing=_pendingFixupAfterEditing;
-@property(nonatomic) _Bool isFixing; // @synthesize isFixing=_isFixing;
+@property(nonatomic) _Bool isEditingTemporaryAttributes; // @synthesize isEditingTemporaryAttributes=_isEditingTemporaryAttributes;
 @property(nonatomic) unsigned long long editingCount; // @synthesize editingCount=_editingCount;
-@property(nonatomic) struct _NSRange lastUndoEditRange; // @synthesize lastUndoEditRange=_lastUndoEditRange;
 @property(retain, nonatomic) TTMergeableStringUndoGroup *coalescingUndoGroup; // @synthesize coalescingUndoGroup=_coalescingUndoGroup;
 @property(retain, nonatomic) NSMutableArray *undoCommands; // @synthesize undoCommands=_undoCommands;
+@property(nonatomic) _Bool isZombie; // @synthesize isZombie=_isZombie;
 @property(nonatomic) _Bool isEndingEditing; // @synthesize isEndingEditing=_isEndingEditing;
 @property(nonatomic) _Bool isApplyingUndoCommand; // @synthesize isApplyingUndoCommand=_isApplyingUndoCommand;
 @property(nonatomic) _Bool isChangingSelectionByGestures; // @synthesize isChangingSelectionByGestures=_isChangingSelectionByGestures;
@@ -94,6 +105,7 @@
 @property(nonatomic) _Bool isPerformingAccessibilityUndoableTextInsertion; // @synthesize isPerformingAccessibilityUndoableTextInsertion=_isPerformingAccessibilityUndoableTextInsertion;
 @property(nonatomic) _Bool isDictating; // @synthesize isDictating=_isDictating;
 @property(nonatomic) _Bool disableUndoCoalesceBreaking; // @synthesize disableUndoCoalesceBreaking=_disableUndoCoalesceBreaking;
+@property(nonatomic) _Bool isFixing; // @synthesize isFixing=_isFixing;
 @property(nonatomic) _Bool filterSubstringAttributesForPlainText; // @synthesize filterSubstringAttributesForPlainText=_filterSubstringAttributesForPlainText;
 @property(nonatomic) _Bool filterPastedAttributes; // @synthesize filterPastedAttributes=_filterPastedAttributes;
 @property(nonatomic) _Bool filterSubstringAttributes; // @synthesize filterSubstringAttributes=_filterSubstringAttributes;
@@ -111,18 +123,13 @@
 @property(nonatomic) _Bool wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
 @property __weak NSObject<TTTextUndoTarget> *overrideUndoTarget; // @synthesize overrideUndoTarget=_overrideUndoTarget;
 @property(retain, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
-@property(readonly, nonatomic) NSAttributedString *_icaxUnfilteredAttributedString;
-- (struct _NSRange)safeCharacterRangeForRange:(struct _NSRange)arg1;
-- (id)attributedSubstringFromRange:(struct _NSRange)arg1;
-- (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1;
-- (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1 insertListMarkers:(_Bool)arg2;
-- (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
-- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1 styler:(id)arg2;
-- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1;
-- (id)standardizedAttributedStringFixingTextAttachments;
+- (void)setTimestamp:(id)arg1 range:(struct _NSRange)arg2;
+- (void)endSkippingTimestampUpdates;
+- (void)beginSkippingTimestampUpdates;
+@property(readonly, nonatomic) _Bool isSkippingTimestampUpdates;
+@property(readonly, nonatomic) _Bool wantsTimestampUpdates;
 - (void)styleTextInRange:(struct _NSRange)arg1;
 - (_Bool)isEditing;
-@property(readonly, nonatomic) _Bool isEditingTemporaryAttributes;
 - (void)endTemporaryAttributeEditing;
 - (void)beginTemporaryAttributeEditing;
 - (void)endTemporaryAttributes;
@@ -134,16 +141,8 @@
 - (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2 range:(struct _NSRange)arg3;
 - (_Bool)_shouldSetOriginalFontAttribute;
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
-- (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
-- (void)replaceCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2;
 - (id)correctParagraphStyleReuseForRange:(struct _NSRange)arg1 withNewAttributedString:(id)arg2;
-- (void)convertNSTablesToTabs:(id)arg1;
-- (_Bool)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
-- (_Bool)isDeletingContentAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
-- (_Bool)textViewHasMarkedText:(id)arg1;
-- (_Bool)isEditingOrConvertingMarkedText:(_Bool)arg1;
-- (_Bool)isDeletingDictationAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
-- (void)preReplaceCharactersInRange:(struct _NSRange)arg1 withStringLength:(unsigned long long)arg2;
+- (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (void)replaceWithDocument:(id)arg1;
 - (unsigned long long)mergeWithDocument:(id)arg1;
@@ -157,7 +156,11 @@
 - (void)coordinateAccess:(CDUnknownBlockType)arg1;
 - (void)coordinateEditing:(CDUnknownBlockType)arg1;
 - (void)coordinateReading:(CDUnknownBlockType)arg1;
-- (id)mergeableStringReplicaUUIDAtIndex:(unsigned long long)arg1;
+- (void)redactAuthorAttributions;
+- (id)edits;
+- (id)editsInRange:(struct _NSRange)arg1;
+- (void)enumerateEditsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)editAtIndex:(unsigned long long)arg1;
 - (_Bool)mergeableStringIsEqualAfterSerialization:(id)arg1;
 - (void)endEditing;
 - (void)fixupAfterEditingDelayedToEndOfRunLoop;
@@ -181,11 +184,29 @@
 - (void)resetTTEdits;
 - (void)restoreAttributedString:(id)arg1;
 @property(readonly, nonatomic) _Bool hasAnyTextViewWithDarkAppearance;
-- (id)initWithAttributedString:(id)arg1 replicaID:(id)arg2 sourceZoomController:(id)arg3 keepSourceZoomController:(_Bool)arg4;
-- (id)initWithAttributedString:(id)arg1 replicaID:(id)arg2;
+@property(readonly, copy, nonatomic) NSUUID *replicaID;
+- (id)initWithData:(id)arg1 replicaID:(id)arg2;
 - (id)initWithDocument:(id)arg1;
-- (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
-- (id)initWithReplicaID:(id)arg1;
+- (id)_icaxUnfilteredAttributedString;
+- (struct _NSRange)safeCharacterRangeForRange:(struct _NSRange)arg1;
+- (id)attributedSubstringFromRange:(struct _NSRange)arg1;
+- (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1;
+- (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1 insertListMarkers:(_Bool)arg2;
+- (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1 styler:(id)arg2 context:(id)arg3;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1 context:(id)arg2;
+- (id)standardizedAttributedStringFixingTextAttachmentsInContext:(id)arg1;
+- (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
+- (void)replaceCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2;
+- (void)convertNSTablesToTabs:(id)arg1;
+- (_Bool)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
+- (_Bool)isDeletingContentAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
+- (_Bool)textViewHasMarkedText:(id)arg1;
+- (_Bool)isEditingOrConvertingMarkedText:(_Bool)arg1;
+- (_Bool)isDeletingDictationAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
+- (void)preReplaceCharactersInRange:(struct _NSRange)arg1 withStringLength:(unsigned long long)arg2;
+- (id)initWithAttributedString:(id)arg1 replicaID:(id)arg2 sourceZoomController:(id)arg3 keepSourceZoomController:(_Bool)arg4 existingStyler:(id)arg5;
+- (id)initWithAttributedString:(id)arg1 replicaID:(id)arg2;
 - (id)itemProviderForRange:(struct _NSRange)arg1 andNote:(id)arg2;
 - (id)filteredAttributedStringForUTI:(id)arg1 range:(struct _NSRange)arg2;
 - (id)copyDataForUTI:(id)arg1 range:(struct _NSRange)arg2 persistenceHelper:(id)arg3;
@@ -193,6 +214,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <TTTextStorageDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

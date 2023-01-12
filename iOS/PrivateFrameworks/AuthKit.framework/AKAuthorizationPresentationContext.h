@@ -13,6 +13,7 @@
 
 @interface AKAuthorizationPresentationContext : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _signInAllowsPCSKeyAccess;
     NSString *_bundleID;
     NSString *_localizedAppName;
     NSString *_informativeText;
@@ -30,6 +31,7 @@
 @property(copy, nonatomic) NSArray *loginChoices; // @synthesize loginChoices=_loginChoices;
 @property(retain, nonatomic) AKUserInformation *userInformation; // @synthesize userInformation=_userInformation;
 @property(retain, nonatomic) AKCredentialRequestContext *credentialRequestContext; // @synthesize credentialRequestContext=_credentialRequestContext;
+@property(nonatomic) _Bool signInAllowsPCSKeyAccess; // @synthesize signInAllowsPCSKeyAccess=_signInAllowsPCSKeyAccess;
 @property(readonly, copy, nonatomic) NSNumber *iconScale; // @synthesize iconScale=_iconScale;
 @property(readonly, copy, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
 @property(readonly, copy, nonatomic) NSString *iconName; // @synthesize iconName=_iconName;
@@ -42,6 +44,7 @@
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithUsername:(id)arg1;
 - (id)initWithContext:(id)arg1 client:(id)arg2;
 - (id)initWithContext:(id)arg1 bundleID:(id)arg2;
 

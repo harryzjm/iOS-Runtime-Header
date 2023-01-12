@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class LTSchemaTask, NSData, NSString;
 
-@interface LTSchemaSafariFeedbackEvent : PBCodable
+@interface LTSchemaSafariFeedbackEvent
 {
     LTSchemaTask *_task;
     NSString *_sessionID;

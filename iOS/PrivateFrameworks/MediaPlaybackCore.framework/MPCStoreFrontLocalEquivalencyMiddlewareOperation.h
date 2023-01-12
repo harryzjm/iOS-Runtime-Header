@@ -11,6 +11,7 @@
 
 @class MPCPlayerRequest, MPCStoreFrontLocalEquivalencyMiddleware, MPModelGenericObject, NSArray, NSError, NSIndexPath, NSMapTable, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCStoreFrontLocalEquivalencyMiddlewareOperation : MPAsyncOperation <MPCStoreFrontLocalEquivalencyMiddlewarePlayingItemProviding, MPMiddlewareAutomaticDependencyOperation>
 {
     NSMapTable *_inputOperations;

@@ -8,7 +8,7 @@
 {
 }
 
-+ (void)setLightingPackageEffectState:(const struct LightingPackageShaderEffectState *)arg1 effectsStates:(id)arg2;
++ (void)setLightingPackageEffectState:(const void *)arg1 effectsStates:(id)arg2;
 - (void)injectCommonShaderInto:(id)arg1 context:(id)arg2;
 
 @end

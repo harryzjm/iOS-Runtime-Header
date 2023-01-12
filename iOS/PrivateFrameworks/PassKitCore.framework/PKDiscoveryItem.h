@@ -12,6 +12,8 @@
 @interface PKDiscoveryItem <NSSecureCoding, NSCopying>
 {
     _Bool _shouldBadge;
+    _Bool _entitledToForceLargeCard;
+    _Bool _hitMaxLargeViewCount;
     long long _type;
     NSURL *_layoutBundleURL;
     NSArray *_supportedLocalizations;
@@ -20,6 +22,8 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=hasHitMaxLargeViewCount) _Bool hitMaxLargeViewCount; // @synthesize hitMaxLargeViewCount=_hitMaxLargeViewCount;
+@property(nonatomic) _Bool entitledToForceLargeCard; // @synthesize entitledToForceLargeCard=_entitledToForceLargeCard;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(nonatomic) _Bool shouldBadge; // @synthesize shouldBadge=_shouldBadge;
 @property(retain, nonatomic) NSArray *supportedLocalizations; // @synthesize supportedLocalizations=_supportedLocalizations;
@@ -29,6 +33,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)isTerminalStatus;
 - (void)updateWithDiscoveryItem:(id)arg1;
 - (void)updateForRuleResult:(_Bool)arg1;
 - (id)initWithDictionary:(id)arg1;

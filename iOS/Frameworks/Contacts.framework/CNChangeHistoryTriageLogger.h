@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)visitDropEverythingEvent:(id)arg1;
 - (void)fetchDidFailToTranslateWithError:(id)arg1;
 - (void)fetchDidFailWithError:(id)arg1;
+- (void)didFetchHistoryEventsCount:(long long)arg1 anchor:(id)arg2 truncated:(_Bool)arg3;
 - (void)didFetchHistoryEvents:(id)arg1 anchor:(id)arg2;
 - (void)willFetchHistoryWithRequest:(id)arg1;
 - (void)didExecuteSaveRequest;

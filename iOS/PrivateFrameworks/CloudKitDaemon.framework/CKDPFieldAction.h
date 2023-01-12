@@ -10,7 +10,6 @@
 
 @class CKDPFieldActionDeleteListRange, CKDPFieldActionInsertIntoList, CKDPFieldActionReplaceListRange;
 
-__attribute__((visibility("hidden")))
 @interface CKDPFieldAction : PBCodable <NSCopying>
 {
     CKDPFieldActionDeleteListRange *_deleteListRange;

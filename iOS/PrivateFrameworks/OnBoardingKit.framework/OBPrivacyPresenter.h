@@ -8,10 +8,11 @@
 
 #import <OnBoardingKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, OBPrivacyCombinedController, OBPrivacySplashController, UIViewController;
+@class NSArray, NSString, OBPrivacyCombinedController, OBPrivacySplashController, UIColor, UIViewController;
 
 @interface OBPrivacyPresenter : NSObject <UIAdaptivePresentationControllerDelegate>
 {
+    _Bool _underlineLinks;
     _Bool _darkMode;
     _Bool _usesFullScreenPresentation;
     _Bool _animatePresentAndDismiss;
@@ -20,6 +21,7 @@
     OBPrivacyCombinedController *_combinedController;
     NSString *_displayLanguage;
     UIViewController *_presentingViewController;
+    UIColor *_customTintColor;
     long long _modalPresentationStyle;
     unsigned long long _supportedInterfaceOrientations;
     UIViewController *_presentedController;
@@ -42,6 +44,8 @@
 @property(nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
 @property(nonatomic) _Bool usesFullScreenPresentation; // @synthesize usesFullScreenPresentation=_usesFullScreenPresentation;
 @property(nonatomic) _Bool darkMode; // @synthesize darkMode=_darkMode;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
+@property(retain, nonatomic) UIColor *customTintColor; // @synthesize customTintColor=_customTintColor;
 @property __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(retain, nonatomic) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property(retain) OBPrivacyCombinedController *combinedController; // @synthesize combinedController=_combinedController;

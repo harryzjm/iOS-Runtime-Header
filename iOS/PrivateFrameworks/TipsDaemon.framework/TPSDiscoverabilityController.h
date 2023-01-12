@@ -19,13 +19,14 @@
     TPSEventsProviderManager *_eventsProviderManager;
     TPSEventsHistoryController *_eventsHistoryController;
     NSObject<OS_dispatch_queue> *_eventRegistrationQueue;
+    NSObject<OS_dispatch_queue> *_eventResultsProcessingQueue;
     id <TPSDiscoverabilityControllerDelegate> _delegate;
     TPSTipStatusController *_tipStatusController;
-    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
++ (id)contextualInfoMap;
++ (void)removeContextualInfoCache;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) TPSTipStatusController *tipStatusController; // @synthesize tipStatusController=_tipStatusController;
 @property(nonatomic) __weak id <TPSDiscoverabilityControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dataProviderManager:(id)arg1 didReceiveCallbackWithResult:(id)arg2 type:(long long)arg3;
@@ -37,8 +38,7 @@
 - (long long)customizationIDForContentID:(id)arg1;
 - (void)_reconcileRegisteredEvents;
 - (void)_registerWakingCallbackForContextualInfo:(id)arg1;
-- (id)dismissalEventsForContentID:(id)arg1;
-- (id)dismissalEventsForContextualInfo:(id)arg1;
+- (id)monitoringEventsForContentID:(id)arg1;
 - (_Bool)_isConditionMet:(id)arg1 hasUpdates:(_Bool *)arg2 forIdentifier:(id)arg3;
 - (id)_matchingIdentifiersForConditionWithType:(unsigned long long)arg1 forObserverIdentifiers:(id)arg2 hasUpdates:(_Bool *)arg3;
 - (_Bool)_updateTriggerConditionForObserverIdentifers:(id)arg1;
@@ -55,7 +55,9 @@
 - (void)processEventProviderQueryResults:(id)arg1 type:(long long)arg2;
 - (void)queryCurrentEvents;
 - (void)contextualEligibilityWithTipIdentifiers:(id)arg1 tipsDeliveryInfoMap:(id)arg2 deliveryInfoMap:(id)arg3 experimentCampChangesToAll:(_Bool)arg4;
+- (void)restartTriggerTrackingIfNotDisplayedForIdentifier:(id)arg1 updateCache:(_Bool)arg2;
 - (void)restartTriggerTrackingIfNotDisplayedForIdentifier:(id)arg1;
+- (void)restartTriggerTrackingIfNotDisplayedForIdentifiers:(id)arg1;
 - (void)_cleanupContextualInfoMap;
 - (id)contextualInfoForIdentifier:(id)arg1;
 @property(readonly, copy, nonatomic) TPSEventsHistoryController *eventsHistoryController;

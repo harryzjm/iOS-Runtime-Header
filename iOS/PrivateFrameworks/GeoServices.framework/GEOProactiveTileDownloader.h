@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOBatchOpportunisticTileDownloaderDelegate-Protocol.h>
 
-@class GEOBatchOpportunisticTileDownloader, GEODataSaverTileLoaderManager, GEOPowerAssertion, GEORequestCounter, GEOResourceManifestManager, GEOStaleTileUpdater, GEOTileDB, GEOXPCActivity, NSDictionary, NSMutableArray, NSString;
+@class GEOBatchOpportunisticTileDownloader, GEODataSaverTileLoaderManager, GEOPowerAssertion, GEORequestCounter, GEOResourceManifestManager, GEOStaleTileUpdater, GEOTileDB, GEOXPCActivity, NSDictionary, NSMapTable, NSMutableArray, NSString;
 @protocol GEOProactiveTileDownloaderDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -31,9 +31,10 @@ __attribute__((visibility("hidden")))
     GEOStaleTileUpdater *_staleUpdater;
     unsigned long long _currentPolicy;
     GEOBatchOpportunisticTileDownloader *_currentDownloader;
-    _Bool _policyEnabled[1];
+    _Bool _policyEnabled[2];
     GEOPowerAssertion *_powerAssertion;
     GEOXPCActivity *_activity;
+    NSMapTable *_tileRequesterClasses;
     NSObject<OS_dispatch_source> *_deferCheckinTimer;
 }
 
@@ -44,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)batchOpportunisticTileDownloaderDidFinish:(id)arg1;
 - (void)batchOpportunisticTileDownloader:(id)arg1 failedToLoadKey:(struct _GEOTileKey)arg2 error:(id)arg3;
-- (void)batchOpportunisticTileDownloader:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(id)arg7;
+- (void)batchOpportunisticTileDownloader:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(CDUnion_23a7df3d)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(id)arg7;
 - (void)_pauseIfNecessary;
 - (void)_startNextDownloader;
 - (void)_finish;
@@ -57,8 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)_registerXPCDeferralTimer;
 - (void)_clearPowerAssertion;
 - (void)_takePowerAssertionIfNecessary;
-- (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2 diskCache:(id)arg3 dataSaverManager:(id)arg4 manifestManager:(id)arg5 requestCounter:(id)arg6 downloaders:(id)arg7;
-- (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2 diskCache:(id)arg3;
+- (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2 diskCache:(id)arg3 tileRequesterClasses:(id)arg4 dataSaverManager:(id)arg5 manifestManager:(id)arg6 requestCounter:(id)arg7 downloaders:(id)arg8;
+- (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2 diskCache:(id)arg3 tileRequesterClasses:(id)arg4;
 - (id)init;
 
 // Remaining properties

@@ -6,25 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class TransparencyLogSession, TransparencyManagedDataStore;
+@class TransparencyAnalytics, TransparencyLogSession, TransparencyManagedDataStore;
 
 @interface TransparencyLogClient : NSObject
 {
     TransparencyLogSession *_session;
     TransparencyManagedDataStore *_dataStore;
+    TransparencyAnalytics *_transparencyAnalytics;
 }
 
 - (void).cxx_destruct;
+@property(retain) TransparencyAnalytics *transparencyAnalytics; // @synthesize transparencyAnalytics=_transparencyAnalytics;
 @property(retain) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property(retain) TransparencyLogSession *session; // @synthesize session=_session;
 - (void)deleteDownloadId:(id)arg1;
 - (void)downloadRequest:(id)arg1 retry:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)fetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)download:(id)arg1 retry:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)fetch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)fetch:(id)arg1 shouldRetry:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)renewAccountTokenForFetch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)needsRetry:(id)arg1;
-- (id)initWithBackgroundSession:(id)arg1 dataStore:(id)arg2;
+- (id)initWithBackgroundSession:(id)arg1 transparencyAnalytics:(id)arg2 dataStore:(id)arg3;
 
 @end
 

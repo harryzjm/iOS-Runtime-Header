@@ -21,6 +21,7 @@
 @property(readonly, retain) SFUCryptoKey *encryptionKey;
 @property(readonly, nonatomic) id <NSFilePresenter> cloudFilePresenter;
 - (id <TSKCollaborationCommandReceiver>)commandReceiverWithExecutor:(TSKCommandExecutor *)arg1;
+- (void)materializeDataFromCollaborationCacheAndClean:(_Bool)arg1;
 - (void)documentRootDidRollbackBlockedCommands:(TSKDocumentRoot *)arg1;
 - (void)sharingStateRefreshed:(TSKSharingState *)arg1 isUserInitiated:(_Bool)arg2 parentDocumentSerializationToken:(TSUDocumentSerializationToken *)arg3 completionBlock:(void (^)(void))arg4;
 - (TSKSharingState *)sharingState;

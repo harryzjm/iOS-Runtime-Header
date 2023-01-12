@@ -25,6 +25,9 @@
 + (id)colorNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)colorNamed:(id)arg1;
 + (id)_webContentBackgroundColor;
++ (id)__tintColor;
++ (id)_tintColor;
++ (id)tintColor;
 + (id)_vibrantLightSectionDelimiterDividerDarkeningColor;
 + (id)_vibrantLightSectionDelimiterDividerBurnColor;
 + (id)_vibrantDarkFillDodgeColor;
@@ -147,6 +150,7 @@
 + (id)_systemColorForColor:(id)arg1 withName:(id)arg2;
 + (id)_systemColorWithUnvalidatedName:(id)arg1;
 + (id)_systemColorWithName:(id)arg1;
++ (id)_systemColorSelectorTable;
 + (id)colorWithDisplayP3Red:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithCIColor:(id)arg1;
 + (id)colorWithPatternImage:(id)arg1;
@@ -174,8 +178,10 @@
 + (id)tertiaryLabelColor;
 + (id)secondaryLabelColor;
 + (id)labelColor;
++ (id)systemMintColor;
 + (id)systemIndigoColor;
 + (id)systemTealColor;
++ (id)systemCyanColor;
 + (id)systemBrownColor;
 + (id)systemGray6Color;
 + (id)systemGray5Color;
@@ -209,6 +215,8 @@
 + (id)_carSystemPrimaryColor;
 + (id)_monochromeCellImageTintColor;
 + (id)_windowBackgroundColor;
++ (id)_swipedSidebarCellBackgroundColor;
++ (id)_sidebarBackgroundColor;
 + (id)_groupTableHeaderFooterTextColor;
 + (id)_plainTableHeaderFooterTextColor;
 + (id)tablePlainHeaderFooterFloatingBackgroundColor;
@@ -263,6 +271,7 @@
 + (id)_fillColor;
 + (id)_systemChromeShadowColor;
 + (id)_alertControllerDimmingViewColor;
++ (id)_swiftColor;
 + (id)_controlVibrantBottomBackgroundColor;
 + (id)_controlVibrantTopBackgroundColor;
 + (id)_controlShadowColor;
@@ -331,6 +340,7 @@
 - (id)_backgroundColorIgnoringHighContrast;
 @property(readonly, nonatomic) NSString *accessibilityName;
 @property(readonly, nonatomic) NSString *_accessibilityNameWithLuma;
+@property(readonly, nonatomic, getter=_isDynamicTintColor) _Bool isDynamicTintColor;
 @property(readonly, nonatomic, getter=_isDynamic) _Bool dynamic;
 - (id)resolvedColorWithTraitCollection:(id)arg1;
 - (id)initWithDynamicProvider:(CDUnknownBlockType)arg1;

@@ -9,7 +9,6 @@
 
 @class NSData, NSString, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface STCloudActivation <STReconcilableObject, STSerializableManagedObject>
 {
 }

@@ -12,7 +12,6 @@
     NSString *_topicID;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *topicID; // @synthesize topicID=_topicID;

@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore16GenericLODSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *pointOfCullingQuery;
+    MISSING_TYPE *lodQuery;
 }
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorResults : NSObject
@@ -15,16 +15,22 @@ __attribute__((visibility("hidden")))
     NSString *_remoteUserAgent;
     NSString *_remoteBasebandCodec;
     unsigned int _remoteBasebandCodecSampleRate;
-    NSMutableDictionary *_bandwidthSettings;
     unsigned char _mediaControlInfoVersion;
+    unsigned int _remoteBlobVersion;
+    int _controlChannelVersion;
+    NSMutableSet *_bandwidthConfigurations;
 }
 
+@property(nonatomic) int controlChannelVersion; // @synthesize controlChannelVersion=_controlChannelVersion;
+@property(nonatomic) unsigned int remoteBlobVersion; // @synthesize remoteBlobVersion=_remoteBlobVersion;
 @property(nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
-@property(retain, nonatomic) NSMutableDictionary *bandwidthSettings; // @synthesize bandwidthSettings=_bandwidthSettings;
+@property(readonly, nonatomic) NSSet *bandwidthConfigurations; // @synthesize bandwidthConfigurations=_bandwidthConfigurations;
 @property(nonatomic) unsigned int remoteBasebandCodecSampleRate; // @synthesize remoteBasebandCodecSampleRate=_remoteBasebandCodecSampleRate;
 @property(retain, nonatomic) NSString *remoteBasebandCodec; // @synthesize remoteBasebandCodec=_remoteBasebandCodec;
 @property(retain, nonatomic) NSString *remoteUserAgent; // @synthesize remoteUserAgent=_remoteUserAgent;
 @property(nonatomic) _Bool supportsDynamicMaxBitrate; // @synthesize supportsDynamicMaxBitrate=_supportsDynamicMaxBitrate;
+- (unsigned int)maxBandwidthWithOperatingMode:(int)arg1 connectionType:(int)arg2;
+- (void)addBandwidthConfigurations:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

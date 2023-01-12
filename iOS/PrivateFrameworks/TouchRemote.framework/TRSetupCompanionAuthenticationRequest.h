@@ -8,6 +8,7 @@
 
 @interface TRSetupCompanionAuthenticationRequest
 {
+    _Bool _shouldUseAIDA;
     ACAccount *_account;
     NSSet *_targetedAccountServices;
     AKDevice *_companionDevice;
@@ -15,6 +16,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseAIDA; // @synthesize shouldUseAIDA=_shouldUseAIDA;
 @property(retain, nonatomic) AKDevice *companionDevice; // @synthesize companionDevice=_companionDevice;
 @property(retain, nonatomic) NSSet *targetedAccountServices; // @synthesize targetedAccountServices=_targetedAccountServices;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;

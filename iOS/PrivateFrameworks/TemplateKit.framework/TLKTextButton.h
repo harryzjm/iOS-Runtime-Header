@@ -34,12 +34,16 @@
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 @property(retain, nonatomic) UIFont *font;
 - (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_updateSelectionViewForState:(unsigned long long)arg1;
 - (_Bool)hasTemplateUIImage;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)updateAttributedTitle;
+@property(nonatomic) _Bool alwaysShowPlaceholderView;
+- (void)setMinimumLayoutSize:(struct CGSize)arg1;
+- (struct CGSize)minimumLayoutSize;
+- (void)setMaximumLayoutSize:(struct CGSize)arg1;
+- (struct CGSize)maximumLayoutSize;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;

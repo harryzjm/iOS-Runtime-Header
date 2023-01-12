@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHKWidgetEnvironment, CHSWidget, NSDictionary, NSFileHandle, NSString;
+@class CHKWidgetEnvironment, NSArray, NSDictionary, NSString;
 
 @protocol _TtP9WidgetKit27HostToExtensionXPCInterface_
 - (void)performCleanup;
 - (void)invalidate;
-- (void)getTimelineFor:(CHSWidget *)arg1 into:(NSFileHandle *)arg2 environment:(CHKWidgetEnvironment *)arg3 isPreview:(_Bool)arg4 completion:(void (^)(NSError *))arg5;
+- (void)getTimelinesWithRequests:(NSArray *)arg1 isPreview:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)attachPreviewAgentWithFrameworkPath:(NSString *)arg1 endpoint:(id)arg2 handler:(void (^)(BSAuditToken *))arg3;
 - (void)handleURLSessionEventsFor:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)getPlaceholdersWithEnvironment:(CHKWidgetEnvironment *)arg1 for:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;

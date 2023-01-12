@@ -10,30 +10,21 @@
 
 @class NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRRemoveOutputDevicesMessageProtobuf : PBCodable <NSCopying>
 {
     NSString *_endpointUID;
     NSMutableArray *_outputDeviceUIDs;
 }
 
-+ (Class)outputDeviceUIDsType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *endpointUID; // @synthesize endpointUID=_endpointUID;
-@property(retain, nonatomic) NSMutableArray *outputDeviceUIDs; // @synthesize outputDeviceUIDs=_outputDeviceUIDs;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasEndpointUID;
-- (id)outputDeviceUIDsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)outputDeviceUIDsCount;
-- (void)addOutputDeviceUIDs:(id)arg1;
-- (void)clearOutputDeviceUIDs;
 
 @end
 

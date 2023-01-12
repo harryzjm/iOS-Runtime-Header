@@ -32,9 +32,9 @@
 - (int)p_layoutConfigFlagsForTarget:(id)arg1;
 @property(readonly, retain, nonatomic) TSWPCTTypesetterCache *typesetterCache;
 - (void)destroyLayoutState:(void *)arg1;
-- (void)inflateTarget:(id)arg1 fromHints:(const vector_2f7f6b92 *)arg2 childHint:(id)arg3 anchoredAttachmentPositions:(id)arg4 topicNumbers:(const struct TSWPTopicNumberHints *)arg5;
-- (void)deflateTarget:(id)arg1 intoHints:(vector_2f7f6b92 *)arg2 childHints:(id [2])arg3 anchoredAttachmentPositions:(id *)arg4 topicNumbers:(struct TSWPTopicNumberHints *)arg5 layoutState:(void *)arg6;
-- (void *)layoutStateForLayoutTarget:(id)arg1 afterHint:(const CDStruct_6026ced1 *)arg2 childHint:(id)arg3 topicNumbers:(const struct TSWPTopicNumberHints *)arg4 textIsVertical:(_Bool)arg5;
+- (void)inflateTarget:(id)arg1 fromHints:(const void *)arg2 childHint:(id)arg3 anchoredAttachmentPositions:(id)arg4 topicNumbers:(const void *)arg5;
+- (void)deflateTarget:(id)arg1 intoHints:(void *)arg2 childHints:(id [2])arg3 anchoredAttachmentPositions:(id *)arg4 topicNumbers:(void *)arg5 layoutState:(void *)arg6;
+- (void *)layoutStateForLayoutTarget:(id)arg1 afterHint:(const CDStruct_6026ced1 *)arg2 childHint:(id)arg3 topicNumbers:(const void *)arg4 textIsVertical:(_Bool)arg5;
 - (double)layoutIntoTarget:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void *)layoutIntoTarget:(id)arg1 withLayoutState:(void *)arg2 outSync:(_Bool *)arg3;
 - (_Bool)needsLayoutInColumn:(id)arg1;

@@ -8,7 +8,6 @@
 
 @class CKRecordID, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingCopyAccessTokenOperation <BRCOperationSubclass>
 {
     CKRecordID *_recordID;

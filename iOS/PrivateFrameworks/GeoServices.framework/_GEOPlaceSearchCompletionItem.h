@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOCompletionItemPrivate-Protocol.h>
 
-@class GEOCollectionResult, GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, GEOStyleAttributes, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -24,11 +24,14 @@ __attribute__((visibility("hidden")))
     GEOSearchCategory *_category;
     GEOCollectionResult *_collectionResult;
     GEOPublisherResult *_publisherResult;
+    NSArray *_resultRefinements;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GEOPDAutocompleteEntry *entry; // @synthesize entry=_entry;
 @property(readonly, nonatomic) NSArray *displayLines; // @synthesize displayLines=_displayLines;
+@property(readonly, nonatomic) GEOStyleAttributes *iconStyleAttributes;
+@property(readonly, nonatomic) NSArray *resultRefinements;
 @property(readonly, nonatomic) GEOPublisherResult *publisherResult;
 @property(readonly, nonatomic) GEOCollectionResult *collectionResult;
 @property(readonly, nonatomic) float disambiguationRadiusMeters;

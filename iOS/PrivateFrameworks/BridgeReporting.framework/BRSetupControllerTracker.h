@@ -20,6 +20,7 @@
 - (void)clearControllerHold;
 - (id)lastPushedSetupController;
 - (void)addSetupController:(id)arg1 action:(unsigned long long)arg2;
+- (id)init;
 
 @end
 

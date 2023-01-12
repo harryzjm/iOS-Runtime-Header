@@ -6,41 +6,52 @@
 
 #import <objc/NSObject.h>
 
+#import <Sleep/HKSPSleepFocusModeBridgeDelegate-Protocol.h>
 #import <Sleep/HKSPXPCConnectionProviderDelegate-Protocol.h>
 
-@class HKHealthStore, HKSPAnalyticsManager, HKSPObserverSet, HKSPSleepStoreCache, HKSPSleepStoreExportedObject, HKSPXPCConnectionProvider, HKSleepHealthStore, NSString;
-@protocol HKSPExecutor, HKSPSyncAnchor, NAScheduler;
+@class HKHealthStore, HKSPAnalyticsManager, HKSPObserverSet, HKSPSleepFocusConfiguration, HKSPSleepStoreCache, HKSPSleepStoreExportedObject, HKSPThrottler, HKSPXPCConnectionProvider, HKSleepHealthStore, NSString;
+@protocol HKSPSleepFocusModeBridge, HKSPSyncAnchor, NAScheduler;
 
-@interface HKSPSleepStore : NSObject <HKSPXPCConnectionProviderDelegate>
+@interface HKSPSleepStore : NSObject <HKSPSleepFocusModeBridgeDelegate, HKSPXPCConnectionProviderDelegate>
 {
     struct os_unfair_lock_s _syncLock;
     id <HKSPSyncAnchor> _syncAnchor;
     HKSPAnalyticsManager *_analyticsManager;
     NSString *_identifier;
     HKSleepHealthStore *_sleepHealthStore;
+    unsigned long long _options;
     HKSPObserverSet *_observers;
     HKSPXPCConnectionProvider *_connectionProvider;
     HKSPSleepStoreCache *_sleepStoreCache;
     id <NAScheduler> _callbackScheduler;
-    id <HKSPExecutor> _reconnectExecutor;
+    HKSPThrottler *_reconnectThrottler;
     CDUnknownBlockType _currentDateProvider;
+    id <HKSPSleepFocusModeBridge> _sleepFocusModeBridge;
     HKSPSleepStoreExportedObject *_sleepStoreExportedObject;
 }
 
++ (id)_widgetReloadDescription:(unsigned long long)arg1;
++ (_Bool)_shouldForceWidgetReload:(unsigned long long)arg1;
 + (id)_updatedHistoricalSleepGoalForSleepSchedule:(id)arg1 options:(unsigned long long)arg2 date:(id)arg3;
 + (id)_updatedHistoricalSleepSchedulesFromSleepSchedule:(id)arg1 options:(unsigned long long)arg2 date:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKSPSleepStoreExportedObject *sleepStoreExportedObject; // @synthesize sleepStoreExportedObject=_sleepStoreExportedObject;
+@property(readonly, nonatomic) id <HKSPSleepFocusModeBridge> sleepFocusModeBridge; // @synthesize sleepFocusModeBridge=_sleepFocusModeBridge;
 @property(readonly, copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
-@property(readonly, nonatomic) id <HKSPExecutor> reconnectExecutor; // @synthesize reconnectExecutor=_reconnectExecutor;
+@property(readonly, nonatomic) HKSPThrottler *reconnectThrottler; // @synthesize reconnectThrottler=_reconnectThrottler;
 @property(readonly, nonatomic) id <NAScheduler> callbackScheduler; // @synthesize callbackScheduler=_callbackScheduler;
 @property(readonly, nonatomic) HKSPSleepStoreCache *sleepStoreCache; // @synthesize sleepStoreCache=_sleepStoreCache;
 @property(readonly, nonatomic) HKSPXPCConnectionProvider *connectionProvider; // @synthesize connectionProvider=_connectionProvider;
 @property(readonly, nonatomic) HKSPObserverSet *observers; // @synthesize observers=_observers;
+@property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) HKSleepHealthStore *sleepHealthStore; // @synthesize sleepHealthStore=_sleepHealthStore;
 @property(readonly, nonatomic) struct os_unfair_lock_s syncLock; // @synthesize syncLock=_syncLock;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) HKSPAnalyticsManager *analyticsManager; // @synthesize analyticsManager=_analyticsManager;
+- (_Bool)_observeSleepFocusMode;
+@property(readonly, nonatomic) HKSPSleepFocusConfiguration *sleepFocusConfiguration;
+@property(readonly, nonatomic) _Bool hasSleepFocusMode;
+- (void)sleepFocusModeBridge:(id)arg1 didUpdateSleepFocusConfiguration:(id)arg2;
 - (void)dealloc;
 - (void)_notifyObserversForChangedSleepScheduleState:(unsigned long long)arg1;
 - (void)_notifyObserversForSleepEvent:(id)arg1;
@@ -48,6 +59,7 @@
 - (void)_notifyObserversForChangedSleepEventRecord:(id)arg1;
 - (void)_notifyObserversForChangedSleepSettings:(id)arg1;
 - (void)_notifyObserversForChangedSleepSchedule:(id)arg1;
+- (void)reloadWidgetIfNecessaryWithReason:(unsigned long long)arg1 reloader:(id)arg2;
 - (void)setSleepWindDownShortcutsOnboardingCompletedVersion:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSleepTrackingOnboardingCompletedVersion:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSleepCoachingOnboardingCompletedVersion:(long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -59,6 +71,12 @@
 - (void)nextEventDueAfterDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)publishWakeUpResultsNotificationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_publishWakeUpResultsNotificationOnServer;
+- (void)clearWidgetOverrideWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_clearWidgetOverrideOnServer;
+- (void)setWidgetOverrideState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_setWidgetOverrideStateOnServerWithState:(long long)arg1;
+- (void)deleteSleepFocusModeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)createSleepFocusModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setLockScreenOverrideState:(long long)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_setLockScreenOverrideStateOnServerWithState:(long long)arg1 userInfo:(id)arg2;
 - (void)publishNotificationWithIdentifier:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -73,33 +91,32 @@
 - (void)sleepAlarmWasSnoozedUntilDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_sleepAlarmWasDismissedOnDateOnServer:(id)arg1;
 - (void)sleepAlarmWasDismissedOnDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dismissSleepLockWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_dismissSleepLockOnServer;
 - (void)dismissGoodMorningWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_dismissGoodMorningOnServer;
 - (void)confirmAwakeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_confirmAwakeOnServer;
-- (void)skipWindDownWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_skipWindDownOnServer;
-- (void)skipBedtimeWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_skipBedtimeOnServer;
-- (void)delayBedtimeForTimeInterval:(double)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_delayBedtimeForTimeIntervalOnServer:(double)arg1;
+- (void)setSleepModeOn:(_Bool)arg1 reason:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSleepModeOn:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_setSleepModeOnServer:(long long)arg1;
+- (id)_setSleepModeOnServer:(long long)arg1 reason:(unsigned long long)arg2;
 - (void)saveCurrentSleepEventRecord:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveCurrentSleepEventRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)saveCurrentSleepEventRecord:(id)arg1 options:(unsigned long long)arg2;
 - (id)saveCurrentSleepEventRecord:(id)arg1;
 - (id)_saveCurrentSleepEventRecordOnServer:(id)arg1 options:(unsigned long long)arg2;
+- (id)_prepareObjectForSave:(id)arg1 options:(unsigned long long)arg2;
 - (void)saveCurrentSleepSettings:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveCurrentSleepSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)saveCurrentSleepSettings:(id)arg1 options:(unsigned long long)arg2;
 - (id)saveCurrentSleepSettings:(id)arg1;
 - (id)_saveCurrentSleepSettingsOnServer:(id)arg1 options:(unsigned long long)arg2;
 - (id)_writeHistoricalSchedule:(id)arg1 options:(unsigned long long)arg2;
+- (void)saveCurrentSleepSchedule:(id)arg1 options:(unsigned long long)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)saveCurrentSleepSchedule:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveCurrentSleepSchedule:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_sendScheduleChangedAnalytics;
-- (id)saveCurrentSleepSchedule:(id)arg1 options:(unsigned long long)arg2;
+- (id)_sendScheduleChangedAnalyticsWithContext:(id)arg1;
+- (id)saveCurrentSleepSchedule:(id)arg1 options:(unsigned long long)arg2 context:(id)arg3;
 - (id)saveCurrentSleepSchedule:(id)arg1;
 - (id)_saveCurrentSleepScheduleOnServer:(id)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)currentSleepScheduleStateWithError:(id *)arg1;
@@ -107,6 +124,11 @@
 - (id)currentSleepScheduleStateFuture;
 - (id)_getSleepScheduleStateOnDoSync:(_Bool)arg1 notify:(_Bool)arg2;
 - (id)_getSleepScheduleStateFromServerDoSync:(_Bool)arg1 notify:(_Bool)arg2;
+- (long long)sleepWidgetStateWithError:(id *)arg1;
+- (void)sleepWidgetStateWithCompletion:(CDUnknownBlockType)arg1;
+- (id)sleepWidgetStateFuture;
+- (id)_getSleepWidgetStateDoSync:(_Bool)arg1;
+- (id)_getSleepWidgetStateFromServerDoSync:(_Bool)arg1;
 - (_Bool)sleepModeOnWithError:(id *)arg1;
 - (long long)sleepModeWithError:(id *)arg1;
 - (void)sleepModeOnWithCompletion:(CDUnknownBlockType)arg1;
@@ -148,9 +170,11 @@
 @property(readonly, copy) NSString *description;
 - (void)updateSyncAnchor:(id)arg1;
 @property(readonly, copy, nonatomic) id <HKSPSyncAnchor> syncAnchor; // @synthesize syncAnchor=_syncAnchor;
+- (_Bool)_cachingEnabled;
 - (void)_withLock:(CDUnknownBlockType)arg1;
-- (id)initWithConnectionProviderProvider:(CDUnknownBlockType)arg1 identifier:(id)arg2 healthStore:(id)arg3 analyticsManager:(id)arg4 executorProvider:(CDUnknownBlockType)arg5 callbackScheduler:(id)arg6 currentDateProvider:(CDUnknownBlockType)arg7;
-- (id)initWithConnectionProviderProvider:(CDUnknownBlockType)arg1 identifier:(id)arg2 healthStore:(id)arg3;
+- (id)initWithConnectionProviderProvider:(CDUnknownBlockType)arg1 identifier:(id)arg2 healthStore:(id)arg3 options:(unsigned long long)arg4 analyticsManager:(id)arg5 throttlerProvider:(CDUnknownBlockType)arg6 callbackScheduler:(id)arg7 sleepFocusModeBridgeProvider:(CDUnknownBlockType)arg8 currentDateProvider:(CDUnknownBlockType)arg9;
+- (id)initWithConnectionProviderProvider:(CDUnknownBlockType)arg1 identifier:(id)arg2 healthStore:(id)arg3 options:(unsigned long long)arg4;
+- (id)initWithIdentifier:(id)arg1 healthStore:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithIdentifier:(id)arg1 healthStore:(id)arg2;
 - (id)initWithHealthStore:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;

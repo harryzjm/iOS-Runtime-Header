@@ -27,6 +27,7 @@
     UIScrollView *_scrollView;
     UIView *_scrollContentView;
     UIView *_buttonTrayScrollContainerView;
+    NSLayoutConstraint *_buttonTrayScrollContainerHeightConstraint;
     NSLayoutConstraint *_headerTopOffsetConstraint;
     NSLayoutConstraint *_contentViewTopOffsetConstraint;
     NSLayoutConstraint *_contentViewHeightConstraint;
@@ -54,6 +55,7 @@
 @property(retain, nonatomic) NSLayoutConstraint *contentViewHeightConstraint; // @synthesize contentViewHeightConstraint=_contentViewHeightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *contentViewTopOffsetConstraint; // @synthesize contentViewTopOffsetConstraint=_contentViewTopOffsetConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *headerTopOffsetConstraint; // @synthesize headerTopOffsetConstraint=_headerTopOffsetConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *buttonTrayScrollContainerHeightConstraint; // @synthesize buttonTrayScrollContainerHeightConstraint=_buttonTrayScrollContainerHeightConstraint;
 @property(retain, nonatomic) UIView *buttonTrayScrollContainerView; // @synthesize buttonTrayScrollContainerView=_buttonTrayScrollContainerView;
 @property(retain, nonatomic) UIView *scrollContentView; // @synthesize scrollContentView=_scrollContentView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
@@ -87,6 +89,7 @@
 - (void)_updateButtonTrayBackdrop;
 - (_Bool)_scrollViewContentIsUnderTray;
 - (_Bool)shouldInlineButtonTray;
+- (_Bool)_shouldDetachButtonTray;
 - (double)_headerTopOffset;
 - (void)_updateHeaderTopOffsetConstraint;
 - (double)_contentViewHeight;
@@ -113,6 +116,7 @@
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 symbolName:(id)arg3;
 - (void)scrollRectToVisible:(struct CGRect)arg1 animated:(_Bool)arg2;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
+- (void)addBulletedListItemWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3 tintColor:(id)arg4;
 - (void)addBulletedListItemWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3;
 - (void)_animatePushTransitionForViews:(id)arg1 transitionSubtype:(id)arg2;
 

@@ -13,7 +13,7 @@
 @interface __NSCFURLProtocolClient_NS : NSObject <NSURLProtocolClient>
 {
     struct URLProtocolClient *_cf;
-    struct URLProtocol *_prot;
+    void *_prot;
     NSURLAuthenticationChallenge *_challenge;
     struct _CFURLAuthChallenge *_cfChallenge;
 }

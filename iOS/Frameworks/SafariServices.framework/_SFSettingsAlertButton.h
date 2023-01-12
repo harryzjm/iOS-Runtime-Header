@@ -17,21 +17,28 @@ __attribute__((visibility("hidden")))
     NSArray *_componentsArrangement;
     UILabel *_detailTextLabel;
     UILayoutGuide *_textGuide;
+    _Bool _limitToSingleLine;
     NSString *_detailText;
     NSString *_textStyle;
     UIImage *_image;
     UIImageView *_imageView;
     UIView *_accessoryView;
+    UIImageView *_statusImageView;
     UILabel *_textLabel;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property(nonatomic) _Bool limitToSingleLine; // @synthesize limitToSingleLine=_limitToSingleLine;
+@property(retain, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
 @property(copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (_Bool)canBecomeFocused;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_updateTintColor;

@@ -10,7 +10,6 @@
 
 @class CKDPRecordIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPMarkAssetBrokenResponse : PBCodable <NSCopying>
 {
     CKDPRecordIdentifier *_missingAssetStatusRecord;

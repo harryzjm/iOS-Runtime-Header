@@ -6,15 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@interface ARDepthData : NSObject
+#import <ARKit/ARResultData-Protocol.h>
+#import <ARKit/NSSecureCoding-Protocol.h>
+
+@class NSString;
+
+@interface ARDepthData : NSObject <NSSecureCoding, ARResultData>
 {
     struct __CVBuffer *_depthMap;
     struct __CVBuffer *_confidenceMap;
+    struct __CVBuffer *_normalsBuffer;
+    struct __CVBuffer *_confidenceBuffer;
+    double _timestamp;
+    CDStruct_8e0628e6 _cameraIntrinsics;
+    CDStruct_14d5dc5e _extrinsicsToAppNode;
+    CDStruct_14d5dc5e _deviceTransform;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic) CDStruct_14d5dc5e deviceTransform; // @synthesize deviceTransform=_deviceTransform;
+@property(nonatomic) CDStruct_14d5dc5e extrinsicsToAppNode; // @synthesize extrinsicsToAppNode=_extrinsicsToAppNode;
+@property(nonatomic) CDStruct_8e0628e6 cameraIntrinsics; // @synthesize cameraIntrinsics=_cameraIntrinsics;
+@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property(nonatomic) struct __CVBuffer *confidenceBuffer; // @synthesize confidenceBuffer=_confidenceBuffer;
+@property(nonatomic) struct __CVBuffer *normalsBuffer; // @synthesize normalsBuffer=_normalsBuffer;
 @property(readonly, nonatomic) struct __CVBuffer *confidenceMap; // @synthesize confidenceMap=_confidenceMap;
-@property(readonly, nonatomic) struct __CVBuffer *depthMap; // @synthesize depthMap=_depthMap;
+@property(nonatomic) struct __CVBuffer *depthMap; // @synthesize depthMap=_depthMap;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithDepthMap:(struct __CVBuffer *)arg1 confidenceMap:(struct __CVBuffer *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

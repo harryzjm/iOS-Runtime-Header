@@ -6,22 +6,18 @@
 
 #import <RemoteManagementModel/RMModelPayloadBase.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSString;
 
 @interface RMProtocolWellKnownResponse_WellKnownResponseServer : RMModelPayloadBase
 {
     NSString *_responseVersion;
     NSString *_responseBaseURL;
-    NSArray *_responsePinnedCertificates;
-    NSNumber *_responsePinningRevocationCheckRequired;
 }
 
 + (id)buildRequiredOnlyWithVersion:(id)arg1 baseURL:(id)arg2;
-+ (id)buildWithVersion:(id)arg1 baseURL:(id)arg2 pinnedCertificates:(id)arg3 pinningRevocationCheckRequired:(id)arg4;
++ (id)buildWithVersion:(id)arg1 baseURL:(id)arg2;
 + (id)allowedResponseKeys;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSNumber *responsePinningRevocationCheckRequired; // @synthesize responsePinningRevocationCheckRequired=_responsePinningRevocationCheckRequired;
-@property(copy, nonatomic) NSArray *responsePinnedCertificates; // @synthesize responsePinnedCertificates=_responsePinnedCertificates;
 @property(copy, nonatomic) NSString *responseBaseURL; // @synthesize responseBaseURL=_responseBaseURL;
 @property(copy, nonatomic) NSString *responseVersion; // @synthesize responseVersion=_responseVersion;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -21,7 +21,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property __weak id <WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
 - (void)siteMetadataImageCacheDidEmptyCache:(id)arg1;
 - (void)siteMetadataImageCache:(id)arg1 didFinishLoadingImage:(id)arg2 forKeyString:(id)arg3;
 - (void)savePendingChangesBeforeTermination;

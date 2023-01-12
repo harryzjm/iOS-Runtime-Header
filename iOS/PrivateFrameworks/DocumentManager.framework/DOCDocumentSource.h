@@ -21,7 +21,7 @@
     UIImage *_icon;
     NSString *_promptText;
     NSString *_identifier;
-    NSArray *_documentTypes;
+    NSArray *_documentContentTypes;
     FPProviderDomain *_searching_fileProviderDomain;
 }
 
@@ -37,7 +37,7 @@
 + (id)defaultSourceIdentifierForBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property FPProviderDomain *searching_fileProviderDomain; // @synthesize searching_fileProviderDomain=_searching_fileProviderDomain;
-@property(copy) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
+@property(copy) NSArray *documentContentTypes; // @synthesize documentContentTypes=_documentContentTypes;
 @property(copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy) NSString *promptText; // @synthesize promptText=_promptText;
 @property _Bool hidden; // @synthesize hidden=_hidden;

@@ -9,7 +9,9 @@
 @class SFSearchResult;
 
 @protocol SPUIResultsViewDelegate <SearchUIResultsViewDelegate>
-- (_Bool)optOutOfGoButton;
 - (void)willUpdateFromResultsWithHighlightedResult:(SFSearchResult *)arg1;
+
+@optional
+- (_Bool)optOutOfGoButton;
 @end
 

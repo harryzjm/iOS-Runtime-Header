@@ -10,9 +10,12 @@
 {
 }
 
++ (_Bool)string:(id)arg1 equalToString:(id)arg2;
++ (id)descriptionForSayIt:(id)arg1;
++ (id)descriptionForAceView:(id)arg1;
++ (id)descriptionForDialog:(id)arg1;
 + (_Bool)shouldShowHeaderForDirectActionEvent:(long long)arg1;
 + (id)defaultBrowserBundleIdentifier;
-+ (id)substringRangesContainingEmojiInString:(id)arg1;
 + (id)_normalizeTextString:(id)arg1;
 + (_Bool)string:(id)arg1 isSameAsUserUtterance:(id)arg2;
 + (id)deviceSpecificKeyForDefaultKey:(id)arg1;

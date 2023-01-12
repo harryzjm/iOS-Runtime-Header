@@ -12,6 +12,7 @@
 @interface CTDataStatus : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _attached;
+    _Bool _dataSim;
     _Bool _roamAllowed;
     _Bool _dataPlanSignalingReductionOverride;
     _Bool _cellularDataPossible;
@@ -19,6 +20,7 @@
     int _indicator;
     int _indicatorOverride;
     int _radioTechnology;
+    int _dataMode;
     int _dataBearerTechnology;
     unsigned int _dataBearerSoMask;
     unsigned int _activeContexts;
@@ -33,15 +35,25 @@
 @property(nonatomic) _Bool dataPlanSignalingReductionOverride; // @synthesize dataPlanSignalingReductionOverride=_dataPlanSignalingReductionOverride;
 @property(nonatomic) unsigned int dataBearerSoMask; // @synthesize dataBearerSoMask=_dataBearerSoMask;
 @property(nonatomic) int dataBearerTechnology; // @synthesize dataBearerTechnology=_dataBearerTechnology;
+@property(nonatomic) int dataMode; // @synthesize dataMode=_dataMode;
 @property(nonatomic) int radioTechnology; // @synthesize radioTechnology=_radioTechnology;
 @property(nonatomic) _Bool roamAllowed; // @synthesize roamAllowed=_roamAllowed;
 @property(nonatomic) int indicatorOverride; // @synthesize indicatorOverride=_indicatorOverride;
 @property(nonatomic) int indicator; // @synthesize indicator=_indicator;
+@property(nonatomic) _Bool dataSim; // @synthesize dataSim=_dataSim;
 @property(nonatomic) _Bool attached; // @synthesize attached=_attached;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+@property(readonly, nonatomic) _Bool newRadioSaDataBearer;
+@property(readonly, nonatomic) _Bool newRadioNsaDataBearer;
+@property(readonly, nonatomic) _Bool newRadioSub6DataBearer;
+@property(readonly, nonatomic) _Bool newRadioMmWaveDataBearer;
+@property(readonly, nonatomic) _Bool newRadioDataBearer;
+@property(readonly, nonatomic) _Bool newRadioNsaCoverage;
+@property(readonly, nonatomic) _Bool newRadioSaCoverage;
+@property(readonly, nonatomic) _Bool newRadioCoverage;
 
 @end
 

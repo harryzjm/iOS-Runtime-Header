@@ -20,6 +20,7 @@
 }
 
 + (_Bool)isVoIPAllowed;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKVoiceChatSession *gkVoiceChatSession; // @synthesize gkVoiceChatSession=_gkVoiceChatSession;
 @property(retain, nonatomic) GKSession *gkSession; // @synthesize gkSession=_gkSession;
 @property(copy, nonatomic) CDUnknownBlockType playerVoiceChatStateDidChangeHandler; // @synthesize playerVoiceChatStateDidChangeHandler=_playerVoiceChatStateDidChangeHandler;

@@ -19,7 +19,6 @@
 + (id)requiredLocalFileAssetProperties;
 + (id)requiredHomeSharingAssetProperties;
 + (id)requiredProperties;
-+ (_Bool)_shouldRespectStoreCellularDataSetting;
 + (_Bool)_shouldRespectMusicCellularDataSetting;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MPModelPlaybackPosition *playbackPosition; // @synthesize playbackPosition=_playbackPosition;

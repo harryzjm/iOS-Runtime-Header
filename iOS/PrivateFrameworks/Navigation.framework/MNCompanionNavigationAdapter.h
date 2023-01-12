@@ -22,8 +22,11 @@
     NSString *_currentRoadName;
     _Bool _guidancePromptsEnabled;
     unsigned long long _displayedStepIndex;
-    CDStruct_a70066d4 _positionFromManeuver;
-    CDStruct_a70066d4 _positionFromDestination;
+    double _positionFromManeuver;
+    struct {
+        double remainingTime;
+        double remainingDistance;
+    } _positionFromDestination;
     unsigned long long _announcementStage;
     unsigned long long _nextAnnouncementStage;
     double _timeUntilNextAnnouncement;
@@ -45,13 +48,17 @@
 @property(nonatomic) __weak id <MNCompanionNavigationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_handleNavigationServiceStopped;
 - (void)_reloadRouteFromNavigationService:(id)arg1;
+- (void)navigationService:(id)arg1 didReceiveTransitAlert:(id)arg2;
 - (void)navigationService:(id)arg1 didReceiveRealtimeUpdates:(id)arg2;
 - (void)navigationService:(id)arg1 didEnableGuidancePrompts:(_Bool)arg2;
 - (void)navigationService:(id)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
 - (void)navigationService:(id)arg1 triggerHaptics:(int)arg2;
 - (void)navigationService:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(_Bool)arg8;
 - (void)navigationService:(id)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
-- (void)navigationService:(id)arg1 didUpdateDistanceUntilManeuver:(double)arg2 timeUntilManeuver:(double)arg3 forStepIndex:(unsigned long long)arg4;
+- (void)navigationService:(id)arg1 updateSignsWithInfo:(id)arg2;
+- (void)navigationService:(id)arg1 didUpdateDisplayedStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
+- (void)navigationService:(id)arg1 didUpdateStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
+- (void)navigationService:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3 traffic:(id)arg4;
 - (void)navigationService:(id)arg1 didReroute:(id)arg2;
 - (void)navigationServiceDidCancelReroute:(id)arg1;
 - (void)navigationServiceWillReroute:(id)arg1;
@@ -82,11 +89,12 @@
 - (void)_cancelScheduledRouteStatus;
 - (void)_scheduleCoalescedRouteStatusUpdate;
 - (void)_triggerHaptics:(int)arg1;
+- (void)_setTransitAlightMessage:(id)arg1;
 - (void)_setRealtimeUpdates:(id)arg1;
 - (void)_setNextAnnouncementStage:(unsigned long long)arg1 timeUntilNextAnnouncement:(double)arg2;
 - (void)_setAnnouncementStage:(unsigned long long)arg1;
 - (void)_setPositionFromDestination:(CDStruct_c3b9c2ee)arg1;
-- (void)_setPositionFromManeuver:(CDStruct_c3b9c2ee)arg1;
+- (void)_setPositionFromManeuver:(double)arg1;
 - (void)_setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)_setGuidancePromptsEnabled:(_Bool)arg1;
 - (void)_setDestinationName:(id)arg1;
@@ -97,7 +105,7 @@
 - (void)_setRoute:(id)arg1 traffic:(id)arg2 isTrace:(_Bool)arg3;
 - (void)_updateCompanionRouteStatus;
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
-- (void)setVoiceVolume:(unsigned long long)arg1;
+- (void)setVoiceGuidance:(unsigned long long)arg1;
 - (void)setIsNavigatingInLowGuidance:(_Bool)arg1;
 - (void)_reset;
 - (void)invalidate;

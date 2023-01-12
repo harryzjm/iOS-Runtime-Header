@@ -61,6 +61,7 @@
 - (void)viewDidAppearDeferredSetup;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)loadView;
 - (void)dealloc;
 

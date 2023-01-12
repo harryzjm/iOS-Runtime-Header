@@ -12,6 +12,7 @@
 
 @interface NSDictionary (HMFoundation) <HMFObject>
 + (id)shortDescription;
+- (id)hmf_fileHandleForKey:(id)arg1;
 - (id)hmf_unarchivedObjectForKey:(id)arg1 ofClasses:(id)arg2;
 - (id)hmf_valueForKey:(id)arg1;
 - (id)hmf_UUIDForKey:(id)arg1;
@@ -21,6 +22,7 @@
 - (id)hmf_mutableSetForKey:(id)arg1;
 - (id)hmf_setForKey:(id)arg1;
 - (id)hmf_numberForKey:(id)arg1;
+- (long long)hmf_integerForKey:(id)arg1 error:(id *)arg2;
 - (id)hmf_nullForKey:(id)arg1;
 - (id)hmf_errorForKey:(id)arg1;
 - (id)hmf_mutableDictionaryForKey:(id)arg1;
@@ -29,10 +31,12 @@
 - (id)hmf_dateForKey:(id)arg1;
 - (id)hmf_dataForKey:(id)arg1;
 - (id)hmf_calendarForKey:(id)arg1;
+- (_Bool)hmf_boolForKey:(id)arg1 error:(id *)arg2;
 - (_Bool)hmf_boolForKey:(id)arg1 isPresent:(_Bool *)arg2;
 - (_Bool)hmf_boolForKey:(id)arg1;
 - (id)hmf_base64EncodedDataForKey:(id)arg1;
 - (id)hmf_mutableArrayForKey:(id)arg1;
+- (id)hmf_arrayForKey:(id)arg1 ofClasses:(id)arg2;
 - (id)hmf_arrayForKey:(id)arg1;
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *shortDescription;

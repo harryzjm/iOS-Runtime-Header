@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSLayoutManager.h>
+#import <UIFoundation/NSLayoutManager.h>
 
 #import <WorkflowEditor/NSLayoutManagerDelegate-Protocol.h>
 #import <WorkflowEditor/WFTextAttachmentSizeProvider-Protocol.h>

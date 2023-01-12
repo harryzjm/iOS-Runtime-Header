@@ -6,14 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@interface AXMDataPoint : NSObject
+#import <AXMediaUtilities/NSCopying-Protocol.h>
+
+@class AXMDataPointValue, NSArray, NSAttributedString, NSNumber, NSString;
+
+@interface AXMDataPoint : NSObject <NSCopying>
 {
-    double _x;
-    double _y;
+    AXMDataPointValue *_xValue;
+    AXMDataPointValue *_yValue;
+    NSArray *_additionalValues;
+    NSAttributedString *_attributedLabel;
+    NSString *_valueDescription;
+    AXMDataPointValue *_timeEncodingValue;
+    NSNumber *_pitchEncodingValue;
+    NSNumber *_volumeEncodingValue;
+    NSNumber *_durationEncodingValue;
+    NSString *_timbreEncodingValue;
+    double _playbackTimeOffsetMS;
 }
 
-@property(nonatomic) double y; // @synthesize y=_y;
-@property(nonatomic) double x; // @synthesize x=_x;
+- (void).cxx_destruct;
+@property(nonatomic) double playbackTimeOffsetMS; // @synthesize playbackTimeOffsetMS=_playbackTimeOffsetMS;
+@property(copy, nonatomic) NSString *timbreEncodingValue; // @synthesize timbreEncodingValue=_timbreEncodingValue;
+@property(copy, nonatomic) NSNumber *durationEncodingValue; // @synthesize durationEncodingValue=_durationEncodingValue;
+@property(copy, nonatomic) NSNumber *volumeEncodingValue; // @synthesize volumeEncodingValue=_volumeEncodingValue;
+@property(copy, nonatomic) NSNumber *pitchEncodingValue; // @synthesize pitchEncodingValue=_pitchEncodingValue;
+@property(copy, nonatomic) AXMDataPointValue *timeEncodingValue; // @synthesize timeEncodingValue=_timeEncodingValue;
+@property(copy, nonatomic) NSString *valueDescription; // @synthesize valueDescription=_valueDescription;
+@property(copy, nonatomic) NSAttributedString *attributedLabel; // @synthesize attributedLabel=_attributedLabel;
+@property(copy, nonatomic) NSArray *additionalValues; // @synthesize additionalValues=_additionalValues;
+@property(copy, nonatomic) AXMDataPointValue *yValue; // @synthesize yValue=_yValue;
+@property(copy, nonatomic) AXMDataPointValue *xValue; // @synthesize xValue=_xValue;
+- (id)description;
+@property(copy, nonatomic) NSString *label;
+@property(readonly, nonatomic) AXMDataPointValue *zNumericAxisValue;
+@property(readonly, nonatomic) AXMDataPointValue *zCategoryAxisValue;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithX:(id)arg1 y:(id)arg2 additionalValues:(id)arg3 label:(id)arg4;
+- (id)initWithX:(id)arg1 y:(id)arg2 additionalValues:(id)arg3;
+- (id)initWithX:(id)arg1 y:(id)arg2;
 
 @end
 

@@ -8,6 +8,8 @@
 
 @interface NSString (HomeKit)
 + (id)stringWithSQLite3Column:(struct sqlite3_stmt *)arg1 column:(int)arg2;
-- (id)generateSHA1;
+@property(readonly, copy) NSString *stringByCapitalizingFirstWord;
+- (id)stringByTransformingFirstWordUsingBlock:(CDUnknownBlockType)arg1;
+- (id)hm_generateSHA1;
 @end
 

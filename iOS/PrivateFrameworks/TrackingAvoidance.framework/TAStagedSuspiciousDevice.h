@@ -18,7 +18,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDate *keepInStagingUntil; // @synthesize keepInStagingUntil=_keepInStagingUntil;
+@property(copy, nonatomic) NSDate *keepInStagingUntil; // @synthesize keepInStagingUntil=_keepInStagingUntil;
 @property(readonly, nonatomic) TASuspiciousDevice *detection; // @synthesize detection=_detection;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

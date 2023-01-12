@@ -10,6 +10,7 @@
 {
 }
 
+@property(readonly) long long chirality;
 - (id)recognizedPointsForJointsGroupName:(id)arg1 error:(id *)arg2;
 - (id)recognizedPointForJointName:(id)arg1 error:(id *)arg2;
 @property(readonly, copy) NSArray *availableJointsGroupNames;

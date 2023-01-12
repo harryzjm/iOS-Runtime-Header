@@ -22,6 +22,16 @@ __attribute__((visibility("hidden")))
     NWConcrete_nw_endpoint_handler *connected_child;
     NSObject<OS_nw_endpoint> *primary_endpoint;
     void *child_timer;
+    unsigned long long last_timeout_ms;
+    unsigned int first_protocol;
+    unsigned int connected_protocol;
+    unsigned int connected_protocol_index;
+    _Bool quic_deferred;
+    _Bool quic_application_deferred;
+    _Bool quic_denied;
+    _Bool quic_alternative_present;
+    _Bool quic_updated_alternative;
+    _Bool quic_speculative_attempt;
 }
 
 - (void).cxx_destruct;

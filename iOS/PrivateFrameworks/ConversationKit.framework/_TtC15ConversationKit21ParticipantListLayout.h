@@ -13,6 +13,7 @@
     MISSING_TYPE *indexPathLayoutAttributes;
     MISSING_TYPE *lastInvalidatedSize;
     MISSING_TYPE *calculatedContentSize;
+    MISSING_TYPE *delegate;
 }
 
 - (void).cxx_destruct;

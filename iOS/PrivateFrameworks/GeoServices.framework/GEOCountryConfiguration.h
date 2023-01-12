@@ -34,13 +34,10 @@
 - (void)serverProxyProvidersDidChange:(id)arg1;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
-- (id)_countryDefaultForKey:(id)arg1 inCountry:(id)arg2 sourcePtr:(long long *)arg3 decoder:(CDUnknownBlockType)arg4;
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2 decoder:(CDUnknownBlockType)arg3;
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2 sourcePtr:(long long *)arg3;
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2 sourcePtr:(long long *)arg3 decoder:(CDUnknownBlockType)arg4;
-- (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long *)arg4 decoder:(CDUnknownBlockType)arg5;
-- (id)_countryCodeOnIsolationQueue;
 - (id)countryCodeWithSource:(unsigned int *)arg1 updatedAtTime:(id *)arg2;
 @property(readonly, copy, nonatomic) NSString *countryCode;
 @property(readonly, nonatomic) double urlAuthenticationTimeToLive;
@@ -53,7 +50,6 @@
 @property(readonly, nonatomic) _Bool currentCountrySupportsNavigation;
 - (_Bool)currentCountrySupportsFeature:(long long)arg1;
 - (_Bool)countryCode:(id)arg1 supportsFeature:(long long)arg2;
-- (void)_resetSupportedFeatures;
 - (void)updateCountryConfiguration:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 - (void)updateCountryConfiguration:(CDUnknownBlockType)arg1;
 - (void)updateProvidersForCurrentCountry;

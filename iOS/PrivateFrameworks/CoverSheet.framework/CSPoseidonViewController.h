@@ -21,12 +21,11 @@
 @property(retain, nonatomic) id <SBFAuthenticationStatusProvider> authenticationStatusProvider; // @synthesize authenticationStatusProvider=_authenticationStatusProvider;
 @property(retain, nonatomic) id <SBUIBiometricResource> biometricResource; // @synthesize biometricResource=_biometricResource;
 @property(retain, nonatomic) SBUIPoseidonContainerViewController *poseidonContainerViewController; // @synthesize poseidonContainerViewController=_poseidonContainerViewController;
-- (double)poseidonContainerViewControllerRestToOpenIdleDuration:(id)arg1;
-- (double)poseidonContainerViewControllerIdleUntilShimmerDuration:(id)arg1;
 - (void)poseidonContainerViewControllerCoachingStateDidChange:(id)arg1;
 - (void)aggregateAppearance:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (_Bool)handleEvent:(id)arg1;
+@property(readonly, nonatomic) _Bool hasBiometricAuthenticationCapabilityEnabled;
 @property(readonly, nonatomic) _Bool isBiometricLockedOut;
 @property(readonly, nonatomic) UIView *poseidonView;
 - (void)viewDidLayoutSubviews;

@@ -11,6 +11,7 @@
 }
 
 + (id)osBuild;
++ (id)userInfo;
 + (id)context;
 
 @end

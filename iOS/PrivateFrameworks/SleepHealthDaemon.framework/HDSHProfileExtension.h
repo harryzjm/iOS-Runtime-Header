@@ -6,27 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepHealthDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
 #import <SleepHealthDaemon/HDProfileExtension-Protocol.h>
 
-@class HDProfile, HDSHFeatureAvailabilityManager, NSString;
+@class HDProfile, HDSHAccessibilityAssertionManager, HDSHWidgetSchedulingManager, NSString;
 
-@interface HDSHProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
+@interface HDSHProfileExtension : NSObject <HDProfileExtension>
 {
-    CDUnknownBlockType _sleepStoreProvider;
-    HDSHFeatureAvailabilityManager *_coachingAvailabilityManager;
-    HDSHFeatureAvailabilityManager *_trackingAvailabilityManager;
-    HDSHFeatureAvailabilityManager *_windDownShortcutsAvailabilityManager;
+    HDSHAccessibilityAssertionManager *_accessibilityAssertionManager;
     HDProfile *_profile;
+    HDSHWidgetSchedulingManager *_widgetSchedulingManager;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HDSHFeatureAvailabilityManager *windDownShortcutsAvailabilityManager; // @synthesize windDownShortcutsAvailabilityManager=_windDownShortcutsAvailabilityManager;
-@property(readonly, nonatomic) HDSHFeatureAvailabilityManager *trackingAvailabilityManager; // @synthesize trackingAvailabilityManager=_trackingAvailabilityManager;
-@property(readonly, nonatomic) HDSHFeatureAvailabilityManager *coachingAvailabilityManager; // @synthesize coachingAvailabilityManager=_coachingAvailabilityManager;
+@property(readonly, nonatomic) HDSHWidgetSchedulingManager *widgetSchedulingManager; // @synthesize widgetSchedulingManager=_widgetSchedulingManager;
+@property(readonly, nonatomic) HDSHAccessibilityAssertionManager *accessibilityAssertionManager; // @synthesize accessibilityAssertionManager=_accessibilityAssertionManager;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1 client:(id)arg2;
-- (id)initWithProfile:(id)arg1 sleepStoreProvider:(CDUnknownBlockType)arg2;
 - (id)initWithProfile:(id)arg1;
 
 // Remaining properties

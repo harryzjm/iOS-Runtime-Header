@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (double)candidateDefaultFontSize;
 - (id)candidateFontWithSize:(double)arg1 language:(id)arg2;
 - (id)candidateFontWithSize:(double)arg1;
+@property(readonly, nonatomic) _Bool shouldAnimateStateTransition;
 @property(readonly, nonatomic) _Bool shouldResizeKeyboardBackdrop;
 @property(readonly, nonatomic) unsigned long long maxNumberOfProactiveCandidates;
 @property(readonly, nonatomic) unsigned long long rowsToExtend;

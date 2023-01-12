@@ -8,6 +8,7 @@
 
 @interface _TtC7SwiftUI17DragViewResponder
 {
+    MISSING_TYPE *isDragEnabled;
     MISSING_TYPE *itemsForDragHandler;
 }
 

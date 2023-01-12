@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKContainerSetupInfo, CKOperationConfiguration, CKOperationGroup, CKOperationMMCSRequestOptions, NSDictionary, NSNumber, NSString;
+@class CKOperationConfiguration, CKOperationGroup, CKOperationMMCSRequestOptions, NSDictionary, NSNumber, NSString;
 
 @interface CKOperationInfo : NSObject <NSSecureCoding, NSCopying>
 {
@@ -20,19 +20,18 @@
     unsigned int _clientSDKVersion;
     CKOperationConfiguration *_resolvedConfiguration;
     NSString *_operationID;
-    NSString *_name;
-    NSString *_parentSectionID;
-    CKContainerSetupInfo *_setupInfo;
     NSString *_ckOperationClassName;
     NSString *_operationDaemonCallbackProtocolName;
-    NSString *_deviceIdentifier;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
     CKOperationGroup *_group;
     CKOperationConfiguration *_perOpConfiguration;
     id _parentOperation;
+    unsigned long long _requestOriginator;
+    long long _clientQueuePriority;
     unsigned long long _duetPreClearedMode;
     unsigned long long _discretionaryWhenBackgroundedState;
     unsigned long long _systemScheduler;
+    NSString *_name;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -40,21 +39,18 @@
 @property(nonatomic) unsigned long long systemScheduler; // @synthesize systemScheduler=_systemScheduler;
 @property(nonatomic) unsigned long long discretionaryWhenBackgroundedState; // @synthesize discretionaryWhenBackgroundedState=_discretionaryWhenBackgroundedState;
 @property(nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
+@property(nonatomic) long long clientQueuePriority; // @synthesize clientQueuePriority=_clientQueuePriority;
 @property(nonatomic) _Bool wantsRequestStatistics; // @synthesize wantsRequestStatistics=_wantsRequestStatistics;
+@property(nonatomic) unsigned long long requestOriginator; // @synthesize requestOriginator=_requestOriginator;
 @property(nonatomic) __weak id parentOperation; // @synthesize parentOperation=_parentOperation;
 @property(nonatomic) _Bool clientHasValidatedEntitlements; // @synthesize clientHasValidatedEntitlements=_clientHasValidatedEntitlements;
-@property(nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property(retain, nonatomic) CKOperationConfiguration *perOpConfiguration; // @synthesize perOpConfiguration=_perOpConfiguration;
 @property(retain, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
 @property(retain, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
-@property(retain, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property(retain, nonatomic) NSString *operationDaemonCallbackProtocolName; // @synthesize operationDaemonCallbackProtocolName=_operationDaemonCallbackProtocolName;
 @property(retain, nonatomic) NSString *ckOperationClassName; // @synthesize ckOperationClassName=_ckOperationClassName;
-@property(retain, nonatomic) CKContainerSetupInfo *setupInfo; // @synthesize setupInfo=_setupInfo;
 @property(nonatomic) _Bool isOutstandingOperation; // @synthesize isOutstandingOperation=_isOutstandingOperation;
 @property(nonatomic) _Bool isLongLived; // @synthesize isLongLived=_isLongLived;
-@property(retain, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 - (void)takeValuesFrom:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -73,6 +69,7 @@
 @property(readonly, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution;
 @property(readonly, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess;
 @property(readonly, nonatomic) long long qualityOfService;
+@property(readonly, nonatomic) _Bool allowsExpensiveNetworkAccess;
 @property(readonly, nonatomic) _Bool allowsCellularAccess;
 @property(readonly, nonatomic) CKOperationConfiguration *resolvedConfiguration; // @synthesize resolvedConfiguration=_resolvedConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -15,6 +15,7 @@
     _Bool _blockNotification;
     NSString *_identifier;
     NSString *_accountIdentifier;
+    NSString *_altDSID;
     long long _type;
     NSDate *_date;
     NSDate *_expirationDate;
@@ -33,6 +34,7 @@
 @property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(nonatomic) long long type; // @synthesize type=_type;
+@property(retain, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(retain, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
@@ -42,9 +44,9 @@
 - (unsigned long long)itemType;
 - (id)primaryIdentifier;
 - (id)recordNameForItem:(id)arg1;
-- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
-- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
-- (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
+- (void)_encodeServerDataForCloudStoreCoder:(id)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1 codingType:(unsigned long long)arg2;
 - (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

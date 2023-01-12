@@ -21,23 +21,17 @@
 }
 
 - (void).cxx_destruct;
+- (void)userDidTapMicKey:(long long)arg1;
 - (void)userDidTypeKey:(long long)arg1;
 - (void)searchViewDisappearedBecauseOfEvent:(long long)arg1 forQueryID:(long long)arg2;
-- (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1 isSafariReaderAvailable:(_Bool)arg2 forQueryID:(long long)arg3;
-- (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1 forQueryID:(long long)arg2;
+- (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1 isSafariReaderAvailable:(_Bool)arg2 forQueryID:(long long)arg3 usesLoweredSearchBar:(_Bool)arg4;
+- (void)searchViewAppearedBecauseOfEvent:(unsigned long long)arg1 forQueryID:(long long)arg2 usesLoweredSearchBar:(_Bool)arg3;
 - (id)_takeStartSearchFeedbackForSearchOfType:(long long)arg1 forQuery:(id)arg2;
 - (void)_setStartSearchFeedback:(id)arg1 forSearchOfType:(long long)arg2 withQuery:(id)arg3;
+- (void)triggeredExperimentWithTreatmentId:(id)arg1 withQueryID:(long long)arg2;
+- (void)triggeredExperimentWithTreatmentId:(id)arg1 withQueryID:(long long)arg2 cfDiffered:(_Bool)arg3 cfUsed:(_Bool)arg4 cfError:(unsigned long long)arg5;
 - (void)sendClearInputFeedbackWithTriggerEvent:(unsigned long long)arg1 forQueryID:(long long)arg2;
-- (void)sendSmartSearchFieldClickedFeedbackWithReaderAvailable:(_Bool)arg1;
-- (void)sendWindowMiniaturizeByMouseFeedback;
-- (void)sendWindowMiniaturizeByKeyboardFeedback;
-- (void)sendWindowCloseByMouseFeedback;
-- (void)sendWindowCloseByKeyboardFeedback;
-- (void)sendNewTabFeedback;
-- (void)sendNewWindowFeedback;
-- (void)sendAppLostFocusFeedback;
-- (void)sendAppQuitFeedback;
-- (void)sendAppLaunchFeedback;
+- (void)sendNewTabFeedback:(_Bool)arg1;
 - (void)sendMapsPlaceCardEngagementFeedbackOfType:(int)arg1 forQueryID:(long long)arg2;
 - (void)sendCrowdsourcedAutoFillFeedback:(id)arg1 forQueryID:(long long)arg2;
 - (id)_customFeedbackOfType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
@@ -50,8 +44,8 @@
 - (void)didBeginSearchOfType:(long long)arg1 withQuery:(id)arg2 endpoint:(unsigned long long)arg3;
 - (void)didReceiveLocalResultsForQuery:(id)arg1;
 - (void)didReceiveWebSuggestionsForQuery:(id)arg1 fromSearchProvider:(id)arg2 responseSize:(long long)arg3 statusCode:(long long)arg4 networkTimingData:(id)arg5;
-- (void)userTypedGoToSearch:(id)arg1 endpoint:(unsigned long long)arg2 forQueryID:(long long)arg3;
-- (void)userTypedURLDirectlyForQuery:(id)arg1;
+- (void)userTypedGoToSearch:(id)arg1 endpoint:(unsigned long long)arg2 triggerEvent:(long long)arg3 forQueryID:(long long)arg4;
+- (void)userTypedURLDirectlyForQuery:(id)arg1 triggerEvent:(long long)arg2;
 - (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(_Bool)arg2 method:(long long)arg3 doesMatchSiriSuggestion:(_Bool)arg4;
 - (void)userDidEngageWithCompletionListItem:(id)arg1 onActionButton:(_Bool)arg2 method:(long long)arg3;
 - (void)didDisplayCompletionListItems:(id)arg1 forQuery:(id)arg2 forEvent:(long long)arg3;

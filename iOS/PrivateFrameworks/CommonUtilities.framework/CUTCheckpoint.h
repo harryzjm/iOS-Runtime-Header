@@ -21,7 +21,7 @@
 }
 
 + (id)_reportDateFormatter;
-+ (id)_whitelistedClasses;
++ (id)_allowlistedClasses;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldLogTouches; // @synthesize shouldLogTouches=_shouldLogTouches;

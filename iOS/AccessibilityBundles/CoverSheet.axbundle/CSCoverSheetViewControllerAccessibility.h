@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_presentModalViewController:(id)arg1 shouldDismissOverlays:(_Bool)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
 

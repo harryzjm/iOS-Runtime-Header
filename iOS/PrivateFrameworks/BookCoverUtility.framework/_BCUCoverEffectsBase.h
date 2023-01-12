@@ -26,7 +26,9 @@
 @property(retain, nonatomic) BCULayerRenderer *renderer; // @synthesize renderer=_renderer;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(id)arg5 waitForCPUSynchronization:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
-- (id)_coverLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2;
+- (struct UIEdgeInsets)insetsForSize:(struct CGSize)arg1 contentsScale:(double)arg2 options:(id)arg3;
+@property(readonly, nonatomic) _Bool supportsOptions;
+- (id)_coverLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 - (id)_layerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 scale:(double)arg3 shadow:(id)arg4;
 - (id)_shadowLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 tint:(_Bool)arg3 shadow:(id)arg4;
 - (id)coverLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3;

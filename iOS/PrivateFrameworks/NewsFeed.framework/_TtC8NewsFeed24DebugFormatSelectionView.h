@@ -19,13 +19,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bottomRightView;
     MISSING_TYPE *borderView;
     MISSING_TYPE *cornerSize;
+    MISSING_TYPE *selection;
 }
 
 - (void).cxx_destruct;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

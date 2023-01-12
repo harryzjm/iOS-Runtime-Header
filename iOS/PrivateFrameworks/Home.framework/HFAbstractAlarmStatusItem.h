@@ -8,9 +8,6 @@
 {
 }
 
-- (id)_multipleTriggeredRoomsFormatString;
-- (id)_singleTriggeredRoomFormatString;
-- (id)_entireHomeString;
 - (id)_serviceType;
 - (id)iconDescription;
 - (id)title;

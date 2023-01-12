@@ -7,11 +7,11 @@
 #import <UIKit/UIViewController.h>
 
 @class MISSING_TYPE;
-@protocol TUPluggableDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI219TodayViewController : UIViewController
 {
-    MISSING_TYPE *adPresentationDelegateProvider;
+    MISSING_TYPE *_lastImpression;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
@@ -22,15 +22,16 @@
     MISSING_TYPE *refreshStateMachine;
     MISSING_TYPE *refreshControl;
     MISSING_TYPE *commands;
-    MISSING_TYPE *isBeingUsedAsPlugin;
-    MISSING_TYPE *pluggableDelegate;
+    MISSING_TYPE *loadingGate;
+    MISSING_TYPE *didAppearCompletions;
+    MISSING_TYPE *didDisappearCompletions;
+    MISSING_TYPE *mastheadViewProviderDelegate;
+    MISSING_TYPE *engagementMastheadViewProvider;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-@property(nonatomic) __weak id <TUPluggableDelegate> pluggableDelegate; // @synthesize pluggableDelegate;
-@property(nonatomic) _Bool isBeingUsedAsPlugin; // @synthesize isBeingUsedAsPlugin;
 
 @end
 

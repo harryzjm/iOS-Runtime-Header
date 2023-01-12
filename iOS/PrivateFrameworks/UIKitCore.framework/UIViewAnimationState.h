@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     double _duration;
     double _delay;
     double _frameInterval;
+    struct CAFrameRateRange _preferredFrameRateRange;
+    unsigned int _updateReason;
     double _start;
     long long _curve;
     float _repeatCount;

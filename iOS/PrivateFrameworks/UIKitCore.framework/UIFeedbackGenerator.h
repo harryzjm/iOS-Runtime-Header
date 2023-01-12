@@ -65,6 +65,7 @@
 - (void)_startFeedbackWarming;
 - (void)_scheduleFeedbackWarming;
 - (void)_activated;
+- (void)_updateActivationStateForRemovedEngines:(id)arg1 addedEngines:(id)arg2 prewarmCount:(long long)arg3 turnOnCount:(long long)arg4;
 - (void)_setupEnginesIfNeededForFeedback:(id)arg1;
 - (void)__activateWithStyle:(long long)arg1 forFeedback:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_activateWithStyle:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;

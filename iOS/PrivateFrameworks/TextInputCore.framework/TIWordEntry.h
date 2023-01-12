@@ -14,12 +14,15 @@
     _Bool _isRetrocorrection;
     _Bool _isMultilingual;
     _Bool _isOOV;
+    _Bool _isFromStaticLexicon;
     _Bool _isContinuousPathCompletion;
     _Bool _candidateContainsEmoji;
+    _Bool _followsContinuousPath;
     _Bool _isPunctuationEntryFollowingAWord;
     int _wordEntryType;
     int _wordAlignmentConf;
     int _touchAlignmentConf;
+    int _unfinishedWordEntryTreatment;
     NSString *_acceptedString;
     NSString *_originalAcceptedString;
     NSString *_orientation;
@@ -33,7 +36,6 @@
     TIKeyboardCandidate *_originalCandidate;
     NSString *_inputStem;
     NSString *_inputContext;
-    TIWordEntry *_editedEntry;
     TIUserAction *_editAction;
     NSMutableArray *_allEdits;
     unsigned long long _sessionIndex;
@@ -49,7 +51,8 @@
 @property(nonatomic) unsigned long long sessionIndex; // @synthesize sessionIndex=_sessionIndex;
 @property(retain, nonatomic) NSMutableArray *allEdits; // @synthesize allEdits=_allEdits;
 @property(retain, nonatomic) TIUserAction *editAction; // @synthesize editAction=_editAction;
-@property(retain, nonatomic) TIWordEntry *editedEntry; // @synthesize editedEntry=_editedEntry;
+@property(nonatomic) int unfinishedWordEntryTreatment; // @synthesize unfinishedWordEntryTreatment=_unfinishedWordEntryTreatment;
+@property(nonatomic) _Bool followsContinuousPath; // @synthesize followsContinuousPath=_followsContinuousPath;
 @property(copy, nonatomic) NSString *inputContext; // @synthesize inputContext=_inputContext;
 @property(copy, nonatomic) NSString *inputStem; // @synthesize inputStem=_inputStem;
 @property(retain, nonatomic) TIKeyboardCandidate *originalCandidate; // @synthesize originalCandidate=_originalCandidate;
@@ -64,6 +67,7 @@
 @property(retain, nonatomic) TIKeyboardInput *inputTriggeredTextAccepted; // @synthesize inputTriggeredTextAccepted=_inputTriggeredTextAccepted;
 @property(nonatomic) _Bool candidateContainsEmoji; // @synthesize candidateContainsEmoji=_candidateContainsEmoji;
 @property(nonatomic) _Bool isContinuousPathCompletion; // @synthesize isContinuousPathCompletion=_isContinuousPathCompletion;
+@property(nonatomic) _Bool isFromStaticLexicon; // @synthesize isFromStaticLexicon=_isFromStaticLexicon;
 @property(nonatomic) _Bool isOOV; // @synthesize isOOV=_isOOV;
 @property(nonatomic) _Bool isMultilingual; // @synthesize isMultilingual=_isMultilingual;
 @property(nonatomic) _Bool isRetrocorrection; // @synthesize isRetrocorrection=_isRetrocorrection;
@@ -74,19 +78,27 @@
 @property(copy, nonatomic) NSString *orientation; // @synthesize orientation=_orientation;
 @property(copy, nonatomic) NSString *originalAcceptedString; // @synthesize originalAcceptedString=_originalAcceptedString;
 @property(copy, nonatomic) NSString *acceptedString; // @synthesize acceptedString=_acceptedString;
-- (_Bool)isEntryFollowingANewLine;
+- (void)addUserEdit:(id)arg1;
+- (_Bool)isPeriodFromDoubleSpaceEntry;
+- (_Bool)endsWithNewLine;
+- (_Bool)startsWithNewLine;
 @property(readonly, nonatomic) NSArray *touchLayouts;
 @property(readonly, nonatomic) NSArray *candidatesOffered;
 @property(readonly, nonatomic) NSArray *allTouches;
 @property(readonly, nonatomic) NSArray *allKeyboardInputs;
+- (void)clearTouches;
 - (void)addTouchEvent:(id)arg1 withLayoutId:(unsigned long long)arg2;
+- (void)clearCandidatesOffered;
 - (void)addCandidateOffered:(id)arg1;
+- (void)clearKeyInputs;
 - (void)addKeyInput:(id)arg1;
 - (id)descriptionWithContext;
 - (id)description;
+@property(readonly, nonatomic) TIWordEntry *editedEntry;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (id)trimmedDocumentContextBeforeInput;
 - (id)documentContextBeforeInput;
 
 @end

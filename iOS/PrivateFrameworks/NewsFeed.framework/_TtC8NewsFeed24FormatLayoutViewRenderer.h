@@ -17,13 +17,22 @@
     MISSING_TYPE *buttonNodeRenderer;
     MISSING_TYPE *stateViewNodeRenderer;
     MISSING_TYPE *customNodeRenderer;
+    MISSING_TYPE *groupNodeRenderer;
     MISSING_TYPE *webEmbedNodeRenderer;
     MISSING_TYPE *adMetricsNodeRenderer;
+    MISSING_TYPE *micaNodeRenderer;
+    MISSING_TYPE *layeredMediaNodeRenderer;
+    MISSING_TYPE *videoNodeRenderer;
+    MISSING_TYPE *issueCoverNodeRenderer;
+    MISSING_TYPE *groupMaskNodeRenderer;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
+    MISSING_TYPE *shareAttributionNodeRenderer;
+    MISSING_TYPE *shareAttributionViewReuseManager;
     MISSING_TYPE *rendererTool;
-    MISSING_TYPE *behaviorRenderer;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *runModeRunner;
     MISSING_TYPE *timer;
+    MISSING_TYPE *visibilityRenderer;
 }
 
 @end

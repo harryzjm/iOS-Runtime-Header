@@ -8,8 +8,8 @@
 
 @protocol TSTGroupByChangeProtocol
 - (void)didChangeGroupByStructure;
-- (void)didRemoveRowUID:(const UUIDData_5fbc143e *)arg1 fromGroup:(TSTGroupNode *)arg2;
-- (void)didAddRowUID:(const UUIDData_5fbc143e *)arg1 toGroup:(TSTGroupNode *)arg2;
+- (void)didRemoveRowUID:(struct TSKUIDStruct)arg1 fromGroup:(TSTGroupNode *)arg2;
+- (void)didAddRowUID:(struct TSKUIDStruct)arg1 toGroup:(TSTGroupNode *)arg2;
 - (void)didRemoveGroup:(TSTGroupNode *)arg1;
 - (void)willRemoveGroup:(TSTGroupNode *)arg1;
 - (void)didCreateGroup:(TSTGroupNode *)arg1;

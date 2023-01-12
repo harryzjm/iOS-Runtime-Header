@@ -13,7 +13,6 @@
 - (id)pep_afterDelay:(double)arg1;
 - (id)pep_onThread:(id)arg1;
 - (id)pep_onThread:(id)arg1 immediateForMatchingThread:(_Bool)arg2;
-- (id)pep_onDetachedThread;
 - (id)pep_onMainThreadIfNecessary;
 - (id)pep_onMainThread;
 @end

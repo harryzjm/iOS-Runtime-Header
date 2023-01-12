@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     struct CGRect _contentBounds;
     struct CGRect _previewFrame;
     struct CGRect _menuFrame;
-    CDStruct_a36705e8 _anchor;
+    CDStruct_17a0fc55 _anchor;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMapTable *accessoryPositions; // @synthesize accessoryPositions=_accessoryPositions;
-@property(nonatomic) CDStruct_a36705e8 anchor; // @synthesize anchor=_anchor;
+@property(nonatomic) CDStruct_17a0fc55 anchor; // @synthesize anchor=_anchor;
 @property(nonatomic) struct CGPoint menuAnchorPoint; // @synthesize menuAnchorPoint=_menuAnchorPoint;
 @property(nonatomic) struct CGRect menuFrame; // @synthesize menuFrame=_menuFrame;
 @property(nonatomic) struct CGRect previewFrame; // @synthesize previewFrame=_previewFrame;

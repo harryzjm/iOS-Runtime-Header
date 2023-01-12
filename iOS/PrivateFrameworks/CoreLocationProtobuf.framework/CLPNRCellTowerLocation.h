@@ -18,8 +18,10 @@
     NSString *_appBundleId;
     int _bandInfo;
     int _bandwidth;
+    unsigned int _downlinkBandwidth;
     int _ecn0;
     unsigned int _gscn;
+    unsigned int _latency;
     CLPLocation *_location;
     int _mcc;
     int _mnc;
@@ -35,14 +37,17 @@
     NSString *_serviceProviderName;
     int _tac;
     _Bool _isLimitedService;
+    _Bool _isStalled;
     struct {
         unsigned int cellLatitude:1;
         unsigned int cellLongitude:1;
         unsigned int ci:1;
         unsigned int bandInfo:1;
         unsigned int bandwidth:1;
+        unsigned int downlinkBandwidth:1;
         unsigned int ecn0:1;
         unsigned int gscn:1;
+        unsigned int latency:1;
         unsigned int mcc:1;
         unsigned int mnc:1;
         unsigned int nrarfcn:1;
@@ -53,11 +58,15 @@
         unsigned int serverHash:1;
         unsigned int tac:1;
         unsigned int isLimitedService:1;
+        unsigned int isStalled:1;
     } _has;
 }
 
 + (Class)neighborType;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int latency; // @synthesize latency=_latency;
+@property(nonatomic) _Bool isStalled; // @synthesize isStalled=_isStalled;
+@property(nonatomic) unsigned int downlinkBandwidth; // @synthesize downlinkBandwidth=_downlinkBandwidth;
 @property(nonatomic) unsigned int gscn; // @synthesize gscn=_gscn;
 @property(nonatomic) unsigned int scs; // @synthesize scs=_scs;
 @property(retain, nonatomic) NSString *serviceProviderName; // @synthesize serviceProviderName=_serviceProviderName;
@@ -90,6 +99,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasLatency;
+@property(nonatomic) _Bool hasIsStalled;
+@property(nonatomic) _Bool hasDownlinkBandwidth;
 @property(nonatomic) _Bool hasGscn;
 @property(nonatomic) _Bool hasScs;
 @property(readonly, nonatomic) _Bool hasServiceProviderName;

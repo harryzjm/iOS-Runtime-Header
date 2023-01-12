@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Email/EFPubliclyDescribable-Protocol.h>
 #import <Email/EMCollectionItem-Protocol.h>
 #import <Email/EMObject-Protocol.h>
 
 @class ECMessageFlags, ECSubject, EFFuture, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
 @protocol EMCollectionItemID;
 
-@protocol EMMessageListItem <EMCollectionItem, EMObject>
+@protocol EMMessageListItem <EMCollectionItem, EMObject, EFPubliclyDescribable>
 @property(readonly) _Bool isEditable;
 @property(readonly) _Bool shouldArchiveByDefault;
 @property(readonly) _Bool supportsArchiving;

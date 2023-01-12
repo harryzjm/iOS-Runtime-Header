@@ -11,7 +11,7 @@
 @protocol HFUIRepresentableHomeObject;
 
 @protocol HFUIRepresentableHomeObject <HFServiceNameComponentsProviding, HFHomeKitObject>
-@property(readonly, nonatomic) id <HFUIRepresentableHomeObject> hf_topLevelAccessoryLikeHomeObject;
+@property(readonly, nonatomic) id <HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
 @property(readonly, nonatomic) NSSet *hf_accessories;
 @property(readonly, nonatomic) NSSet *hf_profiles;
 @property(readonly, nonatomic) NSSet *hf_services;

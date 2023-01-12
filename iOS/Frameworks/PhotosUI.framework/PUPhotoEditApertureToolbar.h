@@ -6,20 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUI/CEKApertureSliderDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoEditLayoutDynamicAdaptable-Protocol.h>
 
-@class CEKApertureSlider, NSMutableArray, NSString, UILabel, UIView, _UIBackdropView;
+@class CEKApertureSlider, NSMutableArray, NSString, PFCoalescer, UILabel, UIView, _UIBackdropView;
 @protocol PUPhotoEditApertureToolbarDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotoEditApertureToolbar : UIViewController <CEKApertureSliderDelegate, PUPhotoEditLayoutDynamicAdaptable>
+@interface PUPhotoEditApertureToolbar : UIViewController <PUPhotoEditLayoutDynamicAdaptable>
 {
     UIView *_solidBackgroundView;
     _UIBackdropView *_backdropBackgroundView;
     _Bool _isResizing;
     struct CGSize _cachedSize;
     NSMutableArray *_constraints;
+    PFCoalescer *_apertureUpdateCoalescer;
     _Bool _useTranslucentBackground;
     id <PUPhotoEditApertureToolbarDelegate> delegate;
     long long _layoutOrientation;
@@ -39,8 +39,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double sliderWidth; // @synthesize sliderWidth=_sliderWidth;
 @property(nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property(nonatomic) __weak id <PUPhotoEditApertureToolbarDelegate> delegate; // @synthesize delegate;
-- (void)apertureSliderDidChangeApertureValue:(id)arg1;
 - (void)setApertureValueClosestTo:(double)arg1;
+- (void)_apertureSliderDidChangeValue:(id)arg1;
+- (void)setNextApertureValue:(_Bool)arg1 coarse:(_Bool)arg2;
+- (id)_nextApertureValueFromValue:(id)arg1 reverse:(_Bool)arg2;
 @property(readonly, nonatomic) double apertureValue;
 - (void)setOriginalApertureValueClosestTo:(double)arg1;
 @property(readonly, nonatomic) double originalApertureValue;

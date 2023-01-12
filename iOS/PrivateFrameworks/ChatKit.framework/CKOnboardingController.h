@@ -8,17 +8,20 @@
 
 #import <ChatKit/AVTAvatarEditorViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKCNSharingProfileOnboardingFlowManagerDelegate-Protocol.h>
+#import <ChatKit/CKSyndicationOnboardingPageViewControllerDelegate-Protocol.h>
 #import <ChatKit/CNMeCardSharingPickerViewControllerDelegate-Protocol.h>
 #import <ChatKit/IMCNMeCardSharingOnboardingAudienceViewControllerDelegate-Protocol.h>
 #import <ChatKit/IMCNMeCardSharingOnboardingEditViewControllerDelegate-Protocol.h>
+#import <ChatKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <ChatKit/UINavigationControllerDelegate-Protocol.h>
 
-@class AVPlayer, AVPlayerLooper, AVTAvatarStore, CKCNSharingProfileOnboardingFlowManager, CNSharingProfileAvatarItemProviderConfiguration, IMCloudKitSyncState, NSString, OBWelcomeFullCenterContentController, UINavigationController;
+@class AVPlayer, AVPlayerLooper, AVTAvatarStore, CKCNSharingProfileOnboardingFlowManager, CNSharingProfileAvatarItemProviderConfiguration, IMCloudKitSyncState, NSString, OBButtonTray, OBWelcomeController, OBWelcomeFullCenterContentController, UINavigationController;
 @protocol AVTAvatarRecord, CKOnboardingControllerDelegate, IMCNMeCardSharingResult;
 
-@interface CKOnboardingController : NSObject <CNMeCardSharingPickerViewControllerDelegate, AVTAvatarEditorViewControllerDelegate, IMCNMeCardSharingOnboardingEditViewControllerDelegate, IMCNMeCardSharingOnboardingAudienceViewControllerDelegate, UINavigationControllerDelegate, CKCNSharingProfileOnboardingFlowManagerDelegate>
+@interface CKOnboardingController : NSObject <CNMeCardSharingPickerViewControllerDelegate, AVTAvatarEditorViewControllerDelegate, IMCNMeCardSharingOnboardingEditViewControllerDelegate, IMCNMeCardSharingOnboardingAudienceViewControllerDelegate, UINavigationControllerDelegate, CKCNSharingProfileOnboardingFlowManagerDelegate, UIAdaptivePresentationControllerDelegate, CKSyndicationOnboardingPageViewControllerDelegate>
 {
     _Bool _presentingFromPrefs;
+    _Bool _isUserInitiatedEditNameAndPhoto;
     int _micLayout;
     id <CKOnboardingControllerDelegate> _delegate;
     IMCloudKitSyncState *_syncState;
@@ -31,9 +34,14 @@
     id <IMCNMeCardSharingResult> _pendingMeCardSharingResult;
     CKCNSharingProfileOnboardingFlowManager *_nicknameFlowManager;
     CNSharingProfileAvatarItemProviderConfiguration *_avatarItemProviderConfiguration;
+    OBWelcomeController *_syndicationIntroController;
+    OBButtonTray *_buttonTray;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) OBButtonTray *buttonTray; // @synthesize buttonTray=_buttonTray;
+@property(retain, nonatomic) OBWelcomeController *syndicationIntroController; // @synthesize syndicationIntroController=_syndicationIntroController;
+@property(nonatomic) _Bool isUserInitiatedEditNameAndPhoto; // @synthesize isUserInitiatedEditNameAndPhoto=_isUserInitiatedEditNameAndPhoto;
 @property(nonatomic) _Bool presentingFromPrefs; // @synthesize presentingFromPrefs=_presentingFromPrefs;
 @property(retain, nonatomic) CNSharingProfileAvatarItemProviderConfiguration *avatarItemProviderConfiguration; // @synthesize avatarItemProviderConfiguration=_avatarItemProviderConfiguration;
 @property(retain, nonatomic) CKCNSharingProfileOnboardingFlowManager *nicknameFlowManager; // @synthesize nicknameFlowManager=_nicknameFlowManager;
@@ -76,6 +84,7 @@
 - (id)_meCardSharingState;
 - (long long)_whatsNewLatestShippingVersion;
 - (long long)_whatsNewVersion;
+- (void)_writeDefaultSyndicationOnboardingVersion;
 - (void)_writeDefaultNicknameOnboardingVersion;
 - (void)_writeDefaultWhatsNewDidShow;
 - (_Bool)_isRunningTest;
@@ -84,6 +93,13 @@
 - (id)_nicknameController;
 - (void)completedOnboardingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)completedOnboarding;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)initializeBundleIDsInAppPreferences:(_Bool)arg1;
+- (void)setUpSyndicationLater;
+- (void)enableSyndication;
+- (void)pushSyndicationIntroStep;
+- (id)getButtonTray;
+- (void)startSyndicationOnboardingIfNeeded;
 - (void)_pushOnboardingViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)pushNameAndPhotoSharingConfigSharingPreferenceStep;
 - (void)pushNameAndPhotoSharingConfigDataStep;
@@ -101,19 +117,25 @@
 - (void)startNicknameOnboardingIfNeeded;
 - (id)_introController;
 - (void)viewIssues:(id)arg1;
-- (void)presentFromPrefsPresentationController;
+- (void)presentFromPrefsPresentationController:(id)arg1 resizeToFitContent:(_Bool)arg2;
 - (void)presentOnboarding:(id)arg1;
 - (void)prepareForOnboarding;
 - (void)prepareForSuspend;
-- (_Bool)presentNicknameSharingSetupFlowWithMemoji:(_Bool)arg1;
+- (_Bool)presentNicknameSharingSetupFlowWithMemoji:(_Bool)arg1 forUserInitiatedEdit:(_Bool)arg2;
 - (_Bool)presentNicknameSharingSetupFlow;
 - (_Bool)accountCanCreateNickname;
+- (_Bool)_shouldShowSyndicationOnboardingFlowIgnoringVersion:(_Bool)arg1;
+- (_Bool)_shouldShowSyndicationOnboardingFlow;
+- (_Bool)_shouldShowSyndicationOnboardingFlowOnLaunch;
+- (unsigned long long)syndicationOnboardingLastShownVersion;
+- (_Bool)alwaysShowSyndicationOnboarding;
 - (_Bool)_shouldShowNicknameOnboardingFlowIgnoringVersion:(_Bool)arg1;
 - (_Bool)_shouldShowNicknameOnboardingFlow;
 - (_Bool)_shouldShowNicknameOnboardingFlowOnLaunch;
 - (unsigned long long)nicknameOnboardingLastShownVersion;
 - (_Bool)alwaysShowNicknameOnboarding;
 - (_Bool)presentOnboardingIfNeeded;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

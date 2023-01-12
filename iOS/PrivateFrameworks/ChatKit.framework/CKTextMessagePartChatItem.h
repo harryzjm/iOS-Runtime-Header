@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSAttributedString, UIItemProvider;
+@class NSAttributedString, NSItemProvider;
 
 @interface CKTextMessagePartChatItem
 {
-    UIItemProvider *_dragItemProvider;
+    NSItemProvider *_dragItemProvider;
     _Bool _shouldUseBigEmoji;
     _Bool _hasCachedBigEmoji;
 }
@@ -22,20 +22,19 @@
 @property(readonly, copy, nonatomic) NSAttributedString *text;
 - (id)_time;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
-- (id)pasteboardItems;
 - (id)dragItemProvider;
 - (Class)impactBalloonViewClass;
 - (Class)balloonViewClass;
 - (id)meMentionsTextColor;
 - (id)bodyTextFont;
-- (_Bool)mentionsMe:(id)arg1;
 - (_Bool)allowsMentions;
+- (_Bool)mentionsMe:(id)arg1;
 - (id)_attributedTextWithTextColor:(id)arg1;
 - (id)_fallbackCorruptMessageTextWithTextColor:(id)arg1;
 - (_Bool)showMoneyResults;
 - (id)loadTranscriptText;
 - (id)sendAnimationTextWithColor:(id)arg1;
-- (id)composition;
+- (id)compositionWithContext:(id)arg1;
 
 @end
 

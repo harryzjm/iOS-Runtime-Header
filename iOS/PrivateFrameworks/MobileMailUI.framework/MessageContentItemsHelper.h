@@ -9,7 +9,7 @@
 #import <MobileMailUI/EFLoggable-Protocol.h>
 
 @class EMMailDropMetadata, NSArray, NSMutableDictionary, NSMutableSet, NSProgress, NSString, WKWebView;
-@protocol ContentRepresentationHandlingDelegate, EFScheduler;
+@protocol ContentRepresentationHandlingDelegate, EFScheduler, MSMailWebProcessAttachmentProxy;
 
 @interface MessageContentItemsHelper : NSObject <EFLoggable>
 {
@@ -21,6 +21,7 @@
     long long _totalUnstartedMailDropDownloadSize;
     id <EFScheduler> _attachmentsScheduler;
     NSProgress *_totalMailDropProgress;
+    id <MSMailWebProcessAttachmentProxy> _webProcessProxy;
     _Bool _allMailDropsDownloaded;
     EMMailDropMetadata *_mailDropBannerMetadata;
     WKWebView *_webView;

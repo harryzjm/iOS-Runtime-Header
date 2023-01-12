@@ -9,18 +9,15 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class IDSActivityMonitor, NSString;
-@protocol HMDIDSActivityMonitorDataSource;
 
 @interface HMDIDSActivityMonitor : NSObject <HMFLogging>
 {
-    id <HMDIDSActivityMonitorDataSource> _dataSource;
     IDSActivityMonitor *_activityMonitor;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(readonly) IDSActivityMonitor *activityMonitor; // @synthesize activityMonitor=_activityMonitor;
-@property(retain, nonatomic) id <HMDIDSActivityMonitorDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (id)logIdentifier;
 @property(readonly, copy) NSString *description;
 - (void)stopBroadcastingSubActivity:(id)arg1;

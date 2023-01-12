@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_kernel_code;
+- (id)_kernel;
 
 @end
 

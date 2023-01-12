@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSProgress, NSString, NSURL, NSUUID, SFUCryptoKey, TSPDocumentProperties, TSPDocumentRevision, TSPObject, TSPPackageWriter;
+@class NSData, NSIndexSet, NSProgress, NSString, NSURL, NSUUID, SFUCryptoKey, TSPDocumentProperties, TSPDocumentRevision, TSPObject, TSPPackageWriter;
 
 @interface TSPDocumentSaveOperationState
 {
@@ -22,6 +22,7 @@
     unsigned long long _saveToken;
     TSPObject *_documentObject;
     TSPObject *_supportObject;
+    NSURL *_originalDocumentURL;
     NSURL *_originalSupportURL;
     SFUCryptoKey *_encryptionKey;
     NSData *_passwordVerifier;
@@ -29,12 +30,14 @@
     TSPPackageWriter *_documentPackageWriter;
     TSPPackageWriter *_supportPackageWriter;
     NSUUID *_documentUUID;
+    NSIndexSet *_allDataIdentifiersPostSave;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldLeavePendingEndSave; // @synthesize shouldLeavePendingEndSave=_shouldLeavePendingEndSave;
 @property(nonatomic) _Bool didEndWriteOperation; // @synthesize didEndWriteOperation=_didEndWriteOperation;
 @property(nonatomic) _Bool shouldResumeAsynchronousModifications; // @synthesize shouldResumeAsynchronousModifications=_shouldResumeAsynchronousModifications;
+@property(retain, nonatomic) NSIndexSet *allDataIdentifiersPostSave; // @synthesize allDataIdentifiersPostSave=_allDataIdentifiersPostSave;
 @property(copy, nonatomic) NSUUID *documentUUID; // @synthesize documentUUID=_documentUUID;
 @property(retain, nonatomic) TSPPackageWriter *supportPackageWriter; // @synthesize supportPackageWriter=_supportPackageWriter;
 @property(retain, nonatomic) TSPPackageWriter *documentPackageWriter; // @synthesize documentPackageWriter=_documentPackageWriter;
@@ -42,6 +45,7 @@
 @property(retain, nonatomic) NSData *passwordVerifier; // @synthesize passwordVerifier=_passwordVerifier;
 @property(retain, nonatomic) SFUCryptoKey *encryptionKey; // @synthesize encryptionKey=_encryptionKey;
 @property(copy, nonatomic) NSURL *originalSupportURL; // @synthesize originalSupportURL=_originalSupportURL;
+@property(copy, nonatomic) NSURL *originalDocumentURL; // @synthesize originalDocumentURL=_originalDocumentURL;
 @property(retain, nonatomic) TSPObject *supportObject; // @synthesize supportObject=_supportObject;
 @property(retain, nonatomic) TSPObject *documentObject; // @synthesize documentObject=_documentObject;
 @property(nonatomic) unsigned long long saveToken; // @synthesize saveToken=_saveToken;

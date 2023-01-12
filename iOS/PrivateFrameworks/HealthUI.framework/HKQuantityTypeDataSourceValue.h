@@ -23,6 +23,7 @@
     NSDate *_endDate;
 }
 
++ (id)quantityTypeDataSourceValueWithCodableStatistics:(id)arg1 sourceTimeZone:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -35,6 +36,9 @@
 @property(retain, nonatomic) HKQuantity *maxQuantity; // @synthesize maxQuantity=_maxQuantity;
 @property(retain, nonatomic) HKQuantity *minQuantity; // @synthesize minQuantity=_minQuantity;
 @property(retain, nonatomic) HKQuantity *sumQuantity; // @synthesize sumQuantity=_sumQuantity;
+- (id)maxYValue;
+- (id)minYValue;
+- (id)codableStatistics;
 
 @end
 

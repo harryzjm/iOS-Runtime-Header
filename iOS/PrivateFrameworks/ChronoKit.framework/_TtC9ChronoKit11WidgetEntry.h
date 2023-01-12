@@ -16,9 +16,14 @@
     MISSING_TYPE *_cachedViewableEntry;
     MISSING_TYPE *_configuredDate;
     MISSING_TYPE *_currentEntry;
-    MISSING_TYPE *environmentProvider;
+    MISSING_TYPE *shouldSilencePublisher;
+    MISSING_TYPE *_environmentProvider;
     MISSING_TYPE *_content;
-    MISSING_TYPE *publisher;
+    MISSING_TYPE *_objectWillChangePublisher;
+    MISSING_TYPE *_descriptorDidChangePublisher;
+    MISSING_TYPE *_descriptorSubscription;
+    MISSING_TYPE *_descriptorProvider;
+    MISSING_TYPE *descriptor;
 }
 
 @end

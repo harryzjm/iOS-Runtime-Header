@@ -8,6 +8,7 @@
 
 @interface AXMMobileAssetEvaluationNode
 {
+    unsigned long long _formatVersion;
     NSArray *_mlModels;
     NSURL *_mobileAssetBaseURL;
 }
@@ -17,8 +18,10 @@
 @property(readonly, nonatomic) NSArray *mlModels; // @synthesize mlModels=_mlModels;
 - (void)evaluate:(id)arg1 metrics:(id)arg2;
 - (void)_downloadAssetsIfNecessary;
+- (id)contentVersionKey;
 - (void)setModelURLs:(id)arg1;
 - (id)modelURLs;
+- (unsigned long long)formatVersion;
 - (unsigned long long)maxSupportedFormatVersion;
 - (unsigned long long)minSupportedFormatVersion;
 - (id)modelResourceNames;

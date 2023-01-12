@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI220TagFeedPluginFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *paywallFactory;
-    MISSING_TYPE *paywallViewportSizeProvider;
+    MISSING_TYPE *paywallLayoutOptionsProvider;
     MISSING_TYPE *channelIssuesModule;
 }
 

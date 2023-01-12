@@ -10,15 +10,19 @@
 {
     float *_data;
     CDStruct_da2e99ad _size;
+    CDStruct_da2e99ad _currentSampleCount;
     MTLRasterizationRateSampleArrayInternal *_horizontal;
     MTLRasterizationRateSampleArrayInternal *_vertical;
+    _Bool _skipSampleValidationAndInterpolation;
 }
 
+- (void)setSampleCount:(CDStruct_da2e99ad)arg1;
+- (CDStruct_da2e99ad)sampleCount;
 - (id)vertical;
 - (id)horizontal;
 - (float *)verticalSampleStorage;
 - (float *)horizontalSampleStorage;
-- (CDStruct_da2e99ad)sampleCount;
+- (CDStruct_da2e99ad)maxSampleCount;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)description;
 - (unsigned long long)hash;

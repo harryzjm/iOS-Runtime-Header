@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HFUserNotificationServiceTopic *topic; // @synthesize topic=_topic;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+- (id)_notificationModeToString:(unsigned long long)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)initWithHome:(id)arg1 topic:(id)arg2;
 

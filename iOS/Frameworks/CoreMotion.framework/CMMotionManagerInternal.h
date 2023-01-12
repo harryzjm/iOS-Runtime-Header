@@ -15,7 +15,7 @@
     double fDeviceMotionUpdateInterval;
     double fMagnetometerUpdateInterval;
     _Bool fShowsDeviceMovementDisplay;
-    struct unique_ptr<CLDeviceMotionLiteService, std::__1::default_delete<CLDeviceMotionLiteService>> fDeviceMotionLiteService;
+    struct unique_ptr<CLDeviceMotionLiteService, std::default_delete<CLDeviceMotionLiteService>> fDeviceMotionLiteService;
     NSOperationQueue *_fDeviceMotionLiteClientQueue;
     CDUnknownBlockType _fDeviceMotionLiteFusedHandler;
     NSString *_fDeviceMotionLitePhysicalDeviceID;

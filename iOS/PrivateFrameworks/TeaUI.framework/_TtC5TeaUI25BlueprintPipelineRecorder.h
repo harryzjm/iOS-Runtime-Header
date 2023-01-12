@@ -15,6 +15,8 @@
     MISSING_TYPE *pipelineName;
     MISSING_TYPE *modifierDescription;
     MISSING_TYPE *runOptions;
+    MISSING_TYPE *signposter;
+    MISSING_TYPE *signpostID;
 }
 
 @end

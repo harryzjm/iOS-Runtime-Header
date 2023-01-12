@@ -12,11 +12,12 @@
 
 @interface TSCH3DSageLightingPackageData : NSObject <TSCH3DSageLightingPackageData>
 {
-    NSDictionary *mPackage;
-    NSArray *mLights;
+    NSDictionary *_package;
+    NSArray *_lights;
 }
 
 + (id)dataWithDictionary:(id)arg1;
+- (void).cxx_destruct;
 - (float)dropOffRateAtIndex:(unsigned long long)arg1;
 - (float)cutOffAngleAtIndex:(unsigned long long)arg1;
 - (struct Vector3)directionAtIndex:(unsigned long long)arg1;
@@ -33,7 +34,6 @@
 - (id)nameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (id)packageName;
-- (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
 
 @end

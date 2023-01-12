@@ -41,9 +41,9 @@
     NSString *_authPasswordEquivalent;
     NSString *_authPasswordFieldID;
     _Bool _parseFinished;
-    CDUnknownBlockType _webViewDoneHandler;
-    RUIElement *_activeElement;
+    CDUnknownBlockType _webViewDismissHandler;
     id <RUIObjectModelDelegate> _delegate;
+    RUIElement *_activeElement;
     NSString *_identifier;
     RUIStyle *_style;
     NSString *_identifierMarkingStackRemovalAfterPush;
@@ -68,6 +68,7 @@
 @property(copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) RUIElement *activeElement; // @synthesize activeElement=_activeElement;
 @property(readonly, nonatomic) NSDictionary *namedPages; // @synthesize namedPages=_namedPages;
 @property(readonly, nonatomic) NSArray *defaultPages; // @synthesize defaultPages=_defaultPages;
 @property(nonatomic) __weak id <RUIObjectModelDelegate> delegate; // @synthesize delegate=_delegate;
@@ -83,8 +84,9 @@
 - (void)tableViewOMDidChange:(id)arg1;
 - (_Bool)tableViewOM:(id)arg1 deleteRowAtIndexPath:(id)arg2;
 - (void)alertView:(id)arg1 pressedButton:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remoteUIWebViewControllerDonePressed:(id)arg1;
-- (void)showModalWebViewWithLinkURL:(id)arg1 scaleToFit:(_Bool)arg2 loadCompletion:(CDUnknownBlockType)arg3 doneHandler:(CDUnknownBlockType)arg4;
+- (void)remoteUIWebViewControllerDidDismiss:(id)arg1;
+- (void)remoteUIWebViewController:(id)arg1 dismissWithPayload:(id)arg2;
+- (void)showModalWebViewWithLinkURL:(id)arg1 dismissButtonLabel:(id)arg2 dismissButtonAlignment:(id)arg3 scaleToFit:(_Bool)arg4 loadCompletion:(CDUnknownBlockType)arg5 dismissHandler:(CDUnknownBlockType)arg6;
 - (id)_pageContainingTableView:(id)arg1;
 - (void)_handleElementChange:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleLinkPress:(id)arg1 attributes:(id)arg2 completion:(CDUnknownBlockType)arg3;

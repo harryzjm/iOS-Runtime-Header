@@ -17,6 +17,7 @@
 }
 
 + (id)assetURLWithUrl:(id)arg1 signature:(id)arg2;
++ (id)assetURLFromCKRecord:(id)arg1 assetId:(id *)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *signature; // @synthesize signature=_signature;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDKeyValueDomain, HDProfile;
+@class HDKeyValueDomain, HDProfile, HDProfileIdentifier;
 
 @interface HDHeadphoneDoseMetadataStore : NSObject
 {
@@ -35,6 +35,7 @@
 - (_Bool)_setPreviousSevenDayNotificationFireDate:(id)arg1 error:(id *)arg2;
 - (id)_fetchPreviousSevenDayNotificationFireDateWithNow:(id)arg1 error:(id *)arg2;
 - (id)_fetchPreviousSevenDayNotificationFireDateWithError:(id *)arg1;
+@property(readonly, nonatomic) HDProfileIdentifier *_profileIdentifier;
 - (id)_mostRecentSevenDayNotificationFowNow:(id)arg1 error:(id *)arg2;
 - (_Bool)_rebuildPreviousSevenDayNotificationFireDateWithNow:(id)arg1 error:(id *)arg2;
 - (id)collectionIntervalForDoseAccumulated:(double)arg1;

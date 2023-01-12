@@ -10,6 +10,13 @@
 
 @interface _TtC9Coherence9CREncoder : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *context;
+    MISSING_TYPE *orderedUuids;
+    MISSING_TYPE *uuids;
+    MISSING_TYPE *orderedStrings;
+    MISSING_TYPE *assets;
+    MISSING_TYPE *strings;
+    MISSING_TYPE *additionalReferences;
     MISSING_TYPE *_valueContainer;
     MISSING_TYPE *_crdtContainer;
 }

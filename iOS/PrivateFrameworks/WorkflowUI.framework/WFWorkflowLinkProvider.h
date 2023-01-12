@@ -4,33 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIActivityItemProvider.h>
+@class NSString;
 
-@class NSString, NSURL, WFWorkflow;
-@protocol WFUserInterfaceHost;
-
-@interface WFWorkflowLinkProvider : UIActivityItemProvider
+@interface WFWorkflowLinkProvider
 {
-    WFWorkflow *_workflow;
     NSString *_exclusiveActivityType;
-    NSURL *_workflowURL;
-    NSString *_workflowID;
-    NSURL *_realmURL;
-    id <WFUserInterfaceHost> _userInterface;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <WFUserInterfaceHost> userInterface; // @synthesize userInterface=_userInterface;
-@property(readonly, nonatomic) NSURL *realmURL; // @synthesize realmURL=_realmURL;
-@property(readonly, nonatomic) NSString *workflowID; // @synthesize workflowID=_workflowID;
-@property(retain, nonatomic) NSURL *workflowURL; // @synthesize workflowURL=_workflowURL;
 @property(copy, nonatomic) NSString *exclusiveActivityType; // @synthesize exclusiveActivityType=_exclusiveActivityType;
-@property(readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
-- (id)activityViewControllerLinkMetadata:(id)arg1;
-- (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)item;
-- (id)initWithPlaceholderItem:(id)arg1 workflow:(id)arg2 userInterface:(id)arg3;
+- (void)generateItemURL;
+- (id)shareShortcutEventForActivityType:(id)arg1;
+- (id)initWithWorkflow:(id)arg1 userInterface:(id)arg2;
 
 @end
 

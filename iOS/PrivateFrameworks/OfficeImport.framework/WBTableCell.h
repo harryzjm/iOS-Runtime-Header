@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)readFrom:(id)arg1 textRun:(struct WrdTextRun *)arg2 with:(struct WrdTableProperties *)arg3 tracked:(struct WrdTableProperties *)arg4 row:(id)arg5 index:(unsigned long long)arg6 cell:(id)arg7;
++ (void)readFrom:(id)arg1 textRun:(struct WrdTextRun *)arg2 with:(void *)arg3 tracked:(void *)arg4 row:(id)arg5 index:(unsigned long long)arg6 cell:(id)arg7;
 
 @end
 

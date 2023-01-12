@@ -14,8 +14,6 @@
 - (id)oneTriggeredFormatString;
 - (id)multipleReadyFormatString;
 - (id)oneReadyFormatString;
-- (id)_singleTriggeredRoomFormatString;
-- (id)_entireHomeString;
 - (id)_serviceType;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;

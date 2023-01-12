@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_MDMBooksToMCBooks:(id)arg1;
 + (id)managedBooks;
 
 @end

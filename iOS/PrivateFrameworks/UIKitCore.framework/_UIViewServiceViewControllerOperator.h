@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusMovementActionForwarding-Protocol.h>
 #import <UIKitCore/_UIHostedTextServiceSessionDelegate-Protocol.h>
-#import <UIKitCore/_UISheetPresentationControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
 #import <UIKitCore/_UIViewServiceDeputyRotationSource-Protocol.h>
 #import <UIKitCore/_UIViewServiceDummyPopoverControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewServiceViewControllerOperator_RemoteViewControllerInterface-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSUndoManager, UIPopoverController, UIViewController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
+@class NSArray, NSMutableArray, NSString, NSUndoManager, UIPopoverController, UIViewController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIQueueingProxy, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
 @protocol _UIViewServiceViewControllerOperatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceViewControllerOperator <_UIViewServiceViewControllerOperator_RemoteViewControllerInterface, _UIHostedTextServiceSessionDelegate, _UIViewServiceDummyPopoverControllerDelegate, _UISheetPresentationControllerDelegate, _UIFocusMovementActionForwarding, _UIViewServiceDeputy, _UIViewServiceDeputyRotationSource>
+@interface _UIViewServiceViewControllerOperator <_UIViewServiceViewControllerOperator_RemoteViewControllerInterface, _UIHostedTextServiceSessionDelegate, _UIViewServiceDummyPopoverControllerDelegate, UIAdaptivePresentationControllerDelegate, _UIFocusMovementActionForwarding, _UIViewServiceDeputy, _UIViewServiceDeputyRotationSource>
 {
     int __automatic_invalidation_retainCount;
     _Bool __automatic_invalidation_invalidated;
@@ -25,8 +25,9 @@ __attribute__((visibility("hidden")))
     int _mediaPID;
     NSString *_hostBundleID;
     CDStruct_4c969caf _hostAuditToken;
+    _Bool _hostCanDynamicallySpecifySupportedInterfaceOrientations;
     id _remoteViewControllerProxyToOperator;
-    id _remoteViewControllerProxyToViewController;
+    _UIQueueingProxy *_remoteViewControllerProxyToViewController;
     NSArray *_pluginDisplayConfigurations;
     UIViewController *_localViewController;
     NSString *_presentationControllerClassName;
@@ -50,6 +51,10 @@ __attribute__((visibility("hidden")))
     _UIViewControllerOneToOneTransitionContext *_viewControllerTransitioningContext;
     long long _editAlertToken;
     NSUndoManager *_editAlertUndoManager;
+    _Bool _sheetPresentationControllerContainsFirstResponder;
+    _Bool _sheetPresentationControllerFirstResponderRequiresKeyboard;
+    struct CGRect _sheetPresentationControllerKeyboardFrame;
+    _Bool _hasRequestedKeyboardEventEnvironmentDeferring;
     id <_UIViewServiceViewControllerOperatorDelegate> _delegate;
     CDUnknownBlockType __traitsWillChangeHandler;
     CDUnknownBlockType __traitsDidChangeHandler;
@@ -120,7 +125,7 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(_Bool)arg2;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 boundingPath:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(id)arg6 whenDone:(CDUnknownBlockType)arg7;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 boundingPath:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(id)arg6 hostPresentationTime:(unsigned long long)arg7 whenDone:(CDUnknownBlockType)arg8;
 - (_Bool)_shouldForwardLegacyRotationOnly;
 - (id)_viewControllersForRotationCallbacks;
 - (void)__hostDidChangeStatusBarHeight:(double)arg1;
@@ -145,7 +150,10 @@ __attribute__((visibility("hidden")))
 - (id)invalidate;
 - (void)dummyPopoverController:(id)arg1 popoverViewDidSetUseToolbarShine:(_Bool)arg2;
 - (void)dummyPopoverController:(id)arg1 didChangeContentSize:(struct CGSize)arg2 animated:(_Bool)arg3;
-- (void)_sheetInteractionDidChangeOffset:(struct CGPoint)arg1 dragging:(_Bool)arg2 dismissible:(_Bool)arg3 indexOfCurrentDetent:(unsigned long long)arg4 duration:(double)arg5 timingCurve:(id)arg6;
+- (void)_sheetInteractionDraggingDidEnd;
+- (void)_sheetInteractionDraggingDidChangeWithTranslation:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2 animateChange:(_Bool)arg3 dismissible:(_Bool)arg4;
+- (void)_sheetInteractionDraggingDidBeginWithRubberBandCoefficient:(double)arg1 dismissible:(_Bool)arg2 interruptedOffset:(struct CGPoint)arg3;
+- (void)_sheetPresentationControllerDidChangeContainsFirstResponder:(_Bool)arg1 firstResponderRequiresKeyboard:(_Bool)arg2 keyboardFrame:(struct CGRect)arg3;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (_Bool)isModalInPresentation;
 - (void)systemLayoutFittingSizeDidChangeForChildViewController:(id)arg1;
@@ -162,7 +170,8 @@ __attribute__((visibility("hidden")))
 - (void)_viewServiceIsDisplayingPopoverController:(id)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_windowDidBecomeKey:(id)arg1;
+- (void)_wantsKeyboardEventEnvironmentDeferringWithoutFirstResponder:(id)arg1;
+- (void)_windowDidBecomeApplicationKey:(id)arg1;
 - (void)_firstResponderDidChange:(id)arg1;
 - (_Bool)becomeFirstResponder;
 - (void)__hostWillTransitionToTraitCollection:(id)arg1 withContextDescription:(id)arg2 deferIfAnimated:(_Bool)arg3 inRemoteViewHierarchy:(_Bool)arg4;
@@ -170,13 +179,14 @@ __attribute__((visibility("hidden")))
 - (void)__setHostTintColor:(id)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__hostDidUpdateAppearanceWithSerializedRepresentations:(id)arg1 originalSource:(id)arg2;
 - (id)_appearanceSource;
-- (void)_windowDidUnregisterScrollToTopView;
-- (void)_windowDidRegisterScrollToTopView;
+- (void)_windowDidRegisterOrUnregisterScrollToTopView;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (_Bool)__knownPresentationWithoutPresentationControllerInstance;
 - (void)window:(id)arg1 statusBarWillChangeFromHeight:(double)arg2 toHeight:(double)arg3;
 - (void)__setHostViewUnderlapsStatusBar:(_Bool)arg1;
+- (void)__setHostCanDynamicallySpecifySupportedInterfaceOrientations:(_Bool)arg1;
 @property(readonly, nonatomic) UIViewController *localViewController;
+- (void)_setNeedsUpdateOfSupportedInterfaceOrientations;
 - (void)_updateSupportedInterfaceOrientationsIfNecessary;
 - (id)_window;
 - (void)addDeputyRotationDelegate:(id)arg1;

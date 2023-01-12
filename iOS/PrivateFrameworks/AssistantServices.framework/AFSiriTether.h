@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class AFInstanceContext, NSMutableArray;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface AFSiriTether : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_xpc_object> *_connection;
+    AFInstanceContext *_instanceContext;
     _Bool _isAttached;
     CDUnknownBlockType _attachmentStatusChangedHandler;
     NSMutableArray *_pendingEvents;
@@ -31,6 +32,7 @@
 - (void)waitForAttachment:(double)arg1;
 - (void)attach:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)initWithInstanceContext:(id)arg1;
 - (id)init;
 
 @end

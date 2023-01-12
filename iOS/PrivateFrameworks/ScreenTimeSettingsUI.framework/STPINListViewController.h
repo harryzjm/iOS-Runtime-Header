@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) id showingPinTarget; // @synthesize showingPinTarget=_showingPinTarget;
 @property(retain, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
+- (void)setUpPasscodeAndLineWrapBehaviorForSpecifier:(id)arg1;
 - (void)devicePINControllerDidDismissPINPane:(id)arg1;
 - (void)devicePINController:(id)arg1 didAcceptChangedPIN:(id)arg2;
 - (void)devicePINController:(id)arg1 didAcceptSetPIN:(id)arg2;

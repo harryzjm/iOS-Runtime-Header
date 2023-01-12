@@ -7,6 +7,7 @@
 @class NSArray, NSData, VNCanceller;
 
 @protocol VNClustererModelBuilding
+- (NSArray *)updateModelByAddingPersons:(NSArray *)arg1 withGroupingIdentifiers:(NSArray *)arg2 andRemovingPersons:(NSArray *)arg3 canceller:(VNCanceller *)arg4 error:(id *)arg5;
 - (NSArray *)updateModelByAddingFaces:(NSArray *)arg1 withGroupingIdentifiers:(NSArray *)arg2 andRemovingFaces:(NSArray *)arg3 canceller:(VNCanceller *)arg4 error:(id *)arg5;
 - (NSArray *)updateModelByAddingFaces:(NSArray *)arg1 andRemovingFaces:(NSArray *)arg2 canceller:(VNCanceller *)arg3 error:(id *)arg4;
 - (NSData *)saveAndReturnCurrentModelState:(id *)arg1;

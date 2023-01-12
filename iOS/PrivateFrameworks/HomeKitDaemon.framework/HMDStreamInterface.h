@@ -8,15 +8,14 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraNetworkConfig, HMDCameraStreamSessionID, NSObject, NSString;
+@class HMDCameraStreamSessionID, NSObject, NSString;
 @protocol HMDCameraRemoteStreamProtocol, HMFLocking, OS_dispatch_queue;
 
 @interface HMDStreamInterface : HMFObject <HMFLogging>
 {
     id <HMFLocking> _lock;
     int _localRTPSocket;
-    unsigned long long _streamInterfaceState;
-    HMDCameraNetworkConfig *_localNetworkConfig;
+    unsigned long long _state;
     HMDCameraStreamSessionID *_sessionID;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -32,14 +31,14 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
-@property(readonly, nonatomic) HMDCameraNetworkConfig *localNetworkConfig; // @synthesize localNetworkConfig=_localNetworkConfig;
+@property(nonatomic) unsigned long long state; // @synthesize state=_state;
 - (_Bool)loadMiscFields:(id)arg1;
 - (id)extractNetworkConfig:(int)arg1 peerNameExtractor:(CDUnknownFunctionPointerType)arg2;
-- (int)openSocket;
-@property(nonatomic) unsigned long long streamInterfaceState; // @synthesize streamInterfaceState=_streamInterfaceState;
+- (int)openSocketWithNetworkConfig:(id)arg1;
+- (void)setStreamInterfaceState:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)logIdentifier;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 delegateQueue:(id)arg3 localNetworkConfig:(id)arg4 sessionHandler:(id)arg5;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 delegateQueue:(id)arg3 sessionHandler:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

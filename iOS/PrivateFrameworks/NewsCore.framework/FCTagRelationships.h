@@ -10,14 +10,12 @@
 
 @interface FCTagRelationships : NSObject
 {
-    NSArray *_relatedTopicsForOnboarding;
     NSArray *_relatedChannelsForOnboarding;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *relatedChannelsForOnboarding; // @synthesize relatedChannelsForOnboarding=_relatedChannelsForOnboarding;
-@property(readonly, copy, nonatomic) NSArray *relatedTopicsForOnboarding; // @synthesize relatedTopicsForOnboarding=_relatedTopicsForOnboarding;
-- (id)initWithRelatedTopicsForOnboarding:(id)arg1 relatedChannelsForOnboarding:(id)arg2;
+- (id)initWithRelatedChannelsForOnboarding:(id)arg1;
 
 @end
 

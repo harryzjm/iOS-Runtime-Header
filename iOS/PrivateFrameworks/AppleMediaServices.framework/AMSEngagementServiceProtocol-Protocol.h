@@ -7,7 +7,11 @@
 @class AMSEngagementEnqueueRequest, AMSEngagementSyncRequest;
 
 @protocol AMSEngagementServiceProtocol
+- (void)beginObservingMessages;
 - (void)syncWithRequest:(AMSEngagementSyncRequest *)arg1 completion:(void (^)(AMSEngagementSyncResult *, NSError *))arg2;
 - (void)enqueueWithRequest:(AMSEngagementEnqueueRequest *)arg1 completion:(void (^)(AMSEngagementEnqueueResult *, NSError *))arg2;
+
+@optional
+- (oneway void)syncMetricsIdentifiers;
 @end
 

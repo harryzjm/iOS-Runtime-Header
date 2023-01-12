@@ -6,10 +6,10 @@
 
 @interface USORootNode
 {
-    struct UsoRootNode *_usoRootNode;
+    void *_usoRootNode;
 }
 
-- (id)initWithCppRootNode:(struct UsoRootNode *)arg1;
+- (id)initWithCppRootNode:(void *)arg1;
 
 @end
 

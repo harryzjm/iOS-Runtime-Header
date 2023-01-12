@@ -8,7 +8,7 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class MRDeviceInfo, MROrigin, MRPlayerPath, NSMutableArray, NSMutableDictionary, NSNumber;
+@class MRDeviceInfo, MROrigin, MRPlayerPath, NSDate, NSMutableArray, NSMutableDictionary, NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClientRequests : NSObject <MRNowPlayingClientState>
@@ -17,11 +17,13 @@
     MRDeviceInfo *_deviceInfo;
     NSNumber *_volumeCapabilities;
     NSNumber *_volume;
+    NSDate *_lastPlayingDate;
     NSMutableArray *_nowPlayingClients;
     NSMutableDictionary *_transactionCallbacks;
     NSMutableArray *_deviceInfoCompletions;
     NSMutableArray *_volumeCompletions;
     NSMutableArray *_volumeCapabilitiesCompletions;
+    NSMutableArray *_lastPlayingDateCompletions;
     MROrigin *_origin;
     MRPlayerPath *_playerPath;
 }
@@ -30,11 +32,13 @@
 @property(readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property(readonly, nonatomic) MROrigin *origin; // @synthesize origin=_origin;
 - (void)restoreNowPlayingClientState;
+- (void)handleLastPlayingDateRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleVolumeCapabilitiesRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleVolumeRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleDeviceInfoRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)transactionCallbackForName:(unsigned long long)arg1;
 - (void)setTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
+@property(retain, nonatomic) NSDate *lastPlayingDate;
 @property(retain, nonatomic) NSNumber *volume;
 @property(retain, nonatomic) NSNumber *volumeCapabilities;
 @property(copy, nonatomic) MRDeviceInfo *deviceInfo;

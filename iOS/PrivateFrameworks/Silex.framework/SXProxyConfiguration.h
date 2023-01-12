@@ -12,12 +12,14 @@
 
 @interface SXProxyConfiguration : NSObject <SXProxyConfiguration>
 {
+    NSString *_proxyHost;
     NSString *_proxyAutoConfigScript;
 }
 
 + (id)direct;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *proxyAutoConfigScript; // @synthesize proxyAutoConfigScript=_proxyAutoConfigScript;
+@property(readonly, copy, nonatomic) NSString *proxyHost; // @synthesize proxyHost=_proxyHost;
 - (id)initWithHost:(id)arg1;
 - (id)initWithProxyAutoConfigScript:(id)arg1;
 

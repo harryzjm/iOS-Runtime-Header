@@ -9,16 +9,14 @@
 #import <PagesQuicklook/TSKChangeSourceObserver-Protocol.h>
 #import <PagesQuicklook/TSWPLayoutOwner-Protocol.h>
 
-@class NSMapTable, NSString, TPPageController;
-@protocol TSWPTopicNumberHints;
+@class NSMapTable, NSString, TPPaginatedPageController;
 
 @interface TPTextFlowLayoutController : NSObject <TSWPLayoutOwner, TSKChangeSourceObserver>
 {
-    TPPageController *_pageController;
+    TPPaginatedPageController *_pageController;
     NSMapTable *_layoutMgrs;
     NSMapTable *_flows;
     _Bool _tornDown;
-    NSObject<TSWPTopicNumberHints> *_startTargetTopicNumberHints;
 }
 
 - (void).cxx_destruct;
@@ -29,7 +27,6 @@
 - (id)p_flowsOnPageIndex:(unsigned long long)arg1;
 - (id)p_flowsOnPage:(id)arg1 textBoxes:(inout id)arg2;
 - (void)i_trimFlow:(id)arg1 pageIndex:(unsigned long long)arg2 toCharIndex:(unsigned long long)arg3;
-- (id)previousTargetTopicNumbersForTarget:(id)arg1;
 - (id)previousTargetLastColumnForTarget:(id)arg1;
 - (id)p_previousTextBoxForTarget:(id)arg1;
 - (id)textWrapper;
@@ -41,7 +38,7 @@
 - (id)hintForFlow:(id)arg1 pageIndex:(unsigned long long)arg2;
 - (void)invalidateFlows:(id)arg1 startingPage:(id)arg2;
 - (void)processWidowAndInflationOnPage:(id)arg1;
-- (void)deflatePage:(id)arg1 intoHints:(inout id)arg2 topicNumbers:(inout id)arg3;
+- (void)deflatePage:(id)arg1 intoHints:(inout id)arg2 topicNumberHints:(inout id)arg3;
 - (void)layOutFlowsIfNeededOnPage:(id)arg1;
 - (void)teardown;
 - (void)dealloc;

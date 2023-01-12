@@ -7,6 +7,8 @@
 #import <UIKit/UINavigationBar.h>
 
 @interface UINavigationBar (CKUtilities)
+- (void)_enableBusinessBranding:(_Bool)arg1 primaryColor:(id)arg2 secondaryColor:(id)arg3;
+- (void)enableBranding:(_Bool)arg1 forBusinessHandle:(id)arg2;
 - (void)enableBranding:(_Bool)arg1 forBusinessChat:(id)arg2;
 - (void)setDarkEffectStyle:(_Bool)arg1;
 @end

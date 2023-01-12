@@ -11,25 +11,32 @@
     SBAppLayout *_appLayout;
     unsigned long long _direction;
     SBFullScreenAppLayoutSwitcherModifier *_fullScreenModifier;
+    _Bool _shouldBlurUnreadyScenes;
+    long long _startingScreenEdge;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldBlurUnreadyScenes; // @synthesize shouldBlurUnreadyScenes=_shouldBlurUnreadyScenes;
+@property(nonatomic) long long startingScreenEdge; // @synthesize startingScreenEdge=_startingScreenEdge;
 - (_Bool)_isIndexSlideOverAppLayout:(unsigned long long)arg1;
 - (_Bool)_shouldApplySlideOverLayoutToIndex:(unsigned long long)arg1;
 - (double)homeScreenAlpha;
 - (id)appLayoutsToCacheSnapshots;
+- (double)blurDelayForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
+- (_Bool)isLayoutRoleBlurred:(long long)arg1 inAppLayout:(id)arg2;
+- (_Bool)isLayoutRoleMatchMovedToScene:(long long)arg1 inAppLayout:(id)arg2;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
 - (_Bool)isHomeScreenContentRequired;
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (id)handleSceneReadyEvent:(id)arg1;
 - (id)transitionWillBegin;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 direction:(unsigned long long)arg3;
 

@@ -20,7 +20,6 @@
 
 + (id)featureObserver;
 + (id)featureForFreeValuedIdentifier:(id)arg1;
-+ (id)featureForIdentifier:(id)arg1 allowFreeValued:(_Bool)arg2;
 + (id)featureForIdentifier:(id)arg1;
 + (id)featureFromTagID:(id)arg1;
 + (id)featuresFromTagIDs:(id)arg1;
@@ -30,15 +29,13 @@
 + (id)featuresFromHeadline:(id)arg1 personalizationTreatment:(id)arg2;
 + (id)featuresFromIssue:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *tagID; // @synthesize tagID=_tagID;
+@property(readonly, nonatomic) NSString *tagID;
 @property(readonly, nonatomic) NSString *fc_description; // @synthesize fc_description=_fc_description;
-@property(retain, nonatomic) NSString *personalizationIdentifier; // @synthesize personalizationIdentifier=_personalizationIdentifier;
+@property(readonly, nonatomic) NSString *personalizationIdentifier;
 @property(nonatomic) _Bool shouldBeBoosted; // @synthesize shouldBeBoosted=_shouldBeBoosted;
 - (double)featureWeightWithConfigurableValues:(id)arg1 publisherID:(id)arg2;
-- (id)fr_description;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(id)arg1;
 - (id)init;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

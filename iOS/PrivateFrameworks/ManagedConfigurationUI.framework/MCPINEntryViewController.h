@@ -11,7 +11,6 @@
 @class NSString;
 @protocol DevicePINControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MCPINEntryViewController : DevicePINController <UIAdaptivePresentationControllerDelegate>
 {
     id <DevicePINControllerDelegate> _delegate;

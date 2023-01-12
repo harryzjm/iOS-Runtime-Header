@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
         _Bool respondsToCanBeginDismissalAtLocationFromProvider;
         _Bool respondsToTilingView;
         _Bool respondsToDesignatedTileController;
+        _Bool respondsToIsDismissing;
     } _delegateFlags;
     _Bool _isHandlingDismissalInteraction;
     _Bool __needsUpdateGestureRecognizers;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateViewHostingGestureRecognizers;
 - (void)_updateViewControllerIfNeeded;
 - (void)_invalidateViewController;
+- (void)setIsHandlingDismissalInteraction:(_Bool)arg1;
 - (void)endDismissal:(_Bool)arg1;
 - (void)updateDismissalWithInteractionProgress:(double)arg1 interactionWillFinish:(_Bool)arg2;
 - (void)beginDismissal;

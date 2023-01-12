@@ -10,10 +10,14 @@
 {
 }
 
+- (void)searchEndpointsForRoutingContextUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)searchForLogicalOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)searchForOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchEndpointsForLeaderOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)searchEndpointsForCompanionWithTimeout:(double)arg1 reason:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)searchEndpointsForGroupUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchEndpointsWithPredicate:(CDUnknownBlockType)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchEndpointsForString:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)searchEndpointsForOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end

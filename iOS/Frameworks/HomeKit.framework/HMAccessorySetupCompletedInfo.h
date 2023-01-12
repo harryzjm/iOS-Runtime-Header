@@ -6,23 +6,36 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFObject-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface HMAccessorySetupCompletedInfo : NSObject <NSSecureCoding>
+@interface HMAccessorySetupCompletedInfo : NSObject <HMFObject, NSSecureCoding>
 {
     NSArray *_addedAccessoryUUIDs;
     NSString *_homeUUID;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)shortDescription;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *homeUUID; // @synthesize homeUUID=_homeUUID;
-@property(retain, nonatomic) NSArray *addedAccessoryUUIDs; // @synthesize addedAccessoryUUIDs=_addedAccessoryUUIDs;
+@property(readonly, copy) NSString *homeUUID; // @synthesize homeUUID=_homeUUID;
+@property(readonly, copy) NSArray *addedAccessoryUUIDs; // @synthesize addedAccessoryUUIDs=_addedAccessoryUUIDs;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithHome:(id)arg1 accessoryList:(id)arg2;
+@property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *privateDescription;
+@property(readonly, copy) NSString *shortDescription;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithHomeUUID:(id)arg1 addedAccessoryUUIDs:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *propertyDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -9,11 +9,9 @@
 @class NSISEngine, NSISVariable, NSString;
 
 @protocol NSISVariableDelegate <NSObject>
+- (int)nsis_orientationHintForVariable:(NSISVariable *)arg1;
 - (_Bool)nsis_valueOfVariableIsUserObservable:(NSISVariable *)arg1;
 - (NSString *)nsis_descriptionOfVariable:(NSISVariable *)arg1;
 - (void)nsis_valueOfVariable:(NSISVariable *)arg1 didChangeInEngine:(NSISEngine *)arg2;
-
-@optional
-- (int)nsis_orientationHintForVariable:(NSISVariable *)arg1;
 @end
 

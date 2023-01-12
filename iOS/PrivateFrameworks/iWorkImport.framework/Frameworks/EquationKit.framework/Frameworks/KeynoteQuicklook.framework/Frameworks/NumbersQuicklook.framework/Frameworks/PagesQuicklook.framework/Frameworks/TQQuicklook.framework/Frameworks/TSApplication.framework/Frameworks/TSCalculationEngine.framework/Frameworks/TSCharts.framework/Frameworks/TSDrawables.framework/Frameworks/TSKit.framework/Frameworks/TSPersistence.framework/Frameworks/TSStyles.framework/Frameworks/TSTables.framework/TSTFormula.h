@@ -65,10 +65,10 @@
 - (void)reset;
 - (id)initWithCalculationEngine:(id)arg1 viewHostCell:(struct TSUViewCellCoord)arg2 hostTable:(id)arg3;
 - (id)initWithCalculationEngine:(id)arg1 baseHostCell:(struct TSUModelCellCoord)arg2 hostTable:(id)arg3;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 formula:(id)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewHostCell:(struct TSUViewCellCoord)arg3 formula:(id)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 formula:(id)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg6;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewHostCell:(struct TSUViewCellCoord)arg3 formula:(id)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg6;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 formula:(id)arg4 ownerUID:(const struct TSKUIDStruct *)arg5;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewHostCell:(struct TSUViewCellCoord)arg3 formula:(id)arg4 ownerUID:(const struct TSKUIDStruct *)arg5;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 formula:(id)arg4 ownerUID:(const struct TSKUIDStruct *)arg5 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg6;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewHostCell:(struct TSUViewCellCoord)arg3 formula:(id)arg4 ownerUID:(const struct TSKUIDStruct *)arg5 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg6;
 - (id)initWithCalculationEngine:(id)arg1 expressionTree:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 hostTable:(id)arg4;
 
 @end

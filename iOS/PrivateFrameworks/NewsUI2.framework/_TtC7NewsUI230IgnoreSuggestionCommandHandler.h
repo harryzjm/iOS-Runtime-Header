@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *tagService;
     MISSING_TYPE *subscriptionService;
-    MISSING_TYPE *alertPresenter;
 }
 
 @end

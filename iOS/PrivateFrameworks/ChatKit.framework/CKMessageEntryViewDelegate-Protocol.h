@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKMediaObject, CKMessageEntryView, NSArray, UITextView;
+@class CKMediaObject, CKMessageEntryView, IMPluginPayload, NSArray, UITextView;
 
 @protocol CKMessageEntryViewDelegate <NSObject>
 - (struct CGSize)messageEntryViewMaxShelfPluginViewSize:(CKMessageEntryView *)arg1;
@@ -14,10 +14,11 @@
 - (void)messageEntryViewRaiseGestureAutoSend:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSendButtonHitWhileDisabled:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSendButtonHit:(CKMessageEntryView *)arg1;
+- (void)messageEntryView:(CKMessageEntryView *)arg1 didInsertPluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 didTapMediaObject:(CKMediaObject *)arg2;
 - (_Bool)messageEntryView:(CKMessageEntryView *)arg1 shouldInsertMediaObjects:(NSArray *)arg2;
 - (void)messageEntryViewDidEndEditing:(CKMessageEntryView *)arg1;
-- (void)messageEntryViewDidBeginEditing:(CKMessageEntryView *)arg1;
+- (void)messageEntryViewDidBeginEditingNotAlreadyActive:(CKMessageEntryView *)arg1;
 - (_Bool)messageEntryViewShouldBeginEditing:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewRecordingDidChange:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewDidChange:(CKMessageEntryView *)arg1;
@@ -27,10 +28,11 @@
 - (void)messageEntryViewPopulatePreviousSentMessage:(CKMessageEntryView *)arg1;
 - (void)sendCurrentLocationMessage:(CKMessageEntryView *)arg1;
 - (UITextView *)textViewOnscreenWithEntryView;
+- (void)messageEntryViewDidBeginEditing:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewWantsEffectPicker:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSwipeDownGestureRecognized:(CKMessageEntryView *)arg1;
 - (void)messageEntryView:(CKMessageEntryView *)arg1 shouldShowAppStrip:(_Bool)arg2 animated:(_Bool)arg3;
 - (_Bool)shouldMessageEntryViewReportBrowserButtonHitToInputDelegate:(CKMessageEntryView *)arg1;
-- (_Bool)getContainerWidth:(double *)arg1 offset:(double *)arg2;
+- (_Bool)messageEntryViewWidth:(double *)arg1 andOffset:(double *)arg2;
 @end
 

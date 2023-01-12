@@ -78,8 +78,8 @@
 @property(copy, nonatomic) TSKSelectionPath *selectionPath; // @synthesize selectionPath=_selectionPath;
 @property(nonatomic) _Bool editingDisabled; // @synthesize editingDisabled=_editingDisabled;
 - (void)resetForInitialViewing;
-- (void)saveToArchive:(struct UIStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
-- (void)loadFromArchive:(const struct UIStateArchive *)arg1 unarchiver:(id)arg2 context:(id)arg3;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2 context:(id)arg3;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2 context:(id)arg3;
 @property(readonly, copy) NSString *debugDescription;
 - (void)updateOutlineStateFromSlideTree:(id)arg1;
 - (id)archivedUIStateInContext:(id)arg1;

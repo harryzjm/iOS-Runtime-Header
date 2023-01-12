@@ -11,18 +11,23 @@
 
 @interface _PXGAssetImageCacheEntry : NSObject
 {
+    _Bool _isDegraded;
     unsigned int _imageOrientation;
+    struct CGImage *_cgImage;
     NSMutableIndexSet *_requestIDs;
     id <PXDisplayAsset> _asset;
-    struct CGImage *_image;
+    struct CGSize _targetSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isDegraded; // @synthesize isDegraded=_isDegraded;
 @property(nonatomic) unsigned int imageOrientation; // @synthesize imageOrientation=_imageOrientation;
-@property(nonatomic) struct CGImage *image; // @synthesize image=_image;
+@property(nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property(retain, nonatomic) id <PXDisplayAsset> asset; // @synthesize asset=_asset;
 @property(readonly, nonatomic) NSMutableIndexSet *requestIDs; // @synthesize requestIDs=_requestIDs;
 - (void)prepareForReuse;
+@property(readonly, nonatomic) struct CGSize imageSize;
+@property(nonatomic) struct CGImage *cgImage; // @synthesize cgImage=_cgImage;
 - (void)dealloc;
 - (id)init;
 

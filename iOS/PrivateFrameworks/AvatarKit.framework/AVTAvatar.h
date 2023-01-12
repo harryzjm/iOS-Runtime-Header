@@ -9,7 +9,7 @@
 #import <AvatarKit/AVTPhysicsControllerDelegate-Protocol.h>
 #import <AvatarKit/NSCopying-Protocol.h>
 
-@class AVTEyeSkinningDescriptor, AVTPhysicsController, AVTPupilReflectionCorrectionDescriptor, CAAnimation, MISSING_TYPE, NSMutableArray, NSString, SCNAnimationPlayer, SCNNode, SCNPhysicsWorld;
+@class AVTEyeSkinningDescriptor, AVTPhysicsController, AVTPupilReflectionCorrectionDescriptor, CAAnimation, MISSING_TYPE, NSMutableArray, NSString, SCNAnimationPlayer, SCNNode;
 
 @interface AVTAvatar : NSObject <AVTPhysicsControllerDelegate, NSCopying>
 {
@@ -26,7 +26,6 @@
     int _transitionCount;
     _Bool _arMode;
     _Bool _optimizedForSnapshot;
-    SCNPhysicsWorld *_physicsWorld;
     AVTPhysicsController *_physicsController;
     NSMutableArray *_clipsPlaying;
     MISSING_TYPE *_lookAt;
@@ -44,30 +43,29 @@
     SCNAnimationPlayer *_bakedAnimationPlayer_lazy;
 }
 
++ (id)avatarWithDescriptor:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;
 + (id)avatarWithDataRepresentation:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;
 + (id)avatarWithDataRepresentation:(id)arg1 error:(id *)arg2;
-+ (id)avatarDictionaryFromDataRepresentation:(id)arg1 error:(id *)arg2;
-+ (unsigned char)classIdentifier;
 + (_Bool)canLoadDataRepresentation:(id)arg1;
-+ (_Bool)canLoadDataRepresentationWithVersion:(unsigned short)arg1 minimumCompatibleVersion:(unsigned short)arg2 error:(id *)arg3;
 + (void)preloadAvatar:(id)arg1;
 + (struct)applyGazeCorrectionWithInputAngle:(struct)arg1 translation: /* Error: Ran out of types for this method. */;
 - (void).cxx_destruct;
 - (void)configureForBestAnimationQuality;
 - (id)stickerPhysicsStateIdentifier;
 - (double)physicsController:(id)arg1 downforceForNodeNamed:(id)arg2;
-- (id)physicsWorldForPhysicsController:(id)arg1;
 - (id)avatarNodeForPhysicsController:(id)arg1;
 - (void)update;
-- (void)_encode:(id)arg1;
-- (id)initWithDictionaryRepresentation:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;
+- (id)newDescriptor;
 - (id)dataRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithUsageIntent:(unsigned long long)arg1;
 - (unsigned long long)usageIntent;
 - (id)snapshotWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
+- (void)stopTransitionAnimationWithBlendOutDuration:(double)arg1;
 - (void)stopTransitionAnimation;
+- (void)_transitionFromPose:(id)arg1 toPose:(id)arg2 bakedAnimationBlendFactor:(double)arg3 duration:(double)arg4 delay:(double)arg5 timingFunction:(id)arg6 timingAnimation:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)transitionFromPose:(id)arg1 toPose:(id)arg2 duration:(double)arg3 delay:(double)arg4 timingAnimation:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)transitionFromPose:(id)arg1 toPose:(id)arg2 duration:(double)arg3 delay:(double)arg4 timingFunction:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)transitionFromPose:(id)arg1 toPose:(id)arg2 duration:(double)arg3 delay:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)transitionFromPose:(id)arg1 duration:(double)arg2 delay:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)transitionToPose:(id)arg1 duration:(double)arg2 delay:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -79,9 +77,11 @@
 - (id)pose;
 - (void)_resetFaceToRandomPosition;
 - (void)setupFaceTracking;
-- (long long)blendShapeIndexForBlendShapeName:(id)arg1;
-- (id)blendShapeNameForBlendShapeIndex:(unsigned long long)arg1;
+- (void)enumerateMorphInfoForCustomCustomBlendShapeName:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (long long)blendShapeIndexForARKitBlendShapeName:(id)arg1;
+- (id)blendShapeNameForARKitBlendShapeIndex:(unsigned long long)arg1;
 - (CDStruct_8932552d)morphInfoForARKitBlendShapeIndex:(unsigned long long)arg1;
+- (void)updatePoseWithPoseProvider:(id)arg1 applySmoothing:(_Bool)arg2;
 - (void)setupMorphInfoForChangeInSubHierarchy;
 - (void)setupMorphInfo;
 - (id)effectiveMorphedNodeForTargetName:(id)arg1 candidateNode:(id)arg2;
@@ -132,9 +132,8 @@
 - (id)cameraNode;
 - (id)lightingNode;
 - (void)_avatarNodeAndHeadNodeAreNowAvailable;
-- (void)resetToPhysicsState:(id)arg1;
+- (void)resetToPhysicsState:(id)arg1 assumeRestStateIfNil:(_Bool)arg2;
 - (id)physicsState;
-- (void)setupPhysicsIfNeeded;
 - (void)physicsSpecializationSettingsDidChange;
 - (double)physicsDownforceForNodeNamed:(id)arg1;
 - (float)arScale;

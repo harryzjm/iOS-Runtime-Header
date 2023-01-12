@@ -8,11 +8,11 @@
 {
 }
 
-- (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
 - (shared_ptr_f167ad79)newTransformableOperation;
 - (int)placementType;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4 noop:(_Bool)arg5;
+- (id)initWithAddress:(const void *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4;
+- (id)initWithAddress:(const void *)arg1 fromIndex:(int)arg2 toIndex:(int)arg3 dominating:(_Bool)arg4 noop:(_Bool)arg5;
 
 @end
 

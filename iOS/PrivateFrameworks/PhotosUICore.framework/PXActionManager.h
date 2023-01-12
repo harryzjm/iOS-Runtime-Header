@@ -24,10 +24,14 @@
 - (id)systemImageNameForActionType:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)actionPerformerForActionType:(id)arg1;
+- (_Bool)supportsActionType:(id)arg1;
 - (_Bool)canPerformActionType:(id)arg1;
+- (_Bool)supportsContextMenu;
+- (id)contextMenu;
 - (id)activityForActionType:(id)arg1;
 - (id)alertActionViewControllerForActionType:(id)arg1;
 - (id)alertActionForActionType:(id)arg1;
+- (id)standardActionForActionType:(id)arg1;
 - (id)previewActionForActionType:(id)arg1 image:(id)arg2;
 - (id)barButtonItemForActionType:(id)arg1;
 

@@ -4,33 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ShotflowDetectorANODv3, VNFaceBBoxAligner;
+@class ShotflowDetector, VNFaceBBoxAligner;
 
 __attribute__((visibility("hidden")))
 @interface VNANFDMultiDetector
 {
-    ShotflowDetectorANODv3 *_mMultiHeadedANFDDetector;
+    ShotflowDetector *_mMultiHeadedANFDDetector;
     VNFaceBBoxAligner *_faceBBoxAligner;
 }
 
 + (void)_printDebugInfo:(id)arg1 detectedObjectsRaw:(id)arg2 faceDetectorBGRAImage:(struct __CVBuffer *)arg3 tempImage:(struct vImage_Buffer)arg4;
++ (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (id)configurationOptionKeysForDetectorKey;
 + (id)knownAnimalIdentifiers;
 + (id)recognizedAnimalObjectClassToAnimalName;
-+ (id)detectedObjectRequestClassToRequestInfo;
-+ (id)detectedObjectClassToRequestClass;
++ (id)detectedObjectRequestKeyToRequestInfo;
++ (id)detectedObjectClassToRequestKey;
 + (float)faceDetectorChunkAspectRatio;
 + (id)requestInfoForRequest:(id)arg1;
 + (Class)anfdMultiDetectorClassToProcessRequest:(id)arg1;
++ (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (void)processRecognizedObjectWithIdentifier:(id)arg1 requestRevision:(unsigned long long)arg2 objectBoundingBox:(struct CGRect)arg3 objectConfidence:(float)arg4 detectedObjectResults:(id)arg5;
-- (_Bool)processDetectedObject:(id)arg1 requestRevision:(unsigned long long)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 warningRecorder:(id)arg5 detectedObjectResults:(id)arg6 error:(id *)arg7;
+@property(readonly, nonatomic) ShotflowDetector *shotflowDetector; // @synthesize shotflowDetector=_mMultiHeadedANFDDetector;
+- (void)processRecognizedObjectWithIdentifier:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 objectConfidence:(float)arg4 detectedObjectResults:(id)arg5;
+- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 warningRecorder:(id)arg5 detectedObjectResults:(id)arg6 error:(id *)arg7;
 - (id)_alignFace:(id)arg1 imageBuffer:(id)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (_Bool)supportsProcessingDevice:(id)arg1;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (_Bool)updateRuntimeParametersFromOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

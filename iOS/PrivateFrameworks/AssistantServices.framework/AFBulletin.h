@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class BBBulletin, NSArray, NSDate, NSString;
+@class BBBulletin, NSArray, NSDate, NSDictionary, NSString;
 
 @interface AFBulletin : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,6 +19,7 @@
     _Bool _allDay;
     _Bool _previewRestricted;
     NSString *_displayName;
+    long long _announcementType;
     BBBulletin *_bbBulletin;
     NSString *_bulletinID;
     NSString *_recordID;
@@ -36,13 +37,18 @@
     NSString *_publisherBulletinID;
     NSString *_threadID;
     NSString *_internalID;
+    NSArray *_actionsStore;
+    NSDictionary *_actionsByIdentifier;
     unsigned long long _feed;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)internalIDForBBBulletinID:(id)arg1;
++ (id)_createAssistantActionsForBulletin:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long feed; // @synthesize feed=_feed;
+@property(retain, nonatomic) NSDictionary *actionsByIdentifier; // @synthesize actionsByIdentifier=_actionsByIdentifier;
+@property(retain, nonatomic) NSArray *actionsStore; // @synthesize actionsStore=_actionsStore;
 @property(readonly, copy, nonatomic) NSString *internalID; // @synthesize internalID=_internalID;
 @property(readonly, copy, nonatomic) NSString *threadID; // @synthesize threadID=_threadID;
 @property(readonly, nonatomic) _Bool previewRestricted; // @synthesize previewRestricted=_previewRestricted;
@@ -63,6 +69,7 @@
 @property(readonly, copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
 @property(readonly, nonatomic) BBBulletin *bbBulletin; // @synthesize bbBulletin=_bbBulletin;
 @property(nonatomic, getter=isRead) _Bool read; // @synthesize read=_read;
+@property(nonatomic) long long announcementType; // @synthesize announcementType=_announcementType;
 @property(nonatomic) _Bool supportsSpokenNotification; // @synthesize supportsSpokenNotification=_supportsSpokenNotification;
 @property(nonatomic) _Bool availableOnLockScreen; // @synthesize availableOnLockScreen=_availableOnLockScreen;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -72,6 +79,8 @@
 - (void)wasRemovedFromFeed:(unsigned long long)arg1;
 - (void)setNotification:(id)arg1 fromSourceApp:(id)arg2;
 - (void)setBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
+- (id)actionForIdentifier:(id)arg1;
+- (id)actions;
 - (void)setBulletin:(id)arg1;
 - (id)_displayNameForBulletin:(id)arg1;
 

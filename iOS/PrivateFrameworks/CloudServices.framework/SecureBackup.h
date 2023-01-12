@@ -15,6 +15,7 @@
 {
     _Bool _deleteAll;
     _Bool _emcsMode;
+    _Bool _excludeiCDPRecords;
     _Bool _fmipRecovery;
     _Bool _icdp;
     _Bool _idmsRecovery;
@@ -27,6 +28,7 @@
     _Bool _usesRandomPassphrase;
     _Bool _usesRecoveryKey;
     _Bool _suppressServerFiltering;
+    _Bool _deleteDoubleOnly;
     _Bool _silentDoubleRecovery;
     NSString *_appleID;
     NSString *_authToken;
@@ -63,7 +65,9 @@
     SESWrapper *_ses;
 }
 
-+ (id)getAcceptedTermsWithError:(id *)arg1;
++ (id)getAcceptedTermsForAltDSID:(id)arg1 withError:(id *)arg2;
++ (id)getAllAcceptedTermsWithError:(id *)arg1;
++ (id)_getAcceptedTermsForAltDSID:(id)arg1 withError:(id *)arg2;
 + (void)getAcceptedTermsForAltDSID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)saveTermsAcceptance:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (unsigned int)daemonPasscodeRequestOpinion:(id *)arg1;
@@ -76,6 +80,7 @@
 @property(retain, nonatomic) EscrowPrerecord *prerecord; // @synthesize prerecord=_prerecord;
 @property(copy, nonatomic) NSString *hsa2CachedPrerecordUUID; // @synthesize hsa2CachedPrerecordUUID=_hsa2CachedPrerecordUUID;
 @property(nonatomic) _Bool silentDoubleRecovery; // @synthesize silentDoubleRecovery=_silentDoubleRecovery;
+@property(nonatomic) _Bool deleteDoubleOnly; // @synthesize deleteDoubleOnly=_deleteDoubleOnly;
 @property(nonatomic) _Bool suppressServerFiltering; // @synthesize suppressServerFiltering=_suppressServerFiltering;
 @property(copy, nonatomic) NSString *activityUUID; // @synthesize activityUUID=_activityUUID;
 @property(copy, nonatomic) NSString *activityLabel; // @synthesize activityLabel=_activityLabel;
@@ -105,6 +110,7 @@
 @property(nonatomic) _Bool icdp; // @synthesize icdp=_icdp;
 @property(copy, nonatomic) NSString *fmipUUID; // @synthesize fmipUUID=_fmipUUID;
 @property(nonatomic) _Bool fmipRecovery; // @synthesize fmipRecovery=_fmipRecovery;
+@property(nonatomic) _Bool excludeiCDPRecords; // @synthesize excludeiCDPRecords=_excludeiCDPRecords;
 @property(copy, nonatomic) NSString *escrowProxyURL; // @synthesize escrowProxyURL=_escrowProxyURL;
 @property(retain, nonatomic) NSDictionary *escrowRecord; // @synthesize escrowRecord=_escrowRecord;
 @property(copy, nonatomic) NSString *duplicateEncodedMetadata; // @synthesize duplicateEncodedMetadata=_duplicateEncodedMetadata;

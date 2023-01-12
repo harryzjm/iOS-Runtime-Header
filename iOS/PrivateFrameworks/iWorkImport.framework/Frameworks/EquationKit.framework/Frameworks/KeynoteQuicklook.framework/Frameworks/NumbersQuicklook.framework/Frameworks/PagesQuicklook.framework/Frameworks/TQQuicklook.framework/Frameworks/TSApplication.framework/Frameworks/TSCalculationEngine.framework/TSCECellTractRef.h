@@ -10,13 +10,13 @@
 
 @interface TSCECellTractRef : NSObject <NSCopying>
 {
-    struct TSUCellTractRef _cppCellTractRef;
+    struct TSCECellTractRefCore _cppCellTractRef;
 }
 
-+ (id)cellTractRefWithUidTractList:(id)arg1 onTable:(const UUIDData_5fbc143e *)arg2 preserveFlags:(struct TSUPreserveFlags)arg3 rewriteContext:(struct TSCEFormulaRewriteContext *)arg4;
++ (id)cellTractRefWithUidTractList:(id)arg1 onTable:(const struct TSKUIDStruct *)arg2 preserveFlags:(struct TSUPreserveFlags)arg3 rewriteContext:(struct TSCEFormulaRewriteContext *)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) struct TSUCellTractRef cppCellTractRef; // @synthesize cppCellTractRef=_cppCellTractRef;
+@property(nonatomic) struct TSCECellTractRefCore cppCellTractRef; // @synthesize cppCellTractRef=_cppCellTractRef;
 - (id)expandUsingIndexes:(id)arg1 forRows:(_Bool)arg2;
 - (id)edgeExpandUsingIndexes:(id)arg1 forRows:(_Bool)arg2;
 - (_Bool)edgeExpandUsingMovingUids:(id)arg1 tractList:(id)arg2;
@@ -36,7 +36,7 @@
 - (void)intersectWithCellRect:(const struct TSUCellRect *)arg1;
 - (id)description;
 - (id)debugDescription;
-- (UUIDRect_cab72d9d)uidTractWithCalcEngine:(id)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
+- (struct TSKUIDStructTract)uidTractWithCalcEngine:(id)arg1 hostTableUID:(const struct TSKUIDStruct *)arg2;
 - (void)setBottomRight:(const struct TSUCellCoord *)arg1;
 - (void)setTopLeft:(const struct TSUCellCoord *)arg1;
 - (struct TSCERangeRef)boundingRangeRef;
@@ -70,7 +70,7 @@
 - (unsigned int)numColumns;
 - (_Bool)hasTableUID;
 @property(nonatomic) struct TSUPreserveFlags preserveFlags;
-@property(nonatomic) UUIDData_5fbc143e tableUID;
+@property(nonatomic) struct TSKUIDStruct tableUID;
 @property(nonatomic) _Bool mixedRowStartedWithPreserve;
 @property(nonatomic) _Bool mixedColumnStartedWithPreserve;
 @property(nonatomic) _Bool preserveRectangular;
@@ -79,12 +79,13 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithCellRefVector:(const vector_0737b28f *)arg1;
+- (id)initWithUidTract:(const void *)arg1 calcEngine:(id)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
+- (id)initWithCellRefVector:(const void *)arg1;
 - (id)initWithRangeRef:(const struct TSCERangeRef *)arg1;
-- (id)initWithTopLeft:(const struct TSUCellCoord *)arg1 bottomRight:(const struct TSUCellCoord *)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
+- (id)initWithTopLeft:(const struct TSUCellCoord *)arg1 bottomRight:(const struct TSUCellCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 - (id)initWithTopLeft:(const struct TSUCellCoord *)arg1 bottomRight:(const struct TSUCellCoord *)arg2;
-- (id)initWithCppCellTractRef:(const struct TSUCellTractRef *)arg1;
-- (id)initWithColumns:(const struct TSUIndexSet *)arg1 rows:(const struct TSUIndexSet *)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
+- (id)initWithCppCellTractRef:(const struct TSCECellTractRefCore *)arg1;
+- (id)initWithColumns:(const struct TSUIndexSet *)arg1 rows:(const struct TSUIndexSet *)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 
 @end
 

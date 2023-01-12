@@ -10,7 +10,6 @@
 
 @class CKDPIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPSubscriptionDeleteRequest : PBRequest <NSCopying>
 {
     CKDPIdentifier *_identifier;

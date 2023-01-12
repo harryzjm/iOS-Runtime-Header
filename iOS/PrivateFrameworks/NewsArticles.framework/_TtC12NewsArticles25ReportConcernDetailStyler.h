@@ -6,11 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC12NewsArticles25ReportConcernDetailStyler : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *baseStyler;
 }
 
 @end

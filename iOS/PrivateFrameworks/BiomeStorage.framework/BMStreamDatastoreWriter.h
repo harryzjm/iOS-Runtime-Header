@@ -13,11 +13,15 @@
     BMStreamDatastore *_inner;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool canReadOrPruneData;
 - (void)syncMappedFiles;
 - (id)streamIdentifier;
+- (_Bool)_writeEventData:(id)arg1 dataVersion:(unsigned int)arg2 timestamp:(double)arg3 outBookmark:(id *)arg4;
 - (_Bool)writeEventWithEventBody:(id)arg1;
 - (id)initWithStream:(id)arg1 config:(id)arg2;
+- (_Bool)writeEventBodyClass:(Class)arg1;
+- (Class)eventBodyClass;
 - (_Bool)writeEventWithEventBody:(id)arg1 timestamp:(double)arg2;
 
 @end

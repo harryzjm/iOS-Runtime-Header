@@ -8,20 +8,26 @@
 
 #import <CoreBluetooth/CBActivatable-Protocol.h>
 #import <CoreBluetooth/CBCentralManagerDelegate-Protocol.h>
+#import <CoreBluetooth/CBErrorReporting-Protocol.h>
+#import <CoreBluetooth/CBInterruptable-Protocol.h>
 #import <CoreBluetooth/CBLabelable-Protocol.h>
 #import <CoreBluetooth/CBPeripheralDelegate-Protocol.h>
 #import <CoreBluetooth/CBReadWriteRequestable-Protocol.h>
+#import <CoreBluetooth/CBRemotable-Protocol.h>
 #import <CoreBluetooth/CBStateReporting-Protocol.h>
+#import <CoreBluetooth/CUReadWriteRequestable-Protocol.h>
+#import <CoreBluetooth/CUXPCCodable-Protocol.h>
 
 @class CBCentralManager, CBDevice, CBL2CAPChannel, CBPeripheral, CBReadRequest, CBWriteRequest, NSMutableArray, NSString, NSUUID;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_xpc_object;
 
-@interface CBConnection : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate, CBActivatable, CBLabelable, CBReadWriteRequestable, CBStateReporting>
+@interface CBConnection : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate, CUReadWriteRequestable, CUXPCCodable, CBActivatable, CBErrorReporting, CBInterruptable, CBLabelable, CBReadWriteRequestable, CBStateReporting, CBRemotable>
 {
+    _Bool _activateCalled;
     CDUnknownBlockType _activateCompletion;
+    NSUUID *_blePeerUUID;
     CBCentralManager *_centralManager;
-    unsigned short _destinationPSM;
-    NSUUID *_destinationUUID;
+    NSObject<OS_dispatch_source> *_connectTimeoutTimer;
     _Bool _guardConnected;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
@@ -37,35 +43,58 @@
     CBWriteRequest *_writeRequestCurrent;
     NSMutableArray *_writeRequests;
     struct LogCategory *_ucat;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
-    CDUnknownBlockType _invalidationHandler;
-    NSString *_label;
+    NSObject<OS_xpc_object> *_xpcCnx;
+    unsigned short _blePSM;
+    unsigned int _connectionFlags;
+    unsigned int _serviceFlags;
+    unsigned int _clientID;
+    unsigned int _internalFlags;
     long long _bluetoothState;
     CDUnknownBlockType _bluetoothStateChangedHandler;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
+    CDUnknownBlockType _errorHandler;
+    CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _invalidationHandler;
+    NSString *_label;
+    CBDevice *_remoteDevice;
     NSString *_clientBundleID;
     long long _clientUseCase;
     long long _connectionLatency;
-    CBDevice *_destinationDevice;
-    CDUnknownBlockType _errorHandler;
-    NSString *_serviceType;
+    double _connectTimeoutSeconds;
+    CBDevice *_peerDevice;
     CBL2CAPChannel *_l2capChannel;
     CDUnknownBlockType _serverInvalidationHandler;
+    CDUnknownBlockType _xpcForwardMessageReceiveHandler;
+    NSObject<OS_xpc_object> *_xpcListenerEndpoint;
+    CDUnknownBlockType _xpcSendEventHandler;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType xpcSendEventHandler; // @synthesize xpcSendEventHandler=_xpcSendEventHandler;
+@property(retain, nonatomic) NSObject<OS_xpc_object> *xpcListenerEndpoint; // @synthesize xpcListenerEndpoint=_xpcListenerEndpoint;
+@property(copy, nonatomic) CDUnknownBlockType xpcForwardMessageReceiveHandler; // @synthesize xpcForwardMessageReceiveHandler=_xpcForwardMessageReceiveHandler;
 @property(copy, nonatomic) CDUnknownBlockType serverInvalidationHandler; // @synthesize serverInvalidationHandler=_serverInvalidationHandler;
 @property(retain, nonatomic) CBL2CAPChannel *l2capChannel; // @synthesize l2capChannel=_l2capChannel;
-@property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
-@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
-@property(retain, nonatomic) CBDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
+@property(nonatomic) unsigned int internalFlags; // @synthesize internalFlags=_internalFlags;
+@property(nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
+@property(nonatomic) unsigned int serviceFlags; // @synthesize serviceFlags=_serviceFlags;
+@property(retain, nonatomic) CBDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property(nonatomic) double connectTimeoutSeconds; // @synthesize connectTimeoutSeconds=_connectTimeoutSeconds;
 @property(nonatomic) long long connectionLatency; // @synthesize connectionLatency=_connectionLatency;
+@property(nonatomic) unsigned int connectionFlags; // @synthesize connectionFlags=_connectionFlags;
 @property(nonatomic) long long clientUseCase; // @synthesize clientUseCase=_clientUseCase;
 @property(copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
-@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
-@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
+@property(nonatomic) unsigned short blePSM; // @synthesize blePSM=_blePSM;
+@property(retain, nonatomic) CBDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
+@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
+@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
+- (void)writeWithRequest:(id)arg1;
+- (void)readWithRequest:(id)arg1;
 - (void)peripheral:(id)arg1 didOpenL2CAPChannel:(id)arg2 error:(id)arg3;
 - (void)centralManager:(id)arg1 didFailToConnectPeripheral:(id)arg2 error:(id)arg3;
 - (void)centralManager:(id)arg1 didConnectPeripheral:(id)arg2;
@@ -75,30 +104,42 @@
 - (_Bool)_prepareWriteRequest:(id)arg1 error:(id *)arg2;
 - (void)_processWrites;
 - (void)writeEndOfDataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)writeWithRequest:(id)arg1;
+- (void)writeWithCBWriteRequest:(id)arg1;
 - (void)_completeReadRequest:(id)arg1 error:(id)arg2;
 - (_Bool)_processReadStatus;
 - (void)_abortReadsWithError:(id)arg1;
 - (void)_prepareReadRequest:(id)arg1;
 - (void)_processReads:(_Bool)arg1;
-- (void)readWithRequest:(id)arg1;
+- (void)readWithCBReadRequest:(id)arg1;
 - (_Bool)_runSetupChannel;
 - (_Bool)_runConnectStart;
 - (void)_run;
 - (void)_reportError:(id)arg1;
 - (_Bool)_setupIOAndReturnError:(id *)arg1;
 - (_Bool)_startConnectingAndReturnError:(id *)arg1;
+- (void)_xpcReceivedMessage:(id)arg1;
+- (void)xpcReceivedMessage:(id)arg1;
+- (void)xpcReceivedForwardedEvent:(id)arg1;
+- (void)xpcForwardMessage:(id)arg1;
 - (void)_invalidated;
 - (void)_invalidate;
 - (void)invalidate;
+- (void)_interrupted;
+- (id)_ensureXPCStarted;
+- (void)disconnectWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_activateXPCCompleted:(id)arg1;
+- (void)_activateXPCStart:(_Bool)arg1;
 - (_Bool)activateDirectAndReturnError:(id *)arg1;
+- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, copy) NSString *description;
+- (void)encodeWithXPCObject:(id)arg1;
+- (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -7,6 +7,7 @@
 #import <ChatKit/CKConversationSearchCellProtocol-Protocol.h>
 
 @class NSString;
+@protocol CKConversationSearchCellDelegate;
 
 @interface CKConversationListSearchCell <CKConversationSearchCellProtocol>
 {
@@ -23,10 +24,10 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(nonatomic) __weak id <CKConversationSearchCellDelegate> delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(nonatomic) double widthForDeterminingAvatarVisibility;
 
 @end
 

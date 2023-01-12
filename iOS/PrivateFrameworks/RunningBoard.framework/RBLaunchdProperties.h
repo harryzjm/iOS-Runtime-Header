@@ -22,15 +22,20 @@
     NSString *_executablePath;
     int _requestedJetsamPriority;
     _Bool _doesOverrideManagement;
+    _Bool _disableFreezing;
     NSString *_underlyingAssertion;
     RBSProcessIdentity *_specifiedIdentity;
+    _Bool _explicitAngelFlag;
     NSString *_beforeTranslocationBundlePath;
     NSString *_homeDirectory;
     NSString *_tmpDirectory;
     NSUUID *_uuid;
 }
 
++ (id)processIdentityForEndpoint:(id)arg1;
++ (id)propertiesForJob:(id)arg1;
 + (id)propertiesForPid:(int)arg1;
++ (id)_instanceWithProperties:(id)arg1 xpcProps:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly, copy, nonatomic) NSString *tmpDirectory; // @synthesize tmpDirectory=_tmpDirectory;
@@ -43,19 +48,21 @@
 @property(readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property(readonly, nonatomic) NSString *jobLabel; // @synthesize jobLabel=_jobLabel;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(readonly, nonatomic) _Bool disableFreezing; // @synthesize disableFreezing=_disableFreezing;
 @property(readonly, nonatomic) unsigned char overrideManageFlags; // @synthesize overrideManageFlags=_overrideManageFlags;
 @property(readonly, nonatomic, getter=hasVariableEUID) _Bool variableEUID; // @synthesize variableEUID=_variableEUID;
 @property(readonly, nonatomic, getter=isSystemShell) _Bool systemShell; // @synthesize systemShell=_systemShell;
 @property(readonly, nonatomic, getter=isMultiInstance) _Bool multiInstance; // @synthesize multiInstance=_multiInstance;
 @property(readonly, nonatomic) int hostPid; // @synthesize hostPid=_hostPid;
-@property(readonly, nonatomic) NSString *path; // @synthesize path=_path;
-- (id)_initDaemonWithProperties:(id)arg1 path:(id)arg2;
-- (void)_parseDaemonProperties;
+- (id)_initDaemonOrAngelWithProperties:(id)arg1 path:(id)arg2;
 - (void)_parseAdditionalProperties:(id)arg1;
 - (_Bool)_parseDaemonPlist:(id)arg1;
 - (void)_parseLASSProperties:(id)arg1;
 - (id)_initAppWithProperties:(id)arg1;
-- (id)_initXPCServiceWithProperties:(id)arg1 path:(id)arg2 HostPid:(int)arg3;
+- (id)_initXPCServiceWithProperties:(id)arg1 HostPid:(int)arg2;
+- (id)resolvedIdentityWithPid:(int)arg1 auid:(unsigned int)arg2;
+- (id)resolvedIdentity;
+@property(readonly, nonatomic, getter=isAngel) _Bool angel;
 @property(readonly, nonatomic, getter=isDaemon) _Bool daemon;
 @property(readonly, nonatomic, getter=isXPCService) _Bool XPCService;
 

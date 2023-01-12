@@ -7,11 +7,12 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HomeLocation)
-+ (id)dictionaryWithActionExecutionError:(id)arg1;
-- (id)regionFromDataForKey:(id)arg1;
-- (id)locationFromDataForKey:(id)arg1;
-- (id)responseByRemovingEntriesForCharacteristics:(id)arg1;
-- (id)valueOfCharacteristic:(id)arg1 error:(id *)arg2;
-- (_Bool)isValidResponseForWriteRequest:(id)arg1 naturalLightingEnabled:(_Bool)arg2 error:(id *)arg3;
++ (id)dictionaryByCombiningNonOverlappingDictionaries:(id)arg1;
++ (id)hmd_dictionaryWithActionExecutionError:(id)arg1;
+- (id)hm_regionFromDataForKey:(id)arg1;
+- (id)hm_locationFromDataForKey:(id)arg1;
+- (id)hmd_responseByRemovingEntriesForCharacteristics:(id)arg1;
+- (id)hmd_valueOfCharacteristic:(id)arg1 error:(id *)arg2;
+- (_Bool)hmd_isValidResponseForWriteRequest:(id)arg1 naturalLightingEnabled:(_Bool)arg2 error:(id *)arg3;
 @end
 

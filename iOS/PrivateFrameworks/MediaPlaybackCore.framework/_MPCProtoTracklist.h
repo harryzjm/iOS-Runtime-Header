@@ -10,6 +10,7 @@
 
 @class NSMutableArray, _MPCProtoTracklistIndexPath;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoTracklist : PBCodable <NSCopying>
 {
     NSMutableArray *_accountInfos;
@@ -21,13 +22,7 @@
     } _has;
 }
 
-+ (Class)containerType;
-+ (Class)accountInfoType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MPCProtoTracklistIndexPath *startingItemIndexPath; // @synthesize startingItemIndexPath=_startingItemIndexPath;
-@property(retain, nonatomic) NSMutableArray *containers; // @synthesize containers=_containers;
-@property(retain, nonatomic) NSMutableArray *accountInfos; // @synthesize accountInfos=_accountInfos;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -35,17 +30,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasShuffleMode;
-@property(nonatomic) int shuffleMode; // @synthesize shuffleMode=_shuffleMode;
-@property(readonly, nonatomic) _Bool hasStartingItemIndexPath;
-- (id)containerAtIndex:(unsigned long long)arg1;
-- (unsigned long long)containersCount;
-- (void)addContainer:(id)arg1;
-- (void)clearContainers;
-- (id)accountInfoAtIndex:(unsigned long long)arg1;
-- (unsigned long long)accountInfosCount;
-- (void)addAccountInfo:(id)arg1;
-- (void)clearAccountInfos;
 
 @end
 

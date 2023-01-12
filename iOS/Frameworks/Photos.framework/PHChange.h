@@ -54,7 +54,9 @@
 - (_Bool)intersectsWithDetectionCriteria:(id)arg1 managedObjectContext:(id)arg2;
 - (id)changeDetailsForFetchResult:(id)arg1;
 - (id)changeDetailsForObject:(id)arg1;
+- (_Bool)userCuratedAssetsChangedForPHMemoryOID:(id)arg1;
 - (_Bool)keyAssetsChangedForPHAssetCollectionOID:(id)arg1;
+- (_Bool)assetCloudLocalStateChangedForAsset:(id)arg1;
 - (_Bool)packedBadgeAttributesChangedForPHAssetOID:(id)arg1;
 - (_Bool)favoriteStateChangedForPHAssetOID:(id)arg1;
 - (_Bool)hiddenStateChangedForPHAssetOID:(id)arg1;
@@ -80,6 +82,7 @@
 - (id)initWithChangedIdentifiers:(id)arg1 unknownMergeEvent:(_Bool)arg2 changeToken:(id)arg3;
 - (id)initWithChangedIdentifiers:(id)arg1 unknownMergeEvent:(_Bool)arg2;
 - (id)init;
+- (_Bool)userFeedbackRelationshipChangedForObject:(id)arg1;
 - (_Bool)highlightGroupRelationshipChangedForPhotosHighlightWithIdentifier:(id)arg1;
 - (_Bool)momentRelationshipChangedForPhotosHighlightWithIdentifier:(id)arg1;
 - (_Bool)personRelationshipChangedForFaceWithLocalIdentifier:(id)arg1;

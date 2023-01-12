@@ -8,13 +8,12 @@
 
 @interface CKSSShare : NSObject
 {
-    struct cczp *_field;
     struct ccss_shamir_share *_share;
     unsigned long long _share_size;
 }
 
 - (void)dealloc;
-- (void)loadInitializedccShare:(struct ccss_shamir_share *)arg1;
+- (struct ccss_shamir_share *)share;
 - (id)y;
 - (unsigned int)x;
 - (id)initWithParams:(struct ccss_shamir_parameters *)arg1 share:(struct ccss_shamir_share *)arg2;

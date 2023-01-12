@@ -43,6 +43,7 @@
 + (id)defaultMediaTypeAccessQueue;
 + (_Bool)boolForMachLookupAccess:(id)arg1;
 + (_Bool)boolForEntitlement:(id)arg1;
++ (_Bool)hasAMSEntitlement;
 + (_Bool)isBuddyRunning;
 + (id)currentProcess;
 - (void).cxx_destruct;

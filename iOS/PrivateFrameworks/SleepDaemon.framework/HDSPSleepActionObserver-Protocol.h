@@ -6,18 +6,13 @@
 
 #import <SleepDaemon/NSObject-Protocol.h>
 
-@protocol HDSPSource;
-
 @protocol HDSPSleepActionObserver <NSObject>
 
 @optional
-- (void)sleepModeSet:(long long)arg1 source:(id <HDSPSource>)arg2;
-- (void)wakeNotificationWasConfirmed:(id <HDSPSource>)arg1;
-- (void)windDownWasSkipped:(id <HDSPSource>)arg1;
-- (void)bedtimeWasSkipped:(id <HDSPSource>)arg1;
-- (void)bedtimeWasDelayed:(id <HDSPSource>)arg1;
-- (void)goodMorningWasDismissed:(id <HDSPSource>)arg1;
-- (void)wakeUpAlarmWasSnoozed:(id <HDSPSource>)arg1;
-- (void)wakeUpAlarmWasDismissed:(id <HDSPSource>)arg1;
+- (void)sleepLockWasDismissed;
+- (void)wakeNotificationWasConfirmed;
+- (void)goodMorningWasDismissed;
+- (void)wakeUpAlarmWasSnoozed;
+- (void)wakeUpAlarmWasDismissed;
 @end
 

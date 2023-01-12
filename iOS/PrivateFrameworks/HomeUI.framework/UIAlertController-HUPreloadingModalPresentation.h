@@ -22,7 +22,7 @@
 + (id)alertControllerForAddingZoneWithProceed:(CDUnknownBlockType)arg1;
 + (id)alertControllerForAddingHomeWithProceed:(CDUnknownBlockType)arg1;
 - (id)hu_preloadContent;
-- (void)anchorActionSheetIfNeededFrom:(id)arg1;
+- (void)hu_anchorActionSheetIfNeededFrom:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

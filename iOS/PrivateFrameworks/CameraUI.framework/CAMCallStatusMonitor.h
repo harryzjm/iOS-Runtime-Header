@@ -25,14 +25,16 @@
 - (void)_setCallActive:(_Bool)arg1;
 - (void)_handleServerConnectionDiedNotification:(id)arg1;
 - (void)_handleCallIsActiveDidChangeNotification:(id)arg1;
+- (void)_handleRecordingStateDidChangeNotification:(id)arg1;
+- (int)_processIdentifer;
 - (void)_accessQueue_queryCallActiveStatusForReason:(id)arg1;
 - (id)_descriptionForReasons:(id)arg1;
 - (id)_descriptionStringForReason:(long long)arg1;
 - (void)removeDisabledReason:(long long)arg1;
 - (void)addDisabledReason:(long long)arg1;
-- (void)_enableCallStatusMonitor;
+- (void)_accessQueue_subscribeToAVSystemControllerNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_unregisterForAVSystemControllerNotifications;
-- (void)_registerForAVSystemControllerNotifications;
+- (void)_registerForAVSystemControllerNotificationsAndQueryState;
 - (void)dealloc;
 - (id)initDisabledForLaunch;
 - (id)init;

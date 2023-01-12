@@ -29,14 +29,15 @@ __attribute__((visibility("hidden")))
 + (long long)_confirmationTitleForString:(id)arg1;
 + (id)_flexListDictionaryForValues:(id)arg1 account:(id)arg2 shouldUppercaseText:(_Bool)arg3;
 + (id)_attributedListDictionaryForValues:(id)arg1 account:(id)arg2;
-+ (id)_createRequestFromDictionary:(id)arg1 confirmationOnly:(_Bool)arg2 authenticateResponse:(id)arg3 taskInfo:(id)arg4;
 + (id)_createMerchantSessionFromDictionary:(id)arg1;
++ (id)_createRequestFromDictionary:(id)arg1 confirmationOnly:(_Bool)arg2 delegateAuthenticationRequired:(_Bool)arg3 biometricSignatureRequired:(_Bool)arg4 authenticateResponse:(id)arg5 taskInfo:(id)arg6;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AMSPaymentSheetRequest *paymentSheetRequest; // @synthesize paymentSheetRequest=_paymentSheetRequest;
 @property(readonly, nonatomic) NSDictionary *metricsDictionary; // @synthesize metricsDictionary=_metricsDictionary;
 @property(readonly, nonatomic) AMSFinanceAuthenticateResponse *authenticateResponse; // @synthesize authenticateResponse=_authenticateResponse;
+- (id)_enrichedMetricsDictionaryWithFinanceDictionary:(id)arg1;
 - (id)performWithTaskInfo:(id)arg1;
-- (id)initWithResponseDictionary:(id)arg1 confirmationOnly:(_Bool)arg2 taskInfo:(id)arg3;
+- (id)initWithResponseDictionary:(id)arg1 confirmationOnly:(_Bool)arg2 delegateAuthenticationRequired:(_Bool)arg3 biometricSignatureRequired:(_Bool)arg4 taskInfo:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -39,7 +39,7 @@
     NSPurgeableData *_purgeableDataRepresentation;
     NSObject<OS_dispatch_queue> *_observationSetupQueueForDefaultConnection;
     NSObject<OS_dispatch_queue> *_observationSetupQueueForSecondaryConnection;
-    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSString *_personaID;
 }
 
 + (id)_iconURLsWithProperties:(id)arg1 mangledID:(id)arg2;
@@ -128,6 +128,7 @@
 @property(retain) NSDate *lastServerUpdate;
 @property(getter=isOverQuota) _Bool overQuota;
 - (_Bool)deleteAllContentsOnClientAndServer:(id *)arg1;
+- (_Bool)deleteAllContentsOnClientAndServer:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)containsExcludedDocumentsOnTheFSWithExcludedButPreservedFilename:(id)arg1 excludedButPreservedExtensions:(id)arg2 andStampUploadedAppWithXattr:(_Bool)arg3;
 - (_Bool)updateMetadataWithRecordData:(id)arg1 iconPaths:(id)arg2;
 - (_Bool)updateMetadataWithExtractorProperties:(id)arg1 iconPaths:(id)arg2 bundleID:(id)arg3;

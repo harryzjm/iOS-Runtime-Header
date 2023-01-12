@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct XlDXfProtect *)xlDXfProtectFromEDProtection:(id)arg1;
-+ (void)writeProtection:(id)arg1 toXlGraphicsInfo:(struct XlGraphicsInfo *)arg2;
++ (void)writeProtection:(id)arg1 toXlGraphicsInfo:(void *)arg2;
 + (void)writeProtection:(id)arg1 toXlXf:(struct XlXf *)arg2;
-+ (id)edProtectionFromXlGraphicsInfo:(struct XlGraphicsInfo *)arg1;
++ (id)edProtectionFromXlGraphicsInfo:(void *)arg1;
 + (id)edProtectionFromXlDXfProtect:(struct XlDXfProtect *)arg1;
 + (id)edProtectionFromXlXf:(struct XlXf *)arg1;
 

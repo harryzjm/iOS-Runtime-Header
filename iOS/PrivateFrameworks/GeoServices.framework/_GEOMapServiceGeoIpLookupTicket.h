@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _GEOMapServiceGeoIpLookupTicket <GEOMapServiceGeoIpLookupTicket>
 {
     GEOPDPlaceRequest *_placeRequest;
+    id _requestToken;
 }
 
 - (void).cxx_destruct;

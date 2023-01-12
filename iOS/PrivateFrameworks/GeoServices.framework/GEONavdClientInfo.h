@@ -9,17 +9,19 @@
 #import <GeoServices/NSCopying-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class GEOApplicationAuditToken, NSString;
 
 @interface GEONavdClientInfo : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_canonicalName;
     NSString *_uniqueClientId;
+    GEOApplicationAuditToken *_auditToken;
 }
 
 + (id)clientInfoForNavdPredictions;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(copy, nonatomic) NSString *uniqueClientId; // @synthesize uniqueClientId=_uniqueClientId;
 @property(copy, nonatomic) NSString *canonicalName; // @synthesize canonicalName=_canonicalName;
 - (id)description;
@@ -29,6 +31,7 @@
 - (_Bool)isNavdClientInfo;
 - (_Bool)isCalendarClientInfo;
 - (id)initWithCanonicalName:(id)arg1 instanceId:(unsigned long long)arg2;
+- (id)initWithCanonicalName:(id)arg1 instanceId:(unsigned long long)arg2 auditToken:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

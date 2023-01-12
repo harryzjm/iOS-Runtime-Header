@@ -9,7 +9,7 @@
 @class NSSet, PHAsset, PHAssetCollection, PUPhotoBrowserZoomTransition;
 
 @protocol PUPhotoBrowserZoomTransitionDelegate <NSObject>
-- (_Bool)zoomTransition:(PUPhotoBrowserZoomTransition *)arg1 getFrame:(struct CGRect *)arg2 contentMode:(long long *)arg3 cropInsets:(struct UIEdgeInsets *)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;
+- (_Bool)zoomTransition:(PUPhotoBrowserZoomTransition *)arg1 getFrame:(struct CGRect *)arg2 inCoordinateSpace:(id *)arg3 contentMode:(long long *)arg4 cropInsets:(struct UIEdgeInsets *)arg5 forPhotoToken:(id)arg6 operation:(long long)arg7;
 - (id)zoomTransition:(PUPhotoBrowserZoomTransition *)arg1 photoTokenForPhoto:(PHAsset *)arg2 inCollection:(PHAssetCollection *)arg3;
 
 @optional

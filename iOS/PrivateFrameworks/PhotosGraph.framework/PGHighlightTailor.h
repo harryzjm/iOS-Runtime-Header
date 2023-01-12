@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet, PGManager, PGMoodGenerationContext;
+@class NSArray, PGManager, PGMoodGenerationContext;
 @protocol OS_dispatch_group;
 
 @interface PGHighlightTailor : NSObject
@@ -15,7 +15,6 @@
     PGMoodGenerationContext *_moodGenerationContext;
     PGManager *_manager;
     NSArray *_enrichmentProfiles;
-    NSSet *_verifiedPersonLocalIdentifiers;
 }
 
 + (_Bool)itemScoreIsAutoplayable:(double)arg1;
@@ -28,13 +27,13 @@
 - (_Bool)enrichDayHighlights:(id)arg1 dayGroupHighlights:(id)arg2 withOptions:(unsigned long long)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (_Bool)enrichAllHighlightsWithOptions:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)enrichHighlights:(id)arg1 options:(unsigned long long)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (_Bool)shouldEnrichHighlight:(id)arg1 withEnrichmentProfile:(id)arg2 options:(unsigned long long)arg3;
 - (id)allHighlightModelsNeedingEnrichmentForHighlightSubtype:(long long)arg1 options:(unsigned long long)arg2;
 - (void)writeHighlightEnrichmentValues:(id)arg1 toChangeRequest:(id)arg2;
-- (id)enrichmentValuesForHighlight:(id)arg1 usingEnrichmentProfile:(id)arg2 options:(unsigned long long)arg3 reportChangedValuesOnly:(_Bool)arg4 progressBlock:(CDUnknownBlockType)arg5;
+- (id)enrichmentValuesForHighlight:(id)arg1 usingEnrichmentProfile:(id)arg2 graph:(id)arg3 options:(unsigned long long)arg4 reportChangedValuesOnly:(_Bool)arg5 highlightTailorContext:(id)arg6 progressBlock:(CDUnknownBlockType)arg7;
 - (id)computeChangedVisibilityScoresForItems:(id)arg1;
 - (double)highlightVisibilityWeightForItem:(id)arg1;
 - (id)assetSortDescriptors;
-@property(readonly) NSSet *verifiedPersonLocalIdentifiers; // @synthesize verifiedPersonLocalIdentifiers=_verifiedPersonLocalIdentifiers;
 - (id)initForTesting;
 - (id)initWithManager:(id)arg1;
 

@@ -8,18 +8,20 @@
 
 #import <SpringBoard/SBViewMorphAnimatorObserver-Protocol.h>
 
-@class NSString, NSUUID, PGPictureInPictureViewController, SBPIPMorphAnimatorDataSource, SBViewMorphAnimator;
-@protocol SBPIPMorphAnimatorControllerDelegate;
+@class NSString, NSUUID, SBPIPContainerViewController, SBViewMorphAnimator;
+@protocol SBPIPMorphAnimatorControllerDelegate, SBViewMorphAnimatorDataSource;
 
 @interface SBPIPMorphAnimatorController : NSObject <SBViewMorphAnimatorObserver>
 {
+    int _targetProcessIdentifier;
     NSUUID *_uuid;
     SBViewMorphAnimator *_viewMorphAnimator;
-    SBPIPMorphAnimatorDataSource *_viewMorphAnimatorDataSource;
-    PGPictureInPictureViewController *_pictureInPictureViewController;
+    id <SBViewMorphAnimatorDataSource> _viewMorphAnimatorDataSource;
+    SBPIPContainerViewController *_pictureInPictureContainerViewController;
     id <SBPIPMorphAnimatorControllerDelegate> _delegate;
     CDUnknownBlockType _setupCompletionBlock;
     CDUnknownBlockType _animatorWaitingForExternalAnimationActionBlock;
+    NSString *_scenePersistenceIdentifier;
     long long _startedSourceAnimations;
     long long _completedTargetAnimations;
 }
@@ -27,26 +29,27 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long completedTargetAnimations; // @synthesize completedTargetAnimations=_completedTargetAnimations;
 @property(nonatomic) long long startedSourceAnimations; // @synthesize startedSourceAnimations=_startedSourceAnimations;
+@property(retain, nonatomic) NSString *scenePersistenceIdentifier; // @synthesize scenePersistenceIdentifier=_scenePersistenceIdentifier;
+@property(nonatomic) int targetProcessIdentifier; // @synthesize targetProcessIdentifier=_targetProcessIdentifier;
 @property(copy, nonatomic) CDUnknownBlockType animatorWaitingForExternalAnimationActionBlock; // @synthesize animatorWaitingForExternalAnimationActionBlock=_animatorWaitingForExternalAnimationActionBlock;
 @property(copy, nonatomic) CDUnknownBlockType setupCompletionBlock; // @synthesize setupCompletionBlock=_setupCompletionBlock;
-@property(nonatomic) __weak id <SBPIPMorphAnimatorControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) __weak PGPictureInPictureViewController *pictureInPictureViewController; // @synthesize pictureInPictureViewController=_pictureInPictureViewController;
-@property(readonly, nonatomic) SBPIPMorphAnimatorDataSource *viewMorphAnimatorDataSource; // @synthesize viewMorphAnimatorDataSource=_viewMorphAnimatorDataSource;
+@property(readonly, nonatomic) __weak id <SBPIPMorphAnimatorControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak SBPIPContainerViewController *pictureInPictureContainerViewController; // @synthesize pictureInPictureContainerViewController=_pictureInPictureContainerViewController;
+@property(readonly, nonatomic) id <SBViewMorphAnimatorDataSource> viewMorphAnimatorDataSource; // @synthesize viewMorphAnimatorDataSource=_viewMorphAnimatorDataSource;
 @property(readonly, nonatomic) SBViewMorphAnimator *viewMorphAnimator; // @synthesize viewMorphAnimator=_viewMorphAnimator;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (void)animatorWasInterrupted:(id)arg1;
+- (void)willRemoveTargeMatchMoveAnimationAtFrame:(struct CGRect)arg1 withinSourceFrame:(struct CGRect)arg2;
 - (void)didEndTargetAnimations:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
 - (void)didEndSourceAnimations:(unsigned long long)arg1 finished:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
 - (void)willStartSourceAnimations:(unsigned long long)arg1;
+- (void)_performAnimatorWaitingForExternalAnimationActionBlock;
 - (_Bool)_isWaitingForExternalAnimationCompletion;
 - (void)_terminate;
 - (void)interrupt;
 - (void)cancel;
-- (_Bool)isContentFromFillGravity;
-- (id)scenePersistenceIdentifier;
-- (int)targetProcessIdentifier;
 - (id)init;
-- (id)initWithTargetProcessIdentifier:(int)arg1 uuid:(id)arg2 scenePersistenceIdentifier:(id)arg3 direction:(long long)arg4 gestureInitiated:(_Bool)arg5;
+- (id)initWithTargetProcessIdentifier:(int)arg1 uuid:(id)arg2 scenePersistenceIdentifier:(id)arg3 direction:(long long)arg4 gestureInitiated:(_Bool)arg5 delegate:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

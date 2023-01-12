@@ -14,6 +14,8 @@
     MISSING_TYPE *coreMultipeerConnectivityService;
     MISSING_TYPE *coreServiceLocator;
     MISSING_TYPE *coreNetworkSystem;
+    MISSING_TYPE *coreHandshakeCount;
+    MISSING_TYPE *coreHandshakeTimeoutMs;
     MISSING_TYPE *session;
 }
 

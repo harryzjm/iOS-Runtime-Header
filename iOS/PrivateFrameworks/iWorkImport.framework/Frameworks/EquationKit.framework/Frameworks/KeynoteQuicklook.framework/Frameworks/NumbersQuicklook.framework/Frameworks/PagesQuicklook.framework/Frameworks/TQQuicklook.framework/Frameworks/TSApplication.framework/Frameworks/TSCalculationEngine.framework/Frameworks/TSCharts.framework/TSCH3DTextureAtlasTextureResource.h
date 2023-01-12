@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCH3DTextureAtlasTexture;
 
-@interface TSCH3DTextureAtlasTextureResource <TSCHUnretainedParent>
+@interface TSCH3DTextureAtlasTextureResource
 {
-    TSCH3DTextureAtlasTexture *mParent;
+    TSCH3DTextureAtlasTexture *_parent;
 }
 
+- (void).cxx_destruct;
 - (id)get;
-- (void)clearParent;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1;
 
 @end

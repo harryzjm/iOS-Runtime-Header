@@ -12,26 +12,24 @@
     struct os_unfair_lock_s _pointsCalculatorLock;
     MISSING_TYPE **_points;
     NSArray *_precisionEstimatesPerPoint;
-    NSArray *_occlusionFlagsPerPoint;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
-@property(readonly) NSArray *occlusionFlagsPerPoint; // @synthesize occlusionFlagsPerPoint=_occlusionFlagsPerPoint;
 @property(readonly) NSArray *precisionEstimatesPerPoint; // @synthesize precisionEstimatesPerPoint=_precisionEstimatesPerPoint;
 @property(readonly) const MISSING_TYPE **points; // @synthesize points=_points;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
 - (void)_initLocks;
-- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2 points:(MISSING_TYPE **)arg3 pointCount:(unsigned long long)arg4 precisionEstimatesPerPoint:(id)arg5 occlusionFlagsPerPoint:(id)arg6;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 faceBoundingBox:(struct CGRect)arg2 points:(MISSING_TYPE **)arg3 pointCount:(unsigned long long)arg4 precisionEstimatesPerPoint:(id)arg5;
 - (const struct CGPoint *)pointsInImageOfSize:(struct CGSize)arg1;
 @property(readonly) const struct CGPoint *normalizedPoints;
 - (MISSING_TYPE *)pointAtIndex:(unsigned long long)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 faceBoundingBox:(struct CGRect)arg2 pointCount:(unsigned long long)arg3;
 
 @end
 

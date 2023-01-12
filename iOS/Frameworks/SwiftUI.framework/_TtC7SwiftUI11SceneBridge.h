@@ -13,7 +13,9 @@
     MISSING_TYPE *sceneBridgePublishers;
     MISSING_TYPE *scene;
     MISSING_TYPE *rootViewController;
+    MISSING_TYPE *titleSeedTracker;
     MISSING_TYPE *initialUserActivity;
+    MISSING_TYPE *validTestCases;
     MISSING_TYPE *sceneActivationConditions;
     MISSING_TYPE *userActivityTrackingInfo;
     MISSING_TYPE *userActivityPreferenceSeed;

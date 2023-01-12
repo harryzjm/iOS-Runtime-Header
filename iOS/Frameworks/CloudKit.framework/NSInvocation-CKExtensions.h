@@ -7,6 +7,7 @@
 #import <Foundation/NSInvocation.h>
 
 @interface NSInvocation (CKExtensions)
++ (id)invocationToFinishOperationWithInfo:(id)arg1 withError:(id)arg2;
 - (void)CKIterateArgumentsForIndexRange:(struct _NSRange)arg1 primitiveTypeBlock:(CDUnknownBlockType)arg2 objectBlock:(CDUnknownBlockType)arg3 blockBlock:(CDUnknownBlockType)arg4;
 - (void)CKInvokeAndNilOutReplyBlockWithError:(id)arg1 forProtocol:(id)arg2;
 @end

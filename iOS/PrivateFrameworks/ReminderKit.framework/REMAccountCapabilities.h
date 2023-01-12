@@ -28,11 +28,15 @@
     _Bool _supportsReminderActions;
     _Bool _supportsCRDTs;
     _Bool _supportsAssignments;
+    _Bool _supportsHashtags;
     _Bool _insertsCompletedRecurrentCloneAtTail;
+    _Bool _supportsCustomSmartLists;
     long long _defaultReminderPriorityLevel;
 }
 
+@property(readonly, nonatomic) _Bool supportsCustomSmartLists; // @synthesize supportsCustomSmartLists=_supportsCustomSmartLists;
 @property(readonly, nonatomic) _Bool insertsCompletedRecurrentCloneAtTail; // @synthesize insertsCompletedRecurrentCloneAtTail=_insertsCompletedRecurrentCloneAtTail;
+@property(readonly, nonatomic) _Bool supportsHashtags; // @synthesize supportsHashtags=_supportsHashtags;
 @property(readonly, nonatomic) _Bool supportsAssignments; // @synthesize supportsAssignments=_supportsAssignments;
 @property(readonly, nonatomic) _Bool supportsCRDTs; // @synthesize supportsCRDTs=_supportsCRDTs;
 @property(readonly, nonatomic) _Bool supportsReminderActions; // @synthesize supportsReminderActions=_supportsReminderActions;

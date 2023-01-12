@@ -6,17 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <Fitness/NSSecureCoding-Protocol.h>
+
 @class NSDate;
 
-@interface FISleepUserDay : NSObject
+@interface FISleepUserDay : NSObject <NSSecureCoding>
 {
+    NSDate *_creationDate;
     NSDate *_startOfDay;
     NSDate *_endOfDay;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDate *endOfDay; // @synthesize endOfDay=_endOfDay;
-@property(retain, nonatomic) NSDate *startOfDay; // @synthesize startOfDay=_startOfDay;
+@property(copy, nonatomic) NSDate *endOfDay; // @synthesize endOfDay=_endOfDay;
+@property(copy, nonatomic) NSDate *startOfDay; // @synthesize startOfDay=_startOfDay;
+@property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (_Bool)isEmpty;
+- (id)initEmptySleepUserDay;
 - (id)initWithStartOfDay:(id)arg1 endOfDay:(id)arg2;
 
 @end

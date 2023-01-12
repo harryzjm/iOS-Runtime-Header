@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FSNode, NSDate, NSString, NSUUID;
+@class FSNode;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,36 +22,11 @@ __attribute__((visibility("hidden")))
     unsigned int isForcedForRemoteUpdates:1;
 }
 
-+ (void)setSeedingInProgress:(_Bool)arg1;
-+ (unsigned int)sessionStatus;
-+ (id)headerTableName;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue;
-@property(readonly, nonatomic) struct __CSStore *store; // @synthesize store;
-@property(readonly, nonatomic) unsigned int userID; // @synthesize userID=uid;
-@property(readonly, nonatomic) FSNode *node; // @synthesize node;
-- (void)claimDidChange:(unsigned int)arg1;
-- (void)applicationWillBeUninstalled:(unsigned int)arg1;
-- (void)applicationWasInstalled:(unsigned int)arg1;
-@property(nonatomic) _Bool typeDeclarationsChanged;
-@property(nonatomic) _Bool URLTypesChanged;
-@property(nonatomic) _Bool documentTypesChanged;
-@property(nonatomic) _Bool applicationsChanged;
-@property(nonatomic, getter=arePrefsLoaded) _Bool prefsLoaded;
-@property(readonly, nonatomic) NSString *seededModelCode;
-@property(readonly, nonatomic) NSString *seededSystemVersion;
-@property(nonatomic, getter=isSeedingComplete) _Bool seedingComplete;
-@property(nonatomic, getter=isSeeded) _Bool seeded;
-- (void)getCacheGUIDBytes:(unsigned char [16])arg1;
-@property(readonly, nonatomic) NSUUID *cacheGUID;
-@property(readonly, nonatomic) struct LSSchema *schema;
-@property(readonly, nonatomic) NSDate *dateInitialized;
 - (id)description;
 - (void)dealloc;
 - (id)_init;
 - (id)init;
-- (void)registerCanonicalNames;
-- (void)registerCanonicalNamesFromStringLocalizer:(id)arg1;
 
 @end
 

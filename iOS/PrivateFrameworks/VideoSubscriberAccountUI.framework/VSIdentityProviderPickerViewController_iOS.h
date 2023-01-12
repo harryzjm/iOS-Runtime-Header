@@ -10,7 +10,7 @@
 #import <VideoSubscriberAccountUI/VSIdentityProviderPickerViewController-Protocol.h>
 #import <VideoSubscriberAccountUI/VSTableHeaderFooterViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UISearchController, VSFontCenter, VSIdentityProvider, VSIdentityProviderFilter, VSIdentityProviderTableViewDataSource, VSOnboardingInfoCenter, VSSearchBarDelegate;
+@class NSArray, NSDictionary, NSString, UISearchController, VSFontCenter, VSIdentityProvider, VSIdentityProviderFilter, VSIdentityProviderTableViewDataSource, VSOnboardingInfoCenter, VSSearchBarDelegate, VSStorefrontFilter;
 @protocol VSIdentityProviderPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
     NSString *_requestingAppDisplayName;
     NSString *_resourceTitle;
     UISearchController *_searchController;
+    NSString *_requestedStorefrontCountryCode;
+    NSArray *_allStorefronts;
     VSOnboardingInfoCenter *_onboardingInfoCenter;
     VSIdentityProviderFilter *_filter;
     VSSearchBarDelegate *_searchBarDelegate;
@@ -32,9 +34,19 @@ __attribute__((visibility("hidden")))
     VSIdentityProviderTableViewDataSource *_filteredDataSource;
     VSFontCenter *_fontCenter;
     VSIdentityProvider *_selectedIdentityProvider;
+    NSDictionary *_providersByStorefrontCountryCode;
+    NSArray *_tvProviderSupportedStorefronts;
+    NSArray *_identityProvidersToDisplay;
+    NSString *_searchString;
+    VSStorefrontFilter *_storefrontFilter;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) VSStorefrontFilter *storefrontFilter; // @synthesize storefrontFilter=_storefrontFilter;
+@property(retain, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
+@property(retain, nonatomic) NSArray *identityProvidersToDisplay; // @synthesize identityProvidersToDisplay=_identityProvidersToDisplay;
+@property(retain, nonatomic) NSArray *tvProviderSupportedStorefronts; // @synthesize tvProviderSupportedStorefronts=_tvProviderSupportedStorefronts;
+@property(retain, nonatomic) NSDictionary *providersByStorefrontCountryCode; // @synthesize providersByStorefrontCountryCode=_providersByStorefrontCountryCode;
 @property(nonatomic) _Bool sectionContentInsetInitialized; // @synthesize sectionContentInsetInitialized=_sectionContentInsetInitialized;
 @property(retain, nonatomic) VSIdentityProvider *selectedIdentityProvider; // @synthesize selectedIdentityProvider=_selectedIdentityProvider;
 @property(nonatomic, getter=isDismissingSearchDueToSelection) _Bool dismissingSearchDueToSelection; // @synthesize dismissingSearchDueToSelection=_dismissingSearchDueToSelection;
@@ -44,6 +56,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VSSearchBarDelegate *searchBarDelegate; // @synthesize searchBarDelegate=_searchBarDelegate;
 @property(retain, nonatomic) VSIdentityProviderFilter *filter; // @synthesize filter=_filter;
 @property(retain, nonatomic) VSOnboardingInfoCenter *onboardingInfoCenter; // @synthesize onboardingInfoCenter=_onboardingInfoCenter;
+@property(copy, nonatomic) NSArray *allStorefronts; // @synthesize allStorefronts=_allStorefronts;
+@property(copy, nonatomic) NSString *requestedStorefrontCountryCode; // @synthesize requestedStorefrontCountryCode=_requestedStorefrontCountryCode;
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(copy, nonatomic) NSString *resourceTitle; // @synthesize resourceTitle=_resourceTitle;
 @property(copy, nonatomic) NSString *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
@@ -66,8 +80,10 @@ __attribute__((visibility("hidden")))
 - (void)_performSelectionForIdentityProvider:(id)arg1;
 - (void)_showAboutPrivacy:(id)arg1;
 - (void)_cancelButtonPressed:(id)arg1;
+- (void)_didPickStorefront:(id)arg1;
 - (void)_didPickAdditionalIdentityProviders;
 - (void)_didPickIdentityProvider:(id)arg1;
+- (id)_titleForViewController;
 - (id)titleForTableFooterView;
 - (id)_titleForTableHeaderView;
 - (void)_updateTableHeaderTitle;

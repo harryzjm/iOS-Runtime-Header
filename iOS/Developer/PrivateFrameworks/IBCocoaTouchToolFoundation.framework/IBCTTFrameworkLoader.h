@@ -4,23 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <IBAutolayoutFoundation/IBFrameworkLoader.h>
 
-@interface IBCTTFrameworkLoader : NSObject
+@interface IBCTTFrameworkLoader : IBFrameworkLoader
 {
-    _Bool _integrated;
 }
 
-+ (void)integrateLoadedClassNameIfNeeded:(id)arg1;
-+ (void)loadFrameworkForUnboundClassName:(id)arg1;
 + (id)frameworkLoaders;
-@property(nonatomic, getter=isIntegrated) _Bool integrated; // @synthesize integrated=_integrated;
 - (void)integrateLoadedClasses;
-- (id)simulatorFrameworkPath;
+- (id)actualFrameworkPath;
 - (id)simulatorRoot;
-- (id)idealDylibPath;
 - (id)idealFrameworkPath;
-- (id)frameworkFileName;
 - (id)frameworkName;
 - (id)integratedClassNames;
 

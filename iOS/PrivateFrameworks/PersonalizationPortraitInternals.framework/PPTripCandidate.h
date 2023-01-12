@@ -19,13 +19,6 @@
 @property(retain, nonatomic) NSArray *others; // @synthesize others=_others;
 @property(retain, nonatomic) NSArray *hotels; // @synthesize hotels=_hotels;
 @property(retain, nonatomic) NSArray *flights; // @synthesize flights=_flights;
-- (id)reverseGeocodedLocation:(id)arg1;
-- (struct _NSRange)eventsTimeRange;
-- (id)allEvents;
-- (id)partFromEvents:(id)arg1 tripMode:(unsigned char)arg2 takingLocationFromEvent:(id)arg3 overradingStartDate:(id)arg4 endDate:(id)arg5;
-- (id)partFromEvents:(id)arg1 tripMode:(unsigned char)arg2 takingLocationFromEvent:(id)arg3;
-- (double)timeIntervalBetweenEvent:(id)arg1 andEvent:(id)arg2;
-- (unsigned char)modeForEventCategory:(unsigned char)arg1;
 - (id)tripEventFromCandidate;
 - (_Bool)shouldPromoteToTripEvent;
 - (_Bool)canBeMergedWithTripCandidate:(id)arg1;

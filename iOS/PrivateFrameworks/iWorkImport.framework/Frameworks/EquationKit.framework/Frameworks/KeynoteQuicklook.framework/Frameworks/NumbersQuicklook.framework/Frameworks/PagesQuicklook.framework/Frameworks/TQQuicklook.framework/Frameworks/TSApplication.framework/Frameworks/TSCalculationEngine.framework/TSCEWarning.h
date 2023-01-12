@@ -14,7 +14,7 @@
     NSDictionary *_metadata;
 }
 
-+ (void)reportComparisonWarningInContext:(struct TSCEWarningReportingContext *)arg1 leftType:(int)arg2 rightType:(int)arg3;
++ (void)reportComparisonWarningInContext:(struct TSCEWarningReportingContext *)arg1 leftType:(BOOL)arg2 rightType:(BOOL)arg3;
 + (void)reportAutomaticUnitConversionWarningInContext:(struct TSCEWarningReportingContext *)arg1;
 + (void)reportLossOfUnitsWarningInContext:(struct TSCEWarningReportingContext *)arg1;
 + (void)reportMismatchedSizesWarningInContext:(struct TSCEWarningReportingContext *)arg1;
@@ -29,7 +29,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)displayStringWithCalculationEngine:(id)arg1 forTable:(const UUIDData_5fbc143e *)arg2 andCellID:(struct TSUCellCoord)arg3;
+- (id)displayStringWithCalculationEngine:(id)arg1 forTable:(const struct TSKUIDStruct *)arg2 andCellID:(struct TSUCellCoord)arg3;
 - (_Bool)isIgnored;
 - (id)type;
 - (id)copyByRemappingEntityIDs:(id)arg1;

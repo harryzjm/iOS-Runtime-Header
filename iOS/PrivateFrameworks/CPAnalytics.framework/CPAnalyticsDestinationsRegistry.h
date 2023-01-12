@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *destinations; // @synthesize destinations=_destinations;
+- (id)_destinationClassMap;
 - (void)_parseDestinationsFromConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 - (id)_readConfiguration:(id)arg1;
 - (void)removePhotoLibraryFromDestinations;

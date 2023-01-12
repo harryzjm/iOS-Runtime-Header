@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) FCThreadSafeMutableSet *whitelistedMasterPlaylistURLs; // @synthesize whitelistedMasterPlaylistURLs=_whitelistedMasterPlaylistURLs;
 @property(readonly, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
 - (_Bool)_isHLSURL:(id)arg1;
-- (void)prefetchMasterPlaylistForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)prefetchMasterPlaylistForAssetURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 - (void)registerAVURLAssetForAutomaticResourceManagement:(id)arg1;
 - (id)initWithCacheDirectory:(id)arg1;

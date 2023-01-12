@@ -9,11 +9,12 @@
     float _weight;
 }
 
-@property(nonatomic) float weight; // @synthesize weight=_weight;
++ (id)filter;
+- (float)weight;
 - (unsigned short)domain;
 - (id)label;
 - (id)edgeDescription;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
 - (id)initFromPersonNode:(id)arg1 toSocialGroupNode:(id)arg2 weight:(float)arg3;
 
 @end

@@ -10,6 +10,9 @@
 {
 }
 
++ (void)clearMostDistantLastViewedTime;
++ (void)setMostDistantLastViewedTime:(double)arg1;
++ (_Bool)shouldCloseTabsAutomaticallyWhenEnteringForeground;
 + (double)timeIntervalForAutomaticTabClosingInterval:(unsigned long long)arg1;
 + (id)promptTitleForAutomaticTabClosingInterval:(unsigned long long)arg1;
 + (id)settingsTitleForAutomaticTabClosingInterval:(unsigned long long)arg1;

@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+@class MISSING_TYPE;
 
 #pragma mark Named Structures
 
@@ -25,7 +23,19 @@ struct CGSize {
     double _field2;
 };
 
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+} CDStruct_a06f635e;
 
 typedef struct {
     unsigned long long _field1;
@@ -37,6 +47,10 @@ typedef struct {
     unsigned long long _field1;
     unsigned long long _field2;
 } CDStruct_4bcfbbae;
+
+typedef struct {
+    MISSING_TYPE *_field1[4];
+} CDStruct_f1db2b5e;
 
 typedef struct {
     float _field1;

@@ -32,7 +32,7 @@
 - (void)_releaseStatusBarOverride;
 - (void)_acquireStatusBarOverrideWithAudioOnly:(_Bool)arg1;
 - (void)_acquireStatusBarOverride;
-- (int)overrideStyleForAudioOnly:(_Bool)arg1;
+- (unsigned long long)overrideStyleForAudioOnly:(_Bool)arg1;
 - (void)cancelStatusBarOverride;
 - (void)recordingDocumentDidEndMediaCapture:(id)arg1;
 - (void)recordingDocumentDidBeginMediaCapture:(id)arg1 audioOnly:(_Bool)arg2;

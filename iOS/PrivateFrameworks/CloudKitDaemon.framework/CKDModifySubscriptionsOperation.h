@@ -7,7 +7,6 @@
 @class NSArray, NSMutableDictionary;
 @protocol CKModifySubscriptionsOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifySubscriptionsOperation
 {
     CDUnknownBlockType _saveCompletionBlock;
@@ -24,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *subscriptionsToSave; // @synthesize subscriptionsToSave=_subscriptionsToSave;
 @property(copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType saveCompletionBlock; // @synthesize saveCompletionBlock=_saveCompletionBlock;
+- (_Bool)isOperationType:(int)arg1;
 - (int)operationType;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleSubscriptionSaved:(id)arg1 error:(id)arg2;
 - (void)_handleSubscriptionSaved:(id)arg1 responseCode:(id)arg2;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKModifySubscriptionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

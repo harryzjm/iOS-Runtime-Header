@@ -8,12 +8,12 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSMutableCopying-Protocol.h>
+#import <MediaPlayer/NSObject-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class NSDictionary, NSSet, NSString;
 
-@interface MPPropertySet : NSObject <_MPStateDumpPropertyListTransformable, NSCopying, NSMutableCopying, NSSecureCoding>
+@interface MPPropertySet : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSObject>
 {
     NSSet *_properties;
     NSDictionary *_relationships;

@@ -8,6 +8,7 @@
 
 @protocol PXZoomablePhotosContentLayout <NSObject>
 @property(nonatomic) double accessoryAlpha;
+@property(nonatomic) _Bool enablePerItemCornerRadius;
 @property(nonatomic) _Bool enableEffects;
 @property(nonatomic) _Bool loadItemsOutsideAnchorViewport;
 @property(nonatomic) struct CGPoint anchorViewportCenter;
@@ -17,16 +18,19 @@
 @property(readonly, nonatomic) struct CGRect loadedItemsRect;
 @property(readonly, nonatomic) struct _NSRange loadedItems;
 @property(nonatomic) _Bool fillSafeAreaTopInset;
-@property(nonatomic) _Bool hideIncompleteLastRow;
+@property(nonatomic) _Bool hideIncompleteLastRowOrColumn;
 @property(readonly, nonatomic) double rowHeight;
 @property(readonly, nonatomic) long long visualItemShift;
-@property(nonatomic) unsigned char mediaFlags;
+@property(nonatomic) CDStruct_2bd92d94 itemCornerRadius;
+@property(nonatomic) double itemAspectRatio;
+@property(nonatomic) unsigned char spriteInfoFlags;
+@property(nonatomic) _Bool enablePerItemInsets;
 @property(nonatomic) _Bool enableBestCropRect;
 @property(nonatomic) double itemCaptionSpacing;
-@property(nonatomic) double interItemSpacing;
+@property(nonatomic) struct CGSize interItemSpacing;
 @property(nonatomic) struct UIEdgeInsets padding;
 @property(nonatomic) long long numberOfColumns;
-- (struct CGRect)frameForItem:(long long)arg1 usingInterItemSpacing:(double)arg2;
+- (struct CGRect)frameForItem:(long long)arg1 usingInterItemSpacing:(struct CGSize)arg2;
 - (long long)columnForItem:(long long)arg1;
 - (struct CGRect)frameForItem:(long long)arg1;
 - (long long)itemClosestTo:(struct CGPoint)arg1;

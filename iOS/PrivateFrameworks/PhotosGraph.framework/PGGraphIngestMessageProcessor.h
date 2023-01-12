@@ -8,10 +8,11 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, PGMessageProfile;
+@class NSDictionary, NSSet, NSString, PGGraphBuilder, PGMessageProfile;
 
 @interface PGGraphIngestMessageProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
     NSSet *_personNodes;
     NSSet *_contactIdentifiers;
     NSDictionary *_personLocalIdentifierByCNIdentifier;
@@ -30,6 +31,7 @@
 - (_Bool)_isInterestingGroupChatWithPersons:(id)arg1;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

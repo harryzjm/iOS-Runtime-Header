@@ -8,5 +8,7 @@
 {
 }
 
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
+
 @end
 

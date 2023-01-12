@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSNumber;
+@class NSNumber;
 @protocol VCControlChannelTransactionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VCControlChannelTransaction
 {
-    NSData *_data;
     unsigned int _sessionID;
     NSNumber *_participantID;
+    unsigned long long _transactionID;
     struct _opaque_pthread_mutex_t _transactionLock;
     struct _opaque_pthread_cond_t _transactionDone;
     _Bool _isConfirmed;
@@ -20,12 +20,14 @@ __attribute__((visibility("hidden")))
     id <VCControlChannelTransactionDelegate> _weakTransactionDelegate;
 }
 
-+ (_Bool)sendUnreliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 transactionDelegate:(id)arg4;
-- (_Bool)sendReliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 timeout:(id)arg4;
++ (_Bool)sendUnreliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 transactionID:(id)arg4 transactionDelegate:(id)arg5;
+- (_Bool)sendReliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 timeout:(id)arg4 useFastRetries:(_Bool)arg5;
+- (float)retryTimeoutForRetryAttempt:(unsigned int)arg1 usingFastRetries:(_Bool)arg2;
+- (unsigned int)retryCountUsingFastRetries:(_Bool)arg1;
 - (void)confirmedTransactionByParticipantID:(id)arg1 sessionID:(unsigned int)arg2;
-- (void)flushTransactions;
+- (void)flushTransaction;
 - (void)dealloc;
-- (id)initWithTransportSessionID:(unsigned int)arg1 transactionData:(id)arg2 participantID:(id)arg3 transactionDelegate:(id)arg4;
+- (id)initWithTransportSessionID:(unsigned int)arg1 participantID:(id)arg2 transactionID:(unsigned long long)arg3 transactionDelegate:(id)arg4;
 
 @end
 

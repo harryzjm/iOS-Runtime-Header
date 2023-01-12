@@ -8,7 +8,6 @@
 
 @class BRCAccountSession, NSMapTable, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface BRCDownloadTrackers : NSObject
 {
     BRCAccountSession *_session;

@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebDelegateAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebDelegateAction <AMSUIWebActionRunnable>
 {
     NSDictionary *_delegateData;
-    AMSUIWebClientContext *_context;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSDictionary *delegateData; // @synthesize delegateData=_delegateData;
+- (id)_didResolveWithResult:(id)arg1 error:(id)arg2;
+- (id)_handleActionObject:(id)arg1;
+- (id)_infoWithBuyParams:(id)arg1 additionalInfo:(id)arg2;
+- (id)_handleResolveAction;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

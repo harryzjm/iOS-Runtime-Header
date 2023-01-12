@@ -24,6 +24,7 @@
     NSMutableArray *_operationsToAddToOpQueue;
     CKContainer *_container;
     SGFuture *_accountInfoFuture;
+    _Bool _accountInfoInFlight;
     _SGDCloudKitSyncPersistedState *_persistedState;
     long long _suspendCount;
     _Bool _noZone;
@@ -39,6 +40,7 @@
     _Bool _processingStateChanges;
     _Bool _pendingProcessStateChanges;
     struct ct_green_tea_logger_s *_greenTeaLogger;
+    SGFuture *_privacySaltFuture;
 }
 
 + (id)apsEnvironmentStringForContainer:(id)arg1;

@@ -51,6 +51,7 @@
 - (void)_sendRideSelections;
 - (void)_sendStepNameInfo;
 - (void)_sendStepIndex;
+- (void)_sendLocation;
 - (void)_sendCurrentRoadName;
 - (void)_sendGuidanceState;
 - (void)_sendTransitSummary;
@@ -76,6 +77,8 @@
 - (void)setCurrentRoadName:(id)arg1;
 - (void)setDestinationName:(id)arg1;
 - (void)setRouteMatch:(id)arg1;
+- (void)setArrivedAtWaypoint:(id)arg1 endOfLegIndex:(unsigned long long)arg2;
+- (void)setTrafficForCurrentRoute:(id)arg1;
 - (void)setLocationUnreliable:(_Bool)arg1;
 - (void)setLastLocation:(id)arg1;
 - (void)setNavigationState:(int)arg1;

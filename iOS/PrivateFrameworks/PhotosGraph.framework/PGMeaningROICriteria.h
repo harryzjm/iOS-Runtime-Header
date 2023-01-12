@@ -25,7 +25,8 @@
 @property(retain, nonatomic) NSArray *positiveROIs; // @synthesize positiveROIs=_positiveROIs;
 @property(readonly, copy) NSString *description;
 - (_Bool)isValid;
-- (_Bool)passesForMomentNode:(id)arg1;
+- (_Bool)passesForAssets:(id)arg1;
+- (_Bool)passesForMomentNode:(id)arg1 momentNodeCache:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

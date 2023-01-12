@@ -13,7 +13,9 @@
     MISSING_TYPE *nodeBindings;
     MISSING_TYPE *bindingContext;
     MISSING_TYPE *slotOptions;
+    MISSING_TYPE *slotSelectors;
     MISSING_TYPE *wildcardSlotFallback;
+    MISSING_TYPE *sortBy;
 }
 
 @end

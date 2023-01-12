@@ -6,25 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/TSMastheadViewProviderType-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI220MastheadViewProvider : NSObject <TSMastheadViewProviderType>
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI220MastheadViewProvider : NSObject
 {
     MISSING_TYPE *mastheadView;
     MISSING_TYPE *titleViewStyler;
     MISSING_TYPE *layoutAttributesFactory;
     MISSING_TYPE *margins;
     MISSING_TYPE *model;
+    MISSING_TYPE *animationManager;
+    MISSING_TYPE *engagementBanner;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (long long)layoutVariantForTraitCollection:(id)arg1;
-- (struct UIEdgeInsets)layoutMarginForLayoutOptions:(id)arg1;
-- (double)heightForLayoutOptions:(id)arg1;
-- (void)layoutWithBridgedLayoutOptions:(id)arg1;
 
 @end
 

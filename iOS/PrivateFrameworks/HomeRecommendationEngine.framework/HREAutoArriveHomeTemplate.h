@@ -8,9 +8,9 @@
 {
 }
 
-- (id)formatStarter;
-- (id)actionKeyDictionary;
-- (id)initWithConfiguration:(id)arg1;
+- (id)_lazy_allowedVariance;
+- (id)_lazy_actionMap;
+- (id)init;
 
 @end
 

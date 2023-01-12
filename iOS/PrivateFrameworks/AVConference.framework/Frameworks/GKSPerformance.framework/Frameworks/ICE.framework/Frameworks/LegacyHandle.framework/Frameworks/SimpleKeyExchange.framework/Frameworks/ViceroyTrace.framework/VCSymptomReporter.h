@@ -18,23 +18,29 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_reportingQueue;
     CDUnknownFunctionPointerType _symptomReporterCallback;
     id _symptomReporterContext;
+    _Bool _didSubmitABCSymptom[40];
+    _Bool _didShowAlreadyExistFailure[40];
 }
 
 @property(copy, nonatomic) NSString *loggingDirectory; // @synthesize loggingDirectory=_loggingDirectory;
 - (id)symptomNameWithDomain:(id)arg1 subtypeContext:(id)arg2;
 - (int)reportSymptomWithOptions:(id)arg1 type:(id)arg2 subType:(id)arg3 context:(id)arg4;
-- (int)reportSymptomWithDictionary:(id)arg1;
+- (int)requestRemoteSideWithOptions:(id)arg1 context:(id)arg2 signature:(id)arg3;
+- (int)reportSymptomWithGroupID:(id)arg1 signature:(id)arg2 actions:(id)arg3;
+- (int)reportOSLogSymptomWithDictionary:(id)arg1;
 - (int)reportSymptomWithIDSDestination:(id)arg1 sessionID:(id)arg2 type:(id)arg3 subType:(id)arg4 context:(id)arg5;
 - (int)reportSymptomWithType:(id)arg1 subType:(id)arg2 context:(id)arg3 actions:(id)arg4;
-- (int)reportOptedOutAndInToSameVideoStreamID;
+- (int)reportInvalidVideoStallTime;
 - (int)reportInactiveSlotsInChannelSequence;
 - (int)reportInvalidTransportType;
+- (int)reportSustainedHighDownlinkPacketLoss;
+- (int)reportSustainedHighUplinkPacketLoss;
+- (int)reportNoServerStatsActivity;
+- (int)reportUnexpectedRampUpFrozen;
 - (int)reportUnexpectedHighRTT;
-- (int)reportHighTargetQueueSize;
 - (int)reportHighConsecutiveAudioErasures;
 - (int)reportMediaQueueFlushingTooFrequent;
 - (int)reportMediaQueueOvershoot;
-- (int)reportKeyFrameNotSpreading;
 - (int)reportUnexpectedLowTargetBitrate;
 - (int)reportTargetBitrateOvershoot;
 - (int)reportMediaQueuePoolEmpty;
@@ -44,11 +50,13 @@ __attribute__((visibility("hidden")))
 - (int)reportReceiveSessionStatsFailed;
 - (int)reportQRATKNTokenError;
 - (int)reportIDSDataChannelEventUsageError;
-- (int)reportAUIOTimestampJumped;
 - (int)reportNegativeJitterBufferSize;
-- (int)reportAudioErasures;
+- (int)reportAlgosScoreWithOptionalDictionary:(id)arg1;
 - (int)reportVideoStall;
 - (int)reportAudioStall;
+- (int)reportSignificantHandshakeDelayWithOptionalDictionary:(id)arg1;
+- (int)reportExtendedPoorConnectionWithOptionalDictionary:(id)arg1;
+- (int)reportMKMDecryptionWithOptionalDictionary:(id)arg1;
 - (int)reportNoPacketsWithOptionalDictionary:(id)arg1;
 - (int)reportNoFirstFrameWithOptionalDictionary:(id)arg1;
 - (int)reportFailedToStartVideo;
@@ -60,7 +68,7 @@ __attribute__((visibility("hidden")))
 - (int)reportNoMediaBlob;
 - (int)reportBandwidthEstimationMismatch;
 - (int)reportRateTargetMismatch;
-- (void)reportSymptomInternal:(unsigned int)arg1 optionalDictionary:(id)arg2;
+- (int)reportSymptomInternal:(unsigned int)arg1 optionalDictionary:(id)arg2;
 - (void)dealloc;
 - (void)VCSymptomReporterSetCallback:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2;
 - (void)reportSymptom:(unsigned int)arg1 optionalDictionary:(id)arg2;

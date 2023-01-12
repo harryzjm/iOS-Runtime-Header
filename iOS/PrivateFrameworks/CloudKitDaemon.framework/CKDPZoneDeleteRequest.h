@@ -10,7 +10,6 @@
 
 @class CKDPDate, CKDPRecordZoneIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneDeleteRequest : PBRequest <NSCopying>
 {
     CKDPDate *_lastMissingManateeIdentityErrorDate;

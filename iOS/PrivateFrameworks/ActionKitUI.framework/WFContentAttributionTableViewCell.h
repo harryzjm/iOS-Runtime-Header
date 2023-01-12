@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UILabel *_accountIdentifierLabel;
     UILabel *_managedLevelLabel;
     UILabel *_disclosureLevelLabel;
+    UILabel *_contentItemsCountLabel;
     UIStackView *_contentStackView;
     NSLayoutConstraint *_firstLineBaseLineConstaint;
     NSLayoutConstraint *_secondLineBaseLineConstaint;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *secondLineBaseLineConstaint; // @synthesize secondLineBaseLineConstaint=_secondLineBaseLineConstaint;
 @property(retain, nonatomic) NSLayoutConstraint *firstLineBaseLineConstaint; // @synthesize firstLineBaseLineConstaint=_firstLineBaseLineConstaint;
 @property(retain, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
+@property(retain, nonatomic) UILabel *contentItemsCountLabel; // @synthesize contentItemsCountLabel=_contentItemsCountLabel;
 @property(retain, nonatomic) UILabel *disclosureLevelLabel; // @synthesize disclosureLevelLabel=_disclosureLevelLabel;
 @property(retain, nonatomic) UILabel *managedLevelLabel; // @synthesize managedLevelLabel=_managedLevelLabel;
 @property(retain, nonatomic) UILabel *accountIdentifierLabel; // @synthesize accountIdentifierLabel=_accountIdentifierLabel;

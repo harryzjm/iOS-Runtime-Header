@@ -9,17 +9,17 @@
 #import <SleepDaemon/HDSPDiagnosticsProvider-Protocol.h>
 #import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
 #import <SleepDaemon/HDSPSleepActionObserver-Protocol.h>
-#import <SleepDaemon/HDSPSleepAlarmObserver-Protocol.h>
 #import <SleepDaemon/HDSPSleepEventHandler-Protocol.h>
 #import <SleepDaemon/HDSPSleepScheduleModelObserver-Protocol.h>
 #import <SleepDaemon/HDSPSleepScheduleStateCoordinatorStateMachineDelegate-Protocol.h>
 #import <SleepDaemon/HDSPSleepScheduleStateCoordinatorStateMachineInfoProvider-Protocol.h>
+#import <SleepDaemon/HDSPSource-Protocol.h>
 #import <SleepDaemon/HDSPTimeChangeObserver-Protocol.h>
 
 @class HDSPEnvironment, HDSPSleepScheduleStateCoordinatorStateMachine, HKSPObserverSet, HKSPSleepScheduleModel, HKSPSleepScheduleOccurrence, NSDate, NSString;
-@protocol NAScheduler;
+@protocol HDSPSource, NAScheduler;
 
-@interface HDSPSleepScheduleStateCoordinator : NSObject <HDSPSleepScheduleStateCoordinatorStateMachineDelegate, HDSPSleepScheduleStateCoordinatorStateMachineInfoProvider, HDSPEnvironmentAware, HDSPSleepEventHandler, HDSPSleepScheduleModelObserver, HDSPDiagnosticsProvider, HDSPSleepActionObserver, HDSPSleepAlarmObserver, HDSPTimeChangeObserver>
+@interface HDSPSleepScheduleStateCoordinator : NSObject <HDSPSleepScheduleStateCoordinatorStateMachineDelegate, HDSPSleepScheduleStateCoordinatorStateMachineInfoProvider, HDSPSource, HDSPEnvironmentAware, HDSPSleepEventHandler, HDSPSleepScheduleModelObserver, HDSPDiagnosticsProvider, HDSPSleepActionObserver, HDSPTimeChangeObserver>
 {
     struct os_unfair_lock_s _stateMachineLock;
     HDSPEnvironment *_environment;
@@ -35,16 +35,14 @@
 - (id)diagnosticInfo;
 - (id)diagnosticDescription;
 - (id)currentState;
-- (void)wakeUpAlarmWasDismissed:(id)arg1;
-- (void)wakeNotificationWasConfirmed:(id)arg1;
-- (void)bedtimeWasSkipped:(id)arg1;
-- (void)bedtimeWasDelayed:(id)arg1;
-- (void)windDownWasSkipped:(id)arg1;
+@property(readonly, nonatomic) NSString *sourceIdentifier;
+- (void)wakeUpAlarmWasDismissed;
+- (void)wakeNotificationWasConfirmed;
 - (id)eventIdentifiers;
 - (void)sleepEventIsDue:(id)arg1;
 - (void)timeZoneChangeDetected:(id)arg1;
 - (void)significantTimeChangeDetected:(id)arg1;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 @property(readonly, nonatomic) HKSPSleepScheduleOccurrence *previousOccurrence;
 @property(readonly, nonatomic) NSDate *currentDate;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
@@ -52,7 +50,9 @@
 @property(readonly, nonatomic) _Bool isAppleWatch;
 - (unsigned long long)currentSleepScheduleState;
 - (void)snoozeFireDateShouldBeReset;
-- (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
+- (_Bool)_updateEventRecordHelper:(id)arg1 sleepScheduleState:(unsigned long long)arg2 context:(id)arg3;
+- (void)_updateEventRecordForSleepScheduleState:(unsigned long long)arg1 context:(id)arg2 notifyBlock:(CDUnknownBlockType)arg3;
+- (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 context:(id)arg3;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (void)_updateSleepScheduleState;
@@ -65,8 +65,11 @@
 @property(readonly, nonatomic) id <NAScheduler> callbackScheduler;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool dontNotify;
+@property(readonly, nonatomic) _Bool dontSync;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) id <HDSPSource> targetSource;
 
 @end
 

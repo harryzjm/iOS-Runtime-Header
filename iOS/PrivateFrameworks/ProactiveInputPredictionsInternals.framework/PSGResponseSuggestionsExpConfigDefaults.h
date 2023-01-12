@@ -8,26 +8,28 @@
 
 #import <ProactiveInputPredictionsInternals/PSGResponseSuggestionsExpConfigProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, TRIExperimentIdentifiers, TRIRolloutIdentifiers;
 
 @interface PSGResponseSuggestionsExpConfigDefaults : NSObject <PSGResponseSuggestionsExpConfigProtocol>
 {
     _Bool _isMLModelEnabled;
     NSString *_treatmentName;
-    NSString *_experimentId;
-    NSString *_treatmentId;
+    TRIRolloutIdentifiers *_rolloutIdentifiers;
+    TRIExperimentIdentifiers *_experimentIdentifiers;
     NSString *_inferenceModelFilePath;
     NSString *_inferenceModelConfigPath;
     NSString *_espressoBinFilePath;
+    NSString *_language;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property(readonly, nonatomic) NSString *espressoBinFilePath; // @synthesize espressoBinFilePath=_espressoBinFilePath;
 @property(readonly, nonatomic) NSString *inferenceModelConfigPath; // @synthesize inferenceModelConfigPath=_inferenceModelConfigPath;
 @property(readonly, nonatomic) NSString *inferenceModelFilePath; // @synthesize inferenceModelFilePath=_inferenceModelFilePath;
 @property(readonly, nonatomic) _Bool isMLModelEnabled; // @synthesize isMLModelEnabled=_isMLModelEnabled;
-@property(readonly, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
-@property(readonly, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+@property(readonly, nonatomic) TRIExperimentIdentifiers *experimentIdentifiers; // @synthesize experimentIdentifiers=_experimentIdentifiers;
+@property(readonly, nonatomic) TRIRolloutIdentifiers *rolloutIdentifiers; // @synthesize rolloutIdentifiers=_rolloutIdentifiers;
 @property(readonly, nonatomic) NSString *treatmentName; // @synthesize treatmentName=_treatmentName;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToConfig:(id)arg1;

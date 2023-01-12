@@ -6,7 +6,6 @@
 
 @class CKDServerConfiguration;
 
-__attribute__((visibility("hidden")))
 @interface CKDGlobalConfigurationURLRequest
 {
     CKDServerConfiguration *_configuration;

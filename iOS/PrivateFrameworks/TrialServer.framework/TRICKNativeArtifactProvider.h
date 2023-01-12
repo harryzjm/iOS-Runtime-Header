@@ -8,8 +8,8 @@
 
 #import <TrialServer/TRIArtifactProvider-Protocol.h>
 
-@class CKContainer, CKRecordZoneID, NSString;
-@protocol TRIDateProviding, TRINamespaceDescriptorProviding, TRIPaths;
+@class CKContainer, CKRecordZoneID, NSString, TRICKQueryLog;
+@protocol TRIDateProviding, TRINamespaceDescriptorProviding;
 
 @interface TRICKNativeArtifactProvider : NSObject <TRIArtifactProvider>
 {
@@ -18,35 +18,51 @@
     NSString *_teamId;
     id <TRIDateProviding> _dateProvider;
     id <TRINamespaceDescriptorProviding> _namespaceDescriptorProvider;
-    id <TRIPaths> _paths;
     NSString *_bundleId;
+    TRICKQueryLog *_queryLog;
 }
 
 + (int)containerFromCkContainer:(id)arg1;
 + (id)cloudkitIdentifierForContainer:(int)arg1;
 + (id)recordZoneForContainerIdentifier:(id)arg1 teamId:(id)arg2;
-+ (id)mockSQLiteContainerWithIdentifier:(id)arg1;
-+ (id)containerForIdentifier:(id)arg1;
-+ (id)providerForContainer:(int)arg1 teamId:(id)arg2 bundleId:(id)arg3 dateProvider:(id)arg4 namespaceDescriptorProvider:(id)arg5 paths:(id)arg6;
++ (id)mockSQLiteContainerWithIdentifier:(id)arg1 serverContext:(id)arg2 failureInjectionDelegate:(id)arg3;
++ (id)containerForIdentifier:(id)arg1 serverContext:(id)arg2;
++ (id)providerForContainer:(int)arg1 teamId:(id)arg2 bundleId:(id)arg3 dateProvider:(id)arg4 namespaceDescriptorProvider:(id)arg5 serverContext:(id)arg6;
++ (id)fetchRetryDateFromErrorAndOptions:(id)arg1 options:(id)arg2;
++ (_Bool)isActivityDeferralError:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) TRICKQueryLog *queryLog; // @synthesize queryLog=_queryLog;
 @property(readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
-@property(readonly, nonatomic) id <TRIPaths> paths; // @synthesize paths=_paths;
 @property(readonly, nonatomic) id <TRINamespaceDescriptorProviding> namespaceDescriptorProvider; // @synthesize namespaceDescriptorProvider=_namespaceDescriptorProvider;
 @property(readonly, nonatomic) id <TRIDateProviding> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property(readonly, nonatomic) NSString *teamId; // @synthesize teamId=_teamId;
 @property(readonly, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 @property(readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
-- (id)_selectAssetIndexesFromTreatment:(id)arg1 requestedAssetIndexes:(id)arg2;
-- (void)fetchTreatmentWithId:(id)arg1 assetIndexes:(id)arg2 options:(id)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)fetchExperimentNotificationsWithNamespaceNames:(id)arg1 rollbacksOnly:(_Bool)arg2 lastFetchDateOverride:(id)arg3 options:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
+- (id)fetchDiffsWithRecordIds:(id)arg1 options:(id)arg2 perRecordProgress:(CDUnknownBlockType)arg3 perRecordCompletionBlockOnSuccess:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)fetchDiffSourceRecordIdsWithTargetAssetIds:(id)arg1 isAcceptableSourceAssetId:(CDUnknownBlockType)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)fetchAssetsWithRecordIds:(id)arg1 options:(id)arg2 perRecordProgress:(CDUnknownBlockType)arg3 perRecordCompletionBlockOnSuccess:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_fetchRecordIdsForAssetsWithIds:(id)arg1 options:(id)arg2 cursor:(id)arg3 cancelableOp:(id)arg4 resultBuffer:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)fetchRecordIdsForAssetsWithIds:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchFactorPackSetWithId:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchRolloutNotificationWithRolloutId:(id)arg1 deploymentId:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)fetchRolloutNotificationWithLatestDeploymentForRolloutId:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchRolloutNotificationWithDeployment:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchRolloutNotificationsWithCursor:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchRolloutNotificationsDateDescendingWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fetchRolloutNotificationsWithCursor:(id)arg1 options:(id)arg2 sinceDate:(id)arg3 namespaceNames:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
+- (void)fetchRolloutNotificationsDateAscendingWithOptions:(id)arg1 lastFetchDateOverride:(id)arg2 namespaceNames:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)fetchAssetsWithIndexes:(id)arg1 fromTreatmentWithRecordId:(id)arg2 options:(id)arg3 progress:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)fetchTreatmentWithId:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchExperimentNotificationsWithNamespaceNames:(id)arg1 rollbacksOnly:(_Bool)arg2 lastFetchDateOverride:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_fetchNotificationsWithQueryType:(unsigned long long)arg1 withCursor:(id)arg2 withNamespaceNames:(id)arg3 sinceDate:(id)arg4 options:(id)arg5 resultsHandler:(CDUnknownBlockType)arg6;
 - (void)_fetchExperimentsWithCursor:(id)arg1 withNamespaceNames:(id)arg2 sinceDate:(id)arg3 fetchRollbacksOnly:(_Bool)arg4 options:(id)arg5 resultsHandler:(CDUnknownBlockType)arg6;
-- (void)fetchExperimentWithLatestDeploymentForExperimentId:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)fetchExperimentWithExperimentDeployment:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_fetchExperimentWithExperimentId:(id)arg1 deploymentId:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)initWithCloudKitContainer:(int)arg1 teamId:(id)arg2 bundleId:(id)arg3 dateProvider:(id)arg4 namespaceDescriptorProvider:(id)arg5 paths:(id)arg6;
+- (void)fetchExperimentWithLatestDeploymentForExperimentId:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchExperimentWithExperimentDeployment:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchExperimentWithExperimentId:(id)arg1 deploymentId:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)queryOperationWithCursor:(id)arg1 options:(id)arg2 recordFetchedBlock:(CDUnknownBlockType)arg3 queryCompletionBlock:(CDUnknownBlockType)arg4;
+- (id)initWithCloudKitContainer:(id)arg1 zoneId:(id)arg2 teamId:(id)arg3 bundleId:(id)arg4 dateProvider:(id)arg5 namespaceDescriptorProvider:(id)arg6;
 - (id)queryOperationForRecordType:(id)arg1 predicate:(id)arg2 options:(id)arg3 recordFetchedBlock:(CDUnknownBlockType)arg4 queryCompletionBlock:(CDUnknownBlockType)arg5;
+- (id)queryOperationForRecordType:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 options:(id)arg4 recordFetchedBlock:(CDUnknownBlockType)arg5 queryCompletionBlock:(CDUnknownBlockType)arg6;
 - (id)configurationFromOptions:(id)arg1;
 
 @end

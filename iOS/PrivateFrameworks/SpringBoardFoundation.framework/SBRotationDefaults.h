@@ -12,6 +12,7 @@
 
 // Remaining properties
 @property(nonatomic) long long lastLockedOrientation; // @dynamic lastLockedOrientation;
+@property(readonly, nonatomic, getter=isPostModernRotationForciblyEnabled) _Bool postModernRotationForciblyEnabled; // @dynamic postModernRotationForciblyEnabled;
 @property(readonly, nonatomic, getter=isVideoRotationEnabled) _Bool videoRotationEnabled; // @dynamic videoRotationEnabled;
 
 @end

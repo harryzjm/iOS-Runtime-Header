@@ -30,6 +30,7 @@
 @property(nonatomic, setter=_setAutosizeToCurrentKeyboard:) _Bool _autosizeToCurrentKeyboard; // @synthesize _autosizeToCurrentKeyboard;
 @property(nonatomic) _Bool _alignsToContentViewController; // @synthesize _alignsToContentViewController;
 @property(readonly, nonatomic) id <UITextDocumentProxy> textDocumentProxy; // @synthesize textDocumentProxy=_textDocumentProxy;
+- (_Bool)_usesCustomBackground;
 - (_Bool)_canBecomeFirstResponder;
 - (void)_didResetDocumentState;
 - (void)_willResetDocumentState;

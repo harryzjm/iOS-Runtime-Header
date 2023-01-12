@@ -11,6 +11,7 @@
 + (id)tableViewBackgroundColorOpaque;
 - (id)burnWithColor:(id)arg1;
 - (id)overlayWithColor:(id)arg1;
+- (id)ek_blendWithColor:(id)arg1;
 - (id)soverWithColor:(id)arg1;
 - (_Bool)isGreenOrYellow;
 - (double)differenceFromColor:(id)arg1;

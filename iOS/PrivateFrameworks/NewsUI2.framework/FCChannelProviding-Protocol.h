@@ -14,7 +14,9 @@
 - (NSString *)paidFeedIDForSection:(NSString *)arg1 bin:(long long)arg2;
 - (NSString *)freeFeedIDForSection:(NSString *)arg1 bin:(long long)arg2;
 @property(nonatomic, readonly) NSString *backIssuesListID;
+@property(nonatomic, readonly) NSArray *recentIssueIDs;
 @property(nonatomic, readonly) NSArray *currentIssueIDs;
+@property(nonatomic, readonly) unsigned long long channelType;
 @property(nonatomic, readonly) _Bool isWhitelisted;
 @property(nonatomic, readonly) _Bool supportsNotifications;
 @property(nonatomic, readonly) NSString *defaultSectionID;

@@ -11,6 +11,7 @@
 }
 
 + (id)partsPerMillion;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

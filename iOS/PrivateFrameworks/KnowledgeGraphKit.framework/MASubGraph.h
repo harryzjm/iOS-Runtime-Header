@@ -40,7 +40,7 @@
 - (id)edgesForLabel:(id)arg1 domain:(unsigned short)arg2 properties:(id)arg3;
 - (id)edgesForName:(id)arg1;
 - (id)edgesForLabel:(id)arg1;
-- (id)edgeForIdentifier:(unsigned int)arg1;
+- (id)edgeForIdentifier:(unsigned long long)arg1;
 - (void)_addEdge:(id)arg1 withName:(id)arg2;
 - (void)addEdges:(id)arg1 withName:(id)arg2;
 - (void)enumerateNodesWithName:(id)arg1 fromNode:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -61,7 +61,7 @@
 - (id)nodesForNames:(id)arg1;
 - (id)nodesForName:(id)arg1;
 - (id)nodesForLabel:(id)arg1;
-- (id)nodeForIdentifier:(unsigned int)arg1;
+- (id)nodeForIdentifier:(unsigned long long)arg1;
 - (void)_addNode:(id)arg1 withName:(id)arg2 forKeyNode:(id)arg3;
 - (void)_addNode:(id)arg1 withName:(id)arg2;
 - (void)addNodes:(id)arg1 withName:(id)arg2;

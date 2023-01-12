@@ -8,23 +8,33 @@
 
 #import <SpringBoardHome/BSUIScrollViewDelegate-Protocol.h>
 #import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
+#import <SpringBoardHome/SBHIconLibraryTableViewControllerLayoutDelegate-Protocol.h>
 #import <SpringBoardHome/SBHSearchBarDelegate-Protocol.h>
+#import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MTMaterialView, NSArray, NSString, SBFFluidBehaviorSettings, SBHHomePullToSearchSettings, SBHIconLibraryTableViewController, SBHSearchBar, SBHSearchTextField, UIScrollView, UIView;
+@class NSArray, NSString, SBFFluidBehaviorSettings, SBHAppLibraryVisualConfiguration, SBHHomePullToSearchSettings, SBHIconLibraryTableViewController, SBHSearchBar, SBHSearchTextField, SBHSearchVisualConfiguration, UIScrollView, UIView;
 @protocol SBHLibrarySearchControllerContentViewControllerScrollViewProvider, SBHLibrarySearchControllerDelegate, SBHSearchResultsUpdating, SBIconListLayoutProvider;
 
-@interface SBHLibrarySearchController : UIViewController <SBHSearchBarDelegate, BSUIScrollViewDelegate, PTSettingsKeyObserver>
+@interface SBHLibrarySearchController : UIViewController <SBHSearchBarDelegate, BSUIScrollViewDelegate, SBHIconLibraryTableViewControllerLayoutDelegate, UIGestureRecognizerDelegate, PTSettingsKeyObserver>
 {
     UIView *_containerView;
     UIView *_contentContainerView;
     UIView *_searchResultsContainerView;
-    MTMaterialView *_searchBackdropView;
+    UIView *_searchBackgroundView;
+    UIView *_searchResultsPlatterView;
     UIScrollView *_scrollView;
     SBHHomePullToSearchSettings *_pullToSearchSettings;
+    SBHSearchVisualConfiguration *_searchVisualConfiguration;
+    SBHAppLibraryVisualConfiguration *_libraryVisualConfiguration;
+    _Bool _needsLowQualityBackgroundEffects;
+    _Bool _disablePullToSearch;
+    _Bool _usesPlatterAppearance;
+    _Bool _forcedSearchTextFieldNoneditable;
     _Bool _scrollViewBeganScrollingFromTop;
     UIViewController<SBHLibrarySearchControllerContentViewControllerScrollViewProvider> *_contentViewController;
     SBHIconLibraryTableViewController *_searchResultsController;
     SBHSearchBar *_searchBar;
+    unsigned long long _searchBarAppearance;
     id <SBHSearchResultsUpdating> _searchResultsUpdater;
     id <SBHLibrarySearchControllerDelegate> _delegate;
     UIView *_searchDimmingView;
@@ -43,10 +53,13 @@
 @property(nonatomic) _Bool scrollViewBeganScrollingFromTop; // @synthesize scrollViewBeganScrollingFromTop=_scrollViewBeganScrollingFromTop;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *searchAnimationSettings; // @synthesize searchAnimationSettings=_searchAnimationSettings;
 @property(readonly, nonatomic) SBHSearchTextField *searchField; // @synthesize searchField=_searchField;
+@property(nonatomic) _Bool forcedSearchTextFieldNoneditable; // @synthesize forcedSearchTextFieldNoneditable=_forcedSearchTextFieldNoneditable;
 @property(nonatomic) __weak id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
 @property(retain, nonatomic) UIView *searchDimmingView; // @synthesize searchDimmingView=_searchDimmingView;
 @property(nonatomic) __weak id <SBHLibrarySearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <SBHSearchResultsUpdating> searchResultsUpdater; // @synthesize searchResultsUpdater=_searchResultsUpdater;
+@property(readonly, nonatomic) _Bool usesPlatterAppearance; // @synthesize usesPlatterAppearance=_usesPlatterAppearance;
+@property(nonatomic) unsigned long long searchBarAppearance; // @synthesize searchBarAppearance=_searchBarAppearance;
 @property(readonly, nonatomic) SBHSearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property(readonly, nonatomic) SBHIconLibraryTableViewController *searchResultsController; // @synthesize searchResultsController=_searchResultsController;
 @property(readonly, nonatomic) UIViewController<SBHLibrarySearchControllerContentViewControllerScrollViewProvider> *contentViewController; // @synthesize contentViewController=_contentViewController;
@@ -59,6 +72,10 @@
 - (void)_performPresentation:(_Bool)arg1;
 - (void)_setupSearchAnimationSettings;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (double)_bottomLayoutInsetForSearchResultsView;
+- (double)fixedBottomLayoutInsetInWindowCoordinateSpaceForTableViewController:(id)arg1;
+- (void)searchBarDidInvalidateIntrinsicContentSize:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (_Bool)searchBarShouldReturn:(id)arg1;
 - (void)searchBarCancelButtonClicked:(id)arg1;
@@ -68,17 +85,25 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)scrollViewDidEndScrolling:(id)arg1;
+- (void)scrollViewWillBeginScrolling:(id)arg1;
 - (void)endEditingForSearchField;
+- (void)ppt_setDisablePullToSearch:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isSearchFieldEditing) _Bool searchFieldEditing;
+- (id)_activeSearchConfiguration;
+- (id)_inactiveSearchConfiguration;
+- (void)_updateEffectiveSearchVisualConfiguration;
+- (struct CGRect)_calculateSearchBarFrame:(_Bool)arg1 forExplicitVisualConfiguration:(id)arg2;
 - (struct CGRect)_calculateSearchBarFrame:(_Bool)arg1;
 - (void)_setUpFeatherMaskLayerMatchMoveAnimations;
 - (void)_layoutSearchViews;
 - (void)_layoutSearchViewsWithMode:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (double)_searchPresentationProgressForOffset:(double)arg1;
 - (double)_rubberbandingOffsetForContentOffset:(struct CGPoint)arg1;
-- (void)setActive:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isActive) _Bool active;
 - (_Bool)isTransitionInProgress;
+- (id)keyCommands;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -89,7 +114,7 @@
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (id)contentScrollView;
-- (id)initWithSearchResultsController:(id)arg1 contentViewController:(id)arg2;
+- (id)initWithSearchResultsController:(id)arg1 contentViewController:(id)arg2 usingPlatterAppearance:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

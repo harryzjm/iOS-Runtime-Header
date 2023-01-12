@@ -7,16 +7,18 @@
 #import <TrialServer/TRITask-Protocol.h>
 
 @class NSArray, NSDate, NSString;
-@protocol TRITaskQueueStateProviding;
+@protocol TRITaskAttributing, TRITaskQueueStateProviding;
 
 @interface TRIRetargetAllTask <TRITask>
 {
+    id <TRITaskAttributing> _taskAttribution;
     NSArray *_nextTasks;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)parseFromData:(id)arg1;
 + (id)task;
++ (id)taskWithTaskAttribution:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *nextTasks; // @synthesize nextTasks=_nextTasks;
 - (void)encodeWithCoder:(id)arg1;
@@ -24,6 +26,7 @@
 - (id)serialize;
 - (id)_asPersistedTask;
 - (id)runUsingContext:(id)arg1 withTaskQueue:(id)arg2;
+- (id)initWithTaskAttribution:(id)arg1;
 @property(readonly, nonatomic) int taskType;
 
 // Remaining properties

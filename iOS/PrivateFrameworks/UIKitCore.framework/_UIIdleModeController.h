@@ -8,7 +8,6 @@
 
 @class NSMapTable, UIImageView, UIScreen, UIWindow;
 
-__attribute__((visibility("hidden")))
 @interface _UIIdleModeController : NSObject
 {
     _Bool _didApplyVisualEffects;
@@ -22,10 +21,12 @@ __attribute__((visibility("hidden")))
     NSMapTable *_viewsToOriginalAttributes;
     _Bool _idleModeEnabled;
     UIScreen *_screen;
+    unsigned long long _style;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isIdleModeEnabled) _Bool idleModeEnabled; // @synthesize idleModeEnabled=_idleModeEnabled;
+@property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(readonly, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 - (void)_completeDismissal;
 - (void)_animateDismissal;
@@ -42,6 +43,10 @@ __attribute__((visibility("hidden")))
 - (double)_vignetteAlphaForUserInterfaceStyle:(long long)arg1;
 - (double)_dismissalAnimationDuration;
 - (double)_presentationAnimationDuration;
+- (void)_postWillExitNotification;
+- (void)_postWillEnterNotification;
+- (void)_exitIdleModeWithOptions:(unsigned long long)arg1;
+- (void)_enterIdleModeWithOptions:(unsigned long long)arg1;
 - (void)_exitIdleMode;
 - (void)_enterIdleMode;
 - (void)dealloc;

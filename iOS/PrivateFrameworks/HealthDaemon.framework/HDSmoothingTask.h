@@ -13,20 +13,15 @@ __attribute__((visibility("hidden")))
 {
     HKWorkoutRoute *_sample;
     NSArray *_unsmoothedLocations;
+    unsigned long long _workoutActivityType;
     CDUnknownBlockType _completionHandler;
     HDDaemonTransaction *_transaction;
     unsigned long long _smoothingAttempts;
 }
 
 - (void).cxx_destruct;
-@property unsigned long long smoothingAttempts; // @synthesize smoothingAttempts=_smoothingAttempts;
-@property(retain, nonatomic) HDDaemonTransaction *transaction; // @synthesize transaction=_transaction;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(retain, nonatomic) NSArray *unsmoothedLocations; // @synthesize unsmoothedLocations=_unsmoothedLocations;
-@property(retain, nonatomic) HKWorkoutRoute *sample; // @synthesize sample=_sample;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithRoute:(id)arg1;
 
 @end
 

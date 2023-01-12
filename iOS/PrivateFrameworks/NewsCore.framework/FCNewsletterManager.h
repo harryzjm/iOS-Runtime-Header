@@ -10,16 +10,19 @@
 #import <NewsCore/FCAppleAccountObserver-Protocol.h>
 #import <NewsCore/FCNewsletterManager-Protocol.h>
 
-@class FCCommandQueue, FCNewsletterEndpointConnection, NFPromise, NSDate, NSHashTable, NSString;
-@protocol FCAppleAccount, FCNewsAppConfigurationManager;
+@class FCCKPrivateDatabase, FCCommandQueue, FCNewsletterEndpointConnection, NFPromise, NSDate, NSHashTable, NSString;
+@protocol FCAppleAccount, FCBundleSubscriptionManagerType, FCNewsAppConfigurationManager;
 
 @interface FCNewsletterManager : NSObject <FCNewsletterManager, FCAppActivityObserving, FCAppleAccountObserver>
 {
     long long _subscription;
+    long long _includeOptions;
     FCNewsletterEndpointConnection *_endpointConnection;
     FCCommandQueue *_endpointCommandQueue;
     id <FCAppleAccount> _appleAccount;
     id <FCNewsAppConfigurationManager> _appConfig;
+    id <FCBundleSubscriptionManagerType> _bundleSubscriptionManager;
+    FCCKPrivateDatabase *_database;
     NSHashTable *_observers;
     NSDate *_cacheExpiration;
     NFPromise *_updateSubscriptionPromise;
@@ -31,10 +34,13 @@
 @property(retain, nonatomic) NFPromise *updateSubscriptionPromise; // @synthesize updateSubscriptionPromise=_updateSubscriptionPromise;
 @property(retain, nonatomic) NSDate *cacheExpiration; // @synthesize cacheExpiration=_cacheExpiration;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property(readonly, nonatomic) FCCKPrivateDatabase *database; // @synthesize database=_database;
+@property(readonly, nonatomic) id <FCBundleSubscriptionManagerType> bundleSubscriptionManager; // @synthesize bundleSubscriptionManager=_bundleSubscriptionManager;
 @property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfig; // @synthesize appConfig=_appConfig;
 @property(readonly, nonatomic) id <FCAppleAccount> appleAccount; // @synthesize appleAccount=_appleAccount;
 @property(readonly, nonatomic) FCCommandQueue *endpointCommandQueue; // @synthesize endpointCommandQueue=_endpointCommandQueue;
 @property(readonly, nonatomic) FCNewsletterEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
+@property(nonatomic) long long includeOptions; // @synthesize includeOptions=_includeOptions;
 @property(nonatomic) long long subscription; // @synthesize subscription=_subscription;
 - (void)notifyObserversWithPreviousSubscription:(long long)arg1;
 - (double)cacheTimeout;
@@ -44,14 +50,21 @@
 - (void)activityObservingApplicationDidBecomeActive;
 - (void)appleAccountChanged;
 - (void)deletePersonalizationVector;
-- (void)submitPersonalizationVector:(id)arg1;
+- (void)saveToCloudKitSubscribedChannels:(id)arg1;
+- (void)submitPersonalizationVector:(id)arg1 subscribedBundleChannelIDs:(id)arg2;
 - (_Bool)shouldSubmitPersonalizationVector;
-- (void)updateCacheWithNewsletterString:(id)arg1;
+- (void)updateCacheWithNewsletterString:(id)arg1 includeArray:(id)arg2;
 - (id)forceUpdateSubscription;
 - (id)updateSubscription;
+- (void)optOutOfIssues;
+- (void)optIntoIssues;
 - (void)unsubscribe;
 - (void)subscribe;
 - (void)subscribeTo:(long long)arg1;
+- (void)subscribeTo:(long long)arg1 includeOptions:(long long)arg2;
+- (_Bool)isOptedIntoIssues;
+- (_Bool)canOptIntoIssues;
+- (long long)issueOptinStatus;
 - (_Bool)canSubscribeToNewsletter:(long long)arg1;
 - (long long)subscriptionStatusForNewsletter:(long long)arg1;
 @property(readonly, nonatomic) _Bool canUnsubscribe;
@@ -59,7 +72,7 @@
 @property(readonly, nonatomic) _Bool isSubscribed;
 @property(readonly, nonatomic) long long activeNewsletter;
 @property(readonly, nonatomic) _Bool enabled;
-- (id)initWithEndpointConnection:(id)arg1 endpointCommandQueue:(id)arg2 appleAccount:(id)arg3 appConfig:(id)arg4;
+- (id)initWithEndpointConnection:(id)arg1 endpointCommandQueue:(id)arg2 appleAccount:(id)arg3 appConfig:(id)arg4 bundleSubscriptionManager:(id)arg5 database:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

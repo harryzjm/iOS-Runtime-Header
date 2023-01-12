@@ -8,7 +8,7 @@
 
 #import <VisualLocalization/VLLocalizationDataProviderDelegate-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString, _VLLocalizerAltitudeQuery;
 @protocol OS_dispatch_queue, VLLocalizationDataProvider;
 
 @interface VLLocalizer : NSObject <VLLocalizationDataProviderDelegate>
@@ -21,6 +21,9 @@
     int _algorithmVersion;
     NSObject<OS_dispatch_queue> *_recorderQueue;
     _Bool _debugInfoShouldPreserveImageData;
+    NSObject<OS_dispatch_queue> *_altitudeCalculationQueue;
+    NSMutableArray *_pendingAltitudeQueries;
+    _VLLocalizerAltitudeQuery *_currentAltitudeQuery;
     int _debug_algorithmVersion;
 }
 
@@ -33,6 +36,8 @@
 @property(nonatomic, getter=_debugInfoShouldPreserveImageData, setter=_setDebugInfoShouldPreserveImageData:) _Bool debugInfoShouldPreserveImageData; // @synthesize debugInfoShouldPreserveImageData=_debugInfoShouldPreserveImageData;
 @property(nonatomic, getter=_algorithmVersion, setter=_setAlgorithmVersion:) int algorithmVersion; // @synthesize algorithmVersion=_debug_algorithmVersion;
 - (void)dataProvider:(id)arg1 didChangeFormatVersion:(unsigned int)arg2;
+- (void)_deterministicLocateWithPixelBuffer:(struct __CVBuffer *)arg1 deviceLocation:(id)arg2 heading:(CDStruct_160d0e14)arg3 gravity:(CDStruct_14d5dc5e)arg4 transform:(CDStruct_8e0628e6)arg5 cameraIntrinsics:(double)arg6 radialDistortion:(double)arg7 exposureTargetOffset:(CDUnknownBlockType)arg8 timestamp:completionHandler: /* Error: Ran out of types for this method. */;
+- (id)_locateWithPixelBuffer:(struct __CVBuffer *)arg1 deviceLocation:(id)arg2 heading:(CDStruct_160d0e14)arg3 gravity:(CDStruct_14d5dc5e)arg4 transform:(CDStruct_8e0628e6)arg5 cameraIntrinsics:(double)arg6 radialDistortion:(double)arg7 exposureTargetOffset:(CDUnknownBlockType)arg8 timestamp:(id *)arg9 calculationBlock:error: /* Error: Ran out of types for this method. */;
 - (id)locateWithPixelBuffer:(struct __CVBuffer *)arg1 deviceLocation:(id)arg2 heading:(CDStruct_160d0e14)arg3 gravity:(CDStruct_14d5dc5e)arg4 transform:(CDStruct_8e0628e6)arg5 cameraIntrinsics:(double)arg6 radialDistortion:(double)arg7 exposureTargetOffset:(id *)arg8 timestamp:error: /* Error: Ran out of types for this method. */;
 - (id)locateWithPixelBuffer:(struct __CVBuffer *)arg1 deviceLocation:(id)arg2 heading:(CDStruct_160d0e14)arg3 gravity:(CDStruct_14d5dc5e)arg4 transform:(CDStruct_8e0628e6)arg5 cameraIntrinsics:(double)arg6 radialDistortion:(double)arg7 ambientLightIntensity:(id *)arg8 timestamp:error: /* Error: Ran out of types for this method. */;
 - (id)locateWithPixelBuffer:(struct __CVBuffer *)arg1 location:(CDStruct_c3074bf1)arg2 heading:(CDStruct_160d0e14)arg3 gravity:(CDStruct_14d5dc5e)arg4 transform:(CDStruct_8e0628e6)arg5 cameraIntrinsics:(double)arg6 radialDistortion:(id *)arg7 timestamp:error: /* Error: Ran out of types for this method. */;
@@ -41,7 +46,12 @@
 - (void)prepareWithDeviceLocation:(id)arg1;
 - (void)prepareWithLocation:(CDStruct_c3074bf1)arg1;
 - (id)_fileURLForTile:(const CDStruct_4c217994 *)arg1 error:(id *)arg2;
+- (id)_altitudesAtLocation:(CDStruct_6c6357c7)arg1 error:(id *)arg2;
+- (void)_resolveCurrentAltitudeQuery;
+- (void)determineAltitudesAtLocation:(id)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)determineAvailabilityAtLocation:(CDStruct_c3074bf1)arg1 purpose:(long long)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4;
 - (void)determineAvailabilityAtLocation:(CDStruct_c3074bf1)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+@property(nonatomic) _Bool shouldCacheMetadata;
 - (struct vl_t *)_vlHandle;
 - (void)dealloc;
 - (void)_commonInit;

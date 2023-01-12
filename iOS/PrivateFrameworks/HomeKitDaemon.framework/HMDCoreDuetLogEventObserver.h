@@ -6,15 +6,20 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDLogEventObserver-Protocol.h>
+#import <HomeKitDaemon/HMMLogEventObserver-Protocol.h>
 
-@class NSString;
+@class HMDDuetEventManager, NSString;
 
-@interface HMDCoreDuetLogEventObserver : HMFObject <HMDLogEventObserver>
+@interface HMDCoreDuetLogEventObserver : HMFObject <HMMLogEventObserver>
 {
+    HMDDuetEventManager *_duetEventManager;
 }
 
-- (void)didReceiveEventFromDispatcher:(id)arg1 withLogContext:(id)arg2;
++ (id)mapHMDSourceToDKHomeKitSource:(unsigned long long)arg1;
+- (void).cxx_destruct;
+@property(readonly) HMDDuetEventManager *duetEventManager; // @synthesize duetEventManager=_duetEventManager;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
+- (id)initWithDuetEventManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -36,6 +36,11 @@ struct NSDirectionalEdgeInsets {
 
 struct ReaderAvailabilityController;
 
+struct SFScrollIndicatorInsets {
+    struct UIEdgeInsets _field1;
+    struct UIEdgeInsets _field2;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
@@ -50,14 +55,19 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct unique_ptr<SafariServices::ReaderAvailabilityController, std::__1::default_delete<SafariServices::ReaderAvailabilityController>> {
-    struct __compressed_pair<SafariServices::ReaderAvailabilityController *, std::__1::default_delete<SafariServices::ReaderAvailabilityController>> {
+struct __sbuf {
+    char *_field1;
+    int _field2;
+};
+
+struct unique_ptr<SafariServices::ReaderAvailabilityController, std::default_delete<SafariServices::ReaderAvailabilityController>> {
+    struct __compressed_pair<SafariServices::ReaderAvailabilityController *, std::default_delete<SafariServices::ReaderAvailabilityController>> {
         struct ReaderAvailabilityController *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<SafariServices::WebProcessPlugInReaderJSController, std::__1::default_delete<SafariServices::WebProcessPlugInReaderJSController>> {
-    struct __compressed_pair<SafariServices::WebProcessPlugInReaderJSController *, std::__1::default_delete<SafariServices::WebProcessPlugInReaderJSController>> {
+struct unique_ptr<SafariServices::WebProcessPlugInReaderJSController, std::default_delete<SafariServices::WebProcessPlugInReaderJSController>> {
+    struct __compressed_pair<SafariServices::WebProcessPlugInReaderJSController *, std::default_delete<SafariServices::WebProcessPlugInReaderJSController>> {
         struct WebProcessPlugInReaderJSController *__value_;
     } __ptr_;
 };
@@ -70,11 +80,6 @@ typedef struct {
     _Bool needsDeferredContentUpdate;
     _Bool sceneIsForeground;
 } CDStruct_4e0a34f2;
-
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
 
 typedef struct {
     int _field1;

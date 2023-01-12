@@ -12,13 +12,15 @@ __attribute__((visibility("hidden")))
 @interface _CNChangeHistoryFetchExecutionResponse : NSObject
 {
     NSArray *_events;
+    long long _count;
     NSData *_token;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy) NSData *token; // @synthesize token=_token;
+@property(readonly) long long count; // @synthesize count=_count;
 @property(readonly, copy) NSArray *events; // @synthesize events=_events;
-- (id)initWithEvents:(id)arg1 token:(id)arg2;
+- (id)initWithEvents:(id)arg1 count:(long long)arg2 token:(id)arg3;
 
 @end
 

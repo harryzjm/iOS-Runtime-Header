@@ -24,35 +24,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)routeInfoType;
 - (void).cxx_destruct;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)routeInfoAtIndex:(unsigned long long)arg1;
-- (unsigned long long)routeInfosCount;
-- (void)addRouteInfo:(id)arg1;
-- (void)clearRouteInfos;
-@property(retain, nonatomic) NSMutableArray *routeInfos;
-@property(nonatomic) _Bool hasResponseUuid;
-@property(nonatomic) struct GEOSessionID responseUuid;
-- (int)StringAsStatus:(id)arg1;
-- (id)statusAsString:(int)arg1;
-@property(nonatomic) _Bool hasStatus;
-@property(nonatomic) int status;
-@property(nonatomic) _Bool hasResultsApplied;
-@property(nonatomic) _Bool resultsApplied;
 
 @end
 

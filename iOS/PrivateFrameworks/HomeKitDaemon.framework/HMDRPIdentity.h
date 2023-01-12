@@ -6,12 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMFKey;
+@class HMFKey, NSString;
 
-@interface HMDRPIdentity : HMFObject <NSCopying, NSSecureCoding>
+@interface HMDRPIdentity : HMFObject <HMBModelObjectCoder, NSCopying, NSSecureCoding>
 {
     HMFKey *_deviceIRK;
 }
@@ -19,6 +20,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 + (id)identityWithRPIdentity:(id)arg1;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy) HMFKey *deviceIRK; // @synthesize deviceIRK=_deviceIRK;
 - (void)encodeWithCoder:(id)arg1;
@@ -27,10 +29,16 @@
 - (id)logIdentifier;
 - (_Bool)isEqualToRPIndentity:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)shortDescription;
 - (id)initWithDeviceIRK:(id)arg1;
 - (id)init;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

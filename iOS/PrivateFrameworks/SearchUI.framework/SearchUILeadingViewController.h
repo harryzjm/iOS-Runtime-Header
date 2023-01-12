@@ -26,7 +26,6 @@
 @property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate;
 @property(retain, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel;
-- (void)forceVerticalCenteringOfContents;
 - (void)updateWithContacts:(id)arg1;
 - (id)imageView;
 @property(readonly) unsigned long long type;

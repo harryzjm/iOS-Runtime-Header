@@ -40,10 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)setLocale:(id)arg1;
 - (id)calendarIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithCalendar:(id)arg1;
-- (id)_init;
 - (void)dealloc;
-- (void)_copyWrappedCalendar;
 
 @end
 

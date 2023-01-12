@@ -13,6 +13,7 @@
     void *_impl;
 }
 
+- (void)updateOutputPortsWithSpatialAudioStatus:(_Bool)arg1;
 - (id)initWithRawDescription:(id)arg1 owningSession:(id)arg2;
 - (id)initWithCategory:(id)arg1 owningSession:(id)arg2;
 - (struct RouteDescriptionImpl *)privateGetImplementation;

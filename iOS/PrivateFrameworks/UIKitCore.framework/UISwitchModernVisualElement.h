@@ -6,13 +6,13 @@
 
 #import <UIKitCore/CAAnimationDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/UISwitchMVEGestureTrackingSessionElement-Protocol.h>
-#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 
-@class NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwitchMVEGestureTrackingSession, UIView;
+@class NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwitchMVEGestureTrackingSession, UITapGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UISwitchModernVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate, _UICursorInteractionDelegate>
+@interface UISwitchModernVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate, UIPointerInteractionDelegate>
 {
     UIView *_switchWellView;
     UIView *_leftSwitchWellView;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     UISwitchMVEGestureTrackingSession *_gestureTrackingSession;
     UILongPressGestureRecognizer *_longPress;
     UIPanGestureRecognizer *_pan;
+    UITapGestureRecognizer *_selectGestureRecognizer;
 }
 
 + (id)_modernThumbImageWithColor:(id)arg1 mask:(unsigned long long)arg2 traitCollection:(id)arg3;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 + (struct UIEdgeInsets)preferredAlignmentRectInsets;
 + (struct CGSize)preferredContentSize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UITapGestureRecognizer *selectGestureRecognizer; // @synthesize selectGestureRecognizer=_selectGestureRecognizer;
 @property(retain, nonatomic) UIPanGestureRecognizer *pan; // @synthesize pan=_pan;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPress; // @synthesize longPress=_longPress;
 @property(retain, nonatomic) UISwitchMVEGestureTrackingSession *gestureTrackingSession; // @synthesize gestureTrackingSession=_gestureTrackingSession;
@@ -51,6 +53,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImage *offImage; // @synthesize offImage=_offImage;
 @property(retain, nonatomic) UIImage *onImage; // @synthesize onImage=_onImage;
 @property(retain, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
+- (void)_selectGestureChanged:(id)arg1;
+- (void)_uninstallSelectGestureRecognizer;
+- (void)_installSelectGestureRecognizer;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)setSwitchControl:(id)arg1;
 - (_Bool)_feedbackEnabled;
 - (id)_settings;
 - (void)setSemanticContentAttribute:(long long)arg1;
@@ -108,8 +115,8 @@ __attribute__((visibility("hidden")))
 - (void)_switchToStaticMode:(_Bool)arg1;
 - (void)_invalidateControl;
 - (void)_dynamicUserInterfaceTraitDidChange;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_handlePanWithGestureLocationInBounds:(struct CGPoint)arg1 horizontalTranslation:(double)arg2 gestureState:(long long)arg3 resetPanTranslationBlock:(CDUnknownBlockType)arg4;
 - (void)_handlePan:(id)arg1;
 - (void)_handleLongPressWithGestureLocationInBounds:(struct CGPoint)arg1 gestureState:(long long)arg2;

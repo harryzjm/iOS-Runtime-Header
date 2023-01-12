@@ -14,8 +14,14 @@
     id <HUCameraSmartNotificationSettingsModuleControllerDelegate> _delegate;
 }
 
++ (_Bool)shouldDisplayAlertForItem:(id)arg1 withSmartDetectionModule:(id)arg2 forProfile:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HUCameraSmartNotificationSettingsModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)alertMessageForEventType:(unsigned long long)arg1;
+- (id)alertTitleForEventType:(unsigned long long)arg1;
+- (void)displayAlertForItemCell:(id)arg1;
+- (_Bool)canEnableNotificationForItem:(id)arg1;
+- (void)updateNotificationSettingForItem:(id)arg1;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;

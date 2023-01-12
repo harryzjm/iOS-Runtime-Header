@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSRemotePlistControllerDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableSet, NSString, NSUserDefaults, WBSHistory, WBSPasswordBreachHelperProxy, WBSPasswordEvaluator, WBSRemotePlistController, WBSSavedPasswordAuditor, WBSSavedPasswordStore;
+@class NSArray, NSMapTable, NSMutableSet, NSString, NSUserDefaults, WBSHistory, WBSPasswordBreachHelperProxy, WBSPasswordEvaluator, WBSPasswordWarningTopFraudTargetsManager, WBSSavedPasswordAuditor, WBSSavedPasswordStore;
 @protocol OS_dispatch_queue;
 
 @interface WBSPasswordWarningManager : NSObject <WBSRemotePlistControllerDelegate>
@@ -21,7 +21,7 @@
     WBSSavedPasswordAuditor *_passwordAuditor;
     WBSSavedPasswordStore *_passwordStore;
     NSUserDefaults *_userDefaults;
-    WBSRemotePlistController *_topFraudTargetsRemotePlistController;
+    WBSPasswordWarningTopFraudTargetsManager *_topFraudTargetsManager;
     WBSPasswordBreachHelperProxy *_passwordBreachHelperProxy;
     NSMutableSet *_historyHighLevelDomains;
     struct os_unfair_lock_s _cachedDataLock;
@@ -38,8 +38,6 @@
 - (void)_getBreachResultRecordsForPasswords:(id)arg1 startSessionIfNecessary:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)_passwordBreachHelperProxy;
 - (_Bool)_historyContainsItemForDomain:(id)arg1;
-- (id)_localizedLongWarningDescriptionStringsForPassword:(id)arg1 weakPasswordEvaluation:(id)arg2 issueTypes:(unsigned long long)arg3;
-- (id)_localizedShortWarningDescriptionForIssueTypes:(unsigned long long)arg1;
 - (long long)_scoreForSavedPassword:(id)arg1 issueTypes:(unsigned long long)arg2 topFraudTargets:(id)arg3 contextKitCategories:(long long)arg4;
 - (unsigned long long)_issuesForPassword:(id)arg1 withWeakPasswordEvaluation:(id)arg2 breachResultRecord:(id)arg3;
 - (id)_scoredWarningForSavedPassword:(id)arg1 topFraudTargets:(id)arg2 contextKitCategories:(long long)arg3 breachResultRecord:(id)arg4;

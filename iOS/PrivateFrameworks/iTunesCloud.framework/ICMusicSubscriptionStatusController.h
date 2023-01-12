@@ -32,6 +32,7 @@
 - (void)_handleSubscriptionStatusCacheDidChangeNotification:(id)arg1;
 - (void)_handleSubscriptionStatusDidChangeFollowingPrivacyAcknowledgementNotification:(id)arg1;
 - (void)_handlePrivacyAcknowledgementRequirementChanged:(_Bool)arg1;
+- (void)_cancelPendingRequests;
 - (_Bool)_willPerformSubscriptionStatusRequest:(id)arg1 withStatusHandler:(CDUnknownBlockType)arg2;
 - (void)_willBeginRemoteRequestWithUniqueIdentifier:(id)arg1 statusHandler:(CDUnknownBlockType)arg2;
 - (void)_scheduleInvalidationOfRemoteRequestingClientConnection;
@@ -42,7 +43,6 @@
 - (void)_deliverSubscriptionStatusResponse:(id)arg1 forRequest:(id)arg2 error:(id)arg3;
 - (void)_cancelRemoteRequestingClientConnectionInvalidationTimer;
 - (void)deliverSubscriptionStatusResponse:(id)arg1 forRemoteRequestWithUniqueIdentifier:(id)arg2 error:(id)arg3;
-- (void)enablePeriodicSubscriptionRefresh;
 - (void)invalidateCachedSubscriptionStatusForUserIdentity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)invalidateCachedSubscriptionStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)refreshSubscriptionUsingRequestContext:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

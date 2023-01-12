@@ -40,6 +40,7 @@
     double _minimumSpacingBetweenTopSafeAreaAndTitleTop;
     PXCuratedLibraryStyleGuide *_styleGuide;
     PXCuratedLibrarySectionHeaderLayoutSpec *_smallVariantSpec;
+    PXCuratedLibrarySectionHeaderLayoutSpec *_firstCardVariantSpec;
     CDStruct_2bd92d94 _cornerRadius;
     struct UIEdgeInsets _padding;
     struct UIEdgeInsets _contentPadding;
@@ -47,6 +48,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *firstCardVariantSpec; // @synthesize firstCardVariantSpec=_firstCardVariantSpec;
 @property(retain, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *smallVariantSpec; // @synthesize smallVariantSpec=_smallVariantSpec;
 @property(readonly, nonatomic) PXCuratedLibraryStyleGuide *styleGuide; // @synthesize styleGuide=_styleGuide;
 @property(readonly, nonatomic) double minimumSpacingBetweenTopSafeAreaAndTitleTop; // @synthesize minimumSpacingBetweenTopSafeAreaAndTitleTop=_minimumSpacingBetweenTopSafeAreaAndTitleTop;

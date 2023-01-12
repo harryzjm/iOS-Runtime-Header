@@ -28,8 +28,8 @@
 - (id)sharedItemModifiedByLastName;
 - (void)setSharedItemModifiedByFirstName:(id)arg1;
 - (id)sharedItemModifiedByFirstName;
-- (void)setSharedItemModifiedByAddress:(id)arg1;
-- (id)sharedItemModifiedByAddress;
+- (void)setSharedItemModifiedByAddressString:(id)arg1;
+- (id)sharedItemModifiedByAddressString;
 - (void)setSharedItemModifiedByDisplayName:(id)arg1;
 - (id)sharedItemModifiedByDisplayName;
 - (void)setSharedItemCreatedTimeZoneName:(id)arg1;
@@ -40,14 +40,12 @@
 - (id)sharedItemCreatedByLastName;
 - (void)setSharedItemCreatedByFirstName:(id)arg1;
 - (id)sharedItemCreatedByFirstName;
-- (void)setSharedItemCreatedByAddress:(id)arg1;
-- (id)sharedItemCreatedByAddress;
+- (void)setSharedItemCreatedByAddressString:(id)arg1;
+- (id)sharedItemCreatedByAddressString;
 - (void)setSharedItemCreatedByDisplayName:(id)arg1;
 - (id)sharedItemCreatedByDisplayName;
-- (void)removeAttachment:(id)arg1;
-- (void)addAttachment:(id)arg1;
-- (void)setAttachments:(id)arg1;
-- (id)attachments;
+- (void)setAttachmentsSet:(id)arg1;
+- (id)attachmentsSet;
 - (void)setExternalData:(id)arg1;
 - (id)externalData;
 - (void)setExternalModificationTag:(id)arg1;
@@ -75,22 +73,22 @@
 - (id)singleRecurrenceRule;
 - (void)removeRecurrenceRule:(id)arg1;
 - (void)addRecurrenceRule:(id)arg1;
-- (id)recurrenceRules;
-- (void)setRecurrenceRules:(id)arg1;
-- (void)setHasRecurrences:(_Bool)arg1;
-- (_Bool)hasRecurrences;
+- (id)recurrenceRulesSet;
+- (void)setRecurrenceRulesSet:(id)arg1;
+- (void)setHasRecurrenceRules:(_Bool)arg1;
+- (_Bool)hasRecurrenceRules;
 - (void)setDefaultAlarmWasDeleted:(_Bool)arg1;
 - (_Bool)defaultAlarmWasDeleted;
 - (void)removeAlarm:(id)arg1;
 - (void)addAlarm:(id)arg1;
-- (id)allAlarms;
-- (void)setAllAlarms:(id)arg1;
+- (id)allAlarmsSet;
+- (void)setAllAlarmsSet:(id)arg1;
 - (void)setAppLinkData:(id)arg1;
 - (id)appLinkData;
-- (void)setURL:(id)arg1;
-- (id)URL;
-- (void)setAction:(id)arg1;
-- (id)action;
+- (void)setURLString:(id)arg1;
+- (id)URLString;
+- (void)setActionString:(id)arg1;
+- (id)actionString;
 - (void)setSequenceNumber:(int)arg1;
 - (int)sequenceNumber;
 - (void)setPriority:(int)arg1;
@@ -132,6 +130,7 @@
 - (void)setUUID:(id)arg1;
 - (id)UUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)propertyKeyForUniqueIdentifier;
 
 @end
 

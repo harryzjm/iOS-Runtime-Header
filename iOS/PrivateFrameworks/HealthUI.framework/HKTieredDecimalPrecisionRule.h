@@ -14,6 +14,7 @@
 {
 }
 
++ (id)numberFormatter;
 + (id)percentageFormatter;
 - (id)numberFormatter;
 - (long long)decimalPrecisionForValue:(double)arg1;

@@ -72,6 +72,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initInboundSA;
+- (id)initInboundSAWithSPI:(unsigned int)arg1;
 - (id)initOutboundSAWithSPI:(unsigned int)arg1;
 
 @end

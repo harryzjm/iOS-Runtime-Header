@@ -15,15 +15,11 @@
     EKStructuredLocation *_location;
     EKEventDetailsHighlightControl *_titleControl;
     UIButton *_dismissButton;
-    UIView *_topSeparator;
-    UIView *_bottomSeparator;
-    _Bool _showsTopSeparator;
     id <EKEventDetailPredictedLocationCellDelegate> _delegate;
 }
 
 + (id)_separatorColor;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool showsTopSeparator; // @synthesize showsTopSeparator=_showsTopSeparator;
 @property __weak id <EKEventDetailPredictedLocationCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIView *rejectView;
 @property(readonly, nonatomic) UIView *acceptView;

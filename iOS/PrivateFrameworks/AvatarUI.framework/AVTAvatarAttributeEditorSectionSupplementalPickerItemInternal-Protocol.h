@@ -8,6 +8,7 @@
 #import <AvatarUI/NSObject-Protocol.h>
 
 @protocol AVTAvatarAttributeEditorSectionSupplementalPickerItemInternal <AVTAvatarAttributeEditorSectionSupplementalPickerItem, NSObject>
+@property(readonly, copy, nonatomic) CDUnknownBlockType editorUpdater;
 @property(readonly, copy, nonatomic) CDUnknownBlockType avatarUpdater;
 @end
 

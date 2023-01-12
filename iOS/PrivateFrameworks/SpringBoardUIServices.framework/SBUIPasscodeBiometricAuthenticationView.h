@@ -69,6 +69,7 @@
 - (void)setAncillaryButtonsVisible:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic) _Bool showsCancelButton;
 @property(nonatomic) _Bool showsEmergencyCallButton;
+- (void)_updateReasonTextIfPossible;
 - (void)_layoutAuthReasonLabel:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 layoutDelegate:(id)arg2;

@@ -15,18 +15,22 @@
 
 @interface PUHorizontalAlbumListGadget : PXHorizontalCollectionGadget <PUStackedAlbumTransitionDelegate, PUCloudSharedAlbumViewControllerDelegate, PXAssetCollectionActionPerformerDelegate, PXNavigableCollectionContainer>
 {
+    _Bool _shouldUseSingleHeightLayout;
     PUAlbumsGadgetProvider *_provider;
     PUSessionInfo *_sessionInfo;
     PUPhotoPinchGestureRecognizer *_pinchGestureRecognizer;
     NSUserActivity *_siriActionActivity;
 }
 
++ (_Bool)_showsHorizontalScrollIndicator;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseSingleHeightLayout; // @synthesize shouldUseSingleHeightLayout=_shouldUseSingleHeightLayout;
 @property(retain, nonatomic) NSUserActivity *siriActionActivity; // @synthesize siriActionActivity=_siriActionActivity;
 @property(readonly, nonatomic) PUPhotoPinchGestureRecognizer *pinchGestureRecognizer; // @synthesize pinchGestureRecognizer=_pinchGestureRecognizer;
 @property(retain, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property(readonly, nonatomic) PUAlbumsGadgetProvider *provider; // @synthesize provider=_provider;
 - (void)_updateCollectionViewLayout;
+- (void)setGadgetSpec:(id)arg1;
 - (void)_navigateToCollection:(id)arg1 animated:(_Bool)arg2 interactive:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_canUseStackedAlbumTransitionToNavigationToCollection:(id)arg1;
 - (void)_handlePinch:(id)arg1;
@@ -36,7 +40,7 @@
 - (id)stackedAlbumTransition:(id)arg1 layoutForCollection:(id)arg2 forCollectionView:(id)arg3;
 - (void)stackedAlbumTransition:(id)arg1 setVisibility:(_Bool)arg2 forCollection:(id)arg3;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
-- (void)setGadgetSpec:(id)arg1;
+- (void)_updateCollectionHeight;
 - (id)accessoryButtonTitle;
 - (unsigned long long)accessoryButtonType;
 - (unsigned long long)gadgetCapabilities;

@@ -14,7 +14,7 @@
 - (id)wf_processedParameterValueForValue:(id)arg1;
 - (id)wf_contentItemForValue:(id)arg1;
 - (id)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(id)arg2;
-- (void)wf_getProcessedIntentValueForParameterValue:(id)arg1 parameter:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)wf_getProcessedIntentValueForParameterValue:(id)arg1 parameter:(id)arg2 parameterState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)wf_updateParameterDictionary:(id)arg1 parameterClass:(Class)arg2;
 @property(readonly, nonatomic) Class wf_parameterClass;
 @property(readonly, nonatomic) _Bool wf_multipleValues;

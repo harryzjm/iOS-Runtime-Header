@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <StoreKit/SKObservableViewDelegate-Protocol.h>
 #import <StoreKit/SKRemoteDismissingViewController-Protocol.h>
 #import <StoreKit/SKScreenTrackingDelegate-Protocol.h>
 #import <StoreKit/UIViewControllerTransitioningDelegate-Protocol.h>
@@ -13,7 +14,7 @@
 @class NSDictionary, NSString, SKInvocationQueueProxy, SKRemoteProductViewController, SKScrollDetector, _UIAsyncInvocation;
 @protocol SKStoreProductViewControllerDelegate, SKStoreProductViewControllerDelegatePrivate, SKUIServiceProductPageViewController;
 
-@interface SKStoreProductViewController : UIViewController <SKScreenTrackingDelegate, UIViewControllerTransitioningDelegate, SKRemoteDismissingViewController>
+@interface SKStoreProductViewController : UIViewController <SKScreenTrackingDelegate, UIViewControllerTransitioningDelegate, SKRemoteDismissingViewController, SKObservableViewDelegate>
 {
     NSString *_additionalBuyParameters;
     NSString *_affiliateIdentifier;
@@ -106,6 +107,8 @@
 - (long long)modalPresentationStyle;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)didChangeHidden;
+- (void)didChangeAlpha:(double)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

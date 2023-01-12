@@ -12,9 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIsHintTitleVisible;
-- (long long)_accessibilitySortPriority;
-- (id)accessibilityLabel;
 - (_Bool)accessibilityRespondsToUserInteraction;
+- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 
 @end

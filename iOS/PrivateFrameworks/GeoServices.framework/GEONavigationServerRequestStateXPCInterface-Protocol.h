@@ -7,6 +7,7 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @protocol GEONavigationServerRequestStateXPCInterface <NSObject>
+- (void)setWantsRoutes:(_Bool)arg1;
 - (void)requestNavigationVoiceVolume;
 - (void)requestPositionFromDestination;
 - (void)requestPositionFromManeuver;
@@ -19,5 +20,6 @@
 - (void)requestGuidanceState;
 - (void)requestTransitSummary;
 - (void)requestRouteSummary;
+- (void)requestRoute;
 @end
 

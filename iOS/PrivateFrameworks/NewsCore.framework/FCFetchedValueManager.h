@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <NewsCore/FCBoostableOperationThrottlerDelegate-Protocol.h>
+#import <NewsCore/FCFetchedValueDescriptorObserving-Protocol.h>
 #import <NewsCore/FCFetchedValueManager-Protocol.h>
 #import <NewsCore/FCFetchedValueManagerObserving-Protocol.h>
 
 @class FCBoostableOperationThrottler, FCFetchedValueDescriptor, FCFetchedValueObservable, NSString;
 @protocol NFCopying;
 
-@interface FCFetchedValueManager : NSObject <FCFetchedValueManagerObserving, FCBoostableOperationThrottlerDelegate, FCFetchedValueManager>
+@interface FCFetchedValueManager : NSObject <FCBoostableOperationThrottlerDelegate, FCFetchedValueDescriptorObserving, FCFetchedValueManagerObserving, FCFetchedValueManager>
 {
     FCFetchedValueDescriptor *_descriptor;
     FCBoostableOperationThrottler *_operationThrottler;
@@ -29,6 +30,7 @@
 - (id)_updateDependentManagersPromiseWithQualityOfService:(long long)arg1;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithQualityOfService:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchedObjectManager:(id)arg1 valueDidChange:(id)arg2;
+- (void)fetchedValueDescriptorValueIsDirty:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)fetchValueWithCachePolicy:(unsigned long long)arg1 qualityOfService:(long long)arg2 completion:(CDUnknownBlockType)arg3;

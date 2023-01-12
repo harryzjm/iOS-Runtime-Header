@@ -6,7 +6,7 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <PagesQuicklook/TPMasterDrawableProvider-Protocol.h>
+#import <PagesQuicklook/TPSectionTemplateDrawableProvider-Protocol.h>
 #import <PagesQuicklook/TSDDrawableContainerInfo-Protocol.h>
 #import <PagesQuicklook/TSKDocumentObject-Protocol.h>
 #import <PagesQuicklook/TSKModel-Protocol.h>
@@ -17,35 +17,37 @@
 @class NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString, TPDrawablesZOrder, TSDFill, TSDInfoGeometry;
 @protocol TSDInfo, TSDOwningAttachment;
 
-@interface TPPageTemplate : TSPObject <TSKDocumentObject, TSDDrawableContainerInfo, TPMasterDrawableProvider, TSSPropertySource, TSKModelRootIndexProvider, TSKModel, TSWPStorageParentStatisticsFilter>
+@interface TPPageTemplate : TSPObject <TSKDocumentObject, TSDDrawableContainerInfo, TPSectionTemplateDrawableProvider, TSSPropertySource, TSKModelRootIndexProvider, TSKModel, TSWPStorageParentStatisticsFilter>
 {
     _Bool _headersFootersMatchPreviousPage;
     _Bool _hideHeadersFooters;
-    NSMutableArray *_masterDrawables;
+    NSArray *_sectionTemplateDrawables;
     NSMutableDictionary *_placeholderDrawables;
     TPDrawablesZOrder *_drawablesZOrder;
     NSString *_name;
     TSDFill *_backgroundFill;
+    NSMutableArray *_masterDrawables;
 }
 
 + (_Bool)isUserDefinedTag:(id)arg1;
 + (_Bool)needsObjectUUID;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *masterDrawables; // @synthesize masterDrawables=_masterDrawables;
 @property(nonatomic) _Bool hideHeadersFooters; // @synthesize hideHeadersFooters=_hideHeadersFooters;
 @property(retain, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
 @property(nonatomic) _Bool headersFootersMatchPreviousPage; // @synthesize headersFootersMatchPreviousPage=_headersFootersMatchPreviousPage;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) TPDrawablesZOrder *drawablesZOrder; // @synthesize drawablesZOrder=_drawablesZOrder;
 @property(retain, nonatomic) NSMutableDictionary *placeholderDrawables; // @synthesize placeholderDrawables=_placeholderDrawables;
-@property(retain, nonatomic) NSMutableArray *masterDrawables; // @synthesize masterDrawables=_masterDrawables;
+@property(readonly, nonatomic) NSArray *sectionTemplateDrawables; // @synthesize sectionTemplateDrawables=_sectionTemplateDrawables;
 - (_Bool)containsModelObject:(id)arg1;
 - (id)topLevelParentInfoForInfo:(id)arg1;
-- (void)removeMasterDrawable:(id)arg1 suppressDOLC:(_Bool)arg2;
-- (void)addMasterDrawables:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(_Bool)arg4;
-- (void)addMasterDrawable:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(_Bool)arg4;
-- (unsigned long long)indexOfMasterDrawable:(id)arg1;
-- (id)masterDrawablesSortedByZOrder:(id)arg1;
-@property(readonly, nonatomic) unsigned long long countOfMasterDrawables;
+- (void)removeSectionTemplateDrawable:(id)arg1 suppressDOLC:(_Bool)arg2;
+- (void)addSectionTemplateDrawables:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(_Bool)arg4;
+- (void)addSectionTemplateDrawable:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(_Bool)arg4;
+- (unsigned long long)indexOfSectionTemplateDrawable:(id)arg1;
+- (id)sectionTemplateDrawablesSortedByZOrder:(id)arg1;
+@property(readonly, nonatomic) unsigned long long countOfSectionTemplateDrawables;
 - (double)CGFloatValueForProperty:(int)arg1;
 - (double)doubleValueForProperty:(int)arg1;
 - (float)floatValueForProperty:(int)arg1;
@@ -92,7 +94,7 @@
 - (id)tagForDrawable:(id)arg1;
 - (id)userDefinedTagForDrawable:(id)arg1;
 - (_Bool)isUniqueTag:(id)arg1;
-- (id)initWithContext:(id)arg1 name:(id)arg2 placeholderDrawables:(id)arg3 placeholderTagsInZOrder:(id)arg4 masterDrawables:(id)arg5;
+- (id)initWithContext:(id)arg1 name:(id)arg2 placeholderDrawables:(id)arg3 placeholderTagsInZOrder:(id)arg4 sectionTemplateDrawables:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

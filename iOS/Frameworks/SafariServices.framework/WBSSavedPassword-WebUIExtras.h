@@ -7,7 +7,7 @@
 #import <SafariSharedUI/WBSSavedPassword.h>
 
 @interface WBSSavedPassword (WebUIExtras)
-- (void)safari_getTitle:(id *)arg1 detail:(id *)arg2 forTableViewCell:(id)arg3 withSearchPattern:(id)arg4;
+- (void)safari_getTitle:(id *)arg1 detail:(id *)arg2 forTableViewCell:(id)arg3 withSearchPattern:(id)arg4 emphasizeUserName:(_Bool)arg5;
 - (id)_firstSiteMatchingSearchPattern:(id)arg1 withTokenizer:(struct __CFStringTokenizer *)arg2;
 @end
 

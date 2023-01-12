@@ -7,13 +7,13 @@
 #import <UIKitCore/UIColorPickerViewControllerDelegate-Protocol.h>
 #import <UIKitCore/UIDragInteractionDelegate-Protocol.h>
 #import <UIKitCore/UIDropInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UIColorWellControl-Protocol.h>
 
-@class NSString, UIButton, UIColor, UIColorPickerViewController, UIDragInteraction, UIDropInteraction, _UIColorWellConicalGradientBackgroundView;
+@class NSString, UIColor, UIColorPickerViewController, UIDragInteraction, UIDropInteraction, _UIColorWellVisualStyle;
 
-@interface UIColorWell <UIDragInteractionDelegate, UIDropInteractionDelegate, UIColorPickerViewControllerDelegate>
+@interface UIColorWell <UIDragInteractionDelegate, UIDropInteractionDelegate, UIColorPickerViewControllerDelegate, _UIColorWellControl>
 {
-    UIButton *_button;
-    _UIColorWellConicalGradientBackgroundView *_gradientView;
+    _UIColorWellVisualStyle *_style;
     UIColorPickerViewController *_colorPicker;
     UIDragInteraction *_dragInteraction;
     UIDropInteraction *_dropInteraction;
@@ -22,6 +22,7 @@
     NSString *_title;
 }
 
++ (id)styleForColorWell:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool supportsAlpha; // @synthesize supportsAlpha=_supportsAlpha;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -32,16 +33,15 @@
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (void)colorPickerViewControllerDidSelectColor:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)invokeColorPicker:(id)arg1;
+- (void)styleRequestedColorPickerPresentation;
+- (void)styleDidSelectColor:(id)arg1;
 - (void)layoutSubviews;
-- (double)_widthForTraitCollection:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned long long)_controlEventsForActionTriggered;
-- (void)_setSelectedColor:(id)arg1 notifyingPicker:(_Bool)arg2 sendingAction:(_Bool)arg3;
+- (void)_setSelectedColor:(id)arg1 notifyingStyle:(_Bool)arg2 notifyingUIPicker:(_Bool)arg3 sendingAction:(_Bool)arg4;
 - (void)setPickerTitle:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

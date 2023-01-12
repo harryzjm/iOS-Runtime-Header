@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreSpeechFoundation/CSPolicy.h>
+
 #import <CoreSpeech/CSSiriClientBehaviorMonitorDelegate-Protocol.h>
 
 @class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface CSVoiceTriggerAOPModeEnabledPolicyIOS <CSSiriClientBehaviorMonitorDelegate>
+@interface CSVoiceTriggerAOPModeEnabledPolicyIOS : CSPolicy <CSSiriClientBehaviorMonitorDelegate>
 {
     NSObject<OS_dispatch_queue> *_recordStateQueue;
     _Bool _isSiriClientConsideredAsRecord;
@@ -19,7 +21,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *pendingRecordingStopUUID; // @synthesize pendingRecordingStopUUID=_pendingRecordingStopUUID;
 @property(nonatomic) _Bool isSiriClientConsideredAsRecord; // @synthesize isSiriClientConsideredAsRecord=_isSiriClientConsideredAsRecord;
-- (void)siriClientBehaviorMonitor:(id)arg1 willStopStream:(id)arg2;
+- (void)siriClientBehaviorMonitor:(id)arg1 willStopStream:(id)arg2 reason:(unsigned long long)arg3;
 - (void)siriClientBehaviorMonitor:(id)arg1 willStartStreamWithContext:(id)arg2 option:(id)arg3;
 - (void)siriClientBehaviorMonitor:(id)arg1 didStopStream:(id)arg2 withEventUUID:(id)arg3;
 - (void)siriClientBehaviorMonitor:(id)arg1 didStartStreamWithContext:(id)arg2 successfully:(_Bool)arg3 option:(id)arg4 withEventUUID:(id)arg5;

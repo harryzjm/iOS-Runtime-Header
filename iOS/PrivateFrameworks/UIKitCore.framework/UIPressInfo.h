@@ -20,10 +20,12 @@
     double _force;
     unsigned long long _clickCount;
     UIKey *_key;
+    long long _modifierFlags;
 }
 
-+ (id)_keyboardPressInfoForType:(long long)arg1 isKeyDown:(_Bool)arg2 timestamp:(double)arg3 contextID:(unsigned int)arg4;
++ (id)_keyboardPressInfoForType:(long long)arg1 isKeyDown:(_Bool)arg2 timestamp:(double)arg3 contextID:(unsigned int)arg4 modifierFlags:(long long)arg5;
 - (void).cxx_destruct;
+@property(nonatomic) long long modifierFlags; // @synthesize modifierFlags=_modifierFlags;
 @property(retain, nonatomic) UIKey *key; // @synthesize key=_key;
 @property(nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 @property(nonatomic, getter=isLongClick) _Bool longClick; // @synthesize longClick=_longClick;

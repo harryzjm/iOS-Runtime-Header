@@ -10,11 +10,6 @@
 {
 }
 
-+ (id)_contactRankMapWithRankedIdentifiers:(id)arg1;
-+ (id)_scoredLabeledValues:(id)arg1;
-+ (id)_scoreAndSortContacts:(id)arg1 rankMap:(id)arg2;
-+ (id)_contactsWithIdentifiers:(id)arg1 store:(id)arg2;
-+ (double)_scoreWithInitialScore:(double)arg1 identifier:(id)arg2 rankMap:(id)arg3;
 + (void)scoreContactNameRecords:(id)arg1;
 + (id)scoredContactsWithContacts:(id)arg1;
 + (id)mostRelevantContactsWithName:(id)arg1 store:(id)arg2;

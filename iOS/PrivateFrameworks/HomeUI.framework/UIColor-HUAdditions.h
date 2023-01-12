@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (HUAdditions)
++ (id)hu_homePodControlCellBackgroundColor;
 + (id)hu_quickControlBackgroundGrayColor;
 + (id)hu_mediaPlatterBackgroundColor;
 + (id)hu_keyColor;
@@ -17,5 +18,6 @@
 + (id)hu_alarmsPrimaryTextColor;
 + (id)hu_alarmsBackgroundColor;
 + (id)hu_alarmsPrimaryColor;
+- (_Bool)isEqualToColor:(id)arg1;
 @end
 

@@ -6,20 +6,21 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PXOneUpPresentation, UIPinchGestureRecognizer, UIViewController;
+@class PXAssetReference, PXOneUpPresentation, UIPinchGestureRecognizer, UIViewController;
 
 @protocol PXOneUpPresentationImplementationDelegate <NSObject>
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 commitPreviewViewController:(UIViewController *)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 didDismissPreviewViewController:(UIViewController *)arg2 committing:(_Bool)arg3;
 - (UIViewController *)previewViewControllerForOneUpPresentation:(PXOneUpPresentation *)arg1 allowingActions:(_Bool)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 stopAnimated:(_Bool)arg2;
-- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 startAnimated:(_Bool)arg2 interactiveMode:(long long)arg3;
+- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 startWithConfigurationHandler:(void (^)(id <PXOneUpPresentationConfiguration>))arg2;
 
 @optional
+- (PXAssetReference *)oneUpPresentationLastViewedAssetReference:(PXOneUpPresentation *)arg1;
 - (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 handlePresentingPinchGestureRecognizer:(UIPinchGestureRecognizer *)arg2;
 - (void)oneUpPresentationInvalidatePresentingGeometry:(PXOneUpPresentation *)arg1;
 - (_Bool)oneUpPresentationCanStop:(PXOneUpPresentation *)arg1;
-- (_Bool)oneUpPresentationCanStart:(PXOneUpPresentation *)arg1;
+- (_Bool)oneUpPresentation:(PXOneUpPresentation *)arg1 canStartAnimated:(_Bool)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 presentingViewControllerViewDidDisappear:(_Bool)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 presentingViewControllerViewWillDisappear:(_Bool)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 presentingViewControllerViewDidAppear:(_Bool)arg2;

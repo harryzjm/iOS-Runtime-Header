@@ -6,7 +6,8 @@
 
 #import <Sleep/HKSPMutableObject-Protocol.h>
 
-@class HKSPChangeSet, HKSPSleepScheduleDayOccurrence, NSDate, NSSet, NSString;
+@class HKSPChangeSet, HKSPSleepScheduleDayOccurrence, NSDate, NSDictionary, NSSet, NSString;
+@protocol HKSPObject;
 
 @interface HKSPMutableSleepSchedule <HKSPMutableObject>
 {
@@ -29,9 +30,9 @@
 - (void)_updateBackingOccurrencesForOccurrence:(id)arg1;
 - (_Bool)_shouldRemoveOverrideOccurrence:(id)arg1;
 - (void)_updateOverrideOccurrenceForOccurrence:(id)arg1;
-- (void)saveOccurrence:(id)arg1 options:(unsigned long long)arg2;
 - (void)saveOccurrence:(id)arg1;
 - (void)freeze;
+@property(readonly, nonatomic) id <HKSPObject> originalObject;
 - (id)mutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -54,6 +55,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long version;

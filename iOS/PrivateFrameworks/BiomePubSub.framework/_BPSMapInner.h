@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType transform; // @synthesize transform=_transform;
 @property(retain, nonatomic) id <BPSSubscriber> downstream; // @synthesize downstream=_downstream;
+- (void)cancel;
 - (void)receiveCompletion:(id)arg1;
 - (long long)receiveInput:(id)arg1;
 - (void)receiveSubscription:(id)arg1;

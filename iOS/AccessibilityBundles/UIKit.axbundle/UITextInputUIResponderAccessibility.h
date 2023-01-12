@@ -11,8 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axDrawFocusRingAroundFirstResponderAndMoveFocus:(_Bool)arg1;
-- (void)_axResetFKAFocusToFirstResponder;
+- (id)_accessibilityFocusItemForResponder;
 - (_Bool)_axShouldDrawFocusAroundFirstResponder;
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
@@ -38,6 +37,7 @@
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (id)accessibilityValue;
 - (unsigned long long)_accessibilityPositionInDirection:(long long)arg1 offset:(unsigned long long)arg2 forPosition:(unsigned long long)arg3;
+- (struct _NSRange)_accessibilityVisibleTextRange;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;
@@ -46,7 +46,6 @@
 - (_Bool)isAccessibilityElement;
 - (id)_moveRight:(_Bool)arg1 withHistory:(id)arg2;
 - (id)_moveLeft:(_Bool)arg1 withHistory:(id)arg2;
-- (void)_accessibilityCheckBorderHit:(_Bool)arg1 left:(_Bool)arg2;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(_Bool)arg2;
 
 @end

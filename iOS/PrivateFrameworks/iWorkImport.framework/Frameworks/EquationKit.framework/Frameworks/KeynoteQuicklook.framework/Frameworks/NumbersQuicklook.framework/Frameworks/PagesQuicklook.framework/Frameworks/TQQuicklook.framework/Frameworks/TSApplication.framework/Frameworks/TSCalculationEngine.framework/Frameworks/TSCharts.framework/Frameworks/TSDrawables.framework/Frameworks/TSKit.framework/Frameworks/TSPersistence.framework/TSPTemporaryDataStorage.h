@@ -10,29 +10,31 @@
 @interface TSPTemporaryDataStorage
 {
     TSPTemporaryDataStorageURL *_temporaryDataStorageURL;
-    id <TSPCryptoInfo> _decryptionInfo;
     _Bool _leakTemporaryFile;
     _Bool _isMissingData;
-    _Bool _gilligan_isRemote;
+    _Bool _isUnmaterializedDueToPartiallyDownloadedDocument;
     _Bool _isMissingOriginalData;
+    id <TSPCryptoInfo> _decryptionInfo;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isMissingOriginalData; // @synthesize isMissingOriginalData=_isMissingOriginalData;
-- (void)setGilligan_isRemote:(_Bool)arg1;
-- (_Bool)gilligan_isRemote;
+- (void)setIsUnmaterializedDueToPartiallyDownloadedDocument:(_Bool)arg1;
+- (_Bool)isUnmaterializedDueToPartiallyDownloadedDocument;
 @property(readonly, nonatomic) _Bool isMissingData; // @synthesize isMissingData=_isMissingData;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
+- (_Bool)linkOrCopyToURL:(id)arg1 encryptionInfo:(id)arg2 canLink:(_Bool)arg3;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(void *)arg3 preferredFilename:(id)arg4 shouldRemoveData:(_Bool)arg5 error:(id *)arg6;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
+- (unsigned long long)fileFormatVersion;
 - (id)decryptionInfo;
+- (_Bool)isLengthPrecise;
 - (unsigned long long)length;
 - (void)leakTemporaryFile;
 - (void)dealloc;
 - (id)init;
 - (id)initWithTemporaryDataStorageURL:(id)arg1 decryptionInfo:(id)arg2;
-- (id)initWithTemporaryDataStorageURL:(id)arg1 decryptionInfo:(id)arg2 isMissingOriginalData:(_Bool)arg3 isMissingData:(_Bool)arg4 gilligan_isRemote:(_Bool)arg5;
-- (id)initWithTemporaryDataStorageURL:(id)arg1 decryptionInfo:(id)arg2 isMissingOriginalData:(_Bool)arg3 isMissingData:(_Bool)arg4;
+- (id)initWithTemporaryDataStorageURL:(id)arg1 decryptionInfo:(id)arg2 isMissingOriginalData:(_Bool)arg3 isMissingData:(_Bool)arg4 isUnmaterializedDueToPartiallyDownloadedDocument:(_Bool)arg5;
 
 @end
 

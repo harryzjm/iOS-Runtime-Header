@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString, USKToken;
+@class NSArray, NSDictionary, NSString, USKScene, USKToken;
 
 @interface USKNode
 {
     struct UsdPrim _prim;
+    USKScene *_owner;
 }
 
 - (id).cxx_construct;
@@ -40,6 +41,7 @@
 - (id)inheritedSkeletonAnimationBinding;
 - (id)inheritedSkeletonBinding;
 - (id)inheritedMaterialBinding;
+- (_Bool)clearVariantSelectionForVariantSet:(id)arg1;
 - (_Bool)editVariant:(id)arg1 variantSet:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)selectVariant:(id)arg1 variantSet:(id)arg2;
 - (id)variantsWithVariantSet:(id)arg1;
@@ -62,6 +64,7 @@
 - (_Bool)hasSchemaType:(id)arg1;
 - (void)applyType:(id)arg1;
 - (struct UsdPrim)usdPrim;
+- (id)initWithUsdPrim:(struct UsdPrim)arg1 withSceneOwner:(id)arg2;
 - (id)initWithUsdPrim:(struct UsdPrim)arg1;
 
 @end

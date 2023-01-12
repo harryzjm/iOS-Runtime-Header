@@ -51,6 +51,7 @@
     long long _playCount;
     long long _shareCount;
     long long _viewCount;
+    NSString *_syndicationIdentifier;
     NSData *_facesData;
 }
 
@@ -60,8 +61,10 @@
 + (_Bool)cplShouldIgnorePropertyForCoding:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (_Bool)serverSupportsVision;
++ (Class)relatedRecordClass;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSData *facesData; // @synthesize facesData=_facesData;
+@property(copy, nonatomic) NSString *syndicationIdentifier; // @synthesize syndicationIdentifier=_syndicationIdentifier;
 @property(nonatomic) long long viewCount; // @synthesize viewCount=_viewCount;
 @property(nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
 @property(nonatomic) long long playCount; // @synthesize playCount=_playCount;

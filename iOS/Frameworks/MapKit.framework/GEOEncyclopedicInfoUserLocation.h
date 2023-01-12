@@ -19,8 +19,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+- (id)firstFactoidForSemantic:(int)arg1;
+- (id)factoidAtIndex:(int)arg1;
 - (id)initWithMapItem:(id)arg1 isUserLocation:(_Bool)arg2;
 @property(readonly, nonatomic) NSArray *factoids;
+@property(readonly, nonatomic) NSArray *placeSummaryFactoids;
+- (_Bool)canBeDisplayedInPlaceSummary;
 @property(readonly, nonatomic) _Bool hasStandAloneFactoids;
 @property(readonly, nonatomic) _Bool hasPairOfFactoids;
 @property(readonly, nonatomic) GEOMapItemAttribution *encyclopedicAttribution;

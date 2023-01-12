@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class INInteraction, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, SGLazyResult, SGMessage, SGSimpleMailMessage, SGTextMessage;
+@class INInteraction, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, SGHarvestQueueMetrics, SGMessage, SGSimpleMailMessage, SGTextMessage, _PASLazyResult;
 
 @interface SGPipelineEntity
 {
     NSMutableArray *_enrichments;
     NSMutableArray *_externalEnrichments;
+    _Bool _flushExternalEnrichments;
     NSMutableArray *_taggedCharacterRanges;
     _Bool _fullDownloadRequested;
     CDStruct_f96224e3 _inhumanFeatures;
@@ -18,7 +19,7 @@
     _Bool _messageInhumannessChecked;
     struct _NSRange _dataDetectorsSignatureForTesting;
     _Bool _overrideDataDetectorSignatureForTesting;
-    SGLazyResult *_lazySnippetsContent;
+    _PASLazyResult *_lazySnippetsContent;
     _Bool _contactInformationExtracted;
     _Bool _needsSourceVerification;
     _Bool _pendingVerification;
@@ -32,11 +33,13 @@
     SGSimpleMailMessage *_mailMessage;
     SGTextMessage *_textMessage;
     INInteraction *_interaction;
+    SGHarvestQueueMetrics *_harvestMetrics;
     struct _NSRange _plainTextSigRange;
 }
 
 + (id)fromCloudKitRecord:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SGHarvestQueueMetrics *harvestMetrics; // @synthesize harvestMetrics=_harvestMetrics;
 @property(readonly, nonatomic) INInteraction *interaction; // @synthesize interaction=_interaction;
 @property(readonly, nonatomic) SGTextMessage *textMessage; // @synthesize textMessage=_textMessage;
 @property(readonly, nonatomic) SGSimpleMailMessage *mailMessage; // @synthesize mailMessage=_mailMessage;
@@ -74,6 +77,7 @@
 - (void)addDetectedInstantMessageAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
 - (void)addInstantMessageAddressEnrichment:(id)arg1;
 - (void)addDetectedBirthday:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
+- (id)birthday:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
 - (void)addDetectedEmailAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
 - (void)addBirthdayEnrichment:(id)arg1;
 - (void)addEmailAddressEnrichment:(id)arg1;
@@ -84,11 +88,15 @@
 - (void)setCreationTimestamp:(struct SGUnixTimestamp_)arg1;
 - (void)stripEventInformation;
 - (void)addTaggedCharacterRanges:(id)arg1;
+- (void)removeExternalEnrichmentAtIndex:(unsigned long long)arg1;
 - (void)addExternalEnrichment:(id)arg1;
+- (void)flushExternalEnrichmentsUponDealloc;
 - (void)addOrReplacePreferredEnrichment:(id)arg1;
+- (void)addOrReplaceEventEnrichment:(id)arg1;
 - (void)addEnrichments:(id)arg1;
 - (void)addEnrichment:(id)arg1;
 @property(readonly, nonatomic) NSString *snippetsContent;
+- (void)dealloc;
 - (id)_initWithInteractionIdentifier:(id)arg1 fromBundleIdentifier:(id)arg2 creationTime:(id)arg3;
 - (id)initWithInteractionIdentifier:(id)arg1 fromBundleIdentifier:(id)arg2;
 - (id)initWithInteraction:(id)arg1 identifier:(id)arg2 fromBundleIdentifier:(id)arg3;

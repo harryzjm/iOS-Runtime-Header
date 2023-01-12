@@ -12,6 +12,7 @@
 
 @interface ENExposureClassification : NSObject <NSSecureCoding>
 {
+    unsigned char _index;
     NSString *_name;
     NSDate *_date;
     ENRegion *_region;
@@ -34,6 +35,7 @@
 @property(copy, nonatomic) NSNumber *clinicalDiagnosisPerDaySumERVAboveThreshold; // @synthesize clinicalDiagnosisPerDaySumERVAboveThreshold=_clinicalDiagnosisPerDaySumERVAboveThreshold;
 @property(copy, nonatomic) NSNumber *confirmedTestPerDaySumERVAboveThreshold; // @synthesize confirmedTestPerDaySumERVAboveThreshold=_confirmedTestPerDaySumERVAboveThreshold;
 @property(copy, nonatomic) ENRegion *region; // @synthesize region=_region;
+@property(nonatomic) unsigned char index; // @synthesize index=_index;
 @property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) _Bool anyThresholdsExceeded;

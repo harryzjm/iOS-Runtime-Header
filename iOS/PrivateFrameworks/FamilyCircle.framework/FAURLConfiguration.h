@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@interface FAURLConfiguration : NSObject
+#import <FamilyCircle/FAURLProvider-Protocol.h>
+
+@interface FAURLConfiguration : NSObject <FAURLProvider>
 {
 }
 
-+ (void)fetchAAURLConfigurationWithCompletion:(CDUnknownBlockType)arg1;
-+ (void)URLForEndpoint:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-+ (id)new;
-- (id)init;
+- (void)fetchAAURLConfigurationWithCompletion:(CDUnknownBlockType)arg1;
+- (id)URLForEndpoint:(id)arg1;
+- (void)URLForEndpoint:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -16,13 +16,23 @@
     NLTokenizer *_tokenizer;
 }
 
++ (id)languageModelWithOptions:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (id)stringForTokenID:(unsigned int)arg1;
+- (unsigned int)tokenIDForString:(id)arg1;
 - (void)enumeratePredictionsForContext:(id)arg1 maxWordsPerPrediction:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumeratePredictionsForContext:(id)arg1 maxEntriesPerPrediction:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (double)conditionalProbabilityForWord:(id)arg1 context:(id)arg2;
 - (double)conditionalProbabilityForEntry:(id)arg1 context:(id)arg2;
 - (_Bool)getConditionalProbabilityForTokenID:(unsigned int)arg1 context:(const unsigned int *)arg2 length:(unsigned long long)arg3 probability:(double *)arg4;
+- (id)tokenIDConverter;
+- (id)sessionWithOptions:(id)arg1;
 @property(readonly, copy) NLLexicon *lexicon;
+- (_Bool)generatesPredictions;
+- (long long)granularity;
+- (id)locale;
+- (id)languages;
+- (id)language;
 @property(readonly, copy) NSString *localization;
 - (id)description;
 - (void)dealloc;

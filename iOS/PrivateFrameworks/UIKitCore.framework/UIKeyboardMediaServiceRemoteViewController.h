@@ -11,6 +11,7 @@
 
 @interface UIKeyboardMediaServiceRemoteViewController <UIKeyboardMediaHostProtocol>
 {
+    _Bool _shownInline;
     id <UIKeyboardMediaServiceRemoteViewControllerDelegate> _delegate;
 }
 
@@ -21,6 +22,7 @@
 + (id)requestInlineViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <UIKeyboardMediaServiceRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=_isShownInline, setter=_setShownInline:) _Bool _shownInline; // @synthesize _shownInline;
 - (void)draggedStickerToPoint:(struct CGPoint)arg1;
 - (void)requestInsertionPointCompletion:(CDUnknownBlockType)arg1;
 - (void)stageStickerWithFileHandle:(id)arg1 url:(id)arg2 accessibilityLabel:(id)arg3;
@@ -28,6 +30,7 @@
 - (void)dismissCard;
 - (void)presentCard;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (_Bool)__shouldRemoteViewControllerFenceGeometryChange:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (_Bool)_canShowWhileLocked;
 
 // Remaining properties

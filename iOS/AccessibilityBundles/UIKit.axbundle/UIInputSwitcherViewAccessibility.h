@@ -16,8 +16,6 @@
 - (_Bool)accessibilityViewIsModal;
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (id)accessibilityIdentifier;
-- (void)_accessibilitySetLastHandednessBiasAnnouncement:(id)arg1;
-- (id)_accessibilityLastHandednessBiasAnnouncement;
 
 @end
 

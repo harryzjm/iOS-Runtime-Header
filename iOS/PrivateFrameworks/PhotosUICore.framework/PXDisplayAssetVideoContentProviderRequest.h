@@ -6,32 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class PXMediaProvider;
-@protocol PXDisplayAsset, PXDisplayAssetVideoContentProviderRequestDelegate;
+@class NSArray, PXMediaProvider;
+@protocol OS_dispatch_queue, PXDisplayAsset, PXDisplayAssetVideoContentProviderRequestDelegate;
 
 @interface PXDisplayAssetVideoContentProviderRequest : NSObject
 {
     long long _requestID;
+    _Bool _isCancelled;
+    _Bool _shouldDownloadTimeRange;
+    long long _retriesAfterTransientErrorCount;
+    _Bool _requestURLOnly;
     id <PXDisplayAsset> _asset;
     PXMediaProvider *_mediaProvider;
+    NSArray *_strategies;
     long long _priority;
     double _loadingProgress;
     id <PXDisplayAssetVideoContentProviderRequestDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_loadingQueue;
 }
 
-+ (id)requestWithAsset:(id)arg1 mediaProvider:(id)arg2 priority:(long long)arg3 delegate:(id)arg4;
++ (id)startRequestWithAsset:(id)arg1 mediaProvider:(id)arg2 strategies:(id)arg3 priority:(long long)arg4 requestURLOnly:(_Bool)arg5 delegate:(id)arg6 loadingQueue:(id)arg7;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *loadingQueue; // @synthesize loadingQueue=_loadingQueue;
 @property(nonatomic) __weak id <PXDisplayAssetVideoContentProviderRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
+@property(readonly, nonatomic) _Bool requestURLOnly; // @synthesize requestURLOnly=_requestURLOnly;
 @property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
+@property(readonly, nonatomic) NSArray *strategies; // @synthesize strategies=_strategies;
 @property(readonly, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) id <PXDisplayAsset> asset; // @synthesize asset=_asset;
+- (_Bool)_isTransientError:(id)arg1;
 - (void)dealloc;
-- (long long)_streamingVideoIntent;
-- (void)_handleMediaProviderResult:(id)arg1 info:(id)arg2;
+- (void)_handleLoadedPlayerItem:(id)arg1 videoURL:(id)arg2 info:(id)arg3 strategyAtIndex:(long long)arg4;
 - (void)_handleLoadingProgress:(double)arg1;
+- (void)_loadMediaWithStrategyAtIndex:(long long)arg1;
 - (void)_start;
 - (void)cancel;
+- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 strategies:(id)arg3 priority:(long long)arg4 requestURLOnly:(_Bool)arg5 delegate:(id)arg6 loadingQueue:(id)arg7;
 
 @end
 

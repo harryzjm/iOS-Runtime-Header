@@ -6,20 +6,34 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface HRUIAnalyticsManager : NSObject
 {
     long long _currentAtrialFibrillationOnboardingStep;
     long long _currentElectrocardiogramOnboardingStep;
+    NSString *_productType;
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *productType; // @synthesize productType=_productType;
+@property(nonatomic) long long currentElectrocardiogramOnboardingStep; // @synthesize currentElectrocardiogramOnboardingStep=_currentElectrocardiogramOnboardingStep;
+@property(nonatomic) long long currentAtrialFibrillationOnboardingStep; // @synthesize currentAtrialFibrillationOnboardingStep=_currentAtrialFibrillationOnboardingStep;
+- (id)_stringAlgorithmVersionFromOnboardingVersion:(id)arg1;
+- (id)_stringFromOnboardingVersion:(id)arg1;
+- (id)_stringFromOnboardingType:(long long)arg1;
+- (id)_stringFromProvenance:(long long)arg1;
 - (id)_stringFromHRUIElectrocardiogramOnboardingStep:(long long)arg1;
 - (id)_stringFromHRUIAtrialFibrillationDetectionOnboardingStep:(long long)arg1;
+- (id)_pdfSharedStringFromProvenance:(unsigned long long)arg1;
+- (void)_sendAnalyticsEvent:(id)arg1 withPayload:(id)arg2;
+- (void)trackElectrocardiogramPDFSharedFrom:(unsigned long long)arg1;
 - (void)trackElectrocardiogramPDFShared;
 - (void)trackElectrocardiogramPDFViewed;
 - (void)trackElectrocardiogramDataTypeViewed;
-- (void)trackElectrocardiogramOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4 provenance:(long long)arg5;
-- (void)trackAtrialFibrillationDetectionOnboardingStep:(long long)arg1 forVersion:(long long)arg2 productType:(id)arg3 countryCode:(id)arg4 provenance:(long long)arg5;
+- (void)trackElectrocardiogramOnboardingStep:(long long)arg1 forOnboardingType:(long long)arg2 onboardingVersion:(id)arg3 countryCode:(id)arg4 provenance:(long long)arg5;
+- (void)trackAtrialFibrillationDetectionOnboardingStep:(long long)arg1 forOnboardingVersion:(long long)arg2 countryCode:(id)arg3 provenance:(long long)arg4;
 - (id)init;
 
 @end

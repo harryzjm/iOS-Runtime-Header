@@ -6,10 +6,10 @@
 
 #import <TextInputCore/TIKeyboardInteractionProtocol-Protocol.h>
 
-@protocol TITypingSessionDelegate;
+@class TITypingSessionParams;
 
 @protocol TITypingSessionMonitoringProtocol <TIKeyboardInteractionProtocol>
-@property(nonatomic) __weak id <TITypingSessionDelegate> delegate;
-- (void)keyboardDidSuspend;
+- (void)tearDown;
+- (void)keyboardDidSuspendWithSessionParams:(TITypingSessionParams *)arg1;
 @end
 

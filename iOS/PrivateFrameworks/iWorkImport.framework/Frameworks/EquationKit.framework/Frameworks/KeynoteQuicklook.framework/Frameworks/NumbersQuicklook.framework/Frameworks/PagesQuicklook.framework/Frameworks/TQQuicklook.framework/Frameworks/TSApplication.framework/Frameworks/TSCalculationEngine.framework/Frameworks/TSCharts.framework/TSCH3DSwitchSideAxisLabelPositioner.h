@@ -8,8 +8,8 @@
 {
 }
 
-- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(const tvec3_17f03ce0 *)arg3;
-- (unsigned int)alignmentForChartDirection:(const tvec3_17f03ce0 *)arg1;
+- (tvec3_17f03ce0)positionForValue:(double)arg1 count:(unsigned long long)arg2 chartDirection:(const void *)arg3;
+- (unsigned int)alignmentForChartDirection:(const void *)arg1;
 - (long long)p_otherAxis;
 
 @end

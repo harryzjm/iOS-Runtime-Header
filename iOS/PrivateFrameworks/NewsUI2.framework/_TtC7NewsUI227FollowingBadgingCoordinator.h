@@ -8,11 +8,14 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227FollowingBadgingCoordinator : NSObject
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *readingList;
     MISSING_TYPE *userInfo;
+    MISSING_TYPE *sharedItemManager;
+    MISSING_TYPE *readingHistory;
 }
 
 - (void).cxx_destruct;

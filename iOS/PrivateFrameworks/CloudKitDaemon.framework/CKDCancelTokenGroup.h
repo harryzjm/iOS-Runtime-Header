@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDCancelTokenGroup : NSObject <CKDCancelling>
 {
     NSMutableArray *_cancelTokens;

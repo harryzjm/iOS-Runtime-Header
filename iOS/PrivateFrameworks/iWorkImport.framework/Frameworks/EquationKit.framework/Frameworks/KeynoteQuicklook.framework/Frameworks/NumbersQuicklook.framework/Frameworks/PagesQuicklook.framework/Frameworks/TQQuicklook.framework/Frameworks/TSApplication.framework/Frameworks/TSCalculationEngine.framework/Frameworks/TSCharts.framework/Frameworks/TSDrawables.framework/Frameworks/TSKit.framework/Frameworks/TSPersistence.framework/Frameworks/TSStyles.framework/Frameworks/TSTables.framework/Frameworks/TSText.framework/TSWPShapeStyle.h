@@ -14,8 +14,8 @@
 {
 }
 
-+ (void)saveShapeStyleLayoutPropertyMap:(id)arg1 toArchive:(struct ShapeStylePropertiesArchive *)arg2 archiver:(id)arg3;
-+ (void)loadShapeStyleLayoutPropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct ShapeStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
++ (void)saveShapeStyleLayoutPropertyMap:(id)arg1 toArchive:(void *)arg2 archiver:(id)arg3;
++ (void)loadShapeStyleLayoutPropertiesIntoPropertyMap:(id)arg1 fromArchive:(const void *)arg2 unarchiver:(id)arg3;
 + (id)defaultValueForProperty:(int)arg1;
 + (int)defaultIntValueForProperty:(int)arg1;
 + (id)propertiesAllowingNSNull;
@@ -26,9 +26,15 @@
 @property(retain, nonatomic) TSWPParagraphStyle *defaultParagraphStyle;
 - (id)boxedValueForProperty:(int)arg1 oldBoxedValue:(id)arg2 transformedByTransform:(struct CGAffineTransform)arg3;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct ShapeStyleArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 @property(readonly, nonatomic) NSString *presetKind;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

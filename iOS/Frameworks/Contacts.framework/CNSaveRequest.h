@@ -39,19 +39,20 @@
     NSMutableDictionary *_parentRecordsByIdentifier;
     _Bool _unsafeApplyChangesOnly;
     _Bool _ignoresGuardianRestrictions;
+    NSString *_transactionAuthor;
     NSString *_saveRequestIdentifier;
-    NSString *_changeHistoryClientIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *changeHistoryClientIdentifier; // @synthesize changeHistoryClientIdentifier=_changeHistoryClientIdentifier;
 @property(nonatomic) _Bool ignoresGuardianRestrictions; // @synthesize ignoresGuardianRestrictions=_ignoresGuardianRestrictions;
 @property(readonly, copy, nonatomic) NSDictionary *deletedContactsByIdentifier; // @synthesize deletedContactsByIdentifier=_deletedContactsByIdentifier;
 @property(readonly, copy, nonatomic) NSString *saveRequestIdentifier; // @synthesize saveRequestIdentifier=_saveRequestIdentifier;
 @property(readonly, copy, nonatomic) NSArray *removedAccounts; // @synthesize removedAccounts=_removedAccounts;
 @property(readonly, copy, nonatomic) NSArray *addedAccounts; // @synthesize addedAccounts=_addedAccounts;
+@property(copy, nonatomic) NSString *transactionAuthor; // @synthesize transactionAuthor=_transactionAuthor;
 @property(nonatomic) _Bool unsafeApplyChangesOnly; // @synthesize unsafeApplyChangesOnly=_unsafeApplyChangesOnly;
+@property(copy, nonatomic) NSString *changeHistoryClientIdentifier;
 @property(nonatomic) _Bool ignoresParentalRestrictions;
 @property(readonly, copy, nonatomic) NSArray *allAccountIdentifierStrings;
 - (id)allAccountIdentifiers;

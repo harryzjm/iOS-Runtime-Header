@@ -10,7 +10,7 @@
 {
     unsigned long long memoryCapacity;
     unsigned long long diskCapacity;
-    struct _CFURLCache *_cacheRef;
+    void *_cacheRef;
 }
 
 - (void)dealloc;

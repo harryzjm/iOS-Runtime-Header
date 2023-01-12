@@ -11,17 +11,23 @@
 #import <NewsUI/SXEmbedDataProvider-Protocol.h>
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
-@class FCArticle, NSString;
+@class FCArticle, NSArray, NSString, NULinkedContentManager;
 @protocol NUEmbedDataManager;
 
 @interface NUBundledArticleDataProvider : NSObject <SXResourceDataSource, SXEmbedDataProvider, NUFontRegistrator, NUArticleDataProvider>
 {
     FCArticle *_article;
+    NSArray *_linkedContentProviders;
+    long long _relativePriority;
     id <NUEmbedDataManager> _embedDataManager;
+    NULinkedContentManager *_linkedContentManager;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NULinkedContentManager *linkedContentManager; // @synthesize linkedContentManager=_linkedContentManager;
 @property(readonly, nonatomic) id <NUEmbedDataManager> embedDataManager; // @synthesize embedDataManager=_embedDataManager;
+@property(nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
+@property(readonly, nonatomic) NSArray *linkedContentProviders; // @synthesize linkedContentProviders=_linkedContentProviders;
 @property(readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
 - (id)fileURLForBundleURL:(id)arg1;
 - (id)embedForType:(id)arg1;
@@ -34,7 +40,7 @@
 - (void)prefetchAssets;
 - (void)loadContextWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)performBlockForFontsInBundle:(CDUnknownBlockType)arg1;
-- (id)initWithArticle:(id)arg1 embedDataManager:(id)arg2;
+- (id)initWithArticle:(id)arg1 embedDataManager:(id)arg2 linkedContentManager:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

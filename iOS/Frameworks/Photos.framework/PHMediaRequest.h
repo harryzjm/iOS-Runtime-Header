@@ -34,6 +34,7 @@
 - (void)recordMetricsWithMetricsHandler:(CDUnknownBlockType)arg1;
 - (id)sendResourceRepairRequestForResource:(id)arg1 errorCodes:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)sendMakeAvailableRequestForResource:(id)arg1 reply:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) long long downloadPriority;
 @property(readonly, nonatomic) long long downloadIntent;
 @property(readonly, nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;

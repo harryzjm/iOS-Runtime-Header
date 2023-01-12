@@ -8,14 +8,17 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEONavigabilityInfo, GEORouteIncident, GEOTrafficBannerText, MNActiveRouteInfo, NSArray, NSData, NSDate, NSMutableArray, NSString;
+@class GEOComposedRoute, GEONavigabilityInfo, GEOPBTransitArtwork, GEORouteIncident, GEOTrafficBannerText, MNActiveRouteInfo, NSArray, NSData, NSDate, NSMutableArray, NSString;
 
 @interface MNTrafficIncidentAlert : NSObject <NSSecureCoding>
 {
+    GEOTrafficBannerText *_geoTrafficBannerText;
+    NSArray *_buttonActionTitles;
+    _Bool _isAutomaticReroute;
+    _Bool _shouldShowTimer;
     NSData *_alertID;
     NSData *_etaResponseID;
     unsigned long long _alertType;
-    GEOTrafficBannerText *_geoTrafficBannerText;
     MNActiveRouteInfo *_mainRouteInfo;
     MNActiveRouteInfo *_alternateRouteInfo;
     CDStruct_3f2a7a20 _startValidCoordinateRange;
@@ -24,18 +27,19 @@
     CDStruct_3f2a7a20 _alternateEndValidCoordinateRange;
     NSDate *_alertDate;
     double _distanceToIncident;
-    NSDate *_eta;
-    _Bool _isAutomaticReroute;
-    NSArray *_buttonActionTitles;
-    _Bool _shouldShowTimer;
     double _alertDisplayDuration;
     NSString *_bannerDescription;
+    NSString *_bannerID;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)validTrafficIncidentAlertForMainRouteInfo:(id)arg1 alternateRouteInfo:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *bannerID; // @synthesize bannerID=_bannerID;
+@property(readonly, nonatomic) NSString *bannerDescription; // @synthesize bannerDescription=_bannerDescription;
+@property(readonly, nonatomic) _Bool shouldShowTimer; // @synthesize shouldShowTimer=_shouldShowTimer;
 @property(readonly, nonatomic) _Bool isAutomaticReroute; // @synthesize isAutomaticReroute=_isAutomaticReroute;
+@property(nonatomic) double distanceToIncident; // @synthesize distanceToIncident=_distanceToIncident;
 @property(readonly, nonatomic) NSDate *alertDate; // @synthesize alertDate=_alertDate;
 @property(readonly, nonatomic) CDStruct_3f2a7a20 alternateEndValidCoordinateRange; // @synthesize alternateEndValidCoordinateRange=_alternateEndValidCoordinateRange;
 @property(readonly, nonatomic) CDStruct_3f2a7a20 incidentCoordinate; // @synthesize incidentCoordinate=_incidentCoordinate;
@@ -43,10 +47,6 @@
 @property(readonly, nonatomic) CDStruct_3f2a7a20 startValidCoordinateRange; // @synthesize startValidCoordinateRange=_startValidCoordinateRange;
 @property(readonly, nonatomic) MNActiveRouteInfo *alternateRouteInfo; // @synthesize alternateRouteInfo=_alternateRouteInfo;
 @property(readonly, nonatomic) MNActiveRouteInfo *mainRouteInfo; // @synthesize mainRouteInfo=_mainRouteInfo;
-@property(retain, nonatomic) NSDate *eta; // @synthesize eta=_eta;
-@property(nonatomic) double distanceToIncident; // @synthesize distanceToIncident=_distanceToIncident;
-@property(readonly, nonatomic) NSString *bannerDescription; // @synthesize bannerDescription=_bannerDescription;
-@property(readonly, nonatomic) _Bool shouldShowTimer; // @synthesize shouldShowTimer=_shouldShowTimer;
 @property(readonly, nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
 @property(readonly, nonatomic) NSData *etaResponseID; // @synthesize etaResponseID=_etaResponseID;
 @property(readonly, nonatomic) NSData *alertID; // @synthesize alertID=_alertID;
@@ -54,17 +54,26 @@
 - (void)_populateServerFields:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)_stringForAlertType:(unsigned long long)arg1;
+- (id)description;
 - (id)_dynamicStringValues;
 - (unsigned long long)_alertTypeForGeoBannerStyle:(int)arg1;
 - (CDStruct_3f2a7a20)_routeCoordinateOnRoute:(id)arg1 distanceFromEnd:(double)arg2;
 - (void)_initRouteCoordinates;
 - (id)_initWithGeoTrafficBannerText:(id)arg1 mainRouteInfo:(id)arg2 alternateRouteInfo:(id)arg3;
+@property(readonly, nonatomic) GEOPBTransitArtwork *artwork;
 @property(readonly, nonatomic) int previousBannerChange;
 @property(readonly, nonatomic) unsigned long long secondsSaved;
 - (void)updateAlertIDWithAlert:(id)arg1;
 - (void)updateLocation:(id)arg1;
+- (id)_buttonTitleForAlertAction:(unsigned long long)arg1;
+- (id)dismissButtonTitle;
+- (id)acceptButtonTitle;
+- (int)_buttonDisplayForAlertAction:(unsigned long long)arg1;
+- (int)dismissButtonDisplay;
+- (int)acceptButtonDisplay;
 @property(readonly, nonatomic) _Bool isReroute;
-@property(readonly, nonatomic) double alertDisplayDuration;
+@property(readonly, nonatomic) double alertDisplayDuration; // @synthesize alertDisplayDuration=_alertDisplayDuration;
 @property(readonly, nonatomic) GEONavigabilityInfo *originalRouteNavigability;
 @property(readonly, nonatomic) GEOComposedRoute *alternateRoute;
 @property(readonly, nonatomic) GEOComposedRoute *originalRoute;

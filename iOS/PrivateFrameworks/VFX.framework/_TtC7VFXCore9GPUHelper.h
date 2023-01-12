@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7VFXCore9GPUHelper : NSObject
 {
-    MISSING_TYPE *shaderPool;
+    MISSING_TYPE *shaderCache;
     MISSING_TYPE *device;
     MISSING_TYPE *commandQueue;
 }

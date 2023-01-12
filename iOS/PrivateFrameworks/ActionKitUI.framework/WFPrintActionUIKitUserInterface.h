@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFActionUserInterface.h>
 
 #import <ActionKitUI/UIPrintInteractionControllerDelegate-Protocol.h>
 #import <ActionKitUI/WFPrintActionUserInterface-Protocol.h>
 
-@class NSString;
+@class NSString, UIPrintInteractionController;
 
 __attribute__((visibility("hidden")))
 @interface WFPrintActionUIKitUserInterface : WFActionUserInterface <UIPrintInteractionControllerDelegate, WFPrintActionUserInterface>
 {
+    UIPrintInteractionController *_printController;
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(retain, nonatomic) UIPrintInteractionController *printController; // @synthesize printController=_printController;
 - (id)printInteractionControllerParentViewController:(id)arg1;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishWithError:(id)arg1;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

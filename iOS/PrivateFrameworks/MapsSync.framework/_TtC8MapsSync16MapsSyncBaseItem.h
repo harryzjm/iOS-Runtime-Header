@@ -13,6 +13,7 @@
     MISSING_TYPE *_modificationTime;
     MISSING_TYPE *_positionIndex;
     MISSING_TYPE *_editBlocks;
+    MISSING_TYPE *_editBlocksLock;
     MISSING_TYPE *_readContext;
     MISSING_TYPE *_saveObjectSignpost;
 }

@@ -17,6 +17,12 @@
 + (CDUnknownBlockType)factory;
 - (void).cxx_destruct;
 - (id)_daemonConnection;
+- (void)startExpressSettingsUpload;
+- (id)fetchAuthenticationContextForBiometric;
+- (void)storeAuthenticationContextforBiometric:(id)arg1;
+- (id)fetchAuthenticationContextForApplePay;
+- (void)storeAuthenticationContextforApplyPay:(id)arg1;
+- (void)enrollInSeedProgramNamed:(id)arg1 withAssetAudience:(id)arg2;
 - (void)cancelInternalSkipInfo;
 - (void)getInternalSkipInfo:(CDUnknownBlockType)arg1;
 - (void)setInternalShouldSkipFlows:(_Bool)arg1 skipExceptions:(id)arg2;

@@ -19,11 +19,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void)notifyObservers:(id)arg1;
+- (void)notifyObservers:(id)arg1 endpointId:(id)arg2;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (id)defaultFallbackModelIfNil:(id)arg1;
-- (void)getVoiceTriggerAsset:(CDUnknownBlockType)arg1;
+- (void)getVoiceTriggerAssetWithEndpointId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

@@ -8,23 +8,20 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRRegisterGameControllerResponseMessageProtobuf : PBCodable <NSCopying>
 {
     unsigned long long _controllerID;
     CDStruct_669c4a63 _has;
 }
 
-@property(nonatomic) unsigned long long controllerID; // @synthesize controllerID=_controllerID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasControllerID;
 
 @end
 

@@ -10,13 +10,13 @@
 
 @interface MPArtworkColorAnalyzer : NSObject
 {
-    long long _algorithm;
     UIImage *_image;
+    long long _algorithm;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(readonly, nonatomic) long long algorithm; // @synthesize algorithm=_algorithm;
+@property(readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 - (id)_fallbackColorAnalysis;
 - (void)analyzeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithImage:(id)arg1 algorithm:(long long)arg2;

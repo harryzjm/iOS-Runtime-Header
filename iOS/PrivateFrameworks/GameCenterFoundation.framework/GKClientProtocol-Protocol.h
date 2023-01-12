@@ -29,8 +29,12 @@
 - (oneway void)didReceiveData:(NSData *)arg1 reliably:(_Bool)arg2 forRecipients:(NSArray *)arg3 fromSender:(NSString *)arg4;
 - (oneway void)didDisconnectFromParticipantWithID:(NSString *)arg1;
 - (oneway void)didConnectToParticipantWithID:(NSString *)arg1;
+- (oneway void)nearbyDataReceivedForPlayerID:(NSString *)arg1 deviceID:(NSString *)arg2 data:(NSData *)arg3;
+- (oneway void)nearbyPlayerLostForPlayerID:(NSString *)arg1 deviceID:(NSString *)arg2;
+- (oneway void)nearbyPlayerFoundForPlayerID:(NSString *)arg1 deviceID:(NSString *)arg2 discoveryInfo:(NSDictionary *)arg3;
 - (oneway void)relayPushNotification:(NSDictionary *)arg1;
 - (oneway void)cancelGameInvite:(NSString *)arg1;
+- (oneway void)cancelInviteWithNotification:(NSDictionary *)arg1;
 - (oneway void)declineInviteWithNotification:(NSDictionary *)arg1;
 - (oneway void)acceptInviteWithNotification:(NSDictionary *)arg1;
 - (oneway void)acceptMultiplayerGameInvite;

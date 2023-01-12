@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *lookupQueue; // @synthesize lookupQueue=_lookupQueue;
 @property(retain, nonatomic) NSPersonNameComponentsFormatter *personNameComponentsFormatter; // @synthesize personNameComponentsFormatter=_personNameComponentsFormatter;
 @property(retain, nonatomic) CNMonogrammer *monogrammer; // @synthesize monogrammer=_monogrammer;
+- (id)monogramImageForInitial:(id)arg1 useDarkColors:(_Bool)arg2;
 - (id)monogramImageForNameComponents:(id)arg1;
 - (void)_fetchFamilyPhotoWithDSID:(id)arg1 fullName:(id)arg2 appleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_personImageWithDSID:(id)arg1 fullName:(id)arg2 appleID:(id)arg3 forceFetch:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;

@@ -6,17 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+@class NSDate, NSString;
 
 @interface ATXWidgetEngagementRecord : NSObject
 {
     NSDate *_date;
     long long _type;
+    NSString *_widgetBundleId;
+    NSString *_widgetKind;
+    long long _widgetFamily;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long widgetFamily; // @synthesize widgetFamily=_widgetFamily;
+@property(readonly, nonatomic) NSString *widgetKind; // @synthesize widgetKind=_widgetKind;
+@property(readonly, nonatomic) NSString *widgetBundleId; // @synthesize widgetBundleId=_widgetBundleId;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
+- (id)initWithDate:(id)arg1 type:(long long)arg2 widgetBundleId:(id)arg3 widgetKind:(id)arg4 layoutSize:(unsigned long long)arg5;
 - (id)initWithDate:(id)arg1 type:(long long)arg2;
 
 @end

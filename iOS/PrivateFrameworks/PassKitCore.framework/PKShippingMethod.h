@@ -7,23 +7,24 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, PKDateComponentsRange;
 
 @interface PKShippingMethod <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     NSString *_detail;
+    PKDateComponentsRange *_dateComponentsRange;
 }
 
 + (_Bool)supportsSecureCoding;
 + (long long)version;
 + (id)shippingMethodWithProtobuf:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) PKDateComponentsRange *dateComponentsRange; // @synthesize dateComponentsRange=_dateComponentsRange;
 @property(copy, nonatomic) NSString *detail; // @synthesize detail=_detail;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
-- (id)formattedString;
 - (_Bool)isEqualToShippingMethod:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

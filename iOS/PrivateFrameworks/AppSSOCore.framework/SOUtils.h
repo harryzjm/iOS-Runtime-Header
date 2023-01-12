@@ -13,7 +13,6 @@
 + (id)teamIdentifierFromAuditToken:(CDStruct_6ad76789)arg1;
 + (_Bool)checkSignatureOfFile:(id)arg1 teamIdentifier:(id *)arg2 trusted:(_Bool *)arg3 signedBySet:(long long *)arg4 certificates:(id *)arg5 error:(id *)arg6;
 + (id)signatureSetToString:(long long)arg1;
-+ (_Bool)currentProcessInSystemSession;
 + (id)processNameForPID:(int)arg1;
 + (id)currentProcessName;
 + (id)bundleIdentifierFromAuditToken:(CDStruct_6ad76789)arg1;
@@ -25,7 +24,7 @@
 + (id)currentProcessContainerPath;
 + (_Bool)sandboxAllowsXPC:(const char *)arg1;
 + (_Bool)currentProcessIsSandboxed;
-+ (_Bool)checkEntitlementFromXPC:(id)arg1;
++ (_Bool)checkEntitlementFromXPC:(id)arg1 entitlement:(id)arg2;
 + (void)unmapFile:(int)arg1 data:(id)arg2;
 + (int)mmapFile:(id)arg1 mode:(long long)arg2 mmapData:(id *)arg3;
 

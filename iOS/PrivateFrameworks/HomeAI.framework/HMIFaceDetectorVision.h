@@ -17,6 +17,7 @@
 
 + (id)logCategory;
 + (void)releaseCachedResources;
++ (unsigned long long)defaultRevision;
 + (id)detectFacesInImageData:(id)arg1 error:(id *)arg2;
 + (id)detectFacesInPixelBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 

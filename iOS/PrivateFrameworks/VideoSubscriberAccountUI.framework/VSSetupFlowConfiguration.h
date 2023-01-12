@@ -22,10 +22,12 @@ __attribute__((visibility("hidden")))
     VSAppDescription *_msoAppDescription;
     NSArray *_bundlesIDsToConsent;
     NSDictionary *_vouchersByBundleID;
+    NSArray *_supportedApps;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *supportedApps; // @synthesize supportedApps=_supportedApps;
 @property(nonatomic) _Bool canShowSupportedAppsButton; // @synthesize canShowSupportedAppsButton=_canShowSupportedAppsButton;
 @property(copy, nonatomic) NSDictionary *vouchersByBundleID; // @synthesize vouchersByBundleID=_vouchersByBundleID;
 @property(copy, nonatomic) NSArray *bundlesIDsToConsent; // @synthesize bundlesIDsToConsent=_bundlesIDsToConsent;

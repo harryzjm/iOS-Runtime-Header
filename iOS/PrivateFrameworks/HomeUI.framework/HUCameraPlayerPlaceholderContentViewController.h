@@ -23,9 +23,12 @@
 @property(retain, nonatomic) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
 @property(nonatomic) __weak HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) _Bool cameraPlayerHasContentToShow; // @synthesize cameraPlayerHasContentToShow=_cameraPlayerHasContentToShow;
+- (_Bool)_shouldShowDefaultPlaceholderContent;
 - (_Bool)_shouldHidePlaceholderContentForCurrentAccessMode;
+- (_Bool)_shouldShowPlaceholderContentForUserScrubbing;
 - (void)updatePlaceholderImage:(id)arg1;
 - (void)updatePlaceholderContent;
+- (_Bool)shouldShowPlaceholderContent;
 - (void)hu_reloadData;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackError:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;

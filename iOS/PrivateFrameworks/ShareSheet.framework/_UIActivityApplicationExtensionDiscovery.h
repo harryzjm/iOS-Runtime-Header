@@ -25,7 +25,6 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithExtensionPointIdentifiers:(id)arg1;
-- (void)registerPendingContinuousExtensionsDiscovery;
 
 @end
 

@@ -11,7 +11,7 @@
 
 @interface TSWPRangeArray : NSObject <NSCopying, NSMutableCopying>
 {
-    vector_b5e32e34 _rangeVector;
+    struct vector<_NSRange, std::allocator<_NSRange>> _rangeVector;
 }
 
 + (id)rangeArrayWithRange:(struct _NSRange)arg1;
@@ -40,7 +40,7 @@
 - (_Bool)isEqualToRangeArray:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithRangeVector:(const vector_b5e32e34 *)arg1;
+- (id)initWithRangeVector:(const void *)arg1;
 - (id)initWithRange:(struct _NSRange)arg1;
 - (id)init;
 

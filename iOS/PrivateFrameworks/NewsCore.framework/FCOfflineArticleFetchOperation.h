@@ -4,33 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCHeadline, NSString;
-@protocol FCContentContext, FCFlintHelper;
+#import <NewsCore/FCOfflineFetchOperationType-Protocol.h>
 
-@interface FCOfflineArticleFetchOperation
+@class FCThreadSafeMutableArray, NSObject, NSString;
+@protocol FCContentContext, FCFlintHelper, OS_dispatch_queue;
+
+@interface FCOfflineArticleFetchOperation <FCOfflineFetchOperationType>
 {
+    _Bool cachedOnly;
+    CDUnknownBlockType archiveHandler;
+    NSObject<OS_dispatch_queue> *archiveQueue;
+    CDUnknownBlockType fetchCompletionHandler;
+    NSObject<OS_dispatch_queue> *fetchCompletionQueue;
+    CDUnknownBlockType progressHandler;
+    NSObject<OS_dispatch_queue> *progressQueue;
     id <FCContentContext> _context;
     id <FCFlintHelper> _flintHelper;
     NSString *_articleID;
-    FCHeadline *_headline;
-    id _thumbnailFetchedObject;
-    id _contentFetchedObject;
-    id _audioFetchedObject;
+    FCThreadSafeMutableArray *_resultInterestTokens;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id audioFetchedObject; // @synthesize audioFetchedObject=_audioFetchedObject;
-@property(retain, nonatomic) id contentFetchedObject; // @synthesize contentFetchedObject=_contentFetchedObject;
-@property(retain, nonatomic) id thumbnailFetchedObject; // @synthesize thumbnailFetchedObject=_thumbnailFetchedObject;
-@property(retain, nonatomic) FCHeadline *headline; // @synthesize headline=_headline;
-@property(copy, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
-@property(retain, nonatomic) id <FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
-@property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
-- (id)completeFetchOperation;
-- (id)fetchNarrativeTrackWithCompletion:(CDUnknownBlockType)arg1;
-- (id)fetchContentWithCompletion:(CDUnknownBlockType)arg1;
-- (id)fetchThumbnailWithCompletion:(CDUnknownBlockType)arg1;
-- (id)fetchHeadlineWithCompletion:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *progressQueue; // @synthesize progressQueue;
+@property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *fetchCompletionQueue; // @synthesize fetchCompletionQueue;
+@property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler;
+@property(nonatomic) _Bool cachedOnly; // @synthesize cachedOnly;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *archiveQueue; // @synthesize archiveQueue;
+@property(copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler;
+- (void)operationWillFinishWithError:(id)arg1;
+- (void)performOperation;
+- (_Bool)validateOperation;
 - (id)initWithContext:(id)arg1 flintHelper:(id)arg2 articleID:(id)arg3;
 
 @end

@@ -6,9 +6,11 @@
 
 #import <SiriVOX/NSObject-Protocol.h>
 
-@class SVXDeviceSetupFlowScene, SVXDeviceSetupOptions;
+@class NSDate, SVXDeviceSetupFlowScene, SVXDeviceSetupOptions;
 
 @protocol SVXDeviceSetupContextMutating <NSObject>
+- (void)setEndDate:(NSDate *)arg1;
+- (void)setBeginDate:(NSDate *)arg1;
 - (void)setFlowScene:(SVXDeviceSetupFlowScene *)arg1;
 - (void)setOptions:(SVXDeviceSetupOptions *)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;

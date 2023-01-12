@@ -13,6 +13,7 @@
     UITextInputTraits *_traits;
     unsigned int _wasSelectedWhenTouchesBegan:1;
     unsigned int _touchesWereCancelled:1;
+    unsigned int _touchBeganWithShiftDown:1;
     id <CNComposeRecipientAtomDelegate> _delegate;
 }
 
@@ -23,6 +24,7 @@
 - (void)moveRight:(id)arg1;
 - (void)moveLeft:(id)arg1;
 - (id)keyCommands;
+- (void)handleFirstTap;
 - (void)handleTouchAndHold;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

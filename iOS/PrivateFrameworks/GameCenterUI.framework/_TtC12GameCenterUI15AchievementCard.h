@@ -15,6 +15,7 @@
     MISSING_TYPE *metrics;
     MISSING_TYPE *$__lazy_storage_$_highlightView;
     MISSING_TYPE *isHighlighted;
+    MISSING_TYPE *allowsFocusing;
     MISSING_TYPE *backgroundView;
     MISSING_TYPE *gradient;
     MISSING_TYPE *border;

@@ -10,6 +10,7 @@
 
 @class FCCKPResponseOperationResultError;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResult : PBCodable <NSCopying>
 {
     int _code;
@@ -19,20 +20,14 @@
     } _has;
 }
 
-@property(retain, nonatomic) FCCKPResponseOperationResultError *error; // @synthesize error=_error;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasError;
-@property(nonatomic) _Bool hasCode;
-@property(nonatomic) int code; // @synthesize code=_code;
-- (void)dealloc;
 
 @end
 

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (_Bool)canBePerformedByOpeningURL;
 - (int)interactionType;
-- (id)icon;
+- (id)iconName;
 - (id)localizedName;
 
 @end

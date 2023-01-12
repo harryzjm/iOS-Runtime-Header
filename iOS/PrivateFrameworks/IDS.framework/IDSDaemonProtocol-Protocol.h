@@ -6,12 +6,17 @@
 
 #import <IDS/NSObject-Protocol.h>
 
-@class ENGroupID, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
+@class ENGroupID, IDSMessagingCapabilities, IDSPseudonym, IDSPseudonymProperties, IDSPseudonymRequestProperties, IDSURI, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSSet, NSString, NSURL;
 @protocol OS_xpc_object;
 
 @protocol IDSDaemonProtocol <NSObject>
 
 @optional
+- (void)tryForceFamilyFetch;
+- (void)removeReceivedInvitation:(NSArray *)arg1 forService:(NSString *)arg2;
+- (void)removePendingInvitation:(NSArray *)arg1 forService:(NSString *)arg2;
+- (void)persistReceivedInvitation:(NSData *)arg1 forService:(NSString *)arg2 withUniqueID:(NSString *)arg3;
+- (void)persistPendingInvitation:(NSData *)arg1 forService:(NSString *)arg2 withUniqueID:(NSString *)arg3;
 - (void)registrationControlGetRegistrationStateForRegistrationType:(long long)arg1 requestID:(NSString *)arg2;
 - (void)registrationControlSetRegistrationStateForRegistrationType:(long long)arg1 toState:(long long)arg2 requestID:(NSString *)arg3;
 - (void)appleCareSignOutUserWithRequestID:(NSString *)arg1;
@@ -21,6 +26,7 @@
 - (void)homeKitGetConsentTokensWithServiceUserID:(NSString *)arg1 accessoryIDs:(NSArray *)arg2 adminID:(NSString *)arg3;
 - (void)homeKitGetAdminAccessTokensWithServiceUserID:(NSString *)arg1 accessoryID:(NSString *)arg2 pairingToken:(NSData *)arg3;
 - (void)homeKitGetServiceUserIDs;
+- (void)reportAction:(long long)arg1 ofTempURI:(IDSURI *)arg2 fromURI:(IDSURI *)arg3 onAccount:(NSString *)arg4 requestUUID:(NSString *)arg5;
 - (void)reportiMessageSpamCheckUnknown:(NSString *)arg1 count:(NSNumber *)arg2 requestID:(NSString *)arg3;
 - (void)reportiMessageUnknownSender:(NSString *)arg1 messageID:(NSString *)arg2 isBlackholed:(_Bool)arg3 messageServerTimestamp:(NSNumber *)arg4 toURI:(NSString *)arg5;
 - (void)reportiMessageSpam:(NSArray *)arg1 toURI:(NSString *)arg2;
@@ -43,11 +49,19 @@
 - (void)requestPublicKeysForRealTimeEncryption:(NSString *)arg1 forAccountWithID:(NSString *)arg2;
 - (void)sendRealTimeMediaPrekey:(NSString *)arg1 toGroup:(NSString *)arg2;
 - (void)setupRealtimeEncryptionController:(NSString *)arg1 forAccountWithID:(NSString *)arg2;
+- (void)getParticipantIDForAlias:(unsigned long long)arg1 salt:(NSData *)arg2 sessionID:(NSString *)arg3;
+- (void)createAliasForParticipantID:(unsigned long long)arg1 salt:(NSData *)arg2 sessionID:(NSString *)arg3;
+- (void)setRequiredCapabilities:(NSArray *)arg1 requiredLackOfCapabilities:(NSArray *)arg2 forSessionWithUniqueID:(NSString *)arg3;
+- (void)requestEncryptionKeyForGroup:(NSString *)arg1 participants:(NSArray *)arg2;
+- (void)unregisterPluginForGroup:(NSString *)arg1 options:(NSDictionary *)arg2;
+- (void)registerPluginForGroup:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)requestActiveParticipantsForGroupSession:(NSString *)arg1;
 - (void)leaveGroupSession:(NSString *)arg1 participantInfo:(NSDictionary *)arg2;
 - (void)joinGroupSession:(NSString *)arg1 withOptions:(NSDictionary *)arg2;
 - (void)updateParticipantData:(NSData *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4;
-- (void)updateMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4 triggeredLocally:(_Bool)arg5;
+- (void)removeParticipantIDs:(NSSet *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3;
+- (void)manageDesignatedMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withType:(unsigned short)arg4;
+- (void)updateMembers:(NSArray *)arg1 forGroup:(NSString *)arg2 sessionID:(NSString *)arg3 withContext:(NSData *)arg4 messagingCapabilities:(IDSMessagingCapabilities *)arg5 triggeredLocally:(_Bool)arg6;
 - (void)sendAllocationRequest:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)acknowledgeSessionID:(NSString *)arg1 clientID:(NSString *)arg2;
 - (void)setInviteTimetout:(long long)arg1 forSessionWithUniqueID:(NSString *)arg2;
@@ -139,8 +153,9 @@
 - (void)forceRemoveAccount:(NSString *)arg1;
 - (void)unregisterAccount:(NSString *)arg1;
 - (void)registerAccount:(NSString *)arg1;
-- (void)deactivateAlias:(NSString *)arg1 onAccount:(NSString *)arg2;
-- (void)activateAlias:(NSString *)arg1 onAccount:(NSString *)arg2;
+- (void)revokePseudonym:(IDSPseudonym *)arg1 onAccount:(NSString *)arg2 requestProperties:(IDSPseudonymRequestProperties *)arg3 requestUUID:(NSString *)arg4;
+- (void)renewPseudonym:(IDSPseudonym *)arg1 onAccount:(NSString *)arg2 forUpdatedExpiryEpoch:(double)arg3 requestProperties:(IDSPseudonymRequestProperties *)arg4 requestUUID:(NSString *)arg5;
+- (void)provisionPseudonymForURI:(IDSURI *)arg1 onAccount:(NSString *)arg2 withProperties:(IDSPseudonymProperties *)arg3 requestProperties:(IDSPseudonymRequestProperties *)arg4 requestUUID:(NSString *)arg5;
 - (void)unvalidateAliases:(NSArray *)arg1 forAccount:(NSString *)arg2;
 - (void)validateAliases:(NSArray *)arg1 forAccount:(NSString *)arg2;
 - (void)removeAliases:(NSArray *)arg1 fromAccount:(NSString *)arg2;

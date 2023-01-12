@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)loadLaunchScreenForIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)loadLaunchScreenForBundleWithURL:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

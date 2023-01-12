@@ -5,17 +5,18 @@
 //
 
 #import <GameCenterUI/GKDashboardMultiplayerPickerDelegate-Protocol.h>
-#import <GameCenterUI/GKMultiplayerCustomInviteMessageViewControllerDelegate-Protocol.h>
 #import <GameCenterUI/GKMultiplayerDataSourceDelegate-Protocol.h>
+#import <GameCenterUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
 @class GKDashboardMultiplayerPickerViewController, GKGame, GKMatchRequest, GKMultiplayerDataSource, NSString, NSURL, _TtC12GameCenterUI23GKMultiplayerFooterView, _TtC12GameCenterUI29GKMultiplayerButtonHeaderView;
 @protocol GKDashboardNearbyBrowserDelegate;
 
-@interface GKMultiplayerViewController <GKDashboardMultiplayerPickerDelegate, GKMultiplayerCustomInviteMessageViewControllerDelegate, GKMultiplayerDataSourceDelegate>
+@interface GKMultiplayerViewController <GKDashboardMultiplayerPickerDelegate, GKMultiplayerDataSourceDelegate, UIAdaptivePresentationControllerDelegate>
 {
     _Bool _showCancelButton;
     _Bool _didAcceptGameInvite;
     _Bool _didStartForcedAutomatch;
+    _Bool _canStartWithMinimumPlayers;
     _Bool _addButtonEnabled;
     GKMatchRequest *_matchRequest;
     GKMatchRequest *_originalMatchRequest;
@@ -37,6 +38,7 @@
 @property(retain, nonatomic) GKDashboardMultiplayerPickerViewController *playerPickerViewController; // @synthesize playerPickerViewController=_playerPickerViewController;
 @property(retain, nonatomic) _TtC12GameCenterUI29GKMultiplayerButtonHeaderView *buttonHeaderView; // @synthesize buttonHeaderView=_buttonHeaderView;
 @property(nonatomic) _Bool addButtonEnabled; // @synthesize addButtonEnabled=_addButtonEnabled;
+@property(nonatomic) _Bool canStartWithMinimumPlayers; // @synthesize canStartWithMinimumPlayers=_canStartWithMinimumPlayers;
 @property(retain, nonatomic) _TtC12GameCenterUI23GKMultiplayerFooterView *footerView; // @synthesize footerView=_footerView;
 @property(nonatomic) long long matchmakingMode; // @synthesize matchmakingMode=_matchmakingMode;
 @property(nonatomic) _Bool didStartForcedAutomatch; // @synthesize didStartForcedAutomatch=_didStartForcedAutomatch;
@@ -49,11 +51,14 @@
 @property(readonly, copy, nonatomic) GKMatchRequest *originalMatchRequest; // @synthesize originalMatchRequest=_originalMatchRequest;
 @property(readonly, copy, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;
 - (void)setViewNeedsLayout;
+- (_Bool)allowAutoMatch;
 - (_Bool)isCanceling;
 - (_Bool)isInSetupMode;
 - (long long)automatchParticipantStatus;
 - (id)makeButtonHeaderView;
+- (void)updateFooterButtonStates;
 - (void)didUpdateParticipants;
+- (void)configureAutoBounce;
 - (void)traitCollectionDidChange:(id)arg1;
 - (long long)multiplayerCellLayoutMode;
 - (id)viewControllerLayout;
@@ -77,20 +82,21 @@
 - (void)playNow;
 - (void)performActionsForButtonCancelCurrentMatching;
 - (void)performActionsForButtonStartGame;
+- (_Bool)sendInvites;
+- (id)preferredFocusEnvironments;
+- (void)inviteFriendsButtonPressed;
 - (void)startGameButtonPressed;
 - (void)updateStartGameButtonTitle;
-- (void)customInviteViewController:(id)arg1 didFinishWithMessage:(id)arg2;
-- (void)addMessageButtonPressed;
-- (void)updateAddMessageButtonVisibility;
 - (void)determineInvitationType;
 - (void)updateDataSourceInvitationEnabled;
 - (_Bool)allowPlayerCountSelection;
 - (_Bool)canStartForcedAutomatch;
 - (void)setInvitesFailedWithError:(id)arg1;
 - (void)sendInvitesToContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)dismissPickerViewController;
 - (void)multiplayerPickerDidCancel:(id)arg1;
-- (void)multiplayerPicker:(id)arg1 didPickPlayers:(id)arg2;
+- (void)multiplayerPicker:(id)arg1 didPickPlayers:(id)arg2 messageGroups:(id)arg3 customMessage:(id)arg4;
 - (void)preparePlayerPicker;
 - (void)presentPlayerPicker;
 - (void)loadShareURLWithCompletion:(CDUnknownBlockType)arg1;

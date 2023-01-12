@@ -6,20 +6,20 @@
 
 #import <UIKit/UITabBarController.h>
 
-@class PKPaymentTransaction, PKTransactionCloudKitDebugDetailsViewController, PKTransactionSource, PKTransactionSpotlightDebugDetailsViewController, UIBarButtonItem;
+@class PKPaymentTransaction, PKTransactionCloudKitDebugDetailsViewController, PKTransactionSourceCollection, PKTransactionSpotlightDebugDetailsViewController, UIBarButtonItem;
 
 @interface PKTransactionDebugDetailsTabBarController : UITabBarController
 {
     UIBarButtonItem *_shareButton;
     PKPaymentTransaction *_transaction;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     PKTransactionCloudKitDebugDetailsViewController *_cloudKitViewController;
     PKTransactionSpotlightDebugDetailsViewController *_spotlightViewController;
 }
 
 - (void).cxx_destruct;
 - (void)_handleShareButton:(id)arg1;
-- (id)initWithTransaction:(id)arg1 transactionSource:(id)arg2;
+- (id)initWithTransaction:(id)arg1 transactionSourceCollection:(id)arg2;
 
 @end
 

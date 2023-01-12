@@ -17,6 +17,7 @@
 + (id)getLocalDeviceIdentifierAndReturnError:(id *)arg1;
 - (void).cxx_destruct;
 @property(readonly) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (id)fetchUsageForApplications:(id)arg1 webDomains:(id)arg2 categories:(id)arg3 interval:(id)arg4 error:(id *)arg5;
 - (void)fetchReportsDuringInterval:(id)arg1 partitionInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchReportsDuringInterval:(id)arg1 partitionInterval:(double)arg2 forceImmediateSync:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)getLocalDeviceIdentifierAndReturnError:(id *)arg1;

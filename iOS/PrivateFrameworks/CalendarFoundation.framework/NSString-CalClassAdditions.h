@@ -32,6 +32,7 @@
 - (id)trimChar:(unsigned short)arg1;
 - (id)trimFirstChar:(unsigned short)arg1;
 - (id)trimFinalChar:(unsigned short)arg1;
+- (_Bool)CalContainsSubstring:(id)arg1;
 - (_Bool)isPathToICalTruthFile;
 - (_Bool)isPathToICalBookmark;
 - (_Bool)isPathToBackupFile;
@@ -45,6 +46,7 @@
 - (_Bool)isEqualAsURL:(id)arg1;
 - (id)CalAddressComment;
 - (id)CalUncommentedAddress;
+- (id)calDataDetectedURL;
 - (id)_phoneNumberDetector;
 - (id)phoneURL;
 - (_Bool)isPhoneNumber;

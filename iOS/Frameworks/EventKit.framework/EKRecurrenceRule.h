@@ -15,6 +15,10 @@
     _Bool _usesEndDate;
 }
 
++ (id)_acceptableStartDateRangeForYearlyRecurrenceWithCurrentStartDate:(id)arg1 calendar:(id)arg2;
++ (id)_acceptableStartDateRangeForMonthlyRecurrenceWithCurrentStartDate:(id)arg1 calendar:(id)arg2;
++ (id)_acceptableStartDateRangeForWeeklyRecurrenceWithCurrentStartDate:(id)arg1 calendar:(id)arg2;
++ (id)_acceptableStartDateRangeForDailyRecurrenceWithCurrentStartDate:(id)arg1;
 + (long long)daysTypeForDayArray:(id)arg1;
 + (id)iCalendarValueFromDate:(id)arg1 isDateOnly:(_Bool)arg2 isFloating:(_Bool)arg3;
 + (id)iCalendarValueFromDayOfTheWeek:(unsigned long long)arg1;
@@ -29,6 +33,10 @@
 @property(readonly) _Bool usesEndDate; // @synthesize usesEndDate=_usesEndDate;
 @property(readonly, nonatomic) _Bool shouldPinMonthDays; // @synthesize shouldPinMonthDays=_shouldPinMonthDays;
 - (_Bool)isEqualToRecurrenceRule:(id)arg1;
+- (id)_acceptableStartDateRangeWithCurrentStartDate:(id)arg1 calendar:(id)arg2;
+- (_Bool)newStartDateIsInvalid:(id)arg1 currentStartDate:(id)arg2 calendar:(id)arg3;
+- (_Bool)newStartDateIsValid:(id)arg1 currentStartDate:(id)arg2 calendar:(id)arg3;
+- (_Bool)hasDuplicateMonthsOfYear;
 - (id)humanReadableDescriptionWithStartDate:(id)arg1 isConcise:(_Bool)arg2;
 - (id)humanReadableDescriptionWithStartDate:(id)arg1;
 - (id)stringValueAsDateOnly:(_Bool)arg1 isFloating:(_Bool)arg2;

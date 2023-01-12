@@ -33,11 +33,26 @@ struct AudioStreamBasicDescription {
     unsigned int _field9;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    _Bool isIncomingCallActive;
+    _Bool usesReceiverRoute;
+} CDStruct_13aec295;
 
 typedef struct {
     _Bool shouldBypassLowPassFilter;
     float volumeForLowPassFilterGlobalGain;
     float effectMix;
 } CDStruct_4922f917;
+
+typedef struct {
+    long long _field1;
+    _Bool _field2;
+    _Bool _field3;
+} CDStruct_fa0c26dd;
 

@@ -7,6 +7,7 @@
 @class CSNotificationAdjunctListViewController, NSString;
 
 @protocol CSNotificationAdjunctListViewControllerDelegate
+- (void)focusActivityViewChangedToVisible:(_Bool)arg1;
 - (void)adjunctListViewController:(CSNotificationAdjunctListViewController *)arg1 didUpdateWithSize:(struct CGSize)arg2;
 - (double)interItemSpacingToMimicForAdjunctListViewController:(CSNotificationAdjunctListViewController *)arg1;
 - (struct UIEdgeInsets)insetMarginsToMimicForAdjunctListViewController:(CSNotificationAdjunctListViewController *)arg1;

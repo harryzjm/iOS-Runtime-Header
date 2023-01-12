@@ -15,7 +15,7 @@
         double jumpSpeed;
     } _definition;
     struct btCharacterControllerInterface *_characterController;
-    struct btPairCachingGhostObject *_ghostObject;
+    void *_ghostObject;
     struct btOverlapFilterCallback *_filterCallback;
     struct btCapsuleShape *_capsuleShape;
     SCNPhysicsWorld *_world;
@@ -23,7 +23,8 @@
 
 - (void)_handleCreateIfNeeded:(_Bool)arg1;
 - (void)_willRemoveFromPhysicsWorld:(id)arg1;
-- (void)_addToPhysicsWorld:(id)arg1;
+- (void)_addToPhysicsWorld:(id)arg1 definition:(CDStruct_0557a1bb)arg2;
+- (void)_copyDefinition:(CDStruct_0557a1bb *)arg1;
 - (void)_update;
 @property(nonatomic) double jumpSpeed;
 @property(nonatomic) double velocity;

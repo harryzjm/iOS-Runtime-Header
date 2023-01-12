@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *separator; // @synthesize separator=_separator;
 @property(retain, nonatomic) UIView *searchBarBackdrop; // @synthesize searchBarBackdrop=_searchBarBackdrop;
 @property(retain, nonatomic) UIView *searchBarBackground; // @synthesize searchBarBackground=_searchBarBackground;
+@property(nonatomic) double additionalPaddingForSearchFieldAtLeadingEdge;
 @property(nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge;
 - (void)setLayoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback:(CDUnknownBlockType)arg1;
 - (void)setDelegateSearchFieldFrameManipulationBlock:(CDUnknownBlockType)arg1;

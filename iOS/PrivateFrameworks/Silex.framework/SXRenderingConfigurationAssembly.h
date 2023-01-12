@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/NFAssembly-Protocol.h>
+#import <Silex/TFAssembly-Protocol.h>
 
 @class NSString;
 
-@interface SXRenderingConfigurationAssembly : NSObject <NFAssembly>
+@interface SXRenderingConfigurationAssembly : NSObject <TFAssembly>
 {
 }
 

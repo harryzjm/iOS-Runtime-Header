@@ -24,7 +24,7 @@
     NUIContainerBoxView *_platterBoxView;
     UIView *_platterView;
     UIImageView *_imageView;
-    UIView *_imageContainerView;
+    NUIContainerStackView *_horizontalContentView;
     UILabel *_titleLabel;
     CNActionMenuHelper *_actionMenuHelper;
     TLKProminenceView *_vibrantPlatterView;
@@ -32,9 +32,11 @@
     UIFont *_titleFont;
 }
 
-+ (void)fadeInView:(id)arg1;
-+ (id)defaultTitleFontOfSize:(double)arg1;
++ (struct CGSize)minimumSizeForStyle:(long long)arg1;
++ (id)titleFontForStyle:(long long)arg1;
 + (id)defaultTitleFont;
++ (double)minimumPillDimension;
++ (void)fadeInView:(id)arg1;
 + (id)colorByIncreasingBrightnessComponentByPercentage:(double)arg1 ofColor:(id)arg2;
 + (id)contentColorForDisabledVibrantDarkState;
 + (id)contentColorForDisabledBoldState;
@@ -45,7 +47,7 @@
 @property(retain, nonatomic) TLKProminenceView *vibrantPlatterView; // @synthesize vibrantPlatterView=_vibrantPlatterView;
 @property(retain, nonatomic) CNActionMenuHelper *actionMenuHelper; // @synthesize actionMenuHelper=_actionMenuHelper;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) UIView *imageContainerView; // @synthesize imageContainerView=_imageContainerView;
+@property(retain, nonatomic) NUIContainerStackView *horizontalContentView; // @synthesize horizontalContentView=_horizontalContentView;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
 @property(retain, nonatomic) NUIContainerBoxView *platterBoxView; // @synthesize platterBoxView=_platterBoxView;
@@ -65,6 +67,10 @@
 - (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (void)layoutSubviews;
 - (void)handleTapGesture;
+- (void)updateTitleLabelFont;
+- (void)updateImage;
+- (void)updateLabelArrangedSubviews;
+- (void)applyDefaultLabelContainerMetrics;
 - (void)updateLabelStateAnimated:(_Bool)arg1;
 - (void)updateImageViewStateAnimated:(_Bool)arg1;
 - (void)updatePlatterViewStateAnimated:(_Bool)arg1;

@@ -22,12 +22,15 @@
 + (id)allClientIDs;
 - (void).cxx_destruct;
 @property(readonly) NSObject<OS_nw_path> *internalPath; // @synthesize internalPath=_internalPath;
+@property(readonly, nonatomic) NSObject<OS_nw_path> *cPath;
 - (id)createProtocolBufferObject;
 @property(readonly, nonatomic, getter=isEligibleForCrazyIvan46) _Bool eligibleForCrazyIvan46;
 @property(readonly, nonatomic) _Bool supportsDNS;
 @property(readonly, nonatomic) _Bool supportsIPv6;
 @property(readonly, nonatomic) _Bool supportsIPv4;
+@property(readonly, nonatomic) _Bool hasProxySettings;
 @property(readonly, nonatomic) NSArray *proxySettings;
+@property(readonly, nonatomic) _Bool fallbackIsPreferred;
 @property(readonly, nonatomic) _Bool fallbackEligible;
 @property(readonly, nonatomic) _Bool fallbackIsWeak;
 @property(readonly, nonatomic) unsigned int fallbackInterfaceIndex;
@@ -51,6 +54,7 @@
 - (_Bool)hasUnsatisfiedFallbackAgent;
 - (_Bool)unsatisfiedVoluntaryAgentMatchesAddress:(id)arg1 triggerImmediately:(_Bool *)arg2;
 - (id)copyFlowDivertToken;
+@property(readonly, nonatomic) unsigned int flowDivertAggregateUnit;
 @property(readonly, nonatomic) unsigned int flowDivertControlUnit;
 @property(readonly, nonatomic, getter=isFlowDivert) _Bool flowDivert;
 @property(readonly, nonatomic) NSString *reasonDescription;
@@ -58,6 +62,7 @@
 @property(readonly, nonatomic) unsigned long long secondsSinceInterfaceChange;
 @property(readonly, nonatomic) long long maximumDatagramSize;
 @property(readonly, nonatomic) long long mtu;
+@property(readonly, nonatomic) NSArray *groupMembers;
 @property(readonly, nonatomic) NSArray *gateways;
 @property(readonly, nonatomic) NSArray *dnsSearchDomains;
 @property(readonly, nonatomic) NSArray *dnsServersAsStrings;
@@ -76,6 +81,10 @@
 - (_Bool)isListenerInterfaceSpecific;
 - (_Bool)isLinkQualityAbort;
 - (_Bool)shouldProbeConnectivity;
+@property(readonly, nonatomic) _Bool hasParentalControls;
+@property(readonly, nonatomic) _Bool hasApplicationLevelFirewall;
+@property(readonly, nonatomic) _Bool hasCustomPFRules;
+@property(readonly, nonatomic) _Bool hasKernelExtensionFilter;
 @property(readonly, nonatomic, getter=isPerAppVPN) _Bool perAppVPN;
 @property(readonly, nonatomic, getter=isViable) _Bool viable;
 @property(readonly, nonatomic, getter=isListener) _Bool listener;

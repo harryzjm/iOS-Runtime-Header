@@ -36,6 +36,7 @@
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
+- (id)typeName;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (void)acceptVisitor:(id)arg1;
@@ -74,6 +75,7 @@
 - (Class)repClass;
 - (Class)layoutClass;
 @property(copy, nonatomic) TSDInfoGeometry *geometry;
+- (void)adjustModelInPreparationForBecomingInline;
 - (_Bool)shouldBeIgnoredWhenCopying;
 - (_Bool)wantsCounterRotationWhenNotSupportingParentRotationInRotatedParent;
 - (_Bool)supportsParentRotation;
@@ -82,8 +84,8 @@
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct GroupArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct GroupArchive *)arg1 unarchiver:(id)arg2 upgradeDOLC:(_Bool)arg3;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2 upgradeDOLC:(_Bool)arg3;
 - (void)loadFromUnarchiver:(id)arg1;
 
 // Remaining properties

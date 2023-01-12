@@ -46,14 +46,14 @@
 - (void)peopleSectionedDataSourceMembersChangedNonIncrementally:(id)arg1;
 - (_Bool)_shouldShowInterstitialProgress;
 - (void)_handleRequestResult:(id)arg1 forRequestID:(_Atomic int)arg2 person:(id)arg3 atIndex:(long long)arg4 error:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_asyncAddImagesToCacheWithPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_reCacheImagesCompletion:(CDUnknownBlockType)arg1;
+- (void)_asyncAddImagesToCacheWithPersons:(id)arg1 displayScale:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_reCacheImagesWithDisplayScale:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_visiblePersons;
 @property(readonly, nonatomic) long long peopleCount;
 - (void)_updateCachedCountIfNeeded;
 @property(readonly, nonatomic) _Bool isCountAvailable;
 - (id)peopleViewController;
-- (void)requestAlbumImagesWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestAlbumImagesWithSize:(struct CGSize)arg1 displayScale:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)_prepareIfNeeded;
 - (id)init;

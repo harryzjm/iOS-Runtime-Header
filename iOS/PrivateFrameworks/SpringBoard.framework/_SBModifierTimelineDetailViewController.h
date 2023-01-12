@@ -15,20 +15,20 @@
 {
     UITableView *_tableView;
     _SBModifierTimelineModifierDetailViewController *_modifierDetailViewController;
-    _SBModifierTimelineTextViewController *_actionDetailViewController;
+    _SBModifierTimelineTextViewController *_textDetailViewController;
     SBSwitcherModifierTimelineEntry *_entry;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBSwitcherModifierTimelineEntry *entry; // @synthesize entry=_entry;
+- (id)_prettyStringForEventPredicateDetails:(id)arg1;
 - (id)_stackSnapshotAtIndex:(long long)arg1;
 - (long long)_numberOfModifiersInStackSnapshot:(id)arg1;
 - (void)_done;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;

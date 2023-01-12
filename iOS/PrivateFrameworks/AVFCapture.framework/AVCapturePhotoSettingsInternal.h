@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, NSURL;
+@class AVSemanticStyle, NSArray, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface AVCapturePhotoSettingsInternal : NSObject
@@ -67,6 +67,10 @@ __attribute__((visibility("hidden")))
     NSString *spatialOverCaptureLivePhotoContentIdentifierForOriginalPhoto;
     NSString *spatialOverCaptureGroupIdentifierForOriginalPhoto;
     _Bool processedPhotoZoomWithoutUpscalingEnabled;
+    _Bool autoContentAwareDistortionCorrectionEnabled;
+    AVSemanticStyle *semanticStyle;
+    _Bool previewPhotoFormatDimensionsLimitedToDisplayDimensions;
+    _Bool prefersStillImageShiftedToMatchSpatialOverCapturePreview;
     NSString *livePhotoContentIdentifier;
     NSString *livePhotoContentIdentifierForOriginalPhoto;
 }

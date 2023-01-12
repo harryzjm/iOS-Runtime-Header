@@ -9,6 +9,7 @@
 @class BSMutableSettings, FBSceneUpdateContext, FBWatchdogTransitionContext;
 
 @interface FBSSceneTransitionContext (TransientLocal)
+@property(nonatomic, getter=isRunningBoardAssertionDisabled) _Bool runningBoardAssertionDisabled;
 @property(nonatomic) _Bool allowCPUThrottling;
 @property(readonly, nonatomic) FBWatchdogTransitionContext *watchdogTransitionContext;
 - (void)setWatchdogTransitionContext:(id)arg1;

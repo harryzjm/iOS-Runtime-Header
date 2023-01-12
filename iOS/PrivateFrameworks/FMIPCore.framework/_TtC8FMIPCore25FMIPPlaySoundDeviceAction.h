@@ -10,6 +10,9 @@
 {
     MISSING_TYPE *channels;
     MISSING_TYPE *safetyWarningConfirmed;
+    MISSING_TYPE *soundQueueingConfirmed;
+    MISSING_TYPE *soundMethod;
+    MISSING_TYPE *issueDate;
 }
 
 @end

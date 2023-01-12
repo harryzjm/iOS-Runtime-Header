@@ -9,15 +9,18 @@
 #import <PagesQuicklook/TSDContainerInfo-Protocol.h>
 #import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
 
-@class NSArray, NSString, TPPageHint, TPPageInfo, TSDInfoGeometry, TSPObject, TSWPStorage;
+@class NSArray, NSString, TPPageHint, TSDInfoGeometry, TSPObject, TSWPStorage;
 @protocol TSDHint, TSDInfo, TSDOwningAttachment, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 @interface TPBodyInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
 {
-    TPPageInfo *_pageInfo;
+    NSObject<TSDInfo> *_parentInfo;
+    TSWPStorage *_bodyStorage;
 }
 
-@property(nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo=_pageInfo;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSWPStorage *bodyStorage; // @synthesize bodyStorage=_bodyStorage;
+@property(nonatomic) __weak NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
 - (id)infoForSelectionPath:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *childInfos;
 - (id)copyWithContext:(id)arg1;
@@ -40,12 +43,11 @@
 @property(readonly, nonatomic) _Bool laysOutVertically;
 @property(readonly, nonatomic) TPPageHint *pageHint;
 @property(readonly, nonatomic) TSWPStorage *storage;
-@property(readonly, nonatomic) TSWPStorage *bodyStorage;
 @property(readonly, nonatomic) id <TSDHint> nextTargetFirstChildHint;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
+@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumberHints;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
+- (id)initWithBodyStorage:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

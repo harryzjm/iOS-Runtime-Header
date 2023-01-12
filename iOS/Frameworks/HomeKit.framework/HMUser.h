@@ -12,7 +12,7 @@
 #import <HomeKit/HMSettingsContainer-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMPhotosPersonManager, HMPhotosPersonManagerSettings, HMSettings, HMSettingsController, IDSURI, NSString, NSUUID, _HMContext;
+@class HMAnnounceUserSettings, HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMPhotosPersonManager, HMPhotosPersonManagerSettings, HMSettings, HMSettingsController, IDSURI, NSString, NSUUID, _HMContext;
 @protocol HMUserDelegatePrivate, OS_dispatch_queue;
 
 @interface HMUser : NSObject <HMFLogging, HMFMessageReceiver, HMSettingsContainer, NSSecureCoding, HMObjectMerge>
@@ -33,6 +33,7 @@
     HMFPairingIdentity *_pairingIdentity;
     HMSettings *_settings;
     HMSettings *_privateSettings;
+    HMAnnounceUserSettings *_announceUserSettings;
     HMPhotosPersonManager *_photosPersonManager;
     HMPhotosPersonManagerSettings *_photosPersonManagerSettings;
     id <HMUserDelegatePrivate> _delegate;
@@ -85,17 +86,18 @@
 - (id)mediaContentProfileAccessControlForHome:(id)arg1;
 @property(copy) HMMediaContentProfileAccessControl *mediaContentProfileAccessControl; // @synthesize mediaContentProfileAccessControl=_mediaContentProfileAccessControl;
 - (id)assistantAccessControlForHome:(id)arg1;
+@property(retain) HMAnnounceUserSettings *announceUserSettings; // @synthesize announceUserSettings=_announceUserSettings;
+- (void)updateAnnounceUserSettings:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_handleUpdatedAssistantAccessControl:(id)arg1;
 - (void)updateAssistantAccessControl:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(copy) HMAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
 @property(copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 - (void)_handleMultiUserStatusChangedNotification:(id)arg1;
-- (void)updateHomeAccessControl:(_Bool)arg1 remoteAccess:(_Bool)arg2 camerasAccess:(id)arg3;
+- (void)updateHomeAccessControl:(_Bool)arg1 remoteAccess:(_Bool)arg2 announceAccess:(_Bool)arg3 camerasAccess:(id)arg4;
 @property(retain, nonatomic) HMHomeAccessControl *homeAccessControl; // @synthesize homeAccessControl=_homeAccessControl;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)_registerNotificationHandlers;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
@@ -103,10 +105,9 @@
 - (id)initWithUserID:(id)arg1 name:(id)arg2 uuid:(id)arg3 home:(id)arg4;
 - (id)init;
 - (void)updatePhotosPersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)configurePhotosPersonManagerWithSettings:(id)arg1;
 - (void)updatePersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchPersonManagerSettingsWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, copy) HMPhotosPersonManagerSettings *personManagerSettings;
+- (void)configurePhotosPersonManagerWithSettings:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

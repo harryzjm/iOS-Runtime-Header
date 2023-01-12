@@ -9,7 +9,7 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/NSMutableCopying-Protocol.h>
 
-@class NSIndexSet;
+@class NSDictionary, NSIndexSet;
 
 @interface PXArrayChangeDetails : NSObject <NSMutableCopying, NSCopying>
 {
@@ -18,6 +18,7 @@
     NSIndexSet *_movesToIndexes;
     const struct __CFArray *_movesFromIndexes;
     NSIndexSet *_changedIndexes;
+    NSDictionary *_indexesWithChangesByProperty;
 }
 
 + (_Bool)_mutableCopyInputs;
@@ -31,10 +32,13 @@
 + (id)changeDetailsWithInsertedIndexRange:(struct _NSRange)arg1;
 + (id)changeDetailsWithNoIncrementalChanges;
 + (id)changeDetailsWithNoChanges;
++ (id)changeDetailsFromFetchResultChangeDetails:(id)arg1 originatingChange:(id)arg2;
 + (id)changeDetailsFromFetchResultChangeDetails:(id)arg1;
++ (id)changeDetailsFromSubrange:(struct _NSRange)arg1 toSubrange:(struct _NSRange)arg2;
 + (id)changeDetailsFromArray:(id)arg1 toArray:(id)arg2 changedObjects:(id)arg3 objectComparator:(CDUnknownBlockType)arg4;
 + (id)changeDetailsFromArray:(id)arg1 toArray:(id)arg2 changedObjects:(id)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *indexesWithChangesByProperty; // @synthesize indexesWithChangesByProperty=_indexesWithChangesByProperty;
 @property(readonly, nonatomic) NSIndexSet *changedIndexes; // @synthesize changedIndexes=_changedIndexes;
 @property(readonly, nonatomic) const struct __CFArray *movesFromIndexes; // @synthesize movesFromIndexes=_movesFromIndexes;
 @property(readonly, nonatomic) NSIndexSet *movesToIndexes; // @synthesize movesToIndexes=_movesToIndexes;
@@ -54,6 +58,8 @@
 @property(readonly, nonatomic) _Bool hasAnyInsertionsRemovalsOrMoves;
 @property(readonly, nonatomic) _Bool hasAnyChanges;
 - (void)dealloc;
+- (id)changedPropertiesForIndex:(long long)arg1;
+- (id)indexesWithChangesToProperty:(id)arg1;
 - (void)enumerateMovedIndexesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMovedRangesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool hasIncrementalChanges;
@@ -62,8 +68,10 @@
 @property(readonly, nonatomic) _Bool hasMoves;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithIncrementalChangeDetailsRemovedIndexes:(id)arg1 insertedIndexes:(id)arg2 movesToIndexes:(id)arg3 movesFromIndexes:(const struct __CFArray *)arg4 changedIndexes:(id)arg5 indexesWithChangesByProperty:(id)arg6;
 - (id)initWithIncrementalChangeDetailsRemovedIndexes:(id)arg1 insertedIndexes:(id)arg2 movesToIndexes:(id)arg3 movesFromIndexes:(const struct __CFArray *)arg4 changedIndexes:(id)arg5;
 - (id)init;
+- (id)changeDetailsByReplacingChangedItemsWithRemovalsAndInsertions;
 - (id)changeDetailsShiftedBy:(long long)arg1 scaledBy:(long long)arg2;
 
 @end

@@ -24,8 +24,9 @@
 @property(readonly, nonatomic) PKEnterValueNewBalanceView *balanceView; // @synthesize balanceView=_balanceView;
 @property(readonly, nonatomic) PKEnterCurrencyAmountView *enterCurrencyAmountView; // @synthesize enterCurrencyAmountView=_enterCurrencyAmountView;
 @property(nonatomic) __weak id <PKEnterCurrencyAmountPassViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (CDStruct_86c7e6e0)_amountPassViewSizeInfoForSize:(struct CGSize)arg1;
+- (double)_newBalanceHorizontalPadding;
 - (struct CGSize)_passViewSize;
-- (double)_topPadding;
 - (void)shakePassView;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

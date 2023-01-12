@@ -18,6 +18,10 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <ARSensorDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)stop;
+- (void)start;
+- (unsigned long long)providedDataTypes;
+- (id)initWithMotionManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

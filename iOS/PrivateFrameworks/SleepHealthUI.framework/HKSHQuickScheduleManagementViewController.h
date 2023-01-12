@@ -4,31 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKit/UIViewController.h>
 
-@class HKSPSleepStore, MISSING_TYPE;
+@class HKSHQuickScheduleManagementViewControllerDelegateWrapper, HKSHQuickScheduleManagementViewControllerInternal;
 @protocol HKSHQuickScheduleManagementViewControllerDelegate;
 
-@interface HKSHQuickScheduleManagementViewController : UINavigationController
+@interface HKSHQuickScheduleManagementViewController : UIViewController
 {
-    MISSING_TYPE *sleepStore;
-    MISSING_TYPE *sleepDelegate;
-    MISSING_TYPE *sleepScheduleProvider;
-    MISSING_TYPE *gregorianCalendar;
-    MISSING_TYPE *featureAvailability;
-    MISSING_TYPE *appStateObserver;
+    HKSHQuickScheduleManagementViewControllerInternal *_internalViewController;
+    HKSHQuickScheduleManagementViewControllerDelegateWrapper *_delegateWrapper;
 }
 
 - (void).cxx_destruct;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithRootViewController:(id)arg1;
-- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (_Bool)_canShowWhileLocked;
-@property(nonatomic, readonly) long long preferredUserInterfaceStyle;
+@property(nonatomic) __weak id <HKSHQuickScheduleManagementViewControllerDelegate> sleepDelegate;
+- (void)viewDidLoad;
 - (id)initWithSleepStore:(id)arg1;
-- (id)initWithSleepStore:(id)arg1 healthStore:(id)arg2;
-@property(nonatomic) __weak id <HKSHQuickScheduleManagementViewControllerDelegate> sleepDelegate; // @synthesize sleepDelegate;
-@property(nonatomic, readonly) HKSPSleepStore *sleepStore; // @synthesize sleepStore;
 
 @end
 

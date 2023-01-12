@@ -8,13 +8,17 @@
 
 #import <HomeUI/HFHomeObserver-Protocol.h>
 
-@class HFItem, HMHome, HUSoftwareUpdateFetchItem, HUSoftwareUpdateItemModule, NAFuture, NSString;
+@class HFItem, HMHome, HUFirmwareUpdateItemModule, HUSoftwareUpdateAllItem, HUSoftwareUpdateFetchItem, HUSoftwareUpdateItemModule, NAFuture, NSString;
 
 @interface HUSoftwareUpdateStandaloneItemManager : HFItemManager <HFHomeObserver>
 {
     HFItem *_autoUpdateItem;
+    HFItem *_autoUpdateThirdPartyItem;
     HUSoftwareUpdateFetchItem *_fetchItem;
     HUSoftwareUpdateItemModule *_softwareUpdateModule;
+    HUSoftwareUpdateAllItem *_updateAllItem;
+    HFItem *_updatedRecentlyItem;
+    HUFirmwareUpdateItemModule *_firmwareUpdateModule;
     NAFuture *_softwareUpdateFetchFuture;
     HMHome *_overrideHome;
 }
@@ -22,13 +26,22 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 @property(retain, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
+@property(retain, nonatomic) HUFirmwareUpdateItemModule *firmwareUpdateModule; // @synthesize firmwareUpdateModule=_firmwareUpdateModule;
+@property(retain, nonatomic) HFItem *updatedRecentlyItem; // @synthesize updatedRecentlyItem=_updatedRecentlyItem;
+@property(retain, nonatomic) HUSoftwareUpdateAllItem *updateAllItem; // @synthesize updateAllItem=_updateAllItem;
 @property(retain, nonatomic) HUSoftwareUpdateItemModule *softwareUpdateModule; // @synthesize softwareUpdateModule=_softwareUpdateModule;
 @property(retain, nonatomic) HUSoftwareUpdateFetchItem *fetchItem; // @synthesize fetchItem=_fetchItem;
+@property(retain, nonatomic) HFItem *autoUpdateThirdPartyItem; // @synthesize autoUpdateThirdPartyItem=_autoUpdateThirdPartyItem;
 @property(retain, nonatomic) HFItem *autoUpdateItem; // @synthesize autoUpdateItem=_autoUpdateItem;
+- (void)home:(id)arg1 didUpdateAutomaticThirdPartyAccessorySoftwareUpdateEnabled:(_Bool)arg2;
 - (void)home:(id)arg1 didUpdateAutomaticSoftwareUpdateEnabled:(_Bool)arg2;
+- (void)addHomeSetupSuccessBlock:(CDUnknownBlockType)arg1;
 - (id)triggerSoftwareUpdateFetch;
+- (id)_transformedUpdateOutcomeForItem:(id)arg1 proposedOutcome:(id)arg2;
+- (id)_itemsToHideInSet:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
+- (id)_buildItemModulesForHome:(id)arg1;
 - (id)_homeFuture;
 - (id)initWithDelegate:(id)arg1 home:(id)arg2;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;

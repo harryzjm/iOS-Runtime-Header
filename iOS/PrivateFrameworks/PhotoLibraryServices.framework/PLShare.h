@@ -13,8 +13,9 @@
 }
 
 + (id)cloudUUIDKeyForDeletion;
++ (long long)_cloudDeletionTypeForStatus:(short)arg1;
++ (long long)_cloudDeletionTypeForScopeType:(long long)arg1;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
-+ (void)createOrUpdateShareWithScopeChange:(id)arg1 photoLibrary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)supportsCPLScopeType:(long long)arg1;
 + (void)deleteExpiredSharesInManagedObjectContext:(id)arg1;
 + (void)deleteAllSharesInManagedObjectContext:(id)arg1;
@@ -27,21 +28,28 @@
 + (id)shareWithUUID:(id)arg1 includeTrashed:(_Bool)arg2 inManagedObjectContext:(id)arg3;
 + (id)shareWithScopeIdentifier:(id)arg1 includeTrashed:(_Bool)arg2 inManagedObjectContext:(id)arg3;
 + (id)shareWithScopedIdentifier:(id)arg1 includeTrashed:(_Bool)arg2 inManagedObjectContext:(id)arg3;
++ (id)insertOrUpdateShareWithCPLScopeChange:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)createOwnedShareWithUUID:(id)arg1 creationDate:(id)arg2 title:(id)arg3 inPhotoLibrary:(id)arg4;
 + (id)insertInPhotoLibrary:(id)arg1;
 + (id)entityName;
 + (id)scopeIdentifierPrefix;
++ (void)_abortIfCalledOnBaseClass;
 + (id)_registeredSubclasses;
 - (id)_statusDescription;
+- (id)compactDescription;
 @property(readonly, copy) NSString *cloudUUIDForDeletion;
 @property(readonly) long long cloudDeletionType;
-- (id)owner;
 - (void)trash;
+- (void)_updateShareStatusWithCurrentUser:(id)arg1;
+- (id)owner;
+- (void)updateShareWithCPLShare:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)cplScopeChange;
-- (void)publishWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)updateWithScopeChange:(id)arg1;
 @property(nonatomic) long long scopeType;
 @property(nonatomic) long long publicPermission;
+- (void)autoAcceptShareIfNecessary;
 - (void)acceptWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)publishWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)prepareForDeletion;
 
 // Remaining properties
 @property(nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;

@@ -53,6 +53,8 @@
 
 + (void)presentProductivityGestureTutorialInlineWithCompletion:(CDUnknownBlockType)arg1;
 + (void)presentProductivityGestureTutorialIfNeededWithCompletion:(CDUnknownBlockType)arg1;
++ (_Bool)_isKeyWindowSceneSessionRoleValidForTutorial;
++ (void)showSecurePasteConfirmationWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)iWorkFamily;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIKBTextEditingTraits *editingTraits; // @synthesize editingTraits=_editingTraits;
@@ -99,6 +101,7 @@
 - (id)currentResponder;
 - (void)redo:(_Bool)arg1;
 - (void)undo:(_Bool)arg1;
+- (void)_updateHUDControlState;
 - (_Bool)canRedo;
 - (_Bool)canUndo;
 - (void)animateSpringCoverWithSuccess:(_Bool)arg1 direction:(long long)arg2 remainingDistanceToTravel:(double)arg3;
@@ -154,10 +157,13 @@
 - (void)setPasteConfirmationHUDVisibility:(_Bool)arg1;
 - (void)setUndoInteractiveHUDVisibility:(_Bool)arg1;
 - (void)setUndoHUDType:(long long)arg1 visibility:(_Bool)arg2;
+- (void)_uninstallUndoManagerObservers;
+- (void)_installUndoManagerObservers;
 - (void)animateDisplayingStateHUD;
 - (void)animateInStateHUD;
 - (_Bool)currentStateHUDVisible;
 - (void)_createAndUpdateUndoStateHUDIfNecessary;
+- (id)currentInteractionHUD;
 - (_Bool)currentInteractiveHUDVisible;
 - (void)_createAndUpdateUndoInteractiveHUDIfNecessary;
 - (_Bool)needUpdateHUDForContainerChange;

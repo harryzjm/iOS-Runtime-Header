@@ -12,6 +12,7 @@
 {
     _Bool _infoHidden;
     _Bool _useTightSpacingBetweenValueAndUnit;
+    _Bool _userInteractive;
     NSString *_title;
     NSString *_unit;
     NSString *_value;
@@ -30,6 +31,7 @@
 @property(copy, nonatomic) NSString *valueContext; // @synthesize valueContext=_valueContext;
 @property(copy, nonatomic) NSString *value; // @synthesize value=_value;
 @property(copy, nonatomic) NSString *unit; // @synthesize unit=_unit;
+@property(nonatomic) _Bool userInteractive; // @synthesize userInteractive=_userInteractive;
 @property(nonatomic) _Bool useTightSpacingBetweenValueAndUnit; // @synthesize useTightSpacingBetweenValueAndUnit=_useTightSpacingBetweenValueAndUnit;
 @property(nonatomic) _Bool infoHidden; // @synthesize infoHidden=_infoHidden;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -37,6 +39,7 @@
 - (_Bool)isEqualToContextItem:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)init;
 
 @end
 

@@ -10,19 +10,19 @@
 {
 }
 
-+ (_Bool)vector:(const vector_93009049 *)arg1 containsEdge:(struct Edge)arg2;
-+ (_Bool)vector:(const vector_2e7754b6 *)arg1 containsPoint:(struct CGPoint)arg2;
++ (_Bool)vector:(const void *)arg1 containsEdge:(struct Edge)arg2;
++ (_Bool)vector:(const void *)arg1 containsPoint:(struct CGPoint)arg2;
 + (_Bool)edge:(struct Edge)arg1 intersectsEdge:(struct Edge)arg2;
-+ (_Bool)newEdgeWithPoint:(struct CGPoint)arg1 betweenEdge:(struct Edge)arg2 intersectsOtherEdgesInHull:(const vector_2e7754b6 *)arg3;
-+ (void)openConvexHullToConcave:(vector_2e7754b6 *)arg1 points:(const vector_2e7754b6 *)arg2 minAngleFactor:(double)arg3 maxLengthThreshold:(double)arg4 edgeRemovalConstant:(double)arg5;
-+ (struct Edge)longestEdgeInHull:(const vector_2e7754b6 *)arg1 atIndex:(int *)arg2 visitedEdges:(const vector_93009049 *)arg3;
-+ (struct CGPoint)pointWithMinAngleForEdge:(struct Edge)arg1 fromPoints:(const vector_2e7754b6 *)arg2 minAngle:(double *)arg3;
-+ (double)averageDistanceForEdge:(struct Edge)arg1 withPoints:(const vector_2e7754b6 *)arg2;
-+ (vector_2e7754b6)centripetalCatmullRomPointsFromConvexHull:(const vector_2e7754b6 *)arg1 alpha:(double)arg2 granularity:(double)arg3;
-+ (void)convexHull:(vector_2e7754b6 *)arg1 forPoints:(const vector_2e7754b6 *)arg2;
-+ (vector_2e7754b6)smoothedHullForPoints:(const vector_2e7754b6 *)arg1 alpha:(double)arg2 granularity:(double)arg3 minAngleFactor:(double)arg4 maxLengthThreshold:(double)arg5 edgeRemovalConstant:(double)arg6;
-+ (id)bezierPathFromPoints:(const vector_2e7754b6 *)arg1;
-+ (void)smoothedHullForPoints:(const vector_2e7754b6 *)arg1 completion:(CDUnknownBlockType)arg2;
++ (_Bool)newEdgeWithPoint:(struct CGPoint)arg1 betweenEdge:(struct Edge)arg2 intersectsOtherEdgesInHull:(const void *)arg3;
++ (void)openConvexHullToConcave:(void *)arg1 points:(const void *)arg2 minAngleFactor:(double)arg3 maxLengthThreshold:(double)arg4 edgeRemovalConstant:(double)arg5;
++ (struct Edge)longestEdgeInHull:(const void *)arg1 atIndex:(int *)arg2 visitedEdges:(const void *)arg3;
++ (struct CGPoint)pointWithMinAngleForEdge:(struct Edge)arg1 fromPoints:(const void *)arg2 minAngle:(double *)arg3;
++ (double)averageDistanceForEdge:(struct Edge)arg1 withPoints:(const void *)arg2;
++ (vector_48b48a27)centripetalCatmullRomPointsFromConvexHull:(const void *)arg1 alpha:(double)arg2 granularity:(double)arg3;
++ (void)convexHull:(void *)arg1 forPoints:(const void *)arg2;
++ (vector_48b48a27)smoothedHullForPoints:(const void *)arg1 alpha:(double)arg2 granularity:(double)arg3 minAngleFactor:(double)arg4 maxLengthThreshold:(double)arg5 edgeRemovalConstant:(double)arg6;
++ (id)bezierPathFromPoints:(const void *)arg1;
++ (void)smoothedHullForPoints:(const void *)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

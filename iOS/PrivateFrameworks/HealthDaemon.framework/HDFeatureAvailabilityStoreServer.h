@@ -23,24 +23,31 @@
 - (void).cxx_destruct;
 - (id)remoteInterface;
 - (id)exportedInterface;
-- (id)_clientRemoteObjectProxy;
+- (void)featureAvailabilityExtensionDidUpdateRegionAvailability:(id)arg1;
+- (void)featureAvailabilityExtensionOnboardingCompletionDataDidBecomeAvailable:(id)arg1;
+- (void)featureAvailabilityProvidingDidUpdateSettings:(id)arg1;
 - (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id)arg1;
 - (void)featureAvailabilityProvidingDidUpdateOnboardingCompletion:(id)arg1;
 - (void)remote_stopObservingChanges;
 - (void)remote_startObservingChangesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_resetOnboardingWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)_hasWriteEntitlementWithError:(id *)arg1;
+- (void)remote_removeFeatureSettingValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_setFeatureSettingNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_setFeatureSettingString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_setFeatureSettingData:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_saveOnboardingCompletion:(id)arg1 settings:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 countryCodeProvenance:(long long)arg2 date:(id)arg3 settings:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)remote_getRegionAvailabilityWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_getFeatureAvailabilityRequirementsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_getPairedFeatureAttributesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_earliestDateLowestOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_highestOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_getIsFeatureCapabilitySupportedOnDeviceWithPairingID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_getIsFeatureCapabilitySupportedOnActivePairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_onboardedCountryCodeSupportedStateForDevicePairingID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_onboardedCountryCodeSupportedStateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_canCompleteOnboardingForCountryCode:(id)arg1 devicePairingID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_onboardingEligibilityForCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_canCompleteOnboardingForCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_getIsCurrentOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_configureWithExtension:(id)arg1;
+- (void)remote_getFeatureOnboardingRecordWithCompletion:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

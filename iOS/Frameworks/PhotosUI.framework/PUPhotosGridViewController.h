@@ -280,7 +280,7 @@
 - (void)zoomTransition:(id)arg1 didFinishForOperation:(long long)arg2 animated:(_Bool)arg3 interactive:(_Bool)arg4;
 - (void)zoomTransition:(id)arg1 willBeginForOperation:(long long)arg2 animated:(_Bool)arg3 interactive:(_Bool)arg4;
 - (void)zoomTransition:(id)arg1 shouldHidePhotoTokens:(id)arg2;
-- (_Bool)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 contentMode:(long long *)arg3 cropInsets:(struct UIEdgeInsets *)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;
+- (_Bool)zoomTransition:(id)arg1 getFrame:(struct CGRect *)arg2 inCoordinateSpace:(id *)arg3 contentMode:(long long *)arg4 cropInsets:(struct UIEdgeInsets *)arg5 forPhotoToken:(id)arg6 operation:(long long)arg7;
 - (id)zoomTransition:(id)arg1 photoTokenForPhoto:(id)arg2 inCollection:(id)arg3;
 - (id)assetIndexPathForPhotoToken:(id)arg1;
 - (id)_indexesWithoutPlaceholdersFromIndexes:(id)arg1 inSection:(long long)arg2;
@@ -360,7 +360,7 @@
 - (void)_invalidateAllProgressInfoIndexPaths;
 - (void)_updateIndexPathForProgressInfo:(id)arg1;
 - (void)presentAlertController:(id)arg1;
-- (void)endShowingProgressWithIdentifier:(id)arg1;
+- (void)endShowingProgressWithIdentifier:(id)arg1 succeeded:(_Bool)arg2 canceled:(_Bool)arg3 error:(id)arg4;
 - (void)updateProgressWithIdentifier:(id)arg1 withValue:(double)arg2;
 - (id)beginShowingProgressForAsset:(id)arg1 inCollection:(id)arg2;
 - (void)_updateCollectionViewMultipleSelection;

@@ -6,24 +6,26 @@
 
 #import <PhotosUICore/PXActivity.h>
 
-@class PUAlbumPickerViewController;
+@class UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUAddToAlbumActivity : PXActivity
 {
-    PUAlbumPickerViewController *_albumPickerViewController;
+    UIViewController *_presenterViewController;
 }
 
 + (long long)activityCategory;
 - (void).cxx_destruct;
-- (id)activityViewController;
-- (void)prepareWithActivityItems:(id)arg1;
+- (void)performActivity;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)_activityBundleImageConfiguration;
 - (id)activityImage;
 - (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
+- (id)_albumPickerViewControllerWithAssets:(id)arg1;
+- (id)_syndicationAssetSavingHelperWithAssets:(id)arg1;
+- (_Bool)_presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

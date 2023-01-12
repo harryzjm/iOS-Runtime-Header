@@ -6,11 +6,14 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBFluidSwitcherGesture, SBFluidSwitcherGestureManager;
+@class NSString, SBFluidSwitcherGesture, SBFluidSwitcherGestureManager, SBHomeGrabberView;
 
 @protocol SBFluidSwitcherGestureManagerDelegate <NSObject>
+- (void)fluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 tapReceivedForGrabberTongueAtEdge:(unsigned long long)arg2;
+- (void)fluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 clickReceivedForHomeGrabberView:(SBHomeGrabberView *)arg2;
 - (_Bool)fluidSwitcherGestureManagerSupportsFloatingApplication:(SBFluidSwitcherGestureManager *)arg1;
 - (void)fluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 willEndDraggingWindowWithSceneIdentifier:(NSString *)arg2;
+- (void)fluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 didPlatterizeWindowDragWithSceneIdentifier:(NSString *)arg2;
 - (void)fluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 didBeginDraggingWindowWithSceneIdentifier:(NSString *)arg2;
 - (void)fluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 didEndGesture:(SBFluidSwitcherGesture *)arg2;
 - (void)fluidSwitcherGestureManager:(SBFluidSwitcherGestureManager *)arg1 didUpdateGesture:(SBFluidSwitcherGesture *)arg2;

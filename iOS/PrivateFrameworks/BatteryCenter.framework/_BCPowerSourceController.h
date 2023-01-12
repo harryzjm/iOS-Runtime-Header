@@ -18,8 +18,8 @@
     int _accPowerSourceNotifyToken;
     int _accPowerSourceTimeRemainingNotifyToken;
     int _accAttachNotifyToken;
-    int _batterySaverNotifyToken;
-    _Bool _batterySaverModeActive;
+    int _lowPowerModeNotifyToken;
+    _Bool _lowPowerModeActive;
     NSObject<OS_dispatch_queue> *_queue;
     NSMapTable *_observersToQueues;
 }
@@ -27,9 +27,9 @@
 + (id)_fakeDeviceInternalBatteryDescription;
 + (void)initialize;
 - (void).cxx_destruct;
-- (void)_handleBatterySaverModeChanged:(int)arg1;
-- (_Bool)_isBatterySaverModeActive;
-- (void)_updateBatterySaverModeState;
+- (void)_handleLowPowerModeChanged:(int)arg1;
+- (_Bool)_isLowPowerModeActive;
+- (void)_updateLowPowerModeState;
 - (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_notifyObserver:(id)arg1 block:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)_queryConnectedDevices;

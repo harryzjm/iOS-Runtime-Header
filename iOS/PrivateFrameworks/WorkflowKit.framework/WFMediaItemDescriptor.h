@@ -20,6 +20,15 @@
 + (id)JSONKeyPathsByPropertyKey;
 + (_Bool)supportsSecureCoding;
 + (id)playbackArchiveDataJSONTransformer;
++ (id)collectionForPlaybackWithItemName:(id)arg1 persistentIdentifier:(id)arg2 mediaType:(id)arg3;
++ (id)itemCollectionFromQuery:(id)arg1 mediaType:(id)arg2;
++ (id)mpMediaQueryForName:(id)arg1 withMediaType:(id)arg2;
++ (id)descriptorWithPersistentIdentifier:(id)arg1 mediaType:(id)arg2;
++ (id)mpMediaQueryForPersistentIdentifier:(id)arg1 withMediaType:(id)arg2;
++ (id)allDescriptorsInLibraryForMediaType:(id)arg1;
++ (id)allDescriptorsForMediaTypeUsingMPMediaQuery:(id)arg1;
++ (id)collectionsOrItemsFromQuery:(id)arg1 forMediaType:(id)arg2;
++ (id)descriptorForMPMediaEntity:(id)arg1 mediaType:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSData *playbackArchiveData; // @synthesize playbackArchiveData=_playbackArchiveData;
@@ -30,6 +39,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithMediaItemName:(id)arg1 playbackArchiveData:(id)arg2;
 - (id)initWithMediaItemName:(id)arg1 persistentIdentifier:(id)arg2 mediaType:(id)arg3;
+- (id)collectionForPlayback;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

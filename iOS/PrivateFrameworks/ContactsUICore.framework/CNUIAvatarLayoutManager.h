@@ -10,6 +10,11 @@
 {
 }
 
++ (struct CGRect)frameForBadgeWithFrame:(struct CGRect)arg1 onAvatarFrame:(struct CGRect)arg2 withPosition:(long long)arg3 mediaContextFrame:(struct CGRect)arg4 isRTL:(_Bool)arg5;
++ (void)cropAvatarBadgeLayer:(id)arg1 withCropStyle:(unsigned long long)arg2;
++ (void)applyAvatarBadgeStylingToLayer:(id)arg1 badgeType:(unsigned long long)arg2;
++ (struct CGRect)avatarBadgeRectForAvatarInRect:(struct CGRect)arg1 badgeType:(unsigned long long)arg2 isRTL:(_Bool)arg3;
++ (id)avatarBadgeLayerForAvatarInRect:(struct CGRect)arg1 badgeType:(unsigned long long)arg2 isRTL:(_Bool)arg3;
 + (id)identifierForLayoutType:(unsigned long long)arg1;
 + (long long)maxAvatarCountForType:(unsigned long long)arg1;
 + (id)avatarViewLayoutItemConfigurations:(id)arg1;

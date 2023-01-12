@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE, _TtC15ConversationKit19ParticipantInfoView;
+@class MISSING_TYPE, _TtC15ConversationKit19ParticipantInfoView, _TtC15ConversationKit21ParticipantViewButton, _TtC15ConversationKit23ParticipantMonogramView;
 
 @interface _TtC15ConversationKit15ParticipantView : UIView
 {
@@ -16,12 +16,17 @@
     MISSING_TYPE *videoView;
     MISSING_TYPE *alertView;
     MISSING_TYPE *videoOverlayView;
-    MISSING_TYPE *bottomBar;
+    MISSING_TYPE *infoView;
+    MISSING_TYPE *prominenceBorderView;
     MISSING_TYPE *debugLabel;
+    MISSING_TYPE *rotateButton;
+    MISSING_TYPE *kickMemberButton;
     MISSING_TYPE *mostRecentViewModelHash;
     MISSING_TYPE *loggingIdentifier;
-    MISSING_TYPE *hideBottomBarTimer;
+    MISSING_TYPE *hideInfoViewTimer;
     MISSING_TYPE *hideAlertViewTimer;
+    MISSING_TYPE *audioMuteView;
+    MISSING_TYPE *videoDisableView;
     MISSING_TYPE *participantIdentifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *isInRoster;
@@ -30,13 +35,18 @@
 }
 
 - (void).cxx_destruct;
+- (void)didTapKickMember;
+- (void)didTapRotate;
 - (void)layoutSubviews;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(nonatomic) _Bool isExpanded; // @synthesize isExpanded;
 @property(nonatomic) _Bool isInRoster; // @synthesize isInRoster;
-@property(nonatomic, readonly) _TtC15ConversationKit19ParticipantInfoView *bottomBar; // @synthesize bottomBar;
+@property(nonatomic, readonly) _TtC15ConversationKit21ParticipantViewButton *kickMemberButton; // @synthesize kickMemberButton;
+@property(nonatomic, readonly) _TtC15ConversationKit19ParticipantInfoView *infoView; // @synthesize infoView;
+@property(nonatomic, readonly) _TtC15ConversationKit23ParticipantMonogramView *monogramView; // @synthesize monogramView;
+@property(nonatomic) struct CGAffineTransform transform;
 
 @end
 

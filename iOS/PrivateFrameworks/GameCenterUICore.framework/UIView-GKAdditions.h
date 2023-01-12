@@ -11,6 +11,7 @@
 - (struct UIEdgeInsets)_gkPopoverPresentationInsets;
 - (struct CGRect)_gkPopoverPresentationRect;
 - (struct CGRect)_gkPopoverPresentationArea;
+- (void)_gkDisableDefaultFocusEffect;
 - (void)_gkAddStandardFadeTransition;
 - (void)_gkEnumerateSubviewsUsingBlock:(CDUnknownBlockType)arg1;
 @end

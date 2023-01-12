@@ -11,6 +11,7 @@
 @interface HAMenstrualAlgorithmsPrediction : NSObject
 {
     _Bool _isOngoingMenstruation;
+    unsigned char _whichSubsystemsRan;
     unsigned int _julianDayOfWindowStart;
     NSArray *_startProbability;
     NSArray *_endProbability;
@@ -21,10 +22,13 @@
     double _startProbabilityStdDev;
     double _endProbabilityStdDev;
     double _convolvedProbabilityStdDev;
+    long long _daysOffsetFromCalendarMethod;
     struct _NSRange _lowRange;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long daysOffsetFromCalendarMethod; // @synthesize daysOffsetFromCalendarMethod=_daysOffsetFromCalendarMethod;
+@property(nonatomic) unsigned char whichSubsystemsRan; // @synthesize whichSubsystemsRan=_whichSubsystemsRan;
 @property(nonatomic) _Bool isOngoingMenstruation; // @synthesize isOngoingMenstruation=_isOngoingMenstruation;
 @property(nonatomic) struct _NSRange lowRange; // @synthesize lowRange=_lowRange;
 @property(nonatomic) double convolvedProbabilityStdDev; // @synthesize convolvedProbabilityStdDev=_convolvedProbabilityStdDev;

@@ -26,6 +26,7 @@
     _Bool _privateIndex;
     _Bool _userFSIndex;
     _Bool _suspended;
+    _Bool _privateQuery;
     CDUnknownBlockType _foundItemsHandler;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_queue;
@@ -56,6 +57,7 @@
 + (void)initialize;
 + (void)setConnectionName:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool privateQuery; // @synthesize privateQuery=_privateQuery;
 @property(retain, nonatomic) NSString *privateBundleID; // @synthesize privateBundleID=_privateBundleID;
 @property(nonatomic) _Bool suspended; // @synthesize suspended=_suspended;
 @property(nonatomic) _Bool userFSIndex; // @synthesize userFSIndex=_userFSIndex;
@@ -96,6 +98,7 @@
 - (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;
 - (void)_removeIdentifiers:(id)arg1 withBundleID:(id)arg2 andQueryID:(long long)arg3;
 - (void)processAttributesData:(id)arg1 update:(_Bool)arg2 protectionClass:(id)arg3;
+- (void)handleFoundAttributes:(id)arg1 values:(id)arg2 attributesHandler:(CDUnknownBlockType)arg3;
 - (void)didResolveFriendlyAttributeNames:(id)arg1 fromFetchAttributes:(id)arg2;
 - (void)userEngagedWithResult:(id)arg1 interactionType:(int)arg2;
 @property(readonly) unsigned long long foundItemCount;

@@ -9,30 +9,37 @@
 #import <SensorKitUI/SRAuthorizationCellDelegate-Protocol.h>
 #import <SensorKitUI/UITableViewDelegatePrivate-Protocol.h>
 
-@class NSArray, NSBundle, NSMutableDictionary, NSString;
+@class NSArray, NSBundle, NSMutableDictionary, NSString, SRAuthorizationStore;
 
 @interface SRAuthorizationCategoryGroupViewController : UITableViewController <SRAuthorizationCellDelegate, UITableViewDelegatePrivate>
 {
     NSBundle *_appBundle;
-    NSMutableDictionary *_authState;
-    NSArray *_allKeys;
+    NSMutableDictionary *_readerAuthState;
+    NSMutableDictionary *_writerAuthState;
+    SRAuthorizationStore *_authStore;
+    NSArray *_sortedReaderAuthorizationServices;
+    NSArray *_sortedWriterAuthorizationServices;
 }
 
-@property(retain, nonatomic) NSArray *allKeys; // @synthesize allKeys=_allKeys;
-@property(retain, nonatomic) NSMutableDictionary *authState; // @synthesize authState=_authState;
+@property(retain, nonatomic) NSArray *sortedWriterAuthorizationServices; // @synthesize sortedWriterAuthorizationServices=_sortedWriterAuthorizationServices;
+@property(retain, nonatomic) NSArray *sortedReaderAuthorizationServices; // @synthesize sortedReaderAuthorizationServices=_sortedReaderAuthorizationServices;
+@property(retain) SRAuthorizationStore *authStore; // @synthesize authStore=_authStore;
+@property(retain, nonatomic) NSMutableDictionary *writerAuthState; // @synthesize writerAuthState=_writerAuthState;
+@property(retain, nonatomic) NSMutableDictionary *readerAuthState; // @synthesize readerAuthState=_readerAuthState;
 @property(retain, nonatomic) NSBundle *appBundle; // @synthesize appBundle=_appBundle;
 - (void)openPrivacy;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)confirmAuthChangeForService:(id)arg1 value:(_Bool)arg2;
-- (void)setValue:(_Bool)arg1 indexPath:(id)arg2;
+- (void)confirmAuthChangeForService:(id)arg1 value:(_Bool)arg2 indexPath:(id)arg3 setOverride:(_Bool)arg4;
+- (void)authorizationSwitchToggledWithValue:(_Bool)arg1 indexPath:(id)arg2;
+- (id)serviceFromIndexPath:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (_Bool)indexPathIsInWriterSection:(id)arg1;
+- (long long)readerAuthSectionStart;
+- (long long)writerAuthSectionStart;
+- (long long)usageSectionStart;
 - (void)dealloc;
 - (void)viewDidLoad;
 - (id)init;

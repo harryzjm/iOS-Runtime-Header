@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLabelAttributionButton;
+- (void)downloadImageForVisibleViews;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewWillAppear:(_Bool)arg1;
 

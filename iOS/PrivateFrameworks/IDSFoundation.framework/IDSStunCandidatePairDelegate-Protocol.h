@@ -6,14 +6,20 @@
 
 #import <IDSFoundation/NSObject-Protocol.h>
 
-@class IDSStunCandidatePair, NSDictionary, NSString;
+@class IDSStunCandidatePair, IDSStunMessage, NSDictionary, NSString;
 
 @protocol IDSStunCandidatePairDelegate <NSObject>
+- (void)receiveBlockedIndicationWithReason:(unsigned int)arg1;
+- (void)terminateCallDueToIdleClient;
+- (long long)sendStunMessage:(IDSStunMessage *)arg1 candidatePair:(IDSStunCandidatePair *)arg2;
 - (void)sendProbingRequestWithoptions:(NSDictionary *)arg1 candidatePairToken:(NSString *)arg2;
 - (void)sendAllocbindRequest:(IDSStunCandidatePair *)arg1 isRealloc:(_Bool)arg2 inResponseToNoSessionState:(_Bool)arg3;
 - (void)disconnectCandidatePair:(IDSStunCandidatePair *)arg1;
+- (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceivePluginUnregistration:(unsigned long long)arg2 pluginName:(NSString *)arg3;
+- (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceivePluginRegistration:(unsigned long long)arg2 pluginName:(NSString *)arg3;
+- (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceiveParticipantUpdate:(NSDictionary *)arg2 status:(unsigned short)arg3;
 - (void)candidatePair:(IDSStunCandidatePair *)arg1 didAddQREvent:(NSDictionary *)arg2;
 - (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceiveStunErrorResponse:(long long)arg2 errorCode:(unsigned short)arg3;
-- (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 success:(_Bool)arg3;
+- (void)candidatePair:(IDSStunCandidatePair *)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 status:(unsigned int)arg3;
 @end
 

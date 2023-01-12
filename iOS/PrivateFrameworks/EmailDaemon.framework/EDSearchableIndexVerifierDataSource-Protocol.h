@@ -11,6 +11,6 @@
 @protocol EDSearchableIndexVerifierDataSource <NSObject>
 - (EDSearchableIndex *)searchableIndexForSearchableIndexVerifier:(EDSearchableIndexVerifier *)arg1;
 - (NSDictionary *)dataSamplesForSearchableIndexVerifier:(EDSearchableIndexVerifier *)arg1 searchableIndex:(EDSearchableIndex *)arg2 count:(unsigned long long)arg3 lastVerifiedMessageID:(long long)arg4;
-- (NSString *)bundleIdentifierForSearchableIndexVerifier:(EDSearchableIndexVerifier *)arg1;
+- (NSString *)bundleIDForSearchableIndexVerifier:(EDSearchableIndexVerifier *)arg1;
 @end
 

@@ -38,8 +38,6 @@
 + (id)defaultAudioFeedSoftPaywallSmallPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultAudioArticleSharedSoftPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultAudioArticleSoftPaywallWithLandingPageArticleID:(id)arg1;
-+ (id)defaultAudioArticleSharedDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
-+ (id)defaultAudioArticleDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultAudioArticleSharedHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultAudioArticleHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultPDFHardPaywallWithLandingPageArticleID:(id)arg1;
@@ -51,8 +49,6 @@
 + (id)defaultChannelSoftPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleSharedSoftPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleSoftPaywallWithLandingPageArticleID:(id)arg1;
-+ (id)defaultArticleSharedDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
-+ (id)defaultArticleDeferredHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleSharedHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultArticleHardPaywallWithLandingPageArticleID:(id)arg1;
 - (void).cxx_destruct;

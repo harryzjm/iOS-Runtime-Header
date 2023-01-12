@@ -10,6 +10,6 @@
 
 @protocol PXCloudQuotaControllerDelegate <NSObject>
 - (UIViewController *)presentingViewControllerForCloudQuotaController:(PXCloudQuotaController *)arg1;
-- (void)cloudQuotaController:(PXCloudQuotaController *)arg1 informationBannerDidChange:(UIView *)arg2;
+- (void)cloudQuotaController:(PXCloudQuotaController *)arg1 informationViewDidChange:(UIView *)arg2;
 @end
 

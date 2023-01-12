@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CIImage, CUINamedVectorGlyph;
+@class CIImage, CUINamedVectorGlyph, UIBezierPath;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContent : NSObject
@@ -22,7 +22,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
 - (id)debugQuickLookObject;
 - (id)debugDescription;
-- (struct CGImage *)_CGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 paletteColors:(id)arg3;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 hierarchicalColorResolver:(CDUnknownBlockType)arg3;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 namedColorResolver:(CDUnknownBlockType)arg3;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (_Bool)_drawInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 effect:(id)arg3;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
@@ -32,8 +35,12 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) struct CGSize size;
+@property(readonly, nonatomic) UIBezierPath *outlinePath;
 @property(readonly, nonatomic) double vectorScale;
 @property(readonly, nonatomic) CUINamedVectorGlyph *vectorGlyph;
+- (unsigned long long)numberOfHierarchyLayers;
+- (_Bool)containsNamedColorStyle:(id)arg1;
+- (_Bool)containsNamedColorStyles;
 - (_Bool)isVectorGlyph;
 - (struct CGSize)CGSVGDocumentSize;
 - (_Bool)isCGSVGDocument;
@@ -45,10 +52,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct __IOSurface *IOSurface;
 - (_Bool)isCIImage;
 @property(readonly, nonatomic) CIImage *CIImage;
+- (_Bool)optimizeContentForImageSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)contentOptimizedForImageSize:(struct CGSize)arg1;
+- (_Bool)prepareContentForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)contentPreparedForDisplay;
 @property(readonly, nonatomic) struct CGImage *CGImage;
-- (_Bool)canProvideFullResCGImage;
 - (_Bool)_canProvideCGImageDirectly;
-- (_Bool)canProvideCGImage;
+- (_Bool)canScaleImageToTargetResolution;
+- (_Bool)canDrawImage;
 - (_Bool)hasCGImage;
 - (_Bool)isCGImage;
 - (_Bool)isCGImageOnly;

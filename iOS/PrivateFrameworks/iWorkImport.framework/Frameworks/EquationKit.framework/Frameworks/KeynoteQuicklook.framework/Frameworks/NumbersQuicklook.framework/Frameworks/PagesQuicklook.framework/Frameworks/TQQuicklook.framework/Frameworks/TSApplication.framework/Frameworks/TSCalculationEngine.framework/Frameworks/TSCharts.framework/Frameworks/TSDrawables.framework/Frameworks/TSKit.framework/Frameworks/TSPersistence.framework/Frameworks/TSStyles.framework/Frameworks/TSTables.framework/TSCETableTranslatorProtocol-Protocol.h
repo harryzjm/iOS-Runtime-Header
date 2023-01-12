@@ -9,14 +9,14 @@
 @class NSIndexSet, NSMutableIndexSet, TSCECellTractRef;
 
 @protocol TSCETableTranslatorProtocol <NSObject>
-- (UUIDData_5fbc143e)rowUIDForViewRowIndex:(const struct TSUViewRowIndex *)arg1;
-- (UUIDData_5fbc143e)columnUIDForViewColumnIndex:(const struct TSUViewColumnIndex *)arg1;
-- (struct TSUViewRowIndex)viewRowIndexForRowUID:(const UUIDData_5fbc143e *)arg1;
-- (struct TSUViewColumnIndex)viewColumnIndexForColumnUID:(const UUIDData_5fbc143e *)arg1;
-- (struct TSUModelRowIndex)baseRowIndexForRowUID:(const UUIDData_5fbc143e *)arg1;
-- (struct TSUModelColumnIndex)baseColumnIndexForColumnUID:(const UUIDData_5fbc143e *)arg1;
-- (UUIDData_5fbc143e)rowUIDForBaseRowIndex:(const struct TSUModelRowIndex *)arg1;
-- (UUIDData_5fbc143e)columnUIDForBaseColumnIndex:(const struct TSUModelColumnIndex *)arg1;
+- (struct TSKUIDStruct)rowUIDForViewRowIndex:(struct TSUViewRowIndex)arg1;
+- (struct TSKUIDStruct)columnUIDForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
+- (struct TSUViewRowIndex)viewRowIndexForRowUID:(struct TSKUIDStruct)arg1;
+- (struct TSUViewColumnIndex)viewColumnIndexForColumnUID:(struct TSKUIDStruct)arg1;
+- (struct TSUModelRowIndex)baseRowIndexForRowUID:(struct TSKUIDStruct)arg1;
+- (struct TSUModelColumnIndex)baseColumnIndexForColumnUID:(struct TSKUIDStruct)arg1;
+- (struct TSKUIDStruct)rowUIDForBaseRowIndex:(struct TSUModelRowIndex)arg1;
+- (struct TSKUIDStruct)columnUIDForBaseColumnIndex:(struct TSUModelColumnIndex)arg1;
 - (NSIndexSet *)viewColumnIndexesForChromeColumnIndexes:(NSIndexSet *)arg1;
 - (NSIndexSet *)viewRowIndexesForChromeRowIndexes:(NSIndexSet *)arg1;
 - (NSIndexSet *)chromeColumnIndexesForViewColumnIndexes:(NSIndexSet *)arg1;
@@ -45,24 +45,26 @@
 - (NSIndexSet *)viewColumnIndexesForBaseColumnIndexes:(NSIndexSet *)arg1;
 - (NSIndexSet *)baseRowIndexesForViewRowIndexes:(NSIndexSet *)arg1;
 - (NSIndexSet *)baseColumnIndexesForViewColumnIndexes:(NSIndexSet *)arg1;
-- (NSIndexSet *)viewRowIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSIndexSet *)viewColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSIndexSet *)baseRowIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSIndexSet *)baseColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSMutableIndexSet *)mutableBaseRowIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSMutableIndexSet *)mutableBaseColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (vector_4dc5f307)rowUIDsForBaseRowIndexes:(NSIndexSet *)arg1;
-- (vector_4dc5f307)columnUIDsForBaseColumnIndexes:(NSIndexSet *)arg1;
+- (NSIndexSet *)viewRowIndexesForUIDs:(const void *)arg1;
+- (NSIndexSet *)viewColumnIndexesForUIDs:(const void *)arg1;
+- (NSIndexSet *)baseRowIndexesForUIDs:(const void *)arg1;
+- (NSIndexSet *)baseColumnIndexesForUIDs:(const void *)arg1;
+- (NSMutableIndexSet *)mutableBaseRowIndexesForUIDs:(const void *)arg1;
+- (NSMutableIndexSet *)mutableBaseColumnIndexesForUIDs:(const void *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)rowUIDsForViewRowIndexes:(NSIndexSet *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)columnUIDsForViewColumnIndexes:(NSIndexSet *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)rowUIDsForBaseRowIndexes:(NSIndexSet *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)columnUIDsForBaseColumnIndexes:(NSIndexSet *)arg1;
 - (TSCECellTractRef *)baseTractRefForChromeTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)chromeTractRefForBaseTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)viewTractRefForBaseTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)baseTractRefForViewTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)viewTractRefForChromeTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)chromeTractRefForViewTractRef:(TSCECellTractRef *)arg1;
-- (RefTypeHolder_a8d05c9a)baseCellRefForViewCellRef:(const RefTypeHolder_adbccd1a *)arg1;
-- (RefTypeHolder_adbccd1a)viewCellRefForBaseCellRef:(const RefTypeHolder_a8d05c9a *)arg1;
-- (RefTypeHolder_adbccd1a)viewCellRefForChromeCellRef:(const RefTypeHolder_cfaab535 *)arg1;
-- (RefTypeHolder_cfaab535)chromeCellRefForBaseCellRef:(const RefTypeHolder_a8d05c9a *)arg1;
-- (RefTypeHolder_cfaab535)chromeCellRefForViewCellRef:(const RefTypeHolder_adbccd1a *)arg1;
+- (RefTypeHolder_cdce8eef)baseCellRefForViewCellRef:(const void *)arg1;
+- (RefTypeHolder_ca5e87e3)viewCellRefForBaseCellRef:(const void *)arg1;
+- (RefTypeHolder_ca5e87e3)viewCellRefForChromeCellRef:(const void *)arg1;
+- (RefTypeHolder_57ff3e12)chromeCellRefForBaseCellRef:(const void *)arg1;
+- (RefTypeHolder_57ff3e12)chromeCellRefForViewCellRef:(const void *)arg1;
 @end
 

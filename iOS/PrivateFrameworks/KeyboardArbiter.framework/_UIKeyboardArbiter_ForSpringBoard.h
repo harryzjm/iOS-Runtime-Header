@@ -19,6 +19,7 @@
     _UIKeyboardArbiter *owner;
 }
 
++ (id)launchAdvisorWithOmniscientDelegate:(id)arg1;
 + (void)launch;
 - (void).cxx_destruct;
 @property(nonatomic) __weak _UIKeyboardArbiter *owner; // @synthesize owner;

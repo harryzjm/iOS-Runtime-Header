@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     Matrix_8746f91e _lastTilePoint;
     GEOMapTileFinder *_currentTileFinder;
     CDUnknownBlockType _edgeHandler;
-    unordered_set_684af1c2 _tileKeysSeen;
+    struct unordered_set<_GEOTileKey, std::hash<GEOTileKey>, std::equal_to<GEOTileKey>, std::allocator<_GEOTileKey>> _tileKeysSeen;
     _Bool _searchDirection;
     unsigned long long _buildDirection;
 }
@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_findEdgeAheadInTile:(id)arg1;
 - (void)_buildCompleteEdge;
 - (unsigned long long)_maxTileCount;
-- (_Bool)_edgeStart:(const Matrix_8746f91e *)arg1 end:(const Matrix_8746f91e *)arg2 connectsTo:(const Matrix_8746f91e *)arg3;
-- (_Bool)_pointConnects:(const Matrix_8746f91e *)arg1 rect:(const CDStruct_90e2a262 *)arg2 to:(const CDStruct_c3b9c2ee *)arg3;
-- (void)_findTilesAdjacentToTile:(const struct _GEOTileKey *)arg1 containingPoint:(const Matrix_8746f91e *)arg2 findAhead:(_Bool)arg3;
+- (_Bool)_edgeStart:(const void *)arg1 end:(const void *)arg2 connectsTo:(const void *)arg3;
+- (_Bool)_pointConnects:(const void *)arg1 rect:(const CDStruct_90e2a262 *)arg2 to:(const CDStruct_c3b9c2ee *)arg3;
+- (void)_findTilesAdjacentToTile:(const struct _GEOTileKey *)arg1 containingPoint:(const void *)arg2 findAhead:(_Bool)arg3;
 - (void)buildEdge:(CDUnknownBlockType)arg1;
 - (_Bool)_findNextEdge;
 - (_Bool)_findEdgeBehind;

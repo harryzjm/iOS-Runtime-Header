@@ -6,7 +6,7 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBHAppLibrarySettings, SBHFolderSettings, SBHHomePullToSearchSettings, SBHIconAnimationRootSettings, SBHIconEditingSettings, SBHIconSettings, SBHRootFolderSettings, SBHWidgetSettings;
+@class SBHAppLibrarySettings, SBHFolderSettings, SBHHomePullToSearchSettings, SBHIconAnimationRootSettings, SBHIconEditingSettings, SBHIconSettings, SBHRootFolderSettings, SBHWidgetIntroductionSettings, SBHWidgetSettings;
 
 @interface SBHHomeScreenSettings : PTSettings
 {
@@ -20,11 +20,13 @@
     SBHWidgetSettings *_widgetSettings;
     SBHAppLibrarySettings *_appLibrarySettings;
     SBHHomePullToSearchSettings *_pullToSearchSettings;
+    SBHWidgetIntroductionSettings *_widgetIntroductionSettings;
 }
 
 + (id)settingsControllerModule;
 + (id)homeScreenDefaults;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBHWidgetIntroductionSettings *widgetIntroductionSettings; // @synthesize widgetIntroductionSettings=_widgetIntroductionSettings;
 @property(retain, nonatomic) SBHHomePullToSearchSettings *pullToSearchSettings; // @synthesize pullToSearchSettings=_pullToSearchSettings;
 @property(retain, nonatomic) SBHAppLibrarySettings *appLibrarySettings; // @synthesize appLibrarySettings=_appLibrarySettings;
 @property(retain, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;

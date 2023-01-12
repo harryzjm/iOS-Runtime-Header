@@ -10,6 +10,7 @@
     long long _curve;
 }
 
+- (double)approximateVelocity;
 - (double)currentValue;
 - (id)initWithFromValue:(double)arg1 currentMediaTime:(double)arg2 spec:(struct _PXValueAnimationSpec)arg3;
 - (id)initWithDuration:(double)arg1 currentMediaTime:(double)arg2 spec:(struct _PXValueAnimationSpec)arg3;

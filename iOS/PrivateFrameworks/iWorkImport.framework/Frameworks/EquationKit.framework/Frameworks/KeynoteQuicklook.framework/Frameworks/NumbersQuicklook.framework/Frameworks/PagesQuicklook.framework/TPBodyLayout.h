@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
 @property(retain, nonatomic) NSMutableArray *anchoredDrawablesForRelayout; // @synthesize anchoredDrawablesForRelayout=_anchoredDrawablesForRelayout;
+- (id)pageController;
 @property(readonly, nonatomic) _Bool textIsVertical;
 - (_Bool)invalidateForPageCountChange;
 @property(readonly, nonatomic) unsigned long long pageCount;
@@ -52,7 +53,8 @@
 - (id)interiorClippingPath;
 @property(readonly, nonatomic) _Bool shouldWrapAroundExternalDrawables;
 @property(readonly, nonatomic) _Bool layoutIsValid;
-@property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
+- (id)addPartitionableAttachmentLayout:(id)arg1;
+- (id)parentLayoutForPartitionableAttachment:(id)arg1 atPosition:(struct CGPoint)arg2;
 @property(readonly, nonatomic) TSDCanvas *canvas;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;
@@ -73,9 +75,8 @@
 - (void)willBeRemovedFromLayoutController:(id)arg1;
 - (void)resetFootnoteHeightMeasurer;
 @property(readonly, nonatomic) id <TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
+@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumberHints;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
 @property(readonly, nonatomic) TSWPStorage *storage;
 @property(readonly, nonatomic) _Bool marginsAreMirrored;
@@ -90,6 +91,7 @@
 - (void)parentWillChangeTo:(id)arg1;
 - (void)invalidateSize;
 - (_Bool)shouldInvalidateSizeWhenInvalidateSizeOfReliedOnLayout:(id)arg1;
+- (void)willInflate;
 - (void)validate;
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (id)computeLayoutGeometry;
@@ -106,7 +108,6 @@
 - (struct CGRect)rectForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (_Bool)containsStartOfRange:(struct _NSRange)arg1;
 - (_Bool)containsStartOfPencilAnnotation:(id)arg1;
-- (id)pageAnchorDetailsForPencilAnnotationAtSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (id)unscaledContentRectsToAvoidPencilAnnotationOverlap;
 - (id)containedPencilAnnotations;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
@@ -118,15 +119,21 @@
 - (_Bool)descendersCannotClip;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceAfter;
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceBefore;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) struct __CFLocale *hyphenationLocale;
+@property(readonly, nonatomic) Class inlineTableOfContentsLayoutClass;
 @property(readonly, nonatomic) _Bool isLinked;
 @property(readonly, nonatomic) struct CGRect maskRect;
 @property(readonly, nonatomic) _Bool repShouldPreventCaret;
+@property(readonly, nonatomic) struct _NSRange restrictedLayoutCharRange;
 @property(readonly, nonatomic) _Bool shouldHyphenate;
+@property(readonly, nonatomic) _Bool shouldIgnoreAnchoredAttachments;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsPageNumbers;
 
 @end
 

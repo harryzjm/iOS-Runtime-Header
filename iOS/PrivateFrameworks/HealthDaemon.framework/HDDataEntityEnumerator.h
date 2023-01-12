@@ -39,10 +39,7 @@
 @property(retain, nonatomic) NSSet *restrictedSourceEntities; // @synthesize restrictedSourceEntities=_restrictedSourceEntities;
 @property(readonly, nonatomic) NSSet *objectTypes; // @synthesize objectTypes=_objectTypes;
 - (id)_joinClauseForProperties:(id)arg1;
-- (_Bool)_enumerateObjectsWithDatabaseTransaction:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
-- (_Bool)_prepareDeletedObjectsAndSamplesDescriptor:(id)arg1 error:(id *)arg2;
-- (_Bool)_prepareDescriptor:(id)arg1 error:(id *)arg2;
-- (_Bool)_setOrderingTermsOnDescriptor:(id)arg1 error:(id *)arg2;
+- (_Bool)enumerateSampleTimesIncludingDeletedObjects:(_Bool)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)enumerateIncludingDeletedObjects:(_Bool)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)enumerateWithError:(id *)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)encodingOptionForKey:(id)arg1;

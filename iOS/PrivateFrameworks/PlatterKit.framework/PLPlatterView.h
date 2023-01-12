@@ -22,12 +22,12 @@
     NSMutableDictionary *_categoriesToProviders;
     NSDictionary *_recipeNamesByTraitCollection;
     NSBundle *_recipeBundle;
+    double _cornerRadius;
     _Bool _backgroundBlurred;
     _Bool _usesBackgroundView;
     NSString *_materialGroupNameBase;
     UIView *_backgroundView;
     long long _materialRecipe;
-    double _cornerRadius;
     CDStruct_b48b9fb5 _shadowAttributes;
 }
 
@@ -45,20 +45,23 @@
 - (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 @property(readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 - (id)visualStylingProviderForCategory:(long long)arg1;
-- (void)layoutSubviews;
 - (void)_layoutShadowView;
 - (void)_configureShadowViewIfNecessary;
 - (void)_configureBackgroundViewIfNecessary;
 - (_Bool)_isMaterialViewSufficientlySpecified;
 - (id)_newDefaultBackgroundView;
 - (void)_configureBackgroundView:(id)arg1;
+- (void)_invalidateShadowView;
 @property(nonatomic) _Bool hasShadow;
 @property(readonly, nonatomic) UIView *customContentView; // @synthesize customContentView=_customContentView;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
-@property(readonly, nonatomic) struct UIEdgeInsets shadowOutsets;
+- (void)_setContinuousCornerRadius:(double)arg1;
+- (double)_continuousCornerRadius;
+- (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(readonly, nonatomic) struct UIEdgeInsets shadowOutsets;
 - (id)initWithRecipe:(long long)arg1;
 - (id)_newCarPlayBannerStrokeView;
 - (id)_initWithBlurEffectStyle:(long long)arg1;

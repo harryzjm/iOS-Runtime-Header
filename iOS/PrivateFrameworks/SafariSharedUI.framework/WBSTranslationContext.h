@@ -12,7 +12,7 @@
 #import <SafariSharedUI/WBSTranslationContextTranslating-Protocol.h>
 #import <SafariSharedUI/WBSTranslationErrorControllerDelegate-Protocol.h>
 
-@class NSArray, NSNumber, NSString, NSURL, WBSFluidProgressController, WBSFluidProgressState, WBSTranslationContextSnapshot, WBSTranslationDiagnosticData, WBSTranslationErrorController, _LTTranslationSession, _LTTranslator;
+@class NSArray, NSMutableSet, NSNumber, NSString, NSURL, WBSFluidProgressController, WBSFluidProgressState, WBSTranslationContextSnapshot, WBSTranslationDiagnosticData, WBSTranslationErrorController, WBSTranslationScrollInteractionAnalyticsHelper, _LTTranslationSession, _LTTranslator;
 @protocol OS_dispatch_queue, WBSTranslationContentExtracting, WBSTranslationContentFilling, WBSTranslationContextDelegate, WBSTranslationContextLanguageDetecting, WBSTranslationContextPreferenceProviding, WBSTranslationContextTranslating;
 
 @interface WBSTranslationContext : NSObject <WBSTranslationErrorControllerDelegate, WBSFluidProgressStateSource, WBSTranslationContentExtractionDelegate, WBSTranslationContentFillingDelegate, WBSTranslationContextTranslating>
@@ -34,6 +34,7 @@
     NSArray *_cachedTextSamples;
     _Bool _hasReportedFirstParagraphFinishedFillingForAnalytics;
     _Bool _hasReportedInitialPageFinishedFillingForAnalytics;
+    WBSTranslationScrollInteractionAnalyticsHelper *_scrollInteractionAnalyticsHelper;
     NSString *_previousPageTargetLocale;
     NSString *_previousPageSourceLocale;
     NSString *_previousPageHighLevelDomain;
@@ -46,9 +47,14 @@
     NSNumber *_cachedTranslationSupportedInCurrentRegion;
     unsigned long long _initiallyExtractedParagraphCount;
     unsigned long long _translatedParagraphCount;
+    NSMutableSet *_initiallyVisibleParagraphIdentifiersQueuedForTranslation;
+    unsigned long long _initiallyVisibleParagraphCount;
+    _Bool _hasReportedInitialVisibleParagraphsFinishedFillingForAnalytics;
     _Bool _hasFinishedInitialExtraction;
     WBSFluidProgressState *_fluidProgressState;
     WBSFluidProgressController *_fluidProgressController;
+    NSArray *_cachedAllowedTargetLocaleIdentifiers;
+    NSArray *_cachedAvailablePreferredTargetLocalesFilteredBySupportedLocales;
 }
 
 + (id)translationContextWithWebView:(id)arg1 delegate:(id)arg2;
@@ -59,6 +65,7 @@
 - (void)_updateProgressWithExtractedParagraphCount:(unsigned long long)arg1;
 - (void)_startProgressForExtractingContent;
 - (void)_cancelProgressForNavigation:(_Bool)arg1;
+- (void)_reportFinishedFillingInitialVisiblePageContentIfNeeded;
 - (void)_reportFinishedFillingInitialPageContentIfNeeded;
 - (void)_reportFilledFirstParagraphIfNeeded;
 - (void)_reportRequestedTranslationAnalyticsForWebpageLocale:(id)arg1 targetLocale:(id)arg2 requestType:(long long)arg3;
@@ -69,8 +76,8 @@
 - (_Bool)_translationSupportedInCurrentRegion;
 - (id)_genericErrorMessage;
 - (id)_userVisibleErrorMessageForError:(id)arg1;
-- (void)_dominantLocaleForTextSample:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_generateJSONVersionOfContent:(id)arg1 prettyPrinted:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_generateJSONVersionOfErrors:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_generateJSONVersionOfContent:(id)arg1 forPurpose:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_promptIfNeededToConsentToTranslationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_canLogSourcePageURL;
 - (id)_currentSession;
@@ -81,26 +88,31 @@
 - (id)_availableTargetLocaleIdentifiersConsideringCurrentWebpageLocale:(_Bool)arg1;
 - (_Bool)hasFailedURL;
 - (double)estimatedProgress;
+- (double)_estimatedProgressWithScope:(long long)arg1;
 - (id)progressState;
 - (id)expectedOrCurrentURL;
 - (void)clearFluidProgressState;
 - (_Bool)createFluidProgressState;
 - (void)errorController:(id)arg1 didReachThresholdForError:(id)arg2;
+- (void)_dominantLocaleForTextSamples:(id)arg1 url:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dominantLocaleForTextSamples:(id)arg1 url:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dominantLocaleForTextSamples:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)contentFiller:(id)arg1 didCompleteFillingItem:(id)arg2 withError:(id)arg3;
 - (void)contentExtractorDidFinishExtractingInitialContent:(id)arg1;
 - (void)contentExtractor:(id)arg1 didExtractContent:(id)arg2;
+- (void)_computeVisibleParagraphsIfDuringInitialExtraction:(id)arg1;
 - (void)translationContext:(id)arg1 translateWebpageContents:(id)arg2 toTargetLocale:(id)arg3 translationHandler:(CDUnknownBlockType)arg4;
 - (void)isTranslationSupportedForCurrentRegionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)supportedLocalePairsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)userPreferredTargetLocales;
+- (_Bool)debugDelayLanguageDetection;
 - (_Bool)hideMessageInUnifiedField;
 - (_Bool)debugAlwaysShowConsentAlert;
 - (_Bool)isContinuedTranslationEnabled;
 - (void)setConsentedToFirstTimeAlert:(_Bool)arg1;
 - (_Bool)hasConsentedToFirstTimeAlert;
 - (_Bool)isTranslationEnabled;
+- (void)updateMaxVisibleHeightPercentageIfNeeded:(double)arg1 userDriven:(_Bool)arg2;
 - (void)generateDiagnosticDataForPurpose:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setContentTranslator:(id)arg1;
 - (void)owningWebViewWillNavigateToBackForwardListItemWithSnapshotStore:(id)arg1 inPageCache:(_Bool)arg2;
@@ -108,12 +120,14 @@
 - (void)owningWebViewDidCommitNavigationWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reloadPageInOriginalLanguage;
 - (void)_requestTranslatingWebpageToLocale:(id)arg1 requestType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)requestSendFeedbackWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestTranslatingWebpageToLocale:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)validateTargetLocale:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)validateTargetLocale:(id)arg1;
 - (void)setWebpageLocaleWithExtractedTextSamples:(id)arg1 url:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setWebpageLocaleUsingCachedTextSamplesIfNeeded:(CDUnknownBlockType)arg1;
 - (void)cacheTextSamples:(id)arg1;
+- (id)webpageLocaleInWebExtensionFormat;
 @property(readonly, nonatomic) __weak id <WBSTranslationContextDelegate> delegate;
 @property(nonatomic) __weak WBSFluidProgressController *fluidProgressController;
 - (void)setPreferenceProvider:(id)arg1;

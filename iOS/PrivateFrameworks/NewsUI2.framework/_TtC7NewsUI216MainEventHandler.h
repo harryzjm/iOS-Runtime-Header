@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *interactor;
     MISSING_TYPE *router;
+    MISSING_TYPE *tracker;
 }
 
 @end

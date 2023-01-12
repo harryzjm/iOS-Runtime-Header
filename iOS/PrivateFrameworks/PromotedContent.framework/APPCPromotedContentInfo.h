@@ -21,9 +21,13 @@
 - (void).cxx_destruct;
 - (id)init;
 - (void)dealloc;
+@property(nonatomic, readonly) _Bool isVideo;
+@property(nonatomic, readonly) _Bool isDownloadable;
+@property(nonatomic, readonly) _Bool isInteractive;
 @property(nonatomic) _Bool placeholder; // @synthesize placeholder;
 @property(nonatomic) long long unfilledReason; // @synthesize unfilledReason;
 @property(nonatomic, readonly) long long errorReason;
+@property(nonatomic, readonly) long long desiredPosition;
 @property(nonatomic, readonly) APPCNativeRepresentation *nativeInfo;
 @property(nonatomic, readonly) NSString *identifier;
 @property(nonatomic, readonly) CDUnknownBlockType ready;

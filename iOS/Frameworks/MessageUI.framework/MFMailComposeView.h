@@ -10,6 +10,7 @@
 #import <MessageUI/CNComposeDragSourceDelegate-Protocol.h>
 #import <MessageUI/CNComposeDropTargetDelegate-Protocol.h>
 #import <MessageUI/CNComposeHeaderViewDelegate-Protocol.h>
+#import <MessageUI/EFLoggable-Protocol.h>
 #import <MessageUI/MFComposeFromViewDelegate-Protocol.h>
 #import <MessageUI/MFComposeMultiViewDelegate-Protocol.h>
 #import <MessageUI/MFComposeWebViewDelegate-Protocol.h>
@@ -18,9 +19,9 @@
 #import <MessageUI/UIScrollViewDelegate-Protocol.h>
 
 @class CNAutocompleteResultsTableViewController, MFComposeDisplayMetrics, MFComposeFromView, MFComposeImageSizeView, MFComposeMultiView, MFComposeSubjectView, MFComposeWebContentVariationView, MFComposeWebView, MFMailComposeContactsSearchController, MFMailComposeRecipientTextView, MFMailComposeToField, MFMessageContentLoadingView, NSInvocation, NSMutableArray, NSString, UIResponder, UIScrollView, UIView, UIViewController;
-@protocol MFMailComposeRecipientTextViewDelegate, MFMailComposeToFieldDelegate, MFMailComposeViewDelegate;
+@protocol ComposeViewNavigationBarDelegate, MFMailComposeRecipientTextViewDelegate, MFMailComposeToFieldDelegate, MFMailComposeViewDelegate;
 
-@interface MFMailComposeView : UITransitionView <CNComposeHeaderViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNComposeDragSourceDelegate, CNComposeDropTargetDelegate, MFComposeMultiViewDelegate, MFComposeWebViewDelegate, UIPopoverControllerDelegate, MFComposeFromViewDelegate, UIScrollViewDelegate, MFMailComposeContactsSearchControllerDelegate>
+@interface MFMailComposeView : UITransitionView <CNComposeHeaderViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNComposeDragSourceDelegate, CNComposeDropTargetDelegate, MFComposeMultiViewDelegate, MFComposeWebViewDelegate, UIPopoverControllerDelegate, MFComposeFromViewDelegate, EFLoggable, UIScrollViewDelegate, MFMailComposeContactsSearchControllerDelegate>
 {
     UIScrollView *_bodyScroller;
     UIView *_headerView;
@@ -68,12 +69,15 @@
     id <MFMailComposeRecipientTextViewDelegate> _composeRecipientViewDelegate;
     UIViewController *_popoverOwner;
     id <MFMailComposeToFieldDelegate> _toFieldDelegate;
+    id <ComposeViewNavigationBarDelegate> _navigationBarDelegate;
     MFComposeDisplayMetrics *_displayMetrics;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MFComposeDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
 @property(readonly, nonatomic) MFComposeFromView *fromField; // @synthesize fromField=_fromField;
+@property(nonatomic) __weak id <ComposeViewNavigationBarDelegate> navigationBarDelegate; // @synthesize navigationBarDelegate=_navigationBarDelegate;
 @property(readonly, nonatomic) MFComposeWebContentVariationView *webContentVariationField; // @synthesize webContentVariationField=_webContentVariationField;
 @property(readonly, nonatomic) MFMailComposeContactsSearchController *searchController; // @synthesize searchController=_searchController;
 @property(readonly, nonatomic) UIScrollView *bodyScroller; // @synthesize bodyScroller=_bodyScroller;
@@ -128,6 +132,7 @@
 - (void)updateOptionalHeaderVisibility;
 - (void)viewDidBecomeFirstResponder:(id)arg1;
 - (void)layoutForChangedComposeHeaderView:(id)arg1 size:(struct CGSize)arg2;
+- (void)scrollToRecipientTextView:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setScrollsToTop:(_Bool)arg1;
 - (void)scrollToTopAnimated:(_Bool)arg1;
 - (void)focusFirstResponderAfterRecipientView:(id)arg1;
@@ -143,6 +148,7 @@
 - (void)_beginPreventingScrollingToRevealSelection;
 - (void)automaticKeyboardFinishedAppearing:(id)arg1;
 - (void)_updateKeyboardIntersection:(struct CGRect)arg1;
+- (_Bool)shouldScrollLastChangedRecipientViewToTop;
 - (void)_adjustScrollerForBottomView;
 - (void)_adjustScrollerContentSize;
 - (void)_normalizeBodyFieldFrame;

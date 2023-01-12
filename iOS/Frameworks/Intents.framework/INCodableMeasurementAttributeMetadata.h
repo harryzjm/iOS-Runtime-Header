@@ -31,17 +31,17 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionDefaultUnitKey;
-- (id)__INIntentResponseCodableDescriptionDefaultUnitKey;
-- (id)__INTypeCodableDescriptionDefaultUnitKey;
 - (id)__INCodableDescriptionDefaultValueKey;
-- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
-- (id)__INTypeCodableDescriptionDefaultValueKey;
 - (id)__INCodableDescriptionSupportsNegativeNumbersKey;
-- (id)__INIntentResponseCodableDescriptionSupportsNegativeNumbersKey;
-- (id)__INTypeCodableDescriptionSupportsNegativeNumbersKey;
 - (id)__INCodableDescriptionUnitKey;
-- (id)__INTypeCodableDescriptionUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionSupportsNegativeNumbersKey;
 - (id)__INIntentResponseCodableDescriptionUnitKey;
+- (id)__INTypeCodableDescriptionDefaultUnitKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionSupportsNegativeNumbersKey;
+- (id)__INTypeCodableDescriptionUnitKey;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

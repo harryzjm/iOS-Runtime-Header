@@ -12,8 +12,8 @@
 {
     NSArray *_amdDomains;
     NSString *_leaseCertificateURLString;
-    NSDictionary *_mescalRequestWhitelist;
-    NSDictionary *_mescalResponseWhitelist;
+    NSDictionary *_mescalRequestAllowList;
+    NSDictionary *_mescalResponseAllowList;
     NSString *_mescalSetupCertURLString;
     NSString *_mescalSetupURLString;
     SSVPlatformContext *_platformContext;

@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFRequestCompletionOptions, AFSpeechRequestOptions, NSData, NSDictionary, NSNumber, NSString, NSUUID, SAStartLocalRequest, SAStartRequest;
+@class AFRequestCompletionOptions, AFSpeechRequestOptions, AFTestRequestOptions, NSData, NSDictionary, NSNumber, NSString, NSUUID, SAStartLocalRequest, SAStartRequest;
 
 @interface AFRequestInfo : NSObject <NSSecureCoding, NSCopying>
 {
@@ -34,6 +34,7 @@
     long long _directActionEvent;
     long long _activationEvent;
     AFSpeechRequestOptions *_speechRequestOptions;
+    AFTestRequestOptions *_testRequestOptions;
     NSNumber *_combinedRank;
     NSNumber *_combinedScore;
     NSString *_interactionId;
@@ -49,6 +50,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)testRequestWithStartLocalRequest:(id)arg1;
++ (id)testRequestWithText:(id)arg1 speechRequestOptions:(id)arg2 testOptions:(id)arg3;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *nonspeakerConfidenceScores; // @synthesize nonspeakerConfidenceScores=_nonspeakerConfidenceScores;
 @property(nonatomic) unsigned long long expectedSpeakerConfidenceScore; // @synthesize expectedSpeakerConfidenceScore=_expectedSpeakerConfidenceScore;
@@ -62,6 +65,7 @@
 @property(copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
 @property(copy, nonatomic) NSNumber *combinedScore; // @synthesize combinedScore=_combinedScore;
 @property(copy, nonatomic) NSNumber *combinedRank; // @synthesize combinedRank=_combinedRank;
+@property(copy, nonatomic) AFTestRequestOptions *testRequestOptions; // @synthesize testRequestOptions=_testRequestOptions;
 @property(copy, nonatomic) AFSpeechRequestOptions *speechRequestOptions; // @synthesize speechRequestOptions=_speechRequestOptions;
 @property(nonatomic) long long activationEvent; // @synthesize activationEvent=_activationEvent;
 @property(nonatomic) long long directActionEvent; // @synthesize directActionEvent=_directActionEvent;

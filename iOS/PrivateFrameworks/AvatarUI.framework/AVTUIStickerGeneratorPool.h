@@ -17,6 +17,7 @@
     id <AVTUILogger> _logger;
 }
 
++ (id)cacheKeyForAvatarRecord:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) NSMutableDictionary *inUseStickerGenerators; // @synthesize inUseStickerGenerators=_inUseStickerGenerators;

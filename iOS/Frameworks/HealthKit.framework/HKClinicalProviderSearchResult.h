@@ -22,10 +22,12 @@
     NSString *_location;
     HKClinicalBrand *_brand;
     NSString *_countryCode;
+    long long _minCompatibleAPIVersion;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long minCompatibleAPIVersion; // @synthesize minCompatibleAPIVersion=_minCompatibleAPIVersion;
 @property(readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(readonly, nonatomic, getter=isSupported) _Bool supported; // @synthesize supported=_supported;
 @property(readonly, copy, nonatomic) HKClinicalBrand *brand; // @synthesize brand=_brand;
@@ -40,7 +42,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithExternalID:(id)arg1 batchID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 location:(id)arg5 supported:(_Bool)arg6 countryCode:(id)arg7 brand:(id)arg8;
+- (id)initWithExternalID:(id)arg1 batchID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 location:(id)arg5 supported:(_Bool)arg6 countryCode:(id)arg7 brand:(id)arg8 minCompatibleAPIVersion:(long long)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

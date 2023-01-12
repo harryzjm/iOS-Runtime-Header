@@ -13,9 +13,9 @@
 + (id)defaultSheetStyleWithContext:(id)arg1;
 + (id)sheetStyleIDForPreset:(unsigned long long)arg1;
 + (id)properties;
-- (void)saveSheetStylePropertiesToArchive:(struct SheetStylePropertiesArchive *)arg1 archiver:(id)arg2;
+- (void)saveSheetStylePropertiesToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadSheetStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct SheetStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
+- (void)loadSheetStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const void *)arg2 unarchiver:(id)arg3;
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned long long)minimumReadVersion;
 - (id)backgroundColor;

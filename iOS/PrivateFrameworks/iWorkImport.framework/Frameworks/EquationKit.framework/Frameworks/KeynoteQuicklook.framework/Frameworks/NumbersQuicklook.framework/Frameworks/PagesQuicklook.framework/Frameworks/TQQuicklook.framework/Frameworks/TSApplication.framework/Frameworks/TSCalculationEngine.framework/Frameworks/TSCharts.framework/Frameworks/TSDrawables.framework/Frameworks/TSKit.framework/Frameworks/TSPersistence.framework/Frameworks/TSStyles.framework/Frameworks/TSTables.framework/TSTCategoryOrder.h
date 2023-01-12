@@ -15,35 +15,35 @@
     TSTColumnRowUIDMap *_uidMap;
 }
 
-+ (UUIDData_5fbc143e)categoryColumnUID;
++ (struct TSKUIDStruct)categoryColumnUID;
 - (void).cxx_destruct;
 @property _Bool isRowOrderTemporary; // @synthesize isRowOrderTemporary=_isRowOrderTemporary;
 @property(retain) TSTColumnRowUIDMap *uidMap; // @synthesize uidMap=_uidMap;
 @property(readonly) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (id)columnRowUIDMap;
-- (vector_4dc5f307)groupUidsGivenRowUids:(const vector_4dc5f307 *)arg1 selectedLevels:(const unordered_map_3e9d252a *)arg2;
-- (void)removeRowUids:(const vector_4dc5f307 *)arg1;
-- (void)insertRowUids:(const vector_4dc5f307 *)arg1 beforeUid:(const UUIDData_5fbc143e *)arg2;
-- (void)saveToArchive:(struct CategoryOrderArchive *)arg1 archiver:(id)arg2;
+- (TSKUIDStructVectorTemplate_de88e035)groupUidsGivenRowUids:(const void *)arg1 selectedLevels:(const void *)arg2;
+- (void)removeRowUids:(const void *)arg1;
+- (void)insertRowUids:(const void *)arg1 beforeUid:(const struct TSKUIDStruct *)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct CategoryOrderArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (vector_4dc5f307)setRowOrderUsingViewOrder;
-- (void)setTemporaryRowOrder:(const vector_4dc5f307 *)arg1;
-- (void)setRowOrder:(const vector_4dc5f307 *)arg1;
-- (vector_4dc5f307)rowOrder;
+- (TSKUIDStructVectorTemplate_de88e035)setRowOrderUsingViewOrder;
+- (void)setTemporaryRowOrder:(const void *)arg1;
+- (void)setRowOrder:(const void *)arg1;
+- (TSKUIDStructVectorTemplate_de88e035)rowOrder;
 - (_Bool)hasValidUidMap;
 - (_Bool)hasValidInfo;
 - (id)sortedArrayFromArray:(id)arg1;
 - (unsigned char)minimumCategoryLevelInRowRange:(struct _NSRange)arg1;
-- (id)targetGroupFromRowIndex:(unsigned int)arg1 minSourceLevel:(unsigned char)arg2 templateRowUID:(UUIDData_5fbc143e *)arg3;
-- (vector_4dc5f307)orderedRowUidsWithLabels;
-- (vector_4dc5f307)orderedRowUidsFromUids:(const vector_4dc5f307 *)arg1;
+- (id)targetGroupFromRowIndex:(unsigned int)arg1 minSourceLevel:(unsigned char)arg2 templateRowUID:(struct TSKUIDStruct *)arg3;
+- (TSKUIDStructVectorTemplate_de88e035)orderedRowUidsWithLabels;
+- (TSKUIDStructVectorTemplate_de88e035)orderedRowUidsFromUids:(const void *)arg1;
 - (id)copyWithContext:(id)arg1 tableInfo:(id)arg2;
 - (id)initWithContext:(id)arg1;
 - (id)initWithTableInfo:(id)arg1;
-- (id)initWithTableInfo:(id)arg1 rowUids:(const vector_4dc5f307 *)arg2;
-- (id)initWithContext:(id)arg1 tableInfo:(id)arg2 rowUids:(const vector_4dc5f307 *)arg3;
+- (id)initWithTableInfo:(id)arg1 rowUids:(const void *)arg2;
+- (id)initWithContext:(id)arg1 tableInfo:(id)arg2 rowUids:(const void *)arg3;
 
 @end
 

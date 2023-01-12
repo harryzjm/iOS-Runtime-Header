@@ -10,6 +10,5 @@
 
 @optional
 - (void)didUpdateReachabilityChangeForCompanion:(_Bool)arg1;
-- (void)didReceiveNewIncomingMessage;
 @end
 

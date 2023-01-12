@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIImage;
+
 @interface HUCheckmarkCell
 {
     _Bool _checked;
+    UIImage *_checkedImage;
+    UIImage *_uncheckedImage;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *uncheckedImage; // @synthesize uncheckedImage=_uncheckedImage;
+@property(retain, nonatomic) UIImage *checkedImage; // @synthesize checkedImage=_checkedImage;
 @property(nonatomic) _Bool checked; // @synthesize checked=_checked;
 - (id)description;
 - (void)prepareForReuse;

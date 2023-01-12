@@ -6,10 +6,11 @@
 
 #import <Foundation/NSCoder.h>
 
-@class NSDictionary, NSMutableArray;
+@class NSDictionary, NSMutableArray, NSSet;
 
 @interface HKSPDictionaryDeserializer : NSCoder
 {
+    NSSet *_allowedClasses;
     unsigned long long _serializationOptions;
     NSDictionary *_serializedDictionary;
     NSMutableArray *_stack;
@@ -19,9 +20,10 @@
 @property(readonly, nonatomic) NSMutableArray *stack; // @synthesize stack=_stack;
 @property(readonly, nonatomic) NSDictionary *serializedDictionary; // @synthesize serializedDictionary=_serializedDictionary;
 @property(readonly, nonatomic) unsigned long long serializationOptions; // @synthesize serializationOptions=_serializationOptions;
+@property(readonly, nonatomic) NSSet *allowedClasses; // @synthesize allowedClasses=_allowedClasses;
 - (unsigned long long)hksp_serializationOptions;
-- (id)_decodeDeserializable:(id)arg1;
-- (id)_decodeObject:(id)arg1;
+- (id)_decodeDeserializable:(id)arg1 error:(id *)arg2;
+- (id)_decodeObject:(id)arg1 error:(id *)arg2;
 - (id)decodeObjectForKey:(id)arg1;
 - (double)decodeDoubleForKey:(id)arg1;
 - (float)decodeFloatForKey:(id)arg1;
@@ -33,8 +35,8 @@
 - (_Bool)allowsKeyedCoding;
 - (id)decodeTopLevelObjectOfClass:(Class)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (id)deserializeObjectOfClass:(Class)arg1 error:(id *)arg2;
-- (id)initWithSerializedDictionary:(id)arg1 serializationOptions:(unsigned long long)arg2;
-- (id)initWithSerializedDictionary:(id)arg1;
+- (id)initWithAllowedClasses:(id)arg1 serializedDictionary:(id)arg2 serializationOptions:(unsigned long long)arg3;
+- (id)initWithAllowedClasses:(id)arg1 serializedDictionary:(id)arg2;
 
 @end
 

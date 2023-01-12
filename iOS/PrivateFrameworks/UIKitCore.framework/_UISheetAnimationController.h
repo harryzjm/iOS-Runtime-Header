@@ -22,15 +22,17 @@
     id <UIViewControllerContextTransitioning> _transitionContext;
     UIView *_forwardView;
     UIViewPropertyAnimator *_propertyAnimator;
-    struct CGPoint _offset;
+    CDUnknownBlockType _defaultSourceFrameProvider;
     struct CGPoint _attachmentPoint;
     struct CGRect _sourceFrame;
     struct CGRect _forwardViewFullFrame;
+    struct CGRect _interactiveFrame;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) struct CGPoint attachmentPoint; // @synthesize attachmentPoint=_attachmentPoint;
-@property(nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
+@property(nonatomic) struct CGRect interactiveFrame; // @synthesize interactiveFrame=_interactiveFrame;
+@property(copy, nonatomic) CDUnknownBlockType defaultSourceFrameProvider; // @synthesize defaultSourceFrameProvider=_defaultSourceFrameProvider;
 @property(nonatomic) _Bool scalesDownForwardView; // @synthesize scalesDownForwardView=_scalesDownForwardView;
 @property(retain, nonatomic) UIViewPropertyAnimator *propertyAnimator; // @synthesize propertyAnimator=_propertyAnimator;
 @property(nonatomic) _Bool isInInitialLayout; // @synthesize isInInitialLayout=_isInInitialLayout;

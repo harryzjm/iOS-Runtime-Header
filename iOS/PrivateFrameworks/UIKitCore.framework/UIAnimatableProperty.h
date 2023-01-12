@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     id <UIVectorOperatable> _pendingTargetVelocity;
     id <UIVectorOperatable> _pendingVelocity;
     _Bool _invalidated;
+    _Bool _velocityUsableForVFD;
     int _ownershipCount;
     id _value;
     id _presentationValue;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isVelocityUsableForVFD) _Bool velocityUsableForVFD; // @synthesize velocityUsableForVFD=_velocityUsableForVFD;
 @property(copy, nonatomic) CDUnknownBlockType invalidationCallback; // @synthesize invalidationCallback=_invalidationCallback;
 @property(nonatomic) int ownershipCount; // @synthesize ownershipCount=_ownershipCount;
 @property(nonatomic) __weak UIViewInProcessAnimationState *animationState; // @synthesize animationState=_animationState;

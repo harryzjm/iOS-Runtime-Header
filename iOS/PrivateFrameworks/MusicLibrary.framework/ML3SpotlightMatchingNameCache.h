@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface ML3SpotlightMatchingNameCache : NSObject
 {
-    unordered_set_da619913 _matchingSet;
+    struct unordered_set<long long, std::hash<long long>, std::equal_to<long long>, std::allocator<long long>> _matchingSet;
     NSString *_matchString;
     _Bool _idle;
     ML3MusicLibrary *_library;

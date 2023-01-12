@@ -6,7 +6,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CNChangeHistoryDifferentMeCardEvent
 {
     NSString *_contactIdentifier;

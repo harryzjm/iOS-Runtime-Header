@@ -13,7 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSObject<OS_dispatch_queue> *fCallbackQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     CDUnknownBlockType fHandler;
     CMOdometerSuitabilityManager *_odometerSuitabilityManager;
     double _startDate;

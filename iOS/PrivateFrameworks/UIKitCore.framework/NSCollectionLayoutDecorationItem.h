@@ -28,6 +28,7 @@
 @property(retain, nonatomic) NSCollectionLayoutAnchor *containerAnchor; // @synthesize containerAnchor=_containerAnchor;
 @property(retain, nonatomic) NSString *elementKind; // @synthesize elementKind=_elementKind;
 @property(nonatomic) long long zIndex; // @synthesize zIndex=_zIndex;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets _effectiveContentInsets;
 @property(readonly, nonatomic) NSCollectionLayoutDecorationItem *decorationItem;
 @property(readonly, nonatomic) NSCollectionLayoutBoundarySupplementaryItem *boundarySupplementaryItem;
 @property(readonly, nonatomic) NSCollectionLayoutSupplementaryItem *supplementaryItem;
@@ -37,7 +38,6 @@
 - (id)initWithElementKind:(id)arg1 size:(id)arg2 contentInsets:(struct NSDirectionalEdgeInsets)arg3 containerAnchor:(id)arg4 itemAnchor:(id)arg5 zIndex:(long long)arg6 registrationViewClass:(Class)arg7 isBackgroundDecoration:(_Bool)arg8;
 
 // Remaining properties
-@property(readonly, nonatomic) struct NSDirectionalEdgeInsets _effectiveContentInsets;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets contentInsets;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

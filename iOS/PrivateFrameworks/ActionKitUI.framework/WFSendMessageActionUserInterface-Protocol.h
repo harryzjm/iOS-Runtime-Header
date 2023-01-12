@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSData, NSString;
 
-@protocol WFSendMessageActionUserInterface <WFRemoteUserInterface>
-- (void)showWithRecipients:(NSArray *)arg1 content:(NSString *)arg2 attachments:(NSArray *)arg3 completionHandler:(void (^)(WFSendUserInterfaceResult *, NSError *))arg4;
+@protocol WFSendMessageActionUserInterface <WFActionRemoteUserInterface>
+- (void)showWithRecipients:(NSArray *)arg1 content:(NSString *)arg2 attachments:(NSData *)arg3 completionHandler:(void (^)(WFSendUserInterfaceResult *, NSError *))arg4;
 @end
 

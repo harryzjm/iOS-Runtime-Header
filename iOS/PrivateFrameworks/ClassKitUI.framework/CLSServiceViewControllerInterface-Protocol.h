@@ -7,5 +7,6 @@
 #import <ClassKitUI/NSObject-Protocol.h>
 
 @protocol CLSServiceViewControllerInterface <NSObject>
+- (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(void (^)(void))arg2;
 @end
 

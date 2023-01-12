@@ -17,7 +17,6 @@
 - (id)icon;
 - (id)backgroundColorOverride;
 - (id)previewItemTitle;
-- (id)pasteboardItem;
 
 @end
 

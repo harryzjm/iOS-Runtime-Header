@@ -24,12 +24,16 @@
     unsigned long long _indexOfSelectedSizeClass;
     id <SBHWidgetWrapperViewControllerDelegate> _delegate;
     SBIconView *_iconView;
+    CDUnknownBlockType _defaultBackgroundViewProvider;
+    CDUnknownBlockType _defaultBackgroundViewConfigurator;
     struct CGSize _contentSize;
     struct CGAffineTransform _contentTransform;
     struct CGAffineTransform _shadowTransform;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType defaultBackgroundViewConfigurator; // @synthesize defaultBackgroundViewConfigurator=_defaultBackgroundViewConfigurator;
+@property(copy, nonatomic) CDUnknownBlockType defaultBackgroundViewProvider; // @synthesize defaultBackgroundViewProvider=_defaultBackgroundViewProvider;
 @property(nonatomic, getter=isDragging) _Bool dragging; // @synthesize dragging=_dragging;
 @property(readonly, nonatomic) SBIconView *iconView; // @synthesize iconView=_iconView;
 @property(nonatomic) _Bool titleAndSubtitleVisible; // @synthesize titleAndSubtitleVisible=_titleAndSubtitleVisible;
@@ -49,9 +53,12 @@
 - (void)iconTouchBegan:(id)arg1;
 - (void)_configureCustomImageViewController:(id)arg1;
 - (id)_widgetDragHandler;
+- (CDUnknownBlockType)_widgetBackgroundViewProvider;
+- (CDUnknownBlockType)_widgetBackgroundViewConfigurator;
 - (void)_configureIconView:(id)arg1 forIcon:(id)arg2;
 - (void)_updateAvocadoHostViewController;
-- (void)_removeIconView;
+- (void)_removeIconViewKeepObserving:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)setGalleryItem:(id)arg1;
 @property(nonatomic) long long selectedSizeClass;
 @property(readonly, nonatomic) SBHWidgetWrapperView *wrapperView;

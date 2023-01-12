@@ -25,9 +25,9 @@
 - (_Bool)isTextFormat;
 - (double)scaleFactor;
 - (_Bool)usesAccountingStyle;
-- (int)fractionAccuracy;
+- (BOOL)fractionAccuracy;
 - (_Bool)showThousandsSeparator;
-- (int)negativeStyle;
+- (unsigned char)negativeStyle;
 - (NSString *)currencyCode;
 - (NSString *)formatString;
 - (NSString *)suffixString;

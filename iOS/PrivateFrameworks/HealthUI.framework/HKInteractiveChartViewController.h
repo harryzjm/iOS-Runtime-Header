@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKChartOverlayVersionProviding-Protocol.h>
 #import <HealthUI/HKCurrentTimeViewDelegate-Protocol.h>
 #import <HealthUI/HKCurrentValueViewDataSourceDelegate-Protocol.h>
 #import <HealthUI/HKGraphViewDelegate-Protocol.h>
@@ -15,10 +16,10 @@
 #import <HealthUI/HKSampleTypeDateRangeControllerObserver-Protocol.h>
 #import <HealthUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HKChartDataCacheController, HKCurrentTimeView, HKCurrentValueViewDataSource, HKDateCache, HKDisplayCategoryController, HKDisplayType, HKDisplayTypeController, HKGraphViewController, HKHealthStore, HKInteractiveChartAnnotationViewDataSource, HKLollipopController, HKSampleType, HKSampleTypeDateRangeController, HKSelectedRangeFormatter, HKSelectedTimeScopeController, HKTimeScopeControl, HKUIDateLabel, HKUnitPreferenceController, HKValueRange, NSArray, NSDate, NSMutableArray, NSString, UIColor, UIFont, UIImpactFeedbackGenerator, UILabel, UIView;
+@class HKChartDataCacheController, HKCurrentTimeView, HKCurrentValueViewDataSource, HKDateCache, HKDisplayCategoryController, HKDisplayType, HKDisplayTypeController, HKGraphViewController, HKHealthStore, HKInteractiveChartAnnotationViewDataSource, HKLollipopController, HKSampleType, HKSampleTypeDateRangeController, HKSelectedRangeFormatter, HKSelectedTimeScopeController, HKTimeScopeControl, HKUIDateLabel, HKUnitPreferenceController, NSArray, NSCalendar, NSDate, NSDictionary, NSMutableArray, NSString, NSUserActivity, UIColor, UIFont, UIImpactFeedbackGenerator, UILabel, UIView;
 @protocol HKCurrentValueViewDataSourceDelegate, HKInteractiveChartCurrentValueViewCallbacks, HKInteractiveChartCurrentValueViewHandler;
 
-@interface HKInteractiveChartViewController <HKGraphViewDelegate, HKSampleTypeDateRangeControllerObserver, HKCurrentTimeViewDelegate, HKInteractiveChartAnnotationViewDelegate, UIGestureRecognizerDelegate, HKMonthViewControllerDelegate, HKLollipopDelegate, HKInteractiveChartCurrentValueViewHandler, HKInteractiveChartCurrentValueViewCallbacks, HKCurrentValueViewDataSourceDelegate>
+@interface HKInteractiveChartViewController <HKGraphViewDelegate, HKSampleTypeDateRangeControllerObserver, HKCurrentTimeViewDelegate, HKInteractiveChartAnnotationViewDelegate, UIGestureRecognizerDelegate, HKMonthViewControllerDelegate, HKLollipopDelegate, HKInteractiveChartCurrentValueViewHandler, HKInteractiveChartCurrentValueViewCallbacks, HKCurrentValueViewDataSourceDelegate, HKChartOverlayVersionProviding>
 {
     NSMutableArray *_observers;
     long long _displayState;
@@ -41,8 +42,9 @@
     HKGraphViewController *_primaryGraphViewController;
     NSDate *_creationDate;
     unsigned long long _options;
-    HKValueRange *_fixedRange;
     double _lastDateValueRangeUpdate;
+    _Bool _disableCurrentValueViewForInitialLollipop;
+    NSCalendar *_currentCalendar;
     HKHealthStore *_healthStore;
     HKUnitPreferenceController *_unitPreferenceController;
     HKDateCache *_dateCache;
@@ -54,6 +56,8 @@
     HKSampleTypeDateRangeController *_sampleTypeDateRangeController;
     id <HKInteractiveChartCurrentValueViewHandler> _currentValueViewHandler;
     id <HKCurrentValueViewDataSourceDelegate> _currentValueViewDataSourceDelegate;
+    NSUserActivity *_restorationUserActivity;
+    long long _annotationDataSourceFirstWeekday;
     HKInteractiveChartAnnotationViewDataSource *_annotationDataSource;
     HKLollipopController *_lollipopController;
     double _legendBottomLocation;
@@ -65,11 +69,21 @@
     long long _delayedAutoscaleActualCount;
     CDUnknownBlockType _startupReportingBlock;
     id <HKInteractiveChartCurrentValueViewCallbacks> _standardCurrentValueViewCallbacks;
+    NSDictionary *_timeScopeRanges;
 }
 
++ (void)saveRestorationUserActivity:(id)arg1 viewController:(id)arg2;
++ (id)baseRestorationUserActivity:(id)arg1 activityType:(id)arg2 title:(id)arg3;
++ (id)standardChartRestorationActivity:(id)arg1 primaryDisplayType:(id)arg2;
++ (id)mergeRestorationDictionary:(id)arg1 otherDictionary:(id)arg2;
++ (id)_encodeCurrentProfileIdentifierForHealthStore:(id)arg1;
++ (id)standardChartRestorationDictionary:(id)arg1 healthStore:(id)arg2;
 + (long long)_timeScopeForTimeScope:(long long)arg1 availableTimeScopes:(id)arg2;
-+ (id)_timeScopesWithOptions:(unsigned long long)arg1;
++ (_Bool)_timeScope:(long long)arg1 inTimeScopeRanges:(id)arg2;
++ (id)_timeScopesWithOptions:(unsigned long long)arg1 timeScopeRanges:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *timeScopeRanges; // @synthesize timeScopeRanges=_timeScopeRanges;
+@property(nonatomic) _Bool disableCurrentValueViewForInitialLollipop; // @synthesize disableCurrentValueViewForInitialLollipop=_disableCurrentValueViewForInitialLollipop;
 @property(nonatomic) __weak id <HKInteractiveChartCurrentValueViewCallbacks> standardCurrentValueViewCallbacks; // @synthesize standardCurrentValueViewCallbacks=_standardCurrentValueViewCallbacks;
 @property(copy, nonatomic) CDUnknownBlockType startupReportingBlock; // @synthesize startupReportingBlock=_startupReportingBlock;
 @property(nonatomic) long long delayedAutoscaleActualCount; // @synthesize delayedAutoscaleActualCount=_delayedAutoscaleActualCount;
@@ -81,6 +95,8 @@
 @property(nonatomic) double legendBottomLocation; // @synthesize legendBottomLocation=_legendBottomLocation;
 @property(retain, nonatomic) HKLollipopController *lollipopController; // @synthesize lollipopController=_lollipopController;
 @property(retain, nonatomic) HKInteractiveChartAnnotationViewDataSource *annotationDataSource; // @synthesize annotationDataSource=_annotationDataSource;
+@property(nonatomic) long long annotationDataSourceFirstWeekday; // @synthesize annotationDataSourceFirstWeekday=_annotationDataSourceFirstWeekday;
+@property(readonly, nonatomic) NSUserActivity *restorationUserActivity; // @synthesize restorationUserActivity=_restorationUserActivity;
 @property(nonatomic) __weak id <HKCurrentValueViewDataSourceDelegate> currentValueViewDataSourceDelegate; // @synthesize currentValueViewDataSourceDelegate=_currentValueViewDataSourceDelegate;
 @property(nonatomic) __weak id <HKInteractiveChartCurrentValueViewHandler> currentValueViewHandler; // @synthesize currentValueViewHandler=_currentValueViewHandler;
 @property(readonly, nonatomic) HKSampleTypeDateRangeController *sampleTypeDateRangeController; // @synthesize sampleTypeDateRangeController=_sampleTypeDateRangeController;
@@ -92,14 +108,20 @@
 @property(readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitPreferenceController; // @synthesize unitPreferenceController=_unitPreferenceController;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property(readonly, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
 @property(readonly, nonatomic) HKGraphViewController *primaryGraphViewController; // @synthesize primaryGraphViewController=_primaryGraphViewController;
+@property(readonly, nonatomic) NSString *chartOverlayVersion;
+- (void)saveRestorationState;
+- (id)restorationStateDictionary;
+- (void)restoreUserActivityState:(id)arg1;
+- (void)setRestorationUserActivity:(id)arg1;
 - (void)selectTimeScope:(long long)arg1;
 - (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(id)arg2;
 - (void)_updateGraphViewAxisDateRange;
 - (id)_dateForMostRecentData;
 - (id)_defaultAxisRangeIncludeToday:(_Bool)arg1;
 - (void)_automaticAutoScale;
-- (void)_updateCurrentValueViewWithVisibleRange;
+- (void)updateCurrentValueViewWithVisibleRange;
 - (_Bool)_primaryDisplayTypeHasNoData;
 - (id)_formatterForSeries:(id)arg1;
 - (id)_chartDataForPoint:(id)arg1;
@@ -126,20 +148,24 @@
 @property(readonly) UIColor *calendarDaySamplePresentColor;
 @property(readonly) HKSampleType *calendarQuerySampleType;
 @property(readonly) HKDisplayType *calendarQueryDisplayType;
+- (void)graphViewExternalSelectionEnd:(id)arg1;
 - (void)graphView:(id)arg1 startupTime:(long long)arg2;
 - (_Bool)_viewHierarchyIsHidden:(id)arg1;
 - (long long)_defaultAlignmentForTimeScope:(long long)arg1;
 - (void)_scrollToMostRecentDataWithAlignment:(long long)arg1;
+- (void)scrollToRange:(id)arg1 withVisibleAlignment:(long long)arg2;
+- (void)scrollToDate:(id)arg1 withVisibleAlignment:(long long)arg2;
 - (void)scrollToMostRecentData;
 - (void)graphViewDidTapYAxis:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;
-- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3;
+- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3 changeContext:(long long)arg4;
 - (void)graphView:(id)arg1 didUpdateYAxisWidth:(double)arg2 toWidth:(double)arg3;
 - (void)graphViewSizeChanged:(id)arg1;
 - (void)graphView:(id)arg1 didFinishUserScrollingToValueRange:(id)arg2;
 - (void)_scheduleDelayedAutoscale;
 - (void)graphView:(id)arg1 didUpdateVisibleValueRange:(id)arg2 changeContext:(long long)arg3;
+- (_Bool)_shouldHandleVisibleRangeChangeWithChangeContext:(long long)arg1;
 - (void)_notifyObserversDidUpdateVisibleValueRange:(id)arg1 changeContext:(long long)arg2;
 - (id)graphView:(id)arg1 graphSeriesForZoom:(long long)arg2 stackOffset:(long long)arg3;
 - (long long)stackCountForGraphView:(id)arg1;
@@ -152,12 +178,12 @@
 - (id)_pointSelectionInfo:(id)arg1;
 - (_Bool)_shouldShowDateRangeForSelectedPointDateLabel;
 - (void)graphViewDidBeginSelection:(id)arg1;
+- (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(id)arg1;
 - (long long)_dateZoom;
 - (void)_createAndPrepareFeedbackGenerator;
 - (id)_configurationForDisplayType:(id)arg1;
 - (id)_configurationForSeries:(id)arg1;
 - (void)_setSelectedGraphSeries:(id)arg1 animated:(_Bool)arg2;
-- (id)makeAnnotationDataSourceWithMetrics:(id)arg1;
 - (id)makeAnnotationDataSource;
 - (double)lollipopExtensionLength;
 - (id)lollipopExtensionColor;
@@ -176,11 +202,13 @@
 - (id)_createGraphSeriesConfigurationFromDisplayType:(id)arg1 timeScope:(long long)arg2;
 - (long long)_countOfHorizontalSectionsForConfigurationManager:(id)arg1 timeScope:(long long)arg2;
 - (void)_addSeriesForDisplayType:(id)arg1 updatingTimeScopeProperties:(id)arg2 configurationManager:(id)arg3;
-- (_Bool)_shouldHideSeriesForDisplayType:(id)arg1;
 - (_Bool)_displayTypeIsHorizontalForTimeScope:(long long)arg1 displayType:(id)arg2;
 - (long long)_numHorizontalDisplayTypesForTimeScope:(long long)arg1 displayTypes:(id)arg2;
-- (void)_configureCustomDisplayType:(id)arg1 graphSeries:(id)arg2 configurationManager:(id)arg3;
+- (void)_configureCustomDisplayType:(id)arg1 graphSeries:(id)arg2 configurationManager:(id)arg3 timeScope:(long long)arg4;
 - (id)_customGraphSeriesForDisplayType:(id)arg1;
+- (_Bool)removeDisplayTypeStackAtIndex:(long long)arg1;
+- (void)removeAllStackedDisplayTypes;
+- (long long)addNewDisplayTypeStackWithDisplayTypes:(id)arg1;
 - (void)_setVisibleDisplayTypes:(id)arg1;
 - (void)_updateAfterConfigurationChangeIncludeDateAxis:(_Bool)arg1;
 - (void)_addDisplayTypeToConfiguration:(id)arg1 allDisplayTypes:(id)arg2 configurationManager:(id)arg3;
@@ -193,6 +221,7 @@
 - (void)_updateAxisScalingRulesForUnitPreferenceChangesOfTypes:(id)arg1;
 - (void)unitPreferencesWillUpdate:(id)arg1;
 - (void)_unitPreferencesDidUpdate:(id)arg1;
+- (void)_handleInitialLollipopSelection;
 - (void)_handleVisibleRangeChange;
 - (void)_configureSelectedRangeFormatterWithChartRangeProvider;
 - (void)_replacePrimaryGraphViewControllerWithScalarController;
@@ -204,6 +233,9 @@
 - (void)_setGraphViewAxisAndVisibleDateRangeForTimeScope:(long long)arg1 anchorDate:(id)arg2 preserveScrollPosition:(_Bool)arg3;
 - (_Bool)_valueRange:(id)arg1 fitsInsideValueRange:(id)arg2;
 - (id)visibleRangeForTimeScope:(long long)arg1 proposedRange:(id)arg2;
+- (id)fixedRangeForTimeScope:(long long)arg1;
+- (id)_singleFixedRange;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (_Bool)_selectedSeriesWantsLastRecordedDate;
 - (long long)_defaultTimeScopeWithAvailableTimeScopes:(id)arg1;
@@ -219,6 +251,8 @@
 - (double)_effectiveHorizontalMargin;
 - (void)loadView;
 - (void)dealloc;
+- (_Bool)_drawsGridlinesPerSeriesGroup;
+- (_Bool)_prefersOpaqueLegends;
 - (_Bool)_tilingDisabled;
 @property(readonly, nonatomic) double dateSelectorHeight;
 - (_Bool)_currentValueEnabled;
@@ -231,6 +265,7 @@
 - (void)setDetailView:(id)arg1;
 - (id)graphSeriesForDisplayType:(id)arg1 timeScope:(long long)arg2 stackOffset:(long long)arg3;
 - (id)currentDisplayTypesForStackOffset:(long long)arg1;
+- (void)removeOverlayDisplayType:(id)arg1 stackOffset:(long long)arg2 automaticAutoscale:(_Bool)arg3;
 - (void)removeOverlayDisplayType:(id)arg1 stackOffset:(long long)arg2;
 - (void)addOverlayDisplayType:(id)arg1 stackOffset:(long long)arg2;
 - (void)replaceCurrentDisplayTypesWithTypes:(id)arg1 stackOffset:(long long)arg2 resetDateRange:(_Bool)arg3;
@@ -243,14 +278,13 @@
 - (id)_dateForXCoordinate:(double)arg1 graphView:(id)arg2;
 - (id)descriptionForXCoordinate:(double)arg1 graphView:(id)arg2;
 - (id)_rangeValueAsNumber:(id)arg1;
-- (id)descriptionSpansForGraphView:(id)arg1;
+- (id)descriptionSpansForGraphView:(id)arg1 timeScope:(long long)arg2;
 - (id)descriptionSeriesForGraphView:(id)arg1;
 - (_Bool)_date:(id)arg1 closeToDate:(id)arg2 epsilonDateComponents:(id)arg3 calendar:(id)arg4;
 - (id)_addNoDataEntries:(id)arg1 timeScope:(long long)arg2;
 - (id)accessibilityDataForChart;
-- (id)initWithDisplayTypes:(id)arg1 healthStore:(id)arg2 unitPreferenceController:(id)arg3 dateCache:(id)arg4 chartDataCacheController:(id)arg5 selectedTimeScopeController:(id)arg6 sampleTypeDateRangeController:(id)arg7 initialXValue:(id)arg8 options:(unsigned long long)arg9 fixedRange:(id)arg10;
-- (id)initWithDisplayTypes:(id)arg1 healthStore:(id)arg2 unitPreferenceController:(id)arg3 dateCache:(id)arg4 chartDataCacheController:(id)arg5 selectedTimeScopeController:(id)arg6 sampleTypeDateRangeController:(id)arg7 initialXValue:(id)arg8 options:(unsigned long long)arg9;
-- (id)initWithStackedDisplayTypes:(id)arg1 healthStore:(id)arg2 unitPreferenceController:(id)arg3 dateCache:(id)arg4 chartDataCacheController:(id)arg5 selectedTimeScopeController:(id)arg6 sampleTypeDateRangeController:(id)arg7 initialXValue:(id)arg8 options:(unsigned long long)arg9;
+- (id)initWithDisplayTypes:(id)arg1 healthStore:(id)arg2 unitPreferenceController:(id)arg3 dateCache:(id)arg4 chartDataCacheController:(id)arg5 selectedTimeScopeController:(id)arg6 sampleTypeDateRangeController:(id)arg7 initialXValue:(id)arg8 currentCalendarOverride:(id)arg9 options:(unsigned long long)arg10;
+- (id)initWithStackedDisplayTypes:(id)arg1 healthStore:(id)arg2 unitPreferenceController:(id)arg3 dateCache:(id)arg4 chartDataCacheController:(id)arg5 selectedTimeScopeController:(id)arg6 sampleTypeDateRangeController:(id)arg7 initialXValue:(id)arg8 currentCalendarOverride:(id)arg9 options:(unsigned long long)arg10 timeScopeRanges:(id)arg11;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

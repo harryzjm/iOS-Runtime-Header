@@ -6,13 +6,14 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NSObject, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMFMessage, NSObject, NSUUID;
+@protocol HMFDispatchExecutor, OS_dispatch_queue;
 
 @protocol HMFMessageReceiver <NSObject>
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 
 @optional
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+- (id <HMFDispatchExecutor>)dispatchContextForMessage:(HMFMessage *)arg1;
 @end
 

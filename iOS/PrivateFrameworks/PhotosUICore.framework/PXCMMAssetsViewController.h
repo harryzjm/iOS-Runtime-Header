@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXActionManagerProvider-Protocol.h>
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXAssetsSceneDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMBannerTileControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMEngineDrivenLayoutDelegate-Protocol.h>
-#import <PhotosUICore/PXCMMFooterViewModelActionDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMProgressBannerViewDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXContextualNotificationDelegate-Protocol.h>
@@ -19,10 +19,10 @@
 #import <PhotosUICore/PXSwipeSelectionManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXTileSource-Protocol.h>
 
-@class NSArray, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicTileAnimator, PXCMMBannerTileController, PXCMMFooterViewModel, PXCMMProgressBannerView, PXCMMSendBackBannerView, PXCMMSendBackSuggestionSource, PXCMMSpec, PXCMMSpecManager, PXCMMStatusController, PXContextualNotification, PXLayoutGenerator, PXMomentShareStatusPresentation, PXOneUpPresentation, PXPhotosGlobalFooterView, PXSectionedLayoutEngine, PXSwipeSelectionManager, PXTilingController, PXUIAssetsScene, PXUIScrollViewController, PXUITapGestureRecognizer, PXUpdater, UILongPressGestureRecognizer;
+@class NSArray, NSMutableSet, NSSet, NSString, PXActionManager, PXAssetReference, PXBasicTileAnimator, PXCMMBannerTileController, PXCMMFooterViewModel, PXCMMProgressBannerView, PXCMMSendBackBannerView, PXCMMSendBackSuggestionSource, PXCMMSpec, PXCMMSpecManager, PXCMMStatusController, PXContextualNotification, PXLayoutGenerator, PXMomentShareStatusPresentation, PXOneUpPresentation, PXPhotosGlobalFooterView, PXSectionedLayoutEngine, PXSwipeSelectionManager, PXTilingController, PXUIAssetsScene, PXUIScrollViewController, PXUITapGestureRecognizer, PXUpdater, UILongPressGestureRecognizer;
 @protocol PXCMMAssetsViewControllerDelegate;
 
-@interface PXCMMAssetsViewController <PXActionPerformerDelegate, PXAssetsSceneDelegate, PXCMMBannerTileControllerDelegate, PXCMMEngineDrivenLayoutDelegate, PXCMMFooterViewModelActionDelegate, PXCMMProgressBannerViewDelegate, PXChangeObserver, PXContextualNotificationDelegate, PXOneUpPresentationDelegate, PXPhotosGlobalFooterViewDelegate, PXScrollViewControllerObserver, PXStatusViewDelegate, PXSwipeSelectionManagerDelegate, PXTileSource>
+@interface PXCMMAssetsViewController <PXActionManagerProvider, PXActionPerformerDelegate, PXAssetsSceneDelegate, PXCMMBannerTileControllerDelegate, PXCMMEngineDrivenLayoutDelegate, PXCMMProgressBannerViewDelegate, PXChangeObserver, PXContextualNotificationDelegate, PXOneUpPresentationDelegate, PXPhotosGlobalFooterViewDelegate, PXScrollViewControllerObserver, PXStatusViewDelegate, PXSwipeSelectionManagerDelegate, PXTileSource>
 {
     PXUpdater *_updater;
     PXLayoutGenerator *_layoutGenerator;
@@ -56,6 +56,7 @@
     _Bool _sendBackNotificationWasDiscarded;
     _Bool _sendBackNotificationWasTapped;
     _Bool _receivingActionButtonWasTapped;
+    _Bool _didReportSendBackNotificationMissingAssetFault;
     _Bool _didIncrementNumberOfPresentableSendBacks;
     _Bool _didIncrementNumberOfPresentedSendBacks;
     _Bool _isWaitingForSendBackPresentationConfirmationTimeout;
@@ -82,6 +83,7 @@
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 - (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
+@property(readonly, nonatomic) PXActionManager *assetActionManager;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)contextualNotificationDidDisappear:(id)arg1;
 - (void)contextualNotificationDidAppear:(id)arg1;
@@ -89,7 +91,6 @@
 - (void)contextualNotificationWasTapped:(id)arg1;
 - (id)preferredContainerViewForContextualNotification:(id)arg1;
 - (struct CGRect)contextualNotification:(id)arg1 containingFrameInCoordinateSpace:(id)arg2;
-- (void)didPerformDeletionActionForFooterViewModel:(id)arg1;
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (void)didTapActionButtonInBannerTileController:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
@@ -117,7 +118,7 @@
 - (void)_preferredContentSizeChanged:(id)arg1;
 - (void)_updateLayoutEngine;
 - (void)_updateSendBackNotification;
-- (void)presentSendBackNotification;
+- (void)_presentSendBackNotification;
 - (_Bool)_isSendBackBannerViewContentsFullyVisible;
 - (_Bool)_isSendBackBannerViewContentsAtAllVisible;
 - (_Bool)_canShowSendBackSuggestion;
@@ -168,8 +169,10 @@
 - (struct PXSimpleIndexPath)_assetIndexPathAtLocation:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
 - (id)_assetReferenceAtPoint:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
 - (void)_toggleAssetSelectionAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)_handleSpaceBar:(id)arg1;
 - (void)_handleLongPress:(id)arg1;
 - (void)_handleTap:(id)arg1;
+@property(readonly, nonatomic) PXAssetReference *_focusedAssetReference;
 - (void)_transitionLayoutGesture:(id)arg1;
 - (void)_updateGestures;
 - (void)_updateStyle;

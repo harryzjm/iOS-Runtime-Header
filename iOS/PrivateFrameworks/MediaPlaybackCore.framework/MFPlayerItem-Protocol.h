@@ -7,6 +7,7 @@
 @class AVPlayerItem, NSString, NSURL;
 
 @protocol MFPlayerItem
+@property(readonly, nonatomic) double time;
 @property(readonly, nonatomic) _Bool prefersSeekOverSkip;
 @property(readonly, copy, nonatomic) NSString *description;
 @property(readonly, nonatomic) _Bool isFullyDownloaded;

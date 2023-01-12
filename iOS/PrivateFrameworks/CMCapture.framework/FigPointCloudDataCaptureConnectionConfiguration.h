@@ -7,8 +7,10 @@
 @interface FigPointCloudDataCaptureConnectionConfiguration
 {
     int _projectorMode;
+    _Bool _supplementalPointCloudData;
 }
 
+@property(nonatomic) _Bool supplementalPointCloudData; // @synthesize supplementalPointCloudData=_supplementalPointCloudData;
 @property(nonatomic) int projectorMode; // @synthesize projectorMode=_projectorMode;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

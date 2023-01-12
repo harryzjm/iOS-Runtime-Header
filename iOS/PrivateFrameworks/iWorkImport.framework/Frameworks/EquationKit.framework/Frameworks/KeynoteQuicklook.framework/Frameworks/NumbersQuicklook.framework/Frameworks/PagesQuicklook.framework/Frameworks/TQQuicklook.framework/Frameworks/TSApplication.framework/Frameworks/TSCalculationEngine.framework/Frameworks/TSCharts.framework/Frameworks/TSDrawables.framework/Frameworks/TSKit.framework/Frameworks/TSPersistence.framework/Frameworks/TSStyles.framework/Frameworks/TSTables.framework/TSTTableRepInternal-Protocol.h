@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, TSDTilingLayer, TSTSelectionDragController, TSTTableReferences;
+@class NSSet, TSTSelectionDragController, TSTTableReferences;
 
 @protocol TSTTableRepInternal
 @property(copy, nonatomic) NSSet *visibleFillKnobs;
@@ -17,9 +17,6 @@
 @property(readonly, nonatomic) _Bool aspectOperationIsInProgress;
 @property(readonly, nonatomic) TSTTableReferences *references;
 @property(nonatomic) struct TSUCellCoord ratingsDragCellID;
-@property(readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderColumns;
-@property(readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderCorner;
-@property(readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderRows;
 @property(nonatomic) struct CGRect searchSelectionBounds;
 @end
 

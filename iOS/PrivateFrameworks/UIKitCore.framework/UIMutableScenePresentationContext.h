@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString, UIColor, UIScenePresentationContext, UITransformer;
+@class NSSet, NSString, UIColor, UISceneAsynchronousRenderingOptions, UIScenePresentationContext, UITransformer;
 
 @interface UIMutableScenePresentationContext
 {
@@ -21,6 +21,7 @@
 - (void)removeAllLayerPresentationOverrides;
 - (void)removeLayerPresentationOverrideForLayerTarget:(id)arg1;
 - (void)modifyLayerPresentationOverrideContextForLayerTarget:(id)arg1 block:(CDUnknownBlockType)arg2;
+@property(copy, nonatomic) UISceneAsynchronousRenderingOptions *asynchronousRenderingOptions; // @dynamic asynchronousRenderingOptions;
 @property(nonatomic) unsigned long long renderingMode; // @dynamic renderingMode;
 @property(copy, nonatomic) UITransformer *hostTransformer; // @dynamic hostTransformer;
 @property(copy, nonatomic) UIColor *backgroundColorWhileNotHosting; // @dynamic backgroundColorWhileNotHosting;

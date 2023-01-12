@@ -12,28 +12,26 @@
 
 @interface PKStrokeProviderSliceIdentifier : NSObject <CHStrokeIdentifier>
 {
+    NSUUID *_strokeUUID;
     double _tStart;
     double _tEnd;
-    NSUUID *_strokeUUID;
-    struct _PKStrokeID _version;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct _PKStrokeID version; // @synthesize version=_version;
-@property(readonly, nonatomic) NSUUID *strokeUUID; // @synthesize strokeUUID=_strokeUUID;
 @property(readonly, nonatomic) double tEnd; // @synthesize tEnd=_tEnd;
 @property(readonly, nonatomic) double tStart; // @synthesize tStart=_tStart;
+@property(readonly, nonatomic) NSUUID *strokeUUID; // @synthesize strokeUUID=_strokeUUID;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithUUID:(id)arg1 version:(struct _PKStrokeID)arg2 tStart:(double)arg3 tEnd:(double)arg4;
+- (id)initWithUUID:(id)arg1 tStart:(double)arg2 tEnd:(double)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

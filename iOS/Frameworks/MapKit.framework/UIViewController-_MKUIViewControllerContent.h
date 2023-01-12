@@ -14,6 +14,7 @@
 @interface UIViewController (_MKUIViewControllerContent) <MKInfoCardThemeListener>
 @property(nonatomic) long long contentVisibility;
 @property(nonatomic) double contentAlpha;
+@property(copy, nonatomic) NSString *accessibilityIdentifier;
 - (void)infoCardThemeChanged;
 @property(readonly, nonatomic) id <MKInfoCardTheme> mk_theme;
 

@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)fileDownloader;
-- (void)_downloadLogoForTransaction:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_downloadLogoForURL:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_cacheImageFromDownloaderCacheForURL:(id)arg1;
 - (id)_iconCacheKeyForMerchant:(id)arg1 size:(struct CGSize)arg2 ignoreLogoURL:(_Bool)arg3 imageOut:(id *)arg4;
 - (id)_iconCacheKeyForPaymentTransaction:(id)arg1 size:(struct CGSize)arg2 ignoreLogoURL:(_Bool)arg3 imageOut:(id *)arg4;

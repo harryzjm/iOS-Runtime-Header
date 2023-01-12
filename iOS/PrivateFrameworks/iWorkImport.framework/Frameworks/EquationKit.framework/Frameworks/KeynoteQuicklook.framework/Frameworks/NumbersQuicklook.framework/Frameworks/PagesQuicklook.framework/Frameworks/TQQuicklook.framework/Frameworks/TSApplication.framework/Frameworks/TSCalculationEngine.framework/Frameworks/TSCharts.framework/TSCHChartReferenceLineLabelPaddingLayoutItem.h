@@ -8,11 +8,11 @@
 
 @interface TSCHChartReferenceLineLabelPaddingLayoutItem
 {
-    TSCHChartAxisID *mAxisID;
+    TSCHChartAxisID *_axisID;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
+@property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
 - (_Bool)p_hasReferenceLineLabelsWithModel:(id)arg1;
 - (struct CGSize)p_calcMinSizeForModel:(id)arg1;
 - (struct CGSize)calcMinSize;

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString;
 
-@interface SISchemaClientEventMetadata : PBCodable
+@interface SISchemaClientEventMetadata
 {
     NSData *_turnID;
     NSData *_siriDeviceID;
@@ -39,6 +37,7 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasEventGeneratedRelativeToBootTimeTimestampNs;
+- (void)willProduceDictionaryRepresentation:(id)arg1;
 
 @end
 

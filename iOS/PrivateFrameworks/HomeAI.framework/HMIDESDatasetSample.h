@@ -19,6 +19,7 @@
 }
 
 + (void)saveDESRecordWithVideoFrame:(id)arg1 recordInfo:(id)arg2;
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(readonly) struct CGRect regionOfInterest; // @synthesize regionOfInterest=_regionOfInterest;
 @property(readonly) NSArray *detections; // @synthesize detections=_detections;

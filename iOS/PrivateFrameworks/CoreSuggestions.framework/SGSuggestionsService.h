@@ -16,12 +16,12 @@
 #import <CoreSuggestions/SGSuggestionsServiceRemindersProtocol-Protocol.h>
 #import <CoreSuggestions/SGSuggestionsServiceURLsProtocol-Protocol.h>
 
-@class NSString, SGDaemonConnection, SGFuture;
+@class NSString, SGFuture;
 @protocol SGDSuggestManagerAllProtocol;
 
 @interface SGSuggestionsService : NSObject <SGSuggestionsServiceContactsProtocol, SGSuggestionsServiceEventsProtocol, SGSuggestionsServiceIpsosProtocol, SGSuggestionsServiceInternalProtocol, SGSuggestionsServiceMailProtocol, SGSuggestionsServiceFidesProtocol, SGSuggestionsServiceRemindersProtocol, SGSuggestionsServiceDeliveriesProtocol, SGSuggestionsServiceURLsProtocol>
 {
-    SGDaemonConnection *_daemonConnection;
+    SGFuture *_daemonConnectionFuture;
     id <SGDSuggestManagerAllProtocol> _managerForTesting;
     _Bool _keepDirty;
     NSString *_machServiceName;
@@ -31,12 +31,10 @@
     SGFuture *_snapshotFuture;
 }
 
-+ (id)wantedSearchableItemsFromItems:(id)arg1;
-+ (id)filteredSearchableItemsFromItems:(id)arg1;
 + (_Bool)isHarvestingSupported;
 + (void)prepareForQuery;
 + (_Bool)hasEntitlement:(id)arg1;
-+ (id)_daemonConnectionForMachServiceName:(id)arg1 protocol:(id)arg2 useCache:(_Bool)arg3;
++ (id)_daemonConnectionFutureForMachServiceName:(id)arg1 protocol:(id)arg2 useCache:(_Bool)arg3;
 + (id)serviceForMessages;
 + (id)serviceForFides;
 + (id)serviceForInternal;
@@ -47,19 +45,28 @@
 + (id)serviceForURLs;
 + (id)serviceForContacts;
 + (id)serviceForMail;
-+ (void)initialize;
++ (id)daemonConnections;
 + (void)setInProcessSuggestManager:(id)arg1;
 + (id)inProcessSuggestManager;
 - (void).cxx_destruct;
 - (void)foundInStringForRecordId:(id)arg1 style:(unsigned char)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)foundInStringForRecordId:(id)arg1 style:(unsigned char)arg2 error:(id *)arg3;
+- (void)registerURLFeedback:(unsigned char)arg1 absoluteURL:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (_Bool)registerURLFeedback:(unsigned char)arg1 absoluteURL:(id)arg2 error:(id *)arg3;
+- (void)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 excludingBundleIdentifiers:(id)arg3 containingSubstring:(id)arg4 flagFilter:(unsigned char)arg5 limit:(unsigned int)arg6 withCompletion:(CDUnknownBlockType)arg7;
+- (id)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 excludingBundleIdentifiers:(id)arg3 containingSubstring:(id)arg4 flagFilter:(unsigned char)arg5 limit:(unsigned int)arg6 error:(id *)arg7;
 - (void)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 excludingBundleIdentifiers:(id)arg3 limit:(unsigned int)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (id)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 excludingBundleIdentifiers:(id)arg3 limit:(unsigned int)arg4 error:(id *)arg5;
 - (void)recentURLsWithLimit:(unsigned int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)recentURLsWithLimit:(unsigned int)arg1 error:(id *)arg2;
-- (void)ipsosMessagesWithSearchableItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)ipsosMessagesWithSearchableItems:(id)arg1 error:(id *)arg2;
-- (void)suggestionsFromMockData:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)topSalienciesForMailboxId:(id)arg1 limit:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)topSalienciesForMailboxId:(id)arg1 limit:(long long)arg2 error:(id *)arg3;
+- (void)saliencyFromEmailHeaders:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)saliencyFromEmailHeaders:(id)arg1 error:(id *)arg2;
+- (void)saliencyFromRFC822Data:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)saliencyFromRFC822Data:(id)arg1 error:(id *)arg2;
+- (void)ipsosMessagesFromSearchableItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)ipsosMessagesFromSearchableItems:(id)arg1 error:(id *)arg2;
 - (void)sleepWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)sleep:(id *)arg1;
 - (void)daemonExitWithCompletion:(CDUnknownBlockType)arg1;
@@ -76,13 +83,12 @@
 - (void)logMetricAutocompleteUserSelectedRecordId:(id)arg1 contactIdentifier:(id)arg2 bundleId:(id)arg3;
 - (void)logMetricContactSearchResult:(int)arg1 recordId:(id)arg2 contactIdentifier:(id)arg3 bundleId:(id)arg4;
 - (void)logMetricAutocompleteResult:(int)arg1 recordId:(id)arg2 contactIdentifier:(id)arg3 bundleId:(id)arg4;
+- (id)namesForDetailCaches;
 - (id)powerState;
 - (void)deleteCloudKitZoneWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)sendRTCLogs:(id *)arg1;
 - (void)removeAllStoredPseudoContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)removeAllStoredPseudoContacts:(id *)arg1;
-- (void)drainQueueCompletelyWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)drainQueueCompletely:(id *)arg1;
 - (void)realtimeSuggestionsFromURL:(id)arg1 title:(id)arg2 HTMLPayload:(id)arg3 extractionDate:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)suggestionsFromURL:(id)arg1 title:(id)arg2 HTMLPayload:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)isEventCandidateForURL:(id)arg1 andTitle:(id)arg2 containsSchemaOrg:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
@@ -112,17 +118,17 @@
 - (_Bool)spotlightReimportFromIdentifier:(id)arg1 forPersonHandle:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
 - (void)addInteractions:(id)arg1 bundleId:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (_Bool)addInteractions:(id)arg1 bundleId:(id)arg2 error:(id *)arg3;
-- (void)_addSearchableItemMetadata:(id)arg1 htmlData:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addSearchableItemMetadata:(id)arg1 htmlData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addSearchableItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)addSearchableItems:(id)arg1 error:(id *)arg2;
 - (void)predictedCCEmailAddressesWithToAddresses:(id)arg1 ccAddresses:(id)arg2 fromAddress:(id)arg3 date:(double)arg4 bounds:(id)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)predictedCCEmailAddressesWithToAddresses:(id)arg1 ccAddresses:(id)arg2 fromAddress:(id)arg3 date:(double)arg4 bounds:(id)arg5 error:(id *)arg6;
 - (void)predictedToEmailAddressesWithToAddresses:(id)arg1 ccAddresses:(id)arg2 fromAddress:(id)arg3 date:(double)arg4 bounds:(id)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)predictedToEmailAddressesWithToAddresses:(id)arg1 ccAddresses:(id)arg2 fromAddress:(id)arg3 date:(double)arg4 bounds:(id)arg5 error:(id *)arg6;
-- (void)rejectContactDetailRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (_Bool)rejectContactDetailRecord:(id)arg1 error:(id *)arg2;
 - (void)rejectContactDetailRecord:(id)arg1 rejectionUI:(int)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (_Bool)rejectContactDetailRecord:(id)arg1 rejectionUI:(int)arg2 error:(id *)arg3;
+- (void)rejectContactDetailRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)rejectContactDetailRecord:(id)arg1 error:(id *)arg2;
 - (void)rejectRecord:(id)arg1 rejectionUI:(int)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (_Bool)rejectRecord:(id)arg1 rejectionUI:(int)arg2 error:(id *)arg3;
 - (void)rejectRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -137,12 +143,15 @@
 - (_Bool)rejectEventByRecordId:(id)arg1 error:(id *)arg2;
 - (void)confirmEventByRecordId:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)confirmEventByRecordId:(id)arg1 error:(id *)arg2;
+- (void)confirmContactDetailRecord:(id)arg1 confirmationUI:(int)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (_Bool)confirmContactDetailRecord:(id)arg1 confirmationUI:(int)arg2 error:(id *)arg3;
 - (void)confirmContactDetailRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)confirmContactDetailRecord:(id)arg1 error:(id *)arg2;
 - (void)confirmRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)confirmRecord:(id)arg1 error:(id *)arg2;
 - (void)confirmContact:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)confirmContact:(id)arg1 error:(id *)arg2;
+- (int)_confirmRejectUI;
 - (void)rejectEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)rejectEvent:(id)arg1 error:(id *)arg2;
 - (void)confirmEvent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -171,6 +180,10 @@
 - (void)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 error:(id *)arg4;
 - (id)cacheSnapshotFuture;
+- (void)contactMatchesBySocialProfile:(id)arg1 bundleIdentifier:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)contactMatchesBySocialProfile:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
+- (void)contactMatchesBySocialProfile:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)contactMatchesBySocialProfile:(id)arg1 error:(id *)arg2;
 - (void)contactMatchesByEmailAddress:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)contactMatchesByEmailAddress:(id)arg1 error:(id *)arg2;
 - (id)contactMatchesByEmailAddress:(id)arg1;
@@ -185,6 +198,8 @@
 - (id)suggestionsFromEmailContent:(id)arg1 headers:(id)arg2 source:(id)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
 - (void)allDeliveriesWithLimit:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)allDeliveriesWithLimit:(unsigned long long)arg1 error:(id *)arg2;
+- (void)logUserCreatedReminderTitle:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)logUserCreatedReminderTitle:(id)arg1 error:(id *)arg2;
 - (void)reminderTitleForContent:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)reminderTitleForContent:(id)arg1 error:(id *)arg2;
 - (void)allRemindersLimitedTo:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -240,6 +255,8 @@
 - (id)suggestionsFromRFC822Data:(id)arg1 source:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (void)clearCachesFully:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)clearCachesFully:(_Bool)arg1 error:(id *)arg2;
+- (void)rebuildNamesForDetailCacheWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)rebuildNamesForDetailCache:(id *)arg1;
 - (void)resetConfirmationAndRejectionHistoryWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)resetConfirmationAndRejectionHistory:(id *)arg1;
 - (void)prepareForRealtimeExtractionWithCompletion:(CDUnknownBlockType)arg1;
@@ -251,6 +268,7 @@
 - (id)_remoteSuggestionManager;
 - (void)setSyncTimeout:(double)arg1;
 - (double)syncTimeout;
+- (id)_daemonConnection;
 - (id)initWithMachServiceName:(id)arg1 protocol:(id)arg2 useCache:(_Bool)arg3;
 - (id)initWithMachServiceName:(id)arg1 protocol:(id)arg2;
 

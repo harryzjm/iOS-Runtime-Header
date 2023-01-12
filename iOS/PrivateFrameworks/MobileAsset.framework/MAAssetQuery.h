@@ -22,8 +22,10 @@
     NSSet *_assetIds;
     long long _returnTypes;
     NSDate *_lastFetchDate;
+    NSString *_purpose;
 }
 
+@property(retain, nonatomic) NSString *purpose; // @synthesize purpose=_purpose;
 @property(readonly, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
 @property(readonly, nonatomic) long long returnTypes; // @synthesize returnTypes=_returnTypes;
 @property(readonly, nonatomic) NSSet *assetIds; // @synthesize assetIds=_assetIds;
@@ -50,6 +52,7 @@
 - (void)augmentResultsWithState:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithType:(id)arg1;
+- (id)initWithType:(id)arg1 andPurpose:(id)arg2;
 
 @end
 

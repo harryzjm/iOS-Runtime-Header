@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
+- (unsigned long long)unhitCacheEntriesCount;
 - (id)retrieveAndCacheNode:(id)arg1;
 - (id)cachedNodeForNode:(id)arg1;
 - (void)addNode:(id)arg1;

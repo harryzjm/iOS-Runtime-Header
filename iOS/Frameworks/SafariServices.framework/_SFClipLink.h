@@ -10,6 +10,7 @@
 
 @interface _SFClipLink : NSObject
 {
+    _Bool _siteRequestsShowCard;
     NSURL *_url;
     NSString *_bundleIdentifier;
     NSString *_clipName;
@@ -23,6 +24,7 @@
 + (id)localizedUppercaseStringForAction:(long long)arg1;
 + (double)iconHeight;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool siteRequestsShowCard; // @synthesize siteRequestsShowCard=_siteRequestsShowCard;
 @property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property(copy, nonatomic) NSString *actionCaption; // @synthesize actionCaption=_actionCaption;
 @property(copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;

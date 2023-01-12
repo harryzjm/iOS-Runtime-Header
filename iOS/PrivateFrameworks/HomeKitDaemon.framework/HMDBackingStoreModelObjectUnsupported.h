@@ -10,7 +10,7 @@
 
 - (void)dumpDebug;
 - (void)dumpDebug:(id)arg1;
-- (id)debugString:(_Bool)arg1;
+- (void)dumpWithVerbosity:(_Bool)arg1 prefix:(id)arg2 logType:(unsigned char)arg3;
 
 @end
 

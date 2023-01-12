@@ -8,7 +8,7 @@
 
 #import <SpotlightDaemon/CSXPCConnectionConfiguration-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 @protocol OS_xpc_object;
 
 @interface SDConnectionConfiguration : NSObject <CSXPCConnectionConfiguration>
@@ -26,6 +26,7 @@
     NSString *_protectionClass;
     NSString *_bundleID;
     NSString *_personaID;
+    NSSet *_allowedBundleIDs;
 }
 
 - (void).cxx_destruct;
@@ -38,6 +39,7 @@
 @property(readonly, nonatomic) unsigned int egid; // @synthesize egid=_egid;
 @property(readonly, nonatomic) unsigned int euid; // @synthesize euid=_euid;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
+@property(readonly, nonatomic) NSSet *allowedBundleIDs; // @synthesize allowedBundleIDs=_allowedBundleIDs;
 @property(readonly, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
 @property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;

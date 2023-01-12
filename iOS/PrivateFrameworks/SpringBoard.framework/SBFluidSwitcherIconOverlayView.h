@@ -6,7 +6,7 @@
 
 #import <SpringBoardUI/SBOrientationTransformWrapperView.h>
 
-@class CAMediaTimingFunction, SBIconView, UIView, UIViewFloatAnimatableProperty;
+@class CAMediaTimingFunction, NSArray, SBIconView, UIView, UIViewFloatAnimatableProperty;
 
 @interface SBFluidSwitcherIconOverlayView : SBOrientationTransformWrapperView
 {
@@ -14,7 +14,7 @@
     UIView *_iconCrossfadeView;
     UIView *_iconOverlayContainerView;
     struct CGRect _initialIconOverlayViewBounds;
-    UIView *_crossfadeView;
+    NSArray *_crossfadeViews;
     struct CGRect _crossfadeViewFrame;
     UIViewFloatAnimatableProperty *_iconCrossfadeAnimatableProperty;
     CAMediaTimingFunction *_iconCrossfadeTimingFunction;
@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+- (void)_setCrossfadeViewsAlpha:(double)arg1;
 - (void)_setUpIconCrossfadeView;
 - (void)_setUpIconCrossfadeAnimatableProperty;
 - (double)_iconOverlayScale;
@@ -33,7 +34,7 @@
 @property(readonly, nonatomic) struct CGRect crossfadeViewFrame;
 - (void)dealloc;
 - (void)invalidate;
-- (id)initWithIconView:(id)arg1 crossfadeView:(id)arg2 crossfadeViewFrame:(struct CGRect)arg3 contentOrientation:(long long)arg4 containerOrientation:(long long)arg5;
+- (id)initWithIconView:(id)arg1 crossfadeViews:(id)arg2 crossfadeViewFrame:(struct CGRect)arg3 contentOrientation:(long long)arg4 containerOrientation:(long long)arg5;
 
 @end
 

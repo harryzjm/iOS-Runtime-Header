@@ -23,10 +23,10 @@
 }
 
 - (void).cxx_destruct;
-@property(retain) NSNumber *callerPID; // @synthesize callerPID=_callerPID;
+@property(retain, nonatomic) NSNumber *callerPID; // @synthesize callerPID=_callerPID;
 @property(readonly, nonatomic) NSXPCConnection *caller; // @synthesize caller=_caller;
 @property(nonatomic) CDStruct_4c969caf creatorAuditToken; // @synthesize creatorAuditToken=_creatorAuditToken;
-@property(retain) NSDictionary *parameters; // @synthesize parameters=_parameters;
+@property(retain, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property(readonly, nonatomic) LAContext *LAContext; // @synthesize LAContext=_LAContext;
 @property(retain, nonatomic) id keepAlive; // @synthesize keepAlive=_keepAlive;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -55,7 +55,7 @@
 - (_Bool)checkOperation:(long long)arg1 usingKey:(id)arg2 algorithm:(id)arg3 parameters:(id)arg4;
 - (void)beginAuthForOperation:(long long)arg1 constraint:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getAttributesOfObject:(id)arg1 isCertificate:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
-@property(readonly) id <TKTokenSessionPrivateDelegate> privateDelegate;
+@property(readonly, nonatomic) id <TKTokenSessionPrivateDelegate> privateDelegate;
 - (void)setCaller:(id)arg1;
 - (void)setLAContext:(id)arg1;
 - (id)initWithToken:(id)arg1;

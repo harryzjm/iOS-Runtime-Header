@@ -5,11 +5,12 @@
 //
 
 #import <SpringBoardHome/SBReusableView-Protocol.h>
+#import <SpringBoardHome/UIPointerInteractionDelegate-Protocol.h>
 
-@class SBFParallaxSettings, SBIcon, UIViewPropertyAnimator;
+@class SBFParallaxSettings, SBIcon, UITapGestureRecognizer, UIViewPropertyAnimator;
 @protocol SBIconAccessoryInfoProvider, SBIconListLayout;
 
-@protocol SBIconAccessoryView <SBReusableView>
+@protocol SBIconAccessoryView <SBReusableView, UIPointerInteractionDelegate>
 - (void)setAccessoryBrightness:(double)arg1;
 - (_Bool)displayingAccessory;
 - (struct CGPoint)accessoryCenterForIconBounds:(struct CGRect)arg1;
@@ -17,7 +18,9 @@
 - (void)configureAnimatedForIcon:(SBIcon *)arg1 infoProvider:(id <SBIconAccessoryInfoProvider>)arg2 animator:(UIViewPropertyAnimator *)arg3;
 
 @optional
+@property(retain, nonatomic) UITapGestureRecognizer *actionTapGestureRecognizer;
 @property(retain, nonatomic) id <SBIconListLayout> listLayout;
 @property(retain, nonatomic) SBFParallaxSettings *parallaxSettings;
+- (void)setLegibilityStyle:(long long)arg1;
 @end
 

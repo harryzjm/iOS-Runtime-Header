@@ -24,6 +24,7 @@
     NSString *_loginStatusMessage;
     unsigned int _loginStatus;
     int _disconnectReason;
+    NSString *_loginID;
 }
 
 @property(readonly, nonatomic) int serviceDisconnectReason; // @synthesize serviceDisconnectReason=_disconnectReason;
@@ -42,7 +43,7 @@
 @property(readonly, nonatomic) int registrationError;
 @property(readonly, nonatomic) int registrationStatus;
 - (id)_registrationInfo;
-@property(readonly, retain, nonatomic) NSString *loginID;
+@property(readonly, retain, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
 - (void)setRegistrationStatus:(int)arg1 error:(int)arg2 alertInfo:(id)arg3;
 - (void)systemDidBecomeUnidle;
 - (void)systemDidBecomeIdle;

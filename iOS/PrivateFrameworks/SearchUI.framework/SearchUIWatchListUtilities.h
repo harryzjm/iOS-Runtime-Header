@@ -6,21 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 @interface SearchUIWatchListUtilities : NSObject
 {
-    _Bool _isWatchListed;
-    NSString *_watchListIdentifier;
 }
 
++ (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 punchoutURL:(id)arg3 type:(unsigned long long)arg4 image:(id)arg5 storeIdentifier:(id)arg6;
++ (id)buttonForChannelOffer:(id)arg1 channel:(id)arg2 episode:(id)arg3;
++ (id)buttonForOffer:(id)arg1 playable:(id)arg2;
++ (id)buttonForChannelDetails:(id)arg1 punchoutURLs:(id)arg2 isEntitled:(_Bool)arg3 isContinuing:(_Bool)arg4 isContainerItem:(_Bool)arg5 hasDescriptiveSeasonTitle:(_Bool)arg6 seasonNumber:(id)arg7 episodeNumber:(id)arg8 isHorizontallySrollingStyle:(_Bool)arg9;
++ (id)buttonForPlayable:(id)arg1 isHorizontallySrollingStyle:(_Bool)arg2;
++ (_Bool)channelHasBeenSeen:(id)arg1 seenChannels:(id)arg2;
++ (id)buttonsForPlayables:(id)arg1 channels:(id)arg2 currentEpisode:(id)arg3 isUpNextable:(_Bool)arg4 watchListState:(id)arg5 isHorizontallySrollingStyle:(_Bool)arg6;
++ (void)fetchButtonsForWatchListIdentifier:(id)arg1 isMediaContainer:(_Bool)arg2 isHorizontallySrollingStyle:(_Bool)arg3 fetchButtons:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)fetchButtonsForWatchListIdentifier:(id)arg1 isMediaContainer:(_Bool)arg2 isHorizontallySrollingStyle:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)fetchWatchListStateForWatchListIdentifier:(id)arg1 isMediaContainer:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)generateMediaContainerWatchListReponseForWatchListIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)generateWatchListReponseForWatchListIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void).cxx_destruct;
-@property(retain, nonatomic) NSString *watchListIdentifier; // @synthesize watchListIdentifier=_watchListIdentifier;
-@property(nonatomic) _Bool isWatchListed; // @synthesize isWatchListed=_isWatchListed;
-- (void)toggleWatchListWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithIdentifier:(id)arg1 watchListed:(_Bool)arg2;
-- (id)initWithResponse:(id)arg1;
 
 @end
 

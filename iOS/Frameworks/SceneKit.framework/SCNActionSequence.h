@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface SCNActionSequence
 {
-    struct SCNCActionSequence *_mycaction;
+    void *_mycaction;
     NSArray *_actions;
 }
 

@@ -6,28 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, VCMasterKeyIndex;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, NSMutableDictionary, VCMediaKeyIndex;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface VCSecurityKeyManager : NSObject
 {
-    NSMutableDictionary *_sendKeys;
-    NSMutableDictionary *_receiveKeys;
-    VCMasterKeyIndex *_latestSendKeyIndex;
-    VCMasterKeyIndex *_latestReceiveKeyIndex;
-    VCMasterKeyIndex *_keyIndexNotReceived;
-    _Bool _isSendKeysCleanUpPending;
-    _Bool _isReceiveKeysCleanUpPending;
     id _delegate;
-    NSObject<OS_dispatch_queue> *_keyManagerQueue;
-    _Bool _isKeyIndexNotReceivedReported;
-    double _lastKeyIndexNotReceived;
     id _reportingAgentWeak;
     NSMutableArray *_unknownKeyIndexList;
+    NSMutableDictionary *_sendKeys;
+    NSMutableDictionary *_receiveKeys;
+    NSMutableDictionary *_prunePendingReceiveKeys;
+    VCMediaKeyIndex *_latestSendKeyIndex;
+    VCMediaKeyIndex *_latestReceiveKeyIndex;
+    VCMediaKeyIndex *_keyIndexNotReceived;
+    _Bool _isSendKeysCleanUpPending;
+    _Bool _isReceiveKeysCleanUpPending;
+    _Bool _forceRemoteMKMMissing;
+    double _keyMaterialNotUsedTimeout;
+    NSObject<OS_dispatch_queue> *_keyManagerQueue;
+    double _lastKeyIndexNotReceived;
+    NSObject<OS_dispatch_source> *_pruneTimer;
 }
 
-- (struct opaqueRTCReporting *)reportingAgent;
+@property(nonatomic) struct opaqueRTCReporting *reportingAgent;
+- (id)copyMKMWithPrefix:(id)arg1;
+- (_Bool)associateMKI:(id)arg1 withClientID:(id)arg2;
+- (void)handlePruneTimerEventAndReschedule;
+- (void)schedulePruneTimer:(double)arg1;
+- (double)firstExpirationTime;
+- (double)pruneAllExpiredKeys;
 - (void)pruneRecvKeyMaterialWithDelay:(double)arg1;
 - (void)pruneSendKeyMaterialWithDelay:(double)arg1;
 - (id)getLatestRecvKeyMaterial;
@@ -35,9 +44,10 @@ __attribute__((visibility("hidden")))
 - (id)getRecvKeyMaterialWithIndex:(id)arg1;
 - (id)getSendKeyMaterialWithIndex:(id)arg1;
 - (_Bool)addSecurityKeyMaterial:(id)arg1;
+- (long long)getNotUsedTimeout;
 - (id)delegate;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
+- (id)initWithDelegate:(id)arg1;
 
 @end
 

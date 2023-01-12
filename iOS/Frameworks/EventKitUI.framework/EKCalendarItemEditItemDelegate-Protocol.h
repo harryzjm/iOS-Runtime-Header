@@ -12,8 +12,10 @@
 - (NSString *)defaultAlertTitleForEditItem:(EKCalendarItemEditItem *)arg1;
 
 @optional
+- (void)editItem:(EKCalendarItemEditItem *)arg1 wantsViewControllerPresented:(UIViewController *)arg2;
 - (UITableViewCell *)cellWithReuseIdentifier:(NSString *)arg1 forEditItem:(EKCalendarItemEditItem *)arg2;
 - (UIViewController *)viewControllerForEditItem:(EKCalendarItemEditItem *)arg1;
+- (void)editItemWantsFirstResponderResigned:(EKCalendarItemEditItem *)arg1;
 - (void)editItemWantsFooterTitlesToReload:(EKCalendarItemEditItem *)arg1;
 - (void)editItem:(EKCalendarItemEditItem *)arg1 textViewShouldReturn:(UIView *)arg2;
 - (void)editItemRequiresPopoverSizeUpdate:(EKCalendarItemEditItem *)arg1;

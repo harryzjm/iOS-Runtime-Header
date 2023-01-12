@@ -24,7 +24,7 @@
     NSArray *_computedProperties;
 }
 
-+ (id)objectSchemaForObjectStoreSchema:(const struct ObjectSchema *)arg1;
++ (id)objectSchemaForObjectStoreSchema:(const void *)arg1;
 + (void)addSwiftProperties:(id)arg1 objectUtil:(Class)arg2 instance:(id)arg3 indexed:(id)arg4 nameMap:(id)arg5;
 + (id)propertiesForClass:(Class)arg1 isSwift:(_Bool)arg2;
 + (id)schemaForObjectClass:(Class)arg1;

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardHome/NSCopying-Protocol.h>
 #import <SpringBoardHome/NSFastEnumeration-Protocol.h>
 #import <SpringBoardHome/SBIconIndexNodeObserver-Protocol.h>
 
 @class NSMapTable, NSMutableArray, NSString;
 @protocol SBIconIndexMutableListObserver, SBIconIndexNode;
 
-@interface SBIconIndexMutableList : NSObject <SBIconIndexNodeObserver, NSFastEnumeration>
+@interface SBIconIndexMutableList : NSObject <SBIconIndexNodeObserver, NSFastEnumeration, NSCopying>
 {
     NSMutableArray *_nodes;
     NSMapTable *_index;
@@ -21,7 +22,9 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SBIconIndexMutableListObserver> observer; // @synthesize observer=_observer;
+- (void)assertIndexCoherent;
 - (id)indexDescriptionWithPrefix:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)nodeDidMoveContainedNodes:(id)arg1;
 - (void)node:(id)arg1 didRemoveContainedNodeIdentifiers:(id)arg2;
@@ -33,6 +36,7 @@
 - (void)enumerateNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)moveNodes:(id)arg1 toContiguousIndicesStartingAt:(unsigned long long)arg2;
 - (void)moveNode:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)setNodes:(id)arg1;
 - (void)removeAllNodes;
 - (void)removeLastNode;
 - (void)removeNodesInArray:(id)arg1;

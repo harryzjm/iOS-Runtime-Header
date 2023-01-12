@@ -35,6 +35,7 @@
     double _currentlyLoadingEnd;
     double _lastRequestedStart;
     double _lastRequestedEnd;
+    int _currentGeneration;
     _Bool _allowEventLocationPrediction;
     id <CalendarEventLoaderDelegate> _delegate;
 }

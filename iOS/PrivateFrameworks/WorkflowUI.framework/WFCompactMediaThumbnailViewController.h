@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (double)contentHeightForWidth:(double)arg1;
+- (_Bool)contentHeightLikelyToChange;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithAVPlayerItem:(id)arg1;

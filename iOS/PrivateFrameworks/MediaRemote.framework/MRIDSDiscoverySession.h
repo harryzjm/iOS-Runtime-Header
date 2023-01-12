@@ -4,60 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/IDSServiceDelegate-Protocol.h>
 #import <MediaRemote/MRProtocolClientConnectionDelegate-Protocol.h>
 
-@class CURunLoopThread, IDSService, MRConcreteEndpoint, MRProtocolClientConnection, MSVTimer, NSArray, NSDate, NSObject, NSRunLoop, NSString;
+@class MRProtocolClientConnection, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MRIDSDiscoverySession <IDSServiceDelegate, MRProtocolClientConnectionDelegate>
+@interface MRIDSDiscoverySession <MRProtocolClientConnectionDelegate>
 {
-    IDSService *_service;
     MRProtocolClientConnection *_discoveryChannel;
-    NSDate *_discoveryChannelConnectionAttemptDate;
-    MSVTimer *_discoveryChannelConnectionTimer;
-    NSArray *_availableExternalAudioOutputDevices;
-    NSArray *_availableExternalOutputDevices;
-    NSArray *_availableExternalEndpoints;
-    MRConcreteEndpoint *_companionEndpoint;
-    NSArray *_companionOutputDevices;
     unsigned int _discoveryMode;
     unsigned int _endpointFeatures;
     NSObject<OS_dispatch_queue> *_idsQueue;
-    CURunLoopThread *_runLoopThread;
-    NSRunLoop *_runLoop;
 }
 
-+ (id)transformOutputDevice:(id)arg1 fromEndpoint:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MRProtocolClientConnection *discoveryChannel; // @synthesize discoveryChannel=_discoveryChannel;
-@property(retain, nonatomic) MRConcreteEndpoint *companionEndpoint; // @synthesize companionEndpoint=_companionEndpoint;
-- (void)_onIDSQueue_initalizeDiscoveryChannel;
-- (void)_onIDSQueue_disconnectDiscoveryChannel;
-- (void)_onIDSQueue_connectDiscoveryChannel;
-- (void)handleUpdateAudioOutputDevicesMessage:(id)arg1;
-- (void)handleUpdateRemoteControlEndpointsMessage:(id)arg1;
-- (void)handleDeviceInfoUpdateMessage:(id)arg1;
+- (void)_onIDSQueue_initializeDiscoveryChannel;
+- (void)_onIDSQueue_disconnectDiscoveryChannel:(id)arg1;
+- (void)_syncClientStateToConnection:(id)arg1;
+- (void)_onIDSQueue_connectDiscoveryChannel:(id)arg1;
+- (void)handleUpdateOutputDevicesMessage:(id)arg1 forClient:(id)arg2;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
-- (void)_handleDeviceInfoDidChangeNotification:(id)arg1;
-- (void)_handleCompanionDeviceDidResetNotification:(id)arg1;
+- (void)_handleCompanionDeviceDidConnectNotification:(id)arg1;
 - (void)_handleCompanionDeviceDisconnectedNotification:(id)arg1;
-@property(readonly, nonatomic) NSRunLoop *runLoop;
+- (id)availableOutputDevices;
+- (_Bool)devicePresenceDetected;
 - (unsigned int)endpointFeatures;
-- (void)setEndpointFeatures:(unsigned int)arg1;
 - (unsigned int)discoveryMode;
 - (void)setDiscoveryMode:(unsigned int)arg1;
-@property(retain, nonatomic) NSArray *availableExternalAudioOutputDevices;
-@property(retain, nonatomic) NSArray *availableExternalOutputDevices;
-@property(retain, nonatomic) NSArray *availableExternalEndpoints;
-@property(retain, nonatomic) NSArray *companionOutputDevices;
-- (id)compaionEndpoint;
-- (id)availableOutputDevices;
-- (id)availableEndpoints;
+@property(readonly, copy) NSString *debugDescription;
 - (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

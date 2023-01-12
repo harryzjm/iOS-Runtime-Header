@@ -12,8 +12,9 @@
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *name;
-    MISSING_TYPE *widgetId;
+    MISSING_TYPE *duetBudgetIdentity;
     MISSING_TYPE *containingAppIdentifier;
+    MISSING_TYPE *requiredDataProtectionLevel;
     MISSING_TYPE *schedulingConfiguration;
     MISSING_TYPE *schedulingOptions;
     MISSING_TYPE *effectivePowerlogWakeReason;

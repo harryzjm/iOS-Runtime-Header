@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
 {
     id <CKBusinessInfoViewDelegate> _delegate;
     NSString *_descriptionText;
+    NSString *_greetingText;
     long long _layoutType;
+    UILabel *_greetingTextLabel;
     UILabel *_descriptionTextLabel;
     CKStandardButton *_infoButton;
 }
@@ -22,9 +24,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKStandardButton *infoButton; // @synthesize infoButton=_infoButton;
 @property(retain, nonatomic) UILabel *descriptionTextLabel; // @synthesize descriptionTextLabel=_descriptionTextLabel;
+@property(retain, nonatomic) UILabel *greetingTextLabel; // @synthesize greetingTextLabel=_greetingTextLabel;
 @property(nonatomic) long long layoutType; // @synthesize layoutType=_layoutType;
+@property(retain, nonatomic) NSString *greetingText; // @synthesize greetingText=_greetingText;
 @property(retain, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property(nonatomic) __weak id <CKBusinessInfoViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) _Bool hasValidGreeting;
 - (void)infoButtonTapped:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

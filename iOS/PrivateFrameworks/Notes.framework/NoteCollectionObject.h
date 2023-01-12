@@ -22,6 +22,9 @@
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
 - (id)predicateForNotes;
+- (id)cacheKey;
+- (_Bool)isTitleValid:(id)arg1 error:(id *)arg2;
+- (id)titleForTableViewCell;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (_Bool)supportsVisibilityTestingType:(long long)arg1;

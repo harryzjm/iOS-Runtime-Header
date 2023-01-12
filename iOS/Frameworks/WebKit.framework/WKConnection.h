@@ -19,7 +19,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) struct Object *_apiObject;
-- (struct WebConnection *)_connection;
+- (void *)_connection;
 - (void)sendMessageWithName:(id)arg1 body:(id)arg2;
 @property id <WKConnectionDelegate> delegate;
 - (void)dealloc;

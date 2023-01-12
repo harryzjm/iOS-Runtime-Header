@@ -9,11 +9,10 @@
 @interface TRIStopwatch : NSObject
 {
     unsigned long long _start_time;
-    struct mach_timebase_info _time_info;
 }
 
 + (id)start;
-- (unsigned int)elapsed_ms;
+- (unsigned long long)elapsed_ms;
 - (id)init;
 
 @end

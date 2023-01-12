@@ -15,7 +15,7 @@
 }
 
 + (id)sizeAttributesShowingNavBar:(_Bool)arg1;
-+ (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(_Bool)arg2 shouldAllowImageDrops:(_Bool)arg3 monogramOnly:(_Bool)arg4;
++ (id)makePhotoViewWithShouldAllowTakePhotoAction:(_Bool)arg1 shouldAllowImageDrops:(_Bool)arg2 monogramOnly:(_Bool)arg3;
 + (id)contactHeaderViewWithContact:(id)arg1 shouldAllowTakePhotoAction:(_Bool)arg2 showingNavBar:(_Bool)arg3 monogramOnly:(_Bool)arg4 delegate:(id)arg5;
 + (id)contactHeaderViewWithContact:(id)arg1 shouldAllowTakePhotoAction:(_Bool)arg2 monogramOnly:(_Bool)arg3 delegate:(id)arg4;
 - (void).cxx_destruct;

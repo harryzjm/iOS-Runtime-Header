@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSSet, PKCurrencyAmount, PKMerchant, PKSearchQuery;
+@class CNContact, NSArray, NSDate, NSSet, NSString, PKAccountUser, PKCurrencyAmount, PKFamilyMember, PKMerchant, PKSearchQuery;
 
 @interface PKPaymentTransactionGroup : NSObject <NSSecureCoding>
 {
@@ -20,6 +20,8 @@
     NSSet *_handles;
     NSArray *_regions;
     PKSearchQuery *_searchQuery;
+    PKAccountUser *_accountUser;
+    PKFamilyMember *_familyMember;
     unsigned long long _transactionCount;
     PKCurrencyAmount *_totalAmount;
     NSArray *_transactions;
@@ -34,6 +36,8 @@
 @property(retain, nonatomic) NSArray *transactions; // @synthesize transactions=_transactions;
 @property(retain, nonatomic) PKCurrencyAmount *totalAmount; // @synthesize totalAmount=_totalAmount;
 @property(nonatomic) unsigned long long transactionCount; // @synthesize transactionCount=_transactionCount;
+@property(retain, nonatomic) PKFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
+@property(retain, nonatomic) PKAccountUser *accountUser; // @synthesize accountUser=_accountUser;
 @property(retain, nonatomic) PKSearchQuery *searchQuery; // @synthesize searchQuery=_searchQuery;
 @property(retain, nonatomic) NSArray *regions; // @synthesize regions=_regions;
 @property(retain, nonatomic) NSSet *handles; // @synthesize handles=_handles;
@@ -42,6 +46,8 @@
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSString *userDisplayName;
+@property(readonly, nonatomic) CNContact *userContact;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

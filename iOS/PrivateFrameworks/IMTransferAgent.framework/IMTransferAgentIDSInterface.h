@@ -14,6 +14,7 @@
 {
     IDSService *_idsService;
     NSMutableDictionary *_uniqueIDToTransferCompletionBlockMap;
+    NSMutableDictionary *_uniqueIDToFilePathMap;
     int _numTransfers;
 }
 

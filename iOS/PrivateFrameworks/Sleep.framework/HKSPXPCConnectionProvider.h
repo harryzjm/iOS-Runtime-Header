@@ -13,6 +13,7 @@
 
 @interface HKSPXPCConnectionProvider : NSObject <BSDescriptionProviding>
 {
+    _Bool _invalidated;
     struct os_unfair_lock_s _connectionLock;
     struct os_unfair_lock_s _pendingMessagesLock;
     id <HKSPXPCConnectionProviderDelegate> _delegate;
@@ -24,6 +25,7 @@
 
 + (id)providerWithConnectionInfo:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(readonly, nonatomic) NSMutableDictionary *pendingMessages; // @synthesize pendingMessages=_pendingMessages;
 @property(readonly, nonatomic) struct os_unfair_lock_s pendingMessagesLock; // @synthesize pendingMessagesLock=_pendingMessagesLock;
 @property(readonly, copy, nonatomic) CDUnknownBlockType connectionProvider; // @synthesize connectionProvider=_connectionProvider;
@@ -42,6 +44,7 @@
 - (void)didReceiveLifecycleNotification;
 - (void)_didInvalidateConnection;
 - (void)_didInterruptConnection;
+- (_Bool)isInvalidated;
 @property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)dealloc;
 - (void)_retryPendingMessages;

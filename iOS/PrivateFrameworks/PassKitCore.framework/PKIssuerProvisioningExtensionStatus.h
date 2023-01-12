@@ -19,6 +19,7 @@
 @property(nonatomic) _Bool remotePassEntriesAvailable; // @synthesize remotePassEntriesAvailable=_remotePassEntriesAvailable;
 @property(nonatomic) _Bool passEntriesAvailable; // @synthesize passEntriesAvailable=_passEntriesAvailable;
 @property(nonatomic) _Bool requiresAuthentication; // @synthesize requiresAuthentication=_requiresAuthentication;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

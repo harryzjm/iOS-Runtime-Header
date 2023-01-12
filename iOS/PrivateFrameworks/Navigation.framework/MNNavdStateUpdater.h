@@ -8,12 +8,12 @@
 
 #import <Navigation/MNNavigationStateObserver-Protocol.h>
 
-@class NSHashTable, NSString;
+@class MNObserverHashTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MNNavdStateUpdater : NSObject <MNNavigationStateObserver>
 {
-    NSHashTable *_innerObservers;
+    MNObserverHashTable *_innerObservers;
     _Bool _hasObservers;
     NSObject<OS_dispatch_queue> *_queue;
 }

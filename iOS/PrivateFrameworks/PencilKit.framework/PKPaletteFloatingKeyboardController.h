@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class UIKeyboardInputMode;
+@class UIKeyboardInputMode, UIMenu;
 @protocol PKPaletteFloatingKeyboardControllerDelegate;
 
 @interface PKPaletteFloatingKeyboardController : NSObject
 {
+    UIMenu *_cachedKeyboardMenu;
     _Bool _presentingKeyboard;
     _Bool _processingReloadInputViews;
     id <PKPaletteFloatingKeyboardControllerDelegate> _delegate;
@@ -30,6 +31,10 @@
 - (void)updateFloatingKeyboardType;
 - (void)dismissWithReason:(id)arg1;
 - (void)presentOrDismissIfPresented;
+- (void)_presentOrDismissWithKeyboardType:(long long)arg1;
+@property(readonly, nonatomic) UIMenu *keyboardSelectionMenu;
+- (void)_clearMenuStateIfNecessary;
+- (void)_updateKeyboardMenuIfNecessary;
 - (void)didChangeInputMode;
 - (void)notifyDelegateDidChangeKeyboardType;
 - (void)dealloc;

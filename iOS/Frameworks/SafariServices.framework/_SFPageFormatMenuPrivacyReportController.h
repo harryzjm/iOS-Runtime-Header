@@ -27,10 +27,9 @@ __attribute__((visibility("hidden")))
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)_dismissPromptIfTrackerProtectionEnabled;
-- (void)_enableTrackerProtection;
-- (void)_presentPromptToEnableTrackerProtection;
 - (void)_initializeManagedProfileConnection;
 - (void)_presentPrivacyReport;
+- (_Bool)_presentPromptToTurnOnTrackingProtection;
 @property(readonly, nonatomic) _SFSettingsAlertItem *alertItem;
 - (void)dealloc;
 - (id)initWithDocument:(id)arg1;

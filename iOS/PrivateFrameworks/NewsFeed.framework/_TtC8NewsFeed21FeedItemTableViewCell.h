@@ -6,11 +6,16 @@
 
 #import <UIKit/UITableViewCell.h>
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed21FeedItemTableViewCell : UITableViewCell
 {
+    MISSING_TYPE *identifier;
 }
 
+- (void).cxx_destruct;
+- (void)prepareForReuse;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

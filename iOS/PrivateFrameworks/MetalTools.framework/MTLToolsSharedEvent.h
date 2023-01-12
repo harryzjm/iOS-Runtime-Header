@@ -13,6 +13,7 @@
 {
 }
 
+- (_Bool)waitUntilSignaledValue:(unsigned long long)arg1 timeoutMS:(unsigned long long)arg2;
 @property(copy) NSString *label;
 @property unsigned long long signaledValue;
 - (id)newSharedEventHandle;

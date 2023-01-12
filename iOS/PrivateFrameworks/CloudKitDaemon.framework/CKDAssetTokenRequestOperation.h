@@ -6,7 +6,6 @@
 
 @class CKDAssetTokenRequest;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetTokenRequestOperation
 {
     CKDAssetTokenRequest *_assetTokenRequest;
@@ -16,7 +15,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKDAssetTokenRequest *assetTokenRequest; // @synthesize assetTokenRequest=_assetTokenRequest;
 - (void)main;
 - (int)operationType;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 @end
 

@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerItem, NSError, NSString;
+@class AVPlayerItem, NSError, NSString, NSURL;
 
 @interface PXVideoContentProviderLoadingResult : NSObject
 {
     AVPlayerItem *_playerItem;
+    NSURL *_url;
     NSError *_error;
     long long _priority;
     NSString *_resultDebugDescription;
+    CDStruct_e83c9415 _timeRange;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *resultDebugDescription; // @synthesize resultDebugDescription=_resultDebugDescription;
 @property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property(readonly, nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+@property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
 - (id)description;
-- (id)initWithPlayerItem:(id)arg1 error:(id)arg2 priority:(long long)arg3 description:(id)arg4;
+- (id)initWithPlayerItem:(id)arg1 url:(id)arg2 timeRange:(CDStruct_e83c9415)arg3 error:(id)arg4 priority:(long long)arg5 description:(id)arg6;
 
 @end
 

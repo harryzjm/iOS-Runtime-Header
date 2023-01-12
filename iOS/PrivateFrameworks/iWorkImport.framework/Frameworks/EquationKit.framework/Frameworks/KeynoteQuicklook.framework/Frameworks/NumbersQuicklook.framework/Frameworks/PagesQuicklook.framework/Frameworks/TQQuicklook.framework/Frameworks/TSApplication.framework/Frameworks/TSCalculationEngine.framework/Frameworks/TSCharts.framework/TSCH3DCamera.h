@@ -12,36 +12,37 @@
 
 @interface TSCH3DCamera : NSObject <NSCopying>
 {
-    TSCH3DLens *mLens;
-    float mViewportScale;
-    float mViewportSamples;
-    box_0260e9b3 mViewport;
-    tvec2_84d5962d mContainingViewportOffset;
-    tmat4x4_3074befe mTransform;
+    TSCH3DLens *_lens;
+    float _viewportScale;
+    float _viewportSamples;
+    box_ce64ce81 _viewport;
+    tvec2_84d5962d _containingViewportOffset;
+    tmat4x4_3074befe _transform;
 }
 
-+ (id)cameraWithLens:(id)arg1 size:(tvec2_3b141483 *)arg2;
-+ (id)orthographicPerPixelWithBounds:(box_0260e9b3 *)arg1;
-+ (id)orthographicPerPixelWithSize:(tvec2_3b141483 *)arg1;
-+ (id)orthographicWithSize:(tvec2_3b141483 *)arg1;
++ (id)cameraWithLens:(id)arg1 size:(void *)arg2;
++ (id)orthographicPerPixelWithBounds:(void *)arg1;
++ (id)orthographicPerPixelWithSize:(void *)arg1;
++ (id)orthographicWithSize:(void *)arg1;
 + (id)orthographic;
-+ (id)perspectiveWithSize:(tvec2_3b141483 *)arg1;
++ (id)perspectiveWithSize:(void *)arg1;
 + (id)perspective;
 - (id).cxx_construct;
-@property(nonatomic) tmat4x4_3074befe transform; // @synthesize transform=mTransform;
-@property(nonatomic) tvec2_84d5962d containingViewportOffset; // @synthesize containingViewportOffset=mContainingViewportOffset;
-@property(nonatomic) box_0260e9b3 viewport; // @synthesize viewport=mViewport;
-@property(nonatomic) float viewportSamples; // @synthesize viewportSamples=mViewportSamples;
-@property(nonatomic) float viewportScale; // @synthesize viewportScale=mViewportScale;
-@property(retain, nonatomic) TSCH3DLens *lens; // @synthesize lens=mLens;
-- (void)calculateCullingPlanes:(vector_5e6a89be *)arg1;
-- (id)narrowedByViewport:(const box_0260e9b3 *)arg1 samples:(long long)arg2;
-- (id)pixelAlignedForScaledViewport:(const box_80622335 *)arg1 viewportScale:(float)arg2 samples:(float)arg3 correspondingNoramlizedBounds:(const box_80622335 *)arg4;
-- (id)shiftedByPixels:(tvec2_84d5962d *)arg1;
-- (id)shiftByPixels:(tvec2_84d5962d *)arg1;
-- (id)narrowedByViewport:(box_0260e9b3 *)arg1;
-- (id)narrowedByNormalizedBounds:(box_80622335 *)arg1;
-- (id)narrowByNormalizedBounds:(box_80622335 *)arg1;
+- (void).cxx_destruct;
+@property(nonatomic) tmat4x4_3074befe transform; // @synthesize transform=_transform;
+@property(nonatomic) tvec2_84d5962d containingViewportOffset; // @synthesize containingViewportOffset=_containingViewportOffset;
+@property(nonatomic) box_ce64ce81 viewport; // @synthesize viewport=_viewport;
+@property(nonatomic) float viewportSamples; // @synthesize viewportSamples=_viewportSamples;
+@property(nonatomic) float viewportScale; // @synthesize viewportScale=_viewportScale;
+@property(retain, nonatomic) TSCH3DLens *lens; // @synthesize lens=_lens;
+- (void)calculateCullingPlanes:(void *)arg1;
+- (id)narrowedByViewport:(const void *)arg1 samples:(long long)arg2;
+- (id)pixelAlignedForScaledViewport:(const void *)arg1 viewportScale:(float)arg2 samples:(float)arg3 correspondingNoramlizedBounds:(const void *)arg4;
+- (id)shiftedByPixels:(void *)arg1;
+- (id)shiftByPixels:(void *)arg1;
+- (id)narrowedByViewport:(void *)arg1;
+- (id)narrowedByNormalizedBounds:(void *)arg1;
+- (id)narrowByNormalizedBounds:(void *)arg1;
 - (tmat4x4_3074befe)modelViewViewportProjectionWithViewportScale:(float)arg1;
 @property(readonly, nonatomic) tmat4x4_3074befe modelViewNormalizedProjection;
 @property(readonly, nonatomic) tmat4x4_3074befe modelViewProjection;
@@ -49,20 +50,19 @@
 @property(readonly, nonatomic) tmat4x4_3074befe normalizedProjection;
 @property(readonly, nonatomic) tmat4x4_3074befe projection;
 @property(readonly, nonatomic) tmat4x4_3074befe space;
-- (tvec3_17f03ce0)backProjectCameraSpacePoint:(const tvec3_17f03ce0 *)arg1;
-- (tvec3_17f03ce0)fastProjectNormalizedPoint:(tvec2_84d5962d *)arg1 planeDistance:(float)arg2;
-- (tvec3_17f03ce0)projectNormalizedPoint:(tvec2_84d5962d *)arg1 planeDistance:(float)arg2;
+- (tvec3_17f03ce0)backProjectCameraSpacePoint:(const void *)arg1;
+- (tvec3_17f03ce0)fastProjectNormalizedPoint:(void *)arg1 planeDistance:(float)arg2;
+- (tvec3_17f03ce0)projectNormalizedPoint:(void *)arg1 planeDistance:(float)arg2;
 - (id)frustumSliceAtDistance:(float)arg1;
 - (void)setPosition:(tvec3_17f03ce0)arg1;
 @property(readonly, nonatomic) tvec3_17f03ce0 position;
 - (void)setDirection:(tvec3_17f03ce0)arg1;
 @property(readonly, nonatomic) tvec3_17f03ce0 direction;
-- (void)setContainingViewportSize:(const tvec2_3b141483 *)arg1;
+- (void)setContainingViewportSize:(const void *)arg1;
 - (id)matrixDescription;
 - (id)description;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithLens:(id)arg1 size:(tvec2_3b141483 *)arg2;
+- (id)initWithLens:(id)arg1 size:(void *)arg2;
 
 @end
 

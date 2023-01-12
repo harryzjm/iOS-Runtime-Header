@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/NSCopying-Protocol.h>
+#import <HealthDaemon/NSSecureCoding-Protocol.h>
 
 @class CKRecordZoneID, NSString;
 
-@interface HDCloudSyncZoneIdentifier : NSObject <NSCopying>
+@interface HDCloudSyncZoneIdentifier : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_containerIdentifier;
     CKRecordZoneID *_zoneIdentifier;
@@ -18,7 +19,7 @@
     long long _type;
 }
 
-+ (long long)_typeForIdentifier:(id)arg1;
++ (_Bool)supportsSecureCoding;
 + (id)identifierForZone:(id)arg1 container:(id)arg2 scope:(long long)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
@@ -27,10 +28,13 @@
 @property(readonly, copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEquivalentIgnoringOwnerToZone:(id)arg1;
 - (_Bool)isEquivalentIgnoringOwnerToZone:(id)arg1 container:(id)arg2;
 - (_Bool)isEquivalentToZone:(id)arg1 container:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initForZone:(id)arg1 container:(id)arg2 scope:(long long)arg3;
 - (id)initForZone:(id)arg1 container:(id)arg2;
 

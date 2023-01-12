@@ -4,28 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotoLibraryServices/PLCodecIdentity-Protocol.h>
+#import <objc/NSObject.h>
 
-@class NSString;
-
-@interface PLCodec <PLCodecIdentity>
+@interface PLCodec : NSObject
 {
 }
 
-+ (id)commonCodec_HEVC_inContext:(id)arg1;
-+ (id)commonCodec_H264_inContext:(id)arg1;
-+ (id)codecFromFourCharCodeName:(id)arg1 createIfMissing:(_Bool)arg2 context:(id)arg3;
-+ (id)entityName;
-@property(readonly, nonatomic, getter=isPlayable) _Bool playable; // @dynamic playable;
-- (_Bool)supportsCloudUpload;
-- (unsigned int)_typeCodeFromString:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(copy, nonatomic) NSString *fourCharCodeName; // @dynamic fourCharCodeName;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
++ (id)HEVCfourCharCode;
++ (id)H264fourCharCode;
++ (_Bool)isPlayaleFourCharCodeName:(id)arg1;
++ (unsigned int)_typeCodeFromString:(id)arg1;
 
 @end
 

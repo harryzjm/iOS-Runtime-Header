@@ -29,6 +29,7 @@
 @property(retain, nonatomic) HMRoom *room; // @synthesize room=_room;
 - (_Bool)isItemReorderableAtIndex:(id)arg1;
 - (void)_updateFilters;
+- (_Bool)shouldPerformInitialLoadOnMainThread;
 - (id)_itemsToHideInSet:(id)arg1;
 - (_Bool)_requiresNotificationsForCharacteristic:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;

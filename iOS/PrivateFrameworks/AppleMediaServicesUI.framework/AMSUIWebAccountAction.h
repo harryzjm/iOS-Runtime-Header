@@ -4,26 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class ACAccount, AMSUIWebClientContext, NSString;
+@class ACAccount, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebAccountAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebAccountAction <AMSUIWebActionRunnable>
 {
-    _Bool _active;
     ACAccount *_account;
-    AMSUIWebClientContext *_context;
-    NSString *_creditString;
+    NSDictionary *_accountObject;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *creditString; // @synthesize creditString=_creditString;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
-@property(nonatomic) _Bool active; // @synthesize active=_active;
-@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property(retain, nonatomic) NSDictionary *accountObject; // @synthesize accountObject=_accountObject;
+@property(copy, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

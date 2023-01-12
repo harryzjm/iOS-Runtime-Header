@@ -22,6 +22,8 @@
 @property(readonly) long long auxiliaryImageType; // @synthesize auxiliaryImageType=_auxiliaryImageType;
 - (unsigned int)pixelFormatType;
 - (id)dictionaryRepresentationForAuxiliaryDataType:(id *)arg1;
+- (id)dictionaryRepresentation;
+- (struct CGImage *)cgImageRef;
 - (struct __CVBuffer *)cvPixelBufferRef;
 - (id)auxiliaryImageByReplacingAuxiliaryImageWithPixelBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)auxiliaryImageByApplyingExifOrientation:(unsigned int)arg1;

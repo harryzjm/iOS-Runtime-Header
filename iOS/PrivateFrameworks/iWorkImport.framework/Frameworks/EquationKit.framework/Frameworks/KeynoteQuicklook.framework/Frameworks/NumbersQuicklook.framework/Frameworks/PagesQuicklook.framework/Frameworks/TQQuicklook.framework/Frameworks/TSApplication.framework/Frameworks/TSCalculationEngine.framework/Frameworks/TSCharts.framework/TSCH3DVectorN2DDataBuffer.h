@@ -6,20 +6,20 @@
 
 @interface TSCH3DVectorN2DDataBuffer
 {
-    vector_aab22ae2 mContainer;
+    struct vector<unsigned char, std::allocator<unsigned char>> _container;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)resizeFillDimension:(const struct DataBuffer2DDimension *)arg1;
+- (void)resizeFillDimension:(const void *)arg1;
 - (void)fillCapacity;
 - (void *)mutableData;
 - (const void *)data;
-@property(readonly, nonatomic) vector_aab22ae2 *container;
+@property(readonly, nonatomic) void *container;
 - (unsigned long long)componentByteSize;
 - (int)componentType;
 - (unsigned long long)count;
-- (id)initWithCapacityDimension:(const struct DataBuffer2DDimension *)arg1;
+- (id)initWithCapacityDimension:(const void *)arg1;
 
 @end
 

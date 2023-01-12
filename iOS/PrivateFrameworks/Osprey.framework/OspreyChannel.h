@@ -40,6 +40,8 @@
 - (void)_prepareDeviceAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_prepareChannelWithRequest:(id)arg1 continueWith:(CDUnknownBlockType)arg2;
 - (id)_buildRequestWithMethodName:(id)arg1 requestBuilder:(CDUnknownBlockType)arg2;
+- (void)cancel;
+- (void)close;
 - (void)initializeDeviceAuthenticationSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)preconnect;
 - (id)bidirectionalStreamingRequestWithMethodName:(id)arg1 requestBuilder:(CDUnknownBlockType)arg2 streamingResponseHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
@@ -49,8 +51,10 @@
 - (CDUnknownBlockType)getConnectionMetricsHandler;
 - (void)setUseCompression:(_Bool)arg1;
 @property(nonatomic) _Bool forceHTTPv2;
+- (void)dealloc;
 - (id)initWithURL:(id)arg1 configuration:(id)arg2 useCache:(_Bool)arg3;
 - (id)initWithURL:(id)arg1 configuration:(id)arg2;
+- (void)ocp_setAssociatedHandle:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

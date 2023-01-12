@@ -19,7 +19,6 @@
 @property(readonly, copy, nonatomic) NSArray *acceptedShares; // @synthesize acceptedShares=_acceptedShares;
 @property(readonly, copy, nonatomic) NSDictionary *invitationTokensByShareURLs; // @synthesize invitationTokensByShareURLs=_invitationTokensByShareURLs;
 @property(readonly, copy, nonatomic) NSArray *shareURLs; // @synthesize shareURLs=_shareURLs;
-- (void)_acceptSharesWithShareMetadata:(id)arg1;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 shareURLs:(id)arg3 invitationTokensByShareURL:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

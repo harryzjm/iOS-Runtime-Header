@@ -11,13 +11,18 @@
 @interface EKDirectoryRecord : NSObject
 {
     NSString *_displayName;
+    NSString *_firstName;
+    NSString *_lastName;
     NSString *_preferredAddress;
     NSString *_principalPath;
 }
 
++ (id)recordFromSearchResult:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *principalPath; // @synthesize principalPath=_principalPath;
 @property(retain, nonatomic) NSString *preferredAddress; // @synthesize preferredAddress=_preferredAddress;
+@property(retain, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property(retain, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly) NSDictionary *userInfo;
 - (id)description;

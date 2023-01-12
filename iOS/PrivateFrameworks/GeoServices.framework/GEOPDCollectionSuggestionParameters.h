@@ -34,45 +34,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)categoryIdType;
-+ (Class)geoIdType;
-+ (Class)publisherIdType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)categoryIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)categoryIdsCount;
-- (void)addCategoryId:(id)arg1;
-- (void)clearCategoryIds;
-@property(retain, nonatomic) NSMutableArray *categoryIds;
-- (id)geoIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)geoIdsCount;
-- (void)addGeoId:(id)arg1;
-- (void)clearGeoIds;
-@property(retain, nonatomic) NSMutableArray *geoIds;
-- (id)publisherIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)publisherIdsCount;
-- (void)addPublisherId:(id)arg1;
-- (void)clearPublisherIds;
-@property(retain, nonatomic) NSMutableArray *publisherIds;
-@property(nonatomic) _Bool hasRequestLocalTimestamp;
-@property(nonatomic) double requestLocalTimestamp;
-@property(retain, nonatomic) GEOPDViewportInfo *viewportInfo;
-@property(readonly, nonatomic) _Bool hasViewportInfo;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -16,14 +16,14 @@
     NSAttributedString *_truncationAttributedString;
     NSCharacterSet *_avoidTailTruncationSet;
     struct CGSize _constrainedSize;
-    vector_b5e32e34 _visibleRanges;
+    vector_d2213b4e _visibleRanges;
     struct CGRect _truncationStringRect;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct CGRect truncationStringRect; // @synthesize truncationStringRect=_truncationStringRect;
-@property(readonly, nonatomic) vector_b5e32e34 visibleRanges; // @synthesize visibleRanges=_visibleRanges;
+@property(readonly, nonatomic) vector_d2213b4e visibleRanges; // @synthesize visibleRanges=_visibleRanges;
 - (void)_truncate;
 - (unsigned long long)_findTruncationInsertionPointAtOrBeforeCharacterIndex:(unsigned long long)arg1 layoutManager:(id)arg2 textStorage:(id)arg3;
 - (unsigned long long)_calculateCharacterIndexBeforeTruncationMessage:(id)arg1 textStorage:(id)arg2 textContainer:(id)arg3;

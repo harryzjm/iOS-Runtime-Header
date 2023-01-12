@@ -28,7 +28,9 @@
     _Bool _hasPendingUpdate;
     long long _pendingUpdateStyle;
     _Bool _invalidated;
+    _Bool _motionAllowed;
     _Bool _effectivePaused;
+    _Bool _effectiveMotionEnabled;
     _Bool _needsDraw;
     _Bool _emptying;
     CDStruct_f50b3c6f _state;
@@ -45,15 +47,7 @@
 @property(nonatomic, getter=isMotionEnabled) _Bool motionEnabled; // @synthesize motionEnabled=_motionEnabled;
 @property(readonly, copy, nonatomic) NSSet *magnitudes; // @synthesize magnitudes=_magnitudes;
 @property(copy, nonatomic) NSArray *bucketColors; // @synthesize bucketColors=_bucketColors;
-- (void)_stopMotionUpdates;
-- (void)_startMotionUpdates;
 - (void)motionManager:(id)arg1 didReceiveMotion:(id)arg2;
-- (void)_calculateNewCirclePositions;
-- (void)_updateCircles;
-- (void)_empty;
-- (void)_updateTextureAndBlurShader;
-- (void)_createMetalResourcesWithTextures:(id)arg1;
-- (void)_updatePausedState;
 - (void)setMagnitudes:(id)arg1 withStyle:(long long)arg2;
 - (void)invalidate;
 - (id)rendererState;

@@ -8,18 +8,18 @@
 
 #import <IconServices/ISEffect-Protocol.h>
 
-@class ISColor, NSString;
+@class IFColor, NSString;
 
 __attribute__((visibility("hidden")))
 @interface ISBorderEffect : NSObject <ISEffect>
 {
-    ISColor *_color;
+    IFColor *_color;
     double _lineWidth;
 }
 
 - (void).cxx_destruct;
 @property double lineWidth; // @synthesize lineWidth=_lineWidth;
-@property(retain) ISColor *color; // @synthesize color=_color;
+@property(retain) IFColor *color; // @synthesize color=_color;
 - (id)filterWithBackgroundImage:(id)arg1 inputImage:(id)arg2;
 - (id)initWithLineWidth:(double)arg1 color:(id)arg2;
 

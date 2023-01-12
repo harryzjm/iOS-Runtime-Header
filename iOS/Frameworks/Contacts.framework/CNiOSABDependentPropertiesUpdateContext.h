@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)shouldSetWatchChanges;
++ (id)os_log;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasPendingSyncImageData; // @synthesize hasPendingSyncImageData=_hasPendingSyncImageData;
 @property(nonatomic) _Bool hasPendingThumbnailImageData; // @synthesize hasPendingThumbnailImageData=_hasPendingThumbnailImageData;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSData *pendingImageData; // @synthesize pendingImageData=_pendingImageData;
 - (_Bool)setWatchChangesforThumbnailImageDataToPerson:(void *)arg1 error:(id *)arg2;
 - (_Bool)flushPendingImageChangesToPerson:(void *)arg1 logger:(id)arg2 error:(id *)arg3;
+- (_Bool)logIfConditionFailed:(_Bool)arg1 message:(id)arg2 error:(struct __CFError **)arg3;
 - (void)resetAllData;
 
 @end

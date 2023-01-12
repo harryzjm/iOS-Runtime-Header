@@ -8,7 +8,6 @@
 
 @class UIButton, UIStackView;
 
-__attribute__((visibility("hidden")))
 @interface SFReaderAppearanceThemeSelector : UIView
 {
     UIStackView *_stackView;

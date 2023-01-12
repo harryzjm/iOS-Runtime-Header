@@ -19,8 +19,6 @@
 @property(copy, nonatomic) NSArray *participantsToCheck; // @synthesize participantsToCheck=_participantsToCheck;
 @property(nonatomic) long long requiredPermission; // @synthesize requiredPermission=_requiredPermission;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (id)_updateShareRecordsInContainer:(id)arg1;
-- (_Bool)_isValidParticipant:(id)arg1 withPermissions:(long long)arg2;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 

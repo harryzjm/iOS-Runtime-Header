@@ -13,5 +13,6 @@
 - (void)configureWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)acquireTokenWithSlot:(NSXPCListenerEndpoint *)arg1 AID:(NSData *)arg2 reply:(void (^)(NSXPCListenerEndpoint *, NSString *, NSError *))arg3;
 - (void)acquireTokenWithInstanceID:(NSString *)arg1 reply:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
+- (void)setConfigurationEndpoint:(NSXPCListenerEndpoint *)arg1 reply:(void (^)(void))arg2;
 @end
 

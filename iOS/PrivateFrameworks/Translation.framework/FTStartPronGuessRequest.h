@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_e6bdf737)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_e6bdf737)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) long long codec;
 @property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *orthography;

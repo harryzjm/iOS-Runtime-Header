@@ -6,20 +6,24 @@
 
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXOneUpPresentationDelegate-Protocol.h>
+#import <PhotosUICore/PXSuggestLessPeopleHelperDelegate-Protocol.h>
 
-@class NSString, PXAssetReference, PXForYouSuggestionAssetsDataSourceManager, PXPhotoKitAdjustedUIMediaProvider;
+@class NSString, PXAssetReference, PXForYouSuggestionAssetsDataSourceManager, PXSuggestLessPeopleHelper, PXUIMediaProvider;
 
-@interface PXForYouRecentInterestSuggestionsGadgetProvider <PXOneUpPresentationDelegate, PXActionPerformerDelegate>
+@interface PXForYouRecentInterestSuggestionsGadgetProvider <PXOneUpPresentationDelegate, PXActionPerformerDelegate, PXSuggestLessPeopleHelperDelegate>
 {
-    PXPhotoKitAdjustedUIMediaProvider *_oneUpMediaProvider;
+    PXUIMediaProvider *_oneUpMediaProvider;
     PXForYouSuggestionAssetsDataSourceManager *_oneUpDataSourceManager;
     PXAssetReference *_oneUpInitialAssetReference;
+    PXSuggestLessPeopleHelper *_suggestLessPeopleHelper;
 }
 
 - (void).cxx_destruct;
 - (void)_fileRadarForSuggestion:(id)arg1;
 - (_Bool)actionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)actionPerformer:(id)arg1 presentViewController:(id)arg2;
+- (_Bool)_dismissViewController:(id)arg1 completion:(id)arg2;
+- (_Bool)_presentViewController:(id)arg1;
 - (_Bool)oneUpPresentationWantsShowInLibraryButton:(id)arg1;
 - (long long)oneUpPresentationActionContext:(id)arg1;
 - (id)oneUpPresentationActionManagerForPreviewing:(id)arg1;
@@ -31,13 +35,19 @@
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
+- (void)configureGadget:(id)arg1;
+- (void)_insertSyndicationReplyIntoPreview:(id)arg1 forGadget:(id)arg2;
 - (void)_addTTRActionIntoPreview:(id)arg1 forGadget:(id)arg2;
+- (_Bool)suggestLessPeopleHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)suggestLessPeopleHelper:(id)arg1 presentViewController:(id)arg2;
+- (void)_performSuggestLessPersonActionIntoPreview:(id)arg1 forGadget:(id)arg2;
+- (void)_insertSuggestLessPersonActionIntoPreview:(id)arg1 forGadget:(id)arg2;
 - (void)_insertRemoveSuggestionActionIntoPreview:(id)arg1 forGadget:(id)arg2;
 - (void)suggestionGadget:(id)arg1 didDismissPreviewController:(id)arg2 committing:(_Bool)arg3;
 - (void)suggestionGadget:(id)arg1 commitViewController:(id)arg2;
-- (id)suggestionGadgetPreviewController:(id)arg1;
-- (void)presentOneUpForSuggestion:(id)arg1 animated:(_Bool)arg2;
-- (_Bool)_prepareForOneUpPresentationForSuggestion:(id)arg1;
+- (id)suggestionGadgetPreviewController:(id)arg1 withMediaProvider:(id)arg2;
+- (void)presentOneUpForSuggestion:(id)arg1 withMediaProvider:(id)arg2 animated:(_Bool)arg3;
+- (_Bool)_prepareForOneUpPresentationForSuggestion:(id)arg1 mediaProvider:(id)arg2;
 - (id)init;
 
 // Remaining properties

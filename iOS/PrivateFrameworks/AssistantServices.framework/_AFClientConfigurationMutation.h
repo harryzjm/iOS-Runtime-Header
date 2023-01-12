@@ -8,40 +8,49 @@
 
 #import <AssistantServices/AFClientConfigurationMutating-Protocol.h>
 
-@class AFAccessibilityState, AFAudioPlaybackRequest, AFClientConfiguration, NSString;
+@class AFAccessibilityState, AFAudioPlaybackRequest, AFClientConfiguration, NSDate, NSString;
 
 @interface _AFClientConfigurationMutation : NSObject <AFClientConfigurationMutating>
 {
     AFClientConfiguration *_baseModel;
     AFAccessibilityState *_accessibilityState;
     long long _deviceRingerSwitchState;
-    _Bool _isDeviceInSetupFlow;
     _Bool _isDeviceInCarDNDMode;
     _Bool _isDeviceInStarkMode;
+    _Bool _isDeviceWatchAuthenticated;
+    _Bool _areAnnouncementRequestsPermittedByPresentationWhileActive;
     float _outputVolume;
     AFAudioPlaybackRequest *_tapToSiriAudioPlaybackRequest;
     AFAudioPlaybackRequest *_twoShotAudioPlaybackRequest;
+    NSDate *_deviceSetupFlowBeginDate;
+    NSDate *_deviceSetupFlowEndDate;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasAccessibilityState:1;
         unsigned int hasDeviceRingerSwitchState:1;
-        unsigned int hasIsDeviceInSetupFlow:1;
         unsigned int hasIsDeviceInCarDNDMode:1;
         unsigned int hasIsDeviceInStarkMode:1;
+        unsigned int hasIsDeviceWatchAuthenticated:1;
+        unsigned int hasAreAnnouncementRequestsPermittedByPresentationWhileActive:1;
         unsigned int hasOutputVolume:1;
         unsigned int hasTapToSiriAudioPlaybackRequest:1;
         unsigned int hasTwoShotAudioPlaybackRequest:1;
+        unsigned int hasDeviceSetupFlowBeginDate:1;
+        unsigned int hasDeviceSetupFlowEndDate:1;
     } _mutationFlags;
 }
 
 - (void).cxx_destruct;
 - (id)generate;
+- (void)setDeviceSetupFlowEndDate:(id)arg1;
+- (void)setDeviceSetupFlowBeginDate:(id)arg1;
 - (void)setTwoShotAudioPlaybackRequest:(id)arg1;
 - (void)setTapToSiriAudioPlaybackRequest:(id)arg1;
 - (void)setOutputVolume:(float)arg1;
+- (void)setAreAnnouncementRequestsPermittedByPresentationWhileActive:(_Bool)arg1;
+- (void)setIsDeviceWatchAuthenticated:(_Bool)arg1;
 - (void)setIsDeviceInStarkMode:(_Bool)arg1;
 - (void)setIsDeviceInCarDNDMode:(_Bool)arg1;
-- (void)setIsDeviceInSetupFlow:(_Bool)arg1;
 - (void)setDeviceRingerSwitchState:(long long)arg1;
 - (void)setAccessibilityState:(id)arg1;
 - (id)initWithBaseModel:(id)arg1;

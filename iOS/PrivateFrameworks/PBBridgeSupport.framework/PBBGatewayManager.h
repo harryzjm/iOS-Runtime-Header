@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class BBSettingsGateway, NSArray, NSDateComponents, NSString;
+@class BBSettingsGateway, DNDGlobalConfigurationService, NSArray, NSDateComponents, NSString;
 
 @interface PBBGatewayManager : NSObject
 {
     _Bool _isScheduled;
     NSArray *_bbSections;
     unsigned long long _repeatedCallsEnabled;
+    DNDGlobalConfigurationService *_globalConfigurationService;
     BBSettingsGateway *_settingsGateway;
     NSString *_allowedGroupName;
     unsigned long long _doNotDisturbPrivilegedSenderType;
@@ -31,8 +32,12 @@
 @property(readonly, nonatomic) unsigned long long doNotDisturbPrivilegedSenderType; // @synthesize doNotDisturbPrivilegedSenderType=_doNotDisturbPrivilegedSenderType;
 @property(readonly, nonatomic) NSString *allowedGroupName; // @synthesize allowedGroupName=_allowedGroupName;
 @property(retain, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
+@property(retain, nonatomic) DNDGlobalConfigurationService *globalConfigurationService; // @synthesize globalConfigurationService=_globalConfigurationService;
 @property(nonatomic) unsigned long long repeatedCallsEnabled; // @synthesize repeatedCallsEnabled=_repeatedCallsEnabled;
 @property(retain, nonatomic) NSArray *bbSections; // @synthesize bbSections=_bbSections;
+- (void)setPairSyncEnabled:(_Bool)arg1;
+- (_Bool)pairSyncEnabled;
+- (_Bool)pairSyncStateEditable;
 - (_Bool)repeatedCalls;
 - (void)loadDNDState;
 - (void)loadBBSections;

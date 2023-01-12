@@ -18,9 +18,12 @@ __attribute__((visibility("hidden")))
     NSArray *_providedEntryIdentifiers;
 }
 
++ (double)batteryLevel;
++ (struct CGSize)screenDimensions;
++ (id)deviceType;
 + (id)deviceInfoTask;
-+ (id)_readableNetworkConnectionTypStringFromNWPath:(id)arg1;
-+ (id)_readableRATStringFromCTRadioAccessTechnology:(id)arg1;
++ (id)networkType;
++ (id)cellularServiceInfo;
 + (id)networkInfoTask;
 + (id)sessionInfoTaskForIdentifier:(id)arg1;
 + (id)anytimeTasksForSession:(id)arg1;

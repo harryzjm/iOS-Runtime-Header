@@ -9,7 +9,6 @@
 @class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKDZonePCSData, CKRecord, CKRecordID, NSDictionary, NSError, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifyRecordHandler : NSObject
 {
     _Bool _isDelete;
@@ -93,7 +92,10 @@ __attribute__((visibility("hidden")))
 - (void)_loadPCSData;
 - (_Bool)_createPublicSharingKeyWithError:(id *)arg1;
 - (_Bool)_canSetPreviousProtectionEtag;
+- (void)_setSigningPCSIdentity:(id)arg1;
+- (void)_fetchSigningPCSForRecordToDelete;
 - (void)fetchRecordPCSData;
+- (_Bool)_needsSigningPCS;
 - (void)noteSideEffectRecordPendingDelete:(id)arg1;
 - (void)noteSideEffectRecordAbsent:(id)arg1;
 - (void)noteSideEffectRecordPendingModify:(id)arg1;

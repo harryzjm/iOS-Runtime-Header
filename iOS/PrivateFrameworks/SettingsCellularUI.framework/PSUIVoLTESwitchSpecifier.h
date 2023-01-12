@@ -6,7 +6,7 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTXPCServiceSubscriptionContext, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCallCache, PSUICoreTelephonyCapabilitiesCache, PSUICoreTelephonyCarrierBundleCache;
+@class CTXPCServiceSubscriptionContext, Logger, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCallCache, PSUICoreTelephonyCapabilitiesCache, PSUICoreTelephonyCarrierBundleCache;
 
 __attribute__((visibility("hidden")))
 @interface PSUIVoLTESwitchSpecifier : PSSpecifier
@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     PSUICoreTelephonyCapabilitiesCache *_capabilitiesCache;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
     PSSpecifier *_parentSpecifier;
+    Logger *_logger;
 }
 
 - (void).cxx_destruct;
+- (id)getLogger;
 - (id)groupFooterText;
 - (_Bool)isVoLTEProvisioning;
 - (void)addSpinnerIfNeededToCell:(id)arg1;

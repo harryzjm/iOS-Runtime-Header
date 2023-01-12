@@ -68,6 +68,7 @@
 - (void)_configureClippingIfNecessary;
 - (void)_performSideSwipeHintingHideAnimation;
 - (void)_performSideSwipeHintingRevealAnimation;
+- (void)_revealActionButtonsView:(id)arg1 usingNonInteractiveSpring:(_Bool)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performSideSwipeHinting;
 - (void)_updateRevealForActionButtonsClippingRevealView:(id)arg1 actionButtonsView:(id)arg2 forRevealPercentage:(double)arg3 actionButtonsViewNeedsClipping:(_Bool)arg4;
 - (void)_updateRevealForRightActionButtonsClippingRevealViewForRevealPercentage:(double)arg1;
@@ -91,14 +92,18 @@
 - (void)_setupContentOffsetFloatAnimatableProperty;
 - (double)_actionButtonTriggerDistanceForView:(id)arg1;
 - (id)_notificationCellView;
+- (void)_resetNotificationCellPositionForLongLookPresentationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resetNotificationCellPositionAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setNotificationCellPosition:(double)arg1 withVelocity:(double)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_setNotificationCellPosition:(double)arg1 withVelocity:(double)arg2 usingNonInteractiveSpring:(_Bool)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_updateNotificationCellPosition:(double)arg1;
 - (void)_updateActionButtonRevealPercentageForTargetPosition:(double)arg1;
 - (double)_updateActionRevealStateForTargetPosition:(double)arg1 currentPosition:(double)arg2 velocity:(double)arg3;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_setupPanGestureRecognizer;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (_Bool)notificationListCellShouldShowViewActionButton;
+- (_Bool)notificationListCellShouldShowDefaultActionButton;
 - (void)resetCellActionButtons;
 - (void)hintSideSwipeForDefaultAction;
 - (_Bool)_disableRasterizeInAnimations;
@@ -107,8 +112,11 @@
 - (void)cellOpenButtonPressed:(id)arg1;
 - (void)cellClearButtonPressed:(id)arg1;
 - (void)cellSettingsButtonPressed:(id)arg1;
+- (void)cellOptionsButtonPressed:(id)arg1;
 - (void)cellViewButtonPressed:(id)arg1;
 - (void)layoutSubviews;
+- (void)revealCellActionWithIdentifier:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)senderForCellActionWithIdentifier:(id)arg1;
 - (void)updateCellForContentViewController:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

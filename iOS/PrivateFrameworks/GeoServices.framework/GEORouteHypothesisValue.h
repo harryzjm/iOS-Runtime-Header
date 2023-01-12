@@ -50,7 +50,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)commonInit;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSource:(id)arg1 toDestination:(id)arg2 arrivalDate:(id)arg3 expirationDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6 routeAttributes:(id)arg7;
+- (id)initWithSource:(id)arg1 toDestination:(id)arg2 arrivalDate:(id)arg3 expirationDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6 routeAttributes:(id)arg7 clientInfo:(id)arg8;
 
 @end
 

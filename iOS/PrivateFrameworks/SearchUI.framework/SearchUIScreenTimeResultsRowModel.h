@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, SFSearchResult;
 
 @interface SearchUIScreenTimeResultsRowModel
 {
     NSString *_title;
+    SFSearchResult *_overrideIdentifyingResult;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SFSearchResult *overrideIdentifyingResult; // @synthesize overrideIdentifyingResult=_overrideIdentifyingResult;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isTappable;
+- (Class)collectionViewCellClass;
 - (Class)cellViewClass;
-- (id)initWithSection:(id)arg1;
+- (id)identifyingResult;
+- (id)initWithSection:(id)arg1 result:(id)arg2;
 
 @end
 

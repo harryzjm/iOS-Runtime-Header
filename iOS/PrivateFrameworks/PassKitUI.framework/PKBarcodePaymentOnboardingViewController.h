@@ -4,23 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, PKPaymentSetupProduct;
+@class NSString, PKEducationPhone, PKWatchDeviceImageOverlayView;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKBarcodePaymentOnboardingViewController <UITextViewDelegate>
+@interface PKBarcodePaymentOnboardingViewController <UITextViewDelegate, PKExplanationViewControllerDelegate>
 {
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
-    PKPaymentSetupProduct *_paymentSetupProduct;
+    NSString *_issuerName;
+    PKEducationPhone *_educationPhone;
+    PKWatchDeviceImageOverlayView *_watchView;
+    CDUnknownBlockType _continueHandler;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+- (id)_imageForWatchView;
 - (void)_terminateSetupFlow;
+- (void)explanationViewControllerDidSelectDone:(id)arg1;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithPaymentSetupProduct:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
+- (id)initWithIssuerName:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

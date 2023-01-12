@@ -6,36 +6,24 @@
 
 #import <UIKit/UIButton.h>
 
-#import <CarPlayUI/CPUINowPlayingObserving-Protocol.h>
+@class CPUINowPlayingButtonView, NSString, UIImageView;
 
-@class CPUINowPlayingButtonView, CPUINowPlayingManager, NSString, UIImageView;
-
-@interface CPUINowPlayingButton : UIButton <CPUINowPlayingObserving>
+@interface CPUINowPlayingButton : UIButton
 {
     CPUINowPlayingButtonView *_nowPlayingView;
     UIImageView *_focusBackgroundView;
     NSString *_bundleIdentifier;
-    NSString *_stateName;
-    CPUINowPlayingManager *_nowPlayingManager;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CPUINowPlayingManager *nowPlayingManager; // @synthesize nowPlayingManager=_nowPlayingManager;
-@property(readonly, copy, nonatomic) NSString *stateName; // @synthesize stateName=_stateName;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (id)_stateFromSnapshot:(id)arg1;
-- (void)nowPlayingManager:(id)arg1 didUpdateSnapshot:(id)arg2;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (id)init;
 - (_Bool)canBecomeFocused;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

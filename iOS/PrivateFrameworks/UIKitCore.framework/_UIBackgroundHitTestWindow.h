@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isSystemWindow;
+- (id)_roleHint;
 
 @end
 

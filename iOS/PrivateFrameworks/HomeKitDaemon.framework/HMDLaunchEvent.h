@@ -4,19 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
 @class HMFActivity, NSDate, NSString;
 
-@interface HMDLaunchEvent <HMDDiagnosticReportLogging, HMDCoreAnalyticsLogging>
+@interface HMDLaunchEvent : HMMLogEvent <HMDDiagnosticReportLogging, HMMCoreAnalyticsLogging>
 {
+    _Bool _hasUncommittedRecords;
+    _Bool _hasUncommittedAndPushedRecords;
     HMFActivity *_activity;
+    unsigned long long _systemUptimeMillisecondsRecordedAtLaunch;
+    long long _numUncommittedRecords;
+    long long _numUncommittedAndPushedRecords;
     NSDate *_XPCMessageTransportStartedDate;
 }
 
-+ (id)identifier;
 - (void).cxx_destruct;
+@property long long numUncommittedAndPushedRecords; // @synthesize numUncommittedAndPushedRecords=_numUncommittedAndPushedRecords;
+@property long long numUncommittedRecords; // @synthesize numUncommittedRecords=_numUncommittedRecords;
+@property _Bool hasUncommittedAndPushedRecords; // @synthesize hasUncommittedAndPushedRecords=_hasUncommittedAndPushedRecords;
+@property _Bool hasUncommittedRecords; // @synthesize hasUncommittedRecords=_hasUncommittedRecords;
+@property(readonly) unsigned long long systemUptimeMillisecondsRecordedAtLaunch; // @synthesize systemUptimeMillisecondsRecordedAtLaunch=_systemUptimeMillisecondsRecordedAtLaunch;
 @property(retain) HMFActivity *activity; // @synthesize activity=_activity;
 - (id)serializedEvent;
 - (id)eventName;
@@ -26,6 +37,9 @@
 @property(readonly, copy) NSString *diagnosticReportEventType;
 - (void)updateDiagnosticReportSignature:(id)arg1;
 @property(readonly) double diagnosticReportThreshold;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

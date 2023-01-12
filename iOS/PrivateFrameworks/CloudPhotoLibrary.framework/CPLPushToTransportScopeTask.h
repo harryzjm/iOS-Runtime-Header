@@ -4,50 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+#import <CloudPhotoLibrary/CPLBeforeUploadCheckItemsProvider-Protocol.h>
+
+@class CPLBatchExtractionStrategy, CPLBeforeUploadCheckItems, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineStoreTransaction, CPLEngineTransport, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportGroup, CPLEngineTransportUploadBatchTask, OS_dispatch_queue;
 
-@interface CPLPushToTransportScopeTask
+@interface CPLPushToTransportScopeTask <CPLBeforeUploadCheckItemsProvider>
 {
     NSObject<OS_dispatch_queue> *_lock;
+    NSString *_scopeIdentifier;
     CPLEngineScopeStorage *_scopes;
     CPLEngineTransport *_transport;
     CPLEnginePushRepository *_pushRepository;
     CPLEngineScheduler *_scheduler;
     CPLBatchExtractionStrategy *_currentStrategy;
-    CPLChangeBatch *_uploadBatch;
+    CPLChangeBatch *_diffedBatch;
     CPLChangeBatch *_batchToCommit;
-    NSError *_preparationError;
     CPLDerivativesFilter *_derivativesFilter;
     NSArray *_uploadResourceTasks;
-    NSDictionary *_recordsWithGeneratedResources;
-    NSMutableDictionary *_recordsWithSparseResources;
-    NSMutableDictionary *_recordsWithForwardCompatibilityCheck;
-    NSMutableDictionary *_recordsWithUntrustedCloudCache;
-    NSMutableDictionary *_recordsWithResourcesToLookAhead;
-    NSMutableDictionary *_recordsCopyingDerivativesFromSource;
-    NSMutableDictionary *_recordsToCheckForExistence;
-    NSMutableSet *_recordsNeedingToBeFullyFetched;
+    long long _ruleGroup;
+    CPLBeforeUploadCheckItems *_checkItems;
+    CPLEngineStoreTransaction *_transactionDuringItemsPreparation;
+    NSMutableArray *_preparedUploadResourceTasks;
     NSMutableDictionary *_additionalTransportScopes;
+    NSMutableDictionary *_invalidTransportScopes;
     id <CPLEngineTransportCheckRecordsExistenceTask> _checkExistenceTask;
     id <CPLEngineTransportUploadBatchTask> _uploadTask;
     unsigned long long _lastReportedProgress;
     unsigned long long _countOfPushedChanges;
     double _startOfIteration;
     double _startOfDerivativesGeneration;
-    _Bool _generatingSomeDerivatives;
     _Bool _deferredCancel;
     _Bool _hasCachedShouldCheckResourcesAhead;
     _Bool _shouldCheckResourcesAhead;
-    unsigned long long _estimatedSize;
-    unsigned long long _estimatedCount;
     _Bool _shouldSetupEstimatedSize;
     id <CPLEngineTransportGroup> _transportGroup;
     long long _taskItem;
-    _Bool _mightPushSomeResources;
     _Bool _hasPushedSomeChanges;
-    _Bool _hasDroppedSomeResources;
-    _Bool _shouldResetExceedingQuotaOnSuccess;
     _Bool _isUsingOverQuotaStrategy;
     _Bool _resetStrategy;
     double _latestApproximativeUploadRate;
@@ -60,32 +53,38 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool highPriority; // @synthesize highPriority=_highPriority;
+- (_Bool)isResourceDynamic:(id)arg1;
+- (id)willUploadCloudResource:(id)arg1 localResource:(id)arg2 error:(id *)arg3;
+- (id)availableResourceTypesToUploadForChange:(id)arg1;
+- (_Bool)willNeedToAccessScopeWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)taskIdentifier;
 - (void)_pushTaskDidFinishWithError:(id)arg1;
 - (void)cancel;
 - (void)cancel:(_Bool)arg1;
 - (void)launch;
 - (void)_doOneIteration;
+- (void)_prepareUploadBatch;
 - (void)_generateNeededDerivatives;
-- (void)_generateDerivativesForNextRecord:(id)arg1;
+- (void)_generateDerivativesForNextRecord:(id)arg1 usingDerivativesCache:(id)arg2;
 - (void)_deleteGeneratedResourcesAfterError:(id)arg1;
 - (void)_uploadBatch;
-- (void)_prepareUploadBatchWithTransaction:(id)arg1 andStore:(id)arg2;
+- (void)_extractBatchWithTransaction:(id)arg1 andStore:(id)arg2;
 - (void)_checkForRecordExistence;
-- (void)_detectUpdatesNeedingExistenceCheck:(id)arg1;
 - (void)_clearUploadBatch;
-- (_Bool)_shouldCheckResourcesAheadForChange:(id)arg1;
-- (void)_updateChangeProperties:(id)arg1 withBaseChange:(id)arg2 withCopyProperty:(CDUnknownBlockType)arg3;
 - (_Bool)_reenqueueExtractedBatchWithRejectedRecords:(id)arg1 error:(id *)arg2;
 - (_Bool)_discardUploadedExtractedBatch:(id)arg1 error:(id *)arg2;
 - (_Bool)_markUploadedTasksDidFinishWithError:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
-- (_Bool)_prepareResourcesToUploadInBatch:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
-- (void)_requireExistenceCheckForRecords:(id)arg1;
 - (void)_updateQuotaStrategyAfterSuccessInTransaction:(id)arg1;
 - (void)_popNextBatchAndContinue;
 - (void)_didFinishTaskWithKey:(id)arg1 error:(_Bool)arg2 cancelled:(_Bool)arg3;
 - (void)_didStartTaskWithKey:(id)arg1 recordCount:(unsigned long long)arg2;
 - (id)initWithEngineLibrary:(id)arg1 session:(id)arg2 clientCacheIdentifier:(id)arg3 scope:(id)arg4 transportScope:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

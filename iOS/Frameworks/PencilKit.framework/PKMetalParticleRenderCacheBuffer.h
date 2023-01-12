@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 @class PKMetalBuffer;
-@protocol MTLBuffer;
 
 @interface PKMetalParticleRenderCacheBuffer : NSObject
 {
@@ -21,15 +20,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long numPoints; // @synthesize numPoints=_numPoints;
-@property(readonly, nonatomic) unsigned long long numParticles; // @synthesize numParticles=_numParticles;
-@property(readonly, nonatomic) unsigned long long numVertices; // @synthesize numVertices=_numVertices;
-@property(readonly, nonatomic) unsigned long long strokePointBufferOffset; // @synthesize strokePointBufferOffset=_strokePointBufferOffset;
-@property(readonly, nonatomic) unsigned long long uniformsBufferOffset; // @synthesize uniformsBufferOffset=_uniformsBufferOffset;
-- (_Bool)lockPurgeableResourcesAddToSet:(id)arg1;
-@property(readonly, nonatomic) id <MTLBuffer> strokePointBuffer; // @dynamic strokePointBuffer;
-@property(readonly, nonatomic) id <MTLBuffer> uniformsBuffer; // @dynamic uniformsBuffer;
-- (id)initWithUniforms:(const struct PKMetalParticleKernelUniforms *)arg1 points:(const struct PKMetalParticleStrokePoint *)arg2 numPoints:(unsigned long long)arg3 resourceHandler:(id)arg4;
 
 @end
 

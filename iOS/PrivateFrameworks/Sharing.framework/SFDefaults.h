@@ -10,6 +10,8 @@
 {
 }
 
++ (void)setHasSeenAnnounceNotifications:(_Bool)arg1;
++ (_Bool)hasSeenAnnounceNotifications;
 + (void)setSiriNotificationsPrompted:(unsigned long long)arg1;
 + (unsigned long long)siriNotificationsPrompted;
 

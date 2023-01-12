@@ -40,6 +40,7 @@
 @property(nonatomic) __weak id <PXPeopleDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long maximumNumberOfMembers; // @synthesize maximumNumberOfMembers=_maximumNumberOfMembers;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)_asyncLoadImageForItem:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
 - (id)_itemsArrayFromObjects:(id)arg1;
 - (void)stopListeningForChanges;
@@ -51,6 +52,7 @@
 - (id)localizedTitle;
 - (unsigned long long)photoQuantityAtIndex:(unsigned long long)arg1;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
 - (id)titleAtIndex:(unsigned long long)arg1;
 - (id)personAtIndex:(unsigned long long)arg1;

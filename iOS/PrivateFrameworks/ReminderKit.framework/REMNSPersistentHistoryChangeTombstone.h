@@ -17,6 +17,8 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)hashtagReminderIdentifier;
+- (id)hashtagName;
 - (id)assignmentOwningReminderIdentifier;
 - (id)shareeAddress;
 - (id)shareeDisplayName;

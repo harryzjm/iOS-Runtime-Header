@@ -6,12 +6,13 @@
 
 #import <SyncedDefaults/SYDClientProtocol-Protocol.h>
 
-@class NSCache, NSObject, NSString, NSXPCConnection, SYDStoreConfiguration;
+@class NSCache, NSLock, NSObject, NSString, NSXPCConnection, SYDStoreConfiguration;
 @protocol OS_dispatch_queue;
 
 @interface SYDClientToDaemonConnection <SYDClientProtocol>
 {
     _Bool _didLogFaultForEntitlements;
+    _Bool _needsChangeDictionaryFromDaemon;
     int _daemonWakeNotifyToken;
     SYDStoreConfiguration *_storeConfiguration;
     NSXPCConnection *_xpcConnection;
@@ -19,9 +20,11 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSObject<OS_dispatch_queue> *_analyticsQueue;
     NSCache *_cachedObjects;
+    NSLock *_cacheLock;
     unsigned long long _syncingWithCloudCounter;
 }
 
++ (id)clientProtocolInterface;
 + (id)daemonProtocolInterface;
 + (void)processAccountChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)shouldSyncOnFirstInitializationOverride;
@@ -32,7 +35,9 @@
 + (id)defaultStoreIdentifierForCurrentProcessWithApplicationIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property unsigned long long syncingWithCloudCounter; // @synthesize syncingWithCloudCounter=_syncingWithCloudCounter;
+@property(retain, nonatomic) NSLock *cacheLock; // @synthesize cacheLock=_cacheLock;
 @property(retain, nonatomic) NSCache *cachedObjects; // @synthesize cachedObjects=_cachedObjects;
+@property _Bool needsChangeDictionaryFromDaemon; // @synthesize needsChangeDictionaryFromDaemon=_needsChangeDictionaryFromDaemon;
 @property(nonatomic) _Bool didLogFaultForEntitlements; // @synthesize didLogFaultForEntitlements=_didLogFaultForEntitlements;
 @property(nonatomic) int daemonWakeNotifyToken; // @synthesize daemonWakeNotifyToken=_daemonWakeNotifyToken;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
@@ -69,12 +74,16 @@
 - (void)setChangeToken:(id)arg1;
 - (struct __CFDictionary *)copyDictionary;
 - (struct __CFArray *)copyKeyList;
+- (id)dictionaryRepresentationWithError:(id *)arg1;
 - (id)dictionaryRepresentation;
 - (void *)getValueForKey:(struct __CFString *)arg1;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2;
+- (id)objectForKey:(id)arg1 error:(id *)arg2;
 - (id)objectForKey:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;
+- (_Bool)setObject:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)_handleCacheErrorForKey:(id)arg1;
 @property(readonly, nonatomic) _Bool isSyncingWithCloud;
 @property(readonly, nonatomic) long long storeType;
 @property(readonly, nonatomic) NSString *storeIdentifier;

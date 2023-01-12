@@ -6,27 +6,26 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideoSubscriberAccountUI/UIWebViewDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/UIWebViewPrivateDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSMessageQueueDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSWebAuthenticationViewController-Protocol.h>
+#import <VideoSubscriberAccountUI/WKNavigationDelegate-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIWebView, VSWebAuthenticationViewModel;
+@class NSString, UIActivityIndicatorView, VSWebAuthenticationViewModel, WKWebView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSWebAuthenticationViewController : UIViewController <UIWebViewDelegate, UIWebViewPrivateDelegate, VSMessageQueueDelegate, VSWebAuthenticationViewController>
+@interface VSWebAuthenticationViewController : UIViewController <WKNavigationDelegate, VSMessageQueueDelegate, VSWebAuthenticationViewController>
 {
     _Bool _cancellationAllowed;
     id <VSAuthenticationViewControllerDelegate> _delegate;
     VSWebAuthenticationViewModel *_viewModel;
-    UIWebView *_webView;
+    WKWebView *_webView;
     UIActivityIndicatorView *_activityIndicator;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property(retain, nonatomic) UIWebView *webView; // @synthesize webView=_webView;
+@property(retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 @property(retain, nonatomic) VSWebAuthenticationViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(nonatomic) __weak id <VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
@@ -36,11 +35,10 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)uiWebView:(id)arg1 didFirstLayoutInFrame:(id)arg2;
-- (id)uiWebView:(id)arg1 resource:(id)arg2 willSendRequest:(id)arg3 redirectResponse:(id)arg4 fromDataSource:(id)arg5;
-- (_Bool)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
-- (void)webViewDidFinishLoad:(id)arg1;
-- (void)webViewDidStartLoad:(id)arg1;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
 - (void)didAddMessagesToMessageQueue:(id)arg1;
 - (id)_canonicalRequestForRequest:(id)arg1;
 - (void)_stopObservingViewModel:(id)arg1;

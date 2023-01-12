@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (double *)createPointLengthsFromPointLengths:(double *)arg1 withPointCount:(unsigned long long)arg2;
++ (id)_roadComplexitiesForGeoWaypointRoute:(id)arg1 coordinates:(id)arg2;
++ (id)_visualInfosForGuidanceEvents:(id)arg1 steps:(id)arg2 coordinates:(id)arg3;
 + (id)_buildGuidanceEventsForGeoRoute:(id)arg1 withComposedSteps:(id)arg2 coordinates:(id)arg3;
++ (_Bool)_isGuidanceEventAtEndOfLeg:(int)arg1;
 + (id)_guidanceEventsForGeoWaypointRoute:(id)arg1 legs:(id)arg2 steps:(id)arg3 coordinates:(id)arg4;
 + (id)buildMapRegionFromPointSections:(id)arg1;
 + (unsigned long long)segmentIndexForPointIndex:(unsigned long long)arg1 withSegments:(id)arg2;
@@ -20,11 +22,14 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)stepIndexForPointIndex:(unsigned long long)arg1 withSteps:(id)arg2;
 + (id)segmentForPointIndex:(unsigned long long)arg1 withSegments:(id)arg2 andSteps:(id)arg3;
 + (id)buildPointSectionsWithSteps:(id)arg1 segments:(id)arg2 coordinates:(id)arg3;
-+ (id)_composedRouteLegForStartStep:(id)arg1 endStep:(id)arg2 custodian:(id)arg3 geoRouteLeg:(id)arg4 origin:(id)arg5 destination:(id)arg6 arrivalParameters:(id)arg7 legLength:(double)arg8;
++ (id)_composedRouteLegForStartStep:(id)arg1 endStep:(id)arg2 custodian:(id)arg3 geoRouteLeg:(id)arg4 legIndex:(unsigned long long)arg5 origin:(id)arg6 destination:(id)arg7 arrivalParameters:(id)arg8 legLength:(double)arg9;
 + (id)_composedRouteSegmentForStartStep:(id)arg1 andEndStep:(id)arg2 andCustodian:(id)arg3;
 + (id)_composedRouteStepWithTransportType:(int)arg1 andCustodian:(id)arg2 geoRouteLeg:(id)arg3 forGeoStep:(id)arg4 withStepIndex:(unsigned long long)arg5 stepStartPointIndex:(unsigned long long)arg6 legStartPointIndex:(unsigned long long)arg7;
++ (id)_composedRouteStepWithTransportType:(int)arg1 andCustodian:(id)arg2 geoRouteLeg:(id)arg3 forGeoStep:(id)arg4 withStepIndex:(unsigned long long)arg5 startRouteCoordinate:(struct PolylineCoordinate)arg6 endRouteCoordinate:(struct PolylineCoordinate)arg7 maneuverStartRouteCoordinate:(struct PolylineCoordinate)arg8;
 + (void)_buildComponentsForGeoRoute:(id)arg1 andCustodian:(id)arg2 initializerData:(id)arg3 outLegs:(out id *)arg4 outSegments:(out id *)arg5 outSteps:(out id *)arg6;
-+ (void)_componentsForGeoWaypointRoute:(id)arg1 initializerData:(id)arg2 custodian:(id)arg3 outLegs:(out id *)arg4 outSegments:(out id *)arg5 outSteps:(out id *)arg6;
++ (void)_componentsForGeoWaypointRoute:(id)arg1 initializerData:(id)arg2 coordinates:(id)arg3 custodian:(id)arg4 outLegs:(out id *)arg5 outSegments:(out id *)arg6 outSteps:(out id *)arg7;
++ (id)_cellularCoverageForGeoRoute:(id)arg1 coordinates:(id)arg2;
++ (id)_cellularCoverageForGeoWaypointRoute:(id)arg1 coordinates:(id)arg2;
 + (id)_buildCoordinatesForGeoRoute:(id)arg1;
 + (id)_unpackedPointsDataForGeoRoute:(id)arg1;
 + (id)_coordinatesForGeoWaypointRoute:(id)arg1;

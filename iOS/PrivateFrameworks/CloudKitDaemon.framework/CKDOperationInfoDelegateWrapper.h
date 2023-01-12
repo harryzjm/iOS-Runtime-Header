@@ -9,7 +9,6 @@
 @class NSString;
 @protocol CKDOperationInfoDelegate;
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationInfoDelegateWrapper : NSObject
 {
     id <CKDOperationInfoDelegate> _delegate;

@@ -8,12 +8,10 @@
 
 @interface CAMFocusLockBadge : CEKBadgeTextView
 {
-    _Bool _focusLocked;
-    _Bool _exposureLocked;
+    long long _focusLockType;
 }
 
-@property(nonatomic, getter=isExposureLocked) _Bool exposureLocked; // @synthesize exposureLocked=_exposureLocked;
-@property(nonatomic, getter=isFocusLocked) _Bool focusLocked; // @synthesize focusLocked=_focusLocked;
+@property(nonatomic) long long focusLockType; // @synthesize focusLockType=_focusLockType;
 - (void)_updateText;
 - (id)initWithFrame:(struct CGRect)arg1;
 

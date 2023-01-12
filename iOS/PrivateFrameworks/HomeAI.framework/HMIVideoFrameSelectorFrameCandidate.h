@@ -13,16 +13,16 @@ __attribute__((visibility("hidden")))
 {
     float _score;
     struct opaqueCMSampleBuffer *_sbuf;
-    NSArray *_detections;
+    NSArray *_motionDetections;
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSArray *detections; // @synthesize detections=_detections;
+@property(readonly) NSArray *motionDetections; // @synthesize motionDetections=_motionDetections;
 @property(readonly) float score; // @synthesize score=_score;
 @property(readonly) struct opaqueCMSampleBuffer *sbuf; // @synthesize sbuf=_sbuf;
 - (id)description;
 - (void)dealloc;
-- (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 score:(float)arg2 detections:(id)arg3;
+- (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 score:(float)arg2 motionDetections:(id)arg3;
 
 @end
 

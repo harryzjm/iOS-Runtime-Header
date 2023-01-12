@@ -12,9 +12,11 @@
     int _propertyID;
     NSString *_accountIdentifier;
     long long _multivalueIndex;
+    NSString *_contactIdentifier;
     CNContact *_contact;
 }
 
++ (_Bool)supportsSecureCoding;
 + (void)removeContactsChangeObserver:(id)arg1;
 + (id)addContactsChangeObserver:(CDUnknownBlockType)arg1;
 + (void)contactStoreDidChange:(id)arg1;
@@ -22,6 +24,10 @@
 + (id)changeObservers;
 + (id)contactWithCNContact:(id)arg1 propertyID:(int)arg2 multivalueIndex:(long long)arg3;
 + (id)contactWithCNContact:(id)arg1;
++ (id)contactWithIdentifier:(id)arg1;
++ (id)firstContactWithPhoneNumber:(id)arg1;
++ (id)firstContactWithEmailAddress:(id)arg1;
++ (id)firstContactWithPredicate:(id)arg1 propertyID:(int)arg2 valueEqualityBlock:(CDUnknownBlockType)arg3;
 + (id)contactWithVCardData:(id)arg1 propertyID:(int)arg2 multivalueIndex:(long long)arg3;
 + (id)contactsWithVCardData:(id)arg1;
 + (id)contactsWithName:(id)arg1 keysToFetch:(id)arg2;
@@ -34,6 +40,8 @@
 @property(readonly, copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (long long)multivalueIndex;
 - (int)propertyID;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -59,8 +67,9 @@
 - (id)firstName;
 - (id)namePrefix;
 - (id)formattedName;
-@property(readonly, copy, nonatomic) NSString *contactIdentifier;
+@property(readonly, copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 - (id)vCardRepresentationWithFullData:(_Bool)arg1;
+- (id)contactIdentifierForINPerson;
 - (id)contactWithPropertyID:(int)arg1 multivalueIndex:(long long)arg2;
 - (id)valueForPropertyID:(int)arg1;
 - (void)refetchContact;

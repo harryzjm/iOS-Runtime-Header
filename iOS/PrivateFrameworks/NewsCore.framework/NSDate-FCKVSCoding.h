@@ -34,6 +34,7 @@
 - (id)fc_dateByRoundingDownToNearestQuarterHour;
 - (_Bool)fc_isSameDayAs:(id)arg1;
 @property(readonly, nonatomic) _Bool fc_isWeekend;
+- (_Bool)isInFuture;
 - (_Bool)isToday;
 - (long long)fc_GregorianCalendarDaysSinceDate:(id)arg1;
 - (id)fc_dateOfEarliestGregorianCalendarDay;

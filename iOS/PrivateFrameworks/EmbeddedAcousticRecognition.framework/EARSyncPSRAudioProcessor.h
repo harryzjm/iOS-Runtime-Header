@@ -15,6 +15,7 @@
     struct SystemConfig _sysConfig;
     unsigned long long _sampleRate;
     double _scoreReportTimestamp;
+    long long _maxBufferSizeSeconds;
     id <EARSyncPSRAudioProcessorDelegate> _delegate;
     NSString *_configRoot;
     NSObject<OS_dispatch_queue> *_queue;
@@ -31,6 +32,7 @@
 - (void)endAudio;
 - (void)addAudio:(id)arg1;
 - (void)resetForNewRequest;
+- (id)initWithConfigFile:(id)arg1 configRoot:(id)arg2 sampleRate:(unsigned long long)arg3 delegate:(id)arg4 queue:(id)arg5 maxBufferSizeSeconds:(long long)arg6;
 - (id)initWithConfigFile:(id)arg1 configRoot:(id)arg2 sampleRate:(unsigned long long)arg3 delegate:(id)arg4 queue:(id)arg5;
 - (id)initWithConfigFile:(id)arg1 configRoot:(id)arg2 sampleRate:(unsigned long long)arg3 delegate:(id)arg4;
 

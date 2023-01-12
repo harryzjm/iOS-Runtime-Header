@@ -25,7 +25,7 @@
 @property(readonly, nonatomic) NAFuture *languageSettingFuture;
 - (id)preferredOutputVoiceAccentOptionsForSelectedOption:(id)arg1;
 - (id)preferredOutputVoiceGenderOptionsForSelectedOption:(id)arg1;
-- (id)preferredRecognitionLanguageOptions;
+- (id)preferredRecognitionLanguageOptionsForSelectedOption:(id)arg1;
 - (void)_dumpAvailableLanguageOptionsWithReason:(id)arg1;
 - (id)updateSelectedLanguageOption:(id)arg1;
 - (id)updateAvailableLanguageOptions:(id)arg1;

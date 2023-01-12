@@ -13,11 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface GRLResourceGroupObserver : NSObject <GEOResourceManifestTileGroupObserver>
 {
-    struct GeoResourceProvider *_resourceProvider;
+    void *_resourceProvider;
 }
 
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
-- (id)initWithResourceProvider:(struct GeoResourceProvider *)arg1;
+- (id)initWithResourceProvider:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

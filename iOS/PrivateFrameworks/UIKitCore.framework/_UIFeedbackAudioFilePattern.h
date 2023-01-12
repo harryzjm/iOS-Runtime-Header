@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/_UIFeedbackCoreHapticsCustomAudio_Internal-Protocol.h>
+#import <UIKitCore/_UIFeedbackCoreHapticsPlayerReuse_Internal-Protocol.h>
 #import <UIKitCore/_UIFeedbackDiscretePlayable-Protocol.h>
 #import <UIKitCore/_UIFeedbackFilePlayable_Internal-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface _UIFeedbackAudioFilePattern <_UIFeedbackFilePlayable_Internal, _UIFeedbackDiscretePlayable>
+@interface _UIFeedbackAudioFilePattern <_UIFeedbackFilePlayable_Internal, _UIFeedbackCoreHapticsPlayerReuse_Internal, _UIFeedbackCoreHapticsCustomAudio_Internal, _UIFeedbackDiscretePlayable>
 {
     _Bool _highPriority;
+    _Bool _canReuseCoreHapticsPlayer;
+    _Bool _disableEventUseVolumeEnvelope;
     NSURL *_fileURL;
 }
 
@@ -19,6 +23,8 @@
 + (id)type;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool disableEventUseVolumeEnvelope; // @synthesize disableEventUseVolumeEnvelope=_disableEventUseVolumeEnvelope;
+@property(nonatomic) _Bool canReuseCoreHapticsPlayer; // @synthesize canReuseCoreHapticsPlayer=_canReuseCoreHapticsPlayer;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, nonatomic, getter=isHighPriority) _Bool highPriority; // @synthesize highPriority=_highPriority;
 - (unsigned long long)_effectivePlayableFeedbackTypes;

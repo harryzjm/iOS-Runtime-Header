@@ -22,7 +22,6 @@
     NSObject<OS_dispatch_group> *_pendingEndSaveGroup;
 }
 
-+ (void)garbageCollectDocumentSupportWithKnownDocumentUUIDs:(id)arg1 delegate:(id)arg2;
 + (id)supportBundleURLForDocumentUUID:(id)arg1 delegate:(id)arg2;
 + (id)supportDirectoryURLWithDelegate:(id)arg1 isUnique:(_Bool *)arg2;
 + (id)defaultSupportDirectoryURL;

@@ -21,6 +21,11 @@
 + (id)mediaCharacteristicsForMediaTypes;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)makeSampleCursorAtLastSampleInDecodeOrder;
+- (id)makeSampleCursorAtFirstSampleInDecodeOrder;
+- (id)makeSampleCursorWithPresentationTimeStamp:(CDStruct_1b6d18a9)arg1;
+- (_Bool)canProvideSampleCursors;
+- (void)loadAssociatedTracksOfType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)associatedTracksOfType:(id)arg1;
 - (id)availableTrackAssociationTypes;
 - (_Bool)isAudibleBooksContentAuthorized;
@@ -36,13 +41,16 @@
 - (long long)defaultAlternateGroupID;
 - (long long)alternateGroupID;
 - (id)metadata;
+- (void)loadMetadataForFormat:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)metadataForFormat:(id)arg1;
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
+- (void)loadSamplePresentationTimeForTrackTime:(CDStruct_1b6d18a9)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (CDStruct_1b6d18a9)samplePresentationTimeForTrackTime:(CDStruct_1b6d18a9)arg1;
 - (id)segmentsAsPresented;
 - (CDStruct_e83c9415)gaplessSourceTimeRange;
 - (_Bool)segmentsExcludeAudioPrimingAndRemainderDurations;
+- (void)loadSegmentForTrackTime:(CDStruct_1b6d18a9)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;
 - (id)segments;
 - (CDStruct_1b6d18a9)minFrameDuration;

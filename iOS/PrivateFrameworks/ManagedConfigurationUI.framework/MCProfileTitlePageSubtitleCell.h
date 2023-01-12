@@ -10,7 +10,6 @@
 
 @class NSString, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageSubtitleCell : UITableViewCell <MCUIScrollAnimationResponder>
 {
     UILabel *_titleLabel;

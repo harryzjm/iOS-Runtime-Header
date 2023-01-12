@@ -14,6 +14,7 @@
     MISSING_TYPE *disableSidebarBarButtonItem;
     MISSING_TYPE *rootViewController;
     MISSING_TYPE *backBarButtonItem;
+    MISSING_TYPE *nextDisplayMode;
     MISSING_TYPE *$__lazy_storage_$_sidebarBarButtonItem;
     MISSING_TYPE *doneBarButtonItem;
     MISSING_TYPE *transition;

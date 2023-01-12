@@ -7,13 +7,14 @@
 #import <Home/HFActionBuilderFactory-Protocol.h>
 #import <Home/HFCompoundItemProtocol-Protocol.h>
 #import <Home/HFGroupableItemProtocol-Protocol.h>
+#import <Home/HFMediaAccessoryProtocol-Protocol.h>
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMAccessory, HMHome, NSArray, NSSet, NSString;
+@class HFMediaAccessoryCommonSettingsManager, HMAccessory, HMHome, NSArray, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
-@interface HFAccessoryItem <HFServiceLikeItem, HFActionBuilderFactory, HFServiceLikeBuilderCreating, HFGroupableItemProtocol, HFCompoundItemProtocol>
+@interface HFAccessoryItem <HFMediaAccessoryProtocol, HFServiceLikeItem, HFActionBuilderFactory, HFServiceLikeBuilderCreating, HFGroupableItemProtocol, HFCompoundItemProtocol>
 {
     HMAccessory *_accessory;
     id <HFCharacteristicValueSource> _valueSource;
@@ -30,8 +31,13 @@
 - (id)_unanimousValueForResultsKey:(id)arg1 inServiceItems:(id)arg2;
 - (_Bool)isMultiLightDevice;
 - (_Bool)isMultiSensorDevice;
+- (id)_repeatingDescriptionsToCoalesce;
 - (id)_buildControlDescription;
 - (id)_buildTileDescription:(_Bool)arg1;
+- (id)setEnableAnnounce:(_Bool)arg1;
+- (_Bool)isAnnounceEnabled;
+- (_Bool)isSiriEndpointAccessory;
+@property(readonly, nonatomic) HFMediaAccessoryCommonSettingsManager *commonSettingsManager;
 @property(readonly, nonatomic) NSArray *allHomeKitObjects;
 @property(readonly, nonatomic) id <HFHomeKitObject> primaryHomeKitObject;
 @property(readonly, nonatomic) unsigned long long numberOfCompoundItems;

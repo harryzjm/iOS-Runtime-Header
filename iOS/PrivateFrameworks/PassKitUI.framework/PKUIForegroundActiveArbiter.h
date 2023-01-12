@@ -26,6 +26,8 @@
     struct os_unfair_lock_s _lock;
 }
 
++ (_Bool)isBackgroundedForReasons:(unsigned int)arg1;
++ (_Bool)isDeactivedForReasons:(unsigned int)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)unregisterDeactivationObserver:(id)arg1;

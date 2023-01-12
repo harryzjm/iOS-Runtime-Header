@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)didChangeThemeParameters;
 - (void)addClient:(id)arg1;
 - (void)didChangeDarkenColorsStatus:(id)arg1;
-- (void)didChangeContentSizeCategory:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

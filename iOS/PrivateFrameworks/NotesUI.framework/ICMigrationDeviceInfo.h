@@ -14,8 +14,10 @@
 {
     _Bool _upgraded;
     _Bool _upgradedToIOS13;
+    _Bool _upgradedToIOS14EorMacOS11E;
     _Bool _upgradable;
     _Bool _upgradableToIOS13;
+    _Bool _upgradableToIOS14orMacOS11;
     _Bool _isOSXDevice;
     _Bool _isIOSDevice;
     NSString *_name;
@@ -25,8 +27,10 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isIOSDevice; // @synthesize isIOSDevice=_isIOSDevice;
 @property(readonly, nonatomic) _Bool isOSXDevice; // @synthesize isOSXDevice=_isOSXDevice;
+@property(readonly, nonatomic) _Bool upgradableToIOS14orMacOS11; // @synthesize upgradableToIOS14orMacOS11=_upgradableToIOS14orMacOS11;
 @property(readonly, nonatomic) _Bool upgradableToIOS13; // @synthesize upgradableToIOS13=_upgradableToIOS13;
 @property(readonly, nonatomic) _Bool upgradable; // @synthesize upgradable=_upgradable;
+@property(readonly, nonatomic) _Bool upgradedToIOS14EorMacOS11E; // @synthesize upgradedToIOS14EorMacOS11E=_upgradedToIOS14EorMacOS11E;
 @property(readonly, nonatomic) _Bool upgradedToIOS13; // @synthesize upgradedToIOS13=_upgradedToIOS13;
 @property(readonly, nonatomic) _Bool upgraded; // @synthesize upgraded=_upgraded;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;

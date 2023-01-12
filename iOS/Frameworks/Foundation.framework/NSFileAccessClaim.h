@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_sandboxTokens;
     NSObject<OS_dispatch_queue> *_arbiterQueue;
     id _originatingReactorQueueID;
+    NSMutableDictionary *_fileHandlesForEvictionProtection;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -47,6 +48,8 @@ __attribute__((visibility("hidden")))
 + (_Bool)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapNewWriting:(_Bool)arg3 ofItemAtLocation:(id)arg4 options:(unsigned long long)arg5;
 @property _Bool shouldEnableMaterializationDuringAccessorBlock; // @synthesize shouldEnableMaterializationDuringAccessorBlock=_shouldEnableMaterializationDuringAccessorBlock;
 @property(readonly) NSObject<OS_dispatch_semaphore> *claimerWaiter; // @synthesize claimerWaiter=_claimerWaiter;
+- (void)_protectIfNecessaryFileAtURL:(id)arg1 withOptions:(unsigned long long)arg2 forReading:(_Bool)arg3;
+- (void)protectFilesAgainstEviction;
 - (_Bool)shouldCancelInsteadOfWaiting;
 @property(readonly, copy) NSArray *allURLs;
 - (void)disavowed;

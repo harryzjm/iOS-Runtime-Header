@@ -9,17 +9,20 @@
 #import <Sleep/BSDescriptionProviding-Protocol.h>
 #import <Sleep/HKSPDictionarySerializable-Protocol.h>
 #import <Sleep/HKSPObject-Protocol.h>
+#import <Sleep/HKSPXPCObject-Protocol.h>
 #import <Sleep/NAEquatable-Protocol.h>
 #import <Sleep/NAHashable-Protocol.h>
 #import <Sleep/NSMutableCopying-Protocol.h>
 
-@class HKSPSleepScheduleDayOccurrence, HKSPSleepScheduleOccurrence, NSArray, NSDate, NSSet, NSString;
+@class HKSPSleepScheduleDayOccurrence, HKSPSleepScheduleOccurrence, NSArray, NSDate, NSDictionary, NSSet, NSString;
+@protocol HKSPSyncAnchor;
 
-@interface HKSPSleepSchedule : NSObject <BSDescriptionProviding, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
+@interface HKSPSleepSchedule : NSObject <BSDescriptionProviding, HKSPXPCObject, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
 {
     _Bool _enabled;
     unsigned long long _version;
     NSDate *_lastModifiedDate;
+    id <HKSPSyncAnchor> _syncAnchor;
     double _windDownTime;
     HKSPSleepScheduleDayOccurrence *_mondayOccurrence;
     HKSPSleepScheduleDayOccurrence *_tuesdayOccurrence;
@@ -32,19 +35,9 @@
     double _sleepDurationGoal;
 }
 
++ (id)innerClasses;
 + (_Bool)supportsSecureCoding;
-+ (id)testSleepScheduleWithAllOccurrencePropertiesSet;
-+ (id)testSleepScheduleWithAllPropertiesSet;
-+ (id)testWeekdayWeekendSleepScheduleWithOverride;
-+ (id)testSleepScheduleWithOverride;
-+ (id)testWeekdayWeekendSleepSchedule;
-+ (id)testSleepScheduleWithBedtimeHour:(unsigned long long)arg1 bedtimeMinute:(unsigned long long)arg2 wakeUpHour:(unsigned long long)arg3 wakeUpMinute:(unsigned long long)arg4 weekdays:(unsigned long long)arg5 windDownMinutes:(unsigned long long)arg6;
-+ (id)testSleepScheduleWithBedtimeHour:(unsigned long long)arg1 bedtimeMinute:(unsigned long long)arg2 wakeUpHour:(unsigned long long)arg3 wakeUpMinute:(unsigned long long)arg4 weekdays:(unsigned long long)arg5;
-+ (id)testSleepScheduleWithWindDownTimeInterval:(double)arg1 alarmEnabled:(_Bool)arg2;
-+ (id)testSleepScheduleWithWindDownTimeInterval:(double)arg1;
-+ (id)testSleepScheduleWithWindDownMinutes:(unsigned long long)arg1;
-+ (id)testSleepScheduleWithAlarmEnabled:(_Bool)arg1;
-+ (id)testSleepSchedule;
++ (id)emptyScheduleWithSyncAnchor:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double sleepDurationGoal; // @synthesize sleepDurationGoal=_sleepDurationGoal;
 @property(readonly, nonatomic) HKSPSleepScheduleDayOccurrence *overrideDayOccurrence; // @synthesize overrideDayOccurrence=_overrideDayOccurrence;
@@ -57,6 +50,7 @@
 @property(readonly, nonatomic) HKSPSleepScheduleDayOccurrence *mondayOccurrence; // @synthesize mondayOccurrence=_mondayOccurrence;
 @property(readonly, nonatomic) double windDownTime; // @synthesize windDownTime=_windDownTime;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
+@property(readonly, nonatomic) id <HKSPSyncAnchor> syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -72,6 +66,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)emptyCopy;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly, nonatomic) unsigned long long windDownMinutes;
 - (double)maximumAllowableWindDown;
@@ -93,6 +88,8 @@
 - (void)_enumerateDayOccurrencesWithBlock:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isEmptySleepSchedule;
+- (id)objectWithSyncAnchor:(id)arg1;
 - (void)copyFromObject:(id)arg1;
 - (id)initFromObject:(id)arg1;
 - (id)init;

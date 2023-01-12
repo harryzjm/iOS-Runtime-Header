@@ -32,6 +32,7 @@
 
 + (id)uncompressedDataWithRawData:(id)arg1 uncompressedSize:(unsigned long long)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) int readingListBookmarkID; // @synthesize readingListBookmarkID=_readingListBookmarkID;
 @property(nonatomic) _Bool skipSavingSessionState; // @synthesize skipSavingSessionState=_skipSavingSessionState;
 @property(nonatomic) unsigned long long uncompressedSessionStateDataSize; // @synthesize uncompressedSessionStateDataSize=_uncompressedSessionStateDataSize;
 @property(nonatomic) _Bool skipUpdate; // @synthesize skipUpdate=_skipUpdate;
@@ -40,7 +41,6 @@
 @property(retain, nonatomic) NSData *sessionStateData; // @synthesize sessionStateData=_sessionStateData;
 @property(nonatomic) _Bool privateBrowsing; // @synthesize privateBrowsing=_privateBrowsing;
 @property(nonatomic) _Bool wasOpenedFromLink; // @synthesize wasOpenedFromLink=_wasOpenedFromLink;
-@property(nonatomic) int readingListBookmarkID; // @synthesize readingListBookmarkID=_readingListBookmarkID;
 @property(nonatomic) _Bool displayingStandaloneImage; // @synthesize displayingStandaloneImage=_displayingStandaloneImage;
 @property(nonatomic) _Bool showingReader; // @synthesize showingReader=_showingReader;
 @property(nonatomic) long long readerViewTopScrollOffset; // @synthesize readerViewTopScrollOffset=_readerViewTopScrollOffset;

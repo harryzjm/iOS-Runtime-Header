@@ -6,20 +6,20 @@
 
 @interface TSCH3DLineExtrusionGeometry
 {
-    tvec2_84d5962d mYlimits;
-    tvec2_84d5962d mXlimits;
+    tvec2_84d5962d _ylimits;
+    tvec2_84d5962d _xlimits;
 }
 
-+ (id)lineFromXValues:(const vector_7584168e *)arg1 yValues:(const vector_7584168e *)arg2;
++ (id)lineFromXValues:(const void *)arg1 yValues:(const void *)arg2;
 - (id).cxx_construct;
-@property(nonatomic) tvec2_84d5962d xlimits; // @synthesize xlimits=mXlimits;
-@property(nonatomic) tvec2_84d5962d ylimits; // @synthesize ylimits=mYlimits;
+@property(nonatomic) tvec2_84d5962d xlimits; // @synthesize xlimits=_xlimits;
+@property(nonatomic) tvec2_84d5962d ylimits; // @synthesize ylimits=_ylimits;
 - (id)elementsBoundsPositions;
 - (id)selectionKnobPositions;
-- (tmat4x4_3074befe)matrixAtXPosition:(float)arg1 returningXRangeInfo:(struct LineExtrusionGeometryXRangeInfo *)arg2;
+- (tmat4x4_3074befe)matrixAtXPosition:(float)arg1 returningXRangeInfo:(void *)arg2;
 - (tmat3x3_b39cd897)p_rotationMatrixForCrossSectionIndex:(unsigned long long)arg1;
 - (void)generateArrays;
-- (void)setSpine:(const vector_7200ab52 *)arg1;
+- (void)setSpine:(const void *)arg1;
 - (id)init;
 
 @end

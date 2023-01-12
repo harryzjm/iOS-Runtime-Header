@@ -10,57 +10,49 @@
 #import <Navigation/CLLocationManagerVehicleDelegate-Protocol.h>
 #import <Navigation/MNLocationProvider-Protocol.h>
 
-@class CLLocationManager, MNLocationProviderCLParameters, NSBundle, NSLock, NSRunLoop, NSString;
+@class CLLocationManager, MNLocationProviderCLParameters, NSBundle, NSRunLoop, NSString;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MNCoreLocationProvider : NSObject <CLLocationManagerDelegate, CLLocationManagerVehicleDelegate, MNLocationProvider>
 {
-    _Bool _waitingForAuthorization;
     _Bool _hasQueriedAuthorization;
-    NSLock *_authorizationLock;
-    _Bool _alternate;
     CLLocationManager *_clLocationManager;
     MNLocationProviderCLParameters *_clParameters;
     id <MNLocationProviderDelegate> _delegate;
-    _Bool _locationServicesPreferencesDialogEnabled;
     int _authorizationStatus;
     _Bool _coarseModeEnabled;
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
-    CDUnknownBlockType _authorizationRequestBlock;
+    double _distanceFilter;
+    double _desiredAccuracy;
+    _Bool _matchInfoEnabled;
     NSRunLoop *_debug_initRunLoop;
     NSRunLoop *_debug_deinitRunLoop;
-    _Bool _updatingLocations;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool updatingLocations; // @synthesize updatingLocations=_updatingLocations;
 @property(readonly, nonatomic) _Bool coarseModeEnabled; // @synthesize coarseModeEnabled=_coarseModeEnabled;
 @property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
+- (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(id)arg2;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManagerDidChangeAuthorization:(id)arg1;
-- (void)requestWhenInUseAuthorizationWithPrompt;
-- (void)requestWhenInUseAuthorization;
-@property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)stopMonitoringForRegion:(id)arg1;
+- (void)startMonitoringForRegion:(id)arg1;
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) unsigned long long traceVersion;
 @property(readonly, nonatomic) _Bool isTracePlayer;
-@property(readonly, nonatomic) _Bool isSimulation;
-@property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 @property(nonatomic) int headingOrientation;
-@property(nonatomic) _Bool matchInfoEnabled;
-@property(nonatomic) double distanceFilter;
-@property(nonatomic, getter=isLocationServicesPreferencesDialogEnabled) _Bool locationServicesPreferencesDialogEnabled;
-@property(nonatomic) double desiredAccuracy;
+@property(readonly, nonatomic) _Bool isAuthorized;
 @property(copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property(retain, nonatomic) NSBundle *effectiveBundle;
 - (void)_resetForNewEffectiveBundle;
@@ -74,8 +66,11 @@ __attribute__((visibility("hidden")))
 - (void)requestLocation;
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
+- (void)setMatchInfoEnabled:(_Bool)arg1;
+- (void)setDesiredAccuracy:(double)arg1;
+- (void)setDistanceFilter:(double)arg1;
+- (void)_updateCoarseModeEnabled;
 - (void)_updateAuthorizationStatus;
-@property(readonly, nonatomic) _Bool usesCLMapCorrection;
 - (void)_updateForCLParameters:(id)arg1;
 @property(readonly, nonatomic) CLLocationManager *_clLocationManager;
 - (void)_createCLLocationManager;

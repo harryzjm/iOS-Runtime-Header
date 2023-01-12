@@ -6,8 +6,10 @@
 
 #import <SleepDaemon/HKSPStateMachineDelegate-Protocol.h>
 
+@class HDSPSleepScheduleStateCoordinatorStateMachineContext;
+
 @protocol HDSPSleepScheduleStateCoordinatorStateMachineDelegate <HKSPStateMachineDelegate>
 - (void)snoozeFireDateShouldBeReset;
-- (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
+- (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 context:(HDSPSleepScheduleStateCoordinatorStateMachineContext *)arg3;
 @end
 

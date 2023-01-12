@@ -26,6 +26,7 @@
 - (double)_calculateProgressWidthWithLeftLabelWidth:(double)arg1 rightLabelWidth:(double)arg2;
 - (void)_calculateLabel:(id)arg1 center:(struct CGPoint *)arg2 widthInRadius:(double *)arg3;
 - (double)_layoutProgressViewWithBeginAngle:(double)arg1 widthInRadius:(double)arg2 bottomPadding:(double)arg3;
+- (double)_progressViewHorizontalPaddingInRadius;
 - (void)handleGaugeProvider:(id)arg1 leftTextProvider:(id)arg2 rightTextProvider:(id)arg3;
 - (id)rightLabel;
 - (id)leftLabel;

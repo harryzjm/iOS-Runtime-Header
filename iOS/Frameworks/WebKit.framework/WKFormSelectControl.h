@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WKFormSelectControl
 {
-    RetainPtr_5ad583fd _control;
+    struct RetainPtr<NSObject<WKFormControl>> _control;
 }
 
 - (id).cxx_construct;

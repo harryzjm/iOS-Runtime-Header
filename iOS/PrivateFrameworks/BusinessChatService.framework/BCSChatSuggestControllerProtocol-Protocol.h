@@ -6,10 +6,9 @@
 
 #import <BusinessChatService/NSObject-Protocol.h>
 
-@class BCSBusinessItem, NSString;
+@class BCSBusinessItem;
 
 @protocol BCSChatSuggestControllerProtocol <NSObject>
 - (_Bool)chatSuggestVisibilityForBusinessItem:(BCSBusinessItem *)arg1;
-- (void)fetchBusinessItemWithBizID:(NSString *)arg1 TTL:(double)arg2 forClientBundleID:(NSString *)arg3 completion:(void (^)(BCSBusinessItem *, NSError *))arg4;
 @end
 

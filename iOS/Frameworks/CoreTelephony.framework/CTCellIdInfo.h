@@ -18,7 +18,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)cellIdInfoFromCellId:(int)arg1 baseId:(int)arg2;
++ (id)cellIdInfoFromCellId:(unsigned long long)arg1 baseId:(int)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *baseId; // @synthesize baseId=_baseId;
 @property(readonly, nonatomic) NSNumber *cellId; // @synthesize cellId=_cellId;

@@ -6,31 +6,32 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class AVPictureInPictureController, MPAVItem, MPCPlaybackEngine, MPPlaybackContext, MPQueuePlayer, MPVideoView, NSString;
+@class MPAVItem, MPCPlaybackEngine, MPPlaybackContext, MPQueuePlayer, NSString;
 @protocol MPAVQueueController;
 
 @protocol MPCPlaybackEngineImplementation <NSObject>
+@property(readonly, nonatomic, getter=isReloadingPlaybackContext) _Bool reloadingPlaybackContext;
 @property(nonatomic) long long actionAtQueueEnd;
 @property(nonatomic) _Bool autoPlayWhenLikelyToKeepUp;
-@property(nonatomic) _Bool hasPlayedSuccessfully;
-@property(nonatomic) _Bool automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
-@property(nonatomic) _Bool wantsPictureInPicture;
-@property(readonly, nonatomic) AVPictureInPictureController *pictureInPictureController;
-@property(readonly, nonatomic) MPVideoView *videoView;
+@property(readonly, nonatomic) _Bool hasPlayedSuccessfully;
 @property(readonly, nonatomic) long long stateBeforeInterruption;
 @property(readonly, nonatomic) long long state;
-@property(nonatomic) double currentTime;
+@property(readonly, nonatomic) float currentRate;
+@property(readonly, nonatomic) double currentTime;
 @property(readonly, nonatomic) MPQueuePlayer *queuePlayer;
 @property(readonly, nonatomic) MPAVItem *currentItem;
 @property(retain, nonatomic) id <MPAVQueueController> queueController;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine;
 - (void)updateAudioSession;
-- (_Bool)becomeActiveWithError:(id *)arg1;
+- (void)becomeActiveWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)loadSessionWithQueueController:(id <MPAVQueueController>)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)replaceCurrentItemWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)reloadWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (id)initWithPlaybackEngine:(MPCPlaybackEngine *)arg1;
 
 @optional
+- (void)didReachEndOfQueueWithReason:(NSString *)arg1;
+- (void)setRelativeVolume:(float)arg1;
 - (void)jumpToTime:(double)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setRate:(float)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)endScanningWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -38,13 +39,16 @@
 - (void)skipWithDirection:(long long)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (_Bool)skipWithDirectionShouldJumpToItemStart:(long long)arg1;
 - (void)togglePlaybackWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)pauseForLeasePreventionWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)pauseWithFadeout:(double)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)pauseWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)playWithRate:(float)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)endPlaybackWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)setQueueWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)endUsingVideoLayer;
 - (void)beginUsingVideoLayer;
 - (void)endPlayback;
+- (void)setCurrentTime:(double)arg1;
 - (void)endSeek;
 - (void)beginSeek:(int)arg1;
 - (_Bool)setRate:(float)arg1 completion:(void (^)(void))arg2;

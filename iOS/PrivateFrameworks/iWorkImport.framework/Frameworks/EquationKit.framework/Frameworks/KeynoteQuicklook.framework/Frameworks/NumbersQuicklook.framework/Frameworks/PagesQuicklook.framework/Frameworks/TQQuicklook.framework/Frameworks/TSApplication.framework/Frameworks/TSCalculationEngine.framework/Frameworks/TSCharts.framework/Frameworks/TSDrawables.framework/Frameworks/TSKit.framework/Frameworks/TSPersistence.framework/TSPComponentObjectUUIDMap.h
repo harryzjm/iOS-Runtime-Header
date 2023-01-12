@@ -9,27 +9,22 @@
 #import <TSPersistence/NSCopying-Protocol.h>
 #import <TSPersistence/NSMutableCopying-Protocol.h>
 
-@class NSDictionary;
-
 @interface TSPComponentObjectUUIDMap : NSObject <NSCopying, NSMutableCopying>
 {
-    NSDictionary *_identifierToObjectUUIDDictionary;
-    NSDictionary *_objectUUIDToIdentifierDictionary;
+    void *_identifierToUUIDMap;
+    void *_uuidToIdentifierMap;
 }
 
-- (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *objectUUIDToIdentifierDictionary; // @synthesize objectUUIDToIdentifierDictionary=_objectUUIDToIdentifierDictionary;
-@property(readonly, nonatomic) NSDictionary *identifierToObjectUUIDDictionary; // @synthesize identifierToObjectUUIDDictionary=_identifierToObjectUUIDDictionary;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToMessage:(RepeatedPtrField_f8410f9e *)arg1;
+- (void)saveToMessage:(void *)arg1;
 - (void)enumerateIdentifiersAndObjectUUIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (long long)identifierForObjectUUID:(id)arg1;
 - (id)objectUUIDForIdentifier:(long long)arg1;
 @property(readonly, nonatomic) unsigned long long count;
-- (id)initWithMessage:(const RepeatedPtrField_f8410f9e *)arg1;
-- (id)initWithIdentifierToObjectUUIDDictionary:(id)arg1 objectUUIDToIdentifierDictionary:(id)arg2;
-- (id)init;
+- (void)dealloc;
+- (id)initWithComponentObjectUUIDMap:(id)arg1;
+- (id)initWithMessage:(const void *)arg1;
 
 @end
 

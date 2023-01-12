@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIFont.h>
+#import <UIFoundation/UIFont.h>
 
 @interface UIFont (IC)
-+ (id)ic_preferredFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2;
++ (id)ic_preferredFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2 isForPrint:(_Bool)arg3;
 + (double)ic_preferredFontSizeWithBaseSize:(double)arg1 withContentSizeCategory:(id)arg2 minSize:(double)arg3 maxSize:(double)arg4;
 + (id)ic_preferredSystemFontWithBaseSize:(double)arg1 withContentSizeCategory:(id)arg2 minSize:(double)arg3;
 + (id)ic_preferredFontForTextStyle:(id)arg1 maxContentSizeCategory:(id)arg2;
@@ -18,14 +18,20 @@
 + (id)ic_preferredFontForFixedWidthTextWithContentSizeCategory:(id)arg1;
 + (id)ic_preferredFontForBodyTextWithMaximumContentSizeCategory:(id)arg1;
 + (id)ic_preferredFontForBodyTextWithContentSizeCategory:(id)arg1 useSingleLineA:(_Bool)arg2;
++ (id)ic_preferredFontForBodyTextWithContentSizeCategory:(id)arg1 isForPrint:(_Bool)arg2;
 + (id)ic_preferredFontForBodyTextWithContentSizeCategory:(id)arg1;
++ (id)ic_preferredFontForSubheadingTextWithContentSizeCategory:(id)arg1 isForPrint:(_Bool)arg2;
 + (id)ic_preferredFontForSubheadingTextWithContentSizeCategory:(id)arg1;
++ (id)ic_preferredFontForHeadingTextWithContentSizeCategory:(id)arg1 isForPrint:(_Bool)arg2;
 + (id)ic_preferredFontForHeadingTextWithContentSizeCategory:(id)arg1;
++ (id)ic_preferredFontForTitleTextWithContentSizeCategory:(id)arg1 isForPrint:(_Bool)arg2;
 + (id)ic_preferredFontForTitleTextWithContentSizeCategory:(id)arg1;
 + (double)ic_pointSizeForTextStyle:(id)arg1 contentSizeCategory:(id)arg2;
 + (double)ic_pointSizeForBodyTextWithContentSizeCategory:(id)arg1;
++ (id)ic_fontDescriptorForBodyTextWithContentSizeCategory:(id)arg1 useSingleLineA:(_Bool)arg2 bold:(_Bool)arg3;
 + (id)ic_recentlyDeletedHeaderFont;
 + (id)ic_navBarButtonFontUsingSingleLineA:(_Bool)arg1;
++ (id)ic_groupInsetHeaderFont;
 + (id)ic_gridViewFolderFont;
 + (id)ic_gridViewNoteSubtitleFont;
 + (id)ic_gridViewNoteTitleFont;
@@ -34,9 +40,13 @@
 + (id)ic_attachmentBrowserTitleFont;
 + (id)ic_listViewDetailFont;
 + (id)ic_listViewTitleFont;
++ (id)ic_preferredFontForStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 maxContentSizeCategory:(id)arg3;
++ (id)ic_preferredFontForStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
++ (id)ic_preferredFontForStyle:(id)arg1 withFontWeight:(double)arg2;
 + (double)ic_preferredAttachmentTextScale;
 + (id)ic_preferredFontForAttachmentBoldText;
 + (id)ic_preferredFontForAttachmentRegularText;
++ (id)ic_preferredFontForCompatibilityBannerText;
 + (id)ic_preferredFontForFixedWidthText;
 + (id)ic_preferredFontForDateTextWithZoomFactor:(double)arg1;
 + (id)ic_preferredFontForDateText;
@@ -46,6 +56,7 @@
 + (id)ic_preferredFontForTitleText;
 + (id)ic_preferredSingleLineAFontForTextStyle:(id)arg1;
 - (id)ic_fontByAddingSymbolicTraits:(unsigned int)arg1;
+- (_Bool)ic_hasSymbolicTrait:(unsigned int)arg1;
 - (_Bool)ic_hasSymbolicItalicTrait;
 - (_Bool)ic_hasSymbolicBoldTrait;
 - (id)ic_fontWithSize:(double)arg1;

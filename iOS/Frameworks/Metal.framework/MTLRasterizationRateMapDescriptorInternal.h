@@ -13,14 +13,16 @@ __attribute__((visibility("hidden")))
 {
     CDStruct_da2e99ad _screenSize;
     NSString *_label;
-    struct vector<MTLRasterizationRateLayerDescriptor *, std::__1::allocator<MTLRasterizationRateLayerDescriptor *>> _layers;
+    struct vector<MTLRasterizationRateLayerDescriptor *, std::allocator<MTLRasterizationRateLayerDescriptor *>> _layers;
     MTLRasterizationRateLayerArrayInternal *_layerAccessor;
+    _Bool _skipSampleValidationAndInterpolation;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)setLabel:(id)arg1;
 - (id)label;
+@property(nonatomic) _Bool skipSampleValidationAndInterpolation; // @synthesize skipSampleValidationAndInterpolation=_skipSampleValidationAndInterpolation;
 - (void)setScreenSize:(CDStruct_da2e99ad)arg1;
 - (CDStruct_da2e99ad)screenSize;
 - (id)formattedDescription:(unsigned long long)arg1;

@@ -13,7 +13,13 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) RTLocationShifter *locationShifter; // @synthesize locationShifter=_locationShifter;
+- (double)computeCircleIntersectionPercentageOfMinRadiusCircleWithDistance:(double)arg1 firstRadius:(double)arg2 secondRadius:(double)arg3;
+- (double)computeCircleIntersectionAreaWithDistance:(double)arg1 firstRadius:(double)arg2 secondRadius:(double)arg3;
+- (_Bool)checkConsistencyBetweenLocation:(id)arg1 otherLocation:(id)arg2 error:(id *)arg3;
+- (_Bool)checkFractionAreaOverlapBetweenLocation:(id)arg1 otherLocation:(id)arg2 largerThanThreshold:(double)arg3 error:(id *)arg4;
+- (double)fractionOfUncertaintyAreaOverlapOfTheSmalestUncertaintyAreaBetweenLocation:(id)arg1 otherLocation:(id)arg2 error:(id *)arg3;
 - (double)distanceFromLocation:(id)arg1 toLocation:(id)arg2 error:(id *)arg3;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

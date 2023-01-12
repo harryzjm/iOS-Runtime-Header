@@ -13,7 +13,6 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (id)_accessibilityIsBatteryItemVisible;
 
 @end
 

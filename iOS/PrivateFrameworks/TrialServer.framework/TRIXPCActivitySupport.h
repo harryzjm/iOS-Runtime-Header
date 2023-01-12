@@ -10,7 +10,10 @@
 {
 }
 
++ (_Bool)unsafe_immediatelyScheduleActivityWithLaunchDaemonDescriptor:(id)arg1;
++ (void)assertRegistrationOfLaunchdPlistActivities:(id)arg1;
 + (void)registerActivityWithLaunchDaemonDescriptor:(id)arg1 checkInBlock:(CDUnknownBlockType)arg2 asyncHandler:(CDUnknownBlockType)arg3;
++ (id)_registeredActivities;
 + (id)nameForActivityState:(long long)arg1;
 
 @end

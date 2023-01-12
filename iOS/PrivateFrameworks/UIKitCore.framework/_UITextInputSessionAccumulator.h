@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UITextInputSessionAccumulator : NSObject
 {
-    unsigned long long _values[7];
+    unsigned long long _values[8];
     NSString *_name;
     long long _type;
     unsigned long long _depth;

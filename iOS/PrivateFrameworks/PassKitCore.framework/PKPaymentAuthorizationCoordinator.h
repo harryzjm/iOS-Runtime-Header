@@ -49,6 +49,8 @@
 - (id)_remoteObjectProxy;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)dismissWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentWithOrientation:(id)arg1 sceneIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentWithSceneIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentWithOrientation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly) id <PKPaymentAuthorizationHostProtocol> hostDelegate;

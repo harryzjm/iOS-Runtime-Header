@@ -8,17 +8,25 @@
 
 @interface SBSwipeToKillSwitcherModifierEvent
 {
+    _Bool _dragging;
+    long long _layoutRole;
     SBAppLayout *_appLayout;
     double _progress;
+    double _decelerationTargetProgress;
+    struct CGPoint _translation;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double progress; // @synthesize progress=_progress;
+@property(nonatomic) double decelerationTargetProgress; // @synthesize decelerationTargetProgress=_decelerationTargetProgress;
+@property(nonatomic, getter=isDragging) _Bool dragging; // @synthesize dragging=_dragging;
+@property(nonatomic) struct CGPoint translation; // @synthesize translation=_translation;
+@property(nonatomic) double progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
+@property(readonly, nonatomic) long long layoutRole; // @synthesize layoutRole=_layoutRole;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
-- (id)initWithAppLayout:(id)arg1 progress:(double)arg2;
+- (id)initWithLayoutRole:(long long)arg1 inAppLayout:(id)arg2 progress:(double)arg3 translation:(struct CGPoint)arg4;
 
 @end
 

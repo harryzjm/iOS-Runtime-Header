@@ -6,23 +6,26 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSString, OBBundle, OBPrivacyFlow;
+@class NSArray, NSString, OBBundle, OBPrivacyFlow, UIColor;
 
 @interface OBPrivacyLinkController : UIViewController
 {
     NSArray *_bundles;
     NSArray *_bundleIdentifiers;
     _Bool _didOverrideShowUnifiedAbout;
+    _Bool _underlineLinks;
     _Bool _presentedViewControllerShouldUseDarkMode;
     _Bool _displayIcon;
     _Bool _displayLargeIcon;
     _Bool _displayCaptionText;
     _Bool _allowsOpeningSafari;
     _Bool _showsLinkToUnifiedAbout;
+    UIColor *_customTintColor;
     NSString *_displayLanguage;
     unsigned long long _displayDeviceType;
 }
 
++ (id)linkWithBundleAtPath:(id)arg1;
 + (id)linkWithBundleIdentifier:(id)arg1;
 + (id)linkWithBundleIdentifiers:(id)arg1;
 + (Class)_platformSpecificClass;
@@ -35,6 +38,8 @@
 @property _Bool displayLargeIcon; // @synthesize displayLargeIcon=_displayLargeIcon;
 @property _Bool displayIcon; // @synthesize displayIcon=_displayIcon;
 @property(nonatomic) _Bool presentedViewControllerShouldUseDarkMode; // @synthesize presentedViewControllerShouldUseDarkMode=_presentedViewControllerShouldUseDarkMode;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
+@property(retain, nonatomic) UIColor *customTintColor; // @synthesize customTintColor=_customTintColor;
 - (void)linkPressed;
 - (void)setLinkEnabled:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

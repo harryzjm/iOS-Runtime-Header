@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithInputItems:(id)arg1;
 - (id)init;
 - (void)attachPreviewAgentWithFrameworkPath:(id)arg1 endpoint:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)getTimelineFor:(id)arg1 into:(id)arg2 environment:(id)arg3 isPreview:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)getTimelinesWithRequests:(id)arg1 isPreview:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPlaceholdersWithEnvironment:(id)arg1 for:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleURLSessionEventsFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDescriptorsWithCompletion:(CDUnknownBlockType)arg1;

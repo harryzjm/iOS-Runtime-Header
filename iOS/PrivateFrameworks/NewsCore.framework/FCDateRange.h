@@ -28,6 +28,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)timestampDescription;
 - (id)description;
 - (id)intersectionWithDateRange:(id)arg1;
 - (long long)sliceIndexForDate:(id)arg1 withInterval:(double)arg2;

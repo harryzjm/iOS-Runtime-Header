@@ -31,9 +31,11 @@
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
++ (id)_mailtoURLForNotification:(id)arg1;
 + (id)_conferenceURLForNotification:(id)arg1;
 + (id)_mapItemURLForNotification:(id)arg1;
 + (id)_mergeDataFromUnprotectedStore:(id)arg1 withDataInProtectedStore:(id)arg2;
++ (id)mailToURLUserInfoKey;
 + (id)conferenceURLUserInfoKey;
 + (id)mapItemURLUserInfoKey;
 + (id)mailOrganizerActionIdentifier;
@@ -79,6 +81,7 @@
 - (void)_handleMailOrganizerActionWithResponse:(id)arg1;
 - (void)_handleConferenceCallActionWithResponse:(id)arg1;
 - (void)_handleDirectionsActionWithResponse:(id)arg1;
+- (void)_commonHandleResponse:(id)arg1;
 - (void)_addEventURL:(id)arg1 mappingToEventObjectID:(id)arg2;
 - (void)_updateNotification:(id)arg1 shouldClearHypothesis:(_Bool)arg2;
 - (void)_notificationAddedWithSourceClientIdentifier:(id)arg1 sourceNotificationInfo:(id)arg2 trigger:(unsigned long long)arg3;

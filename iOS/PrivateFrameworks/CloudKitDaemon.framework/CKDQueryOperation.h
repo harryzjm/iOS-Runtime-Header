@@ -9,7 +9,6 @@
 @class CKDRecordFetchAggregator, CKQuery, CKQueryCursor, CKRecordZoneID, NSDictionary, NSMutableArray, NSObject, NSSet, NSString;
 @protocol CKQueryOperationCallbacks, OS_dispatch_group, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDQueryOperation <CKDOperationPipelining>
 {
     _Bool _shouldFetchAssetContent;
@@ -19,7 +18,7 @@ __attribute__((visibility("hidden")))
     CKQueryCursor *_cursor;
     unsigned long long _resultsLimit;
     CKQueryCursor *_resultsCursor;
-    CDUnknownBlockType _recordFetchedBlock;
+    CDUnknownBlockType _recordFetchCompletionBlock;
     CDUnknownBlockType _queryCursorUpdatedBlock;
     NSSet *_desiredKeySet;
     CKRecordZoneID *_zoneID;
@@ -42,11 +41,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property(retain, nonatomic) NSSet *desiredKeySet; // @synthesize desiredKeySet=_desiredKeySet;
 @property(copy, nonatomic) CDUnknownBlockType queryCursorUpdatedBlock; // @synthesize queryCursorUpdatedBlock=_queryCursorUpdatedBlock;
-@property(copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
+@property(copy, nonatomic) CDUnknownBlockType recordFetchCompletionBlock; // @synthesize recordFetchCompletionBlock=_recordFetchCompletionBlock;
 @property(retain, nonatomic) CKQueryCursor *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property(readonly, nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(readonly, nonatomic) CKQueryCursor *cursor; // @synthesize cursor=_cursor;
 @property(readonly, nonatomic) CKQuery *query; // @synthesize query=_query;
+- (id)relevantZoneIDs;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_sendQueryRequestWithCursor:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 @property(readonly, nonatomic) NSString *pipeliningDescription;
 - (int)operationType;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;

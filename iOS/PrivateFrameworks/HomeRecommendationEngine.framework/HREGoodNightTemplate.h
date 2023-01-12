@@ -8,7 +8,9 @@
 {
 }
 
-- (id)initWithConfiguration:(id)arg1;
+- (id)_lazy_actionMap;
+- (id)extraInvolvedTypes;
+- (id)init;
 
 @end
 

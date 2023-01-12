@@ -13,7 +13,6 @@
 
 + (Class)_attributesClass;
 - (void).cxx_destruct;
-- (id)_keyData;
 - (id)keyData;
 - (id)initWithData:(id)arg1 specifier:(id)arg2 error:(id *)arg3;
 - (id)initRandomKeyWithSpecifier:(id)arg1 error:(id *)arg2;

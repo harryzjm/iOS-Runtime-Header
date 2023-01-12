@@ -6,23 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSHashTable;
+@class HMCameraClipManager, NSArray, NSDate, NSHashTable, NSMutableDictionary;
 
 @interface HUCalendarScrubberDataSource : NSObject
 {
+    NSMutableDictionary *_datesContainingClips;
     NSArray *_dates;
     NSDate *_startDate;
     NSDate *_endDate;
     NSHashTable *_changeObservers;
+    HMCameraClipManager *_clipManager;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak HMCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
 @property(retain, nonatomic) NSHashTable *changeObservers; // @synthesize changeObservers=_changeObservers;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(retain, nonatomic) NSArray *dates; // @synthesize dates=_dates;
+@property(retain, nonatomic) NSMutableDictionary *datesContainingClips; // @synthesize datesContainingClips=_datesContainingClips;
 - (void)removeChangeObserver:(id)arg1;
 - (void)addChangeObserver:(id)arg1;
+- (void)loadDatesContainingClips;
+- (void)reloadDates;
+- (void)removeEvents:(id)arg1;
+- (void)updateEvents:(id)arg1;
 - (id)shortMonthNameForItemAtIndexPath:(id)arg1;
 - (long long)dayOfMonthForItemAtIndexPath:(id)arg1;
 - (id)dayOfWeekForItemAtIndexPath:(id)arg1;
@@ -31,10 +39,9 @@
 - (id)dateAtIndexPath:(id)arg1;
 - (id)indexPathForDate:(id)arg1;
 - (_Bool)eventExistsForItemAtIndexPath:(id)arg1;
-- (void)reloadWithDates:(id)arg1;
 - (void)_updateDateBoundariesIfNeeded;
 - (id)init;
-- (id)initWithDates:(id)arg1;
+- (id)initWithCameraClipManager:(id)arg1;
 
 @end
 

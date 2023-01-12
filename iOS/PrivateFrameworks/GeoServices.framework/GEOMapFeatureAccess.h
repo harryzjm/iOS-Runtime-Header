@@ -16,15 +16,25 @@
     _Bool _flipNegativeTravelDirectionRoads;
     _Bool _visitDoubleTravelDirectionRoadsTwice;
     GEOTileLoader *_tileLoader;
+    _Bool _allowStaleData;
 }
 
-+ (unsigned long long)zoomLevelForStyle:(int)arg1 scale:(int)arg2;
++ (CDStruct_fca5f1f5)tileSetInfoForStyle:(int)arg1 scale:(int)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool allowStaleData; // @synthesize allowStaleData=_allowStaleData;
 @property(nonatomic) _Bool visitDoubleTravelDirectionRoadsTwice; // @synthesize visitDoubleTravelDirectionRoadsTwice=_visitDoubleTravelDirectionRoadsTwice;
 @property(nonatomic) _Bool flipNegativeTravelDirectionRoads; // @synthesize flipNegativeTravelDirectionRoads=_flipNegativeTravelDirectionRoads;
 @property(nonatomic) _Bool allowNetworkTileLoad; // @synthesize allowNetworkTileLoad=_allowNetworkTileLoad;
-- (void)_preloadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 tileSetStyle:(int)arg3 tileSize:(int)arg4 tileScale:(int)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)clearBuildingTiles;
+- (void)clearTransitTiles;
+- (void)clearRoadTiles;
+- (void)_clearStandardTilesWithType:(int)arg1;
+- (void)clearAllTiles;
+- (void)_preloadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 preloadToDiskOnly:(_Bool)arg3 tileSetStyle:(int)arg4 tileScale:(int)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)roadTileKeysNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;
+- (void)preloadBuildingTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 preloadToDiskOnly:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)preloadTransitTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 preloadToDiskOnly:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)preloadRoadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 preloadToDiskOnly:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)preloadBuildingTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadTransitTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadRoadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -51,11 +61,21 @@
 - (id)findRoadsFromNextIntersectionOf:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)findRoadsToPreviousIntersectionOf:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)findRoadsFromPreviousIntersectionOf:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)findRoadWithMuid:(unsigned long long)arg1 nearCoordinate:(CDStruct_c3b9c2ee)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)findRoadWithID:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)findRoadsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)_openTileLoaderWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithQueue:(id)arg1 memoryCacheCountLimit:(unsigned long long)arg2 memoryCacheCostLimit:(unsigned long long)arg3;
 - (id)initWithQueue:(id)arg1;
 - (id)init;
+- (id)_synchronousFindWithHandler:(CDUnknownBlockType)arg1;
+- (id)synchronousFindRoadsToNextIntersectionOf:(id)arg1;
+- (id)synchronousFindRoadsFromNextIntersectionOf:(id)arg1;
+- (id)synchronousFindRoadsToPreviousIntersectionOf:(id)arg1;
+- (id)synchronousFindRoadsFromPreviousIntersectionOf:(id)arg1;
+- (id)synchronousFindRoadWithMuid:(unsigned long long)arg1 nearCoordinate:(CDStruct_c3b9c2ee)arg2;
+- (id)synchronousFindRoadWithID:(unsigned long long)arg1;
+- (id)synchronousFindRoadsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;
 
 @end
 

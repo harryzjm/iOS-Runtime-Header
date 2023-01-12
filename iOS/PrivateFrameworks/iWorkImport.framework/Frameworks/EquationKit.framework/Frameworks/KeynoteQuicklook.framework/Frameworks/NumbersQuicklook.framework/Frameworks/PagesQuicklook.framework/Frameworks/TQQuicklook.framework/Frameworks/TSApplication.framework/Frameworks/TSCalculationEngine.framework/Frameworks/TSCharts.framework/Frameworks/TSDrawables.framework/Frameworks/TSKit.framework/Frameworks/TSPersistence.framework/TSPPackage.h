@@ -43,7 +43,6 @@
 @property(readonly, nonatomic) unsigned long long fileFormatVersion; // @synthesize fileFormatVersion=_fileFormatVersion;
 @property(readonly, nonatomic) _Bool isClosed; // @synthesize isClosed=_isClosed;
 @property(readonly, nonatomic) SFUCryptoKey *decryptionKey; // @synthesize decryptionKey=_decryptionKey;
-@property(readonly, nonatomic) __weak id <TSPFileCoordinatorDelegate> fileCoordinatorDelegate; // @synthesize fileCoordinatorDelegate=_fileCoordinatorDelegate;
 @property(readonly, nonatomic) unsigned char packageIdentifier; // @synthesize packageIdentifier=_packageIdentifier;
 - (void)prepareForDocumentReplacementWithSuccess:(_Bool)arg1 forSafeSave:(_Bool)arg2 originalURL:(id)arg3;
 - (id)newDocumentPropertiesWithURL:(id)arg1 zipProvider:(CDUnknownBlockType)arg2 error:(id *)arg3;
@@ -58,9 +57,7 @@
 - (_Bool)hasDataAtRelativePath:(id)arg1;
 - (id)dataAtRelativePath:(id)arg1 allowDecryption:(_Bool)arg2 error:(id *)arg3;
 - (id)packageEntryInfoAtRelativePath:(id)arg1 error:(id *)arg2;
-- (void)removeAllDataReferences;
-- (void)enumerateDatasUsingBlock:(CDUnknownBlockType)arg1;
-- (_Bool)containsData:(id)arg1;
+- (void)enumerateDataUsingBlock:(CDUnknownBlockType)arg1;
 - (void)didReferenceData:(id)arg1;
 - (void)copyComponent:(id)arg1 toPackageURL:(id)arg2 packageLocator:(id)arg3 zipFileWriter:(id)arg4 encryptionKey:(id)arg5 canLink:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)newRawReadChannelForComponentLocator:(id)arg1 isStoredOutsideObjectArchive:(_Bool)arg2 error:(id *)arg3;
@@ -70,15 +67,17 @@
 @property(readonly) TSUZipFileArchive *componentZipArchive;
 @property(readonly) NSError *lastReloadError;
 - (_Bool)didReloadZipArchive:(id)arg1 packageURL:(id)arg2 error:(id *)arg3;
-@property(retain) TSUZipFileArchive *zipArchive;
-- (_Bool)reloadZipArchiveIfNeededWithURLImpl:(id)arg1 isLazyLoading:(_Bool)arg2 error:(id *)arg3;
+- (void)setZipArchive:(id)arg1 fileCoordinatorDelegate:(id)arg2;
+- (_Bool)reloadZipArchiveIfNeededWithURLImpl:(id)arg1 isLazyLoading:(_Bool)arg2 forceReload:(_Bool)arg3 error:(id *)arg4;
 - (void)peformSynchronousAccessToZipArchive:(CDUnknownBlockType)arg1;
+@property(readonly) TSUZipFileArchive *zipArchive;
 - (id)newZipArchiveFromPackageURL:(id)arg1 isLazyLoading:(_Bool)arg2 error:(id *)arg3;
 - (void)didReadDocumentReadVersion:(unsigned long long)arg1;
 - (void)didReadFileFormatVersion:(unsigned long long)arg1;
 - (void)didCloseDocument;
 - (void)didRetrieveDecryptionKey:(id)arg1;
 @property(readonly, nonatomic) TSPDocumentProperties *documentProperties;
+@property(readonly, nonatomic) id <TSPFileCoordinatorDelegate> fileCoordinatorDelegate;
 @property(readonly, nonatomic) long long packageType;
 - (id)initWithPackageIdentifier:(unsigned char)arg1 documentProperties:(id)arg2 fileFormatVersion:(unsigned long long)arg3 decryptionKey:(id)arg4 fileCoordinatorDelegate:(id)arg5 isLazyLoading:(_Bool)arg6;
 - (id)initWithURL:(id)arg1 zipArchiveOrNil:(id)arg2 zipArchiveOptions:(unsigned long long)arg3 packageIdentifier:(unsigned char)arg4 documentProperties:(id)arg5 decryptionKey:(id)arg6 fileCoordinatorDelegate:(id)arg7 error:(id *)arg8;

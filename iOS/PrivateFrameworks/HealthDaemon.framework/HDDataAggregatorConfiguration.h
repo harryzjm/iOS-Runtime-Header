@@ -26,7 +26,6 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithLatency:(double)arg1 interval:(double)arg2 seriesDuration:(double)arg3 activeWorkout:(_Bool)arg4 foregroundObserver:(_Bool)arg5;
 
 @end
 

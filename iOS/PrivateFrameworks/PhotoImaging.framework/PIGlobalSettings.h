@@ -13,12 +13,21 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_settings;
+    _Bool _forceGlassesMatteOff;
+    _Bool _forceSpillMatteOff;
+    _Bool _allowSpillMatteOnOlderPortraitV2Captures;
 }
 
++ (void)setFalseColorHDR:(_Bool)arg1;
++ (_Bool)falseColorHDR;
++ (id)editSettings;
 + (id)PUEditSettings;
 + (id)IPXEditSettings;
 + (id)globalSettings;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool allowSpillMatteOnOlderPortraitV2Captures; // @synthesize allowSpillMatteOnOlderPortraitV2Captures=_allowSpillMatteOnOlderPortraitV2Captures;
+@property(nonatomic) _Bool forceSpillMatteOff; // @synthesize forceSpillMatteOff=_forceSpillMatteOff;
+@property(nonatomic) _Bool forceGlassesMatteOff; // @synthesize forceGlassesMatteOff=_forceGlassesMatteOff;
 - (id)decoratorRenderFiltersForVideos;
 - (id)decoratorRenderFiltersForImages;
 - (id)init;

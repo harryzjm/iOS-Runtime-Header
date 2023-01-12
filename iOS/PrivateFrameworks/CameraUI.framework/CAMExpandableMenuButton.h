@@ -54,7 +54,7 @@
 - (id)headerView;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 - (long long)numberOfMenuItems;
-- (void)updateToContentSize:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 @property(nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 - (id)_viewToTrackForTouchAtLocation:(struct CGPoint)arg1;
 - (void)_handleTouchGesture:(id)arg1;

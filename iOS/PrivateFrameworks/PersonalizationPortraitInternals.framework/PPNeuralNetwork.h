@@ -27,8 +27,6 @@
 
 - (void).cxx_destruct;
 - (void)forInputs:(const float *)arg1 computeOutputLayer:(float *)arg2;
-- (double)_predict:(float *)arg1 freeInputsAfterUse:(_Bool)arg2;
-- (float *)_runOnInputs:(float *)arg1 freeInputsAfterUse:(_Bool)arg2;
 - (double)predictWithFloats:(const float *)arg1;
 - (double)predictWithDoubles:(const double *)arg1;
 @property(readonly, nonatomic) unsigned long long outputSize;

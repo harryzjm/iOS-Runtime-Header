@@ -20,13 +20,14 @@ __attribute__((visibility("hidden")))
 + (id)acquireDownloadSlotForItem:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_downloadItemAtLocator:(id)arg1 downloader:(id)arg2 request:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_downloadItem:(id)arg1 downloader:(id)arg2 request:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)_recursivelyDownloadItem:(id)arg1 downloader:(id)arg2 request:(id)arg3 perItemCompletion:(CDUnknownBlockType)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (void)_recursivelyDownloadItem:(id)arg1 forceDiskIteration:(_Bool)arg2 skipAlreadyDownloadedItems:(_Bool)arg3 downloader:(id)arg4 request:(id)arg5 perItemCompletion:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)progressComputationPreflightForRecursiveRoot:(id)arg1 downloader:(id)arg2 itemProgressNeedsSetup:(CDUnknownBlockType)arg3 itemProgressSetup:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)progressComputationPreflightForItem:(id)arg1;
-- (void)retrieveFPItemForURL:(id)arg1 domain:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)downloadItem:(id)arg1 recursively:(_Bool)arg2 downloader:(id)arg3 request:(id)arg4 perItemCompletion:(CDUnknownBlockType)arg5 withCompletion:(CDUnknownBlockType)arg6;
-- (void)downloadItems:(id)arg1 recursively:(_Bool)arg2 downloader:(id)arg3 request:(id)arg4 perItemCompletion:(CDUnknownBlockType)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)retrieveFPItemForURL:(id)arg1 domain:(id)arg2 request:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)verifyIfSubtreeIsFullyMaterializedBelowItem:(id)arg1 recursively:(unsigned long long)arg2 downloader:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)downloadItem:(id)arg1 recursively:(unsigned long long)arg2 downloader:(id)arg3 request:(id)arg4 perItemCompletion:(CDUnknownBlockType)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)downloadItems:(id)arg1 recursively:(unsigned long long)arg2 downloader:(id)arg3 request:(id)arg4 perItemCompletion:(CDUnknownBlockType)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (id)init;
 
 @end

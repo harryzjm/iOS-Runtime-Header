@@ -5,10 +5,11 @@
 //
 
 #import <Home/HFActionSetBuilderProtocol-Protocol.h>
+#import <Home/NSCopying-Protocol.h>
 
 @class HFMediaPlaybackActionBuilder, HFMutableSetDiff, HMActionSet, NSArray, NSString;
 
-@interface HFAbstractBaseActionSetBuilder <HFActionSetBuilderProtocol>
+@interface HFAbstractBaseActionSetBuilder <HFActionSetBuilderProtocol, NSCopying>
 {
     NSArray *_actions;
     HFMutableSetDiff *_actionBuilders;
@@ -17,6 +18,8 @@
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HFMutableSetDiff *actionBuilders; // @synthesize actionBuilders=_actionBuilders;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_removeSuccessfulChanges:(id)arg1 fromSetDiff:(id)arg2;
 - (id)lazilyUpdateActions;
 - (id)commitItem;
 - (_Bool)_updateActionBuildersForLightColorAction:(id)arg1;

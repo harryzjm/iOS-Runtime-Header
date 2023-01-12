@@ -22,6 +22,7 @@
 @property __weak HMAccessorySettingGroup *group; // @synthesize group=_group;
 @property(readonly) _HMAccessorySetting *internal; // @synthesize internal=_internal;
 - (id)logIdentifier;
+- (id)keyPathForSetting:(id)arg1;
 - (void)_settingDidUpdateValue:(id)arg1;
 - (void)_settingWillUpdateValue:(id)arg1;
 - (void)settingDidUpdateReflected;

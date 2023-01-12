@@ -30,7 +30,7 @@
 - (id)redactedBodyStringWithPropertyList:(id)arg1;
 - (void)dealloc;
 - (void)_handleDataTaskCompletionWithData:(id)arg1 response:(id)arg2 error:(id)arg3;
-- (void)_performRequestWithSession:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)performRequestWithSession:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)performRequestForDevice:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)performSignedRequestWithHandler:(CDUnknownBlockType)arg1;
 - (void)performRequestWithHandler:(CDUnknownBlockType)arg1;

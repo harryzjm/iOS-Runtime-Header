@@ -77,6 +77,7 @@
 - (id)repairZoneID;
 @property(copy) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property(readonly, nonatomic) NSString *activityIdentifierForSchedulingRepairs;
+- (void)dealloc;
 - (void)commonInitWithContainer:(id)arg1 repairContainerOverrides:(id)arg2;
 - (id)initWithContainer:(id)arg1 repairContainerOverrides:(id)arg2 ignoringSystemConditions:(_Bool)arg3;
 - (id)initWithContainer:(id)arg1 repairContainerOverrides:(id)arg2;

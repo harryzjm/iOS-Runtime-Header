@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) _BPSFlatMapOuter *outer; // @synthesize outer=_outer;
 @property(nonatomic) long long index; // @synthesize index=_index;
+- (void)cancel;
 - (void)receiveCompletion:(id)arg1;
 - (long long)receiveInput:(id)arg1;
 - (void)receiveSubscription:(id)arg1;

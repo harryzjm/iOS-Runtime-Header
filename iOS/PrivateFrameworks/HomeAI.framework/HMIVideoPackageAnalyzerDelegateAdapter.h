@@ -10,12 +10,12 @@
 
 @interface HMIVideoPackageAnalyzerDelegateAdapter : HMFObject <HMIVideoPackageAnalyzerDelegate>
 {
-    CDUnknownBlockType _packageAnalyzerDidDetectPackage;
+    CDUnknownBlockType _packageAnalyzerDidDetectPackages;
 }
 
 - (void).cxx_destruct;
-@property(copy) CDUnknownBlockType packageAnalyzerDidDetectPackage; // @synthesize packageAnalyzerDidDetectPackage=_packageAnalyzerDidDetectPackage;
-- (void)packageAnalyzer:(id)arg1 didDetectPackage:(id)arg2 error:(id)arg3;
+@property(copy) CDUnknownBlockType packageAnalyzerDidDetectPackages; // @synthesize packageAnalyzerDidDetectPackages=_packageAnalyzerDidDetectPackages;
+- (void)packageAnalyzer:(id)arg1 didDetectPackagesWithResult:(id)arg2 error:(id)arg3;
 
 @end
 

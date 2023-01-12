@@ -21,6 +21,7 @@
 @property(retain, nonatomic) WFLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 - (void)cleanup;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (void)startWithService:(id)arg1;
 - (id)options;

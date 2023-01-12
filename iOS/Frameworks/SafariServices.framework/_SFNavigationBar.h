@@ -6,40 +6,37 @@
 
 #import <UIKit/UIView.h>
 
+#import <SafariServices/SFNavigationBarItemObserver-Protocol.h>
 #import <SafariServices/UIDragInteractionDelegate_Private-Protocol.h>
 #import <SafariServices/UIDropInteractionDelegate_Private-Protocol.h>
 #import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
-#import <SafariServices/_SFBarCommon-Protocol.h>
 #import <SafariServices/_SFFluidProgressViewDelegate-Protocol.h>
+#import <SafariServices/_SFNavigationBarCommon-Protocol.h>
 #import <SafariServices/_SFNavigationBarURLButtonDelegate-Protocol.h>
 #import <SafariServices/_UIBasicAnimationFactory-Protocol.h>
 #import <SafariServices/_UIClickInteractionDelegate-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, NSTimer, SFDismissButton, SFNavigationBarAccessoryButtonArrangement, SFNavigationBarMetrics, SFNavigationBarToggleButton, SFToolbarContainer, UIBlurEffect, UIButton, UIImageView, UILabel, UITextField, UIVisualEffectView, _SFBarTheme, _SFDimmingButton, _SFFluidProgressView, _SFNavigationBarItem, _SFNavigationBarLabelsContainer, _SFNavigationBarTheme, _SFNavigationBarURLButton, _SFToolbar, _UIClickInteraction;
+@class NSArray, NSAttributedString, NSString, NSTimer, SFDismissButton, SFNavigationBarAccessoryButtonArrangement, SFNavigationBarItem, SFNavigationBarMetrics, SFNavigationBarToggleButton, SFToolbarContainer, SFURLLabel, UIBlurEffect, UIButton, UIImageView, UILabel, UITextField, UIVisualEffectView, _SFBarTheme, _SFDimmingButton, _SFFluidProgressView, _SFNavigationBarLabelsContainer, _SFNavigationBarTheme, _SFNavigationBarURLButton, _SFToolbar, _UIClickInteraction;
 @protocol _SFNavigationBarDelegate, _SFPopoverSourceInfo;
 
-@interface _SFNavigationBar : UIView <UIGestureRecognizerDelegate, _SFFluidProgressViewDelegate, _SFNavigationBarURLButtonDelegate, _UIBasicAnimationFactory, UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, _UIClickInteractionDelegate, _SFBarCommon>
+@interface _SFNavigationBar : UIView <UIGestureRecognizerDelegate, _SFFluidProgressViewDelegate, _SFNavigationBarURLButtonDelegate, _UIBasicAnimationFactory, UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, _UIClickInteractionDelegate, SFNavigationBarItemObserver, _SFNavigationBarCommon>
 {
     UIButton *_compressedBarButton;
     UIView *_controlsContainer;
     _SFNavigationBarLabelsContainer *_labelsContainer;
     UIView *_labelScalingContainer;
-    UILabel *_URLLabel;
+    SFURLLabel *_URLLabel;
     UILabel *_expandedURLLabel;
     UILabel *_privateBrowsingLabel;
-    UIVisualEffectView *_URLLabelEffectView;
     UIVisualEffectView *_lockEffectView;
     UIVisualEffectView *_squishedLockEffectView;
     UILabel *_availabilityLabel;
     UILabel *_notSecureAnnotationLabel;
-    double _URLWidth;
-    double _URLHeight;
     double _expandedURLWidth;
     double _expandedURLHeight;
     double _offsetOfURLInExpandedURL;
     UIView *_URLContainer;
     UIView *_URLContainerClipView;
-    UIImageView *_URLFadeOut;
     UIView *_fakeTextFieldSelectionView;
     double _fakeSelectionStartOffset;
     double _fakeSelectionEndOffset;
@@ -69,6 +66,8 @@
     SFNavigationBarToggleButton *_formatToggleButton;
     _SFDimmingButton *_stopButton;
     _SFDimmingButton *_reloadButton;
+    _SFDimmingButton *_dictationButton;
+    _SFDimmingButton *_textFieldDictationButton;
     _UIClickInteraction *_formatClickInteraction;
     UIButton *_mediaStateMuteButton;
     long long _visibleTrailingButtonType;
@@ -90,7 +89,7 @@
     _Bool _suppressesBlur;
     _Bool _usesFaintSeparator;
     _Bool _sendingBarMetricsChangeNotification;
-    _SFNavigationBarItem *_item;
+    SFNavigationBarItem *_item;
     _SFBarTheme *_theme;
     _SFNavigationBarTheme *_effectiveTheme;
     UITextField *_textField;
@@ -127,7 +126,22 @@
 @property(retain, nonatomic) _SFBarTheme *theme; // @synthesize theme=_theme;
 @property(nonatomic) _Bool unifiedFieldShowsProgressView; // @synthesize unifiedFieldShowsProgressView=_unifiedFieldShowsProgressView;
 @property(nonatomic) _Bool usesNarrowLayout; // @synthesize usesNarrowLayout=_usesNarrowLayout;
-@property(retain, nonatomic) _SFNavigationBarItem *item; // @synthesize item=_item;
+@property(retain, nonatomic) SFNavigationBarItem *item; // @synthesize item=_item;
+- (void)navigationBarItemDidUpdateShowsTranslationButton:(id)arg1;
+- (void)navigationBarItemDidUpdateShowsTranslationIcon:(id)arg1;
+- (void)navigationBarItemDidUpdateCustomPlaceholderText:(id)arg1;
+- (void)navigationBarItemDidUpdateProgressView:(id)arg1;
+- (void)navigationBarItemDidUpdateShowsNotSecureAnnotation:(id)arg1;
+- (void)navigationBarItemDidUpdateMediaStateIcon:(id)arg1;
+- (void)navigationBarItemDidUpdateShowsReaderButton:(id)arg1;
+- (void)navigationBarItemDidUpdateShowsPageFormatButton:(id)arg1;
+- (void)navigationBarItemDidUpdateOverrideBarStyleForSecurityWarning:(id)arg1;
+- (void)navigationBarItemDidUpdateFormatButtonSelected:(id)arg1;
+- (void)navigationBarItemDidUpdateStopReloadButtonShowsStop:(id)arg1;
+- (void)navigationBarItemDidUpdateShowsStopReloadButtons:(id)arg1;
+- (void)navigationBarItemDidUpdateShowsSearchIndicator:(id)arg1;
+- (void)navigationBarItemDidUpdateShowsLockIcon:(id)arg1;
+- (void)navigationBarItemDidUpdateText:(id)arg1;
 - (_Bool)containsBarItem:(long long)arg1;
 - (id)popoverSourceInfoForBarItem:(long long)arg1;
 - (void)animateLinkImage:(struct CGImage *)arg1 fromRect:(struct CGRect)arg2 inView:(id)arg3 toBarItem:(long long)arg4 afterImageDisappearsBlock:(CDUnknownBlockType)arg5 afterDestinationLayerBouncesBlock:(CDUnknownBlockType)arg6;
@@ -182,6 +196,7 @@
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
 - (void)fluidProgressViewWillShowProgress:(id)arg1;
 - (void)tintColorDidChange;
+- (void)_updateDictationAvailability;
 @property(readonly, nonatomic, getter=_controlsAlpha) double controlsAlpha;
 - (void)_dismissButtonTapped:(id)arg1;
 - (void)_cancelButtonTapped:(id)arg1;
@@ -189,6 +204,7 @@
 - (void)_formatToggleButtonTapped:(id)arg1;
 - (void)_URLTapped:(id)arg1;
 - (void)_compressedBarTapped;
+- (void)_dictationTapped:(id)arg1;
 - (void)_stopButtonPressed;
 - (void)clickInteractionDidClickDown:(id)arg1;
 - (void)clickInteractionDidClickUp:(id)arg1;
@@ -198,6 +214,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 inputMode:(unsigned long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_textFieldDidChange:(id)arg1;
 @property(nonatomic) _Bool hasToolbar;
 @property(readonly, nonatomic) double visualHeight;
 @property(readonly, nonatomic) double minimumHeight;

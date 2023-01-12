@@ -16,7 +16,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INImage, INIntentCodableDescription, INIntentKeyParameter, INParameterContexts, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSOrderedSet, NSString, NSUUID, PBCodable, _INPBIntentMetadata;
+@class INImage, INIntentCodableDescription, INIntentDonationMetadata, INIntentKeyParameter, INParameterContexts, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSOrderedSet, NSString, NSUUID, PBCodable, _INPBIntentMetadata;
 
 @interface INIntent : NSObject <INImageProxyInjecting, INIntentSlotComposing, INKeyImageProducing, INEnumerable, INIntentExport, INGenericIntent, INRuntimeObject, NSCopying, NSSecureCoding>
 {
@@ -31,6 +31,7 @@
     long long _indexingHash;
     INIntentKeyParameter *_keyParameter;
     NSString *_identifier;
+    INIntentDonationMetadata *_donationMetadata;
     PBCodable *_backingStore;
     NSString *_recordRoute;
     NSUUID *_recordDeviceUID;
@@ -52,6 +53,7 @@
 @property(retain, nonatomic, setter=_setRecordDeviceUID:) NSUUID *recordDeviceUID; // @synthesize recordDeviceUID=_recordDeviceUID;
 @property(copy, nonatomic, setter=_setRecordRoute:) NSString *recordRoute; // @synthesize recordRoute=_recordRoute;
 @property(copy, nonatomic) PBCodable *backingStore; // @synthesize backingStore=_backingStore;
+@property(copy, nonatomic) INIntentDonationMetadata *donationMetadata; // @synthesize donationMetadata=_donationMetadata;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic, setter=_setShouldForwardToAppOnSuccess:) _Bool _shouldForwardToAppOnSucccess; // @synthesize _shouldForwardToAppOnSucccess;
 @property(retain, nonatomic, setter=_setParameterContexts:) INParameterContexts *_parameterContexts; // @synthesize _parameterContexts;
@@ -103,6 +105,7 @@
 - (id)_nonNilParameters;
 @property(readonly, nonatomic, getter=_isEligibleForSuggestions) _Bool _eligibleForSuggestions;
 @property(readonly, nonatomic, getter=_isConfigurable) _Bool _configurable;
+- (_Bool)_hasMatchingIntentHandlerIncludingRemoteExecution:(_Bool)arg1;
 - (_Bool)_supportsBackgroundExecutionWithOptions:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool _supportsBackgroundExecution;
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
@@ -119,9 +122,14 @@
 - (id)imageForParameterNamed:(id)arg1;
 - (void)setImage:(id)arg1 forParameterNamed:(id)arg2;
 @property(readonly, copy, nonatomic) NSString *intentDescription;
+@property(readonly, nonatomic) NSString *_preferredAudioOutputRouteId;
+@property(readonly, nonatomic) NSString *_mediaRouteId;
+@property(readonly, nonatomic) NSString *_endpointId;
 @property(retain, nonatomic, setter=_setAirPlayRouteIds:) NSArray *airPlayRouteIds;
 @property(nonatomic) unsigned long long shortcutAvailability;
 @property(copy, nonatomic) NSString *suggestedInvocationPhrase;
+@property(retain, nonatomic, setter=_setEndpointMediaPlaybackEnabled:) NSNumber *_endpointMediaPlaybackEnabled;
+@property(retain, nonatomic, setter=_setMSLimitReached:) NSNumber *_msLimitReached;
 @property(retain, nonatomic, setter=_setIsOwnedByCurrentUser:) NSNumber *_isOwnedByCurrentUser;
 @property(retain, nonatomic, setter=_setOriginatingDeviceRapportEffectiveIdentifier:) NSString *_originatingDeviceRapportEffectiveIdentifier;
 @property(retain, nonatomic, setter=_setOriginatingDeviceRapportMediaSystemIdentifier:) NSString *_originatingDeviceRapportMediaSystemIdentifier;
@@ -154,6 +162,7 @@
 - (void)_injectProxiesForParameterImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_injectProxyForDefaultImage:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_injectProxiesForImagesUsingCustomCodableStrategy:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_intents_allowAppToInitiatePlaybackForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
 @property(readonly) long long _intents_toggleState;
 - (id)localizeValueOfSlotDescription:(id)arg1 withLocalizer:(id)arg2;
@@ -174,9 +183,11 @@
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 @property(readonly) INImage *_keyImage;
 - (id)_keyImageWithIntentDescriptionStrategy;
+@property(readonly, nonatomic) _Bool _intents_hasSystemIntentHandler;
 @property(readonly, nonatomic, getter=_intents_isExemptFromMulitWindowRequirementForInAppHandling) _Bool _intents_exemptFromMulitWindowRequirementForInAppHandling;
 - (_Bool)_enumerateWithValueProcessingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) CDStruct_8caa76fc _intents_preferredScaledImageSize;
 
 // Remaining properties
 @property(readonly) Class superclass;

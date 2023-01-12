@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isDebugRequestsEnabled;
 + (_Bool)isInternalInstall;
 + (id)osBuild;
 + (id)deviceName;

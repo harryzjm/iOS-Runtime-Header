@@ -9,7 +9,7 @@
 #import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
 #import <UIKitCore/UIInteraction-Protocol.h>
 
-@class NSString, UIContextMenuInteraction, UIView, _UIContextMenuPreviewActionGroup;
+@class NSString, UIContextMenuInteraction, UIGestureRecognizer, UIView, _UIContextMenuPreviewActionGroup;
 @protocol _UIContextMenuInteractionDelegate;
 
 @interface _UIContextMenuInteraction : NSObject <UIContextMenuInteractionDelegate, UIInteraction>
@@ -24,6 +24,7 @@
     } _delegateImplements;
     UIView *_view;
     id <_UIContextMenuInteractionDelegate> _delegate;
+    UIGestureRecognizer *_gestureRecognizerForExclusionRelationships;
     UIContextMenuInteraction *_actualInteraction;
     _UIContextMenuPreviewActionGroup *_actionGroup;
 }
@@ -31,6 +32,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIContextMenuPreviewActionGroup *actionGroup; // @synthesize actionGroup=_actionGroup;
 @property(retain, nonatomic) UIContextMenuInteraction *actualInteraction; // @synthesize actualInteraction=_actualInteraction;
+@property(readonly, nonatomic) UIGestureRecognizer *gestureRecognizerForExclusionRelationships; // @synthesize gestureRecognizerForExclusionRelationships=_gestureRecognizerForExclusionRelationships;
 @property(readonly, nonatomic) __weak id <_UIContextMenuInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak UIView *view; // @synthesize view=_view;
 - (id)_previewViewController;

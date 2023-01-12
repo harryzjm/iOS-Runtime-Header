@@ -4,14 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface RTService
+#import <coreroutine/RTWatchdogProtocol-Protocol.h>
+
+@class NSString;
+
+@interface RTService <RTWatchdogProtocol>
 {
 }
 
-- (void)_shutdown;
+- (id)name;
+- (void)checkInWithHandler:(CDUnknownBlockType)arg1;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setup;
 - (void)setup;
-- (void)shutdown;
+- (void)shutdownWithHandler:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

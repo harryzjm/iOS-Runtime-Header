@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)instanceWithArchive:(const struct ShadowArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (struct CGImage *)newShadowImageForRep:(id)arg1 withSize:(struct CGSize)arg2 drawSelector:(SEL)arg3 unflipped:(_Bool)arg4;
@@ -21,8 +21,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)shadowType;
 - (id)initWithAngle:(double)arg1 offset:(double)arg2 radius:(double)arg3 opacity:(double)arg4 color:(id)arg5 enabled:(_Bool)arg6;
-- (void)saveToArchive:(struct ShadowArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ShadowArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

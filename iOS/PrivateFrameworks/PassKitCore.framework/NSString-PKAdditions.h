@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (PKAdditions)
++ (id)pk_stringWithInteger:(unsigned long long)arg1;
 - (id)pk_decodeURLBase64;
 - (id)pk_decodeHexadecimal;
 - (double)pk_normalizedLevenshteinDistanceFromString:(id)arg1 decimalPlaces:(unsigned long long)arg2;

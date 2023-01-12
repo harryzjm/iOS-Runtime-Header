@@ -8,14 +8,23 @@
 
 #import <PDFKit/NSCoding-Protocol.h>
 
-@class NSArray, PDFThumbnailViewPrivate, PDFView, UIColor;
+@class NSArray, PDFView, UIColor;
+@protocol PDFThumbnailCollectionViewInterface, PDFThumbnailContextMenuDelegate;
 
 @interface PDFThumbnailView : UIView <NSCoding>
 {
-    PDFThumbnailViewPrivate *_private;
+    PDFView *_pdfView;
+    struct CGSize _thumbnailSize;
+    UIColor *_backgroundColor;
+    long long _layoutMode;
+    struct UIEdgeInsets _contentInset;
+    UIView<PDFThumbnailCollectionViewInterface> *_iconsView;
+    long long _style;
+    id <PDFThumbnailContextMenuDelegate> thumbnailContextMenuDelegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <PDFThumbnailContextMenuDelegate> thumbnailContextMenuDelegate; // @synthesize thumbnailContextMenuDelegate;
 - (void)pageChanged:(id)arg1;
 - (void)currentPageChanged:(id)arg1;
 - (void)documentMutated:(id)arg1;
@@ -24,12 +33,16 @@
 - (void)_updateLayout;
 @property(nonatomic) struct UIEdgeInsets contentInset;
 @property(nonatomic) long long layoutMode;
+@property(nonatomic) _Bool allowsPageReordering;
 @property(nonatomic) struct CGSize thumbnailSize;
 @property(readonly, nonatomic) NSArray *selectedPages;
 @property(copy, nonatomic) UIColor *backgroundColor;
 @property(nonatomic) __weak PDFView *PDFView;
 - (void)dealloc;
-- (void)_commonInit;
+- (void)setupNotifications;
+- (void)_commonInitWithStyle:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (id)initWithStyle:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

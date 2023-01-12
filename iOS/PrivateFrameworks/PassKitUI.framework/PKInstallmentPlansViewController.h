@@ -6,22 +6,27 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSArray, NSDateFormatter, NSMutableDictionary, PKAccount, PKAccountService, PKTransactionSource;
+#import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
+
+@class NSArray, NSDateFormatter, NSMutableDictionary, NSString, PKAccount, PKAccountService, PKAccountUserCollection, PKFamilyMemberCollection, PKTransactionSourceCollection;
 @protocol PKPaymentDataProvider;
 
-@interface PKInstallmentPlansViewController : UITableViewController
+@interface PKInstallmentPlansViewController : UITableViewController <PKPaymentDataProviderDelegate>
 {
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     PKAccountService *_accountService;
-    PKTransactionSource *_transactionSource;
     id <PKPaymentDataProvider> _dataProvider;
     NSArray *_installmentPlans;
     NSMutableDictionary *_installmentPlanToDeviceName;
     NSMutableDictionary *_installmentPlanImages;
     NSDateFormatter *_installmentDateFormatter;
+    PKFamilyMemberCollection *_familyCollection;
+    PKTransactionSourceCollection *_transactionSourceCollection;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
 - (void)_handleAccountUpdatedNotification:(id)arg1;
 - (id)_totalAmountRemaining;
 - (id)_totalAmountPaid;
@@ -29,12 +34,19 @@
 - (id)_installmentPlanForIndexPath:(id)arg1;
 - (id)_imageWithURL:(id)arg1 installmentPlan:(id)arg2;
 - (void)_configureCell:(id)arg1 forInstallmentPlan:(id)arg2;
+- (void)didUpdateFamilyMembers:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithAccount:(id)arg1 accountService:(id)arg2 transactionSource:(id)arg3 dataProvider:(id)arg4;
+- (id)initWithAccount:(id)arg1 accountUserCollection:(id)arg2 accountService:(id)arg3 transactionSourceCollection:(id)arg4 familyCollection:(id)arg5 dataProvider:(id)arg6;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

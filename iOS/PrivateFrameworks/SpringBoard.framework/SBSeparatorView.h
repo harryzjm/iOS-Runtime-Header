@@ -11,11 +11,14 @@
 @interface SBSeparatorView : UIView
 {
     unsigned long long _nubStyle;
+    double _keyboardHeight;
     SBSeparatorNubView *_nubView;
 }
 
++ (struct CGSize)nubHitTestSize;
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBSeparatorNubView *nubView; // @synthesize nubView=_nubView;
+@property(nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
 @property(nonatomic) unsigned long long nubStyle; // @synthesize nubStyle=_nubStyle;
 - (void)_updateNubViewFrame;
 @property(readonly, nonatomic) struct CGRect nubRect;

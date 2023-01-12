@@ -10,13 +10,13 @@
 
 @interface REMRemindersDataViewInvocation_fetchByObjectID <NSSecureCoding>
 {
-    _Bool _showMarkedForDeleteObjects;
+    _Bool _includeConcealedObjects;
     NSArray *_objectIDs;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool showMarkedForDeleteObjects; // @synthesize showMarkedForDeleteObjects=_showMarkedForDeleteObjects;
+@property(nonatomic) _Bool includeConcealedObjects; // @synthesize includeConcealedObjects=_includeConcealedObjects;
 @property(readonly, nonatomic) NSArray *objectIDs; // @synthesize objectIDs=_objectIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

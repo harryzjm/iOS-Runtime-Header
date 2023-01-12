@@ -12,21 +12,21 @@
     NSDate *_localEndDate;
 }
 
++ (id)momentOfMusicSession;
 + (id)musicSessionDateSortDescriptors;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *localEndDate; // @synthesize localEndDate=_localEndDate;
 @property(readonly, nonatomic) NSDate *localStartDate; // @synthesize localStartDate=_localStartDate;
 - (void)enumerateMusicTrackNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSSet *trackNodes;
-@property(readonly, nonatomic) NSSet *momentNodes;
+- (id)momentNodes;
 - (unsigned short)domain;
 - (id)label;
 - (id)description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithLocalStartDate:(id)arg1 localEndDate:(id)arg2;
 
 @end
 

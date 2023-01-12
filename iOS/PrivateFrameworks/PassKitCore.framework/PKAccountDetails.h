@@ -9,18 +9,27 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
+@class PKCreditAccountDetails;
+
 @interface PKAccountDetails : NSObject <NSSecureCoding, NSCopying>
 {
+    PKCreditAccountDetails *_creditDetails;
+    unsigned long long _type;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) PKCreditAccountDetails *creditDetails; // @synthesize creditDetails=_creditDetails;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)ingestExtendedAccountDetails:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithCreditDetails:(id)arg1;
+- (id)initWithDictionary:(id)arg1 type:(unsigned long long)arg2;
 
 @end
 

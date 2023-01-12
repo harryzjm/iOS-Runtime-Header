@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <CNAvatarImageRenderingScope> renderingScope; // @synthesize renderingScope=_renderingScope;
 @property(retain, nonatomic) CNAvatarImageRenderer *avatarImageRenderer; // @synthesize avatarImageRenderer=_avatarImageRenderer;
+- (id)imageForAvatarAccessoryView:(id)arg1 withSize:(struct CGSize)arg2;
 - (id)avatarImageForContact:(id)arg1 withSize:(struct CGSize)arg2 includePlaceholder:(_Bool)arg3 imageHandler:(CDUnknownBlockType)arg4;
 - (id)initWithSettings:(id)arg1;
 - (id)init;

@@ -34,6 +34,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)extraProminentInsetGroupedHeaderConfiguration;
++ (id)prominentInsetGroupedHeaderConfiguration;
++ (id)_prominentInsetGroupedHeaderConfiguration;
++ (id)_interactiveInsetGroupedHeaderConfiguration;
 + (id)sidebarHeaderConfiguration;
 + (id)accompaniedSidebarSubtitleCellConfiguration;
 + (id)sidebarSubtitleCellConfiguration;

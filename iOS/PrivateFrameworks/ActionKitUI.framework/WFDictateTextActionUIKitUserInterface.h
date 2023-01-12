@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 #import <ActionKitUI/WFDictateTextActionUserInterface-Protocol.h>
 #import <ActionKitUI/WFDictateTextActionViewDelegate-Protocol.h>
@@ -12,7 +12,7 @@
 @class NSString, WFDictateTextActionView;
 
 __attribute__((visibility("hidden")))
-@interface WFDictateTextActionUIKitUserInterface : WFActionUserInterface <WFDictateTextActionViewDelegate, WFDictateTextActionUserInterface>
+@interface WFDictateTextActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFDictateTextActionViewDelegate, WFDictateTextActionUserInterface>
 {
     WFDictateTextActionView *_actionView;
     CDUnknownBlockType _completionHandler;
@@ -27,12 +27,14 @@ __attribute__((visibility("hidden")))
 - (void)actionDidReceiveTranscription:(id)arg1;
 - (void)actionDidBeginListening;
 - (void)showWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)prefersModalPresentation;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSSet, NSString;
 
 @interface PKPassField : NSObject <NSSecureCoding, NSCopying>
 {
@@ -22,20 +22,22 @@
     long long _textAlignment;
     long long _cellStyle;
     long long _unitType;
+    NSString *_link;
     unsigned long long _row;
     unsigned long long _dataDetectorTypes;
     NSDictionary *_semantics;
     long long _foreignReferenceType;
-    NSString *_foreignReferenceIdentifier;
+    NSSet *_foreignReferenceIdentifiers;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *foreignReferenceIdentifier; // @synthesize foreignReferenceIdentifier=_foreignReferenceIdentifier;
+@property(copy, nonatomic) NSSet *foreignReferenceIdentifiers; // @synthesize foreignReferenceIdentifiers=_foreignReferenceIdentifiers;
 @property(nonatomic) long long foreignReferenceType; // @synthesize foreignReferenceType=_foreignReferenceType;
 @property(copy, nonatomic) NSDictionary *semantics; // @synthesize semantics=_semantics;
 @property(nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
 @property(nonatomic) unsigned long long row; // @synthesize row=_row;
+@property(copy, nonatomic) NSString *link; // @synthesize link=_link;
 @property(nonatomic) long long unitType; // @synthesize unitType=_unitType;
 @property(nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
 @property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
@@ -44,7 +46,9 @@
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property(nonatomic) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) _Bool isDrillInField;
 - (id)description;
+- (id)asMutableDictionary;
 - (id)asDictionary;
 - (void)flushCachedValue;
 @property(readonly) __weak NSString *value;

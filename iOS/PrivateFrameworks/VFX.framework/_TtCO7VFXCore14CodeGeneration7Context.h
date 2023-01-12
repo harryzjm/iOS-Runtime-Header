@@ -14,8 +14,11 @@
     MISSING_TYPE *contextEntryMap;
     MISSING_TYPE *contextExitMap;
     MISSING_TYPE *subContextMap;
+    MISSING_TYPE *arraySequenceMap;
     MISSING_TYPE *snippets;
     MISSING_TYPE *customCodeSnippetMap;
+    MISSING_TYPE *typedArraySnippetMap;
+    MISSING_TYPE *staticSwitchSnippetMap;
     MISSING_TYPE *userObjects;
     MISSING_TYPE *assignments;
     MISSING_TYPE *parameters;
@@ -23,6 +26,7 @@
     MISSING_TYPE *bakedTemplates;
     MISSING_TYPE *decodingErrors;
     MISSING_TYPE *onUserTemplatesChangedUUID;
+    MISSING_TYPE *switchCaseValuePrefix;
 }
 
 @end

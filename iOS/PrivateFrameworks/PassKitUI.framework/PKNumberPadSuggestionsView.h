@@ -25,6 +25,7 @@
 @property(copy, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property(nonatomic) __weak id <PKNumberPadSuggestionsViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_selectedSuggestion:(id)arg1;
+- (id)_configuredBorderedButtonForSuggestion:(id)arg1 withBorder:(unsigned long long)arg2 primaryAction:(id)arg3;
 - (id)initWithDefaultFrame;
 - (id)initWithFrame:(struct CGRect)arg1;
 

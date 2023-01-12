@@ -8,36 +8,36 @@
 
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSArray, NSSet, NSString, RBAssertionIntransientState, RBAssertionTransientState, RBConcreteTarget, RBInheritanceCollection, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessAssertionInfo, RBSystemState;
+@class NSArray, NSSet, NSString, RBAssertionIntransientState, RBAssertionTransientState, RBInheritanceCollection, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessAssertionInfo;
+@protocol RBConcreteTargeting;
 
 @interface RBAssertion : NSObject <RBStateCapturing>
 {
-    struct os_unfair_lock_s _lock;
-    RBConcreteTarget *_target;
+    id <RBConcreteTargeting> _target;
     RBSAssertionIdentifier *_identifier;
     NSString *_explanation;
     NSArray *_attributes;
-    RBSystemState *_systemState;
-    RBProcessState *_processState;
+    id _targetState;
     RBAssertionTransientState *_transientState;
     RBAssertionIntransientState *_intransientState;
-    double _creationTime;
-    unsigned long long _invalidationReason;
-    unsigned long long _acquisitionCompletionPolicy;
     NSSet *_originatorInheritances;
     RBSProcessAssertionInfo *_assertionInfo;
-    id _plugInHoldToken;
+    double _creationTime;
+    struct os_unfair_lock_s _lock;
+    unsigned char _invalidationReason;
     _Bool _suspended;
     _Bool _persistent;
     _Bool _active;
-    _Bool _resolvedState;
     RBProcess *_originator;
     NSString *_description;
+    id _plugInHoldToken;
 }
 
 + (id)assertionWithIdentifier:(id)arg1 target:(id)arg2 explanation:(id)arg3 attributes:(id)arg4 originator:(id)arg5 context:(id)arg6;
++ (id)assertionWithDescriptor:(id)arg1 target:(id)arg2 originator:(id)arg3 context:(id)arg4 creationTime:(double)arg5;
 + (id)assertionWithDescriptor:(id)arg1 target:(id)arg2 originator:(id)arg3 context:(id)arg4;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id plugInHoldToken; // @synthesize plugInHoldToken=_plugInHoldToken;
 @property(readonly, copy, nonatomic) RBAssertionIntransientState *intransientState; // @synthesize intransientState=_intransientState;
 @property(readonly, copy) NSString *description; // @synthesize description=_description;
 @property(readonly, nonatomic) double creationTime; // @synthesize creationTime=_creationTime;
@@ -45,7 +45,7 @@
 @property(readonly, copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
 @property(readonly, copy, nonatomic) RBSAssertionIdentifier *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) RBProcess *originator; // @synthesize originator=_originator;
-@property(readonly, copy, nonatomic) RBConcreteTarget *target; // @synthesize target=_target;
+@property(readonly, copy, nonatomic) id <RBConcreteTargeting> target; // @synthesize target=_target;
 - (id)captureState;
 @property(readonly, copy, nonatomic) NSString *stateCaptureTitle;
 @property(readonly, copy) NSString *debugDescription;
@@ -71,8 +71,7 @@
 @property(readonly, nonatomic) unsigned long long endPolicy;
 @property(readonly, nonatomic) unsigned long long startPolicy;
 - (unsigned long long)maxCPUUsageViolationPolicyForRole:(unsigned char)arg1;
-@property(nonatomic) unsigned long long invalidationReason;
-@property(retain, nonatomic) id plugInHoldToken;
+@property(nonatomic) unsigned char invalidationReason;
 @property(readonly, nonatomic, getter=isValid) _Bool invalid;
 @property(readonly, nonatomic, getter=isSuspended) _Bool suspended;
 @property(readonly, nonatomic, getter=isActive) _Bool active;

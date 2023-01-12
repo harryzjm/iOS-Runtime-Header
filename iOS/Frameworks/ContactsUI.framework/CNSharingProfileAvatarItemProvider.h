@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNAvatarImageRenderer, CNContact, CNPhotoPickerColorVariant, CNPhotoPickerVariantsManager, CNSharingProfileAvatarItem, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, NSArray, PRMonogramColor;
+@class CNAvatarImageRenderer, CNContact, CNPhotoPickerColorVariant, CNPhotoPickerVariantsManager, CNSharingProfileAvatarItem, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, NSArray, NSData, PRMonogramColor;
 @protocol AVTAvatarRecord;
 
 __attribute__((visibility("hidden")))
@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldIncludeAnimoji; // @synthesize shouldIncludeAnimoji=_shouldIncludeAnimoji;
 @property(nonatomic) _Bool shouldIncludeSilhouette; // @synthesize shouldIncludeSilhouette=_shouldIncludeSilhouette;
 - (void)clearCachedItems;
+@property(retain, nonatomic) NSData *memojiMetadata;
 - (id)animojColor;
 @property(retain, nonatomic) PRMonogramColor *monogramColor;
 - (void)updateWithContact:(id)arg1 fromFullPhotoPicker:(_Bool)arg2;

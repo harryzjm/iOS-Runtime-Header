@@ -11,13 +11,13 @@
     UIWebClip *_webClip;
 }
 
-+ (id)convertImage:(id)arg1 ofSize:(struct CGSize)arg2 withShape:(unsigned long long)arg3;
++ (id)convertImage:(id)arg1 ofSize:(struct CGSize)arg2 withShape:(unsigned long long)arg3 scale:(double)arg4;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 - (id)uniqueIdentifier;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)generateImageWithFormat:(int)arg1;
+- (id)generateImageWithFormat:(int)arg1 scale:(double)arg2;
 - (id)initWithWebClip:(id)arg1 variant:(unsigned long long)arg2;
 
 @end

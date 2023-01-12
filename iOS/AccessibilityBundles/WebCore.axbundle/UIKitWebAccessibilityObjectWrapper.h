@@ -9,7 +9,7 @@
 #import <WebCore/_UIFocusEnvironmentPrivate-Protocol.h>
 #import <WebCore/_UIFocusRegionContainer-Protocol.h>
 
-@class NSArray, NSString, UIView;
+@class NSArray, NSString, UIFocusEffect, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
 @interface UIKitWebAccessibilityObjectWrapper <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
@@ -53,7 +53,7 @@
 - (unsigned long long)_axContainedByTableTrait;
 - (unsigned long long)_axContainedByListTrait;
 - (struct CGRect)bounds;
-- (void)postFocusChangeNotification;
+- (void)postNotification:(id)arg1;
 - (void)_repostFocusChangeNotification;
 - (_Bool)_axHasMultipleAccessibleChildren:(long long *)arg1;
 - (_Bool)_accessibilityIsScrollable;
@@ -69,20 +69,11 @@
 - (_Bool)_accessibilityVisiblePointHonorsScreenBounds;
 - (id)screenReaderVersion;
 - (_Bool)isScreenReaderRunning;
-- (void)postValueChangedNotification;
-- (void)postExpandedChangedNotification;
 - (void)postScreenChangeNotification;
-- (void)postLayoutChangeNotification;
-- (void)postChildrenChangedNotification;
-- (void)postInvalidStatusChangedNotification;
 - (void)postLoadCompleteNotification;
-- (void)postSelectedTextChangeNotification;
 - (void)_enqueReorderingNotification:(id)arg1;
-- (void)_repostWebNotificaton:(id)arg1;
-- (void)postLiveRegionCreatedNotification;
-- (void)postLiveRegionChangeNotification;
-- (void)postScrollStatusChangeNotification;
-- (id)_accessibilityMakeScrollStatus:(struct CGRect)arg1 scrollPosition:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
+- (void)_repostWebNotification:(id)arg1;
+- (id)_accessibilityMakeScrollStatus;
 - (id)_accessibilityScrollStatus;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (void)_performPostScrollStatus:(id)arg1;
@@ -124,6 +115,7 @@
 - (id)ariaLandmarkRoleDescription;
 @property(readonly, copy) NSString *description;
 - (id)accessibilityValue;
+- (id)accessibilityVisibleText;
 - (id)accessibilityHint;
 - (id)_accessibilityHeaderElementsForRow:(unsigned long long)arg1;
 - (id)_accessibilityHeaderElementsForColumn:(unsigned long long)arg1;
@@ -158,7 +150,6 @@
 - (_Bool)accessibilityCanFuzzyHitTest;
 - (struct _NSRange)accessibilityRowRange;
 - (struct _NSRange)_accessibilityCheckRowRangeForTrait:(unsigned long long)arg1;
-- (_Bool)_accessibilityShouldScrollRemoteParent;
 - (_Bool)_accessibilityIsScrollDivDescendent;
 - (struct CGPoint)_accessibilityScrollRectToVisible:(struct CGRect)arg1;
 - (_Bool)_accessibilityScrollToVisible;
@@ -253,7 +244,7 @@
 - (void)updateFocusIfNeeded;
 - (void)setNeedsFocusUpdate;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
-- (id)_focusGroupDescriptor;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 @property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property(nonatomic) _Bool areChildrenFocused;
@@ -264,8 +255,11 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
-@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;

@@ -71,6 +71,7 @@
 - (void)setRemoteMetadataLoaded;
 @property(readonly, nonatomic, getter=isRemoteMetadataLoaded) _Bool remoteMetadataLoaded;
 @property(nonatomic) _Bool isRemote;
+- (void)setUsesServerConnectionToLoadDataWithAuthenticationBlock:(CDUnknownBlockType)arg1 dataOwnerBlock:(CDUnknownBlockType)arg2;
 - (void)setUsesServerConnectionToLoadDataWithAuthenticationBlock:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

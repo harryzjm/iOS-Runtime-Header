@@ -6,13 +6,13 @@
 
 @interface MLInt64ProbabilityDictionary
 {
-    map_f8690629 _mapIntLabelToIndex;
+    map_e095e051 _mapIntLabelToIndex;
 }
 
 + (id)probabilityDictionaryForInt64Labels:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) map_f8690629 mapIntLabelToIndex; // @synthesize mapIntLabelToIndex=_mapIntLabelToIndex;
+@property(nonatomic) map_e095e051 mapIntLabelToIndex; // @synthesize mapIntLabelToIndex=_mapIntLabelToIndex;
 - (id)copy;
 - (id)keyEnumerator;
 - (void)removeObjectForKey:(id)arg1;

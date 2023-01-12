@@ -15,6 +15,7 @@
     NSUUID *_shareUUID;
     NSUUID *_documentUUID;
     NSUUID *_versionUUID;
+    NSUUID *_privateUUID;
     unsigned long long _fileFormatVersion;
     TSPDocumentRevision *_revision;
     NSDictionary *_additionalProperties;
@@ -33,6 +34,7 @@
 @property(nonatomic) unsigned long long fileFormatVersion; // @synthesize fileFormatVersion=_fileFormatVersion;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)hashPrivateUUIDWithDigest:(id)arg1;
 @property(readonly, nonatomic) NSUUID *shareUUID;
 - (void)updateVersionUUID;
 @property(readonly, nonatomic) NSUUID *versionUUID;

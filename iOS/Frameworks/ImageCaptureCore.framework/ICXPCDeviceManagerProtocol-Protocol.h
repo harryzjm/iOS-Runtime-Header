@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol ICXPCDeviceManagerProtocol
 - (void)closeDevice:(NSString *)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
 - (void)openDevice:(NSString *)arg1 withReply:(void (^)(NSMutableDictionary *))arg2;
-- (void)notifyRemovedDevice:(NSString *)arg1;
-- (void)notifyAddedDevice:(NSString *)arg1;
+- (void)notifyRemovedDevice:(NSDictionary *)arg1;
+- (void)notifyAddedDevice:(NSDictionary *)arg1;
 - (void)requestDeviceListWithReply:(void (^)(NSMutableDictionary *))arg1;
 @end
 

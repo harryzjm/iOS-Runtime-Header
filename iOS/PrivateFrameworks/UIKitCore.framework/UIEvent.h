@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet, UIEventEnvironment, UIScreen;
+@class BKSHIDEventAuthenticationMessage, NSDictionary, NSMutableSet, NSSet, UIEventEnvironment, UIScreen;
 
 @interface UIEvent : NSObject
 {
     struct __GSEvent *_gsEvent;
     struct __IOHIDEvent *_hidEvent;
+    _Bool _hasValidModifiers;
     long long _mzModifierFlags;
     unsigned long long _mzClickCount;
     long long _buttonMask;
     UIScreen *_cachedScreen;
     NSMutableSet *_eventObservers;
-    _Bool _hasValidModifiers;
     double _timestamp;
     UIEventEnvironment *_eventEnvironment;
     long long _trackpadFingerDownCount;
@@ -29,10 +29,13 @@
 @property(readonly, nonatomic) double _initialTouchTimestamp; // @synthesize _initialTouchTimestamp=__initialTouchTimestamp;
 @property(readonly, nonatomic, getter=_trackpadFingerDownCount) long long trackpadFingerDownCount; // @synthesize trackpadFingerDownCount=_trackpadFingerDownCount;
 @property(nonatomic, setter=_setTimestamp:) double timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic) NSDictionary *_authenticationMessages;
+@property(readonly, nonatomic) BKSHIDEventAuthenticationMessage *_authenticationMessage;
 @property(readonly, nonatomic) unsigned long long _inputPrecision;
 - (void)_wasDeliveredToGestureRecognizers;
 - (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (_Bool)_sendEventToGestureRecognizer:(id)arg1;
+- (_Bool)_consumeBeforeDeliveryToGestureRecognizers:(id)arg1 inWindow:(id)arg2;
 - (id)_gestureRecognizersForWindow:(id)arg1;
 - (double)_wheelVelocity;
 - (void)_cleanupAfterDispatch;

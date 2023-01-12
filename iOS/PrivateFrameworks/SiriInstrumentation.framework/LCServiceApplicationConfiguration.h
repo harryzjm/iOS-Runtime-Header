@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class LCServiceLoggingParameters, NSArray, NSData, NSString;
 
-@interface LCServiceApplicationConfiguration : PBCodable
+@interface LCServiceApplicationConfiguration
 {
-    _Bool _hasBundleIdentifier;
-    _Bool _hasApplicationParameters;
-    NSArray *_categories;
-    NSArray *_blacklistedCategories;
     NSString *_bundleIdentifier;
     LCServiceLoggingParameters *_applicationParameters;
+    NSArray *_categories;
+    NSArray *_blacklistedCategories;
+    _Bool _hasBundleIdentifier;
+    _Bool _hasApplicationParameters;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasApplicationParameters; // @synthesize hasApplicationParameters=_hasApplicationParameters;
-@property(retain, nonatomic) LCServiceLoggingParameters *applicationParameters; // @synthesize applicationParameters=_applicationParameters;
 @property(nonatomic) _Bool hasBundleIdentifier; // @synthesize hasBundleIdentifier=_hasBundleIdentifier;
-@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy, nonatomic) NSArray *blacklistedCategories; // @synthesize blacklistedCategories=_blacklistedCategories;
 @property(copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+@property(retain, nonatomic) LCServiceLoggingParameters *applicationParameters; // @synthesize applicationParameters=_applicationParameters;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

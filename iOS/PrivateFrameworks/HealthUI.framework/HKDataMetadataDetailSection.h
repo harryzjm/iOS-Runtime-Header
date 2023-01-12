@@ -6,7 +6,7 @@
 
 #import <HealthUI/HKDataMetadataDetailSectionDataReceiver-Protocol.h>
 
-@class HKDataMetadataDataSource, HKDisplayTypeController, HKUnitPreferenceController, NSObject;
+@class HKCalendarCache, HKDataMetadataDataSource, HKDisplayTypeController, HKUnitPreferenceController, NSObject;
 @protocol HKDataMetadataObject;
 
 @interface HKDataMetadataDetailSection <HKDataMetadataDetailSectionDataReceiver>
@@ -15,9 +15,11 @@
     NSObject<HKDataMetadataObject> *_object;
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitController;
+    HKCalendarCache *_calendarCache;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HKCalendarCache *calendarCache; // @synthesize calendarCache=_calendarCache;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property(readonly, nonatomic) HKDisplayTypeController *displayTypeController; // @synthesize displayTypeController=_displayTypeController;
 @property(readonly, nonatomic) NSObject<HKDataMetadataObject> *object; // @synthesize object=_object;

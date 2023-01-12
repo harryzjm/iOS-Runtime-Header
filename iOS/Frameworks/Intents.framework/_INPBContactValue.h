@@ -15,9 +15,11 @@
 @interface _INPBContactValue : PBCodable <_INPBContactValue, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int isContactSuggestion:1;
         unsigned int isMe:1;
         unsigned int suggestionType:1;
     } _has;
+    _Bool _isContactSuggestion;
     _Bool _isMe;
     int _suggestionType;
     NSArray *_aliases;
@@ -60,6 +62,7 @@
 @property(copy, nonatomic) NSString *middleName; // @synthesize middleName=_middleName;
 @property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(nonatomic) _Bool isMe; // @synthesize isMe=_isMe;
+@property(nonatomic) _Bool isContactSuggestion; // @synthesize isContactSuggestion=_isContactSuggestion;
 @property(retain, nonatomic) _INPBImageValue *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
 @property(copy, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
@@ -92,6 +95,7 @@
 @property(readonly, nonatomic) _Bool hasMiddleName;
 @property(readonly, nonatomic) _Bool hasLastName;
 @property(nonatomic) _Bool hasIsMe;
+@property(nonatomic) _Bool hasIsContactSuggestion;
 @property(readonly, nonatomic) _Bool hasImage;
 @property(readonly, nonatomic) _Bool hasHandle;
 @property(readonly, nonatomic) _Bool hasFullName;

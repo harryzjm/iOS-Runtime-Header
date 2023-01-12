@@ -18,6 +18,7 @@
     FBSceneUpdateContext *_updateContext;
     FBWatchdogTransitionContext *_watchdogTransitionContext;
     _Bool _allowCPUThrottling;
+    _Bool _runningBoardAssertionDisabled;
     BSAnimationSettings *_animationSettings;
     BKSAnimationFenceHandle *_animationFence;
     NSSet *_actions;

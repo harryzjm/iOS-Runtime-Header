@@ -16,15 +16,16 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     MSVSQLDatabase *_database;
     NSHashTable *_observers;
+    struct os_unfair_recursive_lock_s _observersLock;
 }
 
 + (void)setPrefersInMemoryDatabase:(_Bool)arg1;
 + (_Bool)prefersInMemoryDatabase;
 + (id)sharedServerObjectDatabase;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property(readonly, nonatomic) MSVSQLDatabase *database; // @synthesize database=_database;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+- (id)_playbackAuthorizationTokenForIdentifier:(id)arg1;
+- (id)_payloadForIdentifierSet:(id)arg1 outError:(id *)arg2;
+- (id)payloadDataForIdentifierSet:(id)arg1 outError:(id *)arg2;
 - (_Bool)_createDatabaseSchema;
 - (id)_assetsMatchingIdentifierSet:(id)arg1 query:(id)arg2;
 - (id)_initWithDatabaseCreationBlock:(CDUnknownBlockType)arg1;
@@ -33,6 +34,7 @@
 - (void)addObserver:(id)arg1;
 - (_Bool)importAssetsFromRequest:(id)arg1 error:(id *)arg2;
 - (void)enumerateAssetsMissingSINFsForHashedPersonID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)playbackAuthorizationTokenForEntityMatchingIdentifierSet:(id)arg1;
 - (id)assetsWithMiniSINFsMatchingIdentifierSet:(id)arg1;
 - (id)assetsMatchingIdentifierSet:(id)arg1;
 - (id)relatedIdentifierSetsForParentIdentifierSet:(id)arg1 childKey:(id)arg2;

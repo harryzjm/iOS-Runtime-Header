@@ -13,10 +13,11 @@
 + (id)tagEditorContainer;
 + (id)itemInfoNavigationRoot;
 + (id)inlineRenameField;
++ (id)groupByMenuButtonForGrouping:(id)arg1;
++ (id)sortByMenuButtonForSortIdentifier:(id)arg1 ascending:(_Bool)arg2 active:(_Bool)arg3;
 + (id)itemCollectionMenuButtonShowing:(id)arg1;
 + (id)searchMenuButtonShowing:(id)arg1;
 + (id)itemCollectionView;
-+ (id)displayOptionsBar;
 + (id)browsingRootIdentifierForSourceIdentifier:(id)arg1;
 + (id)browsingRoot;
 + (id)browsingModeTabBar;

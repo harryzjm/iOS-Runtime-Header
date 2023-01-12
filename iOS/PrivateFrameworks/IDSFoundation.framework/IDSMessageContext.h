@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSCertifiedDeliveryContext, NSData, NSDate, NSDictionary, NSError, NSNumber, NSString;
+@class IDSCertifiedDeliveryContext, IDSPseudonym, NSData, NSDate, NSDictionary, NSError, NSNumber, NSString;
 @protocol OS_os_transaction;
 
 @interface IDSMessageContext : NSObject
@@ -26,8 +26,10 @@
     NSNumber *_originalCommand;
     NSNumber *_serverTimestamp;
     NSNumber *_originalTimestamp;
+    NSNumber *_publicIntentAction;
     NSError *_wpConnectionError;
     NSString *_senderCorrelationIdentifier;
+    NSString *_destinationCorrelationIdentifier;
     NSString *_resourceTransferURLString;
     NSString *_resourceTransferSandboxExtension;
     NSDictionary *_resourceTransferMetadata;
@@ -36,6 +38,7 @@
     NSNumber *_messageSequenceNumber;
     NSNumber *_bytesSent;
     NSNumber *_totalBytes;
+    NSDictionary *_targettedPseudonymDict;
     double _averageLocalRTT;
     long long _broadcastID;
     long long _connectionType;
@@ -47,6 +50,7 @@
     _Bool _fromServerStorage;
     _Bool _deviceBlackedOut;
     _Bool _wantsAppAck;
+    _Bool _isDirectMessage;
     _Bool _usedEngram;
     _Bool _messageHadEncryptedData;
 }
@@ -61,11 +65,13 @@
 @property(readonly, nonatomic) double averageLocalRTT; // @synthesize averageLocalRTT=_averageLocalRTT;
 @property(nonatomic) _Bool messageHadEncryptedData; // @synthesize messageHadEncryptedData=_messageHadEncryptedData;
 @property(copy, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;
+@property(readonly, nonatomic) IDSPseudonym *targettedPseudonym;
 @property(nonatomic) _Bool usedEngram;
 @property(nonatomic) long long connectionType;
 @property(nonatomic) _Bool fromServerStorage;
 @property(nonatomic) _Bool wantsManualAck;
 @property(nonatomic) long long broadcastID;
+@property(nonatomic) _Bool isDirectMessage;
 @property(nonatomic) _Bool wantsAppAck;
 @property(nonatomic) _Bool expectsPeerResponse;
 @property(copy, nonatomic) NSString *resourceTransferSandboxExtension;
@@ -77,6 +83,8 @@
 - (void)setBytesSent:(id)arg1;
 @property(readonly, nonatomic) NSError *wpConnectionError;
 - (void)setWPConnectionError:(id)arg1;
+@property(copy, nonatomic) NSNumber *publicIntentAction;
+@property(copy, nonatomic) NSString *destinationCorrelationIdentifier;
 @property(copy, nonatomic) NSString *senderCorrelationIdentifier;
 @property(copy, nonatomic) NSNumber *originalTimestamp;
 @property(copy, nonatomic) NSNumber *serverTimestamp;

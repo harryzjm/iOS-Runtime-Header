@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)accessibilityElementsHidden;
+- (_Bool)_accessibilityIsIsolatedWindow;
 - (id)_accessibilityWindowSections;
 
 @end

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)destroyScenesWithPersistentIdentifiers:(id)arg1 animationType:(unsigned long long)arg2 destroySessions:(_Bool)arg3 forClient:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)requestPasscodeCheckUIForClient:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)requestPasscodeUnlockUIForClient:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)service:(id)arg1 initializeClient:(id)arg2;
 - (_Bool)service:(id)arg1 overrideClientInitialization:(id)arg2;

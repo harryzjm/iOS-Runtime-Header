@@ -13,9 +13,27 @@
 {
 }
 
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newTileIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newFragmentIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newVertexIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1 selector:(SEL)arg2;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newTileRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
+- (id)newRenderPipelineStateWithAdditionalBinaryFunctions:(id)arg1 fragmentAdditionalBinaryFunctions:(id)arg2 error:(id *)arg3;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1 stage:(unsigned long long)arg2;
+- (id)newVisibleFunctionTableFromTileStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromFragmentStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableFromVertexStageWithDescriptor:(id)arg1;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1 selector:(SEL)arg2;
+- (id)functionHandleWithFunction:(id)arg1 stage:(unsigned long long)arg2;
+- (id)tileFunctionHandleWithFunction:(id)arg1;
+- (id)fragmentFunctionHandleWithFunction:(id)arg1;
+- (id)vertexFunctionHandleWithFunction:(id)arg1;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *tileDebugInstrumentationData;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *vertexDebugInstrumentationData;
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 @property(readonly) unsigned long long uniqueIdentifier;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly, nonatomic) unsigned long long resourceIndex;

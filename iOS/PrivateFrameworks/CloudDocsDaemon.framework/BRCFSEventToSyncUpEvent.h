@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
 @property(nonatomic) unsigned int genID; // @synthesize genID=_genID;
 @property(nonatomic) unsigned long long fileID; // @synthesize fileID=_fileID;
+- (id)associatedAppTelemetryEvent;
 - (id)subDescription;
 - (id)additionalPayload;
 

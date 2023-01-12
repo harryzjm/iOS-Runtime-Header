@@ -17,8 +17,6 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct _PASBuddyAllocator;
-
 struct _PASDBTransactionCompletion_ {
     _Bool _field1;
 };
@@ -33,57 +31,14 @@ struct _PASDeviceStateSystemCallbacks {
     CDUnknownFunctionPointerType _field7;
 };
 
-struct _PASLPHeader {
-    char _field1[3];
-    unsigned char _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
-
-struct _PASLPObjectGraphStats {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned long long _field7;
-    unsigned long long _field8;
-    unsigned long long _field9;
-    unsigned long long _field10;
-    unsigned long long _field11;
-    unsigned long long _field12;
-    unsigned long long _field13;
-    unsigned long long _field14;
-    unsigned long long _field15;
-    unsigned long long _field16;
+struct _PASSqliteCacheScore {
+    unsigned int crc32;
+    unsigned char score;
 };
 
 struct __sbuf {
     char *_field1;
     int _field2;
-};
-
-struct _malloc_zone_t {
-    void *_field1;
-    void *_field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    CDUnknownFunctionPointerType _field5;
-    CDUnknownFunctionPointerType _field6;
-    CDUnknownFunctionPointerType _field7;
-    CDUnknownFunctionPointerType _field8;
-    CDUnknownFunctionPointerType _field9;
-    char *_field10;
-    CDUnknownFunctionPointerType _field11;
-    CDUnknownFunctionPointerType _field12;
-    struct malloc_introspection_t *_field13;
-    unsigned int _field14;
-    CDUnknownFunctionPointerType _field15;
-    CDUnknownFunctionPointerType _field16;
-    CDUnknownFunctionPointerType _field17;
-    CDUnknownFunctionPointerType _field18;
 };
 
 struct _opaque_pthread_mutex_t {
@@ -95,14 +50,7 @@ struct atomic_flag {
     _Atomic _Bool _Value;
 };
 
-struct malloc_introspection_t;
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-} CDStruct_c0454aff;
 
 typedef struct {
     unsigned long long _field1;
@@ -116,6 +64,11 @@ typedef struct {
 } CDStruct_6ad76789;
 
 typedef struct {
+    void *mmapBase;
+    unsigned long long mmapSize;
+} CDStruct_601793be;
+
+typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -123,25 +76,4 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
 } CDStruct_d3566df9;
-
-typedef struct {
-    int _field1;
-    float _field2;
-} CDStruct_3a8d9e70;
-
-typedef struct {
-    void *_field1;
-    void *_field2;
-    struct __CFSet *_field3;
-    void *_field4;
-    struct _PASLPObjectGraphStats *_field5;
-} CDStruct_4a2af2ac;
-
-typedef struct {
-    struct _PASBuddyAllocator *_field1;
-    void *_field2;
-    unsigned long long _field3;
-    void *_field4;
-    struct atomic_flag _field5;
-} CDStruct_e8674a76;
 

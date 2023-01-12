@@ -11,6 +11,7 @@
 }
 
 + (char *)_createRGBAPixelBufferFromImage:(struct CGImage *)arg1;
++ (id)keyColorForIcon:(id)arg1 allowAllColors:(_Bool)arg2 confidence:(double *)arg3 nonTransparentConfidence:(double *)arg4 insets:(struct UIEdgeInsets *)arg5;
 + (id)keyColorForIcon:(id)arg1;
 
 @end

@@ -14,16 +14,17 @@
     id <_UIColorPickerRemoteViewControllerHost> _delegate;
 }
 
++ (_Bool)__shouldHostedWindowMoveBetweenSecureAndInsecureMainScreen;
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_UIColorPickerRemoteViewControllerHost> _delegate; // @synthesize _delegate;
 - (_Bool)_canShowWhileLocked;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)_colorPickerDidFinish;
 - (void)_pickerDidFloatEyedropper;
 - (void)_pickerDidDismissEyedropper;
 - (void)_pickerDidShowEyedropper;
-- (void)_pickerDidSelectColor:(id)arg1;
 - (void)_pickerDidSelectColor:(id)arg1 colorspace:(id)arg2 isVolatile:(_Bool)arg3;
 
 // Remaining properties

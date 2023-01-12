@@ -20,6 +20,7 @@
     _Bool _shouldRepeat;
     _Bool _shouldIgnoreRingerSwitch;
     _Bool _shouldForcePlayingAtUserSelectedAudioVolume;
+    _Bool _shouldIgnoreAccessibilityDisabledVibrationSetting;
     float _audioVolume;
     double _audioPlaybackInitiationDelay;
     double _audioVolumeRampingDuration;
@@ -37,6 +38,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldIgnoreAccessibilityDisabledVibrationSetting; // @synthesize shouldIgnoreAccessibilityDisabledVibrationSetting=_shouldIgnoreAccessibilityDisabledVibrationSetting;
 @property(nonatomic) _Bool shouldForcePlayingAtUserSelectedAudioVolume; // @synthesize shouldForcePlayingAtUserSelectedAudioVolume=_shouldForcePlayingAtUserSelectedAudioVolume;
 @property(nonatomic) _Bool shouldIgnoreRingerSwitch; // @synthesize shouldIgnoreRingerSwitch=_shouldIgnoreRingerSwitch;
 @property(nonatomic) _Bool shouldRepeat; // @synthesize shouldRepeat=_shouldRepeat;

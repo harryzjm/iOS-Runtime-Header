@@ -9,10 +9,12 @@
 @class NSString, NSURL;
 
 @protocol FCAppActivityReceiver <NSObject>
+- (void)sceneWillResignActiveWithSceneID:(NSString *)arg1;
 - (void)sceneWillConnect;
 - (void)sceneWillEnterForeground;
-- (void)sceneDidBecomeActiveWithURL:(NSURL *)arg1 sourceApplication:(NSString *)arg2;
+- (void)sceneDidBecomeActiveWithURL:(NSURL *)arg1 sourceApplication:(NSString *)arg2 sceneID:(NSString *)arg3;
 - (void)sceneDidBecomeActive;
+- (void)sceneDidEnterBackgroundWithSceneID:(NSString *)arg1;
 - (void)sceneDidEnterBackground;
 @end
 

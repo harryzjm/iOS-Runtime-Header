@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)VCSessionParticipantErrorEvent:(unsigned int)arg1 errorPath:(id)arg2;
-+ (id)VCSessionErrorEvent:(unsigned int)arg1 errorPath:(id)arg2;
++ (id)VCSessionErrorEvent:(unsigned int)arg1 errorPath:(id)arg2 returnCode:(long long)arg3;
 
 @end
 

@@ -6,20 +6,15 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRouteEVChargingStationInfo, GEOStyleAttributes, NSString;
+@class GEOComposedRouteEVChargingStationInfo, NSString;
 @protocol GEOTransitArtworkDataSource;
 
 @interface GEOComposedWaypointEVStop <NSSecureCoding>
 {
     NSString *_name;
     unsigned long long _muid;
-    struct {
-        double latitude;
-        double longitude;
-        double altitude;
-    } _coordinate;
+    CDStruct_071ac149 _coordinate;
     id <GEOTransitArtworkDataSource> _artwork;
-    GEOStyleAttributes *_styleAttributes;
     GEOComposedRouteEVChargingStationInfo *_chargingInfo;
 }
 
@@ -28,12 +23,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)chargingInfo;
-- (id)styleAttributes;
 - (id)artwork;
 - (CDStruct_39925896)coordinate;
 - (unsigned long long)muid;
 - (id)name;
-- (id)initWithGeoStep:(id)arg1;
 - (id)initWithGeoWaypointInfo:(id)arg1;
 - (id)init;
 

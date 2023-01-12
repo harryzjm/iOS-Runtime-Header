@@ -40,8 +40,8 @@
 - (id)copyWithColumnCount:(unsigned long long)arg1;
 - (void)p_setColumnCount:(unsigned long long)arg1 gapFraction:(double)arg2;
 - (void)p_setEqualWidth:(double)arg1 equalGap:(double)arg2;
-- (void)saveToArchive:(struct ColumnsArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ColumnsArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)copyWithEqualWidth:(_Bool)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithEqualColumnCount:(unsigned long long)arg1 gapFraction:(double)arg2 assert:(_Bool)arg3;

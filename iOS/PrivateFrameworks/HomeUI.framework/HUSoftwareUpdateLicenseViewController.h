@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HUWebViewController *webViewController; // @synthesize webViewController=_webViewController;
 @property(retain, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
-@property(readonly, nonatomic) NSString *license; // @synthesize license=_license;
+@property(retain, nonatomic) NSString *license; // @synthesize license=_license;
 @property(readonly, nonatomic) UIButton *retainCopyOfTermsButton; // @synthesize retainCopyOfTermsButton=_retainCopyOfTermsButton;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(copy, nonatomic) CDUnknownBlockType disagreeHandler; // @synthesize disagreeHandler=_disagreeHandler;

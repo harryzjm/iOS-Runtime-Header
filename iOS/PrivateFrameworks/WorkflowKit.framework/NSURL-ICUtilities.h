@@ -13,6 +13,7 @@
 + (id)wf_systemShortcutsRealmURL;
 + (id)wf_auxiliaryRealmFileURLsForRealmURL:(id)arg1;
 - (id)URLByAddingValuesFromQueryDictionary:(id)arg1;
+- (id)wf_normalizedFileURLForROSP;
 - (id)wf_displayStringWithCharacterLimit:(long long)arg1;
 @end
 

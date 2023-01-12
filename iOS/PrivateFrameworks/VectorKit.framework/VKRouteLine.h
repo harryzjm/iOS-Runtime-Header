@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, NSSet, VKPolylineOverlay, VKPolylineOverlayRenderRegion;
+@class GEOComposedRoute, GEOPathMatcher, NSMutableArray, NSSet, NSUUID, VKPolylineOverlay, VKPolylineOverlayRenderRegion;
 @protocol VKRouteLineObserverProtocol;
 
 __attribute__((visibility("hidden")))
@@ -14,21 +14,32 @@ __attribute__((visibility("hidden")))
 {
     _Bool _matchToRoads;
     _Bool _hasNewRoadMatches;
-    Box_3d7e3c2c _bounds;
+    Box_96c34b7d _bounds;
     Matrix_08d701e4 _inverseMatrix;
     VKPolylineOverlay *_overlay;
     double _boundsUnitsPerMeter;
     double _metersPerPoint;
+    GEOPathMatcher *_pathMatcher;
+    unsigned short _numPathsMatching;
+    NSMutableArray *_matchedSegments;
+    unsigned int _matchingStartIndex;
+    unsigned int _matchingEndIndex;
     double _boundsInWorldUnit;
     double _simplificationEpsilonPoints;
     double _viewUnitsPerPoint;
     id <VKRouteLineObserverProtocol> _observer;
-    vector_78427fd2 _sections;
-    struct fast_shared_ptr<md::RouteLineSection, std::allocator> _userLocationSection;
+    vector_2082bb8e _sections;
+    struct fast_shared_ptr<md::RouteLineSection, mdm::MDAllocator> _userLocationSection;
     struct PolylineCoordinate _userLocationIndex;
     Matrix_8746f91e _userLocation;
+    struct _retain_ptr<NSUUID *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
+        NSUUID *_obj;
+        struct _retain_objc _retain;
+        struct _release_objc _release;
+    } _revisionIdentifier;
     double _lastTrafficTimeStamp;
-    NSSet *_retainedTiles;
+    NSSet *_retainedMatchedSegment;
     VKPolylineOverlayRenderRegion *_renderRegion;
     struct ManeuverArrowCoordinates _maneuverArrowCoordinates;
     double _builtViewUnitsPerPoint;
@@ -36,18 +47,24 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int matchingEndIndex; // @synthesize matchingEndIndex=_matchingEndIndex;
+@property(nonatomic) unsigned int matchingStartIndex; // @synthesize matchingStartIndex=_matchingStartIndex;
+@property NSMutableArray *matchedSegments; // @synthesize matchedSegments=_matchedSegments;
+@property unsigned short numPathsMatching; // @synthesize numPathsMatching=_numPathsMatching;
+@property(readonly, nonatomic) GEOPathMatcher *pathMatcher; // @synthesize pathMatcher=_pathMatcher;
+@property(readonly, nonatomic) double boundsInWorldUnit; // @synthesize boundsInWorldUnit=_boundsInWorldUnit;
 @property(readonly, nonatomic) VKPolylineOverlayRenderRegion *renderRegion; // @synthesize renderRegion=_renderRegion;
 @property(nonatomic) id <VKRouteLineObserverProtocol> observer; // @synthesize observer=_observer;
 @property(nonatomic) double simplificationEpsilonPoints; // @synthesize simplificationEpsilonPoints=_simplificationEpsilonPoints;
 @property _Bool hasNewRoadMatches; // @synthesize hasNewRoadMatches=_hasNewRoadMatches;
 @property(readonly, nonatomic) VKPolylineOverlay *overlay; // @synthesize overlay=_overlay;
-@property(readonly, nonatomic) Box_3d7e3c2c bounds; // @synthesize bounds=_bounds;
-@property(readonly, nonatomic) vector_78427fd2 sections; // @synthesize sections=_sections;
+@property(readonly, nonatomic) Box_96c34b7d bounds; // @synthesize bounds=_bounds;
+@property(readonly, nonatomic) vector_2082bb8e sections; // @synthesize sections=_sections;
 - (double)boundsUnitsPerMeter;
 - (Matrix_08d701e4)maneuverTransform;
 - (Matrix_08d701e4)inverseManeuverTransform;
-- (vector_d9a07fc0)maneuverPoints;
-- (void)_updateBounds:(id)arg1;
+- (vector_9022e479)maneuverPoints;
+- (void)_updateBounds:(id)arg1 boundsInflation:(float)arg2;
 - (void)forEachSection:(CDUnknownBlockType)arg1;
 - (void)splitRouteLineAtAnnotation:(id)arg1;
 - (_Bool)needsUpdateForViewingScale:(double)arg1;
@@ -55,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isTrafficUpToDate;
 - (void)createMeshIfNecessary:(long long)arg1;
 - (void)generateArrowsForManeuverDisplayMode:(int)arg1 routeLineWidth:(double)arg2;
-- (_Bool)buildRouteLine:(id)arg1 matchToRoads:(_Bool)arg2 viewUnitsPerPoint:(double)arg3 force:(_Bool)arg4;
+- (_Bool)buildRouteLine:(id)arg1 matchToRoads:(_Bool)arg2 shouldGenerateSnapPath:(_Bool)arg3 viewUnitsPerPoint:(double)arg4 force:(_Bool)arg5 boundsInflation:(float)arg6 isGradientTraffic:(_Bool)arg7;
 - (void)_updateTilesCovered:(id)arg1;
 @property(readonly, nonatomic) GEOComposedRoute *composedRoute;
 - (void)dealloc;

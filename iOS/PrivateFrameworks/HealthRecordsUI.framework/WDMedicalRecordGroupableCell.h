@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _Bool _extraTopPadding;
     long long _intendedPlacement;
     UIView *_pillBackgroundView;
+    UIColor *_pillBackgroundColorOverride;
     UIColor *_pillBackgroundColor;
     double _sectionTopPadding;
     HKSeparatorLineView *_separatorView;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double sectionTopPadding; // @synthesize sectionTopPadding=_sectionTopPadding;
 @property(retain, nonatomic) UIColor *pillBackgroundColor; // @synthesize pillBackgroundColor=_pillBackgroundColor;
 @property(nonatomic) struct UIEdgeInsets separatorInsets; // @synthesize separatorInsets=_separatorInsets;
+@property(retain, nonatomic) UIColor *pillBackgroundColorOverride; // @synthesize pillBackgroundColorOverride=_pillBackgroundColorOverride;
 @property(retain, nonatomic) UIView *pillBackgroundView; // @synthesize pillBackgroundView=_pillBackgroundView;
 @property(nonatomic) long long intendedPlacement; // @synthesize intendedPlacement=_intendedPlacement;
 @property(nonatomic) _Bool extraTopPadding; // @synthesize extraTopPadding=_extraTopPadding;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateForContentSizeCategory:(id)arg1;
 - (void)_updateBasedOnAccessibilityCategory:(_Bool)arg1;
 - (void)_updateForCurrentSizeCategory;
+- (void)_updateForIntendedPlacement;
 - (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (double)_topPadding;
 - (double)_cornerRadius;

@@ -6,14 +6,28 @@
 
 #import <UIKit/UIView.h>
 
-@interface _PXSharedAlbumActivityGadgetContentView : UIView
+#import <PhotosUICore/PXFocusInfoProvider-Protocol.h>
+
+@class NSString, PXFocusInfo;
+
+@interface _PXSharedAlbumActivityGadgetContentView : UIView <PXFocusInfoProvider>
 {
+    CDUnknownBlockType _focusInfoChangeHandler;
     CDUnknownBlockType _layoutSubviewsHandler;
+    PXFocusInfo *_focusInfo;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXFocusInfo *focusInfo; // @synthesize focusInfo=_focusInfo;
 @property(copy, nonatomic) CDUnknownBlockType layoutSubviewsHandler; // @synthesize layoutSubviewsHandler=_layoutSubviewsHandler;
+@property(copy, nonatomic) CDUnknownBlockType focusInfoChangeHandler; // @synthesize focusInfoChangeHandler=_focusInfoChangeHandler;
 - (void)layoutSubviews;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

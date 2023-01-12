@@ -8,11 +8,10 @@ __attribute__((visibility("hidden")))
 @interface MTLComputePassDescriptorInternal
 {
     struct MTLComputePassDescriptorPrivate _private;
-    unsigned int _substreamCount;
 }
 
 + (id)computePassDescriptor;
-@property(nonatomic) unsigned int substreamCount; // @synthesize substreamCount=_substreamCount;
+@property(nonatomic) _Bool allowCommandEncoderCoalescing;
 - (void)setDispatchType:(unsigned long long)arg1;
 - (unsigned long long)dispatchType;
 - (id)sampleBufferAttachments;

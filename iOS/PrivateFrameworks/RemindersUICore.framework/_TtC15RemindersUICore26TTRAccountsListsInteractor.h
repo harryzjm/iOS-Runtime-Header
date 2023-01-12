@@ -14,14 +14,18 @@
     MISSING_TYPE *store;
     MISSING_TYPE *isSettingSmartListsDisplayOrder;
     MISSING_TYPE *isSettingSmartListsVisibility;
+    MISSING_TYPE *committer;
     MISSING_TYPE *cloudKitMigrationManager;
     MISSING_TYPE *cloudKitNetworkActivityMonitor;
+    MISSING_TYPE *perWindowLastSelectedListStorage;
     MISSING_TYPE *smartListsDisplayOrderObservationToken;
     MISSING_TYPE *smartListsVisibilityObservationToken;
     MISSING_TYPE *migrationPollingTimer;
     MISSING_TYPE *accountsEligibleForMigration_cached;
     MISSING_TYPE *cloudKitNetworkActivity;
     MISSING_TYPE *dataViewMonitor;
+    MISSING_TYPE *fetchReminderCountsInitiator;
+    MISSING_TYPE *fetchReminderCountsSubscription;
 }
 
 - (void).cxx_destruct;

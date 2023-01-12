@@ -8,13 +8,15 @@
 
 @interface TSCH2DChartAbstractAreaLayoutItem
 {
-    TSCHChartTitleLayoutItem *mTitleElement;
-    TSCHChartDataSetNameLayoutItem *mDataSetNameElement;
-    TSCHChartBodyLayoutItem *mChartBody;
+    TSCHChartTitleLayoutItem *_titleElement;
+    TSCHChartDataSetNameLayoutItem *_dataSetNameElement;
+    TSCHChartBodyLayoutItem *_bodyLayoutItem;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCHChartBodyLayoutItem *bodyLayoutItem; // @synthesize bodyLayoutItem=mChartBody;
+@property(retain, nonatomic) TSCHChartBodyLayoutItem *bodyLayoutItem; // @synthesize bodyLayoutItem=_bodyLayoutItem;
+@property(retain, nonatomic) TSCHChartDataSetNameLayoutItem *dataSetNameElement; // @synthesize dataSetNameElement=_dataSetNameElement;
+@property(retain, nonatomic) TSCHChartTitleLayoutItem *titleElement; // @synthesize titleElement=_titleElement;
 - (struct CGRect)i_currentBufferAreaUnitRect;
 - (void)setChartBodyLayoutSize:(struct CGSize)arg1;
 - (struct CGRect)chartBodyLayoutRect;

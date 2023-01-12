@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     ACAccount *_account;
     NSMutableDictionary *_additionalHeaders;
     AMSBuyParams *_buyParams;
+    NSString *_clientCorrelationKey;
     AMSProcessInfo *_clientInfo;
     id <AMSPurchaseDelegate> _delegate;
     NSDictionary *_dialog;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *dialog; // @synthesize dialog=_dialog;
 @property(retain, nonatomic) id <AMSPurchaseDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property(readonly, nonatomic) NSString *clientCorrelationKey; // @synthesize clientCorrelationKey=_clientCorrelationKey;
 @property(retain, nonatomic) AMSBuyParams *buyParams; // @synthesize buyParams=_buyParams;
 @property(nonatomic) _Bool addKBSync; // @synthesize addKBSync=_addKBSync;
 @property(retain, nonatomic) NSMutableDictionary *additionalHeaders; // @synthesize additionalHeaders=_additionalHeaders;

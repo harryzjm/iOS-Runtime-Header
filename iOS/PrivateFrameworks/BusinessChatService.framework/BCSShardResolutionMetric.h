@@ -16,10 +16,12 @@
     _Bool errorEncountered;
     BCSFlagMeasurement *cacheHitMeasurement;
     BCSTimingMeasurement *timingMeasurement;
+    long long errorCode;
 }
 
 + (id)metricForShardIdentifier:(id)arg1 postProcessingMetricHandlers:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) long long errorCode; // @synthesize errorCode;
 @property(nonatomic) _Bool errorEncountered; // @synthesize errorEncountered;
 @property(retain, nonatomic) BCSTimingMeasurement *timingMeasurement; // @synthesize timingMeasurement;
 @property(retain, nonatomic) BCSFlagMeasurement *cacheHitMeasurement; // @synthesize cacheHitMeasurement;

@@ -103,6 +103,8 @@
 @property(readonly, nonatomic, getter=_tableLayout) UICollectionViewTableLayout *tableLayout;
 - (void)_highlightDidEndForCell:(id)arg1 withInteraction:(id)arg2;
 - (void)_prepareHighlightForCell:(id)arg1 withInteraction:(id)arg2;
+- (_Bool)_effectiveDefaultAllowsFocus;
+@property(readonly, nonatomic) _Bool selectionFollowsFocus;
 - (_Bool)_shouldDrawThickSeparators;
 - (void)_userSelectCell:(id)arg1;
 - (void)_accessoryButtonAction:(id)arg1;
@@ -125,6 +127,7 @@
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (_Bool)_canPerformAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (_Bool)_shouldShowMenuForCell:(id)arg1;
+- (long long)_cellFocusItemDeferral:(id)arg1;
 - (void)_cellDidBecomeUnfocused:(id)arg1;
 - (void)_cellDidBecomeFocused:(id)arg1;
 - (_Bool)_canFocusCell:(id)arg1;

@@ -10,14 +10,20 @@
 
 @interface AUAudioUnitViewService : UIViewController
 {
+    UIViewController *_auViewController;
     AURemoteExtensionContext *_auRemoteExtensionContext;
 }
 
+- (void).cxx_destruct;
 @property AURemoteExtensionContext *auRemoteExtensionContext; // @synthesize auRemoteExtensionContext=_auRemoteExtensionContext;
 - (void)dealloc;
 - (void)loadView;
 - (void)initializeBlankView;
 - (void)connectChildView;
+- (void)setAUContainerViewConstraints:(id)arg1 childView:(id)arg2 auViewSize:(struct CGSize)arg3;
+- (struct CGSize)determineViewSize:(id)arg1;
+- (void)resizeWindow:(id)arg1 size:(struct CGSize)arg2;
+- (void)markViewForRedraw:(id)arg1;
 
 @end
 

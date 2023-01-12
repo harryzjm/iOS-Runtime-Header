@@ -6,24 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetExplorer/AEHostStatisticsManager-Protocol.h>
-
-@class NSString;
-
-@interface AEChatKitStatisticsManager : NSObject <AEHostStatisticsManager>
+@interface AEChatKitStatisticsManager : NSObject
 {
 }
 
 - (void)reportPayloadSentFromSource:(long long)arg1;
-- (void)reportSelectionOfPhotoGridIndex:(unsigned long long)arg1;
-- (void)reportPresentationOfFullScreenPhotoLibrary;
-- (void)reportPresentationOfFullScreenCamera;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

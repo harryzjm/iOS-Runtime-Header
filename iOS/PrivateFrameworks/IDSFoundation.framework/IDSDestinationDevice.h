@@ -17,7 +17,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isGuest; // @synthesize isGuest=_isGuest;
 @property(retain, nonatomic) IDSURI *destinationURI; // @synthesize destinationURI=_destinationURI;
-- (id)groupID;
 - (id)destinationURIs;
 - (_Bool)isDevice;
 - (id)description;

@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     _Bool _forceNetworkCellular;
     _Bool _enableLoopbackInterface;
     _Bool _enableOneToOneMode;
+    _Bool _enableAudioPowerSpectrumReport;
     double _emulatedRxPLR;
-    NSString *_cannedReplayPath;
     int _forcedTargetBitrate;
     int _forcedCapBitrate;
     NSString *_emulatedNetworkConfigPath;
@@ -27,17 +27,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedManager;
+@property(nonatomic) _Bool enableAudioPowerSpectrumReport; // @synthesize enableAudioPowerSpectrumReport=_enableAudioPowerSpectrumReport;
 @property(nonatomic) _Bool enableOneToOneMode; // @synthesize enableOneToOneMode=_enableOneToOneMode;
 @property(retain, nonatomic) NSString *emulatedNetworkConfigPath; // @synthesize emulatedNetworkConfigPath=_emulatedNetworkConfigPath;
 @property(nonatomic) int forcedCapBitrate; // @synthesize forcedCapBitrate=_forcedCapBitrate;
 @property(nonatomic) int forcedTargetBitrate; // @synthesize forcedTargetBitrate=_forcedTargetBitrate;
-@property(retain, nonatomic) NSString *cannedReplayPath; // @synthesize cannedReplayPath=_cannedReplayPath;
 @property(nonatomic) double emulatedRxPLR; // @synthesize emulatedRxPLR=_emulatedRxPLR;
 @property(nonatomic) _Bool enableLoopbackInterface; // @synthesize enableLoopbackInterface=_enableLoopbackInterface;
 @property _Bool forceNetworkCellular; // @synthesize forceNetworkCellular=_forceNetworkCellular;
 @property _Bool toneInjectionEnabled; // @synthesize toneInjectionEnabled=_toneInjectionEnabled;
 - (void)registerBlocksForService;
-- (void)reportMemoryUsage;
+- (void)reportMemoryUsage:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

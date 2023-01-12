@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SearchUIAppIconsRowView, TLKAuxilliaryTextView;
+@class NSArray, SearchUIAppIconsRowView, SearchUIMultiResultRowModel, TLKAuxilliaryTextView;
 
 @interface SearchUIMultiResultTableViewCell
 {
@@ -43,7 +43,11 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateWithRowModel:(id)arg1;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)deleteIcon:(id)arg1;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) SearchUIMultiResultRowModel *rowModel; // @dynamic rowModel;
 
 @end
 

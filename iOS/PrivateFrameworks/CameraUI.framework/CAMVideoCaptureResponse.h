@@ -10,6 +10,7 @@
 
 @interface CAMVideoCaptureResponse <CAMTransientAssetConvertible>
 {
+    long long _captureMode;
     NSString *_persistenceUUID;
     NSURL *_localPersistenceURL;
     NSDate *_captureDate;
@@ -34,11 +35,13 @@
 @property(readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property(readonly, copy, nonatomic) NSURL *localPersistenceURL; // @synthesize localPersistenceURL=_localPersistenceURL;
 @property(readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
+@property(readonly, nonatomic) long long captureMode; // @synthesize captureMode=_captureMode;
 @property(readonly, nonatomic) struct CGSize finalExpectedPixelSize; // @synthesize finalExpectedPixelSize=_finalExpectedPixelSize;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property(readonly, nonatomic) NSURL *irisVideoPersistenceURL;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo;
 @property(readonly, nonatomic) NSString *irisStillImageUUID;
+@property(readonly, nonatomic, getter=isTransientAssetTemporaryPlaceholder) _Bool transientAssetTemporaryPlaceholder;
 @property(readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
 @property(readonly, copy, nonatomic) NSString *burstIdentifier;
 @property(readonly, copy, nonatomic) NSDictionary *stillImageMetadata;
@@ -49,7 +52,7 @@
 @property(readonly, nonatomic) unsigned long long mediaType;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool stoppedUnexpectedly;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 captureDate:(id)arg4 duration:(CDStruct_1b6d18a9)arg5 stillPersistenceUUID:(id)arg6 stillDisplayTime:(CDStruct_1b6d18a9)arg7 reason:(long long)arg8 videoZoomFactor:(double)arg9 finalExpectedPixelSize:(struct CGSize)arg10 imageWellImage:(id)arg11 previewImage:(id)arg12 coordinationInfo:(id)arg13;
+- (id)initWithUUID:(id)arg1 captureMode:(long long)arg2 captureSession:(unsigned short)arg3 url:(id)arg4 captureDate:(id)arg5 duration:(CDStruct_1b6d18a9)arg6 stillPersistenceUUID:(id)arg7 stillDisplayTime:(CDStruct_1b6d18a9)arg8 reason:(long long)arg9 videoZoomFactor:(double)arg10 finalExpectedPixelSize:(struct CGSize)arg11 imageWellImage:(id)arg12 previewImage:(id)arg13 coordinationInfo:(id)arg14;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

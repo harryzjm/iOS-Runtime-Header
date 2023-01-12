@@ -7,7 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (HomeKit)
-+ (id)iso8601dateFromString:(id)arg1;
-+ (unsigned char)dayOfTheWeek;
++ (id)hm_iso8601dateFromString:(id)arg1;
++ (unsigned char)hm_dayOfTheWeek;
 @end
 

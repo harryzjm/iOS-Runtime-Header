@@ -17,10 +17,11 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (const struct LabelExternalTextElement *)element;
+- (const void *)element;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTextElement:(const struct LabelExternalTextElement *)arg1;
+- (id)initWithTextElement:(const void *)arg1;
+- (void)dealloc;
 
 @end
 

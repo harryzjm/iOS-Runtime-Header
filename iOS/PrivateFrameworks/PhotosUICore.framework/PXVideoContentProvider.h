@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSNumber, NSString, PXVideoContentProviderLoadingResult;
+@class ISWrappedAVAudioSession, NSDictionary, NSNumber, NSString, PXVideoContentProviderLoadingResult;
 
 @interface PXVideoContentProvider
 {
@@ -12,9 +12,11 @@
     double _loadingProgress;
     NSNumber *_videoAspectRatio;
     NSString *_contentIdentifier;
+    ISWrappedAVAudioSession *_audioSession;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) ISWrappedAVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;
 @property(retain, nonatomic) NSNumber *videoAspectRatio; // @synthesize videoAspectRatio=_videoAspectRatio;
 @property(nonatomic) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
@@ -22,6 +24,7 @@
 @property(readonly, nonatomic) NSDictionary *analyticsPayload;
 - (void)cancelLoading;
 - (void)beginLoadingWithPriority:(long long)arg1;
+- (void)makeUniqueContentIdentifier;
 - (id)mutableChangeObject;
 
 @end

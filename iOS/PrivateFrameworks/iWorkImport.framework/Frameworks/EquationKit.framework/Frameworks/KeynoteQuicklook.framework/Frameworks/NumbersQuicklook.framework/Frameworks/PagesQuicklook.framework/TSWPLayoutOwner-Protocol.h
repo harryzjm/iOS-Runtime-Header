@@ -6,8 +6,8 @@
 
 #import <PagesQuicklook/NSObject-Protocol.h>
 
-@class NSObject, TSUColor, TSULocale, TSWPLayoutManager, TSWPLayoutMetricsCache, TSWPStorage;
-@protocol TSWPLayoutTarget, TSWPOffscreenColumn, TSWPStyleProvider, TSWPTextWrap, TSWPTopicNumberHints;
+@class NSObject, TSUColor, TSULocale, TSWPLayoutManager, TSWPLayoutMetricsCache, TSWPStorage, _TtC6TSText16TSWPTopicNumbers;
+@protocol TSWPLayoutTarget, TSWPOffscreenColumn, TSWPTextWrap, TSWPTopicNumberHints;
 
 @protocol TSWPLayoutOwner <NSObject>
 - (id <TSWPTextWrap>)textWrapper;
@@ -17,15 +17,14 @@
 - (_Bool)caresAboutStorageChanges;
 
 @optional
-- (NSObject<TSWPTopicNumberHints> *)nextTargetTopicNumbersForTarget:(id <TSWPLayoutTarget>)arg1;
+- (_TtC6TSText16TSWPTopicNumbers *)topicNumbersForStorage:(TSWPStorage *)arg1;
+- (NSObject<TSWPTopicNumberHints> *)nextTargetTopicNumberHintsForTarget:(id <TSWPLayoutTarget>)arg1;
 - (NSObject<TSWPOffscreenColumn> *)nextTargetFirstColumnForTarget:(id <TSWPLayoutTarget>)arg1;
-- (NSObject<TSWPTopicNumberHints> *)previousTargetTopicNumbersForTarget:(id <TSWPLayoutTarget>)arg1;
 - (NSObject<TSWPOffscreenColumn> *)previousTargetLastColumnForTarget:(id <TSWPLayoutTarget>)arg1;
 - (TSWPLayoutMetricsCache *)metricsCacheForStorage:(TSWPStorage *)arg1;
 - (void)didLayoutWithLayoutManager:(TSWPLayoutManager *)arg1;
 - (TSUColor *)textColorOverride;
 - (TSULocale *)locale;
 - (_Bool)forceWesternLineBreaking;
-- (id <TSWPStyleProvider>)styleProvider;
 @end
 

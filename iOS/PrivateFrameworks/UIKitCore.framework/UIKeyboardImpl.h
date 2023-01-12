@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/RTIInputSystemClientDelegate-Protocol.h>
-#import <UIKitCore/RTIInputSystemSessionDelegate-Protocol.h>
 #import <UIKitCore/TIKeyboardInputManagerToImplProtocol-Protocol.h>
+#import <UIKitCore/UIKBRTIPartnerDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardCandidateControllerDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardCandidateListDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardImplStateProtocol-Protocol.h>
+#import <UIKitCore/UIKeyboardLayoutSizeDelegate-Protocol.h>
 #import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/UITextInputDelegatePrivate-Protocol.h>
 #import <UIKitCore/UITextInputSuggestionDelegate-Protocol.h>
 #import <UIKitCore/_UIIVCResponseDelegateImpl-Protocol.h>
 #import <UIKitCore/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, RTIDocumentState, RTIDocumentTraits, RTIInputSystemClient, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIKeyboardInputManagerState, TIKeyboardInputManagerStub, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, TISmartPunctuationController, TUIKeyboardBackendController, UIAutocorrectInlinePrompt, UIContinuousPathIntroductionView, UIDelayedAction, UIKBAutofillController, UIKBEditingGesturesIntroduction, UIKeyboardAutocorrectionController, UIKeyboardCandidateController, UIKeyboardLayout, UIKeyboardPopoverController, UIKeyboardScheduledTask, UIKeyboardTaskQueue, UILexicon, UIPhysicalKeyboardEvent, UIResponder, UITextInputArrowKeyHistory, UITextInputTraits, UITextInteractionAssistant, UITextInteractionSelectableInputDelegate, UITextSelectionView, UIView, _UIActionWhenIdle, _UIKeyboardFeedbackGenerator, _UIKeyboardImplProxy, _UIKeyboardTextSelectionController;
-@protocol UIKeyInput, UIKeyInputPrivate, UIKeyboardCandidateList, UIKeyboardImplGeometryDelegate, UIKeyboardInput, UITextCursorAssertion, UITextInput, UITextInputPrivate, UIWKInteractionViewProtocol;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIKeyboardInputManagerState, TIKeyboardInputManagerStub, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, TISmartPunctuationController, TUIKeyboardBackendController, UIAutocorrectBubbleContainer, UIAutocorrectInlinePrompt, UIContinuousPathIntroductionView, UIDelayedAction, UIKBAutofillController, UIKBEditingGesturesIntroduction, UIKBInputDelegateManager, UIKBRTIPartner, UIKeyboardAutocorrectionController, UIKeyboardCandidateController, UIKeyboardLayout, UIKeyboardPopoverController, UIKeyboardScheduledTask, UIKeyboardTaskQueue, UILexicon, UIPhysicalKeyboardEvent, UIResponder, UITextInputArrowKeyHistory, UITextInputTraits, UITextInteractionAssistant, UITextInteractionSelectableInputDelegate, UITextSelectionView, UIView, _UIActionWhenIdle, _UIKeyboardFeedbackGenerator, _UIKeyboardImplProxy, _UIKeyboardTextSelectionController, _UIStringAndPositionPair;
+@protocol UIKeyInput, UIKeyboardCandidateList, UIKeyboardImplGeometryDelegate, UITextCursorAssertion;
 
-@interface UIKeyboardImpl <_UIIVCResponseDelegateImpl, _UIKeyboardTextSelectionGestureControllerDelegate, UITextInputSuggestionDelegate, UIKeyboardCandidateControllerDelegate, TIKeyboardInputManagerToImplProtocol, RTIInputSystemClientDelegate, RTIInputSystemSessionDelegate, UIPopoverPresentationControllerDelegate, UIKeyboardCandidateListDelegate>
+@interface UIKeyboardImpl <_UIIVCResponseDelegateImpl, _UIKeyboardTextSelectionGestureControllerDelegate, UITextInputSuggestionDelegate, UIKeyboardCandidateControllerDelegate, TIKeyboardInputManagerToImplProtocol, UIPopoverPresentationControllerDelegate, UIKeyboardImplStateProtocol, UIKBRTIPartnerDelegate, UITextInputDelegatePrivate, UIKeyboardCandidateListDelegate, UIKeyboardLayoutSizeDelegate>
 {
     id <UIKeyInput> m_delegate;
     UITextInteractionSelectableInputDelegate *m_selectableDelegate;
@@ -57,7 +59,6 @@
     _Bool m_textInputChangingDirection;
     _Bool m_textInputChangesIgnored;
     _Bool m_textInputUpdatingSelection;
-    _Bool m_insideKeyInputDelegateCall;
     _Bool m_disableSyncTextChanged;
     _Bool m_disableClearingTextSuggestions;
     UITextInputTraits *m_defaultTraits;
@@ -100,13 +101,6 @@
     _Bool m_shiftNeedsUpdate;
     _Bool m_shiftPreventAutoshift;
     _Bool m_shiftHeldDownNeedsUpdated;
-    _Bool m_delegateAdoptsTextInput;
-    _Bool m_delegateAdoptsTextInputPrivate;
-    _Bool m_delegateAdoptsWebTextInputPrivate;
-    _Bool m_delegateAdoptsKeyboardInput;
-    _Bool m_delegateAdoptsWKInteraction;
-    _Bool m_delegateAdoptsKeyInputPrivate;
-    _Bool m_firstResponderAdoptsTextInput;
     _Bool m_clientVariantSupportEnabled;
     _Bool m_clientVariantSupportEnabledEver;
     NSMutableArray *m_keyplaneNamesPreviousDelegate;
@@ -130,7 +124,19 @@
     _Bool m_delegateSupportsImagePaste;
     _Bool m_didUpdateCapsLockLanguageSwitchSetting;
     _Bool m_shouldEnableCapsLockLanguageSwitchByDefault;
+    UIPhysicalKeyboardEvent *m_previousGlobeKeyEvent;
     _UIKeyboardFeedbackGenerator *m_feedbackGenerator;
+    _Bool m_delegateAdoptsKeyboardInput;
+    _Bool m_delegateAdoptsTextInput;
+    _Bool m_delegateAdoptsTextInputPrivate;
+    _Bool m_delegateAdoptsWebTextInputPrivate;
+    _Bool m_delegateAdoptsWKInteraction;
+    _Bool m_delegateAdoptsKeyInputPrivate;
+    _Bool m_delegateAdoptsRTISourceSession;
+    _Bool m_firstResponderAdoptsTextInput;
+    UIResponder<UIKeyInput> *_forwardingInputDelegate;
+    _Bool _forwardingInputDelegateConformsToWKInteraction;
+    _Bool _shouldRespectForwardingInputDelegate;
     _Bool m_scrolling;
     _Bool m_hasInputOnAcceptCandidate;
     _Bool m_maximizing;
@@ -152,12 +158,13 @@
     UIView *m_capsLockSign;
     _Bool m_didAutomaticallyInsertSpaceBeforeChangingInputMode;
     _Bool m_disableSmartInsertDelete;
-    _Bool m_isPerformingRemoteOperations;
     _Bool m_didExtendLongPressDelayForContinuousPath;
+    _Bool m_inHandleKeyTextCommandForCurrentEvent;
     _Bool m_inHandleKeyAppCommandForCurrentEvent;
     _Bool m_webEventWasHandledAsKeyCommand;
     _Bool m_webEventWasHandledByInputManager;
     _Bool m_webEventIsKeyDown;
+    _Bool m_needsOneShotGenerateCandidatesAfterStoppingAutoDelete;
     _Bool m_disableAutocapitalization;
     int m_predictionType;
     _Bool m_repeatDeleteFromHardwareKeyboard;
@@ -181,23 +188,21 @@
     UIKeyboardPopoverController *_keyboardPopoverController;
     NSString *_inputModeForKeyboardPopoverToRestoreAfterRotation;
     _Bool _isSettingDelegate;
-    UIResponder<UIKeyInput> *_forwardingInputDelegate;
-    _Bool _forwardingInputDelegateConformsToWKInteraction;
-    _Bool _shouldRespectForwardingInputDelegate;
     double m_bottomPadding;
+    unsigned long long _serviceRole;
+    UIKBRTIPartner *_remoteTextInputPartner;
     _Bool m_showsCandidateBar;
     _Bool m_showsCandidateInline;
     _Bool committingCandidate;
     _Bool geometryIsChanging;
-    _Bool m_softwareKeyboardShownByTouch;
+    _Bool m_automaticMinimizationEnabled;
     _Bool _mimicShiftBeingHeld;
     _Bool floatingForced;
     _Bool _forCustomInputView;
+    _Bool _suppressUpdateAssistantView;
+    _Bool _shouldUpdateLayoutAutomatically;
     _Bool _lockFloating;
     _Bool _handlingKeyCommandFromHardwareKeyboard;
-    _Bool _suppressRTIClient;
-    _Bool _applicationStateIsActiveForRTI;
-    _Bool _viewServiceStateIsActiveForRTI;
     UIPhysicalKeyboardEvent *m_currentEventForKeyCommand;
     UIKeyboardCandidateController *m_candidateController;
     TISmartPunctuationController *m_smartPunctuationController;
@@ -205,10 +210,11 @@
     _UIActionWhenIdle *m_delayedCandidateRequest;
     _UIActionWhenIdle *m_deferredDidSetDelegateAction;
     UIView *m_internationalKeyIntroductionView;
-    RTIInputSystemClient *m_rtiClient;
-    RTIDocumentTraits *m_rtiDocumentTraits;
-    RTIDocumentState *m_rtiDocumentState;
     UIDelayedAction *m_updateCapsLockDelayOverrideForNonTyping;
+    UIKBInputDelegateManager *_inputDelegateManager;
+    _UIStringAndPositionPair *m_lastMatchedSupplementalCandidate;
+    _UIStringAndPositionPair *m_pendingSupplementalCandidateToInsert;
+    unsigned long long m_lastChooseSupplementalItemToInsertCallbackIdentifier;
     double _deleteWordLastDelete;
     _UIKeyboardTextSelectionController *_textSelectionController;
     unsigned long long _requestedInteractionModel;
@@ -220,9 +226,10 @@
     long long _candidateViewOffset;
     NSString *_deletedString;
     NSArray *_characterRectsForCharacterRange;
+    NSNumber *_isAttachedHardwareKeyboard;
+    UIAutocorrectBubbleContainer *_autocorrectBubbleContainer;
 }
 
-+ (void)hardwareKeyboardAvailabilityChanged;
 + (id)uniqueNumberPadInputModesFromInputModes:(id)arg1 forKeyboardType:(long long)arg2;
 + (Class)layoutClassForInputMode:(id)arg1 keyboardType:(long long)arg2 screenTraits:(id)arg3;
 + (_Bool)smartInsertDeleteIsEnabled;
@@ -249,6 +256,7 @@
 + (void)setFloating:(_Bool)arg1 positionedAtDefaultOffsetAnimated:(_Bool)arg2;
 + (void)setFloating:(_Bool)arg1;
 + (_Bool)isFloating;
++ (void)performWithoutFloatingLock:(CDUnknownBlockType)arg1;
 + (_Bool)isFloatingForced;
 + (struct UIEdgeInsets)requestedFloatingInsets;
 + (_Bool)supportsFloating;
@@ -279,11 +287,6 @@
 + (void)applicationDidReceiveMemoryWarning:(id)arg1;
 + (void)applicationWillEnterForeground:(id)arg1;
 + (void)applicationDidEnterBackground:(id)arg1;
-+ (void)screenModeDidChange:(id)arg1;
-+ (void)applicationDidRemoveDeactivationReason:(id)arg1;
-+ (void)applicationWillAddDeactivationReason:(id)arg1;
-+ (void)viewServiceHostDidBecomeActive:(id)arg1;
-+ (void)viewServiceHostWillResignActive:(id)arg1;
 + (void)applicationDidBecomeActive:(id)arg1;
 + (void)applicationWillResignActive:(id)arg1;
 + (void)applicationWillSuspend:(id)arg1;
@@ -301,37 +304,40 @@
 + (_Bool)overrideNativeScreen;
 + (id)keyboardScreen;
 + (id)keyboardWindow;
+@property(retain, nonatomic) UIAutocorrectBubbleContainer *autocorrectBubbleContainer; // @synthesize autocorrectBubbleContainer=_autocorrectBubbleContainer;
+@property(retain, nonatomic) NSNumber *isAttachedHardwareKeyboard; // @synthesize isAttachedHardwareKeyboard=_isAttachedHardwareKeyboard;
 @property(copy, nonatomic) NSArray *characterRectsForCharacterRange; // @synthesize characterRectsForCharacterRange=_characterRectsForCharacterRange;
 @property(retain, nonatomic) NSString *deletedString; // @synthesize deletedString=_deletedString;
 @property(nonatomic) long long candidateViewOffset; // @synthesize candidateViewOffset=_candidateViewOffset;
 @property(retain, nonatomic) NSArray *alternativePredictions; // @synthesize alternativePredictions=_alternativePredictions;
 @property(retain, nonatomic) TIKeyboardCandidate *autocorrectionToAcceptBeforeProgressiveCandidates; // @synthesize autocorrectionToAcceptBeforeProgressiveCandidates=_autocorrectionToAcceptBeforeProgressiveCandidates;
 @property(retain, nonatomic) TICandidateRequestToken *currentCandidateRequest; // @synthesize currentCandidateRequest=_currentCandidateRequest;
-@property(nonatomic) _Bool viewServiceStateIsActiveForRTI; // @synthesize viewServiceStateIsActiveForRTI=_viewServiceStateIsActiveForRTI;
-@property(nonatomic) _Bool applicationStateIsActiveForRTI; // @synthesize applicationStateIsActiveForRTI=_applicationStateIsActiveForRTI;
-@property(nonatomic) _Bool suppressRTIClient; // @synthesize suppressRTIClient=_suppressRTIClient;
 @property(nonatomic) _Bool handlingKeyCommandFromHardwareKeyboard; // @synthesize handlingKeyCommandFromHardwareKeyboard=_handlingKeyCommandFromHardwareKeyboard;
 @property(retain, nonatomic) id <UITextCursorAssertion> cursorAssertion; // @synthesize cursorAssertion=_cursorAssertion;
 @property(retain, nonatomic) UIKeyboardScheduledTask *autocorrectPromptTask; // @synthesize autocorrectPromptTask=_autocorrectPromptTask;
 @property(nonatomic) unsigned long long requestedInteractionModel; // @synthesize requestedInteractionModel=_requestedInteractionModel;
 @property(getter=isFloatingLocked) _Bool lockFloating; // @synthesize lockFloating=_lockFloating;
+@property(nonatomic) _Bool shouldUpdateLayoutAutomatically; // @synthesize shouldUpdateLayoutAutomatically=_shouldUpdateLayoutAutomatically;
+@property(nonatomic) _Bool suppressUpdateAssistantView; // @synthesize suppressUpdateAssistantView=_suppressUpdateAssistantView;
 @property(retain, nonatomic) _UIKeyboardTextSelectionController *textSelectionController; // @synthesize textSelectionController=_textSelectionController;
 @property(nonatomic) double deleteWordLastDelete; // @synthesize deleteWordLastDelete=_deleteWordLastDelete;
 @property(nonatomic) _Bool forCustomInputView; // @synthesize forCustomInputView=_forCustomInputView;
-@property(nonatomic) __weak UIResponder<UIKeyInput> *forwardingInputDelegate; // @synthesize forwardingInputDelegate=_forwardingInputDelegate;
+@property(nonatomic) unsigned long long lastChooseSupplementalItemToInsertCallbackIdentifier; // @synthesize lastChooseSupplementalItemToInsertCallbackIdentifier=m_lastChooseSupplementalItemToInsertCallbackIdentifier;
+@property(retain, nonatomic) _UIStringAndPositionPair *pendingSupplementalCandidateToInsert; // @synthesize pendingSupplementalCandidateToInsert=m_pendingSupplementalCandidateToInsert;
+@property(retain, nonatomic) _UIStringAndPositionPair *lastMatchedSupplementalCandidate; // @synthesize lastMatchedSupplementalCandidate=m_lastMatchedSupplementalCandidate;
+@property(nonatomic) _Bool shouldIgnoreTextInputChanges; // @synthesize shouldIgnoreTextInputChanges=m_textInputChangesIgnored;
+@property(retain, nonatomic) UIKBInputDelegateManager *inputDelegateManager; // @synthesize inputDelegateManager=_inputDelegateManager;
+@property(readonly, nonatomic) TIKeyboardState *keyboardState; // @synthesize keyboardState=m_keyboardState;
+@property(readonly, nonatomic) _Bool updatingPreferences; // @synthesize updatingPreferences=m_updatingPreferences;
 @property(nonatomic) _Bool floatingForced; // @synthesize floatingForced;
 @property(readonly, nonatomic) _Bool delegateRequiresKeyEvents; // @synthesize delegateRequiresKeyEvents=m_delegateRequiresKeyEvents;
 @property(nonatomic) _Bool _mimicShiftBeingHeld; // @synthesize _mimicShiftBeingHeld;
 @property(retain, nonatomic) UIDelayedAction *updateCapsLockDelayOverrideForNonTyping; // @synthesize updateCapsLockDelayOverrideForNonTyping=m_updateCapsLockDelayOverrideForNonTyping;
 @property(retain, nonatomic) _UIKeyboardFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=m_feedbackGenerator;
-@property(retain, nonatomic) RTIDocumentState *rtiDocumentState; // @synthesize rtiDocumentState=m_rtiDocumentState;
-@property(retain, nonatomic) RTIDocumentTraits *rtiDocumentTraits; // @synthesize rtiDocumentTraits=m_rtiDocumentTraits;
-@property(retain, nonatomic) RTIInputSystemClient *rtiClient; // @synthesize rtiClient=m_rtiClient;
 @property(retain, nonatomic) UIKBAutofillController *autofillController; // @synthesize autofillController=m_autofillController;
 @property(nonatomic) _Bool animateUpdateBars; // @synthesize animateUpdateBars=m_animateUpdateBars;
 @property(nonatomic) _Bool suppressUpdateShiftState; // @synthesize suppressUpdateShiftState=m_suppressUpdateShiftState;
 @property(nonatomic) _Bool suppressUpdateLayout; // @synthesize suppressUpdateLayout=m_suppressUpdateLayout;
-@property(nonatomic) _Bool softwareKeyboardShownByTouch; // @synthesize softwareKeyboardShownByTouch=m_softwareKeyboardShownByTouch;
 @property(nonatomic) _Bool disableSmartInsertDelete; // @synthesize disableSmartInsertDelete=m_disableSmartInsertDelete;
 @property(nonatomic) _Bool geometryIsChanging; // @synthesize geometryIsChanging;
 @property(nonatomic) _Bool committingCandidate; // @synthesize committingCandidate;
@@ -351,8 +357,22 @@
 @property(copy, nonatomic) CDUnknownBlockType externalTask; // @synthesize externalTask=m_externalTask;
 @property(nonatomic) id <UIKeyboardImplGeometryDelegate> geometryDelegate; // @synthesize geometryDelegate=m_geometryDelegate;
 @property(retain, nonatomic) UITextInputArrowKeyHistory *arrowKeyHistory; // @synthesize arrowKeyHistory=m_arrowKeyHistory;
+- (id)markedText;
+- (_Bool)hasMarkedText;
+- (void)unmarkText:(id)arg1;
+- (void)insertAttributedText:(id)arg1;
+- (id)asynchronousInputDelegate;
+- (void)assertTextForRemoteDocument:(id)arg1 withSelectionRange:(struct _NSRange)arg2 updatingSelection:(_Bool)arg3;
+- (void)updateInputDelegateForRemoteDocumentStateChange:(id)arg1 selectedTextRange:(struct _NSRange)arg2 forceSync:(_Bool)arg3;
+- (void)updateInputDelegateForRemoteTraitChange:(id)arg1 autofillMode:(unsigned long long)arg2 forceSync:(_Bool)arg3;
+- (id)inputSystemSourceSession;
+- (void)resetInputDelegate;
+- (id)remoteTextEditingMetadata;
+@property(readonly, nonatomic) UIKBRTIPartner *remoteTextInputPartner;
+- (void)_ensureRTIConnection;
 - (void)_performKeyboardOutput:(CDUnknownBlockType)arg1 respectingForwardingDelegate:(_Bool)arg2;
 - (void)_setTransientSelectionModeEnabled:(_Bool)arg1 forInputDelegate:(id)arg2;
+- (void)didChangeForwardingInputDelegate:(id)arg1;
 - (void)clearForwardingInputDelegateAndResign:(_Bool)arg1;
 - (void)enableTransientInputDelegateSelectionMode;
 - (void)performSendCurrentLocation;
@@ -378,6 +398,7 @@
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
 - (void)showKeyboardIfNeeded;
+- (void)updateIsAttachedHardwareKeyboard;
 - (void)ejectKeyDown;
 - (void)toggleSoftwareKeyboard;
 - (void)completeHandleKeyEvent:(id)arg1;
@@ -385,8 +406,9 @@
 - (void)handleModifiersChangeForKeyEvent:(id)arg1 executionContext:(id)arg2;
 - (void)handleKeyEvent:(id)arg1 executionContext:(id)arg2;
 - (_Bool)_shouldEmitString:(id)arg1 forKeyEvent:(id)arg2;
-- (unsigned long long)_handleKeyCommandCommon:(id)arg1 testOnly:(_Bool)arg2;
+- (unsigned long long)_handleKeyCommandCommon:(id)arg1 options:(unsigned long long)arg2;
 - (_Bool)_handleKeyCommand:(id)arg1;
+- (_Bool)_handlesKeyCommandForEvent:(id)arg1;
 - (_Bool)_isKeyCommand:(id)arg1;
 - (void)handleKeyEvent:(id)arg1;
 - (void)_handleKeyEvent:(id)arg1 executionContext:(id)arg2;
@@ -398,11 +420,11 @@
 - (void)updateKeyboardEventsLagging:(id)arg1;
 - (_Bool)_isValidKeyInput:(id)arg1;
 - (void)cancelAllKeyEvents;
-- (void)attemptAuthenticationWithEvent:(id)arg1;
-- (id)authenticationMessagesForEvent:(id)arg1;
+- (void)_attemptAuthenticationWithMessage:(id)arg1;
 - (void)dismissKeyboard;
 - (void)proceedShouldReturnIfNeededForASP;
 @property(nonatomic, getter=isInHardwareKeyboardMode) _Bool inHardwareKeyboardMode;
+- (void)setInHardwareKeyboardMode:(_Bool)arg1 forceRebuild:(_Bool)arg2;
 - (void)_showKeyboardIgnoringPolicyDelegate:(_Bool)arg1;
 - (void)showKeyboardWithoutSuppressionPolicy;
 - (void)showKeyboard;
@@ -410,8 +432,10 @@
 - (void)hideKeyboard;
 - (void)hideKeyboardWithoutPreflightChecks;
 - (void)hardwareKeyboardAvailabilityChanged;
+- (void)hardwareKeyboardAvailabilityDidChange:(id)arg1;
 - (void)detachHardwareKeyboard;
 - (void)clearDetachHardwareKeyboardAction;
+- (void)updateHardwareKeyboardLayout:(_Bool)arg1;
 - (void)updateHardwareKeyboardLayout;
 - (int)changeCount;
 - (void)updateChangeTimeAndIncrementCount;
@@ -444,6 +468,8 @@
 - (id)generateAutocorrectionReplacements:(id)arg1;
 - (void)generateCandidatesFromReplacements;
 - (id)replacementsFromSelectedText;
+- (void)_generateTextSuggestionForKeyboardCamera;
+- (_Bool)_isShowingSuggestionForKeyboardCamera;
 - (void)generateCandidatesWithOptions:(int)arg1;
 - (void)generateCandidates;
 - (_Bool)canShowAppConnections;
@@ -455,6 +481,8 @@
 - (void)animateAutocorrectionToText:(id)arg1 fromRect:(struct CGRect)arg2;
 - (_Bool)applyAutocorrection:(id)arg1;
 - (void)insertText:(id)arg1 withAlternativePredictions:(id)arg2;
+- (void)updateAutocorrectContainerWithAutocorrection:(id)arg1 parentView:(id)arg2 correctionRects:(id)arg3;
+- (void)updateLegacyAutocorrectPromptWithAutocorrection:(id)arg1 parentView:(id)arg2 correctionRects:(id)arg3;
 - (void)updateAutocorrectPrompt:(id)arg1 correctionRects:(id)arg2;
 - (id)autocorrectPromptRectsForInput:(id)arg1;
 - (void)updateAutocorrectPrompt:(id)arg1 executionContext:(id)arg2;
@@ -510,6 +538,7 @@
 - (void)removeAutocorrectPrompt;
 - (id)autocorrectPrompt;
 - (void)setAutocorrectionList:(id)arg1;
+- (id)_supplementalCandidateIcon:(id)arg1;
 - (void)setAutocorrection:(id)arg1;
 - (void)responseContextDidChange;
 - (void)layoutDidResize;
@@ -520,6 +549,7 @@
 - (_Bool)canUseCandidateBarAsSupplementToInlineView;
 - (void)updateCandidateDisplay;
 - (_Bool)needsToDeferUpdateTextCandidateView;
+- (void)assertIntermediateText:(id)arg1;
 - (void)updateCandidateDisplayAsyncWithCandidateSet:(id)arg1;
 - (void)_conditionallyNotifyPredictionsAreAvailableForCandidates:(id)arg1 containingProactiveTriggers:(_Bool)arg2;
 - (_Bool)displaysCandidates;
@@ -572,9 +602,9 @@
 - (_Bool)insertsSpaceAfterPredictiveInput;
 - (void)rejectAutocorrection:(id)arg1;
 - (void)acceptPredictiveInput:(id)arg1;
+- (void)_acceptSupplementalCandidate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)emojiCandidate:(id)arg1;
 - (void)insertTextSuggestionCandidate:(id)arg1;
-- (void)insertTextSuggestion:(id)arg1;
 - (void)removeAutocorrection;
 - (void)acceptAutocorrection;
 - (void)willReplaceTextInRangedSelectionWithKeyboardInput;
@@ -584,10 +614,7 @@
 - (void)deleteFromInput;
 - (void)completeDeleteOnceFromInputWithCharacterBefore:(unsigned int)arg1;
 - (void)scheduleReplacementsAfterDeletionToEndOfWord;
-- (void)moveSelectionToEndOfWord;
-- (void)collapseSelectionAndAdjustByOffset:(long long)arg1;
 - (void)collapseSelection;
-- (_Bool)selectionIsEndOfWord;
 - (_Bool)nextCharacterIsWordCharacter;
 - (void)deleteOnceFromInputWithExecutionContext:(id)arg1;
 - (void)updateLayoutAndSetShift;
@@ -603,8 +630,9 @@
 - (_Bool)shouldApplyAcceptedAutocorrection:(id)arg1;
 - (void)acceptAutocorrection:(id)arg1 executionContextPassingTIKeyboardCandidate:(id)arg2;
 - (void)handleEmojiInput:(id)arg1 keyboardState:(id)arg2;
+- (void)emojiSearchWillInsertEmoji:(id)arg1 forSearchQuery:(id)arg2 selectionMethod:(id)arg3 inputType:(id)arg4;
 - (void)emojiSearchWillInsertEmoji:(id)arg1 forSearchQuery:(id)arg2;
-- (void)insertEmojiFromPopover:(id)arg1;
+- (void)insertedEmojiFromPopover:(id)arg1 selectionMethod:(id)arg2;
 - (void)setDocumentStateForAutocorrection:(id)arg1;
 - (void)syncInputManagerToAcceptedAutocorrection:(id)arg1 forInput:(id)arg2;
 - (void)didAcceptAutocorrection:(id)arg1 wordTerminator:(id)arg2;
@@ -638,11 +666,8 @@
 - (void)updateKeyboardStateForDeletion;
 - (void)deleteBackwardAndNotify:(_Bool)arg1;
 - (void)moveCursorByAmount:(long long)arg1;
-- (void)insertTextAfterSelection:(id)arg1;
 - (void)updateKeyboardStateForInsertion:(id)arg1;
-- (void)insertAttributedText:(id)arg1;
-- (void)insertText:(id)arg1 updateInputSource:(_Bool)arg2;
-- (void)insertText:(id)arg1;
+- (void)setPreviousGlobeKeyEvent:(id)arg1;
 - (void)setPreviousInputString:(id)arg1;
 - (_Bool)acceptInputString:(id)arg1;
 - (void)handleStringInput:(id)arg1 withFlags:(unsigned long long)arg2 withInputManagerHint:(id)arg3 executionContext:(id)arg4;
@@ -732,18 +757,28 @@
 - (void)skipHitTestForTouchEvent:(id)arg1;
 - (void)generateReplacementsForString:(id)arg1 candidatesHandler:(CDUnknownBlockType)arg2 executionContext:(id)arg3;
 - (void)handleAcceptedCandidate:(id)arg1 executionContext:(id)arg2;
+- (void)_didReplaceText:(id)arg1 withSupplementalCandidate:(id)arg2;
+- (void)_willReplaceText:(id)arg1 withSupplementalCandidate:(id)arg2;
+- (_Bool)_insertSupplementalCandidate:(id)arg1 overridingCandidateText:(id)arg2;
+- (void)inputManagerDidGenerateAutocorrections:(id)arg1 forPredictiveInput:(id)arg2 executionContext:(id)arg3;
 - (void)inputManagerDidGenerateAutocorrections:(id)arg1 executionContext:(id)arg2;
+- (void)_insertionPointExitedRangeWithSupplementalCandidate;
 - (_Bool)shouldAcceptContinuousPathConversion:(id)arg1;
 - (void)generateAutocorrectionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)generateAutocorrectionWithExecutionContext:(id)arg1;
 - (void)inputManagerDidGenerateCandidatesForRequest:(id)arg1 resultSet:(id)arg2;
+- (void)_inputManagerDidGenerateSupplementalCandidates:(id)arg1;
+- (id)_rangeForSupplementalItemText:(id)arg1;
 - (long long)preferredCandidateViewTypeForCandidateResultSet:(id)arg1;
 - (_Bool)shouldPrioritizeTextSuggestionsOverCandidateResultSet:(id)arg1;
 - (void)cancelCandidateRequests;
 - (void)generateCandidatesAsynchronouslyWithRange:(struct _NSRange)arg1 selectedCandidate:(id)arg2;
 - (void)generateCandidatesAsynchronously;
-- (void)_performKeyboardOutput:(id)arg1 shouldCheckDelegate:(_Bool)arg2;
+- (void)performKeyboardOutput:(id)arg1 checkingDelegate:(_Bool)arg2 forwardToRemoteInputSource:(_Bool)arg3;
+- (void)performKeyboardOutput:(id)arg1 checkingDelegate:(_Bool)arg2;
+- (void)performKeyboardOutputAsRTIClient:(id)arg1;
 - (void)performKeyboardOutput:(id)arg1;
+- (void)_cancelPendingSupplementalCandidateInsertion;
 - (void)performKeyboardOutputInfo:(id)arg1;
 - (_Bool)dontPushOneTimeCode;
 - (void)_touchIDDismissed;
@@ -766,6 +801,7 @@
 - (void)selectionWillChange:(id)arg1;
 - (void)prepareForSelectionChange;
 - (void)syncDocumentStateToInputDelegateWithExecutionContext:(id)arg1;
+- (void)documentStateFromInputDelegate:(CDUnknownBlockType)arg1;
 - (void)syncDocumentStateToInputDelegate;
 - (_Bool)cursorIsAtEndOfMarkedText;
 - (id)inputStringFromPhraseBoundary;
@@ -773,19 +809,14 @@
 - (id)markedTextOverlay;
 - (void)smartSelectionForTextInDocument:(id)arg1 inRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)inputForMarkedText;
-- (id)attributedMarkedText;
-- (id)markedText;
 - (_Bool)hasEditableMarkedText;
-- (_Bool)hasMarkedText;
-- (void)unmarkText:(id)arg1;
-- (void)unmarkText;
 - (void)clearInputForMarkedText;
 - (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 inputString:(id)arg3 searchString:(id)arg4 compareAttributes:(_Bool)arg5;
 - (void)setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 inputString:(id)arg3 searchString:(id)arg4;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2 inputString:(id)arg3 searchString:(id)arg4 candidateOffset:(long long)arg5 liveConversionSegments:(id)arg6 highlighSegmentIndex:(unsigned long long)arg7;
-- (struct CGSize)stretchFactor;
 - (unsigned long long)_clipCornersOfView:(id)arg1;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
+- (void)updateInputAssistantButtonItems;
 - (void)didMoveToSuperview;
 - (void)willMoveToWindow:(id)arg1;
 - (void)_updateExternalDeviceInputSettingForWindow:(id)arg1;
@@ -805,14 +836,15 @@
 - (void)prepareForGeometryChange;
 - (void)releaseSuppressUpdateCandidateView;
 - (void)updateLayoutIfNeeded;
+- (void)handleEmojiPopoverKeyCommand;
 - (_Bool)handleReturnKey:(_Bool)arg1;
 - (_Bool)handleCandidateListNavigation:(unsigned int)arg1 hasCandidatesForTypedInput:(_Bool)arg2 shiftDown:(_Bool)arg3 keyCommandTypeHandled:(unsigned long long *)arg4 allowRepeat:(_Bool *)arg5;
 - (_Bool)handleInputManagerBasedKeybind:(id)arg1 testOnly:(_Bool)arg2;
-- (unsigned long long)handleKeyCommand:(id)arg1 repeatOkay:(_Bool *)arg2 beforePublicKeyCommands:(_Bool)arg3 testOnly:(_Bool)arg4;
+- (unsigned long long)handleKeyCommand:(id)arg1 repeatOkay:(_Bool *)arg2 options:(unsigned long long)arg3;
 - (_Bool)shouldShowKeyboardMenu;
 - (_Bool)handleKeyCommand:(id)arg1 repeatOkay:(_Bool *)arg2 beforePublicKeyCommands:(_Bool)arg3;
+- (_Bool)isCurrentEditResponderInEditingMode;
 - (_Bool)_cancelOperation:(_Bool)arg1 testOnly:(_Bool)arg2;
-- (_Bool)_emojiPopoverShortcut:(_Bool)arg1 testOnly:(_Bool)arg2;
 - (_Bool)_canHandleResponderCommandConservatively:(SEL)arg1;
 - (_Bool)_canHandleResponderCommand:(SEL)arg1;
 - (_Bool)shouldAllowRepeatEvent:(id)arg1;
@@ -823,33 +855,21 @@
 - (void)setChanged;
 - (void)textFrameChanged:(id)arg1;
 - (void)callChanged;
-- (void)callChangedSelection;
-- (_Bool)callShouldDeleteForward;
 - (_Bool)callShouldDeleteWithWordCountForRapidDelete:(int)arg1 characterCountForRapidDelete:(int)arg2;
 - (_Bool)shouldRapidDeleteWithDelegate;
 - (_Bool)shouldRapidDelete;
 - (_Bool)usesAutoDeleteWord;
 - (_Bool)insertTextIfShould:(id)arg1;
-- (_Bool)callShouldReplaceExtendedRange:(long long)arg1 withText:(id)arg2 includeMarkedText:(_Bool)arg3;
 - (_Bool)callShouldInsertText:(id)arg1;
-- (void)_keyboardOutputToRTISourceSession:(CDUnknownBlockType)arg1;
-- (void)inputSession:(id)arg1 documentStateDidChange:(id)arg2;
-- (void)inputSession:(id)arg1 documentTraitsDidChange:(id)arg2;
 - (void)didClearText;
-- (void)applyRemoteDocumentStateIfNecessary:(id)arg1 force:(_Bool)arg2;
-- (void)applyRemoteDocumentTraitsIfNecessary:(id)arg1 force:(_Bool)arg2;
-- (void)_updateRTIStateIfNecessary;
-- (void)_updateRTITraitsIfNecessary;
-- (void)_updateRTIObjectsIfNecessary;
-- (void)_performTextOperationActionSelector:(SEL)arg1;
-- (void)_performKeyboardOutputOperations:(id)arg1;
-- (void)_queued_performTextOperations:(id)arg1;
-- (void)performTextOperations:(id)arg1;
+- (void)setDocumentState:(id)arg1;
+- (void)performTextOperationActionSelector:(SEL)arg1;
 - (id)physicalKeyboardEventWithInput:(id)arg1 inputFlags:(int)arg2;
 - (void)_completePerformInputViewControllerOutput:(id)arg1 executionContext:(id)arg2;
 - (void)_processInputViewControllerKeyboardOutput:(id)arg1 executionContext:(id)arg2;
 - (void)_updateInputViewControllerOutput:(id)arg1 forKeyboardOutput:(id)arg2;
 - (_Bool)_shouldRequestInputManagerSyncForKeyboardOutputCallbacks:(id)arg1;
+- (void)performKeyboardOutputAsInputViewControllerOutput:(id)arg1 textInputSource:(long long)arg2;
 - (void)performKeyboardOutputAsInputViewControllerOutput:(id)arg1;
 - (void)clearCapsLockDelayOverrideTimer;
 - (void)removeCapsLockDelayOverride;
@@ -868,13 +888,13 @@
 - (void)setOverrideTextInputTraits:(id)arg1;
 - (void)setDefaultTextInputTraits:(id)arg1;
 - (void)textDidChange:(id)arg1;
+- (void)textSuggestionDidChange:(id)arg1;
 - (void)finishTextChanged;
 - (void)textChanged:(id)arg1 executionContext:(id)arg2;
 - (void)textChanged:(id)arg1;
 - (void)layoutHasChanged;
 - (void)textWillChange:(id)arg1;
 - (_Bool)hasDelegate;
-- (void)storeDelegateConformance;
 - (_Bool)autocorrectSpellingEnabled;
 - (void)setAutocorrectSpellingEnabled:(_Bool)arg1;
 - (_Bool)delegateSupportsCorrectionUI;
@@ -885,25 +905,18 @@
 - (_Bool)delegateIsSMSTextView;
 - (void)didSetDelegate;
 - (void)setDelegate:(id)arg1 force:(_Bool)arg2;
-@property(retain, nonatomic) UIResponder<UIKeyInput> *delegate;
+@property(retain, nonatomic) UIResponder<UIKeyInput> *delegate; // @dynamic delegate;
+- (id)inputDelegate;
+- (id)delegateAsResponder;
 - (void)postInputResponderCapabilitiesChangedNotification;
 - (void)_postInputResponderCapabilitiesChangedNotificationWithOutput:(id)arg1 selectionChanged:(_Bool)arg2;
 - (void)_postInputResponderChangedNotification;
-- (void)_updateSelectableInputDelegateIfNecessary;
-- (void)_windowDidBecomeKey:(id)arg1;
-- (void)_firstResponderDidChange:(id)arg1;
 - (id)documentIdentifierForInputDelegate:(id)arg1;
 - (_Bool)_delegateRequiresKeyEvents;
-@property(readonly, nonatomic) UIResponder *delegateAsResponder;
-@property(readonly, nonatomic) UIResponder<UIKeyInputPrivate> *privateKeyInputDelegate;
-@property(readonly, nonatomic) UIResponder<UIWKInteractionViewProtocol> *asynchronousInputDelegate;
-@property(readonly, nonatomic) UIResponder<UITextInput> *selectableInputDelegate;
-@property(readonly, nonatomic) UIResponder<UITextInput> *inputDelegate;
-@property(readonly, nonatomic) UIResponder<UITextInputPrivate> *privateInputDelegate;
-@property(readonly, nonatomic) id <UIKeyboardInput> legacyInputDelegate;
-- (id)_delegateRespectingForwardingDelegate:(_Bool)arg1;
 - (void)setTextSelectionControllerFromDelegate;
 - (id)textSelectionControllerForInputDelegate:(id)arg1;
+- (void)removeSupplementalLexicon:(id)arg1;
+- (void)addSupplementalLexicon:(id)arg1;
 - (void)setLayoutRenderConfig:(id)arg1;
 - (void)takeTextInputTraitsFromDelegate;
 - (void)setCorrectionLearningAllowed:(_Bool)arg1;
@@ -936,12 +949,12 @@
 - (void)presentKeyboardPopoverWithInputMode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cleanupKeyboardPopover;
 - (void)presentEmojiPopoverViaTrigger:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)canPresentOrDismissEmojiPopover;
 - (_Bool)canPresentEmojiPopover;
-- (_Bool)_isKeyboardPopoverVisibleOrDismissing;
+- (_Bool)isKeyboardPopoverVisibleOrDismissing;
 - (_Bool)isKeyboardPopoverPresented;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (_Bool)presentationControllerShouldDismiss:(id)arg1;
-- (_Bool)inputModeHasHardwareLayout:(id)arg1;
 - (void)reinitializeAfterInputModeSwitch:(_Bool)arg1;
 - (void)updateForHandBiasChange;
 - (void)updateSmartPunctuationOptionsForLocaleIdentifier:(id)arg1;
@@ -964,7 +977,7 @@
 - (id)inputModePreference;
 - (void)saveInputModesPreference:(id)arg1;
 - (void)setAutomaticMinimizationEnabled:(_Bool)arg1;
-- (_Bool)automaticMinimizationEnabled;
+@property(readonly, nonatomic) _Bool automaticMinimizationEnabled; // @synthesize automaticMinimizationEnabled=m_automaticMinimizationEnabled;
 - (_Bool)keyboardsExpandedPreference;
 - (id)UILanguagePreference;
 - (_Bool)doubleSpacePeriodPreference;
@@ -980,9 +993,10 @@
 - (_Bool)isPredictionViewControllerVisible;
 @property(readonly, nonatomic) _Bool canShowPredictionBar;
 - (_Bool)_shouldLoadPredictionsBasedOnCurrentTraits;
-- (_Bool)_updateAutocorrectionPreferenceForTraitsWithCurrentPreference:(_Bool)arg1;
-- (_Bool)autocorrectionPreferenceForTraits;
-- (void)_updateTextInputKeyboardSourceForDelegate:(id)arg1;
+- (unsigned long long)_updateAutocorrectionPreferenceForTraitsWithCurrentPreference:(_Bool)arg1;
+- (unsigned long long)autocorrectionPreferenceForTraits;
+- (void)updateTextInputKeyboardSource;
+- (void)_updateTextInputPencilSource;
 - (void)performOperations:(CDUnknownBlockType)arg1 withTextInputSource:(long long)arg2;
 - (void)performDelete;
 - (void)performReturn;
@@ -1013,6 +1027,7 @@
 - (void)deactivateLayout;
 - (void)clearLayouts;
 @property(retain, nonatomic) TIKeyboardLayout *layoutForKeyHitTest;
+- (void)provideAutoFillTypingUpdatesIfNecessary;
 - (_Bool)suppressOptOutASPCandidateUpdateForDelegate:(id)arg1;
 - (void)trackResponderForAutofillIfNeeded:(id)arg1;
 - (void)handleAutofillCredentialSaveIfNeeded:(id)arg1;
@@ -1033,9 +1048,10 @@
 - (_Bool)needOneTimeCodeAutofill;
 - (_Bool)textInputTraitsNeedContactAutoFill;
 - (_Bool)textInputTraitsNeedOneTimeCode;
-- (_Bool)needAutofillLogin;
+@property(readonly, nonatomic) _Bool needAutofillLogin;
 - (_Bool)textInputTraitsNeedAutofill;
 - (_Bool)textInputTraitsNeedAutofillExcludeOneTimeCodeAndContact;
+- (void)refreshKeyboardStateUpdatingSecureCandidateRenderTraits:(_Bool)arg1;
 - (void)refreshKeyboardState;
 - (void)updateInputManagerMode;
 - (_Bool)shouldSwitchFromInputManagerMode:(id)arg1 toInputMode:(id)arg2;
@@ -1052,6 +1068,9 @@
 - (void)setCapsLockSign;
 @property(nonatomic) _Bool hardwareKeyboardIsSeen;
 - (void)didMoveToWindow;
+- (struct UIEdgeInsets)deviceSpecificPaddingForInterfaceOrientation:(long long)arg1 inputMode:(id)arg2;
+- (struct UIEdgeInsets)deviceSpecificStaticHitBufferForInterfaceOrientation:(long long)arg1 inputMode:(id)arg2;
+- (struct CGSize)defaultSizeForInterfaceOrientation:(long long)arg1;
 - (void)_setCandidateController:(id)arg1;
 - (_Bool)_containsUsernamePasswordPairsInAutofillGroup:(id)arg1;
 - (id)_fallbackAutofillGroup;
@@ -1061,7 +1080,6 @@
 - (long long)_needAutofillCandidate:(id)arg1;
 - (void)logHandwritingData;
 - (_Bool)isAutoDeleteActive;
-- (void)testAutocorrectionPromptWithCorrection:(id)arg1;
 - (int)textInputChangingCount;
 - (_Bool)_isShowingCandidateUIWithAvailableCandidates;
 - (void)updateFromTextInputTraits;
@@ -1074,23 +1092,20 @@
 - (void)dismissContinuousPathIntroductionView;
 - (void)presentContinuousPathIntroductionView;
 - (_Bool)shouldShowContinuousPathIntroductionView;
+- (void)performKeyboardOutputOnInputSourceSession:(CDUnknownBlockType)arg1;
+- (_Bool)isRTIClient;
 - (_Bool)callShouldInsertText:(id)arg1 onDelegate:(id)arg2;
 - (void)clearTextAlternativesRange;
 - (void)showFirstTextAlternativeWithRangeAdjustment:(long long)arg1;
 - (void)showTextAlternativesInRange:(struct _NSRange)arg1;
 - (id)attributedText;
 - (double)lastTouchDownTimestamp;
-- (_Bool)isRTIClient;
 - (void)lookUpResponderChainForCustomInputView;
 - (void)moveCursorRightShifted:(_Bool)arg1;
 - (void)moveCursorLeftShifted:(_Bool)arg1;
 - (_Bool)isShiftKeyBeingHeld;
 - (_Bool)hardwareKeyboardAttached;
-- (void)endAllowingRemoteTextInput:(id)arg1;
-- (void)beginAllowingRemoteTextInput:(id)arg1;
-- (void)_ensureRTIConnection;
-- (void)_createRTIClientIfNecessary;
-- (void)_updateRTIAllowedAndNotify:(_Bool)arg1 withReason:(id)arg2;
+- (void)performBlockWithTextInputChangesIgnoredForNonMacOS:(CDUnknownBlockType)arg1;
 - (void)_deactiveActiveKeys;
 - (void)_showAutofillExtras;
 - (_Bool)shouldLoadAutofillSignUpInputViewController;
@@ -1135,6 +1150,8 @@
 - (struct CGRect)globalFrameForCurrentKey;
 - (id)currentKey;
 - (id)implProxy;
+- (_Bool)isOutOfProcess;
+@property(nonatomic) unsigned long long serviceRole;
 - (_Bool)_needsCandidates;
 - (void)_setNeedsCandidates:(_Bool)arg1;
 - (long long)_positionInCandidateList:(id)arg1;

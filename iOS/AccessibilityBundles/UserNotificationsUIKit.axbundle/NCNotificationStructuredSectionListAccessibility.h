@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)mergeNotificationGroups:(id)arg1;
-- (id)notificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1 filterPersistentRequests:(_Bool)arg2;
+- (void)mergeNotificationGroups:(id)arg1 reorderGroupNotifications:(_Bool)arg2;
+- (id)removeNotificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1 filterRequestsPassingTest:(CDUnknownBlockType)arg2 animate:(_Bool)arg3;
 - (void)_toggleHiddenNotificationsOnAuthenticationChange:(_Bool)arg1;
 - (id)axStringForRequest:(id)arg1 label:(id)arg2;
 - (void)insertNotificationRequest:(id)arg1;

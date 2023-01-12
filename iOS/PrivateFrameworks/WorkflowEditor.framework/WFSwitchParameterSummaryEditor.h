@@ -8,7 +8,7 @@
 {
 }
 
-- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 presentationAnchor:(id)arg2;
 
 @end
 

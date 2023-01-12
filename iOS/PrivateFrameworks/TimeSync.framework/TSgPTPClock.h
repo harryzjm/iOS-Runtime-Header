@@ -58,7 +58,16 @@
 - (unsigned long long)_grandmasterIdentity;
 - (void)_handleNotification:(unsigned int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
 - (void)_handleInterestNotification:(unsigned int)arg1 withArgument:(void *)arg2;
-- (_Bool)getRateRatioNumerator:(unsigned long long *)arg1 denominator:(unsigned long long *)arg2 machAnchor:(unsigned long long *)arg3 andDomainAnchor:(unsigned long long *)arg4 forGrandmasterIdentity:(unsigned long long *)arg5 portNumber:(unsigned short *)arg6 withError:(id *)arg7;
+- (_Bool)getTimeSyncTimeRateRatioNumerator:(unsigned long long *)arg1 denominator:(unsigned long long *)arg2 timeSyncAnchor:(unsigned long long *)arg3 andDomainAnchor:(unsigned long long *)arg4 forGrandmasterIdentity:(unsigned long long *)arg5 portNumber:(unsigned short *)arg6 withError:(id *)arg7;
+- (unsigned long long)convertFromDomainTimeToTimeSyncTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2 portNumber:(unsigned short *)arg3;
+- (unsigned long long)convertFromTimeSyncTimeToDomainTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2 portNumber:(unsigned short *)arg3;
+- (unsigned long long)convertFrom128BitgPTPTimeToTimeSyncTime:(CDStruct_4bcfbbae)arg1 grandmasterUsed:(unsigned long long *)arg2 portNumber:(unsigned short *)arg3;
+- (CDStruct_4bcfbbae)convertFromTimeSyncTimeTo128BitgPTPTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2 portNumber:(unsigned short *)arg3;
+- (unsigned long long)timeSyncTimeFromgPTPTime:(id)arg1;
+- (id)gPTPTimeFromTimeSyncTime:(unsigned long long)arg1;
+- (_Bool)convertFrom32BitASTime:(unsigned int *)arg1 toTimeSyncTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
+- (unsigned long long)convertFrom32BitASToTimeSyncTime:(unsigned int)arg1;
+- (_Bool)getMachAbsoluteRateRatioNumerator:(unsigned long long *)arg1 denominator:(unsigned long long *)arg2 machAnchor:(unsigned long long *)arg3 andDomainAnchor:(unsigned long long *)arg4 forGrandmasterIdentity:(unsigned long long *)arg5 portNumber:(unsigned short *)arg6 withError:(id *)arg7;
 - (unsigned long long)convertFromDomainToMachAbsoluteTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2 portNumber:(unsigned short *)arg3;
 - (unsigned long long)convertFromMachAbsoluteToDomainTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2 portNumber:(unsigned short *)arg3;
 - (unsigned long long)convertFromMachAbsoluteToDomainTime:(unsigned long long)arg1 grandmasterUsed:(unsigned long long *)arg2;

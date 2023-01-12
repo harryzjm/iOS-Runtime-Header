@@ -7,49 +7,50 @@
 #import <objc/NSObject.h>
 
 @class NSArray, TSCHLegendCellMetrics, TSCHLegendViewCache, TSDShadow, TSDStroke, TSWPParagraphStyle;
+@protocol TSWPStyleProviding;
 
 @interface TSCHLegendModelCache : NSObject
 {
-    TSCHLegendCellMetrics *mMetrics;
-    _Bool mLegendOn;
-    NSArray *mCells;
-    unsigned long long mCellCount;
-    TSWPParagraphStyle *mParagraphStyle;
-    TSDStroke *mStroke;
-    TSDShadow *mShadow;
-    id mFill;
-    double mOpacity;
-    double mHorizontalCellSpacing;
-    double mVerticalCellSpacing;
-    struct CGSize mLargestCellSize;
-    double mEffectiveStrokeWidth;
-    _Bool mReverseSingleColumnLegendOrder;
-    double mLastLegendWidth;
-    TSCHLegendViewCache *mLastLegendViewCache;
-    _Bool mLegendIsRTL;
-    double mSymbolGap;
+    id <TSWPStyleProviding> _styleProvidingSource;
+    TSCHLegendCellMetrics *_metrics;
+    _Bool _legendOn;
+    NSArray *_cells;
+    unsigned long long _cellCount;
+    TSWPParagraphStyle *_paragraphStyle;
+    TSDStroke *_stroke;
+    TSDShadow *_shadow;
+    id _fill;
+    double _opacity;
+    double _horizontalCellSpacing;
+    double _verticalCellSpacing;
+    struct CGSize _largestCellSize;
+    double _effectiveStrokeWidth;
+    _Bool _reverseSingleColumnLegendOrder;
+    double _lastLegendWidth;
+    TSCHLegendViewCache *_lastLegendViewCache;
+    _Bool _legendIsRTL;
+    double _symbolGap;
 }
 
 - (void).cxx_destruct;
-@property(readonly) _Bool legendIsRTL; // @synthesize legendIsRTL=mLegendIsRTL;
-@property(readonly) _Bool reverseSingleColumnLegendOrder; // @synthesize reverseSingleColumnLegendOrder=mReverseSingleColumnLegendOrder;
-@property(readonly) double effectiveStrokeWidth; // @synthesize effectiveStrokeWidth=mEffectiveStrokeWidth;
-@property(readonly) struct CGSize largestCellSize; // @synthesize largestCellSize=mLargestCellSize;
-@property(readonly) double symbolGap; // @synthesize symbolGap=mSymbolGap;
-@property(readonly) double verticalCellSpacing; // @synthesize verticalCellSpacing=mVerticalCellSpacing;
-@property(readonly) double horizontalCellSpacing; // @synthesize horizontalCellSpacing=mHorizontalCellSpacing;
-@property(readonly) double opacity; // @synthesize opacity=mOpacity;
-@property(readonly) id fill; // @synthesize fill=mFill;
-@property(readonly) TSDStroke *stroke; // @synthesize stroke=mStroke;
-@property(readonly) TSDShadow *shadow; // @synthesize shadow=mShadow;
-@property(readonly) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=mParagraphStyle;
-@property(readonly) NSArray *cells; // @synthesize cells=mCells;
-@property(readonly) unsigned long long cellCount; // @synthesize cellCount=mCellCount;
-@property(readonly) _Bool legendOn; // @synthesize legendOn=mLegendOn;
+@property(readonly) _Bool legendIsRTL; // @synthesize legendIsRTL=_legendIsRTL;
+@property(readonly) _Bool reverseSingleColumnLegendOrder; // @synthesize reverseSingleColumnLegendOrder=_reverseSingleColumnLegendOrder;
+@property(readonly) double effectiveStrokeWidth; // @synthesize effectiveStrokeWidth=_effectiveStrokeWidth;
+@property(readonly) struct CGSize largestCellSize; // @synthesize largestCellSize=_largestCellSize;
+@property(readonly) double symbolGap; // @synthesize symbolGap=_symbolGap;
+@property(readonly) double verticalCellSpacing; // @synthesize verticalCellSpacing=_verticalCellSpacing;
+@property(readonly) double horizontalCellSpacing; // @synthesize horizontalCellSpacing=_horizontalCellSpacing;
+@property(readonly) double opacity; // @synthesize opacity=_opacity;
+@property(readonly) id fill; // @synthesize fill=_fill;
+@property(readonly) TSDStroke *stroke; // @synthesize stroke=_stroke;
+@property(readonly) TSDShadow *shadow; // @synthesize shadow=_shadow;
+@property(readonly) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=_paragraphStyle;
+@property(readonly) NSArray *cells; // @synthesize cells=_cells;
+@property(readonly) unsigned long long cellCount; // @synthesize cellCount=_cellCount;
+@property(readonly) _Bool legendOn; // @synthesize legendOn=_legendOn;
 - (id)viewCacheForWidth:(double)arg1;
 - (id)cellForSeriesIndex:(unsigned long long)arg1 cellType:(int)arg2;
-- (void)dealloc;
-- (id)initWithChartModel:(id)arg1 textEditingSelectionPair:(id)arg2;
+- (id)initWithChartModel:(id)arg1 textEditingSelectionPair:(id)arg2 styleProvidingSource:(id)arg3;
 
 @end
 

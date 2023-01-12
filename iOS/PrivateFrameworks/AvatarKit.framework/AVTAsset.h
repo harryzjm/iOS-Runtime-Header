@@ -17,7 +17,8 @@
     NSDictionary *_morphVariantDependencies;
     NSDictionary *_imageVariantDependencies;
     NSDictionary *_materialVariantDependencies;
-    NSString *_ao;
+    unsigned long long _editableColorCount;
+    NSString *_ambientOcclusion;
     NSDictionary *_highlights;
     unsigned long long _refCount;
     id _cachedResource;
@@ -29,7 +30,8 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSString *ao; // @synthesize ao=_ao;
+@property(readonly) NSString *ambientOcclusion; // @synthesize ambientOcclusion=_ambientOcclusion;
+@property(readonly) unsigned long long editableColorCount; // @synthesize editableColorCount=_editableColorCount;
 @property(readonly) CDStruct_10883d13 uvRemappingInfo; // @synthesize uvRemappingInfo=_uvRemappingInfo;
 @property(readonly) NSDictionary *layers; // @synthesize layers=_layers;
 @property(readonly) NSDictionary *specializationSettings; // @synthesize specializationSettings=_specializationSettings;

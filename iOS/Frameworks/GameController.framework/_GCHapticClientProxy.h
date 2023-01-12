@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithConnection:(id)arg1 server:(id)arg2 clientID:(unsigned long long)arg3;
 - (id)addInvalidationHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isInvalid) _Bool invalid;
+- (void)debugEngineIsRunning:(CDUnknownBlockType)arg1;
 - (void)debugExpectNotifyOnFinishAfter:(double)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)stopRunning:(CDUnknownBlockType)arg1;
 - (void)stopRunning;

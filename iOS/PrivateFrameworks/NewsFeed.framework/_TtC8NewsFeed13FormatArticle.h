@@ -11,7 +11,9 @@
 @interface _TtC8NewsFeed13FormatArticle : _TtCs12_SwiftObject
 {
     MISSING_TYPE *identifier;
-    MISSING_TYPE *overrides;
+    MISSING_TYPE *_overrides;
+    MISSING_TYPE *_selectors;
+    MISSING_TYPE *_properties;
     MISSING_TYPE *alternate;
 }
 

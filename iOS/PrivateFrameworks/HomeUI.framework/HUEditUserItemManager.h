@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUUserItemManager-Protocol.h>
 
-@class HFItem, HFUserItem, HMHome, HMUser, HUAccessorySettingsItemModule, NSArray, NSString;
+@class HFItem, HFUserItem, HMHome, HMUser, HUAccessorySettingsItemModule, HULocationDeviceManager, NSArray, NSString;
 
 @interface HUEditUserItemManager : HFItemManager <HUUserItemManager>
 {
@@ -16,6 +16,7 @@
     HFItem *_remoteAccessItem;
     HFItem *_allowEditingItem;
     HFItem *_camerasItem;
+    HFItem *_locksItem;
     HFItem *_pendingAccessoriesItem;
     HFItem *_personalRequestsItem;
     HFItem *_personalRequestsFooterItem;
@@ -26,9 +27,11 @@
     HFItem *_removeItem;
     NSArray *_sectionOrderArrayWhenViewingSelf;
     NSArray *_sectionOrderArrayWhenViewingOther;
+    HULocationDeviceManager *_locationDeviceManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
 @property(retain, nonatomic) NSArray *sectionOrderArrayWhenViewingOther; // @synthesize sectionOrderArrayWhenViewingOther=_sectionOrderArrayWhenViewingOther;
 @property(retain, nonatomic) NSArray *sectionOrderArrayWhenViewingSelf; // @synthesize sectionOrderArrayWhenViewingSelf=_sectionOrderArrayWhenViewingSelf;
 @property(retain, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
@@ -39,11 +42,12 @@
 @property(readonly, nonatomic) HFItem *personalRequestsFooterItem; // @synthesize personalRequestsFooterItem=_personalRequestsFooterItem;
 @property(retain, nonatomic) HFItem *personalRequestsItem; // @synthesize personalRequestsItem=_personalRequestsItem;
 @property(retain, nonatomic) HFItem *pendingAccessoriesItem; // @synthesize pendingAccessoriesItem=_pendingAccessoriesItem;
+@property(retain, nonatomic) HFItem *locksItem; // @synthesize locksItem=_locksItem;
 @property(retain, nonatomic) HFItem *camerasItem; // @synthesize camerasItem=_camerasItem;
 @property(retain, nonatomic) HFItem *allowEditingItem; // @synthesize allowEditingItem=_allowEditingItem;
 @property(retain, nonatomic) HFItem *remoteAccessItem; // @synthesize remoteAccessItem=_remoteAccessItem;
 @property(retain, nonatomic) HFItem *localAccessItem; // @synthesize localAccessItem=_localAccessItem;
-- (id)_siriSectionFooter;
+- (void)_updateSiriSectionFooterForSection:(id)arg1;
 - (_Bool)_isVoiceIDEnabled:(id)arg1;
 - (_Bool)_isTVViewingProfilesEnabledForUser;
 - (_Bool)_isPersonalRequestsEnabledForUser;
@@ -53,7 +57,6 @@
 - (_Bool)_hasPersonalRequestsDevice;
 - (_Bool)_hasResidentDevice;
 - (_Bool)_isUserBeingEditedTheDeviceUser;
-- (_Bool)_isUserAdmin:(id)arg1;
 - (_Bool)_isUserOwner:(id)arg1;
 - (_Bool)_isEditingAllowedForUser:(id)arg1;
 - (_Bool)_isRemoteAccessAllowedForUser:(id)arg1;

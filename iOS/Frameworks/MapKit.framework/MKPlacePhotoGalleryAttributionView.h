@@ -6,15 +6,20 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UIImageView, UILabel, UIVisualEffectView;
+#import <MapKit/MKActivityObserving-Protocol.h>
+
+@class MKPlacePhotoGalleryAttributionViewModel, NSArray, NSString, UIButton, UILabel, UIVisualEffectView;
+@protocol MUPlacePhotoGalleryAttributionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlacePhotoGalleryAttributionView : UIView
+@interface MKPlacePhotoGalleryAttributionView : UIView <MKActivityObserving>
 {
+    id <MUPlacePhotoGalleryAttributionViewDelegate> _delegate;
+    MKPlacePhotoGalleryAttributionViewModel *_viewModel;
     UIVisualEffectView *_effectView;
     UILabel *_primaryLabel;
     UILabel *_secondaryLabel;
-    UIImageView *_attributionLogoImageView;
+    UIButton *_accessoryButton;
     NSArray *_regularConstraints;
     NSArray *_primaryLabelOnlyConstraints;
 }
@@ -22,18 +27,31 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *primaryLabelOnlyConstraints; // @synthesize primaryLabelOnlyConstraints=_primaryLabelOnlyConstraints;
 @property(retain, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
-@property(retain, nonatomic) UIImageView *attributionLogoImageView; // @synthesize attributionLogoImageView=_attributionLogoImageView;
+@property(retain, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
 @property(retain, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property(retain, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
+@property(retain, nonatomic) MKPlacePhotoGalleryAttributionViewModel *viewModel; // @synthesize viewModel=_viewModel;
+@property(nonatomic) __weak id <MUPlacePhotoGalleryAttributionViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) UIView *accessoryView;
+- (void)endAnimatingActivityIndicatorWithError:(id)arg1;
+- (void)beginAnimatingActivityIndicator;
+- (void)_accessoryViewTapped;
 - (void)setAttributionLogoImage:(id)arg1;
-- (void)setDescription:(id)arg1 license:(id)arg2 author:(id)arg3;
+- (void)_updateAppearance;
+- (void)setDescription:(id)arg1 license:(id)arg2;
 - (void)updateFonts;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)updateStyle:(long long)arg1;
 - (long long)blurEffectWithStyle:(long long)arg1;
 - (void)setupSubviews;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

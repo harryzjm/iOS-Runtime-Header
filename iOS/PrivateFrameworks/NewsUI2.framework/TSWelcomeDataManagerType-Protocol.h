@@ -7,6 +7,7 @@
 @protocol TSWelcomeDataManagerTypeDelegate;
 
 @protocol TSWelcomeDataManagerType
+- (void)completeOnboarding;
 - (void)suspendLoadingFeed;
 - (void)beginLoadingFeed;
 - (void)beginFetchingUserType;

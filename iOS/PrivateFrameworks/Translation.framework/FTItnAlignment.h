@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_ee509c7b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_ee509c7b)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int last_post_itn_char_pos;
 @property(readonly, nonatomic) int first_post_itn_char_pos;
 @property(readonly, nonatomic) int last_pre_itn_token_index;

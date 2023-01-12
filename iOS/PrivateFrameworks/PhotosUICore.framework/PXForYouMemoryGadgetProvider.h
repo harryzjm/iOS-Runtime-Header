@@ -7,20 +7,21 @@
 #import <PhotosUICore/PXForYouRankable-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 
-@class NSDate, NSString, PXMemoriesFeedWidgetDataSourceManager;
+@class NSDate, NSString;
+@protocol PXMemoryForYouDataSourceManager;
 
 @interface PXForYouMemoryGadgetProvider <PXSectionedDataSourceManagerObserver, PXForYouRankable>
 {
-    _Bool _hasGeneratedGadgets;
-    PXMemoriesFeedWidgetDataSourceManager *_dataSourceManager;
+    _Bool _wantsGadgets;
+    id <PXMemoryForYouDataSourceManager> _dataSourceManager;
     NSDate *_cachedPriorityDate;
 }
 
 + (unsigned long long)maxMemoriesToFetch;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *cachedPriorityDate; // @synthesize cachedPriorityDate=_cachedPriorityDate;
-@property(nonatomic) _Bool hasGeneratedGadgets; // @synthesize hasGeneratedGadgets=_hasGeneratedGadgets;
-@property(retain, nonatomic) PXMemoriesFeedWidgetDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
+@property(nonatomic) _Bool wantsGadgets; // @synthesize wantsGadgets=_wantsGadgets;
+@property(readonly, nonatomic) id <PXMemoryForYouDataSourceManager> dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 - (void)resetPriorityDate;
 @property(readonly, nonatomic) unsigned long long gadgetType;
 @property(readonly, nonatomic) long long defaultPriority;
@@ -31,6 +32,8 @@
 - (void)loadDataForGadgets;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (_Bool)supportsDynamicRanking;
+- (void)_updateWantsGadget;
+- (void)_invalidateWantsGadget;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

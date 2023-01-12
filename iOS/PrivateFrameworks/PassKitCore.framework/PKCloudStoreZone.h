@@ -21,6 +21,7 @@
     NSSet *_shareParticipants;
 }
 
++ (void)zoneValueForZoneName:(id)arg1 outZoneType:(unsigned long long *)arg2 outAccountIdentifier:(id *)arg3 altDSID:(id *)arg4;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *shareParticipants; // @synthesize shareParticipants=_shareParticipants;
@@ -38,6 +39,7 @@
 - (id)recordZone;
 - (id)shareParticipantWithLookupInfo:(id)arg1;
 - (id)shareParticipantWithHandle:(id)arg1;
+- (unsigned long long)zoneType;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithZoneID:(id)arg1 containerName:(id)arg2 scope:(long long)arg3;
 - (id)initWithZoneID:(id)arg1 containerDatabase:(id)arg2;

@@ -28,6 +28,7 @@
 @property(nonatomic) int lineCap; // @synthesize lineCap=_lineCap;
 @property(nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
 @property(copy, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
+- (void)applyToContext:(struct CGContext *)arg1 dashPhase:(double)arg2;
 - (void)applyToContext:(struct CGContext *)arg1;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;

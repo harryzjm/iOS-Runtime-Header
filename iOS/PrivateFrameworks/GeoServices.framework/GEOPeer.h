@@ -22,9 +22,11 @@
     NSMutableDictionary *_entitlementValueCache;
     id <NSObject> _peerTransaction;
     id <NSObject> _preloadingTransaction;
+    unsigned long long _handleRequestSignpost;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long handleRequestSignpost; // @synthesize handleRequestSignpost=_handleRequestSignpost;
 @property(retain, nonatomic) NSMutableDictionary *entitlementCache; // @synthesize entitlementCache=_entitlementCache;
 @property(readonly, nonatomic) GEOProxyClient *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;

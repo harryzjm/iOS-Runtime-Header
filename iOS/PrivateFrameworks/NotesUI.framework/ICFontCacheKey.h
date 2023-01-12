@@ -10,6 +10,7 @@
 
 @class NSString, UIFontDescriptor;
 
+__attribute__((visibility("hidden")))
 @interface ICFontCacheKey : NSObject <NSCopying>
 {
     int _traits;

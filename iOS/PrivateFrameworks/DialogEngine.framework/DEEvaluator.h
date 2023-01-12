@@ -12,6 +12,7 @@
 {
     NSString *_templateDir;
     NSString *_locale;
+    id _globalParameters;
     NSString *_typeName;
     NSString *_propName;
     id _parameters;
@@ -21,6 +22,7 @@
 @property(retain, nonatomic) id parameters; // @synthesize parameters=_parameters;
 @property(retain, nonatomic) NSString *propName; // @synthesize propName=_propName;
 @property(retain, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
+@property(retain, nonatomic) id globalParameters; // @synthesize globalParameters=_globalParameters;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSString *templateDir; // @synthesize templateDir=_templateDir;
 - (id)evaluate;

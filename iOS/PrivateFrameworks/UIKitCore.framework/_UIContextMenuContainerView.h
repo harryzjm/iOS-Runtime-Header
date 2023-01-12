@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)isTransparentFocusItem;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, SISchemaVoiceTriggerMetrics;
 
-@interface SISchemaAggregatedMetrics : PBCodable
+@interface SISchemaAggregatedMetrics
 {
     SISchemaVoiceTriggerMetrics *_voiceTrigger;
     _Bool _hasVoiceTrigger;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_48f69b49)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_48f69b49)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTAudioLimitExceeded *contentAsFTAudioLimitExceeded;
 @property(readonly, nonatomic) FTClientSetupInfo *contentAsFTClientSetupInfo;
 @property(readonly, nonatomic) FTServerEndpointFeatures *contentAsFTServerEndpointFeatures;

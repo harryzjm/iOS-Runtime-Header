@@ -10,7 +10,10 @@
 {
 }
 
-+ (id)eventControllerFromResult:(id)arg1;
++ (void)fetchCalendarColorWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)calendarColorWithIdentifier:(id)arg1;
++ (id)eventControllerWithIdentifier:(id)arg1;
++ (id)calendarItemFromEventIdentifierComponents:(id)arg1;
 + (id)sharedCalendarStore;
 
 @end

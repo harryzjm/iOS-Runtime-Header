@@ -12,6 +12,7 @@
 @interface MFMessageComposeViewController : UINavigationController
 {
     id _internal;
+    _Bool _shouldHideClearPluginButton;
     id <MFMessageComposeViewControllerDelegate> _messageComposeDelegate;
     NSArray *_recipients;
     NSString *_body;
@@ -50,6 +51,7 @@
 + (void)_setupAccountMonitor;
 + (id)log;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldHideClearPluginButton; // @synthesize shouldHideClearPluginButton=_shouldHideClearPluginButton;
 @property(readonly, copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 - (void)setShareSheetSessionID:(id)arg1;
 - (id)shareSheetSessionID;
@@ -72,6 +74,8 @@
 @property(copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property(copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(nonatomic) __weak id <MFMessageComposeViewControllerDelegate> messageComposeDelegate; // @synthesize messageComposeDelegate=_messageComposeDelegate;
+- (void)_setShouldIgnoreEmailsWhenSending:(_Bool)arg1;
+- (void)_setNavBarTitle:(id)arg1;
 - (void)_setShouldDisableEntryField:(_Bool)arg1;
 - (void)_setCanEditRecipients:(_Bool)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -14,10 +14,7 @@
 }
 
 + (id)newURLFromURLReference:(id)arg1;
-+ (id)defaultMailURL;
 + (id)defaultFileURL;
-+ (id)defaultWebURL;
-+ (id)defaultURLFromDefaultsKey:(id)arg1 defaultValue:(id)arg2;
 + (_Bool)schemeIsValidForURLReference:(id)arg1;
 + (_Bool)schemeIsValidForURL:(id)arg1;
 + (id)invalidURLSchemes;
@@ -31,11 +28,11 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct HyperlinkFieldArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)saveToHyperlinkArchive:(id)arg1;
 - (void)saveToUnsupportedHyperlinkArchive:(id)arg1;
-- (void)saveToArchive:(struct HyperlinkFieldArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 @property(readonly, nonatomic) NSString *fullPath;
 @property(readonly, nonatomic) NSString *filePath;
 @property(readonly, nonatomic) _Bool hasDisplayText;

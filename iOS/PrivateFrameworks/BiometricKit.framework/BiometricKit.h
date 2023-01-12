@@ -55,6 +55,12 @@
 - (id)getCalibrationDataInfo;
 - (id)getTemplateInfo:(id)arg1;
 - (id)getMatchPolicyInfo;
+- (void)removeAllIdentitiesForUser:(unsigned int)arg1 withOptions:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)removeIdentity:(id)arg1 withOptions:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)updateIdentity:(id)arg1 withOptions:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)setSystemProtectedConfiguration:(id)arg1 withOptions:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)setProtectedConfiguration:(id)arg1 forUser:(unsigned int)arg2 withOptions:(id)arg3 withReply:(CDUnknownBlockType)arg4;
+- (void)setProtectedConfiguration:(id)arg1 withOptions:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (int)enableBackgroundFdet:(_Bool)arg1;
 - (int)removeAllIdentitiesForUser:(unsigned int)arg1 withOptions:(id)arg2;
 - (int)removeIdentity:(id)arg1 withOptions:(id)arg2;

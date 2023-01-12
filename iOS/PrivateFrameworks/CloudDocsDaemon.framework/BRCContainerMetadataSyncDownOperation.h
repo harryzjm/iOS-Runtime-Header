@@ -8,7 +8,6 @@
 
 @class BRCAccountSession, BRCContainerMetadataSyncPersistedState, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCContainerMetadataSyncDownOperation <BRCOperationSubclass>
 {
     BRCAccountSession *_session;
@@ -23,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldFetchAnotherBatch; // @synthesize shouldFetchAnotherBatch=_shouldFetchAnotherBatch;
 - (void)main;
-- (void)_completedWithServerChangeToken:(id)arg1;
+- (void)_completedWithServerChangeToken:(id)arg1 requestID:(unsigned long long)arg2;
 - (_Bool)shouldRetryForError:(id)arg1;
 - (void)performAfterFetchingAssetContents:(CDUnknownBlockType)arg1;
 - (void)performAfterFetchingRecordChanges:(CDUnknownBlockType)arg1;

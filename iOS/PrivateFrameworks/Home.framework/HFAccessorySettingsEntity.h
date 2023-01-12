@@ -27,6 +27,7 @@
     NSString *_previewValueKeyPath;
     NSFormatter *_previewValueFormatter;
     NSFormatter *_footerTitleFormatter;
+    NSFormatter *_headerTitleFormatter;
     NSString *_adapterIdentifier;
 }
 
@@ -37,6 +38,7 @@
 @property(readonly, copy, nonatomic) NSString *adapterIdentifier; // @synthesize adapterIdentifier=_adapterIdentifier;
 @property(readonly, nonatomic) _Bool wantsSeparateSectionPerGroup; // @synthesize wantsSeparateSectionPerGroup=_wantsSeparateSectionPerGroup;
 @property(readonly, nonatomic) _Bool alwaysShowGroup; // @synthesize alwaysShowGroup=_alwaysShowGroup;
+@property(readonly, copy, nonatomic) NSFormatter *headerTitleFormatter; // @synthesize headerTitleFormatter=_headerTitleFormatter;
 @property(readonly, copy, nonatomic) NSFormatter *footerTitleFormatter; // @synthesize footerTitleFormatter=_footerTitleFormatter;
 @property(readonly, copy, nonatomic) NSFormatter *previewValueFormatter; // @synthesize previewValueFormatter=_previewValueFormatter;
 @property(readonly, copy, nonatomic) NSString *previewValueKeyPath; // @synthesize previewValueKeyPath=_previewValueKeyPath;

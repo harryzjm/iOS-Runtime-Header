@@ -11,14 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface VUIStreamingBookmark : NSObject
 {
-    NSNumber *_resumeTime;
-    NSDate *_bookmarkTimestamp;
+    NSNumber *_absoluteResumeTime;
+    NSDate *_absoluteBookmarkTimestamp;
+    NSNumber *_relativeResumeTime;
+    NSDate *_relativeBookmarkTimestamp;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDate *bookmarkTimestamp; // @synthesize bookmarkTimestamp=_bookmarkTimestamp;
-@property(retain, nonatomic) NSNumber *resumeTime; // @synthesize resumeTime=_resumeTime;
-- (id)initWithResumeTime:(id)arg1 timeStamp:(id)arg2;
+@property(retain, nonatomic) NSDate *relativeBookmarkTimestamp; // @synthesize relativeBookmarkTimestamp=_relativeBookmarkTimestamp;
+@property(retain, nonatomic) NSNumber *relativeResumeTime; // @synthesize relativeResumeTime=_relativeResumeTime;
+@property(retain, nonatomic) NSDate *absoluteBookmarkTimestamp; // @synthesize absoluteBookmarkTimestamp=_absoluteBookmarkTimestamp;
+@property(retain, nonatomic) NSNumber *absoluteResumeTime; // @synthesize absoluteResumeTime=_absoluteResumeTime;
+- (id)initWithAbsoluteResumeTime:(id)arg1 absoluteTimestamp:(id)arg2 relativeResumeTime:(id)arg3 relativeBookmarkTimestamp:(id)arg4;
 
 @end
 

@@ -11,14 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface UIInputSwitcher : NSObject
 {
-    UIDelayedAction *m_keyHoldDelay;
     UIDelayedAction *m_showSwitcherDelay;
     UIDelayedAction *m_hideSwitcherDelay;
     int m_state;
     UIInputSwitcherView *m_switcherView;
     double m_lastGlobeKeyUpTime;
     NSString *_newMode;
-    _Bool _isGlobeKeyDown;
     _Bool _usingCapsLockLanguageSwitch;
     _Bool _dismissingEmojiPopover;
     NSString *_loadedIdentifier;
@@ -29,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) _Bool dismissingEmojiPopover; // @synthesize dismissingEmojiPopover=_dismissingEmojiPopover;
 @property(nonatomic) _Bool usingCapsLockLanguageSwitch; // @synthesize usingCapsLockLanguageSwitch=_usingCapsLockLanguageSwitch;
-@property(nonatomic) _Bool isGlobeKeyDown; // @synthesize isGlobeKeyDown=_isGlobeKeyDown;
 @property(copy, nonatomic) NSString *loadedIdentifier; // @synthesize loadedIdentifier=_loadedIdentifier;
 - (_Bool)handleModifiersChangedEvent:(id)arg1;
 - (_Bool)needsFullHUD;
@@ -46,8 +43,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)isVisibleOrHiding;
 - (void)hideSwitcherIfNeeded;
 - (_Bool)isVisible;
-- (void)clearKeyHoldTimer;
-- (void)touchKeyHoldTimer;
 - (void)clearShowSwitcherTimer;
 - (void)cancelShowSwitcherTimer;
 - (void)touchShowSwitcherTimer;

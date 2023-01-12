@@ -19,7 +19,9 @@
     int _bandwidth;
     int _ci;
     unsigned int _deploymentType;
+    unsigned int _downlinkBandwidth;
     int _ecn0;
+    unsigned int _latency;
     CLPLocation *_location;
     int _mcc;
     int _mnc;
@@ -34,24 +36,31 @@
     int _tac;
     int _uarfcn;
     _Bool _isLimitedService;
+    _Bool _isStalled;
     struct {
         unsigned int cellLatitude:1;
         unsigned int cellLongitude:1;
         unsigned int bandInfo:1;
         unsigned int bandwidth:1;
         unsigned int deploymentType:1;
+        unsigned int downlinkBandwidth:1;
         unsigned int ecn0:1;
+        unsigned int latency:1;
         unsigned int pid:1;
         unsigned int rscp:1;
         unsigned int rssi:1;
         unsigned int serverHash:1;
         unsigned int uarfcn:1;
         unsigned int isLimitedService:1;
+        unsigned int isStalled:1;
     } _has;
 }
 
 + (Class)neighborType;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int latency; // @synthesize latency=_latency;
+@property(nonatomic) _Bool isStalled; // @synthesize isStalled=_isStalled;
+@property(nonatomic) unsigned int downlinkBandwidth; // @synthesize downlinkBandwidth=_downlinkBandwidth;
 @property(nonatomic) unsigned int deploymentType; // @synthesize deploymentType=_deploymentType;
 @property(retain, nonatomic) NSString *serviceProviderName; // @synthesize serviceProviderName=_serviceProviderName;
 @property(nonatomic) _Bool isLimitedService; // @synthesize isLimitedService=_isLimitedService;
@@ -83,6 +92,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasLatency;
+@property(nonatomic) _Bool hasIsStalled;
+@property(nonatomic) _Bool hasDownlinkBandwidth;
 @property(nonatomic) _Bool hasDeploymentType;
 @property(readonly, nonatomic) _Bool hasServiceProviderName;
 @property(nonatomic) _Bool hasIsLimitedService;

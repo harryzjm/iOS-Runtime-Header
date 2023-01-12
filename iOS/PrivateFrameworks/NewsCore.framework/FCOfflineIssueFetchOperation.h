@@ -4,47 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCCachePolicy, NSString;
-@protocol FCContentContext, FCFlintHelper;
+#import <NewsCore/FCOfflineFetchOperationType-Protocol.h>
 
-@interface FCOfflineIssueFetchOperation
+@class FCCachePolicy, FCThreadSafeMutableArray, NSObject, NSString;
+@protocol FCContentContext, FCFlintHelper, OS_dispatch_queue;
+
+@interface FCOfflineIssueFetchOperation <FCOfflineFetchOperationType>
 {
-    _Bool _cachedOnly;
-    CDUnknownBlockType _layeredCoverHandlesProvider;
-    double _progress;
-    CDUnknownBlockType _progressHandler;
-    CDUnknownBlockType _fetchCompletionHandler;
+    _Bool cachedOnly;
+    CDUnknownBlockType archiveHandler;
+    NSObject<OS_dispatch_queue> *archiveQueue;
+    CDUnknownBlockType fetchCompletionHandler;
+    NSObject<OS_dispatch_queue> *fetchCompletionQueue;
+    CDUnknownBlockType progressHandler;
+    NSObject<OS_dispatch_queue> *progressQueue;
     id <FCContentContext> _context;
     id <FCFlintHelper> _flintHelper;
     NSString *_issueID;
-    id _resultHoldToken;
+    FCThreadSafeMutableArray *_resultInterestTokens;
+    double _progress;
     FCCachePolicy *_issueRecordCachePolicy;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCCachePolicy *issueRecordCachePolicy; // @synthesize issueRecordCachePolicy=_issueRecordCachePolicy;
-@property(retain, nonatomic) id resultHoldToken; // @synthesize resultHoldToken=_resultHoldToken;
-@property(copy, nonatomic) NSString *issueID; // @synthesize issueID=_issueID;
-@property(retain, nonatomic) id <FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
-@property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
-@property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-@property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-@property double progress; // @synthesize progress=_progress;
-@property(copy, nonatomic) CDUnknownBlockType layeredCoverHandlesProvider; // @synthesize layeredCoverHandlesProvider=_layeredCoverHandlesProvider;
-@property(nonatomic) _Bool cachedOnly; // @synthesize cachedOnly=_cachedOnly;
-- (id)_pdfArchiveURLForIssue:(id)arg1;
-- (void)_updateProgress:(double)arg1;
-- (id)_resourceIDsFromMetadataJSONData:(id)arg1;
-- (id)_itemIdentifiersForKey:(id)arg1 fromMetadataJSONData:(id)arg2;
-- (id)_promisePDFPagesForIssue:(id)arg1;
-- (id)_promiseReplicaAdPagesForIssue:(id)arg1 withDownloadProgressMin:(double)arg2 downloadProgressMax:(double)arg3;
-- (id)_promiseANFArticlesForArticleIDs:(id)arg1 withDownloadProgressMin:(double)arg2 downloadProgressMax:(double)arg3;
-- (id)_promiseANFPagesForIssue:(id)arg1;
-- (id)_promiseANFArticlesForIssue:(id)arg1;
-- (id)_promiseLayeredCoverAssetsForIssue:(id)arg1;
-- (id)_promiseCoverImageForIssue:(id)arg1;
-- (id)_promiseMetadataForIssue:(id)arg1;
-- (id)_promiseIssue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *progressQueue; // @synthesize progressQueue;
+@property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *fetchCompletionQueue; // @synthesize fetchCompletionQueue;
+@property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler;
+@property(nonatomic) _Bool cachedOnly; // @synthesize cachedOnly;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *archiveQueue; // @synthesize archiveQueue;
+@property(copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler;
 - (void)resetForRetry;
 - (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
 - (unsigned long long)maxRetries;

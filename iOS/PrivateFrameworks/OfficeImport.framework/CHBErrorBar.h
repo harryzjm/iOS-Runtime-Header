@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)readFrom:(struct XlChartErrorBar *)arg1 toSeries:(id)arg2 state:(id)arg3;
++ (void)readFrom:(void *)arg1 toSeries:(id)arg2 state:(id)arg3;
 + (int)xlErrorBarSourceFrom:(int)arg1;
 + (int)xlErrorBarTypeFrom:(int)arg1 direction:(int)arg2;
 + (id)readErrorBarGraphicProperties:(const struct XlChartSeriesFormat *)arg1 forStyleIndex:(unsigned long long)arg2 state:(id)arg3;

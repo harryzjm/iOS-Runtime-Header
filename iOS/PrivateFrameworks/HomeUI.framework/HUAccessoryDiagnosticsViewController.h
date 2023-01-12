@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
 @class HUAccessoryDiagnosticsItemManager, NSString;
 
-@interface HUAccessoryDiagnosticsViewController <UITextViewDelegate>
+@interface HUAccessoryDiagnosticsViewController <UITextViewDelegate, HUSwitchCellDelegate>
 {
     HUAccessoryDiagnosticsItemManager *_accessoryLogsItemManager;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak HUAccessoryDiagnosticsItemManager *accessoryLogsItemManager; // @synthesize accessoryLogsItemManager=_accessoryLogsItemManager;
-- (void)generateNewLogs;
+- (void)generateNewLogs:(id)arg1;
 - (void)showShareSheetForItem:(id)arg1 withAnchorView:(id)arg2;
+- (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;

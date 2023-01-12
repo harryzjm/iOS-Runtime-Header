@@ -6,9 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSDecimalNumber;
+@class NSDecimalNumber, PKPaymentSetupPurchaseAmountView;
 
 @protocol PKPaymentSetupPurchaseAmountViewDelegate <NSObject>
+- (void)paymentSetupPurchaseAmountViewDidLayoutKeyboard:(PKPaymentSetupPurchaseAmountView *)arg1;
 - (void)transferBalanceFromExistingCard;
 - (void)didUpdateAmount:(NSDecimalNumber *)arg1 isValid:(_Bool)arg2;
 - (void)shakeCard;

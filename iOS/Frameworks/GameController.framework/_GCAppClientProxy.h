@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <GameController/GCAdaptiveTriggersXPCProxyServiceRemoteServerInterface-Protocol.h>
 #import <GameController/GCBatteryXPCProxyServiceRemoteServerInterface-Protocol.h>
 #import <GameController/GCControllerServiceRemoteServerInterface-Protocol.h>
+#import <GameController/GCGameIntentXPCProxyServiceRemoteServerInterface-Protocol.h>
 #import <GameController/GCLightXPCProxyServiceRemoteServerInterface-Protocol.h>
 #import <GameController/GCMotionXPCProxyServiceRemoteServerInterface-Protocol.h>
 #import <GameController/GCPlayerIndicatorXPCProxyServiceRemoteServerInterface-Protocol.h>
 #import <GameController/GCSettingsXPCProxyServiceRemoteServerInterface-Protocol.h>
+#import <GameController/GCSystemGestureXPCProxyServiceRemoteServerInterface-Protocol.h>
 #import <GameController/_GCAppServerInterface-Protocol.h>
 #import <GameController/_GCDeviceClient-Protocol.h>
 
 @class NSArray, NSMapTable, NSString, _GCControllerManagerServer;
 @protocol GCControllerServiceRemoteClientInterface, _GCIPCIncomingConnection, _GCIPCObjectRegistry, _GCIPCServiceRegistry;
 
-@interface _GCAppClientProxy : NSObject <_GCDeviceClient, GCControllerServiceRemoteServerInterface, GCPlayerIndicatorXPCProxyServiceRemoteServerInterface, GCLightXPCProxyServiceRemoteServerInterface, GCMotionXPCProxyServiceRemoteServerInterface, GCBatteryXPCProxyServiceRemoteServerInterface, GCSettingsXPCProxyServiceRemoteServerInterface, _GCAppServerInterface>
+@interface _GCAppClientProxy : NSObject <_GCDeviceClient, GCControllerServiceRemoteServerInterface, GCPlayerIndicatorXPCProxyServiceRemoteServerInterface, GCLightXPCProxyServiceRemoteServerInterface, GCAdaptiveTriggersXPCProxyServiceRemoteServerInterface, GCMotionXPCProxyServiceRemoteServerInterface, GCBatteryXPCProxyServiceRemoteServerInterface, GCGameIntentXPCProxyServiceRemoteServerInterface, GCSystemGestureXPCProxyServiceRemoteServerInterface, GCSettingsXPCProxyServiceRemoteServerInterface, _GCAppServerInterface>
 {
     _GCControllerManagerServer *_server;
     _Atomic _Bool _invalid;
@@ -31,16 +34,22 @@
     NSArray *_invalidationHandlers;
 }
 
++ (id)settingsSuiteName;
 + (id)clientProxyWithConnection:(id)arg1 server:(id)arg2;
 - (void).cxx_destruct;
 @property(copy) NSArray *invalidationHandlers; // @synthesize invalidationHandlers=_invalidationHandlers;
 - (void)connectToPhotoVideoXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)connectToSystemGestureXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)connectToGameIntentXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)connectToSettingsXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)connectToBatteryXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)connectToMotionXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)connectToAdaptiveTriggersXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)connectToLightXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)connectToPlayerIndicatorXPCProxyServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)connectToControllerServiceWithClient:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)clientCanReceiveEventsDidChange:(_Bool)arg1;
+- (void)enableFeature:(long long)arg1;
 - (void)pingWithReply:(CDUnknownBlockType)arg1;
 - (void)_invalidate;
 - (id)debugDescription;
@@ -54,17 +63,25 @@
 @property(readonly) id <_GCIPCObjectRegistry> IPCObjectRegistry;
 - (id)addInvalidationHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isInvalid) _Bool invalid;
+@property(readonly, nonatomic) int processIdentifier;
 @property(readonly, nonatomic) NSString *bundleIdentifier;
 - (void)fetchControllerDescriptionsWithReply:(CDUnknownBlockType)arg1;
 - (void)playerIndicatorXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)lightXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)adaptiveTriggersXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)motionXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)batteryXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)gameIntentXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)systemGestureXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)checkEmulatedControllerEnabledWithReply:(CDUnknownBlockType)arg1;
+- (_Bool)readBooleanValueWithName:(id)arg1;
 - (void)settingsXPCProxyServiceClientEndpointConnect:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)takeScreenshotWithReply:(CDUnknownBlockType)arg1;
-- (void)generateURLFor:(id)arg1 optionalFolder:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)getTheLastGeneratedURLWithReply:(CDUnknownBlockType)arg1;
+- (void)generateURLFor:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)onVideoRecordingStopWithURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)onVideoRecordingStart:(CDUnknownBlockType)arg1;
+- (void)checkClipBufferingEnabledWithReply:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -13,18 +13,18 @@
 @interface TSTConcurrentCellList : TSPObject <NSCopying>
 {
     struct TSUViewCellRect _viewCellRect;
-    UUIDRect_d701734b _cellUIDRange;
+    struct TSKUIDStructTract _cellUIDRange;
     NSMutableArray *_tilesPerRow;
     NSMutableArray *_rowInfosPerRow;
-    vector_73284f0b _cells;
-    struct vector<TSUModelRowIndex, std::__1::allocator<TSUModelRowIndex>> _baseRows;
-    vector_5e7df3d8 _baseColumns;
-    struct vector<TSUViewRowIndex, std::__1::allocator<TSUViewRowIndex>> _viewRows;
-    struct vector<TSUViewColumnIndex, std::__1::allocator<TSUViewColumnIndex>> _viewColumns;
-    struct vector<long, std::__1::allocator<long>> _cellCountDiffsPerRow;
-    struct vector<long, std::__1::allocator<long>> _cellCountDiffsPerColumn;
-    struct vector<TSTNineKeyStructPreBNC, std::__1::allocator<TSTNineKeyStructPreBNC>> _preBNCKeysList;
-    vector_73284f0b _oldCells;
+    vector_cdf5f6a1 _cells;
+    struct vector<TSUModelRowIndex, std::allocator<TSUModelRowIndex>> _baseRows;
+    struct vector<TSUModelColumnIndex, std::allocator<TSUModelColumnIndex>> _baseColumns;
+    struct vector<TSUViewRowIndex, std::allocator<TSUViewRowIndex>> _viewRows;
+    struct vector<TSUViewColumnIndex, std::allocator<TSUViewColumnIndex>> _viewColumns;
+    struct vector<long, std::allocator<long>> _cellCountDiffsPerRow;
+    struct vector<long, std::allocator<long>> _cellCountDiffsPerColumn;
+    struct vector<TSTNineKeyStructPreBNC, std::allocator<TSTNineKeyStructPreBNC>> _preBNCKeysList;
+    vector_cdf5f6a1 _oldCells;
     _Bool _uidBased;
     _Bool _containsCellBorderChanges;
     NSArray *_interestingCells;
@@ -40,12 +40,13 @@
 @property(retain, nonatomic) NSMutableDictionary *formatsAdded; // @synthesize formatsAdded=_formatsAdded;
 @property(retain, nonatomic) NSArray *interestingCells; // @synthesize interestingCells=_interestingCells;
 @property(readonly, nonatomic) _Bool containsCellBorderChanges; // @synthesize containsCellBorderChanges=_containsCellBorderChanges;
-@property(nonatomic) UUIDRect_d701734b cellUIDRange; // @synthesize cellUIDRange=_cellUIDRange;
+@property(nonatomic) struct TSKUIDStructTract cellUIDRange; // @synthesize cellUIDRange=_cellUIDRange;
 @property(nonatomic) struct TSUViewCellRect viewCellRect; // @synthesize viewCellRect=_viewCellRect;
 @property(readonly, nonatomic, getter=isUIDBased) _Bool uidBased; // @synthesize uidBased=_uidBased;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)p_interestingCellIndexes;
 - (id)p_baseRowIndexes;
 - (id)p_baseColumnIndexes;
 - (void)p_enumerateCustomFormatsBeingAddedUsingReplacementBlock:(CDUnknownBlockType)arg1;
@@ -61,7 +62,7 @@
 - (void)p_convertToInverseCellMap;
 - (void)p_simpleInvokeBlock:(CDUnknownBlockType)arg1;
 - (void)p_invokeBlock:(CDUnknownBlockType)arg1;
-- (void)p_setupInterestingCells:(vector_73284f0b *)arg1 forAdding:(_Bool)arg2;
+- (void)p_setupInterestingCells:(void *)arg1 interestingCellIndexes:(id)arg2 forAdding:(_Bool)arg3;
 - (void)p_pruneToBaseWithTableInfo:(id)arg1;
 - (void)p_pruneCellsAtColumn:(unsigned long long)arg1 rowsSize:(unsigned long long)arg2 columnsSize:(unsigned long long)arg3;
 - (void)p_pruneCellsAtRow:(unsigned long long)arg1 rowsSize:(unsigned long long)arg2 columnsSize:(unsigned long long)arg3;
@@ -71,9 +72,9 @@
 @property(readonly, nonatomic) unsigned long long cellCount;
 @property(readonly, nonatomic) _Bool hasCells;
 - (void)addCell:(id)arg1 atViewCellCoord:(struct TSUViewCellCoord)arg2;
-- (id)initWithContext:(id)arg1 cellUIDRange:(UUIDRect_d701734b)arg2;
+- (id)initWithContext:(id)arg1 cellUIDRange:(struct TSKUIDStructTract)arg2;
 - (id)initWithContext:(id)arg1 viewCellRect:(struct TSUViewCellRect)arg2;
-- (id)initWithContext:(id)arg1 viewCellRect:(struct TSUViewCellRect)arg2 cellUIDRange:(UUIDRect_d701734b)arg3;
+- (id)initWithContext:(id)arg1 viewCellRect:(struct TSUViewCellRect)arg2 cellUIDRange:(struct TSKUIDStructTract)arg3;
 
 @end
 

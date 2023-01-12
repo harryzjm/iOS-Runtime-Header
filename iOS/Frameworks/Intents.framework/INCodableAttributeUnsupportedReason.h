@@ -23,11 +23,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy, nonatomic) NSString *predicateFormat;
 - (id)__INCodableDescriptionKey;
-- (id)__INIntentResponseCodableDescriptionKey;
-- (id)__INTypeCodableDescriptionKey;
 - (id)__INCodableDescriptionCodeKey;
-- (id)__INTypeCodableDescriptionCodeKey;
+- (id)__INIntentResponseCodableDescriptionKey;
 - (id)__INIntentResponseCodableDescriptionCodeKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionCodeKey;
 - (id)__INCodableDescriptionFormatStringKey;
 - (id)__INCodableDescriptionFormatStringDictionaryKey;
 - (id)__INCodableDescriptionFormatStringDictionaryLanguageCodeKey;

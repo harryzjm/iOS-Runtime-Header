@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <MapKit/MKScrollableStacking-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
 #import <MapKit/_MKAnimationStackViewDelegate-Protocol.h>
 #import <MapKit/_MKStackViewDelegate-Protocol.h>
@@ -13,7 +14,7 @@
 @class NSArray, NSHashTable, NSLayoutConstraint, NSMapTable, NSString, UIScrollView, UIView, _MKStackView, _MKStackingContentView;
 @protocol MKStackingViewControllerDelegate;
 
-@interface MKStackingViewController : UIViewController <_MKStackViewDelegate, _MKAnimationStackViewDelegate, UIScrollViewDelegate>
+@interface MKStackingViewController : UIViewController <_MKStackViewDelegate, _MKAnimationStackViewDelegate, MKScrollableStacking, UIScrollViewDelegate>
 {
     _MKStackView *_stackView;
     _MKStackingContentView *_contentView;

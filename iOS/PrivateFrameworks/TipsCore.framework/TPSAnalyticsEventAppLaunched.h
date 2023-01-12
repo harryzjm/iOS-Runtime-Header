@@ -9,9 +9,9 @@
 @interface TPSAnalyticsEventAppLaunched
 {
     _Bool _needsSessionReset;
-    _Bool _landingPage;
     NSString *_contentID;
     NSString *_collectionID;
+    NSString *_correlationID;
     NSNumber *_launchNumber;
     NSString *_userType;
     NSString *_launchType;
@@ -23,16 +23,16 @@
 + (id)_initialSessionEvent;
 + (id)_currentSessionEvents;
 + (id)firstLaunchEvent;
-+ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 launchType:(id)arg3;
++ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 launchType:(id)arg4;
 + (void)resetLaunchNumber;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *launchType; // @synthesize launchType=_launchType;
 @property(readonly, nonatomic) NSString *userType; // @synthesize userType=_userType;
 @property(readonly, nonatomic) NSNumber *launchNumber; // @synthesize launchNumber=_launchNumber;
+@property(retain, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
 @property(retain, nonatomic) NSString *collectionID; // @synthesize collectionID=_collectionID;
 @property(retain, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
-@property(readonly, nonatomic) _Bool landingPage; // @synthesize landingPage=_landingPage;
 - (void)_aggregateLog;
 - (void)log;
 - (void)persistKeys;
@@ -41,7 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_updateLaunchCount;
 - (id)_initFirstLaunchEvent;
-- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 launchType:(id)arg3;
+- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 launchType:(id)arg4;
 - (id)userTypeString;
 - (id)initWithCoder:(id)arg1;
 

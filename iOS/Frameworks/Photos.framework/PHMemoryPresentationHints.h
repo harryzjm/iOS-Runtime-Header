@@ -12,7 +12,6 @@
 
 @interface PHMemoryPresentationHints : NSObject <PHCollectionPresentationHints>
 {
-    long long _temporalRange;
     unsigned long long _recommendedMoods;
     unsigned long long _forbiddenMoods;
     unsigned long long _socialRelationships;
@@ -23,7 +22,6 @@
 
 + (long long)tripTypeFromMemory:(id)arg1;
 + (unsigned long long)socialRelationshipsFromMemory:(id)arg1;
-+ (long long)temporalRangeFromMemory:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long qualityCategory; // @synthesize qualityCategory=_qualityCategory;
 @property(readonly, nonatomic) NSDictionary *musicGenreDistribution; // @synthesize musicGenreDistribution=_musicGenreDistribution;
@@ -31,7 +29,6 @@
 @property(readonly, nonatomic) unsigned long long socialRelationships; // @synthesize socialRelationships=_socialRelationships;
 @property(readonly, nonatomic) unsigned long long forbiddenMoods; // @synthesize forbiddenMoods=_forbiddenMoods;
 @property(readonly, nonatomic) unsigned long long recommendedMoods; // @synthesize recommendedMoods=_recommendedMoods;
-@property(readonly, nonatomic) long long temporalRange; // @synthesize temporalRange=_temporalRange;
 @property(readonly, copy) NSString *description;
 - (id)initWithMemory:(id)arg1;
 

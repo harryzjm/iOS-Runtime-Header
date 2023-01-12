@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+@class NSData, SISchemaAnnounceCarPlayBannerTapped, SISchemaAnnounceCarPlayGlyphSettingToggled, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaAudioStopRecordingStarted, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDeviceLockStateChanged, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContentEdited, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaEngagedAccessoryContext, SISchemaIntercomMessageRecorded, SISchemaInvocation, SISchemaKeyboardDismissed, SISchemaLocation, SISchemaPNRFatalError, SISchemaPNRSpeechRecognitionSourceContext, SISchemaPNRTextToSpeechRequestReceived, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaTurnMTERequest, SISchemaUEILaunchContext, SISchemaUEIRequestCategorization, SISchemaUEIUIRenderingContext, SISchemaUEIUUFRReady, SISchemaUEIUserSpeakingContext, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown, SISchemaUUFRShownTier1, SISchemaUserViewRegionInteraction;
 
-@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown;
-
-@interface SISchemaClientEvent : PBCodable
+@interface SISchemaClientEvent
 {
     SISchemaClientEventMetadata *_eventMetadata;
     SISchemaClientTransportEventMetadata *_transportMetadata;
@@ -39,7 +37,26 @@
     SISchemaUUFRSaid *_uufrSaid;
     SISchemaUUFRFatalError *_uufrFatalError;
     SISchemaDictationAlternativesViewed *_dictationAlternativesViewed;
+    SISchemaIntercomMessageRecorded *_intercomMessageRecorded;
     SISchemaCasinoRelationship *_casinoRelationship;
+    SISchemaUserViewRegionInteraction *_userViewRegionInteraction;
+    SISchemaDeviceLockStateChanged *_deviceLockStateChanged;
+    SISchemaUEIRequestCategorization *_ueiRequestCategorization;
+    SISchemaAudioStopRecordingStarted *_audioStopRecordingStarted;
+    SISchemaUEILaunchContext *_ueiLaunchContext;
+    SISchemaUEIUserSpeakingContext *_ueiUserSpeakingContext;
+    SISchemaUEIUUFRReady *_ueiUUFRReady;
+    SISchemaUEIUIRenderingContext *_ueiUIRenderingContext;
+    SISchemaPNRTextToSpeechRequestReceived *_pnrTextToSpeechRequestReceived;
+    SISchemaPNRSpeechRecognitionSourceContext *_pnrSpeechRecognitionSourceContext;
+    SISchemaPNRFatalError *_pnrFatalError;
+    SISchemaTurnMTERequest *_turnMTERequest;
+    SISchemaKeyboardDismissed *_keyboardDismissed;
+    SISchemaEngagedAccessoryContext *_engagedAccessoryContext;
+    SISchemaAnnounceCarPlayBannerTapped *_announceCarPlayBannerTapped;
+    SISchemaAnnounceCarPlayGlyphSettingToggled *_announceCarPlayGlyphSettingToggled;
+    SISchemaDictationContentEdited *_dictationContentEdited;
+    SISchemaUUFRShownTier1 *_uufrShownTier1;
     _Bool _hasEventMetadata;
     _Bool _hasTransportMetadata;
     _Bool _hasAudioFirstBufferRecorded;
@@ -69,14 +86,52 @@
     _Bool _hasUufrSaid;
     _Bool _hasUufrFatalError;
     _Bool _hasDictationAlternativesViewed;
+    _Bool _hasIntercomMessageRecorded;
     _Bool _hasCasinoRelationship;
+    _Bool _hasUserViewRegionInteraction;
+    _Bool _hasDeviceLockStateChanged;
+    _Bool _hasUeiRequestCategorization;
+    _Bool _hasAudioStopRecordingStarted;
+    _Bool _hasUeiLaunchContext;
+    _Bool _hasUeiUserSpeakingContext;
+    _Bool _hasUeiUUFRReady;
+    _Bool _hasUeiUIRenderingContext;
+    _Bool _hasPnrTextToSpeechRequestReceived;
+    _Bool _hasPnrSpeechRecognitionSourceContext;
+    _Bool _hasPnrFatalError;
+    _Bool _hasTurnMTERequest;
+    _Bool _hasKeyboardDismissed;
+    _Bool _hasEngagedAccessoryContext;
+    _Bool _hasAnnounceCarPlayBannerTapped;
+    _Bool _hasAnnounceCarPlayGlyphSettingToggled;
+    _Bool _hasDictationContentEdited;
+    _Bool _hasUufrShownTier1;
     unsigned long long _whichEvent_Type;
 }
 
 + (id)getTagForEventTypeClass:(Class)arg1;
 + (Class)getEventTypeClassForTag:(int)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasUufrShownTier1; // @synthesize hasUufrShownTier1=_hasUufrShownTier1;
+@property(nonatomic) _Bool hasDictationContentEdited; // @synthesize hasDictationContentEdited=_hasDictationContentEdited;
+@property(nonatomic) _Bool hasAnnounceCarPlayGlyphSettingToggled; // @synthesize hasAnnounceCarPlayGlyphSettingToggled=_hasAnnounceCarPlayGlyphSettingToggled;
+@property(nonatomic) _Bool hasAnnounceCarPlayBannerTapped; // @synthesize hasAnnounceCarPlayBannerTapped=_hasAnnounceCarPlayBannerTapped;
+@property(nonatomic) _Bool hasEngagedAccessoryContext; // @synthesize hasEngagedAccessoryContext=_hasEngagedAccessoryContext;
+@property(nonatomic) _Bool hasKeyboardDismissed; // @synthesize hasKeyboardDismissed=_hasKeyboardDismissed;
+@property(nonatomic) _Bool hasTurnMTERequest; // @synthesize hasTurnMTERequest=_hasTurnMTERequest;
+@property(nonatomic) _Bool hasPnrFatalError; // @synthesize hasPnrFatalError=_hasPnrFatalError;
+@property(nonatomic) _Bool hasPnrSpeechRecognitionSourceContext; // @synthesize hasPnrSpeechRecognitionSourceContext=_hasPnrSpeechRecognitionSourceContext;
+@property(nonatomic) _Bool hasPnrTextToSpeechRequestReceived; // @synthesize hasPnrTextToSpeechRequestReceived=_hasPnrTextToSpeechRequestReceived;
+@property(nonatomic) _Bool hasUeiUIRenderingContext; // @synthesize hasUeiUIRenderingContext=_hasUeiUIRenderingContext;
+@property(nonatomic) _Bool hasUeiUUFRReady; // @synthesize hasUeiUUFRReady=_hasUeiUUFRReady;
+@property(nonatomic) _Bool hasUeiUserSpeakingContext; // @synthesize hasUeiUserSpeakingContext=_hasUeiUserSpeakingContext;
+@property(nonatomic) _Bool hasUeiLaunchContext; // @synthesize hasUeiLaunchContext=_hasUeiLaunchContext;
+@property(nonatomic) _Bool hasAudioStopRecordingStarted; // @synthesize hasAudioStopRecordingStarted=_hasAudioStopRecordingStarted;
+@property(nonatomic) _Bool hasUeiRequestCategorization; // @synthesize hasUeiRequestCategorization=_hasUeiRequestCategorization;
+@property(nonatomic) _Bool hasDeviceLockStateChanged; // @synthesize hasDeviceLockStateChanged=_hasDeviceLockStateChanged;
+@property(nonatomic) _Bool hasUserViewRegionInteraction; // @synthesize hasUserViewRegionInteraction=_hasUserViewRegionInteraction;
 @property(nonatomic) _Bool hasCasinoRelationship; // @synthesize hasCasinoRelationship=_hasCasinoRelationship;
+@property(nonatomic) _Bool hasIntercomMessageRecorded; // @synthesize hasIntercomMessageRecorded=_hasIntercomMessageRecorded;
 @property(nonatomic) _Bool hasDictationAlternativesViewed; // @synthesize hasDictationAlternativesViewed=_hasDictationAlternativesViewed;
 @property(nonatomic) _Bool hasUufrFatalError; // @synthesize hasUufrFatalError=_hasUufrFatalError;
 @property(nonatomic) _Bool hasUufrSaid; // @synthesize hasUufrSaid=_hasUufrSaid;
@@ -109,6 +164,7 @@
 @property(retain, nonatomic) SISchemaClientTransportEventMetadata *transportMetadata; // @synthesize transportMetadata=_transportMetadata;
 @property(retain, nonatomic) SISchemaClientEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
 @property(readonly, nonatomic) unsigned long long whichEvent_Type; // @synthesize whichEvent_Type=_whichEvent_Type;
+- (id)getEventType;
 - (void)setEventType:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
@@ -118,7 +174,26 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(retain, nonatomic) SISchemaUUFRShownTier1 *uufrShownTier1; // @synthesize uufrShownTier1=_uufrShownTier1;
+@property(retain, nonatomic) SISchemaDictationContentEdited *dictationContentEdited; // @synthesize dictationContentEdited=_dictationContentEdited;
+@property(retain, nonatomic) SISchemaAnnounceCarPlayGlyphSettingToggled *announceCarPlayGlyphSettingToggled; // @synthesize announceCarPlayGlyphSettingToggled=_announceCarPlayGlyphSettingToggled;
+@property(retain, nonatomic) SISchemaAnnounceCarPlayBannerTapped *announceCarPlayBannerTapped; // @synthesize announceCarPlayBannerTapped=_announceCarPlayBannerTapped;
+@property(retain, nonatomic) SISchemaEngagedAccessoryContext *engagedAccessoryContext; // @synthesize engagedAccessoryContext=_engagedAccessoryContext;
+@property(retain, nonatomic) SISchemaKeyboardDismissed *keyboardDismissed; // @synthesize keyboardDismissed=_keyboardDismissed;
+@property(retain, nonatomic) SISchemaTurnMTERequest *turnMTERequest; // @synthesize turnMTERequest=_turnMTERequest;
+@property(retain, nonatomic) SISchemaPNRFatalError *pnrFatalError; // @synthesize pnrFatalError=_pnrFatalError;
+@property(retain, nonatomic) SISchemaPNRSpeechRecognitionSourceContext *pnrSpeechRecognitionSourceContext; // @synthesize pnrSpeechRecognitionSourceContext=_pnrSpeechRecognitionSourceContext;
+@property(retain, nonatomic) SISchemaPNRTextToSpeechRequestReceived *pnrTextToSpeechRequestReceived; // @synthesize pnrTextToSpeechRequestReceived=_pnrTextToSpeechRequestReceived;
+@property(retain, nonatomic) SISchemaUEIUIRenderingContext *ueiUIRenderingContext; // @synthesize ueiUIRenderingContext=_ueiUIRenderingContext;
+@property(retain, nonatomic) SISchemaUEIUUFRReady *ueiUUFRReady; // @synthesize ueiUUFRReady=_ueiUUFRReady;
+@property(retain, nonatomic) SISchemaUEIUserSpeakingContext *ueiUserSpeakingContext; // @synthesize ueiUserSpeakingContext=_ueiUserSpeakingContext;
+@property(retain, nonatomic) SISchemaUEILaunchContext *ueiLaunchContext; // @synthesize ueiLaunchContext=_ueiLaunchContext;
+@property(retain, nonatomic) SISchemaAudioStopRecordingStarted *audioStopRecordingStarted; // @synthesize audioStopRecordingStarted=_audioStopRecordingStarted;
+@property(retain, nonatomic) SISchemaUEIRequestCategorization *ueiRequestCategorization; // @synthesize ueiRequestCategorization=_ueiRequestCategorization;
+@property(retain, nonatomic) SISchemaDeviceLockStateChanged *deviceLockStateChanged; // @synthesize deviceLockStateChanged=_deviceLockStateChanged;
+@property(retain, nonatomic) SISchemaUserViewRegionInteraction *userViewRegionInteraction; // @synthesize userViewRegionInteraction=_userViewRegionInteraction;
 @property(retain, nonatomic) SISchemaCasinoRelationship *casinoRelationship; // @synthesize casinoRelationship=_casinoRelationship;
+@property(retain, nonatomic) SISchemaIntercomMessageRecorded *intercomMessageRecorded; // @synthesize intercomMessageRecorded=_intercomMessageRecorded;
 @property(retain, nonatomic) SISchemaDictationAlternativesViewed *dictationAlternativesViewed; // @synthesize dictationAlternativesViewed=_dictationAlternativesViewed;
 @property(retain, nonatomic) SISchemaUUFRFatalError *uufrFatalError; // @synthesize uufrFatalError=_uufrFatalError;
 @property(retain, nonatomic) SISchemaUUFRSaid *uufrSaid; // @synthesize uufrSaid=_uufrSaid;
@@ -146,6 +221,7 @@
 @property(retain, nonatomic) SISchemaConversationTrace *clientConversationTrace; // @synthesize clientConversationTrace=_clientConversationTrace;
 @property(retain, nonatomic) SISchemaAudioStopRecording *audioStopRecording; // @synthesize audioStopRecording=_audioStopRecording;
 @property(retain, nonatomic) SISchemaAudioFirstBufferRecorded *audioFirstBufferRecorded; // @synthesize audioFirstBufferRecorded=_audioFirstBufferRecorded;
+- (id)qualifiedMessageName;
 - (int)getAnyEventType;
 
 @end

@@ -11,12 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface STRegionRatings : NSObject
 {
-    NSDictionary *_ratingsPlist;
+    NSDictionary *_regionRatingsData;
 }
 
 + (id)sharedRatings;
++ (void)loadRegionRatingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(readonly) NSDictionary *ratingsPlist; // @synthesize ratingsPlist=_ratingsPlist;
+@property(retain, nonatomic) NSDictionary *regionRatingsData; // @synthesize regionRatingsData=_regionRatingsData;
+- (id)getClosestRestrictionMatch:(id)arg1 within:(id)arg2;
+- (id)getRatingSystemTypeFrom:(id)arg1;
 - (id)localizedStringForAppRatingLabel:(id)arg1;
 - (id)localizedAppRatingsForRegion:(id)arg1;
 - (id)localizedTVRatingsForRegion:(id)arg1;
@@ -27,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)_localizedLabelForRegion:(id)arg1 rating:(id)arg2;
 - (id)_overrideValueForString:(id)arg1;
 @property(readonly, copy) NSString *preferredRegion;
-- (id)init;
+- (void)loadRegionRatingsDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain) NSMutableArray *completions; // @synthesize completions=_completions;
-@property(retain) SBKTaskAssertion *taskAssertion; // @synthesize taskAssertion=_taskAssertion;
+@property(retain, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
+@property(retain, nonatomic) SBKTaskAssertion *taskAssertion; // @synthesize taskAssertion=_taskAssertion;
 - (void)invokeTaskCompletionBlocksWithBlock:(CDUnknownBlockType)arg1;
 - (void)addTaskCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)invalidate;
@@ -37,12 +37,12 @@ __attribute__((visibility("hidden")))
 - (void)endTaskOperation;
 - (void)finishTaskOperationWithResult:(id)arg1 error:(id)arg2;
 - (void)beginTaskOperation;
-@property(retain) NSError *error; // @synthesize error=_error;
-@property(retain) id result; // @synthesize result=_result;
-@property int cancelType; // @synthesize cancelType=_cancelType;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(retain, nonatomic) id result; // @synthesize result=_result;
+@property(nonatomic) int cancelType; // @synthesize cancelType=_cancelType;
 - (void)_onQueueFireExpirationHandlerIfNecesary;
-@property(copy) CDUnknownBlockType finishedHandler; // @synthesize finishedHandler=_finishedHandler;
-@property(copy) CDUnknownBlockType expirationHandler; // @synthesize expirationHandler=_expirationHandler;
+@property(copy, nonatomic) CDUnknownBlockType finishedHandler; // @synthesize finishedHandler=_finishedHandler;
+@property(copy, nonatomic) CDUnknownBlockType expirationHandler; // @synthesize expirationHandler=_expirationHandler;
 - (id)description;
 - (void)_invalidateTimer;
 - (void)dealloc;

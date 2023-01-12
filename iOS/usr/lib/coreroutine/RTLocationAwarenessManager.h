@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLLocation, NSDate, NSMapTable, NSNumber, RTAuthorizationManager, RTInvocationDispatcher, RTLocationAwarenessManagerConfig, RTLocationAwarenessMetrics, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPowerAssertion, RTTimer, RTTimerManager, RTWiFiManager, RTXPCActivityManager;
+@class CLLocation, NSDate, NSMapTable, NSMutableSet, NSNumber, RTAuthorizationManager, RTInvocationDispatcher, RTLocationAwarenessManagerConfig, RTLocationAwarenessMetrics, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPowerAssertion, RTTimer, RTTimerManager, RTWiFiManager, RTXPCActivityManager;
 
 @interface RTLocationAwarenessManager
 {
@@ -14,6 +14,7 @@
     _Bool _activeRequestLocationServiceOn;
     _Bool _activeRequestRoutineOn;
     _Bool _activeRequestWifiOn;
+    _Bool _requestedHighAccuracyLocation;
     RTLocationAwarenessMetrics *_metrics;
     RTMetricManager *_metricManager;
     RTAuthorizationManager *_authorizationManager;
@@ -40,11 +41,14 @@
     RTXPCActivityManager *_xpcActivityManager;
     NSDate *_stationaryStartTimestamp;
     RTInvocationDispatcher *_heartbeatBuffer;
+    NSMutableSet *_highAccuracyLocationRequesters;
 }
 
 + (id)powerAssertion;
 + (long long)localHourFromTimestamp:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool requestedHighAccuracyLocation; // @synthesize requestedHighAccuracyLocation=_requestedHighAccuracyLocation;
+@property(retain, nonatomic) NSMutableSet *highAccuracyLocationRequesters; // @synthesize highAccuracyLocationRequesters=_highAccuracyLocationRequesters;
 @property(copy, nonatomic) RTInvocationDispatcher *heartbeatBuffer; // @synthesize heartbeatBuffer=_heartbeatBuffer;
 @property(copy, nonatomic) NSDate *stationaryStartTimestamp; // @synthesize stationaryStartTimestamp=_stationaryStartTimestamp;
 @property(retain, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
@@ -96,9 +100,15 @@
 - (void)updateMinHeartbeatBucket;
 - (void)_updateXPCActivityForObserverCount:(unsigned long long)arg1;
 - (void)hourlySingleShotWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)removeHighAccuracyLocationRequester:(id)arg1 error:(id *)arg2;
+- (_Bool)addHighAccuracyLocationRequester:(id)arg1 error:(id *)arg2;
+- (void)_updateXPCActivityForHighAccuracyLocationRequest;
+- (void)_requestForHighAccuracyLocation;
+- (void)_removeHighAccuracyLocationRequester:(id)arg1;
+- (void)_addHighAccuracyLocationRequester:(id)arg1;
 - (void)removeLocationHeartbeatRequester:(id)arg1;
 - (_Bool)addLocationHeartbeatRequester:(id)arg1 interval:(double)arg2 error:(id *)arg3;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setup;
 - (id)initWithLocationManager:(id)arg1 config:(id)arg2 metricManager:(id)arg3 motionActivityManager:(id)arg4 authorizationManager:(id)arg5 wifiManager:(id)arg6 xpcActivityManager:(id)arg7 timerManager:(id)arg8;
 - (id)init;

@@ -8,7 +8,7 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
-@class BLTPBAction, BLTPBSectionIcon, NSData, NSMutableArray, NSString;
+@class BLTPBAction, BLTPBCommunicationContext, BLTPBSectionIcon, NSData, NSMutableArray, NSString;
 
 @interface BLTPBBulletin : PBCodable <NSCopying>
 {
@@ -27,6 +27,8 @@
     NSString *_bulletinID;
     NSString *_category;
     NSString *_categoryID;
+    BLTPBCommunicationContext *_communicationContext;
+    NSString *_contentType;
     NSData *_context;
     NSData *_contextNulls;
     BLTPBAction *_dismissAction;
@@ -34,6 +36,7 @@
     unsigned int _feed;
     NSString *_header;
     BLTPBSectionIcon *_icon;
+    unsigned int _interruptionLevel;
     NSString *_messageTitle;
     NSMutableArray *_peopleIDs;
     NSString *_publisherBulletinID;
@@ -72,6 +75,7 @@
         unsigned int soundAudioVolume:1;
         unsigned int soundMaximumDuration:1;
         unsigned int attachmentType:1;
+        unsigned int interruptionLevel:1;
         unsigned int sectionSubtype:1;
         unsigned int soundAlertType:1;
         unsigned int containsUpdateIcon:1;
@@ -93,9 +97,14 @@
 + (Class)supplementaryActionsType;
 + (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 attachOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)imageContentTypeForImageAttachment:(id)arg1;
++ (id)_handleThumbnailResponse:(id)arg1 attachmentMetadata:(id)arg2 transcodedAttachmentSaveURL:(id)arg3 wantsData:(_Bool)arg4 imageContentType:(id)arg5;
 + (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 attachOption:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 + (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 shouldUseExpirationDate:(_Bool)arg7 replyToken:(id)arg8 gizmoLegacyPublisherBulletinID:(id)arg9 gizmoLegacyCategoryID:(id)arg10 gizmoSectionID:(id)arg11 gizmoSectionSubtype:(id)arg12 useUserInfoForContext:(_Bool)arg13 removeSubtitleForOlderWatches:(_Bool)arg14 attachOption:(unsigned long long)arg15 completion:(CDUnknownBlockType)arg16;
++ (id)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 shouldUseExpirationDate:(_Bool)arg7 replyToken:(id)arg8 gizmoLegacyPublisherBulletinID:(id)arg9 gizmoLegacyCategoryID:(id)arg10 gizmoSectionID:(id)arg11 gizmoSectionSubtype:(id)arg12 useUserInfoForContext:(_Bool)arg13 removeSubtitleForOlderWatches:(_Bool)arg14;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property(retain, nonatomic) BLTPBCommunicationContext *communicationContext; // @synthesize communicationContext=_communicationContext;
+@property(nonatomic) unsigned int interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(retain, nonatomic) NSString *header; // @synthesize header=_header;
 @property(nonatomic) _Bool containsUpdateIcon; // @synthesize containsUpdateIcon=_containsUpdateIcon;
 @property(retain, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
@@ -158,6 +167,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasContentType;
+@property(readonly, nonatomic) _Bool hasCommunicationContext;
+@property(nonatomic) _Bool hasInterruptionLevel;
 @property(readonly, nonatomic) _Bool hasHeader;
 @property(nonatomic) _Bool hasContainsUpdateIcon;
 @property(readonly, nonatomic) _Bool hasIcon;

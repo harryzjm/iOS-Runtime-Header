@@ -25,7 +25,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
 - (id)createRoamingSpecifiersSubgroup;
-- (id)createDataModeSubgroup;
+- (id)createDataModeSubgroupWithContext:(id)arg1;
+- (id)createPasscodeStatusCache;
 - (id)createCellularPlanManager;
 - (id)createCellularPlanManagerCache;
 - (id)createDataCache;

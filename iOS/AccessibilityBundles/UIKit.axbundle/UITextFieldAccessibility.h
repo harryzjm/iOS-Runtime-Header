@@ -30,7 +30,6 @@
 - (_Bool)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)_accessibilityTextFieldText;
 - (id)accessibilityPlaceholderValue;
-- (id)_accessibilityPlaceholderValue:(_Bool)arg1;
 - (_Bool)isAccessibilityElement;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilitySupplementaryHeaderViews;
@@ -38,14 +37,9 @@
 - (void)_accessibilitySetValue:(id)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityRightButtons;
-- (id)_accessibilityLeftButtons;
-- (_Bool)_axShowsTrailingView;
-- (_Bool)_axShowsLeadingView;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
-- (id)_accessibilityTextSelectionRectWithLargestVisualRangeFromCandidates:(id)arg1;
-- (_Bool)_axTextFieldIsHidden;
 - (unsigned long long)_accessibilityAutomationType;
 
 @end

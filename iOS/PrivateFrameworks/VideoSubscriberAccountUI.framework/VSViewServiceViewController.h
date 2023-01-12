@@ -65,11 +65,11 @@ __attribute__((visibility("hidden")))
 - (void)_dismissInHostIfNecessary;
 - (void)_presentInHostIfNecessary;
 - (void)_didDetermineIdentityProvider:(id)arg1 withPickerViewController:(id)arg2;
-- (void)_showIdentityProviderPickerViewControllerWithIdentityProviders:(id)arg1;
+- (void)_showIdentityProviderPickerViewControllerWithIdentityProviders:(id)arg1 currentStorefrontCode:(id)arg2 allStorefronts:(id)arg3;
 - (void)_performRequestWithIdentityProvider:(id)arg1 account:(id)arg2;
 - (void)_determinePreAuthAppIsAuthorized:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_identityProviderRequestForViewServiceRequest:(id)arg1 withAccount:(id)arg2;
-- (void)_performRequestInternal:(id)arg1 withID:(id)arg2 identityProviders:(id)arg3 accounts:(id)arg4;
+- (void)_performRequestInternal:(id)arg1 withID:(id)arg2 identityProviders:(id)arg3 accounts:(id)arg4 currentStorefrontCode:(id)arg5 allStorefronts:(id)arg6;
 - (void)_performRequest:(id)arg1 withIdentifier:(id)arg2;
 - (void)_viewControllerWasDismissed;
 - (void)_willAppearInRemoteViewController;

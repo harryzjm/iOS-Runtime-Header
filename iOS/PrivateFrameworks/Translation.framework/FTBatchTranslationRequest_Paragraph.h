@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_1be97c44)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_1be97c44)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *span;
 @property(readonly, nonatomic) NSString *text;
 @property(readonly, nonatomic) NSString *paragraph_id;

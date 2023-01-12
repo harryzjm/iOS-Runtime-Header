@@ -18,11 +18,14 @@
     NSString *_latestTranscription;
 }
 
++ (_Bool)outputIsExemptFromTaintTrackingInheritance;
 + (id)userInterfaceProtocol;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *latestTranscription; // @synthesize latestTranscription=_latestTranscription;
 @property(retain, nonatomic) AFDictationConnection *dictationConnection; // @synthesize dictationConnection=_dictationConnection;
 @property(retain, nonatomic) id <WFDictateTextActionUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)dictationConnection:(id)arg1 didRecognizePackage:(id)arg2;
 - (void)dictationConnection:(id)arg1 didRecognizeTokens:(id)arg2 languageModel:(id)arg3;
 - (void)dictationConnection:(id)arg1 speechRecognitionDidFail:(id)arg2;

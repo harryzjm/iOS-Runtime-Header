@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_7dd54419)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_7dd54419)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTServerEndpointFeatures *server_endpoint_features;
 @property(readonly, nonatomic) NSString *source_locale;
 @property(readonly, nonatomic) NSString *request_id;

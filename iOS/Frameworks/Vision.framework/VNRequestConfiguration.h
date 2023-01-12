@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
     VNProcessingDevice *_processingDevice;
     unsigned long long _metalContextPriority;
     unsigned long long _modelFileBackingStore;
+    unsigned long long _maximumProcessingDimensionOnTheLongSide;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long maximumProcessingDimensionOnTheLongSide; // @synthesize maximumProcessingDimensionOnTheLongSide=_maximumProcessingDimensionOnTheLongSide;
 @property(nonatomic) unsigned long long modelFileBackingStore; // @synthesize modelFileBackingStore=_modelFileBackingStore;
 @property(nonatomic) _Bool preferBackgroundProcessing; // @synthesize preferBackgroundProcessing=_preferBackgroundProcessing;
 @property(nonatomic) unsigned long long metalContextPriority; // @synthesize metalContextPriority=_metalContextPriority;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) Class requestClass; // @synthesize requestClass=_requestClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+@property(readonly, copy, nonatomic) VNProcessingDevice *resolvedProcessingDevice;
 - (id)_allPropertyNames;
 - (id)initWithRequestClass:(Class)arg1;
 

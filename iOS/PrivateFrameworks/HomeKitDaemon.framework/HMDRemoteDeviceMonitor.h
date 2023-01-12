@@ -7,15 +7,19 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDIDSActivityMonitorObserverDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDRemoteDeviceMonitorOperationFactory-Protocol.h>
+#import <HomeKitDaemon/HMDRemoteDeviceMonitorTimerFactory-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
+#import <HomeKitDaemon/IDSAccountDelegate-Protocol.h>
+#import <HomeKitDaemon/IDSAccountRegistrationDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDAccountRegistry, HMDIDSActivityMonitorObserver, HMFNetMonitor, HMFTimer, IDSService, NSArray, NSMapTable, NSObject, NSOperationQueue, NSString;
-@protocol HMFLocking, OS_dispatch_queue;
+@class HMDAccountRegistry, HMDAppleAccountManager, HMDIDSActivityMonitorObserver, HMDRemoteAccountManager, HMFNetMonitor, HMFTimer, IDSAccount, IDSService, NSArray, NSMapTable, NSObject, NSOperationQueue, NSString;
+@protocol HMDRemoteDeviceMonitorOperationFactory, HMDRemoteDeviceMonitorTimerFactory, HMFLocking, OS_dispatch_queue;
 
-@interface HMDRemoteDeviceMonitor : HMFObject <HMFLogging, HMFTimerDelegate, IDSServiceDelegate, HMDIDSActivityMonitorObserverDelegate, HMFNetMonitorDelegate>
+@interface HMDRemoteDeviceMonitor : HMFObject <HMFLogging, HMFTimerDelegate, IDSServiceDelegate, IDSAccountDelegate, IDSAccountRegistrationDelegate, HMDIDSActivityMonitorObserverDelegate, HMFNetMonitorDelegate, HMDRemoteDeviceMonitorTimerFactory, HMDRemoteDeviceMonitorOperationFactory>
 {
     id <HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
@@ -25,49 +29,46 @@
     _Bool _started;
     HMDAccountRegistry *_accountRegistry;
     IDSService *_service;
+    IDSAccount *_iCloudAccount;
     HMDIDSActivityMonitorObserver *_activityObserver;
+    HMDAppleAccountManager *_accountManager;
+    HMDRemoteAccountManager *_remoteAccountManager;
     HMFNetMonitor *_netMonitor;
+    id <HMDRemoteDeviceMonitorTimerFactory> _timerFactory;
+    id <HMDRemoteDeviceMonitorOperationFactory> _operationFactory;
     HMFTimer *_deviceHealthTimer;
 }
 
 + (id)logCategory;
 + (id)pingMessageForDevice:(id)arg1 timeout:(double)arg2 restriction:(unsigned long long)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HMFTimer *deviceHealthTimer; // @synthesize deviceHealthTimer=_deviceHealthTimer;
-@property(readonly, nonatomic) HMFNetMonitor *netMonitor; // @synthesize netMonitor=_netMonitor;
-@property(readonly, nonatomic) HMDIDSActivityMonitorObserver *activityObserver; // @synthesize activityObserver=_activityObserver;
-@property(readonly, nonatomic) IDSService *service; // @synthesize service=_service;
 @property(readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
 - (void)observer:(id)arg1 didUpdateDevice:(id)arg2 isOnline:(_Bool)arg3;
+- (void)_handleIncomingMessageForDevice:(id)arg1;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
+- (void)account:(id)arg1 loginChanged:(id)arg2;
+- (void)account:(id)arg1 isActiveChanged:(_Bool)arg2;
 - (void)timerDidFire:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)networkMonitorIsReachable:(id)arg1;
+- (id)newConfirmationHandlerOperationWithTimeout:(double)arg1;
+- (id)newSendMessageOperationWithMessage:(id)arg1;
+- (id)newDeviceMonitoringTimer;
+- (id)newDeviceHealthTimer;
 - (void)handleAccountRemoved:(id)arg1;
 - (void)handleDeviceRemovedFromAccount:(id)arg1;
 - (void)handleCurrentDeviceUpdate:(id)arg1;
-- (void)_stopActivelyMonitoringDevice:(id)arg1;
-- (void)_startActivelyMonitoringDevice:(id)arg1;
-- (void)_sendPingToDevice:(id)arg1;
 - (void)confirmDevice:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)notifyDeviceReachabilityChange:(_Bool)arg1 forDevice:(id)arg2;
 - (void)_handleGlobalReachabilityChange;
-- (void)handleRemovedDeviceInformation:(id)arg1;
 - (void)stopMonitoringDevice:(id)arg1;
-- (void)handleAddedDeviceInformation:(id)arg1;
-- (id)_startMonitoringDevice:(id)arg1;
 - (void)startMonitoringDevice:(id)arg1;
-- (id)_deviceInformationForDevice:(id)arg1;
 @property(readonly) NSArray *unreachableDevices;
-- (id)devices;
-- (void)setReachable:(_Bool)arg1;
 @property(readonly, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
 - (void)start;
-- (void)setStarted:(_Bool)arg1;
-@property(readonly, getter=isStarted) _Bool started; // @synthesize started=_started;
 - (void)dealloc;
 - (id)dumpState;
+- (id)initWithAccountRegistry:(id)arg1 activityObserver:(id)arg2 queue:(id)arg3 IDSService:(id)arg4 accountManager:(id)arg5 remoteAccountManager:(id)arg6 netMonitor:(id)arg7 timerFactory:(id)arg8 operationFactory:(id)arg9;
 - (id)initWithAccountRegistry:(id)arg1 activityObserver:(id)arg2;
 - (id)init;
 

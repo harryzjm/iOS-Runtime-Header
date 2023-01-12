@@ -6,26 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoard/DNDStateUpdateListener-Protocol.h>
+#import <SpringBoard/CBCentralManagerPrivateDelegate-Protocol.h>
 #import <SpringBoard/SBAVSystemControllerCacheObserver-Protocol.h>
 #import <SpringBoard/SBDateTimeOverrideObserver-Protocol.h>
 
-@class DNDState, DNDStateService, NSDateFormatter, NSHashTable, NSMutableDictionary, NSString, NSTimer, SBSStatusBarStyleOverridesAssertion, SBStatusBarDefaults, SBSystemStatusBatteryDataProvider, SBSystemStatusWifiDataProvider, SBTelephonyManager, SBUserSessionController, STBatteryStatusDomain, STCallingStatusDomain, STTelephonyStatusDomain, STTelephonyStatusDomainDataProvider, STVoiceControlStatusDomain, STWifiStatusDomain;
+@class CBCentralManager, NSDateFormatter, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSTimer, SBSStatusBarStyleOverridesAssertion, SBStatusBarDefaults, SBSystemStatusBatteryDataProvider, SBSystemStatusWifiDataProvider, SBTelephonyManager, SBUserSessionController, STBatteryStatusDomain, STCallingStatusDomain, STFocusStatusDomain, STLocationStatusDomain, STTelephonyStatusDomain, STTelephonyStatusDomainDataProvider, STVoiceControlStatusDomain, STWifiStatusDomain;
 
-@interface SBStatusBarStateAggregator : NSObject <SBDateTimeOverrideObserver, DNDStateUpdateListener, SBAVSystemControllerCacheObserver>
+@interface SBStatusBarStateAggregator : NSObject <SBDateTimeOverrideObserver, SBAVSystemControllerCacheObserver, CBCentralManagerPrivateDelegate>
 {
     SBStatusBarDefaults *_statusBarDefaults;
     SBTelephonyManager *_override_telephonyManager;
     SBUserSessionController *_override_userSessionController;
     unsigned long long _coalescentBlockDepth;
     _Bool _hasPostedOnce;
-    unsigned long long _itemPostState[43];
+    unsigned long long _itemPostState[44];
     _Bool _nonItemDataChanged;
-    CDStruct_3fd7985f _data;
+    CDStruct_e9def42b _data;
     int _actions;
     _Bool _performingAtomicUpdate;
-    unsigned long long _atomicUpdateItemPostState[43];
-    CDStruct_3fd7985f _atomicUpdateData;
+    unsigned long long _atomicUpdateItemPostState[44];
+    CDStruct_e9def42b _atomicUpdateData;
     NSHashTable *_postObservers;
     _Bool _notifyingPostObservers;
     long long _showsRecordingOverrides;
@@ -50,24 +50,30 @@
     long long _syncActivityIndicatorCount;
     NSString *_activityDisplayIdentifier;
     NSString *_batteryDetailString;
+    NSMutableArray *_connectedClassicBluetoothDevices;
+    NSMutableArray *_connectedLEBluetoothDevices;
+    CBCentralManager *_coreBluetoothManager;
     _Bool _shouldShowBluetoothHeadphoneGlyph;
     _Bool _shouldShowBluetoothHeadphoneBatteryPercent;
     _Bool _alarmEnabled;
-    int _locationStatusBarIconType;
     unsigned int _locationIconPendingRequestCount;
+    int _locationStatusBarIconState;
+    int _oldLocationStatusBarIconState;
+    _Bool _prominentLocationOverride;
+    NSTimer *_prominentLocationTimer;
     SBSStatusBarStyleOverridesAssertion *_tetheringStatusBarStyleOverrideAssertion;
     NSMutableDictionary *_callingStatusBarStyleOverrideAssertionsByStyleOverride;
     SBUserSessionController *_lazy_userSessionController;
     NSString *_personName;
     NSString *_overridePersonName;
-    DNDStateService *_dndStateService;
-    DNDState *_dndState;
     _Bool _isInternalOrDeveloperDevice;
     SBSystemStatusBatteryDataProvider *_batteryDataProvider;
     STTelephonyStatusDomainDataProvider *_telephonyDataProvider;
     SBSystemStatusWifiDataProvider *_wifiDataProvider;
     STBatteryStatusDomain *_batteryDomain;
     STCallingStatusDomain *_callingDomain;
+    STFocusStatusDomain *_focusDomain;
+    STLocationStatusDomain *_locationDomain;
     STTelephonyStatusDomain *_telephonyDomain;
     STVoiceControlStatusDomain *_voiceControlDomain;
     STWifiStatusDomain *_wifiDomain;
@@ -79,6 +85,8 @@
 @property(retain, nonatomic, getter=_wifiDomain, setter=_setWifiDomain:) STWifiStatusDomain *wifiDomain; // @synthesize wifiDomain=_wifiDomain;
 @property(retain, nonatomic, getter=_voiceControlDomain, setter=_setVoiceControlDomain:) STVoiceControlStatusDomain *voiceControlDomain; // @synthesize voiceControlDomain=_voiceControlDomain;
 @property(retain, nonatomic, getter=_telephonyDomain, setter=_setTelephonyDomain:) STTelephonyStatusDomain *telephonyDomain; // @synthesize telephonyDomain=_telephonyDomain;
+@property(retain, nonatomic, getter=_locationDomain, setter=_setLocationDomain:) STLocationStatusDomain *locationDomain; // @synthesize locationDomain=_locationDomain;
+@property(retain, nonatomic, getter=_focusDomain, setter=_setFocusDomain:) STFocusStatusDomain *focusDomain; // @synthesize focusDomain=_focusDomain;
 @property(retain, nonatomic, getter=_callingDomain, setter=_setCallingDomain:) STCallingStatusDomain *callingDomain; // @synthesize callingDomain=_callingDomain;
 @property(retain, nonatomic, getter=_batteryDomain, setter=_setBatteryDomain:) STBatteryStatusDomain *batteryDomain; // @synthesize batteryDomain=_batteryDomain;
 @property(readonly, nonatomic) SBSystemStatusWifiDataProvider *wifiDataProvider; // @synthesize wifiDataProvider=_wifiDataProvider;
@@ -88,9 +96,9 @@
 @property(retain, nonatomic, getter=_userSessionController, setter=_setUserSessionController:) SBUserSessionController *userSessionController; // @synthesize userSessionController=_override_userSessionController;
 - (void)cache:(id)arg1 didUpdatePickableRoutes:(id)arg2;
 - (void)cache:(id)arg1 didUpdateActiveAudioRoute:(id)arg2;
-- (void)stateService:(id)arg1 didReceiveDoNotDisturbStateUpdate:(id)arg2;
 - (void)controller:(id)arg1 didChangeOverrideDateFromDate:(id)arg2;
 - (void)_updateLocationState;
+- (void)_temporarilyOverrideLocationItemForProminentIndication;
 - (void)_buildLocationState;
 - (_Bool)_shouldShowEmergencyOnlyStatusForInfo:(id)arg1;
 - (void)_noteAirplaneModeChanged;
@@ -105,7 +113,8 @@
 - (_Bool)_setItem:(int)arg1 enabled:(_Bool)arg2;
 - (void)_postItem:(int)arg1 withState:(unsigned long long)arg2 inList:(unsigned long long *)arg3;
 - (void)updateStatusBarItem:(int)arg1;
-- (void)_updateCallingStatusBarStyleOverrideAssertionsForStyleOverride:(int)arg1 callingAttributions:(id)arg2;
+- (void)_updateCallingStatusBarStyleOverrideAssertionsForCallDescriptors:(id)arg1;
+- (id)_statusBarStyleOverridesForCallDescriptors:(id)arg1;
 - (void)_updateTetheringState;
 - (void)_removeTetheringStatusBarStyleOverrideAssertion;
 - (void)_updatePersonNameItem;
@@ -127,6 +136,8 @@
 - (void)_updateBluetoothBatteryItem;
 - (void)_updateBluetoothHeadphonesItem;
 - (void)_updateBluetoothItem;
+- (void)centralManager:(id)arg1 didUpdatePeripheralConnectionState:(id)arg2;
+- (void)centralManagerDidUpdateState:(id)arg1;
 - (int)_statusBarBatteryStateForSystemStatusChargingState:(unsigned long long)arg1;
 - (void)_updateBatteryItems;
 - (void)_updateLiquidDetectionItem;
@@ -157,7 +168,7 @@
 - (void)_updateStateAtomicallyWithoutAnimationUsingBlock:(CDUnknownBlockType)arg1;
 - (void)endCoalescentBlock;
 - (void)beginCoalescentBlock;
-- (const CDStruct_3fd7985f *)_statusBarData;
+- (const CDStruct_e9def42b *)_statusBarData;
 - (void)dealloc;
 - (id)init;
 

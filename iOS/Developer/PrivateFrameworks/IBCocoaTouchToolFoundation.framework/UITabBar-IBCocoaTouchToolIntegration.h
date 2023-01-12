@@ -8,5 +8,7 @@
 
 @interface UITabBar (IBCocoaTouchToolIntegration)
 - (void)setItems:(id)arg1;
+- (id)ibScrollEdgeAppearance;
+- (void)setIbScrollEdgeAppearance:(id)arg1;
 @end
 

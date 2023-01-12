@@ -23,6 +23,7 @@
     _Bool _supportsMMS;
     _Bool _mmsConfigured;
     long long _supportsApplePayState;
+    long long _supportsUWBState;
     long long _supportsManateeForAppleCash;
     long long _supportsRegionForAppleCash;
     long long _supportsFMDV2State;
@@ -50,6 +51,7 @@
     _Bool _commCenterDead;
 }
 
++ (id)marketingNameForDeviceType:(long long)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool commCenterDead; // @synthesize commCenterDead=_commCenterDead;
@@ -70,6 +72,7 @@
 @property(readonly, nonatomic) _Bool lowRAMDevice;
 - (int)cpuFamily;
 @property(readonly, nonatomic) _Bool slowCPUDevice;
+@property(readonly, nonatomic) _Bool supportsUWB;
 @property(readonly, nonatomic) _Bool supportsHarmony;
 @property(readonly, nonatomic) _Bool supportsKeySharing;
 @property(readonly, nonatomic) _Bool supportsFMDV2;
@@ -126,6 +129,8 @@
 @property(readonly, nonatomic) NSString *deviceIDPrefix;
 @property(readonly, nonatomic) NSString *model;
 @property(readonly, nonatomic) _Bool supportsHEIFEncoding;
+@property(readonly, nonatomic) _Bool supportsCinematicFraming;
+@property(readonly, nonatomic) _Bool supportsHomeKitResident;
 @property(readonly, nonatomic) _Bool supportsAnimojiV2;
 @property(readonly, nonatomic) _Bool accountModificationRestricted;
 @property(readonly, nonatomic) _Bool registrationSupported;

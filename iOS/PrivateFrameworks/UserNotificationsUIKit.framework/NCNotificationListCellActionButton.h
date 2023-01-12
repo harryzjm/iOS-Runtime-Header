@@ -7,11 +7,12 @@
 #import <UIKit/UIControl.h>
 
 #import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
+#import <UserNotificationsUIKit/NCNotificationOptionsMenuPresenter-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class BSUIFontProvider, MTMaterialView, NCNotificationAction, NSString, UILabel;
+@class BSUIFontProvider, MTMaterialView, NCNotificationAction, NSString, UIBezierPath, UILabel;
 
-@interface NCNotificationListCellActionButton : UIControl <PLContentSizeCategoryAdjusting, MTMaterialGrouping>
+@interface NCNotificationListCellActionButton : UIControl <NCNotificationOptionsMenuPresenter, PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
     _Bool _adjustsFontForContentSizeCategory;
     NSString *_preferredContentSizeCategory;
@@ -34,6 +35,7 @@
 @property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
+@property(readonly, copy, nonatomic) UIBezierPath *visiblePathForPreview;
 - (void)_handleHoverGestureRecognizerEvent:(id)arg1;
 - (_Bool)adjustForContentSizeCategoryChange;
 - (void)_unHighlightButton:(id)arg1;

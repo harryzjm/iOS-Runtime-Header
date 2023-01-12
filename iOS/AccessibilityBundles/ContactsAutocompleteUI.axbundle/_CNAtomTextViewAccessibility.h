@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+- (struct _NSRange)_accessibilitySelectedTextRange;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)_accessibilityUseInactiveTextViewValueForParent:(id)arg1;
 - (id)accessibilityAttributedValue;

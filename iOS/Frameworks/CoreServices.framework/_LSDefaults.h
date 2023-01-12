@@ -29,14 +29,6 @@
     long long _currentDisplayGamut;
 }
 
-+ (_Bool)hasPersistentPreferences;
-+ (_Bool)hasServer;
-+ (_Bool)appleInternal;
-+ (_Bool)inXCTestRigInsecure;
-+ (_Bool)inSyncBubble;
-+ (id)userContainerURL;
-+ (id)systemGroupContainerURL;
-+ (id)systemContainerURL;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(readonly) _Bool hasPersistentPreferences; // @synthesize hasPersistentPreferences=_hasPersistentPreferences;
@@ -47,7 +39,6 @@
 @property(readonly, getter=isInSyncBubble) _Bool inSyncBubble; // @synthesize inSyncBubble=_inSyncBubble;
 - (id)debugDescription;
 @property(readonly) NSData *HMACSecret;
-@property(readonly) _Bool surrogatesOnlyFindBundleContainerizedBundles; // @dynamic surrogatesOnlyFindBundleContainerizedBundles;
 @property(readonly, getter=isRegionChina) _Bool regionChina; // @dynamic regionChina;
 @property(readonly) _Bool alwaysUseDebugOpenWithMenus; // @dynamic alwaysUseDebugOpenWithMenus;
 @property(readonly) _Bool markLocalizationsStoredInDatabase; // @dynamic markLocalizationsStoredInDatabase;
@@ -55,6 +46,7 @@
 @property(readonly) long long concurrentInstallOperations;
 @property(readonly) double databaseSaveLatency;
 @property(readonly) double databaseSaveInterval;
+@property(readonly) _Bool enumerateExtensionPointsUsingExtensionKit; // @dynamic enumerateExtensionPointsUsingExtensionKit;
 - (id)preferencesFileChangeNotificationName;
 - (id)preferencesUpdateNotificationName;
 - (id)databaseUpdateNotificationNameForUserID:(unsigned int)arg1;

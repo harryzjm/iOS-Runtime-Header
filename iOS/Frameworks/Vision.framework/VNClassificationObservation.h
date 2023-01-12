@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)operationPointsAndReturnError:(id *)arg1;
@@ -21,11 +22,13 @@
 - (_Bool)hasMinimumRecall:(float)arg1 forPrecision:(float)arg2;
 - (_Bool)hasPrecisionRecallCurve;
 - (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 identifier:(id)arg2 confidence:(float)arg3 operationPointsProvider:(id)arg4;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 identifier:(id)arg2 confidence:(float)arg3;
 - (id)initWithRequestRevision:(unsigned long long)arg1 identifier:(id)arg2 confidence:(float)arg3 operationPointsProvider:(id)arg4;
 - (id)initWithRequestRevision:(unsigned long long)arg1 identifier:(id)arg2 confidence:(float)arg3;
 

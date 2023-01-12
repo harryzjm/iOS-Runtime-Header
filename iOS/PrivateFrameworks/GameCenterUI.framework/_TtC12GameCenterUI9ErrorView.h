@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+@property(nonatomic) struct UIEdgeInsets layoutMargins;
 - (id)initWithCoder:(id)arg1;
 
 @end

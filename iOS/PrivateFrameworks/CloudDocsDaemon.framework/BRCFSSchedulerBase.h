@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)signal;
 - (void)signalWithDeadline:(long long)arg1;
 - (void)checkIfHasWork;
+- (unsigned int)recoverAndReportMissingJobs;
 - (void)deleteExpiredJobs;
 - (void)resetBackoffForJobWithID:(id)arg1;
 - (void)deleteJobsMatching:(id)arg1;

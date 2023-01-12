@@ -12,11 +12,13 @@
 
 @interface MTLLinkedFunctions : NSObject <NSCopying>
 {
+    NSArray *_privateFunctions;
 }
 
 + (id)linkedFunctions;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
+@property(copy, nonatomic) NSArray *privateFunctions; // @synthesize privateFunctions=_privateFunctions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reset;
 

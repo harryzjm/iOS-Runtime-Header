@@ -11,7 +11,7 @@
 @interface _TtC7NewsUI229MagazineCategoryConfigService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *magazineConfigurationService;
-    MISSING_TYPE *appVersion;
+    MISSING_TYPE *$__lazy_storage_$_appVersion;
 }
 
 @end

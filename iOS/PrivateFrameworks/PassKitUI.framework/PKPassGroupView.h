@@ -55,7 +55,6 @@
     _Bool _modallyPresented;
     _Bool _loaned;
     _Bool _paused;
-    _Bool _reduceMotionEnabled;
     PKPassView *_frontmostPassView;
     PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
@@ -70,7 +69,6 @@
 @property(nonatomic) __weak PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
 @property(readonly, nonatomic) PKGroup *group; // @synthesize group=_group;
 @property(retain, nonatomic) PKPassView *frontmostPassView; // @synthesize frontmostPassView=_frontmostPassView;
-@property(nonatomic, getter=isReducedMotionEnabled) _Bool reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic, getter=isLoaned) _Bool loaned; // @synthesize loaned=_loaned;
 @property(nonatomic, getter=isModallyPresented) _Bool modallyPresented; // @synthesize modallyPresented=_modallyPresented;
@@ -132,16 +130,17 @@
 - (void)_updateCachedGroupState;
 - (void)_updateDelegateResponderCache;
 - (void)setDimmer:(double)arg1 animated:(_Bool)arg2;
-- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2;
+- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2 animated:(_Bool)arg3;
 - (void)presentPassWithUniqueID:(id)arg1;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endPinningFrontFaceContentMode;
 - (void)beginPinningFrontFaceContentMode;
 - (void)applyContentModesAnimated:(_Bool)arg1;
 - (void)setPassViewExpanded:(_Bool)arg1 forPass:(id)arg2 animated:(_Bool)arg3;
+- (void)setPresentationState:(long long)arg1 withContext:(id)arg2 animated:(_Bool)arg3;
 - (void)setPresentationState:(long long)arg1 animated:(_Bool)arg2;
-- (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2;
-- (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2;
+- (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2 animated:(_Bool)arg3;
+- (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2 animated:(_Bool)arg3;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1;
 - (void)_updatePausedState;
 - (struct CGRect)_pagingFrameForCardView:(id)arg1 atIndex:(unsigned long long)arg2;

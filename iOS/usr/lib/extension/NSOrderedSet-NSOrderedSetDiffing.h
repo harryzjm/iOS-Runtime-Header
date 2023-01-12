@@ -7,6 +7,7 @@
 #import <Foundation/NSOrderedSet.h>
 
 @interface NSOrderedSet (NSOrderedSetDiffing)
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 - (id)orderedSetByApplyingDifference:(id)arg1;
 - (id)differenceFromOrderedSet:(id)arg1;

@@ -10,13 +10,14 @@
 #import <UserNotificationsUIKit/NCToggleControlDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class NCNotificationListHeaderTitleView, NCToggleControl, NSString, UIControl, _UILegibilitySettings;
+@class NCNotificationListHeaderTitleView, NCToggleControl, NSString, UIButton, UIControl, _UILegibilitySettings;
 @protocol NCNotificationListSectionHeaderViewDelegate;
 
 @interface NCNotificationListSectionHeaderView : UIView <NCToggleControlDelegate, NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting>
 {
     NCToggleControl *_clearButton;
     _Bool _adjustsFontForContentSizeCategory;
+    _Bool _showCollapseButton;
     NSString *_preferredContentSizeCategory;
     id <NCNotificationListSectionHeaderViewDelegate> _delegate;
     NSString *_sectionIdentifier;
@@ -24,24 +25,31 @@
     NSString *_materialGroupNameBase;
     NCNotificationListHeaderTitleView *_headerTitleView;
     _UILegibilitySettings *_legibilitySettings;
+    UIButton *_collapseButton;
 }
 
-+ (double)headerHeightWithWidth:(double)arg1 title:(id)arg2;
++ (double)headerHeightWithWidth:(double)arg1 title:(id)arg2 isShowingCollapseButton:(_Bool)arg3;
++ (struct CGSize)_collapseButtonPreferredSize;
 + (struct CGSize)_clearButtonPreferredSize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIButton *collapseButton; // @synthesize collapseButton=_collapseButton;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(retain, nonatomic) NCNotificationListHeaderTitleView *headerTitleView; // @synthesize headerTitleView=_headerTitleView;
+@property(nonatomic) _Bool showCollapseButton; // @synthesize showCollapseButton=_showCollapseButton;
 @property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property(nonatomic) __weak id <NCNotificationListSectionHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
+- (void)_handleCollapseActionTriggered:(id)arg1;
 - (void)_handleClearAll:(id)arg1;
 - (void)_handleClearButtonPrimaryActionTriggered:(id)arg1;
 - (void)_handleClearButtonTouchUpInside:(id)arg1;
+- (void)_layoutCollapseButton;
 - (void)_layoutHeaderTitleView;
 - (void)_layoutClearButton;
+- (void)_configureCollapseButtonIfNecessary;
 - (void)_configureHeaderTitleViewIfNecessary;
 - (void)_configureClearButtonIfNecessary;
 - (void)_resetClearButtonStateAnimated:(_Bool)arg1;

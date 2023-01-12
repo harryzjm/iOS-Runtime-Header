@@ -22,7 +22,7 @@
 @property(retain) NSArray *characteristics; // @synthesize characteristics=_characteristics;
 @property(retain) NSArray *includedServices; // @synthesize includedServices=_includedServices;
 @property(nonatomic) _Bool isPrimary; // @synthesize isPrimary=_isPrimary;
-@property(readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
+@property(readonly, nonatomic) __weak CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 - (id)handleCharacteristicsDiscovered:(id)arg1;
 - (id)handleIncludedServicesDiscovered:(id)arg1;
 - (void)invalidate;

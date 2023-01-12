@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UITargetedPreview *targetedPreview; // @synthesize targetedPreview=_targetedPreview;
 @property(nonatomic) double backgroundAlpha; // @synthesize backgroundAlpha=_backgroundAlpha;
 @property(nonatomic) double shadowAlpha; // @synthesize shadowAlpha=_shadowAlpha;
+- (_Bool)_isEligibleForFocusOcclusion;
 - (id)initWithTargetedPreview:(id)arg1;
 
 @end

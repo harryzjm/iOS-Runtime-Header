@@ -8,6 +8,7 @@
 {
 }
 
++ (Class)relatedRecordClass;
 - (_Bool)supportsDeletion;
 
 @end

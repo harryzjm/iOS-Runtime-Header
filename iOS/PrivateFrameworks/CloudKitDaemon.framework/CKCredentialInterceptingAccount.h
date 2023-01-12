@@ -8,7 +8,6 @@
 
 @class CKDBackingFakeAccount;
 
-__attribute__((visibility("hidden")))
 @interface CKCredentialInterceptingAccount : ACAccount
 {
     CKDBackingFakeAccount *_backingFakeAccount;

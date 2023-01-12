@@ -6,28 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
-
 __attribute__((visibility("hidden")))
 @interface _HDCachedSourceOrder : NSObject
 {
     _Bool _userOrdered;
     _Bool _isDefaultSourceOrder;
-    vector_f9051771 _orderedSources;
-    unordered_map_0fc8d213 _sourcesByID;
+    struct vector<_HDWrappedSource, std::allocator<_HDWrappedSource>> _orderedSources;
+    struct unordered_map<long long, HKSource *, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, HKSource *>>> _sourcesByID;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isDefaultSourceOrder; // @synthesize isDefaultSourceOrder=_isDefaultSourceOrder;
-@property(readonly, nonatomic) _Bool userOrdered; // @synthesize userOrdered=_userOrdered;
-@property(nonatomic) unordered_map_0fc8d213 sourcesByID; // @synthesize sourcesByID=_sourcesByID;
-@property(nonatomic) vector_f9051771 orderedSources; // @synthesize orderedSources=_orderedSources;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-@property(readonly, copy, nonatomic) NSArray *sourceIDs;
-@property(readonly, copy, nonatomic) NSArray *sources;
-- (id)initWithSources:(vector_f9051771)arg1 userOrdered:(_Bool)arg2 isDefaultOrder:(_Bool)arg3;
 - (id)init;
 
 @end

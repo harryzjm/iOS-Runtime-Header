@@ -9,7 +9,7 @@
 #import <ClassKit/NSCopying-Protocol.h>
 #import <ClassKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class CLSAdminRequestor, NSArray, NSString;
 
 @interface CLSSearchSpecification : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     NSString *_searchString;
     NSArray *_searchTokens;
     unsigned long long _compareOptions;
+    CLSAdminRequestor *_adminRequestor;
     NSArray *_classSortDescriptors;
     NSArray *_classLocationIDs;
     NSArray *_personSortDescriptors;
@@ -36,6 +37,8 @@
     NSArray *_requiredLocationPersonIDs;
     NSString *_prohibitedLocationPrivilege;
     NSArray *_prohibitedLocationPersonIDs;
+    NSArray *_organizationSortDescriptors;
+    NSString *_requiredOrganizationEmailDomain;
     NSArray *_requiredClassMemberClassIDs;
     unsigned long long _requiredClassMemberRole;
 }
@@ -45,6 +48,8 @@
 - (void).cxx_destruct;
 @property unsigned long long requiredClassMemberRole; // @synthesize requiredClassMemberRole=_requiredClassMemberRole;
 @property(copy) NSArray *requiredClassMemberClassIDs; // @synthesize requiredClassMemberClassIDs=_requiredClassMemberClassIDs;
+@property(copy) NSString *requiredOrganizationEmailDomain; // @synthesize requiredOrganizationEmailDomain=_requiredOrganizationEmailDomain;
+@property(copy) NSArray *organizationSortDescriptors; // @synthesize organizationSortDescriptors=_organizationSortDescriptors;
 @property(copy) NSArray *prohibitedLocationPersonIDs; // @synthesize prohibitedLocationPersonIDs=_prohibitedLocationPersonIDs;
 @property(copy) NSString *prohibitedLocationPrivilege; // @synthesize prohibitedLocationPrivilege=_prohibitedLocationPrivilege;
 @property(copy) NSArray *requiredLocationPersonIDs; // @synthesize requiredLocationPersonIDs=_requiredLocationPersonIDs;
@@ -63,12 +68,14 @@
 @property _Bool includeUnsearchablePersons; // @synthesize includeUnsearchablePersons=_includeUnsearchablePersons;
 @property(copy, nonatomic) NSArray *classLocationIDs; // @synthesize classLocationIDs=_classLocationIDs;
 @property(copy) NSArray *classSortDescriptors; // @synthesize classSortDescriptors=_classSortDescriptors;
+@property(copy) CLSAdminRequestor *adminRequestor; // @synthesize adminRequestor=_adminRequestor;
 @property(nonatomic) unsigned long long compareOptions; // @synthesize compareOptions=_compareOptions;
 @property(copy, nonatomic) NSArray *searchTokens; // @synthesize searchTokens=_searchTokens;
 @property(copy) NSString *searchString; // @synthesize searchString=_searchString;
 @property(nonatomic) unsigned long long behaviors; // @synthesize behaviors=_behaviors;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 - (_Bool)isClassMemberSearch;
+- (_Bool)isOrganizationSearch;
 - (_Bool)isLocationSearch;
 - (_Bool)isClassSearch;
 - (_Bool)isPersonSearch;
@@ -77,6 +84,7 @@
 - (_Bool)canUsePersonPredicate;
 - (_Bool)canUseClassPredicate;
 - (_Bool)requiresDashboardEntitlement;
+- (_Bool)isValid:(_Bool)arg1 error:(id *)arg2;
 - (id)predicateWithLocationIDs:(id)arg1;
 - (id)predicate;
 - (id)predicateForClasses;
@@ -87,6 +95,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithOptions:(unsigned long long)arg1 behaviors:(unsigned long long)arg2 searchString:(id)arg3 requestor:(id)arg4;
 - (id)initWithOptions:(unsigned long long)arg1 behaviors:(unsigned long long)arg2 searchString:(id)arg3;
 - (id)initWithOptions:(unsigned long long)arg1 behaviors:(unsigned long long)arg2;
 - (void)prohibitPrivilege:(id)arg1 atLocationIDs:(id)arg2;
@@ -98,6 +107,7 @@
 - (void)prohibitPrivilege:(id)arg1 onPersonIDs:(id)arg2;
 - (void)requirePrivilege:(id)arg1 onPersonIDs:(id)arg2;
 - (void)requireRoleType:(long long)arg1 onPersonIDs:(id)arg2;
+- (void)restrictToOrganizationsMatchingEmailDomain:(id)arg1;
 - (void)requireClassMemberRole:(unsigned long long)arg1 forClassIDs:(id)arg2;
 
 @end

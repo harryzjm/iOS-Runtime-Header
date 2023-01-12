@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordID, NSString;
+@class CKRecordID, NSArray, NSString;
 
 @interface WFMutableGalleryBanner
 {
@@ -14,9 +14,11 @@
     NSString *language;
     CKRecordID *base;
     NSString *persistentIdentifier;
+    NSArray *supportedIdioms;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *supportedIdioms; // @synthesize supportedIdioms;
 @property(copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;
 @property(retain, nonatomic) CKRecordID *base; // @synthesize base;
 @property(copy, nonatomic) NSString *language; // @synthesize language;

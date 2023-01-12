@@ -10,6 +10,7 @@
 
 @protocol _CPDidGoToSiteFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) int triggerEvent;
 @property(copy, nonatomic) NSString *input;
 @property(nonatomic) unsigned long long timestamp;
 - (id)initWithDictionary:(NSDictionary *)arg1;

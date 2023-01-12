@@ -26,12 +26,17 @@
 - (id)imageData;
 @property(readonly, nonatomic) _Bool hasImage;
 - (id)loadAndReturnImageData;
+- (_Bool)_writeImageData:(id)arg1 path:(id)arg2 error:(id *)arg3;
 - (id)publicDictionaryMetadataRepresentation;
 - (id)publicDictionaryRepresentation;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithpublicDictionaryMetadataRepresentation:(id)arg1;
+- (id)initWithPublicDictionaryMetadataRepresentation:(id)arg1 imageData:(id)arg2 imageFilePath:(id)arg3 error:(id *)arg4;
+- (id)initWithPublicDictionaryMetadataRepresentation:(id)arg1;
+- (id)initWithImageName:(id)arg1 imageData:(id)arg2 imageFilePath:(id)arg3 error:(id *)arg4;
+- (id)initWithImageName:(id)arg1 imageData:(id)arg2 imageFilePath:(id)arg3;
 - (id)initWithImageName:(id)arg1 imageFilePath:(id)arg2;
+- (id)init;
 
 @end
 

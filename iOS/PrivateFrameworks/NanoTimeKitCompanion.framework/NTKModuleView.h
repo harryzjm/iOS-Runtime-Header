@@ -58,7 +58,9 @@
 - (id)viewsAndSpacingArrayForSpace:(double)arg1 view:(id)arg2 space:(double)arg3 view:(id)arg4;
 - (id)viewsAndSpacingArrayForSpace:(double)arg1 view:(id)arg2;
 - (void)applyColorScheme:(id)arg1;
-- (void)_applyMonochromeTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3;
+- (void)_applyMonochromeTransitionFraction:(double)arg1 fromFaceColorPalette:(id)arg2 toFaceColorPalette:(id)arg3;
+- (void)applyTransitionFraction:(double)arg1 fromFaceColorPalette:(id)arg2 toFaceColorPalette:(id)arg3 units:(unsigned long long)arg4 brightenedUnits:(unsigned long long)arg5;
+- (void)applyFaceColorPalette:(id)arg1 units:(unsigned long long)arg2;
 - (void)applyTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 units:(unsigned long long)arg4 brightenedUnits:(unsigned long long)arg5;
 - (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;
 - (void)_updateColors;

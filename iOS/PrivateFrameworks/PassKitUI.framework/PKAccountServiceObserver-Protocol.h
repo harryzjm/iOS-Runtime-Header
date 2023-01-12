@@ -6,11 +6,12 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSString, PKAccount;
+@class NSSet, NSString, PKAccount;
 
 @protocol PKAccountServiceObserver <NSObject>
 
 @optional
+- (void)accountUsersChanged:(NSSet *)arg1 forAccountIdentifier:(NSString *)arg2;
 - (void)scheduledPaymentsChangedForAccountIdentifier:(NSString *)arg1;
 - (void)statementsChangedForAccountIdentifier:(NSString *)arg1;
 - (void)accountRemoved:(PKAccount *)arg1;

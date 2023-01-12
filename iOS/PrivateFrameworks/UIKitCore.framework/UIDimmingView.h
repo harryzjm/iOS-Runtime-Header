@@ -5,12 +5,13 @@
 //
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIEventObserver-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIColor, UIImageView, UITapGestureRecognizer;
+@class NSArray, NSMutableSet, NSString, UIBarButtonItem, UIColor, UIEvent, UIImageView, UITapGestureRecognizer;
 @protocol UIDimmingViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDimmingView <UIGestureRecognizerDelegate>
+@interface UIDimmingView <_UIEventObserver, UIGestureRecognizerDelegate>
 {
     UIBarButtonItem *_highlightedBarButtonItem;
     UIImageView *_highlightedImageView;
@@ -20,14 +21,18 @@ __attribute__((visibility("hidden")))
     _Bool _inPassthroughHitTest;
     UIColor *_dimmingColor;
     UITapGestureRecognizer *_singleFingerTapRecognizer;
+    UIEvent *_observedEventForAdditionalGestures;
+    NSMutableSet *_additionalEventGestureRecognizers;
     _Bool _suppressesBackdrops;
     id <UIDimmingViewDelegate> _delegate;
     double _percentDisplayed;
     double _percentLightened;
+    NSArray *_lowerWindowDismissalGestureViews;
 }
 
 + (id)defaultDimmingColor;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *lowerWindowDismissalGestureViews; // @synthesize lowerWindowDismissalGestureViews=_lowerWindowDismissalGestureViews;
 @property(nonatomic) double percentLightened; // @synthesize percentLightened=_percentLightened;
 @property(nonatomic) double percentDisplayed; // @synthesize percentDisplayed=_percentDisplayed;
 @property(nonatomic) _Bool suppressesBackdrops; // @synthesize suppressesBackdrops=_suppressesBackdrops;
@@ -35,6 +40,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
 @property(copy, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
 @property(nonatomic) __weak id <UIDimmingViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)isTransparentFocusItem;
+- (id)_gestureRecognizersForEvent:(id)arg1;
+- (void)_clearAdditionalEventGestures;
+- (void)_queueAdditionalEventGesturesFromView:(id)arg1;
 - (void)_sendDelegateDimmingViewWasTapped;
 - (void)_simulateTap;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
@@ -52,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIBarButtonItem *highlightedBarButtonItem;
 - (void)dimmingRemovalAnimationDidStop;
 - (int)textEffectsVisibilityLevel;
+- (void)willMoveToWindow:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -16,26 +16,40 @@
     NSString *_realm;
     NSDictionary *_domainRealmMapping;
     NSArray *_hosts;
-    NSString *_siteCode;
-    NSUUID *_currentCredential;
+    NSArray *_kdcs;
+    long long _credentialUseMode;
 }
 
 + (_Bool)supportsSecureCoding;
++ (void)deleteAllSettings;
 + (_Bool)deleteSettingsForRealm:(id)arg1 error:(id *)arg2;
 + (id)retrieveAllCurrentSettings;
 + (id)retrieveCurrentSettingsForRealm:(id)arg1 error:(id *)arg2;
++ (struct HeimCred_s *)retrieveSetting:(id)arg1 forRealm:(id)arg2;
 + (struct HeimCred_s *)retrieveCurrentSettingsForRealm:(id)arg1;
-+ (_Bool)createOrSaveSettings:(id)arg1 realm:(id)arg2 error:(id *)arg3;
++ (struct HeimCred_s *)createCacheEntryWithError:(id *)arg1;
++ (struct HeimCred_s *)retrieveCacheEntry;
++ (_Bool)createSettingCacheEntryIfNeededWithError:(id *)arg1;
++ (id)stringWithCredentialUseMode:(long long)arg1;
++ (void)setAppSSOKerberosCacheName:(id)arg1;
++ (id)appSSOKerberosCacheName;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSUUID *currentCredential; // @synthesize currentCredential=_currentCredential;
-@property(retain, nonatomic) NSString *siteCode; // @synthesize siteCode=_siteCode;
+@property(nonatomic) long long credentialUseMode; // @synthesize credentialUseMode=_credentialUseMode;
+@property(retain, nonatomic) NSArray *kdcs; // @synthesize kdcs=_kdcs;
 @property(retain, nonatomic) NSArray *hosts; // @synthesize hosts=_hosts;
 @property(retain, nonatomic) NSDictionary *domainRealmMapping; // @synthesize domainRealmMapping=_domainRealmMapping;
 @property(nonatomic, getter=isDefaultRealm) _Bool defaultRealm; // @synthesize defaultRealm=_defaultRealm;
-@property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
+@property(readonly, nonatomic) NSString *realm; // @synthesize realm=_realm;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)saveSetting:(id)arg1 data:(id)arg2 withError:(id *)arg3;
+- (_Bool)saveWithError:(id *)arg1;
+- (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *siteCode;
+@property(retain, nonatomic) NSUUID *currentCredential;
+- (id)initWithRealm:(id)arg1;
+- (id)init;
 
 @end
 

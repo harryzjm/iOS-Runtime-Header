@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface GQDBGTheme : NSObject
 {
     GQDSStylesheet *mStylesheet;
-    struct __CFArray *mMasterSlides;
+    struct __CFArray *mTemplateSlides;
 }
 
 - (id)stylesheet;

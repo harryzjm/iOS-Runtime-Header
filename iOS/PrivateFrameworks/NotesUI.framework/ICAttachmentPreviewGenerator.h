@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NotesUI/ICAttachmentPreviewGenerating-Protocol.h>
 #import <NotesUI/ICProgressIndicatorTrackerDelegate-Protocol.h>
 
 @class ICAttachmentPreviewGeneratorOperationQueue, ICProgressIndicatorTracker, NSMapTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface ICAttachmentPreviewGenerator : NSObject <ICProgressIndicatorTrackerDelegate>
+@interface ICAttachmentPreviewGenerator : NSObject <ICProgressIndicatorTrackerDelegate, ICAttachmentPreviewGenerating>
 {
     _Atomic _Bool _shouldGenerateAttachmentsWhenReachable;
     ICAttachmentPreviewGeneratorOperationQueue *_asyncGeneratorQueue;

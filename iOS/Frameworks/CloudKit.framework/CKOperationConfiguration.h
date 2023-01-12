@@ -15,6 +15,7 @@
 @interface CKOperationConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _allowsCellularAccess;
+    _Bool _allowsExpensiveNetworkAccess;
     _Bool _longLived;
     _Bool _preferAnonymousRequests;
     _Bool _automaticallyRetryNetworkFailures;
@@ -25,6 +26,7 @@
     _Bool _hasQualityOfService;
     _Bool _hasContainer;
     _Bool _hasAllowsCellularAccess;
+    _Bool _hasAllowsExpensiveNetworkAccess;
     _Bool _hasLongLived;
     _Bool _hasTimeoutIntervalForRequest;
     _Bool _hasTimeoutIntervalForResource;
@@ -63,26 +65,9 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CKSchedulerActivity *schedulerActivity; // @synthesize schedulerActivity=_schedulerActivity;
 @property(retain, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
-@property(nonatomic) _Bool hasCacheDeleteAvailableSpaceClass; // @synthesize hasCacheDeleteAvailableSpaceClass=_hasCacheDeleteAvailableSpaceClass;
-@property(nonatomic) _Bool hasIsCloudKitSupportOperation; // @synthesize hasIsCloudKitSupportOperation=_hasIsCloudKitSupportOperation;
-@property(nonatomic) _Bool hasAdditionalRequestHTTPHeaders; // @synthesize hasAdditionalRequestHTTPHeaders=_hasAdditionalRequestHTTPHeaders;
-@property(nonatomic) _Bool hasApplicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize hasApplicationBundleIdentifierOverrideForNetworkAttribution=_hasApplicationBundleIdentifierOverrideForNetworkAttribution;
-@property(nonatomic) _Bool hasApplicationBundleIdentifierOverrideForContainerAccess; // @synthesize hasApplicationBundleIdentifierOverrideForContainerAccess=_hasApplicationBundleIdentifierOverrideForContainerAccess;
-@property(nonatomic) _Bool hasSourceApplicationSecondaryIdentifier; // @synthesize hasSourceApplicationSecondaryIdentifier=_hasSourceApplicationSecondaryIdentifier;
-@property(nonatomic) _Bool hasSourceApplicationBundleIdentifier; // @synthesize hasSourceApplicationBundleIdentifier=_hasSourceApplicationBundleIdentifier;
-@property(nonatomic) _Bool hasAllowsBackgroundNetworking; // @synthesize hasAllowsBackgroundNetworking=_hasAllowsBackgroundNetworking;
-@property(nonatomic) _Bool hasPreferAnonymousRequests; // @synthesize hasPreferAnonymousRequests=_hasPreferAnonymousRequests;
-@property(nonatomic) _Bool hasDiscretionarySchedulingForEntireOperation; // @synthesize hasDiscretionarySchedulingForEntireOperation=_hasDiscretionarySchedulingForEntireOperation;
-@property(nonatomic) _Bool hasSchedulerActivity; // @synthesize hasSchedulerActivity=_hasSchedulerActivity;
-@property(nonatomic) _Bool hasXPCActivityAutomaticallyDefer; // @synthesize hasXPCActivityAutomaticallyDefer=_hasXPCActivityAutomaticallyDefer;
-@property(nonatomic) _Bool hasXPCActivity; // @synthesize hasXPCActivity=_hasXPCActivity;
 @property(nonatomic) _Bool hasDiscretionaryNetworkBehavior; // @synthesize hasDiscretionaryNetworkBehavior=_hasDiscretionaryNetworkBehavior;
 @property(nonatomic) _Bool hasAutomaticallyRetryNetworkFailures; // @synthesize hasAutomaticallyRetryNetworkFailures=_hasAutomaticallyRetryNetworkFailures;
-@property(nonatomic) _Bool hasTimeoutIntervalForResource; // @synthesize hasTimeoutIntervalForResource=_hasTimeoutIntervalForResource;
-@property(nonatomic) _Bool hasTimeoutIntervalForRequest; // @synthesize hasTimeoutIntervalForRequest=_hasTimeoutIntervalForRequest;
-@property(nonatomic) _Bool hasLongLived; // @synthesize hasLongLived=_hasLongLived;
-@property(nonatomic) _Bool hasAllowsCellularAccess; // @synthesize hasAllowsCellularAccess=_hasAllowsCellularAccess;
-@property(nonatomic) _Bool hasContainer; // @synthesize hasContainer=_hasContainer;
+@property(nonatomic) _Bool hasAllowsExpensiveNetworkAccess; // @synthesize hasAllowsExpensiveNetworkAccess=_hasAllowsExpensiveNetworkAccess;
 @property(nonatomic) _Bool hasQualityOfService; // @synthesize hasQualityOfService=_hasQualityOfService;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcActivity; // @synthesize xpcActivity=_xpcActivity;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
@@ -104,14 +89,13 @@
 @property(nonatomic) _Bool discretionarySchedulingForEntireOperation; // @synthesize discretionarySchedulingForEntireOperation=_discretionarySchedulingForEntireOperation;
 @property(nonatomic) _Bool xpcActivityAutomaticallyDefer; // @synthesize xpcActivityAutomaticallyDefer=_xpcActivityAutomaticallyDefer;
 @property(nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
-- (void)setAutomaticallyRetryNetworkFailuresIfNotSet:(_Bool)arg1;
 @property(nonatomic) _Bool automaticallyRetryNetworkFailures; // @synthesize automaticallyRetryNetworkFailures=_automaticallyRetryNetworkFailures;
 @property(nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 @property(nonatomic) double timeoutIntervalForRequest; // @synthesize timeoutIntervalForRequest=_timeoutIntervalForRequest;
 @property(nonatomic, getter=isLongLived) _Bool longLived; // @synthesize longLived=_longLived;
+@property(nonatomic) _Bool allowsExpensiveNetworkAccess; // @synthesize allowsExpensiveNetworkAccess=_allowsExpensiveNetworkAccess;
 @property(nonatomic) _Bool allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-- (void)setQualityOfServiceWithoutQoSChecks:(long long)arg1;
 @property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
 - (id)resolveAgainstGenericConfiguration:(id)arg1;
 - (id)init;

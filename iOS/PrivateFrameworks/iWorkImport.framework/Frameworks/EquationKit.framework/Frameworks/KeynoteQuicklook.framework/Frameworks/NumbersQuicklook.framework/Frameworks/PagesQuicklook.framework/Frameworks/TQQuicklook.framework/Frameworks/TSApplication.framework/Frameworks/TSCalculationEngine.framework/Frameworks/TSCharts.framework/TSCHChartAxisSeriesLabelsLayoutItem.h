@@ -10,7 +10,7 @@
 
 - (id)selectionPathLabelType;
 - (unsigned long long)selectionPathLabelIndexForIndex:(unsigned long long)arg1 axis:(id)arg2;
-- (unsigned long long)strideInLayoutArea:(struct CGRect)arg1;
+- (unsigned long long)strideInLayoutSize:(struct CGSize)arg1;
 - (id)labelStringForAxis:(id)arg1 index:(unsigned long long)arg2;
 - (double)unitSpaceValueForAxis:(id)arg1 index:(unsigned long long)arg2;
 - (unsigned long long)numberOfLabelsForAxis:(id)arg1;

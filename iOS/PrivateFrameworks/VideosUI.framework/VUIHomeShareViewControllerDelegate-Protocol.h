@@ -6,11 +6,12 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class VUIHomeShareViewController, VUIMediaLibrary;
+@class NSArray, VUIHomeShareViewController, VUIMediaLibrary;
 
 @protocol VUIHomeShareViewControllerDelegate <NSObject>
 
 @optional
+- (void)homeShareViewController:(VUIHomeShareViewController *)arg1 didUpdateWith:(NSArray *)arg2;
 - (void)homeShareViewController:(VUIHomeShareViewController *)arg1 didSelectHomeShare:(VUIMediaLibrary *)arg2;
 @end
 

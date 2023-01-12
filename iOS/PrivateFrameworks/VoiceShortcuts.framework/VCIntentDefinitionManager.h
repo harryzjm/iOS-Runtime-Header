@@ -14,7 +14,6 @@
 {
 }
 
-+ (id)intentDefinitionLocalizableFileURLsForBundleID:(id)arg1;
 + (id)allBundleIdentifiers;
 + (id)appInfoForBundleID:(id)arg1;
 + (id)intentDefinitionBundleURLForBundleID:(id)arg1;

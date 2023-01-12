@@ -17,6 +17,7 @@
     _Bool _currentlyPlaying;
     _Bool _showActivityIndicator;
     _Bool _playingIndicatorLeadingSide;
+    _Bool _enabled;
     NSString *_text;
     NSString *_detailText;
     CPUITableCellAccessory *_accessory;
@@ -26,7 +27,9 @@
 
 + (id)configurationWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3 showExplicit:(_Bool)arg4 accessory:(id)arg5 showActivityIndicator:(_Bool)arg6 showPlaybackProgress:(_Bool)arg7 playbackProgress:(double)arg8 currentlyPlaying:(_Bool)arg9;
 + (id)configurationWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3 showExplicit:(_Bool)arg4 accessory:(id)arg5 showActivityIndicator:(_Bool)arg6 showPlaybackProgress:(_Bool)arg7 playbackProgress:(double)arg8 currentlyPlaying:(_Bool)arg9 playingIndicatorLeadingSide:(_Bool)arg10;
++ (id)configurationWithText:(id)arg1 detailText:(id)arg2 image:(id)arg3 showExplicit:(_Bool)arg4 accessory:(id)arg5 showActivityIndicator:(_Bool)arg6 showPlaybackProgress:(_Bool)arg7 playbackProgress:(double)arg8 currentlyPlaying:(_Bool)arg9 playingIndicatorLeadingSide:(_Bool)arg10 isEnabled:(_Bool)arg11;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool playingIndicatorLeadingSide; // @synthesize playingIndicatorLeadingSide=_playingIndicatorLeadingSide;
 @property(nonatomic) _Bool showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
 @property(nonatomic) _Bool currentlyPlaying; // @synthesize currentlyPlaying=_currentlyPlaying;

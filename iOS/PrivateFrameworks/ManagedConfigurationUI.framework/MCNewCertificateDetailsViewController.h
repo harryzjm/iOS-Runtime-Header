@@ -6,7 +6,6 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface MCNewCertificateDetailsViewController
 {
     id _certificateTrust;

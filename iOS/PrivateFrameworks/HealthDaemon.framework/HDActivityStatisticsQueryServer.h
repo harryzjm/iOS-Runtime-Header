@@ -24,14 +24,6 @@
 
 + (Class)queryClass;
 - (void).cxx_destruct;
-- (void)_queue_deliverResult:(id)arg1;
-- (void)_queue_deliverError:(id)arg1;
-- (void)_queue_deliverUpdates;
-- (void)_queue_reset;
-- (id)_queue_queryResultFromDataSourceWithError:(id *)arg1;
-- (void)_createDataSourceIfNecessary;
-- (id)_allObservedQuantityTypes;
-- (_Bool)_queue_queryIsRunning;
 - (void)_queue_didDeactivate;
 - (void)_queue_stop;
 - (void)_queue_start;

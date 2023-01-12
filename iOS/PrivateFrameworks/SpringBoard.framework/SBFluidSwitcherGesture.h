@@ -17,9 +17,11 @@
     SBAppLayout *_selectedAppLayout;
     UIGestureRecognizer *_gestureRecognizerForStudyLog;
     long long _type;
+    long long _selectedLayoutRole;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setSelectedLayoutRole:) long long selectedLayoutRole; // @synthesize selectedLayoutRole=_selectedLayoutRole;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic, setter=_setGestureRecognizerForStudyLog:) UIGestureRecognizer *gestureRecognizerForStudyLog; // @synthesize gestureRecognizerForStudyLog=_gestureRecognizerForStudyLog;
 @property(retain, nonatomic, setter=_setSelectedAppLayout:) SBAppLayout *selectedAppLayout; // @synthesize selectedAppLayout=_selectedAppLayout;

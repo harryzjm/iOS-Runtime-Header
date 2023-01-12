@@ -5,13 +5,14 @@
 //
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
+#import <VoiceShortcuts/WFDialogXPCHostProtocol-Protocol.h>
 
-@class NSXPCListenerEndpoint;
-@protocol WFDialogAlertPresenter;
+@protocol WFDialogAlertPresenter, WFDialogXPCProtocol;
 
-@protocol WFDialogAlertPresenterDelegate <NSObject>
+@protocol WFDialogAlertPresenterDelegate <NSObject, WFDialogXPCHostProtocol>
 - (void)dialogAlertPresenterDidInvalidateAlert:(id <WFDialogAlertPresenter>)arg1;
 - (void)dialogAlertPresenterDidDeactivateAlert:(id <WFDialogAlertPresenter>)arg1;
-- (NSXPCListenerEndpoint *)xpcListenerEndpointForDialogAlertPresenter:(id <WFDialogAlertPresenter>)arg1;
+- (void)dialogAlertPresenterDidDisconnectFromAlert:(id <WFDialogAlertPresenter>)arg1;
+- (void)dialogAlertPresenter:(id <WFDialogAlertPresenter>)arg1 didConnectToAlert:(id <WFDialogXPCProtocol>)arg2;
 @end
 

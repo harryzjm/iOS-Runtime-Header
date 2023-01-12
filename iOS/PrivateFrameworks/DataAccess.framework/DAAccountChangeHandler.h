@@ -15,6 +15,11 @@
 + (_Bool)_sanityCheckChildAccountOfType:(id)arg1 withParent:(id)arg2 accountChangeInfo:(id)arg3 inStore:(id)arg4 updater:(id)arg5;
 + (_Bool)_sanityCheckChildDAVAccount:(id)arg1 withParent:(id)arg2 modifiedDataClasses:(id)arg3;
 + (void)_sanityCheckCalDAVAccount:(id)arg1 modifiedDataClasses:(id)arg2;
++ (_Bool)_updateSubscribedCalendarAccountProperties:(id)arg1;
++ (_Bool)_sanityCheckSubscribedCalendarAccountInfo:(id)arg1;
++ (id)_findSubscribedCalendarForAccount:(id)arg1 inEventStore:(id)arg2;
++ (_Bool)_updateCalendarFromAccount:(id)arg1;
++ (_Bool)_handleChangeToSubscribedCalendar:(id)arg1 withChangeInfo:(id)arg2 inStore:(id)arg3 accountUpdater:(id)arg4;
 + (_Bool)_sanityCheckChildSubCalAccountsWithParent:(id)arg1 inStore:(id)arg2 accountUpdater:(id)arg3;
 + (id)_accountTypeWithIdentifier:(id)arg1 inStore:(id)arg2;
 + (_Bool)_handleCalDAVAccountModifiedByDataAccess:(id)arg1 withChangeInfo:(id)arg2 inStore:(id)arg3 accountUpdater:(id)arg4;
@@ -23,6 +28,7 @@
 + (void)_cleanupStoreForDisabledAccount:(id)arg1 inStore:(id)arg2;
 + (void)_handleAccountDelete:(id)arg1 withChangeInfo:(id)arg2 inStore:(id)arg3;
 + (_Bool)_handleAccountAddOrModify:(id)arg1 withChangeInfo:(id)arg2 inStore:(id)arg3 accountUpdater:(id)arg4;
++ (id)_supportedChildAccountTypesForParentAccountType:(id)arg1;
 + (void)handleAccountDidChange:(id)arg1 withChangeInfo:(id)arg2 store:(id)arg3;
 + (_Bool)handleAccountWillChange:(id)arg1 withChangeInfo:(id)arg2 store:(id)arg3 accountUpdater:(id)arg4;
 

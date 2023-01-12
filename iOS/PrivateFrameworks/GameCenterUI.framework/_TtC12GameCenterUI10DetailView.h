@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *imageView;
+    MISSING_TYPE *separator;
     MISSING_TYPE *chevronView;
     MISSING_TYPE *accessoryView;
     MISSING_TYPE *accessory;

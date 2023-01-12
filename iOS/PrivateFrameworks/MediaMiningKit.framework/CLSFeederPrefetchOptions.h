@@ -23,6 +23,7 @@
 @property(nonatomic) unsigned long long scenesPrefetchMode; // @synthesize scenesPrefetchMode=_scenesPrefetchMode;
 @property(nonatomic) unsigned long long personsPrefetchMode; // @synthesize personsPrefetchMode=_personsPrefetchMode;
 @property(nonatomic) unsigned long long personCountPrefetchMode; // @synthesize personCountPrefetchMode=_personCountPrefetchMode;
+- (void)mergeWithFeederPrefetchOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

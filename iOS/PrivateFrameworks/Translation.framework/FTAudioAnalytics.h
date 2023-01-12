@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_245a6b61)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_245a6b61)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *acoustic_features;
 @property(readonly, nonatomic) NSArray *speech_recognition_features;
 - (id)copyWithZone:(struct _NSZone *)arg1;

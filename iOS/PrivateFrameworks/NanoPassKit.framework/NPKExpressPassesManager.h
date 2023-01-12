@@ -15,19 +15,24 @@
     NSHashTable *_observers;
     NSArray *_currentPasses;
     NSArray *_currentPaymentPasses;
+    NSArray *_currentSecureElementPasses;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *currentSecureElementPasses; // @synthesize currentSecureElementPasses=_currentSecureElementPasses;
 @property(retain, nonatomic) NSArray *currentPaymentPasses; // @synthesize currentPaymentPasses=_currentPaymentPasses;
 @property(retain, nonatomic) NSArray *currentPasses; // @synthesize currentPasses=_currentPasses;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 - (void)reloadPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reloadPasses;
 - (id)passForUniqueID:(id)arg1;
+- (id)expiredPasses;
+- (id)secureElementPasses;
 - (id)paymentPasses;
 - (id)passes;
 - (void)setDefaultPaymentPass:(id)arg1;
 - (void)removePass:(id)arg1;
+- (void)unarchivePass:(id)arg1;
 - (void)movePassAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (_Bool)shouldAllowMovingItemAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)suppressRemoteUpdates;

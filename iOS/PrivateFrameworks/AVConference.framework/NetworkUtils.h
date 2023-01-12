@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)encryptionInfoForKey:(unsigned long long)arg1;
-+ (id)newEncryptionInfoWithMasterKeyIndex:(id)arg1;
-+ (id)securityKeyMaterialWithMasterKeyIndex:(id)arg1;
++ (id)newEncryptionInfoWithMediaKeyIndex:(id)arg1;
++ (id)securityKeyMaterialWithMediaKeyIndex:(id)arg1;
 + (id)newRTPSocketDictionary:(_Bool)arg1 rtpSourcePort:(short)arg2;
 + (int)socketWithIPAddress:(id)arg1 srcPort:(short)arg2 shouldConnect:(_Bool)arg3 error:(id *)arg4;
 + (int)nonConnectedSocketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;

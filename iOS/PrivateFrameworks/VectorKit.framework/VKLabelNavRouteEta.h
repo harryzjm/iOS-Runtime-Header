@@ -24,13 +24,20 @@ __attribute__((visibility("hidden")))
     _Bool _isPicked;
     _Bool _isRepositioning;
     unsigned char _orientation;
+    optional_51deb342 _when;
+    double _worldUnitsPerMeterAtPoint;
+    _Bool _didStyleChange;
 }
 
++ (unsigned char)toStyleNavLabelType:(long long)arg1;
 + (unsigned char)toStyleEtaComparison:(unsigned char)arg1;
-+ (struct RoadSignStyleGroup)styleForNavContext:(const struct NavContext *)arg1 selected:(_Bool)arg2 focused:(_Bool)arg3 etaComparison:(unsigned char)arg4 transportType:(unsigned char)arg5 additionalAttributes:(id)arg6;
-+ (vector_44b9b83b)baseAttributesForEtaLabel:(_Bool)arg1 focused:(_Bool)arg2 etaComparison:(unsigned char)arg3 transportType:(unsigned char)arg4 additionalAttributes:(id)arg5;
-+ (id)artworkForEtaDescription:(id)arg1 navContext:(const struct NavContext *)arg2 roadSignStyleGroup:(const struct RoadSignStyleGroup *)arg3 mercatorPoint:(const Mercator2_57ec32b6 *)arg4 orientation:(unsigned char)arg5 isSelected:(_Bool)arg6 artworkCache:(struct VKLabelNavArtworkCache *)arg7;
++ (struct RoadSignStyleGroup)styleForNavContext:(const struct NavContext *)arg1 selected:(_Bool)arg2 focused:(_Bool)arg3 etaComparison:(unsigned char)arg4 transportType:(unsigned char)arg5 navLabelType:(unsigned char)arg6 when:(optional_51deb342)arg7 additionalAttributes:(id)arg8;
++ (vector_20f0823a)baseAttributesForEtaLabel:(_Bool)arg1 focused:(_Bool)arg2 etaComparison:(unsigned char)arg3 transportType:(unsigned char)arg4 navLabelType:(unsigned char)arg5 when:(optional_51deb342)arg6 additionalAttributes:(id)arg7;
++ (id)artworkForEtaDescription:(id)arg1 navContext:(const struct NavContext *)arg2 roadSignStyleGroup:(const void *)arg3 mercatorPoint:(const void *)arg4 orientation:(unsigned char)arg5 isSelected:(_Bool)arg6 artworkCache:(void *)arg7;
 - (id).cxx_construct;
+@property(nonatomic) _Bool didStyleChange; // @synthesize didStyleChange=_didStyleChange;
+@property(readonly, nonatomic) double worldUnitsPerMeterAtPoint; // @synthesize worldUnitsPerMeterAtPoint=_worldUnitsPerMeterAtPoint;
+@property(nonatomic) optional_51deb342 when; // @synthesize when=_when;
 @property(nonatomic) _Bool isRepositioning; // @synthesize isRepositioning=_isRepositioning;
 @property(nonatomic) _Bool isPicked; // @synthesize isPicked=_isPicked;
 @property(readonly, nonatomic) VKRouteEtaDescription *displayEtaDescription; // @synthesize displayEtaDescription=_displayEtaDescription;
@@ -50,9 +57,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *shieldDisplayGroup;
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) _Bool isRamp;
-- (_retain_ptr_86da96eb)updateRoadSignWithNavContext:(const struct NavContext *)arg1 artworkCache:(struct VKLabelNavArtworkCache *)arg2;
+- (_retain_ptr_86da96eb)updateRoadSignWithNavContext:(const struct NavContext *)arg1 artworkCache:(void *)arg2;
 - (void)prepareStyleVarsWithContext:(struct NavContext *)arg1;
-- (void)createLabelWithNavContext:(const struct NavContext *)arg1 orientation:(unsigned char)arg2 etaDescription:(id)arg3 selected:(_Bool)arg4 artworkCache:(struct VKLabelNavArtworkCache *)arg5;
+- (void)createLabelWithNavContext:(const struct NavContext *)arg1 orientation:(unsigned char)arg2 etaDescription:(id)arg3 selected:(_Bool)arg4 when:(optional_51deb342)arg5 artworkCache:(void *)arg6;
 - (void)layoutWithNavContext:(struct NavContext *)arg1;
 - (void)_clearLabel;
 - (void)dealloc;

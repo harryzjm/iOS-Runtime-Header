@@ -14,20 +14,23 @@
     UIImageView *_appleLogo;
     unsigned long long _style;
     unsigned long long _version;
+    unsigned long long _watchSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long watchSize; // @synthesize watchSize=_watchSize;
 @property(nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(retain, nonatomic) UIImageView *appleLogo; // @synthesize appleLogo=_appleLogo;
 @property(nonatomic) double currentProgress; // @synthesize currentProgress=_currentProgress;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (struct CGSize)_size;
 - (void)drawRect:(struct CGRect)arg1;
 - (double)_tickLength;
-- (void)layoutSubviews;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (id)initWithStyle:(unsigned long long)arg1 andVersion:(unsigned long long)arg2;
+- (id)initWithStyle:(unsigned long long)arg1 andVersion:(unsigned long long)arg2 overrideSize:(unsigned long long)arg3;
 
 @end
 

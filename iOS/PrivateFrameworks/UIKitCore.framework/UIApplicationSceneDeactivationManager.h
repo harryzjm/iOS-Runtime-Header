@@ -30,7 +30,6 @@
 - (_Bool)_isEligibleScene:(id)arg1 withSettings:(id)arg2;
 - (_Bool)_areEligibleSettings:(id)arg1;
 - (_Bool)_isEligibleScene:(id)arg1;
-- (_Bool)_isEligibleProcess:(id)arg1;
 - (void)removeAssertion:(id)arg1;
 - (void)addAssertion:(id)arg1 withTransitionContext:(id)arg2;
 - (id)assertions;

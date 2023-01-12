@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
-#import <NewsUI2/FCNetworkEventObserving-Protocol.h>
-#import <NewsUI2/NSSNewsAnalyticsSessionManagerObserving-Protocol.h>
+@class MISSING_TYPE, NSString;
 
-@class MISSING_TYPE;
-
-@interface _TtC7NewsUI223TelemetrySessionManager : _TtCs12_SwiftObject <FCNetworkEventObserving, NSSNewsAnalyticsSessionManagerObserving>
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI223TelemetrySessionManager : NSObject
 {
     MISSING_TYPE *sessionManager;
     MISSING_TYPE *sessionObserver;
+    MISSING_TYPE *sceneSessionIdentifier;
 }
 
-- (void)networkEventMonitor:(id)arg1 loggedEvent:(id)arg2 inSession:(id)arg3;
-- (void)sessionWillEnd;
-- (void)sessionDidStartWithSessionID:(id)arg1;
+- (void).cxx_destruct;
+- (id)init;
+@property(nonatomic, copy) NSString *sceneSessionIdentifier;
 
 @end
 

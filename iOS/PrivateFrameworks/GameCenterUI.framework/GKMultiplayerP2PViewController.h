@@ -10,6 +10,8 @@
 @interface GKMultiplayerP2PViewController
 {
     _Bool _hosted;
+    _Bool _userCancelledMatching;
+    _Bool _datasourceConfigured;
     id <GKMultiplayerP2PViewControllerDelegate> _delegate;
     long long _mode;
     GKInvite *_acceptedInvite;
@@ -17,6 +19,8 @@
 }
 
 - (void).cxx_destruct;
+@property _Bool datasourceConfigured; // @synthesize datasourceConfigured=_datasourceConfigured;
+@property _Bool userCancelledMatching; // @synthesize userCancelledMatching=_userCancelledMatching;
 @property(nonatomic) double inviteeConnectionTimeStamp; // @synthesize inviteeConnectionTimeStamp=_inviteeConnectionTimeStamp;
 @property(retain, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
@@ -27,10 +31,11 @@
 - (void)showAutomatchingErrorAlert;
 - (void)showInviterDisconnectedAlert;
 - (void)showParentalControlsRestrictionAlert;
-- (void)processStatusUpdateMessageFromBytes:(const char *)arg1 withLength:(unsigned int)arg2;
+- (void)processStatusUpdateMessageFromPlayer:(id)arg1 bytes:(const char *)arg2 withLength:(unsigned int)arg3;
 - (void)sendStatusUpdate;
 - (void)playerDisconnected:(id)arg1;
 - (void)playerConnected:(id)arg1;
+- (void)updateMode;
 - (void)removedPlayer:(id)arg1;
 - (void)performActionsForButtonCancelCurrentMatching;
 - (void)resetInviteesStatus;
@@ -55,14 +60,18 @@
 - (void)setConnectingStateForPlayer:(id)arg1;
 - (void)setPlayer:(id)arg1 responded:(long long)arg2;
 - (void)setAutomatchPlayerCount:(long long)arg1;
+- (void)incrementOneAutoMatchPlayerCountIfPossible;
 - (void)setExistingPlayers:(id)arg1;
 - (_Bool)havePendingPlayers;
 - (_Bool)haveInvitedPlayers;
 - (void)updateStartGameButtonTitle;
 - (_Bool)isCanceling;
 - (long long)automatchParticipantStatus;
+- (void)didUpdateAutoMatchPlayerCount;
+- (void)updateFooterButtonStates;
 - (_Bool)isInSetupMode;
 - (void)updateForNewMode;
+- (_Bool)shouldChangeModeFromOldMode:(long long)arg1 toNewMode:(long long)arg2;
 - (void)finishWithError:(id)arg1;
 - (void)cancel;
 - (void)viewDidAppear:(_Bool)arg1;

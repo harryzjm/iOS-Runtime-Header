@@ -11,15 +11,15 @@
 #import <MediaPlayer/MPAVRoutingTableViewCellDelegate-Protocol.h>
 #import <MediaPlayer/UITableViewDataSource-Protocol.h>
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
-#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
-@class CARSessionStatus, MPAVClippingTableView, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingViewControllerUpdate, MPSectionedCollection, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSMutableSet, NSNumber, NSString, UIColor, UITableView;
+@class CARSessionStatus, MPAVClippingTableView, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingViewControllerUpdate, MPSectionedCollection, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSDictionary, NSMapTable, NSMutableSet, NSNumber, NSString, UIColor, UITableView;
 @protocol MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
-@interface MPAVRoutingViewController : UIViewController <CARSessionObserving, UITableViewDataSource, UITableViewDelegate, MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, _MPStateDumpPropertyListTransformable>
+@interface MPAVRoutingViewController : UIViewController <CARSessionObserving, UITableViewDataSource, UITableViewDelegate, MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate>
 {
     MPAVClippingTableView *_tableView;
     MPAVRoutingViewControllerUpdate *_pendingUpdate;
+    MPAVRoutingViewControllerUpdate *_optimisticUpdate;
     _Bool _isAnimatingUpdate;
     MPAVRoute *_displayedEndpointRoute;
     MPSectionedCollection *_routingViewItems;
@@ -28,6 +28,7 @@
     NSArray *_cachedPendingPickedRoutes;
     NSArray *_cachedDisplayAsPickedRoutes;
     NSArray *_cachedVolumeCapableRoutes;
+    NSDictionary *_cachedRouteGrouping;
     NSMutableSet *_expandedGroupUIDs;
     MPWeakTimer *_updateTimer;
     MPAVRoutingController *_routingController;
@@ -76,6 +77,7 @@
 - (_Bool)shouldGroupRoutingViewItems;
 - (id)_stateDumpObject;
 - (id)_createSectionedCollection:(id)arg1 withPickedRoutes:(id)arg2;
+- (void)_collapseAllGroups;
 - (id)_createRoutingViewItemsForRoutes:(id)arg1;
 - (id)groupUIDForRoute:(id)arg1;
 - (void)_endUpdates;
@@ -84,10 +86,14 @@
 - (double)_tableViewFooterViewHeight;
 - (double)_tableViewHeaderViewHeight;
 - (void)_applyUpdate:(id)arg1;
+- (void)updateExpandedGroups;
+- (id)endpointGroupUID;
 - (id)_createReloadUpdate;
 - (id)_createRefreshUpdate;
 - (void)_enqueueUpdate:(id)arg1;
+- (void)setOptimisticUpdate:(id)arg1;
 - (void)_updateDisplayedRoutes;
+- (void)_createUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_volumeCapableRoutesInRoutes:(id)arg1;
 - (id)_displayAsPickedRoutesInRoutes:(id)arg1;
 - (id)_displayableRoutesInRoutes:(id)arg1;
@@ -102,6 +108,7 @@
 - (void)_registerCarPlayObserver;
 - (void)_registerNotifications;
 - (void)_configureCell:(id)arg1 forIndexPath:(id)arg2;
+- (_Bool)_operationRequiresOptimisticState:(long long)arg1 routes:(id)arg2;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (double)_tableViewHeightAccordingToDataSource;
@@ -154,10 +161,6 @@
 - (id)initWithStyle:(unsigned long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)_initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
-- (id)_crashLogDateFormatter;
-- (id)_alertControllerForUpdateDisplayedRoutesCrashWithLogFileURL:(id)arg1 exception:(id)arg2;
-- (id)_writeToDiskWithUpdateDisplayedRoutesStatePropertyList:(id)arg1 error:(id *)arg2;
-- (id)_generatePropertyListFromUpdateDisplayedRoutesState:(id)arg1 exception:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

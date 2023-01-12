@@ -35,7 +35,7 @@
 - (void)sendSyncedRemovalForBulletin:(id)arg1 feeds:(unsigned long long)arg2;
 - (void)enqueueSyncedRemovalForBulletin:(id)arg1 feeds:(unsigned long long)arg2;
 - (void)sendPendingSyncedRemovals;
-- (id)dismissalSectionIdentifierForIncomingMessage:(id)arg1;
+- (id)dismissalSectionIdentifiersForIncomingMessage:(id)arg1;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 @property(readonly, nonatomic) unsigned long long pairedDeviceCount; // @dynamic pairedDeviceCount;

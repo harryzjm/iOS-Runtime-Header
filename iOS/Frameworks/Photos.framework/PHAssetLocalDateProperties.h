@@ -9,11 +9,13 @@
 @interface PHAssetLocalDateProperties
 {
     NSNumber *_inferredTimeZoneOffset;
+    long long _creationDateSource;
 }
 
 + (id)propertiesToFetch;
 + (id)propertySetName;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long creationDateSource; // @synthesize creationDateSource=_creationDateSource;
 @property(readonly, nonatomic) NSNumber *inferredTimeZoneOffset; // @synthesize inferredTimeZoneOffset=_inferredTimeZoneOffset;
 - (id)initWithFetchDictionary:(id)arg1 asset:(id)arg2 prefetched:(_Bool)arg3;
 

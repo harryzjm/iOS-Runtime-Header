@@ -8,13 +8,13 @@
 
 #import <CloudDocsDaemon/BRCReachabilityDelegate-Protocol.h>
 
-@class BRCThrottler, NSString;
+@class BRCThrottler, BRDSIDString, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface BRCAccountOnlinePerformer : NSObject <BRCReachabilityDelegate>
 {
-    NSString *_accountID;
+    BRDSIDString *_dsid;
     NSObject<OS_dispatch_queue> *_queue;
     BRCThrottler *_throttler;
 }
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)perform;
 - (void)resumeAndAutoClose;
 - (void)networkReachabilityChanged:(_Bool)arg1;
-- (id)initWithAccountID:(id)arg1;
+- (id)initWithDSID:(id)arg1;
 - (id)_key;
 
 // Remaining properties

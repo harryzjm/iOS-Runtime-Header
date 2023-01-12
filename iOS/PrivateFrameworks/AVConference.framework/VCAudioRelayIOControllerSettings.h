@@ -9,14 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface VCAudioRelayIOControllerSettings : NSObject
 {
-    struct AudioStreamBasicDescription _audioFormat;
+    struct tagVCAudioFrameFormat _audioFormat;
     struct _VCRemoteCodecInfo _remoteCodecInfo;
 }
 
-@property(readonly, nonatomic) unsigned int samplesPerFrame;
 @property(readonly, nonatomic) const struct _VCRemoteCodecInfo *remoteCodecInfo;
-@property(readonly, nonatomic) const struct AudioStreamBasicDescription *audioFormat;
-- (id)initWithAudioFormat:(const struct AudioStreamBasicDescription *)arg1 remoteCodecInfo:(const struct _VCRemoteCodecInfo *)arg2;
+@property(readonly, nonatomic) const struct tagVCAudioFrameFormat *audioFormat;
+- (id)initWithAudioFormat:(const struct tagVCAudioFrameFormat *)arg1 remoteCodecInfo:(const struct _VCRemoteCodecInfo *)arg2;
 
 @end
 

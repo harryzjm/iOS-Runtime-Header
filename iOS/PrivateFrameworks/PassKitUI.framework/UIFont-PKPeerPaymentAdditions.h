@@ -10,7 +10,6 @@
 + (id)pk_textCondensedSemiboldCashFontOfSize:(double)arg1;
 + (_Bool)pk_loadTextCondensedSemiboldCashFont;
 + (id)pk_peerPaymentChiseledCashFontOfSize:(double)arg1;
-+ (_Bool)pk_loadPeerPaymentChiseledCashFont;
 + (id)pk_peerPaymentCashFontOfSize:(double)arg1;
 + (_Bool)pk_loadPeerPaymentCashFont;
 + (_Bool)pk_loadFontWithFileName:(id)arg1;

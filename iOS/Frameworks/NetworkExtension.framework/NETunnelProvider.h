@@ -12,11 +12,13 @@
 {
     _Bool _reasserting;
     _Bool _onDemandEnabled;
+    _Bool _gracefulShutdown;
     NEVPNProtocol *_protocolConfiguration;
     NSArray *_appRules;
 }
 
 - (void).cxx_destruct;
+@property _Bool gracefulShutdown; // @synthesize gracefulShutdown=_gracefulShutdown;
 @property _Bool onDemandEnabled; // @synthesize onDemandEnabled=_onDemandEnabled;
 @property(retain) NSArray *appRules; // @synthesize appRules=_appRules;
 @property(retain) NEVPNProtocol *protocolConfiguration; // @synthesize protocolConfiguration=_protocolConfiguration;

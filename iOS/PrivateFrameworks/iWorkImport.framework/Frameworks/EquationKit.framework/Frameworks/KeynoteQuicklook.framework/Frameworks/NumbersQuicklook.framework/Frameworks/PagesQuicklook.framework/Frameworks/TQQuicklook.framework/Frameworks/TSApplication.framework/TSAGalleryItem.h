@@ -50,8 +50,8 @@
 @property(nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property(nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
 @property(readonly, nonatomic) NSString *displayName;
-- (void)saveToMessage:(struct GalleryItem *)arg1 archiver:(id)arg2;
-- (void)loadFromMessage:(const struct GalleryItem *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)objectUUIDPath;

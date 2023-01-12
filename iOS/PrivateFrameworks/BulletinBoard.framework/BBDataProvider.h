@@ -30,6 +30,7 @@
 - (void)clearedInfoForClearingAllBulletinsWithLastClearedInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)bulletinsWithRequestParameters:(id)arg1 lastCleared:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)sectionBundlePath;
 - (id)parentSectionIdentifier;
 - (_Bool)canClearBulletinsByDate;
 - (_Bool)canClearAllBulletins;

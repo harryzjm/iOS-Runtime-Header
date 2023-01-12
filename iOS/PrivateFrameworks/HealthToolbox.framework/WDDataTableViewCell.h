@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) HKSource *source; // @synthesize source=_source;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_setupUI;
+- (void)layoutSubviews;
+- (struct CGRect)imageViewBounds;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

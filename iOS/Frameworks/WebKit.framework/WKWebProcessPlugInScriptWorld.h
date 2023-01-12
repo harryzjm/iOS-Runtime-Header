@@ -18,7 +18,7 @@
 + (id)normalWorld;
 + (id)world;
 @property(readonly) struct Object *_apiObject;
-@property(readonly) struct InjectedBundleScriptWorld *_scriptWorld;
+@property(readonly) void *_scriptWorld;
 @property(readonly, copy, nonatomic) NSString *name;
 - (void)disableOverrideBuiltinsBehavior;
 - (void)makeAllShadowRootsOpen;

@@ -18,6 +18,7 @@
 - (double)_accessibilityAllowedGeometryOverlap;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (long long)accessibilityContainerType;
+- (_Bool)_accessibilityIsGroupedParent;
 - (id)accessibilityLabel;
 - (id)_accessibilityEmptyListDropString;
 

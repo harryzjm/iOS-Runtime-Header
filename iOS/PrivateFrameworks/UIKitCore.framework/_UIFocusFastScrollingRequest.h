@@ -11,9 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface _UIFocusFastScrollingRequest : NSObject
 {
+    _Bool _indexBarAnimatesEmphasisOnDisplay;
     UIScrollView *_scrollView;
     UIPanGestureRecognizer *_panGesture;
-    NSArray *_pressGestures;
+    NSArray *_arrowButtonGestures;
     _UIFocusEngineJoystickGestureRecognizer *_joystickGesture;
     long long _scrollingType;
     unsigned long long _heading;
@@ -26,14 +27,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType didEndCallback; // @synthesize didEndCallback=_didEndCallback;
 @property(copy, nonatomic) CDUnknownBlockType didBeginCallback; // @synthesize didBeginCallback=_didBeginCallback;
+@property(nonatomic) _Bool indexBarAnimatesEmphasisOnDisplay; // @synthesize indexBarAnimatesEmphasisOnDisplay=_indexBarAnimatesEmphasisOnDisplay;
 @property(nonatomic) unsigned long long allowedHeadings; // @synthesize allowedHeadings=_allowedHeadings;
 @property(nonatomic) unsigned long long heading; // @synthesize heading=_heading;
 @property(nonatomic) long long scrollingType; // @synthesize scrollingType=_scrollingType;
 @property(retain, nonatomic) _UIFocusEngineJoystickGestureRecognizer *joystickGesture; // @synthesize joystickGesture=_joystickGesture;
-@property(retain, nonatomic) NSArray *pressGestures; // @synthesize pressGestures=_pressGestures;
+@property(retain, nonatomic) NSArray *arrowButtonGestures; // @synthesize arrowButtonGestures=_arrowButtonGestures;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGesture; // @synthesize panGesture=_panGesture;
 @property(nonatomic) struct CGPoint velocity; // @synthesize velocity=_velocity;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+- (id)init;
 
 @end
 

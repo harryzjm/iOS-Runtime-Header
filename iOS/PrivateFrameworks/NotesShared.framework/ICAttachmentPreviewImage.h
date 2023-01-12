@@ -11,6 +11,7 @@
 
 @interface ICAttachmentPreviewImage <ICAttachmentPreviewImageUI>
 {
+    _Bool suppressFileDeletion;
     ICAccount *placeholderAccount;
     NSObject<OS_dispatch_queue> *_fileQueue;
     unsigned long long _imageID;
@@ -27,13 +28,14 @@
 + (void)purgeAllPreviewImageFiles;
 + (void)deleteStrandedAttachmentPreviewImagesInContext:(id)arg1;
 + (id)attachmentPreviewImagesMatchingPredicate:(id)arg1 inContext:(id)arg2;
++ (void)enumerateAttachmentPreviewImagesInContext:(id)arg1 batchSize:(unsigned long long)arg2 saveAfterBatch:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
 + (id)allAttachmentPreviewImagesInContext:(id)arg1;
-+ (id)visibleAttachmentPreviewImagesInContext:(id)arg1;
 + (id)attachmentPreviewImageIdentifiersForAccount:(id)arg1;
 + (id)attachmentPreviewImageWithIdentifier:(id)arg1 inContext:(id)arg2;
 + (void)purgeAllAttachmentPreviewImagesInContext:(id)arg1;
 + (id)newAttachmentPreviewImageWithIdentifier:(id)arg1 attachment:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool suppressFileDeletion; // @synthesize suppressFileDeletion;
 @property(nonatomic) unsigned long long imageID; // @synthesize imageID=_imageID;
 @property(nonatomic) __weak ICAccount *placeholderAccount; // @synthesize placeholderAccount;
 - (void)saveAndClearDecryptedData;
@@ -73,6 +75,7 @@
 - (void)accountWillChangeToAccount:(id)arg1;
 - (void)willTurnIntoFault;
 - (void)prepareForDeletion;
+- (void)disableFileDeletion;
 @property(readonly) NSObject<OS_dispatch_queue> *fileQueue; // @synthesize fileQueue=_fileQueue;
 - (struct CGSize)size;
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;

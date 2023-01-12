@@ -9,6 +9,7 @@
 #import <ChatKit/NSDiscardableContent-Protocol.h>
 
 @interface UIImage (ChatKitAdditions) <NSDiscardableContent>
++ (id)__ck_actionImageForSubscriptionShortName:(id)arg1 maxSubscriptionLabelWidth:(double)arg2;
 + (id)ckTemplateImageNamed:(id)arg1;
 + (id)ckImageNamed:(id)arg1 withTintColor:(id)arg2;
 + (id)ckImageWithData:(id)arg1;
@@ -20,6 +21,7 @@
 + (id)badgeIconForImageNamed:(id)arg1 inBundle:(id)arg2;
 - (id)ckImageWithTintColor:(id)arg1;
 - (void)decode;
+- (id)ck_imageCroppedToCircle;
 - (id)__ck_ASTCRepresentation;
 - (struct CGRect)__ck_contentsCenter;
 - (id)__ck_imageWithOrientation:(long long)arg1;

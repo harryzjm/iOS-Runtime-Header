@@ -7,8 +7,12 @@
 #import <Foundation/NSOrderedSet.h>
 
 @interface NSOrderedSet (DVTNSOrderedSetAdditions)
+- (id)dvt_firstMap:(CDUnknownBlockType)arg1;
+- (id)dvt_compactMap:(CDUnknownBlockType)arg1;
+- (id)dvt_arrayByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_orderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_objectsPassingTest:(CDUnknownBlockType)arg1;
+- (id)dvt_orderedSetByAddingObjectsFromArray:(id)arg1;
 - (id)dvt_orderedSetByRemovingObject:(id)arg1;
 - (id)dvt_orderedSetByAddingObject:(id)arg1;
 - (id)dvt_orderedSetBySubtractingOrderedSet:(id)arg1;

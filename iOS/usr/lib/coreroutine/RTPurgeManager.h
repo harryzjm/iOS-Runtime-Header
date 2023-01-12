@@ -35,7 +35,7 @@
 - (void)_registerForMemoryPressureWarnings;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithDefaultsManager:(id)arg1 platform:(id)arg2 purgers:(id)arg3 xpcActivityManager:(id)arg4;
 - (id)init;

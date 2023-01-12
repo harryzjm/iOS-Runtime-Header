@@ -6,7 +6,7 @@
 
 #import <LinkPresentation/NSObject-Protocol.h>
 
-@class LPAudio, LPCaptionBarPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPVideo, NSArray, NSNumber, NSString, UIColor;
+@class LPARAsset, LPAudio, LPCaptionBarPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPVideo, NSArray, NSNumber, NSString, UIColor;
 
 @protocol LPLinkPresentationPropertyProvider <NSObject>
 
@@ -14,7 +14,10 @@
 - (NSString *)domainNameForIndicator;
 - (LPInlineMediaPlaybackInformation *)inlinePlaybackInformation;
 - (NSNumber *)minimumHeight;
+- (LPImagePresentationProperties *)backgroundImageProperties;
+- (LPImage *)backgroundImage;
 - (UIColor *)backgroundColor;
+- (LPARAsset *)arAsset;
 - (LPAudio *)audio;
 - (LPVideo *)video;
 - (NSArray *)alternateImages;

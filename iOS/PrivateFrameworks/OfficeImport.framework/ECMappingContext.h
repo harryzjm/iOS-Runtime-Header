@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface ECMappingContext : NSObject
 {
-    struct map<unsigned long, unsigned long, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, unsigned long>>> mIndexToMappedIndex;
+    struct map<unsigned long, unsigned long, std::less<unsigned long>, std::allocator<std::pair<const unsigned long, unsigned long>>> mIndexToMappedIndex;
     NSMutableDictionary *mSheetNameToMappedIndex;
     struct __CFDictionary *mObjectToMappingInfo;
     NSMutableArray *mMappingInfos;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)mappingInfoForObject:(id)arg1;
 - (unsigned long long)mappedSheetIndexForSheetName:(id)arg1;
 - (unsigned long long)mappedSheetIndexForSheetIndex:(unsigned long long)arg1;
-- (ChVector_cc6fdd32 *)mappedSheetNames;
+- (void *)mappedSheetNames;
 - (void)dealloc;
 - (id)init;
 - (void)associateMappingInfo:(id)arg1 withSheetName:(id)arg2 andSheetIndex:(unsigned long long)arg3 andObject:(id)arg4;

@@ -15,7 +15,6 @@
 - (void)_updateLayoutIfNeeded;
 - (struct CGRect)accessibilityFrame;
 - (id)_axPXGScrollView;
-- (id)_axPXGView;
 
 @end
 

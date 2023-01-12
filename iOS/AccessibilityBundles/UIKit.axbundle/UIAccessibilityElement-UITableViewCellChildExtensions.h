@@ -8,9 +8,5 @@
 
 @interface UIAccessibilityElement (UITableViewCellChildExtensions)
 - (void)setTableCellYOffset:(float)arg1;
-- (void)storeSubviewData:(id)arg1;
-- (_Bool)elementMatchesSubview:(id)arg1;
-- (_Bool)representsSubview;
-- (double)initialYOffset;
 @end
 

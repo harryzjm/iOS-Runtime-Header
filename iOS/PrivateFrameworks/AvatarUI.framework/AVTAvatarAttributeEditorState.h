@@ -11,14 +11,22 @@
 @interface AVTAvatarAttributeEditorState : NSObject
 {
     NSMutableDictionary *_pairedStates;
+    NSMutableDictionary *_multicolorEnabledStates;
+    NSMutableDictionary *_multicolorSelectedStates;
 }
 
 + (id)buildStateFromCoreModel:(id)arg1 avatarConfiguration:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *multicolorSelectedStates; // @synthesize multicolorSelectedStates=_multicolorSelectedStates;
+@property(retain, nonatomic) NSMutableDictionary *multicolorEnabledStates; // @synthesize multicolorEnabledStates=_multicolorEnabledStates;
 @property(retain, nonatomic) NSMutableDictionary *pairedStates; // @synthesize pairedStates=_pairedStates;
+- (void)setSelectedMulticolorSubpickersIndex:(long long)arg1 forMulticolorPickerIdentifier:(id)arg2;
+- (long long)selectedMulticolorSubpickersIndexForMulticolorPickerIdentifier:(id)arg1;
+- (void)setEnabledMulticolorSubpickersIndex:(long long)arg1 forMulticolorPickerIdentifier:(id)arg2;
+- (long long)enabledMulticolorSubpickersIndexForMulticolorPickerIdentifier:(id)arg1;
 - (void)setCategory:(long long)arg1 inPairedState:(_Bool)arg2;
 - (_Bool)isCategoryPaired:(long long)arg1;
-- (id)initWithPairedStates:(id)arg1;
+- (id)initWithPairedStates:(id)arg1 multicolorEnabledStates:(id)arg2 multicolorSelectedStates:(id)arg3;
 - (id)init;
 
 @end

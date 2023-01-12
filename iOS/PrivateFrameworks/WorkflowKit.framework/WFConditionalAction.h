@@ -52,6 +52,9 @@
 - (_Bool)skipsProcessingHiddenParameters;
 - (_Bool)populatesInputFromInputParameter;
 - (_Bool)inputPassthrough;
+- (void)prepareToProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadHomesIfNecessaryWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)configureResourcesForParameter:(id)arg1;
 - (id)actionsProvidingVariableName:(id)arg1;
 - (id)actionProvidingVariableWithOutputUUID:(id)arg1;
 - (id)possibleContentClassesForVariableNamed:(id)arg1 context:(id)arg2;

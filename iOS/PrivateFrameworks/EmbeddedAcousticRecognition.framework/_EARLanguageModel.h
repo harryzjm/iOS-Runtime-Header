@@ -8,7 +8,7 @@
 
 @interface _EARLanguageModel : NSObject
 {
-    struct vector<std::__1::pair<id<_EARLanguageModelDataSource>, float>, std::__1::allocator<std::__1::pair<id<_EARLanguageModelDataSource>, float>>> _dataSources;
+    struct vector<std::pair<id<_EARLanguageModelDataSource>, float>, std::allocator<std::pair<id<_EARLanguageModelDataSource>, float>>> _dataSources;
     float _totalWeight;
 }
 

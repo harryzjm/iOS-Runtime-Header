@@ -25,7 +25,6 @@
 - (void)ringerHUDViewControllerWantsToBeDismissed:(id)arg1;
 - (id)existingRingerHUDViewController;
 - (void)setVolume:(float)arg1 forKeyPress:(_Bool)arg2;
-- (void)_softMuteChanged:(id)arg1;
 - (void)toggleRingerMute;
 - (void)hideRingerHUDIfVisible;
 - (void)buttonReleased;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthRecordsUI/HKOverlayContext-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC15HealthRecordsUI32MedicalRecordChartOverlayContext : NSObject <HKOverlayContext>
+@interface _TtC15HealthRecordsUI32MedicalRecordChartOverlayContext : NSObject
 {
     MISSING_TYPE *title;
     MISSING_TYPE *dataSource;
@@ -26,7 +24,7 @@
 - (id)init;
 - (id)overlayDisplayTypeForTimeScope:(long long)arg1;
 - (id)sampleTypeForDateRangeUpdates;
-- (void)updateContextItemForDateInterval:(id)arg1 timeScope:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateContextItemForDateInterval:(id)arg1 overlayController:(id)arg2 timeScope:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)contextItemForLastUpdate;
 - (id)initWithTitle:(id)arg1 dataSource:(id)arg2 defaultColors:(id)arg3 selectedColors:(id)arg4 verticalAxis:(id)arg5;
 

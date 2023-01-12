@@ -9,7 +9,7 @@
 #import <TrackingAvoidance/OSLogCoding-Protocol.h>
 #import <TrackingAvoidance/TAEventProtocol-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class NSData, NSDate, NSString, NSUUID;
 
 @interface TASPAdvertisement : NSObject <OSLogCoding, TAEventProtocol>
 {
@@ -19,10 +19,14 @@
     NSData *_reserved;
     long long _rssi;
     NSDate *_scanDate;
+    NSUUID *_uuid;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)TASPAdvertisementDeviceTypeToString:(unsigned long long)arg1;
++ (id)TASPAdvertisementTypeToString:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly, copy, nonatomic) NSDate *scanDate; // @synthesize scanDate=_scanDate;
 @property(readonly, nonatomic) long long rssi; // @synthesize rssi=_rssi;
 @property(readonly, copy, nonatomic) NSData *reserved; // @synthesize reserved=_reserved;
@@ -38,8 +42,12 @@
 - (id)descriptionDictionary;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)getDeviceType;
 - (unsigned long long)getType;
+- (id)initWithAddress:(id)arg1 advertisementData:(id)arg2 status:(unsigned char)arg3 reserved:(id)arg4 rssi:(long long)arg5 scanDate:(id)arg6 uuid:(id)arg7;
 - (id)initWithAddress:(id)arg1 advertisementData:(id)arg2 status:(unsigned char)arg3 reserved:(id)arg4 rssi:(long long)arg5 scanDate:(id)arg6;
+- (_Bool)hasHawkeyeLowEnergyAdvertisementPolicy;
+- (_Bool)hasHawkeyeAdvertisementPolicy;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

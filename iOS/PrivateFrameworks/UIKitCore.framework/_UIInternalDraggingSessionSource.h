@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSArray *_internalItems;
     long long _dataOwner;
     UIWindow *_centroidWindow;
+    UIWindow *_weakCentroidWindow;
     unsigned long long _withinAppSourceOperationMask;
     unsigned long long _outsideAppSourceOperationMask;
     _UIDruidSourceConnection *_druidConnection;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long outsideAppSourceOperationMask; // @synthesize outsideAppSourceOperationMask=_outsideAppSourceOperationMask;
 @property(readonly, nonatomic) unsigned long long withinAppSourceOperationMask; // @synthesize withinAppSourceOperationMask=_withinAppSourceOperationMask;
 @property(readonly, nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property(readonly, nonatomic) __weak UIWindow *weakCentroidWindow; // @synthesize weakCentroidWindow=_weakCentroidWindow;
 @property(readonly, nonatomic) UIWindow *centroidWindow; // @synthesize centroidWindow=_centroidWindow;
 @property(readonly, nonatomic) struct CGPoint centroid; // @synthesize centroid=_centroid;
 @property(nonatomic) long long dataOwner; // @synthesize dataOwner=_dataOwner;
@@ -67,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelDrag;
 @property(readonly, nonatomic) _Bool shouldCancelOnAppDeactivation;
 - (void)_sendWillEndWithOperation:(unsigned long long)arg1;
+- (void)_endWithOperation:(unsigned long long)arg1;
 - (void)_handOffCancelledItems:(id)arg1;
 - (void)_setupAnimationForCancelledItems:(id)arg1 returningContextID:(unsigned int *)arg2 layerRenderID:(unsigned long long *)arg3;
 - (_Bool)_canHandOffCancelledItems:(id)arg1;
@@ -77,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)itemsBecameDirty:(id)arg1;
 - (void)_getOperationMaskFromDelegate;
 - (void)_didBeginDrag;
+- (void)_sendDragPreviewReplyWithIndexSet:(id)arg1 dragPreviews:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)beginDrag:(CDUnknownBlockType)arg1;
 - (_Bool)_routingPolicyHasSpecificTouchContextIDs;
 @property(readonly, nonatomic) unsigned long long draggingSourceOperationMask;

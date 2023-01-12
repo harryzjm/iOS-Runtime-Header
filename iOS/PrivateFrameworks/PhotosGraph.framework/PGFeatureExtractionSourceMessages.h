@@ -14,7 +14,7 @@
 {
 }
 
-- (id)extractSharingRecordsWithManager:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (id)extractSharingRecordsFromGraph:(id)arg1 photoLibrary:(id)arg2 loggingConnection:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

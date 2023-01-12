@@ -36,6 +36,8 @@
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)appleAccountSignedOut;
 - (void)appleAccountSignedIn;
+- (void)removeDedicatedCellularBearerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addDedicatedCellularBearer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unlockManagerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)streamsForMessage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)serviceManagerProxyForIdentifier:(id)arg1 client:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

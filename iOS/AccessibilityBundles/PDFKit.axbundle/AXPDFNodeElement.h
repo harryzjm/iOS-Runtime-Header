@@ -12,6 +12,7 @@
 {
     PDFView *_pdfView;
     _Bool _didDetermineLastNodeStatus;
+    _Bool _isGatheringLeafDescendents;
     _Bool _isLastNodeInPage;
     PDFPage *_page;
 }
@@ -19,6 +20,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak PDFPage *page; // @synthesize page=_page;
 @property(nonatomic) _Bool isLastNodeInPage; // @synthesize isLastNodeInPage=_isLastNodeInPage;
+@property(nonatomic) _Bool isGatheringLeafDescendents; // @synthesize isGatheringLeafDescendents=_isGatheringLeafDescendents;
 @property(nonatomic) _Bool didDetermineLastNodeStatus; // @synthesize didDetermineLastNodeStatus=_didDetermineLastNodeStatus;
 - (struct CGRect)axConvertBoundsFromPageToScreenCoordinates:(struct CGRect)arg1;
 - (_Bool)_accessibilityIncludeDuringContentReading;

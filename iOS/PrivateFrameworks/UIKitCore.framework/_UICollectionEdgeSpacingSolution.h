@@ -13,10 +13,7 @@ __attribute__((visibility("hidden")))
     double _spacing;
 }
 
-@property(nonatomic) double spacing; // @synthesize spacing=_spacing;
-@property(readonly, nonatomic) _Bool isFlexible;
 - (id)description;
-- (id)initWithSpacing:(double)arg1 isFlexible:(_Bool)arg2;
 
 @end
 

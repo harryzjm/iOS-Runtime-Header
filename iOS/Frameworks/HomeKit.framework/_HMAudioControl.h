@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property(getter=isMuted) _Bool muted; // @synthesize muted=_muted;
 @property float volume; // @synthesize volume=_volume;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1;

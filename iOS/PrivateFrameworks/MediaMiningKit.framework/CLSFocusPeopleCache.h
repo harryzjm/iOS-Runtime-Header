@@ -10,7 +10,7 @@
 
 @interface CLSFocusPeopleCache : NSObject
 {
-    NSSet *_peopleUUIDs;
+    NSSet *_personLocalIdentifiers;
     unsigned long long _maximumNumberOfPeople;
     PHPhotoLibrary *_photoLibrary;
 }
@@ -19,8 +19,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(nonatomic) unsigned long long maximumNumberOfPeople; // @synthesize maximumNumberOfPeople=_maximumNumberOfPeople;
-@property(readonly, nonatomic) NSSet *peopleUUIDs; // @synthesize peopleUUIDs=_peopleUUIDs;
-- (id)_collectValidPeopleUUIDs;
+@property(readonly, nonatomic) NSSet *personLocalIdentifiers; // @synthesize personLocalIdentifiers=_personLocalIdentifiers;
+- (id)_collectValidPersonLocalIdentifiers;
 - (void)invalidate;
 - (id)initWithPhotoLibrary:(id)arg1 maximumNumberOfPeople:(unsigned long long)arg2;
 

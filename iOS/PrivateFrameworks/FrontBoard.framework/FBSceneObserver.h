@@ -25,11 +25,14 @@
         _Bool updateApplied;
         _Bool updateCompleted;
         _Bool clientSettingsUpdated;
+        _Bool didActivate;
+        _Bool willDeactivateWithError;
         _Bool didInvalidate;
+        _Bool clientDidConnect;
     } _observerFlags;
     struct {
-        _Bool clientSettingsUpdated;
         _Bool didReceiveActions;
+        _Bool didDeactivateWithError;
     } _delegateFlags;
 }
 
@@ -40,15 +43,20 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+- (void)scene:(id)arg1 clientDidConnect:(id)arg2;
+- (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (void)sceneDidInvalidate:(id)arg1;
+- (void)sceneWillDeactivate:(id)arg1 withError:(id)arg2;
+- (void)sceneDidActivate:(id)arg1;
 - (void)scene:(id)arg1 didCompleteUpdateWithContext:(id)arg2 error:(id)arg3;
 - (void)scene:(id)arg1 didApplyUpdateWithContext:(id)arg2;
 - (void)scene:(id)arg1 didPrepareUpdateWithContext:(id)arg2;
 - (void)sceneContentStateDidChange:(id)arg1;
+- (void)sceneDidDeactivate:(id)arg1 withError:(id)arg2;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;
-- (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (_Bool)delegateHandlesActions;
 - (_Bool)isDelegate;
 @property(readonly, nonatomic) __weak id <FBSceneDelegate> delegate;
 - (id)initWithDelegate:(id)arg1;

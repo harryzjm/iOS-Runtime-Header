@@ -15,21 +15,25 @@
     struct _opaque_pthread_mutex_t _lock;
     NSData *_data;
     int _fd;
+    NSString *_path;
     NSString *_tmpDir;
-    NSString *_tmpPath;
-    NSString *_tmpDest;
     NSMutableData *_memStore;
+    SGKeyValueCacheFile *_other;
 }
 
 + (id)fullNameForEncodedContact:(id)arg1;
 + (id)encodedStringForFullName:(id)arg1;
 + (_Bool)supportsSecureCoding;
++ (void)clearCacheAtPath:(id)arg1;
++ (id)keyValueCacheForPath:(id)arg1;
++ (id)pathToCache;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (void)deleteValueByRecordIdSet:(id)arg1;
 - (void)deleteValueByRecordId:(id)arg1;
+- (void)setValueIfNotPresentWithDict:(id)arg1 fromRecordId:(id)arg2;
 - (void)setValueIfNotPresent:(id)arg1 forKey:(id)arg2 fromRecordId:(id)arg3;
 - (void)setValue:(id)arg1 forKey:(id)arg2 fromRecordId:(id)arg3;
 - (id)valueForKey:(id)arg1 found:(_Bool *)arg2;
@@ -38,7 +42,7 @@
 - (void)commitTemporaryFile;
 - (void)dealloc;
 - (id)initInMemory;
-- (id)initTemporaryForOverwritingPath:(id)arg1;
+- (id)initTemporaryForOverwritingCache:(id)arg1;
 - (id)initWithPath:(id)arg1;
 - (id)initWithFileDescriptor:(int)arg1;
 - (id)initBlank;

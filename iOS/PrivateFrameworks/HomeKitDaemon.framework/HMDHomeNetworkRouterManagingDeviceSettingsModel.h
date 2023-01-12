@@ -17,7 +17,7 @@
 - (id)dependentUUIDs;
 
 // Remaining properties
-@property(retain, nonatomic) NSString *primaryNetworkRouterManagingDeviceUUID; // @dynamic primaryNetworkRouterManagingDeviceUUID;
+@property(copy, nonatomic) NSString *primaryNetworkRouterManagingDeviceUUID; // @dynamic primaryNetworkRouterManagingDeviceUUID;
 
 @end
 

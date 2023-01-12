@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPStoreModelAlbumBuilder, MPStoreModelArtistBuilder, MPStoreModelCuratorBuilder, MPStoreModelMovieBuilder, MPStoreModelPlaylistBuilder, MPStoreModelRadioStationBuilder, MPStoreModelSocialPersonBuilder, MPStoreModelSongBuilder, MPStoreModelTVEpisodeBuilder, MPStoreModelTVSeasonBuilder, MPStoreModelTVShowBuilder, MPStoreModelTVShowCreatorBuilder;
+@class MPStoreModelAlbumBuilder, MPStoreModelArtistBuilder, MPStoreModelCuratorBuilder, MPStoreModelMovieBuilder, MPStoreModelPlaylistBuilder, MPStoreModelRadioStationBuilder, MPStoreModelRecordLabelBuilder, MPStoreModelSocialPersonBuilder, MPStoreModelSongBuilder, MPStoreModelTVEpisodeBuilder, MPStoreModelTVSeasonBuilder, MPStoreModelTVShowBuilder, MPStoreModelTVShowCreatorBuilder;
 
 @interface MPModelStoreBrowseContentItemBuilder
 {
@@ -25,6 +25,7 @@
         unsigned int show:1;
         unsigned int showCreator:1;
         unsigned int aucType:1;
+        unsigned int recordLabel:1;
     } _requestedBrowseContentItemProperties;
     MPStoreModelAlbumBuilder *_albumBuilder;
     MPStoreModelArtistBuilder *_artistBuilder;
@@ -38,6 +39,7 @@
     MPStoreModelSongBuilder *_songBuilder;
     MPStoreModelTVShowBuilder *_showBuilder;
     MPStoreModelTVShowCreatorBuilder *_showCreatorBuilder;
+    MPStoreModelRecordLabelBuilder *_recordLabelBuilder;
     _Bool _shouldFakeEpisodes;
     _Bool _allowsRadioStations;
     _Bool _allowsVideoContent;

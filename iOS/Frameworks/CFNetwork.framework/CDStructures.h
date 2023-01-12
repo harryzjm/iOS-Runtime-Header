@@ -12,22 +12,9 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct AuthBrokerAuthenticator {
-    CDUnknownFunctionPointerType *_field1;
-    CDUnknownFunctionPointerType *_field2;
-    struct _opaque_pthread_mutex_t _field3;
-    CDUnknownFunctionPointerType *_field4;
-    struct _CFURLCredentialStorage *_field5;
-    struct __CFSet *_field6;
-    struct RetainableTypedDict<_CFURLProtectionSpace *const, NetworkProxyCredential *> _field7;
-    struct unique_ptr<NSObject<OS_dispatch_queue>, Deleter_DispatchRelease<NSObject<OS_dispatch_queue>*>> _field8;
-};
-
 struct BaseSocketStreamClient {
     CDUnknownFunctionPointerType *_field1;
 };
-
-struct BlockHolderVar<bool>;
 
 struct CBs {
     CDUnknownBlockType _field1;
@@ -115,11 +102,11 @@ struct CFURLProtocolInstanceCallbacks {
 };
 
 struct CoalescingDomain {
-    struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>> _DNS;
-    struct map<std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>>>> _ipAddressToConnectionKey;
-    struct map<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>>> _connectionKeyToAllIPAddresses;
-    struct map<std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>>>> _requestHostToConnectionKey;
-    struct map<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>>> _connectionKeyToAllRequestHosts;
+    struct map<std::string, std::vector<std::string>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<std::string>>>> _DNS;
+    struct map<std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>, std::less<std::string>, std::allocator<std::pair<const std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>>>> _ipAddressToConnectionKey;
+    struct map<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>, CoalescingConnectionKeyComparator, std::allocator<std::pair<const std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>>> _connectionKeyToAllIPAddresses;
+    struct map<std::string, std::shared_ptr<__CoalescingConnectionKey>, std::less<std::string>, std::allocator<std::pair<const std::string, std::shared_ptr<__CoalescingConnectionKey>>>> _requestHostToConnectionKey;
+    struct map<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>, CoalescingConnectionKeyComparator, std::allocator<std::pair<const std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>>> _connectionKeyToAllRequestHosts;
 };
 
 struct CompactCookieArray;
@@ -174,38 +161,17 @@ struct Flags {
     unsigned int _flag_SET_EXPLICIT_SHOULD_START_SYNCHRONOUSLY:1;
 };
 
-struct HTTPConnectionCacheKey {
-    CDUnknownFunctionPointerType *_field1;
-    struct __CFAllocator *_field2;
-    int _field3;
-    unsigned long long _field4;
-    struct __CFString *_field5;
-    struct __CFString *_field6;
-    int _field7;
-    int _field8;
-    struct __CFDictionary *_field9;
-    unsigned long long _field10;
-    struct __CFDictionary *_field11;
-    struct shared_ptr<NetworkProxy> _field12;
-    struct shared_ptr<const __CFString> _field13;
-    int _field14;
-    int _field15;
-    struct unique_ptr<const __CFDictionary, Deleter_CFRelease> _field16;
-    struct unique_ptr<const __CFString, Deleter_CFRelease> _field17;
-    double _field18;
-};
-
 struct HTTPConnectionCacheLimits {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    int _field6;
-    int _field7;
-    int _field8;
-    int _field9;
-    int _field10;
+    int fHTTPLoadWidth;
+    int fHTTPPipeliningHighWatermark;
+    int fHTTPPipeliningLowWatermark;
+    int fHTTPPriorityNumLevels;
+    int fHTTPNumFastLanes;
+    int fHTTPMinimumFastLanePriority;
+    int fHTTPConnectionCachePurgeTimeout;
+    int fHTTPConnectionCacheCellPurgeTimeout;
+    int fLongLivedConnectionCachePurgeTimeout;
+    int fLongLivedConnectionCacheCellPurgeTimeout;
 };
 
 struct HTTPConnectionInfo {
@@ -253,27 +219,6 @@ struct NSCFURLProtocolClient {
     id _field4;
 };
 
-struct NetworkProxy;
-
-struct PerSide_CFReadStream {
-    CDUnknownFunctionPointerType *_field1;
-    id _field2;
-    char *_field3;
-    struct __CFReadStream *_field4;
-    unsigned long long _field5;
-    id _field6;
-};
-
-struct PerSide_CFWriteStream {
-    CDUnknownFunctionPointerType *_field1;
-    id _field2;
-    char *_field3;
-    struct __CFWriteStream *_field4;
-    unsigned long long _field5;
-    long long _field6;
-    id _field7;
-};
-
 struct ReadBuffer {
     CDUnknownFunctionPointerType *_field1;
     long long _field2;
@@ -284,16 +229,6 @@ struct ReadBuffer {
 
 struct RedirectionRecorder;
 
-struct RetainableTypedDict<_CFURLProtectionSpace *const, NetworkProxyCredential *> {
-    CDUnknownFunctionPointerType *_field1;
-    struct __CFDictionary *_field2;
-};
-
-struct RetainableTypedDict<const CoreSchedulingSet *, GlueTubeManager *> {
-    CDUnknownFunctionPointerType *_field1;
-    struct __CFDictionary *_field2;
-};
-
 struct SessionConnectionLoadable {
     CDUnknownFunctionPointerType *_field1;
     CDUnknownFunctionPointerType *_field2;
@@ -302,7 +237,7 @@ struct SessionConnectionLoadable {
 };
 
 struct SmartBlockWithArgs<bool> {
-    struct BlockHolderVar<bool> *__ptr_;
+    void *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
@@ -314,8 +249,6 @@ struct TCPIO_BlockCallbacks_Listener {
 };
 
 struct TCPIO_EstablishBase;
-
-struct Throttler;
 
 struct TransportConnection;
 
@@ -358,28 +291,7 @@ struct URLConnectionLoader {
     _Bool _field34;
 };
 
-struct URLProtocol {
-    CDUnknownFunctionPointerType *_field1;
-    CDUnknownFunctionPointerType *_field2;
-    CDUnknownFunctionPointerType *_field3;
-    struct CoreSchedulingSet *_field4;
-    double _field5;
-    unsigned char _field6;
-    unsigned char _field7;
-    unsigned char _field8;
-    unsigned char _field9;
-    unsigned char _field10;
-    unsigned char _field11;
-    unsigned char _field12;
-    long long _field13;
-    long long _field14;
-    struct Throttler *_field15;
-    _Bool _field16;
-    id _field17;
-    id _field18;
-    struct URLProtocolClient *_field19;
-    struct _CFCachedURLResponse *_field20;
-};
+struct URLProtocol;
 
 struct URLProtocolClient {
     CDUnknownFunctionPointerType *_field1;
@@ -401,6 +313,7 @@ struct URLRequest {
     unsigned long long fAllowedProtocolTypes;
     int fNetworkServiceType;
     struct __CFString *fBoundInterfaceIdentifier;
+    struct __CFString *fTrackerContext;
     unsigned long long fExpectedWorkload;
     double fTimeWindowDelay;
     double fTimeWindowDuration;
@@ -409,7 +322,10 @@ struct URLRequest {
     unsigned char fPreventHSTSStorage;
     unsigned char fIgnoreHSTS;
     unsigned char fSchemeWasUpgradedDueToDynamicHSTS;
-    unsigned char fKnownHTTP3Capable;
+    unsigned char fAssumesHTTP3Capable;
+    unsigned char fKnownTracker;
+    unsigned char fPrivacyProxyFailClosed;
+    unsigned long long fAttribution;
     double fPayloadTransmissionTimeout;
     struct __CFDictionary *fATSOverrides;
     struct unique_ptr<_CFHSTSPolicy, Deleter_CFRelease> fHSTSPolicy;
@@ -453,38 +369,19 @@ struct XCredentialStorage {
     int _field3;
 };
 
-struct XTubeManager {
-    CDUnknownFunctionPointerType *_field1;
-    struct __CFAllocator *_field2;
-    int _field3;
-    struct RetainableTypedDict<const CoreSchedulingSet *, GlueTubeManager *> _field4;
-    struct _opaque_pthread_mutex_t _field5;
-    struct HTTPConnectionCacheLimits _field6;
-    struct shared_ptr<NSObject<OS_nw_context>> _field7;
-};
-
 struct _CFCachedURLResponse {
-    struct __CFRuntimeBase _field1;
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
     struct __CFCachedURLResponse *_field2;
 };
 
 struct _CFHSTSPolicy;
 
-struct _CFURLCache {
-    struct __CFRuntimeBase _field1;
-    struct shared_ptr<__CFURLCache> _field2;
-};
-
-struct _CFURLCredentialStorage;
-
 struct __CFAllocator;
 
 struct __CFDictionary;
-
-struct __CFRuntimeBase {
-    unsigned long long _field1;
-    _Atomic unsigned long long _field2;
-};
 
 struct __CFString;
 
@@ -492,67 +389,65 @@ struct __CFURL;
 
 struct __shared_weak_count;
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
-};
-
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
+struct __tree_end_node<std::__tree_node_base<void *>*> {
+    void *__left_;
 };
 
 struct internal_state;
 
-struct map<std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>, CoalescingConnectionKeyComparator, std::allocator<std::pair<const std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>>> {
+    struct __tree<std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>, std::__map_value_compare<std::shared_ptr<__CoalescingConnectionKey>, std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>, CoalescingConnectionKeyComparator, true>, std::allocator<std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::set<std::__1::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::shared_ptr<__CoalescingConnectionKey>>>>, std::__1::less<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::shared_ptr<__CoalescingConnectionKey>, std::__value_type<std::shared_ptr<__CoalescingConnectionKey>, std::set<std::string>>, CoalescingConnectionKeyComparator, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>, std::less<std::string>, std::allocator<std::pair<const std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>>>> {
+    struct __tree<std::__value_type<std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::shared_ptr<__CoalescingConnectionKey>>, std::__1::less<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::set<std::shared_ptr<__CoalescingConnectionKey>, CoalescingConnectionKeyComparator>>, std::less<std::string>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>> {
-    struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<std::string, std::shared_ptr<__CoalescingConnectionKey>, std::less<std::string>, std::allocator<std::pair<const std::string, std::shared_ptr<__CoalescingConnectionKey>>>> {
+    struct __tree<std::__value_type<std::string, std::shared_ptr<__CoalescingConnectionKey>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::shared_ptr<__CoalescingConnectionKey>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::shared_ptr<__CoalescingConnectionKey>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::shared_ptr<__CoalescingConnectionKey>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::less<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::shared_ptr<__CoalescingConnectionKey>>, std::less<std::string>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>, CoalescingConnectionKeyComparator, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>>> {
-    struct __tree<std::__1::__value_type<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::__map_value_compare<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::__value_type<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>, CoalescingConnectionKeyComparator, true>, std::__1::allocator<std::__1::__value_type<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<std::string, std::vector<std::string>, std::less<std::string>, std::allocator<std::pair<const std::string, std::vector<std::string>>>> {
+    struct __tree<std::__value_type<std::string, std::vector<std::string>>, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<std::string>>, std::less<std::string>, true>, std::allocator<std::__value_type<std::string, std::vector<std::string>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<std::string, std::vector<std::string>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::__value_type<std::__1::shared_ptr<__CoalescingConnectionKey>, std::__1::set<std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>>>, CoalescingConnectionKeyComparator, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<std::string, std::__value_type<std::string, std::vector<std::string>>, std::less<std::string>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct mutex {
-    struct _opaque_pthread_mutex_t __m_;
+    struct _opaque_pthread_mutex_t {
+        long long __sig;
+        char __opaque[56];
+    } __m_;
 };
 
 struct os_unfair_lock_s {
@@ -569,11 +464,6 @@ struct shared_ptr<NSObject<OS_nw_context>> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<NetworkProxy> {
-    struct NetworkProxy *_field1;
-    struct __shared_weak_count *_field2;
-};
-
 struct shared_ptr<TCPIO_EstablishBase> {
     struct TCPIO_EstablishBase *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -587,16 +477,6 @@ struct shared_ptr<TransportConnection> {
 struct shared_ptr<TransportConnectionObjCPP> {
     struct TransportConnectionObjCPP *__ptr_;
     struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<__CFURLCache> {
-    struct __CFURLCache *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<const __CFString> {
-    struct __CFString *_field1;
-    struct __shared_weak_count *_field2;
 };
 
 struct stat {
@@ -625,28 +505,10 @@ struct timespec {
     long long tv_nsec;
 };
 
-struct unique_ptr<NSObject<OS_dispatch_queue>, Deleter_DispatchRelease<NSObject<OS_dispatch_queue>*>> {
-    struct __compressed_pair<NSObject<OS_dispatch_queue>*, Deleter_DispatchRelease<NSObject<OS_dispatch_queue>*>> {
-        id _field1;
-    } _field1;
-};
-
 struct unique_ptr<_CFHSTSPolicy, Deleter_CFRelease> {
     struct __compressed_pair<_CFHSTSPolicy *, Deleter_CFRelease> {
         struct _CFHSTSPolicy *__value_;
     } __ptr_;
-};
-
-struct unique_ptr<const __CFDictionary, Deleter_CFRelease> {
-    struct __compressed_pair<const __CFDictionary *, Deleter_CFRelease> {
-        struct __CFDictionary *_field1;
-    } _field1;
-};
-
-struct unique_ptr<const __CFString, Deleter_CFRelease> {
-    struct __compressed_pair<const __CFString *, Deleter_CFRelease> {
-        struct __CFString *_field1;
-    } _field1;
 };
 
 struct weak_ptr<TransportConnection> {

@@ -34,6 +34,7 @@
     _Bool _isFlattenedRepresentation;
     _Bool _shouldGenerateMipmap;
     _Bool _shouldUseDisplayLinkPresentationTime;
+    _Bool _metalTextureWillBeShared;
     unsigned int _singleTextureName;
     NSUUID *_uuid;
     struct CGImage *_bakedImage;
@@ -45,6 +46,7 @@
     CALayer *_layer;
     id <MTLTexture> _metalTexture;
     TSDTexturedRectangle *_metalTextureProxy;
+    TSDTexturedRectangle *_liveTexturedRectangleSourceProxy;
     TSDTextureSet *_parent;
     NSOperation *_renderingOperation;
     NSOperation *_renderingOperationOpenGL;
@@ -71,6 +73,7 @@
 + (struct CGRect)boundingRectOnCanvasForTextures:(id)arg1;
 + (struct CGRect)boundingRectForTextures:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool metalTextureWillBeShared; // @synthesize metalTextureWillBeShared=_metalTextureWillBeShared;
 @property(nonatomic) struct CGRect trailingCaretRect; // @synthesize trailingCaretRect=_trailingCaretRect;
 @property(nonatomic) double textureOpacity; // @synthesize textureOpacity=_textureOpacity;
 @property(nonatomic) long long textureType; // @synthesize textureType=_textureType;
@@ -92,6 +95,7 @@
 @property(nonatomic) struct CGPoint originalPosition; // @synthesize originalPosition=_originalPosition;
 @property(nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property(nonatomic) _Bool shouldGenerateMipmap; // @synthesize shouldGenerateMipmap=_shouldGenerateMipmap;
+@property(nonatomic) __weak TSDTexturedRectangle *liveTexturedRectangleSourceProxy; // @synthesize liveTexturedRectangleSourceProxy=_liveTexturedRectangleSourceProxy;
 @property(retain, nonatomic) TSDTexturedRectangle *metalTextureProxy; // @synthesize metalTextureProxy=_metalTextureProxy;
 @property(nonatomic) struct CGRect leadingCaretRect; // @synthesize leadingCaretRect=_leadingCaretRect;
 @property(readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
@@ -113,13 +117,12 @@
 @property(readonly, nonatomic) _Bool willRenderWithLiveTexturedRectangleSource;
 - (void)clearLiveTexturedRectangleSource;
 - (void)promiseLiveTexturedRectangleSource;
-- (void)setLiveTexturedRectangleSourceProxy:(id)arg1;
 - (void)setLiveTextureRectangleDirectTextureSource:(id)arg1 fallbackRenderer:(id)arg2;
 - (void)setLiveTexturedRectangleRenderer:(id)arg1;
 - (id)metalTextureWithContext:(id)arg1;
 - (void)drawFrameWithMetalContext:(id)arg1;
-- (void)setupMetalTextureForDevice:(id)arg1 commandQueue:(id)arg2 maxSize:(struct CGSize)arg3;
-- (void)setupMetalTextureForDevice:(id)arg1 commandQueue:(id)arg2;
+- (void)setupMetalTextureForDevice:(id)arg1 maxSize:(struct CGSize)arg2;
+- (void)setupMetalTextureForDevice:(id)arg1;
 - (void)setupMetalTextureForContext:(id)arg1;
 - (struct CGSize)p_textureSizeWithMaxSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) id <MTLTexture> metalTexture; // @synthesize metalTexture=_metalTexture;

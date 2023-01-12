@@ -7,10 +7,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIResizableImage
 {
-    _Bool _alwaysStretches;
-    _Bool _isSubimage;
-    struct UIEdgeInsets _subimageInsets;
     struct UIEdgeInsets _capInsets;
+    struct UIEdgeInsets _subimageInsets;
+    struct {
+        unsigned int alwaysStretches:1;
+        unsigned int isSubimage:1;
+    } _rImageFlags;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -22,8 +24,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isSubimage;
 - (struct CGRect)_contentRectInPixels;
 - (struct CGRect)_contentStretchInPixels;
-- (struct CGRect)_contentInsetsInPixels:(struct UIEdgeInsets)arg1 emptySizeFallback:(CDUnknownBlockType)arg2;
+- (struct CGRect)_contentRectInPixelsApplyingInsets:(struct UIEdgeInsets)arg1 emptySizeFallback:(CDUnknownBlockType)arg2;
 - (long long)resizingMode;
+- (struct UIEdgeInsets)_subimageInsets;
 - (void)_setSubimageInsets:(struct UIEdgeInsets)arg1;
 - (struct UIEdgeInsets)capInsets;
 - (void)_setCapInsets:(struct UIEdgeInsets)arg1;

@@ -15,7 +15,7 @@
 @interface RCCloudSyncAccessManager : NSObject <ACMonitoredAccountStoreDelegateProtocol, RCManagedConfigurationHelperDelegate>
 {
     ACMonitoredAccountStore *_accountStore;
-    long long _startMonitoringOnceToken;
+    _Bool _monitoringAccountChanges;
     RCManagedConfigurationHelper *_managedConfigurationHelper;
     int _tccNotifyToken;
     id <RCCloudSyncAccessManagerDelegate> _delegate;

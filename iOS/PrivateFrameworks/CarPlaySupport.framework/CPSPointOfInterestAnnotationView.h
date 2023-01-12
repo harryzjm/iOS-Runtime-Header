@@ -13,12 +13,19 @@
     CPImageSet *_imageSet;
 }
 
++ (struct CGPath *)_createPathForBalloonRadius:(double)arg1 tailLength:(double)arg2;
++ (id)balloonWithText:(id)arg1 traitCollection:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
+- (id)_defaultPOI;
+- (void)_configure;
+- (void)prepareForReuse;
+- (void)prepareForDisplay;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setSelected:(_Bool)arg1;
 - (void)update;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

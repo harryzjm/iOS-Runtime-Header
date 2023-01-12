@@ -10,21 +10,21 @@
 
 @interface TSCH3DArray2D : NSObject
 {
-    tvec2_3b141483 mSize;
-    NSMutableArray *mElements;
+    tvec2_3b141483 _size;
+    NSMutableArray *_elements;
 }
 
 + (id)array2D;
-+ (id)array2DWithSize:(const tvec2_3b141483 *)arg1;
++ (id)array2DWithSize:(const void *)arg1;
 - (id).cxx_construct;
-@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=mSize;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
 - (id)firstObject;
-- (id)objectAtIndex:(const tvec2_3b141483 *)arg1;
-- (void)setObject:(id)arg1 atIndex:(const tvec2_3b141483 *)arg2;
-- (_Bool)hasObjectAtIndex:(const tvec2_3b141483 *)arg1;
-- (void)resize:(const tvec2_3b141483 *)arg1;
-- (void)dealloc;
-- (id)initWithSize:(const tvec2_3b141483 *)arg1;
+- (id)objectAtIndex:(const void *)arg1;
+- (void)setObject:(id)arg1 atIndex:(const void *)arg2;
+- (_Bool)hasObjectAtIndex:(const void *)arg1;
+- (void)resize:(const void *)arg1;
+- (id)initWithSize:(const void *)arg1;
 
 @end
 

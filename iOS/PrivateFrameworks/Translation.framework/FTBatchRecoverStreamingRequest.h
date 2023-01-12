@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_74b58d8f)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_74b58d8f)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTStartBatchRecoverRequest *contentAsFTStartBatchRecoverRequest;
 @property(readonly, nonatomic) long long content_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

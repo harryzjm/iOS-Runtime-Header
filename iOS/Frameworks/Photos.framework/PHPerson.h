@@ -9,6 +9,7 @@
 @interface PHPerson
 {
     _Bool _inPersonNamingModel;
+    short _detectionType;
     unsigned short _questionType;
     unsigned short _ageType;
     unsigned short _genderType;
@@ -24,6 +25,13 @@
     unsigned long long _persistedSuggestionForClient;
 }
 
++ (id)propertySetsForPropertyFetchHints:(unsigned long long)arg1;
++ (unsigned long long)propertyFetchHintsForPropertySets:(id)arg1;
++ (id)propertySetAccessorsByPropertySet;
++ (Class)propertySetClassForPropertySet:(id)arg1;
++ (id)fetchPersonsWithUserFeedbackWithOptions:(id)arg1;
++ (id)_fetchSuggestedPersonsForClient:(unsigned long long)arg1 options:(id)arg2;
++ (id)_requestSuggestedPersonsForClient:(unsigned long long)arg1 options:(id)arg2;
 + (id)fetchSuggestedPersonsForClient:(unsigned long long)arg1 options:(id)arg2;
 + (id)batchFetchContactInferencesForPersons:(id)arg1 queryOptions:(unsigned long long)arg2;
 + (id)batchFetchRelationshipInferencesForPersons:(id)arg1;
@@ -36,6 +44,7 @@
 + (id)fetchPersonCountGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchVerifiedPersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
++ (id)fetchPersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
 + (id)_fetchSuggestedRecipientsForFocusedAssetCollection:(id)arg1 assetCollection:(id)arg2 options:(id)arg3 client:(unsigned long long)arg4;
 + (id)_fetchSuggestedPersonsForRecipients:(id)arg1 options:(id)arg2 photoLibrary:(id)arg3;
 + (id)batchFetchSuggestedRecipientsForAssets:(id)arg1 options:(id)arg2;
@@ -53,6 +62,7 @@
 + (id)fetchRejectedPersonsForFace:(id)arg1 options:(id)arg2;
 + (id)fetchPersonWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchPersonsInAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsInAsset:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithQuestionType:(unsigned short)arg1 options:(id)arg2;
@@ -62,15 +72,19 @@
 + (id)localIdentifierExpressionForFetchRequests;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 + (id)entityKeyMap;
++ (id)corePropertiesToFetch;
++ (id)identifierPropertiesToFetch;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)_composePropertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)identifierCode;
++ (_Bool)managedObjectSupportsTorsoOnly;
++ (_Bool)managedObjectSupportsDetectionType;
 + (_Bool)managedObjectSupportsKeyFaces;
 + (_Bool)managedObjectSupportsPersonFilters;
 + (id)fetchType;
 + (id)managedEntityName;
 + (id)fetchPersonsForReferences:(id)arg1 photoLibrary:(id)arg2;
 + (long long)updateKeyFacesOfPersons:(id)arg1 forceUpdate:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-+ (id)_verifiedPersonWithLocalIdentifier:(id)arg1 fromPhotoLibrary:(id)arg2;
 + (id)_convertToPersonSuggestion:(id)arg1 photoLibrary:(id)arg2;
 + (id)_packageSuggestionList:(id)arg1 photoLibrary:(id)arg2;
 + (id)_personSuggestionMarkedAsConfirmed:(_Bool)arg1 fromPersonSuggestion:(id)arg2;
@@ -84,6 +98,7 @@
 @property(readonly, nonatomic) unsigned short ageType; // @synthesize ageType=_ageType;
 @property(readonly, nonatomic) unsigned short questionType; // @synthesize questionType=_questionType;
 @property(readonly, nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
+@property(readonly, nonatomic) short detectionType; // @synthesize detectionType=_detectionType;
 @property(readonly, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property(readonly, nonatomic) long long faceCount; // @synthesize faceCount=_faceCount;
 @property(readonly, nonatomic, getter=isInPersonNamingModel) _Bool inPersonNamingModel; // @synthesize inPersonNamingModel=_inPersonNamingModel;
@@ -92,6 +107,10 @@
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+- (id)userFeedbackProperties;
+- (id)_createPropertyObjectOfClass:(Class)arg1;
+- (id)_createPropertyObjectOfClass:(Class)arg1 preFetchedProperties:(id)arg2;
+- (void)fetchPropertySetsIfNeeded;
 - (id)description;
 - (id)suggestedContacts;
 - (id)inferredContact;

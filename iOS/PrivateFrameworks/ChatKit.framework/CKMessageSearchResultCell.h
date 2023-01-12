@@ -6,17 +6,20 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
+#import <ChatKit/CKConversationSearchCellDelegate-Protocol.h>
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class CALayer, CKSpotlightQueryResult, NSString, UITableViewCell;
-@protocol CKConversationSearchCellProtocol;
+@protocol CKConversationSearchCellProtocol, CKMessageSearchResultCellDelegate;
 
-@interface CKMessageSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKMessageSearchResultCell : UICollectionViewCell <CKConversationSearchCellDelegate, CKSearchResultCell>
 {
     _Bool _ck_editing;
+    _Bool _shouldInsetResults;
     NSString *_searchText;
     CALayer *_topHairline;
     CALayer *_bottomHairline;
+    id <CKMessageSearchResultCellDelegate> _delegate;
     UITableViewCell<CKConversationSearchCellProtocol> *_searchCell;
     CKSpotlightQueryResult *_result;
     struct UIEdgeInsets _marginInsets;
@@ -26,8 +29,10 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKSpotlightQueryResult *result; // @synthesize result=_result;
 @property(retain, nonatomic) UITableViewCell<CKConversationSearchCellProtocol> *searchCell; // @synthesize searchCell=_searchCell;
+@property(nonatomic) __weak id <CKMessageSearchResultCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
 @property(readonly, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
+@property(nonatomic) _Bool shouldInsetResults; // @synthesize shouldInsetResults=_shouldInsetResults;
 @property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing; // @synthesize _ck_editing;
 @property(nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
@@ -37,11 +42,12 @@
 - (void)forwardStateToEmbeddedCell:(unsigned long long)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)layoutSubviews;
-@property(nonatomic) double widthForDeterminingAvatarVisibility;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (double)widthForDeterminingAvatarVisibility;
 - (void)refreshForSearchTextIfNeeded:(id)arg1;
 - (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;
+@property(readonly, copy, nonatomic) NSString *resultIdentifier;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

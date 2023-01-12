@@ -6,9 +6,9 @@
 
 #import <WorkflowUI/NSObject-Protocol.h>
 
-@class WFAutomationSelectTypeViewController;
+@class WFAutomationSelectTypeViewController, WFTrigger;
 
 @protocol WFAutomationSelectTypeViewControllerDelegate <NSObject>
-- (void)selectTypeViewController:(WFAutomationSelectTypeViewController *)arg1 didChooseTriggerClass:(Class)arg2;
+- (void)selectTypeViewController:(WFAutomationSelectTypeViewController *)arg1 didChooseTrigger:(WFTrigger *)arg2;
 @end
 

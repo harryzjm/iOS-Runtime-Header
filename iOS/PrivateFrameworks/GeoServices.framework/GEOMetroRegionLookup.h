@@ -10,7 +10,8 @@
 {
 }
 
-- (void)lookupRegionWithLocation:(id)arg1 resultQueue:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
+- (id)_lookupRegionWithLocation:(id)arg1 countryCode:(id)arg2;
+- (id)lookupRegionWithLocation:(id)arg1 countryCodeHint:(id)arg2;
 - (id)lookupRegionWithLocation:(id)arg1;
 
 @end

@@ -7,9 +7,10 @@
 #import <ChatKit/NSObject-Protocol.h>
 
 @class CKAvatarView, CKLabel, CKSpotlightQueryResult, NSString;
+@protocol CKConversationSearchCellDelegate;
 
 @protocol CKConversationSearchCellProtocol <NSObject>
-@property(nonatomic) double widthForDeterminingAvatarVisibility;
+@property(nonatomic) __weak id <CKConversationSearchCellDelegate> delegate;
 @property(nonatomic) struct UIEdgeInsets marginInsets;
 - (CKAvatarView *)avatarView;
 - (CKLabel *)fromLabel;

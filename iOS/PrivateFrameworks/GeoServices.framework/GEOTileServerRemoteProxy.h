@@ -35,9 +35,6 @@
 - (void)_handleNetworkBegan:(id)arg1;
 - (void)_handleError:(id)arg1;
 - (void)_handleTile:(id)arg1;
-- (void)_sendMessage:(id)arg1;
-- (id)_sendMessageWithReplySync:(id)arg1;
-- (_Bool)_sendMessage:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_handleEvent:(id)arg1;
 - (void)dealloc;
 - (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 delegateQueue:(id)arg4 delegate:(id)arg5;

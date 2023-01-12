@@ -11,21 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface GEOAlmanacRiseTransitSet : NSObject
 {
-    struct CAARiseTransitSetDetails2 _rise;
-    struct CAARiseTransitSetDetails2 _transit;
-    struct CAARiseTransitSetDetails2 _set;
+    struct _GEORiseTransitSetEvent _rise;
+    struct _GEORiseTransitSetEvent _transit;
+    struct _GEORiseTransitSetEvent _set;
 }
 
 - (id).cxx_construct;
-@property(readonly, nonatomic) struct CAARiseTransitSetDetails2 lastItem;
-@property(readonly, nonatomic) struct CAARiseTransitSetDetails2 firstItem;
+@property(readonly, nonatomic) struct _GEORiseTransitSetEvent lastItem;
+@property(readonly, nonatomic) struct _GEORiseTransitSetEvent firstItem;
 @property(readonly, nonatomic) _Bool isIdeal;
 - (id)description;
 @property(readonly, nonatomic) NSDate *set;
-@property(readonly, nonatomic) _Bool transitIsAboveHorizon;
 @property(readonly, nonatomic) NSDate *transit;
 @property(readonly, nonatomic) NSDate *rise;
-- (id)initWithRise:(const struct CAARiseTransitSetDetails2 *)arg1 transit:(const struct CAARiseTransitSetDetails2 *)arg2 set:(const struct CAARiseTransitSetDetails2 *)arg3;
+- (id)initWithRise:(const struct _GEORiseTransitSetEvent *)arg1 transit:(const struct _GEORiseTransitSetEvent *)arg2 set:(const struct _GEORiseTransitSetEvent *)arg3;
 
 @end
 

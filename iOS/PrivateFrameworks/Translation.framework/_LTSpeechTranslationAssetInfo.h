@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MAAsset, NSArray, NSDictionary, NSURL, _LTLocalePair, _LTOfflineAssetManager;
+@class MAAsset, NSArray, NSDictionary, _LTLocalePair, _LTOfflineAssetManager;
 
 __attribute__((visibility("hidden")))
 @interface _LTSpeechTranslationAssetInfo : NSObject
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSArray *_missingAssets;
     NSArray *_missingMTAssets;
     _Bool _needsUpdate;
-    NSURL *_modelURL;
+    NSArray *_modelURLs;
 }
 
 + (void)initialize;
@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 - (id)availabilityInfo;
 - (unsigned long long)_mtModelOfflineState;
 - (_Bool)isCompleteBidirectionalModel;
-- (_Bool)isCompletePasshtroughModel;
-- (id)translationModelURL;
+- (_Bool)isCompletePassthroughModel;
+- (id)translationModelURLs;
 - (id)speechModelVersionForLocale:(id)arg1;
 - (id)speechModelURLForLocale:(id)arg1;
 - (_Bool)updateAvailableInAssets:(id)arg1;

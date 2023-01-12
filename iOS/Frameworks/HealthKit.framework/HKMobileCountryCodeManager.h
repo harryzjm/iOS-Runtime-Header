@@ -15,16 +15,19 @@
     RadiosPreferences *_radiosPreferences;
 }
 
++ (id)_overrideISOCountryCode;
++ (id)overrideMobileCountryCode;
++ (void)setOverrideMobileCountryCode:(id)arg1;
++ (_Bool)isOverridePresent;
 - (void).cxx_destruct;
-- (id)_copyISOForMCC:(id)arg1 error:(id *)arg2;
-- (id)_overriddenISOMobileCountryCode;
-- (id)_overriddenMobileCountryCode;
+- (void)_submitAnalyticsForError:(id)arg1 mobileCountryCode:(id)arg2;
+- (id)copyISOCountryCodeForMobileCountryCode:(id)arg1 error:(id *)arg2;
 - (id)_wrapperWithMobileCountryCode:(id)arg1 error:(id *)arg2;
-- (id)_resolveMobileCountryCodeOverridesWithError:(id *)arg1;
 - (_Bool)_isLocationAvailableWithError:(id *)arg1;
 - (id)mobileCountryCodeFromCellularWithError:(id *)arg1;
 - (void)fetchMobileCountryCodeFromCellularWithCompletion:(CDUnknownBlockType)arg1;
-- (void)currentMobileCountryCodeFromCellularWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchISOCountryCodeFromCellularWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

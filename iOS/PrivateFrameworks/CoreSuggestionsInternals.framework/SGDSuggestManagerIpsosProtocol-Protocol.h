@@ -7,6 +7,6 @@
 @class NSArray;
 
 @protocol SGDSuggestManagerIpsosProtocol
-- (void)ipsosMessagesWithSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
+- (void)ipsosMessagesFromSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 @end
 

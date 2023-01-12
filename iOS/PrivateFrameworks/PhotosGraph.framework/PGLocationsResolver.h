@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMapTable, NSSet, PGIncompleteLocationResolver;
+@class NSArray, NSMapTable, NSSet, PGGraphLocationHelper, PGIncompleteLocationResolver;
 
 @interface PGLocationsResolver : NSObject
 {
+    PGGraphLocationHelper *_locationHelper;
     _Bool _shouldCreateLocationToAddressMapTable;
     float _maximumMissingLocationsThreshold;
     PGIncompleteLocationResolver *_incompleteLocationResolver;
@@ -33,8 +34,8 @@
 - (void)_resolve;
 - (void)setCreateLocationToAddressMapTable:(_Bool)arg1;
 @property(readonly, nonatomic) NSMapTable *resolvedLocationNodesToAddressNodesMapTable; // @synthesize resolvedLocationNodesToAddressNodesMapTable=_resolvedLocationNodesToAddressNodesMapTable;
-- (id)initWithSortedMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2;
-- (id)initWithMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2;
+- (id)initWithSortedMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2 locationHelper:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 incompleteLocationResolver:(id)arg2 locationHelper:(id)arg3;
 
 @end
 

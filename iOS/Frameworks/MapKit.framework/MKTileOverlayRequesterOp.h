@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MKTileOverlayRequester *_delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSData *_data;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 - (void).cxx_destruct;
@@ -23,8 +24,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(nonatomic) __weak MKTileOverlayRequester *delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) struct _GEOTileKey key; // @synthesize key=_key;
+- (void)_cancel;
 - (void)cancel;
+- (void)_start;
 - (void)start;
+- (id)init;
 
 @end
 

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, SGNamedEntityDissector, SGSqlEntityStore, SGURLDissector;
+@class PPLocalEventStore, PPLocalLocationStore, PPLocalNamedEntityStore, PPLocalTopicStore, SGNamedEntityDissector, SGSqlEntityStore, SGURLDissector;
 
 @interface PPEventKitImporter : NSObject
 {
     PPLocalEventStore *_eventStore;
     PPLocalNamedEntityStore *_namedEntityStore;
     PPLocalLocationStore *_locationStore;
+    PPLocalTopicStore *_topicStore;
     SGSqlEntityStore *_urlStore;
     SGURLDissector *_urlDissector;
     SGNamedEntityDissector *_neDissector;
@@ -20,27 +21,15 @@
     struct atomic_flag _fullImportInProgress;
 }
 
-+ (_Bool)_shouldImport;
 + (id)defaultInstance;
 - (void).cxx_destruct;
-- (_Bool)_flush;
-- (_Bool)_deleteOldLocations;
-- (_Bool)_deleteOldEntities;
-- (_Bool)deleteAllExtractions;
-- (void)_donateEntityContainer:(id)arg1;
-- (void)_donateURLContainer:(id)arg1;
-- (void)_dissectAndDonateURLsFromEvent:(id)arg1 source:(id)arg2;
-- (void)_donateLocationFromPreferredLocationOfEvent:(id)arg1 source:(id)arg2;
-- (void)_dissectAndDonateEntitiesFromRawTextOfEvent:(id)arg1 source:(id)arg2;
-- (id)_entitiesFromPropertiesOfEvent:(id)arg1;
-- (void)_donateEntitiesForPropertiesOfEvent:(id)arg1 source:(id)arg2;
-- (void)_importEvent:(id)arg1;
+- (_Bool)deleteAndReimportAllData;
 - (void)importEvent:(id)arg1;
-- (void)importEventDataWithShouldContinueBlock:(CDUnknownBlockType)arg1;
-- (void)importEventData;
-- (_Bool)_setDissectorsFromPipeline;
+- (void)importChangedEvents:(id)arg1;
+- (id)importEventDataWithShouldContinueBlock:(CDUnknownBlockType)arg1;
+- (id)importEventData;
 - (id)init;
-- (id)initWithEventStore:(id)arg1 namedEntityStore:(id)arg2 locationStore:(id)arg3 urlStore:(id)arg4 urlDissector:(id)arg5 namedEntityDissector:(id)arg6 dataDetectorMatchClass:(Class)arg7;
+- (id)initWithEventStore:(id)arg1 namedEntityStore:(id)arg2 locationStore:(id)arg3 topicStore:(id)arg4 urlStore:(id)arg5 urlDissector:(id)arg6 namedEntityDissector:(id)arg7 dataDetectorMatchClass:(Class)arg8;
 
 @end
 

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class AVPlayerPlaybackCoordinator;
 @protocol MFPlayerItem, MFQueuePlayerItem;
 
 @protocol MFQueueControlling
-- (_Bool)canSkipInDirection:(long long)arg1 fromItem:(id <MFPlayerItem>)arg2;
+- (_Bool)canSkipInDirection:(long long)arg1 fromItem:(id <MFQueuePlayerItem>)arg2;
 - (id <MFQueuePlayerItem>)queueItemForPlayerItem:(id <MFPlayerItem>)arg1 allowReuse:(_Bool)arg2;
 - (id <MFQueuePlayerItem>)itemToFollowItem:(id <MFQueuePlayerItem>)arg1 direction:(long long)arg2 distance:(long long)arg3 reason:(long long)arg4;
+- (void)updatePlayerPlaybackCoordinator:(AVPlayerPlaybackCoordinator *)arg1;
 @end
 

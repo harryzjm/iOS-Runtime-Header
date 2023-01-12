@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) struct _PXValueAnimationSpec spec; // @synthesize spec=_spec;
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic) _Bool completed;
+@property(readonly, nonatomic) double approximateVelocity;
 @property(readonly, nonatomic) double currentValue;
 - (double)remainingTime;
 - (double)elapsedTime;

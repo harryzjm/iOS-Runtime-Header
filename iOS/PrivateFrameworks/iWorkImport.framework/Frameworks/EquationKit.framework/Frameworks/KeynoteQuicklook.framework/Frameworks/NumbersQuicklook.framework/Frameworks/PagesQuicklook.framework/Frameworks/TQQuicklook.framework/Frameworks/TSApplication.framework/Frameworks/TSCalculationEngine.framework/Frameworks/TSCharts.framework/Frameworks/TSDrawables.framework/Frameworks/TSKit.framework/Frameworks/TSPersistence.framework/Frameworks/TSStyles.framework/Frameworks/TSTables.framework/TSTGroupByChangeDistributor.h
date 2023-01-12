@@ -14,8 +14,8 @@
 
 - (id)protocol;
 - (void)didChangeGroupByStructure;
-- (void)didRemoveRowUID:(const UUIDData_5fbc143e *)arg1 fromGroup:(id)arg2;
-- (void)didAddRowUID:(const UUIDData_5fbc143e *)arg1 toGroup:(id)arg2;
+- (void)didRemoveRowUID:(struct TSKUIDStruct)arg1 fromGroup:(id)arg2;
+- (void)didAddRowUID:(struct TSKUIDStruct)arg1 toGroup:(id)arg2;
 - (void)didRemoveGroup:(id)arg1;
 - (void)willRemoveGroup:(id)arg1;
 - (void)didCreateGroup:(id)arg1;

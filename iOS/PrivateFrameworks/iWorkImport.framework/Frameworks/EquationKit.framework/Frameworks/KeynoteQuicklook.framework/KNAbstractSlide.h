@@ -67,14 +67,14 @@
 - (void)p_updateBuildEffects:(_Bool)arg1 version:(unsigned long long)arg2;
 - (unsigned long long)p_keynoteVersionFromUnarchiver:(id)arg1;
 - (void)p_updateOverlappingBuildEventTriggers;
-- (void)saveToArchive:(struct SlideArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)p_updateStartAndEndOffsetsIfNecessaryForFileVersion:(unsigned long long)arg1;
 - (void)p_updateChunkCount;
-- (void)loadFromArchive:(const struct SlideArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)p_updateBuildsReplacingPlaceholder:(id)arg1 withPlaceholder:(id)arg2;
 - (void)setSlideNode:(id)arg1;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (double)CGFloatValueForProperty:(int)arg1;
 - (double)doubleValueForProperty:(int)arg1;
 - (float)floatValueForProperty:(int)arg1;
@@ -210,7 +210,7 @@
 - (void)insertDrawable:(id)arg1 atIndex:(unsigned long long)arg2 dolcContext:(id)arg3;
 - (void)addDrawable:(id)arg1 dolcContext:(id)arg2;
 @property(readonly, nonatomic) NSArray *infosToDisplay;
-@property(readonly, nonatomic) _Bool isMasterSlide;
+@property(readonly, nonatomic) _Bool isTemplateSlide;
 @property(readonly, nonatomic) KNSlideBackgroundInfo *background;
 @property(readonly, nonatomic) NSArray *ownedChildInfos;
 - (_Bool)p_isChildPlaceholderInfo:(id)arg1;

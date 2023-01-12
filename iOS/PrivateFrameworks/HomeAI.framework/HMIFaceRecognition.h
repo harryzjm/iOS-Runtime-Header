@@ -9,7 +9,7 @@
 #import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
-@class HMIFaceCrop, HMIFaceprint, NSSet, NSString;
+@class HMIFaceCrop, HMIFaceprint, NSSet, NSString, NSUUID;
 
 @interface HMIFaceRecognition : HMFObject <HMFLogging, NSSecureCoding>
 {
@@ -17,6 +17,7 @@
     HMIFaceprint *_faceprint;
     NSSet *_classifications;
     double _faceQualityScore;
+    NSUUID *_sessionEntityUUID;
     NSSet *_predictedLinkedEntityUUIDs;
     long long _sessionEntityAssignment;
 }
@@ -26,6 +27,7 @@
 - (void).cxx_destruct;
 @property(readonly) long long sessionEntityAssignment; // @synthesize sessionEntityAssignment=_sessionEntityAssignment;
 @property(readonly) NSSet *predictedLinkedEntityUUIDs; // @synthesize predictedLinkedEntityUUIDs=_predictedLinkedEntityUUIDs;
+@property(readonly) NSUUID *sessionEntityUUID; // @synthesize sessionEntityUUID=_sessionEntityUUID;
 @property(readonly) double faceQualityScore; // @synthesize faceQualityScore=_faceQualityScore;
 @property(readonly) NSSet *classifications; // @synthesize classifications=_classifications;
 @property(readonly) HMIFaceprint *faceprint; // @synthesize faceprint=_faceprint;
@@ -36,7 +38,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)attributeDescriptions;
 @property(readonly, copy) NSString *description;
-- (id)initWithFaceCrop:(id)arg1 faceprint:(id)arg2 classifications:(id)arg3 predictedLinkedEntityUUIDs:(id)arg4 faceQualityScore:(double)arg5 sessionEntityAssignment:(long long)arg6;
+- (id)initWithFaceCrop:(id)arg1 faceprint:(id)arg2 classifications:(id)arg3 predictedLinkedEntityUUIDs:(id)arg4 faceQualityScore:(double)arg5 sessionEntityAssignment:(long long)arg6 sessionEntityUUID:(id)arg7;
 - (id)initWithFaceCrop:(id)arg1 faceprint:(id)arg2 classifications:(id)arg3 predictedLinkedEntityUUIDs:(id)arg4;
 - (id)initWithFaceCrop:(id)arg1 faceprint:(id)arg2 classifications:(id)arg3;
 

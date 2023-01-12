@@ -6,15 +6,12 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PUAssetReference, PUOneUpSuggestion, PUOneUpSuggestionsController, UIViewController;
-@protocol UICoordinateSpace;
+@class PUAssetReference, PUOneUpSuggestionsController;
 
 @protocol PUOneUpSuggestionsControllerDelegate <NSObject>
 
 @optional
-- (_Bool)oneUpSuggestionsController:(PUOneUpSuggestionsController *)arg1 canShowSuggestion:(PUOneUpSuggestion *)arg2 forAssetReference:(PUAssetReference *)arg3;
-- (void)oneUpSuggestionsController:(PUOneUpSuggestionsController *)arg1 didSelectSuggestion:(PUOneUpSuggestion *)arg2 forAssetReference:(PUAssetReference *)arg3;
-- (UIViewController *)viewControllerForOneUpSuggestionsController:(PUOneUpSuggestionsController *)arg1;
-- (struct CGRect)oneUpSuggestionsController:(PUOneUpSuggestionsController *)arg1 frameForAssetReference:(PUAssetReference *)arg2 inCoordinateSpace:(id <UICoordinateSpace>)arg3;
+- (void)suggestionBecameAvailable:(PUOneUpSuggestionsController *)arg1;
+- (_Bool)oneUpSuggestionsController:(PUOneUpSuggestionsController *)arg1 canShowSuggestionForAssetReference:(PUAssetReference *)arg2;
 @end
 

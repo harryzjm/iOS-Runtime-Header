@@ -22,25 +22,24 @@
     TSTCellRegion *_cachedBaseRegion;
     unsigned long long _cachedBaseRegionVersionCounter;
     struct _NSRange _searchReferenceRange;
-    struct TSTCellUID _anchorCellUID;
-    struct TSTCellUID _cursorCellUID;
+    struct TSKUIDStructCoord _anchorCellUID;
+    struct TSKUIDStructCoord _cursorCellUID;
 }
 
 + (Class)archivedSelectionClass;
 + (id)selectionWithTableInfo:(id)arg1 columnIndices:(id)arg2;
 + (id)selectionWithTableInfo:(id)arg1 rowIndices:(id)arg2;
 + (id)selectionWithTableInfo:(id)arg1 cellRegion:(id)arg2;
-+ (id)selectionWithTableInfo:(id)arg1 cellUID:(const struct TSTCellUID *)arg2;
++ (id)selectionWithTableInfo:(id)arg1 cellUID:(const struct TSKUIDStructCoord *)arg2;
 + (id)selectionWithTableInfo:(id)arg1 cellID:(struct TSUCellCoord)arg2;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long cachedBaseRegionVersionCounter; // @synthesize cachedBaseRegionVersionCounter=_cachedBaseRegionVersionCounter;
 @property(retain, nonatomic) TSTCellRegion *cachedBaseRegion; // @synthesize cachedBaseRegion=_cachedBaseRegion;
 @property(nonatomic) unsigned long long cachedCellRegionVersionCounter; // @synthesize cachedCellRegionVersionCounter=_cachedCellRegionVersionCounter;
 @property(retain, nonatomic) TSTCellRegion *cachedCellRegion; // @synthesize cachedCellRegion=_cachedCellRegion;
 @property(retain, nonatomic) TSTCellUIDRegion *baseCellUIDRegion; // @synthesize baseCellUIDRegion=_baseCellUIDRegion;
-@property(nonatomic) struct TSTCellUID cursorCellUID; // @synthesize cursorCellUID=_cursorCellUID;
-@property(nonatomic) struct TSTCellUID anchorCellUID; // @synthesize anchorCellUID=_anchorCellUID;
+@property(nonatomic) struct TSKUIDStructCoord cursorCellUID; // @synthesize cursorCellUID=_cursorCellUID;
+@property(nonatomic) struct TSKUIDStructCoord anchorCellUID; // @synthesize anchorCellUID=_anchorCellUID;
 @property(retain, nonatomic) TSTCellUIDRegion *cellUIDRegion; // @synthesize cellUIDRegion=_cellUIDRegion;
 @property(nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property(nonatomic) struct _NSRange searchReferenceRange; // @synthesize searchReferenceRange=_searchReferenceRange;
@@ -48,6 +47,7 @@
 @property(readonly, nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
 @property(readonly, nonatomic) _Bool isAtEndOfLine;
 @property(readonly, nonatomic) struct _NSRange range;
+@property(readonly, nonatomic) NSString *cellSelectionNameForContextAndActionMenus;
 - (_Bool)getAggregateType:(out unsigned char *)arg1;
 - (_Bool)intersectsPartialMergeRangeInTable:(id)arg1;
 - (id)briefDescription;
@@ -56,7 +56,9 @@
 - (_Bool)canEditWithControlCellSubselectionInTable:(id)arg1;
 - (_Bool)canEditWithCellSubselectionInTable:(id)arg1;
 @property(readonly, nonatomic) _Bool containsOnlyGroupValueCells;
-@property(readonly, nonatomic) _Bool containsOnlyCellsInCategoryColumnsAndRows;
+@property(readonly, nonatomic) _Bool containsOnlySpecialPivotCells;
+@property(readonly, nonatomic) _Bool containsOnlySpecialCategoryCells;
+@property(readonly, nonatomic) _Bool containsOnlySpecialCategoryOrPivotCells;
 @property(readonly, nonatomic) _Bool containsOnlyCellsInSummaryAndLabelRows;
 @property(readonly, nonatomic) _Bool containsOnlyCellsInSummaryRow;
 @property(readonly, nonatomic) _Bool containsOnlyCellsInCategoryColumn;
@@ -68,6 +70,7 @@
 @property(readonly, nonatomic) _Bool containsCellsInSummaryRow;
 @property(readonly, nonatomic) _Bool containsCellsInCategoryColumn;
 @property(readonly, nonatomic) _Bool containsFooterRows;
+@property(readonly, nonatomic) _Bool containsBodyColumns;
 @property(readonly, nonatomic) _Bool containsBodyRows;
 @property(readonly, nonatomic) _Bool containsHeaderRows;
 @property(readonly, nonatomic) _Bool containsHeaderColumns;
@@ -85,14 +88,16 @@
 - (id)selectionToBeginImplicitEditingInTableInfo:(id)arg1;
 - (void)setCellRange:(struct TSUCellRect)arg1;
 - (id)selectionAdjustedForGeometryInTableInfo:(id)arg1;
-- (id)selectionAdjustedForColumnVisibilityInTableInfo:(id)arg1;
-- (id)selectionAdjustedForRowVisibilityInTableInfo:(id)arg1;
+- (id)p_selectionRemovingHiddenColumnsInTableInfo:(id)arg1;
+- (id)p_selectionRemovingHiddenRowsInTableInfo:(id)arg1;
+- (id)selectionAdjustedForVisibilityInTableInfo:(id)arg1 alwaysCheckColumns:(_Bool)arg2;
+- (id)selectionAdjustedForVisibilityInTableInfo:(id)arg1;
 - (id)selectionByRemovingCellRange:(struct TSUCellRect)arg1 inTable:(id)arg2 withAnchor:(struct TSUCellCoord)arg3 cursor:(struct TSUCellCoord)arg4 selectionType:(long long)arg5;
 - (id)selectionByAddingCellRange:(struct TSUCellRect)arg1 inTable:(id)arg2 withAnchor:(struct TSUCellCoord)arg3 cursor:(struct TSUCellCoord)arg4 selectionType:(long long)arg5;
 - (id)selectionByExtendingWithCellRange:(struct TSUCellRect)arg1 inTable:(id)arg2 selectionType:(long long)arg3 cursorCell:(struct TSUCellCoord)arg4;
-- (id)initWithRdar39989167Archive:(const struct DeathhawkRdar39989167CellSelectionArchive *)arg1 unarchiver:(id)arg2;
-- (void)saveToArchive:(struct SelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct SelectionArchive *)arg1 unarchiver:(id)arg2;
+- (id)initWithRdar39989167Archive:(const void *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) unsigned long long sizeClass;
 - (struct TSUCellCoord)logicalCellIDInTable:(id)arg1;
 @property(readonly, nonatomic) unsigned long long cellCount;
@@ -121,7 +126,7 @@
 - (id)initWithTableInfo:(id)arg1 cellRegion:(id)arg2 anchorCellID:(struct TSUCellCoord)arg3 cursorCellID:(struct TSUCellCoord)arg4 baseRegion:(id)arg5 selectionType:(long long)arg6;
 - (id)initForUpgradeWithTableInfo:(id)arg1 cellRegion:(id)arg2 anchorCellID:(struct TSUCellCoord)arg3 cursorCellID:(struct TSUCellCoord)arg4 baseRegion:(id)arg5 selectionType:(long long)arg6;
 - (id)initWithTableInfo:(id)arg1 cellRegion:(id)arg2 anchorCellID:(struct TSUCellCoord)arg3 cursorCellID:(struct TSUCellCoord)arg4 baseRegion:(id)arg5 selectionType:(long long)arg6 searchReferenceRange:(struct _NSRange)arg7 beginImplicitEditing:(_Bool)arg8;
-- (id)initWithTableInfo:(id)arg1 cellUIDRegion:(id)arg2 anchorCellUID:(struct TSTCellUID *)arg3 cursorCellUID:(struct TSTCellUID *)arg4 baseCellUIDRegion:(id)arg5 selectionType:(long long)arg6 searchReferenceRange:(struct _NSRange)arg7 beginImplicitEditing:(_Bool)arg8;
+- (id)initWithTableInfo:(id)arg1 cellUIDRegion:(id)arg2 anchorCellUID:(struct TSKUIDStructCoord *)arg3 cursorCellUID:(struct TSKUIDStructCoord *)arg4 baseCellUIDRegion:(id)arg5 selectionType:(long long)arg6 searchReferenceRange:(struct _NSRange)arg7 beginImplicitEditing:(_Bool)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

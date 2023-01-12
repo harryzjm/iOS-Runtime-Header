@@ -7,31 +7,52 @@
 #import <objc/NSObject.h>
 
 @class SBHIconModel;
+@protocol SBHIconStateUnarchiverDelegate, SBHIconStateUnarchiverIconSource;
 
 @interface SBHIconStateUnarchiver : NSObject
 {
     _Bool _removesEmptyFolders;
+    SBHIconModel *_iconModel;
+    id <SBHIconStateUnarchiverIconSource> _iconSource;
+    id <SBHIconStateUnarchiverDelegate> _delegate;
     id _archive;
-    SBHIconModel *_iconSource;
 }
 
-+ (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 forRepresentation:(id)arg3 iconSource:(id)arg4;
++ (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 uniqueIdentifier:(id *)arg3 forRepresentation:(id)arg4 iconSource:(id)arg5;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) SBHIconModel *iconSource; // @synthesize iconSource=_iconSource;
 @property(readonly, nonatomic) id archive; // @synthesize archive=_archive;
 @property(nonatomic) _Bool removesEmptyFolders; // @synthesize removesEmptyFolders=_removesEmptyFolders;
+@property(retain, nonatomic) id <SBHIconStateUnarchiverDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) id <SBHIconStateUnarchiverIconSource> iconSource; // @synthesize iconSource=_iconSource;
+@property(retain, nonatomic) SBHIconModel *iconModel; // @synthesize iconModel=_iconModel;
+- (long long)_suggestionSourceFromRepresentation:(id)arg1;
 - (id)_customIconElementFromRepresentation:(id)arg1 context:(id)arg2;
 - (_Bool)_canAddIconDataSource:(id)arg1 toIcon:(id)arg2;
 - (id)_widgetIconFromRepresentation:(id)arg1 context:(id)arg2;
-- (id)_listFromRepresentation:(id)arg1 listGridSize:(struct SBHIconGridSize)arg2 gridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg3 identifier:(id)arg4 context:(id)arg5 overflow:(id)arg6;
+- (id)_applicationIconFromRepresentation:(id)arg1 context:(id)arg2;
+- (id)_listWithIcons:(id)arg1 listGridSize:(struct SBHIconGridSize)arg2 listWithNonDefaultSizedIconsGridSize:(struct SBHIconGridSize)arg3 gridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg4 listRotatedLayoutClusterGridSizeClass:(unsigned long long)arg5 listAllowedGridSizeClasses:(unsigned long long)arg6 identifier:(id)arg7 folder:(id)arg8 overflow:(id)arg9;
+- (id)_listFromRepresentation:(id)arg1 listGridSize:(struct SBHIconGridSize)arg2 listWithNonDefaultSizedIconsGridSize:(struct SBHIconGridSize)arg3 gridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg4 listRotatedLayoutClusterGridSizeClass:(unsigned long long)arg5 listAllowedGridSizeClasses:(unsigned long long)arg6 identifier:(id)arg7 context:(id)arg8 overflow:(id)arg9;
 - (id)_folderFromRepresentation:(id)arg1 withContext:(id)arg2;
-- (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 forRepresentation:(id)arg3;
+- (unsigned long long)_allowedGridSizeClassesForTodayList;
+- (unsigned long long)_allowedGridSizeClassesForDock;
+- (unsigned long long)_allowedGridSizeClassesForFolderClass:(Class)arg1;
+- (_Bool)_listsAllowRotatedLayoutForFolderClass:(Class)arg1;
+- (unsigned long long)_listRotatedLayoutClusterGridSizeClass;
+- (struct SBHIconGridSizeClassSizes)_gridSizeClassSizes;
+- (unsigned long long)_maxIconCountForDock;
+- (unsigned long long)_maxListCountForFolders;
+- (struct SBHIconGridSize)_listWithNonDefaultSizedIconsGridSizeForFolderClass:(Class)arg1;
+- (struct SBHIconGridSize)_listGridSizeForFolderClass:(Class)arg1;
+- (void)_getFolderDisplayName:(id *)arg1 defaultDisplayName:(id *)arg2 uniqueIdentifier:(id *)arg3 forRepresentation:(id)arg4;
 - (Class)_folderClassForFolderType:(id)arg1 context:(id)arg2;
 - (id)_iconFromRepresentation:(id)arg1 withContext:(id)arg2;
 - (id)_newFolderIconForFolder:(id)arg1;
 - (id)_nodeFromRepresentation:(id)arg1 context:(id)arg2;
 - (id)unarchive;
-- (id)initWithArchive:(id)arg1 iconSource:(id)arg2;
+- (id)effectiveDelegate;
+- (id)init;
+- (id)initWithArchive:(id)arg1 iconModel:(id)arg2;
+- (id)initWithArchive:(id)arg1;
 
 @end
 

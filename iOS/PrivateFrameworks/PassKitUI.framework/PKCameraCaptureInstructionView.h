@@ -19,14 +19,21 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PKTableHeaderView *headerView; // @synthesize headerView=_headerView;
-@property(retain, nonatomic) UIButton *secondaryButton; // @synthesize secondaryButton=_secondaryButton;
-@property(retain, nonatomic) UIButton *primaryButton; // @synthesize primaryButton=_primaryButton;
 - (_Bool)isBuddyiPad;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
+- (_Bool)hasSecondaryButton;
+- (void)removeSecondaryButton;
+- (void)setSecondaryButtonTitle:(id)arg1;
+- (void)setPrimaryButtonTitle:(id)arg1;
+- (void)setPrimaryButtonHidden:(_Bool)arg1;
+- (void)setPrimaryButtonEnabled:(_Bool)arg1;
+- (void)setupHeaderView;
+- (void)setupSecondaryButtonWithTitle:(id)arg1 action:(id)arg2;
+- (void)setupPrimaryButtonWithTitle:(id)arg1 action:(id)arg2;
+- (void)setupScrollView;
+- (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2 primaryAction:(id)arg3 primaryActionTitle:(id)arg4 secondaryAction:(id)arg5 secondaryActionTitle:(id)arg6;
 
 @end
 

@@ -8,12 +8,14 @@
 
 @interface ACHWorkoutProgressEvaluationEnvironment : NSObject
 {
+    unsigned long long _numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek;
     unsigned long long _numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek;
 }
 
 @property(readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek; // @synthesize numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek=_numberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek;
+@property(readonly, nonatomic) unsigned long long numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek; // @synthesize numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek=_numberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek;
 - (id)valueForUndefinedKey:(id)arg1;
-- (id)initWithNumberOfFirstPartyWorkoutsOver15MinutesDuringCurrentFitnessWeek:(unsigned long long)arg1;
+- (id)initWithNumberOfFirstPartyWorkoutsOver5MinutesDuringCurrentFitnessWeek:(unsigned long long)arg1;
 
 @end
 

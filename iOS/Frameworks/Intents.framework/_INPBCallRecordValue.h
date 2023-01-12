@@ -10,16 +10,18 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBCallRecordValue-Protocol.h>
 
-@class NSString, _INPBCallMetrics, _INPBContactValue, _INPBDateTime, _INPBInteger;
+@class NSArray, NSString, _INPBCallMetrics, _INPBContactValue, _INPBDateTime, _INPBInteger;
 
 @interface _INPBCallRecordValue : PBCodable <_INPBCallRecordValue, NSSecureCoding, NSCopying>
 {
     struct {
         unsigned int callCapability:1;
         unsigned int callType:1;
+        unsigned int isCallerIdBlocked:1;
         unsigned int preferredCallProvider:1;
         unsigned int unseen:1;
     } _has;
+    _Bool _isCallerIdBlocked;
     _Bool _unseen;
     int _callCapability;
     int _callType;
@@ -29,15 +31,21 @@
     _INPBDateTime *_dateCreated;
     NSString *_identifier;
     _INPBInteger *_numberOfCalls;
+    NSArray *_participants;
+    NSString *_providerBundleId;
     NSString *_providerId;
 }
 
 + (_Bool)supportsSecureCoding;
++ (Class)participantsType;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool unseen; // @synthesize unseen=_unseen;
 @property(copy, nonatomic) NSString *providerId; // @synthesize providerId=_providerId;
+@property(copy, nonatomic) NSString *providerBundleId; // @synthesize providerBundleId=_providerBundleId;
 @property(nonatomic) int preferredCallProvider; // @synthesize preferredCallProvider=_preferredCallProvider;
+@property(copy, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property(retain, nonatomic) _INPBInteger *numberOfCalls; // @synthesize numberOfCalls=_numberOfCalls;
+@property(nonatomic) _Bool isCallerIdBlocked; // @synthesize isCallerIdBlocked=_isCallerIdBlocked;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) _INPBDateTime *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property(retain, nonatomic) _INPBContactValue *caller; // @synthesize caller=_caller;
@@ -54,10 +62,16 @@
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasUnseen;
 @property(readonly, nonatomic) _Bool hasProviderId;
+@property(readonly, nonatomic) _Bool hasProviderBundleId;
 - (int)StringAsPreferredCallProvider:(id)arg1;
 - (id)preferredCallProviderAsString:(int)arg1;
 @property(nonatomic) _Bool hasPreferredCallProvider;
+- (id)participantsAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long participantsCount;
+- (void)addParticipants:(id)arg1;
+- (void)clearParticipants;
 @property(readonly, nonatomic) _Bool hasNumberOfCalls;
+@property(nonatomic) _Bool hasIsCallerIdBlocked;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 @property(readonly, nonatomic) _Bool hasDateCreated;
 @property(readonly, nonatomic) _Bool hasCaller;

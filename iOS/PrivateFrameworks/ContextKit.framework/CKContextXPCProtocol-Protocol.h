@@ -16,6 +16,7 @@
 - (void)logResultsShownForResponseId:(NSString *)arg1 shown:(unsigned long long)arg2 couldHaveShown:(unsigned long long)arg3 topicIds:(NSArray *)arg4 serverOverride:(_Bool)arg5 inputLength:(unsigned long long)arg6 requestType:(unsigned long long)arg7 logType:(unsigned long long)arg8;
 - (void)shutdownServiceWithReply:(void (^)(void))arg1;
 - (void)pingServiceWithReply:(void (^)(void))arg1;
+- (void)groupResponses:(NSArray *)arg1 withReply:(void (^)(CKContextResponse *, NSError *))arg2;
 - (void)ancestorsForTopics:(NSArray *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)capabilitiesForRequestType:(unsigned long long)arg1 withReply:(void (^)(NSSet *, NSString *, NSError *))arg2;
 - (void)warmUpForRequestType:(unsigned long long)arg1 withReply:(void (^)(NSError *))arg2;

@@ -6,29 +6,49 @@
 
 #import <objc/NSObject.h>
 
-@class HMDAccessoryBrowser, HMDCloudManager, HMDHomeManager;
+#import <HomeKitDaemon/HMDRelaunchHandling-Protocol.h>
+
+@class HMBLocalDatabase, HMDAccessoryBrowser, HMDCloudManager, HMDHomeManager, HMDMetricsManager, HMDUpdater, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDMainDriver : NSObject
+@interface HMDMainDriver : NSObject <HMDRelaunchHandling>
 {
+    HMBLocalDatabase *_localDatabase;
+    HMDMetricsManager *_metricsManager;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHomeManager *_homeManager;
     HMDAccessoryBrowser *_accessoryBrowser;
     HMDCloudManager *_cloudDataSyncManager;
+    HMDUpdater *_updater;
 }
 
 + (id)driver;
++ (id)getLocalStoreFrom:(id)arg1;
++ (id)loadSQLArchiveWithDecryptionFail:(_Bool *)arg1 fromLocation:(id)arg2 forHomeKit2Migration:(_Bool)arg3 error:(id *)arg4;
++ (id)loadHomeDataFromLocalStore:(id *)arg1 fromLocation:(id)arg2 decryptionFailed:(_Bool *)arg3 forHomeKit2Migration:(_Bool)arg4;
++ (id)loadHomeDataFromLocalStore:(id *)arg1 decryptionFailed:(_Bool *)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HMDUpdater *updater; // @synthesize updater=_updater;
 @property(retain, nonatomic) HMDCloudManager *cloudDataSyncManager; // @synthesize cloudDataSyncManager=_cloudDataSyncManager;
 @property(retain, nonatomic) HMDAccessoryBrowser *accessoryBrowser; // @synthesize accessoryBrowser=_accessoryBrowser;
 @property(retain, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly, nonatomic) HMDMetricsManager *metricsManager; // @synthesize metricsManager=_metricsManager;
+@property(retain, nonatomic) HMBLocalDatabase *localDatabase; // @synthesize localDatabase=_localDatabase;
+- (void)relaunchAfterDelay:(double)arg1;
+- (void)relaunch;
+- (void)relaunchHomed;
 - (void)start;
 - (void)localeChanged;
-- (void)logError:(id)arg1 component:(id)arg2;
 - (void)initBackgroundTaskAgent;
 - (void)executeBTAJob:(const char *)arg1 withXPCDict:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

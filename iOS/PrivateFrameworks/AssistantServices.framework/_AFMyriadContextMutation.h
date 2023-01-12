@@ -8,22 +8,25 @@
 
 #import <AssistantServices/AFMyriadContextMutating-Protocol.h>
 
-@class AFMyriadContext, AFMyriadPerceptualAudioHash, NSString;
+@class AFMyriadContext, AFMyriadGoodnessScoreOverrideState, AFMyriadPerceptualAudioHash, NSString;
 
 @interface _AFMyriadContextMutation : NSObject <AFMyriadContextMutating>
 {
     AFMyriadContext *_baseModel;
     unsigned long long _timestamp;
     AFMyriadPerceptualAudioHash *_perceptualAudioHash;
+    AFMyriadGoodnessScoreOverrideState *_overrideState;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasTimestamp:1;
         unsigned int hasPerceptualAudioHash:1;
+        unsigned int hasOverrideState:1;
     } _mutationFlags;
 }
 
 - (void).cxx_destruct;
 - (id)generate;
+- (void)setOverrideState:(id)arg1;
 - (void)setPerceptualAudioHash:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (id)initWithBaseModel:(id)arg1;

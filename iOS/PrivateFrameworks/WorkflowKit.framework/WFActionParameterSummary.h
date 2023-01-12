@@ -13,6 +13,7 @@
 {
     NSArray *_possibleValues;
     NSString *_singleFormatString;
+    NSString *_title;
     WFAction *_action;
     id <WFPropertyListObject> _definition;
 }
@@ -20,6 +21,7 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) id <WFPropertyListObject> definition; // @synthesize definition=_definition;
 @property(nonatomic) __weak WFAction *action; // @synthesize action=_action;
+@property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, copy, nonatomic) NSString *singleFormatString; // @synthesize singleFormatString=_singleFormatString;
 - (id)placeholderForKey:(id)arg1;
 - (id)parameterReplacedString:(id)arg1 withOverrides:(id)arg2;
@@ -27,8 +29,10 @@
 - (id)explodedPossibleValuesForLocalizationWithParameterReplacements;
 - (id)explodedSummaryStringWithKey:(id)arg1 value:(id)arg2;
 - (id)explodedPossibleValuesForLocalization;
+- (id)localizedTitle;
 - (id)localizedFormatString;
 @property(readonly, copy, nonatomic) NSArray *possibleValues; // @synthesize possibleValues=_possibleValues;
+- (id)initWithAction:(id)arg1 definition:(id)arg2 title:(id)arg3;
 - (id)initWithAction:(id)arg1 definition:(id)arg2;
 
 @end

@@ -8,7 +8,7 @@
 
 @interface CVNLPTokenIDConverter : NSObject
 {
-    struct unique_ptr<cvnlp::AbstractVocabulary, std::__1::default_delete<cvnlp::AbstractVocabulary>> _vocabTokenizer;
+    struct unique_ptr<cvnlp::AbstractVocabulary, std::default_delete<cvnlp::AbstractVocabulary>> _vocabTokenizer;
     unsigned int _bosTokenID;
     unsigned int _eosTokenID;
     unsigned int _unkTokenID;

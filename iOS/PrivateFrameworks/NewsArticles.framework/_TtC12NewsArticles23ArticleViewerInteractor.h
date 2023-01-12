@@ -17,9 +17,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *blueprintProvider;
     MISSING_TYPE *pageBlueprintManager;
     MISSING_TYPE *pageBlueprintFactory;
-    MISSING_TYPE *followingManager;
     MISSING_TYPE *insertAdvertisementBlueprintModifier;
     MISSING_TYPE *pageTracker;
+    MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *commandCenter;
 }
 
 - (void).cxx_destruct;

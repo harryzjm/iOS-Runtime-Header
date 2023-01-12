@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (MKServerFormattedString_Convenience)
++ (id)_mapkit_shortenedURLStringForFullURLString:(id)arg1;
 + (id)_mapkit_commaListDelimiter;
 + (id)_mapkit_formattedStringForCoordinate:(struct CLLocationCoordinate2D)arg1;
 + (id)_mapkit_voiceOverLocalizedDistanceStringWithMeters:(unsigned int)arg1;

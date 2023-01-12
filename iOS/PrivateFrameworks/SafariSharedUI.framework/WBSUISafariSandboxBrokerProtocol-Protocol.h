@@ -10,5 +10,8 @@
 
 @protocol WBSUISafariSandboxBrokerProtocol <WBSSafariSandboxBrokerProtocol>
 - (void)loadLinkPresentationMetdataForMessageWithGUID:(NSString *)arg1 completionHandler:(void (^)(NSString *, UIImage *, NSError *))arg2;
+
+@optional
+- (void)getLinkMetadataForMessageWithGUID:(NSString *)arg1 completionHandler:(void (^)(LPLinkMetadata *, NSError *))arg2;
 @end
 

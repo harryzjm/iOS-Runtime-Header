@@ -57,7 +57,8 @@
 - (id)_calendarFromDateComponents:(id)arg1;
 - (id)_calendarOrCanonicalCalendar;
 - (id)_canonicalizedDateComponents:(id)arg1 withCalendar:(id)arg2 usedUnits:(unsigned long long *)arg3 withReferenceDate:(id)arg4;
-- (void)_flushFormatterCache;
+- (_Bool)_updateFormatterCacheIfNeeded_locked:(id)arg1 unitsStyle:(long long)arg2;
+- (void)_flushFormatterCache_locked;
 - (void)finalize;
 - (void)dealloc;
 - (id)init;

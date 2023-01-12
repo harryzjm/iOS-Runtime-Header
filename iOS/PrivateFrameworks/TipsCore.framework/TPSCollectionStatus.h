@@ -13,8 +13,7 @@
 
 @interface TPSCollectionStatus : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _canNotified;
-    _Bool _skipFeature;
+    _Bool _canNotify;
     NSString *_identifier;
     NSDate *_activatedDate;
     NSDate *_firstViewedDate;
@@ -27,8 +26,7 @@
 @property(copy, nonatomic) NSDate *firstViewedDate; // @synthesize firstViewedDate=_firstViewedDate;
 @property(copy, nonatomic) NSDate *activatedDate; // @synthesize activatedDate=_activatedDate;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(nonatomic) _Bool skipFeature; // @synthesize skipFeature=_skipFeature;
-@property(nonatomic) _Bool canNotified; // @synthesize canNotified=_canNotified;
+@property(nonatomic) _Bool canNotify; // @synthesize canNotify=_canNotify;
 - (id)debugDescription;
 - (id)initWithIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

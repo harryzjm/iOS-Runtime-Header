@@ -16,6 +16,7 @@
 + (id)videoCompositionWithPropertiesOfAsset:(id)arg1;
 + (id)videoComposition;
 + (id)videoCompositionWithAsset:(id)arg1 applyingCIFiltersWithHandler:(CDUnknownBlockType)arg2;
+@property(copy, nonatomic) NSArray *sourceSampleDataTrackIDs;
 @property(retain, nonatomic) AVVideoCompositionCoreAnimationTool *animationTool;
 @property(copy, nonatomic) NSArray *instructions;
 @property(nonatomic) float renderScale;

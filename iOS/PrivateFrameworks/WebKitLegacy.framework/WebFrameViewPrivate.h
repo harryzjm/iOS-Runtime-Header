@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class WAKScrollView, WebFrame;
+@class WebFrame;
 
 __attribute__((visibility("hidden")))
 @interface WebFrameViewPrivate : NSObject
 {
     WebFrame *webFrame;
-    WAKScrollView *frameScrollView;
+    struct RetainPtr<WAKScrollView> frameScrollView;
     _Bool includedInWebKitStatistics;
 }
 
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

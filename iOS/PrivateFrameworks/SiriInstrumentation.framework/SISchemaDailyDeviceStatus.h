@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+@class NSArray, NSData, NSString, SISchemaActiveStatus, SISchemaAggregatedMetrics, SISchemaEnabledStatus, SISchemaMultiUserSetup, SISchemaMultiUserState, SISchemaPersonalization;
 
-@class NSData, NSString, SISchemaActiveStatus, SISchemaAggregatedMetrics, SISchemaEnabledStatus, SISchemaMultiUserState, SISchemaPersonalization;
-
-@interface SISchemaDailyDeviceStatus : PBCodable
+@interface SISchemaDailyDeviceStatus
 {
     NSString *_siriDeviceID;
     NSString *_siriSpeechID;
@@ -27,12 +25,16 @@
     _Bool _spokenNotificationsControlCenterModuleEnabled;
     int _spokenNotificationsWhitelistSettings;
     SISchemaAggregatedMetrics *_aggregatedMetrics;
+    NSArray *_linkedAccessoryStates;
+    int _siriInputLocale;
+    SISchemaMultiUserSetup *_multiUserSetup;
     struct {
         unsigned int clientDeviceSamplingTimestampMs:1;
         unsigned int assistantRecordPublishTimestampMs:1;
         unsigned int spokenNotificationsproxCardSeen:1;
         unsigned int spokenNotificationsControlCenterModuleEnabled:1;
         unsigned int spokenNotificationsWhitelistSettings:1;
+        unsigned int siriInputLocale:1;
     } _has;
     _Bool _hasSiriDeviceID;
     _Bool _hasSiriSpeechID;
@@ -46,9 +48,11 @@
     _Bool _hasPersonalization;
     _Bool _hasMultiUserState;
     _Bool _hasAggregatedMetrics;
+    _Bool _hasMultiUserSetup;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasMultiUserSetup; // @synthesize hasMultiUserSetup=_hasMultiUserSetup;
 @property(nonatomic) _Bool hasAggregatedMetrics; // @synthesize hasAggregatedMetrics=_hasAggregatedMetrics;
 @property(nonatomic) _Bool hasMultiUserState; // @synthesize hasMultiUserState=_hasMultiUserState;
 @property(nonatomic) _Bool hasPersonalization; // @synthesize hasPersonalization=_hasPersonalization;
@@ -61,6 +65,9 @@
 @property(nonatomic) _Bool hasSharedUserId; // @synthesize hasSharedUserId=_hasSharedUserId;
 @property(nonatomic) _Bool hasSiriSpeechID; // @synthesize hasSiriSpeechID=_hasSiriSpeechID;
 @property(nonatomic) _Bool hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
+@property(retain, nonatomic) SISchemaMultiUserSetup *multiUserSetup; // @synthesize multiUserSetup=_multiUserSetup;
+@property(nonatomic) int siriInputLocale; // @synthesize siriInputLocale=_siriInputLocale;
+@property(copy, nonatomic) NSArray *linkedAccessoryStates; // @synthesize linkedAccessoryStates=_linkedAccessoryStates;
 @property(retain, nonatomic) SISchemaAggregatedMetrics *aggregatedMetrics; // @synthesize aggregatedMetrics=_aggregatedMetrics;
 @property(nonatomic) int spokenNotificationsWhitelistSettings; // @synthesize spokenNotificationsWhitelistSettings=_spokenNotificationsWhitelistSettings;
 @property(nonatomic) _Bool spokenNotificationsControlCenterModuleEnabled; // @synthesize spokenNotificationsControlCenterModuleEnabled=_spokenNotificationsControlCenterModuleEnabled;
@@ -86,11 +93,17 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasSiriInputLocale;
+- (id)linkedAccessoryStateAtIndex:(unsigned long long)arg1;
+- (unsigned long long)linkedAccessoryStateCount;
+- (void)addLinkedAccessoryState:(id)arg1;
+- (void)clearLinkedAccessoryState;
 @property(nonatomic) _Bool hasSpokenNotificationsWhitelistSettings;
 @property(nonatomic) _Bool hasSpokenNotificationsControlCenterModuleEnabled;
 @property(nonatomic) _Bool hasSpokenNotificationsproxCardSeen;
 @property(nonatomic) _Bool hasAssistantRecordPublishTimestampMs;
 @property(nonatomic) _Bool hasClientDeviceSamplingTimestampMs;
+- (id)qualifiedMessageName;
 - (int)getAnyEventType;
 
 @end

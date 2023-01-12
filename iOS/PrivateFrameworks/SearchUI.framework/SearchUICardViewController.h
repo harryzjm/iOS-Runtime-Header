@@ -8,8 +8,8 @@
 
 #import <SearchUI/SearchUISizingDelegate-Protocol.h>
 
-@class NSString, NSTimer, NUIContainerBoxView, SFCard, SearchUIBackgroundView, SearchUICardTableViewController, TLKLabel, UIActivityIndicatorView;
-@protocol SFFeedbackListener, SearchUICardViewDelegate;
+@class NSString, NSTimer, NUIContainerBoxView, SFCard, SearchUIBackgroundView, TLKLabel, UIActivityIndicatorView;
+@protocol SFFeedbackListener, SearchUICardTableBridgingProtocol, SearchUICardViewDelegate, SearchUICommandDelegate;
 
 @interface SearchUICardViewController : UIViewController <SearchUISizingDelegate>
 {
@@ -17,13 +17,15 @@
     UIActivityIndicatorView *_loadingSpinner;
     TLKLabel *_loadingLabel;
     NSTimer *_loadingScreenTimer;
+    double _initialPreviewPlatterHeight;
     unsigned long long _level;
-    SearchUICardTableViewController *_tableViewController;
+    UIViewController<SearchUICardTableBridgingProtocol> *_tableViewController;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) SearchUICardTableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
+@property(retain, nonatomic) UIViewController<SearchUICardTableBridgingProtocol> *tableViewController; // @synthesize tableViewController=_tableViewController;
 @property(nonatomic) unsigned long long level; // @synthesize level=_level;
+@property(nonatomic) double initialPreviewPlatterHeight; // @synthesize initialPreviewPlatterHeight=_initialPreviewPlatterHeight;
 @property(retain, nonatomic) NSTimer *loadingScreenTimer; // @synthesize loadingScreenTimer=_loadingScreenTimer;
 @property(retain, nonatomic) TLKLabel *loadingLabel; // @synthesize loadingLabel=_loadingLabel;
 @property(retain, nonatomic) UIActivityIndicatorView *loadingSpinner; // @synthesize loadingSpinner=_loadingSpinner;
@@ -32,9 +34,13 @@
 - (void)contentSizeDidChange:(struct CGSize)arg1 animated:(_Bool)arg2;
 - (_Bool)_canShowWhileLocked;
 - (id)testingTableViewController;
+@property(nonatomic) _Bool dragInteractionEnabled;
 @property(nonatomic) _Bool threeDTouchEnabled;
+@property(nonatomic) __weak id <SearchUICommandDelegate> commandDelegate;
+@property(nonatomic) _Bool scrollEnabled;
 @property(readonly, nonatomic) _Bool topRowWillFillBackgroundWithContent;
 - (void)updateWithCardSections:(id)arg1;
+- (_Bool)hasCustomViewControllersForCardSections;
 - (void)updateTimerAndCardSections:(id)arg1;
 @property(retain, nonatomic) SFCard *card;
 - (void)cardViewDidAppear;

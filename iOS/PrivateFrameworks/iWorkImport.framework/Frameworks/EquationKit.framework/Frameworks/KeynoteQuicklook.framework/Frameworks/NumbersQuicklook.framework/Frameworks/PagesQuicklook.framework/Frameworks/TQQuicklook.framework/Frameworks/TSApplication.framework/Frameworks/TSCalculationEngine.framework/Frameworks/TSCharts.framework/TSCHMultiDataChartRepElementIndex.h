@@ -8,17 +8,19 @@
 
 #import <TSCharts/NSCopying-Protocol.h>
 
+@class NSIndexSet;
+
 @interface TSCHMultiDataChartRepElementIndex : NSObject <NSCopying>
 {
-    unsigned long long mSeriesIndex;
-    unsigned long long mValueIndex;
+    unsigned long long _seriesIndex;
+    unsigned long long _valueIndex;
 }
 
 + (id)repElementIndexWithSeriesIndex:(unsigned long long)arg1 valueIndex:(unsigned long long)arg2;
-@property(readonly, nonatomic) unsigned long long valueIndex; // @synthesize valueIndex=mValueIndex;
-@property(readonly, nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=mSeriesIndex;
-- (id)valueIndexSet;
-- (id)seriesIndexSet;
+@property(readonly, nonatomic) unsigned long long valueIndex; // @synthesize valueIndex=_valueIndex;
+@property(readonly, nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=_seriesIndex;
+@property(readonly, nonatomic) NSIndexSet *valueIndexSet;
+@property(readonly, nonatomic) NSIndexSet *seriesIndexSet;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

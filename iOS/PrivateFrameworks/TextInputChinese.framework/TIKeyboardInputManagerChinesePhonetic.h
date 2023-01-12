@@ -6,7 +6,7 @@
 
 #import <TextInputChinese/TIKeyboardInputManagerChineseCompletion-Protocol.h>
 
-@class CIMCandidateData, NSArray, NSOperationQueue, NSString, TIConversionHistory, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIMecabraIMLogger;
+@class CIMCandidateData, NSArray, NSMutableArray, NSOperationQueue, NSString, TIConversionHistory, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIMecabraIMLogger;
 
 @interface TIKeyboardInputManagerChinesePhonetic <TIKeyboardInputManagerChineseCompletion>
 {
@@ -16,14 +16,15 @@
     _Bool _isCandidateSelected;
     _Bool _acceptingCandidate;
     _Bool _isInAmbiguousMode;
-    _Bool _lockingFirstPinyinSyllable;
+    _Bool _lockingPinyinSyllableSelection;
     _Bool _filterCandidatesUsingInputIndex;
+    _Bool _shouldAdvanceSyllableSelection;
     _Bool _shouldClearBeforeContinuousPath;
     _Bool _skipSetMarkedTextDuringInput;
     TIConversionHistory *_conversionHistory;
     NSString *_remainingInput;
-    NSString *_replacedAmbiguousPinyinSyllable;
-    NSString *_replacementUnambiguousPinyinSyllable;
+    NSMutableArray *_replacedAmbiguousPinyinSyllables;
+    NSMutableArray *_replacementUnambiguousPinyinSyllables;
     NSString *_composedTextBeforeFirstSyllableLocked;
     NSArray *_pinyinSyllableCandidates;
     unsigned long long _selectedPinyinSyllableCandidateIndex;
@@ -41,20 +42,21 @@
 @property(nonatomic) _Bool skipSetMarkedTextDuringInput; // @synthesize skipSetMarkedTextDuringInput=_skipSetMarkedTextDuringInput;
 @property(nonatomic) _Bool shouldClearBeforeContinuousPath; // @synthesize shouldClearBeforeContinuousPath=_shouldClearBeforeContinuousPath;
 @property(retain, nonatomic) TIKeyboardCandidateResultSet *mostRecentCandidateResultSetPendingDisplay; // @synthesize mostRecentCandidateResultSetPendingDisplay=_mostRecentCandidateResultSetPendingDisplay;
+@property(nonatomic) _Bool shouldAdvanceSyllableSelection; // @synthesize shouldAdvanceSyllableSelection=_shouldAdvanceSyllableSelection;
 @property(nonatomic) _Bool filterCandidatesUsingInputIndex; // @synthesize filterCandidatesUsingInputIndex=_filterCandidatesUsingInputIndex;
 @property(retain, nonatomic) TIMecabraIMLogger *logger; // @synthesize logger=_logger;
 @property(nonatomic) unsigned long long selectedPinyinSyllableCandidateIndex; // @synthesize selectedPinyinSyllableCandidateIndex=_selectedPinyinSyllableCandidateIndex;
 @property(retain, nonatomic) NSArray *pinyinSyllableCandidates; // @synthesize pinyinSyllableCandidates=_pinyinSyllableCandidates;
 @property(copy, nonatomic) NSString *composedTextBeforeFirstSyllableLocked; // @synthesize composedTextBeforeFirstSyllableLocked=_composedTextBeforeFirstSyllableLocked;
-@property(copy, nonatomic) NSString *replacementUnambiguousPinyinSyllable; // @synthesize replacementUnambiguousPinyinSyllable=_replacementUnambiguousPinyinSyllable;
-@property(copy, nonatomic) NSString *replacedAmbiguousPinyinSyllable; // @synthesize replacedAmbiguousPinyinSyllable=_replacedAmbiguousPinyinSyllable;
+@property(retain, nonatomic) NSMutableArray *replacementUnambiguousPinyinSyllables; // @synthesize replacementUnambiguousPinyinSyllables=_replacementUnambiguousPinyinSyllables;
+@property(retain, nonatomic) NSMutableArray *replacedAmbiguousPinyinSyllables; // @synthesize replacedAmbiguousPinyinSyllables=_replacedAmbiguousPinyinSyllables;
 @property(copy, nonatomic) NSString *remainingInput; // @synthesize remainingInput=_remainingInput;
 @property(retain, nonatomic) TIConversionHistory *conversionHistory; // @synthesize conversionHistory=_conversionHistory;
 @property(readonly, nonatomic) _Bool usesGeometryModelData;
 - (_Bool)generateReanalysisCandidatesIfAppropriate;
 - (id)locale;
 - (id)composedTextForSelectedCandidate:(id)arg1 remainingInput:(id)arg2;
-- (_Bool)firstSyllableLocked;
+- (_Bool)hasLockedSyllable;
 - (id)segmentedPinyinStringFromString:(id)arg1;
 - (int)inputMethodType;
 @property(readonly, nonatomic) TIKeyboardCandidate *candidateForInlineTextSegmentation;
@@ -67,7 +69,7 @@
 - (id)stringByStrippingConvertedCandidateTextFromString:(id)arg1;
 @property(readonly, nonatomic) NSString *convertedInput;
 @property(readonly, nonatomic) NSString *unconvertedInput;
-- (id)inputStringForSearch;
+@property(readonly, nonatomic) NSString *inputStringForSearch;
 - (struct _NSRange)analysisStringRange;
 - (_Bool)updateCandidatesByWaitingForResults:(_Bool)arg1;
 - (_Bool)shouldLookForCompletionCandidates;
@@ -134,7 +136,8 @@
 - (id)searchStringForMarkedText;
 - (id)rawInputString;
 @property(readonly, copy, nonatomic) NSString *internalInputString;
-- (void)revertToAmbiguousPinyinSyllable;
+- (void)revertLastDisambiguation;
+- (void)shiftPinyinSyllableSelection;
 - (void)clearPinyinSyllableSelection;
 - (void)storeLanguageModelDynamicDataIncludingCache;
 - (void)syncToKeyboardState:(id)arg1 from:(id)arg2 afterContextChange:(_Bool)arg3;

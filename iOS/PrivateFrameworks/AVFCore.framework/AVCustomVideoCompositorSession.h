@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (int)_customCompositorShouldCancelPendingFrames;
 - (int)_customCompositorShouldPrerollForRenderingFromTime:(CDStruct_1b6d18a9)arg1 toTime:(CDStruct_1b6d18a9)arg2 andThenFromTime:(CDStruct_1b6d18a9)arg3 toTime:(CDStruct_1b6d18a9)arg4 requestID:(long long)arg5;
 - (int)_customCompositorShouldAnticipateRenderingFromTime:(CDStruct_1b6d18a9)arg1 toTime:(CDStruct_1b6d18a9)arg2 andThenFromTime:(CDStruct_1b6d18a9)arg3 toTime:(CDStruct_1b6d18a9)arg4;
-- (int)_compositionFrame:(struct OpaqueFigVideoCompositorFrame *)arg1 atTime:(CDStruct_1b6d18a9)arg2 requiresRenderUsingSources:(id)arg3 withInstruction:(void *)arg4;
+- (int)_compositionFrame:(struct OpaqueFigVideoCompositorFrame *)arg1 atTime:(CDStruct_1b6d18a9)arg2 requiresRenderUsingSources:(id)arg3 requiresSampleBuffersUsingSources:(id)arg4 withInstruction:(void *)arg5;
 
 @end
 

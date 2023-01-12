@@ -16,6 +16,7 @@
 @property(retain, nonatomic) HMFScheduler *apsRegistrationScheduler; // @dynamic apsRegistrationScheduler;
 @property(copy) CKOperationConfiguration *defaultOperationConfiguration; // @dynamic defaultOperationConfiguration;
 @property(getter=isManateeContainer) _Bool manateeContainer; // @dynamic manateeContainer;
+@property(nonatomic) _Bool registerForDBNotifications; // @dynamic registerForDBNotifications;
 @property(copy) NSString *sourceApplicationBundleIdentifier; // @dynamic sourceApplicationBundleIdentifier;
 
 @end

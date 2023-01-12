@@ -10,13 +10,14 @@
 {
     long long _style;
     CDUnknownBlockType _actionHandler;
+    UIImage *__customImage;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic, getter=_customImage, setter=_setCustomImage:) UIImage *_customImage; // @synthesize _customImage=__customImage;
 @property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(nonatomic) long long style; // @synthesize style=_style;
-@property(readonly, nonatomic) UIImage *_customImage;
 @property(readonly, nonatomic) double rotationAngle;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

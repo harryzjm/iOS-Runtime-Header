@@ -11,11 +11,14 @@
 @interface HMIVideoFrameSelectorDelegateAdapter : HMFObject <HMIVideoFrameSelectorDelegate>
 {
     CDUnknownBlockType _frameSelectorDidSelectFrame;
+    CDUnknownBlockType _frameSelectorDidDetectMotion;
 }
 
 - (void).cxx_destruct;
+@property(copy) CDUnknownBlockType frameSelectorDidDetectMotion; // @synthesize frameSelectorDidDetectMotion=_frameSelectorDidDetectMotion;
 @property(copy) CDUnknownBlockType frameSelectorDidSelectFrame; // @synthesize frameSelectorDidSelectFrame=_frameSelectorDidSelectFrame;
-- (void)frameSelector:(id)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 detections:(id)arg3;
+- (void)frameSelector:(id)arg1 didDetectMotion:(id)arg2 inFrame:(struct opaqueCMSampleBuffer *)arg3;
+- (void)frameSelector:(id)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 motionDetections:(id)arg3 motionScore:(double)arg4;
 
 @end
 

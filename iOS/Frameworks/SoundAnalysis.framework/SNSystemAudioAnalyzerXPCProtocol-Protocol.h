@@ -6,9 +6,11 @@
 
 #import <SoundAnalysis/NSObject-Protocol.h>
 
+@class SNAudioConfiguration;
 @protocol SNRequest, SNResultsObservingXPCProtocol;
 
 @protocol SNSystemAudioAnalyzerXPCProtocol <NSObject>
+- (void)xpcSetAudioConfiguration:(SNAudioConfiguration *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)xpcStopWithCompletionHandler:(void (^)(void))arg1;
 - (void)xpcStartWithCompletionHandler:(void (^)(void))arg1;
 - (void)xpcRemoveAllRequestsWithCompletionHandler:(void (^)(void))arg1;

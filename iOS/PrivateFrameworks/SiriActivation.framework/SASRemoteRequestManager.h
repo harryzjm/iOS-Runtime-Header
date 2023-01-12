@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AFRemoteRequestWatcher, AFRequestInfo, CMPocketStateManager, INUIAppIntentDeliverer;
+@class AFRemoteRequestWatcher, AFRequestInfo, CMPocketStateManager, INAppIntentDeliverer;
 
 @interface SASRemoteRequestManager : NSObject
 {
     _Bool _hasPendingVoiceTriggerActivation;
     AFRemoteRequestWatcher *_remoteRequestWatcher;
-    INUIAppIntentDeliverer *_currentAppIntentDeliverer;
+    INAppIntentDeliverer *_currentAppIntentDeliverer;
     unsigned long long _currentVoiceTriggerRestriction;
     unsigned long long _pendingVoiceTriggerRestrictionCount;
     AFRequestInfo *_pendingVoiceTriggerActivationInfo;
@@ -29,8 +29,9 @@
 @property(nonatomic) _Bool hasPendingVoiceTriggerActivation; // @synthesize hasPendingVoiceTriggerActivation=_hasPendingVoiceTriggerActivation;
 @property(nonatomic) unsigned long long pendingVoiceTriggerRestrictionCount; // @synthesize pendingVoiceTriggerRestrictionCount=_pendingVoiceTriggerRestrictionCount;
 @property(nonatomic) unsigned long long currentVoiceTriggerRestriction; // @synthesize currentVoiceTriggerRestriction=_currentVoiceTriggerRestriction;
-@property(retain, nonatomic) INUIAppIntentDeliverer *currentAppIntentDeliverer; // @synthesize currentAppIntentDeliverer=_currentAppIntentDeliverer;
+@property(retain, nonatomic) INAppIntentDeliverer *currentAppIntentDeliverer; // @synthesize currentAppIntentDeliverer=_currentAppIntentDeliverer;
 @property(retain, nonatomic) AFRemoteRequestWatcher *remoteRequestWatcher; // @synthesize remoteRequestWatcher=_remoteRequestWatcher;
+- (unsigned long long)_dismissalReasonForDeactivationReason:(long long)arg1;
 - (_Bool)_requestWatcherVoiceActivationEnabled;
 - (void)_startFetchingPocketStateUpdates;
 - (void)_handlePendingVoiceTriggerActivationsWithInfo:(id)arg1;

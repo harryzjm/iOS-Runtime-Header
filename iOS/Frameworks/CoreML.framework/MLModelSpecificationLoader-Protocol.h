@@ -10,6 +10,6 @@
 @protocol MLModeling;
 
 @protocol MLModelSpecificationLoader <NSObject>
-+ (id <MLModeling>)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(MLModelConfiguration *)arg2 error:(id *)arg3;
++ (id <MLModeling>)loadModelFromSpecification:(void *)arg1 configuration:(MLModelConfiguration *)arg2 error:(id *)arg3;
 @end
 

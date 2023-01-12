@@ -29,14 +29,15 @@
 @property(retain, nonatomic) AXIPCClient *client; // @synthesize client=_client;
 @property(retain, nonatomic) AXIPCServer *server; // @synthesize server=_server;
 - (id)_serviceName;
-- (void)_connectServerIfNecessary;
+- (void)_ensureAssertionsHaveBeenProcessedWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_connectServerIfNecessary;
 - (_Bool)_connectIfNecessary;
 - (void)_willClearServer;
 - (void)_didConnectToServer;
 - (void)_wasDisconnectedFromClient;
 - (void)_didConnectToClient;
-- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(_Bool)arg3;
-- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(_Bool)arg3;
+- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
+- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2;
 - (void)_initializeAssertionBookkeeping;
 - (void)_processAssertionBacklog;
 - (void)sendAsynchronousMessage:(id)arg1 replyOnQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;

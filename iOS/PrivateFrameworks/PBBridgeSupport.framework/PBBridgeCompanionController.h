@@ -48,6 +48,7 @@
     CDUnknownBlockType _tinkerWiFiCredentialsIngestedCompletion;
     CDUnknownBlockType _buysOnWatchCredentialsIngestedCompletion;
     NSMutableDictionary *_reportMapping;
+    CDUnknownBlockType _appViewListImageCompletion;
 }
 
 + (id)displayNameWithFirstName:(id)arg1 lastName:(id)arg2;
@@ -57,6 +58,7 @@
 @property(nonatomic) int activationRetries; // @synthesize activationRetries=_activationRetries;
 @property(nonatomic) _Bool selectedPairedUnlock; // @synthesize selectedPairedUnlock=_selectedPairedUnlock;
 @property(nonatomic) _Bool passcodeSet; // @synthesize passcodeSet=_passcodeSet;
+@property(copy, nonatomic) CDUnknownBlockType appViewListImageCompletion; // @synthesize appViewListImageCompletion=_appViewListImageCompletion;
 @property(retain, nonatomic) NSMutableDictionary *reportMapping; // @synthesize reportMapping=_reportMapping;
 @property(nonatomic) _Bool sentActivationRequest; // @synthesize sentActivationRequest=_sentActivationRequest;
 @property(nonatomic) _Bool sentSessionRequest; // @synthesize sentSessionRequest=_sentSessionRequest;
@@ -126,6 +128,9 @@
 - (void)tellGizmoToShowLockedOnAnimationTimeToFlash:(double)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)tellGizmoToPopToControllerType:(unsigned long long)arg1;
 - (void)tellGizmoToPushControllerType:(unsigned long long)arg1;
+- (void)handleAppViewListImageResponse:(id)arg1;
+- (void)retrieveAppViewListImageFromGizmo:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)tellWatchToSetLauncherViewMode:(long long)arg1;
 - (void)tellGizmoToSetMessagesinCloudEnabled:(_Bool)arg1;
 - (void)tellWatchToSetSiriEnabled:(_Bool)arg1;
 - (void)tellGizmoToSetFitnessRouteTrackingEnabled:(_Bool)arg1;
@@ -139,6 +144,7 @@
 - (void)gizmoDidEndPasscodeCreation:(id)arg1;
 - (void)objectModel:(id)arg1 pressedButton:(id)arg2 attributes:(id)arg3;
 - (void)_cleanup;
+- (void)_processActivationData;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
 - (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;

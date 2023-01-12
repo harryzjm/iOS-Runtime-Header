@@ -12,15 +12,6 @@
     long long _orderSpacing;
 }
 
-@property(readonly, nonatomic) long long orderSpacing; // @synthesize orderSpacing=_orderSpacing;
-@property(readonly, nonatomic) long long initialOrder; // @synthesize initialOrder=_initialOrder;
-- (id)_assignOrderToSubscriptions:(id)arg1 withInitialOrder:(long long)arg2 orderSpacing:(long long)arg3;
-- (id)_assignOrderToSubscriptionsInOpenRange:(id)arg1;
-- (id)_assignOrderToSubscriptions:(id)arg1 inOpenEndRangeWithPreviousValue:(long long)arg2;
-- (id)_assignOrderToSubscriptions:(id)arg1 inOpenStartRangeWithNextValue:(long long)arg2;
-- (id)_assignOrderToSubscriptions:(id)arg1 inClosedRangeWithPreviousValue:(long long)arg2 nextValue:(long long)arg3;
-- (id)assignOrderToTagSubscriptions:(id)arg1;
-- (id)initWithInitialOrder:(long long)arg1 orderSpacing:(long long)arg2;
 - (id)init;
 
 @end

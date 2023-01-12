@@ -41,6 +41,7 @@
     long long _itemsToUploadProgressPercentage;
 }
 
++ (id)statusWithStringRepresentation:(id)arg1 currentDate:(id)arg2;
 + (id)statusWithStringRepresentation:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) long long itemsToUploadProgressPercentage; // @synthesize itemsToUploadProgressPercentage=_itemsToUploadProgressPercentage;
@@ -78,7 +79,7 @@
 - (id)init;
 @property(readonly, copy, nonatomic) NSString *stringRepresentation;
 - (id)_dictionaryRepresentation;
-- (id)_initWithDictionaryRepresentation:(id)arg1;
+- (id)_initWithDictionaryRepresentation:(id)arg1 currentDate:(id)arg2;
 
 @end
 

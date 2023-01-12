@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed25InternalErrorViewRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *rendererTool;
+    MISSING_TYPE *debuggers;
 }
 
 @end

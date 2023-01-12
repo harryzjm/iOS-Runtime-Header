@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBActivityList, _INPBContactList, _INPBDataStringList, _INPBDateTimeRange, _INPBEventList, _INPBGeographicalFeatureList, _INPBIntentMetadata, _INPBLocation, _INPBPlaceList, _INPBString, _INPBStringList;
+@class NSString, _INPBActivityList, _INPBContactList, _INPBDateTimeRange, _INPBEventList, _INPBGeographicalFeatureList, _INPBIntentMetadata, _INPBLocation, _INPBPlaceList, _INPBString, _INPBStringList;
 
 @protocol _INPBSearchForPhotosIntent <NSObject>
 @property(readonly, nonatomic) _Bool hasSearchTerm;
@@ -19,10 +19,6 @@
 @property(retain, nonatomic) _INPBString *memoryName;
 @property(readonly, nonatomic) _Bool hasLocationCreated;
 @property(retain, nonatomic) _INPBLocation *locationCreated;
-@property(readonly, nonatomic) _Bool hasKeywordString;
-@property(retain, nonatomic) _INPBStringList *keywordString;
-@property(readonly, nonatomic) _Bool hasKeyword;
-@property(retain, nonatomic) _INPBDataStringList *keyword;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property(readonly, nonatomic) unsigned long long includedAttributesCount;
@@ -35,8 +31,6 @@
 @property(retain, nonatomic) _INPBEventList *events;
 @property(readonly, nonatomic) _Bool hasDateCreated;
 @property(retain, nonatomic) _INPBDateTimeRange *dateCreated;
-@property(readonly, nonatomic) _Bool hasContentPerson;
-@property(retain, nonatomic) _INPBContactList *contentPerson;
 @property(readonly, nonatomic) _Bool hasAlbumName;
 @property(retain, nonatomic) _INPBString *albumName;
 @property(readonly, nonatomic) _Bool hasActivities;

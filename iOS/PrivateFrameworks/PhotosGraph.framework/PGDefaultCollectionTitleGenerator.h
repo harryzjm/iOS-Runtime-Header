@@ -22,8 +22,8 @@
 @property(readonly, nonatomic) PHAsset *keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(nonatomic, getter=isDebug) _Bool debug; // @synthesize debug=_debug;
 @property(readonly, nonatomic) id <PGEventEnrichment> collection; // @synthesize collection=_collection;
-- (void)_generateTitleAndSubtitleWithManager:(id)arg1 result:(CDUnknownBlockType)arg2;
-- (id)initWithCollection:(id)arg1 keyAsset:(id)arg2 curatedAssetCollection:(id)arg3;
+- (void)_generateTitleAndSubtitleWithManager:(id)arg1 curationContext:(id)arg2 result:(CDUnknownBlockType)arg3;
+- (id)initWithCollection:(id)arg1 keyAsset:(id)arg2 curatedAssetCollection:(id)arg3 titleGenerationContext:(id)arg4;
 
 @end
 

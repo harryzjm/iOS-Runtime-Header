@@ -6,24 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSHashTable;
+@class NSDictionary, NSHashTable, NSSet;
 @protocol OS_dispatch_queue, SRTCCStore;
 
-__attribute__((visibility("hidden")))
 @interface SRAuthorizationStore : NSObject
 {
     int _notifyToken;
     _Bool _sensorKitActive;
-    NSDictionary *_authorizationValues;
-    NSDictionary *_lastModifiedAuthorizationTimes;
-    NSHashTable *_delegates;
+    NSHashTable *_readerAuthorizationDelegates;
+    NSHashTable *_writerAuthorizationDelegates;
     id <SRTCCStore> _tccStore;
+    NSSet *_sensors;
+    NSDictionary *_readerAuthorizationValues;
+    NSDictionary *_readerLastModifiedAuthorizationTimes;
+    NSDictionary *_writerAuthorizationValues;
     NSObject<OS_dispatch_queue> *_updateQueue;
+    NSDictionary *_readerAuthorizationGroups;
+    NSDictionary *_writerAuthorizationGroups;
 }
 
++ (id)allSensorsStore;
++ (id)sharedAuthorizationStoreForSensors:(id)arg1;
 + (void)initialize;
+@property(copy) NSDictionary *writerAuthorizationGroups; // @synthesize writerAuthorizationGroups=_writerAuthorizationGroups;
+@property(copy) NSDictionary *readerAuthorizationGroups; // @synthesize readerAuthorizationGroups=_readerAuthorizationGroups;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
+@property _Bool sensorKitActive; // @synthesize sensorKitActive=_sensorKitActive;
+@property(copy) NSDictionary *writerAuthorizationValues; // @synthesize writerAuthorizationValues=_writerAuthorizationValues;
+@property(copy) NSDictionary *readerLastModifiedAuthorizationTimes; // @synthesize readerLastModifiedAuthorizationTimes=_readerLastModifiedAuthorizationTimes;
+@property(copy) NSDictionary *readerAuthorizationValues; // @synthesize readerAuthorizationValues=_readerAuthorizationValues;
+- (_Bool)checkAccessForService:(id)arg1 auditToken:(CDStruct_6ad76789)arg2;
+- (id)readerAuthorizationBundleIdValues;
+- (_Bool)setAuthorizationForBundleId:(id)arg1 service:(id)arg2 value:(_Bool)arg3 setOverride:(_Bool)arg4;
+- (_Bool)setAuthorizationForBundleId:(id)arg1 service:(id)arg2 value:(_Bool)arg3;
+- (void)resetAuthorizationForService:(id)arg1 bundleId:(id)arg2;
+- (void)resetAllAuthorizations;
+- (void)resetAllAuthorizationsForBundleId:(id)arg1;
+- (_Bool)sensorHasReaderAuthorization:(id)arg1 forBundleId:(id)arg2;
+- (_Bool)sensorHasReaderAuthorization:(id)arg1;
+- (void)removeWriterAuthorizationDelegate:(id)arg1;
+- (void)addWriterAuthorizationDelegate:(id)arg1;
+- (void)removeReaderAuthorizationDelegate:(id)arg1;
+- (void)addReaderAuthorizationDelegate:(id)arg1;
+- (void)listenForAuthorizationUpdates:(_Bool)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithSensors:(id)arg1;
 
 @end
 

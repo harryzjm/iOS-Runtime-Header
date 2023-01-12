@@ -6,12 +6,11 @@
 
 #import <EventKitUI/CalendarPublishingActivityDelegate-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UITableViewHeaderFooterView, UIView;
+@class NSString, UIActivityIndicatorView;
 
 @interface EKCalendarPublishingEditItem <CalendarPublishingActivityDelegate>
 {
     _Bool _published;
-    UITableViewHeaderFooterView *_footerView;
     UIActivityIndicatorView *_spinner;
 }
 
@@ -23,15 +22,11 @@
 - (id)calendarTitle;
 - (void)calendarEditor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (void)_publishChanged:(id)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
-- (double)footerHeightForSection;
-- (id)footerViewForSection;
 - (unsigned long long)numberOfSubitems;
 - (_Bool)configureWithCalendar:(id)arg1;
-@property(readonly, nonatomic) UIView *footerView;
-- (void)_applyStyleToUILabel:(id)arg1;
+- (id)footerTitle;
 - (void)reset;
 
 // Remaining properties

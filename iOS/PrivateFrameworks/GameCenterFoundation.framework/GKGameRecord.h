@@ -23,12 +23,12 @@
 + (id)cacheKeyForPlayer:(id)arg1 bundleIdentifier:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (void)partitionGameRecords:(id)arg1 returniOS:(id *)arg2 returnMac:(id *)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKPlayer *player; // @synthesize player=_player;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, nonatomic) _Bool played;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

@@ -14,15 +14,19 @@
 #import <AvatarUI/AVTStickerPagingControllerDelegate-Protocol.h>
 #import <AvatarUI/AVTUIViewSnapshotProvider-Protocol.h>
 
-@class AVTAvatarPickerDataSource, AVTAvatarRecordDataSource, AVTPaddleView, AVTSimpleAvatarPicker, AVTStickerPagingController, AVTUIEnvironment, NSString, UIView;
-@protocol AVTAvatarStore, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTUILogger;
+@class AVTAvatarPickerDataSource, AVTAvatarRecordDataSource, AVTPaddleView, AVTSimpleAvatarPicker, AVTStickerPagingController, AVTStickerTaskScheduler, AVTUIEnvironment, AVTViewSessionProvider, NSArray, NSString, UIView;
+@protocol AVTAvatarStore, AVTPresenterDelegate, AVTStickerDisclosureValidationDelegate, AVTStickerPack, AVTStickerSelectionDelegate, AVTStickerSheetControllerProvider, AVTStickerViewControllerImageDelegate, AVTUILogger;
 
 @interface AVTStickerViewController : UIViewController <AVTStickerPagingControllerDelegate, AVTAvatarPickerDelegate, AVTAvatarRecordDataSourceObserver, AVTPresenterDelegate, AVTPaddleViewDelegate, AVTObjectViewController, AVTUIViewSnapshotProvider>
 {
     _Bool _allowEditing;
+    _Bool _shouldHideUserInfoView;
     _Bool _allowPeel;
     id <AVTPresenterDelegate> presenterDelegate;
     id <AVTStickerDisclosureValidationDelegate> _disclosureValidationDelegate;
+    id <AVTStickerViewControllerImageDelegate> _imageDelegate;
+    id <AVTStickerSelectionDelegate> _stickerSelectionDelegate;
+    id <AVTStickerSheetControllerProvider> _stickerSheetControllerProvider;
     id <AVTAvatarStore> _store;
     AVTAvatarRecordDataSource *_recordDataSource;
     AVTUIEnvironment *_environment;
@@ -32,6 +36,10 @@
     AVTStickerPagingController *_pagingController;
     NSString *_selectedRecordIdentifier;
     AVTPaddleView *_paddleView;
+    AVTStickerTaskScheduler *_taskScheduler;
+    AVTViewSessionProvider *_viewSessionProvider;
+    NSArray<AVTStickerPack> *_stickerPacks;
+    NSArray *_stickerConfigurationNames;
 }
 
 + (id)inUseStickerPack;
@@ -39,8 +47,13 @@
 + (double)headerHeightForWidth:(double)arg1 interitemSpacing:(double)arg2 environment:(id)arg3;
 + (unsigned long long)minimumNumberOfVisibleItemForWidth:(double)arg1 environment:(id)arg2;
 + (double)headerEdgeMarginForEnvironment:(id)arg1;
++ (id)stickerViewControllerForStore:(id)arg1 fetchRequest:(id)arg2 stickerPacks:(id)arg3 stickerConfigurationNames:(id)arg4 avtViewSessionProvider:(id)arg5 allowEditing:(_Bool)arg6 allowPeel:(_Bool)arg7;
 + (id)stickerViewControllerForStore:(id)arg1 allowEditing:(_Bool)arg2 allowPeel:(_Bool)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *stickerConfigurationNames; // @synthesize stickerConfigurationNames=_stickerConfigurationNames;
+@property(retain, nonatomic) NSArray<AVTStickerPack> *stickerPacks; // @synthesize stickerPacks=_stickerPacks;
+@property(retain, nonatomic) AVTViewSessionProvider *viewSessionProvider; // @synthesize viewSessionProvider=_viewSessionProvider;
+@property(retain, nonatomic) AVTStickerTaskScheduler *taskScheduler; // @synthesize taskScheduler=_taskScheduler;
 @property(retain, nonatomic) AVTPaddleView *paddleView; // @synthesize paddleView=_paddleView;
 @property(retain, nonatomic) NSString *selectedRecordIdentifier; // @synthesize selectedRecordIdentifier=_selectedRecordIdentifier;
 @property(retain, nonatomic) AVTStickerPagingController *pagingController; // @synthesize pagingController=_pagingController;
@@ -51,7 +64,11 @@
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) AVTAvatarRecordDataSource *recordDataSource; // @synthesize recordDataSource=_recordDataSource;
 @property(readonly, nonatomic) id <AVTAvatarStore> store; // @synthesize store=_store;
+@property(nonatomic) _Bool shouldHideUserInfoView; // @synthesize shouldHideUserInfoView=_shouldHideUserInfoView;
 @property(nonatomic) _Bool allowEditing; // @synthesize allowEditing=_allowEditing;
+@property(nonatomic) __weak id <AVTStickerSheetControllerProvider> stickerSheetControllerProvider; // @synthesize stickerSheetControllerProvider=_stickerSheetControllerProvider;
+@property(nonatomic) __weak id <AVTStickerSelectionDelegate> stickerSelectionDelegate; // @synthesize stickerSelectionDelegate=_stickerSelectionDelegate;
+@property(nonatomic) __weak id <AVTStickerViewControllerImageDelegate> imageDelegate; // @synthesize imageDelegate=_imageDelegate;
 @property(nonatomic) __weak id <AVTStickerDisclosureValidationDelegate> disclosureValidationDelegate; // @synthesize disclosureValidationDelegate=_disclosureValidationDelegate;
 @property(nonatomic) __weak id <AVTPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate;
 - (void)paddleViewWantsToBeDismissed:(id)arg1;
@@ -65,11 +82,13 @@
 - (void)dataSource:(id)arg1 didRemoveRecord:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)dataSource:(id)arg1 didEditRecord:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)dataSource:(id)arg1 didAddRecord:(id)arg2 atIndex:(unsigned long long)arg3;
+- (_Bool)avatarPicker:(id)arg1 shouldPresentMemojiEditorForAvatarRecord:(id)arg2;
 - (void)avatarPickerWillStartCameraSession:(id)arg1;
 - (void)avatarPickerDidEndCameraSession:(id)arg1;
 - (void)avatarPicker:(id)arg1 didSelectAvatarRecord:(id)arg2;
 - (void)dismissAvatarUIControllerAnimated:(_Bool)arg1;
 - (void)presentAvatarUIController:(id)arg1 animated:(_Bool)arg2;
+- (void)clearStickerSelection;
 - (void)snapshotInBlock:(CDUnknownBlockType)arg1;
 - (void)stickerControllerWillEnterForeground;
 - (void)stickerControllerDidEnterBackground;
@@ -89,7 +108,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (_Bool)allowAvatarCreation;
-- (id)initWithStore:(id)arg1 selectedRecordIdentifier:(id)arg2 allowEditing:(_Bool)arg3 allowPeel:(_Bool)arg4 environment:(id)arg5;
+- (id)initWithStore:(id)arg1 fetchRequest:(id)arg2 stickerPacks:(id)arg3 stickerConfigurationNames:(id)arg4 selectedRecordIdentifier:(id)arg5 allowEditing:(_Bool)arg6 allowPeel:(_Bool)arg7 environment:(id)arg8;
 - (void)swipeLeftWithDelay:(long long)arg1 forCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)swipeRightWithDelay:(long long)arg1 forCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)editCurrentMemoji;

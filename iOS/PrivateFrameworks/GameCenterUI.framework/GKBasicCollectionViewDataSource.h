@@ -17,6 +17,7 @@
     struct _NSRange _preloadedRange;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property(nonatomic) struct _NSRange preloadedRange; // @synthesize preloadedRange=_preloadedRange;
 @property(nonatomic) unsigned long long pageSize; // @synthesize pageSize=_pageSize;
@@ -41,7 +42,6 @@
 - (void)collectionViewDidBecomeInactive:(id)arg1;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

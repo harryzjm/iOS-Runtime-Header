@@ -9,6 +9,7 @@
 @interface SASSpeechCorrectionStatistics (SiriCoreSessionObject)
 - (void)siriCore_setSessionRequestId:(id)arg1;
 - (id)siriCore_requestId;
+- (_Bool)siriCore_supportedByRemoteLimitedSession;
 - (_Bool)siriCore_supportedByLocalSession;
 @end
 

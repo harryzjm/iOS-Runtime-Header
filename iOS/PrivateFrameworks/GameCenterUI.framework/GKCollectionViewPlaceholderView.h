@@ -26,6 +26,7 @@
     NSArray *_cachedConstraints;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *cachedConstraints; // @synthesize cachedConstraints=_cachedConstraints;
 @property(retain, nonatomic) GKPlaceholderContentStateMachine *loadingMachine; // @synthesize loadingMachine=_loadingMachine;
 @property(retain, nonatomic) UIActivityIndicatorView *loadingIndicatorView; // @synthesize loadingIndicatorView=_loadingIndicatorView;

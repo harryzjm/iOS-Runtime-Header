@@ -8,7 +8,6 @@
 
 @class CKRecordID, NSData, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface CKDAcceptShareMetadata : NSObject
 {
     _Bool _acceptedInProcess;
@@ -19,16 +18,18 @@ __attribute__((visibility("hidden")))
     NSString *_publicPCSEtag;
     NSData *_publicKey;
     unsigned long long _publicKeyVersion;
-    NSData *_oonProtectionInfo;
     NSString *_oonParticipantID;
-    NSData *_dugongInvitationProtectionInfo;
+    NSData *_pppcsProtectionInfo;
+    NSString *_anonymousCKUserID;
+    struct _PCSIdentityData *_signingPCSIdentity;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool acceptedInProcess; // @synthesize acceptedInProcess=_acceptedInProcess;
-@property(retain, nonatomic) NSData *dugongInvitationProtectionInfo; // @synthesize dugongInvitationProtectionInfo=_dugongInvitationProtectionInfo;
+@property(nonatomic) struct _PCSIdentityData *signingPCSIdentity; // @synthesize signingPCSIdentity=_signingPCSIdentity;
+@property(retain, nonatomic) NSString *anonymousCKUserID; // @synthesize anonymousCKUserID=_anonymousCKUserID;
+@property(retain, nonatomic) NSData *pppcsProtectionInfo; // @synthesize pppcsProtectionInfo=_pppcsProtectionInfo;
 @property(retain, nonatomic) NSString *oonParticipantID; // @synthesize oonParticipantID=_oonParticipantID;
-@property(retain, nonatomic) NSData *oonProtectionInfo; // @synthesize oonProtectionInfo=_oonProtectionInfo;
 @property(nonatomic) unsigned long long publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
 @property(retain, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property(retain, nonatomic) NSString *publicPCSEtag; // @synthesize publicPCSEtag=_publicPCSEtag;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property(retain, nonatomic) CKRecordID *shareRecordID; // @synthesize shareRecordID=_shareRecordID;
 @property(retain, nonatomic) NSURL *shareURL; // @synthesize shareURL=_shareURL;
+- (void)dealloc;
 
 @end
 

@@ -4,43 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
-#import <GeoServices/GEOTileRequesterDelegate-Protocol.h>
+#import <GeoServices/GEOSimpleTileRequesterSubclass-Protocol.h>
 
-@class GEOVoltaireSimpleTileRequester, NSString, NSTimer;
-
-@interface GEOVoltaireTileRequester <GEOTileRequesterDelegate, GEOResourceManifestTileGroupObserver>
+@interface GEOVoltaireTileRequester <GEOSimpleTileRequesterSubclass>
 {
-    NSTimer *_activeTileGroupTimeoutTimer;
-    GEOVoltaireSimpleTileRequester *_simpleRequester;
+    _Bool _hasUpdatedManifestForHTTP410;
 }
 
-+ (Class)simpleRequesterClass;
-+ (CDStruct_e4886f83 *)newExpiringTilesets;
-+ (unsigned long long)expiringTilesetsCount;
 + (unsigned char)tileProviderIdentifier;
-- (void).cxx_destruct;
-- (void)tileRequesterFinished:(id)arg1;
-- (void)tileRequester:(id)arg1 receivedError:(id)arg2 forKey:(struct _GEOTileKey)arg3;
-- (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSetDB:(unsigned int)arg4 tileSet:(id)arg5 etag:(id)arg6 forKey:(struct _GEOTileKey)arg7 userInfo:(id)arg8;
-- (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;
-- (void)cancelKey:(const struct _GEOTileKey *)arg1;
-- (void)cancel;
-- (void)cleanup;
-- (void)_startWithTileKeys:(id)arg1;
-- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
-- (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
-- (void)_failedToReceiveActiveTileGroup:(id)arg1;
-- (void)start;
+- (id)additionalAnalyticsStatesForKey:(const struct _GEOTileKey *)arg1;
+- (void)failedLoadingTileForKey:(struct _GEOTileKey)arg1 baseOperation:(id)arg2 error:(id)arg3;
+- (_Bool)shouldDownloadToDiskForTileKey:(const struct _GEOTileKey *)arg1 estimatedDataSize:(unsigned long long)arg2;
+- (_Bool)needsLocalizationForKey:(const struct _GEOTileKey *)arg1;
+- (id)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
+- (id)_localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
+- (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
+- (id)_deviceRegionSKUQueryItemForTileSet:(id)arg1;
+- (_Bool)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;
+- (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
 - (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
-- (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
-- (void)dealloc;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 #import <PhotosGraph/PGEventEnrichment-Protocol.h>
 #import <PhotosGraph/PGGraphFullMeaninglessEvent-Protocol.h>
 #import <PhotosGraph/PGGraphPhotoEvent-Protocol.h>
 #import <PhotosGraph/PGGraphRelatableEvent-Protocol.h>
 
-@class NSDate, NSString, PGGraphHighlightGroupNode;
+@class NSDate, NSString, PGGraphHighlightGroupNode, PGGraphHighlightNodeCollection;
+@protocol PGGraphEventCollection;
 
-@interface PGGraphHighlightNode <PGGraphFullMeaninglessEvent, PGGraphPhotoEvent, PGGraphRelatableEvent, PGEventEnrichment>
+@interface PGGraphHighlightNode <PGGraphFullMeaninglessEvent, PGGraphPhotoEvent, PGGraphRelatableEvent, PGEventEnrichment, PGAssetCollectionFeature>
 {
     double _localStartTimestamp;
     double _localEndTimestamp;
@@ -21,6 +23,9 @@
     double _universalEndTimestamp;
 }
 
++ (id)momentInHighlight;
++ (id)highlightGroupOfHighlight;
++ (id)momentInDayHighlight;
 + (id)inclusivePathToTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
 + (id)inclusivePathFromTargetNodeDomain:(unsigned short)arg1 withName:(id)arg2;
 + (id)pathToTargetNodeDomain:(unsigned short)arg1;
@@ -30,19 +35,26 @@
 + (id)promotionScoreSortDescriptors;
 + (id)propertiesWithHighlight:(id)arg1;
 + (id)scoreSortDescriptors;
++ (id)filterWithUUID:(id)arg1;
++ (id)filterWithUUIDs:(id)arg1;
++ (id)allHighlightsFilter;
++ (id)dayHighlightsFilter;
++ (id)filter;
 + (double)belowAveragePromotionScoreWithPromotionScoreDescriptor:(CDStruct_c591f335)arg1;
 + (double)averagePromotionScoreWithPromotionScoreDescriptor:(CDStruct_c591f335)arg1;
 + (double)aboveAveragePromotionScoreWithPromotionScoreDescriptor:(CDStruct_c591f335)arg1;
 + (double)nonMeaningfulPromotionScoreWithPromotionScoreDescriptor:(CDStruct_c591f335)arg1 isAggregation:(_Bool)arg2 enrichmentState:(unsigned short)arg3;
-+ (CDStruct_c591f335)_promotionScoreDescriptorWithMomentNodes:(id)arg1;
++ (CDStruct_c591f335)_promotionScoreDescriptorWithMomentNodes:(id)arg1 neighborScoreComputer:(id)arg2;
 + (id)otherVeryMeaningfulMeanings;
-+ (double)promotionScoreWithHighlightNode:(id)arg1 enrichmentState:(unsigned short)arg2 numberOfExtendedAssets:(unsigned long long)arg3;
++ (double)promotionScoreWithHighlightNode:(id)arg1 enrichmentState:(unsigned short)arg2 numberOfExtendedAssets:(unsigned long long)arg3 neighborScoreComputer:(id)arg4;
 - (void).cxx_destruct;
 @property(readonly) double timestampUTCEnd; // @synthesize timestampUTCEnd=_universalEndTimestamp;
 @property(readonly) double timestampUTCStart; // @synthesize timestampUTCStart=_universalStartTimestamp;
 @property(readonly) NSString *uuid; // @synthesize uuid=_uuid;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly) NSString *name; // @synthesize name=_name;
 - (id)naturalLanguageFeatures;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
 - (id)keywordsForRelatedType:(unsigned long long)arg1 focusOnNodes:(id)arg2;
 - (id)relatableNode;
 - (id)connectedEventsWithTargetDomain:(unsigned short)arg1;
@@ -63,9 +75,6 @@
 - (id)businessNodes;
 - (id)addressNodes;
 @property(readonly) _Bool hasLocation;
-- (id)searchConfidenceSceneNodes;
-- (id)highConfidenceSceneNodes;
-- (id)sceneNodes;
 - (id)roiNodes;
 - (id)poiNodes;
 - (id)celebratedHolidayNodes;
@@ -74,32 +83,29 @@
 - (id)socialGroupNodes;
 - (id)personNodes;
 - (_Bool)hasPeopleCountingMe:(_Bool)arg1;
-- (id)fetchAssetCollection;
-- (id)anniversaryPersonNode;
-- (id)birthdayPersonNode;
+- (id)fetchAssetCollectionInPhotoLibrary:(id)arg1;
+- (id)anniversaryPersonNodes;
+- (id)birthdayPersonNodes;
 - (id)reliableMeaningLabels;
 - (id)meaningLabels;
-- (void)enumerateMeaningNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)meaningNodes;
-- (unsigned long long)numberOfAssets;
-- (void)eventEnumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)sortedMomentNodes;
-- (id)momentNodes;
-- (unsigned long long)numberOfMoments;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)eventEnrichmentSortedMomentNodes;
+- (id)eventEnrichmentMomentNodes;
+- (id)eventSortedMomentNodes;
+- (void)enumerateMomentEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) double contentScore;
 - (_Bool)endsBeforeLocalDate:(id)arg1;
 - (_Bool)startsAfterLocalDate:(id)arg1;
-@property(retain, nonatomic) NSDate *universalEndDate;
-@property(retain, nonatomic) NSDate *universalStartDate;
-@property(retain, nonatomic) NSDate *localEndDate;
-@property(retain, nonatomic) NSDate *localStartDate;
-@property(readonly) _Bool hasOnlyMomentsAtWork;
-@property(readonly) _Bool happensPartiallyAtMyWork;
-@property(readonly) _Bool happensPartiallyAtMyHome;
+@property(readonly) NSDate *universalEndDate;
+@property(readonly) NSDate *universalStartDate;
+@property(readonly) NSDate *localEndDate;
+@property(readonly) NSDate *localStartDate;
+@property(readonly) id <PGGraphEventCollection> scenedEventCollection;
+@property(readonly) id <PGGraphEventCollection> eventCollection;
+- (_Bool)happensPartiallyAtHomeOrWorkOfPersonNodes:(id)arg1;
+- (_Bool)happensPartiallyAtWorkOfPersonNodes:(id)arg1;
+- (_Bool)happensPartiallyAtHomeOfPersonNodes:(id)arg1;
 @property(readonly) unsigned long long numberOfShinyGemAssets;
 @property(readonly) unsigned long long numberOfRegularGemAssets;
-@property(readonly) double neighborScore;
 @property(readonly) _Bool isSmartInteresting;
 @property(readonly) _Bool isInterestingWithAlternateJunking;
 @property(readonly) _Bool isInteresting;
@@ -118,15 +124,17 @@
 @property(readonly) PGGraphHighlightGroupNode *highlightGroupNode;
 @property(readonly) NSString *UUID;
 @property(readonly) NSString *localIdentifier;
+@property(readonly, nonatomic) PGGraphHighlightNodeCollection *collection;
 - (unsigned short)domain;
 - (id)label;
 @property(readonly, copy) NSString *description;
+- (id)propertyForKey:(id)arg1;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
 - (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
-- (double)nonMeaningfulPromotionScoreForTripKeyAssetWithEnrichmentState:(unsigned short)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initFromHighlight:(id)arg1;
+- (double)nonMeaningfulPromotionScoreForTripKeyAssetWithEnrichmentState:(unsigned short)arg1 neighborScoreComputer:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

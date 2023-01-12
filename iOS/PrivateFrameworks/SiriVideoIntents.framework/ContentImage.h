@@ -12,11 +12,15 @@
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 
 // Remaining properties
-@property(copy, nonatomic) NSString *format; // @dynamic format;
-@property(copy, nonatomic) NSNumber *height; // @dynamic height;
-@property(copy, nonatomic) NSString *templateUrl; // @dynamic templateUrl;
-@property(copy, nonatomic) NSNumber *width; // @dynamic width;
+@property(nonatomic, copy) NSString *format; // @dynamic format;
+@property(nonatomic, retain) NSNumber *height; // @dynamic height;
+@property(nonatomic, copy) NSString *templateUrl; // @dynamic templateUrl;
+@property(nonatomic) long long type; // @dynamic type;
+@property(nonatomic, retain) NSNumber *width; // @dynamic width;
+
 @end
 

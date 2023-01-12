@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <AutomaticAssessmentConfiguration/_TtP15AACDependencies35AEDBackingAssessmentSessionDelegate_-Protocol.h>
+#import <AutomaticAssessmentConfiguration/_TtP9AACClient28AECAssessmentSessionDelegate_-Protocol.h>
 
-@class _TtC15AACDependencies27AEDBackingAssessmentSession;
+@class AEAssessmentConfiguration, _TtC9AACClient20AECAssessmentSession;
 @protocol AEAssessmentSessionDelegate;
 
-@interface AEAssessmentSession : NSObject <_TtP15AACDependencies35AEDBackingAssessmentSessionDelegate_>
+@interface AEAssessmentSession : NSObject <_TtP9AACClient28AECAssessmentSessionDelegate_>
 {
     id <AEAssessmentSessionDelegate> _delegate;
-    _TtC15AACDependencies27AEDBackingAssessmentSession *_backingSession;
+    _TtC9AACClient20AECAssessmentSession *_backingSession;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <AEAssessmentSessionDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)backingAssessmentSession:(id)arg1 wasInterruptedWithError:(id)arg2;
-- (void)backingAssessmentSession:(id)arg1 failedToBeginWithError:(id)arg2;
-- (void)backingAssessmentSessionDidEnd:(id)arg1;
-- (void)backingAssessmentSessionDidBegin:(id)arg1;
+- (void)assessmentSesson:(id)arg1 failedToUpdateToConfiguration:(id)arg2 error:(id)arg3;
+- (void)assessmentSessionDidUpdate:(id)arg1;
+- (void)assessmentSession:(id)arg1 wasInterruptedWithError:(id)arg2;
+- (void)assessmentSession:(id)arg1 failedToBeginWithError:(id)arg2;
+- (void)assessmentSessionDidEnd:(id)arg1;
+- (void)assessmentSessionDidBegin:(id)arg1;
 - (void)end;
+- (void)updateToConfiguration:(id)arg1;
 - (void)begin;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
+@property(readonly, copy, nonatomic) AEAssessmentConfiguration *configuration;
 - (id)initWithConfiguration:(id)arg1;
 
 @end

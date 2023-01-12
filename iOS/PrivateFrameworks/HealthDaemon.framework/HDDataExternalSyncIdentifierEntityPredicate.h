@@ -14,10 +14,6 @@
     _Bool _matchObjectsWithoutKey;
 }
 
-+ (id)_valuePredicateForKey:(id)arg1 allowedValues:(id)arg2;
-+ (id)_valuePredicateForKey:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3;
-+ (Class)_valueClassForKey:(id)arg1;
-+ (id)_propertyForKey:(id)arg1;
 + (id)predicateWithMetadataKey:(id)arg1 exists:(_Bool)arg2;
 + (id)predicateWithMetadataKey:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3;
 + (id)predicateWithMetadataKey:(id)arg1 allowedValues:(id)arg2;

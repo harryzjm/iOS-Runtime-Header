@@ -8,6 +8,7 @@
 
 @interface OBPrivacyLinkController (PKPrivacy)
 + (id)pk_privacyLinkForContext:(unsigned long long)arg1;
++ (id)pk_privacyLinkForContext:(unsigned long long)arg1;
 - (void)pk_applyAppearance:(id)arg1;
 @end
 

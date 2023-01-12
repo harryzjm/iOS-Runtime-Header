@@ -65,6 +65,7 @@
 - (void)sceneLayoutController:(id)arg1 noteHasVisibleElements:(_Bool)arg2;
 - (id)fetchOrCreateApplicationSceneHandleForRequest:(id)arg1;
 - (id)_sceneIdentifierForBundleIdentifier:(id)arg1;
+- (id)sceneIdentityForApplication:(id)arg1 uniqueIdentifier:(id)arg2 targetContentIdentifier:(id)arg3 sceneSessionRole:(id)arg4;
 - (id)sceneIdentityForApplication:(id)arg1 uniqueIdentifier:(id)arg2 targetContentIdentifier:(id)arg3;
 - (id)sceneIdentityForApplication:(id)arg1 excludingIdentifiers:(id)arg2;
 - (id)sceneIdentityForApplication:(id)arg1 targetContentIdentifier:(id)arg2;
@@ -101,7 +102,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-- (id)transientApplicationSceneHandleIdentityForApplication:(id)arg1;
+- (id)transientApplicationSceneHandlesForApplication:(id)arg1;
 @property(readonly, nonatomic) SBLayoutStateTransitionCoordinator *_layoutStateTransitionCoordinator;
 @property(readonly, nonatomic) SBLayoutStateManager *_layoutStateManager;
 - (void)removeObserver:(id)arg1;

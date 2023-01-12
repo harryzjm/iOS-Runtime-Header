@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (void)_setNullLocale;
-- (unsigned char)_nullLocale;
+- (void)_setDoesNotRequireSpecialCaseHandling;
+- (unsigned char)_doesNotRequireSpecialCaseHandling;
 - (id)_prefs;
 - (id)displayNameForKey:(id)arg1 value:(id)arg2;
 - (id)objectForKey:(id)arg1;

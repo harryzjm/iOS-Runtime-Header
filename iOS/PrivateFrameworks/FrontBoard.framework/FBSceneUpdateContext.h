@@ -13,6 +13,7 @@
 
 @interface FBSceneUpdateContext : NSObject <BSDescriptionProviding>
 {
+    _Bool _lifecycleExternallyManaged;
     NSString *_sceneID;
     unsigned long long _transactionID;
     FBSSceneSettings *_settings;
@@ -21,20 +22,21 @@
     id <NSObject><NSCopying> _clientContext;
 }
 
-+ (id)contextWithScene:(id)arg1;
++ (id)contextWithSceneID:(id)arg1 transactionID:(unsigned long long)arg2 settings:(id)arg3 settingsDiff:(id)arg4 transitionContext:(id)arg5;
 - (void).cxx_destruct;
 @property(copy, nonatomic) id <NSObject><NSCopying> clientContext; // @synthesize clientContext=_clientContext;
-@property(nonatomic) __weak FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
-@property(retain, nonatomic) FBSSceneSettingsDiff *settingsDiff; // @synthesize settingsDiff=_settingsDiff;
-@property(retain, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
-@property(nonatomic) unsigned long long transactionID; // @synthesize transactionID=_transactionID;
-@property(copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
+@property(readonly, nonatomic) __weak FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
+@property(readonly, nonatomic) FBSSceneSettingsDiff *settingsDiff; // @synthesize settingsDiff=_settingsDiff;
+@property(readonly, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
+@property(readonly, nonatomic) unsigned long long transactionID; // @synthesize transactionID=_transactionID;
+@property(readonly, copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+- (_Bool)isClientLifecycleExternallyManaged;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

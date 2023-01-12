@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Message/EFPubliclyDescribable-Protocol.h>
+
 @class EMMailDropMetadata, MFAttachmentManager, MFAttachmentPlaceholder, MFMimePart, NSItemProvider, NSString, NSURL;
 @protocol MFDataConsumer;
 
-@interface MFAttachment : NSObject
+@interface MFAttachment : NSObject <EFPubliclyDescribable>
 {
     MFAttachmentManager *_attachmentManager;
     MFAttachmentPlaceholder *_placeholder;
@@ -17,6 +19,7 @@
     _Bool _wantsCompletionBlockOffMainThread;
     NSURL *_url;
     MFMimePart *_part;
+    NSString *_mimePartNumber;
     NSString *_disposition;
     NSItemProvider *_attachmentDataProvider;
     CDUnknownBlockType _fetchCompletionBlock;
@@ -34,6 +37,7 @@
 @property(retain, nonatomic) MFAttachmentPlaceholder *placeholder; // @synthesize placeholder=_placeholder;
 @property(readonly) _Bool isAutoArchive; // @synthesize isAutoArchive=_isAutoArchive;
 @property(copy, nonatomic) NSString *disposition; // @synthesize disposition=_disposition;
+@property(copy, nonatomic) NSString *mimePartNumber; // @synthesize mimePartNumber=_mimePartNumber;
 @property(retain, nonatomic) MFMimePart *part; // @synthesize part=_part;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 - (_Bool)contentTypeConformsToIWork;
@@ -48,7 +52,6 @@
 - (id)textEncodingGuessWithData:(id)arg1;
 - (id)textEncodingNameForData:(id)arg1 mimeType:(id)arg2;
 - (id)readFromDisk;
-- (void)writeToDiskWithData:(id)arg1;
 - (unsigned long long)sizeOnDisk;
 - (id)fileAttributes;
 - (_Bool)isCached;
@@ -61,6 +64,7 @@
 - (id)attachmentContentTypeForFileName:(id)arg1;
 @property(readonly) NSString *fileUTType;
 - (id)_fileUTTypeForFileName:(id)arg1;
+- (void)updatePath;
 @property(readonly) NSString *path; // @dynamic path;
 @property(copy, nonatomic) NSString *remoteImageFileName;
 @property(copy, nonatomic) NSString *fileName; // @dynamic fileName;
@@ -102,10 +106,15 @@
 - (id)decodeFilterWithDataConsumer:(id)arg1;
 - (void)setMetadataValue:(id)arg1 forKey:(id)arg2;
 - (id)metadataValueForKey:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy, nonatomic) NSString *ef_publicDescription;
+@property(readonly, copy) NSString *description;
 - (id)initWithURL:(id)arg1 attachmentManager:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

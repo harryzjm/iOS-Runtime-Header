@@ -12,11 +12,16 @@
 {
     _Bool _sessionStartedWithTracking;
     RMRelativeMotionManager *_manager;
+    double _sessionStartTimestamp;
+    long long _clientMode;
 }
 
++ (_Bool)_isClientModeAvailable:(long long)arg1;
 + (_Bool)isAvailable;
 - (void).cxx_destruct;
+@property(nonatomic) long long clientMode; // @synthesize clientMode=_clientMode;
 @property _Bool sessionStartedWithTracking; // @synthesize sessionStartedWithTracking=_sessionStartedWithTracking;
+@property(nonatomic) double sessionStartTimestamp; // @synthesize sessionStartTimestamp=_sessionStartTimestamp;
 @property(retain, nonatomic) RMRelativeMotionManager *manager; // @synthesize manager=_manager;
 - (long long)_currentAudioListenerPose:(id *)arg1;
 - (long long)_currentAudioListenerPose:(CDStruct_91d2e2b9 *)arg1 timestamp:(double *)arg2;

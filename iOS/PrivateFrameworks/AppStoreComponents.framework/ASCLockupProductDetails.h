@@ -6,25 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class ASCLockup, NSString;
+@class ASCLockup, NSDictionary, NSString;
 
 @interface ASCLockupProductDetails : NSObject
 {
     ASCLockup *_lockup;
     NSString *_storeSheetHostBundleID;
     NSString *_storeSheetUsageContext;
+    NSDictionary *_parameters;
 }
 
++ (id)queryParametersForLockup:(id)arg1;
++ (id)URLForLockupID:(id)arg1 ofKind:(id)arg2 offerFlags:(long long)arg3 queryParameters:(id)arg4;
 + (id)URLForLockupID:(id)arg1 ofKind:(id)arg2 withOfferFlags:(long long)arg3;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property(readonly, copy, nonatomic) NSString *storeSheetUsageContext; // @synthesize storeSheetUsageContext=_storeSheetUsageContext;
 @property(readonly, copy, nonatomic) NSString *storeSheetHostBundleID; // @synthesize storeSheetHostBundleID=_storeSheetHostBundleID;
 @property(readonly, copy, nonatomic) ASCLockup *lockup; // @synthesize lockup=_lockup;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)present;
+- (void)present:(CDUnknownBlockType)arg1;
 - (void)presentFromViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithLockup:(id)arg1 storeSheetHostBundleID:(id)arg2 storeSheetUsageContext:(id)arg3 parameters:(id)arg4;
 - (id)initWithLockup:(id)arg1 storeSheetHostBundleID:(id)arg2 storeSheetUsageContext:(id)arg3;
 
 @end

@@ -50,6 +50,7 @@
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadViewModelRightNow;
 - (void)saveViewModel:(id)arg1;
+- (void)_reportCoreAnalyticsEventScreenTimeEnabled:(_Bool)arg1 user:(id)arg2 userType:(unsigned long long)arg3 userIsRemote:(_Bool)arg4;
 - (void)enableScreenTimeWithPIN:(id)arg1 recoveryAltDSID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setShareWebUsageEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setScreenTimeSyncingEnabled:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

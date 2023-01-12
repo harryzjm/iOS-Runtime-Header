@@ -10,20 +10,23 @@
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
 + (id)pluralFilterDescription;
 + (id)filterDescription;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)ownedTypes;
++ (id)datebyApplyingComponents:(id)arg1 toDateComponents:(id)arg2;
++ (id)stringConversionBehavior;
 + (_Bool)hasLibrary;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)propertyBuilders;
 + (id)itemWithEKEvent:(id)arg1 fromEventStore:(id)arg2;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 @property(readonly, nonatomic) EKEvent *event;
+- (id)changeTransaction;
 - (_Bool)getListAltText:(CDUnknownBlockType)arg1;
 - (_Bool)getListSubtitle:(CDUnknownBlockType)arg1;
 

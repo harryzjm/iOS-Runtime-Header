@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) NSString *resourceSpecifier;
 @property(readonly, nonatomic) NSString *scheme;
 @property(readonly, nonatomic) NSString *absoluteString;
+- (NSURL *)withPathComponent:(NSString *)arg1;
 - (NSURL *)filterQueryParameters:(JSValue *)arg1;
 - (NSURL *)withQueryParameters:(NSDictionary *)arg1;
 - (NSURL *)withQueryParameter:(NSString *)arg1:(NSString *)arg2;

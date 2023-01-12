@@ -12,29 +12,32 @@
 {
     MISSING_TYPE *buttonTitle;
     MISSING_TYPE *primaryButton;
+    MISSING_TYPE *secondaryButton;
     MISSING_TYPE *statusLabel;
-    MISSING_TYPE *messageButton;
-    MISSING_TYPE *wantsMaterialBackground;
     MISSING_TYPE *backgroundView;
-    MISSING_TYPE *messageButtonState;
+    MISSING_TYPE *topSeparator;
     MISSING_TYPE *startGameHandler;
-    MISSING_TYPE *addMessageHandler;
+    MISSING_TYPE *inviteFriendsHandler;
+    MISSING_TYPE *$__lazy_storage_$_secondaryButtonFocusGuide;
+    MISSING_TYPE *$__lazy_storage_$_primaryButtonFocusGuide;
 }
 
 - (void).cxx_destruct;
-- (void)didTapMessageButton:(id)arg1;
+- (void)didTapSecondaryButton:(id)arg1;
 - (void)didTapButton:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;
 - (void)layoutSubviews;
 - (void)configureUsing:(id)arg1;
-@property(nonatomic, copy) CDUnknownBlockType addMessageHandler;
+@property(nonatomic, copy) CDUnknownBlockType inviteFriendsHandler;
 @property(nonatomic, copy) CDUnknownBlockType startGameHandler;
 @property(nonatomic, copy) NSString *footerStatusString;
+@property(nonatomic, copy) NSString *secondaryButtonTitle;
 @property(nonatomic, copy) NSString *primaryButtonTitle;
-@property(nonatomic) long long messageButtonState; // @synthesize messageButtonState;
+@property(nonatomic) _Bool inviteFriendsButtonHidden;
+@property(nonatomic) _Bool inviteFriendsButtonEnabled;
 @property(nonatomic) _Bool startGameButtonEnabled;
-@property(nonatomic) _Bool wantsMaterialBackground; // @synthesize wantsMaterialBackground;
+- (void)wantsMaterialBackgroundWithScrollOffset:(double)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

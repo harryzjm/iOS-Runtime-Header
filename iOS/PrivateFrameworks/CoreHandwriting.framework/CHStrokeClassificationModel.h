@@ -22,9 +22,9 @@
 @property(readonly, nonatomic) long long cosAngleFeatureIndex; // @synthesize cosAngleFeatureIndex=_cosAngleFeatureIndex;
 @property(readonly, nonatomic) long long sinAngleFeatureIndex; // @synthesize sinAngleFeatureIndex=_sinAngleFeatureIndex;
 @property(readonly, nonatomic) long long distanceFeatureIndex; // @synthesize distanceFeatureIndex=_distanceFeatureIndex;
-- (_Bool)classifyStrokesInDrawing:(id)arg1 outTextStrokeProbabilities:(vector_8f06c10f *)arg2 cancellationBlock:(CDUnknownBlockType)arg3;
-- (vector_f9ed6fc8)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
-- (id)normalizedDrawing:(id)arg1 targetHeight:(double)arg2 interpolationDistance:(double)arg3 outputPointMap:(vector_1dba4e4e *)arg4;
+- (_Bool)classifyStrokesInDrawing:(id)arg1 outTextStrokeProbabilities:(void *)arg2 cancellationBlock:(CDUnknownBlockType)arg3;
+- (vector_fef9a72d)_extractFeaturesFromDrawing:(id)arg1 inputName:(id)arg2 interpointDistance:(double)arg3 error:(id *)arg4;
+- (id)normalizedDrawing:(id)arg1 targetHeight:(double)arg2 interpolationDistance:(double)arg3 outputPointMap:(void *)arg4;
 - (long long)windowOverlap;
 - (long long)maxSequenceLength;
 - (void)dealloc;

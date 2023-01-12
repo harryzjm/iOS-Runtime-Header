@@ -15,6 +15,7 @@
 @property(nonatomic) __weak id <NNMKMessagesSyncServiceServerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)connectivityChanged;
 - (void)spaceBecameAvailable;
+- (void)readResourceAtURL:(id)arg1 metadata:(id)arg2;
 - (void)readProtobufData:(id)arg1 type:(unsigned long long)arg2;
 - (void)failedSendingProtobufWithIDSIdentifier:(id)arg1 errorCode:(long long)arg2;
 - (void)successfullySentProtobufWithIDSIdentifier:(id)arg1;

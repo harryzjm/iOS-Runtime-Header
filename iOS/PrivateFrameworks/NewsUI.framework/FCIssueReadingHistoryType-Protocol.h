@@ -12,6 +12,7 @@
 @property(readonly, nonatomic) NSArray *recentlyEngagedIssueIDs;
 @property(readonly, nonatomic) NSArray *recentlyVisitedIssueIDs;
 @property(readonly, nonatomic) NSString *mostRecentlyVisitedIssueID;
+- (void)prepareForUseWithCompletion:(void (^)(void))arg1;
 - (void)removeObserver:(id <FCIssueReadingHistoryObserving>)arg1;
 - (void)addObserver:(id <FCIssueReadingHistoryObserving>)arg1;
 - (NSDate *)lastRemovedFromMyMagazinesDateForIssueWithID:(NSString *)arg1;

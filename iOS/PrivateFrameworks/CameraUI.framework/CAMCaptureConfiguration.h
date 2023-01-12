@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 
 @interface CAMCaptureConfiguration : NSObject
 {
@@ -29,6 +29,9 @@
     NSDictionary *_exposureBiasesByMode;
     double _portraitModeApertureValue;
     double _portraitModeIntensityValue;
+    long long _rawMode;
+    NSArray *_semanticStyles;
+    unsigned long long _selectedSemanticStyleIndex;
 }
 
 + (id)configuration:(id)arg1 withDevice:(long long)arg2;
@@ -39,6 +42,9 @@
 + (id)captureGraphConfigurationUsingConfiguration:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isPhotoBooth) _Bool photoBooth; // @synthesize photoBooth=_photoBooth;
+@property(nonatomic) unsigned long long selectedSemanticStyleIndex; // @synthesize selectedSemanticStyleIndex=_selectedSemanticStyleIndex;
+@property(retain, nonatomic) NSArray *semanticStyles; // @synthesize semanticStyles=_semanticStyles;
+@property(readonly, nonatomic) long long rawMode; // @synthesize rawMode=_rawMode;
 @property(nonatomic) _Bool mirrorFrontCameraCaptures; // @synthesize mirrorFrontCameraCaptures=_mirrorFrontCameraCaptures;
 @property(readonly, nonatomic) double portraitModeIntensityValue; // @synthesize portraitModeIntensityValue=_portraitModeIntensityValue;
 @property(readonly, nonatomic) double portraitModeApertureValue; // @synthesize portraitModeApertureValue=_portraitModeApertureValue;
@@ -60,7 +66,7 @@
 - (id)_previewFilters;
 - (id)initForPhotoBoothWithCaptureDevice:(long long)arg1;
 - (id)initWithConfiguration:(id)arg1;
-- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 flashMode:(long long)arg5 torchMode:(long long)arg6 HDRMode:(long long)arg7 irisMode:(long long)arg8 timerDuration:(long long)arg9 photoModeAspectRatioCrop:(long long)arg10 photoModeEffectFilterType:(long long)arg11 squareModeEffectFilterType:(long long)arg12 portraitModeEffectFilterType:(long long)arg13 portraitModeLightingEffectType:(long long)arg14 portraitModeApertureValue:(double)arg15 portraitModeIntensityValue:(double)arg16 mirrorFrontCameraCaptures:(_Bool)arg17 exposureBiasesByMode:(id)arg18;
+- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 flashMode:(long long)arg5 torchMode:(long long)arg6 HDRMode:(long long)arg7 irisMode:(long long)arg8 timerDuration:(long long)arg9 photoModeAspectRatioCrop:(long long)arg10 photoModeEffectFilterType:(long long)arg11 squareModeEffectFilterType:(long long)arg12 portraitModeEffectFilterType:(long long)arg13 portraitModeLightingEffectType:(long long)arg14 portraitModeApertureValue:(double)arg15 portraitModeIntensityValue:(double)arg16 mirrorFrontCameraCaptures:(_Bool)arg17 exposureBiasesByMode:(id)arg18 rawMode:(long long)arg19 semanticStyles:(id)arg20 selectedSemanticStyleIndex:(unsigned long long)arg21;
 
 @end
 

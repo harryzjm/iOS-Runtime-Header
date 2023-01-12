@@ -9,11 +9,12 @@
 #import <C2/NSCopying-Protocol.h>
 #import <C2/NSSecureCoding-Protocol.h>
 
-@class C2MetricOptions, NSDictionary, NSString, NSURL;
+@class C2MetricOptions, NSString, NSURL;
 @protocol C2NetworkingDelegate;
 
 @interface C2RequestOptions : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _allowsCellularAccess;
     _Bool __allowsExpensiveAccess;
     _Bool __allowsPowerNapScheduling;
     _Bool _tlsPinning;
@@ -21,8 +22,10 @@
     _Bool _allowExpiredDNSBehavior;
     _Bool __allowsRetryForBackgroundDataTasks;
     _Bool _redactRemoteEndpointFromNetworkMetrics;
+    _Bool _redactUniformResourceIdentifierFromNetworkMetrics;
     _Bool _useAdaptiveTimeouts;
     _Bool _outOfProcessDiscretionary;
+    _Bool _hasAllowsCellularAccess;
     _Bool _metricRequest;
     long long _qualityOfService;
     NSString *_outOfProcessPoolName;
@@ -34,7 +37,6 @@
     unsigned long long _discretionaryNetworkBehavior;
     unsigned long long _duetPreClearedMode;
     NSString *_identifier;
-    NSDictionary *_resolvedEndpointsWithHostname;
     C2MetricOptions *_metricOptions;
     NSURL *_c2MetricsEndpoint;
     unsigned long long _c2MetricsReportFrequency;
@@ -57,14 +59,15 @@
 @property(copy, nonatomic) CDUnknownBlockType testBehavior_sessionGroupCreated; // @synthesize testBehavior_sessionGroupCreated=_testBehavior_sessionGroupCreated;
 @property(nonatomic) _Bool metricRequest; // @synthesize metricRequest=_metricRequest;
 @property(copy, nonatomic) NSString *originalHost; // @synthesize originalHost=_originalHost;
+@property(nonatomic) _Bool hasAllowsCellularAccess; // @synthesize hasAllowsCellularAccess=_hasAllowsCellularAccess;
 @property(nonatomic) unsigned long long c2MetricsReportFrequencyBase; // @synthesize c2MetricsReportFrequencyBase=_c2MetricsReportFrequencyBase;
 @property(nonatomic) unsigned long long c2MetricsReportFrequency; // @synthesize c2MetricsReportFrequency=_c2MetricsReportFrequency;
 @property(copy, nonatomic) NSURL *c2MetricsEndpoint; // @synthesize c2MetricsEndpoint=_c2MetricsEndpoint;
 @property(nonatomic) _Bool outOfProcessDiscretionary; // @synthesize outOfProcessDiscretionary=_outOfProcessDiscretionary;
 @property(nonatomic) _Bool useAdaptiveTimeouts; // @synthesize useAdaptiveTimeouts=_useAdaptiveTimeouts;
+@property(nonatomic) _Bool redactUniformResourceIdentifierFromNetworkMetrics; // @synthesize redactUniformResourceIdentifierFromNetworkMetrics=_redactUniformResourceIdentifierFromNetworkMetrics;
 @property(nonatomic) _Bool redactRemoteEndpointFromNetworkMetrics; // @synthesize redactRemoteEndpointFromNetworkMetrics=_redactRemoteEndpointFromNetworkMetrics;
 @property(copy, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;
-@property(copy, nonatomic) NSDictionary *resolvedEndpointsWithHostname; // @synthesize resolvedEndpointsWithHostname=_resolvedEndpointsWithHostname;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) _Bool _allowsRetryForBackgroundDataTasks; // @synthesize _allowsRetryForBackgroundDataTasks=__allowsRetryForBackgroundDataTasks;
 @property(nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
@@ -90,6 +93,7 @@
 - (id)decorateTask:(id)arg1;
 - (id)copyAndDecorateRequest:(id)arg1;
 - (id)sessionConfigurationWithName:(id)arg1;
+@property(nonatomic) _Bool allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 - (void)setOutOfProcess:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool outOfProcess;
 - (id)defaultSessionConfigurationWithName:(id)arg1;

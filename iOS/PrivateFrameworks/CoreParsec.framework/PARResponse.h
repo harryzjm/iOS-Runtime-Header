@@ -17,9 +17,11 @@
     NSArray *_rawResponse;
     NSArray *_sections;
     NSArray *_results;
+    NSArray *_alternativeResults;
     NSDictionary *_rawSqf;
     NSDictionary *_serverFeatures;
     NSArray *_suggestions;
+    NSArray *_previouslyEngagedSuggestions;
     NSArray *_corrections;
     GEOUserSessionEntity *_geoUserSessionEntity;
     NSData *_legacyJSON;
@@ -29,22 +31,24 @@
 + (id)responseFromJSON:(id)arg1 session:(id)arg2;
 + (id)responseFromData:(id)arg1 session:(id)arg2 request:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSData *legacyJSON; // @synthesize legacyJSON=_legacyJSON;
-@property(readonly, nonatomic) _Bool suggestionsAreBlended; // @synthesize suggestionsAreBlended=_suggestionsAreBlended;
-@property(retain, nonatomic) GEOUserSessionEntity *geoUserSessionEntity; // @synthesize geoUserSessionEntity=_geoUserSessionEntity;
-@property(readonly, nonatomic) NSArray *corrections; // @synthesize corrections=_corrections;
-@property(readonly, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
-@property(readonly, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
-@property(readonly, nonatomic) NSDictionary *rawSqf; // @synthesize rawSqf=_rawSqf;
-@property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
-@property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property(retain, nonatomic) NSData *legacyJSON;
+@property(nonatomic) _Bool suggestionsAreBlended;
+@property(retain, nonatomic) GEOUserSessionEntity *geoUserSessionEntity;
+@property(retain, nonatomic) NSArray *corrections;
+@property(readonly, nonatomic) NSArray *previouslyEngagedSuggestions; // @synthesize previouslyEngagedSuggestions=_previouslyEngagedSuggestions;
+@property(retain, nonatomic) NSArray *suggestions;
+@property(retain, nonatomic) NSDictionary *serverFeatures;
+@property(retain, nonatomic) NSDictionary *rawSqf;
+@property(readonly, nonatomic) NSArray *alternativeResults; // @synthesize alternativeResults=_alternativeResults;
+@property(retain, nonatomic) NSArray *results;
+@property(retain, nonatomic) NSArray *sections;
 @property(readonly, nonatomic) NSArray *rawResponse; // @synthesize rawResponse=_rawResponse;
-@property(readonly, nonatomic) NSString *query; // @synthesize query=_query;
-@property(readonly, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
+@property(retain, nonatomic) NSString *query;
+@property(retain, nonatomic) NSString *prefix;
 @property(readonly, nonatomic) PARReply *reply; // @synthesize reply=_reply;
 - (_Bool)compareWithResponse:(id)arg1 logger:(CDUnknownBlockType)arg2;
-- (id)initWithReply:(id)arg1 factory:(id)arg2 responseV2:(id)arg3;
 - (id)initWithReply:(id)arg1;
+- (id)initWithReply:(id)arg1 factory:(id)arg2 dataV2:(id)arg3;
 
 @end
 

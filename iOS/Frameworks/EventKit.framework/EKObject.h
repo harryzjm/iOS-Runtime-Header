@@ -9,7 +9,7 @@
 #import <EventKit/EKFrozenMeltedPair-Protocol.h>
 #import <EventKit/EKProtocolMutableObject-Protocol.h>
 
-@class EKChangeSet, EKEventStore, EKObjectValidationContext, EKPersistentObject, NSDictionary, NSMutableDictionary, NSString;
+@class CADGenerationStampedObjectID, EKChangeSet, EKEventStore, EKObjectValidationContext, EKPersistentObject, NSDictionary, NSMutableDictionary, NSString;
 
 @interface EKObject : NSObject <EKFrozenMeltedPair, EKProtocolMutableObject>
 {
@@ -21,6 +21,7 @@
     EKObjectValidationContext *__validationContext;
 }
 
++ (id)_arrayIntersectingArray:(id)arg1 withSet:(id)arg2;
 + (id)propertiesUnavailableForPartialObjects;
 + (Class)frozenClass;
 + (Class)meltedClass;
@@ -51,6 +52,10 @@
 + (_Bool)_compareKnownKeys:(id)arg1 forObject:(id)arg2 againstObject:(id)arg3;
 + (_Bool)_compareAllKnownKeysExceptKeys:(id)arg1 forObject:(id)arg2 againstObject:(id)arg3 compareIdentityKeys:(_Bool)arg4;
 + (_Bool)_compareAllKnownKeysExceptKeys:(id)arg1 forObject:(id)arg2 againstObject:(id)arg3;
++ (id)_changeSetForDiff:(id)arg1;
++ (void)_addChangesFromObject:(id)arg1 toObjects:(id)arg2 except:(id)arg3 keep:(id)arg4 copyingBackingObjects:(_Bool)arg5;
++ (void)addChangesFromObject:(id)arg1 toObjects:(id)arg2 keep:(id)arg3;
++ (void)addChangesFromObject:(id)arg1 toObjects:(id)arg2 except:(id)arg3;
 + (_Bool)isWeakRelationObject:(id)arg1 forKey:(id)arg2;
 + (_Bool)isMeltedAndNotWeakRelationshipObject:(id)arg1 forKey:(id)arg2;
 + (id)knownSingleValueKeysForComparison;
@@ -59,8 +64,10 @@
 + (id)knownImmutableKeys;
 + (id)knownDerivedRelationshipKeys;
 + (id)knownRelationshipWeakKeys;
++ (id)knownRelationshipMultiValueKeysForValidation;
 + (id)knownRelationshipMultiValueKeys;
 + (id)knownDerivedAndSingleValueRelationshipKeys;
++ (id)knownRelationshipSingleValueKeysForValidation;
 + (id)knownRelationshipSingleValueKeys;
 + (_Bool)isDerivedRelationship;
 + (_Bool)isWeakRelationship;
@@ -88,24 +95,32 @@
 - (void)markAsNotNew;
 - (void)markAsNew;
 - (id)committedValueForKey:(id)arg1;
+- (_Bool)refreshAndNotify:(_Bool)arg1;
 - (_Bool)refresh;
 - (_Bool)_reset;
 - (void)reset;
 - (void)rollback;
-- (id)_recursiveSnapshotCopyWithPropertyAccessor:(CDUnknownBlockType)arg1 recurseOnWeakRelations:(_Bool)arg2;
+- (id)_recursiveSnapshotCopyWithPropertyAccessor:(CDUnknownBlockType)arg1 propertyKeysToCopy:(id)arg2 recurseOnWeakRelations:(_Bool)arg3;
+- (id)previouslySavedCopy;
+- (id)snapshotCopyWithPropertyKeysToCopy:(id)arg1;
 - (id)snapshotCopy;
 - (id)committedCopy;
+- (id)duplicateToEventStore:(id)arg1;
 - (id)duplicate;
 - (id)_copyWithoutChangesInZone:(struct _NSZone *)arg1;
+- (id)shallowCopyWithoutChanges;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)existsInStore;
 - (int)rowID;
+@property(readonly, nonatomic) CADGenerationStampedObjectID *CADObjectID;
 - (id)objectID;
 @property(retain, nonatomic) EKEventStore *eventStore;
+- (void)rebaseSkippingRelationProperties:(id)arg1 toEventStore:(id)arg2;
 - (void)rebaseSkippingRelationProperties:(id)arg1;
+- (void)rebaseToEventStore:(id)arg1;
 - (void)rebase;
 @property(readonly, nonatomic) _Bool isPartialObject;
 - (Class)frozenClass;
@@ -118,9 +133,9 @@
 - (_Bool)isEqual:(id)arg1 comparingKeys:(id)arg2 compareImmutableKeys:(_Bool)arg3 ignoringProperties:(id)arg4;
 - (_Bool)isEqual:(id)arg1 ignoringProperties:(id)arg2;
 - (_Bool)isCompletelyEqual:(id)arg1;
-- (id)previouslySavedObject;
 - (id)frozenObject;
 - (id)initWithObject:(id)arg1;
+- (_Bool)isDifferentFromCommitted;
 @property(readonly, nonatomic) _Bool hasChanges;
 @property(readonly, nonatomic, getter=isNew) _Bool new;
 @property(readonly, nonatomic) NSString *semanticIdentifier;
@@ -140,7 +155,7 @@
 - (id)_convertBackingObjectsWithPath:(id)arg1 updateBackingObjects:(_Bool)arg2 allChangedBackingObjects:(id)arg3 eventStore:(id)arg4 updatedBackingObjectProvider:(id)arg5;
 - (id)privacyDescription;
 @property(readonly, nonatomic) NSString *specificIdentifier;
-- (id)_changeSetForDiff:(id)arg1;
+- (void)applyChangeSetFromOtherObject:(id)arg1;
 - (id)inverseObjectWithObject:(id)arg1 diff:(id *)arg2;
 - (id)diffWithObject:(id)arg1;
 - (void)emptyMeltedCacheForKeys:(id)arg1;
@@ -157,6 +172,7 @@
 - (id)meltedAndCachedMultiRelationObjectsForKey:(id)arg1;
 - (void)updateMeltedAndCachedSingleRelationObject:(id)arg1 forKey:(id)arg2 frozenClass:(Class)arg3;
 - (id)meltedAndCachedSingleRelationObjectForKey:(id)arg1;
+- (id)frozenOrMeltedCachedMultiRelationObjectsForKey:(id)arg1;
 - (id)frozenOrMeltedCachedSingleRelationObjectForKey:(id)arg1;
 - (id)cachedMeltedObjectForSingleValueKey:(id)arg1;
 - (void)setCachedMeltedObject:(id)arg1 forSingleValueKey:(id)arg2;
@@ -190,9 +206,7 @@
 - (void)applyChanges:(id)arg1;
 - (void)_addChanges:(id)arg1 copyingBackingObjects:(_Bool)arg2;
 - (void)addChanges:(id)arg1;
-- (void)_addChangesFromObject:(id)arg1 except:(id)arg2 keep:(id)arg3 copyingBackingObjects:(_Bool)arg4;
-- (void)addChangesFromObject:(id)arg1 keep:(id)arg2;
-- (void)addChangesFromObject:(id)arg1 except:(id)arg2;
+- (void)_addChangesFromObject:(id)arg1 except:(id)arg2 keep:(id)arg3 ignoreRelations:(id)arg4 copyingBackingObjects:(_Bool)arg5;
 - (void)addChangesFromObject:(id)arg1 copyingBackingObjects:(_Bool)arg2;
 - (void)addChangesFromObject:(id)arg1;
 - (id)_previousValueForKey:(id)arg1;

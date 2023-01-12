@@ -11,14 +11,14 @@
 
 @interface SBSStatusBarTapContextImpl : NSObject <NSSecureCoding, SBSStatusBarTapContext>
 {
-    int _styleOverride;
+    unsigned long long _styleOverride;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) int styleOverride; // @synthesize styleOverride=_styleOverride;
+@property(nonatomic) unsigned long long styleOverride; // @synthesize styleOverride=_styleOverride;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStyleOverride:(int)arg1;
+- (id)initWithStyleOverride:(unsigned long long)arg1;
 
 @end
 

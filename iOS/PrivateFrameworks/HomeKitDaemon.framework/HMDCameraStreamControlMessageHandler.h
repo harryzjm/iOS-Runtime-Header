@@ -55,14 +55,13 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)_resetStreamSession:(id)arg1;
-- (void)_sendStreamStoppedNotification:(id)arg1;
-- (void)streamControlManagerDidStopStreamForSessionID:(id)arg1 error:(id)arg2;
+- (void)_sendStreamStoppedRemoteNotificationWithError:(id)arg1;
+- (void)streamControlManager:(id)arg1 didStopStreamWithSessionID:(id)arg2 error:(id)arg3;
 - (void)streamControlManagerDidReconfigureStream:(id)arg1;
-- (void)streamControlManagerDidReceiveFirstFrame:(id)arg1 audioStreamSetting:(unsigned long long)arg2 aspectRatio:(id)arg3 slotIdentifier:(id)arg4;
-- (void)streamControlManagerDidStartStream:(id)arg1 slotIdentifier:(id)arg2;
-- (void)streamControlManagerDidSetupRemoteConnection:(id)arg1;
-- (void)streamControlManagerDidNegotiateStream:(id)arg1 selectedParameters:(id)arg2;
-- (void)streamControlManager:(id)arg1 didFail:(id)arg2;
+- (void)streamControlManager:(id)arg1 didReceiveFirstFrameWithAudioStreamSetting:(unsigned long long)arg2 aspectRatio:(id)arg3 slotIdentifier:(id)arg4;
+- (void)streamControlManager:(id)arg1 didStartStreamWithSlotIdentifier:(id)arg2;
+- (void)streamControlManagerDidSetUpRemoteConnection:(id)arg1;
+- (void)streamControlManager:(id)arg1 didNegotiateStreamWithSelectedParameters:(id)arg2;
 - (void)timerDidFire:(id)arg1;
 - (id)logIdentifier;
 - (_Bool)_shouldStopStreamSessionForProcessInfo:(id)arg1;
@@ -90,7 +89,7 @@
 - (void)dealloc;
 - (void)configureWithMessageDispatcher:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6 residentMessageHandler:(id)arg7;
+- (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6;
 - (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 accessory:(id)arg3 streamManagementService:(id)arg4 profileUniqueIdentifier:(id)arg5 networkMonitor:(id)arg6 residentMessageHandler:(id)arg7 phoneCallObserver:(id)arg8 deviceCapabilities:(id)arg9 dataSource:(id)arg10;
 
 // Remaining properties

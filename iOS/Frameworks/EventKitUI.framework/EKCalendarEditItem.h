@@ -30,10 +30,10 @@ __attribute__((visibility("hidden")))
 - (void)layoutForWidth:(double)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
-- (double)footerHeightForSection;
-- (id)footerViewForSection;
+- (id)footerTitle;
 - (id)headerTitle;
 - (unsigned long long)numberOfSubitems;
+- (_Bool)configureWithCalendar:(id)arg1 store:(id)arg2;
 - (_Bool)configureWithCalendar:(id)arg1;
 - (void)reset;
 - (void)setCalendar:(id)arg1 store:(id)arg2;

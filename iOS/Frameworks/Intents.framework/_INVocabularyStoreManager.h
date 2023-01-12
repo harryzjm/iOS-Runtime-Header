@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSString, _INVocabularyValidator;
+@class NSString, _INVocabularyValidator;
 @protocol OS_dispatch_queue;
 
 @interface _INVocabularyStoreManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSBundle *_appBundle;
     _INVocabularyValidator *_validator;
     NSString *_appBundleID;
     NSString *_baseDirectoryPath;
@@ -41,7 +40,6 @@
 - (id)deleteIntentSlot:(id)arg1;
 - (id)deleteVocabularyStoreItemAt:(id)arg1;
 - (id)_validator;
-- (id)_appBundle;
 - (id)init;
 - (id)initWithBaseDirectory:(id)arg1 appBundleID:(id)arg2 appBundlePath:(id)arg3;
 - (id)_baseDirectoryPathForIntentSlot:(id)arg1;

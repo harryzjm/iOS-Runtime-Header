@@ -16,11 +16,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property shared_ptr_a172c490 This; // @synthesize This=_This;
+@property(retain) NSString *semanticConcept;
 @property(retain) NSString *description;
 @property(retain) NSString *type;
 @property(retain) NSString *name;
-- (shared_ptr_a172c490 *)getSharedPtr;
-- (id)initWithSharedPtr:(shared_ptr_a172c490 *)arg1;
+- (void *)getSharedPtr;
+- (id)initWithSharedPtr:(void *)arg1;
 - (id)init;
 
 @end

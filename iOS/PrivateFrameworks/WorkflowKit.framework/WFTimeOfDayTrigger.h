@@ -23,6 +23,8 @@
 + (_Bool)supportsSecureCoding;
 + (id)dateFormatter;
 + (_Bool)isAllowedToRunAutomatically;
++ (long long)triggerBacking;
++ (id)displayGlyphName;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 - (void).cxx_destruct;

@@ -19,6 +19,7 @@
 - (struct CGPoint)presenter:(id <BNPresenting>)arg1 gestureRecognizer:(UIGestureRecognizer *)arg2 locationForEvent:(UIEvent *)arg3 inView:(UIView *)arg4;
 - (struct CGPoint)presenter:(id <BNPresenting>)arg1 gestureRecognizer:(UIGestureRecognizer *)arg2 locationForTouch:(UITouch *)arg3 inView:(UIView *)arg4;
 - (UIPanGestureRecognizer *)panGestureRecognizerForPresenter:(id <BNPresenting>)arg1;
+- (void)presenter:(id <BNPresenting>)arg1 presentable:(id <BNPresentable>)arg2 willTransitionToSize:(struct CGSize)arg3 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg4;
 - (void)presenter:(id <BNPresenting>)arg1 willDismissPresentable:(id <BNPresentable>)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3 userInfo:(NSDictionary *)arg4;
 - (void)presenter:(id <BNPresenting>)arg1 willPresentPresentable:(id <BNPresentable>)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3 userInfo:(NSDictionary *)arg4;
 - (void)presenter:(id <BNPresenting>)arg1 willTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3;

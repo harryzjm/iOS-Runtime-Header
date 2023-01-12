@@ -13,21 +13,24 @@
 
 @interface TSTCellSpec : NSObject <TSTCellDiffing, TSSPropertyCommandSerializing>
 {
+    unsigned int _interactionTypeFromTheFuture;
 }
 
++ (id)displayNameForInteractionType:(unsigned int)arg1;
 + (_Bool)isShimControlFormatType:(unsigned int)arg1;
 + (unsigned int)shimControlFormatTypeForInteractionType:(unsigned int)arg1;
 + (unsigned int)interactionTypeForShimControlFormatType:(unsigned int)arg1;
 + (id)cellSpecFromTSKFormat:(id)arg1;
-+ (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)cellDiffProperties;
 + (_Bool)interactionTypeIsControl:(unsigned int)arg1;
 + (id)defaultCellSpec;
+@property(nonatomic) unsigned int interactionTypeFromTheFuture; // @synthesize interactionTypeFromTheFuture=_interactionTypeFromTheFuture;
 - (_Bool)validateFormatAndValue:(id)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (void)saveToArchive:(struct CellSpecArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)propertiesMatchingThoseInMap:(id)arg1;

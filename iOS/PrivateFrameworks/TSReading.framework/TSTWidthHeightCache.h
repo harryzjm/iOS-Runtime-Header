@@ -8,10 +8,10 @@
 
 @interface TSTWidthHeightCache : NSObject
 {
-    struct vector<TSTWidthHeightCache_Private::WHCCol, std::__1::allocator<TSTWidthHeightCache_Private::WHCCol>> mFittingColumnWidth;
-    struct vector<TSTWidthHeightCache_Private::WHCRow, std::__1::allocator<TSTWidthHeightCache_Private::WHCRow>> mFittingRowHeight;
-    vector_b67dfe3a mModelColumnWidth;
-    vector_b67dfe3a mModelRowHeight;
+    struct vector<TSTWidthHeightCache_Private::WHCCol, std::allocator<TSTWidthHeightCache_Private::WHCCol>> mFittingColumnWidth;
+    struct vector<TSTWidthHeightCache_Private::WHCRow, std::allocator<TSTWidthHeightCache_Private::WHCRow>> mFittingRowHeight;
+    vector_0e047154 mModelColumnWidth;
+    vector_0e047154 mModelRowHeight;
     unsigned short mMaxRow;
     unsigned char mMaxCol;
     struct _opaque_pthread_rwlock_t mLock;

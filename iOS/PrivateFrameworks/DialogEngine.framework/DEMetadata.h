@@ -8,14 +8,14 @@
 
 @interface DEMetadata : NSObject
 {
-    const struct ObjectInput *_Obj;
+    const void *_Obj;
 }
 
 + (id)schemaInput:(id)arg1 typeName:(id)arg2 inputName:(id)arg3;
-@property const struct ObjectInput *Obj; // @synthesize Obj=_Obj;
+@property const void *Obj; // @synthesize Obj=_Obj;
 - (id)sampleValues:(id)arg1 locale:(id)arg2;
 - (id)sampleValues:(id)arg1;
-- (id)initWithObj:(const struct ObjectInput *)arg1;
+- (id)initWithObj:(const void *)arg1;
 - (id)init;
 
 @end

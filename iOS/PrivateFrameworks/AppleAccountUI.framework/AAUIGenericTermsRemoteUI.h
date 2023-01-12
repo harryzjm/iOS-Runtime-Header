@@ -23,6 +23,7 @@
     NSSet *_termsEntries;
     _Bool _isModal;
     _Bool _isPreferringPassword;
+    _Bool _isPresentingGenericTermsUIModally;
     _Bool _didRenewCredentials;
     id <AAUIGenericTermsRemoteUIDelegate> _delegate;
     UIViewController *_originatingViewController;

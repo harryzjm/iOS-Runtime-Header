@@ -6,7 +6,7 @@
 
 #import <HealthUI/HKAudioExposureDevicesDataSourceObserver-Protocol.h>
 
-@class HKAudioExposureDevicesDataSource, NSMutableArray, NSNumber, NSString;
+@class HKAudioExposureDevicesDataSource, HKChartSummaryTrendModel, NSMutableArray, NSNumber, NSString;
 
 @interface HKOverlayRoomAudioViewController <HKAudioExposureDevicesDataSourceObserver>
 {
@@ -15,9 +15,11 @@
     long long _preferredOverlay;
     NSMutableArray *_contextDelegates;
     HKAudioExposureDevicesDataSource *_audioExposureDevicesDataSource;
+    HKChartSummaryTrendModel *_trendModel;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HKChartSummaryTrendModel *trendModel; // @synthesize trendModel=_trendModel;
 @property(retain, nonatomic) HKAudioExposureDevicesDataSource *audioExposureDevicesDataSource; // @synthesize audioExposureDevicesDataSource=_audioExposureDevicesDataSource;
 @property(retain, nonatomic) NSMutableArray *contextDelegates; // @synthesize contextDelegates=_contextDelegates;
 @property(readonly, nonatomic) long long preferredOverlay; // @synthesize preferredOverlay=_preferredOverlay;
@@ -32,6 +34,7 @@
 - (void)_setupAudioExposureDataSourceIfNeeded;
 - (_Bool)_isAudioExposureDevicesSupported;
 - (void)audioExposureDataSourceIsReady:(id)arg1;
+- (id)createChartOverlayViewController;
 - (_Bool)_isEnvironmentalAudioExposureRoom;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
 - (id)initialSelectedContextForMode:(long long)arg1;
@@ -42,8 +45,8 @@
 - (id)showAllFiltersButtonTitle;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (void)viewDidLoad;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5 audioExposureDeviceDataSource:(id)arg6;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5 trendModel:(id)arg6;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5 audioExposureDeviceDataSource:(id)arg6 trendModel:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

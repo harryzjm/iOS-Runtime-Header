@@ -15,5 +15,6 @@
 - (void)_nc_setSubviewHasDeferredActions:(_Bool)arg1;
 - (_Bool)_nc_subviewHasDeferredActions;
 - (void)_nc_setHasDeferredActions:(_Bool)arg1;
+@property(nonatomic, getter=nc_isPlatterSubordinateIconShadowEnabled, setter=nc_setPlatterSubordinateIconShadowEnabled:) _Bool nc_platterSubordinateIconShadowEnabled;
 @end
 

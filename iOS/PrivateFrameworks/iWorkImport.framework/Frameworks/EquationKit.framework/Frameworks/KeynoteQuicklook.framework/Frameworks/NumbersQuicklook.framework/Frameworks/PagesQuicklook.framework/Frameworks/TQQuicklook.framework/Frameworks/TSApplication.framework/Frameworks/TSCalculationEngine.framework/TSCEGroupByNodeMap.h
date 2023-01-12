@@ -8,22 +8,23 @@
 
 @interface TSCEGroupByNodeMap : NSObject
 {
-    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, std::__1::unordered_map<TSU::UUIDData<TSP::UUIDData>, TSCEInternalCellRefSet, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, TSCEInternalCellRefSet>>>, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, std::__1::unordered_map<TSU::UUIDData<TSP::UUIDData>, TSCEInternalCellRefSet, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, TSCEInternalCellRefSet>>>>>> _cellRefsByGroupNodeByGroupBy;
-    struct unordered_map<TSCEInternalCellReference, std::__1::unordered_set<TSU::UUIDCoord<TSP::UUIDCoord>, std::__1::hash<TSUUuidCoord>, std::__1::equal_to<TSU::UUIDCoord<TSP::UUIDCoord>>, std::__1::allocator<TSU::UUIDCoord<TSP::UUIDCoord>>>, std::__1::hash<TSCEInternalCellReference>, std::__1::equal_to<TSCEInternalCellReference>, std::__1::allocator<std::__1::pair<const TSCEInternalCellReference, std::__1::unordered_set<TSU::UUIDCoord<TSP::UUIDCoord>, std::__1::hash<TSUUuidCoord>, std::__1::equal_to<TSU::UUIDCoord<TSP::UUIDCoord>>, std::__1::allocator<TSU::UUIDCoord<TSP::UUIDCoord>>>>>> _groupNodesByCellRef;
+    struct unordered_map<TSKUIDStruct, std::unordered_map<TSKUIDStruct, TSCEInternalCellRefSet>, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, std::unordered_map<TSKUIDStruct, TSCEInternalCellRefSet>>>> _cellRefsByGroupNodeByGroupBy;
+    struct unordered_map<TSCEInternalCellReference, std::unordered_set<TSKUIDStructCoord>, std::hash<TSCEInternalCellReference>, std::equal_to<TSCEInternalCellReference>, std::allocator<std::pair<const TSCEInternalCellReference, std::unordered_set<TSKUIDStructCoord>>>> _groupNodesByCellRef;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)encodeToArchive:(struct GroupByNodeMapArchive *)arg1;
-- (id)initFromArchive:(const struct GroupByNodeMapArchive *)arg1;
-- (void)getCellRefs:(struct TSCEReferenceSet *)arg1 inGroupBys:(const vector_4dc5f307 *)arg2;
-- (void)getCellRefs:(struct TSCEReferenceSet *)arg1 inGroupBy:(const UUIDData_5fbc143e *)arg2;
-- (void)getCellRefs:(struct TSCEReferenceSet *)arg1 forGroupRootInGroupBy:(const UUIDData_5fbc143e *)arg2;
-- (_Bool)getCellRefs:(struct TSCEReferenceSet *)arg1 referringToGroupNodes:(const vector_4dc5f307 *)arg2 inGroupBy:(const UUIDData_5fbc143e *)arg3;
+- (void)upgradeGroupByUid:(const struct TSKUIDStruct *)arg1 toUid:(const struct TSKUIDStruct *)arg2;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
+- (void)getCellRefs:(void *)arg1 inGroupBys:(const void *)arg2;
+- (void)getCellRefs:(void *)arg1 inGroupBy:(const struct TSKUIDStruct *)arg2;
+- (void)getCellRefs:(void *)arg1 forGroupRootInGroupBy:(const struct TSKUIDStruct *)arg2;
+- (_Bool)getCellRefs:(void *)arg1 referringToGroupNodes:(const void *)arg2 inGroupBy:(const struct TSKUIDStruct *)arg3;
 - (void)removeAllCellRefsInOwner:(unsigned short)arg1;
 - (void)removeCellRef:(const struct TSCEInternalCellReference *)arg1;
-- (void)removeCellRef:(const struct TSCEInternalCellReference *)arg1 usingCategoryRef:(const struct TSCECategoryRef *)arg2;
-- (void)addCellRef:(const struct TSCEInternalCellReference *)arg1 usingCategoryRef:(const struct TSCECategoryRef *)arg2;
+- (void)removeCellRef:(const struct TSCEInternalCellReference *)arg1 usingCategoryRef:(id)arg2;
+- (void)addCellRef:(const struct TSCEInternalCellReference *)arg1 usingCategoryRef:(id)arg2;
 - (id)description;
 
 @end

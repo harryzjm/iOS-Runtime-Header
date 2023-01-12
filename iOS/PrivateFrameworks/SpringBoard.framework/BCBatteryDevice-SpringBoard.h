@@ -7,6 +7,7 @@
 #import <BatteryCenter/BCBatteryDevice.h>
 
 @interface BCBatteryDevice (SpringBoard)
++ (id)localizedBatteryDetailTextForBatteryLevel:(double)arg1;
 - (_Bool)sb_supportsDetailedBatteryMetrics;
 @end
 

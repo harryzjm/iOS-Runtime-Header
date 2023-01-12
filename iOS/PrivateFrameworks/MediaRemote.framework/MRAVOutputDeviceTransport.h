@@ -4,30 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/MRAVOutputStreamDelegate-Protocol.h>
-
-@class AVOutputDevice, MRAVOutputDeviceInputStream, MRAVOutputDeviceOutputStream, NSError, NSObject, NSString, _MRDeviceInfoMessageProtobuf;
+@class AVOutputDevice, MRAirPlayTransportConnection, NSError, NSObject, NSString, _MRDeviceInfoMessageProtobuf;
 @protocol OS_dispatch_queue;
 
-@interface MRAVOutputDeviceTransport <MRAVOutputStreamDelegate>
+@interface MRAVOutputDeviceTransport
 {
-    unsigned long long _state;
     NSObject<OS_dispatch_queue> *_workerQueue;
     _MRDeviceInfoMessageProtobuf *_deviceInfo;
     NSError *_error;
-    MRAVOutputDeviceInputStream *_inputStream;
-    MRAVOutputDeviceOutputStream *_outputStream;
+    MRAirPlayTransportConnection *_connection;
     _Bool _useSystemAuthenticationPrompt;
+    NSString *_outputDeviceUID;
     AVOutputDevice *_avOutputDevice;
 }
 
++ (id)_createConnectionWith:(id)arg1 connectionType:(long long)arg2 shouldUseSystemAuthenticationPrompt:(_Bool)arg3 userInfo:(id)arg4;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) AVOutputDevice *avOutputDevice; // @synthesize avOutputDevice=_avOutputDevice;
-- (void)outputStream:(id)arg1 didCloseCommunicationChannel:(id)arg2;
-- (void)_onQueue_resetStreams;
 - (_Bool)requiresCustomPairing;
 - (void)reset;
-- (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
+- (id)createConnectionWithUserInfo:(id)arg1;
 - (void)setError:(id)arg1;
 - (id)error;
 - (void)setShouldUseSystemAuthenticationPrompt:(_Bool)arg1;
@@ -37,13 +32,9 @@
 - (id)name;
 - (id)uid;
 - (id)deviceInfo;
-@property(readonly, copy) NSString *description;
-- (id)initWithAVOutputDevice:(id)arg1 connectionType:(long long)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)debugDescription;
+- (id)description;
+- (id)initWithOutputDevice:(id)arg1 connectionType:(long long)arg2;
 
 @end
 

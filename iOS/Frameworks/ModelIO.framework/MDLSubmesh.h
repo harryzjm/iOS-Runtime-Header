@@ -9,28 +9,29 @@
 #import <ModelIO/MDLNamed-Protocol.h>
 
 @class MDLMaterial, MDLSubmeshTopology, NSArray, NSString;
-@protocol MDLMeshBuffer;
+@protocol MDLMeshBuffer, MDLMeshBufferAllocator;
 
 @interface MDLSubmesh : NSObject <MDLNamed>
 {
     MDLMaterial *_material;
-    id <MDLMeshBuffer> _indexBuffer;
     unsigned long long _indexCount;
-    unsigned long long _indexType;
-    long long _geometryType;
-    MDLSubmeshTopology *_topology;
+    id <MDLMeshBuffer> _indexBuffer;
     NSString *_name;
+    long long _geometryType;
+    unsigned long long _indexType;
+    MDLSubmeshTopology *_topology;
+    id <MDLMeshBufferAllocator> _allocator;
     NSArray *_faceIndexing;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *faceIndexing; // @synthesize faceIndexing=_faceIndexing;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) MDLSubmeshTopology *topology; // @synthesize topology=_topology;
-@property(readonly, nonatomic) long long geometryType; // @synthesize geometryType=_geometryType;
 @property(readonly, nonatomic) unsigned long long indexType; // @synthesize indexType=_indexType;
-@property(readonly, nonatomic) unsigned long long indexCount; // @synthesize indexCount=_indexCount;
+@property(readonly, nonatomic) long long geometryType; // @synthesize geometryType=_geometryType;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, retain, nonatomic) id <MDLMeshBuffer> indexBuffer; // @synthesize indexBuffer=_indexBuffer;
+@property(readonly, nonatomic) unsigned long long indexCount; // @synthesize indexCount=_indexCount;
 @property(retain, nonatomic) MDLMaterial *material; // @synthesize material=_material;
 - (struct MDLAABB)boundingBoxForMesh:(id)arg1;
 - (void)debugPrintToFile:(struct __sFILE *)arg1;

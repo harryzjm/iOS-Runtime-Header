@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     double _deflectionAmount;
     UIFont *_backgroundFont;
     UIFont *_foregroundFont;
+    UIView *_emphasisBackgroundView;
     NSArray *_entries;
     long long _focusProminence;
     long long _style;
@@ -39,11 +40,15 @@ __attribute__((visibility("hidden")))
 - (id)_backgroundFont;
 - (id)_foregroundFont;
 - (void)_determinePreferredSizes;
+- (void)_updateEmphasisBackgroundColor;
 - (void)_updateColors;
 - (void)_createLabels;
 - (void)_showReducedFocusProminence;
 - (void)_showNormalFocusProminence;
 - (void)layoutSubviews;
+- (void)destroyEmphasisBackgroundIfNecessary;
+- (void)toggleEmphasisBackgroundVisible:(_Bool)arg1;
+- (void)createEmphasisBackgroundIfNecessary;
 - (void)resetDeflection:(_Bool)arg1;
 - (void)setIndexOfDeflectedEntry:(long long)arg1 amount:(double)arg2;
 - (id)_lowerEntryForOffset:(double)arg1;

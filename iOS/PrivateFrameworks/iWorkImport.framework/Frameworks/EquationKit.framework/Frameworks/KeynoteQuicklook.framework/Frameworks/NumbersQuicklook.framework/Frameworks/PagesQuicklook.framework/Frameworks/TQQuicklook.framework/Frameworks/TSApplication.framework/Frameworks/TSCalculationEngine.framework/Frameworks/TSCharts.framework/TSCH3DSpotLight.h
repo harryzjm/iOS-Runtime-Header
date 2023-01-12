@@ -18,17 +18,17 @@
 }
 
 + (Class)effectClass;
-+ (id)instanceWithArchive:(const struct Chart3DLightArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) float dropOff; // @synthesize dropOff=_dropOff;
 @property(nonatomic) float cutOff; // @synthesize cutOff=_cutOff;
 @property(nonatomic) tvec3_17f03ce0 direction;
 @property(nonatomic) tvec3_17f03ce0 position;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)init;
-- (void)saveToArchive:(struct Chart3DLightArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DLightArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

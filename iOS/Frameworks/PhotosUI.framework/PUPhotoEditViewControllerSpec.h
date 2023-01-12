@@ -9,6 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property(readonly, nonatomic) _Bool shouldAllowApertureButtonExpansion;
+@property(readonly, nonatomic) _Bool shouldUseCompactToolbarSpacing;
 @property(readonly, nonatomic) _Bool shouldAnchorLightingAgainstToolbar;
 @property(readonly, nonatomic) _Bool shouldDisplayCompactToolbar;
 @property(readonly, nonatomic) _Bool shouldDisplayExtensionButtonInMainToolbar;

@@ -43,6 +43,7 @@
 - (void)_persistentStateQueue_beginSpeculativeFailureCharge;
 - (_Bool)_isDeviceWipePreferenceEnabled;
 - (void)_evaluatePendingWipe;
+@property(readonly, nonatomic, getter=isUserRequestedEraseEnabled) _Bool userRequestedEraseEnabled;
 @property(readonly, nonatomic) double timeUntilUnblockedSinceReferenceDate;
 @property(readonly, nonatomic, getter=isTemporarilyBlocked) _Bool temporarilyBlocked;
 @property(readonly, nonatomic, getter=isPermanentlyBlocked) _Bool permanentlyBlocked;

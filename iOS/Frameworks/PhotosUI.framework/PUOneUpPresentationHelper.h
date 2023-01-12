@@ -14,7 +14,7 @@
 #import <PhotosUI/PUTilingViewTileUseDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSSet, NSString, PUBrowsingSession, PUChangeDirectionValueFilter, PUOneUpViewController, PUPinchedTileTracker, PUTilingView, PXPhotosDataSource, UITapGestureRecognizer, UIViewController;
+@class NSSet, NSString, PUBrowsingSession, PUChangeDirectionValueFilter, PUOneUpViewController, PUPinchedTileTracker, PUTilingView, PXAssetReference, PXPhotosDataSource, UITapGestureRecognizer, UIViewController;
 @protocol PUOneUpPresentationHelperAssetDisplayDelegate, PUOneUpPresentationHelperDelegate;
 
 @interface PUOneUpPresentationHelper : NSObject <PUPhotosPreviewPresentationControllerDelegate, UIGestureRecognizerDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate, PUPinchedTileTrackerDelegate, PUTilingViewControllerTransitionEndPoint>
@@ -36,8 +36,10 @@
         _Bool respondsToEnableFreezeLayoutOnOrientationChange;
         _Bool respondsToAdditionalOptions;
         _Bool respondsToWantsShowInLibraryButton;
+        _Bool respondsToSpotlightTextsToHighlight;
     } _delegateFlags;
     struct {
+        _Bool respondsToRegionOfInterestForAssetReference;
         _Bool respondsToCurrentImageForAssetReference;
         _Bool respondsToShouldHideAssetReferences;
         _Bool respondsToScrollAssetReferenceToVisible;
@@ -46,6 +48,7 @@
     struct {
         _Bool presentationInfo;
     } _needsUpdateFlags;
+    _Bool _isPresentingViewControllerAppearingWithIdleState;
     _Bool _cachesScrubberView;
     _Bool __isEndingPresentation;
     _Bool __shouldPauseLibraryChanges;
@@ -133,7 +136,7 @@
 - (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;
 - (void)beginUsingBlackTheme;
 - (id)previewViewControllerForItemAtIndexPath:(id)arg1 allowingActions:(_Bool)arg2;
-- (id)_createOneUpViewControllerWithBrowsingSession:(id)arg1 options:(unsigned long long)arg2;
+- (id)_createOneUpViewControllerWithBrowsingSession:(id)arg1 options:(unsigned long long)arg2 activity:(unsigned long long)arg3;
 - (void)_didFinishTransitioningToOneUp;
 - (void)_disappearingTilingView:(id)arg1 animationCompleted:(_Bool)arg2;
 - (void)_cleanUpAfterTilingViewTransitionAnimated:(_Bool)arg1 transitionAborted:(_Bool)arg2;
@@ -162,16 +165,18 @@
 - (_Bool)dismissOneUpViewControllerForced:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)_prepareDismissalForced:(_Bool)arg1;
 - (_Bool)canDismissOneUpViewController;
-- (void)presentOneUpViewControllerFromAssetAtIndexPath:(id)arg1 animated:(_Bool)arg2 interactiveMode:(long long)arg3;
+- (void)presentOneUpViewControllerFromAssetAtIndexPath:(id)arg1 animated:(_Bool)arg2 interactiveMode:(long long)arg3 activity:(unsigned long long)arg4;
 - (void)presentOneUpViewControllerAnimated:(_Bool)arg1 interactiveMode:(long long)arg2;
+- (void)presentOneUpViewControllerAnimated:(_Bool)arg1 interactiveMode:(long long)arg2 activity:(unsigned long long)arg3;
 - (struct CGAffineTransform)_tilingViewTransitionTransform;
 - (_Bool)canPresentOneUpViewControllerAnimated:(_Bool)arg1;
 - (void)_configureNavigationController:(id)arg1;
-- (void)_presentOneUpViewController:(id)arg1 animated:(_Bool)arg2 interactiveMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_presentOneUpViewController:(id)arg1 animated:(_Bool)arg2 interactiveMode:(long long)arg3 activity:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_updatePresentationInfoIfNeeded;
 - (void)_invalidatePresentationInfo;
 @property(readonly, nonatomic) long long transitionType; // @synthesize transitionType=_transitionType;
 @property(readonly, nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property(readonly, nonatomic) PXAssetReference *lastViewedAssetReference;
 @property(readonly, nonatomic) _Bool isOneUpPresented;
 - (id)_createBrowsingSession;
 - (id)browsingSessionCreateIfNeeded:(_Bool)arg1;

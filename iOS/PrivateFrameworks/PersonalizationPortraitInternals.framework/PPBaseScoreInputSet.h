@@ -15,7 +15,6 @@
     _PASLock *_objectMap;
 }
 
-+ (CDUnknownBlockType)coreMLModelPathBlock;
 - (void).cxx_destruct;
 - (unsigned long long)indexForObjectScoreName:(id)arg1;
 - (id)nameForObjectScoreIndex:(unsigned long long)arg1;

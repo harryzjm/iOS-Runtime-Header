@@ -38,7 +38,7 @@
 - (void)raiseGestureRecognized:(id)arg1;
 - (_Bool)wantsReplyButton;
 - (void)updateTyping;
-- (_Bool)getContainerWidth:(double *)arg1 offset:(double *)arg2;
+- (_Bool)messageEntryViewWidth:(double *)arg1 andOffset:(double *)arg2;
 - (_Bool)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryViewDidTakeFocus:(id)arg1;
 - (void)messageEntryViewHandwritingButtonHit:(id)arg1;
@@ -52,10 +52,11 @@
 - (void)messageEntryViewRaiseGestureAutoSend:(id)arg1;
 - (void)messageEntryViewSendButtonHitWhileDisabled:(id)arg1;
 - (void)messageEntryViewSendButtonHit:(id)arg1;
+- (void)messageEntryView:(id)arg1 didInsertPluginPayload:(id)arg2;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
 - (_Bool)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
 - (void)messageEntryViewDidEndEditing:(id)arg1;
-- (void)messageEntryViewDidBeginEditing:(id)arg1;
+- (void)messageEntryViewDidBeginEditingNotAlreadyActive:(id)arg1;
 - (_Bool)messageEntryViewShouldBeginEditing:(id)arg1;
 - (void)messageEntryViewRecordingDidChange:(id)arg1;
 - (void)messageEntryViewDidChange:(id)arg1;
@@ -87,7 +88,6 @@
 - (id)inputAccessoryViewController;
 - (_Bool)inputAccessoryViewControllerEnabled;
 - (_Bool)shouldShowEntryView;
-- (_Bool)_shouldDisplayTextEntry;
 - (void)_setConversationDeferredSetup;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 longPressedForItemWithIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
@@ -102,6 +102,7 @@
 - (id)launchURLForInputMode:(id)arg1;
 - (double)balloonMaxWidth;
 - (void)dealloc;
+- (void)backgroundViewTapGestureRecognized:(id)arg1;
 - (id)initWithConversation:(id)arg1;
 - (void)handlePayload:(id)arg1 withPayloadId:(id)arg2;
 - (void)unregisterForTextInputPayloadHandling;

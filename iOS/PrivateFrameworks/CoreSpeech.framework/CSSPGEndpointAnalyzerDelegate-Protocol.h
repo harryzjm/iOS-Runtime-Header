@@ -12,6 +12,6 @@
 
 @optional
 - (void)spgEndpointAnalyzerDidDetectEndpoint:(CSSPGEndpointAnalyzer *)arg1;
-- (void)spgEndpointAnalyzer:(CSSPGEndpointAnalyzer *)arg1 hasSilenceScoreEstimate:(double)arg2;
+- (void)spgEndpointAnalyzer:(CSSPGEndpointAnalyzer *)arg1 hasSilenceScoreEstimate:(double)arg2 clientProcessedAudioTimeMS:(float)arg3;
 @end
 

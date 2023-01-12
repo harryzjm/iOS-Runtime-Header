@@ -22,7 +22,6 @@
 @property(readonly, nonatomic) NSString *operationGroupID; // @synthesize operationGroupID=_operationGroupID;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithOperationGroup:(id)arg1;
 
 @end
 

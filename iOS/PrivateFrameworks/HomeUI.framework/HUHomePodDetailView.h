@@ -30,7 +30,7 @@
 @property(copy, nonatomic) id <HFStringGenerator> unitName; // @dynamic unitName;
 - (void)_updateImagesForRole;
 - (void)_setupConstraints;
-- (id)initWithRole:(unsigned long long)arg1;
+- (id)initWithRole:(unsigned long long)arg1 variant:(unsigned long long)arg2;
 
 @end
 

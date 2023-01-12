@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveChangesRequest : PBRequest <NSCopying>
 {
     unsigned int _maxChangedZones;

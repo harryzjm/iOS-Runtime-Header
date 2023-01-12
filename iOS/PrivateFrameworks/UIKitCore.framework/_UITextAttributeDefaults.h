@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_unspecifiedDefaults;
 + (id)_defaultsForUserInterfaceIdiom:(long long)arg1;
-+ (id)_fontSizesForUserInterfaceIdiom:(long long)arg1;
++ (void)_getFontSizesForUserInterfaceIdiom:(long long)arg1 labelFontSize:(double *)arg2 buttonFontSize:(double *)arg3 systemFontSize:(double *)arg4 smallSystemFontSize:(double *)arg5;
 - (void).cxx_destruct;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

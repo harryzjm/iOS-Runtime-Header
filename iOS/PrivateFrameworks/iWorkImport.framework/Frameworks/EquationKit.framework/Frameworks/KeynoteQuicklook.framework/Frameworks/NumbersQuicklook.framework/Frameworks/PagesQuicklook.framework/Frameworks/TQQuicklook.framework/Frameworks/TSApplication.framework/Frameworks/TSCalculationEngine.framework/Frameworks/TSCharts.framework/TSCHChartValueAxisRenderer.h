@@ -6,7 +6,7 @@
 
 @interface TSCHChartValueAxisRenderer
 {
-    unsigned long long mEditingLabelIndex;
+    unsigned long long _editingLabelIndex;
 }
 
 - (void)drawIntoLayer:(int)arg1 inContext:(struct CGContext *)arg2 visible:(struct CGRect)arg3;

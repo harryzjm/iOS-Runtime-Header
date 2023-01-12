@@ -8,7 +8,6 @@
 
 @class CKRecordZone, CKRecordZoneID, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCCreateZoneAndSubscribeOperation <BRCOperationSubclass>
 {
     CKRecordZoneID *_zoneID;

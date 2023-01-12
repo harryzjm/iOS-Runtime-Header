@@ -6,11 +6,27 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAttributionFooterCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFProductCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWebCardSection, SFWorldMapCardSection;
+@class NSData, NSDictionary, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAttributionFooterCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFCollectionCardSection, SFColorBarCardSection, SFCombinedCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFindMyCardSection, SFFlightCardSection, SFGridCardSection, SFHeroCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFInfoCardSection, SFKeyValueDataCardSection, SFLinkPresentationCardSection, SFListenToCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFMiniCardSection, SFNewsCardSection, SFNowPlayingCardSection, SFPersonHeaderCardSection, SFProductCardSection, SFResponseWrapperCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFSplitCardSection, SFStockChartCardSection, SFStrokeAnimationCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWatchNowCardSection, SFWebCardSection, SFWorldMapCardSection;
 
 @protocol SFCardSectionValue <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(retain, nonatomic) SFStrokeAnimationCardSection *strokeAnimationCardSection;
+@property(retain, nonatomic) SFWatchNowCardSection *watchNowCardSection;
+@property(retain, nonatomic) SFListenToCardSection *listenToCardSection;
+@property(retain, nonatomic) SFResponseWrapperCardSection *responseWrapperCardSection;
+@property(retain, nonatomic) SFCombinedCardSection *combinedCardSection;
+@property(retain, nonatomic) SFCollectionCardSection *collectionCardSection;
+@property(retain, nonatomic) SFInfoCardSection *infoCardSection;
+@property(retain, nonatomic) SFMiniCardSection *miniCardSection;
+@property(retain, nonatomic) SFNewsCardSection *newsCardSection;
+@property(retain, nonatomic) SFHeroCardSection *heroCardSection;
+@property(retain, nonatomic) SFFindMyCardSection *findMyCardSection;
+@property(retain, nonatomic) SFLinkPresentationCardSection *linkPresentationCardSection;
+@property(retain, nonatomic) SFSplitCardSection *splitCardSection;
+@property(retain, nonatomic) SFColorBarCardSection *colorBarCardSection;
+@property(retain, nonatomic) SFPersonHeaderCardSection *personHeaderCardSection;
+@property(retain, nonatomic) SFGridCardSection *gridCardSection;
 @property(retain, nonatomic) SFAttributionFooterCardSection *attributionFooterCardSection;
 @property(retain, nonatomic) SFWorldMapCardSection *worldMapCardSection;
 @property(retain, nonatomic) SFCompactRowCardSection *compactRowCardSection;

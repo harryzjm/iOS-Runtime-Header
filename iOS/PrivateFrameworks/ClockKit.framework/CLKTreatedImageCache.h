@@ -20,11 +20,12 @@
 - (void).cxx_destruct;
 - (id)_imageForKey:(id)arg1;
 - (void)_queue_pruneCacheIfNecessary;
-- (id)imageForRawImage:(id)arg1 maxSize:(struct CGSize)arg2 cornerRadius:(double)arg3;
-- (id)imageForRawImage:(id)arg1 maxSize:(struct CGSize)arg2 maskMode:(long long)arg3;
-- (id)imageForRawImage:(id)arg1 scale:(double)arg2 cornerRadius:(double)arg3;
-- (id)imageForRawImage:(id)arg1 scale:(double)arg2 maskMode:(long long)arg3;
+- (id)imageForRawImage:(id)arg1 maxSDKSize:(struct CGSize)arg2 maxDeviceSize:(struct CGSize)arg3 cornerRadius:(double)arg4;
+- (id)imageForRawImage:(id)arg1 maxSDKSize:(struct CGSize)arg2 maxDeviceSize:(struct CGSize)arg3 maskMode:(long long)arg4;
+- (id)imageForRawImage:(id)arg1 scale:(double)arg2 sdkDeviceScale:(double)arg3 cornerRadius:(double)arg4;
+- (id)imageForRawImage:(id)arg1 scale:(double)arg2 sdkDeviceScale:(double)arg3 maskMode:(long long)arg4;
 - (id)init;
+- (void)purgeCache;
 
 @end
 

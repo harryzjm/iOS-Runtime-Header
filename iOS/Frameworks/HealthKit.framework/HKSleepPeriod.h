@@ -6,36 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDateInterval, NSString;
+#import <HealthKit/HKRedactedDescription-Protocol.h>
+#import <HealthKit/NSCopying-Protocol.h>
+#import <HealthKit/NSSecureCoding-Protocol.h>
 
-@interface HKSleepPeriod : NSObject
+@class NSArray, NSDateInterval, NSString;
+
+@interface HKSleepPeriod : NSObject <HKRedactedDescription, NSSecureCoding, NSCopying>
 {
-    NSDate *_startDate;
-    NSDate *_endDate;
     NSDateInterval *_dateInterval;
-    long long _type;
-    double _duration;
-    double _inBedDuration;
-    double _asleepDuration;
     NSArray *_segments;
-    NSString *_timeZoneName;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)sleepPeriodWithDateInterval:(id)arg1 segments:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 @property(readonly, copy, nonatomic) NSArray *segments; // @synthesize segments=_segments;
-@property(readonly, nonatomic) double asleepDuration; // @synthesize asleepDuration=_asleepDuration;
-@property(readonly, nonatomic) double inBedDuration; // @synthesize inBedDuration=_inBedDuration;
-@property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
-@property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
-@property(readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property(readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-- (void)enumerateDateIntervalsForCategoryValue:(long long)arg1 intersectedWithDateInterval:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (id)segmentDateIntervalsForCategoryValue:(long long)arg1 intersectedWithDateInterval:(id)arg2;
-- (void)_setType:(long long)arg1;
-- (id)segmentsForCategory:(long long)arg1;
-- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 segments:(id)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool containsSegmentsWithAppleSleepTrackingData;
+- (double)durationForCategory:(long long)arg1 overlappingDateInterval:(id)arg2;
+@property(readonly, copy) NSString *hk_redactedDescription;
+- (id)description;
 
 @end
 

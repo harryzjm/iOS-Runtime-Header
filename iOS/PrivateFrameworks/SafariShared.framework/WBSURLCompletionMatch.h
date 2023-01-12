@@ -27,14 +27,18 @@
 @property(readonly, nonatomic) unsigned long long engagementDestination;
 @property(readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property(readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property(readonly, nonatomic) _Bool containsBookmark;
 @property(readonly, nonatomic) _Bool shouldPreload;
 @property(readonly, nonatomic, getter=isTopHit) _Bool topHit;
+- (float)topSitesScore;
+- (long long)visitCountScore;
 - (id)userVisibleURLString;
 - (id)title;
 - (id)originalURLString;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool matchLocationIsInURL;
 - (id)initWithMatchLocation:(long long)arg1 userInput:(id)arg2 forQueryID:(long long)arg3;
+@property(readonly, nonatomic) NSString *titlePrefix;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

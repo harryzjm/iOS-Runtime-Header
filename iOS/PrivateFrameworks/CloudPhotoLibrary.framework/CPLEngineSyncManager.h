@@ -17,6 +17,7 @@
 @interface CPLEngineSyncManager : NSObject <CPLAbstractObject, CPLEngineComponent, CPLEngineSyncTaskDelegate, CPLEngineForceSyncTaskDelegate>
 {
     id <CPLEngineStoreUserIdentifier> _transportUserIdentifier;
+    struct os_unfair_lock_s _transportUserIdentifierLock;
     CPLDerivativesFilter *_derivativesFilter;
     _Bool _setupIsDone;
     _Bool _shouldUpdateDisabledFeatures;
@@ -27,6 +28,7 @@
     NSObject<OS_dispatch_queue> *_lock;
     NSError *_lastError;
     CPLSyncStep *_currentStep;
+    id <CPLEngineTransportSetupTask> _forcedSetupTask;
     CPLEngineForceSyncTask *_currentForceSyncTask;
     CPLEngineForceSyncTask *_pendingForceSyncTask;
     unsigned long long _shouldRestartSessionFromState;
@@ -43,7 +45,7 @@
 }
 
 + (id)platformImplementationProtocol;
-+ (id)stepOrSyncTaskForState:(unsigned long long)arg1 syncManager:(id)arg2 session:(id)arg3;
++ (id)stepForState:(unsigned long long)arg1 syncManager:(id)arg2 session:(id)arg3;
 + (unsigned int)qualityOfServiceForForcedTasks;
 + (unsigned int)qualityOfServiceForSyncSessions;
 + (id)shortDescriptionForState:(unsigned long long)arg1;
@@ -53,6 +55,9 @@
 @property(nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+- (void)addDropDerivativesRecipe:(id)arg1 writeToUserDefaults:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)_dropDerivativeRulesFromUserDefaults;
+- (void)_addRuleToUserDefaults:(id)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)componentName;
@@ -67,8 +72,10 @@
 - (_Bool)_didFinishSetupTaskWithError:(id)arg1 shouldStop:(_Bool *)arg2;
 - (void)_cancelAllTasksForSetup;
 - (_Bool)_launchSetupTask;
+- (id)_setupTaskWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_descriptionForSetupTasks;
 - (void)_launchForceSyncTaskIfNecessary;
+- (void)_launchForceSetupTask;
 - (void)forceSyncTaskHasBeenCancelled:(id)arg1;
 - (void)forceSyncTaskHasBeenLaunched:(id)arg1;
 - (void)_forceSyncTaskDidFinishWithError:(id)arg1;
@@ -76,6 +83,7 @@
 - (_Bool)_checkForegroundAtLaunchForForceSyncTask;
 - (void)_reenableSchedulerForForceSyncTaskIfNecessary;
 - (void)_disableSchedulerForForceSyncTaskIfNecessary;
+- (void)configureDirectTransportTask:(id)arg1;
 - (_Bool)prepareAndLaunchSyncTaskUnlocked:(id)arg1;
 - (void)setBoostPriority:(_Bool)arg1;
 - (void)_overrideBudgetsIfNeeded;
@@ -83,6 +91,8 @@
 - (void)requestDisabledFeaturesUpdate;
 - (void)discardTransportUserIdentifier;
 - (void)resetTransportUserIdentifier;
+- (id)_transportUserIdentifier;
+- (void)_setTransportUserIdentifier:(id)arg1;
 - (void)cancelCurrentSyncSession;
 - (void)startSyncSession:(id)arg1 withMinimalPhase:(unsigned long long)arg2 rewind:(_Bool)arg3;
 - (void)_restartSyncSessionFromStateLocked:(unsigned long long)arg1 session:(id)arg2 cancelIfNecessary:(_Bool)arg3;

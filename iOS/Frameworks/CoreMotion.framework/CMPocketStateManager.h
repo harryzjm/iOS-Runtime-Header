@@ -14,13 +14,15 @@
     NSObject<OS_dispatch_source> *fQueryTimer;
     NSObject<OS_dispatch_queue> *fPrivateQueue;
     int fCachedState;
-    struct Dispatcher *fDispatcher;
+    struct unique_ptr<CLMotionNotifier::Dispatcher, std::default_delete<CLMotionNotifier::Dispatcher>> fDispatcher;
     double fMaxMonitorTime;
     NSMutableArray *fQueryBlocks;
     id <CMPocketStateDelegate> _delegate;
 }
 
 + (_Bool)isPocketStateAvailable;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) id <CMPocketStateDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)onPocketStateUpdated:(int)arg1;
 - (void)onNotification:(id)arg1;
@@ -31,6 +33,7 @@
 - (long long)translateInternalState:(int)arg1;
 - (void)_disableDispatcher;
 - (void)dealloc;
+- (void)_prepareDispatcher;
 - (id)init;
 
 @end

@@ -7,7 +7,7 @@
 #import <PhotosUICore/PHImportControllerObserver-Protocol.h>
 #import <PhotosUICore/PHImportSourceObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, PHImportController, PHImportSource;
+@class NSArray, NSMutableArray, NSString, PHImportController, PHImportSource;
 
 @interface PXImportSourcesManager <PHImportControllerObserver, PHImportSourceObserver>
 {
@@ -27,14 +27,21 @@
 - (void)importSource:(id)arg1 didUpdateAsset:(id)arg2 propertyMask:(unsigned short)arg3;
 - (void)importSource:(id)arg1 didRemoveAssets:(id)arg2;
 - (void)importSource:(id)arg1 didAddAssets:(id)arg2;
+- (void)importController:(id)arg1 failedToAddImportSource:(id)arg2 exceptions:(id)arg3;
 - (void)importController:(id)arg1 removedImportSource:(id)arg2;
 - (void)importController:(id)arg1 addedImportSource:(id)arg2;
-- (id)updateImportSourceForURLs:(id)arg1;
+- (void)_updateImportURLSource:(id)arg1;
 @property(readonly, nonatomic) NSArray *importSources;
 - (void)_notifyObserversDidRemoveImportSource:(id)arg1;
 - (void)_notifyObserversDidUpdateImportSource:(id)arg1;
 - (void)_notifyObserversDidAddImportSource:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

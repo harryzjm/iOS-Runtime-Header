@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <HKSPUserDefaults> userDefaults; // @synthesize userDefaults=_userDefaults;
 - (_Bool)savePersistentState:(id)arg1 identifier:(id)arg2 error:(id *)arg3;
-- (id)loadPersistentStateForIdentifier:(id)arg1 error:(id *)arg2;
+- (id)loadPersistentStateForIdentifier:(id)arg1 allowedStates:(id)arg2 error:(id *)arg3;
 - (id)initWithUserDefaults:(id)arg1;
 
 @end

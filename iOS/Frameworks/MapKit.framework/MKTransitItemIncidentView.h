@@ -22,7 +22,6 @@
     _Bool _useCondensedWidthLayout;
     NSLayoutConstraint *_titleLabelToTopConstraint;
     NSLayoutConstraint *_bottomToLabelConstraint;
-    NSLayoutConstraint *_lastUpdatedToTitleBaselineConstraint;
     NSLayoutConstraint *_titleToLastUpdatedLabelConstraint;
     NSLayoutConstraint *_bottomToBackgroundConstraint;
     double _bottomToBackgroundOffset;
@@ -41,7 +40,7 @@
 - (void)dealloc;
 - (id)_nonBlockingImage;
 - (id)_blockingImage;
-@property(nonatomic) long long position;
+@property(nonatomic) long long cellPosition;
 - (void)_updateBottomConstraintWithOffset:(double)arg1;
 - (void)infoCardThemeChanged;
 - (void)_configureWithMessage:(id)arg1 referenceDate:(id)arg2 lastUpdated:(id)arg3 incidentIsBlocking:(_Bool)arg4 shouldShowImage:(_Bool)arg5 inSiri:(_Bool)arg6;

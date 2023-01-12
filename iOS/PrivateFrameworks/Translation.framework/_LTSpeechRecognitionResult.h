@@ -13,6 +13,7 @@
 @interface _LTSpeechRecognitionResult : NSObject <NSSecureCoding>
 {
     _Bool _final;
+    _Bool _stable;
     NSLocale *_locale;
     NSArray *_transcriptions;
     _LTSpeechRecognitionSausage *_bestRecognitionAlternatives;
@@ -28,6 +29,7 @@
 @property(retain, nonatomic) _LTSpeechRecognitionSausage *bestRecognitionAlternatives; // @synthesize bestRecognitionAlternatives=_bestRecognitionAlternatives;
 @property(retain, nonatomic) NSArray *transcriptions; // @synthesize transcriptions=_transcriptions;
 @property(copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(nonatomic, getter=isStable) _Bool stable; // @synthesize stable=_stable;
 @property(nonatomic, getter=isFinal) _Bool final; // @synthesize final=_final;
 - (id)bestTranscription;
 - (id)_transcriptionWithResult:(id)arg1 locale:(id)arg2;

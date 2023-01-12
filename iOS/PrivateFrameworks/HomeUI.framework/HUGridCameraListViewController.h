@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/HUCameraPlayerViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUCameraControllerDelegate-Protocol.h>
 #import <HomeUI/HUHomeKitObjectPresenting-Protocol.h>
 
-@class HFWallpaperSlice, HUGridCameraItemManager, HUGridLayoutOptions, HUWallpaperView, NSString;
+@class HFWallpaperSlice, HUCameraController, HUGridCameraItemManager, HUGridLayoutOptions, HUWallpaperView, NSString;
 
-@interface HUGridCameraListViewController <HUCameraPlayerViewControllerDelegate, HUHomeKitObjectPresenting>
+@interface HUGridCameraListViewController <HUCameraControllerDelegate, HUHomeKitObjectPresenting>
 {
     _Bool _useCustomDragAndDrop;
     HFWallpaperSlice *_darkModeBlurredWallpaperSlice;
+    HUCameraController *_cameraController;
 }
 
 + (double)requiredHeightWithLayoutOptions:(id)arg1 numberOfItems:(unsigned long long)arg2;
 + (unsigned long long)updateMode;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HUCameraController *cameraController; // @synthesize cameraController=_cameraController;
 @property(retain, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice; // @synthesize darkModeBlurredWallpaperSlice=_darkModeBlurredWallpaperSlice;
 - (void)setUseCustomDragAndDrop:(_Bool)arg1;
 - (_Bool)useCustomDragAndDrop;
@@ -45,8 +47,9 @@
 - (id)presentCameraItem:(id)arg1 forCameraClip:(id)arg2 animated:(_Bool)arg3;
 - (id)presentCameraItem:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 animated:(_Bool)arg4;
 @property(readonly, nonatomic) HUGridCameraItemManager *cameraItemManager;
-- (id)targetViewForDismissingCameraPlayerViewController:(id)arg1;
-- (id)detailsViewControllerForCameraPlayerViewController:(id)arg1;
+- (void)didDismissCameraController:(id)arg1 ForProfile:(id)arg2;
+- (id)targetViewForDismissingCameraProfile:(id)arg1;
+- (id)detailsViewControllerForCameraItem:(id)arg1;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
@@ -58,6 +61,7 @@
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
 @property(retain, nonatomic) HFWallpaperSlice *blurredWallpaperSlice;
 @property(retain, nonatomic) HUWallpaperView *wallpaperView;
 - (void)_internalSetLayoutOptions:(id)arg1;

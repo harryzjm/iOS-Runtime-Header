@@ -14,21 +14,19 @@
     _Bool _tileStageActive;
     _Bool _tileStageUsed;
     _Bool _fragmentStageActive;
+    _Bool _vertexStageActive;
     struct MTLGPUDebugStageBufferHandles _vertexHandles;
     struct MTLGPUDebugStageBufferHandles _fragmentHandles;
     struct MTLGPUDebugStageBufferHandles _tileHandles;
-    struct MTLGPUDebugBufferArgumentData _vertexBuffers;
-    struct MTLGPUDebugBufferArgumentData _fragmentBuffers;
-    struct MTLGPUDebugBufferArgumentData _tileBuffers;
     struct MTLGPUDebugTileThreadgroup _threadgroup;
     struct Options *_options;
     struct GPUDebugEventUUIDPacket _drawID;
     unsigned long long _encoderType;
     MTLGPUDebugRenderPipelineState *_currentPipeline;
     MTLToolsDepthStencilState *_currentDepthStencil;
-    struct GPUBufferSubAlloc _vertexReportBuffer;
-    struct GPUBufferSubAlloc _fragmentReportBuffer;
-    struct GPUBufferSubAlloc _tileReportBuffer;
+    struct MTLGPUDebugBufferSubAlloc _vertexReportBuffer;
+    struct MTLGPUDebugBufferSubAlloc _fragmentReportBuffer;
+    struct MTLGPUDebugBufferSubAlloc _tileReportBuffer;
     struct {
         unsigned char count;
         _Bool mappingsValid;
@@ -38,6 +36,24 @@
 
 - (id).cxx_construct;
 - (void)endEncoding;
+- (void)setTileAccelerationStructures:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentAccelerationStructures:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexAccelerationStructures:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setTileIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setTileVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setTileVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setFragmentVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
+- (void)setVertexVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setRenderPipelineState:(id)arg1;
 - (void)setDepthStencilState:(id)arg1;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;
@@ -47,6 +63,7 @@
 - (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
+- (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1 inRegion:(CDStruct_1e3be3a8)arg2;
 - (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id)arg4 patchIndexBufferOffset:(unsigned long long)arg5 controlPointIndexBuffer:(id)arg6 controlPointIndexBufferOffset:(unsigned long long)arg7 instanceCount:(unsigned long long)arg8 baseInstance:(unsigned long long)arg9;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchIndexBuffer:(id)arg2 patchIndexBufferOffset:(unsigned long long)arg3 controlPointIndexBuffer:(id)arg4 controlPointIndexBufferOffset:(unsigned long long)arg5 indirectBuffer:(id)arg6 indirectBufferOffset:(unsigned long long)arg7;
@@ -79,6 +96,8 @@
 - (void)setVertexReportBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (void)setTessellationControlPointIndexBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (void)flushBindings;
+- (id)temporaryBufferWithLength:(unsigned long long)arg1;
+- (id)temporaryBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 @property(readonly) unsigned int encoderID;
 - (id)initWithRenderCommandEncoder:(id)arg1 parallelEncoder:(id)arg2 descriptor:(id)arg3 encoderID:(unsigned int)arg4;
 - (id)initWithRenderCommandEncoder:(id)arg1 commandBuffer:(id)arg2 descriptor:(id)arg3 encoderID:(unsigned int)arg4;

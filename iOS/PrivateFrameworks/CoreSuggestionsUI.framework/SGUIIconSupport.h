@@ -12,10 +12,13 @@
 
 + (id)_imageWithIcon:(id)arg1 imageDescriptor:(id)arg2;
 + (id)_iconImageWithBundleIdentifier:(id)arg1 imageDescriptor:(id)arg2;
++ (id)iconForCalendarDate:(id)arg1 drawBorder:(_Bool)arg2;
 + (id)iconForCalendarDate:(id)arg1;
-+ (id)_homeScreenDescriptor;
-+ (id)_spotlightDescriptor;
++ (id)_homeScreenDescriptorWithBorder:(_Bool)arg1;
++ (id)_spotlightDescriptorWithBorder:(_Bool)arg1;
++ (id)spotlightIconImageWithBundleIdentifier:(id)arg1 drawBorder:(_Bool)arg2;
 + (id)spotlightIconImageWithBundleIdentifier:(id)arg1;
++ (id)homeScreenIconImageWithBundleIdentifier:(id)arg1 drawBorder:(_Bool)arg2;
 + (id)homeScreenIconImageWithBundleIdentifier:(id)arg1;
 
 @end

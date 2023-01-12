@@ -10,7 +10,6 @@
 
 @class CKDPAsset, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPPackage : PBCodable <NSCopying>
 {
     CKDPAsset *_manifest;

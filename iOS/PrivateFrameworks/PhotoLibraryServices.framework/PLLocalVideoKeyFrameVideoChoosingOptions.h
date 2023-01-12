@@ -12,14 +12,18 @@
 
 @interface PLLocalVideoKeyFrameVideoChoosingOptions : NSObject <PLVideoChoosingOptions>
 {
+    _Bool _streamingAllowed;
 }
 
+- (_Bool)isExplicitUserAction;
+- (_Bool)hasValidTimeRange;
 - (long long)videoVersion;
 - (long long)videoDeliveryMode;
 - (_Bool)restrictToPlayableOnCurrentDevice;
 - (_Bool)isStreamingAllowed;
 - (_Bool)isNetworkAccessAllowed;
 - (_Bool)isMediumHighQualityAllowed;
+- (id)initWithStreamingAllowed:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

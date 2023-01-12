@@ -14,7 +14,6 @@
 
 @optional
 @property(readonly, nonatomic) id <TSDCanvasProxyDelegate> canvasProxyDelegate;
-- (_Bool)imageIsRenderingForMovie;
 - (_Bool)textLayoutMustIncludeAdornments;
 - (_Bool)isRenderingForKPF;
 - (_Bool)supportsAdaptiveLayout;
@@ -31,6 +30,7 @@
 - (_Bool)isCanvasInteractive;
 - (void)canvas:(TSDCanvas *)arg1 createdRep:(TSDRep *)arg2;
 - (NSSet *)infosToHideForCanvas:(TSDCanvas *)arg1;
+- (double)minimumCaptionWidthForCanvas:(TSDCanvas *)arg1;
 - (NSSet *)additionalVisibleInfosForCanvas:(TSDCanvas *)arg1;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(TSDCanvas *)arg1;
 - (void)updateLayerTreeForInteractiveCanvas:(TSDCanvas *)arg1;

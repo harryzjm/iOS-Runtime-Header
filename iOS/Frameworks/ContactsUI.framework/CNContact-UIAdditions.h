@@ -13,6 +13,7 @@
 + (id)stringIdentifierForImageType:(unsigned long long)arg1;
 + (id)contactWithStateRestorationCoder:(id)arg1 store:(id)arg2 keys:(id)arg3;
 + (id)multiValuePropertiesSupportingPredicateValidation;
++ (id)calendarForBirthdayLabel:(id)arg1;
 + (id)descriptorForAllUIKeys;
 + (_Bool)nameAndPhotoSharingDebugUIEnabled;
 + (_Bool)downtimeWhitelistUIEnabled;
@@ -21,6 +22,8 @@
 + (_Bool)quickActionsEnabled;
 + (_Bool)suggestionsShownInEditMode;
 + (_Bool)suggestionsEnabled;
+- (id)copyWithCuratingBirthdaySuggestion;
+- (id)copyWithCuratingAllSuggestionsAndBirthdaySuggestion;
 - (_Bool)hasImageOfType:(unsigned long long)arg1;
 - (unsigned long long)rawImageType;
 @property(readonly, nonatomic) NSArray *allLinkedIdentifiers;

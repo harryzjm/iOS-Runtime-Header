@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSArray;
 
-@protocol WFSelectContactsActionUserInterface <WFRemoteUserInterface>
+@protocol WFSelectContactsActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithProperties:(NSArray *)arg1 selectMultiple:(_Bool)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 @end
 

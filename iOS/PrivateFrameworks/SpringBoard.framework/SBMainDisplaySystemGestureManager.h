@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBGestureDefaults, SBHomeGestureParticipant;
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
+
+@class NSString, SBFZStackParticipant, SBGestureDefaults, SBHomeGestureParticipant;
 @protocol BSInvalidatable;
 
-@interface SBMainDisplaySystemGestureManager
+@interface SBMainDisplaySystemGestureManager <SBFZStackParticipantDelegate>
 {
     SBGestureDefaults *_gestureDefaults;
     id <BSInvalidatable> _systemGestureEventDeferringRule;
     id <BSInvalidatable> _pointerEventRoutingAssertion;
     _Bool _multitaskingGesturesEnabled;
     SBHomeGestureParticipant *_accessibilityHomeGestureParticipant;
+    SBFZStackParticipant *_accessibilityZStackParticipant;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBFZStackParticipant *accessibilityZStackParticipant; // @synthesize accessibilityZStackParticipant=_accessibilityZStackParticipant;
 @property(retain, nonatomic) SBHomeGestureParticipant *accessibilityHomeGestureParticipant; // @synthesize accessibilityHomeGestureParticipant=_accessibilityHomeGestureParticipant;
 - (void)_setupSystemGestureEventDeferringIfNeeded;
 - (void)_updateUserPreferences;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1 withType:(unsigned long long)arg2;
 - (void)setSystemGesturesDisabledForAccessibility:(_Bool)arg1;
 - (_Bool)shouldSystemGestureReceiveTouchWithLocation:(struct CGPoint)arg1;
@@ -32,6 +38,12 @@
 - (void)dealloc;
 - (id)_init;
 - (id)_initWithDisplayIdentity:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

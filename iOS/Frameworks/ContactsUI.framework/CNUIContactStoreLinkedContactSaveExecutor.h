@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)saveLinkedContactChanges:(id)arg1 mutableContact:(id)arg2 contactStore:(id)arg3 editingLinkedContacts:(id)arg4 ignoresParentalRestrictions:(_Bool)arg5 saveWasAuthorized:(_Bool)arg6 issuedSaveRequestIdentifiers:(id)arg7;
-- (id)executeSaveWithConfiguration:(id)arg1;
+- (id)executeSaveWithConfiguration:(id)arg1 saveDelegate:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

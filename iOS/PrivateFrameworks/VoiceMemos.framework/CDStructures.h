@@ -45,10 +45,10 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct vector<float, std::__1::allocator<float>> {
+struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
+    struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
     } __end_cap_;
 };
@@ -59,13 +59,4 @@ typedef struct {
     double beginTime;
     double endTime;
 } CDStruct_73a5d3ca;
-
-// Template types
-typedef struct vector<float, std::__1::allocator<float>> {
-    float *__begin_;
-    float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *__value_;
-    } __end_cap_;
-} vector_7584168e;
 

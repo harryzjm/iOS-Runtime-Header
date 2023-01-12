@@ -21,6 +21,7 @@
     OBBoldTrayButton *_confirmButton;
     UITextField *_givenNameField;
     UITextField *_familyNameField;
+    id _traitCollectionChangeToken;
     CNMutableContact *_contact;
     CNSharingProfileAudienceDataSource *_sharingAudienceDataSource;
     double _keyboardHeight;
@@ -34,6 +35,7 @@
 @property(nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
 @property(retain, nonatomic) CNSharingProfileAudienceDataSource *sharingAudienceDataSource; // @synthesize sharingAudienceDataSource=_sharingAudienceDataSource;
 @property(retain, nonatomic) CNMutableContact *contact; // @synthesize contact=_contact;
+@property(retain, nonatomic) id traitCollectionChangeToken; // @synthesize traitCollectionChangeToken=_traitCollectionChangeToken;
 @property(retain, nonatomic) UITextField *familyNameField; // @synthesize familyNameField=_familyNameField;
 @property(retain, nonatomic) UITextField *givenNameField; // @synthesize givenNameField=_givenNameField;
 @property(retain, nonatomic) OBBoldTrayButton *confirmButton; // @synthesize confirmButton=_confirmButton;
@@ -53,9 +55,7 @@
 - (void)handleConfirmButtonTapped:(id)arg1;
 - (id)confirmButtonTitle;
 - (void)contentSizeCategoryDidChange:(id)arg1;
-- (void)adjustInsetsForKeyboardOverlap:(double)arg1;
-- (void)keyboardWillHide:(id)arg1;
-- (void)keyboardWillShow:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConfirmButtonEnabledState;
 - (void)familyNameDidChange:(id)arg1;
 - (void)givenNameDidChange:(id)arg1;

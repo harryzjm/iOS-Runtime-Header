@@ -10,15 +10,14 @@
 #import <BaseBoard/NSCopying-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class BSSecTask, NSString;
 
 @interface BSAuditToken : NSObject <NSCopying, BSXPCCoding, NSSecureCoding>
 {
-    NSString *_bundleID;
-    _Bool _resolvedBundleID;
-    struct os_unfair_lock_s _secTaskLock;
-    struct __SecTask *_lazy_secTaskLock_secTask;
     CDStruct_4c969caf _auditToken;
+    NSString *_bundleID;
+    BSSecTask *_secTask;
+    _Bool _resolvedBundleID;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -47,7 +46,6 @@
 @property(readonly, nonatomic) unsigned int euid;
 @property(readonly, nonatomic) long long versionedPID;
 @property(readonly, nonatomic) int pid;
-- (void)dealloc;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1;
 
 // Remaining properties

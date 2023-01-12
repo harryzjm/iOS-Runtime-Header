@@ -13,7 +13,7 @@
     REMStore *_reminderStore;
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
++ (id)contactRepresentationWithContact:(id)arg1;
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
@@ -25,22 +25,25 @@
 + (_Bool)hasLibrary;
 + (id)defaultList;
 + (id)allLists;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 + (id)itemWithReminder:(id)arg1 fromReminderStore:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) REMStore *reminderStore; // @synthesize reminderStore=_reminderStore;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 @property(readonly, nonatomic) REMReminder *reminder;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
-- (id)imageAttachment;
+- (void)copyStateToItem:(id)arg1;
+- (id)imageAttachments;
 - (id)URL;
 - (_Bool)flagged;
 - (_Bool)hasAlarms;
 - (id)subtasks;
 - (_Bool)hasSubtasks;
 - (id)parentReminder;
+- (id)changeTransaction;
 - (_Bool)getListAltText:(CDUnknownBlockType)arg1;
 
 @end

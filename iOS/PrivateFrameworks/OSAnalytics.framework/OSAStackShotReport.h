@@ -6,7 +6,7 @@
 
 #import <OSAnalytics/OSAConcreteReport-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface OSAStackShotReport <OSAConcreteReport>
 {
@@ -15,6 +15,7 @@
     NSString *_reason;
     long long *_exceptionCodes;
     unsigned int _exceptionCodeCount;
+    NSDictionary *_additionalPayload;
     int _thermalNotificationCurrentLevel;
     NSArray *_thermalSensorValues;
     NSMutableArray *_frontmostPids;
@@ -48,12 +49,14 @@
 - (id)exceptionCodesDescription;
 - (void)generateLogAtLevel:(_Bool)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (_Bool)isActionable;
+- (void)setAdditionalPayload:(id)arg1;
 - (void)addNotes:(id)arg1;
 - (id)getStackshotData;
 - (void)acquireStackshot;
 - (void)useStackshotData:(id)arg1 frontmostPids:(id)arg2 atTime:(double)arg3 machTime:(unsigned long long)arg4 sequence:(unsigned int)arg5;
 - (void)useStackshotBuffer:(const void *)arg1 size:(unsigned int)arg2 frontmostPids:(id)arg3 atTime:(double)arg4 machTime:(unsigned long long)arg5 sequence:(unsigned int)arg6;
 - (void)queryThermalData;
+- (id)getExtraData:(id)arg1;
 - (void)setReason:(id)arg1;
 - (void)setIncidentID:(id)arg1;
 - (id)reportNamePrefix;

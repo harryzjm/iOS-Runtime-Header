@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isSectionOperation;
     _Bool _destinationIdentifierIsSectionIdentifier;
+    _Bool _shouldReconfigure;
     _Bool _isDeleteAll;
     NSOrderedSet *_identifiers;
     long long _action;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id destinationIdentifier; // @synthesize destinationIdentifier=_destinationIdentifier;
 @property(readonly, nonatomic) long long relativePosition; // @synthesize relativePosition=_relativePosition;
 @property(readonly, nonatomic) _Bool isDeleteAll; // @synthesize isDeleteAll=_isDeleteAll;
+@property(readonly, nonatomic) _Bool shouldReconfigure; // @synthesize shouldReconfigure=_shouldReconfigure;
 @property(readonly, nonatomic) long long action; // @synthesize action=_action;
 @property(readonly, nonatomic) NSOrderedSet *identifiers; // @synthesize identifiers=_identifiers;
 @property(readonly, nonatomic) _Bool isSectionOperation; // @synthesize isSectionOperation=_isSectionOperation;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithItemIdentifiers:(id)arg1 appendingToDestinationSectionIdentifier:(id)arg2;
 - (id)initWithSectionIdentifiers:(id)arg1 action:(long long)arg2 destinationIdentifier:(id)arg3 relativePosition:(long long)arg4;
 - (id)initWithSectionIdentifiers:(id)arg1 action:(long long)arg2;
+- (id)initWithReconfiguredItemIdentifiers:(id)arg1;
 - (id)initWithItemIdentifiers:(id)arg1 action:(long long)arg2 destinationIdentifier:(id)arg3 relativePosition:(long long)arg4;
 - (id)initWithItemIdentifiers:(id)arg1 action:(long long)arg2;
 - (id)initWithIdentifiers:(id)arg1 sectionIdentifiers:(id)arg2 action:(long long)arg3 desinationIdentifier:(id)arg4 relativePosition:(long long)arg5 destinationIsSection:(_Bool)arg6;

@@ -10,12 +10,11 @@
 
 @interface _TtC7VFXCore9VFXLoader : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *fileWrapper;
-    MISSING_TYPE *url;
-    MISSING_TYPE *loadScripts;
+    MISSING_TYPE *shouldLoadPrecompiledScripts;
     MISSING_TYPE *throwOnScriptLoadingFailure;
     MISSING_TYPE *isLoadingForAuthoring;
     MISSING_TYPE *allowLoadingEffectFromTheFuture;
+    MISSING_TYPE *prepareEntityManager;
     MISSING_TYPE *loadWarning;
 }
 

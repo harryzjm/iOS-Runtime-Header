@@ -11,9 +11,7 @@
 @protocol SHSessionDelegate <NSObject>
 
 @optional
-- (void)finishedSession:(SHSession *)arg1;
 - (void)session:(SHSession *)arg1 didNotFindMatchForSignature:(SHSignature *)arg2 error:(NSError *)arg3;
 - (void)session:(SHSession *)arg1 didFindMatch:(SHMatch *)arg2;
-- (_Bool)session:(SHSession *)arg1 shouldAttemptToMatch:(SHSignature *)arg2;
 @end
 

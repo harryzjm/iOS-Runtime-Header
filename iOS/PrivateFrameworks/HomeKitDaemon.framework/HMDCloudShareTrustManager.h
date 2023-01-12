@@ -11,14 +11,15 @@
 #import <HomeKitDaemon/HMDCloudShareMessengerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCloudShareParticipantsManagerDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDCloudShareParticipantsManagerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCloudShareTrustManagerMetricsEventDispatcherDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDDatabaseDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMBCloudZone, HMBLocalZone, HMBShareUserID, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, HMFTimer, HMFUnfairLock, NSObject, NSString;
+@class HMBCloudZone, HMBLocalZone, HMBShareUserID, HMDCloudShareMessenger, HMDCloudShareParticipantsManager, HMDCloudShareTrustManagerMetricsEventDispatcher, HMFTimer, HMFUnfairLock, NSObject, NSString;
 @protocol HMDCloudShareTrustManagerDataSource, HMDCloudShareTrustManagerDelegate, HMDDatabase, OS_dispatch_queue;
 
-@interface HMDCloudShareTrustManager : HMFObject <HMBCloudZoneDelegate, HMBLocalZoneDelegate, HMDCloudShareMessengerDelegate, HMDCloudShareParticipantsManagerDataSource, HMDCloudShareParticipantsManagerDelegate, HMDDatabaseDelegate, HMFLogging, HMFTimerDelegate>
+@interface HMDCloudShareTrustManager : HMFObject <HMBCloudZoneDelegate, HMBLocalZoneDelegate, HMDCloudShareMessengerDelegate, HMDCloudShareParticipantsManagerDataSource, HMDCloudShareParticipantsManagerDelegate, HMDCloudShareTrustManagerMetricsEventDispatcherDataSource, HMDDatabaseDelegate, HMFLogging, HMFTimerDelegate>
 {
     HMFUnfairLock *_lock;
     _Bool _ownedTrust;
@@ -32,6 +33,7 @@
     HMBLocalZone *_localZone;
     HMDCloudShareParticipantsManager *_cloudShareParticipantManager;
     HMFTimer *_requestInviteTimer;
+    HMDCloudShareTrustManagerMetricsEventDispatcher *_metricsEventDispatcher;
     HMBShareUserID *_ownerCloudShareID;
     CDUnknownBlockType _participantsManagerFactory;
     CDUnknownBlockType _requestInviteTimerFactory;
@@ -42,6 +44,7 @@
 @property(copy) CDUnknownBlockType requestInviteTimerFactory; // @synthesize requestInviteTimerFactory=_requestInviteTimerFactory;
 @property(copy) CDUnknownBlockType participantsManagerFactory; // @synthesize participantsManagerFactory=_participantsManagerFactory;
 @property(retain) HMBShareUserID *ownerCloudShareID; // @synthesize ownerCloudShareID=_ownerCloudShareID;
+@property(retain) HMDCloudShareTrustManagerMetricsEventDispatcher *metricsEventDispatcher; // @synthesize metricsEventDispatcher=_metricsEventDispatcher;
 @property(retain) HMFTimer *requestInviteTimer; // @synthesize requestInviteTimer=_requestInviteTimer;
 @property(retain) HMDCloudShareParticipantsManager *cloudShareParticipantManager; // @synthesize cloudShareParticipantManager=_cloudShareParticipantManager;
 @property(retain) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
@@ -61,6 +64,12 @@
 - (void)database:(id)arg1 didRemoveZoneWithName:(id)arg2 isPrivate:(_Bool)arg3;
 - (void)_didCreateZone;
 - (void)database:(id)arg1 didCreateZoneWithName:(id)arg2 isPrivate:(_Bool)arg3;
+- (struct CloudShareTrustManagerTrustStatusCounts)trustStatusCountsForCloudShareTrustManagerMetricsEventDispatcher:(id)arg1;
+- (long long)trustConfigureStateForCloudShareTrustManagerMetricsEventDispatcher:(id)arg1;
+- (_Bool)isFromOwnerForCloudShareTrustManagerMetricsEventDispatcher:(id)arg1;
+- (id)homeForCloudShareTrustManagerMetricsEventDispatcher:(id)arg1;
+- (struct CloudShareTrustManagerTrustStatusCounts)trustStatusCounts;
+- (_Bool)isFromOwner;
 - (_Bool)canUseUntrustedAccountHandlesForParticipantManager:(id)arg1;
 - (void)manager:(id)arg1 didRequestSendForInvitation:(id)arg2 toUser:(id)arg3;
 - (_Bool)manager:(id)arg1 shouldShareWithUser:(id)arg2;
@@ -77,6 +86,7 @@
 - (void)updateSharedUsersCloudShareIDs;
 - (void)updateCurrentUserCloudShareID;
 - (void)removeTrust;
+- (_Bool)isTrustConfigured;
 - (void)_finishConfigure;
 - (void)_configureOwnerCloudShareIDWithCloudZone:(id)arg1;
 - (void)_configureWithFetchZoneResult:(id)arg1 error:(id)arg2;

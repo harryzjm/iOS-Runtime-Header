@@ -16,7 +16,6 @@
 @interface MPCModelRadioPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable, MPCModelPlaybackRequestEnvironmentConsuming>
 {
     _Bool _continueListeningStation;
-    ICUserIdentity *_userIdentity;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     id <MPCContinueListeningRadioQueueProviding> _continueListeningQueueProvider;
     long long _continueListeningMaxQueueReferences;
@@ -39,8 +38,8 @@
 @property(nonatomic) __weak id <MPCContinueListeningRadioQueueProviding> continueListeningQueueProvider; // @synthesize continueListeningQueueProvider=_continueListeningQueueProvider;
 @property(nonatomic) _Bool continueListeningStation; // @synthesize continueListeningStation=_continueListeningStation;
 @property(copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
-@property(copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property(copy, nonatomic) NSNumber *privateListeningOverride;
+@property(copy, nonatomic) ICUserIdentity *userIdentity;
 - (id)descriptionComponents;
 - (long long)queueEndAction;
 - (long long)repeatType;
@@ -49,7 +48,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
-- (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemotePlaybackQueueRepresentationWithCompletion:(CDUnknownBlockType)arg1;
+- (id)getSharedListeningTracklistWithCompletion:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

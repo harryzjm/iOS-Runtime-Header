@@ -8,8 +8,10 @@
 {
 }
 
++ (id)typeString;
 + (id)roleString;
-+ (int)role;
+- (id)accessibilityContextualLabel;
+- (Class)componentModelClass;
 
 @end
 

@@ -10,7 +10,9 @@
 {
 }
 
++ (id)edgeFilterWithVisualString:(id)arg1;
 + (_Bool)scanInstance:(out id *)arg1 withScanner:(id)arg2;
+- (id)relationWithType:(unsigned long long)arg1;
 @property(readonly, nonatomic) MARelation *anyDirectionRelation;
 @property(readonly, nonatomic) MARelation *inRelation;
 @property(readonly, nonatomic) MARelation *outRelation;

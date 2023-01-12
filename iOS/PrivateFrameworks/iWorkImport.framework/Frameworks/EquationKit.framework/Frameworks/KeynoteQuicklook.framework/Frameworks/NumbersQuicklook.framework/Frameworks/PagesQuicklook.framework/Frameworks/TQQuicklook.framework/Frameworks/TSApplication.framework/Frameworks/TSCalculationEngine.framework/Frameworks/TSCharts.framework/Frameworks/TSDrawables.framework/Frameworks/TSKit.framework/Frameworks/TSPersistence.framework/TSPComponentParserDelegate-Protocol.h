@@ -9,6 +9,6 @@
 @class TSPComponentParser;
 
 @protocol TSPComponentParserDelegate <NSObject>
-- (_Bool)componentParser:(TSPComponentParser *)arg1 didReadArchiveInfo:(const struct ArchiveInfo *)arg2 stream:(struct DispatchDataInputStream *)arg3 error:(id *)arg4;
+- (_Bool)componentParser:(TSPComponentParser *)arg1 didReadArchiveInfo:(const void *)arg2 stream:(struct DispatchDataInputStream *)arg3 error:(id *)arg4;
 @end
 

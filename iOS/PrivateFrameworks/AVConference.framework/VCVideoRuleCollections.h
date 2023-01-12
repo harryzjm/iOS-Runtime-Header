@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
 + (id)newCorrectedVideoRules:(id)arg1 payload:(int)arg2;
 @property(readonly) NSDictionary *rules; // @synthesize rules=_rules;
 @property(readonly) NSArray *supportedPayloads; // @synthesize supportedPayloads=_supportedPayloads;
+- (id)videoRulesCollectionsByRemovingPayload:(int)arg1 andPayload:(int)arg2 removeCellular:(_Bool)arg3;
+@property(readonly, nonatomic) _Bool isDecodeSupported;
+@property(readonly, nonatomic) _Bool isEncodeSupported;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isPayloadSupported:(int)arg1;
 - (void)addSupportedPayload:(int)arg1;

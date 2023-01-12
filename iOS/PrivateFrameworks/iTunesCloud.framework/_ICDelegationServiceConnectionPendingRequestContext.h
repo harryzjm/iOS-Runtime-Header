@@ -8,6 +8,7 @@
 
 @class ICPBDGSRequest;
 
+__attribute__((visibility("hidden")))
 @interface _ICDelegationServiceConnectionPendingRequestContext : NSObject
 {
     ICPBDGSRequest *_request;

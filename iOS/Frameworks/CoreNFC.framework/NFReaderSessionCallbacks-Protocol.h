@@ -10,11 +10,10 @@
 @class NFFieldNotification, NSArray, NSError;
 
 @protocol NFReaderSessionCallbacks <NSObject, NFSessionCallbackInterface>
-- (void)didTerminate:(NSError *)arg1;
-
-@optional
 - (void)didDetectExternalReaderWithNotification:(NFFieldNotification *)arg1;
-- (void)didDetectNDEFMessages:(NSArray *)arg1 fromTags:(NSArray *)arg2 updateUICallback:(void (^)(long long))arg3;
-- (void)didDetectTags:(NSArray *)arg1;
+- (void)didDetectNDEFMessages:(NSArray *)arg1 fromTags:(NSArray *)arg2 connectedTagIndex:(unsigned long long)arg3 updateUICallback:(void (^)(long long))arg4;
+- (void)didDetectTags:(NSArray *)arg1 connectedTagIndex:(unsigned long long)arg2;
+- (void)didUIControllerInvalidate:(NSError *)arg1;
+- (void)didTerminate:(NSError *)arg1;
 @end
 

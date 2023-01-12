@@ -6,8 +6,14 @@
 
 #import <TextInput/TIKeyboardCandidate.h>
 
+@class UIImage;
+
 @interface TIKeyboardCandidate (UIKeyboardAdditions)
+@property(readonly, nonatomic) _Bool isReplacement;
 @property(readonly, nonatomic) _Bool isAutofillCandidate;
 @property(readonly, nonatomic) _Bool isSlottedCandidate;
+@property(retain, nonatomic) UIImage *icon;
+- (id)ui_supplementalItems;
+- (_Bool)ui_hasSupplementalItems;
 @end
 

@@ -58,7 +58,7 @@
 - (void)parameterNode:(id)arg1 displayNameWithLength:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)parameterValueFromString:(id)arg1 address:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)parameterStringFromValue:(float)arg1 currentValue:(_Bool)arg2 address:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)getParameter:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getParameter:(unsigned long long)arg1 sequenceNumber:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)syncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
 - (void)parametersForOverviewWithCount:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getParameterTree:(CDUnknownBlockType)arg1;
@@ -86,7 +86,7 @@
 - (void)dealloc;
 - (void)close:(CDUnknownBlockType)arg1;
 - (id)_getSpeechSynthesisProviderAudioUnit;
-- (id)initWithInputItems:(id)arg1 xpcConnection:(id)arg2 timeOutHandler:(function_84aba934)arg3;
+- (id)initWithInputItems:(id)arg1 xpcConnection:(id)arg2 timeOutHandler:(function_ffe40f9b)arg3;
 - (id)initWithInputItems:(id)arg1 xpcConnection:(id)arg2;
 - (id)_internalInitWithInputItems:(id)arg1 xpcConnection:(id)arg2;
 - (_Bool)_identifyBus:(id)arg1 scope:(unsigned int *)arg2 element:(unsigned int *)arg3;

@@ -14,10 +14,12 @@
     NSData *_thumbnailImageData;
     NSArray *_previewImageData;
     PHAsset *_keyAsset;
+    NSArray *_curatedAssetIdentifiers;
     struct CGRect _cropRect;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *curatedAssetIdentifiers; // @synthesize curatedAssetIdentifiers=_curatedAssetIdentifiers;
 @property(nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property(copy, nonatomic) PHAsset *keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(copy, nonatomic) NSArray *previewImageData; // @synthesize previewImageData=_previewImageData;

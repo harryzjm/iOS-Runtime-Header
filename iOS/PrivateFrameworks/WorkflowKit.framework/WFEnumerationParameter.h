@@ -5,24 +5,31 @@
 //
 
 #import <WorkflowKit/WFParameterDialogProvider-Protocol.h>
+#import <WorkflowKit/WFParameterValuePickable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface WFEnumerationParameter <WFParameterDialogProvider>
+@interface WFEnumerationParameter <WFParameterValuePickable, WFParameterDialogProvider>
 {
     _Bool _alwaysShowsButton;
     _Bool _liveUpdatesPossibleStatesInEditor;
+    _Bool _providesLocalizedValuesForSummary;
+    NSString *_selectionType;
+    NSString *_tableViewStyle;
     NSArray *_staticPossibleStates;
     NSArray *_displayNames;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool providesLocalizedValuesForSummary; // @synthesize providesLocalizedValuesForSummary=_providesLocalizedValuesForSummary;
 @property(readonly, nonatomic) NSArray *displayNames; // @synthesize displayNames=_displayNames;
 @property(readonly, nonatomic) NSArray *staticPossibleStates; // @synthesize staticPossibleStates=_staticPossibleStates;
+@property(readonly, nonatomic) NSString *tableViewStyle; // @synthesize tableViewStyle=_tableViewStyle;
+@property(readonly, nonatomic) NSString *selectionType; // @synthesize selectionType=_selectionType;
 @property(readonly, nonatomic) _Bool liveUpdatesPossibleStatesInEditor; // @synthesize liveUpdatesPossibleStatesInEditor=_liveUpdatesPossibleStatesInEditor;
 @property(readonly, nonatomic) _Bool alwaysShowsButton; // @synthesize alwaysShowsButton=_alwaysShowsButton;
 - (id)parameterStateFromDialogResponse:(id)arg1;
-- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 prompt:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)stopLiveUpdatingPossibleStates;
 - (void)startLiveUpdatingPossibleStates;
 - (void)possibleStatesDidChange;
@@ -32,6 +39,7 @@
 @property(readonly, nonatomic) _Bool hidesSubtitleInEditor;
 @property(readonly, nonatomic) _Bool hidesAccessoryIconInEditor;
 - (id)accessoryIconForPossibleState:(id)arg1;
+- (id)accessoryImageForPossibleState:(id)arg1;
 - (id)accessoryColorForPossibleState:(id)arg1;
 - (id)localizedSubtitleLabelForPossibleState:(id)arg1;
 - (id)localizedLabelForMultipleCompleteState:(id)arg1;
@@ -44,6 +52,19 @@
 @property(readonly, nonatomic) NSArray *possibleStates;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
+@property(readonly, nonatomic) _Bool wf_alwaysScaleIconImage;
+- (id)wf_pickerLocalizedIconForState:(id)arg1;
+- (id)wf_pickerLocalizedImageForState:(id)arg1;
+- (id)wf_pickerLocalizedSubtitleForState:(id)arg1;
+- (id)wf_pickerLocalizedTitleForState:(id)arg1;
+- (void)wf_reloadFromAttributesDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)wf_loadStatesWithSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
+@property(readonly, nonatomic) _Bool wf_usesGroupTableViewStyle;
+@property(readonly, nonatomic) _Bool wf_usesTogglesForSelection;
+@property(readonly, nonatomic) _Bool wf_allowsMultipleSelection;
+@property(readonly, nonatomic) NSString *wf_displayLocalizedPrompt;
+@property(readonly, nonatomic) _Bool wf_supportsSearch;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

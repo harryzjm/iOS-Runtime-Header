@@ -45,6 +45,7 @@
 - (void)visitInsecureWebsite;
 - (void)visitInsecureWebsiteWithTemporaryBypass;
 - (void)goBackButtonClicked;
+- (void)webViewDidCommitErrorPagePreview:(id)arg1;
 - (void)scheduleResetCrashCount;
 - (_Bool)updateCrashesAndShowCrashError:(id)arg1 URLString:(id)arg2;
 - (void)_resetCrashCountSoon;

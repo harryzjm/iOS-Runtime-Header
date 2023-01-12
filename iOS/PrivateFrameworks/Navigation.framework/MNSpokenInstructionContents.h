@@ -20,7 +20,7 @@
     NSArray *_executionInstructionFormats;
 }
 
-+ (id)contentsWithStep:(id)arg1 transportType:(int)arg2 destination:(id)arg3 options:(CDStruct_61a83fd4 *)arg4 isSecondary:(_Bool)arg5;
++ (id)contentsWithStep:(id)arg1 destination:(id)arg2 options:(CDStruct_61a83fd4 *)arg3 isSecondary:(_Bool)arg4;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *executionInstructionFormats; // @synthesize executionInstructionFormats=_executionInstructionFormats;
 @property(retain, nonatomic) id <GEOServerFormattedString> prepareInstructionFormat; // @synthesize prepareInstructionFormat=_prepareInstructionFormat;

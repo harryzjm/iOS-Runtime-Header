@@ -33,6 +33,7 @@
     double _bezelLabelMaxWidthInDegree;
     double _bezelLabelTopPadding;
     double _bezelKeylineInnerCircleOffset;
+    double _bezelKeylineDiameter;
     double _dialDiameter;
     NTKFaceView *_faceView;
     double _dateKeylineMaxWidth;
@@ -53,6 +54,7 @@
 @property(nonatomic) double dateKeylineMaxWidth; // @synthesize dateKeylineMaxWidth=_dateKeylineMaxWidth;
 @property(nonatomic) __weak NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property(nonatomic) double dialDiameter; // @synthesize dialDiameter=_dialDiameter;
+@property(nonatomic) double bezelKeylineDiameter; // @synthesize bezelKeylineDiameter=_bezelKeylineDiameter;
 @property(nonatomic) double bezelKeylineInnerCircleOffset; // @synthesize bezelKeylineInnerCircleOffset=_bezelKeylineInnerCircleOffset;
 @property(nonatomic) double bezelLabelTopPadding; // @synthesize bezelLabelTopPadding=_bezelLabelTopPadding;
 @property(nonatomic) double bezelLabelMaxWidthInDegree; // @synthesize bezelLabelMaxWidthInDegree=_bezelLabelMaxWidthInDegree;
@@ -80,10 +82,7 @@
 - (void)curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
 - (_Bool)slotSupportsCurvedText:(id)arg1;
 - (long long)legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
-- (id)complicationPickerKeylineViewForComplicationSlot:(id)arg1;
 - (id)keylineViewForComplicationSlot:(id)arg1;
-- (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1;
-- (id)pickerMaskForSlot:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (long long)complicationPickerStyleForSlot:(id)arg1;
 - (double)_maxWidthForKeylineAndPadding;
@@ -112,7 +111,6 @@
 - (double)foregroundAlphaForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (double)foregroundAlphaForEditing:(_Bool)arg1;
 - (id)curvedMaskForSlot:(long long)arg1;
-- (unsigned long long)keylineLabelAlignmentForSlot:(long long)arg1;
 - (double)keylineCornerRadiusForSlot:(long long)arg1;
 - (id)keylineViewForSlot:(long long)arg1 dialDiameter:(double)arg2;
 - (id)keylineViewForSlot:(long long)arg1;

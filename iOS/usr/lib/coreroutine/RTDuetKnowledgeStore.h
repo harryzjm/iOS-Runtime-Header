@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
+@class _DKKnowledgeStore;
 @protocol OS_dispatch_queue, _DKKnowledgeQuerying;
 
 @interface RTDuetKnowledgeStore : NSObject
 {
-    id <_DKKnowledgeQuerying> _knowledgeStore;
+    _DKKnowledgeStore *_knowledgeStore;
+    id <_DKKnowledgeQuerying> _knowledgeStoreQuery;
     NSObject<OS_dispatch_queue> *_requestQueue;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -18,10 +20,13 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
-@property(retain, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
+@property(retain, nonatomic) id <_DKKnowledgeQuerying> knowledgeStoreQuery; // @synthesize knowledgeStoreQuery=_knowledgeStoreQuery;
+@property(retain, nonatomic) _DKKnowledgeStore *knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
+- (void)clearEventsFromStream:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)saveEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reset;
 - (void)resume;
-- (void)executeQuery:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)executeQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

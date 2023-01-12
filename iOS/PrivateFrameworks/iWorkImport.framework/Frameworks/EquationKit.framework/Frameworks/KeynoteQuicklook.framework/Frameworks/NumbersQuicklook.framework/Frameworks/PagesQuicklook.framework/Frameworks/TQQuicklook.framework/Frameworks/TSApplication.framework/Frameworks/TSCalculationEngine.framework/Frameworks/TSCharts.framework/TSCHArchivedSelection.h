@@ -12,11 +12,11 @@
 
 @interface TSCHArchivedSelection : TSPObject <TSKArchivedSelection>
 {
-    TSCHSelection *mSelection;
+    TSCHSelection *_selection;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=mSelection;
+@property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=_selection;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)initWithContext:(id)arg1;

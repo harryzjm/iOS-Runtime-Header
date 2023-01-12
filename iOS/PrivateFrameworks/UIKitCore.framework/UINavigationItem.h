@@ -56,6 +56,7 @@
     UINavigationBarAppearance *_standardAppearance;
     UINavigationBarAppearance *_compactAppearance;
     UINavigationBarAppearance *_scrollEdgeAppearance;
+    UINavigationBarAppearance *_compactScrollEdgeAppearance;
     id <_UINavigationItemChangeObserver> __changeObserver;
     _UINavigationBarItemStackEntry *__stackEntry;
     double __titleViewWidthForAnimations;
@@ -91,6 +92,7 @@
 @property(nonatomic) double _titleViewWidthForAnimations; // @synthesize _titleViewWidthForAnimations=__titleViewWidthForAnimations;
 @property(nonatomic, setter=_setStackEntry:) _UINavigationBarItemStackEntry *_stackEntry; // @synthesize _stackEntry=__stackEntry;
 @property(nonatomic, setter=_setChangeObserver:) __weak id <_UINavigationItemChangeObserver> _changeObserver; // @synthesize _changeObserver=__changeObserver;
+@property(copy, nonatomic) UINavigationBarAppearance *compactScrollEdgeAppearance; // @synthesize compactScrollEdgeAppearance=_compactScrollEdgeAppearance;
 @property(copy, nonatomic) UINavigationBarAppearance *scrollEdgeAppearance; // @synthesize scrollEdgeAppearance=_scrollEdgeAppearance;
 @property(copy, nonatomic) UINavigationBarAppearance *compactAppearance; // @synthesize compactAppearance=_compactAppearance;
 @property(copy, nonatomic) UINavigationBarAppearance *standardAppearance; // @synthesize standardAppearance=_standardAppearance;

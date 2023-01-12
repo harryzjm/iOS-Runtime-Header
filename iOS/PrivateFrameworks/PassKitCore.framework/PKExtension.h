@@ -24,6 +24,8 @@
 @property(retain, nonatomic) NSString *containingAppBundleIdentifier; // @synthesize containingAppBundleIdentifier=_containingAppBundleIdentifier;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
+- (void)beginExtensionRequestWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beginExtensionRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)completeLocalExtensionServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginLocalExtensionServiceWithUserInteraction:(_Bool)arg1 completion:(CDUnknownBlockType)arg2 timeout:(unsigned long long)arg3 timeoutHandler:(CDUnknownBlockType)arg4;
 - (void)performTestExtensionServiceRequestWithCompletion:(CDUnknownBlockType)arg1;

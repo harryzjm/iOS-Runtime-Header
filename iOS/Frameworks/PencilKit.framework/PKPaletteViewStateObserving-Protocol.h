@@ -11,9 +11,7 @@
 - (void)paletteViewStateDidChangeIsVisible:(id <PKPaletteViewStateSubject>)arg1;
 - (void)paletteViewStateDidChangeInputAssistantItems:(id <PKPaletteViewStateSubject>)arg1;
 - (void)paletteViewStateDidChangeSelectedTool:(id <PKPaletteViewStateSubject>)arg1;
-- (void)paletteViewStateDidChangeShowsHandwritingTool:(id <PKPaletteViewStateSubject>)arg1;
 - (void)paletteViewStateDidChangeAutoHide:(id <PKPaletteViewStateSubject>)arg1;
-- (void)paletteViewStateDidChangeAnnotationSupport:(id <PKPaletteViewStateSubject>)arg1;
 - (void)paletteViewStateDidChangeScaleFactor:(id <PKPaletteViewStateSubject>)arg1;
 - (void)paletteViewStateDidChange:(id <PKPaletteViewStateSubject>)arg1;
 

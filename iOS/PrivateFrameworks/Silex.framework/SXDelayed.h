@@ -10,10 +10,12 @@
 {
     _Bool _cancelled;
     CDUnknownBlockType _block;
+    SXDelayed *_strongReference;
 }
 
 + (id)execute:(CDUnknownBlockType)arg1 delay:(double)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SXDelayed *strongReference; // @synthesize strongReference=_strongReference;
 @property(nonatomic) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 - (void)cancel;

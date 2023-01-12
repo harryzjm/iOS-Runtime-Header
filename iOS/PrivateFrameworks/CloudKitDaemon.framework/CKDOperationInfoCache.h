@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKit/CKSQLite.h>
-
 @class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface CKDOperationInfoCache : CKSQLite
+@interface CKDOperationInfoCache
 {
     NSObject<OS_dispatch_queue> *_cacheQueue;
     NSObject<OS_dispatch_queue> *_cacheDelegateQueue;
     NSMutableDictionary *_delegateWrappersByOperationID;
 }
 
++ (id)cacheDatabaseSchema;
 + (id)dbFileName;
 + (id)sharedCache;
 - (void).cxx_destruct;
@@ -27,19 +26,19 @@
 - (void)registerAttemptForOperationWithID:(id)arg1;
 - (void)archiveCallback:(id)arg1 forOperationID:(id)arg2;
 - (void)_lockedArchiveCallback:(id)arg1 forOperationID:(id)arg2;
-- (void)setOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3 accountID:(id)arg4;
-- (void)_lockedSetOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3 accountID:(id)arg4;
+- (void)setOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerAccountTuple:(id)arg3;
+- (void)_lockedSetOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerAccountTuple:(id)arg3;
 - (void)deleteAllInfoForOperationWithID:(id)arg1;
 - (void)expungeOperationInfoForDeletedAccountID:(id)arg1;
-- (id)allOutstandingOperationIDsForAppContainerTuple:(id)arg1 accountID:(id)arg2;
+- (id)allOutstandingOperationIDsForAppContainerAccountTuple:(id)arg1;
 - (id)outstandingOperationInfosForIDs:(id)arg1;
-- (id)resumableOperationInfosByAppContainerTuplesWithProgressPurged:(_Bool)arg1;
+- (id)resumableOperationInfosByAppContainerAccountTuplesWithProgressPurged:(_Bool)arg1;
 - (void)enumerateCallbacksForOperationWithID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_locked_enumerateCallbacksForOperationWithID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)operationInfoMetadataForOperationWithID:(id)arg1;
 - (void)unregisterDelegate:(id)arg1 forOperationWithID:(id)arg2;
 - (void)registerDelegate:(id)arg1 forOperationWithID:(id)arg2;
-- (id)_initWithCacheDir:(id)arg1;
+- (id)initWithCacheDir:(id)arg1;
 
 @end
 

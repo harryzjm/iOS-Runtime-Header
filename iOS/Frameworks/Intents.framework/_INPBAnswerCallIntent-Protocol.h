@@ -11,6 +11,8 @@
 @protocol _INPBAnswerCallIntent <NSObject>
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property(readonly, nonatomic) _Bool hasCallIdentifier;
+@property(copy, nonatomic) NSString *callIdentifier;
 @property(nonatomic) _Bool hasAudioRoute;
 @property(nonatomic) int audioRoute;
 - (int)StringAsAudioRoute:(NSString *)arg1;

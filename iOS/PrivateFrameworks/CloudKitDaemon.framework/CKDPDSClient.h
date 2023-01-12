@@ -23,12 +23,11 @@
 @property(retain, nonatomic) NSMutableDictionary *registrationsByDSID; // @synthesize registrationsByDSID=_registrationsByDSID;
 - (void)unregisterAllTokens;
 - (_Bool)unregisterAllTokensForAccountID:(id)arg1 outError:(id *)arg2;
-- (_Bool)unregisterAllTokensForAppContainerAccountTuple:(id)arg1 pushBundleIdentifier:(id)arg2 outError:(id *)arg3;
-- (_Bool)unregisterTokenForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 outError:(id *)arg3;
+- (_Bool)unregisterTokenForContainer:(id)arg1 outError:(id *)arg2;
 - (_Bool)_unregisterRegistration:(id)arg1 forDSID:(id)arg2 outError:(id *)arg3;
-- (_Bool)ensureRegistrationForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 outError:(id *)arg3;
+- (_Bool)ensureRegistrationForContainer:(id)arg1 outError:(id *)arg2;
 - (id)_registrationForAppContainerAccountTuple:(id)arg1 pushBundleIdentifier:(id)arg2 pdsPushEnvironment:(BOOL)arg3;
-- (id)_registrationForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2;
+- (id)_registrationForContainer:(id)arg1;
 - (id)_pdsTopicFromBundleIdentifier:(id)arg1 withContainerID:(id)arg2;
 - (id)_pdsQualifierFromContainerID:(id)arg1;
 - (BOOL)_pdsPushEnvironmentFromAPSEnvironmentString:(id)arg1;

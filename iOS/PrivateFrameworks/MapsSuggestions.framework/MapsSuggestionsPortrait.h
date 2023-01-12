@@ -8,20 +8,18 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class GEOMapItemStorage, NSNumber, NSString, PPConnectionsCriteria, PPConnectionsStore, PPLocationStore, PPNamedEntityStore;
+@class GEOMapItemStorage, MapsSuggestionsContacts, NSNumber, NSString, PPConnectionsCriteria;
 @protocol MapsSuggestionsNetworkRequester, MapsSuggestionsPortraitConnector, OS_dispatch_queue;
 
 @interface MapsSuggestionsPortrait : NSObject <MapsSuggestionsObject>
 {
     id <MapsSuggestionsPortraitConnector> _connector;
     id <MapsSuggestionsNetworkRequester> _networkRequester;
-    PPLocationStore *_locationStore;
-    PPConnectionsStore *_connectionsStore;
-    PPNamedEntityStore *_namedEntityStore;
     PPConnectionsCriteria *_criteria;
     NSString *_cachedKey;
     GEOMapItemStorage *_cachedMapItem;
     NSNumber *_cachedMapItemOrigin;
+    MapsSuggestionsContacts *_contacts;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -30,9 +28,9 @@
 - (_Bool)fetchConnectionEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (void)sendFeedbackforClientID:(id)arg1 storeType:(long long)arg2 explicitlyEngagedStrings:(id)arg3 explicitlyRejectedStrings:(id)arg4 implicitlyEngagedStrings:(id)arg5 implicitlyRejectedStrings:(id)arg6;
 - (_Bool)fetchLocationEntriesForTray:(_Bool)arg1 currentLocation:(id)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
-@property(readonly, nonatomic) NSString *uniqueName;
+- (id)initWithPortraitConnector:(id)arg1 networkRequester:(id)arg2 contacts:(id)arg3;
 - (id)initFromResourceDepot:(id)arg1;
-- (id)initWithPortraitConnector:(id)arg1 networkRequester:(id)arg2;
+@property(readonly, nonatomic) NSString *uniqueName;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

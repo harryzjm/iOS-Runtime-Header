@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccountStore, SFService, SFSession;
+@class ACAccountStore, HMDeviceSetupOperationHandler, NSArray, NSMutableArray, SFService, SFSession;
 @protocol CDPStateUIProvider, OS_dispatch_queue, SFAuthenticateAccountsServiceDelegate;
 
 @interface SFAuthenticateAccountsService : NSObject
@@ -17,6 +17,12 @@
     SFSession *_sfSession;
     ACAccountStore *_accountStore;
     id <CDPStateUIProvider> _cdpUIProvider;
+    NSMutableArray *_authenticatedAccounts;
+    NSArray *_knownHomeUserIdentifiers;
+    HMDeviceSetupOperationHandler *_homeKitSetupHandler;
+    _Bool _isHomeSharingSetupNeeded;
+    _Bool _isHomeKitSetupNeeded;
+    _Bool _homeKitSetupDidSucceed;
     unsigned int _targetedAccountTypes;
     id <SFAuthenticateAccountsServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -24,9 +30,12 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool homeKitSetupDidSucceed; // @synthesize homeKitSetupDidSucceed=_homeKitSetupDidSucceed;
+@property(nonatomic) _Bool isHomeKitSetupNeeded; // @synthesize isHomeKitSetupNeeded=_isHomeKitSetupNeeded;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(nonatomic) __weak id <SFAuthenticateAccountsServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool isHomeSharingSetupNeeded; // @synthesize isHomeSharingSetupNeeded=_isHomeSharingSetupNeeded;
 @property(nonatomic) unsigned int targetedAccountTypes; // @synthesize targetedAccountTypes=_targetedAccountTypes;
 - (void)_handleRequest:(id)arg1 flags:(unsigned int)arg2 session:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)_saveRemoteVerifiedAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;

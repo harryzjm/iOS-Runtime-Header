@@ -34,6 +34,7 @@
     GEOAlert *_failureAlert;
     NSMutableArray *_incidentsOffRoutes;
     NSMutableArray *_incidentsOnRoutes;
+    NSMutableArray *_internalErrors;
     NSData *_nonRecommendedRoutesCache;
     NSMutableArray *_placeSearchResponses;
     NSMutableArray *_routes;
@@ -87,6 +88,7 @@
         unsigned int read_failureAlert:1;
         unsigned int read_incidentsOffRoutes:1;
         unsigned int read_incidentsOnRoutes:1;
+        unsigned int read_internalErrors:1;
         unsigned int read_nonRecommendedRoutesCache:1;
         unsigned int read_placeSearchResponses:1;
         unsigned int read_routes:1;
@@ -108,6 +110,7 @@
 
 + (_Bool)isValid:(id)arg1;
 + (Class)suggestedRouteType;
++ (Class)internalErrorType;
 + (Class)trafficSignalType;
 + (Class)arrivalParametersType;
 + (Class)trafficCameraType;
@@ -131,7 +134,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -155,6 +159,11 @@
 @property(readonly, nonatomic) _Bool hasDataVersion;
 @property(retain, nonatomic) NSString *serviceVersion;
 @property(readonly, nonatomic) _Bool hasServiceVersion;
+- (id)internalErrorAtIndex:(unsigned long long)arg1;
+- (unsigned long long)internalErrorsCount;
+- (void)addInternalError:(id)arg1;
+- (void)clearInternalErrors;
+@property(retain, nonatomic) NSMutableArray *internalErrors;
 @property(retain, nonatomic) GEOTransitRouteUpdateConfiguration *transitRouteUpdateConfiguration;
 @property(readonly, nonatomic) _Bool hasTransitRouteUpdateConfiguration;
 - (id)trafficSignalAtIndex:(unsigned long long)arg1;
@@ -266,6 +275,8 @@
 - (id)_geoTrafficSignals;
 - (id)_geoTrafficCameras;
 - (void)clearLocations;
+- (void)_clearJupiterFieldsForTesting;
+- (id)preJupiterCompatibleDirectionsResponseWithRoute:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

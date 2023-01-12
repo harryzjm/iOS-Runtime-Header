@@ -6,12 +6,13 @@
 
 #import <CloudDocsDaemon/NSObject-Protocol.h>
 
-@class APSConnection, APSIncomingMessage, APSOutgoingMessage, NSData, NSDictionary, NSError, NSString;
+@class APSConnection, APSIncomingMessage, APSOutgoingMessage, NSArray, NSData, NSDictionary, NSError, NSString;
 
 @protocol APSConnectionDelegate <NSObject>
 - (void)connection:(APSConnection *)arg1 didReceivePublicToken:(NSData *)arg2;
 
 @optional
+- (void)connection:(APSConnection *)arg1 channelSubscriptionsFailedWithFailures:(NSArray *)arg2;
 - (void)connectionDidReconnect:(APSConnection *)arg1;
 - (void)connection:(APSConnection *)arg1 didChangeConnectedStatus:(_Bool)arg2;
 - (void)connection:(APSConnection *)arg1 didFailToSendOutgoingMessage:(APSOutgoingMessage *)arg2 error:(NSError *)arg3;

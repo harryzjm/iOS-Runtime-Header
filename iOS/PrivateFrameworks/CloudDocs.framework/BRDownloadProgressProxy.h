@@ -6,13 +6,14 @@
 
 #import <Foundation/NSProgress.h>
 
-@class NSMetadataQuery, NSOperationQueue;
+@class NSMetadataQuery, NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRDownloadProgressProxy : NSProgress
 {
     NSMetadataQuery *_query;
     NSOperationQueue *_queue;
+    NSString *_personaID;
 }
 
 - (void).cxx_destruct;

@@ -14,6 +14,7 @@
     _Bool _supportsAutomaticGraphicsSwitching;
     _Bool _hasHeadlessGPU;
     _Bool _hasExtendedColorDisplay;
+    _Bool _supportsANE;
     NSString *_name;
     NSArray *_devices;
     id <NUDevice> _integratedDevice;
@@ -24,6 +25,7 @@
 
 + (id)currentPlatform;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsANE; // @synthesize supportsANE=_supportsANE;
 @property(nonatomic) _Bool hasExtendedColorDisplay; // @synthesize hasExtendedColorDisplay=_hasExtendedColorDisplay;
 @property(retain, nonatomic) id <NUDevice> cpuDevice; // @synthesize cpuDevice=_cpuDevice;
 @property(retain, nonatomic) id <NUDevice> headlessDevice; // @synthesize headlessDevice=_headlessDevice;
@@ -40,6 +42,7 @@
 @property(readonly, nonatomic) NSArray *displays;
 - (void)clearCaches;
 - (id)deviceForDisplay:(id)arg1;
+- (id)currentDevice;
 @property(readonly, nonatomic) id <NUDevice> mainDevice;
 - (id)debugDescription;
 - (id)description;

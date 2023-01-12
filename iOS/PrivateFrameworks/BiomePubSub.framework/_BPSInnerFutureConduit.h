@@ -10,7 +10,7 @@
 @interface _BPSInnerFutureConduit
 {
     struct os_unfair_lock_s _lock;
-    struct os_unfair_lock_s _downstreamLock;
+    struct os_unfair_recursive_lock_s _downstreamLock;
     _Bool _hasAnyDemand;
     _Bool _released;
     BPSFuture *_parent;

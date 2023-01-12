@@ -15,6 +15,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputScale; // @synthesize inputScale;
+@property(retain, nonatomic) CIImage *inputDisplacementImage; // @synthesize inputDisplacementImage;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (id)_CIDisplaceFromImage;
 

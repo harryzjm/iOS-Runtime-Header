@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSMutableDictionary, RTDefaultsManager, RTTimer, RTTimerManager, RTXPCActivityTask;
+@class NSMutableArray, NSMutableDictionary, RTDefaultsManager, RTDiagnostics, RTTimer, RTTimerManager, RTXPCActivityTask;
 
 @interface RTXPCActivityManager
 {
     RTDefaultsManager *_defaultsManager;
+    RTDiagnostics *_diagnostics;
     RTTimerManager *_timerManager;
     RTTimer *_timer;
     NSMutableDictionary *_registrants;
@@ -32,6 +33,7 @@
 @property(retain, nonatomic) NSMutableDictionary *registrants; // @synthesize registrants=_registrants;
 @property(retain, nonatomic) RTTimer *timer; // @synthesize timer=_timer;
 @property(retain, nonatomic) RTTimerManager *timerManager; // @synthesize timerManager=_timerManager;
+@property(retain, nonatomic) RTDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property(retain, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 - (void)unregisterActivityWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_unregisterActivityWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -48,10 +50,10 @@
 - (id)_lastCompleteDateForIdentifier:(id)arg1;
 - (void)_updateLastAttemptDateForIdentifier:(id)arg1;
 - (id)_lastAttemptDateForIdentifier:(id)arg1;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setup;
-- (id)initWithDefaultsManager:(id)arg1 timerManager:(id)arg2;
-- (id)initWithDefaultsManager:(id)arg1;
+- (id)initWithDefaultsManager:(id)arg1 diagnostics:(id)arg2 timerManager:(id)arg3;
+- (id)initWithDefaultsManager:(id)arg1 diagnostics:(id)arg2;
 - (id)init;
 
 @end

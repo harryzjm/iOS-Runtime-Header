@@ -25,6 +25,7 @@
 @property(copy, nonatomic) NSArray *events; // @synthesize events=_events;
 @property(nonatomic) int activationType; // @synthesize activationType=_activationType;
 @property(nonatomic) int activationState; // @synthesize activationState=_activationState;
+- (id)initWithEventTrigger:(id)arg1 isAdding:(_Bool)arg2;
 
 @end
 

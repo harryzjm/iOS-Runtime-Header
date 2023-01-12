@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSManagedObjectContext, NSPersistentStoreDescription, NSURL, WFCoreDataChangeNotification;
+#import <WorkflowKit/WFDatabaseProvider-Protocol.h>
+
+@class NSHashTable, NSManagedObjectContext, NSPersistentStoreDescription, NSString, NSURL, WFCoreDataChangeNotification;
 @protocol OS_dispatch_queue;
 
-@interface WFDatabase : NSObject
+@interface WFDatabase : NSObject <WFDatabaseProvider>
 {
     _Bool _destroysOnDeallocation;
+    struct os_unfair_lock_s _observersLock;
     NSURL *_fileURL;
     long long _transactionCount;
     NSPersistentStoreDescription *_persistentStoreDescription;
@@ -30,6 +33,7 @@
 @property(retain, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSManagedObjectContext *suggestionsContext; // @synthesize suggestionsContext=_suggestionsContext;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property(readonly, nonatomic) struct os_unfair_lock_s observersLock; // @synthesize observersLock=_observersLock;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSHashTable *resultsToNotify; // @synthesize resultsToNotify=_resultsToNotify;
 @property(retain, nonatomic) WFCoreDataChangeNotification *pendingChangeNotification; // @synthesize pendingChangeNotification=_pendingChangeNotification;
@@ -37,6 +41,7 @@
 @property(nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
 @property(nonatomic) _Bool destroysOnDeallocation; // @synthesize destroysOnDeallocation=_destroysOnDeallocation;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+- (void)updateAppDescriptor:(id)arg1 atKey:(id)arg2 actionUUID:(id)arg3 actionIndex:(id)arg4 actionIdentifier:(id)arg5 workflowID:(id)arg6;
 - (void)removeRunEventsWithoutAssociatedShortcuts;
 - (void)addSyncHashesToShortcutsIfNecessary;
 - (void)addActionCountsToShortcutsIfNecessary;
@@ -67,13 +72,17 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
 - (id)initWithStoreDescription:(id)arg1 runMigrationsIfNecessary:(_Bool)arg2 error:(id *)arg3;
+- (void)setAuthorizedAtWorkflowLevel:(_Bool)arg1 forAccessResource:(id)arg2 reference:(id)arg3 overridingPreviouslyDeterminedAuthorizations:(_Bool)arg4;
+- (void)setAuthorizedAtWorkflowLevel:(_Bool)arg1 forAccessResource:(id)arg2 overridingPreviouslyDeterminedAuthorizations:(_Bool)arg3;
 - (void)deleteAllAccessResourceStateDataForReference:(id)arg1;
 - (id)accessResourceStatesForReference:(id)arg1;
 - (id)accessResourcesForReference:(id)arg1;
-- (void)setPerWorkflowStateData:(id)arg1 forAccessResourceWithIdentifier:(id)arg2 forReference:(id)arg3;
+- (void)setPerWorkflowStateData:(id)arg1 forAccessResourceWithIdentifier:(id)arg2 reference:(id)arg3;
 - (id)currentPerWorkflowStateDataForAccessResourceWithIdentifier:(id)arg1 forReference:(id)arg2;
 - (_Bool)isReference:(id)arg1 allowedToRunOnDomain:(id)arg2;
 - (void)setTrustedToRunScripts:(_Bool)arg1 forReference:(id)arg2 onDomain:(id)arg3;
+- (id)databaseWithError:(id *)arg1;
+- (id)mostRunOrLatestImportedVisibleShortcut;
 - (_Bool)saveContextOrRollback:(id)arg1 error:(id *)arg2;
 - (id)performSuggestionsOperationWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)deleteShortcutSuggestionsFromApps:(id)arg1;
@@ -85,7 +94,32 @@
 - (id)syncToken;
 - (void)setSyncToken:(id)arg1;
 - (void)clearTombstonesAndSyncState;
+- (id)generateAndPersistUUIDForActionWithIdentifier:(id)arg1 actionIndex:(unsigned long long)arg2 workflowIdentifier:(id)arg3;
+- (void)deleteAllSmartPromptStateDataForReference:(id)arg1;
+- (void)deleteSmartPromptStatesForDeletedActionUUIDs:(id)arg1 forReference:(id)arg2;
+- (void)_deleteSmartPromptState:(id)arg1 forReference:(id)arg2;
+- (void)deleteSmartPromptState:(id)arg1 forReference:(id)arg2;
+- (void)_updateDeletionAuthorizationsToMatchAuthorization:(id)arg1 forWorkflow:(id)arg2;
+- (void)_updateStatesToMatchSmartPromptState:(id)arg1 forWorkflow:(id)arg2;
+- (void)_saveSmartPromptStateData:(id)arg1 actionUUID:(id)arg2 forWorkflow:(id)arg3;
+- (_Bool)saveSmartPromptStateData:(id)arg1 actionUUID:(id)arg2 reference:(id)arg3 error:(id *)arg4;
+- (id)allStatesDataForReference:(id)arg1 actionUUID:(id)arg2;
+- (id)deletionAuthorizationStatesForReference:(id)arg1;
+- (id)currentDeletionAuthorizationStatusWithContentItemClassName:(id)arg1 actionUUID:(id)arg2 actionIdentifier:(id)arg3 actionIndex:(unsigned long long)arg4 count:(unsigned long long)arg5 reference:(id)arg6;
+- (id)smartPromptStatesForReference:(id)arg1 actionUUID:(id)arg2;
+- (id)smartPromptStatesForReference:(id)arg1;
+- (void)createSmartPromptStatesForInsertedActions:(id)arg1 forReference:(id)arg2;
+- (id)migrateAccountStateToAppOriginIfNecessary:(id)arg1 reference:(id)arg2 actionUUID:(id)arg3;
+- (id)performDatabaseLookupForState:(id)arg1 actionUUID:(id)arg2 reference:(id)arg3;
+- (id)fetchFirstAllowedStateMatching:(id)arg1 actionUUID:(id)arg2 forReference:(id)arg3;
+- (id)approvalResultForContentAttributionSet:(id)arg1 contentDestination:(id)arg2 actionUUID:(id)arg3 actionIdentifier:(id)arg4 actionIndex:(unsigned long long)arg5 reference:(id)arg6;
 - (id)conflictForWorkflowReference:(id)arg1;
+- (id)allShortcutBookmarks;
+- (_Bool)deleteAllBookmarksForWorkflowID:(id)arg1 error:(id *)arg2;
+- (_Bool)deleteBookmarkWithPath:(id)arg1 forWorkflowID:(id)arg2 error:(id *)arg3;
+- (id)bookmarksForWorkflowID:(id)arg1 error:(id *)arg2;
+- (id)bookmarkDataForWorkflowID:(id)arg1 path:(id)arg2 error:(id *)arg3;
+- (id)createBookmarkWithWorkflowID:(id)arg1 path:(id)arg2 bookmarkData:(id)arg3 error:(id *)arg4;
 - (void)deleteDonationsForShortcutWithIdentifier:(id)arg1;
 - (id)duplicateNameErrorWithName:(id)arg1;
 - (id)validateWorkflowName:(id)arg1 forCreation:(_Bool)arg2 overwriting:(_Bool)arg3 error:(id *)arg4;
@@ -94,6 +128,8 @@
 - (id)suggestedWorkflowNameForName:(id)arg1;
 - (void)setConflictingReference:(id)arg1 forReference:(id)arg2;
 - (_Bool)hasConflictingReferenceForReference:(id)arg1;
+- (id)localConflictingReferenceForReference:(id)arg1;
+- (id)remoteConflictingReferenceForReference:(id)arg1;
 - (id)conflictingReferenceForReference:(id)arg1;
 - (_Bool)deleteReference:(id)arg1 tombstone:(_Bool)arg2 deleteConflictIfPresent:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)deleteReference:(id)arg1 error:(id *)arg2;
@@ -103,9 +139,12 @@
 - (id)createWorkflowWithOptions:(id)arg1 nameCollisionBehavior:(unsigned long long)arg2 error:(id *)arg3;
 - (id)createWorkflowWithOptions:(id)arg1 error:(id *)arg2;
 - (id)createWorkflowWithError:(id *)arg1;
+- (_Bool)hasConflictWithName:(id)arg1;
 - (_Bool)hasVisibleWorkflowsWithName:(id)arg1;
 - (id)uniqueVisibleReferenceForWorkflowName:(id)arg1;
 - (id)referenceForWorkflowID:(id)arg1;
+- (id)recentlyRunShortcuts;
+- (id)recentlyModifiedShortcuts;
 - (id)deletedWorkflows;
 - (id)visibleReferencesForWorkflowName:(id)arg1;
 - (id)allShortcuts;
@@ -149,20 +188,28 @@
 - (_Bool)moveReferences:(id)arg1 toIndexes:(id)arg2 ofCollection:(id)arg3 error:(id *)arg4;
 - (_Bool)moveReferences:(id)arg1 toIndex:(long long)arg2 ofCollection:(id)arg3 error:(id *)arg4;
 - (id)sortedVisibleWorkflowsInCollection:(id)arg1;
+- (id)collectionWithIdentifier:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (id)collectionWithIdentifier:(id)arg1;
 - (id)collectionForWorkflowType:(id)arg1;
 - (id)folderForWorkflowReference:(id)arg1;
 - (id)collectionsForWorkflowReference:(id)arg1;
-- (id)updateFolder:(id)arg1 newName:(id)arg2 newIcon:(id)arg3 error:(id *)arg4;
-- (id)createFolderWithName:(id)arg1 icon:(id)arg2 error:(id *)arg3;
+- (id)updateFolder:(id)arg1 newName:(id)arg2 newIcon:(unsigned short)arg3 error:(id *)arg4;
+- (id)createFolderWithName:(id)arg1 icon:(unsigned short)arg2 error:(id *)arg3;
 - (id)sortedVisibleFolders;
 - (unsigned long long)countOfWorkflowsInAFolder;
 - (id)latestRunEvent;
 - (id)sortedRunEventsForTriggerID:(id)arg1;
+- (id)sortedRunEventsWithSource:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)sortedRunEventsWithSource:(id)arg1;
 - (void)setOutcome:(long long)arg1 forRunEvent:(id)arg2;
 - (id)logRunOfWorkflow:(id)arg1 atDate:(id)arg2 withIdentifier:(id)arg3 source:(id)arg4 triggerID:(id)arg5;
 - (id)logRunOfWorkflow:(id)arg1 withSource:(id)arg2 triggerID:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

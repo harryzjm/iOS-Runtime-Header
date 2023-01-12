@@ -6,7 +6,6 @@
 
 @class CKPCSDiagnosticInformation, NSArray, NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordZonePCSDiagnosticsOperation
 {
     NSString *_identityStatus;
@@ -27,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;
 - (id)activityCreate;
 - (id)relevantZoneIDs;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 @end
 

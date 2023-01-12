@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minimumIntrinsicHeight; // @synthesize minimumIntrinsicHeight=_minimumIntrinsicHeight;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(readonly, nonatomic) _Bool shouldExtendCaretHeight;
+@property(readonly, nonatomic) double naturalHeight;
 - (struct CGSize)intrinsicSizeForContentSize:(struct CGSize)arg1;
 - (struct CGRect)contentFrameForBounds:(struct CGRect)arg1;
 - (id)initWithPerEdgePadding:(struct UIEdgeInsets)arg1;

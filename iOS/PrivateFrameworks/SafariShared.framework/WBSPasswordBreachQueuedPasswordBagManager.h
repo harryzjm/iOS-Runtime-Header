@@ -15,16 +15,20 @@
     WBSPasswordBreachResults *_results;
     id <WBSPasswordBreachCredentialSource> _credentialSource;
     NSMutableDictionary *_queuedPasswordsByUUID;
+    long long _fillState;
     NSObject<OS_dispatch_queue> *_internalQueue;
 }
 
 - (void).cxx_destruct;
 - (id)description;
+@property(readonly, nonatomic) long long fillState;
 - (id)_dictionaryRepresentation;
+- (void)saveBagToStore;
 @property(readonly, copy, nonatomic) NSDictionary *allNonbreachedPasswords;
 - (void)reportPasswordCheckBatchResults:(id)arg1;
 - (void)getPasswordsForNextBatchWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)_constructNewBagOnInternalQueue;
+- (id)_constructBagOnInternalQueueWithCredentials:(id)arg1 ensureFakePasswordGeneration:(_Bool)arg2;
+- (id)_constructNewBagOnInternalQueueEnsuringFakePasswordGeneration:(_Bool)arg1;
 - (id)_unbreachedCredentials;
 - (id)_passwordBagFromDictionaryRepresentation:(id)arg1;
 - (id)initWithContext:(id)arg1 results:(id)arg2 passwordSource:(id)arg3;

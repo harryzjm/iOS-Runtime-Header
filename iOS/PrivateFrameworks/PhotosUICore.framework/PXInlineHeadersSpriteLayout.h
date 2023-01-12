@@ -12,7 +12,7 @@
 
 @interface PXInlineHeadersSpriteLayout <PXGItemsGeometry, PXGViewSource>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     NSDateFormatter *_yearFormatter;
     NSDateFormatter *_monthFormatter;
     NSCalendar *_calendar;

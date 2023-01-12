@@ -6,10 +6,10 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKObjectType, HKQuery, NSNumber;
+@class HKQuery, NSNumber, NSSet;
 
 @protocol HKQueryDelegate <NSObject>
-- (void)closeTransactionForType:(HKObjectType *)arg1 anchor:(NSNumber *)arg2 ackTime:(NSNumber *)arg3 query:(HKQuery *)arg4;
+- (void)closeTransactionForTypes:(NSSet *)arg1 anchor:(NSNumber *)arg2 ackTime:(NSNumber *)arg3 query:(HKQuery *)arg4;
 - (void)queryDidFinishExecuting:(HKQuery *)arg1;
 @end
 

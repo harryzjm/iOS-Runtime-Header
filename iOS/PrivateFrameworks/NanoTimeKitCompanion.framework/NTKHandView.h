@@ -17,7 +17,6 @@
     UIView *_handDotView;
     struct CGPath *_dropShadowPath;
     struct CGPath *_radialShadowPath;
-    UIView *_dropShadowView;
     UIImageView *_radialShadowImageView;
     UIImageView *_dropShadowImageView;
     _Bool _shadowsHidden;
@@ -75,6 +74,7 @@
 - (void)setupHandDotViewWithDiameter:(double)arg1;
 - (void)noModelUpdate_setHandDotColor:(id)arg1;
 - (void)_updateShadows;
+- (void)setNeedsLayout;
 - (void)setHidden:(_Bool)arg1;
 - (void)noModelUpdate_setInlayInsets:(struct UIEdgeInsets)arg1;
 - (void)noModelUpdate_setInlayColor:(id)arg1;

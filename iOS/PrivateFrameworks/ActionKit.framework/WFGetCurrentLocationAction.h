@@ -10,6 +10,9 @@
 {
 }
 
++ (_Bool)outputIsExemptFromTaintTrackingInheritance;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

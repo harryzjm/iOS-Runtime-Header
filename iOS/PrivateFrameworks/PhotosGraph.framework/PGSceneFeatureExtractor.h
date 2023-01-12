@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KnowledgeGraphKit/MARelationFeatureExtractor.h>
-
-@interface PGSceneFeatureExtractor : MARelationFeatureExtractor
+@interface PGSceneFeatureExtractor
 {
 }
 
+- (id)labelsForVersion:(long long)arg1;
+- (id)initWithVersion:(long long)arg1 error:(id *)arg2;
 - (id)initWithError:(id *)arg1;
 
 @end

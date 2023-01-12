@@ -11,7 +11,7 @@
 #import <Sleep/NAEquatable-Protocol.h>
 #import <Sleep/NAHashable-Protocol.h>
 
-@class HKSPAlarmConfiguration, NSDate, NSDateComponents, NSSet, NSString;
+@class HKSPAlarmConfiguration, NSDate, NSDateComponents, NSDictionary, NSSet, NSString;
 
 @interface HKSPSleepScheduleDayOccurrence : NSObject <HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable>
 {
@@ -21,11 +21,8 @@
     HKSPAlarmConfiguration *_alarmConfiguration;
 }
 
++ (id)innerClasses;
 + (_Bool)supportsSecureCoding;
-+ (id)testOverrideSleepScheduleDayOccurrence;
-+ (id)testSleepScheduleDayOccurrenceWithAllPropertiesSet;
-+ (id)testSleepScheduleDayOccurrence;
-+ (id)testSleepScheduleDayOccurrenceWithAlarmConfiguration:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HKSPAlarmConfiguration *alarmConfiguration; // @synthesize alarmConfiguration=_alarmConfiguration;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
@@ -41,10 +38,12 @@
 - (_Bool)isEquivalentToOccurrenceIgnoringDates:(id)arg1;
 - (_Bool)isEquivalentTo:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)changesFromOccurrence:(id)arg1;
 - (id)generateSleepScheduleOccurrenceWithWeekdays:(unsigned long long)arg1;
 - (id)mutableCopy;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 - (void)_encodeComponentsForPersistence:(id)arg1 coder:(id)arg2 key:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;

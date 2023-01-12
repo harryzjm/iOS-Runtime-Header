@@ -23,15 +23,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double lastDiscoveredElementsUpdateTime; // @synthesize lastDiscoveredElementsUpdateTime=_lastDiscoveredElementsUpdateTime;
-@property(copy, nonatomic, setter=_setLastDiscoveredElementsByUniqueID:) NSDictionary *lastDiscoveredElementsByUniqueID; // @synthesize lastDiscoveredElementsByUniqueID=_lastDiscoveredElementsByUniqueID;
-@property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
-@property(nonatomic) __weak id <PKTextInputElementsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)reportDebugStateDescription:(CDUnknownBlockType)arg1;
-- (void)flushDiscoveredElements;
-- (void)_replaceLastDiscoveredElementsWithElements:(id)arg1;
-- (void)updateTextInputElementsWithReferenceHitPoint:(struct CGPoint)arg1 referenceSearchArea:(struct CGRect)arg2 referenceCoordSpace:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)initWithContainerView:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

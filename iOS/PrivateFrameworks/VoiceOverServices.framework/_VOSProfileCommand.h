@@ -16,7 +16,7 @@
     NSMutableSet *_gestures;
     NSMutableSet *_keyboardShortcuts;
     NSMutableSet *_quickNavShortcuts;
-    NSMutableSet *_slaveCommands;
+    NSMutableSet *_secondaryCommands;
     _VOSProfileMode *_mode;
 }
 
@@ -25,15 +25,15 @@
 + (id)profileCommandWithCommand:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak _VOSProfileMode *mode; // @synthesize mode=_mode;
-@property(retain, nonatomic) NSMutableSet *slaveCommands; // @synthesize slaveCommands=_slaveCommands;
+@property(retain, nonatomic) NSMutableSet *secondaryCommands; // @synthesize secondaryCommands=_secondaryCommands;
 @property(retain, nonatomic) NSMutableSet *quickNavShortcuts; // @synthesize quickNavShortcuts=_quickNavShortcuts;
 @property(retain, nonatomic) NSMutableSet *keyboardShortcuts; // @synthesize keyboardShortcuts=_keyboardShortcuts;
 @property(retain, nonatomic) NSMutableSet *gestures; // @synthesize gestures=_gestures;
 @property(retain, nonatomic) VOSCommand *command; // @synthesize command=_command;
-- (id)slaveCommandsForPressCount:(long long)arg1;
-@property(readonly, nonatomic) _Bool hasSlaveCommands;
-- (void)removeSlaveCommand:(id)arg1;
-- (void)addSlaveCommand:(id)arg1;
+- (id)secondaryCommandsForPressCount:(long long)arg1;
+@property(readonly, nonatomic) _Bool hasSecondaryCommands;
+- (void)removeSecondaryCommand:(id)arg1;
+- (void)addSecondaryCommand:(id)arg1;
 - (id)profileQuickNavShortcutForKeyChord:(id)arg1;
 - (void)removeQuickNavShortcut:(id)arg1;
 - (void)addQuickNavShortcut:(id)arg1;
@@ -46,7 +46,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)_initWithCommand:(id)arg1 gestures:(id)arg2 keyboardShortcuts:(id)arg3 quickNavShortcuts:(id)arg4 slaveCommands:(id)arg5;
+- (id)_initWithCommand:(id)arg1 gestures:(id)arg2 keyboardShortcuts:(id)arg3 quickNavShortcuts:(id)arg4 secondaryCommands:(id)arg5;
 
 @end
 

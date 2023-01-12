@@ -8,7 +8,7 @@
 
 #import <Photos/NSCacheDelegate-Protocol.h>
 
-@class NSCache, NSMutableDictionary, NSObject, NSSet, NSString, PHPhotoLibrary;
+@class NSCache, NSMutableDictionary, NSObject, NSSet, NSString, PHBatchFetchingArrayFetchedClass, PHPhotoLibrary;
 @protocol OS_dispatch_queue, PHBatchFetchingArrayDataSource;
 
 @interface PHBatchFetchingArray : NSArray <NSCacheDelegate>
@@ -25,7 +25,7 @@
     NSObject<OS_dispatch_queue> *_uuidsQueue;
     NSMutableDictionary *_uuidsByOIDs;
     unsigned long long _batchSize;
-    Class _fetchedPropertySetClass;
+    PHBatchFetchingArrayFetchedClass *_overridenFetchResultClass;
     unsigned long long _propertyHint;
 }
 

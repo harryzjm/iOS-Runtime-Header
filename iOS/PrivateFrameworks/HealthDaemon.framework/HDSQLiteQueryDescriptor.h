@@ -34,10 +34,11 @@
 - (id)_SQLForDeleteWithError:(id *)arg1;
 - (id)_joinClauseForProperties:(id)arg1;
 - (id)_SQLForSelectWithProperties:(id)arg1 columns:(id)arg2;
-- (CDUnknownBlockType)_joinClauseComparatorWithPreferredEntityOrder:(id)arg1;
 - (id)_sortedJoinClauses:(id)arg1 preferredOrder:(id)arg2 baseTables:(id)arg3;
-- (id)_SQLForSelectWithProperties:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)bindToDeleteStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
+- (void)bindToSelectStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
+- (id)selectSQLForProperties:(id)arg1;
 
 @end
 

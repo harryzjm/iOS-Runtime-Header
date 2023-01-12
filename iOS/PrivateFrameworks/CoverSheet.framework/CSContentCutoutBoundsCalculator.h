@@ -10,9 +10,13 @@
 {
 }
 
++ (struct CGRect)_normalizedContentCutoutForScreenBounds:(struct CGRect)arg1 contentBoundingRect:(struct CGRect)arg2;
 + (struct CGRect)_screenBoundsForPortrait:(_Bool)arg1;
++ (struct CGRect)_contentCutoutBoundsForPortrait:(_Bool)arg1 forModal:(_Bool)arg2;
++ (struct CGRect)modalNormalizedContentCutoutBoundsForOrientation:(long long)arg1;
++ (struct CGRect)modalContentCutoutBoundsForOrientation:(long long)arg1;
++ (struct CGRect)modalContentCutoutBoundsForInterfaceOrientation:(long long)arg1;
 + (struct CGRect)normalizedContentCutoutBoundsForOrientation:(long long)arg1;
-+ (struct CGRect)contentCutoutBoundsForPortrait:(_Bool)arg1;
 + (struct CGRect)contentCutoutBoundsForOrientation:(long long)arg1;
 + (struct CGRect)contentCutoutBoundsForInterfaceOrientation:(long long)arg1;
 

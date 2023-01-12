@@ -15,6 +15,7 @@
     _Bool _isClosed;
     NSDate *_initialTime;
     NSDate *_lastUpdateTime;
+    unsigned long long _maxUniqueAddresses;
     NSMutableDictionary *_accumulatedDeviceMetrics;
     NSMutableDictionary *_firstAssociatedLocationPerDevice;
     NSMutableDictionary *_lastAssociatedLocationPerDevice;
@@ -27,6 +28,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *lastAssociatedLocationPerDevice; // @synthesize lastAssociatedLocationPerDevice=_lastAssociatedLocationPerDevice;
 @property(readonly, nonatomic) NSMutableDictionary *firstAssociatedLocationPerDevice; // @synthesize firstAssociatedLocationPerDevice=_firstAssociatedLocationPerDevice;
 @property(readonly, nonatomic) NSMutableDictionary *accumulatedDeviceMetrics; // @synthesize accumulatedDeviceMetrics=_accumulatedDeviceMetrics;
+@property(readonly, nonatomic) unsigned long long maxUniqueAddresses; // @synthesize maxUniqueAddresses=_maxUniqueAddresses;
 @property(readonly, nonatomic) NSDate *lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
 @property(readonly, nonatomic) NSDate *initialTime; // @synthesize initialTime=_initialTime;
 @property(readonly, nonatomic) _Bool isClosed; // @synthesize isClosed=_isClosed;
@@ -35,7 +37,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)updateWithInterVisitMetricsSnapshot:(id)arg1;
 - (void)updateInterVisitMetric:(id)arg1 withUpdatedTime:(id)arg2 andCloseSnapshot:(_Bool)arg3;
-- (id)initWithTime:(id)arg1;
+- (id)initWithTime:(id)arg1 maxUniqueAddresses:(unsigned long long)arg2;
 
 @end
 

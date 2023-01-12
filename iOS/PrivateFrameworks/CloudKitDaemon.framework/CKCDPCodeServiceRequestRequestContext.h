@@ -10,7 +10,6 @@
 
 @class CKCDPCodeServiceRequestDatabaseOwner, CKCDPCodeServiceRequestOperationGroup, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestRequestContext : PBCodable <NSCopying>
 {
     unsigned long long _dsid;

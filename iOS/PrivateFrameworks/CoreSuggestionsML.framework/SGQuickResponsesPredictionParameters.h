@@ -13,8 +13,10 @@
     _Bool _isPersonalizationDisabled;
     _Bool _isReplyTextRandomized;
     _Bool _isPerCategory;
+    _Bool _modelFeaturizationFormatOptionIsDense;
     _Bool _dynamicLabelsEnabled;
     _Bool _hasNegativeClass;
+    _Bool _filterNonConfident;
     double _weightForCategoryAverage;
     double _weightForCategoryMax;
     double _weightForIndividualModel;
@@ -35,9 +37,11 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool filterNonConfident; // @synthesize filterNonConfident=_filterNonConfident;
 @property(readonly, nonatomic) double negativeClassMaximumToPredict; // @synthesize negativeClassMaximumToPredict=_negativeClassMaximumToPredict;
 @property(readonly, nonatomic) _Bool hasNegativeClass; // @synthesize hasNegativeClass=_hasNegativeClass;
 @property(readonly, nonatomic) _Bool dynamicLabelsEnabled; // @synthesize dynamicLabelsEnabled=_dynamicLabelsEnabled;
+@property(readonly, nonatomic) _Bool modelFeaturizationFormatOptionIsDense; // @synthesize modelFeaturizationFormatOptionIsDense=_modelFeaturizationFormatOptionIsDense;
 @property(readonly, nonatomic) NSString *subModelKeyString; // @synthesize subModelKeyString=_subModelKeyString;
 @property(readonly, nonatomic) NSString *modelTypeName; // @synthesize modelTypeName=_modelTypeName;
 @property(readonly, nonatomic) NSString *promptJoiningString; // @synthesize promptJoiningString=_promptJoiningString;

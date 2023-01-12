@@ -11,20 +11,23 @@
     CLKComplicationTemplate *_complicationTemplate;
 }
 
++ (_Bool)_shouldUseFallbackImagesForDevice:(id)arg1;
 + (_Bool)_isComplicationFamilyAvaialbleBeforeGlory:(long long)arg1;
 + (_Bool)acceptsClassicComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2;
 + (_Bool)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
+- (id)_fullColorImageProviderWithSystemImageName:(id)arg1 tintColor:(id)arg2 fallbackImageName:(id)arg3;
+- (id)_imageProviderWithSystemImageName:(id)arg1 overridePointSize:(id)arg2 tintColor:(id)arg3 fallbackImageName:(id)arg4;
 - (void)_localeDidChange:(id)arg1;
 - (id)_astronomyTemplateFromVista:(unsigned long long)arg1;
 - (id)_solarTemplate;
 - (id)_siriTemplate;
 - (id)_newsTemplate;
+- (_Bool)supportsFlowerImages;
 - (id)_breathingTemplate;
 - (id)_reminderTemplate;
-- (id)_workoutTemplate;
 - (id)_nowPlayingTemplate;
-- (id)_podcastTemplate;
+- (id)_podcastsTemplate;
 - (id)_radioTemplate;
 - (id)_musicTemplate;
 - (id)_city;
@@ -33,12 +36,8 @@
 - (id)_alarmTemplate;
 - (id)_stopwatchTemplate;
 - (id)sampleTemplate;
-- (id)_timerTemplate;
 - (id)_moonPhaseTemplate;
 - (id)_nextEventTemplate;
-- (id)_wellnessStatisticsForStandHours:(id)arg1;
-- (id)_wellnessStatisticsForData:(id)arg1 unit:(id)arg2;
-- (id)_wellnessTemplate;
 - (id)_heartrateTemplate;
 - (id)_batteryTemplate;
 - (id)_dateTemplate;

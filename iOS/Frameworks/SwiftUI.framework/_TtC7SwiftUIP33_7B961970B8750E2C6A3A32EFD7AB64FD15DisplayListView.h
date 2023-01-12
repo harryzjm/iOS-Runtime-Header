@@ -11,6 +11,7 @@
 @interface _TtC7SwiftUIP33_7B961970B8750E2C6A3A32EFD7AB64FD15DisplayListView : UIView
 {
     MISSING_TYPE *displayList;
+    MISSING_TYPE *displayListPosition;
 }
 
 - (void).cxx_destruct;

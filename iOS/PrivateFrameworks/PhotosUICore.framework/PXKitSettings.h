@@ -6,6 +6,7 @@
 
 @interface PXKitSettings
 {
+    _Bool _displayLinkUsesUpdateCycle;
     _Bool _defaultAsyncTextRenderingEnabled;
     _Bool _defaultUseShapeLayerForText;
     _Bool _defaultTextAutoscalingEnabled;
@@ -21,10 +22,18 @@
     double _textAutoscalingPrecision;
     long long _deviceGraphicsQuality;
     double _simulatedSafeAreaHorizontalInsets;
+    double _simulatedPeripheryExtraTopInset;
+    double _simulatedPeripheryExtraLeftInset;
+    double _simulatedPeripheryExtraBottomInset;
+    double _simulatedPeripheryExtraRightInset;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) double simulatedPeripheryExtraRightInset; // @synthesize simulatedPeripheryExtraRightInset=_simulatedPeripheryExtraRightInset;
+@property(nonatomic) double simulatedPeripheryExtraBottomInset; // @synthesize simulatedPeripheryExtraBottomInset=_simulatedPeripheryExtraBottomInset;
+@property(nonatomic) double simulatedPeripheryExtraLeftInset; // @synthesize simulatedPeripheryExtraLeftInset=_simulatedPeripheryExtraLeftInset;
+@property(nonatomic) double simulatedPeripheryExtraTopInset; // @synthesize simulatedPeripheryExtraTopInset=_simulatedPeripheryExtraTopInset;
 @property(nonatomic) double simulatedSafeAreaHorizontalInsets; // @synthesize simulatedSafeAreaHorizontalInsets=_simulatedSafeAreaHorizontalInsets;
 @property(nonatomic) long long deviceGraphicsQuality; // @synthesize deviceGraphicsQuality=_deviceGraphicsQuality;
 @property(nonatomic) _Bool useFancyDarkening; // @synthesize useFancyDarkening=_useFancyDarkening;
@@ -40,6 +49,7 @@
 @property(nonatomic) _Bool defaultUseShapeLayerForText; // @synthesize defaultUseShapeLayerForText=_defaultUseShapeLayerForText;
 @property(nonatomic) long long defaultLabelTypesettingMode; // @synthesize defaultLabelTypesettingMode=_defaultLabelTypesettingMode;
 @property(nonatomic) _Bool defaultAsyncTextRenderingEnabled; // @synthesize defaultAsyncTextRenderingEnabled=_defaultAsyncTextRenderingEnabled;
+@property(nonatomic) _Bool displayLinkUsesUpdateCycle; // @synthesize displayLinkUsesUpdateCycle=_displayLinkUsesUpdateCycle;
 - (void)setDefaultValues;
 - (id)parentSettings;
 

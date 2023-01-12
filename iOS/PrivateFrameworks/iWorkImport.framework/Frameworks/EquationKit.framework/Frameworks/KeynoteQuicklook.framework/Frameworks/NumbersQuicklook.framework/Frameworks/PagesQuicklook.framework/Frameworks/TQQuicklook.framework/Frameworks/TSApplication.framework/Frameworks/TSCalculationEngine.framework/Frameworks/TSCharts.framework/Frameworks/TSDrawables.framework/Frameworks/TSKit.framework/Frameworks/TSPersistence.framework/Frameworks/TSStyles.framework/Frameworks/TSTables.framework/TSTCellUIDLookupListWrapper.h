@@ -15,14 +15,15 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct TSTCellUID)cellUIDAtIndex:(unsigned long long)arg1;
-- (void)addCellRegion:(id)arg1 withColumnUIDs:(const vector_4dc5f307 *)arg2 rowUIDs:(const vector_4dc5f307 *)arg3;
-- (void)addCellUID:(const struct TSTCellUID *)arg1;
+- (struct TSKUIDStructCoord)cellUIDAtIndex:(unsigned long long)arg1;
+- (void)addCellRegion:(id)arg1 withColumnUIDs:(const void *)arg2 rowUIDs:(const void *)arg3;
+- (void)addCellUID:(const struct TSKUIDStructCoord *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reserve:(unsigned long long)arg1;
 - (id)initWithCellUIDList:(id)arg1;
 @property(readonly, nonatomic) unsigned long long count;
-- (struct TSTCellUIDLookupList *)UIDLookupList;
+- (void *)UIDLookupList;
+- (id)copyByPruningAgainstTable:(id)arg1 behavior:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 @end
 

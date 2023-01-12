@@ -26,8 +26,5 @@
 - (void)handleIntentRemotelyWithRemoteOperation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConnection:(id)arg1 andDevice:(id)arg2;
 
-// Remaining properties
-@property(copy, nonatomic) CDUnknownBlockType backgroundAppHandler;
-
 @end
 

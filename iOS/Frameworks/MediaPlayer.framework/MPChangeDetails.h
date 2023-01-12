@@ -25,6 +25,7 @@
 }
 
 + (id)changeDetailsWithPreviousCount:(long long)arg1 finalCount:(long long)arg2 isEqualBlock:(CDUnknownBlockType)arg3 isUpdatedBlock:(CDUnknownBlockType)arg4;
++ (id)empty;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *updatedItemIndexPaths; // @synthesize updatedItemIndexPaths=_updatedItemIndexPaths;
 @property(copy, nonatomic) NSArray *deletedItemIndexPaths; // @synthesize deletedItemIndexPaths=_deletedItemIndexPaths;
@@ -32,6 +33,7 @@
 @property(copy, nonatomic) NSIndexSet *updatedSections; // @synthesize updatedSections=_updatedSections;
 @property(copy, nonatomic) NSIndexSet *deletedSections; // @synthesize deletedSections=_deletedSections;
 @property(copy, nonatomic) NSIndexSet *insertedSections; // @synthesize insertedSections=_insertedSections;
+- (_Bool)isValidForPreviousCount:(long long)arg1 finalCount:(long long)arg2 reason:(id *)arg3;
 - (void)applyUIKitWorkarounds;
 - (void)enumerateMovesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMovesWithBlock:(CDUnknownBlockType)arg1;

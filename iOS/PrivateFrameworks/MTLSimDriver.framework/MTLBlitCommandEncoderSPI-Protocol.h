@@ -6,9 +6,15 @@
 
 #import <MTLSimDriver/MTLBlitCommandEncoder-Protocol.h>
 
-@protocol MTLTexture;
+@protocol MTLBuffer, MTLTexture;
 
 @protocol MTLBlitCommandEncoderSPI <MTLBlitCommandEncoder>
+- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_caaed6bc)arg4 color:(CDStruct_d2b197d1)arg5 pixelFormat:(unsigned long long)arg6;
+- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_caaed6bc)arg4 color:(CDStruct_d2b197d1)arg5;
+- (void)fillTexture:(id <MTLTexture>)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_caaed6bc)arg4 bytes:(const void *)arg5 length:(unsigned long long)arg6;
+- (void)fillBuffer:(id <MTLBuffer>)arg1 range:(struct _NSRange)arg2 pattern4:(unsigned int)arg3;
+- (void)invalidateCompressedTexture:(id <MTLTexture>)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
+- (void)invalidateCompressedTexture:(id <MTLTexture>)arg1;
 - (void)copyFromTexture:(id <MTLTexture>)arg1 sourceSlice:(unsigned long long)arg2 sourceLevel:(unsigned long long)arg3 sourceOrigin:(CDStruct_da2e99ad)arg4 sourceSize:(CDStruct_da2e99ad)arg5 toTexture:(id <MTLTexture>)arg6 destinationSlice:(unsigned long long)arg7 destinationLevel:(unsigned long long)arg8 destinationOrigin:(CDStruct_da2e99ad)arg9 options:(unsigned long long)arg10;
 @end
 

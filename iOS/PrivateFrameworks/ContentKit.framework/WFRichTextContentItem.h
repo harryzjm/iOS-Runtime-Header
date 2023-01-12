@@ -10,11 +10,13 @@
 {
 }
 
++ (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (id)attributedStringFromHTMLFile:(id)arg1 options:(id)arg2 documentAttributes:(id *)arg3 error:(id *)arg4;
 + (id)normalizedHTMLDocumentFromHTMLData:(id)arg1;
@@ -24,6 +26,7 @@
 + (id)attributesDictionaryForType:(id)arg1;
 + (_Bool)typeRequiresMainThread:(id)arg1;
 + (id)documentTypeForType:(id)arg1;
+- (void)getPDFFromResource:(id)arg1 includeMargin:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)preferredFileType;
 - (_Bool)isContent;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;

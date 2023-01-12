@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, PLBackgroundJobService, PLCoreDataFileRecorder;
+@class NSDate, NSMutableDictionary, PLBackgroundJobService, PLSQLStatementFileRecorder;
 
 @interface PLPhotoLibraryBundleController : NSObject
 {
     long long _bundleType;
     Class _libraryServicesDelegateClass;
-    PLCoreDataFileRecorder *_statementRecorder;
+    PLSQLStatementFileRecorder *_statementRecorder;
     struct os_unfair_lock_s _bundlesByPathLock;
     NSMutableDictionary *_bundlesByPath;
     struct os_unfair_lock_s _bundleCreationPauseLock;

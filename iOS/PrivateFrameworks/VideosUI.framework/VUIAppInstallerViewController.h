@@ -6,20 +6,15 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class NSString, VUIAppInstallConfirmationViewController;
+@class NSString, NSURL, VUIASDDialogObserver, VUIAppInstallConfirmationViewController;
 @protocol WLKInstallable;
 
 @interface VUIAppInstallerViewController : UINavigationController
 {
-    CDUnknownBlockType _completionBlock;
-    double _lastProgress;
-    CDUnknownBlockType _progressBlock;
-    VUIAppInstallConfirmationViewController *_confirmationController;
     _Bool _displayAppStoreLink;
     _Bool _displaySecondaryLink;
     id <WLKInstallable> _installable;
     NSString *_localizedContentTitle;
-    NSString *_contentType;
     NSString *_confirmationTitle;
     NSString *_confirmationBody;
     NSString *_updateBody;
@@ -27,9 +22,21 @@
     NSString *_confirmationInstallButtonTitle;
     NSString *_secondaryLinkTitle;
     CDUnknownBlockType _secondaryLinkHandler;
+    CDUnknownBlockType _completionBlock;
+    double _lastProgress;
+    CDUnknownBlockType _progressBlock;
+    VUIAppInstallConfirmationViewController *_confirmationController;
+    VUIASDDialogObserver *_dialogObserver;
+    NSURL *_punchoutURL;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *punchoutURL; // @synthesize punchoutURL=_punchoutURL;
+@property(retain, nonatomic) VUIASDDialogObserver *dialogObserver; // @synthesize dialogObserver=_dialogObserver;
+@property(retain, nonatomic) VUIAppInstallConfirmationViewController *confirmationController; // @synthesize confirmationController=_confirmationController;
+@property(copy, nonatomic) CDUnknownBlockType progressBlock; // @synthesize progressBlock=_progressBlock;
+@property(nonatomic) double lastProgress; // @synthesize lastProgress=_lastProgress;
+@property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(copy, nonatomic) CDUnknownBlockType secondaryLinkHandler; // @synthesize secondaryLinkHandler=_secondaryLinkHandler;
 @property(copy, nonatomic) NSString *secondaryLinkTitle; // @synthesize secondaryLinkTitle=_secondaryLinkTitle;
 @property(nonatomic) _Bool displaySecondaryLink; // @synthesize displaySecondaryLink=_displaySecondaryLink;
@@ -39,7 +46,6 @@
 @property(copy, nonatomic) NSString *updateBody; // @synthesize updateBody=_updateBody;
 @property(copy, nonatomic) NSString *confirmationBody; // @synthesize confirmationBody=_confirmationBody;
 @property(copy, nonatomic) NSString *confirmationTitle; // @synthesize confirmationTitle=_confirmationTitle;
-@property(copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property(copy, nonatomic) NSString *localizedContentTitle; // @synthesize localizedContentTitle=_localizedContentTitle;
 @property(readonly, nonatomic) id <WLKInstallable> installable; // @synthesize installable=_installable;
 - (void)_finishInstallationWithCompletion:(CDUnknownBlockType)arg1;
@@ -50,6 +56,7 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)loadView;
 - (void)_initConfirmation;
+- (id)initWithInstallable:(id)arg1 punchoutURL:(id)arg2;
 - (id)initWithInstallable:(id)arg1;
 - (id)init;
 

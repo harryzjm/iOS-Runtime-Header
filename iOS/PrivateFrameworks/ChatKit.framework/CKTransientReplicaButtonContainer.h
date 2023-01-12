@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CALayer *sendButtonGlyphLayer; // @synthesize sendButtonGlyphLayer=_sendButtonGlyphLayer;
 @property(readonly, nonatomic) UIView *cancelButtonCircle; // @synthesize cancelButtonCircle=_cancelButtonCircle;
 @property(readonly, nonatomic) UIView *sendButtonCircle; // @synthesize sendButtonCircle=_sendButtonCircle;
-- (id)_glyphLayerForButtonAnimationWithGlyphName:(id)arg1;
+- (id)_glyphLayerForButtonAnimationWithImage:(id)arg1;
+- (id)_invertedCircularFillGlyph:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 hasDarkVibrancy:(_Bool)arg2 isInDarkMode:(_Bool)arg3 color:(id)arg4 sendColor:(BOOL)arg5;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 @end
 

@@ -20,6 +20,7 @@
     double _lastPreheat;
     double _lastTTLPass;
     unsigned long long _createCount;
+    _Bool _finishedDrainingJournal;
     SPCoreSpotlightIndexer *_owner;
     struct __SI *_index;
     struct __SIResultQueue *_resultQueue;
@@ -29,13 +30,16 @@
     NSObject<OS_dispatch_source> *_indexIdleTimer;
     double _idleStartTime;
     NSMutableArray *_outstandingMaintenance;
+    unsigned long long _dirtyTimeout;
     NSObject<OS_os_transaction> *_dirtyTransaction;
 }
 
 + (id)_stateInfoAttributeNameWithClientStateName:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool finishedDrainingJournal; // @synthesize finishedDrainingJournal=_finishedDrainingJournal;
 @property(retain, nonatomic) NSObject<OS_os_transaction> *dirtyTransaction; // @synthesize dirtyTransaction=_dirtyTransaction;
+@property unsigned long long dirtyTimeout; // @synthesize dirtyTimeout=_dirtyTimeout;
 @property(readonly, nonatomic) NSMapTable *checkedInClients; // @synthesize checkedInClients=_checkedInClients;
 @property(readonly, nonatomic) NSMutableSet *knownClients; // @synthesize knownClients=_knownClients;
 @property(retain, nonatomic) NSMutableArray *outstandingMaintenance; // @synthesize outstandingMaintenance=_outstandingMaintenance;
@@ -49,6 +53,8 @@
 @property(nonatomic) __weak SPCoreSpotlightIndexer *owner; // @synthesize owner=_owner;
 - (void)_fetchAccumulatedStorageSizeForBundleId:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_startInternalQueryWithIndex:(struct __SI *)arg1 query:(id)arg2 fetchAttributes:(id)arg3 forBundleIds:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
+- (_Bool)_startInternalQueryWithIndex:(struct __SI *)arg1 query:(id)arg2 fetchAttributes:(id)arg3 forBundleIds:(id)arg4 maxCount:(unsigned long long)arg5 resultsHandler:(CDUnknownBlockType)arg6;
+- (_Bool)_startInternalQueryWithIndex:(struct __SI *)arg1 query:(id)arg2 fetchAttributes:(id)arg3 forBundleIds:(id)arg4 maxCount:(unsigned long long)arg5 resultsHandler:(CDUnknownBlockType)arg6 resultQueue:(id)arg7;
 - (void)powerStateChanged;
 - (void)attributesForBundleId:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 includeParents:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
@@ -61,6 +67,8 @@
 - (void)deleteSearchableItemsSinceDate:(id)arg1 forBundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_deleteSearchableItemsMatchingQuery:(id)arg1 forBundleIds:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteAllSearchableItemsForBundleID:(id)arg1 shouldGC:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)removeSandboxExtensions:(id)arg1;
+- (void)restartAttachmentImport:(id)arg1 maxCount:(unsigned long long)arg2;
 - (void)zombifyAllContactItems:(id)arg1;
 - (void)_scheduleStringsCleanupForBundleID:(id)arg1;
 - (void)deleteAllUserActivities:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -75,6 +83,9 @@
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 clientStateName:(id)arg4 forBundleID:(id)arg5 options:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 forBundleID:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)indexFromBundle:(id)arg1 personaID:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 clientState:(id)arg6 clientStateName:(id)arg7 deletes:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
+- (void)completeIndexingItemFor:(id)arg1 delegate:(id)arg2 didBeginThrottle:(_Bool)arg3 didEndThrottle:(_Bool)arg4 error:(id)arg5 live:(_Bool)arg6 queue:(id)arg7 slow:(_Bool)arg8 startTime:(double)arg9 completionHandler:(CDUnknownBlockType)arg10;
+- (void)checkAdmission:(id)arg1 background:(_Bool)arg2 didBeginThrottle:(_Bool *)arg3 didEndThrottle:(_Bool *)arg4 live:(_Bool *)arg5 slow:(_Bool *)arg6;
+- (void)processImportForBundleID:(id)arg1 withURLs:(id)arg2 contentTypes:(id)arg3 sandboxExtensions:(id)arg4 andIdentifiers:(id)arg5 inGroup:(id)arg6;
 - (void)_setClientState:(id)arg1 clientStateName:(id)arg2 forBundleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)preheat;
 - (void)readyIndex:(_Bool)arg1;
@@ -84,6 +95,8 @@
 - (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_appendRervseInfo:(id)arg1 dictionary:(id)arg2 key:(id)arg3 level:(unsigned long long)arg4;
+- (void)issueMessagesFixup:(CDUnknownBlockType)arg1;
+- (void)fixupMessageAttachmentsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)issueDuplicateOidCheck;
 - (void)issueConsistencyCheck;
 - (void)issueRepair;
@@ -111,6 +124,8 @@
 - (int)openIndex:(_Bool)arg1 shouldReindexAll:(_Bool)arg2;
 - (void)_saveCorruptIndexWithPath:(id)arg1;
 - (void)_expireCorruptIndexFilesWithPath:(id)arg1 keepLatest:(_Bool)arg2;
+- (void)updateItems:(id)arg1 forBundleId:(id)arg2;
+- (void)requestRequiresImportWithoutSandboxExtension:(id)arg1 maxCount:(unsigned long long)arg2;
 - (void)revokeExpiredItems:(id)arg1;
 - (void)removeExpiredItemsForBundleId:(id)arg1 group:(id)arg2;
 - (void)indexFinishedDrainingJournal;
@@ -127,6 +142,7 @@
 - (id)initWithQueue:(id)arg1 protectionClass:(id)arg2 cancelPtr:(int *)arg3;
 - (void)performQueryForCountOfItemsInCategory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dumpAllRankingDiagnosticInformationForQuery:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)updateContainersAndScores;
 - (void)updateRankingDates;
 - (id)getPropertyForKey:(id)arg1;
 - (void)setProperty:(id)arg1 forKey:(id)arg2 sync:(_Bool)arg3;

@@ -9,7 +9,6 @@
 @class NSString;
 
 @protocol AVTAvatarAttributeEditorSectionSupplementalPickerItem <NSObject>
-@property(readonly, copy, nonatomic) CDUnknownBlockType editorUpdater;
 @property(nonatomic, getter=isSelected) _Bool selected;
 @property(readonly, copy, nonatomic) NSString *localizedDescription;
 @property(readonly, copy, nonatomic) NSString *localizedName;

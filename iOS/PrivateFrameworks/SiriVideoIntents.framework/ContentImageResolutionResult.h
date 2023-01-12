@@ -10,9 +10,13 @@
 {
 }
 
++ (id)confirmationRequiredWithObjectToConfirm:(id)arg1;
++ (id)disambiguationWithObjectsToDisambiguate:(id)arg1;
++ (id)successWithResolvedObject:(id)arg1;
 + (id)confirmationRequiredWithContentImageToConfirm:(id)arg1;
 + (id)disambiguationWithContentImagesToDisambiguate:(id)arg1;
 + (id)successWithResolvedContentImage:(id)arg1;
+- (id)initWithJSONDictionary:(id)arg1 forIntent:(id)arg2;
 
 @end
 

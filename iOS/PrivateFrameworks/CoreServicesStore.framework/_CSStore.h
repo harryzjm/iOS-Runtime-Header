@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)setExpectedAccessQueue:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (id)initWithError:(id *)arg1;
-- (id)initByMovingStore:(struct Store *)arg1;
+- (id)initByMovingStore:(void *)arg1;
 - (id)init;
 
 @end

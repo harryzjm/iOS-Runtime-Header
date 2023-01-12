@@ -6,7 +6,8 @@
 
 #import <Sleep/HKSPMutableObject-Protocol.h>
 
-@class HKSPChangeSet, NSDate, NSSet, NSString;
+@class HKSPChangeSet, NSDate, NSDictionary, NSSet, NSString;
+@protocol HKSPObject;
 
 @interface HKSPMutableSleepEventRecord <HKSPMutableObject>
 {
@@ -20,6 +21,7 @@
 - (void)updateSleepTrackingOnboardingCompletedVersion:(long long)arg1 completedDate:(id)arg2;
 - (void)updateSleepCoachingOnboardingCompletedVersion:(long long)arg1 completedDate:(id)arg2;
 - (void)freeze;
+@property(readonly, nonatomic) id <HKSPObject> originalObject;
 - (id)mutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -32,11 +34,10 @@
 @property(copy, nonatomic) NSDate *sleepCoachingOnboardingFirstCompletedDate;
 @property(nonatomic) long long sleepCoachingOnboardingCompletedVersion;
 @property(copy, nonatomic) NSDate *goodMorningDismissedDate;
-@property(copy, nonatomic) NSDate *windDownSkippedDate;
 @property(copy, nonatomic) NSDate *wakeUpAlarmSnoozedUntilDate;
+@property(copy, nonatomic) NSDate *wakeUpOverriddenDate;
+@property(copy, nonatomic) NSDate *wakeUpWithNoAlarmDate;
 @property(copy, nonatomic) NSDate *wakeUpAlarmDismissedDate;
-@property(copy, nonatomic) NSDate *bedtimeSkippedDate;
-@property(copy, nonatomic) NSDate *bedtimeDelayedUntilDate;
 @property(copy, nonatomic) NSDate *wakeUpConfirmedUntilDate;
 @property(copy, nonatomic) NSDate *wakeUpEarlyNotificationConfirmedDate;
 @property(copy, nonatomic) NSDate *lastModifiedDate;
@@ -45,6 +46,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long version;

@@ -8,7 +8,6 @@
 
 @class BRCServerChangeState, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharedDatabaseSyncOperation <BRCOperationSubclass>
 {
     BRCServerChangeState *_changeState;

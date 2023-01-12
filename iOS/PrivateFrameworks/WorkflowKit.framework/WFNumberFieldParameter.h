@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) _Bool allowsDecimalNumbers; // @synthesize allowsDecimalNumbers=_allowsDecimalNumbers;
 @property(readonly, nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 - (id)parameterStateFromDialogResponse:(id)arg1;
-- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 prompt:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)shouldAlignLabels;
 - (id)defaultSupportedVariableTypes;
 - (id)initWithDefinition:(id)arg1;

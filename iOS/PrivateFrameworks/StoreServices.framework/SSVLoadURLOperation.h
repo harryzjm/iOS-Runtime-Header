@@ -44,10 +44,14 @@
     _Bool _shouldSuppressUserInfo;
     id <SSVLoadURLOperationDelegate> _delegate;
     SSBag *_bag;
+    NSURL *_mainDocumentURL;
+    unsigned long long _attribution;
 }
 
 + (id)currentAcceptLanguage;
 - (void).cxx_destruct;
+@property unsigned long long attribution; // @synthesize attribution=_attribution;
+@property(copy) NSURL *mainDocumentURL; // @synthesize mainDocumentURL=_mainDocumentURL;
 @property _Bool shouldSuppressUserInfo; // @synthesize shouldSuppressUserInfo=_shouldSuppressUserInfo;
 @property _Bool shouldSuppressCookies; // @synthesize shouldSuppressCookies=_shouldSuppressCookies;
 @property(retain, nonatomic) SSBag *bag; // @synthesize bag=_bag;

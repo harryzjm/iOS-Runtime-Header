@@ -21,15 +21,35 @@ struct AUAudioUnitV2Bridge_Renderer;
 struct AUAudioUnit_XPC_PropListener;
 
 struct AUEventSchedule {
+    struct AUv2GetParameterSynchronizer *mAUv2GetParameterSynchronizer;
     struct AURenderEventAllocator *mAllocator;
-    struct TAtomicStack<AURenderEventStruct> mAddedEventStack;
+    struct AUScheduledParameterRefresher2 *mScheduledParameterRefresher;
+    struct lf_mpsc_queue<AURenderEventNode, caulk::concurrent::intrusive_single_link_member<AURenderEventNode, &AURenderEventNode::next>> mAddedEventQueue;
+    struct atomic<bool> mHavePendingSetParameter;
     union AURenderEvent *mScheduleHead;
-    AUAudioUnit *mOwningAU;
+    void *mOwningAU;
+    CDUnknownBlockType mRenderBlock;
+    struct PreviousRenderTime mPreviousRenderTime;
 };
 
-struct AUInputElement;
+struct AUMIDIEvent {
+    union AURenderEvent *_field1;
+    long long _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned short _field5;
+    unsigned char _field6;
+    unsigned char _field7[3];
+};
 
-struct AULocalParameterObserver;
+struct AUMIDIEventList {
+    union AURenderEvent *_field1;
+    long long _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned char _field5;
+    struct MIDIEventList _field6;
+};
 
 struct AUOOPRenderClientUser {
     AUAudioUnit_XPC *au;
@@ -37,8 +57,10 @@ struct AUOOPRenderClientUser {
     CDUnknownBlockType musicalContextBlock;
     CDUnknownBlockType transportStateBlock;
     CDUnknownBlockType MIDIOutputEventBlock;
+    CDUnknownBlockType MIDIOutputEventListBlock;
     unsigned int serviceProcessAUInstanceToken;
     _Bool isOffline;
+    _Bool isMIDIProcessor;
 };
 
 struct AUOOPRenderingServerUser {
@@ -48,26 +70,16 @@ struct AUOOPRenderingServerUser {
     CDUnknownBlockType mRetainedRenderBlock;
     CDUnknownBlockType mRenderBlock;
     _Bool mCanProcessInPlace;
+    _Bool mIsV2AudioUnit;
     long long mMIDIOutBaseSampleTime;
     struct AUEventSchedule *mEventSchedule;
     struct AUOOPSharedMemory *mSharedBuffers;
+    struct optional<std::__thread_id> mRenderThreadId;
 };
 
 struct AUOOPSharedMemory;
 
-struct AUObserverController {
-    struct weak_ptr<AUObserverController> _field1;
-    id _field2;
-    id _field3;
-    struct CAEventReceiver _field4;
-    _Bool _field5;
-    struct set<AUObserverController::AddressOriginator, std::__1::less<AUObserverController::AddressOriginator>, std::__1::allocator<AUObserverController::AddressOriginator>> _field6;
-    struct vector<ParameterAutomationEvent, std::__1::allocator<ParameterAutomationEvent>> _field7;
-};
-
-struct AUObserverList {
-    struct vector<AULocalParameterObserver *, std::__1::allocator<AULocalParameterObserver *>> _field1;
-};
+struct AUObserverController;
 
 struct AUPBMethods {
     unsigned int _field1;
@@ -78,6 +90,16 @@ struct AUPBMethods {
     CDUnknownFunctionPointerType _field6;
     CDUnknownFunctionPointerType _field7;
     CDUnknownFunctionPointerType _field8;
+};
+
+struct AUParameterEvent {
+    union AURenderEvent *_field1;
+    long long _field2;
+    unsigned char _field3;
+    unsigned char _field4[3];
+    unsigned int _field5;
+    unsigned long long _field6;
+    float _field7;
 };
 
 struct AUParameterObserverExtendedToken {
@@ -93,39 +115,30 @@ struct AUProcessingBlock {
 
 struct AURenderEventAllocator;
 
-struct AURenderEventStruct;
-
-struct AUv3InstanceBase {
-    CDUnknownFunctionPointerType *_field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    void *_field5;
-    struct OpaqueAudioComponentInstance *_field6;
-    struct AudioComponentDescription _field7;
-    id _field8;
-    _Bool _field9;
-    id _field10;
-    struct synchronized<std::__1::vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>>, caulk::mach::unfair_recursive_lock, caulk::empty_atomic_interface<std::__1::vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>>>> _field11;
-    struct unique_ptr<AUv3InstanceBase::AllParameterListener, std::__1::default_delete<AUv3InstanceBase::AllParameterListener>> _field12;
-    struct AUv3RenderAdapter _field13;
-    CDUnknownBlockType _field14;
-    CDUnknownBlockType _field15;
-    struct ParameterMap _field16;
-    struct HostCallbackInfo _field17;
-    _Bool _field18;
-    _Bool _field19;
+struct AURenderEventHeader {
+    union AURenderEvent *_field1;
+    long long _field2;
+    unsigned char _field3;
+    unsigned char _field4;
 };
 
-struct AUv3RenderAdapter {
-    struct CAMutex _field1;
-    struct vector<AUv3RenderAdapter::AUInputElement, std::__1::allocator<AUv3RenderAdapter::AUInputElement>> _field2;
-    CDUnknownBlockType _field3;
+struct AURenderEventNode;
+
+struct AUScheduledParameterRefresher2;
+
+struct AUv2GetParameterSynchronizer {
+    struct atomic<AUv2GetParameterSynchronizer::SeqNumPair> mSeqNums;
+    struct semaphore {
+        struct semaphore {
+            unsigned int mMachSem;
+            _Bool mOwned;
+        } mImpl;
+        struct atomic<int> mCounter;
+        int mOriginalCounter;
+    } mSyncGetParamSema;
 };
 
 struct AddressToParameter;
-
-struct AllParameterListener;
 
 struct AudioComponentDescription {
     unsigned int componentType;
@@ -135,30 +148,11 @@ struct AudioComponentDescription {
     unsigned int componentFlagsMask;
 };
 
-struct AudioComponentPluginScanner;
-
-struct AudioComponentRegistrarImpl {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    struct atomic<bool> _field4;
-    id _field5;
-    struct function<void (const AudioComponentVector &, AudioComponentVector &)> _field6;
-    struct RegistrarService _field7;
-    struct RegistrarService _field8;
-    id _field9;
-    struct AudioComponentVector _field10;
-    struct PurgeableDataWrapper _field11;
-    struct PurgeableDataWrapper _field12;
-    struct unique_ptr<AudioComponentPluginScanner, std::__1::default_delete<AudioComponentPluginScanner>> _field13;
-    struct shared_ptr<caulk::synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>>> _field14;
-};
-
 struct AudioComponentVector {
-    shared_ptr_a99cf2ba *__begin_;
-    shared_ptr_a99cf2ba *__end_;
-    struct __compressed_pair<std::__1::shared_ptr<APComponent>*, std::__1::allocator<std::__1::shared_ptr<APComponent>>> {
-        shared_ptr_a99cf2ba *__value_;
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::shared_ptr<APComponent>*, std::allocator<std::shared_ptr<APComponent>>> {
+        void *__value_;
     } __end_cap_;
     _Bool mSorted;
 };
@@ -173,19 +167,15 @@ struct CADeserializer {
     _Bool _field5;
 };
 
-struct CAEventReceiver {
-    struct shared_ptr<CAEventReceiver::Impl> _field1;
-};
-
-struct CAMutex {
-    CDUnknownFunctionPointerType *_field1;
-    char *_field2;
-    struct atomic<_opaque_pthread_t *> _field3;
-    struct _opaque_pthread_mutex_t _field4;
-};
+struct CAMutex;
 
 struct CASerializer {
     struct __CFData *_field1;
+};
+
+struct CGSize {
+    double _field1;
+    double _field2;
 };
 
 struct ConnectionInfo {
@@ -194,15 +184,7 @@ struct ConnectionInfo {
     _Bool mLinkedSDKRequiresEntitlement;
 };
 
-struct HostCallbackInfo {
-    void *_field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    CDUnknownFunctionPointerType _field5;
-};
-
-struct Impl;
+struct CountAndSema;
 
 struct InterAppAudioAppInfo {
     _Bool _field1;
@@ -214,7 +196,19 @@ struct InterAppAudioAppInfo {
 };
 
 struct KVOAggregator {
-    struct vector<KVOAggregator::Record, std::__1::allocator<KVOAggregator::Record>> mRecords;
+    struct vector<KVOAggregator::Record, std::allocator<KVOAggregator::Record>> mRecords;
+};
+
+struct MIDIEventList {
+    int _field1;
+    unsigned int _field2;
+    struct MIDIEventPacket _field3[1];
+};
+
+struct MIDIEventPacket {
+    unsigned long long _field1;
+    unsigned int _field2;
+    unsigned int _field3[64];
 };
 
 struct NewServerListener;
@@ -227,47 +221,26 @@ struct NodeStack {
 
 struct ObjCImage;
 
-struct OpaqueAudioComponentInstance;
-
-struct ParameterAutomationEvent;
-
-struct ParameterMap {
-    id _field1;
-    struct AUv3InstanceBase *_field2;
-    struct atomic<bool> _field3;
-    struct vector<AUv3InstanceBase::ScopeElementIDObj, std::__1::allocator<AUv3InstanceBase::ScopeElementIDObj>> _field4;
-    struct vector<AUv3InstanceBase::ScopeElementIDObj, std::__1::allocator<AUv3InstanceBase::ScopeElementIDObj>> _field5;
-    id _field6;
-    _Bool _field7;
-    struct atomic<void *> _field8;
-    struct map<unsigned int, AUParameterGroup *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, AUParameterGroup *>>> _field9;
-    struct unfair_recursive_lock _field10;
-    id _field11;
-};
-
 struct PipeSubPool;
+
+struct PreviousRenderTime {
+    double mSampleRate;
+    struct atomic<PreviousRenderTime::Snapshot> mLastRender;
+};
 
 struct PropertyListener;
 
-struct PurgeableDataWrapper {
-    struct function<NSData *()> _field1;
-    id _field2;
-};
-
 struct RealtimeState {
-    struct semaphore_mutex_t<caulk::semaphore> mRenderMutex;
+    struct pooled_semaphore_mutex mMultipleRenderMutex;
+    struct pooled_semaphore_mutex mResetVsRenderMutex;
     struct RenderObserverList renderObserverList;
     struct AUEventSchedule eventSchedule;
+    struct AUv2GetParameterSynchronizer auv2GetParameterSynchronizer;
     struct optional<RenderContextChangeGenerator> contextChangeGenerator;
+    int renderBlockType;
 };
 
 struct Record;
-
-struct RegistrarService {
-    id _field1;
-    id _field2;
-    id _field3;
-};
 
 struct RenderContextChangeGenerator {
     void *mLastWorkgroup;
@@ -285,11 +258,9 @@ struct RenderPipeUser {
     struct atomic<bool> mInvalidated;
 };
 
-struct ScopeElementIDObj;
+struct SeqNumPair;
 
-struct TAtomicStack<AURenderEventStruct> {
-    struct AURenderEventStruct *mHead;
-};
+struct Snapshot;
 
 struct TThreadSafeList<RenderObserver> {
     struct NodeStack mActiveList;
@@ -305,14 +276,10 @@ struct __CFData;
 
 struct __CFString;
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*> *__next_;
-};
-
 struct __shared_weak_count;
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
+struct __tree_end_node<std::__tree_node_base<void *>*> {
+    void *__left_;
 };
 
 struct _opaque_pthread_mutex_t {
@@ -320,75 +287,73 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
-struct atomic<_opaque_pthread_t *> {
-    struct __cxx_atomic_impl<_opaque_pthread_t *, std::__1::__cxx_atomic_base_impl<_opaque_pthread_t *>> {
-        _Atomic struct _opaque_pthread_t *_field1;
-    } _field1;
+struct atomic<AURenderEventNode *> {
+    struct __cxx_atomic_impl<AURenderEventNode *, std::__cxx_atomic_base_impl<AURenderEventNode *>> {
+        _Atomic struct AURenderEventNode *__a_value;
+    } __a_;
+};
+
+struct atomic<AUv2GetParameterSynchronizer::SeqNumPair> {
+    struct __cxx_atomic_impl<AUv2GetParameterSynchronizer::SeqNumPair, std::__cxx_atomic_base_impl<AUv2GetParameterSynchronizer::SeqNumPair>> {
+        _Atomic struct SeqNumPair __a_value;
+    } __a_;
+};
+
+struct atomic<PreviousRenderTime::Snapshot> {
+    struct __cxx_atomic_impl<PreviousRenderTime::Snapshot, std::__cxx_atomic_base_impl<PreviousRenderTime::Snapshot>> {
+        _Atomic struct Snapshot __a_value;
+    } __a_;
 };
 
 struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
         _Atomic _Bool __a_value;
     } __a_;
 };
 
+struct atomic<caulk::pooled_semaphore_mutex::CountAndSema> {
+    struct __cxx_atomic_impl<caulk::pooled_semaphore_mutex::CountAndSema, std::__cxx_atomic_base_impl<caulk::pooled_semaphore_mutex::CountAndSema>> {
+        _Atomic struct CountAndSema __a_value;
+    } __a_;
+};
+
 struct atomic<int> {
-    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+    struct __cxx_atomic_impl<int, std::__cxx_atomic_base_impl<int>> {
         _Atomic int __a_value;
     } __a_;
 };
 
 struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
+    struct __cxx_atomic_impl<unsigned int, std::__cxx_atomic_base_impl<unsigned int>> {
         _Atomic unsigned int __a_value;
     } __a_;
-};
-
-struct atomic<unsigned long long> {
-    struct __cxx_atomic_impl<unsigned long long, std::__1::__cxx_atomic_base_impl<unsigned long long>> {
-        _Atomic unsigned long long __a_value;
-    } __a_;
-};
-
-struct atomic<void *> {
-    struct __cxx_atomic_impl<void *, std::__1::__cxx_atomic_base_impl<void *>> {
-        _Atomic void *_field1;
-    } _field1;
-};
-
-struct function<NSData *()> {
-    struct __value_func<NSData *()> {
-        struct type _field1;
-        struct __base<NSData *()> *_field2;
-    } _field1;
 };
 
 struct function<NSXPCConnection *(NSUUID *)> {
     struct __value_func<NSXPCConnection *(NSUUID *)> {
         struct type _field1;
-        struct __base<NSXPCConnection *(NSUUID *)> *_field2;
+        void *_field2;
     } _field1;
 };
 
 struct function<void ()> {
     struct __value_func<void ()> {
         struct type __buf_;
-        struct __base<void ()> *__f_;
+        void *__f_;
     } __f_;
 };
 
 struct function<void (AudioComponentVector &, AudioComponentVector &)> {
     struct __value_func<void (AudioComponentVector &, AudioComponentVector &)> {
         struct type __buf_;
-        struct __base<void (AudioComponentVector &, AudioComponentVector &)> *__f_;
+        void *__f_;
     } __f_;
 };
 
-struct function<void (const AudioComponentVector &, AudioComponentVector &)> {
-    struct __value_func<void (const AudioComponentVector &, AudioComponentVector &)> {
-        struct type _field1;
-        struct __base<void (const AudioComponentVector &, AudioComponentVector &)> *_field2;
-    } _field1;
+struct lf_mpsc_queue<AURenderEventNode, caulk::concurrent::intrusive_single_link_member<AURenderEventNode, &AURenderEventNode::next>> {
+    struct atomic<AURenderEventNode *> mEnqueueHead;
+    void *mCachelineSeparation[7];
+    struct AURenderEventNode *mDequeueHead;
 };
 
 struct mach_timebase_info {
@@ -396,37 +361,25 @@ struct mach_timebase_info {
     unsigned int denom;
 };
 
-struct map<unsigned int, AUParameterGroup *, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, AUParameterGroup *>>> {
-    struct __tree<std::__1::__value_type<unsigned int, AUParameterGroup *>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, AUParameterGroup *>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, AUParameterGroup *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, AUParameterGroup *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, AUParameterGroup *>, std::__1::less<unsigned int>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned int, AUProcessingBlock, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, AUProcessingBlock>>> {
-    struct __tree<std::__1::__value_type<unsigned int, AUProcessingBlock>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, AUProcessingBlock>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, AUProcessingBlock>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, AUProcessingBlock>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<unsigned int, AUProcessingBlock, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, AUProcessingBlock>>> {
+    struct __tree<std::__value_type<unsigned int, AUProcessingBlock>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, AUProcessingBlock>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, AUProcessingBlock>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, AUProcessingBlock>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, AUProcessingBlock>, std::__1::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, AUProcessingBlock>, std::less<unsigned int>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<unsigned int, RemoteAUHandleInfo, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, RemoteAUHandleInfo>>> {
-    struct __tree<std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, RemoteAUHandleInfo>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<unsigned int, RemoteAUHandleInfo, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, RemoteAUHandleInfo>>> {
+    struct __tree<std::__value_type<unsigned int, RemoteAUHandleInfo>, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, RemoteAUHandleInfo>, std::less<unsigned int>, true>, std::allocator<std::__value_type<unsigned int, RemoteAUHandleInfo>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<unsigned int, RemoteAUHandleInfo>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, RemoteAUHandleInfo>, std::__1::less<unsigned int>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<unsigned int, std::__value_type<unsigned int, RemoteAUHandleInfo>, std::less<unsigned int>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
@@ -460,13 +413,18 @@ struct optional<auoop::RenderPipeUser> {
     _Bool __engaged_;
 };
 
-struct os_unfair_lock_s {
-    unsigned int _field1;
+struct optional<std::__thread_id> {
+    union {
+        char __null_state_;
+        struct __thread_id {
+            struct _opaque_pthread_t *__id_;
+        } __val_;
+    } ;
+    _Bool __engaged_;
 };
 
-struct os_unfair_recursive_lock_s {
-    struct os_unfair_lock_s _field1;
-    unsigned int _field2;
+struct pooled_semaphore_mutex {
+    struct atomic<caulk::pooled_semaphore_mutex::CountAndSema> mCountAndSema;
 };
 
 struct recursive_mutex {
@@ -476,23 +434,7 @@ struct recursive_mutex {
 struct reply_watchdog_factory {
     _Bool mDebugging;
     int mDefaultTimeoutMS;
-    function_84aba934 mTimeoutHandler;
-};
-
-struct semaphore_mutex_t<caulk::semaphore> {
-    semaphore_e8b15a0e mSema;
-};
-
-struct set<AUObserverController::AddressOriginator, std::__1::less<AUObserverController::AddressOriginator>, std::__1::allocator<AUObserverController::AddressOriginator>> {
-    struct __tree<AUObserverController::AddressOriginator, std::__1::less<AUObserverController::AddressOriginator>, std::__1::allocator<AUObserverController::AddressOriginator>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<AUObserverController::AddressOriginator, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::less<AUObserverController::AddressOriginator>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
+    function_ffe40f9b mTimeoutHandler;
 };
 
 struct shared_ptr<APComponent> {
@@ -505,220 +447,127 @@ struct shared_ptr<AUObserverController> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<AUv3InstanceBase::ClientPropertyListener>;
-
-struct shared_ptr<CAEventReceiver::Impl> {
-    struct Impl *_field1;
-    struct __shared_weak_count *_field2;
-};
-
 struct shared_ptr<auoop::WorkgroupMirror> {
     struct WorkgroupMirror *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<caulk::synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>>> {
-    struct synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>> *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<caulk::synchronized<auoop::RenderPipePool, std::__1::recursive_mutex, caulk::empty_atomic_interface<auoop::RenderPipePool>>> {
-    struct synchronized<auoop::RenderPipePool, std::__1::recursive_mutex, caulk::empty_atomic_interface<auoop::RenderPipePool>> *__ptr_;
+struct shared_ptr<caulk::synchronized<auoop::RenderPipePool, std::recursive_mutex>> {
+    void *__ptr_;
     struct __shared_weak_count *__cntrl_;
-};
-
-struct synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>>;
-
-struct synchronized<auoop::RenderPipePool, std::__1::recursive_mutex, caulk::empty_atomic_interface<auoop::RenderPipePool>>;
-
-struct synchronized<std::__1::vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>>, caulk::mach::unfair_recursive_lock, caulk::empty_atomic_interface<std::__1::vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>>>> {
-    struct unfair_recursive_lock _field1;
-    struct vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>> _field2;
 };
 
 struct type {
     unsigned char __lx[24];
 };
 
-struct unfair_recursive_lock {
-    struct os_unfair_recursive_lock_s _field1;
-};
-
-struct unique_ptr<AUAudioUnitV2Bridge_Renderer, std::__1::default_delete<AUAudioUnitV2Bridge_Renderer>> {
-    struct __compressed_pair<AUAudioUnitV2Bridge_Renderer *, std::__1::default_delete<AUAudioUnitV2Bridge_Renderer>> {
+struct unique_ptr<AUAudioUnitV2Bridge_Renderer, std::default_delete<AUAudioUnitV2Bridge_Renderer>> {
+    struct __compressed_pair<AUAudioUnitV2Bridge_Renderer *, std::default_delete<AUAudioUnitV2Bridge_Renderer>> {
         struct AUAudioUnitV2Bridge_Renderer *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<AUProcAndUserData, std::__1::default_delete<AUProcAndUserData>> {
-    struct __compressed_pair<AUProcAndUserData *, std::__1::default_delete<AUProcAndUserData>> {
+struct unique_ptr<AUProcAndUserData, std::default_delete<AUProcAndUserData>> {
+    struct __compressed_pair<AUProcAndUserData *, std::default_delete<AUProcAndUserData>> {
         struct AUProcAndUserData *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<AUv3InstanceBase::AllParameterListener, std::__1::default_delete<AUv3InstanceBase::AllParameterListener>> {
-    struct __compressed_pair<AUv3InstanceBase::AllParameterListener *, std::__1::default_delete<AUv3InstanceBase::AllParameterListener>> {
-        struct AllParameterListener *_field1;
-    } _field1;
-};
-
-struct unique_ptr<AudioComponentPluginScanner, std::__1::default_delete<AudioComponentPluginScanner>> {
-    struct __compressed_pair<AudioComponentPluginScanner *, std::__1::default_delete<AudioComponentPluginScanner>> {
-        struct AudioComponentPluginScanner *_field1;
-    } _field1;
-};
-
-struct unique_ptr<CADeprecated::CAMutex, std::__1::default_delete<CADeprecated::CAMutex>> {
-    struct __compressed_pair<CADeprecated::CAMutex *, std::__1::default_delete<CADeprecated::CAMutex>> {
+struct unique_ptr<CADeprecated::CAMutex, std::default_delete<CADeprecated::CAMutex>> {
+    struct __compressed_pair<CADeprecated::CAMutex *, std::default_delete<CADeprecated::CAMutex>> {
         struct CAMutex *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<TestAUProcessingBlock, std::__1::default_delete<TestAUProcessingBlock>> {
-    struct __compressed_pair<TestAUProcessingBlock *, std::__1::default_delete<TestAUProcessingBlock>> {
+struct unique_ptr<TestAUProcessingBlock, std::default_delete<TestAUProcessingBlock>> {
+    struct __compressed_pair<TestAUProcessingBlock *, std::default_delete<TestAUProcessingBlock>> {
         struct TestAUProcessingBlock *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unordered_map<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long), std::__1::hash<long>, std::__1::equal_to<long>, std::__1::allocator<std::__1::pair<const long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>>> {
-    struct __hash_table<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::__1::__unordered_map_hasher<long, std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::__1::hash<long>, true>, std::__1::__unordered_map_equal<long, std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::__1::equal_to<long>, true>, std::__1::allocator<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*> __value_;
+struct unordered_map<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long), std::hash<long>, std::equal_to<long>, std::allocator<std::pair<const long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>>> {
+    struct __hash_table<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::__unordered_map_hasher<long, std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::hash<long>, std::equal_to<long>, true>, std::__unordered_map_equal<long, std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::equal_to<long>, std::hash<long>, true>, std::allocator<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<long, std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::__1::hash<long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<long, std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::hash<long>, std::equal_to<long>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<long, std::__1::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::__1::equal_to<long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<long, std::__hash_value_type<long, void (^)(unsigned int, const AudioTimeStamp *, unsigned int, long)>, std::equal_to<long>, std::hash<long>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct vector<AUAudioUnit_XPC_PropListener, std::__1::allocator<AUAudioUnit_XPC_PropListener>> {
+struct vector<AUAudioUnit_XPC_PropListener, std::allocator<AUAudioUnit_XPC_PropListener>> {
     struct AUAudioUnit_XPC_PropListener *__begin_;
     struct AUAudioUnit_XPC_PropListener *__end_;
-    struct __compressed_pair<AUAudioUnit_XPC_PropListener *, std::__1::allocator<AUAudioUnit_XPC_PropListener>> {
+    struct __compressed_pair<AUAudioUnit_XPC_PropListener *, std::allocator<AUAudioUnit_XPC_PropListener>> {
         struct AUAudioUnit_XPC_PropListener *__value_;
     } __end_cap_;
 };
 
-struct vector<AULocalParameterObserver *, std::__1::allocator<AULocalParameterObserver *>> {
-    struct AULocalParameterObserver **_field1;
-    struct AULocalParameterObserver **_field2;
-    struct __compressed_pair<AULocalParameterObserver **, std::__1::allocator<AULocalParameterObserver *>> {
-        struct AULocalParameterObserver **_field1;
-    } _field3;
-};
-
-struct vector<AUv3InstanceBase::ScopeElementIDObj, std::__1::allocator<AUv3InstanceBase::ScopeElementIDObj>> {
-    struct ScopeElementIDObj *_field1;
-    struct ScopeElementIDObj *_field2;
-    struct __compressed_pair<AUv3InstanceBase::ScopeElementIDObj *, std::__1::allocator<AUv3InstanceBase::ScopeElementIDObj>> {
-        struct ScopeElementIDObj *_field1;
-    } _field3;
-};
-
-struct vector<AUv3RenderAdapter::AUInputElement, std::__1::allocator<AUv3RenderAdapter::AUInputElement>> {
-    struct AUInputElement *_field1;
-    struct AUInputElement *_field2;
-    struct __compressed_pair<AUv3RenderAdapter::AUInputElement *, std::__1::allocator<AUv3RenderAdapter::AUInputElement>> {
-        struct AUInputElement *_field1;
-    } _field3;
-};
-
-struct vector<AddressToParameter, std::__1::allocator<AddressToParameter>> {
+struct vector<AddressToParameter, std::allocator<AddressToParameter>> {
     struct AddressToParameter *__begin_;
     struct AddressToParameter *__end_;
-    struct __compressed_pair<AddressToParameter *, std::__1::allocator<AddressToParameter>> {
+    struct __compressed_pair<AddressToParameter *, std::allocator<AddressToParameter>> {
         struct AddressToParameter *__value_;
     } __end_cap_;
 };
 
-struct vector<BusPropertyObserver, std::__1::allocator<BusPropertyObserver>> {
+struct vector<BusPropertyObserver, std::allocator<BusPropertyObserver>> {
     struct BusPropertyObserver *__begin_;
     struct BusPropertyObserver *__end_;
-    struct __compressed_pair<BusPropertyObserver *, std::__1::allocator<BusPropertyObserver>> {
+    struct __compressed_pair<BusPropertyObserver *, std::allocator<BusPropertyObserver>> {
         struct BusPropertyObserver *__value_;
     } __end_cap_;
 };
 
-struct vector<KVOAggregator::Record, std::__1::allocator<KVOAggregator::Record>> {
+struct vector<KVOAggregator::Record, std::allocator<KVOAggregator::Record>> {
     struct Record *__begin_;
     struct Record *__end_;
-    struct __compressed_pair<KVOAggregator::Record *, std::__1::allocator<KVOAggregator::Record>> {
+    struct __compressed_pair<KVOAggregator::Record *, std::allocator<KVOAggregator::Record>> {
         struct Record *__value_;
     } __end_cap_;
 };
 
-struct vector<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>> {
+struct vector<NSObject<OS_dispatch_semaphore>*, std::allocator<NSObject<OS_dispatch_semaphore>*>> {
     id *__begin_;
     id *__end_;
-    struct __compressed_pair<NSObject<OS_dispatch_semaphore>**, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>> {
+    struct __compressed_pair<NSObject<OS_dispatch_semaphore>**, std::allocator<NSObject<OS_dispatch_semaphore>*>> {
         id *__value_;
     } __end_cap_;
 };
 
-struct vector<NewServerListener, std::__1::allocator<NewServerListener>> {
+struct vector<NewServerListener, std::allocator<NewServerListener>> {
     struct NewServerListener *__begin_;
     struct NewServerListener *__end_;
-    struct __compressed_pair<NewServerListener *, std::__1::allocator<NewServerListener>> {
+    struct __compressed_pair<NewServerListener *, std::allocator<NewServerListener>> {
         struct NewServerListener *__value_;
     } __end_cap_;
 };
 
-struct vector<ParameterAutomationEvent, std::__1::allocator<ParameterAutomationEvent>> {
-    struct ParameterAutomationEvent *_field1;
-    struct ParameterAutomationEvent *_field2;
-    struct __compressed_pair<ParameterAutomationEvent *, std::__1::allocator<ParameterAutomationEvent>> {
-        struct ParameterAutomationEvent *_field1;
-    } _field3;
-};
-
-struct vector<PropertyListener, std::__1::allocator<PropertyListener>> {
+struct vector<PropertyListener, std::allocator<PropertyListener>> {
     struct PropertyListener *__begin_;
     struct PropertyListener *__end_;
-    struct __compressed_pair<PropertyListener *, std::__1::allocator<PropertyListener>> {
+    struct __compressed_pair<PropertyListener *, std::allocator<PropertyListener>> {
         struct PropertyListener *__value_;
     } __end_cap_;
 };
-
-struct vector<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>> {
-    struct shared_ptr<AUv3InstanceBase::ClientPropertyListener> *_field1;
-    struct shared_ptr<AUv3InstanceBase::ClientPropertyListener> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>*, std::__1::allocator<std::__1::shared_ptr<AUv3InstanceBase::ClientPropertyListener>>> {
-        struct shared_ptr<AUv3InstanceBase::ClientPropertyListener> *_field1;
-    } _field3;
-};
-
-struct weak_ptr<AUObserverController> {
-    struct AUObserverController *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-#if 0
-// Names with conflicting types:
-typedef struct {
-    struct semaphore {
-        unsigned int mMachSem;
-        _Bool mOwned;
-    } mImpl;
-    struct atomic<int> mCounter;
-    int mOriginalCounter;
-} semaphore_e8b15a0e;
-
-#endif
 
 #pragma mark Typedef'd Structures
 
@@ -733,39 +582,39 @@ typedef struct {
 typedef struct function<NSXPCConnection *(NSUUID *)> {
     struct __value_func<NSXPCConnection *(NSUUID *)> {
         struct type _field1;
-        struct __base<NSXPCConnection *(NSUUID *)> *_field2;
+        void *_field2;
     } _field1;
-} function_c21c61b6;
+} function_852fea26;
 
 typedef struct function<void ()> {
     struct __value_func<void ()> {
         struct type __buf_;
-        struct __base<void ()> *__f_;
+        void *__f_;
     } __f_;
-} function_84aba934;
+} function_ffe40f9b;
 
-typedef struct shared_ptr<APComponent> {
-    struct APComponent *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_a99cf2ba;
-
-typedef struct vector<AddressToParameter, std::__1::allocator<AddressToParameter>> {
+typedef struct vector<AddressToParameter, std::allocator<AddressToParameter>> {
     struct AddressToParameter *__begin_;
     struct AddressToParameter *__end_;
-    struct __compressed_pair<AddressToParameter *, std::__1::allocator<AddressToParameter>> {
+    struct __compressed_pair<AddressToParameter *, std::allocator<AddressToParameter>> {
         struct AddressToParameter *__value_;
     } __end_cap_;
-} vector_66b3461a;
+} vector_c2436194;
 
-typedef struct vector<BusPropertyObserver, std::__1::allocator<BusPropertyObserver>> {
+typedef struct vector<BusPropertyObserver, std::allocator<BusPropertyObserver>> {
     struct BusPropertyObserver *__begin_;
     struct BusPropertyObserver *__end_;
-    struct __compressed_pair<BusPropertyObserver *, std::__1::allocator<BusPropertyObserver>> {
+    struct __compressed_pair<BusPropertyObserver *, std::allocator<BusPropertyObserver>> {
         struct BusPropertyObserver *__value_;
     } __end_cap_;
-} vector_e102d759;
+} vector_a9037590;
 
 #pragma mark Named Unions
 
-union AURenderEvent;
+union AURenderEvent {
+    struct AURenderEventHeader _field1;
+    struct AUParameterEvent _field2;
+    struct AUMIDIEvent _field3;
+    struct AUMIDIEventList _field4;
+};
 

@@ -9,8 +9,9 @@
 @protocol CADEventInterface
 - (void)CADDatabaseGetTTLLocationAuthorizationStatus:(void (^)(int, unsigned long long))arg1;
 - (void)CADDatabaseGetSecurityScopedLocalURLWrapperForAttachment:(CADObjectID *)arg1 reply:(void (^)(int, NSSecurityScopedURLWrapper *))arg2;
-- (void)CADDatabaseShouldWhitelistOrganizerPhoneNumberFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
-- (void)CADDatabaseShouldWhitelistOrganizerEmailFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
+- (void)CADDatabaseGetAttachmentWithUUID:(NSString *)arg1 reply:(void (^)(int, CADObjectID *))arg2;
+- (void)CADDatabaseShouldPermitOrganizerPhoneNumberFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
+- (void)CADDatabaseShouldPermitOrganizerEmailFromJunkChecks:(NSString *)arg1 reply:(void (^)(int, _Bool))arg2;
 - (void)CADOccurrencesExistInRangeForEvent:(CADObjectID *)arg1 startDate:(NSDate *)arg2 endDate:(NSDate *)arg3 mustStartInInterval:(_Bool)arg4 timezone:(NSTimeZone *)arg5 reply:(void (^)(int, _Bool))arg6;
 - (void)CADOccurrenceCacheCancelSearchWithReplyID:(int)arg1;
 - (void)CADOccurrenceCacheSearchLocationsWithTerm:(NSString *)arg1 inCalendars:(NSArray *)arg2 responseToken:(int)arg3 reply:(void (^)(int))arg4;

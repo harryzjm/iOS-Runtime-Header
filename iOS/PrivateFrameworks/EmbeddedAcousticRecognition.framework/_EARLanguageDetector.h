@@ -8,12 +8,12 @@
 
 @interface _EARLanguageDetector : NSObject
 {
-    struct unique_ptr<quasar::LanguageDetector, std::__1::default_delete<quasar::LanguageDetector>> languageDetector;
+    struct unique_ptr<quasar::LanguageDetector, std::default_delete<quasar::LanguageDetector>> languageDetector;
     unsigned int _featureQueuePriority;
 }
 
-+ (shared_ptr_9fadee34)updateContext:(const struct LDContext *)arg1 withMessageLocales:(const vector_4ce8f3d5 *)arg2;
-+ (vector_4ce8f3d5)quasarLocalesOfMessages:(id)arg1;
++ (shared_ptr_9fadee34)updateContext:(const void *)arg1 withMessageLocales:(const void *)arg2;
++ (vector_92c8717c)quasarLocalesOfMessages:(id)arg1;
 + (id)localesOfMessages:(id)arg1;
 + (void)initialize;
 - (id).cxx_construct;

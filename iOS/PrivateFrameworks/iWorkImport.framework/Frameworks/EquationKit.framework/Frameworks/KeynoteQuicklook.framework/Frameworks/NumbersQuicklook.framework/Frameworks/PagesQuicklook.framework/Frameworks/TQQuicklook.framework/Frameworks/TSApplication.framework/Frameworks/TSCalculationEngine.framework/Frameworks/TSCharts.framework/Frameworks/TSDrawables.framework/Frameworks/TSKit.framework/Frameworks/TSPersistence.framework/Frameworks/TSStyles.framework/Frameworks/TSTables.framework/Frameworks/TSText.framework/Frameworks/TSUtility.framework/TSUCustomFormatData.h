@@ -13,6 +13,7 @@
 
 @interface TSUCustomFormatData : NSObject <NSCopying, NSMutableCopying>
 {
+    BOOL _fractionAccuracy;
     unsigned char _minimumIntegerWidth;
     unsigned char _decimalWidth;
     unsigned char _numberOfNonSpaceIntegerPlaceholderDigits;
@@ -27,7 +28,6 @@
     _Bool _formatContainsIntegerToken;
     _Bool _isComplexFormat;
     unsigned short _currencyCodeIndex;
-    int _fractionAccuracy;
     NSString *_formatString;
     NSArray *_interstitialStrings;
     NSIndexSet *_interstitialStringInsertionIndexes;
@@ -50,7 +50,7 @@
 @property(nonatomic) unsigned char numberOfNonSpaceIntegerPlaceholderDigits; // @synthesize numberOfNonSpaceIntegerPlaceholderDigits=_numberOfNonSpaceIntegerPlaceholderDigits;
 @property(nonatomic) unsigned char decimalWidth; // @synthesize decimalWidth=_decimalWidth;
 @property(nonatomic) unsigned char minimumIntegerWidth; // @synthesize minimumIntegerWidth=_minimumIntegerWidth;
-@property(nonatomic) int fractionAccuracy; // @synthesize fractionAccuracy=_fractionAccuracy;
+@property(nonatomic) BOOL fractionAccuracy; // @synthesize fractionAccuracy=_fractionAccuracy;
 @property(nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(copy, nonatomic) NSIndexSet *interstitialStringInsertionIndexes; // @synthesize interstitialStringInsertionIndexes=_interstitialStringInsertionIndexes;
 @property(copy, nonatomic) NSArray *interstitialStrings; // @synthesize interstitialStrings=_interstitialStrings;

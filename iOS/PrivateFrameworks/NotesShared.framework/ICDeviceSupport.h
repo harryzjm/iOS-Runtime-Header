@@ -10,9 +10,15 @@
 {
 }
 
++ (id)productBuildVersion;
++ (id)productVersion;
++ (id)productName;
++ (_Bool)isRunningUnitTests;
 + (_Bool)deviceIsIPad;
 + (_Bool)deviceSupportsFaceID;
 + (_Bool)deviceSupportsTouchID;
++ (_Bool)deviceSupportsSystemPaper;
++ (_Bool)deviceSupportsFirstGenPencil;
 + (_Bool)deviceSupportsPencil;
 + (struct CGSize)notesDeviceDrawingSize;
 + (id)notesProductType;

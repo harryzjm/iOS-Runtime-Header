@@ -18,10 +18,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)syncAnchorMapWithDictionary:(id)arg1;
 + (id)syncAnchorMapWithCodableSyncAnchorRangeMap:(id)arg1;
 + (id)syncAnchorMapWithSyncAnchorRangeMap:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *anchorsByEntityIdentifier; // @synthesize anchorsByEntityIdentifier=_anchorsByEntityIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -17,9 +17,12 @@
 
 + (void)setGlobalTransformerForTesting:(id)arg1;
 + (id)newTransformerInstanceForLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
++ (void)_addModelAssetUpdateHandler;
++ (id)_sharedInvalidKeysCache;
++ (id)_sharedTransformerCache;
++ (id)_transformerCacheKeyForLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 + (id)transformerInstanceForLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 + (id)transformerInstanceForLanguage:(id)arg1 mode:(unsigned long long)arg2;
-+ (id)modelForEntity:(id)arg1 type:(id)arg2 mode:(unsigned long long)arg3 language:(id)arg4 class:(Class)arg5 chunkPath:(id)arg6 plistPath:(id)arg7;
 + (id)modelForLanguage:(id)arg1 mode:(unsigned long long)arg2 chunkPath:(id)arg3 plistPath:(id)arg4;
 + (_Bool)shouldSampleForLabel:(id)arg1 inLanguage:(id)arg2 isDynamicLabel:(_Bool)arg3;
 + (id)labelOf:(id)arg1 inLanguage:(id)arg2;
@@ -29,7 +32,7 @@
 + (id)configForLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 - (void).cxx_destruct;
 - (void)setTransformer:(id)arg1;
-- (id)initWithLazyMultiLabelModel:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 plistPath:(id)arg4;
+- (id)initWithEntity:(id)arg1 type:(id)arg2 mode:(unsigned long long)arg3 language:(id)arg4 class:(Class)arg5 modelPath:(id)arg6 plistPath:(id)arg7;
 - (_Bool)shouldSampleForLabel:(id)arg1 isDynamicLabel:(_Bool)arg2;
 - (id)labelOf:(id)arg1;
 - (id)featuresOf:(id)arg1;

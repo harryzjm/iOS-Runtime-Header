@@ -12,11 +12,13 @@
 {
     UIView *_backgroundView;
     UIImageView *_imageView;
+    UIImageView *_afterLabelImageView;
     UILabel *_label;
     PXUIButton *_button;
     struct PXAssetBadgeInfo _badgeInfo;
     struct CGRect _frame;
     struct CGRect _imageFrame;
+    struct CGRect _afterLabelImageFrame;
     struct CGRect _labelFrame;
     struct CGRect _buttonFrame;
 }
@@ -24,11 +26,13 @@
 - (void).cxx_destruct;
 @property(nonatomic) struct CGRect buttonFrame; // @synthesize buttonFrame=_buttonFrame;
 @property(nonatomic) struct CGRect labelFrame; // @synthesize labelFrame=_labelFrame;
+@property(nonatomic) struct CGRect afterLabelImageFrame; // @synthesize afterLabelImageFrame=_afterLabelImageFrame;
 @property(nonatomic) struct CGRect imageFrame; // @synthesize imageFrame=_imageFrame;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
 @property(retain, nonatomic) PXUIButton *button; // @synthesize button=_button;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
+@property(retain, nonatomic) UIImageView *afterLabelImageView; // @synthesize afterLabelImageView=_afterLabelImageView;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 

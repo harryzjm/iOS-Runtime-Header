@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _dismissCompletionHandler;
 }
 
++ (_Bool)_supportsPrewarming;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 @property(nonatomic) __weak id <SFAuthenticationViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;

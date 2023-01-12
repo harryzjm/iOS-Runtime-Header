@@ -9,7 +9,6 @@
 @class MKMapItem, NSArray, NSDate, NSMutableDictionary, NSSet;
 @protocol GEOTransitLineItem;
 
-__attribute__((visibility("hidden")))
 @interface MKTransitItemIncidentsController : NSObject
 {
     MKMapItem *_mapItem;
@@ -19,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_incidentsForSystem;
     NSMutableDictionary *_incidentsForLine;
     NSMutableDictionary *_incidentsForMapItem;
+    NSMutableDictionary *_incidentsForLinesInSystem;
     NSSet *_blockedIncidentEntities;
     NSDate *_referenceDate;
 }
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)incidentsForMapItem:(id)arg1;
 - (id)incidentsForLine:(id)arg1;
 - (id)incidentsForSystem:(id)arg1;
+- (id)incidentsForLinesInSystem:(id)arg1;
 - (id)_incidentsAffectingMuid:(unsigned long long)arg1;
 - (id)validIncidents;
 - (void)resetCache;

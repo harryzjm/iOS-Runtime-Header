@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/MPMutablePlaybackArchive-Protocol.h>
+#import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class MPPlaybackArchiveDisplayProperties, NSData, NSMutableDictionary, NSString;
 
-@interface MPPlaybackArchive : NSObject <NSSecureCoding>
+@interface MPPlaybackArchive : NSObject <MPMutablePlaybackArchive, NSCopying, NSSecureCoding>
 {
+    _Bool _final;
     MPPlaybackArchiveDisplayProperties *_displayProperties;
     NSString *_bundleIdentifier;
     unsigned long long _supportedOptions;
@@ -36,14 +39,28 @@
 @property(readonly, nonatomic) unsigned long long supportedOptions; // @synthesize supportedOptions=_supportedOptions;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) MPPlaybackArchiveDisplayProperties *displayProperties; // @synthesize displayProperties=_displayProperties;
+@property(readonly, copy, nonatomic) NSString *fallbackStoreIdentifier;
+- (void)setFallbackStoreIdentifier:(id)arg1;
+- (void)setDisplayProperties:(id)arg1;
+- (void)setSupportedOptions:(unsigned long long)arg1;
+- (void)setBundleIdentifier:(id)arg1;
+- (void)setSessionIdentifier:(id)arg1 type:(id)arg2 data:(id)arg3;
+- (void)setType:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithOptions:(unsigned long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)boolValueForOption:(long long)arg1;
 - (void)setBOOLValue:(_Bool)arg1 forOption:(long long)arg2;
 - (id)initWithType:(long long)arg1 sessionIdentifier:(id)arg2 data:(id)arg3 dataType:(id)arg4 bundleIdentifier:(id)arg5 supportedOptions:(unsigned long long)arg6 displayProperties:(id)arg7;
+- (id)initWithBlock:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

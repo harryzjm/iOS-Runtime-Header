@@ -19,6 +19,7 @@
 @property(nonatomic) double controlBottomPadding; // @synthesize controlBottomPadding=_controlBottomPadding;
 @property(nonatomic) double controlTopPadding; // @synthesize controlTopPadding=_controlTopPadding;
 @property(retain, nonatomic) UISegmentedControl *control; // @synthesize control=_control;
+- (void)updateSegmentedControlToFitWidth:(double)arg1;
 - (void)_controlIndexDidChange:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;

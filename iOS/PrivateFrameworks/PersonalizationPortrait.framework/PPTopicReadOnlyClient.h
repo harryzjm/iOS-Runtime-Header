@@ -18,6 +18,9 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)topicCacheSandboxExtensionToken:(id *)arg1;
+- (id)cachePath:(id *)arg1;
+- (void)registerUniversalSearchSpotlightFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)unmapMappedTopicIdentifier:(id)arg1 mappingIdentifier:(id)arg2 error:(id *)arg3;
 - (_Bool)scoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3 handleBatch:(CDUnknownBlockType)arg4;

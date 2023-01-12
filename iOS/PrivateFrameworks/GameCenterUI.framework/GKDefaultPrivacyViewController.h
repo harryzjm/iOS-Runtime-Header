@@ -22,6 +22,7 @@
     UIButton *_publicButton;
     UIButton *_friendsOnlyButton;
     UIButton *_meOnlyButton;
+    UILabel *_subTitle;
     NSLayoutConstraint *_topMargin;
     UIView *_buttonContainer;
     NSLayoutConstraint *_mainStackViewTrailingConstraint;
@@ -48,6 +49,7 @@
 @property(retain, nonatomic) NSLayoutConstraint *mainStackViewTrailingConstraint; // @synthesize mainStackViewTrailingConstraint=_mainStackViewTrailingConstraint;
 @property(retain, nonatomic) UIView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
 @property(retain, nonatomic) NSLayoutConstraint *topMargin; // @synthesize topMargin=_topMargin;
+@property(retain, nonatomic) UILabel *subTitle; // @synthesize subTitle=_subTitle;
 @property(retain, nonatomic) UIButton *meOnlyButton; // @synthesize meOnlyButton=_meOnlyButton;
 @property(retain, nonatomic) UIButton *friendsOnlyButton; // @synthesize friendsOnlyButton=_friendsOnlyButton;
 @property(retain, nonatomic) UIButton *publicButton; // @synthesize publicButton=_publicButton;

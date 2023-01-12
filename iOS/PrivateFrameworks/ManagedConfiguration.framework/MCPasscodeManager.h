@@ -42,14 +42,13 @@
 - (int)newPasscodeEntryScreenType;
 - (int)currentUnlockSimplePasscodeType;
 - (int)currentUnlockScreenType;
-- (id)_passcodeCharacteristics;
 - (_Bool)unlockDeviceWithPasscode:(id)arg1 outError:(id *)arg2;
 - (id)_wrongPasscodeError;
 - (_Bool)isDeviceLocked;
 - (void)lockDevice;
 - (void)lockDeviceImmediately:(_Bool)arg1;
 - (_Bool)isPasscodeSet;
-- (id)_privatePasscodeDict;
+- (id)_privatePasscodeDictWithOutError:(id *)arg1;
 - (id)_publicPasscodeDict;
 
 @end

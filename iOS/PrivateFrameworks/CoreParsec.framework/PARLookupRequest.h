@@ -15,10 +15,12 @@
     NSString *_domain;
     long long _lookupSelectionType;
     NSString *_appBundleId;
+    NSString *_preferredLanguage;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *preferredLanguage; // @synthesize preferredLanguage=_preferredLanguage;
 @property(copy, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
 @property(nonatomic) long long lookupSelectionType; // @synthesize lookupSelectionType=_lookupSelectionType;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;

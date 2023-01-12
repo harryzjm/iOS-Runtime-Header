@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (void)cleanUp;
 - (void)logEvent;
+- (void)placecardExploreGuidesButtonTapped;
 - (void)placecardCollectionsSeeAllTapped;
 - (void)placecardCollectionTapped:(id)arg1 atIndex:(unsigned long long)arg2 isCurrentlySaved:(_Bool)arg3;
 - (void)placecardCollectionsScrollForward;

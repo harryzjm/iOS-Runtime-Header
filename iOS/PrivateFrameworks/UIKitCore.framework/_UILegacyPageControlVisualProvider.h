@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, UIImage, UIVisualEffectView, _UILegibilitySettings;
+@class NSMutableArray, UIImage, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface _UILegacyPageControlVisualProvider
@@ -15,13 +15,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_pageImages;
     UIVisualEffectView *_backgroundVisualEffectView;
     NSMutableArray *_indicators;
-    _UILegibilitySettings *__legibilitySettings;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic, getter=_legibilitySettings, setter=_setLegibilitySettings:) _UILegibilitySettings *_legibilitySettings; // @synthesize _legibilitySettings=__legibilitySettings;
-- (_Bool)_shouldDrawLegibly;
-@property(nonatomic, getter=_legibilityStyle, setter=_setLegibilityStyle:) long long _legibilityStyle;
 - (void)_cachePageIndicatorImages;
 - (id)_pageIndicatorCurrentImageForPage:(long long)arg1;
 - (id)_pageIndicatorImageForPage:(long long)arg1;
@@ -29,14 +25,9 @@ __attribute__((visibility("hidden")))
 - (id)_cachedPageIndicatorImageForPage:(long long)arg1;
 - (id)defaultActivePageIndicatorImage;
 - (id)preferredIndicatorImage;
-- (id)_createModernIndicatorImageFromView:(id)arg1;
-- (id)_modernIndicatorImageEnabled:(_Bool)arg1;
 - (void)_drawModernIndicatorInView:(id)arg1 enabled:(_Bool)arg2;
-- (void)_modernTransitionIndicator:(id)arg1 toEnabled:(_Bool)arg2 index:(long long)arg3 legible:(_Bool)arg4;
-- (id)_indicatorViewEnabled:(_Bool)arg1 index:(long long)arg2 legible:(_Bool)arg3;
 - (id)_indicatorViewEnabled:(_Bool)arg1 index:(long long)arg2;
 - (void)_transitionIndicator:(id)arg1 toEnabled:(_Bool)arg2 index:(long long)arg3;
-- (void)_transitionIndicator:(id)arg1 toEnabled:(_Bool)arg2 index:(long long)arg3 legible:(_Bool)arg4;
 - (_Bool)_hasCustomImageForPage:(long long)arg1 enabled:(_Bool)arg2;
 - (id)_modernColorEnabled:(_Bool)arg1;
 - (double)_modernCornerRadius;

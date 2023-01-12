@@ -26,9 +26,7 @@
 @property(copy, nonatomic) NSNumber *version; // @synthesize version=_version;
 @property(copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (_Bool)isLikelyEqual:(id)arg1;
-- (void)populate;
 - (id)description;
-- (id)versionString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

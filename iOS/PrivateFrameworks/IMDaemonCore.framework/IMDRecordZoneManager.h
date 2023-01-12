@@ -18,6 +18,8 @@
     CKRecordZone *_attachmentRecordZone;
     CKRecordZoneID *_messageRecordZoneID;
     CKRecordZone *_messageRecordZone;
+    CKRecordZoneID *_updateRecordZoneID;
+    CKRecordZone *_updateRecordZone;
     CKRecordZoneID *_analyticRecordZoneID;
     CKRecordZone *_analyticRecordZone;
     CKRecordZoneID *_deDupeSaltZoneID;
@@ -35,6 +37,8 @@
 @property(readonly, nonatomic) CKRecordZoneID *deDupeSaltZoneID; // @synthesize deDupeSaltZoneID=_deDupeSaltZoneID;
 @property(readonly, nonatomic) CKRecordZone *analyticRecordZone; // @synthesize analyticRecordZone=_analyticRecordZone;
 @property(readonly, nonatomic) CKRecordZoneID *analyticRecordZoneID; // @synthesize analyticRecordZoneID=_analyticRecordZoneID;
+@property(readonly, nonatomic) CKRecordZone *updateRecordZone; // @synthesize updateRecordZone=_updateRecordZone;
+@property(readonly, nonatomic) CKRecordZoneID *updateRecordZoneID; // @synthesize updateRecordZoneID=_updateRecordZoneID;
 @property(readonly, nonatomic) CKRecordZone *messageRecordZone; // @synthesize messageRecordZone=_messageRecordZone;
 @property(readonly, nonatomic) CKRecordZoneID *messageRecordZoneID; // @synthesize messageRecordZoneID=_messageRecordZoneID;
 @property(readonly, nonatomic) CKRecordZone *attachmentRecordZone; // @synthesize attachmentRecordZone=_attachmentRecordZone;
@@ -43,6 +47,7 @@
 @property(readonly, nonatomic) CKRecordZoneID *chatRecordZoneID; // @synthesize chatRecordZoneID=_chatRecordZoneID;
 - (void)fetchChatZoneToCheckManateeStatus:(CDUnknownBlockType)arg1;
 - (long long)derivedQualityOfService;
+- (id)errorAnalyzer;
 - (id)ckUtilities;
 - (void)_deleteAllZonesForDatabase:(id)arg1;
 - (void)deleteAllZones;
@@ -51,6 +56,8 @@
 - (void)createDeDupeSaltZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)deleteAnalyticZone;
 - (void)createAnalyticZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)deleteUpdateZone;
+- (void)createUpdateZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)deleteMessageZone;
 - (void)createMessageZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)deleteAttachmentZone;

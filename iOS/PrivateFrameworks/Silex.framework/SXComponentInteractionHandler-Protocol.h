@@ -6,9 +6,13 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class UIView;
+@class NSString, SXComponentView, UIContextMenuConfiguration, UIView;
 
 @protocol SXComponentInteractionHandler <NSObject>
 - (void)handleInteractionType:(unsigned long long)arg1 sourceView:(UIView *)arg2 sourceRect:(struct CGRect)arg3;
+
+@optional
+- (NSString *)toolTipForComponentView:(SXComponentView *)arg1;
+- (UIContextMenuConfiguration *)contextMenuForComponentView:(SXComponentView *)arg1 sourceRect:(struct CGRect)arg2;
 @end
 

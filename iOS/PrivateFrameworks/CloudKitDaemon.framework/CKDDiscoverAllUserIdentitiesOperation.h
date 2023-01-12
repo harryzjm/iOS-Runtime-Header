@@ -15,8 +15,12 @@
 @property(retain, nonatomic) NSMutableDictionary *contactIdentifiersByLookupInfo; // @synthesize contactIdentifiersByLookupInfo=_contactIdentifiersByLookupInfo;
 - (void)_handleDiscoveredIdentity:(id)arg1 lookupInfo:(id)arg2 responseCode:(id)arg3;
 - (void)main;
+- (void)_populateUserIdentityLookupInfos;
+- (void)_populateRealUserIdentityLookupInfos;
+- (void)_populateFakeUnitTestLookupInfos;
+- (void)_populateFakeUnitTestLookupInfosForEnvironment:(long long)arg1;
 - (void)_discoverIdentitiesBatched:(id)arg1;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 @end
 

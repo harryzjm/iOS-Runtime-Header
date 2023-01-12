@@ -22,6 +22,7 @@
     UITableView *_tableView;
     NSMutableArray *_actions;
     struct CGSize _imageSizeNeeded;
+    _Bool _isForWatch;
 }
 
 - (void).cxx_destruct;
@@ -57,7 +58,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initInEditingMode:(_Bool)arg1 existingGroupsController:(id)arg2;
+- (id)initInEditingMode:(_Bool)arg1 existingGroupsController:(id)arg2 isForWatch:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

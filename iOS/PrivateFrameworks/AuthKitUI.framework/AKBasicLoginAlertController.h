@@ -64,6 +64,7 @@
 - (void)_setupViewControllerForUserOrCreateAppleIDStyle;
 - (void)_setupViewControllerForNonEditableUsernameFieldStyle;
 - (void)_setupViewControllerForDefaultStyle;
+- (void)_setupAuthenticateAndCancelButtonsWithIForgot:(_Bool)arg1;
 - (void)_setupAuthenticateAndCancelButtons;
 - (void)_syncUsernameAndPasswordPropertiesWithTextFieldContent;
 - (id)_wrappedCancelAction;

@@ -6,7 +6,7 @@
 
 @interface TSCH3DUShortDataBuffer
 {
-    vector_e28bcd8e mContainer;
+    struct vector<TSCH3D::PODType<unsigned short>, std::allocator<TSCH3D::PODType<unsigned short>>> _container;
 }
 
 - (id).cxx_construct;
@@ -19,7 +19,7 @@
 - (unsigned long long)count;
 - (void)fillCapacity;
 - (const void *)data;
-@property(readonly, nonatomic) vector_e28bcd8e *container;
+@property(readonly, nonatomic) void *container;
 - (id)initWithCapacity:(unsigned long long)arg1;
 
 @end

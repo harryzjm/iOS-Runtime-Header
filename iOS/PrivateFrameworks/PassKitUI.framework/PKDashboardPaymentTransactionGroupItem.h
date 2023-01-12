@@ -8,21 +8,25 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSArray, NSString, PKAccount, PKPaymentTransactionGroup, PKTransactionSource;
+@class NSArray, NSString, PKAccount, PKAccountUserCollection, PKFamilyMemberCollection, PKPaymentTransactionGroup, PKTransactionSourceCollection;
 
 @interface PKDashboardPaymentTransactionGroupItem : NSObject <PKDashboardItem>
 {
     PKPaymentTransactionGroup *_group;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
+    PKFamilyMemberCollection *_familyCollection;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     NSArray *_tokens;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *tokens; // @synthesize tokens=_tokens;
+@property(retain, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
-@property(retain, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(retain, nonatomic) PKFamilyMemberCollection *familyCollection; // @synthesize familyCollection=_familyCollection;
+@property(retain, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
 @property(retain, nonatomic) PKPaymentTransactionGroup *group; // @synthesize group=_group;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

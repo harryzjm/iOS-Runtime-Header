@@ -36,9 +36,14 @@
     NSCharacterSet *_emailPunctuationCharSet;
     NSCharacterSet *_urlPunctuationCharSet;
     NSCharacterSet *_nonSpaceSeparatorCharSet;
+    NSCharacterSet *_punctuationThatNeedSpaceCleanup;
+    NSCharacterSet *_currencySymbols;
+    NSCharacterSet *_symbolsRequiringSpaceBeforeInFrench;
+    NSCharacterSet *_sentenceStartPunctuationInSpanish;
+    NSCharacterSet *_commonJapaneseSymbols;
     NSObject<OS_dispatch_queue> *__charSetRulesQueue;
-    map_0512c6b1 _strokeMaxPenalties;
-    map_fc1db4e5 _signatureUniChar;
+    map_aaf15588 _strokeMaxPenalties;
+    map_3815c996 _signatureUniChar;
 }
 
 + (unsigned long long)characterTypeFromString:(id)arg1;
@@ -50,8 +55,13 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *_charSetRulesQueue; // @synthesize _charSetRulesQueue=__charSetRulesQueue;
-@property(nonatomic) map_fc1db4e5 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
-@property(nonatomic) map_0512c6b1 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
+@property(nonatomic) map_3815c996 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
+@property(nonatomic) map_aaf15588 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
+@property(retain, nonatomic) NSCharacterSet *commonJapaneseSymbols; // @synthesize commonJapaneseSymbols=_commonJapaneseSymbols;
+@property(retain, nonatomic) NSCharacterSet *sentenceStartPunctuationInSpanish; // @synthesize sentenceStartPunctuationInSpanish=_sentenceStartPunctuationInSpanish;
+@property(retain, nonatomic) NSCharacterSet *symbolsRequiringSpaceBeforeInFrench; // @synthesize symbolsRequiringSpaceBeforeInFrench=_symbolsRequiringSpaceBeforeInFrench;
+@property(retain, nonatomic) NSCharacterSet *currencySymbols; // @synthesize currencySymbols=_currencySymbols;
+@property(retain, nonatomic) NSCharacterSet *punctuationThatNeedSpaceCleanup; // @synthesize punctuationThatNeedSpaceCleanup=_punctuationThatNeedSpaceCleanup;
 @property(retain, nonatomic) NSCharacterSet *nonSpaceSeparatorCharSet; // @synthesize nonSpaceSeparatorCharSet=_nonSpaceSeparatorCharSet;
 @property(retain, nonatomic) NSCharacterSet *urlPunctuationCharSet; // @synthesize urlPunctuationCharSet=_urlPunctuationCharSet;
 @property(retain, nonatomic) NSCharacterSet *emailPunctuationCharSet; // @synthesize emailPunctuationCharSet=_emailPunctuationCharSet;

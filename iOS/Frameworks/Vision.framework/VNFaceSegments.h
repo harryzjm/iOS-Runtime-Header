@@ -21,7 +21,7 @@
     unsigned long long _numberOfFaceSegments;
     struct CGRect _boundingBox;
     NSDictionary *_faceSegmentLabelToProbabilityMap;
-    vector_7584168e _probabilityNormSums;
+    struct vector<float, std::allocator<float>> _probabilityNormSums;
 }
 
 + (unsigned long long)faceSegmentsPixelSizeInBytes;

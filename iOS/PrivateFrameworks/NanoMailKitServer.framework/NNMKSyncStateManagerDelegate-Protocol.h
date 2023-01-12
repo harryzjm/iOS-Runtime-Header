@@ -6,12 +6,12 @@
 
 #import <NanoMailKitServer/NSObject-Protocol.h>
 
-@class BBBulletin, NSString;
+@class NSString, UNNotification;
 @protocol NNMKSyncStateManager;
 
 @protocol NNMKSyncStateManagerDelegate <NSObject>
 - (_Bool)syncStateManagerShouldAddFavoriteSubsectionForMailboxId:(NSString *)arg1;
-- (void)syncStateManager:(id <NNMKSyncStateManager>)arg1 didAcknowledgeForwardNotificationPayload:(void (^)(_Bool))arg2 forBulletin:(BBBulletin *)arg3;
+- (void)syncStateManager:(id <NNMKSyncStateManager>)arg1 handleForwardForNotification:(UNNotification *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)syncStateManagerDidInvalidateSyncSession:(id <NNMKSyncStateManager>)arg1 syncSessionIdentifier:(NSString *)arg2;
 - (void)syncStateManagerDidBeginSyncSession:(id <NNMKSyncStateManager>)arg1 syncSessionType:(NSString *)arg2 syncSessionIdentifier:(NSString *)arg3;
 - (void)syncStateManagerDidChangePairedDevice:(id <NNMKSyncStateManager>)arg1;

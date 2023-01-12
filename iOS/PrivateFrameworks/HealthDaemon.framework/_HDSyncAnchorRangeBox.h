@@ -20,9 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (struct HDSyncAnchorRange)anchorRange;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithHDSyncAnchorRange:(struct HDSyncAnchorRange)arg1;
 
 @end
 

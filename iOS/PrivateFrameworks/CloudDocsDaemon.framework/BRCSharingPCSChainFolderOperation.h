@@ -8,7 +8,6 @@
 
 @class BRCAppLibrary, BRCItemID, BRCServerItem, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingPCSChainFolderOperation <BRCOperationSubclass>
 {
     BRCServerItem *_serverItem;

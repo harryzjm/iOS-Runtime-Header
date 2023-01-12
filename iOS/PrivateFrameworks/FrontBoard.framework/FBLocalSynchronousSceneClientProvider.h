@@ -10,11 +10,12 @@
 #import <FrontBoard/FBSWorkspaceScenesSource-Protocol.h>
 #import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
+#import <FrontBoard/FBSceneClientProviderInternal-Protocol.h>
 
 @class FBSceneClientProviderInvalidationAction, NSMutableArray, NSMutableDictionary, NSString;
 @protocol NSCopying;
 
-@interface FBLocalSynchronousSceneClientProvider : NSObject <FBSWorkspaceScenesSource, FBSceneClient, FBSSceneUpdater, FBSceneClientProvider>
+@interface FBLocalSynchronousSceneClientProvider : NSObject <FBSWorkspaceScenesSource, FBSceneClient, FBSSceneUpdater, FBSceneClientProviderInternal, FBSceneClientProvider>
 {
     _Bool _workspaceInitialized;
     NSMutableArray *_pendingSceneCreatesBeforeFBSWorkspaceInitialization;
@@ -39,7 +40,7 @@
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)unregisterHost:(id)arg1;
-- (id)registerHost:(id)arg1 withSpecification:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4 fromRemnant:(id)arg5;
+- (id)registerHost:(id)arg1 settings:(id)arg2 initialClientSettings:(id)arg3 fromRemnant:(id)arg4 error:(out id *)arg5;
 - (void)registerInvalidationAction:(id)arg1;
 - (id)fbsSceneWithIdentifier:(id)arg1;
 - (id)_init;

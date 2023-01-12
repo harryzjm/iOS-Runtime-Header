@@ -9,6 +9,6 @@
 @class PXPeopleCollectionViewCell;
 
 @protocol PXPeopleCollectionViewCellDelegate <NSObject>
-- (void)peopleCollectionViewCellDidToggleFavoriteState:(PXPeopleCollectionViewCell *)arg1;
+- (void)toggleFavoriteForCell:(PXPeopleCollectionViewCell *)arg1;
 @end
 

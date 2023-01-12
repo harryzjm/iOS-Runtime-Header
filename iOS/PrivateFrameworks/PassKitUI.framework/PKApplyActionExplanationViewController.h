@@ -8,6 +8,7 @@
 {
 }
 
+- (void)_configureAppleCardIcon;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

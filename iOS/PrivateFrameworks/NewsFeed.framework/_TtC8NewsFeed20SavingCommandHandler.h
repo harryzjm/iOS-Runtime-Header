@@ -11,7 +11,6 @@
 @interface _TtC8NewsFeed20SavingCommandHandler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *readingList;
-    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *featureAvailability;
 }

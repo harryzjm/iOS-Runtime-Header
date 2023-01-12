@@ -4,12 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface FCAnalyticsEndpointConnection
+#import <objc/NSObject.h>
+
+@class FCAsyncSerialQueue, FCEndpointConnection;
+
+@interface FCAnalyticsEndpointConnection : NSObject
 {
+    FCEndpointConnection *_endpointConnection;
+    FCAsyncSerialQueue *_serialQueue;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(retain, nonatomic) FCEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
 - (void)uploadEnvelopeBatch:(id)arg1 withURL:(id)arg2 valuesByHTTPHeaderField:(id)arg3 priority:(float)arg4 callbackQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)uploadEnvelopeBatch:(id)arg1 withURL:(id)arg2 valuesByHTTPHeaderField:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)initWithEndpointConnection:(id)arg1;
 
 @end
 

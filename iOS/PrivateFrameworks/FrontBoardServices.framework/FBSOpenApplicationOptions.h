@@ -21,6 +21,7 @@
 + (id)optionsWithDictionary:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_payload;
+- (void)_updateOption:(id)arg1 forKey:(id)arg2;
 - (void)_sanitizeAndValidatePayload;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

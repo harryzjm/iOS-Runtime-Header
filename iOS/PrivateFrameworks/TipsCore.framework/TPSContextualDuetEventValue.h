@@ -15,7 +15,6 @@
     unsigned long long _valueType;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long valueType; // @synthesize valueType=_valueType;

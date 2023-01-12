@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet;
-@protocol BCSConfigCacheSkipping, BCSConfigCaching, BCSConfigRemoteFetching, BCSFeatureFlagArbitrating, BCSMetricFactoryProtocol, BCSUserDefaultsProviding;
+@protocol BCSConfigCacheSkipping, BCSConfigCaching, BCSConfigRemoteFetching, BCSMetricFactoryProtocol, BCSUserDefaultsProviding;
 
 @interface BCSConfigPrefetcher : NSObject
 {
     id <BCSConfigCaching> _configCache;
     id <BCSConfigCacheSkipping> _configCacheSkipper;
-    id <BCSFeatureFlagArbitrating> _featureFlagArbiter;
     id <BCSConfigRemoteFetching> _chatSuggestConfigRemoteFetcher;
     id <BCSConfigRemoteFetching> _businessLinkConfigRemoteFetcher;
     id <BCSUserDefaultsProviding> _userDefaults;
@@ -22,20 +21,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableSet *triggers; // @synthesize triggers=_triggers;
-@property(retain, nonatomic) id <BCSMetricFactoryProtocol> metricFactory; // @synthesize metricFactory=_metricFactory;
-@property(retain, nonatomic) id <BCSUserDefaultsProviding> userDefaults; // @synthesize userDefaults=_userDefaults;
-@property(retain, nonatomic) id <BCSConfigRemoteFetching> businessLinkConfigRemoteFetcher; // @synthesize businessLinkConfigRemoteFetcher=_businessLinkConfigRemoteFetcher;
-@property(retain, nonatomic) id <BCSConfigRemoteFetching> chatSuggestConfigRemoteFetcher; // @synthesize chatSuggestConfigRemoteFetcher=_chatSuggestConfigRemoteFetcher;
-@property(retain, nonatomic) id <BCSFeatureFlagArbitrating> featureFlagArbiter; // @synthesize featureFlagArbiter=_featureFlagArbiter;
-@property(retain, nonatomic) id <BCSConfigCacheSkipping> configCacheSkipper; // @synthesize configCacheSkipper=_configCacheSkipper;
-@property(retain, nonatomic) id <BCSConfigCaching> configCache; // @synthesize configCache=_configCache;
-- (_Bool)_shouldPrefetchType:(long long)arg1;
-- (long long)_hoursSinceLastSuccessfulPrefetchForType:(long long)arg1;
-- (void)_notePrefetchForType:(long long)arg1 finishedSuccessfully:(_Bool)arg2;
-- (void)_prefetchConfigsIfNecessaryWithXCPActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addPrefetchTrigger:(id)arg1;
-- (id)initWithConfigCache:(id)arg1 configCacheSkipper:(id)arg2 featureFlagArbiter:(id)arg3 chatSuggestConfigRemoteFetcher:(id)arg4 businessLinkConfigRemoteFetcher:(id)arg5 userDefaults:(id)arg6 metricFactory:(id)arg7;
+- (id)initWithConfigCache:(id)arg1 configCacheSkipper:(id)arg2 chatSuggestConfigRemoteFetcher:(id)arg3 businessLinkConfigRemoteFetcher:(id)arg4 userDefaults:(id)arg5 metricFactory:(id)arg6;
 
 @end
 

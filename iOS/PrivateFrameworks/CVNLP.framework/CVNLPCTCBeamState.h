@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface CVNLPCTCBeamState : NSObject
 {
@@ -18,8 +18,10 @@
 - (void)mergePathsWithTrailingWhitespaces;
 - (void)kBest:(id *)arg1 discarded:(id *)arg2 k:(unsigned long long)arg3 shouldUpdateLMState:(_Bool)arg4;
 - (id)sortedKeys;
-@property(readonly) NSDictionary *paths;
+- (void)enumeratePathsWithBlock:(CDUnknownBlockType)arg1;
+- (id)paths;
 - (id)pathForString:(id)arg1;
+- (id)debugDescription;
 - (void)addPath:(id)arg1;
 - (id)init;
 

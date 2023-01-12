@@ -14,7 +14,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
+@class HMDDevice, HMDHome, HMDTriggerPolicy, HMDUser, HMFMessageDispatcher, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDDevicePreferenceDataSource, HMDBackingStoreObjectProtocol>
@@ -22,10 +22,12 @@
     struct os_unfair_lock_s _lock;
     _Bool _active;
     NSString *_name;
+    NSString *_configuredName;
     NSUUID *_uuid;
     HMDHome *_home;
     HMDUser *_owner;
     HMDDevice *_owningDevice;
+    HMDTriggerPolicy *_policy;
     NSMutableDictionary *_actionSetMappings;
     NSMutableArray *_actionSetUUIDs;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -45,10 +47,12 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSMutableArray *actionSetUUIDs; // @synthesize actionSetUUIDs=_actionSetUUIDs;
 @property(retain, nonatomic) NSMutableDictionary *actionSetMappings; // @synthesize actionSetMappings=_actionSetMappings;
+@property(retain, nonatomic) HMDTriggerPolicy *policy; // @synthesize policy=_policy;
 @property(retain, nonatomic) HMDDevice *owningDevice; // @synthesize owningDevice=_owningDevice;
 @property(retain, nonatomic) HMDUser *owner; // @synthesize owner=_owner;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 @property(copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(retain, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)_addActionSet:(id)arg1;
 - (_Bool)supportsDeviceWithCapabilities:(id)arg1;
@@ -68,6 +72,7 @@
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)executeCompleteWithError:(id)arg1;
 - (_Bool)shouldEncodeLastFireDate:(id)arg1;
 - (void)_handleTriggerUpdate:(id)arg1 message:(id)arg2;
 - (void)_fillBaseObjectChangeModel:(id)arg1;
@@ -75,6 +80,8 @@
 - (void)userDidConfirmExecute:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_executeActionSets:(id)arg1 captureCurrentState:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_executeActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_handleRemoveTriggerPolicyRequest:(id)arg1;
+- (void)_handleUpdateTriggerPolicyRequest:(id)arg1;
 - (void)_activateTriggerRequest:(id)arg1;
 - (void)_handleActivateTriggerRequest:(id)arg1;
 - (void)_actionSetsUpdated:(id)arg1 message:(id)arg2;
@@ -85,6 +92,7 @@
 - (void)_handleRemoveActionSetRequest:(id)arg1 postUpdate:(_Bool)arg2;
 - (void)_handleAddTriggerOwnedActionSetRequest:(id)arg1;
 - (void)_handleAddActionSetRequest:(id)arg1;
+- (id)canRenameTriggerWithNewName:(id)arg1 configuredName:(id)arg2 error:(id *)arg3;
 - (void)_renameRequest:(id)arg1;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_activate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -123,7 +131,7 @@
 - (id)actionSetForKey:(id)arg1;
 - (void)setActionSetForKey:(id)arg1 value:(id)arg2;
 - (id)dumpState;
-@property(readonly, copy) NSString *description;
+- (id)attributeDescriptions;
 - (void)dealloc;
 - (id)logIdentifier;
 - (id)initWithModel:(id)arg1 home:(id)arg2 message:(id)arg3;
@@ -132,9 +140,11 @@
 @property(readonly, nonatomic) NSDictionary *actionContext;
 @property(readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *contextID;
+@property(readonly, copy) NSString *urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

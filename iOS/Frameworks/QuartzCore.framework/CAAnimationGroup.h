@@ -13,7 +13,7 @@
 @property(copy) NSArray *animations;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
 - (void)CA_prepareRenderValue;
-- (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
+- (void *)_copyRenderAnimationForLayer:(id)arg1;
 - (void)applyForTime:(double)arg1 presentationObject:(id)arg2 modelObject:(id)arg3;
 - (void)setDefaultDuration:(double)arg1;
 

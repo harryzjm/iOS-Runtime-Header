@@ -42,10 +42,11 @@
 - (void)commentWillBeAddedToDocumentRoot;
 @property(readonly, nonatomic) NSDate *date;
 @property(retain, nonatomic) TSKAnnotationAuthor *author;
-- (void)saveToArchive:(struct CommentInfoArchive *)arg1 archiver:(id)arg2;
+- (id)typeName;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 @property(readonly, nonatomic) double commentScalingMultiplier;
-- (void)loadFromArchive:(const struct CommentInfoArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)enumerateAllAnnotationsInModelWithHitBlock:(CDUnknownBlockType)arg1;
 - (Class)editorClass;

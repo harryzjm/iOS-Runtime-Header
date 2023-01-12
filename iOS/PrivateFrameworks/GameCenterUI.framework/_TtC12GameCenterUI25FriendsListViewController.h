@@ -9,15 +9,14 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI25FriendsListViewController <UISearchResultsUpdating, UISearchControllerDelegate>
 {
     MISSING_TYPE *bootstrapPresenter;
     MISSING_TYPE *statePresenter;
-    MISSING_TYPE *collectionContent;
+    MISSING_TYPE *compositionalLayout;
+    MISSING_TYPE *diffableDataSource;
     MISSING_TYPE *components;
     MISSING_TYPE *searchController;
-    MISSING_TYPE *addFriendsBarButtonItem;
 }
 
 - (void).cxx_destruct;
@@ -29,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
-- (void)didTapAddFriends;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 

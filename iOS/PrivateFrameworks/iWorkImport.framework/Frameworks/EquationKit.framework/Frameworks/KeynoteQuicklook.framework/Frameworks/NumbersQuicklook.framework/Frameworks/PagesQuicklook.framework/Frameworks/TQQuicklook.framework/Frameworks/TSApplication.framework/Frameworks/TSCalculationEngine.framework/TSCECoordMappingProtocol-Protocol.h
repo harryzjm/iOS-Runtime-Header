@@ -7,6 +7,8 @@
 @class NSIndexSet, TSCECellTractRef, TSKShuffleMapping;
 
 @protocol TSCECoordMappingProtocol
+@property(nonatomic) _Bool chromeCoordsAreViewCoords;
+@property(readonly, nonatomic) _Bool isIdentityMapping;
 - (TSKShuffleMapping *)baseShuffleMapForViewShuffleMap:(TSKShuffleMapping *)arg1;
 - (TSCECellTractRef *)viewTractRefForChromeTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)viewTractRefForBaseTractRef:(TSCECellTractRef *)arg1;
@@ -14,15 +16,17 @@
 - (TSCECellTractRef *)chromeTractRefForBaseTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)baseTractRefForViewTractRef:(TSCECellTractRef *)arg1;
 - (TSCECellTractRef *)baseTractRefForChromeTractRef:(TSCECellTractRef *)arg1;
-- (const UUIDData_5fbc143e *)tableUID;
-- (RefTypeHolder_45a2a752)viewRangeRefForChromeRangeRef:(const RefTypeHolder_9036d455 *)arg1;
-- (RefTypeHolder_9036d455)chromeRangeRefForViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1;
-- (RefTypeHolder_adbccd1a)viewCellRefForChromeCellRef:(const RefTypeHolder_cfaab535 *)arg1;
-- (RefTypeHolder_adbccd1a)viewCellRefForBaseCellRef:(const RefTypeHolder_dbc9cf8d *)arg1;
-- (RefTypeHolder_cfaab535)chromeCellRefForViewCellRef:(const RefTypeHolder_adbccd1a *)arg1;
-- (RefTypeHolder_cfaab535)chromeCellRefForBaseCellRef:(const RefTypeHolder_dbc9cf8d *)arg1;
-- (RefTypeHolder_dbc9cf8d)baseCellRefForViewCellRef:(const RefTypeHolder_adbccd1a *)arg1;
-- (RefTypeHolder_dbc9cf8d)baseCellRefForChromeCellRef:(const RefTypeHolder_cfaab535 *)arg1;
+- (const struct TSKUIDStruct *)tableUID;
+- (RefTypeHolder_7723cd4d)viewRangeRefForChromeRangeRef:(const void *)arg1;
+- (RefTypeHolder_4cbd00f5)chromeRangeRefForViewRangeRef:(const void *)arg1;
+- (RefTypeHolder_ca5e87e3)viewCellRefForChromeCellRef:(const void *)arg1;
+- (RefTypeHolder_ca5e87e3)viewCellRefForBaseCellRef:(const void *)arg1;
+- (RefTypeHolder_57ff3e12)chromeCellRefForViewCellRef:(const void *)arg1;
+- (RefTypeHolder_57ff3e12)chromeCellRefForBaseCellRef:(const void *)arg1;
+- (RefTypeHolder_0e28a076)baseCellRefForViewCellRef:(const void *)arg1;
+- (RefTypeHolder_0e28a076)baseCellRefForChromeCellRef:(const void *)arg1;
+- (struct TSUViewCellCoord)viewCellCoordForSummaryCellCoord:(struct TSUModelCellCoord)arg1;
+- (struct TSUModelCellCoord)summaryCellCoordForViewCellCoord:(struct TSUViewCellCoord)arg1;
 - (struct TSUViewCellCoord)viewCellCoordForChromeCellCoord:(struct TSUChromeCellCoord)arg1;
 - (struct TSUViewCellCoord)viewCellCoordForBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (struct TSUChromeCellCoord)chromeCellCoordForViewCellCoord:(struct TSUViewCellCoord)arg1;
@@ -37,6 +41,10 @@
 - (NSIndexSet *)viewColumnIndexesForBaseColumnIndexes:(NSIndexSet *)arg1;
 - (NSIndexSet *)baseRowIndexesForViewRowIndexes:(NSIndexSet *)arg1;
 - (NSIndexSet *)baseColumnIndexesForViewColumnIndexes:(NSIndexSet *)arg1;
+- (struct TSUViewRowIndex)viewRowIndexForSummaryRowIndex:(struct TSUModelRowIndex)arg1;
+- (struct TSUViewColumnIndex)viewColumnIndexForSummaryColumnIndex:(struct TSUModelColumnIndex)arg1;
+- (struct TSUModelRowIndex)summaryRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
+- (struct TSUModelColumnIndex)summaryColumnIndexForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
 - (struct TSUViewRowIndex)viewRowIndexForChromeRowIndex:(struct TSUChromeRowIndex)arg1;
 - (struct TSUViewColumnIndex)viewColumnIndexForChromeColumnIndex:(struct TSUChromeColumnIndex)arg1;
 - (struct TSUChromeRowIndex)chromeRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
@@ -49,6 +57,5 @@
 - (struct TSUModelColumnIndex)baseColumnIndexForChromeColumnIndex:(struct TSUChromeColumnIndex)arg1;
 - (struct TSUModelRowIndex)baseRowIndexForViewRowIndex:(struct TSUViewRowIndex)arg1;
 - (struct TSUModelColumnIndex)baseColumnIndexForViewColumnIndex:(struct TSUViewColumnIndex)arg1;
-- (_Bool)isIdentityMapping;
 @end
 

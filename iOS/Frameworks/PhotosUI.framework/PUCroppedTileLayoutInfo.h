@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)layoutInfoByInterpolatingWithLayoutInfo:(id)arg1 mixFactor:(double)arg2 coordinateSystem:(id)arg3;
 - (id)clone;
 - (_Bool)isGeometryEqualToLayoutInfo:(id)arg1;
-- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 cropInsets:(struct UIEdgeInsets)arg4 alpha:(double)arg5 transform:(struct CGAffineTransform)arg6 zPosition:(double)arg7 contentsRect:(struct CGRect)arg8 coordinateSystem:(id)arg9;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 cropInsets:(struct UIEdgeInsets)arg4 alpha:(double)arg5 cornerRadius:(double)arg6 cornerCurve:(id)arg7 cornerMask:(unsigned long long)arg8 transform:(struct CGAffineTransform)arg9 zPosition:(double)arg10 contentsRect:(struct CGRect)arg11 coordinateSystem:(id)arg12;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 contentsRect:(struct CGRect)arg7 coordinateSystem:(id)arg8;
 
 @end

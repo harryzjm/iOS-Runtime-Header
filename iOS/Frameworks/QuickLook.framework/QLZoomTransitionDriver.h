@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)tearDown;
 - (void)_performZoomTransition;
-- (void)animateFinishTransition;
 - (void)animateTransition;
 
 @end

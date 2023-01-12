@@ -15,6 +15,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 

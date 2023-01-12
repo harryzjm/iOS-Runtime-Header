@@ -4,28 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, NSURL, NSUUID;
+@class NSString;
 
 @interface KTLogNetworkRequest
 {
-    _Bool _isGET;
     NSString *_application;
-    NSURL *_url;
-    NSData *_data;
-    NSUUID *_uuid;
-    double _timeout;
 }
 
 - (void).cxx_destruct;
-@property double timeout; // @synthesize timeout=_timeout;
-@property(retain) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property(retain) NSData *data; // @synthesize data=_data;
-@property(retain) NSURL *url; // @synthesize url=_url;
-@property _Bool isGET; // @synthesize isGET=_isGET;
 @property(retain) NSString *application; // @synthesize application=_application;
-- (id)copyRequest:(id *)arg1;
+- (void)createRequestForAuthentication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)createRequestForAuthentication:(id)arg1 fetchAuthNow:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)createGETRequestForURL:(id)arg1 timeout:(double)arg2 error:(id *)arg3;
-- (id)createPOSTRequestForURL:(id)arg1 timeout:(double)arg2 contents:(id)arg3 error:(id *)arg4;
 - (id)initPOSTWithURL:(id)arg1 data:(id)arg2 uuid:(id)arg3 application:(id)arg4;
 - (id)initGETWithURL:(id)arg1 application:(id)arg2;
 

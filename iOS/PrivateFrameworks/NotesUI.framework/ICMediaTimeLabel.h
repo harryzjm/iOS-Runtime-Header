@@ -20,6 +20,7 @@
 - (void)commonInit;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)accessibilityValue;
 
 @end
 

@@ -6,15 +6,16 @@
 
 #import <UIKit/UIControl.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPaletteTool-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 
 @class NSDictionary, NSLayoutConstraint, NSString, PKPaletteAttributeViewController, UIImageView, UIView;
-@protocol PKPaletteErasingTool, PKPaletteInkingTool, PKPaletteTool;
+@protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool, PKPaletteTool;
 
-@interface PKPaletteToolView : UIControl <PKPaletteTool, PKEdgeLocatable, PKPaletteViewSizeScaling>
+@interface PKPaletteToolView : UIControl <PKPaletteTool, PKPaletteEdgeLocating, PKPaletteViewSizeScaling>
 {
+    _Bool _supportsDisplayingSelectedColor;
     NSString *_toolIdentifier;
     unsigned long long _edgeLocation;
     double _scalingFactor;
@@ -32,12 +33,6 @@
 }
 
 + (id)toolViewWithIdentifier:(id)arg1;
-+ (_Bool)_isHandwritingToolIdentfier:(id)arg1;
-+ (_Bool)_toolIdentifierIsObjectEraser:(id)arg1;
-+ (_Bool)_toolIdentifierIsBitmapEraser:(id)arg1;
-+ (_Bool)_toolIdentifierIsEraser:(id)arg1;
-+ (_Bool)_toolIdentifierIsRuler:(id)arg1;
-+ (id)_toolIdentifierFromInk:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewHeigthAnchorConstraint; // @synthesize imageViewHeigthAnchorConstraint=_imageViewHeigthAnchorConstraint;
@@ -47,6 +42,7 @@
 @property(retain, nonatomic) NSLayoutConstraint *imageViewBottomAnchorConstraint; // @synthesize imageViewBottomAnchorConstraint=_imageViewBottomAnchorConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *imageViewTopAnchorConstraint; // @synthesize imageViewTopAnchorConstraint=_imageViewTopAnchorConstraint;
 @property(retain, nonatomic) UIView *toolShadowView; // @synthesize toolShadowView=_toolShadowView;
+@property(nonatomic) _Bool supportsDisplayingSelectedColor; // @synthesize supportsDisplayingSelectedColor=_supportsDisplayingSelectedColor;
 @property(nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property(copy, nonatomic) NSDictionary *toolProperties; // @synthesize toolProperties=_toolProperties;
 @property(readonly, nonatomic) PKPaletteAttributeViewController *attributeViewController; // @synthesize attributeViewController=_attributeViewController;
@@ -62,6 +58,7 @@
 - (void)_reloadToolImageSizeConstraints;
 - (void)_updateToolShadowView;
 @property(readonly, nonatomic) NSString *toolName;
+@property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 - (_Bool)isHandwritingTool;
 - (_Bool)isLassoTool;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;

@@ -9,7 +9,7 @@
 #import <boringssl/OS_nw_protocol_boringssl-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_association, OS_nw_parameters;
+@protocol OS_dispatch_queue, OS_nw_association, OS_nw_frame, OS_nw_parameters;
 
 @interface boringssl_concrete_nw_protocol_boringssl : NSObject <OS_nw_protocol_boringssl>
 {
@@ -39,6 +39,8 @@
     void *boringssl_bio;
     const char *address_string;
     NSObject<OS_dispatch_queue> *client_queue;
+    NSObject<OS_nw_frame> *current_input_frame;
+    unsigned int claimed_input_bytes;
     unsigned int input_frame_byte_count;
     int stack_error;
     unsigned int message_mode:1;
@@ -49,6 +51,7 @@
     unsigned int waiting_for_writable:1;
     unsigned int input_available_unacknowledged:1;
     unsigned int input_suspended:1;
+    unsigned int deferred_input_finished:1;
     unsigned int servicing_reads:1;
     unsigned int servicing_handshake:1;
     unsigned int server:1;
@@ -59,7 +62,10 @@
     unsigned int received_connect:1;
     unsigned int connected:1;
     unsigned int sent_error:1;
+    unsigned int wake_flag:1;
+    unsigned int in_write_frames:1;
     char log_str[84];
+    unsigned int logging_disabled:1;
 }
 
 - (void).cxx_destruct;

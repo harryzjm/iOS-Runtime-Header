@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDWorkoutDataAccumulatorObserver-Protocol.h>
 
-@class HDEurotasData, HDHealthServiceManager, HDProfile, HKQuantity, NSString, _HDFTMProducerMetricTracker;
+@class HDEurotasData, HDProfile, HKQuantity, NSString, _HDFTMProducerMetricTracker;
 @protocol OS_dispatch_queue;
 
 @interface HDFitnessMachineDataProducer : NSObject <HDWorkoutDataAccumulatorObserver>
@@ -26,14 +26,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (void)_queue_detachHealthServiceSession;
-- (void)_queue_sendEurotasData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_queue_generateEurotasData;
-- (void)_queue_updateFitnessMachineWithCompletion:(CDUnknownBlockType)arg1 forcing:(_Bool)arg2;
-- (void)_queue_updateFitnessMachine;
-- (void)_queue_workoutDataAccumulator:(id)arg1 didUpdateStatistics:(id)arg2;
-- (void)_readHeartRateEnabledPreference;
 - (void)workoutDataAccumulator:(id)arg1 didUpdateStatistics:(id)arg2;
 @property(readonly, nonatomic) _Bool attached;
 - (void)resumeCurrentSession;
@@ -42,7 +34,6 @@
 - (void)deliverFinalValuesAndDetachWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sendInitialValues;
 - (void)attachHealthServiceSession:(unsigned long long)arg1;
-@property(readonly, nonatomic) HDHealthServiceManager *healthServiceManager;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 

@@ -20,10 +20,6 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property(copy, nonatomic) NSArray *cardSections; // @synthesize cardSections=_cardSections;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -37,6 +33,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

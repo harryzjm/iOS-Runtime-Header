@@ -21,6 +21,7 @@
 - (NSIndexSet *)indexesOfVisibleColumnsInColumnRange:(NSIndexSet *)arg1;
 - (NSIndexSet *)indexesOfVisibleColumnsInCellRegion:(TSTCellRegion *)arg1;
 - (NSIndexSet *)indexesOfVisibleColumnsInCellRange:(struct TSUCellRect)arg1;
+- (NSIndexSet *)indexesOfFilteredColumnsInCellRange:(struct TSUCellRect)arg1;
 - (NSIndexSet *)indexesOfUserHiddenColumnsInCellRange:(struct TSUCellRect)arg1;
 - (NSIndexSet *)indexesOfHiddenColumnsInCellRange:(struct TSUCellRect)arg1;
 - (NSIndexSet *)indexesOfVisibleRowsInRowRange:(NSIndexSet *)arg1;
@@ -38,9 +39,6 @@
 - (unsigned int)numberOfUserHiddenRows;
 - (unsigned int)numberOfHiddenColumns;
 - (unsigned int)numberOfHiddenRows;
-- (_Bool)hasUserHiddenColumns;
-- (_Bool)hasUserHiddenRows;
-- (_Bool)hasHiddenColumns;
-- (_Bool)hasHiddenRows;
+- (_Bool)hasHiddenColumnsOrRows;
 @end
 

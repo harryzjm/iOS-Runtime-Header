@@ -10,6 +10,7 @@
 @protocol LAContextClientEvaluationProt
 - (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)optionsForInternalOperation:(long long)arg1 reply:(void (^)(id, NSError *))arg2;
+- (void)credentialOfType:(long long)arg1 reply:(void (^)(NSData *, NSError *))arg2;
 - (void)invalidateWithReply:(void (^)(_Bool, NSError *))arg1;
 - (void)setCredential:(NSData *)arg1 type:(long long)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)isCredentialSet:(long long)arg1 reply:(void (^)(_Bool, NSError *))arg2;

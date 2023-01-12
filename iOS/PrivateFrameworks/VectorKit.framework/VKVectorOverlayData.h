@@ -11,9 +11,12 @@
 @interface VKVectorOverlayData : NSObject
 {
     id <VKVectorOverlayDelegate> _delegate;
+    long long _blendMode;
 }
 
+@property(nonatomic) long long blendMode; // @synthesize blendMode=_blendMode;
 @property(nonatomic, getter=_delegate, setter=_setDelegate:) id <VKVectorOverlayDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)init;
 
 @end
 

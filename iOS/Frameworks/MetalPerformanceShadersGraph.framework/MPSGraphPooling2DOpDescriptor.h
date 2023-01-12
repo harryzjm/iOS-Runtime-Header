@@ -10,6 +10,8 @@
 
 @interface MPSGraphPooling2DOpDescriptor : NSObject <NSCopying>
 {
+    _Bool _ceilMode;
+    _Bool _includeZeroPadToAverage;
     unsigned long long _kernelWidth;
     unsigned long long _kernelHeight;
     unsigned long long _strideInX;
@@ -38,6 +40,8 @@
 @property(nonatomic) unsigned long long strideInX; // @synthesize strideInX=_strideInX;
 @property(nonatomic) unsigned long long kernelHeight; // @synthesize kernelHeight=_kernelHeight;
 @property(nonatomic) unsigned long long kernelWidth; // @synthesize kernelWidth=_kernelWidth;
+@property(nonatomic) _Bool includeZeroPadToAverage; // @synthesize includeZeroPadToAverage=_includeZeroPadToAverage;
+@property(nonatomic) _Bool ceilMode; // @synthesize ceilMode=_ceilMode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setExplicitPaddingWithPaddingLeft:(unsigned long long)arg1 paddingRight:(unsigned long long)arg2 paddingTop:(unsigned long long)arg3 paddingBottom:(unsigned long long)arg4;
 

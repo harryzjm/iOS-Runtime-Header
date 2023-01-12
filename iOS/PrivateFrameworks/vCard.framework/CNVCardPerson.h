@@ -46,6 +46,7 @@
     NSData *_imageData;
     NSString *_imageType;
     NSData *_imageHash;
+    NSData *_memojiMetadata;
     NSDateComponents *_birthdayComponents;
     NSDateComponents *_alternateBirthdayComponents;
     NSArray *_otherDateComponents;
@@ -75,6 +76,7 @@
 @property(retain) NSArray *otherDateComponents; // @synthesize otherDateComponents=_otherDateComponents;
 @property(retain) NSDateComponents *alternateBirthdayComponents; // @synthesize alternateBirthdayComponents=_alternateBirthdayComponents;
 @property(retain) NSDateComponents *birthdayComponents; // @synthesize birthdayComponents=_birthdayComponents;
+@property(retain) NSData *memojiMetadata; // @synthesize memojiMetadata=_memojiMetadata;
 @property(retain) NSData *imageHash; // @synthesize imageHash=_imageHash;
 @property(retain) NSString *imageType; // @synthesize imageType=_imageType;
 @property(retain) NSData *imageData; // @synthesize imageData=_imageData;

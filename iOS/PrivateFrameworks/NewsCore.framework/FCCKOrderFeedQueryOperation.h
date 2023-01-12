@@ -26,26 +26,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSError *resultError; // @synthesize resultError=_resultError;
-@property(retain, nonatomic) NSArray *resultFeedResponses; // @synthesize resultFeedResponses=_resultFeedResponses;
-@property(retain, nonatomic) NSArray *resultIssueRecords; // @synthesize resultIssueRecords=_resultIssueRecords;
-@property(retain, nonatomic) NSArray *resultTagRecords; // @synthesize resultTagRecords=_resultTagRecords;
-@property(retain, nonatomic) NSArray *resultFeedItemAndArticleRecords; // @synthesize resultFeedItemAndArticleRecords=_resultFeedItemAndArticleRecords;
-@property(copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
-@property(copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
-@property(copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
-@property(copy, nonatomic) NSDictionary *additionalRequestHTTPHeaders; // @synthesize additionalRequestHTTPHeaders=_additionalRequestHTTPHeaders;
-@property(copy, nonatomic) NSArray *articleLinkKeys; // @synthesize articleLinkKeys=_articleLinkKeys;
-@property(nonatomic) unsigned long long queryPriority; // @synthesize queryPriority=_queryPriority;
-@property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
-@property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
-@property(copy, nonatomic) NSArray *feedRequests; // @synthesize feedRequests=_feedRequests;
-@property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (id)_feedRelativeDictionaryFromResultsArray:(id)arg1;
-- (void)_processResultsRecord:(id)arg1 feedItemAndArticleRecords:(id)arg2 tagRecords:(id)arg3 issueRecords:(id)arg4;
-- (id)_requiredKeys;
-- (id)_predicateForPerFeedFieldName:(id)arg1 key:(id)arg2 defaultValue:(id)arg3;
-- (id)_constructFeedQuery;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)resetForRetry;
 - (void)performOperation;

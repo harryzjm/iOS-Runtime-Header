@@ -40,6 +40,8 @@
 - (id)initWithURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)init;
 - (id)_common_init;
+- (void)_sendWillDownloadVariants:(id)arg1;
+- (void)_sendProgessUpdateWithExpectedBytesToDownload:(unsigned long long)arg1 bytesDownloaded:(unsigned long long)arg2;
 - (void)_sendDidFinishDownloadForMediaSelectionWithMediaSelection:(id)arg1;
 - (void)_sendDidResolveMediaSelectionWithMediaSelection:(id)arg1;
 - (void)_sendLoadedTimeRangesChangedToDelegateWithNewlyLoadedTimeRange:(id)arg1 currentLoadedTimeRanges:(id)arg2 timeRangeExpectedToLoad:(id)arg3 selectedMediaArray:(id)arg4;
@@ -47,7 +49,6 @@
 - (void)_sendDownloadSuccessToDelegate;
 - (void)_downloadFailureCallbackWithError:(id)arg1;
 - (void)_downloadSuccessCallback;
-- (void)_transitionToTerminalStatusForDelegateCallbacksWithStatus:(long long)arg1 error:(id)arg2;
 - (void)_removeFigPlaybackItemListeners;
 - (void)_addFigPlaybackItemListeners;
 - (id)_figPlaybackItemNotificationNames;
@@ -56,13 +57,11 @@
 - (id)_figAssetNotificationNames;
 - (id)_errorFromAssetNotificationPayload:(id)arg1;
 - (struct OpaqueFigAsset *)_createDuplicateFigAssetFromAVAsset:(id)arg1;
-- (id)_loadedTimeRangesFromFigLoadedTimeRanges:(id)arg1;
 - (id)_verifyDownloadConfigurationForAssetType;
 - (int)_readyForInspection;
 - (int)_primeCache;
 - (void)_primeCacheOnDispatchQueue;
 - (id)_errorForFigNotificationPayload:(struct __CFDictionary *)arg1 key:(struct __CFString *)arg2;
-- (void)_transitionToTerminalStatusAsync:(long long)arg1 error:(id)arg2;
 - (void)_transitionToTerminalStatus:(long long)arg1 error:(id)arg2;
 - (id)_startOnQueue;
 - (id)_startOnQueueFirstTime;
@@ -74,6 +73,8 @@
 - (void)_setupFigClientObjectAsync:(id)arg1;
 - (id)_setupFigClientObjectForStreaming:(id)arg1;
 - (id)_setupFigClientObjectForFileDownload:(id)arg1;
+- (void)stopProgressTimerOnQueue;
+- (_Bool)startProgressTimerOnQueueWithError:(id *)arg1;
 
 @end
 

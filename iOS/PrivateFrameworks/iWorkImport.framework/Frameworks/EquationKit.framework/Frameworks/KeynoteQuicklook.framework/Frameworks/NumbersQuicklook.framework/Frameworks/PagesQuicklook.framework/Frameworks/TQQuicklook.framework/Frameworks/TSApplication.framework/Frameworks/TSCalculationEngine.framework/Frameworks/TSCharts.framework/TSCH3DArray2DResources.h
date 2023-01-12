@@ -8,20 +8,20 @@
 
 @interface TSCH3DArray2DResources
 {
-    TSCH3DArray2D *mResources;
+    TSCH3DArray2D *_resources;
 }
 
-+ (id)mResources;
++ (id)_resources;
 + (id)resourcesWithResource:(id)arg1;
-+ (id)resourcesWithSize:(const tvec2_3b141483 *)arg1;
-- (_Bool)hasResourceAtIndex:(const tvec2_3b141483 *)arg1;
++ (id)resourcesWithSize:(const void *)arg1;
+- (void).cxx_destruct;
+- (_Bool)hasResourceAtIndex:(const void *)arg1;
 - (id)firstResource;
-- (id)resourceAtIndex:(const tvec2_3b141483 *)arg1;
-- (void)setResource:(id)arg1 atIndex:(const tvec2_3b141483 *)arg2;
-- (void)resize:(const tvec2_3b141483 *)arg1;
+- (id)resourceAtIndex:(const void *)arg1;
+- (void)setResource:(id)arg1 atIndex:(const void *)arg2;
+- (void)resize:(const void *)arg1;
 - (tvec2_3b141483)size;
-- (void)dealloc;
-- (id)initWithSize:(const tvec2_3b141483 *)arg1;
+- (id)initWithSize:(const void *)arg1;
 
 @end
 

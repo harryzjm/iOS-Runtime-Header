@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDNanoSyncDescription-Protocol.h>
 
-@class HDDaemonTransaction, HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString;
+@class HDDaemonTransaction, HDIDSMessageCenter, HDIDSParticipant, NSData, NSDictionary, NSString, PBCodable;
 
 @interface HDIDSOutgoingResponse : NSObject <HDNanoSyncDescription>
 {
@@ -26,24 +26,23 @@
     unsigned long long _priority;
     double _sendTimeout;
     NSDictionary *_persistentUserInfo;
-    id _pbResponse;
+    PBCodable *_pbResponse;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id pbResponse; // @synthesize pbResponse=_pbResponse;
-@property(getter=isSent) _Bool sent; // @synthesize sent=_sent;
+@property(retain, nonatomic) PBCodable *pbResponse; // @synthesize pbResponse=_pbResponse;
 @property(nonatomic) _Bool forceLocalDelivery; // @synthesize forceLocalDelivery=_forceLocalDelivery;
 @property(nonatomic) _Bool doNotCompress; // @synthesize doNotCompress=_doNotCompress;
 @property(retain, nonatomic) NSDictionary *persistentUserInfo; // @synthesize persistentUserInfo=_persistentUserInfo;
 @property(nonatomic) double sendTimeout; // @synthesize sendTimeout=_sendTimeout;
 @property(nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
-@property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
-@property(retain, nonatomic) HDIDSParticipant *toParticipant; // @synthesize toParticipant=_toParticipant;
-@property(nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
-@property(nonatomic) unsigned short requestMessageID; // @synthesize requestMessageID=_requestMessageID;
-@property(retain, nonatomic) HDIDSMessageCenter *messageCenter; // @synthesize messageCenter=_messageCenter;
-@property(copy, nonatomic) NSString *requestIdsIdentifier; // @synthesize requestIdsIdentifier=_requestIdsIdentifier;
+@property(readonly, copy, nonatomic) NSString *idsIdentifier;
+@property(readonly, nonatomic) HDIDSParticipant *toParticipant;
+@property(readonly, nonatomic) unsigned short messageID;
+@property(readonly, nonatomic) unsigned short requestMessageID;
+@property(readonly, nonatomic) HDIDSMessageCenter *messageCenter;
+@property(readonly, copy, nonatomic) NSString *requestIdsIdentifier;
 - (void)send;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;

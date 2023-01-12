@@ -9,13 +9,16 @@
 @class AFUISiriRemoteSceneViewController, BKSAnimationFenceHandle, NSArray, NSDictionary, NSString, NSURL, SASRequestOptions;
 
 @protocol AFUISiriRemoteSceneViewControllerDelegate <NSObject>
+- (void)openURL:(NSURL *)arg1 bundleId:(NSString *)arg2 inPlace:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (void)siriRemoteViewControllerDidFinishDismissing:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsDismissalWithReason:(unsigned long long)arg2 withCompletion:(void (^)(_Bool))arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsPresentation:(void (^)(_Bool))arg2;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestKeyboardForTapToEditWithCompletion:(void (^)(_Bool))arg2;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 requestsKeyboardWithCompletion:(void (^)(_Bool))arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didRequestCurrentTextInputWithReplyHandler:(void (^)(NSString *))arg2;
-- (void)siriRemoteViewControllerDidEndTapToEdit:(AFUISiriRemoteSceneViewController *)arg1;
-- (void)siriRemoteViewControllerWillBeginTapToEdit:(AFUISiriRemoteSceneViewController *)arg1;
+- (void)siriRemoteViewControllerDidEndEditing:(AFUISiriRemoteSceneViewController *)arg1;
+- (void)siriRemoteViewControllerWillBeginEditing:(AFUISiriRemoteSceneViewController *)arg1;
+- (void)siriRemoteViewControllerCancelHIDEventDefferal:(AFUISiriRemoteSceneViewController *)arg1;
+- (void)siriRemoteViewControllerRequestsHIDEventDefferal:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidResetTextInput:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didRequestKeyboard:(_Bool)arg2 minimized:(_Bool)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didRequestKeyboard:(_Bool)arg2;
@@ -28,15 +31,13 @@
 - (void)siriRemoteViewControllerDidDetectMicButtonLongPressEnded:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidDetectMicButtonLongPressBegan:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidDetectMicButtonTap:(AFUISiriRemoteSceneViewController *)arg1;
-- (_Bool)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 openURL:(NSURL *)arg2 appBundleID:(NSString *)arg3 allowSiriDismissal:(_Bool)arg4;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 openURL:(NSURL *)arg2 delaySessionEndForTTS:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didReadBulletinWithIdentifier:(NSString *)arg2;
 - (void)siriRemoteViewControllerPulseHelpButton:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewControllerDidPresentUserInterface:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 failTest:(NSString *)arg2 withReason:(NSString *)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didFinishTest:(NSString *)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 willStartTest:(NSString *)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 handlePasscodeUnlockWithCompletion:(void (^)(long long))arg2;
+- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setRequestHandlingStatus:(unsigned long long)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setBugReportingAvailable:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setHelpButtonEmphasized:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 didDismissViewControllerWithStatusBarStyle:(long long)arg2;
@@ -52,22 +53,21 @@
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 setStatusViewHidden:(_Bool)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 siriIdleAndQuietStatusDidChange:(_Bool)arg2;
-- (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 launchApplicationWithBundleIdentifier:(NSString *)arg2 withURL:(NSURL *)arg3 launchOptions:(long long)arg4 replyHandler:(void (^)(_Bool))arg5;
 - (void)userRelevantEventDidOccurInSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 startRequestWithOptions:(SASRequestOptions *)arg2;
 - (void)startGuidedAccessForRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1;
 - (long long)siriRemoteViewControllerRequestsActivationSource:(AFUISiriRemoteSceneViewController *)arg1;
-- (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 delayForTTS:(_Bool)arg2 userInfo:(NSDictionary *)arg3 withDismissalReason:(unsigned long long)arg4;
+- (void)dismissSiriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 userInfo:(NSDictionary *)arg2 withReason:(unsigned long long)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 invalidatedForReason:(unsigned long long)arg2 explanation:(NSString *)arg3;
 
 @optional
 - (void)siriRemoteViewControllerDidDeactivateScene:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 sceneDidActivateWithIdentifier:(NSString *)arg2;
+- (void)siriRemoteViewControllerDidPresentKeyboard:(AFUISiriRemoteSceneViewController *)arg1;
 - (void)requestBlurVisible:(_Bool)arg1 reason:(long long)arg2 fence:(BKSAnimationFenceHandle *)arg3;
 - (void)setShouldDismissForSwipesOutsideContent:(_Bool)arg1;
 - (void)setShouldDismissForTapsOutsideContent:(_Bool)arg1;
 - (void)setShouldDismissForTapOutsideContent:(_Bool)arg1;
-- (void)extendCurrentTTSRequested;
 - (void)siriRemoteViewController:(AFUISiriRemoteSceneViewController *)arg1 presentedIntentWithBundleId:(NSString *)arg2;
 @end
 

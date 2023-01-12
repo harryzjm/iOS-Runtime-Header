@@ -45,8 +45,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPattern:(const double *)arg1 count:(unsigned long long)arg2 phase:(double)arg3;
 - (id)initWithPatternType:(long long)arg1 pattern:(const double *)arg2 count:(unsigned long long)arg3 phase:(double)arg4;
-- (void)saveToArchive:(struct StrokePatternArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct StrokePatternArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

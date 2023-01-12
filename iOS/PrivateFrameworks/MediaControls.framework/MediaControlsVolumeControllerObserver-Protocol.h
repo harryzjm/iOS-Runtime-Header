@@ -12,7 +12,6 @@
 - (void)mediaControlsVolumeController:(MediaControlsVolumeController *)arg1 didUpdateSplitRoute:(_Bool)arg2;
 
 @optional
-- (void)mediaControlsVolumeController:(MediaControlsVolumeController *)arg1 didChangeHeadTrackedSpatialAudioEnabled:(_Bool)arg2;
 - (void)mediaControlsVolumeController:(MediaControlsVolumeController *)arg1 didChangeUserInteractionEnabled:(_Bool)arg2 forRoute:(long long)arg3;
 - (void)mediaControlsVolumeController:(MediaControlsVolumeController *)arg1 didChangeVolumeAvailable:(_Bool)arg2 effectiveVolume:(float)arg3 forRoute:(long long)arg4;
 @end

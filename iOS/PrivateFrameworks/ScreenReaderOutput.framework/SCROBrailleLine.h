@@ -86,8 +86,8 @@
 - (id)_dotDescriptionForBrailleString:(id)arg1;
 - (id)_spokenStringForBrailleString:(id)arg1 isDelete:(_Bool)arg2 speakLiterally:(out _Bool *)arg3;
 - (id)_trimCommonPrefixWithString:(id)arg1 fromString:(id)arg2;
-- (id)_translatedTextForPrefixBraille:(id)arg1 printBraille:(id)arg2 contracted:(_Bool)arg3;
-- (id)_translatedTextInIsolationForBraille:(id)arg1 contracted:(_Bool)arg2;
+- (id)_translatedTextForPrefixBraille:(id)arg1 printBraille:(id)arg2 translationMode:(unsigned long long)arg3;
+- (id)_translatedTextInIsolationForBraille:(id)arg1 translationMode:(unsigned long long)arg2;
 - (_Bool)_insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2 silently:(_Bool)arg3;
 - (_Bool)insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2;
 - (_Bool)moveCursorToRouterIndex:(unsigned long long)arg1 forwardToScreenReader:(out _Bool *)arg2 updateRouterLocation:(long long *)arg3;

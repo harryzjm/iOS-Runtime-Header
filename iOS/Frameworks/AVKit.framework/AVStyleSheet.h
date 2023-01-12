@@ -36,6 +36,9 @@ __attribute__((visibility("hidden")))
     struct CGSize _defaultItemFullScreenSize;
     struct CGSize _routePickerButtonInlineSize;
     struct CGSize _routePickerButtonFullScreenSize;
+    struct CGSize _audioRoutePickerFullScreenSize;
+    struct CGSize _volumeButtonInlineSize;
+    struct CGSize _volumeButtonFullScreenSize;
     struct CGSize _minimumScrubberSize;
     struct NSDirectionalEdgeInsets _doubleRowLayoutMargins;
     struct NSDirectionalEdgeInsets _doubleRowLayoutMarginsWhenShowingScrubInstructions;
@@ -57,10 +60,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double maximumTransportControlsWidth; // @synthesize maximumTransportControlsWidth=_maximumTransportControlsWidth;
 @property(readonly, nonatomic) double maximumProminentPlayButtonDimension; // @synthesize maximumProminentPlayButtonDimension=_maximumProminentPlayButtonDimension;
 @property(readonly, nonatomic) double minimumProminentPlayButtonDimension; // @synthesize minimumProminentPlayButtonDimension=_minimumProminentPlayButtonDimension;
+@property(readonly, nonatomic) struct CGSize volumeButtonFullScreenSize; // @synthesize volumeButtonFullScreenSize=_volumeButtonFullScreenSize;
+@property(readonly, nonatomic) struct CGSize volumeButtonInlineSize; // @synthesize volumeButtonInlineSize=_volumeButtonInlineSize;
 @property(readonly, nonatomic) double volumeSliderPadding; // @synthesize volumeSliderPadding=_volumeSliderPadding;
 @property(readonly, nonatomic) double volumeSliderRegularFullScreenWidth; // @synthesize volumeSliderRegularFullScreenWidth=_volumeSliderRegularFullScreenWidth;
 @property(readonly, nonatomic) double volumeSliderCompactFullScreenWidth; // @synthesize volumeSliderCompactFullScreenWidth=_volumeSliderCompactFullScreenWidth;
 @property(readonly, nonatomic) double volumeSliderInlineWidth; // @synthesize volumeSliderInlineWidth=_volumeSliderInlineWidth;
+@property(readonly, nonatomic) struct CGSize audioRoutePickerFullScreenSize; // @synthesize audioRoutePickerFullScreenSize=_audioRoutePickerFullScreenSize;
 @property(readonly, nonatomic) struct CGSize routePickerButtonFullScreenSize; // @synthesize routePickerButtonFullScreenSize=_routePickerButtonFullScreenSize;
 @property(readonly, nonatomic) struct CGSize routePickerButtonInlineSize; // @synthesize routePickerButtonInlineSize=_routePickerButtonInlineSize;
 @property(readonly, nonatomic) double additionalInlinePaddingForDodgingSafeArea; // @synthesize additionalInlinePaddingForDodgingSafeArea=_additionalInlinePaddingForDodgingSafeArea;

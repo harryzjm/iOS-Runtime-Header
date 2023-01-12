@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProactiveSupport/_PASZonedObject.h>
+#import <objc/NSObject.h>
 
 #import <PersonalizationPortrait/MLFeatureProvider-Protocol.h>
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
@@ -14,7 +14,7 @@
 
 @class NSSet, NSString, PPNamedEntity, PPNamedEntityMetadata, PPSource;
 
-@interface PPNamedEntityRecord : _PASZonedObject <PPRecord, NSCopying, NSMutableCopying, NSSecureCoding, MLFeatureProvider>
+@interface PPNamedEntityRecord : NSObject <PPRecord, NSCopying, NSMutableCopying, NSSecureCoding, MLFeatureProvider>
 {
     PPNamedEntity *_entity;
     PPSource *_source;
@@ -37,6 +37,7 @@
 @property(readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property(readonly, nonatomic) PPSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) PPNamedEntity *entity; // @synthesize entity=_entity;
+- (id)identifier;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
 - (_Bool)isEqualToNamedEntityRecord:(id)arg1;

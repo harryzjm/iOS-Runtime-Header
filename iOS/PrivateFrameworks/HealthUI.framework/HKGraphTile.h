@@ -27,6 +27,7 @@
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)setNeedsDisplay;
 @property(nonatomic) _Bool hidden;
+- (void)prepareForReuse;
 - (void)configureTileWithScreenRect:(struct CGRect)arg1 column:(long long)arg2;
 - (void)dealloc;
 - (id)initWithParentView:(id)arg1;

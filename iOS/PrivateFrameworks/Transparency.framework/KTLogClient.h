@@ -9,31 +9,34 @@
 @interface KTLogClient
 {
     _Bool _configured;
-    NSURL *_queryURI;
     NSURL *_consistencyProofURI;
     NSURL *_publicKeysURI;
+    NSURL *_queryURI;
     NSURL *_revisionLogProofURI;
     double _expirationTime;
 }
 
 + (id)configBagRequest;
++ (id)configBagFileName;
 + (id)formatEventName:(id)arg1 application:(id)arg2 state:(id)arg3;
 + (id)formatEventName:(id)arg1 state:(id)arg2;
 + (id)configBagURL;
 - (void).cxx_destruct;
 @property double expirationTime; // @synthesize expirationTime=_expirationTime;
 @property(retain) NSURL *revisionLogProofURI; // @synthesize revisionLogProofURI=_revisionLogProofURI;
-@property(retain) NSURL *publicKeysURI; // @synthesize publicKeysURI=_publicKeysURI;
-@property(retain) NSURL *consistencyProofURI; // @synthesize consistencyProofURI=_consistencyProofURI;
 @property(retain) NSURL *queryURI; // @synthesize queryURI=_queryURI;
 @property _Bool configured; // @synthesize configured=_configured;
+@property(retain) NSURL *publicKeysURI; // @synthesize publicKeysURI=_publicKeysURI;
+@property(retain) NSURL *consistencyProofURI; // @synthesize consistencyProofURI=_consistencyProofURI;
 - (void)downloadPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)downloadRevisionLogInclusionProof:(id)arg1 uuid:(id)arg2 retry:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)downloadConsistencyProof:(id)arg1 uuid:(id)arg2 retry:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)downloadQuery:(id)arg1 uuid:(id)arg2 retry:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)downloadMessage:(id)arg1 uri:(id)arg2 uuid:(id)arg3 application:(id)arg4 retry:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)fetchRevisionLogInclusionProof:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchConsistencyProof:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchQuery:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)handleQueryResponse:(id)arg1 fetchError:(id)arg2 application:(id)arg3 error:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)fetchMessage:(id)arg1 uri:(id)arg2 uuid:(id)arg3 application:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)configure:(CDUnknownBlockType)arg1;
 - (_Bool)configureWithDisk:(id *)arg1;

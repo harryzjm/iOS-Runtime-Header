@@ -6,11 +6,10 @@
 
 #import <AvatarKit/NSObject-Protocol.h>
 
-@class AVTPhysicsController, NSString, SCNNode, SCNPhysicsWorld;
+@class AVTPhysicsController, NSString, SCNNode;
 
 @protocol AVTPhysicsControllerDelegate <NSObject>
 - (double)physicsController:(AVTPhysicsController *)arg1 downforceForNodeNamed:(NSString *)arg2;
-- (SCNPhysicsWorld *)physicsWorldForPhysicsController:(AVTPhysicsController *)arg1;
 - (SCNNode *)avatarNodeForPhysicsController:(AVTPhysicsController *)arg1;
 @end
 

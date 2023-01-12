@@ -15,17 +15,18 @@ __attribute__((visibility("hidden")))
 {
     int _pid;
     int _pidversion;
-    struct ResourceFetchManager *_resourceFetchManager;
+    void *_resourceFetchManager;
 }
 
 @property(readonly, nonatomic) int pidversion; // @synthesize pidversion=_pidversion;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
-@property(readonly, nonatomic) struct ResourceFetchManager *resourceFetchManager; // @synthesize resourceFetchManager=_resourceFetchManager;
+@property(readonly, nonatomic) void *resourceFetchManager; // @synthesize resourceFetchManager=_resourceFetchManager;
+- (void)resourceAtAssetPath:(id)arg1 payloadDidUpdate:(id)arg2 error:(id)arg3;
 - (void)associateConnectionWithPeerID:(unsigned long long)arg1;
 @property(readonly, copy, nonatomic) NSString *redactedDescription;
 @property(readonly, copy) NSString *description;
 - (void)invalidate;
-- (id)initWithResourceFetchManager:(struct ResourceFetchManager *)arg1 connection:(const struct Connection *)arg2;
+- (id)initWithResourceFetchManager:(void *)arg1 connection:(const struct Connection *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

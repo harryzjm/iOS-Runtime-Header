@@ -9,7 +9,7 @@
 #import <CalendarNotification/CALNEventInvitationNotificationDataSource-Protocol.h>
 
 @class NSString;
-@protocol CALNDataSourceEventRepresentationProvider, CALNEKCalendarNotificationReferenceProvider, CALNInboxNotificationProvider, CALNRemoteMutator, EKEventStoreProvider;
+@protocol CALNDataSourceEventRepresentationProvider, CALNEKCalendarNotificationReferenceProvider, CALNInboxNotificationProvider, CALNRemoteMutator, EKEventStoreProvider, EKNotificationPreferences;
 
 @interface CALNEventInvitationNotificationEKDataSource : NSObject <CALNEventInvitationNotificationDataSource>
 {
@@ -18,10 +18,12 @@
     id <CALNEKCalendarNotificationReferenceProvider> _notificationReferenceProvider;
     id <CALNRemoteMutator> _remoteMutator;
     id <CALNDataSourceEventRepresentationProvider> _dataSourceEventRepresentationProvider;
+    id <EKNotificationPreferences> _preferences;
 }
 
 + (long long)_spanForNewStatusWithEvent:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <EKNotificationPreferences> preferences; // @synthesize preferences=_preferences;
 @property(readonly, nonatomic) id <CALNDataSourceEventRepresentationProvider> dataSourceEventRepresentationProvider; // @synthesize dataSourceEventRepresentationProvider=_dataSourceEventRepresentationProvider;
 @property(readonly, nonatomic) id <CALNRemoteMutator> remoteMutator; // @synthesize remoteMutator=_remoteMutator;
 @property(readonly, nonatomic) id <CALNEKCalendarNotificationReferenceProvider> notificationReferenceProvider; // @synthesize notificationReferenceProvider=_notificationReferenceProvider;
@@ -37,7 +39,7 @@
 - (id)fetchEventInvitationNotificationWithSourceClientIdentifier:(id)arg1;
 - (id)fetchEventInvitationNotificationSourceClientIdentifiers:(id)arg1;
 - (id)fetchEventInvitationNotifications;
-- (id)initWithEventStoreProvider:(id)arg1 inboxNotificationProvider:(id)arg2 notificationReferenceProvider:(id)arg3 remoteMutator:(id)arg4 dataSourceEventRepresentationProvider:(id)arg5;
+- (id)initWithEventStoreProvider:(id)arg1 inboxNotificationProvider:(id)arg2 notificationReferenceProvider:(id)arg3 remoteMutator:(id)arg4 dataSourceEventRepresentationProvider:(id)arg5 preferences:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

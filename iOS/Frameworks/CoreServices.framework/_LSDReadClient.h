@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)getSessionLanguagesForImproperlyLocalizedProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)mapPlugInBundleIdentifiersToContainingBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)mapBundleIdentifiers:(id)arg1 orMachOUUIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -23,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)getTypeRecordsWithTag:(id)arg1 ofClass:(id)arg2 conformingToIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getTypeRecordWithTag:(id)arg1 ofClass:(id)arg2 conformingToIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getTypeRecordsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getTypeRecordWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getTypeRecordWithIdentifier:(id)arg1 allowUndeclared:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getExtensionPointRecordForCurrentProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getExtensionPointRecordWithIdentifier:(id)arg1 platform:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getBundleRecordForCoreTypesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -32,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)resolveQueries:(id)arg1 legacySPI:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getKnowledgeUUIDAndSequenceNumberWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getDiskUsage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getLocalizedNameWithBundleType:(id)arg1 bundleIdentifier:(id)arg2 bundleUUID:(id)arg3 context:(id)arg4 shortNameOnly:(_Bool)arg5 preferredLocalizations:(id)arg6 validationToken:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)getKernelPackageExtensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServerStoreNonBlockingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getServerStoreWithCompletionHandler:(CDUnknownBlockType)arg1;

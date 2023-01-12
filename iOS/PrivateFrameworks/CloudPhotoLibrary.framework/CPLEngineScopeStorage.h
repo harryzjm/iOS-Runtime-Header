@@ -27,6 +27,7 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)doesScopeAllowCourtesyMingling:(id)arg1;
 - (void)forceIncludeScopeIdentifierInMingling:(id)arg1;
 - (void)forceExcludeScopeIdentifierFromMingling:(id)arg1;
 - (void)includeScopeIdentifierInMingling:(id)arg1;
@@ -36,6 +37,7 @@
 - (id)filterForIncludedScopeIdentifiers:(id)arg1;
 - (_Bool)storeScopeListSyncAnchor:(id)arg1 error:(id *)arg2;
 - (id)scopeListSyncAnchor;
+- (_Bool)shouldAutoactivateScopeWithIdentifier:(id)arg1 scopeType:(long long)arg2;
 - (_Bool)deactivateScope:(id)arg1 error:(id *)arg2;
 - (_Bool)activateScope:(id)arg1 error:(id *)arg2;
 - (_Bool)_forceClientToPullScopeIfNecessary:(id)arg1 error:(id *)arg2;

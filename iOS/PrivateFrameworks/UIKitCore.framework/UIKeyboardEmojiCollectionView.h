@@ -10,9 +10,11 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCollectionView
 {
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
+    _Bool _isInSearchPopover;
     UIResponder *_hitTestResponder;
 }
 
+@property(nonatomic) _Bool isInSearchPopover; // @synthesize isInSearchPopover=_isInSearchPopover;
 @property(nonatomic) UIResponder *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property(readonly, retain) UIKeyboardEmojiGraphicsTraits *emojiGraphicsTraits; // @synthesize emojiGraphicsTraits=_emojiGraphicsTraits;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
@@ -22,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)closestCellForPoint:(struct CGPoint)arg1;
 - (id)backgroundColor;
 - (double)_currentScreenScale;
-- (_Bool)_shouldReverseLayoutDirection;
 - (void)layoutSubviews;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2 emojiGraphicsTraits:(id)arg3;

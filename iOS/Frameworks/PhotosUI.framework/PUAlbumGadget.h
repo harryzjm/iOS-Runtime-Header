@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     PHCollection *_collection;
     id <PUAlbumGadgetDelegate> _albumGadgetDelegate;
     NSIndexSet *_indexesOfHiddenStackItems;
+    double _lastPreferredHeight;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double lastPreferredHeight; // @synthesize lastPreferredHeight=_lastPreferredHeight;
 @property(nonatomic) _Bool needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property(nonatomic, getter=isContentViewVisible) _Bool contentViewVisible; // @synthesize contentViewVisible=_contentViewVisible;
 @property(copy, nonatomic) NSIndexSet *indexesOfHiddenStackItems; // @synthesize indexesOfHiddenStackItems=_indexesOfHiddenStackItems;

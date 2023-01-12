@@ -8,7 +8,6 @@
 
 @class CKDAssetZoneKey, NSMutableDictionary, NSMutableOrderedSet;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetZone : NSObject
 {
     CKDAssetZoneKey *_assetZoneKey;

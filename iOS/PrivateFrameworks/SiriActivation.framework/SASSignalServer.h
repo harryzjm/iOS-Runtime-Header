@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BSServiceConnection, BSServiceConnectionEndpointInjector, NSMutableArray;
+@class BSServiceConnection, BSServiceConnectionEndpointInjector, NSMutableArray, NSString;
 @protocol BSServiceConnectionHost, SASSignalServerDelegate;
 
 @interface SASSignalServer : NSObject
@@ -16,17 +16,24 @@
     BSServiceConnection<BSServiceConnectionHost> *_connection;
     NSMutableArray *_waitForConnectBlocks;
     id <SASSignalServerDelegate> _weak_delegate;
+    NSString *_assertionClientIdentifier;
 }
 
 + (id)serviceQuality;
 + (id)interface;
++ (void)_unregisterConnection:(id)arg1;
 + (id)serverForConnection:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) NSString *assertionClientIdentifier; // @synthesize assertionClientIdentifier=_assertionClientIdentifier;
 @property(nonatomic) __weak id <SASSignalServerDelegate> weak_delegate; // @synthesize weak_delegate=_weak_delegate;
 @property(retain, nonatomic) NSMutableArray *waitForConnectBlocks; // @synthesize waitForConnectBlocks=_waitForConnectBlocks;
 @property(nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(retain, nonatomic) BSServiceConnection<BSServiceConnectionHost> *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) BSServiceConnectionEndpointInjector *workspaceServiceInjector; // @synthesize workspaceServiceInjector=_workspaceServiceInjector;
+- (oneway void)unregisterButtonEventListenerWithIdentifier:(id)arg1;
+- (oneway void)registerButtonEventListenerWithIdentifier:(id)arg1;
+- (oneway void)unregisterAssertionWithIdentifier:(id)arg1;
+- (oneway void)registerAssertionWithIdentifier:(id)arg1 reason:(id)arg2;
 - (oneway void)buttonLongPressFromButtonIdentifier:(id)arg1 context:(id)arg2;
 - (oneway void)buttonTapFromButtonIdentifier:(id)arg1;
 - (oneway void)buttonUpFromButtonIdentifier:(id)arg1 deviceIdentifier:(id)arg2 timestamp:(id)arg3;
@@ -37,11 +44,13 @@
 - (oneway void)activationRequestFromTestingWithContext:(id)arg1;
 - (oneway void)activationRequestFromSpotlightWithContext:(id)arg1;
 - (oneway void)activationRequestFromSimpleActivation:(id)arg1;
+- (oneway void)activationRequestFromBluetoothKeyboardActivation:(id)arg1;
 - (oneway void)activationRequestFromBreadcrumb;
+- (oneway void)activationRequestFromRemotePresentationBringUpWithContext:(id)arg1;
 - (oneway void)activationRequestFromContinuityWithContext:(id)arg1;
-- (void)_activationRequestFromDirectActionEvent:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (oneway void)activationRequestFromDirectActionEvent:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (oneway void)activationRequestFromDirectActionEvent:(id)arg1 context:(id)arg2;
+- (void)_activationRequestFromDirectActionEventWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)activationRequestFromDirectActionEventWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)activationRequestFromDirectActionEventWithContext:(id)arg1;
 - (oneway void)deactivationRequestFromButtonIdentifier:(id)arg1 context:(id)arg2 options:(id)arg3;
 - (oneway void)activationRequestFromButtonIdentifier:(id)arg1 context:(id)arg2;
 - (oneway void)unregisterNonButtonSourceWithType:(id)arg1 withUUID:(id)arg2;

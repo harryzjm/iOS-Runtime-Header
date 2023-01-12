@@ -12,10 +12,6 @@
 + (id)texture;
 + (id)_singletonAlloc;
 - (id)get;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

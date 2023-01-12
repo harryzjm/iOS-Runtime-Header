@@ -9,13 +9,15 @@
 #import <Sleep/BSDescriptionProviding-Protocol.h>
 #import <Sleep/HKSPDictionarySerializable-Protocol.h>
 #import <Sleep/HKSPObject-Protocol.h>
+#import <Sleep/HKSPXPCObject-Protocol.h>
 #import <Sleep/NAEquatable-Protocol.h>
 #import <Sleep/NAHashable-Protocol.h>
 #import <Sleep/NSMutableCopying-Protocol.h>
 
-@class NSDate, NSSet, NSString;
+@class NSDate, NSDictionary, NSSet, NSString;
+@protocol HKSPSyncAnchor;
 
-@interface HKSPSleepSettings : NSObject <BSDescriptionProviding, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
+@interface HKSPSleepSettings : NSObject <BSDescriptionProviding, HKSPXPCObject, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
 {
     _Bool _watchSleepFeaturesEnabled;
     _Bool _scheduledSleepMode;
@@ -27,12 +29,11 @@
     _Bool _springBoardGreetingDisabled;
     unsigned long long _version;
     NSDate *_lastModifiedDate;
+    id <HKSPSyncAnchor> _syncAnchor;
     unsigned long long _sleepModeOptions;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)testSleepSettingsWithAllPropertiesSet;
-+ (id)testSleepSettings;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool springBoardGreetingDisabled; // @synthesize springBoardGreetingDisabled=_springBoardGreetingDisabled;
 @property(readonly, nonatomic) _Bool chargingReminders; // @synthesize chargingReminders=_chargingReminders;
@@ -43,6 +44,7 @@
 @property(readonly, nonatomic) unsigned long long sleepModeOptions; // @synthesize sleepModeOptions=_sleepModeOptions;
 @property(readonly, nonatomic) _Bool scheduledSleepMode; // @synthesize scheduledSleepMode=_scheduledSleepMode;
 @property(readonly, nonatomic) _Bool watchSleepFeaturesEnabled; // @synthesize watchSleepFeaturesEnabled=_watchSleepFeaturesEnabled;
+@property(readonly, nonatomic) id <HKSPSyncAnchor> syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -63,12 +65,14 @@
 - (void)_migrateForCoder:(id)arg1;
 - (_Bool)_needsMigrationForCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)objectWithSyncAnchor:(id)arg1;
 - (void)copyFromObject:(id)arg1;
 - (id)initFromObject:(id)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly) Class superclass;
 
 @end

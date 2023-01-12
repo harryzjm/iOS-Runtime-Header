@@ -8,21 +8,26 @@
 
 #import <SiriOntology/NSSecureCoding-Protocol.h>
 
-@class NSArray, SIRINLURequestID;
+@class NSArray, SIRINLURequestID, SIRINLUResponseStatus;
 
 @interface SIRINLUResponse : NSObject <NSSecureCoding>
 {
     SIRINLURequestID *_requestId;
     NSArray *_parses;
+    SIRINLUResponseStatus *_responseStatus;
+    NSArray *_repetitionResults;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *repetitionResults; // @synthesize repetitionResults=_repetitionResults;
+@property(retain, nonatomic) SIRINLUResponseStatus *responseStatus; // @synthesize responseStatus=_responseStatus;
 @property(retain, nonatomic) NSArray *parses; // @synthesize parses=_parses;
 @property(retain, nonatomic) SIRINLURequestID *requestId; // @synthesize requestId=_requestId;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRequestId:(id)arg1 parses:(id)arg2 repetitionResults:(id)arg3;
 - (id)initWithRequestId:(id)arg1 parses:(id)arg2;
 
 @end

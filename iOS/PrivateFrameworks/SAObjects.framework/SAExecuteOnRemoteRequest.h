@@ -15,6 +15,7 @@
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
 @property(nonatomic) _Bool useGuaranteedDelivery;
+@property(nonatomic) _Bool suppressResponse;
 @property(copy, nonatomic) NSData *serializedCommand;
 @property(nonatomic) _Bool requiresResponseFromRemote;
 @property(retain, nonatomic) SARemoteDevice *remoteDevice;

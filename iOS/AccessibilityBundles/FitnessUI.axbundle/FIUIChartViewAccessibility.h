@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)reloadData;
+- (_Bool)_accessibilityFKAShouldProcessChildren;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel:(id)arg1;
 - (struct CGRect)accessibilityFrame:(id)arg1;

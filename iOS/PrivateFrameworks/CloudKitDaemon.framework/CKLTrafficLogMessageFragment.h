@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKLTrafficLogMessageFragment : NSObject
 {
     unsigned long long _type;

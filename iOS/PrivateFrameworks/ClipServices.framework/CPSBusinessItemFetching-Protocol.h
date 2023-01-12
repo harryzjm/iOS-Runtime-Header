@@ -10,6 +10,6 @@
 
 @protocol CPSBusinessItemFetching <NSObject>
 - (void)fetchBusinessMetadataForURLHash:(NSString *)arg1 completion:(void (^)(CPSClipMetadata *, NSError *))arg2;
-- (void)fetchBusinessMetadataForURL:(NSURL *)arg1 availabilityHandler:(void (^)(_Bool))arg2 completion:(void (^)(CPSClipMetadata *, NSError *))arg3;
+- (void)fetchBusinessMetadataForURL:(NSURL *)arg1 availabilityHandler:(void (^)(_Bool, NSString *))arg2 completion:(void (^)(CPSClipMetadata *, NSError *))arg3;
 @end
 

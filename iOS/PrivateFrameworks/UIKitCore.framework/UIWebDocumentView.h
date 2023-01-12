@@ -22,7 +22,7 @@
 #import <UIKitCore/_UIRotatingAlertControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIWebDoubleTapDelegate-Protocol.h>
 
-@class CALayer, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, PKScribbleInteraction, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, UIWebTextPlaceholder, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
+@class CALayer, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, PKScribbleInteraction, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebTextPlaceholder, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UISupplementalLexicon, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
 @protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, UIWebDraggingDelegate;
 
 @interface UIWebDocumentView <DDDetectionControllerInteractionDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UIPreviewItemDelegate, _UIRotatingAlertControllerDelegate, UITextAutoscrolling, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer, UITextInputMultiDocument, _UIWebDoubleTapDelegate, UIWebFileUploadPanelDelegate, WebEditingDelegate, WebFrameLoadDelegate>
@@ -138,7 +138,6 @@
     unsigned int _pageIsLoadedFromPageCache:1;
     unsigned int _shouldSendWillShowInteractionHighlight:1;
     WebThreadSafeUndoManager *_undoManager;
-    UIWebSelectionAssistant *_webSelectionAssistant;
     UITextInteractionAssistant *_textSelectionAssistant;
     UITextChecker *_textChecker;
     struct UIEdgeInsets _caretInsets;
@@ -160,6 +159,7 @@
     _UITextServiceSession *_learnSession;
     _UITextServiceSession *_shareSession;
     _UITextServiceSession *_lookupSession;
+    _UITextServiceSession *_translateSession;
     WebHistoryItem *_latestCommittedPageLoadHistoryItem;
     _Bool _suppressesIncrementalRendering;
     _Bool _wantsMinimalUI;
@@ -204,7 +204,7 @@
 - (_Bool)shouldSelectionAssistantReceiveDoubleTapAtPoint:(struct CGPoint)arg1 forScale:(double)arg2;
 - (void)willZoomToMinimumScale;
 - (_Bool)considerHeightForDoubleTap;
-- (CDStruct_39925896)doubleTapScalesForSize:(struct CGSize)arg1;
+- (CDStruct_cf303044)doubleTapScalesForSize:(struct CGSize)arg1;
 - (struct CGRect)rectOfInterestForPoint:(struct CGPoint)arg1;
 - (double)minimumScaleForSize:(struct CGSize)arg1;
 - (struct CGRect)visibleContentRect;
@@ -254,8 +254,7 @@
 @property(copy) UITextRange *selectedTextRange;
 @property(readonly, nonatomic) _Bool hasText;
 - (id)_textSelectingContainer;
-- (_Bool)hasSimpleTextOnlyStructure;
-- (_Bool)containsOnlySelectableElements;
+- (_Bool)hasBodyElement;
 - (void)setTileUpdatesDisabled:(_Bool)arg1;
 - (void)_restoreFlattenedContentLayers;
 - (void)_flattenAndSwapContentLayersInRect:(struct CGRect)arg1;
@@ -286,8 +285,6 @@
 - (id)textStylingAtPosition:(id)arg1 inDirection:(long long)arg2;
 - (_Bool)inPopover;
 - (_Bool)isCaretInEmptyParagraph;
-- (id)selectionInteractionAssistant;
-- (id)webSelectionAssistant;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (void)makeTextWritingDirectionNatural:(id)arg1;
@@ -304,6 +301,8 @@
 - (_Bool)_isDisplayingShortcutViewController;
 - (void)_addShortcut:(id)arg1;
 - (void)_insertAttributedTextWithoutClosingTyping:(id)arg1;
+- (_Bool)_isDisplayingTranslateViewController;
+- (void)_translate:(id)arg1;
 - (_Bool)_isDisplayingLookupViewController;
 - (void)_define:(id)arg1;
 - (_Bool)_isDisplayingShareViewController;
@@ -816,6 +815,7 @@
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
 @property(nonatomic, getter=isDevicePasscodeEntry) _Bool devicePasscodeEntry;
+@property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool disableInputBars;
 @property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureEditsUsingPlainText;
@@ -842,13 +842,18 @@
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) _Bool preferOnlineDictation;
+@property(nonatomic) long long preferredKeyboardStyle;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
 @property(retain, nonatomic) UIColor *selectionBarColor; // @dynamic selectionBarColor;
+@property(retain, nonatomic) UIColor *selectionBorderColor;
+@property(nonatomic) double selectionBorderWidth;
+@property(nonatomic) double selectionCornerRadius;
 @property(retain, nonatomic) UIImage *selectionDragDotImage; // @dynamic selectionDragDotImage;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets;
 @property(retain, nonatomic) UIColor *selectionHighlightColor; // @dynamic selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType; // @dynamic shortcutConversionType;
 @property(nonatomic) _Bool showDictationButton;
@@ -857,12 +862,15 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
 @property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 @property(readonly, nonatomic) UIView *textInputView;
 @property(nonatomic) int textLoupeVisibility; // @dynamic textLoupeVisibility;
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
 @property(nonatomic) long long textScriptType;
 @property(nonatomic) int textSelectionBehavior; // @dynamic textSelectionBehavior;
 @property(nonatomic) id textSuggestionDelegate; // @dynamic textSuggestionDelegate;

@@ -13,7 +13,8 @@
 + (id)activePairedDevice;
 + (_Bool)isDeviceSeries4:(id)arg1;
 + (_Bool)isDeviceSeries3OrOlder:(id)arg1;
-+ (_Bool)isDeviceRunningSeed:(id)arg1;
++ (_Bool)isDeviceRunningKnownSeedBuildsWhereElectrocardiogramAndIrregularRhythmNotificationCountryRolloutsWereHidden:(id)arg1;
++ (id)electrocardiogramV2AvailableRegionsForDevice:(id)arg1;
 + (id)activePairedDeviceProductType;
 + (id)activePairedDeviceSystemBuildVersion;
 + (id)systemBuildVersionForDevice:(id)arg1;

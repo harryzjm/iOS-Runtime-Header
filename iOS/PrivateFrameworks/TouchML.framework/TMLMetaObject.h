@@ -42,7 +42,7 @@
 - (void)applyCategory:(id)arg1;
 - (void)addObject:(id)arg1;
 - (void)addImplements:(id)arg1;
-- (void)addConstructorDeclaration:(id)arg1 parameters:(id)arg2 methodSelector:(id)arg3;
+- (void)addConstructorDeclaration:(id)arg1 parameters:(id)arg2 methodSelector:(id)arg3 attributes:(id)arg4;
 - (void)addMethodDeclaration:(id)arg1 returnType:(id)arg2 parameters:(id)arg3 methodSelector:(id)arg4 attributes:(id)arg5;
 - (void)addSignalDeclaration:(id)arg1 returnType:(id)arg2 parameters:(id)arg3 methodSelector:(id)arg4 attributes:(id)arg5;
 - (void)addPropertyDeclaration:(id)arg1 typeName:(id)arg2 attributes:(id)arg3;

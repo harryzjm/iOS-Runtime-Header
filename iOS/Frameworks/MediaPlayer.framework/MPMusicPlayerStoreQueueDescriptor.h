@@ -11,15 +11,14 @@
     NSArray *_storeIDs;
     NSMutableDictionary *_storeFronts;
     NSString *_startItemID;
-    NSDictionary *_assetStoreFronts;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *assetStoreFronts; // @synthesize assetStoreFronts=_assetStoreFronts;
 @property(copy, nonatomic) NSString *startItemID; // @synthesize startItemID=_startItemID;
 @property(copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 - (_Bool)isEmpty;
+@property(copy, nonatomic) NSDictionary *assetStoreFronts;
 - (void)setSourceStorefront:(id)arg1 forItemWithStoreID:(id)arg2;
 - (void)setEndTime:(double)arg1 forItemWithStoreID:(id)arg2;
 - (void)setStartTime:(double)arg1 forItemWithStoreID:(id)arg2;

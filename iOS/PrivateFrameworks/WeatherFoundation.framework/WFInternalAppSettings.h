@@ -8,16 +8,24 @@
 
 #import <WeatherFoundation/WFSettings-Protocol.h>
 
-@class NSSet, NSString, NSURL, WFWeatherEventsConfig;
+@class NSDictionary, NSSet, NSString, NSURL, WFWeatherEventsConfig;
 
 @interface WFInternalAppSettings : NSObject <WFSettings>
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) _Bool disableLimitReverseGeocoding;
+@property(readonly, nonatomic) _Bool loadSavedCitiesFromKVSOnly;
+@property(readonly, nonatomic) _Bool disablePriorityForecastRequestQueue;
+@property(readonly, nonatomic) _Bool disableForecastRequestCancelation;
 @property(readonly, nonatomic) WFWeatherEventsConfig *weatherEventsConfig;
+@property(readonly, nonatomic) double locationUpdateMinDistance;
+@property(readonly, nonatomic) double locationUpdateMinTimeInterval;
+@property(readonly, nonatomic) double cachedGeocodeLocationExpirationTimeInterval;
 @property(readonly, nonatomic) double privateUserIdentifierResetTimeInterval;
 @property(readonly, nonatomic) double userIdentifierResetTimeInterval;
+@property(readonly, nonatomic) float locationGeocodingSamplingRate;
 @property(readonly, nonatomic) float telemetrySamplingRate;
 @property(readonly, nonatomic) float dataSamplingRate;
 @property(readonly, nonatomic) NSURL *appAnalyticsEndpointUrl;
@@ -33,6 +41,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSDictionary *widgetRefreshPolicy;
 
 @end
 

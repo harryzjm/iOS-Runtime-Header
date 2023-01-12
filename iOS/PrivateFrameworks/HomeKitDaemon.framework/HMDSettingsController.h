@@ -16,6 +16,8 @@
 
 @interface HMDSettingsController : HMFObject <HMFLogging, HMDSettingsControllerProtocol, HMDSettingsMessageController, HMDSettingTransactionReceiverProtocol>
 {
+    struct os_unfair_lock_s _lock;
+    _Bool _isInitialized;
     id <HMDSettingsMessageHandlerProtocol> _messageHandler;
     id <HMDSettingsControllerDependency> _dependency;
     id <HMDSettingsControllerDelegate> _delegate;
@@ -52,12 +54,15 @@
 - (void)updateRootGroup:(id)arg1;
 - (void)settingsHierarchyDidChange;
 - (void)resetupMessageHandlersWithAddedGroups:(id)arg1 removedGroups:(id)arg2 addedSettings:(id)arg3 removedSettings:(id)arg4;
+- (void)_handleAddedConstraintModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedConstraintModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedConstraintModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_flattenedSettingControllerRoot:(id)arg1 withCurrentPath:(id)arg2 andReturnDictionary:(id)arg3;
 - (id)settingValuesByKeyPathWithPrefix:(id)arg1;
+- (void)_handleAddedSettingModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedSettingModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedSettingModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleAddedGroupModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedGroupModel:(id)arg1 shouldNotify:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleAddedGroupModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleAddedRootGroup:(id)arg1;
@@ -69,6 +74,7 @@
 - (id)settingGroupForIdentifier:(id)arg1;
 @property(readonly) NSArray *allObjectIdentifiers;
 - (void)configure;
+@property _Bool isInitialized; // @synthesize isInitialized=_isInitialized;
 - (id)logIdentifier;
 - (id)initWithDependency:(id)arg1 delegate:(id)arg2;
 

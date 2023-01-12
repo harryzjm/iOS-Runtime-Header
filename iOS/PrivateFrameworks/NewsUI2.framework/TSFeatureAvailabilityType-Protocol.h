@@ -5,15 +5,15 @@
 //
 
 @protocol TSFeatureAvailabilityType
+@property(nonatomic, readonly) _Bool useContinueReading;
+@property(nonatomic, readonly) _Bool searchFeaturedStoriesEnabled;
+@property(nonatomic, readonly) _Bool searchInExplicitViewEnabled;
+@property(nonatomic, readonly) _Bool useNewsArticleSearch;
 @property(nonatomic, readonly) _Bool narrativeAudio;
-@property(nonatomic, readonly) _Bool useNewsUINotificationHandling;
-@property(nonatomic, readonly) _Bool useNewAds;
-@property(nonatomic, readonly) _Bool useSearchModule;
-@property(nonatomic, readonly) _Bool useTagFeedModule;
-@property(nonatomic, readonly) _Bool useTodayModule;
-@property(nonatomic, readonly) _Bool useSavedFeedModule;
-@property(nonatomic, readonly) _Bool useHistoryFeedModule;
+@property(nonatomic, readonly) _Bool allowInAppMessages;
+@property(nonatomic, readonly) _Bool useFlexiblePaywall;
 @property(nonatomic, readonly) _Bool allowSharingAlways;
 @property(nonatomic, readonly) _Bool appleMagazineContent;
+@property(nonatomic, readonly) _Bool interstellarEnabled;
 @end
 

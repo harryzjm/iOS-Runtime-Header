@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_updateCacheWithItems:(id)arg1 forSectionID:(id)arg2 matchID:(id)arg3 result:(CDUnknownBlockType)arg4;
 - (void)updateCacheWithItems:(id)arg1 forSectionID:(id)arg2 matchID:(id)arg3 result:(CDUnknownBlockType)arg4;
 - (id)init;
 

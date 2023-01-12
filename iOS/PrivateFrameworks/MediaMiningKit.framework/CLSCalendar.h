@@ -13,8 +13,10 @@
 + (id)localStartSeasonDateForLocalDate:(id)arg1;
 + (_Bool)supportsSeasonsWithLocale:(id)arg1;
 + (_Bool)currentLocaleSupportsSeasons;
++ (id)localStartDateForNextSeasonAfterLocalDate:(id)arg1;
 + (_Bool)isLastMonthOfSeasonForLocalDate:(id)arg1;
 + (_Bool)isMiddleMonthOfSeasonForLocalDate:(id)arg1;
++ (id)localDateIntervalOfFirstTenDaysOfSeasonForLocalDate:(id)arg1;
 + (_Bool)isFirstTenDaysOfSeasonForLocalDate:(id)arg1;
 + (_Bool)isFirstMonthOfSeasonForLocalDate:(id)arg1;
 + (_Bool)isSecondHalfOfSeasonForLocalDate:(id)arg1;
@@ -31,6 +33,7 @@
 + (_Bool)isLastWeekOfMonthForLocalDate:(id)arg1;
 + (struct _NSRange)rangeOfUnit:(unsigned long long)arg1 inUnit:(unsigned long long)arg2 forDate:(id)arg3;
 + (long long)compareDate:(id)arg1 toDate:(id)arg2 toUnitGranularity:(unsigned long long)arg3;
++ (long long)numberOfDaysBetweenDate:(id)arg1 andDate:(id)arg2;
 + (id)dateFromComponents:(unsigned long long)arg1 ofDate:(id)arg2;
 + (id)dateByAddingWeeksOfYear:(long long)arg1 toDate:(id)arg2;
 + (id)dateByAddingYears:(long long)arg1 toDate:(id)arg2;
@@ -46,10 +49,14 @@
 + (long long)yearForWeekOfYearFromDate:(id)arg1;
 + (long long)yearFromDate:(id)arg1;
 + (id)components:(unsigned long long)arg1 fromDate:(id)arg2;
++ (id)endOfMonthForDate:(id)arg1;
++ (id)startOfMonthForDate:(id)arg1;
 + (id)endOfWeekForDate:(id)arg1;
 + (id)startOfWeekForDate:(id)arg1;
 + (id)endOfDayForDate:(id)arg1;
 + (id)startOfDayForDate:(id)arg1;
++ (id)timeZoneFromLocation:(id)arg1;
++ (id)localDateFormatterWithFormat:(id)arg1;
 + (id)dateBySettingYear:(long long)arg1 ofDate:(id)arg2;
 + (id)localDateFromUniversalDate:(id)arg1 atLocation:(id)arg2;
 + (id)universalDateFromLocalDate:(id)arg1 atLocation:(id)arg2;

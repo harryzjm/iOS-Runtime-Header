@@ -23,6 +23,8 @@
 + (id)presentAttachmentAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 barButtonItem:(id)arg3 forEvent:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 + (id)presentDetachAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4 forEvent:(id)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
 + (id)presentDetachAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 barButtonItem:(id)arg3 forEvent:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
++ (id)unsubscribeAlertWithOptions:(unsigned long long)arg1 forEvent:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
++ (id)presentUnsubscribeAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4 forEvent:(id)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
 + (id)deleteAlertWithOptions:(unsigned long long)arg1 forEvent:(id)arg2 stringForDeleteButton:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 + (id)presentDeleteAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4 forEvent:(id)arg5 stringForDeleteButton:(id)arg6 withCompletionHandler:(CDUnknownBlockType)arg7;
 + (id)presentDeleteAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 barButtonItem:(id)arg3 forEvent:(id)arg4 stringForDeleteButton:(id)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
@@ -38,6 +40,7 @@
 - (void)_presentDetachAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4 barButtonItem:(id)arg5 forEvent:(id)arg6;
 - (void)_presentDeleteAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4 barButtonItem:(id)arg5 forEvent:(id)arg6 stringForDeleteButton:(id)arg7;
 - (void)setupDeleteAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 forEvent:(id)arg3 stringForDeleteButton:(id)arg4;
+- (void)setupUnsubscribeAlertWithOptions:(unsigned long long)arg1 viewController:(id)arg2 forEvent:(id)arg3;
 - (_Bool)_useSheetForViewController:(id)arg1 options:(unsigned long long)arg2;
 - (void)dealloc;
 

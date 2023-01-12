@@ -11,6 +11,9 @@
 }
 
 + (id)allSupportedProperties;
++ (id)__traits_KEY;
++ (id)__hlsKeyCertificateURL_KEY;
++ (id)__hlsKeyServerURL_KEY;
 + (id)__qualityType_KEY;
 + (id)__purchaseBundleFilePath_KEY;
 + (id)__protectionType_KEY;
@@ -21,10 +24,13 @@
 // Remaining properties
 @property(copy, nonatomic) NSString *filePath; // @dynamic filePath;
 @property(nonatomic) unsigned long long fileSize; // @dynamic fileSize;
+@property(copy, nonatomic, setter=setHLSKeyCertificateURL:) NSString *hlsKeyCertificateURL; // @dynamic hlsKeyCertificateURL;
+@property(copy, nonatomic, setter=setHLSKeyServerURL:) NSString *hlsKeyServerURL; // @dynamic hlsKeyServerURL;
 @property(nonatomic, getter=isNonPurgeable) _Bool nonPurgeable; // @dynamic nonPurgeable;
 @property(nonatomic) long long protectionType; // @dynamic protectionType;
 @property(copy, nonatomic) NSString *purchaseBundleFilePath; // @dynamic purchaseBundleFilePath;
 @property(nonatomic) long long qualityType; // @dynamic qualityType;
+@property(nonatomic) unsigned long long traits; // @dynamic traits;
 
 @end
 

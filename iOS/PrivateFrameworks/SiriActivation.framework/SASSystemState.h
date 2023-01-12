@@ -6,29 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class AFNotifyObserver, FBSDisplayLayoutMonitor, NSHashTable, SASLockStateMonitor, SUICApplicationStateHelper;
+#import <SiriActivation/CARSessionObserving-Protocol.h>
+#import <SiriActivation/SASEmptyProtocol-Protocol.h>
 
-@interface SASSystemState : NSObject
+@class AFNotifyObserver, CARAutomaticDNDStatus, CARSessionStatus, FBSDisplayLayoutMonitor, NSArray, NSHashTable, NSString, SASLockStateMonitor, SUICApplicationStateHelper;
+
+@interface SASSystemState : NSObject <SASEmptyProtocol, CARSessionObserving>
 {
     _Bool _accessibilityShortcutEnabled;
+    _Bool _rightHandDrive;
     _Bool _enabled;
     int _carPlayConnectionState;
     SASLockStateMonitor *_lockStateMonitor;
     FBSDisplayLayoutMonitor *_displayLayoutMonitor;
+    NSArray *_currentCarPlaySupportedOEMAppIdList;
+    CARSessionStatus *_carPlaySessionStatus;
+    CARAutomaticDNDStatus *_carAutomaticDNDStatus;
+    NSString *_vehicleName;
+    NSString *_vehicleModel;
+    NSString *_vehicleManufacturer;
     SUICApplicationStateHelper *_applicationStateHelper;
     NSHashTable *_listeners;
     AFNotifyObserver *_observerWirelessSplitter;
     AFNotifyObserver *_observerBluetoothGuestConnected;
+    unsigned long long _carPlayEnhancedSiriCharacteristics;
+    long long _carPlayEnhancedVoiceTriggerMode;
 }
 
 + (id)new;
 + (id)sharedSystemState;
 - (void).cxx_destruct;
+@property(nonatomic) long long carPlayEnhancedVoiceTriggerMode; // @synthesize carPlayEnhancedVoiceTriggerMode=_carPlayEnhancedVoiceTriggerMode;
+@property(nonatomic) unsigned long long carPlayEnhancedSiriCharacteristics; // @synthesize carPlayEnhancedSiriCharacteristics=_carPlayEnhancedSiriCharacteristics;
 @property(retain, nonatomic) AFNotifyObserver *observerBluetoothGuestConnected; // @synthesize observerBluetoothGuestConnected=_observerBluetoothGuestConnected;
 @property(retain, nonatomic) AFNotifyObserver *observerWirelessSplitter; // @synthesize observerWirelessSplitter=_observerWirelessSplitter;
 @property(retain, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) SUICApplicationStateHelper *applicationStateHelper; // @synthesize applicationStateHelper=_applicationStateHelper;
+@property(nonatomic) _Bool rightHandDrive; // @synthesize rightHandDrive=_rightHandDrive;
+@property(retain, nonatomic) NSString *vehicleManufacturer; // @synthesize vehicleManufacturer=_vehicleManufacturer;
+@property(retain, nonatomic) NSString *vehicleModel; // @synthesize vehicleModel=_vehicleModel;
+@property(retain, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;
+@property(retain, nonatomic) CARAutomaticDNDStatus *carAutomaticDNDStatus; // @synthesize carAutomaticDNDStatus=_carAutomaticDNDStatus;
+@property(retain, nonatomic) CARSessionStatus *carPlaySessionStatus; // @synthesize carPlaySessionStatus=_carPlaySessionStatus;
+@property(retain, nonatomic) NSArray *currentCarPlaySupportedOEMAppIdList; // @synthesize currentCarPlaySupportedOEMAppIdList=_currentCarPlaySupportedOEMAppIdList;
 @property(retain, nonatomic) FBSDisplayLayoutMonitor *displayLayoutMonitor; // @synthesize displayLayoutMonitor=_displayLayoutMonitor;
 @property(nonatomic) _Bool accessibilityShortcutEnabled; // @synthesize accessibilityShortcutEnabled=_accessibilityShortcutEnabled;
 @property(nonatomic) int carPlayConnectionState; // @synthesize carPlayConnectionState=_carPlayConnectionState;
@@ -38,19 +59,31 @@
 - (_Bool)siriIsRestricted;
 - (_Bool)siriIsEnabled;
 - (void)_updateAccessibilityState;
+- (void)sessionDidDisconnect:(id)arg1;
+- (void)sessionDidConnect:(id)arg1;
 - (_Bool)isATV;
 - (_Bool)smartCoverClosed;
 - (_Bool)isPad;
+- (_Bool)carPlaySupportsEnhancedSiriCharacteristic:(unsigned long long)arg1;
+- (_Bool)carPlaySupportsAnyEnhancedSiriCharacteristics;
 - (_Bool)isRightHandDrive;
 - (_Bool)isConnectedToTrustedCarPlay;
 - (_Bool)isConnectedToCarPlay;
+- (void)_fetchOEMAppContext;
+- (long long)_enhancedVoiceTriggerModeFromConfiguration:(id)arg1;
+- (void)_fetchVehicleInformation;
+- (void)_pairedVehiclesDidChange:(id)arg1;
+- (void)_updateCarPlayConnectionState;
+- (void)_setCarPlayConnectionState:(int)arg1;
 - (void)monitorCarSessions;
+- (unsigned long long)carDNDStatus;
 - (_Bool)carDNDActive;
 - (_Bool)_mapsAppIsVisibleOnLockscreen;
 - (_Bool)_internalAlwaysEyesFreeEnabled;
 - (_Bool)carDNDActiveOrEyesFreeAndShouldHaveFullScreenPresentation;
 - (_Bool)isGuestConnected;
 - (_Bool)isWirelessSplitterOn;
+- (_Bool)hasIncomingCall;
 - (_Bool)isInActiveCall;
 - (id)foregroundAppInfosForPresentationIdentifier:(long long)arg1;
 - (_Bool)_deviceIsUnlocked;
@@ -63,6 +96,12 @@
 - (void)addStateChangeListener:(id)arg1;
 - (id)init;
 - (id)_initForTesting;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

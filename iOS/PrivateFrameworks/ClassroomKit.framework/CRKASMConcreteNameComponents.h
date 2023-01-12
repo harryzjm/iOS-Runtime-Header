@@ -21,6 +21,8 @@
     NSString *_monogram;
 }
 
++ (id)sharedFormatter;
++ (id)stringFromNameComponents:(id)arg1 configurationBlock:(CDUnknownBlockType)arg2 cleanupBlock:(CDUnknownBlockType)arg3;
 + (id)makeMonogramWithComponents:(id)arg1;
 + (id)makePhoneticFullNameWithComponents:(id)arg1;
 + (id)makeFullNameWithComponents:(id)arg1;

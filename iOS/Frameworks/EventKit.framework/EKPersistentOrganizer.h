@@ -25,7 +25,7 @@
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(_Bool)arg4;
 
 // Remaining properties
-@property(retain, nonatomic) NSString *URL; // @dynamic URL;
+@property(retain, nonatomic) NSString *URLString; // @dynamic URLString;
 @property(retain, nonatomic) NSString *displayNameRaw; // @dynamic displayNameRaw;
 @property(retain, nonatomic) NSString *emailAddress; // @dynamic emailAddress;
 

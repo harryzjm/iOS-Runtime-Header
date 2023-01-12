@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     _Bool _isRequestingActiveRoute;
     _Bool _isUpdatingRoutes;
     NSArray *_pendingRoutesToUpdate;
-    MPAVEndpointRoute *_resolvedActiveSystemRoute;
     MPMediaControlsConfiguration *_configuration;
     long long _discoveryMode;
     NSArray *_routes;
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property(nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
 @property(readonly, copy, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(retain, nonatomic) MPAVEndpointRoute *resolvedActiveSystemRoute; // @synthesize resolvedActiveSystemRoute=_resolvedActiveSystemRoute;
 - (id)_createSectionedCollectionFromRoutes:(id)arg1;
 - (void)_updateWithRoutes:(id)arg1;
 - (void)_updateActiveRouteWithReason:(id)arg1;
@@ -54,8 +52,10 @@ __attribute__((visibility("hidden")))
 - (void)homeObserverDidUpdateKnownUIDs:(id)arg1;
 - (void)getOutputDeviceIsPlaying:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
+- (void)prewarm;
 @property(readonly, nonatomic) _Bool isActiveSystemEndpointEqualToLocalEndpoint;
 - (id)endpointControllerForRoute:(id)arg1;
+@property(readonly, nonatomic) MPAVEndpointRoute *resolvedActiveSystemRoute;
 @property(readonly, nonatomic) MPAVEndpointRoute *activeSystemRoute;
 - (void)setActiveSystemRoute:(id)arg1 reason:(id)arg2;
 - (void)dealloc;

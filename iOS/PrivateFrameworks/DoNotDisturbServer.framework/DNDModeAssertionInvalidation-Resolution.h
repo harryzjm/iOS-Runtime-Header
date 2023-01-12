@@ -13,6 +13,7 @@
 @interface DNDModeAssertionInvalidation (Resolution) <DNDSModernAssertionSourceResolution>
 + (id)predicateForModeAssertionInvalidationsWithAssertionClientIdentifiers:(id)arg1;
 - (id)resolveWithExpectedRemoteDeviceIdentifier:(id)arg1 localDeviceIdentifier:(id)arg2 remoteDeviceIdentifier:(id)arg3;
+@property(readonly, nonatomic) _Bool isUserInvalidated;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

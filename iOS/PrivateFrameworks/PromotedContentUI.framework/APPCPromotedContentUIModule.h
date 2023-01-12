@@ -10,6 +10,7 @@
 {
 }
 
++ (void)startWithStartupType:(long long)arg1;
 + (void)start;
 - (id)init;
 

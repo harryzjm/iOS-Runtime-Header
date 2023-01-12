@@ -11,16 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axGesture;
-- (void)_accessibilitySimulateStateChange;
-- (void)_accessibilityFocusedElementChangedToElement:(id)arg1;
 - (void)_accessibilityFocusedElementChanged:(id)arg1;
 - (long long)state;
-- (void)_axSetOverrideStateEnabled:(_Bool)arg1 forFocusedElement:(id)arg2;
-- (void)_axSetSimulatedState:(long long)arg1;
-- (long long)_axSimulatedState;
-- (void)_axSetIsListeningForNotifications:(_Bool)arg1;
-- (_Bool)_axIsListeningForNotifications;
 
 @end
 

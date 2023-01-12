@@ -35,6 +35,7 @@
 - (_Bool)clearDiskApplicationKeyStore:(id)arg1 error:(id *)arg2;
 - (_Bool)writePublicKeyStoreToDisk:(id)arg1 error:(id *)arg2;
 - (id)readPublicKeyStoreFromDisk:(id *)arg1;
+- (id)keyStoreFileName;
 - (id)copyKeyStoreState;
 - (id)copyMetadata;
 - (void)updateTLTKeyStoreWithApplicationKeyStore:(id)arg1;

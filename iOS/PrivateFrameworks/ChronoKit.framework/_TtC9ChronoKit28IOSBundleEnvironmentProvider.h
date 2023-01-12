@@ -8,10 +8,11 @@
 
 @interface _TtC9ChronoKit28IOSBundleEnvironmentProvider
 {
-    MISSING_TYPE *extensionManager;
-    MISSING_TYPE *identifier;
-    MISSING_TYPE *systemProvider;
-    MISSING_TYPE *subscriptions;
+    MISSING_TYPE *_extensionManager;
+    MISSING_TYPE *_identifier;
+    MISSING_TYPE *_containerBundleIdentifier;
+    MISSING_TYPE *_systemProvider;
+    MISSING_TYPE *_subscriptions;
 }
 
 @end

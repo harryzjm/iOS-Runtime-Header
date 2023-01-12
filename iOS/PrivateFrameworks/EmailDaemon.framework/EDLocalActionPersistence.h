@@ -26,11 +26,13 @@
 @property(readonly, nonatomic) EDGmailLabelPersistence *gmailLabelPersistence; // @synthesize gmailLabelPersistence=_gmailLabelPersistence;
 @property(readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
 - (void)removeMessageAction:(long long)arg1;
+- (void)updateFlagChangeAction:(id)arg1 withRemainingUIDs:(id)arg2;
 - (_Bool)updateTransferUndownloadedMessageAction:(id)arg1 withResults:(id)arg2;
 - (id)_sourceRemoteIDListForCopyItems:(id)arg1;
 - (id)_whereClauseToFindCopyItems:(id)arg1;
 - (void)_deleteCopyItems:(id)arg1 actionID:(long long)arg2 connection:(id)arg3;
 - (void)_updateCopyItems:(id)arg1 toPhase:(long long)arg2 actionID:(long long)arg3 connection:(id)arg4;
+- (_Bool)mailboxURLIsInRemoteAccount:(id)arg1;
 - (_Bool)moveSupportedFromMailboxURL:(id)arg1 toURL:(id)arg2;
 - (_Bool)updateTransferAction:(id)arg1 withResults:(id)arg2;
 - (_Bool)_addActionMessageForSourceRemoteID:(id)arg1 actionID:(long long)arg2 connection:(id)arg3;

@@ -10,7 +10,6 @@
 
 @class HKUIMetricColors, NSArray, NSDictionary, NSString, UIImage;
 
-__attribute__((visibility("hidden")))
 @interface WDMedicalRecordCategory : NSObject <NSCopying>
 {
     long long _categoryType;
@@ -18,7 +17,6 @@ __attribute__((visibility("hidden")))
     NSString *_displayName;
     NSString *_displayImageName;
     UIImage *_displayImage;
-    UIImage *_displayImageWhite;
     NSArray *_sampleTypes;
     NSDictionary *_additionalPredicatesForCategory;
 }
@@ -26,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *additionalPredicatesForCategory; // @synthesize additionalPredicatesForCategory=_additionalPredicatesForCategory;
 @property(copy, nonatomic) NSArray *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
-@property(retain, nonatomic) UIImage *displayImageWhite; // @synthesize displayImageWhite=_displayImageWhite;
 @property(retain, nonatomic) UIImage *displayImage; // @synthesize displayImage=_displayImage;
 @property(copy, nonatomic) NSString *displayImageName; // @synthesize displayImageName=_displayImageName;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;

@@ -17,6 +17,8 @@
 
 - (void).cxx_destruct;
 - (void)commitRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)clientDisplayName;
+- (id)clientBundleID;
 - (id)clientDescription;
 - (id)persistentStoreCoordinator;
 - (void)getUUIDsForCloudIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;

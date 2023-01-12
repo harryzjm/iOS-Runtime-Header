@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface ICURLBagProvider : NSObject
@@ -16,6 +16,7 @@
     NSObject<OS_dispatch_queue> *_persistenceQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSMutableDictionary *_pendingOperationsForCacheKey;
+    NSMutableSet *_cacheKeysScheduledForRefresh;
 }
 
 + (id)sharedBagProvider;

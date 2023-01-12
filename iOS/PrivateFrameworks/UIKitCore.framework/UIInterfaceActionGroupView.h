@@ -156,6 +156,7 @@
 - (void)setActiveTestingVisualStyle:(id)arg1;
 - (void)interfaceActionGroup:(id)arg1 reloadDisplayedContentVisualStyle:(id)arg2;
 - (void)interfaceActionGroup:(id)arg1 reloadDisplayedContentActionGroupProperties:(id)arg2;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (id)_currentlyFocusedActionView;
 - (id)preferredFocusedView;
 - (void)_removeConstraintToActiveTopLevelViewArrangementConstraints:(id)arg1;

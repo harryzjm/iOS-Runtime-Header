@@ -26,6 +26,7 @@
 - (void)resolveConflictsBetweenLocalDeltas:(id)arg1 cloudDeltas:(id)arg2;
 - (void)newResolveConflictsBetweenLocalDeltas:(id)arg1 cloudDeltas:(id)arg2;
 - (_Bool)migrateWithError:(id *)arg1;
+- (_Bool)migrateWithExportNeeded:(_Bool *)arg1 error:(id *)arg2;
 - (_Bool)areLocalChangesInterestingWithError:(id *)arg1;
 - (id)initWithPersistenceController:(id)arg1;
 

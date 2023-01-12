@@ -16,11 +16,13 @@
     _Bool _RTL;
     double _screenScale;
     NSString *_contentSizeCategory;
+    double _maxGroupLabelWidth;
     struct CGSize _containerSize;
     struct UIEdgeInsets _edgeInsets;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double maxGroupLabelWidth; // @synthesize maxGroupLabelWidth=_maxGroupLabelWidth;
 @property(readonly, nonatomic) _Bool RTL; // @synthesize RTL=_RTL;
 @property(readonly, nonatomic) _Bool showSideGroupPicker; // @synthesize showSideGroupPicker=_showSideGroupPicker;
 @property(readonly, copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
@@ -42,6 +44,7 @@
 @property(readonly, nonatomic) struct CGRect attributesContentViewFrame;
 @property(readonly, nonatomic) double avatarContainerAlpha;
 @property(readonly, nonatomic) struct CGRect avatarContainerFrame;
+- (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3 RTL:(_Bool)arg4 showSideGroupPicker:(_Bool)arg5 maxGroupLabelWidth:(double)arg6;
 - (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3 RTL:(_Bool)arg4 showSideGroupPicker:(_Bool)arg5;
 
 @end

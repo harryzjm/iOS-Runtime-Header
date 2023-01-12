@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_afb4d078)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_afb4d078)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) float streaming_playback_buffer_size_in_seconds;
 @property(readonly, nonatomic) FTTextToSpeechMeta *meta_info;
 @property(readonly, nonatomic) FTAudioDescription *playback_description;

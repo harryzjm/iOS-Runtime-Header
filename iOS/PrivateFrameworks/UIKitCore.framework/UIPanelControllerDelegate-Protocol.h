@@ -16,7 +16,7 @@
 - (void)panelController:(UIPanelController *)arg1 willBeginAnimationToPrimarySize:(struct CGSize)arg2 supplementarySize:(struct CGSize)arg3 secondarySize:(struct CGSize)arg4;
 - (void)panelControllerDidExpand:(UIPanelController *)arg1;
 - (void)panelControllerDidCollapse:(UIPanelController *)arg1;
-- (double)panelController:(UIPanelController *)arg1 expectedWidthForColumnForViewController:(UIViewController *)arg2 forceNoSupplementaryFill:(_Bool)arg3;
+- (double)panelController:(UIPanelController *)arg1 expectedWidthForColumnForViewController:(UIViewController *)arg2;
 - (_Bool)panelController:(UIPanelController *)arg1 collapsePrimaryViewController:(UIViewController *)arg2 withFallbackSecondaryViewController:(UIViewController *)arg3 onTopOfSupplementaryViewController:(UIViewController *)arg4 transitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg5;
 - (long long)topColumnForCollapsingPanelController:(UIPanelController *)arg1;
 - (void)panelController:(UIPanelController *)arg1 adjustTrailingViewController:(UIViewController *)arg2 forKeyboardInfo:(NSDictionary *)arg3;

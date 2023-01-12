@@ -20,9 +20,11 @@
     _SFPrintActivityItemProvider *_printProvider;
     _SFActivityItemProvider *_javaScriptExtensionProvider;
     _SFActivityItemProvider *_downloadProvider;
+    _SFActivityItemProvider *_documentProvider;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SFActivityItemProvider *documentProvider; // @synthesize documentProvider=_documentProvider;
 @property(retain, nonatomic) _SFActivityItemProvider *downloadProvider; // @synthesize downloadProvider=_downloadProvider;
 @property(retain, nonatomic) _SFActivityItemProvider *javaScriptExtensionProvider; // @synthesize javaScriptExtensionProvider=_javaScriptExtensionProvider;
 @property(retain, nonatomic) _SFPrintActivityItemProvider *printProvider; // @synthesize printProvider=_printProvider;

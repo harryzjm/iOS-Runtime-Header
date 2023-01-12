@@ -73,7 +73,7 @@
 - (_Bool)shouldFetchAssetContentInMemory;
 - (void)start;
 - (void)cancel;
-- (id)initWithMMCS:(id)arg1 itemGroup:(id)arg2 operation:(id)arg3 progress:(CDUnknownBlockType)arg4 command:(CDUnknownBlockType)arg5 start:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (id)initWithMMCS:(id)arg1 itemGroup:(id)arg2 operation:(id)arg3 progress:(CDUnknownBlockType)arg4 command:(CDUnknownBlockType)arg5 start:(CDUnknownBlockType)arg6 groupCompletion:(CDUnknownBlockType)arg7;
 
 @end
 

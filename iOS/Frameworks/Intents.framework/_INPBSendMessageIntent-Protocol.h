@@ -21,6 +21,8 @@
 @property(copy, nonatomic) NSArray *recipients;
 @property(nonatomic) _Bool hasOutgoingMessageType;
 @property(nonatomic) int outgoingMessageType;
+@property(readonly, nonatomic) _Bool hasNotificationThreadIdentifier;
+@property(copy, nonatomic) NSString *notificationThreadIdentifier;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property(readonly, nonatomic) _Bool hasGroupName;

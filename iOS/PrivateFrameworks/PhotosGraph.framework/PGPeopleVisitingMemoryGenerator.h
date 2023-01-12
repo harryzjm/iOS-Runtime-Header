@@ -9,11 +9,11 @@
 }
 
 - (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePeopleNodesAndVisitsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumeratePeopleNodesAndVisitsInGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)consolidatedDateIntervalsFromDateIntervals:(id)arg1;
-- (void)enumerateVerifiedPeopleNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateVerifiedPeopleNodesInGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 
 @end
 

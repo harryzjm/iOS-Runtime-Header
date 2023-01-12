@@ -15,12 +15,13 @@
     MISSING_TYPE *inventory;
     MISSING_TYPE *bindings;
     MISSING_TYPE *namespace;
-    MISSING_TYPE *selectors;
     MISSING_TYPE *slotIdentifier;
     MISSING_TYPE *config;
-    MISSING_TYPE *options;
+    MISSING_TYPE *cache;
+    MISSING_TYPE *blocks;
     MISSING_TYPE *data;
-    MISSING_TYPE *behaviorData;
+    MISSING_TYPE *options;
+    MISSING_TYPE *selectors;
     MISSING_TYPE *boundItemStack;
     MISSING_TYPE *boundStateMachines;
     MISSING_TYPE *lazyContextLayoutOptions;

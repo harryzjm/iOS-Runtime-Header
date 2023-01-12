@@ -11,5 +11,8 @@
 @protocol SXLinkActionURLQualifier <NSObject>
 - (_Bool)allowCopyingOfURL:(NSURL *)arg1;
 - (_Bool)allowOpenInSafariForURL:(NSURL *)arg1;
+
+@optional
+- (_Bool)allowOpenInNewWindowForURL:(NSURL *)arg1;
 @end
 

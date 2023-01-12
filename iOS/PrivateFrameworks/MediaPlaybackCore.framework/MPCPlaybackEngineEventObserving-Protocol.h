@@ -15,6 +15,7 @@
 - (void)engineDidLoseMediaServices:(MPCPlaybackEngine *)arg1;
 - (void)engineDidEndStateRestoration:(MPCPlaybackEngine *)arg1;
 - (void)engineWillBeginStateRestoration:(MPCPlaybackEngine *)arg1;
+- (void)engine:(MPCPlaybackEngine *)arg1 didChangeCurrentItemVariantID:(NSString *)arg2;
 - (void)engine:(MPCPlaybackEngine *)arg1 didChangeAccounts:(NSArray *)arg2;
 - (void)engine:(MPCPlaybackEngine *)arg1 didChangeActionAtQueueEnd:(long long)arg2;
 - (void)engine:(MPCPlaybackEngine *)arg1 didChangeRepeatType:(long long)arg2;

@@ -53,7 +53,7 @@
 - (void)_removeFaceForUUID:(id)arg1;
 - (void)_addFace:(id)arg1 forUUID:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)_didRemoveFace:(id)arg1 withUUID:(id)arg2;
-- (void)_didSelectFaceUUID:(id)arg1;
+- (void)_didSelectFaceUUID:(id)arg1 suppressingCallback:(_Bool)arg2;
 - (void)_didMoveFace:(id)arg1 withUUID:(id)arg2 toIndex:(unsigned long long)arg3;
 - (void)_didAddFace:(id)arg1 withUUID:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)_setContentWithFaces:(id)arg1 order:(id)arg2 selection:(id)arg3;

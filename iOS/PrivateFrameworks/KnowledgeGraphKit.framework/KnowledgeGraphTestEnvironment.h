@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class KGGraph;
+@class KGStoredGraph;
 
 @interface KnowledgeGraphTestEnvironment : NSObject
 {
-    KGGraph *_graph;
+    KGStoredGraph *_graph;
 }
 
 + (id)testEnvironmentsForOnDiskExistingStores;
@@ -19,7 +19,7 @@
 + (id)environmentWithTestDBWithStoreType:(Class)arg1;
 + (id)temporaryURLWithFileExtension:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) KGGraph *graph; // @synthesize graph=_graph;
+@property(readonly, nonatomic) KGStoredGraph *graph; // @synthesize graph=_graph;
 - (unsigned long long)edgeCount;
 - (unsigned long long)nodeCount;
 - (void)populateGraph;
@@ -27,8 +27,10 @@
 - (_Bool)deleteNode:(id)arg1;
 - (id)refetchEdge:(id)arg1;
 - (id)refetchNode:(id)arg1;
-- (id)addEdgeWithLabels:(id)arg1 weight:(double)arg2 properties:(id)arg3 sourceNode:(id)arg4 targetNode:(id)arg5;
-- (id)addNodeWithLabels:(id)arg1 weight:(double)arg2 properties:(id)arg3;
+- (id)addEdgeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3 sourceNode:(id)arg4 targetNode:(id)arg5;
+- (id)addNodeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3;
+- (id)placeholderEdgeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3 sourceNode:(id)arg4 targetNode:(id)arg5;
+- (id)placeholderNodeWithLabels:(id)arg1 weight:(float)arg2 properties:(id)arg3;
 - (void)closeAndDeleteEnvironment;
 - (id)initWithKGGraph:(id)arg1;
 

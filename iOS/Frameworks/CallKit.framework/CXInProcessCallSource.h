@@ -23,9 +23,8 @@
 - (_Bool)isPermittedToUsePublicAPI;
 - (CDStruct_6ad76789)auditToken;
 - (int)processIdentifier;
-- (id)identifier;
 - (id)vendorProtocolDelegate;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2;
 
 @end
 

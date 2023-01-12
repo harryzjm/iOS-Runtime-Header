@@ -23,6 +23,7 @@
 @property(retain, nonatomic) NSString *otherHandle; // @synthesize otherHandle=_otherHandle;
 @property(retain, nonatomic) NSString *otherCountryCode; // @synthesize otherCountryCode=_otherCountryCode;
 @property(nonatomic) long long actionType; // @synthesize actionType=_actionType;
+- (id)fileTransferGUIDs;
 - (_Bool)isCompatibleWithMiC;
 - (_Bool)actionIsGroupPhoto;
 - (id)copyDictionaryRepresentation;

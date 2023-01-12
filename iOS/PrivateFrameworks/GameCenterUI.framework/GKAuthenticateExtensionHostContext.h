@@ -4,12 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface GKAuthenticateExtensionHostContext
+#import <GameCenterUI/GKAuthenticateHostProtocol-Protocol.h>
+
+@class GKGame, NSString;
+
+@interface GKAuthenticateExtensionHostContext <GKAuthenticateHostProtocol>
 {
 }
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(retain, nonatomic) GKGame *game;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

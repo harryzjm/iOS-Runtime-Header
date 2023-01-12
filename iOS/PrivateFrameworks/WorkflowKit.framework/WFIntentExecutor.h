@@ -49,8 +49,6 @@
 - (void)startReceivingRideStatusUpdates;
 - (void)cancel;
 - (void)updateIntentWithItemToConfirm:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
-- (void)handleIntent:(id)arg1 inBackgroundAppWithBundleIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)deliverIntentForwardingActionToApp:(id)arg1 withBundleIdentifier:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)handleIntent:(id)arg1 withExtensionProxy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleIntent:(id)arg1 withExtensionProxy:(id)arg2;
 - (void)confirmIntent:(id)arg1 withExtensionProxy:(id)arg2;

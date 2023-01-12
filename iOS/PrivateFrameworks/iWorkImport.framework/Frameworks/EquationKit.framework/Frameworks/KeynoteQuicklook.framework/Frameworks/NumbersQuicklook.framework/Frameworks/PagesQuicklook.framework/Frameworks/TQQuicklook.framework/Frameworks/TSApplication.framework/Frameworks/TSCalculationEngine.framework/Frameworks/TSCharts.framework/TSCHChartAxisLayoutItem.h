@@ -8,41 +8,44 @@
 
 @interface TSCHChartAxisLayoutItem
 {
-    TSCHChartAxisID *mAxisID;
-    int mAxisPosition;
-    TSCHChartAxisTitleLayoutItem *mAxisTitle;
-    TSCHChartAxisPaddingLayoutItem *mAxisPadding;
-    TSCHChartAxisTickMarksLayoutItem *mTickMarks;
-    TSCHChartAxisLineLayoutItem *mAxisLine;
-    TSCHChartReferenceLineLabelPaddingLayoutItem *mRefLineLabelPadding;
-    TSCHChartReferenceLineLabelsLayoutItem *mRefLineLabels;
-    struct CGSize mChartBodySize;
-    TSCHChartAxisID *mReferenceLineLabelAxisID;
+    TSCHChartAxisID *_axisID;
+    int _axisPosition;
+    TSCHChartAxisTitleLayoutItem *_axisTitle;
+    TSCHChartAxisPaddingLayoutItem *_axisPadding;
+    TSCHChartAxisTickMarksLayoutItem *_tickMarks;
+    TSCHChartAxisLineLayoutItem *_axisLine;
+    TSCHChartReferenceLineLabelPaddingLayoutItem *_refLineLabelPadding;
+    TSCHChartReferenceLineLabelsLayoutItem *_refLineLabels;
+    struct CGSize _chartBodySize;
+    TSCHChartAxisID *_referenceLineLabelAxisID;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSCHChartAxisID *referenceLineLabelAxisID; // @synthesize referenceLineLabelAxisID=mReferenceLineLabelAxisID;
-@property(readonly, nonatomic) TSCHChartReferenceLineLabelsLayoutItem *refLineLabels; // @synthesize refLineLabels=mRefLineLabels;
-@property(readonly, nonatomic) TSCHChartReferenceLineLabelPaddingLayoutItem *refLineLabelPadding; // @synthesize refLineLabelPadding=mRefLineLabelPadding;
-@property(nonatomic) struct CGSize chartBodySize; // @synthesize chartBodySize=mChartBodySize;
-@property(readonly, nonatomic) TSCHChartAxisPaddingLayoutItem *axisPaddingLayoutItem; // @synthesize axisPaddingLayoutItem=mAxisPadding;
-@property(readonly, nonatomic) TSCHChartAxisLineLayoutItem *axisLineLayoutItem; // @synthesize axisLineLayoutItem=mAxisLine;
-@property(readonly, nonatomic) TSCHChartAxisTickMarksLayoutItem *axisTickMarksLayoutItem; // @synthesize axisTickMarksLayoutItem=mTickMarks;
-@property(readonly, nonatomic) TSCHChartAxisTitleLayoutItem *axisTitleLayoutItem; // @synthesize axisTitleLayoutItem=mAxisTitle;
-@property(readonly, nonatomic) int axisPosition; // @synthesize axisPosition=mAxisPosition;
-@property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
+@property(retain, nonatomic) TSCHChartAxisID *referenceLineLabelAxisID; // @synthesize referenceLineLabelAxisID=_referenceLineLabelAxisID;
+@property(readonly, nonatomic) TSCHChartReferenceLineLabelsLayoutItem *refLineLabels; // @synthesize refLineLabels=_refLineLabels;
+@property(readonly, nonatomic) TSCHChartReferenceLineLabelPaddingLayoutItem *refLineLabelPadding; // @synthesize refLineLabelPadding=_refLineLabelPadding;
+@property(nonatomic) struct CGSize chartBodySize; // @synthesize chartBodySize=_chartBodySize;
+@property(readonly, nonatomic) TSCHChartAxisPaddingLayoutItem *axisPaddingLayoutItem; // @synthesize axisPaddingLayoutItem=_axisPadding;
+@property(readonly, nonatomic) TSCHChartAxisLineLayoutItem *axisLineLayoutItem; // @synthesize axisLineLayoutItem=_axisLine;
+@property(readonly, nonatomic) TSCHChartAxisTickMarksLayoutItem *axisTickMarksLayoutItem; // @synthesize axisTickMarksLayoutItem=_tickMarks;
+@property(readonly, nonatomic) TSCHChartAxisTitleLayoutItem *axisTitleLayoutItem; // @synthesize axisTitleLayoutItem=_axisTitle;
+@property(readonly, nonatomic) int axisPosition; // @synthesize axisPosition=_axisPosition;
+@property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)p_subselectionHaloPositionsForLabelsSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
 - (id)p_subselectionKnobPositionsForLabelsSelection:(id)arg1;
+- (id)protected_layoutSpaceHalosForAllLabels;
+- (id)protected_layoutSpaceKnobsForAllLabels;
 - (struct CGRect)protected_layoutSpaceRectForAllLabels;
 - (void)p_layoutLabelsNow;
-- (void)p_layoutOutward;
-- (void)p_layoutInward;
+- (void)layoutOutward;
+- (void)layoutInward;
 - (id)p_description;
 - (id)renderersWithRep:(id)arg1;
 - (struct CGRect)calcOverhangRect;
 - (struct CGSize)calcMinSize;
+- (id)axis;
 - (id)initWithParent:(id)arg1 axisPosition:(int)arg2;
 
 @end

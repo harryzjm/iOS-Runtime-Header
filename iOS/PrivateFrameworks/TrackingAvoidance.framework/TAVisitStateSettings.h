@@ -8,6 +8,8 @@
 
 #import <TrackingAvoidance/NSSecureCoding-Protocol.h>
 
+@class NSSet;
+
 @interface TAVisitStateSettings : NSObject <NSSecureCoding>
 {
     unsigned long long _visitSnapshotCapacity;
@@ -22,9 +24,12 @@
     double _qualitySnapshotDwellDuration;
     double _qualitySnapshotDisplayOnDuration;
     unsigned long long _uniqueUTObservationCapPerVisit;
+    NSSet *_sensitiveLOITypes;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *sensitiveLOITypes; // @synthesize sensitiveLOITypes=_sensitiveLOITypes;
 @property(readonly, nonatomic) unsigned long long uniqueUTObservationCapPerVisit; // @synthesize uniqueUTObservationCapPerVisit=_uniqueUTObservationCapPerVisit;
 @property(readonly, nonatomic) double qualitySnapshotDisplayOnDuration; // @synthesize qualitySnapshotDisplayOnDuration=_qualitySnapshotDisplayOnDuration;
 @property(readonly, nonatomic) double qualitySnapshotDwellDuration; // @synthesize qualitySnapshotDwellDuration=_qualitySnapshotDwellDuration;
@@ -40,8 +45,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithVisitSnapshotCapacityOrDefault:(id)arg1 visitDisplayBufferCapacityOrDefault:(id)arg2 interVisitMetricSnapshotCapacityOrDefault:(id)arg3 interVisitSnapshotUpdateIntervalOrDefault:(id)arg4 thresholdOfLocationRelevanceOrDefault:(id)arg5 snapshotBufferTimeIntervalOfRetentionOrDefault:(id)arg6 loiBufferPerTypeCapacityOrDefault:(id)arg7 loiBufferTimeIntervalOfRetentionOrDefault:(id)arg8 maxNSigmaBetweenLastLocationAndVisitOrDefault:(id)arg9 qualitySnapshotDwellDurationOrDefault:(id)arg10 qualitySnapshotDisplayOnDurationOrDefault:(id)arg11 uniqueUTObservationCapPerVisitOrDefault:(id)arg12;
-- (id)initWithVisitSnapshotCapacity:(unsigned long long)arg1 visitDisplayBufferCapacity:(unsigned long long)arg2 interVisitMetricSnapshotCapacity:(unsigned long long)arg3 interVisitSnapshotUpdateInterval:(double)arg4 thresholdOfLocationRelevance:(double)arg5 snapshotBufferTimeIntervalOfRetention:(double)arg6 loiBufferPerTypeCapacity:(unsigned long long)arg7 loiBufferTimeIntervalOfRetention:(double)arg8 maxNSigmaBetweenLastLocationAndVisit:(unsigned long long)arg9 qualitySnapshotDwellDuration:(double)arg10 qualitySnapshotDisplayOnDuration:(double)arg11 uniqueUTObservationCapPerVisit:(unsigned long long)arg12;
+- (id)initWithVisitSnapshotCapacityOrDefault:(id)arg1 visitDisplayBufferCapacityOrDefault:(id)arg2 interVisitMetricSnapshotCapacityOrDefault:(id)arg3 interVisitSnapshotUpdateIntervalOrDefault:(id)arg4 thresholdOfLocationRelevanceOrDefault:(id)arg5 snapshotBufferTimeIntervalOfRetentionOrDefault:(id)arg6 loiBufferPerTypeCapacityOrDefault:(id)arg7 loiBufferTimeIntervalOfRetentionOrDefault:(id)arg8 maxNSigmaBetweenLastLocationAndVisitOrDefault:(id)arg9 qualitySnapshotDwellDurationOrDefault:(id)arg10 qualitySnapshotDisplayOnDurationOrDefault:(id)arg11 uniqueUTObservationCapPerVisitOrDefault:(id)arg12 sensitiveLOITypesOrDefault:(id)arg13;
+- (id)initWithVisitSnapshotCapacity:(unsigned long long)arg1 visitDisplayBufferCapacity:(unsigned long long)arg2 interVisitMetricSnapshotCapacity:(unsigned long long)arg3 interVisitSnapshotUpdateInterval:(double)arg4 thresholdOfLocationRelevance:(double)arg5 snapshotBufferTimeIntervalOfRetention:(double)arg6 loiBufferPerTypeCapacity:(unsigned long long)arg7 loiBufferTimeIntervalOfRetention:(double)arg8 maxNSigmaBetweenLastLocationAndVisit:(unsigned long long)arg9 qualitySnapshotDwellDuration:(double)arg10 qualitySnapshotDisplayOnDuration:(double)arg11 uniqueUTObservationCapPerVisit:(unsigned long long)arg12 sensitiveLOITypes:(id)arg13;
 
 @end
 

@@ -20,13 +20,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool wasDropped; // @synthesize wasDropped=_wasDropped;
-@property(copy, nonatomic) NSData *cursor; // @synthesize cursor=_cursor;
-@property(nonatomic) unsigned long long extent; // @synthesize extent=_extent;
-@property(nonatomic) _Bool reachedOrderLimit; // @synthesize reachedOrderLimit=_reachedOrderLimit;
-@property(nonatomic) _Bool reachedEnd; // @synthesize reachedEnd=_reachedEnd;
-@property(copy, nonatomic) NSArray *feedItemAndArticleRecords; // @synthesize feedItemAndArticleRecords=_feedItemAndArticleRecords;
-@property(copy, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
 - (id)description;
 
 @end

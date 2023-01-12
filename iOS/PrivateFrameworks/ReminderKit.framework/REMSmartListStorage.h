@@ -9,20 +9,29 @@
 #import <ReminderKit/NSCopying-Protocol.h>
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
-#import <ReminderKit/REMSortingStyleReadWriteProtocol-Protocol.h>
+#import <ReminderKit/REMObjectStorageSupportedVersionProviding-Protocol.h>
 
-@class NSArray, NSData, NSString, REMObjectID, REMResolutionTokenMap;
+@class NSData, NSString, REMColor, REMManualOrdering, REMObjectID, REMResolutionTokenMap;
 
-@interface REMSmartListStorage : NSObject <NSCopying, NSSecureCoding, REMSortingStyleReadWriteProtocol, REMObjectIDProviding>
+@interface REMSmartListStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMObjectStorageSupportedVersionProviding>
 {
     unsigned long long _storeGeneration;
     unsigned long long _copyGeneration;
+    _Bool _showingLargeAttachments;
     _Bool _isPersisted;
     NSString *sortingStyle;
-    long long sortingDirection;
+    long long minimumSupportedVersion;
+    long long effectiveMinimumSupportedVersion;
     REMObjectID *_objectID;
-    NSString *_smartListTag;
-    NSArray *_ordering;
+    NSString *_smartListType;
+    REMManualOrdering *_manualOrdering;
+    REMObjectID *_accountID;
+    REMObjectID *_parentAccountID;
+    REMObjectID *_parentListID;
+    NSString *_name;
+    REMColor *_color;
+    NSString *_badgeEmblem;
+    NSData *_filterData;
     REMResolutionTokenMap *_resolutionTokenMap;
     NSData *_resolutionTokenMapData;
 }
@@ -35,21 +44,35 @@
 @property(retain, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
 @property(retain, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
 @property(nonatomic) _Bool isPersisted; // @synthesize isPersisted=_isPersisted;
-@property(retain, nonatomic) NSArray *ordering; // @synthesize ordering=_ordering;
-@property(copy, nonatomic) NSString *smartListTag; // @synthesize smartListTag=_smartListTag;
+@property(retain, nonatomic) NSData *filterData; // @synthesize filterData=_filterData;
+@property(retain, nonatomic) NSString *badgeEmblem; // @synthesize badgeEmblem=_badgeEmblem;
+@property(retain, nonatomic) REMColor *color; // @synthesize color=_color;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(retain, nonatomic) REMObjectID *parentListID; // @synthesize parentListID=_parentListID;
+@property(retain, nonatomic) REMObjectID *parentAccountID; // @synthesize parentAccountID=_parentAccountID;
+@property(retain, nonatomic) REMObjectID *accountID; // @synthesize accountID=_accountID;
+@property(nonatomic) _Bool showingLargeAttachments; // @synthesize showingLargeAttachments=_showingLargeAttachments;
+@property(retain, nonatomic) REMManualOrdering *manualOrdering; // @synthesize manualOrdering=_manualOrdering;
+@property(copy, nonatomic) NSString *smartListType; // @synthesize smartListType=_smartListType;
 @property(retain, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
-@property(nonatomic) long long sortingDirection; // @synthesize sortingDirection;
+- (void)setEffectiveMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion;
+- (void)setMinimumSupportedVersion:(long long)arg1;
+@property(readonly, nonatomic) long long minimumSupportedVersion;
 @property(copy, nonatomic) NSString *sortingStyle; // @synthesize sortingStyle;
 - (void)setStoreGenerationIfNeeded:(unsigned long long)arg1;
 - (unsigned long long)storeGeneration;
 - (id)cdKeyToStorageKeyMap;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithObjectID:(id)arg1 smartListTag:(id)arg2;
+- (id)optionalObjectID;
+- (id)initWithObjectID:(id)arg1 accountID:(id)arg2 smartListType:(id)arg3;
 
 @end
 

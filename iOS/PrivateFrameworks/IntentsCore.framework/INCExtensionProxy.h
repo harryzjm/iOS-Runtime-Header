@@ -21,12 +21,10 @@
     CDUnknownBlockType _imageCachingHandler;
     CDUnknownBlockType _imageProcessingHandler;
     CDUnknownBlockType _responseHandler;
-    CDUnknownBlockType _backgroundAppHandler;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType backgroundAppHandler; // @synthesize backgroundAppHandler=_backgroundAppHandler;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) CDUnknownBlockType imageProcessingHandler; // @synthesize imageProcessingHandler=_imageProcessingHandler;
 @property(copy, nonatomic) CDUnknownBlockType imageCachingHandler; // @synthesize imageCachingHandler=_imageCachingHandler;

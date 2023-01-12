@@ -34,6 +34,7 @@
     NSArray *_keyTimeSnappingControllers;
     NSArray *_startTimeSnappingControllers;
     NSArray *_endTimeSnappingControllers;
+    NSArray *_focusEventSnappingControllers;
     _Bool _hasPresentedControls;
     CDStruct_1b6d18a9 _photoTrimBuffer;
     long long _changeDepth;
@@ -58,6 +59,7 @@
     NSArray *_snapKeyTimes;
     NSArray *_snapTrimStartTimes;
     NSArray *_snapTrimEndTimes;
+    NSArray *_focusEventTimes;
     id <PXLivePhotoTrimScrubberDelegate> _delegate;
     double __contentAspectRatio;
     long long __trackingElement;
@@ -103,6 +105,7 @@
 @property(nonatomic) CDStruct_1b6d18a9 trimEndTime; // @synthesize trimEndTime=_trimEndTime;
 @property(nonatomic) CDStruct_1b6d18a9 trimStartTime; // @synthesize trimStartTime=_trimStartTime;
 @property(nonatomic) CDStruct_1b6d18a9 suggestedKeyTime; // @synthesize suggestedKeyTime=_suggestedKeyTime;
+@property(copy, nonatomic) NSArray *focusEventTimes; // @synthesize focusEventTimes=_focusEventTimes;
 @property(copy, nonatomic) NSArray *snapTrimEndTimes; // @synthesize snapTrimEndTimes=_snapTrimEndTimes;
 @property(copy, nonatomic) NSArray *snapTrimStartTimes; // @synthesize snapTrimStartTimes=_snapTrimStartTimes;
 @property(copy, nonatomic) NSArray *snapKeyTimes; // @synthesize snapKeyTimes=_snapKeyTimes;
@@ -129,6 +132,7 @@
 - (void)_setPhotoLoupeHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)_snapTimesForElement:(long long)arg1;
 - (id)_snappingControllersForElement:(long long)arg1;
+- (void)_updateFocusEventSnappingControllers;
 - (void)_updateEndTimeSnappingControllers;
 - (void)_updateStartTimeSnappingControllers;
 - (void)_updateKeyTimeSnappingControllers;
@@ -140,19 +144,20 @@
 @property(readonly, nonatomic) CDStruct_1b6d18a9 viewportMaxTime;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 viewportMinTime;
 - (void)handleBeginTrackingAtLocation:(struct CGPoint)arg1;
+- (void)handleLongPressWithElement:(long long)arg1;
 - (void)handleTapWithElement:(long long)arg1;
 - (void)handleSetKeyTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_timeAtLocation:(struct CGPoint)arg1 forElement:(long long)arg2;
 - (CDStruct_1b6d18a9)timeAtPoint:(struct CGPoint)arg1;
+- (double)offsetForTime:(CDStruct_1b6d18a9)arg1;
 - (double)_offsetForTime:(CDStruct_1b6d18a9)arg1;
 - (void)_updateSpecDependentUI;
 - (void)_PXLivePhotoTrimScrubber_commonInit;
-- (void)_handleTimerFireEvent;
-- (void)_handleLiftEvent;
-- (void)_handlePanningEvent;
-- (void)_handleFirstPanEvent;
 - (void)_zoomAtTime:(CDStruct_1b6d18a9)arg1;
 - (void)_zoomAtTrackedElement;
+- (void)_zoomDelayed;
+- (void)_updateZoomState:(_Bool)arg1;
+- (void)_setupZoom;
 - (void)unzoom;
 - (_Bool)tryZoomAtTime:(CDStruct_1b6d18a9)arg1;
 @property(readonly, nonatomic) struct CGRect loupeRect;

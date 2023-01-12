@@ -8,6 +8,8 @@
 
 #import <CoreBluetooth/CBActivatable-Protocol.h>
 #import <CoreBluetooth/CBDeviceReporting-Protocol.h>
+#import <CoreBluetooth/CBErrorReporting-Protocol.h>
+#import <CoreBluetooth/CBInterruptable-Protocol.h>
 #import <CoreBluetooth/CBLabelable-Protocol.h>
 #import <CoreBluetooth/CBStateReporting-Protocol.h>
 #import <CoreBluetooth/CBSystemOverridable-Protocol.h>
@@ -16,7 +18,7 @@
 @class NSArray, NSData, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_xpc_object;
 
-@interface CBSpatialInteractionSession : NSObject <CUXPCCodable, CBActivatable, CBDeviceReporting, CBLabelable, CBStateReporting, CBSystemOverridable>
+@interface CBSpatialInteractionSession : NSObject <CUXPCCodable, CBActivatable, CBDeviceReporting, CBErrorReporting, CBInterruptable, CBLabelable, CBStateReporting, CBSystemOverridable>
 {
     _Bool _activateCalled;
     CDUnknownBlockType _activateCompletion;
@@ -34,20 +36,24 @@
     unsigned int _controlFlags;
     int _scanRate;
     int _scanRateOverride;
+    int _scanRateScreenOff;
+    unsigned int _uwbTokenFlags;
     unsigned int _clientID;
     unsigned int _internalFlags;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
-    CDUnknownBlockType _invalidationHandler;
-    CDUnknownBlockType _deviceFoundHandler;
-    CDUnknownBlockType _deviceLostHandler;
-    NSString *_label;
     long long _bluetoothState;
     CDUnknownBlockType _bluetoothStateChangedHandler;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
+    CDUnknownBlockType _deviceFoundHandler;
+    CDUnknownBlockType _deviceLostHandler;
+    CDUnknownBlockType _errorHandler;
+    CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _invalidationHandler;
+    NSString *_label;
     CDUnknownBlockType _systemOverrideHandler;
     CDUnknownBlockType _advertisingAddressChangedHandler;
     NSData *_advertisingAddressData;
-    CDUnknownBlockType _errorHandler;
-    CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _aopDataHandler;
+    CDUnknownBlockType _measurementHandler;
     CDUnknownBlockType _tokenChangedHandler;
     NSData *_tokenData;
     NSData *_uwbConfigData;
@@ -56,36 +62,42 @@
     NSObject<OS_xpc_object> *_testListenerEndpoint;
 }
 
++ (id)dictionaryWithTokenData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
 @property(copy, nonatomic) NSData *irkData; // @synthesize irkData=_irkData;
 @property(nonatomic) unsigned int internalFlags; // @synthesize internalFlags=_internalFlags;
 @property(copy, nonatomic) NSData *identifierData; // @synthesize identifierData=_identifierData;
 @property(nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
+@property(nonatomic) unsigned int uwbTokenFlags; // @synthesize uwbTokenFlags=_uwbTokenFlags;
 @property(copy, nonatomic) NSData *uwbConfigData; // @synthesize uwbConfigData=_uwbConfigData;
 @property(copy, nonatomic) NSData *tokenData; // @synthesize tokenData=_tokenData;
 @property(copy, nonatomic) CDUnknownBlockType tokenChangedHandler; // @synthesize tokenChangedHandler=_tokenChangedHandler;
+@property(nonatomic) int scanRateScreenOff; // @synthesize scanRateScreenOff=_scanRateScreenOff;
 @property(nonatomic) int scanRateOverride; // @synthesize scanRateOverride=_scanRateOverride;
 @property(nonatomic) int scanRate; // @synthesize scanRate=_scanRate;
-@property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
-@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property(copy, nonatomic) CDUnknownBlockType measurementHandler; // @synthesize measurementHandler=_measurementHandler;
 @property(nonatomic) unsigned int controlFlags; // @synthesize controlFlags=_controlFlags;
-@property(readonly, copy, nonatomic) NSData *advertisingAddressData; // @synthesize advertisingAddressData=_advertisingAddressData;
+@property(copy, nonatomic) CDUnknownBlockType aopDataHandler; // @synthesize aopDataHandler=_aopDataHandler;
+@property(copy, nonatomic) NSData *advertisingAddressData; // @synthesize advertisingAddressData=_advertisingAddressData;
 @property(copy, nonatomic) CDUnknownBlockType advertisingAddressChangedHandler; // @synthesize advertisingAddressChangedHandler=_advertisingAddressChangedHandler;
 @property(nonatomic) int advertiseRate; // @synthesize advertiseRate=_advertiseRate;
 @property(copy, nonatomic) CDUnknownBlockType systemOverrideHandler; // @synthesize systemOverrideHandler=_systemOverrideHandler;
 @property(readonly, nonatomic) unsigned int systemOverrideFlags; // @synthesize systemOverrideFlags=_systemOverrideFlags;
-@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
-@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
+@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
-@property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
+@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
 - (void)_xpcReceivedSystemOverrideChanged:(id)arg1;
 - (void)_xpcReceivedPowerStateChanged:(id)arg1;
 - (void)_xpcReceivedDeviceLost:(id)arg1;
 - (void)_xpcReceivedDeviceFound:(id)arg1;
+- (void)_xpcReceivedAOPData:(id)arg1;
 - (void)_xpcReceivedAdvertisingAddressChanged:(id)arg1;
 - (void)_xpcReceivedMessage:(id)arg1;
 - (void)_xpcReceivedEvent:(id)arg1;
@@ -110,6 +122,7 @@
 - (void)setAdvertiseRate:(int)arg1 timeout:(double)arg2;
 @property(readonly, copy) NSArray *discoveredDevices;
 - (_Bool)updateWithSession:(id)arg1;
+- (_Bool)matchesWithDevice:(id)arg1;
 - (id)descriptionWithLevel:(int)arg1;
 - (id)description;
 - (void)encodeWithXPCObject:(id)arg1;

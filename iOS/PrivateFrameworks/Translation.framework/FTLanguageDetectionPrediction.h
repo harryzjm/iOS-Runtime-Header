@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_f0848d62)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_f0848d62)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool is_low_confidence;
 @property(readonly, nonatomic) float threshold;
 @property(readonly, nonatomic) float confidence;

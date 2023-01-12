@@ -11,6 +11,7 @@
 }
 
 - (id)init;
+- (void)determineChartabilityForUserConcept:(id)arg1 records:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)determineChartabilityForConcept:(id)arg1 records:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

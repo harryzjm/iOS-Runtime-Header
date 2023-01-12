@@ -40,6 +40,10 @@
 + (_Bool)isPasswordSetForAccount:(id)arg1;
 + (_Bool)hasSameCryptoKeyForNote:(id)arg1 andAccount:(id)arg2;
 + (_Bool)accountPasswordExists;
++ (id)alertMessageForDontForgetPasswordAlertIsForFaceID:(_Bool)arg1;
++ (id)alertTitleForDontForgetPasswordAlert;
++ (void)showDontForgetPasswordAlertForAccountIdentifier:(id)arg1 isForFaceID:(_Bool)arg2 withDisplayWindow:(id)arg3;
++ (void)showDontForgetPasswordAlertIfNecessaryForAccountIdentifier:(id)arg1 withDisplayWindow:(id)arg2;
 + (void)showFirstTimePasswordProtectNoteAlertForDisplayWindow:(id)arg1;
 + (void)showFirstTimePasswordProtectNoteAlertIfNecessaryForDisplayWindow:(id)arg1;
 + (id)passwordChangeCountUserDefaultsKeyAsReset:(_Bool)arg1;

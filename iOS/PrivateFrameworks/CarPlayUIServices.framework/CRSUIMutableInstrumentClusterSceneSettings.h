@@ -19,6 +19,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setMapStyle:(long long)arg1;
 @property(readonly, nonatomic) long long mapStyle;
+@property(nonatomic) unsigned long long showsETA;
 @property(nonatomic) unsigned long long showsSpeedLimit;
 @property(nonatomic) unsigned long long showsCompass;
 @property(nonatomic) unsigned long long itemType;

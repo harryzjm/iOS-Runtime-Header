@@ -15,7 +15,6 @@
 + (void)initialize;
 @property(nonatomic) _Bool topSeparator; // @synthesize topSeparator=_topSeparator;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

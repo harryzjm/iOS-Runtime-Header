@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIMainPrinterUtilityCell
 {
-    NSArray *_supplyLevelViews;
+    UIView *_supplyLevelsView;
     _Bool _showSupplyDataUnderPrinterName;
     NSArray *_supplies;
 }

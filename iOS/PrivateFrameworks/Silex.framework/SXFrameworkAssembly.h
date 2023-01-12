@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/NFFrameworkAssembly-Protocol.h>
+#import <Silex/TFFrameworkAssembly-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface SXFrameworkAssembly : NSObject <NFFrameworkAssembly>
+@interface SXFrameworkAssembly : NSObject <TFFrameworkAssembly>
 {
     NSArray *_assemblies;
 }

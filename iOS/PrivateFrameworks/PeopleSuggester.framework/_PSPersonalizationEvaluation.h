@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class MLModelConfiguration, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSURL;
+@class MLModelConfiguration, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSURL, NSUserDefaults;
 @protocol _DKKnowledgeQuerying;
 
 @interface _PSPersonalizationEvaluation : NSObject
 {
     NSDictionary *_recipe;
+    NSString *_adaptableModelDeployPath;
+    long long _adaptationStrategy;
     id <_DKKnowledgeQuerying> _knowledgeStore;
-    NSMutableArray *_featureDictArrayForAllShareEvents;
+    NSMutableArray *_featureDateForAllShareEvents;
+    NSMutableArray *_featureDateForShareEventsSinceLastAdaptation;
+    NSMutableDictionary *_featureNameDict;
+    NSMutableArray *_featureMatricesForAllShareEvents;
     NSMutableArray *_sampledFeatureVectors;
     NSMutableDictionary *_sampledFeatureVectorsForSplits;
-    NSMutableDictionary *_MLFeatureProvidersForMLModels;
     NSDictionary *_selectedFeaturesConfig;
     NSMutableArray *_results;
     MLModelConfiguration *_adaptableModelConfiguration;
@@ -39,9 +43,11 @@
     NSNumber *_minChildWeight;
     NSNumber *_recipeID;
     NSNumber *_minSampleCountForAdaptation;
+    NSUserDefaults *_psAdaptationDefaults;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUserDefaults *psAdaptationDefaults; // @synthesize psAdaptationDefaults=_psAdaptationDefaults;
 @property(retain, nonatomic) NSNumber *minSampleCountForAdaptation; // @synthesize minSampleCountForAdaptation=_minSampleCountForAdaptation;
 @property(retain, nonatomic) NSNumber *recipeID; // @synthesize recipeID=_recipeID;
 @property(retain, nonatomic) NSNumber *minChildWeight; // @synthesize minChildWeight=_minChildWeight;
@@ -64,32 +70,40 @@
 @property(retain, nonatomic) MLModelConfiguration *adaptableModelConfiguration; // @synthesize adaptableModelConfiguration=_adaptableModelConfiguration;
 @property(retain, nonatomic) NSMutableArray *results; // @synthesize results=_results;
 @property(retain, nonatomic) NSDictionary *selectedFeaturesConfig; // @synthesize selectedFeaturesConfig=_selectedFeaturesConfig;
-@property(retain, nonatomic) NSMutableDictionary *MLFeatureProvidersForMLModels; // @synthesize MLFeatureProvidersForMLModels=_MLFeatureProvidersForMLModels;
 @property(retain, nonatomic) NSMutableDictionary *sampledFeatureVectorsForSplits; // @synthesize sampledFeatureVectorsForSplits=_sampledFeatureVectorsForSplits;
 @property(retain, nonatomic) NSMutableArray *sampledFeatureVectors; // @synthesize sampledFeatureVectors=_sampledFeatureVectors;
-@property(retain, nonatomic) NSMutableArray *featureDictArrayForAllShareEvents; // @synthesize featureDictArrayForAllShareEvents=_featureDictArrayForAllShareEvents;
+@property(retain, nonatomic) NSMutableArray *featureMatricesForAllShareEvents; // @synthesize featureMatricesForAllShareEvents=_featureMatricesForAllShareEvents;
+@property(retain, nonatomic) NSMutableDictionary *featureNameDict; // @synthesize featureNameDict=_featureNameDict;
+@property(retain, nonatomic) NSMutableArray *featureDateForShareEventsSinceLastAdaptation; // @synthesize featureDateForShareEventsSinceLastAdaptation=_featureDateForShareEventsSinceLastAdaptation;
+@property(retain, nonatomic) NSMutableArray *featureDateForAllShareEvents; // @synthesize featureDateForAllShareEvents=_featureDateForAllShareEvents;
 @property(retain, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
+@property(nonatomic) long long adaptationStrategy; // @synthesize adaptationStrategy=_adaptationStrategy;
+@property(retain, nonatomic) NSString *adaptableModelDeployPath; // @synthesize adaptableModelDeployPath=_adaptableModelDeployPath;
 @property(readonly, nonatomic) NSDictionary *recipe; // @synthesize recipe=_recipe;
-- (void)adaptMLModel:(id)arg1 withTrainingData:(id)arg2;
+- (void)adaptMLModel:(id)arg1 withTrainingData:(id)arg2 modelConfiguration:(id)arg3;
 - (void)adaptMLModel:(id)arg1 overDataSplit:(id)arg2 dataStartingIndex:(long long)arg3 dataLength:(long long)arg4;
 - (id)updateMLModelWithURL:(id)arg1 overDataSplit:(id)arg2;
 - (id)evaluateClassicMLModel:(id)arg1;
 - (id)createMLArrayBatchProviderOverDataSplitType:(id)arg1 mlModelType:(id)arg2 dataStartingIndex:(long long)arg3 dataLength:(long long)arg4;
 - (id)createMLArrayBatchProviderOverDataSplitType:(id)arg1 mlModelType:(id)arg2;
+- (id)createMLFeatureProviderInstanceForMLModelType:(id)arg1 forFeatureVector:(id)arg2;
 - (id)createMLFeatureProviderArrayFromSingleShareEventData:(id)arg1 forMLModel:(id)arg2;
 - (id)engagementSimulationWithMLModel:(id)arg1 mlModelType:(id)arg2 labelName:(id)arg3;
 - (id)measureTestAccuracyOf:(id)arg1 againstTrueValuesOf:(id)arg2 labelName:(id)arg3;
-- (void)getSamplesWithTestSplitPercent;
-- (void)sampleFromData;
+- (void)getSamplesWithTestSplitPercentWithSeed:(int)arg1;
+- (void)sampleFromDataWithSeed:(int)arg1;
 - (unsigned long long)bucketedValue:(unsigned long long)arg1;
 - (void)processData;
+- (id)processDataWithQuery:(id)arg1;
 - (id)loadAdaptableModelUnderDirectory:(id)arg1;
-- (void)setupAdaptableModelConfig;
+- (void)updateAdaptableModelConfigWithUpdateType:(long long)arg1 numTrees:(id)arg2;
 - (_Bool)cloneAdaptableModel:(id)arg1 toFilePath:(id)arg2 originalXgboostModelName:(id)arg3 clonedXgboostModelName:(id)arg4;
 - (id)loadDefaultModel;
 - (id)runAdaptationAndEvaluationWithFeaturesConfigDeployPath:(id)arg1 adaptableModelDeployPath:(id)arg2;
+- (_Bool)performPrerequisitesBeforeAdaptationWithFeaturesConfigDeployPath:(id)arg1;
 - (void)setParametersFromRecipe;
 - (id)runAdaptationAndEvaluation;
+- (void)setLastDayOfAdaptation:(id)arg1;
 - (id)initWithRecipe:(id)arg1 knowledgeStore:(id)arg2;
 
 @end

@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_analyticQueue;
 }
 
++ (id)assetDownloadDurationBuckets;
 + (_Bool)isInteger:(id)arg1;
 + (id)roundNumber:(id)arg1 toSignificantDigits:(id)arg2;
 + (id)sharedInstance;

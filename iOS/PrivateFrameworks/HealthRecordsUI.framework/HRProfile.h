@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKConceptStore, HKDateCache, HKHealthRecordsStore, HKHealthStore, HKSampleTypeUpdateController, HKUCUMUnitDisplayConverter, HRHealthRecordsMigrator, HRWDUserActivityManager, WDClinicalOnboardingManager, WDClinicalSampleAccountsLoader, WDClinicalSourcesDataProvider;
+@class HKConceptStore, HKDateCache, HKHealthRecordsStore, HKHealthStore, HKSampleTypeUpdateController, HKUCUMUnitDisplayConverter, HRHealthRecordsMigrator, HRWDUserActivityManager, UTCDateFormatter, WDClinicalOnboardingManager, WDClinicalSampleAccountsLoader, WDClinicalSourcesDataProvider;
 
 __attribute__((visibility("hidden")))
 @interface HRProfile : NSObject
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     WDClinicalSourcesDataProvider *_clinicalSourcesDataProvider;
     HKSampleTypeUpdateController *_updateController;
     HKDateCache *_dateCache;
+    UTCDateFormatter *_utcDateFormatter;
     WDClinicalSampleAccountsLoader *_clinicalSampleAccountsLoader;
     WDClinicalOnboardingManager *_onboardingManager;
 }
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WDClinicalOnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property(nonatomic) __weak WDClinicalSampleAccountsLoader *clinicalSampleAccountsLoader; // @synthesize clinicalSampleAccountsLoader=_clinicalSampleAccountsLoader;
+@property(readonly, nonatomic) UTCDateFormatter *utcDateFormatter; // @synthesize utcDateFormatter=_utcDateFormatter;
 @property(readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property(readonly, nonatomic) HKSampleTypeUpdateController *updateController; // @synthesize updateController=_updateController;
 @property(readonly, nonatomic) WDClinicalSourcesDataProvider *clinicalSourcesDataProvider; // @synthesize clinicalSourcesDataProvider=_clinicalSourcesDataProvider;

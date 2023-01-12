@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)layoutSubviews;

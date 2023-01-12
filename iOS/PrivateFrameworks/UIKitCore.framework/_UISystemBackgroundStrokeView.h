@@ -23,8 +23,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double strokeCornerRadius; // @synthesize strokeCornerRadius=_strokeCornerRadius;
 @property(nonatomic) double strokeWidth; // @synthesize strokeWidth=_strokeWidth;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)updateLayerOrRedraw;
-- (_Bool)drawsStrokeManually;
 
 @end
 

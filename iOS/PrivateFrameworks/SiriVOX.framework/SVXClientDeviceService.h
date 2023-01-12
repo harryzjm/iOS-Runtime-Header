@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)endSetup;
 - (void)beginSetupWithContext:(id)arg1;
 - (void)prepareForSetupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id)arg1 performer:(id)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id)arg1 analytics:(id)arg2 performer:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

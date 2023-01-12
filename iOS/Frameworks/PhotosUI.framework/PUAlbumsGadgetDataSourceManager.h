@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property(readonly, nonatomic) PXExtendedTraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 - (id)gadgetProviders;
+- (void)removeCachedProviders;
 - (id)initWithTraitCollection:(id)arg1 sessionInfo:(id)arg2;
 
 @end

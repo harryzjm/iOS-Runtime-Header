@@ -28,6 +28,7 @@
 @property(retain, nonatomic) HFServiceActionItem *serviceActionItem; // @synthesize serviceActionItem=_serviceActionItem;
 @property(nonatomic) _Bool requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
 @property(nonatomic) __weak id <HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
+- (void)diffableDataItemManager:(id)arg1 willUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4 isInitialLoad:(_Bool)arg5;
 - (_Bool)itemManager:(id)arg1 shouldShowSectionTitleForControlPanelItem:(id)arg2;
 - (_Bool)itemManager:(id)arg1 shouldShowControlPanelItem:(id)arg2;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;

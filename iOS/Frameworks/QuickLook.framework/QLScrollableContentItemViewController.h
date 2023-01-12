@@ -22,6 +22,8 @@
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (_Bool)previewScrollViewShouldResizeContentBasedOnPeripheryInsets:(id)arg1;
 - (double)previewScrollView:(id)arg1 extraMinimumZoomForMinimumZoomScale:(double)arg2 maximumZoomScale:(double)arg3;
+- (void)previewScrollViewDidZoom:(id)arg1;
+- (void)previewScrollViewDidScroll:(id)arg1;
 - (void)previewScrollView:(id)arg1 didEndZoomingAtScale:(double)arg2;
 - (void)previewScrollViewWillBeginZooming:(id)arg1;
 - (_Bool)shouldLayoutContentBasedOnPeripheryInsets;
@@ -34,6 +36,8 @@
 - (void)previewDidDisappear:(_Bool)arg1;
 - (void)previewDidAppear:(_Bool)arg1;
 - (void)previewWillAppear:(_Bool)arg1;
+- (void)didZoom:(id)arg1;
+- (void)didScroll:(id)arg1;
 - (void)didEndZoomingAtScale:(double)arg1;
 - (void)willBeginZooming;
 - (void)transitionWillFinish:(_Bool)arg1 didComplete:(_Bool)arg2;

@@ -16,8 +16,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak PGGraphNamingProcessor *processor; // @synthesize processor=_processor;
-- (id)_eligibleSocialGroups;
+- (id)_eligibleSocialGroupNodes;
 - (void)runAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)initWithNamingProcessor:(id)arg1;
 - (id)name;

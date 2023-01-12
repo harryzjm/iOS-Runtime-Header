@@ -11,6 +11,8 @@
 @protocol AFSiriActivationListenerDelegate <NSObject>
 
 @optional
+- (void)siriActivationListener:(AFSiriActivationListener *)arg1 myriadEventWithRequestInfo:(AFRequestInfo *)arg2 context:(AFSiriActivationContext *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)siriActivationListener:(AFSiriActivationListener *)arg1 handleButtonEventFromContext:(AFSiriActivationContext *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)siriActivationListener:(AFSiriActivationListener *)arg1 deactivateForReason:(long long)arg2 options:(unsigned long long)arg3 context:(AFSiriActivationContext *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)siriActivationListener:(AFSiriActivationListener *)arg1 activateWithRequestInfo:(AFRequestInfo *)arg2 context:(AFSiriActivationContext *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)siriActivationListener:(AFSiriActivationListener *)arg1 prewarmWithRequestInfo:(AFRequestInfo *)arg2 context:(AFSiriActivationContext *)arg3 completion:(void (^)(NSError *))arg4;

@@ -6,12 +6,13 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
+@class NSString;
 @protocol WFDialogAlertPresenterDelegate;
 
 @protocol WFDialogAlertPresenter <NSObject>
 @property(readonly, nonatomic) _Bool alertIsActive;
 @property(nonatomic) __weak id <WFDialogAlertPresenterDelegate> delegate;
+- (void)activateAlertInMainSceneOfApplicationWithBundleIdentifier:(NSString *)arg1;
 - (void)deactivateAlert;
-- (void)activateAlert;
 @end
 

@@ -39,11 +39,12 @@
 @property(nonatomic) double progressStrokeWidth; // @synthesize progressStrokeWidth=_progressStrokeWidth;
 @property(nonatomic) double stopSize; // @synthesize stopSize=_stopSize;
 @property(nonatomic) double fractionCompleted; // @synthesize fractionCompleted=_fractionCompleted;
-- (void)transitionCompletedLayerToVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)transitionCompletedLayerToVisible:(_Bool)arg1 animated:(_Bool)arg2 haptic:(_Bool)arg3;
 - (void)stopBubbleGlyphAnimation;
 - (void)beginBubbleGlyphAnimation;
 - (void)transitionWaitingLayerToVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)transitionRunningLayerToVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)popCompletedCheckmarkWithHaptic:(_Bool)arg1;
 - (void)popCompletedCheckmark;
 - (void)transitionToState:(long long)arg1 animated:(_Bool)arg2;
 - (void)transitionToState:(long long)arg1;

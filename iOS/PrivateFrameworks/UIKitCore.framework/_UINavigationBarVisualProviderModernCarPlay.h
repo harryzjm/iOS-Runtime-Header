@@ -7,7 +7,7 @@
 #import <UIKitCore/_UIButtonBarAppearanceDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationItemChangeObserver-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIColor, UIFocusContainerGuide, UIView, UIVisualEffectView, _CarTitleView, _UIBarButtonItemAppearanceStorage, _UIButtonBar, _UIButtonBarButton;
+@class NSArray, NSLayoutConstraint, NSString, UIColor, UIFocusContainerGuide, UIImageSymbolConfiguration, UIView, UIVisualEffectView, _CarTitleView, _UIBarButtonItemAppearanceStorage, _UIButtonBar, _UIButtonBarButton;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProviderModernCarPlay <_UIButtonBarAppearanceDelegate, _UINavigationItemChangeObserver>
@@ -120,6 +120,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration;
 @property(readonly) Class superclass;
 
 @end

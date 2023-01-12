@@ -49,6 +49,7 @@
 - (id)_apsMessageBodyForMessage:(id)arg1;
 - (void)_updateTopics;
 - (id)_requiredTopics;
+- (void)_messageAckGracePeriodTimedOut:(id)arg1;
 - (void)_messageNeedsRetry:(id)arg1;
 - (void)_messageCompletelyTimedOut:(id)arg1;
 - (void)_messageSendTimedOut:(id)arg1;
@@ -57,7 +58,7 @@
 - (void)_noteMessageSent:(id)arg1 ftMessage:(id)arg2 body:(id)arg3;
 - (void)_noteMessageACKd:(id)arg1 ftMessage:(id)arg2;
 - (void)_noteMessageSucceeded:(id)arg1 ftMessage:(id)arg2 error:(id)arg3 result:(id)arg4 resultCode:(long long)arg5;
-- (void)_noteMessageFailed:(id)arg1 ftMessage:(id)arg2 allowRetry:(_Bool)arg3 error:(id)arg4;
+- (void)_noteMessageFailed:(id)arg1 ftMessage:(id)arg2 retryBehavior:(int)arg3 error:(id)arg4;
 - (_Bool)_shouldSendSOSForFailure:(id)arg1;
 - (_Bool)_fillMessageParameters:(id *)arg1 ftMessage:(id *)arg2;
 - (id)_apsOutgoingMessageForFTMessage:(id)arg1;

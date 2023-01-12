@@ -8,7 +8,7 @@
 
 @interface _EARLanguageDetectorAudioBuffer : NSObject
 {
-    shared_ptr_9e2bfca6 _buffer;
+    struct shared_ptr<quasar::RecogAudioBuffer> _buffer;
 }
 
 - (id).cxx_construct;
@@ -16,7 +16,7 @@
 - (void)endAudio;
 - (void)addAudioSamples:(const short *)arg1 count:(unsigned long long)arg2;
 - (void)addAudioSampleData:(id)arg1;
-- (id)_initWithAudioBuffer:(const shared_ptr_9e2bfca6 *)arg1;
+- (id)_initWithAudioBuffer:(const void *)arg1;
 
 @end
 

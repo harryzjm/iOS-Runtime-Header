@@ -8,7 +8,7 @@
 
 #import <ChatKit/CKSendAnimationManager-Protocol.h>
 
-@class CKChatControllerDummyAnimator, CKSendAnimationContext, CKSendAnimationWindow, CKTranscriptTypingIndicatorCell, NSString;
+@class CKChatControllerDummyAnimator, CKSendAnimationContext, CKTranscriptNotifyAnywayButtonCell, CKTranscriptTypingIndicatorCell, CKTranscriptUnavailabilityIndicatorCell, NSString, UIView;
 @protocol CKSendAnimationBalloonProvider, CKSendAnimationManagerDelegate, CKThrowAnimationManagerDelegate;
 
 @interface CKThrowAnimationManager : NSObject <CKSendAnimationManager>
@@ -17,15 +17,19 @@
     id <CKSendAnimationBalloonProvider> _sendAnimationBalloonProvider;
     id <CKThrowAnimationManagerDelegate> _throwManagerDelegate;
     CKSendAnimationContext *_currentContext;
-    CKSendAnimationWindow *_sendAnimationWindow;
+    UIView *_sendAnimationWindow;
     CKChatControllerDummyAnimator *_animator;
     CKTranscriptTypingIndicatorCell *_fakeTypingIndicatorCell;
+    CKTranscriptUnavailabilityIndicatorCell *_fakeUnavailabilityIndicatorCell;
+    CKTranscriptNotifyAnywayButtonCell *_fakeNotifyAnywayButtonCell;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKTranscriptNotifyAnywayButtonCell *fakeNotifyAnywayButtonCell; // @synthesize fakeNotifyAnywayButtonCell=_fakeNotifyAnywayButtonCell;
+@property(retain, nonatomic) CKTranscriptUnavailabilityIndicatorCell *fakeUnavailabilityIndicatorCell; // @synthesize fakeUnavailabilityIndicatorCell=_fakeUnavailabilityIndicatorCell;
 @property(retain, nonatomic) CKTranscriptTypingIndicatorCell *fakeTypingIndicatorCell; // @synthesize fakeTypingIndicatorCell=_fakeTypingIndicatorCell;
 @property(retain, nonatomic) CKChatControllerDummyAnimator *animator; // @synthesize animator=_animator;
-@property(retain, nonatomic) CKSendAnimationWindow *sendAnimationWindow; // @synthesize sendAnimationWindow=_sendAnimationWindow;
+@property(retain, nonatomic) UIView *sendAnimationWindow; // @synthesize sendAnimationWindow=_sendAnimationWindow;
 @property(retain, nonatomic) CKSendAnimationContext *currentContext; // @synthesize currentContext=_currentContext;
 @property(nonatomic) __weak id <CKThrowAnimationManagerDelegate> throwManagerDelegate; // @synthesize throwManagerDelegate=_throwManagerDelegate;
 @property(nonatomic) __weak id <CKSendAnimationBalloonProvider> sendAnimationBalloonProvider; // @synthesize sendAnimationBalloonProvider=_sendAnimationBalloonProvider;
@@ -37,7 +41,8 @@
 - (void)_shiftFakeTypingIndicator;
 - (void)_hideAddedChatItems;
 - (void)_removeFakeTypingIndicatorIfNecessary;
-- (void)_setupFakeTypingIndicatorIfNecessary;
+- (id)lastVisibleCellOfType:(Class)arg1 inCollectionView:(id)arg2;
+- (void)_setupFakeTypingAndUnavailabilityIndicatorsIfNecessary;
 - (void)_removeAllAnimations;
 - (void)_setupThrowFrames;
 - (void)_sendMessageAndPinTranscript;

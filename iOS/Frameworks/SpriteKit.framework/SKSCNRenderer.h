@@ -11,7 +11,7 @@
 @interface SKSCNRenderer : NSObject
 {
     double _timePreviousUpdate;
-    struct SKCRenderer *_skcRenderer;
+    void *_skcRenderer;
     NSMutableDictionary *_viewRenderOptions;
     SKLabelNode *_statsLabel;
     double _prevViewAspect;
@@ -91,7 +91,7 @@
 - (void)updateAtTime:(double)arg1;
 - (void)setupContext;
 - (void)_initialize;
-- (id)initWithSKCRenderer:(struct SKCRenderer *)arg1;
+- (id)initWithSKCRenderer:(void *)arg1;
 - (void)dealloc;
 @property(nonatomic) _Bool ignoresSiblingOrder;
 

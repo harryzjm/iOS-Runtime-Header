@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)bundleIdentifierForBundleURL:(id)arg1;
 + (id)pathForResource:(id)arg1 ofType:(id)arg2;
 + (id)frameworkBundle;
 

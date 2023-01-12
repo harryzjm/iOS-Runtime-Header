@@ -10,7 +10,7 @@
 
 @protocol NDBackgroundSessionProtocol <NSObject>
 - (void)avAggregateAssetDownloadTaskWithDownloadToken:(unsigned long long)arg1 serializedMediaSelections:(NSArray *)arg2 assetTitle:(NSString *)arg3 assetArtworkData:(NSData *)arg4 options:(NSDictionary *)arg5 childDownloadSessionIdentifier:(NSString *)arg6 identifier:(unsigned long long)arg7 uniqueIdentifier:(NSUUID *)arg8 reply:(void (^)(_Bool))arg9;
-- (void)avAssetDownloadTaskWithDownloadToken:(unsigned long long)arg1 URL:(NSURL *)arg2 destinationURL:(NSURL *)arg3 temporaryDestinationURL:(NSURL *)arg4 assetTitle:(NSString *)arg5 assetArtworkData:(NSData *)arg6 options:(NSDictionary *)arg7 identifier:(unsigned long long)arg8 uniqueIdentifier:(NSUUID *)arg9 reply:(void (^)(_Bool))arg10;
+- (void)avAssetDownloadTaskWithDownloadToken:(unsigned long long)arg1 URL:(NSURL *)arg2 destinationURL:(NSURL *)arg3 temporaryDestinationURL:(NSURL *)arg4 assetTitle:(NSString *)arg5 assetArtworkData:(NSData *)arg6 options:(NSDictionary *)arg7 identifier:(unsigned long long)arg8 uniqueIdentifier:(NSUUID *)arg9 taskKind:(unsigned long long)arg10 enableSPIDelegateCallbacks:(_Bool)arg11 reply:(void (^)(_Bool))arg12;
 - (void)setPropertyOnStreamWithIdentifier:(unsigned long long)arg1 propDict:(NSDictionary *)arg2 propKey:(NSString *)arg3 withReply:(void (^)(_Bool))arg4;
 - (void)invalidateWithReply:(void (^)(void))arg1;
 - (void)resetStorageWithReply:(void (^)(void))arg1;

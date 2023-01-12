@@ -16,6 +16,7 @@
     NSString *_prefix;
 }
 
++ (id)TPPBPolicyModelToCategoryWithPrefix:(id)arg1 category:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *category; // @synthesize category=_category;
 @property(retain, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;

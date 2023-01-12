@@ -6,30 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class DEExtensionHostContext, NSExtension, NSRecursiveLock, NSString;
+@class DEExtensionHostContext, NSExtension, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface DEExtension : NSObject
 {
     _Bool _isLoggingEnabled;
     _Bool _allowUserAttachmentSelection;
+    _Bool _isFetchingExtensionHostContext;
+    _Bool _adoptsExtensionTrackerFlow;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     NSString *_attachmentsName;
     NSString *_identifier;
     DEExtensionHostContext *_context;
     NSString *_loggingConsent;
     NSExtension *_extension;
-    NSRecursiveLock *_extensionHostLoadingLock;
+    NSMutableArray *_contextFetchHandlers;
+    long long _callCount;
 }
 
 - (void).cxx_destruct;
-@property(retain) NSRecursiveLock *extensionHostLoadingLock; // @synthesize extensionHostLoadingLock=_extensionHostLoadingLock;
+@property long long callCount; // @synthesize callCount=_callCount;
+@property _Bool adoptsExtensionTrackerFlow; // @synthesize adoptsExtensionTrackerFlow=_adoptsExtensionTrackerFlow;
+@property _Bool isFetchingExtensionHostContext; // @synthesize isFetchingExtensionHostContext=_isFetchingExtensionHostContext;
+@property(retain) NSMutableArray *contextFetchHandlers; // @synthesize contextFetchHandlers=_contextFetchHandlers;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(nonatomic) _Bool allowUserAttachmentSelection; // @synthesize allowUserAttachmentSelection=_allowUserAttachmentSelection;
 @property(retain, nonatomic) NSString *loggingConsent; // @synthesize loggingConsent=_loggingConsent;
 @property(nonatomic) _Bool isLoggingEnabled; // @synthesize isLoggingEnabled=_isLoggingEnabled;
-@property(retain, nonatomic) DEExtensionHostContext *context; // @synthesize context=_context;
+@property(retain) DEExtensionHostContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSString *attachmentsName; // @synthesize attachmentsName=_attachmentsName;
 - (Class)extensionTrackerClass;
+- (void)dealloc;
 - (id)description;
 - (_Bool)checkAndTeardown;
 - (void)teardownWithParameters:(id)arg1 session:(id)arg2;
@@ -38,6 +47,7 @@
 - (void)attachmentsForParameters:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
 - (void)attachmentListWithHandler:(CDUnknownBlockType)arg1;
 - (void)performWithHostContext:(CDUnknownBlockType)arg1;
+@property(readonly) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 - (void)createExtensionHostContextCompletion:(CDUnknownBlockType)arg1;
 - (void)endUsingExtension;
 - (id)initWithNSExtension:(id)arg1;

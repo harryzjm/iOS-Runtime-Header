@@ -11,7 +11,7 @@
 
 @interface TTSRegexHelper : NSObject
 {
-    struct vector<boost::basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>>, std::__1::allocator<boost::basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>>>> _boostRegexes;
+    struct vector<boost::basic_regex<char>, std::allocator<boost::basic_regex<char>>> _boostRegexes;
     NSMutableArray *_nsRegexes;
     NSMutableSet *_duplicateChecker;
     NSObject<OS_dispatch_queue> *_ttsRegexQueue;
@@ -38,6 +38,7 @@
 - (void)_addNSRule:(id)arg1 ruleApplication:(id)arg2 caseInsensitive:(_Bool)arg3;
 - (void)_addRules:(id)arg1;
 - (void)addRules:(id)arg1;
+@property(readonly, nonatomic) _Bool skipLuthorRules;
 - (id)init;
 
 @end

@@ -6,18 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class SVXModuleManager;
+#import <SiriVOX/AFSiriActivationListenerDelegate-Protocol.h>
+#import <SiriVOX/NSXPCListenerDelegate-Protocol.h>
+#import <SiriVOX/SVXClientServiceServerConnectionDelegate-Protocol.h>
 
-@interface SVXDaemon : NSObject
+@class AFSiriActivationListener, NSArray, NSString, NSXPCListener, SVXQueuePerformer, SVXVirtualDevice;
+
+@interface SVXDaemon : NSObject <NSXPCListenerDelegate, AFSiriActivationListenerDelegate, SVXClientServiceServerConnectionDelegate>
 {
-    SVXModuleManager *_moduleManager;
+    _Bool _isRunning;
+    SVXQueuePerformer *_clientServiceQueuePerformer;
+    NSXPCListener *_clientServiceListener;
+    AFSiriActivationListener *_siriActivationListener;
+    NSArray *_platformDependencies;
+    SVXVirtualDevice *_hostVirtualDevice;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)_enumerateVirtualDevicesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)_getVirtualDeviceForInstanceInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getVirtualDeviceForActivationContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)clientServiceServerConnectionDidInvalidate:(id)arg1;
+- (void)siriActivationListener:(id)arg1 myriadEventWithRequestInfo:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)siriActivationListener:(id)arg1 deactivateForReason:(long long)arg2 options:(unsigned long long)arg3 context:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)siriActivationListener:(id)arg1 activateWithRequestInfo:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)siriActivationListener:(id)arg1 prewarmWithRequestInfo:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)handleClientServiceXPCConnection:(id)arg1;
+- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)stop;
 - (void)startWithPlatformDependencies:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -61,11 +61,13 @@ __attribute__((visibility("hidden")))
 - (void)refreshPresentation;
 - (struct CGRect)_rightInputViewSetFrame;
 - (struct CGRect)_leftInputViewSetFrame;
+- (double)inputViewSplitHeight;
 @property(readonly, nonatomic) struct CGRect inputAccessoryViewBounds;
 @property(readonly, nonatomic) struct CGRect inputViewBounds;
 @property(readonly, nonatomic) _Bool _inputViewIsSplit;
 @property(readonly, nonatomic) _Bool isSplit; // @synthesize isSplit=_isSplit;
 @property(readonly, nonatomic) _Bool supportsSplit;
+@property(readonly, nonatomic) _Bool isLocalMinimumHeightInputView;
 @property(readonly, nonatomic) _Bool isInputAccessoryViewPlaceholder;
 @property(readonly, nonatomic) _Bool isInputAssistantViewPlaceholder;
 @property(readonly, nonatomic) _Bool isInputViewPlaceholder;

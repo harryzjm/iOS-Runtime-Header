@@ -29,14 +29,13 @@ __attribute__((visibility("hidden")))
 - (void)requester:(id)arg1 removeTileKey:(const struct _GEOTileKey *)arg2;
 - (void)_requester:(id)arg1 updatePriority:(unsigned int)arg2 tileKey:(struct _GEOTileKey)arg3;
 - (void)requester:(id)arg1 updatePriority:(unsigned int)arg2 tileKey:(const struct _GEOTileKey *)arg3;
-- (void)_requester:(id)arg1 incrementRunningOperationsCount:(unsigned long long)arg2;
-- (void)_requester:(id)arg1 updateRunningOperationsCount:(unsigned long long)arg2;
-- (void)requester:(id)arg1 updateRunningOperationsCount:(unsigned long long)arg2;
+- (void)requester:(id)arg1 completedOperations:(unsigned long long)arg2;
+- (void)_requester:(id)arg1 incrementRunningOperationsCount:(long long)arg2;
 - (void)_pruneEmptyRequesters;
 - (void)_removeRequester:(id)arg1;
 - (void)removeRequester:(id)arg1;
 - (void)_addRequester:(id)arg1 tileKeys:(id)arg2 priorities:(id)arg3;
-- (vector_49336e52 *)requesters;
+- (void *)requesters;
 - (void)dealloc;
 - (id)_initWithMaxRunningOperationsCount:(unsigned long long)arg1;
 - (id)init;

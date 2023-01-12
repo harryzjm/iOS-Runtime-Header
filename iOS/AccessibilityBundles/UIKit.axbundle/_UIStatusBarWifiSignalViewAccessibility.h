@@ -12,7 +12,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityIdentifier;
 - (id)accessibilityValue;
-- (id)_accessibilitySignalStrengthText;
 
 @end
 

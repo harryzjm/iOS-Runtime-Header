@@ -7,38 +7,37 @@
 #import <objc/NSObject.h>
 
 #import <ChronoServices/BSDescriptionProviding-Protocol.h>
+#import <ChronoServices/CHSWidgetConfigurationReference-Protocol.h>
+#import <ChronoServices/CHSWidgetPersonality-Protocol.h>
 #import <ChronoServices/NSCopying-Protocol.h>
 #import <ChronoServices/NSSecureCoding-Protocol.h>
 
-@class CHSWidget, CHSWidgetMetrics, NSString;
+@class CHSConfiguredWidgetContainerDescriptor, CHSWidget, CHSWidgetMetrics, NSString;
 
-@interface CHSConfiguredWidgetDescriptor : NSObject <BSDescriptionProviding, NSCopying, NSSecureCoding>
+@interface CHSConfiguredWidgetDescriptor : NSObject <BSDescriptionProviding, CHSWidgetConfigurationReference, NSCopying, NSSecureCoding, CHSWidgetPersonality>
 {
-    _Bool _inStack;
-    _Bool _onTop;
-    long long _location;
-    unsigned long long _page;
-    CHSWidget *_widget;
-    CHSWidgetMetrics *_widgetMetrics;
+    CHSConfiguredWidgetContainerDescriptor *_weak_container;
+    _Bool _suggestion;
+    _Bool _systemConfigured;
     NSString *_uniqueIdentifier;
+    CHSWidget *_widget;
+    CHSWidgetMetrics *_metrics;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)new;
 - (void).cxx_destruct;
-@property(readonly, nonatomic, getter=isOnTop) _Bool onTop; // @synthesize onTop=_onTop;
-@property(readonly, nonatomic, getter=isInStack) _Bool inStack; // @synthesize inStack=_inStack;
-@property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property(readonly, copy, nonatomic) CHSWidgetMetrics *widgetMetrics; // @synthesize widgetMetrics=_widgetMetrics;
+@property(readonly, nonatomic, getter=isSystemConfigured) _Bool systemConfigured; // @synthesize systemConfigured=_systemConfigured;
+@property(readonly, nonatomic, getter=isSuggestion) _Bool suggestion; // @synthesize suggestion=_suggestion;
+@property(readonly, copy, nonatomic) CHSWidgetMetrics *metrics; // @synthesize metrics=_metrics;
 @property(readonly, copy, nonatomic) CHSWidget *widget; // @synthesize widget=_widget;
-@property(readonly, nonatomic) unsigned long long page; // @synthesize page=_page;
-@property(readonly, nonatomic) long long location; // @synthesize location=_location;
-@property(readonly, nonatomic) long long family;
-@property(readonly, copy, nonatomic) NSString *kind;
-@property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)matchesPersonality:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *kind;
+@property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -46,7 +45,9 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithWidget:(id)arg1 uniqueIdentifier:(id)arg2 location:(long long)arg3 page:(unsigned long long)arg4 widgetMetrics:(id)arg5 inStack:(_Bool)arg6 onTop:(_Bool)arg7;
+- (void)_setContainer:(id)arg1;
+@property(readonly, nonatomic) __weak CHSConfiguredWidgetContainerDescriptor *container;
+- (id)initWithUniqueIdentifier:(id)arg1 widget:(id)arg2 metrics:(id)arg3 isSuggestion:(_Bool)arg4 isSystemConfigured:(_Bool)arg5;
 - (id)init;
 
 // Remaining properties

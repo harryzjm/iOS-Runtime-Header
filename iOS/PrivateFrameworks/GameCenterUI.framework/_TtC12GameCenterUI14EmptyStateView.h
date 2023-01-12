@@ -4,28 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIScrollView.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC12GameCenterUI14EmptyStateView : UIView
+@interface _TtC12GameCenterUI14EmptyStateView : UIScrollView
 {
     MISSING_TYPE *imageView;
+    MISSING_TYPE *wordmarkView;
     MISSING_TYPE *primaryLabel;
     MISSING_TYPE *secondaryLabel;
     MISSING_TYPE *button;
+    MISSING_TYPE *$__lazy_storage_$_focusGuide;
     MISSING_TYPE *disabled;
     MISSING_TYPE *imageType;
-    MISSING_TYPE *addFriendsHandler;
+    MISSING_TYPE *buttonActionBlock;
 }
 
 + (id)addAdditionalFriendsEmptyStateView;
++ (id)addFriendsEmptyStateViewTVOS;
 + (id)addFriendsEmptyStateView;
 - (void).cxx_destruct;
 - (void)didTapButton:(id)arg1;
 - (void)layoutSubviews;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;
-@property(nonatomic, copy) CDUnknownBlockType addFriendsHandler;
+@property(nonatomic, copy) CDUnknownBlockType buttonActionBlock;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

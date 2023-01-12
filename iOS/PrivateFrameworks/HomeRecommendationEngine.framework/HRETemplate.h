@@ -6,42 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSSet, NSString;
-@protocol HFIconDescriptor;
+@class NSSet, NSString;
 
 @interface HRETemplate : NSObject
 {
-    NSMutableDictionary *_config;
+    NSString *_title;
+    NSSet *_rules;
+    NSString *_identifier;
+    unsigned long long _splitStrategy;
+    double _sortingPriority;
+    double _starterRank;
 }
 
-+ (id)representableObjectToUseForVerboseString:(id)arg1 actionableObjects:(id)arg2;
-+ (_Bool)shouldUseVerboseStringWithObjectsInContext:(id)arg1 actionableObjectsInActions:(id)arg2 actionableObjectsInEvents:(id)arg3;
-+ (_Bool)representableAccessoryObject:(id)arg1 containsObject:(id)arg2;
-+ (id)representableObjectsFromHomeObjects:(id)arg1 context:(id)arg2;
-+ (id)typesForObjectsInContext:(id)arg1 intersectingWithObjects:(id)arg2;
-+ (id)staticTemplates;
-+ (id)characteristicsTypesAllowingFullVarianceInVarianceDictionary:(id)arg1;
-+ (_Bool)targetValue:(id)arg1 withinAllowedVariance:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *config; // @synthesize config=_config;
-- (id)naturalLanguageTitleForObjectsInContext:(id)arg1 forRecommendation:(id)arg2 options:(id)arg3;
-- (id)iconDescriptorForHomeObjects:(id)arg1 forRecommendation:(id)arg2;
-- (id)naturalLanguageTitleForRecommendation:(id)arg1 options:(id)arg2;
-- (id)processedActionMap;
-- (id)triggerCharacteristicTypes;
-- (id)triggerType;
-- (id)involvedTypes;
-- (id)recommendationSplitStrategy;
-@property(readonly, nonatomic) NSSet *optionalTypes;
-@property(readonly, nonatomic) NSSet *requiredTypeGroups;
-@property(readonly, nonatomic) NSSet *requiredTypes;
-@property(readonly, nonatomic) NSDictionary *rankingConfig;
-@property(readonly, nonatomic) id <HFIconDescriptor> iconDescriptor;
-@property(readonly, nonatomic) NSString *longDescription;
-@property(readonly, nonatomic) NSString *title;
-@property(readonly, nonatomic) NSString *identifier;
-@property(readonly, nonatomic) NSDictionary *configuration;
-- (id)initWithConfiguration:(id)arg1;
+@property(nonatomic) double starterRank; // @synthesize starterRank=_starterRank;
+@property(nonatomic) double sortingPriority; // @synthesize sortingPriority=_sortingPriority;
+@property(nonatomic) unsigned long long splitStrategy; // @synthesize splitStrategy=_splitStrategy;
+@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) NSSet *rules; // @synthesize rules=_rules;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) NSSet *involvedAccessoryTypes;
+@property(readonly, nonatomic) Class recommendationClass;
+- (id)createStarterRecommendationInHome:(id)arg1;
 - (id)init;
 
 @end

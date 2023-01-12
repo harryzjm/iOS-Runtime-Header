@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface MTLFunctionConstantValuesInternal <MTLFunctionConstantSPI>
 {
-    struct MTLConstantStorage *_constantStorage;
+    void *_constantStorage;
 }
 
 - (const void *)constantValueWithFunctionConstant:(id)arg1;

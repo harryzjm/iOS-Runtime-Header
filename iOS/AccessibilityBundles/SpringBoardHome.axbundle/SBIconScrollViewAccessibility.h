@@ -23,10 +23,11 @@
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityScrollStatus:(_Bool)arg1;
 - (id)_accessibilityCurrentFolderIconForPage:(long long)arg1;
-- (id)_accessibilityScrollDescriptionForCurrentPage:(long long)arg1;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (_Bool)accessibilityScrollToTopSupported;
+- (_Bool)_accessibilityIsGroupedParent;
 - (long long)accessibilityContainerType;
+- (_Bool)accessibilityViewIsModal;
 - (_Bool)shouldGroupAccessibilityChildren;
 
 @end

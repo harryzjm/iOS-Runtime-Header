@@ -10,31 +10,33 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*> *__next_;
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unordered_map<const char *, os_log_s *, std::__1::hash<const char *>, std::__1::equal_to<const char *>, std::__1::allocator<std::__1::pair<const char *const, os_log_s *>>> {
-    struct __hash_table<std::__1::__hash_value_type<const char *, os_log_s *>, std::__1::__unordered_map_hasher<const char *, std::__1::__hash_value_type<const char *, os_log_s *>, std::__1::hash<const char *>, true>, std::__1::__unordered_map_equal<const char *, std::__1::__hash_value_type<const char *, os_log_s *>, std::__1::equal_to<const char *>, true>, std::__1::allocator<std::__1::__hash_value_type<const char *, os_log_s *>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const char *, os_log_s *>, void *>*> __value_;
+struct unordered_map<const char *, os_log_s *, std::hash<const char *>, std::equal_to<const char *>, std::allocator<std::pair<const char *const, os_log_s *>>> {
+    struct __hash_table<std::__hash_value_type<const char *, os_log_s *>, std::__unordered_map_hasher<const char *, std::__hash_value_type<const char *, os_log_s *>, std::hash<const char *>, std::equal_to<const char *>, true>, std::__unordered_map_equal<const char *, std::__hash_value_type<const char *, os_log_s *>, std::equal_to<const char *>, std::hash<const char *>, true>, std::allocator<std::__hash_value_type<const char *, os_log_s *>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<const char *, os_log_s *>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<const char *, std::__1::__hash_value_type<const char *, os_log_s *>, std::__1::hash<const char *>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<const char *, std::__hash_value_type<const char *, os_log_s *>, std::hash<const char *>, std::equal_to<const char *>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<const char *, std::__1::__hash_value_type<const char *, os_log_s *>, std::__1::equal_to<const char *>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<const char *, std::__hash_value_type<const char *, os_log_s *>, std::equal_to<const char *>, std::hash<const char *>, true>> {
             float __value_;
         } __p3_;
     } __table_;

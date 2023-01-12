@@ -25,5 +25,8 @@
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
+// Remaining properties
+@property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
+
 @end
 

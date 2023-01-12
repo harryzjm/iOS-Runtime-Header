@@ -16,8 +16,9 @@
 + (id)authorizationGroupWithServiceName:(id)arg1;
 + (void)initialize;
 - (id)infoPlistAuthorizationCategory;
+@property(readonly, copy) NSString *writerAuthorizationService;
 @property(readonly, copy) NSString *authorizationService;
-- (id)localizeExampleDataValue:(id)arg1;
+- (id)localizedExampleDataValue:(id)arg1;
 @property(readonly, copy) NSArray *localizedSampleData;
 @property(readonly, retain) UIImage *illustration;
 @property(readonly, copy) NSArray *platforms;

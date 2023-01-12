@@ -15,7 +15,9 @@
     _Bool _imageHidden[9];
     _Bool _needsDynamicLayout;
     _Bool _combinesPhotoDecorations;
+    _Bool _continuousCorners;
     _Bool _hasRoundedCorners;
+    _Bool _cornerOverlaysDisabled;
     _Bool _empty;
     _Bool _highlighted;
     unsigned long long _style;
@@ -55,7 +57,9 @@
 @property(retain, nonatomic) UIImage *emptyPlaceholderImage; // @synthesize emptyPlaceholderImage=_emptyPlaceholderImage;
 @property(nonatomic) double itemAlpha; // @synthesize itemAlpha=_itemAlpha;
 @property(nonatomic) long long numberOfVisibleItems; // @synthesize numberOfVisibleItems=_numberOfVisibleItems;
+@property(nonatomic) _Bool cornerOverlaysDisabled; // @synthesize cornerOverlaysDisabled=_cornerOverlaysDisabled;
 @property(nonatomic) _Bool hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
+@property(nonatomic) _Bool continuousCorners; // @synthesize continuousCorners=_continuousCorners;
 @property(nonatomic) double posterSubitemCornerRadius; // @synthesize posterSubitemCornerRadius=_posterSubitemCornerRadius;
 @property(nonatomic) double posterSquareCornerRadius; // @synthesize posterSquareCornerRadius=_posterSquareCornerRadius;
 @property(nonatomic) double gridItemSpacing; // @synthesize gridItemSpacing=_gridItemSpacing;
@@ -93,6 +97,7 @@
 @property(readonly, nonatomic) struct CGPoint topLeftCornerOfFrontStackItem;
 - (struct CGRect)rectOfStackItemAtIndex:(long long)arg1 inCoordinateSpace:(id)arg2;
 - (void)setHasRoundedCorners:(_Bool)arg1 withCornersBackgroundColor:(id)arg2;
+@property(readonly, nonatomic) double cornerRadius;
 - (void)setBadgeInfo:(struct PXAssetBadgeInfo)arg1 style:(long long)arg2 forItemAtIndex:(long long)arg3;
 - (void)setBadgeInfo:(struct PXAssetBadgeInfo)arg1 forItemAtIndex:(long long)arg2;
 - (void)setImageHidden:(_Bool)arg1 forItemAtIndex:(long long)arg2;

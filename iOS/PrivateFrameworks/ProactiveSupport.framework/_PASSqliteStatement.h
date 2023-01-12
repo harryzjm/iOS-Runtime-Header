@@ -8,11 +8,10 @@
 
 #import <ProactiveSupport/NSCopying-Protocol.h>
 
-@class _PASSQLColumnMapping, _PASSqliteDatabase;
+@class _PASSQLColumnMapping;
 
 @interface _PASSqliteStatement : NSObject <NSCopying>
 {
-    _PASSqliteDatabase *_owner;
     _PASSQLColumnMapping *_columnMapping;
     struct sqlite3_stmt *_stmt;
 }
@@ -43,12 +42,13 @@
 - (long long)getIntegerForColumn:(int)arg1;
 - (id)getNSDataForColumn:(int)arg1;
 - (id)getNSStringForColumn:(int)arg1;
+- (int)bindParam:(int)arg1 toBlock:(CDUnknownBlockType)arg2;
 - (int)bindParam:(int)arg1 toNSDictionary:(id)arg2;
 - (int)bindParam:(int)arg1 toNSOrderedSet:(id)arg2;
 - (int)bindParam:(int)arg1 toNSSet:(id)arg2;
 - (int)bindParam:(int)arg1 toNSArray:(id)arg2;
 - (int)bindParam:(int)arg1 toNSIndexSet:(id)arg2;
-- (int)_bindParam:(int)arg1 toCollection:(id)arg2 sqliteMethodName:(const char *)arg3;
+- (int)_bindParam:(int)arg1 toObjcObject:(id)arg2 sqliteMethodName:(const char *)arg3;
 - (int)bindParam:(int)arg1 toDoubleAsNSNumber:(id)arg2;
 - (int)bindParam:(int)arg1 toDouble:(double)arg2;
 - (int)bindParam:(int)arg1 toInt64AsNSNumber:(id)arg2;
@@ -57,6 +57,7 @@
 - (int)bindParam:(int)arg1 toNSData:(id)arg2;
 - (int)bindParam:(int)arg1 toNSString:(id)arg2;
 - (int)bindParamToNull:(int)arg1;
+- (int)bindNamedParam:(const char *)arg1 toBlock:(CDUnknownBlockType)arg2;
 - (int)bindNamedParam:(const char *)arg1 toNSDictionary:(id)arg2;
 - (int)bindNamedParam:(const char *)arg1 toNSOrderedSet:(id)arg2;
 - (int)bindNamedParam:(const char *)arg1 toNSSet:(id)arg2;
@@ -73,10 +74,8 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)prepareForRowDeserialization;
-- (void)dealloc;
-- (void)finalize;
 - (id)init;
-- (id)initWithStatementPointer:(struct sqlite3_stmt *)arg1 owner:(id)arg2;
+- (id)initWithStatementPointer:(struct sqlite3_stmt *)arg1;
 
 @end
 

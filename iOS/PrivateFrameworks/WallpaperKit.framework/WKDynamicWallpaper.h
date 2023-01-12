@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *_thumbnailImage; // @synthesize _thumbnailImage=__thumbnailImage;
 @property(retain, nonatomic) NSDictionary *_dynamicDictionary; // @synthesize _dynamicDictionary=__dynamicDictionary;
+- (CDUnknownBlockType)descriptionBuilderBlock;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)wallpaperValue;

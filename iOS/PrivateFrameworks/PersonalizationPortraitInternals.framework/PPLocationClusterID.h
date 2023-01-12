@@ -21,12 +21,10 @@
 }
 
 + (id)latLongTableWithClusters:(id)arg1;
-+ (void)aggregateRecords:(id)arg1 toClusters:(id)arg2 withLookupTable:(id)arg3;
 + (id)lookupTableWithRecords:(id)arg1;
 + (id)clustersWithRecords:(id)arg1;
 + (_Bool)asClusterIDPlacemark:(id)arg1 isEqualToPlacemark:(id)arg2;
 + (id)broadenClusterId:(id)arg1;
-+ (id)_broaden:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *administrativeArea; // @synthesize administrativeArea=_administrativeArea;
 @property(retain, nonatomic) NSString *locality; // @synthesize locality=_locality;

@@ -22,6 +22,7 @@
 
 + (id)internalRepresentation;
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *issueDate; // @synthesize issueDate=_issueDate;
 @property(retain, nonatomic) GKGameInternal *game; // @synthesize game=_game;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
@@ -42,7 +43,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
 
 @end
 

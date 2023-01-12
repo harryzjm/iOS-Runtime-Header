@@ -9,17 +9,25 @@
 
 @interface MTLInstanceAccelerationStructureDescriptor
 {
+    _Bool _overriddenInstanceDescriptorStride;
+    unsigned long long _instanceDescriptorStride;
     id <MTLBuffer> _instanceDescriptorBuffer;
     unsigned long long _instanceDescriptorBufferOffset;
-    unsigned long long _instanceDescriptorStride;
     unsigned long long _instanceCount;
     NSArray *_instancedAccelerationStructures;
+    id <MTLBuffer> _motionTransformBuffer;
+    unsigned long long _motionTransformBufferOffset;
+    unsigned long long _motionTransformCount;
+    unsigned long long _instanceDescriptorType;
 }
 
 + (id)descriptor;
+@property(nonatomic) unsigned long long instanceDescriptorType; // @synthesize instanceDescriptorType=_instanceDescriptorType;
+@property(nonatomic) unsigned long long motionTransformCount; // @synthesize motionTransformCount=_motionTransformCount;
+@property(nonatomic) unsigned long long motionTransformBufferOffset; // @synthesize motionTransformBufferOffset=_motionTransformBufferOffset;
+@property(retain, nonatomic) id <MTLBuffer> motionTransformBuffer; // @synthesize motionTransformBuffer=_motionTransformBuffer;
 @property(retain, nonatomic) NSArray *instancedAccelerationStructures; // @synthesize instancedAccelerationStructures=_instancedAccelerationStructures;
 @property(nonatomic) unsigned long long instanceCount; // @synthesize instanceCount=_instanceCount;
-@property(nonatomic) unsigned long long instanceDescriptorStride; // @synthesize instanceDescriptorStride=_instanceDescriptorStride;
 @property(nonatomic) unsigned long long instanceDescriptorBufferOffset; // @synthesize instanceDescriptorBufferOffset=_instanceDescriptorBufferOffset;
 @property(retain, nonatomic) id <MTLBuffer> instanceDescriptorBuffer; // @synthesize instanceDescriptorBuffer=_instanceDescriptorBuffer;
 - (unsigned long long)hash;
@@ -27,6 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
+@property(nonatomic) unsigned long long instanceDescriptorStride;
 
 @end
 

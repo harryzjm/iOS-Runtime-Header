@@ -10,6 +10,14 @@
 {
 }
 
++ (_Bool)isInternalUI;
++ (id)_darwinNotificationNameForRequestType:(long long)arg1;
++ (id)_getOfferDescriptionFromRequestType:(long long)arg1;
++ (long long)_getOfferRequestTypeFromOptions:(id)arg1 bundleId:(id)arg2 isBuddy:(_Bool)arg3;
++ (_Bool)_requestedFetchOffersInOptions:(id)arg1;
++ (_Bool)_requestedPremiumOfferInOptions:(id)arg1;
++ (_Bool)_requestedDefaultOfferInOptions:(id)arg1;
++ (_Bool)_checkOptions:(id)arg1 forKey:(id)arg2;
 + (id)base64EncodeString:(id)arg1;
 + (id)getStringFromNumber:(id)arg1;
 + (_Bool)isServerMockingEnabled;

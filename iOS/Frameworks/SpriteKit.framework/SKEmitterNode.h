@@ -9,7 +9,7 @@
 @interface SKEmitterNode
 {
     SKTexture *_particleTexture;
-    struct SKCEmitterNode *_skcEmitterNode;
+    void *_skcEmitterNode;
     SKNode *_target;
     SKKeyframeSequence *_colorSequence;
     SKKeyframeSequence *_colorBlendSequence;
@@ -112,7 +112,7 @@
 - (id)fieldInfluenceSequence;
 - (id)subEmitterNode;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 
 // Remaining properties
 @property(copy, nonatomic) NSDictionary *attributeValues; // @dynamic attributeValues;

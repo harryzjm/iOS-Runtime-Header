@@ -15,12 +15,16 @@
     id <WFPropertyListObject> _userInfo;
     NSString *_keyPath;
     CDUnknownBlockType _block;
+    CDUnknownBlockType _setterBlock;
     NSString *_name;
     Class _propertyClass;
     NSNumber *_multipleValues;
     NSNumber *_filterable;
     NSNumber *_sortable;
     NSNumber *_gettable;
+    NSNumber *_settable;
+    NSNumber *_appendable;
+    NSNumber *_removable;
     NSNumber *_primary;
     NSArray *_allowedOperators;
     NSArray *_possibleValues;
@@ -33,11 +37,15 @@
     NSNumber *_comparableUnits;
     NSString *_measurementUnitType;
     NSString *_displayName;
+    NSNumber *_canLowercaseName;
 }
 
++ (id)block:(CDUnknownBlockType)arg1 setterBlock:(CDUnknownBlockType)arg2 name:(id)arg3 class:(Class)arg4;
 + (id)block:(CDUnknownBlockType)arg1 name:(id)arg2 class:(Class)arg3;
++ (id)keyPath:(id)arg1 setterBlock:(CDUnknownBlockType)arg2 name:(id)arg3 class:(Class)arg4;
 + (id)keyPath:(id)arg1 name:(id)arg2 class:(Class)arg3;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSNumber *canLowercaseName; // @synthesize canLowercaseName=_canLowercaseName;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *measurementUnitType; // @synthesize measurementUnitType=_measurementUnitType;
 @property(copy, nonatomic) NSNumber *comparableUnits; // @synthesize comparableUnits=_comparableUnits;
@@ -51,16 +59,21 @@
 @property(copy, nonatomic) NSArray *possibleValues; // @synthesize possibleValues=_possibleValues;
 @property(copy, nonatomic) NSArray *allowedOperators; // @synthesize allowedOperators=_allowedOperators;
 @property(copy, nonatomic) NSNumber *primary; // @synthesize primary=_primary;
+@property(copy, nonatomic) NSNumber *removable; // @synthesize removable=_removable;
+@property(copy, nonatomic) NSNumber *appendable; // @synthesize appendable=_appendable;
+@property(copy, nonatomic) NSNumber *settable; // @synthesize settable=_settable;
 @property(copy, nonatomic) NSNumber *gettable; // @synthesize gettable=_gettable;
 @property(copy, nonatomic) NSNumber *sortable; // @synthesize sortable=_sortable;
 @property(copy, nonatomic) NSNumber *filterable; // @synthesize filterable=_filterable;
 @property(copy, nonatomic) NSNumber *multipleValues; // @synthesize multipleValues=_multipleValues;
 @property(retain, nonatomic) Class propertyClass; // @synthesize propertyClass=_propertyClass;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(copy, nonatomic) CDUnknownBlockType setterBlock; // @synthesize setterBlock=_setterBlock;
 @property(copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property(copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property(copy, nonatomic) id <WFPropertyListObject> userInfo; // @synthesize userInfo=_userInfo;
 - (id)build;
+- (id)canLowercaseName:(_Bool)arg1;
 - (id)displayName:(id)arg1;
 - (id)measurementUnitType:(id)arg1;
 - (id)comparableUnits:(unsigned long long)arg1;
@@ -75,6 +88,9 @@
 - (id)userInfo:(id)arg1;
 - (id)allowedOperators:(id)arg1;
 - (id)primary:(_Bool)arg1;
+- (id)removable:(_Bool)arg1;
+- (id)appendable:(_Bool)arg1;
+- (id)setterBlock:(CDUnknownBlockType)arg1;
 - (id)gettable:(_Bool)arg1;
 - (id)filterable:(_Bool)arg1;
 - (id)sortable:(_Bool)arg1;

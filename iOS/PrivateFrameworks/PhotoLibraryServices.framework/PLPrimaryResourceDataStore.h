@@ -22,16 +22,19 @@
 + (unsigned int)currentDeviceMasterThumbRecipeID;
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
 + (id)supportedRecipes;
-+ (unsigned int)storeClassID;
++ (unsigned short)storeClassID;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *keyHelperByBundleScope; // @synthesize keyHelperByBundleScope=_keyHelperByBundleScope;
 @property(retain, nonatomic) PLPrimaryResourceDataStoreKeyHelper *mainScopeKeyHelper; // @synthesize mainScopeKeyHelper=_mainScopeKeyHelper;
 @property(nonatomic) unsigned int masterThumbRecipeID; // @synthesize masterThumbRecipeID=_masterThumbRecipeID;
 - (void)transitional_reconsiderLocalAvailabilityBasedOnExistingLocationOfCPLResource:(id)arg1 givenFilePath:(id)arg2;
-- (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 inContext:(id)arg4 clientBundleID:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (_Bool)supportsTimeRange;
+- (void)markAsynchronousLocalRenderAsOptionalForProgress:(id)arg1;
+- (_Bool)canMarkAsynchronousLocalRenderAsOptionalForProgress:(id)arg1;
+- (void)requestStreamingURLForResource:(id)arg1 asset:(id)arg2 intent:(unsigned long long)arg3 timeRange:(CDStruct_3c1748cc)arg4 inContext:(id)arg5 clientBundleID:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (_Bool)canStreamResource:(id)arg1;
 - (_Bool)videoResource:(id)arg1 matchesOrExceedsQualityLevel:(unsigned int)arg2;
-- (_Bool)dataStoreSubtypeIsDownloadable:(unsigned long long)arg1;
+- (_Bool)dataStoreSubtypeIsDownloadable:(long long)arg1;
 - (id)requestLocalAvailabilityChange:(short)arg1 forResource:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)storeExternalResource:(id)arg1 forAsset:(id)arg2 inContext:(id)arg3 options:(id)arg4 error:(id *)arg5 resultingResource:(id *)arg6;
 - (_Bool)canStoreExternalResource:(id)arg1;
@@ -51,14 +54,15 @@
 - (void)_cancelAvailabilityRequestWithTaskIdentifier:(id)arg1;
 - (id)_videoConversionServiceClient;
 - (id)_imageConversionServiceClient;
-- (void)_pruneResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_downloadCPLResource:(id)arg1 options:(id)arg2 taskDidBeginHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)_isSystemLibraryStore;
 - (void)_transitionTaskToInflightWithIdentifier:(id)arg1;
 - (_Bool)_taskIsPendingPhotoFinalizationWithIdentifier:(id)arg1;
 - (_Bool)_taskIsPendingDownloadWithIdentifier:(id)arg1;
 - (id)_newProgressForTaskWithIdentifier:(id)arg1 type:(long long)arg2;
-- (id)keyHelperForBundleScope:(unsigned char)arg1;
+- (id)keyHelperForBundleScope:(unsigned short)arg1;
+- (_Bool)_installFinalizedInternalResourcesIfResourceUrlIsNotPresent:(id)arg1 taskIdentifier:(id)arg2 error:(id *)arg3;
+- (id)getClosestResourceMatchingCPLResourceType:(unsigned long long)arg1 version:(unsigned int)arg2 asset:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

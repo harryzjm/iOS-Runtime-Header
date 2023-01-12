@@ -7,7 +7,7 @@
 @class NSSet, NSString, TSSTheme;
 
 @protocol TSSPresetSource
-+ (void)bootstrapPresetsOfKind:(NSString *)arg1 inTheme:(TSSTheme *)arg2 alternate:(int)arg3;
 + (NSSet *)presetKinds;
++ (void)bootstrapPresetsOfKind:(NSString *)arg1 inTheme:(TSSTheme *)arg2 alternate:(unsigned long long)arg3;
 @end
 

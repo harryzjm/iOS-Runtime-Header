@@ -13,23 +13,23 @@
 
 @interface TSCH3DSharegroup : NSObject <TSUiOSMemoryWarningFlushable>
 {
-    NSThread *mOwningThread;
-    TSCH3DResourceCache *mResourceCache;
-    TSCH3DShaderCache *mShaderCache;
-    NSMutableSet *mPurgeableResourceSet;
-    int mPerformance;
-    _Bool mDidReceiveFlush;
-    TSCH3DSharegroupToken *mToken;
+    NSThread *_owningThread;
+    TSCH3DResourceCache *_resourceCache;
+    TSCH3DShaderCache *_shaderCache;
+    NSMutableSet *_purgeableResourceSet;
+    int _performance;
+    _Bool _didReceiveFlush;
+    TSCH3DSharegroupToken *_token;
     id <TSCH3DSharegroupDelegate> _delegate;
 }
 
 + (id)uniqueSharegroupWithOwningThread:(id)arg1 token:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) id <TSCH3DSharegroupDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) __weak TSCH3DSharegroupToken *token; // @synthesize token=mToken;
-@property(readonly, nonatomic) TSCH3DShaderCache *shaderCache; // @synthesize shaderCache=mShaderCache;
-@property(readonly, nonatomic) TSCH3DResourceCache *resourceCache; // @synthesize resourceCache=mResourceCache;
-@property(nonatomic) int performance; // @synthesize performance=mPerformance;
+@property(readonly, nonatomic) __weak TSCH3DSharegroupToken *token; // @synthesize token=_token;
+@property(readonly, nonatomic) TSCH3DShaderCache *shaderCache; // @synthesize shaderCache=_shaderCache;
+@property(readonly, nonatomic) TSCH3DResourceCache *resourceCache; // @synthesize resourceCache=_resourceCache;
+@property(nonatomic) int performance; // @synthesize performance=_performance;
 - (void)flush;
 - (void)flushInTargetThread;
 - (void)p_flushInTargetThread;

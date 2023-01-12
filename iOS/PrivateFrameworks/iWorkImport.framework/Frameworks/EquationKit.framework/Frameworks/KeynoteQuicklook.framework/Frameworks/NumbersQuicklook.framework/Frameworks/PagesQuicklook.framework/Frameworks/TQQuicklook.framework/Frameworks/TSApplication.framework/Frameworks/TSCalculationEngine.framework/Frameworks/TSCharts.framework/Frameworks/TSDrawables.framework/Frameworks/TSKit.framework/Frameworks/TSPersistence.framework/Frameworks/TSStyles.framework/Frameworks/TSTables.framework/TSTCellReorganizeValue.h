@@ -10,7 +10,7 @@
 
 @interface TSTCellReorganizeValue : NSObject
 {
-    int _valueType;
+    unsigned char _valueType;
     int _rank;
     double _doubleValue;
     NSString *_string;
@@ -20,7 +20,7 @@
 @property(retain, nonatomic) NSString *string; // @synthesize string=_string;
 @property(nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property(nonatomic) int rank; // @synthesize rank=_rank;
-@property(nonatomic) int valueType; // @synthesize valueType=_valueType;
+@property(nonatomic) unsigned char valueType; // @synthesize valueType=_valueType;
 
 @end
 

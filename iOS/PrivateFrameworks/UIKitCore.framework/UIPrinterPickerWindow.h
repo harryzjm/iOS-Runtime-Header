@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)_roleHint;
 - (_Bool)_canAffectStatusBarAppearance;
 
 @end

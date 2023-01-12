@@ -62,7 +62,8 @@
 - (void)invalidateBlueprint;
 - (void)invalidateDependentsOfComponentNode:(id)arg1 forDependencyResolver:(id)arg2;
 - (void)invalidateDependentsOfInvalidatedComponents;
-- (void)invalidateSizeForComponentWithIdentifier:(id)arg1 componentState:(id)arg2 suggestedSize:(struct CGSize)arg3;
+- (void)invalidateSizeForComponentWithIdentifier:(id)arg1 suggestedSize:(struct CGSize)arg2;
+- (void)invalidateState:(id)arg1 forComponentWithIdentifier:(id)arg2;
 - (void)invalidateSizeForComponentWithIdentifier:(id)arg1;
 - (void)invalidatePositionForComponentWithIdentifier:(id)arg1;
 - (void)unregisterLayout:(id)arg1;

@@ -32,6 +32,9 @@
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)entityKeyMap;
 + (id)identifierCode;
++ (_Bool)managedObjectSupportsTorsoOnly;
++ (_Bool)managedObjectSupportsBodyDetection;
++ (_Bool)managedObjectSupportsDetectionType;
 + (_Bool)managedObjectSupportsContributor;
 + (_Bool)managedObjectSupportsAllowedForAnalysis;
 + (_Bool)managedObjectSupportsMontage;
@@ -72,6 +75,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_shortObjectIDURI;
 @property(readonly, copy, nonatomic) NSString *localIdentifier;
+- (void)dealloc;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (_Bool)hasLoadedPropertySet:(id)arg1;
 @property(readonly, nonatomic) PHObjectReference *objectReference;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/NSCopying-Protocol.h>
+
 @class NSData, WFHomeWorkflow, WFHomeWorkflowController;
 
-@interface HMDShortcutAction
+@interface HMDShortcutAction <NSCopying>
 {
     NSData *_shortcutData;
     WFHomeWorkflow *_shortcut;
@@ -18,8 +20,6 @@
 + (id)actionWithDictionaryRepresentation:(id)arg1 home:(id)arg2 actionSet:(id)arg3;
 + (id)actionWithDictionaryRepresentation:(id)arg1 home:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly) WFHomeWorkflowController *controller; // @synthesize controller=_controller;
-@property(readonly) WFHomeWorkflow *shortcut; // @synthesize shortcut=_shortcut;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -30,8 +30,9 @@
 - (id)associatedAccessories;
 - (_Bool)isAssociatedWithAccessory:(id)arg1;
 - (unsigned long long)entitlementsForNotification;
+- (_Bool)isUnsecuringAction;
 - (_Bool)requiresDeviceUnlock;
-- (void)executeWithSource:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)executeWithSource:(unsigned long long)arg1 clientName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)stateDump;
 - (id)dictionaryRepresentation;
 - (unsigned long long)type;

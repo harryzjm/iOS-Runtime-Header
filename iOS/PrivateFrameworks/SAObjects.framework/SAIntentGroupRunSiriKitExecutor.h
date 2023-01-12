@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, SAIntentGroupParse, SAIntentGroupSiriKitAppSelectionState, SAIntentGroupSiriKitListPosition, SAIntentGroupSiriKitMetrics, SAIntentGroupSiriKitRemoteExecution, SAPerson;
+#import <SAObjects/SATurnIdContaining-Protocol.h>
 
-@interface SAIntentGroupRunSiriKitExecutor
+@class NSArray, NSString, SAIntentGroupAceBargeInState, SAIntentGroupParse, SAIntentGroupSiriKitAppSelectionState, SAIntentGroupSiriKitListPosition, SAIntentGroupSiriKitMetrics, SAIntentGroupSiriKitRemoteExecution, SAPerson;
+
+@interface SAIntentGroupRunSiriKitExecutor <SATurnIdContaining>
 {
 }
 
@@ -17,6 +19,7 @@
 @property(nonatomic) _Bool voiceTriggerEnabled;
 @property(copy, nonatomic) NSString *usoVerb;
 @property(copy, nonatomic) NSString *userInitiatedAction;
+@property(copy, nonatomic) NSString *turnId;
 @property(nonatomic) _Bool textToSpeechEnabled;
 @property(retain, nonatomic) SAIntentGroupSiriKitMetrics *siriKitMetrics;
 @property(copy, nonatomic) NSString *sessionHandOffContinuityID;
@@ -35,9 +38,16 @@
 @property(nonatomic) _Bool eyesFree;
 @property(nonatomic) _Bool directAction;
 @property(copy, nonatomic) NSString *confirmationState;
+@property(retain, nonatomic) SAIntentGroupAceBargeInState *bargeInState;
 @property(retain, nonatomic) SAIntentGroupSiriKitAppSelectionState *appSelectionState;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

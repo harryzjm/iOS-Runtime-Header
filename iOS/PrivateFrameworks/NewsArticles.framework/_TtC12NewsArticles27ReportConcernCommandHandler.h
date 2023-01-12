@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *reportConcernModule;
     MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *historyService;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

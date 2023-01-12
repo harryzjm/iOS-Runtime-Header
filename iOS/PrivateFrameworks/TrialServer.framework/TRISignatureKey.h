@@ -16,6 +16,7 @@
 - (_Bool)_validateSignature:(id)arg1 data:(id)arg2 algorithm:(const struct __CFString *)arg3;
 - (_Bool)_validateBase64Signature:(id)arg1 data:(id)arg2 algorithm:(const struct __CFString *)arg3;
 - (_Bool)validateBase64Signature:(id)arg1 data:(id)arg2;
+- (_Bool)validateBase64Signature:(id)arg1 forFile:(id)arg2;
 - (void)dealloc;
 - (id)initWithKey:(struct __SecKey *)arg1;
 - (id)init;

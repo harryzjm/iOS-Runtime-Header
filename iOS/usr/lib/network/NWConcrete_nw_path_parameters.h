@@ -9,19 +9,21 @@
 #import <network/OS_nw_path_parameters-Protocol.h>
 
 @class NSString;
-@protocol OS_nw_array, OS_nw_context, OS_nw_endpoint, OS_nw_interface, OS_nw_protocol_options;
+@protocol OS_nw_context, OS_nw_endpoint, OS_nw_interface, OS_nw_protocol_options;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_path_parameters : NSObject <OS_nw_path_parameters>
 {
     struct nw_parameters_path_value path_value;
+    struct nw_parameters_joinable_path_value joinable_path_value;
     char *account_id;
+    char *attribution_context;
+    char *attributed_bundle;
     NSObject<OS_nw_context> *context;
     NSObject<OS_nw_protocol_options> *transport_options;
     NSObject<OS_nw_protocol_options> *internet_options;
     NSObject<OS_nw_endpoint> *local_address;
     NSObject<OS_nw_interface> *required_interface;
-    NSObject<OS_nw_array> *transforms;
     struct nw_parameters_extended_objects *extended_objects;
 }
 

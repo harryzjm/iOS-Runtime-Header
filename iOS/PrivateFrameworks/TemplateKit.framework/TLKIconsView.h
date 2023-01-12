@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class NSMutableArray, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface TLKIconsView
 {
     NSMutableArray *_imageViews;
     unsigned long long _prominence;
+    UIFont *_symbolFont;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIFont *symbolFont; // @synthesize symbolFont=_symbolFont;
 @property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 @property(retain, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
 - (void)updateIcons:(id)arg1;

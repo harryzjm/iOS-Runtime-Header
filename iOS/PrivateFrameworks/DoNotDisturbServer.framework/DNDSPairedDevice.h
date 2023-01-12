@@ -12,9 +12,14 @@
 
 @interface DNDSPairedDevice : NSObject <NSCopying>
 {
+    _Bool _iOS14EraOS;
+    _Bool _iCloudEnabled;
     NSString *_deviceIdentifier;
     unsigned long long _deviceClass;
+    NSString *_deviceName;
+    NSString *_osBuild;
     unsigned long long _syncProtocolVersion;
+    unsigned long long _syncServiceType;
     NSUUID *_pairingIdentifier;
     NSString *_pairingDataStore;
 }
@@ -22,14 +27,21 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *pairingDataStore; // @synthesize pairingDataStore=_pairingDataStore;
 @property(readonly, copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
+@property(readonly, nonatomic) unsigned long long syncServiceType; // @synthesize syncServiceType=_syncServiceType;
+@property(nonatomic, getter=isICloudEnabled) _Bool iCloudEnabled; // @synthesize iCloudEnabled=_iCloudEnabled;
+@property(readonly, nonatomic, getter=isIOS14EraOS) _Bool iOS14EraOS; // @synthesize iOS14EraOS=_iOS14EraOS;
 @property(readonly, nonatomic) unsigned long long syncProtocolVersion; // @synthesize syncProtocolVersion=_syncProtocolVersion;
 @property(readonly, nonatomic) unsigned long long deviceClass; // @synthesize deviceClass=_deviceClass;
 @property(readonly, copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
+@property(copy, nonatomic) NSString *osBuild; // @synthesize osBuild=_osBuild;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithDeviceIdentifier:(id)arg1 deviceClass:(unsigned long long)arg2 syncProtocolVersion:(unsigned long long)arg3 pairingIdentifier:(id)arg4 pairingDataStore:(id)arg5;
+- (id)initWithCloudDeviceIdentifier:(id)arg1 deviceClass:(unsigned long long)arg2 syncProtocolVersion:(unsigned long long)arg3;
+- (id)initWithLocalDeviceIdentifier:(id)arg1 deviceClass:(unsigned long long)arg2 syncProtocolVersion:(unsigned long long)arg3 iOS14EraOS:(_Bool)arg4 pairingIdentifier:(id)arg5 pairingDataStore:(id)arg6;
+@property(readonly, nonatomic) _Bool supportsKettle;
 
 @end
 

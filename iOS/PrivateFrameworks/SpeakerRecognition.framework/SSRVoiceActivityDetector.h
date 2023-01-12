@@ -8,7 +8,7 @@
 
 #import <SpeakerRecognition/EARCaesuraSilencePosteriorGeneratorDelegate-Protocol.h>
 
-@class CSServerEndpointFeatures, EARCaesuraSilencePosteriorGenerator, NSString, SSRSpeakerRecognitionContext, _EAREndpointer;
+@class EARCaesuraSilencePosteriorGenerator, NSString, SSRSpeakerRecognitionContext, _EARDefaultServerEndpointFeatures, _EAREndpointer;
 @protocol OS_dispatch_queue, SSRVoiceActivityDetectorDelegate;
 
 @interface SSRVoiceActivityDetector : NSObject <EARCaesuraSilencePosteriorGeneratorDelegate>
@@ -20,7 +20,7 @@
     id <SSRVoiceActivityDetectorDelegate> _delegate;
     EARCaesuraSilencePosteriorGenerator *_earSpg;
     _EAREndpointer *_hybridClassifier;
-    CSServerEndpointFeatures *_defaultServerEpFeatures;
+    _EARDefaultServerEndpointFeatures *_defSepFeats;
     long long _segmentStartPointSampleCount;
     unsigned long long _numSamplesProcessed;
     NSObject<OS_dispatch_queue> *_spgQueue;
@@ -32,7 +32,7 @@
 @property(nonatomic) _Bool endpointReported; // @synthesize endpointReported=_endpointReported;
 @property(nonatomic) unsigned long long numSamplesProcessed; // @synthesize numSamplesProcessed=_numSamplesProcessed;
 @property(nonatomic) long long segmentStartPointSampleCount; // @synthesize segmentStartPointSampleCount=_segmentStartPointSampleCount;
-@property(retain, nonatomic) CSServerEndpointFeatures *defaultServerEpFeatures; // @synthesize defaultServerEpFeatures=_defaultServerEpFeatures;
+@property(retain, nonatomic) _EARDefaultServerEndpointFeatures *defSepFeats; // @synthesize defSepFeats=_defSepFeats;
 @property(retain, nonatomic) _EAREndpointer *hybridClassifier; // @synthesize hybridClassifier=_hybridClassifier;
 @property(retain, nonatomic) EARCaesuraSilencePosteriorGenerator *earSpg; // @synthesize earSpg=_earSpg;
 @property(nonatomic) __weak id <SSRVoiceActivityDetectorDelegate> delegate; // @synthesize delegate=_delegate;

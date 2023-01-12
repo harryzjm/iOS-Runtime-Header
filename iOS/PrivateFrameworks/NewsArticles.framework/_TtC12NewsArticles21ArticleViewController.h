@@ -24,20 +24,21 @@
     MISSING_TYPE *keyCommandManager;
     MISSING_TYPE *documentSectionBlueprintProvider;
     MISSING_TYPE *hardPaywallViewController;
-    MISSING_TYPE *deferredHardPaywallViewController;
     MISSING_TYPE *footerProvider;
     MISSING_TYPE *footers;
     MISSING_TYPE *headerProvider;
     MISSING_TYPE *headers;
     MISSING_TYPE *urlHandler;
     MISSING_TYPE *paywallPreparationEventManager;
-    MISSING_TYPE *deferredHardPaywallIsVisible;
-    MISSING_TYPE *deferredHardPaywallHeightProvider;
     MISSING_TYPE *destinationViewSize;
     MISSING_TYPE *viewingSessionID;
     MISSING_TYPE *scrollDebounce;
     MISSING_TYPE *commands;
     MISSING_TYPE *coverViewManager;
+    MISSING_TYPE *keyboardInputMonitor;
+    MISSING_TYPE *didDisappearCompletions;
+    MISSING_TYPE *completedReadingDebouncer;
+    MISSING_TYPE *multiDelegate;
 }
 
 - (void).cxx_destruct;

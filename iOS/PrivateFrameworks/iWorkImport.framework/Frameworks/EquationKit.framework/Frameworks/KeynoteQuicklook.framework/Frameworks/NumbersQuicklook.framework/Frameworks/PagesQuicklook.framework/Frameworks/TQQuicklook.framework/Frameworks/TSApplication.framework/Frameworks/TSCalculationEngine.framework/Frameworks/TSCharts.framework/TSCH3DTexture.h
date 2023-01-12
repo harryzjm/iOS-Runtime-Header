@@ -12,9 +12,10 @@
 
 @interface TSCH3DTexture : NSObject <NSCopying>
 {
-    TSCH3DTextureResource *mTextureResource;
+    TSCH3DTextureResource *_textureResource;
 }
 
+- (void).cxx_destruct;
 - (void)didInitFromSOS;
 - (id)optimizedMipmapBuffer;
 - (id)representativeColorBuffer;
@@ -25,7 +26,6 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

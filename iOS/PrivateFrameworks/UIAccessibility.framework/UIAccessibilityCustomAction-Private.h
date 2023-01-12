@@ -9,11 +9,11 @@
 @class NSString;
 
 @interface UIAccessibilityCustomAction (Private)
-- (id)_image;
-- (void)_setImage:(id)arg1;
 - (id)_accessibilityAXAttributedName;
 - (_Bool)_accessibilityMatchesCustomActionIdentifier:(id)arg1;
 - (id)_accessibilityCustomActionIdentifier;
+@property(nonatomic) _Bool shouldPersistActionMenu;
+@property(nonatomic) struct CGPoint activationPoint;
 @property(nonatomic) unsigned long long sortPriority;
 @property(retain, nonatomic) NSString *localizedActionRotorCategory;
 @property(nonatomic) _Bool ignoreWhenVoiceOverTouches;

@@ -8,7 +8,7 @@
 
 #import <ContactsUI/CNContactActionsControllerDelegate-Protocol.h>
 
-@class CNContact, CNContactActionsController, NSString, UIAlertController;
+@class CNActionMenuHelper, CNContact, CNContactActionsController, NSString, UIAlertController, UIContextMenuInteraction;
 @protocol CNUIFavoritesEntryPickerDelegate;
 
 @interface CNUIFavoritesEntryPicker : NSObject <CNContactActionsControllerDelegate>
@@ -17,15 +17,21 @@
     CNContact *_contact;
     UIAlertController *_alertController;
     CNContactActionsController *_actionsController;
+    CNActionMenuHelper *_actionMenuHelper;
+    UIContextMenuInteraction *_contextMenuInteraction;
 }
 
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
+@property(retain, nonatomic) CNActionMenuHelper *actionMenuHelper; // @synthesize actionMenuHelper=_actionMenuHelper;
 @property(retain, nonatomic) CNContactActionsController *actionsController; // @synthesize actionsController=_actionsController;
 @property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(nonatomic) __weak id <CNUIFavoritesEntryPickerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)contactActionsController:(id)arg1 didUpdateWithMenu:(id)arg2;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
+- (CDUnknownBlockType)menuProviderForContextMenuInteraction:(id)arg1;
 - (id)viewController;
 - (id)initWithContact:(id)arg1;
 

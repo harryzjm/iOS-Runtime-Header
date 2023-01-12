@@ -20,5 +20,8 @@
 - (void)didCompleteWithContact:(CNContact *)arg1;
 - (void)updateEditing:(_Bool)arg1 doneButtonEnabled:(_Bool)arg2 doneButtonText:(NSString *)arg3;
 - (_Bool)shouldPerformDefaultActionForContact:(CNContact *)arg1 propertyKey:(NSString *)arg2 propertyIdentifier:(NSString *)arg3;
+
+@optional
+- (void)viewServiceDidTerminate;
 @end
 

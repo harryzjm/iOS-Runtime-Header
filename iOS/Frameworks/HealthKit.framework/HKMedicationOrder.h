@@ -8,11 +8,11 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKConcept, HKMedicalCoding, HKMedicalDate, HKMedicationOrderType, NSArray, NSLocale, NSString, NSUUID;
+@class HKConcept, HKMedicalCoding, HKMedicalCodingCollection, HKMedicalDate, HKMedicationOrderType, NSArray, NSLocale, NSString, NSUUID;
 
 @interface HKMedicationOrder <HKConceptIndexable, NSSecureCoding, NSCopying>
 {
-    NSArray *_medicationCodings;
+    HKMedicalCodingCollection *_medicationCodingCollection;
     NSString *_prescriber;
     long long _numberOfFills;
     NSArray *_dosages;
@@ -20,38 +20,45 @@
     HKMedicalDate *_writtenDate;
     HKMedicalDate *_endedDate;
     HKMedicalCoding *_statusCoding;
-    NSArray *_reasonCodings;
-    NSArray *_reasonEndedCodings;
+    NSArray *_reasonCodingCollections;
+    HKMedicalCodingCollection *_reasonEndedCodingCollection;
+    HKMedicalCodingCollection *_statusReasonCodingCollection;
     HKConcept *_medication;
     HKConcept *_status;
-    HKConcept *_reason;
+    NSArray *_reason;
     HKConcept *_reasonEnded;
+    HKConcept *_statusReason;
 }
 
 + (_Bool)_isConcreteObjectClass;
 + (_Bool)supportsEquivalence;
 + (_Bool)supportsSecureCoding;
-+ (id)_newMedicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 prescriber:(id)arg14 numberOfFills:(long long)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 writtenDate:(id)arg18 endedDate:(id)arg19 statusCoding:(id)arg20 reasonCodings:(id)arg21 reasonEndedCodings:(id)arg22 config:(CDUnknownBlockType)arg23;
-+ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodings:(id)arg13 prescriber:(id)arg14 numberOfFills:(long long)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 writtenDate:(id)arg18 endedDate:(id)arg19 statusCoding:(id)arg20 reasonCodings:(id)arg21 reasonEndedCodings:(id)arg22;
++ (id)_newMedicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodingCollection:(id)arg13 prescriber:(id)arg14 numberOfFills:(long long)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 writtenDate:(id)arg18 endedDate:(id)arg19 statusCoding:(id)arg20 reasonCodingCollections:(id)arg21 reasonEndedCodingCollection:(id)arg22 statusReasonCodingCollection:(id)arg23 config:(CDUnknownBlockType)arg24;
++ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 medicationCodingCollection:(id)arg13 prescriber:(id)arg14 numberOfFills:(long long)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 writtenDate:(id)arg18 endedDate:(id)arg19 statusCoding:(id)arg20 reasonCodingCollections:(id)arg21 reasonEndedCodingCollection:(id)arg22 statusReasonCodingCollection:(id)arg23;
++ (_Bool)groupsByUserDomainConcept;
 + (id)defaultDisplayString;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)indexableConceptKeyPaths;
-+ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodings:(id)arg12 prescriber:(id)arg13 numberOfFills:(long long)arg14 dosages:(id)arg15 earliestDosageDate:(id)arg16 writtenDate:(id)arg17 endedDate:(id)arg18 statusCoding:(id)arg19 reasonCodings:(id)arg20 reasonEndedCodings:(id)arg21;
++ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 medicationCodingCollection:(id)arg12 prescriber:(id)arg13 numberOfFills:(long long)arg14 dosages:(id)arg15 earliestDosageDate:(id)arg16 writtenDate:(id)arg17 endedDate:(id)arg18 statusCoding:(id)arg19 reasonCodingCollections:(id)arg20 reasonEndedCodingCollection:(id)arg21 statusReasonCodingCollection:(id)arg22;
 - (void).cxx_destruct;
 @property(readonly, copy) HKMedicationOrderType *medicationOrderType;
 - (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
+- (void)_setStatusReason:(id)arg1;
+@property(readonly, copy) HKConcept *statusReason;
 - (void)_setReasonEnded:(id)arg1;
 @property(readonly, copy) HKConcept *reasonEnded;
 - (void)_setReason:(id)arg1;
-@property(readonly, copy) HKConcept *reason;
+@property(readonly, copy) NSArray *reason;
 - (void)_setStatus:(id)arg1;
 @property(readonly, copy) HKConcept *status;
 - (void)_setMedication:(id)arg1;
 @property(readonly, copy) HKConcept *medication;
-- (void)_setReasonEndedCodings:(id)arg1;
-@property(readonly, copy) NSArray *reasonEndedCodings;
-- (void)_setReasonCodings:(id)arg1;
-@property(readonly, copy) NSArray *reasonCodings;
+- (void)_setStatusReasonCodingCollection:(id)arg1;
+@property(readonly, copy) HKMedicalCodingCollection *statusReasonCodingCollection;
+- (void)_setReasonEndedCodingCollection:(id)arg1;
+@property(readonly, copy) HKMedicalCodingCollection *reasonEndedCodingCollection;
+- (void)_setReasonCodingCollections:(id)arg1;
+@property(readonly, copy) NSArray *reasonCodingCollections;
 - (void)_setStatusCoding:(id)arg1;
 @property(readonly, copy) HKMedicalCoding *statusCoding;
 - (void)_setEndedDate:(id)arg1;
@@ -66,12 +73,9 @@
 @property(readonly) long long numberOfFills;
 - (void)_setPrescriber:(id)arg1;
 @property(readonly, copy) NSString *prescriber;
-- (void)_setMedicationCodings:(id)arg1;
-@property(readonly, copy) NSArray *medicationCodings;
-- (id)reasonEndedCodingsCollection;
-- (id)reasonCodingsCollection;
+- (void)_setMedicationCodingCollection:(id)arg1;
+@property(readonly, copy) HKMedicalCodingCollection *medicationCodingCollection;
 - (id)statusCodingCollection;
-- (id)medicationCodingsCollection;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEquivalent:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -79,6 +83,7 @@
 @property(readonly, copy) NSString *description;
 - (id)init;
 - (id)medicalRecordCodings;
+@property(readonly, nonatomic) long long recordCategoryType;
 - (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 

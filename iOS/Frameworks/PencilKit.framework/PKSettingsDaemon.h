@@ -10,6 +10,7 @@
 {
 }
 
++ (void)setCurrentScribbleLanguageIdentifiers:(id)arg1;
 + (void)openPencilPreferences;
 + (void)setPrefersPencilOnlyDrawing:(_Bool)arg1;
 + (id)daemonQueue;

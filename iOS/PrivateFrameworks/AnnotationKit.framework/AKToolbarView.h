@@ -10,15 +10,17 @@
 #import <AnnotationKit/AKSignatureCreationControllerDelegate-Protocol.h>
 #import <AnnotationKit/AKSignaturesViewControllerDelegate-Protocol.h>
 #import <AnnotationKit/AKToolsListViewControllerDelegate-Protocol.h>
+#import <AnnotationKit/AXSSImageDescriptionViewControllerDelegate-Protocol.h>
 #import <AnnotationKit/PKPaletteViewAnnotationDelegate-Protocol.h>
 #import <AnnotationKit/PKPaletteViewPrivateDelegate-Protocol.h>
 #import <AnnotationKit/PKToolPickerObserverPrivate-Protocol.h>
+#import <AnnotationKit/PKToolPickerPrivateDelegate-Protocol.h>
 #import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AKAttributePickerViewController, AKAttributesPickerButton, AKController, AKSignatureCreationViewController_iOS, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKToolbarBackgroundView, AKToolsListViewController, NSLayoutConstraint, NSString, PKToolPicker, UIAlertController, UIBarButtonItem, UIToolbar;
+@class AKAttributePickerViewController, AKAttributesPickerButton, AKController, AKSignatureCreationViewController_iOS, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKToolbarBackgroundView, AKToolsListViewController, AXSSImageDescriptionViewController, NSLayoutConstraint, NSString, PKToolPicker, UIAlertController, UIBarButtonItem, UIToolbar;
 @protocol AKToolbarViewOpacityEditingDelegate;
 
-@interface AKToolbarView : UIView <AKToolsListViewControllerDelegate, AKAttributePickerViewControllerDelegate, AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate, PKPaletteViewAnnotationDelegate, PKPaletteViewPrivateDelegate, PKToolPickerObserverPrivate>
+@interface AKToolbarView : UIView <AXSSImageDescriptionViewControllerDelegate, AKToolsListViewControllerDelegate, AKAttributePickerViewControllerDelegate, AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate, PKPaletteViewPrivateDelegate, PKToolPickerObserverPrivate, PKToolPickerPrivateDelegate, PKPaletteViewAnnotationDelegate>
 {
     UIToolbar *_toolbar;
     AKToolbarBackgroundView *_backgroundView;
@@ -46,6 +48,7 @@
     NSLayoutConstraint *_attributesPickerButtonWidthConstraint;
     NSLayoutConstraint *_attributesPickerButtonHeigthConstraint;
     _Bool _supportsOpacityEditing;
+    AXSSImageDescriptionViewController *_imageDescriptionViewController;
     _Bool _undoRedoButtonsHidden;
     _Bool _alwaysShowUndoButton;
     _Bool _shareButtonHidden;
@@ -76,17 +79,16 @@
 - (void)setShadowImage:(id)arg1 forToolbarPosition:(long long)arg2;
 - (void)setBackgroundImage:(id)arg1 forToolbarPosition:(long long)arg2 barMetrics:(long long)arg3;
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_toolPickerDidChangePosition:(id)arg1;
 - (void)_toolPicker:(id)arg1 didChangeColor:(id)arg2;
+- (void)toolPickerIsRulerActiveDidChange:(id)arg1;
+- (void)toolPickerSelectedToolDidChange:(id)arg1;
 - (void)toolPickerVisibilityDidChange:(id)arg1;
-- (long long)tagForPKPaletteAnnotationType:(long long)arg1;
+- (_Bool)_toolPicker:(id)arg1 shouldChangeSelectedToolColor:(id)arg2;
+- (id)_toolPickerUndoManager:(id)arg1;
 - (void)paletteViewDidSelectPlusButton:(id)arg1;
 - (id)paletteViewSelectedAnnotationColor:(id)arg1;
-- (void)paletteViewDidChangePosition:(id)arg1;
-- (void)paletteViewDidToggleRuler:(id)arg1;
 - (void)setInk:(id)arg1;
-- (void)paletteViewSelectedToolInkDidChange:(id)arg1;
-- (id)paletteViewUndoManager:(id)arg1;
-- (_Bool)paletteView:(id)arg1 shouldSetSelectedToolColor:(id)arg2;
 - (_Bool)_hasSelectedAnnotations;
 @property(nonatomic) _Bool supportsOpacityEditing;
 - (void)attributePicker:(id)arg1 didSelectToolWithTag:(long long)arg2 attributeTag:(long long)arg3;
@@ -155,8 +157,8 @@
 - (unsigned long long)layoutForSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)_updateToolPickerResponderVisibilityWithCurrentOverlays;
-- (void)updateToolPickerResponderVisibilityWithCurrentOverlays;
+- (void)_setCurrentOverlaysToolPickerVisible:(_Bool)arg1;
+- (void)updateCurrentOverlaysToolPickerVisibility;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_updatePalette;
@@ -171,6 +173,7 @@
 - (void)_forceToolPickerVisibleForViewStateChange:(_Bool)arg1;
 - (_Bool)setToolPickerVisible:(_Bool)arg1 forFirstResponder:(id)arg2;
 - (void)_setupPaletteViewIfNecessary;
+- (id)_toolPickerPopoverConfiguration;
 - (id)_paletteView;
 - (void)hideModernToolbarView;
 - (void)_textEffectsWindowIsHosted:(id)arg1;
@@ -179,6 +182,12 @@
 @property(readonly, nonatomic) _Bool useNewFullscreenPalette;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)_dismissImageDescriptionViewController;
+- (void)_presentImageDescriptionViewController;
+- (void)_askAnnotationControllerDelegateToEnterFullScreen:(_Bool)arg1;
+- (void)imageDescriptionViewControllerDidDismiss:(id)arg1;
+- (void)imageDescriptionViewControllerDidSave:(id)arg1;
+- (void)imageDescriptionViewControllerDidCancel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

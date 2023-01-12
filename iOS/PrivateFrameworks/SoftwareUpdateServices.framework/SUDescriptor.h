@@ -48,12 +48,20 @@
     unsigned long long _mdmDelayInterval;
     NSString *_assetID;
     _Bool _hideInstallAlert;
+    unsigned long long _audienceType;
+    unsigned long long _preferenceType;
+    unsigned long long _upgradeType;
+    _Bool _promoteAlternateUpdate;
     _Bool _downloadableOverCellular;
     _Bool _streamingZipCapable;
     NSString *_criticalDownloadPolicy;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool promoteAlternateUpdate; // @synthesize promoteAlternateUpdate=_promoteAlternateUpdate;
+@property(nonatomic) unsigned long long upgradeType; // @synthesize upgradeType=_upgradeType;
+@property(nonatomic) unsigned long long preferenceType; // @synthesize preferenceType=_preferenceType;
+@property(nonatomic) unsigned long long audienceType; // @synthesize audienceType=_audienceType;
 @property(nonatomic) _Bool hideInstallAlert; // @synthesize hideInstallAlert=_hideInstallAlert;
 @property(retain, nonatomic) NSString *assetID; // @synthesize assetID=_assetID;
 @property(nonatomic) unsigned long long mdmDelayInterval; // @synthesize mdmDelayInterval=_mdmDelayInterval;

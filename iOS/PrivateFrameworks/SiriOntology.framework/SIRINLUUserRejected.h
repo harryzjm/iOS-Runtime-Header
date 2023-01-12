@@ -8,14 +8,22 @@
 
 #import <SiriOntology/SIRINLUUserDialogAct-Protocol.h>
 
+@class NSUUID, USOSerializedGraph;
+
 @interface SIRINLUUserRejected : NSObject <SIRINLUUserDialogAct>
 {
+    NSUUID *_offerId;
+    USOSerializedGraph *_reference;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) USOSerializedGraph *reference; // @synthesize reference=_reference;
+@property(retain, nonatomic) NSUUID *offerId; // @synthesize offerId=_offerId;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithOfferId:(id)arg1 reference:(id)arg2;
 - (id)init;
 
 @end

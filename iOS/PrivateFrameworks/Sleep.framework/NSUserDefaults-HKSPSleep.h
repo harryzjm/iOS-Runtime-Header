@@ -22,6 +22,22 @@
 - (_Bool)hksp_lockScreenBlockHomeGesture;
 - (void)hksp_setLockScreenUnlockToHome:(_Bool)arg1;
 - (_Bool)hksp_lockScreenUnlockToHome;
+- (void)hksp_synchronizeKeys:(id)arg1;
+- (void)hksp_synchronize;
+- (void)hksp_removeObjectsForKeys:(id)arg1;
+- (void)hksp_saveDictionary:(id)arg1;
+- (id)hksp_dictionaryRepresentationForKeys:(id)arg1;
+- (id)hksp_dictionaryRepresentation;
+- (id)hksp_dataForKey:(id)arg1;
+- (void)hksp_setInteger:(long long)arg1 forKey:(id)arg2;
+- (long long)hksp_integerForKey:(id)arg1;
+- (void)hksp_setFloat:(float)arg1 forKey:(id)arg2;
+- (float)hksp_floatForKey:(id)arg1;
+- (void)hksp_setBool:(_Bool)arg1 forKey:(id)arg2;
+- (_Bool)hksp_boolForKey:(id)arg1;
+- (void)hksp_removeObjectForKey:(id)arg1;
+- (void)hksp_setObject:(id)arg1 forKey:(id)arg2;
+- (id)hksp_objectForKey:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

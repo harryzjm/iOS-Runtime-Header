@@ -16,7 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak PGGraphNamingProcessor *processor; // @synthesize processor=_processor;
 - (unsigned long long)sexMatchBetweenPersonBiologicalSex:(unsigned long long)arg1 andContactBiologicalSex:(unsigned long long)arg2;
 - (void)runAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)initWithNamingProcessor:(id)arg1;

@@ -8,16 +8,17 @@
 
 @interface OBTrayButton : UIButton
 {
+    double _lastTitleLabelHeight;
 }
 
 + (double)standardHeight;
 + (id)buttonWithType:(long long)arg1;
+@property(nonatomic) double lastTitleLabelHeight; // @synthesize lastTitleLabelHeight=_lastTitleLabelHeight;
 - (id)_buttonFont;
 - (id)_fontTextStyle;
-- (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
-- (void)layoutSubviews;
-- (struct CGSize)intrinsicContentSize;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;
+- (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 
 @end
 

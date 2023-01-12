@@ -16,25 +16,24 @@
 {
     _Bool _enabled;
     NSUUID *_identifier;
-    UIImage *_image;
     NSString *_title;
     CDUnknownBlockType _handler;
-    CPImageSet *_imageSet;
     id <CPControlDelegate> _delegate;
+    CPImageSet *_imageSet;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <CPControlDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
+@property(nonatomic) __weak id <CPControlDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property(readonly, copy, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)handlePressesEnd;
 - (void)handlePressesStart;
 - (void)handlePrimaryAction;
+@property(readonly, copy, nonatomic) UIImage *image;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

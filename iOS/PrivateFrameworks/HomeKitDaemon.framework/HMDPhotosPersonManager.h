@@ -19,10 +19,8 @@
 - (void).cxx_destruct;
 @property __weak HMDUser *user; // @synthesize user=_user;
 @property(readonly, copy) HMPhotosPersonManagerSettings *dataUnavailableExternalSettings; // @synthesize dataUnavailableExternalSettings=_dataUnavailableExternalSettings;
-- (id)updateSettingsUsingMessagePayload:(id)arg1;
 - (_Bool)zoneManager:(id)arg1 shouldRequestShareInvitationFromUser:(id)arg2;
 - (_Bool)manager:(id)arg1 shouldShareWithUser:(id)arg2;
-- (id)logIdentifier;
 - (void)handleUpdatedSettings:(id)arg1;
 @property(readonly, copy) HMPhotosPersonManagerSettings *settings;
 @property(readonly) HMIExternalPersonManager *hmiPersonManager;

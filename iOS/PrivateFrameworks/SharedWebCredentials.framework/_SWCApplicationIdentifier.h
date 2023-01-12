@@ -33,6 +33,7 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)UUIDRepresentation;
 - (_Bool)isEqualToApplicationIdentifierIgnoringPrefix:(id)arg1;
 @property(readonly, getter=isValid) _Bool valid;
 @property(readonly) NSString *rawValue;

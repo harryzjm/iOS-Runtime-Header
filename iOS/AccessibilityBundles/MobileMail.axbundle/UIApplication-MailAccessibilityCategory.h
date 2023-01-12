@@ -7,6 +7,8 @@
 #import <UIKit/UIApplication.h>
 
 @interface UIApplication (MailAccessibilityCategory)
++ (void)_accessibilityPerformValidations:(id)arg1;
+- (_Bool)_accessibilityApplicationIsModal;
 - (id)_accessibilityFilenameForAttachmentCID:(id)arg1;
 - (id)accessibilityLabel;
 @end

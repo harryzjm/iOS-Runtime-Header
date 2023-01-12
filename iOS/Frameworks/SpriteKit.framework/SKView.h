@@ -14,7 +14,7 @@
     struct SKCStats _currentStats;
     struct SKCStats _nextStats;
     struct SKCStats _frameStats;
-    struct SKCRenderer *_renderer;
+    void *_renderer;
     MISSING_TYPE *_viewScale;
     MISSING_TYPE *_viewTranslation;
     shared_ptr_2ce53ef7 _framebuffer;
@@ -59,7 +59,7 @@
     double _prevVsyncRenderTime;
     double _prevRenderTime;
     NSObject<SKViewDelegate> *_delegate;
-    struct SKCRenderer *__layerBackedRenderer;
+    void *__layerBackedRenderer;
     NSMutableDictionary *__info;
     double _physicsDebugStrokeWidth;
     struct CGSize _pixelSize;
@@ -76,7 +76,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) double physicsDebugStrokeWidth; // @synthesize physicsDebugStrokeWidth=_physicsDebugStrokeWidth;
 @property(retain, nonatomic) NSMutableDictionary *_info; // @synthesize _info=__info;
-@property struct SKCRenderer *_layerBackedRenderer; // @synthesize _layerBackedRenderer=__layerBackedRenderer;
+@property void *_layerBackedRenderer; // @synthesize _layerBackedRenderer=__layerBackedRenderer;
 @property(readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
 @property(nonatomic) __weak NSObject<SKViewDelegate> *delegate; // @synthesize delegate=_delegate;
 - (long long)_preferredFocusMovementStyle;
@@ -103,9 +103,9 @@
 - (void)willRenderContent;
 - (CDStruct_14d5dc5e)getViewTransform;
 - (MISSING_TYPE *)getViewport;
-- (struct SKCNode *)getRootNode;
+- (void *)getRootNode;
 - (shared_ptr_2ce53ef7)nextFramebuffer;
-- (struct SKCRenderer *)chooseViewRenderer;
+- (void *)chooseViewRenderer;
 - (id)textureFromNode:(id)arg1 crop:(struct CGRect)arg2;
 - (void)_setUpdateQueue:(id)arg1;
 - (void)renderToIOSurfaceID:(unsigned int)arg1 withScaleFactor:(double)arg2;

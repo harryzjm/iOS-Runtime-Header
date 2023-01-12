@@ -16,24 +16,26 @@
     _Bool _gridControllerEditing;
     PXProgrammaticNavigationDestination *_px_navigationDestination;
     PXPlacesMapFetchResultViewController *_fetchResultViewController;
-    UIViewController *_currentViewController;
+    unsigned long long _previousNavigationBarSegmentedControlSelectedIndex;
     UISegmentedControl *_subviewControl;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool gridControllerEditing; // @synthesize gridControllerEditing=_gridControllerEditing;
 @property(retain, nonatomic) UISegmentedControl *subviewControl; // @synthesize subviewControl=_subviewControl;
-@property(retain, nonatomic) UIViewController *currentViewController; // @synthesize currentViewController=_currentViewController;
+@property(nonatomic) unsigned long long previousNavigationBarSegmentedControlSelectedIndex; // @synthesize previousNavigationBarSegmentedControlSelectedIndex=_previousNavigationBarSegmentedControlSelectedIndex;
 @property(readonly, nonatomic) PXPlacesMapFetchResultViewController *fetchResultViewController; // @synthesize fetchResultViewController=_fetchResultViewController;
 - (id)px_navigationDestination;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)routingOptionsForDestination:(id)arg1;
-- (void)setBarButtonItems:(id)arg1;
+- (void)setToolbarButtons:(id)arg1;
+- (void)setNavigationBarButtons:(id)arg1;
 - (void)_resetNavigationItem;
 - (void)viewControllerDidUpdateNavigationItemAppearance:(id)arg1;
 - (void)viewController:(id)arg1 didUpdateBarsAnimated:(_Bool)arg2 isSelecting:(_Bool)arg3;
+- (void)_updateShouldOptOutFromChromelessBars;
+- (_Bool)pu_shouldOptOutFromChromelessBars;
 - (void)subviewControlChanged:(id)arg1;
-- (void)_switchChildViewControllerFrom:(id)arg1 to:(id)arg2;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)init;

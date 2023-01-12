@@ -9,23 +9,11 @@
 @interface EQKitEnvironmentInstance
 {
     NSDictionary *mConfig;
-    struct Dictionary *mOperatorDictionary;
-    struct Manager {
-        CDUnknownFunctionPointerType *;
-        struct Collection *;
-        struct EQKitCacheLRUCounter;
-    } *mFontManager;
-    struct Manager {
-        struct EQKitCache<EQKit::OpticalKern::Glyph::Key, std::__1::shared_ptr<EQKit::OpticalKern::Edge::Path>, std::__1::shared_ptr<const EQKit::OpticalKern::Edge::Path>> *;
-        struct EQKitCacheLRUCounter;
-        _Bool;
-        struct QuantizationConfig;
-    } *mKerningManager;
-    Config_5da22101 *mLayoutConfig;
-    struct Config {
-        struct set<wchar_t, std::__1::less<wchar_t>, std::__1::allocator<wchar_t>>;
-        struct set<wchar_t, std::__1::less<wchar_t>, std::__1::allocator<wchar_t>>;
-    } *mBlahtexConfig;
+    void *mOperatorDictionary;
+    struct Manager *mFontManager;
+    void *mKerningManager;
+    struct Config *mLayoutConfig;
+    void *mBlahtexConfig;
 }
 
 + (id)dataForEnvironment:(id)arg1;
@@ -35,11 +23,11 @@
 @property(nonatomic) _Bool kerning;
 - (void)endLayout;
 - (void)beginLayout;
-- (const Config_13bb8062 *)blahtexConfig;
-- (const Config_5da22101 *)layoutConfig;
-- (const Manager_36464627 *)kerningManager;
-- (const Manager_e51557f8 *)fontManager;
-- (const struct Dictionary *)operatorDictionary;
+- (const void *)blahtexConfig;
+- (const struct Config *)layoutConfig;
+- (const void *)kerningManager;
+- (const struct Manager *)fontManager;
+- (const void *)operatorDictionary;
 - (id)newDictionaryForArchiving;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;

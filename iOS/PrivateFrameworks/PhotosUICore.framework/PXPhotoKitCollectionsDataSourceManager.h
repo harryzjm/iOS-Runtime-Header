@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXCollectionFetchOperationDelegate-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSObject, NSOperationQueue, NSString, PHCollectionList, PHFetchResult, PHPhotoLibrary, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManagerConfiguration;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSOperationQueue, NSString, PHCollectionList, PHFetchResult, PHPhotoLibrary, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManagerConfiguration;
 @protocol OS_os_log;
 
-@interface PXPhotoKitCollectionsDataSourceManager <PXCollectionFetchOperationDelegate, PXPhotoLibraryUIChangeObserver>
+@interface PXPhotoKitCollectionsDataSourceManager <PXCollectionFetchOperationDelegate, PXChangeObserver, PXPhotoLibraryUIChangeObserver>
 {
     PHCollectionList *_collectionList;
     PHFetchResult *_collectionsFetchResult;
@@ -26,7 +27,13 @@
     _Bool _publishChangesScheduledOnRunLoop;
     NSMutableSet *_pendingChangedCollections;
     NSMutableSet *_changedSubCollections;
+    _Bool _simulateNonIncrementalChanges;
+    NSMutableSet *_changeProcessingPausedReasons;
+    _Bool _changesOccurredWhilePaused;
+    NSMutableArray *_changesDetailsWhilePaused;
+    long long _pausedChangeDetailsBufferLength;
     _Bool _isPhotoLibraryEmpty;
+    _Bool _isChangeProcessingPaused;
     NSMutableDictionary *__subCollectionActiveCountFetchOperations;
     NSMutableDictionary *__subCollectionActiveKeyAssetsFetchOperations;
     NSArray *__collectionListBySection;
@@ -41,6 +48,7 @@
 @property(readonly, nonatomic) PXPhotoKitCollectionsDataSourceManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) PHFetchResult *collectionsFetchResult; // @synthesize collectionsFetchResult=_collectionsFetchResult;
 @property(readonly, nonatomic) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
+@property(nonatomic) _Bool isChangeProcessingPaused; // @synthesize isChangeProcessingPaused=_isChangeProcessingPaused;
 @property(retain, nonatomic) NSArray *_virtualCollections; // @synthesize _virtualCollections=__virtualCollections;
 @property(retain, nonatomic, setter=_setCollectionsFetchResultBySection:) NSArray *_collectionsFetchResultBySection; // @synthesize _collectionsFetchResultBySection=__collectionsFetchResultBySection;
 @property(retain, nonatomic, setter=_setCollectionListBySection:) NSArray *_collectionListBySection; // @synthesize _collectionListBySection=__collectionListBySection;
@@ -62,6 +70,7 @@
 - (_Bool)_needsKeyAssetsFetchResultForCollection:(id)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)_subitemChangeDetailsByItemBySection;
 - (id)_changedSubCollectionIndexesBySections;
 - (_Bool)_updateCachedSubCollectionFetchResultsForChange:(id)arg1 fetchResultChangeDetails:(id)arg2;
@@ -85,6 +94,7 @@
 - (void)_enqueueFetchKeyAssetsOperationForCollection:(id)arg1;
 - (void)_updateVisibleCountsForCollection:(id)arg1 withWithFetchResult:(id)arg2;
 - (void)_enqueueFetchCountsOperationForCollection:(id)arg1;
+- (_Bool)isBackgroundFetching;
 - (void)pauseBackgroundFetching;
 - (void)startBackgroundFetchingIfNeeded;
 - (void)_prepareBackgroundFetchingIfNeededForCollection:(id)arg1;
@@ -105,6 +115,8 @@
 - (id)createInitialDataSource;
 - (void)_updateFilteredCollectionsFetchResults;
 - (id)_newDataSource;
+- (void)setDataSource:(id)arg1 changeDetailsArray:(id)arg2;
+- (void)setChangeProcessingPaused:(_Bool)arg1 forReason:(id)arg2;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
 - (id)displayableAssetsForCollectionList:(id)arg1 maximumCount:(long long)arg2 useCache:(_Bool)arg3 correspondingCollections:(out id *)arg4;

@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIButton, UILabel, UIVisualEffectView, _SFBarTheme;
+@class NSString, SFThemeColorEffectView, UIButton, UILabel, UIVisualEffectView, _SFBarTheme;
 
 @interface _SFCrashBanner : UIView
 {
-    UIVisualEffectView *_backdrop;
+    SFThemeColorEffectView *_backdrop;
     UIVisualEffectView *_contentEffectView;
     UIView *_separator;
     UILabel *_label;
@@ -31,10 +31,11 @@
 - (void)setBannerText:(id)arg1 manuallyWrappedBannerText:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (void)_layoutCloseButton;
 - (struct CGSize)_labelLayoutSizeForWidth:(double)arg1;
 - (_Bool)_shouldUseManuallyWrappedCrashMessageForWidth:(double)arg1;
 @property(copy, nonatomic) NSString *backdropGroupName;
+- (void)setTheme:(id)arg1 animated:(_Bool)arg2;
+- (id)_bannerTheme;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

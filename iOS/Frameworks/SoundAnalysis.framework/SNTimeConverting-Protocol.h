@@ -8,6 +8,6 @@
 
 @protocol SNTimeConverting <NSObject>
 @property(readonly, nonatomic) double clientSampleRate;
-- (long long)clientSampleTimeFromSampleTime:(long long)arg1 fromBox:(struct Box *)arg2;
+- (long long)clientSampleTimeFromSampleTime:(long long)arg1 fromBox:(void *)arg2;
 @end
 

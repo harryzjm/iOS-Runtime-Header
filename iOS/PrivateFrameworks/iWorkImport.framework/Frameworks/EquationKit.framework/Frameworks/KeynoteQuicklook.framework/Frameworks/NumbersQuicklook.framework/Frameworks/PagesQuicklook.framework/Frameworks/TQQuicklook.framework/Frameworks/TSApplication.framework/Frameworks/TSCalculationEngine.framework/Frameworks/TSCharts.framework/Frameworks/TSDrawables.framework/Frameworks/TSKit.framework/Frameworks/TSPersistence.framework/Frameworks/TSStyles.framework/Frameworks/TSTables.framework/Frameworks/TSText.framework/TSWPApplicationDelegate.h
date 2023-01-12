@@ -14,6 +14,7 @@
 - (id)stringForEquationChoiceBody;
 - (id)stringForEquationChoiceTitle;
 @property(readonly, nonatomic) _Bool showChineseNamedPointSizes;
+- (id)defaultHyperlinkURL;
 - (_Bool)isValidURLForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(_Bool)arg3;
 
 @end

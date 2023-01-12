@@ -8,7 +8,7 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NFUnfairLock, NSArray, NSDictionary, NSMutableDictionary, NSString;
 
 @interface FCPaidBundleConfiguration : NSObject <NSCopying>
 {
@@ -16,9 +16,10 @@
     NSString *_storefrontID;
     NSString *_localizedStorefrontID;
     NSArray *_defaultSupportedStoreFronts;
-    NSDictionary *_keyedPaywallConfigurationsByType;
-    NSDictionary *_keyedSubscriptionButtonConfigurationsByType;
+    NSMutableDictionary *_keyedPaywallConfigurationsByType;
+    NSMutableDictionary *_keyedSubscriptionButtonConfigurationsByType;
     NSDictionary *_magazineGenresByGenre;
+    NFUnfairLock *_lock;
 }
 
 + (id)defaultPaidFeedIDByLocalizedStorefrontID;
@@ -32,9 +33,10 @@
 + (id)renewalLandingPageByLocalizedStorefrontID;
 + (id)defaultConfigurationForStorefrontID:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NFUnfairLock *lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) NSDictionary *magazineGenresByGenre; // @synthesize magazineGenresByGenre=_magazineGenresByGenre;
-@property(retain, nonatomic) NSDictionary *keyedSubscriptionButtonConfigurationsByType; // @synthesize keyedSubscriptionButtonConfigurationsByType=_keyedSubscriptionButtonConfigurationsByType;
-@property(retain, nonatomic) NSDictionary *keyedPaywallConfigurationsByType; // @synthesize keyedPaywallConfigurationsByType=_keyedPaywallConfigurationsByType;
+@property(retain, nonatomic) NSMutableDictionary *keyedSubscriptionButtonConfigurationsByType; // @synthesize keyedSubscriptionButtonConfigurationsByType=_keyedSubscriptionButtonConfigurationsByType;
+@property(retain, nonatomic) NSMutableDictionary *keyedPaywallConfigurationsByType; // @synthesize keyedPaywallConfigurationsByType=_keyedPaywallConfigurationsByType;
 @property(readonly, copy, nonatomic) NSArray *defaultSupportedStoreFronts; // @synthesize defaultSupportedStoreFronts=_defaultSupportedStoreFronts;
 @property(readonly, copy, nonatomic) NSString *localizedStorefrontID; // @synthesize localizedStorefrontID=_localizedStorefrontID;
 @property(readonly, copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
@@ -44,6 +46,7 @@
 - (id)defaultSubscriptionButtonConfigs;
 - (id)defaultAudioPaywallConfigs;
 - (id)defaultPaywallConfigs;
+@property(readonly, nonatomic) NSString *audioArticlesChannelId;
 @property(readonly, nonatomic) NSArray *audioChannelPaywallOverrideAllowedTagIDs;
 @property(readonly, nonatomic) NSArray *audioFeedPaywallPositions;
 @property(readonly, nonatomic) long long audioCloseIdlePlayerAfterTime;
@@ -60,17 +63,21 @@
 @property(readonly, nonatomic) long long audioOfflineArticlesMaxCountCriticalStorage;
 @property(readonly, nonatomic) long long audioOfflineArticlesMaxCountLowStorage;
 @property(readonly, nonatomic) long long audioOfflineArticlesMaxCountNormalStorage;
+@property(readonly, nonatomic) long long audioSuggestionsMaxIgnoreCount;
 @property(readonly, nonatomic) long long audioSuggestionsRecycleAfterTime;
 @property(readonly, nonatomic) long long audioSuggestionsMaxAge;
 @property(readonly, nonatomic) long long audioSuggestionsMaxCount;
 @property(readonly, nonatomic, getter=isNarrativeAudioEnabled) _Bool narrativeAudioEnabled;
 @property(readonly, nonatomic) long long appLaunchUpsellNewSessionBackgroundTimeInterval;
+@property(readonly, nonatomic) long long appLaunchUpsellQuiescenceInterval;
 @property(readonly, nonatomic) long long appLaunchUpsellRequiredAppLaunchCount;
 @property(readonly, nonatomic) NSString *appLaunchUpsellArticleID;
 @property(readonly, nonatomic) NSString *appLaunchUpsellInstanceID;
+@property(readonly, nonatomic) unsigned long long appLaunchUpsellBundleTrialVisibility;
 @property(readonly, nonatomic) unsigned long long appLaunchUpsellPaidVisibility;
 @property(readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsRegular;
 @property(readonly, nonatomic) long long minFollowedMagazinesToHideSuggestionsCompact;
+@property(readonly, nonatomic) long long maximumArticlesWithSoftPaywallPerSession;
 @property(readonly, nonatomic) long long minimumArticlesBeforeArticleSoftPaywall;
 @property(readonly, nonatomic) long long minimumPagesInPDFIssueBeforeRead;
 @property(readonly, nonatomic) long long minimumArticlesInANFIssueBeforeRead;
@@ -110,6 +117,8 @@
 @property(readonly, nonatomic) NSArray *offeredBundlePurchaseIDs;
 @property(readonly, nonatomic) NSArray *restorableBundlePurchaseIDs;
 @property(readonly, nonatomic) NSString *renewalLandingPageArticleID;
+@property(readonly, nonatomic) NSString *endOfPurchaseServicesBundleNoFamilySharingSetupArticleID;
+@property(readonly, nonatomic) NSString *endOfPurchaseServicesBundleFamilySharingSetupArticleID;
 @property(readonly, nonatomic) NSString *endOfPurchaseNoFamilySharingSetupArticleID;
 @property(readonly, nonatomic) NSString *endOfPurchaseFamilySharingSetupArticleID;
 @property(readonly, nonatomic) NSString *familySharingLandingPageArticleID;
@@ -121,7 +130,6 @@
 @property(readonly, nonatomic, getter=isTemporaryAccessEnabled) _Bool temporaryAccessEnabled;
 @property(readonly, nonatomic, getter=isPaidBundleVisible) _Bool paidBundleVisible;
 @property(readonly, nonatomic, getter=areMagazinesEnabled) _Bool magazinesEnabled;
-@property(readonly, nonatomic) long long deferredHardPaywallMinimumBodyTextLength;
 @property(readonly, nonatomic) unsigned long long magazineFeedPaywallSubtype;
 @property(readonly, nonatomic) unsigned long long audioFeedPaywallSubtype;
 @property(readonly, nonatomic) unsigned long long articleHardPaywallType;
@@ -134,8 +142,10 @@
 @property(readonly, nonatomic) double maxPriceDeltaThreshold;
 @property(readonly, nonatomic) unsigned long long subscriptionLinkTargetType;
 @property(readonly, nonatomic) unsigned long long paywallConfigsOfferType;
+@property(readonly, nonatomic) NSDictionary *flexiblePaywallConfig;
 - (id)subscriptionButtonConfigurationsByTypeForKey:(id)arg1;
 - (id)paywallConfigurationsByTypeForKey:(id)arg1;
+- (_Bool)arePaywallConfigsEqualToOtherPaidBundleConfig:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

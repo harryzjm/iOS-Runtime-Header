@@ -27,7 +27,6 @@
 - (void)processDidEnterForeground:(id)arg1;
 - (void)processDidEnterBackground:(id)arg1;
 - (void)workoutManagerDidChangeState:(id)arg1;
-- (void)_componentStateDidChange;
 - (id)currentObserverState;
 - (void)invalidate;
 - (void)dealloc;

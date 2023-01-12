@@ -28,8 +28,8 @@
 - (id)loadNowOrCallLater:(CDUnknownBlockType)arg1;
 - (_Bool)_tryToOpen;
 - (void)dealloc;
-- (id)init;
-- (id)initWithPath:(id)arg1 environment:(id)arg2;
+- (id)initWithLocationParameters:(id)arg1;
+- (id)initWithPath:(id)arg1 environment:(id)arg2 locationParameters:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

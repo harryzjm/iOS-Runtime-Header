@@ -8,6 +8,6 @@
 
 @protocol HKSPServer
 - (void)checkInWithSyncAnchor:(id <HKSPSyncAnchor>)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)connectWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)connectWithCompletion:(void (^)(id <HKSPSyncAnchor>, NSError *))arg1;
 @end
 

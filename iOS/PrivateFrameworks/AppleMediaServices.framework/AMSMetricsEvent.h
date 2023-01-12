@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/AMSEngagementEvent-Protocol.h>
 #import <AppleMediaServices/NSCopying-Protocol.h>
 
 @class ACAccount, NSDictionary, NSMutableDictionary, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
-@interface AMSMetricsEvent : NSObject <NSCopying>
+@interface AMSMetricsEvent : NSObject <NSCopying, AMSEngagementEvent>
 {
     NSMutableDictionary *_underlyingDictionary;
     ACAccount *_account;
@@ -37,6 +38,7 @@
 - (id)propertyForBodyKey:(id)arg1;
 - (void)addPropertiesWithDictionary:(id)arg1;
 - (void)addClientIdentifier:(id)arg1;
+@property(nonatomic) _Bool suppressEngagement;
 @property(retain, nonatomic) NSString *topic;
 @property(retain, nonatomic) NSNumber *timezoneOffset;
 @property(retain, nonatomic) NSString *osVersion;
@@ -55,6 +57,7 @@
 @property(nonatomic, getter=isAnonymous) _Bool anonymous;
 @property(readonly, nonatomic) _Bool engagementEvent;
 @property(readonly, nonatomic) NSMutableDictionary *underlyingDictionary; // @synthesize underlyingDictionary=_underlyingDictionary;
+@property(readonly) NSDictionary *engagementData;
 @property(readonly, nonatomic) NSDictionary *dictionaryForPosting;
 @property(readonly, nonatomic) NSDictionary *databaseEventBody;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -62,6 +65,13 @@
 - (id)initWithUnderlyingDictionary:(id)arg1;
 - (id)initWithDatabaseEventBody:(id)arg1;
 - (id)initForEngagement;
+
+// Remaining properties
+@property(retain) NSDictionary *data;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

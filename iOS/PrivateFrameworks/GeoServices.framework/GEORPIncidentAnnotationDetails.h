@@ -8,20 +8,24 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPUserLocationDetails, NSString, PBDataReader;
+@class GEOLatLng, GEORPUserLocationDetails, NSString, PBDataReader;
 
 @interface GEORPIncidentAnnotationDetails : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     NSString *_incidentId;
+    GEOLatLng *_incidentLocation;
     GEORPUserLocationDetails *_userLocation;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _annotationType;
+    int _incidentType;
     struct {
         unsigned int has_annotationType:1;
+        unsigned int has_incidentType:1;
         unsigned int read_incidentId:1;
+        unsigned int read_incidentLocation:1;
         unsigned int read_userLocation:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -34,6 +38,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -42,6 +48,12 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOLatLng *incidentLocation;
+@property(readonly, nonatomic) _Bool hasIncidentLocation;
+- (int)StringAsIncidentType:(id)arg1;
+- (id)incidentTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasIncidentType;
+@property(nonatomic) int incidentType;
 - (int)StringAsAnnotationType:(id)arg1;
 - (id)annotationTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasAnnotationType;

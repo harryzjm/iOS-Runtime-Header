@@ -6,15 +6,17 @@
 
 #import <DeviceManagement/CATTaskResultObject.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface CRKFetchScreenshotResultObject : CATTaskResultObject
 {
     NSData *_screenshotData;
+    NSString *_studentIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *studentIdentifier; // @synthesize studentIdentifier=_studentIdentifier;
 @property(copy, nonatomic) NSData *screenshotData; // @synthesize screenshotData=_screenshotData;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

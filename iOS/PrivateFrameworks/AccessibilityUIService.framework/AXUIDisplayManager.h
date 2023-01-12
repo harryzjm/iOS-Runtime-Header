@@ -79,7 +79,7 @@
 - (void)_showAlertWithContext:(id)arg1;
 - (_Bool)_hasVisibleAlertWithType:(unsigned long long)arg1;
 - (id)_transactionIdentifierForDisplayingContentViewController:(id)arg1 service:(id)arg2;
-- (void)_removeContentViewController:(id)arg1 forService:(id)arg2;
+- (void)_removeContentViewController:(id)arg1 forService:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_addContentViewController:(id)arg1 toWindow:(id)arg2 forService:(id)arg3 context:(void *)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_disposeOfContentViewControllersWithUserInteractionEnabled:(_Bool)arg1 forService:(id)arg2;
 - (id)_contentViewControllersWithUserInteractionEnabled:(_Bool)arg1 forService:(id)arg2 createIfNeeded:(_Bool)arg3;

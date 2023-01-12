@@ -8,6 +8,7 @@
 {
 }
 
+- (id)typeName;
 - (void)acceptVisitor:(id)arg1;
 - (id)copyToInstantiateMasterPlaceholder;
 - (id)initWithKNPlaceholderInfo:(id)arg1;

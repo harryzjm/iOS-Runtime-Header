@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore23SkeletonAnimationSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *processAnimations;
 }
 
 @end

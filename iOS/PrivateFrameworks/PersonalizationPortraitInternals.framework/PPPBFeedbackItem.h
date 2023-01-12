@@ -11,14 +11,9 @@
 @interface PPPBFeedbackItem : PBCodable <NSCopying>
 {
     int _feedbackType;
-    float _mappingWeight;
-    struct {
-        unsigned int feedbackType:1;
-        unsigned int mappingWeight:1;
-    } _has;
+    CDStruct_00b579d7 _has;
 }
 
-@property(nonatomic) float mappingWeight; // @synthesize mappingWeight=_mappingWeight;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -28,7 +23,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasMappingWeight;
 @property(nonatomic) _Bool hasFeedbackType;
 @property(nonatomic) int feedbackType; // @synthesize feedbackType=_feedbackType;
 

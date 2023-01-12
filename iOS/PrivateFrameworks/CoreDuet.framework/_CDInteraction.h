@@ -17,6 +17,7 @@
     _Bool _forcePersistInteraction;
     _Bool _mailShareSheetDeletionCandidate;
     NSDate *_startDate;
+    NSDate *_updateDate;
     NSDate *_endDate;
     NSString *_uuid;
     NSString *_locationUUID;
@@ -33,15 +34,17 @@
     NSArray *_recipients;
     NSArray *_keywords;
     NSArray *_attachments;
+    NSString *_nsUserName;
 }
 
 + (id)recipientIdentifiersFromMobileMailConversationId:(id)arg1;
-+ (id)conversationIdForMobileMailInteractionRecipients:(id)arg1;
++ (id)generateConversationIdFromInteractionRecipients:(id)arg1;
 + (_Bool)supportsSecureCoding;
-+ (id)shareSheetInteractionFromINInteraction:(id)arg1 bundleID:(id)arg2 knowledgeStore:(id)arg3;
++ (id)shareSheetInteractionFromINInteraction:(id)arg1 bundleID:(id)arg2 nsUserName:(id)arg3 knowledgeStore:(id)arg4;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool mailShareSheetDeletionCandidate; // @synthesize mailShareSheetDeletionCandidate=_mailShareSheetDeletionCandidate;
 @property(nonatomic) _Bool forcePersistInteraction; // @synthesize forcePersistInteraction=_forcePersistInteraction;
+@property(retain) NSString *nsUserName; // @synthesize nsUserName=_nsUserName;
 @property(retain) NSArray *attachments; // @synthesize attachments=_attachments;
 @property(retain) NSArray *keywords; // @synthesize keywords=_keywords;
 @property(retain) NSArray *recipients; // @synthesize recipients=_recipients;
@@ -59,6 +62,7 @@
 @property(retain) NSString *locationUUID; // @synthesize locationUUID=_locationUUID;
 @property(retain) NSString *uuid; // @synthesize uuid=_uuid;
 @property(retain) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(retain) NSDate *updateDate; // @synthesize updateDate=_updateDate;
 @property(retain) NSDate *startDate; // @synthesize startDate=_startDate;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -72,7 +76,7 @@
 @property(readonly, nonatomic) NSArray *peopleIdentifiers;
 @property(readonly, nonatomic) NSDate *timestamp;
 @property(readonly, nonatomic) _Bool userIsSender;
-- (id)initWithINInteraction:(id)arg1 bundleID:(id)arg2;
+- (id)initWithINInteraction:(id)arg1 bundleID:(id)arg2 nsUserName:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

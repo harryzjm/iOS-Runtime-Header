@@ -26,6 +26,7 @@
 - (id)removeAlarm:(id)arg1;
 - (id)updateAlarm:(id)arg1;
 - (id)addAlarm:(id)arg1;
+- (_Bool)hasSleepAlarmMatchingAlarmIDString:(id)arg1;
 - (unsigned long long)rowForAlarmWithID:(id)arg1;
 - (unsigned long long)rowForAlarm:(id)arg1;
 - (id)alarmAtRow:(unsigned long long)arg1;

@@ -4,6 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 @protocol SBSHomeScreenServiceServerToClientInterface
+- (oneway void)homeScreenLayoutAvailabilityDidChange:(NSNumber *)arg1;
+- (oneway void)installedWebClipsDidChange;
 @end
 

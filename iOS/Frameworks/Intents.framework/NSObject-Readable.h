@@ -28,6 +28,7 @@
 - (id)_intents_readableSubtitleWithLocalizer:(id)arg1;
 - (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (id)_intents_readableTitleWithLocalizer:(id)arg1;
+- (id)_setterForProperty:(id)arg1;
 - (_Bool)_intents_isValidKey:(id)arg1;
 - (_Bool)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
 - (SEL)_intents_setterForPropertyWithName:(id)arg1;

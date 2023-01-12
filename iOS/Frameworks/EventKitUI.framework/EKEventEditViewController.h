@@ -35,11 +35,14 @@
 @property(retain, nonatomic) EKEventEditViewController *strongSelf; // @synthesize strongSelf=_strongSelf;
 @property(retain, nonatomic) EKEventEditor *editor; // @synthesize editor=_editor;
 @property(nonatomic) __weak id <EKEventEditViewDelegate> editViewDelegate; // @synthesize editViewDelegate=_editViewDelegate;
+- (void)presentationControllerDidAttemptToDismissWithPendingConference:(id)arg1;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (_Bool)canManagePresentationStyle;
 - (_Bool)wantsManagement;
+- (id)confirmPendingConferenceDismissAlertController;
 - (id)confirmDismissAlertController;
 - (id)_confirmDismissAlertExplanationText;
+- (id)_rightBarButtonItem;
 - (id)_leftBarButtonItem;
 - (id)_eventEditorForTestingOnly;
 @property(readonly, nonatomic) _Bool displayingRootView;

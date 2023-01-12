@@ -9,6 +9,6 @@
 @class NSURL;
 
 @protocol BCSBloomFilterExtractorProtocol <NSObject>
-- (void)extractShardsURLsFromBloomFilterURL:(NSURL *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)extractShardsURLsFromFilterShardURL:(NSURL *)arg1 domainShardURL:(NSURL *)arg2 completion:(void (^)(NSArray *, NSArray *, NSError *))arg3;
 @end
 

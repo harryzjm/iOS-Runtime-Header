@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLKCBundleComplication;
+@class CLKCBundleComplication, CLKComplicationDescriptor;
 
 @interface NTKBundleComplication
 {
@@ -14,6 +14,7 @@
 + (id)_revertedBundleComplicationFromJSONDictionary:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)bundledComplicationWithComplication:(id)arg1;
++ (id)bundledComplicationWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2 complicationDescriptor:(id)arg3;
 + (id)bundledComplicationWithBundleIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CLKCBundleComplication *complication; // @synthesize complication=_complication;
@@ -30,7 +31,9 @@
 - (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (_Bool)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (id)appIdentifier;
+@property(readonly, nonatomic) CLKComplicationDescriptor *complicationDescriptor;
 - (id)_generateUniqueIdentifier;
+- (id)ntk_sectionIdentifier;
 
 @end
 

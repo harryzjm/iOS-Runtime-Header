@@ -8,14 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAdvisoryCard, GEOFormattedString, PBDataReader, PBUnknownFields;
+@class GEOFormattedString, GEOPBTransitArtwork, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOAdvisoryNotice : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _incidentIndexs;
-    GEOAdvisoryCard *_advisoryCard;
+    NSMutableArray *_advisoryCards;
+    NSMutableArray *_advisoryItems;
+    NSMutableArray *_analyticsMessageValues;
+    GEOFormattedString *_detailCardTitle;
+    GEOPBTransitArtwork *_noticeArtwork;
     GEOFormattedString *_noticeText;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -25,13 +29,20 @@
         unsigned int has_shouldAlwaysShowAdvisoryCard:1;
         unsigned int read_unknownFields:1;
         unsigned int read_incidentIndexs:1;
-        unsigned int read_advisoryCard:1;
+        unsigned int read_advisoryCards:1;
+        unsigned int read_advisoryItems:1;
+        unsigned int read_analyticsMessageValues:1;
+        unsigned int read_detailCardTitle:1;
+        unsigned int read_noticeArtwork:1;
         unsigned int read_noticeText:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)analyticsMessageValueType;
++ (Class)advisoryItemType;
++ (Class)advisoryCardType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -48,10 +59,27 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)analyticsMessageValueAtIndex:(unsigned long long)arg1;
+- (unsigned long long)analyticsMessageValuesCount;
+- (void)addAnalyticsMessageValue:(id)arg1;
+- (void)clearAnalyticsMessageValues;
+@property(retain, nonatomic) NSMutableArray *analyticsMessageValues;
+@property(retain, nonatomic) GEOPBTransitArtwork *noticeArtwork;
+@property(readonly, nonatomic) _Bool hasNoticeArtwork;
+@property(retain, nonatomic) GEOFormattedString *detailCardTitle;
+@property(readonly, nonatomic) _Bool hasDetailCardTitle;
 @property(nonatomic) _Bool hasShouldAlwaysShowAdvisoryCard;
 @property(nonatomic) _Bool shouldAlwaysShowAdvisoryCard;
-@property(retain, nonatomic) GEOAdvisoryCard *advisoryCard;
-@property(readonly, nonatomic) _Bool hasAdvisoryCard;
+- (id)advisoryItemAtIndex:(unsigned long long)arg1;
+- (unsigned long long)advisoryItemsCount;
+- (void)addAdvisoryItem:(id)arg1;
+- (void)clearAdvisoryItems;
+@property(retain, nonatomic) NSMutableArray *advisoryItems;
+- (id)advisoryCardAtIndex:(unsigned long long)arg1;
+- (unsigned long long)advisoryCardsCount;
+- (void)addAdvisoryCard:(id)arg1;
+- (void)clearAdvisoryCards;
+@property(retain, nonatomic) NSMutableArray *advisoryCards;
 - (void)setIncidentIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)incidentIndexAtIndex:(unsigned long long)arg1;
 - (void)addIncidentIndex:(unsigned int)arg1;

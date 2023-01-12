@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axFirstGenPlayerHeaderElementsForView:(id)arg1;
+- (id)_axUnifiedPlayerHeaderElementsForView:(id)arg1;
 - (id)accessibilityHeaderElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 

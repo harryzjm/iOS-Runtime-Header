@@ -6,25 +6,21 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSLayoutConstraint, NSString, NTKCFaceContainerView, UIFontMetrics, UIImage, UIImageView, UILabel, UIView;
+@class NSString, NTKCFaceContainerView, UIFontMetrics, UIImage, UILabel, UIStackView, UIView;
 
 @interface _NTKCGalleryCollectionCell : UICollectionViewCell
 {
     UILabel *_nameLabel;
-    UIImageView *_nameImageView;
-    NSLayoutConstraint *_nameBaselineConstraint;
-    NSLayoutConstraint *_leadingImageConstraint;
-    NSLayoutConstraint *_trailingImageConstraint;
-    NSLayoutConstraint *_centerConstraint;
+    UIStackView *_contentStack;
     NTKCFaceContainerView *_faceContainerView;
     NSString *_calloutName;
     UIImage *_calloutImage;
     UIFontMetrics *_fontMetrics;
 }
 
-+ (struct CGSize)itemSizeWithCalloutName:(_Bool)arg1 andCalloutImage:(_Bool)arg2;
++ (id)aloeReuseIdentifier;
 + (id)luxoReuseIdentifier;
-+ (id)nonLuxoReuseIdentifier;
++ (id)classicReuseIdentifier;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIFontMetrics *fontMetrics; // @synthesize fontMetrics=_fontMetrics;
@@ -35,12 +31,8 @@
 - (void)_highlight;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
-- (void)updateConstraints;
-- (void)setFontAdjustingAttributes;
 @property(retain, nonatomic) UIView *faceView;
-- (void)layoutSubviews;
 - (void)prepareForReuse;
-- (void)_fontSizeDidChange;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (Matrix_6e1d3589)lerpPoint:(float *)arg1;
-- (void)updateWithFrustum:(CDStruct_7a7719de)arg1 matrix:(const Matrix_08d701e4 *)arg2;
-@property(readonly, nonatomic) const Matrix_6e1d3589 *corners;
+- (void)updateWithFrustum:(CDStruct_7a7719de)arg1 matrix:(const void *)arg2;
+@property(readonly, nonatomic) const void *corners;
 
 @end
 

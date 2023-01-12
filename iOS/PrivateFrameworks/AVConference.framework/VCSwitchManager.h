@@ -18,8 +18,11 @@ __attribute__((visibility("hidden")))
 @property unsigned int remoteSwitches; // @synthesize remoteSwitches=_remoteSwitches;
 @property unsigned int localSwitches; // @synthesize localSwitches=_localSwitches;
 - (id)description;
+- (unsigned int)applyNegotiationRulesUsingLocalSwitches:(unsigned int)arg1 negotiatedSwitches:(unsigned int)arg2;
 - (_Bool)isLocalSwitchEnabled:(unsigned int)arg1;
 - (_Bool)isSwitchEnabled:(unsigned int)arg1;
+- (void)setRemoteSwitches:(unsigned int)arg1 isCaller:(_Bool)arg2;
+- (void)negotiateSwitchesForIsCaller:(_Bool)arg1;
 - (void)negotiateSwitches;
 - (void)updateDuplicationEnhancementSwitches;
 - (void)setupLocalDuplicationTestGroupSwitches;

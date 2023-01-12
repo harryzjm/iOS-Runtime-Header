@@ -16,7 +16,6 @@
 - (void).cxx_destruct;
 - (id)_imPreferredAccount;
 - (id)_primaryAppleAccount;
-- (id)_insertOrLookupContributorEntityForPrimaryUserWithTransaction:(id)arg1 error:(id *)arg2;
 - (id)insertOrLookupContributorEntityWithReference:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)defaultContributorReference;
 - (id)contributorForReference:(id)arg1 error:(id *)arg2;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCAssetManager, FCCoverArt, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
+#import <NewsCore/FCFeedPersonalizingItem-Protocol.h>
+
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCAssetManager, FCCoverArt, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL;
 @protocol FCChannelProviding;
 
-@interface FCNotificationArticleHeadline
+@interface FCNotificationArticleHeadline <FCFeedPersonalizingItem>
 {
     _Bool _hasThumbnail;
     _Bool _sponsored;
@@ -27,6 +29,7 @@
     _Bool _issueOnly;
     _Bool _showBundleSoftPaywall;
     _Bool _useTransparentNavigationBar;
+    _Bool _disableBookmarking;
     NSString *_versionIdentifier;
     NSString *_identifier;
     NSString *_articleID;
@@ -69,40 +72,65 @@
     FCCoverArt *_coverArt;
     unsigned long long _role;
     long long _bodyTextLength;
+    NSArray *_linkedArticleIDs;
+    NSArray *_linkedIssueIDs;
+    NSString *_callToActionText;
+    NSString *_surfacedByArticleListID;
+    FCArticleAudioTrack *_narrativeTrack;
+    FCArticleAudioTrack *_narrativeTrackSample;
+    NSString *_narrativeTrackTextRanges;
+    NSString *_layeredThumbnailJSON;
+    double _layeredThumbnailAspectRatio;
     FCAssetManager *_assetManager;
     NSDictionary *_articlePayload;
     NSString *_flintDocumentUrlString;
     NSData *_flintDocumentPrefetchedData;
     NSArray *_flintFontResourceIDs;
     NSString *_changeEtag;
+    NSNumber *_globalCohortScoresCTR;
+    NSNumber *_channelCohortScoresCTR;
+    NSArray *_topicCohortScoresCTRs;
     struct CGRect _thumbnailFocalFrame;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *topicCohortScoresCTRs; // @synthesize topicCohortScoresCTRs=_topicCohortScoresCTRs;
+@property(retain, nonatomic) NSNumber *channelCohortScoresCTR; // @synthesize channelCohortScoresCTR=_channelCohortScoresCTR;
+@property(retain, nonatomic) NSNumber *globalCohortScoresCTR; // @synthesize globalCohortScoresCTR=_globalCohortScoresCTR;
 @property(retain, nonatomic) NSString *changeEtag; // @synthesize changeEtag=_changeEtag;
 @property(retain, nonatomic) NSArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
 @property(retain, nonatomic) NSData *flintDocumentPrefetchedData; // @synthesize flintDocumentPrefetchedData=_flintDocumentPrefetchedData;
 @property(retain, nonatomic) NSString *flintDocumentUrlString; // @synthesize flintDocumentUrlString=_flintDocumentUrlString;
 @property(retain, nonatomic) NSDictionary *articlePayload; // @synthesize articlePayload=_articlePayload;
 @property(retain, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
+- (double)layeredThumbnailAspectRatio;
+- (id)layeredThumbnailJSON;
+- (id)narrativeTrackTextRanges;
+- (id)narrativeTrackSample;
+- (id)narrativeTrack;
+- (void)setSurfacedByArticleListID:(id)arg1;
+- (id)surfacedByArticleListID;
+- (void)setCallToActionText:(id)arg1;
+- (id)callToActionText;
+- (id)linkedIssueIDs;
+- (id)linkedArticleIDs;
+- (_Bool)disableBookmarking;
 - (_Bool)useTransparentNavigationBar;
 - (_Bool)showBundleSoftPaywall;
-- (long long)bodyTextLength;
+@property(readonly, nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
 - (_Bool)isIssueOnly;
 - (void)setRole:(unsigned long long)arg1;
 - (unsigned long long)role;
-- (void)setBundlePaid:(_Bool)arg1;
-- (_Bool)isBundlePaid;
+@property(readonly, nonatomic, getter=isBundlePaid) _Bool bundlePaid; // @synthesize bundlePaid=_bundlePaid;
 - (_Bool)webEmbedsEnabled;
 - (id)coverArt;
-- (void)setPaid:(_Bool)arg1;
-- (_Bool)isPaid;
+@property(readonly, nonatomic, getter=isPaid) _Bool paid; // @synthesize paid=_paid;
 - (long long)minimumNewsVersion;
-- (_Bool)isHiddenFromAutoFavorites;
 - (_Bool)isPressRelease;
 - (_Bool)isHiddenFromFeeds;
 - (_Bool)isBoundToContext;
 - (_Bool)showMinimalChrome;
+- (void)setNeedsRapidUpdates:(_Bool)arg1;
 - (_Bool)needsRapidUpdates;
 - (void)setStoryStyle:(id)arg1;
 - (id)storyStyle;
@@ -121,14 +149,12 @@
 - (_Bool)isDeleted;
 - (id)iAdSectionIDs;
 - (id)iAdKeywords;
-- (id)iAdCategories;
+@property(readonly, copy, nonatomic) NSArray *iAdCategories; // @synthesize iAdCategories=_iAdCategories;
 - (void)setSponsored:(_Bool)arg1;
 - (_Bool)isSponsored;
 - (double)videoDuration;
 - (id)videoURL;
-- (void)setTopicIDs:(id)arg1;
-- (id)topicIDs;
-- (id)topics;
+@property(readonly, copy, nonatomic) NSArray *topicIDs; // @synthesize topicIDs=_topicIDs;
 - (id)lastFetchedDate;
 - (id)lastModifiedDate;
 - (id)contentURL;
@@ -156,8 +182,7 @@
 - (id)sourceChannel;
 - (long long)backendArticleVersion;
 - (long long)publisherArticleVersion;
-- (void)setPublishDate:(id)arg1;
-- (id)publishDate;
+@property(readonly, copy, nonatomic) NSDate *publishDate; // @synthesize publishDate=_publishDate;
 - (id)primaryAudience;
 - (void)setTitle:(id)arg1;
 - (id)title;
@@ -171,11 +196,39 @@
 - (void)setIdentifier:(id)arg1;
 - (id)identifier;
 - (id)versionIdentifier;
+- (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, copy, nonatomic) NSArray *topics; // @synthesize topics=_topics;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLTagMetadata *publisherTagMetadata;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *publisherConversionStats;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *globalConversionStats;
+- (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *publisherCohorts;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
+@property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites; // @synthesize hiddenFromAutoFavorites=_hiddenFromAutoFavorites;
+@property(readonly, nonatomic) _Bool hasVideo;
+@property(readonly, nonatomic, getter=isANF) _Bool anf;
+@property(readonly, nonatomic) _Bool hasGlobalUserFeedback;
+@property(readonly, copy, nonatomic) NSString *publisherID;
+@property(readonly, nonatomic) unsigned long long halfLife;
+@property(readonly, copy, nonatomic) NSString *itemID;
+@property(readonly, copy, nonatomic) NSString *sourceFeedID;
 - (id)generateFlintDocumentAssetHandleForUrlString:(id)arg1 prefetchedData:(id)arg2 withAssetManager:(id)arg3;
 - (id)generateThumbnailAssetHandleForUrlString:(id)arg1 withAssetManager:(id)arg2;
 - (_Bool)isValid;
-- (id)contentManifestWithContext:(id)arg1;
+- (id)contentWithContext:(id)arg1;
 - (id)initWithArticlePayload:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double globalUserFeedback;
+@property(readonly, nonatomic) _Bool hasAudioTrack;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isEvergreen;
+@property(readonly, nonatomic) _Bool isFeatured;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVector;
+@property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector *personalizationVectorAlt;
+@property(readonly) Class superclass;
 
 @end
 

@@ -60,6 +60,7 @@
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
+- (void).cxx_destruct;
 @property(nonatomic) double segmentedHeaderPinningOffset; // @synthesize segmentedHeaderPinningOffset=_segmentedHeaderPinningOffset;
 @property(nonatomic) double hiddenSearchBarOffset; // @synthesize hiddenSearchBarOffset=_hiddenSearchBarOffset;
 @property(retain, nonatomic) GKDataSourceMetrics *dataSourceMetrics; // @synthesize dataSourceMetrics=_dataSourceMetrics;
@@ -180,7 +181,6 @@
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (struct CGRect)layoutBounds;
 - (double)scale;
-- (void)dealloc;
 - (id)init;
 
 @end

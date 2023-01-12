@@ -10,6 +10,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct TRIFlockWitness_ {
+    int _field1;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -19,7 +23,24 @@ struct _PASDBTransactionCompletion_ {
     _Bool _field1;
 };
 
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
+};
+
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char _field1;
+} CDStruct_6b48f683;
+
+typedef struct {
+    unsigned long long _field1;
+} CDStruct_69d7cc99;
 
 typedef struct {
     unsigned int val[8];

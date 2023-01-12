@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed21CoverViewActionButton : UIButton
 {
     MISSING_TYPE *onTap;
+    MISSING_TYPE *onMenuPresentation;
     MISSING_TYPE *touchInsets;
     MISSING_TYPE *tintColorForNormalState;
 }

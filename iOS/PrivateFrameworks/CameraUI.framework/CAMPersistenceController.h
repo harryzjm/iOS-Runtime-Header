@@ -60,6 +60,7 @@
 @property(readonly, nonatomic) CAMThumbnailGenerator *_localPersistenceThumbnailGenerator; // @synthesize _localPersistenceThumbnailGenerator=__localPersistenceThumbnailGenerator;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_remotePersistenceQueue; // @synthesize _remotePersistenceQueue=__remotePersistenceQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_localPersistenceQueue; // @synthesize _localPersistenceQueue=__localPersistenceQueue;
+- (void)emptyLocalPersistenceStorageWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_jobDictionaryForTimelapsePlaceholderResult:(id)arg1;
 - (void)persistPlaceholderTimelapseVideoWithResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)persistBurstWithIdentifier:(id)arg1 result:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -88,12 +89,13 @@
 - (id)_jobDictionaryForStillImageLocalResult:(id)arg1 filteredLocalResult:(id)arg2 spatialOverCaptureLocalResult:(id)arg3 fromRequest:(id)arg4;
 - (id)_xmpEncodedDiagnosticDataFromDictionary:(id)arg1;
 - (id)_adjustmentsDataForRequest:(id)arg1 captureDimensions:(CDStruct_79c71658)arg2 portraitMetadata:(id)arg3;
+- (id)_adjustmentsDataForCinematicVideo;
 - (_Bool)_writeDataToURL:(id)arg1 withData:(id)arg2 duringBurst:(_Bool)arg3 error:(out id *)arg4;
 - (_Bool)_writeJPEGToURL:(id)arg1 withData:(id)arg2 thumbnail:(id)arg3 properties:(id)arg4 duringBurst:(_Bool)arg5 error:(out id *)arg6;
 - (struct __CFWriteStream *)_createOpenWriteStreamWithURL:(id)arg1 forBurst:(_Bool)arg2;
 - (id)_persistStillImageCaptureSurfaceResult:(id)arg1 withRequest:(id)arg2;
-- (id)_uniformTypeIdentifierForStillImageRequest:(id)arg1;
-- (id)_extensionForUniformTypeIdentifier:(id)arg1;
+- (id)_uniformTypeForStillImageRequest:(id)arg1 result:(id)arg2;
+- (id)_extensionForUniformType:(id)arg1;
 - (void)_dispatchRemotePersistenceForLocalPersistenceResult:(id)arg1 filteredLocalResult:(id)arg2 spatialOverCaptureLocalResult:(id)arg3 request:(id)arg4 powerAssertionReason:(unsigned int)arg5 loggingIdentifier:(id)arg6;
 - (void)stillImagePersistenceCoordinator:(id)arg1 requestsTimeoutScheduledForDeferredRemotePersistenceForCoordinationInfo:(id)arg2 request:(id)arg3;
 - (void)stillImagePersistenceCoordinator:(id)arg1 requestsRemotePersistenceForLocalPersistenceResult:(id)arg2 filteredLocalResult:(id)arg3 spatialOverCaptureLocalResult:(id)arg4 request:(id)arg5 powerAssertionReason:(unsigned int)arg6;

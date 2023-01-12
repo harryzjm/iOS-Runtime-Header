@@ -6,26 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache;
-@protocol NAScheduler;
+@class HFMutablePriorityQueue, NSCache;
+@protocol NAScheduler, OS_dispatch_group;
 
 @interface HUCAPackageIconManager : NSObject
 {
+    struct os_unfair_lock_s _queueLock;
+    NSObject<OS_dispatch_group> *_prefetchDispatchGroup;
     NSCache *_packageDataCache;
     NSCache *_packageReuseQueue;
     id <NAScheduler> _prefetchScheduler;
+    unsigned long long _signpostID;
+    HFMutablePriorityQueue *_prefetchPriorityQueue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HFMutablePriorityQueue *prefetchPriorityQueue; // @synthesize prefetchPriorityQueue=_prefetchPriorityQueue;
+@property(nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property(retain, nonatomic) id <NAScheduler> prefetchScheduler; // @synthesize prefetchScheduler=_prefetchScheduler;
 @property(retain, nonatomic) NSCache *packageReuseQueue; // @synthesize packageReuseQueue=_packageReuseQueue;
 @property(retain, nonatomic) NSCache *packageDataCache; // @synthesize packageDataCache=_packageDataCache;
 - (id)_queueForIconDescriptorIdentifier:(id)arg1;
 - (id)_packageDataForIconDescriptor:(id)arg1;
 - (id)_loadPackageWithIconDescriptor:(id)arg1;
+- (void)_startPrefetchIfNecessary;
+- (id)_prefetchIcons:(id)arg1;
+- (void)prioritizeIconDescriptors:(id)arg1;
 - (id)prefetchIconDescriptors:(id)arg1;
-- (void)reclaimPackage:(id)arg1 forIconDescriptor:(id)arg2;
+- (void)returnPackageToCache:(id)arg1 forIconDescriptor:(id)arg2;
+- (id)tryReclaimPackage:(id)arg1 forIconDescriptor:(id)arg2;
 - (id)packageForIconDescriptor:(id)arg1;
 - (id)init;
 

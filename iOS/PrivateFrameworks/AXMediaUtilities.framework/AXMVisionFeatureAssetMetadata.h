@@ -12,6 +12,7 @@
 
 @interface AXMVisionFeatureAssetMetadata : NSObject <NSSecureCoding>
 {
+    _Bool _imageAssetLocallyAvailable;
     NSString *_name;
     NSDate *_creationDate;
     NSString *_uti;
@@ -21,11 +22,16 @@
     NSString *_EXIFUserComment;
     NSString *_PNGImageDescription;
     NSURL *_assetURL;
+    NSString *_imageAssetLocalIdentifier;
 }
 
++ (id)assetMetadataWithLocalIdentifier:(id)arg1 creationDate:(id)arg2 UTI:(id)arg3;
++ (id)assetMetadataFromURL:(id)arg1 andLocalIdentifier:(id)arg2;
 + (id)assetMetadataFromURL:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool imageAssetLocallyAvailable; // @synthesize imageAssetLocallyAvailable=_imageAssetLocallyAvailable;
+@property(retain, nonatomic) NSString *imageAssetLocalIdentifier; // @synthesize imageAssetLocalIdentifier=_imageAssetLocalIdentifier;
 @property(retain, nonatomic) NSURL *assetURL; // @synthesize assetURL=_assetURL;
 @property(retain, nonatomic) NSString *PNGImageDescription; // @synthesize PNGImageDescription=_PNGImageDescription;
 @property(retain, nonatomic) NSString *EXIFUserComment; // @synthesize EXIFUserComment=_EXIFUserComment;
@@ -35,6 +41,8 @@
 @property(retain, nonatomic) NSString *uti; // @synthesize uti=_uti;
 @property(retain, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) _Bool assetLocallyAvailable;
+@property(readonly, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) NSURL *url;
 - (id)description;
 - (unsigned long long)hash;

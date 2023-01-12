@@ -7,6 +7,8 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (Bridge)
++ (id)ts_internalSystemImageNamed:(id)arg1 withConfiguration:(id)arg2;
++ (id)ts_internalSystemImageNamed:(id)arg1;
 + (id)ts_xmarkForHUD;
 + (id)ts_xmarkCircle;
 + (id)ts_xmark;
@@ -16,6 +18,7 @@
 + (id)ts_sidebarLeft;
 + (id)ts_safari;
 + (id)ts_rightArrow;
++ (id)ts_plusCirclePinkOnGrayFill;
 + (id)ts_plusCirclePinkOnOpaqueFill;
 + (id)ts_plusCirclePinkOnTertiaryFill;
 + (id)ts_plusCircleFill;
@@ -47,6 +50,8 @@
 + (id)ts_handRaisedFillForHUD;
 + (id)ts_handRaisedFill;
 + (id)ts_handRaised;
++ (id)ts_filledSystemImageNamed:(id)arg1 fillColor:(id)arg2 symbolColor:(id)arg3 symbolConfig:(id)arg4;
++ (id)ts_filledSystemImageNamed:(id)arg1 fillColor:(id)arg2 symbolColor:(id)arg3;
 + (id)ts_exclamationMarkCircle;
 + (id)ts_ellipsisCircleTertiaryFillOnPink;
 + (id)ts_ellipsisCircleFillWhite;
@@ -59,6 +64,7 @@
 + (id)ts_circleFill;
 + (id)ts_chevronRight;
 + (id)ts_checkmarkForHUD;
++ (id)ts_checkmarkCircleOnGrayFill;
 + (id)ts_checkmarkCircleOpaqueFillOnPink;
 + (id)ts_checkmarkCircleTertiaryFillOnPink;
 + (id)ts_checkmarkCircleFillWhite;

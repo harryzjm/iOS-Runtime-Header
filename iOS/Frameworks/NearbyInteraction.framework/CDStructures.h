@@ -13,7 +13,7 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 struct UWBSessionInterruptionBookkeeping;
 
 struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
         _Atomic _Bool __a_value;
     } __a_;
 };
@@ -25,10 +25,10 @@ struct mutex {
     } __m_;
 };
 
-struct vector<UWBSessionInterruptionBookkeeping, std::__1::allocator<UWBSessionInterruptionBookkeeping>> {
+struct vector<UWBSessionInterruptionBookkeeping, std::allocator<UWBSessionInterruptionBookkeeping>> {
     struct UWBSessionInterruptionBookkeeping *__begin_;
     struct UWBSessionInterruptionBookkeeping *__end_;
-    struct __compressed_pair<UWBSessionInterruptionBookkeeping *, std::__1::allocator<UWBSessionInterruptionBookkeeping>> {
+    struct __compressed_pair<UWBSessionInterruptionBookkeeping *, std::allocator<UWBSessionInterruptionBookkeeping>> {
         struct UWBSessionInterruptionBookkeeping *__value_;
     } __end_cap_;
 };

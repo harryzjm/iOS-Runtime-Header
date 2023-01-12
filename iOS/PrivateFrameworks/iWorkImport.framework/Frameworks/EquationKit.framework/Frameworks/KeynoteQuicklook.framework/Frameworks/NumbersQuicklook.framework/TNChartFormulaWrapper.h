@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, TNChartVectorWrapper, TSCEFormulaObject;
+@class NSArray, TNChartVectorWrapper, TSCEFormulaObject, TSCEValueGrid;
 
 @interface TNChartFormulaWrapper : NSObject
 {
     TSCEFormulaObject *_formulaObject;
     long long _cachedNumberOfValues;
     TNChartVectorWrapper *_cachedOutputValueVector;
-    struct vector<TSUCellCoord, std::__1::allocator<TSUCellCoord>> _cachedChromeCoords;
+    struct vector<TSUCellCoord, std::allocator<TSUCellCoord>> _cachedChromeCoords;
+    TSCEValueGrid *_cachedValueGrid;
     NSArray *_cachedPlotwiseLabels;
     _Bool _cachedSkipHiddenData;
     _Bool _cachedLabelsByRow;
@@ -23,6 +24,8 @@
 + (id)chartFormulaForCellRegion:(id)arg1 inTable:(id)arg2;
 + (id)chartFormulaForTractReference:(id)arg1;
 + (id)chartFormulaForTractAsRangeReferences:(id)arg1;
++ (id)chartFormulaForViewTractRef:(id)arg1;
++ (id)chartFormulaForCategoryRef:(id)arg1;
 + (id)chartFormulaForCellReference:(struct TSCECellRef)arg1;
 + (id)chartFormulaForRangeReference:(struct TSCERangeRef)arg1;
 + (id)chartFormulaForString:(id)arg1;
@@ -30,21 +33,25 @@
 + (id)chartFormulaWithFormulaObject:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)formulaByTrimmingCategoryLabels:(unsigned long long)arg1 plotByRow:(_Bool)arg2 calcEngine:(id)arg3 inChart:(UUIDData_5fbc143e *)arg4;
-- (id)formulaByBakingValuesWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (id)formulaByRewriting:(_Bool)arg1 withCalcEngine:(id)arg2 andHostUID:(const UUIDData_5fbc143e *)arg3;
-- (id)formulaByProcessingArgumentsWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (_Bool)isAllStaticValuesWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (struct TSCERangeRef)rangeCircumscribingPrecedentsWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (id)stringValueForFormulaWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2 storeBadRef:(_Bool)arg3;
-- (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2;
-- (unsigned long long)numberOfTotalPlotwiseLabelValuesWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
-- (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2;
-- (id)plotwiseLabelValuesWithEvaluationContext:(struct TSCEEvaluationContext *)arg1 byRow:(_Bool)arg2 shouldSkipHiddenData:(_Bool)arg3;
-- (vector_06892659)outputVectorValuesWithChromeCoords:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(_Bool)arg2;
-- (id)outputValue:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(_Bool)arg2 requiresChromeCoords:(_Bool)arg3;
-- (id)outputValue:(struct TSCEEvaluationContext *)arg1 shouldSkipHiddenData:(_Bool)arg2;
+- (id)formulaByTrimmingCategoryLabels:(unsigned long long)arg1 plotByRow:(_Bool)arg2 calcEngine:(id)arg3 inChart:(struct TSKUIDStruct *)arg4;
+- (id)formulaByBakingValuesWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (id)formulaByRewriting:(_Bool)arg1 withCalcEngine:(id)arg2 andHostUID:(const struct TSKUIDStruct *)arg3;
+- (id)formulaByProcessingArgumentsWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (_Bool)isAllStaticValuesWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (struct TSCERangeRef)rangeCircumscribingPrecedentsWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (id)stringValueForFormulaWithCalcEngine:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2;
+- (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const struct TSKUIDStruct *)arg2 storeBadRef:(_Bool)arg3;
+- (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const struct TSKUIDStruct *)arg2;
+- (unsigned long long)numberOfTotalPlotwiseLabelValuesWithCalcEngine:(id)arg1 inChart:(const struct TSKUIDStruct *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
+- (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 inChart:(const struct TSKUIDStruct *)arg2 shouldSkipHiddenData:(_Bool)arg3;
+- (id)plotwiseLabelValuesWithEvaluationContext:(void *)arg1 byRow:(_Bool)arg2 shouldSkipHiddenData:(_Bool)arg3;
+- (vector_85027ebd)outputVectorValuesWithChromeCoords:(void *)arg1 shouldSkipHiddenData:(_Bool)arg2;
+- (unsigned long long)numberOfGridValuesWithCalcEngine:(id)arg1 inChart:(const struct TSKUIDStruct *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
+- (id)outputGridVectorForSeries:(unsigned long long)arg1 withContext:(void *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
+- (id)gridLabelValueAtIndex:(unsigned long long)arg1 withEvaluationContext:(void *)arg2 byRow:(_Bool)arg3 shouldSkipHiddenData:(_Bool)arg4;
+- (id)outputGrid:(void *)arg1 shouldSkipHiddenData:(_Bool)arg2;
+- (id)outputValue:(void *)arg1 shouldSkipHiddenData:(_Bool)arg2 requiresChromeCoords:(_Bool)arg3;
+- (id)outputValue:(void *)arg1 shouldSkipHiddenData:(_Bool)arg2;
 - (id)description;
 @property(readonly, retain, nonatomic) TSCEFormulaObject *formulaObject;
 - (unsigned long long)hash;

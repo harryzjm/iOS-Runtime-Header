@@ -19,10 +19,10 @@
 @property(nonatomic) _Bool perservesAlpha;
 - (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2 constantTypes:(id)arg3;
 - (id)initWithString:(id)arg1;
-- (struct CGRect)autogenerateROI:(struct WarpKernel *)arg1 args:(struct SerialObjectPtrArray *)arg2 arguments:(id)arg3 extent:(struct CGRect)arg4;
+- (struct CGRect)autogenerateROI:(void *)arg1 args:(struct SerialObjectPtrArray *)arg2 arguments:(id)arg3 extent:(struct CGRect)arg4;
 - (id)makeGridImage:(struct CGRect)arg1 nx:(int)arg2 ny:(int)arg3;
-- (id)generateGeneralKernelFromWarpKernel:(struct WarpKernel *)arg1 args:(struct SerialObjectPtrArray *)arg2;
-- (id)generateMainFromWarpKernel:(struct WarpKernel *)arg1 args:(struct SerialObjectPtrArray *)arg2;
+- (id)generateGeneralKernelFromWarpKernel:(void *)arg1 args:(struct SerialObjectPtrArray *)arg2;
+- (id)generateMainFromWarpKernel:(void *)arg1 args:(struct SerialObjectPtrArray *)arg2;
 
 @end
 

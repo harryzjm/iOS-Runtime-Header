@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isActive; // @synthesize isActive=_isActive;
 @property(copy, nonatomic) NSString *rid; // @synthesize rid=_rid;
 @property(readonly, nonatomic) struct RtpEncodingParameters nativeParameters;
-- (id)initWithNativeParameters:(const struct RtpEncodingParameters *)arg1;
+- (id)initWithNativeParameters:(const void *)arg1;
 - (id)init;
 
 @end

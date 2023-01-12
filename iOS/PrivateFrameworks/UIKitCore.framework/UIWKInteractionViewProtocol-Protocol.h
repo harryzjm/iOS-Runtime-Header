@@ -56,6 +56,7 @@
 - (void)clearSelection;
 - (void)changeSelectionWithTouchAt:(struct CGPoint)arg1 withSelectionTouch:(long long)arg2 baseIsStart:(_Bool)arg3 withFlags:(long long)arg4;
 - (_Bool)shouldSuppressUpdateCandidateView;
+- (NSArray *)alternativesForSelectedText;
 - (NSAttributedString *)attributedMarkedText;
 @end
 

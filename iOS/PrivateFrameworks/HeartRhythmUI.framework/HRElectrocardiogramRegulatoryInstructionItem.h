@@ -9,13 +9,13 @@
 #import <HeartRhythmUI/HRFeatureRegulatoryPanelDisplayable-Protocol.h>
 
 @class NSAttributedString, NSString;
-@protocol HRFeatureRegulatoryPanelDisplayUpdateDelegate;
 
 @interface HRElectrocardiogramRegulatoryInstructionItem : NSObject <HRFeatureRegulatoryPanelDisplayable>
 {
 }
 
 - (void)handleUserInteractionWithItemWithHostViewController:(id)arg1;
+- (void)presentHostedInstructionsForUseHostViewController:(id)arg1 helpViewController:(id)arg2;
 @property(readonly, nonatomic) long long cellAccessoryType;
 @property(readonly, nonatomic) _Bool isInteractive;
 @property(readonly, copy, nonatomic) NSAttributedString *valueString;
@@ -26,7 +26,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(nonatomic) __weak id <HRFeatureRegulatoryPanelDisplayUpdateDelegate> updateDelegate;
 
 @end
 

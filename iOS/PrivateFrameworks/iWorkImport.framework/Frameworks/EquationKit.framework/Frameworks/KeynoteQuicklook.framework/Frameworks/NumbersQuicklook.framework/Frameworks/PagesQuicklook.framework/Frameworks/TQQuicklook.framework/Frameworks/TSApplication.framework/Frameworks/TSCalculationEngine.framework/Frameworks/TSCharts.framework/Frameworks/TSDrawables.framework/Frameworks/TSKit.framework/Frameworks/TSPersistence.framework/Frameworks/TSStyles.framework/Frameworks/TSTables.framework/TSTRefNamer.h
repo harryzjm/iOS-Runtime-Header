@@ -21,22 +21,23 @@
 @property(retain, nonatomic) NSCharacterSet *nonWhitespaceAndNewlineCharSet; // @synthesize nonWhitespaceAndNewlineCharSet=_nonWhitespaceAndNewlineCharSet;
 @property(retain, nonatomic) NSCharacterSet *whitespaceAndNewlineCharSet; // @synthesize whitespaceAndNewlineCharSet=_whitespaceAndNewlineCharSet;
 @property(readonly, nonatomic) __weak TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
-- (id)nameForChromeColumnIndex:(const struct TSUChromeColumnIndex *)arg1 inTable:(const UUIDData_5fbc143e *)arg2 useSymbolicNames:(_Bool)arg3;
+- (id)nameForChromeColumnIndex:(const struct TSUChromeColumnIndex *)arg1 inTable:(const struct TSKUIDStruct *)arg2 useSymbolicNames:(_Bool)arg3;
 - (id)cellRangeName:(id)arg1 namingContext:(id)arg2;
-- (id)cellRangeNameFromChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 namingContext:(id)arg2;
+- (id)cellRangeNameFromChromeRangeRef:(const void *)arg1 namingContext:(id)arg2;
 - (id)p_symbolicRowNameForRefPair:(id)arg1 useTopLeft:(_Bool)arg2 isSticky:(_Bool)arg3 foundRange:(struct TSUModelCellRect *)arg4 inTableModel:(id)arg5 namingContext:(id)arg6;
 - (id)p_symbolicColumnNameForRefPair:(id)arg1 useTopLeft:(_Bool)arg2 isSticky:(_Bool)arg3 foundRange:(struct TSUModelCellRect *)arg4 inTableModel:(id)arg5 namingContext:(id)arg6;
-- (id)createNameComponentWithChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 rowOrColumnName:(id)arg2 isSticky:(_Bool)arg3 namingContext:(id)arg4;
-- (id)p_rowNameForBaseCellCoord:(const struct TSUModelCellCoord *)arg1 inTableModel:(id)arg2 cellRangeContainingName:(struct TSUModelCellRect *)arg3;
-- (id)p_columnNameForBaseCellCoord:(const struct TSUModelCellCoord *)arg1 inTableModel:(id)arg2 cellRangeContainingName:(struct TSUModelCellRect *)arg3;
-- (id)stringValueAtCellCoord:(const struct TSUModelCellCoord *)arg1 inTableModel:(id)arg2;
+- (id)createNameComponentWithChromeRangeRef:(const void *)arg1 rowOrColumnName:(id)arg2 isSticky:(_Bool)arg3 namingContext:(id)arg4;
+- (id)columnNameForColumnIndex:(unsigned short)arg1 withFallbackFormat:(id)arg2 translator:(id)arg3;
+- (id)rowNameForCellCoord:(const struct TSUCellCoord *)arg1 restrictToBodyRange:(_Bool)arg2 translator:(id)arg3 cellRangeContainingName:(struct TSUCellRect *)arg4;
+- (id)columnNameForCellCoord:(const struct TSUCellCoord *)arg1 restrictToBodyRange:(_Bool)arg2 translator:(id)arg3 cellRangeContainingName:(struct TSUCellRect *)arg4;
+- (id)stringValueAtCellCoord:(const struct TSUCellCoord *)arg1 translator:(id)arg2;
 - (id)nameForWrappedRangeRef:(id)arg1 namingContext:(id)arg2;
 - (id)stringForRangeRefPair:(id)arg1 namingContext:(id)arg2;
 - (id)nameForViewTractRef:(id)arg1 namingContext:(id)arg2 coordMapper:(id)arg3;
 - (id)nameForBaseTractRef:(id)arg1 namingContext:(id)arg2;
-- (id)nameForBaseRangeRef:(const RefTypeHolder_1140c985 *)arg1 namingContext:(id)arg2;
-- (id)chromeNameForBaseRangeRef:(const RefTypeHolder_1140c985 *)arg1 namingContext:(id)arg2;
-- (id)nameForChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 namingContext:(id)arg2;
+- (id)nameForBaseRangeRef:(const void *)arg1 namingContext:(id)arg2;
+- (id)chromeNameForBaseRangeRef:(const void *)arg1 namingContext:(id)arg2;
+- (id)nameForChromeRangeRef:(const void *)arg1 namingContext:(id)arg2;
 - (id)initWithCalcEngine:(id)arg1;
 
 // Remaining properties

@@ -12,12 +12,13 @@
 
 @interface TSCH3DFillSageFillData : NSObject <TSCH3DSageFillData>
 {
-    TSCH3DFill *mFill;
-    NSMutableArray *mTextures;
-    NSMutableArray *mTextureBlendModes;
+    TSCH3DFill *_fill;
+    NSMutableArray *_textures;
+    NSMutableArray *_textureBlendModes;
 }
 
 + (id)dataWithFill:(id)arg1;
+- (void).cxx_destruct;
 - (id)fillSetIdentifier;
 - (id)textureForIndex:(unsigned long long)arg1;
 - (id)layerLightenPercentageForIndex:(unsigned long long)arg1;
@@ -42,7 +43,6 @@
 - (id)phongMaterials;
 - (id)lightingModel;
 - (void)p_addMaterial:(id)arg1 blendMode:(long long)arg2;
-- (void)dealloc;
 - (id)initWithFill:(id)arg1;
 
 @end

@@ -11,14 +11,20 @@
 @interface _TtC8NewsFeed16FormatLayoutView : UIView
 {
     MISSING_TYPE *debugButton;
+    MISSING_TYPE *viewAnimations;
     MISSING_TYPE *token;
+    MISSING_TYPE *isDirty;
     MISSING_TYPE *viewContainers;
+    MISSING_TYPE *motionObservers;
+    MISSING_TYPE *scrollObservers;
     MISSING_TYPE *viewModels;
+    MISSING_TYPE *viewsByName;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

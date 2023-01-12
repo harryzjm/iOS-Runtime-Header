@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MobileSafari/_SFBarTheme.h>
+
 @class UIColor;
 
-@interface _SFNavigationBarTheme
+@interface _SFNavigationBarTheme : _SFBarTheme
 {
     _Bool _backdropIsExtreme;
     _Bool _backdropIsRed;
@@ -29,7 +31,6 @@
     UIColor *_platterProgressBarTintColor;
 }
 
-+ (id)textColorForBackgroundColor:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIColor *platterProgressBarTintColor; // @synthesize platterProgressBarTintColor=_platterProgressBarTintColor;
 @property(readonly, nonatomic) UIColor *platterSelectionColor; // @synthesize platterSelectionColor=_platterSelectionColor;
@@ -56,7 +57,7 @@
 - (id)platterSecureTextColorForPlatterAlpha:(double)arg1;
 - (id)platterTextColorForPlatterAlpha:(double)arg1;
 - (id)URLAccessoryButtonTintColorForInputMode:(unsigned long long)arg1;
-- (id)initWithBarTintStyle:(unsigned long long)arg1 preferredBarTintColor:(id)arg2 controlsTintColor:(id)arg3;
+- (id)initWithBarTintStyle:(long long)arg1 preferredBarTintColor:(id)arg2 controlsTintColor:(id)arg3;
 
 @end
 

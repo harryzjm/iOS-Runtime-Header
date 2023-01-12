@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_0434d32c)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_0434d32c)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *speech_id;
 @property(readonly, nonatomic) NSString *task_name;
 @property(readonly, nonatomic) double silence_posterior;

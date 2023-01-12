@@ -8,7 +8,7 @@
 
 @interface PXGZoomLayout
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     _Bool _settingSublayouts;
     _Bool _isUpdatingSublayouts;
     PXGLayout *_primaryLayer;
@@ -37,12 +37,14 @@
 - (void)screenScaleDidChange;
 - (void)safeAreaInsetsDidChange;
 - (void)visibleRectDidChange;
+- (void)referenceDepthDidChange;
 - (void)referenceSizeDidChange;
 - (void)viewEnvironmentDidChange;
 - (void)_updateSublayoutGeometries;
 - (void)_configureSublayouts;
 - (void)update;
 - (long long)itemForSpriteIndex:(unsigned int)arg1;
+- (long long)scrollableAxis;
 - (void)setLayers:(id)arg1 primaryLayer:(id)arg2;
 - (id)init;
 

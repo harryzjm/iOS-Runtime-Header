@@ -16,14 +16,22 @@
 @interface CHSWidgetMetrics : NSObject <BSDescriptionProviding, BSXPCCoding, NSCopying, NSSecureCoding>
 {
     double _cornerRadius;
+    double _scaleFactor;
     long long _textSizeAdjustment;
     struct CGSize _size;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) long long textSizeAdjustment; // @synthesize textSizeAdjustment=_textSizeAdjustment;
+@property(readonly, nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property(readonly, nonatomic) struct CGSize scale;
+- (double)_roundToNearestOrUp:(double)arg1 withScale:(double)arg2;
+- (struct CGSize)_rawSizePixelAlignedForDisplayScale:(double)arg1;
+- (struct CGSize)_effectiveSizePixelAlignedForDisplayScale:(double)arg1;
+- (struct CGSize)_rawEffectiveSize;
+- (_Bool)_isUnitScale;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -36,6 +44,8 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithSize:(struct CGSize)arg1 cornerRadius:(double)arg2 scaleFactor:(double)arg3 textSizeAdjustment:(long long)arg4;
+- (id)initWithSize:(struct CGSize)arg1 cornerRadius:(double)arg2 scale:(struct CGSize)arg3 textSizeAdjustment:(long long)arg4;
 - (id)initWithSize:(struct CGSize)arg1 cornerRadius:(double)arg2 textSizeAdjustment:(long long)arg3;
 - (id)initWithSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
 - (id)init;

@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hideOnPush; // @synthesize hideOnPush=_hideOnPush;
 @property(nonatomic) _Bool hideOnModal; // @synthesize hideOnModal=_hideOnModal;
 @property(retain, nonatomic) AMSUIWebButtonModel *button; // @synthesize button=_button;
-- (_Bool)matchesForContainer:(id)arg1;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties

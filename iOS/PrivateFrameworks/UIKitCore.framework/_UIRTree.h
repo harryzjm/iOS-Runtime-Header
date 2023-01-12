@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexSet, NSMutableIndexSet;
+@class NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface _UIRTree : NSObject
@@ -19,12 +19,6 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CGRect)_frameForIndex:(long long)arg1;
-@property(readonly, nonatomic) NSIndexSet *allIndexes;
-@property(readonly, nonatomic) struct CGRect boundingFrame;
-- (id)visualDescription;
-- (void)enumerateFramesWithBlock:(CDUnknownBlockType)arg1;
-- (id)indexesForFramesIntersectingFrame:(struct CGRect)arg1;
-- (void)insertFrame:(struct CGRect)arg1 forIndex:(long long)arg2;
 - (id)description;
 - (id)init;
 

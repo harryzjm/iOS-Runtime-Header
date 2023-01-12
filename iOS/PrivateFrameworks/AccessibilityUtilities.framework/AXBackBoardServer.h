@@ -82,9 +82,6 @@
 - (void)setLockScreenDimTimerEnabled:(_Bool)arg1;
 - (void)adjustSystemZoom:(int)arg1;
 - (void)registerGestureConflictWithZoom:(id)arg1;
-- (void)_willClearServer;
-- (void)_didConnectToServer;
-- (id)_handleEventListener:(id)arg1;
 - (id)_serviceName;
 - (void)dealloc;
 - (id)init;

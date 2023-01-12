@@ -6,9 +6,10 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKObjectType, NSArray, NSString;
+@class HKObjectType, HKSampleType, NSArray, NSDate, NSString;
 
 @protocol HKAuthorizationStoreResetServer <NSObject>
+- (void)remote_recalibrateEstimatesForSampleType:(HKSampleType *)arg1 effectiveDate:(NSDate *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)remote_resetAuthorizationStatusesForObjects:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_resetObjectAuthorizationStatusForBundleIdentifier:(NSString *)arg1 objectType:(HKObjectType *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)remote_resetAuthorizationStatusForBundleIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

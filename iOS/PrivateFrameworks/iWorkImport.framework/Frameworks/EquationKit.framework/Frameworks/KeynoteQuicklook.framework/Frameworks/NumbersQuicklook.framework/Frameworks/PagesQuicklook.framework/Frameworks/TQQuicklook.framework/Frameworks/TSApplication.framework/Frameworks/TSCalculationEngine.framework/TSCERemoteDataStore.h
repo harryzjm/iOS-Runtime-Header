@@ -53,8 +53,8 @@
 - (struct TSCEValue)p_tsceValueFromTsceCellValue:(id)arg1;
 - (void)remoteDataDidUpdateValues:(id)arg1 quotes:(id)arg2;
 - (id)p_updateCachesWithMap:(id)arg1 quotes:(id)arg2 overwriteValues:(_Bool)arg3;
-- (void)removeRemoteDataInterest:(id)arg1 forOwner:(const UUIDData_5fbc143e *)arg2;
-- (void)addRemoteDataInterest:(id)arg1 forOwner:(const UUIDData_5fbc143e *)arg2;
+- (void)removeRemoteDataInterest:(id)arg1 forOwner:(const struct TSKUIDStruct *)arg2;
+- (void)addRemoteDataInterest:(id)arg1 forOwner:(const struct TSKUIDStruct *)arg2;
 - (id)cachedQuoteForSymbol:(id)arg1;
 - (struct TSCEValue)valueForRemoteData:(id)arg1;
 - (void)unregisterWithCoordinator;

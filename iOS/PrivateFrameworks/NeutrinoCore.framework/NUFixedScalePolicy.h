@@ -20,12 +20,12 @@
 @property(readonly, copy) NSString *description;
 - (CDStruct_912cb5d2)scaleForImageSize:(CDStruct_912cb5d2)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (id)initWithScale:(CDStruct_912cb5d2)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

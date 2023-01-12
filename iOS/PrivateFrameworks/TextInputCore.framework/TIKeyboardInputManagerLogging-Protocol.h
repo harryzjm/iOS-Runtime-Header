@@ -19,11 +19,10 @@
 - (void)logRefinements:(TIAutocorrectionList *)arg1 forCandidate:(TIKeyboardCandidate *)arg2 keyboardState:(TIKeyboardState *)arg3;
 - (void)logReplacements:(NSArray *)arg1 forString:(NSString *)arg2 keyLayout:(TIKeyboardLayout *)arg3;
 - (void)logKeyboardConfig:(TIKeyboardConfiguration *)arg1 textToCommit:(NSString *)arg2 forAcceptedCandidate:(TIKeyboardCandidate *)arg3 keyboardState:(TIKeyboardState *)arg4;
-- (void)logCandidateResultSet:(TIKeyboardCandidateResultSet *)arg1 forKeyboardState:(TIKeyboardState *)arg2;
-- (void)logAutocorrections:(TIAutocorrectionList *)arg1 forKeyboardState:(TIKeyboardState *)arg2 requestToken:(TICandidateRequestToken *)arg3;
-- (void)logKeyboardOutput:(TIKeyboardOutput *)arg1 keyboardConfiguration:(TIKeyboardConfiguration *)arg2 forKeyboardInput:(TIKeyboardInput *)arg3 keyboardState:(TIKeyboardState *)arg4;
+- (void)logCandidateResultSet:(TIKeyboardCandidateResultSet *)arg1 trace:(NSString *)arg2 forKeyboardState:(TIKeyboardState *)arg3;
+- (void)logAutocorrections:(TIAutocorrectionList *)arg1 trace:(NSString *)arg2 forKeyboardState:(TIKeyboardState *)arg3 requestToken:(TICandidateRequestToken *)arg4;
+- (void)logKeyboardOutput:(TIKeyboardOutput *)arg1 keyboardConfiguration:(TIKeyboardConfiguration *)arg2 trace:(NSString *)arg3 forKeyboardInput:(TIKeyboardInput *)arg4 keyboardState:(TIKeyboardState *)arg5;
 - (void)logKeyboardConfig:(TIKeyboardConfiguration *)arg1 forSyncToKeyboardState:(TIKeyboardState *)arg2;
-- (void)logToHumanReadableTrace:(NSString *)arg1;
 - (NSURL *)writeToFile;
 - (void)setConfig:(NSDictionary *)arg1;
 @end

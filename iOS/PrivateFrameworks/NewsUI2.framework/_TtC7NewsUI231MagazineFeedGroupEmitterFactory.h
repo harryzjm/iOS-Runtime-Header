@@ -12,9 +12,10 @@
 {
     MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;
-    MISSING_TYPE *topicClusteringService;
+    MISSING_TYPE *feedTopicClusteringService;
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *magazineCategoryService;
+    MISSING_TYPE *magazineCategoryConfigService;
     MISSING_TYPE *context;
     MISSING_TYPE *currentIssuesChecker;
     MISSING_TYPE *offlineIssueList;
@@ -29,6 +30,9 @@
     MISSING_TYPE *formatService;
     MISSING_TYPE *feedPaywallConfigFactory;
     MISSING_TYPE *offerManager;
+    MISSING_TYPE *myMagazinesStore;
+    MISSING_TYPE *subscriptionList;
+    MISSING_TYPE *offlineManager;
 }
 
 @end

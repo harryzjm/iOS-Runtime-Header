@@ -14,10 +14,12 @@
 {
     NSMutableArray *_layoutFields;
     int _formType;
+    unsigned int _radius;
     unsigned int _ttl;
     _Bool _enabled;
     struct {
         unsigned int has_formType:1;
+        unsigned int has_radius:1;
         unsigned int has_ttl:1;
         unsigned int has_enabled:1;
     } _flags;
@@ -39,6 +41,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasRadius;
+@property(nonatomic) unsigned int radius;
 @property(nonatomic) _Bool hasEnabled;
 @property(nonatomic) _Bool enabled;
 - (id)layoutFieldAtIndex:(unsigned long long)arg1;

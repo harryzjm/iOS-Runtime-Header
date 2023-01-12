@@ -55,6 +55,8 @@
 - (struct CGSize)previewImageSize;
 - (void)setSquareCropEnabled:(_Bool)arg1;
 - (_Bool)squareCropEnabled;
+- (void)handleBackgroundBlurActiveChangedForDevice:(id)arg1;
+- (void)handleCenterStageActiveChangedForDevice:(id)arg1;
 - (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (_Bool)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;

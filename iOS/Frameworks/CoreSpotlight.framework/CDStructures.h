@@ -10,19 +10,35 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGPoint {
+    double x;
+    double y;
+};
+
+struct CGRect {
+    struct CGPoint origin;
+    struct CGSize size;
+};
+
+struct CGSize {
+    double width;
+    double height;
+};
+
 struct CSAttributeEvaluatorContext {
     id _field1;
     CDUnknownBlockType _field2;
-    unsigned long long _field3;
-    _Bool _field4;
-    char *_field5;
-    long long _field6;
+    char *_field3;
+    CDStruct_183601bc *_field4;
+    CDStruct_183601bc *_field5;
+    int *_field6;
     long long _field7;
-    CDStruct_183601bc *_field8;
-    CDStruct_183601bc *_field9;
-    long long *_field10;
+    long long _field8;
+    long long _field9;
+    long long _field10;
     long long _field11;
-    long long _field12;
+    unsigned long long _field12;
+    _Bool _field13;
 };
 
 struct CSUnpackInfo {

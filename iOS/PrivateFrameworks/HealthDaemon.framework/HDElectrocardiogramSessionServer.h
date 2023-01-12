@@ -21,12 +21,6 @@
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-- (void)_queue_notifyClientDidDetectEmergencyCallbackModeWithEndDate:(id)arg1;
-- (void)_queue_notifyClientDidEndWithEndReason:(long long)arg1 error:(id)arg2;
-- (void)_queue_notifyClientDidDetectContactAtDate:(id)arg1;
-- (void)_queue_abortSensorSession;
-- (void)_queue_abortWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_startWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_abortWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_startWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectionInterrupted;

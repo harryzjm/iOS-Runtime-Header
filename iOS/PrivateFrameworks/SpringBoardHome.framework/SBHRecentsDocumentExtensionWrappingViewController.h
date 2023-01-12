@@ -6,16 +6,25 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSMapTable, NSMutableArray, _UIRemoteViewController;
+#import <SpringBoardHome/SBHRecentsDocumentExtensionViewControlling-Protocol.h>
 
-@interface SBHRecentsDocumentExtensionWrappingViewController : UIViewController
+@class NSMapTable, NSMutableArray, NSString, _UIRemoteViewController;
+@protocol SBHRecentsDocumentExtensionWrappingViewControllerDelegate;
+
+@interface SBHRecentsDocumentExtensionWrappingViewController : UIViewController <SBHRecentsDocumentExtensionViewControlling>
 {
-    _UIRemoteViewController *_wrappedRemoteViewController;
     NSMutableArray *_constraints;
     NSMapTable *_touchCancellationAssertionsToTokens;
+    _Bool _usesIntrinsicContentSizeBasedOnScreenSize;
+    _UIRemoteViewController *_wrappedRemoteViewController;
+    id <SBHRecentsDocumentExtensionWrappingViewControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool usesIntrinsicContentSizeBasedOnScreenSize; // @synthesize usesIntrinsicContentSizeBasedOnScreenSize=_usesIntrinsicContentSizeBasedOnScreenSize;
+@property(nonatomic) __weak id <SBHRecentsDocumentExtensionWrappingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) _UIRemoteViewController *wrappedRemoteViewController; // @synthesize wrappedRemoteViewController=_wrappedRemoteViewController;
+@property(readonly, nonatomic, getter=isTransparent) _Bool transparent;
 - (_Bool)_canShowWhileLocked;
 - (id)cancelTouchesForCurrentEventInHostedContent;
 - (void)wrapRemoteViewController:(id)arg1;
@@ -24,7 +33,14 @@
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)loadView;
 - (void)dealloc;
+- (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

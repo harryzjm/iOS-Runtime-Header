@@ -19,7 +19,7 @@
     CAMediaTimingFunction *_timing;
 }
 
-+ (id)springAnimationWithKeyPath:(id)arg1 velocity:(double)arg2;
++ (id)highFrameRateSpringAnimationWithKeyPath:(id)arg1 reason:(unsigned short)arg2;
 + (id)springAnimationWithKeyPath:(id)arg1;
 + (double)defaultDuration;
 + (id)defaultTimingFunction;
@@ -33,6 +33,7 @@
 - (void)_updateDurationIfNecessary;
 - (id)_timingFunctionForAnimation;
 - (id)_springAnimationWithKeyPath:(id)arg1;
+- (id)highFrameRateSpringAnimationWithKeyPath:(id)arg1 reason:(unsigned short)arg2;
 - (id)springAnimationWithKeyPath:(id)arg1;
 - (void)dealloc;
 - (id)initWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 velocity:(double)arg4 timing:(id)arg5;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetsLibraryServices/PLXPCObject.h>
+#import <PhotoLibraryServicesCore/PLXPCObject.h>
 
 #import <Photos/PHPerformChangesRequest-Protocol.h>
 #import <Photos/PLPerformChangesRequest-Protocol.h>
@@ -33,14 +33,18 @@
 @property(retain, nonatomic) PHPerformChangesInstrumentation *instrumentation; // @synthesize instrumentation=_instrumentation;
 - (id)errorWithLocalizedDescription:(id)arg1;
 - (void)executeWithService:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)_validatePerformChangesRequestServiceResultWithSuccess:(_Bool)arg1 returningError:(id)arg2;
 - (void)discardUnsupportedLimitedLibraryChangeRequests;
 - (_Bool)_isSupportedLimitedLibraryChangeRequest:(id)arg1;
 - (void)decodeWithService:(id)arg1 clientAuthorization:(id)arg2;
+- (id)clientDisplayName;
+- (id)clientBundleID;
 - (id)clientDescription;
 - (id)libraryServicesManager;
 - (id)persistentStoreCoordinator;
 - (long long)determineAuthorizationStatusForChanges;
-- (long long)accessScopeOptionsRequiredForRequestedChanges;
+@property(readonly, nonatomic) long long accessLevel;
+@property(readonly, nonatomic) long long accessScopeOptionsRequiredForRequestedChanges;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)notifyChangesTransactionFailedWithLazyPhotoLibrary:(id)arg1 error:(id)arg2;

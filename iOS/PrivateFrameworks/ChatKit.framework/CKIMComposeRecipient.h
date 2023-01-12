@@ -13,10 +13,12 @@
 @interface CKIMComposeRecipient : CNComposeRecipient <CKIMComposeRecipient>
 {
     IMHandle *_handle;
+    _Bool _useAbbreviatedDisplayName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useAbbreviatedDisplayName; // @synthesize useAbbreviatedDisplayName=_useAbbreviatedDisplayName;
 @property(readonly, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
 - (void)setIdentifier:(int)arg1;
 - (_Bool)isRemovableFromSearchResults;

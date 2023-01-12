@@ -10,7 +10,5 @@
 
 @protocol SBUIPoseidonIconViewDelegate <NSObject>
 - (void)poseidonIconViewCoachingStateDidChange:(SBUIPoseidonIconView *)arg1;
-- (double)poseidonIconViewRestToOpenIdleDuration:(SBUIPoseidonIconView *)arg1;
-- (double)poseidonIconViewIdleUntilShimmerDuration:(SBUIPoseidonIconView *)arg1;
 @end
 

@@ -19,7 +19,7 @@
 - (_Bool)stateCouldHaveBeenPayloadString:(id)arg1;
 @property(readonly, nonatomic) unsigned long long state;
 @property(readonly, nonatomic) const char *darwinNotification;
-- (id)initWithCppNotification:(const struct Notification *)arg1;
+- (id)initWithCppNotification:(const void *)arg1;
 
 @end
 

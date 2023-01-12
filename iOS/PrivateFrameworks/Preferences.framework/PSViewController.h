@@ -26,6 +26,7 @@
 - (void)formSheetViewWillDisappear;
 - (void)popupViewDidDisappear;
 - (void)popupViewWillDisappear;
+- (void)viewDidLoad;
 - (void)handleURL:(id)arg1;
 - (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)showController:(id)arg1 animate:(_Bool)arg2;

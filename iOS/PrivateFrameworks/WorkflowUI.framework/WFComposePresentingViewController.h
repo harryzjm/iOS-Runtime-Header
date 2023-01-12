@@ -6,23 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <WorkflowUI/UINavigationControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFComposeViewControllerPresenter-Protocol.h>
-#import <WorkflowUI/WFDragCoordinator-Protocol.h>
 
-@class NSArray, NSString, UIView, WFComposeViewController;
-@protocol WFModuleDelegate;
+@class NSString, WFComposeViewController;
 
-@interface WFComposePresentingViewController : UIViewController <WFComposeViewControllerPresenter, WFDragCoordinator>
+@interface WFComposePresentingViewController : UIViewController <WFComposeViewControllerPresenter, UINavigationControllerDelegate>
 {
     WFComposeViewController *_composeViewController;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WFComposeViewController *composeViewController; // @synthesize composeViewController=_composeViewController;
-@property(readonly, nonatomic) id <WFModuleDelegate> moduleDelegate;
-@property(readonly, nonatomic) NSArray *scrollViewsAffectingDrag;
-@property(readonly, nonatomic) NSArray *participatingViewControllers;
-@property(readonly, nonatomic) UIView *containerView;
 - (id)presentingViewControllerForComposeViewController:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithComposeViewController:(id)arg1;

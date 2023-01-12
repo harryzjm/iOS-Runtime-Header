@@ -4,46 +4,83 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/_TVLabel.h>
+#import <UIKit/UILabel.h>
 
 #import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 
-@class NSString, UIColor, VUITextLayout;
+@class NSAttributedString, NSString, UIColor, UIFont, VUITextLayout;
 
-@interface VUILabel : _TVLabel <VUILabelBaselineProtocol>
+@interface VUILabel : UILabel <VUILabelBaselineProtocol>
 {
     _Bool _selected;
     _Bool _lastSelectedOrHighlighted;
     VUITextLayout *_textLayout;
     NSString *_labelName;
+    long long _previousNumberOfLines;
     UIColor *_adjustmentModeNormalTintColor;
+    struct CGSize _cachedSizeThatFits;
+    struct CGSize _previousTargetSize;
+    struct UIEdgeInsets _padding;
+    struct CGRect _cachedTextRectForBounds;
+    struct CGRect _previousBounds;
 }
 
++ (unsigned long long)_numberOfLinesForLayout:(id)arg1;
 + (id)labelWithAttributedString:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3;
 + (id)labelWithString:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *adjustmentModeNormalTintColor; // @synthesize adjustmentModeNormalTintColor=_adjustmentModeNormalTintColor;
+@property(nonatomic) struct CGSize previousTargetSize; // @synthesize previousTargetSize=_previousTargetSize;
+@property(nonatomic) struct CGSize cachedSizeThatFits; // @synthesize cachedSizeThatFits=_cachedSizeThatFits;
+@property(nonatomic) long long previousNumberOfLines; // @synthesize previousNumberOfLines=_previousNumberOfLines;
+@property(nonatomic) struct CGRect previousBounds; // @synthesize previousBounds=_previousBounds;
+@property(nonatomic) struct CGRect cachedTextRectForBounds; // @synthesize cachedTextRectForBounds=_cachedTextRectForBounds;
+@property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property(copy, nonatomic) NSString *labelName; // @synthesize labelName=_labelName;
 @property(retain, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
+- (void)_configureAlignmentIfNeeded;
 - (void)_updateCompositingFilter;
 - (void)_updateTextColor:(_Bool)arg1;
 - (void)_updateTextColor;
+- (void)vui_setSelected:(_Bool)arg1 animated:(_Bool)arg2 withAnimationCoordinator:(id)arg3;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)vui_setHighlighted:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
-- (double)bottomMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(id)arg2;
+- (void)_clearCachedValues;
+- (void)drawTextInRect:(struct CGRect)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGRect)textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2;
+- (void)setBaselineAdjustment:(long long)arg1;
+- (void)setAdjustsFontSizeToFitWidth:(_Bool)arg1;
+- (void)setNumberOfLines:(long long)arg1;
+- (void)setLineBreakMode:(long long)arg1;
+- (void)setFont:(id)arg1;
+- (void)setText:(id)arg1;
+- (void)setTextColor:(id)arg1;
+- (void)setAttributedText:(id)arg1;
+- (double)bottomMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(unsigned long long)arg2;
+- (double)topMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(unsigned long long)arg2;
+@property(retain, nonatomic) NSAttributedString *vuiAttributedText;
+@property(readonly, nonatomic) double vuiBaselineHeight;
+@property(nonatomic) unsigned long long vuiNumberOfLines;
+@property(copy, nonatomic) NSString *vuiText;
+@property(nonatomic) long long vuiTextAlignment;
+- (void)setVuiBackgroundColor:(id)arg1;
+- (id)vuiBackgroundColor;
+@property(readonly, nonatomic) UIFont *vuiFont;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
-- (double)topMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(id)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (id)attributedText;
 - (void)revertTintColor;
 - (unsigned long long)numberOfLinesRequiredForTextWidth:(double)arg1;
 - (_Bool)requiresMoreThanOneLineForTextWidth:(double)arg1;
-- (double)baselineOffsetFromBottom;
+- (double)vui_baselineOffsetFromBottom;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)baselineHeight;
-- (_Bool)vui_marqueeOnHighlight;
-- (_Bool)vui_showOnHighlight;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

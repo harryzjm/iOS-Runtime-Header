@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/ConferenceCellDelegate-Protocol.h>
 #import <EventKitUI/EKEventDetailPredictedLocationCellDelegate-Protocol.h>
 #import <EventKitUI/UITextViewDelegate-Protocol.h>
 
-@class EKEventDetailPredictedLocationCell, NSMutableArray, NSObject, NSString, UIButton, UILabel, UIView;
+@class EKEventDetailConferenceCell, EKEventDetailPredictedLocationCell, NSMutableArray, NSObject, NSString, UIButton, UILabel, UIView;
 @protocol EKEventDetailTitleCellDelegate;
 
-@interface EKEventDetailTitleCell <UITextViewDelegate, EKEventDetailPredictedLocationCellDelegate>
+@interface EKEventDetailTitleCell <UITextViewDelegate, EKEventDetailPredictedLocationCellDelegate, ConferenceCellDelegate>
 {
     UILabel *_titleView;
     NSMutableArray *_locationItems;
+    UIView *_predictedLocationContainer;
     EKEventDetailPredictedLocationCell *_predictedLocationView;
+    EKEventDetailConferenceCell *_conferenceDetailView;
     UILabel *_travelTimeView;
     NSMutableArray *_dateTimeViews;
     UILabel *_recurrenceView;
@@ -23,7 +26,8 @@
     unsigned int _visibleItems;
     _Bool _observingLocaleChanges;
     _Bool _rejectionReasonCell;
-    _Bool _hideCellSeparator;
+    _Bool _hideTopCellSeparator;
+    _Bool _hideBottomCellSeparator;
     int _lastPosition;
     _Bool _hasMapItemLaunchOptionFromTimeToLeaveNotification;
     _Bool _showingInlineDayView;
@@ -41,6 +45,8 @@
 @property(nonatomic) _Bool showingInlineDayView; // @synthesize showingInlineDayView=_showingInlineDayView;
 @property(nonatomic) _Bool hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
 @property(nonatomic) __weak NSObject<EKEventDetailTitleCellDelegate> *delegate; // @synthesize delegate=_delegate;
+- (void)conferenceCellUpdated:(id)arg1;
+- (id)owningViewController;
 - (void)_saveEventWithSpan:(long long)arg1;
 - (void)eventDetailPredictedLocationCellRejectedPrediction:(id)arg1;
 - (void)eventDetailPredictedLocationCellAcceptedPrediction:(id)arg1 disambiguatedLocation:(id)arg2;
@@ -49,16 +55,20 @@
 - (double)_layoutForWidth:(double)arg1;
 - (void)layoutSubviews;
 - (double)titleHeight;
+- (id)_conferenceDetailView;
 - (id)_predictedLocationView;
+- (id)_predictedLocationContainer;
 - (id)_editButton;
 - (id)_statusView;
 - (id)_recurrenceView;
 - (id)_travelTimeView;
 - (id)_dateTimeViewForLine:(unsigned long long)arg1;
 - (id)_titleView;
-- (void)_updateSeparatorInsets;
-- (void)setHideCellSeparator:(_Bool)arg1;
+- (void)_updateSeparatorStyle;
+- (void)setHideBottomCellSeparator:(_Bool)arg1;
+- (void)setHideTopCellSeparator:(_Bool)arg1;
 - (void)editButtonTapped;
+- (_Bool)_shouldShowConferenceCell;
 - (_Bool)update;
 - (void)addLocation:(id)arg1;
 - (void)setLocation:(id)arg1;

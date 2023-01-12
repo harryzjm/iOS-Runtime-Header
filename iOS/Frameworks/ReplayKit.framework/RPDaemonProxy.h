@@ -22,9 +22,10 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSURL *broadcastURL; // @synthesize broadcastURL=_broadcastURL;
-- (oneway void)generateClipWithSeconds:(double)arg1 handler:(CDUnknownBlockType)arg2;
-- (oneway void)stopClipBufferingWithHandler:(CDUnknownBlockType)arg1;
-- (oneway void)startClipBufferingWithMicrophoneEnabled:(_Bool)arg1 windowSize:(struct CGSize)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (oneway void)resumeInAppClipWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)exportClipToURL:(id)arg1 duration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (oneway void)stopClipBufferingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (oneway void)startClipBufferingWithContextID:(id)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(_Bool)arg3 cameraEnabled:(_Bool)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (oneway void)recordingTimerDidUpdate:(id)arg1;
 - (oneway void)recordingLockInterrupted:(id)arg1;
@@ -42,6 +43,7 @@
 - (oneway void)getSystemBroadcastPickerInfo:(CDUnknownBlockType)arg1;
 - (oneway void)setMicrophoneEnabled:(_Bool)arg1;
 - (oneway void)reportCameraUsage:(long long)arg1;
+- (oneway void)saveClipToCameraRoll:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (oneway void)saveVideoToCameraRoll:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (oneway void)saveVideo:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (oneway void)macApplicationDidBecomeActiveWithContextID:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -9,7 +9,7 @@
 #import <TVMLKit/TVApplicationControllerDelegate-Protocol.h>
 #import <TVMLKit/UIApplicationDelegate-Protocol.h>
 
-@class BKSProcessAssertion, NSString, TVApplicationController, UIWindow;
+@class NSString, TVApplicationController, UIWindow;
 
 @interface TVAppDelegate : UIResponder <UIApplicationDelegate, TVApplicationControllerDelegate>
 {
@@ -17,11 +17,9 @@
     _Bool _shouldTerminateOnEnterBackground;
     UIWindow *_window;
     TVApplicationController *_appController;
-    BKSProcessAssertion *_launchAssertion;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) BKSProcessAssertion *launchAssertion; // @synthesize launchAssertion=_launchAssertion;
 @property(nonatomic) _Bool shouldTerminateOnEnterBackground; // @synthesize shouldTerminateOnEnterBackground=_shouldTerminateOnEnterBackground;
 @property(retain, nonatomic) TVApplicationController *appController; // @synthesize appController=_appController;
 @property(retain, nonatomic) UIWindow *window; // @synthesize window=_window;

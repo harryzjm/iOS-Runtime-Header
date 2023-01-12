@@ -12,11 +12,11 @@
 {
     NSArray *_phones;
     NSString *_email;
-    NSArray *_imAddresses;
+    NSArray *_socialProfileIdentifiers;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *imAddresses; // @synthesize imAddresses=_imAddresses;
+@property(copy, nonatomic) NSArray *socialProfileIdentifiers; // @synthesize socialProfileIdentifiers=_socialProfileIdentifiers;
 @property(copy, nonatomic) NSString *email; // @synthesize email=_email;
 @property(copy, nonatomic) NSArray *phones; // @synthesize phones=_phones;
 

@@ -39,8 +39,9 @@
 @property(readonly, nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @synthesize secureTextEntry=_secureTextEntry;
 @property(copy, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 - (id)parameterStateFromDialogResponse:(id)arg1;
+@property(readonly, nonatomic) NSString *returnKeyType;
 - (id)createDialogTextFieldConfigurationWithDefaultState:(id)arg1;
-- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 prompt:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setLocalizedPlaceholder:(id)arg1;
 - (id)defaultSupportedVariableTypes;
 - (id)hintForState:(id)arg1;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface LPYouTubeVideoView <LPYouTubePlayerDelegate>
 {
     LPYouTubePlayerView *_platformYouTubeView;
+    _Bool _allowingInteractionUntilPlaybackResumes;
 }
 
 - (void).cxx_destruct;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)youTubePlayer:(id)arg1 didChangeToFullScreen:(_Bool)arg2;
 - (void)youTubePlayer:(id)arg1 didReceiveError:(id)arg2;
 - (void)youTubePlayer:(id)arg1 didChangeToState:(long long)arg2;
+- (void)setAllowsUserInteractionWithVideoPlayer:(_Bool)arg1;
 - (id)createVideoPlayerView;
 - (void)setPlaying:(_Bool)arg1;
 - (void)setVolume:(double)arg1;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isMuted;
 - (_Bool)shouldShowMuteButton;
 - (_Bool)usesSharedAudioSession;
-- (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 configuration:(id)arg5;
+- (id)initWithHost:(id)arg1 video:(id)arg2 style:(id)arg3 posterFrame:(id)arg4 posterFrameStyle:(id)arg5 configuration:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

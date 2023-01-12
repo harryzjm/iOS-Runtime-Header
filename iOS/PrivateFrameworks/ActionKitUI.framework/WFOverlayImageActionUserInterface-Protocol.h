@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSArray, WFImage;
 
-@protocol WFOverlayImageActionUserInterface <WFRemoteUserInterface>
+@protocol WFOverlayImageActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithOverlayImage:(WFImage *)arg1 images:(NSArray *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 @end
 

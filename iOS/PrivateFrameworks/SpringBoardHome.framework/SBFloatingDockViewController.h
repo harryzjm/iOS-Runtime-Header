@@ -10,31 +10,45 @@
 #import <SpringBoardHome/SBFloatingDockViewDelegate-Protocol.h>
 #import <SpringBoardHome/SBFolderControllerDelegate-Protocol.h>
 #import <SpringBoardHome/SBFolderPresentingViewControllerDelegate-Protocol.h>
+#import <SpringBoardHome/SBHLibraryIndicatorIconDropInteractionContextProviding-Protocol.h>
+#import <SpringBoardHome/SBHLibraryViewControllerObserver-Protocol.h>
+#import <SpringBoardHome/SBHModalLibraryPresentationDelegate-Protocol.h>
+#import <SpringBoardHome/SBHModalLibraryPresenterContextProviding-Protocol.h>
 #import <SpringBoardHome/SBIconListModelObserver-Protocol.h>
 #import <SpringBoardHome/SBIconListViewDragDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconLocationPresenting-Protocol.h>
+#import <SpringBoardHome/SBIconViewDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconViewProviding-Protocol.h>
 #import <SpringBoardHome/SBIconViewQuerying-Protocol.h>
 #import <SpringBoardHome/SBScaleIconZoomAnimationContaining-Protocol.h>
+#import <SpringBoardHome/SBUICoronaAnimationControllerParticipant-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableArray, NSSet, NSString, SBFTouchPassThroughView, SBFloatingDockView, SBFolderController, SBFolderPresentingViewController, SBHFloatingDockStyleConfiguration, SBHIconManager, SBHIconModel, SBHomeScreenIconTransitionAnimator, SBIconListModel, SBIconListView, UIView, UIViewController, UIWindow, _UILegibilitySettings;
+@class NSArray, NSHashTable, NSMutableArray, NSSet, NSString, SBFTouchPassThroughView, SBFloatingDockView, SBFolderController, SBFolderPresentingViewController, SBHFloatingDockStyleConfiguration, SBHIconManager, SBHIconModel, SBHLibraryIconViewController, SBHLibraryIndicatorIconDropInteractionDelegate, SBHLibraryViewController, SBHModalLibraryPresenter, SBHomeScreenIconTransitionAnimator, SBIconListModel, SBIconListView, SBIconView, UIView, UIViewController, UIWindow, _UILegibilitySettings;
 @protocol SBFloatingDockSuggestionsViewProviding, SBFloatingDockViewControllerDelegate, SBIconViewProviding;
 
-@interface SBFloatingDockViewController : SBFTouchPassThroughViewController <SBIconListViewDragDelegate, SBIconListModelObserver, SBFolderControllerDelegate, SBFolderPresentingViewControllerDelegate, SBScaleIconZoomAnimationContaining, SBIconViewProviding, SBFloatingDockViewDelegate, SBIconViewQuerying, SBIconLocationPresenting, BSDescriptionProviding>
+@interface SBFloatingDockViewController : SBFTouchPassThroughViewController <SBIconListViewDragDelegate, SBIconListModelObserver, SBFolderControllerDelegate, SBFolderPresentingViewControllerDelegate, SBScaleIconZoomAnimationContaining, SBIconViewDelegate, SBIconViewProviding, SBFloatingDockViewDelegate, SBHLibraryViewControllerObserver, SBHModalLibraryPresenterContextProviding, SBHModalLibraryPresentationDelegate, SBHLibraryIndicatorIconDropInteractionContextProviding, SBUICoronaAnimationControllerParticipant, SBIconViewQuerying, SBIconLocationPresenting, BSDescriptionProviding>
 {
     SBFloatingDockView *_dockView;
+    SBIconView *_libraryPodIconView;
+    SBHLibraryIconViewController *_libraryIconViewController;
+    SBHLibraryIndicatorIconDropInteractionDelegate *_libraryIconDropInteractionDelegate;
+    long long _targetingPresentingLibrary;
     _UILegibilitySettings *_legibilitySettings;
     NSHashTable *_bouncedDropSessions;
     struct __CFRunLoopObserver *_resizeRunLoopObserver;
+    _Bool _libraryPodIconEnabled;
+    _Bool _libraryPodIconVisible;
     _Bool _wantsFastIconReordering;
     _Bool _shouldIndicateImpossibleDrop;
     _Bool _transitioningUnderlyingPresentationStyleConfiguration;
     id <SBFloatingDockViewControllerDelegate> _delegate;
     UIViewController<SBFloatingDockSuggestionsViewProviding> *_suggestionsViewController;
+    SBHLibraryViewController *_libraryViewController;
     double _dockOffscreenProgress;
     SBHIconManager *_iconManager;
     id <SBIconViewProviding> _iconViewProvider;
     SBIconListModel *_dockListModel;
+    SBHModalLibraryPresenter *_libraryPresenter;
     SBFolderPresentingViewController *_folderPresentingViewController;
     SBHomeScreenIconTransitionAnimator *_currentFolderAnimator;
     NSMutableArray *_currentExpandCompletions;
@@ -55,12 +69,16 @@
 @property(retain, nonatomic) NSMutableArray *currentExpandCompletions; // @synthesize currentExpandCompletions=_currentExpandCompletions;
 @property(retain, nonatomic) SBHomeScreenIconTransitionAnimator *currentFolderAnimator; // @synthesize currentFolderAnimator=_currentFolderAnimator;
 @property(retain, nonatomic) SBFolderPresentingViewController *folderPresentingViewController; // @synthesize folderPresentingViewController=_folderPresentingViewController;
+@property(retain, nonatomic) SBHModalLibraryPresenter *libraryPresenter; // @synthesize libraryPresenter=_libraryPresenter;
 @property(retain, nonatomic) SBIconListModel *dockListModel; // @synthesize dockListModel=_dockListModel;
 @property(readonly, nonatomic) __weak id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
 @property(readonly, nonatomic) SBHIconManager *iconManager; // @synthesize iconManager=_iconManager;
 @property(nonatomic) _Bool shouldIndicateImpossibleDrop; // @synthesize shouldIndicateImpossibleDrop=_shouldIndicateImpossibleDrop;
 @property(nonatomic) _Bool wantsFastIconReordering; // @synthesize wantsFastIconReordering=_wantsFastIconReordering;
 @property(nonatomic) double dockOffscreenProgress; // @synthesize dockOffscreenProgress=_dockOffscreenProgress;
+@property(retain, nonatomic) SBHLibraryViewController *libraryViewController; // @synthesize libraryViewController=_libraryViewController;
+@property(nonatomic, getter=isLibraryPodIconVisible) _Bool libraryPodIconVisible; // @synthesize libraryPodIconVisible=_libraryPodIconVisible;
+@property(nonatomic, getter=isLibraryPodIconEnabled) _Bool libraryPodIconEnabled; // @synthesize libraryPodIconEnabled=_libraryPodIconEnabled;
 @property(retain, nonatomic) UIViewController<SBFloatingDockSuggestionsViewProviding> *suggestionsViewController; // @synthesize suggestionsViewController=_suggestionsViewController;
 @property(nonatomic) __weak id <SBFloatingDockViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -114,7 +132,38 @@
 - (void)_presentFolderForIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissPresentedFolderAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentFolderForIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)handleSpringLoadDidActivateForLibraryIndicatorIconView:(id)arg1;
+- (void)libraryIndicatorIconView:(id)arg1 didAcceptDropForSession:(id)arg2;
+- (id)iconModelForDroppingIntoLibraryIndicatorIconView:(id)arg1;
+- (void)_prepareLibraryViewControllerForDismissal:(id)arg1;
+- (_Bool)modalLibraryPresenterShouldAllowSwipeToDismissGesture:(id)arg1;
+- (void)modalLibraryPresenter:(id)arg1 didDismissLibrary:(id)arg2;
+- (void)modalLibraryPresenter:(id)arg1 didPassCriticalDismissalPoint:(id)arg2;
+- (void)modalLibraryPresenter:(id)arg1 willDismissLibrary:(id)arg2;
+- (void)modalLibraryPresenter:(id)arg1 didPresentLibrary:(id)arg2;
+- (void)modalLibraryPresenter:(id)arg1 willPresentLibrary:(id)arg2;
+- (id)libraryIconViewControllerForPresenter:(id)arg1;
+- (id)libraryIconViewForPresenter:(id)arg1;
+- (id)sourceListViewForPresenter:(id)arg1;
+- (id)acquireOrderSourceContainerViewBeforeLibraryViewAssertionForReason:(id)arg1;
+- (id)sourceContainerViewForPresenter:(id)arg1;
+- (id)containerViewControllerForPresentingInForeground:(id)arg1;
+- (_Bool)isDefaultContainerForegroundForPresenter:(id)arg1;
+- (void)libraryViewController:(id)arg1 dataSourceDidChange:(id)arg2;
+- (void)toggleLibraryPresentedAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dismissLibraryAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentLibraryAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic, getter=isPresentingLibraryInForeground) _Bool presentingLibraryInForeground;
+@property(readonly, nonatomic, getter=isPresentingLibrary) _Bool presentingLibrary;
 - (void)floatingDockSuggestionsViewControllerDidChangeNumberOfVisibleSuggestions:(id)arg1;
+- (unsigned long long)focusEffectTypeForIconView:(id)arg1;
+- (_Bool)iconViewCanBecomeFocused:(id)arg1;
+- (id)customImageViewControllerForIconView:(id)arg1;
+- (_Bool)iconViewCanBeginDrags:(id)arg1;
+- (void)iconTapped:(id)arg1;
+- (void)icon:(id)arg1 touchEnded:(_Bool)arg2;
+- (void)icon:(id)arg1 touchMoved:(id)arg2;
+- (void)iconTouchBegan:(id)arg1;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
 - (_Bool)isIconViewRecycled:(id)arg1;
 - (void)recycleIconView:(id)arg1;
@@ -129,12 +178,14 @@
 - (void)iconListView:(id)arg1 iconDragItem:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (id)iconListView:(id)arg1 previewForDroppingIconDragItem:(id)arg2 proposedPreview:(id)arg3;
 - (void)iconListView:(id)arg1 willUseIconView:(id)arg2 forDroppingIconDragItem:(id)arg3;
+- (id)iconListView:(id)arg1 iconViewForDroppingIconDragItem:(id)arg2 proposedIconView:(id)arg3;
 - (void)iconListView:(id)arg1 performIconDrop:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSessionDidExit:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSession:(id)arg2 didPauseAtLocation:(struct CGPoint)arg3;
 - (id)iconListView:(id)arg1 iconDropSessionDidUpdate:(id)arg2;
 - (void)iconListView:(id)arg1 iconDropSessionDidEnter:(id)arg2;
 - (_Bool)iconListView:(id)arg1 canHandleIconDropSession:(id)arg2;
+- (void)coronaAnimationController:(id)arg1 willAnimateCoronaTransitionWithAnimator:(id)arg2;
 - (void)floatingDockViewMainPlatterDidChangeFrame:(id)arg1;
 - (void)_sizeCategoryDidChange:(id)arg1;
 - (void)reduceTransparencyEnabledStateDidChange:(id)arg1;
@@ -142,23 +193,31 @@
 - (void)iconEditingDidChange:(id)arg1;
 - (void)iconModelDidLayout:(id)arg1;
 - (void)iconManagerDidChangeIconModel:(id)arg1;
+- (id)acquireUseSnapshotAsBackgroundViewAssertionForReason:(id)arg1;
+- (id)_backdropGroupNamespace;
+- (id)_backdropGroupNameForCurrentUserInterfaceStyle;
 - (void)_updatePlatterShadowForStyleConfiguration:(id)arg1;
 - (void)_updatePresentedFolderBackgroundForStyleConfiguration:(id)arg1;
 - (void)_updateFolderIconBackgroundsForStyleConfiguration:(id)arg1;
+- (void)_updateLibraryPodIconComponentVisibility;
 - (void)_updateDockForStyleConfiguration:(id)arg1;
 - (unsigned long long)_currentFolderIconBackgroundStyle;
 - (unsigned long long)_platterEffectForPresentedFolder;
 - (unsigned long long)_backgroundEffectForPresentedFolder;
+- (_Bool)_isLibraryContainedInForeground;
+- (_Bool)_isInSwitcherTransition;
 - (_Bool)_isInAppToAppTransition;
 - (void)_coalesceRequestsToResizeDockForChangedNumberOfIcons;
 - (void)_resizeDockForChangedNumberOfIconsAnimated:(_Bool)arg1;
 - (_Bool)_shouldOpenFolderIcon:(id)arg1;
+- (void)_updateLibraryPodDockAccessoryViewDisplayed;
 - (void)_rebuildAfterIconModelChange;
 - (void)_rebuildUserIconListView;
 - (void)_setPaddingEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)_addDockGestureRecognizer:(id)arg1;
 - (_Bool)isDisplayingIcon:(id)arg1 inLocations:(id)arg2;
 - (_Bool)isDisplayingIcon:(id)arg1 inLocation:(id)arg2;
+- (id)firstIconViewForIcon:(id)arg1 options:(unsigned long long)arg2;
 - (id)firstIconViewForIcon:(id)arg1 excludingLocations:(id)arg2;
 - (id)firstIconViewForIcon:(id)arg1;
 - (id)firstIconViewForIcon:(id)arg1 inLocations:(id)arg2;
@@ -171,7 +230,7 @@
 - (_Bool)isDisplayingIconView:(id)arg1;
 - (_Bool)isDisplayingIcon:(id)arg1;
 - (void)enumerateIconListsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)layoutUserControlledIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(_Bool)arg3;
+- (void)layoutUserControlledIconListsWithAnimationType:(long long)arg1 forceRelayout:(_Bool)arg2;
 - (void)dockViewDidBecomeVisible;
 - (void)dockViewDidResignVisible;
 - (void)dockViewWillResignVisible;
@@ -179,6 +238,9 @@
 @property(readonly, nonatomic) struct CGRect floatingDockScreenPresentationFrame;
 @property(readonly, nonatomic) struct CGRect floatingDockScreenFrame;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) struct CGSize maximumEditingIconSize;
+- (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+@property(nonatomic, getter=isEditing) _Bool editing;
 @property(readonly, nonatomic) SBFolderController *presentedFolderController;
 @property(readonly, nonatomic, getter=isPresentingFolder) _Bool presentingFolder;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
@@ -194,11 +256,19 @@
 @property(readonly, nonatomic) double maximumContentHeight;
 - (id)userIconLocation;
 - (id)suggestionsIconLocation;
+@property(retain, nonatomic) UIViewController *overrideLibraryContainerViewController;
+- (_Bool)isLibraryPodIconEffectivelyVisible;
+- (void)setLibraryPodIconVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_rebuildLibraryPodIcon;
 - (id)recentIconListView;
+@property(readonly, nonatomic) SBIconView *libraryPodIconView;
 - (id)userIconListView;
 @property(retain, nonatomic) SBFloatingDockView *dockView;
 - (id)dockViewIfExists;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithIconManager:(id)arg1 iconViewProvider:(id)arg2;

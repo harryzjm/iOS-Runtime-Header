@@ -32,6 +32,8 @@
 - (BOOL)signalPackForDestinationEntry:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)signalPackForDestinationMapItem:(id)arg1 originCoordinate:(struct CLLocationCoordinate2D)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)preload;
+- (_Bool)isTransitUser;
+- (_Bool)isTransitUserHere;
 - (double)isTouristHere;
 - (id)confidenceScoresForContacts:(id)arg1 addresses:(id)arg2;
 - (id)confidenceScoresForMapItems:(id)arg1;

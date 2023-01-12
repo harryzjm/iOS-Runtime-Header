@@ -6,18 +6,23 @@
 
 #import <Intents/INIntent.h>
 
-@class DeviceQuery, NSArray, NSNumber;
+@class NSArray, NSNumber;
 
 @interface PauseMediaIntent : INIntent
 {
 }
 
+- (id)initWithDomain:(id)arg1 verb:(id)arg2 parametersByName:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 backingStore:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 // Remaining properties
-@property(copy, nonatomic) NSArray *deviceContext; // @dynamic deviceContext;
-@property(copy, nonatomic) DeviceQuery *deviceQuery; // @dynamic deviceQuery;
-@property(copy, nonatomic) NSArray *devices; // @dynamic devices;
-@property(copy, nonatomic) NSNumber *isDirectInvocation; // @dynamic isDirectInvocation;
+@property(nonatomic, copy) NSArray *deviceContext; // @dynamic deviceContext;
+@property(nonatomic, copy) NSArray *deviceQueries; // @dynamic deviceQueries;
+@property(nonatomic, copy) NSArray *devices; // @dynamic devices;
+@property(nonatomic, retain) NSNumber *isDirectInvocation; // @dynamic isDirectInvocation;
 @property(nonatomic) long long mediaType; // @dynamic mediaType;
+
 @end
 

@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (id)settingsUIDefinition;
 - (void)logOut;
+- (_Bool)supportsMultipleAccounts;
 - (_Bool)canLogOut;
 - (id)username;
 - (id)resourceName;

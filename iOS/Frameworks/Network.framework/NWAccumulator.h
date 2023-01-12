@@ -10,23 +10,20 @@
 
 @interface NWAccumulator : NSObject
 {
+    struct os_unfair_lock_s _lock;
+    struct os_unfair_lock_s _kvo_lock;
     NSString *_name;
     NWAccumulator *_lastSnapshot;
     NSMutableArray *_accumulatedValues;
-    NSObject *_resetObject;
-    NSString *_resetKeyPath;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *resetKeyPath; // @synthesize resetKeyPath=_resetKeyPath;
-@property(retain, nonatomic) NSObject *resetObject; // @synthesize resetObject=_resetObject;
 @property(retain, nonatomic) NSMutableArray *accumulatedValues; // @synthesize accumulatedValues=_accumulatedValues;
 @property(retain, nonatomic) NWAccumulator *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)dictionaryRepresentation;
 - (id)snapshot;
 - (void)reset;
-- (void)resetUponChange:(id)arg1 ofKey:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)registerObserverForKeyPath:(id)arg1 ofObject:(id)arg2 alreadyRegistered:(_Bool)arg3;
 - (void)addAccumulation:(id)arg1 withName:(id)arg2 forKey:(id)arg3 stateCallback:(CDUnknownBlockType)arg4;

@@ -58,8 +58,10 @@
 - (void)publisher:(id)arg1 terminatedWithReason:(long long)arg2;
 - (void)publisher:(id)arg1 failedToStartWithError:(long long)arg2;
 - (void)publisherStarted:(id)arg1;
+- (void)updateLinkStatus:(int)arg1;
 - (void)sendMessageData:(id)arg1 endpoint:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reportIssue:(id)arg1;
+- (void)generateStatisticsReportWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidated;
 - (void)_invalidate;
 - (void)invalidate;

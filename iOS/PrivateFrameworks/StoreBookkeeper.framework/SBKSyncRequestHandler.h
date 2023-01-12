@@ -23,8 +23,8 @@
 
 + (long long)conflictDetectionType;
 - (void).cxx_destruct;
-@property(readonly) SBKTransactionController *transactionController; // @synthesize transactionController=_transactionController;
-@property(readonly) SBKSyncResponseData *responseData; // @synthesize responseData=_responseData;
+@property(readonly, nonatomic) SBKTransactionController *transactionController; // @synthesize transactionController=_transactionController;
+@property(readonly, nonatomic) SBKSyncResponseData *responseData; // @synthesize responseData=_responseData;
 - (id)transaction:(id)arg1 keyValuePairForUpdatedKey:(id)arg2;
 - (void)transaction:(id)arg1 processDeletedKey:(id)arg2 isDirty:(_Bool *)arg3;
 - (void)transaction:(id)arg1 processUpdatedKey:(id)arg2 data:(id)arg3 conflict:(_Bool)arg4 isDirty:(_Bool *)arg5;
@@ -34,10 +34,11 @@
 - (void)clearTransactionResponseData;
 - (void)_onQueue_clearTransactionResponseData;
 - (id)responseDataForResponseKey:(id)arg1;
-@property(readonly) NSArray *responseConflictedKeys; // @synthesize responseConflictedKeys=_responseConflictedKeys;
-@property(readonly) NSArray *responseDeletedKeys; // @synthesize responseDeletedKeys=_responseDeletedKeys;
-@property(readonly) NSArray *responseUpdatedKeys; // @synthesize responseUpdatedKeys=_responseUpdatedKeys;
-@property(copy) NSString *responseDomainVersion;
+@property(readonly, nonatomic) NSArray *responseConflictedKeys; // @synthesize responseConflictedKeys=_responseConflictedKeys;
+@property(readonly, nonatomic) NSArray *responseDeletedKeys; // @synthesize responseDeletedKeys=_responseDeletedKeys;
+@property(readonly, nonatomic) NSArray *responseUpdatedKeys; // @synthesize responseUpdatedKeys=_responseUpdatedKeys;
+@property(copy, nonatomic) NSString *responseDomainVersion;
+- (id)initWithBagContext:(id)arg1 accountIdentifier:(id)arg2;
 - (id)initWithBagContext:(id)arg1;
 
 // Remaining properties

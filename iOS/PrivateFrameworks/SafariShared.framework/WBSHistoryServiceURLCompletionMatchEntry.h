@@ -12,7 +12,7 @@
 
 @interface WBSHistoryServiceURLCompletionMatchEntry : NSObject <NSSecureCoding>
 {
-    unique_ptr_1250213a _streamData;
+    struct unique_ptr<SafariShared::_HistoryStreamedMatchEntry, std::default_delete<SafariShared::_HistoryStreamedMatchEntry>> _streamData;
     NSString *_url;
     NSString *_title;
 }
@@ -22,12 +22,13 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSString *url;
+@property(readonly, nonatomic) long long visitCountScore;
 @property(readonly, nonatomic) float topSitesScore;
 @property(readonly, nonatomic) struct _HistoryStreamedMatchEntry *streamData;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStreamData:(unique_ptr_1250213a *)arg1;
-- (id)initWithURLString:(id)arg1 title:(id)arg2 topSitesScore:(float)arg3;
+- (id)initWithStreamData:(void *)arg1;
+- (id)initWithURLString:(id)arg1 title:(id)arg2 topSitesScore:(float)arg3 visitCountScore:(long long)arg4;
 - (id)init;
 
 @end

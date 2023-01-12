@@ -6,25 +6,38 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/NSCopying-Protocol.h>
+
 @class NSString;
 @protocol OS_xpc_object;
 
-@interface CSAudioStartStreamOption : NSObject
+@interface CSAudioStartStreamOption : NSObject <NSCopying>
 {
     _Bool _requestHistoricalAudioDataWithHostTime;
     _Bool _requestHistoricalAudioDataSampleCount;
     _Bool _useOpportunisticZLL;
     _Bool _skipAlertBehavior;
     _Bool _requireSingleChannelLookup;
+    _Bool _disableEndpointer;
+    _Bool _disableLocalSpeechRecognizer;
     unsigned int _selectedChannel;
     unsigned long long _startRecordingHostTime;
     unsigned long long _startRecordingSampleCount;
     long long _startAlertBehavior;
     long long _stopAlertBehavior;
     long long _errorAlertBehavior;
+    unsigned long long _estimatedStartHostTime;
+    NSString *_requestMHUUID;
+    NSString *_siriSessionUUID;
 }
 
 + (id)noAlertOption;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *siriSessionUUID; // @synthesize siriSessionUUID=_siriSessionUUID;
+@property(retain, nonatomic) NSString *requestMHUUID; // @synthesize requestMHUUID=_requestMHUUID;
+@property(nonatomic) _Bool disableLocalSpeechRecognizer; // @synthesize disableLocalSpeechRecognizer=_disableLocalSpeechRecognizer;
+@property(nonatomic) _Bool disableEndpointer; // @synthesize disableEndpointer=_disableEndpointer;
+@property(nonatomic) unsigned long long estimatedStartHostTime; // @synthesize estimatedStartHostTime=_estimatedStartHostTime;
 @property(nonatomic) unsigned int selectedChannel; // @synthesize selectedChannel=_selectedChannel;
 @property(nonatomic) _Bool requireSingleChannelLookup; // @synthesize requireSingleChannelLookup=_requireSingleChannelLookup;
 @property(nonatomic) _Bool skipAlertBehavior; // @synthesize skipAlertBehavior=_skipAlertBehavior;
@@ -37,13 +50,15 @@
 @property(nonatomic) _Bool requestHistoricalAudioDataSampleCount; // @synthesize requestHistoricalAudioDataSampleCount=_requestHistoricalAudioDataSampleCount;
 @property(nonatomic) _Bool requestHistoricalAudioDataWithHostTime; // @synthesize requestHistoricalAudioDataWithHostTime=_requestHistoricalAudioDataWithHostTime;
 @property(readonly, nonatomic) NSString *localizedDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject;
 - (id)initWithXPCObject:(id)arg1;
+- (id)initTandemWithOption:(id)arg1;
 - (long long)_alertBehaviorTypeFromAVVCOberrideType:(long long)arg1;
 - (long long)_avvcAlertOverrideType:(long long)arg1;
+- (_Bool)isAlertBehaviorOverridedBeep;
 - (id)avvcAlertBehavior;
 - (void)setAVVCAlertBehavior:(id)arg1;
-- (id)avvcSettings;
 - (id)avvcStartRecordSettingsWithAudioStreamHandleId:(unsigned long long)arg1;
 
 @end

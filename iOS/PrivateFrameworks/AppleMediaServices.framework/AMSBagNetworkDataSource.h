@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface AMSBagNetworkDataSource : NSObject <AMSBagDataSourceProtocol>
 {
+    NSError *_activeFailure;
     CDUnknownBlockType _dataSourceChangedHandler;
     CDUnknownBlockType _dataSourceDataInvalidatedHandler;
     AMSProcessInfo *_processInfo;
@@ -21,12 +22,12 @@ __attribute__((visibility("hidden")))
     NSString *_profileVersion;
     AMSObserver *_accountsChangedObserver;
     AMSBagNetworkTaskResult *_cachedResult;
-    NSObject<OS_dispatch_queue> *_cachedDataAccessQueue;
+    struct os_unfair_recursive_lock_s _cachedDataAccessLock;
     NSString *_cachedStorefront;
-    NSObject<OS_dispatch_queue> *_cachedStorefrontAccessQueue;
+    struct os_unfair_recursive_lock_s _cachedStorefrontAccessLock;
     NSObject<OS_dispatch_queue> *_completionQueue;
     AMSBagNetworkTask *_currentLoadTask;
-    NSError *_activeFailure;
+    NSDate *_activeFailureExpiration;
     NSObject<OS_dispatch_queue> *_processAccountStoreDidChangeNotificationQueue;
 }
 
@@ -35,12 +36,12 @@ __attribute__((visibility("hidden")))
 + (id)valueForURLVariable:(id)arg1 account:(id)arg2 clientInfo:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
-@property(retain, nonatomic) NSError *activeFailure; // @synthesize activeFailure=_activeFailure;
+@property(readonly, nonatomic) NSDate *activeFailureExpiration; // @synthesize activeFailureExpiration=_activeFailureExpiration;
 @property(retain, nonatomic) AMSBagNetworkTask *currentLoadTask; // @synthesize currentLoadTask=_currentLoadTask;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *cachedStorefrontAccessQueue; // @synthesize cachedStorefrontAccessQueue=_cachedStorefrontAccessQueue;
+@property(readonly, nonatomic) struct os_unfair_recursive_lock_s cachedStorefrontAccessLock; // @synthesize cachedStorefrontAccessLock=_cachedStorefrontAccessLock;
 @property(retain, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *cachedDataAccessQueue; // @synthesize cachedDataAccessQueue=_cachedDataAccessQueue;
+@property(readonly, nonatomic) struct os_unfair_recursive_lock_s cachedDataAccessLock; // @synthesize cachedDataAccessLock=_cachedDataAccessLock;
 @property(retain, nonatomic) AMSBagNetworkTaskResult *cachedResult; // @synthesize cachedResult=_cachedResult;
 @property(retain, nonatomic) AMSObserver *accountsChangedObserver; // @synthesize accountsChangedObserver=_accountsChangedObserver;
 @property(readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)bagKeyInfoForKey:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(retain, nonatomic) NSString *descriptionExtended;
+@property(retain, nonatomic) NSError *activeFailure; // @synthesize activeFailure=_activeFailure;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 @property(readonly, nonatomic) NSDate *expirationDate;
 - (void)dealloc;

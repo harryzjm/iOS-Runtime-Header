@@ -10,8 +10,8 @@
 
 @interface AVTAssetLibrary : NSObject
 {
-    NSMutableArray *_assets[34];
-    NSMutableDictionary *_assetsByName[34];
+    NSMutableArray *_assets[37];
+    NSMutableDictionary *_assetsByName[37];
 }
 
 + (id)sharedAssetLibrary;

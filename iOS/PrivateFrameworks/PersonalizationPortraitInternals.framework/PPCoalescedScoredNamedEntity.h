@@ -15,10 +15,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned short occurrencesInSource; // @synthesize occurrencesInSource=_occurrencesInSource;
-@property(readonly, nonatomic) PPScoredItem *scoredNamedEntity; // @synthesize scoredNamedEntity=_scoredNamedEntity;
 - (id)init;
-- (id)initWithScoredNamedEntity:(id)arg1 occurrencesInSource:(unsigned short)arg2;
 
 @end
 

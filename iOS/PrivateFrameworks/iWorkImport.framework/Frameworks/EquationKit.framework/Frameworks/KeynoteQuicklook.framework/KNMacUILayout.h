@@ -17,14 +17,14 @@
     _Bool _showingNavigatorViewInSidebar;
     _Bool _showingPresenterNotes;
     _Bool _showingLightTable;
-    _Bool _showingMasterSlides;
+    _Bool _showingTemplateSlides;
     _Bool _showingElementList;
     long long _inspectorPaneViewMode;
 }
 
-+ (id)uiLayoutFromArchive:(const struct DesktopUILayoutArchive *)arg1 unarchiver:(id)arg2 context:(id)arg3;
++ (id)uiLayoutFromArchive:(const void *)arg1 unarchiver:(id)arg2 context:(id)arg3;
 @property(readonly, nonatomic, getter=isShowingElementList) _Bool showingElementList; // @synthesize showingElementList=_showingElementList;
-@property(readonly, nonatomic, getter=isShowingMasterSlides) _Bool showingMasterSlides; // @synthesize showingMasterSlides=_showingMasterSlides;
+@property(readonly, nonatomic, getter=isShowingTemplateSlides) _Bool showingTemplateSlides; // @synthesize showingTemplateSlides=_showingTemplateSlides;
 @property(readonly, nonatomic) long long inspectorPaneViewMode; // @synthesize inspectorPaneViewMode=_inspectorPaneViewMode;
 @property(readonly, nonatomic, getter=isShowingPresenterNotes) _Bool showingPresenterNotes; // @synthesize showingPresenterNotes=_showingPresenterNotes;
 @property(readonly, nonatomic, getter=isShowingLightTable) _Bool showingLightTable; // @synthesize showingLightTable=_showingLightTable;
@@ -36,7 +36,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)saveToArchive:(struct DesktopUILayoutArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (_Bool)inspectorPaneAutoHidden;
 - (void)setInspectorPaneAutoHidden:(_Bool)arg1;
 - (_Bool)showingInspectorPane;

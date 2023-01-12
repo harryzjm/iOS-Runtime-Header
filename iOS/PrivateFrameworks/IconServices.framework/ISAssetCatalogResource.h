@@ -8,30 +8,31 @@
 
 #import <IconServices/ISScalableCompositorResource-Protocol.h>
 
-@class CUICatalog, ISImageBag, NSString;
+@class CUICatalog, IFImageBag, NSString;
 
 @interface ISAssetCatalogResource : NSObject <ISScalableCompositorResource>
 {
-    ISImageBag *_imageBag;
+    IFImageBag *_imageBag;
     CUICatalog *_catalog;
     NSString *_imageName;
     NSString *_symbolName;
+    long long _layoutDirection;
 }
 
 + (id)assetCatalogResourceWithURL:(id)arg1 imageName:(id)arg2 symbolName:(id)arg3 error:(id *)arg4;
 + (id)coreGlyphsCatalog;
 + (id)assetCatalogResourceWithURL:(id)arg1 symbolName:(id)arg2 error:(id *)arg3;
 + (id)assetCatalogResourceWithURL:(id)arg1 imageName:(id)arg2 error:(id *)arg3;
++ (id)imageForStaticAssetWithKey:(id)arg1 withDescriptor:(id)arg2;
 - (void).cxx_destruct;
+@property long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property(readonly) NSString *symbolName; // @synthesize symbolName=_symbolName;
 @property(readonly) NSString *imageName; // @synthesize imageName=_imageName;
 @property(readonly) CUICatalog *catalog; // @synthesize catalog=_catalog;
 @property(readonly, getter=isPrecomposed) _Bool precomposed;
 - (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
-@property(readonly) ISImageBag *imageBag; // @synthesize imageBag=_imageBag;
+@property(readonly) IFImageBag *imageBag; // @synthesize imageBag=_imageBag;
 - (id)imageWithName:(id)arg1 scale:(double)arg2;
-- (id)multisizedImageWithName:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
-- (long long)deviceIdiomWithName:(id)arg1;
 - (id)initWithCatalog:(id)arg1 imageName:(id)arg2 symbolName:(id)arg3;
 - (id)symbolImageForFontSize:(double)arg1 scale:(double)arg2 symbolSize:(unsigned long long)arg3 symbolWeight:(long long)arg4;
 - (id)symbolImageForSize:(struct CGSize)arg1 scale:(double)arg2;

@@ -24,6 +24,9 @@
     unsigned long long _numColorAttachments;
     PKMetalShader *_noBlendModeShader;
     PKMetalShader *_addBlendModeShader;
+    PKMetalShader *_linearDodgeBlendModeShader;
+    PKMetalShader *_multiplyBlendModeShader;
+    PKMetalShader *_sourceOverBlendModeShader;
     PKMetalShader *_subtractBlendModeShader;
     PKMetalShader *_maxBlendModeShader;
     PKMetalShader *_invertBlendModeShader;
@@ -32,16 +35,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <MTLRenderPipelineState> pipelineState; // @synthesize pipelineState=_pipelineState;
-- (id)shaderWithBlendMode:(long long)arg1;
-- (id)newShaderWithBlendMode:(long long)arg1;
-- (id)msaaPipelineStateWithColorMaskNoneAndSampleCount:(unsigned long long)arg1;
-- (id)pipelineStateWithColorMaskNone;
-- (id)msaaPipelineStateWithSampleCount:(unsigned long long)arg1;
-- (void)createPipelineState;
-- (id)pipelineStateDescriptorSampleCount:(unsigned long long)arg1;
-- (id)initWithVertexFunction:(id)arg1 fragmentFunction:(id)arg2 blendMode:(long long)arg3 colorAttachmentIndex:(unsigned long long)arg4 sharedPipelineDescriptor:(id)arg5 numColorAttachments:(unsigned long long)arg6;
-- (id)initWithVertexFunction:(id)arg1 fragmentFunction:(id)arg2 sharedPipelineDescriptor:(id)arg3 numColorAttachments:(unsigned long long)arg4;
 - (id)init;
 
 @end

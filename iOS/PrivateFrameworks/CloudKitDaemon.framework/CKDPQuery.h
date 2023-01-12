@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPQuery : PBCodable <NSCopying>
 {
     NSMutableArray *_filters;

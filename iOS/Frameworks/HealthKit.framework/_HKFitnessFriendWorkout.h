@@ -24,16 +24,17 @@
     NSString *_deviceManufacturer;
     NSString *_deviceModel;
     long long _amm;
-    NSString *_scwi;
+    NSString *_seymourCatalogWorkoutIdentifier;
+    NSString *_seymourMediaType;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)_isConcreteObjectClass;
 + (id)fitnessFriendWorkoutFromHKWorkout:(id)arg1;
-+ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(_Bool)arg12 isIndoorWorkout:(_Bool)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15 amm:(long long)arg16 scwi:(id)arg17;
-+ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(_Bool)arg12 isIndoorWorkout:(_Bool)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15 amm:(long long)arg16;
++ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(_Bool)arg12 isIndoorWorkout:(_Bool)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15 amm:(long long)arg16 seymourCatalogWorkoutIdentifier:(id)arg17 seymourMediaType:(id)arg18;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *scwi; // @synthesize scwi=_scwi;
+@property(retain, nonatomic) NSString *seymourMediaType; // @synthesize seymourMediaType=_seymourMediaType;
+@property(retain, nonatomic) NSString *seymourCatalogWorkoutIdentifier; // @synthesize seymourCatalogWorkoutIdentifier=_seymourCatalogWorkoutIdentifier;
 @property(nonatomic) long long amm; // @synthesize amm=_amm;
 @property(retain, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property(retain, nonatomic) NSString *deviceManufacturer; // @synthesize deviceManufacturer=_deviceManufacturer;

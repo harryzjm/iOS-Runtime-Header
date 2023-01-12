@@ -13,7 +13,7 @@
     NSSet *_itemProviders;
     HFConditionCollection *_conditionCollection;
     HMHome *_home;
-    NSSet *_blacklistedConditionTypes;
+    NSSet *_disallowedConditionTypes;
     HUTriggerConditionEditorExpandingSectionModule *_timeConditionModule;
     HUTriggerConditionEditorExpandingSectionModule *_locationConditionModule;
     HUTriggerCustomConditionEditorSectionModule *_customConditionsModule;
@@ -23,7 +23,7 @@
 @property(retain, nonatomic) HUTriggerCustomConditionEditorSectionModule *customConditionsModule; // @synthesize customConditionsModule=_customConditionsModule;
 @property(retain, nonatomic) HUTriggerConditionEditorExpandingSectionModule *locationConditionModule; // @synthesize locationConditionModule=_locationConditionModule;
 @property(retain, nonatomic) HUTriggerConditionEditorExpandingSectionModule *timeConditionModule; // @synthesize timeConditionModule=_timeConditionModule;
-@property(readonly, nonatomic) NSSet *blacklistedConditionTypes; // @synthesize blacklistedConditionTypes=_blacklistedConditionTypes;
+@property(readonly, nonatomic) NSSet *disallowedConditionTypes; // @synthesize disallowedConditionTypes=_disallowedConditionTypes;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(readonly, nonatomic) HFConditionCollection *conditionCollection; // @synthesize conditionCollection=_conditionCollection;
 @property(retain, nonatomic) NSSet *itemProviders; // @synthesize itemProviders=_itemProviders;
@@ -49,7 +49,7 @@
 - (_Bool)doesConditionOptionItemRequireInitialConfiguration:(id)arg1;
 - (_Bool)isConditionOptionItem:(id)arg1;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
-- (id)initWithItemUpdater:(id)arg1 home:(id)arg2 conditionCollection:(id)arg3 blacklistedConditionTypes:(id)arg4;
+- (id)initWithItemUpdater:(id)arg1 home:(id)arg2 conditionCollection:(id)arg3 disallowedConditionTypes:(id)arg4;
 
 @end
 

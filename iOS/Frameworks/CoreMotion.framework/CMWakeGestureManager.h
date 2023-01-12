@@ -15,7 +15,7 @@
     _Bool gestureUpdatesStarted;
     struct Dispatcher *fWakeDispatcher;
     struct Dispatcher *fPowerStateDispatcher;
-    struct unique_ptr<CMWakeGestureVisitor, std::__1::default_delete<CMWakeGestureVisitor>> fWakeGestureVisitor;
+    struct unique_ptr<CMWakeGestureVisitor, std::default_delete<CMWakeGestureVisitor>> fWakeGestureVisitor;
     long long fCurrentState;
     int fMeasureLatencyState;
     double fWakePacketTimestamp;

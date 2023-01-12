@@ -29,6 +29,9 @@
     int _deviceConnection;
     int _navAidedDrivingStatus;
     _Bool _destinationSharingEnabled;
+    _Bool _isInstructionCardEnabled;
+    _Bool _isInstrumentClusterEnabled;
+    _Bool _isMapviewEnabled;
     struct {
         unsigned int has_screenResolution:1;
         unsigned int has_brightness:1;
@@ -36,6 +39,9 @@
         unsigned int has_deviceConnection:1;
         unsigned int has_navAidedDrivingStatus:1;
         unsigned int has_destinationSharingEnabled:1;
+        unsigned int has_isInstructionCardEnabled:1;
+        unsigned int has_isInstrumentClusterEnabled:1;
+        unsigned int has_isMapviewEnabled:1;
         unsigned int read_unknownFields:1;
         unsigned int read_engineTypes:1;
         unsigned int read_inputMethods:1;
@@ -65,6 +71,12 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsMapviewEnabled;
+@property(nonatomic) _Bool isMapviewEnabled;
+@property(nonatomic) _Bool hasIsInstructionCardEnabled;
+@property(nonatomic) _Bool isInstructionCardEnabled;
+@property(nonatomic) _Bool hasIsInstrumentClusterEnabled;
+@property(nonatomic) _Bool isInstrumentClusterEnabled;
 - (int)StringAsInputMethods:(id)arg1;
 - (id)inputMethodsAsString:(int)arg1;
 - (void)setInputMethods:(int *)arg1 count:(unsigned long long)arg2;

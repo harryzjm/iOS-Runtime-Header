@@ -10,6 +10,10 @@
 {
 }
 
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
+- (void)addReadingListItem:(id)arg1 title:(id)arg2 previewText:(id)arg3 withService:(id)arg4 error:(id *)arg5;
+- (id)service;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

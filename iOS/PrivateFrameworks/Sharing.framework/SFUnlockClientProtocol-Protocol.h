@@ -6,9 +6,12 @@
 
 #import <Sharing/NSObject-Protocol.h>
 
-@class NSError, SFAutoUnlockDevice;
+@class NSError, NSUUID, SFAutoUnlockDevice;
 
 @protocol SFUnlockClientProtocol <NSObject>
+- (void)failedAuthenticationSessionWithID:(NSUUID *)arg1 error:(NSError *)arg2;
+- (void)completedAuthenticationSessionWithID:(NSUUID *)arg1;
+- (void)startedAuthenticationSessionWithID:(NSUUID *)arg1;
 - (void)failedUnlockWithError:(NSError *)arg1;
 - (void)completedUnlockWithDevice:(SFAutoUnlockDevice *)arg1;
 - (void)beganAttemptWithDevice:(SFAutoUnlockDevice *)arg1;

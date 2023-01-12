@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_2dc830c1)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_2dc830c1)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *sanitized_tokens;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct SanitizedSequence *)arg2 verify:(_Bool)arg3;

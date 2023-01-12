@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+@class NSString, NSURL;
 @protocol CPLFileWatcherDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface CPLFileWatcher : NSObject
@@ -16,12 +16,16 @@
     NSObject<OS_dispatch_source> *_parentSource;
     unsigned long long _nodeInode;
     NSURL *_fileURL;
+    NSString *_name;
     id <CPLFileWatcherDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <CPLFileWatcherDelegate> delegate; // @synthesize delegate=_delegate;
-@property(copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+- (id)redactedDescription;
+- (id)description;
 - (void)stopWatching;
 - (void)startWatching;
 - (void)_stopWatchingParent;
@@ -31,6 +35,7 @@
 - (void)_startWatchingNode;
 - (void)_forceRefreshWatchingNode;
 - (id)initWithFileURL:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
+- (id)initWithFileURL:(id)arg1 name:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
 
 @end
 

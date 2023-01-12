@@ -19,19 +19,17 @@
     NSString *_query;
     double _score;
     NSString *_fbr;
+    NSString *_topicIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *topicIdentifier; // @synthesize topicIdentifier=_topicIdentifier;
 @property(copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(nonatomic) double score; // @synthesize score=_score;
 @property(copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property(copy, nonatomic) NSString *suggestion; // @synthesize suggestion=_suggestion;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -41,6 +39,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

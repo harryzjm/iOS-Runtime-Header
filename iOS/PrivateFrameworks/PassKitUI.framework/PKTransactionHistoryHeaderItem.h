@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class CNContact, NSString, PKInstallmentPlanProduct, PKMerchant, PKPaymentTransaction, PKPaymentTransactionGroup;
+@class CNContact, NSString, PKCreditInstallmentPlanProduct, PKMerchant, PKPaymentTransaction, PKPaymentTransactionGroup;
 
 @interface PKTransactionHistoryHeaderItem : NSObject <PKDashboardItem>
 {
@@ -19,14 +19,14 @@
     CNContact *_contact;
     PKPaymentTransactionGroup *_transactionGroup;
     long long _transactionType;
-    PKInstallmentPlanProduct *_installmentProduct;
+    PKCreditInstallmentPlanProduct *_installmentProduct;
     unsigned long long _featureIdentifier;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
-@property(retain, nonatomic) PKInstallmentPlanProduct *installmentProduct; // @synthesize installmentProduct=_installmentProduct;
+@property(retain, nonatomic) PKCreditInstallmentPlanProduct *installmentProduct; // @synthesize installmentProduct=_installmentProduct;
 @property(nonatomic) long long transactionType; // @synthesize transactionType=_transactionType;
 @property(retain, nonatomic) PKPaymentTransactionGroup *transactionGroup; // @synthesize transactionGroup=_transactionGroup;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;

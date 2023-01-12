@@ -7,17 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <Vision/NSCopying-Protocol.h>
+#import <Vision/VNClassCodeProviding-Protocol.h>
 #import <Vision/VNSequencedRequestSupporting-Protocol.h>
 #import <Vision/VNWarningRecorder-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, VNCanceller, VNProcessingDevice, VNRequestConfiguration, VNWarningRecorder;
+@class NSArray, NSString, VNCanceller, VNProcessingDevice, VNRequestConfiguration, VNRequestSpecifier, VNWarningRecorder;
 @protocol MTLDevice, OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface VNRequest : NSObject <VNWarningRecorder, VNSequencedRequestSupporting, NSCopying>
+@interface VNRequest : NSObject <VNWarningRecorder, VNSequencedRequestSupporting, VNClassCodeProviding, NSCopying>
 {
     CDUnknownBlockType _completionHandler;
     VNRequestConfiguration *_configuration;
-    NSDictionary *_options;
     VNWarningRecorder *_warningRecorder;
     VNCanceller *_canceller;
     _Bool _cancellationTriggered;
@@ -25,14 +25,19 @@
     NSObject<OS_dispatch_semaphore> *_cancellationSemaphore;
     NSObject<OS_dispatch_queue> *_cancellationQueue;
     unsigned long long _revision;
+    unsigned long long _serialNumber;
+    unsigned long long _executionNanoseconds;
     NSArray *_results;
 }
 
 + (unsigned long long)compatibleRevisionForDependentRequestOfClass:(Class)arg1 beingPerformedByRevision:(unsigned long long)arg2;
-+ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
 + (unsigned long long)resolvedRevisionForRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (unsigned long long)firstSupportedRevisionInOrderedRevisionList:(unsigned long long)arg1;
 + (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (_Bool)supportsRevision:(unsigned long long)arg1;
 + (_Bool)setsTimeRangeOnResults;
 + (const CDStruct_7d93034e *)revisionAvailability;
 + (unsigned long long)currentRevision;
@@ -40,7 +45,6 @@
 + (id)supportedRevisions;
 + (id)_introspectionBuiltSupportedRevisions;
 + (unsigned long long)_defaultRevisionForBuildVersion:(int)arg1;
-+ (_Bool)getOptionalInputFacesArray:(id *)arg1 inOptions:(id)arg2 error:(id *)arg3;
 + (_Bool)getOptionalArray:(id *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withElementsOfClass:(Class)arg4 error:(id *)arg5;
 + (_Bool)getFloatValue:(float *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(float)arg4 error:(id *)arg5;
 + (_Bool)getFloatValue:(float *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
@@ -53,20 +57,25 @@
 + (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 + (id)newConfigurationInstance;
 + (Class)configurationClass;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
++ (unsigned int)VNClassCode;
 + (void)initialize;
++ (id)createVNEntityIdentificationModelEntryPrintForRevision:(unsigned long long)arg1 fromDescriptorData:(const void *)arg2 length:(unsigned long long)arg3 elementCount:(unsigned long long)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(retain) NSObject<OS_dispatch_semaphore> *cancellationSemaphore; // @synthesize cancellationSemaphore=_cancellationSemaphore;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly, copy, nonatomic) NSArray *results; // @synthesize results=_results;
+@property(readonly) double executionTimeInternal;
+@property(readonly) unsigned long long executionNanoseconds;
 @property(readonly, copy) NSString *description;
+- (id)supportedImageSizeSetForDetectorType:(id)arg1;
 - (unsigned long long)compatibleRevisionForDependentRequest:(id)arg1;
 - (unsigned long long)resolvedRevision;
 @property(nonatomic) unsigned long long revision; // @synthesize revision=_revision;
+- (_Bool)setRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)setPrivateRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (void)_setResolvedRevision:(unsigned long long)arg1;
 - (_Bool)validateImageBuffer:(id)arg1 ofNonZeroWidth:(unsigned long long *)arg2 andHeight:(unsigned long long *)arg3 error:(id *)arg4;
+@property(nonatomic) unsigned long long maximumProcessingDimensionOnTheLongSide;
 @property(nonatomic) unsigned long long detectionLevel;
 @property(copy, nonatomic) VNProcessingDevice *processingDevice;
 @property(nonatomic) unsigned long long metalContextPriority;
@@ -83,23 +92,24 @@
 - (void)recordWarning:(id)arg1 value:(id)arg2;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (void)setSortedResults:(id)arg1;
+- (void)setResults:(id)arg1 assignedWithOriginatingSpecifier:(_Bool)arg2;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (void)setResults:(id)arg1;
 - (_Bool)internalCancelInContext:(id)arg1 error:(id *)arg2;
-- (_Bool)internalPerformInContext:(id)arg1 error:(id *)arg2;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (void)resolvedRevisionDidChangeFromRevision:(unsigned long long)arg1;
 - (_Bool)validateConfigurationAndReturnError:(id *)arg1;
 - (_Bool)performInContext:(id)arg1 error:(id *)arg2;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (void)copyStateOfRequest:(id)arg1;
+@property(readonly) VNProcessingDevice *explicitlyConfiguredProcessingDevice;
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
 - (id)newDefaultDetectorOptionsForSession:(id)arg1;
 - (id)newDefaultRequestInstance;
+@property(readonly) VNRequestSpecifier *specifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (_Bool)hasCancellationHook;
-- (void)setValue:(id)arg1 forRequestOption:(id)arg2;
-- (id)valueForPrivateOption:(id)arg1;
-- (void)setValue:(id)arg1 forPrivateOption:(id)arg2;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)sequencedRequestPreviousObservationsKey;
@@ -107,7 +117,7 @@
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)allowsCachingOfResults;
 - (id)configuration;
-- (void)_updateProcessingDeviceOption;
+@property(readonly) unsigned long long serialNumber;
 - (id)_defaultProcessingDevice;
 - (long long)dependencyProcessingOrdinality;
 

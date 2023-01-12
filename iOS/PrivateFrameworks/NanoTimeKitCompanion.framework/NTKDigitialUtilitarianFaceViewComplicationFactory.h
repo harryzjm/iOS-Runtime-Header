@@ -31,7 +31,6 @@
 - (void)cleanupAfterEditingForFaceView:(id)arg1;
 - (void)prepareForEditingForFaceView:(id)arg1;
 - (long long)_photosUtilitySlotForSlot:(id)arg1;
-- (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1 faceView:(id)arg2;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2 attributes:(unsigned long long)arg3 faceView:(id)arg4;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 faceView:(id)arg3;
 - (_Bool)fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2 faceView:(id)arg3;

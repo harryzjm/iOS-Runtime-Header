@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSUUID;
+@class HKObjectAuthorizationPromptSessionMetadata, NSArray, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface _HDObjectAuthorizationRequest : NSObject
@@ -14,18 +14,12 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completion;
     NSUUID *_identifier;
     NSArray *_samples;
+    HKObjectAuthorizationPromptSessionMetadata *_metadata;
     NSArray *_authorizationRecords;
+    NSUUID *_sessionIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *authorizationRecords; // @synthesize authorizationRecords=_authorizationRecords;
-@property(readonly, copy, nonatomic) NSArray *samples; // @synthesize samples=_samples;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property(readonly, copy, nonatomic) NSArray *samplesRequiringAuthorization;
-- (void)invokeCompletionHandlerWithAuthorizedSamples:(id)arg1 error:(id)arg2;
-- (void)invokeCompletionWithSuccess:(_Bool)arg1 sourceEntity:(id)arg2 profile:(id)arg3 error:(id)arg4;
-- (id)initForSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -8,7 +8,7 @@
 #import <SafariServices/_SFActivityDelegate-Protocol.h>
 #import <SafariServices/_SFLinkPreviewHeaderDelegate-Protocol.h>
 
-@class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFSystemAlert, WKProcessPool, _SFWebViewUsageMonitor;
+@class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFSystemAlert, WKProcessPool, _SFSafariViewControllerPrewarmingRequestThrottler, _SFWebViewUsageMonitor;
 
 __attribute__((visibility("hidden")))
 @interface SFBrowserServiceViewController <_SFActivityDelegate, _SFLinkPreviewHeaderDelegate, SFServiceViewControllerProtocol>
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     _SFWebViewUsageMonitor *_usageMonitor;
     NSDate *_lastHostApplicationSuspendDate;
     WKProcessPool *_processPool;
-    _Bool _usingSharedProcessPool;
     _Bool _canNotifyHostApplicationOfRedirects;
     _Bool _touchEventsShouldStopRedirectNotifications;
     _Bool _isExpectingClientRedirect;
@@ -26,6 +25,7 @@ __attribute__((visibility("hidden")))
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
     NSTimer *_redirectNotificationTimer;
     _Bool _hostApplicationIsForeground;
+    _SFSafariViewControllerPrewarmingRequestThrottler *_prewarmingRequestThrottler;
     _Bool _isUsedForAuthentication;
     SFSystemAlert *_webAuthenticationDataSharingConfirmation;
     NSString *_hostApplicationCallbackURLScheme;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *hostApplicationCallbackURLScheme; // @synthesize hostApplicationCallbackURLScheme=_hostApplicationCallbackURLScheme;
 @property(retain, nonatomic) SFSystemAlert *webAuthenticationDataSharingConfirmation; // @synthesize webAuthenticationDataSharingConfirmation=_webAuthenticationDataSharingConfirmation;
 @property(nonatomic) _Bool _isUsedForAuthentication; // @synthesize _isUsedForAuthentication;
+- (void)_updateMaxVisibleHeightPercentageUserDriven:(_Bool)arg1;
 - (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(_Bool)arg2;
 - (void)browserViewDidReceiveTouchEvent:(id)arg1;
 - (void)safariActivity:(id)arg1 didFinish:(_Bool)arg2;
@@ -53,8 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)_analyticsHelper;
 - (id)bundleIdentifierForProfileInstallation;
 - (id)_applicationPayloadForOpeningInSafari;
-- (void)_closeDatabasesOnBackgroundingOrDismissal;
-- (void)_recordHostAppIdAndURLForTapToRadar:(id)arg1;
+- (void)closeDatabasesOnBackgroundingOrDismissal;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
 - (void)_didLoadWebView;
@@ -74,11 +74,14 @@ __attribute__((visibility("hidden")))
 - (void)_getSafariDataSharingModeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)websiteDataStoreConfiguration;
 - (_Bool)_ensureWebsiteDataStoreURL:(id)arg1 cookieStoreURL:(id)arg2;
-- (id)_websiteDataStoreURLForHSTSStorage:(_Bool)arg1;
-- (id)_webDataStoreRootURLForHSTSStorage:(_Bool)arg1;
+- (id)_websiteDataStoreURL;
+- (id)_webDataStoreRootURL;
 - (void)_openCurrentURLInSafari;
 - (void)openCurrentURLInSafariFromPreviewAction;
 - (void)_didResolveDestinationURL:(id)arg1 pendingAppLinkCheck:(_Bool)arg2;
+- (void)_prewarmConnectionsToURLs:(id)arg1;
+- (void)invalidatePrewarmingTokenWithID:(unsigned long long)arg1;
+- (void)requestPrewarmingWithTokens:(id)arg1;
 - (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startResolveRedirectionForURL:(id)arg1;
 - (void)decideCookieSharingForURL:(id)arg1 callbackURLScheme:(id)arg2;

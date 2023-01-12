@@ -46,6 +46,7 @@
 - (void)keyboardWillHideViaGesture;
 - (void)contentInsetDidChange;
 - (void)contentInsetWillChange:(struct UIEdgeInsets)arg1 animated:(_Bool)arg2 duration:(double)arg3;
+- (_Bool)manuallyUpdateKeyboardScreenFrameWithFrameIfNeeded:(struct CGRect)arg1 animationDuration:(double)arg2;
 - (void)primeWithKeyboardFrame:(struct CGRect)arg1;
 - (_Bool)isHoldingScrollGeometryUpdates;
 - (void)endHoldingScrollGeometryUpdatesForAllKeys;
@@ -65,7 +66,11 @@
 - (void)updateScrollGeometry;
 - (void)keyboardDidChangeFrame:(id)arg1;
 - (void)keyboardDidShowOrHide:(id)arg1;
+- (void)_updateKeyboardScreenFrameForShowOrHideWithNewScreenFrame:(struct CGRect)arg1 previousFrame:(struct CGRect)arg2 duration:(double)arg3 isShowEvent:(_Bool)arg4;
 - (void)keyboardWillShowOrHide:(id)arg1;
+- (void)inputAccessoryViewFrameUpdatedForFloatingKeyboard;
+- (_Bool)isKeyboardFloating;
+- (struct CGRect)inputAccessoryViewFrameForFloatingKeyboard;
 - (void)dealloc;
 - (id)init;
 

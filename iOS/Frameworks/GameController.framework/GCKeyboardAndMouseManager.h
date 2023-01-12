@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GCKeyboard, GCMouse, NSMutableDictionary;
+@class GCKeyboard, GCKeyboardAndMouseEmulatedController, GCMouse, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface GCKeyboardAndMouseManager : NSObject
@@ -14,11 +14,14 @@
     NSMutableDictionary *_devicesByRegistryID;
     GCKeyboard *_coalescedKeyboard;
     GCMouse *_currentMouse;
+    GCKeyboardAndMouseEmulatedController *_emulatedController;
+    int _emulatedControllerMapping;
     NSObject<OS_dispatch_queue> *_devicesQueue;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *devicesQueue; // @synthesize devicesQueue=_devicesQueue;
+@property int emulatedControllerMapping; // @synthesize emulatedControllerMapping=_emulatedControllerMapping;
+@property(nonatomic) __weak NSObject<OS_dispatch_queue> *devicesQueue; // @synthesize devicesQueue=_devicesQueue;
 - (id)mice;
 @property(retain) GCMouse *currentMouse;
 @property(readonly) GCKeyboard *coalescedKeyboard;
@@ -37,7 +40,10 @@
 - (void)updateCurrentDevice:(id)arg1;
 - (void)removeDeviceWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (_Bool)addDeviceWithServiceRef:(struct __IOHIDServiceClient *)arg1;
+- (void)ensureEmulatedControllerWithDevice:(id)arg1 added:(_Bool)arg2;
+- (void)setEmulatedControllerEnabled:(int)arg1;
 - (id)initWithQueue:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

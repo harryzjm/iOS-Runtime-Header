@@ -6,12 +6,13 @@
 
 #import <Home/HFItemModule.h>
 
+#import <HomeUI/HFSiriLanguageOptionsManagerObserver-Protocol.h>
 #import <HomeUI/HULocationDeviceManagerObserver-Protocol.h>
 
-@class HFItem, HFItemProvider, HFUserItem, HMAssistantAccessControl, HMHome, HULocationDeviceManager, NAFuture, NSArray, NSSet, NSString;
+@class HFItem, HFItemProvider, HFUserItem, HMAssistantAccessControl, HMHome, HULocationDeviceManager, NAFuture, NSArray, NSMapTable, NSSet, NSString;
 @protocol HFMediaProfileContainer;
 
-@interface HUPersonalRequestsDevicesItemModule : HFItemModule <HULocationDeviceManagerObserver>
+@interface HUPersonalRequestsDevicesItemModule : HFItemModule <HULocationDeviceManagerObserver, HFSiriLanguageOptionsManagerObserver>
 {
     _Bool _onlyShowDeviceSwitches;
     NSSet *_itemProviders;
@@ -19,31 +20,40 @@
     NSArray *_supportedMULanguageCodes;
     HMHome *_home;
     HFUserItem *_sourceItem;
-    HFItemProvider *_personalRequestsDevicesProvider;
+    HFItemProvider *_personalRequestsMediaAccessoriesProvider;
+    HFItemProvider *_personalRequestsOtherAccessoriesProvider;
     HFItem *_footerItem;
     HFItem *_personalRequestsToggleItem;
     HULocationDeviceManager *_locationDeviceManager;
+    NSMapTable *_mediaProfileToLanguageOptionsManagerMap;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMapTable *mediaProfileToLanguageOptionsManagerMap; // @synthesize mediaProfileToLanguageOptionsManagerMap=_mediaProfileToLanguageOptionsManagerMap;
 @property(readonly, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
 @property(readonly, nonatomic) HFItem *personalRequestsToggleItem; // @synthesize personalRequestsToggleItem=_personalRequestsToggleItem;
 @property(readonly, nonatomic) HFItem *footerItem; // @synthesize footerItem=_footerItem;
-@property(retain, nonatomic) HFItemProvider *personalRequestsDevicesProvider; // @synthesize personalRequestsDevicesProvider=_personalRequestsDevicesProvider;
+@property(retain, nonatomic) HFItemProvider *personalRequestsOtherAccessoriesProvider; // @synthesize personalRequestsOtherAccessoriesProvider=_personalRequestsOtherAccessoriesProvider;
+@property(retain, nonatomic) HFItemProvider *personalRequestsMediaAccessoriesProvider; // @synthesize personalRequestsMediaAccessoriesProvider=_personalRequestsMediaAccessoriesProvider;
 @property(readonly, nonatomic) HFUserItem *sourceItem; // @synthesize sourceItem=_sourceItem;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(retain, nonatomic) NSArray *supportedMULanguageCodes; // @synthesize supportedMULanguageCodes=_supportedMULanguageCodes;
 @property(nonatomic) _Bool onlyShowDeviceSwitches; // @synthesize onlyShowDeviceSwitches=_onlyShowDeviceSwitches;
 @property(retain, nonatomic) id <HFMediaProfileContainer> sourceMediaProfileContainer; // @synthesize sourceMediaProfileContainer=_sourceMediaProfileContainer;
 @property(readonly, nonatomic) NSSet *itemProviders; // @synthesize itemProviders=_itemProviders;
+- (void)siriLanguageOptionsManager:(id)arg1 selectedLanguageOptionDidChange:(id)arg2;
+- (void)siriLanguageOptionsManager:(id)arg1 availableLanguageOptionsDidChange:(id)arg2;
 - (void)locationDeviceManager:(id)arg1 didUpdateActiveLocationDevice:(id)arg2;
+- (id)_transformItemForSourceItem:(id)arg1;
+- (id)_createPersonalRequestProviderForOtherAcccessories;
+- (id)_createPersonalRequestProviderForMediaAcccessories;
 - (id)_commitUpdateToAccessControl:(id)arg1;
 - (_Bool)isCurrentIOSDeviceOnSameVoiceRecognitionLanguageAsPersonalRequestsDeviceForItem:(id)arg1;
 - (id)updateLocationDeviceToThisDevice;
 @property(readonly, nonatomic) NAFuture *activeLocationDeviceFuture;
 @property(copy, nonatomic) NSArray *personalRequestsDevices;
 - (void)turnOnPersonalRequestsForAllVoiceRecognitionCapablePersonalRequestsDevices;
-- (_Bool)_voiceRecognitionLanguage:(id)arg1 matchesMultiUserCapableHomePod:(id)arg2;
+- (_Bool)_voiceRecognitionLanguage:(id)arg1 matchesMultiUserCapableAccessory:(id)arg2;
 - (void)turnOnAllPersonalRequestsDevices;
 - (void)toggleAllPersonalRequestsDevices;
 - (_Bool)isItemPersonalRequestsFooter:(id)arg1;
@@ -55,6 +65,7 @@
 @property(readonly, nonatomic) HMAssistantAccessControl *accessControl;
 - (void)unregisterForExternalUpdates;
 - (void)registerForExternalUpdates;
+- (id)initWithItemUpdater:(id)arg1 userItem:(id)arg2 home:(id)arg3 settingsController:(id)arg4 onlyShowDeviceSwitches:(_Bool)arg5;
 - (id)initWithItemUpdater:(id)arg1 userItem:(id)arg2 home:(id)arg3 onlyShowDeviceSwitches:(_Bool)arg4;
 
 // Remaining properties

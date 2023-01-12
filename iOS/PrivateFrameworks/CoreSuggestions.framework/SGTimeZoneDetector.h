@@ -32,10 +32,13 @@
 - (id)timeZoneNameForAddress:(id)arg1 withCountryCode:(id)arg2;
 - (id)_timeZoneNameForPostalCode:(id)arg1 withPostalCodeTable:(id)arg2;
 - (id)countryCodeForAddress:(id)arg1;
+- (id)timeZoneFromAiportCodeForAddress:(id)arg1;
 - (id)_countryCodeByCountryNameFromNormalizedAddressWords:(id)arg1;
 - (id)_countryCodeByRegionNameFromNormalizedAddress:(id)arg1 withWords:(id)arg2;
 - (id)_countryCodeByRegularExpressionFromNormalizedAddress:(id)arg1;
 - (id)_countryCodeByRegionAbbreviationFromNormalizedAddress:(id)arg1;
+- (id)_acronymForAddress:(id)arg1 airportCodeRange:(struct _NSRange)arg2 airportCodeNames:(id)arg3;
+- (struct _NSRange)_airportCodeRangeForAddress:(id)arg1;
 - (id)_postalCodeForAddress:(id)arg1 withCountryCode:(id)arg2;
 - (id)_getRegionNames;
 - (id)_getPostalCodeFormats;

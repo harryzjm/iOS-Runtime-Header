@@ -22,10 +22,16 @@
 + (_Bool)_instanceSpecificLocalizedStringExistsForCategory:(unsigned long long)arg1;
 + (unsigned long long)screenTimeCategoryIDForCategoryIdentifier:(id)arg1;
 + (id)categoryIdentifierForScreenTimeCategoryID:(unsigned long long)arg1;
++ (_Bool)isCategoryiTunesGamesSubgenre:(unsigned long long)arg1;
 + (_Bool)isCategorySpecial:(unsigned long long)arg1;
 + (_Bool)isCategoryScreenTime:(unsigned long long)arg1;
 + (_Bool)isCategoryiTunesGenre:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
++ (_Bool)isCategory:(unsigned long long)arg1 descendantOfCategory:(unsigned long long)arg2;
++ (unsigned long long)parentCategoryForCategory:(unsigned long long)arg1;
++ (_Bool)shouldCategoryNeverMergeWithParent:(unsigned long long)arg1;
++ (_Bool)shouldCategoryAlwaysMergeWithParent:(unsigned long long)arg1;
++ (unsigned long long)_parentCategoryForiTunesGenreID:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(readonly, nonatomic) NSArray *appBundleIDs; // @synthesize appBundleIDs=_appBundleIDs;

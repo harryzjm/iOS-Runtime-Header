@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _findStringCount;
     unsigned long long _findStringMaxCount;
     RetainPtr_1ac284e4 _fixedOverlayView;
-    struct Optional<unsigned long> _focusedSearchResultIndex;
+    struct optional<unsigned long> _focusedSearchResultIndex;
     long long _focusedSearchResultPendingOffset;
     struct RetainPtr<PDFHostViewController> _hostViewController;
     struct CGSize _overlaidAccessoryViewsInset;
@@ -39,14 +39,14 @@ __attribute__((visibility("hidden")))
 + (_Bool)web_requiresCustomSnapshotting;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)dataDetectionContextForActionSheetAssistant:(id)arg1 positionInformation:(const struct InteractionInformationAtPosition *)arg2;
+- (id)dataDetectionContextForActionSheetAssistant:(id)arg1 positionInformation:(const void *)arg2;
 - (RetainPtr_f649c0c3)actionSheetAssistant:(id)arg1 decideActionsForElement:(id)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (_Bool)actionSheetAssistant:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (void)shareSheetDidDismiss:(id)arg1;
 - (void)actionSheetAssistant:(id)arg1 shareElementWithURL:(id)arg2 rect:(struct CGRect)arg3;
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
 - (void)actionSheetAssistant:(id)arg1 performAction:(_Bool)arg2;
-- (Optional_b5290310)positionInformationForActionSheetAssistant:(id)arg1;
+- (optional_1cc35013)positionInformationForActionSheetAssistant:(id)arg1;
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
 - (void)pdfHostViewController:(id)arg1 didLongPressPageIndex:(long long)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;
 - (void)pdfHostViewController:(id)arg1 didLongPressURL:(id)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;

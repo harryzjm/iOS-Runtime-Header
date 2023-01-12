@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class OS_dispatch_queue;
+@class AAAccessQueue;
 
 @protocol NYSessionAccessing
-@property(nonatomic, readonly) OS_dispatch_queue *accessorQueue;
+@property(nonatomic, readonly) AAAccessQueue *accessQueue;
 @end
 

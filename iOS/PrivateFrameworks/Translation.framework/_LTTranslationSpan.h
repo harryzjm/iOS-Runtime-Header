@@ -27,6 +27,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 range:(struct _NSRange)arg2 shouldTranslate:(_Bool)arg3 metaInfoData:(id)arg4;
 - (id)initWithIdentifier:(id)arg1 range:(struct _NSRange)arg2;
 
 @end

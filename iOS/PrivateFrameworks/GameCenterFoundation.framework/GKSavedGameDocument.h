@@ -22,6 +22,7 @@
 }
 
 + (id)currentDeviceName;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(retain, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property(nonatomic) _Bool isConflictVersion; // @synthesize isConflictVersion=_isConflictVersion;

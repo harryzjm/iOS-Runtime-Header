@@ -23,8 +23,8 @@
 - (Class)presetImagerClass;
 - (unsigned long long)styleIndexForAxisID:(id)arg1;
 - (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
-- (void)p_initializeAxisIDs;
 - (_Bool)supportsSharedAndSeparateX;
+- (id)initWithChartType:(id)arg1;
 
 @end
 

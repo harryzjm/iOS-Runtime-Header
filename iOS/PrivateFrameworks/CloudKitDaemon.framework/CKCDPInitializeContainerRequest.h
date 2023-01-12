@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPInitializeContainerRequest : PBRequest <NSCopying>
 {
     NSString *_containerName;

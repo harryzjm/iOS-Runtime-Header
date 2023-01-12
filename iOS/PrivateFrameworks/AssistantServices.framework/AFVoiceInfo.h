@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class AFOutputVoiceColorDescriptor, NSNumber, NSString;
 
 @interface AFVoiceInfo : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,14 +21,18 @@
     NSNumber *_contentVersion;
     NSString *_masteredVersion;
     long long _gender;
+    AFOutputVoiceColorDescriptor *_colorDescriptor;
 }
 
 + (_Bool)supportsSecureCoding;
 + (long long)defaultGenderForOutputVoiceLanguageCode:(id)arg1;
++ (id)outputVoiceIdentifierForLanguageCode:(id)arg1 voiceName:(id)arg2;
++ (id)voiceInfoForSessionLanguageCode:(id)arg1;
 + (id)voiceInfoForLanguageCode:(id)arg1;
 + (id)allVoicesForSiriSessionLanguage:(id)arg1;
 + (long long)genderForVSSpeechGender:(long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AFOutputVoiceColorDescriptor *colorDescriptor; // @synthesize colorDescriptor=_colorDescriptor;
 @property(readonly, nonatomic) _Bool wasInitalizedFromDictionaryRepresentation; // @synthesize wasInitalizedFromDictionaryRepresentation=_wasInitalizedFromDictionaryRepresentation;
 @property(nonatomic) long long gender; // @synthesize gender=_gender;
 @property(readonly, nonatomic) NSString *masteredVersion; // @synthesize masteredVersion=_masteredVersion;
@@ -49,6 +53,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isLanguageAndGenderEqual:(id)arg1;
 - (id)initWithLanguageCode:(id)arg1;
+- (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 name:(id)arg3 footprint:(long long)arg4 isCustom:(_Bool)arg5;
+- (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 footprint:(long long)arg3 isCustom:(_Bool)arg4;
 - (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 isCustom:(_Bool)arg3;
 - (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 isCustom:(_Bool)arg3 name:(id)arg4 footprint:(long long)arg5 contentVersion:(id)arg6 masteredVersion:(id)arg7;
 - (_Bool)isValidForSiriSessionLanguage:(id)arg1;

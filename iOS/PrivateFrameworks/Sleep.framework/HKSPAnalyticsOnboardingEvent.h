@@ -16,16 +16,11 @@
     NSDictionary *_eventPayload;
 }
 
-+ (id)_payloadValueForOnboardingAction:(unsigned long long)arg1 atStep:(unsigned long long)arg2;
-+ (id)_payloadValueForOnboardingStep:(unsigned long long)arg1;
-+ (id)_payloadValueForOnboardingEntryPoint:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *eventPayload; // @synthesize eventPayload=_eventPayload;
 @property(retain, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
 @property(readonly, copy) NSString *description;
-- (id)initWithOnboardingStep:(unsigned long long)arg1 entryPoint:(unsigned long long)arg2 action:(unsigned long long)arg3;
-- (id)initWithOnboardingEntryPoint:(unsigned long long)arg1 launchSource:(id)arg2;
-- (id)_initWithOnboardingStep:(unsigned long long)arg1 entryPoint:(unsigned long long)arg2 action:(unsigned long long)arg3 launchContext:(id)arg4;
+- (id)initWithOnboardingInfo:(id)arg1 provenanceInfo:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

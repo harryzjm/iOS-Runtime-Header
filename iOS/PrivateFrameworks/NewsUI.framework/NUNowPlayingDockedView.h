@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIButton, UILabel, UIView;
+#import <NewsUI/NUMagicTappableDockView-Protocol.h>
+
+@class NSString, UIButton, UILabel, UIView;
 @protocol NUNowPlayingDockedViewDelegate;
 
-@interface NUNowPlayingDockedView
+@interface NUNowPlayingDockedView <NUMagicTappableDockView>
 {
     _Bool _waiting;
     id <NUNowPlayingDockedViewDelegate> _delegate;
@@ -26,6 +28,7 @@
 @property(readonly, nonatomic) UILabel *publisherLabel; // @synthesize publisherLabel=_publisherLabel;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) __weak id <NUNowPlayingDockedViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)handleAccessibilityMagicTap;
 - (void)rewindButtonTapped:(id)arg1;
 - (void)playButtonTapped:(id)arg1;
 - (void)pauseButtonTapped:(id)arg1;
@@ -36,6 +39,12 @@
 - (void)setPublisher:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

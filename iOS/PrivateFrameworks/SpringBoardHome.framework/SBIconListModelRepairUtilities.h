@@ -13,9 +13,9 @@
 + (unsigned long long)_maxGridCellIndexWithIconCount:(unsigned long long)arg1 gridCellInfo:(id)arg2;
 + (id)_firstIconOfSizeClass:(unsigned long long)arg1 withIcons:(id)arg2 inRange:(struct _NSRange)arg3;
 + (_Bool)_findAndRepairSingleIconGaps:(id)arg1 gridCellInfo:(id)arg2;
-+ (_Bool)_findAndRepairSmallWidgetGaps:(id)arg1 smallWidgetGridSize:(struct SBHIconGridSize)arg2 gridCellInfo:(id)arg3;
-+ (_Bool)_findAndRepairEmptyRows:(id)arg1 gridCellInfo:(id)arg2;
-+ (id)repairModelByEliminatingGapsInIcons:(id)arg1 gridSize:(struct SBHIconGridSize)arg2 gridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg3;
++ (_Bool)_findAndRepairWidgetSizedGaps:(id)arg1 widgetGridSizeClass:(unsigned long long)arg2 widgetGridSize:(struct SBHIconGridSize)arg3 iconLayoutBehavior:(unsigned long long)arg4 gridCellInfo:(id)arg5;
++ (_Bool)_findAndRepairEmptyRows:(id)arg1 avoidingIcons:(id)arg2 gridCellInfo:(id)arg3;
++ (id)repairModelByEliminatingGapsInIcons:(id)arg1 avoidingIcons:(id)arg2 gridSize:(struct SBHIconGridSize)arg3 gridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg4 iconLayoutBehavior:(unsigned long long)arg5;
 
 @end
 

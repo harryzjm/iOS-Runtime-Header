@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosGraph/PGGraphDataModelEnrichmentHealthRecording-Protocol.h>
 #import <PhotosGraph/PGGraphDataModelEnrichmentProcessor-Protocol.h>
 
 @class NSString;
 
-@interface PGGraphPhotosHighlightEnrichmentProcessor : NSObject <PGGraphDataModelEnrichmentProcessor, PGGraphDataModelEnrichmentHealthRecording>
+@interface PGGraphPhotosHighlightEnrichmentProcessor : NSObject <PGGraphDataModelEnrichmentProcessor>
 {
     unsigned long long _highlightTailorOptions;
 }
@@ -20,10 +19,8 @@
 + (id)backgroundJobName;
 + (_Bool)supportsBackgroundJob;
 @property(nonatomic) unsigned long long highlightTailorOptions; // @synthesize highlightTailorOptions=_highlightTailorOptions;
-- (void)recordProcessingWasCancelledWithGraphHealthRecorder:(id)arg1;
-- (void)recordCurrentProcessingDate:(id)arg1 lastProcessingDate:(id)arg2 graphHealthRecorder:(id)arg3;
 - (void)_logFirstTimeExperienceMetricsIfNeededWithManager:(id)arg1;
-- (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (void)enrichDataModelWithManager:(id)arg1 curationContext:(id)arg2 graphUpdateInventory:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (id)initWithHighlightTailorOptions:(unsigned long long)arg1;
 - (id)init;
 

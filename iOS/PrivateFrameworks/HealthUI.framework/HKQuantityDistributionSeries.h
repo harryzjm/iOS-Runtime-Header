@@ -16,9 +16,14 @@
     HKAxisLabelStyle *_minMaxValueStyle;
     HKStrokeStyle *_minMaxPointStyle;
     long long _zeroCountForGap;
+    double _hollowLineRatio;
 }
 
++ (id)transformedSegmentsFromChartPoint:(id)arg1 forX:(double)arg2 minY:(double)arg3 maxY:(double)arg4 zeroCountForGap:(long long)arg5;
++ (id)segmentsFromChartPoint:(id)arg1 minY:(double)arg2 maxY:(double)arg3 zeroCountForGap:(long long)arg4;
++ (id)segmentsFromChartPoint:(id)arg1 zeroCountForGap:(long long)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) double hollowLineRatio; // @synthesize hollowLineRatio=_hollowLineRatio;
 @property(nonatomic) long long zeroCountForGap; // @synthesize zeroCountForGap=_zeroCountForGap;
 @property(nonatomic) _Bool excludeDistribution; // @synthesize excludeDistribution=_excludeDistribution;
 @property(copy, nonatomic) HKStrokeStyle *minMaxPointStyle; // @synthesize minMaxPointStyle=_minMaxPointStyle;

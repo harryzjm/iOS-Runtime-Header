@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSObject;
+@class HMFMessageDispatcher, NSObject;
 @protocol HMDDuetPredictionSubscriberDataSource, HMDDuetSuggestionProvider, OS_dispatch_queue;
 
 @interface HMDDuetPredictionSubscriber : HMFObject
@@ -14,20 +14,22 @@
     int _duetPredictionsChangedNotificationToken;
     id <HMDDuetSuggestionProvider> _duetPredictionSuggester;
     NSObject<OS_dispatch_queue> *_workQueue;
+    HMFMessageDispatcher *_messageDispatcher;
     id <HMDDuetPredictionSubscriberDataSource> _dataSource;
 }
 
 - (void).cxx_destruct;
 @property int duetPredictionsChangedNotificationToken; // @synthesize duetPredictionsChangedNotificationToken=_duetPredictionsChangedNotificationToken;
 @property __weak id <HMDDuetPredictionSubscriberDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) id <HMDDuetSuggestionProvider> duetPredictionSuggester; // @synthesize duetPredictionSuggester=_duetPredictionSuggester;
 - (void)_fetchPredictionsFromDuetAndUpdateHomes;
 - (void)dealloc;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
-- (id)initWithWorkQueue:(id)arg1 dataSource:(id)arg2;
-- (id)initWithWorkQueue:(id)arg1 dataSource:(id)arg2 duetSuggestionProvider:(id)arg3;
+- (id)initWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2 dataSource:(id)arg3;
+- (id)initWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2 dataSource:(id)arg3 duetSuggestionProvider:(id)arg4;
 
 @end
 

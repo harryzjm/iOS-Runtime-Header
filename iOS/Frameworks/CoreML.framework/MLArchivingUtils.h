@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)codedObjectURLFromOutputArchiver:(struct _MLModelOutputArchiver *)arg1;
-+ (id)codedObjectURLFromInputArchiver:(struct _MLModelInputArchiver *)arg1;
++ (id)codedObjectURLFromOutputArchiver:(void *)arg1;
++ (id)codedObjectURLFromInputArchiver:(void *)arg1;
 
 @end
 

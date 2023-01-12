@@ -8,7 +8,6 @@
 
 @class UILabel, UIView;
 
-__attribute__((visibility("hidden")))
 @interface MCProfileTitlePageWarningCell : UITableViewCell
 {
     UILabel *_label;

@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *photoPickerNavigationBarHidden; // @synthesize photoPickerNavigationBarHidden=_photoPickerNavigationBarHidden;
 @property(copy, nonatomic) NSString *photoPickerViewControllerPrompt; // @synthesize photoPickerViewControllerPrompt=_photoPickerViewControllerPrompt;
 @property(copy, nonatomic) NSString *photoPickerViewControllerTitle; // @synthesize photoPickerViewControllerTitle=_photoPickerViewControllerTitle;
-- (id)_pathExtensionFromData:(id)arg1 url:(id)arg2;
+- (id)_pathExtensionFromData:(id)arg1 url:(id)arg2 exportPreset:(long long)arg3;
 - (id)_JPEGDataFromImage:(id)arg1;
 - (id)_JPEGDataFromImageData:(id)arg1;
 - (_Bool)_isHEIFImageFormatFromData:(id)arg1 url:(id)arg2;

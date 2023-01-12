@@ -6,14 +6,14 @@
 
 @interface RBSJetsamPriorityGrant
 {
-    long long _priority;
+    unsigned long long _band;
 }
 
 + (_Bool)supportsRBSXPCSecureCoding;
 + (id)grantWithBackgroundPriority;
 + (id)grantWithForegroundPriority;
-+ (id)grantWithPriority:(long long)arg1;
-@property(readonly, nonatomic) long long priority; // @synthesize priority=_priority;
++ (id)grantWithBand:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long band; // @synthesize band=_band;
 - (id)description;
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     struct RetainPtr<NSURLSessionDownloadTask> m_task;
     struct WeakPtr<WebKit::Download, WTF::EmptyCounter> m_download;
-    RefPtr_ea257445 m_sandboxExtension;
+    RefPtr_585b44c9 m_sandboxExtension;
 }
 
 - (id).cxx_construct;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)unpublish;
 - (void)publish;
-- (id)initWithDownloadTask:(id)arg1 download:(struct Download *)arg2 URL:(id)arg3 sandboxExtension:(RefPtr_ea257445)arg4;
+- (id)initWithDownloadTask:(id)arg1 download:(void *)arg2 URL:(id)arg3 sandboxExtension:(RefPtr_585b44c9)arg4;
 - (void)performCancel;
 
 @end

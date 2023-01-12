@@ -6,12 +6,14 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PUModelTileTransform, PUUserTransformTileViewController;
+@class NSArray, PUModelTileTransform, PUUserTransformTileViewController, UIView;
 @protocol PUDisplayLocationProvider;
 
 @protocol PUUserTransformTileViewControllerDelegate <NSObject>
 
 @optional
+- (UIView *)userTransformTileViewControllerPresentingImageTileView:(PUUserTransformTileViewController *)arg1;
+- (NSArray *)userTransformTileViewControllerSpotlightTextsToHighlight:(PUUserTransformTileViewController *)arg1;
 - (_Bool)userTransformTileViewController:(PUUserTransformTileViewController *)arg1 shouldReceiveTouchAtLocationFromProvider:(id <PUDisplayLocationProvider>)arg2;
 - (void)userTransformTileViewController:(PUUserTransformTileViewController *)arg1 didChangeIsUserInteracting:(_Bool)arg2;
 - (void)userTransformTileViewController:(PUUserTransformTileViewController *)arg1 didChangeModelTileTransform:(PUModelTileTransform *)arg2;

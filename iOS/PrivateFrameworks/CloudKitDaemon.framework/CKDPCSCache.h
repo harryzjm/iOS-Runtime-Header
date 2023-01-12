@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, CKDPCSMemoryCache, CKDPCSSQLCache, NSMutableDictionary;
+@class CKDContainer, CKDPCSMemoryCache, CKDPCSSQLCache, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSCache : NSObject
 {
     CKDPCSSQLCache *_sqlCache;
     CKDPCSMemoryCache *_recordMemoryCache;
     CKDPCSMemoryCache *_zoneMemoryCache;
     CKDPCSMemoryCache *_shareMemoryCache;
-    CKDClientContext *_context;
+    CKDContainer *_container;
     NSMutableDictionary *_outstandingFetches;
     NSObject<OS_dispatch_queue> *_fetchQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -26,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
 @property(retain, nonatomic) NSMutableDictionary *outstandingFetches; // @synthesize outstandingFetches=_outstandingFetches;
-@property(nonatomic) __weak CKDClientContext *context; // @synthesize context=_context;
+@property(nonatomic) __weak CKDContainer *container; // @synthesize container=_container;
 @property(readonly, nonatomic) CKDPCSMemoryCache *shareMemoryCache; // @synthesize shareMemoryCache=_shareMemoryCache;
 @property(readonly, nonatomic) CKDPCSMemoryCache *zoneMemoryCache; // @synthesize zoneMemoryCache=_zoneMemoryCache;
 @property(readonly, nonatomic) CKDPCSMemoryCache *recordMemoryCache; // @synthesize recordMemoryCache=_recordMemoryCache;
@@ -54,9 +53,10 @@ __attribute__((visibility("hidden")))
 - (void)_lockedHandleMemoryFetchOfItem:(id)arg1 pcsData:(id)arg2 forOperation:(id)arg3 options:(unsigned long long)arg4 fetchCreator:(CDUnknownBlockType)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
 - (void)getSQLCache:(CDUnknownBlockType)arg1;
 - (void)_lockedGetSQLCacheWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)runMemoryCacheEviction;
 - (void)dealloc;
-- (id)initWithClientContext:(id)arg1;
-- (void)clearInvalidatedPCSSQLCacheEntriesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithContainer:(id)arg1;
+- (void)clearInvalidatedPCSSQLCacheEntriesWithSkipZonePCS:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearPCSMemoryCaches;
 - (void)clearPCSCaches;
 

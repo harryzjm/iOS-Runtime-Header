@@ -9,29 +9,29 @@
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, NSString, SCNNode, SCNRenderer;
+@class AVTAvatar, AVTRenderer, MTLRenderPassDescriptor, NSString, SCNRenderer;
+@protocol MTLCommandQueue;
 
 @interface AVTSnapshotBuilder : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
     AVTAvatar *_avatar;
     AVTAvatar *_snapshotedAvatar;
-    AVTAvatarEnvironment *_environment;
-    SCNNode *_avatarNode;
-    SCNRenderer *_renderer;
+    AVTRenderer *_renderer;
+    id <MTLCommandQueue> _commandQueue;
+    MTLRenderPassDescriptor *_renderPassDescriptor;
+    struct CGContext *_bitmapContext;
 }
 
 + (struct CGImage *)copyRescaledCGImage:(struct CGImage *)arg1 by:(float)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
-- (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
-- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (id)animatedImageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3 useACopy:(_Bool)arg4;
 - (id)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (void)setupAvatarWithOptions:(id)arg1 useACopy:(_Bool)arg2;
 - (void)_applyOptions:(id)arg1;
+- (void)dealloc;
 - (id)init;
 @property(retain, nonatomic) AVTAvatar *avatar;
 @property(readonly, nonatomic) SCNRenderer *renderer;

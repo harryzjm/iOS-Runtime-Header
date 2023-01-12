@@ -8,19 +8,19 @@
 
 @interface TSCH3DChartMutableElementProperties
 {
-    TSCH3DArray2D *mLightingModels;
-    TSCH3DLabelResources *mLabels;
-    TSCH3DTransform *mChartTransform;
-    TSCH3DTransform *mElementsTransform;
+    TSCH3DArray2D *_lightingModels;
+    TSCH3DLabelResources *_labels;
+    TSCH3DTransform *_chartTransform;
+    TSCH3DTransform *_elementsTransform;
 }
 
-@property(retain, nonatomic) TSCH3DTransform *elementsTransform; // @synthesize elementsTransform=mElementsTransform;
-@property(retain, nonatomic) TSCH3DTransform *chartTransform; // @synthesize chartTransform=mChartTransform;
-@property(retain, nonatomic) TSCH3DLabelResources *labels; // @synthesize labels=mLabels;
-@property(retain, nonatomic) TSCH3DArray2D *lightingModels; // @synthesize lightingModels=mLightingModels;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DTransform *elementsTransform; // @synthesize elementsTransform=_elementsTransform;
+@property(retain, nonatomic) TSCH3DTransform *chartTransform; // @synthesize chartTransform=_chartTransform;
+@property(retain, nonatomic) TSCH3DLabelResources *labels; // @synthesize labels=_labels;
+@property(retain, nonatomic) TSCH3DArray2D *lightingModels; // @synthesize lightingModels=_lightingModels;
 - (id)renderingLightingModelForSeries:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 
 @end
 

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_leadingImage;
     _UISearchAtomBackgroundView *_backgroundView;
     NSArray *_defaultConstraints;
+    NSLayoutConstraint *_maximumAtomWidthConstraint;
     NSLayoutConstraint *_imageBaselineConstraint;
     NSLayoutConstraint *_imageCenterYConstraint;
     NSArray *_withImageConstraints;
@@ -33,12 +34,14 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *withImageConstraints; // @synthesize withImageConstraints=_withImageConstraints;
 @property(retain, nonatomic) NSLayoutConstraint *imageCenterYConstraint; // @synthesize imageCenterYConstraint=_imageCenterYConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *imageBaselineConstraint; // @synthesize imageBaselineConstraint=_imageBaselineConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *maximumAtomWidthConstraint; // @synthesize maximumAtomWidthConstraint=_maximumAtomWidthConstraint;
 @property(copy, nonatomic) NSArray *defaultConstraints; // @synthesize defaultConstraints=_defaultConstraints;
 @property(retain, nonatomic) _UISearchAtomBackgroundView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain) UIImageView *leadingImage; // @synthesize leadingImage=_leadingImage;
 @property(retain) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(retain, nonatomic) UIColor *atomBackgroundColor; // @synthesize atomBackgroundColor=_atomBackgroundColor;
 @property(readonly, nonatomic) struct CGRect selectionBounds;
+@property(nonatomic) double viewportWidth;
 - (void)setSelectionStyle:(long long)arg1 animated:(_Bool)arg2;
 @property(nonatomic) long long selectionStyle;
 - (void)setEnabled:(_Bool)arg1 animated:(_Bool)arg2;
@@ -52,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
-@property(readonly, nonatomic) long long baseWritingDirection;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

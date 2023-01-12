@@ -10,13 +10,14 @@
 #import <NewsUI/NUArticlePrefetcherType-Protocol.h>
 
 @class FCKeyedOperationQueue, NSCountedSet, NSMutableDictionary, NSString, NSTimer;
-@protocol NUArticleDataProviderFactory, NUArticleFactory;
+@protocol NUArticleDataProviderFactory, NUArticleFactory, OS_dispatch_queue;
 
 @interface NUArticlePrefetcher : NSObject <FCKeyedOperationQueueDelegate, NUArticlePrefetcherType>
 {
     id <NUArticleFactory> _articleFactory;
     id <NUArticleDataProviderFactory> _articleDataProviderFactory;
     FCKeyedOperationQueue *_prefetchQueue;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableDictionary *_articleDataProviderCache;
     NSCountedSet *_interestedArticleIDs;
     NSMutableDictionary *_headlinesForArticles;
@@ -32,11 +33,13 @@
 @property(retain, nonatomic) NSMutableDictionary *headlinesForArticles; // @synthesize headlinesForArticles=_headlinesForArticles;
 @property(retain, nonatomic) NSCountedSet *interestedArticleIDs; // @synthesize interestedArticleIDs=_interestedArticleIDs;
 @property(retain, nonatomic) NSMutableDictionary *articleDataProviderCache; // @synthesize articleDataProviderCache=_articleDataProviderCache;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) FCKeyedOperationQueue *prefetchQueue; // @synthesize prefetchQueue=_prefetchQueue;
 @property(retain, nonatomic) id <NUArticleDataProviderFactory> articleDataProviderFactory; // @synthesize articleDataProviderFactory=_articleDataProviderFactory;
 @property(retain, nonatomic) id <NUArticleFactory> articleFactory; // @synthesize articleFactory=_articleFactory;
 - (void)_revisitSuspendedState;
 - (void)_flushUnusedDataProvidersIfNeeded;
+- (void)_flushDataProviderIfNeededForHeadline:(id)arg1;
 - (id)keyedOperationQueue:(id)arg1 performAsyncOperationForKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reprocessInterestedArticleIDs;
 - (void)_didChangeInterestedArticleIDs;

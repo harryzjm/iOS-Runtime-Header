@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBCardSectionValue-Protocol.h>
 
-@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAttributionFooterCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFlightCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBKeyValueDataCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBNowPlayingCardSection, _SFPBProductCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBStockChartCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWebCardSection, _SFPBWorldMapCardSection;
+@class NSData, NSString, _SFPBActivityIndicatorCardSection, _SFPBAppLinkCardSection, _SFPBAttributionFooterCardSection, _SFPBAudioPlaybackCardSection, _SFPBButtonCardSection, _SFPBCollectionCardSection, _SFPBColorBarCardSection, _SFPBCombinedCardSection, _SFPBCompactRowCardSection, _SFPBDescriptionCardSection, _SFPBDetailedRowCardSection, _SFPBFindMyCardSection, _SFPBFlightCardSection, _SFPBGridCardSection, _SFPBHeroCardSection, _SFPBHorizontalButtonCardSection, _SFPBHorizontalScrollCardSection, _SFPBImagesCardSection, _SFPBInfoCardSection, _SFPBKeyValueDataCardSection, _SFPBLinkPresentationCardSection, _SFPBListenToCardSection, _SFPBMapCardSection, _SFPBMapPlaceCardSection, _SFPBMapsDetailedRowCardSection, _SFPBMediaInfoCardSection, _SFPBMediaPlayerCardSection, _SFPBMediaRemoteControlCardSection, _SFPBMessageCardSection, _SFPBMetaInfoCardSection, _SFPBMiniCardSection, _SFPBNewsCardSection, _SFPBNowPlayingCardSection, _SFPBPersonHeaderCardSection, _SFPBProductCardSection, _SFPBResponseWrapperCardSection, _SFPBRichTitleCardSection, _SFPBRowCardSection, _SFPBScoreboardCardSection, _SFPBSectionHeaderCardSection, _SFPBSelectableGridCardSection, _SFPBSocialMediaPostCardSection, _SFPBSplitCardSection, _SFPBStockChartCardSection, _SFPBStrokeAnimationCardSection, _SFPBSuggestionCardSection, _SFPBTableHeaderRowCardSection, _SFPBTableRowCardSection, _SFPBTextColumnsCardSection, _SFPBTitleCardSection, _SFPBTrackListCardSection, _SFPBVerticalLayoutCardSection, _SFPBWatchListCardSection, _SFPBWatchNowCardSection, _SFPBWebCardSection, _SFPBWorldMapCardSection;
 
 @interface _SFPBCardSectionValue : PBCodable <_SFPBCardSectionValue, NSSecureCoding>
 {
@@ -53,9 +53,41 @@
     _SFPBCompactRowCardSection *_compactRowCardSection;
     _SFPBWorldMapCardSection *_worldMapCardSection;
     _SFPBAttributionFooterCardSection *_attributionFooterCardSection;
+    _SFPBGridCardSection *_gridCardSection;
+    _SFPBPersonHeaderCardSection *_personHeaderCardSection;
+    _SFPBColorBarCardSection *_colorBarCardSection;
+    _SFPBSplitCardSection *_splitCardSection;
+    _SFPBLinkPresentationCardSection *_linkPresentationCardSection;
+    _SFPBFindMyCardSection *_findMyCardSection;
+    _SFPBHeroCardSection *_heroCardSection;
+    _SFPBNewsCardSection *_newsCardSection;
+    _SFPBMiniCardSection *_miniCardSection;
+    _SFPBInfoCardSection *_infoCardSection;
+    _SFPBCollectionCardSection *_collectionCardSection;
+    _SFPBCombinedCardSection *_combinedCardSection;
+    _SFPBResponseWrapperCardSection *_responseWrapperCardSection;
+    _SFPBListenToCardSection *_listenToCardSection;
+    _SFPBWatchNowCardSection *_watchNowCardSection;
+    _SFPBStrokeAnimationCardSection *_strokeAnimationCardSection;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBStrokeAnimationCardSection *strokeAnimationCardSection; // @synthesize strokeAnimationCardSection=_strokeAnimationCardSection;
+@property(retain, nonatomic) _SFPBWatchNowCardSection *watchNowCardSection; // @synthesize watchNowCardSection=_watchNowCardSection;
+@property(retain, nonatomic) _SFPBListenToCardSection *listenToCardSection; // @synthesize listenToCardSection=_listenToCardSection;
+@property(retain, nonatomic) _SFPBResponseWrapperCardSection *responseWrapperCardSection; // @synthesize responseWrapperCardSection=_responseWrapperCardSection;
+@property(retain, nonatomic) _SFPBCombinedCardSection *combinedCardSection; // @synthesize combinedCardSection=_combinedCardSection;
+@property(retain, nonatomic) _SFPBCollectionCardSection *collectionCardSection; // @synthesize collectionCardSection=_collectionCardSection;
+@property(retain, nonatomic) _SFPBInfoCardSection *infoCardSection; // @synthesize infoCardSection=_infoCardSection;
+@property(retain, nonatomic) _SFPBMiniCardSection *miniCardSection; // @synthesize miniCardSection=_miniCardSection;
+@property(retain, nonatomic) _SFPBNewsCardSection *newsCardSection; // @synthesize newsCardSection=_newsCardSection;
+@property(retain, nonatomic) _SFPBHeroCardSection *heroCardSection; // @synthesize heroCardSection=_heroCardSection;
+@property(retain, nonatomic) _SFPBFindMyCardSection *findMyCardSection; // @synthesize findMyCardSection=_findMyCardSection;
+@property(retain, nonatomic) _SFPBLinkPresentationCardSection *linkPresentationCardSection; // @synthesize linkPresentationCardSection=_linkPresentationCardSection;
+@property(retain, nonatomic) _SFPBSplitCardSection *splitCardSection; // @synthesize splitCardSection=_splitCardSection;
+@property(retain, nonatomic) _SFPBColorBarCardSection *colorBarCardSection; // @synthesize colorBarCardSection=_colorBarCardSection;
+@property(retain, nonatomic) _SFPBPersonHeaderCardSection *personHeaderCardSection; // @synthesize personHeaderCardSection=_personHeaderCardSection;
+@property(retain, nonatomic) _SFPBGridCardSection *gridCardSection; // @synthesize gridCardSection=_gridCardSection;
 @property(retain, nonatomic) _SFPBAttributionFooterCardSection *attributionFooterCardSection; // @synthesize attributionFooterCardSection=_attributionFooterCardSection;
 @property(retain, nonatomic) _SFPBWorldMapCardSection *worldMapCardSection; // @synthesize worldMapCardSection=_worldMapCardSection;
 @property(retain, nonatomic) _SFPBCompactRowCardSection *compactRowCardSection; // @synthesize compactRowCardSection=_compactRowCardSection;

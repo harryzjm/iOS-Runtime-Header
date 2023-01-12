@@ -6,20 +6,28 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HFAccessorySettingSiriLanguageAdapter, NSSet;
+@class HFAccessorySettingSiriLanguageAdapter, HFItem, HFSiriLanguageOptionsManager, NSSet;
 
 @interface HUSiriLanguageOptionItemProvider : HFItemProvider
 {
     NSSet *_items;
     unsigned long long _optionStyle;
     HFAccessorySettingSiriLanguageAdapter *_adapter;
+    HFSiriLanguageOptionsManager *_siriLanguageOptionsManager;
+    HFItem *_sourceItem;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HFItem *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property(retain, nonatomic) HFSiriLanguageOptionsManager *siriLanguageOptionsManager; // @synthesize siriLanguageOptionsManager=_siriLanguageOptionsManager;
 @property(readonly, nonatomic) HFAccessorySettingSiriLanguageAdapter *adapter; // @synthesize adapter=_adapter;
 @property(readonly, nonatomic) unsigned long long optionStyle; // @synthesize optionStyle=_optionStyle;
 @property(retain, nonatomic) NSSet *items; // @synthesize items=_items;
+- (id)_createSiriLanguageOptionItems:(id)arg1;
+- (id)_reloadItemsWithSiriLanguageOptionsManager;
+- (id)_reloadItemsWithAdapter;
 - (id)reloadItems;
+- (id)initWithSiriLanguageOptionsManager:(id)arg1 sourceItem:(id)arg2 optionStyle:(unsigned long long)arg3;
 - (id)initWithAdapter:(id)arg1 optionStyle:(unsigned long long)arg2;
 
 @end

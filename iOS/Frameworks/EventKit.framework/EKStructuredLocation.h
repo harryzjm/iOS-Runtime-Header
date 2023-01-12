@@ -26,7 +26,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) EKPredictedLocationOfInterest *predictedLOI; // @synthesize predictedLOI=_predictedLOI;
 @property(nonatomic, getter=isImprecise) _Bool imprecise; // @synthesize imprecise=_imprecise;
-- (id)semanticIdentifier;
 @property(copy, nonatomic) NSString *derivedFrom;
 @property(readonly, nonatomic, getter=isPrediction) _Bool prediction;
 - (void)updateFromMapItem:(id)arg1;
@@ -55,6 +54,7 @@
 @property(retain, nonatomic) NSString *title;
 @property(readonly, nonatomic) _Bool hasKnownSpatialData;
 @property(readonly, nonatomic) _Bool isStructured;
+- (id)initWithObjectForCopy:(id)arg1;
 
 @end
 

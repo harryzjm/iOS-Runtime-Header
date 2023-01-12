@@ -50,7 +50,9 @@
 @property(readonly, nonatomic) NSString *accountTypeDescription; // @synthesize accountTypeDescription=_accountTypeDescription;
 - (void)setIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void)setSyncableDataclasses:(id)arg1;
 @property(readonly, nonatomic) NSSet *syncableDataclasses; // @synthesize syncableDataclasses=_syncableDataclasses;
+- (void)setSupportedDataclasses:(id)arg1;
 @property(readonly, nonatomic) NSSet *supportedDataclasses; // @synthesize supportedDataclasses=_supportedDataclasses;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSString *fullDescription;

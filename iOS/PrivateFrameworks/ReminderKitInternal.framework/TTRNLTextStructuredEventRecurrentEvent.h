@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary;
+@class NSDate, NSDateComponents, NSDictionary;
 
 @interface TTRNLTextStructuredEventRecurrentEvent : NSObject
 {
@@ -14,11 +14,17 @@
     NSDate *_startDate;
     NSDate *_endDate;
     NSDictionary *_frequency;
+    NSDateComponents *_startDateComponents;
+    NSDateComponents *_endDateComponents;
+    NSDateComponents *_frequencyComponents;
     struct _NSRange _range;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *frequency; // @synthesize frequency=_frequency;
+@property(copy, nonatomic) NSDateComponents *frequencyComponents; // @synthesize frequencyComponents=_frequencyComponents;
+@property(copy, nonatomic) NSDateComponents *endDateComponents; // @synthesize endDateComponents=_endDateComponents;
+@property(copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
+@property(copy, nonatomic) NSDictionary *frequency; // @synthesize frequency=_frequency;
 @property(nonatomic) _Bool isAllDay; // @synthesize isAllDay=_isAllDay;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -35,6 +41,7 @@
 @property(readonly, nonatomic) long long monthFrequency;
 @property(readonly, nonatomic) long long dayFrequency;
 @property(readonly, nonatomic) long long hourFrequency;
+- (id)initWithRange:(struct _NSRange)arg1 startDate:(id)arg2 endDate:(id)arg3 isAllDay:(_Bool)arg4 startComponents:(id)arg5 endComponents:(id)arg6 frequencyComponents:(id)arg7;
 - (id)initWithRange:(struct _NSRange)arg1 startDate:(id)arg2 endDate:(id)arg3 isAllDay:(_Bool)arg4 frequency:(id)arg5;
 
 @end

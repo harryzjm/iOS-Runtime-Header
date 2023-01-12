@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSString, SBFGradient, SBWallpaperServer, UIColor;
+@class BSAction, NSString, SBFGradient, SBWallpaperServer, UIColor;
 
 @protocol SBWallpaperServerDelegate <NSObject>
+- (void)wallpaperServer:(SBWallpaperServer *)arg1 acquireActiveWallpaperSceneAssertionWithAction:(BSAction *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 restoreDefaultWallpaperWithCompletionHandler:(void (^)(_Bool))arg2;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 setWallpaperGradient:(SBFGradient *)arg2 forVariants:(long long)arg3 completionHandler:(void (^)(_Bool))arg4;
 - (void)wallpaperServer:(SBWallpaperServer *)arg1 setWallpaperColor:(UIColor *)arg2 darkColor:(UIColor *)arg3 forVariants:(long long)arg4 completionHandler:(void (^)(_Bool))arg5;

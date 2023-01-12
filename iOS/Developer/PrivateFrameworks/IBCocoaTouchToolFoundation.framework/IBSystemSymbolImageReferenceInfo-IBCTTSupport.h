@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBSystemSymbolImageReferenceInfo.h>
+#import <AssetCatalogFoundation/IBSystemSymbolImageReferenceInfo.h>
 
 @interface IBSystemSymbolImageReferenceInfo (IBCTTSupport)
 - (id)image;
+- (id)resourceCatelogName;
 @end
 

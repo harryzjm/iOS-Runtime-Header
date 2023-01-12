@@ -87,6 +87,10 @@
 - (_Bool)_shouldEmulateInterstitialPresentation;
 - (void)wallpaperDidChangeForVariant:(long long)arg1;
 - (void)extendedKeybagLockStateChanged:(_Bool)arg1;
+- (id)passcodeEntryTransientOverlayViewControllerStatusSubtitleText;
+- (id)passcodeEntryTransientOverlayViewControllerStatusText;
+- (_Bool)passcodeEntryTransientOverlayViewControllerDidDetectBottomFaceOcclusionsSinceScreenOn:(id)arg1;
+- (_Bool)passcodeEntryTransientOverlayViewControllerDidDetectFaceOcclusionsSinceScreenOn:(id)arg1;
 - (void)passcodeEntryTransientOverlayViewControllerRequestsEmergencyCall:(id)arg1;
 - (void)passcodeEntryTransientOverlayViewControllerRequestsDismissal:(id)arg1;
 - (void)passcodeEntryTransientOverlayViewControllerDidDisappear:(id)arg1;
@@ -170,6 +174,8 @@
 - (void)_setIdleTimerCoordinator:(id)arg1;
 - (void)homeButtonShowPasscodeRecognizerDidFailToRecognize:(id)arg1;
 - (void)homeButtonShowPasscodeRecognizerRequestsPasscodeUIToBeShown:(id)arg1;
+- (_Bool)biometricAuthenticationCoordinatorShouldWaitToInvalidateMatchingAssertion:(id)arg1;
+- (void)biometricAuthenticationCoordinator:(id)arg1 handleIdentityMatchSuccess:(_Bool)arg2;
 - (_Bool)biometricAuthenticationCoordinator:(id)arg1 requestsAuthenticationFeedback:(id)arg2;
 - (_Bool)biometricAuthenticationCoordinator:(id)arg1 requestsUnlockWithIntent:(int)arg2;
 - (void)tapToWakeControllerDidRecognizePencilWakeGesture:(id)arg1;
@@ -182,7 +188,14 @@
 - (double)contrastForCurrentWallpaper;
 - (id)averageColorForCurrentWallpaperInScreenRect:(struct CGRect)arg1;
 - (id)averageColorForCurrentWallpaper;
+- (_Bool)coverSheetViewControllerIsShowingSecureApp:(id)arg1;
+- (_Bool)coverSheetViewControllerHasSecureApp:(id)arg1;
+- (void)coverSheetViewController:(id)arg1 startSpotlightInteractiveGestureTransactionForGesture:(id)arg2;
 - (void)coverSheetViewController:(id)arg1 setMesaUnlockingDisabled:(_Bool)arg2 forReason:(id)arg3;
+- (_Bool)coverSheetViewControllerIsPasscodeVisible:(id)arg1;
+- (void)coverSheetViewControllerHandleUnlockAttemptSucceeded:(id)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidPresent:(id)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidDismiss:(id)arg1;
 - (void)coverSheetViewControllerShouldDismissContextMenu:(id)arg1;
 - (void)coverSheetViewController:(id)arg1 unlockWithRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)coverSheetViewController:(id)arg1 requestsTouchIDDisabled:(_Bool)arg2 forReason:(id)arg3;
@@ -203,6 +216,7 @@
 @property(readonly, nonatomic) CSCoverSheetViewController *coverSheetViewController;
 - (void)lockUIFromSource:(int)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)lockUIFromSource:(int)arg1 withOptions:(id)arg2;
+@property(readonly) _Bool isSupressingLockButton;
 @property(readonly) _Bool isLockScreenVisible;
 @property(readonly) _Bool isLockScreenActive;
 @property(readonly) _Bool shouldPlayLockSound;

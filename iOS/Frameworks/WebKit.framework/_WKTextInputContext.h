@@ -17,9 +17,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (const struct ElementContext *)_textInputContext;
+- (const void *)_textInputContext;
 @property(readonly, nonatomic) struct CGRect boundingRect;
-- (id)_initWithTextInputContext:(const struct ElementContext *)arg1;
+- (id)_initWithTextInputContext:(const void *)arg1;
 - (id)init;
 
 @end

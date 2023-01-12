@@ -26,7 +26,7 @@
     NSNumber *_vettedPrimaryEmail;
     NSNumber *_phoneAsAppleID;
     NSNumber *_isUnderage;
-    NSString *_ageOfMajority;
+    NSNumber *_ageOfMajority;
     NSNumber *_isLegacyStudent;
     NSNumber *_hasUsedAuthorization;
     NSNumber *_previouslyWantedPrivateEmail;
@@ -34,12 +34,28 @@
     unsigned long long _authMode;
     unsigned long long _repairState;
     NSDictionary *_additionalInfo;
+    NSString *_privateEmailListVersion;
+    NSString *_appleIDCountryCode;
+    NSNumber *_custodianEnabled;
+    NSNumber *_canHaveCustodian;
+    NSNumber *_canBeCustodian;
+    NSNumber *_canHaveBeneficiary;
+    NSNumber *_canBeBeneficiary;
+    NSNumber *_hasMDM;
     NSString *_selectedEmail;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *selectedEmail; // @synthesize selectedEmail=_selectedEmail;
+@property(copy, nonatomic) NSNumber *hasMDM; // @synthesize hasMDM=_hasMDM;
+@property(copy, nonatomic) NSNumber *canBeBeneficiary; // @synthesize canBeBeneficiary=_canBeBeneficiary;
+@property(copy, nonatomic) NSNumber *canHaveBeneficiary; // @synthesize canHaveBeneficiary=_canHaveBeneficiary;
+@property(copy, nonatomic) NSNumber *canBeCustodian; // @synthesize canBeCustodian=_canBeCustodian;
+@property(copy, nonatomic) NSNumber *canHaveCustodian; // @synthesize canHaveCustodian=_canHaveCustodian;
+@property(copy, nonatomic) NSNumber *custodianEnabled; // @synthesize custodianEnabled=_custodianEnabled;
+@property(copy, nonatomic) NSString *appleIDCountryCode; // @synthesize appleIDCountryCode=_appleIDCountryCode;
+@property(copy, nonatomic) NSString *privateEmailListVersion; // @synthesize privateEmailListVersion=_privateEmailListVersion;
 @property(copy, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo=_additionalInfo;
 @property(nonatomic) unsigned long long repairState; // @synthesize repairState=_repairState;
 @property(nonatomic) unsigned long long authMode; // @synthesize authMode=_authMode;
@@ -47,7 +63,7 @@
 @property(copy, nonatomic) NSNumber *previouslyWantedPrivateEmail; // @synthesize previouslyWantedPrivateEmail=_previouslyWantedPrivateEmail;
 @property(copy, nonatomic) NSNumber *hasUsedAuthorization; // @synthesize hasUsedAuthorization=_hasUsedAuthorization;
 @property(copy, nonatomic) NSNumber *isLegacyStudent; // @synthesize isLegacyStudent=_isLegacyStudent;
-@property(copy, nonatomic) NSString *ageOfMajority; // @synthesize ageOfMajority=_ageOfMajority;
+@property(copy, nonatomic) NSNumber *ageOfMajority; // @synthesize ageOfMajority=_ageOfMajority;
 @property(copy, nonatomic) NSNumber *isUnderage; // @synthesize isUnderage=_isUnderage;
 @property(copy, nonatomic) NSNumber *phoneAsAppleID; // @synthesize phoneAsAppleID=_phoneAsAppleID;
 @property(copy, nonatomic) NSNumber *vettedPrimaryEmail; // @synthesize vettedPrimaryEmail=_vettedPrimaryEmail;

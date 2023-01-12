@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPConfiguration : PBCodable <NSCopying>
 {
     unsigned long long _created;

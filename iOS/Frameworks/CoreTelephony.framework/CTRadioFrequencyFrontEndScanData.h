@@ -22,6 +22,8 @@
     unsigned long long _hwHousing;
     unsigned long long _rfcHwid;
     unsigned long long _rfcRev;
+    unsigned long long _rfcMmwHwid;
+    unsigned long long _rfcMmwRev;
     unsigned long long _numExpectedDevices;
     unsigned long long _numDetectedDevices;
     unsigned long long _numMissingDevices;
@@ -35,6 +37,8 @@
 @property(nonatomic) unsigned long long numDetectedDevices; // @synthesize numDetectedDevices=_numDetectedDevices;
 @property(nonatomic) unsigned long long numExpectedDevices; // @synthesize numExpectedDevices=_numExpectedDevices;
 @property(nonatomic) _Bool rffeScanPass; // @synthesize rffeScanPass=_rffeScanPass;
+@property(nonatomic) unsigned long long rfcMmwRev; // @synthesize rfcMmwRev=_rfcMmwRev;
+@property(nonatomic) unsigned long long rfcMmwHwid; // @synthesize rfcMmwHwid=_rfcMmwHwid;
 @property(nonatomic) unsigned long long rfcRev; // @synthesize rfcRev=_rfcRev;
 @property(nonatomic) unsigned long long rfcHwid; // @synthesize rfcHwid=_rfcHwid;
 @property(nonatomic) _Bool rfcInitPass; // @synthesize rfcInitPass=_rfcInitPass;

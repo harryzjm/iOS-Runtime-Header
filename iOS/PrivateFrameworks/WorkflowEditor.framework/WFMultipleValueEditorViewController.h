@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <WFComponentNavigationContext> navigationContext; // @synthesize navigationContext=_navigationContext;
 @property(readonly, nonatomic) WFMultipleValueEditorView *editorView; // @synthesize editorView=_editorView;
-- (void)done;
+- (struct CGSize)preferredContentSize;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end

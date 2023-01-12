@@ -24,10 +24,13 @@
 - (id)directoryServerResultWithDisplayName:(id)arg1 value:(id)arg2 nameComponents:(id)arg3;
 - (id)extensionGroupResultWithDisplayName:(id)arg1 groupIdentifier:(id)arg2 membersProvider:(CDUnknownBlockType)arg3;
 - (id)extensionResultWithDisplayName:(id)arg1 value:(id)arg2 nameComponents:(id)arg3;
+- (id)MAIDGroupResultWithDisplayName:(id)arg1 groupIdentifier:(id)arg2 membersProvider:(CDUnknownBlockType)arg3;
+- (id)MAIDResultWithDisplayName:(id)arg1 value:(id)arg2 nameComponents:(id)arg3;
 - (id)suggestedResultWithDisplayName:(id)arg1 value:(id)arg2 nameComponents:(id)arg3;
 - (id)infrequentRecentResultWithDisplayName:(id)arg1 value:(id)arg2 lastSendingAddress:(id)arg3 dateCount:(unsigned long long)arg4 date:(id)arg5 group:(_Bool)arg6 completesChosenGroup:(_Bool)arg7;
 - (id)frequentRecentResultWithDisplayName:(id)arg1 value:(id)arg2 lastSendingAddress:(id)arg3 date:(id)arg4 group:(_Bool)arg5 completesChosenGroup:(_Bool)arg6;
 - (id)recentResultWithDisplayName:(id)arg1 value:(id)arg2 lastSendingAddress:(id)arg3 dateCount:(unsigned long long)arg4 date:(id)arg5 group:(_Bool)arg6 completesChosenGroup:(_Bool)arg7;
+- (id)duetGroupResultWithDisplayName:(id)arg1 groupIdentifier:(id)arg2 membersProvider:(CDUnknownBlockType)arg3;
 - (id)localGroupResultWithDisplayName:(id)arg1 groupIdentifier:(id)arg2 membersProvider:(CDUnknownBlockType)arg3;
 - (id)localGroupResultWithDisplayName:(id)arg1 groupIdentifier:(id)arg2;
 - (id)localContactResultWithDisplayName:(id)arg1 value:(id)arg2 nameComponents:(id)arg3 contactIdentifier:(id)arg4;

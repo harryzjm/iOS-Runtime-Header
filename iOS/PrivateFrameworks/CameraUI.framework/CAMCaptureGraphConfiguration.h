@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CAMVideoThumbnailOutputConfiguration, NSArray;
+@class CAMSemanticStyle, CAMVideoThumbnailOutputConfiguration, NSArray;
 
 @interface CAMCaptureGraphConfiguration : NSObject
 {
     _Bool _enableAutoFPSVideo;
     _Bool _videoHDRSuspended;
+    _Bool _enableHDR10BitVideoIfSupported;
     _Bool _captureMirrored;
+    _Bool _enableRAWCaptureIfSupported;
+    _Bool _enableContentAwareDistortionCorrection;
     _Bool _enableResponsiveShutter;
     long long _mode;
     long long _device;
@@ -26,11 +29,18 @@
     long long _videoEncodingBehavior;
     long long _aspectRatioCrop;
     long long _photoQualityPrioritization;
+    unsigned long long _semanticStyleSupport;
+    CAMSemanticStyle *_previewSemanticStyle;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool enableResponsiveShutter; // @synthesize enableResponsiveShutter=_enableResponsiveShutter;
+@property(readonly, nonatomic) _Bool enableContentAwareDistortionCorrection; // @synthesize enableContentAwareDistortionCorrection=_enableContentAwareDistortionCorrection;
+@property(readonly, nonatomic) CAMSemanticStyle *previewSemanticStyle; // @synthesize previewSemanticStyle=_previewSemanticStyle;
+@property(readonly, nonatomic) unsigned long long semanticStyleSupport; // @synthesize semanticStyleSupport=_semanticStyleSupport;
+@property(readonly, nonatomic) _Bool enableRAWCaptureIfSupported; // @synthesize enableRAWCaptureIfSupported=_enableRAWCaptureIfSupported;
 @property(readonly, nonatomic, getter=isCaptureMirrored) _Bool captureMirrored; // @synthesize captureMirrored=_captureMirrored;
+@property(readonly, nonatomic) _Bool enableHDR10BitVideoIfSupported; // @synthesize enableHDR10BitVideoIfSupported=_enableHDR10BitVideoIfSupported;
 @property(readonly, nonatomic) long long photoQualityPrioritization; // @synthesize photoQualityPrioritization=_photoQualityPrioritization;
 @property(readonly, nonatomic) long long aspectRatioCrop; // @synthesize aspectRatioCrop=_aspectRatioCrop;
 @property(readonly, nonatomic, getter=isVideoHDRSuspended) _Bool videoHDRSuspended; // @synthesize videoHDRSuspended=_videoHDRSuspended;
@@ -49,7 +59,7 @@
 - (id)completeDescription;
 - (id)shortDescription;
 @property(readonly, nonatomic) long long devicePosition;
-- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoFPSVideo:(_Bool)arg11 videoHDRSuspended:(_Bool)arg12 aspectRatioCrop:(long long)arg13 photoQualityPrioritization:(long long)arg14 captureMirrored:(_Bool)arg15 enableResponsiveShutter:(_Bool)arg16;
+- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoFPSVideo:(_Bool)arg11 videoHDRSuspended:(_Bool)arg12 aspectRatioCrop:(long long)arg13 photoQualityPrioritization:(long long)arg14 enableHDR10BitVideoIfSupported:(_Bool)arg15 captureMirrored:(_Bool)arg16 enableRAWCaptureIfSupported:(_Bool)arg17 semanticStyleSupport:(unsigned long long)arg18 previewSemanticStyle:(id)arg19 enableContentAwareDistortionCorrection:(_Bool)arg20 enableResponsiveShutter:(_Bool)arg21;
 
 @end
 

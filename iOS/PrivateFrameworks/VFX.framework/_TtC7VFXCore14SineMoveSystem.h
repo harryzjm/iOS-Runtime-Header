@@ -11,6 +11,7 @@
 @interface _TtC7VFXCore14SineMoveSystem : _TtCs12_SwiftObject
 {
     MISSING_TYPE *elapsedTime;
+    MISSING_TYPE *query;
 }
 
 @end

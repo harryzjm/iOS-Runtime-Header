@@ -12,7 +12,7 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     struct URLCompletionEntryMap _map;
-    struct unordered_multimap<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>, std::__1::hash<RetainPtr<NSString>>, std::__1::equal_to<RetainPtr<NSString>>, std::__1::allocator<std::__1::pair<const WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>>> _redirectSources;
+    struct unordered_multimap<WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>, std::hash<RetainPtr<NSString>>, std::equal_to<RetainPtr<NSString>>, std::allocator<std::pair<const WTF::RetainPtr<NSString>, WTF::RetainPtr<NSString>>>> _redirectSources;
 }
 
 - (id).cxx_construct;

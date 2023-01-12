@@ -25,7 +25,7 @@
 @property(retain) NSString *localeFilename;
 @property(retain) NSString *id;
 @property(retain) NSString *paramsFilename;
-- (void)addCondition:(id)arg1;
+- (id)getFormatVersion;
 - (id)getRoot;
 - (shared_ptr_ab06ee6d)getSharedPtr;
 - (id)initWithSharedPtr:(shared_ptr_ab06ee6d)arg1;

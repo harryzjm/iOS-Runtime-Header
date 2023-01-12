@@ -11,15 +11,15 @@
 @interface IMParentalControlsService : NSObject
 {
     _Bool _disableService;
-    _Bool _forceWhiteList;
-    NSSet *_whitelist;
+    _Bool _forceAllowlist;
+    NSSet *_allowlist;
     NSString *_name;
 }
 
 - (void).cxx_destruct;
 @property(retain) NSString *name; // @synthesize name=_name;
-@property(retain) NSSet *whitelist; // @synthesize whitelist=_whitelist;
-@property _Bool forceWhiteList; // @synthesize forceWhiteList=_forceWhiteList;
+@property(retain) NSSet *allowlist; // @synthesize allowlist=_allowlist;
+@property _Bool forceAllowlist; // @synthesize forceAllowlist=_forceAllowlist;
 @property _Bool disableService; // @synthesize disableService=_disableService;
 - (void)dealloc;
 

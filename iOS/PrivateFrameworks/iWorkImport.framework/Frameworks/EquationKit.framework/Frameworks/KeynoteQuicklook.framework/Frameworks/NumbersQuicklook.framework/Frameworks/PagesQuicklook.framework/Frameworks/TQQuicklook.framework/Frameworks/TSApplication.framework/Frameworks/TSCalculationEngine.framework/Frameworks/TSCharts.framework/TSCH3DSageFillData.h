@@ -13,11 +13,11 @@
 
 @interface TSCH3DSageFillData : NSObject <TSCH3DSageFillData>
 {
-    NSDictionary *mProperties;
-    NSArray *mLayersProperties;
-    TSCH3DFillSetIdentifier *mIdentifier;
-    NSObject<TSCH3DSageFillImageDataSource> *mImageSource;
-    _Bool mIsLowRes;
+    NSDictionary *_properties;
+    NSArray *_layersProperties;
+    TSCH3DFillSetIdentifier *_identifier;
+    NSObject<TSCH3DSageFillImageDataSource> *_imageSource;
+    _Bool _isLowRes;
 }
 
 + (id)dataWithProperties:(id)arg1 layersProperties:(id)arg2 identifier:(id)arg3 imageSource:(id)arg4 isLowRes:(_Bool)arg5;
@@ -26,6 +26,7 @@
 + (id)dataWithFillSetIdentifier:(id)arg1 isLowRes:(_Bool)arg2;
 + (id)TSPImageDataFromTexture:(id)arg1;
 + (id)textureWithImageData:(id)arg1;
+- (void).cxx_destruct;
 - (id)fillSetIdentifier;
 - (id)textureForIndex:(unsigned long long)arg1;
 - (id)layerLightenPercentageForIndex:(unsigned long long)arg1;
@@ -45,7 +46,6 @@
 - (float)opacity;
 - (struct Color)makeGray:(float)arg1;
 - (struct ColorResult)colorFromRedKey:(id)arg1 greenKey:(id)arg2 blueKey:(id)arg3;
-- (void)dealloc;
 - (id)initWithProperties:(id)arg1 layersProperties:(id)arg2 identifier:(id)arg3 imageSource:(id)arg4 isLowRes:(_Bool)arg5;
 - (id)initWithProperties:(id)arg1 layersProperties:(id)arg2 identifier:(id)arg3 imageSource:(id)arg4;
 

@@ -14,7 +14,7 @@
 
 - (id)schemataRow;
 - (struct Schemata)layoutSchemata;
-- (const set_25e6ba53 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

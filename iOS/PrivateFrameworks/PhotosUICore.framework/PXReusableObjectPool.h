@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *_reusableObjectsByReuseIdentifier; // @synthesize _reusableObjectsByReuseIdentifier=__reusableObjectsByReuseIdentifier;
 @property(readonly, nonatomic) NSMutableDictionary *_objectCreationBlocksByReuseIdentifier; // @synthesize _objectCreationBlocksByReuseIdentifier=__objectCreationBlocksByReuseIdentifier;
 @property(nonatomic) __weak id <PXReusableObjectPoolDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)removeAllReusableObjectsWithReuseIdentifier:(long long)arg1;
 - (void)checkInReusableObject:(id)arg1;
 - (id)checkOutReusableObjectWithReuseIdentifier:(long long)arg1;
 - (void)registerReusableObjectForReuseIdentifier:(long long)arg1 creationHandler:(CDUnknownBlockType)arg2;

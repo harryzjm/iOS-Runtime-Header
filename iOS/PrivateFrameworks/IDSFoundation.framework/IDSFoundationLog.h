@@ -10,6 +10,11 @@
 {
 }
 
++ (id)System;
++ (id)ClientChannelManager;
++ (id)ClientChannelAgent;
++ (id)ClientChannel;
++ (id)IDSServerMessaging;
 + (id)Multiplexer;
 + (id)TransportLevelAgent;
 + (id)ConnectivityMonitor;
@@ -18,6 +23,9 @@
 + (id)CrossLayerLogging;
 + (id)KeyTransparency;
 + (id)IDSMessageStore;
++ (id)GroupSessionDataCryptor;
++ (id)StableEncryptionController;
++ (id)RealTimeEncryptionController_oversize;
 + (id)RealTimeEncryptionController;
 + (id)SessionController;
 + (id)NonFTGL;
@@ -27,6 +35,7 @@
 + (id)Stun;
 + (id)QRAllocator_oversized;
 + (id)QRAllocator;
++ (id)GroupStatus_oversized;
 + (id)IDSDSession;
 + (id)IDSSession;
 + (id)xpc;

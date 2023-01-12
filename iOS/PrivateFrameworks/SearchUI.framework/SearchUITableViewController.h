@@ -10,7 +10,7 @@
 #import <SearchUI/UITableViewDelegatePrivate-Protocol.h>
 
 @class NSString, SearchUIPeekDelegate, SearchUITableModel, SearchUITableView, TLKTableViewScrollTester, UIContextMenuInteraction;
-@protocol SFFeedbackListener, SearchUIResultsViewDelegate, SearchUISizingDelegate;
+@protocol SFFeedbackListener, SearchUICommandDelegate, SearchUIResultsViewDelegate, SearchUISizingDelegate;
 
 @interface SearchUITableViewController <SearchUITableViewSizingDelegate, UITableViewDelegatePrivate, SearchUITableViewTesting, SearchUIFeedbackDelegateInternal>
 {
@@ -21,6 +21,7 @@
     CDUnknownBlockType tableViewDidUpdateHandler;
     CDUnknownBlockType cellWillDisplayHandler;
     id <SFFeedbackListener> _feedbackListener;
+    id <SearchUICommandDelegate> _commandDelegate;
     id <SearchUIResultsViewDelegate> _resultsViewDelegate;
     id <SearchUISizingDelegate> _sizingDelegate;
     SearchUITableModel *_tableModel;
@@ -45,6 +46,7 @@
 @property(nonatomic) _Bool shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
 @property __weak id <SearchUISizingDelegate> sizingDelegate; // @synthesize sizingDelegate=_sizingDelegate;
 @property __weak id <SearchUIResultsViewDelegate> resultsViewDelegate; // @synthesize resultsViewDelegate=_resultsViewDelegate;
+@property(nonatomic) __weak id <SearchUICommandDelegate> commandDelegate; // @synthesize commandDelegate=_commandDelegate;
 @property(nonatomic) __weak id <SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
 @property(copy, nonatomic) CDUnknownBlockType cellWillDisplayHandler; // @synthesize cellWillDisplayHandler;
 @property(copy, nonatomic) CDUnknownBlockType tableViewDidUpdateHandler; // @synthesize tableViewDidUpdateHandler;
@@ -52,6 +54,7 @@
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (_Bool)forwardFeedbackForSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+@property(nonatomic) _Bool dragInteractionEnabled;
 - (void)toggleShowMoreForSection:(unsigned long long)arg1;
 - (struct CGRect)scrollToIndexPath:(id)arg1;
 - (void)tapAtIndexPath:(id)arg1;

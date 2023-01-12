@@ -7,6 +7,7 @@
 #import <CoreData/NSManagedObject.h>
 
 @interface NSManagedObject (GKCache)
++ (id)_gkRetrieveCleanEntry:(id)arg1 request:(id)arg2;
 + (id)_gkFetchRequest;
 - (_Bool)_gkIsExpired:(id)arg1;
 @end

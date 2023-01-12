@@ -29,6 +29,7 @@
 - (_Bool)hasActiveEntries;
 - (_Bool)hasPendingEntries;
 - (_Bool)storeEntries:(id)arg1 deleteEntries:(id)arg2 withError:(id *)arg3;
+- (_Bool)deleteEntriesForUser:(id)arg1 withState:(unsigned char)arg2 withError:(id *)arg3;
 - (_Bool)deleteEntry:(id)arg1 withError:(id *)arg2;
 - (_Bool)updateAllEntriesWithState:(unsigned char)arg1 toState:(unsigned char)arg2 withError:(id *)arg3;
 - (_Bool)updateEntryState:(unsigned char)arg1 forUser:(id)arg2 clientID:(id)arg3 withError:(id *)arg4;

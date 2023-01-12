@@ -13,10 +13,14 @@
 + (id)defaultPropertiesToLoad;
 + (id)relations;
 - (id)description;
-- (id)semanticIdentifier;
+- (id)propertyKeyForUniqueIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)snoozedAlarms;
-- (void)setSnoozedAlarms:(id)arg1;
+- (id)urlWrapper;
+- (void)setUrlWrapper:(id)arg1;
+- (id)emailAddress;
+- (void)setEmailAddress:(id)arg1;
+- (id)snoozedAlarmsSet;
+- (void)setSnoozedAlarmsSet:(id)arg1;
 - (id)originalAlarm;
 - (void)setOriginalAlarm:(id)arg1;
 - (void)setIsDefaultAlarm:(_Bool)arg1;
@@ -35,8 +39,8 @@
 - (id)externalID;
 - (void)setExternalData:(id)arg1;
 - (id)externalData;
-- (void)setAlarmType:(long long)arg1;
-- (long long)alarmType;
+- (void)setType:(long long)arg1;
+- (long long)type;
 - (void)setAbsoluteDate:(id)arg1;
 - (id)absoluteDate;
 - (void)setRelativeOffset:(id)arg1;

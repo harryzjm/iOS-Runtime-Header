@@ -8,20 +8,21 @@
 
 #import <AssistantServices/AFNotifyObserverDelegate-Protocol.h>
 
-@class AFNotifyObserver, AFQueue, AFWatchdogTimer, NSString;
+@class AFInstanceContext, AFNotifyObserver, AFQueue, AFWatchdogTimer, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AFMyriadMonitor : NSObject <AFNotifyObserverDelegate>
 {
     long long _state;
-    AFWatchdogTimer *_timer;
-    AFWatchdogTimer *_fetchRepostedMyriadDecisionTimer;
-    NSObject<OS_dispatch_queue> *_myriadMonitorQueue;
+    AFInstanceContext *_instanceContext;
     AFQueue *_completions;
     AFNotifyObserver *_beginObserver;
     AFNotifyObserver *_wonObserver;
     AFNotifyObserver *_lostObserver;
     AFNotifyObserver *_repostedWonObserver;
+    AFWatchdogTimer *_timer;
+    AFWatchdogTimer *_fetchRepostedMyriadDecisionTimer;
+    NSObject<OS_dispatch_queue> *_myriadMonitorQueue;
     double _myriadEventMonitorTimeout;
     _Bool _isRegisteredForMyriadEventNotification;
     _Bool _ignoreMyriadEvents;
@@ -51,6 +52,7 @@
 - (void)stopMonitoring;
 - (void)dequeueBlocksWaitingForMyriadDecision;
 - (void)ignoreMyriadEvents:(_Bool)arg1;
+- (void)startMonitoringWithTimeoutInterval:(double)arg1 instanceContext:(id)arg2;
 - (void)startMonitoringWithTimeoutInterval:(double)arg1;
 - (void)waitForMyriadDecisionForReason:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_enqueueBlock:(CDUnknownBlockType)arg1 forReason:(id)arg2;

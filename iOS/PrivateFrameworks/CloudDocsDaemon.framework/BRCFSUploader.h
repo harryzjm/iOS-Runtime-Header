@@ -9,7 +9,6 @@
 @class BRCDeadlineScheduler, BRCDeadlineSource, BRCFairScheduler, NSDictionary, NSMutableDictionary, NSMutableSet, NSObject, NSString, br_pacer;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface BRCFSUploader <BRCModule>
 {
     NSMutableDictionary *_thumbnailsOperations;
@@ -29,6 +28,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *thumbnailsOperationsByID; // @synthesize thumbnailsOperationsByID=_thumbnailsOperations;
 @property(readonly, nonatomic) BRCDeadlineScheduler *uploadsDeadlineScheduler; // @synthesize uploadsDeadlineScheduler=_uploadsDeadlineScheduler;
 @property(nonatomic) _Bool isDefaultOwnerOutOfQuota; // @synthesize isDefaultOwnerOutOfQuota=_isDefaultOwnerOutOfQuota;
+- (unsigned int)recoverAndReportMissingJobs;
+- (void)_clearUploadErrorForDocument:(id)arg1;
 - (void)_reportUploadErrorForDocument:(id)arg1 error:(id)arg2;
 - (void)forceScheduleQuotaFetchForOwner:(id)arg1;
 - (void)scheduleQuotaFetchIfNeededForOwner:(id)arg1;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)finishedSyncingUpItem:(id)arg1 withOutOfQuotaError:(id)arg2;
 - (void)transferStreamOfSyncContext:(id)arg1 didBecomeReadyWithMaxRecordsCount:(unsigned long long)arg2 sizeHint:(unsigned long long)arg3 priority:(long long)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)_transferStreamOfSyncContext:(id)arg1 didBecomeReadyWithMaxRecordsCount:(unsigned long long)arg2 sizeHint:(unsigned long long)arg3 priority:(long long)arg4;
+- (void)_performServerSideAssetCopyForItem:(id)arg1 transferSize:(unsigned long long)arg2;
 - (void)_finishedUploadingItem:(id)arg1 record:(id)arg2 jobID:(id)arg3 stageID:(id)arg4 syncContext:(id)arg5 error:(id)arg6;
 - (void)_handleFileModifiedError:(id)arg1 forItem:(id)arg2;
 - (_Bool)_finishPackageUploadWithRecord:(id)arg1 item:(id)arg2 stageID:(id)arg3 error:(id *)arg4;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_computeRecordForJobID:(id)arg1 item:(id)arg2 syncContext:(id)arg3;
 - (void)_updateRecord:(id)arg1 jobID:(id)arg2 syncContext:(id)arg3 thumbnailOperation:(id)arg4 stageID:(id)arg5;
 - (void)_updateRecord:(id)arg1 item:(id)arg2 syncContext:(id)arg3 thumbnailOperation:(id)arg4 stageID:(id)arg5;
+- (void)_updateRecordInDB:(id)arg1 item:(id)arg2 syncContext:(id)arg3 transferSize:(unsigned long long)arg4 stageID:(id)arg5;
 - (_Bool)_updatePackageRecord:(id)arg1 item:(id)arg2 stageID:(id)arg3 error:(id *)arg4;
 - (id)_thumbnailOperationForItemRowID:(id)arg1;
 - (void)_doneFetchingThumbnailForJobID:(id)arg1;

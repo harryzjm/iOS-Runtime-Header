@@ -8,6 +8,7 @@
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerSeekCommand <MPCPlayerSeekCommand>
 {
     _Bool _prefersNegativeBackwardSkipIntervals;

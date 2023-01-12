@@ -16,6 +16,8 @@
     NSString *_identifier;
     NSString *_machName;
     NSOrderedSet *_orderedServices;
+    unsigned long long _start;
+    NSSet *_derivedServiceRestrictions;
 }
 
 - (void).cxx_destruct;

@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
-@property(readonly, nonatomic) WFWorkflowReference *descriptor; // @synthesize descriptor=_descriptor;
+@property(retain, nonatomic) WFWorkflowReference *descriptor; // @synthesize descriptor=_descriptor;
 - (_Bool)reloadRecord:(id)arg1 error:(id *)arg2;
 - (_Bool)saveRecord:(id)arg1 error:(id *)arg2;
 - (id)reference;

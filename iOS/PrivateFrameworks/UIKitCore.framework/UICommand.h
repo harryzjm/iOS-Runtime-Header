@@ -5,16 +5,18 @@
 //
 
 #import <UIKitCore/_UIMenuLeaf-Protocol.h>
+#import <UIKitCore/_UIMenuStateObserverableLeaf-Protocol.h>
 
-@class NSArray, NSString, UIImage;
+@class NSArray, NSPointerArray, NSString, UIImage;
 
-@interface UICommand <_UIMenuLeaf>
+@interface UICommand <_UIMenuLeaf, _UIMenuStateObserverableLeaf>
 {
+    unsigned int _attributes:32;
+    unsigned int _state:32;
+    NSPointerArray *stateObservers;
     NSString *_discoverabilityTitle;
     SEL _action;
     id _propertyList;
-    unsigned long long _attributes;
-    long long _state;
     NSArray *_alternates;
     id __target;
 }
@@ -28,11 +30,15 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id _target; // @synthesize _target=__target;
 @property(readonly, nonatomic) NSArray *alternates; // @synthesize alternates=_alternates;
-@property(nonatomic) long long state; // @synthesize state=_state;
-@property(nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
 @property(readonly, nonatomic) id propertyList; // @synthesize propertyList=_propertyList;
 @property(readonly, nonatomic) SEL action; // @synthesize action=_action;
 @property(copy, nonatomic) NSString *discoverabilityTitle; // @synthesize discoverabilityTitle=_discoverabilityTitle;
+@property(nonatomic) long long state; // @synthesize state=_state;
+@property(nonatomic) unsigned long long attributes; // @synthesize attributes=_attributes;
+@property(retain, nonatomic, getter=_getStateObservers, setter=_setStateObservers:) NSPointerArray *stateObservers; // @synthesize stateObservers;
+- (void)_setState:(long long)arg1 notifyingObservers:(_Bool)arg2;
+- (void)_removeStateObserver:(id)arg1;
+- (void)_addStateObserver:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -42,6 +48,7 @@
 - (id)_resolvedTargetFromFirstTarget:(id)arg1;
 - (void)_performWithTarget:(id)arg1;
 - (_Bool)_isDefaultCommand;
+@property(readonly, nonatomic) _Bool keepsMenuPresented;
 - (long long)_leafKeyModifierFlags;
 - (id)_leafKeyInput;
 - (id)_leafAlternates;
@@ -53,10 +60,10 @@
 - (_Bool)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3 deferredElementVisit:(CDUnknownBlockType)arg4;
 @property(copy, nonatomic) UIImage *image; // @dynamic image;
+- (void)setSubtitle:(id)arg1;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(readonly, nonatomic) _Bool requiresAuthenticatedInput;
 - (id)initWithCommand:(id)arg1;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 propertyList:(id)arg4 alternates:(id)arg5 discoverabilityTitle:(id)arg6 attributes:(unsigned long long)arg7 state:(long long)arg8;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 imageName:(id)arg3 action:(SEL)arg4 propertyList:(id)arg5 alternates:(id)arg6 discoverabilityTitle:(id)arg7 attributes:(unsigned long long)arg8 state:(long long)arg9;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isLeaf;

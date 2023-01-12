@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, SCNNode;
+@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSString, SCNNode;
 
 @interface AVTComponentInstance : NSObject
 {
@@ -15,6 +15,9 @@
     NSString *_materialVariant;
     NSString *_assetImage;
     NSString *_assetImageVariant;
+    float _skinnerVariantIntensity;
+    NSMapTable *_variantSkinnerPairs;
+    NSMutableDictionary *_visibilityRules;
     NSDictionary *_layers;
 }
 
@@ -22,6 +25,8 @@
 @property(readonly) SCNNode *assetNode; // @synthesize assetNode=_assetNode;
 - (id)assetImageForAsset:(id)arg1;
 - (_Bool)has3DAsset;
+- (void)setVisibilityRules:(id)arg1 dictatedByCategory:(long long)arg2;
+- (void)setSkinnerVariantIntensity:(float)arg1 skeleton:(id)arg2;
 - (void)setMaterialVariant:(id)arg1;
 - (void)setImageVariant:(id)arg1;
 @property(readonly) NSString *assetImage; // @synthesize assetImage=_assetImage;

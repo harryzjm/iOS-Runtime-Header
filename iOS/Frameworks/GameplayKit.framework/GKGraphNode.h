@@ -13,7 +13,7 @@
 @interface GKGraphNode : NSObject <NSSecureCoding>
 {
     NSMutableArray *_connectedNodes;
-    struct GKCGraphNode *_cGraphNode;
+    void *_cGraphNode;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -34,8 +34,8 @@
 - (id)mutConnectedNodes;
 @property(readonly, nonatomic) NSArray *connectedNodes;
 - (void)deleteCGraphNode;
-- (struct GKCGraphNode *)makeCGraphNode;
-- (struct GKCGraphNode *)cGraphNode;
+- (void *)makeCGraphNode;
+- (void *)cGraphNode;
 
 @end
 

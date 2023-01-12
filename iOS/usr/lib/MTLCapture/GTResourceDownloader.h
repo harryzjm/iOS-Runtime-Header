@@ -27,6 +27,8 @@
 
 - (void).cxx_destruct;
 - (void)_downloadRequest:(struct apr_array_header_t *)arg1 atPoint:(id)arg2 dispatchGroup:(id)arg3;
+- (void)_downloadRequestNew:(struct apr_array_header_t *)arg1 atPoint:(id)arg2 dispatchGroup:(id)arg3;
+- (void)_downloadRequestOld:(struct apr_array_header_t *)arg1 atPoint:(id)arg2 dispatchGroup:(id)arg3;
 - (void)downloadRequest:(struct apr_array_header_t *)arg1 atPoint:(id)arg2;
 - (void)downloadRequest:(struct apr_array_header_t *)arg1;
 - (id)downloadQueue;

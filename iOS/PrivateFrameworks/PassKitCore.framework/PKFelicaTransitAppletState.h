@@ -80,6 +80,8 @@
 @property(nonatomic, getter=isBalanceAllowedForCommute) _Bool balanceAllowedForCommute; // @synthesize balanceAllowedForCommute=_balanceAllowedForCommute;
 @property(nonatomic, getter=isGreenCarTicketUsed) _Bool greenCarTicketUsed; // @synthesize greenCarTicketUsed=_greenCarTicketUsed;
 @property(nonatomic, getter=isShinkansenTicketActive) _Bool shinkansenTicketActive; // @synthesize shinkansenTicketActive=_shinkansenTicketActive;
+- (id)transitPassPropertiesWithPaymentApplication:(id)arg1 fieldCollection:(id)arg2;
+- (id)transitPassPropertiesWithPaymentApplication:(id)arg1 pass:(id)arg2;
 - (id)transitPassPropertiesWithPaymentApplication:(id)arg1;
 - (id)_concreteTransactionForRecordAtIndex:(unsigned long long)arg1 withBalance:(unsigned int *)arg2 historyRecords:(id)arg3 terminalState:(id)arg4 numberProcessed:(unsigned long long *)arg5 exitedShinkansen:(_Bool *)arg6;
 - (void)_resolveTransactionsFromState:(id)arg1 toState:(id)arg2 withHistoryRecords:(id)arg3 concreteTransactions:(id *)arg4 ephemeralTransaction:(id *)arg5;

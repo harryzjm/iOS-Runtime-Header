@@ -6,11 +6,11 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class NSError;
+@class NSArray, NSError, VKARWalkingFeatureDidUpdateInfo, VKARWalkingFeatureSet;
 
 @protocol MapEngineDelegate <NSObject>
-- (void)labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
-- (void)selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg1;
+- (void)labelMarkerDidChangeState:(const void *)arg1;
+- (void)selectedLabelMarkerWillDisappear:(const void *)arg1;
 - (void)labelManagerDidLayout;
 - (void)didUpdateSceneStatus:(unsigned char)arg1;
 - (void)willBecomeFullyDrawn;
@@ -18,13 +18,17 @@
 - (void)didFinishLoadingData;
 - (void)didStartLoadingData;
 - (_Bool)canChangeVenueFocus;
-- (void)venueCreated:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
-- (void)nearestVenueDidChange:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
+- (void)venueCreated:(const void *)arg1 building:(const void *)arg2;
+- (void)nearestVenueDidChange:(const void *)arg1 building:(const void *)arg2;
 - (_Bool)wantsTimerTick;
 - (void)didPresent;
-- (void)willLayoutWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
+- (void)willLayoutWithTimestamp:(double)arg1 withContext:(void *)arg2;
 
 @optional
+- (void)injectDebugARUserRouteCoordinate:(struct PolylineCoordinate)arg1;
+- (void)injectDebugARFeatures:(NSArray *)arg1;
+- (void)activeARWalkingFeatureDidUpdate:(VKARWalkingFeatureDidUpdateInfo *)arg1;
+- (void)arWalkingFeatureSetStateDidUpdate:(VKARWalkingFeatureSet *)arg1;
 - (void)muninJunctionDidChange:(const struct MuninJunction *)arg1 currentRoad:(const struct MuninRoadEdge *)arg2 localize:(_Bool)arg3;
 @end
 

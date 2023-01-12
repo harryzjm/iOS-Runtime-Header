@@ -8,10 +8,10 @@
 
 @interface TSCHPieChartRep
 {
-    TSCHChartRadialElementsRenderer *mPieElementRenderer;
-    NSArray *mWedgeKnobs;
-    NSDictionary *mSeriesIndexedPieWedgeDraggingLayers;
-    _Bool mHasDrawnSinceWedgeKnobTrackerCreated;
+    TSCHChartRadialElementsRenderer *_pieElementRenderer;
+    NSArray *_wedgeKnobs;
+    NSDictionary *_seriesIndexedPieWedgeDraggingLayers;
+    _Bool _hasDrawnSinceWedgeKnobTrackerCreated;
 }
 
 - (void).cxx_destruct;
@@ -21,7 +21,6 @@
 - (void)clearRenderers;
 - (id)pieElementRenderer;
 - (_Bool)forceRenderBlankBackground;
-- (void)dealloc;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 
 @end

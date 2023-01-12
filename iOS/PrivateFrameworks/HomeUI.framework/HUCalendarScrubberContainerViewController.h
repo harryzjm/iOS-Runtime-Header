@@ -13,6 +13,7 @@
 
 @interface HUCalendarScrubberContainerViewController : UIViewController <HUCalendarScrubberViewDelegate, HFCameraPlaybackEngineObserver>
 {
+    _Bool _isEditing;
     HUCalendarScrubberViewController *_calendarScrubber;
     UIButton *_prevWeekButton;
     UIButton *_nextWeekButton;
@@ -34,7 +35,7 @@
 @property(retain, nonatomic) UIButton *nextWeekButton; // @synthesize nextWeekButton=_nextWeekButton;
 @property(retain, nonatomic) UIButton *prevWeekButton; // @synthesize prevWeekButton=_prevWeekButton;
 @property(retain, nonatomic) HUCalendarScrubberViewController *calendarScrubber; // @synthesize calendarScrubber=_calendarScrubber;
-- (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
+@property(nonatomic) _Bool isEditing; // @synthesize isEditing=_isEditing;
 - (void)playbackEngine:(id)arg1 didRemoveEvents:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;

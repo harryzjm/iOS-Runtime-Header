@@ -53,8 +53,11 @@
 - (void)iconImageCache:(id)arg1 didUpdateImageForIcon:(id)arg2;
 - (void)iconImageDidUpdate:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)didEndAsynchronousImageLoadForIcon:(id)arg1;
+- (void)willBeginAsynchronousImageLoadForIcon:(id)arg1;
 - (void)iconViewFolderIconImageCacheDidChange;
 - (void)iconViewLegibilitySettingsDidChange;
+- (_Bool)hasOpaqueImage;
 @property(readonly, nonatomic) struct CGRect visibleBounds;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) UIImage *displayedImage;
@@ -72,6 +75,7 @@
 - (void)progressViewCanBeRemoved:(id)arg1;
 - (void)setProgressState:(long long)arg1 paused:(_Bool)arg2 percent:(double)arg3 animated:(_Bool)arg4;
 - (void)_updateOverlayAlpha;
+- (void)clearIconImageInfo;
 @property(nonatomic) struct SBIconImageInfo iconImageInfo;
 - (void)setIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3;
 - (void)dealloc;

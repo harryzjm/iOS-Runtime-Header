@@ -17,8 +17,6 @@
 @property(retain, nonatomic) HDCloudSyncMedicalIDRecord *medicalIDRecord; // @synthesize medicalIDRecord=_medicalIDRecord;
 @property(retain, nonatomic) _HKMedicalIDData *medicalIDDataToPush; // @synthesize medicalIDDataToPush=_medicalIDDataToPush;
 @property(retain, nonatomic) _HKMedicalIDData *cloudMedicalIDData; // @synthesize cloudMedicalIDData=_cloudMedicalIDData;
-- (id)_eventWithDeviceProperties;
-- (void)_pushMedicalIDRecordToCloudForContainer:(id)arg1 database:(id)arg2;
 - (void)main;
 
 @end

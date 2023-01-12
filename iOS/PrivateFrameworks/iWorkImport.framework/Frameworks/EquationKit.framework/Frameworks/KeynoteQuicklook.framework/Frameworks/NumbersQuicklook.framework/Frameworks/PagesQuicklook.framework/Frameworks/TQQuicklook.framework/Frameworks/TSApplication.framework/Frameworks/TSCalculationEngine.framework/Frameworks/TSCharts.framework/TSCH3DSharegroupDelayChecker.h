@@ -6,24 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @protocol TSCH3DSharegroupDelayCheckerParent;
 
-@interface TSCH3DSharegroupDelayChecker : NSObject <TSCHUnretainedParent>
+@interface TSCH3DSharegroupDelayChecker : NSObject
 {
-    _Bool mCondition;
-    id <TSCH3DSharegroupDelayCheckerParent> mParent;
+    _Bool _condition;
+    id <TSCH3DSharegroupDelayCheckerParent> _parent;
 }
 
-@property(nonatomic) _Bool condition; // @synthesize condition=mCondition;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool condition; // @synthesize condition=_condition;
 - (void)p_checkCondition;
 - (void)invalidateCondition;
 - (void)p_cancelCheckCondition;
 - (void)scheduleCheckCondition;
 - (void)p_scheduleCheckConditionOnMainThread;
-- (void)clearParent;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1;
 
 @end

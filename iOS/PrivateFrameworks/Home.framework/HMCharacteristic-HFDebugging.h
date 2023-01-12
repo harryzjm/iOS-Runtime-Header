@@ -13,6 +13,9 @@
 
 @interface HMCharacteristic (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
 + (id)hf_descriptionForProperties:(id)arg1;
++ (id)_hf_visibleLightLevelTriggerValues;
++ (long long)_hf_indexOfSortedValues:(id)arg1 closestToValue:(id)arg2 top:(unsigned long long)arg3 bottom:(unsigned long long)arg4;
++ (long long)hf_indexOfSortedValues:(id)arg1 closestToValue:(id)arg2;
 + (_Bool)hf_shouldCaptureCharacteristicTypeInActionSets:(id)arg1;
 + (CDUnknownBlockType)hf_characteristicSortComparator;
 + (long long)hf_sortPriorityForCharacteristicType:(id)arg1;
@@ -20,13 +23,22 @@
 + (id)hf_targetStateCharacteristicTypeForCurrentStateCharacteristicType:(id)arg1;
 + (id)hf_associatedCharacteristicTypeForCharacteristicType:(id)arg1;
 + (id)hf_descriptionForCharacteristicType:(id)arg1;
++ (id)_hf_valueRangeCharacteristicTypeToVisibleTriggerValueStepMap;
++ (id)_hf_valueRangeCharacteristicTypeToAbnormalValueMap;
 + (id)_hf_alarmCharacteristicTypeToAbnormalValueMap;
++ (id)hf_abnormalValueForSensorCharacteristicType:(id)arg1;
++ (id)hf_defaultAbnormalValueForValueRangeSensorCharacteristicType:(id)arg1;
 + (id)hf_abnormalValueForAlarmCharacteristicType:(id)arg1;
++ (id)hf_sensingCharacteristicTypes;
 + (id)hf_alarmCharacteristicTypes;
++ (id)hf_continuousValueRangeCharacteristicTypes;
 + (id)hf_valueRangeCharacteristicTypes;
 + (id)hf_powerStateCharacteristicTypes;
 + (id)hf_suggestionVendorForCharacteristicType:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)_hf_triggerValuesWithMinStepValue:(id)arg1;
+- (id)_hf_lightLevelVisibleTriggerValues;
+- (id)hf_visibleTriggerValues;
 - (id)hf_triggerValues;
 - (id)hf_maximumTriggerValue;
 - (id)hf_minimumTriggerValue;

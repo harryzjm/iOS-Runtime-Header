@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol PXDisplayAsset, PXGDisplayAssetRequestObserver;
+@protocol PXDisplayAsset, PXGDisplayAssetAdjustment, PXGDisplayAssetRequestObserver;
 
 @interface _PXGMediaRequest : NSObject
 {
@@ -14,12 +14,14 @@
     id <PXDisplayAsset> _asset;
     id <PXGDisplayAssetRequestObserver> _observer;
     unsigned long long _postProcessOptions;
+    id <PXGDisplayAssetAdjustment> _adjustment;
     struct CGSize _bestReceivedSize;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool gotAnyResult; // @synthesize gotAnyResult=_gotAnyResult;
 @property(nonatomic) struct CGSize bestReceivedSize; // @synthesize bestReceivedSize=_bestReceivedSize;
+@property(retain, nonatomic) id <PXGDisplayAssetAdjustment> adjustment; // @synthesize adjustment=_adjustment;
 @property(readonly, nonatomic) unsigned long long postProcessOptions; // @synthesize postProcessOptions=_postProcessOptions;
 @property(readonly, nonatomic) id <PXGDisplayAssetRequestObserver> observer; // @synthesize observer=_observer;
 @property(readonly, nonatomic) id <PXDisplayAsset> asset; // @synthesize asset=_asset;

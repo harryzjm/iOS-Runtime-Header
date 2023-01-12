@@ -32,12 +32,15 @@
 @property(nonatomic) _Bool shouldAutoProvision; // @synthesize shouldAutoProvision=_shouldAutoProvision;
 - (id)onPresentationRemoveViewControllersAfterMarker;
 - (void)paymentPassUpdatedOnCredential:(id)arg1;
+- (_Bool)_isPaymentAccount;
 - (void)_cleanupTransferredCredentialFromSourceDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_defaultHeaderViewSubTitleForLocalCredential;
 - (id)_defaultHeaderViewSubTitleForLocalCredentialTransfer;
 - (id)_remoteExistingCredentialDefaultHeaderViewSubTitle;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
+- (_Bool)isProvisioningHomeKey;
+- (_Bool)isProvisioningPaymentAccount;
 - (_Bool)isComplete;
 - (id)readonlyFieldIdentifiers;
 - (id)visibleFieldIdentifiers;
@@ -59,8 +62,10 @@
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_terminateSetupFlow;
 - (void)_skipCard;
+- (void)handleNextButtonTapped:(id)arg1;
 - (void)addDifferentCard:(id)arg1;
 - (void)setPassSnapshot:(id)arg1 needsCorners:(_Bool)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)dealloc;

@@ -26,7 +26,7 @@
 + (_Bool)isSupportedForHome:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) MPPlaybackArchive *playbackArchive; // @synthesize playbackArchive=_playbackArchive;
-@property(retain, nonatomic) NSNumber *volume; // @synthesize volume=_volume;
+@property(copy, nonatomic) NSNumber *volume; // @synthesize volume=_volume;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(copy, nonatomic) NSSet *mediaProfiles; // @synthesize mediaProfiles=_mediaProfiles;
 @property(readonly) unsigned long long hash;
@@ -45,6 +45,7 @@
 - (id)accessoryProfiles;
 - (id)encodeAsProtoBuf;
 - (unsigned long long)type;
+- (void)__configureWithContext:(id)arg1 actionSet:(id)arg2;
 - (id)initWithPlaybackAction:(id)arg1 uuid:(id)arg2;
 - (id)initWithMediaProfiles:(id)arg1 playbackState:(long long)arg2 volume:(id)arg3 playbackArchive:(id)arg4;
 - (id)initWithMediaProfiles:(id)arg1 playbackState:(long long)arg2 volume:(id)arg3 playbackArchive:(id)arg4 uuid:(id)arg5;

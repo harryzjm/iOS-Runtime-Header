@@ -18,6 +18,7 @@
     _Bool _supportsCarPlay;
     _Bool _supportsSpoken;
     _Bool _supportsCriticalAlerts;
+    _Bool _supportsTimeSensitive;
     _Bool _enablesAlerts;
     _Bool _enablesBadges;
     _Bool _enablesSounds;
@@ -26,6 +27,7 @@
     _Bool _enablesCarPlay;
     _Bool _enablesSpoken;
     _Bool _enablesCriticalAlerts;
+    _Bool _enablesTimeSensitive;
     _Bool _modalAlertStyle;
     NSString *_identifier;
     NSString *_displayName;
@@ -36,6 +38,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool modalAlertStyle; // @synthesize modalAlertStyle=_modalAlertStyle;
+@property(nonatomic) _Bool enablesTimeSensitive; // @synthesize enablesTimeSensitive=_enablesTimeSensitive;
 @property(nonatomic) _Bool enablesCriticalAlerts; // @synthesize enablesCriticalAlerts=_enablesCriticalAlerts;
 @property(nonatomic) _Bool enablesSpoken; // @synthesize enablesSpoken=_enablesSpoken;
 @property(nonatomic) _Bool enablesCarPlay; // @synthesize enablesCarPlay=_enablesCarPlay;
@@ -44,6 +47,7 @@
 @property(nonatomic) _Bool enablesSounds; // @synthesize enablesSounds=_enablesSounds;
 @property(nonatomic) _Bool enablesBadges; // @synthesize enablesBadges=_enablesBadges;
 @property(nonatomic) _Bool enablesAlerts; // @synthesize enablesAlerts=_enablesAlerts;
+@property(nonatomic) _Bool supportsTimeSensitive; // @synthesize supportsTimeSensitive=_supportsTimeSensitive;
 @property(nonatomic) _Bool supportsCriticalAlerts; // @synthesize supportsCriticalAlerts=_supportsCriticalAlerts;
 @property(nonatomic) _Bool supportsSpoken; // @synthesize supportsSpoken=_supportsSpoken;
 @property(nonatomic) _Bool supportsCarPlay; // @synthesize supportsCarPlay=_supportsCarPlay;

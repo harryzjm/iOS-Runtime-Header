@@ -8,15 +8,14 @@
 
 @interface MLMediaTypeCountedSet : NSObject
 {
-    struct map<unsigned int, unsigned long, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, unsigned long>>> _map;
-    unsigned long long _count;
+    struct map<unsigned int, unsigned long, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, unsigned long>>> _map;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long count; // @synthesize count=_count;
 - (void)enumerateMediaTypesWithBlock:(CDUnknownBlockType)arg1;
 - (void)addMediaType:(unsigned int)arg1 count:(unsigned long long)arg2;
+@property(readonly, nonatomic) unsigned long long count;
 - (id)description;
 
 @end

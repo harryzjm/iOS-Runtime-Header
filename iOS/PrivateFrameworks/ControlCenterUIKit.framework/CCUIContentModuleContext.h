@@ -16,14 +16,18 @@
 }
 
 + (void)performWithoutAnimationWhileHidden:(CDUnknownBlockType)arg1;
-+ (void)setAnimationsPermitted:(_Bool)arg1;
-+ (_Bool)areAnimationsPermitted;
++ (void)performWithoutAnimationWhileHiddenInWindow:(id)arg1 actions:(CDUnknownBlockType)arg2;
++ (void)setAnimationsPermitted:(_Bool)arg1 inWindow:(id)arg2;
++ (_Bool)areAnimationsPermittedInWindow:(id)arg1;
 + (void)initialize;
 + (id)_sharedOpenApplicationOptions;
 + (id)_sharedOpenAppService;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <CCUIContentModuleContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *moduleIdentifier; // @synthesize moduleIdentifier=_moduleIdentifier;
+- (struct CCUIModuleLayoutSize)moduleLayoutSizeForOrientation:(long long)arg1;
+- (id)sensorActivityDataForActiveSensorType:(unsigned long long)arg1;
+- (void)requestLayoutSizeUpdate;
 - (void)dismissControlCenter;
 - (void)dismissModule;
 - (void)requestExpandModule;

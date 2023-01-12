@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ShareSheet/SFAirDropViewServiceHostProtocol-Protocol.h>
+#import <ShareSheet/NSObject-Protocol.h>
 
-@class SFAirDropViewController;
+@class SFAirDropViewController, UISUIActivityExtensionItemDataRequest;
 
-@protocol SFAirDropViewControllerDelegate <SFAirDropViewServiceHostProtocol>
+@protocol SFAirDropViewControllerDelegate <NSObject>
+- (void)airDropViewController:(SFAirDropViewController *)arg1 requestSharedItemsWithDataRequest:(UISUIActivityExtensionItemDataRequest *)arg2 completionHandler:(void (^)(UISUIActivityExtensionItemData *))arg3;
+- (void)airDropViewController:(SFAirDropViewController *)arg1 didFinishTransferWithSuccess:(_Bool)arg2;
+- (void)airDropViewControllerDidStartTransfer:(SFAirDropViewController *)arg1;
 
 @optional
-- (void)airDropViewControllerDidCancel:(SFAirDropViewController *)arg1;
+- (void)airDropViewControllerDidDismiss:(SFAirDropViewController *)arg1;
 @end
 

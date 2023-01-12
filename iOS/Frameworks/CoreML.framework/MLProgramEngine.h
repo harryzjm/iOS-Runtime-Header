@@ -8,6 +8,8 @@
 {
 }
 
++ (int)gpuPrecision;
++ (int)gpuEngine;
 + (Class)containerClass;
 
 @end

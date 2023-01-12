@@ -14,18 +14,24 @@
 @property(nonatomic) _Bool keepsOnlyIsInteresting; // @synthesize keepsOnlyIsInteresting=_keepsOnlyIsInteresting;
 @property(nonatomic) _Bool onlyOverTheYears; // @synthesize onlyOverTheYears=_onlyOverTheYears;
 @property(nonatomic) long long hobbyType; // @synthesize hobbyType=_hobbyType;
-- (_Bool)canFallbackToDejunkAndDedupeForShowMore;
-- (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)relevantFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)relevantFeederForPotentialMemory:(id)arg1 inGraph:(id)arg2;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 eligibleAssetUUIDs:(id)arg2 triggeredMemory:(id)arg3;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 potentialMemory:(id)arg2;
 - (_Bool)semanticalDedupingEnabledForExtendedCuration;
 - (unsigned long long)durationForExtendedCuration;
 - (unsigned long long)durationForCuration;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)_potentialMemoriesForDryTesting;
+- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2 andGraph:(id)arg3;
+- (void)_enumeratePotentialMemoriesWithGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_enumerateBestPotentialMemoriesInLifeTimePotentialMemories:(id)arg1 andYearPotentialMemories:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_randomEnumerateOverLifeTimePotentialMemories:(id)arg1 andYearPotentialMemories:(id)arg2 rejectedNumbers:(CDStruct_e4f06a70 *)arg3 enumerationBlock:(CDUnknownBlockType)arg4;
-- (void)_potentialHobbyMemoryForHobby:(id)arg1 results:(CDUnknownBlockType)arg2;
-- (id)confidenceThresholdByBlacklistedSceneIdentifier;
+- (void)_potentialHobbyMemoryForHobby:(id)arg1 inGraph:(id)arg2 results:(CDUnknownBlockType)arg3;
+- (id)confidenceThresholdByBlockedSceneIdentifier;
 - (id)confidenceThresholdByWhitelistedSceneIdentifier;
+- (id)initWithHobbyType:(long long)arg1 controller:(id)arg2;
+- (id)initWithHobbyType:(long long)arg1 memoryCurationSession:(id)arg2 loggingConnection:(id)arg3;
 
 @end
 

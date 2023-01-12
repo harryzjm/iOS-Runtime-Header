@@ -42,6 +42,7 @@
     struct CGRect _avoidanceFrame;
 }
 
++ (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2 onLockScreen:(_Bool)arg3 isAzulBLinked:(_Bool)arg4;
 + (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2 onLockScreen:(_Bool)arg3;
 + (id)sensorActivityIndicatorPartIdentifier;
 + (id)sensorActivityIndicator;
@@ -148,7 +149,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)resetVisualProvider;
 - (void)_prepareVisualProviderIfNeeded;
-- (id)_effectiveTargetScreen;
+@property(readonly, nonatomic, getter=_effectiveTargetScreen) UIScreen *effectiveTargetScreen;
 @property(readonly, nonatomic) id <_UIStatusBarVisualProvider> visualProvider;
 @property(retain, nonatomic, getter=_visualProviderClassName, setter=_setVisualProviderClassName:) NSString *visualProviderClassName;
 @property(readonly, copy) NSString *description;

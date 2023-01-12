@@ -10,8 +10,12 @@
 
 @interface MTLBVHDescriptor : NSObject
 {
+    _Bool _motion;
     float _primitiveCost;
     float _traversalCost;
+    float _motionTraversalCost;
+    float _primitiveMotionStartTime;
+    float _primitiveMotionEndTime;
     float _splitCapacity;
     float _minOverlap;
     unsigned long long _maxDepth;
@@ -19,12 +23,18 @@
     unsigned long long _minPrimitivesPerLeaf;
     unsigned long long _maxPrimitivesPerLeaf;
     NSArray *_geometryDescriptors;
+    unsigned long long _primitiveKeyframeCount;
     unsigned long long _splitHeuristic;
 }
 
 @property(nonatomic) float minOverlap; // @synthesize minOverlap=_minOverlap;
 @property(nonatomic) float splitCapacity; // @synthesize splitCapacity=_splitCapacity;
 @property(nonatomic) unsigned long long splitHeuristic; // @synthesize splitHeuristic=_splitHeuristic;
+@property(nonatomic) float primitiveMotionEndTime; // @synthesize primitiveMotionEndTime=_primitiveMotionEndTime;
+@property(nonatomic) float primitiveMotionStartTime; // @synthesize primitiveMotionStartTime=_primitiveMotionStartTime;
+@property(nonatomic) _Bool motion; // @synthesize motion=_motion;
+@property(nonatomic) unsigned long long primitiveKeyframeCount; // @synthesize primitiveKeyframeCount=_primitiveKeyframeCount;
+@property(nonatomic) float motionTraversalCost; // @synthesize motionTraversalCost=_motionTraversalCost;
 @property(retain, nonatomic) NSArray *geometryDescriptors; // @synthesize geometryDescriptors=_geometryDescriptors;
 @property(nonatomic) float traversalCost; // @synthesize traversalCost=_traversalCost;
 @property(nonatomic) float primitiveCost; // @synthesize primitiveCost=_primitiveCost;
@@ -32,6 +42,7 @@
 @property(nonatomic) unsigned long long minPrimitivesPerLeaf; // @synthesize minPrimitivesPerLeaf=_minPrimitivesPerLeaf;
 @property(nonatomic) unsigned long long branchingFactor; // @synthesize branchingFactor=_branchingFactor;
 @property(nonatomic) unsigned long long maxDepth; // @synthesize maxDepth=_maxDepth;
+- (_Bool)primitiveMotion;
 - (void)dealloc;
 - (id)init;
 

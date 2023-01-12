@@ -11,6 +11,7 @@
 @class MPAVItem, NSArray, NSString;
 @protocol MFPlaybackStackController><MFQueueManagement;
 
+__attribute__((visibility("hidden")))
 @interface MPCMediaFoundationQueueCoordinator : NSObject <MPAVQueueCoordinating>
 {
     id <MFPlaybackStackController><MFQueueManagement> _playbackStackController;

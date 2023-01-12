@@ -11,6 +11,9 @@
 - (struct CGAffineTransform)transformForRenderingOutElementSize:(struct CGSize *)arg1 outClipRect:(struct CGRect *)arg2;
 - (struct CGRect)calcDrawingRect;
 - (struct CGSize)calcMinSize;
+- (double)p_strokeWidth;
+- (id)p_axis;
+- (id)p_axisLayoutItemParent;
 - (id)initWithParent:(id)arg1;
 
 @end

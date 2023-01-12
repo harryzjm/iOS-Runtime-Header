@@ -19,7 +19,7 @@
 + (id)tokenizeMessageContent:(id)arg1;
 + (id)nameForDataDetectorMatch:(id)arg1 withValue:(id)arg2;
 + (void)recordSelfIdModelScore:(_Bool)arg1 model:(int)arg2 supervision:(int)arg3;
-+ (void)recordBirthdayExtractionAccuracy:(unsigned char)arg1 withOffset:(id)arg2 withModelVersion:(id)arg3 isFromCongratulation:(unsigned char)arg4 didRegexTrigger:(unsigned char)arg5;
++ (void)recordBirthdayExtractionAccuracy:(unsigned char)arg1 withOffset:(id)arg2 withModelVersion:(id)arg3 isFromCongratulation:(unsigned char)arg4 didRegexTrigger:(unsigned char)arg5 didResponseKitTrigger:(unsigned char)arg6;
 + (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 forDetectionsInMessage:(id)arg2 signatureRange:(struct _NSRange)arg3 isDDSignature:(_Bool)arg4;
 + (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromMessage:(id)arg2 foundInSignature:(_Bool)arg3 isDDSignature:(_Bool)arg4 match:(id)arg5 foundInCNContact:(struct SGMContactDetailOwner_)arg6 modelVersion:(id)arg7 isUnlikelyPhone:(_Bool)arg8;
 + (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromMessage:(id)arg2 foundInSignature:(_Bool)arg3 isDDSignature:(_Bool)arg4 match:(id)arg5 modelVersion:(id)arg6 isUnlikelyPhone:(_Bool)arg7;

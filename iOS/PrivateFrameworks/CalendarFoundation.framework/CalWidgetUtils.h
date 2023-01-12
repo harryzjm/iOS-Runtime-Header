@@ -12,6 +12,7 @@
 
 + (double)lookaheadIntervalForDaysPerEntry:(long long)arg1;
 + (void)refreshWidget;
++ (void)refreshMonthWidget;
 
 @end
 

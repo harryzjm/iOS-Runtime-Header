@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC8VideosUI29DocumentRequestViewController
 {
     MISSING_TYPE *viewWillAppearAfterTabSwitch;
+    MISSING_TYPE *viewControllerIdentifier;
     MISSING_TYPE *staticPPTDocumentFolderPath;
+    MISSING_TYPE *viewControllerDocumentIdentifier;
     MISSING_TYPE *documentType;
     MISSING_TYPE *initialControllerRef;
     MISSING_TYPE *initialRequestSent;
@@ -19,14 +20,18 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *activeServiceRequest;
     MISSING_TYPE *activeFragmentServiceRequest;
     MISSING_TYPE *eventMonitorController;
+    MISSING_TYPE *shouldHideLoadingView;
+    MISSING_TYPE *isWaitingForDocumentFragment;
 }
 
 - (void).cxx_destruct;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)vui_viewWillDisappear:(_Bool)arg1;
+- (void)vui_viewDidAppear:(_Bool)arg1;
+- (void)vui_viewWillAppear:(_Bool)arg1;
+- (void)vui_viewDidLoad;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, readonly) NSString *viewControllerIdentifier;
 
 @end
 

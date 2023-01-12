@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)edTextBoxFromXlGraphicsInfo:(struct XlGraphicsInfo *)arg1 edResources:(id)arg2;
++ (id)edTextBoxFromXlGraphicsInfo:(void *)arg1 edResources:(id)arg2;
 
 @end
 

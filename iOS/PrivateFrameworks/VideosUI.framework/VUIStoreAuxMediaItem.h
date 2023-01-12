@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVPlayback/TVPBaseMediaItem.h>
-
 #import <VideosUI/TVPContentKeyLoading-Protocol.h>
 #import <VideosUI/TVPMediaItemReporting-Protocol.h>
 #import <VideosUI/TVPMediaItemReportingDelegate-Protocol.h>
@@ -13,7 +11,7 @@
 
 @class NSDictionary, NSError, NSNumber, NSObject, NSString, NSURL, TVPPlayer, VUIMutableBookmark, VUIStoreFPSKeyLoader, VUIVideoManagedObject;
 
-@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading, TVPMediaItemReporting, TVPMediaItemReportingDelegate>
+@interface VUIStoreAuxMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading, TVPMediaItemReporting, TVPMediaItemReportingDelegate>
 {
     _Bool _isAudioOnly;
     _Bool _disableResumeMenu;
@@ -24,6 +22,7 @@
     _Bool _isLiveContent;
     _Bool _isHLS;
     _Bool _isForStartingDownload;
+    NSURL *_streamingOverrideURLForDownload;
     NSURL *_fpsCertificateURL;
     NSURL *_fpsKeyServerURL;
     NSDictionary *_fpsAdditionalServerParams;
@@ -63,6 +62,7 @@
 @property(copy, nonatomic) NSDictionary *fpsAdditionalServerParams; // @synthesize fpsAdditionalServerParams=_fpsAdditionalServerParams;
 @property(copy, nonatomic) NSURL *fpsKeyServerURL; // @synthesize fpsKeyServerURL=_fpsKeyServerURL;
 @property(copy, nonatomic) NSURL *fpsCertificateURL; // @synthesize fpsCertificateURL=_fpsCertificateURL;
+@property(copy, nonatomic) NSURL *streamingOverrideURLForDownload; // @synthesize streamingOverrideURLForDownload=_streamingOverrideURLForDownload;
 - (id)_offlineKeyDataForKeyRequest:(id)arg1;
 - (void)_scrubPlayerItemDidLoad:(id)arg1;
 - (void)_keepKeyLoaderAlive:(id)arg1;
@@ -88,7 +88,7 @@
 - (void)dealloc;
 - (void)resetReportingEventCollection;
 - (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
-- (id)initWithVideoManagedObject:(id)arg1 isForStartingDownload:(_Bool)arg2 externalBookmarkTime:(id)arg3 externalBookmarkTimeStamp:(id)arg4;
+- (id)initWithVideoManagedObject:(id)arg1 isForStartingDownload:(_Bool)arg2 externalBookmarkTime:(id)arg3 externalBookmarkTimestamp:(id)arg4;
 - (id)initWithURL:(id)arg1;
 
 // Remaining properties

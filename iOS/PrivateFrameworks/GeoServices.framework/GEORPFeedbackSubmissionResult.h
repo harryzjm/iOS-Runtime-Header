@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEORPRapProfileInfo, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackSubmissionResult : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     PBUnknownFields *_unknownFields;
     NSString *_feedbackId;
     NSMutableArray *_imageIdMapEntrys;
+    GEORPRapProfileInfo *_rapInfo;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -23,6 +24,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackId:1;
         unsigned int read_imageIdMapEntrys:1;
+        unsigned int read_rapInfo:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
@@ -45,6 +47,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPRapProfileInfo *rapInfo;
+@property(readonly, nonatomic) _Bool hasRapInfo;
 - (id)imageIdMapEntryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)imageIdMapEntrysCount;
 - (void)addImageIdMapEntry:(id)arg1;

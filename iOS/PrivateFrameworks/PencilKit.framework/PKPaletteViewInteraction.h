@@ -9,14 +9,14 @@
 #import <PencilKit/PKPaletteHostingWindowScene-Protocol.h>
 #import <PencilKit/PKPaletteTapToRadarCommandDelegate-Protocol.h>
 #import <PencilKit/UIEditingOverlayInteractionWithView-Protocol.h>
-#import <PencilKit/UIInputResponderControllerVisibilityObserver-Protocol.h>
 #import <PencilKit/UIInteraction-Protocol.h>
+#import <PencilKit/UIKeyboardSceneDelegateVisibilityObserver-Protocol.h>
 #import <PencilKit/_UISceneComponentProviding-Protocol.h>
 
 @class NSLayoutConstraint, NSString, PKDrawingPaletteView, PKPaletteHostView, UIScene, UIView, UIWindowScene;
-@protocol PKPaletteViewDelegate, PKPaletteViewInteractionDelegate;
+@protocol PKPaletteViewInteractionDelegate;
 
-@interface PKPaletteViewInteraction : NSObject <UIEditingOverlayInteractionWithView, PKPaletteHostingWindowScene, UIInputResponderControllerVisibilityObserver, _UISceneComponentProviding, PKPaletteTapToRadarCommandDelegate, UIInteraction>
+@interface PKPaletteViewInteraction : NSObject <UIEditingOverlayInteractionWithView, PKPaletteHostingWindowScene, UIKeyboardSceneDelegateVisibilityObserver, _UISceneComponentProviding, PKPaletteTapToRadarCommandDelegate, UIInteraction>
 {
     UIScene *_scene;
     id <PKPaletteViewInteractionDelegate> _delegate;
@@ -55,9 +55,8 @@
 - (_Bool)_isCompactHostedWindow;
 - (void)_updatePaletteTraitCollection:(id)arg1;
 - (void)_updatePaletteUserInterfaceStyle:(long long)arg1;
-- (void)_updatePaletteViewConstraints;
+- (void)_updateUIWithSceneBounds:(struct CGRect)arg1;
 - (void)_updateSceneBounds;
-- (void)_updateSceneWithBounds:(struct CGRect)arg1;
 - (struct CGRect)_sceneBoundsForUpdateWithFollowsHostingWindowOut:(_Bool *)arg1;
 - (void)editingOverlayContainerDidChangeToSceneBounds:(struct CGRect)arg1;
 - (id)_viewControllerForPalette;
@@ -65,14 +64,13 @@
 - (void)_updateForWillRotate:(id)arg1;
 - (void)_sceneWillEnterForegroundNotification:(id)arg1;
 - (void)_sceneDidActivateNotification:(id)arg1;
-- (void)inputResponderController:(id)arg1 inputViewSetVisibilityDidChange:(_Bool)arg2 includedReset:(_Bool)arg3;
+- (void)keyboardSceneDelegate:(id)arg1 inputViewSetVisibilityDidChange:(_Bool)arg2 includedReset:(_Bool)arg3;
 - (_Bool)_shouldDeferPaletteVisibilityUpdate;
 - (void)hidePaletteViewAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setPaletteVisible:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showPaletteViewAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic, getter=isPaletteVisible) _Bool paletteVisible;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
-@property(nonatomic) __weak id <PKPaletteViewDelegate> paletteViewDelegate;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;
 - (id)initWithWindowSize:(struct CGSize)arg1;

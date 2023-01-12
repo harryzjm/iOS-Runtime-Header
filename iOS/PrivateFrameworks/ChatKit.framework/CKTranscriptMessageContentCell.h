@@ -25,6 +25,7 @@
 @property(nonatomic) long long animationPauseReasons; // @synthesize animationPauseReasons=_animationPauseReasons;
 @property(nonatomic) struct CGSize messageDisplayViewRequestedSize; // @synthesize messageDisplayViewRequestedSize=_messageDisplayViewRequestedSize;
 @property(copy, nonatomic) NSAttributedString *drawerText; // @synthesize drawerText=_drawerText;
+- (double)layoutOffset;
 @property(readonly) UIView *messageDisplayView;
 - (void)willLayoutDrawerLabelFrame:(struct CGRect *)arg1;
 @property(readonly) struct CGRect drawerLabelFrame;
@@ -32,7 +33,7 @@
 - (void)layoutSubviewsForAlignmentContents;
 - (void)layoutSubviewsForDrawer;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 @end
 

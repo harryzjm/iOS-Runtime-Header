@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)description;
 - (void)logMetrics;
 - (void)sendEvent:(id)arg1 timestamp:(double)arg2;
 - (void)sendEvent:(id)arg1;

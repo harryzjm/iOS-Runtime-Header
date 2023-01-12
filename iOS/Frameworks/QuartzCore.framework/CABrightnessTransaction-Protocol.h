@@ -8,6 +8,7 @@
 
 @protocol CABrightnessTransaction <NSObject>
 - (_Bool)commitBrightness:(id *)arg1;
+- (void)setBrightnessLimit:(float)arg1;
 - (void)setAmbient:(float)arg1;
 - (void)setPotentialHeadroom:(float)arg1;
 - (void)setHeadroom:(float)arg1;

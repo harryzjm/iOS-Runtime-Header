@@ -8,7 +8,7 @@
 
 #import <NewsUI/NUArticleDataProviderFactory-Protocol.h>
 
-@class NSString;
+@class NSString, NULinkedContentManagerFactory;
 @protocol FCContentContext, NUEmbedDataManager, NUFontRegistration, SXHost;
 
 @interface NUANFArticleDataProviderFactory : NSObject <NUArticleDataProviderFactory>
@@ -17,15 +17,17 @@
     id <NUFontRegistration> _fontRegistration;
     id <SXHost> _host;
     id <NUEmbedDataManager> _embedDataManager;
+    NULinkedContentManagerFactory *_linkedContentManagerFactory;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NULinkedContentManagerFactory *linkedContentManagerFactory; // @synthesize linkedContentManagerFactory=_linkedContentManagerFactory;
 @property(readonly, nonatomic) id <NUEmbedDataManager> embedDataManager; // @synthesize embedDataManager=_embedDataManager;
 @property(readonly, nonatomic) id <SXHost> host; // @synthesize host=_host;
 @property(readonly, nonatomic) id <NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property(readonly, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 - (id)createArticleDataProviderWithArticle:(id)arg1;
-- (id)initWithContentContext:(id)arg1 fontRegistration:(id)arg2 host:(id)arg3 embedDataManager:(id)arg4;
+- (id)initWithContentContext:(id)arg1 fontRegistration:(id)arg2 host:(id)arg3 embedDataManager:(id)arg4 linkedContentManagerFactory:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityContainsCombinedView;
 - (_Bool)_accessibilityContainsSportsGrid;
 - (id)_accessibilitySupplementaryFooterViews;
 - (_Bool)_accessibilityShouldSortTableViewCellChildren;
@@ -18,10 +19,14 @@
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityValue;
+- (id)automationCustomProperties;
 - (id)accessibilityLabel;
 - (id)_accessibilityRetrieveTableViewCellText;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
+- (_Bool)_accessibilityHitTestReverseOrder;
+- (id)_accessibilitySearchCellElements;
 - (id)accessibilityElements;
+- (_Bool)_accessibilityUsesOverrideContainerProtocol;
 
 @end
 

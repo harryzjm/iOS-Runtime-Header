@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
 @class HRStackedButtonView, NSLayoutConstraint, UILabel, UIView;
 
-@interface HROnboardingAtrialFibrillationEnableViewController <HRStackedButtonViewDelegate>
+@interface HROnboardingAtrialFibrillationEnableViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate>
 {
     UIView *_heroView;
     UILabel *_titleLabel;
@@ -37,7 +39,7 @@
 - (id)createHeroView;
 - (void)setUpConstraints;
 - (void)setUpUI;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 @end
 

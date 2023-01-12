@@ -10,6 +10,10 @@ __attribute__((visibility("hidden")))
     _Atomic struct CGImage *_imageRef;
 }
 
+- (_Bool)optimizeContentForImageSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)contentOptimizedForImageSize:(struct CGSize)arg1;
+- (_Bool)prepareContentForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)contentPreparedForDisplay;
 - (id)contentWithCGImage:(struct CGImage *)arg1;
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
@@ -22,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasCGImage;
 - (_Bool)isCGImage;
 - (void)dealloc;
+- (id)initWithCGImageSource:(struct CGImageSource *)arg1 scale:(double)arg2;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2;
 
 @end

@@ -9,6 +9,7 @@
 @interface NSData (HexStringAdditions)
 + (id)rem_dataWithHexString:(id)arg1;
 + (id)dataFromBase64String:(id)arg1;
++ (id)rem_dataWithRandomBytesWithLength:(unsigned long long)arg1;
 - (id)base64EncodedString;
 - (id)TT_gzipDeflate;
 - (id)TT_gzipInflate;

@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)statusBarCoordinator:(id)arg1 invalidatedRegistrationWithError:(id)arg2;
 - (_Bool)statusBarCoordinator:(id)arg1 receivedTapWithContext:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)presentMediaControlsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentMediaControls;
 - (id)init;
 

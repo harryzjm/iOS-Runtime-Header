@@ -19,21 +19,21 @@
     _Bool _needsUpdate;
     FPItem *_item;
     id <DOCThumbnail> _fallback;
+    UIImage *_thumbnailImage;
     DOCThumbnailGenerator *_generator;
     DOCThumbnailDescriptor *_descriptor;
     NSHashTable *_listeners;
     DOCThumbnailRequest *_currentRequest;
-    UIImage *_thumbnailImage;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 @property(readonly, nonatomic) DOCThumbnailRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property(readonly, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 @property(readonly, nonatomic) _Bool needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property(readonly, nonatomic) DOCThumbnailDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property(readonly, nonatomic) __weak DOCThumbnailGenerator *generator; // @synthesize generator=_generator;
 @property(nonatomic) _Bool representativeIcon; // @synthesize representativeIcon=_representativeIcon;
+@property(readonly, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 @property(retain, nonatomic) id <DOCThumbnail> fallback; // @synthesize fallback=_fallback;
 @property(readonly, nonatomic) FPItem *item; // @synthesize item=_item;
 - (void)updateItemTo:(id)arg1;

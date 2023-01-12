@@ -11,6 +11,7 @@
 @protocol CPUIMessageCellConfigurationProtocol <NSObject>
 
 @optional
+- (_Bool)enabled;
 - (_Bool)showsMute;
 - (_Bool)showsStar;
 - (_Bool)showsPin;

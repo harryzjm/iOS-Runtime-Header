@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityUpdateVisibleMonth;
 - (void)_setVisibleMonth:(id)arg1 animated:(_Bool)arg2 updateDataSource:(_Bool)arg3 updateCollectionView:(_Bool)arg4 notifyDelegate:(_Bool)arg5;
-- (void)_axMarkupSubviews;
 - (id)_cellForCollectionView:(id)arg1 indexPath:(id)arg2 day:(id)arg3;
 - (void)_setupViewHierarchy;
 - (id)_accessibilityFuzzyHitTestElements;

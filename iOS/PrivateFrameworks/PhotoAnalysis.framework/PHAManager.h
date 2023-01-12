@@ -8,7 +8,7 @@
 
 #import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 
-@class CPAnalytics, NSMutableDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
+@class CPAnalytics, NSMutableDictionary, NSString, NSURL, PGManager, PHAAssetResourceDataLoader, PHAExecutive, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
 
 @interface PHAManager : NSObject <PHAServiceOperationHandling>
 {
@@ -16,9 +16,9 @@
     PHAExecutive *_executive;
     PHAAssetResourceDataLoader *_dataLoader;
     unsigned long long _processedAssetCount;
-    PHAGraphManager *_graphManager;
     NSURL *_libraryURL;
     PHPhotoLibrary *_photoLibrary;
+    PGManager *_graphManager;
     PHAJobCoordinator *_jobCoordinator;
     CPAnalytics *_analytics;
     NSMutableDictionary *_photoAnalysisWorkersByType;
@@ -29,24 +29,22 @@
 - (void).cxx_destruct;
 @property(retain) NSMutableDictionary *photoAnalysisWorkersByType; // @synthesize photoAnalysisWorkersByType=_photoAnalysisWorkersByType;
 @property(readonly) CPAnalytics *analytics; // @synthesize analytics=_analytics;
-@property(readonly) PHAGraphManager *graphManager; // @synthesize graphManager=_graphManager;
 @property(readonly) PHAJobCoordinator *jobCoordinator; // @synthesize jobCoordinator=_jobCoordinator;
-@property(retain) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
-@property(retain) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
+@property(readonly) PGManager *graphManager; // @synthesize graphManager=_graphManager;
+@property(readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(readonly) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 @property(readonly) PHAExecutive *executive; // @synthesize executive=_executive;
 - (id)monitoring;
 - (void)enumerateWorkersUsingBlock:(CDUnknownBlockType)arg1;
-- (id)presentationWorker;
 - (id)faceProcessingServiceWorker;
 - (id)faceClassificationServiceWorker;
-- (id)graphServiceWorker;
-- (void)requestLocalizedSceneAncestryInformationWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)storytellingWorker;
+- (id)clientDispatcher;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)handleOperation:(id)arg1;
-- (void)graphManagerDidUnloadGraph:(id)arg1;
-- (void)graphManagerWillLoadGraph:(id)arg1;
 - (void)backgroundActivityDidBegin;
 - (void)stopAllBackgroundActivities;
+- (void)stopBackgroundActivityWaitForCompletion;
 - (void)stopBackgroundActivity;
 - (void)triggerBackgroundActivity;
 - (void)checkForQuiescence;
@@ -61,9 +59,14 @@
 - (void)reportTurboEnabledWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)startTurboProcessing;
 @property(readonly, getter=isQuiescent) _Bool quiescent;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithPhotoLibraryURL:(id)arg1 executive:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

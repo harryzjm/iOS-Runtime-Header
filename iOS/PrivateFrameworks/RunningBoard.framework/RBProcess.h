@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <RunningBoard/RBConcreteTargeting-Protocol.h>
 #import <RunningBoard/RBSProcessIdentifier-Protocol.h>
 
 @class NSString, RBProcessState, RBSAuditToken, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessIdentity, RBSProcessInstance;
-@protocol OS_dispatch_source, RBBundleProperties, RBJetsamBandProviding;
+@protocol OS_dispatch_source, RBBundleProperties;
 
-@interface RBProcess : NSObject <RBSProcessIdentifier>
+@interface RBProcess : NSObject <RBSProcessIdentifier, RBConcreteTargeting>
 {
     int _pid;
     RBSProcessIdentity *_identity;
     RBSProcessHandle *_handle;
     NSString *_shortDescription;
-    id <RBJetsamBandProviding> _jetsamProvider;
     RBProcess *_hostProcess;
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _dataLock;
@@ -29,6 +29,7 @@
     _Bool _systemPreventsIdleSleep;
     _Bool _diagnosticsStarted;
     _Bool _diagnosticsComplete;
+    int _pidversion;
     int _appNapEligible;
     int _isTestApp;
     unsigned char _manageFlags;
@@ -50,12 +51,14 @@
     NSString *_tmpDirectory;
 }
 
++ (id)testProcessWithPid:(int)arg1 andIdentity:(id)arg2;
 + (id)testProcessWithPid:(int)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *tmpDirectory; // @synthesize tmpDirectory=_tmpDirectory;
 @property(readonly, nonatomic) NSString *homeDirectory; // @synthesize homeDirectory=_homeDirectory;
 @property(readonly, nonatomic) NSString *underlyingAssertion; // @synthesize underlyingAssertion=_underlyingAssertion;
 @property(readonly, nonatomic, getter=isSuspended) _Bool suspended; // @synthesize suspended=_suspended;
+@property(readonly, nonatomic) int pidversion; // @synthesize pidversion=_pidversion;
 @property(nonatomic, getter=isTerminating) _Bool terminating; // @synthesize terminating=_terminating;
 @property(readonly, nonatomic, getter=isSystemShell) _Bool systemShell; // @synthesize systemShell=_systemShell;
 @property(readonly, nonatomic) int requestedJetsamPriority; // @synthesize requestedJetsamPriority=_requestedJetsamPriority;
@@ -70,13 +73,17 @@
 @property(readonly, copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 @property(readonly, copy, nonatomic) RBSProcessIdentifier *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *environment;
+@property(readonly, nonatomic) RBProcess *process;
+- (id)createRBSTarget;
+@property(readonly, nonatomic, getter=isSystem) _Bool system;
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
 - (int)rbs_pid;
 - (void)invokeHandlerOnProcessDeath:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (_Bool)_sendSignal:(int)arg1;
 - (_Bool)terminateWithContext:(id)arg1;
-- (void)collectDiagnostic:(unsigned long long)arg1 description:(id)arg2 code:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)collectDiagnostic:(unsigned long long)arg1 description:(id)arg2 code:(unsigned long long)arg3 additionalPayload:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_applyState:(id)arg1;
 - (void)invalidate;
 @property(readonly, nonatomic) int currentJetsamPriority;
@@ -87,8 +94,9 @@
 @property(readonly, nonatomic, getter=isBeingPtraced) _Bool beingPtraced;
 @property(readonly, nonatomic, getter=isLifecycleManaged) _Bool lifecycleManaged;
 @property(readonly, nonatomic, getter=isReported) _Bool reported;
+- (void)setProcessStartTime:(double)arg1;
 @property(readonly, nonatomic) double processStartTime; // @synthesize processStartTime=_processStartTime;
-- (id)_initWithInstance:(id)arg1 auditToken:(id)arg2 bundleProperties:(id)arg3 jetsamBandProvider:(id)arg4 initialState:(id)arg5 hostProcess:(id)arg6 properties:(id)arg7 systemPreventsIdleSleep:(_Bool)arg8;
+- (id)_initWithInstance:(id)arg1 auditToken:(id)arg2 bundleProperties:(id)arg3 initialState:(id)arg4 hostProcess:(id)arg5 properties:(id)arg6 systemPreventsIdleSleep:(_Bool)arg7;
 - (id)init;
 
 // Remaining properties

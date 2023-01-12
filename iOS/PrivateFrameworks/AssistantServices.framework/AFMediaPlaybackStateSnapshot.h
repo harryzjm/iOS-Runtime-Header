@@ -15,6 +15,7 @@
 
 @interface AFMediaPlaybackStateSnapshot : NSObject <AFContextSnapshot, NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
+    _Bool _isProxyGroupPlayer;
     long long _playbackState;
     NSDate *_nowPlayingTimestamp;
     NSString *_mediaType;
@@ -24,6 +25,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isProxyGroupPlayer; // @synthesize isProxyGroupPlayer=_isProxyGroupPlayer;
 @property(readonly, copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(readonly, copy, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property(readonly, copy, nonatomic) NSDate *nowPlayingTimestamp; // @synthesize nowPlayingTimestamp=_nowPlayingTimestamp;
@@ -37,7 +39,7 @@
 @property(readonly) unsigned long long hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithPlaybackState:(long long)arg1 nowPlayingTimestamp:(id)arg2 mediaType:(id)arg3 groupIdentifier:(id)arg4;
+- (id)initWithPlaybackState:(long long)arg1 nowPlayingTimestamp:(id)arg2 mediaType:(id)arg3 groupIdentifier:(id)arg4 isProxyGroupPlayer:(_Bool)arg5;
 - (id)ad_shortDescription;
 - (id)initWithSerializedBackingStore:(id)arg1;
 - (id)serializedBackingStore;

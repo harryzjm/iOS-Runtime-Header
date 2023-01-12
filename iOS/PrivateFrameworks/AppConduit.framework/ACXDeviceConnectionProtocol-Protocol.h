@@ -36,7 +36,7 @@
 - (void)disableObservers;
 - (void)enableObservers;
 - (void)getAlwaysInstallForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(_Bool))arg2;
-- (void)removeApplication:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(long long))arg3;
+- (void)removeApplication:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(long long, NSError *))arg3;
 - (void)installApplicationAtURL:(NSURL *)arg1 onDeviceWithPairingID:(NSUUID *)arg2 installOptions:(MIInstallOptions *)arg3 size:(long long)arg4 completion:(void (^)(long long, NSError *))arg5;
 - (void)installApplication:(NSString *)arg1 withProvisioningProfileInfo:(NSDictionary *)arg2 forTestFlight:(_Bool)arg3 onDeviceWithPairingID:(NSUUID *)arg4 completion:(void (^)(long long, NSError *))arg5;
 - (void)retryPendingAppInstallationsOnDeviceWithPairingID:(NSUUID *)arg1;

@@ -18,127 +18,140 @@ struct GEOOnce_s {
 };
 
 struct _GEOFlyoverKey {
-    unsigned int :6;
-    unsigned int :26;
-    unsigned int :26;
-    unsigned int :8;
-    unsigned int :24;
-    unsigned int :14;
-    unsigned int :8;
-    unsigned int :8;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int h:8;
+    unsigned int region:24;
+    unsigned int type:14;
+    unsigned int pixelSize:8;
+    unsigned int textScale:8;
 };
 
 struct _GEOGloriaQuadIDTileKey {
-    unsigned int :6;
-    unsigned int :64;
-    unsigned int :14;
-    unsigned int :36;
+    unsigned int z:6;
+    unsigned int quadKey:64;
+    unsigned int type:14;
+    unsigned int padding:36;
 };
 
 struct _GEOIdentifiedResourceKey {
-    unsigned int _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned int :64;
-    unsigned int :8;
+    unsigned long long identifier;
+    unsigned char levelOfDetail;
+    unsigned char type;
+    unsigned int supportsASTC:1;
+    unsigned int padding:39;
 };
 
 struct _GEOMuninMeshKey {
-    unsigned int :64;
-    unsigned int :32;
-    unsigned int :16;
-    unsigned int :5;
-    unsigned int :3;
+    unsigned int pointId:64;
+    unsigned int buildId:32;
+    unsigned int bucketId:16;
+    unsigned int cameraId:5;
+    unsigned int lod:3;
 };
 
 struct _GEOPolygonSelectionKey {
-    unsigned int :6;
-    unsigned int :25;
-    unsigned int :25;
-    unsigned int :64;
+    unsigned int z:6;
+    unsigned int x:25;
+    unsigned int y:25;
+    unsigned int polyId:64;
 };
 
 struct _GEORegionalResourceKey {
-    unsigned int :32;
-    unsigned int :8;
-    unsigned int :6;
-    unsigned int :8;
-    unsigned int :8;
-    unsigned int :1;
-    unsigned int :57;
+    unsigned int index:32;
+    unsigned int scenarios:8;
+    unsigned int type:6;
+    unsigned int pixelSize:8;
+    unsigned int textScale:8;
+    unsigned int forceRefetch:1;
+    unsigned int padding:57;
+};
+
+struct _GEOS2TileKey {
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int f:3;
+    unsigned int type:14;
+    unsigned int pixelSize:4;
+    unsigned int textScale:4;
+    unsigned int padding:37;
 };
 
 struct _GEOSputnikMetadataKey {
-    unsigned int :32;
-    unsigned int :24;
-    unsigned int :14;
-    unsigned int :8;
-    unsigned int :42;
+    unsigned int part:32;
+    unsigned int region:24;
+    unsigned int type:14;
+    unsigned int pixelSize:8;
+    unsigned int padding:42;
 };
 
 struct _GEOStandardTileKey {
-    unsigned int :40;
-    unsigned int :6;
-    unsigned int :26;
-    unsigned int :26;
-    unsigned int :14;
-    unsigned int :4;
-    unsigned int :4;
+    unsigned int reserved:40;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int type:14;
+    unsigned int pixelSize:4;
+    unsigned int textScale:4;
 };
 
 struct _GEOTileKey {
-    unsigned int :7;
-    unsigned int :1;
+    unsigned int provider:7;
+    unsigned int expires:1;
     union {
-        struct _GEOStandardTileKey _field1;
-        struct _GEOGloriaQuadIDTileKey _field2;
-        struct _GEORegionalResourceKey _field3;
-        struct _GEOSputnikMetadataKey _field4;
-        struct _GEOFlyoverKey _field5;
-        struct _GEOTransitLineSelectionKey _field6;
-        struct _GEOPolygonSelectionKey _field7;
-        struct _GEOTileOverlayKey _field8;
-        struct _GEOIdentifiedResourceKey _field9;
-        struct _GEOMuninMeshKey _field10;
-        struct _GEOVisualLocalizationTrackKey _field11;
-        struct _GEOVisualLocalizationMetadataKey _field12;
-        struct _GEOVisualLocalizationDataKey _field13;
-    } _field1;
+        struct _GEOStandardTileKey standard;
+        struct _GEOGloriaQuadIDTileKey gloriaQuad;
+        struct _GEORegionalResourceKey regional;
+        struct _GEOSputnikMetadataKey sputnikMetadata;
+        struct _GEOFlyoverKey flyover;
+        struct _GEOTransitLineSelectionKey transitLineSelection;
+        struct _GEOPolygonSelectionKey polygonSelection;
+        struct _GEOTileOverlayKey tileOverlay;
+        struct _GEOIdentifiedResourceKey identifiedResource;
+        struct _GEOMuninMeshKey muninMesh;
+        struct _GEOVisualLocalizationTrackKey visualLocalization;
+        struct _GEOVisualLocalizationMetadataKey visualLocalizationMetadata;
+        struct _GEOVisualLocalizationDataKey visualLocalizationData;
+        struct _GEOS2TileKey s2Tile;
+    } ;
 };
 
 struct _GEOTileOverlayKey {
-    unsigned int :6;
-    unsigned int :26;
-    unsigned int :26;
-    unsigned int :8;
-    unsigned int :32;
-    unsigned int :22;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int contentScale:8;
+    unsigned int providerId:32;
+    unsigned int keyframeIndex:16;
+    unsigned int padding:6;
 };
 
 struct _GEOTransitLineSelectionKey {
-    unsigned int :6;
-    unsigned int :25;
-    unsigned int :25;
-    unsigned int :64;
+    unsigned int z:6;
+    unsigned int x:25;
+    unsigned int y:25;
+    unsigned int muid:64;
 };
 
 struct _GEOVisualLocalizationDataKey {
-    unsigned long long _field1;
-    unsigned char _field2;
-    unsigned int :5;
-    unsigned int :21;
-    unsigned int :21;
-    unsigned int :1;
+    unsigned long long buildID;
+    unsigned char uncertainty;
+    unsigned int z:5;
+    unsigned int x:21;
+    unsigned int y:21;
+    unsigned int padding:1;
 };
 
 struct _GEOVisualLocalizationMetadataKey {
-    unsigned int :6;
-    unsigned int :9;
-    unsigned int :25;
-    unsigned int :6;
-    unsigned int :26;
-    unsigned int :26;
-    unsigned int :22;
+    unsigned int maxSupportedOutputVersion:6;
+    unsigned int maxSupportedFormatVersion:9;
+    unsigned int reserved:25;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int padding:22;
 };
 
 struct _GEOVisualLocalizationTrackAdditionalInfo {
@@ -148,29 +161,519 @@ struct _GEOVisualLocalizationTrackAdditionalInfo {
 };
 
 struct _GEOVisualLocalizationTrackKey {
-    unsigned short _field1;
-    unsigned char _field2;
-    unsigned int :16;
-    unsigned int :6;
-    unsigned int :26;
-    unsigned int :26;
-    unsigned int :22;
+    unsigned short formatVersion;
+    unsigned char uncertainty;
+    unsigned int reserved:16;
+    unsigned int z:6;
+    unsigned int x:26;
+    unsigned int y:26;
+    unsigned int padding:22;
 };
 
-struct __list_node_base<VLLocalizationDataKey, void *> {
-    struct __list_node_base<VLLocalizationDataKey, void *> *__prev_;
-    struct __list_node_base<VLLocalizationDataKey, void *> *__next_;
+struct _opaque_pthread_mutex_t {
+    long long _field1;
+    char _field2[56];
 };
 
-struct list<VLLocalizationDataKey, std::__1::allocator<VLLocalizationDataKey>> {
-    struct __list_node_base<VLLocalizationDataKey, void *> __end_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<VLLocalizationDataKey, void *>>> {
+struct _opaque_pthread_rwlock_t {
+    long long _field1;
+    char _field2[192];
+};
+
+struct _opaque_pthread_t;
+
+struct float_list_t {
+    long long _field1;
+    float *_field2;
+    long long _field3;
+};
+
+struct float_nn_list_t {
+    long long _field1;
+    float (*_field2)[2];
+    long long _field3;
+};
+
+struct g_coords_list_t {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+};
+
+struct g_pos2f_list_t {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+};
+
+struct g_pos3_t {
+    double _field1;
+    double _field2;
+    double _field3;
+};
+
+struct int_list_t {
+    long long _field1;
+    int *_field2;
+    long long _field3;
+};
+
+struct int_nn_list_t {
+    long long _field1;
+    int (*_field2)[2];
+    long long _field3;
+};
+
+struct int_pair_list_t {
+    long long _field1;
+    struct int_pair_t *_field2;
+    long long _field3;
+};
+
+struct int_pair_t;
+
+struct lbl_feature2d_t;
+
+struct list<VLLocalizationDataKey, std::allocator<VLLocalizationDataKey>> {
+    struct __list_node_base<VLLocalizationDataKey, void *> {
+        void *__prev_;
+        void *__next_;
+    } __end_;
+    struct __compressed_pair<unsigned long, std::allocator<std::__list_node<VLLocalizationDataKey, void *>>> {
         unsigned long long __value_;
     } __size_alloc_;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
+};
+
+struct timespec {
+    long long _field1;
+    long long _field2;
+};
+
+struct vl_dog_octave_list_t {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+};
+
+struct vl_dump_detail_ptr_list_t {
+    long long _field1;
+    CDStruct_183601bc **_field2;
+    long long _field3;
+};
+
+struct vl_dump_hash_list_t {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+};
+
+struct vl_dump_kpts_ptr_list_t {
+    long long _field1;
+    CDStruct_183601bc **_field2;
+    long long _field3;
+};
+
+struct vl_dump_locate_ptr_list_t {
+    long long _field1;
+    CDStruct_183601bc **_field2;
+    long long _field3;
+};
+
+struct vl_dump_result_ptr_list_t {
+    long long _field1;
+    CDStruct_183601bc **_field2;
+    long long _field3;
+};
+
+struct vl_dump_update_data_list_t {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+};
+
+struct vl_gnd_t {
+    CDStruct_2f30224d _field1;
+    double _field2;
+    double _field3;
+};
+
+struct vl_pose_fuse_t;
+
+struct vl_ps_hyp_list_t {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+};
+
+struct vl_t {
+    struct {
+        struct {
+            int _field1;
+            int _field2;
+            struct {
+                int _field1;
+                int _field2;
+                int _field3;
+                float _field4;
+                float _field5;
+                float _field6;
+                int _field7;
+            } _field3;
+            struct {
+                float _field1;
+                int _field2;
+                int _field3;
+                int _field4;
+                float _field5;
+                int _field6;
+                float _field7;
+                int _field8;
+                float _field9;
+                float _field10;
+                int _field11;
+                float _field12;
+                int _field13;
+            } _field4;
+            struct {
+                int _field1;
+                int _field2;
+                int _field3;
+                float _field4;
+            } _field5;
+            float _field6;
+            float _field7;
+            int _field8;
+        } _field1;
+        struct {
+            float _field1;
+            float _field2;
+            int _field3;
+            struct {
+                int _field1;
+                float _field2;
+                float _field3;
+            } _field4;
+            int _field5;
+        } _field2;
+        struct {
+            int _field1;
+            struct {
+                int _field1;
+            } _field2;
+            float _field3;
+        } _field3;
+        CDStruct_1ef3fb1f _field4;
+        struct {
+            int _field1;
+            struct {
+                int _field1;
+                float _field2;
+                float _field3;
+                float _field4;
+                int _field5;
+                float _field6;
+                int _field7;
+                int _field8;
+                int _field9;
+                int _field10;
+                int _field11;
+                int _field12;
+                float _field13;
+                int _field14;
+                struct {
+                    int _field1;
+                    int _field2;
+                    double _field3;
+                    float _field4;
+                } _field15;
+            } _field2;
+            struct {
+                int _field1;
+                float _field2;
+                float _field3;
+                float _field4;
+                float _field5;
+                float _field6;
+                float _field7;
+                int _field8;
+                float _field9;
+                float _field10;
+                float _field11;
+                float _field12;
+                int _field13;
+                int _field14;
+                int _field15;
+                float _field16;
+                int _field17;
+                int _field18;
+                float _field19;
+                int _field20;
+                int _field21;
+                float _field22[8];
+                int _field23;
+                int _field24;
+                int _field25;
+                int _field26;
+                float _field27;
+                float _field28;
+                int _field29;
+                float _field30;
+                int _field31;
+            } _field3;
+            struct {
+                struct {
+                    float _field1;
+                    float _field2;
+                    float _field3;
+                    int _field4;
+                    int _field5;
+                    int _field6;
+                    int _field7;
+                    float _field8;
+                    float _field9;
+                    float _field10;
+                    float _field11;
+                    float _field12;
+                    float _field13;
+                    int _field14;
+                    unsigned long long _field15;
+                    CDStruct_869f9c67 _field16;
+                } _field1;
+                float _field2;
+                float _field3;
+                float _field4;
+            } _field4;
+            int _field5;
+            float _field6;
+            int _field7;
+            int _field8;
+            float _field9;
+            float _field10;
+            float _field11;
+            struct {
+                int _field1;
+                float _field2;
+                float _field3;
+                float _field4;
+                float _field5;
+                int _field6;
+            } _field12;
+            CDStruct_1ef3fb1f _field13;
+            float _field14;
+        } _field5;
+        struct {
+            int _field1;
+            int _field2;
+            int _field3;
+            int _field4;
+            int _field5;
+            int _field6;
+            float _field7;
+            float _field8;
+            double _field9;
+            float _field10;
+            float _field11;
+            float _field12;
+            float _field13;
+        } _field6;
+        CDStruct_1ef3fb1f _field7;
+    } _field1;
+    int _field2;
+    CDStruct_183601bc *_field3;
+    struct {
+        struct {
+            char *_field1;
+            int _field2;
+            int _field3;
+            long long _field4;
+        } _field1;
+        struct {
+            float _field1[9];
+            float _field2[2];
+        } _field2;
+        struct {
+            int _field1;
+            double _field2;
+            double _field3;
+            double _field4;
+            double _field5;
+            double _field6;
+            double _field7;
+            double _field8;
+            double _field9;
+            double _field10;
+            double _field11;
+            double _field12;
+            int _field13;
+            int _field14;
+        } _field3;
+        struct g_pos3_t _field4;
+        float _field5;
+        float _field6;
+        CDStruct_869f9c67 _field7;
+        float _field8;
+        float _field9;
+        float _field10;
+        struct {
+            float _field1[3][3];
+            float _field2[3];
+        } _field11;
+    } _field4;
+    CDStruct_170c25c7 _field5;
+    CDStruct_ecb8e74c _field6;
+    CDStruct_77b38b1a _field7;
+    struct {
+        struct {
+            CDStruct_11450ebb _field1;
+            CDStruct_11450ebb _field2;
+            CDStruct_11450ebb _field3;
+            CDStruct_11450ebb _field4;
+            CDStruct_11450ebb _field5;
+            CDStruct_11450ebb _field6;
+            struct vl_dog_octave_list_t _field7;
+            struct {
+                struct int_pair_list_t _field1;
+            } _field8;
+            struct {
+                struct lbl_feature2d_t *_field1[3];
+                char _field2[512];
+                int _field3;
+                int _field4;
+            } _field9;
+        } _field1;
+        struct {
+            int _field1;
+            int _field2;
+            struct g_pos3_t _field3;
+            float _field4;
+            int _field5;
+            char _field6[512];
+            void *_field7;
+            CDUnknownFunctionPointerType _field8;
+            CDStruct_183601bc *_field9;
+            CDStruct_4c217994 _field10;
+            struct vl_gnd_t _field11;
+            struct _opaque_pthread_t *_field12;
+            struct _opaque_pthread_rwlock_t _field13;
+            struct _opaque_pthread_rwlock_t _field14;
+            CDStruct_11450ebb _field15;
+            CDStruct_11450ebb _field16;
+        } _field2;
+        struct {
+            CDStruct_11450ebb _field1;
+            CDStruct_11450ebb _field2;
+            CDStruct_11450ebb _field3;
+        } _field3;
+        CDStruct_7043ee1b _field4;
+        struct {
+            struct {
+                struct g_pos2f_list_t _field1;
+                CDStruct_1447599b _field2;
+                CDStruct_1447599b _field3;
+                CDStruct_11450ebb _field4;
+            } _field1;
+            struct {
+                struct int_list_t _field1;
+                CDStruct_170c25c7 _field2;
+            } _field2;
+            struct {
+                struct vl_gnd_t _field1;
+                int _field2;
+                struct {
+                    CDStruct_11450ebb _field1;
+                    CDStruct_11450ebb _field2;
+                    CDStruct_11450ebb _field3;
+                    CDStruct_11450ebb _field4;
+                    CDStruct_11450ebb _field5;
+                } _field3;
+                CDStruct_11450ebb _field4;
+                struct {
+                    double _field1;
+                    double _field2;
+                    unsigned long long _field3;
+                } _field5;
+                struct {
+                    CDStruct_2f30224d _field1;
+                    void *_field2;
+                } _field6;
+            } _field3;
+            CDStruct_7043ee1b _field4;
+            struct {
+                CDStruct_11450ebb _field1;
+                char _field2[512];
+            } _field5;
+            CDStruct_7043ee1b _field6;
+            CDStruct_11450ebb _field7;
+            struct vl_ps_hyp_list_t _field8;
+            struct float_list_t _field9;
+            struct float_list_t _field10;
+            struct vl_pose_fuse_t *_field11;
+            struct {
+                CDStruct_2f30224d _field1;
+            } _field12;
+        } _field5;
+        struct {
+            CDStruct_2f30224d _field1;
+            int _field2;
+            int _field3;
+        } _field6;
+        CDStruct_11450ebb _field7;
+    } _field8;
+    struct {
+        int _field1;
+        int _field2;
+        struct _opaque_pthread_t *_field3;
+        struct timespec _field4;
+        int _field5;
+        char _field6[512];
+        char _field7[512];
+        int _field8;
+        unsigned char _field9;
+        struct vl_dump_update_data_list_t _field10;
+        struct _opaque_pthread_mutex_t _field11;
+        struct vl_dump_locate_ptr_list_t _field12;
+        CDStruct_11450ebb _field13;
+        struct _opaque_pthread_mutex_t _field14;
+        struct vl_dump_kpts_ptr_list_t _field15;
+        CDStruct_11450ebb _field16;
+        struct _opaque_pthread_mutex_t _field17;
+        struct vl_dump_result_ptr_list_t _field18;
+        struct _opaque_pthread_mutex_t _field19;
+        struct {
+            double _field1;
+            struct vl_dump_hash_list_t _field2;
+            CDStruct_ecb8e74c _field3;
+            CDStruct_170c25c7 _field4;
+            CDStruct_ecb8e74c _field5;
+            struct g_coords_list_t _field6;
+            struct float_list_t _field7;
+            struct g_coords_list_t _field8;
+            struct float_list_t _field9;
+            struct g_coords_list_t _field10;
+            struct float_list_t _field11;
+            CDStruct_2f30224d _field12;
+            float _field13;
+            CDStruct_77b38b1a _field14;
+            struct vl_gnd_t _field15;
+        } _field20;
+        struct vl_dump_detail_ptr_list_t _field21;
+        struct _opaque_pthread_mutex_t _field22;
+    } _field9;
+    CDStruct_183601bc *_field10;
+    CDStruct_183601bc *_field11;
+    struct {
+        double _field1;
+        int _field2;
+    } _field12;
+    struct {
+        int _field1;
+        int _field2;
+        int _field3;
+    } _field13;
 };
 
 #pragma mark Typedef'd Structures
@@ -185,6 +688,11 @@ typedef struct {
     float _field3;
     float _field4[36];
 } CDStruct_bd2735fe;
+
+typedef struct {
+    double _field1[3][3];
+    double _field2[3];
+} CDStruct_2f30224d;
 
 typedef struct {
     double pos_geoc[3];
@@ -211,11 +719,34 @@ typedef struct {
 } CDStruct_c3074bf1;
 
 typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+} CDStruct_869f9c67;
+
+typedef struct {
     int level;
     int x;
     int y;
     int uncertainty;
 } CDStruct_4c217994;
+
+typedef struct {
+    int _field1;
+    int _field2;
+} CDStruct_1ef3fb1f;
+
+typedef struct CDStruct_183601bc;
+
+typedef struct {
+    struct timespec _field1[3];
+    struct timespec _field2[3];
+    long long _field3[3];
+    long long _field4[3];
+    int _field5;
+    char _field6[64];
+    int _field7;
+} CDStruct_11450ebb;
 
 typedef struct {
     double *points3d;
@@ -257,4 +788,33 @@ typedef struct {
     long long tracks_file_size;
     int peak_mem_usage;
 } CDStruct_39a823be;
+
+typedef struct {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+    struct float_list_t _field4;
+} CDStruct_170c25c7;
+
+typedef struct {
+    long long _field1;
+    CDStruct_183601bc *_field2;
+    long long _field3;
+} CDStruct_1447599b;
+
+typedef struct {
+    struct int_nn_list_t _field1;
+    struct float_nn_list_t _field2;
+} CDStruct_ecb8e74c;
+
+typedef struct {
+    CDStruct_11450ebb _field1;
+} CDStruct_7043ee1b;
+
+typedef struct {
+    struct g_pos2f_list_t _field1;
+    CDStruct_1447599b _field2;
+    struct int_pair_list_t _field3;
+    int _field4;
+} CDStruct_77b38b1a;
 

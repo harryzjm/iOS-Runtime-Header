@@ -42,27 +42,7 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    MISSING_TYPE *circlePosition[20];
-    MISSING_TYPE *circleProperties[20];
-    MISSING_TYPE *textureRotationVector;
-} CDStruct_7104cd25;
-
-typedef struct {
     MISSING_TYPE *_field1[20];
     MISSING_TYPE *_field2[20];
 } CDStruct_cb976e3b;
-
-#pragma mark Named Unions
-
-union _GLKVector2 {
-    struct {
-        float x;
-        float y;
-    } ;
-    struct {
-        float s;
-        float t;
-    } ;
-    float v[2];
-};
 

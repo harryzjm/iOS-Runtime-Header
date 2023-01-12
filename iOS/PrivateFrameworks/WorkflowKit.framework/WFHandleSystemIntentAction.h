@@ -6,39 +6,55 @@
 
 #import <WorkflowKit/WFDynamicEnumerationDataSource-Protocol.h>
 
-@class INIntentDescription, NSArray, NSString;
+@class INIntentDescription, INIntentDescriptor, NSArray, NSSet, NSString, WFAppInstalledResource;
 
 @interface WFHandleSystemIntentAction <WFDynamicEnumerationDataSource>
 {
     int _token;
     INIntentDescription *_intentDescription;
+    INIntentDescriptor *_intentDescriptor;
     NSArray *_supportedAppIdentifiers;
-    NSArray *_supportedIdentifiers;
+    NSSet *_supportedIdentifiers;
+    WFAppInstalledResource *_appResource;
+    NSSet *_launchableIdentifiers;
 }
 
++ (id)sharedEnumerator;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSSet *launchableIdentifiers; // @synthesize launchableIdentifiers=_launchableIdentifiers;
 @property(readonly, nonatomic) int token; // @synthesize token=_token;
+- (void)setAppResource:(id)arg1;
+- (id)appResource;
+@property(retain, nonatomic) INIntentDescriptor *intentDescriptor; // @synthesize intentDescriptor=_intentDescriptor;
 - (id)intentDescription;
+- (id)enumeration:(id)arg1 accessoryImageForPossibleState:(id)arg2;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
 - (id)possibleStatesForEnumeration:(id)arg1;
-- (_Bool)requiresRemoteExecution;
+- (id)actionForAppIdentifier:(id)arg1;
+- (_Bool)shouldBeIncludedInAppsList;
+- (id)launchableAppIdentifiers;
+- (id)supportedAppIdentifiers;
+@property(readonly, nonatomic) NSSet *supportedIdentifiers; // @synthesize supportedIdentifiers=_supportedIdentifiers;
+- (id)intentDescriptorFromParameterState;
+- (void)authorizeAccessResourcesImplicitlyForParameterState:(id)arg1 forParameter:(id)arg2;
+- (_Bool)setParameterState:(id)arg1 forKey:(id)arg2;
 - (id)selectedAppNotSupportedError;
 - (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
-- (id)slots;
 - (id)copyWithSerializedParameters:(id)arg1;
+- (id)slots;
 - (id)appSection;
-- (void)selectedAppDidChange;
-- (_Bool)setParameterState:(id)arg1 forKey:(id)arg2;
-- (id)actionForAppIdentifier:(id)arg1;
-- (id)supportedAppIdentifiers;
-@property(readonly, nonatomic) NSArray *supportedIdentifiers; // @synthesize supportedIdentifiers=_supportedIdentifiers;
+- (id)intentClassName;
 - (long long)intentCategory;
-- (id)appIdentifier;
+- (id)accessoryIcon;
+- (id)launchableAppIdentifier;
+- (id)displayableAppIdentifier;
 - (id)localizedAppName;
-- (id)localizedDisplayableAppNameForBundleIdentifier:(id)arg1;
-- (id)displayableAppIdentifierForBundleIdentifier:(id)arg1;
+- (id)icon;
+- (id)customImageForBundleIdentifier:(id)arg1;
+- (id)customAppNameForBundleIdentifier:(id)arg1;
+- (void)selectedAppDidChange;
 - (void)dealloc;
-- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3 stringLocalizer:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

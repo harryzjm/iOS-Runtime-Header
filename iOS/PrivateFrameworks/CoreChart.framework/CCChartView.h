@@ -38,6 +38,7 @@
     UIAccessibilityElement *_accessibilityDataSeriesElement;
 }
 
++ (void)cleanUp;
 + (id)compileSpecDictionary:(id)arg1 configDictionary:(id)arg2 baseConfig:(id)arg3 expressionFunctionNames:(id)arg4 error:(id *)arg5;
 + (id)compileSpec:(id)arg1 config:(id)arg2 baseConfig:(id)arg3 expressionFunctionNames:(id)arg4 error:(id *)arg5;
 + (id)configForBaseConfigType:(id)arg1;

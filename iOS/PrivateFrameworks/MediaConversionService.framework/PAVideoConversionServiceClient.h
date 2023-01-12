@@ -8,27 +8,30 @@
 
 #import <MediaConversionService/VideoConversionServiceClient-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSXPCConnection, PFDispatchQueue;
+@class NSMutableDictionary, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface PAVideoConversionServiceClient : NSObject <VideoConversionServiceClient>
 {
     NSXPCConnection *_serviceConnection;
     NSMutableDictionary *_pendingRequestIdentifierToProgressMap;
-    PFDispatchQueue *_isolationQueue;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
     unsigned long long _state;
 }
 
 - (void).cxx_destruct;
 @property unsigned long long state; // @synthesize state=_state;
-@property(retain) PFDispatchQueue *isolationQueue; // @synthesize isolationQueue=_isolationQueue;
+@property(retain) NSObject<OS_dispatch_queue> *isolationQueue; // @synthesize isolationQueue=_isolationQueue;
 @property(retain) NSMutableDictionary *pendingRequestIdentifierToProgressMap; // @synthesize pendingRequestIdentifierToProgressMap=_pendingRequestIdentifierToProgressMap;
 @property(retain) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
 - (void)invalidateAfterPendingRequestCompletion;
 - (void)updateProgress:(id)arg1;
-- (void)performCleanupForJobGroupIdentifier:(id)arg1;
 - (void)transitionToInvalidatedState;
 - (void)handleRequestCompletionForIdentifier:(id)arg1;
 - (void)extractStillImageFromVideoAtSourceURL:(id)arg1 toDestinationURL:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)modifyRequestWithIdentifier:(id)arg1 modifications:(id)arg2;
+- (void)markPendingRequestAsOptionalForProgress:(id)arg1;
+- (_Bool)canMarkPendingRequestAsOptionalForProgress:(id)arg1;
 - (id)convertVideoAtSourceURLCollection:(id)arg1 toDestinationURLCollection:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)convertVideoAtSourceURL:(id)arg1 toDestinationURL:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setupServiceConnection;

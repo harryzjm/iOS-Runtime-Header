@@ -21,8 +21,10 @@ __attribute__((visibility("hidden")))
     NSData *faceObservationsData;
     NSIndexSet *indexesOfShallowDepthOfFieldObservations;
     struct CGRect focusRectangle;
+    unsigned int SDOFRenderingVersion;
 }
 
+@property(nonatomic) unsigned int SDOFRenderingVersion; // @synthesize SDOFRenderingVersion;
 @property(nonatomic) struct CGRect focusRectangle; // @synthesize focusRectangle;
 @property(retain, nonatomic) NSIndexSet *indexesOfShallowDepthOfFieldObservations; // @synthesize indexesOfShallowDepthOfFieldObservations;
 @property(retain, nonatomic) NSData *faceObservationsData; // @synthesize faceObservationsData;

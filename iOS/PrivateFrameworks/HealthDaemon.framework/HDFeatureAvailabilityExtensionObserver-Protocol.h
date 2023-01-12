@@ -6,6 +6,10 @@
 
 #import <HealthDaemon/HKFeatureAvailabilityProvidingObserver-Protocol.h>
 
+@protocol HDFeatureAvailabilityExtension;
+
 @protocol HDFeatureAvailabilityExtensionObserver <HKFeatureAvailabilityProvidingObserver>
+- (void)featureAvailabilityExtensionDidUpdateRegionAvailability:(id <HDFeatureAvailabilityExtension>)arg1;
+- (void)featureAvailabilityExtensionOnboardingCompletionDataDidBecomeAvailable:(id <HDFeatureAvailabilityExtension>)arg1;
 @end
 

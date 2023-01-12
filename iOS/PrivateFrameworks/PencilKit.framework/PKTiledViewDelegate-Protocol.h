@@ -15,5 +15,8 @@
 - (void)canvasView:(PKTiledView *)arg1 beganStroke:(PKStroke *)arg2;
 - (void)_canvasViewWillBeginDrawing:(PKTiledView *)arg1;
 - (_Bool)canvasView:(PKTiledView *)arg1 shouldBeginDrawingWithTouch:(UITouch *)arg2;
+
+@optional
+- (NSArray *)tiledViewAttachmentViews;
 @end
 

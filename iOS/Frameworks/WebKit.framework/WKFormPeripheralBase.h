@@ -14,13 +14,15 @@
 __attribute__((visibility("hidden")))
 @interface WKFormPeripheralBase : NSObject <WKFormPeripheral>
 {
-    RetainPtr_5ad583fd _control;
+    struct RetainPtr<NSObject<WKFormControl>> _control;
     _Bool _editing;
+    _Bool _singleTapShouldEndEditing;
     WKContentView *_view;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool singleTapShouldEndEditing; // @synthesize singleTapShouldEndEditing=_singleTapShouldEndEditing;
 @property(readonly, nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
 @property(readonly, nonatomic) WKContentView *view; // @synthesize view=_view;
 - (_Bool)handleKeyEvent:(id)arg1;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)assistantView;
 - (void)endEditing;
 - (void)beginEditing;
-- (id)initWithView:(id)arg1 control:(RetainPtr_5ad583fd *)arg2;
+- (id)initWithView:(id)arg1 control:(void *)arg2;
 
 @end
 

@@ -4,25 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
-@class IKViewElement, TVImageLayout, VUICollectionViewFeaturedView;
+@class VUICollectionViewFeaturedView;
 
 __attribute__((visibility("hidden")))
-@interface VUICollectionViewFeaturedCell : UICollectionViewCell
+@interface VUICollectionViewFeaturedCell
 {
     VUICollectionViewFeaturedView *_featuredView;
-    TVImageLayout *_imageLayout;
-    IKViewElement *_viewElement;
 }
 
-+ (id)featuredCellWithElement:(id)arg1 existingCell:(id)arg2;
-+ (struct CGSize)lockupSizeForElement:(id)arg1;
 + (double)_iOSLockupWidthWithWindowWidth:(double)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2 showsPageControl:(_Bool)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
-@property(retain, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property(retain, nonatomic) VUICollectionViewFeaturedView *featuredView; // @synthesize featuredView=_featuredView;
+- (void)_commonInitWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

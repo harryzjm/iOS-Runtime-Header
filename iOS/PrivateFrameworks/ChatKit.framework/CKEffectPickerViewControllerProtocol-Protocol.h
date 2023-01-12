@@ -8,6 +8,7 @@
 
 @protocol CKEffectPickerViewControllerProtocol
 @property(nonatomic) id <CKEffectPickerViewControllerDelegate> delegate;
+- (void)setShowingInStandAloneWindow:(_Bool)arg1;
 - (void)updateColor:(BOOL)arg1;
 - (void)setCloseButtonYPosition:(double)arg1;
 - (void)handleTouchMoved:(struct CGPoint)arg1;

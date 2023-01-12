@@ -44,7 +44,7 @@
 - (id)init;
 - (struct container_object_s *)getLowLevelContainerObject;
 - (void)markDeleted;
-- (id)initWithIdentifier:(id)arg1 path:(id)arg2 uniquePathComponent:(id)arg3 uuid:(id)arg4 personaUniqueString:(id)arg5 error:(id *)arg6;
+- (id)initWithIdentifier:(id)arg1 path:(id)arg2 uniquePathComponent:(id)arg3 uuid:(id)arg4 personaUniqueString:(id)arg5 uid:(unsigned int)arg6 error:(id *)arg7;
 - (void)dealloc;
 - (void)_errorOccurred;
 @property(readonly, nonatomic) struct container_object_s *thisContainer;

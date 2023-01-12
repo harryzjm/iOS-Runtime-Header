@@ -6,7 +6,7 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFItem, HFStaticItem, HFUserNotificationServiceSettings, HUCameraSmartDetectionSettingsModule, HUChimeOnHomePodListItem, HUChimeOnHomePodSingleItem, HUTriggerConditionEditorItemModule;
+@class HFItem, HFStaticItem, HFUserNotificationServiceSettings, HMHome, HUCameraSmartDetectionSettingsModule, HUChimeOnHomePodListItem, HUChimeOnHomePodSingleItem, HUTriggerConditionEditorItemModule;
 @protocol HFServiceLikeItem, HFUserNotificationServiceSettingsProviding;
 
 @interface HUStatusAndNotificationsItemManager : HFItemManager
@@ -15,7 +15,6 @@
     _Bool _showsForServiceDetails;
     _Bool _showsChimeOnHomePodSection;
     _Bool _showsCameraSnapshotSection;
-    _Bool _showsMotionNotificationSection;
     _Bool _showsCameraSmartNotificationSection;
     _Bool _showsTriggerConditionSection;
     _Bool _hasDoorbellCamera;
@@ -36,16 +35,17 @@
     HFItem<HFServiceLikeItem> *_serviceItem;
     HUTriggerConditionEditorItemModule *_conditionModule;
     HUCameraSmartDetectionSettingsModule *_cameraSmartDetectionSettingsModule;
+    HMHome *_overrideHome;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 @property(nonatomic) _Bool serviceItemBelongsToCamera; // @synthesize serviceItemBelongsToCamera=_serviceItemBelongsToCamera;
 @property(nonatomic) _Bool showsCameraStatusChangeSection; // @synthesize showsCameraStatusChangeSection=_showsCameraStatusChangeSection;
 @property(nonatomic) _Bool showsSmartActivitySection; // @synthesize showsSmartActivitySection=_showsSmartActivitySection;
 @property(nonatomic) _Bool hasDoorbellCamera; // @synthesize hasDoorbellCamera=_hasDoorbellCamera;
 @property(nonatomic) _Bool showsTriggerConditionSection; // @synthesize showsTriggerConditionSection=_showsTriggerConditionSection;
 @property(nonatomic) _Bool showsCameraSmartNotificationSection; // @synthesize showsCameraSmartNotificationSection=_showsCameraSmartNotificationSection;
-@property(nonatomic) _Bool showsMotionNotificationSection; // @synthesize showsMotionNotificationSection=_showsMotionNotificationSection;
 @property(nonatomic) _Bool showsCameraSnapshotSection; // @synthesize showsCameraSnapshotSection=_showsCameraSnapshotSection;
 @property(nonatomic) _Bool showsChimeOnHomePodSection; // @synthesize showsChimeOnHomePodSection=_showsChimeOnHomePodSection;
 @property(readonly, nonatomic) HUCameraSmartDetectionSettingsModule *cameraSmartDetectionSettingsModule; // @synthesize cameraSmartDetectionSettingsModule=_cameraSmartDetectionSettingsModule;
@@ -64,6 +64,7 @@
 @property(retain, nonatomic) HFStaticItem *includeInStatusItem; // @synthesize includeInStatusItem=_includeInStatusItem;
 @property(nonatomic) _Bool showsForServiceDetails; // @synthesize showsForServiceDetails=_showsForServiceDetails;
 @property(nonatomic) _Bool showStatusSection; // @synthesize showStatusSection=_showStatusSection;
+- (id)_homeFuture;
 - (id)homeStatusVisibleObject;
 @property(readonly, nonatomic) HFUserNotificationServiceSettings *notificationSettings;
 @property(readonly, nonatomic) id <HFUserNotificationServiceSettingsProviding> notificationSettingsProvider;
@@ -81,6 +82,10 @@
 - (id)updateAllowNotifications:(_Bool)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
+- (_Bool)cameraProfileSupportsSmartNotifications;
+- (_Bool)isNonHKSVCameraDoorbell;
+- (_Bool)showsActivityNotificationsSection;
+- (_Bool)areNotificationsEnabled;
 - (id)initWithServiceItem:(id)arg1 delegate:(id)arg2 home:(id)arg3;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 

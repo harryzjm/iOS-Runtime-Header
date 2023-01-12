@@ -21,7 +21,6 @@
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-- (void)_sendSnapshotForWorkout:(id)arg1;
 - (void)workoutDataAccumulator:(id)arg1 didUpdateStartDate:(id)arg2;
 - (void)workoutDataAccumulator:(id)arg1 didUpdateEvents:(id)arg2;
 - (void)workoutManager:(id)arg1 currentWorkout:(id)arg2 didUpdateDataAccumulator:(id)arg3;

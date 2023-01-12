@@ -76,7 +76,6 @@
 - (void)alignToOrigin;
 - (void)transformUsingAffineTransform:(struct CGAffineTransform)arg1;
 - (void)setNaturalSize:(struct CGSize)arg1;
-- (Class)preferredRepClass;
 - (struct CGSize)naturalSize;
 - (struct CGAffineTransform)pathFlipTransform;
 - (void)beginNewSubpath;
@@ -96,11 +95,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;
-- (void)addTemporarySmoothNodes;
-- (void)updateSmoothNodes;
-- (void)morphWithMorphInfo:(id)arg1;
-- (void)saveToArchive:(struct PathSourceArchive *)arg1;
-- (id)initWithArchive:(const struct PathSourceArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 
 @end
 

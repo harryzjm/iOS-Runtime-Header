@@ -10,6 +10,7 @@
 {
 }
 
+- (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setContentOffset:(struct CGPoint)arg1;
 
 @end

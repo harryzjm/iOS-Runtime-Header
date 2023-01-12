@@ -8,7 +8,7 @@
 
 @interface NetworkCursor : NSObject
 {
-    struct vector<unsigned long, std::__1::allocator<unsigned long>> _nodeIndexes;
+    struct vector<unsigned long, std::allocator<unsigned long>> _nodeIndexes;
     unsigned long long _stateType;
 }
 

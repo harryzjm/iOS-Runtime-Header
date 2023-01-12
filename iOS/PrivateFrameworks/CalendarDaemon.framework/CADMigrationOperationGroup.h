@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (void)CADMigrateDatabaseIfNeeded:(CDUnknownBlockType)arg1;
-- (_Bool)accessGrantedToPerformSelector:(SEL)arg1;
 
 @end
 

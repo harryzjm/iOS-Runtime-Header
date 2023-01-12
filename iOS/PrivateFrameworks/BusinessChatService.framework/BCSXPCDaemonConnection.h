@@ -18,10 +18,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)resume;
 @property(readonly, retain) id <BCSXPCDaemonProtocol> remoteObjectProxy;
-- (id)initWithMachServiceName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

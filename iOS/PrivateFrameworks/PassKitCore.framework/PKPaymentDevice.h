@@ -34,6 +34,7 @@
 - (void)_finishLocationFixWithLocation:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)generateTransactionKeyWithParameters:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)primarySecureElementIdentifier;
 - (void)SEPParingInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteApplicationWithAID:(id)arg1;

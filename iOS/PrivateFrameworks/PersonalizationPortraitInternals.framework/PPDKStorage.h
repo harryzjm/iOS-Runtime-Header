@@ -19,7 +19,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_registerForSyncNotifications;
 - (void)removeObserver:(id)arg1;
 - (id)registerForTopicsRemoteDeletionWithBlock:(CDUnknownBlockType)arg1;
 - (id)registerForTopicsRemoteAdditionWithBlock:(CDUnknownBlockType)arg1;
@@ -29,18 +28,12 @@
 - (id)topicRecordFromEvent:(id)arg1;
 - (id)eventForNamedEntityRecord:(id)arg1 sourceDeviceID:(id)arg2;
 - (id)namedEntityRecordFromEvent:(id)arg1;
-- (_Bool)_isFutureCompatibilityVersionAttachedToEvent:(id)arg1;
 - (_Bool)deleteAllEventsInEventStream:(id)arg1 matchingPredicate:(id)arg2 error:(id *)arg3;
 - (_Bool)deleteAllEventsInEventStream:(id)arg1 error:(id *)arg2;
 - (_Bool)deleteEvents:(id)arg1 error:(id *)arg2;
-- (_Bool)_saveEntityEvents:(id)arg1;
-- (_Bool)_saveEntityEvents:(id)arg1 maxRetries:(long long)arg2 retryInterval:(double)arg3 shouldContinueBlock:(CDUnknownBlockType)arg4;
-- (_Bool)_saveTopicEvents:(id)arg1;
-- (_Bool)_saveTopicEvents:(id)arg1 maxRetries:(long long)arg2 retryInterval:(double)arg3 shouldContinueBlock:(CDUnknownBlockType)arg4;
 - (_Bool)saveEvents:(id)arg1 stream:(id)arg2 maxRetries:(long long)arg3 retryInterval:(double)arg4 shouldContinueBlock:(CDUnknownBlockType)arg5;
 - (_Bool)iterEventBatchesMatchingPredicate:(id)arg1 streams:(id)arg2 sortDescriptors:(id)arg3 batchSize:(unsigned long long)arg4 readMetaData:(_Bool)arg5 remoteOnly:(_Bool)arg6 error:(id *)arg7 block:(CDUnknownBlockType)arg8;
 - (_Bool)iterEventBatchesMatchingPredicate:(id)arg1 streams:(id)arg2 sortDescriptors:(id)arg3 batchSize:(unsigned long long)arg4 error:(id *)arg5 block:(CDUnknownBlockType)arg6;
-- (id)_readWriteKnowledgeStore;
 @property(readonly, nonatomic) double entityStreamCooldownTimeRemaining;
 @property(readonly, nonatomic) double topicStreamCooldownTimeRemaining;
 - (id)tombstoneStream;
@@ -51,7 +44,6 @@
 - (double)topicWriteBatchInterval;
 - (unsigned int)topicWriteBatchSize;
 - (unsigned int)readBatchSize;
-- (id)_init;
 
 @end
 

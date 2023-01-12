@@ -6,39 +6,56 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, NSURL;
+@class NSArray, NSDate, NSString, NSURL, WBSTOTPGenerator;
 
 @interface SFAutoFillOneTimeCode : NSObject
 {
+    NSDate *_timestamp;
     NSString *_detectedCode;
+    WBSTOTPGenerator *_totpGenerator;
+    _Bool _domainStrictMatch;
+    long long _source;
     NSString *_machineReadableCode;
     NSString *_displayCode;
     NSString *_GUID;
     NSString *_handle;
+    NSString *_user;
     NSString *_domain;
     NSString *_embeddedDomain;
-    NSDate *_timestamp;
+    NSArray *_embeddedDomains;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic) WBSTOTPGenerator *totpGenerator; // @synthesize totpGenerator=_totpGenerator;
+@property(readonly, copy, nonatomic) NSArray *embeddedDomains; // @synthesize embeddedDomains=_embeddedDomains;
 @property(readonly, copy, nonatomic) NSString *embeddedDomain; // @synthesize embeddedDomain=_embeddedDomain;
+@property(readonly, nonatomic) _Bool domainStrictMatch; // @synthesize domainStrictMatch=_domainStrictMatch;
 @property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property(readonly, copy, nonatomic) NSString *user; // @synthesize user=_user;
 @property(readonly, copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
 @property(readonly, copy, nonatomic) NSString *GUID; // @synthesize GUID=_GUID;
 @property(readonly, copy, nonatomic) NSString *displayCode; // @synthesize displayCode=_displayCode;
 @property(readonly, copy, nonatomic) NSString *machineReadableCode; // @synthesize machineReadableCode=_machineReadableCode;
-@property(readonly, copy, nonatomic) NSString *detectedCode; // @synthesize detectedCode=_detectedCode;
+@property(readonly, nonatomic) long long source; // @synthesize source=_source;
+- (id)localizedSubtitleForContext:(long long)arg1;
+- (id)localizedTitleForContext:(long long)arg1;
+- (id)_embeddedDomainArrayFromIMCoreEmbeddedDomains:(id)arg1;
+- (id)_stringForSource:(long long)arg1;
 - (id)_secureURLForDomain:(id)arg1;
 @property(readonly, copy, nonatomic) NSURL *_domainBoundEmbeddedURL;
 @property(readonly, copy, nonatomic) NSURL *_domainBoundTopLevelURL;
-- (long long)_matchURL:(id)arg1 withBoundDomainURL:(id)arg2;
+- (long long)_matchURL:(id)arg1 withBoundDomainURL:(id)arg2 strict:(_Bool)arg3;
+- (long long)_matchBoundDomainAndEmbeddedDomainsWithFrameURLs:(id)arg1;
+- (long long)_matchBoundDomainAndEmbeddedDomainWithFrameURLs:(id)arg1;
 - (long long)matchBoundDomainsWithFrameURLs:(id)arg1;
 - (long long)matchDomainWithURL:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *detectedCode;
+@property(readonly, nonatomic) NSDate *timestamp;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *code;
+- (id)initWithTOTPGenerator:(id)arg1 user:(id)arg2 highLevelDomain:(id)arg3;
 - (id)initWithIMCoreDictionary:(id)arg1;
 
 @end

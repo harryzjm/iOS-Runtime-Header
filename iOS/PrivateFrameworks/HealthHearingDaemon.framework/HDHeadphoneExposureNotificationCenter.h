@@ -6,27 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthHearingDaemon/HAENotificationCenterUserDelegate-Protocol.h>
-
-@class HAENotificationCenter, HDProfile, NSString;
+@class HAENotificationCenter, HDProfile;
 
 __attribute__((visibility("hidden")))
-@interface HDHeadphoneExposureNotificationCenter : NSObject <HAENotificationCenterUserDelegate>
+@interface HDHeadphoneExposureNotificationCenter : NSObject
 {
-    HAENotificationCenter *_notificationCenter;
     HDProfile *_profile;
+    HAENotificationCenter *_notificationCenter;
 }
 
 - (void).cxx_destruct;
-- (void)saveHAENotificationEventAsHKCategorySample:(id)arg1;
-- (void)postSevenDayDoseNotification:(id)arg1 nowDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_reportHeadphoneNotificationWithNowDate:(id)arg1 eventDuration:(double)arg2 exposureLevel:(double)arg3 exposureDuration:(double)arg4 hasPrunableData:(_Bool)arg5 isDeviceLocked:(_Bool)arg6 analyticsInfo:(id)arg7;
+- (id)postSevenDayDoseNotification:(id)arg1 nowDate:(id)arg2 analyticsInfo:(id)arg3 error:(id *)arg4;
 - (id)initWithProfile:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

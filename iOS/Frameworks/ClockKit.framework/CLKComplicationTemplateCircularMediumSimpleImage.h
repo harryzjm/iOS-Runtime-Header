@@ -8,7 +8,7 @@
 {
 }
 
-+ (struct CGSize)_imageSize;
++ (void)_imageSDKSize:(struct CGSize *)arg1 deviceSize:(struct CGSize *)arg2 forSDKVersion:(long long)arg3;
 - (long long)compatibleFamily;
 
 @end

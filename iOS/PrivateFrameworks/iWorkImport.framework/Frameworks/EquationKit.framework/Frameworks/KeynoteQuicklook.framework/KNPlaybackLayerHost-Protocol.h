@@ -6,9 +6,10 @@
 
 #import <KeynoteQuicklook/NSObject-Protocol.h>
 
-@class CALayer;
+@class CALayer, KNAnimationScreenEnvironment;
 
 @protocol KNPlaybackLayerHost <NSObject>
+@property(readonly, nonatomic) KNAnimationScreenEnvironment *screenEnvironment;
 @property(readonly, nonatomic) CALayer *rootLayer;
 - (struct CGRect)convertRootLayerRectToContainer:(struct CGRect)arg1;
 @end

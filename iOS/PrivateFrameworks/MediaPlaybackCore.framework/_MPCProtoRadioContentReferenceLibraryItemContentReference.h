@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoRadioContentReferenceLibraryItemContentReference : PBCodable <NSCopying>
 {
     long long _cloudID;
@@ -46,24 +47,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) int year; // @synthesize year=_year;
-@property(nonatomic) int trackNumber; // @synthesize trackNumber=_trackNumber;
-@property(nonatomic) int albumTrackCount; // @synthesize albumTrackCount=_albumTrackCount;
-@property(nonatomic) long long cloudID; // @synthesize cloudID=_cloudID;
-@property(nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-@property(nonatomic) double duration; // @synthesize duration=_duration;
-@property(nonatomic) _Bool isCompilation; // @synthesize isCompilation=_isCompilation;
-@property(retain, nonatomic) NSString *genreName; // @synthesize genreName=_genreName;
-@property(nonatomic) double fileSize; // @synthesize fileSize=_fileSize;
-@property(nonatomic) int discNumber; // @synthesize discNumber=_discNumber;
-@property(nonatomic) int albumDiscCount; // @synthesize albumDiscCount=_albumDiscCount;
-@property(retain, nonatomic) NSString *copyrightText; // @synthesize copyrightText=_copyrightText;
-@property(retain, nonatomic) NSString *composerName; // @synthesize composerName=_composerName;
-@property(retain, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
-@property(retain, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
-@property(retain, nonatomic) NSString *albumArtistName; // @synthesize albumArtistName=_albumArtistName;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -71,25 +54,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasYear;
-@property(nonatomic) _Bool hasTrackNumber;
-@property(nonatomic) _Bool hasAlbumTrackCount;
-@property(nonatomic) _Bool hasCloudID;
-@property(nonatomic) _Bool hasStoreAdamID;
-@property(readonly, nonatomic) _Bool hasTitle;
-@property(nonatomic) _Bool hasDuration;
-@property(nonatomic) _Bool hasIsCompilation;
-@property(readonly, nonatomic) _Bool hasGenreName;
-@property(nonatomic) _Bool hasFileSize;
-@property(nonatomic) _Bool hasDiscNumber;
-@property(nonatomic) _Bool hasAlbumDiscCount;
-@property(readonly, nonatomic) _Bool hasCopyrightText;
-@property(nonatomic) _Bool hasContentType;
-@property(nonatomic) int contentType; // @synthesize contentType=_contentType;
-@property(readonly, nonatomic) _Bool hasComposerName;
-@property(readonly, nonatomic) _Bool hasArtistName;
-@property(readonly, nonatomic) _Bool hasAlbumName;
-@property(readonly, nonatomic) _Bool hasAlbumArtistName;
 
 @end
 

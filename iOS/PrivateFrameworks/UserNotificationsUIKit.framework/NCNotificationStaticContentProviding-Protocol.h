@@ -6,23 +6,28 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSTimeZone, UIImage;
+@class MTVisualStylingProvider, NSArray, NSAttributedString, NSDate, NSString, NSTimeZone, UIImage, UIImageConfiguration, UIView;
 @protocol NCNotificationStaticContentProvidingDelegate;
 
 @protocol NCNotificationStaticContentProviding <NSObject>
 @property(readonly, copy, nonatomic) NSArray *currentActions;
 @property(copy, nonatomic) NSArray *overriddenActions;
+@property(readonly, nonatomic, getter=isContentHidingDisabled) _Bool contentHidingDisabled;
+@property(readonly, nonatomic, getter=isHidingContent) _Bool hidingContent;
 @property(readonly, nonatomic) unsigned long long coalesceCount;
 @property(readonly, nonatomic) _Bool showsTextInputOnAppearance;
 @property(readonly, nonatomic, getter=isNumberOfLinesInfinite) _Bool numberOfLinesInfinite;
-@property(readonly, nonatomic) NSArray *interfaceActions;
+@property(readonly, copy, nonatomic) NSArray *menuActions;
 @property(readonly, copy, nonatomic) CDUnknownBlockType nilAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType defaultAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType closeAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType clearAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType cancelAction;
+@property(readonly, nonatomic) UIView *communicationAvatar;
 @property(readonly, nonatomic) UIImage *thumbnail;
-@property(readonly, copy, nonatomic) NSString *summaryText;
+@property(readonly, copy, nonatomic) NSString *footerText;
+@property(readonly, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
+@property(readonly, copy, nonatomic) NSString *importantText;
 @property(readonly, copy, nonatomic) NSString *secondaryText;
 @property(readonly, copy, nonatomic) NSString *primarySubtitleText;
 @property(readonly, copy, nonatomic) NSString *primaryText;
@@ -32,5 +37,11 @@
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSArray *icons;
 @property(nonatomic) __weak id <NCNotificationStaticContentProvidingDelegate> delegate;
+- (id)copyWithContentHidingDisabled:(_Bool)arg1;
+- (NSAttributedString *)importantAttributedTextWithImageConfiguration:(UIImageConfiguration *)arg1;
+
+@optional
+@property(readonly, nonatomic) NSArray *interfaceActions;
+@property(readonly, copy, nonatomic) NSString *summaryText;
 @end
 

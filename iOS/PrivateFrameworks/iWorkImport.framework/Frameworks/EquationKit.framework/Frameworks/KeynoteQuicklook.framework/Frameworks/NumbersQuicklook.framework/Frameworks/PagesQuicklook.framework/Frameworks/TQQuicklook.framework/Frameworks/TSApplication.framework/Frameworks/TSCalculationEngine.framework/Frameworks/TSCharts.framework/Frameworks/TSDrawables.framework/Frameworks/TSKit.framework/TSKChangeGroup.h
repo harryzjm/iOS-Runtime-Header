@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *changesArray; // @synthesize changesArray=_changesArray;
-- (void)registerChange:(int)arg1 details:(id)arg2 forChangeSource:(id)arg3;
+- (void)registerChange:(unsigned int)arg1 details:(id)arg2 forChangeSource:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithChangesArray:(id)arg1;

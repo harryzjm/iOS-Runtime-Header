@@ -14,15 +14,16 @@
     _Bool _isReceivingRelatveData;
     NSDictionary *_tempestOptions;
     NSObject<OS_dispatch_queue> *_queue;
-    CDUnknownBlockType _relativeDataCallback;
+    CDUnknownBlockType _poseCallbackInternal;
+    CDUnknownBlockType _statusCallback;
     RMConnectionClient *_connectionClient;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *tempestOptions; // @synthesize tempestOptions=_tempestOptions;
 - (void)stopReceivingAudioListenerPoseUpdates;
-- (void)startReceivingAudioListenerPoseUpdates:(CDUnknownBlockType)arg1;
-- (void)_startReceivingAudioListenerPoseUpdatesInternal:(CDUnknownBlockType)arg1;
+- (void)startReceivingAudioListenerPoseUpdatesWithForceSessionRestart:(_Bool)arg1 poseCallback:(CDUnknownBlockType)arg2 statusCallback:(CDUnknownBlockType)arg3;
+- (void)startReceivingAudioListenerPoseUpdatesWithForceSessionRestart:(_Bool)arg1 poseCallbackInternal:(CDUnknownBlockType)arg2 statusCallback:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (id)initWithQueue:(id)arg1;
 

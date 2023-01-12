@@ -20,6 +20,9 @@
     CDUnknownBlockType _userInfoCreationBlock;
 }
 
++ (id)bucketSizeForBloodGlucoseWithUnit:(id)arg1;
++ (id)bucketSizeForDisplayType:(id)arg1 preferredUnit:(id)arg2;
++ (id)bucketSizeForQuantityType:(id)arg1 preferredUnit:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
 @property(readonly, nonatomic) NSDate *specificEndDate; // @synthesize specificEndDate=_specificEndDate;
@@ -31,11 +34,13 @@
 @property(readonly, nonatomic) double bucketSize; // @synthesize bucketSize=_bucketSize;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
 @property(readonly, nonatomic) HKQuantityType *quantityType; // @synthesize quantityType=_quantityType;
+- (id)chartPointsFromQueryData:(id)arg1 dataIsFromRemoteSource:(_Bool)arg2;
+- (CDUnknownBlockType)queryDataForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 healthStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)supportsChartQueryDataGeneration;
 - (id)_dataBlockFromHistograms:(id)arg1;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;
 - (id)_quickDate:(id)arg1;
-- (id)initWithQuantityType:(id)arg1 unitController:(id)arg2 distributionBucketSize:(id)arg3 distributionAnchor:(id)arg4 healthStore:(id)arg5 contextStyle:(long long)arg6 predicate:(id)arg7 options:(unsigned long long)arg8 baseDisplayType:(id)arg9 specificStartDate:(id)arg10 specificEndDate:(id)arg11 userInfoCreationBlock:(CDUnknownBlockType)arg12;
 - (id)initWithQuantityType:(id)arg1 unitController:(id)arg2 healthStore:(id)arg3 contextStyle:(long long)arg4 predicate:(id)arg5 options:(unsigned long long)arg6 baseDisplayType:(id)arg7 specificStartDate:(id)arg8 specificEndDate:(id)arg9 userInfoCreationBlock:(CDUnknownBlockType)arg10;
 
 @end

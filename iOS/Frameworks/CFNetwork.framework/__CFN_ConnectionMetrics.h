@@ -17,7 +17,6 @@
     _Bool _needsCachedTCPInfoAtEnd;
     _Bool _needsCachedSubflowCounts;
     _Bool _TLSConfigured;
-    _Bool _proxyConfigured;
     _Bool _cellular;
     _Bool _expensive;
     _Bool _constrained;
@@ -25,8 +24,11 @@
     _Bool _usedTFO;
     _Bool _usedByTransaction;
     _Bool _coalesced;
+    _Bool _discretionary;
+    _Bool _dataBudgetingEnabled;
     unsigned short _negotiatedTLSProtocolVersion;
     unsigned short _negotiatedTLSCipherSuite;
+    int _privacyStance;
     NSObject<OS_nw_connection> *_connection;
     __CFN_SessionMetrics *_sessionMetrics;
     NSDictionary *_cachedTCPInfoAtEnd;
@@ -53,7 +55,9 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(copy, nonatomic) NSString *_daemon_interfaceName;
+@property(readonly, nonatomic, getter=_daemon_isDataBudgetingEnabled) _Bool _daemon_dataBudgetingEnabled;
+@property(readonly, nonatomic, getter=_daemon_isDiscretionary) _Bool _daemon_discretionary;
+@property(readonly, copy, nonatomic) NSString *_daemon_interfaceName;
 
 @end
 

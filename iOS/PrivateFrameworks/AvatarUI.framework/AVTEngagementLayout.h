@@ -10,6 +10,7 @@
 
 @interface AVTEngagementLayout : NSObject <AVTCollectionViewLayout>
 {
+    _Bool _useEngagementSpacing;
     CDUnknownBlockType _interItemSpacingProvider;
     struct CGSize _defaultCellSize;
     struct CGSize _engagedCellSize;
@@ -20,6 +21,7 @@
 + (double)minimumInterItemSpacingForVisibileBoundsSize:(struct CGSize)arg1 defaultCellSize:(struct CGSize)arg2 engagedCellSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType interItemSpacingProvider; // @synthesize interItemSpacingProvider=_interItemSpacingProvider;
+@property(nonatomic) _Bool useEngagementSpacing; // @synthesize useEngagementSpacing=_useEngagementSpacing;
 @property(nonatomic) struct UIEdgeInsets engagementBoundsInsets; // @synthesize engagementBoundsInsets=_engagementBoundsInsets;
 @property(readonly, nonatomic) struct CGSize engagedCellSize; // @synthesize engagedCellSize=_engagedCellSize;
 @property(readonly, nonatomic) struct CGSize defaultCellSize; // @synthesize defaultCellSize=_defaultCellSize;
@@ -44,6 +46,7 @@
 - (double)xAxisScale;
 - (struct CGSize)engagementSizeForVisibleBoundsSize:(struct CGSize)arg1;
 - (struct CGRect)engagementBoundsForContainerBounds:(struct CGRect)arg1;
+- (id)initWithDefaultCellSize:(struct CGSize)arg1 engagedCellSize:(struct CGSize)arg2 useEngagementSpacing:(_Bool)arg3 interItemSpacingProvider:(CDUnknownBlockType)arg4;
 - (id)initWithDefaultCellSize:(struct CGSize)arg1 engagedCellSize:(struct CGSize)arg2 interItemSpacingProvider:(CDUnknownBlockType)arg3;
 - (id)initWithDefaultCellSize:(struct CGSize)arg1 engagedCellSize:(struct CGSize)arg2 baseInteritemSpacing:(double)arg3;
 

@@ -12,12 +12,16 @@
     NSMutableRLEArray *mutableAttributes;
     struct {
         unsigned int attributeFixingDisabled:8;
-        unsigned int :24;
+        unsigned int mayNeedIntentResolution:8;
+        unsigned int :16;
     } fields;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)_mutableStringClass;
+- (void)_markIntentsResolved;
+- (void)_markRequiringIntentResolution;
+- (_Bool)_mayRequireIntentResolution;
 - (id)initWithCoder:(id)arg1;
 - (void)edited:(unsigned long long)arg1 range:(struct _NSRange)arg2 changeInLength:(long long)arg3;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;

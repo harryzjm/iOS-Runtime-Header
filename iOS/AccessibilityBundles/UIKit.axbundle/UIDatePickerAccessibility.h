@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)canBecomeFocused;
 - (long long)accessibilityContainerType;
+- (_Bool)accessibilityPerformEscape;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityIsScannerGroup;
 - (_Bool)isAccessibilityElement;

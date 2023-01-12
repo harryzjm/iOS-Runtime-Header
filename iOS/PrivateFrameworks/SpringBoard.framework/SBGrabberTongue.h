@@ -8,13 +8,14 @@
 
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class BSMonotonicReferenceTime, NSString, SBIndirectPanGestureRecognizer, UIImageView, UIPanGestureRecognizer, UIView, _UIBackdropView;
+@class BSMonotonicReferenceTime, NSString, SBIndirectPanGestureRecognizer, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer, UIView, _UIBackdropView;
 @protocol BSInvalidatable, SBGrabberTongueDelegate;
 
 @interface SBGrabberTongue : NSObject <SBSystemGestureRecognizerDelegate>
 {
     _Bool _invalidated;
     UIPanGestureRecognizer *_edgePullGestureRecognizer;
+    UITapGestureRecognizer *_tapGestureRecognizer;
     SBIndirectPanGestureRecognizer *_indirectEdgePullGestureRecognizer;
     UIView *_tongueContainer;
     _UIBackdropView *_tongueBackdropView;
@@ -35,6 +36,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <SBGrabberTongueDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_handleTapped:(id)arg1;
 - (void)_handlePullGesture:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -46,12 +48,13 @@
 - (struct CGRect)_chevronFrameForTongueBounds:(struct CGRect)arg1;
 - (struct UIEdgeInsets)_grabberTongueScreenInsets;
 - (struct CGRect)_frameForTongueWhenVisible:(_Bool)arg1;
-- (void)_presentTongueAnimated:(_Bool)arg1;
+- (void)_presentTongueAnimated:(_Bool)arg1 autoDismiss:(_Bool)arg2;
 - (void)_dismissTongueWithStyle:(long long)arg1 animated:(_Bool)arg2;
 - (void)_cancelPendingTongueDismissRequests;
 - (void)_dismissTongue:(id)arg1;
 - (id)_newChevronView;
 - (id)_newBackdropViewWithColorStyle:(long long)arg1;
+- (id)_createTapGestureRecognizerWithAction:(SEL)arg1;
 - (id)_createEdgePullGestureRecognizerWithAction:(SEL)arg1;
 - (void)_createTongueAndGestureRecognizersIfNecessaryWithColorStyle:(long long)arg1;
 - (void)_didPresentInteractively:(id)arg1;
@@ -66,6 +69,7 @@
 - (double)_centerOnScreenEdge;
 - (double)_ambiguousActivationMarginIfHonored;
 - (double)_ambiguousActivationMargin;
+- (_Bool)_shouldSecondSwipeDismissTongueWithRecognizer:(id)arg1;
 - (_Bool)_shouldAllowSecondSwipeWithRecognizer:(id)arg1;
 - (_Bool)_shouldReceiveTouch:(id)arg1;
 - (_Bool)_shouldShowTongueOnFirstSwipeWithRecognizer:(id)arg1;
@@ -78,6 +82,7 @@
 - (id)indirectEdgePullGestureRecognizer;
 - (id)edgePullGestureRecognizer;
 - (_Bool)dismissWithStyle:(long long)arg1 animated:(_Bool)arg2;
+- (void)presentAnimated:(_Bool)arg1 autoDismiss:(_Bool)arg2;
 - (void)presentAnimated:(_Bool)arg1;
 - (void)uninstall;
 - (void)installInView:(id)arg1 withColorStyle:(long long)arg2;

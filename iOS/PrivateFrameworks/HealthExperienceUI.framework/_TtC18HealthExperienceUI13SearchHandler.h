@@ -14,7 +14,7 @@
     MISSING_TYPE *healthExperienceStore;
     MISSING_TYPE *searchDataSource;
     MISSING_TYPE *spotlightSearch;
-    MISSING_TYPE *behaviours;
+    MISSING_TYPE *healthStore;
 }
 
 @end

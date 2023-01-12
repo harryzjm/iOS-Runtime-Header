@@ -68,9 +68,10 @@
 - (void)_setPlaybackState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queueSetPlaybackStateCompletion:(CDUnknownBlockType)arg1;
 - (void)_invokePendingSetPlaybackStateBlocksOfError:(id)arg1;
-- (void)updateWithResponses:(id)arg1 message:(id)arg2;
+- (void)updateWithResponses:(id)arg1 requestMessageInformation:(id)arg2;
 - (void)_postNotificationOfMediaStateUpdateWithPayload:(id)arg1;
-- (void)_postNotificationOfMediaStateUpdateWithError:(id)arg1 inResponseToMessage:(id)arg2;
+- (void)_postNotificationOfMediaStateUpdateWithRequestMessageInformation:(id)arg1;
+- (void)_postNotificationOfMediaStateUpdate;
 - (void)_registerForSessionUpdates:(_Bool)arg1;
 - (void)evaluateIfMediaPlaybackStateChanged:(id)arg1;
 - (void)handleMediaPlaybackStateNotification:(id)arg1;

@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)graphView:(id)arg1 graphSeriesForZoom:(long long)arg2 stackOffset:(long long)arg3;
 - (long long)stackCountForGraphView:(id)arg1;
 - (void)viewDidLoad;
-- (void)_alignYAxes;
 - (id)testSeries:(long long)arg1 color:(id)arg2 hourOffset:(double)arg3 yAxis:(id)arg4 annotateLastValue:(_Bool)arg5;
 - (void)_buildSeries;
 - (id)initWithProfile:(id)arg1;

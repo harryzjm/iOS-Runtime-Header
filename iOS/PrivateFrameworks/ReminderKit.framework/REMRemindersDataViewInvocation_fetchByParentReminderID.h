@@ -10,18 +10,20 @@
 
 @interface REMRemindersDataViewInvocation_fetchByParentReminderID <NSSecureCoding>
 {
+    _Bool _includeUnsupported;
     REMObjectID *_parentReminderID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool includeUnsupported; // @synthesize includeUnsupported=_includeUnsupported;
 @property(readonly, nonatomic) REMObjectID *parentReminderID; // @synthesize parentReminderID=_parentReminderID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithParentReminderID:(id)arg1;
+- (id)initWithParentReminderID:(id)arg1 includeUnsupported:(_Bool)arg2;
 
 @end
 

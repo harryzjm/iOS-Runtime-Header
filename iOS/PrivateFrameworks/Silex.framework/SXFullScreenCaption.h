@@ -19,9 +19,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <SXFullscreenCaptionDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(readonly, nonatomic) SXFormattedText *caption; // @synthesize caption=_caption;
-@property(readonly, nonatomic) NSString *text; // @synthesize text=_text;
 - (id)contentSizeCategoryForTextSource:(id)arg1;
 - (id)textStyleForIdentifier:(id)arg1;
 - (id)defaultComponentTextStylesForTextSource:(id)arg1;
@@ -31,8 +28,6 @@
 - (id)additionsForTextSource:(id)arg1;
 - (id)textRulesForTextSource:(id)arg1;
 - (id)textResizerForTextSource:(id)arg1;
-- (id)initWithCaption:(id)arg1 dataSource:(id)arg2;
-- (id)initWithText:(id)arg1 dataSource:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

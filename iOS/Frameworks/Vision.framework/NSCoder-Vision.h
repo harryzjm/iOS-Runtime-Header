@@ -9,6 +9,10 @@
 @class MISSING_TYPE;
 
 @interface NSCoder (Vision)
+- (float)vn_decodeValidatedScoreForKey:(id)arg1;
+- (void)vn_encodeValidatedScore:(float)arg1 forKey:(id)arg2;
+- (float)vn_decodeValidatedConfidenceForKey:(id)arg1;
+- (void)vn_encodeValidatedConfidence:(float)arg1 forKey:(id)arg2;
 - (struct __CVBuffer *)vn_decodePixelBufferForKey:(id)arg1;
 - (void)vn_encodePixelBuffer:(struct __CVBuffer *)arg1 forKey:(id)arg2;
 - (struct CGRect)vn_decodeRectForKey:(id)arg1;
@@ -29,6 +33,10 @@
 - (void)vn_encodeCGAffineTransform:(struct CGAffineTransform)arg1 forKey:(id)arg2;
 - (unsigned int)vn_decodeCodingVersionForKey:(id)arg1;
 - (void)vn_encodeCodingVersion:(unsigned int)arg1 forKey:(id)arg2;
+- (id)vn_decodeEntityUniqueIdentifierArrayForKey:(id)arg1;
+- (id)vn_decodeEntityUniqueIdentifierForKey:(id)arg1;
+- (void)vn_encodeEntityUniqueIdentifierArray:(id)arg1 forKey:(id)arg2;
+- (void)vn_encodeEntityUniqueIdentifier:(id)arg1 forKey:(id)arg2;
 - (id)vn_decodePersonUniqueIdentifierForKey:(id)arg1;
 - (void)vn_encodePersonUniqueIdentifier:(id)arg1 forKey:(id)arg2;
 @end

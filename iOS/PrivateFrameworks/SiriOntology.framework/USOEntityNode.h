@@ -6,12 +6,13 @@
 
 @interface USOEntityNode
 {
-    struct UsoEntityNode *_usoEntityNode;
+    void *_usoEntityNode;
 }
 
 - (void)addUtteranceAlignmentWithAsrIndex:(unsigned int)arg1 StartIndex:(unsigned int)arg2 endIndex:(unsigned int)arg3 startUnicodeScalarIndex:(unsigned int)arg4 endUnicodeScalarIndex:(unsigned int)arg5;
+- (void)addIdentifierWithValue:(id)arg1 appBundleId:(id)arg2 namespaceString:(id)arg3 probability:(optional_4f9e39db)arg4 nluComponent:(optional_3f5a7c99)arg5;
 - (void)addIdentifierWithValue:(id)arg1 appBundleId:(id)arg2 namespaceString:(id)arg3;
-- (id)initWithCppEntityNode:(struct UsoEntityNode *)arg1;
+- (id)initWithCppEntityNode:(void *)arg1;
 
 @end
 

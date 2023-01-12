@@ -8,6 +8,7 @@
 
 @interface TRProxyAuthOperation
 {
+    _Bool _shouldUseAIDA;
     ACAccount *_account;
     NSSet *_targetedServices;
     UIViewController *_presentingViewController;
@@ -16,6 +17,7 @@
 + (id)_logStringForAppleIDServiceType:(long long)arg1;
 + (long long)_appleIDServiceTypeForTRAccountServices:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseAIDA; // @synthesize shouldUseAIDA=_shouldUseAIDA;
 @property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(retain, nonatomic) NSSet *targetedServices; // @synthesize targetedServices=_targetedServices;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;

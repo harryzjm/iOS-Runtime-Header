@@ -4,21 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <PhotosUICore/PXSuggestLessPeopleHelperDelegate-Protocol.h>
 
-@interface PXPhotoKitAssetCollectionBlacklistMemoryFeatureActionPerformer
+@class NSString, PXSuggestLessPeopleHelper;
+
+@interface PXPhotoKitAssetCollectionBlacklistMemoryFeatureActionPerformer <PXSuggestLessPeopleHelperDelegate>
 {
+    _Bool _isBlockingMemoryFeature;
     NSString *_userResponse;
+    PXSuggestLessPeopleHelper *_suggestLessPeopleHelper;
 }
 
++ (id)_verifiedPersonsIncludingMergeCandidatesInMemory:(id)arg1 personFetchOptions:(id)arg2;
++ (id)_personContextDetailFetchOptionsForLibrary:(id)arg1;
 + (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXSuggestLessPeopleHelper *suggestLessPeopleHelper; // @synthesize suggestLessPeopleHelper=_suggestLessPeopleHelper;
+@property(nonatomic) _Bool isBlockingMemoryFeature; // @synthesize isBlockingMemoryFeature=_isBlockingMemoryFeature;
 @property(retain, nonatomic) NSString *userResponse; // @synthesize userResponse=_userResponse;
+- (id)_cpAnalyticsEventForMemoryFeatureType:(unsigned long long)arg1;
 - (void)applyBlacklistFeatureWithActionType:(id)arg1;
 - (void)performBackgroundTask;
 - (id)_memoryFeatureFromMemory:(id)arg1 forActionType:(id)arg2;
 - (unsigned long long)_memoryFeatureTypeFromActionType:(id)arg1;
+- (void)suggestLessPeopleInMemory:(id)arg1;
+- (_Bool)suggestLessPeopleHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)suggestLessPeopleHelper:(id)arg1 presentViewController:(id)arg2;
 - (void)performUserInteractionTask;
 - (void)confirmBlacklistingUserAction:(id)arg1 viewSpec:(id)arg2;
 

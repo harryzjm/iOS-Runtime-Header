@@ -12,7 +12,7 @@
 #import <HomeUI/HUQuickControlItemHosting-Protocol.h>
 
 @class HMHome, HUQuickControlSimpleItemUpdater, NSSet, NSString;
-@protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting, HUQuickControlItemUpdating, HUQuickControlViewControllerDelegate;
+@protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting, HUQuickControlContentRequiringHelper, HUQuickControlItemUpdating, HUQuickControlViewControllerDelegate;
 
 @interface HUQuickControlViewController : UIViewController <HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlItemHosting, HUPreloadableViewController>
 {
@@ -29,6 +29,7 @@
     unsigned long long _controlSize;
     unsigned long long _controlOrientation;
     unsigned long long _preferredControl;
+    id <HUQuickControlContentRequiringHelper> _childVCThatRequiresHelper;
     HUQuickControlSimpleItemUpdater *_internalItemUpdater;
 }
 
@@ -36,6 +37,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool areControlItemsRequestingToBeHidden; // @synthesize areControlItemsRequestingToBeHidden=_areControlItemsRequestingToBeHidden;
 @property(readonly, nonatomic) HUQuickControlSimpleItemUpdater *internalItemUpdater; // @synthesize internalItemUpdater=_internalItemUpdater;
+@property(retain, nonatomic) id <HUQuickControlContentRequiringHelper> childVCThatRequiresHelper; // @synthesize childVCThatRequiresHelper=_childVCThatRequiresHelper;
 @property(nonatomic) unsigned long long preferredControl; // @synthesize preferredControl=_preferredControl;
 @property(nonatomic) unsigned long long controlOrientation; // @synthesize controlOrientation=_controlOrientation;
 @property(nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
@@ -64,7 +66,7 @@
 @property(readonly, nonatomic) unsigned long long preferredPresentationStyle;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
+- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3 controlOrientation:(unsigned long long)arg4 preferredControl:(unsigned long long)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

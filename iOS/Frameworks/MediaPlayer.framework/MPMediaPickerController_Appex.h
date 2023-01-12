@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     _UIResilientRemoteViewContainerViewController *_remoteViewContainerViewController;
     MPMusicMediaPickerRemoteViewController *_musicRemoteViewController;
     MPMediaPickerController *_mediaPickerController;
-    UIViewController *_remoteViewController;
 }
 
 - (void).cxx_destruct;
@@ -24,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)serviceController;
 - (void)dealloc;
 - (void)synchronizeSettings;
-@property(readonly, nonatomic) UIViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
+@property(readonly, nonatomic) UIViewController *remoteViewController;
 - (void)requestRemoteViewController;
 
 // Remaining properties

@@ -15,6 +15,7 @@
 - (void)scene:(UIScene *)arg1 didFailToContinueUserActivityWithType:(NSString *)arg2 error:(NSError *)arg3;
 - (void)scene:(UIScene *)arg1 continueUserActivity:(NSUserActivity *)arg2;
 - (void)scene:(UIScene *)arg1 willContinueUserActivityWithType:(NSString *)arg2;
+- (void)scene:(UIScene *)arg1 restoreInteractionStateWithUserActivity:(NSUserActivity *)arg2;
 - (NSUserActivity *)stateRestorationActivityForScene:(UIScene *)arg1;
 - (void)scene:(UIScene *)arg1 openURLContexts:(NSSet *)arg2;
 - (void)sceneDidEnterBackground:(UIScene *)arg1;

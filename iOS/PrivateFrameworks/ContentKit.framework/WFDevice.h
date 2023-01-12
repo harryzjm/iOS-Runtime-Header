@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ContentKit/WFNaming-Protocol.h>
+
 @class NSArray, NSString;
 
-@interface WFDevice : NSObject
+@interface WFDevice : NSObject <WFNaming>
 {
     NSArray *_capabilities;
 }
@@ -18,6 +20,7 @@
 - (id)description;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 @property(readonly, nonatomic) long long chipID;
+@property(readonly, nonatomic) NSString *hostname;
 @property(readonly, nonatomic) NSString *marketingName;
 @property(readonly, nonatomic) NSString *localizedWiFiDisplayName;
 - (_Bool)hasCapability:(id)arg1;
@@ -32,6 +35,7 @@
 @property(readonly, nonatomic) double screenCornerRadius;
 @property(readonly, nonatomic) double screenScale;
 @property(readonly, nonatomic) struct CGRect screenBounds;
+@property(readonly, copy, nonatomic) NSString *wfName;
 
 @end
 

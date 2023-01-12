@@ -26,6 +26,7 @@
 + (id)_sharedCollectionViewController;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isHostedInTestApp) _Bool hostedInTestApp; // @synthesize hostedInTestApp=_hostedInTestApp;
+@property(readonly, nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) CCUIStatusLabelViewController *statusLabelViewController; // @synthesize statusLabelViewController=_statusLabelViewController;
 @property(readonly, nonatomic) CCUIModuleInstanceManager *moduleInstanceManager; // @synthesize moduleInstanceManager=_moduleInstanceManager;
 @property(nonatomic) __weak id <CCUIModularControlCenterViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -35,7 +36,11 @@
 - (id)_safeStatusLabelViewContainerView;
 - (id)_statusLabelViewContainerView;
 - (long long)_interfaceOrientation;
+- (void)moduleInstancesLayoutChangedForModuleInstanceManager:(id)arg1;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
+- (struct CCUIModuleLayoutSize)moduleLayoutSizeForContentModuleContext:(id)arg1 forOrientation:(long long)arg2;
+- (id)contentModuleContext:(id)arg1 requestsSensorActivityDataForActiveSensorType:(unsigned long long)arg2;
+- (void)requestModuleLayoutSizeUpdateForContentModuleContext:(id)arg1;
 - (void)dismissControlCenterForContentModuleContext:(id)arg1;
 - (void)dismissExpandedViewForContentModuleContext:(id)arg1;
 - (void)requestExpandModuleForContentModuleContext:(id)arg1;

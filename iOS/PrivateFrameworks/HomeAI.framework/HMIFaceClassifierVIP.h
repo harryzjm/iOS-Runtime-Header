@@ -14,7 +14,8 @@
 @interface HMIFaceClassifierVIP : HMFObject <HMIFaceClassifier, HMFLogging>
 {
     HMIFaceprinter *_faceprinter;
-    HMIFaceQualityFilterSVM *_faceQualityFilter;
+    HMIFaceQualityFilterSVM *_faceRecognizabilityFilter;
+    HMIFaceQualityFilterSVM *_faceAestheticQualityFilter;
     double _classificationThresholdKnown;
     double _classificationThresholdUnknown;
 }
@@ -23,10 +24,11 @@
 - (void).cxx_destruct;
 @property(readonly) double classificationThresholdUnknown; // @synthesize classificationThresholdUnknown=_classificationThresholdUnknown;
 @property(readonly) double classificationThresholdKnown; // @synthesize classificationThresholdKnown=_classificationThresholdKnown;
-@property(readonly) HMIFaceQualityFilterSVM *faceQualityFilter; // @synthesize faceQualityFilter=_faceQualityFilter;
+@property(readonly) HMIFaceQualityFilterSVM *faceAestheticQualityFilter; // @synthesize faceAestheticQualityFilter=_faceAestheticQualityFilter;
+@property(readonly) HMIFaceQualityFilterSVM *faceRecognizabilityFilter; // @synthesize faceRecognizabilityFilter=_faceRecognizabilityFilter;
 @property(readonly) HMIFaceprinter *faceprinter; // @synthesize faceprinter=_faceprinter;
 - (id)classifyFaceEvent:(id)arg1 pixelBuffer:(struct __CVBuffer *)arg2 fastMode:(_Bool)arg3 homeUUID:(id)arg4 error:(id *)arg5;
-- (id)qualityPredictionFromSVMUsingDetectorConfidence:(double)arg1 laplacian:(double)arg2 yaw:(double)arg3 boxSize:(double)arg4 error:(id *)arg5;
+- (id)qualityPredictionFromSVMUsingFaceQualityFilterSVM:(id)arg1 detectorConfidence:(double)arg2 laplacian:(double)arg3 yaw:(double)arg4 boxSize:(double)arg5 error:(id *)arg6;
 - (id)initWithError:(id *)arg1;
 
 // Remaining properties

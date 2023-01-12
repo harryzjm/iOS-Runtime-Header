@@ -10,6 +10,7 @@
 
 @interface C2MetricRequestOptions : NSObject
 {
+    unsigned char _allowsCellularAccess;
     unsigned char __allowsExpensiveAccess;
     unsigned char __allowsPowerNapScheduling;
     NSString *__sourceApplicationBundleIdentifier;
@@ -25,6 +26,7 @@
 @property(retain, nonatomic) NSString *_sourceApplicationBundleIdentifier; // @synthesize _sourceApplicationBundleIdentifier=__sourceApplicationBundleIdentifier;
 @property(nonatomic) unsigned char _allowsPowerNapScheduling; // @synthesize _allowsPowerNapScheduling=__allowsPowerNapScheduling;
 @property(nonatomic) unsigned char _allowsExpensiveAccess; // @synthesize _allowsExpensiveAccess=__allowsExpensiveAccess;
+@property(nonatomic) unsigned char allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 - (id)metricRequestTransportOptions;
 - (id)initWithRequestOptions:(id)arg1;
 - (id)init;

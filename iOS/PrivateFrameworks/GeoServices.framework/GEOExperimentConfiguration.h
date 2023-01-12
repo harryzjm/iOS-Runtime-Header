@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOExperimentServerProxyDelegate-Protocol.h>
 
-@class GEOABAssignmentResponse, NSMutableArray, NSString;
+@class GEOABAssignmentResponse, GEOObserverHashTable, NSString;
 @protocol GEOExperimentServerProxy;
 
 @interface GEOExperimentConfiguration : NSObject <GEOExperimentServerProxyDelegate>
@@ -16,8 +16,7 @@
     id <GEOExperimentServerProxy> _serverProxy;
     GEOABAssignmentResponse *_experimentsInfo;
     struct os_unfair_lock_s _experimentsInfoLock;
-    NSMutableArray *_experimentObservers;
-    struct os_unfair_lock_s _experimentObserversLock;
+    GEOObserverHashTable *_experimentObservers;
 }
 
 + (id)sharedConfiguration;

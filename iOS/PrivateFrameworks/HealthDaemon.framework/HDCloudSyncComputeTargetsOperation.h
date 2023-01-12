@@ -4,16 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HDCloudSyncComputeTargetsOperation
+#import <HealthDaemon/HDSynchronousTaskGroupDelegate-Protocol.h>
+
+@class HDSynchronousTaskGroup, NSString;
+
+@interface HDCloudSyncComputeTargetsOperation <HDSynchronousTaskGroupDelegate>
 {
+    HDSynchronousTaskGroup *_taskGroup;
 }
 
-- (id)_storeForStoreRecord:(id)arg1 zone:(id)arg2 error:(id *)arg3;
-- (id)_pullTargetsWithError:(id *)arg1;
-- (id)_pushTargetsWithError:(id *)arg1;
-- (long long)_hasStateMismatchForStoreForStoreRecord:(id)arg1 zone:(id)arg2 error:(id *)arg3;
-- (_Bool)_isValidPushStoreRecord:(id)arg1 zone:(id)arg2 ownerIdentifier:(id)arg3;
+- (void).cxx_destruct;
+- (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
 - (void)main;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

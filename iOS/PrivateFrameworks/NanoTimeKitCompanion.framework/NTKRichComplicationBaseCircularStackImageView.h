@@ -15,6 +15,7 @@
 @property(retain, nonatomic) NTKRichComplicationImageView *line1ImageView; // @synthesize line1ImageView=_line1ImageView;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (id)line2TextProviderFromTemplate:(id)arg1;
 - (id)line1View;

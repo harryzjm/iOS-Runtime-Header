@@ -12,14 +12,19 @@
 {
     _Bool __ck_editing;
     UIImageView *_checkmarkView;
+    UIImageView *_imageView;
+    UIImageView *_selectionOverlay;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *selectionOverlay; // @synthesize selectionOverlay=_selectionOverlay;
+@property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property(nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) _Bool _ck_editing; // @synthesize _ck_editing=__ck_editing;
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (void)setSelected:(_Bool)arg1;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 @end
 

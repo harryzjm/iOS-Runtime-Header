@@ -12,13 +12,13 @@
         unsigned int spriteIndex;
         double paddedDistance;
         double unpaddedDistance;
-        CDStruct_dfa1459f geometry;
+        CDStruct_d1b913ca geometry;
     } _hitInfo;
 }
 
 - (long long)compare:(id)arg1;
-@property(readonly, nonatomic) CDStruct_87acf924 *hitInfo;
-- (id)initWithHitInfo:(CDStruct_87acf924)arg1;
+@property(readonly, nonatomic) CDStruct_3d721e10 *hitInfo;
+- (id)initWithHitInfo:(CDStruct_3d721e10)arg1;
 - (id)init;
 
 @end

@@ -14,7 +14,7 @@
 {
     unsigned long long _version;
     unsigned long long _minimumSupportedVersion;
-    CLSSignalNode *_foodNode;
+    CLSSignalNode *_foodDrinkNode;
     CLSSignalNode *_landscapeCityscapeNode;
 }
 

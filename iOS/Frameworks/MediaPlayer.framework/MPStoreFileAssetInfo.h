@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *playbackAuthorizationToken;
 @property(readonly, nonatomic) long long protectionType;
 @property(readonly, copy, nonatomic) NSData *md5;
 @property(readonly, nonatomic) unsigned long long fileSize;

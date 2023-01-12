@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class DBManager;
+#import <CallHistory/CHDeviceObserverDelegate-Protocol.h>
 
-@interface CallDBManager : NSObject
+@class CHDeviceObserver, DBManager, NSString;
+
+@interface CallDBManager : NSObject <CHDeviceObserverDelegate>
 {
     _Bool _deviceUnlocked;
     unsigned char _dataStoreType;
     unsigned char _notifyDataStoreChangeReason;
     DBManager *_dbManager;
-    id _deviceUnlockNotificationRef;
+    CHDeviceObserver *_deviceObserver;
 }
 
 + (id)getDBLocationIsSandboxed:(_Bool)arg1 isTemporary:(_Bool)arg2 error:(unsigned char *)arg3;
 + (id)dataStoreName;
 + (id)modelURL;
 - (void).cxx_destruct;
-@property(retain) id deviceUnlockNotificationRef; // @synthesize deviceUnlockNotificationRef=_deviceUnlockNotificationRef;
+@property(retain, nonatomic) CHDeviceObserver *deviceObserver; // @synthesize deviceObserver=_deviceObserver;
 @property unsigned char notifyDataStoreChangeReason; // @synthesize notifyDataStoreChangeReason=_notifyDataStoreChangeReason;
 @property unsigned char dataStoreType; // @synthesize dataStoreType=_dataStoreType;
 @property _Bool deviceUnlocked; // @synthesize deviceUnlocked=_deviceUnlocked;
 @property(retain, nonatomic) DBManager *dbManager; // @synthesize dbManager=_dbManager;
-- (void)dealloc;
+- (void)didChangeBootLockEnabledForDeviceObserver:(id)arg1;
 - (void)handleTemporaryCreated;
 - (void)handlePermanentCreated;
 - (id)createManagedObjectContext;
@@ -38,10 +40,14 @@
 - (_Bool)shouldCreateTemporary;
 - (void)createPermanent;
 - (_Bool)shouldCreatePermanent;
-- (void)registerForNotifications;
 - (void)createDataStore;
-- (void)reFetchState;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -26,6 +26,7 @@
     UISwipeActionController *_controller;
     unsigned long long _style;
     unsigned long long _defaultStyle;
+    double _roundedStyleCornerRadius;
     UISwipeActionPullView *_leadingPullView;
     UISwipeActionPullView *_trailingPullView;
     id <_UISwipeViewManipulator> _manipulator;
@@ -71,6 +72,7 @@
 - (double)_extraOffsetForOffset:(double)arg1 withDirection:(unsigned long long)arg2;
 - (void)_performSwipeAction:(id)arg1 inPullView:(id)arg2 swipeInfo:(CDStruct_9b6dff2a)arg3;
 - (void)_executeLifecycleForPerformedAction:(id)arg1 sourceView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)_style;
 - (_Bool)_didReloadData;
 - (void)_setDidReloadData;
 - (_Bool)_hasAmbiguousIndexPath;
@@ -85,6 +87,7 @@
 - (void)_updateLayoutUsingCurrentSwipeInfo:(_Bool)arg1;
 - (void)updateLayout;
 - (void)_resetItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 animated:(_Bool)arg2 deletion:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)resetForReconfiguration;
 - (void)resetAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_moveItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 alongsideAnimations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGRect)swipedViewRestingFrame;

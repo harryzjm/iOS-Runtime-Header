@@ -10,6 +10,7 @@
 
 @interface CAMVideoPersistenceResponse <CAMTransientAssetConvertible>
 {
+    long long _captureMode;
     NSString *_stillPersistenceUUID;
     CDStruct_1b6d18a9 _duration;
     CDStruct_1b6d18a9 _stillDisplayTime;
@@ -19,10 +20,12 @@
 @property(readonly, nonatomic) CDStruct_1b6d18a9 stillDisplayTime; // @synthesize stillDisplayTime=_stillDisplayTime;
 @property(readonly, copy, nonatomic) NSString *stillPersistenceUUID; // @synthesize stillPersistenceUUID=_stillPersistenceUUID;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
+@property(readonly, nonatomic) long long captureMode; // @synthesize captureMode=_captureMode;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property(readonly, nonatomic) NSURL *irisVideoPersistenceURL;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo;
 @property(readonly, nonatomic) NSString *irisStillImageUUID;
+@property(readonly, nonatomic, getter=isTransientAssetTemporaryPlaceholder) _Bool transientAssetTemporaryPlaceholder;
 @property(readonly, nonatomic) struct CGSize finalExpectedPixelSize;
 @property(readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
 @property(readonly, copy, nonatomic) NSString *burstIdentifier;
@@ -32,7 +35,7 @@
 @property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 creationDate:(id)arg4 scrubberImage:(id)arg5 finalExpectedPixelSize:(struct CGSize)arg6 duration:(CDStruct_1b6d18a9)arg7 stillPersistenceUUID:(id)arg8 stillDisplayTime:(CDStruct_1b6d18a9)arg9 coordinationInfo:(id)arg10;
+- (id)initWithUUID:(id)arg1 captureMode:(long long)arg2 captureSession:(unsigned short)arg3 url:(id)arg4 creationDate:(id)arg5 scrubberImage:(id)arg6 finalExpectedPixelSize:(struct CGSize)arg7 duration:(CDStruct_1b6d18a9)arg8 stillPersistenceUUID:(id)arg9 stillDisplayTime:(CDStruct_1b6d18a9)arg10 coordinationInfo:(id)arg11;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

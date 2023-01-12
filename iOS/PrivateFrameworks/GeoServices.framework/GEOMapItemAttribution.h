@@ -26,6 +26,7 @@
 - (id)providerLogoPathForScale:(double)arg1;
 @property(readonly, nonatomic) NSString *webBaseActionURL;
 @property(readonly, nonatomic) NSArray *attributionApps;
+@property(readonly, nonatomic) NSString *captionDisplayName;
 @property(readonly, nonatomic) NSString *providerID;
 @property(readonly, nonatomic) NSString *providerName;
 @property(readonly, nonatomic) _Bool shouldOpenInAppStore;

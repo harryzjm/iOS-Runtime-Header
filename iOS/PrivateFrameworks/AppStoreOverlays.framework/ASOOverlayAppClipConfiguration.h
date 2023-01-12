@@ -24,6 +24,8 @@
 - (id)additionalValueForKey:(id)arg1 serviceContext:(id)arg2;
 - (id)additionalValueForKey:(id)arg1;
 - (void)setAdditionalValue:(id)arg1 forKey:(id)arg2;
+@property(copy, nonatomic) NSString *productVariantID;
+@property(retain, nonatomic) NSString *latestReleaseID;
 @property(nonatomic) long long position;
 @property(retain, nonatomic) NSString *providerToken;
 @property(retain, nonatomic) NSString *campaignToken;

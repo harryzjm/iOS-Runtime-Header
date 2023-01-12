@@ -28,7 +28,7 @@
 @property(readonly, nonatomic) TIConvertedCandidate *lastConvertedCandidate;
 - (_Bool)shouldRevertConvertedCandidateOnDeletionFromMarkedText:(id)arg1;
 - (void)didRevertLastConvertedCandidate;
-- (void)addCandidate:(id)arg1 candidateRef:(id)arg2 replacedAmbiguousPinyinSyllable:(id)arg3 replacementUnambiguousPinyinSyllable:(id)arg4 convertedInput:(id)arg5;
+- (void)addCandidate:(id)arg1 candidateRef:(id)arg2 replacedAmbiguousPinyinSyllables:(id)arg3 replacementUnambiguousPinyinSyllables:(id)arg4 convertedInput:(id)arg5;
 - (_Bool)isValid;
 - (void)invalidate;
 @property(readonly, nonatomic) NSString *convertedCandidateText;

@@ -15,13 +15,16 @@ __attribute__((visibility("hidden")))
 @interface FPDFileCoordinationProvider : NSObject <NSFileProvider>
 {
     NSURL *_providedItemsURL;
+    _Bool _registered;
     id <FPDFileCoordinationProviderDelegate> _delegate;
     NSString *_extensionIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(getter=isRegistered) _Bool registered; // @synthesize registered=_registered;
 @property(copy) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property __weak id <FPDFileCoordinationProviderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_providedItemAtURL:(id)arg1 withPresenterWithID:(id)arg2 didMoveToURL:(id)arg3;
 - (void)_providedItemAtURL:(id)arg1 didLosePresenterWithID:(id)arg2;
 - (void)_providedItemAtURL:(id)arg1 didGainPresenterWithID:(id)arg2;

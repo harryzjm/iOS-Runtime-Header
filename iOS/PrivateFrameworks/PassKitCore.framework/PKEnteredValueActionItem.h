@@ -40,6 +40,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)_processLocalizableStrings:(CDUnknownBlockType)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)init;
 
 @end
 

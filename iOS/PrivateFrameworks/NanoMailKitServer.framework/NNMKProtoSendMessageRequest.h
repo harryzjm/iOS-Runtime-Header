@@ -12,6 +12,7 @@
 
 @interface NNMKProtoSendMessageRequest : PBRequest <NSCopying>
 {
+    NSString *_accountId;
     NSString *_body;
     NSMutableArray *_ccs;
     NSString *_composedMessageId;
@@ -29,6 +30,7 @@
 + (Class)ccType;
 + (Class)toType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
 @property(nonatomic) _Bool includeAttachments; // @synthesize includeAttachments=_includeAttachments;
 @property(retain, nonatomic) NSString *referenceMessageId; // @synthesize referenceMessageId=_referenceMessageId;
 @property(nonatomic) unsigned int sendingType; // @synthesize sendingType=_sendingType;
@@ -46,6 +48,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasAccountId;
 @property(nonatomic) _Bool hasIncludeAttachments;
 @property(readonly, nonatomic) _Bool hasReferenceMessageId;
 @property(nonatomic) _Bool hasSendingType;

@@ -9,7 +9,7 @@
 #import <ChatKit/CKDetailsSearchResultsTitleHeaderCellDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
-@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKQLPreviewControllerDataSource, CKSearchIndexingFooterCell, NSArray, NSString, UIBarButtonItem;
+@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKQLPreviewControllerDataSource, CKSearchController, CKSearchIndexingFooterCell, NSArray, NSDate, NSString, UIBarButtonItem, UICollectionViewCell;
 @protocol CKDetailsSearchControllerDelegate;
 
 @interface CKDetailsSearchViewController <CKContainerSearchControllerDelegate, QLPreviewControllerDelegate, CKDetailsSearchResultsFooterCellDelegate, CKDetailsSearchResultsTitleHeaderCellDelegate>
@@ -17,6 +17,7 @@
     _Bool _searchComplete;
     id <CKDetailsSearchControllerDelegate> _detailsDelegate;
     CKConversation *_conversation;
+    CKSearchController *_associatedDetailsSubsectionSearchController;
     NSArray *_chatGUIDs;
     CKQLPreviewControllerDataSource *_qlPreviewDataSource;
     CKQLPreviewController *_previewController;
@@ -28,9 +29,13 @@
     UIBarButtonItem *_flexibleItem;
     UIBarButtonItem *_saveButton;
     UIBarButtonItem *_deleteButton;
+    NSDate *_lastUserSelectedCellTime;
+    UICollectionViewCell *_lastUserSelectedCell;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UICollectionViewCell *lastUserSelectedCell; // @synthesize lastUserSelectedCell=_lastUserSelectedCell;
+@property(retain, nonatomic) NSDate *lastUserSelectedCellTime; // @synthesize lastUserSelectedCellTime=_lastUserSelectedCellTime;
 @property(retain, nonatomic) UIBarButtonItem *deleteButton; // @synthesize deleteButton=_deleteButton;
 @property(retain, nonatomic) UIBarButtonItem *saveButton; // @synthesize saveButton=_saveButton;
 @property(retain, nonatomic) UIBarButtonItem *flexibleItem; // @synthesize flexibleItem=_flexibleItem;
@@ -43,6 +48,7 @@
 @property(retain, nonatomic) CKQLPreviewController *previewController; // @synthesize previewController=_previewController;
 @property(retain, nonatomic) CKQLPreviewControllerDataSource *qlPreviewDataSource; // @synthesize qlPreviewDataSource=_qlPreviewDataSource;
 @property(retain, nonatomic) NSArray *chatGUIDs; // @synthesize chatGUIDs=_chatGUIDs;
+@property(retain, nonatomic) CKSearchController *associatedDetailsSubsectionSearchController; // @synthesize associatedDetailsSubsectionSearchController=_associatedDetailsSubsectionSearchController;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(nonatomic) __weak id <CKDetailsSearchControllerDelegate> detailsDelegate; // @synthesize detailsDelegate=_detailsDelegate;
 - (id)_searchControllerForIndexPath:(id)arg1;
@@ -56,6 +62,8 @@
 - (void)setEditing:(_Bool)arg1;
 - (id)searchControllerChatGUIDsForDetailsSearch:(id)arg1;
 - (void)searchController:(id)arg1 requestsItemDeletionAtIndexPath:(id)arg2;
+- (_Bool)shouldInsetResultsForSearchController:(id)arg1;
+- (id)searchBarForSearchViewController:(id)arg1;
 - (void)searchViewController:(id)arg1 requestsPushOfSearchController:(id)arg2;
 - (void)searchControllerDidBeginDragging:(id)arg1;
 - (void)searchController:(id)arg1 didSelectItem:(id)arg2 inChat:(id)arg3;
@@ -84,6 +92,11 @@
 - (id)layoutSectionForController:(id)arg1 withEnvironment:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
+- (id)previewController:(id)arg1 transitionViewForPreviewItem:(id)arg2;
+- (void)previewControllerDidDismiss:(id)arg1;
+- (_Bool)wantsSpaceKeyCommandActive;
+- (void)presentQuickLookView:(id)arg1;
+- (void)handleSpacePressed;
 - (void)reloadData;
 - (void)rekickZKWSearchForAttachmentBatchUpdate;
 - (void)viewWillDisappear:(_Bool)arg1;

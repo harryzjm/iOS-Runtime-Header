@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <WebBookmarks/NSCopying-Protocol.h>
+#import <WebBookmarks/NSSecureCoding-Protocol.h>
 
 @class NSData, NSDate, NSDictionary, NSString;
 
-@interface WebBookmark : NSObject <NSCopying>
+@interface WebBookmark : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _folder;
     NSString *_title;
@@ -33,6 +34,7 @@
     int _id;
     int _parentID;
     int _specialID;
+    int _lastSelectedChildID;
     unsigned int _orderIndex;
     _Bool _inserted;
     _Bool _needsSyncUpdate;
@@ -40,6 +42,7 @@
     _Bool _usedForInMemoryChangeTracking;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)_trimmedPreviewText:(id)arg1;
 + (id)_trimmedTitle:(id)arg1;
 - (void).cxx_destruct;
@@ -54,6 +57,7 @@
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(readonly, nonatomic, getter=isDeletable) _Bool deletable; // @synthesize deletable=_deletable;
 @property(readonly, nonatomic, getter=isEditable) _Bool editable; // @synthesize editable=_editable;
+@property(nonatomic) int lastSelectedChildID; // @synthesize lastSelectedChildID=_lastSelectedChildID;
 @property(readonly, nonatomic) int specialID; // @synthesize specialID=_specialID;
 @property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property(readonly, nonatomic) int identifier; // @synthesize identifier=_id;
@@ -96,10 +100,12 @@
 - (void)_setID:(int)arg1;
 - (void)_setOrderIndex:(unsigned int)arg1;
 - (void)_setParentID:(int)arg1;
-- (unsigned int)_orderIndex;
+@property(readonly, nonatomic) unsigned int _orderIndex;
 - (void)_markSpecial:(int)arg1;
 @property(readonly, nonatomic) unsigned long long modifiedAttributes;
 @property(readonly, copy, nonatomic) NSDictionary *dictionaryRepresentationForInMemoryChangeTracking;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentationForInMemoryChangeTracking:(id)arg1;
 - (id)_initWithSqliteRow:(struct sqlite3_stmt *)arg1 hasIcon:(_Bool)arg2;
 - (id)_initWithSqliteRow:(struct sqlite3_stmt *)arg1;
@@ -116,6 +122,7 @@
 @property(retain, nonatomic) NSDate *dateLastArchived;
 @property(nonatomic) int webFilterStatus;
 @property(nonatomic) int archiveStatus;
+- (id)_stringForReadingListArchiveStatus:(int)arg1;
 @property(nonatomic) _Bool locallyAdded;
 @property(retain, nonatomic) NSString *previewText;
 @property(readonly, nonatomic) _Bool isReadingListItem;
@@ -128,7 +135,6 @@
 - (void)_removeDirectoryAtPath:(id)arg1;
 - (unsigned long long)archiveSize;
 - (unsigned long long)_sizeForFileOrDirectory:(id)arg1 withAttributes:(id)arg2;
-- (void)writeOfflineWebView:(id)arg1 withOptions:(unsigned long long)arg2 quickLookFilePath:(id)arg3 suggestedFileName:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)offlineArchiveDirectoryPath;
 - (id)webarchivePathForNextPageURL:(id)arg1;
 - (id)webarchivePathInReaderForm:(_Bool)arg1 fileExists:(_Bool *)arg2;

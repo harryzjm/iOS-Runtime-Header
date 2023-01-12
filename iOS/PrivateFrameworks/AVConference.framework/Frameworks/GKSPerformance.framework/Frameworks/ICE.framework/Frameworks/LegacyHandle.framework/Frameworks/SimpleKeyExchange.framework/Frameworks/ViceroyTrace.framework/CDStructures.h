@@ -10,6 +10,12 @@ typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameter
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -25,4 +31,14 @@ typedef struct {
     int dfsChannelCount;
     int inactiveSlotCount;
 } CDStruct_f2f7ecfd;
+
+typedef struct {
+    unsigned int _field1;
+    struct __CFString *_field2;
+    struct __CFDate *_field3;
+    int _field4;
+    void *_field5;
+    id _field6;
+    CDUnknownBlockType _field7;
+} CDStruct_48bb2f2d;
 

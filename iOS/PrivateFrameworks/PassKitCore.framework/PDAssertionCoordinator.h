@@ -27,8 +27,10 @@
 @property(nonatomic) _Bool isForegroundApplication; // @synthesize isForegroundApplication=_isForegroundApplication;
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic) __weak id <PDAssertionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, copy) NSString *description;
 - (void)cancelPendingAssertionRequests;
 - (void)processPendingAssertionRequests;
+- (_Bool)hasAssertionsOfType:(unsigned long long)arg1;
 - (id)assertionsOfType:(unsigned long long)arg1;
 - (void)invalidateAssertionsForBackgroundApplicationState;
 - (void)invalidateAllAssertions;
@@ -47,7 +49,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

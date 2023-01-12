@@ -8,6 +8,7 @@
 
 @class MPCQueueController, MPSectionedIdentifierListPosition;
 
+__attribute__((visibility("hidden")))
 @interface _MPCQueueControllerEnumerator : NSEnumerator
 {
     long long _nextEnumerator;

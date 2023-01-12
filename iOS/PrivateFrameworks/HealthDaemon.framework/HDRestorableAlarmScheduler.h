@@ -8,12 +8,12 @@
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
 @class HDProfile, HDXPCAlarm, NSDate, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDRestorableAlarmScheduler : NSObject <HDDiagnosticObject, HDDatabaseProtectedDataObserver, HDHealthDaemonReadyObserver>
+@interface HDRestorableAlarmScheduler : NSObject <HDDiagnosticObject, HDDatabaseProtectedDataObserver, HDProfileReadyObserver>
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -37,9 +37,7 @@
 @property(readonly, nonatomic) HDXPCAlarm *systemScheduler; // @synthesize systemScheduler=_systemScheduler;
 - (id)diagnosticDescription;
 @property(readonly, copy) NSString *description;
-- (_Bool)_enumerateAllAlarmEventsWithError:(id *)arg1 enumerationHandler:(CDUnknownBlockType)arg2;
 - (void)checkForDueEventsImmediatelyWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)_performWriteTransactionAndFireEventsWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (id)scheduledEventsForClientIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)replaceAllScheduledEventsWithClientIdentifier:(id)arg1 newEvents:(id)arg2 error:(id *)arg3;
 - (_Bool)removeAllEventsWithClientIdentifier:(id)arg1 error:(id *)arg2;
@@ -47,22 +45,8 @@
 - (_Bool)scheduleEvents:(id)arg1 error:(id *)arg2;
 - (void)removeAlarm:(id)arg1;
 - (void)addAlarm:(id)arg1;
-- (void)_queue_registerForWristStateUpdates:(_Bool)arg1;
-- (_Bool)_queue_notifyClientsOfDueEventsAndScheduleNextFireDateWithError:(id *)arg1;
-- (void)_queue_processDueEventsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_fetchCurrentWristStateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_currentDate;
-- (void)_queue_beginReceivingSystemEventsIfNecessary;
-- (void)_queue_runMaintenanceNotifyAndScheduleWithReason:(id)arg1;
-- (void)_queue_enqueueMaintenanceNotifyAndScheduleWithReason:(id)arg1;
-- (void)_queue_updateProtectedDataObserverStateIfRequired;
-- (void)_queue_registerForLockStateUpdates:(_Bool)arg1;
-- (void)_queue_setNeedsMaintenanceNotifyAndSchedule:(_Bool)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)_queue_significantTimeChangeDidOccur;
-- (void)_stopObservingSignificantTimeChangeNotification;
-- (void)_startObservingSignificantTimeChangeNotification;
-- (void)daemonReady:(id)arg1;
+- (void)profileDidBecomeReady:(id)arg1;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
 

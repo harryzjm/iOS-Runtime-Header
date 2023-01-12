@@ -7,7 +7,6 @@
 @class MCProfile;
 @protocol MCInstallationConsentDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MCInstallationConsentViewController
 {
     _Bool _showInstall;

@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVVideoCaptureSourceObserver : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate>
 {
-    struct AVVideoCaptureSource *m_callback;
+    void *m_callback;
 }
 
 - (void)endSessionInterrupted:(id)arg1;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)removeNotificationObservers;
 - (void)addNotificationObservers;
 - (void)disconnect;
-- (id)initWithCallback:(struct AVVideoCaptureSource *)arg1;
+- (id)initWithCallback:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

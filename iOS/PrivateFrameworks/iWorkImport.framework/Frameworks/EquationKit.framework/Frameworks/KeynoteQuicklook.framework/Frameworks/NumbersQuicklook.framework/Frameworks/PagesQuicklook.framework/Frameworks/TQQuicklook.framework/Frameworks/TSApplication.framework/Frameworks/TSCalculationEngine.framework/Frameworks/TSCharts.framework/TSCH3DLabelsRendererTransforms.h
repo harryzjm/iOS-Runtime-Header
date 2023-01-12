@@ -10,29 +10,29 @@
 
 @interface TSCH3DLabelsRendererTransforms : NSObject
 {
-    TSCH3DScene *mScene;
-    TSCH3DCamera *mCamera;
-    TSCH3DChartScenePropertyAccessor *mAccessor;
-    tmat4x4_3074befe mProjector;
-    tmat4x4_3074befe mUnitToWorld;
-    tmat4x4_3074befe mStageToWorld;
-    tmat4x4_3074befe mWorldToStage;
-    struct bitset<5> mValidBits;
+    TSCH3DScene *_scene;
+    TSCH3DCamera *_camera;
+    TSCH3DChartScenePropertyAccessor *_accessor;
+    tmat4x4_3074befe _projector;
+    tmat4x4_3074befe _unitToWorld;
+    tmat4x4_3074befe _stageToWorld;
+    tmat4x4_3074befe _worldToStage;
+    struct bitset<5> _validBits;
 }
 
 + (id)transforms;
 - (id).cxx_construct;
-@property(retain, nonatomic) TSCH3DCamera *camera; // @synthesize camera=mCamera;
-@property(retain, nonatomic) TSCH3DScene *scene; // @synthesize scene=mScene;
-- (tvec3_17f03ce0)projectPoint:(const tvec3_17f03ce0 *)arg1;
-- (const tmat4x4_3074befe *)p_projector;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DCamera *camera; // @synthesize camera=_camera;
+@property(retain, nonatomic) TSCH3DScene *scene; // @synthesize scene=_scene;
+- (tvec3_17f03ce0)projectPoint:(const void *)arg1;
+- (const void *)p_projector;
 - (tvec3_17f03ce0)samples;
-- (const tmat4x4_3074befe *)unitToWorld;
-- (const tmat4x4_3074befe *)worldToStage;
-- (const tmat4x4_3074befe *)p_stageToWorld;
+- (const void *)unitToWorld;
+- (const void *)worldToStage;
+- (const void *)p_stageToWorld;
 - (id)accessor;
 - (void)resetWithScene:(id)arg1 camera:(id)arg2;
-- (void)dealloc;
 
 @end
 

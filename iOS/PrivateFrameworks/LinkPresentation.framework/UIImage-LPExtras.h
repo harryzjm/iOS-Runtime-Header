@@ -11,6 +11,7 @@
 + (id)_lp_createImageWithCGImage:(struct CGImage *)arg1;
 - (_Bool)_lp_hasTransparency;
 - (struct CGSize)_lp_pixelSize;
+- (id)_lp_imageByApplyingSymbolConfiguration:(id)arg1;
 - (struct CGImage *)_lp_CGImage;
 @end
 

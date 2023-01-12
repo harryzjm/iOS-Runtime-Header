@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSArray *_logoPaths;
     NSArray *_snippetLogoPaths;
     NSString *_displayName;
+    NSString *_captionDisplayName;
     unsigned int _attributionRequirementsMask;
 }
 
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOSearchAttributionSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) unsigned int requirementsMask; // @synthesize requirementsMask=_attributionRequirementsMask;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property(readonly, nonatomic) NSString *captionDisplayName; // @synthesize captionDisplayName=_captionDisplayName;
 - (void)addLogoPath:(id)arg1;
 - (id)snippetLogoPathForScale:(double)arg1;
 - (id)logoPathForScale:(double)arg1;

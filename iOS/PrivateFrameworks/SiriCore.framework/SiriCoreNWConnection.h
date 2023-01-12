@@ -8,7 +8,7 @@
 
 #import <SiriCore/SiriCoreConnectionProvider-Protocol.h>
 
-@class NSArray, NSString, NSURL, SAConnectionPolicy, SAConnectionPolicyRoute, SiriCoreConnectionMetrics, SiriCoreConnectionType;
+@class NSArray, NSError, NSString, NSURL, SAConnectionPolicy, SAConnectionPolicyRoute, SiriCoreConnectionMetrics, SiriCoreConnectionType;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_nw_connection, OS_nw_content_context, OS_nw_endpoint, SiriCoreConnectionProviderDelegate;
 
 @interface SiriCoreNWConnection : NSObject <SiriCoreConnectionProvider>
@@ -24,7 +24,6 @@
     SAConnectionPolicy *_policy;
     _Bool _prefersWWAN;
     _Bool _connectByPOPEnabled;
-    _Bool _enforceEV;
     _Bool _isMPTCP;
     _Bool _isCanceled;
     _Bool _isEstablishing;
@@ -48,10 +47,12 @@
     double _retransmissionBasedConnectionDropTime;
     unsigned long long _keepaliveUnackedCount;
     double _staleConnectionInterval;
+    NSError *_mostRecentErrorFromNWConnection;
 }
 
 + (void)getMetricsContext:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (void)_addCorrespondingMetricsFromConnection:(id)arg1 inState:(int)arg2;
 - (id)_getAttemptedEndpoints;
 - (_Bool)providerStatsIndicatePoorLinkQuality;
 - (id)_setParametersForHost:(const char *)arg1 useTLS:(_Bool)arg2 initialPayload:(id)arg3;
@@ -94,7 +95,6 @@
 - (id)_url;
 - (id)delegate;
 - (void)setStaleInterval:(double)arg1;
-- (void)setEnforceExtendedValidation:(_Bool)arg1;
 - (void)setConnectByPOPMethod:(_Bool)arg1;
 - (void)setPrefersWWAN:(_Bool)arg1;
 - (void)setProviderConnectionPolicy:(id)arg1;

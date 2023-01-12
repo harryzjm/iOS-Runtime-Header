@@ -10,20 +10,22 @@
 
 @interface TSDFrameImageCacheEntry : NSObject
 {
+    struct CGImage *mImages[4];
     TSDFrameSpec *mFrameSpec;
     double mAssetScale;
-    struct CGSize mSize;
     double mViewScale;
-    struct CGImage *mImages[4];
+    struct CGSize mSize;
 }
 
-@property(nonatomic) double viewScale; // @synthesize viewScale=mViewScale;
-@property(nonatomic) struct CGSize size; // @synthesize size=mSize;
-@property(nonatomic) double assetScale; // @synthesize assetScale=mAssetScale;
-@property(nonatomic) TSDFrameSpec *frameSpec; // @synthesize frameSpec=mFrameSpec;
+@property(readonly, nonatomic) double viewScale; // @synthesize viewScale=mViewScale;
+@property(readonly, nonatomic) struct CGSize size; // @synthesize size=mSize;
+@property(readonly, nonatomic) double assetScale; // @synthesize assetScale=mAssetScale;
+@property(readonly, nonatomic) TSDFrameSpec *frameSpec; // @synthesize frameSpec=mFrameSpec;
 - (void)setImage:(struct CGImage *)arg1 forCALayer:(_Bool)arg2 mask:(_Bool)arg3;
 - (struct CGImage *)newImageForCALayer:(_Bool)arg1 mask:(_Bool)arg2;
+- (int)p_cacheIndexForCALayer:(_Bool)arg1 mask:(_Bool)arg2;
 - (void)dealloc;
+- (id)initWithFrame:(id)arg1 size:(struct CGSize)arg2 viewScale:(double)arg3;
 
 @end
 

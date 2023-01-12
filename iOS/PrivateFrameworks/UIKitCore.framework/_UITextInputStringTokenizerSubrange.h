@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UITextPosition *basePosition; // @synthesize basePosition=_basePosition;
 @property(readonly, nonatomic) NSString *substring; // @synthesize substring=_substring;
 - (void)dealloc;
+- (id)description;
 
 @end
 

@@ -60,6 +60,7 @@
 - (id)initWithPropertiesByName:(id)arg1;
 @property(readonly, nonatomic) INCodableDescription *_codableDescription; // @synthesize _codableDescription;
 - (id)_dictionaryRepresentation;
+- (id)_redactedDictionaryRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
 - (void)_updateWithJSONDictionary:(id)arg1;

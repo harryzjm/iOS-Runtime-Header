@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCVersionsFileProvider
 {
     NSMutableDictionary *_operationsByName;
+    NSString *_personaIdentifier;
 }
 
 - (void).cxx_destruct;
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)_physicalURLForURL:(id)arg1;
 - (id)_fileReactorID;
 - (void)dumpToContext:(id)arg1;
-- (id)initWithVolume:(id)arg1;
+- (id)initWithVolume:(id)arg1 personaIdentifier:(id)arg2;
 
 @end
 

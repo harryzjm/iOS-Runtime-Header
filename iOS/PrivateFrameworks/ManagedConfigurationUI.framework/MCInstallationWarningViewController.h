@@ -7,7 +7,6 @@
 @class NSArray;
 @protocol MCInstallationWarningDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MCInstallationWarningViewController
 {
     _Bool _isMDMInstall;

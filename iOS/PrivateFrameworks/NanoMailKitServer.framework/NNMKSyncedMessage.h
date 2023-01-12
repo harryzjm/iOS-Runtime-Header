@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoMailKitServer/NNMKBasicMessage-Protocol.h>
+
 @class NSDate, NSMutableSet, NSString;
 
-@interface NNMKSyncedMessage : NSObject
+@interface NNMKSyncedMessage : NSObject <NNMKBasicMessage>
 {
     _Bool _usedProtectedChannelForMessageSync;
     _Bool _usedNotificationPriorityForMessageSync;

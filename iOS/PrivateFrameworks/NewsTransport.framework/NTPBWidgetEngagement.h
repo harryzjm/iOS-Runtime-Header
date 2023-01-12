@@ -28,11 +28,13 @@
     int _widgetContentType;
     int _widgetDisplayMode;
     int _widgetEngagementType;
+    int _widgetExposureStackLocation;
     int _widgetSectionDisplayRank;
     NSString *_widgetSectionId;
+    int _widgetType;
     NSString *_widgetUserId;
     int _widgetVideoPresentationReason;
-    CDStruct_7b5281db _has;
+    CDStruct_38942d66 _has;
 }
 
 + (Class)otherVisibleSectionsType;
@@ -61,6 +63,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsWidgetType:(id)arg1;
+- (id)widgetTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasWidgetType;
+@property(nonatomic) int widgetType; // @synthesize widgetType=_widgetType;
+- (int)StringAsWidgetExposureStackLocation:(id)arg1;
+- (id)widgetExposureStackLocationAsString:(int)arg1;
+@property(nonatomic) _Bool hasWidgetExposureStackLocation;
+@property(nonatomic) int widgetExposureStackLocation; // @synthesize widgetExposureStackLocation=_widgetExposureStackLocation;
 @property(readonly, nonatomic) _Bool hasWidgetContentId;
 - (int)StringAsWidgetDisplayMode:(id)arg1;
 - (id)widgetDisplayModeAsString:(int)arg1;

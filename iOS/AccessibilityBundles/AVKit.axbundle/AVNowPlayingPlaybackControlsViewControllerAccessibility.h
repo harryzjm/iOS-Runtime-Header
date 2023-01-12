@@ -16,7 +16,7 @@
 - (void)_axAnnounceCurrentScrubPosition;
 - (void)_timerFiredForHidingPlaybackControls:(id)arg1;
 - (void)_setPlaybackControlsState:(long long)arg1 animated:(_Bool)arg2;
-- (void)_setControlsContainerSubviewsVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_setControlsContainerSubviewsVisible:(_Bool)arg1 animated:(_Bool)arg2 withCoordinators:(id)arg3;
 - (void)_axUpdateAccessibilityCustomActions;
 
 @end

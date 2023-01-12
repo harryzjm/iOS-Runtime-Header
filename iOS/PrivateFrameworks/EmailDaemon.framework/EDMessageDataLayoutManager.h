@@ -11,7 +11,6 @@
 }
 
 + (id)rootMessageDataDirectoryForBasePath:(id)arg1 purgeable:(_Bool)arg2;
-+ (id)attachmentDataDirectoryURLForGlobalMessageID:(long long)arg1 basePath:(id)arg2 purgeable:(_Bool)arg3;
 + (id)messageDataDirectoryURLForGlobalMessageID:(long long)arg1 basePath:(id)arg2 purgeable:(_Bool)arg3;
 
 @end

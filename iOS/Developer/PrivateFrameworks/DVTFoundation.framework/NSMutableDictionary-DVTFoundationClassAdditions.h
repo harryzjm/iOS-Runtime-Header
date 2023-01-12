@@ -23,7 +23,9 @@
 - (void)dvt_setInteger:(long long)arg1 forKey:(id)arg2;
 - (void)dvt_removeObject:(id)arg1 fromCollectionForKey:(id)arg2;
 - (void)dvt_addObject:(id)arg1 toOrderedSetForKey:(id)arg2;
+- (void)dvt_addObject:(id)arg1 toSetForKey:(id)arg2 inDictionaryForKey:(id)arg3;
 - (void)dvt_addObject:(id)arg1 toSetForKey:(id)arg2;
+- (void)dvt_addObject:(id)arg1 toArrayForKey:(id)arg2 inDictionaryForKey:(id)arg3;
 - (void)dvt_addObject:(id)arg1 toArrayForKey:(id)arg2;
 - (void)dvt_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3;
 @end

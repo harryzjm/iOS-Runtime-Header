@@ -30,6 +30,7 @@
 - (id)badgeLabelForSubscription:(id)arg1 error:(id *)arg2;
 - (id)bestSubscriptionForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
 - (id)bestSubscriptionForContact:(id)arg1 error:(id *)arg2;
+- (void)danglingPlansDidUpdate:(id)arg1;
 - (void)providersChangedForProviderManager:(id)arg1;
 - (void)subscriptionInfoDidChange;
 - (void)removeDelegate:(id)arg1;

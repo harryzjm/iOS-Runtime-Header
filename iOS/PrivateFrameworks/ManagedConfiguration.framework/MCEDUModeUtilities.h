@@ -14,6 +14,14 @@
 + (unsigned long long)getDiskAvailableSize;
 + (id)_configureResidentUsersNumberForSharedDeviceImmediately:(id)arg1;
 + (id)_configureQuotaSizeForSharedDeviceImmediately:(id)arg1;
++ (unsigned long long)_previousQuotaSize;
++ (_Bool)_updateMultiUserDeviceConfigurationFileWithKey:(id)arg1 value:(id)arg2;
++ (_Bool)temporarySessionOnly;
++ (_Bool)configureTemporarySessionOnly:(_Bool)arg1 restoreQuotaSize:(_Bool)arg2;
++ (double)temporarySessionTimeout;
++ (double)userSessionTimeout;
++ (_Bool)configureTemporarySessionTimeout:(double)arg1;
++ (_Bool)configureUserSessionTimeout:(double)arg1;
 + (_Bool)isFirstSetupBuddyDone;
 + (id)configureResidentUsersNumberForSharedDevice:(id)arg1;
 + (id)configureQuotaSizeForSharedDevice:(id)arg1;

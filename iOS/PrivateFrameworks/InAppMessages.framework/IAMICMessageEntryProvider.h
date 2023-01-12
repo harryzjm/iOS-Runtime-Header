@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <IAMMessageEntryProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_handleMessagesDidChangeNotification;
+- (void)removeApplicationBadgeForBundleIdentifier:(id)arg1 fromPresentedMessageEntry:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadResourcesForMessageWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)reportEventForMessageIdentifier:(id)arg1 withParams:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeMessageEntryWithIdentifier:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;

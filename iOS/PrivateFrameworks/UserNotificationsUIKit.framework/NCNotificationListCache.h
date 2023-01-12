@@ -9,12 +9,13 @@
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString;
+@protocol NCNotificationListCacheDelegate;
 
 @interface NCNotificationListCache : NSObject <PLContentSizeCategoryAdjusting>
 {
     _Bool _adjustsFontForContentSizeCategory;
+    id <NCNotificationListCacheDelegate> _delegate;
     NSMutableDictionary *_contentRevealedCellHeightCache;
-    NSMutableDictionary *_contentRevealedWithSummaryCellHeightCache;
     NSMutableDictionary *_contentHiddenCellHeightCache;
     NSMutableSet *_notificationListCellCache;
     NSMutableSet *_notificationListCoalescingHeaderCache;
@@ -28,21 +29,25 @@
 @property(retain, nonatomic) NSMutableSet *notificationListCoalescingHeaderCache; // @synthesize notificationListCoalescingHeaderCache=_notificationListCoalescingHeaderCache;
 @property(retain, nonatomic) NSMutableSet *notificationListCellCache; // @synthesize notificationListCellCache=_notificationListCellCache;
 @property(retain, nonatomic) NSMutableDictionary *contentHiddenCellHeightCache; // @synthesize contentHiddenCellHeightCache=_contentHiddenCellHeightCache;
-@property(retain, nonatomic) NSMutableDictionary *contentRevealedWithSummaryCellHeightCache; // @synthesize contentRevealedWithSummaryCellHeightCache=_contentRevealedWithSummaryCellHeightCache;
 @property(retain, nonatomic) NSMutableDictionary *contentRevealedCellHeightCache; // @synthesize contentRevealedCellHeightCache=_contentRevealedCellHeightCache;
+@property(nonatomic) __weak id <NCNotificationListCacheDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
+- (id)_cachedRequestMatchingRequest:(id)arg1;
 - (void)_clearAllHeightCaches;
 - (id)_cachedNotificationListCellForRequest:(id)arg1 viewControllerDelegate:(id)arg2 shouldConfigure:(_Bool)arg3;
 - (id)_cachedHeaderCellWithTitle:(id)arg1;
 - (id)_newCellForNotificationRequest:(id)arg1 viewControllerDelegate:(id)arg2;
 - (_Bool)adjustForContentSizeCategoryChange;
+@property(readonly, nonatomic) unsigned long long activeNotificationCellCount;
+@property(readonly, nonatomic) unsigned long long currentCacheSizeCount;
 - (void)recycleNotificationListCoalescingControlsCell:(id)arg1;
 - (id)coalescingControlsCellWithWidth:(double)arg1;
 - (void)recycleNotificationListCoalescingHeaderCell:(id)arg1;
 - (id)coalescingHeaderCellWithTitle:(id)arg1 width:(double)arg2;
 - (_Bool)recycleNotificationListCell:(id)arg1;
 - (id)listCellForNotificationRequest:(id)arg1 viewControllerDelegate:(id)arg2 createNewIfNecessary:(_Bool)arg3 shouldConfigure:(_Bool)arg4;
-- (double)heightForNotificationRequest:(id)arg1 withFrameWidth:(double)arg2 isContentRevealed:(_Bool)arg3 isShowingSummaryText:(_Bool)arg4 shouldCalculateHeight:(_Bool)arg5;
+- (_Bool)invalidateCachedHeightIfNecessaryForNotificationRequest:(id)arg1 updatedHeight:(double)arg2 isContentRevealed:(_Bool)arg3;
+- (double)heightForNotificationRequest:(id)arg1 withFrameWidth:(double)arg2 isContentRevealed:(_Bool)arg3 shouldCalculateHeight:(_Bool)arg4;
 - (void)updateNotificationRequest:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1;
 - (void)clearCachedHeightsForNotificationRequest:(id)arg1;

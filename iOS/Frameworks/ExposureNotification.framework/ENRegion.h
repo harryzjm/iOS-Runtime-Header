@@ -17,7 +17,7 @@
     NSString *_subdivisionCode;
 }
 
-+ (_Bool)_validSubdivisionCode:(id)arg1 forCountryCode:(id)arg2;
++ (_Bool)validSubdivisionCode:(id)arg1 forCountryCode:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)regionWithCode:(id)arg1;
 + (id)regionFromServerResponseDictionary:(id)arg1;

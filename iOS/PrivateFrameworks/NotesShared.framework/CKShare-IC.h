@@ -10,6 +10,10 @@
 
 @interface CKShare (IC)
 - (unsigned long long)_nonOwnerParticipantsCountWithAcceptanceStatus:(long long)arg1;
+- (unsigned long long)_nonCurrentUserParticipantsCountWithAcceptanceStatus:(long long)arg1;
+- (id)ic_participantWithUserRecordName:(id)arg1;
+@property(readonly, nonatomic) NSArray *ic_nonCurrentUserAcceptedParticipants;
+@property(readonly, nonatomic) NSArray *ic_acceptedParticipants;
 @property(readonly, nonatomic) NSArray *ic_nonCurrentUserParticipants;
 @property(readonly, nonatomic) unsigned long long ic_nonOwnerAcceptedParticipantsCount;
 @property(readonly, nonatomic) unsigned long long ic_nonOwnerInvitedParticipantsCount;

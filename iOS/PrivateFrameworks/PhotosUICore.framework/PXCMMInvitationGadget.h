@@ -59,6 +59,7 @@
 @property(retain, nonatomic) id <PXCMMInvitation> invitation;
 - (void)contentHasBeenSeen;
 - (id)uniqueGadgetIdentifier;
+- (void)userDidSelectGadget;
 - (_Bool)supportsHighlighting;
 - (void)prepareCollectionViewItem:(id)arg1;
 @property(readonly, nonatomic) Class collectionViewItemClass;

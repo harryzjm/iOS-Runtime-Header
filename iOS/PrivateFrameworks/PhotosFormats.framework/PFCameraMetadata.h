@@ -8,7 +8,7 @@
 
 #import <PhotosFormats/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSString, VNImageAestheticsObservation, VNSaliencyImageObservation, VNSceneObservation;
+@class NSArray, NSData, NSDictionary, NSString, VNImageAestheticsObservation, VNSaliencyImageObservation, VNSceneObservation;
 
 @interface PFCameraMetadata : NSObject <NSSecureCoding>
 {
@@ -19,18 +19,29 @@
     VNSaliencyImageObservation *_saliencyObservation;
     VNSceneObservation *_scenePrintObservation;
     VNSceneObservation *_compressedScenePrintObservation;
+    NSDictionary *_smartCamInfo;
     NSArray *_detectedHumanFaces;
     NSArray *_detectedHumanBodies;
     NSArray *_detectedCatBodies;
     NSArray *_detectedDogBodies;
     NSArray *_detectedSalientObjects;
     unsigned long long _stitchConfidence;
+    NSArray *_semanticDevelopmentGatingObservations;
+    NSArray *_faceObservations;
+    NSArray *_foodAndDrinkObservations;
+    long long _semanticEnhanceScene;
+    double _semanticEnhanceSceneConfidence;
     NSString *_captureFolderPath;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *captureFolderPath; // @synthesize captureFolderPath=_captureFolderPath;
+@property(nonatomic) double semanticEnhanceSceneConfidence; // @synthesize semanticEnhanceSceneConfidence=_semanticEnhanceSceneConfidence;
+@property(nonatomic) long long semanticEnhanceScene; // @synthesize semanticEnhanceScene=_semanticEnhanceScene;
+@property(readonly, nonatomic) NSArray *foodAndDrinkObservations; // @synthesize foodAndDrinkObservations=_foodAndDrinkObservations;
+@property(readonly, nonatomic) NSArray *faceObservations; // @synthesize faceObservations=_faceObservations;
+@property(readonly, nonatomic) NSArray *semanticDevelopmentGatingObservations; // @synthesize semanticDevelopmentGatingObservations=_semanticDevelopmentGatingObservations;
 @property(readonly, nonatomic) float horizonLineAngleInDegrees; // @synthesize horizonLineAngleInDegrees=_horizonLineAngleInDegrees;
 @property(readonly, nonatomic) _Bool horizonLinePresent; // @synthesize horizonLinePresent=_horizonLinePresent;
 @property(readonly, nonatomic) unsigned long long stitchConfidence; // @synthesize stitchConfidence=_stitchConfidence;
@@ -39,6 +50,7 @@
 @property(readonly, nonatomic) NSArray *detectedCatBodies; // @synthesize detectedCatBodies=_detectedCatBodies;
 @property(readonly, nonatomic) NSArray *detectedHumanBodies; // @synthesize detectedHumanBodies=_detectedHumanBodies;
 @property(readonly, nonatomic) NSArray *detectedHumanFaces; // @synthesize detectedHumanFaces=_detectedHumanFaces;
+@property(readonly, nonatomic) NSDictionary *smartCamInfo; // @synthesize smartCamInfo=_smartCamInfo;
 @property(readonly, nonatomic) VNSceneObservation *compressedScenePrintObservation; // @synthesize compressedScenePrintObservation=_compressedScenePrintObservation;
 @property(readonly, nonatomic) VNSceneObservation *scenePrintObservation; // @synthesize scenePrintObservation=_scenePrintObservation;
 @property(readonly, nonatomic) VNSaliencyImageObservation *saliencyObservation; // @synthesize saliencyObservation=_saliencyObservation;
@@ -48,7 +60,7 @@
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly) NSData *JSONDebugDescription;
 - (id)initWithSpatialOverCapturePrivateClientMetadata:(id)arg1;
-- (id)initWithJunkImageClassificationObservations:(id)arg1 imageAestheticsObservation:(id)arg2 saliencyObservation:(id)arg3 scenePrintObservation:(id)arg4 compressedScenePrintObservation:(id)arg5 detectedObjectsInfoHumanFaces:(id)arg6 detectedObjectsInfoHumanBodies:(id)arg7 detectedObjectsInfoCatBodies:(id)arg8 detectedObjectsInfoDogBodies:(id)arg9 detectedObjectsSalientObjects:(id)arg10 stitchConfidence:(unsigned long long)arg11 horizonLinePresent:(_Bool)arg12 horizonLineAngleInDegrees:(float)arg13 captureFolderPath:(id)arg14;
+- (id)initWithJunkImageClassificationObservations:(id)arg1 imageAestheticsObservation:(id)arg2 saliencyObservation:(id)arg3 scenePrintObservation:(id)arg4 compressedScenePrintObservation:(id)arg5 detectedObjectsInfoHumanFaces:(id)arg6 detectedObjectsInfoHumanBodies:(id)arg7 detectedObjectsInfoCatBodies:(id)arg8 detectedObjectsInfoDogBodies:(id)arg9 detectedObjectsSalientObjects:(id)arg10 smartCamInfo:(id)arg11 stitchConfidence:(unsigned long long)arg12 horizonLinePresent:(_Bool)arg13 horizonLineAngleInDegrees:(float)arg14 captureFolderPath:(id)arg15 semanticDevelopmentGatingObservations:(id)arg16 faceObservations:(id)arg17 foodAndDrinkObservations:(id)arg18 semanticEnhanceScene:(long long)arg19;
 
 @end
 

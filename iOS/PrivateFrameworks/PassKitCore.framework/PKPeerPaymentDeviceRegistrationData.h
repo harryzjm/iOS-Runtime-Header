@@ -13,6 +13,7 @@
 @interface PKPeerPaymentDeviceRegistrationData : NSObject <NSSecureCoding>
 {
     _Bool _devSigned;
+    NSString *_authorizationHeader;
     NSString *_signedAuthToken;
     NSDictionary *_enrollmentData;
     NSData *_signedEnrollmentDataSignature;
@@ -26,6 +27,7 @@
 @property(copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
 @property(copy, nonatomic) NSDictionary *enrollmentData; // @synthesize enrollmentData=_enrollmentData;
 @property(copy, nonatomic) NSString *signedAuthToken; // @synthesize signedAuthToken=_signedAuthToken;
+@property(copy, nonatomic) NSString *authorizationHeader; // @synthesize authorizationHeader=_authorizationHeader;
 - (_Bool)isEqualToPeerPaymentDeviceRegistrationData:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

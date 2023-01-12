@@ -10,6 +10,7 @@
 
 @class NSArray, NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationNetServiceTXTRecord : NSObject <NSCopying>
 {
     NSArray *_delegationAccountUUIDs;

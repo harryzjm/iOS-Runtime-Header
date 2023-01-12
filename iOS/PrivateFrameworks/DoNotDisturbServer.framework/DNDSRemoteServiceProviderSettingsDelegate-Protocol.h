@@ -6,13 +6,11 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDBehaviorSettings, DNDBypassSettings, DNDSRemoteServiceProvider, DNDScheduleSettings;
+@class DNDBehaviorSettings, DNDSRemoteServiceProvider, DNDScheduleSettings;
 
 @protocol DNDSRemoteServiceProviderSettingsDelegate <NSObject>
 - (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 setScheduleSettings:(DNDScheduleSettings *)arg2 withError:(id *)arg3;
 - (DNDScheduleSettings *)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 scheduleSettingsWithError:(id *)arg2;
-- (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 setPhoneCallBypassSettings:(DNDBypassSettings *)arg2 withError:(id *)arg3;
-- (DNDBypassSettings *)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 phoneCallBypassSettingsWithError:(id *)arg2;
 - (_Bool)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 setBehaviorSettings:(DNDBehaviorSettings *)arg2 withError:(id *)arg3;
 - (DNDBehaviorSettings *)remoteServiceProvider:(DNDSRemoteServiceProvider *)arg1 behaviorSettingsWithError:(id *)arg2;
 @end

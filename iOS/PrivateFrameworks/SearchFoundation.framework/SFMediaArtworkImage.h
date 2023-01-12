@@ -12,9 +12,7 @@
 
 @interface SFMediaArtworkImage <SFMediaArtworkImage, NSSecureCoding, NSCopying>
 {
-    struct {
-        unsigned int mediaEntityType:1;
-    } _has;
+    CDStruct_c287193c _has;
     int _mediaEntityType;
     NSString *_persistentID;
     NSString *_spotlightIdentifier;
@@ -38,6 +36,7 @@
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties
+@property(copy, nonatomic) NSString *accessibilityLabel;
 @property(copy, nonatomic) NSString *contentType;
 @property(nonatomic) double cornerRadius;
 @property(nonatomic) int cornerRoundingStyle;

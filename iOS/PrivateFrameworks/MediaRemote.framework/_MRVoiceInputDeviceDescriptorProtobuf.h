@@ -10,30 +10,21 @@
 
 @class NSMutableArray, _MRAudioFormatSettingsProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRVoiceInputDeviceDescriptorProtobuf : PBCodable <NSCopying>
 {
     _MRAudioFormatSettingsProtobuf *_defaultFormat;
     NSMutableArray *_supportedFormats;
 }
 
-+ (Class)supportedFormatsType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRAudioFormatSettingsProtobuf *defaultFormat; // @synthesize defaultFormat=_defaultFormat;
-@property(retain, nonatomic) NSMutableArray *supportedFormats; // @synthesize supportedFormats=_supportedFormats;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasDefaultFormat;
-- (id)supportedFormatsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)supportedFormatsCount;
-- (void)addSupportedFormats:(id)arg1;
-- (void)clearSupportedFormats;
 
 @end
 

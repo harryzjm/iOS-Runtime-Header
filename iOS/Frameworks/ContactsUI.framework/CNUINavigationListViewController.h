@@ -48,7 +48,6 @@
 - (_Bool)canSelectItem:(id)arg1;
 - (void)updateNavigationListViewStateAnimated:(_Bool)arg1;
 - (void)reloadNavigationListView;
-- (void)updateNavigationListViewSeparatorStyle;
 - (void)updateNavigationListView;
 - (struct CGSize)contentSizeForExpandedItem:(id)arg1;
 - (id)itemsForItem:(id)arg1;

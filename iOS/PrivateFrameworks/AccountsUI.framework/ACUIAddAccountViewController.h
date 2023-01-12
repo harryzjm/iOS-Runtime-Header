@@ -21,6 +21,7 @@
     NSString *_filteredDataclass;
 }
 
++ (id)_debugStringForAction:(long long)arg1;
 - (void).cxx_destruct;
 @property(retain) NSString *filteredDataclass; // @synthesize filteredDataclass=_filteredDataclass;
 - (void)_alertIfAccountTypePreventsMultiples:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

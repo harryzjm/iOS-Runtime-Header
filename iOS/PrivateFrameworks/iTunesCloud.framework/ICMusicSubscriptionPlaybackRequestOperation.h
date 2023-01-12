@@ -7,6 +7,7 @@
 @class ICStoreRequestContext, ICStoreURLRequest, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ICMusicSubscriptionPlaybackRequestOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -22,9 +23,11 @@
     long long _storeSubscriptionAdamID;
     long long _storePurchasedAdamID;
     NSString *_cloudUniversalLibraryID;
+    NSString *_playbackAuthorizationToken;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(nonatomic, getter=isFollowUp) _Bool followUp; // @synthesize followUp=_followUp;
 @property(copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
 @property(nonatomic) long long storePurchasedAdamID; // @synthesize storePurchasedAdamID=_storePurchasedAdamID;

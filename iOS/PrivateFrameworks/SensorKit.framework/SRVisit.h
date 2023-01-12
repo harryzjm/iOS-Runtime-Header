@@ -27,6 +27,7 @@
 @property(readonly) NSDateInterval *departureDateInterval; // @synthesize departureDateInterval=_departureDateInterval;
 @property(readonly) NSDateInterval *arrivalDateInterval; // @synthesize arrivalDateInterval=_arrivalDateInterval;
 @property(readonly) double distanceFromHome; // @synthesize distanceFromHome=_distanceFromHome;
+- (_Bool)isEqual:(id)arg1;
 - (id)sr_dictionaryRepresentation;
 - (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 - (id)binarySampleRepresentation;

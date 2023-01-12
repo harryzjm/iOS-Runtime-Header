@@ -8,8 +8,8 @@
 
 @interface CKStatefulViewReusePool : NSObject
 {
-    struct unordered_map<std::__1::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem, PoolKeyHasher, std::__1::equal_to<std::__1::pair<__unsafe_unretained Class, id>>, std::__1::allocator<std::__1::pair<const std::__1::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem>>> _pool;
-    struct unordered_map<std::__1::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem, PoolKeyHasher, std::__1::equal_to<std::__1::pair<__unsafe_unretained Class, id>>, std::__1::allocator<std::__1::pair<const std::__1::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem>>> _pendingPool;
+    struct unordered_map<std::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem, PoolKeyHasher, std::equal_to<std::pair<__unsafe_unretained Class, id>>, std::allocator<std::pair<const std::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem>>> _pool;
+    struct unordered_map<std::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem, PoolKeyHasher, std::equal_to<std::pair<__unsafe_unretained Class, id>>, std::allocator<std::pair<const std::pair<__unsafe_unretained Class, id>, FBStatefulReusePoolItem>>> _pendingPool;
     _Bool _enqueuedPendingPurge;
     _Bool _pendingReusePoolEnabled;
 }

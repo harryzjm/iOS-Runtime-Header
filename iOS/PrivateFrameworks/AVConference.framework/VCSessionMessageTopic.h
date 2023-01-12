@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSMutableDictionary, NSString, VCControlChannel;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,30 +15,37 @@ __attribute__((visibility("hidden")))
     NSArray *associatedStrings;
     NSString *topicKey;
     _Bool allowConcurrent;
+    _Bool requireReliable;
     NSObject<OS_dispatch_queue> *outMessageQueue;
-    id controlChannelWeak;
+    VCControlChannel *controlChannel;
     NSObject<OS_dispatch_queue> *inMessageQueue;
-    CDUnknownBlockType receiveBlock;
+    CDUnknownBlockType sendMessageCompletionBlock;
+    CDUnknownBlockType sendMessageDataCompletionBlock;
+    CDUnknownBlockType receiveMessageBlock;
+    CDUnknownBlockType receiveMessageDictionaryBlock;
     long long latestOutgoingMessageIndex;
     _Bool isSendingEnabled;
     _Bool shouldEncodeTopicKeyInMessage;
-    NSString *topicPrefix;
     NSMutableDictionary *transactionCache;
 }
 
 @property(nonatomic, setter=setIsSendingEnabled:) _Bool isSendingEnabled; // @synthesize isSendingEnabled;
-@property(readonly) NSString *topicKey; // @synthesize topicKey;
+@property(readonly, nonatomic) NSString *topicKey; // @synthesize topicKey;
 - (void)clearTransactionCacheForParticipant:(id)arg1;
 - (void)passMessage:(id)arg1 sequence:(int)arg2 fromParticipant:(id)arg3;
 - (void)purgeExpiredEntries:(double)arg1 messageHistory:(id)arg2 participantID:(id)arg3;
 - (_Bool)isDuplicateMessageID:(id)arg1 messageHistory:(id)arg2 participantID:(id)arg3;
 - (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2 withSequence:(long long)arg3 numRetries:(long long)arg4;
+- (void)handleSendMessageDidSucceed:(_Bool)arg1 message:(id)arg2 participantID:(id)arg3;
 - (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (id)messageForCommand:(id)arg1;
 - (void)sendMessage:(id)arg1;
-- (_Bool)isStringAssociated:(id)arg1;
+- (_Bool)isPayloadAssociated:(id)arg1;
 - (void)dealloc;
-- (id)initWithTopicKey:(id)arg1 strings:(id)arg2 allowConcurrent:(_Bool)arg3 controlChannel:(id)arg4 receiveHandler:(CDUnknownBlockType)arg5;
+- (int)expectedMessageType;
+- (id)initWithTopicKey:(id)arg1 strings:(id)arg2 allowConcurrent:(_Bool)arg3 requireReliable:(_Bool)arg4 controlChannel:(id)arg5 sendCompletionHandler:(CDUnknownBlockType)arg6 receiveHandler:(CDUnknownBlockType)arg7 sendMessageDataCompletionHandler:(CDUnknownBlockType)arg8 receiveMessageDictionaryHandler:(CDUnknownBlockType)arg9;
+- (id)initWithTopicKey:(id)arg1 strings:(id)arg2 allowConcurrent:(_Bool)arg3 requireReliable:(_Bool)arg4 controlChannel:(id)arg5 sendMessageDataCompletionHandler:(CDUnknownBlockType)arg6 receiveMessageDictionaryHandler:(CDUnknownBlockType)arg7;
+- (id)initWithTopicKey:(id)arg1 strings:(id)arg2 allowConcurrent:(_Bool)arg3 controlChannel:(id)arg4 sendCompletionHandler:(CDUnknownBlockType)arg5 receiveHandler:(CDUnknownBlockType)arg6;
 
 @end
 

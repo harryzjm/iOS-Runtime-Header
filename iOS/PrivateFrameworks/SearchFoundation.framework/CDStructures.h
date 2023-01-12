@@ -42,6 +42,10 @@ typedef struct {
 } CDStruct_5ff9a38c;
 
 typedef struct {
+    unsigned int mediaEntityType:1;
+} CDStruct_c287193c;
+
+typedef struct {
     unsigned int type:1;
 } CDStruct_f953fb60;
 

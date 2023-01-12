@@ -23,6 +23,7 @@
 
 + (_Bool)_isSecureForRemoteViewService;
 - (void).cxx_destruct;
+- (void)authorizationDidChangeCouponCode:(id)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)authorizationDidRequestMerchantSession;

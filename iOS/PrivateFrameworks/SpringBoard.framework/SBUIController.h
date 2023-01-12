@@ -7,8 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BCBatteryDeviceObserving-Protocol.h>
+#import <SpringBoard/CSMagSafeAccessoryStatusProviding-Protocol.h>
 #import <SpringBoard/CSPowerStatusProviding-Protocol.h>
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
+#import <SpringBoard/SBFMotionAlarmDelegate-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeScreenBackdropViewBaseDelegate-Protocol.h>
 #import <SpringBoard/SBReachabilityObserver-Protocol.h>
 #import <SpringBoard/SBWallpaperObserver-Protocol.h>
@@ -16,15 +19,13 @@
 #import <SpringBoard/UIInteractionProgressObserver-Protocol.h>
 #import <SpringBoard/UIWindowDelegate-Protocol.h>
 
-@class ATXAppDirectoryClient, BCBatteryDeviceController, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
+@class ATXAppDirectoryClient, BCBatteryDeviceController, CSMagSafeAccessory, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBFMotionAlarmController, SBFZStackParticipant, SBHIDUILockAssertion, SBHUDController, SBHomeGestureParticipant, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBVolumeControl, SBWallpaperEffectView, SBWindow, SWWakingTimer, UIForceStageInteractionProgress, UIView;
 
-@interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, BCBatteryDeviceObserving, UIWindowDelegate, CSPowerStatusProviding>
+@interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, BCBatteryDeviceObserving, SBFMotionAlarmDelegate, SBFZStackParticipantDelegate, UIWindowDelegate, CSPowerStatusProviding, CSMagSafeAccessoryStatusProviding>
 {
     SBHomeScreenWindow *_window;
     SBIconContentView *_iconsView;
     UIView *_contentView;
-    SBMainScreenActiveInterfaceOrientationWindow *_fakeSpringBoardStatusBarWindow;
-    UIStatusBar *_fakeSpringBoardStatusBar;
     SBHomeScreenBackdropViewBase *_homeScreenBackdropView;
     SBWindow *_homeScreenDimmingWindow;
     SBWallpaperEffectView *_reachabilityWallpaperEffectView;
@@ -37,8 +38,18 @@
     unsigned int _isBatteryCritical:1;
     unsigned int _isOnAC:1;
     unsigned int _isConnectedToExternalChargingAccessory:1;
+    unsigned int _isConnectedToPoweredExternalChargingAccessory:1;
     unsigned int _isConnectedToUnsupportedChargingAccessory:1;
     unsigned int _isConnectedToChargeIncapablePowerSource:1;
+    unsigned int _wasConnectedToWirelessChargingAccessory:1;
+    unsigned int _isConnectedToWirelessInternalCharger:1;
+    unsigned int _isConnectedToWirelessInternalChargingAccessory:1;
+    unsigned int _isConnectedToWirelessInternalAccessory:1;
+    unsigned int _isConnectedToWindowedAccessory:1;
+    struct CGRect _visibleScreenCoordinatesForWindowedAccessory;
+    SBHIDUILockAssertion *_suspendProximityForAttachedWindowedAccessoryAssertion;
+    SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
     unsigned int _isConnectedToQiPower:1;
     SBHUDController *_HUDController;
     SBVolumeControl *_volumeControl;
@@ -53,6 +64,14 @@
     NSMutableSet *_contentRequiringReasons;
     ATXAppDirectoryClient *_appDirectoryClient;
     _Bool _disallowsPointerInteraction;
+    SBFMotionAlarmController *_motionAlarmController;
+    _Bool _disableChimeForWirelessCharging;
+    _Bool _disableScreenWakeForWirelessCharging;
+    SWWakingTimer *_debounceWirelessChargingTimer;
+    _Bool _isAccessoryAnimationAllowed;
+    CSMagSafeAccessory *_lastAttachedAccessory;
+    CSMagSafeAccessory *_lastDetachedAccessory;
+    NSMutableDictionary *_accessoriesAttachedByUUID;
     _Bool _chargingChimeEnabled;
     SBIconController *_iconController;
 }
@@ -62,13 +81,30 @@
 + (struct CGAffineTransform)_transformAndFrame:(struct CGRect *)arg1 forLaunchImageHostViewWithOrientation:(long long)arg2 statusBarHeight:(double)arg3 inJailRect:(struct CGRect)arg4;
 + (struct CGAffineTransform)_transformForStatusBarWithOrientation:(long long)arg1 scaleFactor:(double)arg2;
 + (id)_effectiveStatusBarSettingsForSnapshot:(id)arg1 sceneHandle:(id)arg2;
-+ (id)zoomViewForDeviceApplicationSceneHandle:(id)arg1 displayConfiguration:(id)arg2 interfaceOrientation:(long long)arg3 snapshot:(id)arg4 snapshotSize:(struct CGSize)arg5 statusBarDescriptor:(id)arg6 decodeImage:(_Bool)arg7;
++ (id)zoomViewForDeviceApplicationSceneHandle:(id)arg1 displayConfiguration:(id)arg2 interfaceOrientation:(long long)arg3 snapshot:(id)arg4 snapshotSize:(struct CGSize)arg5 statusBarDescriptor:(id)arg6 decodeImage:(_Bool)arg7 hasOrientationMismatchForClassicApp:(_Bool)arg8;
 + (struct CGRect)statusBarFrameForDeviceApplicationSceneHandle:(id)arg1 displayConfiguration:(id)arg2 interfaceOrientation:(long long)arg3 statusBarStyleRequest:(id)arg4 withinBounds:(struct CGRect)arg5 inReferenceSpace:(_Bool)arg6;
 + (struct CGRect)statusBarFrameForSnapshotFrame:(struct CGRect)arg1 remainderFrame:(struct CGRect *)arg2 orientation:(long long)arg3 statusBarStyleRequest:(id)arg4 hidden:(_Bool)arg5;
 + (struct CGRect)statusBarFrameForSnapshotFrame:(struct CGRect)arg1 orientation:(long long)arg2 statusBarStyleRequest:(id)arg3 hidden:(_Bool)arg4;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool chargingChimeEnabled; // @synthesize chargingChimeEnabled=_chargingChimeEnabled;
 @property(readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
+- (void)_setConnectedToWindowedAccessory:(_Bool)arg1;
+- (_Bool)_shouldShowAnimationForAccessory:(id)arg1;
+- (_Bool)_blocksAnimationForAccessoryType:(long long)arg1;
+- (_Bool)_shouldInitiateAnimationForAccessory:(id)arg1;
+- (void)_dismissAccessory:(id)arg1 playChime:(_Bool)arg2;
+- (void)windowedAccessoryPresented;
+- (void)windowedAccessoryDismissed;
+- (void)setIsAccessoryAnimationAllowed:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool isAccessoryAnimationAllowed;
+- (void)setLastDetachedAccessory:(id)arg1;
+- (void)setLastAttachedAccessory:(id)arg1;
+- (void)removeDetachedAccessory:(id)arg1;
+- (void)storeAttachedAccessory:(id)arg1;
+@property(readonly, nonatomic) CSMagSafeAccessory *lastDetachedAccessory;
+@property(readonly, nonatomic) CSMagSafeAccessory *lastAttachedAccessory;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -107,6 +143,11 @@
 - (void)possiblyWakeForPowerStatusChangeWithUnlockSource:(int)arg1;
 @property(readonly, nonatomic, getter=isConnectedToQiPower) _Bool connectedToQiPower;
 - (void)setPointerInteractionsEnabled:(_Bool)arg1;
+- (struct CGRect)visibleScreenCoordinatesForWindowedAccessory;
+- (_Bool)isConnectedToWindowedAccessory;
+- (_Bool)isConnectedToWirelessInternalAccessory;
+@property(readonly, nonatomic, getter=isConnectedToWirelessInternalChargingAccessory) _Bool connectedToWirelessInternalChargingAccessory;
+@property(readonly, nonatomic, getter=isConnectedToWirelessInternalCharger) _Bool connectedToWirelessInternalCharger;
 - (_Bool)isConnectedToChargeIncapablePowerSource;
 @property(readonly, nonatomic, getter=isConnectedToExternalChargingSource) _Bool connectedToExternalChargingSource;
 @property(readonly, nonatomic, getter=isOnAC) _Bool onAC;
@@ -114,10 +155,19 @@
 - (_Bool)isBatteryCharging;
 - (int)batteryCapacityAsPercentage;
 - (float)batteryCapacity;
+- (void)_playAccessoryChimeIfAppropriateForAccessory:(id)arg1 attaching:(_Bool)arg2 withDelay:(double)arg3;
+- (void)_cancelDebounceWirelessChargingTimer;
+- (void)_resetWirelessChargingState;
+- (void)_debounceWirelessChargingTimerFired;
+- (void)_setDebounceWirelessChargingTimerWithDuration:(double)arg1;
+- (_Bool)_isConnectedToWirelessCharging;
+- (void)didDetectDeviceMotion;
 - (void)playChargingChimeIfAppropriate;
 - (void)suppressChimeForConnectedPowerSources;
 - (_Bool)_powerSourceWantsToPlayChime;
 - (void)_enumeratePowerSourcesWithBlock:(CDUnknownBlockType)arg1;
+- (void)_disableWirelessChargingChimeAndScreenWakeForDuration:(double)arg1 withMotionAlarm:(_Bool)arg2;
+- (void)_disableWirelessChargingChimeAndScreenWakeForDuration:(double)arg1;
 - (void)updateBatteryState:(id)arg1;
 - (void)cancelVolumeEvent;
 - (void)handleVolumeButtonWithType:(long long)arg1 down:(_Bool)arg2;
@@ -151,11 +201,12 @@
 - (void)_deviceUILocked;
 - (void)_activateWorkspaceEntity:(id)arg1 fromIcon:(id)arg2 location:(id)arg3 validator:(CDUnknownBlockType)arg4;
 - (void)activateApplication:(id)arg1 fromIcon:(id)arg2 location:(id)arg3 activationSettings:(id)arg4 actions:(id)arg5;
-- (long long)transitionSourceForIconLocation:(id)arg1;
-- (id)alertItemForPreventingLaunchOfApp:(id)arg1 outTrustState:(unsigned long long *)arg2;
+- (id)workflowClientFromWebClip:(id)arg1 appToLaunch:(id)arg2;
+- (long long)transitionSourceForIcon:(id)arg1 iconLocation:(id)arg2;
 - (void)getRotationContentSettings:(CDStruct_e950349b *)arg1 forWindow:(id)arg2;
 - (void)_setupHomeScreenContentBackdropView;
 - (void)_setupHomeScreenDimmingWindow;
+- (void)setLockScreenScale:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenBlurProgress:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenDimmingAlpha:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenScale:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -163,14 +214,6 @@
 - (id)scalingView;
 - (id)contentView;
 - (id)window;
-- (void)animateFakeStatusBarWithParameters:(id)arg1 transition:(id)arg2;
-- (void)setFakeSpringBoardStatusBarVisible:(_Bool)arg1;
-- (id)_fakeSpringBoardStatusBar;
-- (id)fakeStatusBarStyleRequestForStyle:(long long)arg1;
-- (void)configureFakeSpringBoardStatusBarWithStyleRequest:(id)arg1;
-- (_Bool)isFakeStatusBarStyleEffectivelyDoubleHeight:(long long)arg1;
-- (void)configureFakeSpringBoardStatusBarWithDefaultStyleRequestForStyle:(long long)arg1;
-- (void)removeFakeSpringBoardStatusBar;
 - (void)_willRevealOrHideContentView;
 - (id)init;
 - (void)dealloc;

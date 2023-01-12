@@ -6,27 +6,29 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSString, NSURL, UILabel, UIView;
+@class NSString, NSURL, UILabel, UIView, _UIContentUnavailableView;
 
 @interface DDParsecNoDataViewController : UIViewController
 {
     UIView *_container;
     UILabel *_errorLabel;
-    _Bool _inPlatter;
+    _UIContentUnavailableView *_emptyNoContentView;
+    _Bool _lookup;
     NSString *_reason;
     NSString *_searchWebQuery;
     NSURL *_altURL;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool inPlatter; // @synthesize inPlatter=_inPlatter;
-@property(retain) NSURL *altURL; // @synthesize altURL=_altURL;
-@property(retain) NSString *searchWebQuery; // @synthesize searchWebQuery=_searchWebQuery;
+@property(nonatomic) _Bool lookup; // @synthesize lookup=_lookup;
+@property(retain, nonatomic) NSURL *altURL; // @synthesize altURL=_altURL;
+@property(retain, nonatomic) NSString *searchWebQuery; // @synthesize searchWebQuery=_searchWebQuery;
 @property(retain, nonatomic) NSString *reason; // @synthesize reason=_reason;
 - (_Bool)_canShowWhileLocked;
 - (void)manageDictionaries:(id)arg1;
 - (id)manageDictionariesURL;
 - (void)searchWeb:(id)arg1;
+- (void)updateStyle;
 - (void)loadView;
 
 @end

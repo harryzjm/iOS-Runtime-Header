@@ -29,12 +29,13 @@
 - (id)valueTransformer;
 - (Class)resolutionResultClass;
 - (Class)_unsafeObjectClass;
+- (Class)_relationshipValueTransformerClass;
 - (Class)objectClass;
 - (id)__INCodableDescriptionObjectTypeKey;
-- (id)__INTypeCodableDescriptionObjectTypeKey;
-- (id)__INIntentResponseCodableDescriptionObjectTypeKey;
 - (id)__INCodableDescriptionObjectTypeNamespaceKey;
+- (id)__INIntentResponseCodableDescriptionObjectTypeKey;
 - (id)__INIntentResponseCodableDescriptionObjectTypeNamespaceKey;
+- (id)__INTypeCodableDescriptionObjectTypeKey;
 - (id)__INTypeCodableDescriptionObjectTypeNamespaceKey;
 
 @end

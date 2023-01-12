@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDProtocolTranslator, NSArray, NSData, NSString, NSURL, PCCKey;
+@class CKDProtocolTranslator, CKDTrustedTargetKey, CKDTrustedTargetWrappedKey, NSArray, NSData, NSString, NSURL, PCCKey;
 @protocol CKCodeOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDCodeFunctionInvokeOperation
 {
     _Bool _shouldSendRecordPCSKeys;
@@ -25,7 +24,12 @@ __attribute__((visibility("hidden")))
     NSData *_attestationEntropy;
     NSArray *_requestLocalSerializations;
     NSArray *_requestLocalEnvelopes;
+    unsigned long long _dataProtectionType;
     NSData *_permittedRemoteMeasurement;
+    NSString *_trustedTargetDomain;
+    NSString *_trustedTargetOID;
+    CKDTrustedTargetKey *_trustedTargetKey;
+    CKDTrustedTargetWrappedKey *_trustedTargetWrappedKey;
     NSURL *_resolvedBaseURL;
     NSArray *_requestRecords;
     NSData *_serializedArguments;
@@ -34,6 +38,8 @@ __attribute__((visibility("hidden")))
     CKDProtocolTranslator *_translator;
 }
 
++ (id)entitlementURLForServiceName:(id)arg1 container:(id)arg2;
++ (id)URLFromEntitlementString:(id)arg1;
 + (long long)isPredominatelyDownload;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
@@ -43,8 +49,13 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *requestRecords; // @synthesize requestRecords=_requestRecords;
 @property(nonatomic) _Bool shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
 @property(copy, nonatomic) NSURL *resolvedBaseURL; // @synthesize resolvedBaseURL=_resolvedBaseURL;
+@property(retain, nonatomic) CKDTrustedTargetWrappedKey *trustedTargetWrappedKey; // @synthesize trustedTargetWrappedKey=_trustedTargetWrappedKey;
+@property(retain, nonatomic) CKDTrustedTargetKey *trustedTargetKey; // @synthesize trustedTargetKey=_trustedTargetKey;
+@property(copy, nonatomic) NSString *trustedTargetOID; // @synthesize trustedTargetOID=_trustedTargetOID;
+@property(copy, nonatomic) NSString *trustedTargetDomain; // @synthesize trustedTargetDomain=_trustedTargetDomain;
 @property(nonatomic) _Bool shouldSendRecordPCSKeys; // @synthesize shouldSendRecordPCSKeys=_shouldSendRecordPCSKeys;
 @property(copy, nonatomic) NSData *permittedRemoteMeasurement; // @synthesize permittedRemoteMeasurement=_permittedRemoteMeasurement;
+@property(nonatomic) unsigned long long dataProtectionType; // @synthesize dataProtectionType=_dataProtectionType;
 @property(copy, nonatomic) NSArray *requestLocalEnvelopes; // @synthesize requestLocalEnvelopes=_requestLocalEnvelopes;
 @property(copy, nonatomic) NSArray *requestLocalSerializations; // @synthesize requestLocalSerializations=_requestLocalSerializations;
 @property(retain, nonatomic) NSData *attestationEntropy; // @synthesize attestationEntropy=_attestationEntropy;
@@ -58,18 +69,23 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType replaceWireSerializations; // @synthesize replaceWireSerializations=_replaceWireSerializations;
 @property(copy, nonatomic) CDUnknownBlockType initialResponseReceivedCallback; // @synthesize initialResponseReceivedCallback=_initialResponseReceivedCallback;
 @property(copy, nonatomic) CDUnknownBlockType replaceLocalSerializationsBlobs; // @synthesize replaceLocalSerializationsBlobs=_replaceLocalSerializationsBlobs;
+- (_Bool)validateAgainstLiveContainer:(id)arg1 error:(id *)arg2;
 - (void)main;
 - (void)_postflightRecords;
 - (void)_getDeserializedRecords;
 - (void)_invokeLocalFunction;
 - (void)_invokeFunction;
 - (void)_getSerializedRequest;
+- (void)_checkShouldSendRecordPCSKeys;
+- (void)_prepareForTrustedTargetEncryption;
+- (void)_prepareForProtectedCloudCompute;
 - (void)_preflightRecords;
+- (id)encryptData:(id)arg1;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (int)operationType;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKCodeOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

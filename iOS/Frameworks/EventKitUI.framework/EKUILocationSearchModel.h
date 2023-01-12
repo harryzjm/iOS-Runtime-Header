@@ -25,6 +25,7 @@
     id <CNCancelable> _contactsSearchToken;
     NSObject<OS_dispatch_queue> *_recentsQueue;
     NSObject<OS_dispatch_queue> *_eventsQueue;
+    NSObject<OS_dispatch_queue> *_customConferenceQueue;
     EKEventStore *_eventStore;
     EKOccurrenceCacheLocationSearch *_eventsSearch;
     NSCharacterSet *_whitespaceAndNewlineCharacterSet;
@@ -36,14 +37,22 @@
     NSMutableArray *_frequentsSearchResults;
     NSMutableArray *_eventsSearchResults;
     NSMutableArray *_contactsSearchResults;
+    NSMutableArray *_allPossibleVirtualConferenceRooms;
+    NSMutableArray *_virtualConferenceRoomSearchResults;
     unsigned long long _supportedSearchTypes;
     NSArray *_mapCompletionSearchResults;
     NSArray *_textualSearchResults;
+    NSArray *_virtualConferenceCustomSearchResults;
     id <EKUILocationSearchModelDelegate> _delegate;
 }
 
++ (id)URLsFromSource:(id)arg1;
++ (id)_linksInSource:(id)arg1;
++ (id)_dataDetector;
 - (void).cxx_destruct;
-@property(nonatomic) id <EKUILocationSearchModelDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <EKUILocationSearchModelDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) NSArray *virtualConferenceCustomSearchResults; // @synthesize virtualConferenceCustomSearchResults=_virtualConferenceCustomSearchResults;
+@property(readonly, nonatomic) NSArray *virtualConferenceRoomSearchResults; // @synthesize virtualConferenceRoomSearchResults=_virtualConferenceRoomSearchResults;
 @property(readonly, nonatomic) NSArray *textualSearchResults; // @synthesize textualSearchResults=_textualSearchResults;
 @property(readonly, nonatomic) NSArray *eventsSearchResults; // @synthesize eventsSearchResults=_eventsSearchResults;
 @property(readonly, nonatomic) NSArray *frequentsSearchResults; // @synthesize frequentsSearchResults=_frequentsSearchResults;
@@ -52,6 +61,11 @@
 @property(readonly, nonatomic) NSArray *mapCompletionSearchResults; // @synthesize mapCompletionSearchResults=_mapCompletionSearchResults;
 @property(retain, nonatomic) EKStructuredLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
 @property(nonatomic) unsigned long long supportedSearchTypes; // @synthesize supportedSearchTypes=_supportedSearchTypes;
+- (void)_updateVirtualConferenceOptions:(id)arg1;
+- (void)_updateAllPossibleVirtualConferenceResultsWithRoomTypes:(id)arg1;
+- (void)updateVirtualConferenceRoomOptions:(id)arg1;
+- (void)selectVirtualConferenceRoomType:(id)arg1;
+- (void)_updateVirtualConferenceCustomOptions:(id)arg1;
 - (void)selectCurrentLocation;
 - (void)selectLocation:(id)arg1;
 - (void)selectMapSearchCompletion:(id)arg1;

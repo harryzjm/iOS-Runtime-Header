@@ -8,18 +8,32 @@
 
 @interface CLBeaconRegion
 {
+    _Bool _notifyEntryStateOnDisplay;
+    int _definitionMask;
+    NSUUID *_UUID;
+    NSNumber *_major;
+    NSNumber *_minor;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)any;
-@property(nonatomic) _Bool notifyEntryStateOnDisplay;
+@property(readonly, nonatomic) int definitionMask; // @synthesize definitionMask=_definitionMask;
+@property _Bool notifyEntryStateOnDisplay; // @synthesize notifyEntryStateOnDisplay=_notifyEntryStateOnDisplay;
+@property(readonly, copy, nonatomic) NSNumber *minor; // @synthesize minor=_minor;
+@property(readonly, copy, nonatomic) NSNumber *major; // @synthesize major=_major;
+@property(readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property(readonly, copy, nonatomic) CLBeaconIdentityConstraint *beaconIdentityConstraint;
 - (id)peripheralDataWithMeasuredPower:(id)arg1;
 - (BOOL)_measuredPowerForDevice;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)description;
+- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithBeaconIdentityConstraint:(id)arg1 identifier:(id)arg2;
+- (id)initWithUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4 notifyEntryStateOnDisplay:(_Bool)arg5;
 - (id)initWithUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4;
 - (id)initWithProximityUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4;
 - (id)initWithUUID:(id)arg1 major:(unsigned short)arg2 identifier:(id)arg3;
@@ -29,9 +43,6 @@
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
 - (void)setGutsWithProximityUUID:(id)arg1 major:(id)arg2 minor:(id)arg3 notifyOnDisplay:(_Bool)arg4;
-@property(readonly, copy, nonatomic) NSNumber *minor;
-@property(readonly, copy, nonatomic) NSNumber *major;
-@property(readonly, copy, nonatomic) NSUUID *UUID;
 @property(readonly, copy, nonatomic) NSUUID *proximityUUID;
 
 @end

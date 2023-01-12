@@ -15,7 +15,6 @@
 
 + (id)category;
 - (void).cxx_destruct;
-- (id)_notificationContentWithTitle:(id)arg1 body:(id)arg2;
 - (void)triggerNotification;
 - (id)body;
 - (id)title;

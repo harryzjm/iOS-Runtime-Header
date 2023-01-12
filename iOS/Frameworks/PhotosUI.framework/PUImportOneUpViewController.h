@@ -15,7 +15,6 @@
 #import <PhotosUI/PUSelectableAssetCollectionViewLayoutDelegate-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXImportAssetsDataSourceManagerObserver-Protocol.h>
-#import <PhotosUI/PXImportControllerNotificationsReceiver-Protocol.h>
 #import <PhotosUI/UICollectionViewDataSource-Protocol.h>
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
@@ -24,7 +23,7 @@
 @class NSIndexPath, NSMutableArray, NSMutableSet, NSString, PFCoalescer, PLDateRangeFormatter, PLRoundProgressView, PUImportActionCoordinator, PUImportChangeDetailsCollectionViewHelper, PUImportOneUpViewControllerSpecManager, PUReviewScrubber, PUSelectableAssetCollectionViewLayout, PXAssetReference, PXImportAssetsDataSource, PXImportAssetsDataSourceManager, PXImportController, PXMediaProvider, PXNavigationTitleView, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface PUImportOneUpViewController : UIViewController <PUImportActionCoordinatorDelegate, PXImportAssetsDataSourceManagerObserver, PXImportControllerNotificationsReceiver, PUImportOneUpCellDisplayDelegate, PUImportOneUpScrubberCellDisplayDelegate, PUSelectableAssetCollectionViewLayoutDelegate, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PXChangeObserver, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUImportOneUpTransitioning>
+@interface PUImportOneUpViewController : UIViewController <PUImportActionCoordinatorDelegate, PXImportAssetsDataSourceManagerObserver, PUImportOneUpCellDisplayDelegate, PUImportOneUpScrubberCellDisplayDelegate, PUSelectableAssetCollectionViewLayoutDelegate, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PXChangeObserver, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUImportOneUpTransitioning>
 {
     _Bool _isCommitingPreview;
     _Bool _performingDataSourceChange;
@@ -151,7 +150,7 @@ __attribute__((visibility("hidden")))
 - (void)actionCoordinatorWillBeginImport:(id)arg1;
 - (void)deleteItems:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
-- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3;
+- (void)importControllerProgressDidChange:(id)arg1;
 - (void)_stopImportAction:(id)arg1;
 - (void)_deleteAction:(id)arg1;
 - (void)_cancelAction:(id)arg1;

@@ -22,6 +22,8 @@
 - (void)setHidden:(_Bool)arg1;
 - (void)makeKeyWindow;
 - (_Bool)_canBecomeKeyWindow;
+- (id)autorotationPreventionReasons;
+- (_Bool)isContentHidden;
 - (void)resignAsKeyWindow;
 - (void)dealloc;
 

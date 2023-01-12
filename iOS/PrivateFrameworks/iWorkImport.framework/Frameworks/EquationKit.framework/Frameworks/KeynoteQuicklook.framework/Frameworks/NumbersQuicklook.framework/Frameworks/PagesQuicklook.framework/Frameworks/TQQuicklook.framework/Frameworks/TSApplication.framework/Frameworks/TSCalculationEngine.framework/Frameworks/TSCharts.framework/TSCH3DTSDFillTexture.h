@@ -8,15 +8,15 @@
 
 @interface TSCH3DTSDFillTexture
 {
-    TSDFill *mFill;
+    TSDFill *_fill;
 }
 
 + (id)textureWithTSDFill:(id)arg1;
+- (void).cxx_destruct;
 - (id)databufferForDataCache:(id)arg1;
 - (_Bool)hasCompleteData;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithTSDFill:(id)arg1;
 
 @end

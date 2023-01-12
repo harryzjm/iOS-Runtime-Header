@@ -11,7 +11,7 @@
 
 @interface MPSImage : NSObject
 {
-    struct MPSDevice *_device;
+    void *_device;
     unsigned long long _width;
     unsigned long long _height;
     unsigned long long _featureChannels;

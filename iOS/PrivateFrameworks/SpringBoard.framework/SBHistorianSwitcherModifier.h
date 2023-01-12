@@ -19,6 +19,8 @@
 @property(nonatomic) __weak id <SBHistorianSwitcherModifierDelegate> historianDelegate; // @synthesize historianDelegate=_historianDelegate;
 - (id)_querySnapshotFromModifier:(id)arg1;
 - (void)_populateQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4 appLayouts:(id)arg5;
+- (void)_populateLayoutRoleInAppLayoutAtIndexQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4;
+- (void)_populateLayoutRoleInAppLayoutQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4;
 - (void)_populateAppLayoutQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4;
 - (void)_populateIndexedQueryMethodDescription:(id)arg1 fromModifier:(id)arg2 queryName:(id)arg3 descriptionProvider:(CDUnknownBlockType)arg4 appLayouts:(id)arg5;
 - (id)_eventSnapshotFromEvent:(id)arg1;

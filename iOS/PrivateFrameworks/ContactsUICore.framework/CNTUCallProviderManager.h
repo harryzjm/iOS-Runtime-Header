@@ -17,6 +17,8 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
+- (_Bool)isActionType:(id)arg1 supportedByProvider:(id)arg2;
+- (_Bool)isFirstPartyCallProvider:(id)arg1;
 - (id)thirdPartyCallProviderWithBundleIdentifier:(id)arg1;
 - (id)thirdPartyCallProvidersForActionType:(id)arg1;
 - (id)observableForCallProvidersChangedWithSchedulerProvider:(id)arg1;

@@ -10,9 +10,8 @@
 
 @interface CKSyncEngineFetchChangesOperation : NSOperation
 {
+    int _executionState;
     _Bool _shouldFetchDatabaseChanges;
-    _Bool _isExecuting;
-    _Bool _isFinished;
     CKDatabase *_database;
     CKServerChangeToken *_previousDatabaseServerChangeToken;
     CKOperationGroup *_group;
@@ -23,7 +22,7 @@
     CDUnknownBlockType _databaseChangeTokenUpdatedBlock;
     CDUnknownBlockType _fetchDatabaseChangesCompletionBlock;
     CDUnknownBlockType _recordZoneChangesConfigurationBlock;
-    CDUnknownBlockType _recordChangedBlock;
+    CDUnknownBlockType _recordWasChangedBlock;
     CDUnknownBlockType _recordWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneChangeTokensUpdatedBlock;
     CDUnknownBlockType _recordZoneFetchCompletionBlock;
@@ -36,8 +35,6 @@
 + (unsigned long long)maxZonesPerOperation;
 + (void)setMaxZonesPerOperation:(unsigned long long)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
-@property(nonatomic) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) CDUnknownBlockType fetchChangesCompletionBlock; // @synthesize fetchChangesCompletionBlock=_fetchChangesCompletionBlock;
@@ -45,7 +42,7 @@
 @property(copy, nonatomic) CDUnknownBlockType recordZoneFetchCompletionBlock; // @synthesize recordZoneFetchCompletionBlock=_recordZoneFetchCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneChangeTokensUpdatedBlock; // @synthesize recordZoneChangeTokensUpdatedBlock=_recordZoneChangeTokensUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordWithIDWasDeletedBlock; // @synthesize recordWithIDWasDeletedBlock=_recordWithIDWasDeletedBlock;
-@property(copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
+@property(copy, nonatomic) CDUnknownBlockType recordWasChangedBlock; // @synthesize recordWasChangedBlock=_recordWasChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneChangesConfigurationBlock; // @synthesize recordZoneChangesConfigurationBlock=_recordZoneChangesConfigurationBlock;
 @property(copy, nonatomic) CDUnknownBlockType fetchDatabaseChangesCompletionBlock; // @synthesize fetchDatabaseChangesCompletionBlock=_fetchDatabaseChangesCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType databaseChangeTokenUpdatedBlock; // @synthesize databaseChangeTokenUpdatedBlock=_databaseChangeTokenUpdatedBlock;
@@ -63,6 +60,10 @@
 - (id)cancelledError;
 - (void)finishWithError:(id)arg1;
 - (void)cancel;
+- (void)transitionToFinished;
+- (void)transitionToExecuting;
+- (_Bool)isExecuting;
+- (_Bool)isFinished;
 - (_Bool)isAsynchronous;
 - (id)init;
 - (id)initWithDatabase:(id)arg1;

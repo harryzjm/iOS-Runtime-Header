@@ -9,6 +9,7 @@
 @protocol TSAppMonitorType
 - (id <TSAppMonitorType>)onWindowWillBecomeForegroundWithBlock:(void (^)(void))arg1;
 - (id <TSAppMonitorType>)onWindowDidBecomeBackgroundWithBlock:(void (^)(void))arg1;
+@property(nonatomic, readonly) _Bool isTracking;
 @property(nonatomic) _Bool isActive;
 @end
 

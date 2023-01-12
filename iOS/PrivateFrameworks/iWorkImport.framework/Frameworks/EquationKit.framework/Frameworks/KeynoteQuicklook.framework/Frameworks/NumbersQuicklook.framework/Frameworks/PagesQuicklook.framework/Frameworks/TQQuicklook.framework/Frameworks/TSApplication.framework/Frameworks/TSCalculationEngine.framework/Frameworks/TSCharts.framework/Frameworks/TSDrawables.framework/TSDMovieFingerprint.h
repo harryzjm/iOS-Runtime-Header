@@ -20,8 +20,8 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *tracks; // @synthesize tracks=_tracks;
-- (void)saveToMessage:(struct MovieFingerprint *)arg1 archiver:(id)arg2;
-- (id)initFromMessage:(const struct MovieFingerprint *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (id)initFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) unsigned long long version;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

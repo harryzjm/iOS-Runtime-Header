@@ -9,6 +9,6 @@
 @class CUCaptureController, NSArray;
 
 @protocol CAMFacesDelegate <NSObject>
-- (void)captureController:(CUCaptureController *)arg1 didOutputFaceResults:(NSArray *)arg2 bodyResults:(NSArray *)arg3;
+- (void)captureController:(CUCaptureController *)arg1 didOutputFaceResults:(NSArray *)arg2 headResults:(NSArray *)arg3 bodyResults:(NSArray *)arg4 salientObjectResults:(NSArray *)arg5;
 @end
 

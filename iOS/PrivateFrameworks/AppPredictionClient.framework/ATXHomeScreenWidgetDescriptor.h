@@ -30,6 +30,7 @@
 @property(readonly) unsigned long long hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)compactDescription;
 @property(readonly, copy) NSString *description;
 - (id)widgetKind;
 - (id)extensionBundleId;

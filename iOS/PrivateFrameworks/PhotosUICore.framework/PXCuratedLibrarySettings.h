@@ -15,6 +15,7 @@
     _Bool _showStatusBar;
     _Bool _secondaryToolbarAlwaysVisible;
     _Bool _alwaysShowSecondaryToolbarAtBottom;
+    _Bool _showSecondaryToolbar;
     _Bool _enableTapOnTitleToScroll;
     _Bool _enableCustomScrollToTopOrBottom;
     _Bool _useSaliency;
@@ -217,6 +218,7 @@
 @property(nonatomic) double scrollSnapMaximumDecelerationFactor; // @synthesize scrollSnapMaximumDecelerationFactor=_scrollSnapMaximumDecelerationFactor;
 @property(nonatomic) _Bool enableCustomScrollToTopOrBottom; // @synthesize enableCustomScrollToTopOrBottom=_enableCustomScrollToTopOrBottom;
 @property(nonatomic) _Bool enableTapOnTitleToScroll; // @synthesize enableTapOnTitleToScroll=_enableTapOnTitleToScroll;
+@property(nonatomic) _Bool showSecondaryToolbar; // @synthesize showSecondaryToolbar=_showSecondaryToolbar;
 @property(nonatomic) double bottomCenterSecondaryToolbarWidth; // @synthesize bottomCenterSecondaryToolbarWidth=_bottomCenterSecondaryToolbarWidth;
 @property(nonatomic) _Bool alwaysShowSecondaryToolbarAtBottom; // @synthesize alwaysShowSecondaryToolbarAtBottom=_alwaysShowSecondaryToolbarAtBottom;
 @property(nonatomic) _Bool secondaryToolbarAlwaysVisible; // @synthesize secondaryToolbarAlwaysVisible=_secondaryToolbarAlwaysVisible;

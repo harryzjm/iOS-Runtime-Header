@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSProgress, NSString, PLProgressFollower;
+@protocol PLResourceDataStore;
 
 @interface PHServerResourceRequestRunner : NSObject
 {
     NSProgress *_progress;
     struct os_unfair_lock_s _lock;
     PLProgressFollower *_dataStoreFollower;
+    id <PLResourceDataStore> _dataStore;
     long long _state;
     NSString *_taskIdentifier;
 }
@@ -23,6 +25,7 @@
 - (void)_replyToVideoRequestWithURL:(id)arg1 mutableInfo:(id)arg2 internalInfo:(id)arg3 error:(id)arg4 pathForAdjustmentFileIfNeeded:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (_Bool)_resourceQualifiesForCacheMetricsCollection:(id)arg1 isLivePhoto:(_Bool)arg2;
 - (id)applyCorrectionsWithRequest:(id)arg1 errorCodes:(id)arg2 library:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)makeResourceUnavailableWithRequest:(id)arg1 library:(id)arg2;
 - (id)makeResourceAvailableWithRequest:(id)arg1 library:(id)arg2 clientBundleID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)_handleProgress:(id)arg1;
 - (void)_cancelWithReply:(CDUnknownBlockType)arg1;

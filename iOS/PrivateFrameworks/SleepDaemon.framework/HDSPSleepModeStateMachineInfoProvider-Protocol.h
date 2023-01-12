@@ -9,9 +9,10 @@
 @class HKSPSleepScheduleModel, NSDate;
 
 @protocol HDSPSleepModeStateMachineInfoProvider <HKSPStateMachineInfoProvider>
-@property(readonly, nonatomic) _Bool isInDemoMode;
+@property(readonly, nonatomic) _Bool hasSleepFocusMode;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;
+- (_Bool)shouldGoIntoSleepModeDuringState:(unsigned long long)arg1;
 @end
 

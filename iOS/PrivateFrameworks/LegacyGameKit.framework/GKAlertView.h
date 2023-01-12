@@ -16,15 +16,13 @@
 
 + (struct CGSize)preferredContentViewSize;
 + (void)initialize;
-- (void)dealloc;
 - (void)setContentView:(id)arg1 animated:(_Bool)arg2;
 - (id)contentView;
-- (void)_changePanelInAnimationDidStop:(id)arg1 finished:(id)arg2 context:(void *)arg3;
-- (void)_changePanelOutAnimationDidStop:(id)arg1 finished:(id)arg2 context:(void *)arg3;
 - (void)_replaceContentView:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_canDrawContent;
 - (void)layoutAnimated:(_Bool)arg1 withDuration:(double)arg2;
 - (void)layoutAnimated:(_Bool)arg1;
+- (void)dealloc;
 - (id)initAlertView;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 delegate:(id)arg3 cancelButtonTitle:(id)arg4 otherButtonTitles:(id)arg5;
 

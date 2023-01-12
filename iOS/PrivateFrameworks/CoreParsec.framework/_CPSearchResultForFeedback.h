@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPSearchResultForFeedback-Protocol.h>
 
-@class NSData, NSString, _CPActionItemForFeedback, _CPPunchoutForFeedback, _CPStruct;
+@class NSData, NSString, _CPActionItemForFeedback, _CPCardForFeedback, _CPPunchoutForFeedback, _CPStruct;
 @protocol NSCopying;
 
 @interface _CPSearchResultForFeedback : PBCodable <_CPSearchResultForFeedback, NSSecureCoding>
@@ -25,6 +25,8 @@
     _Bool _wasCompact;
     _Bool _didTakeoverGo;
     _Bool _usesCompactDisplay;
+    _Bool _isInstantAnswer;
+    _Bool _shouldAutoNavigate;
     int _topHit;
     int _type;
     int _knownResultBundleId;
@@ -48,6 +50,9 @@
     NSString *_sectionBundleIdentifier;
     NSString *_applicationBundleIdentifier;
     NSData *_entityData;
+    _CPCardForFeedback *_card;
+    _CPCardForFeedback *_inlineCard;
+    _CPCardForFeedback *_compactCard;
     unsigned long long _whichResultbundleidentifier;
     unsigned long long _whichSectionbundleid;
     unsigned long long _whichApplicationbundleid;
@@ -57,6 +62,11 @@
 @property(readonly, nonatomic) unsigned long long whichApplicationbundleid; // @synthesize whichApplicationbundleid=_whichApplicationbundleid;
 @property(readonly, nonatomic) unsigned long long whichSectionbundleid; // @synthesize whichSectionbundleid=_whichSectionbundleid;
 @property(readonly, nonatomic) unsigned long long whichResultbundleidentifier; // @synthesize whichResultbundleidentifier=_whichResultbundleidentifier;
+@property(retain, nonatomic) _CPCardForFeedback *compactCard; // @synthesize compactCard=_compactCard;
+@property(retain, nonatomic) _CPCardForFeedback *inlineCard; // @synthesize inlineCard=_inlineCard;
+@property(retain, nonatomic) _CPCardForFeedback *card; // @synthesize card=_card;
+@property(nonatomic) _Bool shouldAutoNavigate; // @synthesize shouldAutoNavigate=_shouldAutoNavigate;
+@property(nonatomic) _Bool isInstantAnswer; // @synthesize isInstantAnswer=_isInstantAnswer;
 @property(nonatomic) _Bool usesCompactDisplay; // @synthesize usesCompactDisplay=_usesCompactDisplay;
 @property(nonatomic) _Bool didTakeoverGo; // @synthesize didTakeoverGo=_didTakeoverGo;
 @property(nonatomic) _Bool wasCompact; // @synthesize wasCompact=_wasCompact;
@@ -85,10 +95,6 @@
 @property(retain, nonatomic) _CPActionItemForFeedback *action; // @synthesize action=_action;
 @property(nonatomic) int topHit; // @synthesize topHit=_topHit;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -103,7 +109,6 @@
 - (void)clearSectionbundleid;
 - (void)clearResultbundleidentifier;
 - (id)initWithFacade:(id)arg1;
-- (id)feedbackJSON;
 @property(readonly, copy, nonatomic) NSString *jsonApplicationBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *jsonSectionBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *jsonResultBundleIdentifier;
@@ -112,6 +117,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

@@ -23,6 +23,7 @@
     CDUnknownBlockType _presentBlock;
     CDUnknownBlockType _dismissBlock;
     CDUnknownBlockType _completionBlock;
+    NSString *_presentingViewControllerWeeTitle;
     struct CGPoint _initialBadgeCenter;
     struct CGPoint _finalBadgeCenter;
     struct CGRect _initialBadgeFrame;
@@ -33,6 +34,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *presentingViewControllerWeeTitle; // @synthesize presentingViewControllerWeeTitle=_presentingViewControllerWeeTitle;
 @property(nonatomic) _Bool reduceMotion; // @synthesize reduceMotion=_reduceMotion;
 @property(nonatomic) _Bool shouldDismissGracefullyForTextSizeChange; // @synthesize shouldDismissGracefullyForTextSizeChange=_shouldDismissGracefullyForTextSizeChange;
 @property(nonatomic) _Bool shouldPlayFlipInAnimation; // @synthesize shouldPlayFlipInAnimation=_shouldPlayFlipInAnimation;

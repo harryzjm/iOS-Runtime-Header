@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, NSMutableArray, NSString, NSXPCInterface, _HKXPCConnection;
-@protocol OS_dispatch_queue, _HKXPCExportable;
+@class NSMutableArray, NSString, NSXPCInterface, _HKXPCConnection;
+@protocol HKProxyProviderSource, OS_dispatch_queue, _HKXPCExportable;
 
 @interface HKProxyProvider : NSObject
 {
-    HKHealthStore *_strongHealthStore;
-    HKHealthStore *_weakHealthStore;
+    id <HKProxyProviderSource> _source;
+    id <HKProxyProviderSource> _weakSource;
     _HKXPCConnection *_connection;
     NSString *_daemonLaunchNotificationName;
     NSXPCInterface *_exportedInterface;
@@ -25,7 +25,7 @@
     NSMutableArray *_pendingFetchContinuations;
     _Bool _shouldRetryOnInterruption;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSString *_proxyIdentifier;
+    NSString *_serviceIdentifier;
     id <_HKXPCExportable> _exportedObject;
 }
 
@@ -33,9 +33,10 @@
 - (void).cxx_destruct;
 @property _Bool shouldRetryOnInterruption; // @synthesize shouldRetryOnInterruption=_shouldRetryOnInterruption;
 @property(readonly, nonatomic) __weak id <_HKXPCExportable> exportedObject; // @synthesize exportedObject=_exportedObject;
-@property(readonly, copy, nonatomic) NSString *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
+@property(readonly, copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-- (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 healthStore:(id)arg2 endpointHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (void)fetchProxyServiceEndpointFromSource:(id)arg1 serviceIdentifier:(id)arg2 endpointHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (id)debugIdentifier;
 - (id)description;
 - (CDUnknownBlockType)clientQueueProgressHandlerWithHandler:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)clientQueueDoubleObjectHandlerWithCompletion:(CDUnknownBlockType)arg1;
@@ -55,11 +56,10 @@
 - (void)invalidate;
 - (void)_serverDidFinishLaunching;
 @property(copy) CDUnknownBlockType automaticProxyReconnectionHandler;
-- (void)getHealthStoreWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)referenceHealthStoreWeakly;
+- (void)_lock_getSourceWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)referenceSourceWeakly;
 - (void)dealloc;
-- (id)initWithHealthStore:(id)arg1 proxyIdentifier:(id)arg2 exportedObject:(id)arg3 exportedInterface:(id)arg4 remoteInterface:(id)arg5;
-- (id)initWithHealthStore:(id)arg1 proxyIdentifier:(id)arg2 exportedObject:(id)arg3;
+- (id)initWithSource:(id)arg1 serviceIdentifier:(id)arg2 exportedObject:(id)arg3 exportedInterface:(id)arg4 remoteInterface:(id)arg5;
 
 @end
 

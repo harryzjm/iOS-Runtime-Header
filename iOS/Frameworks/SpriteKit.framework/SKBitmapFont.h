@@ -18,9 +18,9 @@ __attribute__((visibility("hidden")))
     double _lineHeight;
     double _baseLine;
     NSArray *_characterSprites;
-    struct map<unsigned short, SKSpriteNode *, std::__1::less<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, SKSpriteNode *>>> _characterSpriteByChar;
-    struct map<unsigned short, double, std::__1::less<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, double>>> _characterAdvanceByChar;
-    struct map<unsigned int, double, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, double>>> _characterKerningByCharPair;
+    struct map<unsigned short, SKSpriteNode *, std::less<unsigned short>, std::allocator<std::pair<const unsigned short, SKSpriteNode *>>> _characterSpriteByChar;
+    struct map<unsigned short, double, std::less<unsigned short>, std::allocator<std::pair<const unsigned short, double>>> _characterAdvanceByChar;
+    struct map<unsigned int, double, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, double>>> _characterKerningByCharPair;
     _Bool _internal;
     NSString *_fileName;
 }

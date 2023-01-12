@@ -13,7 +13,7 @@
     MISSING_TYPE *onTap;
     MISSING_TYPE *formatLayoutView;
     MISSING_TYPE *stateMaskFormatLayoutViews;
-    MISSING_TYPE *actions;
+    MISSING_TYPE *createMenuElementsBlock;
 }
 
 - (void).cxx_destruct;

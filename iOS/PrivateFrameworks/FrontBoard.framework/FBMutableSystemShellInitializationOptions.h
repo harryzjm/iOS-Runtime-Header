@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface FBMutableSystemShellInitializationOptions
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) NSString *independentWatchdogPortName; // @dynamic independentWatchdogPortName;
 @property(copy, nonatomic) CDUnknownBlockType registerAdditionalServicesBlock; // @dynamic registerAdditionalServicesBlock;
 @property(nonatomic) double systemSleepInterval; // @dynamic systemSleepInterval;
 @property(nonatomic) _Bool shouldWaitForMigrator; // @dynamic shouldWaitForMigrator;

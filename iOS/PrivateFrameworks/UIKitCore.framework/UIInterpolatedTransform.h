@@ -17,11 +17,12 @@ __attribute__((visibility("hidden")))
     double _rotationEpsilon;
     double _scaleEpsilon;
     double _translationEpsilon;
+    long long _rotationDirection;
 }
 
 + (id)zero;
 + (id)epsilon;
-+ (id)valueWithDecomposedTransform:(CDStruct_e79446ac)arg1 rotationEpsilon:(double)arg2 scaleEpsilon:(double)arg3 translationEpsilon:(double)arg4;
++ (id)valueWithDecomposedTransform:(CDStruct_e79446ac)arg1 rotationEpsilon:(double)arg2 scaleEpsilon:(double)arg3 translationEpsilon:(double)arg4 rotationDirection:(long long)arg5;
 + (id)valueWithDecomposedTransform:(CDStruct_e79446ac)arg1;
 + (id)valueWithCATransform3D:(struct CATransform3D)arg1 rotationEpsilon:(double)arg2 scaleEpsilon:(double)arg3 translationEpsilon:(double)arg4;
 + (id)valueWithCATransform3D:(struct CATransform3D)arg1;
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (id)multiplyByVector:(id)arg1;
 - (id)multiplyByScalar:(double)arg1;
 - (id)addVector:(id)arg1;
-- (void)integrateWithVelocity:(id)arg1 target:(id)arg2 intermediateTarget:(id)arg3 intermediateTargetVelocity:(id)arg4 parameters:(CDStruct_9e265dec)arg5 state:(CDStruct_289c5ec3)arg6 delta:(double)arg7;
+- (void)integrateWithVelocity:(id)arg1 target:(id)arg2 intermediateTarget:(id)arg3 intermediateTargetVelocity:(id)arg4 parameters:(CDStruct_500c0369)arg5 state:(CDStruct_289c5ec3)arg6 delta:(double)arg7;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (_Bool)isUndefined;

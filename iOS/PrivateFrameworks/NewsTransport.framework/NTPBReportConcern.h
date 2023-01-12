@@ -12,11 +12,12 @@
 
 @interface NTPBReportConcern : PBCodable <NSCopying>
 {
+    long long _backendArticleVersion;
+    long long _publisherArticleVersion;
     int _articleFeedCellHostType;
     int _articleFeedCellSection;
     NSString *_articleParentFeedId;
     int _articleParentFeedType;
-    int _backendArticleVersion;
     NSString *_clientId;
     NSString *_concernComments;
     int _concernReason;
@@ -25,21 +26,22 @@
     int _feedFeedType;
     NSString *_feedPresentationSearchString;
     int _feedViewPresentationReason;
-    int _publisherArticleVersion;
+    int _originProductType;
     NSString *_referencedArticleId;
     int _reportVersion;
     NSString *_userId;
     _Bool _isUserSubscribedToFeed;
     struct {
+        unsigned int backendArticleVersion:1;
+        unsigned int publisherArticleVersion:1;
         unsigned int articleFeedCellHostType:1;
         unsigned int articleFeedCellSection:1;
         unsigned int articleParentFeedType:1;
-        unsigned int backendArticleVersion:1;
         unsigned int concernReason:1;
         unsigned int contentType:1;
         unsigned int feedFeedType:1;
         unsigned int feedViewPresentationReason:1;
-        unsigned int publisherArticleVersion:1;
+        unsigned int originProductType:1;
         unsigned int isUserSubscribedToFeed:1;
     } _has;
 }
@@ -49,8 +51,8 @@
 @property(nonatomic) _Bool isUserSubscribedToFeed; // @synthesize isUserSubscribedToFeed=_isUserSubscribedToFeed;
 @property(retain, nonatomic) NSString *feedPresentationSearchString; // @synthesize feedPresentationSearchString=_feedPresentationSearchString;
 @property(retain, nonatomic) NSString *articleParentFeedId; // @synthesize articleParentFeedId=_articleParentFeedId;
-@property(nonatomic) int backendArticleVersion; // @synthesize backendArticleVersion=_backendArticleVersion;
-@property(nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
+@property(nonatomic) long long backendArticleVersion; // @synthesize backendArticleVersion=_backendArticleVersion;
+@property(nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property(retain, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property(retain, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property(retain, nonatomic) NSString *concernComments; // @synthesize concernComments=_concernComments;
@@ -64,6 +66,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasOriginProductType;
+@property(nonatomic) int originProductType; // @synthesize originProductType=_originProductType;
 @property(readonly, nonatomic) _Bool hasUserId;
 @property(nonatomic) _Bool hasIsUserSubscribedToFeed;
 @property(readonly, nonatomic) _Bool hasFeedPresentationSearchString;

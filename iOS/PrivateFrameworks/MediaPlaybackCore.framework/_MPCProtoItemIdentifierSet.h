@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoItemIdentifierSet : PBCodable <NSCopying>
 {
     long long _cloudID;
@@ -29,14 +30,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
-@property(nonatomic) long long purchaseHistoryID; // @synthesize purchaseHistoryID=_purchaseHistoryID;
-@property(nonatomic) long long cloudID; // @synthesize cloudID=_cloudID;
-@property(nonatomic) long long storeSubscriptionAdamID; // @synthesize storeSubscriptionAdamID=_storeSubscriptionAdamID;
-@property(nonatomic) long long storeAdamID; // @synthesize storeAdamID=_storeAdamID;
-@property(retain, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
-@property(nonatomic) long long delegateInfoID; // @synthesize delegateInfoID=_delegateInfoID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -44,13 +37,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasCloudUniversalLibraryID;
-@property(nonatomic) _Bool hasPurchaseHistoryID;
-@property(nonatomic) _Bool hasCloudID;
-@property(nonatomic) _Bool hasStoreSubscriptionAdamID;
-@property(nonatomic) _Bool hasStoreAdamID;
-@property(readonly, nonatomic) _Bool hasContentItemID;
-@property(nonatomic) _Bool hasDelegateInfoID;
 
 @end
 

@@ -34,10 +34,12 @@
 - (id)_filteredAndUpdatedSignificantEventsFromSignificantEvents:(id)arg1;
 - (id)_significantEventsForEmptyAnalyzerResult:(id)arg1 dateOfOccurrence:(id)arg2 timeOffsetWithinClip:(double)arg3;
 - (id)_significantEventsForAnalyzerEvent:(id)arg1 dateOfOccurrence:(id)arg2 heroFrameData:(id)arg3 timeOffsetWithinClip:(double)arg4 recordingEventTriggers:(unsigned long long)arg5;
-- (id)_significantEventsForFrameResult:(id)arg1 dateOfOccurrence:(id)arg2 timeOffsetWithinClip:(double)arg3 recordingEventTriggers:(unsigned long long)arg4;
+- (id)_significantEventsForFrameResult:(id)arg1 analyzerResult:(id)arg2 dateOfOccurrence:(id)arg3 timeOffsetWithinClip:(double)arg4 recordingEventTriggers:(unsigned long long)arg5;
+- (_Bool)_isAnyEventInAnalyzerEvents:(id)arg1 includedInRecordingEventTriggers:(unsigned long long)arg2;
+- (_Bool)_isAnyEventInAnalyzerFrameResults:(id)arg1 includedInRecordingEventTriggers:(unsigned long long)arg2;
 - (void)resetState;
-- (id)significantEventsForAnalyzerResult:(id)arg1 dateOfOccurrence:(id)arg2 timeOffsetWithinClip:(double)arg3 recordingEventTriggers:(unsigned long long)arg4;
-- (_Bool)isAnyEventInAnalyzerResult:(id)arg1 includedInRecordingEventTriggers:(unsigned long long)arg2;
+- (id)significantEventsForAnalyzerFragmentResult:(id)arg1 dateOfOccurrence:(id)arg2 timeOffsetWithinClip:(double)arg3 recordingEventTriggers:(unsigned long long)arg4;
+- (_Bool)isAnyEventInAnalyzerFragmentResult:(id)arg1 includedInRecordingEventTriggers:(unsigned long long)arg2;
 - (id)initWithWorkQueue:(id)arg1 faceClassificationResolver:(id)arg2 logIdentifier:(id)arg3;
 
 // Remaining properties

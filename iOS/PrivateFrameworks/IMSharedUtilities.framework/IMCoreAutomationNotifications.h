@@ -24,6 +24,7 @@
 - (void)postCoreAutomationNotificationFinishedPurgingAttachments:(id)arg1 withErrorString:(id)arg2;
 - (void)postCoreAutomationNotificationWithDictionary:(id)arg1 withVerboseLogging:(_Bool)arg2;
 - (void)postCoreAutomationNotificationWithAction:(id)arg1;
+- (void)postCoreAutomationNotificationPeriodicSyncUpdateNotification;
 - (void)postCoreAutomationNotificationFinishedPeriodicSyncNotificationWithStartTime:(id)arg1 chatsDidsync:(_Bool)arg2 messagesDidSync:(_Bool)arg3 attachmentsDidSync:(_Bool)arg4;
 - (void)clearSyncCounts;
 - (id)init;

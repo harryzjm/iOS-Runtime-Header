@@ -18,9 +18,10 @@
 }
 
 + (void)initialize;
-+ (void)_claimUnarchivingOfClass:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)enumerateHexAddressesInStrings:(CDUnknownBlockType)arg1;
+- (void)resymbolicate__NSMallocBlock__StringsWithGraph:(id)arg1;
 - (id)stringForNode:(unsigned int)arg1;
 - (void)setString:(id)arg1 forNode:(unsigned int)arg2;
 - (unsigned int)_indexForString:(id)arg1;

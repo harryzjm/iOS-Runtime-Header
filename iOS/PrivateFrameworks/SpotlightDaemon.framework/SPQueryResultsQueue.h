@@ -37,6 +37,7 @@
 @property(nonatomic) struct __SIResultQueue *siResultsQueue; // @synthesize siResultsQueue=_siResultsQueue;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)_processResults;
+- (void)resumeResultsIfSystemInGoodState;
 - (void)resumeResults;
 - (void)pauseResults;
 @property(readonly) _Bool hasPausedResults;

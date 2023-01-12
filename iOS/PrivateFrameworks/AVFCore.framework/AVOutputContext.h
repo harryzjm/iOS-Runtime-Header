@@ -22,7 +22,10 @@
 + (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1;
 + (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
 + (id)defaultSharedOutputContext;
++ (id)allSharedAudioOutputContexts;
++ (id)addSharedAudioOutputContext;
 + (id)iTunesAudioContext;
++ (id)sharedSystemRemotePoolContext;
 + (id)sharedSystemScreenContext;
 + (id)sharedSystemAudioContext;
 + (id)auxiliaryOutputContext;
@@ -38,8 +41,6 @@
 - (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 - (id)communicationChannelDelegate;
 - (id)outgoingCommunicationChannel;
-- (void)muteAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setVolume:(float)arg1;
 - (void)outputContextImplDidChangeCanSetVolume:(id)arg1;
 - (_Bool)canSetVolume;
@@ -47,13 +48,16 @@
 - (float)volume;
 - (void)outputContextImplDidChangeProvidesControlForAllVolumeFeatures:(id)arg1;
 - (_Bool)providesControlForAllVolumeFeatures;
+- (void)resetPredictedOutputDevice;
+- (void)outputContextImplDidChangePredictedOutputDevice:(id)arg1;
+- (id)predictedOutputDevice;
 - (void)removeOutputDevice:(id)arg1;
 - (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addOutputDevice:(id)arg1;
 - (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
-- (void)outputContextImpl:(id)arg1 didChangeOutputDevicesWithInitiator:(id)arg2;
+- (void)outputContextImpl:(id)arg1 didChangeOutputDevicesWithInitiator:(id)arg2 reason:(id)arg3 deviceID:(id)arg4 previousDeviceIDs:(id)arg5;
 - (id)outputDevices;
 - (_Bool)supportsMultipleBluetoothOutputDevices;
 - (_Bool)supportsMultipleOutputDevices;

@@ -7,6 +7,7 @@
 #import <AVFoundation/AVCapturePhotoSettings.h>
 
 @interface AVCapturePhotoSettings (CAMCaptureEngine)
++ (unsigned int)rawPixelFormatTypeForPhotoOutput:(id)arg1;
 + (id)cam_settingsWithMomentSettings:(id)arg1 request:(id)arg2 context:(id)arg3;
 + (id)cam_settingsWithRequest:(id)arg1 context:(id)arg2;
 - (void)_configureForRequest:(id)arg1 shouldIgnoreInitiationSettingsProperties:(_Bool)arg2 context:(id)arg3;

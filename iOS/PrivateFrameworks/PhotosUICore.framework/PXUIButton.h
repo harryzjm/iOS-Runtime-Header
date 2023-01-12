@@ -6,22 +6,31 @@
 
 #import <UIKit/UIButton.h>
 
-@class PXUIButtonConfiguration;
+#import <PhotosUICore/UIPointerInteractionDelegate-Protocol.h>
 
-@interface PXUIButton : UIButton
+@class NSString, PXUIButtonConfiguration, UIPointerInteraction;
+
+@interface PXUIButton : UIButton <UIPointerInteractionDelegate>
 {
-    PXUIButtonConfiguration *_configuration;
+    PXUIButtonConfiguration *_px_configuration;
+    UIPointerInteraction *_pointerInteraction;
 }
 
-+ (_Bool)_cursorInteractionEnabled;
 - (void).cxx_destruct;
-@property(copy, nonatomic) PXUIButtonConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
+@property(copy, nonatomic) PXUIButtonConfiguration *px_configuration; // @synthesize px_configuration=_px_configuration;
 - (struct CGRect)_pointerRectForCurrentState;
-- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)setHighlighted:(_Bool)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

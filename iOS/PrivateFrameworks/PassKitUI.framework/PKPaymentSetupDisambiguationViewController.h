@@ -38,10 +38,9 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)_productAtIndexPath:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)setupFooterViewForTableView:(id)arg1;
+- (void)setupHeaderViewForTableView:(id)arg1;
 - (void)viewDidLoad;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
-- (void)dealloc;
 - (id)initWithProducts:(id)arg1 context:(long long)arg2;
 
 // Remaining properties

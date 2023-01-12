@@ -8,10 +8,10 @@ __attribute__((visibility("hidden")))
 @interface VNFaceLandmarkDetectorDNN
 {
     struct shared_ptr<vision::mod::LandmarkDetectorDNN> _landmarkDetector;
-    vector_f48c7054 _landmarkPoints65;
+    struct vector<_Geometry2D_point2D_, std::allocator<_Geometry2D_point2D_>> _landmarkPoints65;
 }
 
-+ (const map_781928e9 *)_requestConstellationToDetectorConstellationMap;
++ (const void *)_requestConstellationToDetectorConstellationMap;
 + (id)outputBlobNames;
 + (id)inputBlobNames;
 + (id)configurationOptionKeysForDetectorKey;
@@ -19,13 +19,13 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)releaseResources;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (_Bool)translateAndNormalizeLandmarkPointsWrtLLCofAlignedFaceBBox:(vector_f48c7054 *)arg1 imageBuffer:(id)arg2 outputFace:(id)arg3 error:(id *)arg4;
-- (_Bool)getLandmarkOcclusionFlags:(vector_a7cf9eda *)arg1 forConstellation:(int)arg2 error:(id *)arg3;
-- (_Bool)getLandmarkErrorEstimates:(vector_7584168e *)arg1 forConstellation:(int)arg2 error:(id *)arg3;
-- (_Bool)getLandmarkPoints:(vector_f48c7054 *)arg1 forConstellation:(int)arg2 error:(id *)arg3;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (_Bool)translateAndNormalizeLandmarkPointsWrtLLCofAlignedFaceBBox:(void *)arg1 imageBuffer:(id)arg2 outputFace:(id)arg3 error:(id *)arg4;
+- (_Bool)getLandmarkOcclusionFlags:(void *)arg1 forConstellation:(int)arg2 error:(id *)arg3;
+- (_Bool)getLandmarkErrorEstimates:(void *)arg1 forConstellation:(int)arg2 error:(id *)arg3;
+- (_Bool)getLandmarkPoints:(void *)arg1 forConstellation:(int)arg2 error:(id *)arg3;
 - (_Bool)getConstellation:(unsigned long long *)arg1 cvmlConstellation:(int *)arg2 fromOptions:(id)arg3 error:(id *)arg4;
-@property(readonly) vector_f48c7054 *landmarkPoints65;
+@property(readonly) void *landmarkPoints65;
 
 @end
 

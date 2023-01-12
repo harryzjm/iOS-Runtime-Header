@@ -17,10 +17,10 @@
 }
 
 - (void).cxx_destruct;
-@property(retain) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
-@property(retain) SBKRequest *activeRequest; // @synthesize activeRequest=_activeRequest;
-@property(retain) NSURL *requestURL; // @synthesize requestURL=_requestURL;
-@property(readonly, copy) NSString *domain; // @synthesize domain=_domain;
+@property(retain, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property(retain, nonatomic) SBKRequest *activeRequest; // @synthesize activeRequest=_activeRequest;
+@property(retain, nonatomic) NSURL *requestURL; // @synthesize requestURL=_requestURL;
+@property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 - (id)newRequest;
 - (id)clampsKey;
 - (void)processDataInResponse:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

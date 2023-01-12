@@ -7,6 +7,7 @@
 #import <Foundation/NSNotification.h>
 
 @interface NSNotification (HealthRecordsUI)
++ (id)ClinicalAccountOnboardingCompletionNotification;
 + (id)OAuthCompletionNotification;
 @end
 

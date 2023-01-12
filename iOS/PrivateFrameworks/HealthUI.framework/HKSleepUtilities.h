@@ -24,8 +24,10 @@
 + (id)_generateDailyTimePeriodSeries;
 + (long long)_axisPurposeForSleepSeriesType:(long long)arg1;
 + (id)_sleepSeriesForType:(long long)arg1;
-+ (id)yukonSleepChartDataSource:(id)arg1 representativeDisplayType:(id)arg2;
 + (id)buildPrimarySleepCacheWithHealthStore:(id)arg1 sleepDisplayType:(id)arg2 sleepDataSourceProvider:(id)arg3 chartCacheController:(id)arg4;
++ (id)_sleepSeriesAxisForSleepSeriesType:(long long)arg1 sleepDisplayType:(id)arg2 unitController:(id)arg3;
++ (void)_applyModificationsToSleepSeries:(id)arg1 sleepSeriesType:(long long)arg2 sleepDisplayType:(id)arg3 unitController:(id)arg4;
++ (id)buildSleepGraphSeriesForSleepSeriesType:(long long)arg1 sleepDisplayType:(id)arg2 unitController:(id)arg3;
 + (id)sleepDisplayTypesWithHealthStore:(id)arg1 sleepDisplayType:(id)arg2 unitController:(id)arg3 displayTypeController:(id)arg4 chartCacheController:(id)arg5 sleepChartFormatter:(id)arg6 sleepSeriesType:(long long)arg7 sharedSleepCache:(id)arg8 customSleepSeries:(id)arg9;
 + (id)durationGoalForSleepDay:(id)arg1;
 + (id)verticalNumericalAxis;

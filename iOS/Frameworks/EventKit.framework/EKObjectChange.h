@@ -38,6 +38,7 @@
 @property(readonly, nonatomic) int changeType; // @synthesize changeType=_changeType;
 @property(readonly, nonatomic) EKObjectID *changedObjectID; // @synthesize changedObjectID=_changedObjectID;
 - (id)serializedPropertiesForConsumingChange;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithChangeProperties:(id)arg1;

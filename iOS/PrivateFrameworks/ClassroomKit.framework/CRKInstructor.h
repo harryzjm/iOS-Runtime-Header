@@ -8,10 +8,13 @@
 
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class DMFControlSessionIdentifier, NSData, NSString;
+@class DMFControlSessionIdentifier, NSData, NSDictionary, NSString;
 
 @interface CRKInstructor : NSObject <NSSecureCoding>
 {
+    _Bool _disallowsClassroomAirDropOverLocalNetwork;
+    _Bool _allowsStudentInitiatedDisconnection;
+    _Bool _observingStudentScreen;
     DMFControlSessionIdentifier *_sessionIdentifier;
     NSString *_userIdentifier;
     NSString *_displayName;
@@ -21,6 +24,9 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isObservingStudentScreen) _Bool observingStudentScreen; // @synthesize observingStudentScreen=_observingStudentScreen;
+@property(nonatomic) _Bool allowsStudentInitiatedDisconnection; // @synthesize allowsStudentInitiatedDisconnection=_allowsStudentInitiatedDisconnection;
+@property(nonatomic) _Bool disallowsClassroomAirDropOverLocalNetwork; // @synthesize disallowsClassroomAirDropOverLocalNetwork=_disallowsClassroomAirDropOverLocalNetwork;
 @property(retain, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(copy, nonatomic) NSString *courseName; // @synthesize courseName=_courseName;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -31,6 +37,7 @@
 - (_Bool)isEqualToInstructor:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(readonly, copy, nonatomic) NSDictionary *dictionaryValue;
 
 @end
 

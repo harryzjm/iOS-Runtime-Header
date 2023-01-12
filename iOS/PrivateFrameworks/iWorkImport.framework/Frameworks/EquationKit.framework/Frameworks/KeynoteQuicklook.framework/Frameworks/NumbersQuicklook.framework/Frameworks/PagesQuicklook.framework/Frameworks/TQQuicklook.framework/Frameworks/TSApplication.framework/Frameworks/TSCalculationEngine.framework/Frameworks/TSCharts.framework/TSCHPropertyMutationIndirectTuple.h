@@ -6,12 +6,12 @@
 
 @interface TSCHPropertyMutationIndirectTuple
 {
-    int mStyleOwnerType;
-    unsigned long long mStyleOwnerIndex;
+    int _styleOwnerType;
+    unsigned long long _styleOwnerIndex;
 }
 
-@property(readonly, nonatomic) unsigned long long index; // @synthesize index=mStyleOwnerIndex;
-@property(readonly, nonatomic) int type; // @synthesize type=mStyleOwnerType;
+@property(readonly, nonatomic) unsigned long long index; // @synthesize index=_styleOwnerIndex;
+@property(readonly, nonatomic) int type; // @synthesize type=_styleOwnerType;
 - (id)styleOwnerRef;
 - (id)indirectTuple;
 - (id)styleOwner;

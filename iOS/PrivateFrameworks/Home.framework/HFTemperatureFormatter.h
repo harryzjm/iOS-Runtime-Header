@@ -7,10 +7,11 @@
 #import <Foundation/NSMeasurementFormatter.h>
 
 #import <Home/HFTemperatureUnitObserver-Protocol.h>
+#import <Home/HFUnitFormatter-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface HFTemperatureFormatter : NSMeasurementFormatter <HFTemperatureUnitObserver>
+@interface HFTemperatureFormatter : NSMeasurementFormatter <HFTemperatureUnitObserver, HFUnitFormatter>
 {
     _Bool _inputIsCelsius;
     _Bool _outputIsCelsius;
@@ -23,6 +24,9 @@
 @property(retain, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 @property(nonatomic) _Bool outputIsCelsius; // @synthesize outputIsCelsius=_outputIsCelsius;
 @property(nonatomic) _Bool inputIsCelsius; // @synthesize inputIsCelsius=_inputIsCelsius;
+- (id)measurementForObjectValue:(id)arg1;
+- (id)stringForObjectValue:(id)arg1 withUnit:(_Bool)arg2;
+@property(readonly, nonatomic) NSString *unitDescription;
 - (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnit:(_Bool)arg2;
 - (id)stringForObjectValue:(id)arg1;
 - (void)setMinimumFractionDigits:(unsigned long long)arg1;

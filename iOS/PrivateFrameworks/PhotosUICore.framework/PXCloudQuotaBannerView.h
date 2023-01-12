@@ -12,6 +12,7 @@
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)contentViewSizeForWidth:(double)arg1;
 - (id)_font;
 - (id)initWithBannerView:(id)arg1;
 - (id)initWithContentView:(id)arg1;

@@ -35,24 +35,25 @@
 + (id)cellDiffProperties;
 + (id)cellBorderForResettingAllStrokes;
 + (id)cellBorder;
-@property(readonly, nonatomic) int rightStrokeOrder; // @synthesize rightStrokeOrder=_rightStrokeOrder;
-@property(readonly, retain, nonatomic) TSDStroke *rightStroke; // @synthesize rightStroke=_rightStroke;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool definedRightStroke; // @synthesize definedRightStroke=_definedRightStroke;
-@property(readonly, nonatomic) int bottomStrokeOrder; // @synthesize bottomStrokeOrder=_bottomStrokeOrder;
-@property(readonly, retain, nonatomic) TSDStroke *bottomStroke; // @synthesize bottomStroke=_bottomStroke;
 @property(readonly, nonatomic) _Bool definedBottomStroke; // @synthesize definedBottomStroke=_definedBottomStroke;
-@property(readonly, nonatomic) int leftStrokeOrder; // @synthesize leftStrokeOrder=_leftStrokeOrder;
-@property(readonly, retain, nonatomic) TSDStroke *leftStroke; // @synthesize leftStroke=_leftStroke;
 @property(readonly, nonatomic) _Bool definedLeftStroke; // @synthesize definedLeftStroke=_definedLeftStroke;
-@property(readonly, nonatomic) int topStrokeOrder; // @synthesize topStrokeOrder=_topStrokeOrder;
-@property(readonly, retain, nonatomic) TSDStroke *topStroke; // @synthesize topStroke=_topStroke;
 @property(readonly, nonatomic) _Bool definedTopStroke; // @synthesize definedTopStroke=_definedTopStroke;
+@property(readonly, nonatomic) int rightStrokeOrder; // @synthesize rightStrokeOrder=_rightStrokeOrder;
+@property(readonly, nonatomic) TSDStroke *rightStroke; // @synthesize rightStroke=_rightStroke;
+@property(readonly, nonatomic) int bottomStrokeOrder; // @synthesize bottomStrokeOrder=_bottomStrokeOrder;
+@property(readonly, nonatomic) TSDStroke *bottomStroke; // @synthesize bottomStroke=_bottomStroke;
+@property(readonly, nonatomic) int leftStrokeOrder; // @synthesize leftStrokeOrder=_leftStrokeOrder;
+@property(readonly, nonatomic) TSDStroke *leftStroke; // @synthesize leftStroke=_leftStroke;
+@property(readonly, nonatomic) int topStrokeOrder; // @synthesize topStrokeOrder=_topStrokeOrder;
+@property(readonly, nonatomic) TSDStroke *topStroke; // @synthesize topStroke=_topStroke;
 - (void)didInitFromSOS;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (void)saveToMessage:(struct CellBorderArchive *)arg1 archiver:(id)arg2;
-- (id)initFromMessage:(const struct CellBorderArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (id)initFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) _Bool hasContent;
 - (void)applyToCell:(id)arg1;
@@ -64,7 +65,6 @@
 - (void)setBottomStroke:(id)arg1 order:(int)arg2;
 - (void)setLeftStroke:(id)arg1 order:(int)arg2;
 - (void)setTopStroke:(id)arg1 order:(int)arg2;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,6 +14,7 @@
 {
 }
 
+- (void)extractShardsURLsFromFilterShardURL:(id)arg1 domainShardURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)extractShardsURLsFromBloomFilterURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 // Remaining properties

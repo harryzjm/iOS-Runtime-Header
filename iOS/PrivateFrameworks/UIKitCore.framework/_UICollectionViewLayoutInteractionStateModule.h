@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface _UICollectionViewLayoutInteractionStateModule : NSObject <_UICollectionViewLayoutInteractionStateProviding>
 {
     NSMutableSet *_indexPathsWithBackgroundFillForInteraction;
-    NSMutableDictionary *_postProcessingCellsMap;
+    NSMutableDictionary *_processingCellsMap;
     Class _invalidationContextClass;
     UICollectionViewLayout<_UICollectionViewLayoutInteractionStateModuleHost> *_host;
 }
@@ -24,15 +24,16 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UICollectionViewLayout<_UICollectionViewLayoutInteractionStateModuleHost> *host; // @synthesize host=_host;
 @property(readonly, nonatomic) Class invalidationContextClass; // @synthesize invalidationContextClass=_invalidationContextClass;
 - (id)_cellForItemAtIndexPath:(id)arg1;
-- (void)_noteCellDidFinishPostProcessingAtIndexPath:(id)arg1;
-- (void)_noteCellWillBeginPostProcessing:(id)arg1 atIndexPath:(id)arg2;
+- (void)_noteCellDidFinishProcessingAtIndexPath:(id)arg1;
+- (void)_noteCellWillBeginProcessing:(id)arg1 atIndexPath:(id)arg2;
 - (_Bool)enumerateSectionsAfterSectionIndex:(long long)arg1 enumerator:(CDUnknownBlockType)arg2;
-- (_Bool)_shouldAdjustLayoutToMergeBarInSection:(long long)arg1;
+- (_Bool)_shouldAdjustLayoutToDrawTopSeparatorInSection:(long long)arg1;
+- (_Bool)itemAtIndexPathIsBeingReordered:(id)arg1;
 - (_Bool)itemAtIndexPathIsHighlighted:(id)arg1;
 - (_Bool)itemAtIndexPathIsSelected:(id)arg1;
 - (unsigned long long)selectionGroupingForItemAtIndexPath:(id)arg1;
 - (_Bool)_itemIsSelectedOrHighlightedAndHasBackgroundFillForGroupingAtIndexPath:(id)arg1 cellGroupingPreference:(out long long *)arg2 backgroundIsInset:(out _Bool *)arg3;
-- (void)performPreferredAttributesPostProcessingBlock:(CDUnknownBlockType)arg1 withLayoutAttributes:(id)arg2 forView:(id)arg3;
+- (void)performPreferredAttributesProcessingBlock:(CDUnknownBlockType)arg1 withLayoutAttributes:(id)arg2 forView:(id)arg3;
 - (void)processLayoutInvalidationWithContext:(id)arg1;
 - (id)initWithHost:(id)arg1;
 

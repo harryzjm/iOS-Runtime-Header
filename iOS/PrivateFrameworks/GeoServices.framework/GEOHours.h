@@ -28,37 +28,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)timeRangeType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)timeRangeAtIndex:(unsigned long long)arg1;
-- (unsigned long long)timeRangesCount;
-- (void)addTimeRange:(id)arg1;
-- (void)clearTimeRanges;
-@property(retain, nonatomic) NSMutableArray *timeRanges;
-- (int)StringAsDays:(id)arg1;
-- (id)daysAsString:(int)arg1;
-- (void)setDays:(int *)arg1 count:(unsigned long long)arg2;
-- (int)dayAtIndex:(unsigned long long)arg1;
-- (void)addDay:(int)arg1;
-- (void)clearDays;
-@property(readonly, nonatomic) int *days;
-@property(readonly, nonatomic) unsigned long long daysCount;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

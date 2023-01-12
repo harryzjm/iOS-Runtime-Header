@@ -15,6 +15,8 @@
 
 + (id)evaluatorFromSignalPack:(id)arg1;
 - (void).cxx_destruct;
+- (double)isTransitUserConfidence;
+- (double)isTransitUserHereConfidence;
 - (_Bool)isTouristHere;
 - (_Bool)hasTouristInfo;
 - (_Bool)isRideSharingAppsInstalled;

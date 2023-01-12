@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak id <TUCallFilterControllerActions> actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (id)bundleIdentifierForDialRequest:(id)arg1;
+- (id)bundleIdentifierForCallProvider:(id)arg1;
 - (_Bool)isUnknownAddress:(id)arg1 normalizedAddress:(id)arg2 forBundleIdentifier:(id)arg3;
 - (_Bool)willRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (_Bool)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
@@ -27,6 +27,7 @@
 - (_Bool)shouldRestrictConversation:(id)arg1 performSynchronously:(_Bool)arg2;
 - (_Bool)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)policyForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (id)restrictedContacts:(id)arg1 callProvider:(id)arg2;
 - (unsigned long long)callFilterStatusForDialRequest:(id)arg1;
 - (_Bool)shouldRestrictDialRequest:(id)arg1 performSynchronously:(_Bool)arg2;
 - (_Bool)shouldRestrictDialRequest:(id)arg1;

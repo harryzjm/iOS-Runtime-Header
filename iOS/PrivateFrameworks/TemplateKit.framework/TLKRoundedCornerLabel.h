@@ -17,6 +17,7 @@
 @property(retain, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
 @property(nonatomic) unsigned long long sizeConfiguration; // @synthesize sizeConfiguration=_sizeConfiguration;
 @property(retain, nonatomic) TLKLabel *label; // @synthesize label=_label;
+- (_Bool)allowsVibrancy;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSLocale *_targetLocale;
     NSString *_requestID;
     NSString *_sessionID;
+    NSString *_clientHeader;
     NSString *_clientIdentifier;
     NSDate *_startTime;
     NSURL *_sourceURL;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 @property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property(copy, nonatomic) NSString *clientHeader; // @synthesize clientHeader=_clientHeader;
 @property(retain, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(retain, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
 @property(retain, nonatomic) NSLocale *targetLocale; // @synthesize targetLocale=_targetLocale;

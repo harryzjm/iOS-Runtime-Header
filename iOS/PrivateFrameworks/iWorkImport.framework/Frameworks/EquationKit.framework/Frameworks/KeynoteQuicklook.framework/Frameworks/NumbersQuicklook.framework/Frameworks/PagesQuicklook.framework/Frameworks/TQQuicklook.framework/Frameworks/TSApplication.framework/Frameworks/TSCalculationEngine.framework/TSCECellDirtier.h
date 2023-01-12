@@ -10,13 +10,13 @@
 
 @interface TSCECellDirtier : NSObject
 {
-    struct TSCEDependencyTracker *_dependTracker;
+    void *_dependTracker;
     struct TSCEInternalCellReference _startCellRef;
     _Bool _dirtyingInProgress;
     struct os_unfair_lock_s _dirtyingLock;
     NSDate *_startTime;
     double _timeout;
-    unordered_map_9b6cdcc3 _dependentsToDirtyByFromRef;
+    struct unordered_map<TSCEInternalCellReference, TSCECountedInternalCellRefSet, std::hash<TSCEInternalCellReference>, std::equal_to<TSCEInternalCellReference>, std::allocator<std::pair<const TSCEInternalCellReference, TSCECountedInternalCellRefSet>>> _dependentsToDirtyByFromRef;
 }
 
 - (id).cxx_construct;
@@ -25,7 +25,7 @@
 @property(readonly, nonatomic) struct TSCEInternalCellReference startCellRef; // @synthesize startCellRef=_startCellRef;
 @property(readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property(readonly, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
-@property(readonly, nonatomic) struct TSCEDependencyTracker *dependTracker; // @synthesize dependTracker=_dependTracker;
+@property(readonly, nonatomic) void *dependTracker; // @synthesize dependTracker=_dependTracker;
 - (_Bool)dirtyNewCellRef:(const struct TSCEInternalCellReference *)arg1 forSeconds:(double)arg2 fromStartTime:(id)arg3;
 - (_Bool)dirtyCellsForSeconds:(double)arg1 fromStartTime:(id)arg2;
 - (_Bool)_dirtyCellsWithNoLockForSeconds:(double)arg1 fromStartTime:(id)arg2;
@@ -33,8 +33,8 @@
 - (void)startDirtyingCellRef;
 - (void)dirtyCellsNow;
 @property(readonly, nonatomic) _Bool isDoneDirtying;
-- (unordered_map_9b6cdcc3 *)dependentsToDirtyByFromRef;
-- (id)initWithDependencyTracker:(struct TSCEDependencyTracker *)arg1;
+- (void *)dependentsToDirtyByFromRef;
+- (id)initWithDependencyTracker:(void *)arg1;
 
 @end
 

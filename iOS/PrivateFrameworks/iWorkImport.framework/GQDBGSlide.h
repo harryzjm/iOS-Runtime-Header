@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GQDBGMasterSlide, GQDWPLayoutFrame;
+@class GQDBGTemplateSlide, GQDWPLayoutFrame;
 
 __attribute__((visibility("hidden")))
 @interface GQDBGSlide
 {
-    GQDBGMasterSlide *mMaster;
+    GQDBGTemplateSlide *mTemplate;
     GQDWPLayoutFrame *mNoteFrame;
 }
 
 - (id)noteFrame;
-- (id)master;
+- (id)templateSlide;
 - (void)dealloc;
 - (id)init;
 

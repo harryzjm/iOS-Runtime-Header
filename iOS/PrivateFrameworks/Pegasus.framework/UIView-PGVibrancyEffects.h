@@ -18,6 +18,7 @@
 - (_Bool)PG_preferredVisibilityForView:(id)arg1;
 - (id)PG_backdropGroupLeader;
 - (id)PG_acquireAssertionToPreventAutoHideOfControlsWithReason:(id)arg1;
+- (_Bool)PG_disablesLayerCloning;
 - (double)PG_cornerRadius;
 @property(retain, nonatomic, setter=PG_setCompositingFilter:) id PG_compositingFilter;
 @property(nonatomic, setter=PG_setAnchorPoint:) struct CGPoint PG_anchorPoint;

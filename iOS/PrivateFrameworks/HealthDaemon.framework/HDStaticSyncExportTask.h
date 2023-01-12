@@ -23,20 +23,12 @@
     NSURL *_exportDirectoryURL;
 }
 
-+ (id)_estimateSyncEntityClassesWithChangesForSession:(id)arg1 profile:(id)arg2;
-+ (long long)nextSyncAnchorForEntity:(Class)arg1 session:(id)arg2 startSyncAnchor:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
-+ (id)_dataForChanges:(id)arg1;
-+ (id)_chagesetFilePathForCount:(unsigned long long)arg1;
-+ (id)_archiveCreatorInDirectory:(id)arg1 session:(id)arg2 count:(unsigned long long)arg3;
-+ (_Bool)_updateAnchorRangeMap:(id)arg1 withChange:(id)arg2 outError:(id *)arg3;
-+ (id)_createEmptyExportDirectoryForStoreIdentifier:(id)arg1 location:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSURL *exportDirectoryURL; // @synthesize exportDirectoryURL=_exportDirectoryURL;
 - (void)syncSession:(id)arg1 didFinishSuccessfully:(_Bool)arg2 error:(id)arg3;
 - (_Bool)syncSession:(id)arg1 didEndTransactionWithError:(id *)arg2;
 - (void)syncSession:(id)arg1 sendChanges:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)syncSessionWillBegin:(id)arg1;
-- (long long)_exportQueue_archiveChanges:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (id)runWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithProfile:(id)arg1 options:(unsigned long long)arg2 storeIdentifier:(id)arg3 URL:(id)arg4 batchSize:(unsigned long long)arg5;
 

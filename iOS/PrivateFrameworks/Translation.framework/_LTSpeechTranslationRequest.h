@@ -17,6 +17,7 @@
     id <_LTTranslationService> _service;
     CDUnknownBlockType _done;
     _Bool _autoEndpoint;
+    _Bool _enableVAD;
     id <_LTSpeechTranslationDelegate> _delegate;
     NSURL *__lidModelURL;
     NSArray *__offlineASRModelURLs;
@@ -26,6 +27,7 @@
 
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool enableVAD; // @synthesize enableVAD=_enableVAD;
 @property(nonatomic) _Bool autoEndpoint; // @synthesize autoEndpoint=_autoEndpoint;
 @property(nonatomic) long long _lidThreshold; // @synthesize _lidThreshold=__lidThreshold;
 @property(nonatomic) long long _asrConfidenceThreshold; // @synthesize _asrConfidenceThreshold=__asrConfidenceThreshold;
@@ -39,6 +41,7 @@
 - (void)hybridEndpointerFoundEndpoint;
 - (void)languageDetectionResult:(id)arg1;
 - (void)languageDetectionCompleted;
+- (void)speechActivityDetected;
 - (void)endAudio;
 - (void)_convertAndFeedPCMBuffer:(id)arg1;
 - (void)_drainAndClearAudioConverter;

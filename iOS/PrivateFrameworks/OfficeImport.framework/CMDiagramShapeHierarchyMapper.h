@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
 - (void)mapChildrenAt:(id)arg1 withState:(id)arg2;
 - (void)mapAt:(id)arg1 withState:(id)arg2;
 - (id)initWithOddDiagram:(id)arg1 drawingContext:(id)arg2 orientedBounds:(id)arg3 identifier:(id)arg4 parent:(id)arg5;
-- (struct ODIHRangeVector *)mapRangesForNode:(id)arg1;
+- (void *)mapRangesForNode:(id)arg1;
 - (void)setAbsolutePositionOfNode:(id)arg1 parentRow:(int)arg2 parentXOffset:(float)arg3 index:(unsigned long long)arg4;
 - (void)copyInfoForNode:(id)arg1 depth:(int)arg2;
-- (struct CGRect)mapLogicalBoundsWithXRanges:(const struct ODIHRangeVector *)arg1;
+- (struct CGRect)mapLogicalBoundsWithXRanges:(const void *)arg1;
 - (struct CGRect)boundsForNode:(id)arg1;
 - (id)infoForNode:(id)arg1;
 - (void)setUpLayers;

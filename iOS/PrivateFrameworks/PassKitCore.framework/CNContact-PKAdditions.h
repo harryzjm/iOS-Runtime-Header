@@ -20,7 +20,7 @@
 - (void *)ABPerson;
 - (id)pkDeconstructContactUsingKey:(id)arg1 substring:(id)arg2;
 - (id)pkDeconstructContactUsingKey:(id)arg1;
-- (id)localizedDisplayNameWithLabel:(id)arg1;
+- (id)pk_displayName;
 - (id)pkContactWithCleanedUpCountryCode;
 - (id)contactWithCleanedUpDistrict;
 - (id)sanitizedContact;

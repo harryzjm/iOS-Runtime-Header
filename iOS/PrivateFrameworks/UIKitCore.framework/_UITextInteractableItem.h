@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UINotificationFeedbackGenerator, UIView, _UIHighlightView;
+@class NSArray, UIContextMenuInteraction, UINotificationFeedbackGenerator, UIView, _UIHighlightView;
 @protocol _UITextContent, _UITextItemInteracting, _UITextItemInteractionHandler;
 
 __attribute__((visibility("hidden")))
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _UIHighlightView *_highlightView;
     id <_UITextItemInteractionHandler> _handler;
     UIView<_UITextItemInteracting> *_textItemInteractingView;
+    UIContextMenuInteraction *_contextMenuInteraction;
     id <_UITextContent> _textContent;
     struct _NSRange _range;
     struct CGPoint _location;
@@ -27,10 +28,12 @@ __attribute__((visibility("hidden")))
 + (id)interactableAttachment:(id)arg1 range:(struct _NSRange)arg2 inTextItemInteractingView:(id)arg3 atLocation:(struct CGPoint)arg4;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_UITextContent> textContent; // @synthesize textContent=_textContent;
+@property(nonatomic) __weak UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
 @property(nonatomic) __weak UIView<_UITextItemInteracting> *textItemInteractingView; // @synthesize textItemInteractingView=_textItemInteractingView;
 @property(retain, nonatomic) id <_UITextItemInteractionHandler> handler; // @synthesize handler=_handler;
 @property(nonatomic) struct CGPoint location; // @synthesize location=_location;
 @property(nonatomic) struct _NSRange range; // @synthesize range=_range;
+@property(readonly, nonatomic) NSArray *rects;
 @property(readonly, nonatomic) struct CGRect bounds;
 - (void)unhighlight;
 - (void)highlight;

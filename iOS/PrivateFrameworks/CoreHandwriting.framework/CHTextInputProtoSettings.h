@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 @interface CHTextInputProtoSettings : NSObject
 {
     _Bool _autoLineBreakEnabled;
@@ -33,7 +31,7 @@
 @property(readonly, nonatomic) double autoLineBreakMinVerticalDistance; // @synthesize autoLineBreakMinVerticalDistance=_autoLineBreakMinVerticalDistance;
 @property(readonly, nonatomic) _Bool autoLineBreakRequireWeakCursor; // @synthesize autoLineBreakRequireWeakCursor=_autoLineBreakRequireWeakCursor;
 @property(readonly, nonatomic) _Bool autoLineBreakEnabled; // @synthesize autoLineBreakEnabled=_autoLineBreakEnabled;
-@property(readonly, copy, nonatomic) NSString *recognitionLocaleIdentifier;
+@property(readonly, nonatomic) _Bool isScribbleActive;
 
 @end
 

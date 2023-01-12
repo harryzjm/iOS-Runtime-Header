@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_149a05be)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_149a05be)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTFinalBlazarResponse *contentAsFTFinalBlazarResponse;
 @property(readonly, nonatomic) FTBatchTranslationResponse *contentAsFTBatchTranslationResponse;
 @property(readonly, nonatomic) long long content_type;

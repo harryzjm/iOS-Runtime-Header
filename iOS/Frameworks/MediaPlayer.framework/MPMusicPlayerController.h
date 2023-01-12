@@ -11,7 +11,7 @@
 #import <MediaPlayer/MPMusicPlayerControllerClient-Protocol.h>
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 
-@class MPMediaItem, MPMusicPlayerControllerNowPlaying, MPMusicPlayerControllerNowPlayingTimeSnapshot, MPMusicPlayerQueueDescriptor, MPVolumeController, NSString, NSXPCConnection;
+@class MPMediaItem, MPMusicPlayerControllerNowPlaying, MPMusicPlayerControllerNowPlayingTimeSnapshot, MPMusicPlayerQueueDescriptor, MPVolumeController, NSArray, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface MPMusicPlayerController : NSObject <MPArtworkDataSource, MPVolumeControllerDelegate, MPMusicPlayerControllerClient, MPMediaPlayback>
@@ -25,6 +25,7 @@
     MPMusicPlayerQueueDescriptor *_serverQueueDescriptor;
     MPMusicPlayerControllerNowPlayingTimeSnapshot *_lastServerTimeSnapshot;
     MPMusicPlayerControllerNowPlaying *_lastServerNowPlaying;
+    NSArray *_lastContentItemIDs;
     MPMusicPlayerQueueDescriptor *_targetQueueDescriptor;
     long long _notificationsCounter;
     MPVolumeController *_volumeController;
@@ -42,6 +43,7 @@
 @property(readonly, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property(readonly, nonatomic) long long notificationsCounter; // @synthesize notificationsCounter=_notificationsCounter;
 @property(readonly, nonatomic) MPMusicPlayerQueueDescriptor *targetQueueDescriptor; // @synthesize targetQueueDescriptor=_targetQueueDescriptor;
+@property(readonly, nonatomic) NSArray *lastContentItemIDs; // @synthesize lastContentItemIDs=_lastContentItemIDs;
 @property(readonly, nonatomic) MPMusicPlayerControllerNowPlaying *lastServerNowPlaying; // @synthesize lastServerNowPlaying=_lastServerNowPlaying;
 @property(readonly, nonatomic) MPMusicPlayerControllerNowPlayingTimeSnapshot *lastServerTimeSnapshot; // @synthesize lastServerTimeSnapshot=_lastServerTimeSnapshot;
 @property(readonly, nonatomic) MPMusicPlayerQueueDescriptor *serverQueueDescriptor; // @synthesize serverQueueDescriptor=_serverQueueDescriptor;
@@ -50,11 +52,13 @@
 @property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(readonly, nonatomic) _Bool isPreparedToPlay; // @synthesize isPreparedToPlay=_isPreparedToPlay;
+- (void)_postPrivateQueueDidChangeNotificationWithContentItemIDs:(id)arg1;
 - (id)_mediaItemFromNowPlaying:(id)arg1;
 - (id)_snapshot;
 - (id)_nowPlaying;
 - (id)_queueDescriptor;
-- (void)onServerAsync:(CDUnknownBlockType)arg1;
+- (void)onServerAsync:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2 retryEnabled:(_Bool)arg3;
+- (void)onServerAsync:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)onServer:(CDUnknownBlockType)arg1;
 - (void)_establishConnectionIfNeeded;
 - (void)_clearConnection;
@@ -72,6 +76,8 @@
 - (void)setServerTimeSnapshot:(id)arg1;
 - (void)setServerNowPlaying:(id)arg1;
 - (void)setServerQueueDescriptor:(id)arg1;
+- (void)_onQueue_applyServerStateUpdateRecord:(id)arg1;
+- (void)applyServerStateUpdateRecord:(id)arg1;
 - (void)adjustLoadedQueueRangeToReverseCount:(long long)arg1 forwardCount:(long long)arg2;
 - (void)setQueueWithGeniusMixPlaylist:(id)arg1;
 - (_Bool)setQueueWithSeedItems:(id)arg1;
@@ -117,6 +123,8 @@
 - (void)setQueueWithItemCollection:(id)arg1;
 - (void)setQueueWithQuery:(id)arg1;
 @property(readonly, nonatomic) unsigned long long indexOfNowPlayingItem;
+- (void)_setNowPlayingItemWithIdentifier:(id)arg1;
+- (void)_setNowPlayingItem:(id)arg1 itemIdentifier:(id)arg2;
 @property(copy, nonatomic) MPMediaItem *nowPlayingItem;
 @property(nonatomic) long long shuffleMode;
 @property(nonatomic) long long repeatMode;

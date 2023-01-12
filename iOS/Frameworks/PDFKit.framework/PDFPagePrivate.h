@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
     struct CGRect artBox;
     struct CGDisplayList *displayList;
     _Bool creatingDisplayList;
-    struct os_unfair_lock_s displayListCreationLock;
+    struct os_unfair_lock_s displayListMutex;
     _Bool bookmarked;
     _Bool isFullyConstructed;
     _Bool colorWidgetBackgrounds;

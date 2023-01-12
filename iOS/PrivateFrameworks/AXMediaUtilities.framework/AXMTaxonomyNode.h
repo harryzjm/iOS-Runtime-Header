@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableSet, NSString;
 
 @interface AXMTaxonomyNode : NSObject
 {
+    unsigned int _sceneClassId;
     NSString *_label;
     NSString *_localizedName;
     double _confidence;
+    NSMutableSet *_detectorSceneClassIds;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *detectorSceneClassIds; // @synthesize detectorSceneClassIds=_detectorSceneClassIds;
+@property(nonatomic) unsigned int sceneClassId; // @synthesize sceneClassId=_sceneClassId;
 @property(nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(retain, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;

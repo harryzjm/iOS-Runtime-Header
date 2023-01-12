@@ -18,12 +18,14 @@
     long long _shapeType;
     double _cornerRadius;
     NSString *_cornerCurve;
+    struct CGPoint _pinnedPoint;
     struct CGRect _bounds;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)customShapeWithPath:(struct CGPath *)arg1;
 + (id)customShapeWithPath:(struct CGPath *)arg1 usesEvenOddFillRule:(_Bool)arg2;
++ (id)elasticRoundedRectPinnedAtPoint:(struct CGPoint)arg1;
 + (id)roundedRectWithSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
 + (id)roundedRectWithBounds:(struct CGRect)arg1 cornerRadius:(double)arg2;
 + (id)roundedRectWithBounds:(struct CGRect)arg1 cornerRadius:(double)arg2 cornerCurve:(id)arg3;
@@ -34,6 +36,7 @@
 @property(readonly, nonatomic) _Bool usesEvenOddFillRule; // @synthesize usesEvenOddFillRule=_usesEvenOddFillRule;
 @property(readonly, nonatomic) const struct CGPath *path; // @synthesize path=_path;
 @property(readonly, copy, nonatomic) NSString *cornerCurve; // @synthesize cornerCurve=_cornerCurve;
+@property(readonly, nonatomic) struct CGPoint pinnedPoint; // @synthesize pinnedPoint=_pinnedPoint;
 @property(readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(readonly, nonatomic) long long shapeType; // @synthesize shapeType=_shapeType;

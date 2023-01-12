@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKConversation, NSArray, NSMutableArray, NSMutableDictionary;
+@class CKConversation, CKConversationListScrollingController, NSArray, NSMutableArray, NSMutableDictionary;
 
 @interface CKConversationList : NSObject
 {
@@ -14,11 +14,12 @@
     _Bool _loadingConversations;
     _Bool _loadedConversations;
     _Bool _remergingConversations;
+    _Bool _loadedPinnedConversations;
     _Bool _holdingWasKnownSenderUpdates;
-    _Bool _completedInitalPinLoad;
     CKConversation *_pendingConversation;
-    NSMutableDictionary *_conversationsDictionary;
+    CKConversationListScrollingController *_scrollingController;
     NSArray *_pinnedConversations;
+    NSMutableDictionary *_conversationsDictionary;
 }
 
 + (id)conversationListAlertSuppressionContextForFilterMode:(unsigned long long)arg1;
@@ -28,22 +29,18 @@
 + (void)initialize;
 + (id)sharedConversationList;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool completedInitalPinLoad; // @synthesize completedInitalPinLoad=_completedInitalPinLoad;
-@property(nonatomic) _Bool holdingWasKnownSenderUpdates; // @synthesize holdingWasKnownSenderUpdates=_holdingWasKnownSenderUpdates;
-@property(retain, nonatomic) NSArray *pinnedConversations; // @synthesize pinnedConversations=_pinnedConversations;
 @property(retain, nonatomic) NSMutableDictionary *conversationsDictionary; // @synthesize conversationsDictionary=_conversationsDictionary;
+@property(nonatomic, getter=isHoldingWasKnownSenderUpdates) _Bool holdingWasKnownSenderUpdates; // @synthesize holdingWasKnownSenderUpdates=_holdingWasKnownSenderUpdates;
+@property(retain, nonatomic) NSArray *pinnedConversations; // @synthesize pinnedConversations=_pinnedConversations;
+@property(nonatomic) _Bool loadedPinnedConversations; // @synthesize loadedPinnedConversations=_loadedPinnedConversations;
 @property(nonatomic) _Bool remergingConversations; // @synthesize remergingConversations=_remergingConversations;
 @property(readonly, nonatomic) _Bool loadedConversations; // @synthesize loadedConversations=_loadedConversations;
 @property(readonly, nonatomic) _Bool loadingConversations; // @synthesize loadingConversations=_loadingConversations;
 @property(retain, nonatomic) CKConversation *pendingConversation; // @synthesize pendingConversation=_pendingConversation;
-- (void)performDNDMigrationIfNecessary;
-- (id)_dnd_deprecated_globalIdentifierForChat:(id)arg1;
-- (void)migrateDNDInfoIfNeeded;
 - (_Bool)_messageSpamFilteringEnabled;
 - (_Bool)_messageUnknownFilteringEnabled;
 - (void)releaseWasKnownSenderHold;
 - (void)beginWasKnownSenderHold;
-- (_Bool)isHoldingWasKnownSenderUpdates;
 - (void)updateConversationsWasKnownSender;
 - (void)removeConversation:(id)arg1;
 - (void)_setConversations:(id)arg1 forFilterMode:(unsigned long long)arg2;
@@ -80,8 +77,9 @@
 - (id)topMostConversation;
 - (void)logConversationsTopCount:(long long)arg1 bottomCount:(long long)arg2;
 - (void)resort;
-- (id)conversations;
-- (_Bool)hasActiveConversations;
+@property(readonly, nonatomic) NSArray *conversations;
+@property(readonly, nonatomic) NSArray *trackedConversations;
+@property(readonly, nonatomic) _Bool hasActiveConversations;
 - (id)firstUnreadFilteredConversationIgnoringMessages:(id)arg1;
 - (_Bool)_shouldFilterForParticipants:(id)arg1;
 - (void)_handleGroupNameChanged:(id)arg1;
@@ -90,6 +88,7 @@
 - (void)updateConversationsForNewPinnedConversations:(id)arg1;
 - (void)updatePinnedConversationsFromDataSource;
 - (id)pinningIdentifierMap;
+@property(readonly, nonatomic) CKConversationListScrollingController *scrollingController; // @synthesize scrollingController=_scrollingController;
 - (void)setNeedsReload;
 - (void)resetCaches;
 - (id)conversationForExistingChat:(id)arg1;
@@ -101,9 +100,9 @@
 - (void)_beginTrackingAllExistingChatsIfNeeded;
 - (void)stopTrackingConversation:(id)arg1;
 - (id)conversationForExistingChatWithGUID:(id)arg1;
-- (id)conversationForExistingChatWithIMChatPersonCentricID:(id)arg1;
-- (id)conversationForExistingChatWithIMChatGroupID:(id)arg1;
+- (id)conversationForExistingChatWithPersonCentricID:(id)arg1;
 - (id)conversationForExistingChatWithGroupID:(id)arg1;
+- (id)conversationForExistingChatWithChatIdentifier:(id)arg1;
 - (id)conversationForExistingChatWithDeviceIndependentID:(id)arg1;
 - (id)conversationForExistingChatWithPinningIdentifier:(id)arg1;
 - (id)_conversationForChat:(id)arg1;

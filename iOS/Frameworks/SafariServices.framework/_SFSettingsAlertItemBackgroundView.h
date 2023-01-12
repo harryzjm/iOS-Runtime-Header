@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     UIVisualEffectView *_highlightView;
     NSLayoutConstraint *_highlightToTopConstraint;
+    NSLayoutConstraint *_highlightToBottomConstraint;
     NSLayoutConstraint *_highlightToLeadingConstraint;
     NSLayoutConstraint *_highlightToLeadingWithSpaceConstraint;
     NSLayoutConstraint *_highlightPixelWidthConstraint;

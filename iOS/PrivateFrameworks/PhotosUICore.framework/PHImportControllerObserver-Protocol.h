@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHImportController, PHImportSource;
+#import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol PHImportControllerObserver
+@class NSArray, PHImportController, PHImportSource;
+
+@protocol PHImportControllerObserver <NSObject>
 - (void)importController:(PHImportController *)arg1 removedImportSource:(PHImportSource *)arg2;
 - (void)importController:(PHImportController *)arg1 addedImportSource:(PHImportSource *)arg2;
+
+@optional
+- (void)importController:(PHImportController *)arg1 failedToAddImportSource:(PHImportSource *)arg2 exceptions:(NSArray *)arg3;
 @end
 

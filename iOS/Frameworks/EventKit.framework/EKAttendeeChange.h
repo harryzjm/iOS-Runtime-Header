@@ -6,11 +6,14 @@
 
 #import <EventKit/EKOwnerIDProviding-Protocol.h>
 
-@class EKObjectID;
+@class EKObjectID, NSString;
 
 @interface EKAttendeeChange <EKOwnerIDProviding>
 {
+    _Bool _attendeeRole;
+    _Bool _attendeeStatus;
     EKObjectID *_ownerID;
+    NSString *_attendeeEmailAddress;
 }
 
 + (void)fetchAttendeeChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
@@ -18,6 +21,9 @@
 + (void)fetchAttendeeChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (int)entityType;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *attendeeEmailAddress; // @synthesize attendeeEmailAddress=_attendeeEmailAddress;
+@property(readonly, nonatomic) _Bool attendeeStatus; // @synthesize attendeeStatus=_attendeeStatus;
+@property(readonly, nonatomic) _Bool attendeeRole; // @synthesize attendeeRole=_attendeeRole;
 @property(readonly, nonatomic) EKObjectID *ownerID; // @synthesize ownerID=_ownerID;
 - (id)initWithChangeProperties:(id)arg1;
 

@@ -22,12 +22,14 @@
     _Bool _usesOpportunisticSockets;
     _Bool _tryDirectSSLConnection;
     _Bool _allowsTrustPrompt;
+    _Bool _isNonAppInitiated;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_accountIdentifier;
     NSString *_networkAccountIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isNonAppInitiated; // @synthesize isNonAppInitiated=_isNonAppInitiated;
 @property(nonatomic) _Bool allowsTrustPrompt; // @synthesize allowsTrustPrompt=_allowsTrustPrompt;
 @property(nonatomic) _Bool usesOpportunisticSockets; // @synthesize usesOpportunisticSockets=_usesOpportunisticSockets;
 @property(nonatomic) _Bool usesSSL; // @synthesize usesSSL=_usesSSL;

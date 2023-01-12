@@ -6,6 +6,7 @@
 
 @class MPCFuture;
 
+__attribute__((visibility("hidden")))
 @interface _MPCMediaRemoteNullController
 {
     MPCFuture *_playQueueIdentifiersFuture;

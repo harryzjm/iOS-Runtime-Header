@@ -10,6 +10,8 @@
 
 @interface IMBalloonPluginManager : NSObject
 {
+    _Bool _hasCompletedInitialization;
+    _Bool _hasDefferedInstalledAppsChangedNotification;
     Class _richLinksDataSourceClass;
     NSMutableDictionary *_pluginsMap;
     id _extensionMatchingContext;
@@ -23,14 +25,20 @@
     NSUUID *_localParticipantID2;
 }
 
++ (_Bool)_isExtensionBlocklisted:(id)arg1;
++ (_Bool)_isServerBlocklistedBundleIdentifier:(id)arg1 serverBag:(id)arg2;
++ (id)precacheBalloonAppExtensionsForExtensions:(id)arg1;
++ (_Bool)_allowExtensionWithIdentifier:(id)arg1;
 + (_Bool)isRunningPPT;
 + (void)setIsRunningPPT:(_Bool)arg1;
 + (id)balloonProviderBundlePathURL;
-+ (id)_extensionBlacklist;
++ (id)_extensionBlocklist;
 + (id)sharedInstance;
 + (void)enableAlternatePathPlugins;
 + (void)disableExtensionDiscovery;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasDefferedInstalledAppsChangedNotification; // @synthesize hasDefferedInstalledAppsChangedNotification=_hasDefferedInstalledAppsChangedNotification;
+@property(nonatomic) _Bool hasCompletedInitialization; // @synthesize hasCompletedInitialization=_hasCompletedInitialization;
 @property(retain, nonatomic) NSUUID *localParticipantID2; // @synthesize localParticipantID2=_localParticipantID2;
 @property(retain, nonatomic) NSUUID *localParticipantID1; // @synthesize localParticipantID1=_localParticipantID1;
 @property(retain, nonatomic) NSString *simulatedConversationID2; // @synthesize simulatedConversationID2=_simulatedConversationID2;
@@ -54,14 +62,13 @@
 - (void)_findPluginsInPathInternal:(id)arg1;
 - (void)_findPluginsInPaths:(id)arg1;
 - (void)_moveExtensionDataSourcesFromMessagesExtensionPluginToAppExtensions;
-- (_Bool)_isExtensionBlackListed:(id)arg1;
-- (_Bool)_isServerBlackListedBundle:(id)arg1 serverBag:(id)arg2;
 - (void)setPluginEnabled:(_Bool)arg1 identifier:(id)arg2;
 - (void)_removePluginsForIdentifiers:(id)arg1;
 - (void)_removePluginsWithDelay;
 - (void)removePluginWithBundleID:(id)arg1;
-- (id)_insertPluginForExtension:(id)arg1 balloonProviderBundle:(id)arg2 andTimingCollection:(id)arg3;
+- (id)_insertPluginForExtension:(id)arg1 balloonProviderBundle:(id)arg2 precachedBalloonAppExtensions:(id)arg3 timingCollection:(id)arg4;
 - (id)_insertPluginForAppBundle:(id)arg1 balloonProviderBundle:(id)arg2;
+- (void)_updatePluginsForExtensions:(id)arg1 extensionPoint:(id)arg2 precachedBalloonAppExtensions:(id)arg3;
 - (void)_updatePluginsForExtensions:(id)arg1 extensionPoint:(id)arg2;
 - (void)_updatePluginsForBundles:(id)arg1;
 - (void)_setPluginsToRemoveAndCallSelectorWithDelay:(id)arg1;
@@ -86,8 +93,10 @@
 - (id)_infoPlistPathForPluginCreatingFolderIfNeeded:(id)arg1;
 - (id)_pluginPlistPath:(id)arg1;
 - (void)dealloc;
-- (void)pluginChatItem:(id)arg1 didRelenquishNonResuableController:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
-- (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
+- (void)pluginChatItem:(id)arg1 didRelenquishNonResuableController:(id)arg2 contextIdentifier:(id)arg3;
+- (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2 contextIdentifier:(id)arg3;
+- (void)_postInstalledAppsChangedNotification;
+- (void)_postDeferredInstalledAppsChangedNotificationIfNecessary;
 - (id)init;
 
 @end

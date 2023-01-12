@@ -10,8 +10,6 @@
 
 @protocol PKPaymentDashboardCellActionHandleable <NSObject>
 - (long long)viewType;
-- (void)endUpdates:(_Bool)arg1;
-- (void)beginUpdates;
 - (_Bool)enableDisclosure;
 - (PKPaymentPass *)pass;
 

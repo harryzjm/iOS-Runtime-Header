@@ -24,7 +24,7 @@
     long long __observationStride;
     long long __type;
     long long __cachedPriorityQueueTimestep;
-    struct CVNLPCTCPriorityQueue *__cachedTimesample;
+    void *__cachedTimesample;
     long long __cachedBlankIndexTimestep;
     long long __cachedBlankIndex;
     struct CVNLPTextDecodingPruningPolicy __pruningPolicy;
@@ -37,7 +37,7 @@
 @property(readonly, nonatomic) long long _cachedBlankIndexTimestep; // @synthesize _cachedBlankIndexTimestep=__cachedBlankIndexTimestep;
 @property(nonatomic) _Bool _usingIndexes; // @synthesize _usingIndexes=__usingIndexes;
 @property(nonatomic) _Bool _isDoubleDataType; // @synthesize _isDoubleDataType=__isDoubleDataType;
-@property struct CVNLPCTCPriorityQueue *_cachedTimesample; // @synthesize _cachedTimesample=__cachedTimesample;
+@property void *_cachedTimesample; // @synthesize _cachedTimesample=__cachedTimesample;
 @property long long _cachedPriorityQueueTimestep; // @synthesize _cachedPriorityQueueTimestep=__cachedPriorityQueueTimestep;
 @property(nonatomic) struct CVNLPTextDecodingPruningPolicy _pruningPolicy; // @synthesize _pruningPolicy=__pruningPolicy;
 @property(nonatomic) long long _type; // @synthesize _type=__type;
@@ -53,6 +53,9 @@
 @property(readonly, nonatomic) long long domainType; // @synthesize domainType=_domainType;
 @property(nonatomic) long long blankIndex; // @synthesize blankIndex=_blankIndex;
 @property(retain, nonatomic) NSOrderedSet *characterObservations; // @synthesize characterObservations=_characterObservations;
+- (id)debugDescription;
+- (id)topCandidateForTimestep:(long long)arg1 outputProbability:(double *)arg2 outputIndex:(long long *)arg3;
+- (id)topCandidateForTimestep:(long long)arg1 outputLogProbability:(double *)arg2 outputIndex:(long long *)arg3;
 - (id)topCandidateForTimestep:(long long)arg1 outputLogProbability:(double *)arg2;
 - (void)_sortNonBlankCandidatesForTimestep:(long long)arg1;
 - (void)_enumerateNonBlankCandidatesInTimestep:(long long)arg1 block:(CDUnknownBlockType)arg2;
@@ -64,6 +67,7 @@
 - (long long)blankIndexForTimestep:(long long)arg1;
 - (double)_valueForObservationIndex:(long long)arg1 timestep:(long long)arg2;
 - (double)logProbabilityForObservationIndex:(long long)arg1 timestep:(long long)arg2;
+- (double)_logProbabilityForRawProbability:(double)arg1;
 - (double)probabilityForObservationIndex:(long long)arg1 timestep:(long long)arg2;
 - (long long)observationCount;
 - (long long)timestepCount;

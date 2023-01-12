@@ -52,6 +52,7 @@
 - (id)initWithIdentifier:(id)arg1 subject:(id)arg2 sender:(id)arg3 recipients:(id)arg4 dateSent:(id)arg5;
 - (id)initWithDateSent:(id)arg1 subject:(id)arg2;
 - (id)initWithDateSent:(id)arg1;
+- (id)initWithSGIPMessage:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 subject:(id)arg2 sender:(id)arg3 recipients:(id)arg4 dateSent:(id)arg5 type:(id)arg6;
 - (id)init;
 

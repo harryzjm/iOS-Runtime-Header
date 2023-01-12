@@ -8,18 +8,22 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOSubactionMetaData, NSString, PBDataReader;
+@class GEOHyperlinkMetaData, GEOSubactionMetaData, NSString, PBDataReader;
 
 @interface GEOClientACSuggestionEntry : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     double _contactRelevanceScore;
+    double _distanceToSuggestionFromViewportCenter;
     double _fractionOfMatch;
+    GEOHyperlinkMetaData *_hyperlinkMetadata;
     double _mapsSuggestionsContactRevelanceScore;
     double _mapsSuggestionsIsTouristScore;
     double _mapsSuggestionsPoiRevelanceScore;
     GEOSubactionMetaData *_subactionMetaData;
     NSString *_suggestionSectionType;
+    double _timeSinceLastInteractedSeconds;
+    double _timeSinceMapViewportChangedSeconds;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -34,6 +38,7 @@
     int _suggestionType;
     int _tapBehavior;
     _Bool _discreteFeatureValuesAvailable;
+    _Bool _isContainedInViewport;
     _Bool _isFavorite;
     _Bool _isProminentResult;
     _Bool _matchedUsingAddress;
@@ -44,10 +49,13 @@
     _Bool _shownToUser;
     struct {
         unsigned int has_contactRelevanceScore:1;
+        unsigned int has_distanceToSuggestionFromViewportCenter:1;
         unsigned int has_fractionOfMatch:1;
         unsigned int has_mapsSuggestionsContactRevelanceScore:1;
         unsigned int has_mapsSuggestionsIsTouristScore:1;
         unsigned int has_mapsSuggestionsPoiRevelanceScore:1;
+        unsigned int has_timeSinceLastInteractedSeconds:1;
+        unsigned int has_timeSinceMapViewportChangedSeconds:1;
         unsigned int has_age:1;
         unsigned int has_autocompleteResultCellType:1;
         unsigned int has_distanceToSuggestion:1;
@@ -59,6 +67,7 @@
         unsigned int has_suggestionType:1;
         unsigned int has_tapBehavior:1;
         unsigned int has_discreteFeatureValuesAvailable:1;
+        unsigned int has_isContainedInViewport:1;
         unsigned int has_isFavorite:1;
         unsigned int has_isProminentResult:1;
         unsigned int has_matchedUsingAddress:1;
@@ -67,6 +76,7 @@
         unsigned int has_matchedUsingName:1;
         unsigned int has_matchedUsingOrganization:1;
         unsigned int has_shownToUser:1;
+        unsigned int read_hyperlinkMetadata:1;
         unsigned int read_subactionMetaData:1;
         unsigned int read_suggestionSectionType:1;
         unsigned int wrote_anyField:1;
@@ -88,6 +98,16 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOHyperlinkMetaData *hyperlinkMetadata;
+@property(readonly, nonatomic) _Bool hasHyperlinkMetadata;
+@property(nonatomic) _Bool hasTimeSinceMapViewportChangedSeconds;
+@property(nonatomic) double timeSinceMapViewportChangedSeconds;
+@property(nonatomic) _Bool hasIsContainedInViewport;
+@property(nonatomic) _Bool isContainedInViewport;
+@property(nonatomic) _Bool hasTimeSinceLastInteractedSeconds;
+@property(nonatomic) double timeSinceLastInteractedSeconds;
+@property(nonatomic) _Bool hasDistanceToSuggestionFromViewportCenter;
+@property(nonatomic) double distanceToSuggestionFromViewportCenter;
 - (int)StringAsTapBehavior:(id)arg1;
 - (id)tapBehaviorAsString:(int)arg1;
 @property(nonatomic) _Bool hasTapBehavior;

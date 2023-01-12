@@ -4,13 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/NSObject-Protocol.h>
+#import <SpringBoard/SBHIconModelApplicationDataSource-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, SBApplication, SBIconModel;
-
-@protocol SBIconModelApplicationDataSource <NSObject>
-@property(readonly, copy, nonatomic) NSArray *allApplications;
-- (NSDictionary *)placeholdersByDisplayIDForIconModel:(SBIconModel *)arg1;
-- (SBApplication *)iconModel:(SBIconModel *)arg1 applicationWithBundleIdentifier:(NSString *)arg2;
+@protocol SBIconModelApplicationDataSource <SBHIconModelApplicationDataSource>
 @end
 

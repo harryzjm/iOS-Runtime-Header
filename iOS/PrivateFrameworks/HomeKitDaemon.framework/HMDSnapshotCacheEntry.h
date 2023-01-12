@@ -11,7 +11,7 @@
 @interface HMDSnapshotCacheEntry : HMFObject
 {
     HMDSnapshotFile *_snapshotFile;
-    NSString *_proactiveSessionID;
+    NSString *_snapshotCharacteristicEventUUID;
     HMFTimer *_timer;
     CDUnknownBlockType _snapshotRequestCompletion;
 }
@@ -19,10 +19,10 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType snapshotRequestCompletion; // @synthesize snapshotRequestCompletion=_snapshotRequestCompletion;
 @property(readonly, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
-@property(readonly, nonatomic) NSString *proactiveSessionID; // @synthesize proactiveSessionID=_proactiveSessionID;
+@property(readonly, nonatomic) NSString *snapshotCharacteristicEventUUID; // @synthesize snapshotCharacteristicEventUUID=_snapshotCharacteristicEventUUID;
 @property(readonly, nonatomic) HMDSnapshotFile *snapshotFile; // @synthesize snapshotFile=_snapshotFile;
 - (id)description;
-- (id)initWithProactiveSessionID:(id)arg1 snapshotFile:(id)arg2 timer:(id)arg3;
+- (id)initWithSnapshotCharacteristicEventUUID:(id)arg1 snapshotFile:(id)arg2 timer:(id)arg3;
 
 @end
 

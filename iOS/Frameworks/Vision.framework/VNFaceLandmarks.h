@@ -8,37 +8,40 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
 #import <Vision/VNRequestRevisionProviding-Protocol.h>
 
-@class NSData;
+@class NSData, VNRequestSpecifier;
 
-@interface VNFaceLandmarks : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
+@interface VNFaceLandmarks : NSObject <VNOriginatingRequestSpecifierProviding, NSCopying, NSSecureCoding, VNRequestRevisionProviding>
 {
     float _confidence;
     unsigned long long _pointCount;
     NSData *_pointsData;
     struct _Geometry2D_rect2D_ _alignedBBox;
     struct CGRect _userFacingBBox;
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
-@property struct CGRect userFacingBBox; // @synthesize userFacingBBox=_userFacingBBox;
-@property struct _Geometry2D_rect2D_ alignedBBox; // @synthesize alignedBBox=_alignedBBox;
-@property(retain) NSData *pointsData; // @synthesize pointsData=_pointsData;
-@property unsigned long long pointCount; // @synthesize pointCount=_pointCount;
+@property(readonly) VNRequestSpecifier *originatingRequestSpecifier; // @synthesize originatingRequestSpecifier=_originatingRequestSpecifier;
+@property(readonly) struct CGRect userFacingBBox; // @synthesize userFacingBBox=_userFacingBBox;
+@property(readonly) struct _Geometry2D_rect2D_ alignedBBox; // @synthesize alignedBBox=_alignedBBox;
+@property(readonly, copy) NSData *pointsData; // @synthesize pointsData=_pointsData;
+@property(readonly) unsigned long long pointCount; // @synthesize pointCount=_pointCount;
 @property(readonly) float confidence; // @synthesize confidence=_confidence;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithRequestRevision:(unsigned long long)arg1 pointsData:(id)arg2 pointCount:(unsigned long long)arg3 userFacingBBox:(struct CGRect)arg4 alignedBBox:(struct _Geometry2D_rect2D_)arg5 landmarkScore:(float)arg6;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 pointsData:(id)arg2 pointCount:(unsigned long long)arg3 userFacingBBox:(struct CGRect)arg4 alignedBBox:(struct _Geometry2D_rect2D_)arg5 landmarkScore:(float)arg6;
 - (_Bool)isUserFacingBBoxEquivalentToAlignedBBox;
 - (void *)_createPointArray:(const int *)arg1 count:(unsigned long long)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) unsigned long long requestRevision;
 
 @end
 

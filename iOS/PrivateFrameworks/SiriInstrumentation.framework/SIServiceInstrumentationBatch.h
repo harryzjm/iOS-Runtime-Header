@@ -4,25 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSArray, NSData, NSString, SIServiceBatchInfo;
 
-@interface SIServiceInstrumentationBatch : PBCodable
+@interface SIServiceInstrumentationBatch
 {
-    _Bool _hasApp_id;
-    _Bool _hasBatch_info;
-    NSArray *_events;
     NSString *_app_id;
     SIServiceBatchInfo *_batch_info;
+    NSArray *_events;
+    _Bool _hasApp_id;
+    _Bool _hasBatch_info;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasBatch_info; // @synthesize hasBatch_info=_hasBatch_info;
-@property(retain, nonatomic) SIServiceBatchInfo *batch_info; // @synthesize batch_info=_batch_info;
 @property(nonatomic) _Bool hasApp_id; // @synthesize hasApp_id=_hasApp_id;
-@property(copy, nonatomic) NSString *app_id; // @synthesize app_id=_app_id;
 @property(copy, nonatomic) NSArray *events; // @synthesize events=_events;
+@property(retain, nonatomic) SIServiceBatchInfo *batch_info; // @synthesize batch_info=_batch_info;
+@property(copy, nonatomic) NSString *app_id; // @synthesize app_id=_app_id;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 @property(readonly, nonatomic) NSData *jsonData;

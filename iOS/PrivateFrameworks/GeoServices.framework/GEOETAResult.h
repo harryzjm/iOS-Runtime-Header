@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_etaRouteIncidents;
     GEOPlaceSearchResponse *_placeSearchResponse;
     NSMutableArray *_sortedETAs;
     unsigned int _readerMarkPos;
@@ -30,48 +31,22 @@ __attribute__((visibility("hidden")))
         unsigned int has_liveTravelTime:1;
         unsigned int has_status:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_etaRouteIncidents:1;
         unsigned int read_placeSearchResponse:1;
         unsigned int read_sortedETAs:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)sortedETAType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)sortedETAAtIndex:(unsigned long long)arg1;
-- (unsigned long long)sortedETAsCount;
-- (void)addSortedETA:(id)arg1;
-- (void)clearSortedETAs;
-@property(retain, nonatomic) NSMutableArray *sortedETAs;
-@property(nonatomic) _Bool hasDistance;
-@property(nonatomic) unsigned int distance;
-@property(retain, nonatomic) GEOPlaceSearchResponse *placeSearchResponse;
-@property(readonly, nonatomic) _Bool hasPlaceSearchResponse;
-@property(nonatomic) _Bool hasHistoricTravelTime;
-@property(nonatomic) unsigned int historicTravelTime;
-@property(nonatomic) _Bool hasLiveTravelTime;
-@property(nonatomic) unsigned int liveTravelTime;
-- (int)StringAsStatus:(id)arg1;
-- (id)statusAsString:(int)arg1;
-@property(nonatomic) _Bool hasStatus;
-@property(nonatomic) int status;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property(readonly, nonatomic) HFServiceGroupBuilder *serviceGroupBuilder; // @synthesize serviceGroupBuilder=_serviceGroupBuilder;
 - (id)currentSectionIdentifiers;
+- (id)currentSectionIdentifiersSnapshot;
 - (id)_sectionIdentifierForItem:(id)arg1;
 - (id)_titleForSectionWithIdentifier:(id)arg1;
 - (id)_identifierForSection:(unsigned long long)arg1;

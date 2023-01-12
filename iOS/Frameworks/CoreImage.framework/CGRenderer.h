@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property int direction; // @synthesize direction;
 - (void)flushRender;
 - (void)drawEdge:(id)arg1 withPath:(id)arg2;
+- (void)hyperlinkEdge:(id)arg1 from:(struct CGPoint)arg2 to:(struct CGPoint)arg3;
 - (void)_drawCubicSpline:(id)arg1;
 - (void)_drawPolyline:(id)arg1;
 - (void)drawNode:(id)arg1;

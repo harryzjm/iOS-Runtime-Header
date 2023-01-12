@@ -13,9 +13,11 @@
     UNNotification *_notification;
 }
 
++ (id)appLaunchDirectActionWithAppBundleId:(id)arg1;
 + (id)phoneCallDirectActionWithAppBundleId:(id)arg1;
 + (id)phoneAmbiguousDirectActionWithAppBundleId:(id)arg1;
 + (id)musicSearchDirectActionWithAppBundleId:(id)arg1;
++ (id)mapShareEtaDirectActionWithAppBundleId:(id)arg1;
 + (id)mapSearchDirectActionWithAppBundleId:(id)arg1;
 + (id)messageReplyDirectActionWithAppBundleId:(id)arg1 conversationGUID:(id)arg2;
 + (id)messageReadDirectActionWithAppBundleId:(id)arg1 conversationGUID:(id)arg2;
@@ -28,11 +30,12 @@
 @property(readonly, nonatomic) BBBulletin *bulletin; // @synthesize bulletin=_bulletin;
 @property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 - (id)_initWithDirectActionEvent:(long long)arg1 appBundleId:(id)arg2 conversationGUID:(id)arg3 fullName:(id)arg4 phoneOrEmailAddress:(id)arg5;
+- (long long)_directActionEventFromAppIdsAndIntentIdentifiersOfBulletin:(id)arg1 notification:(id)arg2;
+- (long long)_directActionEventFromContentTypesOfBulletin:(id)arg1 notification:(id)arg2;
 - (id)_intentIdentifiersFromBulletin:(id)arg1 notification:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)bundleId;
-- (_Bool)isMessagingDirectAction;
 - (long long)directActionEvent;
 - (id)description;
 - (id)initWithUNNotification:(id)arg1;

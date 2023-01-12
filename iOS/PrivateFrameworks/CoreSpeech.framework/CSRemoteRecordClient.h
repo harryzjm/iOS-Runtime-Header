@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@protocol CSRemoteRecordClientDelegate, OS_dispatch_queue;
+@class NSString;
+@protocol CSRemoteRecordClientDelegate;
 
 @interface CSRemoteRecordClient : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
     id <CSRemoteRecordClientDelegate> _delegate;
+    unsigned long long _audioStreamHandleId;
+    NSString *_deviceId;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
+@property(readonly, nonatomic) unsigned long long audioStreamHandleId; // @synthesize audioStreamHandleId=_audioStreamHandleId;
 @property(nonatomic) __weak id <CSRemoteRecordClientDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)hasPendingTwoShotBeep;
 - (id)voiceTriggerEventInfo;
@@ -24,8 +28,7 @@
 - (_Bool)startRecordingWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)isConnected;
 - (_Bool)waitingForConnection:(double)arg1 error:(id *)arg2;
-- (void)dealloc;
-- (id)init;
+- (id)initWithDeviceId:(id)arg1 audioStreamHandleId:(unsigned long long)arg2;
 
 @end
 

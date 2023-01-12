@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)write:(id)arg1 list:(id)arg2 to:(struct WrdListFormatOverride *)arg3;
-+ (void)readFrom:(id)arg1 list:(id)arg2 override:(struct WrdListFormatOverride *)arg3;
++ (void)write:(id)arg1 list:(id)arg2 to:(void *)arg3;
++ (void)readFrom:(id)arg1 list:(id)arg2 override:(void *)arg3;
 
 @end
 

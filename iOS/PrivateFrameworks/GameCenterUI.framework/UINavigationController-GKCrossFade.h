@@ -9,5 +9,8 @@
 @interface UINavigationController (GKCrossFade)
 - (void)_gkSetViewControllers:(id)arg1 transition:(id)arg2;
 - (void)_gkReplaceTopViewControllerWithViewController:(id)arg1 transition:(id)arg2;
+- (void)returnToPreviousScreen;
+- (void)logOnceGameControllerUsedInGameLayer;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 @end
 

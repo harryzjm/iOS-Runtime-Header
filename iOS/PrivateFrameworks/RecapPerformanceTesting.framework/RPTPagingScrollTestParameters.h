@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <RecapPerformanceTesting/RPTBlockBasedScrollTestParameters-Protocol.h>
-#import <RecapPerformanceTesting/RPTScrollTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/RPTTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/_RPTCoordinateSpaces-Protocol.h>
 
-@class NSString, RCPSyntheticEventStream;
+@class NSString, RPTCoordinateSpaceConverter;
 
-@interface RPTPagingScrollTestParameters : NSObject <RPTScrollTestParameters, RPTBlockBasedScrollTestParameters>
+@interface RPTPagingScrollTestParameters : NSObject <_RPTCoordinateSpaces, RPTTestParameters>
 {
     _Bool _useFlicks;
+    RPTCoordinateSpaceConverter *_conversion;
     NSString *_testName;
     CDUnknownBlockType _completionHandler;
     unsigned long long _iterations;
@@ -34,15 +35,18 @@
 @property(nonatomic) unsigned long long iterations; // @synthesize iterations=_iterations;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(copy, nonatomic) NSString *testName; // @synthesize testName=_testName;
-@property(readonly, nonatomic) RCPSyntheticEventStream *eventStream;
+@property(retain, nonatomic) RPTCoordinateSpaceConverter *conversion; // @synthesize conversion=_conversion;
+- (pair_bb682d61)initialAndFinalPositions;
 - (void)scrollWithComposer:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 duration:(double)arg4;
 - (CDUnknownBlockType)composerBlock;
 - (id)initWithTestName:(id)arg1 iterations:(unsigned long long)arg2 scrollingBounds:(struct CGRect)arg3 amplitude:(double)arg4 direction:(long long)arg5 iterationDuration:(double)arg6 useFlicks:(_Bool)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (void)prepareWithComposer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool managesTestStartAndEnd;
 @property(readonly) Class superclass;
 
 @end

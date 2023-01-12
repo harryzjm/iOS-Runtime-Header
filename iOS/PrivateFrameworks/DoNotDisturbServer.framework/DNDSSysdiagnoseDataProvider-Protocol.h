@@ -10,6 +10,6 @@
 
 @protocol DNDSSysdiagnoseDataProvider <NSObject>
 @property(readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier;
-- (NSDictionary *)sysdiagnoseDataForDate:(NSDate *)arg1;
+- (NSDictionary *)sysdiagnoseDataForDate:(NSDate *)arg1 redacted:(_Bool)arg2;
 @end
 

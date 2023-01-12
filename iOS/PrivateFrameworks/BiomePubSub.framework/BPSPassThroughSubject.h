@@ -5,10 +5,11 @@
 //
 
 #import <BiomePubSub/BPSSubject-Protocol.h>
+#import <BiomePubSub/BPSSubscriber-Protocol.h>
 
-@class BPSCompletion, BPSSubscriberList, NSMutableArray, NSString;
+@class BPSCompletion, BPSSubscriberList, BPSSubscription, NSMutableArray, NSString;
 
-@interface BPSPassThroughSubject <BPSSubject>
+@interface BPSPassThroughSubject <BPSSubject, BPSSubscriber>
 {
     struct os_unfair_lock_s _lock;
     _Bool _hasAnyDownstreamDemand;
@@ -16,14 +17,25 @@
     NSMutableArray *_upstreamSubscriptions;
     BPSCompletion *_completion;
     BPSSubscriberList *_downstreams;
+    BPSSubscription *_sub;
 }
 
++ (id)publisherWithPublisher:(id)arg1 upstreams:(id)arg2 bookmarkState:(id)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BPSSubscription *sub; // @synthesize sub=_sub;
 @property(retain, nonatomic) BPSSubscriberList *downstreams; // @synthesize downstreams=_downstreams;
 @property(retain, nonatomic) BPSCompletion *completion; // @synthesize completion=_completion;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
 @property(nonatomic) _Bool hasAnyDownstreamDemand; // @synthesize hasAnyDownstreamDemand=_hasAnyDownstreamDemand;
 @property(retain, nonatomic) NSMutableArray *upstreamSubscriptions; // @synthesize upstreamSubscriptions=_upstreamSubscriptions;
+- (id)bookmarkableUpstreams;
+- (_Bool)canStorePassThroughValueInBookmark;
+- (_Bool)canStoreInternalStateInBookmark;
+- (id)subscription;
+- (void)cancel;
+- (void)receiveSubscription:(id)arg1;
+- (long long)receiveInput:(id)arg1;
+- (void)receiveCompletion:(id)arg1;
 - (void)disassociate:(long long)arg1;
 - (void)sendCompletion:(id)arg1;
 - (void)sendValue:(id)arg1;

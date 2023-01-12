@@ -38,6 +38,8 @@
 @property(nonatomic) _Bool tracksChanges; // @synthesize tracksChanges=_tracksChanges;
 @property(readonly, nonatomic) id <CNScheduler> resolutionScheduler; // @synthesize resolutionScheduler=_resolutionScheduler;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+- (void)consumer:(id)arg1 didSelectItem:(id)arg2 forContact:(id)arg3 actionType:(id)arg4;
+- (id)actionTypesToUpdateForSelectedItem:(id)arg1;
 - (id)thirdPartyActionsForContact:(id)arg1 propertyKey:(id)arg2 identifier:(id)arg3;
 - (id)thirdPartyActionsForContactProperty:(id)arg1;
 - (id)thirdPartyTargetsForActionTypes:(id)arg1;

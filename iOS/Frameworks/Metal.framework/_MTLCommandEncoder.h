@@ -22,6 +22,11 @@
 
 @property(nonatomic) unsigned long long numThisEncoder; // @synthesize numThisEncoder=_numThisEncoder;
 @property(readonly, nonatomic) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
+- (void)invalidateCompressedTexture:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
+- (void)invalidateCompressedTexture:(id)arg1;
+- (void)setTileAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setFragmentAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVertexAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 @property(readonly) unsigned long long dispatchType; // @dynamic dispatchType;
 - (void)memoryBarrierNotificationWithResources:(const id *)arg1 count:(unsigned long long)arg2;

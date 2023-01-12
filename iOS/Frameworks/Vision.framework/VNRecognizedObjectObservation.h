@@ -4,22 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, VNPixelBufferObservation;
 
 @interface VNRecognizedObjectObservation
 {
     NSArray *_labels;
+    VNPixelBufferObservation *_segmentationMask;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *labels; // @synthesize labels=_labels;
+@property(readonly) VNPixelBufferObservation *segmentationMask; // @synthesize segmentationMask=_segmentationMask;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 boundingBox:(struct CGRect)arg2 confidence:(float)arg3 labels:(id)arg4 segmentationMask:(id)arg5;
 - (id)initWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 confidence:(float)arg3 labels:(id)arg4;
 
 @end

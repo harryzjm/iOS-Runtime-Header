@@ -29,6 +29,7 @@
 - (void)_clearVanishedWatchers;
 - (void)_logAvailabilityDescription;
 - (unsigned long long)currentAvailabilityState;
+- (void)assertAvailability:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)removeNotifications;
 - (id)_init;

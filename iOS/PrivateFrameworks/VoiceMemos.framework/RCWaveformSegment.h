@@ -48,7 +48,7 @@
 - (id)description;
 - (id)simpleDescription;
 - (id)verboseDescription;
-- (id)initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelVector:(vector_7584168e *)arg2;
+- (id)initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelVector:(void *)arg2;
 - (id)_initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelData:(id)arg2;
 - (id)initWithTimeRange:(CDStruct_73a5d3ca)arg1 averagePowerLevelData:(id)arg2;
 

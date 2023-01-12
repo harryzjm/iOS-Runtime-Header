@@ -6,11 +6,11 @@
 
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 
-@class CPListItem, CPSearchTemplate, NSString;
+@class NSString, NSUUID;
 
 @protocol CPSearchClientTemplateDelegate <CPTemplateDelegate>
-- (void)searchTemplateSearchButtonPressed:(CPSearchTemplate *)arg1;
-- (void)searchTemplate:(CPSearchTemplate *)arg1 selectedResult:(CPListItem *)arg2 completionHandler:(void (^)(void))arg3;
-- (void)searchTemplate:(CPSearchTemplate *)arg1 updateSearchResultsForSearchText:(NSString *)arg2 completionResults:(void (^)(NSArray *))arg3;
+- (void)searchTemplateSearchButtonPressedWithIdentifier:(NSUUID *)arg1;
+- (void)searchTemplateWithIdentifier:(NSUUID *)arg1 selectedResultWithIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)searchTemplateWithIdentifier:(NSUUID *)arg1 updateSearchResultsForSearchText:(NSString *)arg2 completionResults:(void (^)(NSArray *))arg3;
 @end
 

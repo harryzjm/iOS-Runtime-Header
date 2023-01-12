@@ -15,19 +15,23 @@ __attribute__((visibility("hidden")))
 @interface SCLSchoolModeXPCClient : NSObject <SCLSchoolModeXPCClient>
 {
     struct os_unfair_lock_s _lock;
+    struct os_unfair_lock_s _connectionLock;
     SCLSchoolModeServerSettings *_serverSettings;
+    int _restartNotificationToken;
+    _Bool _running;
     id <SCLSchoolModeXPCClientDelegate> _delegate;
     NSXPCConnection *_connection;
     SCLSchoolModeConfiguration *_configuration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
 @property(retain, nonatomic) SCLSchoolModeConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(nonatomic) __weak id <SCLSchoolModeXPCClientDelegate> delegate; // @synthesize delegate=_delegate;
 - (oneway void)didChangeUnlockHistory;
 - (oneway void)applyServerSettings:(id)arg1;
-- (void)_reconnect;
+- (void)_dropConnection;
 - (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dumpState;
 - (void)triggerRemoteSync;
@@ -41,7 +45,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 @property(readonly, nonatomic) SCLScheduleSettings *scheduleSettings;
 @property(readonly, nonatomic) SCLState *state;
+- (void)_reconnectToServer;
 - (void)resume;
+- (_Bool)_makeConnection:(id)arg1;
+- (void)dealloc;
 - (id)initWithDelegate:(id)arg1 configuration:(id)arg2;
 
 // Remaining properties

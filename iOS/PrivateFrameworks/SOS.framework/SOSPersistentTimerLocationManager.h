@@ -19,6 +19,7 @@
     PCPersistentTimer *_requestLocationsTimer;
     double _ti;
     PCPersistentTimer *_initalRequestTimer;
+    PCPersistentTimer *_assertionTimer;
     _Bool _requestingLocation;
     id <SOSPersistentTimerLocationManagerDelegate> _delegate;
     CLAssertion *_forceEnableLocationAssertion;
@@ -31,6 +32,7 @@
 @property(retain, nonatomic) CLAssertion *forceEnableLocationAssertion; // @synthesize forceEnableLocationAssertion=_forceEnableLocationAssertion;
 @property __weak id <SOSPersistentTimerLocationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isRequestingLocation) _Bool requestingLocation; // @synthesize requestingLocation=_requestingLocation;
+- (void)_emergencyLocationAssertionTimeOut:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (_Bool)shouldStopRequestingLocationAfterCallback;

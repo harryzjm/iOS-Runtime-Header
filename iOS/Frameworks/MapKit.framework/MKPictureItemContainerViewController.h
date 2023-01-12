@@ -11,29 +11,37 @@
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
 #import <MapKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class GEOMapItemAttribution, NSString, UIImageView, UIScrollView, UIStackView;
-@protocol GEOPictureItemContainer, MKPictureItemContainerAnalyticsDelegate, MKPlaceViewControllerPresentingProtocol;
+@class GEOMapItemAttribution, NSString, UIButton, UIImageView, UIScrollView, UIStackView;
+@protocol GEOPictureItemContainer, MKPictureItemContainerAnalyticsDelegate, MKPictureItemContainerDelegate, MKPlaceViewControllerPresentingProtocol;
 
 __attribute__((visibility("hidden")))
 @interface MKPictureItemContainerViewController : UIViewController <UIScrollViewDelegate, MKPlacePhotoGalleryViewControllerDelegate, UIViewControllerTransitioningDelegate, MKPhotoGalleryTransitionAnimator>
 {
+    _Bool _hoverActive;
     id <MKPictureItemContainerAnalyticsDelegate> _analyticsDelegate;
     id <MKPlaceViewControllerPresentingProtocol> _presentingProtocol;
+    id <MKPictureItemContainerDelegate> _delegate;
     id <GEOPictureItemContainer> _pictureItemContainer;
     GEOMapItemAttribution *_attribution;
     UIScrollView *_scrollView;
     UIStackView *_stackView;
     UIImageView *_imageViewForTransition;
+    UIButton *_previousPageButton;
+    UIButton *_nextPageButton;
     struct CGPoint _beginAnalyticsScrollingPoint;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isActive) _Bool hoverActive; // @synthesize hoverActive=_hoverActive;
+@property(retain, nonatomic) UIButton *nextPageButton; // @synthesize nextPageButton=_nextPageButton;
+@property(retain, nonatomic) UIButton *previousPageButton; // @synthesize previousPageButton=_previousPageButton;
 @property(retain, nonatomic) UIImageView *imageViewForTransition; // @synthesize imageViewForTransition=_imageViewForTransition;
 @property(nonatomic) struct CGPoint beginAnalyticsScrollingPoint; // @synthesize beginAnalyticsScrollingPoint=_beginAnalyticsScrollingPoint;
 @property(retain, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(readonly, nonatomic) GEOMapItemAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) id <GEOPictureItemContainer> pictureItemContainer; // @synthesize pictureItemContainer=_pictureItemContainer;
+@property(nonatomic) __weak id <MKPictureItemContainerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <MKPlaceViewControllerPresentingProtocol> presentingProtocol; // @synthesize presentingProtocol=_presentingProtocol;
 @property(nonatomic) __weak id <MKPictureItemContainerAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 - (void)photoGalleryTransitionAnimatorDidFinishAnimation;
@@ -46,6 +54,12 @@ __attribute__((visibility("hidden")))
 - (void)infoCardThemeChanged;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)updateChevronVisibility;
+- (void)adjustScrollIndexByOffset:(long long)arg1;
+- (void)scrollToNext;
+- (void)scrollToPrevious;
+- (void)addControlButtons;
+- (void)applyCornerRadius;
 - (void)didTapOnPictureItemView:(id)arg1;
 - (id)visiblePictureItemViews;
 - (void)downloadImageForVisiblePictureItemViews;

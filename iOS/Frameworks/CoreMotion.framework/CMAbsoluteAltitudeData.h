@@ -8,7 +8,10 @@
 
 @interface CMAbsoluteAltitudeData
 {
+    double _altitudePrivate;
     double _altitude;
+    double _accuracy;
+    double _precision;
     double _absoluteAltitudeAccuracy;
     double _absoluteAltitudePrecision;
     long long _absoluteAltitudeStatusInfo;
@@ -18,7 +21,10 @@
 @property(readonly, nonatomic) long long absoluteAltitudeStatusInfo; // @synthesize absoluteAltitudeStatusInfo=_absoluteAltitudeStatusInfo;
 @property(readonly, nonatomic) double absoluteAltitudePrecision; // @synthesize absoluteAltitudePrecision=_absoluteAltitudePrecision;
 @property(readonly, nonatomic) double absoluteAltitudeAccuracy; // @synthesize absoluteAltitudeAccuracy=_absoluteAltitudeAccuracy;
-- (void)setAltitudeData:(double)arg1 accuracy:(double)arg2 precision:(double)arg3 andStatus:(long long)arg4;
+@property(readonly, nonatomic) double precision; // @synthesize precision=_precision;
+@property(readonly, nonatomic) double accuracy; // @synthesize accuracy=_accuracy;
+@property(readonly, nonatomic) double altitude; // @synthesize altitude=_altitude;
+- (void)setAltitudeData:(double)arg1 accuracy:(double)arg2 precision:(double)arg3 status:(long long)arg4;
 @property(readonly, nonatomic) NSNumber *absoluteAltitude;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

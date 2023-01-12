@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     id <VNModelFile> mFaceBoxAlignerModelFileHandle;
 }
 
++ (id)configurationOptionKeysForDetectorKey;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)processWithOptions:(id)arg1 warningRecorder:(id)arg2 error:(id *)arg3;

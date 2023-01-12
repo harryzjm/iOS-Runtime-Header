@@ -12,10 +12,6 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedInstance;
 + (id)_singletonAlloc;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

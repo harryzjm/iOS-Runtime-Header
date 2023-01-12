@@ -8,19 +8,19 @@
 
 #import <NewsUI/NSCopying-Protocol.h>
 
-@class NSString;
+@class SXScrollPosition;
 
 @interface NUArticleContext : NSObject <NSCopying>
 {
     _Bool _shouldAutoPlayVideo;
-    NSString *_componentIdentifier;
+    SXScrollPosition *_scrollPosition;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
+@property(readonly, nonatomic) SXScrollPosition *scrollPosition; // @synthesize scrollPosition=_scrollPosition;
 @property(readonly, nonatomic) _Bool shouldAutoPlayVideo; // @synthesize shouldAutoPlayVideo=_shouldAutoPlayVideo;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithShouldAutoPlayVideo:(_Bool)arg1 componentIdentifier:(id)arg2;
+- (id)initWithShouldAutoPlayVideo:(_Bool)arg1 scrollPosition:(id)arg2;
 
 @end
 

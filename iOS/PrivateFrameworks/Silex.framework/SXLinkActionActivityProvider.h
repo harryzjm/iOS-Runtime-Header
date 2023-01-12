@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) id <SXURLPreviewing> URLPreviewing; // @synthesize URLPreviewing=_URLPreviewing;
 @property(readonly, nonatomic) id <SXURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 - (void)openInSafari:(id)arg1;
+- (void)openInNewWindow:(id)arg1;
 - (void)open:(id)arg1;
 - (id)previewActivityForAction:(id)arg1;
 - (id)activityGroupForAction:(id)arg1;

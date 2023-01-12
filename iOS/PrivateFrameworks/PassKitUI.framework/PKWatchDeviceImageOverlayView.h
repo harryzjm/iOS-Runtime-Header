@@ -17,9 +17,12 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
+- (double)_watchScreenCenterXOffset;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)pk_childrenForAppearance;
+- (void)pk_applyAppearance:(id)arg1;
 
 @end
 

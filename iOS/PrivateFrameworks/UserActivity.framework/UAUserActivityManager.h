@@ -47,6 +47,7 @@
 - (_Bool)hasUserActivityWithUUID:(id)arg1;
 - (void)pinUserActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)determineIfUserActivityIsCurrent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)currentUserActivityProxiesWithOptions:(id)arg1 predicate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)currentUserActivityUUIDWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)markUserActivityAsDirty:(id)arg1 forceImmediate:(_Bool)arg2;
 - (void)sendUserActivityInfoToLSUserActivityd:(id)arg1 makeCurrent:(_Bool)arg2;

@@ -17,22 +17,26 @@
 }
 
 - (void).cxx_destruct;
-- (id)ignoredList;
-- (id)favoriteTodayList;
-- (id)todayList;
-- (id)dock;
 - (void)nodeDidMoveContainedNodes:(id)arg1;
 - (void)node:(id)arg1 didRemoveContainedNodeIdentifiers:(id)arg2;
 - (void)node:(id)arg1 didAddContainedNodeIdentifiers:(id)arg2;
 - (void)_notifyIndexChange:(int)arg1 identifiers:(id)arg2 withValidationBlock:(CDUnknownBlockType)arg3;
 - (void)_setIgnoredList:(id)arg1;
+- (id)ignoredList;
 - (_Bool)supportsIgnoredList;
 - (void)_setFavoriteTodayList:(id)arg1;
+- (id)favoriteTodayList;
 - (void)_setTodayList:(id)arg1;
+- (id)todayList;
 - (_Bool)supportsTodayList;
 - (void)_setDock:(id)arg1;
+- (id)dock;
 - (_Bool)supportsDock;
-- (id)initWithUniqueIdentifier:(id)arg1 displayName:(id)arg2 maxListCount:(unsigned long long)arg3 listGridSize:(struct SBHIconGridSize)arg4 iconGridSizeClassSizes:(struct SBHIconGridSizeClassSizes)arg5;
+- (void)delegateDidChange:(id)arg1;
+- (unsigned long long)allowedGridSizeClassesForTodayList;
+- (unsigned long long)columnCountForTodayList;
+- (unsigned long long)allowedGridSizeClassesForDock;
+- (unsigned long long)maxIconCountForDock;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

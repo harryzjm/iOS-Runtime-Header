@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_8cb3aebb)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_8cb3aebb)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int total_pkt_number;
 @property(readonly, nonatomic) NSString *stream_id;
 @property(readonly, nonatomic) NSString *error_str;

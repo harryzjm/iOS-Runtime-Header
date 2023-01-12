@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MSMessage, NSString, PKAppletSubcredentialSharingInvitation, PKProtobufSubcredentialInvitationMessage;
+@class MSMessage, NSString, PKAppletSubcredentialSharingInvitation, PKProtobufSubcredentialInvitationMessage, UIImage;
 
 @interface PKSubcredentialInvitationMessage : NSObject
 {
@@ -21,6 +21,7 @@
 - (id)_subcredentialInvitationMessageDataWithDataURL:(id)arg1;
 - (id)_subcredentialInvitationMessageDataURLWithData:(id)arg1;
 - (void)_updateDataURL;
+@property(copy, nonatomic) UIImage *passThumbnailImage;
 @property(copy, nonatomic) NSString *uniqueIdentifier;
 @property(nonatomic) unsigned long long status;
 @property(copy, nonatomic) NSString *dataString;

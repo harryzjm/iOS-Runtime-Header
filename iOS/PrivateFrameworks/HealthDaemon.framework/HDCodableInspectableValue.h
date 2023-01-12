@@ -12,6 +12,7 @@
 
 @interface HDCodableInspectableValue : PBCodable <NSCopying>
 {
+    long long _inspectableIntegerValue;
     HDCodableCodedQuantity *_codedQuantityValue;
     HDCodableCodedValueCollection *_codedValueCollection;
     HDCodableMedicalCodingList *_dataAbsentReasonCodingsValue;
@@ -21,9 +22,16 @@
     HDCodableMedicalDate *_medicalDateValue;
     HDCodableRatioValue *_ratioValue;
     NSString *_stringValue;
+    _Bool _booleanValue;
+    struct {
+        unsigned int inspectableIntegerValue:1;
+        unsigned int booleanValue:1;
+    } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool booleanValue; // @synthesize booleanValue=_booleanValue;
+@property(nonatomic) long long inspectableIntegerValue; // @synthesize inspectableIntegerValue=_inspectableIntegerValue;
 @property(retain, nonatomic) HDCodableMedicalCodingList *dataAbsentReasonCodingsValue; // @synthesize dataAbsentReasonCodingsValue=_dataAbsentReasonCodingsValue;
 @property(retain, nonatomic) HDCodableMedicalDateInterval *medicalDateIntervalValue; // @synthesize medicalDateIntervalValue=_medicalDateIntervalValue;
 @property(retain, nonatomic) HDCodableMedicalDate *medicalDateValue; // @synthesize medicalDateValue=_medicalDateValue;
@@ -42,6 +50,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasBooleanValue;
+@property(nonatomic) _Bool hasInspectableIntegerValue;
 @property(readonly, nonatomic) _Bool hasDataAbsentReasonCodingsValue;
 @property(readonly, nonatomic) _Bool hasMedicalDateIntervalValue;
 @property(readonly, nonatomic) _Bool hasMedicalDateValue;

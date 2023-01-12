@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface ICFPContentInfo : NSObject
 {
     long long _vodkaType;
@@ -15,6 +16,7 @@
 + (id)whaContentInfoWithAccountID:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long accountID; // @synthesize accountID=_accountID;
 @property(readonly, nonatomic) long long vodkaType; // @synthesize vodkaType=_vodkaType;
+@property(readonly, nonatomic) union FPContentInfo_ fpContentInfo;
 - (id)_init;
 
 @end

@@ -44,6 +44,8 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)internationalKeyOffset;
 - (struct CGPoint)deleteKeyOffset:(unsigned long long)arg1;
 - (struct CGPoint)iPadFudgeControlKeyOffset;
+- (struct CGPoint)symbolImageControlKeyOffset;
+- (double)symbolImageControlKeyFontSize;
 - (double)controlKeyFontSize;
 - (double)deleteKeyFontSize;
 - (double)moreKeyFontSize;

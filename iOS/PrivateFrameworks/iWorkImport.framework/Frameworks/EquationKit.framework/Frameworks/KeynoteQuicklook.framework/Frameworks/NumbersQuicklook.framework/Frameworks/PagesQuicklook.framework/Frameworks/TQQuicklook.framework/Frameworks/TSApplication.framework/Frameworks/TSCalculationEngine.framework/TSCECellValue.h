@@ -12,16 +12,16 @@
 
 @interface TSCECellValue : NSObject <NSCopying>
 {
-    int _valueType;
+    BOOL _valueType;
     TSULocale *_locale;
 }
 
-+ (id)cellValueWithArchive:(const struct CellValueArchive *)arg1 locale:(id)arg2;
++ (id)cellValueWithArchive:(const void *)arg1 locale:(id)arg2;
 + (id)newCellValueFromTSCEValue:(const struct TSCEValue *)arg1 withLocale:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
-@property(nonatomic) int valueType; // @synthesize valueType=_valueType;
-- (void)encodeCellValueToArchive:(struct CellValueArchive *)arg1;
+@property(nonatomic) BOOL valueType; // @synthesize valueType=_valueType;
+- (void)encodeCellValueToArchive:(void *)arg1;
 - (void)setPopulatedCustomFormat:(id)arg1;
 - (void)updateWithCustomFormatList:(id)arg1;
 - (long long)compare:(id)arg1;

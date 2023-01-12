@@ -12,19 +12,18 @@
 
 + (_Bool)stopRecording;
 + (_Bool)isRecording;
-+ (void)reset;
-+ (_Bool)startRecordingForDbWithFilename:(id)arg1 limitToMarkedThreads:(_Bool)arg2 includeBindVariables:(_Bool)arg3 includeIOMetrics:(_Bool)arg4 entryDecorator:(CDUnknownBlockType)arg5 entriesAvailableHandler:(CDUnknownBlockType)arg6;
-+ (id)recordedEntriesAndReset;
-+ (id)recordedEntries;
-+ (id)recordedEntriesDescription;
-+ (void)_recordExecutedStatementSQL:(id)arg1 queryPlan:(id)arg2 bindVariables:(id)arg3 bindIntArrays:(id)arg4 db:(struct sqlite3 *)arg5 pageHitCountBeforeExecution:(int)arg6 pageMissCountBeforeExecution:(int)arg7;
++ (_Bool)startRecordingForLibraries:(id)arg1 limitToMarkedThreads:(_Bool)arg2 includeBindVariables:(_Bool)arg3 includeIOMetrics:(_Bool)arg4 entryDecorator:(CDUnknownBlockType)arg5 entriesAvailableHandler:(CDUnknownBlockType)arg6;
++ (id)recordedStatementsAndReset;
++ (id)recordedStatements;
++ (id)recordedStatementsDescription;
++ (void)_reset;
++ (void)_recordExecutedStatement:(struct sqlite3_stmt *)arg1 db:(struct sqlite3 *)arg2 normalizedSQL:(id)arg3 expandedSQL:(id)arg4 plan:(id)arg5 duration:(double)arg6 pageHitCountBeforeExecution:(int)arg7 pageMissCountBeforeExecution:(int)arg8;
 + (_Bool)_installRecorder;
 + (id)_recordedStatementsAndReset:(_Bool)arg1;
-+ (void)_bindVariablesSubEntryForStatement:(id)arg1 outBindVariables:(id *)arg2 outBindIntArrays:(id *)arg3;
 + (_Bool)_installConnectionSwizzle;
 + (struct sqlite3 *)_dbHandleFromConnection:(id)arg1;
-+ (_Bool)_isCorrectDB:(struct sqlite3 *)arg1;
-+ (id)_queryPlanFromSQL:(const char *)arg1 usingDb:(struct sqlite3 *)arg2;
++ (long long)_libraryIDForDb:(struct sqlite3 *)arg1;
++ (_Bool)_shouldRecordPhotoLibraryDb:(struct sqlite3 *)arg1;
 
 @end
 

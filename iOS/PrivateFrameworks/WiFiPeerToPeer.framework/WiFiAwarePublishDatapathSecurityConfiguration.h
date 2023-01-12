@@ -8,20 +8,23 @@
 
 #import <WiFiPeerToPeer/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSData;
 
 @interface WiFiAwarePublishDatapathSecurityConfiguration : NSObject <NSSecureCoding>
 {
     NSArray *_pmkList;
     NSArray *_passphraseList;
+    NSData *_pmkID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSData *pmkID; // @synthesize pmkID=_pmkID;
 @property(readonly, nonatomic) NSArray *passphraseList; // @synthesize passphraseList=_passphraseList;
 @property(readonly, nonatomic) NSArray *pmkList; // @synthesize pmkList=_pmkList;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithPMK:(id)arg1 andPMKID:(id)arg2;
 - (id)initWithPMKList:(id)arg1 passphraseList:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

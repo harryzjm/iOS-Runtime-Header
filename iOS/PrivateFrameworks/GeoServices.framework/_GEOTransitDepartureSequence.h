@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOTransitDepartureSequence-Protocol.h>
 
-@class GEOPDDepartureSequence, NSArray, NSSet, NSString;
+@class GEOPDDepartureSequence, GEOPDDepartureSequenceContainer, GEOPDStopInfo, NSArray, NSSet, NSString, NSTimeZone;
 @protocol GEOTransitLine;
 
 __attribute__((visibility("hidden")))
@@ -18,10 +18,16 @@ __attribute__((visibility("hidden")))
     id <GEOTransitLine> _line;
     NSSet *_nextStopIDs;
     long long _displayStyle;
+    GEOPDStopInfo *_stopInfo;
+    GEOPDDepartureSequenceContainer *_container;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSTimeZone *timeZone;
+@property(readonly, nonatomic) unsigned long long walkingETA;
+@property(readonly, nonatomic) _Bool hasWalkingETA;
 @property(readonly, nonatomic) NSSet *nextStopIDs;
+- (id)serviceResumesAfterDate:(id)arg1;
 - (id)operatingHoursForDate:(id)arg1 inTimeZone:(id)arg2;
 - (_Bool)isDepartureDateInactive:(id)arg1 withReferenceDate:(id)arg2;
 - (id)frequencyToDescribeAtDate:(id)arg1;
@@ -40,13 +46,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long displayStyle;
 @property(readonly, nonatomic) _Bool isLowFrequency;
 @property(readonly, nonatomic) NSArray *operatingHours;
+@property(readonly, nonatomic) NSArray *containerLabelItems;
+@property(readonly, nonatomic) NSString *containerDisplayName;
+@property(readonly, nonatomic) NSString *originName;
+@property(readonly, nonatomic) NSString *displayName;
 @property(readonly, nonatomic) NSString *headsign;
 @property(readonly, nonatomic) NSString *direction;
+@property(readonly, nonatomic) unsigned long long transitId;
 @property(readonly, nonatomic) id <GEOTransitLine> line;
 @property(readonly, nonatomic) NSArray *frequencies;
 - (unsigned long long)stopId;
 @property(readonly, nonatomic) NSArray *departures;
-- (id)initWithSequence:(id)arg1 line:(id)arg2 pbLine:(id)arg3;
+- (id)initWithSequence:(id)arg1 line:(id)arg2 pbLine:(id)arg3 stopInfo:(id)arg4 container:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

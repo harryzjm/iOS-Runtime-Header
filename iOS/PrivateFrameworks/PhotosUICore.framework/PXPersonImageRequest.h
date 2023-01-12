@@ -21,6 +21,7 @@
 @property(retain, nonatomic) NSTimer *imageLoadInvalidationTimer; // @synthesize imageLoadInvalidationTimer=_imageLoadInvalidationTimer;
 @property(readonly, nonatomic) id <PXPerson> person; // @synthesize person=_person;
 - (void)cancel;
+- (void)requestFaceCropWithOptions:(id)arg1 timeout:(double)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)requestImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 cacheResult:(_Bool)arg3 boundFaceRect:(_Bool)arg4 timeout:(double)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (void)dealloc;
 - (id)initWithPerson:(id)arg1;

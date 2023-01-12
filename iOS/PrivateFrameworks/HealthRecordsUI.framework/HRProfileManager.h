@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *currentProfile;
     MISSING_TYPE *profileCache;
-    MISSING_TYPE *countProviderCollectionCache;
+    MISSING_TYPE *profileObjectsCache;
     MISSING_TYPE *managerQueue;
     MISSING_TYPE *lock;
 }

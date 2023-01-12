@@ -9,7 +9,7 @@
 #import <HomeKit/HMCameraRecordingEvent-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSUUID;
+@class NSDate, NSString, NSUUID;
 
 @interface HMCameraRecordingReachabilityEvent : NSObject <HMCameraRecordingEvent, NSSecureCoding>
 {
@@ -25,10 +25,14 @@
 @property(readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithUniqueIdentifier:(id)arg1 dateOfOccurrence:(id)arg2 reachable:(_Bool)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

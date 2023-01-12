@@ -11,6 +11,8 @@
 @interface TVPPlaybackReportingEventCollection : NSObject
 {
     _Bool _isDownloaded;
+    _Bool _isGroupActivity;
+    _Bool _isGroupActivityOriginator;
     _Bool _complete;
     _Bool _initialFPSRequestsComplete;
     long long _videoType;
@@ -25,6 +27,8 @@
 @property(retain, nonatomic) NSMutableArray *eventArray; // @synthesize eventArray=_eventArray;
 @property(nonatomic) _Bool initialFPSRequestsComplete; // @synthesize initialFPSRequestsComplete=_initialFPSRequestsComplete;
 @property(nonatomic) _Bool complete; // @synthesize complete=_complete;
+@property(nonatomic) _Bool isGroupActivityOriginator; // @synthesize isGroupActivityOriginator=_isGroupActivityOriginator;
+@property(nonatomic) _Bool isGroupActivity; // @synthesize isGroupActivity=_isGroupActivity;
 @property(nonatomic) _Bool isDownloaded; // @synthesize isDownloaded=_isDownloaded;
 @property(nonatomic) long long videoType; // @synthesize videoType=_videoType;
 - (void)_setError:(id)arg1 inEventDict:(id)arg2 errorCodeKey:(id)arg3 errorDomainKey:(id)arg4;

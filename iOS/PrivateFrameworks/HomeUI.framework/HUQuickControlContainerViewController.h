@@ -15,7 +15,7 @@
 #import <HomeUI/HUQuickControlViewControllerCoordinatorDelegate-Protocol.h>
 #import <HomeUI/HUViewControllerCustomDismissing-Protocol.h>
 
-@class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UILayoutGuide, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlPresentationContext, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UILayoutGuide, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol HUOpenURLHandling, HUPresentationDelegate, HUQuickControlContainerViewControllerDelegate, NSCopying;
 
 @interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUDetailsPresentationDelegateHost, HUViewControllerCustomDismissing, HUQuickControlTouchContinuing>
@@ -35,6 +35,7 @@
     unsigned long long _presentationState;
     HUQuickControlViewControllerCoordinator *_viewControllerCoordinator;
     HUQuickControlViewController *_activeControlViewController;
+    HUQuickControlPresentationContext *_presentationContext;
     struct CGRect _sourceRect;
 }
 
@@ -46,6 +47,7 @@
 + (id)_easeOutTimingFunction;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool presentedDetailView; // @synthesize presentedDetailView=_presentedDetailView;
+@property(retain, nonatomic) HUQuickControlPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property(retain, nonatomic) HUQuickControlViewController *activeControlViewController; // @synthesize activeControlViewController=_activeControlViewController;
 @property(retain, nonatomic) HUQuickControlViewControllerCoordinator *viewControllerCoordinator; // @synthesize viewControllerCoordinator=_viewControllerCoordinator;
 @property(nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
@@ -70,10 +72,13 @@
 - (void)controllerCoordinator:(id)arg1 didUpdateReachability:(_Bool)arg2;
 - (void)controllerCoordinator:(id)arg1 didUpdateStatusWithPrimaryText:(id)arg2 secondaryText:(id)arg3;
 - (void)controllerCoordinator:(id)arg1 didUpdateIconDescriptor:(id)arg2 showOffState:(_Bool)arg3;
+- (void)contentDidUpdateInContainerView:(id)arg1;
 - (void)detailsButtonPressedInContainerView:(id)arg1;
 - (id)finishPresentation:(id)arg1 animated:(_Bool)arg2;
 - (id)hu_prepareForDismissalAnimated:(_Bool)arg1;
 - (void)beginReceivingTouchesWithGestureRecognizer:(id)arg1;
+- (void)externalAnimationsEnded;
+- (void)externalAnimationsBegan;
 - (id)_dismissDetailsViewControllerAnimated:(_Bool)arg1 dismissControl:(_Bool)arg2;
 - (id)_prepareDetailViewController;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -97,7 +102,9 @@
 - (id)presentDetailViewControllerAnimated:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (_Bool)canBecomeFirstResponder;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
 - (_Bool)isControlPresentedOrPresenting;

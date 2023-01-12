@@ -6,12 +6,13 @@
 
 #import <MTLCapture/NSObject-Protocol.h>
 
-@class MTLComputePipelineDescriptor, MTLRenderPipelineDescriptor, MTLTileRenderPipelineDescriptor, NSString, NSURL;
-@protocol MTLDevice;
+@class MTLComputePipelineDescriptor, MTLFunctionDescriptor, MTLRenderPipelineDescriptor, MTLTileRenderPipelineDescriptor, NSString, NSURL;
+@protocol MTLDevice, MTLLibrary;
 
 @protocol MTLBinaryArchive <NSObject>
 @property(readonly) id <MTLDevice> device;
 @property(copy) NSString *label;
+- (_Bool)addFunctionWithDescriptor:(MTLFunctionDescriptor *)arg1 library:(id <MTLLibrary>)arg2 error:(id *)arg3;
 - (_Bool)serializeToURL:(NSURL *)arg1 error:(id *)arg2;
 - (_Bool)addTileRenderPipelineFunctionsWithDescriptor:(MTLTileRenderPipelineDescriptor *)arg1 error:(id *)arg2;
 - (_Bool)addRenderPipelineFunctionsWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 error:(id *)arg2;

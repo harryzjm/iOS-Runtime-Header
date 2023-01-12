@@ -16,7 +16,7 @@
 
 + (id)faceBundleLoaderWithDirectories:(id)arg1;
 - (void).cxx_destruct;
-- (void)enumerationFaceBundleClassesWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateFaceBundleClassesIgnoringCache:(_Bool)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_loadClassesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 

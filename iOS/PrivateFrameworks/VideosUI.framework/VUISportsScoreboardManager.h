@@ -28,6 +28,9 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateTimer;
 - (void)_resetTimer;
 - (void)_updateTimer;
+- (void)_registerToPlaybackNotifications;
+- (void)_registerToApplicationNotifications;
+- (void)_playbackUIBeingShownDidChange:(id)arg1;
 - (void)_updateScores:(id)arg1;
 - (id)_prepareJSContextDictionaryArgument;
 - (void)_getScoreboardUpdates;

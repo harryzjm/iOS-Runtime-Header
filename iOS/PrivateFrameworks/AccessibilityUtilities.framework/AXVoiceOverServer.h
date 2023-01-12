@@ -9,6 +9,8 @@
 }
 
 + (id)server;
+- (void)performAutomationTestingCommand:(id)arg1 userInfo:(id)arg2 timeout:(double)arg3 completion:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic, getter=isScreenCurtainEnabled) _Bool isScreenCurtainEnabled;
 - (_Bool)isBluetoothBrailleDisplayConnected;
 - (_Bool)isHandwritingInputUIShowing;
 - (_Bool)isBrailleInputUIShowing;
@@ -20,8 +22,8 @@
 - (id)currentRotorName;
 - (id)lastSoundsPlayed;
 - (id)lastSpokenContents;
+- (void)clearLastSpokenPhrases:(CDUnknownBlockType)arg1;
 - (id)lastSpokenPhrases;
-- (void)performAutomationTestingCommand:(id)arg1 userInfo:(id)arg2 timeout:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_connectIfNecessary;
 - (id)_serviceName;
 

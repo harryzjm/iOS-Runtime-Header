@@ -7,19 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <ClassroomKit/CRKIDSAccount-Protocol.h>
+#import <ClassroomKit/IDSAccountDelegate-Protocol.h>
 
-@class IDSAccount;
+@class IDSAccount, NSString;
 
-@interface CRKConcreteIDSAccount : NSObject <CRKIDSAccount>
+@interface CRKConcreteIDSAccount : NSObject <IDSAccountDelegate, CRKIDSAccount>
 {
+    _Bool _active;
     IDSAccount *_account;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) IDSAccount *account; // @synthesize account=_account;
-- (id)listenForAccountActiveWithHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic, getter=isActive) _Bool active;
+@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+@property(retain, nonatomic) IDSAccount *account; // @synthesize account=_account;
+@property(readonly, copy) NSString *description;
+- (void)account:(id)arg1 isActiveChanged:(_Bool)arg2;
+@property(readonly, copy, nonatomic) NSString *loginID;
+- (void)updateIsActive;
+- (void)updateWithAccount:(id)arg1;
 - (id)initWithAccount:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

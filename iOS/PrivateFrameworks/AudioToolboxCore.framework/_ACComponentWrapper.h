@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _ACComponentWrapper : NSObject <NSSecureCoding>
 {
-    shared_ptr_a99cf2ba mComponent;
+    struct shared_ptr<APComponent> mComponent;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithComponent:(shared_ptr_a99cf2ba *)arg1;
+- (id)initWithComponent:(void *)arg1;
 
 @end
 

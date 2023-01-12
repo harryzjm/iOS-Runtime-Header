@@ -14,6 +14,8 @@
 {
     PBDataReader *_reader;
     NSString *_manifestEnv;
+    NSString *_requestAppIdMajorVer;
+    NSString *_requestAppIdMinorVer;
     NSString *_requestAppIdentifier;
     double _requestEnd;
     long long _requestErrorCode;
@@ -54,6 +56,8 @@
         unsigned int has_mptcpNegotiated:1;
         unsigned int has_rnfTriggered:1;
         unsigned int read_manifestEnv:1;
+        unsigned int read_requestAppIdMajorVer:1;
+        unsigned int read_requestAppIdMinorVer:1;
         unsigned int read_requestAppIdentifier:1;
         unsigned int read_requestErrorDescription:1;
         unsigned int read_requestErrorDomain:1;
@@ -80,6 +84,10 @@
 - (id)description;
 @property(retain, nonatomic) GEONetworkSessionTaskTransactionMetrics *taskMetrics;
 @property(readonly, nonatomic) _Bool hasTaskMetrics;
+@property(retain, nonatomic) NSString *requestAppIdMinorVer;
+@property(readonly, nonatomic) _Bool hasRequestAppIdMinorVer;
+@property(retain, nonatomic) NSString *requestAppIdMajorVer;
+@property(readonly, nonatomic) _Bool hasRequestAppIdMajorVer;
 @property(nonatomic) _Bool hasRnfTriggered;
 @property(nonatomic) _Bool rnfTriggered;
 @property(retain, nonatomic) NSString *serviceIpAddress;

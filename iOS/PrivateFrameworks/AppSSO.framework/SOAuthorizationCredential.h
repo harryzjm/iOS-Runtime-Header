@@ -8,22 +8,25 @@
 
 #import <AppSSO/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSHTTPURLResponse;
+@class NSArray, NSData, NSDictionary, NSHTTPURLResponse;
 
 @interface SOAuthorizationCredential : NSObject <NSSecureCoding>
 {
     NSDictionary *_httpAuthorizationHeaders;
     NSHTTPURLResponse *_httpResponse;
     NSData *_httpBody;
+    NSArray *_secKeyProxyEndpoints;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *secKeyProxyEndpoints; // @synthesize secKeyProxyEndpoints=_secKeyProxyEndpoints;
 @property(retain, nonatomic) NSData *httpBody; // @synthesize httpBody=_httpBody;
 @property(copy, nonatomic) NSHTTPURLResponse *httpResponse; // @synthesize httpResponse=_httpResponse;
 @property(retain, nonatomic) NSDictionary *httpAuthorizationHeaders; // @synthesize httpAuthorizationHeaders=_httpAuthorizationHeaders;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithAuthorizationResult:(id)arg1;
 
 @end
 

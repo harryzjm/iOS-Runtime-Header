@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <BusinessChat/BCDictionarySerializable-Protocol.h>
 #import <BusinessChat/NSSecureCoding-Protocol.h>
 
-@class BCOAuth2Parameters, NSString;
+@class BCOAuth2Parameters, NSDictionary, NSString;
 
-@interface BCAuthenticationRequest : NSObject <NSSecureCoding>
+@interface BCAuthenticationRequest : NSObject <BCDictionarySerializable, NSSecureCoding>
 {
     NSString *_businessIdentifier;
     NSString *_businessName;
@@ -19,14 +20,14 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) BCOAuth2Parameters *oauth2; // @synthesize oauth2=_oauth2;
+@property(readonly, nonatomic) BCOAuth2Parameters *oauth2;
 @property(readonly, nonatomic) NSString *businessName; // @synthesize businessName=_businessName;
-@property(retain, nonatomic) NSString *businessIdentifier; // @synthesize businessIdentifier=_businessIdentifier;
+@property(readonly, nonatomic) NSString *businessIdentifier;
 - (id)debugDescription;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *dictionaryValue;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithDictionary:(id)arg1 imageDictionary:(id)arg2;
 
 @end
 

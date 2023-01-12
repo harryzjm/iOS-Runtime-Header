@@ -8,13 +8,15 @@
 
 @interface TSCHChartCategoryAxisLayoutItem
 {
-    TSCHChartAxisSeriesLabelsLayoutItem *mSeriesLabels;
-    TSCHChartCategoryAxisLabelsLayoutItem *mCategoryLabels;
+    TSCHChartAxisSeriesLabelsLayoutItem *_seriesLabels;
+    TSCHChartCategoryAxisLabelsLayoutItem *_categoryLabels;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCHChartCategoryAxisLabelsLayoutItem *axisCategoryLabelsLayoutItem; // @synthesize axisCategoryLabelsLayoutItem=mCategoryLabels;
-@property(readonly, nonatomic) TSCHChartAxisSeriesLabelsLayoutItem *axisSeriesLabelsLayoutItem; // @synthesize axisSeriesLabelsLayoutItem=mSeriesLabels;
+@property(readonly, nonatomic) TSCHChartCategoryAxisLabelsLayoutItem *axisCategoryLabelsLayoutItem; // @synthesize axisCategoryLabelsLayoutItem=_categoryLabels;
+@property(readonly, nonatomic) TSCHChartAxisSeriesLabelsLayoutItem *axisSeriesLabelsLayoutItem; // @synthesize axisSeriesLabelsLayoutItem=_seriesLabels;
+- (id)protected_layoutSpaceHalosForAllLabels;
+- (id)protected_layoutSpaceKnobsForAllLabels;
 - (struct CGRect)protected_layoutSpaceRectForAllLabels;
 - (id)renderersWithRep:(id)arg1;
 - (void)p_layoutLabelsNow;

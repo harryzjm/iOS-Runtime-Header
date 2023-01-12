@@ -12,12 +12,14 @@
 
 @interface SBApplicationMultiwindowService : NSObject <SBApplicationServerMultiwindowDelegate>
 {
-    FBServiceClientAuthenticator *_serviceClientAccessEntitlementAuthenticator;
+    FBServiceClientAuthenticator *_triggerShowAllWindowsEntitlementAuthenticator;
+    FBServiceClientAuthenticator *_requestShelfPresentationEntitlementAuthenticator;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)triggerShowAllWindowsForApplicationBundleIdentifier:(id)arg1;
+- (void)applicationServer:(id)arg1 client:(id)arg2 requestShelfPresentationForSceneWithIdentifier:(id)arg3;
 - (void)applicationServer:(id)arg1 client:(id)arg2 showAllWindowsForBundleIdentifier:(id)arg3;
 - (id)init;
 

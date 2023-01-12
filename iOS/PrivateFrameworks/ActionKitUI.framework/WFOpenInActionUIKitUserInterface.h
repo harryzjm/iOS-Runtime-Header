@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFActionUserInterface.h>
 
 #import <ActionKitUI/UIDocumentInteractionControllerDelegate-Protocol.h>
 #import <ActionKitUI/WFOpenInActionUserInterface-Protocol.h>
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

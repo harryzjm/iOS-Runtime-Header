@@ -15,8 +15,8 @@
 #import <UIKitCore/UITextInputControllerDelegate-Protocol.h>
 #import <UIKitCore/UITextInputPrivate-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, NSTimer, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIImage, UIInputContextHistory, UITextField, UITextInputController, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICascadingTextStorage, _UIFieldEditorLayoutManager, _UITextFieldCanvasView;
-@protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer;
+@class NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, NSTimer, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIImage, UIInputContextHistory, UITextField, UITextInputController, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICascadingTextStorage, _UISupplementalLexicon, _UITextLayoutController;
+@protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, _UITextCanvas;
 
 @interface UIFieldEditor <UITextInputControllerDelegate, NSLayoutManagerDelegate, UIKeyInputPrivate, UITextFieldContent, NSUITextViewCommonMethods, UIAutoscrollContainer, UITextInput, UITextInputPrivate, UITextAutoscrolling, UIKeyboardInput>
 {
@@ -28,7 +28,7 @@
     struct UIEdgeInsets _contentInsetsFromFonts;
     UITextInputController *__textInputController;
     NSTextContainer *__textContainer;
-    _UIFieldEditorLayoutManager *__layoutManager;
+    _UITextLayoutController *__textLayoutController;
     _UICascadingTextStorage *__textStorage;
     struct {
         unsigned int delegateRespondsToFieldEditorDidChange:1;
@@ -42,12 +42,10 @@
         unsigned int contentInsetsFromFontsValid:1;
     } _feFlags;
     struct UIEdgeInsets _padding;
-    struct _NSRange _unobscuredSecureRange;
     unsigned long long _obscuredSecureLength;
     NSTimer *_obscureAllTextTimer;
     double _desiredContentWidth;
-    _UITextFieldCanvasView *_contentView;
-    _UITextFieldCanvasView *_passcodeStyleCutoutView;
+    UIView<_UITextCanvas> *_contentView;
     _Bool _allowsAttachments;
     _Bool __shouldObscureNextInput;
     CDUnknownBlockType _scrollAnimationEndedAction;
@@ -81,6 +79,7 @@
 - (struct CGSize)minSize;
 - (void)invalidateTextContainerOrigin;
 - (void)setConstrainedFrameSize:(struct CGSize)arg1;
+- (void)textContainerUsageDidChangeToBounds:(struct CGRect)arg1;
 - (struct UIEdgeInsets)textContainerInset;
 - (struct CGPoint)textContainerOrigin;
 - (struct CGPoint)textContainerOriginForTextAlignment:(long long)arg1;
@@ -155,8 +154,8 @@
 - (double)_passcodeStyleAlpha;
 @property(readonly, nonatomic) NSTextStorage *textStorage;
 @property(readonly, nonatomic) NSTextContainer *textContainer;
-@property(readonly, nonatomic) NSLayoutManager *layoutManager;
-@property(nonatomic) long long nonEditingLinebreakMode;
+- (void)setNonEditingLinebreakMode:(long long)arg1;
+- (long long)nonEditingLinebreakMode;
 - (id)undoManager;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
@@ -187,14 +186,10 @@
 - (void)setFont:(id)arg1;
 - (id)textColor;
 - (void)setTextColor:(id)arg1;
-- (id)style;
 - (id)layoutManager:(id)arg1 effectiveCUICatalogForTextEffect:(id)arg2;
-- (void)setStyle:(id)arg1;
 - (struct _NSRange)_unobscuredSecureRange;
-- (_Bool)_isPasscodeStyle;
 - (void)_setValue:(id)arg1 forTextAttribute:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)_adaptToPasscodeStyleIfNeeded;
 - (void)_handleObscuredTextAfterActivationChange;
 - (void)_deactivateSelectionView;
 - (void)_resetTypingAttributes;
@@ -236,11 +231,13 @@
 - (void)_applyCorrectTextContainerSize;
 - (void)_textStorageDidProcessEditing:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+@property(readonly, nonatomic) NSLayoutManager *layoutManager;
 - (id)_textCanvasView;
 - (id)_textInputController;
 - (id)_textStorage;
 - (id)_textContainer;
-- (id)_layoutManager;
+- (id)_textLayoutController;
+@property(readonly, nonatomic) _UITextLayoutController *textLayoutController;
 - (void)dealloc;
 - (id)initWithTextField:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -265,6 +262,7 @@
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
 @property(nonatomic, getter=isDevicePasscodeEntry) _Bool devicePasscodeEntry;
+@property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool disableInputBars;
 @property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureTextUsingPlainText;
@@ -291,13 +289,18 @@
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) _Bool preferOnlineDictation;
+@property(nonatomic) long long preferredKeyboardStyle;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic) long long selectionAffinity;
 @property(retain, nonatomic) UIColor *selectionBarColor;
+@property(retain, nonatomic) UIColor *selectionBorderColor;
+@property(nonatomic) double selectionBorderWidth;
+@property(nonatomic) double selectionCornerRadius;
 @property(retain, nonatomic) UIImage *selectionDragDotImage;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets;
 @property(nonatomic) long long selectionGranularity;
 @property(retain, nonatomic) UIColor *selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType;
@@ -308,11 +311,14 @@
 @property(nonatomic) long long smartQuotesType; // @dynamic smartQuotesType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
 @property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType; // @dynamic textContentType;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 @property(nonatomic) int textLoupeVisibility;
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
 @property(nonatomic) long long textScriptType;
 @property(nonatomic) int textSelectionBehavior;
 @property(nonatomic) id textSuggestionDelegate;

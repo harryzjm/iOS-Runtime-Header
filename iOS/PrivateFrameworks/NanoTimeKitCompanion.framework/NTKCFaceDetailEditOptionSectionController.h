@@ -28,12 +28,16 @@
 - (id)_actionNameForOption:(id)arg1;
 - (void)_refreshActionRowContent;
 - (void)_createActionRow;
+- (_Bool)_hasActionRow;
+@property(readonly, nonatomic) Class actionRowCellClass;
 - (void)reloadActionRow;
 - (_Bool)_handleDidSelectActionRowForOption:(id)arg1;
 - (_Bool)_handleDidSelectOption:(id)arg1;
 - (_Bool)_canDisplayActionRowForCustomEditMode:(long long)arg1 andOption:(id)arg2;
+- (id)optionAtIndex:(unsigned long long)arg1;
 - (_Bool)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;
 - (_Bool)_canSelectRow:(long long)arg1;
+- (void)_updateSelectedOptions;
 - (void)faceDidChange;
 - (id)_initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(_Bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
 - (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(_Bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;

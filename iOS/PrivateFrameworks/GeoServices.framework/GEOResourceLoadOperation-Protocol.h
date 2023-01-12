@@ -7,15 +7,14 @@
 #import <GeoServices/NSObject-Protocol.h>
 #import <GeoServices/NSProgressReporting-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOResourceInfo, NSArray, NSData, NSObject, NSString, NSURL;
+@class GEOApplicationAuditToken, GEOResourceInfo, NSArray, NSObject, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_os_log;
 
 @protocol GEOResourceLoadOperation <NSObject, NSProgressReporting>
-@property(readonly, nonatomic) NSData *data;
 @property(nonatomic) _Bool preferDirectNetworking;
 @property(nonatomic) _Bool requiresWiFi;
 - (void)cancel;
-- (void)startWithCompletionHandler:(void (^)(NSData *, NSString *, NSError *))arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2;
-- (id)initWithResource:(GEOResourceInfo *)arg1 existingPartialData:(NSData *)arg2 eTag:(NSString *)arg3 auditToken:(GEOApplicationAuditToken *)arg4 baseURL:(NSURL *)arg5 alternateURLs:(NSArray *)arg6 proxyURL:(NSURL *)arg7 log:(NSObject<OS_os_log> *)arg8;
+- (void)startWithCompletionHandler:(void (^)(NSURL *, NSData *, NSString *, NSError *))arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2;
+- (id)initWithResource:(GEOResourceInfo *)arg1 eTag:(NSString *)arg2 auditToken:(GEOApplicationAuditToken *)arg3 baseURL:(NSURL *)arg4 alternateURLs:(NSArray *)arg5 proxyURL:(NSURL *)arg6 log:(NSObject<OS_os_log> *)arg7;
 @end
 

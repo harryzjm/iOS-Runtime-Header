@@ -15,12 +15,12 @@
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) tvec3_17f03ce0 offset; // @synthesize offset=_offset;
 - (void)enumerateLabelBoundsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)clear;
 - (void)addLabelBounds:(id)arg1;
 - (_Bool)isEmpty;
-- (void)dealloc;
 - (id)init;
 
 @end

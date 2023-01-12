@@ -9,22 +9,24 @@
 #import <CoreSpeech/CSAudioServerCrashMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioStreamProvidingDelegate-Protocol.h>
 
-@class CSAudioCircularBuffer, CSAudioStream, CSPlainAudioFileWriter, NSHashTable, NSMutableSet, NSString;
+@class CSAudioCircularBuffer, CSAudioStream, CSPlainAudioFileWriter, NSHashTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CSContinuousAudioFingerprintProvider : NSObject <CSAudioStreamProvidingDelegate, CSAudioServerCrashMonitorDelegate>
 {
     _Bool _isListenPollingStarting;
+    float _currentMaximumBufferSize;
     NSHashTable *_observers;
     CSAudioStream *_audioStream;
     NSObject<OS_dispatch_queue> *_queue;
     CSAudioCircularBuffer *_audioLoggingBuffer;
     CSPlainAudioFileWriter *_audioFileWriter;
-    NSMutableSet *_inUseServices;
+    NSMutableDictionary *_inUseServices;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableSet *inUseServices; // @synthesize inUseServices=_inUseServices;
+@property(nonatomic) float currentMaximumBufferSize; // @synthesize currentMaximumBufferSize=_currentMaximumBufferSize;
+@property(retain, nonatomic) NSMutableDictionary *inUseServices; // @synthesize inUseServices=_inUseServices;
 @property(retain, nonatomic) CSPlainAudioFileWriter *audioFileWriter; // @synthesize audioFileWriter=_audioFileWriter;
 @property(retain, nonatomic) CSAudioCircularBuffer *audioLoggingBuffer; // @synthesize audioLoggingBuffer=_audioLoggingBuffer;
 @property(nonatomic) _Bool isListenPollingStarting; // @synthesize isListenPollingStarting=_isListenPollingStarting;
@@ -46,7 +48,8 @@
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)stopWithUUID:(id)arg1;
-- (void)startWithUUID:(id)arg1;
+- (void)startWithUUID:(id)arg1 withMaximumBufferSize:(float)arg2;
+- (void)_setMaximumBufferSizeFromInUseServices;
 - (id)init;
 
 // Remaining properties

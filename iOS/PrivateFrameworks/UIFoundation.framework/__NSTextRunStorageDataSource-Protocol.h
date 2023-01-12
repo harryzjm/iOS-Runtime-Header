@@ -14,6 +14,6 @@
 @optional
 @property(readonly) id <NSTextLocation> baseLocation;
 - (long long)offsetFromLocation:(id <NSTextLocation>)arg1 toLocation:(id <NSTextLocation>)arg2;
-- (id <NSTextLocation>)locationFromLocation:(id <NSTextLocation>)arg1 offset:(long long)arg2;
+- (id <NSTextLocation>)locationFromLocation:(id <NSTextLocation>)arg1 withOffset:(long long)arg2;
 @end
 

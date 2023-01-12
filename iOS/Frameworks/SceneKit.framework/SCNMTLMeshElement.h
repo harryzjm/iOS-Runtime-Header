@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long indexCount; // @synthesize indexCount=_indexCount;
 @property(nonatomic) unsigned long long primitiveType; // @synthesize primitiveType=_primitiveType;
 - (void)setPrimitiveRange:(CDStruct_912cb5d2)arg1;
+@property(readonly, nonatomic) long long effectivePrimitiveCount;
 @property(readonly, nonatomic) long long primitiveCount;
 - (void)setupWithElement:(struct __C3DMeshElement *)arg1;
 - (id)description;

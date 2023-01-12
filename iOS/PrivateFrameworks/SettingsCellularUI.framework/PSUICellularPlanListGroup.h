@@ -8,16 +8,18 @@
 
 #import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 
-@class NSString;
+@class Logger, NSString;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularPlanListGroup : NSObject <PSSpecifierGroup>
 {
+    Logger *_logger;
 }
 
+- (void).cxx_destruct;
+- (id)getLogger;
 - (void)danglingPlanPressed:(id)arg1;
 - (id)danglingPlanSpecifierDetailText:(id)arg1;
-- (id)planPendingTransferSpecifierDetailText:(id)arg1;
 - (id)planSpecifierDetailText:(id)arg1;
 - (id)specifiers;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;

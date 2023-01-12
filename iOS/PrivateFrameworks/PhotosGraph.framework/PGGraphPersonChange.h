@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString, PGGraphPersonNode;
+@class NSSet, NSString;
 
 @interface PGGraphPersonChange
 {
     NSString *_personLocalIdentifier;
-    PGGraphPersonNode *_personNode;
     NSSet *_propertyNames;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *propertyNames; // @synthesize propertyNames=_propertyNames;
-@property(retain, nonatomic) PGGraphPersonNode *personNode; // @synthesize personNode=_personNode;
 @property(readonly, nonatomic) NSString *personLocalIdentifier; // @synthesize personLocalIdentifier=_personLocalIdentifier;
 - (id)description;
 - (void)mergeChange:(id)arg1;

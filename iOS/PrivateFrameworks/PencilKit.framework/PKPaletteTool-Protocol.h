@@ -7,9 +7,10 @@
 #import <PencilKit/NSObject-Protocol.h>
 
 @class NSString;
-@protocol PKPaletteErasingTool, PKPaletteInkingTool;
+@protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool;
 
 @protocol PKPaletteTool <NSObject>
+@property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
 @property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly, nonatomic) NSString *toolIdentifier;

@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class BSProcessHandle, NSString;
+@class BSProcessHandle, NSString, UIEventAttribution;
+@protocol NSObject;
 
 @interface UISceneOpenURLOptions : NSObject
 {
     NSString *_sourceApp;
     BSProcessHandle *_sourceProcessHandle;
-    id _annotation;
+    id <NSObject> _annotation;
     _Bool _openInPlace;
+    UIEventAttribution *_eventAttribution;
     _Bool _openAsDownload;
 }
 
 + (id)_optionsFromDictionary:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UIEventAttribution *eventAttribution; // @synthesize eventAttribution=_eventAttribution;
 @property(readonly, nonatomic) _Bool _openAsDownload; // @synthesize _openAsDownload;
 @property(readonly, nonatomic) _Bool openInPlace; // @synthesize openInPlace=_openInPlace;
 @property(readonly, nonatomic) id annotation; // @synthesize annotation=_annotation;
@@ -27,7 +30,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)_initWithSourceApplication:(id)arg1 processHandle:(id)arg2 annotation:(id)arg3 openInPlace:(_Bool)arg4 openAsDownload:(_Bool)arg5;
+- (id)_initWithSourceApplication:(id)arg1 processHandle:(id)arg2 annotation:(id)arg3 openInPlace:(_Bool)arg4 eventAttribution:(id)arg5 openAsDownload:(_Bool)arg6;
 - (id)_initWithSourceApplication:(id)arg1 processHandle:(id)arg2 annotation:(id)arg3 openInPlace:(_Bool)arg4;
 
 @end

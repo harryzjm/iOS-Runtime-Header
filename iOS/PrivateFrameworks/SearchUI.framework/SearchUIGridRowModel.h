@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldHide; // @synthesize shouldHide=_shouldHide;
 @property(retain, nonatomic) SearchUIGridLayoutManager *gridLayoutManager; // @synthesize gridLayoutManager=_gridLayoutManager;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)hasLeadingImage;
 - (_Bool)prefersNoSeparatorAbove;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 gridLayoutManager:(id)arg3 queryId:(unsigned long long)arg4;

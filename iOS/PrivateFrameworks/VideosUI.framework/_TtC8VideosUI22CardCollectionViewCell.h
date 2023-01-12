@@ -9,13 +9,19 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI22CardCollectionViewCell
 {
-    MISSING_TYPE *viewLayout;
+    MISSING_TYPE *cardViewLayout;
+    MISSING_TYPE *imageViewModel;
+    MISSING_TYPE *cardView;
 }
 
 - (void).cxx_destruct;
+- (void)vui_cellDidSelect;
+- (void)vui_cellDidEndDisplaying;
+- (void)vui_cellWillBeDisplayed;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (void)vui_prepareForReuse;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

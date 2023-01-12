@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedContext;
 + (id)graphicsContextForApplicationFrameworkContext:(long long)arg1;
+- (void)becomeCurrentGraphicsContextDuringBlock:(CDUnknownBlockType)arg1;
 - (void)restoreGraphicsState;
 - (void)saveGraphicsState;
 @property(readonly, getter=isDrawingToScreen) _Bool drawingToScreen;

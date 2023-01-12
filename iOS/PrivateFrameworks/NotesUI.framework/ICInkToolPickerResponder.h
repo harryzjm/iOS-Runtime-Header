@@ -10,10 +10,12 @@
 
 @interface ICInkToolPickerResponder : UIView
 {
+    _Bool _preventFirstResponder;
     id <ICInkToolPickerResponderDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool preventFirstResponder; // @synthesize preventFirstResponder=_preventFirstResponder;
 @property(nonatomic) __weak id <ICInkToolPickerResponderDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)inputAssistantItem;
 - (_Bool)canBecomeFirstResponder;

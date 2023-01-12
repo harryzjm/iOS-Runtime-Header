@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)resetEncoderWithSampleBuffer:(char *)arg1 numBytes:(int)arg2;
 - (void)resetEncoder;
 - (int)encodeAudio:(struct opaqueVCAudioBufferList *)arg1 numInputSamples:(int)arg2 outputBytes:(void *)arg3 numOutputBytes:(int)arg4;
-- (_Bool)createEncoderWithInputFormat:(struct AudioStreamBasicDescription *)arg1;
+- (_Bool)createEncoderWithInputFormat:(const struct tagVCAudioFrameFormat *)arg1;
 - (void)dealloc;
 - (id)initWithConfig:(id)arg1;
 - (_Bool)isDTXEmptyPacket:(unsigned int)arg1;

@@ -26,6 +26,7 @@
 @property(retain, nonatomic) NSUUID *connectedFromID; // @synthesize connectedFromID=mConnectedFromID;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (void)acceptVisitor:(id)arg1;
+- (id)typeName;
 - (void)performBlockWithTemporaryLayout:(CDUnknownBlockType)arg1;
 - (void)didCopy;
 - (void)willCopyWithOtherDrawables:(id)arg1;
@@ -42,11 +43,11 @@
 - (Class)layoutClass;
 - (id)copyWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
-- (void)saveGeometryToArchive:(struct GeometryArchive *)arg1 archiver:(id)arg2;
+- (void)saveGeometryToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct ConnectionLineArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct ConnectionLineArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

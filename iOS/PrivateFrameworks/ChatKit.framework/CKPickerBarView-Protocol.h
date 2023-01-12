@@ -15,5 +15,8 @@
 - (void)performSelectedAnimation:(void (^)(void))arg1;
 - (void)performShowAnimation:(void (^)(void))arg1;
 - (id)initWithGroupCounts:(NSDictionary *)arg1 selectedType:(long long)arg2 orientation:(BOOL)arg3;
+
+@optional
+- (void)setAnchorVerticalOrientation:(BOOL)arg1;
 @end
 

@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)gridStyleForCSSStyle:(id)arg1;
-+ (_Bool)viewElementNeedsUpdate:(id)arg1;
 
 @end
 

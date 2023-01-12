@@ -8,7 +8,6 @@
 
 @interface HKDiagnosticTestReport (Displayable)
 - (id)titleDisplayStringForDetailViewController;
-- (long long)recordCategoryType;
 - (id)codings;
 - (id)title;
 @end

@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PGGraphLocationCountyNodeCollection;
+
 @interface PGGraphLocationCountyNode
 {
 }
 
++ (id)momentOfCounty;
++ (id)addressOfCounty;
 + (id)filter;
+- (Class)collectionClass;
+@property(readonly, nonatomic) PGGraphLocationCountyNodeCollection *collection;
 - (id)label;
-- (id)initWithLabel:(id)arg1;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 
 @end
 

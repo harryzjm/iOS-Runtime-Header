@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSNumber;
+@class NSArray, NSData, NSNumber;
 @protocol BKMatchOperationDelegate;
 
 @interface BKMatchOperation
@@ -13,6 +13,7 @@
     _Bool _captureOnly;
     long long _purpose;
     NSNumber *_userID;
+    NSArray *_selectedIdentities;
     long long _priority;
     NSData *_credentialSet;
     long long _useCase;
@@ -24,6 +25,7 @@
 @property(nonatomic) long long useCase; // @synthesize useCase=_useCase;
 @property(copy, nonatomic) NSData *credentialSet; // @synthesize credentialSet=_credentialSet;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
+@property(copy, nonatomic) NSArray *selectedIdentities; // @synthesize selectedIdentities=_selectedIdentities;
 @property(retain, nonatomic) NSNumber *userID; // @synthesize userID=_userID;
 @property(nonatomic) long long purpose; // @synthesize purpose=_purpose;
 - (void)simulateMatching:(_Bool)arg1 type:(long long)arg2;

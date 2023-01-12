@@ -8,13 +8,14 @@
 
 #import <CoreFollowUp/FLViewModel-Protocol.h>
 
-@class FLFollowUpController, FLItemChangeObserver, NSString;
+@class FLFollowUpController, FLItemChangeObserver, NSMutableDictionary, NSString;
 
 @interface FLTopLevelViewModel : NSObject <FLViewModel>
 {
     FLFollowUpController *_controller;
     FLItemChangeObserver *_observer;
     NSString *_bundleIdentifier;
+    NSMutableDictionary *_timersByID;
     NSString *_localizedDeviceRowTitle;
 }
 
@@ -30,7 +31,11 @@
 - (id)extensionToItemMapFromItems:(id)arg1;
 - (void)refreshItems:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshItemsForItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_removeTimerForItem:(id)arg1;
+- (void)_configureTimerForItem:(id)arg1;
+- (void)_updateTimerItems:(id)arg1;
 - (id)allPendingItems;
+- (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1 controller:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1 clientIdentifier:(id)arg2;
 - (id)initWithIdentifier:(id)arg1;

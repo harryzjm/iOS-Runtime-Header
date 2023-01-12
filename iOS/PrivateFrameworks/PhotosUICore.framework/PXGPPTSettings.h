@@ -7,6 +7,8 @@
 @interface PXGPPTSettings
 {
     _Bool _useAssetBadgeDecoration;
+    _Bool _useMultipleScrollableRows;
+    _Bool _shouldTestNestedScrollView;
     long long _numberOfItems;
     long long _numberOfSections;
     long long _numberOfColumns;
@@ -17,6 +19,8 @@
 + (id)allPresetNames;
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool shouldTestNestedScrollView; // @synthesize shouldTestNestedScrollView=_shouldTestNestedScrollView;
+@property(nonatomic) _Bool useMultipleScrollableRows; // @synthesize useMultipleScrollableRows=_useMultipleScrollableRows;
 @property(nonatomic) long long selectionDecorationStlye; // @synthesize selectionDecorationStlye=_selectionDecorationStlye;
 @property(nonatomic) _Bool useAssetBadgeDecoration; // @synthesize useAssetBadgeDecoration=_useAssetBadgeDecoration;
 @property(nonatomic) long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;

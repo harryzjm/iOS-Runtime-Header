@@ -17,6 +17,7 @@
 
 @property long long character; // @synthesize character=_char;
 - (struct CGSize)intrinsicContentSize;
+- (id)initForCharacter:(long long)arg1 style:(long long)arg2;
 - (id)initForCharacter:(long long)arg1;
 
 // Remaining properties

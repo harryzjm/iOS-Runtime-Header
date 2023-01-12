@@ -12,13 +12,14 @@
 #import <PassKitUI/UIPickerViewDataSource-Protocol.h>
 #import <PassKitUI/UIPickerViewDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSCalendar, NSDate, NSDateFormatter, NSDecimalNumber, NSString, PKAccount, PKAccountBillPaymentController, PKAccountBillPaymentPayInterestDescriptionView, PKAddBankAccountInformationViewController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKTransactionSource, UILabel, UIPickerView;
+@class CLInUseAssertion, NSCalendar, NSDate, NSDateFormatter, NSDecimalNumber, NSString, PKAccount, PKAccountBillPaymentController, PKAccountBillPaymentPayInterestDescriptionView, PKAccountUserCollection, PKAddBankAccountInformationViewController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKTransactionSource, UILabel, UIPickerView;
 @protocol PKAccountBillPaymentObserver;
 
 @interface PKAccountBillPaymentPayLaterViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKAccountBillPaymentPayInterestDescriptionViewDelegate>
 {
     CLInUseAssertion *_CLInUse;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
     PKTransactionSource *_transactionSource;
     PKAccountBillPaymentController *_billPaymentCoordinator;
     PKBillPaymentSuggestedAmountList *_suggestionList;
@@ -76,7 +77,7 @@
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithAccount:(id)arg1 billPaymentController:(id)arg2 transactionSource:(id)arg3 suggestionList:(id)arg4 selectedAmount:(id)arg5;
+- (id)initWithAccount:(id)arg1 accountUserCollection:(id)arg2 billPaymentController:(id)arg3 transactionSource:(id)arg4 suggestionList:(id)arg5 selectedAmount:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

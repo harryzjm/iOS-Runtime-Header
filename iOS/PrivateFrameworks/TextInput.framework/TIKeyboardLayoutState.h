@@ -19,7 +19,6 @@
     _Bool _isAlphabeticPlane;
     _Bool _isKanaPlane;
     _Bool _diacriticForwardCompose;
-    _Bool _interfaceIdiomIsPad;
     NSString *_inputMode;
     NSString *_layoutTag;
     long long _userInterfaceIdiom;
@@ -27,7 +26,6 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool interfaceIdiomIsPad; // @synthesize interfaceIdiomIsPad=_interfaceIdiomIsPad;
 @property(nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
 @property(copy, nonatomic) NSString *layoutTag; // @synthesize layoutTag=_layoutTag;
 @property(nonatomic) _Bool diacriticForwardCompose; // @synthesize diacriticForwardCompose=_diacriticForwardCompose;
@@ -37,7 +35,6 @@
 @property(nonatomic) _Bool hasAccentKey; // @synthesize hasAccentKey=_hasAccentKey;
 @property(nonatomic) _Bool hasCandidateKey; // @synthesize hasCandidateKey=_hasCandidateKey;
 @property(copy, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
-- (void)setInterfaceIdiomIsPad;
 @property(readonly, nonatomic) NSString *softwareLayout;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

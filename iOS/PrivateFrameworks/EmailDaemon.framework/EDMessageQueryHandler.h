@@ -67,7 +67,7 @@
 - (void)_restartHelper;
 - (void)dealloc;
 - (void)cancel;
-- (void)start;
+- (_Bool)start;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 remoteSearchProvider:(id)arg4 observer:(id)arg5 observationIdentifier:(id)arg6;
 
 // Remaining properties

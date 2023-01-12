@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_defaultSecurityServiceWithDelegate:(id)arg1;
 - (id)_headersForRequest:(id)arg1 buyParams:(id)arg2 bag:(id)arg3 securityServicePromise:(id)arg4 onDenied:(CDUnknownBlockType)arg5;
 - (id)_handleResponse:(id)arg1 bag:(id)arg2 securityServicePromise:(id)arg3 onDenied:(CDUnknownBlockType)arg4;
+- (id)signatureForRequest:(id)arg1;
 - (id)headersForRequest:(id)arg1 buyParams:(id)arg2 bag:(id)arg3;
 - (id)handleResponse:(id)arg1 bag:(id)arg2;
 - (id)initWithServiceBroker:(id)arg1;

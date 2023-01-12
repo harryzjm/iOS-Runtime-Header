@@ -18,16 +18,27 @@
     struct RetainPtr<NSMutableSet> _transports;
 }
 
++ (_Bool)isUserVerifyingPlatformAuthenticatorAvailable;
++ (struct PublicKeyCredentialRequestOptions)convertToCoreRequestOptionsWithOptions:(id)arg1;
++ (struct PublicKeyCredentialCreationOptions)convertToCoreCreationOptionsWithOptions:(id)arg1;
 + (void)clearAllLocalAuthenticatorCredentials;
++ (void)deleteLocalAuthenticatorCredentialWithID:(id)arg1;
++ (id)getAllLocalAuthenticatorCredentialsWithAccessGroup:(id)arg1;
++ (id)getAllLocalAuthenticatorCredentials;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) struct Object *_apiObject;
+- (void)setMockConfiguration:(id)arg1;
+- (void)getAssertionWithChallenge:(id)arg1 origin:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)makeCredentialWithChallenge:(id)arg1 origin:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)cancel;
+@property(readonly, copy, nonatomic) NSString *userName;
 @property(readonly, nonatomic) long long type;
 @property(readonly, copy, nonatomic) NSSet *transports;
 @property(readonly, copy, nonatomic) NSString *relyingPartyID;
 @property(nonatomic) __weak id <_WKWebAuthenticationPanelDelegate> delegate;
 - (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

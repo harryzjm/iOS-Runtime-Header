@@ -9,8 +9,10 @@
     _Bool _isFiltered;
     _Bool _useFallbackForRTP;
     _Bool _useFallbackForHDS;
+    _Bool _useFallbackForAirPlay2;
 }
 
++ (_Bool)isAirplayRule:(id)arg1;
 + (id)fallbackConfigurationForRuleset:(id)arg1;
 + (id)fallbackIdentifier;
 - (id)description;

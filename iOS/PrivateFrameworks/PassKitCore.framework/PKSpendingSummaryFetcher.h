@@ -9,16 +9,16 @@
 #import <PassKitCore/PKAccountServiceObserver-Protocol.h>
 #import <PassKitCore/PKPaymentDataProviderDelegate-Protocol.h>
 
-@class NSArray, NSCache, NSCalendar, NSDate, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSString, PKAccount, PKPaymentDefaultDataProvider, PKPaymentPass;
+@class NSArray, NSCache, NSCalendar, NSDate, NSHashTable, NSMutableDictionary, NSMutableOrderedSet, NSString, PKAccount, PKPaymentDefaultDataProvider, PKTransactionSourceCollection;
 @protocol OS_dispatch_queue;
 
 @interface PKSpendingSummaryFetcher : NSObject <PKPaymentDataProviderDelegate, PKAccountServiceObserver>
 {
-    PKPaymentPass *_paymentPass;
-    NSString *_passUniqueID;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     PKAccount *_account;
     NSCache *_weeklySummaryItemsPerStartDate;
     NSCache *_monthlySummaryItemsPerStartDate;
+    NSCache *_yearlySummaryItemsPerStartDate;
     NSDate *_oldestTransactionDate;
     NSDate *_newestTransactionDate;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -34,13 +34,13 @@
     NSArray *_statements;
 }
 
-+ (id)previousStartOfMonthFromDate:(id)arg1;
 + (id)nextStartOfWeekFromDate:(id)arg1;
 + (id)previousStartOfWeekFromDate:(id)arg1;
 + (id)_sortedTransactions:(id)arg1 ascending:(_Bool)arg2;
 + (id)_spendingCategoriesFromTransactions:(id)arg1 currencyCode:(id)arg2;
 + (id)_spendingMerchantsFromTransaction:(id)arg1 currencyCode:(id)arg2;
-+ (id)summaryWithTransactions:(id)arg1 currency:(id)arg2 type:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 lastSummary:(id)arg6;
++ (id)_summaryWithTransactions:(id)arg1 currency:(id)arg2 type:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 lastSummary:(id)arg6;
++ (id)summaryWithTransactions:(id)arg1 transactionSourceCollection:(id)arg2 currency:(id)arg3 type:(unsigned long long)arg4 startDate:(id)arg5 endDate:(id)arg6 lastSummary:(id)arg7;
 - (void).cxx_destruct;
 - (void)_timeZoneChanged:(id)arg1;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
@@ -48,15 +48,16 @@
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
+- (id)_cacheForType:(unsigned long long)arg1;
 - (void)_spendingSummaryStartingWithDate:(id)arg1 endDate:(id)arg2 type:(unsigned long long)arg3 withLastPeriodChange:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_processNextRequest;
-- (void)spendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)spendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 includingLastPeriodChange:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 withLastPeriodChange:(_Bool)arg3;
 - (id)cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2;
 - (void)availableSummaries:(CDUnknownBlockType)arg1;
 - (void)_resetCurrentCalendar;
 - (void)dealloc;
-- (id)initWithPaymentPass:(id)arg1 account:(id)arg2;
+- (id)initWithTransactionSourceCollection:(id)arg1 account:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

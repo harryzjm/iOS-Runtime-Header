@@ -30,7 +30,6 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *currentDueDate;
-- (id)localTimeZone;
 - (id)_initWithClientIdentifier:(id)arg1 eventIdentifier:(id)arg2 dueDate:(id)arg3 dueDateComponents:(id)arg4 eventOptions:(unsigned long long)arg5;
 - (id)initWithClientIdentifier:(id)arg1 eventIdentifier:(id)arg2 dueDateComponents:(id)arg3 eventOptions:(unsigned long long)arg4;
 - (id)initWithClientIdentifier:(id)arg1 eventIdentifier:(id)arg2 dueDate:(id)arg3 eventOptions:(unsigned long long)arg4;

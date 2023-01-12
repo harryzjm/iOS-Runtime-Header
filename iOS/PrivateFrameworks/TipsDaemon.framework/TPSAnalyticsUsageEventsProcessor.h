@@ -18,7 +18,7 @@
 + (id)_preHintUsageKeyForIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (void)setCurrentDate:(id)arg1;
-- (void)_countsForPredicate:(id)arg1 streamName:(id)arg2 interval:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_countsForPredicate:(id)arg1 streamName:(id)arg2 interval:(id)arg3 userStore:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_saveHistoricalUsage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_savePreHintRangeOutOfBounds:(_Bool)arg1 forIdentifier:(id)arg2;
 - (void)_calculateLift:(id)arg1 completion:(CDUnknownBlockType)arg2;

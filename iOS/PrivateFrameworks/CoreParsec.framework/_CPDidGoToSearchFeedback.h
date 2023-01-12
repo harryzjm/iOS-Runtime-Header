@@ -10,23 +10,21 @@
 #import <CoreParsec/_CPDidGoToSearchFeedback-Protocol.h>
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSString;
 
 @interface _CPDidGoToSearchFeedback : PBCodable <_CPProcessableFeedback, _CPDidGoToSearchFeedback, NSSecureCoding>
 {
     int _endpoint;
+    int _triggerEvent;
     unsigned long long _timestamp;
     NSString *_input;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(nonatomic) int endpoint; // @synthesize endpoint=_endpoint;
 @property(copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property(nonatomic) unsigned long long timestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -37,7 +35,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) id feedbackJSON;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

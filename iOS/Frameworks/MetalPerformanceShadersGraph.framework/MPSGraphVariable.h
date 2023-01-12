@@ -19,7 +19,7 @@
     NSArray *_shape;
 }
 
-+ (id)newVariableWithData:(id)arg1 shape:(id)arg2;
++ (id)newVariableWithData:(id)arg1 dataType:(unsigned int)arg2 shape:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct Value value; // @synthesize value=_value;
@@ -29,7 +29,7 @@
 - (id)mpsNDArrayWithDevice:(id)arg1;
 - (id)initVariableWithMPSNDArray:(id)arg1 value:(struct Value)arg2;
 - (id)initVariableWithData:(id)arg1 value:(struct Value)arg2;
-- (id)initVariableWithData:(id)arg1 shape:(id)arg2;
+- (id)initVariableWithData:(id)arg1 dataType:(unsigned int)arg2 shape:(id)arg3;
 
 @end
 

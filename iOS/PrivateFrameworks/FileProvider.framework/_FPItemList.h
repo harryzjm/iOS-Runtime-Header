@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSMutableArray.h>
 
-@class NSMutableDictionary, NSMutableOrderedSet, NSMutableSet;
+@class NSMutableDictionary, NSMutableOrderedSet;
 
 __attribute__((visibility("hidden")))
-@interface _FPItemList : NSObject
+@interface _FPItemList : NSMutableArray
 {
     NSMutableOrderedSet *_orderedSet;
     NSMutableDictionary *_itemsByIDs;
-    NSMutableSet *_formerIDs;
+    NSMutableDictionary *_formerIDs;
 }
 
 - (void).cxx_destruct;
+- (id)itemWithItemID:(id)arg1;
 - (void)sortUsingDescriptors:(id)arg1;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (id)allObjects;
@@ -29,8 +30,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)indexOfObject:(id)arg1 inSortedRange:(struct _NSRange)arg2 options:(unsigned long long)arg3 usingComparator:(CDUnknownBlockType)arg4;
 - (unsigned long long)indexOfItemID:(id)arg1;
 - (unsigned long long)indexOfObject:(id)arg1;
+- (id)formerIDs;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;
+- (id)redactedDescription;
 - (id)description;
 - (id)mutableCopy;
 - (id)init;

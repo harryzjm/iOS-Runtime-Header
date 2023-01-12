@@ -21,6 +21,7 @@
     _Bool _lastInterimPositionYSet;
 }
 
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *children; // @synthesize children=_children;
 @property(readonly, nonatomic) struct CGPoint lastInterimPosition; // @synthesize lastInterimPosition=_lastInterimPosition;
 @property(nonatomic) TSDAbstractLayout *parent; // @synthesize parent=_parent;
@@ -30,8 +31,6 @@
 - (_Bool)canRotateChildLayout:(id)arg1;
 @property(readonly, nonatomic) _Bool supportsFlipping;
 @property(readonly, nonatomic) _Bool supportsRotation;
-@property(readonly, nonatomic) _Bool supportsInspectorPositioning;
-@property(readonly, nonatomic) _Bool supportsResize;
 @property(readonly, nonatomic) _Bool shouldUseCaptionEdgeInsetsInInterimPosition;
 @property(readonly, nonatomic) struct UIEdgeInsets captionEdgeInsets;
 @property(readonly, nonatomic) struct CGPoint positionInRootForAttachmentPositioner;
@@ -68,6 +67,7 @@
 @property(readonly, nonatomic) _Bool providesGuidesForChildLayouts;
 @property(readonly, nonatomic) _Bool isRootLevelForInlineGeometry;
 @property(readonly, nonatomic) _Bool isRootLayoutForInspectorGeometry;
+- (struct CGRect)selectionHighlightFrameFittingParentWidthForChildWithFrame:(struct CGRect)arg1;
 @property(readonly, nonatomic) _Bool isAxisAlignedUnflippedInRoot;
 - (struct CGRect)clippedRectInRoot:(struct CGRect)arg1;
 @property(readonly, nonatomic) struct CGRect clipRect;
@@ -78,6 +78,8 @@
 @property(readonly, nonatomic) struct CGRect insertionFrameInRoot;
 @property(readonly, nonatomic) struct CGRect insertionFrame;
 @property(readonly, nonatomic) struct CGRect frame;
+- (struct CGAffineTransform)transformForFindHighlightsOfChild:(id)arg1;
+@property(readonly, nonatomic) struct CGAffineTransform transformForFindHighlightsInRoot;
 @property(readonly, nonatomic) struct CGAffineTransform transformInRoot;
 @property(readonly, nonatomic) struct CGAffineTransform transformInParent;
 @property(readonly, nonatomic) struct CGAffineTransform transform;

@@ -10,5 +10,8 @@
 
 @protocol MKBrowseCategoryViewControllerDelegate <NSObject>
 - (void)categoryBrowseViewController:(MKBrowseCategoryViewController *)arg1 didTapOnSearchCategory:(GEOSearchCategory *)arg2;
+
+@optional
+- (void)categoryBrowseViewControllerDidDisplayBrowseCategories:(MKBrowseCategoryViewController *)arg1;
 @end
 

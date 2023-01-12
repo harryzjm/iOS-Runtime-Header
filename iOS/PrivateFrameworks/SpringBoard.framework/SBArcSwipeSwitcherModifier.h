@@ -13,11 +13,11 @@
 }
 
 - (void).cxx_destruct;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
 - (_Bool)shouldPerformCrossfadeForReduceMotion;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
 - (id)appLayoutsToCacheFullsizeSnapshots;
 - (id)appLayoutsToCacheSnapshots;
 - (_Bool)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
@@ -27,11 +27,11 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
-- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (_Bool)shouldAsyncRenderUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
 

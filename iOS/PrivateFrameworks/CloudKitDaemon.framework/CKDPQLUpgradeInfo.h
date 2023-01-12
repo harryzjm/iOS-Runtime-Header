@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDPQLUpgradeInfo : NSObject
 {
     _Bool _shouldVacuum;

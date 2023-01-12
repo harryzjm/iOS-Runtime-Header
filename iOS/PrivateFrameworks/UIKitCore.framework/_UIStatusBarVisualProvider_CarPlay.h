@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
+#import <UIKitCore/_UIStatusBarPillRegionVisualProvider-Protocol.h>
 #import <UIKitCore/_UIStatusBarVisualProvider-Protocol.h>
 
-@class NSString, _UIStatusBar, _UIStatusBarRegion;
+@class NSString, _UIStatusBar, _UIStatusBarRegion, _UIStatusBarVisualProvider_PillRegionCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_CarPlay : NSObject <_UIStatusBarCellularItemTypeStringProvider, _UIStatusBarVisualProvider>
+@interface _UIStatusBarVisualProvider_CarPlay : NSObject <_UIStatusBarCellularItemTypeStringProvider, _UIStatusBarVisualProvider, _UIStatusBarPillRegionVisualProvider>
 {
     _Bool _showingSensorActivityIndicator;
     _Bool _showingPill;
     _UIStatusBar *_statusBar;
+    _UIStatusBarVisualProvider_PillRegionCoordinator *_pillRegionCoordinator;
     _UIStatusBarRegion *_timeRegion;
     _UIStatusBarRegion *_radarRegion;
 }
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showingSensorActivityIndicator; // @synthesize showingSensorActivityIndicator=_showingSensorActivityIndicator;
 @property(retain, nonatomic) _UIStatusBarRegion *radarRegion; // @synthesize radarRegion=_radarRegion;
 @property(retain, nonatomic) _UIStatusBarRegion *timeRegion; // @synthesize timeRegion=_timeRegion;
+@property(retain, nonatomic) _UIStatusBarVisualProvider_PillRegionCoordinator *pillRegionCoordinator; // @synthesize pillRegionCoordinator=_pillRegionCoordinator;
 @property(nonatomic) __weak _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 - (_Bool)showSensorActivityIndicatorWithoutPortalView;
 - (id)setupInContainerView:(id)arg1;
@@ -35,8 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)_animationForPillTime;
 - (id)_animationForSensorIndicator;
-- (id)_animationForQuietMode;
-- (id)_animationForBackgroundActivityPill;
+- (id)_defaultScaleAnimationWithIdentifier:(id)arg1;
 - (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
@@ -46,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (void)itemCreated:(id)arg1;
 @property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
+@property(nonatomic) _Bool expanded;
+- (id)init;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;

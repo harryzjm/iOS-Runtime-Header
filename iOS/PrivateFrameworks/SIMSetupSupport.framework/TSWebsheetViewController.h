@@ -29,6 +29,8 @@
     _Bool _didLoadLoadingView;
     _SFFormAutoFillController *_autoFillController;
     _Bool _isRemotePlan;
+    NSString *_carrierName;
+    UIViewController *_viewController;
     _Bool _loadFailure;
     id <TSSIMSetupFlowDelegate> _delegate;
     id <TSEntitlementJSHandlerDelegate> _callbackDelegate;
@@ -38,6 +40,7 @@
 @property(nonatomic) _Bool loadFailure; // @synthesize loadFailure=_loadFailure;
 @property __weak id <TSEntitlementJSHandlerDelegate> callbackDelegate; // @synthesize callbackDelegate=_callbackDelegate;
 @property __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_isProfilePendingRelease:(id)arg1;
 - (_Bool)_isHexadecimalString:(id)arg1;
 - (_Bool)_currentLanguageIsRTL;
 - (void)_handleTransferWithMessageBody:(id)arg1;
@@ -59,13 +62,18 @@
 - (void)_webView:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)_webView:(id)arg1 navigationDidFinishDocumentLoad:(id)arg2;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
+- (_Bool)_shouldIgnoreWebviewError:(id)arg1;
 - (void)sendRequest:(id)arg1;
 - (void)loadRequest:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
-- (id)initForRemotePlan:(_Bool)arg1;
+- (id)initForRemotePlan:(_Bool)arg1 carrierName:(id)arg2 viewController:(id)arg3;
+- (id)initForRemotePlan:(_Bool)arg1 carrierName:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

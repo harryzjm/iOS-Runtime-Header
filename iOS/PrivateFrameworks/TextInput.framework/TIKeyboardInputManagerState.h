@@ -38,8 +38,10 @@
             unsigned int usesPunctuationKeysForRowNavigation:1;
             unsigned int insertsSpaceAfterPredictiveInput:1;
             unsigned int shouldFixupIncompleteRomaji:1;
+            unsigned int acceptAutocorrectionCommitsInline:1;
             unsigned int usesLiveConversion:1;
             unsigned int delayedCandidateList:1;
+            unsigned int ignoreContinuousPathRequirements:1;
         } fields;
     } _mask;
     _Bool _shouldAddModifierSymbolsToWordCharacters;
@@ -89,13 +91,13 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic) _Bool acceptAutocorrectionCommitsInline;
 @property(nonatomic) _Bool shouldFixupIncompleteRomaji;
 @property(nonatomic) _Bool insertsSpaceAfterPredictiveInput;
 @property(nonatomic) _Bool usesContinuousPathProgressiveCandidates;
-- (void)setDelayedCandidateList:(_Bool)arg1;
-- (_Bool)delayedCandidateList;
-- (void)setUsesLiveConversion:(_Bool)arg1;
-- (_Bool)usesLiveConversion;
+@property(nonatomic) _Bool delayedCandidateList;
+@property(nonatomic) _Bool usesLiveConversion;
+@property(nonatomic) _Bool ignoreContinuousPathRequirements;
 @property(nonatomic) _Bool usesContinuousPath;
 @property(nonatomic) unsigned long long autoquoteType;
 @property(nonatomic) _Bool suppressPlaceholderCandidate;

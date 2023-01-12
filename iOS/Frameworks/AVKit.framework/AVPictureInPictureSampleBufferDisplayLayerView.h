@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)_makePictureInPicturePlatformAdapterContentPlaceholderLayer;
 - (void)_updateGeometry;
 - (void)layoutSubviews;
+- (void)_updateSourceLayerHost;
 - (void)dealloc;
 - (id)initWithSourceLayer:(id)arg1 playerController:(id)arg2;
 

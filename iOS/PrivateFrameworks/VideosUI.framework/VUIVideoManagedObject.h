@@ -52,6 +52,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSSet *imageInfos; // @dynamic imageInfos;
 @property(nonatomic) _Bool isAdultContent; // @dynamic isAdultContent;
 @property(copy, nonatomic) NSString *localPlaybackRelativeFilePath; // @dynamic localPlaybackRelativeFilePath;
+@property(copy, nonatomic) NSNumber *mainContentRelativeBookmarkTime; // @dynamic mainContentRelativeBookmarkTime;
+@property(copy, nonatomic) NSDate *mainContentRelativeBookmarkTimeStamp; // @dynamic mainContentRelativeBookmarkTimeStamp;
 @property(nonatomic) _Bool markedAsDeleted; // @dynamic markedAsDeleted;
 @property(retain, nonatomic) NSData *mediaMetricsJSONData; // @dynamic mediaMetricsJSONData;
 @property(copy, nonatomic) NSNumber *offlineKeyRenewalPolicy; // @dynamic offlineKeyRenewalPolicy;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSDate *releaseDate; // @dynamic releaseDate;
 @property(copy, nonatomic) NSNumber *requiredAgeForPlayback; // @dynamic requiredAgeForPlayback;
 @property(copy, nonatomic) NSString *rtcServiceIdentifier; // @dynamic rtcServiceIdentifier;
+@property(copy, nonatomic) NSURL *shareURL; // @dynamic shareURL;
 @property(nonatomic) _Bool shouldMarkAsDeletedAfterCancellationOrFailure; // @dynamic shouldMarkAsDeletedAfterCancellationOrFailure;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(retain, nonatomic) NSData *vpafMetricsJSONData; // @dynamic vpafMetricsJSONData;

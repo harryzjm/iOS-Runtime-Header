@@ -7,59 +7,48 @@
 #import <objc/NSObject.h>
 
 #import <PhotoAnalysis/NSXPCConnectionDelegate-Protocol.h>
-#import <PhotoAnalysis/PHAGraphRegistration-Protocol.h>
 #import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
+#import <PhotoAnalysis/PHAServiceOperationListener-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisServiceProtocol-Protocol.h>
 
-@class NSLock, NSMapTable, NSMutableArray, NSString, NSXPCConnection, PFDispatchQueue, PHAExecutive, PHAManager;
-@protocol OS_dispatch_group, OS_dispatch_semaphore;
+@class NSMutableArray, NSMutableDictionary, NSString, NSXPCConnection, PHAExecutive, PHAManager;
 
-@interface PHAServiceClientHandler : NSObject <NSXPCConnectionDelegate, PHAServiceOperationHandling, PHAGraphRegistration, PLPhotoAnalysisServiceProtocol>
+@interface PHAServiceClientHandler : NSObject <NSXPCConnectionDelegate, PHAServiceOperationHandling, PHAServiceOperationListener, PLPhotoAnalysisServiceProtocol>
 {
     NSString *_clientBundleID;
-    NSMapTable *_cancelableOperationsById;
     NSMutableArray *_clientHandlers;
-    unsigned long long _graphLoadCount;
-    NSObject<OS_dispatch_group> *_graphReady;
-    PFDispatchQueue *_graphLoadQueue;
-    PHAManager *_photoAnalysisManager;
+    NSMutableDictionary *_operationsByIdentifier;
+    struct os_unfair_lock_s _lock;
     NSXPCConnection *_xpcConnection;
+    PHAManager *_photoAnalysisManager;
     PHAExecutive *_executive;
-    NSObject<OS_dispatch_semaphore> *_invalidationSemaphore;
     id _serviceUnavailableHandler;
-    NSLock *_sharedOperationLock;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSLock *sharedOperationLock; // @synthesize sharedOperationLock=_sharedOperationLock;
 @property(retain) id serviceUnavailableHandler; // @synthesize serviceUnavailableHandler=_serviceUnavailableHandler;
-@property(retain) NSObject<OS_dispatch_semaphore> *invalidationSemaphore; // @synthesize invalidationSemaphore=_invalidationSemaphore;
-@property __weak PHAExecutive *executive; // @synthesize executive=_executive;
-@property(retain) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property(retain) PHAExecutive *executive; // @synthesize executive=_executive;
 @property(retain) PHAManager *photoAnalysisManager; // @synthesize photoAnalysisManager=_photoAnalysisManager;
+@property(retain) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (void)cancelOperationsWithIdentifiers:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)libraryURLFromContextInformation:(id)arg1;
 - (id)contextInformationFromInvocation:(id)arg1;
 - (id)managerForInvocation:(id)arg1 contextInformation:(id)arg2;
-- (id)forwardingTargetForInvocation:(id)arg1 contextInformation:(id)arg2;
-- (id)cancelableOperationsById;
+- (id)forwardingTargetForInvocation:(id)arg1 contextInformation:(id)arg2 cancelBackgroundActivities:(_Bool *)arg3;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (void)submitBlockToExecutiveStateQueue:(CDUnknownBlockType)arg1;
 - (void)shutdown;
 - (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)unloadGraphWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)loadGraphWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)graphUpdateMadeProgress:(double)arg1;
-- (void)graphUpdateDidStop;
-- (void)graphUpdateIsConsistent;
-- (_Bool)wantsGraphUpdateNotifications;
-- (_Bool)wantsLiveGraphUpdates;
-- (void)graphBecameReady:(id)arg1 forPHAGraphManager:(id)arg2;
 - (void)handleOperation:(id)arg1;
 - (_Bool)isPhotos;
 - (_Bool)isplphotosctl;
 @property(readonly) NSString *clientBundleID;
 @property(readonly, copy) NSString *description;
+- (void)operationDidFinish:(id)arg1;
+- (void)addOperation:(id)arg1;
+- (void)operationWillStart:(id)arg1;
+- (void)xpcHandlerInvalidate;
+- (void)removeClientFromExecutiveIfNeeded;
 - (id)initWithXPCConnection:(id)arg1 executive:(id)arg2;
 - (id)init;
 

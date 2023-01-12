@@ -10,27 +10,25 @@
 
 @interface PXPhotoKitLivePhotoVideoContentProvider <PXSettingsKeyObserver>
 {
-    NSString *_contentIdentifier;
     PXPhotoKitLivePhotoVideoContentProviderSpec *_spec;
 }
 
 + (id)postProcessingOperationQueue;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PXPhotoKitLivePhotoVideoContentProviderSpec *spec; // @synthesize spec=_spec;
-- (id)contentIdentifier;
 - (void)cancelLoading;
 - (void)dealloc;
 - (void)_handleStabilizeOperationFinishedWithProcessingCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)postprocessPlayerItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)needsPostprocessing;
-- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
+- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 deliveryStrategies:(id)arg3 audioSession:(id)arg4 requestURLOnly:(_Bool)arg5;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 spec:(id)arg3;
+- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 deliveryStrategies:(id)arg3 audioSession:(id)arg4 spec:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) PXPhotoKitLivePhotoVideoContentProviderSpec *spec; // @dynamic spec;
 @property(readonly) Class superclass;
 
 @end

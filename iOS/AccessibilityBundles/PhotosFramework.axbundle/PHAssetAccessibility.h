@@ -18,6 +18,9 @@
 - (id)_accessibilityiCloudPhotoLabel;
 - (id)_accessibilityCaptionLabel;
 - (id)accessibilityLabel;
+- (_Bool)_accessibilityIsPHAssetLocallyAvailable;
+- (id)_accessibilityPHAssetLocalIdentifier;
+- (id)accessibilityURL;
 - (id)_accessibilityPeopleInPhoto;
 - (id)_accessibilityFacesInfo;
 - (id)accessibilityCustomContent;

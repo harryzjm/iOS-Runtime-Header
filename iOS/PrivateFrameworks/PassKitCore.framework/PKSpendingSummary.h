@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, PKCurrencyAmount, PKPaymentTransactionGroup;
+@class NSArray, NSDate, NSDictionary, PKCurrencyAmount, PKPaymentTransactionGroup;
 
 @interface PKSpendingSummary : NSObject <NSSecureCoding>
 {
@@ -27,12 +27,14 @@
     PKPaymentTransactionGroup *_payments;
     PKPaymentTransactionGroup *_refunds;
     PKPaymentTransactionGroup *_adjustments;
+    NSDictionary *_spendingsPerAltDSID;
     NSArray *_spendingsPerCalendarUnit;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *spendingsPerCalendarUnit; // @synthesize spendingsPerCalendarUnit=_spendingsPerCalendarUnit;
+@property(copy, nonatomic) NSDictionary *spendingsPerAltDSID; // @synthesize spendingsPerAltDSID=_spendingsPerAltDSID;
 @property(retain, nonatomic) PKPaymentTransactionGroup *adjustments; // @synthesize adjustments=_adjustments;
 @property(retain, nonatomic) PKPaymentTransactionGroup *refunds; // @synthesize refunds=_refunds;
 @property(retain, nonatomic) PKPaymentTransactionGroup *payments; // @synthesize payments=_payments;

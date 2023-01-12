@@ -4,18 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKUnit, HKValueRange, NSDictionary;
+#import <HealthUI/HKInteractiveChartQuantityDefaultAxisBoundsProvider-Protocol.h>
 
-@interface HKQuantityFixedAxisScalingRule
+@class HKQuantity, HKUnit, HKValueRange, NSDictionary;
+
+@interface HKQuantityFixedAxisScalingRule <HKInteractiveChartQuantityDefaultAxisBoundsProvider>
 {
     HKValueRange *_defaultQuantityBounds;
     NSDictionary *_quantityBoundsOverrides;
+    HKQuantity *_minimumQuantity;
+    HKQuantity *_maximumQuantity;
+    HKValueRange *_noDataAxisBounds;
     HKUnit *_unit;
 }
 
++ (id)ruleWithDefaultAxisBounds:(id)arg1 axisBoundsOverrides:(id)arg2 minimumValue:(id)arg3 maximumValue:(id)arg4;
 + (id)ruleWithDefaultAxisBounds:(id)arg1 axisBoundsOverrides:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HKUnit *unit; // @synthesize unit=_unit;
+@property(retain, nonatomic) HKValueRange *noDataAxisBounds; // @synthesize noDataAxisBounds=_noDataAxisBounds;
+- (id)noDataStartingRange;
 - (id)_numberRangeFromQuantityRangeForUnit:(id)arg1 quantityRange:(id)arg2;
 - (void)_convertQuantityRanges;
 - (_Bool)isCompatibleWithQuantityType:(id)arg1;

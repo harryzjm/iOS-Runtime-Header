@@ -9,8 +9,8 @@
 #import <HearingUtilities/HCHeardControllerProtocol-Protocol.h>
 #import <HearingUtilities/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class AXDispatchTimer, NSArray, NSDictionary, NSString;
-@protocol OS_xpc_object;
+@class AXDispatchTimer, HCXPCMessage, NSArray, NSDictionary, NSString;
+@protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface AXHeardController : NSObject <HCHeardControllerProtocol, UNUserNotificationCenterDelegate>
 {
@@ -19,12 +19,17 @@
     _Bool _finishedSetup;
     NSArray *_clients;
     NSDictionary *_handlers;
+    NSObject<OS_dispatch_queue> *_personalAudioQueue;
+    HCXPCMessage *_boostMessage;
 }
 
 + (id)entitlementsForMessageID:(unsigned long long)arg1;
 + (id)sharedServer;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HCXPCMessage *boostMessage; // @synthesize boostMessage=_boostMessage;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *personalAudioQueue; // @synthesize personalAudioQueue=_personalAudioQueue;
 - (void)registerFakeClient:(id)arg1;
+- (id)boostPriority:(id)arg1;
 - (void)handleMessage:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)addHandler:(id)arg1 andBlock:(CDUnknownBlockType)arg2 forMessageIdentifier:(unsigned long long)arg3;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -39,7 +44,9 @@
 - (void)dealloc;
 - (void)startServer;
 - (void)updatePersonalAudioSettingsOnAccessories;
+- (void)updateAnalytics;
 - (void)continueSetup;
+- (void)updateHearingControlCenterModule;
 - (id)init;
 
 // Remaining properties

@@ -12,7 +12,6 @@
     NSDictionary *_attributes;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
@@ -23,6 +22,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictionary:(id)arg1 metadata:(id)arg2;
 - (long long)compare:(id)arg1;
+- (id)titleContent;
 
 @end
 

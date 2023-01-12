@@ -9,7 +9,7 @@
 #import <SceneKit/SCNBufferStream-Protocol.h>
 
 @class CAMetalLayer, MISSING_TYPE, MTLRenderPassDescriptor, NSMutableArray, NSMutableDictionary, NSString, SCNMTLMesh, SCNMTLMeshElement, SCNMTLRenderPipeline, SCNMTLResourceManager, SCNMTLShadable;
-@protocol CAMetalDrawable, MTLBuffer, MTLCommandBuffer, MTLCommandQueue, MTLDepthStencilState, MTLDevice, MTLRenderCommandEncoder, MTLSamplerState, MTLTexture, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol CAMetalDrawable, MTLBuffer, MTLCommandBuffer, MTLCommandQueue, MTLDepthStencilState, MTLDevice, MTLRenderCommandEncoder, MTLSamplerState, MTLTexture, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, SCNMTLRenderContextCommandBufferStatusMonitor, SCNMTLRenderContextResourceManagerMonitor;
 
 __attribute__((visibility("hidden")))
 @interface SCNMTLRenderContext : NSObject <SCNBufferStream>
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     id <CAMetalDrawable> _drawable;
     float _targetedFrameInterval;
     _Bool _shouldPresentAfterMinimumDuration;
+    _Bool _shouldPresentWithTransaction;
     MTLRenderPassDescriptor *_currentRenderPassDescriptor;
     MTLRenderPassDescriptor *_originalRenderPassDescriptor;
     MISSING_TYPE *_renderSize;
@@ -52,14 +53,14 @@ __attribute__((visibility("hidden")))
     CDStruct_7e4e619b _renderPassParameters;
     CDStruct_21854d8c _currentStreamBufferIndices;
     struct SCNMTLBufferPool *_volatileBufferPools[3];
-    struct SCNMTLBufferPool *_frameVolatileBufferPool;
+    void *_frameVolatileBufferPool;
     NSMutableArray *_volatileMeshes;
     NSMutableArray *_bufferPool;
     NSMutableArray *_usedVolatileMeshElements;
     NSMutableArray *_freeVolatileMeshElements;
     struct SCNMTLBufferPool *_constantBufferPools[3];
-    struct SCNMTLBufferPool *_frameConstantBufferPool;
-    struct SCNMTLTexturePool *_frameTexturePool;
+    void *_frameConstantBufferPool;
+    void *_frameTexturePool;
     id <MTLDepthStencilState> _defaultDepthStencilState;
     id <MTLSamplerState> _defaultSamplerState;
     struct __C3DFXMetalProgram *_background2DProgram[3];
@@ -108,7 +109,7 @@ __attribute__((visibility("hidden")))
         CDStruct_c6b9131d currentLightingSet;
         id <MTLTexture> currentShadowMaps[8];
         id <MTLTexture> currentGoboMaps[8];
-        struct unordered_map<unsigned long long, SCNMTLLightSetData, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, SCNMTLLightSetData>>> frameLightingSetDatas;
+        struct unordered_map<unsigned long long, SCNMTLLightSetData, std::hash<unsigned long long>, std::equal_to<unsigned long long>, std::allocator<std::pair<const unsigned long long, SCNMTLLightSetData>>> frameLightingSetDatas;
         unsigned long long currentLightingHashKey;
         struct {
             long long count;
@@ -128,7 +129,7 @@ __attribute__((visibility("hidden")))
         SCNMTLMesh *metalMesh;
         struct __C3DMeshElement *meshElement;
         SCNMTLMeshElement *metalMeshElement;
-        struct __C3DFXProgram *program;
+        struct __C3DFXMetalProgram *program;
         struct __C3DMaterial *material;
         struct __C3DGeometry *geometry;
         SCNMTLShadable *metalShadable;
@@ -180,6 +181,11 @@ __attribute__((visibility("hidden")))
         unsigned long long passHash;
         struct __C3DMaterial *material;
     } _renderGraph;
+    id <SCNMTLRenderContextResourceManagerMonitor> _resourceManagerMonitor;
+    id <SCNMTLRenderContextCommandBufferStatusMonitor> _commandBufferStatusMonitor;
+    id _commandBufferScheduledHandlers;
+    id _commandBufferCompletedHandlers;
+    id _drawablePresentedHandlers;
     _Bool enablesDeferredShading;
     MTLRenderPassDescriptor *_clientRenderPassDescriptor;
     id <MTLRenderCommandEncoder> _clientRenderCommandEncoder;
@@ -195,6 +201,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *generatedTexturePath; // @synthesize generatedTexturePath=_generatedTexturePath;
 @property(nonatomic) double superSamplingFactor; // @synthesize superSamplingFactor=_superSamplingFactor;
+@property(nonatomic) __weak id <SCNMTLRenderContextCommandBufferStatusMonitor> commandBufferStatusMonitor; // @synthesize commandBufferStatusMonitor=_commandBufferStatusMonitor;
+@property(nonatomic) __weak id <SCNMTLRenderContextResourceManagerMonitor> resourceManagerMonitor; // @synthesize resourceManagerMonitor=_resourceManagerMonitor;
 @property(retain, nonatomic) id <MTLCommandQueue> clientCommandQueue; // @synthesize clientCommandQueue=_clientCommandQueue;
 @property(readonly, nonatomic) void *renderEncoder; // @synthesize renderEncoder=_renderEncoder;
 @property(nonatomic) _Bool shouldPresentAfterMinimumDuration; // @synthesize shouldPresentAfterMinimumDuration=_shouldPresentAfterMinimumDuration;
@@ -206,6 +214,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <MTLCommandBuffer> clientCommandBuffer; // @synthesize clientCommandBuffer=_clientCommandBuffer;
 @property(retain, nonatomic) id <MTLRenderCommandEncoder> clientRenderCommandEncoder; // @synthesize clientRenderCommandEncoder=_clientRenderCommandEncoder;
 @property(retain, nonatomic) MTLRenderPassDescriptor *clientRenderPassDescriptor; // @synthesize clientRenderPassDescriptor=_clientRenderPassDescriptor;
+- (void)addDrawablePresentedHandler:(CDUnknownBlockType)arg1;
+- (void)addCommandBufferCompletedHandler:(CDUnknownBlockType)arg1;
+- (void)addCommandBufferScheduledHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)cubeArrayTypeIfSupported;
 - (struct __C3DMaterial *)getCurrentPassMaterial;
 - (unsigned long long)getCurrentPassHash;
@@ -243,7 +254,7 @@ __attribute__((visibility("hidden")))
 - (void)stopProcessingRendererElements:(_Bool)arg1;
 - (void)startProcessingRendererElementsWithEngineIterationContext:(CDStruct_65434d98 *)arg1;
 - (void)processRendererElements:(CDStruct_d65e47c4 *)arg1 count:(unsigned int)arg2 engineIterationContext:(CDStruct_65434d98 *)arg3;
-- (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const C3DColor4_0cad58d8 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(_Bool)arg10;
+- (void)renderMesh:(struct __C3DMesh *)arg1 meshElement:(struct __C3DMeshElement *)arg2 withProgram:(struct __C3DFXMetalProgram *)arg3 engineContext:(struct __C3DEngineContext *)arg4 transform:(union C3DMatrix4x4)arg5 color:(const C3DColor4_0cad58d8 *)arg6 rasterizerStates:(struct __C3DRasterizerStates *)arg7 blendState:(struct __C3DBlendStates *)arg8 texture:(struct __C3DImage *)arg9 depthBias:(_Bool)arg10;
 - (void)renderVideoBackground:(struct __C3DImageProxy *)arg1 engineContext:(struct __C3DEngineContext *)arg2 slot:(struct __C3DEffectSlot *)arg3;
 - (void)renderBackground:(struct __C3DEffectSlot *)arg1 engineContext:(struct __C3DEngineContext *)arg2 passInstance:(struct __C3DFXPassInstance *)arg3;
 - (float)_zFarForSkyboxRenderingProjectionMatrix:(const union C3DMatrix4x4 *)arg1 defaultZFar:(float)arg2;

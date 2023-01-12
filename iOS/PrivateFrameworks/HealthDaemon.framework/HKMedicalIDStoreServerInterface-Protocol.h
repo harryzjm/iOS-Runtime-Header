@@ -9,7 +9,6 @@
 @class _HKMedicalIDData;
 
 @protocol HKMedicalIDStoreServerInterface <NSObject>
-- (void)remote_badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)remote_medicalIDClinicalContactsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_medicalIDEmergencyContactsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_deleteMedicalIDDataWithLastFetchedMedicalIDData:(_HKMedicalIDData *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

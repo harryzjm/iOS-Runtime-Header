@@ -12,16 +12,16 @@
 
 @interface TSCHSemanticTagAndPropertyPair : NSObject <NSCopying>
 {
-    TSCHStyleSemanticTag *mSemanticTag;
-    int mProperty;
+    int _property;
+    TSCHStyleSemanticTag *_semanticTag;
 }
 
 + (id)pairWithSemanticTag:(id)arg1 property:(int)arg2;
 + (id)semanticTagToSemanticUsagesMapForSemanticUsages:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int property; // @synthesize property=_property;
+@property(readonly, copy, nonatomic) TSCHStyleSemanticTag *semanticTag; // @synthesize semanticTag=_semanticTag;
 - (id)description;
-- (int)property;
-- (id)semanticTag;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

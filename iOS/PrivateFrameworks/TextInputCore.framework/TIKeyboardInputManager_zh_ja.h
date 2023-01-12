@@ -83,6 +83,8 @@
 - (id)keyboardConfiguration;
 - (void)updateProactiveCandidatesForCandidateResultSet:(id)arg1 withInput:(id)arg2;
 - (void)addProactiveTriggers:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)addSupplementalCandidatesToResultSet:(id)arg1;
+- (pair_bbbbc461)_supplementalItemIdentifiersInCurrentSelection;
 - (id)segmentsFromCandidate:(id)arg1 phraseBoundary:(_Bool)arg2;
 - (void *)mecabraCandidateRefFromCandidate:(id)arg1;
 - (id)candidateResultSetFromWordSearchCandidateResultSet:(id)arg1;
@@ -114,6 +116,7 @@
 - (void)saveTouchDataForEvent:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)touchDataForPathIndex:(long long)arg1;
 - (long long)addTouch:(id)arg1 shouldHitTest:(_Bool)arg2;
+@property(readonly, nonatomic) struct CGRect baseLayoutCharacterKeysFrame;
 @property(readonly, nonatomic) struct CGRect currentLayoutCharacterKeysFrame; // @synthesize currentLayoutCharacterKeysFrame=_currentLayoutCharacterKeysFrame;
 - (_Bool)needsTouchEvents;
 - (void)clearInput;
@@ -143,6 +146,7 @@
 - (void)completeComposition;
 - (void)_completeComposition:(_Bool)arg1;
 - (void)composeTextWith:(id)arg1;
+- (void)abortComposition;
 - (void)commitComposition;
 - (void)composeText:(CDUnknownBlockType)arg1;
 - (id)initWithKeyboardInputManagerToChain:(id)arg1;

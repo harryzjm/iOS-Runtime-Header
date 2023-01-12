@@ -12,7 +12,7 @@
 #import <MediaPlaybackCore/MPCModelStorePreviousRequestStoring-Protocol.h>
 #import <MediaPlaybackCore/MPModelRequestDetailedKeepLocalStatusRequesting-Protocol.h>
 
-@class MPCPlaybackRequestEnvironment, MPModelResponse, MPSectionedCollection, NSArray, NSString;
+@class ICSharedListeningQueue, MPCPlaybackRequestEnvironment, MPModelResponse, MPSectionedCollection, NSArray, NSString;
 
 @interface MPCModelStorePlaybackItemsRequest : MPModelRequest <MPCModelPlaybackRequest, MPCModelPlaybackRequestEnvironmentConsuming, MPModelRequestDetailedKeepLocalStatusRequesting, MPCModelRequestRTCReporting, MPCModelStorePreviousRequestStoring>
 {
@@ -25,12 +25,14 @@
     MPSectionedCollection *_sectionedModelObjects;
     NSArray *_storeIDs;
     NSArray *_playbackPrioritizedIndexPaths;
+    ICSharedListeningQueue *_sharedListeningQueue;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)requiresNetwork;
 + (void)MPC_consumeSiriAssetInfo:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ICSharedListeningQueue *sharedListeningQueue; // @synthesize sharedListeningQueue=_sharedListeningQueue;
 @property(copy, nonatomic) NSArray *playbackPrioritizedIndexPaths; // @synthesize playbackPrioritizedIndexPaths=_playbackPrioritizedIndexPaths;
 @property(copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 @property(copy, nonatomic) MPSectionedCollection *sectionedModelObjects; // @synthesize sectionedModelObjects=_sectionedModelObjects;

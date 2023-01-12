@@ -16,7 +16,7 @@
 - (void).cxx_destruct;
 - (_Bool)_isEffectivelyHome;
 - (id)_newAppExposeModifier;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (double)plusButtonAlpha;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;

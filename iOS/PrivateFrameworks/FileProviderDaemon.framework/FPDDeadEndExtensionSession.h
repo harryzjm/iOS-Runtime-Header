@@ -14,18 +14,21 @@ __attribute__((visibility("hidden")))
 @interface FPDDeadEndExtensionSession : NSObject <FPDExtensionSessionProtocol>
 {
     _Bool hasFileProviderPresenceTCCAccess;
+    _Bool hasFileProviderAttributionMDMAccess;
 }
 
+@property(readonly, nonatomic) _Bool hasFileProviderAttributionMDMAccess; // @synthesize hasFileProviderAttributionMDMAccess;
 @property(nonatomic) _Bool hasFileProviderPresenceTCCAccess; // @synthesize hasFileProviderPresenceTCCAccess;
 - (void)dumpStateTo:(id)arg1;
 - (void)invalidate;
+- (void)cancel;
 - (void)start;
 - (void)asyncUnregisterLifetimeExtensionForObject:(id)arg1;
 - (void)unregisterLifetimeExtensionForObject:(id)arg1;
 - (void)registerLifetimeExtensionForObject:(id)arg1;
-- (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
+- (void)updatePresenceTCCWithAuditToken:(CDStruct_4c969caf)arg1;
 - (id)newFileProviderProxyWithoutPID;
-- (id)existingFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;
+- (id)existingFileProviderProxyWithTimeout:(_Bool)arg1 onlyAlreadyLifetimeExtended:(_Bool)arg2 pid:(int)arg3;
 - (id)newFileProviderProxyWithoutPIDWithTimeout:(_Bool)arg1;
 - (id)newFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;
 - (id)newFileProviderProxyWithPID:(int)arg1;

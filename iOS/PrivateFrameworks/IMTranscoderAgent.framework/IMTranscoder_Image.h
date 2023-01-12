@@ -6,7 +6,6 @@
 
 @interface IMTranscoder_Image
 {
-    _Bool _stripImageMetadata;
     double _overrideJPEGCompressionQuality;
 }
 
@@ -16,7 +15,6 @@
 + (id)findOrientationFromProperties:(id)arg1;
 + (id)supportedUTIs;
 + (id)excludedUTIs;
-@property(nonatomic) _Bool stripImageMetadata; // @synthesize stripImageMetadata=_stripImageMetadata;
 @property(nonatomic) double overrideJPEGCompressionQuality; // @synthesize overrideJPEGCompressionQuality=_overrideJPEGCompressionQuality;
 - (void)transcodeFileTransfer:(id)arg1 utiType:(id)arg2 allowUnfilteredUTIs:(id)arg3 target:(long long)arg4 sizes:(id)arg5 commonCapabilities:(id)arg6 maxDimension:(unsigned long long)arg7 transcoderUserInfo:(id)arg8 representations:(long long)arg9 completionBlock:(CDUnknownBlockType)arg10;
 - (void)validateFileTransfer:(id)arg1 utiType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

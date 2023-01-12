@@ -8,7 +8,7 @@
 {
     struct MTLSamplerDescriptorHashMap _argumentBufferSamplers;
     struct os_unfair_lock_s _referenceTrackingCommandBufferLock;
-    struct unordered_set<MTLDebugCommandBuffer *, std::__1::hash<MTLDebugCommandBuffer *>, std::__1::equal_to<MTLDebugCommandBuffer *>, std::__1::allocator<MTLDebugCommandBuffer *>> _referenceTrackingCommandBuffers;
+    struct unordered_set<MTLDebugCommandBuffer *, std::hash<MTLDebugCommandBuffer *>, std::equal_to<MTLDebugCommandBuffer *>, std::allocator<MTLDebugCommandBuffer *>> _referenceTrackingCommandBuffers;
     struct CheckerboardRenderTargetPipelineCache _checkerboardRTPipelineCache;
     _Bool _storeValidationEnabled;
     _Bool _loadValidationEnabled;
@@ -19,16 +19,24 @@
 - (void).cxx_destruct;
 @property(readonly) _Bool loadValidationEnabled; // @synthesize loadValidationEnabled=_loadValidationEnabled;
 @property(readonly) _Bool storeValidationEnabled; // @synthesize storeValidationEnabled=_storeValidationEnabled;
+- (id)getSamplerStateForBaseObject:(id)arg1 descriptor:(id)arg2;
+- (id)getDepthStencilStateForBaseObject:(id)arg1 descriptor:(id)arg2;
+- (id)getFunctionForBaseObject:(id)arg1 library:(id)arg2;
+- (id)getDynamicLibraryForBaseObject:(id)arg1;
 - (void)clearRenderEncoder:(id)arg1 writeMask:(unsigned long long)arg2 withCheckerboard:(float *)arg3;
 - (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
 - (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (id)newAccelerationStructureWithBuffer:(id)arg1 offset:(unsigned long long)arg2;
+- (id)newAccelerationStructureWithSize:(unsigned long long)arg1 resourceIndex:(unsigned long long)arg2;
 - (id)newAccelerationStructureWithDescriptor:(id)arg1;
 - (id)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (CDStruct_14f26992)accelerationStructureSizesWithDescriptor:(id)arg1;
+- (void)validateRaytracing;
 - (void)notifyExternalReferencesNonZeroOnDealloc:(id)arg1;
 - (void)removeReferenceTrackingCommandBuffer:(id)arg1;
 - (void)addReferenceTrackingCommandBuffer:(id)arg1;
 - (id)newFence;
+- (id)newLateEvalEvent;
 - (id)newSharedEventWithHandle:(id)arg1;
 - (id)newSharedEventWithMachPort:(unsigned int)arg1;
 - (id)newSharedEvent;
@@ -49,6 +57,13 @@
 - (id)newLibraryWithFile:(id)arg1 error:(id *)arg2;
 - (id)newComputePipelineStateWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
 - (id)newLibraryWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (id)newDagStringWithGraphs:(id)arg1;
+- (id)newLibraryWithDescriptorSPI:(id)arg1 error:(id *)arg2;
+- (void)newLibraryWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newLibraryWithDescriptor:(id)arg1 error:(id *)arg2;
+- (id)newLibraryWithStitchedDescriptorSPI:(id)arg1 error:(id *)arg2;
+- (void)newLibraryWithStitchedDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newLibraryWithStitchedDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithDAG:(id)arg1 functions:(id)arg2 error:(id *)arg3;
 - (void)newRenderPipelineStateWithTileDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)newRenderPipelineStateWithTileDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -66,7 +81,6 @@
 - (void)newComputePipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)newComputePipelineStateWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_newComputePipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
-- (void)validateLinkedFunctions:(id)arg1;
 - (id)newComputePipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)newComputePipelineStateWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)_newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -75,10 +89,12 @@
 - (id)newRenderPipelineStateWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)_newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
+- (void)validateLinkedFunctions:(id)arg1 context:(struct _MTLMessageContext *)arg2;
 - (void)validateTraceBuffer:(unsigned long long)arg1 maxBufferCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (_Bool)validateDynamicLibraryURL:(id)arg1 error:(id *)arg2;
 - (_Bool)validateDynamicLibrary:(id)arg1 state:(_Bool)arg2 error:(id *)arg3;
-- (id)loadDynamicLibrariesForComputeDescriptor:(id)arg1 error:(id *)arg2;
+- (id)loadDynamicLibrariesForFunction:(id)arg1 insertLibraries:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
+- (id)loadDynamicLibrariesForComputeDescriptor:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)newDynamicLibrary:(id)arg1 error:(id *)arg2;
 - (id)newDynamicLibrary:(id)arg1 computeDescriptor:(id)arg2 error:(id *)arg3;
 - (id)newDynamicLibraryWithURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
@@ -96,6 +112,7 @@
 - (id)newArgumentEncoderWithLayout:(id)arg1;
 - (id)newArgumentEncoderWithArguments:(id)arg1;
 - (id)newIndirectCommandBufferWithDescriptor:(id)arg1 maxCommandCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id)newBufferWithDescriptor:(id)arg1;
 - (id)newBufferWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;

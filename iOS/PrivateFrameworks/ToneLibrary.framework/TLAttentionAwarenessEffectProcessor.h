@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioEngine, AVAudioInputNode, AVAudioPCMBuffer, AVAudioUnitEQ, AVAudioUnitReverb, NSString;
+@class AVAudioEngine, AVAudioInputNode, AVAudioPCMBuffer, AVAudioSession, AVAudioUnitEQ, AVAudioUnitReverb, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface TLAttentionAwarenessEffectProcessor : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSString *_accessQueueLabel;
+    AVAudioSession *_audioSession;
     AVAudioPCMBuffer *_destinationPCMBuffer;
     AVAudioEngine *_engine;
     AVAudioInputNode *_inputNode;
@@ -36,7 +37,7 @@
 - (void)setEffectParameters:(CDStruct_4922f917)arg1 effectMixFadeDuration:(double)arg2;
 @property(nonatomic) CDStruct_4922f917 effectParameters;
 - (void)dealloc;
-- (id)initWithProcessingFormat:(id)arg1 framesPerRender:(unsigned int)arg2 effectParameters:(CDStruct_4922f917)arg3;
+- (id)initWithProcessingFormat:(id)arg1 framesPerRender:(unsigned int)arg2 audioSession:(id)arg3 effectParameters:(CDStruct_4922f917)arg4;
 
 @end
 

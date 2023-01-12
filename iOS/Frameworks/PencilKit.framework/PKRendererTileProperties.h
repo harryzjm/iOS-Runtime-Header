@@ -10,16 +10,20 @@
 
 @interface PKRendererTileProperties : NSObject <NSCopying>
 {
+    _Bool _sixChannelMode;
     long long _level;
     struct CGPoint _offset;
+    struct CGAffineTransform _drawingTransform;
 }
 
+@property(readonly, nonatomic) struct CGAffineTransform drawingTransform; // @synthesize drawingTransform=_drawingTransform;
+@property(readonly, nonatomic) _Bool sixChannelMode; // @synthesize sixChannelMode=_sixChannelMode;
 @property(readonly, nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) long long level; // @synthesize level=_level;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithLevel:(long long)arg1 offset:(struct CGPoint)arg2;
+- (id)initWithLevel:(long long)arg1 offset:(struct CGPoint)arg2 drawingTransform:(struct CGAffineTransform)arg3 sixChannelMode:(_Bool)arg4;
 
 @end
 

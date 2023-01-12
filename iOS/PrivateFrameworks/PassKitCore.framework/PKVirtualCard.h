@@ -13,6 +13,7 @@
 
 @interface PKVirtualCard : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _hasDynamicSecurityCode;
     _Bool _supportsLocalStorage;
     _Bool _requiresAuthentication;
     NSString *_identifier;
@@ -26,6 +27,8 @@
     NSData *_ephemeralPublicKey;
     NSString *_displayName;
     NSDate *_lastAutoFilledBySafari;
+    NSString *_securityCodeIdentifier;
+    NSDate *_securityCodeExpiration;
     PKVirtualCardCredentials *_keychainCardCredentials;
 }
 
@@ -36,6 +39,9 @@
 @property(copy, nonatomic) PKVirtualCardCredentials *keychainCardCredentials; // @synthesize keychainCardCredentials=_keychainCardCredentials;
 @property(nonatomic) _Bool requiresAuthentication; // @synthesize requiresAuthentication=_requiresAuthentication;
 @property(nonatomic) _Bool supportsLocalStorage; // @synthesize supportsLocalStorage=_supportsLocalStorage;
+@property(nonatomic) _Bool hasDynamicSecurityCode; // @synthesize hasDynamicSecurityCode=_hasDynamicSecurityCode;
+@property(copy, nonatomic) NSDate *securityCodeExpiration; // @synthesize securityCodeExpiration=_securityCodeExpiration;
+@property(copy, nonatomic) NSString *securityCodeIdentifier; // @synthesize securityCodeIdentifier=_securityCodeIdentifier;
 @property(copy, nonatomic) NSDate *lastAutoFilledBySafari; // @synthesize lastAutoFilledBySafari=_lastAutoFilledBySafari;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSData *ephemeralPublicKey; // @synthesize ephemeralPublicKey=_ephemeralPublicKey;

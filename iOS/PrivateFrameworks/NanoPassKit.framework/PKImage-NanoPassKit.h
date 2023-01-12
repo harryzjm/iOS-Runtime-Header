@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKit/PKImage.h>
+#import <PassKitCore/PKImage.h>
 
 @interface PKImage (NanoPassKit)
 - (id)resizedImageWithSize:(struct CGSize)arg1 shouldCover:(_Bool)arg2;
 - (id)resizedImageToFit:(struct CGSize)arg1;
 - (id)resizedImageToCover:(struct CGSize)arg1;
+- (id)_npkMemoryMappedImageWithPath:(id)arg1;
 - (id)npkImageByMemoryMappingDataWithTemporaryFilePrefix:(id)arg1;
 @end
 

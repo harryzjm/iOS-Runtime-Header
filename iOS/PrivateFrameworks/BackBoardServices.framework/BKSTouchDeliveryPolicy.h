@@ -19,6 +19,7 @@
 + (id)policyRequiringSharingOfTouchesDeliveredToChildContextId:(unsigned int)arg1 withHostContextId:(unsigned int)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (id)policyExcludingPolicyIdenticalTo:(id)arg1;
 - (id)policyExcludingPolicy:(id)arg1;
 - (id)policyIncludingPolicy:(id)arg1;
 - (id)reducePolicyToObjectWithBlock:(CDUnknownBlockType)arg1;

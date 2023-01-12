@@ -22,6 +22,7 @@
 @property(retain, nonatomic) id <HUQuickControlItemUpdating> itemUpdater; // @synthesize itemUpdater=_itemUpdater;
 @property(retain, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+- (id)initWithMediaRoutingIdentifier:(id)arg1;
 - (id)initWithHome:(id)arg1;
 
 @end

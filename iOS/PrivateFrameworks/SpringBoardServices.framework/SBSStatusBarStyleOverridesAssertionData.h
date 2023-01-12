@@ -13,7 +13,7 @@
 
 @interface SBSStatusBarStyleOverridesAssertionData : NSObject <NSSecureCoding, BSDescriptionProviding>
 {
-    int _statusBarStyleOverrides;
+    unsigned long long _statusBarStyleOverrides;
     int _pid;
     _Bool _exclusive;
     _Bool _showsWhenForeground;
@@ -28,7 +28,7 @@
 @property(nonatomic) _Bool showsWhenForeground; // @synthesize showsWhenForeground=_showsWhenForeground;
 @property(nonatomic, getter=isExclusive) _Bool exclusive; // @synthesize exclusive=_exclusive;
 @property(nonatomic) int pid; // @synthesize pid=_pid;
-@property(nonatomic) int statusBarStyleOverrides; // @synthesize statusBarStyleOverrides=_statusBarStyleOverrides;
+@property(nonatomic) unsigned long long statusBarStyleOverrides; // @synthesize statusBarStyleOverrides=_statusBarStyleOverrides;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -36,8 +36,8 @@
 @property(readonly, copy) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4 uniqueIdentifier:(id)arg5;
-- (id)initWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4;
+- (id)initWithStatusBarStyleOverrides:(unsigned long long)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4 uniqueIdentifier:(id)arg5;
+- (id)initWithStatusBarStyleOverrides:(unsigned long long)arg1 forPID:(int)arg2 exclusive:(_Bool)arg3 showsWhenForeground:(_Bool)arg4;
 - (id)init;
 
 // Remaining properties

@@ -18,17 +18,21 @@
     _Bool _autoRedEyeReductionEnabled;
     int _digitalFlashMode;
     int _qualityPrioritization;
+    int _clientQualityPrioritization;
     int _HDRMode;
     _Bool _autoOriginalPhotoDeliveryEnabled;
     _Bool _autoSpatialOverCaptureEnabled;
     _Bool _autoDeferredProcessingEnabled;
+    unsigned int _rawOutputFormat;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) unsigned int rawOutputFormat; // @synthesize rawOutputFormat=_rawOutputFormat;
 @property(nonatomic, getter=isAutoDeferredProcessingEnabled) _Bool autoDeferredProcessingEnabled; // @synthesize autoDeferredProcessingEnabled=_autoDeferredProcessingEnabled;
 @property(nonatomic, getter=isAutoSpatialOverCaptureEnabled) _Bool autoSpatialOverCaptureEnabled; // @synthesize autoSpatialOverCaptureEnabled=_autoSpatialOverCaptureEnabled;
 @property(nonatomic, getter=isAutoOriginalPhotoDeliveryEnabled) _Bool autoOriginalPhotoDeliveryEnabled; // @synthesize autoOriginalPhotoDeliveryEnabled=_autoOriginalPhotoDeliveryEnabled;
 @property(nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
+@property(nonatomic) int clientQualityPrioritization; // @synthesize clientQualityPrioritization=_clientQualityPrioritization;
 @property(nonatomic) int qualityPrioritization; // @synthesize qualityPrioritization=_qualityPrioritization;
 @property(nonatomic) int digitalFlashMode; // @synthesize digitalFlashMode=_digitalFlashMode;
 @property(nonatomic) _Bool autoRedEyeReductionEnabled; // @synthesize autoRedEyeReductionEnabled=_autoRedEyeReductionEnabled;

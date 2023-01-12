@@ -10,7 +10,10 @@
 {
 }
 
++ (id)_bundleIdentifiersRequestingAppLifecycleImpact;
+- (id)uiSceneSessionRole;
 - (id)baseSceneComponentClassDictionary;
+- (_Bool)affectsAppLifecycleIfInternal;
 - (_Bool)isInternal;
 - (Class)clientSettingsClass;
 - (Class)settingsClass;

@@ -37,6 +37,8 @@
     _Bool _needsMediaEncryptionInfo;
     unsigned long long _outgoingBytes;
     unsigned long long _incomingBytes;
+    unsigned long long _outgoingPackets;
+    unsigned long long _incomingPackets;
     double _lastOutgoingStatReport;
     double _lastIncomingStatReport;
     NSMutableDictionary *_MKIArrivalTime;

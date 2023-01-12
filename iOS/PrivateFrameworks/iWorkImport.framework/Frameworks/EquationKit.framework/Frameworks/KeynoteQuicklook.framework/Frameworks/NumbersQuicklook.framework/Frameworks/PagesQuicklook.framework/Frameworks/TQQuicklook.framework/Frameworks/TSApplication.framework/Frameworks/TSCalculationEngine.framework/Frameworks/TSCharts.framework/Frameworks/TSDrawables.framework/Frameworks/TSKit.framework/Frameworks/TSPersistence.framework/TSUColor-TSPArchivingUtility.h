@@ -7,7 +7,7 @@
 #import <TSUtility/TSUColor.h>
 
 @interface TSUColor (TSPArchivingUtility)
-- (void)saveToMessage:(struct Color *)arg1;
-- (id)initWithMessage:(const struct Color *)arg1;
+- (void)saveToMessage:(void *)arg1;
+- (id)initWithMessage:(const void *)arg1;
 @end
 

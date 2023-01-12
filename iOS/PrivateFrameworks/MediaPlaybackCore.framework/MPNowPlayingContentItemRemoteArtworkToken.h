@@ -10,6 +10,7 @@
 
 @class MPExportableArtworkProperties, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPNowPlayingContentItemRemoteArtworkToken : NSObject <MPArtworkDataSourceVisualIdenticality>
 {
     NSString *_identifier;

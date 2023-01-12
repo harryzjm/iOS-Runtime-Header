@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <TSStyles/NSCopying-Protocol.h>
-#import <TSStyles/TSSPropertySource-Protocol.h>
+#import <TSStyles/TSSMutablePropertySource-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString, TSSPropertySet;
 
-@interface TSSPropertyMap : NSObject <NSCopying, TSSPropertySource>
+@interface TSSPropertyMap : NSObject <NSCopying, TSSMutablePropertySource>
 {
     struct TSSPropertyStore *mStore;
 }
@@ -52,12 +52,15 @@
 - (id)objectForProperty:(int)arg1;
 - (id)boxedObjectForProperty:(int)arg1;
 @property(readonly, copy) NSString *description;
+- (void)enumerateDataPropertiesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateReferencedDataForProperty:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)p_enumerateReferencedDataForProperty:(int)arg1 withObject:(id)arg2 stop:(_Bool *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumeratePropertiesAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)old_description;
 - (void)p_getAllKeys:(int *)arg1;
-- (id)allProperties;
-- (id)allKeys;
-- (unsigned long long)count;
+@property(readonly, nonatomic) TSSPropertySet *allProperties;
+@property(readonly, nonatomic) NSArray *allKeys;
+@property(readonly, nonatomic) unsigned long long count;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToPropertyMap:(id)arg1;

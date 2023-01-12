@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSDVaryWidthPathManipulation
+#import <objc/NSObject.h>
+
+@interface TSDVaryWidthPathManipulation : NSObject
 {
 }
 
-- (struct CGPath *)manipulatePath:(struct CGPath *)arg1 withLineWidth:(double)arg2;
+- (const struct CGPath *)manipulatePath:(const struct CGPath *)arg1 withLineWidth:(double)arg2;
 
 @end
 

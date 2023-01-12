@@ -7,6 +7,6 @@
 #import <AssistantServices/NSObject-Protocol.h>
 
 @protocol AFSiriAppContextProviding <NSObject>
-- (void)getAppContextWithDeliveryHandler:(void (^)(void))arg1 completionHandler:(void (^)(NSArray *))arg2;
+- (void)getAppContextWithDeliveryHandler:(void (^)(void))arg1 completionHandler:(void (^)(STSiriContext *))arg2;
 @end
 

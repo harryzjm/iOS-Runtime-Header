@@ -16,10 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSUUID *enrollmentIdentifier; // @synthesize enrollmentIdentifier=_enrollmentIdentifier;
-@property(readonly, nonatomic) NSString *kind; // @synthesize kind=_kind;
 - (id)description;
-- (id)initWithKind:(id)arg1;
 
 @end
 

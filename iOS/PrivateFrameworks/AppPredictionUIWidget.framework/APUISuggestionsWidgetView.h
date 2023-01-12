@@ -31,11 +31,12 @@
 - (void)logLayoutSuggestions:(id)arg1;
 - (_Bool)_hasBundleInstalledAndNotRestrictedForSuggestion:(id)arg1;
 - (id)_validSuggestionsWithSuggestions:(id)arg1;
-- (void)_checkSuggestions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_checkOrLoadSuggestions:(id)arg1 inDeveloperMode:(_Bool)arg2 rowCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_layoutOne2x2;
 - (void)addSeparatorViewToView:(id)arg1;
 - (void)_layout1x4WithRowCount:(unsigned long long)arg1;
 - (void)_displayNoSuggestions;
+- (void)_clearStackView;
 - (void)_layoutNotSupported:(long long)arg1;
 - (void)updateWithSuggestionLayout:(id)arg1;
 - (void)_setupStackViewIfNecessary;

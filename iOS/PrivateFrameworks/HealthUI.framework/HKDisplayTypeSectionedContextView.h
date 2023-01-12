@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <HealthUI/HKDisplayTypeContextVerticalCollectionViewCellDelegate-Protocol.h>
 #import <HealthUI/UICollectionViewDataSource-Protocol.h>
 #import <HealthUI/UICollectionViewDelegate-Protocol.h>
 
 @class HKDisplayTypeContextItem, HKDisplayTypeContextVerticalCollectionViewCell, NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewLayout;
 @protocol HKDisplayTypeSectionedContextViewDelegate;
 
-@interface HKDisplayTypeSectionedContextView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HKDisplayTypeSectionedContextView : UIView <UICollectionViewDataSource, UICollectionViewDelegate, HKDisplayTypeContextVerticalCollectionViewCellDelegate>
 {
     long long _style;
     _Bool _bottomInsetsEnabled;
@@ -32,6 +33,7 @@
 @property(retain, nonatomic) HKDisplayTypeContextVerticalCollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property(nonatomic) __weak id <HKDisplayTypeSectionedContextViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSArray *displayTypeContextSections; // @synthesize displayTypeContextSections=_displayTypeContextSections;
+- (void)didTapOnInfoButtonForCollectionViewCell:(id)arg1;
 - (double)_maximumHeaderLabelLength;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;

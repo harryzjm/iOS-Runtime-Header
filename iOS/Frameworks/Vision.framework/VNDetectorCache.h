@@ -10,11 +10,16 @@
 #import <Vision/VNDetectorReleasing-Protocol.h>
 
 @class NSMutableSet, NSString;
+@protocol VNDetectorCacheDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VNDetectorCache : NSObject <VNDetectorProviding, VNDetectorReleasing>
 {
-    struct os_unfair_lock_s _detectorsLock;
+    id <VNDetectorCacheDelegate> _delegate;
+    struct {
+        unsigned int reportDidCacheDetector:1;
+        unsigned int reportDidEvictDetector:1;
+    } _delegateFlags;
     NSMutableSet *_detectors;
 }
 
@@ -26,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)evictAllDetectors;
 - (void)evictDetectorsPassingTest:(CDUnknownBlockType)arg1;
 - (void)cacheDetector:(id)arg1;
+@property(retain) id <VNDetectorCacheDelegate> delegate;
 - (id)init;
 
 // Remaining properties

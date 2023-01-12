@@ -11,9 +11,7 @@
 @protocol SRAuthorizationStoreDelegate <NSObject>
 
 @optional
-- (void)authorizationStore:(SRAuthorizationStore *)arg1 resetAuthorizations:(NSSet *)arg2 forBundleId:(NSString *)arg3;
-- (void)authorizationStore:(SRAuthorizationStore *)arg1 revokedAuthorizations:(NSSet *)arg2 forBundleId:(NSString *)arg3;
-- (void)authorizationStore:(SRAuthorizationStore *)arg1 grantedAuthorizations:(NSSet *)arg2 forBundleId:(NSString *)arg3;
+- (void)authorizationStore:(SRAuthorizationStore *)arg1 didUpdateAuthorizationsForBundleId:(NSString *)arg2 sensors:(NSSet *)arg3;
 - (void)authorizationStore:(SRAuthorizationStore *)arg1 didDetermineInitialAuthorizationValues:(NSDictionary *)arg2;
 @end
 

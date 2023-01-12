@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)generatedGenericAssetTypes;
-- (unsigned long long)generatedSearchQueryFilterOptions;
+- (unsigned long long)generatedRequiredAssetTypes;
+- (unsigned long long)generatedPossibleAssetTypes;
 - (id)generatedAssetPredicate;
+@property(readonly, nonatomic) _Bool allowsAlbums;
+@property(readonly, nonatomic) _Bool allowsSearch;
 @property(readonly, nonatomic) _Bool isValidFilter;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;

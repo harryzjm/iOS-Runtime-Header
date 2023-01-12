@@ -7,7 +7,6 @@
 #import <UIKit/UIBarButtonItem.h>
 
 @interface UIBarButtonItem (Bridge)
-+ (id)backBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
 - (id)ts_barButtonItemView;
 @end
 

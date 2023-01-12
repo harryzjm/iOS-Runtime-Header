@@ -23,13 +23,17 @@
     NSTimer *_cycleStartTimer;
     NSDictionary *_localizedStrings;
     NSDictionary *_storeRestrictedStrings;
+    NSDictionary *_activationLockStrings;
+    NSString *_maskedAppleID;
     NSArray *_stringsOrdering;
     NSMutableArray *_currentStringsOrdering;
     unsigned long long _currentStringsIndex;
     _Bool _shouldResetOrderingOnNextCycle;
     _Bool _isCyclingComponents;
     unsigned long long _componentsToCycle;
+    double _customDelayDuration;
     _Bool _isStoreRestricted;
+    _Bool _isActivationLocked;
     UITapGestureRecognizer *_pointerClickGestureRecognizer;
     UIHoverGestureRecognizer *_hoverGestureRecognizer;
 }
@@ -40,12 +44,22 @@
 - (_Bool)_isSecurityResearchDevice;
 - (void)_regulatoryInfoButtonTapped:(id)arg1;
 - (void)_infoButtonTapped:(id)arg1;
+- (unsigned long long)_componentsToStartCycling;
+- (void)_updateForLockInfo:(id)arg1;
+- (void)_checkIfActivationLocked;
 - (void)_updateWifiPrimaryLanguageFromDiscoveredCountryCodes:(id)arg1;
-- (void)_fetchLanguageFromTelephony;
+- (id)_supportedLanguageIdentifierFromRegionalLanguageIdentifier:(id)arg1 countryCode:(id)arg2;
+- (id)firstSupportedLanguageIdentifierInRegionalLanguageIdentifiers:(id)arg1 countryCode:(id)arg2;
+- (void)_updateLanguageFromTelephony;
 - (id)_importantLanguageIdentifiers;
 - (id)_currentLanguageIdentifier;
+- (id)_currentActivationLockStringsDictionary;
 - (id)_currentStoreRestrictedStringsDictionary;
 - (id)_currentStringsDictionary;
+- (void)_updateStringOrderingForLanguageChange;
+- (id)_alignedMarketingOrdering;
+- (id)_applicableIdentifierForDictionary:(id)arg1 identifier:(id)arg2;
+- (id)_displayStringForLocalizedString:(id)arg1 fallbackString:(id)arg2;
 - (void)_updateDisplayedStrings;
 - (void)_resetDisplayedLocalizedStringsImmediately:(_Bool)arg1;
 - (void)_incrementLocalizedStringsForNewCycle;
@@ -69,6 +83,7 @@
 - (void)_handleHoverEvent:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_didClickHomeAffordance:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoverSheetViewController:(id)arg1;
 
 // Remaining properties

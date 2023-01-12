@@ -11,12 +11,12 @@
 @class NSString;
 
 @interface HKMedicalRecord (HDDistinctableObject) <HDCoding>
-+ (_Bool)supportsSecureCoding:(id)arg1;
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (id)uniqueIdentifierForDistinctByKeyPath:(id)arg1 error:(id *)arg2;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
+- (_Bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

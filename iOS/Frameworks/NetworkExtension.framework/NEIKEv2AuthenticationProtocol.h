@@ -22,7 +22,6 @@
 @property(readonly, nonatomic) _Bool isDigitalSignature;
 @property(readonly, nonatomic) _Bool isCertificate;
 - (id)description;
-- (id)initWithDigitalSignathure:(unsigned long long)arg1;
 - (id)initWithDigitalSignature:(unsigned long long)arg1;
 - (id)initWithMethod:(unsigned long long)arg1;
 

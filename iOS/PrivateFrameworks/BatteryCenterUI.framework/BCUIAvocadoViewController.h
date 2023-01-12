@@ -13,6 +13,7 @@
     _Bool _batteryDeviceViewsValid;
     NSMutableArray *_batteryDeviceViews;
     NSArray *_batteryDevices;
+    double _scaleFactor;
     NSString *_debugIdentifier;
 }
 
@@ -20,6 +21,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
+@property(nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(copy, nonatomic) NSArray *batteryDevices; // @synthesize batteryDevices=_batteryDevices;
 - (id)_synthesizedDebugIdentifier;
 - (void)_validateBatteryDeviceViewsIfNecessary;

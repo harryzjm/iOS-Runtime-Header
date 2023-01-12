@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)finishProcessing;
 - (_Bool)processBytes:(char *)arg1 size:(unsigned long long)arg2;
 - (void)dealloc;
-- (id)initWithAlgorithm:(long long)arg1 operation:(int)arg2 dataHandler:(CDUnknownBlockType)arg3;
+- (id)initWithAlgorithm:(int)arg1 operation:(int)arg2 dataHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/TUIEmojiSearchInputViewControllerDelegate-Protocol.h>
 #import <UIKitCore/UICollectionViewDataSource-Protocol.h>
 #import <UIKitCore/UICollectionViewDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardMediaControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, UICollectionViewFlowLayout, UIKBTree, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
+@class NSArray, NSIndexPath, NSString, TUIEmojiSearchInputViewController, TUIEmojiSearchTextField, UICollectionViewFlowLayout, UIKBTree, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
 @protocol UIKBEmojiHitTestResponder;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiCollectionInputView <UIKeyboardMediaControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface UIKeyboardEmojiCollectionInputView <UIKeyboardMediaControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, TUIEmojiSearchInputViewControllerDelegate>
 {
     UIKeyboardEmojiCollectionView *_collectionView;
     UICollectionViewFlowLayout *_flowLayout;
@@ -34,24 +35,32 @@ __attribute__((visibility("hidden")))
     _Bool _supportsMemoji;
     _Bool _hasCheckedMemojiPreference;
     _Bool _currentlyCheckingMemojiPreference;
+    _Bool _isSearching;
     CDUnknownBlockType _completionBlock;
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
+    TUIEmojiSearchInputViewController *_emojiSearchInputViewController;
+    TUIEmojiSearchTextField *_emojiSearchField;
     NSIndexPath *_selectedIndexPath;
+    NSArray *_searchResults;
 }
 
 + (_Bool)shouldHighlightEmoji:(id)arg1;
 + (_Bool)wantsScreenTraits;
+@property(retain, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
+@property _Bool isSearching; // @synthesize isSearching=_isSearching;
 @property _Bool currentlyCheckingMemojiPreference; // @synthesize currentlyCheckingMemojiPreference=_currentlyCheckingMemojiPreference;
 @property _Bool hasCheckedMemojiPreference; // @synthesize hasCheckedMemojiPreference=_hasCheckedMemojiPreference;
 @property _Bool supportsMemoji; // @synthesize supportsMemoji=_supportsMemoji;
 @property(retain, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
+@property(retain, nonatomic) TUIEmojiSearchTextField *emojiSearchField; // @synthesize emojiSearchField=_emojiSearchField;
+@property(retain, nonatomic) TUIEmojiSearchInputViewController *emojiSearchInputViewController; // @synthesize emojiSearchInputViewController=_emojiSearchInputViewController;
 @property(nonatomic) NSIndexPath *tappedSkinToneEmoji; // @synthesize tappedSkinToneEmoji=_tappedSkinToneEmoji;
 @property(nonatomic) UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property(readonly) _Bool isDraggingInputView; // @synthesize isDraggingInputView=_isDraggingInputView;
 @property UIKeyboardEmojiCategory *category; // @synthesize category=_category;
-- (_Bool)_shouldReverseLayoutDirection;
 - (long long)updateToCategoryWithOffsetPercentage:(double)arg1;
+- (void)updateOffsetForSearchResults;
 - (void)updateToCategory:(long long)arg1;
 - (void)didMoveToWindow;
 - (long long)indexForPrettyCategoryDisplay:(id)arg1;
@@ -68,6 +77,13 @@ __attribute__((visibility("hidden")))
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
+- (void)emojiSearchDidReceiveResults:(id)arg1 forExactQuery:(id)arg2 autocorrectedQuery:(id)arg3;
+- (void)emojiSearchTextFieldDidReset:(id)arg1;
+- (void)emojiSearchTextFieldWillClear:(id)arg1;
+- (void)emojiSearchTextFieldDidBecomeInactive:(id)arg1;
+- (void)emojiSearchTextFieldWillBecomeInactive:(id)arg1;
+- (void)emojiSearchTextFieldDidBecomeActive:(id)arg1;
+- (void)emojiSearchTextFieldWillBecomeActive:(id)arg1;
 - (_Bool)cellShouldScrollWhenSelectedAtIndexPath:(id)arg1;
 - (_Bool)keySupportsVariants:(id)arg1;
 - (void)resetSelectionIfNeeded;
@@ -75,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)preferencesControllerChanged:(id)arg1;
 - (void)updateMemojiPreference;
 - (void)updatePreferencesForSelectedEmoji:(id)arg1;
+- (long long)keyCodeForCurrentEnvironmentFromKeyCode:(long long)arg1;
 - (void)insertSelectedEmoji:(id)arg1 shouldDismissPopover:(_Bool)arg2;
 - (void)updateHighlightForIndexPath:(id)arg1 scrollIfNeeded:(_Bool)arg2 animateScroll:(_Bool)arg3;
 - (_Bool)handleSelectionEvent:(id)arg1;

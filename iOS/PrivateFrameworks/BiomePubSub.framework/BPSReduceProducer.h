@@ -36,6 +36,7 @@
 @property(copy, nonatomic) CDUnknownBlockType reduce; // @synthesize reduce=_reduce;
 @property(retain, nonatomic) id initial; // @synthesize initial=_initial;
 @property(retain, nonatomic) id result; // @synthesize result=_result;
+- (id)newBookmark;
 - (id)upstreamSubscriptions;
 - (void)requestDemand:(long long)arg1;
 - (void)cancel;

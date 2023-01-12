@@ -11,6 +11,8 @@
 }
 
 + (void)registerXPCListeners;
++ (void)_registerTemporalClusterListener;
++ (void)_registerSocialHighlightListener;
 + (void)_registerStringDonationListener;
 + (void)_registerInternalListener;
 + (void)_registerConfigListener;

@@ -13,7 +13,7 @@
 #import <Sleep/NAHashable-Protocol.h>
 #import <Sleep/NSMutableCopying-Protocol.h>
 
-@class NSDate, NSNumber, NSSet, NSString;
+@class NSDate, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface HKSPAlarmConfiguration : NSObject <BSDescriptionProviding, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
 {
@@ -27,8 +27,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)testAlarmConfigurationWithAllPropertiesSet;
-+ (id)testAlarmConfiguration;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSNumber *soundVolume; // @synthesize soundVolume=_soundVolume;
 @property(readonly, copy, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
@@ -62,6 +60,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly) Class superclass;
 
 @end

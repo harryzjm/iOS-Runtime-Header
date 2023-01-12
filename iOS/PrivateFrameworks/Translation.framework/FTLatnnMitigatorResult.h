@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_3221f49f)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_3221f49f)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) double score;
 @property(readonly, nonatomic) double threshold;
 @property(readonly, nonatomic) NSString *version;

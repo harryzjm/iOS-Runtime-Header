@@ -19,18 +19,10 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _invalidationHandler;
     NSArray *_globalSupplementaryItems;
     CDUnknownBlockType _decorationRegistrationHandler;
+    CDUnknownBlockType _sectionSolveErrorHandler;
 }
 
-+ (id)defaultOptions;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType decorationRegistrationHandler; // @synthesize decorationRegistrationHandler=_decorationRegistrationHandler;
-@property(copy, nonatomic) NSArray *globalSupplementaryItems; // @synthesize globalSupplementaryItems=_globalSupplementaryItems;
-@property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property(nonatomic) _Bool roundsToScreenScale; // @synthesize roundsToScreenScale=_roundsToScreenScale;
-@property(nonatomic) _Bool layoutRTL; // @synthesize layoutRTL=_layoutRTL;
-@property(retain, nonatomic) Class invalidationContextClass; // @synthesize invalidationContextClass=_invalidationContextClass;
-@property(retain, nonatomic) Class layoutAttributesClass; // @synthesize layoutAttributesClass=_layoutAttributesClass;
-@property(nonatomic) double interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
 
 @end
 

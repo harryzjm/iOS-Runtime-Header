@@ -8,23 +8,27 @@
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
-#import <Vision/VNRequestRevisionProviding-Protocol.h>
+#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
+#import <Vision/VNRequestSpecifying-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString, VNRequestSpecifier;
 
-@interface VNClassificationCustomHierarchy : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
+@interface VNClassificationCustomHierarchy : NSObject <VNOriginatingRequestSpecifierProviding, NSCopying, NSSecureCoding, VNRequestSpecifying>
 {
     shared_ptr_eb20c8f2 _hierarchicalModel_DO_NOT_ACCESS_DIRECTLY;
     NSDictionary *_additionalRelationships;
-    unsigned long long _sceneClassificationRequestRevision;
-    unsigned long long _sceneClassificationRequestDetectionLevel;
+    VNRequestSpecifier *_originatingRequestSpecifier;
+    unsigned long long _originatingRequestDetectionLevel;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)customHierarchyForRequest:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly) VNRequestSpecifier *originatingRequestSpecifier;
 @property(readonly, nonatomic) unsigned long long requestRevision;
+- (Class)requestClassAndReturnError:(id *)arg1;
+@property(readonly, copy) NSString *requestClassName;
 - (unsigned long long)requestDetectionLevel;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -38,7 +42,7 @@
 - (_Bool)_addRelationships:(id)arg1 error:(id *)arg2;
 - (shared_ptr_eb20c8f2)newHierarchicalModelAndReturnError:(id *)arg1;
 - (shared_ptr_eb20c8f2)hierarchicalModelAndReturnError:(id *)arg1;
-- (id)initWithSceneClassificationRequestRevision:(unsigned long long)arg1 detectionLevel:(unsigned long long)arg2;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 detectionLevel:(unsigned long long)arg2;
 
 @end
 

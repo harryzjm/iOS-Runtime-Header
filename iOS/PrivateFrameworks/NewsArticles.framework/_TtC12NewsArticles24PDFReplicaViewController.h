@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *pdfView;
     MISSING_TYPE *coverViewManager;
+    MISSING_TYPE *keyCommandManager;
     MISSING_TYPE *loadingIndicatorProvider;
     MISSING_TYPE *pinchRecognizer;
     MISSING_TYPE *loadingStateMachine;
+    MISSING_TYPE *paywallPreparationEventManager;
 }
 
 - (void).cxx_destruct;

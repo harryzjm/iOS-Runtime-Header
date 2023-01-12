@@ -8,7 +8,7 @@
 
 #import <IMDaemonCore/INSpeakable-Protocol.h>
 
-@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
+@class IMDAccount, IMDService, IMDServiceSession, IMMessageItem, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSRecursiveLock, NSString;
 
 @interface IMDChat : NSObject <INSpeakable>
 {
@@ -42,13 +42,12 @@
     long long _isFiltered;
     _Bool _isBlackholed;
     _Bool _hasHadSuccessfulQuery;
+    long long _autoDonationBehavior;
+    NSDate *_autoDonationBehaviorLastModificationDate;
     _Bool _wasReportedAsJunk;
     _Bool _meCardUpdated;
     NSString *_cloudKitRecordID;
-    NSString *_srCloudKitRecordID;
     NSString *_lastSeenMessageGuid;
-    NSString *_srServerChangeToken;
-    long long _srCloudKitSyncState;
     NSDictionary *_nicknamesForParticipants;
     unsigned long long _numMessagesSent;
 }
@@ -60,10 +59,7 @@
 @property(readonly, nonatomic) NSDictionary *nicknamesForParticipants; // @synthesize nicknamesForParticipants=_nicknamesForParticipants;
 @property _Bool pendingENGroupParticipantUpdate; // @synthesize pendingENGroupParticipantUpdate=_pendingENGroupParticipantUpdate;
 @property _Bool createEngramGroupOnMessageSend; // @synthesize createEngramGroupOnMessageSend=_createEngramGroupOnMessageSend;
-@property long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
-@property(copy) NSString *srServerChangeToken; // @synthesize srServerChangeToken=_srServerChangeToken;
 @property(readonly, copy) NSString *lastSeenMessageGuid; // @synthesize lastSeenMessageGuid=_lastSeenMessageGuid;
-@property(copy) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
 @property(copy) NSString *cloudKitRecordID; // @synthesize cloudKitRecordID=_cloudKitRecordID;
 - (void)meCardHasUpdated;
 - (void)updateNicknamesForParticipants:(id)arg1;
@@ -81,6 +77,10 @@
 - (void)updateGroupPhotoGuid:(id)arg1;
 - (id)groupPhotoGuid;
 - (void)updateHasHadSuccessfulQuery:(_Bool)arg1;
+- (void)updateIsEmergencyChat:(_Bool)arg1;
+- (_Bool)isEmergencyChat;
+- (void)updateLastMessageGUID:(id)arg1 forLanguageCode:(id)arg2;
+- (id)lastTranslatableMessageGUIDWithLanguageCode:(id)arg1;
 - (void)updateLastSeenMessageGuidIfNeeded:(id)arg1;
 - (id)lastSeenMessageGUID;
 - (int)messageHandshakeState;
@@ -107,12 +107,9 @@
 - (void)updateLastAddressedHandle:(id)arg1 forceUpdate:(_Bool)arg2;
 - (void)updateLastAddressedHandle:(id)arg1;
 - (void)resetCKSyncState;
-- (void)updateSrCloudKitRecordID:(id)arg1;
 - (void)updateCloudKitRecordID:(id)arg1;
 - (void)updateOriginalGroupID:(id)arg1;
-- (void)updateSRCloudKitSyncState:(long long)arg1;
 - (void)updateCloudKitSyncState:(long long)arg1;
-- (void)updateSRServerChangeToken:(id)arg1;
 - (void)updateServerChangeToken:(id)arg1;
 - (void)updateLastReadMessageTimeStampIfNeeded:(long long)arg1;
 - (void)updateEngroupCreationDate:(long long)arg1;
@@ -143,6 +140,7 @@
 @property(readonly, retain) IMDService *service;
 @property(readonly, retain) IMDAccount *account;
 @property(copy) NSString *accountID;
+- (void)recoverParticipantsIfNeeded;
 - (void)resetParticipants:(id)arg1;
 - (void)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;
@@ -169,6 +167,10 @@
 @property(copy, nonatomic) NSString *serverChangeToken;
 @property(copy, setter=setEngramID:) NSString *engramID;
 @property(copy, setter=setGroupID:) NSString *groupID;
+- (_Bool)setAutoDonationBehavior:(long long)arg1 lastModificationDate:(id)arg2;
+- (void)_setAutoDonationBehavior:(long long)arg1 lastModificationDate:(id)arg2;
+@property(readonly, nonatomic) NSDate *autoDonationBehaviorLastModificationDate;
+@property(readonly, nonatomic) long long autoDonationBehavior;
 @property(copy) NSString *displayName;
 @property(copy) NSString *roomName;
 @property(copy) NSArray *participants;
@@ -176,17 +178,21 @@
 @property(copy) NSString *chatIdentifier;
 @property(copy) NSString *guid;
 - (void)dealloc;
-- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(long long)arg14 hasHadSuccessfulQuery:(_Bool)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 srServerChangeToken:(id)arg22 srCloudKitSyncState:(long long)arg23 cloudKitRecordID:(id)arg24 srCloudKitRecordID:(id)arg25 isBlackholed:(_Bool)arg26;
+- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(long long)arg14 hasHadSuccessfulQuery:(_Bool)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 cloudKitRecordID:(id)arg22 isBlackholed:(_Bool)arg23 autoDonationBehavior:(long long)arg24 autoDonationBehaviorLastModificationDate:(id)arg25;
 @property(readonly, nonatomic) NSArray *alternativeSpeakableMatches;
 @property(readonly, nonatomic) NSString *vocabularyIdentifier;
 @property(readonly, nonatomic) NSString *pronunciationHint;
 @property(readonly, nonatomic) NSString *spokenPhrase;
 - (unsigned long long)powerLogConversationType;
-- (_Bool)applyChangesUsingCKRecord:(id)arg1 isUsingStingRay:(_Bool)arg2;
-- (id)initWithCKRecord:(id)arg1 isUsingStingRay:(_Bool)arg2;
-- (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2 isUsingStingRay:(_Bool)arg3;
+- (_Bool)__im_ff_isInterstellarEnabled;
+- (_Bool)updateDonationStateWithSyndicationAction:(id)arg1;
+- (_Bool)__im_ff_isInterstellarEnabled;
 - (id)recordName;
-- (id)_copyCKRecordFromExistingCKMetadataIsUsingStringRay:(_Bool)arg1 zoneID:(id)arg2 salt:(id)arg3;
+- (_Bool)applyChangesUsingCKRecord:(id)arg1;
+- (id)initWithCKRecord:(id)arg1;
+- (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
+- (_Bool)_addGroupPhotoToCKRecord:(id)arg1;
+- (id)_copyCKRecordFromExistingCKMetadataWithZoneID:(id)arg1 salt:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

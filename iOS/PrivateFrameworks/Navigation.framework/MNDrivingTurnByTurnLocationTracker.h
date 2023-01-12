@@ -28,17 +28,12 @@
 - (_Bool)trafficIncidentAlertUpdaterIsCurrentlySpeaking:(id)arg1;
 - (double)trafficIncidentAlertUpdaterTimeUntilNextAnnouncement:(id)arg1;
 - (double)trafficIncidentAlertUpdaterTimeSinceLastAnnouncement:(id)arg1;
-- (double)trafficIncidentAlertUpdaterRemainingTimeOnRoute:(id)arg1;
 - (void)trafficIncidentAlertUpdater:(id)arg1 didSwitchToNewRoute:(id)arg2 forAlert:(id)arg3;
 - (void)trafficIncidentAlertUpdater:(id)arg1 updatedAlert:(id)arg2;
 - (void)trafficIncidentAlertUpdater:(id)arg1 didDismissAlert:(id)arg2 withReroute:(_Bool)arg3;
 - (void)trafficIncidentAlertUpdater:(id)arg1 invalidatedAlert:(id)arg2;
 - (void)trafficIncidentAlertUpdater:(id)arg1 receivedAlert:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
-- (id)userLocationForUpdateManager:(id)arg1;
-- (_Bool)wantsETAUpdates;
 - (void)_updateForAlternateRoutes:(id)arg1;
-- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
-- (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
 - (id)_alternateRouteForOffRouteLocation:(id)arg1;
 - (_Bool)_allowSwitchToTransportType:(int)arg1 forLocation:(id)arg2;
 - (int)_detectedMotionForLocation:(id)arg1;
@@ -48,6 +43,8 @@
 - (id)_overrideLocationForLocation:(id)arg1;
 - (id)_newMapMatcherForRoute:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
+- (void)updateForETAUResponse:(id)arg1;
+- (void)updateRequestForETAUpdate:(id)arg1;
 - (void)stopTracking;
 - (void)startTracking;
 - (_Bool)shouldProjectAlongRoute;

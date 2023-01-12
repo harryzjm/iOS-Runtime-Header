@@ -47,7 +47,7 @@
 - (void)formattedDataWithFileURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)isURLValid:(id)arg1;
 - (id)formattedDataForPath:(id)arg1 identifier:(id)arg2 attributionIdentifier:(id)arg3 priority:(float)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)formattedDataForRequest:(id)arg1 identifier:(id)arg2 attributionIdentifier:(id)arg3 priority:(float)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)formattedDataForRequest:(id)arg1 identifier:(id)arg2 attributionIdentifier:(id)arg3 requestType:(id)arg4 priority:(float)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)saveFileURL:(id)arg1 identifier:(id)arg2 fileSize:(unsigned long long)arg3 lastModified:(id)arg4 dataCache:(id)arg5;
 - (id)newDataCache;
 - (void)removeDataCache:(id)arg1 updateCache:(_Bool)arg2;

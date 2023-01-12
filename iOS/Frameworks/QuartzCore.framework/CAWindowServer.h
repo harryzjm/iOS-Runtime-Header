@@ -25,6 +25,8 @@
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
 - (unsigned int)clientPortOfContextId:(unsigned int)arg1;
 - (id)description;
+@property CDUnknownBlockType slotDeletionCallback;
+- (_Bool)isSlotValid:(unsigned int)arg1;
 - (id)insecureProcessIds;
 - (id)secureModeViolations;
 @property(getter=isSecure) _Bool secure;

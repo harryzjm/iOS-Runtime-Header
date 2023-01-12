@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <VoiceShortcutClient/NSCopying-Protocol.h>
 #import <VoiceShortcutClient/NSSecureCoding-Protocol.h>
 #import <VoiceShortcutClient/WFGlyphDrawableItem-Protocol.h>
 
 @class NSString;
 
-@interface VCConfiguredSleepWorkflow : NSObject <WFGlyphDrawableItem, NSSecureCoding, NSCopying>
+@interface VCConfiguredSleepWorkflow <WFGlyphDrawableItem, NSSecureCoding, NSCopying>
 {
     unsigned short _glyphCharacter;
     NSString *_name;
     NSString *_bundleIdentifierForDisplay;
     NSString *_summaryString;
-    NSString *_identifier;
     NSString *_actionIdentifier;
     struct CGImage *_iconImage;
     double _iconScale;
@@ -32,7 +29,6 @@
 @property(readonly, nonatomic) double iconScale; // @synthesize iconScale=_iconScale;
 @property(readonly, nonatomic) struct CGImage *iconImage; // @synthesize iconImage=_iconImage;
 @property(readonly, copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
-@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSString *summaryString; // @synthesize summaryString=_summaryString;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifierForDisplay; // @synthesize bundleIdentifierForDisplay=_bundleIdentifierForDisplay;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;

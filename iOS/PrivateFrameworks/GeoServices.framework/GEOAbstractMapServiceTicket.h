@@ -6,7 +6,7 @@
 
 #import <GeoServices/GEOMapServiceTicket-Protocol.h>
 
-@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
+@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEOPDPlaceSummaryLayoutMetadata, GEORelatedSearchSuggestion, GEOResolvedItem, GEOResultRefinementGroup, GEOSearchAutoRedoThreshold, GEOSearchSectionList, NSArray, NSDictionary, NSString;
 
 @interface GEOAbstractMapServiceTicket <GEOMapServiceTicket>
 {
@@ -31,9 +31,21 @@
     NSArray *_relatedEntitySections;
     NSArray *_collectionResults;
     NSArray *_publisherResults;
+    NSArray *_dotPlaces;
+    GEOSearchAutoRedoThreshold *_searchAutoRedoThreshold;
+    GEOPDPlaceSummaryLayoutMetadata *_placeSummaryLayoutMetadata;
+    GEOResultRefinementGroup *_resultRefinementGroup;
+    GEOSearchSectionList *_searchSectionList;
+    _Bool _disableAdditionalViewportPadding;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool disableAdditionalViewportPadding; // @synthesize disableAdditionalViewportPadding=_disableAdditionalViewportPadding;
+@property(readonly, nonatomic) GEOSearchSectionList *searchSectionList; // @synthesize searchSectionList=_searchSectionList;
+@property(readonly, nonatomic) GEOResultRefinementGroup *resultRefinementGroup; // @synthesize resultRefinementGroup=_resultRefinementGroup;
+@property(readonly, nonatomic) GEOPDPlaceSummaryLayoutMetadata *placeSummaryLayoutMetadata; // @synthesize placeSummaryLayoutMetadata=_placeSummaryLayoutMetadata;
+@property(readonly, nonatomic) GEOSearchAutoRedoThreshold *searchAutoRedoThreshold; // @synthesize searchAutoRedoThreshold=_searchAutoRedoThreshold;
+@property(readonly, nonatomic) NSArray *dotPlaces; // @synthesize dotPlaces=_dotPlaces;
 @property(readonly, nonatomic) NSArray *publisherResults; // @synthesize publisherResults=_publisherResults;
 @property(readonly, nonatomic) NSArray *collectionResults; // @synthesize collectionResults=_collectionResults;
 @property(readonly, nonatomic) NSArray *relatedEntitySections; // @synthesize relatedEntitySections=_relatedEntitySections;

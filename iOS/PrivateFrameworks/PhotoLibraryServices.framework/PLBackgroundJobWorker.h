@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLBackgroundJobWorkerProtocol-Protocol.h>
 
-@class NSMutableArray, NSString, PLPhotoLibrary;
+@class NSMutableArray, NSString, PLBackgroundJobStatusCenter, PLPhotoLibraryBundle;
 @protocol OS_dispatch_queue;
 
 @interface PLBackgroundJobWorker : NSObject <PLBackgroundJobWorkerProtocol>
@@ -23,29 +23,35 @@
     NSObject<OS_dispatch_queue> *_processingQueue;
     struct os_unfair_lock_s _lock;
     _Bool _shouldStop;
-    unsigned long long _workerPriority;
+    long long _workerPriority;
     NSString *_workerName;
     NSString *_workerDetailedName;
-    PLPhotoLibrary *_photoLibrary;
+    PLBackgroundJobStatusCenter *_statusCenter;
+    PLPhotoLibraryBundle *_libraryBundle;
 }
 
-+ (id)workerWithLibrary:(id)arg1;
++ (_Bool)supportsWellKnownPhotoLibraryIdentifier:(long long)arg1;
++ (id)workerWithLibraryBundle:(id)arg1;
++ (void)workerDidFinishWorkingOnItemsInLibrary:(id)arg1;
++ (void)workerWillStartWorkingOnItemsInLibrary:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(readonly, nonatomic) PLPhotoLibraryBundle *libraryBundle; // @synthesize libraryBundle=_libraryBundle;
+@property(nonatomic) __weak PLBackgroundJobStatusCenter *statusCenter; // @synthesize statusCenter=_statusCenter;
 @property(readonly, nonatomic) NSString *workerDetailedName; // @synthesize workerDetailedName=_workerDetailedName;
 @property(readonly, nonatomic) NSString *workerName; // @synthesize workerName=_workerName;
-@property(readonly, nonatomic) unsigned long long workerPriority; // @synthesize workerPriority=_workerPriority;
-- (void)stopWorkingOnManagedObjectID:(id)arg1;
-- (void)performWorkOnManagedObjectID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)managedObjectIDsNeedingProcessing;
-- (_Bool)hasPendingJobs;
+@property(readonly, nonatomic) long long workerPriority; // @synthesize workerPriority=_workerPriority;
+- (void)stopWorkingOnItem:(id)arg1;
+- (void)performWorkOnItem:(id)arg1 inLibrary:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)workItemsNeedingProcessingInLibrary:(id)arg1;
 - (_Bool)isInterruptible;
 - (void)stopAllWork;
-- (void)startWorkWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_handleAllJobsComplete;
-- (void)_processNextManagedObject;
+- (void)startWorkInLibrary:(id)arg1 withWorkItemsNeedingProcessing:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (_Bool)hasPendingJobsInLibrary:(id)arg1;
+- (void)_handleAllJobsCompleteInLibrary:(id)arg1;
+- (void)_processNextManagedObjectInLibrary:(id)arg1 continueRunning:(_Bool)arg2;
+- (id)redactedDescription;
 @property(readonly, copy) NSString *description;
-- (id)initWithPriority:(unsigned long long)arg1 photoLibrary:(id)arg2;
+- (id)initWithPriority:(long long)arg1 libraryBundle:(id)arg2;
 - (id)init;
 
 // Remaining properties

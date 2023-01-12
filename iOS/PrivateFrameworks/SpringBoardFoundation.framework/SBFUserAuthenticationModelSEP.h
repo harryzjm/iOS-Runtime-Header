@@ -17,6 +17,7 @@
     double _unblockTime;
     _Bool _permanentlyBlocked;
     _Bool _pendingWipe;
+    _Bool _userRequestedEraseEnabled;
     SBSecurityDefaults *_securityDefaults;
     MCProfileConnection *_profileConnection;
     id <SBFUserAuthenticationModelDelegate> _delegate;
@@ -30,6 +31,7 @@
 - (id)descriptionBuilder;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) double timeUntilUnblockedSinceReferenceDate;
+@property(readonly, nonatomic, getter=isUserRequestedEraseEnabled) _Bool userRequestedEraseEnabled;
 @property(readonly, nonatomic, getter=isPermanentlyBlocked) _Bool permanentlyBlocked;
 @property(readonly, nonatomic, getter=isTemporarilyBlocked) _Bool temporarilyBlocked;
 - (void)noteNewMkbDeviceLockState:(id)arg1;

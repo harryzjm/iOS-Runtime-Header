@@ -56,7 +56,9 @@
 - (void)dumpDebug;
 - (void)dumpDebug:(id)arg1;
 - (void)clearVersionOverride;
+- (id)debugString:(_Bool)arg1 prefix:(id)arg2;
 - (id)debugString:(_Bool)arg1;
+- (void)dumpWithVerbosity:(_Bool)arg1 prefix:(id)arg2 logType:(unsigned char)arg3;
 @property(readonly, copy) NSString *description;
 - (id)defaultValueForPropertyNamed:(id)arg1 isSet:(_Bool *)arg2;
 - (void)setPropertyIfNotNil:(id)arg1 named:(id)arg2;
@@ -86,13 +88,14 @@
 - (_Bool)_validateType:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) NSSet *dependentUUIDs; // @dynamic dependentUUIDs;
 @property(readonly, nonatomic) _Bool bsoIgnoreModel;
-@property(retain, nonatomic) HMFVersion *bsoIgnoredBefore;
+@property(copy, nonatomic) HMFVersion *bsoIgnoredBefore;
 - (id)backedObjectWithParent:(id)arg1 error:(id *)arg2;
 - (id)initWithUUID:(id)arg1 parentUUID:(id)arg2;
 - (id)initWithUUID:(id)arg1;
 - (id)initWithObjectChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 - (id)initWithVersion:(id)arg1 changeType:(unsigned long long)arg2 uuid:(id)arg3 parentUUID:(id)arg4;
 - (id)typeNameForDebug;
+- (id)convertToLegacyV4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

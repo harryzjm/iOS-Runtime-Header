@@ -20,8 +20,8 @@
 - (void)setDesiredIdleTimerSettings:(SBUIRemoteAlertIdleTimerSettings *)arg1;
 - (void)setDesiredAutoLockDuration:(double)arg1;
 - (void)setIdleTimerDisabled:(_Bool)arg1 forReason:(NSString *)arg2;
-- (void)setStyleOverridesToCancel:(int)arg1 animationSettings:(BSAnimationSettings *)arg2;
-- (void)setDesiredStatusBarStyleOverrides:(int)arg1;
+- (void)setStyleOverridesToCancel:(unsigned long long)arg1 animationSettings:(BSAnimationSettings *)arg2;
+- (void)setDesiredStatusBarStyleOverrides:(unsigned long long)arg1;
 - (void)setSwipeDismissalStyle:(long long)arg1;
 - (void)setDismissalAnimationStyle:(long long)arg1;
 - (void)setAllowsAlertStacking:(_Bool)arg1;

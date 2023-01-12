@@ -11,6 +11,7 @@
 @interface AKTrustedPhoneNumber : NSObject
 {
     NSNumber *_identifier;
+    NSString *_number;
     NSString *_numberWithDialCode;
     NSString *_obfuscatedNumber;
     NSString *_pushMode;
@@ -20,6 +21,7 @@
 @property(retain, nonatomic) NSString *pushMode; // @synthesize pushMode=_pushMode;
 @property(retain, nonatomic) NSString *obfuscatedNumber; // @synthesize obfuscatedNumber=_obfuscatedNumber;
 @property(retain, nonatomic) NSString *numberWithDialCode; // @synthesize numberWithDialCode=_numberWithDialCode;
+@property(retain, nonatomic) NSString *number; // @synthesize number=_number;
 @property(retain, nonatomic) NSNumber *identifier; // @synthesize identifier=_identifier;
 - (id)description;
 - (id)initWithJSONDictionary:(id)arg1;

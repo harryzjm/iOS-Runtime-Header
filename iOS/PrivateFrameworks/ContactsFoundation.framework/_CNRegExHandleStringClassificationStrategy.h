@@ -14,9 +14,7 @@
 {
 }
 
-+ (id)makeEmailRegex;
 + (_Bool)doesStringLookLikeEmailAddress:(id)arg1;
-+ (id)makePhoneNumberRegex;
 + (_Bool)doesStringLookLikePhoneNumber:(id)arg1;
 - (unsigned long long)classificationOfHandleString:(id)arg1;
 

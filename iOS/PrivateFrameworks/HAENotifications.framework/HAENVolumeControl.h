@@ -14,10 +14,17 @@
     _Bool _haenFeatureEnabled;
     _Bool _mxVolumeLimitOn;
     _Bool _wiredHeadphoneConnected;
+    float _targetVolume80dB;
+    float _targetVolume74dB;
+    CDStruct_597f0ab2 _stats;
     struct os_unfair_lock_s _lock;
+    _Bool _lowerHeadphoneVolumeAtNextSession;
 }
 
 + (id)sharedInstance;
+- (CDStruct_597f0ab2)getStats;
+- (void)setDeviceInfo:(id)arg1;
+- (_Bool)PME_enabled;
 - (void)wiredHeadphoneConnected:(_Bool)arg1;
 - (void)_updateMXVolumeLimit;
 - (void)updateMXVolumeLimitStatus;
@@ -27,6 +34,7 @@
 - (void)_fetchCategory:(const struct __CFString *)arg1 routeInfo:(CDStruct_adee1754 *)arg2;
 - (void)limitVolumeTo:(float)arg1 category:(const struct __CFString *)arg2 route:(CDStruct_adee1754 *)arg3 actionResult:(unsigned int *)arg4;
 - (unsigned int)limitVolume:(id)arg1;
+- (void)applyVolumeLoweringAtNextSession;
 - (float)getCurrentVolumeForCategory:(const struct __CFString *)arg1 route:(CDStruct_adee1754 *)arg2;
 - (float)computeLimitedVolume:(float)arg1 event:(id)arg2 action:(unsigned int *)arg3;
 - (id)init;

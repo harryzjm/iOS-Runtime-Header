@@ -8,18 +8,18 @@
 
 #import <Vision/VNOperationPointsProviding-Protocol.h>
 
-@class _VNImageAnalyzerMultiDetectorSceneOperationPointsCache;
+@class VNRequestSpecifier, _VNImageAnalyzerMultiDetectorSceneOperationPointsCache;
 
 __attribute__((visibility("hidden")))
 @interface _VNImageAnalyzerMultiDetectorSceneOperationPointsProvider : NSObject <VNOperationPointsProviding>
 {
     _VNImageAnalyzerMultiDetectorSceneOperationPointsCache *_operationPointsCache;
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
 }
 
 - (void).cxx_destruct;
 - (id)operationPointsAndReturnError:(id *)arg1;
-- (id)initWithOperationPointsCache:(id)arg1 requestRevision:(unsigned long long)arg2;
+- (id)initWithOperationPointsCache:(id)arg1 originatingRequestSpecifier:(id)arg2;
 
 @end
 

@@ -14,6 +14,7 @@
 + (void)validateCameraFile:(id)arg1;
 + (id)assetFileForFile:(id)arg1 source:(id)arg2;
 - (void).cxx_destruct;
+- (id)nameKey;
 - (id)assetId;
 - (id)originatingAssetID;
 - (void)copyToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -24,13 +25,12 @@
 - (id)createMetadataFromProperties:(id)arg1;
 - (id)duration;
 - (id)spatialOverCaptureIdentifier;
-- (id)mediaGroupId;
+- (id)livePhotoPairingIdentifier;
 - (int)burstPickType;
 - (id)burstUUID;
-- (struct CGSize)imageSize;
-- (id)exifImageDate;
+- (struct CGSize)unorientedPixelSize;
+- (id)creationDate;
 - (_Bool)isViewable;
-- (_Bool)hasAdjustments;
 - (_Bool)isTagged;
 - (_Bool)performAdditionalLivePhotoChecksWithImageAsset:(id)arg1;
 - (_Bool)isBase;
@@ -46,7 +46,7 @@
 - (_Bool)canPreserveFolderStructure;
 - (id)representedObject;
 - (_Bool)containsDateKey:(id)arg1;
-- (id)initWithSource:(id)arg1 cameraFile:(id)arg2 uti:(id)arg3 supportedType:(unsigned char)arg4;
+- (id)initWithSource:(id)arg1 cameraFile:(id)arg2 type:(id)arg3 supportedMediaType:(unsigned char)arg4;
 
 @end
 

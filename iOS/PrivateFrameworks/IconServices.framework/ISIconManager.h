@@ -6,25 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
-@protocol ISIconCache, OS_dispatch_queue;
+@class ISIconCache, NSHashTable, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface ISIconManager : NSObject
 {
-    struct os_unfair_lock_s _observerLock;
-    id _iconCache;
-    id _iconRegistry;
-    id _observers;
-    id _internalQueue;
+    struct os_unfair_lock_s _lock;
+    ISIconCache *_iconCache;
+    NSHashTable *_iconRegistry;
+    NSHashTable *_observers;
+    NSObject<OS_dispatch_queue> *_internalQueue;
+    NSXPCConnection *_connection;
 }
 
++ (id)serviceName;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain) NSHashTable *iconRegistry; // @synthesize iconRegistry=_iconRegistry;
-@property(readonly) id <ISIconCache> iconCache; // @synthesize iconCache=_iconCache;
+@property(retain) ISIconCache *iconCache; // @synthesize iconCache=_iconCache;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)findOrRegisterIcon:(id)arg1;

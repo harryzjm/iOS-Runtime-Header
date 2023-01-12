@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSMutableSet;
+@class CADisplayLink, NSDate, NSMutableSet;
 
 @interface CKImageAnimationTimer : NSObject
 {
@@ -14,10 +14,12 @@
     _Bool _shouldStopWhenBackgrounded;
     NSMutableSet *_observers;
     CADisplayLink *_displayLink;
+    NSDate *_startTime;
 }
 
 + (id)sharedTimer;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property(nonatomic) _Bool shouldStopWhenBackgrounded; // @synthesize shouldStopWhenBackgrounded=_shouldStopWhenBackgrounded;
 @property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property(retain, nonatomic) NSMutableSet *observers; // @synthesize observers=_observers;
@@ -28,6 +30,7 @@
 - (unsigned long long)frame;
 - (id)init;
 - (void)dealloc;
+- (_Bool)__im_ff_psEnabled;
 
 @end
 

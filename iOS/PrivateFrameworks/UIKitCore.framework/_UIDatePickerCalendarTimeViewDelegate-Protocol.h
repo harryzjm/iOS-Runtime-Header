@@ -6,9 +6,10 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class _UIDatePickerCalendarTime, _UIDatePickerCalendarTimeView;
+@class UIDatePicker, _UIDatePickerCalendarTime, _UIDatePickerCalendarTimeView;
 
 @protocol _UIDatePickerCalendarTimeViewDelegate <NSObject>
+- (UIDatePicker *)createDatePickerForTimeView:(_UIDatePickerCalendarTimeView *)arg1;
 - (void)timeViewDidEndEditing:(_UIDatePickerCalendarTimeView *)arg1;
 - (void)timeViewDidBeginEditing:(_UIDatePickerCalendarTimeView *)arg1;
 - (void)timeViewWillBecomeFirstResponder:(_UIDatePickerCalendarTimeView *)arg1;

@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <ClassroomKit/CRKFeatureDataStoreProtocol-Protocol.h>
+#import <ClassroomKit/CRKSharedFeatureDataStoreProviding-Protocol.h>
 
 @class NSSet, NSString;
 
-@interface CRKFeatureDataStore_iOS : NSObject <CRKFeatureDataStoreProtocol>
+@interface CRKFeatureDataStore_iOS : NSObject <CRKSharedFeatureDataStoreProviding, CRKFeatureDataStoreProtocol>
 {
 }
 

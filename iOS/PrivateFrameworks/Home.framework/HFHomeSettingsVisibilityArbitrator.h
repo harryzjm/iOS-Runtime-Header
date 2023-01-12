@@ -21,6 +21,7 @@
 }
 
 + (void)initialize;
++ (id)homeManagerConfigurationWithExpandedOptions:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) int homeKitPreferencesChangeNotifyToken; // @synthesize homeKitPreferencesChangeNotifyToken=_homeKitPreferencesChangeNotifyToken;
 @property(nonatomic) unsigned long long homeAppInstallState; // @synthesize homeAppInstallState=_homeAppInstallState;

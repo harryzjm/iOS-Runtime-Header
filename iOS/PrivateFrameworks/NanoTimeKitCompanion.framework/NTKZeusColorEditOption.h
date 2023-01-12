@@ -4,19 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NTKZeusColorEditOption
+#import <NanoTimeKitCompanion/NTKPigmentEditOptionConvertible-Protocol.h>
+
+@class NSString;
+
+@interface NTKZeusColorEditOption <NTKPigmentEditOptionConvertible>
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)domain;
++ (unsigned long long)colorCodeForColorName:(id)arg1;
++ (id)colorNameForColorValue:(unsigned long long)arg1;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)__orderedValuesForDevice:(id)arg1;
 + (id)_orderedValuesForDevice:(id)arg1;
 + (id)optionWithColor:(unsigned long long)arg1 forDevice:(id)arg2;
+- (id)pigmentEditOption;
+- (long long)swatchStyle;
 - (id)_valueToFaceBundleStringDict;
+- (id)localizedName;
 - (_Bool)optionExistsInDevice:(id)arg1;
 @property(readonly, nonatomic) unsigned long long color;
-- (long long)swatchStyle;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

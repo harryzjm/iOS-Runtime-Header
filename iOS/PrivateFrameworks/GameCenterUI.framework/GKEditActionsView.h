@@ -17,6 +17,7 @@
     NSArray *_actionButtons;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *actionButtons; // @synthesize actionButtons=_actionButtons;
 @property(retain, nonatomic) NSArray *editActionConstraints; // @synthesize editActionConstraints=_editActionConstraints;
 @property(nonatomic) GKCollectionViewCell *cell; // @synthesize cell=_cell;
@@ -25,7 +26,6 @@
 - (void)didTouchMoreEditAction:(id)arg1;
 - (void)didTouchEditAction:(id)arg1;
 - (void)prepareActionButtons;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 cell:(id)arg2;
 
 @end

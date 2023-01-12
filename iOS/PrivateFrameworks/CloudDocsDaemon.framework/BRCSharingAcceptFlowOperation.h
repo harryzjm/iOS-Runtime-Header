@@ -11,7 +11,6 @@
 @class BRCAccountSession, BRCAppLibrary, BRCClientZone, BRCItemID, BRCXPCClient, CKRecordID, CKShareMetadata, NSArray, NSObject, NSString, NSURL;
 @protocol BRCUserNotifier, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingAcceptFlowOperation <LSOpenResourceOperationDelegate, BRCForegroundClient, BRCOperationSubclass>
 {
     id <BRCUserNotifier> _userNotification;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
     NSString *_linkFilename;
     BRCXPCClient *_xpcClient;
     NSObject<OS_dispatch_queue> *_queue;
+    _Bool _skipOpenInApp;
 }
 
 + (void)_openShareURLInWebBrowser:(id)arg1 withReason:(id)arg2;
@@ -40,8 +40,10 @@ __attribute__((visibility("hidden")))
 + (id)_runningShareIDs;
 + (Class)userNotificationClass;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool skipOpenInApp; // @synthesize skipOpenInApp=_skipOpenInApp;
 - (void)_endAcceptationFlow;
 - (void)_openSharedItemIfStillNeeded;
+- (void)_setSpotlightAttribute;
 - (void)_prepareToDownloadSharedDocument;
 - (void)_locateSharedItemOnDisk;
 - (void)_waitForSharedItemToBeOnDiskOnRecipient;

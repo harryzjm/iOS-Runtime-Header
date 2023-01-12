@@ -16,8 +16,6 @@
 
 - (void).cxx_destruct;
 - (void)transformFeaturesInPlace:(id)arg1;
-- (void)_loadWithAssetData:(id)arg1;
-- (void)_loadAssetsWithNamespaceName:(id)arg1;
 - (id)initWithTrialWrapper:(id)arg1 namespaceName:(id)arg2;
 
 @end

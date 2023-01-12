@@ -10,6 +10,16 @@
 {
 }
 
++ (id)internalPredicateToIncludeReceivedNotEligibleSyndicatedAssets;
++ (id)internalPredicateToIncludeReceivedNotAnalyzedSyndicatedAssets;
++ (id)internalPredicateToIncludeOnlySentSyndicatedAssets;
++ (id)internalPredicateToIncludeOnlyReceivedSyndicatedAssets;
++ (id)internalPredicateToFilterSyndicatedAssetsEligibleForGuestInferenceProcessing;
++ (id)internalPredicateToFilterSyndicatedAssetsEligibleForCurationProcessing;
++ (id)internalPredicateToFilterGuestSyndicatedAssetsEligibleForQuestion;
++ (id)internalPredicateToFilterSyndicatedAssetsEligibleForQuestion;
++ (id)internalPredicateToFilterAssetsEligibleForSyndication;
++ (id)syndicationEligibilityForAssets:(id)arg1;
 + (double)_tabooVersion50ConfidenceThresholdForIdentifier:(unsigned int)arg1;
 + (double)_tabooVersion33ConfidenceThresholdForIdentifier:(unsigned int)arg1;
 + (_Bool)_isTabooEventIdentifier:(unsigned int)arg1;

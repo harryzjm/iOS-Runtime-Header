@@ -6,12 +6,11 @@
 
 #import <BiomePubSub/BPSPublisher-Protocol.h>
 
-@class BPSCompletion;
-@protocol BPSSubscription;
+@class BPSCompletion, BPSSubscription;
 
 @protocol BPSSubject <BPSPublisher>
 - (void)sendValue:(id)arg1;
-- (void)sendSubscription:(id <BPSSubscription>)arg1;
+- (void)sendSubscription:(BPSSubscription *)arg1;
 - (void)sendCompletion:(BPSCompletion *)arg1;
 @end
 

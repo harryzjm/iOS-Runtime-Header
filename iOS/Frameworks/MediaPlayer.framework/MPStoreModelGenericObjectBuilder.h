@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPStoreModelAlbumBuilder, MPStoreModelArtistBuilder, MPStoreModelMovieBuilder, MPStoreModelPlaylistBuilder, MPStoreModelSongBuilder, MPStoreModelTVEpisodeBuilder, MPStoreModelTVSeasonBuilder, MPStoreModelTVShowBuilder, NSMapTable;
+@class MPStoreModelAlbumBuilder, MPStoreModelArtistBuilder, MPStoreModelMovieBuilder, MPStoreModelPlaylistBuilder, MPStoreModelRecordLabelBuilder, MPStoreModelSongBuilder, MPStoreModelTVEpisodeBuilder, MPStoreModelTVSeasonBuilder, MPStoreModelTVShowBuilder, NSMapTable;
 
 @interface MPStoreModelGenericObjectBuilder
 {
@@ -17,6 +17,7 @@
     MPStoreModelTVEpisodeBuilder *_tvEpisodeBuilder;
     MPStoreModelTVSeasonBuilder *_tvSeasonBuilder;
     MPStoreModelTVShowBuilder *_tvShowBuilder;
+    MPStoreModelRecordLabelBuilder *_recordLabelBuilder;
     _Bool _shouldUsePlaylistEntry;
 }
 
@@ -24,6 +25,7 @@
 @property(nonatomic) _Bool shouldUsePlaylistEntry; // @synthesize shouldUsePlaylistEntry=_shouldUsePlaylistEntry;
 - (id)_modelObjectWithUniqueContentItemIDForModelObject:(id)arg1;
 - (id)modelObjectWithStoreItemMetadata:(id)arg1 sourceModelObject:(id)arg2 userIdentity:(id)arg3;
+- (void)setPreventStoreItemMetadataCaching:(_Bool)arg1;
 
 @end
 

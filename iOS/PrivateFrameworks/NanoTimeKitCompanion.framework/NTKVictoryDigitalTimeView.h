@@ -10,7 +10,7 @@
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
 @class CLKDevice, CLKTimeFormatter, NSString, NTKVictoryDigitsView;
-@protocol NTKVictoryDigitalTimeViewDelegate;
+@protocol NTKVictoryDigitalColorPalette, NTKVictoryDigitalTimeViewDelegate;
 
 @interface NTKVictoryDigitalTimeView : UIView <CLKTimeFormatterObserver, NTKTimeView>
 {
@@ -23,14 +23,14 @@
     _Bool _frozen;
     _Bool _invertedColors;
     unsigned long long _style;
-    unsigned long long _color;
+    id <NTKVictoryDigitalColorPalette> _colorPalette;
     id <NTKVictoryDigitalTimeViewDelegate> _delegate;
 }
 
 + (id)transitionTimingFunction;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <NTKVictoryDigitalTimeViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) unsigned long long color; // @synthesize color=_color;
+@property(retain, nonatomic) id <NTKVictoryDigitalColorPalette> colorPalette; // @synthesize colorPalette=_colorPalette;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(nonatomic) _Bool invertedColors; // @synthesize invertedColors=_invertedColors;
 @property(nonatomic, getter=isFrozen) _Bool frozen; // @synthesize frozen=_frozen;
@@ -39,7 +39,7 @@
 - (void)layoutSubviews;
 - (void)setTimeOffset:(double)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
-- (void)applyTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
+- (void)applyPopAnimationTransitionFraction:(double)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (long long)_lowerDigitAppearanceForStyle:(unsigned long long)arg1;
 - (long long)_upperDigitAppearanceForStyle:(unsigned long long)arg1;

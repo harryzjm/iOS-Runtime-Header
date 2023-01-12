@@ -6,24 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_ldap_connection;
+@protocol OS_ldap_connection, OS_nw_connection;
 
 @interface SOLDAPHelper : NSObject
 {
     _Bool _isConnected;
+    _Bool _completionCalled;
     NSObject<OS_ldap_connection> *_ldap;
+    NSObject<OS_nw_connection> *_connection;
 }
 
 - (void).cxx_destruct;
+@property _Bool completionCalled; // @synthesize completionCalled=_completionCalled;
+@property(retain) NSObject<OS_nw_connection> *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSObject<OS_ldap_connection> *ldap; // @synthesize ldap=_ldap;
 @property(nonatomic) _Bool isConnected; // @synthesize isConnected=_isConnected;
 - (void)useKerberosAuth:(struct gss_cred_id_t_desc_struct *)arg1 forSPN:(id)arg2;
 - (void)useDigestMD5Auth:(id)arg1 andPassword:(id)arg2;
 - (void)disconnect;
 - (void)queryforBaseDN:(id)arg1 andScope:(int)arg2 andAttributes:(id)arg3 withFilter:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)startLDAPWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectToLDAPWithCompletion:(CDUnknownBlockType)arg1;
-- (void)connectToLDAPServer:(id)arg1 andPort:(unsigned short)arg2 andBundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setupLDAPconnection:(id)arg1 andPort:(unsigned short)arg2 andBundleIdentifier:(id)arg3;
+- (void)connectToLDAPService:(id)arg1 requireTLSForLDAP:(_Bool)arg2 bundleIdentifier:(id)arg3 inBackground:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)connectToLDAPServer:(id)arg1 andPort:(unsigned short)arg2 andBundleIdentifier:(id)arg3 andRequireTLSForLDAP:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setupLDAPconnection:(id)arg1 andPort:(unsigned short)arg2 andRequireTLSForLDAP:(_Bool)arg3 andBundleIdentifier:(id)arg4;
 - (void)dealloc;
 - (id)init;
 

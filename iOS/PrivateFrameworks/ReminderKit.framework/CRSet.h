@@ -43,11 +43,11 @@
 @property(readonly) unsigned long long count;
 - (_Bool)containsObject:(id)arg1;
 - (id)member:(id)arg1;
-- (id)initWithCRCoder:(id)arg1 set:(const struct Dictionary *)arg2 elementValueDecoder:(CDUnknownBlockType)arg3;
-- (id)initWithCRCoder:(id)arg1 set:(const struct Dictionary *)arg2;
+- (id)initWithCRCoder:(id)arg1 set:(const void *)arg2 elementValueDecoder:(CDUnknownBlockType)arg3;
+- (id)initWithCRCoder:(id)arg1 set:(const void *)arg2;
 - (id)initWithCRCoder:(id)arg1;
-- (void)encodeWithCRCoder:(id)arg1 set:(struct Dictionary *)arg2 elementValueCoder:(CDUnknownBlockType)arg3;
-- (void)encodeWithCRCoder:(id)arg1 set:(struct Dictionary *)arg2;
+- (void)encodeWithCRCoder:(id)arg1 set:(void *)arg2 elementValueCoder:(CDUnknownBlockType)arg3;
+- (void)encodeWithCRCoder:(id)arg1 set:(void *)arg2;
 - (void)encodeWithCRCoder:(id)arg1;
 - (id)initWithDocument:(id)arg1;
 - (id)init;

@@ -20,6 +20,7 @@
     AMSURLSession *_session;
     ACAccount *_account;
     id <AMSBagProtocol> _bag;
+    long long _clientType;
     NSString *_clientIdentifier;
     AMSProcessInfo *_clientInfo;
     NSString *_clientVersion;
@@ -46,6 +47,7 @@
 @property(readonly, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property(nonatomic) long long clientType; // @synthesize clientType=_clientType;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)initWithClientIdentifier:(id)arg1 clientVersion:(id)arg2 bag:(id)arg3;

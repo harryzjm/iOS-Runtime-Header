@@ -41,6 +41,7 @@
 - (void)setEnabled:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 wantsVibrancy:(_Bool)arg2;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

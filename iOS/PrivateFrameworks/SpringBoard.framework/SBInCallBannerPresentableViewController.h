@@ -8,12 +8,13 @@
 
 #import <SpringBoard/BSInvalidatable-Protocol.h>
 #import <SpringBoard/SBBannerManagerPresentable-Protocol.h>
+#import <SpringBoard/SBButtonEventsHandler-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 
 @class NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneViewController, SBSUIInCallSceneClientSettingsDiffInspector, SBSceneViewStatusBarAssertion;
-@protocol BNPanGestureProxy, SBInCallBannerPresentableViewControllerDelegate;
+@protocol BNPanGestureProxy, BNPresentableContext, SBInCallBannerPresentableViewControllerDelegate;
 
-@interface SBInCallBannerPresentableViewController : UIViewController <SBDeviceApplicationSceneHandleObserver, SBBannerManagerPresentable, BSInvalidatable>
+@interface SBInCallBannerPresentableViewController : UIViewController <SBDeviceApplicationSceneHandleObserver, SBBannerManagerPresentable, SBButtonEventsHandler, BSInvalidatable>
 {
     _Bool _didCrossDefaultDraggingThreshold;
     id <BNPanGestureProxy> _lastGestureProxy;
@@ -43,6 +44,7 @@
 - (_Bool)handleHeadsetButtonPress:(_Bool)arg1;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;
@@ -74,6 +76,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <BNPresentableContext> presentableContext;
 @property(readonly, nonatomic) long long presentableType;
 @property(readonly) Class superclass;
 

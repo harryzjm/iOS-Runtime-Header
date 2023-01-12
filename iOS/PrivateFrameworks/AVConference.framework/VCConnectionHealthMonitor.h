@@ -22,11 +22,13 @@ __attribute__((visibility("hidden")))
     struct ConnectionStats _tempReceivingStats;
     _Bool _firstPacketReceived;
     double _primaryConnHealthAllowedDelay;
+    _Bool _usingServerBasedLinks;
     struct ConnectionStatsSequenceNumberData _secondaryConnReceivedSequenceNumberStats[1024];
 }
 
+@property _Bool usingServerBasedLinks; // @synthesize usingServerBasedLinks=_usingServerBasedLinks;
 @property double primaryConnHealthAllowedDelay; // @synthesize primaryConnHealthAllowedDelay=_primaryConnHealthAllowedDelay;
-- (_Bool)isPrimaryConnectionImprovedFromHistory:(struct ConnectionStatsHistory *)arg1 withIndex:(int)arg2;
+- (_Bool)isPrimaryConnectionImprovedFromHistory:(struct ConnectionStatsHistory *)arg1 withIndex:(int)arg2 remoteStatsHistory:(struct ConnectionStatsHistory *)arg3;
 - (_Bool)isHistoryImproved:(char *)arg1 currentIndex:(int)arg2;
 - (_Bool)isHistoryValid:(char *)arg1;
 - (void)updateRatiosForHistory:(struct ConnectionStatsHistory *)arg1 withIndex:(int)arg2;

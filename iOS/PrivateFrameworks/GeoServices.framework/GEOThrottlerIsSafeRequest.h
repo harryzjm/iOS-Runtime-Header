@@ -10,11 +10,11 @@
 
 @interface GEOThrottlerIsSafeRequest <GEOXPCRequest>
 {
-    int _requestKindType;
-    int _requestKindSubtype;
     _Bool _nextSafeRequestTime;
     _Bool _availableRequestCount;
     _Bool _includeToken;
+    int _requestKindType;
+    int _requestKindSubtype;
     GEODataRequestThrottlerToken *_throttlerToken;
 }
 
@@ -30,6 +30,7 @@
 - (_Bool)isValid;
 - (void)encodeToXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
+- (id)initWithTraits:(id)arg1 auditToken:(id)arg2 throttleToken:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

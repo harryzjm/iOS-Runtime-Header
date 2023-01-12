@@ -15,7 +15,11 @@
     PBUnknownFields *_unknownFields;
     GEOFormattedString *_text;
     int _action;
-    CDStruct_6f2d9b33 _flags;
+    int _buttonDisplay;
+    struct {
+        unsigned int has_action:1;
+        unsigned int has_buttonDisplay:1;
+    } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
@@ -35,6 +39,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsButtonDisplay:(id)arg1;
+- (id)buttonDisplayAsString:(int)arg1;
+@property(nonatomic) _Bool hasButtonDisplay;
+@property(nonatomic) int buttonDisplay;
 - (int)StringAsAction:(id)arg1;
 - (id)actionAsString:(int)arg1;
 @property(nonatomic) _Bool hasAction;

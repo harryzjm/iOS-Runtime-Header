@@ -29,9 +29,11 @@
     _Bool _applicationActive;
     _Bool _lowPowerModeEnabled;
     _Bool _autoplaySettingEnabled;
+    struct UIEdgeInsets _criticallyVisibleEdgeInsets;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct UIEdgeInsets criticallyVisibleEdgeInsets; // @synthesize criticallyVisibleEdgeInsets=_criticallyVisibleEdgeInsets;
 @property(nonatomic) _Bool autoplaySettingEnabled; // @synthesize autoplaySettingEnabled=_autoplaySettingEnabled;
 @property(nonatomic) _Bool lowPowerModeEnabled; // @synthesize lowPowerModeEnabled=_lowPowerModeEnabled;
 @property(nonatomic) _Bool applicationActive; // @synthesize applicationActive=_applicationActive;

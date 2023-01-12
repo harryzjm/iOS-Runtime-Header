@@ -23,7 +23,7 @@
 - (void)addItemToSelection:(id)arg1;
 - (_Bool)_wantsToggleButtonForSection:(unsigned long long)arg1;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithMediaSystemBuilder:(id)arg1;

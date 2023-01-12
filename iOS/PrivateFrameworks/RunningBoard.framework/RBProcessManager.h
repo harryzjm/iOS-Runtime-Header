@@ -9,25 +9,26 @@
 #import <RunningBoard/RBProcessManaging-Protocol.h>
 #import <RunningBoard/RBStateCapturing-Protocol.h>
 
-@class NSMapTable, NSMutableDictionary, NSString, RBLaunchdJobManager, RBProcessIndex, RBProcessMap, RBSystemState;
-@protocol RBBundlePropertiesManaging, RBEntitlementManaging, RBJetsamBandProviding, RBProcessManagerDelegate;
+@class NSCountedSet, NSMutableDictionary, NSString, RBLaunchdJobManager, RBProcess, RBProcessIndex, RBProcessMap, RBSystemState;
+@protocol RBBundlePropertiesManaging, RBEntitlementManaging, RBProcessManagerDelegate;
 
 @interface RBProcessManager : NSObject <RBProcessManaging, RBStateCapturing>
 {
     RBLaunchdJobManager *_jobManager;
     id <RBBundlePropertiesManaging> _bundlePropertiesManager;
     id <RBEntitlementManaging> _entitlementManager;
-    id <RBJetsamBandProviding> _jetsamBandProvider;
     id <RBProcessManagerDelegate> _delegate;
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _pendingExitBlockLock;
     _Atomic unsigned long long _counter;
+    RBProcess *_cachedLastResolvedAndNotTrackedProcess;
     RBProcessIndex *_processIndex;
     RBProcessIndex *_processGraveyard;
     RBSystemState *_systemState;
     RBProcessMap *_processState;
     NSMutableDictionary *_identityToPendingExitBlock;
-    NSMapTable *_identityToProcessLifecycleQueue;
+    NSMutableDictionary *_identityToProcessLifecycleQueue;
+    NSCountedSet *_lifecycleQueuesInUse;
     _Bool _systemPreventsIdleSleep;
 }
 
@@ -35,6 +36,7 @@
 - (void).cxx_destruct;
 - (void)_removeProcess:(id)arg1;
 - (id)_lifecycleQueue_addProcessWithInstance:(id)arg1 properties:(id)arg2;
+- (void)_releaseLifecycleQueueForIdentity:(id)arg1;
 - (id)_getLifecycleQueueForIdentity:(id)arg1;
 - (void)_executeLifecycleEventForIdentity:(id)arg1 sync:(_Bool)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)_resolveProcessWithIdentifier:(id)arg1 auditToken:(id)arg2 properties:(id *)arg3;
@@ -55,12 +57,13 @@
 - (id)processesMatchingPredicate:(id)arg1;
 - (id)processForInstance:(id)arg1;
 - (id)processForIdentity:(id)arg1;
-- (id)_processForIdentifier:(id)arg1 withAuditToken:(id)arg2;
+- (id)_processForIdentifier:(id)arg1 withAuditToken:(id)arg2 forceStartTracking:(_Bool)arg3;
+- (id)processForIdentifierWithoutStartingTracking:(id)arg1;
 - (id)processForIdentifier:(id)arg1;
 - (id)processForAuditToken:(id)arg1;
 - (void)start;
 @property(readonly, copy) NSString *debugDescription;
-- (id)initWithBundlePropertiesManager:(id)arg1 entitlementManager:(id)arg2 jetsamBandProvider:(id)arg3 delegate:(id)arg4;
+- (id)initWithBundlePropertiesManager:(id)arg1 entitlementManager:(id)arg2 delegate:(id)arg3;
 - (id)init;
 
 // Remaining properties

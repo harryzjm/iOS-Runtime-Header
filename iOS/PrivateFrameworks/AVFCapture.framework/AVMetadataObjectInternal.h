@@ -17,8 +17,12 @@ __attribute__((visibility("hidden")))
     NSString *_type;
     AVCaptureInput *_input;
     AVMetadataObject *_originalMetadataObject;
+    long long _groupID;
+    unsigned long long _syntheticFocusMode;
 }
 
+@property unsigned long long syntheticFocusMode; // @synthesize syntheticFocusMode=_syntheticFocusMode;
+@property long long groupID; // @synthesize groupID=_groupID;
 @property(retain) AVMetadataObject *originalMetadataObject; // @synthesize originalMetadataObject=_originalMetadataObject;
 @property(retain) AVCaptureInput *input; // @synthesize input=_input;
 @property(retain) NSString *type; // @synthesize type=_type;

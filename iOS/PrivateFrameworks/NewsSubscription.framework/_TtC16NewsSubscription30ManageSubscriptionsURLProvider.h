@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *defaultManageSubscriptionsUrl;
     MISSING_TYPE *subscriptionsURL;
+    MISSING_TYPE *subscriptionsMacOSURL;
 }
 
 @end

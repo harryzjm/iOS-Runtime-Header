@@ -6,16 +6,20 @@
 
 #import <UIKit/UIResponder.h>
 
+#import <SwiftUI/UIApplicationDelegate-Protocol.h>
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI11AppDelegate : UIResponder
+@interface _TtC7SwiftUI11AppDelegate : UIResponder <UIApplicationDelegate>
 {
-    MISSING_TYPE *appDelegate;
+    MISSING_TYPE *fallbackDelegate;
     MISSING_TYPE *mainMenuController;
+    MISSING_TYPE *appNavigationAuthority;
 }
 
 - (void).cxx_destruct;
+- (_Bool)application:(id)arg1 runTest:(id)arg2 options:(id)arg3;
 - (void)_performMainMenuShortcutKeyCommand:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)validateCommand:(id)arg1;

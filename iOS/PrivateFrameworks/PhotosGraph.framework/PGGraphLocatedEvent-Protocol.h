@@ -6,14 +6,15 @@
 
 #import <PhotosGraph/PGGraphEvent-Protocol.h>
 
-@class NSSet;
+@class NSSet, PGGraphPersonNodeCollection;
 
 @protocol PGGraphLocatedEvent <PGGraphEvent>
-@property(readonly) _Bool happensPartiallyAtMyWork;
-@property(readonly) _Bool happensPartiallyAtMyHome;
 @property(readonly) _Bool hasLocation;
 - (NSSet *)roiNodes;
 - (NSSet *)poiNodes;
 - (NSSet *)addressNodes;
+- (_Bool)happensPartiallyAtHomeOrWorkOfPersonNodes:(PGGraphPersonNodeCollection *)arg1;
+- (_Bool)happensPartiallyAtWorkOfPersonNodes:(PGGraphPersonNodeCollection *)arg1;
+- (_Bool)happensPartiallyAtHomeOfPersonNodes:(PGGraphPersonNodeCollection *)arg1;
 @end
 

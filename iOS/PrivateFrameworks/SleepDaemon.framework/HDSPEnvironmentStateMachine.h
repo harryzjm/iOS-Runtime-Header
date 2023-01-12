@@ -32,7 +32,7 @@
 - (void)environmentShouldMigrateData;
 - (void)dataMigrationDidComplete;
 - (void)systemDidBecomeReady;
-- (id)stateMachineLog;
+- (unsigned long long)loggingCategory;
 - (id)initWithDelegate:(id)arg1 infoProvider:(id)arg2;
 
 // Remaining properties

@@ -8,6 +8,7 @@
 
 @interface NSString (IMAdditions)
 + (id)__im_handleIdentifierRegex;
+- (id)__im_separateStringByByteLength:(long long)arg1;
 - (id)__im_handleIdentifiers;
 - (id)__im_IDForHandleIdentifierString;
 - (id)__im_rangesOfHandleIdentifierStrings;

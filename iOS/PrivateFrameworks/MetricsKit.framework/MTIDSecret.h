@@ -6,28 +6,32 @@
 
 #import <objc/NSObject.h>
 
+#import <MetricsKit/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSString;
 
-@interface MTIDSecret : NSObject
+@interface MTIDSecret : NSObject <NSSecureCoding>
 {
     _Bool _isSynchronized;
     NSString *_value;
+    NSDate *_effectiveDate;
     NSDate *_expirationDate;
-    NSString *_key;
+    NSString *_syncStatusCode;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property(retain, nonatomic) NSString *syncStatusCode; // @synthesize syncStatusCode=_syncStatusCode;
 @property(nonatomic) _Bool isSynchronized; // @synthesize isSynchronized=_isSynchronized;
 @property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property(copy, nonatomic) NSDate *effectiveDate; // @synthesize effectiveDate=_effectiveDate;
 @property(copy, nonatomic) NSString *value; // @synthesize value=_value;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)debugInfo;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)rawValue;
-- (id)initWithRawValue:(id)arg1;
-- (id)initWithKey:(id)arg1 value:(id)arg2 expirationDate:(id)arg3;
-- (id)initWithScheme:(id)arg1 date:(id)arg2;
+- (id)initWithValue:(id)arg1 effectiveDate:(id)arg2 expirationDate:(id)arg3 isSynchronize:(_Bool)arg4;
 - (id)init;
 
 @end

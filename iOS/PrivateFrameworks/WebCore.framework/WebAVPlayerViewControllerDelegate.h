@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)playerViewController:(id)arg1 failedToStartPictureInPictureWithError:(id)arg2;
 - (void)playerViewControllerDidStartPictureInPicture:(id)arg1;
 - (void)playerViewControllerWillStartPictureInPicture:(id)arg1;
-@property struct VideoFullscreenInterfaceAVKit *fullscreenInterface;
+@property void *fullscreenInterface;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -22,6 +22,7 @@
     unsigned long long _holeCount;
 }
 
++ (id)decodeTopologyWithCoder:(id)arg1 allocator:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long holeCount; // @synthesize holeCount=_holeCount;
 @property(retain, nonatomic) id <MDLMeshBuffer> holes; // @synthesize holes=_holes;
@@ -33,6 +34,7 @@
 @property(retain, nonatomic) id <MDLMeshBuffer> vertexCreaseIndices; // @synthesize vertexCreaseIndices=_vertexCreaseIndices;
 @property(nonatomic) unsigned long long faceCount; // @synthesize faceCount=_faceCount;
 @property(retain, nonatomic) id <MDLMeshBuffer> faceTopology; // @synthesize faceTopology=_faceTopology;
+- (void)encodeTopologyWithCoder:(id)arg1 allocator:(id)arg2;
 - (id)initWithSubmesh:(id)arg1;
 
 @end

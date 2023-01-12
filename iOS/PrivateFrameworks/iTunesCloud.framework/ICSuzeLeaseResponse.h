@@ -8,6 +8,7 @@
 
 @class NSData, NSDate, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface ICSuzeLeaseResponse : NSObject
 {
     NSDate *_requestDate;

@@ -18,6 +18,7 @@
 + (id)ib_customFonts;
 + (id)ib_availableFonts;
 - (id)ibFontDescription;
+- (_Bool)ibIsSystemFont;
 - (void)getFontSize:(long long *)arg1 andPointSize:(double *)arg2;
 - (void)ibSwizzledEncodeWithCoder:(id)arg1;
 @property(nonatomic) double ibPointSize;

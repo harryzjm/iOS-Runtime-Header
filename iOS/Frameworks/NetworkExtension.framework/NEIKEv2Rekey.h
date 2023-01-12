@@ -8,12 +8,14 @@
 
 #import <NetworkExtension/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, NSTimer;
 
 @interface NEIKEv2Rekey : NSObject <NSObject>
 {
     int _ikeLifetimeMinutes;
     int _childLifetimeMinutes;
+    NSTimer *_ikeLifetimeNSTimer;
+    NSTimer *_childLifetimeNStimer;
     CDUnknownBlockType _ikeRekeyHandler;
     CDUnknownBlockType _childRekeyHandler;
 }
@@ -23,6 +25,8 @@
 @property(copy) CDUnknownBlockType ikeRekeyHandler; // @synthesize ikeRekeyHandler=_ikeRekeyHandler;
 @property int childLifetimeMinutes; // @synthesize childLifetimeMinutes=_childLifetimeMinutes;
 @property int ikeLifetimeMinutes; // @synthesize ikeLifetimeMinutes=_ikeLifetimeMinutes;
+@property(retain) NSTimer *childLifetimeNStimer; // @synthesize childLifetimeNStimer=_childLifetimeNStimer;
+@property(retain) NSTimer *ikeLifetimeNSTimer; // @synthesize ikeLifetimeNSTimer=_ikeLifetimeNSTimer;
 - (void)dealloc;
 - (void)invokeChildRekeyHandler;
 - (void)invokeIKERekeyHandler;

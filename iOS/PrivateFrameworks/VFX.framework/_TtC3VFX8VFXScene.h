@@ -6,16 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSArray;
+@class MISSING_TYPE, NSArray, NSURL;
 
 @interface _TtC3VFX8VFXScene : NSObject
 {
     MISSING_TYPE *entityManager;
+    MISSING_TYPE *loadOptions;
+    MISSING_TYPE *loader;
+    MISSING_TYPE *effects;
+    MISSING_TYPE *__version;
+    MISSING_TYPE *isInsideRE;
+    MISSING_TYPE *isREAssetScene;
+    MISSING_TYPE *hasSharedEntityManager;
+    MISSING_TYPE *metalBinaryArchiveURLs;
+    MISSING_TYPE *recordedMetalBinaryArchiveURL;
+    MISSING_TYPE *internalPixelFormat;
+    MISSING_TYPE *internalPixelFormatDepth;
+    MISSING_TYPE *useGammaBlending;
 }
 
++ (void)applicationWillEnterForeground;
++ (void)applicationDidEnterBackground;
++ (id)vfxLibraryURLFor:(id)arg1;
 + (void)setBuiltinEffectIdentifiers:(id)arg1;
 + (id)builtinEffectIdentifiers;
++ (id)vfxAssetsFrameworkBundle;
 - (void).cxx_destruct;
+- (void)removeAllEffects;
+- (void)removeEffect:(id)arg1;
+- (id)addEffectFromTemplate:(id)arg1;
+- (id)addEffectFrom:(id)arg1 error:(id *)arg2;
+- (_Bool)isEnabled:(id)arg1;
+- (void)setEnabled:(id)arg1 enabled:(_Bool)arg2;
 - (void)withPointerToValueAtPath:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)valueAtPath:(id)arg1;
 - (void)setValue:(id)arg1 atPath:(id)arg2;
@@ -23,15 +45,28 @@
 - (void)setParameterOf:(id)arg1 named:(id)arg2:(id)arg3;
 - (id)parameterOf:(id)arg1 named:(id)arg2;
 - (void)performTransaction:(CDUnknownBlockType)arg1;
+- (void)prepare;
 - (void)restart;
 - (void)updateWithDeltaTime:(double)arg1;
 @property(nonatomic, readonly) NSArray *bindings;
+- (id)firstBindingWithName:(id)arg1;
 - (id)bindingOf:(id)arg1 named:(id)arg2;
+@property(nonatomic) _Bool showStatistics;
 @property(nonatomic) _Bool allowsCameraControl;
+@property(nonatomic) float timeScale;
 @property(nonatomic) _Bool isPlaying;
+@property(nonatomic) _Bool useGammaBlending; // @synthesize useGammaBlending;
+@property(nonatomic) BOOL internalPixelFormatDepth; // @synthesize internalPixelFormatDepth;
+@property(nonatomic) unsigned long long internalPixelFormat; // @synthesize internalPixelFormat;
+@property(nonatomic, copy) NSURL *recordedMetalBinaryArchiveURL;
+@property(nonatomic, copy) NSArray *metalBinaryArchiveURLs;
 - (void)dealloc;
 - (id)initWithContentsOf:(id)arg1 error:(id *)arg2;
+- (id)initWithContentsOf:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)init;
+- (id)initWithOptions:(id)arg1;
+@property(nonatomic, readonly) long long version;
+@property(nonatomic, copy) NSArray *effects;
 - (id)initWithIdentifier:(id)arg1 error:(id *)arg2;
 
 @end

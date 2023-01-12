@@ -14,6 +14,7 @@
 }
 
 @property CDStruct_68f7c993 colorMatrix; // @synthesize colorMatrix=_colorMatrix;
+- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

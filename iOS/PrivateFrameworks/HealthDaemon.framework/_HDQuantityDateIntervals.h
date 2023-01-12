@@ -19,11 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)intersectingIdentifiersFrom:(double)arg1 to:(double)arg2;
-- (_Bool)insideRanges:(double)arg1;
-- (void)addDateRangeFrom:(double)arg1 to:(double)arg2 uuid:(id)arg3;
-- (_Bool)containsUUIDs;
-- (void)resetState;
 - (id)init;
 
 @end

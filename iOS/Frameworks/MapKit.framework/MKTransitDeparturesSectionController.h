@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface MKTransitDeparturesSectionController
 {
     NSString *_direction;
+    NSString *_departureSequenceContainer;
     NSArray *_sequences;
     NSMapTable *_sequencesToInclude;
     NSDictionary *_serviceGapStrings;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MKTransitDepartureServiceGapFormatter *serviceGapFormatter; // @synthesize serviceGapFormatter=_serviceGapFormatter;
+- (_Bool)_newStationCardUIEnabled;
 - (id)serviceGapDescriptionForRow:(long long)arg1;
 - (void)_serviceGapDate:(out id *)arg1 string:(out id *)arg2 forSequence:(id)arg3 withDepartureIndex:(unsigned long long)arg4;
 - (id)_nextLastDepartureDateForSequence:(id)arg1 afterDate:(id)arg2;
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (id)sequenceForRow:(long long)arg1 outIsNewLine:(out _Bool *)arg2 outNextLineIsSame:(out _Bool *)arg3;
 - (id)sequences;
 @property(readonly, nonatomic) _Bool departuresAreVehicleSpecific; // @synthesize departuresAreVehicleSpecific=_departuresAreVehicleSpecific;
+- (void)_sharedSetup;
+- (id)initWithMapItem:(id)arg1 system:(id)arg2 departureSequenceContainer:(id)arg3;
 - (id)initWithMapItem:(id)arg1 system:(id)arg2 direction:(id)arg3;
 - (id)initWithMapItem:(id)arg1 system:(id)arg2;
 - (id)init;

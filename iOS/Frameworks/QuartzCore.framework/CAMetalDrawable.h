@@ -41,7 +41,7 @@
 - (id)cachedTexture;
 - (struct _CAMetalDrawablePrivate *)priv;
 - (void)dealloc;
-- (void)releasePrivateReferences:(struct _CAMetalLayerPrivate *)arg1;
+- (void)releasePrivateReferences:(void *)arg1;
 - (id)initWithDrawablePrivate:(struct _CAMetalDrawablePrivate *)arg1 layer:(id)arg2;
 - (void)didScheduledPresent;
 - (void)addPresentScheduledHandler:(CDUnknownBlockType)arg1;

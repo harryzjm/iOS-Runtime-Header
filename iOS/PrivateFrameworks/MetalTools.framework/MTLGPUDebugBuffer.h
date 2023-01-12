@@ -4,25 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MTLGPUDebugBuffer
+#import <MetalTools/MTLGPUDebugResource-Protocol.h>
+
+@class NSString;
+@protocol MTLBuffer, MTLDevice, MTLHeap;
+
+@interface MTLGPUDebugBuffer <MTLGPUDebugResource>
 {
-    unsigned long long bufferIndex;
+    unsigned long long _bufferIndex;
     unsigned long long _offset;
     unsigned long long _length;
-    struct GPUDebugBufferDescriptorHeap *_descriptorHeap;
+    void *_descriptorHeap;
 }
 
 @property(readonly, nonatomic) unsigned long long gpuAddress;
 - (void *)contents;
 @property(readonly, nonatomic) unsigned long long offset;
-- (unsigned long long)length;
+@property(readonly, nonatomic) unsigned long long length;
 - (unsigned long long)handleForOffset:(unsigned long long)arg1;
+@property(nonatomic) unsigned long long bufferIndex;
 - (void)dealloc;
 - (id)initWithBuffer:(id)arg1 heap:(id)arg2 device:(id)arg3 offset:(unsigned long long)arg4 length:(unsigned long long)arg5 track:(_Bool)arg6;
 - (id)initWithBuffer:(id)arg1 heap:(id)arg2 device:(id)arg3;
 - (id)initWithBuffer:(id)arg1 device:(id)arg2 offset:(unsigned long long)arg3 length:(unsigned long long)arg4 track:(_Bool)arg5;
 - (id)initWithBuffer:(id)arg1 device:(id)arg2 offset:(unsigned long long)arg3 length:(unsigned long long)arg4;
 - (id)initWithBuffer:(id)arg1 device:(id)arg2;
+
+// Remaining properties
+@property(readonly) unsigned long long allocatedSize;
+@property(readonly) unsigned long long allocationID;
+@property(retain, nonatomic) id <MTLBuffer> baseObject; // @dynamic baseObject;
+@property(readonly) unsigned long long cpuCacheMode;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) id <MTLDevice> device;
+@property(readonly) unsigned long long hash;
+@property(readonly) unsigned long long hazardTrackingMode;
+@property(readonly) id <MTLHeap> heap;
+@property(readonly) unsigned long long heapOffset;
+@property(copy) NSString *label;
+@property(readonly) unsigned long long protectionOptions;
+@property(readonly) unsigned long long resourceOptions;
+@property int responsibleProcess;
+@property(readonly) unsigned long long storageMode;
+@property(readonly) Class superclass;
+@property(readonly) unsigned long long unfilteredResourceOptions;
 
 @end
 

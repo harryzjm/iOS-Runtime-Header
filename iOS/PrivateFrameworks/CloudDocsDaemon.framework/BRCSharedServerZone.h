@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BRCSharedClientZone, NSString;
+@class BRCSharedClientZone, BRCSyncContext, NSString;
 
 @interface BRCSharedServerZone
 {
@@ -12,6 +12,10 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) BRCSyncContext *transferSyncContextIfExists;
+@property(readonly, nonatomic) BRCSyncContext *transferSyncContext;
+- (void)removeForegroundClient:(id)arg1;
+- (void)addForegroundClient:(id)arg1;
 - (void)sideCarZoneWasReset;
 - (_Bool)allocateRanksWhenCaughtUp:(_Bool)arg1;
 - (_Bool)_propagateFolderDeletesToTheirChildren;

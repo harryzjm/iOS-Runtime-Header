@@ -17,6 +17,7 @@
 - (long long)_code;
 - (id)_objectsOfClassTypeFromPartialErrors:(Class)arg1;
 - (id)allZoneIDs;
+- (_Bool)isParticipantMayNeedVerificationError;
 - (_Bool)isUnknownItemError;
 - (_Bool)isInitializationTimeOutError;
 - (_Bool)isPCSError;

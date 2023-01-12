@@ -9,18 +9,20 @@
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class CPLShareParticipant, NSArray, NSURL;
+@class CPLShareParticipant, NSArray, NSDate, NSURL;
 
 @interface CPLShare : NSObject <NSSecureCoding, NSCopying>
 {
     long long _publicPermission;
     NSURL *_URL;
     NSArray *_participants;
+    NSDate *_creationDate;
 }
 
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(copy, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(nonatomic) long long publicPermission; // @synthesize publicPermission=_publicPermission;

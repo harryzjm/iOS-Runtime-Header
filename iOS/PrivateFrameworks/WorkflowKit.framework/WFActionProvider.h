@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class INStringLocalizer;
 @protocol WFActionProviderDelegate;
 
 @interface WFActionProvider : NSObject
 {
     id <WFActionProviderDelegate> _delegate;
+    INStringLocalizer *_stringLocalizer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 @property(nonatomic) __weak id <WFActionProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)deleteCache;
 - (void)updateCache:(CDUnknownBlockType)arg1;

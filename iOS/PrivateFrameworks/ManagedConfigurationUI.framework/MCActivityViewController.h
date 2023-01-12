@@ -8,7 +8,6 @@
 
 @class NSString, UIActivityIndicatorView, UIImageView, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface MCActivityViewController : UIViewController
 {
     _Bool _isInProgress;

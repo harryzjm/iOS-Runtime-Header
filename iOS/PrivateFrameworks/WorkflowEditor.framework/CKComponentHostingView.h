@@ -41,7 +41,7 @@
 - (void)_setNeedsUpdateWithMode:(unsigned long long)arg1;
 - (void)didReceiveReflowComponentsRequest;
 - (void)componentScopeHandleWithIdentifier:(int)arg1 rootIdentifier:(int)arg2 didReceiveStateUpdate:(CDUnknownBlockType)arg3 mode:(unsigned long long)arg4;
-- (const struct CKComponentLayout *)mountedLayout;
+- (const void *)mountedLayout;
 - (void)updateContext:(id)arg1 mode:(unsigned long long)arg2;
 - (void)updateModel:(id)arg1 mode:(unsigned long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

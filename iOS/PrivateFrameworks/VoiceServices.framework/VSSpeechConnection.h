@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSXPCConnection, VSPresynthesizedAudioRequest, VSSpeechConnectionDelegateWrapper, VSSpeechRequest;
+@class NSString, NSXPCConnection, VSSpeechConnectionDelegateWrapper;
 @protocol OS_dispatch_queue, VSSpeechConnectionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,26 +28,27 @@ __attribute__((visibility("hidden")))
 - (void)invokeDaemon:(CDUnknownBlockType)arg1;
 - (void)cancelDownloads:(CDUnknownBlockType)arg1;
 - (void)forwardStreamObject:(id)arg1;
-- (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getLogToFile:(CDUnknownBlockType)arg1;
-- (void)setLogToFile:(_Bool)arg1;
-- (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)getVoiceInfoForLanguageCode:(id)arg1 name:(id)arg2 footprint:(long long)arg3 gender:(long long)arg4 type:(long long)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)getVoiceResourceForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getAutoDownloadedVoiceAssetsWithClientID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)setAutoDownloadedVoiceAssets:(id)arg1 withClientID:(id)arg2;
+- (void)getAllVoiceSubscriptionsWithReply:(CDUnknownBlockType)arg1;
+- (void)getSubscribedVoiceAssetsWithClientID:(id)arg1 forAccessoryID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)triggerCellularDownloadedVoiceAssets:(id)arg1 withClientID:(id)arg2;
+- (void)setSubscribedVoiceAssets:(id)arg1 withClientID:(id)arg2 forAccessoryID:(id)arg3;
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceAssetsForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
-- (void)continueCurrentSpeechRequest;
-- (void)pauseCurrentSpeechRequestAtMark:(long long)arg1;
-- (void)stopCurrentSpeechRequestAtMark:(long long)arg1;
+- (void)continueSpeechRequest:(id)arg1;
+- (void)pauseSpeechRequest:(id)arg1 atMark:(long long)arg2;
+- (void)stopSpeechRequest:(id)arg1 atMark:(long long)arg2;
 - (void)startSynthesisRequest:(id)arg1;
-- (void)stopPresynthesizedAudioRequest;
+- (void)stopPresynthesizedAudioRequest:(id)arg1;
 - (void)cachePresynthesizedAudioRequest:(id)arg1;
 - (void)startPresynthesizedAudioRequest:(id)arg1;
 - (void)startSpeechRequest:(id)arg1;
 - (void)endAudioPowerUpdate;
 - (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
+- (void)stopVoicePreview;
+- (void)startVoicePreviewForLanguageCode:(id)arg1 voiceName:(id)arg2 previewType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (_Bool)isSystemSpeakingOnBehalfOfCurrentConnection;
 - (_Bool)isSystemSpeaking;
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
@@ -56,11 +57,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)queryPhaticCapabilityWithRequest:(id)arg1;
 - (void)prewarmIfNeededWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)updateWithConnectionIdentifier:(id)arg1;
-@property(readonly, nonatomic) VSPresynthesizedAudioRequest *presynthesizedAudioRequest;
-- (void)setPresynthesizedAudioRequest:(id)arg1;
-- (id)concurrentSynthesisRequests;
-@property(readonly, nonatomic) VSSpeechRequest *request;
-- (void)setRequest:(id)arg1;
+- (id)currentAudioRequest;
+- (id)currentRequest;
 - (void)_connectionInvalidated;
 - (id)_remoteObjectWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectSync;

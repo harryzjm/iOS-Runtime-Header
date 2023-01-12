@@ -8,6 +8,7 @@
 @protocol FCIssueReadingHistoryObserving;
 
 @protocol FCIssueReadingHistoryType
+- (void)prepareForUseWithCompletion:(void (^)(void))arg1;
 - (void)removeObserver:(id <FCIssueReadingHistoryObserving>)arg1;
 - (void)addObserver:(id <FCIssueReadingHistoryObserving>)arg1;
 @property(nonatomic, readonly) NSArray *allEngagedIssueIDs;

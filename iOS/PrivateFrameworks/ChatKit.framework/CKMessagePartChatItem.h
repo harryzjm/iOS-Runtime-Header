@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IMMessage, IMMessageItem, NSArray, NSString, UIItemProvider;
+@class CKMessagePartHighlightChatItem, IMMessage, IMMessageItem, NSArray, NSItemProvider, NSString;
 
 @interface CKMessagePartChatItem
 {
     NSArray *_visibleAssociatedMessageChatItems;
+    CKMessagePartHighlightChatItem *_messageHighlightChatItem;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CKMessagePartHighlightChatItem *messageHighlightChatItem; // @synthesize messageHighlightChatItem=_messageHighlightChatItem;
 @property(readonly, nonatomic) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
-@property(readonly, nonatomic) UIItemProvider *dragItemProvider;
+- (void)_setVisibleAssociatedMessageChatItems:(id)arg1;
 - (unsigned long long)chatItemReplyLineContiguousTypeForChatStyle:(unsigned char)arg1;
 @property(readonly, nonatomic) IMMessageItem *threadOriginator;
 @property(readonly, nonatomic) NSString *threadIdentifier;
@@ -25,10 +27,12 @@
 @property(readonly, nonatomic) _Bool hasMessageAcknowledgment;
 @property(readonly, nonatomic) struct _NSRange messagePartRange;
 @property(readonly, nonatomic) _Bool canSendMessageAcknowledgment;
+- (id)tapbackActionButtonImageName;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (id)fileURLForAttachment;
+@property(readonly, nonatomic) NSItemProvider *dragItemProvider;
+@property(readonly, nonatomic) NSArray *pasteboardItemProviders;
 - (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
-@property(readonly, copy, nonatomic) NSArray *pasteboardItems;
 @property(readonly, nonatomic) BOOL color;
 @property(readonly, nonatomic) long long index;
 @property(readonly, nonatomic) IMMessage *message;
@@ -45,13 +49,13 @@
 - (_Bool)canForward;
 - (_Bool)canCopy;
 - (id)description;
-- (id)supplementaryItemsWithLayoutEnvironment:(id)arg1;
 - (id)aggregateAcknowledgmentChatItem;
 - (_Bool)shouldShowVotingView;
 - (id)votingCounts;
 - (long long)selectedType;
 @property(readonly, copy, nonatomic) NSArray *messageAcknowledgments;
-- (id)composition;
+- (_Bool)__im_ff_isInterstellarEnabled;
+- (id)compositionWithContext:(id)arg1;
 
 @end
 

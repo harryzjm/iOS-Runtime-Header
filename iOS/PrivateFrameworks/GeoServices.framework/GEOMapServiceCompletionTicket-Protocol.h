@@ -7,16 +7,21 @@
 #import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
 #import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
-@class GEOClientRankingModel, GEOMapItemIdentifier, GEOMapServiceTraits, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSDictionary, NSString;
+@class GEOClientRankingModel, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDPlaceSummaryLayoutMetadata, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSDictionary, NSString;
 
 @protocol GEOMapServiceCompletionTicket <GEOMapServiceCancellableTicket, GEOMapServiceThrottlableTicket>
 @property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 @property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery;
+- (long long)highlightType;
+- (GEOPDPlaceSummaryLayoutMetadata *)placeSummaryLayoutMetadata;
+- (_Bool)shouldUseDistanceFeatureServerResults;
 - (_Bool)showAutocompleteClientSource;
 - (_Bool)autocompleteTopSectionIsQuerySuggestions;
 - (GEOSortPriorityMapping *)sortPriorityMapping;
 - (GEOClientRankingModel *)clientRankingModel;
+- (_Bool)shouldEnableGrayscaleHighlighting;
+- (_Bool)hasShouldEnableGrayscaleHighlighting;
 - (_Bool)shouldDisplayNoResults;
 - (_Bool)hasShouldDisplayNoResults;
 - (double)retainSearchTime;

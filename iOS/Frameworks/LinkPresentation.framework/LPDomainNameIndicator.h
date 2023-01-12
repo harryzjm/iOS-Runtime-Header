@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutComponentView;
-- (id)initWithDomainName:(id)arg1 theme:(id)arg2;
-- (id)init;
+- (id)initWithHost:(id)arg1 domainName:(id)arg2 theme:(id)arg3;
+- (id)initWithHost:(id)arg1;
 
 @end
 

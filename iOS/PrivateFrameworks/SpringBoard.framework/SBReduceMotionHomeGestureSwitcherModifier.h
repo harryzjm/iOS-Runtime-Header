@@ -36,7 +36,7 @@
 - (void)_applyPrototypeSettings;
 - (id)_updateReduceMotionAxisIfNecessaryWithEvent:(id)arg1;
 - (_Bool)shouldRubberbandFullScreenHomeGrabberView;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
 - (id)appLayoutsToCacheFullsizeSnapshots;
@@ -47,8 +47,8 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
@@ -61,7 +61,7 @@
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (id)handleHomeGestureSettingsChangedEvent:(id)arg1;
 - (id)_newDockModifierRequiringVerticalSwipeToTrackDock:(_Bool)arg1 startingEnvironmentMode:(long long)arg2;
 - (void)didMoveToParentModifier:(id)arg1;

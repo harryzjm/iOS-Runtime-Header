@@ -6,18 +6,29 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+@protocol MTIDSecretStore;
+
 @interface MTFrameworkEnvironment : NSObject
 {
+    NSString *_localDataPath;
+    id <MTIDSecretStore> _secretStore;
 }
 
 + (void)initialize;
 + (void)setSharedEnvironment:(id)arg1;
 + (id)sharedEnvironment;
 + (void)withEnvironment:(id)arg1 execute:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+- (id)metricsKitBundleIdentifier;
+- (id)hostProcessBundleIdentifier;
+- (_Bool)useCloudKitSandbox;
+- (id)secretStore;
 - (id)valueForEntitlement:(id)arg1;
 - (id)date;
 - (_Bool)isInternalBuild;
-- (_Bool)isStandardEnvironment;
+@property(copy, nonatomic) NSString *localDataPath;
+- (id)dateOfBirthComponents;
 
 @end
 

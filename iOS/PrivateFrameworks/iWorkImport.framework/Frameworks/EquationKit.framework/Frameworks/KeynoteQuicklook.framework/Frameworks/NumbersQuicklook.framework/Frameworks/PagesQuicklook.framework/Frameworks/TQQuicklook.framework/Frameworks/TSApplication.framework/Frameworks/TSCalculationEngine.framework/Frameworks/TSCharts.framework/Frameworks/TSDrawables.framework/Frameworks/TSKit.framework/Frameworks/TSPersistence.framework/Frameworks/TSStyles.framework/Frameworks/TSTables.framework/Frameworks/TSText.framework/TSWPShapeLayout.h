@@ -10,11 +10,12 @@
 #import <TSText/TSWPColumnMetrics-Protocol.h>
 #import <TSText/TSWPLayoutParent-Protocol.h>
 #import <TSText/TSWPStorageObserver-Protocol.h>
+#import <TSText/TSWPStyleProviding-Protocol.h>
 
 @class NSString, TSDWrapSegments, TSWPLayout, TSWPPadding, TSWPStorage;
 @protocol TSWPShapeLayoutDelegate;
 
-@interface TSWPShapeLayout : TSDShapeLayout <TSWPLayoutParent, TSWPColumnMetrics, TSWPStorageObserver, TSKChangeSourceObserver>
+@interface TSWPShapeLayout : TSDShapeLayout <TSWPLayoutParent, TSWPColumnMetrics, TSWPStorageObserver, TSKChangeSourceObserver, TSWPStyleProviding>
 {
     TSDWrapSegments *_cachedInteriorWrapSegments;
     _Bool _observingStorage;
@@ -34,7 +35,7 @@
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (_Bool)parentAutosizes;
 - (void)setGeometry:(id)arg1;
 - (void)processChangedProperty:(int)arg1;
@@ -55,6 +56,9 @@
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
+- (_Bool)wantsToProvideStylesForTextLayout:(id)arg1;
+- (id)styleProviderForTextLayout:(id)arg1;
+- (id)styleProvider;
 @property(readonly, nonatomic) _Bool autosizes;
 - (id)interiorClippingPath;
 - (id)textWrapper;

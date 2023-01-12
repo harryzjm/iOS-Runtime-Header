@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HKHeartRhythmAvailabilityObserver-Protocol.h>
 
 @class HKAnchoredObjectQuery, HKElectrocardiogram, HKHeartRhythmAvailability, HRImageLabel, UILabel, UIView;
 
-@interface HROnboardingElectrocardiogramTakeRecordingViewController <HKHeartRhythmAvailabilityObserver>
+@interface HROnboardingElectrocardiogramTakeRecordingViewController : HKOnboardingBaseViewController <HKHeartRhythmAvailabilityObserver>
 {
     _Bool _electrocardiogramFirstRecordingCompleted;
     _Bool _didStepForward;
@@ -51,7 +53,7 @@
 - (void)setUpUI;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 @end
 

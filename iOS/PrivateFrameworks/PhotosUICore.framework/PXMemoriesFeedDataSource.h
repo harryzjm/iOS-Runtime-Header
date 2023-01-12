@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) struct PXSimpleIndexPath indexPathForFirstPastMemorySection; // @synthesize indexPathForFirstPastMemorySection=_indexPathForFirstPastMemorySection;
 @property(readonly, copy, nonatomic) NSArray *entries; // @synthesize entries=_entries;
+@property(readonly, nonatomic) NSString *diagnosticDescription;
 - (id)inputForItem:(id)arg1;
 - (id)sectionedObjectReferenceForMemoryUUID:(id)arg1;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
@@ -36,7 +37,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) unsigned long long identifier;
+@property(readonly, nonatomic) long long identifier;
 @property(readonly) Class superclass;
 
 @end

@@ -17,7 +17,7 @@
     NSString *_modelID;
     NSString *_firmwareVersion;
     NSString *_logicalDeviceID;
-    NSString *_groupID;
+    NSString *_airPlayGroupID;
     _Bool _overrideGroupID;
     NSData *_MACAddress;
     NSDictionary *_modelSpecificInfo;
@@ -25,6 +25,11 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)producesLowFidelityAudio;
+- (_Bool)supportsSharePlayHandoff;
+- (_Bool)supportsRapportRemoteControlTransport;
+- (unsigned long long)configuredClusterSize;
+- (_Bool)supportsMultiplayer;
 - (_Bool)supportsHAP;
 - (id)bluetoothID;
 - (void)setVolume:(float)arg1;
@@ -36,11 +41,16 @@
 - (_Bool)isLocalDevice;
 - (_Bool)hasBatteryLevel;
 - (float)batteryLevel;
+- (unsigned int)clusterType;
 - (id)clusterComposition;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
-@property(readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) _Bool headTrackedSpatialAudioActive;
-@property(readonly, nonatomic) _Bool supportsHeadTrackedSpatialAudio;
+- (_Bool)setHeadTrackedSpatialAudioMode:(id)arg1 error:(id *)arg2;
+- (_Bool)setAllowsHeadTrackedSpatialAudio:(_Bool)arg1 error:(id *)arg2;
+- (id)headTrackedSpatialAudioMode;
+- (_Bool)isHeadTrackedSpatialAudioActive;
+- (_Bool)allowsHeadTrackedSpatialAudio;
+- (_Bool)supportsHeadTrackedSpatialAudio;
 - (id)availableBluetoothListeningModes;
 - (_Bool)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 - (id)currentBluetoothListeningMode;
@@ -68,8 +78,8 @@
 - (id)playingPairedDeviceName;
 - (id)modelSpecificInfo;
 - (id)MACAddress;
-- (id)groupID;
-- (void)setGroupID:(id)arg1;
+- (id)airPlayGroupID;
+- (void)setAirPlayGroupID:(id)arg1;
 - (id)firmwareVersion;
 - (id)modelID;
 - (id)logicalDeviceID;

@@ -11,10 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axInstallPhotosSectionHeaderView;
-- (void)registerClass:(Class)arg1 forSupplementaryViewOfKind:(id)arg2 withReuseIdentifier:(id)arg3;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

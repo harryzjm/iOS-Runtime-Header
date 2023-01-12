@@ -20,6 +20,7 @@
 + (id)spaceArrowAttributedStringWithBaseAttributes:(id)arg1;
 + (id)upgradeButton;
 + (id)buttonWithType:(long long)arg1;
++ (_Bool)shouldShowForPremiumOffer:(id)arg1;
 + (_Bool)shouldShowForOffer:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSAttributedString *attributedDetailedLink; // @synthesize attributedDetailedLink=_attributedDetailedLink;

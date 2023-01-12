@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <IDSFoundation/NSSecureCoding-Protocol.h>
+
 @class IDSCertifiedDeliveryReplayKey, NSData, NSDictionary, NSNumber, NSString;
 
-@interface IDSCertifiedDeliveryContext : NSObject
+@interface IDSCertifiedDeliveryContext : NSObject <NSSecureCoding>
 {
     _Bool _generateDeliveryReceipt;
     NSString *_originalGUID;
@@ -25,6 +27,7 @@
     NSData *_queryHash;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *queryHash; // @synthesize queryHash=_queryHash;
 @property(readonly, nonatomic) NSString *remoteURI; // @synthesize remoteURI=_remoteURI;
@@ -40,6 +43,10 @@
 @property(readonly, nonatomic) NSString *service; // @synthesize service=_service;
 @property(readonly, nonatomic) NSString *originalGUID; // @synthesize originalGUID=_originalGUID;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)dataRepresentation;
+- (id)initWithDataRepresentation:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (id)initWithGUID:(id)arg1 service:(id)arg2 certifiedDeliveryVersion:(long long)arg3 certifiedDeliveryRTS:(id)arg4 senderToken:(id)arg5 failureReason:(id)arg6 failureReasonMessage:(id)arg7 replayKey:(id)arg8 generateDeliveryReceipt:(_Bool)arg9 deliveryStatusContext:(id)arg10 localURI:(id)arg11 remoteURI:(id)arg12 queryHash:(id)arg13;
 - (id)initWithCertifiedDeliveryContext:(id)arg1 queryHash:(id)arg2;

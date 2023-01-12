@@ -11,9 +11,12 @@
 }
 
 + (unsigned long long)residentBytes;
++ (unsigned long long)peakFootprintBytes;
 + (unsigned long long)footprintBytes;
++ (id)humanReadablePeakMemoryFootprint;
 + (id)humanReadableMemoryFootprint;
 + (id)humanReadableResidentMemory;
++ (id)humanReadableMemorySizeWithSize:(unsigned long long)arg1;
 
 @end
 

@@ -10,11 +10,11 @@
 
 @interface _EARFormatter : NSObject
 {
-    struct unique_ptr<SpeechITN, std::__1::default_delete<SpeechITN>> _itn;
+    struct unique_ptr<SpeechITN, std::default_delete<SpeechITN>> _itn;
     NSString *_language;
 }
 
-+ (vector_2f7ba0dc)convertStringsToQuasarTokens:(id)arg1;
++ (vector_b9be07b7)convertStringsToQuasarTokens:(id)arg1;
 + (_Bool)supportedByQuasarConfig:(id)arg1;
 + (void)initialize;
 - (id).cxx_construct;
@@ -25,10 +25,10 @@
 - (id)formattedStringWithStrings:(id)arg1 preToPostItnArray:(id)arg2;
 - (id)formattedStringWithStrings:(id)arg1 task:(id)arg2;
 - (id)formattedStringWithStrings:(id)arg1;
-- (basic_string_90719d97)getOrthography:(const vector_2f7ba0dc *)arg1;
-- (vector_2f7ba0dc)formatWords:(const vector_2f7ba0dc *)arg1 task:(id)arg2 language:(id)arg3;
-- (vector_2f7ba0dc)formatWords:(const vector_2f7ba0dc *)arg1 task:(id)arg2;
-- (vector_2f7ba0dc)formatWords:(const vector_2f7ba0dc *)arg1;
+- (basic_string_0ec669f3)getOrthography:(const void *)arg1;
+- (vector_b9be07b7)formatWords:(const void *)arg1 unrepairedWordsOut:(void *)arg2 task:(id)arg3 language:(id)arg4 leftContext:(const void *)arg5 separateAutoEndPunctuation:(_Bool)arg6 partialResults:(void *)arg7 timestampOffset:(unsigned int)arg8 zeroTimestamp:(_Bool)arg9 continuousListeningConfig:(shared_ptr_0d963592)arg10 itnLeftContext:(const void *)arg11 itnResult:(void *)arg12;
+- (vector_b9be07b7)formatWords:(const void *)arg1 unrepairedWordsOut:(void *)arg2 task:(id)arg3;
+- (vector_b9be07b7)formatWords:(const void *)arg1 unrepairedWordsOut:(void *)arg2;
 - (id)initWithGeneralVoc:(id)arg1 withLexiconEnh:(id)arg2 withItnEnh:(id)arg3;
 - (id)initWithQuasarConfig:(id)arg1 language:(id)arg2;
 - (id)initWithQuasarConfig:(id)arg1;

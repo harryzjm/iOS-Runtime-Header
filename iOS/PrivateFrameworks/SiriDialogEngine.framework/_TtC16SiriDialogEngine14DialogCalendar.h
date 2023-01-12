@@ -13,6 +13,7 @@
     MISSING_TYPE *mockGlobals;
     MISSING_TYPE *secs;
     MISSING_TYPE *utcOffsetSecs;
+    MISSING_TYPE *timeZone;
 }
 
 @end

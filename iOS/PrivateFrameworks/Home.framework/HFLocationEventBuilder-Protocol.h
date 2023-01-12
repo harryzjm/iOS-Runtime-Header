@@ -7,6 +7,6 @@
 #import <Home/NSObject-Protocol.h>
 
 @protocol HFLocationEventBuilder <NSObject>
-@property(readonly, nonatomic) unsigned long long eventType;
+@property(readonly, nonatomic) unsigned long long locationEventType;
 @end
 

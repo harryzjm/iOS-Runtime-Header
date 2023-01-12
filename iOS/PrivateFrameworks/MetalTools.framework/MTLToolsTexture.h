@@ -54,6 +54,8 @@
 - (void)getBytes:(void *)arg1 bytesPerRow:(unsigned long long)arg2 fromRegion:(CDStruct_1e3be3a8)arg3 mipmapLevel:(unsigned long long)arg4;
 - (void)copyFromPixels:(const void *)arg1 rowBytes:(unsigned long long)arg2 imageBytes:(unsigned long long)arg3 toSlice:(unsigned long long)arg4 mipmapLevel:(unsigned long long)arg5 origin:(CDStruct_14f26992)arg6 size:(CDStruct_14f26992)arg7;
 - (void)copyFromSlice:(unsigned long long)arg1 mipmapLevel:(unsigned long long)arg2 origin:(CDStruct_14f26992)arg3 size:(CDStruct_14f26992)arg4 toPixels:(void *)arg5 rowBytes:(unsigned long long)arg6 imageBytes:(unsigned long long)arg7;
+@property(readonly, nonatomic) unsigned long long compressionFootprint;
+@property(readonly) long long compressionType;
 @property(readonly) long long compressionFeedback;
 @property(readonly) _Bool isCompressed;
 @property(readonly, nonatomic) unsigned long long gpuAddress;

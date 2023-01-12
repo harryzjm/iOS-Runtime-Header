@@ -18,6 +18,7 @@
 @property(readonly, nonatomic, getter=isRepresentative) _Bool representative;
 @property(readonly, nonatomic, getter=isManual) _Bool manual;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden;
+- (id)additionalDescription;
 - (id)payloadIDsByPayloadClassIDToDeleteOnInsert;
 - (id)payloadIDForTombstone:(id)arg1;
 - (id)payloadForChangedKeys:(id)arg1;

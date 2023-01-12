@@ -8,30 +8,26 @@
 
 @interface HDSimpleGraphRelationship
 {
-    _Bool _isReverseRelationship;
-    NSString *_name;
     long long _nameID;
+    NSString *_name;
     long long _subjectID;
-    long long _objectID;
     HDSimpleGraphNode *_subject;
+    long long _objectID;
     HDSimpleGraphNode *_object;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak HDSimpleGraphNode *object; // @synthesize object=_object;
-@property(nonatomic) __weak HDSimpleGraphNode *subject; // @synthesize subject=_subject;
+@property(readonly, nonatomic) __weak HDSimpleGraphNode *object; // @synthesize object=_object;
 @property(readonly, nonatomic) long long objectID; // @synthesize objectID=_objectID;
+@property(readonly, nonatomic) __weak HDSimpleGraphNode *subject; // @synthesize subject=_subject;
 @property(readonly, nonatomic) long long subjectID; // @synthesize subjectID=_subjectID;
-@property(readonly, nonatomic) _Bool isReverseRelationship; // @synthesize isReverseRelationship=_isReverseRelationship;
-@property(readonly, nonatomic) long long nameID; // @synthesize nameID=_nameID;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)debugDescription;
-- (id)description;
+@property(readonly, nonatomic) long long nameID; // @synthesize nameID=_nameID;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)work_databaseObjectWithError:(id *)arg1;
-- (id)work_subjectWithError:(id *)arg1;
-- (id)initWithDatabase:(id)arg1 rowID:(long long)arg2 name:(id)arg3 nameID:(long long)arg4 isReverse:(_Bool)arg5 subjectID:(long long)arg6 subject:(id)arg7 objectID:(long long)arg8 object:(id)arg9;
+- (id)description;
+- (id)initWithRowID:(long long)arg1 nameID:(long long)arg2 name:(id)arg3 subjectID:(long long)arg4 subject:(id)arg5 objectID:(long long)arg6 object:(id)arg7;
+- (id)initWithRowID:(long long)arg1;
 - (id)init;
 
 @end

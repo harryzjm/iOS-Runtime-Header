@@ -6,30 +6,36 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
+#import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class HKMCCycleSegment, NSNumber;
+@class HKMCCycleSegment, NSArray, NSNumber, NSString;
 
-@interface HKMCCycle : NSObject <NSSecureCoding>
+@interface HKMCCycle : NSObject <HKRedactedDescription, NSCopying, NSSecureCoding>
 {
     HKMCCycleSegment *_menstruationSegment;
     HKMCCycleSegment *_fertileWindowSegment;
     NSNumber *_lastDayIndex;
+    NSArray *_cycleFactors;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_cycleWithMenstruationSegment:(id)arg1 fertileWindowSegment:(id)arg2 lastDayIndex:(id)arg3 cycleFactors:(id)arg4;
 + (id)_cycleWithMenstruationSegment:(id)arg1 fertileWindowSegment:(id)arg2 lastDayIndex:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSNumber *lastDayIndex; // @synthesize lastDayIndex=_lastDayIndex;
+@property(readonly, copy, nonatomic) NSArray *cycleFactors; // @synthesize cycleFactors=_cycleFactors;
+@property(readonly, copy, nonatomic) NSNumber *lastDayIndex; // @synthesize lastDayIndex=_lastDayIndex;
 @property(readonly, nonatomic) HKMCCycleSegment *fertileWindowSegment; // @synthesize fertileWindowSegment=_fertileWindowSegment;
 @property(readonly, nonatomic) HKMCCycleSegment *menstruationSegment; // @synthesize menstruationSegment=_menstruationSegment;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)redactedDescription;
+@property(readonly, copy) NSString *hk_redactedDescription;
 - (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_initWithMenstruationSegment:(id)arg1 fertileWindowSegment:(id)arg2 lastDayIndex:(id)arg3;
+- (id)_initWithMenstruationSegment:(id)arg1 fertileWindowSegment:(id)arg2 lastDayIndex:(id)arg3 cycleFactors:(id)arg4;
 
 @end
 

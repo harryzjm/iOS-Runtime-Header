@@ -11,7 +11,7 @@
 }
 
 + (id)dateBeforePurgingThumbnailsForUrgency:(int)arg1;
-+ (void)setUpCacheDeleteWithThumbnailAdditionIndex:(id)arg1 cacheThread:(id)arg2;
++ (void)setUpCacheDeleteWithThumbnailAdditionIndex:(id)arg1;
 
 @end
 

@@ -6,13 +6,13 @@
 
 @interface TSCH3DChartAddRotationBoundsSceneObjectMode
 {
-    int mRotationType;
+    int _rotationType;
 }
 
-@property(nonatomic) int rotationType; // @synthesize rotationType=mRotationType;
+@property(nonatomic) int rotationType; // @synthesize rotationType=_rotationType;
 - (void)getBounds:(id)arg1;
-- (void)p_submitGeometryForChartBounds:(const box_a3bd9649 *)arg1 pivot:(const tvec3_17f03ce0 *)arg2 thicknessIndex:(unsigned long long)arg3 pipeline:(id)arg4;
-- (double)p_radiusFromBounds:(const box_a3bd9649 *)arg1 pivot:(const tvec3_17f03ce0 *)arg2;
+- (void)p_submitGeometryForChartBounds:(const void *)arg1 pivot:(const void *)arg2 thicknessIndex:(unsigned long long)arg3 pipeline:(id)arg4;
+- (double)p_radiusFromBounds:(const void *)arg1 pivot:(const void *)arg2;
 
 @end
 

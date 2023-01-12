@@ -6,6 +6,8 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol CSEndpointAnalyzer <NSObject>
 @property(readonly, nonatomic) double lastStartOfVoiceActivityTime;
 @property(readonly, nonatomic) double lastEndOfVoiceActivityTime;
@@ -18,6 +20,7 @@
 - (void)reset;
 
 @optional
+@property(retain, nonatomic) NSString *mhId;
 @property(nonatomic) _Bool saveSamplesSeenInReset;
 @property(nonatomic) double endWaitTime;
 @property(nonatomic) double interspeechWaitTime;

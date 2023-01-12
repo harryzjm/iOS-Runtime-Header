@@ -4,97 +4,78 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/PageRangeDelegate-Protocol.h>
-#import <UIKitCore/UICollectionViewDataSourcePrefetching-Protocol.h>
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <UIKitCore/UIDocumentInteractionControllerDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
-#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
-#import <UIKitCore/UIViewControllerPreviewingDelegate_Private-Protocol.h>
+#import <UIKitCore/UIPrintPreviewDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSOperationQueue, NSString, NSURL, UIDocumentInteractionController, UIImageView, UILabel, UIPrintPanelViewController, UIPrintPaper, UIView;
+@class NSArray, NSMutableArray, NSOperationQueue, NSString, NSURL, UIDocumentInteractionController, UIImageView, UIPrintPanelViewController, UIPrintPreviewInfo, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIPrintPreviewViewController <UIGestureRecognizerDelegate, UIViewControllerPreviewingDelegate_Private, UIDocumentInteractionControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UIScrollViewDelegate, PageRangeDelegate, UINavigationControllerDelegate>
+@interface UIPrintPreviewViewController <UIPrintPreviewDelegate, UIGestureRecognizerDelegate, UIDocumentInteractionControllerDelegate, UICollectionViewDelegateFlowLayout>
 {
-    long long _numPages;
-    struct CGSize _pageSize;
-    _Bool _grayscalePreview;
-    _Bool _annotationsOnPreview;
-    _Bool _accessibilityScrollTriggered;
-    UIPrintPanelViewController *_printPanelViewController;
-    UIView *_pageLabelBackgroundView;
-    UIImageView *_pageLabelOnImageView;
-    UILabel *_pageLabel;
-    long long _pageIndexOnPageLabel;
-    NSURL *_pdfURL;
     struct CGPDFDocument *_pdfDocRef;
+    struct CGSize _pageSize;
+    double _minPageWith;
     NSOperationQueue *_pageRendererQueue;
-    NSLayoutConstraint *_pageLabelBadgeVerticalPositionConstraint;
-    UIDocumentInteractionController *_documentInteractionController;
-    NSURL *_sharePDFFileURL;
+    _Bool _presentingDocumentInteractionController;
+    _Bool _visibleItemsUpdated;
+    NSURL *_quickLookPDFURL;
+    long long __numPages;
+    NSMutableArray *__arrayOfPageImages;
+    NSArray *__arrayOfCellSizes;
+    UIPrintPreviewInfo *__previewInfo;
     UIImageView *_pinchGestureBeginningPageImageView;
     UIImageView *_pinchAnimationView;
     UIView *_pinchAnimationWhiteBackgroundView;
-    struct CGPoint _pinchGestureLastPoint;
     double _pinchGestureLastScale;
-    _Bool _scaleUpOnDestinationPaper;
-    _Bool _presentingDocumentInteractionController;
-    NSMutableArray *_arrayOfPageImages;
-    NSArray *_arrayOfCellSizes;
-    NSURL *_quickLookPDFURL;
-    UIPrintPaper *_destinationPaper;
-    NSString *_pdfPassword;
-    long long _initialPageIndexToCenter;
+    NSURL *_pdfURL;
+    NSURL *_sharePDFFileURL;
+    UIDocumentInteractionController *_documentInteractionController;
+    NSArray *_updatedvisibleItems;
+    UIPrintPanelViewController *_printPanelViewController;
+    struct CGPoint _pinchGestureLastPoint;
 }
 
 - (void).cxx_destruct;
-@property _Bool presentingDocumentInteractionController; // @synthesize presentingDocumentInteractionController=_presentingDocumentInteractionController;
-@property(readonly) long long numPages; // @synthesize numPages=_numPages;
-@property long long initialPageIndexToCenter; // @synthesize initialPageIndexToCenter=_initialPageIndexToCenter;
-@property(retain) NSString *pdfPassword; // @synthesize pdfPassword=_pdfPassword;
-@property _Bool scaleUpOnDestinationPaper; // @synthesize scaleUpOnDestinationPaper=_scaleUpOnDestinationPaper;
-@property(retain) UIPrintPaper *destinationPaper; // @synthesize destinationPaper=_destinationPaper;
+@property(retain) UIPrintPanelViewController *printPanelViewController; // @synthesize printPanelViewController=_printPanelViewController;
+@property(retain) NSArray *updatedvisibleItems; // @synthesize updatedvisibleItems=_updatedvisibleItems;
+@property _Bool visibleItemsUpdated; // @synthesize visibleItemsUpdated=_visibleItemsUpdated;
+@property(retain) UIDocumentInteractionController *documentInteractionController; // @synthesize documentInteractionController=_documentInteractionController;
+@property(retain) NSURL *sharePDFFileURL; // @synthesize sharePDFFileURL=_sharePDFFileURL;
+@property(retain) NSURL *pdfURL; // @synthesize pdfURL=_pdfURL;
+@property double pinchGestureLastScale; // @synthesize pinchGestureLastScale=_pinchGestureLastScale;
+@property struct CGPoint pinchGestureLastPoint; // @synthesize pinchGestureLastPoint=_pinchGestureLastPoint;
+@property(retain) UIView *pinchAnimationWhiteBackgroundView; // @synthesize pinchAnimationWhiteBackgroundView=_pinchAnimationWhiteBackgroundView;
+@property(retain) UIImageView *pinchAnimationView; // @synthesize pinchAnimationView=_pinchAnimationView;
+@property(retain) UIImageView *pinchGestureBeginningPageImageView; // @synthesize pinchGestureBeginningPageImageView=_pinchGestureBeginningPageImageView;
+@property(retain) UIPrintPreviewInfo *_previewInfo; // @synthesize _previewInfo=__previewInfo;
+@property(retain) NSArray *_arrayOfCellSizes; // @synthesize _arrayOfCellSizes=__arrayOfCellSizes;
+@property(retain) NSMutableArray *_arrayOfPageImages; // @synthesize _arrayOfPageImages=__arrayOfPageImages;
+@property long long _numPages; // @synthesize _numPages=__numPages;
 @property(retain) NSURL *quickLookPDFURL; // @synthesize quickLookPDFURL=_quickLookPDFURL;
-@property(retain) NSArray *arrayOfCellSizes; // @synthesize arrayOfCellSizes=_arrayOfCellSizes;
-@property(retain) NSMutableArray *arrayOfPageImages; // @synthesize arrayOfPageImages=_arrayOfPageImages;
-- (id)indexPathNearestToPointInCollectionView:(struct CGPoint)arg1;
-@property(readonly) long long currentCenterPageIndex;
-- (_Bool)accessibilityScroll:(long long)arg1;
-- (long long)_adjustScrollDirectionForLayout:(long long)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
+@property _Bool presentingDocumentInteractionController; // @synthesize presentingDocumentInteractionController=_presentingDocumentInteractionController;
+- (void)handlePinch:(id)arg1;
+- (void)animateCellAndPresentDocumentInteractionController;
 - (id)documentInteractionControllerViewControllerForPreview:(id)arg1;
 - (id)excludedActivityTypesForDocumentInteractionController:(id)arg1;
 - (void)documentInteractionController:(id)arg1 didEndSendingToApplication:(id)arg2;
 - (void)documentInteractionControllerDidEndPreview:(id)arg1;
 - (void)previewPDF;
 - (id)documentInteractionControllerByPreparedForPreviewing;
+- (id)getSharedPDFFileURL;
+- (id)_newTempURLForPreviewing;
 - (id)collectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
 - (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (id)printPagePreviewActionItemsWithPageIndex:(long long)arg1;
 - (void)collectionView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)printPagePreviewViewControllerForItemAtPageIndex:(long long)arg1;
-- (id)_newTempURLForPreviewing;
-- (_Bool)canBecomeFirstResponder;
-- (_Bool)collectionView:(id)arg1 canPerformAction:(SEL)arg2 forItemAtIndexPath:(id)arg3 withSender:(id)arg4;
-- (_Bool)collectionView:(id)arg1 shouldShowMenuForItemAtIndexPath:(id)arg2;
-- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
-- (void)configureCell:(id)arg1 atIndexPath:(id)arg2;
-- (void)_mainQueue_reloadItemAtIndex:(id)arg1;
-- (void)fetchPageInBackground:(unsigned long long)arg1 reloadWhenDone:(_Bool)arg2;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (void)pageRangeUpdated;
 - (_Bool)canShowMenuBar;
+- (id)previewCollectionView;
+- (void)pageRangeUpdated;
+- (void)_removeQuickLookPDFURL;
+- (void)updateQuicklookPDF;
 - (void)addAllPages:(id)arg1;
 - (_Bool)canAddAllPages:(id)arg1;
 - (void)removePage:(id)arg1 forPageIndex:(long long)arg2;
@@ -106,34 +87,34 @@ __attribute__((visibility("hidden")))
 - (void)setStartPage:(id)arg1 forPageIndex:(long long)arg2;
 - (_Bool)canSetStartPage:(id)arg1 forPageIndex:(long long)arg2;
 - (_Bool)pageIndexIsInRange:(long long)arg1;
-- (void)pageBadgeTapped:(id)arg1;
-- (void)handleTap:(id)arg1;
-- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
-- (_Bool)locationInTapTargetOfPageLabelBadge:(struct CGPoint)arg1;
-- (id)gestureRecognizersOfVisibleCells;
-- (void)handlePinch:(id)arg1;
-- (void)animateCellAndPresentDocumentInteractionController;
-- (void)updatePageLabel;
-- (void)traitCollectionDidChange:(id)arg1;
-- (id)pathOfCenterMostCell;
-- (void)trackCenterCell;
-- (id)getPageImageForPage:(long long)arg1 grayscale:(_Bool)arg2 deepColor:(_Bool)arg3;
-@property(retain) NSURL *pdfURL;
-- (void)resetCellSizesArrayCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)pageBadgeTapped:(long long)arg1;
+- (_Bool)canModifyPageRange;
+- (struct _NSRange)previewVisibleItemsRange;
+- (id)sortedVisibleIndexPaths;
+- (_Bool)visibleItemsUpdateNeeded;
+- (void)reloadVisibleItems:(_Bool)arg1;
 - (void)resetAllPageImages;
-@property _Bool annotationsOnPreview;
-@property _Bool grayscalePreview;
-- (void)didReceiveMemoryWarning;
-- (void)updatePageBadgeImage;
-- (void)updatePageNumberBadgeLocation;
-- (void)dealloc;
-- (void)updateLayout;
-- (void)_mainQueue_UpdateLayout;
-- (void)viewDidAppear:(_Bool)arg1;
+- (void)_mainQueue_reloadItemAtIndex:(id)arg1;
+- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
+- (void)fetchPageInBackground:(unsigned long long)arg1 reloadWhenDone:(_Bool)arg2;
+- (void)configureCell:(id)arg1 atIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (struct CGSize)itemViewSize;
+- (void)updatePageRange:(id)arg1;
+- (void)updateHeaderFooterSizes;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)resetPrintPreview;
+- (void)updatePrintPreviewInfo:(id)arg1;
+- (void)setScrollDirection:(long long)arg1;
+- (void)updatePdfURL:(id)arg1 options:(id)arg2 completed:(_Bool)arg3;
+- (void)resetCellSizesArrayCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateLayoutWithPdfUpdate:(_Bool)arg1;
 - (void)viewDidLoad;
-- (double)pageLabelBottomSpace;
-- (id)initWithViewSize:(struct CGSize)arg1 printPanelViewController:(id)arg2;
+- (void)dealloc;
+- (id)initWithScrollDirection:(long long)arg1 printPanelViewController:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

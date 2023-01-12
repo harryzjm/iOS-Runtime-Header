@@ -44,6 +44,7 @@
 @property(readonly) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) __weak id <HMDDataStreamTransportDelegate> delegate; // @synthesize delegate;
+- (void)setTrafficClass:(unsigned long long)arg1;
 - (void)_handleInterruptCharacteristicValue:(id)arg1;
 - (void)_handleCharacteristicsValueUpdated:(id)arg1;
 - (void)_handleReceivedData:(id)arg1;

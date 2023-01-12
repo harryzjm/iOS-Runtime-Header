@@ -10,18 +10,18 @@
 
 @interface TSCH3DRenderingLightingModel : NSObject
 {
-    TSCH3DLightingModel *mLightingModel;
-    NSNumber *mPercentage;
-    _Bool mHasTransparency;
+    TSCH3DLightingModel *_lightingModel;
+    NSNumber *_percentage;
+    _Bool _hasTransparency;
 }
 
 + (id)renderingLightingModelWithLightingModel:(id)arg1 percentage:(id)arg2 hasTransparency:(_Bool)arg3;
 + (id)renderingLightingModelWithFill:(id)arg1 lightings:(id)arg2;
 + (id)p_lightingModelFromFill:(id)arg1 lightings:(id)arg2 returningTransparency:(_Bool *)arg3;
-@property(readonly, nonatomic) _Bool hasTransparency; // @synthesize hasTransparency=mHasTransparency;
-@property(readonly, nonatomic) TSCH3DLightingModel *lightingModel; // @synthesize lightingModel=mLightingModel;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasTransparency; // @synthesize hasTransparency=_hasTransparency;
+@property(readonly, nonatomic) TSCH3DLightingModel *lightingModel; // @synthesize lightingModel=_lightingModel;
 - (void)affect:(id)arg1 states:(id)arg2 scene:(id)arg3 texturePool:(id)arg4;
-- (void)dealloc;
 - (id)initWithLightingModel:(id)arg1 percentage:(id)arg2 hasTransparency:(_Bool)arg3;
 
 @end

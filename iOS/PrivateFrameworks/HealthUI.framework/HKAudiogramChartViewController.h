@@ -111,7 +111,7 @@
 - (id)_averageSectionFromAudiogram:(id)arg1;
 - (id)_sectionsFromAudiogram:(id)arg1;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
-- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
+- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4 recoveringFromError:(_Bool)arg5;
 - (void)_updateAudiogramSamples:(id)arg1 error:(id)arg2;
 - (void)queryForAudiogramsUsingHealthStore:(id)arg1;
 - (void)_addContextView;

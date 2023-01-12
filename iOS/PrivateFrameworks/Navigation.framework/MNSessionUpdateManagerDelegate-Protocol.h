@@ -6,15 +6,13 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOETATrafficUpdateRequest, GEOETATrafficUpdateResponse, GEOTransitRouteUpdateResponse, MNActiveRouteInfo, MNLocation, MNSessionUpdateManager, NSError, NSSet;
+@class GEOETATrafficUpdateRequest, GEOTransitRouteUpdateResponse, MNActiveRouteInfo, MNLocation, MNSessionUpdateManager, MNSessionUpdateResponseInfo, NSError, NSSet;
 
 @protocol MNSessionUpdateManagerDelegate <NSObject>
 - (MNLocation *)userLocationForUpdateManager:(MNSessionUpdateManager *)arg1;
 - (MNActiveRouteInfo *)routeInfoForUpdateManager:(MNSessionUpdateManager *)arg1;
 - (_Bool)wantsETAUpdates;
-- (void)updateManager:(MNSessionUpdateManager *)arg1 didReceiveETAError:(NSError *)arg2;
-- (void)updateManager:(MNSessionUpdateManager *)arg1 didUpdateETAForRouteInfo:(MNActiveRouteInfo *)arg2;
-- (void)updateManager:(MNSessionUpdateManager *)arg1 didReceiveETAResponse:(GEOETATrafficUpdateResponse *)arg2 toRequest:(GEOETATrafficUpdateRequest *)arg3;
+- (void)updateManager:(MNSessionUpdateManager *)arg1 didReceiveETAResponse:(MNSessionUpdateResponseInfo *)arg2;
 - (void)updateManager:(MNSessionUpdateManager *)arg1 willSendETARequest:(GEOETATrafficUpdateRequest *)arg2;
 - (void)updateManager:(MNSessionUpdateManager *)arg1 didReceiveTransitError:(NSError *)arg2;
 - (void)updateManager:(MNSessionUpdateManager *)arg1 didReceiveTransitUpdates:(NSSet *)arg2;

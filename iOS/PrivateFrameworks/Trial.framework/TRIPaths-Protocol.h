@@ -11,7 +11,9 @@
 + (NSString *)resolveHardCodedPath:(NSString *)arg1;
 - (_Bool)validateWithError:(id *)arg1;
 - (id <TRIPaths>)pathsForContainer:(TRIAppContainer *)arg1 asClientProcess:(_Bool)arg2;
+- (NSString *)decryptionKeyDirForAppleInternal:(_Bool)arg1;
 - (NSString *)assetStore;
+- (NSString *)localTempDir;
 - (NSString *)experimentsDir;
 - (NSString *)treatmentsDir;
 - (NSString *)deviceIdentifierFile;
@@ -26,6 +28,7 @@
 - (NSString *)containerDir;
 - (NSString *)logDir;
 - (NSString *)databaseDir;
+- (NSString *)trialRootVolume;
 - (NSString *)trialRootDir;
 @end
 

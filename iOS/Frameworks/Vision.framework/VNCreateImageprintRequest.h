@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+@class NSArray, NSNumber;
 
 @interface VNCreateImageprintRequest
 {
@@ -16,6 +16,9 @@
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 @property(retain, nonatomic) NSNumber *timeStamp;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

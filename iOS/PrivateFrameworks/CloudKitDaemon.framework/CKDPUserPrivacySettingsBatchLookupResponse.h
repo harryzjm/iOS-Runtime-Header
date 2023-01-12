@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUserPrivacySettingsBatchLookupResponse : PBCodable <NSCopying>
 {
     NSMutableArray *_containerPrivacySettings;

@@ -10,6 +10,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGAffineTransform {
+    double a;
+    double b;
+    double c;
+    double d;
+    double tx;
+    double ty;
+};
+
 struct CGPoint {
     double x;
     double y;
@@ -25,6 +34,11 @@ struct CGSize {
     double height;
 };
 
+struct CGVector {
+    double dx;
+    double dy;
+};
+
 struct NSDirectionalEdgeInsets {
     double top;
     double leading;
@@ -33,15 +47,15 @@ struct NSDirectionalEdgeInsets {
 };
 
 struct UIEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
 
 struct UIOffset {
-    double _field1;
-    double _field2;
+    double horizontal;
+    double vertical;
 };
 
 struct _NSRange {
@@ -52,7 +66,7 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool _field1[43];
+    _Bool _field1[44];
     char _field2[64];
     char _field3[64];
     char _field4[256];
@@ -87,7 +101,7 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :1;
+    unsigned int :2;
     unsigned int :2;
     unsigned int :1;
     unsigned int _field27;
@@ -101,12 +115,15 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
+    unsigned int :1;
     double _field31;
     unsigned int :1;
     unsigned int :1;
     char _field32[100];
     char _field33[100];
-} CDStruct_3ada4cd2;
+    char _field34[256];
+    char _field35[256];
+} CDStruct_85bde7ba;
 
 typedef struct {
     double minX;

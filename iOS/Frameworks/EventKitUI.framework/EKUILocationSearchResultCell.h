@@ -10,7 +10,7 @@
 {
 }
 
-- (id)description;
+- (id)defaultContentConfiguration;
 - (void)updateSeparatorInset;
 - (void)safeAreaInsetsDidChange;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

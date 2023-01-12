@@ -8,16 +8,19 @@
 
 #import <GeoServices/GEONavigationServerPushStateXPCInterface-Protocol.h>
 
-@class GEONavdPeer, NSData, NSMutableArray, NSString;
+@class GEOComposedRoute, GEOLocation, GEONavdPeer, NSData, NSMutableSet, NSString;
 
 @interface GEONavigationServer : NSObject <GEONavigationServerPushStateXPCInterface>
 {
     GEONavdPeer *_pushStatePeer;
-    NSMutableArray *_listenerPeers;
+    NSMutableSet *_listenerPeers;
+    NSMutableSet *_unEntitledPeers;
     _Bool _isListenerConnectionOpen;
     int _listenerConnectionOpenToken;
     unsigned long long _state;
     int _transportType;
+    GEOLocation *_lastLocation;
+    GEOComposedRoute *_route;
     NSData *_routeSummaryData;
     NSData *_transitSummaryData;
     NSData *_guidanceStateData;
@@ -38,8 +41,8 @@
 - (void)_openPushStatePeerConnection:(id)arg1;
 - (void)clearAllData;
 - (void)_sendMessage:(long long)arg1 data:(id)arg2 toPeer:(id)arg3;
-- (void)_forEachValidPeerProxyOnMainQueue:(CDUnknownBlockType)arg1;
-- (void)_forEachValidPeerProxy:(CDUnknownBlockType)arg1;
+- (void)_forEachValidPeerOnMainQueue:(CDUnknownBlockType)arg1;
+- (void)_forEachValidPeer:(CDUnknownBlockType)arg1;
 - (void)_updateAllPeersWithMessage:(long long)arg1 data:(id)arg2;
 - (void)_requestNavigationVoiceVolumeWithPeer:(id)arg1;
 - (void)_requestPositionFromDestinationWithPeer:(id)arg1;
@@ -52,6 +55,7 @@
 - (void)_requestGuidanceStateWithPeer:(id)arg1;
 - (void)_requestTransitSummaryWithPeer:(id)arg1;
 - (void)_requestRouteSummaryWithPeer:(id)arg1;
+- (void)_requestRouteWithPeer:(id)arg1;
 - (void)setCurrentRoadName:(id)arg1;
 - (void)setNavigationVoiceVolumeWithData:(id)arg1;
 - (void)setRouteSummaryWithPositionFromDestinationData:(id)arg1;
@@ -64,8 +68,11 @@
 - (void)setRouteSummaryWithGuidanceStateData:(id)arg1;
 - (void)setRouteSummaryWithTransitSummaryData:(id)arg1;
 - (void)setRouteSummaryWithNavigationRouteSummaryData:(id)arg1;
+- (void)setArrivedAtWaypoint:(id)arg1 endOfLegIndex:(unsigned long long)arg2;
+- (void)updateTrafficForCurrentRoute:(id)arg1;
+- (void)setRoute:(id)arg1;
+- (void)setLocation:(id)arg1;
 - (void)setNavigationSessionState:(unsigned long long)arg1 transportType:(int)arg2;
-- (void)dealloc;
 - (_Bool)shouldAcceptNewConnection:(id)arg1 shouldCreateNavigationPeer:(_Bool)arg2;
 - (id)init;
 

@@ -8,7 +8,7 @@
 
 #import <EmailDaemon/EFCancelable-Protocol.h>
 
-@class EDMessagePersistence, EFCancelationToken, EFQuery, EFQueue, EMMailboxScope, NSMutableSet, NSString;
+@class EDMessagePersistence, EFCancelationToken, EFQuery, EFQueue, EMMailboxScope, NSMutableArray, NSMutableSet, NSString;
 
 @interface EDPersistedMessageQueryIterator : NSObject <EFCancelable>
 {
@@ -20,6 +20,8 @@
     long long _remaining;
     NSMutableSet *_seenGlobalMessages;
     CDUnknownBlockType _handler;
+    NSMutableArray *_batchedMessages;
+    unsigned long long _batchSize;
 }
 
 - (void).cxx_destruct;
@@ -28,7 +30,7 @@
 - (void)addPersistedMessages:(id)arg1;
 - (void)addPersistedMessage:(id)arg1;
 - (void)flush;
-- (void)_processPersistedMessages:(id)arg1;
+- (void)_processPersistedMessages:(id)arg1 forceFlush:(_Bool)arg2;
 - (id)initWithMessagePersistence:(id)arg1 query:(id)arg2 batchSize:(long long)arg3 firstBatchSize:(long long)arg4 limit:(long long)arg5 handler:(CDUnknownBlockType)arg6;
 
 // Remaining properties

@@ -6,9 +6,11 @@
 
 #import <ExtensionFoundation/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, NSURL;
 
 @protocol EXExtensionPoint <NSObject>
+@property(readonly) NSURL *url;
+@property(readonly) unsigned long long variant;
 @property(readonly) unsigned int platform;
 @property(readonly) NSDictionary *SDKDictionary;
 @property(readonly) NSString *identifier;

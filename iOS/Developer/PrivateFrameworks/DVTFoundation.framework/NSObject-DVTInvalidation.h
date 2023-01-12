@@ -8,6 +8,8 @@
 
 #import <DVTFoundation/DVTSimpleSerialization-Protocol.h>
 
+@class NSArray;
+
 @interface NSObject (DVTInvalidation) <DVTSimpleSerialization>
 + (void)dvt_synthesizeInvalidationWithDeallocAssertionBehavior:(unsigned long long)arg1 multipleInvalidationAssertionBehavior:(unsigned long long)arg2;
 + (void)dvt_synthesizeInvalidation;
@@ -18,6 +20,7 @@
 + (void)synthesizeMutableArrayProperty:(id)arg1 withInstanceVariable:(id)arg2;
 + (id)descriptionForAssertionMessage;
 + (Class)dvt_class;
++ (id)dvt_keyPathOnSelfForUserDefaultsKey:(id)arg1;
 + (id)dvt_creationBacktracesOfObservingTokensForObservedObject:(id)arg1;
 + (void)dvt_cancelAllObservingTokensForOwner:(id)arg1;
 - (void)dvt_performAdditionalInvalidation;
@@ -43,10 +46,18 @@
 - (void)dvt_performVoidReturningSelector:(SEL)arg1;
 - (id)dvt_performNonOwnershipTransferingSelector:(SEL)arg1 withObject:(id)arg2;
 - (id)dvt_performNonOwnershipTransferingSelector:(SEL)arg1;
+- (void)dvt_broadcast:(id)arg1 userInfo:(id)arg2;
+- (void)dvt_broadcast:(id)arg1;
+- (id)dvt_subscribeToBroadcast:(id)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)dvt_subscribeToBroadcast:(id)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (id)dvt_subscribeToBroadcast:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)dvt_subscribeToBroadcast:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)dvt_cloneByArchiving;
 - (id)descriptionForAssertionMessage;
 - (void)_dvt_treeDescription:(id)arg1 ofKeyPathsAffectingValueForKey:(id)arg2 depth:(int)arg3;
 - (id)dvt_treeDescriptionOfKeyPathsAffectingValueForKey:(id)arg1;
 - (id)dvt_observationInfoSummary;
+- (id)_dvt_standardUserDefaults;
 - (void)dvt_changeValueForKeys:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)dvt_changeValueForKey:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)dvt_newSharedObserverForKeyPath:(id)arg1 observeInitial:(_Bool)arg2 withHandlerBlock:(CDUnknownBlockType)arg3;
@@ -64,5 +75,6 @@
 - (id)dvt_sharedObserverForKeyPath:(id)arg1;
 - (void)_dvt_removeObserverFromSharedObserver:(id)arg1 fromKeyPath:(id)arg2 trackingIndexProvider:(CDUnknownBlockType)arg3;
 - (id)_dvt_addSharedObserverForKeyPath:(id)arg1 observeInitial:(_Bool)arg2 block:(CDUnknownBlockType)arg3;
+@property(nonatomic, readonly) NSArray *dvt_reflectingDebugDescriptionKeyPaths;
 @end
 

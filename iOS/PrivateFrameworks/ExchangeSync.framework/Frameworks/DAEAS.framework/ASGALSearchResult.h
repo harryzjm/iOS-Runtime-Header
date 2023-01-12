@@ -21,6 +21,7 @@
     NSString *_homePhone;
     NSString *_mobilePhone;
     NSString *_emailAddress;
+    NSString *_displayName;
     NSData *_photoData;
     NSDictionary *_applicationData;
     NSMutableArray *_mClasses;
@@ -38,6 +39,7 @@
 @property(retain, nonatomic) NSMutableArray *mClasses; // @synthesize mClasses=_mClasses;
 @property(retain, nonatomic) NSDictionary *applicationData; // @synthesize applicationData=_applicationData;
 @property(copy, nonatomic) NSData *photoData; // @synthesize photoData=_photoData;
+@property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property(copy, nonatomic) NSString *mobilePhone; // @synthesize mobilePhone=_mobilePhone;
 @property(copy, nonatomic) NSString *homePhone; // @synthesize homePhone=_homePhone;

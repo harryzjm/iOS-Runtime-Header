@@ -33,6 +33,7 @@
 - (_Bool)containsInstance:(id)arg1;
 - (_Bool)containsProcess:(id)arg1;
 - (_Bool)removeProcess:(id)arg1;
+- (_Bool)addProcess:(id)arg1 existingProcess:(out id *)arg2;
 - (_Bool)addProcess:(id)arg1;
 - (id)allProcesses;
 - (id)init;

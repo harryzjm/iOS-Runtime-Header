@@ -11,15 +11,18 @@
 #import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class NSString;
+@class NSString, SNTimeDurationConstraint;
 
 @interface SNCreateFeaturePrintRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
     float _overlapFactor;
+    SNTimeDurationConstraint *_windowDurationConstraint;
     long long _featurePrintType;
+    CDStruct_1b6d18a9 _windowDuration;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -28,8 +31,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)createAnalyzerWithError:(id *)arg1;
+@property(readonly, nonatomic) SNTimeDurationConstraint *windowDurationConstraint; // @synthesize windowDurationConstraint=_windowDurationConstraint;
+@property(nonatomic) CDStruct_1b6d18a9 windowDuration; // @synthesize windowDuration=_windowDuration;
 @property(nonatomic) float overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 - (id)init;
+- (id)initWithFeaturePrintType:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

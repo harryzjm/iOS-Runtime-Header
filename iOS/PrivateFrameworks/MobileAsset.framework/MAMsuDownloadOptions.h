@@ -17,9 +17,13 @@
     NSString *_prerequisiteProductVersion;
     NSString *_prerequisiteReleaseType;
     NSString *_downloadAuthorizationHeader;
+    NSString *_liveAssetAudienceUUID;
+    NSString *_purpose;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSString *purpose; // @synthesize purpose=_purpose;
+@property(retain, nonatomic) NSString *liveAssetAudienceUUID; // @synthesize liveAssetAudienceUUID=_liveAssetAudienceUUID;
 @property(retain, nonatomic) NSString *downloadAuthorizationHeader; // @synthesize downloadAuthorizationHeader=_downloadAuthorizationHeader;
 @property(nonatomic) _Bool prerequisiteReleaseTypeIsOverridden; // @synthesize prerequisiteReleaseTypeIsOverridden=_prerequisiteReleaseTypeIsOverridden;
 @property(retain, nonatomic) NSString *prerequisiteReleaseType; // @synthesize prerequisiteReleaseType=_prerequisiteReleaseType;

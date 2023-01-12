@@ -12,6 +12,7 @@
 {
     _Bool _neural;
     _Bool _isInstalled;
+    _Bool _isDownloading;
     _Bool _isBuiltInVoice;
     NSString *_name;
     NSString *_identifier;
@@ -19,12 +20,17 @@
     long long _gender;
     long long _footprint;
     NSString *_voicePath;
+    long long _voiceType;
+    long long _fileSize;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) long long fileSize; // @synthesize fileSize=_fileSize;
+@property(nonatomic) long long voiceType; // @synthesize voiceType=_voiceType;
 @property(retain, nonatomic) NSString *voicePath; // @synthesize voicePath=_voicePath;
 @property(readonly, nonatomic) _Bool isBuiltInVoice; // @synthesize isBuiltInVoice=_isBuiltInVoice;
+@property(nonatomic) _Bool isDownloading; // @synthesize isDownloading=_isDownloading;
 @property(readonly, nonatomic) _Bool isInstalled; // @synthesize isInstalled=_isInstalled;
 @property(readonly, nonatomic) _Bool neural; // @synthesize neural=_neural;
 @property(readonly, nonatomic) long long footprint; // @synthesize footprint=_footprint;

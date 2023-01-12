@@ -13,6 +13,9 @@
 - (void)preferredContentSizeDidChangeForPictureInPictureViewController;
 
 @optional
+- (void)notePictureInPictureViewControllerPrefersHiddenFromClonedDisplayDidChange;
+- (void)notePictureInPictureViewControllerTetheringDidUpdate;
+- (void)updateMenuItems;
 - (_Bool)handleDoubleTapGesture;
 - (_Bool)handleTapWhileStashedGesture;
 - (void)relinquishInterfaceOrientationLock;
@@ -20,5 +23,7 @@
 - (void)playbackSourceDidUpdateIsRoutingVideoToHostedWindow:(_Bool)arg1;
 - (void)prepareStopAnimationWithCompletionHandler:(void (^)(void))arg1;
 - (void)performRotateAnimationWithRotation:(long long)arg1 completionHandler:(void (^)(void))arg2;
+- (void)performStopInIsolationWithCompletionHandler:(void (^)(void))arg1;
+- (void)performStartInIsolationWithCompletionHandler:(void (^)(void))arg1;
 @end
 

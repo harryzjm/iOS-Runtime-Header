@@ -6,12 +6,14 @@
 
 #import <CoreDAV/CoreDAVGetAccountPropertiesTaskGroup.h>
 
-@class CalDAVServerVersion, NSSet, NSURL;
+@class CalDAVServerVersion, CoreDAVTask, NSSet, NSString, NSURL;
 
 @interface CalDAVGetAccountPropertiesTaskGroup : CoreDAVGetAccountPropertiesTaskGroup
 {
+    CoreDAVTask *_secondTask;
     _Bool _supportsCalendarUserSearch;
     NSURL *_delegatePrincipalURL;
+    NSURL *_homeURL;
     NSSet *_calendarHomes;
     NSSet *_preferredUserAddresses;
     NSURL *_inboxURL;
@@ -20,10 +22,14 @@
     NSURL *_notificationURL;
     NSURL *_updatedPrincipalURL;
     CalDAVServerVersion *_serverVersion;
+    NSString *_defaultTimedAlarms;
+    NSString *_defaultAllDayAlarms;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool supportsCalendarUserSearch; // @synthesize supportsCalendarUserSearch=_supportsCalendarUserSearch;
+@property(readonly, nonatomic) NSString *defaultAllDayAlarms; // @synthesize defaultAllDayAlarms=_defaultAllDayAlarms;
+@property(readonly, nonatomic) NSString *defaultTimedAlarms; // @synthesize defaultTimedAlarms=_defaultTimedAlarms;
 @property(readonly, nonatomic) CalDAVServerVersion *serverVersion; // @synthesize serverVersion=_serverVersion;
 @property(readonly, nonatomic) NSURL *updatedPrincipalURL; // @synthesize updatedPrincipalURL=_updatedPrincipalURL;
 @property(readonly, nonatomic) NSURL *notificationURL; // @synthesize notificationURL=_notificationURL;
@@ -32,13 +38,16 @@
 @property(readonly, nonatomic) NSURL *inboxURL; // @synthesize inboxURL=_inboxURL;
 @property(readonly, nonatomic) NSSet *preferredUserAddresses; // @synthesize preferredUserAddresses=_preferredUserAddresses;
 @property(readonly, nonatomic) NSSet *calendarHomes; // @synthesize calendarHomes=_calendarHomes;
+@property(retain, nonatomic) NSURL *homeURL; // @synthesize homeURL=_homeURL;
 @property(retain, nonatomic) NSURL *delegatePrincipalURL; // @synthesize delegatePrincipalURL=_delegatePrincipalURL;
 - (void)processPrincipalHeaders:(id)arg1;
 - (_Bool)forceOptionsRequest;
 - (id)userAddresses;
 - (void)_setPropertiesFromParsedResponses:(id)arg1;
+- (void)propFindTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (id)homeSet;
 - (void)startTaskGroup;
+- (id)_copyHomePropertiesPropFindElements;
 - (id)_copyAccountPropertiesPropFindElements;
 - (id)description;
 

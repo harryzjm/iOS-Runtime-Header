@@ -14,6 +14,8 @@
 
 @property(nonatomic) double duration; // @dynamic duration;
 @property(nonatomic) float speed;
+@property(nonatomic) unsigned int highFrameRateReason;
+@property(nonatomic) struct CAFrameRateRange preferredFrameRateRange;
 @property(nonatomic) double frameInterval;
 @property(retain, nonatomic) CAMediaTimingFunction *timingFunction;
 @property(nonatomic) double delay;

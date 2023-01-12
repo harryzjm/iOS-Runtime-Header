@@ -26,6 +26,7 @@
 - (_Bool)_queue_isPasscodeLockedFromLockState:(int)arg1;
 - (int)_queue_fetchKeybagState;
 - (void)_queue_refreshState;
+- (id)stringForStashMode:(int)arg1;
 - (id)createPreventLockAssertionWithDuration:(double)arg1;
 - (_Bool)disableKeybagStash;
 - (_Bool)persistKeybagStash;

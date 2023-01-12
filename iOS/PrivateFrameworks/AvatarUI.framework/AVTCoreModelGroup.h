@@ -6,21 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class AVTEditingPreviewMode, NSArray, NSDictionary, NSString;
 
 @interface AVTCoreModelGroup : NSObject
 {
     NSString *_name;
     NSDictionary *_symbolNames;
     NSArray *_categories;
+    AVTEditingPreviewMode *_previewMode;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) AVTEditingPreviewMode *previewMode; // @synthesize previewMode=_previewMode;
 @property(readonly, copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property(readonly, copy, nonatomic) NSDictionary *symbolNames; // @synthesize symbolNames=_symbolNames;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)description;
-- (id)initWithName:(id)arg1 symbolNames:(id)arg2 categories:(id)arg3;
+- (id)initWithName:(id)arg1 symbolNames:(id)arg2 previewMode:(id)arg3 categories:(id)arg4;
 
 @end
 

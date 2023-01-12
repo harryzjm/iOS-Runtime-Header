@@ -9,9 +9,12 @@
 @class UIViewController, WFModuleSummaryView;
 
 @protocol WFModuleSummaryViewDelegate <NSObject>
+- (UIViewController *)viewControllerContainingSummaryView:(WFModuleSummaryView *)arg1;
+
+@optional
+- (void)summaryView:(WFModuleSummaryView *)arg1 disclosureArrowDidChange:(_Bool)arg2;
 - (void)summaryViewDidInvalidateSize:(WFModuleSummaryView *)arg1;
 - (void)summaryViewDidEndEditing:(WFModuleSummaryView *)arg1;
 - (void)summaryViewWillBeginEditing:(WFModuleSummaryView *)arg1;
-- (UIViewController *)viewControllerContainingSummaryView:(WFModuleSummaryView *)arg1;
 @end
 

@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSURLSessionConfiguration, WLKServerConfigurationResponse;
+@class WLKServerConfigurationResponse, WLKSharedFileStorage;
 @protocol OS_dispatch_queue;
 
 @interface WLKConfigurationManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_fetchQueue;
     WLKServerConfigurationResponse *_config;
-    NSURLSessionConfiguration *_sharedCacheSessionConfiguration;
+    WLKSharedFileStorage *_fileCache;
 }
 
 + (id)sharedInstance;

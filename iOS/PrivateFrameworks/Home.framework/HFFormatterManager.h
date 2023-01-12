@@ -16,6 +16,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HFTemperatureFormatter *temperatureFormatter; // @synthesize temperatureFormatter=_temperatureFormatter;
+- (id)timeFormatter;
 - (id)relativeDateFormatter;
 - (id)emptyStringFormatter;
 - (id)identityFormatter;

@@ -11,7 +11,7 @@
 
 + (id)stringForTrafficSignalType:(long long)arg1;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
+- (void)populateDebugNode:(void *)arg1;
 - (id)initWithTrafficSignal:(id)arg1 onRoute:(id)arg2;
 - (id)initWithTrafficSignalType:(long long)arg1 uniqueIdentifier:(id)arg2 routeOffset:(struct PolylineCoordinate)arg3 onRoute:(id)arg4;
 

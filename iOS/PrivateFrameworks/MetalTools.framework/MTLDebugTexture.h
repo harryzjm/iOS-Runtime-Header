@@ -22,13 +22,13 @@
     unsigned long long _bytesPerRow;
     unsigned long long _bytesPerImage;
     unsigned long long _plane;
-    unordered_map_1c15cb27 _activeSubViews;
+    unordered_map_ab6e98fe _activeSubViews;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isLinearTexture; // @synthesize isLinearTexture=_isLinearTexture;
-@property(nonatomic) unordered_map_1c15cb27 activeSubViews; // @synthesize activeSubViews=_activeSubViews;
+@property(nonatomic) unordered_map_ab6e98fe activeSubViews; // @synthesize activeSubViews=_activeSubViews;
 @property(readonly, nonatomic) unsigned long long plane; // @synthesize plane=_plane;
 @property(readonly, nonatomic) unsigned long long bytesPerImage; // @synthesize bytesPerImage=_bytesPerImage;
 @property(readonly, nonatomic) unsigned long long bytesPerRow; // @synthesize bytesPerRow=_bytesPerRow;
@@ -58,7 +58,6 @@
 - (_Bool)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)makeAliasable;
 - (_Bool)doesAliasResource:(id)arg1;
-- (id)heap;
 - (void)dealloc;
 - (id)initWithBaseTexture:(id)arg1 device:(id)arg2 texture:(id)arg3 pixelFormat:(unsigned long long)arg4 textureType:(unsigned long long)arg5 levels:(struct _NSRange)arg6 slices:(struct _NSRange)arg7;
 - (id)initWithBaseTexture:(id)arg1 device:(id)arg2 texture:(id)arg3 pixelFormat:(unsigned long long)arg4;

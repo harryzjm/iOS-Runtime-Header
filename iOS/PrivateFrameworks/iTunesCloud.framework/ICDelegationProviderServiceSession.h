@@ -11,6 +11,7 @@
 @class ICDelegationProviderNetService, ICDelegationProviderServiceProtocolHandler, ICDelegationServiceConnection, ICRequestContext, ICUserIdentityStore, NSArray, NSMutableDictionary, NSString;
 @protocol ICDelegationProviderServiceSessionDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationProviderServiceSession : NSObject <ICDelegationServiceConnectionDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

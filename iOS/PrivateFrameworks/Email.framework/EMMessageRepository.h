@@ -7,14 +7,14 @@
 #import <Email/EFFutureDelegate-Protocol.h>
 #import <Email/EFLoggable-Protocol.h>
 
-@class EFPromise, EMBlockedSenderManager, EMMailboxRepository, EMRemoteConnection, EMRemoteConnectionRecoveryAssertion, NSArray, NSCache, NSHashTable, NSMapTable, NSString, NSURL;
+@class EFPromise, EMBlockedSenderManager, EMMailboxRepository, EMRemoteConnection, EMRemoteConnectionRecoveryAssertion, EMRemoteContentURLCache, NSArray, NSCache, NSHashTable, NSMapTable, NSString, NSURL;
 @protocol EMVIPManager;
 
 @interface EMMessageRepository <EFFutureDelegate, EFLoggable>
 {
     NSMapTable *_observedMessageListItemCache;
     NSMapTable *_unobservedMessageListItemCache;
-    NSHashTable *_actualObservers;
+    NSMapTable *_wrappedObserversByActualObserver;
     NSHashTable *_recoverableObservers;
     struct os_unfair_lock_s _messageListItemCacheLock;
     struct os_unfair_lock_s _observersLock;
@@ -50,6 +50,11 @@
 - (void)loadOlderMessagesForMailboxes:(id)arg1;
 - (id)predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)parseRemoteContentURLsFromMessageWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getRemoteContentURLInfoOrderedBy:(long long)arg1 inReverseOrder:(_Bool)arg2 limit:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)noteViewOfRemoteContentLinks:(id)arg1;
+- (void)setUpURLCacheWithMemoryCapacity:(unsigned long long)arg1;
+@property(readonly, nonatomic) EMRemoteContentURLCache *remoteContentURLCache;
 - (id)cachedMetadataJSONForKey:(id)arg1 messageID:(id)arg2;
 - (void)setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageID:(id)arg3;
 - (void)resetAllPrecomputedThreadScopes;
@@ -65,18 +70,22 @@
 - (id)requestRepresentationForMessageWithID:(id)arg1 options:(id)arg2 delegate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setQueryCount:(id)arg1 forQueryIdentifier:(id)arg2;
 - (id)startCountingQuery:(id)arg1 includingServerCountsForMailboxScope:(id)arg2 withObserver:(id)arg3;
+- (void)_removeItemsFromObservedItemsCacheIfNotObservedByObservers:(id)arg1;
+- (void)refreshQueryWithObserver:(id)arg1;
 - (id)performQuery:(id)arg1 withObserver:(id)arg2;
 @property(readonly, copy) NSArray *currentObservers;
 - (_Bool)_anyObserver:(id)arg1 containsObjectID:(id)arg2;
 - (id)_existingObservedItemForObjectID:(id)arg1;
 - (id)_cachedItemForItem:(id)arg1 observers:(id)arg2 validationBlock:(CDUnknownBlockType)arg3;
 - (id)messageForObjectID:(id)arg1;
+- (id)_messageListItemsForObjectIDs:(id)arg1 observationIdentifier:(id)arg2 checkCache:(_Bool)arg3;
 - (id)messageListItemsForObjectIDs:(id)arg1 observationIdentifier:(id)arg2;
 - (id)messageListItemsForObjectIDs:(id)arg1;
 - (void)performCountQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performQuery:(id)arg1 limit:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)didFinishBlockingMainThreadForFuture:(id)arg1;
 - (void)didStartBlockingMainThreadForFuture:(id)arg1;
+- (void)isDataAccessible:(CDUnknownBlockType)arg1;
 - (void)_notifyRecoverableObservers;
 - (void)dealloc;
 - (id)initWithRemoteConnection:(id)arg1 mailboxRepository:(id)arg2 vipManager:(id)arg3 blockedSenderManager:(id)arg4;

@@ -6,7 +6,7 @@
 
 @interface TSCHChartAxisTitleLayoutItemWithStaticPadding
 {
-    double mTitlePadding;
+    double _titlePadding;
 }
 
 - (double)titlePaddingForAxis:(id)arg1;

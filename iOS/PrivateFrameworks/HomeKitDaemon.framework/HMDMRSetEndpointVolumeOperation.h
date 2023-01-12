@@ -6,24 +6,26 @@
 
 #import <HMFoundation/HMFOperation.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
-@class MPCAssistantDiscovery, NSArray, NSError, NSNumber, NSString;
-@protocol HMDMRSetEndpointVolumeOperationExternalObjectInterface;
+@class NSArray, NSError, NSNumber, NSString;
+@protocol HMDMPCAssistantDiscovery, HMDMRSetEndpointVolumeOperationExternalObjectInterface;
 
-@interface HMDMRSetEndpointVolumeOperation : HMFOperation <HMFObject>
+@interface HMDMRSetEndpointVolumeOperation : HMFOperation <HMFLogging, HMFObject>
 {
     NSNumber *_volume;
     NSArray *_routeIDs;
     NSError *_partialExecutionError;
-    MPCAssistantDiscovery *_discovery;
+    id <HMDMPCAssistantDiscovery> _discovery;
     id <HMDMRSetEndpointVolumeOperationExternalObjectInterface> _externalObjectInterface;
 }
 
++ (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <HMDMRSetEndpointVolumeOperationExternalObjectInterface> externalObjectInterface; // @synthesize externalObjectInterface=_externalObjectInterface;
-@property(retain, nonatomic) MPCAssistantDiscovery *discovery; // @synthesize discovery=_discovery;
+@property(readonly) id <HMDMRSetEndpointVolumeOperationExternalObjectInterface> externalObjectInterface; // @synthesize externalObjectInterface=_externalObjectInterface;
+@property(retain, nonatomic) id <HMDMPCAssistantDiscovery> discovery; // @synthesize discovery=_discovery;
 @property(retain, nonatomic) NSError *partialExecutionError; // @synthesize partialExecutionError=_partialExecutionError;
 @property(readonly, copy, nonatomic) NSArray *routeIDs; // @synthesize routeIDs=_routeIDs;
 @property(readonly, nonatomic) NSNumber *volume; // @synthesize volume=_volume;
@@ -39,6 +41,7 @@
 - (void)generateOverallResultAndFinishWithDeviceStatuses:(id)arg1;
 - (void)main;
 - (id)initWithRouteIDs:(id)arg1 volume:(id)arg2;
+- (id)initWithRouteIDs:(id)arg1 volume:(id)arg2 externalObjectInterface:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

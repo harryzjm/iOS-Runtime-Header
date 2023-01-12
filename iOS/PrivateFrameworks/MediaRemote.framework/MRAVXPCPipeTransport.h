@@ -36,6 +36,7 @@
 - (_Bool)requiresCustomPairing;
 - (void)reset;
 - (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
+- (id)createConnectionWithUserInfo:(id)arg1;
 - (id)error;
 - (void)setShouldUseSystemAuthenticationPrompt:(_Bool)arg1;
 - (_Bool)shouldUseSystemAuthenticationPrompt;

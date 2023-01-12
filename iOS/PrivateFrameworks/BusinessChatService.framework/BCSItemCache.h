@@ -21,9 +21,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <BCSUserDefaultsProviding> userDefaults; // @synthesize userDefaults=_userDefaults;
-@property(retain, nonatomic) BCSLinkItemPersistentStore *linkItemStore; // @synthesize linkItemStore=_linkItemStore;
-@property(retain, nonatomic) BCSBusinessItemMemoryCache *chatSuggestItemStore; // @synthesize chatSuggestItemStore=_chatSuggestItemStore;
 - (void)endBatch;
 - (void)beginBatch;
 - (void)deleteLinkItemsWithBundleID:(id)arg1;

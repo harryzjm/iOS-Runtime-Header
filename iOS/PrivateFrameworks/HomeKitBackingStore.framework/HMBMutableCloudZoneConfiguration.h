@@ -12,7 +12,6 @@
 
 // Remaining properties
 @property _Bool shouldRebuildOnManateeKeyLoss; // @dynamic shouldRebuildOnManateeKeyLoss;
-@property _Bool shouldSuppressDelegateCallbacksOnInitialFetch; // @dynamic shouldSuppressDelegateCallbacksOnInitialFetch;
 
 @end
 

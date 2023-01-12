@@ -7,40 +7,47 @@
 #import <objc/NSObject.h>
 
 #import <NotesShared/ICAttachmentModelUI-Protocol.h>
-#import <NotesShared/QLPreviewItem-Protocol.h>
 
-@class ICAttachment, NSString, NSURL;
+@class ICAttachment, NSString, NSURL, NSUUID;
 
-@interface ICAttachmentModel : NSObject <ICAttachmentModelUI, QLPreviewItem>
+@interface ICAttachmentModel : NSObject <ICAttachmentModelUI>
 {
     _Bool _previewGenerationOperationCancelled;
     _Bool _mergeableDataDirty;
+    _Bool _generatingPreviews;
+    _Bool _hasDeepLink;
     ICAttachment *_attachment;
 }
 
 + (void)deletePreviewItemHardLinkURLs;
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hasDeepLink; // @synthesize hasDeepLink=_hasDeepLink;
+@property(nonatomic, getter=isGeneratingPreviews) _Bool generatingPreviews; // @synthesize generatingPreviews=_generatingPreviews;
 @property(nonatomic, getter=isMergeableDataDirty) _Bool mergeableDataDirty; // @synthesize mergeableDataDirty=_mergeableDataDirty;
 @property(readonly, nonatomic) __weak ICAttachment *attachment; // @synthesize attachment=_attachment;
 @property _Bool previewGenerationOperationCancelled; // @synthesize previewGenerationOperationCancelled=_previewGenerationOperationCancelled;
+- (void)removeTimestampsForReplicaID:(id)arg1;
+- (void)redactAuthorAttributions;
 - (id)mergeableDataForCopying;
+- (id)mergeableDataForCopying:(id *)arg1;
 - (id)dataForTypeIdentifier:(id)arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
 - (id)providerFileTypes;
 - (id)providerDataTypes;
 - (id)dataForQuickLook;
 @property(readonly, nonatomic) _Bool supportsQuickLook;
-@property(readonly, nonatomic) NSString *previewItemTitle;
-- (id)correctedHardlinkURLFileExtensionForExtention:(id)arg1;
+- (id)previewItemTitle;
+- (id)correctedHardlinkURLFileExtensionForExtension:(id)arg1;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1 withFileName:(id)arg2;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1;
 - (id)generateTemporaryURLWithExtension:(id)arg1;
-@property(readonly, nonatomic) NSURL *previewItemURL;
+- (id)previewItemURL;
 - (id)titleForSubAttachment:(id)arg1;
 - (id)hardLinkFolderURL;
 - (_Bool)canConvertToHTMLForSharing;
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
+- (void)replaceChildInlineAttachment:(id)arg1 withText:(id)arg2;
 - (void)noteWillAddOrRemovePassword;
 - (id)localizedFallbackSubtitleMac;
 - (id)localizedFallbackSubtitleIOS;
@@ -52,10 +59,11 @@
 - (_Bool)isReadyToPresent;
 @property(readonly, nonatomic) struct CGSize intrinsicContentSize;
 - (void)willMarkAttachmentForDeletion;
-- (void)undeleteSubAttachments;
-- (void)deleteSubAttachments;
-- (void)updateAttachmentMarkedForDeletionStateAttachmentIsInNote:(_Bool)arg1;
+- (void)undeleteChildAttachments;
+- (void)deleteChildAttachments;
+- (void)updateAttachmentMarkedForDeletionStateAttachmentIsInUse:(_Bool)arg1;
 - (_Bool)shouldCropImage;
+- (void)updateAfterLoadWithInlineAttachmentIdentifierMap:(id)arg1;
 - (void)updateAfterLoadWithSubAttachmentIdentifierMap:(id)arg1;
 - (_Bool)shouldGeneratePreviewAfterChangeInSubAttachmentWithIdentifier:(id)arg1;
 - (_Bool)shouldSyncPreviewImageToCloud:(id)arg1;
@@ -93,6 +101,7 @@
 @property(readonly, nonatomic) _Bool hasPreviews;
 - (void)writeMergeableData;
 - (_Bool)mergeWithMergeableData:(id)arg1;
+@property(readonly, copy, nonatomic) NSUUID *currentReplicaID;
 - (id)initWithAttachment:(id)arg1;
 - (_Bool)shouldShowInContentInfoText;
 - (void)dealloc;

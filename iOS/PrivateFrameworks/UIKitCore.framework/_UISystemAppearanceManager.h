@@ -18,16 +18,20 @@ __attribute__((visibility("hidden")))
     long long _userInterfaceStyle;
     long long _whitePointAdaptivityStyle;
     NSArray *_multitaskingDragExclusionRects;
+    unsigned long long _supportedInterfaceOrientations;
     UIWindowScene *_windowScene;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
+@property(readonly, nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
 @property(readonly, nonatomic) NSArray *multitaskingDragExclusionRects; // @synthesize multitaskingDragExclusionRects=_multitaskingDragExclusionRects;
 @property(readonly, nonatomic) long long whitePointAdaptivityStyle; // @synthesize whitePointAdaptivityStyle=_whitePointAdaptivityStyle;
 @property(readonly, nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(readonly, nonatomic) unsigned long long screenEdgesDeferringSystemGestures; // @synthesize screenEdgesDeferringSystemGestures=_screenEdgesDeferringSystemGestures;
 @property(readonly, nonatomic) _Bool homeIndicatorAutoHidden; // @synthesize homeIndicatorAutoHidden=_homeIndicatorAutoHidden;
+- (void)_updateSupportedInterfaceOrientations;
+- (void)updateSupportedInterfaceOrientations;
 - (void)updateMultitaskingDragExclusionRects;
 - (void)updateWhitePointAdaptivityStyle;
 - (void)updateUserInterfaceStyle;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPPadding, UIColor, UIFont;
+@class LPPadding, LPPointUnit, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface LPButtonStyle : NSObject
@@ -16,10 +16,14 @@ __attribute__((visibility("hidden")))
     UIFont *_font;
     LPPadding *_padding;
     LPPadding *_margin;
+    LPPointUnit *_minimumWidth;
+    LPPointUnit *_height;
 }
 
 + (id)systemPillButtonStyleForPlatform:(long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) LPPointUnit *height; // @synthesize height=_height;
+@property(retain, nonatomic) LPPointUnit *minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property(retain, nonatomic) LPPadding *margin; // @synthesize margin=_margin;
 @property(retain, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;

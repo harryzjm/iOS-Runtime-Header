@@ -9,7 +9,6 @@
 #import <PlatterKit/UIViewControllerAnimatedTransitioning-Protocol.h>
 
 @class NSPointerArray, NSString, UIView, UIViewPropertyAnimator;
-@protocol PLViewControllerAnimatorDelegate;
 
 @interface PLViewControllerAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 {
@@ -20,7 +19,6 @@
     _Bool _includePresentingViewInAnimation;
     _Bool _runAlongsideAnimationsManually;
     UIViewPropertyAnimator *_propertyAnimator;
-    id <PLViewControllerAnimatorDelegate> _delegate;
 }
 
 + (_Bool)drivesAnimation;
@@ -28,7 +26,6 @@
 @property(nonatomic) _Bool runAlongsideAnimationsManually; // @synthesize runAlongsideAnimationsManually=_runAlongsideAnimationsManually;
 @property(nonatomic) _Bool includePresentingViewInAnimation; // @synthesize includePresentingViewInAnimation=_includePresentingViewInAnimation;
 @property(readonly, nonatomic, getter=isPresenting) _Bool presenting; // @synthesize presenting=_presenting;
-@property(nonatomic) __weak id <PLViewControllerAnimatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)animationEnded:(_Bool)arg1;
 - (void)animateTransition:(id)arg1;
 - (void)_animateTransitionWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

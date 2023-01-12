@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
+#import <PassKitCore/NSSecureCoding-Protocol.h>
+
 @class NSData, NSString, NSURL;
 
-@interface PKPaymentSetupMoreInfoItem : NSObject
+@interface PKPaymentSetupMoreInfoItem : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _hideAlternativeAction;
     NSString *_nextActionOverride;
@@ -27,6 +30,7 @@
     NSData *_imageData;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(readonly, copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
@@ -39,6 +43,9 @@
 @property(readonly, copy, nonatomic) NSString *linkText; // @synthesize linkText=_linkText;
 @property(readonly, copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)_updateActionStrings;
 - (id)initWithMoreInfoDictionary:(id)arg1 imageData:(id)arg2;
 - (id)initWithMoreInfoDictionary:(id)arg1;

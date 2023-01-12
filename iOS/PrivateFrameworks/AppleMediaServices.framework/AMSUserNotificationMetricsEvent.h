@@ -10,19 +10,21 @@
 {
 }
 
++ (id)_stringFromInteruptionLevel:(unsigned long long)arg1;
 + (id)_centerForBundleId:(id)arg1;
 + (id)eventFromNotificationCenterSettings:(id)arg1 centerBundleId:(id)arg2;
 + (id)eventFromMetricsDictionary:(id)arg1 centerBundleId:(id)arg2;
 + (id)eventForVideoPlaybackForNotification:(id)arg1;
 + (id)eventForSettingsChangedWithSettings:(id)arg1 bundleID:(id)arg2;
 + (id)eventForContentEngagementWithNotification:(id)arg1;
++ (id)eventForPostedNotification:(id)arg1;
 + (id)eventForBadgingForMetricsDictionary:(id)arg1 bundleID:(id)arg2;
 - (id)_stringFromNotificationSetting:(long long)arg1;
 - (id)_createDisplayCriteriaFromSettings:(id)arg1;
 @property(nonatomic) _Bool postedSuccessfully;
 @property(retain, nonatomic) NSString *errorDescription;
 @property(retain, nonatomic) NSString *displayScheduledTime;
-- (id)initWithTopic:(id)arg1 settings:(id)arg2 centerBundleId:(id)arg3;
+- (id)initWithTopic:(id)arg1 settings:(id)arg2 notificationSettingsForTopic:(id)arg3 centerBundleId:(id)arg4;
 
 @end
 

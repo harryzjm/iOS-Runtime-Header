@@ -14,19 +14,24 @@
 {
     NSMutableArray *_extractedParagraphs;
     NSMutableArray *_translatedParagraphs;
+    NSMutableArray *_errors;
     NSString *_URLString;
     NSString *_extractedParagraphsAsJSON;
     NSString *_translatedParagraphsAsJSON;
+    NSString *_errorsAsJSON;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *errorsAsJSON; // @synthesize errorsAsJSON=_errorsAsJSON;
 @property(copy, nonatomic) NSString *translatedParagraphsAsJSON; // @synthesize translatedParagraphsAsJSON=_translatedParagraphsAsJSON;
 @property(copy, nonatomic) NSString *extractedParagraphsAsJSON; // @synthesize extractedParagraphsAsJSON=_extractedParagraphsAsJSON;
+@property(readonly, copy, nonatomic) NSArray *errors; // @synthesize errors=_errors;
 @property(copy, nonatomic) NSString *URLString; // @synthesize URLString=_URLString;
 - (id)_destinationDirectory;
 - (id)_createFileForContents:(id)arg1 fileName:(id)arg2 inDirectory:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)saveDiagnosticDataAsTemporaryFiles;
+- (void)addError:(id)arg1 forParagraphIdentifier:(id)arg2;
 - (void)addTranslatedParagraph:(id)arg1;
 - (void)addExtractedParagraphs:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *translatedParagraphs;

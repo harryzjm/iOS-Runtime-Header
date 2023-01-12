@@ -7,6 +7,7 @@
 @class NSString, UIImage;
 
 @protocol TSSharedImageCacheType
+- (void)cache:(UIImage *)arg1 forKey:(NSString *)arg2 immediately:(_Bool)arg3;
 - (void)cache:(UIImage *)arg1 forKey:(NSString *)arg2;
 - (UIImage *)fetchImageForKey:(NSString *)arg1;
 - (void)pruneImagesOlderThan:(double)arg1;

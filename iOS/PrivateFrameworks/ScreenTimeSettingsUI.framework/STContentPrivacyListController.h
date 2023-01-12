@@ -10,9 +10,11 @@ __attribute__((visibility("hidden")))
 @interface STContentPrivacyListController
 {
     PSSpecifier *_enableRestrictionsSwitchSpecifier;
+    PSSpecifier *_contentRestrictionsSpecifier;
 }
 
 - (void).cxx_destruct;
+@property(retain) PSSpecifier *contentRestrictionsSpecifier; // @synthesize contentRestrictionsSpecifier=_contentRestrictionsSpecifier;
 @property(retain) PSSpecifier *enableRestrictionsSwitchSpecifier; // @synthesize enableRestrictionsSwitchSpecifier=_enableRestrictionsSwitchSpecifier;
 - (void)_isLoadedDidChange:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

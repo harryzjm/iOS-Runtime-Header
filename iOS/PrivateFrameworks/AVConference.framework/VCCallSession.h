@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
     long long videoPayload;
     long long screenPayload;
     long long sampleRate;
-    long long samplesPerFrame;
     struct tagHANDLE *hSIP;
     _Bool isAudioRunning;
     _Bool isWaitingForICEResult;
@@ -67,7 +66,7 @@ __attribute__((visibility("hidden")))
     _Bool useControlByte;
     _Bool useUEP;
     NSDictionary *_allPayloadsLocalFeaturesString;
-    NSMutableDictionary *featuresListStringDict;
+    NSMutableDictionary *featureListStringDict;
     _Bool audioIsPaused;
     struct _opaque_pthread_mutex_t pauseLock;
     NSObject<OS_dispatch_queue> *videoQueue;
@@ -81,7 +80,7 @@ __attribute__((visibility("hidden")))
     int aacBlockSize;
     _Bool _isUseCaseWatchContinuity;
     int carrierBitrateCap;
-    struct AudioStreamBasicDescription vpioFormat;
+    struct tagVCAudioFrameFormat _vpioFormat;
     _Bool allowAudioSwitching;
     _Bool shouldUpdateLastReceivedPacketTimestamp;
     double lastReceivedPacketTimestamp;
@@ -90,6 +89,7 @@ __attribute__((visibility("hidden")))
     double _mediaStallTotalTime;
     double _maxMediaStallTime;
     double _lastMediaStallStartTime;
+    double _lastDecodedFrameTime;
     _Bool _isRemoteMediaStalledShort;
     int packetsSinceStall;
     int packetsSinceShortMediaStall;
@@ -214,6 +214,8 @@ __attribute__((visibility("hidden")))
     _Bool _isConnectedOnIPv6_LowestConnectionQuality;
     void *_callLogFile;
     NSString *peerReportingID;
+    _Bool _isWRMNotificationPending;
+    CDStruct_cd8cfafa _savedWRMNotification;
 }
 
 + (id)keyPathsForValuesAffectingNetworkQuality;
@@ -222,6 +224,7 @@ __attribute__((visibility("hidden")))
 + (int)setRxPayloadList:(struct tagHANDLE *)arg1 withPayloadTypes:(id)arg2 isRedEnabled:(_Bool)arg3;
 + (int)setRxPayloadList:(struct tagHANDLE *)arg1 withPayloadTypes:(id)arg2;
 @property(retain) NSData *srtpKeyBytes; // @synthesize srtpKeyBytes;
+@property double lastDecodedFrameTime; // @synthesize lastDecodedFrameTime=_lastDecodedFrameTime;
 @property(copy, nonatomic) NSString *peerReportingID; // @synthesize peerReportingID;
 @property(readonly) VCCallInfo *localCallInfo; // @synthesize localCallInfo;
 @property _Bool didSend200OK; // @synthesize didSend200OK;
@@ -275,7 +278,7 @@ __attribute__((visibility("hidden")))
 @property long long connectionChangeState; // @synthesize connectionChangeState;
 @property struct tagHANDLE *rtpHandle; // @synthesize rtpHandle;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
-- (void)redundancyController:(id)arg1 redundancyVectorDidChange:(CDStruct_cd7ddd1c)arg2;
+- (void)redundancyController:(id)arg1 redundancyVectorDidChange:(CDStruct_d7e2e0ee)arg2;
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)setupSecureDataChannel;
 - (void)handleKeyExchangeCompleted;
@@ -344,7 +347,7 @@ __attribute__((visibility("hidden")))
 - (void)sendWRMStatusUpdate:(const CDStruct_8aeecdac *)arg1;
 - (void)setPreWarmState:(_Bool)arg1;
 - (void)setWRMCoexMetrics:(id)arg1;
-- (void)setWRMNotification:(CDStruct_b018697d *)arg1;
+- (void)setWRMNotification:(CDStruct_cd8cfafa *)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
 - (void)reportImmediateWRMMetric:(int)arg1 value:(unsigned long long)arg2;
 - (void)reportWRMMetrics:(const CDStruct_dea828ac *)arg1;
@@ -387,8 +390,8 @@ __attribute__((visibility("hidden")))
 - (void)setCurrentEncodeRule:(id)arg1;
 - (id)getVideoRuleForVideoMode:(unsigned long long)arg1 interface:(int)arg2 sessionBitrate:(int *)arg3;
 - (_Bool)chooseVideoPayloadForInterface:(int)arg1;
-- (int)applyFeaturesListStringForPayload:(int)arg1;
-- (id)getFeaturesListStringForPayload:(int)arg1;
+- (int)applyFeatureListStringForPayload:(int)arg1;
+- (id)getFeatureListStringForPayload:(int)arg1;
 - (void)remoteCellTechStateUpdate:(int)arg1 maxRemoteBitrate:(unsigned int)arg2;
 - (void)thermalLevelDidChange:(int)arg1;
 - (void)handleCellularMTUChanged:(unsigned short)arg1;
@@ -397,11 +400,10 @@ __attribute__((visibility("hidden")))
 - (void)updateMaxPktLength;
 - (_Bool)evaluateEnableRRx:(int *)arg1;
 - (_Bool)isBetterForSIPInviteWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 thanSession:(id)arg2;
-- (void)updateVideoQualityStatus:(double)arg1 bitrate:(double)arg2 time:(double)arg3 isRemote:(_Bool)arg4;
+- (void)updateVideoQualityStatusWithTime:(double)arg1 isRemote:(_Bool)arg2;
 @property(readonly) _Bool videoIsPaused;
 - (void)startAWDStats;
 - (void)configureRateController;
-- (int)interfaceFromConnection:(id)arg1;
 - (unsigned int)callID;
 @property(nonatomic) _Bool useCompressedConnectionData;
 @property(nonatomic) _Bool requiresWifi;
@@ -434,7 +436,7 @@ __attribute__((visibility("hidden")))
 - (const char *)matchedFeaturesStringForPayload:(int)arg1;
 - (_Bool)setMatchedFeaturesString:(char *)arg1 localFeaturesString:(id)arg2 remoteFeaturesString:(id)arg3;
 - (id)allPayloadsLocalFeaturesString;
-- (id)pickFeaturesStringForPayload:(int)arg1 featuresListDict:(id)arg2 remote:(_Bool)arg3;
+- (id)pickFeaturesStringForPayload:(int)arg1 featureListDict:(id)arg2 remote:(_Bool)arg3;
 - (void)logIdentity:(struct __SecIdentity *)arg1;
 - (void)setLocalIdentityForKeyExchange;
 - (int)Conference_SetBWEstMode:(_Bool)arg1 bFakeLargeFrameMode:(_Bool)arg2;
@@ -455,7 +457,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setupAudioCodecWithPayload:(int)arg1;
 - (id)negotiatedAudioPayloadTypes;
 - (id)addAudioPayload:(int)arg1;
-- (id)configForPayloadType:(int)arg1;
+- (id)newConfigForPayloadType:(int)arg1;
 - (void)setupAACELDPayload:(int)arg1;
 - (_Bool)stopRateControl:(id *)arg1;
 - (_Bool)startRateControl:(id *)arg1;
@@ -485,7 +487,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)setupCallerRTPChannelWithError:(id *)arg1;
 - (_Bool)setMediaQueueStreamSettings;
 - (_Bool)setRTPPayloads:(id)arg1 withError:(id *)arg2;
-- (id)getCompatibleLocalFeaturesListForPayloads:(int *)arg1 count:(int)arg2;
+- (id)getCompatibleLocalFeatureListForPayloads:(int *)arg1 count:(int)arg2;
 - (int)getAllCompatibleVideoPayloads:(int **)arg1 forMediaType:(int)arg2;
 - (_Bool)doesVideoPayloadMatchRemoteImageAttributeRules:(id)arg1;
 - (_Bool)isValidVideoPayloadOverride:(id)arg1;
@@ -517,7 +519,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)applyNegotiatedAudioSettings:(id *)arg1;
 - (void)applyNegotiatedSettings;
 - (void)negotiateMediaMaxBandwidth;
-- (_Bool)createSDP:(int *)arg1 audioPayloadCount:(int)arg2 secondaryPayloadTypes:(int *)arg3 secondaryPayloadCount:(int)arg4 videoPayloadTypes:(int *)arg5 videoPayloadCount:(int)arg6 localFeaturesList:(id)arg7 answerBandwidth:(int)arg8 maxBandwidth:(int)arg9 imageSizesSend:(struct imageTag **)arg10 imageSendCount:(int *)arg11 imageSizesRecv:(struct imageTag **)arg12 imageRecvCount:(int *)arg13 sdp:(char *)arg14 numSDPBytes:(int *)arg15 error:(id *)arg16;
+- (_Bool)createSDP:(int *)arg1 audioPayloadCount:(int)arg2 secondaryPayloadTypes:(int *)arg3 secondaryPayloadCount:(int)arg4 videoPayloadTypes:(int *)arg5 videoPayloadCount:(int)arg6 localFeatureList:(id)arg7 answerBandwidth:(int)arg8 maxBandwidth:(int)arg9 imageSizesSend:(struct imageTag **)arg10 imageSendCount:(int *)arg11 imageSizesRecv:(struct imageTag **)arg12 imageRecvCount:(int *)arg13 sdp:(char *)arg14 numSDPBytes:(int *)arg15 error:(id *)arg16;
 - (void)addScreenConfigToSDP:(id)arg1;
 - (void)setupCalleeSIPStartTimeout:(float)arg1;
 - (void)resetState;
@@ -548,8 +550,10 @@ __attribute__((visibility("hidden")))
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
 - (int)flushBasebandQueueWithPayloads:(id)arg1 flushCount:(unsigned int *)arg2;
 - (void)controlChannel:(id)arg1 receivedData:(id)arg2 transactionID:(unsigned int)arg3 fromParticipant:(id)arg4;
+- (void)setupWRMCoexMetricsMessage;
 - (void)setupWRMAlertStateUpdateMessage;
 - (void)setupSymptomEnabledMessage;
+- (void)processSymptomFromMessage:(id)arg1 participantID:(id)arg2 isLocalInitiated:(_Bool)arg3 isLocalSideOnly:(_Bool)arg4;
 - (void)setupPreferredInterfaceMessage;
 - (void)setupMomentsMessages;
 - (void)setupCellTechChangeMessages;
@@ -568,13 +572,12 @@ __attribute__((visibility("hidden")))
 - (void)transportSession:(id)arg1 cancelRelayRequest:(id)arg2;
 - (void)transportSession:(id)arg1 connectionSetupDataDidChange:(id)arg2;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
-- (void)rateController:(void *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
+- (void)rateController:(id)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)mediaController:(void *)arg1 mediaSuggestionDidChange:(struct VCRateControlMediaSuggestion)arg2;
 - (void)packMeters:(char *)arg1 withLength:(char *)arg2;
-- (void)updateStatistics:(CDStruct_56e8fa21)arg1;
-- (void)displayLinkTick:(id)arg1;
+- (void)updateStatistics:(CDStruct_c0785916)arg1;
 - (void)callAlarmsWithRTPTimeStamp:(CDStruct_1b6d18a9 *)arg1;
-- (void)processResolutionChangeToVideoRule:(id)arg1 captureRule:(id)arg2 featuresListString:(id)arg3;
+- (void)processResolutionChangeToVideoRule:(id)arg1 captureRule:(id)arg2 featureListString:(id)arg3;
 - (id)newRemoteScreenAttributesForOrientation:(int)arg1;
 - (void)updateVideoQualityNotification:(double)arg1;
 - (double)sessionReceivingBitrate;
@@ -589,6 +592,7 @@ __attribute__((visibility("hidden")))
 - (void)cleanUpVideoRTP;
 - (struct CGSize)computeVisibleAspectRatioWithRemoteScreenAspectRatio:(struct CGSize)arg1 remoteExpectedAspectRatio:(struct CGSize)arg2 encodeWidth:(int)arg3 encodeHeight:(int)arg4;
 - (unsigned int)parameterSetForPayload:(int)arg1;
+- (void)nofityDelegateReceivedRemoteFrame:(struct __CVBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3 newRemoteVideoAttributes:(id)arg4 remoteScreenAttributes:(id)arg5;
 - (void)onPlayVideo:(struct __CVBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (_Bool)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 audioTS:(unsigned int)arg2 audioHT:(double)arg3 videoHT:(CDStruct_1b6d18a9)arg4 cameraBits:(unsigned char)arg5;
 - (void)processBlackFrame:(struct opaqueCMSampleBuffer *)arg1;

@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDLogEventObserver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMMLogEventObserver-Protocol.h>
 
 @class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDDiagnosticReporterLogObserver : HMFObject <HMDLogEventObserver, HMFLogging>
+@interface HMDDiagnosticReporterLogObserver : HMFObject <HMMLogEventObserver, HMFLogging>
 {
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
@@ -20,14 +20,14 @@
 + (id)logCategory;
 + (id)sharedObserver;
 + (_Bool)isSupportedEvent:(id)arg1;
-+ (id)supportedEventTypes;
++ (id)supportedEventClasses;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-- (void)didReceiveEventFromDispatcher:(id)arg1 withLogContext:(id)arg2;
+- (void)didReceiveEventFromDispatcher:(id)arg1;
 - (void)stop;
 - (void)start;
 - (id)init;
-- (_Bool)shouldSubmitEvent:(id)arg1 withLogContext:(id)arg2;
+- (_Bool)shouldSubmitEvent:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

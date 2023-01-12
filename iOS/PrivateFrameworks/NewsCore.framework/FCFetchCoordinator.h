@@ -23,17 +23,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCBoostableOperationThrottler *fetchThrottler; // @synthesize fetchThrottler=_fetchThrottler;
-@property(retain, nonatomic) NFMutexLock *accessLock; // @synthesize accessLock=_accessLock;
-@property(retain, nonatomic) NSMapTable *fetchOperationsByGroup; // @synthesize fetchOperationsByGroup=_fetchOperationsByGroup;
-@property(retain, nonatomic) NSCountedSet *allKeys; // @synthesize allKeys=_allKeys;
-@property(retain, nonatomic) NSHashTable *fetchGroups; // @synthesize fetchGroups=_fetchGroups;
 @property unsigned long long maxConcurrentFetchCount; // @synthesize maxConcurrentFetchCount=_maxConcurrentFetchCount;
 @property(nonatomic) __weak id <FCFetchCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)beginFetchesIfNeededWithLock;
-- (void)cancelFetchesIfNeededWithLock;
-- (void)removeFetchGroup:(id)arg1;
-- (void)addFetchGroup:(id)arg1;
 - (void)operationThrottlerPerformOperation:(id)arg1;
 - (id)fetchKeysUnconditionally:(id)arg1 context:(id)arg2 qualityOfService:(long long)arg3 relativePriority:(long long)arg4 completionQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)fetchKeys:(id)arg1 context:(id)arg2 qualityOfService:(long long)arg3 relativePriority:(long long)arg4 completionQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;

@@ -16,9 +16,12 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NTKBundleComplicationDataSourceLoader *loader; // @synthesize loader=_loader;
+- (id)bundleComplicationsForBundleIdentifier:(id)arg1;
+- (id)allComplicationAppBundleIDs;
 - (void)enumerateBundlesForComplicationFamily:(long long)arg1 device:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)localizedComplicationNameForBundleIdentifier:(id)arg1;
 - (id)groupIdentifierForBundleIdentifier:(id)arg1;
+- (id)sectionIdentifierForBundleIdentifier:(id)arg1;
 - (id)localizedAppNameForBundleIdentifier:(id)arg1;
 - (_Bool)bundleExistsWithIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
 - (Class)dataSourceClassForBundleComplication:(id)arg1;

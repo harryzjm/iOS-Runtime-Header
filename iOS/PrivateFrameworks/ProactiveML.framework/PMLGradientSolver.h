@@ -30,7 +30,7 @@
 - (void)solveForCovariates:(id)arg1 objectives:(id)arg2;
 - (id)batchPredict:(id)arg1;
 - (float)predict:(id)arg1;
-- (void)solveWithAvgGradient:(float *)arg1 maxNumberOfIterations:(unsigned long long)arg2;
+- (id)solveWithAvgGradient:(float *)arg1 maxNumberOfIterations:(unsigned long long)arg2;
 - (id)computeAvgGradientWithIterations:(unsigned long long)arg1;
 - (void)solve;
 - (id)init;

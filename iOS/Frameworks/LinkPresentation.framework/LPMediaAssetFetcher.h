@@ -17,10 +17,13 @@ __attribute__((visibility("hidden")))
     NSString *_MIMEType;
     NSURLSession *_session;
     NSMutableData *_receivedData;
+    _Bool _loadingIsNonAppInitiated;
+    _Bool _shouldDownloadIfPossible;
     NSURL *_URL;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldDownloadIfPossible; // @synthesize shouldDownloadIfPossible=_shouldDownloadIfPossible;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
@@ -33,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)stopLoading;
 - (void)_resolveVideo;
 - (void)fetchWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

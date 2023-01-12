@@ -10,6 +10,7 @@
 {
 }
 
++ (id)mailOrganizerAction;
 + (id)conferenceCallAction;
 + (id)directionsAction;
 + (id)snoozeAction;

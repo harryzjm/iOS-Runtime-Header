@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)setTopLabel:(id)arg1;
 @property(readonly, nonatomic) _MKUILabel *topLabel;
 - (void)_contentSizeDidChange;
+- (id)hoursGrayColor;
 - (void)_commonInit;
 - (id)initWithBusinessHours:(id)arg1;
 

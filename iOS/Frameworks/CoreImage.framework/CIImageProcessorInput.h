@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) id <MTLTexture> metalTexture;
 @property(readonly, nonatomic) const void *baseAddress;
 - (void)dealloc;
-- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(_Bool)arg3 bounds:(struct CGRect)arg4 context:(struct Context *)arg5;
+- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(_Bool)arg3 bounds:(struct CGRect)arg4 context:(void *)arg5;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long bytesPerRow;

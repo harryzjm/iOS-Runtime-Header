@@ -15,10 +15,7 @@ __attribute__((visibility("hidden")))
     long long _chopID;
 }
 
-+ (id)newWithLinkItemIdentifier:(id)arg1 chopID:(long long)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) long long chopID; // @synthesize chopID=_chopID;
-@property(retain, nonatomic) BCSLinkItemIdentifier *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 
 @end
 

@@ -27,9 +27,9 @@
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)maxAvailableSizeWithAlignment:(unsigned long long)arg1;
 - (id)initWithHeap:(id)arg1 device:(id)arg2;
-- (void)validateHeapTextureUsage:(unsigned long long)arg1 options:(unsigned long long)arg2;
-- (void)validateHeapResourceOptions:(unsigned long long)arg1 isTexture:(_Bool)arg2 isIOSurface:(_Bool)arg3;
-- (void)validatePixelFormatWithHeap:(unsigned long long)arg1;
+- (void)validateHeapTextureUsage:(unsigned long long)arg1 options:(unsigned long long)arg2 context:(struct _MTLMessageContext *)arg3;
+- (void)validateHeapResourceOptions:(unsigned long long)arg1 isTexture:(_Bool)arg2 isIOSurface:(_Bool)arg3 context:(struct _MTLMessageContext *)arg4;
+- (void)validatePixelFormatWithHeap:(unsigned long long)arg1 context:(struct _MTLMessageContext *)arg2;
 
 @end
 

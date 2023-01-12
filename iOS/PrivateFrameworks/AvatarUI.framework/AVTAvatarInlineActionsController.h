@@ -15,6 +15,7 @@
 
 @interface AVTAvatarInlineActionsController : NSObject <AVTAvatarActionsModelDelegate, AVTAvatarEditorViewControllerDelegate, AVTAvatarActionsController>
 {
+    _Bool _shouldHideUserInfoView;
     _Bool _buttonsDisabled;
     _Bool _isCreatingAvatar;
     AVTAvatarActionsProvider *_actionsModel;
@@ -34,6 +35,7 @@
 @property(retain, nonatomic) AVTAvatarEditorViewController *editorViewController; // @synthesize editorViewController=_editorViewController;
 @property(nonatomic) _Bool buttonsDisabled; // @synthesize buttonsDisabled=_buttonsDisabled;
 @property(retain, nonatomic) NSArray *inlineActionButtons; // @synthesize inlineActionButtons=_inlineActionButtons;
+@property(nonatomic) _Bool shouldHideUserInfoView; // @synthesize shouldHideUserInfoView=_shouldHideUserInfoView;
 @property(nonatomic) __weak id <AVTAvatarActionsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) AVTAvatarRecordDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) AVTAvatarActionsProvider *actionsModel; // @synthesize actionsModel=_actionsModel;

@@ -9,28 +9,32 @@
 #import <TextRecognition/NSCoding-Protocol.h>
 #import <TextRecognition/NSCopying-Protocol.h>
 
-@class CRImage, NSArray, NSNumber, NSString;
+@class CRImage, NSArray, NSNumber, NSString, NSUUID;
 
 @interface CRTextFeature : NSObject <NSCoding, NSCopying>
 {
     _Bool _shouldExpandToFullWidth;
     unsigned char _sizeHint;
+    _Bool _isCurve;
     _Bool _contextSet;
     float _baselineAngle;
     float _textlineHeight;
     int _featureMapID;
-    int _punctuationGuess;
+    unsigned long long _type;
     NSArray *_subFeatures;
     NSArray *_stringValueCandidates;
     NSArray *_candidateProbs;
     NSArray *_candidateActivationProbs;
     NSArray *_subFeatureCandidates;
     long long _bestCandidateIndex;
-    NSArray *_segmentationBreakPoints;
     NSString *_stringValue;
     NSString *_gtStringValue;
     CRImage *_imageCut;
     NSNumber *_confidence;
+    NSArray *_scriptCategoryResults;
+    NSString *_selectedLocale;
+    NSArray *_scriptCount;
+    NSUUID *_uuid;
     struct CGPoint _topLeft;
     struct CGPoint _topRight;
     struct CGPoint _bottomLeft;
@@ -47,7 +51,11 @@
 + (id)sortedRotateTextFeatures:(id)arg1 center:(struct CGPoint)arg2 radians:(float)arg3 sortingWithinLine:(_Bool)arg4;
 - (void).cxx_destruct;
 @property _Bool contextSet; // @synthesize contextSet=_contextSet;
-@property int punctuationGuess; // @synthesize punctuationGuess=_punctuationGuess;
+@property(retain) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property _Bool isCurve; // @synthesize isCurve=_isCurve;
+@property(retain) NSArray *scriptCount; // @synthesize scriptCount=_scriptCount;
+@property(retain) NSString *selectedLocale; // @synthesize selectedLocale=_selectedLocale;
+@property(retain) NSArray *scriptCategoryResults; // @synthesize scriptCategoryResults=_scriptCategoryResults;
 @property int featureMapID; // @synthesize featureMapID=_featureMapID;
 @property float textlineHeight; // @synthesize textlineHeight=_textlineHeight;
 @property unsigned char sizeHint; // @synthesize sizeHint=_sizeHint;
@@ -59,7 +67,6 @@
 @property(retain, nonatomic) NSString *gtStringValue; // @synthesize gtStringValue=_gtStringValue;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property _Bool shouldExpandToFullWidth; // @synthesize shouldExpandToFullWidth=_shouldExpandToFullWidth;
-@property(retain) NSArray *segmentationBreakPoints; // @synthesize segmentationBreakPoints=_segmentationBreakPoints;
 @property long long bestCandidateIndex; // @synthesize bestCandidateIndex=_bestCandidateIndex;
 @property(retain) NSArray *subFeatureCandidates; // @synthesize subFeatureCandidates=_subFeatureCandidates;
 @property(retain) NSArray *candidateActivationProbs; // @synthesize candidateActivationProbs=_candidateActivationProbs;
@@ -71,11 +78,15 @@
 @property struct CGPoint topRight; // @synthesize topRight=_topRight;
 @property struct CGPoint topLeft; // @synthesize topLeft=_topLeft;
 @property struct CGRect bounds; // @synthesize bounds=_bounds;
+@property unsigned long long type; // @synthesize type=_type;
+- (void)setSelectedLocale:(id)arg1 includeSubfeatures:(_Bool)arg2;
 - (float)calculateTextBoxHeightForImageWidth:(unsigned long long)arg1 imageHeight:(unsigned long long)arg2;
-- (id)createWordSubFeaturesForCandidateAtIndex:(long long)arg1 topWhiteSpacePoints:(id)arg2 bottomWhiteSpacePoints:(id)arg3;
+- (id)createWordSubFeaturesForCandidateAtIndex:(long long)arg1 topWhiteSpacePoints:(id)arg2 bottomWhiteSpacePoints:(id)arg3 hasBoundarySpacePoints:(_Bool)arg4;
+- (void)adjustBoundsBasedOnSubfeaturesForImageSize:(struct CGSize)arg1;
+- (void)setStringValueByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (float)aspectRatioWithImageSize:(struct CGSize)arg1;
+- (id)createCharacterSubFeaturesForCandidateAtIndex:(long long)arg1 topWhiteSpacePoints:(id)arg2 bottomWhiteSpacePoints:(id)arg3 falsePositiveFiltering:(_Bool)arg4;
 - (id)createCharacterSubFeaturesForCandidateAtIndex:(long long)arg1;
-- (void)adjustProbabilitiesWithPunctuationGuess;
 - (_Bool)isDown;
 - (_Bool)isUp;
 - (void)updateSizeHints;
@@ -92,7 +103,6 @@
 - (id)wordFeatures;
 - (id)textFeatureSplitForStringValue:(id)arg1;
 - (id)initWithFeatureRect:(struct CGRect)arg1 inImage:(id)arg2;
-- (id)initWithSubfeatureRects:(id)arg1 inImage:(id)arg2;
 - (id)initWithSubfeatures:(id)arg1 stringValue:(id)arg2;
 - (id)initWithSubfeatures:(id)arg1;
 - (id)initWithCCFeatureRect:(id)arg1 subFeatureRects:(id)arg2 rotatePortrait:(_Bool)arg3;
@@ -100,7 +110,7 @@
 - (id)initWithFeatureRect:(id)arg1 subFeatureRects:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithVNTextObsevation:(id)arg1;
-- (id)initWithCITextFeature:(id)arg1 inImage:(id)arg2;
+@property(readonly) unsigned long long subFeatureType;
 - (id)initWithTopLeft:(struct CGPoint)arg1 TopRight:(struct CGPoint)arg2 BottomLeft:(struct CGPoint)arg3 BottomRight:(struct CGPoint)arg4;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

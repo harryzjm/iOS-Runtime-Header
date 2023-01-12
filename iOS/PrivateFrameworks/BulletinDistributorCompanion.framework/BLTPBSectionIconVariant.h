@@ -8,19 +8,22 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface BLTPBSectionIconVariant : PBCodable <NSCopying>
 {
     unsigned int _format;
     NSData *_imageData;
+    NSString *_systemImageName;
     _Bool _precomposed;
     struct {
         unsigned int precomposed:1;
     } _has;
 }
 
++ (id)sectionIconVariantWithImageData:(id)arg1 systemImageName:(id)arg2 precomposed:(_Bool)arg3 format:(unsigned int)arg4;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property(nonatomic) _Bool precomposed; // @synthesize precomposed=_precomposed;
 @property(retain, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property(nonatomic) unsigned int format; // @synthesize format=_format;
@@ -33,6 +36,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSystemImageName;
 @property(nonatomic) _Bool hasPrecomposed;
 @property(readonly, nonatomic) _Bool hasImageData;
 

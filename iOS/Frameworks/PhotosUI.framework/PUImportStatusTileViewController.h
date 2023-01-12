@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
         unsigned long long needsUpdate;
         unsigned long long updated;
         _Bool isPerformingUpdate;
+        _Bool willPerformUpdate;
     } _updateFlags;
     UIView *_successView;
     UIView *_errorView;

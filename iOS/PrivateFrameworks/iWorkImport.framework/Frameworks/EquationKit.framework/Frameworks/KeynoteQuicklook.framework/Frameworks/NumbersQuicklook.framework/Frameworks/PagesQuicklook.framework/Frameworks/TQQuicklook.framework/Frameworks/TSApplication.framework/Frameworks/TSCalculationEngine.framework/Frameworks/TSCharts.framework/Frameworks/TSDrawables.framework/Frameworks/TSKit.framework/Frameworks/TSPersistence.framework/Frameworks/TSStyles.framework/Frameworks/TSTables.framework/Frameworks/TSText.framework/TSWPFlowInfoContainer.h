@@ -20,9 +20,9 @@
 @property(retain, nonatomic) NSMutableArray *flowInfos; // @synthesize flowInfos=_flowInfos;
 @property(nonatomic) unsigned long long nextUserInterfaceIdentifier; // @synthesize nextUserInterfaceIdentifier=_nextUserInterfaceIdentifier;
 @property(readonly, copy) NSString *debugDescription;
-- (void)saveToArchive:(struct FlowInfoContainerArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct FlowInfoContainerArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)childEnumerator;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

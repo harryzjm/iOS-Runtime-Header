@@ -43,7 +43,6 @@
 - (void)_updateTextLabelTextWithColorDot;
 - (void)setAccessoryType:(long long)arg1;
 - (void)prepareForReuse;
-- (id)_multiselectBackgroundColor;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setContentAlpha:(double)arg1;
 

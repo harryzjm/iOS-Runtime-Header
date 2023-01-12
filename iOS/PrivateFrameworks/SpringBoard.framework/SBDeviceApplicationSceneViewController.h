@@ -6,54 +6,109 @@
 
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneOverlayViewProviderDelegate-Protocol.h>
+#import <SpringBoard/SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver-Protocol.h>
+#import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBSceneViewDelegate-Protocol.h>
 #import <SpringBoard/SBSceneViewStatusBarAssertionObserver-Protocol.h>
+#import <SpringBoard/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 
-@class MTLumaDodgePillSettings, NSHashTable, NSMutableArray, NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneView, SBFHomeGrabberSettings, SBHomeGrabberView, SBSceneViewStatusBarAssertion, UIApplicationSceneDeactivationAssertion, UIStatusBar, UIView;
-@protocol BSInvalidatable, SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
+@class MTLumaDodgePillSettings, NSHashTable, NSMutableArray, NSString, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneView, SBFHomeGrabberSettings, SBHomeGrabberView, SBOrientationTransformWrapperView, SBSceneViewStatusBarAssertion, UIApplicationSceneDeactivationAssertion, UIStatusBar, UITapGestureRecognizer, UIView, _SBStatusBarChanges;
+@protocol BSInvalidatable, SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBDeviceApplicationSceneViewControllerDelegate, SBScenePlaceholderContentContext, UIStatusBarStyleDelegate_SpringBoardOnly;
 
-@interface SBDeviceApplicationSceneViewController <SBDeviceApplicationSceneOverlayViewProviderDelegate, SBDeviceApplicationSceneHandleObserver, SBSceneViewDelegate, SBSceneViewStatusBarAssertionObserver, SBDeviceApplicationSceneViewControlling>
+@interface SBDeviceApplicationSceneViewController <SBDeviceApplicationSceneOverlayViewProviderDelegate, SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneStatusBarStateObserver, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver, SBSceneViewDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, SBSceneViewStatusBarAssertionObserver, SBDeviceApplicationSceneViewControlling>
 {
     UIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
     NSMutableArray *_overlayViewProviders;
     NSMutableArray *_activeOverlayViewProviders;
     SBSceneViewStatusBarAssertion *_activeOverlayStatusBarAssertion;
     SBSceneViewStatusBarAssertion *_placeholderStatusBarAssertion;
-    UIStatusBar *_fakeStatusBar;
+    SBSceneViewStatusBarAssertion *_insetForHomeAffordanceStatusBarAssertion;
+    UIStatusBar *_statusBar;
+    UIView *_statusBarWrapperView;
+    SBOrientationTransformWrapperView *_statusBarTransformView;
+    UITapGestureRecognizer *_scrollToTopGestureRecognizer;
+    UITapGestureRecognizer *_showDebugGestureRecognizer;
     id <BSInvalidatable> _liveContentDisableAssertion;
     SBFHomeGrabberSettings *_homeGrabberSettings;
+    id <UIStatusBarStyleDelegate_SpringBoardOnly> _realStatusBarStyleDelegate;
+    struct {
+        unsigned int styleDelegateWants_statusBar_effectiveStyleOverridesForRequestedStyle_overrides:1;
+        unsigned int styleDelegateWants_overriddenRequestedStyleFromStyle:1;
+    } _conformanceFlags;
+    _SBStatusBarChanges *_statusBarChanges;
+    _Bool _sceneRendersAsynchronously;
+    _Bool _isInsetForHomeAffordance;
     _Bool _rendersWhileLocked;
-    _Bool _shouldRasterizeSceneHostView;
+    _Bool _shouldDrawStatusBarInsideSceneView;
     long long _homeGrabberDisplayMode;
     NSHashTable *_statusBarAssertions;
-    NSString *_sceneHostViewMinificationFilter;
+    NSString *_sceneMinificationFilter;
+    id <SBDeviceApplicationSceneViewControllerDelegate> _delegate;
     MTLumaDodgePillSettings *_homeGrabberPillSettings;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MTLumaDodgePillSettings *homeGrabberPillSettings; // @synthesize homeGrabberPillSettings=_homeGrabberPillSettings;
-@property(copy, nonatomic) NSString *sceneHostViewMinificationFilter; // @synthesize sceneHostViewMinificationFilter=_sceneHostViewMinificationFilter;
-@property(nonatomic) _Bool shouldRasterizeSceneHostView; // @synthesize shouldRasterizeSceneHostView=_shouldRasterizeSceneHostView;
+@property(nonatomic) __weak id <SBDeviceApplicationSceneViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool shouldDrawStatusBarInsideSceneView; // @synthesize shouldDrawStatusBarInsideSceneView=_shouldDrawStatusBarInsideSceneView;
 @property(nonatomic) _Bool rendersWhileLocked; // @synthesize rendersWhileLocked=_rendersWhileLocked;
+@property(nonatomic, getter=isInsetForHomeAffordance) _Bool insetForHomeAffordance; // @synthesize insetForHomeAffordance=_isInsetForHomeAffordance;
+@property(nonatomic) _Bool sceneRendersAsynchronously; // @synthesize sceneRendersAsynchronously=_sceneRendersAsynchronously;
+@property(copy, nonatomic) NSString *sceneMinificationFilter; // @synthesize sceneMinificationFilter=_sceneMinificationFilter;
 @property(retain, nonatomic, getter=_statusBarAssertions, setter=_setStatusBarAssertions:) NSHashTable *statusBarAssertions; // @synthesize statusBarAssertions=_statusBarAssertions;
 @property(nonatomic) long long homeGrabberDisplayMode; // @synthesize homeGrabberDisplayMode=_homeGrabberDisplayMode;
 - (void)_didDisableSecureDisplay;
 - (void)_willEnableSecureDisplay;
 - (void)_configureForSecureDisplay:(_Bool)arg1;
 - (void)_configureForCurrentSecureDisplayState;
+- (void)_removeStatusBarMatchMoveAnimation;
+- (void)_addStatusBarMatchMoveAnimationForView:(id)arg1;
+- (_Bool)_statusBarHasMatchMoveAnimation;
+- (id)_underlyingStatusBarViewIfAvailable;
+- (void)_setStatusBarStyle:(long long)arg1 forPartWithIdentifier:(id)arg2;
+- (long long)_currentStatusBarStyleForPartWithIdentifier:(id)arg1;
+- (void)_setStatusBarStyle:(long long)arg1;
+- (long long)_currentStatusBarStyle;
+- (void)_statusBarTapped:(id)arg1 type:(long long)arg2;
+- (void)_statusBarShowDebug:(id)arg1;
+- (void)_statusBarScrollToTop:(id)arg1;
 - (_Bool)_shouldSuppressHomeGrabber;
-- (void)_removeFakeStatusBar;
-- (void)_addFakeStatusBarWithStyleRequest:(id)arg1 enabledParts:(long long)arg2;
-- (void)_layoutFakeStatusBar;
-- (_Bool)_configureFakeStatusBarWithCurrentStyleRequestCreatingIfNecessary;
+- (void)_applyStatusBarStyleOverridesToSuppress:(unsigned long long)arg1 toSceneWithIdentifier:(id)arg2;
+- (void)_removeStatusBar;
+- (void)_layoutStatusBar;
+- (void)_configureStatusBarWithCurrentStyleRequest;
+- (void)_setRealStatusBarStyleDelegate:(id)arg1;
+- (void)_setupStatusBarStylesFromSceneHandle:(id)arg1;
+- (void)_createStatusBar;
 - (_Bool)_activeOverlaysWantResignActiveAssertion;
 - (void)_relinquishResignActiveAssertion;
 - (void)_recalculateResignActiveAssertionForActiveOverlays;
 - (void)_destroySceneOverlayViewProviders;
 - (void)_createSceneOverlayViewProvidersIfNecessary;
+- (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
+- (long long)overriddenRequestedStyleFromStyle:(long long)arg1;
+- (unsigned long long)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(unsigned long long)arg3;
+- (void)statusBar:(id)arg1 didAnimateFromHeight:(double)arg2 toHeight:(double)arg3 animation:(int)arg4;
+- (void)statusBar:(id)arg1 willAnimateFromHeight:(double)arg2 toHeight:(double)arg3 duration:(double)arg4 animation:(int)arg5;
+- (long long)statusBar:(id)arg1 styleForRequestedStyle:(long long)arg2 overrides:(unsigned long long)arg3;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
+- (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(id)arg3 animated:(_Bool)arg4;
+- (long long)bestHomeAffordanceOrientationForOrientation:(long long)arg1;
+@property(readonly, nonatomic) UIView *sceneContentView;
+- (void)conformsToProtocolSBDeviceApplicationSceneViewControlling;
+- (double)currentStatusBarHeight;
+- (long long)trailingStatusBarStyle;
+- (long long)leadingStatusBarStyle;
+- (void)statusBarBreadcrumbProviderDidUpdateDisplayProperties:(id)arg1;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(unsigned long long)arg2;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarHiddenTo:(_Bool)arg2 withAnimation:(long long)arg3;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAlphaTo:(double)arg2;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2 forPartWithIdentifier:(id)arg3;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2;
 - (void)sceneHandle:(id)arg1 didChangeStatusBarAvoidanceFrame:(struct CGRect)arg2;
 - (void)sceneHandle:(id)arg1 didChangeStatusBarParts:(long long)arg2;
+- (void)sceneHandle:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneView:(id)arg1 changedPreferredStatusBarStyleTo:(long long)arg2;
 - (id)animationFactoryForImplicitTransitionFromMode:(long long)arg1 toMode:(long long)arg2 defaultFactory:(id)arg3;
 - (_Bool)_isApplicationStatusBarHidden;
@@ -61,7 +116,7 @@
 - (void)_deactivateOverlayForViewProvider:(id)arg1;
 - (void)deactivateOverlayForViewProvider:(id)arg1;
 - (void)activateOverlayForViewProvider:(id)arg1;
-- (void)_statusBarAssertionsDidUpdate;
+- (void)_updateStatusBarState;
 - (void)statusBarAssertionDidInvalidate:(id)arg1;
 - (void)statusBarAssertionDidUpdate:(id)arg1;
 - (id)statusBarAssertionWithStatusBarSettings:(id)arg1 atLevel:(unsigned long long)arg2;
@@ -71,7 +126,7 @@
 @property(readonly, nonatomic) SBHomeGrabberView *homeGrabberView;
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)viewWillLayoutSubviews;
+- (void)viewDidLayoutSubviews;
 - (_Bool)definesPresentationContext;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)didMoveToParentViewController:(id)arg1;

@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *colorStyler;
     MISSING_TYPE *parameters;
-    MISSING_TYPE *shouldShowLocationOptInUI;
 }
 
 @end

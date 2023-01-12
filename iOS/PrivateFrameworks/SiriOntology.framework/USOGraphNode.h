@@ -11,7 +11,7 @@
     struct UsoGraphNode *_usoGraphNode;
 }
 
-- (void)setSuccessor:(const struct OntologyEdgeName *)arg1 successor:(id)arg2 enumeration:(unsigned int)arg3;
+- (void)setSuccessor:(const void *)arg1 successor:(id)arg2 enumeration:(unsigned int)arg3;
 - (id)initWithCppGraphNode:(struct UsoGraphNode *)arg1;
 
 @end

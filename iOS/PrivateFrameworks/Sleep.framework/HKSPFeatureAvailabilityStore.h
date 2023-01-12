@@ -10,7 +10,7 @@
 #import <Sleep/HKSPSleepStorePrivateObserver-Protocol.h>
 
 @class HKObserverSet, NSString;
-@protocol HKSPFeatureAvailabilityPairedDeviceRegistry, HKSPSleepOnboardingStore;
+@protocol HKSPFeatureAvailabilityPairedDeviceRegistry, HKSPOnboardingModel, HKSPSleepOnboardingStore;
 
 @interface HKSPFeatureAvailabilityStore : NSObject <HKSPSleepStorePrivateObserver, HKFeatureAvailabilityProviding>
 {
@@ -19,32 +19,46 @@
     long long _feature;
     id <HKSPFeatureAvailabilityPairedDeviceRegistry> _pairedDeviceRegistry;
     int _deviceCharacteristicChangeNotifyToken;
+    id <HKSPOnboardingModel> _cachedOnboardingModel;
+    struct os_unfair_lock_s _modelLock;
     NSString *_featureIdentifier;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
+- (void)_notifyObserversForDidUpdateOnboarding;
 - (void)sleepStore:(id)arg1 sleepEventRecordDidChange:(id)arg2;
 - (void)_pairedDeviceDidChange;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1 queue:(id)arg2;
 - (void)resetOnboardingWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)canCompleteOnboardingForCountryCode:(id)arg1 device:(id)arg2 error:(id *)arg3;
+- (void)removeFeatureSettingValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setFeatureSettingNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingData:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)saveOnboardingCompletion:(id)arg1 settings:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 countryCodeProvenance:(long long)arg2 date:(id)arg3 settings:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)regionAvailabilityWithError:(id *)arg1;
+- (id)featureAvailabilityRequirementsWithError:(id *)arg1;
+- (id)pairedFeatureAttributesWithError:(id *)arg1;
+- (id)onboardingEligibilityForCountryCode:(id)arg1 error:(id *)arg2;
 - (id)canCompleteOnboardingForCountryCode:(id)arg1 error:(id *)arg2;
-- (id)isFeatureCapabilitySupportedOnDevice:(id)arg1 error:(id *)arg2;
 - (id)isFeatureCapabilitySupportedOnActivePairedDeviceWithError:(id *)arg1;
 - (id)earliestDateLowestOnboardingVersionCompletedWithError:(id *)arg1;
 - (void)isCurrentOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
-- (id)onboardedCountryCodeSupportedStateForDevice:(id)arg1 error:(id *)arg2;
 - (id)onboardedCountryCodeSupportedStateWithError:(id *)arg1;
 - (id)isCurrentOnboardingVersionCompletedWithError:(id *)arg1;
 - (id)highestOnboardingVersionCompletedWithError:(id *)arg1;
-- (_Bool)_isCurrentOnboardingVersionCompletedForSleepEventRecord:(id)arg1;
-- (id)_currentSleepEventRecordWithError:(id *)arg1;
+- (void)getFeatureOnboardingRecordWithCompletion:(CDUnknownBlockType)arg1;
+- (id)featureOnboardingRecordWithError:(id *)arg1;
+- (_Bool)_isCurrentOnboardingVersionCompletedForOnboardingModel:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (void)_registerForNotifications;
+- (_Bool)_lock_updatedCachedOnboardingModelWithError:(id *)arg1;
+- (id)_cachedOnboardingModelWithError:(id *)arg1;
+- (void)_updateCachedOnboardingModel;
+- (void)_withLock:(CDUnknownBlockType)arg1;
 - (id)initWithFeatureIdentifier:(id)arg1 sleepStore:(id)arg2 pairedDeviceRegistry:(id)arg3;
 - (id)initWithFeatureIdentifier:(id)arg1 sleepStore:(id)arg2;
 

@@ -5,10 +5,11 @@
 //
 
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
+#import <PersonalizationPortraitInternals/PPUniversalSearchSpotlightFeedbackAccepting-Protocol.h>
 
 @class NSArray, NSError;
 
-@protocol PPTopicClientProtocol <PPFeedbackAccepting>
+@protocol PPTopicClientProtocol <PPFeedbackAccepting, PPUniversalSearchSpotlightFeedbackAccepting>
 - (void)scoredMappedTopicBatch:(NSArray *)arg1 isLast:(_Bool)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(_Bool))arg5;
 - (void)topicExtractionsFromTextBatch:(NSArray *)arg1 isLast:(_Bool)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(_Bool))arg5;
 - (void)topicRecordBatch:(NSArray *)arg1 isLast:(_Bool)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(_Bool))arg5;

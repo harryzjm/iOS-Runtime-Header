@@ -15,12 +15,13 @@
 + (_Bool)isICDPEnabledForDSID:(id)arg1;
 - (id)primaryAccountStashedPRK;
 - (id)primaryAppleAccount;
-- (id)sharedAccountStore;
+- (id)primaryAccountFullName;
 - (id)primaryAccountFirstName;
 - (id)contextForPrimaryAccount;
 - (id)iCloudEnv;
 - (id)escrowURL;
 - (id)authToken;
+- (_Bool)primaryAccountIsBeneficiary;
 - (unsigned long long)primaryAccountSecurityLevel;
 - (id)primaryAccountAltDSID;
 - (id)primaryAccountDSID;

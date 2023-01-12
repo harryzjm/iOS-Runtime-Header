@@ -13,6 +13,7 @@
     NSNumber *_captureMode;
     NSNumber *_captureDevice;
     NSNumber *_videoConfiguration;
+    NSNumber *_slomoConfiguration;
     NSNumber *_wantsQRCodes;
     NSNumber *_flashMode;
     NSNumber *_torchMode;
@@ -24,6 +25,7 @@
 @property(retain, nonatomic) NSNumber *torchMode; // @synthesize torchMode=_torchMode;
 @property(retain, nonatomic) NSNumber *flashMode; // @synthesize flashMode=_flashMode;
 @property(retain, nonatomic) NSNumber *wantsQRCodes; // @synthesize wantsQRCodes=_wantsQRCodes;
+@property(retain, nonatomic) NSNumber *slomoConfiguration; // @synthesize slomoConfiguration=_slomoConfiguration;
 @property(retain, nonatomic) NSNumber *videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
 @property(retain, nonatomic) NSNumber *captureDevice; // @synthesize captureDevice=_captureDevice;
 @property(retain, nonatomic) NSNumber *captureMode; // @synthesize captureMode=_captureMode;

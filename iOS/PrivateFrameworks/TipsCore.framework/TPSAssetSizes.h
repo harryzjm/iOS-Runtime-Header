@@ -16,7 +16,6 @@
     TPSSizes *_collectionFeatured;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TPSSizes *collectionFeatured; // @synthesize collectionFeatured=_collectionFeatured;

@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <WeatherFoundation/NSCopying-Protocol.h>
+#import <WeatherFoundation/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSString, NSURL;
 
-@interface WFSevereWeatherEvent : NSObject
+@interface WFSevereWeatherEvent : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     NSString *_areaName;
@@ -19,6 +22,7 @@
     unsigned long long _importance;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long importance; // @synthesize importance=_importance;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -27,6 +31,9 @@
 @property(readonly, copy, nonatomic) NSString *eventDescription; // @synthesize eventDescription=_eventDescription;
 @property(readonly, copy, nonatomic) NSString *areaName; // @synthesize areaName=_areaName;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithIdentifier:(id)arg1 areaName:(id)arg2 eventDescription:(id)arg3 source:(id)arg4 expirationDate:(id)arg5 URL:(id)arg6 importance:(unsigned long long)arg7;
 
 @end

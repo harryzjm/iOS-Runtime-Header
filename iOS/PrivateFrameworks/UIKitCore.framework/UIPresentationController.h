@@ -17,7 +17,7 @@
 #import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
 #import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
 
-@class NSArray, NSString, NSUUID, UIBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
+@class NSArray, NSString, NSUUID, UIBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController, _UIFormSheetPresentationController, _UIPresentationControllerVisualStyle;
 @protocol UIAdaptivePresentationControllerDelegate, UIFocusEnvironment, UIFocusItemContainer, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, UIViewControllerTransitionCoordinator, UIViewControllerTransitionCoordinatorContext, _UITraitEnvironmentInternal;
 
 @interface UIPresentationController : NSObject <_UIFallbackEnvironment, _UIGeometryChangeObserver, _UIAppearanceContainer, _UITraitEnvironmentInternal, _UIContentContainerInternal, UIGestureRecognizerDelegate, UIAppearanceContainer, UITraitEnvironment, UIContentContainer, UIFocusEnvironment>
@@ -42,6 +42,7 @@
     _Bool _isCurrentStateCancelled;
     UIView *_sourceView;
     UIBarButtonItem *_barButtonItem;
+    _UIPresentationControllerVisualStyle *_visualStyle;
     UIViewController *_presentingViewController;
     UIViewController *_presentedViewController;
     UIView *_containerView;
@@ -103,12 +104,15 @@
 @property(retain, nonatomic, setter=_setContainerView:) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic, setter=_setPresentedViewController:) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property(retain, nonatomic, setter=_setPresentingViewController:) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property(readonly, nonatomic) _UIPresentationControllerVisualStyle *_visualStyle; // @synthesize _visualStyle;
 @property(nonatomic, setter=_setForcePresentationInPresenterScene:) _Bool _forcePresentationInPresenterScene; // @synthesize _forcePresentationInPresenterScene;
 @property(nonatomic, getter=_shouldDeactivateReachabilityWhenTransitioning, setter=_setShouldDeactivateReachabilityWhenTransitioning:) _Bool shouldDeactivateReachabilityWhenTransitioning; // @synthesize shouldDeactivateReachabilityWhenTransitioning=_shouldDeactivateReachabilityWhenTransitioning;
 @property(retain, nonatomic) UIBarButtonItem *barButtonItem; // @synthesize barButtonItem=_barButtonItem;
 @property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(nonatomic, getter=_preferredContentSize, setter=_setPreferredContentSize:) struct CGSize _preferredContentSize; // @synthesize _preferredContentSize;
+- (_Bool)_allowsFocusInPresentingViewController;
+- (_Bool)_handlesKeyboardAvoidance;
 - (_Bool)_canPresentInSeparateScene;
 - (_Bool)_shouldSavePresentedViewControllerForStateRestoration;
 - (struct UIEdgeInsets)_additionalSafeAreaInsets;
@@ -154,6 +158,7 @@
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)_sendDelegateWillPresentWithAdaptiveStyle:(long long)arg1 transitionCoordinator:(id)arg2;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
+@property(readonly, nonatomic) _UIFormSheetPresentationController *_adaptiveFormSheetPresentationController;
 - (CDStruct_912cb5d2)__sizeClassPair;
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)_systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1 childViewController:(id)arg2;
@@ -208,10 +213,12 @@
 - (void)_willRunTransitionForCurrentStateDeferred:(_Bool)arg1;
 - (void)completeCurrentTransitionImmediately;
 - (void)runTransitionForCurrentState;
+@property(readonly, nonatomic) _Bool _ignoresLeftAndRightSafeAreaInsets;
 - (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (id)_rootPresentingViewControllerForNestedPresentation;
 - (id)_viewToIgnoreLayerTransformForViewFrameInWindowContentOverlayInsetsCalculation;
 - (id)_initialPresentationViewControllerForViewController:(id)arg1;
+- (id)_createVisualStyleForProvider:(id)arg1;
 @property(readonly, nonatomic) _Bool _isPresentedInFullScreen;
 - (id)_fullscreenPresentationSuperview;
 - (id)_currentContextPresentationSuperview;

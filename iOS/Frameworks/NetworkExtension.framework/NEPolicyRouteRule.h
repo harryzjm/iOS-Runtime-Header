@@ -8,21 +8,28 @@
 
 #import <NetworkExtension/NEPrettyDescription-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface NEPolicyRouteRule : NSObject <NEPrettyDescription>
 {
+    unsigned int _controlUnit;
+    NSUUID *_networkAgentUUID;
     long long _action;
     NSString *_interfaceName;
+    NSUUID *_matchNetworkAgent;
     long long _type;
 }
 
++ (id)routeRuleWithAction:(long long)arg1 forNetworkAgent:(id)arg2;
 + (id)routeRuleWithAction:(long long)arg1 forType:(long long)arg2;
 + (id)routeRuleWithAction:(long long)arg1 forInterfaceName:(id)arg2;
 - (void).cxx_destruct;
 @property long long type; // @synthesize type=_type;
+@property(copy) NSUUID *matchNetworkAgent; // @synthesize matchNetworkAgent=_matchNetworkAgent;
 @property(copy) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
 @property long long action; // @synthesize action=_action;
+@property unsigned int controlUnit; // @synthesize controlUnit=_controlUnit;
+@property(retain) NSUUID *networkAgentUUID; // @synthesize networkAgentUUID=_networkAgentUUID;
 - (_Bool)addTLVsToMessage:(id)arg1;
 - (unsigned char)typeValue;
 - (id)typeString;

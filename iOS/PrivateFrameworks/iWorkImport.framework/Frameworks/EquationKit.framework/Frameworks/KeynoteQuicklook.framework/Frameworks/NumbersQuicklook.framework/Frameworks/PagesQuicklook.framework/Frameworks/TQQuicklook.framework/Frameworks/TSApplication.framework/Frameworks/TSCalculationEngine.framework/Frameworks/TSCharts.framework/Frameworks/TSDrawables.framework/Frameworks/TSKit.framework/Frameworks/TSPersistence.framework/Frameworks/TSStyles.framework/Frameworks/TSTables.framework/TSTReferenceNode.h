@@ -6,7 +6,7 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSKChangeNotifier, TSKDocumentRoot, TSTGroupBy, TSTReferenceColorHelper, TSTTableInfo, TSTUIDRectRef;
+@class NSString, TSCECalculationEngine, TSCECategoryRef, TSKChangeNotifier, TSKDocumentRoot, TSTGroupBy, TSTReferenceColorHelper, TSTTableInfo, TSTUIDRectRef;
 
 @interface TSTReferenceNode <NSCopying>
 {
@@ -21,23 +21,23 @@
     _Bool _cachedIsValidReference;
     TSCECalculationEngine *_calcEngine;
     TSTUIDRectRef *_uidRectRef;
+    TSCECategoryRef *_categoryRef;
     TSTReferenceColorHelper *_referenceColorHelper;
     struct TSCECellRef _hostCellRef;
-    struct TSCECategoryRef _categoryRef;
 }
 
 + (unsigned char)preserveFlagsForReference:(const struct TSCERangeRef *)arg1 calcEngine:(id)arg2;
 + (_Bool)p_rangeRef:(const struct TSCERangeRef *)arg1 isContainedWithinSummaryAndLabelRowsInTable:(id)arg2;
-+ (struct TSUCellRect)p_cellRangeForSingleCategoryRefInViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1 inTable:(id)arg2 rangeContext:(unsigned char)arg3;
-+ (RefTypeHolder_45a2a752)p_expandedViewRangeRefForViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1 forLabelRowsInTable:(id)arg2;
-+ (struct TSCECategoryRef)p_spanningCategoryRefForViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1 groupByUid:(UUIDData_5fbc143e)arg2 categoryLevel:(unsigned char)arg3 calculationEngine:(id)arg4;
-+ (struct TSCECategoryRef)p_singleCategoryRefForViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1 rangeContext:(unsigned char)arg2 calculationEngine:(id)arg3 hostCellRef:(const struct TSCECellRef *)arg4;
++ (struct TSUCellRect)p_cellRangeForSingleCategoryRefInViewRangeRef:(const void *)arg1 inTable:(id)arg2 rangeContext:(unsigned char)arg3;
++ (RefTypeHolder_7723cd4d)p_expandedViewRangeRefForViewRangeRef:(const void *)arg1 forLabelRowsInTable:(id)arg2;
++ (id)p_spanningCategoryRefForViewRangeRef:(const void *)arg1 groupByUid:(struct TSKUIDStruct)arg2 categoryLevel:(unsigned char)arg3 calculationEngine:(id)arg4;
++ (id)p_singleCategoryRefForViewRangeRef:(const void *)arg1 rangeContext:(unsigned char)arg2 calculationEngine:(id)arg3 hostCellRef:(const struct TSCECellRef *)arg4;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool cachedIsValidReference; // @synthesize cachedIsValidReference=_cachedIsValidReference;
 @property(nonatomic) _Bool hasCachedIsValidReference; // @synthesize hasCachedIsValidReference=_hasCachedIsValidReference;
 @property(retain, nonatomic) TSTReferenceColorHelper *referenceColorHelper; // @synthesize referenceColorHelper=_referenceColorHelper;
-@property(nonatomic) struct TSCECategoryRef categoryRef; // @synthesize categoryRef=_categoryRef;
+@property(retain, nonatomic) TSCECategoryRef *categoryRef; // @synthesize categoryRef=_categoryRef;
 @property(readonly, nonatomic) _Bool isCategoryRef; // @synthesize isCategoryRef=_isCategoryRef;
 @property(readonly, nonatomic) _Bool suppressAutomaticNamedReferenceInvalidation; // @synthesize suppressAutomaticNamedReferenceInvalidation=_suppressAutomaticNamedReferenceInvalidation;
 @property(nonatomic) _Bool isBlankForKeyboardInsertion; // @synthesize isBlankForKeyboardInsertion=_isBlankForKeyboardInsertion;
@@ -45,16 +45,18 @@
 @property(nonatomic) unsigned char rangeContext; // @synthesize rangeContext=_rangeContext;
 @property(nonatomic) struct TSCECellRef hostCellRef; // @synthesize hostCellRef=_hostCellRef;
 @property(readonly, nonatomic) TSTUIDRectRef *uidRectRef; // @synthesize uidRectRef=_uidRectRef;
-- (void)saveToArchive:(struct ReferenceNodeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ReferenceNodeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+@property(readonly, nonatomic) _Bool suppressReferenceOptionsMenu;
 - (void)p_resetMenu;
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
 - (_Bool)isValidReference;
 - (void)invalidate;
 - (id)exportString;
-- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
+- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(void *)arg3;
+- (id)p_convertCategoryRefToRelativeForHostCell:(struct TSUCellCoord)arg1;
 - (void)p_buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 forCoord:(struct TSUCellCoord)arg2 preserveFlags:(unsigned char)arg3 hostCell:(struct TSUCellCoord)arg4;
 - (id)formulaPlainText;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;
@@ -78,16 +80,17 @@
 @property(readonly, nonatomic) _Bool isRangeExpression;
 @property(readonly, nonatomic) TSTGroupBy *groupBy;
 @property(readonly, nonatomic) TSTTableInfo *tableInfo;
-@property(nonatomic) UUIDData_5fbc143e hostTableUID;
-@property(readonly, nonatomic) UUIDData_5fbc143e tableUID;
-@property(readonly, nonatomic) UUIDData_5fbc143e categoryRefTableUID;
+@property(nonatomic) struct TSKUIDStruct hostTableUID;
+@property(readonly, nonatomic) struct TSKUIDStruct tableUID;
+@property(readonly, nonatomic) struct TSKUIDStruct categoryRefTableUID;
 - (id)p_categoryRefViewTractRef;
-- (RefTypeHolder_45a2a752)p_boundingViewRangeRef;
-- (void)setBaseRangeRef:(const RefTypeHolder_1140c985 *)arg1 preserveFlags:(unsigned char)arg2;
-- (void)setChromeRangeRef:(const RefTypeHolder_8c6da553 *)arg1 preserveFlags:(unsigned char)arg2;
-- (void)setViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1 preserveFlags:(unsigned char)arg2;
+- (RefTypeHolder_7723cd4d)p_boundingViewRangeRef;
+- (void)setBaseRangeRef:(const void *)arg1 preserveFlags:(unsigned char)arg2;
+- (void)setChromeRangeRef:(const void *)arg1 preserveFlags:(unsigned char)arg2;
+- (void)setViewRangeRef:(const void *)arg1 preserveFlags:(unsigned char)arg2;
+- (id)baseTractRef;
 - (id)viewTractRef;
-- (RefTypeHolder_45a2a752)viewRangeRefDeprecated;
+- (RefTypeHolder_7723cd4d)viewRangeRefDeprecated;
 @property(readonly) struct TSCERangeCoordinate baseBoundingBox;
 @property(readonly) struct TSCERangeCoordinate viewBoundingBox;
 @property(readonly) struct TSUModelCellCoord baseBottomRightCoord;
@@ -105,12 +108,12 @@
 - (void)dealloc;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
 - (id)initWithReferenceStart:(id)arg1 referenceEnd:(id)arg2 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg3;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 categoryRef:(const struct TSCECategoryRef *)arg3 hostCellRef:(const struct TSCECellRef *)arg4 referenceColorHelper:(id)arg5;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseRangeRef:(const RefTypeHolder_1140c985 *)arg3 preserveFlags:(unsigned char)arg4 hostCellRef:(const struct TSCECellRef *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 chromeRangeRef:(const RefTypeHolder_8c6da553 *)arg3 preserveFlags:(unsigned char)arg4 hostCellRef:(const RefTypeHolder_a8d05c9a *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewRangeRef:(const RefTypeHolder_45a2a752 *)arg3 preserveFlags:(unsigned char)arg4 hostCellRef:(const RefTypeHolder_a8d05c9a *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 categoryRef:(id)arg3 hostCellRef:(const struct TSCECellRef *)arg4 referenceColorHelper:(id)arg5;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseRangeRef:(const void *)arg3 preserveFlags:(unsigned char)arg4 hostCellRef:(const struct TSCECellRef *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 chromeRangeRef:(const void *)arg3 preserveFlags:(unsigned char)arg4 hostCellRef:(const void *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewRangeRef:(const void *)arg3 preserveFlags:(unsigned char)arg4 hostCellRef:(const void *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
 - (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 uidRectRef:(id)arg3 hostCellRef:(const struct TSCECellRef *)arg4 referenceColorHelper:(id)arg5 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg6;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 uidRectRef:(id)arg3 categoryRef:(const struct TSCECategoryRef *)arg4 hostCellRef:(const struct TSCECellRef *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 uidRectRef:(id)arg3 categoryRef:(id)arg4 hostCellRef:(const struct TSCECellRef *)arg5 referenceColorHelper:(id)arg6 suppressAutomaticNamedReferenceInvalidation:(_Bool)arg7;
 
 @end
 

@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface CUIRenditionMetrics : NSObject
+#import <CoreUI/NSCopying-Protocol.h>
+
+@interface CUIRenditionMetrics : NSObject <NSCopying>
 {
     struct CGSize _imageSize;
     struct CGSize _edgeBottomLeftMargin;
@@ -28,6 +30,7 @@
 - (struct CGRect)insetRectWithMetrics:(struct CGRect)arg1;
 - (struct CGRect)contentRect;
 - (struct CGRect)edgeRect;
+- (id)metricsByMirroringHorizontally;
 - (_Bool)scalesHorizontally;
 - (_Bool)scalesVertically;
 - (double)scale;
@@ -41,6 +44,7 @@
 - (struct CGSize)edgeTopRightMargin;
 - (struct CGSize)edgeBottomLeftMargin;
 - (struct CGSize)imageSize;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

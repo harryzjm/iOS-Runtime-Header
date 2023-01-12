@@ -12,8 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setExpanded:(_Bool)arg1;
-- (void)_setAXAutoDismissExpandedStatusBar:(_Bool)arg1;
-- (_Bool)_axAutoDismissExpandedStatusBar;
 
 @end
 

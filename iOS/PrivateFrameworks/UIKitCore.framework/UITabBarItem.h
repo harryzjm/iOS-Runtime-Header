@@ -35,6 +35,8 @@
     } _tabBarItemFlags;
     _Bool _springLoaded;
     struct UIOffset _badgeOffset;
+    _Bool __usesModernAppearance;
+    UITabBarAppearance *_scrollEdgeAppearance;
     UITabBarAppearance *_standardAppearance;
     long long __barMetrics;
     long long __imageStyle;
@@ -43,11 +45,13 @@
 
 + (id)_appearanceBlindViewClasses;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setUsesModernAppearance:) _Bool _usesModernAppearance; // @synthesize _usesModernAppearance=__usesModernAppearance;
 @property(retain, nonatomic, setter=_setTintColor:) UIColor *_tintColor; // @synthesize _tintColor=__tintColor;
 @property(nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle=__imageStyle;
 @property(nonatomic, setter=_setBarMetrics:) long long _barMetrics; // @synthesize _barMetrics=__barMetrics;
 @property(copy, nonatomic) UITabBarAppearance *standardAppearance; // @synthesize standardAppearance=_standardAppearance;
 @property(copy, nonatomic) NSString *badgeValue; // @synthesize badgeValue=_badgeValue;
+@property(copy, nonatomic) UITabBarAppearance *scrollEdgeAppearance; // @synthesize scrollEdgeAppearance=_scrollEdgeAppearance;
 - (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (void)setSpringLoaded:(_Bool)arg1;
 - (_Bool)isSpringLoaded;

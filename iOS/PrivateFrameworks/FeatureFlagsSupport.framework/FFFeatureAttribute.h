@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *value; // @synthesize value=_value;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
+- (_Bool)matchesAgainst:(id)arg1;
 - (id)description;
 - (id)initWithName:(id)arg1 value:(id)arg2;
 

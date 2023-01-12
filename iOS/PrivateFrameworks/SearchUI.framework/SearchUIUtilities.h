@@ -10,9 +10,15 @@
 {
 }
 
++ (void)prewarmApplicationLibrary;
++ (id)skHandlesFromContact:(id)arg1;
++ (id)fmfHandlesFromContact:(id)arg1;
++ (id)stringHandlesFromContact:(id)arg1;
 + (_Bool)isMinimizedHardwareKeyboardMode;
 + (void)presentViewController:(id)arg1 environment:(id)arg2 prefersModalPresentation:(_Bool)arg3;
 + (id)environmentForDelegate:(id)arg1;
++ (id)fileProviderItemIDForCoreSpotlightIdentifier:(id)arg1 fileProviderIdentifier:(id)arg2;
++ (void)fetchURLForCoreSpotlightIdentifier:(id)arg1 fileProviderIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)fileProviderItemIDForFileResult:(id)arg1;
 + (void)fetchURLForFileResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)bundleIdentifierForApp:(unsigned long long)arg1;
@@ -41,6 +47,7 @@
 + (void)openUserActivity:(id)arg1 applicationBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)openUserActivity:(id)arg1 applicationBundleIdentifier:(id)arg2;
 + (void)openURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (void)requestClipInstallWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)openPunchout:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)openPunchout:(id)arg1;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -57,6 +64,11 @@
 + (double)standardTableCellContentInset;
 + (double)onePixelForCurrentScreenResolution;
 + (_Bool)backgroundColorPrefersWhiteForegroundText:(id)arg1;
++ (id)cachedColorForSFColor:(id)arg1;
++ (void)fetchColorForSFColor:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (id)sharedColorCache;
++ (id)focusGroupIdentifier;
++ (id)colorForSFColor:(id)arg1;
 + (id)uiColorForSFColor:(id)arg1;
 
 @end

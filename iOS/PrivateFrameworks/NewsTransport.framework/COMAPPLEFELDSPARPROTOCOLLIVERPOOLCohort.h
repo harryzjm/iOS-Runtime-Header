@@ -12,16 +12,19 @@
 {
     double _clicks;
     double _impressions;
+    double _rawClicks;
     long long _timestamp;
     int _type;
     struct {
         unsigned int clicks:1;
         unsigned int impressions:1;
+        unsigned int rawClicks:1;
         unsigned int timestamp:1;
         unsigned int type:1;
     } _has;
 }
 
+@property(nonatomic) double rawClicks; // @synthesize rawClicks=_rawClicks;
 @property(nonatomic) long long timestamp; // @synthesize timestamp=_timestamp;
 @property(nonatomic) double impressions; // @synthesize impressions=_impressions;
 @property(nonatomic) double clicks; // @synthesize clicks=_clicks;
@@ -34,6 +37,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasRawClicks;
 @property(nonatomic) _Bool hasTimestamp;
 @property(nonatomic) _Bool hasImpressions;
 @property(nonatomic) _Bool hasClicks;

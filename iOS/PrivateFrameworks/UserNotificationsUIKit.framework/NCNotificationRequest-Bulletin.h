@@ -9,14 +9,19 @@
 @class BBBulletin, BBObserver, NSArray, NSString;
 
 @interface NCNotificationRequest (Bulletin)
-+ (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(_Bool)arg5 hasPlayLightsAndSirens:(_Bool)arg6;
-+ (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(_Bool)arg5;
++ (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(_Bool)arg5 hasPlayLightsAndSirens:(_Bool)arg6 uuid:(id)arg7;
++ (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(_Bool)arg5 uuid:(id)arg6;
++ (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 uuid:(id)arg5;
 + (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4;
 + (id)requesterIdentifier;
 @property(readonly, nonatomic) NSString *contactIdentifier;
 - (_Bool)hasSameContactAsNotificationRequest:(id)arg1;
 @property(readonly, nonatomic) BBObserver *observer;
 @property(readonly, nonatomic) BBBulletin *bulletin;
+- (long long)_atxAttachmentType;
+- (id)_communicationContactIdentifiers;
+- (long long)_atxUrgencyFromInterruptionLevel:(unsigned long long)arg1;
+- (id)atxUserNotification;
 @property(readonly, copy, nonatomic) NSArray *minimalEnvironmentActions;
 @property(readonly, copy, nonatomic) NSArray *defaultEnvironmentActions;
 @property(readonly, nonatomic) _Bool showsTextInputOnAppearance;

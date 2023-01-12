@@ -9,23 +9,30 @@
 #import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/NSSecureCoding-Protocol.h>
 
-@class HMIConfidence, NSDictionary, NSString;
+@class HMIConfidence, NSArray, NSDictionary, NSString;
 
 @interface HMIVideoAnalyzerEvent : HMFObject <HMFLogging, NSSecureCoding>
 {
-    _Bool _hasMotionVectors;
     HMIConfidence *_confidence;
     NSDictionary *_userInfo;
     struct CGRect _boundingBox;
 }
 
-+ (id)classShortNameStringMap;
++ (id)eventConfidenceThresholdsHigh;
++ (id)eventConfidenceThresholdsMedium;
++ (id)defaultConfidenceThreshold:(Class)arg1 confidenceLevel:(long long)arg2;
++ (id)defaultConfidenceThresholdsHigh;
++ (id)defaultConfidenceThresholdsMedium;
++ (id)defaultConfidenceThresholdsFeedback;
++ (id)rgbColorCodeForEventClass:(Class)arg1;
++ (Class)eventClassForShortName:(id)arg1;
++ (id)shortNameForEventClass:(Class)arg1;
 + (id)eventsWithContentsOfFile:(id)arg1;
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
 + (id)eventClasses;
++ (id)eventClassesArray;
 - (void).cxx_destruct;
-@property(readonly) _Bool hasMotionVectors; // @synthesize hasMotionVectors=_hasMotionVectors;
 @property(readonly) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly) HMIConfidence *confidence; // @synthesize confidence=_confidence;
 @property(readonly) struct CGRect boundingBox; // @synthesize boundingBox=_boundingBox;
@@ -35,9 +42,10 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) long long confidenceLevel;
 - (id)shortDescription;
+- (id)attributeDescriptions;
 @property(readonly, copy) NSString *description;
-- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 hasMotionVectors:(_Bool)arg3 userInfo:(id)arg4;
-- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 hasMotionVectors:(_Bool)arg3;
+@property(readonly) NSArray *allEvents;
+- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 userInfo:(id)arg3;
 - (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2;
 
 // Remaining properties

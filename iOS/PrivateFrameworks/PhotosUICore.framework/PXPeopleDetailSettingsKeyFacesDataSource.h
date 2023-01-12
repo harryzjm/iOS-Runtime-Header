@@ -8,26 +8,29 @@
 
 #import <PhotosUICore/PXPeopleDetailSettingsDataSource-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PHPhotoLibrary;
 
 @interface PXPeopleDetailSettingsKeyFacesDataSource : NSObject <PXPeopleDetailSettingsDataSource>
 {
     NSString *_title;
     NSArray *_keyFaces;
+    PHPhotoLibrary *_photoLibrary;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *keyFaces; // @synthesize keyFaces=_keyFaces;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(readonly, nonatomic) NSArray *keyFaces; // @synthesize keyFaces=_keyFaces;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (id)modelObjectForIndex:(long long)arg1;
 @property(readonly, nonatomic) long long action;
 - (long long)verifyTypeAtIndex:(long long)arg1;
 - (unsigned long long)faceCount:(long long)arg1;
 - (id)personNameAtIndex:(long long)arg1;
+- (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) unsigned long long numberOfItems;
 @property(readonly, nonatomic) _Bool hasMoreDetails;
-- (id)initWithTitle:(id)arg1 keyFaces:(id)arg2;
+- (id)initWithTitle:(id)arg1 keyFaces:(id)arg2 photoLibrary:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

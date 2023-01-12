@@ -10,7 +10,6 @@
 
 @class CKDPRecordFieldIdentifier, CKDPRecordType, NSData, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_assets;

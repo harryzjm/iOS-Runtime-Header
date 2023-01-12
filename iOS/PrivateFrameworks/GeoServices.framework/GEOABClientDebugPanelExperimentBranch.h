@@ -10,7 +10,6 @@
 
 @class GEOABDebugPanelExperimentBranch, NSMutableArray, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOABClientDebugPanelExperimentBranch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;

@@ -22,6 +22,7 @@
 + (id)dotString;
 + (void)initialize;
 - (void)cancelForegroundAutoResumeAfterDate:(id)arg1;
+- (void)_updateVideoHDREnabledForDevice:(id)arg1 forceResetVideoHDRSuspended:(_Bool)arg2;
 - (void)_updateCameraCalibrationDataDeliveryEnabledForSourceDevice:(id)arg1;
 - (void)_updateCameraCalibrationDataDeliveryEnabledForAllConnectedSourceDevices;
 - (void)_updateDepthDataDeliveryEnabledForSourceDevice:(id)arg1;
@@ -37,7 +38,10 @@
 - (void)_updateDeviceActiveFormatsAndActiveConnections;
 - (id)_outputWithClass:(Class)arg1 forSourceDevice:(id)arg2;
 - (void)_stopAndTearDownGraph;
-- (_Bool)_buildAndRunGraph;
+- (_Bool)_buildAndRunGraph:(_Bool)arg1;
+- (void)_handleBackgroundBlurActiveChangedForDevice:(id)arg1;
+- (void)_handleCenterStageActiveChangedForDevice:(id)arg1;
+- (void)_addFakeOutputsIfNeededForCenterStageToSessionConfiguration:(id)arg1;
 - (id)_figCaptureSessionConfiguration;
 - (void)_makeConfigurationLive:(id)arg1;
 - (void)_postRuntimeError:(id)arg1;

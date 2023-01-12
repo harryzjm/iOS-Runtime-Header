@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <Pegasus/NSCopying-Protocol.h>
+
 @class NSString;
 
-@interface PGPictureInPictureApplication : NSObject
+@interface PGPictureInPictureApplication : NSObject <NSCopying>
 {
     int _processIdentifier;
     NSString *_bundleIdentifier;
@@ -18,6 +20,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

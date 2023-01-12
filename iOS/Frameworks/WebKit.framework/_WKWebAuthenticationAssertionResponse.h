@@ -16,6 +16,7 @@
 }
 
 @property(readonly) struct Object *_apiObject;
+- (void)setLAContext:(id)arg1;
 @property(readonly, copy, nonatomic) NSData *userHandle;
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, copy, nonatomic) NSString *name;

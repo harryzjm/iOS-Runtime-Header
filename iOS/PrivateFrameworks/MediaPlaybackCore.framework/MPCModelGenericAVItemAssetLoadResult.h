@@ -8,6 +8,7 @@
 
 @class NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelGenericAVItemAssetLoadResult : NSObject
 {
     _Bool _allowsAssetCaching;
@@ -17,6 +18,7 @@
     _Bool _isCloudStreamingAsset;
     _Bool _onlineSubscriptionKeysRequired;
     _Bool _iTunesStoreStream;
+    _Bool _downloadedAsset;
     NSString *_assetPathExtension;
     long long _assetProtectionType;
     long long _assetQualityType;
@@ -30,10 +32,19 @@
     NSURL *_alternateHLSKeyCertificateURL;
     id _suzeLeaseID;
     CDUnknownBlockType _willBecomeActivePlayerItemHandler;
+    NSURL *_enhancedAudioKeyCertificateURL;
+    NSURL *_enhancedAudioKeyServerURL;
+    NSString *_playbackAuthorizationToken;
+    long long _audioAssetType;
 }
 
 + (id)assetLoadResultWithStoreAssetPlaybackResponse:(id)arg1 assetLoadProperties:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isDownloadedAsset) _Bool downloadedAsset; // @synthesize downloadedAsset=_downloadedAsset;
+@property(nonatomic) long long audioAssetType; // @synthesize audioAssetType=_audioAssetType;
+@property(copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
+@property(copy, nonatomic) NSURL *enhancedAudioKeyServerURL; // @synthesize enhancedAudioKeyServerURL=_enhancedAudioKeyServerURL;
+@property(copy, nonatomic) NSURL *enhancedAudioKeyCertificateURL; // @synthesize enhancedAudioKeyCertificateURL=_enhancedAudioKeyCertificateURL;
 @property(copy, nonatomic) CDUnknownBlockType willBecomeActivePlayerItemHandler; // @synthesize willBecomeActivePlayerItemHandler=_willBecomeActivePlayerItemHandler;
 @property(nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream; // @synthesize iTunesStoreStream=_iTunesStoreStream;
 @property(retain, nonatomic) id suzeLeaseID; // @synthesize suzeLeaseID=_suzeLeaseID;
@@ -54,6 +65,9 @@
 @property(copy, nonatomic) NSString *assetPathExtension; // @synthesize assetPathExtension=_assetPathExtension;
 @property(nonatomic) _Bool allowsAssetInfoCaching; // @synthesize allowsAssetInfoCaching=_allowsAssetInfoCaching;
 @property(nonatomic) _Bool allowsAssetCaching; // @synthesize allowsAssetCaching=_allowsAssetCaching;
+- (id)descriptionDictionary;
+- (id)description;
+@property(readonly, nonatomic) _Bool isEnhancedAudioHLSAsset;
 @property(readonly, nonatomic) _Bool hasValidAsset;
 
 @end

@@ -24,6 +24,7 @@
 @property(retain, nonatomic) NSMutableDictionary *flows; // @synthesize flows=_flows;
 - (void)storeItem:(id)arg1 forFlowName:(id)arg2;
 - (_Bool)tangierTextRepAllowsSelection:(id)arg1;
+- (id)componentIdentifierForFlowLayout:(id)arg1;
 - (id)flowLayoutForComponentIdentifier:(id)arg1;
 - (id)infoForStorage:(id)arg1 selection:(id)arg2;
 - (void)buildFlowsAndUpdateInfosWithICC:(id)arg1;

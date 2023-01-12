@@ -4,66 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLSCurationSession, NSDictionary, NSMutableDictionary, NSString, PGGraphSceneNode;
+@class PGFeaturedTimePeriodMemoryConfiguration, PGMemoryMomentRequirements, PGOverTheYearsMemoryConfiguration;
 
 @interface PGFoodieMemoryGenerator
 {
-    NSDictionary *_confidenceThresholdByFoodSceneIdentifier;
-    NSDictionary *_confidenceThresholdByDrinkSceneIdentifier;
-    NSDictionary *_confidenceThresholdByForbiddenSceneIdentifiers;
-    NSMutableDictionary *_locationCoordinateByAssetUUID;
-    NSMutableDictionary *_relevantFoodieAssetUUIDsByMomentNodeLocalIdentifier;
-    NSMutableDictionary *_assetUUIDsWithPeopleByMomentNodeLocalIdentifier;
-    NSMutableDictionary *_cityNodesByMomentLocalIdentifier;
-    long long _currentYear;
-    PGGraphSceneNode *_foodSceneNode;
-    CLSCurationSession *_curationSession;
-    NSString *_foodieMemoryType;
-    NSString *_foodieMemoryKind;
+    _Bool _requireSceneProcessingMeetsThresholdOverTime;
+    _Bool _requireFaceProcessingMeetsThresholdOverTime;
+    PGMemoryMomentRequirements *_momentRequirements;
+    PGOverTheYearsMemoryConfiguration *_overTheYearsConfiguration;
+    PGFeaturedTimePeriodMemoryConfiguration *_featuredYearConfiguration;
 }
 
++ (id)incompatibleMomentNodesInGraph:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *foodieMemoryKind; // @synthesize foodieMemoryKind=_foodieMemoryKind;
-@property(retain, nonatomic) NSString *foodieMemoryType; // @synthesize foodieMemoryType=_foodieMemoryType;
-@property(retain, nonatomic) CLSCurationSession *curationSession; // @synthesize curationSession=_curationSession;
-@property(retain, nonatomic) PGGraphSceneNode *foodSceneNode; // @synthesize foodSceneNode=_foodSceneNode;
-@property(nonatomic) long long currentYear; // @synthesize currentYear=_currentYear;
-@property(retain, nonatomic) NSMutableDictionary *cityNodesByMomentLocalIdentifier; // @synthesize cityNodesByMomentLocalIdentifier=_cityNodesByMomentLocalIdentifier;
-@property(retain, nonatomic) NSMutableDictionary *assetUUIDsWithPeopleByMomentNodeLocalIdentifier; // @synthesize assetUUIDsWithPeopleByMomentNodeLocalIdentifier=_assetUUIDsWithPeopleByMomentNodeLocalIdentifier;
-@property(retain, nonatomic) NSMutableDictionary *relevantFoodieAssetUUIDsByMomentNodeLocalIdentifier; // @synthesize relevantFoodieAssetUUIDsByMomentNodeLocalIdentifier=_relevantFoodieAssetUUIDsByMomentNodeLocalIdentifier;
-@property(retain, nonatomic) NSMutableDictionary *locationCoordinateByAssetUUID; // @synthesize locationCoordinateByAssetUUID=_locationCoordinateByAssetUUID;
-@property(retain, nonatomic) NSDictionary *confidenceThresholdByForbiddenSceneIdentifiers; // @synthesize confidenceThresholdByForbiddenSceneIdentifiers=_confidenceThresholdByForbiddenSceneIdentifiers;
-@property(retain, nonatomic) NSDictionary *confidenceThresholdByDrinkSceneIdentifier; // @synthesize confidenceThresholdByDrinkSceneIdentifier=_confidenceThresholdByDrinkSceneIdentifier;
-@property(retain, nonatomic) NSDictionary *confidenceThresholdByFoodSceneIdentifier; // @synthesize confidenceThresholdByFoodSceneIdentifier=_confidenceThresholdByFoodSceneIdentifier;
-- (id)_potentialMemoriesForDryTesting;
-- (id)_extendedCurationForAssets:(id)arg1 controller:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
-- (id)_curatedPersonAssetsFromPersonAssetsByMomentNodeLocalIdentifier:(id)arg1 relevantFoodAssetsByMomentNodeLocalIdentifier:(id)arg2 momentNodes:(id)arg3 featuringPersonNode:(id)arg4 outValidMomentNodes:(id *)arg5 outRelevantFoodAssetsForFeaturedPersonByMomentNodeLocalIdentifier:(id *)arg6 controller:(id)arg7 progressBlock:(CDUnknownBlockType)arg8;
-- (id)_assetsCloseInTimeAndLocationToAsset:(id)arg1 inAssets:(id)arg2 stopAtFirstMatch:(_Bool)arg3;
-- (id)_foodieCurationCriteriaWithGraph:(id)arg1 personNode:(id)arg2;
-- (id)_uuidsOfRequiredFoodAssetsWithNumberOfFoodAssetsToRequirePerMoment:(unsigned long long)arg1 relevantFoodAssetsByMomentNodeLocalIdentifier:(id)arg2 controller:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (id)_fetchAssetsForAssetUUIDsByMomentNodeLocalIdentifier:(id)arg1 controller:(id)arg2;
-- (id)_assetUUIDsAtLocationNode:(id)arg1 forMomentNodes:(id)arg2 assetUUIDs:(id)arg3;
-- (void)_calculateRelevantFoodieAssetUUIDsForMomentNode:(id)arg1;
-- (id)_relevantFoodieAssetUUIDsForMomentNode:(id)arg1;
-- (id)_assetUUIDsWithPeopleForMomentNode:(id)arg1;
-- (id)_assetUUIDsAtLocationCoordinate:(struct CLLocationCoordinate2D)arg1 inAssetsWithUUIDs:(id)arg2;
-- (id)_potentialMemoriesForHomeWithGraph:(id)arg1 cancelled:(_Bool *)arg2;
-- (id)_potentialMemoriesForRestaurantsWithGraph:(id)arg1 cancelled:(_Bool *)arg2;
-- (id)_potentialMemoriesForCitiesWithGraph:(id)arg1 cancelled:(_Bool *)arg2;
-- (id)_cityNodesForMomentNode:(id)arg1;
-- (id)_potentialMemoriesForPeopleWithGraph:(id)arg1 cancelled:(_Bool *)arg2;
-- (id)_potentialMemoriesForTripsWithGraph:(id)arg1 cancelled:(_Bool *)arg2;
-- (id)_potentialGenericMemoriesWithGraph:(id)arg1 cancelled:(_Bool *)arg2;
-- (id)_momentNodesByYearFromMomentNodes:(id)arg1;
-- (_Bool)_aggregationMeetsMinimumTimeIntervalForMomentNodes:(id)arg1;
-- (id)_momentNodesFilteredForIncompatibleMeaningsFromMomentNodes:(id)arg1;
-- (id)_incompatibleMeanings;
-- (id)_potentialMemoriesFromMomentNodes:(id)arg1 atLocationCoordinate:(struct CLLocationCoordinate2D)arg2 atLocationNode:(id)arg3 requireMinimumTimeInterval:(_Bool)arg4 includeSingleYearMemories:(_Bool)arg5 features:(id)arg6 featuredNode:(id)arg7 kind:(unsigned long long)arg8 cancelled:(_Bool *)arg9;
-- (id)_assetUUIDsFromAssets:(id)arg1;
-- (id)_preferredPotentialMemoriesFromPotentialMemories:(id)arg1;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (_Bool)_hasEnoughAssetsWithMinimumSceneAnalysisVersion;
+- (id)featuredYearConfiguration;
+- (id)overTheYearsConfiguration;
+- (id)momentRequirements;
+- (_Bool)requireFaceProcessingMeetsThresholdOverTime;
+- (_Bool)requireSceneProcessingMeetsThresholdOverTime;
+- (id)relevantFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)keyAssetCurationOptionsWithTriggeredMemory:(id)arg1 inGraph:(id)arg2;
+- (id)_foodieTitleGeneratorWithMomentNodes:(id)arg1 featureNodes:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 eligibleAssetUUIDs:(id)arg2 triggeredMemory:(id)arg3;
+- (unsigned long long)durationForExtendedCuration;
+- (unsigned long long)durationForCuration;
+- (void)enumerateMomentNodesAndFeatureNodesInGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (unsigned long long)memoryCategorySubcategoryForOverTimeType:(unsigned long long)arg1;
+- (unsigned long long)memoryCategory;
+- (id)initWithMemoryGenerationContext:(id)arg1;
 
 @end
 

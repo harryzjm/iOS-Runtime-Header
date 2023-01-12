@@ -9,19 +9,21 @@
 #import <PhotosImagingFoundation/NSCopying-Protocol.h>
 #import <PhotosImagingFoundation/NSObject-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSString;
 
 @interface IPAEditOperation : NSObject <NSObject, NSCopying>
 {
-    NSUUID *_UUID;
 }
 
++ (id)_mapDispatchQueue;
++ (id)_uuidForIdentifierMap;
++ (id)_identifierForUUIDMap;
++ (id)operationUUIDForIdentifier:(id)arg1;
++ (id)operationIdentifierForUUID:(id)arg1;
 + (id)presetifyAdjustment:(id)arg1;
-- (void).cxx_destruct;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (id)settingsDictionary;
-- (void)setUUID:(id)arg1;
 - (id)UUID;
 - (id)autoIdentifier;
 - (id)identifier;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AUAudioUnitBusArray_XPC, AUParameterTree, NSArray, NSXPCConnection;
+@class AUAudioUnitBusArray_XPC, AUCrashHandler, AUParameterTree, NSArray, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
 @interface AUAudioUnit_XPC
@@ -14,15 +14,16 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_xpcConnection;
     int _remotePID;
     struct mach_timebase_info _remoteMachTimebaseInfo;
+    AUCrashHandler *_crashHandler;
     _Bool _canRender;
     _Bool _canProcess;
     _Bool _removingObserverWithContext;
     struct mutex _parameterTreeMutex;
     AUAudioUnitBusArray_XPC *_inputBusses;
     AUAudioUnitBusArray_XPC *_outputBusses;
-    struct unique_ptr<AUProcAndUserData, std::__1::default_delete<AUProcAndUserData>> _elementCountListenerToken;
-    struct vector<AUAudioUnit_XPC_PropListener, std::__1::allocator<AUAudioUnit_XPC_PropListener>> _propListeners;
-    struct shared_ptr<caulk::synchronized<auoop::RenderPipePool, std::__1::recursive_mutex, caulk::empty_atomic_interface<auoop::RenderPipePool>>> _renderPipePool;
+    struct unique_ptr<AUProcAndUserData, std::default_delete<AUProcAndUserData>> _elementCountListenerToken;
+    struct vector<AUAudioUnit_XPC_PropListener, std::allocator<AUAudioUnit_XPC_PropListener>> _propListeners;
+    struct shared_ptr<caulk::synchronized<auoop::RenderPipePool, std::recursive_mutex>> _renderPipePool;
     struct optional<auoop::RenderPipeUser> _renderPipeUser;
     AUParameterTree *_cachedParameterTree;
     NSArray *_userPresets;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)selectViewConfiguration:(id)arg1;
 - (id)supportedViewConfigurations:(id)arg1;
 - (id)parametersForOverviewWithCount:(long long)arg1;
+- (float)getV2Parameter:(unsigned long long)arg1 sequenceNumber:(unsigned int)arg2;
 - (id)parameterTree;
 - (void)propertiesChanged:(id)arg1;
 - (id)_getBus:(unsigned int)arg1 scope:(unsigned int)arg2 error:(id *)arg3;
@@ -75,7 +77,10 @@ __attribute__((visibility("hidden")))
 - (id)inputBusses;
 - (void)_parameterTreeChanged;
 - (void)dealloc;
-- (void)didCrash;
+- (void)didCrash:(id)arg1;
+- (void)didInvalidate;
+- (id)_getInvalidationNotificationInfo;
+- (void)_invalidatePipePoolAndUser;
 - (void)_doOpen:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setComponentInstance:(struct OpaqueAudioComponentInstance *)arg1;
 

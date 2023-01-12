@@ -11,6 +11,7 @@
 }
 
 + (id)userInterfaceProtocol;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 

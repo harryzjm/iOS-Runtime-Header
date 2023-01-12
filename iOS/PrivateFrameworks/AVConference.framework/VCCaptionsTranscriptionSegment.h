@@ -9,11 +9,12 @@
 #import <AVConference/NSCoding-Protocol.h>
 #import <AVConference/NSCopying-Protocol.h>
 #import <AVConference/NSSecureCoding-Protocol.h>
+#import <AVConference/VCCaptionsTranscriptionSegment-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCCaptionsTranscriptionSegment : NSObject <NSCopying, NSCoding, NSSecureCoding>
+@interface VCCaptionsTranscriptionSegment : NSObject <NSCopying, NSCoding, NSSecureCoding, VCCaptionsTranscriptionSegment>
 {
     NSString *_text;
     struct _NSRange _range;
@@ -24,6 +25,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property(readonly, nonatomic) NSString *text; // @synthesize text=_text;
 @property(readonly, nonatomic) unsigned int confidence; // @synthesize confidence=_confidence;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

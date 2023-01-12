@@ -6,12 +6,16 @@
 
 #import <ContinuousDialogManagerService/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class CDMXPCSetupNLURequest, NSDictionary, NSString, SIRINLURequest;
 
 @protocol CDMXPCListenerService <NSObject>
+- (void)handleClientSetupRequest:(CDMXPCSetupNLURequest *)arg1;
+- (void)handleClientNLURequest:(SIRINLURequest *)arg1;
 - (void)handleClientAceUpdate:(NSDictionary *)arg1;
 
 @optional
+- (void)handleClientSetGraph:(NSString *)arg1 reply:(void (^)(CDMXPCSetGraphResponse *))arg2;
+- (void)handleClientListGraphs:(void (^)(CDMXPCListGraphsResponse *))arg1;
 - (void)handleClientAceRequest:(NSDictionary *)arg1 withReply:(void (^)(NSDictionary *))arg2;
 @end
 

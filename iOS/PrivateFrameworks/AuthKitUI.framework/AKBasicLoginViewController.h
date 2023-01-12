@@ -6,6 +6,7 @@
 
 #import <OnBoardingKit/OBWelcomeController.h>
 
+#import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/AKBasicLoginAnimateProtocol-Protocol.h>
 #import <AuthKitUI/AKBasicLoginPasswordFieldProtocol-Protocol.h>
 #import <AuthKitUI/UITableViewDataSource-Protocol.h>
@@ -15,55 +16,70 @@
 @class AKAppleIDAuthenticationInAppContext, AKBasicLoginActions, AKBasicLoginOptionsViewController, AKBasicLoginTableViewCell, NSLayoutConstraint, NSString, UITableView, UIView;
 @protocol AKBasicLoginControllerDelegate;
 
-@interface AKBasicLoginViewController : OBWelcomeController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AKBasicLoginPasswordFieldProtocol, AKBasicLoginAnimateProtocol>
+@interface AKBasicLoginViewController : OBWelcomeController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, AKBasicLoginPasswordFieldProtocol, AKBasicLoginAnimateProtocol>
 {
+    _Bool _isPasswordFieldVisible;
     AKBasicLoginActions *_loginActions;
     id <AKBasicLoginControllerDelegate> _delegate;
     AKAppleIDAuthenticationInAppContext *_context;
-    NSLayoutConstraint *_heightAnchor;
-    UITableView *_tableView;
-    AKBasicLoginTableViewCell *_usernameCell;
-    AKBasicLoginTableViewCell *_passwordCell;
     UIView *_loginOptions;
     AKBasicLoginOptionsViewController *_loginOptionsViewController;
+    CDUnknownBlockType _passwordHandler;
+    UITableView *_tableView;
+    NSLayoutConstraint *_heightAnchor;
+    AKBasicLoginTableViewCell *_usernameCell;
+    AKBasicLoginTableViewCell *_passwordCell;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AKBasicLoginOptionsViewController *loginOptionsViewController; // @synthesize loginOptionsViewController=_loginOptionsViewController;
-@property(retain, nonatomic) UIView *loginOptions; // @synthesize loginOptions=_loginOptions;
 @property(retain, nonatomic) AKBasicLoginTableViewCell *passwordCell; // @synthesize passwordCell=_passwordCell;
 @property(retain, nonatomic) AKBasicLoginTableViewCell *usernameCell; // @synthesize usernameCell=_usernameCell;
-@property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
+@property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property(nonatomic) _Bool isPasswordFieldVisible; // @synthesize isPasswordFieldVisible=_isPasswordFieldVisible;
+@property(copy, nonatomic) CDUnknownBlockType passwordHandler; // @synthesize passwordHandler=_passwordHandler;
+@property(retain, nonatomic) AKBasicLoginOptionsViewController *loginOptionsViewController; // @synthesize loginOptionsViewController=_loginOptionsViewController;
+@property(retain, nonatomic) UIView *loginOptions; // @synthesize loginOptions=_loginOptions;
 @property(nonatomic) __weak AKAppleIDAuthenticationInAppContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak id <AKBasicLoginControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) AKBasicLoginActions *loginActions; // @synthesize loginActions=_loginActions;
 - (void)_setContentInset:(double)arg1;
 - (void)_keyboardDidHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
+- (id)_tableView;
+- (id)_passwordCell;
+- (id)_usernameCell;
+- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (_Bool)textFieldShouldReturn:(id)arg1;
+- (id)usernameCellTextField;
+- (id)passwordCellTextField;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (void)_initializeView;
+- (void)initializeUsernameCellTextField:(id)arg1;
+- (void)initializePasswordCellTextField:(id)arg1;
+- (void)_setPasswordHiddenIfNeeded;
+- (void)context:(id)arg1 needsPasswordWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_updatePlaceholderIfNeeded;
 - (id)_signInBarButtonItem;
 - (id)_cancelBarButtonItem;
 - (id)_loginOptions;
-- (id)_tableView;
-- (id)_passwordCell;
-- (id)_usernameCell;
+- (_Bool)_shouldShowPassword;
 - (_Bool)_shouldShowUserName;
 - (id)_title;
-- (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)_signInPressed:(id)arg1;
 - (void)_cancelPressed:(id)arg1;
 - (void)clearPasswordField;
 - (void)stopAnimating;
 - (void)startAnimating;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (_Bool)_canShowWhileLocked;
 - (_Bool)isPresentedModally;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithContext:(id)arg1;
 

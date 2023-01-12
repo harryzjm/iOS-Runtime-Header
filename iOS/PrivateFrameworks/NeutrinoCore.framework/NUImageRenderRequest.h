@@ -16,6 +16,7 @@
     id <NUScalePolicy> _scalePolicy;
     id <NUExtentPolicy> _extentPolicy;
     NUPixelFormat *_pixelFormat;
+    long long _auxiliaryImageType;
     id <NUMutableImage> _targetImage;
     CDStruct_d58201db _tileSize;
     CDStruct_d58201db _borderSize;
@@ -23,6 +24,7 @@
 
 - (void).cxx_destruct;
 @property(retain) id <NUMutableImage> targetImage; // @synthesize targetImage=_targetImage;
+@property long long auxiliaryImageType; // @synthesize auxiliaryImageType=_auxiliaryImageType;
 @property CDStruct_912cb5d2 borderSize; // @synthesize borderSize=_borderSize;
 @property CDStruct_912cb5d2 tileSize; // @synthesize tileSize=_tileSize;
 @property(retain) NUPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;

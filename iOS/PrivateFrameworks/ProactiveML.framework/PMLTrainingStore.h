@@ -14,7 +14,6 @@
     _PASSqliteDatabase *_db;
     id _lockStateNotificationToken;
     _Bool _allowSkipSchema;
-    CDUnknownBlockType _sourceRecoverer;
     unsigned long long _maxTimesAccessed;
 }
 
@@ -31,20 +30,17 @@
 - (unsigned long long)numberOfRowsInTable:(id)arg1;
 - (void)loadSessionsForModel:(id)arg1 excludeItemIdsUsedWithin:(double)arg2 withSkew:(double)arg3 andLimit:(int)arg4 block:(CDUnknownBlockType)arg5;
 - (void)storeSession:(id)arg1 label:(long long)arg2 model:(id)arg3;
-- (void)storeSession:(id)arg1 source:(id)arg2 label:(long long)arg3 model:(id)arg4;
 - (_Bool)createSnapshot:(id)arg1;
 - (id)dbForTesting;
 - (void)logDbNotOpenEvent;
-- (id)recoverSourceFromData:(id)arg1;
-- (void)setSourceRecoverer:(CDUnknownBlockType)arg1;
 - (void)setMaxTimesAccessed:(unsigned long long)arg1;
 - (id)getSchema:(unsigned long long *)arg1;
 - (_Bool)isDbOpen;
+- (void)convertToBagOfIdsVectorForModel:(id)arg1;
 - (void)updateLastTrainingFeaturizationForModel:(id)arg1 andData:(id)arg2;
 - (id)lastTrainingFeaturizationForModelName:(id)arg1 andLocale:(id)arg2;
-- (void)updateSessionsAndLabelForModel:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)migrateTo:(id)arg1;
-- (void)vacuumDb;
+- (void)vacuumDbWithDeferralBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (_Bool)_truncateDbIfCorrupted;
 - (long long)_unsafeOpenDbIfUnlocked;
@@ -72,7 +68,6 @@
 - (void)loadDataForModel:(id)arg1 privacyBudgetRefreshPeriod:(double)arg2 labels:(id)arg3 batchSize:(unsigned long long)arg4 block:(CDUnknownBlockType)arg5;
 - (void)loadSessionsForModel:(id)arg1 excludeItemIdsUsedWithin:(double)arg2 limit:(unsigned long long)arg3 onlyAppleInternal:(_Bool)arg4 positiveLabel:(unsigned long long)arg5 skew:(double)arg6 block:(CDUnknownBlockType)arg7;
 - (void)loadDataForModel:(id)arg1 excludeItemIdsUsedWithin:(double)arg2 limit:(unsigned long long)arg3 onlyAppleInternal:(_Bool)arg4 positiveLabel:(unsigned long long)arg5 skew:(double)arg6 block:(CDUnknownBlockType)arg7;
-- (void)storeSession:(id)arg1 source:(id)arg2 label:(long long)arg3 model:(id)arg4 bundleId:(id)arg5 domainId:(id)arg6 itemIds:(id)arg7 isAppleInternal:(_Bool)arg8;
 - (void)storeSession:(id)arg1 label:(long long)arg2 model:(id)arg3 bundleId:(id)arg4 domainId:(id)arg5 itemIds:(id)arg6 isAppleInternal:(_Bool)arg7;
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 allowSkipSchema:(_Bool)arg2;

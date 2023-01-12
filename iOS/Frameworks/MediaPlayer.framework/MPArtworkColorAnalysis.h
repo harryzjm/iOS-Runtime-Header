@@ -25,11 +25,11 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isSecondaryTextColorLight) _Bool secondaryTextColorLight; // @synthesize secondaryTextColorLight=_secondaryTextColorLight;
-@property(readonly, nonatomic) UIColor *secondaryTextColor; // @synthesize secondaryTextColor=_secondaryTextColor;
+@property(retain, nonatomic) UIColor *secondaryTextColor; // @synthesize secondaryTextColor=_secondaryTextColor;
 @property(readonly, nonatomic, getter=isPrimaryTextColorLight) _Bool primaryTextColorLight; // @synthesize primaryTextColorLight=_primaryTextColorLight;
-@property(readonly, nonatomic) UIColor *primaryTextColor; // @synthesize primaryTextColor=_primaryTextColor;
+@property(retain, nonatomic) UIColor *primaryTextColor; // @synthesize primaryTextColor=_primaryTextColor;
 @property(readonly, nonatomic, getter=isBackgroundColorLight) _Bool backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
-@property(readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 - (id)_copyWithClass:(Class)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

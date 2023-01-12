@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_e5f1588f)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_e5f1588f)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *original_session_id;
 @property(readonly, nonatomic) NSString *text;
 @property(readonly, nonatomic) int audio_length;

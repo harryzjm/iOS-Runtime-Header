@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDLightProfile, HMFUnfairLock, NSNotificationCenter, NSUUID;
+@class HMDLightProfile, HMFUnfairLock, NSArray, NSNotificationCenter, NSUUID;
 
 @interface HMDLightProfileNaturalLightingAction
 {
@@ -13,6 +13,7 @@
     NSUUID *_lightProfileUUID;
     HMFUnfairLock *_lock;
     NSNotificationCenter *_notificationCenter;
+    NSArray *_lightServices;
 }
 
 + (id)logCategory;
@@ -20,6 +21,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)actionWithDictionaryRepresentation:(id)arg1 actionSet:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *lightServices; // @synthesize lightServices=_lightServices;
 @property(readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property(readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(readonly, copy) NSUUID *lightProfileUUID; // @synthesize lightProfileUUID=_lightProfileUUID;
@@ -33,10 +35,12 @@
 - (void)configureWithHome:(id)arg1;
 - (id)dictionaryRepresentation;
 - (unsigned long long)type;
+- (_Bool)isActionForCharacteristic:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(getter=isNaturalLightingEnabled) _Bool naturalLightingEnabled; // @synthesize naturalLightingEnabled=_naturalLightingEnabled;
 @property(retain) HMDLightProfile *lightProfile; // @synthesize lightProfile=_lightProfile;
+- (_Bool)isUnsecuringAction;
 - (id)associatedAccessories;
 - (_Bool)isAssociatedWithAccessory:(id)arg1;
 - (id)initWithUUID:(id)arg1 lightProfileUUID:(id)arg2 naturalLightingEnabled:(_Bool)arg3 actionSet:(id)arg4;

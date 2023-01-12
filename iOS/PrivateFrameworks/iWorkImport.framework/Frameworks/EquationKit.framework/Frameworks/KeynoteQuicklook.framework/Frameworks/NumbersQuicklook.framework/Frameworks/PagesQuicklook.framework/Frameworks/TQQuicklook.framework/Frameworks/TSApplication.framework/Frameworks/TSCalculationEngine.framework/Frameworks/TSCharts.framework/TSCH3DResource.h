@@ -13,21 +13,22 @@
 
 @interface TSCH3DResource : NSObject <NSCopying, TSCH3DObjectStateResource>
 {
-    int mCaching;
-    TSCH3DDataBuffer *mCache;
-    int mUpdate;
-    _Bool mChanged;
-    _Bool mCached;
-    struct DataBufferInfo mDataBufferInfo;
-    unsigned long long mUniqueIdentifier;
+    int _caching;
+    TSCH3DDataBuffer *_cache;
+    int _update;
+    _Bool _changed;
+    _Bool _cached;
+    struct DataBufferInfo _dataBufferInfo;
+    unsigned long long _uniqueIdentifier;
 }
 
 + (id)resourceWithCaching:(int)arg1;
 + (id)resource;
 - (id).cxx_construct;
-@property(readonly, nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=mUniqueIdentifier;
-@property(nonatomic) int caching; // @synthesize caching=mCaching;
-@property(nonatomic) int update; // @synthesize update=mUpdate;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(nonatomic) int caching; // @synthesize caching=_caching;
+@property(nonatomic) int update; // @synthesize update=_update;
 @property(readonly, nonatomic) TSCH3DDataBuffer *buffer;
 - (void)flushMemory;
 - (void)setCache:(id)arg1;

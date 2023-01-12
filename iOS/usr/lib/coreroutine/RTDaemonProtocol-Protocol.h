@@ -6,11 +6,12 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLLocation, GEOMapItemStorage, NSData, NSDate, NSNumber, NSSet, NSString, NSUUID, RTEnumerationOptions, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
+@class CLLocation, GEOMapItemStorage, NSData, NSDate, NSNumber, NSSet, NSString, NSUUID, RTEnumerationOptions, RTEstimatedLocationOptions, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
 
 @protocol RTDaemonProtocol <NSObject>
 - (void)userInteractionWithPredictedLocationOfInterest:(RTPredictedLocationOfInterest *)arg1 interaction:(unsigned long long)arg2 feedback:(NSString *)arg3 geoMapItem:(GEOMapItemStorage *)arg4 reply:(void (^)(NSError *))arg5;
 - (void)fetchEnumerableObjectsWithOptions:(RTEnumerationOptions *)arg1 offset:(NSNumber *)arg2 reply:(void (^)(NSArray *, NSNumber *, NSError *))arg3;
+- (void)fetchEstimatedLocationAtDate:(NSDate *)arg1 options:(RTEstimatedLocationOptions *)arg2 reply:(void (^)(CLLocation *, NSError *))arg3;
 - (void)fetchStoredLocationsWithContext:(RTStoredLocationEnumerationContext *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchFormattedPostalAddressesFromMeCard:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchPlaceInferencesWithOptions:(RTPlaceInferenceOptions *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
@@ -37,6 +38,7 @@
 - (void)clearAllVehicleEventsWithReply:(void (^)(NSError *))arg1;
 - (void)vehicleEventAtLocation:(CLLocation *)arg1 notes:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)fetchLastVehicleEventsWithReply:(void (^)(NSArray *, NSError *))arg1;
+- (void)setTargetUserSession:(_Bool)arg1;
 - (void)setRestorationIdentifier:(NSString *)arg1;
 - (void)fetchMonitoredScenarioTriggerTypesWithReply:(void (^)(unsigned long long, NSError *))arg1;
 - (void)stopMonitoringScenarioTriggerOfType:(unsigned long long)arg1 reply:(void (^)(NSError *))arg2;

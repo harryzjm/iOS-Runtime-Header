@@ -12,7 +12,7 @@
 
 @interface _EARCommandTagging : NSObject <NSCopying>
 {
-    struct unique_ptr<quasar::CommandTagging, std::__1::default_delete<quasar::CommandTagging>> _tagging;
+    struct unique_ptr<quasar::CommandTagging, std::default_delete<quasar::CommandTagging>> _tagging;
     NSString *_commandId;
     NSArray *_tagSequence;
 }
@@ -23,7 +23,7 @@
 @property(readonly, copy, nonatomic) NSString *commandId; // @synthesize commandId=_commandId;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)tokensForTag:(id)arg1;
-- (id)_initWithQuasarCommandTagging:(const struct CommandTagging *)arg1;
+- (id)_initWithQuasarCommandTagging:(const void *)arg1;
 
 @end
 

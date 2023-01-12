@@ -16,7 +16,7 @@
 - (void).cxx_destruct;
 - (id)init;
 @property(nonatomic, readonly) NSString *description;
-- (void)start;
+- (void)main;
 
 @end
 

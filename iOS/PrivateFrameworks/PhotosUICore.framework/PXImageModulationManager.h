@@ -44,7 +44,7 @@
 
 + (long long)_contentFormatForAsset:(id)arg1;
 + (double)_hdrGainForAsset:(id)arg1;
-+ (CDStruct_4f961314)optionsForAsset:(id)arg1;
++ (CDStruct_fd7332cd)optionsForAsset:(id)arg1;
 + (double)HDRValueForAsset:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double requestedEDRHeadroomFactor; // @synthesize requestedEDRHeadroomFactor=_requestedEDRHeadroomFactor;
@@ -104,10 +104,10 @@
 - (void)setNeedsHDRFocusUpdate;
 - (void)_updateImageLayerModulator:(id)arg1;
 - (void)checkInLivePhotoViewModulator:(id)arg1;
-- (id)checkoutLivePhotoViewModulatorWithOptions:(CDStruct_4f961314)arg1;
+- (id)checkoutLivePhotoViewModulatorWithOptions:(CDStruct_fd7332cd)arg1;
 - (void)checkInImageLayerModulator:(id)arg1;
-- (id)_checkoutImageLayerModulatorWithOptions:(CDStruct_4f961314)arg1 contentType:(long long)arg2;
-- (id)checkoutImageLayerModulatorWithOptions:(CDStruct_4f961314)arg1;
+- (id)_checkoutImageLayerModulatorWithOptions:(CDStruct_fd7332cd)arg1 contentType:(long long)arg2;
+- (id)checkoutImageLayerModulatorWithOptions:(CDStruct_fd7332cd)arg1;
 - (void)setActive:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)dealloc;

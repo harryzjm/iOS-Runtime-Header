@@ -18,7 +18,9 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)initWithJSONObjectRepresentation:(id)arg1 device:(id)arg2 editOptionFactory:(CDUnknownBlockType)arg3;
 - (id)initWithJSONObjectRepresentation:(id)arg1 editOptionClass:(Class)arg2 forDevice:(id)arg3;
+- (id)JSONObjectRepresentationForFace:(id)arg1;
 - (id)JSONObjectRepresentation;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

@@ -4,27 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSDFrameRep, TSDMovieInfo;
+@class TSDMovieInfo;
 
 @interface TSDMovieRep
 {
-    TSDFrameRep *_reflectionFrameRep;
     struct CGImage *_alternatePosterImage;
 }
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
-- (void).cxx_destruct;
 @property(nonatomic) struct CGImage *alternatePosterImage; // @synthesize alternatePosterImage=_alternatePosterImage;
 - (void)calculateTextureClipBounds:(struct CGRect *)arg1 andOffset:(struct CGPoint *)arg2 withTransform:(struct CGAffineTransform *)arg3 andRectOnCanvas:(struct CGRect *)arg4 textureDescription:(id)arg5 isUsingImageTexture:(_Bool)arg6;
 - (_Bool)p_shouldUseImageTexture;
 - (void)willBeRemoved;
-- (struct CGImage *)newFrameMaskForViewScale:(double)arg1 frameRect:(struct CGRect *)arg2;
+- (struct CGImage *)newTextureMaskImageForViewScale:(double)arg1 includeFrameMask:(_Bool)arg2 maskRect:(struct CGRect *)arg3;
 - (id)textureForDescription:(id)arg1;
 - (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(_Bool)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(_Bool)arg4 forAlphaOnly:(_Bool)arg5 drawChildren:(_Bool)arg6 keepingChildrenPassingTest:(CDUnknownBlockType)arg7;
 - (void)p_drawInContext:(struct CGContext *)arg1 withContent:(_Bool)arg2 withStroke:(_Bool)arg3 withOpacity:(double)arg4 withMask:(_Bool)arg5 forShadowOrHitTest:(_Bool)arg6;
 - (void)p_drawPosterImageInContext:(struct CGContext *)arg1 forShadowOrHitTest:(_Bool)arg2;
-- (void)i_updateFrameRep;
-- (void)p_updateReflectionFrameRep;
+- (void)updateFrameRep;
 - (void)updateFromLayout;
 - (void)dealloc;
 - (id)movieLayout;

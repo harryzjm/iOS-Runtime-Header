@@ -13,6 +13,7 @@
 - (void)displayCollections;
 
 @optional
+- (long long)sectionKindAtIndex:(long long)arg1;
 - (GEOPlaceCollection *)geoCollectionAtIndex:(long long)arg1;
 - (MKPlaceCollectionViewModel *)collectionAtIndex:(long long)arg1;
 - (NSArray *)collections;

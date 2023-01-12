@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)keypointsMultiArrayAndReturnError:(id *)arg1;
@@ -24,7 +24,8 @@
 @property(readonly) NSNumber *groupIdentifier;
 @property(readonly, copy) NSArray *availableGroupKeys;
 @property(readonly, copy) NSArray *availableKeys;
-- (id)initWithRequestRevision:(unsigned long long)arg1 keypointReturningObservation:(id)arg2;
+@property(readonly) VNRecognizedPointsSpecifier *recognizedPointsSpecifier;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 keypointReturningObservation:(id)arg2;
 
 @end
 

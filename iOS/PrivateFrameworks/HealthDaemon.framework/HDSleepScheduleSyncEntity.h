@@ -9,6 +9,7 @@
 }
 
 + (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
++ (_Bool)supportsDateBasedSharding;
 + (_Bool)supportsSyncStore:(id)arg1;
 + (id)_objectWithCodable:(id)arg1;
 + (Class)_syncedSampleTypeClass;

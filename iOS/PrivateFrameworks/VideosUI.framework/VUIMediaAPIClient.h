@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
++ (id)getPlatformClientIdentifier;
 + (void)initializeWithAppleTVClientIdentifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;

@@ -10,12 +10,12 @@
 #import <MediaPlaybackCore/MPCPlayerSessionResponseBuilder-Protocol.h>
 #import <MediaPlaybackCore/MPCResponseMediaRemoteControllerChaining-Protocol.h>
 #import <MediaPlaybackCore/MPMiddleware-Protocol.h>
-#import <MediaPlaybackCore/_MPCStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPCFuture, MPCMediaRemoteController, MPSectionedCollection, NSArray, NSIndexPath, NSString;
 @protocol MPCSupportedCommands;
 
-@interface MPCMediaRemoteMiddleware : NSObject <MPCResponseMediaRemoteControllerChaining, MPCPlayerResponseBuilder, MPCPlayerSessionResponseBuilder, _MPCStateDumpPropertyListTransformable, MPMiddleware>
+__attribute__((visibility("hidden")))
+@interface MPCMediaRemoteMiddleware : NSObject <MPCPlayerResponseBuilder, MPCPlayerSessionResponseBuilder, MPCResponseMediaRemoteControllerChaining, MPMiddleware>
 {
     _Bool _skippedMetadata;
     NSArray *_invalidationObservers;
@@ -44,10 +44,15 @@
 - (id)operationsForSessionRequest:(id)arg1;
 - (id)operationsForPlayerRequest:(id)arg1;
 - (id)operationsForRequest:(id)arg1;
-- (id)init;
-- (id)controller:(id)arg1 chain:(id)arg2;
 - (float)_playbackRateForContentItem:(id)arg1;
 - (id)_supportedCommands:(unsigned int)arg1 infoValueForKey:(id)arg2;
+- (id)audioRoute:(id)arg1 chain:(id)arg2;
+- (id)alternateAudioFormats:(id)arg1 chain:(id)arg2;
+- (unsigned long long)audioFormatPreference:(unsigned long long)arg1 chain:(id)arg2;
+- (long long)activeAudioFormatJustification:(long long)arg1 chain:(id)arg2;
+- (id)activeAudioFormat:(id)arg1 chain:(id)arg2;
+- (id)preferredAudioFormat:(id)arg1 chain:(id)arg2;
+- (_Bool)playerIsSharedListeningSession:(_Bool)arg1 chain:(id)arg2;
 - (_Bool)sectionIsAutoPlaySection:(_Bool)arg1 atIndex:(long long)arg2 chain:(id)arg3;
 - (id)tracklistUniqueIdentifier:(id)arg1 chain:(id)arg2;
 - (id)playerCommandOptionValue:(id)arg1 forKey:(id)arg2 command:(unsigned int)arg3 chain:(id)arg4;
@@ -66,6 +71,7 @@
 - (CDStruct_fce57115)playerItemDuration:(CDStruct_fce57115)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (unsigned long long)playerNumberOfItems:(unsigned long long)arg1 inSection:(unsigned long long)arg2 chain:(id)arg3;
 - (unsigned long long)playerNumberOfSections:(unsigned long long)arg1 chain:(id)arg2;
+- (long long)playerExplicitContentState:(long long)arg1 chain:(id)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(id)arg2;
 - (long long)playerLastChangeDirection:(long long)arg1 chain:(id)arg2;
 - (long long)playerQueueEndAction:(long long)arg1 chain:(id)arg2;
@@ -76,6 +82,7 @@
 - (id)sessionPlayerPath:(id)arg1 atIndex:(long long)arg2 chain:(id)arg3;
 - (long long)sessionNumberOfSessions:(long long)arg1 forPlayerPathAtIndex:(long long)arg2 chain:(id)arg3;
 - (long long)sessionNumberOfPlayerPaths:(long long)arg1 chain:(id)arg2;
+- (id)controller:(id)arg1 chain:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

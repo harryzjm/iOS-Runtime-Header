@@ -15,8 +15,6 @@
     HMDPairedSync *_pairedSync;
 }
 
-+ (id)resultAsString:(unsigned long long)arg1;
-+ (id)optionAsString:(unsigned long long)arg1;
 + (_Bool)isNewBetter:(unsigned long long)arg1 present:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HMDPairedSync *pairedSync; // @synthesize pairedSync=_pairedSync;

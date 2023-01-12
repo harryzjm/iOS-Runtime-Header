@@ -10,6 +10,7 @@
 
 @interface HRInternalStateProvider : NSObject
 {
+    MISSING_TYPE *accountStore;
     MISSING_TYPE *conceptStore;
     MISSING_TYPE *healthRecordsStore;
     MISSING_TYPE *healthExperienceStore;

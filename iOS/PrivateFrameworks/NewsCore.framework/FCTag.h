@@ -7,16 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <NewsCore/FCChannelProviding-Protocol.h>
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCFeedTheming-Protocol.h>
 #import <NewsCore/FCSectionProviding-Protocol.h>
 #import <NewsCore/FCTagProviding-Protocol.h>
 #import <NewsCore/FCTagStocksFields-Protocol.h>
 #import <NewsCore/FCTopicProviding-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCContentColorMap, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
+@class FCAssetHandle, FCColor, FCContentArchive, FCContentColorMap, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
 @protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagStocksFields, FCTopicProviding;
 
-@interface FCTag : NSObject <FCTagStocksFields, FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming>
+@interface FCTag : NSObject <FCTagStocksFields, FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming, FCContentArchivable>
 {
     _Bool _isPublic;
     _Bool _isDeprecated;
@@ -32,6 +33,9 @@
     _Bool _isInternal;
     _Bool _isSandbox;
     _Bool _isLocal;
+    _Bool _isSensitiveTopic;
+    _Bool _isNewspaper;
+    _Bool _isMagazine;
     NSString *_identifier;
     NSString *_versionKey;
     NSString *_name;
@@ -48,6 +52,7 @@
     long long _minimumNewsVersion;
     NSString *_subtitle;
     NSArray *_currentIssueIDs;
+    NSArray *_recentIssueIDs;
     NSString *_backIssuesListID;
     NSString *_language;
     NSString *_magazineGenre;
@@ -90,6 +95,7 @@
     NSString *_groupTitleColorHexString;
     NSString *_groupDarkStyleTitleColorHexString;
     FCContentColorMap *_contentColorMap;
+    NSDate *_loadDate;
     NSString *_pptFeedIDOverride;
     FCInterestToken *_tagInterestToken;
     unsigned long long _userFacingTagTypeOverride;
@@ -99,7 +105,6 @@
     NSString *_darkStyleBackgroundColorHexString;
     NSString *_foregroundColorHexString;
     NSString *_darkStyleForegroundColorHexString;
-    NSDate *_loadDate;
     NTPBTagRecord *_tagRecord;
     FCInterestToken *_tagRecordInterestToken;
     struct CGSize _nameImageSize;
@@ -113,25 +118,18 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) FCInterestToken *tagRecordInterestToken; // @synthesize tagRecordInterestToken=_tagRecordInterestToken;
 @property(readonly, nonatomic) NTPBTagRecord *tagRecord; // @synthesize tagRecord=_tagRecord;
-@property(retain, nonatomic) NSDate *loadDate; // @synthesize loadDate=_loadDate;
-@property(copy, nonatomic) NSString *darkStyleForegroundColorHexString; // @synthesize darkStyleForegroundColorHexString=_darkStyleForegroundColorHexString;
-@property(copy, nonatomic) NSString *foregroundColorHexString; // @synthesize foregroundColorHexString=_foregroundColorHexString;
-@property(copy, nonatomic) NSString *darkStyleBackgroundColorHexString; // @synthesize darkStyleBackgroundColorHexString=_darkStyleBackgroundColorHexString;
-@property(copy, nonatomic) NSString *backgroundColorHexString; // @synthesize backgroundColorHexString=_backgroundColorHexString;
-@property(copy, nonatomic) NSArray *sectionFeedConfigurations; // @synthesize sectionFeedConfigurations=_sectionFeedConfigurations;
-@property(copy, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
-@property(nonatomic) unsigned long long userFacingTagTypeOverride; // @synthesize userFacingTagTypeOverride=_userFacingTagTypeOverride;
-@property(retain, nonatomic) FCInterestToken *tagInterestToken; // @synthesize tagInterestToken=_tagInterestToken;
 @property(copy, nonatomic) NSString *pptFeedIDOverride; // @synthesize pptFeedIDOverride=_pptFeedIDOverride;
+@property(readonly, nonatomic) NSDate *loadDate; // @synthesize loadDate=_loadDate;
 @property(readonly, nonatomic) FCContentColorMap *contentColorMap; // @synthesize contentColorMap=_contentColorMap;
-@property(copy, nonatomic) NSString *groupDarkStyleTitleColorHexString; // @synthesize groupDarkStyleTitleColorHexString=_groupDarkStyleTitleColorHexString;
-@property(copy, nonatomic) NSString *groupTitleColorHexString; // @synthesize groupTitleColorHexString=_groupTitleColorHexString;
 @property(readonly, nonatomic) FCSectionSupergroupKnobs *supergroupKnobs; // @synthesize supergroupKnobs=_supergroupKnobs;
 @property(readonly, nonatomic) NSString *supergroupKnobsJson; // @synthesize supergroupKnobsJson=_supergroupKnobsJson;
 @property(readonly, nonatomic) NSString *supergroupConfigJson; // @synthesize supergroupConfigJson=_supergroupConfigJson;
 @property(readonly, copy, nonatomic) FCPaywallConfiguration *paidBundlePaywallConfiguration; // @synthesize paidBundlePaywallConfiguration=_paidBundlePaywallConfiguration;
 @property(readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate; // @synthesize publisherSpecifiedArticleIDsModifiedDate=_publisherSpecifiedArticleIDsModifiedDate;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs; // @synthesize publisherSpecifiedArticleIDs=_publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) _Bool isMagazine; // @synthesize isMagazine=_isMagazine;
+@property(readonly, nonatomic) _Bool isNewspaper; // @synthesize isNewspaper=_isNewspaper;
+@property(readonly, nonatomic) _Bool isSensitiveTopic; // @synthesize isSensitiveTopic=_isSensitiveTopic;
 @property(readonly, nonatomic) _Bool isLocal; // @synthesize isLocal=_isLocal;
 @property(readonly, nonatomic) _Bool isSandbox; // @synthesize isSandbox=_isSandbox;
 @property(readonly, nonatomic) _Bool isInternal; // @synthesize isInternal=_isInternal;
@@ -177,6 +175,7 @@
 @property(readonly, copy, nonatomic) NSString *magazineGenre; // @synthesize magazineGenre=_magazineGenre;
 @property(readonly, copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property(readonly, copy, nonatomic) NSString *backIssuesListID; // @synthesize backIssuesListID=_backIssuesListID;
+@property(readonly, copy, nonatomic) NSArray *recentIssueIDs; // @synthesize recentIssueIDs=_recentIssueIDs;
 @property(readonly, copy, nonatomic) NSArray *currentIssueIDs; // @synthesize currentIssueIDs=_currentIssueIDs;
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) _Bool isNotificationEnabled; // @synthesize isNotificationEnabled=_isNotificationEnabled;
@@ -197,6 +196,7 @@
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSString *versionKey; // @synthesize versionKey=_versionKey;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) unsigned long long channelType;
 @property(readonly, nonatomic) _Bool isWhitelisted;
 @property(readonly, nonatomic) _Bool supportsNotifications;
 @property(readonly, nonatomic) NSData *backingTagRecordData;
@@ -217,7 +217,6 @@
 @property(readonly, nonatomic) long long feedType;
 @property(readonly, copy, nonatomic) NSString *stocksFeedConfigJSON;
 @property(readonly, nonatomic) id <FCTagStocksFields> stocksFields;
-- (_Bool)_isValidScheme:(id)arg1;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 - (id)prefetchPurchaseOffer;
 - (id)authorizationURL;
@@ -226,7 +225,6 @@
 - (_Bool)isNoLongerAvailable;
 - (id)paidFeedIDForSection:(id)arg1 bin:(long long)arg2;
 - (id)freeFeedIDForSection:(id)arg1 bin:(long long)arg2;
-- (id)_feedConfigurationForSection:(id)arg1;
 - (id)feedIDForBin:(long long)arg1;
 - (id)paidFeedIDForBin:(long long)arg1;
 - (id)freeFeedIDForBin:(long long)arg1;
@@ -237,6 +235,7 @@
 @property(readonly, nonatomic) id <FCTopicProviding> asTopic;
 @property(readonly, nonatomic) id <FCSectionProviding> asSection;
 @property(readonly, nonatomic) id <FCChannelProviding> asChannel;
+@property(readonly, nonatomic) FCContentArchive *contentArchive;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -244,14 +243,10 @@
 - (id)initChannelForTestingWithIdentifier:(id)arg1 name:(id)arg2 publisherPaidBundlePurchaseIDs:(id)arg3;
 - (id)initChannelForTestingWithIdentifier:(id)arg1 name:(id)arg2 defaultSection:(id)arg3 publisherAuthorizationURL:(id)arg4 publisherVerificationURL:(id)arg5;
 - (id)initForTestingWithTagType:(unsigned long long)arg1 identifier:(id)arg2 name:(id)arg3;
-- (void)_inflateFromJSONDictionary:(id)arg1 withVersion:(long long)arg2;
-- (void)_inflateFromVersionlessJSONDictionary:(id)arg1;
-- (void)_inflateFromJSONDictionary:(id)arg1;
 @property(readonly, nonatomic) NSData *data;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool isBlockedExplicitContent;
 @property(readonly, nonatomic) NSArray *loadableFonts;
-- (id)purchaseOfferableConfigurationsFromProtobufList:(id)arg1;
 @property(readonly, nonatomic) unsigned long long userFacingTagType;
 - (id)initWithTagRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3;
 - (id)initWithData:(id)arg1 context:(id)arg2;

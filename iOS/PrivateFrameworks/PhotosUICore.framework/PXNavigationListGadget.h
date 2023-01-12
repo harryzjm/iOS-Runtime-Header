@@ -21,7 +21,6 @@
 @property(nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
 @property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property(nonatomic) __weak id <PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_updateTableViewLayoutMargins;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (id)_listItemForCollection:(id)arg1;
@@ -34,7 +33,6 @@
 @property(readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property(readonly, nonatomic) unsigned long long gadgetType;
 - (void)contentHeightDidChange;
-- (void)viewDidLoad;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *accessoryButtonTitle;

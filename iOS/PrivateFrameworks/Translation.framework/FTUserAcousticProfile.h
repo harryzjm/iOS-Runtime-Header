@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_df5c0371)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_df5c0371)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *profile_checksum;
 - (void)acoustic_profile_blob:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSData *acoustic_profile_blob;

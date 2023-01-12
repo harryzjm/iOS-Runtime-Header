@@ -9,7 +9,6 @@
 }
 
 + (id)baselineFeature;
-- (id)fr_description;
 - (id)init;
 
 @end

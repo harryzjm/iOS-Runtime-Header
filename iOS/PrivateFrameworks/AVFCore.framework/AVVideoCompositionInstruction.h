@@ -23,6 +23,8 @@
 @property(readonly, copy) NSString *description;
 - (void)_setValuesFromDictionary:(id)arg1;
 - (id)dictionaryRepresentation;
+- (void)setRequiredSourceSampleDataTrackIDs:(id)arg1;
+@property(readonly, nonatomic) NSArray *requiredSourceSampleDataTrackIDs;
 - (void)setBlendingTransferFunction:(id)arg1;
 - (id)blendingTransferFunction;
 - (void)setEnablePostProcessing:(_Bool)arg1;

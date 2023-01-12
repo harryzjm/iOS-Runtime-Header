@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface WKURLSchemeTaskImpl : NSObject <WKObject, WKURLSchemeTaskPrivate>
 {
-    struct ObjectStorage<API::URLSchemeTask> _urlSchemeTask;
+    struct ObjectStorage<WebKit::WebURLSchemeTask> _urlSchemeTask;
 }
 
 @property(readonly) struct Object *_apiObject;
@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
 - (void)didFinish;
 - (void)didReceiveData:(id)arg1;
 - (void)didReceiveResponse:(id)arg1;
+- (void)_willPerformRedirection:(id)arg1 newRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool _requestOnlyIfCached;
 @property(readonly, copy, nonatomic) NSURLRequest *request;
 - (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

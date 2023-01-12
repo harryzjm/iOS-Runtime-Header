@@ -6,13 +6,15 @@
 
 #import <MediaFoundation/MFAudioSessionControlling-Protocol.h>
 #import <MediaFoundation/MFPlaybackInformationProviding-Protocol.h>
+#import <MediaFoundation/MFPlayerConfigurable-Protocol.h>
 #import <MediaFoundation/MFResettable-Protocol.h>
+#import <MediaFoundation/MFStackModeConfigurable-Protocol.h>
 #import <MediaFoundation/MFStateDumpable-Protocol.h>
 
 @class NSString;
 @protocol MFPlaybackStackControllerDelegate, MFQueuePlayerItem;
 
-@protocol MFPlaybackStackController <MFPlaybackInformationProviding, MFAudioSessionControlling, MFStateDumpable, MFResettable>
+@protocol MFPlaybackStackController <MFPlaybackInformationProviding, MFAudioSessionControlling, MFStateDumpable, MFResettable, MFPlayerConfigurable, MFStackModeConfigurable>
 - (_Bool)shouldSkipJumpToItemStart:(long long)arg1;
 - (void)skipWithDirection:(long long)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)jumpTo:(double)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
@@ -22,6 +24,7 @@
 - (void)endScanningWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)beginScanningWithDirection:(long long)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)setRate:(float)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)pauseForLeasePreventionWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)pauseWithFadeOut:(double)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)pauseWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)playWithRate:(float)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;

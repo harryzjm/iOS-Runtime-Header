@@ -30,9 +30,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct PopUpMenuModel *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct PopUpMenuModel *)arg1;
+- (void)loadFromArchive:(const void *)arg1;
 - (id)popUpItemFromDate:(id)arg1 format:(id)arg2;
 - (id)popUpItemFromString:(id)arg1;
 - (id)popUpItemFromBoolean:(_Bool)arg1;
@@ -49,7 +49,7 @@
 - (id)p_stringForListItem:(id)arg1;
 - (double)p_numberForListItem:(id)arg1;
 - (int)p_mcListTypeOfListItem:(id)arg1;
-- (int)p_mcListTypeForArgType:(int)arg1;
+- (int)p_mcListTypeForArgType:(BOOL)arg1;
 - (id)p_listItemAtIndex:(unsigned long long)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

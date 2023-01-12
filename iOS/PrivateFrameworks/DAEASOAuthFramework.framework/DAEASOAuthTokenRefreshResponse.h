@@ -12,6 +12,7 @@
 {
     long long _statusCode;
     NSError *_error;
+    NSString *_errorName;
     NSString *_errorMessage;
     NSDictionary *_responseBody;
     NSString *_accessToken;
@@ -27,6 +28,7 @@
 @property(readonly, nonatomic) NSString *accessToken; // @synthesize accessToken=_accessToken;
 @property(readonly, nonatomic) NSDictionary *responseBody; // @synthesize responseBody=_responseBody;
 @property(readonly, nonatomic) NSString *errorMessage; // @synthesize errorMessage=_errorMessage;
+@property(readonly, nonatomic) NSString *errorName; // @synthesize errorName=_errorName;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
 - (id)initWithData:(id)arg1 urlResponse:(id)arg2 error:(id)arg3;

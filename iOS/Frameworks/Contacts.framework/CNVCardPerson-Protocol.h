@@ -23,6 +23,7 @@
 @property(readonly) NSArray *otherDateComponents;
 @property(readonly) NSDateComponents *alternateBirthdayComponents;
 @property(readonly) NSDateComponents *birthdayComponents;
+@property(readonly) NSData *memojiMetadata;
 @property(readonly) NSData *imageHash;
 @property(readonly) NSString *imageType;
 @property(readonly) NSData *imageData;

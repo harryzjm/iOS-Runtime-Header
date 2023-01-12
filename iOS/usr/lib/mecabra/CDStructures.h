@@ -6,25 +6,8 @@
 
 #pragma mark Named Structures
 
-struct ConversionCandidate {
-    CDUnknownFunctionPointerType *_field1;
-    long long _field2;
-};
-
 struct Lexicon {
     void *_field1;
     void *_field2;
 };
-
-struct MecabraCandidateBase {
-    CDUnknownFunctionPointerType *_field1;
-    long long _field2;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
 

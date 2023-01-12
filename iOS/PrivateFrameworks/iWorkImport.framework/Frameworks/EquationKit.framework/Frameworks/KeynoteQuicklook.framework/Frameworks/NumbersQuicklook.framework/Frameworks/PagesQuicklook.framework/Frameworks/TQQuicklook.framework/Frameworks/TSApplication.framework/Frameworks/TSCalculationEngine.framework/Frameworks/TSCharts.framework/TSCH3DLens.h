@@ -10,14 +10,14 @@
 
 @interface TSCH3DLens : NSObject <NSCopying>
 {
-    float mNear;
-    float mFar;
+    float _near;
+    float _far;
 }
 
 + (id)lens;
-@property(nonatomic) float far; // @synthesize far=mFar;
-@property(nonatomic) float near; // @synthesize near=mNear;
-- (void)calculateCullingPlanes:(vector_5e6a89be *)arg1;
+@property(nonatomic) float far; // @synthesize far=_far;
+@property(nonatomic) float near; // @synthesize near=_near;
+- (void)calculateCullingPlanes:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

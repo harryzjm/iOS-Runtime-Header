@@ -10,17 +10,21 @@
 {
     _Bool _owner;
     _Bool _administrator;
+    _Bool _accessAllowed;
     _Bool _remoteAccessAllowed;
+    _Bool _announceAccessAllowed;
     HMUserPresenceAuthorization *_presenceAuthStatus;
     HMUserPresenceCompute *_presenceComputeStatus;
     HMUserCameraAccess *_camerasAccess;
 }
 
 - (void).cxx_destruct;
+- (void)updateAnnounceAccess:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateCamerasAccessLevel:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRemoteAccess:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAdministratorAccess:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(getter=isAnnounceAccessAllowed) _Bool announceAccessAllowed; // @synthesize announceAccessAllowed=_announceAccessAllowed;
 - (unsigned long long)camerasAccessLevel;
 @property(retain, nonatomic) HMUserCameraAccess *camerasAccess; // @synthesize camerasAccess=_camerasAccess;
 - (unsigned long long)presenceComputationStatus;
@@ -28,10 +32,11 @@
 @property(retain, nonatomic) HMUserPresenceCompute *presenceComputeStatus; // @synthesize presenceComputeStatus=_presenceComputeStatus;
 @property(retain, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
 @property(getter=isRemoteAccessAllowed) _Bool remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
+@property(getter=isAccessAllowed) _Bool accessAllowed; // @synthesize accessAllowed=_accessAllowed;
 @property(nonatomic, getter=isAdministrator) _Bool administrator; // @synthesize administrator=_administrator;
 @property(getter=isOwner) _Bool owner; // @synthesize owner=_owner;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithUser:(id)arg1 owner:(_Bool)arg2 administratorPrivilege:(_Bool)arg3 remoteAccess:(_Bool)arg4 presenceAuthStatus:(id)arg5 presenceComputeStatus:(id)arg6 camerasAccess:(id)arg7;
+- (id)initWithUser:(id)arg1 allowAccess:(_Bool)arg2 owner:(_Bool)arg3 administratorPrivilege:(_Bool)arg4 remoteAccess:(_Bool)arg5 presenceAuthStatus:(id)arg6 presenceComputeStatus:(id)arg7 announceAccess:(_Bool)arg8 camerasAccess:(id)arg9;
 
 @end
 

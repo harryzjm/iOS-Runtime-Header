@@ -9,7 +9,7 @@
 #import <NotesUI/ICRDExpansionStateContextProviding-Protocol.h>
 #import <NotesUI/NSFetchedResultsControllerDelegate-Protocol.h>
 
-@class NSManagedObjectContext, NSSet, NSString;
+@class NSArray, NSManagedObjectContext, NSSet, NSString;
 @protocol ICRDCoreDataIndexerDelegate, OS_dispatch_queue;
 
 @interface ICRDCoreDataIndexer : NSObject <NSFetchedResultsControllerDelegate, ICRDExpansionStateContextProviding>
@@ -37,6 +37,7 @@
 - (id)activeManagedObjectContexts;
 @property(readonly, nonatomic) NSString *expansionStateContext;
 - (void)controller:(id)arg1 didChangeContentWithDifference:(id)arg2;
+@property(readonly, nonatomic) NSArray *fetchedObjects;
 - (id)nextRelevantItemIdentifierAfter:(id)arg1;
 - (id)sectionIdentifierForHeaderInSection:(long long)arg1;
 - (id)sectionSnapshotsForSectionControllerType:(unsigned long long)arg1;

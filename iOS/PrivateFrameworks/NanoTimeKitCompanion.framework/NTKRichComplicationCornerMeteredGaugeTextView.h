@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NTKRichComplicationImageView *outerImageView; // @synthesize outerImageView=_outerImageView;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (long long)tritiumUpdateMode;
 - (void)layoutSubviews;
 - (id)init;
 

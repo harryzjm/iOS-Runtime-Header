@@ -7,10 +7,8 @@
 #import <ClassroomKit/NSObject-Protocol.h>
 
 @class NSSet, NSString;
-@protocol CRKFeatureDataStoreProtocol;
 
 @protocol CRKFeatureDataStoreProtocol <NSObject>
-+ (id <CRKFeatureDataStoreProtocol>)sharedDataStore;
 @property(nonatomic, getter=isClassroomInstructorRoleEnabled) _Bool classroomInstructorRoleEnabled;
 @property(nonatomic, getter=isClassroomStudentRoleEnabled) _Bool classroomStudentRoleEnabled;
 @property(readonly, copy, nonatomic) NSSet *activeClassroomRoles;

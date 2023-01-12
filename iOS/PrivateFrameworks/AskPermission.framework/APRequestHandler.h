@@ -16,6 +16,9 @@
 + (void)resetAccountWithType:(long long)arg1;
 + (void)updateRequestWithIdentifier:(id)arg1 action:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)localApproveRequestWithItemIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)getCachedRequestsWithCompletion:(CDUnknownBlockType)arg1;
++ (void)checkDownloadQueueWithContentType:(long long)arg1;
++ (void)presentApprovalSheetWithRequestIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)addRequestWithURL:(id)arg1 account:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

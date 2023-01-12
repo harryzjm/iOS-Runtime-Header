@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class PKContinuousButton, PKDiscoveryCallToAction, PKDiscoveryMedia, UIImageView, UILabel;
+#import <PassKitUI/PKLinkedApplicationObserver-Protocol.h>
+
+@class NSString, PKContinuousButton, PKDiscoveryCallToAction, PKDiscoveryMedia, PKLinkedApplication, UIImageView, UILabel;
 @protocol PKDiscoveryCardViewDelegate;
 
-@interface PKDiscoveryCallToActionFooterView : UIView
+@interface PKDiscoveryCallToActionFooterView : UIView <PKLinkedApplicationObserver>
 {
     PKDiscoveryCallToAction *_callToAction;
     PKDiscoveryMedia *_media;
@@ -23,12 +25,15 @@
     _Bool _hasIcon;
     _Bool _hasButton;
     _Bool _useAccessibilityLayout;
+    PKLinkedApplication *_linkedApplication;
     CDUnknownBlockType _callToActionTappedOverride;
     _Bool _showActivityIndicator;
     id <PKDiscoveryCardViewDelegate> _delegate;
+    NSString *_itemIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property(nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property(nonatomic) __weak id <PKDiscoveryCardViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool showActivityIndicator; // @synthesize showActivityIndicator=_showActivityIndicator;
@@ -45,9 +50,17 @@
 - (id)_descriptionLabelColor;
 - (id)_titleLabelColor;
 - (void)setCallToActionTappedOverride:(CDUnknownBlockType)arg1;
+- (void)linkedApplicationDidChangeState:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithCallToAction:(id)arg1 displayType:(long long)arg2;
+- (id)initWithCallToAction:(id)arg1 displayType:(long long)arg2 itemIdentifier:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

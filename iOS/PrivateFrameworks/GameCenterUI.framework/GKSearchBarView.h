@@ -31,7 +31,6 @@
 @property(nonatomic) __weak id <UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSNumber *usePadConstraints; // @synthesize usePadConstraints=_usePadConstraints;
 @property(retain, nonatomic) GKSearchBar *searchBar; // @synthesize searchBar=_searchBar;
-- (void)dealloc;
 - (void)prepareForReuse;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)establishSearchBarConstraints;

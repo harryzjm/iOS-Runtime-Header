@@ -8,9 +8,6 @@
 {
 }
 
-- (id)_randomSensitivityValueForSlot:(long long)arg1;
-- (id)_generateAudiogramForDate:(id)arg1;
-- (id)_dateFromBaseDate:(id)arg1 monthsInPast:(long long)arg2 forCalendar:(id)arg3;
 - (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
 
 @end

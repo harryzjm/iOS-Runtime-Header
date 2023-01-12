@@ -8,31 +8,31 @@
 
 #import <WorkflowEditor/WFSlotTemplateTextEntry-Protocol.h>
 
-@class NSDictionary, NSString, UIFont, UITextInputPasswordRules, UITextPosition, UITextRange, UIView;
+@class NSAttributedString, NSDictionary, NSString, UIFont, UITextInputPasswordRules, UITextPosition, UITextRange, UIView;
 @protocol UITextInputDelegate, UITextInputTokenizer, WFSlotTemplateTypingTextViewDelegate;
 
 @interface WFSlotTemplateTypingTextView : UITextView <WFSlotTemplateTextEntry>
 {
     _Bool _clearsZeroWhenTyping;
-    UIView *_inputHintView;
     UIFont *_emojiOverrideFont;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIFont *emojiOverrideFont; // @synthesize emojiOverrideFont=_emojiOverrideFont;
-@property(retain, nonatomic) UIView *inputHintView; // @synthesize inputHintView=_inputHintView;
 @property(nonatomic) _Bool clearsZeroWhenTyping; // @synthesize clearsZeroWhenTyping=_clearsZeroWhenTyping;
 - (struct CGRect)accessibilityFrame;
 - (void)wf_applyEmojiOverrideFont;
 - (void)paste:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
+- (void)wf_replaceRange:(struct _NSRange)arg1 withAttributedText:(id)arg2;
 - (void)insertText:(id)arg1;
 - (void)deleteBackward;
 - (id)selectionRectsForRange:(id)arg1;
 - (struct CGRect)caretRectForPosition:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) NSAttributedString *attributedText;
 @property(nonatomic) long long autocapitalizationType;
 @property(nonatomic) long long autocorrectionType;
 @property(readonly, nonatomic) UITextPosition *beginningOfDocument;
@@ -55,6 +55,7 @@
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
+@property(nonatomic) struct _NSRange selectedRange;
 @property(copy) UITextRange *selectedTextRange;
 @property(nonatomic) long long selectionAffinity;
 @property(nonatomic) long long smartDashesType;

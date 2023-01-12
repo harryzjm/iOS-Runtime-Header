@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     UIView *_verticalLineView;
     NSArray *_overlayConstraints;
     double _displayedTimeInterval;
+    double _frameRate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double frameRate; // @synthesize frameRate=_frameRate;
 @property(nonatomic) double displayedTimeInterval; // @synthesize displayedTimeInterval=_displayedTimeInterval;
 - (void)updateTimeDisplay;
 - (void)didMoveToSuperview;

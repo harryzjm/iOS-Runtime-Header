@@ -17,6 +17,8 @@
 }
 
 - (void).cxx_destruct;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)initWithCoverSheetHomeGestureParticipant:(id)arg1;
 

@@ -6,10 +6,15 @@
 
 #import <objc/NSObject.h>
 
+@class _PASLazyPurgeableResult;
+
 @interface SGNamedEntityDissectorGuardedData : NSObject
 {
-    void *_nlpTagger;
+    _PASLazyPurgeableResult *_purgeableGazetteer;
 }
+
+- (void).cxx_destruct;
+@property(retain, nonatomic) _PASLazyPurgeableResult *purgeableGazetteer; // @synthesize purgeableGazetteer=_purgeableGazetteer;
 
 @end
 

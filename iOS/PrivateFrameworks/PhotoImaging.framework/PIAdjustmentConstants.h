@@ -41,10 +41,12 @@
     NSString *_PIOrientationAdjustmentKey;
     NSString *_PIRawAdjustmentKey;
     NSString *_PIRawNoiseReductionAdjustmentKey;
+    NSString *_PISemanticEnhanceAdjustmentKey;
     NSString *_PIVideoReframeAdjustmentKey;
     NSString *_PISourceSelectAdjustmentKey;
     NSString *_PIVideoStabilizeAdjustmentKey;
     NSString *_PIVideoCrossfadeLoopAdjustmentKey;
+    NSString *_PIPortraitVideoAdjustmentKey;
     NSString *_PISourceAdjustmentKey;
     NSString *_PIOvercaptureSourceAdjustmentKey;
 }
@@ -52,10 +54,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *PIOvercaptureSourceAdjustmentKey; // @synthesize PIOvercaptureSourceAdjustmentKey=_PIOvercaptureSourceAdjustmentKey;
 @property(readonly, nonatomic) NSString *PISourceAdjustmentKey; // @synthesize PISourceAdjustmentKey=_PISourceAdjustmentKey;
+@property(readonly, nonatomic) NSString *PIPortraitVideoAdjustmentKey; // @synthesize PIPortraitVideoAdjustmentKey=_PIPortraitVideoAdjustmentKey;
 @property(readonly, nonatomic) NSString *PIVideoCrossfadeLoopAdjustmentKey; // @synthesize PIVideoCrossfadeLoopAdjustmentKey=_PIVideoCrossfadeLoopAdjustmentKey;
 @property(readonly, nonatomic) NSString *PIVideoStabilizeAdjustmentKey; // @synthesize PIVideoStabilizeAdjustmentKey=_PIVideoStabilizeAdjustmentKey;
 @property(readonly, nonatomic) NSString *PISourceSelectAdjustmentKey; // @synthesize PISourceSelectAdjustmentKey=_PISourceSelectAdjustmentKey;
 @property(readonly, nonatomic) NSString *PIVideoReframeAdjustmentKey; // @synthesize PIVideoReframeAdjustmentKey=_PIVideoReframeAdjustmentKey;
+@property(readonly, nonatomic) NSString *PISemanticEnhanceAdjustmentKey; // @synthesize PISemanticEnhanceAdjustmentKey=_PISemanticEnhanceAdjustmentKey;
 @property(readonly, nonatomic) NSString *PIRawNoiseReductionAdjustmentKey; // @synthesize PIRawNoiseReductionAdjustmentKey=_PIRawNoiseReductionAdjustmentKey;
 @property(readonly, nonatomic) NSString *PIRawAdjustmentKey; // @synthesize PIRawAdjustmentKey=_PIRawAdjustmentKey;
 @property(readonly, nonatomic) NSString *PIOrientationAdjustmentKey; // @synthesize PIOrientationAdjustmentKey=_PIOrientationAdjustmentKey;

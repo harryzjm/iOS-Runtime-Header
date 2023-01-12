@@ -11,14 +11,14 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDResidentDeviceManager, HMFMessageDispatcher, HMFTimer, HMIExternalPersonManager, HMIHomePersonManager, NSObject, NSString, NSUUID;
-@protocol HMDPersonDataSource, OS_dispatch_queue;
+@class HMFMessageDispatcher, HMFTimer, HMIExternalPersonManager, HMIHomePersonManager, NSObject, NSString, NSUUID;
+@protocol HMDPersonDataSource, HMDResidentDeviceManager, OS_dispatch_queue;
 
 @interface HMDRemotePersonDataMessenger : HMFObject <HMFLogging, HMFMessageReceiver, HMFTimerDelegate, HMDPersonDataReceiver>
 {
     NSUUID *_UUID;
     HMFMessageDispatcher *_messageDispatcher;
-    HMDResidentDeviceManager *_residentDeviceManager;
+    id <HMDResidentDeviceManager> _residentDeviceManager;
     NSObject<OS_dispatch_queue> *_workQueue;
     id <HMDPersonDataSource> _dataSource;
     HMFTimer *_notifyResidentsOfUpdatedDataDebounceTimer;
@@ -31,7 +31,7 @@
 @property(retain) HMFTimer *notifyResidentsOfUpdatedDataDebounceTimer; // @synthesize notifyResidentsOfUpdatedDataDebounceTimer=_notifyResidentsOfUpdatedDataDebounceTimer;
 @property __weak id <HMDPersonDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly) HMDResidentDeviceManager *residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
+@property(readonly) id <HMDResidentDeviceManager> residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
 @property(readonly) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property(readonly, copy) NSUUID *UUID; // @synthesize UUID=_UUID;
 - (void)handleUpdatedSettings:(id)arg1 mirrorOutputFuture:(id)arg2;

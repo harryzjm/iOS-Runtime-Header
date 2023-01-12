@@ -11,7 +11,16 @@
 @class NSString;
 
 @interface CKRecord (IC) <ICHasDatabaseScope>
-- (_Bool)ic_isOwnedByCurrentUser;
++ (id)ic_encryptedKeyForKeyPrefix:(id)arg1;
++ (id)ic_assetKeyForKeyPrefix:(id)arg1;
++ (id)ic_valueKeyForKeyPrefix:(id)arg1;
+- (void)ic_setEncryptedInlineableDataAsset:(id)arg1 forKeyPrefix:(id)arg2;
+- (id)ic_encryptedInlineableDataAssetForKeyPrefix:(id)arg1;
+- (void)ic_setInlineableDataAsset:(id)arg1 forKeyPrefix:(id)arg2;
+- (id)ic_inlineableDataAssetForKeyPrefix:(id)arg1;
+- (_Bool)ic_shouldUseAssetForInlineableDataAsset:(id)arg1;
+@property(readonly, nonatomic) _Bool ic_isOwnedByCurrentUser;
+@property(readonly, nonatomic) _Bool ic_hasMetadata;
 - (long long)databaseScope;
 - (id)ic_loggingDescription;
 

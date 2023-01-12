@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView;
+@class NSArray, NSLayoutConstraint, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBSplitImageView
@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
     UIImageView *_splitLeft;
     UIImageView *_splitRight;
     NSString *_currentFilterType;
+    NSArray *_splitConstraints;
+    NSLayoutConstraint *_leftWidthConstraint;
+    NSLayoutConstraint *_rightWidthConstraint;
 }
 
 @property(retain, nonatomic) NSString *filterType; // @synthesize filterType=_currentFilterType;

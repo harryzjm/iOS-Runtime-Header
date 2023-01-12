@@ -8,7 +8,7 @@
 
 @interface TSTStrokeWidthCache : NSObject
 {
-    struct vector<TSTStrokeWidthCacheEntry, std::__1::allocator<TSTStrokeWidthCacheEntry>> _indexToCacheEntriesMap;
+    struct vector<TSTStrokeWidthCacheEntry, std::allocator<TSTStrokeWidthCacheEntry>> _indexToCacheEntriesMap;
     struct _opaque_pthread_rwlock_t _rwlock;
 }
 

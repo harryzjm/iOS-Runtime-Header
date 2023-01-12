@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NCNotificationAction, NCNotificationContent, NCNotificationOptions, NCNotificationSound, NSArray, NSDate, NSDictionary, NSSet, NSString, UNNotification;
+@class NCNotificationAction, NCNotificationAlertOptions, NCNotificationContent, NCNotificationOptions, NCNotificationSound, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID, UNNotification;
 
 @interface NCMutableNotificationRequest
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) float relevanceScore; // @dynamic relevanceScore;
+@property(copy, nonatomic) NSUUID *uuid; // @dynamic uuid;
+@property(nonatomic) unsigned long long interruptionLevel; // @dynamic interruptionLevel;
 @property(nonatomic, getter=isCriticalAlert) _Bool criticalAlert; // @dynamic criticalAlert;
 @property(copy, nonatomic) NSDictionary *sourceInfo; // @dynamic sourceInfo;
 @property(nonatomic) unsigned long long collapsedNotificationsCount; // @dynamic collapsedNotificationsCount;
@@ -25,11 +28,12 @@
 @property(retain, nonatomic) NCNotificationSound *sound; // @dynamic sound;
 @property(copy, nonatomic) NSSet *settingsSections; // @dynamic settingsSections;
 @property(copy, nonatomic) NSDictionary *context; // @dynamic context;
+@property(retain, nonatomic) NCNotificationAlertOptions *alertOptions; // @dynamic alertOptions;
 @property(retain, nonatomic) NCNotificationOptions *options; // @dynamic options;
 @property(retain, nonatomic) NCNotificationContent *content; // @dynamic content;
 @property(copy, nonatomic) NSSet *requestDestinations; // @dynamic requestDestinations;
 @property(retain, nonatomic) NSDate *timestamp; // @dynamic timestamp;
-@property(nonatomic, getter=isUniqueThreadIdentifier) _Bool uniqueThreadIdentifier; // @dynamic uniqueThreadIdentifier;
+@property(nonatomic, getter=isUniqueThreadIdentifier) _Bool threadIdentifierUnique; // @dynamic threadIdentifierUnique;
 @property(copy, nonatomic) NSString *parentSectionIdentifier; // @dynamic parentSectionIdentifier;
 @property(copy, nonatomic) NSArray *peopleIdentifiers; // @dynamic peopleIdentifiers;
 @property(copy, nonatomic) NSArray *intentIdentifiers; // @dynamic intentIdentifiers;

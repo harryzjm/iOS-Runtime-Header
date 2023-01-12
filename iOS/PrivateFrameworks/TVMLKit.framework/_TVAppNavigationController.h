@@ -42,6 +42,7 @@
 - (_Bool)_shouldOverrideModalBehaviorForPlaybackDocument:(id)arg1 andExistingPlaybackDocument:(id)arg2;
 - (_Bool)_shouldIgnoreModalDismissal:(id)arg1;
 - (void)_doWillLoadAppDocumentWithController:(id)arg1;
+- (_Bool)_hasBeenCleared;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (id)popToRootViewControllerAnimated:(_Bool)arg1;

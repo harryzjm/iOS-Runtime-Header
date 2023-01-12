@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 #import <RemoteUI/RUIHeader-Protocol.h>
 
-@class NSString, RUILinkLabel, UIImageView, UILabel;
+@class NSString, RUILinkLabel, UIColor, UIImageView, UILabel;
 
 @interface RUIHeaderView : UIView <RUIHeader>
 {
+    UILabel *_navTitleLabel;
+    UILabel *_navSubHeaderLabel;
     UILabel *_headerLabel;
     RUILinkLabel *_detailHeaderLabel;
     UILabel *_subHeaderLabel;
@@ -19,15 +21,24 @@
     int _imageAlignment;
     _Bool _isFirstSection;
     _Bool _customIconSize;
+    _Bool _hasLargeIcon;
+    double _imageLabelPadding;
+    double _subHeaderTopMarginValue;
+    UIColor *_headerLabelColor;
     struct UIEdgeInsets _margins;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) UIColor *headerLabelColor; // @synthesize headerLabelColor=_headerLabelColor;
+@property(nonatomic) double imageLabelPadding; // @synthesize imageLabelPadding=_imageLabelPadding;
+@property(nonatomic) double subHeaderTopMarginValue; // @synthesize subHeaderTopMarginValue=_subHeaderTopMarginValue;
 @property(nonatomic) struct UIEdgeInsets margins; // @synthesize margins=_margins;
+- (id)navSubHeaderLabel;
+- (void)setNavSubHeaderTitle:(id)arg1;
+- (id)navTitleLabel;
+- (void)setNavTitle:(id)arg1;
 - (double)headerHeightForWidth:(double)arg1 inView:(id)arg2;
 - (void)layoutSubviews;
-- (double)_titleSubtitlePaddingInView:(id)arg1;
-- (double)_imageTitlePaddingInView:(id)arg1;
 - (_Bool)_hasIcon;
 - (void)setSectionIsFirst:(_Bool)arg1;
 - (void)setImageAlignment:(int)arg1;
@@ -37,6 +48,7 @@
 - (void)setDetailHeaderColor:(id)arg1;
 - (void)setDetailText:(id)arg1 attributes:(id)arg2;
 - (id)detailHeaderLabel;
+- (void)setSubHeaderTopMargin:(double)arg1;
 - (void)setSubHeaderColor:(id)arg1;
 - (void)setSubHeaderAlignment:(long long)arg1;
 - (void)setSubHeaderText:(id)arg1 attributes:(id)arg2;
@@ -45,6 +57,7 @@
 - (void)setHeaderAlignment:(long long)arg1;
 - (void)setText:(id)arg1 attributes:(id)arg2;
 - (id)headerLabel;
+- (void)setHeaderMargin:(struct UIEdgeInsets)arg1;
 - (id)initWithAttributes:(id)arg1;
 - (double)_headerOffsetInView:(id)arg1;
 

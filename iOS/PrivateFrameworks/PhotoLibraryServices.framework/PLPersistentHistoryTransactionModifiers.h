@@ -13,6 +13,7 @@
 }
 
 + (id)transactionAuthorFromChangeSource:(int)arg1 syncChangeMarker:(_Bool)arg2;
++ (id)transactionAuthorFromChangeSource:(int)arg1;
 + (id)transactionModifiersFromTransactionAuthor:(id)arg1;
 @property(nonatomic) int changeSource; // @synthesize changeSource=_changeSource;
 @property(nonatomic) _Bool syncChangeMarker; // @synthesize syncChangeMarker=_syncChangeMarker;

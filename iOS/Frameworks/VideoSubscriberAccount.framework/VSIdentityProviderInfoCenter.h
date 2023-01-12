@@ -6,35 +6,59 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue, NSString, VSAccountStore, VSIdentityProvider, VSPreferences;
+#import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
+
+@class NSError, NSOperationQueue, NSString, VSIdentityProvider, VSPreferences, VSRemoteNotifier;
 @protocol OS_dispatch_queue;
 
-@interface VSIdentityProviderInfoCenter : NSObject
+@interface VSIdentityProviderInfoCenter : NSObject <VSRemoteNotifierDelegate>
 {
+    _Bool _cachedIsSetTopBox;
+    _Bool _setupCompleted;
+    _Bool _ignoredFirstNotification;
     VSPreferences *_preferences;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSOperationQueue *_privateQueue;
-    VSAccountStore *_accountStore;
     VSIdentityProvider *_cachedIdentityProvider;
     NSString *_cachedDesignatedAppBundleIdentifier;
+    NSError *_currentError;
+    VSRemoteNotifier *_remoteNotifier;
 }
 
 + (id)sharedCenter;
 - (void).cxx_destruct;
+@property(retain, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
+@property(retain, nonatomic) NSError *currentError; // @synthesize currentError=_currentError;
+@property(nonatomic) _Bool ignoredFirstNotification; // @synthesize ignoredFirstNotification=_ignoredFirstNotification;
+@property(nonatomic) _Bool setupCompleted; // @synthesize setupCompleted=_setupCompleted;
+@property(nonatomic) _Bool cachedIsSetTopBox; // @synthesize cachedIsSetTopBox=_cachedIsSetTopBox;
 @property(retain, nonatomic) NSString *cachedDesignatedAppBundleIdentifier; // @synthesize cachedDesignatedAppBundleIdentifier=_cachedDesignatedAppBundleIdentifier;
 @property(retain, nonatomic) VSIdentityProvider *cachedIdentityProvider; // @synthesize cachedIdentityProvider=_cachedIdentityProvider;
-@property(retain, nonatomic) VSAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
+- (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
 - (id)_value:(id)arg1 withDefault:(id)arg2;
+- (id)identityProviderFetchAllOperation;
+- (id)accountStore;
+- (id)device;
+- (void)fetchIdentityProviderAppBundleIdFromDeveloperSettings:(CDUnknownBlockType)arg1;
+- (void)fetchAccountAndIdentityProvider:(CDUnknownBlockType)arg1;
+- (void)_refresh:(CDUnknownBlockType)arg1;
+- (void)_postdentityProviderInfoDidChangeNotification;
+- (void)_developerSettingsDidChange;
 - (void)_accountStoreDidChange;
-- (void)_updateCachedBundleInfoWithAdamID:(id)arg1;
 - (void)enqueueIdentityProviderAppsQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueSetTopBoxProfileProviderQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueInfoQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

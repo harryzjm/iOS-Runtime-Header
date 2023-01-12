@@ -10,12 +10,11 @@
 
 @interface _TtC15HealthRecordsUI23SampleTypeCountProvider : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *sampleType;
-    MISSING_TYPE *predicate;
+    MISSING_TYPE *queryDescriptors;
     MISSING_TYPE *healthStore;
-    MISSING_TYPE *observerQuery;
+    MISSING_TYPE *$__lazy_storage_$_observerQuery;
     MISSING_TYPE *$__lazy_storage_$_sampleCountDebouncer;
-    MISSING_TYPE *_sampleCount;
+    MISSING_TYPE *_sampleCounts;
 }
 
 @end

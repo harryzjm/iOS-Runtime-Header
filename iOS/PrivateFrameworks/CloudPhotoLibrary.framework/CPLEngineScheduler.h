@@ -14,9 +14,11 @@
 
 @interface CPLEngineScheduler : NSObject <CPLAbstractObject, CPLEngineComponent>
 {
+    NSDate *_preparingFirstSessionStartDate;
     unsigned long long _requiredFirstState;
     unsigned long long _lastRequestGeneration;
     unsigned long long _currentRequestGeneration;
+    _Bool _needsToUpdateLastSyncDate;
     CPLSyncSession *_nextSession;
     double _intervalForRetry;
     NSObject<OS_dispatch_queue> *_queue;
@@ -26,6 +28,7 @@
     CPLSyncSession *_currentSession;
     _Bool _opened;
     NSDate *_unavailabilityLimitDate;
+    NSString *_unavailabilityReason;
     unsigned long long _foregroundCalls;
     NSCountedSet *_disablingReasons;
     NSCountedSet *_blockingElements;
@@ -41,6 +44,7 @@
     _Bool _didWriteFirstSyncMarker;
     _Bool _delayedFirstSyncBecauseOfRapidLaunch;
     _Bool _isOverridingForeground;
+    NSDate *_lastSuccessfulSyncSessionDate;
     CPLPlatformObject *_platformObject;
     CPLEngineLibrary *_engineLibrary;
     CDUnknownBlockType _requiredStateObserverBlock;
@@ -54,6 +58,7 @@
 @property(copy, nonatomic) CDUnknownBlockType requiredStateObserverBlock; // @synthesize requiredStateObserverBlock=_requiredStateObserverBlock;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+- (void)testKey:(id)arg1 value:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) unsigned long long requiredState;
 - (void)_resetFirstSynchronizationMarker;
 - (id)_minimalDateForFirstSync;
@@ -63,6 +68,8 @@
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)componentName;
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_stopPreparingFirstSession;
+- (void)_prepareFirstSession;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getCurrentRequiredStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetBackoffInterval;
@@ -73,9 +80,12 @@
 - (void)_handleResetClientCacheWithError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)noteSyncSessionSucceeded:(id)arg1;
 - (void)noteSyncSession:(id)arg1 stateWillBeAttempted:(unsigned long long)arg2;
+- (void)_updateLastSyncDateIfNecessaryLocked;
 - (void)noteNetworkStateDidChange;
+- (void)noteContainerHasBeenWiped;
+- (void)noteServerMightBeAvailableNow;
 - (void)noteServerIsUnavailableWithError:(id)arg1;
-- (void)_noteServerIsUnavailableWithErrorLocked:(id)arg1;
+- (void)_noteServerIsUnavailableWithErrorLocked:(id)arg1 reason:(id)arg2;
 - (void)_disableRetryAfterLocked;
 - (_Bool)isSynchronizationDisabledWithReasonError:(id *)arg1;
 - (_Bool)isMinglingEnabled;
@@ -84,7 +94,7 @@
 - (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsBeginningSignificantWork;
 - (void)unblockEngineElementOnce:(id)arg1;
-- (void)waitForEngineElementToBeBlocked:(id)arg1;
+- (_Bool)waitForEngineElementToBeBlocked:(id)arg1 timeout:(double)arg2;
 - (void)willRunEngineElement:(id)arg1;
 - (void)unblockEngineElement:(id)arg1;
 - (void)blockEngineElement:(id)arg1;
@@ -92,6 +102,7 @@
 - (void)_enableSynchronizationWithReasonLocked:(id)arg1;
 - (void)disableSynchronizationWithReason:(id)arg1;
 - (void)_disableSynchronizationWithReasonLocked:(id)arg1;
+- (void)_disableSynchronizationBecauseContainerHasBeenWipedLocked;
 - (_Bool)isClientInForeground;
 - (void)noteClientIsInBackground;
 - (void)noteClientIsInForeground;

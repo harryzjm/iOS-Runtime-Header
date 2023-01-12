@@ -4,24 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKDrawing;
+@class PKDrawingConcrete;
 
 @interface PKDrawingVersionedDocument
 {
     _Bool _loadNonInkingStrokes;
-    PKDrawing *_drawing;
+    PKDrawingConcrete *_drawing;
+    Class _drawingClass;
 }
 
 + (unsigned int)minimumSupportedVersion;
 + (unsigned int)serializationVersion;
 - (void).cxx_destruct;
+@property(retain, nonatomic) Class drawingClass; // @synthesize drawingClass=_drawingClass;
 @property(nonatomic) _Bool loadNonInkingStrokes; // @synthesize loadNonInkingStrokes=_loadNonInkingStrokes;
-@property(retain, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
+@property(retain, nonatomic) PKDrawingConcrete *drawing; // @synthesize drawing=_drawing;
 - (id)serializeCurrentVersion:(unsigned int *)arg1;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 - (unsigned long long)mergeWithDrawingVersionedDocument:(id)arg1;
 - (id)initWithDrawing:(id)arg1;
 - (_Bool)loadUnzippedData:(id)arg1;
+- (id)initWithDrawingClass:(Class)arg1;
 
 @end
 

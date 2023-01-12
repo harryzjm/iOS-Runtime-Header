@@ -8,6 +8,9 @@
 
 @interface WFAppInFocusTrigger (CoreDuetContext)
 - (unsigned int)contextStoreQualityOfService;
+- (_Bool)shouldFireTriggerWithEventInfo:(id)arg1 error:(out id *)arg2;
+- (id)onFocusIgnoredLaunchReasons;
+- (id)onBackgroundIgnoredLaunchReasons;
 - (id)contextStorePredicate;
 - (id)contextStoreKeyPathForCurrentState;
 @end

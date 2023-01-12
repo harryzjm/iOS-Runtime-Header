@@ -8,6 +8,7 @@
 
 @interface INObjectCollection (LocalizedIndexedCollation)
 - (_Bool)wf_contentIsEqualToCollection:(id)arg1;
+- (id)wf_mapItems:(CDUnknownBlockType)arg1;
 - (id)wf_localizedIndexedCollationCollectionWithCollation:(id)arg1 collationStringSelector:(SEL)arg2;
 - (id)wf_filteredCollectionUsingBlock:(CDUnknownBlockType)arg1;
 - (id)wf_itemAtIndexPath:(id)arg1;

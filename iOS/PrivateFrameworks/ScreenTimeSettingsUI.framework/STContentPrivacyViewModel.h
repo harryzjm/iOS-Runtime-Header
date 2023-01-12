@@ -15,15 +15,21 @@ __attribute__((visibility("hidden")))
     _Bool _isLocalDevice;
     _Bool _restrictionsEnabled;
     _Bool _shouldAllowEditing;
+    _Bool _userIsManaged;
+    _Bool _userIsRemote;
     NSString *_userName;
     NSNumber *_userDSID;
     NSMutableDictionary *_valuesByRestriction;
     STCommunicationLimits *_communicationLimits;
+    unsigned long long _userType;
     NSSet *_visibleRestrictions;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *visibleRestrictions; // @synthesize visibleRestrictions=_visibleRestrictions;
+@property unsigned long long userType; // @synthesize userType=_userType;
+@property _Bool userIsRemote; // @synthesize userIsRemote=_userIsRemote;
+@property _Bool userIsManaged; // @synthesize userIsManaged=_userIsManaged;
 @property(retain) STCommunicationLimits *communicationLimits; // @synthesize communicationLimits=_communicationLimits;
 @property(retain, nonatomic) NSMutableDictionary *valuesByRestriction; // @synthesize valuesByRestriction=_valuesByRestriction;
 @property(copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
@@ -32,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool restrictionsEnabled; // @synthesize restrictionsEnabled=_restrictionsEnabled;
 @property(nonatomic) _Bool isLocalDevice; // @synthesize isLocalDevice=_isLocalDevice;
 @property(nonatomic) _Bool isLoaded; // @synthesize isLoaded=_isLoaded;
+- (_Bool)shouldEnableRestriction:(id)arg1;
 - (id)defaultValueForRestriction:(id)arg1;
 - (id)visibleRestrictionWithConfiguration:(id)arg1 key:(id)arg2;
 - (id)init;

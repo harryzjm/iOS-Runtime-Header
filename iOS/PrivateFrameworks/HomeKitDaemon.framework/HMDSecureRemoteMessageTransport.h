@@ -11,29 +11,39 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageTransportDelegate-Protocol.h>
 
-@class HMDRemoteDeviceMonitor, HMDRemoteMessageNotifications, NSArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class HMDHomeManager, HMDIDSMessageTransport, HMDRemoteDeviceMonitor, HMDRemoteMessageNotifications, HMFRingBuffer, NSArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDSecureRemoteMessageTransport : HMFMessageTransport <HMDSecureRemoteSessionDelegate, HMFLogging, HMFMessageTransportDelegate, HMFDumpState>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    _Bool _rapportLinkSlow;
     NSArray *_transports;
     HMDRemoteDeviceMonitor *_deviceMonitor;
     NSMutableSet *_secureRemoteSessions;
     HMDRemoteMessageNotifications *_sessionNotifications;
     NSMutableDictionary *_currentHomeConfigurations;
+    HMDHomeManager *_homeManager;
+    HMDIDSMessageTransport *_idsTransport;
+    HMFRingBuffer *_messageIDBuffer;
 }
 
 + (id)logCategory;
 + (id)shortDescription;
 + (id)defaultTransport;
 - (void).cxx_destruct;
+@property _Bool rapportLinkSlow; // @synthesize rapportLinkSlow=_rapportLinkSlow;
+@property(retain) HMFRingBuffer *messageIDBuffer; // @synthesize messageIDBuffer=_messageIDBuffer;
+@property(retain) HMDIDSMessageTransport *idsTransport; // @synthesize idsTransport=_idsTransport;
+@property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(retain, nonatomic) NSMutableDictionary *currentHomeConfigurations; // @synthesize currentHomeConfigurations=_currentHomeConfigurations;
 @property(retain, nonatomic) HMDRemoteMessageNotifications *sessionNotifications; // @synthesize sessionNotifications=_sessionNotifications;
 @property(readonly, nonatomic) NSMutableSet *secureRemoteSessions; // @synthesize secureRemoteSessions=_secureRemoteSessions;
 @property(readonly) HMDRemoteDeviceMonitor *deviceMonitor; // @synthesize deviceMonitor=_deviceMonitor;
 @property(readonly, copy) NSArray *transports; // @synthesize transports=_transports;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
+- (_Bool)_isModernTransportEnabled;
+- (_Bool)_isDuplicateMessage:(id)arg1;
 - (id)dumpState;
 - (void)secureRemoteSession:(id)arg1 receivedRequestToSendMessage:(id)arg2;
 - (void)secureRemoteSession:(id)arg1 didCloseWithError:(id)arg2;
@@ -60,14 +70,15 @@
 - (_Bool)_handleReceivedMessage:(id)arg1 transport:(id)arg2;
 - (id)_preferredTransportForMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_sendMessageOverIDS:(id)arg1 hasAttemptedSendOverIDS:(_Bool *)arg2 didInvokeResponseBlock:(_Bool)arg3 didReceiveRapportAck:(_Bool)arg4;
 - (id)accountRegistry;
+- (void)_configureWorkQueue:(id)arg1;
 - (void)reset;
 - (void)start;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
 - (id)descriptionWithPointer:(_Bool)arg1;
 - (id)shortDescription;
-- (void)dealloc;
 - (id)initWithTransports:(id)arg1;
 
 // Remaining properties

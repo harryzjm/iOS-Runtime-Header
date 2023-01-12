@@ -16,8 +16,12 @@
 
 @interface HFItemSection : NSObject <HFDiffableItemGroup, NSCopying, NSMutableCopying, NAIdentifiable>
 {
+    _Bool _hideAccessoryButton;
+    _Bool _hideHeaderText;
     NSString *_identifier;
     NSString *_headerTitle;
+    NSString *_headerSecondaryText;
+    NSAttributedString *_attributedHeaderTitle;
     NSString *_headerAccessoryButtonTitle;
     id <HFItemSectionAccessoryButtonHeaderDelegate> _headerAccessoryButtonDelegate;
     NSString *_footerTitle;
@@ -35,8 +39,12 @@
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSAttributedString *attributedFooterTitle; // @synthesize attributedFooterTitle=_attributedFooterTitle;
 @property(copy, nonatomic) NSString *footerTitle; // @synthesize footerTitle=_footerTitle;
+@property(nonatomic) _Bool hideHeaderText; // @synthesize hideHeaderText=_hideHeaderText;
+@property(nonatomic) _Bool hideAccessoryButton; // @synthesize hideAccessoryButton=_hideAccessoryButton;
 @property(nonatomic) __weak id <HFItemSectionAccessoryButtonHeaderDelegate> headerAccessoryButtonDelegate; // @synthesize headerAccessoryButtonDelegate=_headerAccessoryButtonDelegate;
 @property(copy, nonatomic) NSString *headerAccessoryButtonTitle; // @synthesize headerAccessoryButtonTitle=_headerAccessoryButtonTitle;
+@property(copy, nonatomic) NSAttributedString *attributedHeaderTitle; // @synthesize attributedHeaderTitle=_attributedHeaderTitle;
+@property(copy, nonatomic) NSString *headerSecondaryText; // @synthesize headerSecondaryText=_headerSecondaryText;
 @property(copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSArray *diffableItems;

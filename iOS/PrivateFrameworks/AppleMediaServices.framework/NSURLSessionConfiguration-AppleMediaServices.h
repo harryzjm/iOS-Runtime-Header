@@ -8,8 +8,10 @@
 
 @interface NSURLSessionConfiguration (AppleMediaServices)
 + (id)_URLBagCache;
-+ (_Bool)_allowsAMSURLCache;
 + (id)ams_configurationWithProcessInfo:(id)arg1 bag:(id)arg2;
++ (id)ams_configurationWithClientInfo:(id)arg1 bag:(id)arg2;
++ (id)ams_imageConfiguration;
 - (void)ams_configureWithProcessInfo:(id)arg1 bag:(id)arg2;
+- (id)ams_configureWithClientInfo:(id)arg1 bag:(id)arg2;
 @end
 

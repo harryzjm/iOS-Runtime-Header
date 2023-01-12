@@ -12,10 +12,12 @@
 {
     _Bool _hidden;
     _Bool _doNotLocalizeValues;
+    _Bool _doNotLocalizePlaceholder;
     _Bool _insideWorkflow;
     _Bool _allowsMultipleValues;
     _Bool _fixedSizeArray;
     _Bool _shouldAlignLabels;
+    _Bool _isEditingForWidgetConfiguration;
     NSSet *_supportedVariableTypes;
     NSString *_localizedPrompt;
     NSDictionary *_arraySizesBySizeClass;
@@ -42,6 +44,7 @@
 @property(readonly, nonatomic) NSHashTable *eventObservers; // @synthesize eventObservers=_eventObservers;
 @property(readonly, copy, nonatomic) NSDictionary *definition; // @synthesize definition=_definition;
 @property(readonly, nonatomic) NSSet *disallowedVariableTypes; // @synthesize disallowedVariableTypes=_disallowedVariableTypes;
+@property(nonatomic) _Bool isEditingForWidgetConfiguration; // @synthesize isEditingForWidgetConfiguration=_isEditingForWidgetConfiguration;
 @property(readonly, nonatomic) _Bool shouldAlignLabels; // @synthesize shouldAlignLabels=_shouldAlignLabels;
 @property(readonly, nonatomic, getter=isFixedSizeArray) _Bool fixedSizeArray; // @synthesize fixedSizeArray=_fixedSizeArray;
 @property(readonly, nonatomic) _Bool allowsMultipleValues; // @synthesize allowsMultipleValues=_allowsMultipleValues;
@@ -50,6 +53,7 @@
 @property(readonly, nonatomic, getter=isInsideWorkflow) _Bool insideWorkflow; // @synthesize insideWorkflow=_insideWorkflow;
 @property(readonly, nonatomic) WFResourceManager *resourceManager; // @synthesize resourceManager=_resourceManager;
 @property(readonly, copy, nonatomic) id defaultSerializedRepresentation; // @synthesize defaultSerializedRepresentation=_defaultSerializedRepresentation;
+@property(readonly, nonatomic) _Bool doNotLocalizePlaceholder; // @synthesize doNotLocalizePlaceholder=_doNotLocalizePlaceholder;
 @property(readonly, nonatomic) _Bool doNotLocalizeValues; // @synthesize doNotLocalizeValues=_doNotLocalizeValues;
 @property(readonly, copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property(copy, nonatomic) NSString *localizedPlaceholder; // @synthesize localizedPlaceholder=_localizedPlaceholder;

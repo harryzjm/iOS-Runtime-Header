@@ -11,11 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityParagraphElementsWithLinks;
-- (id)_accessibilityParagraphElements;
-- (id)_accessibilityParagraphLinksCustomRotor;
-- (id)_accessibilityLinksForRange:(struct _NSRange)arg1;
 - (_Bool)_accessibilityTextViewShouldBreakUpParagraphs;
+- (id)_accessibilityUserTestingChildren;
 - (_Bool)canBecomeFocused;
 - (id)_accessibilityInternalTextLinks;
 - (long long)accessibilityContainerType;
@@ -31,11 +28,8 @@
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
-- (id)_accessibilityTextSelectionRectWithLargestVisualRangeFromCandidates:(id)arg1;
 - (id)accessibilityElements;
 - (unsigned long long)accessibilityTraits;
-- (_Bool)_axIsOnlyOneLinkElement;
-- (_Bool)_accessibilityActivateLink:(id)arg1;
 - (_Bool)accessibilityActivate;
 - (_Bool)isAccessibilityElement;
 - (void)setAttributedPlaceholder:(id)arg1;
@@ -57,13 +51,9 @@
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_axDidFinishDataDetectorURLification:(id)arg1;
-- (void)_axClearCachedLinkData;
 - (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (unsigned long long)_accessibilityAutomationType;
-- (void)_axRegisterForDDNotificationIfNeeded;
-- (void)_axSetDidRegisterForDDNotification:(_Bool)arg1;
-- (_Bool)_axDidRegisterForDDNotification;
 
 @end
 

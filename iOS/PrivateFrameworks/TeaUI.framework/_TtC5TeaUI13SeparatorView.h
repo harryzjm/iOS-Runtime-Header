@@ -14,6 +14,7 @@
     MISSING_TYPE *visibilityStyle;
     MISSING_TYPE *isHighlighted;
     MISSING_TYPE *isSelected;
+    MISSING_TYPE *hidesOnSelection;
     MISSING_TYPE *_backgroundColor;
 }
 

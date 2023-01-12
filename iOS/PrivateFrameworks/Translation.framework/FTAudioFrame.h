@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_a1ce9f39)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_a1ce9f39)addObjectToBuffer:(void *)arg1;
 - (void)audio_bytes:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSData *audio_bytes;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadataCryptoSession : PBCodable <NSCopying>
 {
     NSData *_routingToken;

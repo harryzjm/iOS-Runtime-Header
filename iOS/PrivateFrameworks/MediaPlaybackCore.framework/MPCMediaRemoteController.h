@@ -8,11 +8,12 @@
 
 #import <MediaPlaybackCore/MPMediaRemoteEntityArtworkGenerator-Protocol.h>
 #import <MediaPlaybackCore/MSVLRUDictionaryDelegate-Protocol.h>
+#import <MediaPlaybackCore/_MPArtworkCatalogOverlayDelegate-Protocol.h>
 
 @class MPCFuture, MPCPlayerPath, MSVLRUDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol MPArtworkDataSource, OS_dispatch_queue;
 
-@interface MPCMediaRemoteController : NSObject <MSVLRUDictionaryDelegate, MPMediaRemoteEntityArtworkGenerator>
+@interface MPCMediaRemoteController : NSObject <_MPArtworkCatalogOverlayDelegate, MSVLRUDictionaryDelegate, MPMediaRemoteEntityArtworkGenerator>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
@@ -65,6 +66,7 @@
 @property(readonly, nonatomic) long long playingIdentifierCacheState; // @synthesize playingIdentifierCacheState=_playingIdentifierCacheState;
 @property(readonly, nonatomic) long long supportedCommandsCacheState; // @synthesize supportedCommandsCacheState=_supportedCommandsCacheState;
 @property(readonly, nonatomic) long long playbackStateCacheState; // @synthesize playbackStateCacheState=_playbackStateCacheState;
+- (id)_onQueue_stateDictionary;
 - (void)_onQueue_invalidateArtworkFuturesForContentItemID:(id)arg1;
 - (void)_onQueue_purgeArtworkForContentItemIdentifier:(id)arg1;
 - (void)_onQueue_purgeArtworkForContentItemIdentifier:(id)arg1 artworkIdentifier:(id)arg2;
@@ -72,6 +74,12 @@
 - (id)_onQueue_identifiersForRange:(struct _MSVSignedRange)arg1;
 - (id)_legacyCommands;
 - (id)_createExportableArtworkPropertiesForContentItem:(id)arg1;
+- (CDUnknownBlockType)_artworkCatalogBlockForContentItem:(id)arg1;
+- (void)artworkCatalog:(id)arg1 didClearFromView:(id)arg2;
+- (void)artworkCatalog:(id)arg1 didConfigureView:(id)arg2 withRepresentation:(id)arg3;
+- (struct CGSize)overlayScaledFittingSizeForCatalog:(id)arg1 scaledFittingSize:(struct CGSize)arg2;
+- (void)artworkCatalog:(id)arg1 willConfigureView:(id)arg2;
+- (id)overlayVisualIdenticalityForCatalog:(id)arg1;
 - (CDUnknownBlockType)artworkCatalogBlockForContentItem:(id)arg1;
 - (void)invalidateAllTokens;
 - (void)dictionary:(id)arg1 willRemoveObject:(id)arg2 forKey:(id)arg3;

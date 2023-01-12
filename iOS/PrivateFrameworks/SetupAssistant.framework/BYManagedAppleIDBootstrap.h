@@ -31,7 +31,6 @@
 @property(nonatomic) _Bool shouldRetrySilentLoginUpgrade; // @synthesize shouldRetrySilentLoginUpgrade=_shouldRetrySilentLoginUpgrade;
 - (void)willSwitchUser;
 - (void)_modifyAuthenticationContextIfNeeded:(id)arg1;
-- (void)networkChangedFromNetworkType:(int)arg1 toNetworkType:(int)arg2;
 - (id)_fetchAKURLBagSynchronously;
 - (void)writeAccountConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_languageConfigurationDictionary;

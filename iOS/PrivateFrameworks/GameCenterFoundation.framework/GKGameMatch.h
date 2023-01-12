@@ -17,6 +17,7 @@
 
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKPlayer *player; // @synthesize player=_player;
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 @property(retain) GKRecentMatchInternal *internal; // @synthesize internal=_internal;
@@ -28,7 +29,6 @@
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 - (id)initWithInternalRepresentation:(id)arg1 game:(id)arg2;
 

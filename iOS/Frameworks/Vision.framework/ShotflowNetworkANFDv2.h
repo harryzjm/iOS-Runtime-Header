@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (const vector_eb9481f9 *)importantClasses;
++ (const void *)importantClasses;
 + (unsigned long long)mumberPosClasses;
 + (id)modelName;
 

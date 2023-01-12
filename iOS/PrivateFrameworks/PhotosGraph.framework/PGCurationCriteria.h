@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PGCurationContentOrAestheticScoreTrait, PGCurationCropScoreTrait, PGCurationIndexSetTrait, PGCurationPartOfDayTrait, PGCurationSetTrait, PGGraph;
+@class PGCurationContentOrAestheticScoreTrait, PGCurationCropScoreTrait, PGCurationIndexSetTrait, PGCurationPartOfDayTrait, PGCurationSetTrait;
 
 @interface PGCurationCriteria : NSObject
 {
@@ -15,9 +15,9 @@
     PGCurationIndexSetTrait *_compulsoryScenesTrait;
     PGCurationIndexSetTrait *_scenesTrait;
     PGCurationPartOfDayTrait *_partOfDayTrait;
-    PGGraph *_graph;
     unsigned long long _faceFilter;
     PGCurationSetTrait *_peopleTrait;
+    PGCurationSetTrait *_socialGroupTrait;
     PGCurationContentOrAestheticScoreTrait *_contentOrAestheticScoreTrait;
     PGCurationCropScoreTrait *_cropScoreTrait;
     unsigned long long _client;
@@ -28,19 +28,22 @@
 @property(nonatomic) _Bool filterUtilityAssets; // @synthesize filterUtilityAssets=_filterUtilityAssets;
 @property(retain, nonatomic) PGCurationCropScoreTrait *cropScoreTrait; // @synthesize cropScoreTrait=_cropScoreTrait;
 @property(retain, nonatomic) PGCurationContentOrAestheticScoreTrait *contentOrAestheticScoreTrait; // @synthesize contentOrAestheticScoreTrait=_contentOrAestheticScoreTrait;
+@property(retain, nonatomic) PGCurationSetTrait *socialGroupTrait; // @synthesize socialGroupTrait=_socialGroupTrait;
 @property(retain, nonatomic) PGCurationSetTrait *peopleTrait; // @synthesize peopleTrait=_peopleTrait;
 @property(nonatomic) unsigned long long faceFilter; // @synthesize faceFilter=_faceFilter;
-@property(readonly, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
 @property(retain, nonatomic) PGCurationPartOfDayTrait *partOfDayTrait; // @synthesize partOfDayTrait=_partOfDayTrait;
 @property(retain, nonatomic) PGCurationIndexSetTrait *scenesTrait; // @synthesize scenesTrait=_scenesTrait;
 @property(retain, nonatomic) PGCurationIndexSetTrait *compulsoryScenesTrait; // @synthesize compulsoryScenesTrait=_compulsoryScenesTrait;
 @property(nonatomic) double minimumAssetsRatio; // @synthesize minimumAssetsRatio=_minimumAssetsRatio;
-- (id)peopleTraitString;
-@property(readonly) NSString *niceDescription;
+- (id)peopleTraitStringWithGraph:(id)arg1;
+- (id)niceDescriptionWithGraph:(id)arg1;
 - (double)_scoreForSceneClassifications:(id)arg1 withScenesTrait:(id)arg2 traitFailed:(_Bool *)arg3;
-- (_Bool)passesForItem:(id)arg1 score:(double *)arg2 reasonString:(id *)arg3;
+- (_Bool)_passesForItem:(id)arg1 score:(double *)arg2 graph:(id)arg3 reasonString:(id *)arg4;
+- (_Bool)passesForItem:(id)arg1 score:(double *)arg2 graph:(id)arg3 reasonString:(id *)arg4;
+- (_Bool)passesForItem:(id)arg1 score:(double *)arg2;
+- (id)passingAssetsInAssets:(id)arg1;
 - (_Bool)isPassingForAsset:(id)arg1 score:(double *)arg2;
-- (id)initWithGraph:(id)arg1 minimumAssetsRatio:(double)arg2 client:(unsigned long long)arg3;
+- (id)initWithMinimumAssetsRatio:(double)arg1 client:(unsigned long long)arg2;
 
 @end
 

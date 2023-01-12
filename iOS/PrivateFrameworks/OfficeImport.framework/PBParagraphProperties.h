@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)readParagraphProperties:(id)arg1 paragraphProperty:(struct PptParaProperty *)arg2 bulletStyle:(struct PptParaProperty9 *)arg3 isMaster:(_Bool)arg4 state:(id)arg5;
-+ (void)readParagraphProperties:(id)arg1 paragraphPropertyRun:(struct PptParaRun *)arg2 bulletStyle:(struct PptParaProperty9 *)arg3 state:(id)arg4;
++ (void)readParagraphProperties:(id)arg1 paragraphProperty:(void *)arg2 bulletStyle:(struct PptParaProperty9 *)arg3 isMaster:(_Bool)arg4 state:(id)arg5;
++ (void)readParagraphProperties:(id)arg1 paragraphPropertyRun:(void *)arg2 bulletStyle:(struct PptParaProperty9 *)arg3 state:(id)arg4;
 + (int)pptFontAlignWithOADTextFontAlign:(unsigned char)arg1;
 + (int)pptAlignmentTypeWithOADTextAlignType:(unsigned char)arg1;
 + (short)pptTextSpacingWithOADParaSpacing:(id)arg1 defaultPptParaSpacing:(short)arg2;

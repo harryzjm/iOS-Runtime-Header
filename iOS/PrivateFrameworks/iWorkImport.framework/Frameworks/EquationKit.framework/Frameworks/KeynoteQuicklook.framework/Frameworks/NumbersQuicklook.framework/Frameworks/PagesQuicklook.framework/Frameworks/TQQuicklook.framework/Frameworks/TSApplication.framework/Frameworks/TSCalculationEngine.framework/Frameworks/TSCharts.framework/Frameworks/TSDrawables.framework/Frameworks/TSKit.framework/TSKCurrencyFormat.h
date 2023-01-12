@@ -11,10 +11,10 @@
 @interface TSKCurrencyFormat <NSCopying>
 {
     NSNumber *_propertiesCacheKey;
+    unsigned char _negativeStyle;
     _Bool _showThousandsSeparator;
     _Bool _accountingStyle;
     _Bool _usePlusSign;
-    int _negativeStyle;
     unsigned long long _decimalPlaces;
     unsigned long long _currencyCodeIndex;
 }
@@ -22,16 +22,17 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool usePlusSign; // @synthesize usePlusSign=_usePlusSign;
 @property(readonly, nonatomic) _Bool accountingStyle; // @synthesize accountingStyle=_accountingStyle;
-@property(nonatomic) unsigned long long currencyCodeIndex; // @synthesize currencyCodeIndex=_currencyCodeIndex;
+@property(readonly, nonatomic) unsigned long long currencyCodeIndex; // @synthesize currencyCodeIndex=_currencyCodeIndex;
 @property(readonly, nonatomic) _Bool showThousandsSeparator; // @synthesize showThousandsSeparator=_showThousandsSeparator;
-@property(readonly, nonatomic) int negativeStyle; // @synthesize negativeStyle=_negativeStyle;
+@property(readonly, nonatomic) unsigned char negativeStyle; // @synthesize negativeStyle=_negativeStyle;
 @property(readonly, nonatomic) unsigned long long decimalPlaces; // @synthesize decimalPlaces=_decimalPlaces;
 - (id)asCurrencyFormat;
+- (id)decimalFormatterForLocale:(id)arg1;
 - (id)stringFromDouble:(double)arg1 locale:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, nonatomic) NSString *currencyCode;
-- (id)initWithDecimalPlaces:(unsigned long long)arg1 negativeStyle:(int)arg2 showSeparator:(_Bool)arg3 accountingStyle:(_Bool)arg4 currencyCode:(id)arg5;
+- (id)initWithDecimalPlaces:(unsigned long long)arg1 negativeStyle:(unsigned char)arg2 showSeparator:(_Bool)arg3 accountingStyle:(_Bool)arg4 currencyCode:(id)arg5;
 - (id)initWithLocale:(id)arg1;
 - (id)initWithFormatType:(unsigned int)arg1;
 

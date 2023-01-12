@@ -17,6 +17,7 @@
     GEOWaypointInfo *_destinationWaypointInfo;
     GEOEVStateInfo *_evStateInfo;
     GEOWaypointInfo *_originWaypointInfo;
+    NSData *_pathLeg;
     NSData *_zilchPoints;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -26,6 +27,7 @@
         unsigned int read_destinationWaypointInfo:1;
         unsigned int read_evStateInfo:1;
         unsigned int read_originWaypointInfo:1;
+        unsigned int read_pathLeg:1;
         unsigned int read_zilchPoints:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -40,6 +42,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -54,6 +57,8 @@
 @property(readonly, nonatomic) _Bool hasOriginWaypointInfo;
 @property(retain, nonatomic) GEOEVStateInfo *evStateInfo;
 @property(readonly, nonatomic) _Bool hasEvStateInfo;
+@property(retain, nonatomic) NSData *pathLeg;
+@property(readonly, nonatomic) _Bool hasPathLeg;
 @property(retain, nonatomic) NSData *zilchPoints;
 @property(readonly, nonatomic) _Bool hasZilchPoints;
 - (id)initWithData:(id)arg1;

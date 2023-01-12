@@ -6,6 +6,7 @@
 
 @class ICStoreRequestContext, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICMusicSubscriptionCarrierBundlingEligibilityOperation
 {
     NSString *_cellularProviderName;

@@ -7,17 +7,22 @@
 #import <AppleMediaServices/AMSTask.h>
 
 #import <AppleMediaServicesUI/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServicesUI/AMSUIDynamicViewControllerDelegate-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebDelegate-Protocol.h>
+#import <AppleMediaServicesUI/PRXFlowDelegate-Protocol.h>
 
-@class AMSEngagementRequest, NSString, UIViewController;
+@class AMSEngagementRequest, AMSEngagementResult, AMSProcessInfo, NSError, NSString, UIViewController;
 @protocol AMSBagProtocol;
 
-@interface AMSUIEngagementTask : AMSTask <AMSUIWebDelegate, AMSBagConsumer>
+@interface AMSUIEngagementTask : AMSTask <AMSUIWebDelegate, AMSUIDynamicViewControllerDelegate, PRXFlowDelegate, AMSBagConsumer>
 {
+    _Bool _remotePresentation;
     _Bool _presented;
+    AMSProcessInfo *_clientInfo;
     id <AMSBagProtocol> _bag;
+    NSError *_error;
     AMSEngagementRequest *_request;
-    CDUnknownBlockType _resolveBlock;
+    AMSEngagementResult *_result;
     UIViewController *_viewController;
 }
 
@@ -27,13 +32,26 @@
 + (id)bagKeySet;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-@property(copy, nonatomic) CDUnknownBlockType resolveBlock; // @synthesize resolveBlock=_resolveBlock;
+@property(retain, nonatomic) AMSEngagementResult *result; // @synthesize result=_result;
 @property(retain, nonatomic) AMSEngagementRequest *request; // @synthesize request=_request;
 @property(nonatomic) _Bool presented; // @synthesize presented=_presented;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property(nonatomic) _Bool remotePresentation; // @synthesize remotePresentation=_remotePresentation;
+@property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+- (long long)_modalPresentationStyle;
 - (id)_viewControllerForType:(id)arg1;
+- (void)_receivedPurchaseResult:(id)arg1;
 - (void)_presentViewController:(id)arg1;
-- (_Bool)webViewController:(id)arg1 handleDelegateAction:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_isRemoteViewService;
+- (_Bool)_isRemotePresentationEnabled;
+- (id)_infoWithBuyParams:(id)arg1 additionalInfo:(id)arg2;
+- (void)_finishWithResultInfo:(id)arg1 error:(id)arg2;
+- (void)webViewController:(id)arg1 didResolveWithResult:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)webViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
+- (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
+- (id)_presentEngagementRemotely;
+- (id)_presentEngagementLocally;
 - (id)presentEngagement;
 - (id)initWithRequest:(id)arg1 bag:(id)arg2 presentingViewController:(id)arg3;
 

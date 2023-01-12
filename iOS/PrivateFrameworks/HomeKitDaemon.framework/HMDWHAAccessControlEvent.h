@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSString;
 
-@interface HMDWHAAccessControlEvent <HMDAWDLogEvent>
+@interface HMDWHAAccessControlEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     _Bool _isP2PEnabled;
     _Bool _isPasswordSet;
@@ -17,8 +19,6 @@
 
 + (int)awdUserPrivilegeFromHMUserPrivilege:(long long)arg1;
 + (id)eventWithP2PEnabled:(_Bool)arg1 privilegeLevel:(long long)arg2 passwordSet:(_Bool)arg3;
-+ (id)uuid;
-+ (void)initialize;
 @property(nonatomic) _Bool isPasswordSet; // @synthesize isPasswordSet=_isPasswordSet;
 @property(nonatomic) int privilegeLevel; // @synthesize privilegeLevel=_privilegeLevel;
 @property(nonatomic) _Bool isP2PEnabled; // @synthesize isP2PEnabled=_isP2PEnabled;

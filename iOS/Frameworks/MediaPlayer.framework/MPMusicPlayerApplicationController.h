@@ -8,20 +8,32 @@
 
 @interface MPMusicPlayerApplicationController
 {
+    long long _shuffleMode;
+    long long _repeatMode;
     NSXPCConnection *_serviceConnection;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
-- (void)onApplicationServerAsync:(CDUnknownBlockType)arg1;
+- (void)onApplicationServer:(CDUnknownBlockType)arg1;
+- (void)onApplicationServerAsync:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_establishConnectionIfNeeded;
 - (void)_clearConnection;
+- (void)setQueueWithDescriptor:(id)arg1;
+- (void)setShuffleMode:(long long)arg1;
+- (long long)shuffleMode;
+- (void)setRepeatMode:(long long)arg1;
+- (long long)repeatMode;
+- (id)_mediaItemsForContentItemIDs:(id)arg1;
+- (void)setDisableAutomaticCanBeNowPlaying:(_Bool)arg1;
+- (void)setRelativeVolume:(float)arg1;
 - (void)beginPlaybackAtHostTime:(CDStruct_1b6d18a9)arg1;
 - (void)prerollWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performQueueTransaction:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)endGeneratingPlaybackNotifications;
 - (void)beginGeneratingPlaybackNotifications;
 - (void)dealloc;
+- (id)initWithClientIdentifier:(id)arg1 queue:(id)arg2;
 
 @end
 

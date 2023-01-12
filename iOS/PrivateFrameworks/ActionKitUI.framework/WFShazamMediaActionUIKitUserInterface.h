@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 #import <ActionKitUI/WFShazamMediaActionUserInterface-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFShazamMediaActionUIKitUserInterface : WFActionUserInterface <WFShazamMediaActionUserInterface>
+@interface WFShazamMediaActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFShazamMediaActionUserInterface>
 {
     CDUnknownBlockType _completionHandler;
 }
@@ -21,12 +21,14 @@ __attribute__((visibility("hidden")))
 - (void)finishWithError:(id)arg1;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)showWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)prefersModalPresentation;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

@@ -26,12 +26,6 @@ struct Device_Token {
 
 struct HAL_Server_Lifetime_Events;
 
-struct Listener_List {
-    struct unique_ptr<HAL::Client::Listener_List::Listener_List_Impl, std::__1::default_delete<HAL::Client::Listener_List::Listener_List_Impl>> _field1;
-};
-
-struct Listener_List_Impl;
-
 struct Object_ID_Map;
 
 struct PropertyAddress {
@@ -67,20 +61,6 @@ struct shared_ptr<HAL::Client::Object_ID_Map> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct unique_ptr<HAL::Client::Listener_List::Listener_List_Impl, std::__1::default_delete<HAL::Client::Listener_List::Listener_List_Impl>> {
-    struct __compressed_pair<HAL::Client::Listener_List::Listener_List_Impl *, std::__1::default_delete<HAL::Client::Listener_List::Listener_List_Impl>> {
-        struct Listener_List_Impl *_field1;
-    } _field1;
-};
-
-struct vector<AudioObjectPropertyAddress, std::__1::allocator<AudioObjectPropertyAddress>> {
-    struct AudioObjectPropertyAddress *_field1;
-    struct AudioObjectPropertyAddress *_field2;
-    struct __compressed_pair<AudioObjectPropertyAddress *, std::__1::allocator<AudioObjectPropertyAddress>> {
-        struct AudioObjectPropertyAddress *_field1;
-    } _field3;
-};
-
 struct weak_ptr<HAL_Server_Lifetime_Events> {
     struct HAL_Server_Lifetime_Events *__ptr_;
     struct __shared_weak_count *__cntrl_;
@@ -98,14 +78,6 @@ typedef struct shared_ptr<HAL::Client::Object_ID_Map> {
     struct Object_ID_Map *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_a1e71f47;
-
-typedef struct vector<AudioObjectPropertyAddress, std::__1::allocator<AudioObjectPropertyAddress>> {
-    struct AudioObjectPropertyAddress *_field1;
-    struct AudioObjectPropertyAddress *_field2;
-    struct __compressed_pair<AudioObjectPropertyAddress *, std::__1::allocator<AudioObjectPropertyAddress>> {
-        struct AudioObjectPropertyAddress *_field1;
-    } _field3;
-} vector_9f82871d;
 
 typedef struct weak_ptr<HAL_Server_Lifetime_Events> {
     struct HAL_Server_Lifetime_Events *__ptr_;

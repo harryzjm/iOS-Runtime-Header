@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (double)_caloriesBurnedWithTimeInterval:(double)arg1;
 - (void)timerDidFireWithInterval:(double)arg1;
 - (double)nextFireInterval;
 

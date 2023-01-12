@@ -6,11 +6,12 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <HealthDaemon/HKUUIDProvider-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableSample;
+@class HDCodableSample, NSString;
 
-@interface HDCodableDeletedSample : PBCodable <NSCopying>
+@interface HDCodableDeletedSample : PBCodable <HKUUIDProvider, NSCopying>
 {
     HDCodableSample *_sample;
 }
@@ -18,16 +19,20 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
 - (void)mergeFrom:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
-- (id)description;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool hasSample;
 - (id)hk_UUID;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

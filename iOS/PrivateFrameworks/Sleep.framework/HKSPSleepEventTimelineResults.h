@@ -13,6 +13,7 @@
     _Bool _sleepScheduleInvalid;
     _Bool _snoozeFireDateNeedsReset;
     HKSPSleepEventTimeline *_timeline;
+    unsigned long long _sleepScheduleInvalidReason;
     HKSPSleepEventTimeline *_unadjustedTimeline;
     HKSPSleepSchedule *_originalSleepSchedule;
     HKSPMutableSleepSchedule *_mutableValidSleepSchedule;
@@ -23,6 +24,7 @@
 @property(retain, nonatomic) HKSPSleepSchedule *originalSleepSchedule; // @synthesize originalSleepSchedule=_originalSleepSchedule;
 @property(retain, nonatomic) HKSPSleepEventTimeline *unadjustedTimeline; // @synthesize unadjustedTimeline=_unadjustedTimeline;
 @property(nonatomic) _Bool snoozeFireDateNeedsReset; // @synthesize snoozeFireDateNeedsReset=_snoozeFireDateNeedsReset;
+@property(nonatomic) unsigned long long sleepScheduleInvalidReason; // @synthesize sleepScheduleInvalidReason=_sleepScheduleInvalidReason;
 @property(nonatomic) _Bool sleepScheduleInvalid; // @synthesize sleepScheduleInvalid=_sleepScheduleInvalid;
 @property(retain, nonatomic) HKSPSleepEventTimeline *timeline; // @synthesize timeline=_timeline;
 @property(readonly, nonatomic) HKSPSleepSchedule *validSleepSchedule;

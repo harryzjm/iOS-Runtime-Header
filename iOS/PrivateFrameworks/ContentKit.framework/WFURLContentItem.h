@@ -21,7 +21,7 @@
 + (id)ownedPasteboardTypes;
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4 cachingIdentifier:(id)arg5;
 + (id)filterRepresentationsForAllowedContent:(id)arg1;
 + (void)rediscoverURLCoercionClassesIfNeeded;
 + (void)registerURLCoercion:(Class)arg1;
@@ -37,6 +37,7 @@
 - (void)getPreferredFileExtension:(CDUnknownBlockType)arg1;
 - (void)getPreferredFileSize:(CDUnknownBlockType)arg1;
 - (void)getTitle:(CDUnknownBlockType)arg1;
+- (void)getPDFWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)generateFileRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forType:(id)arg3;
 - (void)getContentsWithRequest:(id)arg1 cacheResult:(_Bool)arg2 expectedByteCountHandler:(CDUnknownBlockType)arg3 writtenByteCountHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)getContentsWithRequest:(id)arg1 expectedByteCountHandler:(CDUnknownBlockType)arg2 writtenByteCountHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;

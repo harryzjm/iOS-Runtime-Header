@@ -25,6 +25,7 @@
 - (id)_axBundleIdentifier;
 - (long long)_axAppLayoutType;
 - (id)_axDisplayItems;
+- (id)_axDisplayName;
 - (id)_axLabelWithFirstIconTitle:(id)arg1 secondIconTitle:(id)arg2;
 - (id)initWithItemsForLayoutRoles:(id)arg1 configuration:(long long)arg2 environment:(long long)arg3;
 - (id)accessibilityIdentifier;

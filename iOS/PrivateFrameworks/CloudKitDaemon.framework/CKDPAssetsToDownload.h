@@ -10,7 +10,6 @@
 
 @class CKDPRequestedFields;
 
-__attribute__((visibility("hidden")))
 @interface CKDPAssetsToDownload : PBCodable <NSCopying>
 {
     CKDPRequestedFields *_assetFields;

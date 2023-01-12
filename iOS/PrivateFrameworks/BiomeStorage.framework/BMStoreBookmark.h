@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <BiomeStorage/BMProtoBufWrapper-Protocol.h>
+#import <BiomeStorage/NSCopying-Protocol.h>
 #import <BiomeStorage/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface BMStoreBookmark : NSObject <NSSecureCoding, BMProtoBufWrapper>
+@interface BMStoreBookmark : NSObject <NSCopying, NSSecureCoding, BMProtoBufWrapper>
 {
     NSString *_streamId;
     NSString *_segmentName;
@@ -20,10 +21,12 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) double iterationStartTime; // @synthesize iterationStartTime=_iterationStartTime;
 @property(readonly, nonatomic) NSString *segmentName; // @synthesize segmentName=_segmentName;
 @property(readonly, nonatomic) NSString *streamId; // @synthesize streamId=_streamId;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)checkAndReportDecodingFailureIfNeededFordouble:(double)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
@@ -36,7 +39,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)_descriptionDict;
-- (void)dealloc;
 - (id)initWithStream:(id)arg1 segment:(id)arg2 iterationStartTime:(double)arg3 offset:(unsigned long long)arg4;
 
 @end

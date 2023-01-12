@@ -10,6 +10,7 @@
 
 @class ICNote, NSArray, NSManagedObjectContext, NSString, TTTextStorage;
 
+__attribute__((visibility("hidden")))
 @interface TTTextStorageWithRange : NSObject <NSItemProviderWriting>
 {
     ICNote *_note;

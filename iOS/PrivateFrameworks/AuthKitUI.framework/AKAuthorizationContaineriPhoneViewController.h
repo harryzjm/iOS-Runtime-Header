@@ -29,6 +29,7 @@
 - (struct CGRect)_layoutFrameForContentSize:(struct CGSize)arg1;
 - (void)_layoutContainerView:(_Bool)arg1;
 - (void)setContainerContentSize:(struct CGSize)arg1 animated:(_Bool)arg2;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

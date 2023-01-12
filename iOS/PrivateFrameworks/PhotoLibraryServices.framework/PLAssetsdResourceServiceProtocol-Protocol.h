@@ -12,7 +12,6 @@
 - (void)projectExtensionDataForProjectUuid:(NSString *)arg1 reply:(void (^)(NSData *, NSError *))arg2;
 - (void)updateInternalResourcePath:(NSString *)arg1 objectURI:(NSURL *)arg2 sandboxExtension:(NSData *)arg3 reply:(void (^)(_Bool, NSError *))arg4;
 - (NSProgress *)consolidateAssets:(NSArray *)arg1 reply:(void (^)(NSDictionary *))arg2;
-- (void)generateOnDemandResourcesForAsset:(NSURL *)arg1 reply:(void (^)(void))arg2;
 - (void)downloadCloudSharedAsset:(NSURL *)arg1 wantedPlaceholderkind:(short)arg2 shouldPrioritize:(_Bool)arg3 shouldExtendTimer:(_Bool)arg4 reply:(void (^)(_Bool, NSURL *, NSError *))arg5;
 - (void)estimatedFileLengthOfVideo:(NSURL *)arg1 fallbackFilePath:(NSString *)arg2 exportPreset:(NSString *)arg3 exportProperties:(NSDictionary *)arg4 reply:(void (^)(long long))arg5;
 - (void)asynchronousAdjustmentDataForAsset:(NSURL *)arg1 networkAccessAllowed:(_Bool)arg2 withDataBlob:(_Bool)arg3 reply:(void (^)(NSString *, NSString *, long long, _Bool, PLXPCFileDescriptor *, PLXPCFileDescriptor *, NSError *))arg4;

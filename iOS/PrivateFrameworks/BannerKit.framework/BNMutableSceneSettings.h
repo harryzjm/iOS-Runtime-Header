@@ -6,19 +6,30 @@
 
 #import <UIKit/UIMutableApplicationSceneSettings.h>
 
+#import <BannerKit/BSSettingDescriptionProvider-Protocol.h>
+
 @class NSString;
 
-@interface BNMutableSceneSettings : UIMutableApplicationSceneSettings
+@interface BNMutableSceneSettings : UIMutableApplicationSceneSettings <BSSettingDescriptionProvider>
 {
 }
 
+- (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
+- (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) Class clientContainerViewControllerClass;
 @property(nonatomic, getter=isUserInteractionInProgress) _Bool userInteractionInProgress;
 @property(copy, nonatomic) NSString *revocationReason;
 @property(nonatomic) int bannerAppearState;
 @property(nonatomic) int viewControllerAppearState;
 @property(nonatomic) struct CGSize presentationSize;
 @property(nonatomic) struct CGSize containerSize;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

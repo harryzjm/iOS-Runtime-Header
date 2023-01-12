@@ -28,7 +28,7 @@
 - (void)_updateWithGraphView:(id)arg1 forTimeScopeAboveDay:(long long)arg2;
 - (void)layoutSubviews;
 - (void)updateWithGraphView:(id)arg1 timeScope:(long long)arg2;
-- (id)initWithDisplayTypeController:(id)arg1 unitPreferenceController:(id)arg2 wheelchairUseCharacteristicCache:(id)arg3 currentValueViewCallbacks:(id)arg4 activitySummaryDataProvider:(id)arg5;
+- (id)initWithDisplayTypeController:(id)arg1 unitPreferenceController:(id)arg2 wheelchairUseCharacteristicCache:(id)arg3 currentValueViewCallbacks:(id)arg4 activitySummaryDataProvider:(id)arg5 firstWeekday:(long long)arg6;
 
 @end
 

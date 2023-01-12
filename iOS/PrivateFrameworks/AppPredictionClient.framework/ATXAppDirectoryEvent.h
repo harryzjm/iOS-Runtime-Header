@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppPredictionClient/ATXProactiveSuggestionUIInteractionProtocol-Protocol.h>
 #import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
 #import <AppPredictionClient/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString;
+@class ATXAppDirectoryEventMetadata, NSArray, NSDate, NSNumber, NSString, NSUUID;
 
-@interface ATXAppDirectoryEvent : NSObject <NSSecureCoding, ATXProtoBufWrapper>
+@interface ATXAppDirectoryEvent : NSObject <NSSecureCoding, ATXProtoBufWrapper, ATXProactiveSuggestionUIInteractionProtocol>
 {
     double _absoluteDate;
     unsigned long long _eventType;
@@ -21,12 +22,21 @@
     NSNumber *_bundleIndex;
     NSNumber *_searchQueryLength;
     NSNumber *_searchTab;
+    NSUUID *_blendingCacheUUID;
+    NSArray *_shownSuggestionIds;
+    NSArray *_engagedSuggestionIds;
+    ATXAppDirectoryEventMetadata *_metadata;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
 + (id)_objectForKey:(id)arg1 classType:(Class)arg2 fromMetadata:(id)arg3;
 + (id)appDirectoryEventWithEventType:(unsigned long long)arg1 metadata:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) ATXAppDirectoryEventMetadata *metadata; // @synthesize metadata=_metadata;
+@property(retain, nonatomic) NSArray *engagedSuggestionIds; // @synthesize engagedSuggestionIds=_engagedSuggestionIds;
+@property(retain, nonatomic) NSArray *shownSuggestionIds; // @synthesize shownSuggestionIds=_shownSuggestionIds;
+@property(retain, nonatomic) NSUUID *blendingCacheUUID; // @synthesize blendingCacheUUID=_blendingCacheUUID;
 @property(retain, nonatomic) NSNumber *searchTab; // @synthesize searchTab=_searchTab;
 @property(retain, nonatomic) NSNumber *searchQueryLength; // @synthesize searchQueryLength=_searchQueryLength;
 @property(retain, nonatomic) NSNumber *bundleIndex; // @synthesize bundleIndex=_bundleIndex;
@@ -36,17 +46,30 @@
 @property(nonatomic) unsigned long long eventType; // @synthesize eventType=_eventType;
 - (_Bool)isEqualToATXAppDirectoryEvent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)encodeAsProto;
 - (id)proto;
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;
+- (id)json;
+- (id)jsonDict;
+- (id)serialize;
+@property(readonly, nonatomic) unsigned int dataVersion;
+- (void)updateUIFeedbackSession:(id)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (id)blendingUICacheUpdateUUIDForUICacheConsumerSubType:(unsigned char)arg1;
+- (id)sessionIdentifierForSessionType:(long long)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (id)sessionProcessingOptionsForSessionType:(long long)arg1;
 @property(retain, nonatomic) NSDate *date;
-- (id)initWithAbsoluteDate:(double)arg1 eventType:(unsigned long long)arg2 categoryID:(id)arg3 categoryIndex:(id)arg4 bundleId:(id)arg5 bundleIndex:(id)arg6 searchQueryLength:(id)arg7 searchTab:(id)arg8;
-- (id)initWithDate:(id)arg1 eventType:(unsigned long long)arg2 categoryID:(id)arg3 categoryIndex:(id)arg4 bundleId:(id)arg5 bundleIndex:(id)arg6 searchQueryLength:(id)arg7 searchTab:(id)arg8;
+- (id)initWithAbsoluteDate:(double)arg1 eventType:(unsigned long long)arg2 categoryID:(id)arg3 categoryIndex:(id)arg4 bundleId:(id)arg5 bundleIndex:(id)arg6 searchQueryLength:(id)arg7 searchTab:(id)arg8 blendingCacheUUID:(id)arg9 shownSuggestionIds:(id)arg10 engagedSuggestionIds:(id)arg11 metadata:(id)arg12;
+- (id)initWithDate:(id)arg1 eventType:(unsigned long long)arg2 categoryID:(id)arg3 categoryIndex:(id)arg4 bundleId:(id)arg5 bundleIndex:(id)arg6 searchQueryLength:(id)arg7 searchTab:(id)arg8 blendingCacheUUID:(id)arg9 shownSuggestionIds:(id)arg10 engagedSuggestionIds:(id)arg11 metadata:(id)arg12;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

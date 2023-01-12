@@ -8,21 +8,21 @@
 
 @interface TSCH3DExtrusionDoubleBevelGenerator : NSObject
 {
-    vector_7200ab52 mInputSpinePoints;
-    vector_7200ab52 mSpinePoints;
-    vector_d73af98f mScaleValues;
-    float mBevelHeight;
-    long long mBevelSlices;
-    _Bool mEnableBevelEdges;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _inputSpinePoints;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _spinePoints;
+    struct vector<glm::detail::tvec2<float>, std::allocator<glm::detail::tvec2<float>>> _scaleValues;
+    float _bevelHeight;
+    long long _bevelSlices;
+    _Bool _enableBevelEdges;
 }
 
 + (id)generator;
 + (id)namedBevelInterpolationShaderFunction;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool enableBevelEdges; // @synthesize enableBevelEdges=mEnableBevelEdges;
-@property(nonatomic) long long bevelSlices; // @synthesize bevelSlices=mBevelSlices;
-@property(nonatomic) float bevelHeight; // @synthesize bevelHeight=mBevelHeight;
+@property(nonatomic) _Bool enableBevelEdges; // @synthesize enableBevelEdges=_enableBevelEdges;
+@property(nonatomic) long long bevelSlices; // @synthesize bevelSlices=_bevelSlices;
+@property(nonatomic) float bevelHeight; // @synthesize bevelHeight=_bevelHeight;
 - (long long)bottomSlices;
 - (long long)topSlices;
 - (void)adjustBottomScales;
@@ -38,9 +38,9 @@
 - (long long)topBevelStartIndex;
 - (void)createSpinePointArray;
 - (float)spineUValueAtIndex:(long long)arg1;
-- (const vector_d73af98f *)scaleValues;
-- (const vector_7200ab52 *)spinePoints;
-- (vector_7200ab52 *)inputSpinePoints;
+- (const void *)scaleValues;
+- (const void *)spinePoints;
+- (void *)inputSpinePoints;
 - (void)generate;
 - (id)init;
 

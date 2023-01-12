@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UIColor *_strokeColor;
 }
 
++ (struct CGPath *)_createSmoothTransitionPathForBalloonRadius:(double)arg1 tailLength:(double)arg2;
 + (struct CGPath *)_createPathForBalloonRadius:(double)arg1 tailLength:(double)arg2;
 + (Class)layerClass;
 - (void).cxx_destruct;
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)setPath:(struct CGPath *)arg1 duration:(double)arg2;
 - (void)setPath:(struct CGPath *)arg1;
 - (id)initWithOvalInSize:(struct CGSize)arg1;
-- (id)initWithBalloonRadius:(double)arg1 tailLength:(double)arg2;
+- (id)initWithBalloonRadius:(double)arg1 tailLength:(double)arg2 smoothTailTransition:(_Bool)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

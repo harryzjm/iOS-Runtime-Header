@@ -19,10 +19,10 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct vector<unsigned int, std::__1::allocator<unsigned int>> {
+struct vector<unsigned int, std::allocator<unsigned int>> {
     unsigned int *__begin_;
     unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
+    struct __compressed_pair<unsigned int *, std::allocator<unsigned int>> {
         unsigned int *__value_;
     } __end_cap_;
 };

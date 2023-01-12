@@ -8,16 +8,46 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSString;
+@class NSMutableDictionary, NSString, PGGraphBuilder, PGGraphMeNodeCollection, PGGraphPersonNodeCollection, PGHolidayClassifier;
 
 @interface PGGraphIngestHolidaysProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
+    PGHolidayClassifier *_holidayClassifier;
+    PGGraphMeNodeCollection *_meNodeAsCollection;
+    PGGraphPersonNodeCollection *_partnerPersonNodes;
+    PGGraphPersonNodeCollection *_familyPersonNodes;
+    PGGraphPersonNodeCollection *_childPersonNodes;
+    PGGraphPersonNodeCollection *_fatherPersonNodes;
+    PGGraphPersonNodeCollection *_motherPersonNodes;
+    PGGraphPersonNodeCollection *_friendPersonNodes;
+    PGGraphPersonNodeCollection *_coworkerPersonNodes;
+    PGGraphPersonNodeCollection *_nonAcquaintancePersonNodes;
+    unsigned long long _meBiologicalSex;
+    NSMutableDictionary *_biologicalSexByPartnerPersonNodeIdentifier;
 }
 
-- (void)insertHolidaysBetweenLocalDate:(id)arg1 andLocalDate:(id)arg2 graph:(id)arg3 locale:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
-- (void)insertHolidaysWithMomentNodes:(id)arg1 graph:(id)arg2 locale:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
++ (id)keyboardLanguageCodesForInfoNode:(id)arg1 holidayService:(id)arg2;
+- (void).cxx_destruct;
+- (unsigned long long)_eventRuleLocationTraitForMomentNode:(id)arg1 graph:(id)arg2;
+- (unsigned long long)_eventRulePeopleTraitForPersonNodes:(id)arg1 graph:(id)arg2;
+- (id)holidayCalendarEventRuleTraitsForMomentNode:(id)arg1;
+- (_Bool)momentTraitsMatchesHolidayTraits:(id)arg1 momentNode:(id)arg2 loggingConnection:(id)arg3;
+- (double)_dateScoreForEventRule:(id)arg1 localeCode:(id)arg2 holidayDate:(id)arg3 momentDate:(id)arg4;
+- (double)dateScoreForEventRule:(id)arg1 localeCountryCode:(id)arg2 momentCountryCodes:(id)arg3 keyboardLanguageCodes:(id)arg4 momentDate:(id)arg5;
+- (double)_calculateSceneScores:(id)arg1;
+- (double)sceneScoreForEventRule:(id)arg1 localeCountryCode:(id)arg2 momentCountryCodes:(id)arg3 keyboardLanguageCodes:(id)arg4 momentNode:(id)arg5;
+- (double)locationScoreForEventRule:(id)arg1 localeCountryCode:(id)arg2 momentCountryCodes:(id)arg3 keyboardLanguageCodes:(id)arg4;
+- (_Bool)shouldCreateHolidayEdgeForEventRule:(id)arg1 momentNode:(id)arg2 momentLocalDate:(id)arg3 withGraph:(id)arg4 loggingConnection:(id)arg5 localeCountryCode:(id)arg6 keyboardLanguageCodes:(id)arg7;
+- (void)_prepareIfNeededWithGraph:(id)arg1;
+- (id)allDatesForEventRule:(id)arg1 withGraph:(id)arg2;
+- (id)_momentsCelebratingRule:(id)arg1 localDates:(id)arg2 userCountryCode:(id)arg3 keyboardLanguageCodes:(id)arg4 graph:(id)arg5 loggingConnection:(id)arg6;
+- (void)insertHolidaysBetweenLocalDate:(id)arg1 andLocalDate:(id)arg2 graph:(id)arg3 locale:(id)arg4 loggingConnection:(id)arg5 progressBlock:(CDUnknownBlockType)arg6;
+- (void)insertHolidaysWithMomentNodes:(id)arg1 graph:(id)arg2 locale:(id)arg3 loggingConnection:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

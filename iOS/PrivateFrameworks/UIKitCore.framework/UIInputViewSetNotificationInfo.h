@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     _Bool _dueToRotation;
     double _duration;
     unsigned long long _options;
+    unsigned long long _assistantPosition;
     struct CGPoint _beginCenter;
     struct CGPoint _endCenter;
     struct CGRect _beginFrame;
     struct CGRect _endFrame;
+    struct CGRect _assistantFrame;
     struct CGRect _bounds;
 }
 
@@ -32,6 +34,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool dueToRotation; // @synthesize dueToRotation=_dueToRotation;
 @property(nonatomic) _Bool wasCausedRemotely; // @synthesize wasCausedRemotely=_wasCausedRemotely;
 @property(nonatomic) _Bool forceNotification; // @synthesize forceNotification=_forceNotification;
+@property(nonatomic) struct CGRect assistantFrame; // @synthesize assistantFrame=_assistantFrame;
+@property(nonatomic) unsigned long long assistantPosition; // @synthesize assistantPosition=_assistantPosition;
 @property(nonatomic) _Bool assistantOnScreenOnly; // @synthesize assistantOnScreenOnly=_assistantOnScreenOnly;
 @property(nonatomic) _Bool changedAccessoryOnly; // @synthesize changedAccessoryOnly=_changedAccessoryOnly;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;

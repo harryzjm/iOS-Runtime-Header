@@ -9,13 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface WebInterruptionObserverHelper : NSObject
 {
-    struct AudioSession *_callback;
+    void *_callback;
 }
 
 - (void)interruption:(id)arg1;
 - (void)clearCallback;
 - (void)dealloc;
-- (id)initWithCallback:(struct AudioSession *)arg1;
+- (id)initWithCallback:(void *)arg1;
 
 @end
 

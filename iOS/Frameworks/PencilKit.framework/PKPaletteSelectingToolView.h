@@ -8,7 +8,7 @@
 #import <PencilKit/PKPaletteSelectingTool-Protocol.h>
 
 @class NSString, PKInk;
-@protocol PKPaletteErasingTool, PKPaletteInkingTool;
+@protocol PKPaletteErasingTool, PKPaletteHandwritingTool, PKPaletteInkingTool;
 
 @interface PKPaletteSelectingToolView <PKPaletteInkingTool, PKPaletteSelectingTool>
 {
@@ -28,6 +28,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <PKPaletteErasingTool> erasingTool;
+@property(readonly, nonatomic) id <PKPaletteHandwritingTool> handwritingTool;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) id <PKPaletteInkingTool> inkingTool;
 @property(readonly) Class superclass;

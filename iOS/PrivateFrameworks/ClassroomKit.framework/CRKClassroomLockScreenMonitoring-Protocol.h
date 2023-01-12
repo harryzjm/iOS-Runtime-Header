@@ -9,7 +9,6 @@
 @class NSString;
 
 @protocol CRKClassroomLockScreenMonitoring <NSObject>
-+ (id)sharedMonitor;
 @property(readonly, nonatomic, getter=isClassroomLockScreenVisible) _Bool classroomLockScreenVisible;
 - (void)dismissClassroomLockScreen;
 - (void)displayClassroomLockScreenWithLabel:(NSString *)arg1 passcode:(NSString *)arg2;

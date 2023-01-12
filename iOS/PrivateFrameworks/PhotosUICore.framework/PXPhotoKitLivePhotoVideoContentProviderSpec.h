@@ -11,15 +11,18 @@
 @interface PXPhotoKitLivePhotoVideoContentProviderSpec : NSObject <NSCopying>
 {
     _Bool _stabilizeIfPossible;
+    _Bool _wantsAudio;
     CDStruct_1b6d18a9 _crossfadeDuration;
     CDStruct_1b6d18a9 _loopStartTime;
     CDStruct_e83c9415 _loopTimeRange;
 }
 
+@property(nonatomic) _Bool wantsAudio; // @synthesize wantsAudio=_wantsAudio;
 @property(nonatomic) _Bool stabilizeIfPossible; // @synthesize stabilizeIfPossible=_stabilizeIfPossible;
 @property(nonatomic) CDStruct_e83c9415 loopTimeRange; // @synthesize loopTimeRange=_loopTimeRange;
 @property(nonatomic) CDStruct_1b6d18a9 loopStartTime; // @synthesize loopStartTime=_loopStartTime;
 @property(nonatomic) CDStruct_1b6d18a9 crossfadeDuration; // @synthesize crossfadeDuration=_crossfadeDuration;
+- (id)identifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

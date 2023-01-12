@@ -31,6 +31,7 @@
 + (id)anonymousPlayer;
 + (id)canonicalizedPlayerForInternal:(id)arg1;
 + (id)playerFromPlayerID:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *friends; // @synthesize friends=_friends;
 @property(retain, nonatomic) NSAttributedString *whenString; // @synthesize whenString=_whenString;
 @property(retain) GKPlayerInternal *internal; // @synthesize internal=_internal;
@@ -40,6 +41,7 @@
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (id)searchName;
 - (id)sortName;
 @property(readonly, nonatomic) NSString *displayName;
 - (id)displayNameWithOptions:(unsigned char)arg1;
@@ -83,6 +85,8 @@
 @property(readonly, retain, nonatomic) NSString *teamPlayerID; // @dynamic teamPlayerID;
 @property(readonly, retain, nonatomic) NSString *gamePlayerID; // @dynamic gamePlayerID;
 @property(retain, nonatomic) NSString *playerID; // @dynamic playerID;
+@property(readonly, nonatomic) _Bool isInContacts;
+@property(readonly, nonatomic) NSString *messagesID;
 @property(readonly, nonatomic) CDStruct_c6d350ec stats;
 @property(readonly, nonatomic) GKGame *lastPlayedGame;
 - (void)dealloc;

@@ -4,30 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSuggestions/MapsSuggestionsRunCondition-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsCondition-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsTrigger-Protocol.h>
 
 @class NSString;
 
-@interface MapsSuggestionsTriggeringToggle <MapsSuggestionsTrigger, MapsSuggestionsRunCondition>
+@interface MapsSuggestionsTriggeringToggle <MapsSuggestionsTrigger, MapsSuggestionsCondition>
 {
     unsigned long long _behavior;
     _Bool _state;
     unsigned long long _timesUpdated;
 }
 
+@property(readonly, copy) NSString *description;
 - (void)didRemoveLastObserver;
 - (void)didAddFirstObserver;
 - (id)objectForJSON;
-- (_Bool)shouldRun;
+- (_Bool)isTrue;
 @property(readonly, nonatomic) unsigned long long timesUpdated;
 @property(nonatomic) _Bool state;
-- (id)initWithName:(id)arg1;
-- (id)initWithName:(id)arg1 behavior:(unsigned long long)arg2;
+- (id)initWithName:(id)arg1 startState:(_Bool)arg2;
+- (id)initWithName:(id)arg1 startState:(_Bool)arg2 behavior:(unsigned long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) NSString *uniqueName;

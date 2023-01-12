@@ -15,6 +15,7 @@
     UIImageSymbolConfiguration *_imageConfiguration;
     double _imageAlpha;
     UIColor *_imageTintColor;
+    UIColor *_afterLabelImageTintColor;
     CAFilter *_imageCompositingFilter;
     UIFont *_labelFont;
     double _labelAlpha;
@@ -44,6 +45,7 @@
 @property(readonly, nonatomic) double labelAlpha; // @synthesize labelAlpha=_labelAlpha;
 @property(readonly, nonatomic) UIFont *labelFont; // @synthesize labelFont=_labelFont;
 @property(readonly, nonatomic) CAFilter *imageCompositingFilter; // @synthesize imageCompositingFilter=_imageCompositingFilter;
+@property(readonly, nonatomic) UIColor *afterLabelImageTintColor; // @synthesize afterLabelImageTintColor=_afterLabelImageTintColor;
 @property(readonly, nonatomic) UIColor *imageTintColor; // @synthesize imageTintColor=_imageTintColor;
 @property(readonly, nonatomic) double imageAlpha; // @synthesize imageAlpha=_imageAlpha;
 @property(readonly, nonatomic) UIImageSymbolConfiguration *imageConfiguration; // @synthesize imageConfiguration=_imageConfiguration;

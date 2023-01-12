@@ -12,12 +12,12 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIButton *accountInformationButton; // @synthesize accountInformationButton=_accountInformationButton;
 - (struct CGSize)_sizeForButton:(id)arg1 constrainedToSize:(struct CGSize)arg2;
 - (void)setButtonsEnabled:(_Bool)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setupAccountInformationButtonWithAction:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 action:(id)arg2;
 
 @end
 

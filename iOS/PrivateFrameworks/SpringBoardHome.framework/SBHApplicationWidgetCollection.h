@@ -12,6 +12,7 @@
 
 @interface SBHApplicationWidgetCollection : NSObject <BSDescriptionProviding>
 {
+    NSString *_collectionIdentifier;
     SBLeafIcon *_icon;
     NSArray *_avocadoDescriptors;
     NSString *_vendorName;
@@ -29,6 +30,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
+@property(readonly, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
 @property(readonly, nonatomic) NSString *displayName;
 @property(readonly, copy) NSString *description;
 - (id)initWithIcon:(id)arg1 galleryItems:(id)arg2 vendorName:(id)arg3;

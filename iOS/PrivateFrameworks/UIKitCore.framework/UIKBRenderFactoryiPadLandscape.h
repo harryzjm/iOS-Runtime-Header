@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)dictationKeyImageName;
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
+- (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)shiftKeyOffset;
 - (struct CGPoint)deleteKeyOffset;
 - (struct CGPoint)dismissKeyOffset;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (double)tinyPunctuationGlyphFontSize;
 - (double)messagesTypeKeyplanSwitchKeyFontSize;
 - (double)fallbackFontSize;
+- (double)symbolImageControlKeyFontSize;
 - (double)zhuyinFirstToneKeyFontSize;
 - (double)facemarkKeyFontSize;
 - (double)emailDotKeyFontSize;

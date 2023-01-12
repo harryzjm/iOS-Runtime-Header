@@ -14,8 +14,9 @@
 {
 }
 
-+ (id)iOS_baseAccountDirectoryForPersonaIdentifier:(id)arg1;
-+ (id)macOS_baseAccountDirectoryForPersonaIdentifier:(id)arg1;
++ (id)iOS_baseAccountDirectoryPathForPersonaIdentifier:(id)arg1;
++ (id)macOS_baseAccountDirectoryPathForPersonaIdentifier:(id)arg1;
++ (id)baseAccountDirectoryPathForPersonaIdentifier:(id)arg1;
 + (id)baseAccountDirectoryForPersonaIdentifier:(id)arg1;
 + (id)log;
 

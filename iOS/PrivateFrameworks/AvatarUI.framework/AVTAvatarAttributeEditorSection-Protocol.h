@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <AvatarUI/AVTAvatarAttributeEditorSectionProvider-Protocol.h>
 #import <AvatarUI/NSObject-Protocol.h>
 
 @class AVTAvatarAttributeEditorSectionOptions, NSArray, NSString;
 @protocol AVTAvatarAttributeEditorSection, AVTAvatarAttributeEditorSectionSupplementalPicker;
 
-@protocol AVTAvatarAttributeEditorSection <NSObject>
+@protocol AVTAvatarAttributeEditorSection <NSObject, AVTAvatarAttributeEditorSectionProvider>
 @property(retain, nonatomic) id <AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker;
+@property(readonly, nonatomic) struct UIEdgeInsets separatorInsets;
+@property(nonatomic) unsigned long long intendedDestination;
 @property(readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly, copy, nonatomic) NSArray *sectionItems;

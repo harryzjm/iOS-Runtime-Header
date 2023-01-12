@@ -13,8 +13,6 @@
 
 + (id)maintenanceOperationWithName:(id)arg1 queue:(id)arg2 synchronousBlock:(CDUnknownBlockType)arg3;
 + (id)maintenanceOperationWithName:(id)arg1 asynchronousBlock:(CDUnknownBlockType)arg2;
-- (void)_operationDidFinish;
-- (void)_operationDidStart;
 - (id)initWithName:(id)arg1;
 - (id)init;
 

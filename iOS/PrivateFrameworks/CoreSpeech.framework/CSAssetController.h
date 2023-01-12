@@ -48,6 +48,7 @@
 - (void)_updateFromRemoteToLocalAssets:(id)arg1 forAssetType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_isRetryRecommendedWithResult:(long long)arg1;
 - (void)_downloadAssetCatalogForAssetType:(unsigned long long)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)_fetchRemoteAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2 query:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_fetchRemoteAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchRemoteMetaOfType:(unsigned long long)arg1 allowRetry:(_Bool)arg2;
 - (void)fetchRemoteMetaOfType:(unsigned long long)arg1;
@@ -55,12 +56,14 @@
 - (void)_runAssetQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_assetQueryForAssetType:(unsigned long long)arg1;
 - (id)_findLatestInstalledAsset:(id)arg1;
+- (void)_installedAssetOfType:(unsigned long long)arg1 query:(id)arg2 withLanguage:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2;
 - (void)installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2;
 - (void)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2;
+- (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 compatibilityVersion:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)allInstalledAssetsOfType:(unsigned long long)arg1 language:(id)arg2;
 - (id)assetOfType:(unsigned long long)arg1 language:(id)arg2;

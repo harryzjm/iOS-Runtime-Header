@@ -18,6 +18,8 @@
 
 @property(nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property unsigned long long browsedDeviceTypeMask; // @synthesize browsedDeviceTypeMask=_browsedDeviceTypeMask;
+- (void)resetControlAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resetContentsAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestControlAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)controlAuthorizationStatus;
 - (void)requestContentsAuthorizationWithCompletion:(CDUnknownBlockType)arg1;

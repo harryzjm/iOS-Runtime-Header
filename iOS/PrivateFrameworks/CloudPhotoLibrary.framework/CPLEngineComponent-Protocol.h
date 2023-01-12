@@ -14,6 +14,7 @@
 - (void)openWithCompletionHandler:(void (^)(NSError *))arg1;
 
 @optional
+- (void)testKey:(NSString *)arg1 value:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSString *, NSError *))arg3;
 - (void)getStatusDictionaryWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getStatusWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 @end

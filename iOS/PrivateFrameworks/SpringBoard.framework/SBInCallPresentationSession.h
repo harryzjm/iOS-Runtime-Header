@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BSInvalidatable-Protocol.h>
+#import <SpringBoard/FBSceneObserver-Protocol.h>
 #import <SpringBoard/SBApplicationHosting-Protocol.h>
 #import <SpringBoard/SBApplicationSceneHandleUpdateContributing-Protocol.h>
 #import <SpringBoard/SBBannerUnfurlSourceContextProviding-Protocol.h>
@@ -19,10 +20,10 @@
 #import <SpringBoard/SBUIActiveOrientationObserver-Protocol.h>
 #import <SpringBoard/SBWorkspaceApplicationSceneTransitionContextDelegate-Protocol.h>
 
-@class BSEventQueue, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBBacklightController, SBBannerManager, SBDeviceApplicationSceneHandle, SBInCallBannerPresentableViewController, SBInCallTransientOverlayViewController, SBLayoutElement, SBLockScreenManager, SBMainDisplaySceneManager, SBMainSwitcherViewController, SBMainWorkspace, SBSetupManager, SBWorkspaceKeyboardFocusController, SpringBoard, UIApplicationSceneDeactivationAssertion, UIApplicationSceneDeactivationManager, UIScreen;
+@class BSEventQueue, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, SBAppStatusBarSettingsAssertion, SBBacklightController, SBBannerManager, SBDeviceApplicationSceneHandle, SBInCallBannerPresentableViewController, SBInCallTransientOverlayViewController, SBLayoutElement, SBLockScreenManager, SBMainDisplaySceneManager, SBMainSwitcherViewController, SBMainWorkspace, SBPIPControllerCoordinator, SBSUIInCallSceneClientSettingsDiffInspector, SBSetupManager, SBUIController, SBWorkspaceKeyboardFocusController, SpringBoard, UIApplicationSceneDeactivationAssertion, UIApplicationSceneDeactivationManager, UIScreen;
 @protocol BSInvalidatable, SBInCallPresentationSessionDelegate;
 
-@interface SBInCallPresentationSession : NSObject <SBApplicationSceneHandleUpdateContributing, SBBannerUnfurlSourceContextProviding, SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneStatusBarStateObserver, SBInCallBannerPresentableViewControllerDelegate, SBInCallTransientOverlayViewControllerDelegate, SBSceneHandleActionConsuming, SBWorkspaceApplicationSceneTransitionContextDelegate, SBLayoutStateTransitionObserver, SBUIActiveOrientationObserver, BSInvalidatable, SBApplicationHosting>
+@interface SBInCallPresentationSession : NSObject <SBApplicationSceneHandleUpdateContributing, SBBannerUnfurlSourceContextProviding, SBDeviceApplicationSceneHandleObserver, SBDeviceApplicationSceneStatusBarStateObserver, SBInCallBannerPresentableViewControllerDelegate, SBInCallTransientOverlayViewControllerDelegate, SBSceneHandleActionConsuming, SBWorkspaceApplicationSceneTransitionContextDelegate, SBLayoutStateTransitionObserver, SBUIActiveOrientationObserver, FBSceneObserver, BSInvalidatable, SBApplicationHosting>
 {
     NSMutableSet *_activeSystemGestureDeactivationReasons;
     NSMutableSet *_activeSystemAnimationDeactivationReasons;
@@ -33,6 +34,9 @@
     NSMutableArray *_deviceLockHandlingCompletionHandlers;
     id <BSInvalidatable> _ignoreSuspendedUnderLockAssertion;
     _Bool _isHandlingDeviceLock;
+    _Bool _hasBegunHandlingPresentationRequest;
+    _Bool _hasHandledInitialPresentationRequest;
+    _Bool _hasReceivedFinalizeSceneDestructionRequest;
     BSEventQueue *_localEventQueue;
     SBLockScreenManager *_lockScreenManager;
     SBWorkspaceKeyboardFocusController *_keyboardFocusController;
@@ -44,15 +48,20 @@
     SBMainWorkspace *_workspace;
     SBMainSwitcherViewController *_mainSwitcherViewController;
     SBSetupManager *_setupManager;
+    SBPIPControllerCoordinator *_pipControllerCoordinator;
     SpringBoard *_springBoard;
+    SBUIController *_uiController;
     NSMutableDictionary *_bannerDidDisappearHandlerByUUID;
     _Bool _isInvalidated;
-    _Bool _hasBegunSceneDestroy;
     _Bool _isBannerPresentationActive;
     _Bool _isTransientOverlayPresentationActive;
     _Bool _hasAdoptedFullscreenOverlayAPI;
     _Bool _isPerformingSwitcherPresentation;
+    _Bool _isHandlingTransientOverlayDismissalRequest;
     unsigned long long _presentationModeRevisionID;
+    _Bool _isAttachedToWindowedAccessory;
+    _Bool _isScreenSharingPresentation;
+    id <BSInvalidatable> _suppressHomeIndicatorWhileAttachedToWindowedAccessoryAssertion;
     UIApplicationSceneDeactivationManager *_deactivationManager;
     UIApplicationSceneDeactivationAssertion *_systemAnimationSceneDeactivationAssertion;
     UIApplicationSceneDeactivationAssertion *_systemGestureSceneDeactivationAssertion;
@@ -60,6 +69,11 @@
     SBAppStatusBarSettingsAssertion *_appStatusBarSettingsAssertion;
     SBLayoutElement *_preferredDismissalPrimaryElement;
     id <BSInvalidatable> _preventKeyboardFocusAssertion;
+    SBSUIInCallSceneClientSettingsDiffInspector *_inCallSceneClientSettingsDiffInspector;
+    NSUUID *_requestedPresentationConfigurationIdentifier;
+    SBDeviceApplicationSceneHandle *_sceneHandleToObserveForShowSystemControlsAction;
+    _Bool _observedSceneHandlePrefersHomeIndicatorAutoHidden;
+    id <BSInvalidatable> _hideSharePlayContentFromClonedDisplayAssertion;
     _Bool _shouldIgnoreHomeIndicatorAutoHiddenClientSettings;
     id <SBInCallPresentationSessionDelegate> _delegate;
     double _preferredBannerHeight;
@@ -71,8 +85,15 @@
 @property(readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
 @property(nonatomic) double preferredBannerHeight; // @synthesize preferredBannerHeight=_preferredBannerHeight;
 @property(nonatomic) __weak id <SBInCallPresentationSessionDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_updateVisibilityInSwitcherForPrefersHiddenWhenDismissedIfNeededForLayoutState:(id)arg1;
+- (_Bool)_shouldExcludeFromSwitcherWhenDismissed;
+- (void)_sendShowNoticeForSystemControlsActionIfNeeded;
+- (void)_updateSceneHandleToObserveForSendingShowNoticeForSystemControlsAction:(id)arg1;
+- (void)_updateSystemControlsShouldPresentAsEmbedded;
+- (_Bool)_systemControlsShouldPresentAsEmbeddedForLayoutState:(id)arg1;
 - (void)_updateKeyboardFocusPreventionAssertionWithLayoutState:(id)arg1;
-- (void)_updateAppStatusBarSettingsAssertion;
+- (void)_updateAppStatusBarSettingsAssertionForLayoutState:(id)arg1;
+- (_Bool)_isShowingInPIP;
 - (_Bool)_shouldUseTransientOverlayForFullScreenPresentation;
 - (_Bool)_shouldConsiderScenePrimaryForLayoutState:(id)arg1;
 - (void)_setTransientOverlayPresentationActive:(_Bool)arg1;
@@ -88,20 +109,29 @@
 - (void)_removeSystemGestureDeactivationReason:(id)arg1;
 - (void)_addSystemGestureDeactivationReason:(id)arg1;
 - (_Bool)_hasExistingSceneSettingsPresentationModeForLayoutState:(id)arg1;
-- (void)_destroySceneEntityUsingMainEventQueueWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_destroySceneEntity;
+- (void)_destroySceneEntityIfExists;
+- (_Bool)_isDismissedForLayoutState:(id)arg1;
+- (_Bool)_isShowingFullScreenForLayoutState:(id)arg1;
 - (long long)_currentPresentationModeForLayoutState:(id)arg1;
+- (_Bool)_allowsInitiallyDismissedPresentation;
 - (_Bool)_allowsBannerPresentation;
 - (id)_acquireAssertionForAnalyticsSource:(id)arg1;
+- (_Bool)_isValidForSceneUpdates;
+- (_Bool)_isInSwitcherModel;
+- (id)_clientSettingsIfExists;
 - (void)_prepareForTransientOverlayPresentationTransactionWithAnimation:(_Bool)arg1 analyticsSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) _Bool isFullscreenCallInSwitcher;
+- (void)_notifySceneOfDeviceLockFromSource:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleDeviceLockFromSource:(int)arg1 completion:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) _Bool supportsBecomingVisibleWhenWakingDisplay;
+- (_Bool)supportsBecomingVisibleWhenUnlockingFromSource:(int)arg1 wakingDisplay:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool disallowsLockHardwareButtonDoublePress;
 @property(readonly, nonatomic) _Bool supportsHandlingDeviceLock;
+- (_Bool)canBeRestored;
 - (void)dismissAnimated:(_Bool)arg1 shouldFinalizeSceneDestruction:(_Bool)arg2 analyticsSource:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)presentWithRequestedPresentationMode:(long long)arg1 isUserInitiated:(_Bool)arg2 animated:(_Bool)arg3 analyticsSource:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)dismissAndFinalizeSceneDestructionAnimated:(_Bool)arg1 analyticsSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_presentWithRequestedConfiguration:(id)arg1 animated:(_Bool)arg2 analyticsSource:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)presentWithRequestedConfiguration:(id)arg1 animated:(_Bool)arg2 analyticsSource:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_uiLockStateDidChange:(id)arg1;
-- (void)_applicationProcessDidExit:(id)arg1;
 - (void)_performPresentationWithRequestedPresentationMode:(long long)arg1 isUserInitiated:(_Bool)arg2 animated:(_Bool)arg3 analyticsSource:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_performTransientOverlayDismissalTransitionAnimated:(_Bool)arg1 shouldInsertIntoSwitcherModel:(_Bool)arg2 analyticsSource:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performSwitcherDismissalTransitionAnimated:(_Bool)arg1 shouldDestroyScene:(_Bool)arg2 analyticsSource:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -110,20 +140,33 @@
 - (void)_performBannerToTransientOverlayPresentationTransitionAnimated:(_Bool)arg1 analyticsSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performBannerToFullScreenPresentationTransitionAnimated:(_Bool)arg1 analyticsSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performTransientOverlayPresentationTransitionAnimated:(_Bool)arg1 analyticsSource:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_removeFromSwitcherForPrefersHiddenWhenDismissedWithValidator:(CDUnknownBlockType)arg1;
+- (void)_insertIntoSwitcherAsDismissedWithAnalyticsSource:(id)arg1 transitionValidator:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performSwitcherPresentationTransitionAnimated:(_Bool)arg1 isUserInitiated:(_Bool)arg2 analyticsSource:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (unsigned long long)_incrementPresentationModeRevisionIDWithReason:(id)arg1;
 - (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (id)previousLayoutStateForApplicationTransitionContext:(id)arg1;
 - (id)layoutStateForApplicationTransitionContext:(id)arg1;
 - (void)sceneHandle:(id)arg1 didDestroyScene:(id)arg2;
+- (id)overrideAppSceneEntityForLaunchingApplication:(id)arg1;
+- (void)ensureInclusionInSwitcherForRestoreFromPIPWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleRequestInCallPresentationModeAction:(id)arg1;
 - (_Bool)sceneHandle:(id)arg1 didReceiveAction:(id)arg2;
-- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(int)arg2;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(unsigned long long)arg2;
+- (id)_inCallSceneClientSettingsDiffInspector;
+- (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
+- (void)sceneHandle:(id)arg1 didCreateScene:(id)arg2;
+- (void)scene:(id)arg1 didCompleteUpdateWithContext:(id)arg2 error:(id)arg3;
 - (void)inCallTransientOverlayViewController:(id)arg1 viewWillTransitionSizeWithAnimationSettings:(id)arg2;
 - (void)_performBlockUsingMainEventQueueWithReason:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_dispatchBlockToMainEventQueueWithReason:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)inCallBannerPresentableViewController:(id)arg1 viewWillTransitionSizeWithAnimationSettings:(id)arg2;
 - (void)_updateSceneDeactivationAssertions;
+- (void)_windowedAccessoryDidAttachOrDetach:(id)arg1;
+- (_Bool)handleAccessoryAttachWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
+- (void)_updatePIPInsetsForExpanseHUDForUnlockedEnvironmentMode:(long long)arg1 shouldConsiderPrimary:(_Bool)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (void)inCallTransientOverlayViewControllerRequestsDismissal:(id)arg1;
@@ -155,7 +198,7 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
-- (id)initWithSceneHandle:(id)arg1 screen:(id)arg2 sceneManager:(id)arg3 workspace:(id)arg4 bannerManager:(id)arg5 lockScreenManager:(id)arg6 deactivationManager:(id)arg7 mainSwitcherViewController:(id)arg8 backlightController:(id)arg9 keyboardFocusController:(id)arg10 springBoard:(id)arg11 setupManager:(id)arg12;
+- (id)initWithSceneHandle:(id)arg1 screen:(id)arg2 sceneManager:(id)arg3 workspace:(id)arg4 bannerManager:(id)arg5 lockScreenManager:(id)arg6 deactivationManager:(id)arg7 mainSwitcherViewController:(id)arg8 backlightController:(id)arg9 keyboardFocusController:(id)arg10 springBoard:(id)arg11 setupManager:(id)arg12 uiController:(id)arg13 pipCoordinator:(id)arg14;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

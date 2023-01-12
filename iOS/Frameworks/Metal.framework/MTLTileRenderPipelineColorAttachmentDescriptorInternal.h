@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
     struct MTLTileRenderPipelineAttachmentDescriptorPrivate _private;
 }
 
-- (const struct MTLTileRenderPipelineAttachmentDescriptorPrivate *)_descriptorPrivate;
 - (void)setPixelFormat:(unsigned long long)arg1;
 - (unsigned long long)pixelFormat;
 - (id)description;

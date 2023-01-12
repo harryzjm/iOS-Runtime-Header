@@ -12,12 +12,13 @@
 
 @interface TSCH3DOrderedDictionary : NSObject <NSFastEnumeration>
 {
-    NSMutableDictionary *mStore;
-    NSMutableArray *mKeyOrder;
+    NSMutableDictionary *_store;
+    NSMutableArray *_keyOrder;
 }
 
 + (id)dictionaryWithMutableDictionaryStore:(id)arg1;
 + (id)dictionary;
+- (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)objectForKey:(id)arg1;
@@ -25,7 +26,6 @@
 - (id)lastKey;
 @property(readonly, nonatomic) unsigned long long count;
 - (id)description;
-- (void)dealloc;
 - (id)initWithMutableDictionaryStore:(id)arg1;
 - (id)init;
 

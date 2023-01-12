@@ -10,7 +10,7 @@
 #import <Sleep/NSCopying-Protocol.h>
 #import <Sleep/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSMutableDictionary, NSSet, NSString;
 
 @interface HKSPChangeSet : NSObject <NSSecureCoding, NSCopying, BSDescriptionProviding>
 {
@@ -29,6 +29,7 @@
 - (id)originalValueForPropertyIdentifier:(id)arg1;
 - (id)changedValueForPropertyIdentifier:(id)arg1;
 - (_Bool)hasChangeForPropertyIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSSet *topLevelChangeKeys;
 @property(readonly, nonatomic) NSArray *changes;
 - (void)applyChangeSet:(id)arg1;
 - (void)removeAllChanges;

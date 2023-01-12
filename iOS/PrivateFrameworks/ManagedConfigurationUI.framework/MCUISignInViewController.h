@@ -9,7 +9,6 @@
 @class AKAppleIDAuthenticationInAppContext, MCSignInPageAuthenticationSectionController, MCSignInPageTitleSectionController, NSString;
 @protocol MCUISignInViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MCUISignInViewController <AKInlineSignInViewControllerDelegate>
 {
     _Bool _signInButtonTapped;

@@ -6,24 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+@class BPSSink, NSDate;
 @protocol OS_dispatch_queue, _DKKnowledgeQuerying;
 
 @interface ARPCorrelationTaskScheduler : NSObject
 {
     id <_DKKnowledgeQuerying> _knowledgeStore;
     NSObject<OS_dispatch_queue> *_queue;
+    BPSSink *_sinkAccessories;
+    BPSSink *_sinkMediaAccessories;
+    BPSSink *_sinkScenes;
     NSDate *_bookmark;
 }
 
 - (void).cxx_destruct;
 @property(copy) NSDate *bookmark; // @synthesize bookmark=_bookmark;
+@property(readonly, nonatomic) BPSSink *sinkScenes; // @synthesize sinkScenes=_sinkScenes;
+@property(readonly, nonatomic) BPSSink *sinkMediaAccessories; // @synthesize sinkMediaAccessories=_sinkMediaAccessories;
+@property(readonly, nonatomic) BPSSink *sinkAccessories; // @synthesize sinkAccessories=_sinkAccessories;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 - (void)executeCorrelationTask;
 - (void)_executeCorrelationTask;
+- (void)homeKitEventInserted;
 - (void)microLocationEventInserted:(id)arg1;
-- (void)_executeHomeControlCorrelationTask;
+- (void)_executeHomeControlNextActionCorrelationTask;
+- (void)_executeHomeControlMicrolocationCorrelationTask;
 - (void)nowPlayingEventInserted:(id)arg1;
 - (void)dealloc;
 - (id)initWithKnowledgeStore:(id)arg1;

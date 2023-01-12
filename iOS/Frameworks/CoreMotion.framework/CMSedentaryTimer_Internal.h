@@ -12,7 +12,7 @@
 {
     NSObject<OS_dispatch_queue> *fClientQueue;
     NSObject<OS_dispatch_queue> *fDaemonQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     _Bool _timerArmed;
 }
 

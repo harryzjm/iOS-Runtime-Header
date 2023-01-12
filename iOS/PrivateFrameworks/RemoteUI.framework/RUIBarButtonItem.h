@@ -4,16 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIBarButtonItem;
+@class NSString, UIBarButtonItem, UIButton, UIImageView;
 
 @interface RUIBarButtonItem
 {
     UIBarButtonItem *_barButtonItem;
+    UIButton *_backButton;
+    UIImageView *_imageView;
     CDUnknownBlockType _action;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
+- (void)setImageSize:(struct CGSize)arg1;
+- (void)setImage:(id)arg1;
+- (void)updateBackButtonColors;
 - (void)setEnabled:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *itemType;
 - (id)_labelColor;

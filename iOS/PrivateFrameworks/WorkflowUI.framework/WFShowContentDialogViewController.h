@@ -14,9 +14,11 @@
     WFCompactHighlightedView *_highlightView;
     WFCompactContentPreviewViewController *_previewViewController;
     WFContentCollection *_dataSource;
+    CDUnknownBlockType _installThumbnailHandler;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType installThumbnailHandler; // @synthesize installThumbnailHandler=_installThumbnailHandler;
 @property(retain, nonatomic) WFContentCollection *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) WFCompactContentPreviewViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
 @property(nonatomic) __weak WFCompactHighlightedView *highlightView; // @synthesize highlightView=_highlightView;
@@ -29,6 +31,7 @@
 - (void)handleTapGesture:(id)arg1;
 - (void)updateActions;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (double)contentHeightWithPreferredHeight:(double)arg1 maxVisibleHeight:(double)arg2;
 - (double)contentHeightForWidth:(double)arg1 withMaximumVisibleHeight:(double)arg2;
 - (void)loadView;

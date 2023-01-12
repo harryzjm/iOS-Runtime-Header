@@ -9,7 +9,7 @@
 #import <FlightUtilities/FUFlightViewDelegate-Protocol.h>
 #import <FlightUtilities/MKMapViewDelegate-Protocol.h>
 
-@class FUFlightView, NSArray, NSDate, NSNumber, NSString;
+@class FUFlightView, NSArray, NSDate, NSNumber, NSString, UINavigationBarAppearance;
 @protocol FUFlightViewControllerDelegate;
 
 @interface FUFlightViewController : UIViewController <MKMapViewDelegate, FUFlightViewDelegate>
@@ -22,6 +22,7 @@
     _Bool _viewLoaded;
     FUFlightView *_regularFlightView;
     FUFlightView *_previewFlightView;
+    UINavigationBarAppearance *_savedAppearance;
     _Bool _highlightCurrentFlightLeg;
     _Bool _showInfoPanel;
     NSArray *_flights;
@@ -49,6 +50,8 @@
 - (void)showLoadingView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 @property(nonatomic) long long selectedFlight;
 @property(nonatomic) long long selectedLeg;
 - (void)setFlights:(id)arg1 selectedFlight:(long long)arg2 selectedLeg:(long long)arg3;

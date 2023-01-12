@@ -8,10 +8,12 @@
 
 #import <TeaSnappy/SNTestRunFactory-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class NSMutableArray, NSMutableDictionary, NSString, SNTestRun;
+@protocol SNTestCase;
 
 @interface SNTestStore : NSObject <SNTestRunFactory>
 {
+    id <SNTestCase> _extendedLaunchTest;
     NSMutableArray *_testSuites;
     NSMutableDictionary *_testCases;
 }
@@ -19,7 +21,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *testCases; // @synthesize testCases=_testCases;
 @property(readonly, nonatomic) NSMutableArray *testSuites; // @synthesize testSuites=_testSuites;
+@property(retain, nonatomic) id <SNTestCase> extendedLaunchTest; // @synthesize extendedLaunchTest=_extendedLaunchTest;
 - (id)testRunForTestName:(id)arg1;
+@property(readonly, nonatomic) SNTestRun *extendedLaunchTestRun;
 - (void)addTestCase:(id)arg1;
 - (void)addTestSuite:(id)arg1;
 - (id)init;

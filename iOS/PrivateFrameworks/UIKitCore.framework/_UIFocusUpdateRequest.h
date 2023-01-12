@@ -44,6 +44,7 @@
 - (id)requestByMergingWithRequest:(id)arg1;
 - (_Bool)canMergeWithRequest:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)requestByRedirectingRequestToNextContainerEnvironment;
 - (id)requestByRedirectingRequestToEnvironment:(id)arg1;
 - (id)initWithFocusSystem:(id)arg1 environment:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;

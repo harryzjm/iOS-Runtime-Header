@@ -33,10 +33,12 @@
     unsigned int _extensionPointPlatform;
     _Bool _isRBManaged;
     NSUUID *_discoveryInstanceUUID;
+    unsigned long long _annotationTimestamp;
 }
 
 + (id)readSDKDictionary:(id)arg1 forPlatform:(unsigned int)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long annotationTimestamp; // @synthesize annotationTimestamp=_annotationTimestamp;
 @property(readonly) unsigned int extensionPointPlatform; // @synthesize extensionPointPlatform=_extensionPointPlatform;
 @property _Bool isRBManaged; // @synthesize isRBManaged=_isRBManaged;
 @property(readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
@@ -57,6 +59,7 @@
 @property(retain) NSURL *url; // @synthesize url=_url;
 @property(retain) NSString *originalIdentifier; // @synthesize originalIdentifier=_originalIdentifier;
 @property(retain) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)debugDescription;
 - (id)description;
 - (id)_localizedFileProviderActionNamesForPKDict:(id)arg1 fromBundle:(id)arg2;
 - (void)_loadLocalizedFileProviderActionNames;
@@ -70,6 +73,7 @@
 - (id)attribute:(id)arg1;
 - (id)pluginKey:(id)arg1;
 - (id)infoKey:(id)arg1;
+@property(readonly) _Bool shouldTerminateOnHold;
 @property(readonly) NSDate *timestamp;
 @property(readonly) _Bool isData;
 @property(readonly) _Bool isDedicated;
@@ -88,6 +92,7 @@
 @property(readonly) _Bool oldStyle;
 - (void)setAnnotation:(id)arg1 value:(id)arg2;
 - (void)updateFromForm:(id)arg1;
+@property(readonly, nonatomic) NSString *bootInstance;
 - (id)diagnose;
 - (id)export:(id *)arg1;
 - (id)mergeSharedResources:(id)arg1 into:(id)arg2;

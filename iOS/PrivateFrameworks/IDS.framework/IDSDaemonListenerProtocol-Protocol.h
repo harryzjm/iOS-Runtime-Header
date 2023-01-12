@@ -6,12 +6,16 @@
 
 #import <IDS/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSError, NSNumber, NSObject, NSSet, NSString;
+@class IDSPseudonym, NSArray, NSData, NSDictionary, NSError, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_xpc_object;
 
 @protocol IDSDaemonListenerProtocol <NSObject>
 
 @optional
+- (void)finishedReportingRequestUUID:(NSString *)arg1 withError:(NSError *)arg2;
+- (void)finishedRevokingPseudonymWithSuccess:(_Bool)arg1 error:(NSError *)arg2 requestUUID:(NSString *)arg3;
+- (void)finishedRenewingPseudonym:(IDSPseudonym *)arg1 success:(_Bool)arg2 error:(NSError *)arg3 requestUUID:(NSString *)arg4;
+- (void)finishedProvisioningPseudonym:(IDSPseudonym *)arg1 success:(_Bool)arg2 error:(NSError *)arg3 forRequestUUID:(NSString *)arg4;
 - (void)iMessageReportSpamCheckUnknownResponseForRequestID:(NSString *)arg1 status:(long long)arg2 abusive:(_Bool)arg3 delay:(double)arg4 withError:(NSError *)arg5;
 - (void)registrationControlStatusResponseForRequestID:(long long)arg1 requestID:(NSString *)arg2 withError:(NSError *)arg3;
 - (void)registrationControlResponseForRequestID:(NSString *)arg1 withError:(NSError *)arg2;
@@ -52,7 +56,19 @@
 - (void)allocationDone:(NSString *)arg1 sessionInfo:(NSDictionary *)arg2;
 - (void)receivedGroupSessionParticipantDataUpdate:(NSDictionary *)arg1 forTopic:(NSString *)arg2 toIdentifier:(NSString *)arg3 fromID:(NSString *)arg4;
 - (void)receivedGroupSessionParticipantUpdate:(NSDictionary *)arg1 forTopic:(NSString *)arg2 toIdentifier:(NSString *)arg3 fromID:(NSString *)arg4;
+- (void)session:(NSString *)arg1 didReceiveParticipantID:(unsigned long long)arg2 forParticipantIDAlias:(unsigned long long)arg3 salt:(NSData *)arg4;
+- (void)session:(NSString *)arg1 didCreateParticipantIDAlias:(unsigned long long)arg2 forParticipantID:(unsigned long long)arg3 salt:(NSData *)arg4;
+- (void)session:(NSString *)arg1 hasOutdatedSKI:(NSUUID *)arg2;
+- (void)session:(NSString *)arg1 shouldInvalidateKeyMaterialByKeyIndexes:(NSArray *)arg2;
+- (void)session:(NSString *)arg1 didReceiveKeyMaterial:(NSArray *)arg2;
+- (void)session:(NSString *)arg1 didUnregisterPluginAllocationInfo:(NSDictionary *)arg2;
+- (void)session:(NSString *)arg1 didRegisterPluginAllocationInfo:(NSDictionary *)arg2;
 - (void)session:(NSString *)arg1 didReceivePluginAllocationInfo:(NSDictionary *)arg2;
+- (void)participantUpdatedForSession:(NSString *)arg1;
+- (void)session:(NSString *)arg1 didRemoveParticipantIDs:(NSArray *)arg2 withCode:(unsigned int)arg3 isTruncated:(_Bool)arg4;
+- (void)session:(NSString *)arg1 didReceiveQueryBlockedParticipantIDs:(NSArray *)arg2 withCode:(unsigned int)arg3 isTruncated:(_Bool)arg4;
+- (void)session:(NSString *)arg1 didReceiveBlockedParticipantIDs:(NSArray *)arg2 withCode:(unsigned int)arg3 withType:(unsigned short)arg4 isTruncated:(_Bool)arg5;
+- (void)session:(NSString *)arg1 didReceiveActiveLightweightParticipants:(NSArray *)arg2 success:(_Bool)arg3;
 - (void)session:(NSString *)arg1 didReceiveActiveParticipants:(NSArray *)arg2 success:(_Bool)arg3;
 - (void)session:(NSString *)arg1 participantDidLeaveGroupWithInfo:(NSDictionary *)arg2;
 - (void)session:(NSString *)arg1 participantDidJoinGroupWithInfo:(NSDictionary *)arg2;
@@ -81,6 +97,7 @@
 - (void)didRequestCarrierTokenString:(NSString *)arg1 requestUUID:(NSString *)arg2 error:(NSError *)arg3;
 - (void)didGeneratePhoneAuthenticationSignature:(NSData *)arg1 nonce:(NSData *)arg2 certificates:(NSArray *)arg3 labelIDs:(NSArray *)arg4 inputData:(NSData *)arg5 requestUUID:(NSString *)arg6 error:(NSError *)arg7;
 - (void)didAuthenticatePhoneWithAuthenticationCertificateData:(NSData *)arg1 requestUUID:(NSString *)arg2 error:(NSError *)arg3;
+- (void)service:(NSString *)arg1 familyInfoUpdated:(NSDictionary *)arg2;
 - (void)service:(NSString *)arg1 linkedDevicesUpdated:(NSArray *)arg2;
 - (void)service:(NSString *)arg1 tinkerDeviceUpdated:(NSDictionary *)arg2;
 - (void)service:(NSString *)arg1 tinkerDeviceRemoved:(NSDictionary *)arg2;
@@ -92,6 +109,7 @@
 - (void)updateDeviceIdentity:(NSData *)arg1 error:(NSError *)arg2;
 - (void)refreshRegistrationForAccount:(NSString *)arg1;
 - (void)registrationFailedForAccount:(NSString *)arg1 needsDeletion:(NSNumber *)arg2;
+- (void)account:(NSString *)arg1 pseudonymsChanged:(NSDictionary *)arg2;
 - (void)account:(NSString *)arg1 displayNameChanged:(NSString *)arg2;
 - (void)account:(NSString *)arg1 loginChanged:(NSString *)arg2;
 - (void)account:(NSString *)arg1 profileChanged:(NSDictionary *)arg2;
@@ -116,11 +134,14 @@
 - (void)didSendOpportunisticDataWithIdentifier:(NSString *)arg1 onAccount:(NSString *)arg2 toIDs:(NSArray *)arg3;
 - (void)messageIdentifier:(NSString *)arg1 alternateCallbackID:(NSString *)arg2 forAccount:(NSString *)arg3 willSendToDestinations:(NSArray *)arg4 skippedDestinations:(NSArray *)arg5 registrationPropertyToDestinations:(NSDictionary *)arg6;
 - (void)messageIdentifier:(NSString *)arg1 alternateCallbackID:(NSString *)arg2 forAccount:(NSString *)arg3 updatedWithResponseCode:(long long)arg4 error:(NSError *)arg5 lastCall:(_Bool)arg6 context:(NSDictionary *)arg7;
+- (void)incomingInvitationUpdate:(NSDictionary *)arg1 withGUID:(NSString *)arg2 forTopic:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 context:(NSDictionary *)arg6;
+- (void)incomingInvitation:(NSDictionary *)arg1 withGUID:(NSString *)arg2 forTopic:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 context:(NSDictionary *)arg6;
 - (void)accessoryReportMessageReceived:(NSString *)arg1 accessoryID:(NSString *)arg2 controllerID:(NSString *)arg3 withGUID:(NSString *)arg4 forTopic:(NSString *)arg5 toIdentifier:(NSString *)arg6 fromID:(NSString *)arg7 context:(NSDictionary *)arg8;
 - (void)accessoryDataReceived:(NSData *)arg1 withGUID:(NSString *)arg2 forTopic:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 context:(NSDictionary *)arg6;
 - (void)dataReceived:(NSData *)arg1 withGUID:(NSString *)arg2 forTopic:(NSString *)arg3 toIdentifier:(NSString *)arg4 fromID:(NSString *)arg5 context:(NSDictionary *)arg6;
 - (void)messageReceived:(NSDictionary *)arg1 withGUID:(NSString *)arg2 withPayload:(NSDictionary *)arg3 forTopic:(NSString *)arg4 toIdentifier:(NSString *)arg5 fromID:(NSString *)arg6 context:(NSDictionary *)arg7;
 - (void)opportunisticDataReceived:(NSData *)arg1 withIdentifier:(NSString *)arg2 fromID:(NSString *)arg3 context:(NSDictionary *)arg4;
+- (void)receivedMetadataForDirectMessaging:(NSDictionary *)arg1;
 - (void)daemonDisconnected;
 - (void)daemonConnected;
 - (void)setupCompleteWithInfo:(NSDictionary *)arg1;

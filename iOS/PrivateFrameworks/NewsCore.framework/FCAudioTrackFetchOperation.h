@@ -9,6 +9,10 @@
 
 @interface FCAudioTrackFetchOperation
 {
+    _Bool _cachedOnly;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
+    CDUnknownBlockType _fetchCompletionHandler;
     id <FCContentContext> _context;
     FCArticleAudioTrack *_audioTrack;
 }
@@ -16,6 +20,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) FCArticleAudioTrack *audioTrack; // @synthesize audioTrack=_audioTrack;
 @property(readonly, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
+@property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
+@property(copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler=_archiveHandler;
+@property(copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
+@property(nonatomic) _Bool cachedOnly; // @synthesize cachedOnly=_cachedOnly;
+- (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (id)initWithContext:(id)arg1 audioTrack:(id)arg2;
 

@@ -13,6 +13,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableIndexSet *validCells; // @synthesize validCells=_validCells;
+- (id)p_interestingCellIndexes;
 - (void)p_pruneCellsAtColumn:(unsigned long long)arg1 rowsSize:(unsigned long long)arg2 columnsSize:(unsigned long long)arg3;
 - (void)p_pruneCellsAtRow:(unsigned long long)arg1 rowsSize:(unsigned long long)arg2 columnsSize:(unsigned long long)arg3;
 - (void)p_enumerateRowsOfCellsConcurrentlyUsingBlock:(CDUnknownBlockType)arg1;
@@ -22,7 +23,7 @@
 - (_Bool)hasCells;
 - (void)addCell:(id)arg1 atViewCellCoord:(struct TSUViewCellCoord)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithContext:(id)arg1 viewCellRect:(struct TSUViewCellRect)arg2 cellUIDRange:(UUIDRect_d701734b)arg3;
+- (id)initWithContext:(id)arg1 viewCellRect:(struct TSUViewCellRect)arg2 cellUIDRange:(struct TSKUIDStructTract)arg3;
 
 @end
 

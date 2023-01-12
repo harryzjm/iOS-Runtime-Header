@@ -20,15 +20,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <FCCKDatabaseRecordMiddleware> encryptionMiddleware; // @synthesize encryptionMiddleware=_encryptionMiddleware;
-@property(readonly, nonatomic) FCCKZoneSchema *secureZoneSchema; // @synthesize secureZoneSchema=_secureZoneSchema;
-@property(readonly, nonatomic) FCCKZoneSchema *legacyZoneSchema; // @synthesize legacyZoneSchema=_legacyZoneSchema;
-- (void)_associateChildOperation:(id)arg1;
-- (void)_runChildOperation:(id)arg1;
-- (id)_promiseSentinelModificationWithDatabase:(id)arg1 modification:(CDUnknownBlockType)arg2;
-- (id)_promiseDeletionWithDatabase:(id)arg1;
-- (id)_promiseMigrationWithDatabase:(id)arg1;
-- (id)_promiseMigrationIsAllowedWithDatabase:(id)arg1;
 - (void)databaseMigrationDidFinishForDatabase:(id)arg1 result:(long long)arg2;
 - (id)databaseMigrationMigrateRecord:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (_Bool)databaseMigrationShouldDropRecord:(id)arg1 database:(id)arg2;
@@ -36,7 +27,6 @@
 - (_Bool)databaseMigrationShouldMigrateEntireZone:(id)arg1 database:(id)arg2;
 - (id)databaseMigrationZoneNamesForDatabase:(id)arg1;
 - (void)performStartUpForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithLegacyZoneSchema:(id)arg1 secureZoneSchema:(id)arg2 encryptionMiddlewawre:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

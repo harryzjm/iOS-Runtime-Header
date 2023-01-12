@@ -7,9 +7,11 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (SensorKit)
-+ (id)sk_bundleWithIdentifier:(id)arg1 partnerAppDirectoryURL:(id)arg2;
++ (_Bool)_sr_validateRequiredFieldsForBundleIdentifier:(id)arg1 sensors:(id)arg2 error:(id *)arg3;
 + (id)sk_bundleWithIdentifier:(id)arg1;
-- (_Bool)sk_validateInfoPlistForSensors:(id)arg1 error:(id *)arg2;
+- (_Bool)_sr_validateRequiredFieldsForSensors:(id)arg1 error:(id *)arg2;
+- (id)sr_normalizedBundleIdentifier;
+- (long long)sr_bundleType;
 - (id)sk_perCategoryDetailDescription;
 - (id)sk_requiredCategories;
 - (id)sk_usageDescription;

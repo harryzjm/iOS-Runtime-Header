@@ -32,6 +32,7 @@
     NSString *_appStoreURLString;
 }
 
++ (void)sui_fetchSeasonTitlesSettingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *appStoreURLString; // @synthesize appStoreURLString=_appStoreURLString;
 @property(readonly, nonatomic, getter=isAppInstalled) _Bool appInstalled; // @synthesize appInstalled=_appInstalled;
@@ -55,11 +56,13 @@
 @property(readonly, copy, nonatomic) NSURL *appStoreURL;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
+- (id)sui_seasonEpisodeLabel:(_Bool)arg1 seasonTitleAvailable:(_Bool)arg2 seasonNumber:(id)arg3 episodeNumber:(id)arg4;
 - (id)sui_channelName;
 - (id)appIconURLForSize:(struct CGSize)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) _Bool forceDSIDlessInstall;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

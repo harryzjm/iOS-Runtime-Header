@@ -22,8 +22,10 @@
 - (void)evictSlots:(unsigned long long)arg1;
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)allKeys;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (id)objectForKey:(id)arg1;
 @property(readonly, nonatomic) unsigned long long currentUsedSlots;
 - (void)_removeListElement:(struct _PXLRUMemoryCacheListElement *)arg1;

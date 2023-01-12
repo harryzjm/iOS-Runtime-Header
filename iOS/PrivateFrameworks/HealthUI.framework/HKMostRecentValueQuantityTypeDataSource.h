@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSCalendar;
+
 @interface HKMostRecentValueQuantityTypeDataSource
 {
+    NSCalendar *_currentCalendar;
 }
 
-- (_Bool)_interval:(id)arg1 isEqualToIntervalFromCalendarUnit:(unsigned long long)arg2;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
+- (_Bool)_interval:(id)arg1 isEqualToInterval:(id)arg2;
+- (id)_intervalFromZoomLevel:(long long)arg1;
 - (id)_middleDateFromInterval:(id)arg1 endDate:(id)arg2;
-- (id)_dataSourceValueFromStatisticsCollection:(id)arg1 statisticsInterval:(id)arg2;
 - (id)_dataSourceValueFromMostRecentQuantity:(id)arg1 quantityDateInterval:(id)arg2 statisticsInterval:(id)arg3;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;
-- (id)initWithUnitController:(id)arg1 displayType:(id)arg2 healthStore:(id)arg3;
+- (id)initWithUnitController:(id)arg1 displayType:(id)arg2 healthStore:(id)arg3 currentCalendar:(id)arg4;
 
 @end
 

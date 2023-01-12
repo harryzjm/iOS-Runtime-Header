@@ -8,6 +8,11 @@
 
 @interface UIVisualEffect (GKDashboardUtils)
 + (id)colorEffectBlendNormal:(id)arg1;
++ (id)_gkGameLayerContentVibrancyEffect;
++ (id)_gkGameLayerPopOverVisualEffect;
++ (id)_gkGameLayerPanelVisualEffect;
++ (id)_gkGameLayerDisabledButtonVisualEffect;
++ (id)_gkGameLayerButtonVisualEffect;
 + (id)_gkGameLayerModuleVisualEffect;
 + (id)_gkGameLayerBackgroundVisualEffect;
 @end

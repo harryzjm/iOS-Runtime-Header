@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebCallbackAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebCallbackAction <AMSUIWebActionRunnable>
 {
     NSString *_service;
     NSDictionary *_data;
-    AMSUIWebClientContext *_context;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSDictionary *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSString *service; // @synthesize service=_service;
 - (id)runAction;

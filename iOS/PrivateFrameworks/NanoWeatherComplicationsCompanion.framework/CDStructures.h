@@ -33,15 +33,6 @@ typedef struct {
     double _field3;
     double _field4;
     double _field5;
-    double _field6;
-} CDStruct_8727d297;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
 } CDStruct_d83abbfb;
 
 typedef struct {
@@ -50,10 +41,4 @@ typedef struct {
     double _field3;
     double _field4;
 } CDStruct_d2b197d1;
-
-typedef struct {
-    double width;
-    double indicatorDiameter;
-    double indicatorStrokeWidth;
-} CDStruct_81f20f90;
 

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_17d7eaae)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_17d7eaae)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int sentence_count;
 @property(readonly, nonatomic) NSArray *spans;
 @property(readonly, nonatomic) NSString *translated_text;

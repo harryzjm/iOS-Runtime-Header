@@ -7,12 +7,12 @@
 #import <PassKitUI/CNAvatarViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSString, PKDashboardPaymentTransactionItemPresenter, PKFamilyMember, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentPreferencesUpdateRequest, PKPeerPaymentService, PKPeerPaymentWebService, PKTransactionSource;
+@class NSString, PKDashboardPaymentTransactionItemPresenter, PKFamilyMember, PKFamilyMemberCollection, PKPaymentService, PKPeerPaymentAccount, PKPeerPaymentPreferences, PKPeerPaymentPreferencesUpdateRequest, PKPeerPaymentService, PKPeerPaymentWebService, PKTransactionSource;
 
 @interface PKPeerPaymentAssociatedAccountViewController <PKPaymentServiceDelegate, CNAvatarViewDelegate>
 {
     PKFamilyMember *_familyMember;
-    PKFamilyMember *_viewer;
+    PKFamilyMemberCollection *_familyCollection;
     PKPeerPaymentWebService *_peerPaymentWebSerivce;
     PKPeerPaymentAccount *_peerPaymentAccount;
     PKPeerPaymentService *_peerPaymentService;
@@ -35,6 +35,7 @@
 - (void)_executeNextPreferencesUpdateRequestIfPossible;
 - (void)_addPreferencesUpdateWithRequest:(id)arg1;
 - (void)_updatePeerPaymentAccountWithNewAccount:(id)arg1;
+- (void)_presentPassworkPromptWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_modifyPeerPaymentAccountState:(unsigned long long)arg1 atIndexPath:(id)arg2;
 - (void)_notificationTransactionsSelectionHasChanged:(id)arg1;
 - (void)_updateCellLoadingState:(id)arg1 indexPath:(id)arg2;
@@ -83,7 +84,7 @@
 - (id)familyMemberTransactionViewController;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 account:(id)arg3;
+- (id)initWithFamilyMember:(id)arg1 familyCollection:(id)arg2 account:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

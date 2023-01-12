@@ -34,8 +34,8 @@
 @property(nonatomic) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
 @property(readonly, retain, nonatomic) id <MDLMeshBufferAllocator> allocator; // @synthesize allocator=_allocator;
 - (id)vertexAttributeDataForAttributeNamed:(id)arg1 asFormat:(unsigned long long)arg2;
-- (void)copyDataVector:(vector_f9ed6fc8 *)arg1 toAttr:(id)arg2;
-- (void)createSourceDataVector:(vector_f9ed6fc8 *)arg1 attr:(id)arg2 srcElementCount:(int)arg3 dstElementCount:(int)arg4;
+- (void)copyDataVector:(void *)arg1 toAttr:(id)arg2;
+- (void)createSourceDataVector:(void *)arg1 attr:(id)arg2 srcElementCount:(int)arg3 dstElementCount:(int)arg4;
 - (id)vertexAttributeDataForAttributeNamed:(id)arg1;
 - (id)initWithVertexBuffers:(id)arg1 vertexCount:(unsigned long long)arg2 descriptor:(id)arg3 submeshes:(id)arg4;
 - (id)initWithVertexBuffer:(id)arg1 vertexCount:(unsigned long long)arg2 descriptor:(id)arg3 submeshes:(id)arg4;
@@ -65,7 +65,7 @@
 - (void)addOrthTanBasisForTextureCoordinateAttributeNamed:(id)arg1 normalAttributeNamed:(id)arg2 tangentAttributeNamed:(id)arg3;
 - (void)addTangentBasisForTextureCoordinateAttributeNamed:(id)arg1 normalAttributeNamed:(id)arg2 tangentAttributeNamed:(id)arg3;
 - (void)addTangentBasisForTextureCoordinateAttributeNamed:(id)arg1 tangentAttributeNamed:(id)arg2 bitangentAttributeNamed:(id)arg3;
-- (void)_calculateTangentBasisFromPositions:(float *)arg1 positionStride:(long long)arg2 normals:(float *)arg3 normalStride:(long long)arg4 uvs:(float *)arg5 uvStride:(long long)arg6 tangents:(float *)arg7 tangentsStride:(long long)arg8 bitagents:(float *)arg9 bitangentStride:(long long)arg10 tangentFormat:(unsigned long long)arg11 selector:(SEL)arg12;
+- (void)_calculateTangentBasisFromPositions:(float *)arg1 positionStride:(long long)arg2 positionsBufferSize:(unsigned long long)arg3 normals:(float *)arg4 normalStride:(long long)arg5 normalsBufferSize:(unsigned long long)arg6 uvs:(float *)arg7 uvStride:(long long)arg8 uvsBufferSize:(unsigned long long)arg9 tangents:(float *)arg10 tangentsStride:(long long)arg11 tangentsBufferSize:(unsigned long long)arg12 bitagents:(float *)arg13 bitangentStride:(long long)arg14 bitangentsBufferSize:(unsigned long long)arg15 tangentFormat:(unsigned long long)arg16 selector:(SEL)arg17;
 - (void)addAttributeWithName:(id)arg1 format:(unsigned long long)arg2 type:(id)arg3 data:(id)arg4 stride:(long long)arg5 time:(double)arg6;
 - (void)addAttributeWithName:(id)arg1 format:(unsigned long long)arg2 type:(id)arg3 data:(id)arg4 stride:(long long)arg5;
 - (void)addAttributeWithName:(id)arg1 format:(unsigned long long)arg2;

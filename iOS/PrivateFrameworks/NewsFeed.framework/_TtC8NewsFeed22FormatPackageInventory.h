@@ -12,19 +12,19 @@
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *role;
-    MISSING_TYPE *name;
-    MISSING_TYPE *comment;
-    MISSING_TYPE *groups;
-    MISSING_TYPE *items;
-    MISSING_TYPE *snippets;
-    MISSING_TYPE *supplementaries;
-    MISSING_TYPE *styles;
-    MISSING_TYPE *types;
-    MISSING_TYPE *decorations;
-    MISSING_TYPE *options;
-    MISSING_TYPE *localizations;
+    MISSING_TYPE *_name;
+    MISSING_TYPE *_comment;
+    MISSING_TYPE *_groups;
+    MISSING_TYPE *_items;
+    MISSING_TYPE *_snippets;
+    MISSING_TYPE *_supplementaries;
+    MISSING_TYPE *_styles;
+    MISSING_TYPE *_types;
+    MISSING_TYPE *_decorations;
+    MISSING_TYPE *_options;
+    MISSING_TYPE *_selectors;
+    MISSING_TYPE *_localizations;
     MISSING_TYPE *compilerOptions;
-    MISSING_TYPE *additionalAssetHandles;
 }
 
 @end

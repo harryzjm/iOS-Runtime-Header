@@ -25,6 +25,7 @@
 - (void)_notifySettingsDidChange;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1 queue:(id)arg2;
+@property(nonatomic) _Bool overrideIsRemoteDisabled;
 - (void)reset;
 - (void)activateDefaultValuesIfNeeded;
 - (void)_setBackgroundMeasurementsDuringTheaterMode:(_Bool)arg1;

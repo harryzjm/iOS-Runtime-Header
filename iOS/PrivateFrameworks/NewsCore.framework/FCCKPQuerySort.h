@@ -10,6 +10,7 @@
 
 @class FCCKPRecordFieldIdentifier;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQuerySort : PBCodable <NSCopying>
 {
     FCCKPRecordFieldIdentifier *_fieldName;
@@ -19,20 +20,14 @@
     } _has;
 }
 
-@property(retain, nonatomic) FCCKPRecordFieldIdentifier *fieldName; // @synthesize fieldName=_fieldName;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasOrder;
-@property(nonatomic) int order; // @synthesize order=_order;
-@property(readonly, nonatomic) _Bool hasFieldName;
-- (void)dealloc;
 
 @end
 

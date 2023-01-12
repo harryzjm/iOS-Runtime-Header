@@ -13,6 +13,7 @@
     NSDictionary *_properties;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id mailAccount;
 - (_Bool)_isRestricted;

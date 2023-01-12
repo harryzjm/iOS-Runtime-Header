@@ -13,8 +13,10 @@
     unsigned char _connectReason;
     _Bool _stateChanged;
     _Bool _notifyingCharacteristicUpdated;
+    unsigned char _wholeHomeBluetooth;
     unsigned char _connectionIdleTime;
     NSNumber *_stateNumber;
+    NSString *_whbStableIdentifier;
     CBPeripheral *_peripheral;
     unsigned long long _hapBLEProtocolVersion;
     unsigned long long _resumeSessionID;
@@ -31,11 +33,14 @@
 @property(nonatomic) unsigned long long metricHAPBTLEConnectionPerReasonCount; // @synthesize metricHAPBTLEConnectionPerReasonCount=_metricHAPBTLEConnectionPerReasonCount;
 @property(nonatomic) unsigned long long metricHAPBTLEDiscoveryCount; // @synthesize metricHAPBTLEDiscoveryCount=_metricHAPBTLEDiscoveryCount;
 @property(nonatomic) unsigned long long metricHAPBTLEConnectionCount; // @synthesize metricHAPBTLEConnectionCount=_metricHAPBTLEConnectionCount;
+@property(nonatomic) unsigned char wholeHomeBluetooth; // @synthesize wholeHomeBluetooth=_wholeHomeBluetooth;
 @property(readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;
 @property(readonly, nonatomic) unsigned long long hapBLEProtocolVersion; // @synthesize hapBLEProtocolVersion=_hapBLEProtocolVersion;
 @property(readonly, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property(nonatomic) _Bool notifyingCharacteristicUpdated; // @synthesize notifyingCharacteristicUpdated=_notifyingCharacteristicUpdated;
 @property(nonatomic) _Bool stateChanged; // @synthesize stateChanged=_stateChanged;
+@property(readonly, nonatomic) NSString *whbStableIdentifier; // @synthesize whbStableIdentifier=_whbStableIdentifier;
+- (void)discoverAccessoriesAndReadCharacteristicTypes:(id)arg1;
 - (_Bool)isPaired;
 - (void)generateBroadcastKey:(unsigned char)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)configureCharacteristics:(id)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -48,7 +53,7 @@
 @property(nonatomic) unsigned char connectReason; // @synthesize connectReason=_connectReason;
 @property(copy, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 - (long long)linkType;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13 whbStableIdentifier:(id)arg14;
 - (id)readAndResetHAPMetrics:(_Bool)arg1;
 - (void)incrementHAPBTLEMetricsDiscoveryCount;
 - (void)incrementHAPBTLEMetricsConnectionCount;

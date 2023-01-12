@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaSnappy/NFAssembly-Protocol.h>
+#import <TeaSnappy/TFAssembly-Protocol.h>
 
 @class NSString;
 
-@interface SNTestAssembly : NSObject <NFAssembly>
+@interface SNTestAssembly : NSObject <TFAssembly>
 {
 }
 

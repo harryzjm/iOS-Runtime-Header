@@ -18,7 +18,7 @@
     CPLScopeFilter *_scopeFilter;
 }
 
-+ (_Bool)mingleBatch:(id)arg1 forStore:(id)arg2 putBatchesInPullQueue:(_Bool *)arg3 error:(id *)arg4;
++ (_Bool)mingleBatch:(id)arg1 forStore:(id)arg2 onPutBatchInPullQueue:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CPLScopeFilter *scopeFilter; // @synthesize scopeFilter=_scopeFilter;
 - (id)taskIdentifier;

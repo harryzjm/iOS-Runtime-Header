@@ -26,6 +26,7 @@
     long long _monochromeFilterType;
 }
 
++ (id)fullColorImageProviderWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)fullColorImageProviderWithImageViewClass:(Class)arg1;
 + (id)providerWithFullColorImage:(id)arg1 tintedImageProvider:(id)arg2 applyScalingAndCircularMasking:(_Bool)arg3;
@@ -45,8 +46,8 @@
 @property(retain, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property(retain, nonatomic) CLKImageProvider *tintedImageProvider; // @synthesize tintedImageProvider=_tintedImageProvider;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
-- (void)_resizeImagesIfNecessaryWithMaxSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
-- (void)finalizeWithMaxSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
+- (void)_resizeImagesIfNecessaryWithMaxSDKSize:(struct CGSize)arg1 maxDeviceSize:(struct CGSize)arg2 cornerRadius:(double)arg3;
+- (void)finalizeWithMaxSDKSize:(struct CGSize)arg1 maxDeviceSize:(struct CGSize)arg2 cornerRadius:(double)arg3;
 - (_Bool)validate;
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1;
 - (id)initWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;

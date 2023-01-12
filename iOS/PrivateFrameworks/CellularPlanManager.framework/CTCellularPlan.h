@@ -29,6 +29,7 @@
 @property(retain, nonatomic) CTCellularPlanProfile *profile; // @synthesize profile=_profile;
 @property(nonatomic) _Bool isHomePlan; // @synthesize isHomePlan=_isHomePlan;
 @property(retain, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+- (id)redactedDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

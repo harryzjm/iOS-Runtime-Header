@@ -19,7 +19,7 @@
 @property(readonly, nonatomic) float bottom; // @synthesize bottom=_bottom;
 @property(readonly, nonatomic) float right; // @synthesize right=_right;
 @property(readonly, nonatomic) float left; // @synthesize left=_left;
-- (box_80622335)toBox;
+- (box_c88174d1)toBox;
 - (id)initWithLeft:(float)arg1 right:(float)arg2 bottom:(float)arg3 top:(float)arg4;
 
 @end

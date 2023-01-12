@@ -6,10 +6,9 @@
 
 #import <TSKit/TSKDocumentRoot.h>
 
-@class TSCHTextCache;
-
 @interface TSKDocumentRoot (TSCHTextCache)
-@property(readonly) TSCHTextCache *tsch_textCache;
+- (void)tsch_clearTextCaches;
+- (id)tsch_textCacheForStyleProvidingSource:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
 - (id)UIStateForChart:(id)arg1;
 @end

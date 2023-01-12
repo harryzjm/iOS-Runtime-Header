@@ -27,24 +27,25 @@ struct _OpaquePCSShareProtection {
     struct _PCSIdentitySetData *_field4;
     struct __CFDictionary *_field5;
     struct __CFArray *_field6;
-    struct __CFData *_field7;
+    struct __CFDictionary *_field7;
     struct __CFData *_field8;
     struct __CFData *_field9;
-    struct _PCSKeyData *_field10;
-    struct __CFData *_field11;
-    struct _PCSKeyData *_field12;
-    struct __CFDictionary *_field13;
-    unsigned int _field14;
+    struct __CFData *_field10;
+    struct _PCSKeyData *_field11;
+    struct __CFData *_field12;
+    struct _PCSKeyData *_field13;
+    struct __CFDictionary *_field14;
     unsigned int _field15;
-    struct PCSAttributes _field16;
-    struct _PCSPublicIdentityData *_field17;
+    unsigned int _field16;
+    struct PCSAttributes _field17;
     struct _PCSPublicIdentityData *_field18;
     struct _PCSPublicIdentityData *_field19;
     struct _PCSPublicIdentityData *_field20;
-    struct _PCSIdentityData *_field21;
+    struct _PCSPublicIdentityData *_field21;
     struct _PCSIdentityData *_field22;
-    unsigned int _field23;
-    int _field24;
+    struct _PCSIdentityData *_field23;
+    unsigned int _field24;
+    int _field25;
     struct {
         _Bool _field1;
         _Bool _field2;
@@ -53,8 +54,8 @@ struct _OpaquePCSShareProtection {
         _Bool _field5;
         _Bool _field6;
         _Bool _field7;
-    } _field25;
-    unsigned int _field26;
+    } _field26;
+    unsigned int _field27;
 };
 
 struct _PCSIdentityData;

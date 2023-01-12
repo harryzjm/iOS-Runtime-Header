@@ -25,10 +25,11 @@
 
 + (id)formatterForLocale:(id)arg1;
 + (id)defaultFormatStringForValueType:(int)arg1;
-+ (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(int)arg2;
++ (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(unsigned char)arg2;
 + (id)numberFormatStringSpecialSymbols;
 + (void)formatString:(id)arg1 replaceOccurencesOfUnescapedString:(id)arg2 withString:(id)arg3;
-+ (id)formatString:(id)arg1 transformedForNegativeStyle:(int)arg2;
++ (id)formatString:(id)arg1 transformedForNegativeStyle:(unsigned char)arg2 placeMinusSignAfterRLM:(_Bool)arg3;
++ (id)formatString:(id)arg1 transformedForNegativeStyle:(unsigned char)arg2;
 + (int)positionOfMinusSignInNumberFormatSubpattern:(id)arg1;
 + (int)positionOfCurrencySymbolInNumberFormatSubpattern:(id)arg1;
 + (int)positionOfSymbol:(id)arg1 inNumberFormatSubpattern:(id)arg2;
@@ -43,7 +44,7 @@
 - (id)p_decimalFormatters;
 - (id)p_createDictionaryOfCurrencyFormattersForCurrencies:(id)arg1;
 - (id)defaultFormatStringForValueType:(int)arg1;
-- (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(int)arg2;
+- (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(unsigned char)arg2;
 - (id)p_findCurrencySymbolInString:(id)arg1 additionalCurrencyCode:(id)arg2 successfullString:(id *)arg3 currencyCode:(id *)arg4;
 - (_Bool)p_valueFromString:(id)arg1 formatters:(id)arg2 value:(double *)arg3 formatString:(id *)arg4;
 - (_Bool)fractionFromString:(id)arg1 value:(double *)arg2;

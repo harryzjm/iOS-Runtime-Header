@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)_familyControlsSettingNeededForBundleID:(id)arg1;
 + (_Bool)_languageSettingNeededForBundleID:(id)arg1;
 + (_Bool)_defaultAppSettingsNeededForBundleID:(id)arg1;
 + (_Bool)_documentSettingsNeededForBundleID:(id)arg1;

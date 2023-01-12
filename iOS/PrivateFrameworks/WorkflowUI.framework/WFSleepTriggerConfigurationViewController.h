@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFTriggerConfigurationViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFHealthFeatureObserver-Protocol.h>
 
 @class NSArray, NSString, UITableView, WFHealthFeatureAvailability;
 
-@interface WFSleepTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFHealthFeatureObserver>
+@interface WFSleepTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFHealthFeatureObserver>
 {
     UITableView *_tableView;
     NSArray *_sections;
@@ -21,7 +23,7 @@
 @property(readonly, nonatomic) WFHealthFeatureAvailability *healthFeatureAvailability; // @synthesize healthFeatureAvailability=_healthFeatureAvailability;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-- (void)updateNextButtonEnabledState;
+- (_Bool)shouldEnableNextButton;
 - (void)healthFeatureAvailability:(id)arg1 sleepOnboardingStatusDidChange:(unsigned long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)footerLinkViewForTableView:(id)arg1;
@@ -36,7 +38,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)updateUI;
-- (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

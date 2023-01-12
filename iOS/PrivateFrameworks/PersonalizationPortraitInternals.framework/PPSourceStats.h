@@ -20,9 +20,11 @@
     NSDate *_latestDate;
     long long _uniqueBundleIdCount;
     long long _uniqueDocIdCount;
+    unsigned long long _recordCount;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long recordCount; // @synthesize recordCount=_recordCount;
 @property(readonly, nonatomic) long long uniqueDocIdCount; // @synthesize uniqueDocIdCount=_uniqueDocIdCount;
 @property(readonly, nonatomic) long long uniqueBundleIdCount; // @synthesize uniqueBundleIdCount=_uniqueBundleIdCount;
 @property(readonly, nonatomic) NSDate *latestDate; // @synthesize latestDate=_latestDate;
@@ -34,7 +36,7 @@
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
 - (id)toDictionary;
-- (id)initWithMinRefCount:(long long)arg1 maxRefCount:(long long)arg2 avgRefCount:(double)arg3 medianRefCount:(double)arg4 earliestDate:(id)arg5 latestDate:(id)arg6 uniqueBundleIdCount:(long long)arg7 uniqueDocIdCount:(long long)arg8;
+- (id)initWithMinRefCount:(long long)arg1 maxRefCount:(long long)arg2 avgRefCount:(double)arg3 medianRefCount:(double)arg4 earliestDate:(id)arg5 latestDate:(id)arg6 uniqueBundleIdCount:(long long)arg7 uniqueDocIdCount:(long long)arg8 recordCount:(unsigned long long)arg9;
 
 @end
 

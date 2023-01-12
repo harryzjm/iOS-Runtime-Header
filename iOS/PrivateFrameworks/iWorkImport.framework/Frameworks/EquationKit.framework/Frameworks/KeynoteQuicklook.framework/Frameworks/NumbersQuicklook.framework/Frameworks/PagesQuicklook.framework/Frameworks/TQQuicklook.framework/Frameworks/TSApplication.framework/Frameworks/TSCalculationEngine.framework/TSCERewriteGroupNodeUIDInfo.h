@@ -8,19 +8,19 @@
 
 @interface TSCERewriteGroupNodeUIDInfo : NSObject
 {
-    UUIDData_5fbc143e _groupByUid;
-    UUIDMap_b66c2694 _groupNodeUIDMap;
+    struct TSKUIDStruct _groupByUid;
+    struct TSKUIDStructMap _groupNodeUIDMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)saveToMessage:(struct RewriteGroupNodeUIDInfoArchive *)arg1;
-- (id)initFromMessage:(const struct RewriteGroupNodeUIDInfoArchive *)arg1;
+- (void)saveToMessage:(void *)arg1;
+- (id)initFromMessage:(const void *)arg1;
 - (id)description;
-- (const UUIDMap_b66c2694 *)groupNodeUIDMap;
-- (vector_4dc5f307)originalGroupNodeUIDs;
-- (const UUIDData_5fbc143e *)groupByUid;
-- (id)initWithGroupByUid:(const UUIDData_5fbc143e *)arg1 groupNodeUIDMap:(const UUIDMap_b66c2694 *)arg2;
+- (const void *)groupNodeUIDMap;
+- (TSKUIDStructVectorTemplate_de88e035)originalGroupNodeUIDs;
+- (const struct TSKUIDStruct *)groupByUid;
+- (id)initWithGroupByUid:(const struct TSKUIDStruct *)arg1 groupNodeUIDMap:(const void *)arg2;
 
 @end
 

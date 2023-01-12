@@ -6,7 +6,11 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-@interface SRAuthHostExtensionContext : NSExtensionContext
+#import <SensorKit/SRAuthHostProtocol-Protocol.h>
+
+@class NSString;
+
+@interface SRAuthHostExtensionContext : NSExtensionContext <SRAuthHostProtocol>
 {
 }
 
@@ -14,6 +18,12 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)remoteProxy;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,36 +6,46 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMSettingDataSource-Protocol.h>
+#import <HomeKit/HMSettingGroupDataSource-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSUUID;
+@class NSArray, NSMutableDictionary, NSString, NSUUID;
+@protocol HMSettingGroupDataSource;
 
-@interface HMSettingGroup : NSObject <NSSecureCoding>
+@interface HMSettingGroup : NSObject <HMSettingDataSource, HMSettingGroupDataSource, NSSecureCoding>
 {
-    NSString *_keyPath;
+    struct os_unfair_lock_s _lock;
+    NSMutableDictionary *_settings;
+    NSMutableDictionary *_groups;
+    id <HMSettingGroupDataSource> _dataSource;
     NSUUID *_identifier;
     NSString *_name;
-    NSMutableArray *_internalSettings;
-    NSMutableArray *_internalGroups;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain) NSMutableArray *internalGroups; // @synthesize internalGroups=_internalGroups;
-@property(retain) NSMutableArray *internalSettings; // @synthesize internalSettings=_internalSettings;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
+@property __weak id <HMSettingGroupDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)merge:(id)arg1;
+- (id)_descriptionWithDepth:(unsigned long long)arg1;
+@property(readonly, copy) NSString *description;
+- (id)parentKeyPathForSettingGroup:(id)arg1;
+- (id)parentKeyPathForSetting:(id)arg1;
 - (void)addSetting:(id)arg1;
 - (void)addGroup:(id)arg1;
+@property(readonly, copy) NSString *keyPath;
 @property(readonly, copy) NSArray *settings;
 @property(readonly, copy) NSArray *groups;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *localizedTitle;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 groups:(id)arg3 settings:(id)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

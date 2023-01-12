@@ -17,7 +17,6 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)supportsInspectorPositioning;
 - (void)invalidateParentForWrap;
 - (void)i_invalidateWrap;
 - (id)visibleGeometries;

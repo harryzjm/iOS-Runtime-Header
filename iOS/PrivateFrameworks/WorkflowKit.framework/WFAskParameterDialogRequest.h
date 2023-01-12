@@ -10,6 +10,7 @@
 
 @interface WFAskParameterDialogRequest <NSSecureCoding>
 {
+    _Bool _focusImmediatelyWhenPresented;
     NSString *_actionIdentifier;
     NSString *_parameterKey;
     NSDictionary *_serializedParameterStates;
@@ -20,6 +21,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool focusImmediatelyWhenPresented; // @synthesize focusImmediatelyWhenPresented=_focusImmediatelyWhenPresented;
 @property(readonly, copy, nonatomic) WFDialogButton *doneButton; // @synthesize doneButton=_doneButton;
 @property(readonly, copy, nonatomic) WFDialogButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
@@ -28,8 +30,9 @@
 @property(readonly, copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)requestBySettingFocusImmediatelyWhenPresented:(_Bool)arg1;
 - (id)description;
-- (id)initWithActionIdentifier:(id)arg1 parameterKey:(id)arg2 serializedParameterStates:(id)arg3 style:(long long)arg4 attribution:(id)arg5 prompt:(id)arg6;
+- (id)initWithActionIdentifier:(id)arg1 parameterKey:(id)arg2 serializedParameterStates:(id)arg3 style:(long long)arg4 attribution:(id)arg5 prompt:(id)arg6 focusImmediatelyWhenPresented:(_Bool)arg7;
 
 @end
 

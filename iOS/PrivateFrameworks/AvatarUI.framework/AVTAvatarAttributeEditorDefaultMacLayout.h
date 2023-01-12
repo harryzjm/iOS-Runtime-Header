@@ -8,6 +8,7 @@
 {
 }
 
+- (double)widthToFitGroupLabels;
 - (struct CGRect)sideGroupContainerFrame;
 - (struct CGRect)groupDialContainerFrame;
 - (struct UIEdgeInsets)attributesContentViewScrollIndicatorInsets;

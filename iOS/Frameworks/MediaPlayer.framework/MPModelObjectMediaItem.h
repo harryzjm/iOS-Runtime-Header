@@ -22,6 +22,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (unsigned long long)persistentID;
+- (id)initWithPersistentID:(unsigned long long)arg1;
 - (id)initWithModelObject:(id)arg1;
 
 @end

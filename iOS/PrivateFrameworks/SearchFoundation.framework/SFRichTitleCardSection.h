@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFRichTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFCommand, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFRichTitleCardSection <SFRichTitleCardSection, NSSecureCoding, NSCopying>
 {
@@ -128,14 +128,23 @@
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties
+@property(retain, nonatomic) NSString *cardSectionDetail;
 @property(copy, nonatomic) NSString *cardSectionId;
+@property(readonly) NSArray *cardsFromButtons;
+@property(readonly) NSArray *cardsFromEmbeddedSections;
+@property(retain, nonatomic) SFCommand *command;
+@property(retain, nonatomic) NSString *commandDetail;
 @property(copy, nonatomic) NSArray *commands;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly) NSArray *embeddedCards;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool hideDivider;
 @property(retain, nonatomic) SFCard *nextCard;
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
+@property(copy, nonatomic) NSArray *previewButtonItems;
+@property(retain, nonatomic) NSString *previewButtonItemsTitle;
+@property(retain, nonatomic) SFCommand *previewCommand;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) SFUserReportRequest *userReportRequest;

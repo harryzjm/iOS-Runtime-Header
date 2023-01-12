@@ -6,15 +6,14 @@
 
 @interface TSCH3DFramebufferOnepassBlurPipeline
 {
-    tvec2_84d5962d mPixelSize;
+    tvec2_84d5962d _pixelSize;
 }
 
-+ (id)pipelineWithProcessor:(id)arg1 session:(id)arg2 pixelSize:(const tvec2_84d5962d *)arg3;
++ (id)pipelineWithProcessor:(id)arg1 session:(id)arg2 pixelSize:(const void *)arg3;
 - (id).cxx_construct;
-@property(readonly, nonatomic) tvec2_84d5962d pixelSize; // @synthesize pixelSize=mPixelSize;
+@property(readonly, nonatomic) tvec2_84d5962d pixelSize; // @synthesize pixelSize=_pixelSize;
 - (void)updateShaderEffectsStates;
-- (void)dealloc;
-- (id)initWithProcessor:(id)arg1 session:(id)arg2 pixelSize:(const tvec2_84d5962d *)arg3;
+- (id)initWithProcessor:(id)arg1 session:(id)arg2 pixelSize:(const void *)arg3;
 
 @end
 

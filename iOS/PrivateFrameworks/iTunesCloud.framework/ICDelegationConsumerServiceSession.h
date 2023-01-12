@@ -12,6 +12,7 @@
 @class ICDelegationConsumerNetService, ICDelegationConsumerServiceProtocolHandler, ICDelegationConsumerServiceRequest, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationConsumerServiceSession : NSObject <ICDelegationConsumerNetServiceDelegate, ICDelegationServiceConnectionDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

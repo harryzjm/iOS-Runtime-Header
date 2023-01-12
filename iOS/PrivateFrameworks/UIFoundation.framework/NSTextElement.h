@@ -11,10 +11,13 @@
 @interface NSTextElement : NSObject
 {
     NSTextContentManager *_textContentManager;
+    unsigned char _coalescingType;
     NSTextRange *_elementRange;
 }
 
+@property unsigned char coalescingType; // @synthesize coalescingType=_coalescingType;
 @property(retain) NSTextRange *elementRange; // @synthesize elementRange=_elementRange;
+- (struct CGSize)estimatedIntrinsicContentSizeForTextLayoutManager:(id)arg1;
 @property __weak NSTextContentManager *textContentManager; // @dynamic textContentManager;
 - (void)dealloc;
 - (id)init;

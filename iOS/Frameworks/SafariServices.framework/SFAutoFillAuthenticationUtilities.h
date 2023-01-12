@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 
 + (id)passcodePromptForLoggingInWithSavedPasswordOnWebsite:(id)arg1;
 + (id)customAuthenticationTitleForLoggingInWithSavedPasswordOnWebsite:(id)arg1;
++ (id)customAuthenticationTitleForFillingTimeBasedOneTimeCode;
 + (id)customAuthenticationTitleForFillingCreditCard;
 + (id)customAuthenticationTitleForFillingSavedPassword;
 + (id)customAuthenticationTitleForViewingSavedPasswords;
++ (id)passcodePromptForFillingTimeBasedOneTimeCode;
 + (id)passcodePromptForFillingCreditCard;
 + (id)passcodePromptForFillingSavedPassword;
 + (id)passcodePromptForViewingSavedPasswords;

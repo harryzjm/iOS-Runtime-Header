@@ -15,6 +15,7 @@
 @interface BKSMousePointerDevice : NSObject <BSProtobufSerializable, NSSecureCoding, NSCopying>
 {
     _Bool _hasVirtualMouseButtons;
+    _Bool _supportsDragLock;
     BKSHIDEventSenderDescriptor *_senderDescriptor;
     NSString *_productName;
     NSString *_manufacturerName;
@@ -25,6 +26,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *preferenceKey; // @synthesize preferenceKey=_preferenceKey;
+@property(nonatomic) _Bool supportsDragLock; // @synthesize supportsDragLock=_supportsDragLock;
 @property(nonatomic) _Bool hasVirtualMouseButtons; // @synthesize hasVirtualMouseButtons=_hasVirtualMouseButtons;
 @property(copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
 @property(copy, nonatomic) NSString *productName; // @synthesize productName=_productName;

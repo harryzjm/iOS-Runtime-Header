@@ -8,11 +8,10 @@
 
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
-@class CoreTelephonyClient, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface SUCarrierDownloadPolicyProperties : NSObject <NSSecureCoding>
 {
-    CoreTelephonyClient *_client;
     NSMutableDictionary *_keyMap;
 }
 

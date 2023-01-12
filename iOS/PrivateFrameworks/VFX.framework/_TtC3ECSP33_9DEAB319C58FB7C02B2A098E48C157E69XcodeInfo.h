@@ -10,8 +10,9 @@
 
 @interface _TtC3ECSP33_9DEAB319C58FB7C02B2A098E48C157E69XcodeInfo : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *platform;
+    MISSING_TYPE *target;
     MISSING_TYPE *lock;
+    MISSING_TYPE *macOSToolchainOverride;
     MISSING_TYPE *thisBundle;
     MISSING_TYPE *sdkPath;
     MISSING_TYPE *toolchainPath;

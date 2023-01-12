@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_adec5a97)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_adec5a97)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *request_locale;
 @property(readonly, nonatomic) FTLatnnMitigatorResult *latnn_mitigator_result;
 @property(readonly, nonatomic) NSString *language;

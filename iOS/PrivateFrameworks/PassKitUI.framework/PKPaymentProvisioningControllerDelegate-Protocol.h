@@ -6,9 +6,13 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class PKPaymentCredential;
+@class NSError, PKPaymentCredential;
 
 @protocol PKPaymentProvisioningControllerDelegate <NSObject>
+
+@optional
+- (void)preflightRequirementsUpdated:(unsigned long long)arg1 displaybleError:(NSError *)arg2;
+- (void)metadataUpdatedOnCredenitals;
 - (void)paymentPassUpdatedOnCredential:(PKPaymentCredential *)arg1;
 @end
 

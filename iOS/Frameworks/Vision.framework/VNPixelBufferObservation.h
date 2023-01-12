@@ -13,17 +13,18 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property(readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithRequestRevision:(unsigned long long)arg1 featureName:(id)arg2 CVPixelBuffer:(struct __CVBuffer *)arg3;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 featureName:(id)arg2 CVPixelBuffer:(struct __CVBuffer *)arg3;
 
 @end
 

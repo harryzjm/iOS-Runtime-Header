@@ -21,7 +21,9 @@
 + (id)sharedClient;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *_scriptDispatchQueue; // @synthesize _scriptDispatchQueue=__scriptDispatchQueue;
+- (_Bool)runShortcutWithIdentifier:(id)arg1;
 - (_Bool)runScriptFile:(id)arg1;
+- (_Bool)_runAsyncWithConnection:(int)arg1 object:(id)arg2;
 - (void)handleCallback:(id)arg1;
 - (_Bool)_isReady;
 - (id)_lazyConnection;

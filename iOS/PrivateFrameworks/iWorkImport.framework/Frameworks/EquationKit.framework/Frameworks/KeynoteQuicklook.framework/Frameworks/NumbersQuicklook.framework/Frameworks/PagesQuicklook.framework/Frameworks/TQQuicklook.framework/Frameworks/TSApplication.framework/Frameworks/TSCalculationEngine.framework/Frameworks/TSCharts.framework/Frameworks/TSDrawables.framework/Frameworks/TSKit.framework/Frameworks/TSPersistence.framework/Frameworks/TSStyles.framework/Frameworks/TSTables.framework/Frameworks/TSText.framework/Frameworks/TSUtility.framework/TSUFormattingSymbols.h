@@ -134,12 +134,12 @@
 @property(readonly, nonatomic) NSString *numberingSystem; // @synthesize numberingSystem=_numberingSystem;
 @property(readonly, nonatomic) NSString *calendar; // @synthesize calendar=_calendar;
 @property(readonly, nonatomic) NSString *version; // @synthesize version=_version;
-- (id)p_negativeNumberKeyForNumberStyle:(unsigned int)arg1 negativeStyle:(int)arg2;
+- (id)p_negativeNumberKeyForNumberStyle:(unsigned int)arg1 negativeStyle:(unsigned char)arg2;
 - (void)p_deriveCalculatedPropertyValues;
 - (id)currencyCodeForCurrencySymbol:(id)arg1;
 - (id)halfwidthCurrencySymbolForCurrencyCode:(id)arg1;
 - (id)currencySymbolForCurrencyCode:(id)arg1;
-- (id)patternStringForNumberStyle:(unsigned int)arg1 negativeStyle:(int)arg2;
+- (id)patternStringForNumberStyle:(unsigned int)arg1 negativeStyle:(unsigned char)arg2;
 - (id)patternStringForDateStyle:(unsigned long long)arg1 timeStyle:(unsigned long long)arg2;
 - (_Bool)hasUserCustomizations;
 - (void)upgradeIfNecessary:(id)arg1;

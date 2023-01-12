@@ -181,11 +181,9 @@
 - (id)parentalControlsWhitelistedAppBundleIDs;
 - (id)restrictionEnforcedWhitelistedAppBundleIDs;
 - (id)effectiveWhitelistedAppBundleIDs;
-- (id)parentalControlsBlacklistedAppBundleIDs;
-- (id)restrictionEnforcedBlacklistedAppBundleIDsExcludingRemovedSystemApps:(_Bool)arg1;
-- (id)restrictionEnforcedBlacklistedAppBundleIDs;
-- (id)effectiveBlacklistedAppBundleIDsExcludingRemovedSystemApps:(_Bool)arg1;
-- (id)effectiveBlacklistedAppBundleIDs;
+- (id)parentalControlsBlockedAppBundleIDs;
+- (id)restrictionEnforcedBlockedAppBundleIDsExcludingRemovedSystemApps:(_Bool)arg1;
+- (id)effectiveBlockedAppBundleIDsExcludingRemovedSystemApps:(_Bool)arg1;
 - (id)restrictedAppBundleIDsExcludingRemovedSystemApps:(_Bool)arg1;
 - (id)restrictedAppBundleIDs;
 

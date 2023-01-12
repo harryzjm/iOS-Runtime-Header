@@ -33,13 +33,18 @@
 @property(retain, nonatomic) NSLock *lock; // @synthesize lock=_lock;
 - (_Bool)isWebLink:(id)arg1;
 - (_Bool)_validateURLsAndHTMLTagsInParsedString:(id)arg1 urlsFound:(id *)arg2;
+- (void)_appendComponentWithKey:(id)arg1 from:(id)arg2 to:(id)arg3;
 - (void)_addDataDetectionAttributes:(id)arg1;
 - (void)appendString:(id)arg1 stringAttributes:(id)arg2;
 - (void)appendImageWithSource:(id)arg1 width:(double)arg2 height:(double)arg3 stringAttributes:(id)arg4;
 - (_Bool)isElementIgnorable:(id)arg1;
-- (_Bool)isErrorTypeBlacklisted:(char *)arg1;
-- (_Bool)isElementBlacklisted:(id)arg1 attributeQueryBlock:(CDUnknownBlockType)arg2;
+- (_Bool)isErrorTypeBlocked:(char *)arg1;
+- (_Bool)isElementBlocked:(id)arg1 attributeQueryBlock:(CDUnknownBlockType)arg2;
+- (id)_parsePlainTextBody:(id)arg1 encoding:(unsigned long long)arg2;
 - (id)_parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(_Bool *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsForValidation:(id)arg7 urlsFound:(id *)arg8;
+- (id)parseTextBody:(id)arg1;
+- (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(_Bool *)arg5 urlsForValidation:(id)arg6;
+- (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(_Bool *)arg5 urlsFound:(id *)arg6;
 - (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(_Bool *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsForValidation:(id)arg7;
 - (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(_Bool *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsFound:(id *)arg7;
 

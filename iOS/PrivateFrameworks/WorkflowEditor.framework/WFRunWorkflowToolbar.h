@@ -25,7 +25,6 @@
     UIToolbar *_toolbar;
     UIBarButtonItem *_undoItem;
     UIBarButtonItem *_redoItem;
-    UIBarButtonItem *_addItem;
     UIBarButtonItem *_runItem;
     UIBarButtonItem *_stopItem;
     UIBarButtonItem *_shareItem;
@@ -37,7 +36,6 @@
 @property(retain, nonatomic) UIBarButtonItem *shareItem; // @synthesize shareItem=_shareItem;
 @property(retain, nonatomic) UIBarButtonItem *stopItem; // @synthesize stopItem=_stopItem;
 @property(retain, nonatomic) UIBarButtonItem *runItem; // @synthesize runItem=_runItem;
-@property(retain, nonatomic) UIBarButtonItem *addItem; // @synthesize addItem=_addItem;
 @property(retain, nonatomic) UIBarButtonItem *redoItem; // @synthesize redoItem=_redoItem;
 @property(retain, nonatomic) UIBarButtonItem *undoItem; // @synthesize undoItem=_undoItem;
 @property(nonatomic) __weak UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
@@ -51,7 +49,6 @@
 @property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
 @property(nonatomic) __weak NSUndoManager *workflowUndoManager; // @synthesize workflowUndoManager=_workflowUndoManager;
 - (long long)positionForBar:(id)arg1;
-- (void)addTapped;
 - (void)redoTapped;
 - (void)undoTapped;
 - (void)updateUndoItems;

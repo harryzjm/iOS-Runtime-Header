@@ -16,6 +16,7 @@
     _HMDocument *_document;
 }
 
++ (id)logCategory;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly) _HMDocument *document; // @synthesize document=_document;

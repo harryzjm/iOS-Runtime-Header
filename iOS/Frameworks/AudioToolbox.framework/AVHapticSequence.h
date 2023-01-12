@@ -33,6 +33,7 @@
 - (_Bool)activateChannelByIndex:(unsigned long long)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)cancelAndReturnError:(id *)arg1;
 - (_Bool)setParameter:(unsigned long long)arg1 value:(float)arg2 channel:(unsigned long long)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (_Bool)resetAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)seekToTime:(double)arg1 error:(id *)arg2;
 - (_Bool)resumeAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)pauseAtTime:(double)arg1 error:(id *)arg2;

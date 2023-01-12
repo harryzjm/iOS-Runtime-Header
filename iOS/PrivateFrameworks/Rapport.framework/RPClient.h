@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, RPSignedInUserProvider;
 
 @interface RPClient : NSObject
 {
@@ -15,7 +15,9 @@
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
+    id <RPSignedInUserProvider> _userProvider;
     NSXPCConnection *_xpcCnx;
+    _Bool _targetUserSession;
     unsigned int _type;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
@@ -25,6 +27,7 @@
 + (void)primaryAccountSignedIn;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
+@property(nonatomic) _Bool targetUserSession; // @synthesize targetUserSession=_targetUserSession;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -40,7 +43,9 @@
 - (void)_invalidated;
 - (void)invalidate;
 - (void)_interrupted;
-- (void)_ensureXPCStarted;
+- (id)_ensureXPCStarted;
+- (id)_XPCConnectionWithMachServiceName:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithUserProvider:(id)arg1;
 - (id)init;
 
 @end

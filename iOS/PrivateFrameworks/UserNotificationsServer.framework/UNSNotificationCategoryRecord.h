@@ -13,7 +13,6 @@
     _Bool _hasCustomDismissAction;
     _Bool _hasCustomSilenceAction;
     _Bool _shouldAllowInCarPlay;
-    _Bool _shouldAllowSpoken;
     _Bool _privacyOptionShowTitle;
     _Bool _privacyOptionShowSubtitle;
     _Bool _preventAutomaticRemovalFromRecent;
@@ -57,7 +56,6 @@
 @property(nonatomic) _Bool preventAutomaticRemovalFromRecent; // @synthesize preventAutomaticRemovalFromRecent=_preventAutomaticRemovalFromRecent;
 @property(nonatomic) _Bool privacyOptionShowSubtitle; // @synthesize privacyOptionShowSubtitle=_privacyOptionShowSubtitle;
 @property(nonatomic) _Bool privacyOptionShowTitle; // @synthesize privacyOptionShowTitle=_privacyOptionShowTitle;
-@property(nonatomic) _Bool shouldAllowSpoken; // @synthesize shouldAllowSpoken=_shouldAllowSpoken;
 @property(nonatomic) _Bool shouldAllowInCarPlay; // @synthesize shouldAllowInCarPlay=_shouldAllowInCarPlay;
 @property(copy, nonatomic) NSArray *minimalActions; // @synthesize minimalActions=_minimalActions;
 @property(copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;

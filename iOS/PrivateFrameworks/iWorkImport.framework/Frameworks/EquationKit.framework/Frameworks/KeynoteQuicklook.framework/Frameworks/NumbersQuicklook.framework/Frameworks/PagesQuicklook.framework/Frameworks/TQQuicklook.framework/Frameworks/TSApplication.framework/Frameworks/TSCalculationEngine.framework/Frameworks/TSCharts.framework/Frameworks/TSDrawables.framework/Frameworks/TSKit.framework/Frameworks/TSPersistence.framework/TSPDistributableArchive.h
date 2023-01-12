@@ -10,7 +10,7 @@
 
 @interface TSPDistributableArchive : NSObject
 {
-    struct map<long long, std::__1::pair<long long, long long>, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, std::__1::pair<long long, long long>>>> *_entries;
+    void *_entries;
     SFUFileDataRepresentation *_archiveFileRep;
     SFUMemoryDataRepresentation *_archiveMemoryRep;
     SFUZipEntry *_archiveZipEntryRep;

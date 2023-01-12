@@ -10,10 +10,12 @@
 {
 }
 
++ (id)lastMajorVersionUpdateDate;
++ (id)platform;
 + (id)minVersionForSpatialAudio;
 + (id)notificationDocument;
 + (id)widgetTip;
-+ (id)hintDismissalRules;
++ (id)hintMonitoringEvents;
 + (id)hintActionURL;
 + (id)hintActionText;
 + (id)hintBody;
@@ -23,14 +25,18 @@
 + (id)displayContentForContext;
 + (id)featuredCollection;
 + (id)requestVersion;
++ (id)requestPlatform;
 + (id)requestModel;
 + (id)requestLanguage;
 + (id)requestHostURL;
 + (id)requestURL;
 + (id)assetRequestHostURL;
 + (id)assetURL;
++ (id)standardNotificationInterval;
++ (id)contextualEventDaysSinceLastMajorUpdateInSeconds;
 + (id)hintCustomizationID;
 + (id)holdoutGroup;
++ (id)requestInterval;
 + (_Bool)suppressNotifications;
 + (_Bool)suppressTipKitContent;
 + (_Bool)resetDaemonData;
@@ -40,14 +46,17 @@
 + (_Bool)showCollectionIntro;
 + (_Bool)ignoreTargetingValidator;
 + (_Bool)ignoreCloud;
++ (_Bool)checkOfflineContentOnLaunch;
 + (_Bool)allowsHardwareWelcomeNotification;
++ (long long)crunchingIntervalInDays;
 + (long long)discoverabilityOverrideMaxDisplayCount;
 + (long long)triggerMinObservationCount;
++ (double)sessionTimeoutIntervalInSeconds;
 + (double)welcomeNotificationGracePeriod;
 + (double)welcomeNotificationDelay;
 + (double)discoverabilitySuppressionInterval;
++ (double)contextualEventLookBackDaysInSeconds;
 + (double)hintMaxDurationTimeInterval;
-+ (double)requestInterval;
 + (_Bool)boolDefaultsForKey:(id)arg1;
 + (double)timeIntervalDefaultsForKey:(id)arg1;
 + (long long)integerDefaultsForKey:(id)arg1;

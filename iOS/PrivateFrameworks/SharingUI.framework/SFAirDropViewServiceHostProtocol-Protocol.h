@@ -11,7 +11,7 @@
 @protocol SFAirDropViewServiceHostProtocol <NSObject>
 - (void)airDropViewServiceDidRequestDismissal;
 - (void)airDropViewServiceRequestingSharedItemsWithDataRequest:(UISUIActivityExtensionItemDataRequest *)arg1 completionHandler:(void (^)(UISUIActivityExtensionItemData *))arg2;
-- (void)airDropViewServiceDidSuccessfullyCompleteTransfer;
-- (void)airDropViewServiceDidSuccessfullyStartTransfer;
+- (void)airDropViewServiceDidFinishTransferWithSuccess:(_Bool)arg1;
+- (void)airDropViewServiceDidStartTransfer;
 @end
 

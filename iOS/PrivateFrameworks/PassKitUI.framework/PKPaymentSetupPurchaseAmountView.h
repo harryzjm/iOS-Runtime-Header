@@ -67,8 +67,10 @@
 - (void)_createConstraints;
 - (void)_createSubviews;
 - (void)numberPadSuggestionsView:(id)arg1 didSelectSuggestion:(id)arg2;
+- (void)enterCurrencyAmountViewDidLayoutKeyboard:(id)arg1;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
 - (_Bool)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
+@property(readonly, nonatomic) struct CGSize defaultKeyboardSize;
 @property(readonly, nonatomic) UITextField *amountTextField;
 - (void)updateConstraints;
 - (void)layoutSubviews;

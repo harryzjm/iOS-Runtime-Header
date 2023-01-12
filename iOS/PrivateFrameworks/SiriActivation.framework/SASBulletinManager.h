@@ -29,7 +29,6 @@
 - (void)observer:(id)arg1 modifyBulletin:(id)arg2;
 - (void)addBulletinCompletionWithBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
-- (void)markBulletinWithIdentifier:(id)arg1 asRead:(_Bool)arg2;
 - (id)bulletinForIdentifier:(id)arg1;
 - (id)bulletinsOnLockScreen;
 - (id)allBulletins;

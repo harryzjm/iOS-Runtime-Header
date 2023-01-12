@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, _UIFocusGroupMap;
+@class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusLinearMovementDebugView
 {
     NSArray *_items;
-    _UIFocusGroupMap *_focusGroupMap;
+    NSArray *_groups;
     _Bool _colorCoding;
 }
 
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)_lineSegmentsFromFrames:(id)arg1;
+- (id)_primaryGroupFramesFromGroups:(id)arg1;
+- (id)_groupFramesFromGroups:(id)arg1;
 - (id)_itemFramesFromItems:(id)arg1;
-- (id)_drawableItems;
-- (id)initWithItems:(id)arg1 focusGroupMap:(id)arg2;
+@property(readonly, nonatomic, getter=isGroupMode) _Bool groupMode;
+- (id)initWithGroups:(id)arg1;
+- (id)initWithItems:(id)arg1;
 - (id)init;
 
 @end

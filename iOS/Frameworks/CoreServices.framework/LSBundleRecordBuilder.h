@@ -20,15 +20,17 @@ __attribute__((visibility("hidden")))
     unsigned int _plistContentFlags;
     unsigned char _iconFlags;
     unsigned int _itemFlags;
-    unsigned short _archFlags;
     struct LSBundleMoreFlags _moreFlags;
+    struct LSBundleBaseFlags _baseFlags;
     unsigned int _platform;
+    unsigned int _minSystemVersionPlatform;
     unsigned int _hfsType;
     unsigned int _hfsCreator;
     unsigned long long _inode;
     NSMutableDictionary *_plistRarities;
     NSMutableDictionary *_commonInfoPlistEntries;
     NSArray *_supportedGameControllers;
+    struct LSVersionNumber _sdkVersionNumber;
     _Bool _containerized;
     unsigned char _profileValidationState;
     NSNumber *_compatibilityState;
@@ -75,6 +77,7 @@ __attribute__((visibility("hidden")))
     NSString *_genre;
     NSNumber *_genreID;
     NSString *_primaryIconName;
+    NSString *_alternatePrimaryIconName;
     NSDictionary *_iconsDict;
     NSArray *_iconFileNames;
     NSNumber *_purchaserDSID;
@@ -87,7 +90,7 @@ __attribute__((visibility("hidden")))
     NSArray *_URLClaims;
     NSArray *_importedTypes;
     NSArray *_exportedTypes;
-    NSArray *_schemesWhitelist;
+    NSArray *_queriableSchemes;
     NSDictionary *_pluginPlists;
     NSDictionary *_pluginMIDicts;
     NSDictionary *_groupContainers;
@@ -106,9 +109,19 @@ __attribute__((visibility("hidden")))
     NSArray *_managedPersonas;
     NSNumber *_directoryClass;
     NSDictionary *_mobileInstallIDs;
+    NSArray *_slices;
+    NSNumber *_signatureVersion;
+    NSDictionary *_stashedAppInfo;
+    NSString *_applicationManagementDomain;
+    NSString *_linkedParentBundleID;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *linkedParentBundleID; // @synthesize linkedParentBundleID=_linkedParentBundleID;
+@property(readonly, nonatomic) NSString *applicationManagementDomain; // @synthesize applicationManagementDomain=_applicationManagementDomain;
+@property(readonly, nonatomic) NSDictionary *stashedAppInfo; // @synthesize stashedAppInfo=_stashedAppInfo;
+@property(readonly) NSNumber *signatureVersion; // @synthesize signatureVersion=_signatureVersion;
+@property(readonly, nonatomic) NSArray *slices; // @synthesize slices=_slices;
 @property(readonly) NSDictionary *mobileInstallIDs; // @synthesize mobileInstallIDs=_mobileInstallIDs;
 @property(readonly, nonatomic) NSNumber *directoryClass; // @synthesize directoryClass=_directoryClass;
 @property(readonly, nonatomic) NSArray *managedPersonas; // @synthesize managedPersonas=_managedPersonas;
@@ -128,7 +141,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *groupContainers; // @synthesize groupContainers=_groupContainers;
 @property(readonly, nonatomic) NSDictionary *pluginMIDicts; // @synthesize pluginMIDicts=_pluginMIDicts;
 @property(readonly, nonatomic) NSDictionary *pluginPlists; // @synthesize pluginPlists=_pluginPlists;
-@property(readonly, nonatomic) NSArray *schemesWhitelist; // @synthesize schemesWhitelist=_schemesWhitelist;
+@property(readonly, nonatomic) NSArray *queriableSchemes; // @synthesize queriableSchemes=_queriableSchemes;
 @property(readonly, nonatomic) NSArray *exportedTypes; // @synthesize exportedTypes=_exportedTypes;
 @property(readonly, nonatomic) NSArray *importedTypes; // @synthesize importedTypes=_importedTypes;
 @property(readonly, nonatomic) NSArray *URLClaims; // @synthesize URLClaims=_URLClaims;
@@ -141,6 +154,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property(readonly, nonatomic) NSArray *iconFileNames; // @synthesize iconFileNames=_iconFileNames;
 @property(readonly, nonatomic) NSDictionary *iconsDict; // @synthesize iconsDict=_iconsDict;
+@property(readonly, nonatomic) NSString *alternatePrimaryIconName; // @synthesize alternatePrimaryIconName=_alternatePrimaryIconName;
 @property(readonly, nonatomic) NSString *primaryIconName; // @synthesize primaryIconName=_primaryIconName;
 @property(readonly, nonatomic) NSNumber *genreID; // @synthesize genreID=_genreID;
 @property(readonly, nonatomic) NSString *genre; // @synthesize genre=_genre;
@@ -208,8 +222,8 @@ __attribute__((visibility("hidden")))
 - (id)_LSKeyTypeMap;
 - (id)_LSPlistRaritiesMap;
 - (id)_LSBundleFlagMap;
-- (int)registerSchemesWhitelist:(id)arg1 bundleData:(struct LSBundleData *)arg2;
-- (void)addArchitectureFlag:(unsigned short)arg1;
+- (id)truncate:(_Bool *)arg1 queriableSchemesIfNeeded:(id)arg2;
+- (int)registerQueriableSchemes:(id)arg1 bundleData:(struct LSBundleData *)arg2;
 - (void)addItemInfoFlag:(unsigned int)arg1;
 - (void)addIconFlag:(unsigned char)arg1;
 - (void)addPlistFlag:(unsigned int)arg1;

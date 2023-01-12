@@ -9,7 +9,7 @@
 #import <network/OS_nw_endpoint-Protocol.h>
 
 @class NSString;
-@protocol OS_nw_context, OS_nw_interface, OS_nw_txt_record;
+@protocol OS_dispatch_data, OS_nw_array, OS_nw_context, OS_nw_interface, OS_nw_protocol_instance_registrar, OS_nw_txt_record;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint : NSObject <OS_nw_endpoint>
@@ -19,32 +19,40 @@ __attribute__((visibility("hidden")))
     int interface_type;
     char *description;
     char *redacted_description;
+    char *known_tracker_name;
+    char *tracker_owner;
     NWConcrete_nw_endpoint *parent_endpoint;
-    unsigned short alternate_port;
     struct nw_endpoint_alterative_s first_alternative;
     struct {
         struct nw_endpoint_alterative_s *tqh_first;
         struct nw_endpoint_alterative_s **tqh_last;
     } alternative_list;
-    struct os_unfair_lock_s lock;
+    struct os_unfair_lock_s endpoint_lock;
+    struct os_unfair_lock_s description_lock;
     struct nw_hash_table *associations;
+    NSObject<OS_nw_protocol_instance_registrar> *registrar;
+    NSObject<OS_nw_array> *endpoint_edges;
+    unsigned short alternate_port;
     unsigned int is_local_domain:1;
     unsigned int parent_is_proxy:1;
+    unsigned int is_registered:1;
     unsigned int description_used:1;
     unsigned int redacted_description_used:1;
     unsigned int do_not_redact_description:1;
+    unsigned int approved_app_domain:1;
 }
 
 - (void).cxx_destruct;
 - (unsigned long long)getHash;
 - (id)copyEndpoint;
-- (_Bool)isEqualToEndpoint:(id)arg1 matchInterface:(_Bool)arg2 matchParent:(_Bool)arg3;
+- (_Bool)isEqualToEndpoint:(id)arg1 matchFlags:(unsigned char)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (id)redactedDescription;
 @property(readonly, copy) NSString *description;
 - (const char *)getRedactedDescription;
 @property(readonly, nonatomic) const char *getDescription;
 - (char *)createDescription:(_Bool)arg1;
+@property(retain, nonatomic) NSObject<OS_dispatch_data> *echConfig;
 @property(retain, nonatomic) NSObject<OS_nw_txt_record> *txtRecord;
 @property(nonatomic) unsigned short weight;
 @property(nonatomic) unsigned short priority;

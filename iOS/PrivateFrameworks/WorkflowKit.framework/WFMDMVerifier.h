@@ -18,8 +18,8 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *contentAttributionSets; // @synthesize contentAttributionSets=_contentAttributionSets;
 @property(readonly, copy, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
-- (id)errorFromFailedVerificationContentAttributionSets:(id)arg1 targetContentAttribution:(id)arg2 destinationManagedLevel:(unsigned long long)arg3;
-- (_Bool)canSendDataToTargetContentAttribution:(id)arg1 error:(id *)arg2;
+- (id)errorFromFailedVerificationContentAttributionSets:(id)arg1 contentDestination:(id)arg2 destinationManagedLevel:(unsigned long long)arg3;
+- (_Bool)canSendDataToContentDestination:(id)arg1 error:(id *)arg2;
 - (id)initWithAction:(id)arg1;
 - (id)initWithContentAttributionSets:(id)arg1 actionName:(id)arg2;
 

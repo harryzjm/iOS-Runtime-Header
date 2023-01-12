@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)initWithStyle:(id)arg1;
+- (id)initWithStyle:(id)arg1 theme:(id)arg2;
 
 @end
 

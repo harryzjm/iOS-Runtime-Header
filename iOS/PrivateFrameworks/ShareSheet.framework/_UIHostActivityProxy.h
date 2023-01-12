@@ -7,26 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <ShareSheet/NSSecureCoding-Protocol.h>
+#import <ShareSheet/SHSheetLoadableProxy-Protocol.h>
 
-@class NSNumber, NSUUID;
+@class NSString, NSUUID, UIActivity;
 
-@interface _UIHostActivityProxy : NSObject <NSSecureCoding>
+@interface _UIHostActivityProxy : NSObject <NSSecureCoding, SHSheetLoadableProxy>
 {
+    _Atomic unsigned int _imageSlotID;
+    _Atomic unsigned int _labelSlotID;
+    _Atomic double _platterTextHeight;
     _Bool _disabled;
     _Bool _favorite;
     _Bool _restricted;
     _Bool _longPressable;
+    UIActivity *_activity;
     NSUUID *_proxyIdentifier;
-    NSNumber *_imageSlot;
-    NSNumber *_labelSlot;
-    double _platterTextHeight;
     NSUUID *_activityIdentifierShare;
     NSUUID *_activityIdentifierOpen;
     NSUUID *_activityIdentifierCopy;
+    CDUnknownBlockType _loadHandler;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType loadHandler; // @synthesize loadHandler=_loadHandler;
 @property(nonatomic, getter=isLongPressable) _Bool longPressable; // @synthesize longPressable=_longPressable;
 @property(nonatomic, getter=isRestricted) _Bool restricted; // @synthesize restricted=_restricted;
 @property(nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
@@ -34,15 +38,22 @@
 @property(retain, nonatomic) NSUUID *activityIdentifierCopy; // @synthesize activityIdentifierCopy=_activityIdentifierCopy;
 @property(retain, nonatomic) NSUUID *activityIdentifierOpen; // @synthesize activityIdentifierOpen=_activityIdentifierOpen;
 @property(retain, nonatomic) NSUUID *activityIdentifierShare; // @synthesize activityIdentifierShare=_activityIdentifierShare;
-@property(nonatomic) double platterTextHeight; // @synthesize platterTextHeight=_platterTextHeight;
-@property(retain, nonatomic) NSNumber *labelSlot; // @synthesize labelSlot=_labelSlot;
-@property(retain, nonatomic) NSNumber *imageSlot; // @synthesize imageSlot=_imageSlot;
-@property(retain, nonatomic) NSUUID *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
+@property(readonly, nonatomic) NSUUID *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
+@property(readonly, nonatomic) UIActivity *activity; // @synthesize activity=_activity;
+- (_Bool)load;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
+@property double platterTextHeight;
+@property unsigned int labelSlotID;
+@property unsigned int imageSlotID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithActivity:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

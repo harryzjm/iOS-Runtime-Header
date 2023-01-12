@@ -19,13 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSSet *keys; // @synthesize keys=_keys;
 - (id)debugDescription;
-@property(retain) NSDictionary *completeDictionary;
-- (void)setCachedValue:(id)arg1 forKey:(id)arg2;
-- (id)cachedValueForKey:(id)arg1;
-- (_Bool)hasValueForKey:(id)arg1;
-- (id)initWithKeys:(id)arg1 compacted:(_Bool)arg2;
 
 @end
 

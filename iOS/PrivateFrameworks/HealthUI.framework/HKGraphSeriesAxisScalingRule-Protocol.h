@@ -12,6 +12,7 @@
 - (HKValueRange *)yValueRangeForRange:(HKValueRange *)arg1 zoomLevel:(long long)arg2;
 
 @optional
+- (HKValueRange *)noDataStartingRange;
 - (HKValueRange *)yAxisBounds;
 @end
 

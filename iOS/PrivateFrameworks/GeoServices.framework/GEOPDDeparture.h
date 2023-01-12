@@ -19,19 +19,23 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     double _absDepartureTime;
     double _absLiveDepartureTime;
+    NSString *_displayNameOverride;
     GEOFormattedString *_realTimeStatus;
     unsigned long long _referenceTripId;
     NSString *_vehicleNumber;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _realTimeStatusInfo;
     _Bool _isCanceled;
     struct {
         unsigned int has_absDepartureTime:1;
         unsigned int has_absLiveDepartureTime:1;
         unsigned int has_referenceTripId:1;
+        unsigned int has_realTimeStatusInfo:1;
         unsigned int has_isCanceled:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_displayNameOverride:1;
         unsigned int read_realTimeStatus:1;
         unsigned int read_vehicleNumber:1;
         unsigned int wrote_anyField:1;
@@ -55,6 +59,12 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 @property(readonly, copy) NSString *description;
+@property(retain, nonatomic) NSString *displayNameOverride;
+@property(readonly, nonatomic) _Bool hasDisplayNameOverride;
+- (int)StringAsRealTimeStatusInfo:(id)arg1;
+- (id)realTimeStatusInfoAsString:(int)arg1;
+@property(nonatomic) _Bool hasRealTimeStatusInfo;
+@property(nonatomic) int realTimeStatusInfo;
 @property(retain, nonatomic) GEOFormattedString *realTimeStatus;
 @property(readonly, nonatomic) _Bool hasRealTimeStatus;
 @property(nonatomic) _Bool hasReferenceTripId;
@@ -78,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDate *liveDepartureDate;
 @property(readonly, nonatomic) NSDate *scheduledDepartureDate;
 @property(readonly, nonatomic) NSDate *departureDate;
+@property(readonly, nonatomic) NSString *displayName;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

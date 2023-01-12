@@ -14,20 +14,18 @@
 
 @interface BSMachPortRight : NSObject <BSXPCCoding, NSSecureCoding, BSInvalidatable>
 {
+    NSString *_trace;
+    struct os_unfair_lock_s _invalidationLock;
     struct os_unfair_lock_s _lock;
     unsigned int _lock_port;
     unsigned int _rawPort;
-    int _owner;
-    NSString *_trace;
+    BOOL _type;
+    BOOL _owner;
+    unsigned char _lock_accessCount;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (void)_unsafe_destroyPort:(unsigned int)arg1;
-+ (_Bool)_unsafe_isUsablePort:(unsigned int)arg1;
-+ (unsigned int)_unsafe_decodePort:(id)arg1;
-+ (struct _xpc_type_s *)_decodeType;
-+ (id)_rightDescription;
-+ (id)_descriptionForPort:(unsigned int)arg1 owner:(int)arg2 tag:(id)arg3 trace:(id)arg4;
++ (BOOL)_type;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *trace; // @synthesize trace=_trace;
 - (void)encodeWithCoder:(id)arg1;
@@ -35,11 +33,15 @@
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)_lock_encodePort:(unsigned int)arg1;
 - (unsigned int)rawPort;
-- (void)invalidate;
-- (_Bool)isUsable;
+- (unsigned int)extractPort;
 - (unsigned int)port;
+- (void)invalidate;
+- (unsigned int)extractPortAndIKnowWhatImDoingISwear;
+- (_Bool)matchesPortOfRight:(id)arg1;
+- (void)accessPort:(CDUnknownBlockType)arg1;
+- (_Bool)isUsable;
+- (_Bool)isValid;
 - (void)dealloc;
 - (id)init;
 

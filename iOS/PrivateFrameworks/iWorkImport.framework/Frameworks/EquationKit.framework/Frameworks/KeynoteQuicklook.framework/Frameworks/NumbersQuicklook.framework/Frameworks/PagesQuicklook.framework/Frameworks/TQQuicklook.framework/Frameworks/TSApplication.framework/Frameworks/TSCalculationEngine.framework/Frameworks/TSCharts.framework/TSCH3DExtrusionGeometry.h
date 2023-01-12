@@ -6,40 +6,39 @@
 
 @interface TSCH3DExtrusionGeometry
 {
-    vector_d73af98f mCrossSection;
-    vector_7200ab52 mSpine;
-    vector_d73af98f mScale;
-    _Bool mBeginCap;
-    _Bool mEndCap;
-    float mCrossSectionCreaseAngle;
-    float mSpineCreaseAngle;
-    unsigned int mEndCapOffset;
-    unsigned int mEndCapCount;
-    unsigned int mBeginCapOffset;
-    int mBeginCapCount;
-    tvec3_17f03ce0 mNormalBias;
-    tvec3_17f03ce0 mSpineDirectionBias;
+    struct vector<glm::detail::tvec2<float>, std::allocator<glm::detail::tvec2<float>>> _crossSection;
+    struct vector<glm::detail::tvec3<float>, std::allocator<glm::detail::tvec3<float>>> _spine;
+    struct vector<glm::detail::tvec2<float>, std::allocator<glm::detail::tvec2<float>>> _scale;
+    _Bool _beginCap;
+    _Bool _endCap;
+    float _crossSectionCreaseAngle;
+    float _spineCreaseAngle;
+    unsigned int _endCapOffset;
+    unsigned int _endCapCount;
+    unsigned int _beginCapOffset;
+    int _beginCapCount;
+    tvec3_17f03ce0 _normalBias;
+    tvec3_17f03ce0 _spineDirectionBias;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) tvec3_17f03ce0 spineDirectionBias; // @synthesize spineDirectionBias=mSpineDirectionBias;
-@property(readonly, nonatomic) unsigned int capCount; // @synthesize capCount=mEndCapCount;
-@property(readonly, nonatomic) unsigned int capOffset; // @synthesize capOffset=mEndCapOffset;
-@property(nonatomic) tvec3_17f03ce0 normalBias; // @synthesize normalBias=mNormalBias;
-@property(nonatomic) float spineCreaseAngle; // @synthesize spineCreaseAngle=mSpineCreaseAngle;
-@property(nonatomic) float crossSectionCreaseAngle; // @synthesize crossSectionCreaseAngle=mCrossSectionCreaseAngle;
-@property(nonatomic) _Bool endCap; // @synthesize endCap=mEndCap;
-@property(nonatomic) _Bool beginCap; // @synthesize beginCap=mBeginCap;
+@property(nonatomic) tvec3_17f03ce0 spineDirectionBias; // @synthesize spineDirectionBias=_spineDirectionBias;
+@property(readonly, nonatomic) unsigned int capCount; // @synthesize capCount=_endCapCount;
+@property(readonly, nonatomic) unsigned int capOffset; // @synthesize capOffset=_endCapOffset;
+@property(nonatomic) tvec3_17f03ce0 normalBias; // @synthesize normalBias=_normalBias;
+@property(nonatomic) float spineCreaseAngle; // @synthesize spineCreaseAngle=_spineCreaseAngle;
+@property(nonatomic) float crossSectionCreaseAngle; // @synthesize crossSectionCreaseAngle=_crossSectionCreaseAngle;
+@property(nonatomic) _Bool endCap; // @synthesize endCap=_endCap;
+@property(nonatomic) _Bool beginCap; // @synthesize beginCap=_beginCap;
 - (void)debug_dumpGeometryBounds;
 - (void)generateArrays;
-- (const vector_d73af98f *)scale;
-- (void)setScale:(const vector_d73af98f *)arg1;
-- (const vector_7200ab52 *)spine;
-- (void)setSpine:(const vector_7200ab52 *)arg1;
-- (const vector_d73af98f *)crossSection;
-- (void)setCrossSection:(const vector_d73af98f *)arg1;
-- (void)dealloc;
+- (const void *)scale;
+- (void)setScale:(const void *)arg1;
+- (const void *)spine;
+- (void)setSpine:(const void *)arg1;
+- (const void *)crossSection;
+- (void)setCrossSection:(const void *)arg1;
 - (id)init;
 
 @end

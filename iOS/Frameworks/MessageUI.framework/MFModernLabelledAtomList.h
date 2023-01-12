@@ -71,8 +71,6 @@
 - (void)enumerateAddressAtomsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)addressAtom:(id)arg1 displayStringDidChange:(id)arg2;
 - (void)_reflowIfNeeded;
-- (void)_updateNeedsReflow;
-- (void)setBounds:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)addressBookDidChange:(id)arg1;
 - (struct CGSize)intrinsicContentSize;

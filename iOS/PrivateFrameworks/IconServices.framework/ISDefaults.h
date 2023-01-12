@@ -6,20 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+@class NSNumber, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface ISDefaults : NSObject
 {
+    _Bool __enableAppIconOverrides;
+    _Bool __enable1016Icons;
+    _Bool __ignoreDocumentClaimIcons;
     struct os_unfair_lock_s _lock;
+    NSString *_cacheSaltString;
+    NSString *_serviceName;
     NSNumber *__usePerstentCache;
+    NSURL *__cacheURL;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain) NSURL *_cacheURL; // @synthesize _cacheURL=__cacheURL;
+@property(readonly) _Bool _ignoreDocumentClaimIcons; // @synthesize _ignoreDocumentClaimIcons=__ignoreDocumentClaimIcons;
+@property(readonly) _Bool _enable1016Icons; // @synthesize _enable1016Icons=__enable1016Icons;
+@property(readonly) _Bool _enableAppIconOverrides; // @synthesize _enableAppIconOverrides=__enableAppIconOverrides;
 @property(readonly) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property(retain) NSNumber *_usePerstentCache; // @synthesize _usePerstentCache=__usePerstentCache;
+@property(readonly) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property(readonly) NSString *cacheSaltString; // @synthesize cacheSaltString=_cacheSaltString;
+@property(readonly) _Bool logMissingURLCacheProperties;
+@property(readonly) double prepareImageDelay;
+@property(readonly) _Bool enableAppIconOverides;
+@property(readonly) _Bool preferSymbolAsTemplateVariant;
+@property(readonly) _Bool allowDocumentClaimIcons;
+@property(readonly) _Bool defaultToTemplatizedAppIcons;
+@property(readonly) _Bool templatizedAppIcons;
 @property(readonly) _Bool usePerstentCache; // @dynamic usePerstentCache;
+@property(readonly) NSURL *cacheURL; // @dynamic cacheURL;
+- (id)init;
 
 @end
 

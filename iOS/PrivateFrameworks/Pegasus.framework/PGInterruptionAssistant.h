@@ -6,31 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
+@protocol BSInvalidatable;
 
 @interface PGInterruptionAssistant : NSObject
 {
-    NSMutableDictionary *_reasons;
-    _Bool _ignoreFaceTimeCameraInterruptions;
-    _Bool _allowsResumingAfterInterruptionEnds;
-    _Bool _isInterrupted;
-    _Bool _lastInterruptionStateSentToProxy;
-    struct os_unfair_lock_s _unfairLock;
+    NSMutableDictionary *_lock_interruptions;
+    NSString *_lock_exemptAttribution;
+    _Bool _lock_allowsResumingAfterInterruptionEnds;
+    _Bool _lock_isInterrupted;
+    _Bool _lock_isInterruptedAccordingToProxy;
+    _Bool _lock_isProxyActive;
+    _Bool _lock_exemptFromUILockInterruptionsWhenActive;
+    struct os_unfair_lock_s _lock;
+    id <BSInvalidatable> _stateDumpInvalidatable;
 }
 
 - (void).cxx_destruct;
-- (_Bool)_calculateIsInterrupted;
-- (long long)_numberOfInterruptionsForReason:(long long)arg1;
-- (void)notePictureInPictureSessionDidEnd;
-- (long long)removeReason:(long long)arg1;
-- (long long)addReason:(long long)arg1;
+- (_Bool)_lock_calculateIsInterrupted;
+- (id)cameraInterruptionAttributions;
+- (_Bool)hasInterruptionReason:(long long)arg1;
+- (void)removeReason:(long long)arg1 attribution:(id)arg2;
+- (void)addReason:(long long)arg1 attribution:(id)arg2;
 @property(readonly) _Bool allowsResumingAfterInterruptionEnds;
 - (void)noteDidNotifyProxyOfInterruptionEnded;
 - (_Bool)shouldNotifyProxyOfInterruptionEnded;
 - (void)noteDidNotifyProxyOfInterruptionBegan;
 - (_Bool)shouldNotifyProxyOfInterruptionBegan;
+- (id)_interruptionsDescription;
 @property(readonly, getter=isInterrupted) _Bool interrupted;
-- (id)initWithExceptionPolicy:(long long)arg1;
+@property(getter=isExemptFromUILockInterruptionsWhenActive) _Bool exemptFromUILockInterruptionsWhenActive;
+@property(getter=isProxyActive) _Bool proxyActive;
+- (void)setExemptAttribution:(id)arg1;
+- (id)exemptAttribution;
+- (id)copyWithExemptAttribution:(id)arg1;
+- (void)dealloc;
+- (id)description;
 - (id)init;
 
 @end

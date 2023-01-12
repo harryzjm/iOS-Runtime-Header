@@ -13,21 +13,21 @@
 #import <TSDrawables/TSSPresetSource-Protocol.h>
 #import <TSDrawables/TSSPropertyValueArchiving-Protocol.h>
 
-@class NSString, TSUColor;
+@class NSShadow, NSString, TSUColor;
 
 @interface TSDShadow : NSObject <TSSPropertyValueArchiving, TSDMixing, TSSPreset, TSSPresetSource, NSCopying, NSMutableCopying>
 {
+    _Bool mEnabled;
     double mAngle;
     double mOffset;
     double mRadius;
     double mOpacity;
     TSUColor *mColor;
-    _Bool mEnabled;
 }
 
 + (id)mixableObjectClasses;
 + (_Bool)canMixWithNilObjects;
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)defaultShadowPresets;
 + (id)presetKinds;
 + (_Bool)automaticallyNotifiesObserversOfTSUColor;
@@ -39,23 +39,24 @@
 + (id)defaultDisabledShadow;
 + (id)defaultShadow;
 + (id)p_defaultShadowEnabled:(_Bool)arg1;
-+ (id)instanceWithArchive:(const struct ShadowArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=mEnabled;
 @property(readonly, copy, nonatomic) TSUColor *color; // @synthesize color=mColor;
 @property(readonly, nonatomic) double opacity; // @synthesize opacity=mOpacity;
 @property(readonly, nonatomic) double radius; // @synthesize radius=mRadius;
 @property(readonly, nonatomic) double offset; // @synthesize offset=mOffset;
 @property(readonly, nonatomic) double angle; // @synthesize angle=mAngle;
-- (id)NSShadow;
+@property(readonly, nonatomic) NSShadow *NSShadow;
 - (id)shadowByTransformingByTransform:(struct CGAffineTransform)arg1;
 - (id)mixedBaseObjectWithObject:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 @property(readonly, nonatomic) NSString *presetKind;
-- (_Bool)differenceRequiresRebuilding:(id)arg1;
 - (struct CGRect)shadowBoundsForRect:(struct CGRect)arg1 additionalAngle:(double)arg2;
 - (struct CGRect)shadowBoundsForRect:(struct CGRect)arg1;
 - (struct CGRect)shadowBoundsForRect:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
+- (struct CGImage *)i_newEmptyImage;
 - (struct CGImage *)newShadowImageForRep:(id)arg1 withSize:(struct CGSize)arg2 drawSelector:(SEL)arg3 unflipped:(_Bool)arg4;
 - (struct CGRect)boundsForRep:(id)arg1;
 - (struct CGRect)boundsInNaturalSpaceForRep:(id)arg1;
@@ -63,27 +64,34 @@
 - (void)applyToContext:(struct CGContext *)arg1 viewScale:(double)arg2 flipped:(_Bool)arg3;
 - (void)applyToContext:(struct CGContext *)arg1 viewScale:(double)arg2;
 @property(readonly, nonatomic) struct CGPoint offsetDelta;
-- (id)typeDescription;
-- (id)description;
+- (void)i_setEnabled:(_Bool)arg1;
+- (void)i_setOpacity:(double)arg1;
+- (void)i_setRadius:(double)arg1;
+- (void)i_setOffset:(double)arg1;
+- (void)i_setAngle:(double)arg1;
+- (void)i_setColor:(id)arg1;
+@property(readonly, nonatomic) NSString *typeDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)shadowType;
-- (_Bool)showForEditingText;
-- (_Bool)isCurvedShadow;
-- (_Bool)isDropShadow;
-- (_Bool)isContactShadow;
-- (unsigned long long)hash;
-- (void)dealloc;
+@property(readonly, nonatomic) unsigned long long shadowType;
+@property(readonly, nonatomic) _Bool showForEditingText;
+@property(readonly, nonatomic) _Bool isCurvedShadow;
+@property(readonly, nonatomic) _Bool isDropShadow;
+@property(readonly, nonatomic) _Bool isContactShadow;
 - (id)newShadowClampedForSwatches;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)mutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)clampOpacity:(double)arg1;
 - (double)clampRadius:(double)arg1;
 - (double)clampOffset:(double)arg1;
-- (void)saveToArchive:(struct ShadowArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ShadowArchive *)arg1 unarchiver:(id)arg2;
-- (struct CGImage *)i_newEmptyImage;
-- (id)i_initWithOpacity:(double)arg1 color:(id)arg2 enabled:(_Bool)arg3;
+- (id)i_initWithOpacity:(double)arg1 color:(id)arg2 angle:(double)arg3 offset:(double)arg4 radius:(double)arg5 enabled:(_Bool)arg6;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

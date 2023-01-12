@@ -12,6 +12,8 @@
 @interface CKModifyRecordZonesOperation <CKModifyRecordZonesOperationCallbacks>
 {
     _Bool _markZonesAsUserPurged;
+    CDUnknownBlockType _perRecordZoneSaveBlock;
+    CDUnknownBlockType _perRecordZoneDeleteBlock;
     CDUnknownBlockType _modifyRecordZonesCompletionBlock;
     NSArray *_recordZonesToSave;
     NSArray *_recordZoneIDsToDelete;
@@ -24,10 +26,7 @@
 + (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool markZonesAsUserPurged; // @synthesize markZonesAsUserPurged=_markZonesAsUserPurged;
-@property(retain, nonatomic) NSMutableDictionary *recordZoneErrors; // @synthesize recordZoneErrors=_recordZoneErrors;
 @property(retain, nonatomic) NSMutableDictionary *recordZonesByZoneIDs; // @synthesize recordZonesByZoneIDs=_recordZonesByZoneIDs;
-@property(retain, nonatomic) NSMutableArray *deletedRecordZoneIDs; // @synthesize deletedRecordZoneIDs=_deletedRecordZoneIDs;
-@property(retain, nonatomic) NSMutableArray *savedRecordZones; // @synthesize savedRecordZones=_savedRecordZones;
 @property(copy, nonatomic) NSArray *recordZoneIDsToDelete; // @synthesize recordZoneIDsToDelete=_recordZoneIDsToDelete;
 @property(copy, nonatomic) NSArray *recordZonesToSave; // @synthesize recordZonesToSave=_recordZonesToSave;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
@@ -41,6 +40,8 @@
 - (id)activityCreate;
 - (id)relevantZoneIDs;
 @property(copy, nonatomic) CDUnknownBlockType modifyRecordZonesCompletionBlock; // @synthesize modifyRecordZonesCompletionBlock=_modifyRecordZonesCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordZoneDeleteBlock; // @synthesize perRecordZoneDeleteBlock=_perRecordZoneDeleteBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordZoneSaveBlock; // @synthesize perRecordZoneSaveBlock=_perRecordZoneSaveBlock;
 - (id)initWithRecordZonesToSave:(id)arg1 recordZoneIDsToDelete:(id)arg2;
 - (id)init;
 

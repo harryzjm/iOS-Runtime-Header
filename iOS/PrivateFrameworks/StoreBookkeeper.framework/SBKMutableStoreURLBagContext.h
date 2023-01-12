@@ -12,13 +12,13 @@
 
 
 // Remaining properties
-@property(copy) NSString *domain; // @dynamic domain;
-@property _Bool domainDisabled; // @dynamic domainDisabled;
-@property double pollingIntervalInSeconds; // @dynamic pollingIntervalInSeconds;
-@property(retain) NSURL *pullAllKeyValueRequestURL; // @dynamic pullAllKeyValueRequestURL;
-@property(retain) NSURL *pullKeyValueRequestURL; // @dynamic pullKeyValueRequestURL;
-@property(retain) NSURL *pushAllKeyValueRequestURL; // @dynamic pushAllKeyValueRequestURL;
-@property(retain) NSURL *pushKeyValueRequestURL; // @dynamic pushKeyValueRequestURL;
-@property(retain) NSURL *syncRequestURL; // @dynamic syncRequestURL;
+@property(copy, nonatomic) NSString *domain; // @dynamic domain;
+@property(nonatomic) _Bool domainDisabled; // @dynamic domainDisabled;
+@property(nonatomic) double pollingIntervalInSeconds; // @dynamic pollingIntervalInSeconds;
+@property(retain, nonatomic) NSURL *pullAllKeyValueRequestURL; // @dynamic pullAllKeyValueRequestURL;
+@property(retain, nonatomic) NSURL *pullKeyValueRequestURL; // @dynamic pullKeyValueRequestURL;
+@property(retain, nonatomic) NSURL *pushAllKeyValueRequestURL; // @dynamic pushAllKeyValueRequestURL;
+@property(retain, nonatomic) NSURL *pushKeyValueRequestURL; // @dynamic pushKeyValueRequestURL;
+@property(retain, nonatomic) NSURL *syncRequestURL; // @dynamic syncRequestURL;
 @end
 

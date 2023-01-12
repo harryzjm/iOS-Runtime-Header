@@ -17,6 +17,7 @@
     unsigned long long _length;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long position; // @synthesize position=_pos;
 @property(nonatomic) unsigned long long length; // @synthesize length=_length;
 - (id)readBigEndianShortThenString;
@@ -55,7 +56,6 @@
 - (_Bool)hasError;
 - (_Bool)isAtEnd;
 - (id)data;
-- (void)dealloc;
 - (id)initWithData:(id)arg1;
 
 @end

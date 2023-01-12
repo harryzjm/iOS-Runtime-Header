@@ -4,12 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, TPDrawablesZOrder;
+#import <PagesQuicklook/TSKModelRootIndexProvider-Protocol.h>
 
-@interface TPPaginatedPageInfo
+@class NSArray, TPDrawablesZOrder;
+@protocol TPPageLayoutInfoProvider;
+
+@interface TPPaginatedPageInfo <TSKModelRootIndexProvider>
 {
+    id <TPPageLayoutInfoProvider> _layoutInfoProvider;
 }
 
++ (Class)bodyInfoClass;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id <TPPageLayoutInfoProvider> layoutInfoProvider; // @synthesize layoutInfoProvider=_layoutInfoProvider;
+- (long long)modelRootIndex;
 - (Class)repClass;
 - (Class)layoutClass;
 - (struct CGRect)pageFrame;
@@ -18,6 +26,7 @@
 @property(readonly, nonatomic) _Bool isDocumentSetupPage;
 @property(readonly, nonatomic) TPDrawablesZOrder *drawablesZOrder;
 @property(readonly, nonatomic) NSArray *floatingDrawableInfos;
+- (id)initWithPageIndex:(unsigned long long)arg1 documentRoot:(id)arg2 layoutInfoProvider:(id)arg3;
 
 @end
 

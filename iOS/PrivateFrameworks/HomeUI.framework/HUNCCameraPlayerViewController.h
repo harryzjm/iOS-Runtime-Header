@@ -12,11 +12,13 @@
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUCameraPlayerAVBehaviorDelegate-Protocol.h>
 
-@class HFCameraItem, HFCameraPlaybackEngine, HFItemManager, HMCameraClip, HMCameraProfile, HUCameraBlurViewController, HUCameraPlayerAVBehavior, HUCameraPlayerAccessoryViewController, HUCameraPlayerLiveContentViewController, HUNCCameraPlayerPlaceholderContentViewController, HUNCCameraScrubberViewController, NAUILayoutConstraintSet, NSDate, NSString, NSUUID;
+@class HFCameraAnalyticsCameraPlayerLaunchEvent, HFCameraItem, HFCameraPlaybackEngine, HFItemManager, HMCameraClip, HMCameraProfile, HUCameraBlurViewController, HUCameraLiveButtonView, HUCameraPlayerAVBehavior, HUCameraPlayerAccessoryViewController, HUCameraPlayerLiveContentViewController, HUNCCameraPlayerPlaceholderContentViewController, HUNCCameraScrubberViewController, NAUILayoutConstraintSet, NSDate, NSString, NSUUID;
 
 @interface HUNCCameraPlayerViewController : AVPlayerViewController <AVPlayerViewControllerDelegate, AVPlayerViewControllerDelegatePrivate, HFCameraPlaybackEngineObserver, HFItemManagerDelegate, HUCameraPlayerAVBehaviorDelegate>
 {
     _Bool _hu_playbackControlsAreVisible;
+    unsigned long long _numberOfAssociatedAccessoriesDisplayed;
+    HMCameraProfile *_cameraProfile;
     HFItemManager *_itemManager;
     HFCameraItem *_cameraItem;
     HFCameraPlaybackEngine *_playbackEngine;
@@ -31,14 +33,16 @@
     HMCameraClip *_currentClip;
     NSUUID *_notificationUUID;
     NSUUID *_clipUUID;
-    HMCameraProfile *_cameraProfile;
     NSDate *_playbackStartDateFromSignificantEvent;
+    HFCameraAnalyticsCameraPlayerLaunchEvent *_launchEvent;
+    HUCameraLiveButtonView *_liveButtonView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HUCameraLiveButtonView *liveButtonView; // @synthesize liveButtonView=_liveButtonView;
+@property(retain, nonatomic) HFCameraAnalyticsCameraPlayerLaunchEvent *launchEvent; // @synthesize launchEvent=_launchEvent;
 @property(nonatomic) _Bool hu_playbackControlsAreVisible; // @synthesize hu_playbackControlsAreVisible=_hu_playbackControlsAreVisible;
 @property(retain, nonatomic) NSDate *playbackStartDateFromSignificantEvent; // @synthesize playbackStartDateFromSignificantEvent=_playbackStartDateFromSignificantEvent;
-@property(retain, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property(retain, nonatomic) NSUUID *clipUUID; // @synthesize clipUUID=_clipUUID;
 @property(retain, nonatomic) NSUUID *notificationUUID; // @synthesize notificationUUID=_notificationUUID;
 @property(nonatomic) __weak HMCameraClip *currentClip; // @synthesize currentClip=_currentClip;
@@ -53,7 +57,11 @@
 @property(retain, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(retain, nonatomic) HFCameraItem *cameraItem; // @synthesize cameraItem=_cameraItem;
 @property(retain, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property(retain, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
+@property(nonatomic) unsigned long long numberOfAssociatedAccessoriesDisplayed; // @synthesize numberOfAssociatedAccessoriesDisplayed=_numberOfAssociatedAccessoriesDisplayed;
 - (void)dealloc;
+- (void)updateLiveButton;
+- (void)updateVolumeControlVisibility;
 - (void)toggleMicrophoneState;
 - (_Bool)shouldDisplayMicrophoneControl;
 - (void)updateMicrophoneVisibility;
@@ -65,12 +73,13 @@
 - (void)playbackControlsDidToggleMuted:(_Bool)arg1;
 - (double)currentScrubberResolutionForBehavior:(id)arg1;
 - (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdatePlaybackError:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateLiveCameraSource:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateScrubbingStatus:(_Bool)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
 - (void)playerViewController:(id)arg1 willTransitionToVisibilityOfPlaybackControls:(_Bool)arg2 withAnimationCoordinator:(id)arg3;
-- (void)miniScrubberDidToggleLive:(id)arg1;
+- (void)toggleLive;
 - (_Bool)_shouldAutoPlayOnViewAppearance;
 - (void)_updatePlayerVolumeSliderState;
 - (void)_updateLivePreviewAspectRatio;

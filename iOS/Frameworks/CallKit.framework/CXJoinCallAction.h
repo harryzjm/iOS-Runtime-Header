@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CXHandle, NSDate, NSSet, NSString, NSUUID;
+@class CXHandle, CXJoinCallActivity, NSData, NSDate, NSDictionary, NSSet, NSString, NSUUID;
 
 @interface CXJoinCallAction
 {
@@ -12,28 +12,50 @@
     _Bool _uplinkMuted;
     _Bool _shouldSuppressInCallUI;
     _Bool _wantsStagingArea;
+    _Bool _letMeIn;
+    _Bool _joiningConversationWithLink;
+    _Bool _video;
     _Bool _upgrade;
+    _Bool _relay;
     NSUUID *_groupUUID;
     NSSet *_remoteMembers;
+    NSSet *_otherInvitedHandles;
     CXHandle *_callerID;
+    NSString *_pseudonym;
+    NSData *_publicKey;
     NSUUID *_upgradeSessionUUID;
     NSUUID *_messagesGroupUUID;
     NSString *_messagesGroupName;
     NSDate *_dateStarted;
+    NSSet *_remotePushTokens;
+    CXJoinCallActivity *_joinCallActivity;
+    NSString *_conversationProviderIdentifier;
+    NSDictionary *_notificationStylesByHandleType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *notificationStylesByHandleType; // @synthesize notificationStylesByHandleType=_notificationStylesByHandleType;
+@property(copy, nonatomic) NSString *conversationProviderIdentifier; // @synthesize conversationProviderIdentifier=_conversationProviderIdentifier;
+@property(nonatomic, getter=isRelay) _Bool relay; // @synthesize relay=_relay;
+@property(copy, nonatomic) CXJoinCallActivity *joinCallActivity; // @synthesize joinCallActivity=_joinCallActivity;
+@property(copy, nonatomic) NSSet *remotePushTokens; // @synthesize remotePushTokens=_remotePushTokens;
 @property(copy, nonatomic) NSDate *dateStarted; // @synthesize dateStarted=_dateStarted;
 @property(copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;
 @property(copy, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
 @property(copy, nonatomic) NSUUID *upgradeSessionUUID; // @synthesize upgradeSessionUUID=_upgradeSessionUUID;
 @property(nonatomic, getter=isUpgrade) _Bool upgrade; // @synthesize upgrade=_upgrade;
+@property(nonatomic, getter=isVideo) _Bool video; // @synthesize video=_video;
+@property(copy, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
+@property(copy, nonatomic) NSString *pseudonym; // @synthesize pseudonym=_pseudonym;
+@property(nonatomic, getter=isJoiningConversationWithLink) _Bool joiningConversationWithLink; // @synthesize joiningConversationWithLink=_joiningConversationWithLink;
+@property(nonatomic, getter=isLetMeIn) _Bool letMeIn; // @synthesize letMeIn=_letMeIn;
 @property(nonatomic) _Bool wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
 @property(nonatomic) _Bool shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property(nonatomic, getter=isUplinkMuted) _Bool uplinkMuted; // @synthesize uplinkMuted=_uplinkMuted;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property(copy, nonatomic) CXHandle *callerID; // @synthesize callerID=_callerID;
+@property(copy, nonatomic) NSSet *otherInvitedHandles; // @synthesize otherInvitedHandles=_otherInvitedHandles;
 @property(copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;
 @property(copy, nonatomic) NSUUID *groupUUID; // @synthesize groupUUID=_groupUUID;
 - (void)encodeWithCoder:(id)arg1;

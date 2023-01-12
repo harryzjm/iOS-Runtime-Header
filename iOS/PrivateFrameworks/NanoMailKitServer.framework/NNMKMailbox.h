@@ -13,8 +13,8 @@
 
 @interface NNMKMailbox : NSObject <NSSecureCoding, NSCopying>
 {
-    _Bool _syncEnabled;
     _Bool _syncRequested;
+    _Bool _syncEnabled;
     _Bool _syncActive;
     _Bool _hasSelection;
     _Bool _isPushEnabled;
@@ -27,6 +27,7 @@
     NSURL *_url;
     NSString *_customName;
     NSDate *_lastUpdate;
+    NSString *_displayName;
 }
 
 + (unsigned long long)defaultFilterTypes;
@@ -38,12 +39,13 @@
 + (id)idsFromMailboxes:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool databaseContentVerified; // @synthesize databaseContentVerified=_databaseContentVerified;
+@property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(nonatomic) _Bool isPushEnabled; // @synthesize isPushEnabled=_isPushEnabled;
 @property(nonatomic) _Bool hasSelection; // @synthesize hasSelection=_hasSelection;
 @property(retain, nonatomic) NSDate *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property(nonatomic) _Bool syncActive; // @synthesize syncActive=_syncActive;
-@property(nonatomic) _Bool syncRequested; // @synthesize syncRequested=_syncRequested;
 @property(nonatomic) _Bool syncEnabled; // @synthesize syncEnabled=_syncEnabled;
+@property(nonatomic) _Bool syncRequested; // @synthesize syncRequested=_syncRequested;
 @property(retain, nonatomic) NSString *customName; // @synthesize customName=_customName;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(retain, nonatomic) NSString *accountLocalId; // @synthesize accountLocalId=_accountLocalId;

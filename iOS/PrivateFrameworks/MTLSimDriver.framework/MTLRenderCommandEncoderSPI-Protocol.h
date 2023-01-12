@@ -6,7 +6,7 @@
 
 #import <MTLSimDriver/MTLRenderCommandEncoder-Protocol.h>
 
-@protocol MTLSamplerState, MTLTexture;
+@protocol MTLResourceGroupSPI, MTLSamplerState, MTLTexture;
 
 @protocol MTLRenderCommandEncoderSPI <MTLRenderCommandEncoder>
 - (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
@@ -17,6 +17,8 @@
 - (void)setDepthClipModeSPI:(unsigned long long)arg1;
 
 @optional
+- (void)useResourceGroup:(id <MTLResourceGroupSPI>)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
+- (void)dispatchThreadsPerTile:(CDStruct_da2e99ad)arg1 inRegion:(CDStruct_caaed6bc)arg2;
 - (void)setStencilResolveTexture:(id <MTLTexture>)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4 yInvert:(_Bool)arg5;
 - (void)setStencilResolveTexture:(id <MTLTexture>)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4;
 - (void)setDepthResolveTexture:(id <MTLTexture>)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4 yInvert:(_Bool)arg5;

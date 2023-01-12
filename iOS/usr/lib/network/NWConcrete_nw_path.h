@@ -9,7 +9,7 @@
 #import <network/OS_nw_path-Protocol.h>
 
 @class NSString;
-@protocol OS_nw_advertise_descriptor, OS_nw_array, OS_nw_browse_descriptor, OS_nw_endpoint, OS_nw_interface, OS_nw_parameters, OS_xpc_object;
+@protocol OS_nw_advertise_descriptor, OS_nw_array, OS_nw_browse_descriptor, OS_nw_endpoint, OS_nw_group_descriptor, OS_nw_interface, OS_nw_parameters, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_path : NSObject <OS_nw_path>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s lock;
     NSObject<OS_nw_parameters> *parameters;
     NSObject<OS_nw_endpoint> *endpoint;
+    NSObject<OS_nw_group_descriptor> *group_descriptor;
     NSObject<OS_nw_browse_descriptor> *browse_descriptor;
     NSObject<OS_nw_advertise_descriptor> *advertise_descriptor;
     NSObject<OS_nw_array> *discovered_endpoints;
@@ -34,7 +35,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *fallback_agent_types;
     NSObject<OS_nw_array> *resolver_configs;
     NSObject<OS_nw_array> *gateways;
+    NSObject<OS_nw_array> *group_members;
     NSObject<OS_xpc_object> *network_agent_dictionary;
+    NSObject<OS_nw_array> *proxy_configs;
     NSObject<OS_xpc_object> *proxy_settings;
     char *reason_description;
     struct nw_path_necp_result policy_result;
@@ -46,14 +49,18 @@ __attribute__((visibility("hidden")))
     int reason;
     unsigned short custom_ethertype;
     unsigned char custom_ip_protocol;
+    struct necp_client_result_estimated_throughput estimates;
+    struct ipv6_prefix nat64_prefixes[4];
     unsigned char recommended_mss;
     unsigned int weak_fallback:1;
     unsigned int no_fallback_timer:1;
     unsigned int fallback_is_forced:1;
+    unsigned int fallback_is_preferred:1;
     unsigned int is_local:1;
     unsigned int is_direct:1;
     unsigned int has_ipv4:1;
     unsigned int has_ipv6:1;
+    unsigned int has_nat64:1;
     unsigned int traffic_mgmt_background:1;
     unsigned int necp_satisfied:1;
     unsigned int override_viable:1;
@@ -69,6 +76,12 @@ __attribute__((visibility("hidden")))
     unsigned int override_uses_wifi:1;
     unsigned int override_uses_cellular:1;
     unsigned int override_interface_scoped:1;
+    unsigned int merged_proxy_configs:1;
+    unsigned int has_kext_filter:1;
+    unsigned int has_pf_rules:1;
+    unsigned int has_application_level_firewall:1;
+    unsigned int has_parental_controls:1;
+    unsigned int __pad_bits:3;
 }
 
 - (void).cxx_destruct;

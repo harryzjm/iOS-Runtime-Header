@@ -12,7 +12,7 @@
 #import <PhotosUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CEKSlider, NSIndexPath, NSString, PUAdjustmentInfo, PUAdjustmentsViewFlowLayout, PUSelectionFeedbackGenerator, PXUISnappingController, UICollectionView, UIImage;
+@class CEKSlider, NSIndexPath, NSString, PUAdjustmentInfo, PUAdjustmentsViewFlowLayout, PUPhotoEditAutoAdjustmentCell, PUSelectionFeedbackGenerator, PXUISnappingController, UICollectionView, UIImage;
 @protocol PUAdjustmentViewControllerDelegate, PUAdjustmentsViewDataSource;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     UIImage *_selectedItemBackgroundImage;
     UIImage *_itemBackgroundImage;
     _Bool _sliderIsScrubbing;
+    PUPhotoEditAutoAdjustmentCell *_autoEnhanceCell;
     PXUISnappingController *_snappingController;
     _Bool _shouldDisplayControlValues;
     _Bool _shouldDisplayMappedValues;
@@ -69,12 +70,16 @@ __attribute__((visibility("hidden")))
 - (void)slider:(id)arg1 willUpdateValue:(double *)arg2 withVelocity:(double)arg3;
 - (void)sliderWillBeginScrolling:(id)arg1;
 - (void)sliderValueChanged:(id)arg1;
+- (void)toggleAutoEnhance;
+- (void)decreaseAdjustmentValue:(_Bool)arg1;
+- (void)increaseAdjustmentValue:(_Bool)arg1;
 - (void)resetControls;
 - (void)updateControls;
 - (void)_updateCell:(id)arg1 withInfo:(id)arg2;
 - (id)_backgroundImageForItemAtIndexPath:(id)arg1;
 - (void)_setupCellBackgroundImagesIfNeeded;
 - (id)_circularImageWithSize:(struct CGSize)arg1 color:(id)arg2;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;

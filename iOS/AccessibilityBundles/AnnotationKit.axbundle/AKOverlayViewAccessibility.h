@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
+- (id)_accessibilityCreateOverlayViewElement;
 - (void)_axSetOverlayViewLayers:(id)arg1;
 - (id)_axOverlayViewLayers;
 - (void)_axSetOverlayViewElement:(id)arg1;

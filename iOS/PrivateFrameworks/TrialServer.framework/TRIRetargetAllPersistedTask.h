@@ -6,11 +6,17 @@
 
 #import <TrialProto/TRIPBMessage.h>
 
+@class TRIPersistedTaskAttribution;
+
 @interface TRIRetargetAllPersistedTask : TRIPBMessage
 {
 }
 
 + (id)descriptor;
+
+// Remaining properties
+@property(nonatomic) _Bool hasTaskAttribution; // @dynamic hasTaskAttribution;
+@property(retain, nonatomic) TRIPersistedTaskAttribution *taskAttribution; // @dynamic taskAttribution;
 
 @end
 

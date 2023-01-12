@@ -6,36 +6,56 @@
 
 #import <objc/NSObject.h>
 
+#import <BiomeStorage/BMStoreEvent-Protocol.h>
 #import <BiomeStorage/NSSecureCoding-Protocol.h>
 
-@class BMFrame;
+@class BMFrame, BMStreamMetadata, NSData, NSString;
 @protocol BMStoreData;
 
-@interface BMStoreEvent : NSObject <NSSecureCoding>
+@interface BMStoreEvent : NSObject <BMStoreEvent, NSSecureCoding>
 {
     id <BMStoreData> _eventBody;
-    double _timestamp;
-    unsigned char _error;
-    BMFrame *_frame;
     Class _dataType;
+    NSString *_segmentName;
+    unsigned long long _frameOffset;
+    NSData *_eventBodyData;
+    unsigned int _eventBodyDataVersion;
+    unsigned char _error;
+    double _timestamp;
+    BMFrame *_frame;
+    BMStreamMetadata *_metadata;
+    unsigned long long _eventCategory;
 }
 
 + (id)eventWithEventType:(Class)arg1 eventData:(id)arg2 dataVersion:(unsigned int)arg3;
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) Class dataType; // @synthesize dataType=_dataType;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long eventCategory; // @synthesize eventCategory=_eventCategory;
+@property(readonly, nonatomic) NSData *eventBodyData; // @synthesize eventBodyData=_eventBodyData;
+@property(readonly, nonatomic) BMStreamMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) BMFrame *frame; // @synthesize frame=_frame;
+@property(readonly, nonatomic) NSString *segmentName; // @synthesize segmentName=_segmentName;
 @property(readonly, nonatomic) unsigned char error; // @synthesize error=_error;
-- (unsigned long long)hash;
+@property(readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)checkAndReportDecodingFailureIfNeededForid:(id)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
-- (void)dealloc;
+@property(readonly, nonatomic) Class dataType;
+- (id)initWithFrame:(id)arg1 segmentName:(id)arg2 frameOffset:(unsigned long long)arg3 eventBodyData:(id)arg4 eventBodyDataVersion:(unsigned int)arg5 dataType:(Class)arg6 eventCategory:(unsigned long long)arg7 timestamp:(double)arg8 metadata:(id)arg9 error:(unsigned char)arg10;
+- (id)initWithFrame:(id)arg1 segmentName:(id)arg2 error:(unsigned char)arg3 eventCategory:(unsigned long long)arg4 metadata:(id)arg5 dataType:(Class)arg6;
+- (id)initWithFrame:(id)arg1 error:(unsigned char)arg2 metadata:(id)arg3;
 - (id)initWithFrame:(id)arg1 error:(unsigned char)arg2;
+- (id)bookmark;
 @property(readonly, nonatomic) id <BMStoreData> eventBody;
-@property(readonly, nonatomic) double timestamp;
 - (id)init;
 - (id)initWithEventBody:(id)arg1 timestamp:(double)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

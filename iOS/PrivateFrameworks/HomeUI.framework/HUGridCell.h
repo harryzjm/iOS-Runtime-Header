@@ -9,7 +9,7 @@
 #import <HomeUI/HUGridCellProtocol-Protocol.h>
 #import <HomeUI/UIPointerInteractionDelegate-Protocol.h>
 
-@class HFItem, HUGridCellBackgroundView, HUGridCellLayoutOptions, NSString, UIPointerInteraction, UIView, UIVisualEffect, UIVisualEffectView;
+@class CAShapeLayer, HFItem, HUGridCellBackgroundView, HUGridCellLayoutOptions, NSString, UIPointerInteraction, UIView, UIVisualEffect, UIVisualEffectView;
 @protocol HUResizableCellDelegate;
 
 @interface HUGridCell : UICollectionViewCell <UIPointerInteractionDelegate, HUGridCellProtocol>
@@ -27,12 +27,14 @@
     HFItem *_item;
     UIVisualEffectView *_gridForegroundView;
     UIPointerInteraction *_pointerInteraction;
+    CAShapeLayer *_dashedBorderLayer;
 }
 
 + (id)_jitterTransformAnimationWithAspectRatio:(double)arg1;
 + (id)_jitterPositionAnimation;
 + (Class)layoutOptionsClass;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CAShapeLayer *dashedBorderLayer; // @synthesize dashedBorderLayer=_dashedBorderLayer;
 @property(retain, nonatomic) UIPointerInteraction *pointerInteraction; // @synthesize pointerInteraction=_pointerInteraction;
 @property(retain, nonatomic) UIVisualEffectView *gridForegroundView; // @synthesize gridForegroundView=_gridForegroundView;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
@@ -53,6 +55,7 @@
 - (void)updateUIWithAnimation:(_Bool)arg1;
 @property(readonly, nonatomic) unsigned long long iconDisplayStyle;
 - (void)_updateForegroundStyle;
+- (void)_removeDashedBorderLayer;
 - (void)layoutOptionsDidChange;
 - (void)setHighlighted:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool managesOwnBackgroundViewLayout;

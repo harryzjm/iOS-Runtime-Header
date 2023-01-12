@@ -17,6 +17,8 @@
     unsigned long long _remainingAttempts;
     unsigned long long _silentAttemptAllowed;
     OTEscrowRecordMetadata *_escrowInformationMetadata;
+    NSString *_expectedFederationId;
+    NSString *_federationId;
     NSString *_label;
     NSString *_recordId;
     int _recordStatus;
@@ -37,6 +39,8 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *expectedFederationId; // @synthesize expectedFederationId=_expectedFederationId;
+@property(retain, nonatomic) NSString *federationId; // @synthesize federationId=_federationId;
 @property(retain, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property(nonatomic) unsigned long long coolOffEnd; // @synthesize coolOffEnd=_coolOffEnd;
 @property(retain, nonatomic) NSString *recordId; // @synthesize recordId=_recordId;
@@ -54,6 +58,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasExpectedFederationId;
+@property(readonly, nonatomic) _Bool hasFederationId;
 - (int)StringAsViabilityStatus:(id)arg1;
 - (id)viabilityStatusAsString:(int)arg1;
 @property(nonatomic) _Bool hasViabilityStatus;

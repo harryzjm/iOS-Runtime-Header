@@ -18,6 +18,7 @@
 {
     _Bool _didAppear;
     _Bool _didUpdateFocus;
+    _Bool _isPreparingCollectionUpdates;
     double _impressionThreshold;
     _TVNeedsMoreContentEvaluator *_needsMoreContentEvaluator;
     id <TVPreviewInteractionController> _previewInteractionController;

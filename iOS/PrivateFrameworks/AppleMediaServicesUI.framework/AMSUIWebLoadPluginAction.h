@@ -4,21 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebLoadPluginAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebLoadPluginAction <AMSUIWebActionRunnable>
 {
     NSString *_bundleIdentifier;
-    AMSUIWebClientContext *_context;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

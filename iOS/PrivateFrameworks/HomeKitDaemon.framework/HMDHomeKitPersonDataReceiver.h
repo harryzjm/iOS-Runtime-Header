@@ -33,7 +33,6 @@
 @property(readonly, copy) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 - (void)clientConnectionsTimerDidFire:(id)arg1;
-- (void)handleUpdatedSettings:(id)arg1 mirrorOutputFuture:(id)arg2;
 - (void)handleRemovedFaceprintWithUUID:(id)arg1 mirrorOutputFuture:(id)arg2;
 - (void)handleRemovedFaceCropWithUUID:(id)arg1 mirrorOutputFuture:(id)arg2;
 - (void)handleRemovedPersonWithUUID:(id)arg1 mirrorOutputFuture:(id)arg2;
@@ -48,13 +47,11 @@
 - (void)handleRemoveFaceprintsMessage:(id)arg1;
 - (void)handleRemoveFaceCropsMessage:(id)arg1;
 - (void)handleRemovePersonsMessage:(id)arg1;
-- (void)handleUpdateSettingsMessage:(id)arg1;
 - (void)handleDisassociateFaceCropsMessage:(id)arg1;
 - (void)handleAssociateFaceCropsMessage:(id)arg1;
 - (void)handleAddOrUpdateFaceprintsMessage:(id)arg1;
 - (void)handleAddOrUpdateFaceCropsMessage:(id)arg1;
 - (void)handleAddOrUpdatePersonsMessage:(id)arg1;
-- (void)handleFetchSettingsMessage:(id)arg1;
 - (void)handleFetchFaceprintsMessage:(id)arg1;
 - (void)handleFetchUnassociatedFaceCropsMessage:(id)arg1;
 - (void)handleFetchPersonFaceCropsMessage:(id)arg1;
@@ -63,7 +60,6 @@
 - (void)handlePerformCloudPullMessage:(id)arg1;
 - (void)handleUnsubscribeMessage:(id)arg1;
 - (void)handleSubscribeMessage:(id)arg1;
-- (void)_performCloudPull;
 - (void)_notifySubscribersOfMessageWithName:(id)arg1 payload:(id)arg2;
 - (id)initWithUUID:(id)arg1 messageDispatcher:(id)arg2 workQueue:(id)arg3 clientConnectionsTimer:(id)arg4;
 - (id)initWithUUID:(id)arg1 messageDispatcher:(id)arg2 workQueue:(id)arg3;

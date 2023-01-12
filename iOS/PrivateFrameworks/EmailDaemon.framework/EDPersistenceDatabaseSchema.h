@@ -23,7 +23,7 @@
 + (void)_initializeSchemas;
 + (id)protectedSchema;
 + (id)schema;
-+ (void)ef_resetOnceTokens;
++ (void)test_resetSchema;
 
 @end
 

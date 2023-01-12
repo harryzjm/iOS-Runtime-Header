@@ -8,19 +8,22 @@
 
 #import <SiriOntology/SIRINLUUserDialogAct-Protocol.h>
 
-@class USOSerializedGraph;
+@class NSUUID, USOSerializedGraph;
 
 @interface SIRINLUUserWantedToProceed : NSObject <SIRINLUUserDialogAct>
 {
+    NSUUID *_taskId;
     USOSerializedGraph *_reference;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) USOSerializedGraph *reference; // @synthesize reference=_reference;
+@property(retain, nonatomic) NSUUID *taskId; // @synthesize taskId=_taskId;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithTaskId:(id)arg1 reference:(id)arg2;
 - (id)initWithReference:(id)arg1;
 
 @end

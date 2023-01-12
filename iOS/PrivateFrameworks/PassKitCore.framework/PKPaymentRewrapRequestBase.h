@@ -4,25 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, PKPaymentApplication, PKPaymentPass, PKWrappedPayment;
+@class NSArray, NSData, NSDictionary, NSString, PKPaymentApplication, PKPaymentPass, PKWrappedPayment;
 
 @interface PKPaymentRewrapRequestBase
 {
+    long long _type;
     PKPaymentPass *_pass;
     PKPaymentApplication *_paymentApplication;
     PKWrappedPayment *_wrappedPayment;
     NSData *_applicationData;
     long long _cryptogramType;
+    NSDictionary *_serviceProviderData;
+    NSString *_currencyCode;
+    NSString *_initiative;
+    NSString *_initiativeContext;
+    NSString *_merchantTokenManagementURL;
+    NSArray *_multiTokenContexts;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *multiTokenContexts; // @synthesize multiTokenContexts=_multiTokenContexts;
+@property(copy, nonatomic) NSString *merchantTokenManagementURL; // @synthesize merchantTokenManagementURL=_merchantTokenManagementURL;
+@property(copy, nonatomic) NSString *initiativeContext; // @synthesize initiativeContext=_initiativeContext;
+@property(copy, nonatomic) NSString *initiative; // @synthesize initiative=_initiative;
+@property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property(copy, nonatomic) NSDictionary *serviceProviderData; // @synthesize serviceProviderData=_serviceProviderData;
 @property(nonatomic) long long cryptogramType; // @synthesize cryptogramType=_cryptogramType;
 @property(copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property(retain, nonatomic) PKWrappedPayment *wrappedPayment; // @synthesize wrappedPayment=_wrappedPayment;
 @property(retain, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property(nonatomic) long long type; // @synthesize type=_type;
 - (id)bodyDictionary;
-@property(readonly, nonatomic) NSString *endpointName;
+@property(readonly, nonatomic) NSArray *endpointComponents;
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 rewrapData:(id)arg3 appleAccountInformation:(id)arg4;
 
 @end

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SpringBoardWallpaper/SBWWallpaperEffectViewBase.h>
+
 #import <SpringBoard/SBApplicationSceneBackgroundView-Protocol.h>
 
 @class NSString, SBWallpaperController;
 
-@interface SBWallpaperEffectView <SBApplicationSceneBackgroundView>
+@interface SBWallpaperEffectView : SBWWallpaperEffectViewBase <SBApplicationSceneBackgroundView>
 {
 }
 

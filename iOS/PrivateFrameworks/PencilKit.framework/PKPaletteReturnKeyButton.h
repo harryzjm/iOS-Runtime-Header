@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKPaletteReturnKeyButtonContentView;
+@class PKPaletteReturnKeyButtonContentView, PKTextInputLanguageSelectionToken;
 
 @interface PKPaletteReturnKeyButton
 {
@@ -12,9 +12,11 @@
     long long _returnKeyType;
     long long _axis;
     PKPaletteReturnKeyButtonContentView *_contentView;
+    PKTextInputLanguageSelectionToken *_observerToken;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKTextInputLanguageSelectionToken *observerToken; // @synthesize observerToken=_observerToken;
 @property(retain, nonatomic) PKPaletteReturnKeyButtonContentView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) long long axis; // @synthesize axis=_axis;
 @property(nonatomic) long long returnKeyType; // @synthesize returnKeyType=_returnKeyType;
@@ -39,6 +41,7 @@
 - (struct CGSize)_contentViewSize;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

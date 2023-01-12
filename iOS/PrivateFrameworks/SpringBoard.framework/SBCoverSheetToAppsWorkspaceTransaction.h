@@ -4,20 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBDismissOverlaysAnimationController, SBTransientOverlayDismissAllWorkspaceTransaction;
+@class SBAutoPIPWorkspaceTransaction, SBDismissOverlaysAnimationController, SBTransientOverlayDismissAllWorkspaceTransaction;
 
 @interface SBCoverSheetToAppsWorkspaceTransaction
 {
     SBDismissOverlaysAnimationController *_dismissOverlaysAnimationController;
     SBTransientOverlayDismissAllWorkspaceTransaction *_transientOverlayTransaction;
+    SBAutoPIPWorkspaceTransaction *_autoPIPTransaction;
     _Bool _preservesBanners;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool preservesBanners; // @synthesize preservesBanners=_preservesBanners;
+- (void)_autoPIPIfNeeded;
 - (unsigned long long)_dismissOverlaysOptions;
 - (void)_dismissOverlaysIfNeeded;
+- (void)_didComplete;
 - (void)_begin;
+- (void)dealloc;
 - (id)initWithTransitionRequest:(id)arg1;
 
 @end

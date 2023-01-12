@@ -9,21 +9,22 @@
 
 @interface TSDScalarPathSource <TSDMixing, TSDSmartPathSource>
 {
-    int mType;
+    _Bool mIsCurveContinuous;
+    unsigned long long mType;
     double mScalar;
     struct CGSize mNaturalSize;
-    _Bool mIsCurveContinuous;
 }
 
-+ (id)pathSourceWithType:(int)arg1 scalar:(double)arg2 naturalSize:(struct CGSize)arg3;
++ (id)pathSourceWithType:(unsigned long long)arg1 scalar:(double)arg2 naturalSize:(struct CGSize)arg3;
 + (id)chevronWithScalar:(double)arg1 naturalSize:(struct CGSize)arg2;
 + (id)regularPolygonWithScalar:(double)arg1 naturalSize:(struct CGSize)arg2;
 + (id)roundedRectangleWithScalar:(double)arg1 naturalSize:(struct CGSize)arg2 continuousCurve:(_Bool)arg3;
 + (id)rectangleWithNaturalSize:(struct CGSize)arg1;
 @property(nonatomic) _Bool isCurveContinuous; // @synthesize isCurveContinuous=mIsCurveContinuous;
-@property(nonatomic) struct CGSize naturalSize; // @synthesize naturalSize=mNaturalSize;
+- (void)setNaturalSize:(struct CGSize)arg1;
+- (struct CGSize)naturalSize;
 @property(nonatomic) double scalar; // @synthesize scalar=mScalar;
-@property(nonatomic) int type; // @synthesize type=mType;
+@property(nonatomic) unsigned long long type; // @synthesize type=mType;
 - (id)inferredAccessibilityDescription;
 - (struct CGPoint)p_getControlKnobPointForChevron;
 - (void)p_setControlKnobPointForChevron:(struct CGPoint)arg1;
@@ -36,13 +37,15 @@
 - (struct CGPath *)p_newRoundedRectPath;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
-- (struct CGSize)scaleFactorForInscribedRectangle;
+- (id)name;
 - (_Bool)isCircular;
 - (_Bool)isRectangular;
 - (id)bezierPathWithoutFlips;
-- (id)valueForSetSelector:(SEL)arg1;
 - (struct CGPoint)getControlKnobPosition:(unsigned long long)arg1;
 - (unsigned long long)numberOfControlKnobs;
+@property(readonly, nonatomic) unsigned long long numberOfSides;
+@property(readonly, nonatomic) double maxCornerRadius;
+@property(readonly, nonatomic) double cornerRadius;
 @property(readonly, nonatomic) double maxScalar;
 - (void)setScalarValue:(id)arg1;
 - (void)scaleToNaturalSize:(struct CGSize)arg1;
@@ -51,9 +54,9 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithType:(int)arg1 scalar:(double)arg2 naturalSize:(struct CGSize)arg3 continuousCurve:(_Bool)arg4;
-- (void)saveToArchive:(struct PathSourceArchive *)arg1;
-- (id)initWithArchive:(const struct PathSourceArchive *)arg1;
+- (id)initWithType:(unsigned long long)arg1 scalar:(double)arg2 naturalSize:(struct CGSize)arg3 continuousCurve:(_Bool)arg4;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 
 @end
 

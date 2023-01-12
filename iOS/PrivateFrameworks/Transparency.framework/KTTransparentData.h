@@ -26,6 +26,8 @@
 @property(retain) NSData *inclusionProof; // @synthesize inclusionProof=_inclusionProof;
 @property(retain) NSDate *currentTreeEpochBeginDate; // @synthesize currentTreeEpochBeginDate=_currentTreeEpochBeginDate;
 @property(retain) NSMutableArray *accounts; // @synthesize accounts=_accounts;
+- (id)clientDatasMissingVRFs:(id)arg1 maximum:(long long)arg2;
+- (id)devicesMissingVRFs:(id)arg1 maximum:(long long)arg2;
 - (id)earliestAddedDate:(id)arg1;
 - (_Bool)validateAndUpdateWithServerLoggableDatas:(id)arg1 accountId:(id)arg2 requestTime:(double)arg3 error:(id *)arg4;
 - (_Bool)validateActiveClientDatasForAccountId:(id)arg1 error:(id *)arg2;

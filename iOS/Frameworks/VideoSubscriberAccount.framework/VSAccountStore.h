@@ -40,7 +40,7 @@
 - (_Bool)isFirstAccountLoaded;
 @property(retain, nonatomic) NSUndoManager *undoManager;
 - (id)_keychainItemsWithLimit:(unsigned long long)arg1;
-- (id)_accountForKeychainItem:(id)arg1 simulateExpiredToken:(_Bool)arg2;
+- (id)_accountForKeychainItem:(id)arg1 simulateExpiredToken:(_Bool)arg2 developerProviderIDs:(id)arg3;
 - (void)_sendRemoteNotification;
 - (void)_sendLocalNotification;
 - (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;

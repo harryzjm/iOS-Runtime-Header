@@ -10,31 +10,26 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFMessageDispatcher, HMFTimer, NSDate, NSHashTable, NSMapTable, NSMutableArray, NSObject, NSString;
+@class NSHashTable, NSMapTable, NSMutableSet, NSObject, NSString;
 @protocol HMDCLLocationManager, OS_dispatch_queue;
 
 @interface HMDLocation : HMFObject <HMFLogging, HMFTimerDelegate, HMDCLLocationManagerDelegate>
 {
     _Bool _beingConfigured;
-    int _locationAuthorized;
     int _authStatus;
-    HMFMessageDispatcher *_msgDispatcher;
+    long long _locationAuthorized;
     NSObject<OS_dispatch_queue> *_handlerQueue;
     id <HMDCLLocationManager> _locationManager;
     NSHashTable *_singleLocationDelegates;
-    NSHashTable *_batchLocationDelegates;
+    NSMutableSet *_batchLocationContexts;
     NSMapTable *_regionStateDelegatesByRegionIdentifier;
     NSMapTable *_pendingRegionMonitoringRequests;
     NSMapTable *_pendingRegionCallbacks;
     NSMapTable *_regionStates;
-    NSMutableArray *_batchLocationTuples;
-    HMFTimer *_extractBatchLocationsTimer;
-    NSDate *_lastFetchBatchLocationsTime;
-    double _batchLocationsFetchInterval;
 }
 
 + (void)timeZoneISOCountryCodeForCLLocationAsync:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-+ (_Bool)isValidLocation:(id)arg1;
++ (_Bool)isAccurateLocation:(id)arg1;
 + (id)nextSunsetTimeForLocation:(id)arg1 date:(id)arg2;
 + (id)sunsetTimeForLocation:(id)arg1;
 + (id)nextSunriseTimeForLocation:(id)arg1 date:(id)arg2;
@@ -46,46 +41,46 @@
 + (id)bundleForLocationManager;
 + (id)sharedManager;
 - (void).cxx_destruct;
-@property(nonatomic) double batchLocationsFetchInterval; // @synthesize batchLocationsFetchInterval=_batchLocationsFetchInterval;
-@property(retain, nonatomic) NSDate *lastFetchBatchLocationsTime; // @synthesize lastFetchBatchLocationsTime=_lastFetchBatchLocationsTime;
-@property(retain, nonatomic) HMFTimer *extractBatchLocationsTimer; // @synthesize extractBatchLocationsTimer=_extractBatchLocationsTimer;
-@property(readonly, nonatomic) NSMutableArray *batchLocationTuples; // @synthesize batchLocationTuples=_batchLocationTuples;
 @property(nonatomic) _Bool beingConfigured; // @synthesize beingConfigured=_beingConfigured;
 @property(readonly, nonatomic) NSMapTable *regionStates; // @synthesize regionStates=_regionStates;
 @property(readonly, nonatomic) NSMapTable *pendingRegionCallbacks; // @synthesize pendingRegionCallbacks=_pendingRegionCallbacks;
 @property(readonly, nonatomic) NSMapTable *pendingRegionMonitoringRequests; // @synthesize pendingRegionMonitoringRequests=_pendingRegionMonitoringRequests;
 @property(readonly, nonatomic) NSMapTable *regionStateDelegatesByRegionIdentifier; // @synthesize regionStateDelegatesByRegionIdentifier=_regionStateDelegatesByRegionIdentifier;
-@property(readonly, nonatomic) NSHashTable *batchLocationDelegates; // @synthesize batchLocationDelegates=_batchLocationDelegates;
+@property(readonly, nonatomic) NSMutableSet *batchLocationContexts; // @synthesize batchLocationContexts=_batchLocationContexts;
 @property(readonly, nonatomic) NSHashTable *singleLocationDelegates; // @synthesize singleLocationDelegates=_singleLocationDelegates;
 @property(nonatomic) int authStatus; // @synthesize authStatus=_authStatus;
 @property(readonly, nonatomic) id <HMDCLLocationManager> locationManager; // @synthesize locationManager=_locationManager;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
-@property(nonatomic) int locationAuthorized; // @synthesize locationAuthorized=_locationAuthorized;
-@property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property(nonatomic) long long locationAuthorized; // @synthesize locationAuthorized=_locationAuthorized;
+- (void)requestMicroLocationLocalizationScanWithMetadata:(id)arg1;
+- (void)requestMicroLocationRecordingScanWithMetadata:(id)arg1;
+- (_Bool)getLOIForCurrentLocation:(id *)arg1;
+- (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
 - (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
 - (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)_handleDeterminedState:(long long)arg1 forRegion:(id)arg2;
 - (void)beingConfigured:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateExitForRegion:(id)arg1;
 - (void)_updateEntryForRegion:(id)arg1;
 - (void)_updateRegionState:(long long)arg1 forRegion:(id)arg2;
 - (id)_delegateforRegion:(id)arg1;
 - (void)_updateWithLocationAuthorizationStatus:(int)arg1;
-- (void)_notifyBatchLocationDelegate:(id)arg1 withLocation:(id)arg2;
-- (void)_notifyBatchLocationDelegatesWithLocation:(id)arg1;
+- (void)_stopExtractingBatchLocationsForContext:(id)arg1;
+- (void)_startExtractingBatchLocationsForDelegate:(id)arg1;
 - (void)_notifySingleLocationDelegate:(id)arg1 withLocation:(id)arg2;
 - (void)_notifySingleLocationDelegatesWithLocation:(id)arg1;
-- (void)_notifyAllLocationDelegatesWithLocation:(id)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)deregisterForRegionUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerForRegionUpdate:(id)arg1 withDelegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_extractBatchLocationsWithDelegate:(id)arg1;
-- (void)_extractSingleLocationWithDelegate:(id)arg1;
+- (id)getCurrentLocation;
+- (void)_extractSingleLocationForDelegate:(id)arg1;
 - (_Bool)_canLocationBeExtracted;
-- (void)startExtractingSingleLocationWithDelegate:(id)arg1;
-- (void)stopExtractingBatchLocations;
-- (void)startExtractingBatchLocationsWithDelegate:(id)arg1;
+- (void)startExtractingSingleLocationForDelegate:(id)arg1;
+- (void)stopExtractingBatchLocationsForDelegate:(id)arg1;
+- (void)startExtractingBatchLocationsForDelegate:(id)arg1;
 - (void)dealloc;
 - (id)initWithLocationManager:(id)arg1;
 - (id)init;

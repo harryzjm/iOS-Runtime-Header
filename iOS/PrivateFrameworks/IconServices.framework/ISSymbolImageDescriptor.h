@@ -4,25 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <IconFoundation/IFSymbolImageDescriptor.h>
 
 #import <IconServices/ISImageDescriptor-Protocol.h>
 
 @class NSString;
 
-@interface ISSymbolImageDescriptor : NSObject <ISImageDescriptor>
+@interface ISSymbolImageDescriptor : IFSymbolImageDescriptor <ISImageDescriptor>
 {
-    double _pointSize;
-    double _scale;
     unsigned long long _size;
     long long _weight;
 }
 
 @property(nonatomic) long long weight; // @synthesize weight=_weight;
 @property(nonatomic) unsigned long long size; // @synthesize size=_size;
-@property(nonatomic) double scale; // @synthesize scale=_scale;
-@property(nonatomic) double pointSize; // @synthesize pointSize=_pointSize;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

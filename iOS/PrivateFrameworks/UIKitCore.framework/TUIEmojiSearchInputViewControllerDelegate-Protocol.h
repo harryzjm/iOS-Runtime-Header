@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSString, UITextField;
+@class NSArray, NSString, UITextField;
 
 @protocol TUIEmojiSearchInputViewControllerDelegate <NSObject>
 - (void)emojiSearchTextFieldDidBecomeInactive:(UITextField *)arg1;
@@ -15,6 +15,8 @@
 - (void)emojiSearchTextFieldWillBecomeActive:(UITextField *)arg1;
 
 @optional
+- (void)emojiSearchTextFieldDidReset:(UITextField *)arg1;
+- (void)emojiSearchDidReceiveResults:(NSArray *)arg1 forExactQuery:(NSString *)arg2 autocorrectedQuery:(NSString *)arg3;
 - (void)emojiSearchWillInsertEmoji:(NSString *)arg1 forSearchQuery:(NSString *)arg2;
 @end
 

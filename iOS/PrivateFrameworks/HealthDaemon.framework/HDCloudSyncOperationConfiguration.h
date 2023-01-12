@@ -6,37 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class CKOperationGroup, HDAssertion, HDCloudSyncRepository, NSDictionary, NSString, NSUUID;
+@class CKOperationGroup, HDAssertion, HDCloudSyncCachedCloudState, HDCloudSyncComputedState, HDCloudSyncContext, HDCloudSyncRepository, NSDate, NSDictionary, NSString, NSUUID;
 
 @interface HDCloudSyncOperationConfiguration : NSObject
 {
+    _Bool _canceled;
     HDCloudSyncRepository *_repository;
     CKOperationGroup *_operationGroup;
     NSString *_syncContainerPrefix;
-    unsigned long long _options;
-    long long _reason;
-    NSUUID *_syncIdentifier;
+    HDCloudSyncContext *_context;
     HDAssertion *_accessibilityAssertion;
+    NSUUID *_syncIdentifier;
+    NSDate *_syncDate;
     NSString *_shortSyncIdentifier;
+    NSString *_shortProfileIdentifier;
+    HDCloudSyncCachedCloudState *_cachedCloudState;
+    HDCloudSyncComputedState *_computedState;
 }
 
 - (void).cxx_destruct;
+@property _Bool canceled; // @synthesize canceled=_canceled;
+@property(retain) HDCloudSyncComputedState *computedState; // @synthesize computedState=_computedState;
+@property(readonly, copy, nonatomic) HDCloudSyncCachedCloudState *cachedCloudState; // @synthesize cachedCloudState=_cachedCloudState;
+@property(readonly, copy, nonatomic) NSString *shortProfileIdentifier; // @synthesize shortProfileIdentifier=_shortProfileIdentifier;
 @property(readonly, copy, nonatomic) NSString *shortSyncIdentifier; // @synthesize shortSyncIdentifier=_shortSyncIdentifier;
-@property(readonly, nonatomic) HDAssertion *accessibilityAssertion; // @synthesize accessibilityAssertion=_accessibilityAssertion;
+@property(readonly, copy, nonatomic) NSDate *syncDate; // @synthesize syncDate=_syncDate;
 @property(readonly, copy, nonatomic) NSUUID *syncIdentifier; // @synthesize syncIdentifier=_syncIdentifier;
-@property(readonly, nonatomic) long long reason; // @synthesize reason=_reason;
-@property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
+@property(readonly, nonatomic) HDAssertion *accessibilityAssertion; // @synthesize accessibilityAssertion=_accessibilityAssertion;
+@property(readonly, copy, nonatomic) HDCloudSyncContext *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *syncContainerPrefix; // @synthesize syncContainerPrefix=_syncContainerPrefix;
 @property(readonly, nonatomic) CKOperationGroup *operationGroup; // @synthesize operationGroup=_operationGroup;
 @property(readonly, nonatomic) HDCloudSyncRepository *repository; // @synthesize repository=_repository;
+- (void)cancelAllOperations;
 @property(readonly, copy, nonatomic) NSDictionary *analyticsDictionary;
 - (id)descriptionForSignpost;
-- (id)databaseForContainer:(id)arg1;
 - (id)pushStoreWithIdentifier:(id)arg1 container:(id)arg2 error:(id *)arg3;
-- (id)pushStoreIdentifierForContainer:(id)arg1 error:(id *)arg2;
+- (id)pushStoresForContainer:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) _Bool rebaseProhibited;
 - (void)dealloc;
-- (id)initWithRepository:(id)arg1 operationGroup:(id)arg2 syncContainerPrefix:(id)arg3 options:(unsigned long long)arg4 reason:(long long)arg5 accessibilityAssertion:(id)arg6 syncIdentifier:(id)arg7;
+- (id)initWithRepository:(id)arg1 operationGroup:(id)arg2 syncContainerPrefix:(id)arg3 context:(id)arg4 accessibilityAssertion:(id)arg5 syncIdentifier:(id)arg6 syncDate:(id)arg7;
 
 @end
 

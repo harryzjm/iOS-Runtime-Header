@@ -31,7 +31,7 @@
 + (id)lightweightFactoryForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2;
 + (id)factoryForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2;
 + (id)factoryForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2 skipLayoutSegments:(_Bool)arg3;
-+ (Class)factoryClassForVisualStyle:(CDStruct_227bb23d)arg1;
++ (Class)factoryClassForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2;
 + (long long)_graphicsQuality;
 + (_Bool)_enabled;
 @property(nonatomic) _Bool drawsOneHandedAffordance; // @synthesize drawsOneHandedAffordance=_drawsOneHandedAffordance;
@@ -119,6 +119,7 @@
 - (double)emojiPopupDividerKeyOffset;
 - (double)keyCornerRadius;
 @property(readonly, getter=renderConfig) UIKBRenderConfig *renderConfig;
+@property(readonly, nonatomic) long long assetIdiom;
 - (id)extraPasscodePaddleTraits;
 - (id)passcodeShiftedControlKeyTraits;
 - (id)passcodeActiveControlKeyTraits;

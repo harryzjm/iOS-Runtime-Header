@@ -9,7 +9,7 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/NSSecureCoding-Protocol.h>
 
-@class NSData, WFColor;
+@class NSData, WFColor, WFIcon;
 
 @interface WFWorkflowIcon : NSObject <NSCopying, NSSecureCoding>
 {
@@ -28,6 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) WFIcon *icon;
 @property(readonly, nonatomic) WFColor *backgroundColor;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

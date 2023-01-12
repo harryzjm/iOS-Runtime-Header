@@ -109,6 +109,7 @@
 - (void)doneButtonPressed:(id)arg1;
 - (void)cancelButtonPressed:(id)arg1;
 - (_Bool)validateInput;
+@property(readonly, nonatomic) UITextField *firstResponderTextField;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

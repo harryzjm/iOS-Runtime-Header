@@ -6,54 +6,63 @@
 
 #import <objc/NSObject.h>
 
+#import <SiriVOX/SVXAudioPowerUpdateListening-Protocol.h>
 #import <SiriVOX/SVXClientService-Protocol.h>
-#import <SiriVOX/SVXClientServiceDelegate-Protocol.h>
+#import <SiriVOX/SVXSessionActivationListening-Protocol.h>
+#import <SiriVOX/SVXSessionActivityListening-Protocol.h>
 
-@class NSString, NSXPCConnection, SVXDeviceSetupContext;
-@protocol OS_dispatch_queue, SVXClientService, SVXClientServiceServerConnectionDelegate;
+@class AFInstanceInfo, NSMutableArray, NSString, NSUUID, NSXPCConnection, SVXDeviceSetupManager, SVXSessionManager, SVXSpeechSynthesizer;
+@protocol SVXClientServiceServerConnectionDelegate, SVXPerforming;
 
 __attribute__((visibility("hidden")))
-@interface SVXClientServiceServerConnection : NSObject <SVXClientService, SVXClientServiceDelegate>
+@interface SVXClientServiceServerConnection : NSObject <SVXClientService, SVXSessionActivationListening, SVXAudioPowerUpdateListening, SVXSessionActivityListening>
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    NSXPCConnection *_connection;
-    id <SVXClientService> _localService;
-    id <SVXClientServiceServerConnectionDelegate> _connectionDelegate;
-    SVXDeviceSetupContext *_deviceSetupContext;
+    NSXPCConnection *_xpcConnection;
+    id <SVXPerforming> _performer;
+    id <SVXClientServiceServerConnectionDelegate> _delegate;
+    AFInstanceInfo *_instanceInfo;
+    _Bool _isConfigured;
+    NSMutableArray *_pendingBlocksAfterConfigure;
+    SVXDeviceSetupManager *_deviceSetupManager;
+    SVXSessionManager *_sessionManager;
+    SVXSpeechSynthesizer *_speechSynthesizer;
+    NSUUID *_uuid;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) SVXDeviceSetupContext *deviceSetupContext; // @synthesize deviceSetupContext=_deviceSetupContext;
-- (void)_cleanUpConnection;
+@property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+- (void)_updateInstanceInfo:(id)arg1;
+- (void)_getInstanceInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_cleanUpXPCConnection;
 - (void)_connectionInvalidated;
 - (void)_connectionInterrupted;
 - (id)_remoteServiceDelegateWithErrorHandler:(CDUnknownBlockType)arg1;
-- (oneway void)notifyAudioSessionDidBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
-- (oneway void)notifyAudioSessionWillBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
-- (oneway void)notifyDidEndUpdateAudioPowerWithType:(long long)arg1;
-- (oneway void)notifyWillBeginUpdateAudioPowerWithType:(long long)arg1 wrapper:(id)arg2;
-- (oneway void)notifySessionDidResignActiveWithDeactivationContext:(id)arg1;
-- (oneway void)notifySessionWillResignActiveWithOptions:(unsigned long long)arg1 duration:(double)arg2;
-- (oneway void)notifySessionDidBecomeActiveWithActivationContext:(id)arg1;
-- (oneway void)notifySessionWillBecomeActiveWithActivationContext:(id)arg1;
-- (oneway void)notifySessionDidStopSoundWithID:(long long)arg1 error:(id)arg2;
-- (oneway void)notifySessionDidStartSoundWithID:(long long)arg1;
-- (oneway void)notifySessionWillStartSoundWithID:(long long)arg1;
-- (oneway void)notifySessionWillPresentFeedbackWithDialogIdentifier:(id)arg1;
-- (oneway void)notifyDidChangeSessionStateFrom:(long long)arg1 to:(long long)arg2;
-- (oneway void)notifyWillChangeSessionStateFrom:(long long)arg1 to:(long long)arg2;
-- (oneway void)notifyDidDeactivateWithContext:(id)arg1;
-- (oneway void)notifyWillDeactivateWithContext:(id)arg1;
-- (oneway void)notifyDidNotActivateWithContext:(id)arg1 error:(id)arg2;
-- (oneway void)notifyDidActivateWithContext:(id)arg1;
-- (oneway void)notifyWillActivateWithContext:(id)arg1;
-- (oneway void)requestPermissionToActivateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performBlockAfterConfigure:(CDUnknownBlockType)arg1;
+- (void)audioSessionDidBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
+- (void)audioSessionWillBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
+- (void)sessionDidResignActiveWithDeactivationContext:(id)arg1;
+- (void)sessionWillResignActiveWithOptions:(unsigned long long)arg1 duration:(double)arg2;
+- (void)sessionDidBecomeActiveWithActivationContext:(id)arg1;
+- (void)sessionWillBecomeActiveWithActivationContext:(id)arg1;
+- (void)sessionDidStopSoundWithID:(long long)arg1 error:(id)arg2;
+- (void)sessionDidStartSoundWithID:(long long)arg1;
+- (void)sessionWillStartSoundWithID:(long long)arg1;
+- (void)sessionWillPresentFeedbackWithDialogIdentifier:(id)arg1;
+- (void)sessionDidChangeFromState:(long long)arg1 toState:(long long)arg2;
+- (void)sessionWillChangeFromState:(long long)arg1 toState:(long long)arg2;
+- (void)audioPowerDidEndUpdateForType:(long long)arg1;
+- (void)audioPowerWillBeginUpdateForType:(long long)arg1 wrapper:(id)arg2;
+- (void)sessionManager:(id)arg1 didDeactivateWithContext:(id)arg2;
+- (void)sessionManager:(id)arg1 willDeactivateWithContext:(id)arg2;
+- (void)sessionManager:(id)arg1 didNotActivateWithContext:(id)arg2 error:(id)arg3;
+- (void)sessionManager:(id)arg1 didActivateWithContext:(id)arg2;
+- (void)sessionManager:(id)arg1 willActivateWithContext:(id)arg2;
 - (oneway void)prepareForDeviceSetupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)setDeviceSetupContext:(id)arg1;
 - (oneway void)stopSpeechSynthesisRequest:(id)arg1;
 - (oneway void)cancelPendingSpeechSynthesisRequest:(id)arg1;
 - (oneway void)enqueueSpeechSynthesisRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (oneway void)synthesizeRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)synthesizeRequest:(id)arg1 handlerUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (oneway void)prewarmRequest:(id)arg1;
 - (oneway void)fetchAudioPowerWithType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)transitToAutomaticEndpointing;
@@ -62,15 +71,18 @@ __attribute__((visibility("hidden")))
 - (oneway void)activateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)prewarmWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)preheatWithActivationSource:(long long)arg1;
+- (oneway void)fetchAlarmAndTimerFiringContextWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)fetchSessionActivityStateWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)fetchSessionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)pingWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidate;
-- (id)initWithConnection:(id)arg1 connectionDelegate:(id)arg2 localService:(id)arg3;
+- (void)configureWithDeviceSetupManager:(id)arg1 sessionManager:(id)arg2 speechSynthesizer:(id)arg3;
+- (void)getInstanceInfoWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, copy) NSString *description;
+- (id)initWithXPCConnection:(id)arg1 performer:(id)arg2 delegate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

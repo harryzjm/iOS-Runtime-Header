@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBProximityBacklightPolicy-Protocol.h>
 
-@class NSString, SBBacklightController;
+@class NSString, SBBacklightController, SBIdleTimerGlobalCoordinator;
 @protocol BSInvalidatable;
 
 @interface SBDefaultProximityBacklightPolicy : NSObject <SBProximityBacklightPolicy>
@@ -16,9 +16,11 @@
     SBBacklightController *_backlightController;
     id <BSInvalidatable> _idleTimerDisableAssertion;
     _Bool _scheduled;
+    SBIdleTimerGlobalCoordinator *_idleTimerGlobalCoordinator;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBIdleTimerGlobalCoordinator *idleTimerGlobalCoordinator; // @synthesize idleTimerGlobalCoordinator=_idleTimerGlobalCoordinator;
 - (void)_turnBacklightOff;
 - (void)_backlightWillUndim:(id)arg1;
 - (void)_restoreBacklightFactor;

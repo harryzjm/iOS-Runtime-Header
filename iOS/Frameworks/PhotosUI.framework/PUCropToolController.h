@@ -13,7 +13,7 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class CEKBadgeTextView, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PFSerialQueue, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, PXImageLayerModulator, PXImageModulationManager, PXUIButton, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
+@class CEKBadgeTextView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSTimer, NUComposition, NUCropModel, PLImageGeometry, PLPhotoEditRenderer, PUAdjustmentsViewController, PUCropAspect, PUCropAspectFlipperView, PUCropAspectViewController, PUCropHandleView, PUCropOverlayView, PUCropPerspectiveAdjustmentsDataSource, PUCropPerspectiveView, PUCropToolControllerSpec, PUCropVideoScrubberView, PUEditActionActivity, PXImageLayerModulator, PXImageModulationManager, PXUIButton, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -45,6 +45,9 @@ __attribute__((visibility("hidden")))
     _Bool _imageIsUsingReframe;
     _Bool _autoButtonInReframeMode;
     _Bool _disableSourceSwitch;
+    float _gainMapValue;
+    long long _initialAction;
+    struct CGImage *_gainMapImage;
     PUAdjustmentsViewController *_adjustmentsViewController;
     UIView *_containerView;
     UIView *_adjustmentPickerView;
@@ -74,7 +77,6 @@ __attribute__((visibility("hidden")))
     NUComposition *__lastKnownComposition;
     PLPhotoEditRenderer *__renderer;
     PLImageGeometry *__geometry;
-    long long __cropMode;
     NUCropModel *_cropModel;
     UIImage *__image;
     double __straightenAngle;
@@ -86,10 +88,11 @@ __attribute__((visibility("hidden")))
     double __suggestedYawAngle;
     PUCropVideoScrubberView *_videoScrubberView;
     double _screenScale;
-    PFSerialQueue *_imageLoadingQueue;
+    NSObject<OS_dispatch_queue> *_imageLoadingQueue;
     NSMutableArray *_imageLoadingQueueCompletionBlocks;
     UILongPressGestureRecognizer *__accessibilityLongPressGestureRecognizer;
     CEKBadgeTextView *_badgeView;
+    NSArray *_toolKeyCommands;
     PXImageModulationManager *_imageModulationManager;
     PXImageLayerModulator *_imageLayerModulator;
     struct CGSize _minimumViewCropRectSizeForHandleGesture;
@@ -106,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) PXImageLayerModulator *imageLayerModulator; // @synthesize imageLayerModulator=_imageLayerModulator;
 @property(retain, nonatomic) PXImageModulationManager *imageModulationManager; // @synthesize imageModulationManager=_imageModulationManager;
+@property(readonly, nonatomic) NSArray *toolKeyCommands; // @synthesize toolKeyCommands=_toolKeyCommands;
 @property(nonatomic) _Bool disableSourceSwitch; // @synthesize disableSourceSwitch=_disableSourceSwitch;
 @property(nonatomic) _Bool autoButtonInReframeMode; // @synthesize autoButtonInReframeMode=_autoButtonInReframeMode;
 @property(nonatomic) _Bool imageIsUsingReframe; // @synthesize imageIsUsingReframe=_imageIsUsingReframe;
@@ -114,7 +118,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CEKBadgeTextView *badgeView; // @synthesize badgeView=_badgeView;
 @property(retain, nonatomic, setter=_setAccessibilityLongPressGestureRecognizer:) UILongPressGestureRecognizer *_accessibilityLongPressGestureRecognizer; // @synthesize _accessibilityLongPressGestureRecognizer=__accessibilityLongPressGestureRecognizer;
 @property(retain, nonatomic) NSMutableArray *imageLoadingQueueCompletionBlocks; // @synthesize imageLoadingQueueCompletionBlocks=_imageLoadingQueueCompletionBlocks;
-@property(retain, nonatomic) PFSerialQueue *imageLoadingQueue; // @synthesize imageLoadingQueue=_imageLoadingQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *imageLoadingQueue; // @synthesize imageLoadingQueue=_imageLoadingQueue;
 @property(nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
 @property(nonatomic) struct CGSize screenSize; // @synthesize screenSize=_screenSize;
 @property(nonatomic) _Bool videoScrubberIsInteracting; // @synthesize videoScrubberIsInteracting=_videoScrubberIsInteracting;
@@ -139,7 +143,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setInputExtent:) struct CGRect _inputExtent; // @synthesize _inputExtent=__inputExtent;
 @property(retain, nonatomic, setter=_setImage:) UIImage *_image; // @synthesize _image=__image;
 @property(retain, nonatomic) NUCropModel *cropModel; // @synthesize cropModel=_cropModel;
-@property(nonatomic, setter=_setCropMode:) long long _cropMode; // @synthesize _cropMode=__cropMode;
 @property(retain, nonatomic, setter=_setGeometry:) PLImageGeometry *_geometry; // @synthesize _geometry=__geometry;
 @property(retain, nonatomic, setter=_setRenderer:) PLPhotoEditRenderer *_renderer; // @synthesize _renderer=__renderer;
 @property(retain, nonatomic, setter=_setLastKnownComposition:) NUComposition *_lastKnownComposition; // @synthesize _lastKnownComposition=__lastKnownComposition;
@@ -185,6 +188,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *adjustmentPickerView; // @synthesize adjustmentPickerView=_adjustmentPickerView;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) PUAdjustmentsViewController *adjustmentsViewController; // @synthesize adjustmentsViewController=_adjustmentsViewController;
+@property(nonatomic) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
+@property(retain, nonatomic) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property(nonatomic) long long initialAction; // @synthesize initialAction=_initialAction;
 @property(nonatomic) _Bool imageLoadingInProgress; // @synthesize imageLoadingInProgress=_imageLoadingInProgress;
 - (void)_accessibilityLongPressChanged:(id)arg1;
 - (void)_preferredContentSizeCategoryChanged;
@@ -200,8 +206,12 @@ __attribute__((visibility("hidden")))
 - (void)_gridButtonTapped:(id)arg1;
 - (void)_flipButtonTapped:(id)arg1;
 - (void)_rotateButtonTapped:(id)arg1;
+- (void)_rotateByApplyingOrientation:(long long)arg1;
+- (void)rotateAssetsClockwise:(id)arg1;
+- (void)rotateAssetsCounterclockwise:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
+- (id)offlineKeyCommands;
 - (id)trailingToolbarViews;
 - (id)centerToolbarView;
 - (id)leadingToolbarViews;
@@ -213,12 +223,18 @@ __attribute__((visibility("hidden")))
 - (void)willResignActiveTool;
 - (void)didBecomeActiveTool;
 - (void)_installRenderedImageAndDisplayIfNeeded;
+- (void)_performInitialAction;
 - (void)willBecomeActiveTool;
 - (_Bool)canBecomeActiveTool;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_setContentViewsHidden:(_Bool)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setContentViewsHidden:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)decreaseSliderValue:(_Bool)arg1;
+- (void)increaseSliderValue:(_Bool)arg1;
+- (_Bool)wantsSliderKeyControl;
+- (_Bool)supportsPreviewingOriginal;
 - (_Bool)handlesMediaViewInsets;
+- (_Bool)handlesVideoPlaying;
 - (_Bool)suppressesEditUpdates;
 - (_Bool)wantsDefaultPreviewView;
 - (struct UIEdgeInsets)preferredPreviewViewInsets;

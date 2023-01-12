@@ -19,8 +19,8 @@
     _Bool _isProfileValidated;
     _Bool _hasClockfaces;
     _Bool _isLocallyAvailable;
+    _Bool _supportsAlwaysOnDisplay;
     NSString *_bundleIdentifier;
-    NSString *_applicationName;
     unsigned long long _applicationType;
     unsigned long long _applicationMode;
     NSString *_bundleVersion;
@@ -41,12 +41,17 @@
     unsigned long long _sequenceNumber;
     NSDictionary *_localizedInfoPlistStrings;
     MIStoreMetadata *_storeMetadata;
+    NSString *_sdkVersion;
+    NSString *_applicationName;
     NSArray *_counterpartIdentifiers;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *counterpartIdentifiers; // @synthesize counterpartIdentifiers=_counterpartIdentifiers;
+@property(copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
+@property(nonatomic) _Bool supportsAlwaysOnDisplay; // @synthesize supportsAlwaysOnDisplay=_supportsAlwaysOnDisplay;
+@property(copy, nonatomic) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property(copy, nonatomic) MIStoreMetadata *storeMetadata; // @synthesize storeMetadata=_storeMetadata;
 @property(nonatomic) _Bool isLocallyAvailable; // @synthesize isLocallyAvailable=_isLocallyAvailable;
 @property(copy, nonatomic) NSDictionary *localizedInfoPlistStrings; // @synthesize localizedInfoPlistStrings=_localizedInfoPlistStrings;
@@ -72,7 +77,6 @@
 @property(nonatomic) _Bool isDeletable; // @synthesize isDeletable=_isDeletable;
 @property(nonatomic) unsigned long long applicationMode; // @synthesize applicationMode=_applicationMode;
 @property(nonatomic) unsigned long long applicationType; // @synthesize applicationType=_applicationType;
-@property(copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (_Bool)isTheSameAppAs:(id)arg1;
 - (id)localizedInfoPlistStringsForKeys:(id)arg1 fetchingFirstMatchingLocalizationInList:(id)arg2;
@@ -87,7 +91,7 @@
 - (id)serialize;
 - (id)initWithSerializedDictionary:(id)arg1;
 - (id)initWithBundleID:(id)arg1 databaseUUID:(id)arg2 sequenceNumber:(unsigned long long)arg3;
-- (id)initWithApplicationProxy:(id)arg1 databaseUUID:(id)arg2 sequenceNumber:(unsigned long long)arg3;
+- (id)initWithApplicationRecord:(id)arg1 databaseUUID:(id)arg2 sequenceNumber:(unsigned long long)arg3;
 - (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

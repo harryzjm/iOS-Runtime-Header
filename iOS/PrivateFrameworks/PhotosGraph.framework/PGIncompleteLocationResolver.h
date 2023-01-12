@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSSet;
+@class NSMutableDictionary, NSSet, PGGraphLocationHelper;
 
 @interface PGIncompleteLocationResolver : NSObject
 {
+    PGGraphLocationHelper *_locationHelper;
     NSSet *_addressNodes;
     NSMutableDictionary *_resolvedLocationNodesCache;
 }
@@ -24,7 +25,7 @@
 - (id)resolvedLocationNodeForIncompleteAddressNode:(id)arg1 withPreferredTargetDimension:(unsigned long long)arg2 resolvedDimension:(unsigned long long *)arg3;
 - (id)resolvedLocationNodeForIncompleteAddressNode:(id)arg1 withTargetDimension:(unsigned long long)arg2;
 - (id)_resolveIdentifierForIncompleteAddressNode:(id)arg1 withTargetDimension:(unsigned long long)arg2;
-- (id)initWithAddressNodes:(id)arg1;
+- (id)initWithAddressNodes:(id)arg1 locationHelper:(id)arg2;
 
 @end
 

@@ -13,6 +13,8 @@
 @interface PXGViewEnvironment : NSObject <NSCopying>
 {
     _Bool _accessibilityEnabled;
+    _Bool _wantsFocusRing;
+    _Bool _emphasized;
     UIColor *_backgroundColor;
     UIColor *_tintColor;
     UITraitCollection *_traitCollection;
@@ -21,6 +23,8 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool emphasized; // @synthesize emphasized=_emphasized;
+@property(readonly, nonatomic) _Bool wantsFocusRing; // @synthesize wantsFocusRing=_wantsFocusRing;
 @property(readonly, nonatomic) _Bool accessibilityEnabled; // @synthesize accessibilityEnabled=_accessibilityEnabled;
 @property(readonly, nonatomic) struct CGColor *selectionHighlightColor; // @synthesize selectionHighlightColor=_selectionHighlightColor;
 @property(readonly, nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;

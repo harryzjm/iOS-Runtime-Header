@@ -17,11 +17,15 @@
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedProcessing:(id)arg3;
 - (id)newDefaultRequestInstance;
 - (id)initWithFaceObservations:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithFaceObservations:(id)arg1;
 - (long long)dependencyProcessingOrdinality;
+
+// Remaining properties
+@property(readonly, copy) NSArray *results; // @dynamic results;
 
 @end
 

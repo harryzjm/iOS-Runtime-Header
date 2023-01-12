@@ -7,7 +7,6 @@
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
 @protocol CKFetchRecordZonesOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordZonesOperation
 {
     _Bool _isFetchAllRecordZonesOperation;
@@ -38,11 +37,13 @@ __attribute__((visibility("hidden")))
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)checkPCSIdentity;
+- (void)fetchZonesFromServer:(id)arg1;
 - (void)fetchZonesFromServer;
 - (int)operationType;
 - (void)_cachePCSOnRecordZone:(id)arg1;
 - (void)_continueHandlingFetchedRecordZone:(id)arg1 zoneID:(id)arg2;
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;
+- (void)_handleAnonymousZoneDataObjects:(id)arg1 responsecode:(id)arg2;
 - (void)saveZonesWithUpdatedZonePCS;
 - (void)_handleRecordZoneSaved:(id)arg1 error:(id)arg2;
 - (_Bool)_locked_checkAndUpdateZonePCSIfNeededForZone:(id)arg1 error:(id *)arg2;
@@ -52,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

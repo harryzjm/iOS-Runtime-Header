@@ -23,11 +23,13 @@
     NSNumber *_speed;
     NSNumber *_verticalAccuracy;
     NSNumber *_horizontalAccuracy;
+    long long _accessState;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long accessState; // @synthesize accessState=_accessState;
 @property(readonly, nonatomic) _Bool preciseLocationEnabled; // @synthesize preciseLocationEnabled=_preciseLocationEnabled;
 @property(readonly, copy, nonatomic) NSNumber *horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property(readonly, copy, nonatomic) NSNumber *verticalAccuracy; // @synthesize verticalAccuracy=_verticalAccuracy;
@@ -45,7 +47,7 @@
 @property(readonly) unsigned long long hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithLatitude:(id)arg1 longitude:(id)arg2 altitude:(id)arg3 direction:(id)arg4 speed:(id)arg5 verticalAccuracy:(id)arg6 horizontalAccuracy:(id)arg7 preciseLocationEnabled:(_Bool)arg8;
+- (id)initWithLatitude:(id)arg1 longitude:(id)arg2 altitude:(id)arg3 direction:(id)arg4 speed:(id)arg5 verticalAccuracy:(id)arg6 horizontalAccuracy:(id)arg7 preciseLocationEnabled:(_Bool)arg8 accessState:(long long)arg9;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 - (id)ad_shortDescription;
 - (id)initWithSerializedBackingStore:(id)arg1;

@@ -18,6 +18,7 @@
 }
 
 + (id)highlightedBackgroundColor;
++ (double)estimatedLabelWidthForContainerWidth:(double)arg1;
 + (id)defaultSymbolImageName;
 + (id)cellIdentifier;
 - (void).cxx_destruct;
@@ -27,8 +28,8 @@
 @property(copy, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)setSelected:(_Bool)arg1;
+- (double)estimatedLabelWidth;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
-- (double)estimatedLabelWidthForContainerWidth:(double)arg1;
 - (void)setupContent;
 - (id)initWithFrame:(struct CGRect)arg1;
 

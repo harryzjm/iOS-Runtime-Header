@@ -37,7 +37,7 @@
 @property unsigned int ttStyle; // @synthesize ttStyle=_ttStyle;
 @property(retain) NSString *name; // @synthesize name=_name;
 @property(retain) NSDictionary *attributes; // @synthesize attributes=_attributes;
-@property(readonly, nonatomic) NSString *icaxStyleDescription;
+- (id)icaxStyleDescription;
 @property(readonly) _Bool isTextList;
 @property(readonly, copy, nonatomic) NSAttributedString *attributedName;
 

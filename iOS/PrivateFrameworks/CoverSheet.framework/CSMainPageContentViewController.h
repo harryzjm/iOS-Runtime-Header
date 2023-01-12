@@ -7,13 +7,14 @@
 #import <CoverSheet/CSCombinedListViewControllerDelegate-Protocol.h>
 #import <CoverSheet/CSNotificationDestination-Protocol.h>
 #import <CoverSheet/CSPageViewControllerProtocol-Protocol.h>
+#import <CoverSheet/CSScrollablePageViewControllerProtocol-Protocol.h>
 #import <CoverSheet/CSUserPresenceMonitorObserver-Protocol.h>
 #import <CoverSheet/PTSettingsKeyObserver-Protocol.h>
 
-@class CSAppearance, CSBehavior, CSCombinedListViewController, CSLayoutStrategy, CSLockScreenSettings, CSLogoutButtonViewController, CSPresentation, CSUserPictureViewController, CSUserPresenceMonitor, NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
-@protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, CSMainPageContentViewControllerNotificationObserver, CSNotificationDispatcher, CSTouchEnvironmentStatusProviding, CSUserSessionControlling, CSWallpaperColorProvider, CSWallpaperViewProviding, SBFAuthenticationStatusProvider, UICoordinateSpace;
+@class CHSWidgetHost, CSAppearance, CSBehavior, CSCombinedListViewController, CSLayoutStrategy, CSLockScreenSettings, CSLogoutButtonViewController, CSPresentation, CSUserPictureViewController, CSUserPresenceMonitor, CSWidgetMetricsProvider, NSArray, NSSet, NSString, _UILegibilitySettings;
+@protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, CSMainPageContentViewControllerNotificationObserver, CSNotificationDispatcher, CSScrollablePageViewControllerDelegate, CSTouchEnvironmentStatusProviding, CSUserSessionControlling, CSWallpaperColorProvider, CSWallpaperViewProviding, SBFAuthenticationStatusProvider, SBSWidgetMetricsProviding, UICoordinateSpace;
 
-@interface CSMainPageContentViewController <PTSettingsKeyObserver, CSCombinedListViewControllerDelegate, CSUserPresenceMonitorObserver, CSNotificationDestination, CSPageViewControllerProtocol>
+@interface CSMainPageContentViewController <PTSettingsKeyObserver, CSCombinedListViewControllerDelegate, CSUserPresenceMonitorObserver, CSNotificationDestination, CSPageViewControllerProtocol, CSScrollablePageViewControllerProtocol>
 {
     CSUserPictureViewController *_userPictureViewController;
     CSCombinedListViewController *_combinedListViewController;
@@ -22,9 +23,12 @@
     id <SBFAuthenticationStatusProvider> _authenticationProvider;
     CSLockScreenSettings *_testSettings;
     long long _smoothestPermittedStrategy;
+    CHSWidgetHost *_widgetHost;
+    CSWidgetMetricsProvider *_widgetMetricsProvider;
     _Bool _useFakeBlur;
     CSLayoutStrategy *_layoutStrategy;
     id <CSWallpaperColorProvider> _wallpaperColorProvider;
+    id <CSScrollablePageViewControllerDelegate> _delegate;
     CSUserPresenceMonitor *_userPresenceMonitor;
     id <CSTouchEnvironmentStatusProviding> _touchEnvironmentStatusProvider;
     id <CSUserSessionControlling> _userSessionController;
@@ -42,6 +46,7 @@
 @property(nonatomic) __weak id <CSUserSessionControlling> userSessionController; // @synthesize userSessionController=_userSessionController;
 @property(nonatomic) __weak id <CSTouchEnvironmentStatusProviding> touchEnvironmentStatusProvider; // @synthesize touchEnvironmentStatusProvider=_touchEnvironmentStatusProvider;
 @property(retain, nonatomic) CSUserPresenceMonitor *userPresenceMonitor; // @synthesize userPresenceMonitor=_userPresenceMonitor;
+@property(nonatomic) __weak id <CSScrollablePageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool useFakeBlur; // @synthesize useFakeBlur=_useFakeBlur;
 @property(nonatomic) __weak id <CSWallpaperColorProvider> wallpaperColorProvider; // @synthesize wallpaperColorProvider=_wallpaperColorProvider;
 @property(retain, nonatomic) CSLayoutStrategy *layoutStrategy; // @synthesize layoutStrategy=_layoutStrategy;
@@ -53,6 +58,9 @@
 - (id)_mainPageView;
 - (_Bool)_isPortrait;
 - (_Bool)_listBelowDateTime;
+- (void)scrollViewWillEndDragging:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (double)listInsetX;
 - (double)customListWidth;
 - (unsigned long long)listWidthStrategy;
@@ -70,6 +78,7 @@
 - (_Bool)isPresentingNotificationInLongLook;
 - (_Bool)isNotificationContentExtensionVisible:(id)arg1;
 - (void)notificationsLoadedForSectionIdentifier:(id)arg1;
+- (void)updateNotificationSystemSettings:(id)arg1 previousSystemSettings:(id)arg2;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)withdrawNotificationRequest:(id)arg1;
 - (void)updateNotificationRequest:(id)arg1;
@@ -82,9 +91,11 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+@property(readonly, nonatomic) _Bool hasVisibleBreakthroughContent;
 @property(readonly, nonatomic, getter=isShowingMediaControls) _Bool showingMediaControls;
 - (void)dealloc;
 - (id)initWithAuthenticationProvider:(id)arg1;
+@property(readonly, nonatomic) id <SBSWidgetMetricsProviding> widgetMetricsProvider;
 - (id)init;
 
 // Remaining properties
@@ -92,8 +103,6 @@
 @property(readonly, copy, nonatomic) CSBehavior *activeBehavior;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 @property(readonly, nonatomic) _Bool authenticated;
-@property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 @property(nonatomic) __weak id <CSCoverSheetViewControllerProtocol> coverSheetViewController;
@@ -112,6 +121,8 @@
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, nonatomic) long long presentationAltitude;
 @property(readonly, nonatomic) __weak id <UICoordinateSpace> presentationCoordinateSpace;
+@property(readonly, nonatomic) unsigned int presentationFrameRateRangeReason;
+@property(readonly, nonatomic) struct CAFrameRateRange presentationPreferredFrameRateRange;
 @property(readonly, nonatomic) long long presentationPriority;
 @property(readonly, copy, nonatomic) NSArray *presentationRegions;
 @property(readonly, nonatomic) long long presentationStyle;

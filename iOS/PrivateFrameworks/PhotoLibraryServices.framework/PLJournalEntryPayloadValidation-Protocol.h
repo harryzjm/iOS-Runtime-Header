@@ -12,8 +12,9 @@
 + (_Bool)shouldPersistForChangedKeys:(NSSet *)arg1 entityName:(NSString *)arg2;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (NSSet *)additionalEntityNames;
-+ (_Bool)isValidForPersistenceWithObjectDictionary:(NSDictionary *)arg1;
++ (_Bool)isValidForPersistenceWithObjectDictionary:(NSDictionary *)arg1 additionalEntityName:(NSString *)arg2;
 + (void)validatePayloadPropertiesForManagedObjectModel:(NSManagedObjectModel *)arg1;
++ (NSDictionary *)persistedPropertyNamesForEntityNames;
 + (NSDictionary *)modelProperties;
 - (_Bool)comparePayloadToObjectDictionary:(NSDictionary *)arg1 usingModelProperties:(NSDictionary *)arg2 errorDescriptions:(NSMutableArray *)arg3;
 @end

@@ -10,11 +10,10 @@ __attribute__((visibility("hidden")))
     float *_perMeshPtr;
 }
 
-+ (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
++ (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (_Bool)needsMetalContext;
 - (void)dealloc;
-- (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
 
 @end
 

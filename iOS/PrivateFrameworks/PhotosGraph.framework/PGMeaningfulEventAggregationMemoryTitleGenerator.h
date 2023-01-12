@@ -11,18 +11,19 @@
     unsigned long long _meaning;
     NSSet *_features;
     NSSet *_meaningfulEvents;
+    double _unreliableMeaningRatioThresholdForSpecificTitle;
 }
 
 + (id)_momentNodesFromMeaningfulEvents:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) double unreliableMeaningRatioThresholdForSpecificTitle; // @synthesize unreliableMeaningRatioThresholdForSpecificTitle=_unreliableMeaningRatioThresholdForSpecificTitle;
 @property(readonly, nonatomic) NSSet *meaningfulEvents; // @synthesize meaningfulEvents=_meaningfulEvents;
 @property(readonly, nonatomic) NSSet *features; // @synthesize features=_features;
 @property(readonly, nonatomic) unsigned long long meaning; // @synthesize meaning=_meaning;
-- (id)_meaningLabelForNotReliableTitle;
 - (id)_meaningLabelForTitle;
 - (id)_subtitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithMeaning:(unsigned long long)arg1 features:(id)arg2 meaningfulEvents:(id)arg3;
+- (id)initWithMeaning:(unsigned long long)arg1 features:(id)arg2 meaningfulEvents:(id)arg3 titleGenerationContext:(id)arg4;
 
 @end
 

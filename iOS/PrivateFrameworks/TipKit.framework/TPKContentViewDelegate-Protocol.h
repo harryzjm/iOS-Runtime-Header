@@ -6,10 +6,17 @@
 
 #import <TipKit/NSObject-Protocol.h>
 
-@class TPKContentView;
+@class NSString, TPKContentView, TPSURLAction, UIImage;
 
 @protocol TPKContentViewDelegate <NSObject>
-- (void)_contentViewWillBeRemoved:(TPKContentView *)arg1;
-- (void)_contentViewWillBeShown:(TPKContentView *)arg1;
+- (UIImage *)contentView:(TPKContentView *)arg1 iconForCustomizationID:(long long)arg2;
+- (NSString *)contentView:(TPKContentView *)arg1 personalizedStringForID:(long long)arg2;
+- (void)contentView:(TPKContentView *)arg1 needsLayoutForReason:(long long)arg2;
+- (void)contentView:(TPKContentView *)arg1 viewTappedForIdentifier:(NSString *)arg2;
+- (void)contentView:(TPKContentView *)arg1 actionTapped:(TPSURLAction *)arg2;
+- (void)contentViewCloseButtonTapped:(TPKContentView *)arg1;
+- (void)contentViewWillBeRemoved:(TPKContentView *)arg1;
+- (void)contentViewWillBeShown:(TPKContentView *)arg1;
+- (void)contentViewWasCreated:(TPKContentView *)arg1;
 @end
 

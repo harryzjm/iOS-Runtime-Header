@@ -13,7 +13,7 @@
 {
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_diskWriteQueue;
-    NSURL *_builtInListURL;
+    CDUnknownBlockType _builtInListDataProvider;
     NSURL *_downloadsDirectoryURL;
     NSString *_resourceName;
     NSString *_resourceVersion;
@@ -49,6 +49,7 @@
 - (id)_downloadedListResourceName;
 - (id)_urlOfDownloadedList;
 - (void)dealloc;
+- (id)initWithDownloadsDirectoryURL:(id)arg1 resourceName:(id)arg2 resourceVersion:(id)arg3 updateDateDefaultsKey:(id)arg4 updateInterval:(double)arg5 snapshotClass:(Class)arg6 snapshotTransformerClass:(Class)arg7 builtInListDataProvider:(CDUnknownBlockType)arg8;
 - (id)initWithBuiltInListURL:(id)arg1 downloadsDirectoryURL:(id)arg2 resourceName:(id)arg3 resourceVersion:(id)arg4 updateDateDefaultsKey:(id)arg5 updateInterval:(double)arg6 snapshotClass:(Class)arg7 snapshotTransformerClass:(Class)arg8;
 - (id)init;
 

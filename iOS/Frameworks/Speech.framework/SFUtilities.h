@@ -10,7 +10,16 @@
 {
 }
 
++ (id)issueSandboxExtensionForPath:(id)arg1 error:(id *)arg2;
++ (_Bool)canAccessPathAt:(id)arg1 methodName:(id)arg2 error:(id *)arg3;
++ (_Bool)isSpeechXPCEnabled;
++ (id)recognizedResultFromPackage:(id)arg1;
++ (id)transcriptionsWithTokens:(id)arg1;
++ (id)recognitionMetadataFromSpeechPhrases:(id)arg1 afAudioAnalytics:(id)arg2 utteranceStart:(double)arg3;
++ (id)transcriptionFromSpeechPhrases:(id)arg1 afAudioAnalytics:(id)arg2 utteranceStart:(double)arg3;
++ (id)taskNameFromTaskHint:(long long)arg1;
 + (void)supportedLocalesWithCompletion:(CDUnknownBlockType)arg1;
++ (void)initialize;
 
 @end
 

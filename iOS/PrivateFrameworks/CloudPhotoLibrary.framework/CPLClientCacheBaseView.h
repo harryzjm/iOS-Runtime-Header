@@ -14,6 +14,7 @@
     id <CPLEngineIDMapping> _idMapping;
 }
 
++ (id)clientCacheBaseViewIDMappingForStore:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <CPLEngineIDMapping> idMapping; // @synthesize idMapping=_idMapping;
 @property(readonly, nonatomic) CPLEngineCloudCache *cloudCache; // @synthesize cloudCache=_cloudCache;

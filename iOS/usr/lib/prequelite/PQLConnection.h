@@ -28,6 +28,7 @@
     _Bool _useBatching;
     _Bool _useQueue;
     _Bool _needsFullSync;
+    _Bool _needsBarrierFSync;
     struct cache_s *_preparedStatements;
     NSObject<OS_dispatch_source> *_stmtCacheSource;
     NSMutableArray *_stmtCacheCleanupQueue;
@@ -111,6 +112,7 @@
 @property(readonly, nonatomic) _Bool isBatchSuspended;
 - (_Bool)_performWithFlags:(unsigned int)arg1 action:(CDUnknownBlockType)arg2 whenFlushed:(CDUnknownBlockType)arg3;
 - (void)makeNextFlushFullSync;
+- (void)makeNextFlushBarrierFSync;
 - (void)flush;
 - (_Bool)_fullSync;
 - (void)_vacuumIfNeeded;

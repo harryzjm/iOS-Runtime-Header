@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HomeKit/HMFDumpState-Protocol.h>
-#import <HomeKit/HMObjectMerge-Protocol.h>
+#import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSString;
 
-@interface HMAccessoryCategory : NSObject <NSSecureCoding, HMObjectMerge, HMFDumpState>
+@interface HMAccessoryCategory : NSObject <HMFDumpState, NSCopying, NSSecureCoding>
 {
     NSString *_categoryType;
     NSString *_name;
@@ -20,20 +20,20 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property(copy, nonatomic) NSString *categoryType; // @synthesize categoryType=_categoryType;
-@property(readonly) _Bool isWiFiRouterAccessoryCategory;
-@property(readonly) _Bool isTelevisionAccessoryCategory;
-@property(readonly, nonatomic) NSUUID *uniqueIdentifier;
-- (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+@property(readonly, copy) NSString *name; // @synthesize name=_name;
+@property(readonly, copy) NSString *categoryType; // @synthesize categoryType=_categoryType;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)dumpState;
-- (id)localizedDescriptionPlural;
-@property(readonly, copy, nonatomic) NSString *localizedDescription;
 @property(readonly, copy) NSString *description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dumpState;
+@property(readonly) _Bool isWiFiRouterAccessoryCategory;
+@property(readonly) _Bool isTelevisionAccessoryCategory;
+- (id)localizedDescriptionPlural;
+@property(readonly, copy) NSString *localizedDescription;
+- (id)uniqueIdentifier;
 - (id)initWithType:(id)arg1 name:(id)arg2;
 - (id)init;
 

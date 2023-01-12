@@ -16,9 +16,14 @@
 - (oneway void)removeAllFriendsWithHandler:(void (^)(_Bool))arg1;
 - (oneway void)removeFriendWithPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)getCommonFriendsForPlayer:(GKPlayerInternal *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
-- (oneway void)acceptFriendRequestWithIdentifier:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)removeMessageInboxEntries:(NSArray *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)getMessageInboxEntries:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)didAccept:(_Bool)arg1 friendRequest:(GKPlayerInternal *)arg2 handler:(void (^)(NSError *))arg3;
+- (oneway void)getActiveFriendRequests:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)getFriendCodeDetailWithIdentifiers:(NSArray *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)rejectFriendRequestWithIdentifier:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)acceptFriendRequestWithIdentifier:(NSString *)arg1 sendPush:(_Bool)arg2 handler:(void (^)(NSError *))arg3;
 - (oneway void)cancelFriendRequestWithIdentifier:(NSString *)arg1 handler:(void (^)(NSError *))arg2;
-- (oneway void)createFriendRequestWithIdentifier:(NSString *)arg1 handler:(void (^)(NSString *, NSError *))arg2;
-- (oneway void)getPlayerIDFromFriendCode:(NSString *)arg1 handler:(void (^)(NSString *, NSError *))arg2;
+- (oneway void)expireFriendList;
 @end
 

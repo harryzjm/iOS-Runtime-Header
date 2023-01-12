@@ -13,7 +13,7 @@
     double _increment;
 }
 
-+ (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)cellSpecFromTSKFormat:(id)arg1;
 + (id)sliderSpecWithMinimum:(double)arg1 maximum:(double)arg2 increment:(double)arg3;
 + (id)stepperSpecWithMinimum:(double)arg1 maximum:(double)arg2 increment:(double)arg3;
@@ -25,8 +25,8 @@
 @property(readonly, nonatomic) double maximum; // @synthesize maximum=_maximum;
 @property(readonly, nonatomic) double minimum; // @synthesize minimum=_minimum;
 - (unsigned int)interactionType;
-- (void)saveToArchive:(struct CellSpecArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)tskStepperSliderFormatWithDisplayFormatType:(unsigned int)arg1;
 - (_Bool)validateFormatAndValue:(id)arg1;
 - (double)valueFromString:(id)arg1 locale:(id)arg2;

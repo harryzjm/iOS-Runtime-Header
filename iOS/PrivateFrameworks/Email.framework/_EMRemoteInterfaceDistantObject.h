@@ -9,18 +9,21 @@
 #import <Email/EMXPCProxyCreating-Protocol.h>
 
 @class EMRemoteConnection;
+@protocol EMRemoteProxyGenerator;
 
 __attribute__((visibility("hidden")))
 @interface _EMRemoteInterfaceDistantObject : NSObject <EMXPCProxyCreating>
 {
     _Bool _synchronous;
     EMRemoteConnection *_remoteInterface;
+    id <EMRemoteProxyGenerator> _proxyGenerator;
     CDUnknownBlockType _reattemptHandler;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isSynchronous) _Bool synchronous; // @synthesize synchronous=_synchronous;
 @property(readonly, copy, nonatomic) CDUnknownBlockType reattemptHandler; // @synthesize reattemptHandler=_reattemptHandler;
+@property(retain, nonatomic) id <EMRemoteProxyGenerator> proxyGenerator; // @synthesize proxyGenerator=_proxyGenerator;
 @property(readonly, nonatomic) EMRemoteConnection *remoteInterface; // @synthesize remoteInterface=_remoteInterface;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
@@ -32,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (_Bool)conformsToProtocol:(id)arg1;
-- (id)initWithRemoteInterface:(id)arg1 synchronous:(_Bool)arg2 reattemptHandler:(CDUnknownBlockType)arg3;
+- (id)initWithRemoteInterface:(id)arg1 proxyGenerator:(id)arg2 synchronous:(_Bool)arg3 reattemptHandler:(CDUnknownBlockType)arg4;
 
 @end
 

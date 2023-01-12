@@ -6,83 +6,67 @@
 
 #pragma mark Named Structures
 
-struct SVGElement;
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*> *__next_;
-};
-
-struct reference_wrapper<SVG::Element>;
-
-struct unique_ptr<SVG::SVGElement, std::__1::default_delete<SVG::SVGElement>> {
-    struct __compressed_pair<SVG::SVGElement *, std::__1::default_delete<SVG::SVGElement>> {
-        struct SVGElement *_field1;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unordered_map<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*> __value_;
+struct unordered_map<std::string, std::stack<std::string>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::stack<std::string>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::stack<std::string>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::stack<std::string>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct vector<std::__1::reference_wrapper<SVG::Element>, std::__1::allocator<std::__1::reference_wrapper<SVG::Element>>> {
-    struct reference_wrapper<SVG::Element> *__begin_;
-    struct reference_wrapper<SVG::Element> *__end_;
-    struct __compressed_pair<std::__1::reference_wrapper<SVG::Element>*, std::__1::allocator<std::__1::reference_wrapper<SVG::Element>>> {
-        struct reference_wrapper<SVG::Element> *__value_;
+struct vector<std::reference_wrapper<SVG::Element>, std::allocator<std::reference_wrapper<SVG::Element>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::reference_wrapper<SVG::Element>*, std::allocator<std::reference_wrapper<SVG::Element>>> {
+        void *__value_;
     } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct unique_ptr<SVG::SVGElement, std::__1::default_delete<SVG::SVGElement>> {
-    struct __compressed_pair<SVG::SVGElement *, std::__1::default_delete<SVG::SVGElement>> {
-        struct SVGElement *_field1;
-    } _field1;
-} unique_ptr_bd23540c;
-
-typedef struct unordered_map<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, void *>*> __value_;
+typedef struct unordered_map<std::string, std::stack<std::string>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::stack<std::string>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::stack<std::string>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::stack<std::string>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::stack<std::string>>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::stack<std::__1::basic_string<char>, std::__1::deque<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::stack<std::string>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
             float __value_;
         } __p3_;
     } __table_;
-} unordered_map_aadc992e;
+} unordered_map_823f4523;
 
-typedef struct vector<std::__1::reference_wrapper<SVG::Element>, std::__1::allocator<std::__1::reference_wrapper<SVG::Element>>> {
-    struct reference_wrapper<SVG::Element> *__begin_;
-    struct reference_wrapper<SVG::Element> *__end_;
-    struct __compressed_pair<std::__1::reference_wrapper<SVG::Element>*, std::__1::allocator<std::__1::reference_wrapper<SVG::Element>>> {
-        struct reference_wrapper<SVG::Element> *__value_;
+typedef struct vector<std::reference_wrapper<SVG::Element>, std::allocator<std::reference_wrapper<SVG::Element>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::reference_wrapper<SVG::Element>*, std::allocator<std::reference_wrapper<SVG::Element>>> {
+        void *__value_;
     } __end_cap_;
-} vector_61f1bb43;
+} vector_feaf3631;
 

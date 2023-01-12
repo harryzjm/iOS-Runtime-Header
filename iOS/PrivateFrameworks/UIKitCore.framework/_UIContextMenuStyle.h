@@ -9,6 +9,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSArray, UITraitCollection, UIView, UIWindow;
+@protocol _UITraitEnvironmentInternal;
 
 @interface _UIContextMenuStyle : NSObject <NSCopying>
 {
@@ -16,30 +17,34 @@
     _Bool _preventPreviewRasterization;
     _Bool _reversesActionOrderWhenAttachedToTop;
     _Bool _previewOverlapsMenu;
+    _Bool _ignoresContainerSizeChange;
+    _Bool _keepsInputViewsVisible;
+    _Bool _ignoresDefaultSizingRules;
     _Bool __allowsImmediateSelection;
     _Bool __shouldAvoidInputViews;
-    _Bool __inheritTraitsFromPresentingViewController;
-    _Bool __prefersActualContentSize;
     UIWindow *_containerWindow;
     UIView *_containerView;
     unsigned long long _preferredLayout;
     UITraitCollection *_preferredTraitCollection;
     NSArray *_preferredBackgroundEffects;
+    id <_UITraitEnvironmentInternal> __parentTraitEnvironmentForUserInterfaceStyle;
     struct UIEdgeInsets _preferredEdgeInsets;
     struct UIEdgeInsets _preferredBackgroundInsets;
-    CDStruct_a36705e8 __preferredAnchor;
+    CDStruct_17a0fc55 __preferredAnchor;
 }
 
 + (id)defaultStyle;
 - (void).cxx_destruct;
-@property(nonatomic, setter=_setPrefersActualContentSize:) _Bool _prefersActualContentSize; // @synthesize _prefersActualContentSize=__prefersActualContentSize;
-@property(nonatomic, getter=_inheritTraitsFromPresentingViewController) _Bool _inheritTraitsFromPresentingViewController; // @synthesize _inheritTraitsFromPresentingViewController=__inheritTraitsFromPresentingViewController;
+@property(retain, nonatomic, getter=_parentTraitEnvironmentForUserInterfaceStyle) id <_UITraitEnvironmentInternal> _parentTraitEnvironmentForUserInterfaceStyle; // @synthesize _parentTraitEnvironmentForUserInterfaceStyle=__parentTraitEnvironmentForUserInterfaceStyle;
 @property(nonatomic, getter=_shouldAvoidInputViews) _Bool _shouldAvoidInputViews; // @synthesize _shouldAvoidInputViews=__shouldAvoidInputViews;
 @property(nonatomic, getter=_allowsImmediateSelection) _Bool _allowsImmediateSelection; // @synthesize _allowsImmediateSelection=__allowsImmediateSelection;
-@property(nonatomic, getter=_preferredAnchor) CDStruct_a36705e8 _preferredAnchor; // @synthesize _preferredAnchor=__preferredAnchor;
+@property(nonatomic, getter=_preferredAnchor) CDStruct_17a0fc55 _preferredAnchor; // @synthesize _preferredAnchor=__preferredAnchor;
 @property(nonatomic) struct UIEdgeInsets preferredBackgroundInsets; // @synthesize preferredBackgroundInsets=_preferredBackgroundInsets;
 @property(retain, nonatomic) NSArray *preferredBackgroundEffects; // @synthesize preferredBackgroundEffects=_preferredBackgroundEffects;
 @property(retain, nonatomic) UITraitCollection *preferredTraitCollection; // @synthesize preferredTraitCollection=_preferredTraitCollection;
+@property(nonatomic) _Bool ignoresDefaultSizingRules; // @synthesize ignoresDefaultSizingRules=_ignoresDefaultSizingRules;
+@property(nonatomic) _Bool keepsInputViewsVisible; // @synthesize keepsInputViewsVisible=_keepsInputViewsVisible;
+@property(nonatomic) _Bool ignoresContainerSizeChange; // @synthesize ignoresContainerSizeChange=_ignoresContainerSizeChange;
 @property(nonatomic) _Bool previewOverlapsMenu; // @synthesize previewOverlapsMenu=_previewOverlapsMenu;
 @property(nonatomic) _Bool reversesActionOrderWhenAttachedToTop; // @synthesize reversesActionOrderWhenAttachedToTop=_reversesActionOrderWhenAttachedToTop;
 @property(nonatomic) _Bool preventPreviewRasterization; // @synthesize preventPreviewRasterization=_preventPreviewRasterization;
@@ -51,6 +56,7 @@
 @property(readonly, nonatomic, getter=_layoutAllowsMenu) _Bool _layoutAllowsMenu;
 @property(readonly, nonatomic, getter=_layoutAllowsPreview) _Bool _layoutAllowsPreview;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) _Bool prefersCenteredPreviewWhenActionsAreAbsent;
 
 @end
 

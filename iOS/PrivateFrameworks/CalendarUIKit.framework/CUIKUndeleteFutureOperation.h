@@ -10,7 +10,7 @@
 
 - (id)_objectsForInverse;
 - (Class)_inverseOperationClass;
-- (_Bool)_execute:(id *)arg1;
+- (_Bool)_executeWithUndoDelegate:(id)arg1 error:(id *)arg2;
 
 @end
 

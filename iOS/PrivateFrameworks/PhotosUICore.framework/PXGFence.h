@@ -11,11 +11,13 @@
 @interface PXGFence : NSObject
 {
     unsigned long long _type;
+    double _timeout;
     PXGLayout *_layout;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak PXGLayout *layout; // @synthesize layout=_layout;
+@property(nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 - (id)init;
 - (id)initWithLayout:(id)arg1 type:(unsigned long long)arg2;

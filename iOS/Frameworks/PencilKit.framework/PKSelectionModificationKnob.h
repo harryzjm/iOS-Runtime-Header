@@ -17,22 +17,10 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGColor *knobColor; // @synthesize knobColor=_knobColor;
-@property(nonatomic) long long knobLocation; // @synthesize knobLocation=_knobLocation;
-- (void)didEndBrushSelection;
-- (void)didBeginBrushSelection;
 - (void)layoutSublayers;
-- (double)distanceFromKnobCenterToPoint:(struct CGPoint)arg1;
-- (_Bool)containsPoint:(struct CGPoint)arg1 inputType:(long long)arg2;
-- (struct CGRect)_rectForTail;
-- (double)_knobTailWidth;
-- (struct CGRect)_rectForKnob;
-- (_Bool)_isTailFacingDown;
-- (void)_updateKnobAppearance;
 - (id)accessibilityIdentifier;
 - (_Bool)isAccessibilityElement;
 - (void)dealloc;
-- (id)initWithLocation:(long long)arg1 color:(struct CGColor *)arg2 isRTL:(_Bool)arg3;
 
 @end
 

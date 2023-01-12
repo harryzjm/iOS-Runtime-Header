@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TeaUI/NFFrameworkAssembly-Protocol.h>
+#import <TeaUI/TFFrameworkAssembly-Protocol.h>
 
 @class MISSING_TYPE, NSArray;
 
-@interface TUAssembly : NSObject <NFFrameworkAssembly>
+@interface TUAssembly : NSObject <TFFrameworkAssembly>
 {
     MISSING_TYPE *assemblies;
 }

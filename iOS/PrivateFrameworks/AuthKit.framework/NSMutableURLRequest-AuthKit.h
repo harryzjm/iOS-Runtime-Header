@@ -17,13 +17,17 @@
 + (id)ak_timeZoneHeader;
 + (id)ak_localeHeader;
 + (id)ak_clientTimeHeader;
+- (void)ak_addPrivateEmailKeyHeader:(id)arg1;
+- (void)ak_addExecutionModeHeader:(_Bool)arg1;
 - (void)ak_addRequestUUIDHeader:(id)arg1;
+- (void)ak_addDeviceConfigurationModeHeaderForAuthContext:(id)arg1;
 - (void)ak_addDeviceConfigurationModeHeader;
 - (void)ak_addCFUHeader:(id)arg1;
 - (void)ak_addDeviceModel;
 - (void)ak_addShowWarranty;
 - (void)ak_addProxiedDeviceICSCIntentHeader;
 - (void)ak_addOfferSecurityUpgrade:(_Bool)arg1;
+- (void)ak_addReAuthenticationHeader;
 - (void)ak_addAppProvidedContext:(id)arg1;
 - (void)ak_addProxyApp:(id)arg1;
 - (void)ak_addClientApp:(id)arg1;
@@ -49,6 +53,7 @@
 - (void)ak_addContextHeaderForServiceType:(long long)arg1;
 - (void)ak_addLoggedInServicesHeaderForServices:(id)arg1;
 - (void)ak_addAbsintheHeaderWithValue:(id)arg1;
+- (void)ak_addJSONRequestHeader;
 - (void)ak_setJSONBodyWithParameters:(id)arg1;
 - (void)ak_setBodyWithParameters:(id)arg1;
 - (void)_setAuthorizationHeaderWithToken:(id)arg1 altDSID:(id)arg2 key:(id)arg3;
@@ -58,6 +63,7 @@
 - (void)ak_addShortLivedTokenHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addICSCRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
+- (void)ak_addAuthorizationHeaderWithCustodianRecoveryToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addAuthorizationHeaderWithHeartbeatToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addAuthorizationHeaderWithServiceToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addProxiedAuthorizationHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
@@ -76,6 +82,7 @@
 - (void)ak_addAppleIDUserModeHeaderWithValue:(unsigned long long)arg1;
 - (void)ak_addAppleIDHeaderWithValue:(id)arg1;
 - (void)ak_addLocalUserUUIDHashHeader;
+- (void)ak_addFeatureMaskHeader;
 - (void)ak_addInternalBuildHeader;
 @end
 

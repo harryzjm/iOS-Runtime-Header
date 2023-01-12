@@ -28,7 +28,6 @@
 - (void)_configureVideoSession:(id)arg1;
 - (void)_videoQueue_relinquishVideoSession;
 - (void)_videoQueue_ensureVideoSession;
-- (void)prepareForOneUpVisible;
 - (void)prepareForInvisible;
 - (void)prepareForVisible;
 - (_Bool)isPlaying;

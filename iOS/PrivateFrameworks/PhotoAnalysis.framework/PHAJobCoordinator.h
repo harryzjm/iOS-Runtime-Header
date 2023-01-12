@@ -8,19 +8,18 @@
 
 #import <PhotoAnalysis/PHAActivityGovernorDelegate-Protocol.h>
 #import <PhotoAnalysis/PHADirtyChangeCoalescerDelegate-Protocol.h>
-#import <PhotoAnalysis/PHAGraphManagerClientMessagesReceiver-Protocol.h>
 #import <PhotoAnalysis/PHAJobCoalescerDelegate-Protocol.h>
 #import <PhotoAnalysis/PHAJobConstraintsObserverDelegate-Protocol.h>
+#import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 #import <PhotoAnalysis/PHAWorkerJobDelegate-Protocol.h>
 
 @class NSDictionary, NSMutableArray, NSMutableSet, NSString, PHAActivityGovernor, PHADirtyChangeCoalescer, PHAJobCoalescer, PHAJobConstraints, PHAJobConstraintsObserver, PHAJobGenerator, PHAManager, PHAWorkerHealthMonitor, PHAWorkerJob, PHAWorkerWarmer;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, PHAJobCoordinatorDelegate;
 
-@interface PHAJobCoordinator : NSObject <PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PHADirtyChangeCoalescerDelegate, PHAActivityGovernorDelegate, PHAGraphManagerClientMessagesReceiver>
+@interface PHAJobCoordinator : NSObject <PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PHADirtyChangeCoalescerDelegate, PHAActivityGovernorDelegate, PHAServiceOperationHandling>
 {
     _Atomic int _pendingAsyncTasksCount;
     _Atomic unsigned long long _processingQOS;
-    _Bool _graphUpdateNeeded;
     NSDictionary *_cachedWorkersByType;
     struct os_unfair_lock_s _workersByTypeLock;
     _Bool _newConstraintsPending;
@@ -28,31 +27,35 @@
     PHAJobConstraints *_currentConstraints;
     PHAWorkerWarmer *_warmer;
     PHAJobCoalescer *_jobCoalescer;
-    PHADirtyChangeCoalescer *_dirtyCoalescer;
-    PHAJobConstraintsObserver *_constraintsObserver;
-    double _maxIntervalSinceLastJobReport;
-    id <PHAJobCoordinatorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_maintenanceTimer;
     PHAWorkerHealthMonitor *_healthMonitor;
     PHAActivityGovernor *_activityGovernor;
     PHAJobGenerator *_jobGenerator;
     PHAManager *_manager;
-    PHAWorkerJob *_currentForegroundJob;
-    NSMutableArray *_waitingForegroundJobs;
     PHAWorkerJob *_currentBackgroundJob;
     NSObject<OS_os_transaction> *_runningJobTransaction;
     NSMutableSet *_workerTypesServicedForUserFG;
     NSObject<OS_os_transaction> *_foregroundTransaction;
+    id <PHAJobCoordinatorDelegate> _delegate;
+    PHAJobConstraintsObserver *_constraintsObserver;
+    double _maxIntervalSinceLastJobReport;
+    PHAWorkerJob *_currentForegroundJob;
+    NSMutableArray *_waitingForegroundJobs;
+    PHADirtyChangeCoalescer *_dirtyCoalescer;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHADirtyChangeCoalescer *dirtyCoalescer; // @synthesize dirtyCoalescer=_dirtyCoalescer;
+@property(readonly, nonatomic) NSMutableArray *waitingForegroundJobs; // @synthesize waitingForegroundJobs=_waitingForegroundJobs;
+@property(retain, nonatomic) PHAWorkerJob *currentForegroundJob; // @synthesize currentForegroundJob=_currentForegroundJob;
+@property(nonatomic) double maxIntervalSinceLastJobReport; // @synthesize maxIntervalSinceLastJobReport=_maxIntervalSinceLastJobReport;
+@property(readonly, nonatomic) PHAJobConstraintsObserver *constraintsObserver; // @synthesize constraintsObserver=_constraintsObserver;
+@property(nonatomic) __weak id <PHAJobCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSObject<OS_os_transaction> *foregroundTransaction; // @synthesize foregroundTransaction=_foregroundTransaction;
 @property(retain, nonatomic) NSMutableSet *workerTypesServicedForUserFG; // @synthesize workerTypesServicedForUserFG=_workerTypesServicedForUserFG;
 @property(retain, nonatomic) NSObject<OS_os_transaction> *runningJobTransaction; // @synthesize runningJobTransaction=_runningJobTransaction;
 @property(retain, nonatomic) PHAWorkerJob *currentBackgroundJob; // @synthesize currentBackgroundJob=_currentBackgroundJob;
-@property(readonly, nonatomic) NSMutableArray *waitingForegroundJobs; // @synthesize waitingForegroundJobs=_waitingForegroundJobs;
-@property(retain, nonatomic) PHAWorkerJob *currentForegroundJob; // @synthesize currentForegroundJob=_currentForegroundJob;
 @property(nonatomic) __weak PHAManager *manager; // @synthesize manager=_manager;
 @property(readonly, nonatomic) PHAJobGenerator *jobGenerator; // @synthesize jobGenerator=_jobGenerator;
 @property(readonly, nonatomic) PHAActivityGovernor *activityGovernor; // @synthesize activityGovernor=_activityGovernor;
@@ -61,12 +64,7 @@
 @property(nonatomic) _Bool newConstraintsPending; // @synthesize newConstraintsPending=_newConstraintsPending;
 @property(readonly, nonatomic) NSObject<OS_dispatch_source> *maintenanceTimer; // @synthesize maintenanceTimer=_maintenanceTimer;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) __weak id <PHAJobCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) double maxIntervalSinceLastJobReport; // @synthesize maxIntervalSinceLastJobReport=_maxIntervalSinceLastJobReport;
-@property(readonly, nonatomic) PHAJobConstraintsObserver *constraintsObserver; // @synthesize constraintsObserver=_constraintsObserver;
-@property(readonly, nonatomic) PHADirtyChangeCoalescer *dirtyCoalescer; // @synthesize dirtyCoalescer=_dirtyCoalescer;
 @property(readonly, nonatomic) PHAJobCoalescer *jobCoalescer; // @synthesize jobCoalescer=_jobCoalescer;
-@property(readonly) _Bool graphUpdateNeeded; // @synthesize graphUpdateNeeded=_graphUpdateNeeded;
 @property(readonly, nonatomic) PHAWorkerWarmer *warmer; // @synthesize warmer=_warmer;
 - (id)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2;
 - (void)scheduleAssetForOnDemandAnalysisWithUUID:(id)arg1 workerType:(short)arg2 workerFlags:(int)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
@@ -87,10 +85,9 @@
 - (void)governorDidRevokeBackgroundAccess:(id)arg1;
 - (void)governorDidGrantBackgroundAccess:(id)arg1;
 - (void)jobConstraintsObserver:(id)arg1 constraintsDidChange:(id)arg2 mask:(id)arg3 completion:(CDUnknownBlockType)arg4;
-@property(copy) PHAJobConstraints *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
+- (void)setCurrentConstraints:(id)arg1;
+@property(readonly, copy) PHAJobConstraints *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
 - (void)_inq_reconsiderWantsFGActivityBasedOnConstraints:(id)arg1;
-- (void)graphManagerDidUnloadGraph:(id)arg1;
-- (void)graphManagerWillLoadGraph:(id)arg1;
 - (void)_inq_stopJobsAfterConstraintOrActivityChange;
 - (void)_inq_stopJobDueToConstraintOrActivityChange:(id)arg1;
 - (void)_inq_handleNoMoreJobsExpected;
@@ -102,7 +99,7 @@
 @property(readonly, copy) NSString *description;
 - (void)_installMaintenanceTimer;
 - (id)_workerForJob:(id)arg1;
-- (id)workersByType;
+@property(readonly, nonatomic) NSDictionary *workersByType;
 - (void)addWorker:(id)arg1;
 - (id)_defaultWorkersByType;
 - (void)_inq_enforceTimeoutForJob:(id)arg1;

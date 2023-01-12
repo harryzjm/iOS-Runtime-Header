@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceLegacyFaceCore, VNFaceRegionMap, VNFaceSegments, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
+#import <Vision/VNEntityIdentificationModelObservation-Protocol.h>
 
-@interface VNFaceObservation
+@class NSArray, NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceGaze, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceLegacyFaceCore, VNFaceRegionMap, VNFaceScreenGaze, VNFaceSegments, VNFaceTorsoprint, VNFaceprint, VNRequestSpecifier, VNTorsoprint;
+
+@interface VNFaceObservation <VNEntityIdentificationModelObservation>
 {
     VNFaceLandmarks2D *_cachedLandmarks;
     struct os_unfair_lock_s _cachedLandmarksLock;
@@ -32,7 +34,6 @@
     NSData *_landmarkPoints65;
     unsigned long long _landmarksConstellation;
     NSArray *_landmarkPrecisionEstimatesPerPoint;
-    NSArray *_landmarkOcclusionFlagsPerPoint;
     NSData *_landmarkPoints3d;
     NSData *_poseData;
     float _faceIdConfidence;
@@ -41,26 +42,32 @@
     float _alignedRotationAngle;
     NSNumber *_roll;
     NSNumber *_yaw;
+    NSNumber *_pitch;
     NSData *_alignedMeanShape;
     NSNumber *_faceCaptureQuality;
-    unsigned long long _landmarksRequestRevision;
-    unsigned long long _landmarks3DRequestRevision;
-    VNFaceLandmarks2D *_landmarks;
+    VNRequestSpecifier *_landmarksOriginatingRequestSpecifier;
+    VNRequestSpecifier *_landmarks3DOriginatingRequestSpecifier;
     VNFaceLegacyFaceCore *_legacyFaceCore;
+    VNFaceGaze *_gaze;
+    VNFaceScreenGaze *_faceScreenGaze;
+    VNFaceLandmarks2D *_landmarks;
 }
 
 + (_Bool)computeYawPitchRollFromPoseMatrix:(CDStruct_f1db2b5e)arg1 outputYaw:(float *)arg2 outputPitch:(float *)arg3 outputRoll:(float *)arg4;
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 alignedBoundingBox:(struct CGRect)arg3 roll:(id)arg4 yaw:(id)arg5;
++ (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 alignedBoundingBox:(struct CGRect)arg3 roll:(id)arg4 yaw:(id)arg5 pitch:(id)arg6;
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 roll:(id)arg3 yaw:(id)arg4;
++ (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 roll:(id)arg3 yaw:(id)arg4 pitch:(id)arg5;
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 faceprint:(id)arg3;
-+ (id)faceObservationWithBoundingBox:(struct CGRect)arg1 faceprint:(id)arg2;
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 unalignedBoundingBox:(struct CGRect)arg2 alignedBoundingBox:(struct CGRect)arg3;
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 andAlignedBoundingBox:(struct CGRect)arg3;
 + (id)observationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2;
-+ (id)faceObservationWithBoundingBox:(struct CGRect)arg1 andAlignedBoundingBox:(struct CGRect)arg2;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (_Bool)_exifOrientationFromFaceRollAngle:(float)arg1 exifOrientation:(int *)arg2 error:(id *)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) VNFaceScreenGaze *faceScreenGaze; // @synthesize faceScreenGaze=_faceScreenGaze;
+@property(readonly, nonatomic) VNFaceGaze *gaze; // @synthesize gaze=_gaze;
 @property(readonly, nonatomic) VNFaceSegments *faceSegments; // @synthesize faceSegments=_faceSegments;
 @property(retain, nonatomic) VNFaceprint *faceprint; // @synthesize faceprint=_faceprint;
 @property(nonatomic) unsigned long long faceId; // @synthesize faceId=_faceId;
@@ -68,25 +75,27 @@
 @property(readonly, nonatomic) VNFaceAttributes *faceAttributes; // @synthesize faceAttributes=_faceAttributes;
 @property(readonly, nonatomic) VNFaceRegionMap *faceRegionMap; // @synthesize faceRegionMap=_faceRegionMap;
 @property(readonly, nonatomic) struct CGRect unalignedBoundingBox; // @synthesize unalignedBoundingBox=_unalignedBoundingBox;
-@property(nonatomic) unsigned long long landmarks3DRequestRevision; // @synthesize landmarks3DRequestRevision=_landmarks3DRequestRevision;
-@property(nonatomic) unsigned long long landmarksRequestRevision; // @synthesize landmarksRequestRevision=_landmarksRequestRevision;
+@property(readonly, nonatomic) VNRequestSpecifier *landmarks3DOriginatingRequestSpecifier; // @synthesize landmarks3DOriginatingRequestSpecifier=_landmarks3DOriginatingRequestSpecifier;
+@property(readonly, nonatomic) VNRequestSpecifier *landmarksOriginatingRequestSpecifier; // @synthesize landmarksOriginatingRequestSpecifier=_landmarksOriginatingRequestSpecifier;
 @property(retain, nonatomic) NSData *alignedMeanShape; // @synthesize alignedMeanShape=_alignedMeanShape;
 @property(nonatomic) float faceIdConfidence; // @synthesize faceIdConfidence=_faceIdConfidence;
 @property(retain, nonatomic) NSData *poseData; // @synthesize poseData=_poseData;
-@property(retain, nonatomic) NSData *landmarkPoints3d; // @synthesize landmarkPoints3d=_landmarkPoints3d;
-@property(retain, nonatomic) NSArray *landmarkOcclusionFlagsPerPoint; // @synthesize landmarkOcclusionFlagsPerPoint=_landmarkOcclusionFlagsPerPoint;
+@property(readonly, nonatomic) NSData *landmarkPoints3d; // @synthesize landmarkPoints3d=_landmarkPoints3d;
 @property(retain, nonatomic) NSArray *landmarkPrecisionEstimatesPerPoint; // @synthesize landmarkPrecisionEstimatesPerPoint=_landmarkPrecisionEstimatesPerPoint;
 @property(nonatomic) unsigned long long landmarksConstellation; // @synthesize landmarksConstellation=_landmarksConstellation;
-@property(retain, nonatomic) NSData *landmarkPoints65; // @synthesize landmarkPoints65=_landmarkPoints65;
-@property(retain, nonatomic) NSData *landmarkPoints; // @synthesize landmarkPoints=_landmarkPoints;
+@property(readonly, nonatomic) NSData *landmarkPoints65; // @synthesize landmarkPoints65=_landmarkPoints65;
+@property(readonly, nonatomic) NSData *landmarkPoints; // @synthesize landmarkPoints=_landmarkPoints;
 @property(nonatomic) float alignedRotationAngle; // @synthesize alignedRotationAngle=_alignedRotationAngle;
 @property(nonatomic) struct _Geometry2D_rect2D_ alignedBoundingBox; // @synthesize alignedBoundingBox=_alignedBoundingBox;
 @property(nonatomic) _Bool hasBBoxBeenAligned; // @synthesize hasBBoxBeenAligned=_hasBBoxBeenAligned;
 @property(retain, nonatomic) VNFaceLandmarks2D *landmarks; // @synthesize landmarks=_landmarks;
+@property(retain, nonatomic) NSNumber *pitch; // @synthesize pitch=_pitch;
 @property(retain, nonatomic) NSNumber *yaw; // @synthesize yaw=_yaw;
 @property(retain, nonatomic) NSNumber *roll; // @synthesize roll=_roll;
 @property(readonly, nonatomic) NSNumber *faceCaptureQuality; // @synthesize faceCaptureQuality=_faceCaptureQuality;
 - (_Bool)getFaceEXIFOrientation:(int *)arg1 error:(id *)arg2;
+- (void)setGaze:(id)arg1;
+- (void)setFaceScreenGaze:(id)arg1;
 - (void)setLegacyFaceCore:(id)arg1;
 - (void)setUnalignedBoundingBox:(struct CGRect)arg1;
 @property(retain, nonatomic) VNFaceTorsoprint *faceTorsoprint;
@@ -102,6 +111,9 @@
 - (id)description;
 - (float)landmarkScore;
 - (void)setLandmarkScore:(float)arg1;
+- (void)setLandmark3DPointsData:(id)arg1 originatingRequestSpecifier:(id)arg2;
+- (void)setLandmarkPoints65Data:(id)arg1 originatingRequestSpecifier:(id)arg2;
+- (void)setLandmarkPointsData:(id)arg1 originatingRequestSpecifier:(id)arg2;
 - (id)expressionsAndDetections;
 - (id)expressionsAndScores;
 - (void)setExpressionsAndScores:(id)arg1;
@@ -117,13 +129,14 @@
 @property(readonly, nonatomic) VNFaceLandmarks2D *landmarks65;
 @property(readonly, nonatomic) float nameConfidence;
 @property(readonly, copy, nonatomic) NSDictionary *expressionsAndConfidence;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_initLocks;
 - (id)initWithRequestRevision:(unsigned long long)arg1;
+- (id)VNEntityIdentificationModelPrintWithOriginatingRequestSpecifier:(id)arg1 error:(id *)arg2;
 - (id)VNPersonsModelFaceprintWithRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 
 @end

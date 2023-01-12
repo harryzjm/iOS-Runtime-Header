@@ -8,14 +8,26 @@
 
 #import <IconServices/ISEffect-Protocol.h>
 
-@class NSString;
+@class IFColor, NSString;
 
 __attribute__((visibility("hidden")))
 @interface ISDropShaddowEffect : NSObject <ISEffect>
 {
+    double _scale;
+    double _blur;
+    double _spread;
+    IFColor *_color;
+    struct CGSize _offset;
 }
 
+- (void).cxx_destruct;
+@property(retain) IFColor *color; // @synthesize color=_color;
+@property double spread; // @synthesize spread=_spread;
+@property double blur; // @synthesize blur=_blur;
+@property struct CGSize offset; // @synthesize offset=_offset;
+@property double scale; // @synthesize scale=_scale;
 - (id)filterWithBackgroundImage:(id)arg1 inputImage:(id)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

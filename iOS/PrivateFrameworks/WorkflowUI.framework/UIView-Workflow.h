@@ -7,10 +7,10 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (Workflow)
-- (void)wf_addConstraintsToFillLayoutGuide:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;
-- (void)wf_addConstraintsToFillLayoutGuide:(id)arg1;
-- (void)wf_addConstraintsToFillSuperview:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;
-- (void)wf_addConstraintsToFillSuperview:(id)arg1;
+- (id)wf_addConstraintsToFillLayoutGuide:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;
+- (id)wf_addConstraintsToFillLayoutGuide:(id)arg1;
+- (id)wf_addConstraintsToFillSuperview:(id)arg1 insets:(struct NSDirectionalEdgeInsets)arg2;
+- (id)wf_addConstraintsToFillSuperview:(id)arg1;
 - (_Bool)wf_containsFirstResponder;
 @end
 

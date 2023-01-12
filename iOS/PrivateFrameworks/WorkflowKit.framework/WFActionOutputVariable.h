@@ -21,6 +21,7 @@
 - (id)possibleContentClassesWithContext:(id)arg1;
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) __weak WFAction *action; // @synthesize action=_action;
+- (id)iconImage;
 - (id)icon;
 @property(readonly, nonatomic) NSString *outputUUID;
 - (_Bool)isAvailable;

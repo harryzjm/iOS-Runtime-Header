@@ -22,6 +22,7 @@
         _Bool respondsToDidEndScrolling;
         _Bool respondsToWillUpdateValue;
     } _delegateFlags;
+    _Bool _interactiveWhenHidden;
     _Bool __animating;
     _Bool __overscrolling;
     _Bool __active;
@@ -30,6 +31,7 @@
     double _labelVerticalPadding;
     long long _sliderVerticalAlignment;
     double _sliderVerticalOffset;
+    double _levelIndicatorHeight;
     long long _textOrientation;
     unsigned long long _fontStyle;
     id <CEKSliderDelegate> _delegate;
@@ -42,7 +44,6 @@
     long long _tickMarkCount;
     UIColor *_tickMarkColor;
     UIColor *_prominentTickMarkColor;
-    NSString *_title;
     long long _valueLabelVisibility;
     UIScrollView *__contentScrollView;
     CEKSliderTickMarksView *__tickMarksView;
@@ -58,6 +59,7 @@
     struct CGSize _tickMarkSize;
 }
 
++ (id)_integerFormatter;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *_levelIndicatorBackgroundView; // @synthesize _levelIndicatorBackgroundView=__levelIndicatorBackgroundView;
 @property(nonatomic, getter=_isDimmed, setter=_setDimmed:) _Bool _dimmed; // @synthesize _dimmed=__dimmed;
@@ -75,7 +77,6 @@
 @property(readonly, nonatomic) CEKSliderTickMarksView *_tickMarksView; // @synthesize _tickMarksView=__tickMarksView;
 @property(readonly, nonatomic) UIScrollView *_contentScrollView; // @synthesize _contentScrollView=__contentScrollView;
 @property(nonatomic) long long valueLabelVisibility; // @synthesize valueLabelVisibility=_valueLabelVisibility;
-@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIColor *prominentTickMarkColor; // @synthesize prominentTickMarkColor=_prominentTickMarkColor;
 @property(retain, nonatomic) UIColor *tickMarkColor; // @synthesize tickMarkColor=_tickMarkColor;
 @property(nonatomic) struct CGSize tickMarkSize; // @synthesize tickMarkSize=_tickMarkSize;
@@ -90,8 +91,10 @@
 @property(nonatomic) unsigned long long fontStyle; // @synthesize fontStyle=_fontStyle;
 @property(nonatomic) long long textOrientation; // @synthesize textOrientation=_textOrientation;
 @property(nonatomic) CDStruct_ae5a35ae gradientInsets; // @synthesize gradientInsets=_gradientInsets;
+@property(nonatomic) double levelIndicatorHeight; // @synthesize levelIndicatorHeight=_levelIndicatorHeight;
 @property(nonatomic) double sliderVerticalOffset; // @synthesize sliderVerticalOffset=_sliderVerticalOffset;
 @property(nonatomic) long long sliderVerticalAlignment; // @synthesize sliderVerticalAlignment=_sliderVerticalAlignment;
+@property(nonatomic) _Bool interactiveWhenHidden; // @synthesize interactiveWhenHidden=_interactiveWhenHidden;
 @property(nonatomic) double labelVerticalPadding; // @synthesize labelVerticalPadding=_labelVerticalPadding;
 @property(nonatomic) _Bool useLegibilityShadows;
 - (void)tickMarksViewDidChangeWidthForTickMarkCount:(id)arg1;
@@ -101,6 +104,10 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (struct CGRect)frameForTicksView;
+- (struct CGRect)frameForLevelIndicator;
+- (struct CGRect)frameForValueLabel;
+- (struct CGRect)frameForTitleLabel;
 @property(nonatomic) long long titleAlignment;
 - (void)setTextOrientation:(long long)arg1 animated:(_Bool)arg2;
 - (void)_updateFonts;
@@ -127,10 +134,14 @@
 - (void)_updateLegibilityBackground;
 @property(readonly, nonatomic) id <CEKTickMarksConfiguration> tickMarksConfiguration;
 - (void)_updateMarkedViewAnimated:(_Bool)arg1;
+- (_Bool)_markedValueWithinRange;
 - (void)setMarkedValue:(double)arg1 animated:(_Bool)arg2;
+@property(retain, nonatomic) NSString *title;
 - (void)_clampValuesAndUpdateScrollPosition:(_Bool)arg1;
 - (void)resetToDefault;
 - (void)layoutSubviews;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)formattedIntegerStringFromNumber:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithTitle:(id)arg1;
 

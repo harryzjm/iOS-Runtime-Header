@@ -7,7 +7,14 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (UserNotificationsUIKitAdditions)
-- (double)nc_effectiveScaledValueForValue:(double)arg1;
-@property(readonly, nonatomic) double nc_effectiveLineHeight;
++ (double)unui_exuberatedValueForValue:(double)arg1;
++ (id)unui_excessiveLineHeightChars;
+- (double)unui_drawingHeightForText:(id)arg1 withNumberOfLines:(unsigned long long)arg2 additionalPadding:(double)arg3;
+- (double)unui_measuringHeightForText:(id)arg1 withNumberOfLines:(unsigned long long)arg2;
+- (unsigned long long)unui_numberOfLinesForText:(id)arg1 inFrame:(struct CGRect)arg2 maximum:(unsigned long long)arg3 drawingContext:(inout id)arg4;
+- (double)unui_effectiveLineHeightForText:(id)arg1;
+- (double)unui_effectiveScaledValueForValue:(double)arg1 hasExuberatedLineHeight:(_Bool)arg2;
+- (_Bool)unui_hasExuberatedLineHeightForText:(id)arg1;
+@property(readonly, nonatomic) _Bool unui_hasExuberatedLineHeight;
 @end
 

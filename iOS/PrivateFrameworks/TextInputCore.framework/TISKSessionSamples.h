@@ -8,10 +8,11 @@
 
 #import <TextInputCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSMutableDictionary, NSString, TIKeyboardLayout;
+@class NSDate, NSMutableDictionary, NSString, TIKeyboardLayout, TISKEvent;
 
 @interface TISKSessionSamples : NSObject <NSSecureCoding>
 {
+    TISKEvent *_startTimerEvent;
     double _currentTypingStart;
     _Bool _isEmpty;
     NSMutableDictionary *_keyedSamples;
@@ -19,6 +20,7 @@
     NSDate *_endTime;
     NSString *_identifier;
     NSString *_version;
+    NSString *_inputMode;
     TIKeyboardLayout *_layout;
 }
 
@@ -26,6 +28,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isEmpty; // @synthesize isEmpty=_isEmpty;
 @property(retain, nonatomic) TIKeyboardLayout *layout; // @synthesize layout=_layout;
+@property(readonly, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
 @property(retain, nonatomic) NSString *version; // @synthesize version=_version;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;
@@ -42,6 +45,8 @@
 - (id)samples:(id)arg1 withPosition:(unsigned long long)arg2;
 - (id)samples:(id)arg1;
 - (id)counter:(id)arg1;
+- (void)addToDurationForRateMetric:(double)arg1 forKey:(id)arg2;
+- (void)addToCounterForRateMetric:(int)arg1 forKey:(id)arg2;
 - (void)addSample:(id)arg1 forKey:(id)arg2;
 - (void)addSample:(id)arg1 forKey:(id)arg2 withPosition:(unsigned long long)arg3;
 - (_Bool)isEqual:(id)arg1;
@@ -49,10 +54,9 @@
 - (void)setup;
 - (_Bool)isTypingTimerHalted;
 - (void)haltTypingTimer;
-- (void)haltTypingTimerAt:(double)arg1;
-- (void)startTypingTimerAt:(double)arg1;
-- (id)init:(id)arg1 endDate:(id)arg2 identifier:(id)arg3 version:(id)arg4 layout:(id)arg5;
-- (id)init:(id)arg1 endDate:(id)arg2;
+- (void)haltTypingTimerWithEvent:(id)arg1;
+- (void)startTypingTimerWithEvent:(id)arg1;
+- (id)init:(id)arg1 endDate:(id)arg2 identifier:(id)arg3 version:(id)arg4 inputMode:(id)arg5 layout:(id)arg6;
 
 @end
 

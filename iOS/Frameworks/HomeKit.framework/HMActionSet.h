@@ -23,6 +23,7 @@
     HMHome *_home;
     HMApplicationData *_applicationData;
     NSDate *_lastExecutionDate;
+    NSString *_assistantIdentifier;
     NSString *_actionSetType;
     _HMContext *_context;
     HMMutableArray *_currentActions;
@@ -38,6 +39,7 @@
 @property(retain, nonatomic) HMMutableArray *currentActions; // @synthesize currentActions=_currentActions;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property(nonatomic) _Bool executionInProgress; // @synthesize executionInProgress=_executionInProgress;
 - (id)encodeAsProtoBuf;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
@@ -50,12 +52,12 @@
 - (void)_handleActionSetExecutedNotification:(id)arg1;
 - (void)_handleActionSetStartExecutionNotification:(id)arg1;
 - (void)updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleActionSetRenamedNotification:(id)arg1;
-- (void)_handleActionUpdatedNotification:(id)arg1;
-- (void)_handleActionRemovedNotification:(id)arg1;
-- (void)_doRemoveActionWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleActionAddedNotification:(id)arg1;
-- (void)_doAddAction:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)_handleActionSetRenameFromPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_handleActionUpdatedFromResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_handleActionRemovedFromPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_doRemoveActionWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)_addActionFromResponse:(id)arg1 withAction:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_doAddAction:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateAction:(id)arg1 changes:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_removeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -63,6 +65,8 @@
 - (void)addAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)recomputeAssistantIdentifier;
+- (void)_recomputeAssistantIdentifier;
 @property(retain, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -73,7 +77,6 @@
 @property(readonly, copy, nonatomic) NSDate *lastExecutionDate; // @synthesize lastExecutionDate=_lastExecutionDate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (id)initWithName:(id)arg1 type:(id)arg2 uuid:(id)arg3;

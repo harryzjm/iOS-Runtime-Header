@@ -18,11 +18,13 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_os_log> *log_t; // @synthesize log_t=_log_t;
-- (void)noDonatedMeCard;
-- (void)noMeCard;
-- (void)withinReportingInterval:(id)arg1;
 - (void)didReportAnalytics;
 - (void)willReportAnalytics;
+- (void)didPerformAnalysis;
+- (void)willStartAnalysis;
+- (void)noAnalyzerAvailable;
+- (void)analysisServiceCriteria:(id)arg1;
+- (void)analysisServiceCheckingIn;
 - (id)init;
 
 // Remaining properties

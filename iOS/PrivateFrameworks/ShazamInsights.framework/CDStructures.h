@@ -8,3 +8,15 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
+};
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+

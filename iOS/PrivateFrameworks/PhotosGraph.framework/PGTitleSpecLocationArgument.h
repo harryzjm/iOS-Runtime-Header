@@ -23,10 +23,10 @@
 @property(retain) NSSet *usedLocationNodes; // @synthesize usedLocationNodes=_usedLocationNodes;
 @property(readonly) _Bool filterLocations; // @synthesize filterLocations=_filterLocations;
 @property(readonly) unsigned long long type; // @synthesize type=_type;
-- (id)_generateLocationTitleWithOptions:(id)arg1;
-- (id)_generateBusinessItemTitleWithMomentNodes:(id)arg1;
-- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2;
-- (id)_resolvedStringWithMomentNodes:(id)arg1;
+- (id)_generateLocationTitleWithOptions:(id)arg1 locationHelper:(id)arg2;
+- (id)_generateBusinessItemTitleWithMomentNodes:(id)arg1 locationHelper:(id)arg2;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2 argumentEvaluationContext:(id)arg3;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
 - (id)initWithLocationType:(unsigned long long)arg1 filterLocations:(_Bool)arg2;
 
 @end

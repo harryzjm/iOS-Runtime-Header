@@ -19,12 +19,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_connectionOptionsRestorationActivityDictionary;
     UIActivityContinuationManager *_activityContinuationManager;
     NSSet *_activityTypesForDefaultProgressUI;
+    _Bool _initialRestorationIsFinished;
     _Bool _isDisplayingActivityContinuationUI;
 }
 
-+ (id)_activityContinuationDictionaryWithAction:(id)arg1;
++ (id)_activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2;
 + (id)_getRestorationUserActivityForPersistentIdentifier:(id)arg1 error:(id *)arg2;
-+ (id)_getUserInfoForSceneIdentifier:(id)arg1 error:(id *)arg2;
++ (id)_getUserInfoForPersistentIdentifier:(id)arg1 error:(id *)arg2;
 + (void)_scheduleDataSaveForSceneSession:(id)arg1 saveRestorationActivity:(_Bool)arg2;
 + (void)_saveRestorationStateForScene:(id)arg1;
 + (_Bool)_restorationUserActivityAvailableForSceneIdentifier:(id)arg1;
@@ -32,12 +33,13 @@ __attribute__((visibility("hidden")))
 + (id)_knownSceneSessionMap;
 + (void)_deleteSceneSessionsWithPersistentIdentifiers:(id)arg1;
 + (void)_updatePersistedSceneSession:(id)arg1;
-+ (void)_deleteSavedSceneSessionDirectoryWithIdentifier:(id)arg1;
++ (void)_deleteSavedSceneSessionDirectoryWithPersistentIdentifier:(id)arg1;
 + (void)_showProgressForScene:(id)arg1 whenFetchingUserActivityForTypes:(id)arg2;
 + (id)_userActivityManagerForScene:(id)arg1;
 + (void)_initializeUserActivityManager;
 - (void).cxx_destruct;
 @property(nonatomic, getter=_isDisplayingActivityContinuationUI, setter=_setIsDisplayingActivityContinuationUI:) _Bool isDisplayingActivityContinuationUI; // @synthesize isDisplayingActivityContinuationUI=_isDisplayingActivityContinuationUI;
+@property(readonly, nonatomic) _Bool _initialRestorationIsFinished; // @synthesize _initialRestorationIsFinished;
 - (id)_updateCanvasConnectionOptionsDictionary:(id)arg1;
 - (void)_performCanvasRestorationIfNecessary;
 - (void)_performCanvasRestoration;

@@ -17,6 +17,7 @@
     long long _messageType;
     NSUUID *_faceUUID;
     NSData *_payloadData;
+    NSString *_label;
     double _progress;
     NSString *_complicationClientID;
     CLKComplicationDescriptor *_complicationDescriptor;
@@ -27,12 +28,14 @@
 + (id)messageOfType:(long long)arg1 withComplicationCliendId:(id)arg2 descriptor:(id)arg3 family:(id)arg4;
 + (id)messageOfType:(long long)arg1 withComplicationClientId:(id)arg2;
 + (id)messageOfType:(long long)arg1 withFaceUUID:(id)arg2;
++ (id)colorSyncMessageWithData:(id)arg1 domain:(id)arg2;
 + (id)messageOfType:(long long)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *complicationFamily; // @synthesize complicationFamily=_complicationFamily;
 @property(copy, nonatomic) CLKComplicationDescriptor *complicationDescriptor; // @synthesize complicationDescriptor=_complicationDescriptor;
 @property(copy, nonatomic) NSString *complicationClientID; // @synthesize complicationClientID=_complicationClientID;
 @property(nonatomic) double progress; // @synthesize progress=_progress;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
 @property(retain, nonatomic) NSUUID *faceUUID; // @synthesize faceUUID=_faceUUID;
 @property(nonatomic) long long messageType; // @synthesize messageType=_messageType;

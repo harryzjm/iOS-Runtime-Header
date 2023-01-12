@@ -8,6 +8,9 @@
 
 @interface NSUserDefaults (ClipServicesExtras)
 + (id)cps_clipServicesDefaults;
+@property(readonly, nonatomic) _Bool cps_forceReportProblemErrorUnableToSubmitResponse;
+@property(readonly, nonatomic) _Bool cps_forceReportProblemErrorNoDeveloperSupportURL;
+@property(readonly, nonatomic) _Bool cps_forceReportProblemErrorFetchProblemTypes;
 @property(nonatomic) _Bool cps_didShowFirstTimeLocationConsent;
 @end
 

@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+@class NSData, SISchemaVoiceSettings;
 
-@class NSData;
-
-@interface SISchemaPersonalization : PBCodable
+@interface SISchemaPersonalization
 {
     _Bool _personalDomainsSetup;
     _Bool _appleMusicSubscriber;
+    SISchemaVoiceSettings *_voiceSettings;
     struct {
         unsigned int personalDomainsSetup:1;
         unsigned int appleMusicSubscriber:1;
     } _has;
+    _Bool _hasVoiceSettings;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasVoiceSettings; // @synthesize hasVoiceSettings=_hasVoiceSettings;
+@property(retain, nonatomic) SISchemaVoiceSettings *voiceSettings; // @synthesize voiceSettings=_voiceSettings;
 @property(nonatomic) _Bool appleMusicSubscriber; // @synthesize appleMusicSubscriber=_appleMusicSubscriber;
 @property(nonatomic) _Bool personalDomainsSetup; // @synthesize personalDomainsSetup=_personalDomainsSetup;
 - (id)initWithDictionary:(id)arg1;

@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned int _targetBufferStride;
     unsigned int _dstSemanticUsageMask;
     unsigned int _srcSemanticUsageMask;
-    struct SCNMTLBufferPool *_bufferPool;
+    void *_bufferPool;
     _Bool _unifyPostMorphNormals;
     _Bool _shouldMorphNormals;
     unsigned char _dataKindForMorphing;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)morphSparseMorpher:(struct __C3DMorpher *)arg1 renderContext:(id)arg2 positionBuffer:(id)arg3 normalBuffer:(id)arg4;
+- (void)_createPipelineStates:(id)arg1;
 - (void)unifyMeshWithRenderContext:(id)arg1 positionBuffer:(id)arg2 normalBuffer:(id)arg3;
 - (void)morphIncrementallyForMorpher:(struct __C3DMorpher *)arg1 renderContext:(id)arg2 positionBuffer:(id)arg3 normalBuffer:(id)arg4;
 - (_Bool)isCompatibleWithMorph:(struct __C3DMorph *)arg1;

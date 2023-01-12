@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_d807dcd0)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_d807dcd0)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *audio_frames;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct SpeechTranslationAudioPacket *)arg2 verify:(_Bool)arg3;

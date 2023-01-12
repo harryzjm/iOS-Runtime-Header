@@ -8,9 +8,9 @@
 {
 }
 
-- (struct TopoIDRange)insertAttributedString:(id)arg1 after:(struct TopoSubstring *)arg2 before:(struct TopoSubstring *)arg3;
-- (void)undeleteSubstrings:(vector_252d7b3a *)arg1;
-- (void)deleteSubstrings:(vector_c5c053b6 *)arg1 withCharacterRanges:(vector_7053a16b *)arg2;
+- (struct TopoIDRange)insertAttributedString:(id)arg1 after:(void *)arg2 before:(void *)arg3;
+- (void)undeleteSubstrings:(void *)arg1;
+- (void)deleteSubstrings:(void *)arg1 withCharacterRanges:(void *)arg2;
 - (void)applyUndoCommand:(id)arg1;
 - (void)addUndoCommand:(id)arg1;
 

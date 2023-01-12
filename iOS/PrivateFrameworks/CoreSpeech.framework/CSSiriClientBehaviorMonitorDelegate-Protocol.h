@@ -6,15 +6,18 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
-@class CSAudioRecordContext, CSAudioStartStreamOption, CSAudioStopStreamOption, CSSiriClientBehaviorMonitor, NSString;
+@class CSAudioRecordContext, CSAudioStartStreamOption, CSAudioStopStreamOption, CSAudioStreamRequest, CSSiriClientBehaviorMonitor, NSString;
 
 @protocol CSSiriClientBehaviorMonitorDelegate <NSObject>
 - (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 didStopStream:(CSAudioStopStreamOption *)arg2 withEventUUID:(NSString *)arg3;
-- (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 willStopStream:(CSAudioStopStreamOption *)arg2;
+- (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 willStopStream:(CSAudioStopStreamOption *)arg2 reason:(unsigned long long)arg3;
 - (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 didStartStreamWithContext:(CSAudioRecordContext *)arg2 successfully:(_Bool)arg3 option:(CSAudioStartStreamOption *)arg4 withEventUUID:(NSString *)arg5;
 - (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 willStartStreamWithContext:(CSAudioRecordContext *)arg2 option:(CSAudioStartStreamOption *)arg3;
 
 @optional
+- (void)siriClientBehaviorMonitorReleasedAudioSession:(CSSiriClientBehaviorMonitor *)arg1;
+- (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 preparedAudioStreamWithRequest:(CSAudioStreamRequest *)arg2 audioProviderUUID:(NSString *)arg3 successfully:(_Bool)arg4;
+- (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 fetchedAudioStreamWithRequest:(CSAudioStreamRequest *)arg2 audioProviderUUID:(NSString *)arg3 successfully:(_Bool)arg4;
 - (void)siriClientBehaviorMonitor:(CSSiriClientBehaviorMonitor *)arg1 didChangedRecordState:(_Bool)arg2 withEventUUID:(NSString *)arg3 withContext:(CSAudioRecordContext *)arg4;
 @end
 

@@ -8,7 +8,7 @@
 
 @interface TSCH3DGPUMUXGraphics : NSObject
 {
-    long long mInterestCount;
+    long long _interestCount;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

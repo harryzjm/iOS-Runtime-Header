@@ -12,6 +12,7 @@
 @protocol WFSlotTemplateViewDelegate <NSObject>
 
 @optional
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 disclosureArrowDidChange:(_Bool)arg2;
 - (void)slotTemplateViewDidInvalidateSize:(WFSlotTemplateView *)arg1;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 deletePressedOnUnpopulatedSlotWithIdentifier:(WFSlotIdentifier *)arg2;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 didEndTypingInSlotWithIdentifier:(WFSlotIdentifier *)arg2;
@@ -23,9 +24,9 @@
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 willBeginTypingInSlotWithIdentifier:(WFSlotIdentifier *)arg2 usingTextEntry:(UIView<WFSlotTemplateTextEntry> *)arg3 allowMultipleLines:(_Bool *)arg4;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 didTapTextAttachment:(NSTextAttachment *)arg2 inSlotWithIdentifier:(WFSlotIdentifier *)arg3;
 - (_Bool)slotTemplateView:(WFSlotTemplateView *)arg1 shouldTapTextAttachment:(NSTextAttachment *)arg2 inSlotWithIdentifier:(WFSlotIdentifier *)arg3;
-- (void)slotTemplateView:(WFSlotTemplateView *)arg1 didLongPressSlotWithIdentifier:(WFSlotIdentifier *)arg2 sourceRect:(struct CGRect)arg3 textAttachmentToSelect:(NSTextAttachment *)arg4;
-- (_Bool)slotTemplateView:(WFSlotTemplateView *)arg1 shouldLongPressSlotWithIdentifier:(WFSlotIdentifier *)arg2;
-- (void)slotTemplateView:(WFSlotTemplateView *)arg1 didDeselectSlotWithIdentifier:(WFSlotIdentifier *)arg2;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 didActivateContextMenuForSlotWithIdentifier:(WFSlotIdentifier *)arg2 sourceRect:(struct CGRect)arg3 textAttachmentToSelect:(NSTextAttachment *)arg4;
+- (_Bool)slotTemplateView:(WFSlotTemplateView *)arg1 shouldActivateContextMenuForSlotWithIdentifier:(WFSlotIdentifier *)arg2;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 didDeselectSlotWithIdentifier:(WFSlotIdentifier *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 didSelectSlotWithIdentifier:(WFSlotIdentifier *)arg2 sourceRect:(struct CGRect)arg3;
 @end
 

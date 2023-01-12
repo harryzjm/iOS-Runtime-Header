@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)logAccessEvent;
 - (void)pickerDidCancel;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;

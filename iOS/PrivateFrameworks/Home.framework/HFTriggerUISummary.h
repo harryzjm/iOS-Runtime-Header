@@ -11,6 +11,10 @@
 
 @interface HFTriggerUISummary : NSObject
 {
+    _Bool _triggerNameIsConfigured;
+    NSString *_triggerDisplayTitle;
+    NSString *_triggerName;
+    NSString *_triggerNaturalLanguageTitle;
     NSString *_triggerTitle;
     NSString *_triggerDescription;
     unsigned long long _triggerType;
@@ -24,6 +28,11 @@
 @property(readonly, nonatomic) unsigned long long triggerType; // @synthesize triggerType=_triggerType;
 @property(readonly, nonatomic) NSString *triggerDescription; // @synthesize triggerDescription=_triggerDescription;
 @property(readonly, nonatomic) NSString *triggerTitle; // @synthesize triggerTitle=_triggerTitle;
+@property(readonly, nonatomic) _Bool triggerNameIsConfigured; // @synthesize triggerNameIsConfigured=_triggerNameIsConfigured;
+@property(readonly, nonatomic) NSString *triggerNaturalLanguageTitle; // @synthesize triggerNaturalLanguageTitle=_triggerNaturalLanguageTitle;
+@property(readonly, nonatomic) NSString *triggerName; // @synthesize triggerName=_triggerName;
+@property(readonly, nonatomic) NSString *triggerDisplayTitle; // @synthesize triggerDisplayTitle=_triggerDisplayTitle;
+- (void)_getTriggerName:(id)arg1 home:(id)arg2;
 - (void)_updateWithTrigger:(id)arg1 inHome:(id)arg2 forceDisabled:(_Bool)arg3 ignoringDisabled:(_Bool)arg4;
 - (id)initWithTrigger:(id)arg1 inHome:(id)arg2 forceDisabled:(_Bool)arg3 ignoringDisabled:(_Bool)arg4;
 - (id)initWithTrigger:(id)arg1 inHome:(id)arg2 forceDisabled:(_Bool)arg3;

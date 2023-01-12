@@ -8,6 +8,7 @@
 
 @class MPModelStorePlatformMetadataGenericObjectBuilder, MPPropertySet;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioStationTrackGenericObjectBuilder : NSObject
 {
     MPModelStorePlatformMetadataGenericObjectBuilder *_storePlatformBuilder;

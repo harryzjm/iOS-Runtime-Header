@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKDetailsCell-Protocol.h>
-
-@class CKStandardButton, NSString, UILabel, UIMenu;
+@class CKStandardButton, UILabel, UIMenu;
 
 __attribute__((visibility("hidden")))
-@interface CKDetailsLocationShareCell <CKDetailsCell>
+@interface CKDetailsLocationShareCell
 {
     _Bool _showOfferTimeRemaining;
     UIMenu *_menu;
@@ -18,9 +16,7 @@ __attribute__((visibility("hidden")))
     UILabel *_timeRemainingLabel;
 }
 
-+ (double)preferredHeight;
-+ (_Bool)shouldHighlight;
-+ (id)reuseIdentifier;
++ (id)identifier;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *timeRemainingLabel; // @synthesize timeRemainingLabel=_timeRemainingLabel;
 @property(retain, nonatomic) CKStandardButton *button; // @synthesize button=_button;
@@ -31,13 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

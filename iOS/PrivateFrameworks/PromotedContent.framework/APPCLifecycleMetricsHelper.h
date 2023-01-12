@@ -11,11 +11,13 @@
 @interface APPCLifecycleMetricsHelper : NSObject
 {
     MISSING_TYPE *metricsHelper;
+    MISSING_TYPE *placeholder;
     MISSING_TYPE *wasOnScreen;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)trackImpressionWithStartDate:(id)arg1 endDate:(id)arg2;
 - (void)contentLoadFailure;
 - (void)discarded;
 - (void)missedOpportunity;

@@ -36,6 +36,8 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)stopPeriodicTimeObserver;
 - (void)startPeriodicTimeObserver;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
+- (void)stepByCount:(long long)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
 - (void)pause;
 - (void)play;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing;
@@ -43,6 +45,8 @@
 - (void)invalidateComposition;
 - (void)applyTrimTimeRange:(CDStruct_e83c9415)arg1;
 @property(readonly, nonatomic) CDStruct_e83c9415 trimRange;
+- (void)finishSeeking;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3 forceSeek:(_Bool)arg4;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
 - (void)requestPlayerItemWithCompletion:(CDUnknownBlockType)arg1;

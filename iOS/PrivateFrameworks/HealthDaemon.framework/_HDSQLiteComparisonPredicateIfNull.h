@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol NSObject;
+
 @interface _HDSQLiteComparisonPredicateIfNull
 {
-    id _ifPropertyIsNullValue;
+    id <NSObject> _ifPropertyIsNullValue;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) id ifPropertyIsNullValue; // @synthesize ifPropertyIsNullValue=_ifPropertyIsNullValue;
+@property(readonly, copy, nonatomic) id <NSObject> ifPropertyIsNullValue; // @synthesize ifPropertyIsNullValue=_ifPropertyIsNullValue;
 - (id)description;
 - (id)SQLForEntityClass:(Class)arg1;
 - (_Bool)isEqual:(id)arg1;

@@ -17,9 +17,11 @@
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)defaultSize;
 - (_Bool)hasDefaultSize;
+- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
 - (void)_setHidesLabels:(_Bool)arg1;
 - (void)didReset;
 - (void)didChangeToday;
+- (void)didChangeRoundsToMinuteInterval;
 - (void)didChangeMinuteInterval;
 - (void)didChangeMaximumDate;
 - (void)didChangeMinimumDate;

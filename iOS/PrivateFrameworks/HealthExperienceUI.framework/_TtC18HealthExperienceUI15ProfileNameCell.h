@@ -13,6 +13,7 @@
     MISSING_TYPE *item;
     MISSING_TYPE *nameLabel;
     MISSING_TYPE *subtitleView;
+    MISSING_TYPE *subtitleVibrancyView;
     MISSING_TYPE *subtitleViewHeightConstraint;
     MISSING_TYPE *subtitleViewTopSpaceConstraint;
 }

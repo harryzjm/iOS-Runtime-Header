@@ -14,17 +14,13 @@
     id <KGNode> _node;
     NSNumber *_weight;
     NSDictionary *_properties;
-    long long _mutationType;
 }
 
-+ (id)removeRequestForNode:(id)arg1;
-+ (id)changeRequestForNode:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long mutationType; // @synthesize mutationType=_mutationType;
-@property(copy, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property(retain, nonatomic) NSNumber *weight; // @synthesize weight=_weight;
+@property(readonly, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
+@property(readonly, nonatomic) NSNumber *weight; // @synthesize weight=_weight;
 @property(readonly, nonatomic) id <KGNode> node; // @synthesize node=_node;
-- (id)initWithMutationType:(long long)arg1;
+- (id)initWithNode:(id)arg1 weight:(id)arg2 properties:(id)arg3;
 
 @end
 

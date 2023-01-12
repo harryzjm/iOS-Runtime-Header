@@ -38,40 +38,16 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 + (id)placeInfoForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOLatLng *enhancedCenter;
-@property(readonly, nonatomic) _Bool hasEnhancedCenter;
-@property(retain, nonatomic) GEOPDBasemapRegionMetadata *basemapRegionMetadata;
-@property(readonly, nonatomic) _Bool hasBasemapRegionMetadata;
-- (int)StringAsKnownAccuracy:(id)arg1;
-- (id)knownAccuracyAsString:(int)arg1;
-@property(nonatomic) _Bool hasKnownAccuracy;
-@property(nonatomic) int knownAccuracy;
-@property(nonatomic) _Bool hasIsApproximateCenter;
-@property(nonatomic) _Bool isApproximateCenter;
-@property(retain, nonatomic) GEOTimezone *timezone;
-@property(readonly, nonatomic) _Bool hasTimezone;
-@property(nonatomic) _Bool hasArea;
-@property(nonatomic) double area;
-@property(retain, nonatomic) GEOLatLng *center;
-@property(readonly, nonatomic) _Bool hasCenter;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

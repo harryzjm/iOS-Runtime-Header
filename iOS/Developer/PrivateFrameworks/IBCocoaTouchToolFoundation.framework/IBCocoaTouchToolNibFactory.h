@@ -25,6 +25,7 @@
 
 + (id)nibDataFromObjects:(id)arg1 customClasses:(id)arg2 topLevelObjects:(id)arg3 traitStorageLists:(id)arg4 accessibilityConfigurations:(id)arg5 connections:(id)arg6 keyValuePairs:(id)arg7 visibleWindows:(id)arg8 minimumCompatibility:(long long)arg9;
 - (void).cxx_destruct;
+- (id)replacementObjectTextStyleFontForObject:(id)arg1 parentObject:(id)arg2 forKey:(id)arg3;
 - (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 - (id)nibCoder:(id)arg1 willEncodeObject:(id)arg2 forObject:(id)arg3 forKey:(id)arg4;
 - (id)coder:(id)arg1 willEncodeObject:(id)arg2;

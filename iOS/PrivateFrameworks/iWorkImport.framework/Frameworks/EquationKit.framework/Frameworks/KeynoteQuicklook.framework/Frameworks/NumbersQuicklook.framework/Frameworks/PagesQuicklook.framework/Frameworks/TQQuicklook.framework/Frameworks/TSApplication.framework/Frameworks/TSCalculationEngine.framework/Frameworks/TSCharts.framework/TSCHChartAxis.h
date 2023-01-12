@@ -9,23 +9,22 @@
 #import <TSCharts/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
 #import <TSCharts/TSCHStyleOwnerCollaborationSupport-Protocol.h>
 #import <TSCharts/TSCHStyleOwning-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 
-@class NSArray, NSString, TSCHChartAxisID, TSCHChartModel, TSUFastReadInvalidatingCache, TSULocale;
-@protocol TSCHStyleActAlike;
+@class NSArray, NSString, TSCHChartAxisAnalysis, TSCHChartAxisID, TSCHChartAxisInterceptAnalysis, TSCHChartModel, TSUFastReadInvalidatingCache, TSULocale;
+@protocol TSCHDataFormatter, TSCHStyleActAlike;
 
-@interface TSCHChartAxis : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHUnretainedParent, TSCHStyleOwning>
+@interface TSCHChartAxis : NSObject <TSCHPropertyMapsGeneratedProtocol, TSCHStyleOwnerCollaborationSupport, TSCHStyleOwning>
 {
-    TSCHChartModel *mChartModel;
-    TSCHChartAxisID *mAxisID;
-    id <TSCHStyleActAlike> mStyle;
-    id <TSCHStyleActAlike> mNonStyle;
-    unsigned long long mStyleIndex;
-    unsigned long long mNonStyleIndex;
-    TSUFastReadInvalidatingCache *mAnalysisCache;
-    TSUFastReadInvalidatingCache *mInterceptCache;
-    TSUFastReadInvalidatingCache *mMultiDataSetAnalysisCache;
-    TSCHChartAxis *mNonTransientCounterpart;
+    TSCHChartAxisID *_axisID;
+    TSCHChartModel *_model;
+    TSCHChartAxis *_nonTransientCounterpart;
+    id <TSCHStyleActAlike> _style;
+    id <TSCHStyleActAlike> _nonStyle;
+    unsigned long long _styleIndex;
+    unsigned long long _nonStyleIndex;
+    TSUFastReadInvalidatingCache *_analysisCache;
+    TSUFastReadInvalidatingCache *_interceptCache;
+    TSUFastReadInvalidatingCache *_multiDataSetAnalysisCache;
 }
 
 + (id)defaultNumberFormat;
@@ -36,10 +35,17 @@
 + (tvec2_84d5962d)sizeOfLabelsForInfo:(id)arg1 onlyHeight:(_Bool)arg2;
 + (unsigned char)styleOwnerPathType;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCHChartModel *model; // @synthesize model=mChartModel;
-@property(readonly, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
+@property(retain, nonatomic) TSUFastReadInvalidatingCache *multiDataSetAnalysisCache; // @synthesize multiDataSetAnalysisCache=_multiDataSetAnalysisCache;
+@property(retain, nonatomic) TSUFastReadInvalidatingCache *interceptCache; // @synthesize interceptCache=_interceptCache;
+@property(retain, nonatomic) TSUFastReadInvalidatingCache *analysisCache; // @synthesize analysisCache=_analysisCache;
+@property(nonatomic) unsigned long long nonStyleIndex; // @synthesize nonStyleIndex=_nonStyleIndex;
+@property(nonatomic) unsigned long long styleIndex; // @synthesize styleIndex=_styleIndex;
+@property(retain, nonatomic) id <TSCHStyleActAlike> nonStyle; // @synthesize nonStyle=_nonStyle;
+@property(retain, nonatomic) id <TSCHStyleActAlike> style; // @synthesize style=_style;
+@property(nonatomic) __weak TSCHChartAxis *nonTransientCounterpart; // @synthesize nonTransientCounterpart=_nonTransientCounterpart;
+@property(nonatomic) __weak TSCHChartModel *model; // @synthesize model=_model;
+@property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=_axisID;
 - (id)nonstyle;
-- (id)style;
 - (void)propertiesWereMutated:(id)arg1;
 - (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2;
 - (id)swapTuplesForMutations:(id)arg1 forImport:(_Bool)arg2;
@@ -58,10 +64,7 @@
 - (id)operationPropertyNameFromGenericProperty:(int)arg1;
 - (id)defaultProperties;
 - (id)p_genericToDefaultPropertyMap;
-- (void)clearParent;
-- (unsigned long long)axisIndex;
-- (unsigned long long)nonStyleIndex;
-- (unsigned long long)styleIndex;
+@property(readonly, nonatomic) unsigned long long axisIndex;
 - (void)setNonStyle:(id)arg1 index:(unsigned long long)arg2;
 - (void)setStyle:(id)arg1 index:(unsigned long long)arg2;
 - (id)formattedStringForSeries:(id)arg1 groupIndex:(unsigned long long)arg2 multiDataSetIndex:(unsigned long long)arg3;
@@ -72,20 +75,23 @@
 - (id)valueForFormattedString:(id)arg1;
 - (id)formattedStringForSeries:(id)arg1 groupIndex:(unsigned long long)arg2;
 - (id)formattedStringForAxisValue:(id)arg1;
-- (_Bool)supportsFormattedStringForInvalidValue;
+@property(readonly, nonatomic) _Bool supportsLabelAngleBaselineOptions;
+@property(readonly, nonatomic) _Bool supportsFormattedStringForInvalidValue;
 - (id)inspectorStringForSeries:(id)arg1 groupIndex:(unsigned long long)arg2 value:(id)arg3;
 - (id)p_dataFormatterForSeries:(id)arg1 groupIndex:(unsigned long long)arg2 onlyForValidValue:(_Bool)arg3;
 - (id)dataFormatterForSeries:(id)arg1 groupIndex:(unsigned long long)arg2;
-- (id)dataFormatter;
+@property(readonly, nonatomic) id <TSCHDataFormatter> dataFormatter;
 - (id)p_axisDataFormatterFromCurrentModel;
 - (id)p_fixupNegativeStyleForDataFormatter:(id)arg1;
-- (_Bool)editableFormatForValueStrings;
+@property(readonly, nonatomic) _Bool editableFormatForValueStrings;
+- (double *)unitSpaceValuesForCountSpaceValuesWithCount:(unsigned long long)arg1;
 - (double *)unitSpaceCenterValuesForSeries:(id)arg1 groupIndexSet:(id)arg2 count:(unsigned long long)arg3;
 - (double)unitSpaceCenterValueForSeries:(id)arg1 groupIndex:(unsigned long long)arg2;
 - (double)unitSpaceCenterValueForValue:(double)arg1;
 - (double)unitSpaceCenterValueHalfOffsetWithCount:(double)arg1;
 - (double)unitSpaceValueForCountSpaceValue:(double)arg1;
 - (double)unitSpaceValueForCountSpaceValue:(double)arg1 min:(double)arg2 count:(double)arg3;
+- (id)unitSpaceValuesForDataSpaceValues:(id)arg1;
 - (double)unitSpaceValueForDataSpaceValue:(double)arg1;
 - (double)unitSpaceValueForDataSpaceValue:(double)arg1 min:(double)arg2 max:(double)arg3;
 - (double *)unitSpaceValuesForSeries:(id)arg1 groupIndexSet:(id)arg2;
@@ -100,40 +106,40 @@
 - (id)gridValueAxisToModelValue:(double)arg1;
 - (double)doubleAxisToModelValue:(double)arg1;
 - (double)doubleModelToAxisValue:(double)arg1 forSeries:(id)arg2;
-- (double)currentDataSetModelMedian;
-- (double)currentDataSetModelAverage;
-- (double)currentDataSetModelMax;
-- (double)currentDataSetModelMin;
-- (double)modelMax;
-- (double)modelMin;
+@property(readonly, nonatomic) double currentDataSetModelMedian;
+@property(readonly, nonatomic) double currentDataSetModelAverage;
+@property(readonly, nonatomic) double currentDataSetModelMax;
+@property(readonly, nonatomic) double currentDataSetModelMin;
+@property(readonly, nonatomic) double modelMax;
+@property(readonly, nonatomic) double modelMin;
 - (void)updateMultiDataModelAxisAnalysis:(id)arg1;
 - (void)updateModelAxisAnalysis:(id)arg1;
 - (_Bool)shouldAnalyzeAxisValue:(double)arg1;
 - (int)p_axisGridValueType;
 - (_Bool)hasCustomFormatForGridValueType:(int)arg1;
 - (id)customFormatForGridValueType:(int)arg1;
-- (int)adjustedNumberFormatType;
-- (int)gridValueType;
+@property(readonly, nonatomic) int adjustedNumberFormatType;
+@property(readonly, nonatomic) int gridValueType;
 - (id)p_multiDataAxisAnalysisFromCurrentModel;
-- (id)axisAnalysisFromCurrentModel;
+@property(readonly, nonatomic) TSCHChartAxisAnalysis *axisAnalysisFromCurrentModel;
 - (id)p_interceptAnalysisFromCurrentModel;
 - (void)updateGridValueTypeInterceptInAnalysis:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)minorGridLocations;
-- (id)majorGridLocations;
+@property(readonly, nonatomic) NSArray *minorGridLocations;
+@property(readonly, nonatomic) NSArray *majorGridLocations;
 - (unsigned long long)p_count;
 - (unsigned long long)p_rangeCount;
-- (double)range;
-- (double)max;
-- (double)min;
-- (double)axisInterceptPosition;
+@property(readonly, nonatomic) double range;
+@property(readonly, nonatomic) double max;
+@property(readonly, nonatomic) double min;
+@property(readonly, nonatomic) double axisInterceptPosition;
 - (double)interceptForAxis:(id)arg1;
 @property(readonly, nonatomic) long long currentAxisScaleSetting;
 - (void)invalidateMultiDataSetAnalysis;
 - (void)invalidateTransientState;
-- (id)multiDataSetAnalysis;
-- (id)analysis;
-- (id)interceptAnalysis;
+@property(readonly) TSCHChartAxisAnalysis *multiDataSetAnalysis;
+@property(readonly) TSCHChartAxisAnalysis *analysis;
+@property(readonly) TSCHChartAxisInterceptAnalysis *interceptAnalysis;
 - (id)referenceLineWithUUID:(id)arg1;
 - (id)referenceLineAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *referenceLines;
@@ -141,7 +147,6 @@
 @property(readonly, nonatomic) TSULocale *locale;
 @property(readonly) _Bool isRangeContinuous;
 @property(readonly) _Bool isCategory;
-- (void)dealloc;
 - (void)p_setupMultiDataSetAnalysisCacheIfNeeded;
 - (id)initWithAxisID:(id)arg1 model:(id)arg2;
 - (tvec2_84d5962d)sizeOfLabelsForInfo:(id)arg1 enumerator:(id)arg2 onlyHeight:(_Bool)arg3;

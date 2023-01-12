@@ -27,6 +27,7 @@
 @property(readonly, copy) NSString *description;
 - (id)initWithPriority:(long long)arg1 reason:(id)arg2 invalidationHandler:(CDUnknownBlockType)arg3 enablementChangeHandler:(CDUnknownBlockType)arg4;
 - (void)invalidate;
+- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

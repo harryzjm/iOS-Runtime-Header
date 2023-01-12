@@ -6,10 +6,12 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class CALayer, PKPassFaceViewRendererState, PKPassView, PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UIImageView, UILabel;
+#import <PassKitUI/PKPaymentVerificationControllerDelegate-Protocol.h>
+
+@class CALayer, NSString, PKPassFaceViewRendererState, PKPassView, PKPaymentApplication, PKPaymentPass, PKPaymentVerificationController, UIActivityIndicatorView, UIControl, UIImageView, UILabel;
 @protocol PKPaymentPassTableCellDelegate;
 
-@interface PKPaymentPassTableCell : PSTableCell
+@interface PKPaymentPassTableCell : PSTableCell <PKPaymentVerificationControllerDelegate>
 {
     PKPaymentApplication *_paymentApplication;
     long long _settingsContext;
@@ -20,6 +22,7 @@
     CALayer *_cardSnapshotMask;
     UIActivityIndicatorView *_spinner;
     _Bool _showState;
+    PKPaymentVerificationController *_verificationController;
     _Bool _showSubTitle;
     _Bool _showAddButton;
     PKPaymentPass *_pass;
@@ -49,6 +52,8 @@
 - (void)_addButtonPressed:(id)arg1;
 - (void)_verifyButtonPressed:(id)arg1;
 - (id)_stringForPassState:(unsigned long long)arg1;
+- (void)didChangeVerificationPresentation;
+- (void)presentVerificationViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
 - (void)setPass:(id)arg1 passView:(id)arg2;
@@ -57,6 +62,12 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -11,18 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore14ProcessMonitor : NSObject
 {
+    MISSING_TYPE *gracePeriodForFormerlyVisibleApplications;
     MISSING_TYPE *queue;
-    MISSING_TYPE *lock;
-    MISSING_TYPE *processMonitor;
     MISSING_TYPE *configurationService;
     MISSING_TYPE *extensionManager;
-    MISSING_TYPE *knownExtensionBundleIdentifiers;
-    MISSING_TYPE *knownApplicationBundleIdentifiers;
-    MISSING_TYPE *runningBundleIdentifiersToPIDs;
-    MISSING_TYPE *runningBundleIdentifiersWithVisibleScenes;
-    MISSING_TYPE *runningBundleIdentifiersWithExemptions;
     MISSING_TYPE *subscriptions;
-    MISSING_TYPE *bundleIdentifiersToSuspensionObservers;
+    MISSING_TYPE *_lock;
+    MISSING_TYPE *_locked_processMonitor;
+    MISSING_TYPE *_locked_knownExtensionBundleIdentifiers;
+    MISSING_TYPE *_locked_knownApplicationBundleIdentifiers;
+    MISSING_TYPE *_locked_runningBundleIdentifiersToPIDs;
+    MISSING_TYPE *_locked_runningBundleIdentifiersWithVisibleScenes;
+    MISSING_TYPE *_locked_runningBundleIdentifiersWithExemptions;
+    MISSING_TYPE *_locked_formerlyVisibleBundleIdentifiers;
+    MISSING_TYPE *_locked_bundleIdentifiersToSuspensionObservers;
+    MISSING_TYPE *_locked_graceExpirationTimer;
 }
 
 - (void).cxx_destruct;

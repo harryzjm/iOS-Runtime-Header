@@ -6,50 +6,68 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoard/FBProcessManagerKeyboardFocusDelegate-Protocol.h>
+#import <SpringBoard/SBSceneManagerObserver-Protocol.h>
+#import <SpringBoard/_UIEventDeferringSystemShellBehaviorDelegate-Protocol.h>
+#import <SpringBoard/_UIKeyboardArbiterOmniscientDelegate-Protocol.h>
 
-@class BKSHIDEventDeferringToken, BSCompoundAssertion, NSHashTable, NSMutableArray, NSString, SBMainWorkspace;
-@protocol BSInvalidatable;
+@class BKSHIDEventDeferringTarget, BSCompoundAssertion, FBSSceneIdentityToken, FBScene, FBSceneManager, NSString, SBMainWorkspace, SBSceneManager, SBSceneManagerCoordinator, UIWindow, _SBKeyboardFocusPolicy, _SBRecentlyUsedSceneIdentityCache;
+@protocol BSInvalidatable, _UIKeyboardArbiterAdvisor;
 
-@interface SBWorkspaceKeyboardFocusController : NSObject <FBProcessManagerKeyboardFocusDelegate>
+@interface SBWorkspaceKeyboardFocusController : NSObject <_UIKeyboardArbiterOmniscientDelegate, SBSceneManagerObserver, _UIEventDeferringSystemShellBehaviorDelegate>
 {
-    int _keyboardFocusPID;
+    struct os_unfair_lock_s _lock;
+    _SBKeyboardFocusPolicy *_lock_effectivePolicy;
+    FBSSceneIdentityToken *_lock_springBoardLayoutSceneIdentityToken;
+    struct os_unfair_lock_s _arbiterLock;
+    id <_UIKeyboardArbiterAdvisor> _arbiterLock_keyboardArbiterAdvisor;
+    unsigned long long _userFocusRequestGeneration;
+    FBScene *_externalSceneWithFocus;
     SBMainWorkspace *_workspace;
-    NSHashTable *_observers;
-    NSMutableArray *_redirections;
-    NSMutableArray *_holdAssertions;
-    BSCompoundAssertion *_preventProcessFocusAssertion;
-    id <BSInvalidatable> _keyboardFocusRule;
-    id <BSInvalidatable> _compatibilityKeyboardFocusRule;
-    BKSHIDEventDeferringToken *_keyboardFocusToken;
+    SBSceneManagerCoordinator *_sceneCoordinator;
+    SBSceneManager *_mainDisplaySceneManager;
+    FBSceneManager *_frontBoardSceneManager;
+    BSCompoundAssertion *_observers;
+    BSCompoundAssertion *_appFocusRedirections;
+    BSCompoundAssertion *_springBoardFocusRedirections;
+    BSCompoundAssertion *_springBoardFocusLockAssertions;
+    BSCompoundAssertion *_preventFocusForSceneAssertion;
+    id <BSInvalidatable> _rootSceneKeyboardFocusRule;
+    id <BSInvalidatable> _localToRemoteKeyboardFocusRule;
+    BKSHIDEventDeferringTarget *_keyboardFocusTarget;
+    BKSHIDEventDeferringTarget *_sentKeyboardFocusTarget;
+    FBScene *_targetSceneForKeyboardFocusDeferring;
+    UIWindow *_sentKeyboardFocusPredicateWindow;
+    _SBRecentlyUsedSceneIdentityCache *_recentlyUsedScenes;
 }
 
 + (id)new;
 - (void).cxx_destruct;
-@property(nonatomic) int keyboardFocusPID; // @synthesize keyboardFocusPID=_keyboardFocusPID;
-@property(retain, nonatomic) BKSHIDEventDeferringToken *keyboardFocusToken; // @synthesize keyboardFocusToken=_keyboardFocusToken;
-@property(retain, nonatomic) id <BSInvalidatable> compatibilityKeyboardFocusRule; // @synthesize compatibilityKeyboardFocusRule=_compatibilityKeyboardFocusRule;
-@property(retain, nonatomic) id <BSInvalidatable> keyboardFocusRule; // @synthesize keyboardFocusRule=_keyboardFocusRule;
-@property(retain, nonatomic) BSCompoundAssertion *preventProcessFocusAssertion; // @synthesize preventProcessFocusAssertion=_preventProcessFocusAssertion;
-@property(retain, nonatomic) NSMutableArray *holdAssertions; // @synthesize holdAssertions=_holdAssertions;
-@property(retain, nonatomic) NSMutableArray *redirections; // @synthesize redirections=_redirections;
-@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property(retain, nonatomic) SBMainWorkspace *workspace; // @synthesize workspace=_workspace;
-- (void)_notifyObserversDidUpdateKeyboardFocusPID:(int)arg1 token:(id)arg2;
-- (_Bool)_getSceneKeyboardFocusOverridePID:(int *)arg1 token:(id *)arg2;
-- (void)processManager:(id)arg1 didSelectKeyboardFocusProcess:(id)arg2 deferringToken:(id)arg3;
-- (id)preventFocusForProcessIdentifier:(int)arg1 reason:(id)arg2;
+@property(readonly, nonatomic) FBScene *externalSceneWithFocus; // @synthesize externalSceneWithFocus=_externalSceneWithFocus;
+@property(nonatomic) unsigned long long userFocusRequestGeneration; // @synthesize userFocusRequestGeneration=_userFocusRequestGeneration;
+- (void)_reevaluatePolicyAndUpdateRulesFromKeyWindowNotification;
+- (_Bool)_setKeyboardFocusPolicy:(id)arg1;
+- (id)keyboardArbiterAdvisor:(id)arg1 requestedSceneFocusDeliberationForFocusedPid:(int)arg2;
+- (id)_filterFocusedSceneIdentityToken:(id)arg1 focusedPID:(int)arg2 resultBlock:(CDUnknownBlockType)arg3;
+- (void)sceneManager:(id)arg1 didRemoveExternalForegroundApplicationSceneHandle:(id)arg2;
+- (void)sceneManager:(id)arg1 didAddExternalForegroundApplicationSceneHandle:(id)arg2;
+- (_Bool)eventDeferringManagerSystemShellBehavior:(id)arg1 shouldSuppressRemoteRuleForOwningElement:(id)arg2 inEnvironment:(id)arg3;
+- (_Bool)eventDeferringManagerSystemShellBehaviorWantsLocalCompatibilityRules;
+- (void)_updateAccessibilityDeferringRulesUnderstandingSpringBoardIsForeground:(_Bool)arg1;
+- (int)presentingKeyboardProcessIdentifier;
+- (void)userFocusRequestForScene:(id)arg1 reason:(id)arg2;
+- (id)preventFocusForSceneWithIdentityToken:(id)arg1 reason:(id)arg2;
 - (id)redirectFocusForReason:(id)arg1 fromProcessIdentifier:(int)arg2 fromDeferringToken:(id)arg3 toProcessidentifier:(int)arg4 toDeferringToken:(id)arg5;
+- (id)redirectSpringBoardLockFocusForReason:(id)arg1 toProcessidentifier:(int)arg2 toDeferringToken:(id)arg3;
 - (id)lockFocusToSpringBoardForReason:(id)arg1;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (id)addKeyboardFocusObserver:(id)arg1;
 - (void)updateKeyboardFocusDeferringRules;
+@property(readonly, copy) NSString *description;
 - (id)initWithWorkspace:(id)arg1;
+- (id)_initWithWorkspace:(id)arg1 sceneCoordinator:(id)arg2 mainDisplaySceneManager:(id)arg3 frontBoardSceneManager:(id)arg4 installUIKitDependencies:(_Bool)arg5 initializeKeyboardArbiter:(_Bool)arg6 defaultSpringBoardLayoutSceneIdentityToken:(id)arg7;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

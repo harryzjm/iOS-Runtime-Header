@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <PhotoAnalysis/NSXPCListenerDelegate-Protocol.h>
+#import <PhotoAnalysis/PHAActivityDelegate-Protocol.h>
+#import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 #import <PhotoAnalysis/PHPhotoLibraryAvailabilityObserver-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PFSerialQueue, PHAActivityLog, PHAPhotoLibraryList, PHASleepWakeMonitor;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PFSerialQueue, PHAActivityLog, PHAMusicActivity, PHAPhotoLibraryList;
 @protocol OS_dispatch_source, OS_voucher, OS_xpc_object, PFDTransactionDispatchQueue;
 
-@interface PHAExecutive : NSObject <PHPhotoLibraryAvailabilityObserver, NSXPCListenerDelegate>
+@interface PHAExecutive : NSObject <PHPhotoLibraryAvailabilityObserver, PHAActivityDelegate, PHAServiceOperationHandling, NSXPCListenerDelegate>
 {
     _Bool _isPhotoAnalysisAgent;
     _Bool _backgroundAnalysisActivityTriggered;
@@ -26,41 +28,45 @@
     NSMutableSet *_pendingBackgroundLibraries;
     struct os_unfair_lock_s _connectedClientsLock;
     _Bool _shouldDeferActivity;
+    NSMutableSet *_runningActivities;
     unsigned char _state;
     PHAActivityLog *_activityLog;
-    NSMutableSet *_clients;
+    NSMutableDictionary *_clientsByLibraryPath;
     NSMutableDictionary *_managersByLibraryPath;
     PHAPhotoLibraryList *_photoLibraryList;
-    PHASleepWakeMonitor *_sleepWakeMonitor;
     long long _countOfCoordinatorsRunningBackgroundAnalysis;
     NSObject<OS_dispatch_source> *_backgroundAnalysisMonitorTimer;
     NSObject<OS_xpc_object> *_backgroundAnalysisActivity;
+    PHAMusicActivity *_musicActivity;
 }
 
 + (id)bootDateForTurboLibraryRegistration;
-+ (void)unregisterBackgroundActivities;
++ (void)unregisterAllActivities;
 - (void).cxx_destruct;
+@property(retain) PHAMusicActivity *musicActivity; // @synthesize musicActivity=_musicActivity;
 @property(retain) NSObject<OS_xpc_object> *backgroundAnalysisActivity; // @synthesize backgroundAnalysisActivity=_backgroundAnalysisActivity;
 @property(retain) NSObject<OS_dispatch_source> *backgroundAnalysisMonitorTimer; // @synthesize backgroundAnalysisMonitorTimer=_backgroundAnalysisMonitorTimer;
 @property long long countOfCoordinatorsRunningBackgroundAnalysis; // @synthesize countOfCoordinatorsRunningBackgroundAnalysis=_countOfCoordinatorsRunningBackgroundAnalysis;
-@property(retain) PHASleepWakeMonitor *sleepWakeMonitor; // @synthesize sleepWakeMonitor=_sleepWakeMonitor;
 @property(retain) PHAPhotoLibraryList *photoLibraryList; // @synthesize photoLibraryList=_photoLibraryList;
 @property unsigned char state; // @synthesize state=_state;
 @property(retain) NSMutableDictionary *managersByLibraryPath; // @synthesize managersByLibraryPath=_managersByLibraryPath;
-@property(retain) NSMutableSet *clients; // @synthesize clients=_clients;
+@property(retain) NSMutableDictionary *clientsByLibraryPath; // @synthesize clientsByLibraryPath=_clientsByLibraryPath;
 @property(readonly) PHAActivityLog *activityLog; // @synthesize activityLog=_activityLog;
 - (void)_registerTurboActivity;
 - (void)_runTurboProcessing:(id)arg1;
+- (void)unregisterRunningActivity:(id)arg1;
+- (_Bool)registerActivityToRun:(id)arg1;
 - (void)_cleanupAfterBackgroundActivityFinishedForDefer:(_Bool)arg1 skipActivityStateCheck:(_Bool)arg2;
 - (void)_registerBackgroundActivity;
-- (void)_registerCuratedLibraryActivity;
 - (void)_installBackgroundAnalysisMonitor;
 - (void)_stopAllBackgroundAnalysisWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_startBackgroundAnalysis;
 - (void)handleOperation:(id)arg1;
 - (void)photoLibraryDidBecomeUnavailable:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)stopAllBackgroundActivitiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopAllBackgroundActivities;
+- (void)_stopAllBackgroundActivitiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopBackgroundActivityForManager:(id)arg1;
 - (void)triggerBackgroundActivity;
 - (void)checkQuiescenceForManager:(id)arg1;
@@ -70,6 +76,7 @@
 - (void)setupAnalyticsEnvironment;
 - (void)dispatchAsyncToExecutiveStateQueue:(CDUnknownBlockType)arg1;
 - (void)terminateManagerIfQuiescentAndNoConnectedClients:(id)arg1;
+- (void)addClientHandler:(id)arg1 forLibraryURL:(id)arg2;
 - (void)removeClientHandler:(id)arg1;
 - (id)clientInfoForManager:(id)arg1;
 - (_Bool)hasConnectedClientsForManager:(id)arg1;

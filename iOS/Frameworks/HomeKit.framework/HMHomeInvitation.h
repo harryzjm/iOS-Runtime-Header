@@ -39,7 +39,6 @@
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)_unconfigureContext;
 - (id)initWithInvitationData:(id)arg1 home:(id)arg2;
 
 // Remaining properties

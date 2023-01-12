@@ -21,14 +21,14 @@ __attribute__((visibility("hidden")))
     NSString *_outputDetectedFeatureName;
 }
 
-+ (void)completeTimingInfoInResult:(id)arg1 windowLengthFrames:(unsigned int)arg2 usingBox:(struct Box *)arg3;
++ (void)completeTimingInfoInResult:(id)arg1 windowLengthFrames:(unsigned int)arg2 usingBox:(void *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)primeGraph;
 - (id)sharedProcessorConfiguration;
-@property(readonly, nonatomic) struct Box *resultsBox;
+@property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
-- (id)resultsFromBox:(struct Box *)arg1 renderedWithFrameCount:(int)arg2;
+- (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
 - (id)initWithConfiguration:(id)arg1;
 

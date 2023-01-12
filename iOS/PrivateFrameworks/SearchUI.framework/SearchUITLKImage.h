@@ -6,16 +6,18 @@
 
 #import <TemplateKit/TLKImage.h>
 
-@class SFImage;
+@class SearchUIImage;
 
 @interface SearchUITLKImage : TLKImage
 {
-    SFImage *_sfImage;
+    SearchUIImage *_searchUIImage;
 }
 
 - (void).cxx_destruct;
-@property(retain) SFImage *sfImage; // @synthesize sfImage=_sfImage;
-- (id)initWithSFImage:(id)arg1;
+@property(retain) SearchUIImage *searchUIImage; // @synthesize searchUIImage=_searchUIImage;
+- (double)aspectRatio;
+- (void)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithSearchUIImage:(id)arg1;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class ATXProactiveSuggestion, NSArray, UIImageView, UILabel, UIStackView;
+@class ATXProactiveSuggestion, MTVisualStylingProvider, NSArray, UIImageView, UILabel, UIStackView;
 @protocol APUISuggestionsWidgetViewDelegate;
 
 @interface APUISuggestionView : UIView
 {
+    MTVisualStylingProvider *_reasonStylingProvider;
     _Bool _canEngageSuggestion;
     unsigned long long _platterSize;
     UIStackView *_stackView;
@@ -39,6 +40,7 @@
 - (int)_titleNumberOfLines;
 - (void)_updateMaximumNumberOfLines;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateReasonStylingProvider;
 - (void)createViewsIfNeeded;
 - (void)layoutSuggestion:(id)arg1;
 

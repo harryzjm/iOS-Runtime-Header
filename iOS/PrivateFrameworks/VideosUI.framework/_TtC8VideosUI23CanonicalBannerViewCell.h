@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
-@class MISSING_TYPE;
+@class FocusableTextView, MISSING_TYPE, NSArray, VUIImageView, VUILabel, VUIMediaTagsView, _TtC8VideosUI16RolesSummaryView;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI23CanonicalBannerViewCell : UICollectionViewCell
+@interface _TtC8VideosUI23CanonicalBannerViewCell
 {
+    MISSING_TYPE *bannerViewModel;
     MISSING_TYPE *bannerLayout;
     MISSING_TYPE *titleImageView;
     MISSING_TYPE *contentTitleView;
@@ -27,22 +26,40 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *tagsView;
     MISSING_TYPE *infoTagsView;
     MISSING_TYPE *uberBackgroundView;
-    MISSING_TYPE *backgroundImageViewModel;
     MISSING_TYPE *previousViewSize;
+    MISSING_TYPE *backgroundImageViewModel;
     MISSING_TYPE *gradientLayer;
     MISSING_TYPE *gradientLayerView;
-    MISSING_TYPE *transitionBackgroundView;
-    MISSING_TYPE *bannerButtonHeight;
-    MISSING_TYPE *bannerButtonSpacing;
     MISSING_TYPE *descComputationLabel;
     MISSING_TYPE *tagsComputationLabel;
+    MISSING_TYPE *transitionBackgroundView;
+    MISSING_TYPE *isUberLayout;
+    MISSING_TYPE *isPhoneSizeClass;
+    MISSING_TYPE *isBackgroundTransitioning;
+    MISSING_TYPE *isImageLoadedForBackgroundTransitioning;
+    MISSING_TYPE *bannerButtonSpacing;
     MISSING_TYPE *contentOffset;
-    MISSING_TYPE *separatorView;
+    MISSING_TYPE *$__lazy_storage_$_separatorView;
 }
 
 - (void).cxx_destruct;
-- (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+@property(nonatomic, readonly) VUIMediaTagsView *accessibilityTagsView;
+@property(nonatomic, readonly) _TtC8VideosUI16RolesSummaryView *accessibilityRolesSummaryView;
+@property(nonatomic, readonly) FocusableTextView *accessibilityDescriptionTextView;
+@property(nonatomic, readonly) VUILabel *accessibilityDisclaimerTextView;
+@property(nonatomic, readonly) VUIImageView *accessibilityAvailabilityImageView;
+@property(nonatomic, readonly) VUILabel *accessibilityAvailabilityTextView;
+@property(nonatomic, readonly) NSArray *accessibilityButtonViews;
+@property(nonatomic, readonly) VUILabel *accessibilityPromoTextView;
+@property(nonatomic, readonly) VUILabel *accessibilityEpisodeInfoTextView;
+@property(nonatomic, readonly) VUILabel *accessibilityContentSubtitleView;
+@property(nonatomic, readonly) VUILabel *accessibilityContentTitleView;
+@property(nonatomic, readonly) VUIImageView *accessibilityTitleImageView;
+- (void)vui_cellWillBeDisplayed;
+- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
+- (void)vui_prepareForReuse;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

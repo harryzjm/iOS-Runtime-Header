@@ -9,7 +9,7 @@
 #import <SafariSharedUI/WBSDataCacheDelegate-Protocol.h>
 #import <SafariSharedUI/WBSSQLiteStoreDelegate-Protocol.h>
 
-@class NSString, NSURL, WBSFaviconProviderDatabaseController, WBSFaviconProviderPrivateCache, WBSFaviconProviderRecordCache, WBSOnDiskDataCache;
+@class NSMapTable, NSString, NSURL, WBSFaviconProviderDatabaseController, WBSFaviconProviderPrivateCache, WBSFaviconProviderRecordCache, WBSOnDiskDataCache;
 @protocol OS_dispatch_queue;
 
 @interface WBSFaviconProviderPersistenceController : NSObject <WBSDataCacheDelegate, WBSSQLiteStoreDelegate>
@@ -19,6 +19,7 @@
     WBSFaviconProviderDatabaseController *_faviconDatabase;
     WBSFaviconProviderRecordCache *_recordsCache;
     WBSFaviconProviderPrivateCache *_privateCache;
+    NSMapTable *_inMemoryImageCache;
     CDUnknownBlockType _setUpCompletionHandler;
     NSObject<OS_dispatch_queue> *_internalQueue;
     long long _controllerState;
@@ -47,7 +48,7 @@
 - (void)removeAllIconsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeIconWithPageURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)linkPageURLString:(id)arg1 toIconURLString:(id)arg2 isPrivate:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)rejectedResourceInfoForPageURLString:(id)arg1 iconURLString:(id)arg2 includingPrivateData:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)rejectedResourceInfosForPageURLString:(id)arg1 iconURLString:(id)arg2 includingPrivateData:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setIconIsRejectedResource:(_Bool)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3 isPrivate:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)setIconData:(id)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3 iconSize:(struct CGSize)arg4 hasGeneratedResolutions:(_Bool)arg5 isPrivate:(_Bool)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)_imageFromURL:(id)arg1;

@@ -30,6 +30,7 @@
     ACDDatabaseBackupActivity *_databaseBackupActivity;
 }
 
++ (id)accountCache;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isMigrationInProgress) _Bool migrationInProgress; // @synthesize migrationInProgress=_migrationInProgress;
 @property(nonatomic) _Bool notificationsEnabled; // @synthesize notificationsEnabled=_notificationsEnabled;
@@ -49,9 +50,10 @@
 - (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
 - (void)triggerKeychainMigrationIfNecessary:(CDUnknownBlockType)arg1;
 - (void)migrateCredentialForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeAccountFromPairedDevice:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeAccountsFromPairedDeviceWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveAccount:(id)arg1 toPairedDeviceWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2;
 - (void)accountsWithAccountTypeIdentifiers:(id)arg1 preloadedProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)visibleTopLevelAccountsWithAccountTypeIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -78,7 +80,6 @@
 - (void)preloadDataclassOwnersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateExistenceCacheOfAccountWithTypeIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_updateExistenceCacheOfAccountWithTypeIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)typeIdentifierForDomain:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)clearGrantedPermissionsForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)grantedPermissionsForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)permissionForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -100,7 +101,9 @@
 - (void)removeAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)insertAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)accessKeysForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_supportedDataclassesForManagedAccountType:(id)arg1;
 - (void)supportedDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_syncableDataclassesForManagedAccountType:(id)arg1;
 - (void)syncableDataclassesForAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)provisionedDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)enabledDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -155,10 +158,11 @@
 - (void)addAccountNoSave:(id)arg1 error:(id *)arg2;
 - (_Bool)_performDataclassActions:(id)arg1 forAccount:(id)arg2 error:(id *)arg3;
 - (id)_commitOrRollbackDataclassActions:(id)arg1 forAccount:(id)arg2 originalEnabledDataclasses:(id)arg3;
+- (_Bool)_shouldSendDidSaveNotificationForAccount:(id)arg1;
 - (_Bool)_saveWithError:(id *)arg1;
 - (_Bool)_removeAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 withError:(id *)arg3;
 - (_Bool)accountsExistWithAccountTypeIdentifier:(id)arg1;
-- (void)accountsOnPairedDeviceWithAccountType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)accountsOnPairedDeviceWithAccountTypes:(id)arg1 withOptions:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)accountsWithAccountTypeIdentifier:(id)arg1;
 - (id)accountTypeWithIdentifier:(id)arg1;
 - (id)initWithClient:(id)arg1 databaseConnection:(id)arg2;

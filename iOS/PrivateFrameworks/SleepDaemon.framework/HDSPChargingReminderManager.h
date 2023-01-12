@@ -59,7 +59,7 @@
 - (void)deviceChangedChargingState:(_Bool)arg1;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
 - (void)significantTimeChangeDetected:(id)arg1;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 - (_Bool)isWaitingOrMonitoring;
 - (void)updateState;
 - (void)environmentDidBecomeReady:(id)arg1;

@@ -38,6 +38,7 @@
 - (void)barDidAddSubview:(id)arg1;
 - (void)setBackButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setupTopNavigationItem;
+- (void)_refreshBackButtonMenu;
 - (void)endAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 - (_Bool)updateNavItemContentLayoutGuideAnimationConstraintConstant:(double)arg1;
 @property(readonly, nonatomic) double navItemContentLayoutGuideAnimationDistance;
@@ -50,6 +51,7 @@
 - (void)_removeContentClippingView;
 @property(readonly, nonatomic, getter=isContentViewHidden) _Bool contentViewHidden;
 @property(retain, nonatomic) UIBarButtonItem *staticNavBarButtonItem;
+@property(readonly, nonatomic) _Bool scrollEdgeAppearanceHasChromelessBehavior;
 @property(nonatomic) _Bool forceScrollEdgeAppearance;
 @property(readonly, nonatomic) id <_UIBarAppearanceChangeObserver> appearanceObserver;
 @property(nonatomic) long long appearanceAPIVersion;
@@ -68,6 +70,7 @@
 - (void)animateForSearchPresentation:(_Bool)arg1;
 - (void)popAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)prepareForStackChange;
 - (void)prepareForPop;
 - (void)prepareForPush;
 - (void)layoutSubviews;
@@ -77,7 +80,7 @@
 - (_Bool)shouldUseHeightRangeFittingWidth;
 - (id)restingHeights;
 - (_Bool)topItemHasVariableHeight;
-- (CDStruct_39925896)layoutHeightsFittingWidth:(double)arg1;
+- (CDStruct_cf303044)layoutHeightsFittingWidth:(double)arg1;
 - (struct NSDirectionalEdgeInsets)resolvedSearchBarMargins;
 - (struct NSDirectionalEdgeInsets)resolvedLargeTitleMargins;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

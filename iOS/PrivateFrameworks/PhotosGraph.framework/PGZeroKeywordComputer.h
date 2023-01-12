@@ -6,43 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class PGGraph, PGSearchComputationCache;
+@class PGCurationManager, PGSearchComputationCache, PHPhotoLibrary;
 
 @interface PGZeroKeywordComputer : NSObject
 {
-    PGGraph *_graph;
+    PHPhotoLibrary *_photoLibrary;
+    PGCurationManager *_curationManager;
     PGSearchComputationCache *_searchComputationCache;
 }
 
 + (id)zeroKeywordLog;
++ (id)contextualHolidayZeroKeywordsWithGraph:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PGSearchComputationCache *searchComputationCache; // @synthesize searchComputationCache=_searchComputationCache;
-@property(readonly) PGGraph *graph; // @synthesize graph=_graph;
-- (id)densestCloseLocationNodeForNode:(id)arg1 locationMask:(unsigned long long)arg2;
-- (id)meaningNodeZeroKeywordForDisplayMeaningNode:(id)arg1 collectionUUIDsToAvoid:(id)arg2;
-- (id)_tripZeroKeywordWithScore:(out double *)arg1;
-- (id)tripRankedKeyword;
-- (id)tripZeroKeyword;
-- (id)sceneZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)eventZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)locationZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (id)densestCloseLocationNodeForNode:(id)arg1 locationMask:(unsigned long long)arg2 locationHelper:(id)arg3;
+- (id)meaningNodeZeroKeywordForDisplayMeaningNode:(id)arg1 collectionUUIDsToAvoid:(id)arg2 curationContext:(id)arg3;
+- (id)_tripZeroKeywordWithGraph:(id)arg1 curationContext:(id)arg2 score:(out double *)arg3;
+- (id)tripRankedKeywordWithGraph:(id)arg1 curationContext:(id)arg2;
+- (id)tripZeroKeywordWithGraph:(id)arg1 curationContext:(id)arg2;
+- (id)sceneZeroKeywordsWithGraph:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)eventZeroKeywordsWithGraph:(id)arg1 curationContext:(id)arg2 options:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)locationZeroKeywordsWithGraph:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (_Bool)_conflictBetweenLocationOrAreaNode:(id)arg1 andOtherLocationOrAreaNodes:(id)arg2;
-- (id)socialGroupKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)peopleZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)_zeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)zeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)initWithGraph:(id)arg1 searchComputationCache:(id)arg2;
+- (id)socialGroupKeywordsWithGraph:(id)arg1 curationContext:(id)arg2 options:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)peopleZeroKeywordsWithGraph:(id)arg1 curationContext:(id)arg2 options:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)_zeroKeywordsWithGraph:(id)arg1 curationContext:(id)arg2 options:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)zeroKeywordsWithGraph:(id)arg1 curationContext:(id)arg2 options:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)initWithPhotoLibrary:(id)arg1 curationManager:(id)arg2 searchComputationCache:(id)arg3;
 - (id)_zeroKeywordDisplayMeaningNodeForMeaningNode:(id)arg1;
-- (id)contextualDateZeroKeywordsWithOptions:(id)arg1;
-- (id)contextualMeaningAndTripZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)contextualSceneZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)contextualSeasonZeroKeywordsWithOptions:(id)arg1;
-- (id)contextualHolidayZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)_timeBasedContextualLocationNodeWithDate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)_locationBasedContextualLocationNodeWithLocation:(id)arg1 date:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
-- (id)contextualLocationNodesWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)contextualSocialGroupZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
-- (id)contextualPersonZeroKeywordsWithOptions:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (id)contextualDateZeroKeywordsWithGraph:(id)arg1 options:(id)arg2;
+- (id)contextualMeaningAndTripZeroKeywordsWithGraph:(id)arg1 curationContext:(id)arg2 options:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)contextualSceneZeroKeywordsWithGraph:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)contextualSeasonZeroKeywordsWithGraph:(id)arg1 curationContext:(id)arg2 options:(id)arg3;
+- (id)_timeBasedContextualLocationNodeInGraph:(id)arg1 withDate:(id)arg2 locationHelper:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)_locationBasedContextualLocationNodeInGraph:(id)arg1 withLocation:(id)arg2 date:(id)arg3 locationHelper:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
+- (id)contextualLocationNodesWithGraph:(id)arg1 options:(id)arg2 locationHelper:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
+- (id)contextualSocialGroupZeroKeywordsWithGraph:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)contextualPersonZeroKeywordsWithGraph:(id)arg1 options:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 
 @end
 

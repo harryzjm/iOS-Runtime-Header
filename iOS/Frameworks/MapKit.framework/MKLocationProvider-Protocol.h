@@ -15,7 +15,7 @@
 @property(readonly, nonatomic) _Bool shouldShiftIfNecessary;
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
 @property(nonatomic) long long activityType;
-@property(readonly, nonatomic) _Bool isAuthorizedForPreciseLocation;
+@property(readonly, nonatomic) long long accuracyAuthorization;
 @property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 @property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
@@ -29,7 +29,7 @@
 @property(retain, nonatomic) NSBundle *effectiveBundle;
 @property(nonatomic) __weak id <MKLocationProviderDelegate> delegate;
 - (void)dismissHeadingCalibrationDisplay;
-- (void)isAuthorizedForPreciseLocationOnQueue:(NSObject<OS_dispatch_queue> *)arg1 result:(void (^)(_Bool))arg2;
+- (void)accuracyAuthorizationOnQueue:(NSObject<OS_dispatch_queue> *)arg1 result:(void (^)(long long))arg2;
 - (void)authorizationStatusOnQueue:(NSObject<OS_dispatch_queue> *)arg1 result:(void (^)(int))arg2;
 - (void)requestTemporaryPreciseLocationAuthorizationWithPurposeKey:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)requestWhenInUseAuthorizationWithPrompt;

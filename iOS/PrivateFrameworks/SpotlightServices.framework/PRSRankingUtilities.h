@@ -10,6 +10,8 @@
 {
 }
 
++ (_Bool)somePotentialPhoneNumbersInString:(id)arg1;
++ (id)onlyPotentialPhoneNumbersInString:(id)arg1;
 + (_Bool)aToZInString:(id)arg1;
 + (float)floatValue:(float)arg1 withSigFigs:(long long)arg2;
 + (void)computeDateCountsForDates:(id)arg1 countLastYear:(unsigned long long *)arg2 countLastMonth:(unsigned long long *)arg3 countLastWeek:(unsigned long long *)arg4 countLastDay:(unsigned long long *)arg5 currentTime:(double)arg6;
@@ -19,6 +21,7 @@
 + (_Bool)caseAndDiacriticInsensitiveLocalizedString:(id)arg1 hasPrefix:(id)arg2 locale:(id)arg3;
 + (_Bool)caseAndDiacriticInsensitiveLocalizedString:(id)arg1 isEqualToString:(id)arg2;
 + (_Bool)userQueryHasOnlySingleCharacterTerms:(id)arg1;
++ (_Bool)userQueryTermsHasOnlySingleCharacterTerms:(id)arg1;
 + (_Bool)multiWordString:(id)arg1 hasPrefix:(id)arg2;
 
 @end

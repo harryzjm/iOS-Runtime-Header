@@ -11,6 +11,7 @@
 
 @interface _UIFeedbackPattern <_UIFeedbackDiscretePlayable, _UIFeedbackContinuousPlayable>
 {
+    _Bool _canReuseCoreHapticsPlayer;
     _Bool _highPriority;
     _Bool _isRepeating;
     double _duration;
@@ -28,6 +29,8 @@
 @property(retain, nonatomic) NSMutableArray *feedbacks; // @synthesize feedbacks=_feedbacks;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic, getter=isHighPriority) _Bool highPriority; // @synthesize highPriority=_highPriority;
+- (_Bool)canReuseCoreHapticsPlayer;
+- (void)setCanReuseCoreHapticsPlayer:(_Bool)arg1;
 - (id)_debugDictionary;
 - (void)setPosition:(float)arg1;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing;

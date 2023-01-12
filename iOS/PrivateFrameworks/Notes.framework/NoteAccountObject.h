@@ -29,6 +29,8 @@
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
 - (id)predicateForNotes;
+- (id)cacheKey;
+- (id)titleForTableViewCell;
 - (id)noteVisibilityTestingForSearchingAccount;
 
 // Remaining properties

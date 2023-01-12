@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PKProtobufPaymentTokenConfiguration;
 
 @interface PKProtobufPaymentClientUpdate : PBCodable <NSCopying>
 {
@@ -17,12 +17,14 @@
     NSString *_selectedAID;
     NSMutableArray *_shippingMethods;
     unsigned int _status;
+    PKProtobufPaymentTokenConfiguration *_tokenConfiguration;
     CDStruct_47fe53f2 _has;
 }
 
 + (Class)shippingMethodsType;
 + (Class)paymentSummaryItemsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKProtobufPaymentTokenConfiguration *tokenConfiguration; // @synthesize tokenConfiguration=_tokenConfiguration;
 @property(retain, nonatomic) NSString *selectedAID; // @synthesize selectedAID=_selectedAID;
 @property(retain, nonatomic) NSMutableArray *shippingMethods; // @synthesize shippingMethods=_shippingMethods;
 @property(retain, nonatomic) NSMutableArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
@@ -37,6 +39,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasTokenConfiguration;
 @property(readonly, nonatomic) _Bool hasSelectedAID;
 - (id)shippingMethodsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)shippingMethodsCount;

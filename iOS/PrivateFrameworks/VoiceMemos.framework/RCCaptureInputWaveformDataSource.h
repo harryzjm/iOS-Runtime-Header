@@ -12,7 +12,6 @@
 @interface RCCaptureInputWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate, RCWaveformDataSourceObserver>
 {
     double captureDelta;
-    _Bool _overdub;
     _Bool _canUpdateCaptureComposition;
     RCMutableComposition *_capturedComposition;
     RCMutableCompositionFragment *_capturedFragment;
@@ -36,7 +35,6 @@
 @property(readonly, nonatomic) double updatedCapturedFragmentDuration; // @synthesize updatedCapturedFragmentDuration=_updatedCapturedFragmentDuration;
 @property(readonly, nonatomic) RCCompositionWaveformDataSource *baseWaveformDataSource; // @synthesize baseWaveformDataSource=_baseWaveformDataSource;
 @property(readonly, nonatomic) RCWaveform *baseWaveform; // @synthesize baseWaveform=_baseWaveform;
-@property(readonly, nonatomic, getter=isOverdub) _Bool overdub; // @synthesize overdub=_overdub;
 @property(readonly, nonatomic) RCCompositionFragment *destinationFragment; // @synthesize destinationFragment=_destinationFragment;
 @property(readonly, nonatomic) RCComposition *destinationComposition; // @synthesize destinationComposition=_destinationComposition;
 - (_Bool)shouldMergeLiveWaveform;
@@ -72,7 +70,7 @@
 - (void)waveformDataSource:(id)arg1 didLoadWaveformSegment:(id)arg2;
 - (void)waveformDataSourceDidFinishLoading:(id)arg1;
 - (void)_initializeCaptureComposition;
-- (id)initWithDestinationComposition:(id)arg1 destinationFragment:(id)arg2 isOverdub:(_Bool)arg3;
+- (id)initWithDestinationComposition:(id)arg1 destinationFragment:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

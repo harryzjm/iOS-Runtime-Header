@@ -6,19 +6,22 @@
 
 #import <SpringBoard/SBApplicationSceneStatusBarDescriberProviding-Protocol.h>
 #import <SpringBoard/SBApplicationSceneStatusBarDescribing-Protocol.h>
+#import <SpringBoard/SBMainDisplaySceneLayoutElementViewControlling-Protocol.h>
 #import <SpringBoard/SBSceneLayoutMedusaStatusBarAssertionProviding-Protocol.h>
 #import <SpringBoard/SBSceneViewStatusBarAssertionObserver-Protocol.h>
 
-@class FBScene, NSMutableArray, NSString, SBAppClipOverlayViewController, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarBreadcrumbProvider, _UIStatusBarData;
+@class FBScene, NSMutableArray, NSMutableSet, NSString, SBAppClipOverlayViewController, SBDeviceApplicationSceneHandle, SBDeviceApplicationSceneStatusBarBreadcrumbProvider, _UIStatusBarData;
 @protocol SBApplicationSceneStatusBarDescribing, SBDeviceApplicationSceneStatusBarStateObserver;
 
-@interface SBAppClipPlaceholderLayoutElementViewController <SBSceneViewStatusBarAssertionObserver, SBApplicationSceneStatusBarDescriberProviding, SBApplicationSceneStatusBarDescribing, SBSceneLayoutMedusaStatusBarAssertionProviding>
+@interface SBAppClipPlaceholderLayoutElementViewController <SBSceneViewStatusBarAssertionObserver, SBApplicationSceneStatusBarDescriberProviding, SBApplicationSceneStatusBarDescribing, SBSceneLayoutMedusaStatusBarAssertionProviding, SBMainDisplaySceneLayoutElementViewControlling>
 {
     NSString *_bundleIdentifier;
     NSString *_sceneIdentifier;
     SBAppClipOverlayViewController *_placeholderViewController;
+    _Bool _isPendingUpdate;
     _Bool _isObservingApplicationInstalls;
     NSMutableArray *_statusBarAssertions;
+    NSMutableSet *_maskDisplayCornersReasons;
     id <SBDeviceApplicationSceneStatusBarStateObserver> _statusBarDelegate;
 }
 
@@ -26,6 +29,7 @@
 @property(nonatomic) __weak id <SBDeviceApplicationSceneStatusBarStateObserver> statusBarDelegate; // @synthesize statusBarDelegate=_statusBarDelegate;
 - (void)_launchApplication:(id)arg1;
 - (void)_installedApplicationsDidChange:(id)arg1;
+- (void)_beginPollingUpdateStillAvailable;
 - (void)_stopObservingApplicationInstalls;
 - (void)_beginObservingApplicationInstalls;
 - (id)_aggregateStatusBarOverrideSettings;
@@ -37,7 +41,7 @@
 @property(readonly, nonatomic) NSString *statusBarSceneIdentifier;
 @property(readonly, nonatomic) _Bool sceneWantsDeviceOrientationEventsEnabled;
 @property(readonly, nonatomic) struct CGRect statusBarAvoidanceFrame;
-@property(readonly, nonatomic) int statusBarStyleOverridesToSuppress;
+@property(readonly, nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
 @property(readonly, nonatomic) long long statusBarOrientation;
 @property(readonly, nonatomic) double statusBarAlpha;
 @property(readonly, nonatomic) _Bool statusBarHidden;
@@ -56,6 +60,11 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
+- (_Bool)SB_conformsToMainDisplaySceneLayoutElementViewControlling;
+- (void)setShadowOffset:(double)arg1;
+- (void)setShadowOpacity:(double)arg1;
+- (void)setMaskDisplayCorners:(_Bool)arg1 forReason:(id)arg2;
+- (void)setCornerRadiusConfiguration:(id)arg1;
 - (id)_newDisplayLayoutElementForEntity:(id)arg1;
 - (unsigned long long)supportedContentInterfaceOrientations;
 - (void)configureWithWorkspaceEntity:(id)arg1 forLayoutElement:(id)arg2 layoutState:(id)arg3 referenceFrame:(struct CGRect)arg4;

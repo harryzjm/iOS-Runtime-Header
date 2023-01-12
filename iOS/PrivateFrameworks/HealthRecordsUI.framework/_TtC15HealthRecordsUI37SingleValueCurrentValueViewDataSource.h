@@ -18,7 +18,7 @@
 - (id)init;
 - (id)initWithDateCache:(id)arg1 displayCategoryController:(id)arg2 healthStore:(id)arg3 selectedRangeFormatter:(id)arg4;
 - (void)updateDataSourceWithGraphView:(id)arg1 displayType:(id)arg2 timeScope:(long long)arg3;
-- (id)titleForSelectedRangeData:(id)arg1;
+- (id)titleFor:(id)arg1;
 
 @end
 

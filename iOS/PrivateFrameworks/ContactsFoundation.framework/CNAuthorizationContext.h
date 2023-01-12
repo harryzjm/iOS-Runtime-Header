@@ -15,7 +15,6 @@
 {
     CNAuditToken *_auditToken;
     id <CNTCC><CNTCCSimulation> _tccServices;
-    Class _entitlementVerifier;
     NSNumber *_authorizationStatusCachedValue;
     NSNumber *_isNotesAccessGrantedCachedValue;
     NSNumber *_isClientFirstOrSecondPartyCachedValue;
@@ -27,7 +26,6 @@
 @property(retain, nonatomic) NSNumber *isClientFirstOrSecondPartyCachedValue; // @synthesize isClientFirstOrSecondPartyCachedValue=_isClientFirstOrSecondPartyCachedValue;
 @property(retain, nonatomic) NSNumber *isNotesAccessGrantedCachedValue; // @synthesize isNotesAccessGrantedCachedValue=_isNotesAccessGrantedCachedValue;
 @property(retain, nonatomic) NSNumber *authorizationStatusCachedValue; // @synthesize authorizationStatusCachedValue=_authorizationStatusCachedValue;
-@property(retain, nonatomic) Class entitlementVerifier; // @synthesize entitlementVerifier=_entitlementVerifier;
 @property(retain, nonatomic) id <CNTCC><CNTCCSimulation> tccServices; // @synthesize tccServices=_tccServices;
 @property(retain, nonatomic) CNAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 - (long long)resolveRequestAuthorizationFuture:(id)arg1;
@@ -51,7 +49,7 @@
 @property(readonly, nonatomic) _Bool isAccess1Granted;
 @property(readonly, nonatomic) _Bool isAccessGranted;
 @property(readonly, nonatomic) long long authorizationStatus;
-- (id)initWithCNAuditToken:(id)arg1 tccServices:(id)arg2 entitlementVerifier:(Class)arg3;
+- (id)initWithCNAuditToken:(id)arg1 tccServices:(id)arg2;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1;
 - (id)init;
 

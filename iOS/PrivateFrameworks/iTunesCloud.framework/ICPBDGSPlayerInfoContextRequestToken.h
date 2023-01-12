@@ -10,6 +10,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface ICPBDGSPlayerInfoContextRequestToken : PBCodable <NSCopying>
 {
     unsigned long long _accountID;
@@ -22,10 +23,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long sessionID; // @synthesize sessionID=_sessionID;
-@property(retain, nonatomic) NSData *token; // @synthesize token=_token;
-@property(nonatomic) unsigned long long accountID; // @synthesize accountID=_accountID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,9 +30,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasSessionID;
-@property(readonly, nonatomic) _Bool hasToken;
-@property(nonatomic) _Bool hasAccountID;
 
 @end
 

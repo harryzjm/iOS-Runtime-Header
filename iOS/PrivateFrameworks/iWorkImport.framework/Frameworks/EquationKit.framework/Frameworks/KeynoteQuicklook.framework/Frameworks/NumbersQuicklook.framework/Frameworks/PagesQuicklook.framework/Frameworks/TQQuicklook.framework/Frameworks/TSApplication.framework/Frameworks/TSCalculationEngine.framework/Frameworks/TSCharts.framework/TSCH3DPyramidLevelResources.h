@@ -10,16 +10,16 @@
 
 @interface TSCH3DPyramidLevelResources : NSObject
 {
-    TSUPair *mResourcePair;
+    TSUPair *_resourcePair;
 }
 
 + (id)resourcesWithFBOSize:(tvec2_3b141483)arg1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) tvec2_3b141483 size;
 @property(readonly, nonatomic) TSCH3DPyramidBlurFBOResource *temporaryResource;
 @property(readonly, nonatomic) TSCH3DPyramidBlurFBOResource *finalResource;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 - (id)initWithFBOSize:(tvec2_3b141483)arg1;
 
 @end

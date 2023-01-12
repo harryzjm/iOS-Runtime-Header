@@ -56,9 +56,11 @@
 - (long long)numberOfUncuratedItemsInAssetCollection:(id)arg1;
 - (long long)numberOfCuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfUncuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)uncuratedAssetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (struct PXSimpleIndexPath)keyAssetIndexPathForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)keyAssetsForAssetCollection:(id)arg1;
 - (id)keyAssetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (struct PXSimpleIndexPath)_indexPathForSavedSyndicatedAssetReference:(id)arg1;
 - (struct PXSimpleIndexPath)_indexPathForObjectReference:(id)arg1 restrictedToSection:(long long)arg2;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
 - (id)objectReferenceAtIndexPath:(struct PXSimpleIndexPath)arg1;
@@ -74,7 +76,7 @@
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (id)description;
-- (unsigned long long)identifier;
+- (long long)identifier;
 - (id)initWithImmutablePhotosDataSource:(id)arg1 withChange:(id)arg2;
 - (id)photosGraphSuggestedContributions;
 - (_Bool)isAssetAtIndexPathPartOfCuratedSet:(struct PXSimpleIndexPath)arg1;

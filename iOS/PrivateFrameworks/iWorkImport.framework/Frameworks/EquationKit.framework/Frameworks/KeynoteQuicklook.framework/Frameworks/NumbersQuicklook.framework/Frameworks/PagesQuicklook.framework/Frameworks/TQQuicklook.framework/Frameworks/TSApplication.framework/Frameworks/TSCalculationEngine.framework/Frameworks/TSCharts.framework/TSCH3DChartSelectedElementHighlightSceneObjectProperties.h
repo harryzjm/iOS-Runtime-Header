@@ -11,18 +11,18 @@
 @interface TSCH3DChartSelectedElementHighlightSceneObjectProperties : NSObject
 {
     TSCH3Dvec3DataBuffer *edgeVertices;
-    TSCH3DPrefilteredLineRenderer *mRenderer;
-    unsigned long long mSelectedSeriesIndex;
-    tvec4_ac57c72d mColor;
-    TSCH3Dvec3DataBuffer *mEdgeVertices;
+    TSCH3DPrefilteredLineRenderer *_renderer;
+    unsigned long long _selectedSeriesIndex;
+    tvec4_ac57c72d _color;
+    TSCH3Dvec3DataBuffer *_edgeVertices;
 }
 
 - (id).cxx_construct;
-@property(nonatomic) tvec4_ac57c72d color; // @synthesize color=mColor;
-@property(nonatomic) unsigned long long selectedSeriesIndex; // @synthesize selectedSeriesIndex=mSelectedSeriesIndex;
-@property(retain, nonatomic) TSCH3Dvec3DataBuffer *edgeVertices; // @synthesize edgeVertices=mEdgeVertices;
+- (void).cxx_destruct;
+@property(nonatomic) tvec4_ac57c72d color; // @synthesize color=_color;
+@property(nonatomic) unsigned long long selectedSeriesIndex; // @synthesize selectedSeriesIndex=_selectedSeriesIndex;
+@property(retain, nonatomic) TSCH3Dvec3DataBuffer *edgeVertices; // @synthesize edgeVertices=_edgeVertices;
 @property(readonly, nonatomic) TSCH3DPrefilteredLineRenderer *renderer;
-- (void)dealloc;
 - (id)init;
 
 @end

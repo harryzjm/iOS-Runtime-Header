@@ -10,13 +10,13 @@
 
 @interface _TtC8SPShared13DispatchTimer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *nanosecondsPerSecond;
-    MISSING_TYPE *queue;
+    MISSING_TYPE *millisecondsPerSecond;
     MISSING_TYPE *deadline;
     MISSING_TYPE *repeating;
     MISSING_TYPE *leeway;
     MISSING_TYPE *source;
     MISSING_TYPE *block;
+    MISSING_TYPE *dispatchQueue;
 }
 
 @end

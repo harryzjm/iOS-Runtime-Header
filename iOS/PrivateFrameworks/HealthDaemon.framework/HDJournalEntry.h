@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDJournalChapterEntry-Protocol.h>
 #import <HealthDaemon/NSSecureCoding-Protocol.h>
 
-@interface HDJournalEntry : NSObject <NSSecureCoding>
+@class NSString;
+
+@interface HDJournalEntry : NSObject <HDJournalChapterEntry, NSSecureCoding>
 {
 }
 
@@ -16,6 +19,15 @@
 + (_Bool)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)deserializedEntryWithError:(id *)arg1;
+@property(readonly, nonatomic) long long size;
+@property(readonly, copy, nonatomic) NSString *entryClassName;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

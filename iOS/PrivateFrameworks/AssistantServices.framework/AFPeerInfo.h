@@ -16,9 +16,12 @@
 {
     _Bool _isDeviceOwnedByCurrentUser;
     _Bool _isCommunalDevice;
+    NSString *_assistantIdentifier;
+    NSString *_sharedUserIdentifier;
     NSString *_idsIdentifier;
     NSString *_idsDeviceUniqueIdentifier;
     NSString *_rapportEffectiveIdentifier;
+    NSString *_homeKitAccessoryIdentifier;
     NSString *_mediaSystemIdentifier;
     NSString *_mediaRouteIdentifier;
     NSString *_roomName;
@@ -41,9 +44,12 @@
 @property(readonly, nonatomic) _Bool isCommunalDevice; // @synthesize isCommunalDevice=_isCommunalDevice;
 @property(readonly, copy, nonatomic) NSString *mediaRouteIdentifier; // @synthesize mediaRouteIdentifier=_mediaRouteIdentifier;
 @property(readonly, copy, nonatomic) NSString *mediaSystemIdentifier; // @synthesize mediaSystemIdentifier=_mediaSystemIdentifier;
+@property(readonly, copy, nonatomic) NSString *homeKitAccessoryIdentifier; // @synthesize homeKitAccessoryIdentifier=_homeKitAccessoryIdentifier;
 @property(readonly, copy, nonatomic) NSString *rapportEffectiveIdentifier; // @synthesize rapportEffectiveIdentifier=_rapportEffectiveIdentifier;
 @property(readonly, copy, nonatomic) NSString *idsDeviceUniqueIdentifier; // @synthesize idsDeviceUniqueIdentifier=_idsDeviceUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
+@property(readonly, copy, nonatomic) NSString *sharedUserIdentifier; // @synthesize sharedUserIdentifier=_sharedUserIdentifier;
+@property(readonly, copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 @property(readonly, nonatomic) _Bool isDeviceOwnedByCurrentUser; // @synthesize isDeviceOwnedByCurrentUser=_isDeviceOwnedByCurrentUser;
 - (id)buildDictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
@@ -54,7 +60,9 @@
 @property(readonly) unsigned long long hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithIsDeviceOwnedByCurrentUser:(_Bool)arg1 idsIdentifier:(id)arg2 idsDeviceUniqueIdentifier:(id)arg3 rapportEffectiveIdentifier:(id)arg4 mediaSystemIdentifier:(id)arg5 mediaRouteIdentifier:(id)arg6 isCommunalDevice:(_Bool)arg7 roomName:(id)arg8 name:(id)arg9 productType:(id)arg10 buildVersion:(id)arg11 userInterfaceIdiom:(id)arg12 aceVersion:(id)arg13;
+- (id)initWithIsDeviceOwnedByCurrentUser:(_Bool)arg1 assistantIdentifier:(id)arg2 sharedUserIdentifier:(id)arg3 idsIdentifier:(id)arg4 idsDeviceUniqueIdentifier:(id)arg5 rapportEffectiveIdentifier:(id)arg6 homeKitAccessoryIdentifier:(id)arg7 mediaSystemIdentifier:(id)arg8 mediaRouteIdentifier:(id)arg9 isCommunalDevice:(_Bool)arg10 roomName:(id)arg11 name:(id)arg12 productType:(id)arg13 buildVersion:(id)arg14 userInterfaceIdiom:(id)arg15 aceVersion:(id)arg16;
+@property(readonly, copy, nonatomic) NSString *sharedUserID;
+- (id)initWithIsDeviceOwnedByCurrentUser:(_Bool)arg1 assistantIdentifier:(id)arg2 idsIdentifier:(id)arg3 idsDeviceUniqueIdentifier:(id)arg4 sharedUserID:(id)arg5 rapportEffectiveIdentifier:(id)arg6 homeKitAccessoryIdentifier:(id)arg7 mediaSystemIdentifier:(id)arg8 mediaRouteIdentifier:(id)arg9 isCommunalDevice:(_Bool)arg10 roomName:(id)arg11 name:(id)arg12 productType:(id)arg13 buildVersion:(id)arg14 userInterfaceIdiom:(id)arg15 aceVersion:(id)arg16;
 - (id)ad_shortDescription;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 

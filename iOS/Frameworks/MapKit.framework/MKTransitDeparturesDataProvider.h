@@ -8,8 +8,8 @@
 
 #import <MapKit/MKTransitMapItemUpdaterDelegate-Protocol.h>
 
-@class MKMapItem, MKTransitItemIncidentsController, MKTransitMapItemUpdater, NSArray, NSDate, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
-@protocol GEOMapItemTransitInfo, MKTransitDeparturesDataProviderDelegate;
+@class MKMapItem, MKTransitItemIncidentsController, MKTransitMapItemUpdater, NSArray, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@protocol GEOMapItemTransitInfo, GEOTransitSystem, MKTransitDeparturesDataProviderDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKTransitDeparturesDataProvider : NSObject <MKTransitMapItemUpdaterDelegate>
@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
     NSMapTable *_cachedSystemHasInactiveLines;
     MKTransitMapItemUpdater *_mapItemUpdater;
     long long _lastFailureDiagnosis;
+    NSDictionary *_lineLookupBySection;
+    id <GEOTransitSystem> _systemSelected;
     _Bool _active;
     _Bool _supportSystemSectionCollapsing;
     _Bool _refreshing;
@@ -35,9 +37,11 @@ __attribute__((visibility("hidden")))
     MKMapItem *_mapItem;
     NSDate *_lastInfoRefreshDate;
     NSString *_lastInfoRefreshErrorDescription;
+    NSArray *_stationSystems;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *stationSystems; // @synthesize stationSystems=_stationSystems;
 @property(readonly, copy, nonatomic) NSString *lastInfoRefreshErrorDescription; // @synthesize lastInfoRefreshErrorDescription=_lastInfoRefreshErrorDescription;
 @property(readonly, nonatomic) NSDate *lastInfoRefreshDate; // @synthesize lastInfoRefreshDate=_lastInfoRefreshDate;
 @property(readonly, nonatomic, getter=isRefreshing) _Bool refreshing; // @synthesize refreshing=_refreshing;
@@ -47,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(nonatomic) __weak id <MKTransitDeparturesDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSDate *lastCutoffDateWithValidSchedule; // @synthesize lastCutoffDateWithValidSchedule=_lastCutoffDateWithValidSchedule;
+- (_Bool)_newStationCardUIEnabled;
 - (id)possibleActions;
 - (void)transitMapItemUpdater:(id)arg1 updatedMapItem:(id)arg2 error:(id)arg3;
 - (void)transitMapItemUpdater:(id)arg1 willUpdateMapItem:(id)arg2;
@@ -71,17 +76,17 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *sectionControllers;
 - (id)sectionControllerForSection:(long long)arg1;
 @property(readonly, nonatomic) _Bool isStuckWithExpiredInfo;
-- (_Bool)_systemHasIncidents:(id)arg1;
 - (id)_blockedIncidentEntities;
 - (_Bool)_hasIncidentsSection;
 - (id)dominantIncidentForDepartureSequence:(id)arg1;
-- (id)incidentsForSystem:(id)arg1;
+- (id)incidentsForSystemIncidentsSection:(id)arg1;
 - (id)incidentsForIncidentsSection;
 @property(readonly, nonatomic) NSArray *incidents;
 - (id)_directionsForSystem:(id)arg1 hasSequencesWithNoDirection:(out _Bool *)arg2;
 - (id)_identifierForSystem:(id)arg1;
 - (id)systemForSection:(long long)arg1;
 - (id)_systemForSection:(long long)arg1 directionIndex:(out long long *)arg2;
+- (void)systemSelected:(id)arg1;
 - (void)showNextPageInSection:(long long)arg1;
 - (id)directionForSection:(long long)arg1;
 - (_Bool)isLastSectionForSystem:(id)arg1;

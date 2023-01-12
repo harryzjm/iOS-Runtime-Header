@@ -7,6 +7,7 @@
 @class UIView;
 
 @protocol _UIRemoteKeyboardInputViewPlaceholder
+@property(readonly, nonatomic) _Bool isLocalMinimumHeightPlaceholder;
 @property(retain, nonatomic) UIView *associatedView;
 @property(retain, nonatomic) UIView *fallbackView;
 @property(readonly, retain) UIView *placeheldView;

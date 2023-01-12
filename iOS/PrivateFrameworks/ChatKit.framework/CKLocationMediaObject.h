@@ -13,7 +13,6 @@
     struct CLLocationCoordinate2D _coordinate;
 }
 
-+ (id)titleBarMaskImageForWidth:(double)arg1;
 + (id)placeholderPreviewCache;
 + (_Bool)isPreviewable;
 + (id)fallbackFilenamePrefix;
@@ -22,6 +21,8 @@
 + (id)vcardDataFromCLLocation:(id)arg1;
 + (Class)__ck_attachmentItemClass;
 @property(nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
+- (id)pasteboardItemProvider;
 - (id)generatePlaceholderThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
 - (id)generatePlaceholderThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (_Bool)isDroppedPin;
@@ -34,11 +35,12 @@
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(_Bool)arg3;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
+- (Class)placeholderBalloonViewClass;
 - (Class)previewBalloonViewClass;
-- (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (Class)balloonViewClass;
 @property(readonly, copy, nonatomic) NSString *title;
 - (int)mediaType;
-- (id)initWithTransfer:(id)arg1 isFromMe:(_Bool)arg2 suppressPreview:(_Bool)arg3 forceInlinePreview:(_Bool)arg4;
+- (id)initWithTransfer:(id)arg1 context:(id)arg2 forceInlinePreview:(_Bool)arg3;
 - (id)attachmentSummary:(unsigned long long)arg1;
 - (id)metricsCollectorMediaType;
 - (id)mapItem;

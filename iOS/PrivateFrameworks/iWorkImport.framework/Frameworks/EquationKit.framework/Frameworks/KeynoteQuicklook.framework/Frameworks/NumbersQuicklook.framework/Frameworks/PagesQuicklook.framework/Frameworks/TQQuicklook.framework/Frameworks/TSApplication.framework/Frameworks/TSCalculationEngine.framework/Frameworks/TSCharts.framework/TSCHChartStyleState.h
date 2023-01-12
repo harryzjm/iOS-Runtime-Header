@@ -6,7 +6,7 @@
 
 #import <TSCharts/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, TSCHChartStyle, TSCHLegendStyle, TSCHReferenceLineStyle;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, TSCHChartStyle, TSCHLegendStyle, TSCHReferenceLineStyle, TSSStylesheet, TSURetainedPointerKeyDictionary;
 
 @interface TSCHChartStyleState <NSCopying>
 {
@@ -26,25 +26,24 @@
 - (id)semanticUsagesOfParagraphStylePropertiesWithPropertySetType:(long long)arg1;
 - (id)semanticUsagesToParagraphStyleMapWithPropertySetType:(long long)arg1 filteredBySemanticUsages:(id)arg2;
 - (void)enumerateSemanticTagsAndUsagesWithPropertySetType:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)styleToSemanticTagsMap;
-- (id)semanticTagToStyleMap;
+@property(readonly, nonatomic) TSURetainedPointerKeyDictionary *styleToSemanticTagsMap;
+@property(readonly, copy, nonatomic) NSDictionary *semanticTagToStyleMap;
 - (id)stateByReducingSeriesPrivateStylesAndReferenceLineStyles;
 - (id)stateByExpandingForSeriesCount:(unsigned long long)arg1 andReferenceLineCount:(unsigned long long)arg2;
 - (id)stateByReducingReferenceLineStyles;
 - (id)stateByExpandingReferenceLineStylesForCount:(unsigned long long)arg1;
 - (id)stateByReducingSeriesPrivateStyles;
 - (id)stateByExpandingSeriesStylesForSeriesCount:(unsigned long long)arg1;
-- (_Bool)otherStateIsEquivalent:(id)arg1;
 - (_Bool)otherStateIsEquivalent:(id)arg1 ignoringSeriesThemeStyles:(_Bool)arg2;
 - (void)replaceAllInstancesOfStyle:(id)arg1 withStyle:(id)arg2;
 - (id)applyStyleSwapTuple:(id)arg1 ignoringBeforeValues:(_Bool)arg2;
 - (id)applyStyleSwapTuple:(id)arg1;
-- (_Bool)paragraphStyleIndexesAreValid;
+@property(readonly, nonatomic) _Bool paragraphStyleIndexesAreValid;
 - (id)usesOfParagraphStylePropertiesWithPropertySetType:(long long)arg1;
 - (id)p_propertySetWithPropertySetType:(long long)arg1 forStyle:(id)arg2;
-- (id)stylesheet;
-- (id)allStyles;
-@property(readonly, retain, nonatomic) TSCHChartStyleState *stateForParentStyleLookup;
+@property(readonly, nonatomic) TSSStylesheet *stylesheet;
+@property(readonly, copy, nonatomic) NSArray *allStyles;
+@property(readonly, nonatomic) TSCHChartStyleState *stateForParentStyleLookup;
 @property(retain, nonatomic) TSCHReferenceLineStyle *referenceLineThemeStyle; // @dynamic referenceLineThemeStyle;
 @property(copy, nonatomic) NSMutableDictionary *referenceLineStyles; // @dynamic referenceLineStyles;
 @property(copy, nonatomic) NSMutableArray *paragraphStyles; // @dynamic paragraphStyles;

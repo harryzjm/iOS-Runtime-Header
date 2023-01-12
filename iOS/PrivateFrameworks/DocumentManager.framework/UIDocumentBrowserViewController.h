@@ -8,7 +8,6 @@
 
 #import <DocumentManager/DOCAppearanceCustomization-Protocol.h>
 #import <DocumentManager/DOCHostDocumentBrowserViewControllerInterface-Protocol.h>
-#import <DocumentManager/DOCKeyCommandResponder-Protocol.h>
 #import <DocumentManager/DOCRemoteViewControllerDelegate-Protocol.h>
 #import <DocumentManager/DOCViewServiceErrorViewControllerDelegate-Protocol.h>
 #import <DocumentManager/NSCoding-Protocol.h>
@@ -18,7 +17,7 @@
 @class DOCAppearance, DOCConfiguration, DOCDocBrowserVC_UIActivityViewController, NSArray, NSOperationQueue, NSString, NSURL, UIColor, UIPresentationController, UIView, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController;
 @protocol DOCServiceDocumentBrowserViewControllerInterface, UIDocumentBrowserViewControllerDelegate;
 
-@interface UIDocumentBrowserViewController : UIViewController <DOCHostDocumentBrowserViewControllerInterface, DOCViewServiceErrorViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIRemoteViewControllerContaining, DOCRemoteViewControllerDelegate, DOCKeyCommandResponder, DOCAppearanceCustomization, NSCoding>
+@interface UIDocumentBrowserViewController : UIViewController <DOCHostDocumentBrowserViewControllerInterface, DOCViewServiceErrorViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIRemoteViewControllerContaining, DOCRemoteViewControllerDelegate, DOCAppearanceCustomization, NSCoding>
 {
     _Bool _isDisplayingRemoteViewController;
     UIView *_trackingViewsContainer;
@@ -80,7 +79,7 @@
 @property(nonatomic) __weak id <UIDocumentBrowserViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_presentationController:(id)arg1 prepareAdaptivePresentationController:(id)arg2;
 - (void)forwardHostSceneIdentifier:(id)arg1;
-- (id)recentDocumentsTypesFromInfoPlist;
+- (id)recentDocumentsContentTypesFromInfoPlist;
 - (_Bool)supportsRemovableFileProvidersForConfiguration:(id)arg1;
 - (void)_renameDocumentAtURL:(id)arg1 newName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_didTriggerBarButtonWithUUID:(id)arg1;
@@ -92,14 +91,12 @@
 - (void)_didTriggerCustomActionWithIdentifier:(id)arg1 onItems:(id)arg2;
 - (void)_commitDocumentURLPreview:(id)arg1;
 - (void)_presentActivityViewControllerForItems:(id)arg1 withPopoverTracker:(id)arg2 isContentManaged:(_Bool)arg3 additionalActivities:(id)arg4 activityProxy:(id)arg5;
+- (void)performKeyCommandNoOpOnHostSide:(id)arg1;
 - (void)_establishFirstResponderOnServiceSideForKeyCommand:(id)arg1;
-- (void)dismissingKeyCommandWasPerformed:(id)arg1;
-- (void)_awakingNoOpKeyCommandWasPerformed:(id)arg1;
-- (void)keyCommandWasPerformed:(id)arg1;
-- (_Bool)becomeFirstResponder;
-- (_Bool)canBecomeFirstResponder;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)keyCommands;
+- (_Bool)becomeFirstResponder;
+- (_Bool)canBecomeFirstResponder;
 - (id)_symbolicDownloadsURLWrapper;
 - (id)_sandboxingURLWrapperForURL:(id)arg1 readonly:(_Bool)arg2 error:(id *)arg3;
 - (void)_displayActivityControllerWithItems:(id)arg1 popoverTracker:(id)arg2 isContentManaged:(_Bool)arg3 additionalActivities:(id)arg4 activityProxy:(id)arg5;

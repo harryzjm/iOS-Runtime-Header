@@ -21,6 +21,7 @@
 - (double)_progressFromWorkerStatesDictionary:(id)arg1;
 - (id)pv_fetchFaceGroupsForPerson:(id)arg1;
 - (id)pv_fetchFaceGroups;
+- (id)pv_fetchAssetsForFaceLocalIdentifiers:(id)arg1;
 - (id)pv_fetchAssetsForFaceGroup:(id)arg1;
 - (id)pv_fetchAssetsForPerson:(id)arg1;
 - (id)pv_fetchAssetsInMoment:(id)arg1;

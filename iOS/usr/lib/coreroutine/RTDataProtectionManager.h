@@ -25,6 +25,7 @@
 - (void)handleKeybagLockStatusChange:(long long)arg1;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithKeybagMonitor:(id)arg1 notificationHelper:(id)arg2;
 - (id)init;

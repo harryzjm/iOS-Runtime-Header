@@ -35,6 +35,7 @@
 - (id)servicesToReadForCharacteristicType:(id)arg1;
 - (id)namingComponentForHomeKitObject;
 - (id)serviceLikeBuilderInHome:(id)arg1;
+- (id)_siriEndPointProfiles;
 - (id)accessories;
 @property(readonly, nonatomic) NSSet *services;
 @property(readonly, nonatomic) HMHome *home;

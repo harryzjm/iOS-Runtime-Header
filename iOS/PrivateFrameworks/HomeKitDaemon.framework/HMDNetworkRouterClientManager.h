@@ -29,6 +29,7 @@
 }
 
 + (id)logCategory;
++ (id)assertAirplay2RuleToConfigurationForAccessory:(id)arg1 firewallConfiguration:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly) NSMutableSet *accessoriesInReconfiguration; // @synthesize accessoriesInReconfiguration=_accessoriesInReconfiguration;
 @property(nonatomic) _Bool startPending; // @synthesize startPending=_startPending;
@@ -51,7 +52,7 @@
 - (void)_migrateAccessory:(id)arg1 withConfiguration:(id)arg2 clientStatus:(id)arg3 fromCredentialType:(long long)arg4 toCredentialType:(long long)arg5 rotate:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_updateClientConfiguration:(id)arg1 forAccessory:(id)arg2 protectionMode:(long long)arg3 clientStatus:(id)arg4 skipIfFingerprintMatches:(_Bool)arg5 clientReconfigurationAllowed:(_Bool)arg6;
 - (void)_updateExistingClientConfiguration:(id)arg1 forAccessory:(id)arg2 clientStatus:(id)arg3 clientReconfigurationAllowed:(_Bool)arg4;
-- (void)_updateClientConfigurationForAccessory:(id)arg1 clientReconfigurationAllowed:(_Bool)arg2;
+- (void)_updateOrCreateClientConfigurationForAccessory:(id)arg1 preferReconcile:(_Bool)arg2 clientReconfigurationAllowed:(_Bool)arg3;
 - (void)_updateClientConfigurationForAllAccessoriesWithClientReconfigurationAllowed:(_Bool)arg1;
 - (void)_createClientConfigurationForAccessory:(id)arg1 credential:(id)arg2 clientStatus:(id)arg3 clientReconfigurationAllowed:(_Bool)arg4;
 - (void)_replaceClientConfigurationForAccessory:(id)arg1 credential:(id)arg2 clientStatus:(id)arg3 clientReconfigurationAllowed:(_Bool)arg4;

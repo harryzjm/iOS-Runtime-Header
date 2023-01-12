@@ -15,8 +15,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *_imagesByText; // @synthesize _imagesByText=__imagesByText;
 @property(nonatomic) long long aspectRatio; // @synthesize aspectRatio=_aspectRatio;
-- (id)hudItemForMenuItem:(id)arg1;
-- (id)hudItemForMenuHeader;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (void)updateImage;
 - (id)_imageForAspectRatio:(long long)arg1;
 - (id)_titleForAspectRatio:(long long)arg1;

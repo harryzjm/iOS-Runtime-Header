@@ -47,6 +47,7 @@
 - (id)pv_fetchMomentsForPerson:(id)arg1;
 - (id)pv_fetchMomentsWithLocalIdentifiers:(id)arg1;
 - (id)pv_fetchMoments;
+- (id)pv_fetchAssetsForFaceLocalIdentifiers:(id)arg1;
 - (id)pv_fetchFacesGroupedByAssetLocalIdentifierForAssets:(id)arg1;
 - (id)pv_fetchFacesForFaceGroup:(id)arg1;
 - (id)pv_fetchFacesForPersonLocalIdentifiers:(id)arg1 inMoment:(id)arg2;
@@ -64,7 +65,9 @@
 - (id)pv_persistentStorageDirectoryURL;
 - (id)representativeFaceObservationForFaces:(id)arg1 ageType:(unsigned short *)arg2 inPerson:(id)arg3;
 - (id)_representativeFaceObservationForPerson:(id)arg1 ageType:(unsigned short *)arg2 inAssetCollections:(id)arg3;
-- (id)_representativeFaceObservationForPerson:(id)arg1 ageType:(unsigned short *)arg2;
+- (id)representativeFaceObservationForPerson:(id)arg1 ageType:(unsigned short *)arg2;
+- (float)_adjustDistanceFactorForPerson:(id)arg1 andPerson:(id)arg2 forAgeType:(unsigned short)arg3 andAgeType:(unsigned short)arg4;
+- (float)_minimiumDistanceRequiredForCommonAssetDistanceForAgeType:(unsigned short)arg1;
 - (float)distanceBetweenPerson:(id)arg1 andPerson:(id)arg2 useCommonMoments:(_Bool)arg3 minAgeType:(unsigned short *)arg4 updateBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (float)distanceWithOverlapCheckBetweenPerson:(id)arg1 andPerson:(id)arg2 useCommonMoments:(_Bool)arg3 minAgeType:(unsigned short *)arg4 updateBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (unsigned long long)numberOfMomentsInCommonBetweenPerson:(id)arg1 andPerson:(id)arg2;

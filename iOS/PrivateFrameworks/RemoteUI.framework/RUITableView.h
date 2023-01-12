@@ -34,6 +34,10 @@
     UIView<RUIHeader> *_headerView;
     UITraitCollection *_currentTraitCollection;
     _Bool _sectionContentInsetInitialized;
+    _Bool _showingLeftLabelNavBarButtons;
+    RUIBarButtonItem *_oldLeftBarButtonItemForLabel;
+    _Bool _showingRightLabelNavBarButtons;
+    RUIBarButtonItem *_oldRightBarButtonItemForLabel;
     RUIObjectModel *_objectModel;
     RUIPage *_page;
     RUIHeaderElement *_header;
@@ -105,6 +109,12 @@
 - (void)datePickerDone:(id)arg1;
 - (void)datePickerCancel:(id)arg1;
 - (void)_datePickerRevert;
+- (void)_hideRightBarButtonItemForLabel;
+- (void)rightLabelDone:(id)arg1;
+- (void)_showRightBarButtonItemForLabel;
+- (void)_hideLeftBarButtonItemForLabel;
+- (void)leftLabelDone:(id)arg1;
+- (void)_showLeftBarButtonItemForLabel;
 - (void)setSelectedRadioGroupRow:(id)arg1;
 - (void)viewDidLayout;
 - (void)automaticKeyboardDidHide:(id)arg1;

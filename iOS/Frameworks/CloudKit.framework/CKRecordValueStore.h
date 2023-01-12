@@ -23,8 +23,6 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) __weak CKRecord *record; // @synthesize record=_record;
-@property(nonatomic) _Bool trackChanges; // @synthesize trackChanges=_trackChanges;
 @property(retain, nonatomic) NSMutableSet *changedKeysSet; // @synthesize changedKeysSet=_changedKeysSet;
 @property(retain, nonatomic) NSMutableDictionary *originalValues; // @synthesize originalValues=_originalValues;
 @property(retain, nonatomic) NSMutableDictionary *values; // @synthesize values=_values;
@@ -32,15 +30,11 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_validateRecordValue:(id)arg1;
-- (void)_validateRecordKey:(id)arg1;
-- (void)_validateKeyUniquenessForKey:(id)arg1;
 - (_Bool)checkPropertiesWithModifiedPropertiesOnly:(_Bool)arg1 includingAllArrayItems:(_Bool)arg2 withValueCheckBlock:(CDUnknownBlockType)arg3;
 - (_Bool)checkProperties:(_Bool)arg1 withValueCheckBlock:(CDUnknownBlockType)arg2;
 - (void)resetChangedKeys;
 - (id)changedKeys;
 - (id)allKeys;
-- (void)_sanitizeRecordValue:(id)arg1;
 - (void)setNilValueForKey:(id)arg1;
 - (void)setObjectNoValidate:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;

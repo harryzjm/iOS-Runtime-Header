@@ -19,6 +19,7 @@
 - (id)toString;
 - (id)initWithRTPLocation:(id)arg1;
 - (id)initWithRTLocationOfInterest:(id)arg1;
+- (id)initWithRTLocation:(id)arg1 speed:(double)arg2 type:(int)arg3;
 - (id)initWithRTLocation:(id)arg1 speed:(double)arg2;
 - (id)initWithRTLocation:(id)arg1;
 

@@ -8,7 +8,7 @@
 
 @interface _EARLmLoader : NSObject
 {
-    struct shared_ptr<quasar::LmLoader> _loader;
+    struct shared_ptr<quasar::LmLoader2> _loader;
 }
 
 + (void)initialize;

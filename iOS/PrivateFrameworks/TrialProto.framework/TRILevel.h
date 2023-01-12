@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, TRIFile;
+@class NSData, NSMutableDictionary, NSString, TRIFile;
 
 @interface TRILevel
 {
@@ -24,6 +24,8 @@
 @property(nonatomic) int intValue; // @dynamic intValue;
 @property(readonly, nonatomic) int levelOneOfCase; // @dynamic levelOneOfCase;
 @property(nonatomic) long long longValue; // @dynamic longValue;
+@property(retain, nonatomic) NSMutableDictionary *metadata; // @dynamic metadata;
+@property(readonly, nonatomic) unsigned long long metadata_Count; // @dynamic metadata_Count;
 @property(copy, nonatomic) NSString *stringValue; // @dynamic stringValue;
 
 @end

@@ -10,6 +10,9 @@ __attribute__((visibility("hidden")))
     unsigned int _transportSessionID;
 }
 
+- (_Bool)isIPv6;
+- (unsigned int)networkMTU;
+- (int)networkInterfaceType;
 - (int)createVFD:(int *)arg1 forStreamType:(unsigned int)arg2;
 - (void)start;
 - (id)initWithTransportSessionID:(unsigned int)arg1;

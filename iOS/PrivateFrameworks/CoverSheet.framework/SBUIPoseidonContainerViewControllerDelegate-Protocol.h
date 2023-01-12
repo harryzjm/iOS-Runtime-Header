@@ -9,8 +9,6 @@
 @class SBUIPoseidonContainerViewController;
 
 @protocol SBUIPoseidonContainerViewControllerDelegate <NSObject>
-- (double)poseidonContainerViewControllerRestToOpenIdleDuration:(SBUIPoseidonContainerViewController *)arg1;
-- (double)poseidonContainerViewControllerIdleUntilShimmerDuration:(SBUIPoseidonContainerViewController *)arg1;
 - (void)poseidonContainerViewControllerCoachingStateDidChange:(SBUIPoseidonContainerViewController *)arg1;
 @end
 

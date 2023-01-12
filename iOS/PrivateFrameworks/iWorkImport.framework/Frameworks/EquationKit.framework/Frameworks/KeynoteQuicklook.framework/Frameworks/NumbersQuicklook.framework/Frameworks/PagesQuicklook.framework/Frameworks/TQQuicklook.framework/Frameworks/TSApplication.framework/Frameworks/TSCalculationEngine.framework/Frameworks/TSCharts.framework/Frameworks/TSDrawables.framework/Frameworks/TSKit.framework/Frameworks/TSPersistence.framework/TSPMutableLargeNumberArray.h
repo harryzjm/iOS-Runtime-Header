@@ -9,9 +9,9 @@
 }
 
 + (Class)arraySegmentClass;
-- (void)loadFromMessage:(const struct LargeNumberArray *)arg1 unarchiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToMessage:(struct LargeNumberArray *)arg1 archiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 
 @end

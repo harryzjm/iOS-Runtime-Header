@@ -7,8 +7,8 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (TSCHArchivingUtilities)
-+ (id)tsch_instanceWithArchive:(const struct ChartsNSArrayOfNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
-- (id)tsch_initWithArchive:(const struct ChartsNSArrayOfNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
-- (void)tsch_saveToArchive:(struct ChartsNSArrayOfNSNumberDoubleArchive *)arg1 archiver:(id)arg2;
++ (id)tsch_instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (id)tsch_initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToArchive:(void *)arg1 archiver:(id)arg2;
 @end
 

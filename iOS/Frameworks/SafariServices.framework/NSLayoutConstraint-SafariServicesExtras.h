@@ -8,5 +8,6 @@
 
 @interface NSLayoutConstraint (SafariServicesExtras)
 + (void)_sf_setConstraints:(id)arg1 active:(_Bool)arg2;
+- (id)_sf_withPriority:(float)arg1;
 @end
 

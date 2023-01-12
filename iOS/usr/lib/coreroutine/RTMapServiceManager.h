@@ -28,7 +28,7 @@
 - (void)fetchMapItemsFromNaturalLanguageQuery:(id)arg1 location:(id)arg2 options:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)fetchMapItemFromHandle:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_proxyForServicingSelector:(SEL)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

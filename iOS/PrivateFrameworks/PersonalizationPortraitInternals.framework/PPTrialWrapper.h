@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, PPSQLDatabase, _PASLock;
+@class NSDictionary, NSString, PPSQLDatabase, TRIClient, _PASLock;
 
 @interface PPTrialWrapper : NSObject
 {
@@ -14,14 +14,21 @@
     NSDictionary *_namespaceNamesIdsDict;
     _Bool _useDefaultFiles;
     PPSQLDatabase *_db;
+    TRIClient *_trialClient;
+    unsigned int _treatmentsHash;
+    NSString *_concatenatedTreatmentNames;
 }
 
++ (id)sharedTrialClient;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(readonly) unsigned int treatmentsHash; // @synthesize treatmentsHash=_treatmentsHash;
+@property(readonly) NSString *concatenatedTreatmentNames; // @synthesize concatenatedTreatmentNames=_concatenatedTreatmentNames;
+- (id)trieForFactorName:(id)arg1 namespaceName:(id)arg2;
 - (id)mlModelForModelName:(id)arg1 namespaceName:(id)arg2 error:(id *)arg3;
+- (id)_loadMLModelForModelName:(id)arg1 namespaceName:(id)arg2 error:(id *)arg3;
 - (id)mlModelPathForModelName:(id)arg1 namespaceName:(id)arg2 error:(id *)arg3;
 - (_Bool)hasModel:(id)arg1 namespaceName:(id)arg2;
-- (_Bool)resetMLModelsForNamespaceName:(id)arg1 error:(id *)arg2;
 - (void)callRegisteredUpdateHandlers;
 - (void)callRegisteredUpdateHandlersForNamespaceName:(id)arg1;
 - (void)clearOverrideFilepathForFileFactor:(id)arg1 namespaceName:(id)arg2;
@@ -30,20 +37,18 @@
 - (id)levelForFactor:(id)arg1 namespaceName:(id)arg2;
 - (id)lazyPlistForFactorName:(id)arg1 namespaceName:(id)arg2 error:(id *)arg3;
 - (id)plistForFactorName:(id)arg1 namespaceName:(id)arg2;
+- (id)directoryForFactorName:(id)arg1 namespaceName:(id)arg2;
 - (id)filepathForFactor:(id)arg1 namespaceName:(id)arg2;
+- (id)filepathForFactorName:(id)arg1 namespaceName:(id)arg2 isDirectory:(_Bool)arg3;
 - (id)defaultFilepathForFactor:(id)arg1 namespaceName:(id)arg2;
-- (unsigned int)treatmentsHash;
-- (id)concatenatedTreatmentNames;
+- (void)_updateConcatenatedTreatmentNamesAndHash;
 - (id)readableTreatmentsMapping;
-- (id)treatmentIdForNamespaceName:(id)arg1;
-- (void)removeUpdateHandlerForToken:(id)arg1;
 - (_Bool)hasFactor:(id)arg1 namespaceName:(id)arg2;
-- (void)updateMetadataForNamespaceName:(id)arg1;
-- (void)updateMetadataWithGuardedData:(id)arg1;
 - (id)treatmentNameForNamespaceName:(id)arg1;
-- (void)updateMetadata;
-- (void)addUpdateHandlerForNamespaceName:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)addUpdateHandlerForNamespaceName:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)removeUpdateHandlerForToken:(id)arg1;
 - (id)lastTreatmentUpdateForNamespaceName:(id)arg1;
+- (void)_addDefaultUpdateHandlersForAllNamespacesWithGuardedData:(id)arg1;
 - (void)dealloc;
 - (id)initWithSettings:(id)arg1 database:(id)arg2 trialClient:(id)arg3;
 

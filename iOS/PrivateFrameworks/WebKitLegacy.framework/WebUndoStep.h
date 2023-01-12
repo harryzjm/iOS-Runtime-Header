@@ -9,16 +9,16 @@
 __attribute__((visibility("hidden")))
 @interface WebUndoStep : NSObject
 {
-    struct RefPtr<WebCore::UndoStep, WTF::DumbPtrTraits<WebCore::UndoStep>> m_step;
+    struct RefPtr<WebCore::UndoStep, WTF::RawPtrTraits<WebCore::UndoStep>, WTF::DefaultRefDerefTraits<WebCore::UndoStep>> m_step;
 }
 
-+ (id)stepWithUndoStep:(Ref_d1ef333b *)arg1;
++ (id)stepWithUndoStep:(void *)arg1;
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct UndoStep *)step;
+- (void *)step;
 - (void)dealloc;
-- (id)initWithUndoStep:(Ref_d1ef333b *)arg1;
+- (id)initWithUndoStep:(void *)arg1;
 
 @end
 

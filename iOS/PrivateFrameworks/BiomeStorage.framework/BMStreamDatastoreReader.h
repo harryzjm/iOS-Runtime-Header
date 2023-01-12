@@ -13,11 +13,18 @@
     BMStreamDatastore *_inner;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) BMStreamDatastore *inner; // @synthesize inner=_inner;
+@property(readonly, nonatomic) _Bool canReadOrPruneData;
 - (id)streamIdentifier;
-- (Class)eventClass;
+- (Class)eventBodyClass;
+- (id)newEnumeratorFromBookmark:(id)arg1 options:(unsigned long long)arg2;
 - (id)newEnumeratorFromBookmark:(id)arg1;
+- (id)newEnumeratorFromStartTime:(double)arg1 endTime:(double)arg2 maxEvents:(unsigned long long)arg3 options:(unsigned long long)arg4;
+- (id)newEnumeratorFromStartTime:(double)arg1 endTime:(double)arg2 maxEvents:(unsigned long long)arg3 lastN:(unsigned long long)arg4 options:(unsigned long long)arg5;
+- (id)newEnumeratorFromStartTime:(double)arg1 options:(unsigned long long)arg2;
 - (id)newEnumeratorFromStartTime:(double)arg1;
+- (id)fetchEventsFrom:(double)arg1 to:(double)arg2 options:(unsigned long long)arg3;
 - (id)fetchEventsFrom:(double)arg1 to:(double)arg2;
 - (id)initWithStream:(id)arg1 config:(id)arg2;
 

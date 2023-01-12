@@ -6,6 +6,9 @@
 
 #import <VoiceOverServices/NSObject-Protocol.h>
 
+@class NSArray, VOSCommandProfile;
+
 @protocol VOSCommandProfileDelegate <NSObject>
+- (NSArray *)availableSiriShortcuts:(VOSCommandProfile *)arg1;
 @end
 

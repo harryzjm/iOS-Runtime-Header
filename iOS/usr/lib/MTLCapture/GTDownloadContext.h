@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray;
-@protocol MTLBlitCommandEncoder, MTLCommandBuffer, MTLCommandQueue;
+@protocol MTLAccelerationStructureCommandEncoderSPI, MTLBlitCommandEncoder, MTLCommandBuffer, MTLCommandQueue;
 
 @interface GTDownloadContext : NSObject
 {
     id <MTLCommandQueue> _queue;
     id <MTLCommandBuffer> _command;
     id <MTLBlitCommandEncoder> _blit;
+    id <MTLAccelerationStructureCommandEncoderSPI> _accelerationStructureCommandEncoder;
     NSMutableArray *_MTLResources;
     NSMutableArray *_originalMTLResources;
     struct apr_pool_t *_pool;
@@ -29,6 +30,7 @@
 @property(nonatomic) struct apr_array_header_t *requests; // @synthesize requests=_requests;
 - (void)flush;
 - (void)flushWithCallback:(CDUnknownBlockType)arg1;
+- (id)accelerationStructureCommandEncoder;
 - (id)blitCommandEncoder;
 - (id)newCommandBuffer;
 - (void)retainMTLResource:(id)arg1;

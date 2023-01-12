@@ -6,16 +6,24 @@
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, NSSet, NSString;
-@protocol AMSBagProtocol;
+@class ACAccount, AMSDeviceOfferEligibilityTask, AMSDeviceOfferRegistrationPrivacyValidator, AMSProcessInfo, AMSURLSession, NSArray, NSSet, NSString;
+@protocol AMSBagProtocol, AMSDeviceOffersTracking;
 
 @interface AMSDeviceOfferRegistrationTask <AMSBagConsumer>
 {
+    _Bool _ignoreRegistrationBlacklist;
     _Bool _lightweightCheckOnly;
     ACAccount *_account;
     id <AMSBagProtocol> _bag;
     AMSProcessInfo *_clientInfo;
     NSSet *_offerIdentifiers;
+    NSArray *_registrationGroups;
+    AMSDeviceOfferEligibilityTask *_eligibilityTask;
+    NSString *_deviceGUID;
+    NSString *_masterSerialNumber;
+    id <AMSDeviceOffersTracking> _deviceOffersStore;
+    AMSDeviceOfferRegistrationPrivacyValidator *_privacyValidator;
+    AMSURLSession *_urlSession;
 }
 
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
@@ -25,18 +33,45 @@
 + (id)bagKeySet;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool lightweightCheckOnly; // @synthesize lightweightCheckOnly=_lightweightCheckOnly;
+@property(nonatomic) _Bool ignoreRegistrationBlacklist; // @synthesize ignoreRegistrationBlacklist=_ignoreRegistrationBlacklist;
+@property(retain, nonatomic) AMSURLSession *urlSession; // @synthesize urlSession=_urlSession;
+@property(readonly, nonatomic) AMSDeviceOfferRegistrationPrivacyValidator *privacyValidator; // @synthesize privacyValidator=_privacyValidator;
+@property(readonly, nonatomic) id <AMSDeviceOffersTracking> deviceOffersStore; // @synthesize deviceOffersStore=_deviceOffersStore;
+@property(readonly, nonatomic) NSString *masterSerialNumber; // @synthesize masterSerialNumber=_masterSerialNumber;
+@property(readonly, nonatomic) NSString *deviceGUID; // @synthesize deviceGUID=_deviceGUID;
+@property(readonly, nonatomic) AMSDeviceOfferEligibilityTask *eligibilityTask; // @synthesize eligibilityTask=_eligibilityTask;
+@property(retain, nonatomic) NSArray *registrationGroups; // @synthesize registrationGroups=_registrationGroups;
 @property(retain, nonatomic) NSSet *offerIdentifiers; // @synthesize offerIdentifiers=_offerIdentifiers;
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
+- (id)_registrationRequestEncoderWithAccount:(id)arg1;
 - (id)_urlRequestWithBagURL:(id)arg1;
-- (id)_urlRequestMethod;
-- (void)_updateWithDeviceOffers:(id)arg1;
-- (id)_requestParameters;
-- (id)_latestOffersWithFetchedDeviceOffers:(id)arg1 offersStore:(id)arg2;
 - (id)_deviceOffersURL;
+- (id)_lightweightDeviceOffersURL;
+- (_Bool)_isDeviceGroupRegistrationAllowed;
+- (_Bool)_isEligibilityCallsAllowed;
+- (_Bool)_isRegistrationAllowed;
+- (void)_updateWithDeviceOffers:(id)arg1;
+- (id)_sanitizedResultPromise:(id)arg1;
+- (id)_offersDecodedFromResult:(id)arg1;
+- (id)_latestOffersWithFetchedDeviceOffers:(id)arg1 offersStore:(id)arg2;
+- (id)_handleRegistrationResult:(id)arg1;
 - (id)_bucketedOffers:(id)arg1;
+- (id)_latestDeviceGroups;
+- (id)_registrationGroupsFrom:(id)arg1 matching:(id)arg2;
+- (id)_eligibilityQualifiedRegistrationGroupsWithAccount:(id)arg1 pendingRegistrationGroups:(id)arg2;
+- (id)_serialNumberBlacklist;
+- (id)_companionSerialNumbers;
+- (id)_filteredRegistrationGroups:(id)arg1;
+- (id)_accountEligibleSerialsFromDeviceOffers:(id)arg1 accountOffers:(id)arg2;
+- (id)_registrationEndpointPOSTParametersWithRegistrationGroups:(id)arg1 companionSerialNumbers:(id)arg2;
+- (id)_registrationEndpointPOSTDeviceGroupsBody:(id)arg1;
+- (id)_registrationEndpointPOSTCompanionBodyWithDeviceGroups:(id)arg1 companionSerialNumbers:(id)arg2;
+- (id)_performRegistrationRequestWithAccount:(id)arg1;
+- (id)_performLightweightRequestWithAccount:(id)arg1;
 - (id)perform;
+- (id)initWithAccount:(id)arg1 bag:(id)arg2 deviceGUID:(id)arg3 deviceOffersStore:(id)arg4 eligibilityTask:(id)arg5 masterSerialNumber:(id)arg6 privacyValidator:(id)arg7 urlSession:(id)arg8;
 - (id)initWithAccount:(id)arg1 bag:(id)arg2;
 
 // Remaining properties

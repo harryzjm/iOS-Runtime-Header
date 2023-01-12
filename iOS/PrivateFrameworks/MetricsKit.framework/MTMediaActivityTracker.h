@@ -33,6 +33,7 @@
 - (void)stopActivity:(long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
 - (id)startActivity:(long long)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;
 - (id)combineEventData:(id)arg1 withPlaylistDataForItem:(id)arg2;
+- (void)resetEventData:(id)arg1;
 - (void)updateEventData:(id)arg1;
 - (void)synchronizeAtOverallPosition:(unsigned long long)arg1;
 - (void)synchronizePlaybackRate:(float)arg1 overallPosition:(unsigned long long)arg2;

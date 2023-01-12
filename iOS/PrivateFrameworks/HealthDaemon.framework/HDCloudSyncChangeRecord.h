@@ -11,8 +11,6 @@
     HDCloudSyncCodableChange *_underlyingChange;
 }
 
-+ (id)_decodedSyncAnchorRangeMapForAnchorRangeData:(id)arg1;
-+ (id)_assetForCKRecord:(id)arg1 error:(id *)arg2;
 + (id)changesetArchiveURLForCKRecord:(id)arg1 error:(id *)arg2;
 + (id)changesetArchiveContentDataForCKRecord:(id)arg1 error:(id *)arg2;
 + (id)assetKeys;
@@ -22,14 +20,14 @@
 + (_Bool)hasFutureSchema:(id)arg1;
 + (_Bool)isChangeRecord:(id)arg1 inSequence:(id)arg2;
 + (_Bool)isChangeRecordID:(id)arg1;
-+ (id)recordIDForNextChangeInSequence:(id)arg1;
 + (_Bool)isChangeRecord:(id)arg1;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
++ (id)fieldsForUnprotectedSerialization;
 + (id)recordType;
 + (_Bool)requiresUnderlyingMessage;
 - (void).cxx_destruct;
+- (id)printDescription;
 - (id)description;
-- (void)_populateRecordFromUnderlyingMessage;
 @property(readonly, copy, nonatomic) CKRecordID *sequenceRecordID;
 @property(readonly, nonatomic) HDSyncAnchorRangeMap *decodedSyncAnchorRangeMap;
 @property(readonly, copy, nonatomic) NSURL *changesetArchiveFileURL;
@@ -40,7 +38,6 @@
 - (_Bool)shouldFetchAssetContentInMemory;
 - (long long)compare:(id)arg1;
 - (id)serializeUnderlyingMessage;
-- (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2 underlyingChange:(id)arg3;
 - (id)initWithSyncAnchorRangeMap:(id)arg1 changeIndex:(long long)arg2 changesetAsset:(id)arg3 changeSize:(long long)arg4 protocolVersion:(int)arg5 finalForSequence:(_Bool)arg6 sequenceRecordID:(id)arg7 record:(id)arg8 schemaVersion:(long long)arg9;
 - (id)initWithSyncAnchorRangeMap:(id)arg1 finalForSequence:(_Bool)arg2 changesetArchiveFileHandle:(id)arg3 sequenceRecord:(id)arg4 protocolVersion:(int)arg5;
 - (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2;

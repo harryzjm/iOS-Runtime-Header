@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/NSTextStorage.h>
+#import <UIFoundation/NSTextStorage.h>
 
-@class NSArray, NSMutableSet, NSParagraphStyle, NSSet, UIColor, UIFont;
+@class NSArray, NSMutableSet, NSParagraphStyle, NSSet, NSTextAttachment, UIColor, UIFont;
 @protocol WFSlotTemplateTextStorageDelegate;
 
 @interface WFSlotTemplateTextStorage : NSTextStorage
@@ -21,6 +21,7 @@
     UIColor *_disabledSlotBackgroundColor;
     NSArray *_contents;
     long long _contentsTextAlignment;
+    NSTextAttachment *_disclosureAttachment;
     NSTextStorage *_textStorage;
     NSMutableSet *_mutableHighlightedSlots;
     NSMutableSet *_mutableSelectedSlots;
@@ -34,6 +35,7 @@
 @property(readonly, nonatomic) NSMutableSet *mutableSelectedSlots; // @synthesize mutableSelectedSlots=_mutableSelectedSlots;
 @property(readonly, nonatomic) NSMutableSet *mutableHighlightedSlots; // @synthesize mutableHighlightedSlots=_mutableHighlightedSlots;
 @property(readonly, nonatomic) NSTextStorage *textStorage; // @synthesize textStorage=_textStorage;
+@property(retain, nonatomic) NSTextAttachment *disclosureAttachment; // @synthesize disclosureAttachment=_disclosureAttachment;
 @property(readonly, nonatomic) long long contentsTextAlignment; // @synthesize contentsTextAlignment=_contentsTextAlignment;
 @property(copy, nonatomic) NSArray *contents; // @synthesize contents=_contents;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;

@@ -12,7 +12,7 @@
 #import <SpringBoard/SBMainDisplayWorkspaceAppInteractionEventSourceObserving-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class BSMonotonicReferenceTime, FBScene, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, SBAsynchronousRenderingAssertion, SBInteractiveScreenshotCommitWorkspaceTransaction, SBInteractiveScreenshotScreenEdgePanGestureRecognizer, SBInteractiveScreenshotSettings, SBMainDisplayWorkspaceAppInteractionEventSource, SBMainWorkspace, SBSystemGestureManager, UIScreen;
+@class BSMonotonicReferenceTime, FBScene, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, SBAsynchronousRenderingAssertion, SBCornerPencilPanGestureRecognizer, SBInteractiveScreenshotCommitWorkspaceTransaction, SBInteractiveScreenshotSettings, SBMainDisplayWorkspaceAppInteractionEventSource, SBMainWorkspace, SBSystemGestureManager, UIScreen;
 @protocol BSInvalidatable, SBInteractiveScreenshotGestureManagerDelegate;
 
 @interface SBInteractiveScreenshotGestureManager : NSObject <BSTransactionObserver, SBInteractiveScreenshotCommitWorkspaceTransactionDelegate, SBInteractiveScreenshotGestureRootViewControllerDelegate, SBMainDisplayWorkspaceAppInteractionEventSourceObserving, SBSystemGestureRecognizerDelegate>
@@ -20,8 +20,7 @@
     NSUUID *_activeGestureSessionID;
     SBMainDisplayWorkspaceAppInteractionEventSource *_appInteractionEventSource;
     SBAsynchronousRenderingAssertion *_asynchronousRenderingAssertion;
-    SBInteractiveScreenshotScreenEdgePanGestureRecognizer *_bottomLeftGestureRecognizer;
-    SBInteractiveScreenshotScreenEdgePanGestureRecognizer *_bottomRightGestureRecognizer;
+    SBCornerPencilPanGestureRecognizer *_gestureRecognizer;
     SBInteractiveScreenshotCommitWorkspaceTransaction *_commitTransaction;
     id <BSInvalidatable> _commitTransactionDisableGestureAssertion;
     NSMutableSet *_disableGestureAssertions;
@@ -49,6 +48,7 @@
 - (id)acquireDisableGestureAssertionWithReason:(id)arg1;
 - (_Bool)handleRemoteTransientOverlayPresentationRequest:(id)arg1 forSession:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
 - (void)eventSource:(id)arg1 userTouchedApplication:(id)arg2;
 - (void)interactiveScreenshotGestureRootViewControllerRequestsGestureRecognizerCancellation:(id)arg1;

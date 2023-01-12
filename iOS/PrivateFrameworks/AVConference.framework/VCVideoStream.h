@@ -7,16 +7,17 @@
 #import <AVConference/AVCRateControllerDelegate-Protocol.h>
 #import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
 #import <AVConference/VCRedundancyControllerDelegate-Protocol.h>
+#import <AVConference/VCStreamSychronizationDelegate-Protocol.h>
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
 #import <AVConference/VCVideoCaptureConverterDelegate-Protocol.h>
 #import <AVConference/VCVideoReceiverDelegate-Protocol.h>
 #import <AVConference/VCVideoSink-Protocol.h>
 
-@class AVCRateController, AVCStatisticsCollector, NSArray, NSNumber, NSObject, NSString, VCRedundancyControllerVideo, VCVideoCaptureConverter, VCVideoReceiverBase, VCVideoRule, VCVideoTransmitterBase;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class AVCRateController, AVCStatisticsCollector, NSNumber, NSObject, NSString, VCRedundancyControllerVideo, VCVideoCaptureConverter, VCVideoReceiverBase, VCVideoRule, VCVideoTransmitterBase;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, VCSessionParticipantLocalVideoStreamDelegate, VCVideoReceiverFeedbackDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStream <VCVideoReceiverDelegate, VCMediaStreamSyncDestination, VCVideoSink, VCVideoCaptureClient, VCVideoCaptureConverterDelegate, AVCRateControllerDelegate, VCRedundancyControllerDelegate>
+@interface VCVideoStream <VCVideoReceiverDelegate, VCMediaStreamSyncDestination, VCVideoSink, VCVideoCaptureClient, VCVideoCaptureConverterDelegate, AVCRateControllerDelegate, VCRedundancyControllerDelegate, VCStreamSychronizationDelegate>
 {
     long long _type;
     NSObject<OS_dispatch_queue> *_lastDecodedFrameQueue;
@@ -35,10 +36,10 @@ __attribute__((visibility("hidden")))
     _Bool _isServerBasedBandwidthProbingEnabled;
     unsigned char _lastMediaPriority;
     NSNumber *_targetStreamID;
-    NSArray *_compoundStreamIDs;
     NSNumber *_sendingStreamID;
     _Bool _isCompoundStreamIDsIncreased;
     _Bool _shouldEnableFaceZoom;
+    _Bool _shouldEnableMLEnhance;
     _Bool _didReceiveFirstFrame;
     _Atomic _Bool _isVideoCaptureRegistered;
     double _fecRatio;
@@ -54,31 +55,50 @@ __attribute__((visibility("hidden")))
     VCRedundancyControllerVideo *_redundancyController;
     int _lastDisplayedFromImageQueueCount;
     int _lastDroppedFromImageQueueCount;
+    double _lastDecodedVideoFrameTime;
+    double _lastStatisticsCollectorVideoStallTotalUpdateTime;
+    _Bool _isRemoteMediaStalled;
+    double _lastMediaStallReportTime;
     int _networkInterfaceType;
     int _channelSequenceCountWithInactiveSlots;
+    float _synchronizationTimeOffset;
+    unsigned int _rtpTimestampRate;
+    unsigned int _rttScaleFactor;
+    unsigned short _temporalScalingBaseLayerStreamID;
+    _Bool _isTemporalScalingEnabled;
+    CDStruct_1b6d18a9 _lastSentFrameHostTimeBeforeStop;
+    unsigned int _lastSentFrameRTPTimestampBeforeStop;
+    id <VCSessionParticipantLocalVideoStreamDelegate> _videoStreamDelegate;
 }
 
 + (id)capabilities;
 + (id)supportedVideoPayloads;
++ (_Bool)shouldUseRandomRTPTimestampWithType:(long long)arg1;
 + (id)newFeatureListStringsWithConfiguration:(id)arg1;
+@property(nonatomic) id <VCSessionParticipantLocalVideoStreamDelegate> videoStreamDelegate; // @synthesize videoStreamDelegate=_videoStreamDelegate;
+@property(readonly, nonatomic) _Bool isTemporalScalingEnabled; // @synthesize isTemporalScalingEnabled=_isTemporalScalingEnabled;
+@property(readonly) VCVideoTransmitterBase *videoTransmitter; // @synthesize videoTransmitter=_videoTransmitter;
+@property(readonly) VCVideoReceiverBase *videoReceiver; // @synthesize videoReceiver=_videoReceiver;
 @property(nonatomic) unsigned int customHeight; // @synthesize customHeight=_customHeight;
 @property(nonatomic) unsigned int customWidth; // @synthesize customWidth=_customWidth;
 @property(nonatomic) unsigned int screenDisplayID; // @synthesize screenDisplayID=_screenDisplayID;
 @property(nonatomic) double fecRatio; // @synthesize fecRatio=_fecRatio;
 @property(nonatomic) _Bool didReceiveFirstFrame; // @synthesize didReceiveFirstFrame=_didReceiveFirstFrame;
+@property(nonatomic) _Bool shouldEnableMLEnhance; // @synthesize shouldEnableMLEnhance=_shouldEnableMLEnhance;
 @property(nonatomic) _Bool shouldEnableFaceZoom; // @synthesize shouldEnableFaceZoom=_shouldEnableFaceZoom;
 @property(readonly, nonatomic) _Bool isCompoundStreamIDsIncreased; // @synthesize isCompoundStreamIDsIncreased=_isCompoundStreamIDsIncreased;
 @property(readonly, nonatomic) NSNumber *sendingStreamID; // @synthesize sendingStreamID=_sendingStreamID;
-@property(readonly, nonatomic) NSArray *compoundStreamIDs; // @synthesize compoundStreamIDs=_compoundStreamIDs;
 @property(nonatomic) _Bool isServerBasedBandwidthProbingEnabled; // @synthesize isServerBasedBandwidthProbingEnabled=_isServerBasedBandwidthProbingEnabled;
 @property(retain, nonatomic) NSNumber *targetStreamID; // @synthesize targetStreamID=_targetStreamID;
+- (void)updateWindowState:(int)arg1 isLocal:(_Bool)arg2 windowRect:(struct CGRect)arg3;
+@property(nonatomic) float synchronizationTimeOffset;
 - (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
-- (void)rateController:(void *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
+- (void)rateController:(id)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_a4f8a7cd *)arg1 interval:(float)arg2;
 - (void)converter:(id)arg1 didConvertFrame:(struct opaqueCMSampleBuffer *)arg2 frameTime:(CDStruct_1b6d18a9)arg3 cameraStatusBits:(unsigned char)arg4;
 - (void)cameraAvailabilityDidChange:(_Bool)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
@@ -91,16 +111,20 @@ __attribute__((visibility("hidden")))
 - (unsigned int)vcVideoReceiver:(id)arg1 receivedTMMBR:(unsigned int)arg2;
 - (void)vcVideoReceiver:(id)arg1 downlinkQualityDidChange:(id)arg2;
 - (void)vcVideoReceiverRequestKeyFrame:(id)arg1 rtcpPSFBType:(unsigned int)arg2;
-- (void)vcVideoReceiver:(id)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2;
-- (_Bool)vcVideoReceiver:(id)arg1 didReceiveRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_1b6d18a9)arg3 newVideoAttributes:(id)arg4 isFirstFrame:(_Bool)arg5;
+- (void)vcVideoReceiver:(id)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2 firType:(int)arg3;
+- (_Bool)videoReceiver:(id)arg1 didReceiveRemoteFrame:(struct __CVBuffer *)arg2 atTime:(CDStruct_1b6d18a9)arg3 remoteVideoAttributes:(id)arg4 remoteScreenAttributes:(id)arg5 isFirstFrame:(_Bool)arg6;
+- (_Bool)vcVideoReceiver:(id)arg1 didReceiveSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 isFirstFrame:(_Bool)arg3;
+@property(nonatomic, getter=getVideoReceiverFeedbackDelegate) id <VCVideoReceiverFeedbackDelegate> videoReceiverFeedbackDelegate;
 - (void)stopSynchronization;
 - (_Bool)startSynchronization:(id)arg1;
+- (void)reportingAlgosVideoStreamEvent:(unsigned short)arg1;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1 newVideoAttributes:(id)arg2 currentStreamID:(id)arg3;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1 newVideoAttributes:(id)arg2;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;
 - (void)collectVideoStreamStartMetrics:(struct __CFDictionary *)arg1;
 - (void)collectVideoConfigMetrics:(struct __CFDictionary *)arg1;
 - (struct __CFDictionary *)getClientSpecificUserInfo;
+- (int)reportVideoStreamType;
 - (struct __CFString *)getReportingClientName;
 - (int)getReportingClientType;
 - (void)handleVTPSendFailedWithData:(void *)arg1;
@@ -108,7 +132,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int targetMediaBitrate;
 @property unsigned int lastSentAudioSampleTime;
 @property double lastSentAudioHostTime;
+- (void)setPeerSubscribedStreamIDs:(id)arg1;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
+- (void)setTransmitterStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
+- (unsigned int)getMaxTemporalBitrateForStreamIDs:(id)arg1;
 - (double)rtcpHeartbeatLeeway;
 - (void)onSendRTCPPacket;
 - (void)onRTCPTimeout;
@@ -136,6 +163,7 @@ __attribute__((visibility("hidden")))
 - (id)getTransmitMediaControllerWithStreamConfig:(id)arg1;
 - (void)onCallIDChanged;
 - (id)supportedPayloads;
+- (_Bool)updateStreamConfigForAirPlaySidecar:(id)arg1;
 - (_Bool)setEncodingMode:(int)arg1;
 - (_Bool)validateStreamConfiguration:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
@@ -143,9 +171,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)validateVideoStreamConfigurations:(id)arg1;
 - (void)sendLastRemoteVideoFrame:(struct __CVBuffer *)arg1;
 - (void)cacheRemoteVideoFrame:(struct __CVBuffer *)arg1;
-- (void)setFECRedundancyVector:(const CDStruct_cd7ddd1c *)arg1;
-- (void)generateKeyFrame;
+- (void)setFECRedundancyVector:(const CDStruct_d7e2e0ee *)arg1;
+- (void)generateKeyFrameWithFIRType:(int)arg1;
 - (void)updateSourcePlayoutTimestamp:(CDStruct_1b6d18a9 *)arg1;
+- (void)submitStatisticsCollectorVideoStallUpdateWithType:(int)arg1 currentTime:(double)arg2 stallDuration:(double)arg3 idsParticipantID:(unsigned long long)arg4;
+- (void)submitStatisticsCollectorVideoStallUpdateWithTime:(double)arg1;
 - (void)requestLastDecodedFrame;
 - (void)updateVideoConfig:(id)arg1;
 - (void)dealloc;
@@ -167,11 +197,16 @@ __attribute__((visibility("hidden")))
 - (_Bool)useUEPForVideoConfig:(int)arg1;
 - (void)setupVideoReceiver:(id)arg1 withTransmitterHandle:(struct tagHANDLE *)arg2;
 - (struct tagVCVideoReceiverConfig)videoReceiverConfigWithVideoStreamConfig:(id)arg1;
+- (struct tagVCVideoStreamReceiverConfig)videoStreamReceiverConfigWithDumpID:(unsigned int)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 - (void)cleaunpReceiverConfig:(struct tagVCVideoReceiverConfig *)arg1;
 - (void)setupFeatureListStringsForReceiverConfig:(struct tagVCVideoReceiverConfig *)arg1 streamConfig:(id)arg2;
 - (void)setupMultiwayVideoReceiverConfig:(struct tagVCVideoReceiverConfig *)arg1 forTransportStream:(id)arg2;
+- (void)setupMultiwayVideoReceiverStreamSwitchInfo:(struct tagVCVideoReceiverStreamConfig *)arg1 forTransportStream:(id)arg2;
+- (void)setupMultiwayVideoReceiverTemporalScalingConfig:(struct tagVCVideoReceiverStreamConfig *)arg1 forTransportStream:(id)arg2;
+- (_Bool)isScreenConfig:(id)arg1;
 - (void)destroyVideoTransmitter;
 - (void)initVideoTransmitter;
+- (_Bool)isFECGeneratorEnabled;
 - (id)newVideoTransmitterConfigWithVideoStreamConfig:(id)arg1;
 - (void)overrideConfigWithDefaults;
 

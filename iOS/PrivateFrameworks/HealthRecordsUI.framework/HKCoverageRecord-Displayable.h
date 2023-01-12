@@ -7,8 +7,8 @@
 #import <HealthKit/HKCoverageRecord.h>
 
 @interface HKCoverageRecord (Displayable)
+- (id)meaningfulDateString;
 - (id)titleDisplayStringForDetailViewController;
-- (long long)recordCategoryType;
 - (id)codings;
 - (id)title;
 @end

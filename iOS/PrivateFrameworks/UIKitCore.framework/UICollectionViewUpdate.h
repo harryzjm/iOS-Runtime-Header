@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UICollectionViewUpdateTranslating-Protocol.h>
 
-@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, UICollectionView, UICollectionViewData;
+@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSSet, NSString, NSUUID, UICollectionView, UICollectionViewData;
 
 __attribute__((visibility("hidden")))
 @interface UICollectionViewUpdate : NSObject <_UICollectionViewUpdateTranslating>
@@ -31,17 +31,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_insertedSupplementaryIndexesSectionArray;
     NSMutableDictionary *_deletedSupplementaryTopLevelIndexesDict;
     NSMutableDictionary *_insertedSupplementaryTopLevelIndexesDict;
-    id *_animatedItems;
-    id *_animatedHeaders;
-    id *_animatedFooters;
-    NSMutableArray *_viewAnimations;
     NSIndexPath *_oldFocusedIndexPath;
     NSIndexPath *_newFocusedIndexPath;
     long long _oldFocusedViewType;
     long long _newFocusedViewType;
+    NSUUID *_identifier;
+    NSSet *_itemAnchoredAuxiliaryElementKinds;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (long long)finalSectionCount;
 - (long long)initialSectionCount;
 - (struct _NSRange)finalSectionGlobalItemRangeForSection:(long long)arg1;
@@ -56,8 +55,9 @@ __attribute__((visibility("hidden")))
 - (long long)finalGlobalIndexForInitialGlobalIndex:(long long)arg1;
 - (id)validatedOldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
 - (id)oldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
+- (id)validatedNewIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
 - (id)newIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
-- (void)_computeSupplementaryUpdates;
+- (void)_computeAuxiliaryUpdates;
 - (void)_computeItemUpdates;
 - (void)_computeSectionUpdates;
 @property(readonly, copy) NSString *description;

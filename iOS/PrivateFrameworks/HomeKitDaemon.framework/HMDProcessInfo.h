@@ -36,6 +36,7 @@
 @property(readonly, getter=isEntitledForSPIAccess) _Bool entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
 @property(readonly, getter=isEntitledForAPIAccess) _Bool entitledForAPIAccess; // @synthesize entitledForAPIAccess=_entitledForAPIAccess;
 @property(readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+- (id)logIdentifier;
 - (id)clientIdentifierSalt:(id *)arg1;
 - (void)removeConnection:(id)arg1;
 - (void)addConnection:(id)arg1;

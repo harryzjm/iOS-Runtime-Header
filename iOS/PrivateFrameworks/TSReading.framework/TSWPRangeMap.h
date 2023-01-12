@@ -9,8 +9,8 @@
 @interface TSWPRangeMap : NSObject
 {
     struct _NSRange _subRange;
-    struct vector<_TSWPCharIndexAndAffinity, std::__1::allocator<_TSWPCharIndexAndAffinity>> _unmappedIndexes;
-    struct vector<_TSWPCharIndexAndAffinity, std::__1::allocator<_TSWPCharIndexAndAffinity>> _mappedIndexes;
+    struct vector<_TSWPCharIndexAndAffinity, std::allocator<_TSWPCharIndexAndAffinity>> _unmappedIndexes;
+    struct vector<_TSWPCharIndexAndAffinity, std::allocator<_TSWPCharIndexAndAffinity>> _mappedIndexes;
 }
 
 - (id).cxx_construct;
@@ -22,8 +22,8 @@
 - (unsigned long long)p_extendLeftMappedIndex:(unsigned long long)arg1;
 - (unsigned long long)unmappedCharIndex:(unsigned long long)arg1;
 - (unsigned long long)mappedCharIndex:(unsigned long long)arg1;
-- (id)initWithSubRange:(struct _NSRange)arg1 unmappedIndexes:(const vector_06e666a8 *)arg2 affinity:(int)arg3;
-- (id)initWithSubRange:(struct _NSRange)arg1 unmappedPairIndexes:(const vector_06e666a8 *)arg2;
+- (id)initWithSubRange:(struct _NSRange)arg1 unmappedIndexes:(const void *)arg2 affinity:(int)arg3;
+- (id)initWithSubRange:(struct _NSRange)arg1 unmappedPairIndexes:(const void *)arg2;
 
 @end
 

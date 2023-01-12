@@ -6,12 +6,13 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class PKAccount, PKAccountService, PKBusinessChatController, PKPaymentPass, PKPhysicalCard, PKTableHeaderView, UIBarButtonItem;
+@class PKAccount, PKAccountService, PKAccountUser, PKBusinessChatController, PKPaymentPass, PKPhysicalCard, PKTableHeaderView, UIBarButtonItem;
 
 @interface PKPhysicalCardSupportViewController : UITableViewController
 {
     PKAccountService *_accountService;
     PKAccount *_account;
+    PKAccountUser *_accountUser;
     PKPaymentPass *_paymentPass;
     PKPhysicalCard *_physicalCard;
     PKTableHeaderView *_tableHeaderView;
@@ -33,7 +34,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
-- (id)initWithAccountService:(id)arg1 account:(id)arg2 paymentPass:(id)arg3 physicalCard:(id)arg4;
+- (id)initWithAccountService:(id)arg1 account:(id)arg2 accountUser:(id)arg3 paymentPass:(id)arg4 physicalCard:(id)arg5;
 
 @end
 

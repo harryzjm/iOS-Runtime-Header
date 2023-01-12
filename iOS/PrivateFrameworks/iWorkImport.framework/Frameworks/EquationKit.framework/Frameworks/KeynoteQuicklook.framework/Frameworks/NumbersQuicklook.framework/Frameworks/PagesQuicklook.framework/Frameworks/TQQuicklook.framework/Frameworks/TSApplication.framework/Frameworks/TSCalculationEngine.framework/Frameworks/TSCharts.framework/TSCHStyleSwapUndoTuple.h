@@ -6,42 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, TSCHStyleOwnerReference, TSCHStyleSemanticTag, TSPObject, TSSPropertyMap, TSSPropertySet, TSSStyle;
+@class NSUUID, TSCHStyleOwnerReference, TSCHStyleSemanticTag, TSPObject, TSSPropertySet, TSSStyle;
 @protocol TSCHStyleSwapSupporting;
 
 @interface TSCHStyleSwapUndoTuple : NSObject
 {
-    TSSStyle *mOldValue;
-    TSSStyle *mNewValue;
-    int mSwapType;
-    int mIndex;
-    NSUUID *mRefLineUUID;
-    TSPObject<TSCHStyleSwapSupporting> *mStyleSwapSupporting;
-    TSSPropertySet *mMutatedProperties;
+    TSSStyle *_oldValue;
+    TSSStyle *_newValue;
+    int _swapType;
+    int _index;
+    NSUUID *_refLineUUID;
+    TSPObject<TSCHStyleSwapSupporting> *_styleSwapSupporting;
+    TSSPropertySet *_mutatedProperties;
 }
 
 + (id)convertedSwapTuplesForSwapTuples:(id)arg1 chartInfo:(id)arg2;
 + (_Bool)hasSwapTuplesRequiringConversion:(id)arg1;
-+ (id)migratedSwapTuplesForSwapTuples:(id)arg1 documentRoot:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly) NSUUID *refLineUUID; // @synthesize refLineUUID=mRefLineUUID;
-@property(readonly) int swapType; // @synthesize swapType=mSwapType;
-@property(readonly) TSSStyle *afterValue; // @synthesize afterValue=mNewValue;
-@property(readonly) TSSStyle *beforeValue; // @synthesize beforeValue=mOldValue;
-@property(readonly, retain, nonatomic) TSPObject<TSCHStyleSwapSupporting> *styleSwapSupporting; // @synthesize styleSwapSupporting=mStyleSwapSupporting;
+@property(readonly, nonatomic) NSUUID *refLineUUID; // @synthesize refLineUUID=_refLineUUID;
+@property(readonly, nonatomic) int swapType; // @synthesize swapType=_swapType;
+@property(readonly, nonatomic) TSSStyle *afterValue; // @synthesize afterValue=_newValue;
+@property(readonly, nonatomic) TSSStyle *beforeValue; // @synthesize beforeValue=_oldValue;
+@property(readonly, nonatomic) TSPObject<TSCHStyleSwapSupporting> *styleSwapSupporting; // @synthesize styleSwapSupporting=_styleSwapSupporting;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)convertedSwapTupleForChartInfo:(id)arg1;
 - (id)migratedSwapTupleForDocumentRoot:(id)arg1;
 - (id)migratedStyleForStyle:(id)arg1 documentRoot:(id)arg2;
-@property(readonly) TSSPropertyMap *reverseDelta;
-@property(readonly) TSSPropertyMap *forwardDelta;
-- (id)p_deltaFrom:(id)arg1 to:(id)arg2;
-@property(readonly) TSCHStyleOwnerReference *styleOwnerReference;
-@property(readonly) TSCHStyleSemanticTag *semanticTag;
+@property(readonly, nonatomic) TSCHStyleOwnerReference *styleOwnerReference;
+@property(readonly, nonatomic) TSCHStyleSemanticTag *semanticTag;
 - (_Bool)canApplyTupleToStyleSwapSupporting:(id)arg1;
 - (id)description;
-@property(readonly) TSSPropertySet *mutatedProperties;
+@property(readonly, nonatomic) TSSPropertySet *mutatedProperties;
 - (id)p_nonequalPropertiesFromMap:(id)arg1 toMap:(id)arg2;
-@property(readonly) unsigned long long index;
+@property(readonly, nonatomic) unsigned long long index;
 - (unsigned long long)hash;
 - (_Bool)isSwappingSameStyleValues:(id)arg1;
 - (_Bool)isSwappingSameStyleObject:(id)arg1;
@@ -51,9 +49,7 @@
 - (id)initWithChartStylePreset:(id)arg1 swapType:(int)arg2 index:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5;
 - (id)initWithChartInfo:(id)arg1 swapType:(int)arg2 index:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5;
 - (id)initWithChartInfo:(id)arg1 swapType:(int)arg2 index:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5 refLineUUID:(id)arg6;
-- (id)p_initWithPersistentStyleSwapSupporting:(id)arg1 swapType:(int)arg2 index:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5 refLineUUID:(id)arg6;
-- (id)initWithArchive:(const struct StyleSwapUndoTupleArchive *)arg1 unarchiver:(id)arg2;
-- (void)saveToArchive:(struct StyleSwapUndoTupleArchive *)arg1 archiver:(id)arg2;
+- (id)initWithPersistentStyleSwapSupporting:(id)arg1 swapType:(int)arg2 index:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5 refLineUUID:(id)arg6;
 
 @end
 

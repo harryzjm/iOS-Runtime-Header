@@ -23,8 +23,8 @@
     NSMutableArray *_lazyReferenceObserverBlocks;
     _Atomic _Bool _didSetLazyReferenceDelegate;
     NSObject<OS_dispatch_queue> *_externalReferenceQueue;
-    struct unordered_map<long long, TSP::ExternalReferenceInfo, TSP::ObjectIdentifierHash, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ExternalReferenceInfo>>> _externalReferences;
-    struct vector<TSP::RepeatedExternalReferenceCompletionInfo, std::__1::allocator<TSP::RepeatedExternalReferenceCompletionInfo>> _repeatedExternalReferences;
+    struct IdentifierMap<TSP::ExternalReferenceInfo> _externalReferences;
+    struct vector<TSP::RepeatedExternalReferenceCompletionInfo, std::allocator<TSP::RepeatedExternalReferenceCompletionInfo>> _repeatedExternalReferences;
     _Atomic _Bool _didResolveExternalReferences;
     TSPCancellationState *_cancellationState;
 }
@@ -38,17 +38,16 @@
 - (id)objectForIdentifier:(long long)arg1;
 @property(readonly, nonatomic) _Bool ignoreReferencesToUnknownObjects;
 - (void)reader:(id)arg1 didReadLazyReference:(id)arg2;
-- (void)reader:(id)arg1 didFindExternalRepeatedReference:(id)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 fromParentObject:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)reader:(id)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 fromParentObject:(id)arg6 completion:(CDUnknownBlockType)arg7;
-- (struct ExternalReferenceInfo *)externalReferenceInfoForObjectIdentifier:(long long)arg1 componentIdentifier:(long long)arg2;
+- (void)reader:(id)arg1 didFindExternalRepeatedReference:(id)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 objectClass:(Class)arg5 objectProtocol:(id)arg6 fromParentObject:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)reader:(id)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 objectClass:(Class)arg6 objectProtocol:(id)arg7 fromParentObject:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (void *)externalReferenceInfoForObjectIdentifier:(long long)arg1 componentIdentifier:(long long)arg2;
 - (id)reader:(id)arg1 wantsDataForIdentifier:(long long)arg2;
 - (long long)reader:(id)arg1 wantsObjectIdentifierForUUID:(id)arg2;
 - (id)cancellationStateForReader:(id)arg1;
 - (id)lazyReferenceDelegateForReader:(id)arg1;
 - (id)objectDelegateForReader:(id)arg1;
 - (id)contextForReader:(id)arg1;
-@property(readonly, nonatomic) _Bool canRetainObjectReferencedByWeakLazyReference;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) _Bool isReadingFromDocument;
 @property(readonly, nonatomic) NSUUID *baseObjectUUID;
@@ -59,6 +58,7 @@
 - (id)externalObjectForIdentifier:(long long)arg1 componentIdentifier:(long long)arg2 isReadFinished:(_Bool)arg3;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(_Bool)arg2;
 - (id)context;
+- (void)updatePersistedDataReferenceMap;
 - (void)didUpdateLazyReferenceDelegate:(id)arg1;
 - (void)setLazyReferencesDelegate:(id)arg1 forLazyReferenceCopy:(id)arg2;
 - (void)setLazyReferencesDelegate:(id)arg1 forLazyReference:(id)arg2;

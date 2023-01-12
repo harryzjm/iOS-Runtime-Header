@@ -15,8 +15,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property(readonly, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)removeAllIssues;
@@ -29,6 +27,7 @@
 - (_Bool)containsIssueID:(id)arg1;
 - (void)addIssueID:(id)arg1 source:(long long)arg2;
 - (id)initWithStoreDirectoryFileURL:(id)arg1;
+- (id)initWithStoreDirectoryFileURL:(id)arg1 appActivityMonitor:(id)arg2 backgroundTaskable:(id)arg3;
 - (id)init;
 
 @end

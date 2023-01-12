@@ -45,6 +45,7 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _departureTime;
+    unsigned int _lastEtaDisplayed;
     unsigned int _mainTransportTypeMaxRouteCount;
     int _nonRecommendedRoutesOption;
     int _originalRoutePurpose;
@@ -59,6 +60,7 @@
         unsigned int has_requestTime:1;
         unsigned int has_sessionRelativeTimestamp:1;
         unsigned int has_departureTime:1;
+        unsigned int has_lastEtaDisplayed:1;
         unsigned int has_mainTransportTypeMaxRouteCount:1;
         unsigned int has_nonRecommendedRoutesOption:1;
         unsigned int has_originalRoutePurpose:1;
@@ -123,7 +125,8 @@
 - (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -147,6 +150,8 @@
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
 @property(retain, nonatomic) NSMutableArray *serviceTags;
+@property(nonatomic) _Bool hasLastEtaDisplayed;
+@property(nonatomic) unsigned int lastEtaDisplayed;
 @property(retain, nonatomic) NSData *nonRecommendedRoutesCache;
 @property(readonly, nonatomic) _Bool hasNonRecommendedRoutesCache;
 - (int)StringAsNonRecommendedRoutesOption:(id)arg1;

@@ -10,6 +10,7 @@
 @protocol _GCDeviceClient
 @property(readonly) id <_GCIPCServiceRegistry> IPCServiceRegistry;
 @property(readonly) id <_GCIPCObjectRegistry> IPCObjectRegistry;
+@property(readonly, nonatomic) int processIdentifier;
 @property(readonly, nonatomic) NSString *bundleIdentifier;
 @property(readonly, nonatomic, getter=isInvalid) _Bool invalid;
 - (id)addInvalidationHandler:(void (^)(void))arg1;

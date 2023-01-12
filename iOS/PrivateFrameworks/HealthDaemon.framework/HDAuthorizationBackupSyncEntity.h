@@ -15,8 +15,6 @@
 + (_Bool)generateSyncObjectsForSession:(id)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 profile:(id)arg3 messageHandler:(id)arg4 error:(id *)arg5;
 + (id)syncEntityIdentifier;
 + (id)backupInfoUserDefaultsKey;
-+ (void)_setBackupInfo:(id)arg1;
-+ (id)_backupInfoWithSyncStore:(id)arg1;
 + (void)resetAuthorizationBackupIdentifiers;
 + (id)authorizationBackupPushIdentifierWithSyncStore:(id)arg1;
 + (id)authorizationBackupPullIdentifierWithSyncStore:(id)arg1;

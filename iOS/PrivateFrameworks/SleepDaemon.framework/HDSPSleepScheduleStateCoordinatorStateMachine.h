@@ -10,7 +10,7 @@
 #import <SleepDaemon/HDSPSleepScheduleStateCoordinatorStateMachineEventHandler-Protocol.h>
 #import <SleepDaemon/HDSPSleepScheduleStateCoordinatorStateMachineInfoProvider-Protocol.h>
 
-@class HDSPSleepScheduleStateCoordinatorBedtimeState, HDSPSleepScheduleStateCoordinatorDelayedWakeUpState, HDSPSleepScheduleStateCoordinatorDisabledState, HDSPSleepScheduleStateCoordinatorInitialState, HDSPSleepScheduleStateCoordinatorSkippedBedtimeState, HDSPSleepScheduleStateCoordinatorWakeUpState, HDSPSleepScheduleStateCoordinatorWindDownState, HKSPSleepScheduleModel, HKSPSleepScheduleOccurrence, NSDate, NSString;
+@class HDSPSleepScheduleStateCoordinatorBedtimeState, HDSPSleepScheduleStateCoordinatorDelayedWakeUpState, HDSPSleepScheduleStateCoordinatorDisabledState, HDSPSleepScheduleStateCoordinatorInitialState, HDSPSleepScheduleStateCoordinatorWakeUpState, HDSPSleepScheduleStateCoordinatorWindDownState, HKSPSleepScheduleModel, HKSPSleepScheduleOccurrence, NSDate, NSString;
 @protocol HDSPSleepScheduleStateCoordinatorStateMachineDelegate, HDSPSleepScheduleStateCoordinatorStateMachineInfoProvider, NAScheduler;
 
 __attribute__((visibility("hidden")))
@@ -21,13 +21,11 @@ __attribute__((visibility("hidden")))
     HDSPSleepScheduleStateCoordinatorBedtimeState *_bedtimeState;
     HDSPSleepScheduleStateCoordinatorWindDownState *_windDownState;
     HDSPSleepScheduleStateCoordinatorDelayedWakeUpState *_delayedWakeUpState;
-    HDSPSleepScheduleStateCoordinatorSkippedBedtimeState *_skippedBedtimeState;
     HDSPSleepScheduleStateCoordinatorInitialState *_initialState;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDSPSleepScheduleStateCoordinatorInitialState *initialState; // @synthesize initialState=_initialState;
-@property(readonly, nonatomic) HDSPSleepScheduleStateCoordinatorSkippedBedtimeState *skippedBedtimeState; // @synthesize skippedBedtimeState=_skippedBedtimeState;
 @property(readonly, nonatomic) HDSPSleepScheduleStateCoordinatorDelayedWakeUpState *delayedWakeUpState; // @synthesize delayedWakeUpState=_delayedWakeUpState;
 @property(readonly, nonatomic) HDSPSleepScheduleStateCoordinatorWindDownState *windDownState; // @synthesize windDownState=_windDownState;
 @property(readonly, nonatomic) HDSPSleepScheduleStateCoordinatorBedtimeState *bedtimeState; // @synthesize bedtimeState=_bedtimeState;
@@ -39,18 +37,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool sleepFeaturesEnabled;
 @property(readonly, nonatomic) _Bool isAppleWatch;
 - (void)snoozeFireDateShouldBeReset;
-- (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
-- (void)scheduleModelChanged;
+- (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 context:(id)arg3;
+- (void)scheduleModelChanged:(id)arg1;
 - (void)timeZoneChange;
 - (void)significantTimeChange;
 - (void)wakeUpConfirmed;
 - (void)wakeTimeReached;
-- (void)bedtimeSkipped;
-- (void)bedtimeDelayed;
 - (void)bedtimeReached;
-- (void)windDownSkipped;
 - (void)windDownReached;
-- (id)stateMachineLog;
+- (unsigned long long)loggingCategory;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 
 // Remaining properties

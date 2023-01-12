@@ -19,6 +19,7 @@
 - (id)copyXPCEncoding;
 - (id)initWithXPCEncoding:(id)arg1;
 - (id)initMinusLocaleWithXPCEncoding:(id)arg1;
+- (void)_logMissingLocale;
 - (void)_setDiscounts:(id)arg1;
 - (void)_setSubscriptionPeriod:(id)arg1;
 - (void)_setSubscriptionGroupIdentifier:(id)arg1;

@@ -10,8 +10,13 @@
 
 @protocol PXMutablePhotosViewModel <NSObject>
 @property(readonly, nonatomic) NSMutableOrderedSet *visibleAssetCollections;
-@property(copy, nonatomic) PXContentFilterState *filterState;
+@property(copy, nonatomic) PXContentFilterState *contentFilterState;
+@property(copy, nonatomic) CDUnknownBlockType effectProvider;
+@property(nonatomic) _Bool shouldAlwaysRespectToolbarActionPlacementPreference;
+@property(nonatomic) _Bool hidesToolbar;
+@property(nonatomic) _Bool hidesNavbar;
 @property(nonatomic) _Bool keepsTabBarAlwaysHidden;
+@property(nonatomic) double titleBackgroundOpacity;
 @property(nonatomic) double floatingTitleOpacity;
 @property(nonatomic) _Bool captionsVisible;
 @property(nonatomic) _Bool viewBasedDecorationsEnabled;
@@ -35,11 +40,15 @@
 - (void)setAspectRatioToggleAllowed:(_Bool)arg1 forReason:(NSString *)arg2;
 - (void)setOneUpPresentationAllowed:(_Bool)arg1 forReason:(NSString *)arg2;
 - (void)setEnterSelectModeAllowed:(_Bool)arg1 forReason:(NSString *)arg2;
+- (void)clickSelectAssetReference:(PXAssetReference *)arg1 updateCursorIndexPath:(_Bool)arg2;
+- (void)clickSelectIndexPath:(struct PXSimpleIndexPath)arg1 updateCursorIndexPath:(_Bool)arg2;
 - (void)toggleSelectionForAssetCollectionReference:(PXAssetCollectionReference *)arg1;
 - (void)toggleSelectionForAssetReference:(PXAssetReference *)arg1 updateCursorIndexPath:(_Bool)arg2;
 - (void)toggleSelectionForAssetReference:(PXAssetReference *)arg1;
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath)arg1 updateCursorIndexPath:(_Bool)arg2;
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)deselectAll;
+- (void)selectAll;
 - (void)setZoomStep:(double)arg1 isInteractive:(_Bool)arg2 shouldAnimate:(_Bool)arg3 anchorAssetReference:(PXAssetReference *)arg4;
 - (_Bool)attemptSetInSelectMode:(_Bool)arg1;
 @end

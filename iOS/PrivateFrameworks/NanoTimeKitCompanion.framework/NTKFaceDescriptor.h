@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) long long faceStyle; // @synthesize faceStyle=_faceStyle;
+@property(readonly, nonatomic) Class faceClass;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

@@ -18,6 +18,7 @@
     _Bool _hasStoredValue;
     _Bool _liveRenderedBackground;
     _Bool _supportsCategoryVisualization;
+    _Bool _muteReadyForUseNotification;
     _Bool _revoked;
     NSArray *_embeddedLocations;
     unsigned long long _passType;
@@ -42,6 +43,8 @@
     NSSet *_associatedPassTypeIdentifiers;
     PKNFCPayload *_nfcPayload;
     PKImage *_partialFrontFaceImagePlaceholder;
+    unsigned long long _liveRenderType;
+    unsigned long long _homeKeyLiveRenderType;
     NSString *_provisioningCredentialHash;
     NSString *_cardholderInfoSectionTitle;
     NSDate *_ingestedDate;
@@ -49,16 +52,25 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)uniqueIDFromRecordName:(id)arg1;
++ (id)recordNameForUniqueID:(id)arg1;
 + (id)recordNamePrefix;
 + (unsigned long long)defaultSettings;
-+ (_Bool)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
++ (id)fetchSigningDateForObjectWithFileDataAccessor:(id)arg1 passDictionary:(id)arg2;
++ (_Bool)isValidObjectWithFileDataAccessor:(id)arg1 warnings:(id *)arg2 error:(id *)arg3 signingDate:(id *)arg4 passDictionary:(id)arg5;
++ (id)dataTypeIdentifier;
++ (Class)classForDictionary:(id)arg1 bundle:(id)arg2;
++ (Class)resolvingClass;
 + (Class)classForPassType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isRevoked) _Bool revoked; // @synthesize revoked=_revoked;
 @property(retain, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property(retain, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
+@property(nonatomic) _Bool muteReadyForUseNotification; // @synthesize muteReadyForUseNotification=_muteReadyForUseNotification;
 @property(copy, nonatomic) NSString *cardholderInfoSectionTitle; // @synthesize cardholderInfoSectionTitle=_cardholderInfoSectionTitle;
 @property(copy, nonatomic) NSString *provisioningCredentialHash; // @synthesize provisioningCredentialHash=_provisioningCredentialHash;
+@property(nonatomic) unsigned long long homeKeyLiveRenderType; // @synthesize homeKeyLiveRenderType=_homeKeyLiveRenderType;
+@property(nonatomic) unsigned long long liveRenderType; // @synthesize liveRenderType=_liveRenderType;
 @property(nonatomic) _Bool supportsCategoryVisualization; // @synthesize supportsCategoryVisualization=_supportsCategoryVisualization;
 @property(nonatomic) _Bool liveRenderedBackground; // @synthesize liveRenderedBackground=_liveRenderedBackground;
 @property(readonly, nonatomic) PKImage *partialFrontFaceImagePlaceholder; // @synthesize partialFrontFaceImagePlaceholder=_partialFrontFaceImagePlaceholder;
@@ -117,6 +129,7 @@
 - (id)thumbnailImage;
 - (id)stripImage;
 - (id)backgroundImage;
+- (id)cobrandLogoImage;
 - (id)logoImage;
 @property(readonly, nonatomic) PKImage *personalizationLogoImage;
 @property(readonly, nonatomic) PKImage *cardHolderPicture;
@@ -137,6 +150,7 @@
 @property(readonly, nonatomic) NSArray *storeIdentifiers;
 - (id)balanceFields;
 - (id)primaryFields;
+@property(readonly, nonatomic) NSArray *passDetailSections;
 @property(readonly, nonatomic) NSArray *backFieldBuckets;
 @property(readonly, nonatomic) NSArray *frontFieldBuckets;
 @property(readonly, nonatomic) long long transitType;
@@ -149,6 +163,7 @@
 - (id)fieldForKey:(id)arg1;
 - (id)localizedValueForFieldKey:(id)arg1;
 - (_Bool)supportsSharing;
+- (_Bool)isExpiredBasedOnSigningDate;
 - (_Bool)isExpired;
 - (_Bool)isUpdatable;
 - (_Bool)isRelevantDateOld;
@@ -164,10 +179,11 @@
 @property(copy, nonatomic) NSSet *embeddedLocations; // @dynamic embeddedLocations;
 - (unsigned long long)itemType;
 - (id)primaryIdentifier;
-- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
-- (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1 codingType:(unsigned long long)arg2;
 - (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
+- (void)downloadRemoteAssetsForSEIDS:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
 - (id)initWithData:(id)arg1 error:(id *)arg2;

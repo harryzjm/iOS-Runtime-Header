@@ -29,7 +29,6 @@
     NSObject<OS_os_transaction> *_transaction;
 }
 
-+ (id)bundleIdentifier;
 + (id)amsMetricsObjectCache;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;

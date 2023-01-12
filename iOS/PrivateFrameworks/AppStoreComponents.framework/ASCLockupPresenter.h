@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface ASCLockupPresenter : NSObject
 {
+    _Bool _showsPlaceholderContent;
     id <ASCLockupPresenterObserver> _observer;
     ASCLockup *_lockup;
     ASCLockupViewGroup *_group;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showsPlaceholderContent; // @synthesize showsPlaceholderContent=_showsPlaceholderContent;
 @property(retain, nonatomic) ASCSignpostSpan *pendingViewRender; // @synthesize pendingViewRender=_pendingViewRender;
 @property(retain, nonatomic) AMSPromise *pendingRequestedLockup; // @synthesize pendingRequestedLockup=_pendingRequestedLockup;
 @property(readonly, nonatomic) ASCAppearMetricsPresenter *metricsPresenter; // @synthesize metricsPresenter=_metricsPresenter;
@@ -51,6 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)performIconFetch;
 - (void)performLockupFetch;
 - (_Bool)retryRequestIfNeeded;
+- (void)reloadDefaultContent;
+- (void)clearContent;
+- (void)showPlaceholderContent;
 @property(readonly, nonatomic) _Bool prefersRightToLeftViewLayout;
 - (void)dealloc;
 - (id)initWithView:(id)arg1 offerPresenter:(id)arg2 metricsPresenter:(id)arg3;

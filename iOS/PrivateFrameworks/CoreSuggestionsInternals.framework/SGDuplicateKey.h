@@ -58,6 +58,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serialize;
 - (id)initWithSearchableItem:(id)arg1;
+- (id)initWithMessageIdHeaderValues:(id)arg1 accountIdentifier:(id)arg2;
 - (id)initWithSerializedEntityKey:(id)arg1 entityType:(long long)arg2 serializedParentKey:(id)arg3;
 - (id)initWithSerialized:(id)arg1;
 - (id)initWithEntityKey:(id)arg1 entityType:(long long)arg2 parentKey:(id)arg3;

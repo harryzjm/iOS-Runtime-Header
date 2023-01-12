@@ -21,12 +21,12 @@ __attribute__((visibility("hidden")))
     struct sqlite3 *_db;
     struct sqlite3_stmt *_tileQuery;
     struct sqlite3_stmt *_versionQuery;
-    CDStruct_e4886f83 *_expirationRecords;
+    CDStruct_61711f31 *_expirationRecords;
     unsigned long long _expirationRecordCount;
 }
 
 - (void).cxx_destruct;
-- (void)setExpirationRecords:(CDStruct_e4886f83 *)arg1 count:(unsigned long long)arg2;
+- (void)setExpirationRecords:(CDStruct_61711f31 *)arg1 count:(unsigned long long)arg2;
 - (void)dataForKeys:(id)arg1 callbackQueue:(id)arg2 asyncHandler:(CDUnknownBlockType)arg3;
 - (id)dataForKey:(struct _GEOTileKey *)arg1 isCurrent:(_Bool *)arg2 eTag:(id *)arg3;
 - (id)_dataForKey:(struct _GEOTileKey)arg1 isCurrent:(_Bool *)arg2 eTag:(id *)arg3;

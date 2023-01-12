@@ -10,6 +10,7 @@
 
 @protocol MTLTexture <MTLResource>
 @property(readonly, nonatomic) CDStruct_a06f635e swizzle;
+@property(readonly) long long compressionType;
 @property(readonly) _Bool allowGPUOptimizedContents;
 @property(readonly) _Bool isSparse;
 @property(readonly) unsigned long long tailSizeInBytes;

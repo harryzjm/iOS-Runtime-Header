@@ -4,31 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIButton;
+@class UIButton;
 @protocol NTKCFaceDetailExpandableDescriptionCellDelegate;
 
 @interface NTKCFaceDetailExpandableDescriptionCell
 {
     _Bool _expanded;
-    _Bool _canExpand;
+    _Bool _shouldLayoutText;
     id <NTKCFaceDetailExpandableDescriptionCellDelegate> _delegate;
     UIButton *_moreButton;
     double _laidOutWidth;
-    NSString *_laidOutContentSizeCategory;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool canExpand; // @synthesize canExpand=_canExpand;
-@property(retain, nonatomic) NSString *laidOutContentSizeCategory; // @synthesize laidOutContentSizeCategory=_laidOutContentSizeCategory;
+@property(nonatomic) _Bool shouldLayoutText; // @synthesize shouldLayoutText=_shouldLayoutText;
 @property(nonatomic) double laidOutWidth; // @synthesize laidOutWidth=_laidOutWidth;
 @property(retain, nonatomic) UIButton *moreButton; // @synthesize moreButton=_moreButton;
 @property(nonatomic) __weak id <NTKCFaceDetailExpandableDescriptionCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 - (void)_fontSizeDidChange;
 - (void)_moreTapped;
-- (id)_moreButton;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
+- (void)setAttributedText:(id)arg1;
+- (void)setText:(id)arg1;
 - (id)init;
 
 @end

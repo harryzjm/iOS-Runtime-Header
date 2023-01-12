@@ -8,7 +8,7 @@
 
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSSet, NSString;
+@class NSArray, NSData, NSDictionary, NSSet, NSString;
 
 @interface INAppInfo : NSObject <NSSecureCoding>
 {
@@ -24,6 +24,7 @@
     NSSet *_actionsRestrictedWhileProtectedDataUnavailable;
     NSSet *_supportedMediaCategories;
     NSSet *_definedIntents;
+    NSDictionary *_supportedIntentsGroupedByExtensionPoints;
     NSString *_companionApplicationIdentifier;
 }
 
@@ -35,6 +36,7 @@
 + (id)appInfoWithAppProxy:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *companionApplicationIdentifier; // @synthesize companionApplicationIdentifier=_companionApplicationIdentifier;
+@property(copy, nonatomic) NSDictionary *supportedIntentsGroupedByExtensionPoints; // @synthesize supportedIntentsGroupedByExtensionPoints=_supportedIntentsGroupedByExtensionPoints;
 @property(copy, nonatomic) NSSet *definedIntents; // @synthesize definedIntents=_definedIntents;
 @property(copy, nonatomic) NSSet *supportedMediaCategories; // @synthesize supportedMediaCategories=_supportedMediaCategories;
 @property(copy, nonatomic) NSSet *actionsRestrictedWhileProtectedDataUnavailable; // @synthesize actionsRestrictedWhileProtectedDataUnavailable=_actionsRestrictedWhileProtectedDataUnavailable;

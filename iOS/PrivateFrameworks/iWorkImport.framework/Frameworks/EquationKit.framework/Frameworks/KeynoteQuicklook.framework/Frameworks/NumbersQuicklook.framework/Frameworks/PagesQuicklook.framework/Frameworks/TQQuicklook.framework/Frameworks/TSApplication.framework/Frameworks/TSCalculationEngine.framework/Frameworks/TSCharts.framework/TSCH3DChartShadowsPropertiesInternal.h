@@ -11,26 +11,26 @@
 
 @interface TSCH3DChartShadowsPropertiesInternal : NSObject
 {
-    _Bool mEnabled;
-    TSCH3DCamera *mCamera;
-    TSCH3DDataBufferResource *mQuad;
-    TSCH3DDataBufferResource *mTexcoords;
-    TSCH3DDataBufferResource *mFadecoords;
-    NSObject<TSCH3DShadowsRenderer> *mRenderer;
-    box_a3bd9649 mShadowPlanePadding;
+    _Bool _enabled;
+    TSCH3DCamera *_camera;
+    TSCH3DDataBufferResource *_quad;
+    TSCH3DDataBufferResource *_texcoords;
+    TSCH3DDataBufferResource *_fadecoords;
+    NSObject<TSCH3DShadowsRenderer> *_renderer;
+    box_c9ef104e _shadowPlanePadding;
 }
 
 - (id).cxx_construct;
-@property(readonly, nonatomic) NSObject<TSCH3DShadowsRenderer> *renderer; // @synthesize renderer=mRenderer;
-@property(retain, nonatomic) TSCH3DDataBufferResource *fadecoords; // @synthesize fadecoords=mFadecoords;
-@property(retain, nonatomic) TSCH3DDataBufferResource *texcoords; // @synthesize texcoords=mTexcoords;
-@property(retain, nonatomic) TSCH3DDataBufferResource *quad; // @synthesize quad=mQuad;
-@property(retain, nonatomic) TSCH3DCamera *camera; // @synthesize camera=mCamera;
-@property(nonatomic) _Bool enabled; // @synthesize enabled=mEnabled;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSObject<TSCH3DShadowsRenderer> *renderer; // @synthesize renderer=_renderer;
+@property(retain, nonatomic) TSCH3DDataBufferResource *fadecoords; // @synthesize fadecoords=_fadecoords;
+@property(retain, nonatomic) TSCH3DDataBufferResource *texcoords; // @synthesize texcoords=_texcoords;
+@property(retain, nonatomic) TSCH3DDataBufferResource *quad; // @synthesize quad=_quad;
+@property(retain, nonatomic) TSCH3DCamera *camera; // @synthesize camera=_camera;
+@property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)invalidate;
 @property(readonly, nonatomic) _Bool shadowPlaneValid;
 - (void)setupResources;
-- (void)dealloc;
 - (id)initWithCamera:(id)arg1 renderer:(id)arg2;
 
 @end

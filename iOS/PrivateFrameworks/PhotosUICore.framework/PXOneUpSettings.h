@@ -6,11 +6,13 @@
 
 @interface PXOneUpSettings
 {
+    _Bool _hideFloatingInfoPanel;
     double _maximumWhitespaceWidthForInitialZoomToFill;
 }
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool hideFloatingInfoPanel; // @synthesize hideFloatingInfoPanel=_hideFloatingInfoPanel;
 @property(nonatomic) double maximumWhitespaceWidthForInitialZoomToFill; // @synthesize maximumWhitespaceWidthForInitialZoomToFill=_maximumWhitespaceWidthForInitialZoomToFill;
 - (double)zoomFactorForContentWithSize:(struct CGSize)arg1 toFillViewWithSize:(struct CGSize)arg2;
 - (_Bool)shouldInitiallyZoomContentWithSize:(struct CGSize)arg1 toFillViewWithSize:(struct CGSize)arg2;

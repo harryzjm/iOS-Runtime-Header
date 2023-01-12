@@ -12,7 +12,6 @@
 {
     MISSING_TYPE *notificationPrompter;
     MISSING_TYPE *subscriptionController;
-    MISSING_TYPE *alertPresenter;
     MISSING_TYPE *sceneProvider;
 }
 

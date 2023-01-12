@@ -6,24 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class CIContext, NSMutableArray;
 @protocol ISCompositorRecipe;
 
 @interface ISCompositor : NSObject
 {
+    CIContext *_sharedCIContext;
     unsigned long long _renderingMode;
     NSMutableArray *_elements;
 }
 
-+ (id)iosGlyphBadgeDocumentRecipe;
-+ (id)iosAppBadgeDocumentRecipe;
-+ (id)iosmacDocumentRecipe;
-+ (id)macosDocumentRecipe;
-+ (id)messagesAppIconRecipeWithBorder:(_Bool)arg1;
-+ (id)watchAppIconRecipe;
-+ (id)iosAppIconRecipe;
-+ (id)macosIconRecipe;
-+ (id)iosmacAppIconRecipe;
 - (void).cxx_destruct;
 @property(retain) NSMutableArray *elements; // @synthesize elements=_elements;
 @property unsigned long long renderingMode; // @synthesize renderingMode=_renderingMode;
@@ -31,6 +23,8 @@
 - (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)addElement:(id)arg1;
 - (void)addElementWithRecipe:(id)arg1 resources:(id)arg2;
+@property(readonly) CIContext *sharedCIContext; // @synthesize sharedCIContext=_sharedCIContext;
+- (void)dealloc;
 - (id)init;
 - (void)clearResources;
 - (void)addResourcesFromDictionary:(id)arg1;
@@ -39,8 +33,9 @@
 - (id)initWithRecipe:(id)arg1;
 - (void)drawLayer:(id)arg1 resourceProvider:(id)arg2 inContext:(id)arg3;
 - (id)maskImageForLayer:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 resourceProvider:(id)arg4;
-- (id)scaledImageFromContent:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
+- (id)scaledImageFromContent:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 needsScaled:(_Bool *)arg4;
 - (void)drawElement:(id)arg1 inContext:(id)arg2;
+- (_Bool)canUseCoreImageForEffects;
 @property(readonly) _Bool canUseCoreImage; // @dynamic canUseCoreImage;
 - (id)filterForLayer:(id)arg1 scale:(double)arg2 resourceProvider:(id)arg3;
 - (void)drawInContext:(id)arg1;

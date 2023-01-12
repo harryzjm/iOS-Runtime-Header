@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)canBecomeFocused;
 @property(nonatomic) _Bool drawsSeparatorAtBottomOfSection;
 @property(nonatomic) _Bool drawsSeparatorAtTopOfSection;
 @property(nonatomic) struct UIEdgeInsets backgroundInset;

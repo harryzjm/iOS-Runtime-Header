@@ -9,7 +9,7 @@
 @interface TSUChunkedString : NSMutableString
 {
     unsigned long long _length;
-    struct vector<std::__1::shared_ptr<TSUStringChunk>, std::__1::allocator<std::__1::shared_ptr<TSUStringChunk>>> _chunks;
+    struct vector<std::shared_ptr<TSUStringChunk>, std::allocator<std::shared_ptr<TSUStringChunk>>> _chunks;
     unsigned long long _chunkLength;
 }
 

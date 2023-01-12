@@ -31,22 +31,22 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionDateStyleKey;
-- (id)__INIntentResponseCodableDescriptionDateStyleKey;
-- (id)__INTypeCodableDescriptionDateStyleKey;
 - (id)__INCodableDescriptionFormatKey;
-- (id)__INIntentResponseCodableDescriptionFormatKey;
-- (id)__INTypeCodableDescriptionFormatKey;
 - (id)__INCodableDescriptionTemplateKey;
-- (id)__INIntentResponseCodableDescriptionTemplateKey;
-- (id)__INTypeCodableDescriptionTemplateKey;
 - (id)__INCodableDescriptionTemplateIDKey;
-- (id)__INIntentResponseCodableDescriptionTemplateIDKey;
-- (id)__INTypeCodableDescriptionTemplateIDKey;
 - (id)__INCodableDescriptionTimeStyleKey;
-- (id)__INIntentResponseCodableDescriptionTimeStyleKey;
-- (id)__INTypeCodableDescriptionTimeStyleKey;
 - (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionDateStyleKey;
+- (id)__INIntentResponseCodableDescriptionFormatKey;
+- (id)__INIntentResponseCodableDescriptionTemplateKey;
+- (id)__INIntentResponseCodableDescriptionTemplateIDKey;
+- (id)__INIntentResponseCodableDescriptionTimeStyleKey;
 - (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionDateStyleKey;
+- (id)__INTypeCodableDescriptionFormatKey;
+- (id)__INTypeCodableDescriptionTemplateKey;
+- (id)__INTypeCodableDescriptionTemplateIDKey;
+- (id)__INTypeCodableDescriptionTimeStyleKey;
 - (id)__INTypeCodableDescriptionTypeKey;
 
 @end

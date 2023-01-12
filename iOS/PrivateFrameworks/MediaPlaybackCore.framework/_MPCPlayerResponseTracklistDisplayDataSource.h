@@ -10,6 +10,7 @@
 
 @class MPSectionedCollection, NSArray, NSDictionary, NSIndexPath, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerResponseTracklistDisplayDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     MPSectionedCollection *_items;

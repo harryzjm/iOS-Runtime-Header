@@ -7,12 +7,13 @@
 #import <HomeUI/HUPickerCellDelegate-Protocol.h>
 #import <HomeUI/HUTriggerConditionEditorItemModuleControllerDelegate-Protocol.h>
 
-@class HFCharacteristicTriggerBuilder, HUCharacteristicEventOptionItem, HUCharacteristicTriggerEventItemManager, HUTriggerConditionEditorItemModuleController, NSString;
+@class HFCharacteristicEventBuilderItem, HFEventTriggerBuilder, HUCharacteristicEventOptionItem, HUCharacteristicTriggerEventItemManager, HUTriggerConditionEditorItemModuleController, NSString;
 @protocol HUTriggerEditorDelegate;
 
 @interface HUCharacteristicTriggerEventViewController <HUTriggerConditionEditorItemModuleControllerDelegate, HUPickerCellDelegate>
 {
-    HFCharacteristicTriggerBuilder *_characteristicTriggerBuilder;
+    HFCharacteristicEventBuilderItem *_eventBuilderItem;
+    HFEventTriggerBuilder *_triggerBuilder;
     unsigned long long _mode;
     id <HUTriggerEditorDelegate> _delegate;
     HUTriggerConditionEditorItemModuleController *_conditionModuleController;
@@ -24,7 +25,8 @@
 @property(readonly, nonatomic) HUTriggerConditionEditorItemModuleController *conditionModuleController; // @synthesize conditionModuleController=_conditionModuleController;
 @property(nonatomic) __weak id <HUTriggerEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property(retain, nonatomic) HFCharacteristicTriggerBuilder *characteristicTriggerBuilder; // @synthesize characteristicTriggerBuilder=_characteristicTriggerBuilder;
+@property(retain, nonatomic) HFEventTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
+@property(retain, nonatomic) HFCharacteristicEventBuilderItem *eventBuilderItem; // @synthesize eventBuilderItem=_eventBuilderItem;
 - (void)pickerViewCell:(id)arg1 didSelectValueAtIndex:(long long)arg2;
 - (id)pickerViewCell:(id)arg1 attributedTitleForValueAtIndex:(long long)arg2;
 - (_Bool)pickerViewCell:(id)arg1 canSelectValueAtIndex:(long long)arg2;
@@ -37,22 +39,23 @@
 - (_Bool)_canCommitTriggerBuilder;
 - (_Bool)_canContinue;
 - (void)_updateVisibleCellCheckmarks;
+- (id)visibleTriggerValuesForItem:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (_Bool)shouldHideFooterBelowSection:(long long)arg1;
 - (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
-- (id)itemModuleControllers;
+- (id)buildItemModuleControllerForModule:(id)arg1;
 - (_Bool)automaticallyUpdatesViewControllerTitle;
 - (void)_showSummary:(id)arg1;
 - (void)_showActionEditor:(id)arg1;
 - (void)_cancel:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (id)initWithCharacteristicTriggerBuilder:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
+- (id)initWithCharacteristicEventBuilderItem:(id)arg1 triggerBuilder:(id)arg2 mode:(unsigned long long)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

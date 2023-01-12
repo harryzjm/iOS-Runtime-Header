@@ -10,13 +10,13 @@
 
 @interface REMAssignmentsDataViewInvocation_fetchByObjectID <NSSecureCoding>
 {
-    _Bool _showLazyDeleteObjects;
+    _Bool _allowConcealedObjects;
     NSArray *_objectIDs;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool showLazyDeleteObjects; // @synthesize showLazyDeleteObjects=_showLazyDeleteObjects;
+@property(nonatomic) _Bool allowConcealedObjects; // @synthesize allowConcealedObjects=_allowConcealedObjects;
 @property(readonly, nonatomic) NSArray *objectIDs; // @synthesize objectIDs=_objectIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

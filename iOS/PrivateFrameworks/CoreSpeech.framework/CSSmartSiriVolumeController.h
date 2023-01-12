@@ -24,6 +24,9 @@
 @property(nonatomic) __weak id <CSSmartSiriVolumeControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)didSmartSiriVolumeChangeForReason:(unsigned long long)arg1;
 - (void)_createSSVClientConnectionIfNeeded;
+- (void)setPermanentVolumeOffsetWithDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumeDirection:(_Bool)arg1;
+- (void)setSmartSiriVolumePercentage:(float)arg1;
 - (id)getVolumeForTTSType:(unsigned long long)arg1 withContext:(id)arg2;
 - (id)init;
 

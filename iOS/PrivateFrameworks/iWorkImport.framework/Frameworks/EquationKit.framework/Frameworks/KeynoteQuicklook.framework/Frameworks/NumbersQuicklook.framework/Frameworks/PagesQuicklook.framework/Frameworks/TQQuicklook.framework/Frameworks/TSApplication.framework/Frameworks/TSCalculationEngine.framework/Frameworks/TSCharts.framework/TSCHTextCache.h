@@ -10,10 +10,10 @@
 
 @interface TSCHTextCache : NSObject
 {
-    TSUCache *mTSWPTextCache;
-    TSUCache *mTSWPColumnCache;
-    TSUCache *mNumberWidthCache;
-    TSUCache *mEqualDigitWidthFont;
+    TSUCache *_TSWPTextCache;
+    TSUCache *_TSWPColumnCache;
+    TSUCache *_numberWidthCache;
+    TSUCache *_equalDigitWidthFont;
 }
 
 - (void).cxx_destruct;
@@ -23,7 +23,7 @@
 - (id)numberStringSizeForKey:(id)arg1;
 - (void)setColumn:(id)arg1 forKey:(id)arg2;
 - (id)columnForKey:(id)arg1;
-- (void)setText:(id)arg1 forKey:(id)arg2;
+- (void)setText:(id)arg1 textDelegate:(id)arg2 forKey:(id)arg3;
 - (id)textForKey:(id)arg1;
 - (void)clear;
 - (id)init;

@@ -38,7 +38,7 @@
 - (void)fetchAvailabilityWithHandler:(CDUnknownBlockType)arg1;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)onPersistenceManagerNotification:(id)arg1;
 - (void)_onPersistenceManagerNotification:(id)arg1;
 - (void)_setupContextsHandler:(CDUnknownBlockType)arg1;

@@ -7,12 +7,13 @@
 #import <LinkPresentation/LPLinkMetadataBackwardCompatibility-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPresentationTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPreviewTransformer-Protocol.h>
+#import <LinkPresentation/LPLinkMetadataSourceApplicationTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataStatusTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataStoreTransformer-Protocol.h>
 
-@class LPArtworkMetadata, LPImage, NSArray, NSString, NSURL;
+@class LPArtworkMetadata, LPImage, LPLyricExcerptMetadata, NSArray, NSString, NSURL;
 
-@interface LPiTunesMediaSongMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataBackwardCompatibility, LPLinkMetadataStoreTransformer, LPLinkMetadataStatusTransformer>
+@interface LPiTunesMediaSongMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataBackwardCompatibility, LPLinkMetadataStoreTransformer, LPLinkMetadataStatusTransformer, LPLinkMetadataSourceApplicationTransformer>
 {
     NSString *_storeFrontIdentifier;
     NSString *_storeIdentifier;
@@ -24,6 +25,7 @@
     LPArtworkMetadata *_artworkMetadata;
     NSURL *_previewURL;
     NSArray *_offers;
+    LPLyricExcerptMetadata *_lyricExcerpt;
 }
 
 + (id)keyPathsForValuesAffecting_dummyPropertyForObservation;
@@ -31,6 +33,7 @@
 + (id)statusForText:(id)arg1;
 + (id)transcriptBoldTextFont;
 - (void).cxx_destruct;
+@property(copy, nonatomic) LPLyricExcerptMetadata *lyricExcerpt; // @synthesize lyricExcerpt=_lyricExcerpt;
 @property(copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property(copy, nonatomic) NSURL *previewURL; // @synthesize previewURL=_previewURL;
 @property(copy, nonatomic) LPArtworkMetadata *artworkMetadata; // @synthesize artworkMetadata=_artworkMetadata;
@@ -51,6 +54,7 @@
 - (id)statusForTransformer:(id)arg1;
 - (void)destroyForTransformer:(id)arg1;
 - (void)initializeForTransformer:(id)arg1;
+- (id)sourceApplicationMetadataForTransformer:(id)arg1;
 - (id)storeIdentifierForTransformer:(id)arg1;
 - (void)populateMetadataForBackwardCompatibility:(id)arg1;
 - (id)previewImageForTransformer:(id)arg1;

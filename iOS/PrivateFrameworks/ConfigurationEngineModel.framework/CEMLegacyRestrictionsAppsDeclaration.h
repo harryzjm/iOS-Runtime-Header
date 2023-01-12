@@ -17,16 +17,19 @@
     NSNumber *_payloadAllowSafari;
     NSNumber *_payloadAllowVideoConferencing;
     NSArray *_payloadBlacklistedAppBundleIDs;
+    NSNumber *_payloadAllowGroupActivity;
 }
 
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 withAllowChat:(id)arg2 withAllowiTunes:(id)arg3 withAllowNews:(id)arg4 withAllowPodcasts:(id)arg5 withAllowSafari:(id)arg6 withAllowVideoConferencing:(id)arg7 withBlacklistedAppBundleIDs:(id)arg8;
++ (id)buildWithIdentifier:(id)arg1 withAllowChat:(id)arg2 withAllowiTunes:(id)arg3 withAllowNews:(id)arg4 withAllowPodcasts:(id)arg5 withAllowSafari:(id)arg6 withAllowVideoConferencing:(id)arg7 withBlacklistedAppBundleIDs:(id)arg8 withAllowCopresence:(id)arg9;
++ (id)buildWithIdentifier:(id)arg1 withAllowChat:(id)arg2 withAllowiTunes:(id)arg3 withAllowNews:(id)arg4 withAllowPodcasts:(id)arg5 withAllowSafari:(id)arg6 withAllowVideoConferencing:(id)arg7 withBlacklistedAppBundleIDs:(id)arg8 withAllowGroupActivity:(id)arg9;
 + (id)restrictionPayloadKeys;
 + (id)allowedPayloadKeys;
 + (id)profileType;
 + (id)registeredIdentifier;
 + (id)registeredClassName;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSNumber *payloadAllowGroupActivity; // @synthesize payloadAllowGroupActivity=_payloadAllowGroupActivity;
 @property(copy, nonatomic) NSArray *payloadBlacklistedAppBundleIDs; // @synthesize payloadBlacklistedAppBundleIDs=_payloadBlacklistedAppBundleIDs;
 @property(copy, nonatomic) NSNumber *payloadAllowVideoConferencing; // @synthesize payloadAllowVideoConferencing=_payloadAllowVideoConferencing;
 @property(copy, nonatomic) NSNumber *payloadAllowSafari; // @synthesize payloadAllowSafari=_payloadAllowSafari;

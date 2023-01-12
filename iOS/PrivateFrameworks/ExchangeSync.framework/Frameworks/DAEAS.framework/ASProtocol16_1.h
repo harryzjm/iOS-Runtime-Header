@@ -8,7 +8,7 @@
 {
 }
 
-- (_Bool)supportsUniqueServerId;
+- (int)supportsUniqueServerId;
 - (_Bool)supportsForwarderTracking;
 - (_Bool)supportsMailboxEnhancedSearch;
 - (_Bool)supportsProposeNewTime;

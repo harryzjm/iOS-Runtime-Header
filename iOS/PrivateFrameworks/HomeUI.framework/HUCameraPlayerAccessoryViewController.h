@@ -15,6 +15,7 @@
 {
     _Bool _canShowOverlayContent;
     _Bool _shouldShowLoadingIndicatorForClipPlayback;
+    _Bool _forceLoadingIndicatorToDisplay;
     _Bool _showingNoActivity;
     _Bool _showingError;
     _Bool _showingLoadingIndicator;
@@ -45,6 +46,7 @@
 @property(retain, nonatomic) UILabel *noActivityLabel; // @synthesize noActivityLabel=_noActivityLabel;
 @property(retain, nonatomic) HUCameraLoadingActivityIndicatorView *loadingActivityIndicator; // @synthesize loadingActivityIndicator=_loadingActivityIndicator;
 @property(retain, nonatomic) UIImageView *noResponseView; // @synthesize noResponseView=_noResponseView;
+@property(nonatomic) _Bool forceLoadingIndicatorToDisplay; // @synthesize forceLoadingIndicatorToDisplay=_forceLoadingIndicatorToDisplay;
 @property(nonatomic) __weak UIView *loadingOverlayView; // @synthesize loadingOverlayView=_loadingOverlayView;
 @property(nonatomic) __weak HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) _Bool shouldShowLoadingIndicatorForClipPlayback; // @synthesize shouldShowLoadingIndicatorForClipPlayback=_shouldShowLoadingIndicatorForClipPlayback;

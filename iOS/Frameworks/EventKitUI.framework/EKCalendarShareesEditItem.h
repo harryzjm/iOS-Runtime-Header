@@ -7,12 +7,11 @@
 #import <EventKitUI/EKShareePickerViewControllerDelegate-Protocol.h>
 #import <EventKitUI/EKShareeViewControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UILabel, UITableViewHeaderFooterView;
+@class NSMutableArray, NSString, UILabel;
 
 @interface EKCalendarShareesEditItem <EKShareeViewControllerDelegate, EKShareePickerViewControllerDelegate>
 {
     NSMutableArray *_shareeCells;
-    UITableViewHeaderFooterView *_footerView;
     UILabel *_descriptionLabel;
 }
 
@@ -30,11 +29,7 @@
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (unsigned long long)numberOfSubitems;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (void)layoutForWidth:(double)arg1;
-- (double)footerHeightForSection;
-- (void)_applyStyleToUILabel:(id)arg1;
-- (id)footerView;
-- (id)footerViewForSection;
+- (id)footerTitle;
 - (_Bool)configureWithCalendar:(id)arg1;
 - (id)_shareeCellForName:(id)arg1 detailText:(id)arg2 additionalDetailText:(id)arg3;
 - (id)_addPersonCell;

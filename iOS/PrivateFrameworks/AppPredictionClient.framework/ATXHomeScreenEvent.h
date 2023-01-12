@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AppPredictionClient/ATXProtoBufWrapper-Protocol.h>
-#import <AppPredictionClient/NSSecureCoding-Protocol.h>
+#import <AppPredictionClient/ATXProactiveSuggestionUIInteractionProtocol-Protocol.h>
 
 @class ATXHomeScreenEventMetadata, NSArray, NSDate, NSString;
 
-@interface ATXHomeScreenEvent : NSObject <NSSecureCoding, ATXProtoBufWrapper>
+@interface ATXHomeScreenEvent : NSObject <ATXProactiveSuggestionUIInteractionProtocol>
 {
     double _absoluteDate;
+    _Bool _isSuggestedWidget;
     NSString *_eventTypeString;
     NSString *_reason;
     NSString *_blendingCacheId;
@@ -31,6 +31,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
 + (id)eventForPageShownWithIndex:(unsigned long long)arg1 widgetsByStack:(id)arg2 blendingCacheIdentifier:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ATXHomeScreenEventMetadata *metadata; // @synthesize metadata=_metadata;
@@ -40,6 +41,7 @@
 @property(nonatomic) unsigned long long stackLocation; // @synthesize stackLocation=_stackLocation;
 @property(nonatomic) unsigned long long stackKind; // @synthesize stackKind=_stackKind;
 @property(nonatomic) unsigned long long widgetSize; // @synthesize widgetSize=_widgetSize;
+@property(nonatomic) _Bool isSuggestedWidget; // @synthesize isSuggestedWidget=_isSuggestedWidget;
 @property(retain, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
 @property(retain, nonatomic) NSString *widgetKind; // @synthesize widgetKind=_widgetKind;
 @property(retain, nonatomic) NSString *widgetBundleId; // @synthesize widgetBundleId=_widgetBundleId;
@@ -47,6 +49,7 @@
 @property(retain, nonatomic) NSString *blendingCacheId; // @synthesize blendingCacheId=_blendingCacheId;
 @property(retain, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(retain, nonatomic) NSString *eventTypeString; // @synthesize eventTypeString=_eventTypeString;
+- (id)_uuidArrayFromStringArray:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)checkAndReportDecodingFailureIfNeededFordouble:(double)arg1 key:(id)arg2 coder:(id)arg3 errorDomain:(id)arg4 errorCode:(long long)arg5;
@@ -57,7 +60,22 @@
 - (id)proto;
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;
+- (id)json;
+- (id)jsonDict;
+- (id)serialize;
+@property(readonly, nonatomic) unsigned int dataVersion;
+- (void)updateUIFeedbackSession:(id)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (unsigned char)feedbackConsumerSubType;
+- (id)blendingUICacheUpdateUUIDForUICacheConsumerSubType:(unsigned char)arg1;
+- (id)sessionIdentifierForSessionType:(long long)arg1 uiCacheConsumerSubType:(unsigned char)arg2;
+- (id)sessionProcessingOptionsForSessionType:(long long)arg1;
 @property(retain, nonatomic) NSDate *date;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

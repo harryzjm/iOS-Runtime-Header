@@ -8,18 +8,24 @@
 
 #import <MapKit/GEOTransitIconDataSource-Protocol.h>
 
-@class NSString;
+@class GEOStyleAttributes, NSString;
 
 @interface MKTransitIcon : NSObject <GEOTransitIconDataSource>
 {
     unsigned int _cartoID;
     unsigned int _defaultTransitType;
+    unsigned int _iconAttributeKey;
+    unsigned int _iconAttributeValue;
+    GEOStyleAttributes *_styleAttributes;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int defaultTransitType; // @synthesize defaultTransitType=_defaultTransitType;
 @property(readonly, nonatomic) unsigned int cartoID; // @synthesize cartoID=_cartoID;
-@property(readonly, nonatomic) unsigned int iconAttributeValue;
-@property(readonly, nonatomic) unsigned int iconAttributeKey;
+@property(readonly, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property(readonly, nonatomic) unsigned int iconAttributeValue; // @synthesize iconAttributeValue=_iconAttributeValue;
+@property(readonly, nonatomic) unsigned int iconAttributeKey; // @synthesize iconAttributeKey=_iconAttributeKey;
+- (id)initWithKey:(unsigned int)arg1 value:(unsigned int)arg2;
 @property(readonly, nonatomic) int iconType;
 - (id)initWithCartoId:(unsigned int)arg1 defaultTransitType:(unsigned int)arg2;
 

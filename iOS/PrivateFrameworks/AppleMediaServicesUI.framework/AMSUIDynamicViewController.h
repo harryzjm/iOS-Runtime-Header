@@ -32,8 +32,10 @@
 - (id)navigationItem;
 - (_Bool)isMovingFromParentViewController;
 - (_Bool)isBeingDismissed;
+- (void)_setup;
 - (void)reloadContentViewImpressionItems;
 @property(retain, nonatomic) NSDictionary *metricsOverlay;
+@property(retain, nonatomic) NSString *mediaClientIdentifier;
 @property(retain, nonatomic) NSDictionary *internalClientOptions;
 @property(nonatomic) __weak id <AMSUIDynamicViewControllerDelegate> delegate;
 @property(retain, nonatomic) NSDictionary *clientOptions;

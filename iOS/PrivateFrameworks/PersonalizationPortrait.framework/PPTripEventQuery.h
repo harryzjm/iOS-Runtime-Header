@@ -11,6 +11,7 @@
 
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) unsigned char tripOptions; // @synthesize tripOptions=_tripOptions;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

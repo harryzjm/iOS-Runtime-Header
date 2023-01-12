@@ -15,9 +15,13 @@
     NSURL *_fallbackURL;
     unsigned long long _requestType;
     NSArray *_additionalChangeTags;
+    unsigned long long _requestFeedType;
+    NSString *_requestCacheKey;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *requestCacheKey; // @synthesize requestCacheKey=_requestCacheKey;
+@property(readonly, nonatomic) unsigned long long requestFeedType; // @synthesize requestFeedType=_requestFeedType;
 @property(readonly, nonatomic) NSArray *additionalChangeTags; // @synthesize additionalChangeTags=_additionalChangeTags;
 @property(readonly, nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property(readonly, nonatomic) NSURL *fallbackURL; // @synthesize fallbackURL=_fallbackURL;
@@ -26,6 +30,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 requestType:(unsigned long long)arg4 additionalChangeTags:(id)arg5 requestFeedType:(unsigned long long)arg6;
 - (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 requestType:(unsigned long long)arg4 additionalChangeTags:(id)arg5;
 - (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3;
 

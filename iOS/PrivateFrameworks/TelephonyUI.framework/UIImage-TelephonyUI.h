@@ -7,18 +7,32 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (TelephonyUI)
-+ (id)telephonyUI_AudioControlsGlyphForDeviceType:(long long)arg1;
-+ (id)telephonyUI_AudioRouteGlyphForDeviceType:(long long)arg1;
-+ (id)telephonyUI_speakerAudioRouteGlyphImage;
-+ (id)telephonyUI_BluetoothAudioControlsGlyphImage;
-+ (id)telephonyUI_BluetoothAudioRouteGlyphImage;
-+ (id)telephonyUI_muteAudioRouteGlyphImage;
-+ (id)telephonyUI_CarPlayAudioRouteGlyphImage;
-+ (id)telephonyUI_headphonesAudioControlsGlyphImage;
-+ (id)telephonyUI_headphonesAudioRouteGlyphImage;
-+ (id)telephonyUI_iPodAudioRouteGlyphImage;
-+ (id)telephonyUI_iPadAudioRouteGlyphImage;
-+ (id)telephonyUI_iPhoneAudioRouteGlyphImage;
++ (id)telephonyUIImageNamed:(id)arg1;
++ (id)systemImageNameForSymbolType:(long long)arg1;
++ (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
++ (id)tpHierarchicalImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
++ (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 cappedAt:(id)arg3;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 symbolWeight:(long long)arg4;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 hierarchicalColor:(id)arg4 isStaticSize:(_Bool)arg5;
++ (_Bool)shouldBeHierarchicalSymbolType:(long long)arg1;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 isStaticSize:(_Bool)arg4;
++ (long long)scaleForTPScale:(long long)arg1;
++ (id)routeGlyphForAssetName:(id)arg1 displayStyle:(long long)arg2 shouldScaleAsset:(_Bool)arg3;
++ (id)routeGlyphForDeviceType:(long long)arg1 displayStyle:(long long)arg2 color:(id)arg3;
++ (id)routeGlyphForDeviceType:(long long)arg1 displayStyle:(long long)arg2;
++ (id)hierarchicalImageForSymbolType:(long long)arg1 color:(id)arg2;
++ (id)flatImageForSymbolType:(long long)arg1;
++ (id)routeGlyphWithSymbolType:(long long)arg1 displayStyle:(long long)arg2 color:(id)arg3;
++ (id)routeGlyphWithSymbolType:(long long)arg1 displayStyle:(long long)arg2;
++ (id)speakerRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)bluetoothAudioRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)headphonesRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)muteRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)carplayRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)iPodRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)iPadRouteGlyphForDisplayStyle:(long long)arg1;
++ (id)iPhoneRouteGlyphForDisplayStyle:(long long)arg1;
 + (id)voicemailGlyphForSymbolType:(long long)arg1;
 + (id)voicemailReportFeedbackGlyphImage;
 + (id)voicemailPauseGlyphDisabledImage;
@@ -44,23 +58,15 @@
 + (id)favoritesMessageGlyphImage;
 + (id)favoritesMailGlyphImage;
 + (id)favoritesAudioGlyphImage;
-+ (id)telephonyUIImageNamed:(id)arg1;
 + (id)telephonyUIUnreadIndicatorGlyphImage;
 + (id)telephonyUIInfoButtonGlyphImage;
 + (id)telephonyUIActionButtonGlyphImage;
 + (void)clearCachedCappedSizeImagesIfNeeded;
 + (_Bool)cappedSizedImagesAreValid;
-+ (id)systemImageNameForSymbolType:(long long)arg1;
-+ (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
-+ (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
-+ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 cappedAt:(id)arg3;
-+ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 symbolWeight:(long long)arg4;
-+ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 isStaticSize:(_Bool)arg4;
-+ (long long)scaleForTPScale:(long long)arg1;
 + (id)tpImageNamed:(id)arg1 inBundle:(id)arg2;
 + (id)_tpImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
+- (id)tpFlattenedWithColor:(id)arg1;
 - (id)imageWithShadow:(id)arg1;
 - (id)imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
-- (id)tpFlattenedWithColor:(id)arg1;
 @end
 

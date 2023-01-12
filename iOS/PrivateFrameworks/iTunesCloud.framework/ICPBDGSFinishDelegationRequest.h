@@ -10,15 +10,13 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface ICPBDGSFinishDelegationRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_playerDelegateInfoTokens;
 }
 
-+ (Class)playerDelegateInfoTokenType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *playerDelegateInfoTokens; // @synthesize playerDelegateInfoTokens=_playerDelegateInfoTokens;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -26,10 +24,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)playerDelegateInfoTokenAtIndex:(unsigned long long)arg1;
-- (unsigned long long)playerDelegateInfoTokensCount;
-- (void)addPlayerDelegateInfoToken:(id)arg1;
-- (void)clearPlayerDelegateInfoTokens;
 
 @end
 

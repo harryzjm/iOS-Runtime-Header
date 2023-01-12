@@ -7,29 +7,19 @@
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKFieldDetectSuppressor-Protocol.h>
 
-@class AVPlayer, AVPlayerItem, AVPlayerLayer, NSString, PKMobileAssetManager, PKPaymentHeroImageController, PKPaymentPass, PKPaymentSetupHeroView, PKPaymentSetupInitialCardEducationIconsView, UIImageView, UILabel, UIView;
+@class NSString, PKEducationPhone, PKPaymentHeroImageController, PKPaymentPass, UIImageView, UIView;
 
 @interface PKEducationViewController <PKExplanationViewDelegate, PKFieldDetectSuppressor>
 {
-    UIImageView *_heroPhone;
-    UIView *_heroPhoneBackground;
-    UIImageView *_passSnapshot;
-    UILabel *_instructionLabel;
     PKPaymentHeroImageController *_heroImageController;
-    PKPaymentSetupHeroView *_heroView;
-    PKPaymentSetupInitialCardEducationIconsView *_iconsView;
-    PKMobileAssetManager *_mobileAssetManager;
+    UIImageView *_heroPadImageView;
+    UIView *_heroPadBackground;
     PKPaymentPass *_paymentPass;
     unsigned long long _educationContext;
+    PKEducationPhone *_educationBodyView;
     _Bool _isFaceIDDevice;
-    _Bool _isPad;
-    double _maxHeight;
-    AVPlayerLayer *_video;
-    UIView *_videoBoundingView;
-    AVPlayer *_player;
-    AVPlayerItem *_playerItem;
-    _Bool _playerStarted;
     _Bool _invalidated;
+    _Bool _wasNavigationBarHidden;
     _Bool _offerAddToWatch;
     CDUnknownBlockType _continueHandler;
     NSString *_titleOverride;
@@ -44,19 +34,17 @@
 @property(copy, nonatomic) NSString *titleOverride; // @synthesize titleOverride=_titleOverride;
 @property(nonatomic) _Bool offerAddToWatch; // @synthesize offerAddToWatch=_offerAddToWatch;
 @property(copy, nonatomic) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+- (id)_heroPadImage;
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_performAddToWatchFlow;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_removePlayerItem;
-- (void)didFinishPlaying;
 - (void)invalidate;
 - (void)performContinue;
-- (void)startPlayingVideo;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 @property(readonly, nonatomic) _Bool suppressFieldDetect;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
-- (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithPaymentPass:(id)arg1 setupContext:(long long)arg2 educationContext:(unsigned long long)arg3;

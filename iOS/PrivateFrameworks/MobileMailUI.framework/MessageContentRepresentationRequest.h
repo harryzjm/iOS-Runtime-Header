@@ -24,6 +24,7 @@
     unsigned long long _retyAttempt;
     _Bool _includeSuggestionItems;
     struct os_unfair_lock_s _contentRepresentationLock;
+    NSString *_contentRepresentationType;
     id <EMCollectionItemID> _itemID;
     EFFuture *_messageFuture;
 }
@@ -51,9 +52,9 @@
 - (void)dealloc;
 - (void)_commonInitWithIncludeSuggestionItems:(_Bool)arg1 delegate:(id)arg2;
 - (void)updateItemID:(id)arg1 messageList:(id)arg2;
-- (id)initWithMessageList:(id)arg1 itemIdentifier:(id)arg2 includeSuggestionItems:(_Bool)arg3 delegate:(id)arg4;
+- (id)initWithMessageList:(id)arg1 itemIdentifier:(id)arg2 includeSuggestionItems:(_Bool)arg3 representationType:(id)arg4 delegate:(id)arg5;
 - (id)initWithMessageList:(id)arg1 itemIdentifier:(id)arg2 includeSuggestionItems:(_Bool)arg3;
-- (id)initWithMessage:(id)arg1 includeSuggestionItems:(_Bool)arg2 delegate:(id)arg3;
+- (id)initWithMessage:(id)arg1 includeSuggestionItems:(_Bool)arg2 representationType:(id)arg3 delegate:(id)arg4;
 - (id)initWithMessage:(id)arg1 includeSuggestionItems:(_Bool)arg2;
 @property(readonly) unsigned long long signpostID;
 

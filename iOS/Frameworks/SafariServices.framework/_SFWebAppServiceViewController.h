@@ -7,7 +7,7 @@
 #import <SafariServices/SFWebAppServiceViewControllerProtocol-Protocol.h>
 #import <SafariServices/_SFMediaRecordingDocument-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFApplicationManifestFetcher, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIColor, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFApplicationManifestFetcher, _SFInjectedJavaScriptController, _SFWebClipMetadataFetcher;
 
 __attribute__((visibility("hidden")))
 @interface _SFWebAppServiceViewController <SFWebAppServiceViewControllerProtocol, _SFMediaRecordingDocument>
@@ -23,11 +23,14 @@ __attribute__((visibility("hidden")))
     _SFApplicationManifestFetcher *_applicationManifestFetcher;
     _SFInjectedJavaScriptController *_activityJSController;
     _SFWebClipMetadataFetcher *_webClipMetadataFetcher;
+    UIColor *_themeColor;
+    _Bool _updatingThemeColor;
 }
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
+- (void)_updateThemeColor;
 - (void)_fetchApplicationManifestIfNeeded;
 - (void)statusBarIndicatorTappedWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool audioOnly;
@@ -45,11 +48,12 @@ __attribute__((visibility("hidden")))
 - (void)_initialLoadFinishedWithSuccess:(_Bool)arg1;
 - (id)processPool;
 - (_Bool)_usesScrollToTopView;
-- (void)setWebViewController:(id)arg1;
+- (void)_setCurrentWebViewController:(id)arg1;
 - (id)webViewConfiguration;
 - (id)websiteDataStore;
 - (id)websiteDataStoreConfiguration;
 - (_Bool)canPrint;
+- (void)webViewControllerDidUpdateThemeColor:(id)arg1;
 - (void)_updateDisplayMode;
 - (void)webViewControllerDidChangeURL:(id)arg1;
 - (void)webViewController:(id)arg1 didFinishNavigation:(id)arg2;

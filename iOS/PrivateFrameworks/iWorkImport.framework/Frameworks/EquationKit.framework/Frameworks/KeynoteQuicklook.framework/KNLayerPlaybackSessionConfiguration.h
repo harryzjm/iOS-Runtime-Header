@@ -13,18 +13,19 @@
     _Bool _isMetalEnabled;
     _Bool _isSceneRenderingEnabled;
     id <KNPlaybackLayerHost> _layerHost;
+    struct CGSize _boundsSize;
 }
 
 - (void).cxx_destruct;
+- (struct CGSize)boundsSize;
 - (id)layerHost;
 - (_Bool)isSceneRenderingEnabled;
 - (_Bool)isMetalEnabled;
-- (id)configurationWithUpdatedLayerScreenEnvironment:(id)arg1;
+- (id)configurationWithUpdatedLayerScreenEnvironment;
 - (double)pixelAspectRatio;
 - (struct CGColorSpace *)colorSpace;
-- (struct CGSize)boundsSize;
 - (id)description;
-- (id)initWithLayerHost:(id)arg1 screenEnvironment:(id)arg2 isMetalEnabled:(_Bool)arg3 isSceneRenderingEnabled:(_Bool)arg4;
+- (id)initWithLayerHost:(id)arg1 isMetalEnabled:(_Bool)arg2 isSceneRenderingEnabled:(_Bool)arg3;
 
 @end
 

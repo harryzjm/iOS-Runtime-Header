@@ -9,17 +9,17 @@
 __attribute__((visibility("hidden")))
 @interface WKGeolocationProviderIOS : NSObject
 {
-    struct RefPtr<WebKit::WebGeolocationManagerProxy, WTF::DumbPtrTraits<WebKit::WebGeolocationManagerProxy>> _geolocationManager;
+    struct RefPtr<WebKit::WebGeolocationManagerProxy, WTF::RawPtrTraits<WebKit::WebGeolocationManagerProxy>, WTF::DefaultRefDerefTraits<WebKit::WebGeolocationManagerProxy>> _geolocationManager;
     struct RetainPtr<id<_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
     _Bool _isWebCoreGeolocationActive;
-    struct RefPtr<WebKit::WebGeolocationPosition, WTF::DumbPtrTraits<WebKit::WebGeolocationPosition>> _lastActivePosition;
-    struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _requestsWaitingForCoreLocationAuthorization;
+    struct RefPtr<WebKit::WebGeolocationPosition, WTF::RawPtrTraits<WebKit::WebGeolocationPosition>, WTF::DefaultRefDerefTraits<WebKit::WebGeolocationPosition>> _lastActivePosition;
+    struct Deque<GeolocationRequestData, 0> _requestsWaitingForCoreLocationAuthorization;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)decidePolicyForGeolocationRequestFromOrigin:(struct FrameInfoData *)arg1 completionHandler:(Function_da50b38b *)arg2 view:(id)arg3;
-- (id)initWithProcessPool:(struct WebProcessPool *)arg1;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(void *)arg1 completionHandler:(void *)arg2 view:(id)arg3;
+- (id)initWithProcessPool:(void *)arg1;
 - (id)init;
 - (void)_setEnableHighAccuracy:(_Bool)arg1;
 - (void)_stopUpdating;

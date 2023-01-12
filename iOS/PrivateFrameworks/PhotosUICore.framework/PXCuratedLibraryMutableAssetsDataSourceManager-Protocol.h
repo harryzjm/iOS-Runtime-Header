@@ -6,14 +6,15 @@
 
 #import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 
-@class NSIndexSet, NSPredicate;
+@class NSIndexSet, NSPredicate, NSString;
 @protocol PXDisplayAsset, PXDisplayAssetCollection;
 
 @protocol PXCuratedLibraryMutableAssetsDataSourceManager <PXMutableAssetsDataSourceManager>
+@property(nonatomic) _Bool canIncludeUnsavedSyndicatedAssets;
 @property(retain, nonatomic) NSPredicate *allPhotosFilterPredicate;
 @property(nonatomic) long long zoomLevel;
 - (void)resumeChangeDelivery:(id)arg1;
-- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1 identifier:(NSString *)arg2;
 - (void)setTransientKeyAsset:(id <PXDisplayAsset>)arg1 forAssetCollection:(id <PXDisplayAssetCollection>)arg2 zoomLevel:(long long)arg3;
 - (_Bool)forceAccurateAllSectionsIfNeeded;
 - (_Bool)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;

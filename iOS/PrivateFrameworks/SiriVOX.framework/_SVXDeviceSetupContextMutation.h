@@ -8,7 +8,7 @@
 
 #import <SiriVOX/SVXDeviceSetupContextMutating-Protocol.h>
 
-@class NSString, SVXDeviceSetupContext, SVXDeviceSetupFlowScene, SVXDeviceSetupOptions;
+@class NSDate, NSString, SVXDeviceSetupContext, SVXDeviceSetupFlowScene, SVXDeviceSetupOptions;
 
 __attribute__((visibility("hidden")))
 @interface _SVXDeviceSetupContextMutation : NSObject <SVXDeviceSetupContextMutating>
@@ -17,16 +17,22 @@ __attribute__((visibility("hidden")))
     unsigned long long _timestamp;
     SVXDeviceSetupOptions *_options;
     SVXDeviceSetupFlowScene *_flowScene;
+    NSDate *_beginDate;
+    NSDate *_endDate;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasTimestamp:1;
         unsigned int hasOptions:1;
         unsigned int hasFlowScene:1;
+        unsigned int hasBeginDate:1;
+        unsigned int hasEndDate:1;
     } _mutationFlags;
 }
 
 - (void).cxx_destruct;
 - (id)generate;
+- (void)setEndDate:(id)arg1;
+- (void)setBeginDate:(id)arg1;
 - (void)setFlowScene:(id)arg1;
 - (void)setOptions:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;

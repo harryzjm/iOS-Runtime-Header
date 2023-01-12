@@ -37,12 +37,13 @@
 + (_Bool)_isConcreteObjectClass;
 + (_Bool)supportsEquivalence;
 + (_Bool)supportsSecureCoding;
-+ (id)_newVaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 vaccinationCodings:(id)arg13 expirationDate:(id)arg14 doseNumber:(id)arg15 doseQuantity:(id)arg16 performer:(id)arg17 bodySiteCodings:(id)arg18 reaction:(id)arg19 notGiven:(_Bool)arg20 administrationDate:(id)arg21 statusCoding:(id)arg22 patientReported:(_Bool)arg23 routeCodings:(id)arg24 reasonsCodings:(id)arg25 reasonsNotGivenCodings:(id)arg26 config:(CDUnknownBlockType)arg27;
-+ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 vaccinationCodings:(id)arg13 expirationDate:(id)arg14 doseNumber:(id)arg15 doseQuantity:(id)arg16 performer:(id)arg17 bodySiteCodings:(id)arg18 reaction:(id)arg19 notGiven:(_Bool)arg20 administrationDate:(id)arg21 statusCoding:(id)arg22 patientReported:(_Bool)arg23 routeCodings:(id)arg24 reasonsCodings:(id)arg25 reasonsNotGivenCodings:(id)arg26;
++ (id)_newVaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 vaccinationCodings:(id)arg13 expirationDate:(id)arg14 doseNumber:(id)arg15 doseQuantity:(id)arg16 performer:(id)arg17 bodySiteCodings:(id)arg18 reaction:(id)arg19 notGiven:(_Bool)arg20 administrationDate:(id)arg21 statusCoding:(id)arg22 patientReported:(_Bool)arg23 routeCodings:(id)arg24 reasonsCodings:(id)arg25 reasonsNotGivenCodings:(id)arg26 config:(CDUnknownBlockType)arg27;
++ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 vaccinationCodings:(id)arg13 expirationDate:(id)arg14 doseNumber:(id)arg15 doseQuantity:(id)arg16 performer:(id)arg17 bodySiteCodings:(id)arg18 reaction:(id)arg19 notGiven:(_Bool)arg20 administrationDate:(id)arg21 statusCoding:(id)arg22 patientReported:(_Bool)arg23 routeCodings:(id)arg24 reasonsCodings:(id)arg25 reasonsNotGivenCodings:(id)arg26;
 + (id)defaultDisplayString;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)indexableConceptKeyPaths;
-+ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 vaccinationCodings:(id)arg12 expirationDate:(id)arg13 doseNumber:(id)arg14 doseQuantity:(id)arg15 performer:(id)arg16 bodySiteCodings:(id)arg17 reaction:(id)arg18 notGiven:(_Bool)arg19 administrationDate:(id)arg20 statusCoding:(id)arg21 patientReported:(_Bool)arg22 routeCodings:(id)arg23 reasonsCodings:(id)arg24 reasonsNotGivenCodings:(id)arg25;
++ (_Bool)groupsByUserDomainConcept;
++ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 vaccinationCodings:(id)arg12 expirationDate:(id)arg13 doseNumber:(id)arg14 doseQuantity:(id)arg15 performer:(id)arg16 bodySiteCodings:(id)arg17 reaction:(id)arg18 notGiven:(_Bool)arg19 administrationDate:(id)arg20 statusCoding:(id)arg21 patientReported:(_Bool)arg22 routeCodings:(id)arg23 reasonsCodings:(id)arg24 reasonsNotGivenCodings:(id)arg25;
 - (void).cxx_destruct;
 @property(readonly, copy) HKVaccinationRecordType *vaccinationRecordType;
 - (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
@@ -101,6 +102,7 @@
 - (id)medicalRecordCodings;
 - (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) long long recordCategoryType;
 
 // Remaining properties
 @property(readonly) NSUUID *UUID;

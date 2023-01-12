@@ -17,7 +17,7 @@
 + (id)modelForSetting:(id)arg1;
 + (id)modelsForSetting:(id)arg1;
 + (id)modelForGroup:(id)arg1;
-+ (id)modelsForSettingDiff:(id)arg1 fromGroup:(id)arg2;
++ (id)modelsForSettingDiff:(id)arg1 fromSetting:(id)arg2;
 + (id)modelsForGroupDiff:(id)arg1 fromGroup:(id)arg2;
 + (id)modelsForGroup:(id)arg1;
 

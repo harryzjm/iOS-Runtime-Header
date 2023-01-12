@@ -16,7 +16,6 @@
 + (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 + (id)trackerTypeForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (unsigned int)frameCVPixelBufferFormatForRequestRevision:(unsigned long long)arg1;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isLastFrame) _Bool lastFrame; // @synthesize lastFrame=_lastFrame;
 @property(nonatomic) unsigned long long trackingLevel; // @synthesize trackingLevel=_trackingLevel;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, QLPlatformImage, QLThumbnailItem, QLThumbnailMetadata;
+@class NSData, NSDictionary, NSString, QLPlatformImage, QLThumbnailItem, QLThumbnailMetadata;
 @protocol OS_dispatch_queue;
 
 @interface QLPreviewThumbnailGenerator : NSObject
@@ -23,12 +23,14 @@
     int _flavor;
     _Bool _wantsLowQuality;
     _Bool _resultIsLowQuality;
+    _Bool _shouldUseRestrictedExtension;
     NSDictionary *_externalThumbnailGeneratorData;
     _Bool _resultHasIconModeApplied;
     _Bool _wantsJPEGRepresentationInstead;
     _Bool _wantsBaseline;
     int _interpolationQuality;
     QLThumbnailMetadata *generatedProperties;
+    NSString *_extensionBadge;
     NSData *_jpegRepresentation;
     unsigned long long _sandboxExtension;
     struct CGRect _contentRect;
@@ -38,7 +40,7 @@
 + (id)mutableAttributedStringForThumbnailWithData:(id)arg1 uti:(id)arg2 encoding:(unsigned int)arg3 documentAttributes:(id *)arg4;
 + (id)readingOptionsFromUTI:(id)arg1 encoding:(unsigned int)arg2;
 + (id)_textDocumentTypeFromUTI:(id)arg1;
-+ (id)generateIconDataFromThumbnailData:(id)arg1 inputFormat:(id)arg2 outputFormat:(id *)arg3 outputContentRect:(struct CGRect *)arg4 desiredSize:(struct CGSize)arg5 desiredScale:(double)arg6 desiredFlavor:(int)arg7 wantsLowQuality:(_Bool)arg8 iconVariant:(long long)arg9;
++ (id)generateIconDataFromThumbnailData:(id)arg1 inputFormat:(id)arg2 outputFormat:(id *)arg3 outputContentRect:(struct CGRect *)arg4 desiredSize:(struct CGSize)arg5 desiredScale:(double)arg6 desiredFlavor:(int)arg7 extensionBadge:(id)arg8 wantsLowQuality:(_Bool)arg9 iconVariant:(long long)arg10;
 + (double)cornerRadiusForSize:(struct CGSize)arg1;
 + (_Bool)canGenerateThumbnailForURL:(id)arg1;
 + (id)generatorForURL:(id)arg1 maxSize:(struct CGSize)arg2 minSize:(double)arg3 scale:(double)arg4 lowQuality:(_Bool)arg5 decorations:(_Bool)arg6 wantsBaseline:(_Bool)arg7;
@@ -53,6 +55,8 @@
 @property _Bool wantsJPEGRepresentationInstead; // @synthesize wantsJPEGRepresentationInstead=_wantsJPEGRepresentationInstead;
 @property _Bool resultHasIconModeApplied; // @synthesize resultHasIconModeApplied=_resultHasIconModeApplied;
 @property struct CGRect contentRect; // @synthesize contentRect=_contentRect;
+@property(copy) NSString *extensionBadge; // @synthesize extensionBadge=_extensionBadge;
+@property(readonly) _Bool shouldUseRestrictedExtension; // @synthesize shouldUseRestrictedExtension=_shouldUseRestrictedExtension;
 @property(retain) NSDictionary *externalThumbnailGeneratorData; // @synthesize externalThumbnailGeneratorData=_externalThumbnailGeneratorData;
 @property int interpolationQuality; // @synthesize interpolationQuality=_interpolationQuality;
 @property double minSize; // @synthesize minSize=_minSize;
@@ -86,8 +90,8 @@
 - (void)_generateThumbnailWithWillStartBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (struct CGSize)_pixelSize;
 - (id)initWithThumbnailItem:(id)arg1 size:(struct CGSize)arg2 minSize:(double)arg3 scale:(double)arg4 decorations:(_Bool)arg5;
-- (id)initWithThumbnailItem:(id)arg1 size:(struct CGSize)arg2 minSize:(double)arg3 scale:(double)arg4 lowQuality:(_Bool)arg5 wantsBaseline:(_Bool)arg6 decorations:(_Bool)arg7 badgeType:(unsigned long long)arg8 interpolationQuality:(int)arg9;
-- (id)initWithThumbnailItem:(id)arg1 size:(struct CGSize)arg2 minSize:(double)arg3 scale:(double)arg4 lowQuality:(_Bool)arg5 wantsBaseline:(_Bool)arg6 decorations:(_Bool)arg7 badgeType:(unsigned long long)arg8 interpolationQuality:(int)arg9 externalThumbnailGeneratorData:(id)arg10;
+- (id)initWithThumbnailItem:(id)arg1 size:(struct CGSize)arg2 minSize:(double)arg3 scale:(double)arg4 lowQuality:(_Bool)arg5 wantsBaseline:(_Bool)arg6 decorations:(_Bool)arg7 badgeType:(unsigned long long)arg8 interpolationQuality:(int)arg9 shouldUseRestrictedExtension:(_Bool)arg10;
+- (id)initWithThumbnailItem:(id)arg1 size:(struct CGSize)arg2 minSize:(double)arg3 scale:(double)arg4 lowQuality:(_Bool)arg5 wantsBaseline:(_Bool)arg6 decorations:(_Bool)arg7 badgeType:(unsigned long long)arg8 interpolationQuality:(int)arg9 externalThumbnailGeneratorData:(id)arg10 shouldUseRestrictedExtension:(_Bool)arg11;
 
 @end
 

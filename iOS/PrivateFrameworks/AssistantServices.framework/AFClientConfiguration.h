@@ -9,29 +9,35 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFAccessibilityState, AFAudioPlaybackRequest;
+@class AFAccessibilityState, AFAudioPlaybackRequest, NSDate;
 
 @interface AFClientConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _isDeviceInSetupFlow;
     _Bool _isDeviceInCarDNDMode;
     _Bool _isDeviceInStarkMode;
+    _Bool _isDeviceWatchAuthenticated;
+    _Bool _areAnnouncementRequestsPermittedByPresentationWhileActive;
     float _outputVolume;
     AFAccessibilityState *_accessibilityState;
     long long _deviceRingerSwitchState;
     AFAudioPlaybackRequest *_tapToSiriAudioPlaybackRequest;
     AFAudioPlaybackRequest *_twoShotAudioPlaybackRequest;
+    NSDate *_deviceSetupFlowBeginDate;
+    NSDate *_deviceSetupFlowEndDate;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDate *deviceSetupFlowEndDate; // @synthesize deviceSetupFlowEndDate=_deviceSetupFlowEndDate;
+@property(readonly, copy, nonatomic) NSDate *deviceSetupFlowBeginDate; // @synthesize deviceSetupFlowBeginDate=_deviceSetupFlowBeginDate;
 @property(readonly, copy, nonatomic) AFAudioPlaybackRequest *twoShotAudioPlaybackRequest; // @synthesize twoShotAudioPlaybackRequest=_twoShotAudioPlaybackRequest;
 @property(readonly, copy, nonatomic) AFAudioPlaybackRequest *tapToSiriAudioPlaybackRequest; // @synthesize tapToSiriAudioPlaybackRequest=_tapToSiriAudioPlaybackRequest;
 @property(readonly, nonatomic) float outputVolume; // @synthesize outputVolume=_outputVolume;
+@property(readonly, nonatomic) _Bool areAnnouncementRequestsPermittedByPresentationWhileActive; // @synthesize areAnnouncementRequestsPermittedByPresentationWhileActive=_areAnnouncementRequestsPermittedByPresentationWhileActive;
+@property(readonly, nonatomic) _Bool isDeviceWatchAuthenticated; // @synthesize isDeviceWatchAuthenticated=_isDeviceWatchAuthenticated;
 @property(readonly, nonatomic) _Bool isDeviceInStarkMode; // @synthesize isDeviceInStarkMode=_isDeviceInStarkMode;
 @property(readonly, nonatomic) _Bool isDeviceInCarDNDMode; // @synthesize isDeviceInCarDNDMode=_isDeviceInCarDNDMode;
-@property(readonly, nonatomic) _Bool isDeviceInSetupFlow; // @synthesize isDeviceInSetupFlow=_isDeviceInSetupFlow;
 @property(readonly, nonatomic) long long deviceRingerSwitchState; // @synthesize deviceRingerSwitchState=_deviceRingerSwitchState;
 @property(readonly, copy, nonatomic) AFAccessibilityState *accessibilityState; // @synthesize accessibilityState=_accessibilityState;
 - (void)encodeWithCoder:(id)arg1;
@@ -41,7 +47,7 @@
 - (unsigned long long)hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
 - (id)description;
-- (id)initWithAccessibilityState:(id)arg1 deviceRingerSwitchState:(long long)arg2 isDeviceInSetupFlow:(_Bool)arg3 isDeviceInCarDNDMode:(_Bool)arg4 isDeviceInStarkMode:(_Bool)arg5 outputVolume:(float)arg6 tapToSiriAudioPlaybackRequest:(id)arg7 twoShotAudioPlaybackRequest:(id)arg8;
+- (id)initWithAccessibilityState:(id)arg1 deviceRingerSwitchState:(long long)arg2 isDeviceInCarDNDMode:(_Bool)arg3 isDeviceInStarkMode:(_Bool)arg4 isDeviceWatchAuthenticated:(_Bool)arg5 areAnnouncementRequestsPermittedByPresentationWhileActive:(_Bool)arg6 outputVolume:(float)arg7 tapToSiriAudioPlaybackRequest:(id)arg8 twoShotAudioPlaybackRequest:(id)arg9 deviceSetupFlowBeginDate:(id)arg10 deviceSetupFlowEndDate:(id)arg11;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 
 @end

@@ -17,6 +17,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)jsonDataOptional;
 + (id)responseWithData:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id JSONObject; // @synthesize JSONObject=_JSONObject;

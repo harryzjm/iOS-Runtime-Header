@@ -28,7 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)_extentVector:(double *)arg1 forUnconstrainedPoint:(const double *)arg2 closestPoint:(const double *)arg3;
+- (void)_getExtentVector:(double *)arg1 forUnconstrainedPoint:(const double *)arg2 closestPoint:(const double *)arg3;
 - (void)_mutateExtentBeyondMaximum:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) const double *_extentBeyondMaximum;
 - (void)_mutateExtentBeyondMinimum:(CDUnknownBlockType)arg1;

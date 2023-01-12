@@ -12,10 +12,11 @@
 
 @interface TSCH3DShaderEffects : NSObject <NSCopying>
 {
-    NSMutableDictionary *mSections;
-    NSArray *mCacheList;
+    NSMutableDictionary *_sections;
+    NSArray *_cacheList;
 }
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)injectMetalShaderInto:(id)arg1 context:(id)arg2;
 - (void)injectGLSLInto:(id)arg1 context:(id)arg2;
@@ -41,7 +42,6 @@
 - (id)effects;
 - (void)resetCacheList;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 
 @end

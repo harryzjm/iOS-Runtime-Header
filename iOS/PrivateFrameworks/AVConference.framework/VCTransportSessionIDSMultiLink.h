@@ -14,26 +14,32 @@ __attribute__((visibility("hidden")))
 {
     VCIDSSessionInfoSynchronizer *_sessionInfoSynchronizer;
     _Bool _isWiFiAssistActive;
+    _Bool _oneToOneModeEnabled;
 }
 
 @property(readonly, nonatomic) VCIDSSessionInfoSynchronizer *sessionInfoSynchronizer; // @synthesize sessionInfoSynchronizer=_sessionInfoSynchronizer;
 - (void)VCIDSSessionInfoSynchronizer:(void *)arg1 sendVCIDSSessionInfoRequest:(id)arg2;
+- (void)setRemoteDeviceVersionIDS;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (void)queryProbingResultsWithOptions:(id)arg1;
 - (void)stopActiveProbingWithOptions:(id)arg1;
 - (void)startActiveProbingWithOptions:(id)arg1;
+- (void)setOneToOneModeEnabled:(_Bool)arg1 isInitiator:(_Bool)arg2;
+- (void)optIntoExistingSubscribedStreamsForConnection:(id)arg1;
 - (void)optOutAllStreamsForConnection:(id)arg1;
 - (void)resetParticipantGenerationCounter;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;
+- (void)didUpdatePreferredInterfaceForDuplication:(unsigned char)arg1 notifyPeer:(_Bool)arg2 enableDuplication:(_Bool)arg3 isMediaUnrecoverableSignal:(_Bool)arg4;
 - (void)didEnableDuplication:(_Bool)arg1 activeConnection:(id)arg2;
 - (void)discardConnection:(id)arg1;
 - (void)connectionCallback:(id)arg1 isInitialConnection:(_Bool)arg2;
-- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
+- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2 activeConnection:(id)arg3;
 - (void)setDefaultLink:(id)arg1;
 - (void)setWiFiAssist:(_Bool)arg1;
+- (void)resetActiveConnection;
 - (void)setQuickRelayServerProvider:(int)arg1;
 - (void)handleProbingResponse:(id)arg1;
-- (void)handleUpdateRemoteSessionInfo:(id)arg1;
+- (void)handleSessionInfoResponse:(id)arg1;
 - (void)handleLinkDisconnectedWithInfo:(id)arg1;
 - (void)handleLinkConnectedWithInfo:(id)arg1;
 - (void)onStop;

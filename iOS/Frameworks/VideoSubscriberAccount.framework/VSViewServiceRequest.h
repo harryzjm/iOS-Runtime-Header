@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *accountProviderAuthenticationToken;
 @property(readonly, copy, nonatomic) NSString *localizedVideoTitle;
 @property(readonly, copy, nonatomic) NSArray *supportedAccountProviderAuthenticationSchemes;
+@property(readonly, copy, nonatomic) NSArray *applicationAccountProviders;
 @property(readonly, copy, nonatomic) NSArray *featuredIdentityProviderIdentifiers;
 @property(readonly, copy, nonatomic) NSArray *supportedIdentityProviderIdentifiers;
 @property(readonly, nonatomic) _Bool allowsAuthenticationUI;

@@ -8,6 +8,7 @@
 {
 }
 
+- (id)handleRemovalEvent:(id)arg1;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)handleScrollEvent:(id)arg1;
 

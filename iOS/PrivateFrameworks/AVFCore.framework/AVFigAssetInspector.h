@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isPlayable;
 @property(readonly, nonatomic, getter=_isStreaming) _Bool streaming;
 @property(readonly, nonatomic) _Bool hasProtectedContent;
+@property(readonly, nonatomic) NSArray *contentKeySpecifiersEligibleForPreloading;
 @property(readonly, nonatomic) unsigned long long downloadToken;
 @property(readonly, nonatomic) NSURL *originalNetworkContentURL;
 @property(readonly, nonatomic) NSURL *resolvedURL;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (float)preferredSoundCheckVolumeNormalization;
 - (float)preferredVolume;
 - (float)preferredRate;
+@property(readonly, nonatomic) NSArray *variants;
 - (CDStruct_1b6d18a9)duration;
 - (id)_instanceIdentifier;
 - (id)identifyingTag;

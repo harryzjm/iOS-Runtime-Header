@@ -11,6 +11,7 @@
 @interface _SFRequestDesktopSiteQuirksManager : NSObject
 {
     WBSRemotePlistController *_remotePlistController;
+    _Bool _supportsDesktopClassBrowsing;
 }
 
 + (id)sharedManager;

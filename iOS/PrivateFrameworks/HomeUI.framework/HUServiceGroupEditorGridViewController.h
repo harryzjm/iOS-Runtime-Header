@@ -20,7 +20,7 @@
 - (id)layoutOptionsForSection:(long long)arg1;
 - (void)didDeselectItem:(id)arg1;
 - (void)didSelectItem:(id)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithServiceGroupBuilder:(id)arg1;
 - (id)initWithServiceGridItemManager:(id)arg1;

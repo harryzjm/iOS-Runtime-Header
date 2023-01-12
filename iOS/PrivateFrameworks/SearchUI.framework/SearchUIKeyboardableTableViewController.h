@@ -49,7 +49,6 @@
 - (void)deletePressed;
 - (void)leftArrowPressed;
 - (void)rightArrowPressed;
-- (_Bool)isLeftToRightOrientation;
 - (_Bool)isOnCard;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canBecomeFirstResponder;

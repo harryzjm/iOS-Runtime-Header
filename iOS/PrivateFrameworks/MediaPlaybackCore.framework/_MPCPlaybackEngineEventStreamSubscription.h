@@ -11,12 +11,14 @@
 @class MPCPlaybackEngineEventStream, NSMutableDictionary, NSString;
 @protocol MPCPlaybackEngineEventConsumer;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlaybackEngineEventStreamSubscription : NSObject <MPCPlaybackEngineEventStreamSubscription>
 {
     struct os_unfair_lock_s _lock;
     id <MPCPlaybackEngineEventConsumer> _consumer;
     MPCPlaybackEngineEventStream *_eventStream;
     unsigned long long _lastEventSuccessTimestamp;
+    unsigned long long _maximumEventDeliveryTimestamp;
     NSMutableDictionary *_mutatingEventHandlers;
     NSMutableDictionary *_immediateEventHandlers;
     NSMutableDictionary *_eventHandlers;
@@ -26,6 +28,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *eventHandlers; // @synthesize eventHandlers=_eventHandlers;
 @property(readonly, nonatomic) NSMutableDictionary *immediateEventHandlers; // @synthesize immediateEventHandlers=_immediateEventHandlers;
 @property(readonly, nonatomic) NSMutableDictionary *mutatingEventHandlers; // @synthesize mutatingEventHandlers=_mutatingEventHandlers;
+@property(nonatomic) unsigned long long maximumEventDeliveryTimestamp; // @synthesize maximumEventDeliveryTimestamp=_maximumEventDeliveryTimestamp;
 @property(nonatomic) unsigned long long lastEventSuccessTimestamp; // @synthesize lastEventSuccessTimestamp=_lastEventSuccessTimestamp;
 @property(readonly, nonatomic) __weak MPCPlaybackEngineEventStream *eventStream; // @synthesize eventStream=_eventStream;
 @property(readonly, nonatomic) __weak id <MPCPlaybackEngineEventConsumer> consumer; // @synthesize consumer=_consumer;

@@ -6,11 +6,12 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDCameraClipSignificantEventBulletin, HMDCameraProfile, NSArray, NSDate, NSDictionary, NSString;
+@class HMDCameraClipSignificantEventBulletin, HMDCameraProfile, NSArray, NSDictionary, NSString;
 
 @protocol HMDCameraBulletinBoard <NSObject>
-- (NSArray *)doorbellPressNotificationsNearDate:(NSDate *)arg1 forCameraProfile:(HMDCameraProfile *)arg2;
+- (void)updateDoorbellPressNotificationsWithSignificantEventBulletin:(HMDCameraClipSignificantEventBulletin *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)insertCameraClipSignificantEventBulletin:(HMDCameraClipSignificantEventBulletin *)arg1;
+- (void)removeCameraClipBulletinsForCameraProfile:(HMDCameraProfile *)arg1;
 - (void)removeBulletinWithRecordID:(NSString *)arg1;
 - (void)insertImageBulletinsForChangedCharacteristics:(NSArray *)arg1 snapshotData:(NSDictionary *)arg2 completion:(void (^)(NSArray *))arg3;
 

@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)newWithImage:(id)arg1 attributes:(const unordered_map_b2cee720 *)arg2 size:(const struct CKComponentSize *)arg3;
++ (id)newWithImage:(id)arg1 attributes:(const void *)arg2 size:(const struct CKComponentSize *)arg3;
 
 @end
 

@@ -8,11 +8,12 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PKProtobufCustomPrecisionAmount;
 
 @interface PKProtobufShippingMethod : PBCodable <NSCopying>
 {
     long long _amount;
+    PKProtobufCustomPrecisionAmount *_customPrecisionAmount;
     NSString *_detail;
     NSString *_identifier;
     NSString *_label;
@@ -21,6 +22,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKProtobufCustomPrecisionAmount *customPrecisionAmount; // @synthesize customPrecisionAmount=_customPrecisionAmount;
 @property(retain, nonatomic) NSString *detail; // @synthesize detail=_detail;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
@@ -35,6 +37,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasCustomPrecisionAmount;
 @property(readonly, nonatomic) _Bool hasDetail;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 @property(nonatomic) _Bool hasType;

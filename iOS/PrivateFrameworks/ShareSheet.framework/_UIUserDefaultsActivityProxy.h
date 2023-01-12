@@ -16,6 +16,7 @@
     _Bool _canMove;
     _Bool _canHide;
     _Bool _isHidden;
+    _Bool _disabled;
     NSUUID *_activityUUID;
     NSNumber *_imageSlot;
     NSNumber *_labelSlot;
@@ -24,6 +25,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) double platterTextHeight; // @synthesize platterTextHeight=_platterTextHeight;
 @property(nonatomic) _Bool isHidden; // @synthesize isHidden=_isHidden;
 @property(nonatomic) _Bool canHide; // @synthesize canHide=_canHide;

@@ -64,12 +64,12 @@
 - (void)_checkAccountStatusWithCompletionHandler:(CDUnknownBlockType)arg1 withRetryCount:(unsigned long long)arg2;
 - (_Bool)isAccountAvailable;
 - (void)queryAccountStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (_Bool)changeInUserAccountDetected;
+- (void)shouldDetectAccountChangeWithResponse:(CDUnknownBlockType)arg1;
 - (void)identityUpdated:(id)arg1;
 - (void)accountStatusDidChange:(id)arg1;
 - (void)setupAccountDidChange:(_Bool)arg1;
 - (_Bool)needsDeviceToDevice;
-- (id)userIdentity;
+- (void)userIdentityWithResponse:(CDUnknownBlockType)arg1;
 - (id)initWithRecordZoneName:(id)arg1;
 - (id)initWithContainer:(id)arg1 recordZoneName:(id)arg2;
 - (void)dealloc;

@@ -41,13 +41,12 @@
 @property(readonly, copy) NSString *shortDescription;
 - (void)_markEndDateAndSubmitUploadOperationEvent;
 @property(readonly) double executionDuration;
-- (double)queuedDuration;
-- (id)updateClipModel:(id)arg1 shouldPerformDelegateCallbacks:(_Bool)arg2;
 - (id)updateClipModel:(id)arg1;
 - (id)fetchClipModel;
 - (void)cancelWithError:(id)arg1;
 - (void)finish;
 - (void)main;
+@property(readonly) double queuedDuration;
 - (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 dataSource:(id)arg3;
 - (id)initWithClipModelID:(id)arg1 localZone:(id)arg2;
 

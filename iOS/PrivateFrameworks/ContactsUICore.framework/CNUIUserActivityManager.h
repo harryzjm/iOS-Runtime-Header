@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 - (id)makeActivityAdvertisingViewingList;
 - (void)updateUserActivityState:(id)arg1 withContentsOfContact:(id)arg2;
+- (void)updateUserActivityState:(id)arg1 withContentsOfListTopContact:(id)arg2 displayedContact:(id)arg3 searchString:(id)arg4;
 - (id)makeActivityAdvertisingViewingOfContact:(id)arg1;
 - (void)publishRequestToEditContact:(id)arg1;
 - (void)publishRequestToCreateContact:(id)arg1;

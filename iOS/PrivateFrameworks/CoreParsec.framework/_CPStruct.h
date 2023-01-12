@@ -7,12 +7,11 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
-#import <CoreParsec/_CPFeedbackJSONObject-Protocol.h>
 #import <CoreParsec/_CPStruct-Protocol.h>
 
 @class NSData, NSDictionary, NSString;
 
-@interface _CPStruct : PBCodable <_CPFeedbackJSONObject, _CPStruct, NSSecureCoding>
+@interface _CPStruct : PBCodable <_CPStruct, NSSecureCoding>
 {
     NSDictionary *_stringKeyFields;
     NSDictionary *_intKeyFields;
@@ -21,10 +20,6 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *intKeyFields; // @synthesize intKeyFields=_intKeyFields;
 @property(copy, nonatomic) NSDictionary *stringKeyFields; // @synthesize stringKeyFields=_stringKeyFields;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -33,12 +28,12 @@
 - (_Bool)getIntKeyFields:(id *)arg1 forKey:(int)arg2;
 - (void)setStringKeyFields:(id)arg1 forKey:(id)arg2;
 - (_Bool)getStringKeyFields:(id *)arg1 forKey:(id)arg2;
-@property(readonly, nonatomic) id feedbackJSON;
 - (id)initWithFacade:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

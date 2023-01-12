@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SBBiometricUnlockBehaviorDelegate> biometricUnlockBehaviorDelegate; // @synthesize biometricUnlockBehaviorDelegate=_biometricUnlockBehaviorDelegate;
+- (_Bool)hasVisibleContentToReveal;
 - (_Bool)isRestToOpenAvailable;
 - (void)resetRestToOpen;
 - (void)fillRestToOpenWithDuration:(double)arg1;

@@ -10,6 +10,7 @@
 @interface SBZionUnlockTrigger
 {
     id <SBBiometricUnlockBehaviorConfigurationDelegate> _behaviorConfigurationDelegate;
+    _Bool _hasVisibleContentToReveal;
     _Bool _fingerOn;
     _Bool _fingerOffSinceWake;
     BSTimer *_restToOpenTimer;
@@ -25,6 +26,7 @@
 - (void)_startRestToOpenTimer;
 - (void)lockButtonDown;
 - (void)screenOff;
+- (void)screenOn;
 - (void)fingerOff;
 - (void)fingerOn;
 - (_Bool)bioUnlock;

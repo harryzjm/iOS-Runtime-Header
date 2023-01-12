@@ -22,6 +22,8 @@
 {
     HMFUnfairLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
+    HMDBackingStore *_backingStore;
+    _Bool _loggedIn;
     _Bool _monitoring;
     _Bool _rapportIdentitiesChangedNotificationTokenValid;
     int _rapportIdentitiesChangedNotificationToken;
@@ -33,7 +35,6 @@
     HMFTimer *_devicesChangeBackoffTimer;
     IDSService *_service;
     HMDIDSActivityMonitorBroadcaster *_activityBroadcaster;
-    HMDBackingStore *_backingStore;
     HMDCloudCache *_cloudCache;
 }
 
@@ -41,7 +42,6 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMDCloudCache *cloudCache; // @synthesize cloudCache=_cloudCache;
-@property(retain, nonatomic) HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
 @property(readonly, nonatomic) HMDIDSActivityMonitorBroadcaster *activityBroadcaster; // @synthesize activityBroadcaster=_activityBroadcaster;
 @property(readonly, nonatomic) IDSService *service; // @synthesize service=_service;
 @property(nonatomic, getter=isRapportIdentitiesChangedNotificationTokenValid) _Bool rapportIdentitiesChangedNotificationTokenValid; // @synthesize rapportIdentitiesChangedNotificationTokenValid=_rapportIdentitiesChangedNotificationTokenValid;
@@ -50,6 +50,7 @@
 @property(readonly, nonatomic) HMFTimer *devicesChangeBackoffTimer; // @synthesize devicesChangeBackoffTimer=_devicesChangeBackoffTimer;
 @property(readonly, nonatomic) HMFExponentialBackoffTimer *accountChangeBackoffTimer; // @synthesize accountChangeBackoffTimer=_accountChangeBackoffTimer;
 @property(readonly, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
+@property(readonly, getter=isLoggedInToPrimaryAccount) _Bool loggedIn; // @synthesize loggedIn=_loggedIn;
 @property(readonly) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
@@ -81,6 +82,8 @@
 - (void)__localDataReset:(id)arg1;
 - (void)stop;
 - (void)start;
+@property(readonly) HMDBackingStore *backingStore;
+- (void)configureWithBackingStore:(id)arg1;
 - (void)_deregisterForRapportNotifications;
 - (void)_registerForRapportNotifications;
 - (id)initWithIDSService:(id)arg1 activityBroadcaster:(id)arg2;

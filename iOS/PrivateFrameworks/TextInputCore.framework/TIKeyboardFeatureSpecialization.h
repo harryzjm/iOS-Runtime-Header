@@ -16,6 +16,7 @@
     NSMutableDictionary *m_compositionMaps;
     NSMutableDictionary *m_reverseCompositionMaps;
     _Bool _useRelaxedOVSPolicy;
+    _Bool _skipCandidateQualityFilter;
     TIInputMode *_inputMode;
     long long _currentUserInterfaceIdiom;
 }
@@ -23,6 +24,7 @@
 + (id)createSpecializationForInputMode:(id)arg1;
 + (struct USet *)createAcceptableCharacterSetForKeyboardLocale:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool skipCandidateQualityFilter; // @synthesize skipCandidateQualityFilter=_skipCandidateQualityFilter;
 @property(nonatomic) _Bool useRelaxedOVSPolicy; // @synthesize useRelaxedOVSPolicy=_useRelaxedOVSPolicy;
 @property(nonatomic) long long currentUserInterfaceIdiom; // @synthesize currentUserInterfaceIdiom=_currentUserInterfaceIdiom;
 @property(readonly, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
@@ -59,8 +61,8 @@
 - (id)externalStringToInternal:(id)arg1;
 - (id)compositionMapForLayout:(id)arg1 reverse:(_Bool)arg2;
 - (_Bool)doesComposeText;
-- (void)specializeInputManager:(struct TIInputManager *)arg1 forLayoutState:(id)arg2;
-- (struct TIInputManager *)createInputManager;
+- (void)specializeInputManager:(void *)arg1 forLayoutState:(id)arg2;
+- (void *)createInputManager;
 
 @end
 

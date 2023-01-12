@@ -15,7 +15,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColorPickerViewController *colorPickerViewController; // @synthesize colorPickerViewController=_colorPickerViewController;
-- (void)colorPickerViewControllerDidSelectColor:(id)arg1;
+- (void)colorPickerViewController:(id)arg1 didSelectColor:(id)arg2 continuously:(_Bool)arg3;
 - (_Bool)_shouldConvertColorPickerColorFromDarkToLight;
 - (void)setColorUserInterfaceStyle:(long long)arg1;
 - (long long)colorUserInterfaceStyle;

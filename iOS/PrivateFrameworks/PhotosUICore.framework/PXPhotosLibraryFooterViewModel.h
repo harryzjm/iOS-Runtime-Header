@@ -5,27 +5,27 @@
 //
 
 #import <PhotosUICore/PXAssetsDataSourceManagerObserver-Protocol.h>
-#import <PhotosUICore/PXCloudQuotaControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXCloudQuotaControllerHelperDelegate-Protocol.h>
 
-@class NSArray, NSString, PXCPLUIStatusProvider, PXCloudQuotaController, PXPhotoKitAssetsDataSourceManager;
+@class NSArray, NSString, PXCPLUIStatusProvider, PXCloudQuotaControllerHelper, PXPhotoKitAssetsDataSourceManager;
 @protocol PXPhotosLibraryFooterViewModelPresentationDelegate;
 
-@interface PXPhotosLibraryFooterViewModel <PXCloudQuotaControllerDelegate, PXAssetsDataSourceManagerObserver>
+@interface PXPhotosLibraryFooterViewModel <PXCloudQuotaControllerHelperDelegate, PXAssetsDataSourceManagerObserver>
 {
     NSArray *_syncProgressAlbums;
     id <PXPhotosLibraryFooterViewModelPresentationDelegate> _presentingDelegate;
     PXPhotoKitAssetsDataSourceManager *_assetsDataSourceManager;
     PXCPLUIStatusProvider *_cplUIStatusProvider;
-    PXCloudQuotaController *_cloudQuotaController;
+    PXCloudQuotaControllerHelper *_cloudQuotaHelper;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PXCloudQuotaController *cloudQuotaController; // @synthesize cloudQuotaController=_cloudQuotaController;
+@property(retain, nonatomic) PXCloudQuotaControllerHelper *cloudQuotaHelper; // @synthesize cloudQuotaHelper=_cloudQuotaHelper;
 @property(retain, nonatomic) PXCPLUIStatusProvider *cplUIStatusProvider; // @synthesize cplUIStatusProvider=_cplUIStatusProvider;
 @property(readonly, nonatomic) PXPhotoKitAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
 @property(nonatomic) __weak id <PXPhotosLibraryFooterViewModelPresentationDelegate> presentingDelegate; // @synthesize presentingDelegate=_presentingDelegate;
-- (id)presentingViewControllerForCloudQuotaController:(id)arg1;
-- (void)cloudQuotaController:(id)arg1 informationBannerDidChange:(id)arg2;
+- (id)presentingViewControllerForCloudQuotaControllerHelper:(id)arg1;
+- (void)cloudQuotaControllerHelper:(id)arg1 informationViewDidChange:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateExposedProperties;
 @property(readonly, nonatomic) NSArray *syncProgressAlbums; // @synthesize syncProgressAlbums=_syncProgressAlbums;

@@ -13,11 +13,16 @@
 @interface SGURLContainer : NSObject <SGExternalEnrichment>
 {
     NSMutableArray *_urls;
+    _Bool _needsFlushing;
 }
 
++ (_Bool)deleteAllURLsWithBundleIdentifier:(id)arg1 documentIdentifiers:(id)arg2 entityStore:(id)arg3;
 + (_Bool)deleteAllURLsWithBundleIdentifier:(id)arg1 entityStore:(id)arg2;
++ (id)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 bundleIdentifier:(id)arg3 entityStore:(id)arg4;
 - (void).cxx_destruct;
+- (id)numberOfExtractions;
 - (void)flushWrites;
+- (void)dealloc;
 - (void)writeWithEntityStore:(id)arg1;
 - (id)init;
 

@@ -8,7 +8,7 @@
 
 @interface CRCHNetworkCursor : NSObject
 {
-    struct vector<unsigned long, std::__1::allocator<unsigned long>> _edgeIndexes;
+    struct vector<unsigned long, std::allocator<unsigned long>> _edgeIndexes;
 }
 
 - (id).cxx_construct;

@@ -14,13 +14,6 @@ __attribute__((visibility("hidden")))
     long long _signposterType;
 }
 
-+ (id)signposterForItemIdentifier:(id)arg1;
-+ (id)signposterForShardIdentifier:(id)arg1;
-+ (id)signposterForBCSType:(long long)arg1;
-@property(nonatomic) long long signposterType; // @synthesize signposterType=_signposterType;
-- (void)_handleItemCacheHitWithFlag:(_Bool)arg1;
-- (void)_handleShardCacheHitWithFlag:(_Bool)arg1;
-- (void)_handleConfigCacheHitWithFlag:(_Bool)arg1;
 - (void)flagMeasurementDidChange:(_Bool)arg1 forMeasurement:(id)arg2;
 
 // Remaining properties

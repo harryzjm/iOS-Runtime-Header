@@ -15,8 +15,8 @@
 
 + (id)selectionPathWithSelectionArray:(id)arg1;
 - (void).cxx_destruct;
-- (void)saveToArchive:(struct SelectionPathArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
-- (id)initWithArchive:(const struct SelectionPathArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2 context:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) NSString *UUIDDescription;
 - (id)description;
 - (void)enumerateSelectionsLeastToMostSpecificInPathUsingBlock:(CDUnknownBlockType)arg1;

@@ -8,7 +8,6 @@
 
 @class MCBook;
 
-__attribute__((visibility("hidden")))
 @interface MCManagedMediaPayload : MCPayload
 {
     MCBook *_managedBook;

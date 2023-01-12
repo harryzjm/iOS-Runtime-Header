@@ -8,6 +8,7 @@
 @protocol FPCollectionDataSource;
 
 @protocol FPCollectionDataSourceDelegate
+@property(readonly) unsigned long long lastForcedUpdate;
 - (_Bool)dataSourceShouldAlwaysReplaceContents:(id <FPCollectionDataSource>)arg1;
 - (void)dataSource:(id <FPCollectionDataSource>)arg1 wasInvalidatedWithError:(NSError *)arg2;
 - (void)dataSource:(id <FPCollectionDataSource>)arg1 receivedUpdatedItems:(NSArray *)arg2 deletedItems:(NSArray *)arg3 hasMoreChanges:(_Bool)arg4;

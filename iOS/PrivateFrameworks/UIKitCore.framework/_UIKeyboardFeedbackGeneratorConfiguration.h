@@ -13,18 +13,16 @@
     double _slowTypingTime;
     double _fastTypingTime;
     double _fastTypingVolumeMultiplier;
-    double _slowTypingVolumeMultiplier;
     double _releaseThreshold;
 }
 
-+ (id)configuration3;
-+ (id)configuration2;
-+ (id)configuration1;
++ (id)descriptorsForVisceral:(long long)arg1 releaseThreshold:(double *)arg2;
++ (id)hapticConfigurationForVisceral:(long long)arg1;
++ (id)feedbacksWithDescriptors:(id)arg1;
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
 @property(nonatomic) double releaseThreshold; // @synthesize releaseThreshold=_releaseThreshold;
 @property(nonatomic) _Bool scalingForSpeedEnabled; // @synthesize scalingForSpeedEnabled=_scalingForSpeedEnabled;
-@property(nonatomic) double slowTypingVolumeMultiplier; // @synthesize slowTypingVolumeMultiplier=_slowTypingVolumeMultiplier;
 @property(nonatomic) double fastTypingVolumeMultiplier; // @synthesize fastTypingVolumeMultiplier=_fastTypingVolumeMultiplier;
 @property(nonatomic) double fastTypingTime; // @synthesize fastTypingTime=_fastTypingTime;
 @property(nonatomic) double slowTypingTime; // @synthesize slowTypingTime=_slowTypingTime;

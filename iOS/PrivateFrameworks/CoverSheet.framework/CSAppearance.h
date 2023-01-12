@@ -10,25 +10,21 @@
 #import <CoverSheet/CSAppearanceProviding-Protocol.h>
 #import <CoverSheet/NSCopying-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, UIColor, _UILegibilitySettings;
+@class NSMutableSet, NSSet, NSString, _UILegibilitySettings;
 
 @interface CSAppearance : NSObject <BSDescriptionProviding, CSAppearanceProviding, NSCopying>
 {
     NSMutableSet *_components;
     _Bool _transitional;
     NSString *_identifier;
-    long long _backgroundStyle;
     _UILegibilitySettings *_legibilitySettings;
-    UIColor *_backgroundColor;
 }
 
 + (id)appearanceForProvider:(id)arg1;
 + (id)appearanceWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(copy, nonatomic) NSSet *components; // @synthesize components=_components;
-@property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(nonatomic, getter=isTransitional) _Bool transitional; // @synthesize transitional=_transitional;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

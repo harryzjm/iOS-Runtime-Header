@@ -10,12 +10,17 @@
 {
 }
 
++ (id)extensionPointDefinitionEnumeratorWithSDKDictionary:(id)arg1;
++ (id)_extensionPointLiveEnumerator;
 + (id)extensionPointDefinitionEnumerator;
++ (id)_extensionLiveEnumerator;
++ (id)extensionURLEnumerator;
 + (id)extensionEnumerator;
 + (id)extensionInstallDirectoryURLs;
 + (id)extensionPointDefinitionDirectoryURLs;
++ (id)extensionPointCacheFileURLs;
 + (id)extensionCacheFileURLs;
-+ (id)overrideCacheURL;
++ (id)config;
 
 @end
 

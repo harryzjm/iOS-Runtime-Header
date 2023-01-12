@@ -65,6 +65,25 @@ struct ccdigest_info {
     CDUnknownFunctionPointerType _field8;
 };
 
+struct ccrng_state {
+    CDUnknownFunctionPointerType _field1;
+};
+
+struct ccspake_cp;
+
+struct ccspake_ctx {
+    struct ccspake_cp *_field1;
+    struct ccspake_mac *_field2;
+    struct ccrng_state *_field3;
+    _Bool _field4;
+    unsigned long long _field5;
+    char *_field6;
+    unsigned char _field7;
+    unsigned long long _field8[0];
+};
+
+struct ccspake_mac;
+
 #pragma mark Typedef'd Structures
 
 typedef struct {

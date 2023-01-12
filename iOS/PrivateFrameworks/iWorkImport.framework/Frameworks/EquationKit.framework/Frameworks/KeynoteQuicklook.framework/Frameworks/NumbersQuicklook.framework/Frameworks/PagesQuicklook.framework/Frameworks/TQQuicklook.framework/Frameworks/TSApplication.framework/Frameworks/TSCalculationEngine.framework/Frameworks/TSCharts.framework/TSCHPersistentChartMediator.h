@@ -13,15 +13,14 @@
 
 @interface TSCHPersistentChartMediator : TSPObject <TSCHNotifyOnModify, TSCHMediatorProvider>
 {
-    TSCHChartMediator *mMediator;
+    TSCHChartMediator *_mediator;
 }
 
 - (void).cxx_destruct;
-@property(readonly, retain, nonatomic) TSCHChartMediator *mediator; // @synthesize mediator=mMediator;
-- (void)dealloc;
+@property(readonly, retain, nonatomic) TSCHChartMediator *mediator; // @synthesize mediator=_mediator;
 - (id)initWithContext:(id)arg1 andMediator:(id)arg2;
-- (void)saveToArchive:(struct ChartMediatorArchive *)arg1;
-- (void)loadFromArchive:(const struct ChartMediatorArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (void)loadFromArchive:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

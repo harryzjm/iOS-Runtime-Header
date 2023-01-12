@@ -10,12 +10,14 @@
 }
 
 @property(readonly) CDStruct_e83c9415 range; // @synthesize range=_range;
+- (id)_evaluateVideoAttributes:(out id *)arg1;
 - (id)_evaluateVideoProperties:(out id *)arg1;
 - (id)_evaluateVideo:(out id *)arg1;
 - (id)_evaluateVideoComposition:(out id *)arg1;
 - (_Bool)requiresVideoComposition;
 - (id)_evaluateImage:(out id *)arg1;
 - (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (id)nodeByReplayingAgainstCache:(id)arg1 pipelineState:(id)arg2 error:(out id *)arg3;
 - (_Bool)shouldCacheNodeForPipelineState:(id)arg1;
 - (id)_transformWithError:(out id *)arg1;
 - (id)initWithSettings:(id)arg1 inputs:(id)arg2;

@@ -25,6 +25,7 @@
 - (void)_setVideoComposition:(id)arg1 customVideoCompositorSession:(id)arg2;
 - (void)_setVideoComposition:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *videoSettings;
+- (id)sampleDataTrackIDs;
 @property(readonly, nonatomic) NSArray *videoTracks;
 - (id)description;
 - (_Bool)alwaysCopiesSampleData;

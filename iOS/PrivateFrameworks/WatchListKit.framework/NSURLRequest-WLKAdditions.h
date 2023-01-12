@@ -7,6 +7,7 @@
 #import <CFNetwork/NSURLRequest.h>
 
 @interface NSURLRequest (WLKAdditions)
++ (id)wlk_requestWithURL:(id)arg1 httpMethod:(id)arg2 httpBody:(id)arg3 httpHeaders:(id)arg4 cachePolicy:(unsigned long long)arg5 timeout:(double)arg6;
 + (id)wlk_requestWithURL:(id)arg1 httpMethod:(id)arg2 httpHeaders:(id)arg3 cachePolicy:(unsigned long long)arg4 timeout:(double)arg5;
 @end
 

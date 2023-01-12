@@ -8,19 +8,21 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC26DocumentManagerExecutables29DOCSafeCenteringContainerView : UIView
 {
     MISSING_TYPE *scrollView;
     MISSING_TYPE *scrollContainerView;
     MISSING_TYPE *centeredContentView;
     MISSING_TYPE *scrollContainerViewMinHeightConstraint;
+    MISSING_TYPE *managedViewControllerObservedScrollView;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(nonatomic) struct CGRect frame;
 - (void)safeAreaInsetsDidChange;
+- (void)didMoveToSuperview;
+- (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 
 @end

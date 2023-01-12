@@ -6,29 +6,22 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class MNLocationProviderCLParameters, NSBundle, NSString;
+@class CLRegion, MNLocationProviderCLParameters, NSBundle, NSString;
 @protocol MNLocationProviderDelegate;
 
 @protocol MNLocationProvider <NSObject>
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) unsigned long long traceVersion;
 @property(readonly, nonatomic) _Bool isTracePlayer;
-@property(readonly, nonatomic) _Bool isSimulation;
-@property(readonly, nonatomic) _Bool usesCLMapCorrection;
 @property(readonly, nonatomic) _Bool coarseModeEnabled;
-@property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
-@property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property(nonatomic) int headingOrientation;
-@property(nonatomic) _Bool matchInfoEnabled;
-@property(nonatomic) double distanceFilter;
-@property(nonatomic, getter=isLocationServicesPreferencesDialogEnabled) _Bool locationServicesPreferencesDialogEnabled;
-@property(nonatomic) double desiredAccuracy;
+@property(readonly, nonatomic) _Bool isAuthorized;
 @property(copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property(retain, nonatomic) NSBundle *effectiveBundle;
 @property(nonatomic) __weak id <MNLocationProviderDelegate> delegate;
-- (void)requestWhenInUseAuthorizationWithPrompt;
-- (void)requestWhenInUseAuthorization;
+- (void)stopMonitoringForRegion:(CLRegion *)arg1;
+- (void)startMonitoringForRegion:(CLRegion *)arg1;
 - (void)resetForActiveTileGroupChanged;
 - (void)stopUpdatingVehicleHeading;
 - (void)startUpdatingVehicleHeading;

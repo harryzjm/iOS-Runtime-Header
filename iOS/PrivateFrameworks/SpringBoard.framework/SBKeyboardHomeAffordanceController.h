@@ -18,6 +18,7 @@
     NSHashTable *_assertions;
     SBHomeGrabberRotationView *_homeGrabberView;
     _Bool _isHomeGrabberContainingViewAlwaysPortrait;
+    _Bool _isKeyboardDocked;
     SBKeyboardHomeAffordanceAssertion *_topMostAssertion;
 }
 
@@ -32,6 +33,7 @@
 - (void)_updateTopMostAssertion;
 - (void)_updateHomeAffordance;
 - (void)_getHomeGrabberContainingView:(id *)arg1 isAlwaysPortrait:(_Bool *)arg2;
+- (void)_didChangeKeyboardDocked:(id)arg1;
 - (void)_didChangeAdditionalEdgeMarginForAssertion:(id)arg1;
 - (void)unregisterAssertion:(id)arg1;
 - (void)registerAssertion:(id)arg1;

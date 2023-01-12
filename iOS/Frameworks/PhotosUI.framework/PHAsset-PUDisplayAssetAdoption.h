@@ -15,6 +15,8 @@
 + (long long)_pu_mediaTypeForAssets:(id)arg1;
 + (long long)pu_commonMediaTypeForPhotoCount:(long long)arg1 videoCount:(long long)arg2 otherCount:(long long)arg3;
 + (id)pu_typeStringForAssets:(id)arg1;
+@property(readonly, nonatomic) _Bool hasSyndicationInformation;
+@property(readonly, copy, nonatomic) NSString *accessibilityDescription;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 @property(readonly, nonatomic) unsigned long long deferredLogInfo;
 @property(readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;
@@ -23,6 +25,7 @@
 @property(readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) _Bool cloudPhotoLibraryEnabled;
 @property(readonly, nonatomic, getter=isResourceDownloadPossible) _Bool resourceDownloadPossible;
 @property(readonly, nonatomic) unsigned long long originalFilesize;
+@property(readonly, nonatomic) _Bool containsAllMetadata;
 @property(readonly, nonatomic) int originalEXIFOrientation;
 @property(readonly, nonatomic) NSDictionary *imageProperties;
 @property(readonly, nonatomic) PFVideoAVObjectBuilder *videoObjectBuilder;
@@ -37,6 +40,7 @@
 @property(readonly, nonatomic) CDStruct_1b6d18a9 photoIrisVideoDuration;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 photoIrisStillDisplayTime;
 @property(readonly, nonatomic, getter=isLivePhoto) _Bool livePhoto;
+- (unsigned long long)contentChangeFromDisplayAsset:(id)arg1;
 - (unsigned long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) _Bool isTemporaryPlaceholder;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
@@ -55,6 +59,7 @@
 @property(readonly, nonatomic) _Bool hasPhotoColorAdjustments;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden;
+@property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) _Bool isPhotoIrisPlaceholder;
 @property(readonly, nonatomic) NSDate *localCreationDate;
 @property(readonly, nonatomic) CLLocation *location;

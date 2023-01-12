@@ -25,6 +25,7 @@
     _Bool _hasDisplayedLeaveByMessage;
     _Bool _hasDisplayedLeaveNowMessage;
     _Bool _hasDisplayedRunningLateMessage;
+    long long _triggerType;
     NSString *_publisherBulletinID;
     NSString *_title;
     NSString *_location;
@@ -45,7 +46,6 @@
     EKTravelEngineHypothesis *_latestHypothesis;
     NSDate *_lastFireTimeOfAlertOffsetFromTravelTime;
     NSDate *_lastTimeBulletinAdded;
-    NSURL *_conferenceURL;
     unsigned long long _currentRouteHypothesizerNotificationType;
     NSDate *_fireDate;
     struct CLLocationCoordinate2D _geoLocationCoordinates;
@@ -58,7 +58,6 @@
 @property(nonatomic) _Bool hasDisplayedLeaveNowMessage; // @synthesize hasDisplayedLeaveNowMessage=_hasDisplayedLeaveNowMessage;
 @property(nonatomic) _Bool hasDisplayedLeaveByMessage; // @synthesize hasDisplayedLeaveByMessage=_hasDisplayedLeaveByMessage;
 @property(nonatomic) _Bool isOnSharedCalendar; // @synthesize isOnSharedCalendar=_isOnSharedCalendar;
-@property(retain, nonatomic) NSURL *conferenceURL; // @synthesize conferenceURL=_conferenceURL;
 @property(nonatomic) _Bool isSuggestedLocation; // @synthesize isSuggestedLocation=_isSuggestedLocation;
 @property(retain, nonatomic) NSDate *lastTimeBulletinAdded; // @synthesize lastTimeBulletinAdded=_lastTimeBulletinAdded;
 @property(retain, nonatomic) NSDate *lastFireTimeOfAlertOffsetFromTravelTime; // @synthesize lastFireTimeOfAlertOffsetFromTravelTime=_lastFireTimeOfAlertOffsetFromTravelTime;
@@ -89,6 +88,7 @@
 @property(readonly, nonatomic) NSString *location; // @synthesize location=_location;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
+@property(nonatomic) long long triggerType; // @synthesize triggerType=_triggerType;
 - (void)resetTimeToLeaveDisplayState;
 @property(readonly, nonatomic) _Bool isPurelyATimeToLeaveAlert;
 @property(readonly, nonatomic) NSString *recordID;

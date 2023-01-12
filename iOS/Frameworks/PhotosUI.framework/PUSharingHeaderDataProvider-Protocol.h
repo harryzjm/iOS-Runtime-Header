@@ -6,7 +6,7 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSOrderedSet, NSString;
+@class NSOrderedSet, NSString, PHPerson;
 @protocol PXDisplayAsset;
 
 @protocol PUSharingHeaderDataProvider <NSObject>
@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) _Bool isActionSheet;
 @property(readonly, nonatomic) struct PXAssetMediaTypeCount assetTypeCount;
 @property(readonly, copy, nonatomic) NSOrderedSet *orderedSelectedAssets;
+@property(readonly, nonatomic) PHPerson *person;
 @property(readonly, copy, nonatomic) id <PXDisplayAsset> keyAsset;
 @property(readonly, nonatomic) long long sourceOrigin;
 @property(readonly, nonatomic) NSString *localizedSubtitle;

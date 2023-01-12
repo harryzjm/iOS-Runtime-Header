@@ -6,15 +6,25 @@
 
 #import <CameraEditKit/CEKApertureButton.h>
 
+#import <PhotosUI/UIPointerInteractionDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface PUPhotoEditApertureButton : CEKApertureButton
+@interface PUPhotoEditApertureButton : CEKApertureButton <UIPointerInteractionDelegate>
 {
 }
 
-+ (_Bool)_cursorInteractionEnabled;
 - (struct CGRect)_pointerRect;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

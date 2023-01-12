@@ -19,10 +19,12 @@
     PXPeopleStripCollectionViewCell *_preloadedCell;
 }
 
++ (id)_formattedPeopleForMember:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PXPeopleStripCollectionViewCell *preloadedCell; // @synthesize preloadedCell=_preloadedCell;
 @property(nonatomic) __weak PXPeopleDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <PXPeopleStripCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (struct CGPoint)collectionView:(id)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

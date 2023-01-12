@@ -8,11 +8,14 @@
 
 @interface SBAppClipPlaceholderWorkspaceEntity
 {
+    _Bool _needsUpdate;
     NSString *_bundleIdentifier;
     NSString *_futureSceneIdentifier;
 }
 
++ (_Bool)isAppClipUpdateAvailableForBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property(readonly, copy, nonatomic) NSString *futureSceneIdentifier; // @synthesize futureSceneIdentifier=_futureSceneIdentifier;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -25,7 +28,7 @@
 - (_Bool)wantsExclusiveForeground;
 - (_Bool)supportsPresentationAtAnySize;
 - (_Bool)_supportsLayoutRole:(long long)arg1;
-- (id)initWithBundleIdentifier:(id)arg1 futureSceneIdentifier:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 futureSceneIdentifier:(id)arg2 needsUpdate:(_Bool)arg3;
 
 @end
 

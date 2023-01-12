@@ -12,7 +12,11 @@
 
 @interface HDAWDHealthKitCoachingEvent : PBCodable <NSCopying>
 {
-    CDStruct_9f2792e4 _goalTypes;
+    struct {
+        unsigned int *list;
+        unsigned long long count;
+        unsigned long long size;
+    } _goalTypes;
     unsigned long long _duration;
     unsigned long long _eventTimestamp;
     unsigned long long _timestamp;

@@ -8,11 +8,12 @@
 
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 
-@class PPContactStorage;
+@class PPContactStorage, PPLocalNamedEntityStore;
 
 @interface PPLocalContactStore : NSObject <PPFeedbackAccepting>
 {
     PPContactStorage *_contactStorage;
+    PPLocalNamedEntityStore *_namedEntityStore;
 }
 
 + (id)defaultStore;
@@ -20,6 +21,8 @@
 - (_Bool)chineseBirthdayFound;
 - (void)clearChangeHistoryForClient:(id)arg1 historyResult:(id)arg2;
 - (id)contactsChangeHistoryForClient:(id)arg1 error:(id *)arg2;
+- (void)rebuildCachedSignificantContactHandlesWithShouldContinue:(CDUnknownBlockType)arg1;
+- (id)cachedSignificantContactHandles;
 - (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)contactNameRecordChangesForClient:(id)arg1 error:(id *)arg2;
 - (_Bool)iterContactNameRecordsForClient:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
@@ -29,10 +32,15 @@
 - (id)scoredContactsWithContacts:(id)arg1;
 - (id)contactsWithQuery:(id)arg1 explanationSet:(id)arg2 timeoutSeconds:(id)arg3 error:(id *)arg4;
 - (id)contactsWithQuery:(id)arg1 error:(id *)arg2;
+- (id)upcomingRelevantContactsForQuery:(id)arg1 error:(id *)arg2;
+- (id)resolveContactsForNamedEntities:(id)arg1;
+- (id)_scoredContactFromContactsRecord:(id)arg1 score:(double)arg2;
+- (id)_incompleteContactFromContactsRecord:(id)arg1;
+- (double)similarityForNamedEntity:(id)arg1 nameRecord:(id)arg2;
 - (id)rankedContactsWithQuery:(id)arg1 error:(id *)arg2;
 - (id)meCard;
 - (id)init;
-- (id)initWithStorage:(id)arg1;
+- (id)initWithStorage:(id)arg1 namedEntityStoreOverride:(id)arg2;
 
 @end
 

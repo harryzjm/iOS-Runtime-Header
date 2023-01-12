@@ -11,7 +11,6 @@
 }
 
 + (id)wrapDOMRange:(id)arg1;
-+ (void)_handleWebKitLegacyInstallation;
 + (void)_accessibilityInitializeSubclassRuntimeOverrides;
 + (id)sharedGlueObjectIfAvailable;
 

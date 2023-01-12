@@ -30,7 +30,7 @@
 @property(retain, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 @property(readonly, nonatomic) AVAsset *_asset; // @synthesize _asset;
-- (_Bool)_shouldEncodeData;
+- (_Bool)_isSubstitute;
 - (void)_mapDataFromFileURL;
 @property(readonly, copy, nonatomic) LPAudioProperties *properties;
 @property(readonly, copy, nonatomic) NSData *data;

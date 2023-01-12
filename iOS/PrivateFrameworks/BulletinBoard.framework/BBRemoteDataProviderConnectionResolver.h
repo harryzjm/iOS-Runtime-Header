@@ -37,7 +37,7 @@
 - (void)performBlockOnDataProviders:(CDUnknownBlockType)arg1;
 - (void)loadAllDataProviders;
 - (void)removeDataProvider:(id)arg1;
-- (id)dataProviderForUniversalSectionID:(id)arg1;
+- (id)dataProvidersForUniversalSectionID:(id)arg1;
 - (id)dataProviderForSectionID:(id)arg1;
 - (void)wakeService:(id)arg1 bundleID:(id)arg2;
 - (void)remoteDataProviderNeedsToWakeClient:(id)arg1;

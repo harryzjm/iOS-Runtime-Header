@@ -13,7 +13,6 @@
     unsigned long long _recordingEventTriggers;
 }
 
-+ (id)uuid;
 @property(readonly) unsigned long long recordingEventTriggers; // @synthesize recordingEventTriggers=_recordingEventTriggers;
 - (id)attributeDescriptions;
 - (id)initWithSessionID:(id)arg1 cameraID:(id)arg2 sequenceNumber:(unsigned long long)arg3 recordingEventTriggers:(unsigned long long)arg4;

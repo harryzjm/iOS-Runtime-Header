@@ -6,8 +6,8 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPaletteColorPickerControllerDelegate-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
 #import <PencilKit/PKPaletteViewSizeScaling-Protocol.h>
 #import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
@@ -15,7 +15,7 @@
 @class NSLayoutConstraint, NSString, PKPaletteToolView, UIColor, UILayoutGuide;
 @protocol PKPaletteColorPickerController, PKPalettePopoverPresenting><PKPaletteToolPreviewDelegate;
 
-@interface PKPaletteToolPreview : UIView <UIPopoverPresentationControllerDelegate, PKPaletteColorPickerControllerDelegate, PKEdgeLocatable, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
+@interface PKPaletteToolPreview : UIView <UIPopoverPresentationControllerDelegate, PKPaletteColorPickerControllerDelegate, PKPaletteEdgeLocating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
 {
     _Bool _toolViewVisible;
     unsigned long long _edgeLocation;
@@ -65,6 +65,7 @@
 - (void)_replaceCurrentToolWithToolWithIdentifier:(id)arg1;
 - (void)_updateLayoutGuideConstraints;
 - (void)_animateToolViewToVisible:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)flashAlternatePreviewView:(id)arg1;
 - (void)showPreviewForTool:(id)arg1 animated:(_Bool)arg2;
 - (void)_updateUI;
 - (id)initWithFrame:(struct CGRect)arg1;

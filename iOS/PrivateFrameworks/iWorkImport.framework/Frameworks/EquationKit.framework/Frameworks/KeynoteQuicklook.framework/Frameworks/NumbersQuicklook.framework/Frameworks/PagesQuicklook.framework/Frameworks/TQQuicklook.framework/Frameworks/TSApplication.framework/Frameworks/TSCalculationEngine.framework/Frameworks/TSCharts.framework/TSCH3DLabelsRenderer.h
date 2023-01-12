@@ -10,35 +10,36 @@
 
 @interface TSCH3DLabelsRenderer : NSObject
 {
-    TSCH3DResource *mLabelQuad;
-    TSCH3DResource *mLabelTexcoordQuad;
-    _Bool mUseLabelBounds;
-    TSCH3DLabelResource *mLabel;
-    TSCH3DLabelResources *mResources;
-    TSCH3DSceneRenderPipeline *mPipeline;
-    TSCH3DCamera *mLabelCamera;
-    struct LabelRenderInfo mInfo;
-    TSCH3DDataBufferResource *mMesh;
-    TSCH3DLabelsMeshRenderer *mMeshRenderer;
-    TSCH3DLabelsRendererTransforms *mTransforms;
+    TSCH3DResource *_labelQuad;
+    TSCH3DResource *_labelTexcoordQuad;
+    _Bool _useLabelBounds;
+    TSCH3DLabelResource *_label;
+    TSCH3DLabelResources *_resources;
+    TSCH3DSceneRenderPipeline *_pipeline;
+    TSCH3DCamera *_labelCamera;
+    struct LabelRenderInfo _info;
+    TSCH3DDataBufferResource *_mesh;
+    TSCH3DLabelsMeshRenderer *_meshRenderer;
+    TSCH3DLabelsRendererTransforms *_transforms;
 }
 
 + (id)renderer;
 + (id)renderCacheKey;
 - (id).cxx_construct;
-@property(readonly, nonatomic) TSCH3DCamera *labelCamera; // @synthesize labelCamera=mLabelCamera;
-@property(retain, nonatomic) TSCH3DDataBufferResource *mesh; // @synthesize mesh=mMesh;
-@property(readonly, nonatomic) struct LabelRenderInfo renderInfo; // @synthesize renderInfo=mInfo;
-@property(retain, nonatomic) TSCH3DLabelsMeshRenderer *meshRenderer; // @synthesize meshRenderer=mMeshRenderer;
-@property(retain, nonatomic) TSCH3DSceneRenderPipeline *pipeline; // @synthesize pipeline=mPipeline;
-@property(retain, nonatomic) TSCH3DLabelResources *resources; // @synthesize resources=mResources;
-@property(retain, nonatomic) TSCH3DLabelResource *label; // @synthesize label=mLabel;
-@property(nonatomic) _Bool useLabelBounds; // @synthesize useLabelBounds=mUseLabelBounds;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DCamera *labelCamera; // @synthesize labelCamera=_labelCamera;
+@property(retain, nonatomic) TSCH3DDataBufferResource *mesh; // @synthesize mesh=_mesh;
+@property(readonly, nonatomic) struct LabelRenderInfo renderInfo; // @synthesize renderInfo=_info;
+@property(retain, nonatomic) TSCH3DLabelsMeshRenderer *meshRenderer; // @synthesize meshRenderer=_meshRenderer;
+@property(retain, nonatomic) TSCH3DSceneRenderPipeline *pipeline; // @synthesize pipeline=_pipeline;
+@property(retain, nonatomic) TSCH3DLabelResources *resources; // @synthesize resources=_resources;
+@property(retain, nonatomic) TSCH3DLabelResource *label; // @synthesize label=_label;
+@property(nonatomic) _Bool useLabelBounds; // @synthesize useLabelBounds=_useLabelBounds;
 - (void)delegateDidSubmitLabel;
-- (void)renderAtPosition:(const tvec3_17f03ce0 *)arg1 offset:(const tvec3_17f03ce0 *)arg2 alignment:(unsigned int)arg3 offset2D:(const tvec2_84d5962d *)arg4 rotation:(float)arg5 externalAttribute:(id)arg6;
-- (void)prepareCachedIndex:(const tvec2_3b141483 *)arg1 string:(id)arg2 alignmentPadding:(const tvec2_84d5962d *)arg3 width:(double)arg4 bitmapContextInfo:(id)arg5;
+- (void)renderAtPosition:(const void *)arg1 offset:(const void *)arg2 alignment:(unsigned int)arg3 offset2D:(const void *)arg4 rotation:(float)arg5 externalAttribute:(id)arg6;
+- (void)prepareCachedIndex:(const void *)arg1 string:(id)arg2 alignmentPadding:(const void *)arg3 width:(double)arg4 bitmapContextInfo:(id)arg5;
 - (void)endResources;
-- (_Bool)beginResources:(id)arg1 expectedSize:(tvec2_3b141483 *)arg2;
+- (_Bool)beginResources:(id)arg1 expectedSize:(void *)arg2;
 - (void)postrender:(id)arg1;
 - (void)prerender:(id)arg1;
 - (id)labelQuad;
@@ -49,8 +50,8 @@
 - (id)p_renderCacheFromScene:(id)arg1 created:(_Bool *)arg2 createIfAbsent:(_Bool)arg3;
 - (id)p_renderCacheID;
 - (id)p_renderCacheKey;
-- (const tmat4x4_3074befe *)unitToWorld;
-- (const tmat4x4_3074befe *)worldToStage;
+- (const void *)unitToWorld;
+- (const void *)worldToStage;
 - (void)dealloc;
 - (id)init;
 

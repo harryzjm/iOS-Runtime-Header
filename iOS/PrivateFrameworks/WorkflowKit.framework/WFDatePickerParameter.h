@@ -20,7 +20,7 @@
 @property(retain, nonatomic) NSDate *minimumDate; // @synthesize minimumDate=_minimumDate;
 @property(nonatomic) long long datePickerMode; // @synthesize datePickerMode=_datePickerMode;
 - (id)parameterStateFromDialogResponse:(id)arg1;
-- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)createDialogRequestWithAttribution:(id)arg1 defaultState:(id)arg2 prompt:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)defaultSupportedVariableTypes;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;

@@ -8,12 +8,13 @@
 
 #import <Preferences/PSHeaderFooterView-Protocol.h>
 
-@class NSLayoutConstraint, UILabel;
+@class NSLayoutConstraint, UILabel, UIStackView;
 
 @interface PSUsageSizeHeader : UITableViewHeaderFooterView <PSHeaderFooterView>
 {
     UILabel *_sizeLabel;
     UILabel *_titleLabel;
+    UIStackView *__internalStackView;
     NSLayoutConstraint *_labelLeadingConstraint;
     NSLayoutConstraint *_labelTrailingConstraint;
 }
@@ -21,6 +22,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *labelTrailingConstraint; // @synthesize labelTrailingConstraint=_labelTrailingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *labelLeadingConstraint; // @synthesize labelLeadingConstraint=_labelLeadingConstraint;
+@property(retain, nonatomic) UIStackView *_internalStackView; // @synthesize _internalStackView=__internalStackView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UILabel *sizeLabel; // @synthesize sizeLabel=_sizeLabel;
 - (void)updateConstraints;
@@ -28,7 +30,7 @@
 - (double)preferredHeightForWidth:(double)arg1 inTableView:(id)arg2;
 - (void)setSizeLabelHidden:(_Bool)arg1;
 - (void)setSize:(id)arg1;
-- (void)setupConstraints;
+- (void)_setupSubviewsAndConstraints;
 - (id)initWithSpecifier:(id)arg1;
 
 @end

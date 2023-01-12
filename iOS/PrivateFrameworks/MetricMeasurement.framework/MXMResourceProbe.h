@@ -28,7 +28,7 @@
 - (void)_beginUpdates;
 - (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 mach_space_basicinfo:(struct ipc_info_space_basic *)arg3;
 - (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 taskinfo:(struct proc_taskinfo *)arg3;
-- (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 rusage_v4:(struct rusage_info_v4 *)arg3;
+- (void)_buildData:(id)arg1 timestamp:(unsigned long long)arg2 rusage:(struct rusage_info_v5 *)arg3;
 - (id)init;
 
 @end

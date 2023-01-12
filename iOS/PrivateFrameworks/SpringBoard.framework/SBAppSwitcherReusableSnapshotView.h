@@ -15,8 +15,10 @@
 {
     SBOrientationTransformWrapperView *_firstOrientationWrapper;
     SBOrientationTransformWrapperView *_secondOrientationWrapper;
+    SBOrientationTransformWrapperView *_thirdOrientationWrapper;
     SBSwitcherSnapshotImageView *_firstImageView;
     SBSwitcherSnapshotImageView *_secondImageView;
+    SBSwitcherSnapshotImageView *_thirdImageView;
     UIViewController *_containerViewController;
     id <SBAppSwitcherReusableSnapshotViewDelegate> _delegate;
     NSMutableDictionary *_snapshotViewStateByRole;
@@ -31,6 +33,8 @@
     SBMedusaSettings *_medusaSettings;
     _Bool _shouldUseBrightMaterial;
     _Bool _showingIconOverlayView;
+    _Bool _shouldStretchToBounds;
+    _Bool _usesNonuniformScaling;
     NSMutableArray *_deferredSnapshotCrossfadeQueue;
     _Bool _active;
     _Bool _visible;
@@ -49,10 +53,13 @@
 - (void)_addOverlayViewController:(id)arg1 toOrientationWrapperForRole:(long long)arg2;
 - (void)_updateContentOrientationForRole:(long long)arg1;
 - (void)_updateDivider;
-- (void)_updateTranslucency;
-- (long long)_contentOrientationForSnapshotOrientation:(long long)arg1;
-- (void)_performDeferredSnapshotUpdatesIfNecessaryForRole:(long long)arg1;
+- (void)setWallpaperStyle:(long long)arg1;
+- (id)_allImageViews;
 @property(readonly, nonatomic) _Bool contentRequiresGroupOpacity;
+- (void)_updateTranslucency;
+- (long long)_contentOrientationForSnapshotCacheEntry:(id)arg1;
+- (void)_performDeferredSnapshotUpdatesIfNecessaryForRole:(long long)arg1;
+- (_Bool)_isSnapshotSuspendSnapshot:(id)arg1;
 - (void)_updateToNewSnapshotImageUsingCacheEntry:(id)arg1;
 - (void)_requestFreshImages;
 - (struct CGRect)_frameInLayoutSpaceForRole:(long long)arg1 inAppLayout:(id)arg2 inOrientation:(long long)arg3;
@@ -71,6 +78,9 @@
 - (id)_sceneHandleForRole:(long long)arg1;
 - (void)_handleInstalledAppsChanged:(id)arg1;
 - (void)didUpdateCacheEntry:(id)arg1;
+- (void)_updateCornerRadius;
+- (void)setUsesNonuniformScaling:(_Bool)arg1;
+- (void)setShouldStretchToBounds:(_Bool)arg1;
 - (_Bool)hasSceneOverlayView;
 - (void)setShowingIconOverlayView:(_Bool)arg1;
 - (void)invalidate;
@@ -79,13 +89,14 @@
 - (struct CGRect)_frameForBackstopLayer;
 - (void)_updateSceneHandleForRole:(long long)arg1;
 @property(nonatomic) long long orientation;
-@property(nonatomic) double cornerRadius;
 @property(readonly, copy) NSString *description;
 - (id)initWithDelegate:(id)arg1 snapshotCache:(id)arg2 lockoutVCProvider:(id)arg3 appClipOverlayCoordinator:(id)arg4 containerViewController:(id)arg5;
 
 // Remaining properties
+@property(nonatomic) double cornerRadius;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) unsigned long long maskedCorners;
 @property(readonly) Class superclass;
 
 @end

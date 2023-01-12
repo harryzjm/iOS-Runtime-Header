@@ -21,6 +21,7 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (id)modelObjectForIndex:(long long)arg1;
 @property(readonly, nonatomic) long long action;
+- (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) unsigned long long numberOfItems;
 @property(readonly, nonatomic) _Bool hasMoreDetails;

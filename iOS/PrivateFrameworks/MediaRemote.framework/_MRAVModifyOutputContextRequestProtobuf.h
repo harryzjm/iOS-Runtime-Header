@@ -10,9 +10,13 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface _MRAVModifyOutputContextRequestProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_addingOutputDeviceUIDs;
+    NSMutableArray *_clusterAwareAddingOutputDeviceUIDs;
+    NSMutableArray *_clusterAwareRemovingOutputDeviceUIDs;
+    NSMutableArray *_clusterAwareSettingOutputDeviceUIDs;
     int _outputContextType;
     NSMutableArray *_removingOutputDeviceUIDs;
     NSMutableArray *_settingOutputDeviceUIDs;
@@ -21,38 +25,14 @@
     } _has;
 }
 
-+ (Class)settingOutputDeviceUIDType;
-+ (Class)removingOutputDeviceUIDType;
-+ (Class)addingOutputDeviceUIDType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *settingOutputDeviceUIDs; // @synthesize settingOutputDeviceUIDs=_settingOutputDeviceUIDs;
-@property(retain, nonatomic) NSMutableArray *removingOutputDeviceUIDs; // @synthesize removingOutputDeviceUIDs=_removingOutputDeviceUIDs;
-@property(retain, nonatomic) NSMutableArray *addingOutputDeviceUIDs; // @synthesize addingOutputDeviceUIDs=_addingOutputDeviceUIDs;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)settingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
-- (unsigned long long)settingOutputDeviceUIDsCount;
-- (void)addSettingOutputDeviceUID:(id)arg1;
-- (void)clearSettingOutputDeviceUIDs;
-- (id)removingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
-- (unsigned long long)removingOutputDeviceUIDsCount;
-- (void)addRemovingOutputDeviceUID:(id)arg1;
-- (void)clearRemovingOutputDeviceUIDs;
-- (id)addingOutputDeviceUIDAtIndex:(unsigned long long)arg1;
-- (unsigned long long)addingOutputDeviceUIDsCount;
-- (void)addAddingOutputDeviceUID:(id)arg1;
-- (void)clearAddingOutputDeviceUIDs;
-- (int)StringAsOutputContextType:(id)arg1;
-- (id)outputContextTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasOutputContextType;
-@property(nonatomic) int outputContextType; // @synthesize outputContextType=_outputContextType;
 
 @end
 

@@ -9,7 +9,6 @@
 @class NSMutableDictionary, NSUserDefaults;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDTapToRadarManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_alertQueue;

@@ -19,8 +19,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSCHChartDrawableInfo *chart; // @synthesize chart=_chart;
 @property(readonly, nonatomic) struct TSCERangeRef reference; // @synthesize reference=_reference;
-- (void)saveToArchive:(struct ChartSelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initFromArchive:(const struct ChartSelectionArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)returnChartFrameForAutoscroll;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

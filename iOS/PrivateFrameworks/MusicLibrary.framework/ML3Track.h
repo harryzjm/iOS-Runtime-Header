@@ -71,7 +71,6 @@
 + (id)flattenedChapterDataWithImportChapters:(id)arg1 library:(id)arg2 trackPersistentID:(long long)arg3;
 + (id)_normalizedImportChapters:(id)arg1 trackPersistentID:(long long)arg2;
 - (void)updateStoreBookmarkMetadataIdentifier;
-- (id)computeSHA256OfAudioPacketDataInLocalAsset;
 - (void)updateCollectionCloudStatus;
 - (id)artworkTokenAtPlaybackTime:(double)arg1;
 - (id)chapterTOC;

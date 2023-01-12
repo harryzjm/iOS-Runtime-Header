@@ -66,12 +66,15 @@
 - (void)_rpc_forwardSocketSetup:(id)arg1;
 - (void)_rpc_forwardDidClose:(id)arg1;
 - (void)_rpc_forwardIndicateWebView:(id)arg1;
+- (void)_rpc_forwardWakeUpDebuggables:(id)arg1;
 - (void)_rpc_forwardGetListing:(id)arg1;
 - (void)_rpc_getConnectedApplications:(id)arg1;
 - (void)_rpc_reportIdentifier:(id)arg1;
 - (void)_reportCurrentStateToClient:(id)arg1;
 - (void)_reportCurrentStateToAllClients;
-- (void)_developerPreferencesChanged;
+- (void)_handleDumpStateNotification;
+- (void)_dumpApplication:(id)arg1 withOrdinal:(unsigned long long)arg2;
+- (void)_dumpClientConnection:(id)arg1 withOrdinal:(unsigned long long)arg2;
 - (void)_setAutomaticInspectionGlobalState:(_Bool)arg1;
 - (id)_allDriverDetails;
 - (id)_allApplicationDetails;

@@ -14,6 +14,7 @@
 }
 
 + (id)defaultWorkspace;
+- (void).cxx_destruct;
 @property(retain, nonatomic) LSApplicationWorkspace *lsWorkspace; // @synthesize lsWorkspace=_lsWorkspace;
 - (id)gameDescriptorsWithInstalledBundleVersionsForGameDescriptors:(id)arg1;
 - (id)gameDescriptorsWithInstalledBundleVersionsForBundleIDs:(id)arg1;
@@ -23,7 +24,6 @@
 - (void)openICloudSettings;
 - (void)openSettings;
 - (id)applicationProxyForBundleID:(id)arg1;
-- (void)dealloc;
 - (id)initWithWorkspace:(id)arg1;
 
 @end

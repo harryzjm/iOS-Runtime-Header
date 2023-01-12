@@ -9,7 +9,7 @@
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 #import <CarPlay/CPTemplateServiceClientInterface-Protocol.h>
 
-@class CPTemplate, CPWindow, NSArray, NSMutableArray, NSString, NSXPCConnection, UITraitCollection;
+@class CPTemplate, CPWindow, NSArray, NSMapTable, NSMutableArray, NSString, NSXPCConnection, UITraitCollection;
 @protocol CPInterfaceControllerDelegate, CPTemplateProviding, CPWindowProviding;
 
 @interface CPInterfaceController : NSObject <CPTemplateDelegate, CPTemplateServiceClientInterface>
@@ -22,6 +22,7 @@
     NSMutableArray *_templateStack;
     CPTemplate *_presentedTemplate;
     CPTemplate *_lastPresentedTemplate;
+    NSMapTable *_templateMapTable;
     CPWindow *_carWindow;
     id <CPWindowProviding> _windowProvider;
 }
@@ -32,6 +33,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <CPWindowProviding> windowProvider; // @synthesize windowProvider=_windowProvider;
 @property(retain, nonatomic) CPWindow *carWindow; // @synthesize carWindow=_carWindow;
+@property(retain, nonatomic) NSMapTable *templateMapTable; // @synthesize templateMapTable=_templateMapTable;
 @property(retain, nonatomic) CPTemplate *lastPresentedTemplate; // @synthesize lastPresentedTemplate=_lastPresentedTemplate;
 @property(retain, nonatomic) CPTemplate *presentedTemplate; // @synthesize presentedTemplate=_presentedTemplate;
 @property(retain, nonatomic) NSMutableArray *templateStack; // @synthesize templateStack=_templateStack;
@@ -50,15 +52,17 @@
 - (void)clientExceededTabBarTabLimit;
 - (void)clientPushedIllegalTemplateOfClass:(id)arg1;
 - (void)clientExceededHierarchyDepthLimit;
+- (void)clientAssistantCellUnavailableWithError:(id)arg1;
 - (void)clientPushNowPlayingTemplateAnimated:(_Bool)arg1;
 - (void)updateInterestingLayoutGuideWithInsets:(struct UIEdgeInsets)arg1;
 - (_Bool)isCarPlayCanvasActive;
-- (void)templateDidDismiss:(id)arg1;
-- (void)templateDidDisappear:(id)arg1 animated:(_Bool)arg2;
-- (void)templateWillDisappear:(id)arg1 animated:(_Bool)arg2;
-- (void)templateDidAppear:(id)arg1 animated:(_Bool)arg2;
-- (void)templateWillAppear:(id)arg1 animated:(_Bool)arg2;
+- (void)templateDidDismissWithIdentifier:(id)arg1;
+- (void)templateDidDisappearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)templateWillDisappearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)templateDidAppearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)templateWillAppearWithIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)handleActionForControlIdentifier:(id)arg1;
+- (id)_templateWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) UITraitCollection *carTraitCollection;
 - (id)_synchronousTemplateProvider;
 - (id)_listenerEndpointForSettings:(id)arg1;

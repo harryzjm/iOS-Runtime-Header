@@ -6,42 +6,52 @@
 
 #import <UIKit/UIControl.h>
 
-#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
+#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
 
-@class CCUICAPackageView, MTVisualStylingProvider, NSString, UILabel;
+@class CCUICAPackageView, MRUShadowView, MRUVisualStylingProvider, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsRoundButton : UIControl <MTVisualStylingProviderObservingPrivate>
+@interface MediaControlsRoundButton : UIControl <MRUVisualStylingProviderObserver>
 {
     _Bool _labelHidden;
     NSString *_title;
     NSString *_packageName;
     NSString *_glyphState;
-    MTVisualStylingProvider *_visualStylingProvider;
+    MRUVisualStylingProvider *_stylingProvider;
     long long _axis;
     CCUICAPackageView *_packageView;
     UILabel *_titleLabel;
+    MRUShadowView *_shadowView;
+    struct CGSize _imageSize;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) MRUShadowView *shadowView; // @synthesize shadowView=_shadowView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
 @property(nonatomic, getter=isLabelHidden) _Bool labelHidden; // @synthesize labelHidden=_labelHidden;
+@property(nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property(nonatomic) long long axis; // @synthesize axis=_axis;
-@property(retain, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
+@property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(copy, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
 @property(copy, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (void)_contentSizeCategoryDidChange;
-- (void)_updatePackageColors;
-- (void)_updateLabelVisualStyling;
-- (void)providedStylesDidChangeForProvider:(id)arg1;
+- (void)updateContentSizeCategory;
+- (void)updatePackageVisualStyling;
+- (void)updateLabelVisualStyling;
+- (void)visualStylingProviderDidChange:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (unsigned long long)accessibilityTraits;
+- (struct CGRect)accessibilityFrame;
+- (_Bool)isAccessibilityElement;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)controlCenterApplyPrimaryContentShadow;
+- (void)setEnabled:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 @property(readonly, nonatomic) struct CGRect imageFrame;
+- (void)traitCollectionDidChange:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

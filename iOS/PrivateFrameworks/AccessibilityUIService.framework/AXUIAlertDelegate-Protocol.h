@@ -6,12 +6,13 @@
 
 #import <AccessibilityUIService/NSObject-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 @protocol AXUIAlertStyleProvider;
 
 @protocol AXUIAlertDelegate <NSObject>
 
 @optional
+- (void)alertWithIdentifierWasActivated:(NSString *)arg1 userInfo:(NSDictionary *)arg2;
 - (void)alertWithIdentifierWasActivated:(NSString *)arg1;
 - (void)alertWithIdentifierDidDisappear:(NSString *)arg1;
 - (void)alertWithIdentifierDidAppear:(NSString *)arg1;

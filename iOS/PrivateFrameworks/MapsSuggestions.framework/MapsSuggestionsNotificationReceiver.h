@@ -8,7 +8,7 @@
 
 @interface MapsSuggestionsNotificationReceiver : NSObject
 {
-    struct unique_ptr<MSg::NotificationReceiver, std::__1::default_delete<MSg::NotificationReceiver>> _receiver;
+    struct unique_ptr<MSg::NotificationReceiver, std::default_delete<MSg::NotificationReceiver>> _receiver;
 }
 
 - (id).cxx_construct;

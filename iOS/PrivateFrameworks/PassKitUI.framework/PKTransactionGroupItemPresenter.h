@@ -8,7 +8,8 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSCache, NSDateFormatter, NSString, PKMapsSnapshotManager, PKPaymentTransactionCollectionViewCell, PKPaymentTransactionIconGenerator, PKPeerPaymentContactResolver, UIFont, UIImage;
+@class NSCache, NSDateFormatter, NSString, PKContactAvatarManager, PKContactResolver, PKMapsSnapshotManager, PKPaymentTransactionCollectionViewCell, PKPaymentTransactionIconGenerator, UIFont, UIImage;
+@protocol PKPaymentDataProvider;
 
 @interface PKTransactionGroupItemPresenter : NSObject <PKDashboardItemPresenter>
 {
@@ -23,7 +24,6 @@
     UIImage *_appleCardImage;
     UIImage *_refundsImage;
     UIImage *_adjustmentsImage;
-    UIImage *_mapsPlaceholderImage;
     NSCache *_iconsPerMerchantCategory;
     struct CGSize _groupSize;
     _Bool _needsSizing;
@@ -32,16 +32,19 @@
     _Bool _useAccessibilityLayout;
     PKPaymentTransactionIconGenerator *_iconGenerator;
     PKMapsSnapshotManager *_snapshotManager;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
+    id <PKPaymentDataProvider> _paymentDataProvider;
+    PKContactAvatarManager *_avatarManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKContactAvatarManager *avatarManager; // @synthesize avatarManager=_avatarManager;
+@property(retain, nonatomic) id <PKPaymentDataProvider> paymentDataProvider; // @synthesize paymentDataProvider=_paymentDataProvider;
 @property(retain, nonatomic) PKMapsSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
-@property(retain, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
+@property(retain, nonatomic) PKContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 - (void)_updatePrimaryLabelOnTransactionCell:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 contact:(id)arg3;
 - (void)_updateAvatarOnTransactionCell:(id)arg1 withGroup:(id)arg2 contact:(id)arg3;
 - (struct CGSize)_imageSize;
-- (id)mapsPlaceholderImage;
 - (id)adjustmentsImage;
 - (id)refundsImage;
 - (id)appleCardImage;

@@ -8,41 +8,36 @@
 
 @class NSHashTable, TIAutocorrectionList, TIKeyboardCandidate;
 
-__attribute__((visibility("hidden")))
 @interface UIKeyboardAutocorrectionController : NSObject
 {
     unsigned long long _signpostToken;
     _Bool _requestedAutocorrection;
     _Bool _needsAutocorrection;
-    _Bool _deferredAutocorrection;
+    _Bool _hasPendingAutocorrection;
     TIAutocorrectionList *_autocorrectionList;
     TIAutocorrectionList *_textSuggestionList;
+    unsigned long long _maximumNumberOfCandidates;
     NSHashTable *_autocorrectionObservers;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSHashTable *autocorrectionObservers; // @synthesize autocorrectionObservers=_autocorrectionObservers;
-@property(nonatomic) _Bool deferredAutocorrection; // @synthesize deferredAutocorrection=_deferredAutocorrection;
-@property(nonatomic) _Bool needsAutocorrection; // @synthesize needsAutocorrection=_needsAutocorrection;
-@property(nonatomic) _Bool requestedAutocorrection; // @synthesize requestedAutocorrection=_requestedAutocorrection;
+@property(nonatomic) unsigned long long maximumNumberOfCandidates; // @synthesize maximumNumberOfCandidates=_maximumNumberOfCandidates;
+@property(readonly, nonatomic) _Bool requestedAutocorrection;
 @property(retain, nonatomic) TIAutocorrectionList *textSuggestionList; // @synthesize textSuggestionList=_textSuggestionList;
 - (void)requestAutocorrectionWithExecutionContext:(id)arg1;
 - (_Bool)hasTextSuggestionCandidates;
+@property(readonly, nonatomic) _Bool hasActiveObservers;
 - (_Bool)hasProactiveCandidates;
 - (_Bool)hasContinuousPathConversions;
 - (_Bool)hasAutofillCandidates;
-- (_Bool)hasCaseableAutocorrection;
+- (void)updateAfterShiftStateChange;
 - (_Bool)hasAutocorrection;
 - (void)clearAutofillAndTextSuggestions;
 - (void)clearAutocorrectionAndNotifyObservers:(_Bool)arg1;
 - (void)clearAutocorrection;
 - (void)setNeedsAutocorrection;
 @property(retain, nonatomic) TIAutocorrectionList *autocorrectionList; // @synthesize autocorrectionList=_autocorrectionList;
-- (void)_setAutocorrectionList:(id)arg1 notifyObserver:(_Bool)arg2;
 @property(readonly, nonatomic) TIKeyboardCandidate *autocorrection;
-- (void)updateSuggestionViews;
-- (void)_notifyObserversOfClearedAutocorrectionList;
-- (void)_notifyObserversOfUpdatedAutocorrectionList:(id)arg1;
 - (void)removeAutocorrectionObserver:(id)arg1;
 - (void)addAutocorrectionObserver:(id)arg1;
 - (id)init;

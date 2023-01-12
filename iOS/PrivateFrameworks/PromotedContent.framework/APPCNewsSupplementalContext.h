@@ -61,14 +61,17 @@
     MISSING_TYPE *contentEnvironment;
     MISSING_TYPE *isDraft;
     MISSING_TYPE *placement;
+    MISSING_TYPE *referralCampaignId;
     MISSING_TYPE *referralLocation;
     MISSING_TYPE *referralPublisherInventory;
     MISSING_TYPE *numOfArticlesSeenSinceLastInterstitial;
     MISSING_TYPE *playerAspectRatio;
     MISSING_TYPE *subscriptionType;
     MISSING_TYPE *currentIssueId;
-    MISSING_TYPE *currentIssueIsDraftNumber;
-    MISSING_TYPE *currentIssueIsCurrentNumber;
+    MISSING_TYPE *anfComponentMetadataInternal;
+    MISSING_TYPE *currentIssueIsDraftInternal;
+    MISSING_TYPE *currentIssueIsCurrentInternal;
+    MISSING_TYPE *requestedAdTypeInternal;
 }
 
 - (void).cxx_destruct;
@@ -134,6 +137,8 @@
 @property(nonatomic, copy) NSString *nextArticleArticleId;
 @property(nonatomic, copy) NSString *currentArticleArticleId;
 @property(nonatomic, copy) NSString *creativeType;
+@property(nonatomic) long long requestedAdType;
+@property(nonatomic, copy) NSDictionary *anfComponentMetadata;
 @property(nonatomic, copy) NSString *advertisementType;
 
 @end

@@ -10,8 +10,8 @@
 
 @interface TSCH3DCachedSharegroupToken <TSCH3DSharegroupDelayCheckerParent>
 {
-    TSCH3DSharegroupDelayChecker *mChecker;
-    TSCH3DGPUSharegroup *mSharegroup;
+    TSCH3DSharegroupDelayChecker *_checker;
+    TSCH3DGPUSharegroup *_sharegroup;
 }
 
 - (void).cxx_destruct;

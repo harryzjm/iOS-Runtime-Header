@@ -48,6 +48,9 @@
     NSURL *_initialURL;
 }
 
++ (_Bool)_supportsPrewarming;
++ (id)prewarmConnectionsToURLs:(id)arg1;
++ (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool defersAddingRemoteViewController; // @synthesize defersAddingRemoteViewController=_defersAddingRemoteViewController;
 @property(readonly, nonatomic) NSURL *initialURL; // @synthesize initialURL=_initialURL;
@@ -80,6 +83,7 @@
 @property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_addRemoteViewControllerIfNeeded;
+- (void)_didLoadRemoteViewController:(id)arg1;
 - (void)_connectToService;
 - (void)_setEdgeSwipeDismissalEnabled:(_Bool)arg1;
 - (void)_removeRemoteViewController;

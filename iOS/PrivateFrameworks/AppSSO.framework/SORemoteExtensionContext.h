@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 @interface SORemoteExtensionContext : NSExtensionContext <SORemoteExtensionContextProtocol, SOExtensionContext>
 {
     SOExtensionServiceConnection *_extensionServiceConnection;
+    id <ASAuthorizationProviderExtensionAuthorizationRequestHandler> _extensionAuthorizationRequestHandler;
+    CDUnknownBlockType _finishAuthorizationCompletion;
     SOExtensionViewService *_viewService;
     ASAuthorizationProviderExtensionAuthorizationRequest *_extensionAuthorizationRequest;
 }
@@ -28,11 +30,15 @@ __attribute__((visibility("hidden")))
 - (void)_disableAppSSOInCFNetwork;
 - (_Bool)canOpenURL:(id)arg1;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)completeFinishAuthorizationWithError:(id)arg1;
+- (void)finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginAuthorizationWithServiceXPCEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)synchronousHostContextWithError:(id *)arg1;
 - (id)hostContextWithError:(id *)arg1;
+- (id)extensionAuthorizationRequestHandlerWithError:(id *)arg1;
+- (id)authorizationRequestHandlerWithRequestParameters:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) id <ASAuthorizationProviderExtensionAuthorizationRequestHandler> extensionViewController;
 
 // Remaining properties

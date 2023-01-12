@@ -8,7 +8,9 @@
 
 @interface _TtC8VideosUI19EpicInlineViewModel
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *horizontalCollectionViewModel;
+    MISSING_TYPE *fragmentServiceRequest;
 }
 
 @end

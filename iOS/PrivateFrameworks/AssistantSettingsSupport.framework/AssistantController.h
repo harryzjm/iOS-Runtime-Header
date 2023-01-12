@@ -11,7 +11,7 @@
 #import <AssistantSettingsSupport/CNContactPickerDelegate-Protocol.h>
 #import <AssistantSettingsSupport/DevicePINControllerDelegate-Protocol.h>
 
-@class AFSettingsConnection, ASTLockScreenSuggestionsGlobalController, CNContactPickerViewController, CNContactStore, NSArray, NSMutableSet, NSSet, NSString, PSSpecifier, SUICAssistantVoiceSettingsConnection;
+@class AFSettingsConnection, ASTLockScreenSuggestionsGlobalController, AssistantAssetsUtilities, CNContactPickerViewController, CNContactStore, NSArray, NSLock, NSMutableSet, NSSet, NSString, PSSpecifier, SUICAssistantVoiceSettingsConnection;
 
 @interface AssistantController : PSListController <CNContactPickerDelegate, AssistantVoiceSettingsConnectionProvider, DevicePINControllerDelegate, AssistantHistoryDelegate>
 {
@@ -32,7 +32,11 @@
     NSSet *_installedBundleIDs;
     NSArray *_allAppsSpecifiers;
     AFSettingsConnection *_AFSettingsConnection;
-    ASTLockScreenSuggestionsGlobalController *_lockScreenGlobalController;
+    ASTLockScreenSuggestionsGlobalController *_suggestionsFromAppleAllowNotificationsController;
+    NSLock *_assetDownloadStatusLock;
+    unsigned long long _assetDownloadState;
+    NSString *_assetSpaceRequiredText;
+    AssistantAssetsUtilities *_assetUtils;
 }
 
 + (void)presentAssistantEnableAlertForState:(_Bool)arg1 presentingViewController:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
@@ -41,11 +45,15 @@
 + (id)bundle;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SUICAssistantVoiceSettingsConnection *settingsConnection; // @synthesize settingsConnection=_settingsConnection;
+- (void)_runEnablementFlowDismissalHandlersIfApplicable;
 - (void)deleteHistorySuccessfulFromViewController:(id)arg1;
 - (void)showAssistantHistoryViewController:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (_Bool)_isSiriXSupportDisabled;
+- (void)_processAssetState:(unsigned long long)arg1 context:(id)arg2;
+- (void)_refreshAssetDownloadStatus;
 - (id)meCard:(id)arg1;
 - (void)showMeCardPicker:(id)arg1;
 - (void)_showMeCardPopover;
@@ -55,6 +63,7 @@
 - (id)hardwareButtonTrigger:(id)arg1;
 - (void)loadAppStorePageForBundleId:(id)arg1;
 - (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)setVoiceTrigger:(id)arg1 forSpecifier:(id)arg2 transitionWithNavControllerIfNecessary:(id)arg3;
 - (void)setVoiceTrigger:(id)arg1 forSpecifier:(id)arg2;
 - (id)voiceTrigger:(id)arg1;
 - (_Bool)_isVoiceTriggerEnabled;
@@ -85,12 +94,17 @@
 - (void)assistantEnabledCancelled:(id)arg1;
 - (void)assistantEnabledConfirmed:(id)arg1;
 - (id)assistantEnabled:(id)arg1;
-- (void)setSharingSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
-- (id)isSharingSuggestionsEnabled:(id)arg1;
-- (void)setHomeScreenSuggestionsEnabled:(id)arg1 forSpecifier:(id)arg2;
-- (id)isHomeScreenSuggestionsEnabled:(id)arg1;
-- (void)setAssistantSuggestionsEnabled:(id)arg1;
-- (id)isAssistantSuggestionsEnabled;
+- (void)setShowWhenListeningEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (id)isShowWhenListeningEnabled:(id)arg1;
+- (void)setShowWhenSharingEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (id)isShowWhenSharingEnabled:(id)arg1;
+- (void)setShowInAppLibraryEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (id)isShowInAppLibraryEnabled:(id)arg1;
+- (void)setShowInSpotlightEnabled:(id)arg1;
+- (id)isShowInSpotlightEnabled;
+- (void)setShowInLookUpEnabled:(id)arg1;
+- (id)isShowInLookUpEnabled;
+- (void)_handleEnablementConfirmationForSpecifier:(id)arg1 actionHandler:(CDUnknownBlockType)arg2;
 - (void)showAssistantConfirmationViewForSpecifier:(id)arg1 presentingViewController:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
 - (void)confirmDisableWithSpecifier:(id)arg1 pairedWatch:(_Bool)arg2 presentingViewController:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (void)confirmDisableForMultiUserVoiceIdentificationWithSpecifier:(id)arg1 pairedWatch:(_Bool)arg2 presentingViewController:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
@@ -102,16 +116,28 @@
 - (void)_updateSpecifiersForLanguage:(id)arg1;
 - (void)saveSpotlightSettings;
 - (void)configureApplicationListSpecifiersFor:(id)arg1;
-- (void)configurePersonalizationSpecifiersFor:(id)arg1;
+- (void)configureSuggestionsFromAppleSpecifiersFor:(id)arg1;
+- (void)configureContentFromAppleSpecifiersFor:(id)arg1;
+- (void)_addHyperlinkStyleToText:(id)arg1 inString:(id)arg2 action:(SEL)arg3 forGroup:(id)arg4;
+- (id)_localizedStringWithFormattedIDTemplate:(id)arg1;
+- (void)_askSiriUseOutOfSpaceFooterTextWithGroupSpecifier:(id)arg1;
+- (void)_askSiriUseDownloadFinishedFooterTextWithGroupSpecifier:(id)arg1;
+- (void)_askSiriUseDownloadingFooterTextWithGroupSpecifier:(id)arg1;
+- (void)_askSiriUseDownloadReadyFooterTextWithGroupSpecifier:(id)arg1;
+- (void)_askSiriUseDefaultFooterTextWithGroupSpecifier:(id)arg1;
 - (void)configureAskSiriSpecifiersFor:(id)arg1;
 - (id)specifiers;
 - (_Bool)_isAssistantLockScreenAccessRestricted;
 - (void)reloadSpecifiers;
 - (id)bundle;
 - (void)showAboutSearchSuggestionsSheet:(id)arg1;
+- (void)openStorageManagement:(id)arg1;
+- (void)showAboutImproveDictationSheet:(id)arg1;
 - (void)showAboutAssistantSheet:(id)arg1;
 - (void)assistantAboutDonePressed:(id)arg1;
 - (void)didBecomeActive;
+- (void)_handleNetworkPathUpdate;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)preferencesDidChange;
 - (void)languageCodeDidChange;
 - (void)outputVoiceDidChange;
@@ -121,6 +147,7 @@
 - (id)init;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)lowPowerModeChangedNotification:(id)arg1;
 

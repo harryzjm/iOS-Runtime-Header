@@ -6,23 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class ATXResponse, NSArray, NSError;
+@class ATXResponse, ATXSuggestionLayout, NSArray, NSError, NSMutableDictionary;
 
 @interface ATXAppDirectoryResponse : NSObject
 {
+    NSMutableDictionary *_bundleIdToSuggestionMapping;
     NSError *_error;
     NSArray *_predictedApps;
     NSArray *_recentApps;
     ATXResponse *_response;
+    ATXSuggestionLayout *_suggestionLayout;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) ATXSuggestionLayout *suggestionLayout; // @synthesize suggestionLayout=_suggestionLayout;
 @property(readonly, nonatomic) ATXResponse *response; // @synthesize response=_response;
 @property(readonly, nonatomic) NSArray *recentApps; // @synthesize recentApps=_recentApps;
 @property(readonly, nonatomic) NSArray *predictedApps; // @synthesize predictedApps=_predictedApps;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
+- (id)proactiveSuggestionForBundleId:(id)arg1;
+- (id)uuidForBundleId:(id)arg1;
+- (id)uuidsForBundleIds:(id)arg1;
+@property(readonly, nonatomic) NSArray *recentAppsVisible;
 - (id)initWithoutDedupingForRecents:(id)arg1 predictedApps:(id)arg2 error:(id)arg3;
 - (id)initWithResponse:(id)arg1 recentApps:(id)arg2 otherAppsOnScreen:(id)arg3 numAppsToPredict:(unsigned long long)arg4 error:(id)arg5;
+- (id)initWithSuggestionLayout:(id)arg1 recentApps:(id)arg2 otherAppsOnScreen:(id)arg3 numAppsToPredict:(unsigned long long)arg4 error:(id)arg5;
 
 @end
 

@@ -8,6 +8,5 @@
 
 @protocol TTMergeableStringIDTracker <NSObject>
 - (_Bool)hasTopoIDsThatCanChange;
-- (void)updateTopoIDRange:(struct TopoIDRange)arg1 toNewRangeID:(struct TopoIDRange)arg2;
 @end
 

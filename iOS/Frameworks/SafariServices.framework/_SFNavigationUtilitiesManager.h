@@ -17,6 +17,7 @@
     unsigned long long _persona;
 }
 
++ (id)_sharedUserAgentQuirksManager;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long persona; // @synthesize persona=_persona;
 @property(nonatomic) __weak _SFReloadOptionsController *reloadOptionsController; // @synthesize reloadOptionsController=_reloadOptionsController;

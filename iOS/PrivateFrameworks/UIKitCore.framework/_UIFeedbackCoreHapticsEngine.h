@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)_supportsAbortingDeactivation;
 + (_Bool)_supportsPlayingFeedbackPatternsDirectly;
 + (_Bool)_supportsPlayingIndividualFeedback:(id)arg1;
-+ (_Bool)_supportsPlayingIndividualFeedback:(id)arg1 allowsIgnoreCapture:(_Bool)arg2;
++ (_Bool)_supportsPlayingIndividualFeedback:(id)arg1 allowsIgnoreCapture:(_Bool)arg2 isFullGamutEngine:(_Bool)arg3;
 + (id)sharedEngine;
 + (id)_internalQueue;
 - (void).cxx_destruct;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_coreHapticsEngineStoppedForReason:(long long)arg1;
 - (void)_internal_resetCoreHapticsEngine;
 - (void)_resetCoreHapticsEngine;
+@property(readonly, nonatomic, getter=_usesFullGamut) _Bool usesFullGamut;
 - (id)init;
 
 @end

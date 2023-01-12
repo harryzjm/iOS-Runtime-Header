@@ -26,6 +26,7 @@
 + (unsigned int)newInstanceId;
 + (_Bool)supportsSecureCoding;
 + (id)_optionsForEvent:(long long)arg1;
++ (void)notifyEvent:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)notifyEvent:(long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int instanceId; // @synthesize instanceId=_instanceId;
@@ -33,12 +34,22 @@
 @property(retain, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
 @property(retain, nonatomic) NSData *evaluatedPolicyDomainState; // @synthesize evaluatedPolicyDomainState=_evaluatedPolicyDomainState;
 @property(retain, nonatomic) NSNumber *maxBiometryFailures; // @synthesize maxBiometryFailures=_maxBiometryFailures;
+- (void)setOptionEventProcessing:(id)arg1;
+- (id)optionEventProcessing;
 @property(nonatomic) _Bool interactionNotAllowed;
 - (void)setOptionSecurePassphrase:(id)arg1;
 - (id)optionSecurePassphrase;
 - (void)setOptionAuthenticationTitle:(id)arg1;
 - (id)optionAuthenticationTitle;
 @property(copy, nonatomic) NSString *localizedReason;
+- (void)setOptionCheckApplePayEnabled:(id)arg1;
+- (id)optionCheckApplePayEnabled;
+- (void)setOptionPINLabel:(id)arg1;
+- (id)optionPINLabel;
+- (void)setOptionTKAuthOperationError:(id)arg1;
+- (id)optionTKAuthOperationError;
+- (void)setOptionBodyText:(id)arg1;
+- (id)optionBodyText;
 - (void)setOptionPINCharset:(id)arg1;
 - (id)optionPINCharset;
 - (void)setOptionPINMaxLength:(id)arg1;
@@ -128,6 +139,8 @@
 - (void)optionsForInternalOperation:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (_Bool)isCredentialSet:(long long)arg1;
+- (id)credentialOfType:(long long)arg1 error:(id *)arg2;
+- (void)credentialOfType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_setCredential:(id)arg1 type:(long long)arg2 log:(long long)arg3 cid:(unsigned int)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)setCredential:(id)arg1 type:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (_Bool)_setCredential:(id)arg1 type:(long long)arg2 log:(long long)arg3 cid:(unsigned int)arg4 error:(id *)arg5;
@@ -140,6 +153,7 @@
 - (void)evaluateAccessControl:(struct __SecAccessControl *)arg1 aksOperation:(void *)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(long long)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)setCredential:(id)arg1 forProcessedEvent:(long long)arg2 credentialType:(long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)pauseProcessedEvent:(long long)arg1 pause:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resetProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)retryProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)failProcessedEvent:(long long)arg1 failureError:(id)arg2 reply:(CDUnknownBlockType)arg3;

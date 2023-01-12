@@ -4,9 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface CUIKDeleteOperation
 {
+    NSArray *_precomputedInverseObjects;
 }
+
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *precomputedInverseObjects; // @synthesize precomputedInverseObjects=_precomputedInverseObjects;
 
 @end
 

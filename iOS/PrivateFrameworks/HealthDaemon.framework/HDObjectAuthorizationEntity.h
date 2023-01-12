@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HDObjectAuthorizationEntity
+#import <HealthDaemon/HDHealthEntitySchema-Protocol.h>
+
+@class NSString;
+
+@interface HDObjectAuthorizationEntity <HDHealthEntitySchema>
 {
 }
 
++ (id)pruneWithProfile:(id)arg1 nowDate:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 + (id)authorizationRecordsBySourceForSampleWithUUID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)authorizationRecordsForSamples:(id)arg1 sourceEntity:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)authorizationRecordsForSamples:(id)arg1 sourceEntity:(id)arg2 sessionIdentifier:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)authorizationStatusForSamplesOfType:(id)arg1 sourceEntity:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (_Bool)_insertCodableObjectAuthorizations:(id)arg1 syncProvenance:(long long)arg2 profile:(id)arg3 error:(id *)arg4;
 + (_Bool)resetAuthorizationForObjects:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (_Bool)resetAllObjectAuthorizationRecordsForProfile:(id)arg1 error:(id *)arg2;
 + (_Bool)resetObjectAuthorizationRecordsForSource:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (_Bool)_setObjectAuthorizationRecords:(id)arg1 syncProvenance:(long long)arg2 skipErrors:(_Bool)arg3 profile:(id)arg4 error:(id *)arg5;
 + (_Bool)setObjectAuthorizationRecords:(id)arg1 syncProvenance:(long long)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)propertyForSyncProvenance;
 + (id)uniquedColumns;
@@ -23,6 +26,12 @@
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (long long)protectionClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

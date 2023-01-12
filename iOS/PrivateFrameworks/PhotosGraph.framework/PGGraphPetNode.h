@@ -4,26 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString;
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
 
-@interface PGGraphPetNode
+@class NSString, PGGraphPetNodeCollection;
+
+@interface PGGraphPetNode <PGAssetCollectionFeature>
 {
-    NSString *_uuid;
+    NSString *_localIdentifier;
+    unsigned long long _petSpecies;
 }
 
++ (id)stringFromPetSpecies:(unsigned long long)arg1;
++ (id)ownerOfPet;
++ (id)momentOfPet;
++ (id)filter;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSSet *momentNodes;
-@property(readonly, nonatomic) NSSet *ownerNodes;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
+@property(readonly, nonatomic) NSString *localIdentifier;
+@property(readonly, nonatomic) unsigned long long petSpecies;
+@property(readonly, nonatomic) PGGraphPetNodeCollection *collection;
+- (id)ownerNodes;
 - (void)enumerateOwnerNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned short)domain;
 - (id)label;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithLocalIdentifier:(id)arg1 petSpecies:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -20,6 +20,7 @@
     NSMutableDictionary *_gestureMap;
     _Bool _viewOverridesInteractivityState;
     _Bool _inGesture;
+    _Bool _allowsSelectionCommands;
     long long _textInteractionMode;
     UILongPressGestureRecognizer *_customHighlighterGesture;
     _UIStatesFeedbackGenerator *_feedbackBehaviour;
@@ -40,6 +41,7 @@
 @property(nonatomic) __weak UIResponder<UITextInput> *textInput; // @synthesize textInput=_textInput;
 @property(nonatomic) __weak id <UITextInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) _UIStatesFeedbackGenerator *feedbackBehaviour; // @synthesize feedbackBehaviour=_feedbackBehaviour;
+@property(nonatomic, setter=_setAllowsSelectionCommands:) _Bool _allowsSelectionCommands; // @synthesize _allowsSelectionCommands;
 @property(retain, nonatomic) UILongPressGestureRecognizer *_customHighlighterGesture; // @synthesize _customHighlighterGesture;
 @property(readonly, nonatomic) NSDictionary *gestureMap; // @synthesize gestureMap=_gestureMap;
 @property(readonly, nonatomic) NSArray *gestures; // @synthesize gestures=_gestures;

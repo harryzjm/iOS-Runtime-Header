@@ -18,6 +18,7 @@
 + (id)seconds;
 + (id)minutes;
 + (id)hours;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

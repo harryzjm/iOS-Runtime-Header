@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCCloudDocsAppsObserver-Protocol.h>
 
-@class BRCAccountWaitOperation, BRCAnalyticsReporter, BRCApplyScheduler, BRCClientState, BRCContainerScheduler, BRCDeadlineScheduler, BRCDiskSpaceReclaimer, BRCDownloadTrackers, BRCFSDownloader, BRCFSReader, BRCFSUploader, BRCFSWriter, BRCFairScheduler, BRCGlobalProgress, BRCItemTransmogrifier, BRCNotificationManager, BRCPQLConnection, BRCRecentsEnumerator, BRCServerPersistedState, BRCStageRegistry, BRCSyncUpScheduler, BRCThrottle, BRCUserNotification, BRCVolume, NSHashTable, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, br_pacer;
+@class BRCAccountHandler, BRCAccountWaitOperation, BRCAnalyticsReporter, BRCApplyScheduler, BRCClientState, BRCContainerScheduler, BRCDeadlineScheduler, BRCDiskSpaceReclaimer, BRCDownloadTrackers, BRCFSDownloader, BRCFSReader, BRCFSUploader, BRCFSWriter, BRCFairScheduler, BRCFileUnlinker, BRCGlobalProgress, BRCItemTransmogrifier, BRCNotificationManager, BRCPQLConnection, BRCRecentsEnumerator, BRCServerPersistedState, BRCStageRegistry, BRCSyncUpScheduler, BRCThrottle, BRCUserNotification, BRCVolume, BRDSIDString, NSHashTable, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, br_pacer;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_dispatch_workloop;
 
 @interface BRCAccountSession : NSObject <BRCCloudDocsAppsObserver>
@@ -26,6 +26,9 @@
     CDUnknownBlockType _dbProfilingHook;
     NSString *_databaseID;
     NSHashTable *_miscOperations;
+    BRCAccountHandler *_accountHandler;
+    NSString *_personaIdentifier;
+    _Bool _isDataSeparated;
     BRCPQLConnection *_clientDB;
     BRCPQLConnection *_serverDB;
     BRCPQLConnection *_readOnlyDB;
@@ -40,7 +43,8 @@
     NSMutableDictionary *_sharedClientZonesByMangledID;
     NSMutableDictionary *_privateServerZonesByID;
     NSMutableDictionary *_privateClientZonesByID;
-    NSString *_accountID;
+    NSString *_acAccountID;
+    BRDSIDString *_accountDSID;
     NSMutableSet *_xpcClients;
     _Bool _resumed;
     BRCGlobalProgress *_globalProgress;
@@ -58,7 +62,7 @@
     NSMutableDictionary *_rootsByFolderType;
     NSMutableDictionary *_fsEventsMonitors;
     _Bool _isCancelled;
-    NSString *_appSupportDirPath;
+    NSString *_sessionDirPath;
     NSString *_cacheDirPath;
     NSString *_ubiquityTokenSalt;
     BRCContainerScheduler *_containerScheduler;
@@ -75,6 +79,7 @@
     BRCNotificationManager *_notificationManager;
     BRCStageRegistry *_stageRegistry;
     BRCDiskSpaceReclaimer *_diskReclaimer;
+    BRCFileUnlinker *_fileUnlinker;
     BRCRecentsEnumerator *_recentsEnumerator;
     BRCThrottle *_appLibraryScanThrottle;
     BRCThrottle *_appLibraryResetThrottle;
@@ -106,6 +111,8 @@
 + (id)sessionForDumpingDatabasesAtURL:(id)arg1;
 + (id)sessionForBackingUpDatabasesAtURL:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isDataSeparated; // @synthesize isDataSeparated=_isDataSeparated;
+@property(readonly, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
 @property(readonly, nonatomic) BRCAnalyticsReporter *analyticsReporter; // @synthesize analyticsReporter=_analyticsReporter;
 @property(readonly, nonatomic) BRCItemTransmogrifier *itemTransmogrifier; // @synthesize itemTransmogrifier=_itemTransmogrifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *resetQueue; // @synthesize resetQueue=_resetQueue;
@@ -120,8 +127,10 @@
 @property(readonly, nonatomic) BRCThrottle *appLibraryScanThrottle; // @synthesize appLibraryScanThrottle=_appLibraryScanThrottle;
 @property(readonly, nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(readonly, nonatomic) BRCRecentsEnumerator *recentsEnumerator; // @synthesize recentsEnumerator=_recentsEnumerator;
+@property(readonly, nonatomic) BRCFileUnlinker *fileUnlinker; // @synthesize fileUnlinker=_fileUnlinker;
 @property(readonly, nonatomic) BRCDiskSpaceReclaimer *diskReclaimer; // @synthesize diskReclaimer=_diskReclaimer;
 @property(readonly, nonatomic) BRCUserNotification *userNotification; // @synthesize userNotification=_userNotification;
+@property(readonly, nonatomic) BRCAccountHandler *accountHandler; // @synthesize accountHandler=_accountHandler;
 @property(readonly, nonatomic) BRCDownloadTrackers *downloadTrackers; // @synthesize downloadTrackers=_downloadTrackers;
 @property(readonly, nonatomic) BRCSyncUpScheduler *syncUpScheduler; // @synthesize syncUpScheduler=_syncUpScheduler;
 @property(readonly, nonatomic) BRCFSDownloader *fsDownloader; // @synthesize fsDownloader=_fsDownloader;
@@ -130,9 +139,9 @@
 @property(readonly, nonatomic) BRCFairScheduler *fairClientDBScheduler; // @synthesize fairClientDBScheduler=_fairClientDBScheduler;
 @property(readonly, nonatomic) BRCDeadlineScheduler *defaultScheduler; // @synthesize defaultScheduler=_defaultScheduler;
 @property(readonly, nonatomic) NSString *ubiquityTokenSalt; // @synthesize ubiquityTokenSalt=_ubiquityTokenSalt;
-@property(readonly, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
+@property(readonly, nonatomic) BRDSIDString *accountDSID; // @synthesize accountDSID=_accountDSID;
 @property(retain, nonatomic) NSString *cacheDirPath; // @synthesize cacheDirPath=_cacheDirPath;
-@property(retain, nonatomic) NSString *appSupportDirPath; // @synthesize appSupportDirPath=_appSupportDirPath;
+@property(retain, nonatomic) NSString *sessionDirPath; // @synthesize sessionDirPath=_sessionDirPath;
 @property(readonly, nonatomic) BRCStageRegistry *stageRegistry; // @synthesize stageRegistry=_stageRegistry;
 @property(readonly, nonatomic) BRCNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
 @property(readonly, nonatomic) BRCFSWriter *fsWriter; // @synthesize fsWriter=_fsWriter;
@@ -180,6 +189,7 @@
 @property(readonly, nonatomic) unsigned long long availableDiskSpace;
 - (void)recomputeAppSyncBlockStateForPrivateClientZone:(id)arg1;
 - (void)cloudDocsAppsListDidChange:(id)arg1;
+- (void)_cloudDocsAppsListDidChange:(id)arg1;
 - (_Bool)createAppLibraryOnDisk:(id)arg1 createdRoot:(_Bool *)arg2 createdDocuments:(_Bool *)arg3 rootFileID:(unsigned long long *)arg4;
 - (_Bool)createAppLibrariesIfNeededWithError:(id *)arg1;
 - (void)enumerateFileTypesWithFilterBlock:(CDUnknownBlockType)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
@@ -221,23 +231,28 @@
 - (id)serverZoneByName:(id)arg1 ownerName:(id)arg2;
 - (id)serverZoneByMangledID:(id)arg1;
 - (id)sharedServerZoneRowIDsByOwnerNamePrefix:(id)arg1;
+- (void)_mutexZonesLock;
 - (id)_unloadClientZones;
 - (void)_loadClientZonesFromDisk;
 - (void)destroyLocalDataWithPristineContainerIDs:(id)arg1;
 - (void)destroyLocalData;
 - (void)destroyLocalDataWaitingForFilesToBeUnlinked:(_Bool)arg1 pristineContainerIDs:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_validatePersona;
 - (void)destroyLocalDataWaitingForFilesToBeUnlinked:(_Bool)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_recursivelyPrepareFolderForLogOutAtURL:(id)arg1 pruneEmptyFolders:(_Bool)arg2 pruneEmptyTopLevelFolder:(_Bool)arg3 maxDepth:(unsigned long long)arg4;
 - (void)closeAndResetLocalState;
 - (void)close;
 - (id)fetchAccountWaitOperationWithAccountReady:(_Bool *)arg1;
 @property(readonly, nonatomic) BRCAccountWaitOperation *accountWaitOperation;
+- (void)invalidateAccountStatus;
 - (void)resume;
 - (void)_registerBackgroundXPCActivities;
+- (unsigned int)_recoverAndReportMissingJobs;
+- (unsigned int)_recoverAndReportBoosting;
 - (void)_pcsChainAllItemsWithActivity:(id)arg1;
 - (_Bool)_createAppLibraryRootIfNeededAtPath:(id)arg1 error:(id *)arg2;
 - (_Bool)_createAppLibraryRootsIfNeededWithError:(id *)arg1;
-- (_Bool)openWithError:(id *)arg1;
+- (_Bool)openWithError:(id *)arg1 pushWorkloop:(id)arg2;
 - (void)resetThrottles;
 - (void)_setupThrottles;
 - (void)markAccountMigrationComplete;
@@ -251,7 +266,7 @@
 - (_Bool)registerClient:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithAccountID:(id)arg1 salt:(id)arg2;
+- (id)initWithACAccountID:(id)arg1 dbAccountDSID:(id)arg2 salt:(id)arg3 accountHandler:(id)arg4;
 - (id)init;
 - (void)addOfflineAppLibrary:(id)arg1;
 - (void)addOfflineClientZone:(id)arg1;
@@ -274,7 +289,7 @@
 - (id)createUserKeyForName:(id)arg1;
 - (id)userNameForKey:(id)arg1 db:(id)arg2;
 - (id)userKeyForName:(id)arg1 db:(id)arg2;
-- (void)learnOwnerIdentityForShare:(id)arg1 forceUpdate:(_Bool)arg2;
+- (void)learnParticipantIdentitiesForShare:(id)arg1 forceUpdate:(_Bool)arg2;
 - (void)_setUserIdentity:(id)arg1 forName:(id)arg2;
 - (id)userIdentityForKey:(id)arg1;
 - (id)createDeviceKeyForNameInServerDB:(id)arg1;
@@ -300,7 +315,6 @@
 - (_Bool)_deleteClientZone:(id)arg1;
 - (_Bool)_createClientZone:(id)arg1;
 - (id)_appLibrariesEnumerator:(id)arg1;
-- (id)_appLibraryEnumeratorForZoneRowID:(id)arg1 db:(id)arg2;
 - (_Bool)_createSharedAppLibrary:(id)arg1;
 - (_Bool)_createPrivateAppLibrary:(id)arg1;
 - (_Bool)_deleteAppLibrary:(id)arg1;
@@ -317,7 +331,7 @@
 - (_Bool)_stepBackupDetector:(struct backup_detector)arg1 newState:(struct backup_detector *)arg2 error:(id *)arg3;
 - (_Bool)_setupBackupDetector:(struct backup_detector *)arg1 error:(id *)arg2;
 - (id)newConnectionWithLabel:(id)arg1 readonly:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)_setupConnection:(id)arg1 readonly:(_Bool)arg2 error:(id *)arg3;
+- (_Bool)_setupConnection:(id)arg1 readonly:(_Bool)arg2 forChecker:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)_registerDynamicDBFunctions:(id)arg1 error:(id *)arg2;
 - (_Bool)_openConnection:(id)arg1 databaseName:(id)arg2 readonly:(_Bool)arg3 error:(id *)arg4;
 - (void)stopDBWatcher;
@@ -342,6 +356,7 @@
 - (void)_resolvePathInMobileDocsRoot:(id)arg1 appLibrary:(id *)arg2;
 - (id)resolvedOpenRelpathForPath:(id)arg1 mustExist:(_Bool)arg2 allowResolveInPkg:(_Bool)arg3 errcode:(int *)arg4;
 - (id)resolvedOpenRelpathForPath:(id)arg1 mustExist:(_Bool)arg2 errcode:(int *)arg3;
+- (id)_appLibraryEnumeratorForZoneRowID:(id)arg1 db:(id)arg2;
 - (id)_old_privateAppLibraryByZoneName:(id)arg1 db:(id)arg2;
 - (id)singleAppLibraryMatchingSearchString:(id)arg1 error:(id *)arg2;
 - (id)appLibrariesMatchingSearchString:(id)arg1 error:(id *)arg2;
@@ -352,14 +367,13 @@
 - (void)setNeedsPCSMigration:(_Bool)arg1;
 - (_Bool)PCSMigrationComplete;
 - (_Bool)shouldPerformPCSMigration;
-- (id)syncContextForMangledID:(id)arg1 metadata:(_Bool)arg2;
 - (id)allSyncContexts;
-- (id)syncContextForMangledID:(id)arg1 metadata:(_Bool)arg2 createIfNeeded:(_Bool)arg3;
-- (id)syncContextForMangledID:(id)arg1 createIfNeeded:(_Bool)arg2;
-- (id)syncContextForMangledID:(id)arg1;
+- (id)metadataSyncContextForMangledID:(id)arg1;
+- (id)transferSyncContextForMangledID:(id)arg1 createIfNeeded:(_Bool)arg2;
+- (id)transferSyncContextForMangledID:(id)arg1;
 - (id)sideCarSyncContext;
 - (id)zoneHealthSyncContext;
-- (id)sharedSyncContext;
+- (id)sharedMetadataSyncContext;
 - (id)defaultSyncContext;
 - (id)_syncContextForContextIdentifier:(id)arg1 isShared:(_Bool)arg2 createIfNeeded:(_Bool)arg3;
 - (void)enumerateSideFaultsUnderParent:(id)arg1 db:(id)arg2 block:(CDUnknownBlockType)arg3;
@@ -382,7 +396,7 @@
 - (id)itemIDByRowID:(unsigned long long)arg1;
 - (id)newServerItemFromPQLResultSet:(id)arg1 error:(id *)arg2;
 - (id)newLocalItemFromPQLResultSet:(id)arg1 db:(id)arg2 error:(id *)arg3;
-- (id)_containerMetadataRecordsToSaveWithBatchSize:(unsigned long long)arg1;
+- (id)_containerMetadataRecordsToSaveWithBatchSize:(unsigned long long)arg1 requestID:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,14 +8,20 @@
 
 #import <NotesUI/UIActivityItemLinkPresentationSource-Protocol.h>
 
-@class NSString;
+@class LPFileMetadata, LPLinkMetadata, NSString;
 
 @interface ICLinkPresentationActivityItemSource : NSObject <UIActivityItemLinkPresentationSource>
 {
+    LPFileMetadata *_fileMetadata;
+    LPLinkMetadata *_linkMetadata;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
+@property(retain, nonatomic) LPFileMetadata *fileMetadata; // @synthesize fileMetadata=_fileMetadata;
 - (id)detail;
 - (id)title;
+- (void)setIconImage:(id)arg1;
 - (id)iconImage;
 - (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
 

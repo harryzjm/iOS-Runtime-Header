@@ -52,6 +52,9 @@
 - (id)supportedVideoSettingsKeys;
 - (id)vettedVideoSettingsForSettingsDictionary:(id)arg1 connection:(id)arg2;
 - (id)fullyPopulatedVideoSettingsForSettingsDictionary:(id)arg1 connection:(id)arg2;
+- (void)setSceneStabilityMetadataEnabled:(_Bool)arg1;
+- (_Bool)isSceneStabilityMetadataEnabled;
+- (_Bool)isSceneStabilityMetadataSupported;
 - (void)setVideoSettingsDimensionsOverrideEnabled:(_Bool)arg1;
 - (_Bool)isVideoSettingsDimensionsOverrideEnabled;
 - (id)outputScalingModeForSourceFormat:(id)arg1;

@@ -13,10 +13,11 @@
 
 + (_Bool)_isSecure;
 - (void).cxx_destruct;
+- (_Bool)_isSystemGestureWindow;
 - (id)_systemGestureView;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_focusResponder;
-- (_Bool)_canBecomeKeyWindow;
+- (_Bool)canBecomeKeyWindow;
 - (_Bool)_shouldPrepareScreenForWindow;
 - (_Bool)_appearsInLoupe;
 - (_Bool)_usesWindowServerHitTesting;

@@ -10,7 +10,6 @@
 
 @class CKDPListPosition;
 
-__attribute__((visibility("hidden")))
 @interface CKDPListRange : PBCodable <NSCopying>
 {
     CKDPListPosition *_left;

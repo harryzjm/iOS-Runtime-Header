@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/NSObject-Protocol.h>
+#import <WorkflowKit/WFDatabaseProxyHost-Protocol.h>
 
-@class NSError, WFDialogAttribution, WFWorkflowReference;
+@class NSSet, WFDialogAttributions, WFWorkflowReference;
 
-@protocol WFOutOfProcessWorkflowControllerHost <NSObject>
-- (void)workflowDidFinishRunningWithError:(NSError *)arg1 cancelled:(_Bool)arg2 reference:(WFWorkflowReference *)arg3;
-- (void)workflowDidStartFromWorkflowReference:(WFWorkflowReference *)arg1 attribution:(WFDialogAttribution *)arg2;
+@protocol WFOutOfProcessWorkflowControllerHost <WFDatabaseProxyHost>
+- (void)runnerWillExit;
+- (void)getVaultItemsAccessWithCompletion:(void (^)(NSSet *))arg1;
+- (void)requestSandboxExtensionForAccessResources:(NSSet *)arg1 completion:(void (^)(NSSet *, NSSet *, NSError *))arg2;
+- (void)quarantineWorkflowWithReference:(WFWorkflowReference *)arg1;
+- (void)workflowDidStartFromWorkflowReference:(WFWorkflowReference *)arg1 attributions:(WFDialogAttributions *)arg2;
 @end
 

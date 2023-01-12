@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_os_log> *_logger;
     NSString *_model;
     PRProximityDeviceParameters *_proximityParameters;
-    struct deque<BtProxData, std::__1::allocator<BtProxData>> _samples;
+    struct deque<BtProxData, std::allocator<BtProxData>> _samples;
     long long _proximity;
     NSUUID *_peer;
 }

@@ -17,6 +17,7 @@
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (id)wrapperForView:(id)arg1 mapping:(id)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKAggregateMapping *mapping; // @synthesize mapping=_mapping;
 @property(retain, nonatomic) UICollectionView *wrappedView; // @synthesize wrappedView=_wrappedView;
 - (id)_gkDequeueSupplementaryViewForClass:(Class)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
@@ -50,7 +51,6 @@
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
-- (void)dealloc;
 - (id)initWithView:(id)arg1 mapping:(id)arg2;
 
 @end

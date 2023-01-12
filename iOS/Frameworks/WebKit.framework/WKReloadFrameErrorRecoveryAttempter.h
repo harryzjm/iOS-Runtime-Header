@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/_WKErrorRecoveryAttempting-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKReloadFrameErrorRecoveryAttempter : NSObject <_WKErrorRecoveryAttempting>
+@interface WKReloadFrameErrorRecoveryAttempter : NSObject <_WKErrorRecoveryAttempting, NSSecureCoding>
 {
     struct WeakObjCPtr<WKWebView> _webView;
     struct RetainPtr<_WKFrameHandle> _frameHandle;
     struct String _urlString;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (_Bool)attemptRecovery;
-- (id)initWithWebView:(id)arg1 frameHandle:(id)arg2 urlString:(const struct String *)arg3;
+- (id)initWithWebView:(id)arg1 frameHandle:(id)arg2 urlString:(const void *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

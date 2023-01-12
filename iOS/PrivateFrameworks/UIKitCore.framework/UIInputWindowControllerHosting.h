@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)updateViewSizingConstraints;
 - (void)clearInputAssistantViewEdgeConstraints;
 - (void)clearInputAccessoryViewEdgeConstraints;
+- (void)resetInputViewVisibility;
 - (void)clearInputViewEdgeConstraints;
 - (void)_updateBackdropViews;
 - (void)layoutIfNeeded;

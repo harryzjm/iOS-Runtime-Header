@@ -9,9 +9,7 @@
 }
 
 + (Class)queryClass;
-- (void)_deliverErrorToClient:(id)arg1;
 - (void)_queue_start;
-- (id)deviceQueryClientProxy;
 
 @end
 

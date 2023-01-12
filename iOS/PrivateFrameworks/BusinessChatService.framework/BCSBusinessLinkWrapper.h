@@ -16,9 +16,7 @@ __attribute__((visibility("hidden")))
     long long _modTime;
     BCSBusinessLinkMessage *_message;
     NSString *_orgId;
-    struct {
-        unsigned int modTime:1;
-    } _has;
+    CDStruct_14b7a8ea _has;
 }
 
 - (void).cxx_destruct;

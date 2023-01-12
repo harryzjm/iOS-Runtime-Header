@@ -22,13 +22,13 @@
 - (void)arrayParameter:(id)arg1 confirmDeletionOfItemAtIndex:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)arrayParameter:(id)arg1 itemWasUpdatedAtIndex:(unsigned long long)arg2 toValue:(id)arg3;
 - (void)arrayParameter:(id)arg1 itemWasMovedFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
-- (void)arrayParameter:(id)arg1 itemWasAppended:(id)arg2;
+- (void)arrayParameter:(id)arg1 itemWasInserted:(id)arg2 atIndex:(unsigned long long)arg3;
 - (unsigned long long)numberOfActionsIncludedWithAction:(id)arg1;
 - (id)intermediaryActions;
+- (_Bool)ignoresOutputFromAction:(id)arg1 inWorkflow:(id)arg2;
 - (id)defaultOutputName;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)showAlertWithInput:(id)arg1;
-- (void)showNotificationWithInput:(id)arg1;
 - (id)newIntermediaryActionWithMenuItemTitle:(id)arg1;
 - (id)createAccompanyingActions;
 - (id)inputSourceInWorkflow:(id)arg1;

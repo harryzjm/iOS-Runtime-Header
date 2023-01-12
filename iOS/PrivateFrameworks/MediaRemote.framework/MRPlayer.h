@@ -12,6 +12,7 @@
 
 @interface MRPlayer : NSObject <NSCopying>
 {
+    unsigned int _audioSessionID;
     NSString *_identifier;
     NSString *_displayName;
     long long _audioSessionType;
@@ -19,7 +20,9 @@
 }
 
 + (id)defaultPlayer;
++ (id)anyPlayer;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(copy, nonatomic) NSSet *mxSessionIDs; // @synthesize mxSessionIDs=_mxSessionIDs;
 @property(nonatomic) long long audioSessionType; // @synthesize audioSessionType=_audioSessionType;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -27,6 +30,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic, getter=isDefaultPlayer) _Bool defaultPlayer;
 @property(readonly, nonatomic) _Bool hasAuxiliaryProperties;

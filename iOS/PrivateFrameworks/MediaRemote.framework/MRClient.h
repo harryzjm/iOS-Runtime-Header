@@ -13,7 +13,7 @@
 @interface MRClient : NSObject <NSCopying>
 {
     int _processIdentifier;
-    int _processUserIdentifier;
+    unsigned int _processUserIdentifier;
     long long _visibility;
     MRColorComponents *_tintColor;
     NSString *_bundleIdentifier;
@@ -24,6 +24,7 @@
 }
 
 + (id)localClient;
++ (id)anyClient;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *extendedBundleIdentifierHierarchy; // @synthesize extendedBundleIdentifierHierarchy=_extendedBundleIdentifierHierarchy;
 @property(copy, nonatomic) NSURL *appIcon; // @synthesize appIcon=_appIcon;
@@ -32,15 +33,22 @@
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy, nonatomic) MRColorComponents *tintColor; // @synthesize tintColor=_tintColor;
 @property(nonatomic) long long visibility; // @synthesize visibility=_visibility;
-@property(nonatomic) int processUserIdentifier; // @synthesize processUserIdentifier=_processUserIdentifier;
+@property(nonatomic) unsigned int processUserIdentifier; // @synthesize processUserIdentifier=_processUserIdentifier;
 @property(nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
+- (void)resolvePlaceholdersForDeviceInfo:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
 - (id)description;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic, getter=isSystemBooksApplication) _Bool systemBooksApplication;
+@property(readonly, nonatomic, getter=isSystemPodcastsApplication) _Bool systemPodcastsApplication;
+@property(readonly, nonatomic, getter=isSystemMediaApplication) _Bool systemMediaApplication;
 @property(readonly, nonatomic) _Bool hasPlaceholder;
 @property(readonly, nonatomic) _Bool hasAuxiliaryProperties;
 @property(readonly, copy, nonatomic) NSArray *bundleIdentifierHierarchy;
+@property(readonly, copy, nonatomic) NSString *representedBundleID;
 @property(readonly, nonatomic) MRClient *skeleton;
 @property(readonly, nonatomic) NSData *data;
 @property(readonly, nonatomic) _MRNowPlayingClientProtobuf *protobuf;

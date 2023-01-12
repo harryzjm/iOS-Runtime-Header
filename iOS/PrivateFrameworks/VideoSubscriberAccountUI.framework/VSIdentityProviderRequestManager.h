@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/VSApplicationControllerDelegate-Protocol.h>
 
-@class NSMutableArray, NSOperationQueue, NSString, VSApplicationController, VSApplicationControllerRequestFactory, VSAuditToken, VSIdentityProvider, VSOptional, VSPreferences, VSViewModel;
+@class NSMutableArray, NSOperationQueue, NSString, VSApplicationController, VSApplicationControllerRequestFactory, VSAuditToken, VSDeveloperSettingsFetchOperation, VSIdentityProvider, VSOptional, VSPreferences, VSViewModel;
 @protocol OS_dispatch_source, VSIdentityProviderRequestManagerDelegate;
 
 @interface VSIdentityProviderRequestManager : NSObject <VSApplicationControllerDelegate>
@@ -32,9 +32,11 @@
     double _applicationControllerTimerLeeway;
     double _requestCompletionDelayAfterShowingUserInterface;
     double _applicationControllerTimerDelay;
+    VSDeveloperSettingsFetchOperation *_settingsFetchOperation;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) VSDeveloperSettingsFetchOperation *settingsFetchOperation; // @synthesize settingsFetchOperation=_settingsFetchOperation;
 @property(nonatomic) double applicationControllerTimerDelay; // @synthesize applicationControllerTimerDelay=_applicationControllerTimerDelay;
 @property(nonatomic) double requestCompletionDelayAfterShowingUserInterface; // @synthesize requestCompletionDelayAfterShowingUserInterface=_requestCompletionDelayAfterShowingUserInterface;
 @property(nonatomic) double applicationControllerTimerLeeway; // @synthesize applicationControllerTimerLeeway=_applicationControllerTimerLeeway;
@@ -100,6 +102,7 @@
 - (id)_currentRequest;
 - (id)_currentRequestContext;
 - (void)_processRequestContext:(id)arg1;
+- (id)developerSettingsFetchOperation;
 - (void)enqueueRequest:(id)arg1;
 - (void)dealloc;
 - (id)initWithIdentityProvider:(id)arg1;

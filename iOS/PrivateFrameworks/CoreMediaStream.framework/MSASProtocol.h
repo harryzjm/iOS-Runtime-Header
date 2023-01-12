@@ -42,6 +42,7 @@
 - (void)setAssetCollectionSyncedState:(id)arg1 forAssetCollection:(id)arg2 inAlbum:(id)arg3 assetCollectionStateCtag:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)getAlbumSyncedStateForAlbum:(id)arg1 assetCollectionStateBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)getCommentChanges:(id)arg1 inAlbumWithGUID:(id)arg2 albumURLString:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)validateInvitationToken:(id)arg1 albumName:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)acceptInvitationWithToken:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)markAsSpamInvitationForToken:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)markAsSpamInvitationForAlbum:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -78,6 +79,7 @@
 - (id)_reportSpamURL;
 - (id)_unsubscribeURL;
 - (id)_subscribeURL;
+- (id)_validateInvitationURL;
 - (id)_getTokensURLWithBaseURL:(id)arg1;
 - (id)_getAssetsURLWithBaseURL:(id)arg1;
 - (id)_albumSummaryURLWithBaseURL:(id)arg1;

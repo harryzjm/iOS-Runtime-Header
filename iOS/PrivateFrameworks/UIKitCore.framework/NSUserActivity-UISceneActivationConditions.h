@@ -18,6 +18,8 @@
 @property(copy, nonatomic) NSString *targetContentIdentifier;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
+- (void)_setSourceApplication:(id)arg1;
+@property(readonly, nonatomic) NSString *_sourceApplication; // @dynamic _sourceApplication;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

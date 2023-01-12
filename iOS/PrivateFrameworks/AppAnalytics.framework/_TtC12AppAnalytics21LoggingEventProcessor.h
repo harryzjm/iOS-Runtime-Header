@@ -11,6 +11,7 @@
 @interface _TtC12AppAnalytics21LoggingEventProcessor : _TtCs12_SwiftObject
 {
     MISSING_TYPE *logFormatter;
+    MISSING_TYPE *log;
 }
 
 @end

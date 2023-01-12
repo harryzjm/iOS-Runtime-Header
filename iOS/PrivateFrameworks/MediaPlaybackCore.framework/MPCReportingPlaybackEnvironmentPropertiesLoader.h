@@ -10,6 +10,7 @@
 
 @class MPCPlaybackRequestEnvironment, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCReportingPlaybackEnvironmentPropertiesLoader : NSObject <MPCReportingIdentityPropertiesLoading>
 {
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;

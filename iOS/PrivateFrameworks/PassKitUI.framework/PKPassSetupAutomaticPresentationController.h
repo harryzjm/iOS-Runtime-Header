@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property(readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
-- (void)logAggDContextSpecificCheckpointForKey:(id)arg1;
+- (void)logAnalyticsContextSpecificCheckpointForKey:(id)arg1;
 - (id)_contextSpecificStringForAggDKey:(id)arg1;
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_presentMakeDefaultViewControllerForPass:(id)arg1;

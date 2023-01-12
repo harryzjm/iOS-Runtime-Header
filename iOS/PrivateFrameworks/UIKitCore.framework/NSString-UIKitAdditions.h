@@ -8,10 +8,11 @@
 
 #import <UIKitCore/UIItemProviderReading-Protocol.h>
 #import <UIKitCore/UIItemProviderWriting-Protocol.h>
+#import <UIKitCore/_UIMenuImageOrName-Protocol.h>
 
-@class NSArray;
+@class NSArray, UIImage;
 
-@interface NSString (UIKitAdditions) <UIItemProviderReading, UIItemProviderWriting>
+@interface NSString (UIKitAdditions) <UIItemProviderReading, UIItemProviderWriting, _UIMenuImageOrName>
 - (id)queryKeysAndValues;
 - (id)_uikit_unescapedQueryValue;
 - (struct CGSize)drawAtPoint:(struct CGPoint)arg1 forWidth:(double)arg2 withFont:(id)arg3 minFontSize:(double)arg4 actualFontSize:(double *)arg5 lineBreakMode:(long long)arg6 baselineAdjustment:(long long)arg7;
@@ -58,6 +59,8 @@
 - (struct CGSize)_legacy_sizeWithFont:(id)arg1;
 - (struct CGSize)_optimizedSizeWithFont:(id)arg1;
 - (id)_initWithUTF8String:(const char *)arg1 maxLength:(unsigned long long)arg2;
+@property(readonly, nonatomic) NSString *_asMenuElementImageName;
+@property(readonly, nonatomic) UIImage *_asMenuElementImage;
 - (id)_uikit_stringByRemovingFirstMatchFromPrefixes:(id)arg1;
 - (id)_uikit_stringWithWritingDirection:(long long)arg1 asOverride:(_Bool)arg2;
 - (id)_uikit_stringByTrimmingWhitespaceAndNewlines;

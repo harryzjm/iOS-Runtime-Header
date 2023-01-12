@@ -8,21 +8,22 @@
 
 @interface TSCEUUidReferenceMap : NSObject
 {
-    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, TSCEInternalCellRefSet, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, TSCEInternalCellRefSet>>> _cellRefsByUuid;
-    struct unordered_map<TSCEInternalCellReference, TSU::UUIDSet<TSP::UUIDSet>, std::__1::hash<TSCEInternalCellReference>, std::__1::equal_to<TSCEInternalCellReference>, std::__1::allocator<std::__1::pair<const TSCEInternalCellReference, TSU::UUIDSet<TSP::UUIDSet>>>> _uuidsByCellRef;
+    struct unordered_map<TSKUIDStruct, TSCEInternalCellRefSet, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, TSCEInternalCellRefSet>>> _cellRefsByUuid;
+    struct unordered_map<TSCEInternalCellReference, std::unordered_set<TSKUIDStruct>, std::hash<TSCEInternalCellReference>, std::equal_to<TSCEInternalCellReference>, std::allocator<std::pair<const TSCEInternalCellReference, std::unordered_set<TSKUIDStruct>>>> _uuidsByCellRef;
 }
 
 + (id)_stringForInternalCellRef:(const struct TSCEInternalCellReference *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)encodeToArchive:(struct UuidReferenceMapArchive *)arg1 alsoSave31Format:(_Bool)arg2 archiver:(id)arg3;
+- (void)encodeToArchive:(void *)arg1 alsoSave31Format:(_Bool)arg2 archiver:(id)arg3;
+- (void)upgradeForOwners:(id)arg1;
 - (_Bool)tooManyCellRefsFor31FormatArchive;
-- (id)initFromArchive:(const struct UuidReferenceMapArchive *)arg1 dependencyTracker:(struct TSCEDependencyTracker *)arg2;
-- (void)getCellRefs:(struct TSCEReferenceSet *)arg1 referringToUuids:(const vector_4dc5f307 *)arg2;
+- (id)initFromArchive:(const void *)arg1 dependencyTracker:(void *)arg2;
+- (void)getCellRefs:(void *)arg1 referringToUuids:(const void *)arg2;
 - (void)removeAllCellRefsInOwner:(unsigned short)arg1;
 - (void)removeCellRef:(const struct TSCEInternalCellReference *)arg1;
-- (void)removeCellRef:(const struct TSCEInternalCellReference *)arg1 forUuid:(const UUIDData_5fbc143e *)arg2;
-- (void)addCellRef:(const struct TSCEInternalCellReference *)arg1 forUuid:(const UUIDData_5fbc143e *)arg2;
+- (void)removeCellRef:(const struct TSCEInternalCellReference *)arg1 forUuid:(const struct TSKUIDStruct *)arg2;
+- (void)addCellRef:(const struct TSCEInternalCellReference *)arg1 forUuid:(const struct TSKUIDStruct *)arg2;
 - (id)description;
 
 @end

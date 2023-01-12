@@ -12,6 +12,7 @@
 
 @interface PKDiscoveryManifest : NSObject <NSSecureCoding>
 {
+    _Bool _miniCardsAllowed;
     long long _version;
     NSArray *_rules;
     NSArray *_discoveryItems;
@@ -24,6 +25,7 @@
 @property(readonly, nonatomic) PKDiscoveryMessagesMetadata *messagesMetadata; // @synthesize messagesMetadata=_messagesMetadata;
 @property(readonly, nonatomic) NSArray *discoveryItems; // @synthesize discoveryItems=_discoveryItems;
 @property(readonly, nonatomic) NSArray *rules; // @synthesize rules=_rules;
+@property(readonly, nonatomic, getter=isMiniCardsAllowed) _Bool miniCardsAllowed; // @synthesize miniCardsAllowed=_miniCardsAllowed;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

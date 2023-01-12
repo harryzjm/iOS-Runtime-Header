@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureConnection, AVCaptureSession, AVWeakReference, CALayer, NSArray, NSString;
+@class AVCaptureConnection, AVCaptureSession, AVSemanticStyle, AVWeakReference, CALayer, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -42,6 +42,9 @@ __attribute__((visibility("hidden")))
     _Bool filterRenderingEnabled;
     _Bool unoptimizedFilterRenderingEnabled;
     NSArray *videoPreviewFilters;
+    _Bool semanticStyleRenderingSupported;
+    _Bool semanticStyleRenderingEnabled;
+    AVSemanticStyle *semanticStyle;
     double oddScreenWidth;
     double oddScreenScale;
 }

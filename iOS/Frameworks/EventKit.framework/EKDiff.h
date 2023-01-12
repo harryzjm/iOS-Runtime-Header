@@ -30,6 +30,11 @@
 + (void)_addSummaryWithDepth:(long long)arg1 toMutableString:(id)arg2 forRelationshipMultiValueKeys:(id)arg3 firstObject:(id)arg4 secondObject:(id)arg5;
 + (void)_addSummaryWithDepth:(long long)arg1 toMutableString:(id)arg2 forRelationshipSingleValueKeys:(id)arg3 firstObject:(id)arg4 secondObject:(id)arg5;
 + (void)_addSummaryWithDepth:(long long)arg1 toMutableString:(id)arg2 forSingleValueKeys:(id)arg3 firstObject:(id)arg4 secondObject:(id)arg5;
++ (id)summaryKeyForMultiValueModifyOfPropertyKey:(id)arg1;
++ (id)summaryKeyForMultiValueRemoveOfPropertyKey:(id)arg1;
++ (id)summaryKeyForMultiValueAddOfPropertyKey:(id)arg1;
++ (id)_summaryKeyForMultiValueChange:(id)arg1 ofPropertyKey:(id)arg2;
++ (id)summaryKeyForChangedProperty:(id)arg1 subProperty:(id)arg2;
 + (void)_addObject:(id)arg1 forKey:(id)arg2 toDiff:(id)arg3;
 + (void)_populateImmutableKeysForDiff:(id)arg1;
 + (void)_populateIdentityKeysForDiff:(id)arg1;

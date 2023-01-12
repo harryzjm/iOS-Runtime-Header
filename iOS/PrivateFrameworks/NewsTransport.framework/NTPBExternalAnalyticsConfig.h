@@ -17,15 +17,18 @@
     NSString *_eventQueryParameterName;
     NSMutableArray *_proxyHostNames;
     NSMutableArray *_queryParameterConfigs;
+    NSMutableArray *_vpnProfileNames;
     _Bool _usesProxyProfile;
     struct {
         unsigned int usesProxyProfile:1;
     } _has;
 }
 
++ (Class)vpnProfileNamesType;
 + (Class)proxyHostNamesType;
 + (Class)queryParameterConfigType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *vpnProfileNames; // @synthesize vpnProfileNames=_vpnProfileNames;
 @property(retain, nonatomic) NSMutableArray *proxyHostNames; // @synthesize proxyHostNames=_proxyHostNames;
 @property(nonatomic) _Bool usesProxyProfile; // @synthesize usesProxyProfile=_usesProxyProfile;
 @property(retain, nonatomic) NSMutableArray *queryParameterConfigs; // @synthesize queryParameterConfigs=_queryParameterConfigs;
@@ -40,6 +43,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)vpnProfileNamesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)vpnProfileNamesCount;
+- (void)addVpnProfileNames:(id)arg1;
+- (void)clearVpnProfileNames;
 - (id)proxyHostNamesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)proxyHostNamesCount;
 - (void)addProxyHostNames:(id)arg1;

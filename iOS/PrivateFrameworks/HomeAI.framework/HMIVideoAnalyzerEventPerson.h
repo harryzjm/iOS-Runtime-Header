@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMIVideoAnalyzerEventFace;
+@class HMIVideoAnalyzerEventFace, HMIVideoAnalyzerEventTorso, NSUUID;
 
 @interface HMIVideoAnalyzerEventPerson
 {
     _Bool _isBoundingBoxEstimated;
     HMIVideoAnalyzerEventFace *_face;
+    HMIVideoAnalyzerEventTorso *_torso;
 }
 
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly) HMIVideoAnalyzerEventTorso *torso; // @synthesize torso=_torso;
 @property(readonly, getter=hasEstimatedBoundingBox) _Bool isBoundingBoxEstimated; // @synthesize isBoundingBoxEstimated=_isBoundingBoxEstimated;
 @property(readonly) HMIVideoAnalyzerEventFace *face; // @synthesize face=_face;
 - (id)initWithCoder:(id)arg1;
@@ -23,14 +25,16 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)shortDescription;
 - (id)attributeDescriptions;
-- (id)description;
+@property(readonly) NSUUID *sessionEntityUUID;
 - (id)confidence;
-@property(readonly) struct CGRect boundingBoxForFaceTracker;
+@property(readonly) struct CGRect boundingBoxForPersonTracker;
 - (struct CGRect)boundingBox;
+- (id)allEvents;
+- (id)initWithFaceEvent:(id)arg1 torso:(id)arg2;
+- (id)initWithTorsoEvent:(id)arg1;
 - (id)initWithFaceEvent:(id)arg1;
-- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 hasMotionVectors:(_Bool)arg3 face:(id)arg4;
+- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 face:(id)arg3 torso:(id)arg4;
 - (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 face:(id)arg3;
-- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 hasMotionVectors:(_Bool)arg3;
 - (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2;
 
 @end

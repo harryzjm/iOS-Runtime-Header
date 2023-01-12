@@ -10,6 +10,7 @@
 
 @class _MRLyricsTokenProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRLyricsEventProtobuf : PBCodable <NSCopying>
 {
     double _endTime;
@@ -22,21 +23,13 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRLyricsTokenProtobuf *token; // @synthesize token=_token;
-@property(nonatomic) double endTime; // @synthesize endTime=_endTime;
-@property(nonatomic) double startTime; // @synthesize startTime=_startTime;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasToken;
-@property(nonatomic) _Bool hasEndTime;
-@property(nonatomic) _Bool hasStartTime;
 
 @end
 

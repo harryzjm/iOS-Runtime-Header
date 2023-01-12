@@ -12,9 +12,11 @@
 @property(readonly, copy, nonatomic) UIColor *mostInterestingColor;
 @property(readonly, copy, nonatomic) UIColor *accentColor;
 @property(readonly, copy, nonatomic) UIColor *backgroundColor;
+@property(readonly, nonatomic) _Bool sbh_canBeAddedToStack;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetDescription;
 @property(readonly, nonatomic) unsigned long long sbh_supportedSizeClasses;
 @property(readonly, copy, nonatomic) NSString *sbh_widgetName;
 @property(readonly, copy, nonatomic) NSString *sbh_appName;
+@property(readonly, copy, nonatomic) NSString *sbh_galleryItemIdentifier;
 @end
 

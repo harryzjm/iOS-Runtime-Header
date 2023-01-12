@@ -97,6 +97,7 @@
 - (id)currentTransaction;
 @property(readonly, nonatomic) NSArray *sectionControllers;
 - (id)_transactionForFinalSnapshot:(id)arg1 dataSourceDiffer:(id)arg2 shouldSkipRebasingSectionSnapshots:(_Bool)arg3;
+- (id)_transactionForReloadUpdatesWithSnapshot:(id)arg1;
 - (id)_reorderingTransactionForReorderingUpdate:(id)arg1;
 - (void)_resetCurrentTransaction;
 - (_Bool)_isApplyingReorderingTransaction;
@@ -107,7 +108,6 @@
 - (_Bool)canMoveItemAtIndexPath:(id)arg1;
 - (void)_notifyDidApplyForCurrentTransactionIfNeeded;
 - (void)_notifyWillApplyForCurrentTransactionIfNeeded;
-- (_Bool)_shouldNotifyForApplyingSnapshot;
 - (void)_commitRebasedSectionSnapshotsFromCurrentTransactionIfNeeded;
 - (void)_computeCurrentTransactionForFinalSnapshot:(id)arg1 withDataSourceDiffer:(id)arg2;
 - (void)_performApplyWithoutRebasingSectionSnapshots:(CDUnknownBlockType)arg1;
@@ -115,16 +115,15 @@
 - (id)associatedSectionControllerForItemIdentifier:(id)arg1;
 - (void)addAssociatedSectionControllerIfNeeded:(id)arg1;
 - (void)_registerItemRenderers:(id)arg1 rendererIdentifierProvider:(CDUnknownBlockType)arg2;
-- (void)_commitStateAtomicallyWithIdentifiers:(id)arg1 sections:(id)arg2 dataSourceSnapshot:(id)arg3 shouldAdvanceGenerationalUUID:(_Bool)arg4 shouldCopy:(_Bool)arg5;
+- (void)_commitStateAtomically:(id)arg1;
 - (id)_snapshotWithHandlerAtomic:(CDUnknownBlockType)arg1;
 - (_Bool)_canApplySnapshotUpdateWithoutDiffing:(id)arg1;
-- (void)_commitNewDataSource:(id)arg1 withViewUpdates:(id)arg2 viewPropertyAnimator:(id)arg3 customAnimationsProvider:(CDUnknownBlockType)arg4 commitAlongsideHandler:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_commitNewDataSource:(id)arg1 withViewUpdates:(id)arg2 viewPropertyAnimator:(id)arg3 customAnimationsProvider:(CDUnknownBlockType)arg4 animated:(_Bool)arg5 commitAlongsideHandler:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)_reloadViewUpdatesForDiffUpdate:(id)arg1 dataSource:(id)arg2 ignoreInvalidItems:(_Bool)arg3;
 - (id)_reloadViewUpdatesForDiffUpdate:(id)arg1;
-- (void)_commitUpdate:(id)arg1 snapshot:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_commitUpdate:(id)arg1;
+- (void)_commitUpdate:(id)arg1 snapshot:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_pendingReloadUpdatesForSnapshot:(id)arg1;
-- (void)_applyDifferencesFromSnapshot:(id)arg1 viewPropertyAnimator:(id)arg2 customAnimationsProvider:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_applyDifferencesFromSnapshot:(id)arg1 viewPropertyAnimator:(id)arg2 customAnimationsProvider:(CDUnknownBlockType)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_snapshotForSection:(id)arg1;
 - (id)snapshotForSection:(id)arg1;
 - (void)_applyDifferencesFromSnapshot:(id)arg1 toSection:(id)arg2 animatingDifferences:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
@@ -143,6 +142,8 @@
 - (id)snapshot;
 - (id)indexPathForItemIdentifier:(id)arg1;
 - (id)itemIdentifierForIndexPath:(id)arg1;
+- (long long)indexForSectionIdentifier:(id)arg1;
+- (id)sectionIdentifierForIndex:(long long)arg1;
 - (void)insertSectionWithIdentifier:(id)arg1 afterSectionWithIdentifier:(id)arg2;
 - (void)insertSectionWithIdentifier:(id)arg1 beforeSectionWithIdentifier:(id)arg2;
 - (void)appendSectionWithIdentifier:(id)arg1;
@@ -153,6 +154,7 @@
 - (void)insertSectionsWithIdentifiers:(id)arg1 afterSectionWithIdentifier:(id)arg2;
 - (void)insertSectionsWithIdentifiers:(id)arg1 beforeSectionWithIdentifier:(id)arg2;
 - (void)appendSectionsWithIdentifiers:(id)arg1;
+- (void)reconfigureItemsWithIdentifiers:(id)arg1;
 - (void)reloadItemsWithIdentifiers:(id)arg1;
 - (void)moveItemWithIdentifier:(id)arg1 afterItemWithIdentifier:(id)arg2;
 - (void)moveItemWithIdentifier:(id)arg1 beforeItemWithIdentifier:(id)arg2;
@@ -167,6 +169,9 @@
 - (id)sectionIdentifierForSectionContainingItemIdentifier:(id)arg1;
 - (id)itemIdentifiersInSectionWithIdentifier:(id)arg1;
 - (long long)numberOfItemsInSection:(id)arg1;
+@property(readonly, nonatomic) NSArray *reconfiguredItemIdentifiers;
+@property(readonly, nonatomic) NSArray *reloadedItemIdentifiers;
+@property(readonly, nonatomic) NSArray *reloadedSectionIdentifiers;
 @property(readonly, nonatomic) NSArray *itemIdentifiers;
 @property(readonly, nonatomic) NSArray *sectionIdentifiers;
 @property(readonly, nonatomic) long long numberOfSections;
@@ -188,6 +193,7 @@
 @property(readonly, nonatomic) __weak UITableView *tableView;
 - (id)initWithTableView:(id)arg1 cellProvider:(CDUnknownBlockType)arg2 reuseIdentifierProvider:(CDUnknownBlockType)arg3 cellConfigurationHandler:(CDUnknownBlockType)arg4 state:(id)arg5 dataSource:(id)arg6;
 - (id)initWithCollectionView:(id)arg1 cellProvider:(CDUnknownBlockType)arg2 reuseIdentifierProvider:(CDUnknownBlockType)arg3 cellConfigurationHandler:(CDUnknownBlockType)arg4 state:(id)arg5 dataSource:(id)arg6;
+- (void)validateIdentifiers;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

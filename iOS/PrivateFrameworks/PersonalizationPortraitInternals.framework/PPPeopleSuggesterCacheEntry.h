@@ -15,8 +15,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
-@property(nonatomic) double cacheTimeSecondsSince1970; // @synthesize cacheTimeSecondsSince1970=_cacheTimeSecondsSince1970;
 
 @end
 

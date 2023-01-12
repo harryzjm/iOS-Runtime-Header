@@ -15,6 +15,7 @@
 #import <PhotosUI/PUStackedAlbumControllerTransition-Protocol.h>
 #import <PhotosUI/PUStackedAlbumTransitionDelegate-Protocol.h>
 #import <PhotosUI/PXAssetCollectionActionPerformerDelegate-Protocol.h>
+#import <PhotosUI/PXCollectionActionReceiver-Protocol.h>
 #import <PhotosUI/PXCollectionsDataSourceManagerObserver-Protocol.h>
 #import <PhotosUI/PXEditableNavigationTitleViewDelegate-Protocol.h>
 #import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
@@ -30,9 +31,9 @@
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, NSUserActivity, PHCachingImageManager, PHCollection, PHImageRequestOptions, PUAlbumListSectionHeaderView, PUAlbumListTransitionContext, PUAlbumListViewControllerSpec, PUAlbumStreamActivity, PUCollageView, PUCollectionView, PUCollectionsCollectionViewDropDelegate, PUFeedViewController, PUFontManager, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUSectionedGridLayout, PUSessionInfo, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXEditableNavigationTitleView, PXFeatureSpec, PXFeatureSpecManager, PXPeopleAlbumProvider, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitCollectionsDataSourceManagerConfiguration, PXPhotosGlobalFooterView, PXPlacesAlbumCoverProvider, UIAlertAction, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UITableView, UIView, _UIContentUnavailableView;
+@class NSArray, NSMutableSet, NSString, NSUserActivity, PHCachingImageManager, PHCollection, PHImageRequestOptions, PUAlbumListCell, PUAlbumListSectionHeaderView, PUAlbumListTransitionContext, PUAlbumListViewControllerSpec, PUAlbumStreamActivity, PUCollageView, PUCollectionView, PUCollectionsCollectionViewDropDelegate, PUFeedViewController, PUFontManager, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUSectionedGridLayout, PUSessionInfo, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXEditableNavigationTitleView, PXFeatureSpec, PXFeatureSpecManager, PXPeopleAlbumProvider, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitCollectionsDataSourceManagerConfiguration, PXPhotosGlobalFooterView, PXPlacesAlbumCoverProvider, UIAlertAction, UIAlertController, UIBarButtonItem, UICollectionViewLayout, UITableView, UIView, _UIContentUnavailableView;
 
-@interface PUAlbumListViewController : UIViewController <PXAssetCollectionActionPerformerDelegate, PUCollectionsCollectionViewDropDataProvider, UIGestureRecognizerDelegate, PUStackedAlbumTransitionDelegate, PUAlbumStreamActivityDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUCollectionViewReorderDelegate, PUSectionedGridLayoutDelegate, UITableViewDataSource, UITableViewDelegate, PUAlbumListTableViewCellDelegate, UIPopoverPresentationControllerDelegate, PXPhotoLibraryUIChangeObserver, PXSettingsKeyObserver, PXCollectionsDataSourceManagerObserver, PXPlacesSnapshotFactoryDelegate, PXEditableNavigationTitleViewDelegate, PXNavigableCollectionContainer, PXForcedDismissableViewController, PLCloudFeedNavigating, PXNavigableSharedAlbumActivityFeedHostViewController, PUStackedAlbumControllerTransition>
+@interface PUAlbumListViewController : UIViewController <PXAssetCollectionActionPerformerDelegate, PUCollectionsCollectionViewDropDataProvider, UIGestureRecognizerDelegate, PUStackedAlbumTransitionDelegate, PUAlbumStreamActivityDelegate, UICollectionViewDataSource, UICollectionViewDelegate, PUCollectionViewReorderDelegate, PUSectionedGridLayoutDelegate, UITableViewDataSource, UITableViewDelegate, PUAlbumListTableViewCellDelegate, UIPopoverPresentationControllerDelegate, PXPhotoLibraryUIChangeObserver, PXSettingsKeyObserver, PXCollectionActionReceiver, PXCollectionsDataSourceManagerObserver, PXPlacesSnapshotFactoryDelegate, PXEditableNavigationTitleViewDelegate, PXNavigableCollectionContainer, PXForcedDismissableViewController, PLCloudFeedNavigating, PXNavigableSharedAlbumActivityFeedHostViewController, PUStackedAlbumControllerTransition>
 {
     PUAlbumListViewControllerSpec *_spec;
     UIBarButtonItem *_doneButtonItem;
@@ -163,6 +164,7 @@
 - (void)ppt_performPlacesScrollTest:(id)arg1 preparationHandler:(CDUnknownBlockType)arg2 iterations:(long long)arg3 screenDelta:(long long)arg4 delay:(double)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)ppt_navigateToPlacesAndRunPreparationBlock:(CDUnknownBlockType)arg1 thenPerformTest:(CDUnknownBlockType)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)_resetConfiguration;
 @property(readonly, nonatomic) PUFontManager *_fontManager; // @synthesize _fontManager=__fontManager;
 - (void)_updateIfNeeded;
 - (_Bool)_needsUpdate;
@@ -202,6 +204,7 @@
 - (id)collectionView:(id)arg1 targetIndexPathForMoveFromIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (_Bool)collectionView:(id)arg1 canReorderItemAtIndexPath:(id)arg2;
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
@@ -300,24 +303,28 @@
 - (id)newGridViewControllerForFolder:(id)arg1;
 - (id)newGridViewControllerForStandInCollection:(id)arg1;
 - (void)handleSessionInfoAlbumSelection:(id)arg1;
-- (void)handleDeleteAlbumAtIndexPath:(id)arg1;
+- (void)_handleDeleteAlbumAtIndexPath:(id)arg1;
 - (id)_validateNewCollectionTitle:(id)arg1;
 - (void)_updateCreateAlbumTextField:(id)arg1;
 - (void)_dismissPhotosPickerControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleCreateAlbumOrFolder:(_Bool)arg1 isSmartAlbum:(_Bool)arg2 helper:(id)arg3;
 - (void)_handleCreateAlbumOrFolder:(_Bool)arg1 isSmartAlbum:(_Bool)arg2;
 - (long long)_unfilteredFirstReorderableCollectionIndex;
-- (void)handleCreateFolder;
-- (void)handleCreateSmartAlbum;
-- (void)handleCreateAlbum;
 - (void)didSelectItemAtIndexPath:(id)arg1;
 - (void)_didSelectPlaceholderAtIndexPath:(id)arg1;
 - (_Bool)_isPlaceholderEnabled:(long long)arg1;
 - (void)_recursivelyCollectCollectionsIn:(id)arg1 fetchResult:(id)arg2;
 - (void)_handleCancelButton:(id)arg1;
 - (void)_handleDoneButton:(id)arg1;
-- (void)handleCreateSharedAlbum;
 - (void)_handleAlbumCreationAction;
+- (void)newSharedAlbum:(id)arg1;
+- (void)newFolder:(id)arg1;
+- (void)newSmartAlbum:(id)arg1;
+- (void)newAlbum:(id)arg1;
+- (void)_handleDeleteKeyCommand:(id)arg1;
+- (void)_handleRenameKeyCommand:(id)arg1;
+- (void)_handleOpenKeyCommand:(id)arg1;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)_targetIndexPathForMoveFromIndexPath:(id)arg1 toProposedIndexPath:(id)arg2;
 - (id)indexPathForFirstEditableAlbum;
 - (id)indexPathForAddNewAlbumPlaceholder;
@@ -390,6 +397,7 @@
 - (id)_assetsFetchOptions;
 @property(readonly, nonatomic) _Bool isRootSharedAlbumList;
 - (_Bool)isRootFolder;
+@property(readonly, nonatomic) PUAlbumListCell *focusedListCell;
 - (id)assetsFilterPredicate;
 - (unsigned long long)filteringAssetTypes;
 - (void)_ensureEditableTitleView;

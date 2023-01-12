@@ -4,34 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
-#import <UIKitCore/UIContextMenuInteractionDelegate_Private-Protocol.h>
-#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UIDatePickerCompactDateLabelDelegate-Protocol.h>
+#import <UIKitCore/_UIDatePickerCompactTimeLabelDelegate-Protocol.h>
+#import <UIKitCore/_UIDatePickerOverlayPresentationDelegate-Protocol.h>
 #import <UIKitCore/_UIDatePickerViewComponent-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSString, UIColor, UIDatePicker, UILabel, UIPointerInteraction, UIView, _UIDatePickerDataModel;
+@class NSArray, NSDateFormatter, NSDictionary, NSString, UIColor, UIDatePicker, UILayoutGuide, UIPanGestureRecognizer, _UIDatePickerCompactDateLabel, _UIDatePickerCompactTimeLabel, _UIDatePickerDataModel, _UIDatePickerOverlayPresentation;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerIOSCompactView <UIContextMenuInteractionDelegate, UIContextMenuInteractionDelegate_Private, UIPointerInteractionDelegate, _UIDatePickerViewComponent>
+@interface _UIDatePickerIOSCompactView <_UIDatePickerCompactTimeLabelDelegate, _UIDatePickerCompactDateLabelDelegate, _UIDatePickerOverlayPresentationDelegate, _UIDatePickerViewComponent>
 {
     struct {
         unsigned int isEnabled:1;
+        unsigned int implementsCustomDidSelectComponent:1;
     } _flags;
-    NSDateFormatter *_dateFormatter;
-    UIView *_dateBackgroundPlatter;
-    UILabel *_dateLabel;
-    NSDateFormatter *_timeFormatter;
-    UIView *_timeBackgroundPlatter;
-    UILabel *_timeLabel;
+    NSDateFormatter *_dateFormatterMedium;
+    NSDateFormatter *_dateFormatterShort;
+    UILayoutGuide *_timeViewLayoutGuide;
+    UILayoutGuide *_contentLayoutGuide;
+    NSDateFormatter *_layoutFormatter;
+    _Bool _dateOnLeadingSide;
     NSArray *_dateTimeConstraints;
-    UIPointerInteraction *_pointerInteraction;
+    _UIDatePickerOverlayPresentation *_presentation;
+    long long _activeComponent;
+    UIPanGestureRecognizer *_panGestureRecognizer;
     UIDatePicker *_datePicker;
     _UIDatePickerDataModel *_data;
+    _UIDatePickerCompactDateLabel *_dateView;
+    _UIDatePickerCompactTimeLabel *_timeView;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _UIDatePickerCompactTimeLabel *timeView; // @synthesize timeView=_timeView;
+@property(readonly, nonatomic) _UIDatePickerCompactDateLabel *dateView; // @synthesize dateView=_dateView;
 @property(retain, nonatomic) _UIDatePickerDataModel *data; // @synthesize data=_data;
 @property(nonatomic) __weak UIDatePicker *datePicker; // @synthesize datePicker=_datePicker;
+- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
 - (_Bool)hasDefaultSize;
 - (struct CGSize)defaultSize;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1;
@@ -44,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) _Bool allowsZeroCountDownDuration;
 - (void)didChangeToday;
 - (void)didReset;
+- (void)didChangeRoundsToMinuteInterval;
 - (void)didChangeMinuteInterval;
 - (void)didChangeMaximumDate;
 - (void)didChangeMinimumDate;
@@ -53,20 +62,34 @@ __attribute__((visibility("hidden")))
 - (void)didChangeLocale;
 - (void)didChangeMode;
 @property(readonly, nonatomic) long long datePickerStyle;
-- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
-- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
-- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
-- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
-- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
-- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
-- (id)_targetedPreviewForContextMenu;
-- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)_reloadTimeViewTimeFormat;
+- (void)updateTimeZoneDisplay;
+@property(retain, nonatomic) NSDictionary *overrideAttributes;
+- (void)_resignActiveComponentAnimated:(_Bool)arg1;
+- (void)setActiveComponent:(long long)arg1;
+- (void)_datePickerPresentation:(id)arg1 didChangeActiveMode:(long long)arg2;
+- (void)didChangeCompactStyleDelegate;
+- (id)createDatePickerForCompactDateLabel:(id)arg1;
+- (id)createDatePickerForCompactTimeLabel:(id)arg1;
+- (void)compactDateLabelDidEndEditing:(id)arg1;
+- (void)compactDateLabelDidBeginEditing:(id)arg1;
+- (_Bool)compactTimeLabel:(id)arg1 shouldDismissForInteractionAtLocation:(struct CGPoint)arg2;
+- (void)compactTimeLabelWillBecomeFirstResponder:(id)arg1;
+- (void)compactTimeLabelDidEndEditing:(id)arg1;
+- (void)compactTimeLabelDidBeginEditing:(id)arg1;
+- (void)compactTimeLabel:(id)arg1 didSelectTime:(id)arg2;
+- (void)_didReceivePanGestureRecognizer:(id)arg1;
 - (void)updateConstraints;
 - (void)tintColorDidChange;
+@property(readonly, nonatomic) _Bool alignConstraintsToLayoutGuide;
+- (void)_updateDateViewTextAlignment;
 - (void)_updateEnabledStyling;
 - (void)_updateUI;
+- (void)_updateDateBeforeTimeValue;
+- (void)willMoveToSuperview:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setContentHorizontalAlignment:(long long)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) double contentWidth;

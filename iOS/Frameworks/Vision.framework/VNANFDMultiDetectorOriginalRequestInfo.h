@@ -11,15 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface VNANFDMultiDetectorOriginalRequestInfo : NSObject
 {
-    NSString *_requestRevisionKey;
+    NSString *_originatingRequestSpecifierKey;
     unsigned long long _originalRequestResultsIndex;
 }
 
-+ (id)requestClassToMultiDetectorClassPerRequestRevision;
++ (id)originatingRequestSpecifierToDetectorClassMap;
++ (id)requestPropertiesFromRequestKey:(id)arg1;
++ (id)requestClassNameFromRequestKey:(id)arg1;
++ (id)requestKeyFromRequest:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly) unsigned long long originalRequestResultsIndex; // @synthesize originalRequestResultsIndex=_originalRequestResultsIndex;
-@property(readonly) NSString *requestRevisionKey; // @synthesize requestRevisionKey=_requestRevisionKey;
-- (id)initWithProcessingOptionRequestRevisionKey:(id)arg1 originalRequestResultsIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) unsigned long long originalRequestResultsIndex; // @synthesize originalRequestResultsIndex=_originalRequestResultsIndex;
+@property(readonly, nonatomic) NSString *originatingRequestSpecifierKey; // @synthesize originatingRequestSpecifierKey=_originatingRequestSpecifierKey;
+- (id)description;
+- (id)initWithOriginatingRequestSpecifierProcessingOptionKey:(id)arg1 originalRequestResultsIndex:(unsigned long long)arg2;
 
 @end
 

@@ -8,15 +8,19 @@
 
 #import <CoreBluetooth/CBActivatable-Protocol.h>
 #import <CoreBluetooth/CBDeviceReporting-Protocol.h>
+#import <CoreBluetooth/CBErrorReporting-Protocol.h>
+#import <CoreBluetooth/CBInterruptable-Protocol.h>
 #import <CoreBluetooth/CBLabelable-Protocol.h>
+#import <CoreBluetooth/CBRemotable-Protocol.h>
 #import <CoreBluetooth/CBStateReporting-Protocol.h>
 #import <CoreBluetooth/CBSystemOverridable-Protocol.h>
+#import <CoreBluetooth/CBXPCReceivable-Protocol.h>
 #import <CoreBluetooth/CUXPCCodable-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class CBDevice, NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
-@interface CBDiscovery : NSObject <CBSystemOverridable, CUXPCCodable, CBActivatable, CBDeviceReporting, CBLabelable, CBStateReporting>
+@interface CBDiscovery : NSObject <CBXPCReceivable, CUXPCCodable, CBActivatable, CBDeviceReporting, CBErrorReporting, CBInterruptable, CBLabelable, CBRemotable, CBStateReporting, CBSystemOverridable>
 {
     _Bool _activateCalled;
     CDUnknownBlockType _activateCompletion;
@@ -27,54 +31,71 @@
     _Bool _invalidateDone;
     struct LogCategory *_ucat;
     NSObject<OS_xpc_object> *_xpcCnx;
+    BOOL _bleRSSIThresholdHint;
     _Bool _disabledActive;
     _Bool _disabledPending;
+    _Bool _keepAlive;
     unsigned int _systemOverrideFlags;
     int _bleScanRate;
     int _bleScanRateOverride;
+    int _bleScanRateScreenOff;
     unsigned int _clientID;
     unsigned int _internalFlags;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
-    CDUnknownBlockType _invalidationHandler;
-    CDUnknownBlockType _deviceFoundHandler;
-    CDUnknownBlockType _deviceLostHandler;
-    NSString *_label;
+    unsigned int _memoryPressureFlags;
     long long _bluetoothState;
     CDUnknownBlockType _bluetoothStateChangedHandler;
-    CDUnknownBlockType _systemOverrideHandler;
-    unsigned long long _changeFlags;
-    unsigned long long _discoveryFlags;
+    CDUnknownBlockType _deviceFoundHandler;
+    CDUnknownBlockType _deviceLostHandler;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _interruptionHandler;
+    CDUnknownBlockType _invalidationHandler;
+    NSString *_label;
+    CBDevice *_remoteDevice;
+    CDUnknownBlockType _systemOverrideHandler;
+    unsigned long long _changeFlags;
+    NSArray *_deviceFilter;
+    unsigned long long _discoveryFlags;
+    unsigned long long _extraDiscoveryFlags;
     NSObject<OS_xpc_object> *_testListenerEndpoint;
 }
 
++ (id)devicesWithDiscoveryFlags:(unsigned long long)arg1 endpoint:(id)arg2 error:(id *)arg3;
++ (id)devicesWithDiscoveryFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
+@property(nonatomic) unsigned int memoryPressureFlags; // @synthesize memoryPressureFlags=_memoryPressureFlags;
+@property(nonatomic) _Bool keepAlive; // @synthesize keepAlive=_keepAlive;
 @property(nonatomic) unsigned int internalFlags; // @synthesize internalFlags=_internalFlags;
+@property(nonatomic) unsigned long long extraDiscoveryFlags; // @synthesize extraDiscoveryFlags=_extraDiscoveryFlags;
 @property(nonatomic) _Bool disabledPending; // @synthesize disabledPending=_disabledPending;
 @property(nonatomic) _Bool disabledActive; // @synthesize disabledActive=_disabledActive;
 @property(nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
-@property(nonatomic) int bleScanRateOverride; // @synthesize bleScanRateOverride=_bleScanRateOverride;
-@property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
-@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(nonatomic) unsigned long long discoveryFlags; // @synthesize discoveryFlags=_discoveryFlags;
+@property(copy, nonatomic) NSArray *deviceFilter; // @synthesize deviceFilter=_deviceFilter;
 @property(nonatomic) unsigned long long changeFlags; // @synthesize changeFlags=_changeFlags;
+@property(nonatomic) int bleScanRateScreenOff; // @synthesize bleScanRateScreenOff=_bleScanRateScreenOff;
+@property(nonatomic) int bleScanRateOverride; // @synthesize bleScanRateOverride=_bleScanRateOverride;
 @property(nonatomic) int bleScanRate; // @synthesize bleScanRate=_bleScanRate;
+@property(nonatomic) BOOL bleRSSIThresholdHint; // @synthesize bleRSSIThresholdHint=_bleRSSIThresholdHint;
 @property(copy, nonatomic) CDUnknownBlockType systemOverrideHandler; // @synthesize systemOverrideHandler=_systemOverrideHandler;
 @property(nonatomic) unsigned int systemOverrideFlags; // @synthesize systemOverrideFlags=_systemOverrideFlags;
-@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
-@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
+@property(retain, nonatomic) CBDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
+@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
-@property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
+@property(readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
+- (void)_xpcReceivedSystemOverrideChanged:(id)arg1;
 - (void)_xpcReceivedPowerStateChanged:(id)arg1;
 - (void)_xpcReceivedDeviceLost:(id)arg1;
 - (void)_xpcReceivedDeviceFound:(id)arg1;
 - (void)_xpcReceivedMessage:(id)arg1;
-- (void)_xpcReceivedEvent:(id)arg1;
+- (void)xpcReceivedMessage:(id)arg1;
 - (void)_update;
 - (void)_updateIfNeededWithBlock:(CDUnknownBlockType)arg1;
 - (void)_lostAllDevices;
@@ -90,7 +111,7 @@
 - (void)_activate;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)updateWithXPCSubscriberInfo:(id)arg1;
-- (unsigned long long)updateWithCBDiscovery:(id)arg1 updateFlags:(unsigned long long)arg2;
+- (_Bool)updateWithCBDiscovery:(id)arg1;
 - (id)descriptionWithLevel:(int)arg1;
 - (id)description;
 - (void)encodeWithXPCObject:(id)arg1;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UICGImageDecompressor;
+@class _UIOldCGImageDecompressor;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageAsyncCGImageContent
 {
     long long _orientation;
     _Bool _finishedDecompressing;
-    _UICGImageDecompressor *_decompressor;
+    _UIOldCGImageDecompressor *_decompressor;
 }
 
 - (void).cxx_destruct;

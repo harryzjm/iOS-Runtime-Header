@@ -15,9 +15,9 @@
     NSString *_powerAssertionId;
 }
 
-+ (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 object1:(id)arg3 object2:(id)arg4 taskName:(id)arg5 priority:(int)arg6 canBeCancelled:(_Bool)arg7;
-+ (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 object:(id)arg3 taskName:(id)arg4 priority:(int)arg5 canBeCancelled:(_Bool)arg6;
-+ (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 taskName:(id)arg3 priority:(int)arg4 canBeCancelled:(_Bool)arg5;
++ (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 object1:(id)arg3 object2:(id)arg4 taskName:(id)arg5 priority:(unsigned long long)arg6 canBeCancelled:(_Bool)arg7;
++ (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 object:(id)arg3 taskName:(id)arg4 priority:(unsigned long long)arg5 canBeCancelled:(_Bool)arg6;
++ (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 taskName:(id)arg3 priority:(unsigned long long)arg4 canBeCancelled:(_Bool)arg5;
 + (id)invocationWithMethodSignature:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *powerAssertionId; // @synthesize powerAssertionId=_powerAssertionId;

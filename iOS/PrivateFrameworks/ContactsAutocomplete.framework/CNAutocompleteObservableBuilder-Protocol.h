@@ -19,7 +19,7 @@
 - (void)addDirectoryServerObservable:(CNObservable *)arg1;
 - (void)addCachedDirectoryServerObservable:(CNObservable *)arg1;
 - (void)addSupplementalObservable:(CNObservable *)arg1;
-- (void)addDuetObservable:(CNObservable *)arg1 doOnTimeout:(void (^)(void))arg2;
+- (void)addPredictionObservable:(CNObservable *)arg1 doOnTimeout:(void (^)(void))arg2;
 - (void)addLocalExtensionObservable:(CNObservable *)arg1;
 - (void)addSuggestionsObservable:(CNObservable *)arg1;
 - (void)addCoreRecentsObservable:(CNObservable *)arg1;

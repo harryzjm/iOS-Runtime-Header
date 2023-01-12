@@ -34,6 +34,8 @@
 @property(readonly, copy, nonatomic) id <ECEmailAddressConvertible> emailAddress;
 @property(readonly, copy, nonatomic) NSString *commonName;
 @property(readonly, nonatomic) struct __SecCertificate *certificate;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
@@ -42,7 +44,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

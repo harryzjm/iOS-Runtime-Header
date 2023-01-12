@@ -34,6 +34,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)hasSurfacedNotificationFor:(id)arg1;
 - (void)_didSurfaceNotificationFor:(id)arg1;
+- (void)forceStagedDetectionsToSurfaceImmediatelyWithAdvertisement:(id)arg1;
 - (void)mergeWithAnotherDeviceRecord:(id)arg1;
 - (id)getDetectionResultsToPush;
 - (void)stageDetectionResults:(id)arg1;

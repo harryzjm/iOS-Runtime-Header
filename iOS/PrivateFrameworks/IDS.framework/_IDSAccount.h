@@ -8,7 +8,7 @@
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSSet, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSMapTable, NSMutableArray, NSString;
 
 @interface _IDSAccount : NSObject <IDSDaemonListenerProtocol>
 {
@@ -46,6 +46,7 @@
 - (void)account:(id)arg1 localDeviceAdded:(id)arg2;
 - (void)account:(id)arg1 dependentDevicesUpdatedUponReconnect:(id)arg2;
 - (void)account:(id)arg1 dependentDevicesUpdated:(id)arg2;
+- (void)account:(id)arg1 pseudonymsChanged:(id)arg2;
 - (void)account:(id)arg1 displayNameChanged:(id)arg2;
 - (void)account:(id)arg1 loginChanged:(id)arg2;
 - (void)account:(id)arg1 profileChanged:(id)arg2;
@@ -66,16 +67,13 @@
 - (void)_callConnectedDevicesChanged;
 - (void)_callNearbyDevicesChanged;
 - (void)_callDevicesChanged;
-- (id)connectedDevices;
+@property(readonly, nonatomic) NSArray *connectedDevices;
 @property(readonly, nonatomic) NSArray *nearbyDevices;
 @property(readonly, nonatomic) NSArray *devices;
 @property(readonly, nonatomic) NSArray *suppressedDevices;
 - (void)_reloadCachedDevices;
 - (void)_loadCachedDevices;
 - (void)_updateDependentDevicesWithDevicesInfo:(id)arg1;
-- (void)deactivateAlias:(id)arg1;
-- (void)activateAlias:(id)arg1;
-@property(readonly, nonatomic) NSSet *activeAliases;
 @property(retain, nonatomic) NSString *displayName;
 @property(retain, nonatomic) NSString *regionBasePhoneNumber;
 @property(retain, nonatomic) NSString *regionID;
@@ -97,6 +95,8 @@
 @property(readonly, nonatomic) NSString *pushTopic;
 @property(readonly, nonatomic) NSString *primaryServiceName;
 @property(readonly, nonatomic) NSString *serviceName;
+@property(readonly, nonatomic) NSArray *pseudonyms;
+@property(readonly, nonatomic) NSDictionary *pseudonymURIMap;
 @property(readonly, nonatomic) NSArray *handles;
 - (_Bool)_isInvisibleAlias:(id)arg1;
 @property(readonly, nonatomic) NSArray *aliasesToRegister;
@@ -110,7 +110,7 @@
 - (void)updateAccountWithAccountInfo:(id)arg1;
 @property(retain, nonatomic) NSDictionary *accountInfo;
 @property(readonly, nonatomic) _Bool isActive;
-@property(readonly, nonatomic) _Bool isTransientWhitelistedAccount;
+@property(readonly, nonatomic) _Bool isTransientAllowlistedAccount;
 @property(readonly, nonatomic) _Bool isInTransientRegistrationState;
 - (void)_setObject:(id)arg1 forKey:(id)arg2;
 - (id)_objectForKey:(id)arg1;

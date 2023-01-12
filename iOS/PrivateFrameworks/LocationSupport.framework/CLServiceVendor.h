@@ -35,6 +35,8 @@
 - (id)getServiceWithName:(id)arg1;
 - (id)setRecordingTriggerMap:(id)arg1 outputPathBase:(id)arg2;
 - (void)setServiceReplacementMap:(id)arg1 missBehavior:(int)arg2;
+- (void)amendServiceReplacementMap:(id)arg1 missBehavior:(int)arg2;
+- (int)missBehavior;
 - (_Bool)isTimeCoercionEnabled;
 - (void)enableTimeCoercion;
 - (id)init;

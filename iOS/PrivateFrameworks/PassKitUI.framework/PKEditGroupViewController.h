@@ -22,6 +22,7 @@
     long long _editStyle;
     struct CGSize _imageSizeNeeded;
     id <PKEditGroupViewControllerDelegate> _delegate;
+    _Bool _isForWatch;
 }
 
 - (void).cxx_destruct;
@@ -53,7 +54,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 style:(long long)arg3 placeholders:(id)arg4 delegate:(id)arg5;
+- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 style:(long long)arg3 placeholders:(id)arg4 isForWatch:(_Bool)arg5 delegate:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

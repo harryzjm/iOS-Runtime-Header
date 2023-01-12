@@ -36,7 +36,7 @@
 + (Class)mutableClass;
 + (id)editedStrokeFromModelStroke:(id)arg1 selectedStroke:(id)arg2;
 + (long long)indexOfStroke:(id)arg1 strokeArray:(id)arg2;
-+ (id)instanceWithArchive:(const struct StrokeArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) double i_actualWidth; // @synthesize i_actualWidth=_actualWidth;
 @property(copy, nonatomic, setter=i_setPattern:) TSDStrokePattern *i_pattern; // @synthesize i_pattern=_pattern;
@@ -109,8 +109,8 @@
 - (id)initWithColor:(id)arg1 width:(double)arg2 cap:(int)arg3 join:(int)arg4 pattern:(id)arg5 miterLimit:(double)arg6;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (void)saveToArchive:(struct StrokeArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct StrokeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

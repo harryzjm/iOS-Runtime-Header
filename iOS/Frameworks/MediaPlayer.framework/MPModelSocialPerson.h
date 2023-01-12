@@ -18,6 +18,7 @@
 + (id)__biography_KEY;
 + (id)__handle_KEY;
 + (id)__uncensoredName_KEY;
++ (long long)genericObjectType;
 - (id)artworkCatalog;
 
 // Remaining properties

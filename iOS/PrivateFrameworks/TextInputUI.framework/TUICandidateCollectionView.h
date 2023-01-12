@@ -10,6 +10,7 @@
 {
 }
 
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_updateUsesStaticScrollBar;
 - (_Bool)_shouldFadeCellsForBoundChangeWhileRotating;
 

@@ -4,48 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLKClockTimerToken, NTKRichComplicationDialView, NTKWorldClockRichComplicationHandsBaseView, UIColor, UILabel, WorldClockCity;
+@class NTKWorldClockGraphicCircularView, UIColor;
 
 @interface NTKWorldClockRichComplicationBaseCircularView
 {
-    struct {
-        double cityNameFontSize;
-        double cityNameBaselineOffsetNorthSide;
-        double cityNameBaselineOffsetSouthSide;
-        double dialDiameter;
-        struct CGSize majorTickSize;
-        struct CGSize minorTickSize;
-    } _layoutConstants;
-    NTKRichComplicationDialView *_dialView;
-    UILabel *_cityNameLabel;
-    NTKWorldClockRichComplicationHandsBaseView *_handsView;
-    WorldClockCity *_city;
-    CLKClockTimerToken *_clockTimerToken;
-    _Bool _positionLabelNorthSide;
-    UIColor *_daytimeBackgroundColor;
-    UIColor *_daytimeHandsColor;
-    UIColor *_daytimeHandsDotColor;
-    UIColor *_nighttimeBackgroundColor;
-    UIColor *_nighttimeHandsColor;
-    UIColor *_nighttimeHandsDotColor;
+    NTKWorldClockGraphicCircularView *_worldClockCircularView;
 }
 
 - (void).cxx_destruct;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;
+- (void)setFilterProvider:(id)arg1;
 - (long long)tritiumUpdateMode;
-- (_Bool)_shouldUseDaytimeColoring;
-@property(retain, nonatomic) UIColor *nighttimeHandsDotColor; // @synthesize nighttimeHandsDotColor=_nighttimeHandsDotColor;
-@property(retain, nonatomic) UIColor *nighttimeHandsColor; // @synthesize nighttimeHandsColor=_nighttimeHandsColor;
-@property(retain, nonatomic) UIColor *nighttimeBackgroundColor; // @synthesize nighttimeBackgroundColor=_nighttimeBackgroundColor;
-@property(retain, nonatomic) UIColor *daytimeHandsDotColor; // @synthesize daytimeHandsDotColor=_daytimeHandsDotColor;
-@property(retain, nonatomic) UIColor *daytimeHandsColor; // @synthesize daytimeHandsColor=_daytimeHandsColor;
-@property(retain, nonatomic) UIColor *daytimeBackgroundColor; // @synthesize daytimeBackgroundColor=_daytimeBackgroundColor;
-- (void)_updateUI;
+@property(retain, nonatomic) UIColor *nighttimeHandsDotColor;
+@property(retain, nonatomic) UIColor *nighttimeHandsColor;
+@property(retain, nonatomic) UIColor *nighttimeBackgroundColor;
+@property(retain, nonatomic) UIColor *daytimeHandsDotColor;
+@property(retain, nonatomic) UIColor *daytimeHandsColor;
+@property(retain, nonatomic) UIColor *daytimeBackgroundColor;
 - (void)_stopClockUpdates;
 - (void)_startClockUpdates;
+- (void)_applyPaused;
 - (_Bool)_shouldAnimateWithTemplateUpdateReason:(long long)arg1;
-- (void)_applyPausedUpdate;
 - (void)setPaused:(_Bool)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)makeBackgroundTransparent;

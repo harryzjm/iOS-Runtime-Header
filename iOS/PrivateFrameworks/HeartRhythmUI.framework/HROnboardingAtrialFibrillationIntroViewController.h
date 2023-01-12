@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 #import <HeartRhythmUI/UITextFieldDelegate-Protocol.h>
 
-@class HKHeartRhythmAvailability, HRStackedButtonView, NSArray, NSLayoutConstraint, NSNumber, NSString, UIButton, UILabel, UIView;
+@class HRStackedButtonView, NSArray, NSLayoutConstraint, NSNumber, NSString, UIButton, UILabel, UIView;
 
-@interface HROnboardingAtrialFibrillationIntroViewController <HRStackedButtonViewDelegate, UITextFieldDelegate>
+@interface HROnboardingAtrialFibrillationIntroViewController : HKOnboardingBaseViewController <HRStackedButtonViewDelegate, UITextFieldDelegate>
 {
     _Bool _learnMoreContentExpanded;
-    HKHeartRhythmAvailability *_availability;
     NSNumber *_activeWatchNeedsLocationCheck;
     UIView *_heroView;
     UILabel *_titleLabel;
@@ -39,13 +40,12 @@
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIView *heroView; // @synthesize heroView=_heroView;
 @property(retain, nonatomic) NSNumber *activeWatchNeedsLocationCheck; // @synthesize activeWatchNeedsLocationCheck=_activeWatchNeedsLocationCheck;
-@property(retain, nonatomic) HKHeartRhythmAvailability *availability; // @synthesize availability=_availability;
+- (id)seedExpiredBodyString;
 - (id)watchOSVersionTooLowBodyString;
-- (id)deviceNotSupportedBodyString;
 - (id)featureDisabledBodyString;
+- (id)locationFeatureIneligiblePromptBodyString;
 - (id)locationFeatureAlertAckButtonString;
 - (id)locationNotFoundPromptBodyString;
-- (id)locationFeatureIneligiblePromptBodyString;
 - (id)buttonTitleString;
 - (id)footnoteString;
 - (id)learnMoreString;
@@ -62,8 +62,9 @@
 - (double)_assetImageBottomToTitleFirstBaseline;
 - (id)_titleFont;
 - (id)_titleFontTextStyle;
+- (void)presentLearnMoreAlertWithFeatureDisabledMessage;
+- (void)_isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocationForActiveWatch:(CDUnknownBlockType)arg1;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
-- (_Bool)_activeWatchNeedsLocationCheck;
 - (void)_presentFeatureAlertWithMessage:(id)arg1;
 - (void)learnMoreButtonTapped:(id)arg1;
 - (void)_updateViewsForContentExpansionState:(_Bool)arg1;
@@ -75,7 +76,7 @@
 - (id)_createHeroView;
 - (void)setUpConstraints;
 - (void)setUpUI;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

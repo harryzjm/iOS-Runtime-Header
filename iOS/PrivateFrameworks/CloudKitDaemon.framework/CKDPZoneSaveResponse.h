@@ -10,7 +10,6 @@
 
 @class CKDPZoneCapabilities;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneSaveResponse : PBCodable <NSCopying>
 {
     CKDPZoneCapabilities *_capabilities;

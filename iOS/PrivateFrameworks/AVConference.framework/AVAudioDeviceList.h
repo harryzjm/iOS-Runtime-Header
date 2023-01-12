@@ -13,6 +13,7 @@
     AVInternalDeviceList *_internalList;
 }
 
++ (id)deviceForDeviceID:(unsigned int)arg1;
 + (id)deviceForUID:(id)arg1;
 + (_Bool)setInputDevice:(id)arg1;
 + (id)currentInputDevice;

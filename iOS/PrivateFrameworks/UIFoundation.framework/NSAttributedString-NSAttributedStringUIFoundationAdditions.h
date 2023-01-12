@@ -11,6 +11,7 @@
 + (id)allowedSecureCodingClasses;
 + (_Bool)_isAttributedStringAgent;
 + (id)attributedStringWithAttachment:(id)arg1;
++ (id)_sharedAttachmentString;
 - (long long)itemNumberInTextList:(id)arg1 atIndex:(unsigned long long)arg2;
 - (struct _NSRange)rangeOfTextList:(id)arg1 atIndex:(unsigned long long)arg2;
 - (_Bool)_atEndOfTextTableRow:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -51,7 +52,7 @@
 - (unsigned long long)nextWordFromIndex:(unsigned long long)arg1 forward:(_Bool)arg2;
 - (unsigned long long)lineBreakByHyphenatingBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2;
 - (unsigned long long)lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2;
-- (unsigned long long)_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2 usesAlternativeBreaker:(_Bool)arg3;
+- (unsigned long long)_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2 usesAlternativeBreaker:(_Bool)arg3 lineBreakStrategy:(unsigned long long)arg4;
 - (struct _NSRange)doubleClickAtIndex:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
 - (struct _NSRange)doubleClickAtIndex:(unsigned long long)arg1;
 - (id)defaultLanguage;
@@ -64,8 +65,8 @@
 - (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2;
 - (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2 context:(id)arg3;
 - (id)_ui_attributedSubstringFromRange:(struct _NSRange)arg1 withTrackingAdjustment:(double)arg2;
-- (void)_ui_scaleAttributes:(id)arg1 withFont:(id)arg2 byScaleFactor:(double)arg3;
 - (id)_ui_attributedSubstringFromRange:(struct _NSRange)arg1 scaledByScaleFactor:(double)arg2;
 - (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2 context:(id)arg3;
+- (id)initWithAttachment:(id)arg1 attributes:(id)arg2;
 @end
 

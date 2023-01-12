@@ -19,7 +19,7 @@
 - (void)labelManagerDidLayout;
 - (void)mapLabelsDidLayout:(id)arg1;
 - (void)didUpdateSceneStatus:(unsigned char)arg1;
-- (id)initShouldRasterize:(_Bool)arg1 inBackground:(_Bool)arg2 contentScale:(double)arg3 auditToken:(id)arg4;
+- (id)initShouldRasterize:(_Bool)arg1 inBackground:(_Bool)arg2 contentScale:(double)arg3 auditToken:(id)arg4 mapViewPurpose:(long long)arg5 allowsAntialiasing:(_Bool)arg6;
 - (void)_axSetMapLabelLayoutTimer:(id)arg1;
 - (id)_axMapLabelLayoutTimer;
 - (void)_axMapVisibleRegionDidChange;

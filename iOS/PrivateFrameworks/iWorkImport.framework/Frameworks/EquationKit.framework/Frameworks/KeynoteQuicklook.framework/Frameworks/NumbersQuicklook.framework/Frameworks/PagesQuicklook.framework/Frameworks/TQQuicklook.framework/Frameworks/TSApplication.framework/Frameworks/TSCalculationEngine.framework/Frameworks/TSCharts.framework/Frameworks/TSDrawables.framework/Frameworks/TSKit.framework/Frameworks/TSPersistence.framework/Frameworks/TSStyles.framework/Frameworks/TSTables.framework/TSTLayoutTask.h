@@ -8,25 +8,25 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class NSMutableArray, TSTMasterLayout;
+@class NSMutableArray, TSTLayoutEngine;
 
 @interface TSTLayoutTask : NSObject <NSCopying>
 {
-    TSTMasterLayout *_masterLayout;
+    TSTLayoutEngine *_layoutEngine;
     NSMutableArray *_cellStatesToLayout;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *cellStatesToLayout; // @synthesize cellStatesToLayout=_cellStatesToLayout;
-@property(readonly, nonatomic) __weak TSTMasterLayout *masterLayout; // @synthesize masterLayout=_masterLayout;
+@property(readonly, nonatomic) __weak TSTLayoutEngine *layoutEngine; // @synthesize layoutEngine=_layoutEngine;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)writeToMasterLayoutCaches:(id)arg1;
+- (void)writeToLayoutEngineCaches:(id)arg1;
 - (void)enumerateCellStatesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)clear;
 - (void)addCellState:(id)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfCellStates;
 - (id)initWithLayoutTask:(id)arg1;
-- (id)initWithMasterLayout:(id)arg1;
+- (id)initWithLayoutEngine:(id)arg1;
 
 @end
 

@@ -44,6 +44,7 @@
     _Bool _rotating;
     _Bool _occluded;
     _Bool _active;
+    _Bool _addsFocusGuidesForWrapping;
     id <SBFolderControllerDelegate> _folderDelegate;
     SBFolder *_folder;
     id <SBIconListLayoutProvider> _listLayoutProvider;
@@ -73,6 +74,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBIconListPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property(retain, nonatomic) SBFolderControllerAnimationContext *animationContext; // @synthesize animationContext=_animationContext;
+@property(readonly, nonatomic) _Bool addsFocusGuidesForWrapping; // @synthesize addsFocusGuidesForWrapping=_addsFocusGuidesForWrapping;
 @property(copy, nonatomic) SBFolderControllerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) UIStatusBar *fakeStatusBar; // @synthesize fakeStatusBar=_fakeStatusBar;
 @property(retain, nonatomic) id <BSInvalidatable> statusBarAssertion; // @synthesize statusBarAssertion=_statusBarAssertion;
@@ -103,6 +105,7 @@
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (id)accessibilityTintColorForScreenRect:(struct CGRect)arg1;
+- (id)preferredFocusEnvironments;
 @property(readonly, copy, nonatomic) NSSet *presentedIconLocations;
 - (_Bool)isPresentingIconLocation:(id)arg1;
 - (double)minimumHomeScreenScaleForFolderControllerBackgroundView:(id)arg1;
@@ -128,6 +131,7 @@
 - (void)folderView:(id)arg1 iconListView:(id)arg2 iconDragItem:(id)arg3 willAnimateDropWithAnimator:(id)arg4;
 - (id)folderView:(id)arg1 iconListView:(id)arg2 previewForDroppingIconDragItem:(id)arg3 proposedPreview:(id)arg4;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 willUseIconView:(id)arg3 forDroppingIconDragItem:(id)arg4;
+- (id)folderView:(id)arg1 iconListView:(id)arg2 iconViewForDroppingIconDragItem:(id)arg3 proposedIconView:(id)arg4;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 performIconDrop:(id)arg3;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 iconDropSessionDidExit:(id)arg3;
 - (void)folderView:(id)arg1 iconListView:(id)arg2 iconDropSession:(id)arg3 didPauseAtLocation:(struct CGPoint)arg4;
@@ -171,6 +175,7 @@
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDragItem:(id)arg3 willAnimateDropWithAnimator:(id)arg4;
 - (id)folderController:(id)arg1 iconListView:(id)arg2 previewForDroppingIconDragItem:(id)arg3 proposedPreview:(id)arg4;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 willUseIconView:(id)arg3 forDroppingIconDragItem:(id)arg4;
+- (id)folderController:(id)arg1 iconListView:(id)arg2 iconViewForDroppingIconDragItem:(id)arg3 proposedIconView:(id)arg4;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 performIconDrop:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDropSessionDidExit:(id)arg3;
 - (void)folderController:(id)arg1 iconListView:(id)arg2 iconDropSession:(id)arg3 didPauseAtLocation:(struct CGPoint)arg4;
@@ -198,16 +203,14 @@
 - (id)borrowScalingView;
 @property(readonly, nonatomic) SBIconListView *dockIconListView;
 - (void)enumerateDisplayedIconViewsForIcon:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateDisplayedIconViewsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateDisplayedIconViewsUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) SBHIconModel *iconModel;
 @property(readonly, nonatomic) UIView *fallbackIconContainerView;
 @property(readonly, nonatomic) UIWindow *animationWindow;
 - (id)matchMoveSourceViewForIconView:(id)arg1;
 @property(readonly, nonatomic) UIView *containerView;
-- (void)_updateVisiblySettledForIconView:(id)arg1 visiblySettled:(_Bool)arg2;
-- (void)_updateVisiblySettledForIconView:(id)arg1;
 - (_Bool)_canAnyIconViewBeVisiblySettled;
-- (void)_updateVisiblySettledForIconViews;
 - (_Bool)_isHitTestingDisabledOnCustomIconImageViewControllers;
 - (void)_disableTouchesOnAllCustomIconImageViewControllers;
 - (void)_enableTouchesOnAllCustomIconImageViewControllers;
@@ -245,7 +248,7 @@
 - (_Bool)_allowUserInteraction;
 - (_Bool)shouldViewControllersAppearVisibleForListView:(id)arg1;
 - (void)_compactFolder;
-- (void)layoutIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(_Bool)arg3;
+- (void)layoutIconListsWithAnimationType:(long long)arg1 forceRelayout:(_Bool)arg2;
 - (void)_resetIconLists;
 - (void)prepareToTearDown;
 @property(nonatomic) double pageControlAlpha;
@@ -284,15 +287,20 @@
 - (id)beginModifyingDockOffscreenFractionForReason:(id)arg1;
 @property(readonly, nonatomic) SBIconListView *dockListView;
 @property(readonly, nonatomic) _Bool hasDock;
+- (id)firstIconViewWithOptions:(unsigned long long)arg1 iconPassingTest:(CDUnknownBlockType)arg2;
 - (id)firstIconViewForIcon:(id)arg1 excludingLocations:(id)arg2;
 - (id)firstIconViewForIcon:(id)arg1;
+- (id)firstIconViewForIcon:(id)arg1 options:(unsigned long long)arg2;
 - (id)firstIconViewForIcon:(id)arg1 inLocations:(id)arg2;
+- (id)iconViewForIcon:(id)arg1 location:(id)arg2 options:(unsigned long long)arg3;
 - (id)iconViewForIcon:(id)arg1 location:(id)arg2;
 - (_Bool)isDisplayingIconView:(id)arg1 inLocation:(id)arg2;
 - (_Bool)isDisplayingIconView:(id)arg1;
 - (_Bool)isDisplayingIcon:(id)arg1 inLocations:(id)arg2;
 - (_Bool)isDisplayingIcon:(id)arg1 inLocation:(id)arg2;
 - (_Bool)isDisplayingIcon:(id)arg1;
+- (void)_endTrackingIconViewWithCustomImageViewController:(id)arg1;
+- (void)_beginTrackingIconViewWithCustomImageViewController:(id)arg1;
 - (void)_updatePresentationModeForIconView:(id)arg1;
 - (void)_updatePresentationModeForIconViews;
 - (unsigned long long)iconImageViewControllerPresentationModeForIconView:(id)arg1;
@@ -305,6 +313,7 @@
 - (id)pageViewControllersForLeadingPageIndex:(long long)arg1 trailingPageIndex:(long long)arg2;
 - (id)visiblePageViewControllers;
 - (id)viewControllersForPageIndex:(long long)arg1;
+- (void)_closeFolder;
 - (_Bool)_isValidPageIndex:(long long)arg1;
 - (unsigned long long)iconListViewIndexForIconListModelIndex:(unsigned long long)arg1;
 - (long long)pageIndexForIconListModelIndex:(unsigned long long)arg1;
@@ -331,7 +340,8 @@
 @property(readonly, nonatomic) long long maximumPageIndex;
 @property(readonly, nonatomic) long long minimumPageIndex;
 @property(readonly, nonatomic) long long defaultPageIndex;
-- (void)animateScrollToDefaultPageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)scrollUsingDecelerationAnimationToPageIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)scrollUsingDecelerationAnimationToDefaultPageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setCurrentPageIndexToListDirectlyContainingIcon:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setCurrentPageIndexToListDirectlyContainingIcon:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)setCurrentPageIndex:(long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

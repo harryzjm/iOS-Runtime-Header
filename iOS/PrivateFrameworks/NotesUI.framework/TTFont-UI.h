@@ -9,7 +9,7 @@
 @interface TTFont (UI)
 + (void)font:(id)arg1 isBold:(_Bool *)arg2 isItalic:(_Bool *)arg3;
 + (id)convertFont:(id)arg1 toBold:(_Bool)arg2 toItalic:(_Bool)arg3;
-- (id)nativeFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2;
+- (id)nativeFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2 isForPrint:(_Bool)arg3;
 - (id)nativeFontForStyle:(unsigned int)arg1;
 @end
 

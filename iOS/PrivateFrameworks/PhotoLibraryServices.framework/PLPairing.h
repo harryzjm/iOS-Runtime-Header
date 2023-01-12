@@ -14,7 +14,6 @@
     struct os_unfair_lock_s _lock;
 }
 
-+ (id)getMetadataForAsset:(id)arg1;
 - (void).cxx_destruct;
 - (_Bool)processPairingForGroupIDs:(id)arg1 inContext:(id)arg2 deferredProcessingNeeded:(_Bool *)arg3 error:(id *)arg4;
 - (_Bool)processPairingForEntireLibraryInContext:(id)arg1 error:(id *)arg2;

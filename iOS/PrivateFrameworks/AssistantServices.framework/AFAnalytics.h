@@ -41,7 +41,7 @@
 - (void)logEventWithType:(long long)arg1 context:(id)arg2 contextNoCopy:(_Bool)arg3;
 - (void)logEventWithType:(long long)arg1 context:(id)arg2;
 - (void)logEventWithType:(long long)arg1 machAbsoluteTime:(unsigned long long)arg2 context:(id)arg3;
-- (id)_init;
+- (id)initWithInstanceContext:(id)arg1;
 - (id)init;
 - (void)logClientFeedbackPresented:(id)arg1 dialogIdentifierProvider:(id)arg2;
 - (void)logClientFeedbackPresented:(id)arg1;

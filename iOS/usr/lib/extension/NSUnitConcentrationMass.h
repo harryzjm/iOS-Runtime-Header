@@ -13,6 +13,7 @@
 + (id)millimolesPerLiterWithGramsPerMole:(double)arg1;
 + (id)milligramsPerDeciliter;
 + (id)gramsPerLiter;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

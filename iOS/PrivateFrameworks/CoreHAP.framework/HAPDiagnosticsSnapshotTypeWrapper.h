@@ -13,17 +13,17 @@
 
 @interface HAPDiagnosticsSnapshotTypeWrapper : NSObject <NSCopying, HAPTLVProtocol>
 {
-    long long _value;
+    unsigned long long _value;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-@property(nonatomic) long long value; // @synthesize value=_value;
+@property(nonatomic) unsigned long long value; // @synthesize value=_value;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithError:(id *)arg1;
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
-- (id)initWithValue:(long long)arg1;
+- (id)initWithValue:(unsigned long long)arg1;
 - (id)init;
 
 // Remaining properties

@@ -30,7 +30,7 @@
 @property(nonatomic, readonly) long long hash;
 @property(nonatomic, readonly) NSURL *filePathURL;
 @property(nonatomic, readonly) NSString *name;
-@property(nonatomic, retain) id <CKKnowledgeStoreDelegate> delegate; // @synthesize delegate;
+@property(nonatomic) __weak id <CKKnowledgeStoreDelegate> delegate; // @synthesize delegate;
 - (void)disableSyncAndDeleteCloudDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)removeAllValuesAndReturnError:(id *)arg1;
 - (void)removeAllValuesWithCompletionHandler:(CDUnknownBlockType)arg1;

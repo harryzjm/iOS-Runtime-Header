@@ -23,6 +23,7 @@
 + (id)sortedQueryAnchorWithSortDescriptors:(id)arg1 includingSample:(id)arg2 objectID:(long long)arg3;
 + (id)sortConstraintsWithSortDescriptors:(id)arg1 sample:(id)arg2;
 + (id)sortedQueryAnchorWithSortDescriptors:(id)arg1;
++ (id)sortedQueryAnchorWithSortDescriptors:(id)arg1 objectID:(long long)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *sortConstraints; // @synthesize sortConstraints=_sortConstraints;
 @property(readonly, copy, nonatomic) NSNumber *objectID; // @synthesize objectID=_objectID;

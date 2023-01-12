@@ -10,15 +10,22 @@
 #import <TextInputCore/TIKBUserModeling-Protocol.h>
 #import <TextInputCore/TIUserModelConfigurationDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, TIMetricDescriptorRegistry;
 
 @interface TIKBUserModel : TIUserModel <TIKBUserModeling, TIKBMetricProviding, TIUserModelConfigurationDelegate>
 {
+    TIMetricDescriptorRegistry *_metricDescriptorRegistry;
 }
 
++ (id)userModelWithInputMode:(id)arg1 userModelDataStore:(id)arg2 metricDescriptorRegistry:(id)arg3 fromDate:(id)arg4;
 + (id)userModelWithInputMode:(id)arg1 userModelDataStore:(id)arg2;
-- (id)valuesByBucketedWordLengthForMetricWithName:(id)arg1 withContext:(id)arg2 fromRegistry:(id)arg3;
-- (id)valueForMetricWithName:(id)arg1 withContext:(id)arg2 fromRegistry:(id)arg3;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TIMetricDescriptorRegistry *metricDescriptorRegistry; // @synthesize metricDescriptorRegistry=_metricDescriptorRegistry;
+- (id)valuesByBucketedWordLengthForMetricWithName:(id)arg1 withContext:(id)arg2;
+- (id)valueForMetricWithName:(id)arg1 withContext:(id)arg2;
+- (void)addDescriptor:(id)arg1 toWeeklyMetricKeys:(id)arg2;
+- (void)addMetric:(id)arg1 toWeeklyMetricKeys:(id)arg2;
+- (void)doLoad;
 - (void)sessionDidEnd:(id)arg1 aligned:(id)arg2;
 - (id)dictForPowerLog;
 - (void)trackPowerLogIfNecessary;
@@ -26,7 +33,7 @@
 - (id)durableCounterKeys;
 - (Class)userModelValuesClass;
 @property(readonly, nonatomic) NSArray *kbContexts;
-- (id)initWithInputMode:(id)arg1 userModelDataStore:(id)arg2;
+- (id)initWithInputMode:(id)arg1 userModelDataStore:(id)arg2 metricDescriptorRegistry:(id)arg3 fromDate:(id)arg4;
 
 // Remaining properties
 @property(readonly, nonatomic) NSArray *contexts;

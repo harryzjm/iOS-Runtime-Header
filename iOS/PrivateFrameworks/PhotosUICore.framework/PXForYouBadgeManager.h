@@ -5,18 +5,30 @@
 //
 
 #import <PhotosUICore/PXMutableForYouBadgeManager-Protocol.h>
+#import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSString;
+@class NSString, PHFetchResult, PHPhotoLibrary;
 
-@interface PXForYouBadgeManager <PXMutableForYouBadgeManager>
+@interface PXForYouBadgeManager <PXMutableForYouBadgeManager, PXPhotoLibraryUIChangeObserver>
 {
     unsigned long long _unreadBadgeCount;
+    PHPhotoLibrary *_photoLibrary;
+    PHFetchResult *_memories;
+    unsigned long long _unreadSharedAlbumCount;
+    unsigned long long _unreadMemoriesCount;
 }
 
-+ (id)lastSeenBadgeDate;
 + (void)setLastSeenBadgeDate:(id)arg1;
++ (id)lastSeenBadgeDate;
++ (id)lastSeenBadgeDateAccessor;
+- (void).cxx_destruct;
+@property(nonatomic) unsigned long long unreadMemoriesCount; // @synthesize unreadMemoriesCount=_unreadMemoriesCount;
+@property(nonatomic) unsigned long long unreadSharedAlbumCount; // @synthesize unreadSharedAlbumCount=_unreadSharedAlbumCount;
+@property(retain, nonatomic) PHFetchResult *memories; // @synthesize memories=_memories;
+@property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) unsigned long long unreadBadgeCount; // @synthesize unreadBadgeCount=_unreadBadgeCount;
-- (void)_updateUnreadCount;
+- (void)_updateUnreadBadgeCount;
+- (void)_updateUnreadSharedAlbumsCount;
 - (void)_didFinishPostingNotifications:(id)arg1;
 - (void)_stopListeningForChanges;
 - (void)startListeningForChanges;
@@ -24,6 +36,7 @@
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)initWithPhotoLibrary:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

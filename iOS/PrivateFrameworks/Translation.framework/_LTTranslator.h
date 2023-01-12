@@ -15,6 +15,7 @@
 
 + (void)_getSyncServiceProxyWithDelegate:(id)arg1 errorHandler:(CDUnknownBlockType)arg2 block:(CDUnknownBlockType)arg3;
 + (void)_getServiceProxyWithDelegate:(id)arg1 errorHandler:(CDUnknownBlockType)arg2 block:(CDUnknownBlockType)arg3;
++ (void)languagesForText:(id)arg1 usingModel:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)languagesForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)languageForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)task:(long long)arg1 isSupportedInCountry:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -25,6 +26,8 @@
 + (void)installOfflineLocales:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_getAssetSize:(CDUnknownBlockType)arg1;
 + (void)installedLocales:(CDUnknownBlockType)arg1;
++ (void)_deleteHotfix:(CDUnknownBlockType)arg1;
++ (void)_updateHotfix:(CDUnknownBlockType)arg1;
 + (void)_updateAllAssets:(CDUnknownBlockType)arg1;
 + (void)_purgeAllAssets:(CDUnknownBlockType)arg1;
 + (void)_purgeAssetForLanguagePair:(id)arg1 userInitiated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;

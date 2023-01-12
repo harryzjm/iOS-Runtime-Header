@@ -11,14 +11,13 @@
 #import <MapKit/MKPlaceCardHeaderViewControllerDelegate-Protocol.h>
 #import <MapKit/MKPlaceHeaderButtonsViewControllerDelegate-Protocol.h>
 #import <MapKit/MKStackingViewControllerDelegate-Protocol.h>
-#import <MapKit/MKTransitLineIncidentsViewControllerDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardAnalyticsDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardController-Protocol.h>
 
 @class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, MKETAProvider, MKInfoCardLoadingView, MKMapItem, MKNearestStationViewController, MKPlaceActionManager, MKPlaceCardActionItem, MKPlaceCardActionsViewController, MKPlaceCardHeaderViewController, MKPlaceHeaderButtonsViewController, NSNumber, NSString;
 @protocol GEOTransitLineItem, MKLocationManagerOperation, MKMapServiceTicket, MKTransitLineItemViewControllerDelegate, UIScrollViewDelegate;
 
-@interface MKTransitLineItemViewController <MKStackingViewControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKETAProviderDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKNearestStationViewControllerDelegate, MKTransitLineIncidentsViewControllerDelegate, _MKInfoCardController, _MKInfoCardAnalyticsDelegate, MKPlaceCardActionControllerDelegate>
+@interface MKTransitLineItemViewController <MKStackingViewControllerDelegate, MKPlaceCardEncyclopedicControllerDelegate, MKPlaceCardHeaderViewControllerDelegate, MKETAProviderDelegate, MKPlaceHeaderButtonsViewControllerDelegate, MKNearestStationViewControllerDelegate, _MKInfoCardController, _MKInfoCardAnalyticsDelegate, MKPlaceCardActionControllerDelegate>
 {
     MKPlaceCardHeaderViewController *_headerViewController;
     MKPlaceHeaderButtonsViewController *_buttonsHeaderController;
@@ -56,6 +55,8 @@
 @property(retain, nonatomic) NSNumber *favorited; // @synthesize favorited=_favorited;
 @property(nonatomic) __weak id <MKTransitLineItemViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <GEOTransitLineItem> transitLineItem; // @synthesize transitLineItem=_transitLineItem;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 moduleMetadata:(id)arg4 feedbackDelegateSelector:(int)arg5;
+- (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 moduleMetadata:(id)arg6 feedbackDelegateSelector:(int)arg7;
 - (void)infoCardTransitAnalyticsDidSelectionAction:(int)arg1 resultIndex:(long long)arg2 targetID:(unsigned long long)arg3 transitSystem:(id)arg4 transitDepartureSequence:(id)arg5 transitCardCategory:(int)arg6 transitIncident:(id)arg7 feedbackDelegateSelector:(int)arg8;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 actionURL:(id)arg4 photoID:(id)arg5 feedbackDelegateSelector:(int)arg6;
 - (void)infoCardAnalyticsDidSelectAction:(int)arg1 target:(int)arg2 eventValue:(id)arg3 feedbackDelegateSelector:(int)arg4;
@@ -63,12 +64,13 @@
 - (void)placeCardEncyclopedicControllerDidSelectShowArticle:(id)arg1;
 - (void)placeActionManager:(id)arg1 didSelectShareFromView:(id)arg2;
 - (void)placeCardActionControllerDidSelectAddToCollection:(id)arg1;
-- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(id)arg1;
+- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(id)arg1 isQuickAction:(_Bool)arg2;
 - (void)placeCardActionControllerDidSelectRemoveFromFavorites:(id)arg1;
 - (void)placeCardActionControllerDidSelectAddToFavorites:(id)arg1;
-- (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1 fromView:(id)arg2;
+- (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1 fromView:(id)arg2 isQuickAction:(_Bool)arg3;
 - (int)mapTypeForETAProvider:(id)arg1;
 - (void)placeHeaderButtonsViewController:(id)arg1 didSelectPrimaryType:(unsigned long long)arg2 withView:(id)arg3;
+- (_Bool)placeCardHeaderViewControllerShouldOverrideCallToAction:(id)arg1;
 - (double)placeCardHeaderViewControllerTrailingConstantForTitle:(id)arg1;
 - (double)stackingViewController:(id)arg1 heightForSeparatorBetweenUpperViewController:(id)arg2 andLowerViewController:(id)arg3;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;

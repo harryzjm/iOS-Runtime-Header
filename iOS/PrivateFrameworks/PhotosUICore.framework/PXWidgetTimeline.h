@@ -10,8 +10,7 @@
 {
 }
 
-+ (id)timelineFromLibrary:(id)arg1 forWidgetSize:(struct CGSize)arg2;
-+ (id)timelineFromLibrary:(id)arg1;
++ (id)timelineFromLibrary:(id)arg1 forWidgetSize:(struct CGSize)arg2 timelineSize:(unsigned long long)arg3;
 
 @end
 

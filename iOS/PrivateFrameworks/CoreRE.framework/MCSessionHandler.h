@@ -14,13 +14,13 @@
 __attribute__((visibility("hidden")))
 @interface MCSessionHandler : NSObject <MCSessionPrivateDelegate>
 {
-    struct MultipeerProtocolLayer *_protocolLayer;
+    void *_protocolLayer;
     MCSession *_session;
     NSMutableDictionary *_peersToHandles;
     NSMutableArray *_pendingData;
     NSLock *_handlesLock;
     id <MCSessionPrivateDelegate> _nextDelegate;
-    DynamicArray_0711906c _handles;
+    struct DynamicArray<re::SharedPtr<(anonymous namespace)::MCProtocolHandle>> _handles;
     DynamicArray_8f05e591 _tempBuf;
 }
 
@@ -28,21 +28,21 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MCSessionPrivateDelegate> nextDelegate; // @synthesize nextDelegate=_nextDelegate;
 @property(nonatomic) DynamicArray_8f05e591 tempBuf; // @synthesize tempBuf=_tempBuf;
-@property(nonatomic) DynamicArray_0711906c *handles; // @synthesize handles=_handles;
+@property(nonatomic) void *handles; // @synthesize handles=_handles;
 @property(retain, nonatomic) NSLock *handlesLock; // @synthesize handlesLock=_handlesLock;
 @property(retain, nonatomic) NSMutableArray *pendingData; // @synthesize pendingData=_pendingData;
 @property(retain, nonatomic) NSMutableDictionary *peersToHandles; // @synthesize peersToHandles=_peersToHandles;
 @property(retain, nonatomic) MCSession *session; // @synthesize session=_session;
-@property(nonatomic) struct MultipeerProtocolLayer *protocolLayer; // @synthesize protocolLayer=_protocolLayer;
+@property(nonatomic) void *protocolLayer; // @synthesize protocolLayer=_protocolLayer;
 - (void)session:(id)arg1 didReceiveStream:(id)arg2 withName:(id)arg3 fromPeer:(id)arg4 propagate:(_Bool *)arg5;
 - (void)session:(id)arg1 didFinishReceivingResourceWithName:(id)arg2 fromPeer:(id)arg3 atURL:(id)arg4 withError:(id)arg5 propagate:(_Bool *)arg6;
 - (void)session:(id)arg1 didStartReceivingResourceWithName:(id)arg2 fromPeer:(id)arg3 withProgress:(id)arg4 propagate:(_Bool *)arg5;
 - (void)session:(id)arg1 peer:(id)arg2 didChangeState:(long long)arg3 propagate:(_Bool *)arg4;
 - (void)session:(id)arg1 didReceiveData:(id)arg2 fromPeer:(id)arg3 propagate:(_Bool *)arg4;
-- (id)dataForPacket:(const struct Packet *)arg1 channel:(unsigned char)arg2;
+- (id)dataForPacket:(const void *)arg1 channel:(unsigned char)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 protocolLayer:(struct MultipeerProtocolLayer *)arg2;
+- (id)initWithSession:(id)arg1 protocolLayer:(void *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

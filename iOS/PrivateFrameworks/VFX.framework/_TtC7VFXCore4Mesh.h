@@ -15,6 +15,7 @@
     MISSING_TYPE *parts;
     MISSING_TYPE *materials;
     MISSING_TYPE *vertexCount;
+    MISSING_TYPE *meshIdentifier;
 }
 
 @end

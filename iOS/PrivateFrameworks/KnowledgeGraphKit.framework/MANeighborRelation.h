@@ -19,9 +19,10 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)visualString;
-- (_Bool)unionAdjacencySetFromSourceNodeIdentifiers:(id)arg1 toTargetNodeIdentifiers:(id)arg2 graphStore:(id)arg3 error:(id *)arg4;
-- (id)adjacencySetFromSourceNodeIdentifiers:(id)arg1 graphStore:(id)arg2 error:(id *)arg3;
-- (void)unionAdjacencyListFromSource:(id)arg1 toTargets:(id)arg2;
+- (id)adjacencyByJoiningWithAdjacency:(id)arg1 graph:(id)arg2;
+- (id)adjacencyWithEndNodeIdentifiers:(id)arg1 graph:(id)arg2;
+- (id)adjacencyWithStartNodeIdentifiers:(id)arg1 graph:(id)arg2;
+- (void)unionAdjacencySetFromSourceNodeIdentifiers:(id)arg1 toTargetNodeIdentifiers:(id)arg2 graph:(id)arg3;
 - (id)inverse;
 - (id)initWithEdgeType:(unsigned long long)arg1 edgeFilter:(id)arg2;
 

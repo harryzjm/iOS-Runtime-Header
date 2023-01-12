@@ -16,13 +16,8 @@
 
 - (void).cxx_destruct;
 - (id)label;
-@property(nonatomic) float weight; // @synthesize weight=_weight;
+- (float)weight;
 - (unsigned short)domain;
-- (void)mergeProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
-- (void)removeAllProperties;
-- (void)removePropertyForKey:(id)arg1;
 - (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)propertyDictionary;
 - (id)propertyKeys;
@@ -32,7 +27,7 @@
 - (id)_stringValueForPropertyWithKey:(id)arg1;
 - (id)UUID;
 - (id)name;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 
 @end
 

@@ -8,19 +8,20 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString, NTPBDate;
+@class NSString;
 
 @interface NTPBCacheHint : PBCodable <NSCopying>
 {
-    NTPBDate *_accessDate;
+    unsigned long long _accessTime;
     NSString *_key;
     int _lifetime;
     struct {
+        unsigned int accessTime:1;
         unsigned int lifetime:1;
     } _has;
 }
 
-@property(retain, nonatomic) NTPBDate *accessDate; // @synthesize accessDate=_accessDate;
+@property(nonatomic) unsigned long long accessTime; // @synthesize accessTime=_accessTime;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -30,9 +31,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAccessTime;
 @property(nonatomic) _Bool hasLifetime;
 @property(nonatomic) int lifetime; // @synthesize lifetime=_lifetime;
-@property(readonly, nonatomic) _Bool hasAccessDate;
 @property(readonly, nonatomic) _Bool hasKey;
 - (void)dealloc;
 

@@ -17,6 +17,7 @@
 - (void)iconListView:(SBIconListView *)arg1 willLayoutIconView:(SBIconView *)arg2;
 - (struct CGSize)iconListView:(SBIconListView *)arg1 sizeThatFits:(struct CGSize)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedSize:(struct CGSize)arg4;
 - (unsigned long long)iconListView:(SBIconListView *)arg1 rowAtPoint:(struct CGPoint)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedRow:(unsigned long long)arg4;
+- (struct CGPoint)iconListView:(SBIconListView *)arg1 centerForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedCenter:(struct CGPoint)arg4;
 - (struct CGPoint)iconListView:(SBIconListView *)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(SBIconListViewLayoutMetrics *)arg3 proposedOrigin:(struct CGPoint)arg4;
 @end
 

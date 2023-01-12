@@ -15,10 +15,22 @@
 }
 
 + (id)logCategory;
++ (void)videoPackageAnalyzerDidResetReferenceImageWithInterval:(double)arg1 camera:(id)arg2;
++ (void)videoPackageAnalyzerDidClassifyCandidateAsPackage:(_Bool)arg1 camera:(id)arg2;
++ (void)videoAnalyzerDidAnalyzeFragmentWithResult:(id)arg1 state:(id)arg2;
++ (void)videoAnalyzerDidCreateTimelapseFragment:(id)arg1 state:(id)arg2;
++ (void)videoAnalyzerDidTerminateWithError:(id)arg1 state:(id)arg2;
++ (void)sendEventsForFragmentResult:(id)arg1;
 + (long long)bucketForValue:(long long)arg1 usingBuckets:(id)arg2;
 + (void)sendEventForPersonsModels:(id)arg1;
 + (void)sendEventForClusteringTask:(id)arg1;
 + (void)sendEventForFaceEvent:(id)arg1 homePersonManagerUUID:(id)arg2 camera:(id)arg3;
++ (void)videoAnalyzerDidFindFaceEvent:(id)arg1 homePersonManagerUUID:(id)arg2 camera:(id)arg3;
++ (void)sendEventForPersonRecognitionType:(long long)arg1 camera:(id)arg2;
++ (id)payloadWithCamera:(id)arg1;
++ (_Bool)sendEventWithName:(id)arg1 payloadBuilder:(CDUnknownBlockType)arg2;
++ (_Bool)lazyPayloads;
++ (_Bool)upload;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

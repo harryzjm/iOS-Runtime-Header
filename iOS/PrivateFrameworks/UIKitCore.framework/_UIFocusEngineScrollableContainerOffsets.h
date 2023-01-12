@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIFocusEngineScrollableContainerOffsets : NSObject
 {
+    _Bool _adjustsTargetsOnContentOffsetChanges;
     id <UIFocusItemScrollableContainer> _scrollableContainer;
     id <UIScrollViewDelegate> _scrollDelegate;
     double _convergenceRate;
     CDUnknownBlockType _completion;
     struct CGPoint _lastContentOffset;
+    struct CGPoint _lastRoundedOffset;
     struct CGPoint _targetContentOffset;
     struct CGPoint _lastVelocity;
 }
@@ -25,9 +27,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGPoint lastVelocity; // @synthesize lastVelocity=_lastVelocity;
 @property(nonatomic) double convergenceRate; // @synthesize convergenceRate=_convergenceRate;
 @property(nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
+@property(nonatomic) struct CGPoint lastRoundedOffset; // @synthesize lastRoundedOffset=_lastRoundedOffset;
 @property(nonatomic) struct CGPoint lastContentOffset; // @synthesize lastContentOffset=_lastContentOffset;
 @property(retain, nonatomic) id <UIScrollViewDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
 @property(retain, nonatomic) id <UIFocusItemScrollableContainer> scrollableContainer; // @synthesize scrollableContainer=_scrollableContainer;
+@property(nonatomic) _Bool adjustsTargetsOnContentOffsetChanges; // @synthesize adjustsTargetsOnContentOffsetChanges=_adjustsTargetsOnContentOffsetChanges;
 
 @end
 

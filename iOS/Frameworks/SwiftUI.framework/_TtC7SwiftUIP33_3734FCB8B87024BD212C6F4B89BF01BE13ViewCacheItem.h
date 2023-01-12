@@ -29,13 +29,16 @@
     MISSING_TYPE *usedSeed;
     MISSING_TYPE *placementSeed;
     MISSING_TYPE *commitSeed;
+    MISSING_TYPE *prefetchSeed;
     MISSING_TYPE *displayIndex;
     MISSING_TYPE *removedSeed;
+    MISSING_TYPE *failedSeed;
     MISSING_TYPE *placement;
     MISSING_TYPE *releaseSecondaryElements;
     MISSING_TYPE *willEnableTransitions;
     MISSING_TYPE *willAnimateRemoval;
-    MISSING_TYPE *hasParent;
+    MISSING_TYPE *parentingPhase;
+    MISSING_TYPE *hasWarned;
 }
 
 @end

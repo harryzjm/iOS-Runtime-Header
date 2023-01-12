@@ -29,6 +29,7 @@
     _Bool _hasViewServicesEntitlement;
     NSString *_appIDEntitlement;
     NSString *_shortVersionString;
+    unsigned int _signatureVersion;
     unsigned long long _type;
     NSArray *_requiredCapabilities;
     NSArray *_tags;
@@ -53,8 +54,10 @@
     _Bool _uninstalling;
     struct os_unfair_lock_s _lock;
     _Bool _initialized;
+    _Bool _builtWithTSAN;
     _Bool _pendingUninstall;
     _Bool _supportsMultiwindow;
+    NSURL *_advertisingAttributionReportEndpoint;
     long long _screenTimePolicy;
     NSArray *_folderNames;
     NSString *_fallbackFolderName;
@@ -72,6 +75,8 @@
 @property(nonatomic, getter=_isUninstalling, setter=_setUninstalling:) _Bool uninstalling; // @synthesize uninstalling=_uninstalling;
 @property(nonatomic, getter=_isInstalling, setter=_setInstalling:) _Bool installing; // @synthesize installing=_installing;
 @property(readonly, copy, nonatomic, getter=_appIDEntitlement) NSString *appIDEntitlement; // @synthesize appIDEntitlement=_appIDEntitlement;
+@property(readonly, copy, nonatomic) NSURL *advertisingAttributionReportEndpoint; // @synthesize advertisingAttributionReportEndpoint=_advertisingAttributionReportEndpoint;
+@property(readonly, nonatomic, getter=wasBuiltWithTSAN) _Bool builtWithTSAN; // @synthesize builtWithTSAN=_builtWithTSAN;
 @property(readonly, nonatomic) NSNumber *downloaderDSID; // @synthesize downloaderDSID=_downloaderDSID;
 @property(readonly, nonatomic) NSNumber *purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property(readonly, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
@@ -115,6 +120,7 @@
 - (_Bool)supportsInterfaceOrientation:(long long)arg1;
 - (_Bool)supportsBackgroundMode:(id)arg1;
 @property(readonly, nonatomic, getter=isExitsOnSuspend) _Bool exitsOnSuspend;
+@property(readonly, nonatomic) unsigned int signatureVersion;
 @property(readonly, nonatomic, getter=isBlockedForScreenTimeExpiration) _Bool blockedForScreenTimeExpiration;
 @property(readonly, nonatomic) NSDictionary *entitlements;
 - (id)_initWithApplicationProxy:(id)arg1 overrideURL:(id)arg2;
@@ -122,6 +128,8 @@
 - (id)initWithApplicationProxy:(id)arg1;
 - (id)_initWithBundleProxy:(id)arg1 overrideURL:(id)arg2;
 - (id)_initWithBundleIdentifier:(id)arg1 url:(id)arg2;
+@property(readonly, nonatomic) _Bool isSignatureVersionSupportEndingSoon;
+@property(readonly, nonatomic) _Bool isSignatureVersionSupported;
 - (unsigned long long)unauthoritativeTrustState;
 
 // Remaining properties

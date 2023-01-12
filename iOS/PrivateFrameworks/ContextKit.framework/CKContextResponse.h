@@ -8,7 +8,7 @@
 
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class CKContextRequest, NSArray, NSDate, NSError, NSString;
+@class CKContextFingerprintMinHash, CKContextRequest, NSArray, NSDate, NSError, NSString;
 
 @interface CKContextResponse : NSObject <NSSecureCoding>
 {
@@ -35,6 +35,7 @@
     NSString *_languageTag;
     NSString *_debug;
     unsigned long long _requestType;
+    CKContextFingerprintMinHash *_requestFingerprint;
     unsigned long long _mustPrefixMatchLength;
     NSDate *_hideCompletionsAfterDate;
     NSDate *_responseDate;
@@ -48,6 +49,7 @@
 @property(retain, nonatomic) NSDate *hideCompletionsAfterDate; // @synthesize hideCompletionsAfterDate=_hideCompletionsAfterDate;
 @property(nonatomic) unsigned long long mustPrefixMatchLength; // @synthesize mustPrefixMatchLength=_mustPrefixMatchLength;
 @property(nonatomic) _Bool resultsNeedFiltering; // @synthesize resultsNeedFiltering=_resultsNeedFiltering;
+@property(retain, nonatomic) CKContextFingerprintMinHash *requestFingerprint; // @synthesize requestFingerprint=_requestFingerprint;
 @property(nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property(retain, nonatomic) NSString *debug; // @synthesize debug=_debug;
 @property(retain, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
@@ -57,6 +59,7 @@
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+- (id)responseSummary:(_Bool)arg1 showHigherLevelTopics:(_Bool)arg2 maxPrefix:(long long)arg3;
 - (_Bool)_pm_isSensitive;
 - (void)discardAndLogCompleter:(id)arg1 likelyUnsolicited:(_Bool)arg2;
 - (void)logTransactionSuccessfulForInputLength:(unsigned long long)arg1 completion:(id)arg2 likelyUnsolicited:(_Bool)arg3;

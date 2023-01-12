@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <WorkflowEditor/WFTriggerConfigurationViewController.h>
+
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFRecipientFieldViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, UITableView;
+@class NSArray, NSString, UITableView;
 
-@interface WFMessageTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFRecipientFieldViewControllerDelegate>
+@interface WFMessageTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFRecipientFieldViewControllerDelegate>
 {
-    NSMutableSet *_allSenders;
     UITableView *_tableView;
     NSArray *_sections;
 }
@@ -20,7 +21,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-@property(retain, nonatomic) NSMutableSet *allSenders; // @synthesize allSenders=_allSenders;
 - (void)showMessageContainsAlert;
 - (void)presentNavControllerWithRootViewController:(id)arg1;
 - (id)displayForSelectedContacts:(id)arg1;
@@ -35,7 +35,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)updateUI;
-- (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
+- (id)initWithTrigger:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -42,6 +42,7 @@
 + (id)liters;
 + (id)kiloliters;
 + (id)megaliters;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

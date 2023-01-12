@@ -6,17 +6,21 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSString;
+@class NSObject, NSString;
+@protocol OS_os_log;
 
 @interface HMDDeviceSetupClientSession <HMFLogging>
 {
+    NSObject<OS_os_log> *_logger;
 }
 
 + (id)logCategory;
 + (id)allowedClasses;
 + (_Bool)isSupported;
 + (long long)role;
-- (_Bool)processSessionData:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
+- (_Bool)processSessionData:(id)arg1 fromBundle:(id)arg2 outAccessoryUUID:(id *)arg3 error:(id *)arg4;
+- (id)initWithHomeManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

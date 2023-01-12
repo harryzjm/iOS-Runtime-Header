@@ -13,13 +13,13 @@
 + (id)safari_dictionaryWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
 + (id)safari_dictionaryWithPropertyListData:(id)arg1;
 - (_Bool)safari_containsObject:(id)arg1;
-- (id)safari_dictionaryByRemovingNullObjects;
+@property(readonly, copy, nonatomic) NSDictionary *safari_dictionaryByRemovingNullObjects;
 - (id)safari_diffWithDictionary:(id)arg1;
 - (id)_safari_sortedTupleArray;
 - (id)safari_mapAndFilterKeysUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_mapAndFilterKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_mapTableForKey:(id)arg1;
-- (id)safari_dictionaryWithLowercaseKeys;
+@property(readonly, copy, nonatomic) NSDictionary *safari_dictionaryWithLowercaseKeys;
 - (id)safari_dictionaryByMergingWithDictionary:(id)arg1;
 - (id)safari_userActivityForKey:(id)arg1;
 - (id)safari_setForKey:(id)arg1;

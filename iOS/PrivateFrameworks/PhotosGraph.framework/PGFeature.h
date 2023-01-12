@@ -15,12 +15,14 @@
     NSString *_name;
 }
 
++ (id)featuresForEncodedFeatures:(id)arg1;
 + (id)stringForFeatureType:(unsigned long long)arg1;
 + (id)nameForNode:(id)arg1;
 + (id)noneFeatureWithType:(unsigned long long)arg1;
 + (id)featureWithType:(unsigned long long)arg1 name:(id)arg2;
 + (id)featureWithMeaningfulEvent:(id)arg1;
 + (id)featureWithType:(unsigned long long)arg1 node:(id)arg2;
++ (id)featureWithNode:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly) unsigned long long type; // @synthesize type=_type;
 - (id)description;
@@ -30,7 +32,7 @@
 @property(readonly) _Bool isNoneFeature;
 @property(readonly) NSString *name; // @synthesize name=_name;
 - (id)encodedFeature;
-- (id)initWithEncodedFeature:(id)arg1 graph:(id)arg2;
+- (id)initWithEncodedFeature:(id)arg1;
 
 @end
 

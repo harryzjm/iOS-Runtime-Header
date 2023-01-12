@@ -7,6 +7,7 @@
 #import <BulletinBoard/BBSectionInfo.h>
 
 @interface BBSectionInfo (PBConversions)
+- (void)applyKeypaths:(id)arg1 from:(id)arg2;
 - (_Bool)blt_overrideSendToNotificationCenter;
 - (_Bool)blt_overrideShowsAlerts;
 - (void)updateAlertingStatusForGizmoWithAlertsEnabled:(_Bool)arg1 NCEnabled:(_Bool)arg2;

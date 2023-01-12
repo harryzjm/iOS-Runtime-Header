@@ -8,29 +8,31 @@
 
 #import <VectorKit/NSSecureCoding-Protocol.h>
 
+@class GEOFeatureStyleAttributes;
 @protocol VKCustomFeatureDataSource;
 
 @interface VKCustomFeature : NSObject <NSSecureCoding>
 {
-    shared_ptr_e9082761 _feature;
+    struct shared_ptr<md::LabelExternalFeature> _feature;
     id <VKCustomFeatureDataSource> _dataSource;
+    _Bool _isGlobalFeature;
+    struct _retain_ptr<GEOFeatureStyleAttributes *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
+        GEOFeatureStyleAttributes *_obj;
+        struct _retain_objc _retain;
+        struct _release_objc _release;
+    } _featureStyleAttributesPtr;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (CDStruct_071ac149)muninFeatureLocationForItemCoordinate:(CDStruct_c3b9c2ee)arg1 viewPosition:(CDStruct_071ac149)arg2 groundAltitude:(double)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (_Bool)isInjectedFeature;
-- (shared_ptr_e9082761 *)feature;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)setBuildingFaceAzimuth:(float)arg1;
+- (void)setBuildingHeight:(float)arg1;
 - (void)setPlaceholderIconWithSize:(struct CGSize)arg1 anchorPoint:(struct CGPoint)arg2 isRound:(_Bool)arg3;
 - (void)setAnnotationText:(id)arg1 locale:(id)arg2;
-- (void)setText:(id)arg1 locale:(id)arg2;
-- (void)setTextDisplayMode:(unsigned char)arg1;
-- (void)setSortKey:(int)arg1;
-- (void)setMaxZoom:(float)arg1;
-- (void)setMinZoom:(float)arg1;
-- (id)styleAttributes;
-- (void)setStyleAttributes:(id)arg1;
 - (short)venueFloorOrdinal;
 - (void)setVenueFloorOrdinal:(short)arg1;
 - (unsigned long long)venueComponentID;
@@ -43,17 +45,30 @@
 - (void)setVenueID:(unsigned long long)arg1;
 - (unsigned long long)businessID;
 - (void)setBusinessID:(unsigned long long)arg1;
+- (_Bool)isInjectedFeature;
+- (void *)feature;
+- (void)setText:(id)arg1 locale:(id)arg2;
+- (void)setTextDisplayMode:(unsigned char)arg1;
+- (void)setSortKey:(int)arg1;
+- (void)setMaxZoom:(float)arg1;
+- (void)setMinZoom:(float)arg1;
+- (id)styleAttributes;
+- (void)setStyleAttributes:(id)arg1;
 - (unsigned long long)featureID;
 - (void)setFeatureID:(unsigned long long)arg1;
 - (id)dataSource;
 - (void)setDataSource:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)_initInternalFeatureWithCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (id)initLineWithCoordinates:(const CDStruct_071ac149 *)arg1 count:(unsigned long long)arg2;
+- (id)_initInternalFeatureWithCoordinate:(CDStruct_071ac149)arg1;
 - (id)init;
-- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 elevation:(double)arg2;
+- (id)initWithCoordinate3D:(CDStruct_071ac149)arg1;
 - (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (id)_initWithCoordinate:(CDStruct_071ac149)arg1 isInjected:(_Bool)arg2;
+- (void *)lineFeature;
+- (void *)pointFeature;
+- (_Bool)isGlobalFeature;
+- (_Bool)isLineFeature;
+- (_Bool)isPointFeature;
 
 @end
 

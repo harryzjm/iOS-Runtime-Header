@@ -6,14 +6,32 @@
 
 #import <FindMyDevice/NSObject-Protocol.h>
 
-@class FMDFMIPAccountInfo, FMDLostModeInfo, NSData, NSDictionary, NSString;
+@class FMDFMIPAccountInfo, FMDLostModeInfo, FMDPairingCheckCommandRequestInfo, FMDPairingLockRegisterRequestInfo, FMDSecureLocationContext, NSData, NSDictionary, NSString;
 
 @protocol FMDFMIPProtocol <NSObject>
+- (void)stopLocationMonitoringWithContext:(FMDSecureLocationContext *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)startLocationMonitoringWithContext:(FMDSecureLocationContext *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)updatedConfigReceived:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)stopLocationMonitoring:(void (^)(NSError *))arg1;
+- (void)startLocationMonitoring:(void (^)(NSError *))arg1;
+- (void)fetchAPNSTokenWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)clearMaskedAppleIDWithCompletion:(void (^)(NSError *))arg1;
+- (void)updateMaskedAppleIDWith:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)clearOfflineFindingInfoWithCompletion:(void (^)(NSError *))arg1;
+- (void)fetchOfflineFindingInfoWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)storeOfflineFindingInfo:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)activationLockInfoFromDeviceWithCompletion:(void (^)(FMDActivationLockInfo *, NSError *))arg1;
 - (void)showDailyLocateReport;
 - (void)setDailyLocateReportEnabled:(_Bool)arg1;
 - (oneway void)clearData:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)soundStoppedForAccessoryIdentifier:(NSString *)arg1;
 - (void)playSoundWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)getConnectedAccessoriesDiscoveryIds:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)pairingCheckWith:(FMDPairingCheckCommandRequestInfo *)arg1 completion:(void (^)(NSError *, FMDPairingCheckCommandResponseInfo *))arg2;
+- (oneway void)registerDeviceForPairingLock:(FMDPairingLockRegisterRequestInfo *)arg1 completion:(void (^)(NSError *, FMDPairingLockRegisterResponseInfo *))arg2;
+- (oneway void)setPhoneNumber:(NSString *)arg1 toAccessoryWithDiscoveryId:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)removeAccessoryWithDiscoveryId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)fetchAccessoryConfigurations:(void (^)(NSError *))arg1;
 - (oneway void)getAccessoriesWithCompletion:(void (^)(NSError *, NSArray *))arg1;
 - (void)signatureHeadersWithData:(NSData *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)_forceFMWUpgradeAlertUsingCallback:(void (^)(NSError *))arg1;

@@ -8,14 +8,14 @@
 
 @interface TSCHChartRadialElementsRenderer
 {
-    struct CGPoint mHitPoint;
-    unsigned long long mHitSeries;
-    float mHitStartAngle;
-    float mHitRadius;
-    float mHitExplosion;
-    _Bool mDidMoveDuringTouchIfNotThenRotateChartForDemo;
-    NSIndexSet *mPartialRenderingSeriesIndexSet;
-    _Bool mPartialRenderingInclusionFlag;
+    struct CGPoint _hitPoint;
+    unsigned long long _hitSeries;
+    float _hitStartAngle;
+    float _hitRadius;
+    float _hitExplosion;
+    _Bool _didMoveDuringTouchIfNotThenRotateChartForDemo;
+    NSIndexSet *_partialRenderingSeriesIndexSet;
+    _Bool _partialRenderingInclusionFlag;
 }
 
 - (void).cxx_destruct;
@@ -34,7 +34,6 @@
 - (void)p_drawOnlyShadow:(id)arg1 forImage:(struct CGLayer *)arg2 intoRect:(struct CGRect)arg3 intoContext:(struct CGContext *)arg4 atViewScale:(double)arg5 usingBlendMode:(int)arg6 opacity:(double)arg7;
 - (void)p_drawOnlyShapeImage:(struct CGLayer *)arg1 intoRect:(struct CGRect)arg2 intoContext:(struct CGContext *)arg3 usingBlendMode:(int)arg4 opacity:(double)arg5;
 - (int)chunkPlane;
-- (void)dealloc;
 
 @end
 

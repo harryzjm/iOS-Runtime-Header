@@ -9,11 +9,11 @@
 #import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, NSDictionary, NSMutableDictionary, NSString;
+@class HMFTimer, NSDictionary, NSMutableDictionary, NSString;
 
 @interface HMIPreference : HMFObject <HMFTimerDelegate, HMFLogging>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     HMFTimer *_preferenceCacheFlushTimer;
     NSMutableDictionary *_preferenceCache;
     NSMutableDictionary *_preferenceLoggedValues;
@@ -22,9 +22,13 @@
 
 + (id)logCategory;
 + (_Bool)isAudioAccessory;
++ (_Bool)isProductTypeB520;
 + (_Bool)isProductTypeB238;
++ (_Bool)isProductTypeJ305;
 + (_Bool)isProductTypeJ105;
 + (_Bool)isProductTypeJ42;
++ (void)setPretendProductTypeIsUnknown:(_Bool)arg1;
++ (_Bool)pretendProductTypeIsUnknown;
 + (_Bool)isInternalInstall;
 + (id)qosMap;
 + (id)sharedInstance;
@@ -33,10 +37,10 @@
 @property(readonly, nonatomic) NSMutableDictionary *preferenceLoggedValues; // @synthesize preferenceLoggedValues=_preferenceLoggedValues;
 @property(readonly, nonatomic) NSMutableDictionary *preferenceCache; // @synthesize preferenceCache=_preferenceCache;
 @property(readonly) HMFTimer *preferenceCacheFlushTimer; // @synthesize preferenceCacheFlushTimer=_preferenceCacheFlushTimer;
-@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 - (id)stringPreferenceForKey:(id)arg1 defaultValue:(id)arg2;
 - (_Bool)boolPreferenceForKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (_Bool)hasPreferenceForKey:(id)arg1;
+- (id)numberPreferenceForKey:(id)arg1;
 - (id)numberPreferenceForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)valuePreferenceForKey:(id)arg1 defaultValue:(id)arg2 withMap:(id)arg3;
 - (id)valuePreferenceForKey:(id)arg1 defaultValue:(id)arg2 withParser:(CDUnknownBlockType)arg3;
@@ -50,6 +54,16 @@
 @property(readonly) NSDictionary *preferenceOverrides;
 - (void)timerDidFire:(id)arg1;
 - (id)init;
+@property(readonly) unsigned int analysisQOS;
+- (_Bool)shouldGenerateThumbnailForAnalysisFPS:(double)arg1;
+@property(readonly) unsigned long long maxVideoEncoders;
+@property(readonly) _Bool isIdle;
+- (double)maxAnalysisFPSForSystemResourceUsageLevel:(long long)arg1;
+@property(readonly) double maxAnalysisFPSForCurrentThermalLevel;
+@property(readonly) _Bool shouldEnableTorsoRecognition;
+- (unsigned long long)maxConcurrentAnalyzersForSystemResourceUsageLevel:(long long)arg1;
+- (unsigned long long)maxConcurrentAnalyzersForCurrentThermalLevel;
+@property(readonly) _Bool shouldUseCPUOnlyForVisionFaceDetection;
 @property(readonly) _Bool usesCPUOnly;
 @property(readonly) long long maxVideoEncoderFrameRate;
 

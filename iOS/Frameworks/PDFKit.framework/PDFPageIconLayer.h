@@ -12,17 +12,17 @@ __attribute__((visibility("hidden")))
 @interface PDFPageIconLayer : CALayer
 {
     PDFDocument *_document;
-    struct CGSize _frameSize;
     int _pageIndex;
+    struct CGSize _frameSize;
     _Bool _needsUpdate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak PDFDocument *document; // @synthesize document=_document;
 - (void)updateAsPageIndex:(int)arg1 forDocument:(id)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setNeedsUpdate;
-- (int)pageIndex;
-- (id)document;
+@property(readonly, nonatomic) int pageIndex;
 - (id)initWithSize:(struct CGSize)arg1;
 
 @end

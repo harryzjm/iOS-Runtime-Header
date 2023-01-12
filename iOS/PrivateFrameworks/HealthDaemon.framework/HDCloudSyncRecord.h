@@ -16,14 +16,20 @@
     CKRecordID *_recordID;
 }
 
++ (_Bool)shouldSerializeUnderlyingMessageAsProtected;
++ (id)fieldsForProtectedSerialization;
++ (id)fieldsForUnprotectedSerialization;
 + (_Bool)hasFutureSchema:(id)arg1;
 + (id)recordType;
 + (_Bool)requiresUnderlyingMessage;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
++ (id)initWithSerializedRecord:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool unsaved; // @synthesize unsaved=_unsaved;
 @property(nonatomic) _Bool repaired; // @synthesize repaired=_repaired;
 @property(readonly, copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+- (id)printDescription;
+- (id)serialize;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)serializeUnderlyingMessage;

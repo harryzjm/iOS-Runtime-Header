@@ -19,6 +19,7 @@
     NSXPCConnection *_clientXPCConnection;
     BSMutableIntegerMap *_dataByDomain;
     BSMutableIntegerMap *_volatileDataByDomain;
+    BSMutableIntegerMap *_fallbackDataByDomain;
     NSSet *_entitledDomains;
     NSMutableSet *_publishingDomains;
 }
@@ -26,19 +27,21 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSMutableSet *publishingDomains; // @synthesize publishingDomains=_publishingDomains;
 @property(readonly, copy, nonatomic) NSSet *entitledDomains; // @synthesize entitledDomains=_entitledDomains;
+@property(readonly, nonatomic) BSMutableIntegerMap *fallbackDataByDomain; // @synthesize fallbackDataByDomain=_fallbackDataByDomain;
 @property(readonly, nonatomic) BSMutableIntegerMap *volatileDataByDomain; // @synthesize volatileDataByDomain=_volatileDataByDomain;
 @property(readonly, nonatomic) BSMutableIntegerMap *dataByDomain; // @synthesize dataByDomain=_dataByDomain;
 @property(readonly, nonatomic) NSXPCConnection *clientXPCConnection; // @synthesize clientXPCConnection=_clientXPCConnection;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(readonly, nonatomic) __weak id <STStatusDomainPublisherServerHandle> serverHandle; // @synthesize serverHandle=_serverHandle;
-- (void)_internalQueue_unregisterFromPublishingDomains:(id)arg1;
+- (void)_internalQueue_unregisterFromPublishingDomain:(unsigned long long)arg1;
+- (id)_internalQueue_fallbackDataForDomain:(unsigned long long)arg1;
 - (id)_internalQueue_volatileDataForDomain:(unsigned long long)arg1;
 - (id)_internalQueue_dataForDomain:(unsigned long long)arg1;
 - (void)handleUserInteraction:(id)arg1 forDomain:(unsigned long long)arg2;
-- (void)publishDiff:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)publishDiff:(id)arg1 forDomain:(unsigned long long)arg2 replacingData:(_Bool)arg3 discardingOnExit:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)publishData:(id)arg1 forDomain:(unsigned long long)arg2 discardingOnExit:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)unregisterFromPublishingDomains:(id)arg1;
-- (void)registerToPublishDomains:(id)arg1;
+- (void)unregisterFromPublishingDomain:(unsigned long long)arg1;
+- (void)registerToPublishDomain:(unsigned long long)arg1 fallbackData:(id)arg2;
 - (id)initWithXPCConnection:(id)arg1 serverHandle:(id)arg2;
 
 // Remaining properties

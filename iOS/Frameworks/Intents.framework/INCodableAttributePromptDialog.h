@@ -24,10 +24,10 @@
 - (id)__INCodableDescriptionFormatStringIDKey;
 - (id)__INCodableDescriptionFormatStringLanguageCodeKey;
 - (id)__INCodableDescriptionKey;
-- (id)__INIntentResponseCodableDescriptionKey;
-- (id)__INTypeCodableDescriptionKey;
 - (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionKey;
 - (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionKey;
 - (id)__INTypeCodableDescriptionTypeKey;
 
 @end

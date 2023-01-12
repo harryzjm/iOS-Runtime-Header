@@ -25,10 +25,14 @@
     NSDictionary *_urlParameters;
     NSNumber *_expectedDataSequenceNumber;
     NSFileHandle *_fileHandle;
+    unsigned long long _maxBytes;
+    unsigned long long _bytesWritten;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long bytesWritten; // @synthesize bytesWritten=_bytesWritten;
+@property(nonatomic) unsigned long long maxBytes; // @synthesize maxBytes=_maxBytes;
 @property _Bool readyForDataTransfer; // @synthesize readyForDataTransfer=_readyForDataTransfer;
 @property(retain) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
 @property(retain) NSNumber *expectedDataSequenceNumber; // @synthesize expectedDataSequenceNumber=_expectedDataSequenceNumber;
@@ -49,7 +53,7 @@
 - (void)dataStreamAdapterDidCompleteDataRead:(id)arg1;
 - (_Bool)dataStreamAdapter:(id)arg1 didReceiveData:(id)arg2;
 - (void)readDataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setUpWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setUpWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fileExtension;
 - (void)dealloc;
 - (void)shutDown;

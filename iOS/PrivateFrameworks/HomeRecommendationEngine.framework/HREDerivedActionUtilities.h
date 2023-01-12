@@ -22,6 +22,7 @@
 + (id)_derivedActionForActionableObject:(id)arg1 actionType:(id)arg2 actions:(id)arg3;
 + (id)derivedActionsForActionableObjects:(id)arg1 fromActions:(id)arg2;
 + (id)actionTypesForProfile:(id)arg1;
++ (id)actionTypeForServiceType:(id)arg1 characteristicType:(id)arg2;
 + (id)actionTypeForCharacteristic:(id)arg1;
 + (id)actionTypeForActionClass:(Class)arg1;
 + (id)actionType:(id)arg1;

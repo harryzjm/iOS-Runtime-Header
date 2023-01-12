@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPObject.h>
+#import <TSKit/TSKViewStateRoot.h>
 
 @class TPArchivedLayoutState, TPArchivedUIState, TPLayoutState, TPUIState;
 
-@interface TPViewStateRoot : TSPObject
+@interface TPViewStateRoot : TSKViewStateRoot
 {
     TPArchivedLayoutState *_archivedLayoutState;
     TPArchivedUIState *_archivedUIState;

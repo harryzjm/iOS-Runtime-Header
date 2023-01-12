@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoMailKitServer/NNMKBasicMessage-Protocol.h>
 #import <NanoMailKitServer/NNMKMailboxItem-Protocol.h>
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 #import <NanoMailKitServer/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDate, NSString;
 
-@interface NNMKMessage : NSObject <NNMKMailboxItem, NSSecureCoding, NSCopying>
+@interface NNMKMessage : NSObject <NNMKMailboxItem, NNMKBasicMessage, NSSecureCoding, NSCopying>
 {
     _Bool _isThreadSpecific;
     _Bool _replaceStandaloneNotification;
@@ -53,6 +54,7 @@
 + (_Bool)messageHasMultipleRecipients:(id)arg1;
 + (unsigned long long)addState:(unsigned long long)arg1 toStatus:(unsigned long long)arg2;
 + (unsigned long long)removeState:(unsigned long long)arg1 fromStatus:(unsigned long long)arg2;
++ (id)stringFromMailboxItemState:(unsigned long long)arg1;
 + (_Bool)checkStatus:(unsigned long long)arg1 stateToCheck:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool replaceStandaloneNotification; // @synthesize replaceStandaloneNotification=_replaceStandaloneNotification;

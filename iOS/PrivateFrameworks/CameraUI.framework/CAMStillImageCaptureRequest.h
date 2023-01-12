@@ -12,13 +12,13 @@
 #import <CameraUI/NSCopying-Protocol.h>
 #import <CameraUI/NSMutableCopying-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class CAMSemanticStyle, CAMTextRegionResult, NSArray, NSString, NSURL;
 @protocol CAMStillImageCaptureRequestDelegate;
 
 @interface CAMStillImageCaptureRequest <CAMCaptureAdjustmentProvider, CAMBurstIdentifierProvider, NSCopying, NSMutableCopying, CAMBurstRequest, CAMIrisRequest, CAMTimelapseRequest>
 {
-    NSString *_EV0PersistenceUUID;
     NSString *_timelapseIdentifier;
+    NSString *_EV0PersistenceUUID;
     long long _effectFilterType;
     long long _lightingEffectType;
     long long _aspectRatioCrop;
@@ -33,12 +33,16 @@
     NSArray *_originalFilters;
     long long _photoQualityPrioritization;
     _Bool _wantsAutoDualCameraFusion;
+    _Bool _wantsSemanticSceneFilter;
     _Bool _wantsAudioForCapture;
     _Bool _wantsSquareCrop;
     long long _lowLightMode;
+    CAMSemanticStyle *_semanticStyle;
     long long _aspectRatio;
     _Bool _wantsHighResolutionStills;
     _Bool _stillDuringVideo;
+    NSString *_textAnalysisIdentifier;
+    CAMTextRegionResult *_textAnalysisRegion;
     struct CGSize _desiredPreviewSize;
     NSString *_burstIdentifier;
     NSString *_irisIdentifier;
@@ -62,8 +66,8 @@
 @property(readonly, nonatomic) long long aspectRatioCrop; // @synthesize aspectRatioCrop=_aspectRatioCrop;
 @property(readonly, nonatomic) long long lightingEffectType; // @synthesize lightingEffectType=_lightingEffectType;
 @property(readonly, nonatomic) long long effectFilterType; // @synthesize effectFilterType=_effectFilterType;
-@property(readonly, copy, nonatomic) NSString *timelapseIdentifier; // @synthesize timelapseIdentifier=_timelapseIdentifier;
 @property(readonly, copy, nonatomic) NSString *EV0PersistenceUUID; // @synthesize EV0PersistenceUUID=_EV0PersistenceUUID;
+@property(readonly, copy, nonatomic) NSString *timelapseIdentifier; // @synthesize timelapseIdentifier=_timelapseIdentifier;
 @property(readonly, nonatomic) __weak id <CAMStillImageCaptureRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long loggingZoomInteractionType; // @synthesize loggingZoomInteractionType=_loggingZoomInteractionType;
 @property(readonly, nonatomic) double loggingVideoZoomFactor; // @synthesize loggingVideoZoomFactor=_loggingVideoZoomFactor;
@@ -77,9 +81,12 @@
 @property(readonly, copy, nonatomic) NSURL *localSpatialOverCaptureVideoDestinationURL; // @synthesize localSpatialOverCaptureVideoDestinationURL=_localSpatialOverCaptureVideoDestinationURL;
 @property(readonly, copy, nonatomic) NSURL *localCTMVideoDestinationURL; // @synthesize localCTMVideoDestinationURL=_localCTMVideoDestinationURL;
 @property(readonly, copy, nonatomic) NSURL *localVideoDestinationURL; // @synthesize localVideoDestinationURL=_localVideoDestinationURL;
+@property(readonly, copy, nonatomic) CAMTextRegionResult *textAnalysisRegion; // @synthesize textAnalysisRegion=_textAnalysisRegion;
+@property(readonly, copy, nonatomic) NSString *textAnalysisIdentifier; // @synthesize textAnalysisIdentifier=_textAnalysisIdentifier;
 @property(readonly, copy, nonatomic) NSString *irisIdentifier; // @synthesize irisIdentifier=_irisIdentifier;
 @property(readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
 @property(readonly, nonatomic) struct CGSize desiredPreviewSize; // @synthesize desiredPreviewSize=_desiredPreviewSize;
+@property(readonly, nonatomic) CAMSemanticStyle *semanticStyle; // @synthesize semanticStyle=_semanticStyle;
 @property(readonly, nonatomic) long long lowLightMode; // @synthesize lowLightMode=_lowLightMode;
 @property(readonly, nonatomic) _Bool wantsSpatialOverCapture; // @synthesize wantsSpatialOverCapture=_wantsSpatialOverCapture;
 @property(readonly, nonatomic) long long ctmCaptureType; // @synthesize ctmCaptureType=_ctmCaptureType;
@@ -87,6 +94,7 @@
 @property(readonly, nonatomic) _Bool wantsHighResolutionStills; // @synthesize wantsHighResolutionStills=_wantsHighResolutionStills;
 @property(readonly, nonatomic) _Bool wantsSquareCrop; // @synthesize wantsSquareCrop=_wantsSquareCrop;
 @property(readonly, nonatomic) _Bool wantsAudioForCapture; // @synthesize wantsAudioForCapture=_wantsAudioForCapture;
+@property(readonly, nonatomic) _Bool wantsSemanticSceneFilter; // @synthesize wantsSemanticSceneFilter=_wantsSemanticSceneFilter;
 @property(readonly, nonatomic) _Bool wantsAutoDualCameraFusion; // @synthesize wantsAutoDualCameraFusion=_wantsAutoDualCameraFusion;
 @property(readonly, nonatomic) long long photoQualityPrioritization; // @synthesize photoQualityPrioritization=_photoQualityPrioritization;
 @property(readonly, nonatomic) NSArray *originalFilters; // @synthesize originalFilters=_originalFilters;

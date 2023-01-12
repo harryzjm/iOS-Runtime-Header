@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
 {
     id <VKRouteMatchedAnnotationPresentation> _routeLineSplitAnnotation;
     id <VKGlobeLineContainerDelegate> _delegate;
-    set_f5697f57 _overlays;
-    set_f5697f57 _persistentOverlays;
-    set_f5697f57 _nonPersistentOverlays;
-    struct RouteRenderLayer *_routeRenderLayer;
-    struct map<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::weak_ptr<altitude::RouteLineData>, std::__1::less<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<std::__1::pair<const geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
+    struct set<id<VKRouteOverlay>, std::less<id<VKRouteOverlay>>, std::allocator<id<VKRouteOverlay>>> _overlays;
+    struct set<id<VKRouteOverlay>, std::less<id<VKRouteOverlay>>, std::allocator<id<VKRouteOverlay>>> _persistentOverlays;
+    struct set<id<VKRouteOverlay>, std::less<id<VKRouteOverlay>>, std::allocator<id<VKRouteOverlay>>> _nonPersistentOverlays;
+    void *_routeRenderLayer;
+    struct map<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::weak_ptr<altitude::RouteLineData>, std::less<geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::allocator<std::pair<const geo::_retain_ptr<VKPolylineOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
     _retain_ptr_7ea4e41c _selectedPolyline;
     struct VKGlobeRouteSplit *_routeSplit;
 }
@@ -35,9 +35,9 @@ __attribute__((visibility("hidden")))
 - (void)clearLineSelection;
 - (void)removeLine:(_retain_ptr_7ea4e41c)arg1;
 - (void)addLine:(_retain_ptr_7ea4e41c)arg1;
-- (const set_f5697f57 *)nonPersistentOverlays;
-- (const set_f5697f57 *)persistentOverlays;
-- (const set_f5697f57 *)overlays;
+- (const void *)nonPersistentOverlays;
+- (const void *)persistentOverlays;
+- (const void *)overlays;
 - (void)removeNonPersistentOverlay:(id)arg1;
 - (void)removePersistentOverlay:(id)arg1;
 - (_Bool)hasPersistentOverlay:(id *)arg1;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_addOverlay:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
-- (id)initWithRouteRenderLayer:(struct RouteRenderLayer *)arg1;
+- (id)initWithRouteRenderLayer:(void *)arg1;
 
 @end
 

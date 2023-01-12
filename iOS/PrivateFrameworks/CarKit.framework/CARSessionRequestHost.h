@@ -12,6 +12,7 @@
 
 @interface CARSessionRequestHost : NSObject <NSSecureCoding>
 {
+    _Bool _wiredCarPlaySimulator;
     NSString *_displayName;
     NSArray *_wiredIPv6Addresses;
     NSArray *_wirelessIPv6Addresses;
@@ -24,6 +25,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isWiredCarPlaySimulator) _Bool wiredCarPlaySimulator; // @synthesize wiredCarPlaySimulator=_wiredCarPlaySimulator;
 @property(copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property(copy, nonatomic) NSString *publicKey; // @synthesize publicKey=_publicKey;
 @property(copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;

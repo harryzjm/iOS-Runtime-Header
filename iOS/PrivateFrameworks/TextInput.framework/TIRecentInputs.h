@@ -14,6 +14,7 @@
 
 + (_Bool)identifierIsSystemIdentifier:(id)arg1;
 + (void)clearRecentInputForIdentifier:(id)arg1;
++ (_Bool)validateInputFormat:(id)arg1 forIdentifier:(id)arg2;
 + (void)storeInput:(id)arg1 forSystemIdentifier:(id)arg2;
 + (void)removeInput:(id)arg1 forSystemIdentifier:(id)arg2;
 + (void)storeInput:(id)arg1 forSystemIdentifier:(id)arg2 atPath:(id)arg3;

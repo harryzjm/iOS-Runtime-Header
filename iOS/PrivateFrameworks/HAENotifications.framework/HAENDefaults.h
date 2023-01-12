@@ -13,9 +13,13 @@
     NSUserDefaults *_userDefaults;
     NSMutableDictionary *_domainSettings;
     struct os_unfair_lock_s _lock;
+    _Bool _EUVolumeLimitFlag;
+    _Bool _SKVolumeLimitFlag;
 }
 
++ (_Bool)isRunningCITests;
 + (_Bool)isCurrentProcessMediaserverd;
++ (_Bool)HAENSupportedForCurrentDeviceClass;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_registerNotification:(id)arg1;
@@ -26,6 +30,7 @@
 - (void)updateAudioAccessoryIsConnectedToHeadphones:(long long)arg1;
 - (void)setAudioAccessoryIsConnectedToHeadphones:(long long)arg1;
 - (_Bool)_shouldRepromptSinceDate:(id)arg1;
+- (_Bool)isCurrentAudioAccessoryHeadphone;
 - (long long)getAudioAccessoryConnectionInfo;
 - (id)_generateAccessoryKeyWithManufacture:(id)arg1 andSerialNumber:(id)arg2;
 - (double)volumeReductionDelta;
@@ -34,6 +39,10 @@
 - (_Bool)isReduceLoudSoundEnabled;
 - (double)getLiveMonitorTimeWindowInSeconds;
 - (_Bool)isConnectedUnknownWiredDeviceHeadphone;
+- (_Bool)isHAENFeatureMandatory;
+- (_Bool)isSKVolumeLimitOn;
+- (_Bool)isEUVolumeLimitOn;
+- (_Bool)isHAENFeatureOptedIn;
 - (_Bool)isHAENFeatureEnabled;
 - (double)getLiveMonitoringThreshold;
 - (void)setUserVolumeWithValue:(float)arg1 mininum:(float)arg2;

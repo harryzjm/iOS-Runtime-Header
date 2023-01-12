@@ -37,6 +37,7 @@
 - (void)handleWindowSingleTap:(id)arg1;
 - (void)windowTouchesEnded:(id)arg1 withEvent:(id)arg2;
 - (_Bool)windowPointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)useShortBanner;
 
 @end
 

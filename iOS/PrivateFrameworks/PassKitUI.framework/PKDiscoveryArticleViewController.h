@@ -13,7 +13,7 @@
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PassKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSString, PKDiscoveryArticleAnimatedTransitioningHandler, PKDiscoveryArticleLayout, PKDiscoveryCardView, PKDiscoveryDismissButton, UIActivityIndicatorView, UICollectionView, UILabel, UIPanGestureRecognizer, UIScreenEdgePanGestureRecognizer;
+@class NSMutableDictionary, NSObject, NSString, PKDiscoveryArticleAnimatedTransitioningHandler, PKDiscoveryArticleLayout, PKDiscoveryCardView, PKDiscoveryCardViewTemplateInformation, PKDiscoveryDismissButton, UIActivityIndicatorView, UICollectionView, UILabel, UIPanGestureRecognizer, UIScreenEdgePanGestureRecognizer;
 @protocol OS_dispatch_queue;
 
 @interface PKDiscoveryArticleViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate, PKDiscoveryCardViewDelegate, PKPaymentSetupDelegate>
@@ -26,6 +26,7 @@
     UIActivityIndicatorView *_activityIndicator;
     UILabel *_downloadingLabel;
     NSString *_referrerIdentifierOverride;
+    NSString *_callToActionIdentifier;
     CDUnknownBlockType _callToActionTappedOverride;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UIScreenEdgePanGestureRecognizer *_screenEdgePanGestureRecognizer;
@@ -33,6 +34,9 @@
     NSMutableDictionary *_imageDownloads;
     struct os_unfair_lock_s _lockDownloads;
     NSObject<OS_dispatch_queue> *_loadImageQueue;
+    _Bool _scrolledToBottom;
+    _Bool _reportedScrolledToBottom;
+    PKDiscoveryCardViewTemplateInformation *_cardTemplateInformation;
     _Bool _hasSafeAreaInsetOverride;
     _Bool _animatingCard;
     _Bool _useCustomPresentation;
@@ -73,9 +77,11 @@
 - (long long)modalTransitionStyle;
 - (long long)modalPresentationStyle;
 - (void)paymentSetupDidFinish:(id)arg1;
+- (void)_showActivityIndicator:(_Bool)arg1 view:(id)arg2;
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
 - (void)_performProvisioningCTATapped:(id)arg1 callToAction:(id)arg2;
-- (void)discoveryCardViewCTATapped:(id)arg1 callToAction:(id)arg2;
+- (void)_performAccountUserInvitationFlowWithCTATapped:(id)arg1 callToAction:(id)arg2;
+- (void)discoveryCardViewCTATapped:(id)arg1 callToAction:(id)arg2 itemIdentifier:(id)arg3;
 - (void)setIsDownloading:(_Bool)arg1;
 - (void)setArticleLayout:(id)arg1 animated:(_Bool)arg2;
 - (void)setCallToActionTappedOverride:(CDUnknownBlockType)arg1;
@@ -85,10 +91,16 @@
 - (void)_dismissButtonTapped;
 - (long long)preferredStatusBarUpdateAnimation;
 - (_Bool)prefersStatusBarHidden;
+- (_Bool)isScrollable;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithArticleLayout:(id)arg1 referrerIdentifier:(id)arg2;
+- (void)_reportScolledToBottomIfNecessary;
+- (void)_applicationWillResignActive;
+- (void)_applicationWillTerminate;
+- (id)initWithArticleLayout:(id)arg1 referrerIdentifier:(id)arg2 cardTemplateInformation:(id)arg3;
 - (id)initWithItemIdentifier:(id)arg1 referrerIdentifier:(id)arg2;
 
 // Remaining properties

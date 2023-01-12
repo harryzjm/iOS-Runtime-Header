@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, SCNNode;
+@class MISSING_TYPE, SCNNode, SCNPhysicsBody, SCNPhysicsConeTwistJoint;
 
 @interface AVTPhysicsRig : NSObject
 {
-    SCNNode *rig;
-    SCNNode *chainRoot;
-    double applyDownForce;
-    MISSING_TYPE *restPosition;
-    MISSING_TYPE *restDown;
+    float _coneConstraintLength;
+    float _coneConstraintSinusAngularLimit;
+    SCNNode *_rig;
+    SCNNode *_chainRoot;
+    SCNPhysicsBody *_physicsBody;
+    SCNPhysicsConeTwistJoint *_physicsBehavior;
+    double _downForceFactor;
+    MISSING_TYPE *_restPosition_chainRoot;
+    MISSING_TYPE *_restGravityVector_chainRoot;
+    CDStruct_8e0628e6 _coneConstraintBasis_chainParent;
+    CDStruct_14d5dc5e _coneConstraintAnchorB;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double applyDownForce; // @synthesize applyDownForce;
-@property(nonatomic) MISSING_TYPE *restDown; // @synthesize restDown;
-@property(nonatomic) MISSING_TYPE *restPosition; // @synthesize restPosition;
-@property(retain, nonatomic) SCNNode *chainRoot; // @synthesize chainRoot;
-@property(retain, nonatomic) SCNNode *rig; // @synthesize rig;
 
 @end
 

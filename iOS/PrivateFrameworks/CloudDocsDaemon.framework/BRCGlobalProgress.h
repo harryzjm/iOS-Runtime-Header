@@ -11,7 +11,6 @@
 @class BRCAccountSession, BRCProgress, NSMutableSet, NSString, _BRCDownloadInfo, _BRCUploadInfo, br_pacer;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface BRCGlobalProgress : NSObject <BRCReachabilityDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;

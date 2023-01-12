@@ -14,6 +14,7 @@
 @property(nonatomic) long long siriSessionState;
 
 @optional
+- (void)setRequestHandlingStatus:(unsigned long long)arg1;
 - (void)setContentViewsAlpha:(double)arg1;
 - (void)setSiriContentDelegate:(id <AFUISiriContentDelegate>)arg1;
 - (void)setAuxiliaryViewsHidden:(_Bool)arg1 animated:(_Bool)arg2;

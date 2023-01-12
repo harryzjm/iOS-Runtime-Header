@@ -21,9 +21,9 @@
 @property(retain, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property(retain, nonatomic) TSCECellTractRef *chromeTractRef; // @synthesize chromeTractRef=_chromeTractRef;
 @property(retain, nonatomic) TSCECellTractRef *baseTractRef; // @synthesize baseTractRef=_baseTractRef;
-@property(readonly, nonatomic) UUIDData_5fbc143e tableUID;
-@property(readonly, nonatomic) RefTypeHolder_1140c985 baseRangeRef;
-@property(readonly, nonatomic) RefTypeHolder_8c6da553 chromeRangeRef;
+@property(readonly, nonatomic) struct TSKUIDStruct tableUID;
+@property(readonly, nonatomic) RefTypeHolder_41ae741d baseRangeRef;
+@property(readonly, nonatomic) RefTypeHolder_b26a20d2 chromeRangeRef;
 - (id)initWithBaseTractRef:(id)arg1 calcEngine:(id)arg2;
 - (id)initWithChromeTractRef:(id)arg1 calcEngine:(id)arg2;
 

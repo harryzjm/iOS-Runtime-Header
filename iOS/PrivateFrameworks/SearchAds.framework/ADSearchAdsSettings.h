@@ -29,12 +29,22 @@
     double _frequencyCapExpirationInSeconds;
     unsigned long long _maxFrequencyCapElements;
     unsigned long long _maxClickCapElements;
+    double _landingReverseGeolocationRefreshThresholdInMeters;
+    double _landingClickExpirationThresholdInSeconds;
+    double _landingFrequencyCapExpirationInSeconds;
+    unsigned long long _maxLandingFrequencyCapElements;
+    unsigned long long _maxLandingClickCapElements;
     ADClientSettingsResponse *_clientSettings;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ADClientSettingsResponse *clientSettings; // @synthesize clientSettings=_clientSettings;
+@property(nonatomic) unsigned long long maxLandingClickCapElements; // @synthesize maxLandingClickCapElements=_maxLandingClickCapElements;
+@property(nonatomic) unsigned long long maxLandingFrequencyCapElements; // @synthesize maxLandingFrequencyCapElements=_maxLandingFrequencyCapElements;
+@property(nonatomic) double landingFrequencyCapExpirationInSeconds; // @synthesize landingFrequencyCapExpirationInSeconds=_landingFrequencyCapExpirationInSeconds;
+@property(nonatomic) double landingClickExpirationThresholdInSeconds; // @synthesize landingClickExpirationThresholdInSeconds=_landingClickExpirationThresholdInSeconds;
+@property(nonatomic) double landingReverseGeolocationRefreshThresholdInMeters; // @synthesize landingReverseGeolocationRefreshThresholdInMeters=_landingReverseGeolocationRefreshThresholdInMeters;
 @property(nonatomic) unsigned long long maxClickCapElements; // @synthesize maxClickCapElements=_maxClickCapElements;
 @property(nonatomic) unsigned long long maxFrequencyCapElements; // @synthesize maxFrequencyCapElements=_maxFrequencyCapElements;
 @property(nonatomic) double frequencyCapExpirationInSeconds; // @synthesize frequencyCapExpirationInSeconds=_frequencyCapExpirationInSeconds;
@@ -54,6 +64,11 @@
 @property(retain, nonatomic) NSString *algoID; // @synthesize algoID=_algoID;
 @property(retain, nonatomic) NSURL *defaultAdTargetingServerURL; // @synthesize defaultAdTargetingServerURL=_defaultAdTargetingServerURL;
 @property(retain, nonatomic) NSURL *defaultToroServerURL; // @synthesize defaultToroServerURL=_defaultToroServerURL;
+- (void)overrideLandingRevGeoThreshold:(double)arg1;
+- (void)overrideMaxLandingClickElements:(unsigned long long)arg1;
+- (void)overrideLandingClickExpiration:(double)arg1;
+- (void)overrideMaxLandingFrequencyCapElements:(unsigned long long)arg1;
+- (void)overrideLandingFrequencyCapExpiration:(double)arg1;
 - (void)overrideRevGeoThreshold:(double)arg1;
 - (void)overrideMaxToroClickElements:(unsigned long long)arg1;
 - (void)overrideToroClickExpiration:(double)arg1;

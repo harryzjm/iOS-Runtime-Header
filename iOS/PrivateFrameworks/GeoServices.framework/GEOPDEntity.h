@@ -10,7 +10,6 @@
 
 @class GEOLocalizedString, GEOStyleAttributes, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDEntity : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_altTelephones;
     NSMutableArray *_altUrls;
     NSMutableArray *_alternateSearchableNames;
+    unsigned long long _areaHighlightId;
     unsigned long long _brandMuid;
     unsigned long long _buildingId;
     NSString *_fax;
@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
     _Bool _isStandaloneBrand;
     _Bool _telephoneAdsOptOut;
     struct {
+        unsigned int has_areaHighlightId:1;
         unsigned int has_brandMuid:1;
         unsigned int has_buildingId:1;
         unsigned int has_globalBrandMuid:1;
@@ -109,6 +110,8 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAreaHighlightId;
+@property(nonatomic) unsigned long long areaHighlightId;
 @property(nonatomic) _Bool hasBuildingId;
 @property(nonatomic) unsigned long long buildingId;
 @property(nonatomic) _Bool hasGlobalBrandMuid;

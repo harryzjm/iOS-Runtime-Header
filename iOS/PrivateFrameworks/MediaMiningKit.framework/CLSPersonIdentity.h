@@ -14,7 +14,7 @@
     _Bool _isUserCreated;
     _Bool _hasContactProfilePicture;
     _Bool _hasPhoneNumber;
-    NSString *_PHIdentifier;
+    NSString *_localIdentifier;
     NSString *_CNIdentifier;
     NSString *_fullName;
     NSString *_firstName;
@@ -33,6 +33,7 @@
     unsigned long long _relationship;
     NSArray *_sourceURLs;
     NSString *_inferredLastName;
+    NSString *_localizedShortName;
 }
 
 + (id)descriptionForPersonRelationship:(unsigned long long)arg1;
@@ -46,10 +47,11 @@
 + (id)presentationStringForPeople:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)personWithPHPerson:(id)arg1;
-+ (id)personWithPHIdentifier:(id)arg1;
++ (id)personWithLocalIdentifier:(id)arg1;
 + (id)personWithCNIdentifier:(id)arg1;
 + (id)person;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *localizedShortName; // @synthesize localizedShortName=_localizedShortName;
 @property(retain, nonatomic) NSString *inferredLastName; // @synthesize inferredLastName=_inferredLastName;
 @property(readonly, nonatomic) NSArray *sourceURLs; // @synthesize sourceURLs=_sourceURLs;
 @property(nonatomic) unsigned long long relationship; // @synthesize relationship=_relationship;
@@ -72,7 +74,7 @@
 @property(retain, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property(retain, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property(retain, nonatomic) NSString *CNIdentifier; // @synthesize CNIdentifier=_CNIdentifier;
-@property(retain, nonatomic) NSString *PHIdentifier; // @synthesize PHIdentifier=_PHIdentifier;
+@property(retain, nonatomic) NSString *localIdentifier; // @synthesize localIdentifier=_localIdentifier;
 - (_Bool)isOrganization;
 - (id)_motherAndFatherRelationships;
 - (unsigned long long)relationshipHintFromNameUsingLocales:(id)arg1;

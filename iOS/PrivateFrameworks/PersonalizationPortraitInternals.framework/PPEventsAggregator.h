@@ -15,7 +15,6 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *eventsPool; // @synthesize eventsPool=_eventsPool;
-- (id)sortedEvents;
 - (void)dedupeEventsInPool;
 - (_Bool)isEvent:(id)arg1 dupeOfEvent:(id)arg2;
 - (id)tripCandidatesFromEventsPool;

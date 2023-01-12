@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDSQLiteDatabase, NSString;
+@class HDSQLiteDatabase;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -20,14 +20,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(readonly, nonatomic) unsigned long long threadID; // @synthesize threadID=_threadID;
-@property(readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
-@property(readonly, nonatomic) NSObject<OS_dispatch_group> *flushGroup; // @synthesize flushGroup=_flushGroup;
-@property(readonly, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
-@property(readonly, copy, nonatomic) NSString *typeString;
-- (void)captureThreadInfo;
-- (id)initWithDatabase:(id)arg1 flushGroup:(id)arg2 generation:(unsigned long long)arg3;
 
 @end
 

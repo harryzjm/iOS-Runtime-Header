@@ -16,6 +16,7 @@
     NSString *_appIdentifier;
     int _certified;
     NSMutableArray *_characteristics;
+    NSString *_clientMetricIdentifier;
     unsigned int _consecutiveFailureCount;
     unsigned int _duration;
     int _errorCode;
@@ -61,6 +62,7 @@
 
 + (Class)characteristicsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *clientMetricIdentifier; // @synthesize clientMetricIdentifier=_clientMetricIdentifier;
 @property(retain, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property(nonatomic) _Bool isSentOverNoe; // @synthesize isSentOverNoe=_isSentOverNoe;
 @property(nonatomic) _Bool isNoeAccessory; // @synthesize isNoeAccessory=_isNoeAccessory;
@@ -92,6 +94,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasClientMetricIdentifier;
 @property(readonly, nonatomic) _Bool hasAppIdentifier;
 @property(nonatomic) _Bool hasIsSentOverNoe;
 @property(nonatomic) _Bool hasIsNoeAccessory;

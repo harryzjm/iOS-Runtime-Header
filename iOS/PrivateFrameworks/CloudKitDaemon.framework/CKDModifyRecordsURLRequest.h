@@ -6,7 +6,6 @@
 
 @class NSArray, NSData, NSDictionary, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifyRecordsURLRequest
 {
     _Bool _atomic;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _recordPostedBlock;
     NSArray *_records;
     NSArray *_recordIDsToDelete;
+    NSDictionary *_recordIDsToDeleteToSigningPCSIdentity;
     NSData *_clientChangeTokenData;
     NSDictionary *_requestedFieldsByRecordID;
     NSMutableDictionary *_recordIDByRequestID;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property(nonatomic) _Bool sendAllFields; // @synthesize sendAllFields=_sendAllFields;
 @property(nonatomic) _Bool oplock; // @synthesize oplock=_oplock;
+@property(retain, nonatomic) NSDictionary *recordIDsToDeleteToSigningPCSIdentity; // @synthesize recordIDsToDeleteToSigningPCSIdentity=_recordIDsToDeleteToSigningPCSIdentity;
 @property(retain, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property(retain, nonatomic) NSArray *records; // @synthesize records=_records;
 @property(copy, nonatomic) CDUnknownBlockType recordPostedBlock; // @synthesize recordPostedBlock=_recordPostedBlock;
@@ -44,12 +45,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
+- (void)addSignatureForRequestOperation:(id)arg1;
 - (id)generateRequestOperations;
+- (_Bool)handlesAnonymousCKUserIDPropagation;
 - (int)isolationLevel;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 - (_Bool)allowsAnonymousAccount;
-- (id)initWithOperation:(id)arg1 recordsToSave:(id)arg2 recordIDsToDelete:(id)arg3 oplock:(_Bool)arg4 sendAllFields:(_Bool)arg5 clientChangeTokenData:(id)arg6 requestedFieldsByRecordId:(id)arg7;
+- (id)initWithOperation:(id)arg1 recordsToSave:(id)arg2 recordIDsToDelete:(id)arg3 recordIDsToDeleteToSigningPCSIdentity:(id)arg4 oplock:(_Bool)arg5 sendAllFields:(_Bool)arg6 clientChangeTokenData:(id)arg7 requestedFieldsByRecordId:(id)arg8;
 
 @end
 

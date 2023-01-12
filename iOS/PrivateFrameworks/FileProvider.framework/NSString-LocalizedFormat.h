@@ -20,6 +20,7 @@
 + (void)setFp_defaultProviderDomainID:(id)arg1;
 - (id)fp_formatStringWithValues:(id)arg1 error:(id *)arg2;
 - (id)fp_localizedFormatWithKeys:(id)arg1 fromDictionary:(id)arg2 error:(id *)arg3;
+- (_Bool)fp_usesDSCopyEngine;
 - (_Bool)fp_isCJKLanguageIdentifier;
 - (void)fp_enumerateTokensInRange:(struct _NSRange)arg1 tokenizer:(struct __CFStringTokenizer *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)fp_stringByDeletingPathExtension;
@@ -39,6 +40,7 @@
 - (id)fp_displayNameFromFilenameWithHiddenPathExtension:(_Bool)arg1 isFolder:(_Bool)arg2;
 - (id)fp_libnotifyPerUserNotificationName;
 - (id)fp_realpath;
+- (_Bool)fp_isiCloudDriveOrCloudDocsIdentifier;
 - (id)fp_fpIdentifier;
 - (id)fp_toProviderID;
 - (id)fp_toDomainIdentifier;

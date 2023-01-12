@@ -6,17 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BSCompoundAssertion;
-
 @interface BKSTouchEventService : NSObject
 {
-    BSCompoundAssertion *_authenticationSpecificationAssertion;
 }
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
-@property(retain, nonatomic) BSCompoundAssertion *authenticationSpecificationAssertion; // @synthesize authenticationSpecificationAssertion=_authenticationSpecificationAssertion;
 - (id)addAuthenticationSpecifications:(id)arg1 forReason:(id)arg2;
+- (void)addTouchAuthenticationSpecifications:(id)arg1 forReason:(id)arg2;
 
 @end
 

@@ -15,6 +15,7 @@
 
 + (id)NewlyAddedEmoji;
 + (id)MultiPersonFamilySkinToneEmoji;
++ (id)ExtendedCoupleMultiSkinToneEmoji;
 + (id)CoupleMultiSkinToneEmoji;
 + (id)ProfessionWithoutSkinToneEmoji;
 + (id)ProfessionEmoji;
@@ -25,7 +26,9 @@
 + (_Bool)_isNewlyAddedEmoji:(id)arg1;
 + (_Bool)_isMultiPersonFamilySkinToneEmoji:(id)arg1;
 + (_Bool)_isComposedCoupleMultiSkinToneEmoji:(id)arg1;
++ (_Bool)_isHandholdingCoupleEmoji:(id)arg1;
 + (_Bool)_isCoupleMultiSkinToneEmoji:(id)arg1;
++ (_Bool)_supportsCoupleSkinToneSelection:(id)arg1;
 + (_Bool)_isFlagEmoji:(id)arg1;
 + (_Bool)_isProfessionEmoji:(id)arg1;
 + (_Bool)_isGenderEmoji:(id)arg1;

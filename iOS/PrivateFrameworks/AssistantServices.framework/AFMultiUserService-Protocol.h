@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol AFMultiUserService <NSObject>
+- (oneway void)getPreferredMediaUserHomeUserIDWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)getHomeUserIdOfRecognizedUserWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getMultiUserSettingsForSharedUserID:(NSString *)arg1 completion:(void (^)(AFPersonalUserSettings *, NSError *))arg2;
 - (oneway void)getConformingSharedUserIds:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getFirstNameForSharedUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

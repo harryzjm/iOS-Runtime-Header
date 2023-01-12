@@ -11,7 +11,6 @@
 
 @class NSArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CNContactVCardSummary : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_title;

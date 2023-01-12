@@ -9,12 +9,11 @@
 #import <SpringBoardHome/SBHSidebarProvider-Protocol.h>
 #import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSMutableArray, NSString, SBHDateHeaderViewController, SBHSidebarVisualConfiguration, WGWidgetGroupViewController, _UILegibilitySettings;
+@class NSLayoutConstraint, NSMutableArray, NSString, SBHSidebarVisualConfiguration, WGWidgetGroupViewController, _UILegibilitySettings;
 @protocol SBHSidebarProviderDelegate;
 
 @interface SBHRootSidebarController : UIViewController <UIGestureRecognizerDelegate, SBHSidebarProvider>
 {
-    SBHDateHeaderViewController *_dateViewController;
     _UILegibilitySettings *_legibilitySettings;
     WGWidgetGroupViewController *_widgetViewController;
     SBHSidebarVisualConfiguration *_sidebarVisualConfiguration;
@@ -41,7 +40,6 @@
 - (void)_configureAvocadoViewController;
 - (void)_setupConstraintsForViewController:(id)arg1;
 - (void)setEditingIcons:(_Bool)arg1;
-@property(readonly, nonatomic) SBHDateHeaderViewController *dateViewController; // @synthesize dateViewController=_dateViewController;
 - (_Bool)_canShowWhileLocked;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;

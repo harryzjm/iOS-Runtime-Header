@@ -21,8 +21,12 @@
     _Bool _allowAccessibilitySpeech;
     _Bool _allowPasswordAutoFill;
     _Bool _allowContinuousPathKeyboard;
+    _Bool _allowTranslationLookup;
+    _Bool _allowQuickNote;
 }
 
+@property(nonatomic) _Bool allowQuickNote; // @synthesize allowQuickNote=_allowQuickNote;
+@property(nonatomic) _Bool allowTranslationLookup; // @synthesize allowTranslationLookup=_allowTranslationLookup;
 @property(nonatomic) _Bool allowContinuousPathKeyboard; // @synthesize allowContinuousPathKeyboard=_allowContinuousPathKeyboard;
 @property(nonatomic) _Bool allowPasswordAutoFill; // @synthesize allowPasswordAutoFill=_allowPasswordAutoFill;
 @property(nonatomic) _Bool allowAccessibilitySpeech; // @synthesize allowAccessibilitySpeech=_allowAccessibilitySpeech;

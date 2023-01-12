@@ -15,10 +15,13 @@
     PHPhotoLibrary *_photoLibrary;
 }
 
++ (id)_gameHighlightsImageDataFromImage:(id)arg1 withOptions:(id)arg2;
++ (id)_gameHighlightsImageDataFromImageData:(id)arg1 withOptions:(id)arg2;
++ (id)imageDataFromImage:(id)arg1 withProperties:(id)arg2;
 - (void).cxx_destruct;
 - (void)removeEntryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)saveImageToTemporaryLocation:(id)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateImage:(id)arg1 withModificationData:(id)arg2 forEntryWithIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)saveImageToTemporaryLocation:(id)arg1 withName:(id)arg2 imageDescription:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)updateImageData:(id)arg1 withModificationData:(id)arg2 forEntryWithIdentifier:(id)arg3 registrationOptions:(id)arg4 imageDescription:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)imageForPreviouslyRegisteredIdentifier:(id)arg1 imageHandler:(CDUnknownBlockType)arg2;
 - (void)_registerEntryWithImage:(id)arg1 options:(id)arg2 retry:(_Bool)arg3 identifierHandler:(CDUnknownBlockType)arg4;
 - (void)registerEntryWithImage:(id)arg1 options:(id)arg2 identifierHandler:(CDUnknownBlockType)arg3;

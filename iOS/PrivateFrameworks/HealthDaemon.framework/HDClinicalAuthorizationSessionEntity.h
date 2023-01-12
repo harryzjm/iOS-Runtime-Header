@@ -8,8 +8,6 @@
 {
 }
 
-+ (id)_gatewayJoinClausesForProperty:(id)arg1;
-+ (id)_accountJoinClausesForProperty:(id)arg1;
 + (id)joinClausesForProperty:(id)arg1;
 + (id)checkConstraints;
 + (long long)protectionClass;

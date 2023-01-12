@@ -12,6 +12,7 @@
 
 @class MPCPrivateListeningStateSource, NSString, NSTimeZone;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackDelegationProperties : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_deviceGUID;

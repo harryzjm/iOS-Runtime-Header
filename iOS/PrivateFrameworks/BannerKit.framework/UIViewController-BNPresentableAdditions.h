@@ -9,6 +9,7 @@
 @class BSAnimationSettings;
 
 @interface UIViewController (BNPresentableAdditions)
+- (_Bool)bn_shouldAnimateViewTransitionToSize:(struct CGSize)arg1;
 - (struct CGSize)preferredContentSizeWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
 @property(readonly, copy, nonatomic) BSAnimationSettings *bannerSizeTransitionAnimationSettings;
 @property(readonly, nonatomic) struct UIEdgeInsets bannerContentOutsets;

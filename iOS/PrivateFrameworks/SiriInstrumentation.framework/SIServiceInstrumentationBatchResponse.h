@@ -4,26 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString;
 
-@interface SIServiceInstrumentationBatchResponse : PBCodable
+@interface SIServiceInstrumentationBatchResponse
 {
-    _Bool _hasBatch_id;
-    _Bool _hasStatus_code;
-    _Bool _hasMessage;
-    int _status_code;
     NSData *_batch_id;
+    int _status_code;
     NSString *_message;
+    struct {
+        unsigned int status_code:1;
+    } _has;
+    _Bool _hasBatch_id;
+    _Bool _hasMessage;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasMessage; // @synthesize hasMessage=_hasMessage;
-@property(copy, nonatomic) NSString *message; // @synthesize message=_message;
-@property(nonatomic) _Bool hasStatus_code; // @synthesize hasStatus_code=_hasStatus_code;
-@property(nonatomic) int status_code; // @synthesize status_code=_status_code;
 @property(nonatomic) _Bool hasBatch_id; // @synthesize hasBatch_id=_hasBatch_id;
+@property(copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property(nonatomic) int status_code; // @synthesize status_code=_status_code;
 @property(copy, nonatomic) NSData *batch_id; // @synthesize batch_id=_batch_id;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
@@ -33,6 +32,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasStatus_code;
 
 @end
 

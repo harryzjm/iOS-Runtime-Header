@@ -12,9 +12,5 @@ __attribute__((visibility("hidden")))
     CDStruct_f6aba300 _versionStruct;
 }
 
-+ (id)unknownVersion;
-+ (id)versionWithMajor:(long long)arg1 minor:(long long)arg2 patch:(long long)arg3;
-@property CDStruct_2ec95fd7 versionStruct; // @synthesize versionStruct=_versionStruct;
-
 @end
 

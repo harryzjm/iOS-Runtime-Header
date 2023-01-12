@@ -37,6 +37,7 @@
 - (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)lastSeenDateForCloudClientVersion:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchCloudClientVersionTable:(CDUnknownBlockType)arg1;
+- (void)getHighLevelHTTPFamilyDomainsVisitedAfterDate:(id)arg1 beforeDate:(id)arg2 onlyFromThisDevice:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)checkIfLocalVisitExistsForDatabaseIDs:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)vacuumHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)flushWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -59,7 +60,7 @@
 - (void)updateWithType:(unsigned long long)arg1 addOrModifyObjects:(id)arg2 updateCurrentGeneration:(id)arg3 updateLastSyncGeneration:(id)arg4 updateLastMaintenance:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)fetchDomainExpansions:(CDUnknownBlockType)arg1;
 - (void)fetchWithOptions:(unsigned long long)arg1 predicate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyHandler:(CDUnknownBlockType)arg1;
 - (id)initWithProxy:(id)arg1;
 
 // Remaining properties

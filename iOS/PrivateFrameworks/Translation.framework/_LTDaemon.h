@@ -20,6 +20,7 @@
     _LTTranslationServer *_server;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)clientConnectionClosed:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

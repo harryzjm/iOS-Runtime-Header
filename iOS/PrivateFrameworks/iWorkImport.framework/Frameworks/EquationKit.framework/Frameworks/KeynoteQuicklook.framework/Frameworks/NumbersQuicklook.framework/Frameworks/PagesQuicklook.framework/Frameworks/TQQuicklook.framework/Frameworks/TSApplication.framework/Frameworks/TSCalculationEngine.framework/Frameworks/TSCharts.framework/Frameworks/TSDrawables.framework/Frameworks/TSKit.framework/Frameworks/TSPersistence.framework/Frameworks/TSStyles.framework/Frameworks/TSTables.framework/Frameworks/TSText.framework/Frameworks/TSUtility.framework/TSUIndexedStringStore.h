@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class NSMutableDictionary;
 
 @interface TSUIndexedStringStore : NSObject
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    struct os_unfair_lock_s _lock;
+    struct vector<NSString *, std::allocator<NSString *>> _stringByIndex;
     NSMutableDictionary *_indexByString;
-    NSMutableArray *_stringByIndex;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (unsigned long long)count;
 - (id)stringForIndex:(unsigned long long)arg1;
 - (unsigned long long)indexForString:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

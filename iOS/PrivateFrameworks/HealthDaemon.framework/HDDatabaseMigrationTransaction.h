@@ -33,17 +33,6 @@
 @property(readonly, nonatomic) _Bool isProtectedMigration;
 - (id)databaseNameForProtectionClass:(long long)arg1;
 - (id)initWithUnprotectedDatabase:(id)arg1 protectedDatabase:(id)arg2 HFDataStore:(id)arg3 schemaProviders:(id)arg4 behavior:(id)arg5;
-- (long long)_migrateFromUserVersion:(long long)arg1 didRequireMigration:(_Bool *)arg2 error:(id *)arg3;
-- (_Bool)_migrationRequiredForProtectionClass:(long long)arg1 migrator:(id)arg2 schemaProviders:(id)arg3 error:(id *)arg4;
-- (void)_presentRollbackAlertForSchema:(id)arg1 protectionClass:(long long)arg2 foundVersion:(long long)arg3 currentVersion:(long long)arg4;
-- (_Bool)_createEntitiesOrAddMigrationStepsForProtectionClass:(long long)arg1 schemaProviders:(id)arg2 migrator:(id)arg3 error:(id *)arg4;
-- (_Bool)_createEntitiesForSchemaProvider:(id)arg1 protectionClass:(long long)arg2 migrator:(id)arg3 error:(id *)arg4;
-- (_Bool)_createDataTablesInDatabase:(id)arg1 entityClasses:(id)arg2 requiredPrefix:(id)arg3 error:(id *)arg4;
-- (void)_enableIncrementalAutovacuumIfNeeded;
-- (_Bool)_insertDatabaseIdentifier:(id)arg1 error:(id *)arg2;
-- (long long)_createEntitiesWithEntityClasses:(id)arg1 error:(id *)arg2;
-- (long long)_migrateOrCreateSchemaWithEntityClasses:(id)arg1 error:(id *)arg2;
-- (long long)_verifyDatabaseIdentifiersAreValidWithError:(id *)arg1;
 - (long long)migrateOrCreateSchemaWithError:(id *)arg1;
 
 @end

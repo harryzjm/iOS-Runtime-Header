@@ -11,7 +11,9 @@
 
 @protocol _UICollectionLayoutSectionCallback <NSObject>
 - (void)_enrichLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
-- (void)_enrichPreferredLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
+- (void)_transformPreferredLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
+- (void)_transformFittingLayoutAttributes:(UICollectionViewLayoutAttributes *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
+- (_Bool)_shouldInvalidateForScrollViewLayoutAdjustmentsChange;
 - (UICollectionViewLayoutInvalidationContext *)_invalidationContextForBackgroundChangeAtIndexPath:(NSIndexPath *)arg1 interactionState:(id <_UICollectionViewLayoutInteractionStateProviding>)arg2;
 @end
 

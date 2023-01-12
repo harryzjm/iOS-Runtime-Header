@@ -57,6 +57,7 @@
 - (void)cleanUpProvisioningAfterError:(_Bool)arg1;
 - (void)finishProvisioningWithError:(id)arg1 state:(long long)arg2;
 - (void)cancelProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_canBeginProvisioning:(CDUnknownBlockType)arg1;
 - (void)startProvisioningWithConfiguration:(id)arg1;
 - (id)init;
 

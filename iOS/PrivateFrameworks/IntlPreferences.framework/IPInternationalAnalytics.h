@@ -10,6 +10,8 @@
 {
 }
 
++ (void)reportPerAppLanguageStatistics;
++ (void)reportGeneralStatistics;
 + (void)reportStatistics;
 
 @end

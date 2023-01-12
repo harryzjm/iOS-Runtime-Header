@@ -8,7 +8,7 @@
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravelState-Protocol.h>
 
-@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSNumber, NSParagraphStyle, NSString, UIColor, UIFont, UIView, _NTKColorManager;
+@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSNumber, NSParagraphStyle, NSString, UIColor, UIView, _NTKColorManager;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKColoringLabel <NTKColoringView, CLKUILabel, NTKTimeTravelState>
@@ -16,6 +16,7 @@
     CLKDevice *_device;
     unsigned long long _options;
     _NTKColorManager *_colorManager;
+    CLKFont *_font;
     NSNumber *_updateToken;
     _Bool _updatedAfterTimeTravelStateChange;
     CLKFont *_preTimeTravelFont;
@@ -31,10 +32,9 @@
     _Bool _cachedOpticalEdgeInsetsIsValid;
     _Bool _usesTextProviderSize;
     UIColor *_overrideColor;
+    CLKFont *_smallCapsBaseFont;
     CLKTextProvider *_textProvider;
     CLKFont *_monospacedDigitsFont;
-    CLKFont *_textProviderFont;
-    CLKFont *_textProviderSmallCapsBaseFont;
     double _maxWidth;
     NSParagraphStyle *_paragraphStyle;
     double _tracking;
@@ -63,10 +63,9 @@
 @property(nonatomic) _Bool usesTextProviderTintColoring; // @synthesize usesTextProviderTintColoring=_usesTextProviderTintColoring;
 @property(nonatomic) _Bool uppercase; // @synthesize uppercase=_uppercase;
 @property(nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
-@property(retain, nonatomic) CLKFont *textProviderSmallCapsBaseFont; // @synthesize textProviderSmallCapsBaseFont=_textProviderSmallCapsBaseFont;
-@property(retain, nonatomic) CLKFont *textProviderFont; // @synthesize textProviderFont=_textProviderFont;
 @property(retain, nonatomic) CLKFont *monospacedDigitsFont; // @synthesize monospacedDigitsFont=_monospacedDigitsFont;
 @property(retain, nonatomic) CLKTextProvider *textProvider; // @synthesize textProvider=_textProvider;
+@property(retain, nonatomic) CLKFont *smallCapsBaseFont; // @synthesize smallCapsBaseFont=_smallCapsBaseFont;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(retain, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 @property(nonatomic) _Bool inTimeTravel; // @synthesize inTimeTravel=_inTimeTravel;
@@ -83,9 +82,9 @@
 - (void)traitCollectionDidChange:(id)arg1;
 @property(copy, nonatomic) NSAttributedString *attributedText;
 @property(copy, nonatomic) NSString *text;
-@property(retain, nonatomic) UIFont *font;
-- (id)_activeFont;
-- (id)_font;
+@property(retain, nonatomic) CLKFont *textProviderSmallCapsBaseFont;
+@property(retain, nonatomic) CLKFont *textProviderFont;
+@property(retain, nonatomic) CLKFont *font;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)invalidateCachedSize;
 @property(readonly, nonatomic) struct UIEdgeInsets opticalInsets;

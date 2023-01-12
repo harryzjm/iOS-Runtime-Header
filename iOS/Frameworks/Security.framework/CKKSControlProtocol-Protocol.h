@@ -6,14 +6,18 @@
 
 #import <Security/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CKKSExternalKey, NSArray, NSDictionary, NSString;
 
 @protocol CKKSControlProtocol <NSObject>
+- (void)toggleHavoc:(void (^)(_Bool, NSError *))arg1;
+- (void)deleteSEView:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)modifyTLKSharesForSEView:(NSString *)arg1 adding:(NSArray *)arg2 deleting:(NSArray *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)fetchSEViewKeyHierarchy:(NSString *)arg1 forceFetch:(_Bool)arg2 reply:(void (^)(CKKSExternalKey *, NSArray *, NSArray *, NSError *))arg3;
+- (void)proposeTLKForSEView:(NSString *)arg1 proposedTLK:(CKKSExternalKey *)arg2 wrappedOldTLK:(CKKSExternalKey *)arg3 tlkShares:(NSArray *)arg4 reply:(void (^)(NSError *))arg5;
 - (void)rpcCKMetric:(NSString *)arg1 attributes:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)rpcGetCKDeviceIDWithReply:(void (^)(NSString *))arg1;
 - (void)rpcPushOutgoingChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)rpcFetchAndProcessClassAChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)rpcFetchAndProcessChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)rpcFetchAndProcessChanges:(NSString *)arg1 classA:(_Bool)arg2 onlyIfNoRecentFetch:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
 - (void)rpcFastStatus:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)rpcStatus:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)rpcResyncLocal:(NSString *)arg1 reply:(void (^)(NSError *))arg2;

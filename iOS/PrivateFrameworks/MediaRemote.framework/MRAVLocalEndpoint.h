@@ -4,44 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/NSSecureCoding-Protocol.h>
+@class MRAVRoutingDiscoverySession;
 
-@class MRAVOutputContext, MROutputContextController, NSArray, NSObject, NSString;
-@protocol OS_dispatch_queue;
-
-@interface MRAVLocalEndpoint <NSSecureCoding>
+@interface MRAVLocalEndpoint
 {
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    MRAVOutputContext *_outputContext;
-    NSString *_uniqueIdentifier;
-    NSArray *_outputDevices;
-    MROutputContextController *_outputContextController;
+    MRAVRoutingDiscoverySession *_audioDiscoverySession;
 }
 
-+ (_Bool)supportsSecureCoding;
 + (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
++ (id)sharedLocalEndpoint;
 - (void).cxx_destruct;
-- (void)_outputContextDevicesDidChangeNotification:(id)arg1;
-- (void)outputContextDataSourceOutputDeviceDidChangeVolumeControlCapabilities:(id)arg1;
-- (void)outputContextDataSourceOutputDeviceDidChangeVolume:(id)arg1;
-- (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)origin;
-- (_Bool)canModifyGroupMembership;
-- (_Bool)isProxyGroupPlayer;
-- (long long)connectionType;
-- (id)uniqueIdentifier;
-- (id)designatedGroupLeader;
-@property(copy, nonatomic) NSArray *outputDevices;
-- (id)personalOutputDevices;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (void)dealloc;
+- (void)setHeadTrackedSpatialAudioMode:(id)arg1 outputDeviceUID:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setAllowsHeadTrackedSpatialAudio:(_Bool)arg1 outputDeviceUID:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setListeningMode:(id)arg1 outputDeviceUID:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)groupLeader;
 
 @end
 

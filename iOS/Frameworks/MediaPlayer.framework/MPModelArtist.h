@@ -18,6 +18,7 @@
 + (id)__artworkCatalogBlock_KEY;
 + (id)__hasBiography_KEY;
 + (id)kindWithAlbumKind:(id)arg1;
++ (long long)genericObjectType;
 - (id)editorialArtworkCatalog;
 - (id)artworkCatalog;
 

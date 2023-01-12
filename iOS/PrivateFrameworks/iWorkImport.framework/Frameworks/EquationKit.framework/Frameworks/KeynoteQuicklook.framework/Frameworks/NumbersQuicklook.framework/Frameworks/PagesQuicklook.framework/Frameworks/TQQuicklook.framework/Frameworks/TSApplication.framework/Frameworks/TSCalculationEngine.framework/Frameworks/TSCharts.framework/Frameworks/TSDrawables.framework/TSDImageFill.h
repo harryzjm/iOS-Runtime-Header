@@ -7,12 +7,13 @@
 #import <TSDrawables/NSCopying-Protocol.h>
 #import <TSDrawables/NSMutableCopying-Protocol.h>
 #import <TSDrawables/TSDMixing-Protocol.h>
+#import <TSDrawables/TSPStyleObjectDataContainer-Protocol.h>
 #import <TSDrawables/TSSPresetSource-Protocol.h>
 
-@class NSObject, TSDImageFillCachedImage, TSPData, TSUColor;
+@class NSArray, NSObject, NSString, TSDImageFillCachedImage, TSPData, TSUColor;
 @protocol OS_dispatch_queue;
 
-@interface TSDImageFill <TSDMixing, TSSPresetSource, NSCopying, NSMutableCopying>
+@interface TSDImageFill <TSDMixing, TSSPresetSource, TSPStyleObjectDataContainer, NSCopying, NSMutableCopying>
 {
     TSPData *mImageData;
     unsigned long long mTechnique;
@@ -31,9 +32,9 @@
     long long mTempRenderCount;
 }
 
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;
-+ (id)instanceWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) TSUColor *tintColor; // @synthesize tintColor=mTintColor;
 @property(nonatomic) unsigned long long technique; // @synthesize technique=mTechnique;
@@ -42,6 +43,7 @@
 - (void)p_drawBitmapImage:(struct CGImage *)arg1 withOrientation:(long long)arg2 inContext:(struct CGContext *)arg3 bounds:(struct CGRect)arg4;
 - (struct CGRect)p_drawnRectForImageSize:(struct CGSize)arg1 destRect:(struct CGRect)arg2 inContext:(struct CGContext *)arg3;
 - (id)p_validatedImageProvider;
+@property(readonly, nonatomic) NSArray *referencedDataList;
 - (id)presetKind;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
@@ -49,10 +51,10 @@
 - (id)p_halfSizeCachedImage;
 - (id)p_standardSizeCachedImage;
 - (id)p_tintedImageWithScale:(double)arg1;
-- (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
-- (void)drawFillInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2 clippingToPath:(struct CGPath *)arg3;
-- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
-- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 rectForFill:(struct CGRect)arg3;
+- (void)paintPath:(const struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
+- (void)drawFillInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2 clippingToPath:(const struct CGPath *)arg3;
+- (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)p_paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2 rectForFill:(struct CGRect)arg3;
 - (struct CGSize)p_sizeOfFillImageForDestRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (struct CGSize)renderedImageSizeForObjectSize:(struct CGSize)arg1;
@@ -63,7 +65,7 @@
 - (_Bool)canApplyToRenderable;
 - (_Bool)drawsInOneStep;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (void)p_updateCachedReferenceColorIfNeeded;
 - (void)i_updateStoredReferenceColorIfNeeded;
 - (id)p_calculateReferenceColor;
@@ -89,11 +91,17 @@
 - (void)p_clearTintedImageCache;
 - (void)dealloc;
 - (void)i_commonInit;
+- (void)i_commonSetup;
 - (id)initForUnarchiving;
 - (id)initWithImageData:(id)arg1 technique:(unsigned long long)arg2 tintColor:(id)arg3 size:(struct CGSize)arg4;
 - (id)initWithImageData:(id)arg1 technique:(unsigned long long)arg2 tintColor:(id)arg3 size:(struct CGSize)arg4 referenceColor:(id)arg5;
-- (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

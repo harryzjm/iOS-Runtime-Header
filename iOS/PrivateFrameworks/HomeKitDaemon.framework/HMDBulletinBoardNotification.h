@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDBulletinBoardNotificationServiceGroup, HMDService, HMFMessageDispatcher, NSObject, NSPredicate, NSString, NSUUID;
+@class HMDBulletinBoardNotificationServiceGroup, HMDHome, HMDService, HMFMessageDispatcher, NSObject, NSPredicate, NSString, NSUUID;
 @protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDBulletinBoardNotification : HMFObject <NSSecureCoding, HMFMessageReceiver, HMFLogging, HMFDumpState>
@@ -39,10 +39,12 @@
 - (id)attributeDescriptions;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
 - (id)logIdentifier;
+- (void)_updateAccessoryBulletinNotificationManager;
 - (void)registerForCharacteristicNotifications;
 - (id)dumpState;
 - (void)_handleBulletinBoardNotificationCommitRequest:(id)arg1;
 - (void)configureBulletinNotification;
+@property(readonly) HMDHome *home;
 @property(retain, nonatomic) HMDBulletinBoardNotificationServiceGroup *notificationServiceGroup; // @synthesize notificationServiceGroup=_notificationServiceGroup;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)registerNotificationHandlers;

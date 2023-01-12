@@ -17,12 +17,14 @@
     NSData *_identityToken;
     NSArray *_authorizedScopes;
     NSHTTPURLResponse *_authenticatedResponse;
+    NSArray *_privateKeys;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)new;
 + (id)emptyCredential;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *privateKeys; // @synthesize privateKeys=_privateKeys;
 @property(readonly, copy, nonatomic) NSHTTPURLResponse *authenticatedResponse; // @synthesize authenticatedResponse=_authenticatedResponse;
 @property(readonly, copy, nonatomic) NSArray *authorizedScopes; // @synthesize authorizedScopes=_authorizedScopes;
 @property(readonly, copy, nonatomic) NSData *identityToken; // @synthesize identityToken=_identityToken;
@@ -32,6 +34,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
+- (void)_initWithAuthenticatedResponse:(id)arg1;
+- (id)initWithAuthenticatedResponse:(id)arg1 privateKeys:(id)arg2;
 - (id)initWithAuthenticatedResponse:(id)arg1;
 - (id)init;
 

@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
         NSString *name;
         long long requirement;
         _Bool supported;
-    } _featureInfo[146];
+    } _featureInfo[164];
     _Bool isAGX;
     id <MTLDeviceSPI> _device;
 }
@@ -22,6 +22,13 @@ __attribute__((visibility("hidden")))
 - (id)nameForFeature:(long long)arg1;
 - (_Bool)supportForFeature:(long long)arg1;
 - (long long)requirementForFeature:(long long)arg1;
+- (_Bool)supportsStackOverflowErrorCode;
+- (_Bool)supportsCommandBufferJump;
+- (_Bool)supportsLossyCompression;
+- (_Bool)supportsAtomicUlongVoidMinMax;
+- (_Bool)supportsSparseDepthAttachments;
+- (_Bool)supportsBfloat16Format;
+- (_Bool)supportsSIMDShuffleAndFill;
 - (_Bool)supportsQuadReduction;
 - (_Bool)supportsInterchangeTiled;
 - (_Bool)supportsSIMDGroupMatrix;
@@ -43,9 +50,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsMirrorClampToEdgeSamplerMode;
 - (_Bool)supportsBlackOrWhiteSamplerBorderColors;
 - (_Bool)supportsShaderBarycentricCoordinates;
+- (_Bool)supportsPrimitiveMotionBlur;
+- (_Bool)supportsRaytracingFromRender;
+- (_Bool)supportsSharedFunctionTables;
+- (_Bool)supportsFunctionPointersFromRender;
+- (_Bool)supportsRenderDynamicLibraries;
 - (_Bool)supportsStatefulDynamicLibraries;
 - (_Bool)supportsDynamicLibraries;
-- (_Bool)supportsBinaryFunctionPointers;
 - (_Bool)supportsFunctionPointers;
 - (_Bool)supportsIndirectWritableTextures;
 - (_Bool)supportsSparseHeaps;
@@ -146,15 +157,21 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsBufferPrefetchStatistics;
 - (_Bool)supportsSharedTextureHandles;
 - (_Bool)supportsNonZeroTextureWriteLOD;
+- (_Bool)supportsLateEvalEvent;
 - (_Bool)supportsFixedLinePointFillDepthGradient;
 - (_Bool)supportsInt64;
 - (_Bool)supportsPullModelInterpolation;
 - (_Bool)supportsOpenCLTextureWriteSwizzles;
 - (_Bool)supportsPlacementHeaps;
 - (_Bool)supportsVertexAmplification;
+- (_Bool)supportsQueryTextureLOD;
 - (_Bool)supports32BitFloatFiltering;
 - (_Bool)supports32BitMSAA;
 - (_Bool)supports32bpcMSAATextures;
+- (_Bool)supportsTLS;
+- (_Bool)supportsGlobalVariableRelocationCompute;
+- (_Bool)supportsGlobalVariableRelocationRender;
+- (_Bool)supportsGlobalVariableRelocation;
 - (_Bool)supportsPrimitiveRestartOverride;
 - (_Bool)supportsRGBA10A2Gamma;
 - (_Bool)supports3DBCTextures;
@@ -163,6 +180,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsCustomBorderColor;
 - (_Bool)supportsLargeFramebufferConfigs;
 - (_Bool)supportsProgrammableSamplePositions;
+- (_Bool)supportsStreamingCodecSignaling;
 - (_Bool)supportsReadWriteTextureArgumentsTier2;
 - (_Bool)supportsArgumentBuffersTier2;
 - (_Bool)supportsRenderMemoryBarrier;

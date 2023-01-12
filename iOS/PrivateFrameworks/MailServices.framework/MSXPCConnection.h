@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
     long long _resumeCount;
-    unsigned int _state;
+    _Atomic _Bool _locallyInvalidated;
     _Bool _shouldLaunchMobileMail;
     Protocol *_protocol;
 }

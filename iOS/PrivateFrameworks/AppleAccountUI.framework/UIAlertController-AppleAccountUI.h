@@ -6,12 +6,22 @@
 
 #import <UIKit/UIAlertController.h>
 
-@interface UIAlertController (AppleAccountUI)
+#import <AppleAccountUI/AAUIAlertControllerProtocol-Protocol.h>
+
+@class NSString;
+
+@interface UIAlertController (AppleAccountUI) <AAUIAlertControllerProtocol>
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 defaultButtonTitle:(id)arg4;
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 cancelButtonTitle:(id)arg3 defaultButtonTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3;
 + (id)alertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)_handlerWithMultiActionHandler:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_handlerWithSingleActionHandler:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

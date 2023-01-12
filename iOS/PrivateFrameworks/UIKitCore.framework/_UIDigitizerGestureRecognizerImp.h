@@ -22,12 +22,14 @@ __attribute__((visibility("hidden")))
     double _pressBeginTime;
     double _pressEndTime;
     double _lastRecognitionTime;
-    NSTimer *_shortTimer;
+    NSTimer *_minimumPressDurationTimer;
+    NSTimer *_waitingForTouchesAfterPressTimer;
     struct CGPoint _digitizerLocation;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak NSTimer *shortTimer; // @synthesize shortTimer=_shortTimer;
+@property(nonatomic) __weak NSTimer *waitingForTouchesAfterPressTimer; // @synthesize waitingForTouchesAfterPressTimer=_waitingForTouchesAfterPressTimer;
+@property(nonatomic) __weak NSTimer *minimumPressDurationTimer; // @synthesize minimumPressDurationTimer=_minimumPressDurationTimer;
 @property(nonatomic) double lastRecognitionTime; // @synthesize lastRecognitionTime=_lastRecognitionTime;
 @property(nonatomic) double pressEndTime; // @synthesize pressEndTime=_pressEndTime;
 @property(nonatomic) double pressBeginTime; // @synthesize pressBeginTime=_pressBeginTime;
@@ -42,8 +44,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_senderOfPressesIsSoftwareRemoteWithEvent:(id)arg1;
 - (_Bool)_senderOfPressesHasTouchSurface:(id)arg1 withEvent:(id)arg2;
 - (struct CGPoint)defaultDigitizerLocation;
-- (void)_shortTimerFired:(id)arg1;
+- (void)_waitingForTouchesAfterPressTimerFired:(id)arg1;
+- (void)_minimumPressDurationTimerFired:(id)arg1;
 - (void)reset;
+- (_Bool)_shouldReportDigitizerLocation;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;

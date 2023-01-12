@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CUIKEditingContextGroup, CUIKEditingManager, NSArray;
+@class CUIKEditingContextGroup, CUIKEditingManager, NSArray, NSSet;
 @protocol CUIKCommitDelegate, CUIKDecisionDelegate, CUIKEditingContextObserver, CUIKUndoDelegate;
 
 @interface CUIKEditingContext : NSObject
 {
+    NSArray *_objectsBeingEdited;
     _Bool _isActive;
     _Bool _isOpen;
     CUIKEditingContextGroup *_group;
@@ -20,7 +21,7 @@
     id <CUIKUndoDelegate> _undoDelegate;
     id <CUIKCommitDelegate> _commitDelegate;
     id <CUIKEditingContextObserver> _observer;
-    NSArray *_objectsBeingEdited;
+    NSSet *_originalIdentifiersForObjectsBeingEdited;
     NSArray *_pendingObserverUpdates;
     NSArray *_pendingGroupUpdates;
 }
@@ -28,6 +29,7 @@
 - (void).cxx_destruct;
 @property(retain) NSArray *pendingGroupUpdates; // @synthesize pendingGroupUpdates=_pendingGroupUpdates;
 @property(retain) NSArray *pendingObserverUpdates; // @synthesize pendingObserverUpdates=_pendingObserverUpdates;
+@property(retain) NSSet *originalIdentifiersForObjectsBeingEdited; // @synthesize originalIdentifiersForObjectsBeingEdited=_originalIdentifiersForObjectsBeingEdited;
 @property(retain) NSArray *objectsBeingEdited; // @synthesize objectsBeingEdited=_objectsBeingEdited;
 @property _Bool isOpen; // @synthesize isOpen=_isOpen;
 @property _Bool isActive; // @synthesize isActive=_isActive;

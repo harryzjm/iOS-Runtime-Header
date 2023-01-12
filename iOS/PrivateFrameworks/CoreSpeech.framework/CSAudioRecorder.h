@@ -11,19 +11,17 @@
 #import <CoreSpeech/CSAudioFileReaderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioServerCrashEventProviding-Protocol.h>
 #import <CoreSpeech/CSAudioSessionEventProviding-Protocol.h>
+#import <CoreSpeech/CSRemoteRecordClientDelegate-Protocol.h>
 
-@class AVVoiceController, CSAudioFileReader, CSRemoteRecordClient, NSDictionary, NSHashTable, NSMutableDictionary, NSString;
+@class AVVoiceController, CSAudioFileReader, CSRemoteRecordClient, NSHashTable, NSMutableDictionary, NSString;
 @protocol CSAudioServerCrashEventProvidingDelegate, CSAudioSessionEventProvidingDelegate, OS_dispatch_queue;
 
-@interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, CSAudioDecoderDelegate, CSAudioFileReaderDelegate, CSAudioServerCrashEventProviding, CSAudioSessionEventProviding>
+@interface CSAudioRecorder : NSObject <AVVoiceControllerRecordDelegate, CSAudioDecoderDelegate, CSAudioFileReaderDelegate, CSRemoteRecordClientDelegate, CSAudioServerCrashEventProviding, CSAudioSessionEventProviding>
 {
     AVVoiceController *_voiceController;
-    struct OpaqueAudioConverter *_deinterleaver;
     struct AudioBufferList _interleavedABL;
     struct AudioBufferList *_pNonInterleavedABL;
     CSRemoteRecordClient *_remoteRecordClient;
-    NSDictionary *_latestContext;
-    _Bool _shouldUseRemoteRecord;
     NSMutableDictionary *_opusDecoders;
     CSAudioFileReader *_audioFileReader;
     unsigned long long _audioFilePathIndex;
@@ -44,13 +42,18 @@
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *voiceControllerCreationQueue; // @synthesize voiceControllerCreationQueue=_voiceControllerCreationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (id)_fetchRemoteRecordClientWithDeviceId:(id)arg1 streamHandleId:(unsigned long long)arg2;
 - (id)_getRecordSettingsWithRequest:(id)arg1;
 - (void)audioFileReaderDidStopRecording:(id)arg1 forReason:(long long)arg2;
 - (void)audioFileReaderDidStartRecording:(id)arg1 successfully:(_Bool)arg2 error:(id)arg3;
 - (void)audioFileReaderBufferAvailable:(id)arg1 buffer:(id)arg2 atTime:(unsigned long long)arg3;
 - (_Bool)_needResetAudioInjectionIndex:(id)arg1;
-- (void)_createDeInterleaverIfNeeded;
-- (id)_deinterleaveBufferIfNeeded:(id)arg1;
+- (_Bool)_hasLocalPendingTwoShot;
+- (void)remoteRecordConnectionDisconnected:(id)arg1;
+- (void)remoteRecordTwoShotDetectedAtTime:(double)arg1;
+- (void)remoteRecordLPCMBufferAvailable:(id)arg1 streamHandleId:(unsigned long long)arg2;
+- (void)remoteRecordDidStopRecordingWithWithStreamHandleId:(unsigned long long)arg1 error:(id)arg2;
+- (void)remoteRecordDidStartRecordingWithStreamHandleId:(unsigned long long)arg1 error:(id)arg2;
 - (void)voiceControllerMediaServicesWereReset:(id)arg1;
 - (void)voiceControllerMediaServicesWereLost:(id)arg1;
 - (void)voiceControllerDidSetAudioSessionActive:(id)arg1 isActivated:(_Bool)arg2;
@@ -73,22 +76,24 @@
 - (void)updateMeters;
 - (void)setMeteringEnabled:(_Bool)arg1;
 - (unsigned long long)alertStartTime;
-- (_Bool)playAlertSoundForType:(long long)arg1;
+- (_Bool)playAlertSoundForType:(long long)arg1 recordDevideIndicator:(id)arg2;
 - (_Bool)playRecordStartingAlertAndResetEndpointerFromStream:(unsigned long long)arg1;
 - (_Bool)setAlertSoundFromURL:(id)arg1 forType:(long long)arg2;
-- (void)audioDecoderDidDecodePackets:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 timestamp:(unsigned long long)arg5 receivedNumChannels:(unsigned int)arg6;
+- (void)audioDecoderDidDecodePackets:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 timestamp:(unsigned long long)arg5 arrivalTimestampToAudioRecorder:(unsigned long long)arg6 wasBuffered:(_Bool)arg7 receivedNumChannels:(unsigned int)arg8;
 - (id)_compensateChannelDataIfNeeded:(id)arg1 receivedNumChannels:(unsigned int)arg2;
-- (void)_processAudioBuffer:(id)arg1 audioStreamHandleId:(unsigned long long)arg2;
-- (void)_processAudioChain:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 remoteVAD:(id)arg3 atTime:(unsigned long long)arg4;
+- (void)_processAudioBuffer:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 arrivalTimestampToAudioRecorder:(unsigned long long)arg3;
+- (void)_processAudioChain:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 remoteVAD:(id)arg3 atTime:(unsigned long long)arg4 arrivalTimestampToAudioRecorder:(unsigned long long)arg5 numberOfChannels:(int)arg6;
 - (_Bool)_shouldUseRemoteBuiltInMic:(id)arg1;
-- (_Bool)_shouldUseRemoteRecordForContext:(id)arg1;
 - (id)_updateLanguageCodeForRemoteVTEIResult:(id)arg1;
-- (id)voiceTriggerInfo;
+- (id)voiceTriggerInfoWithRecordDeviceIndicator:(id)arg1;
 - (id)playbackRoute;
 - (void)configureAlertBehavior:(id)arg1 audioStreamHandleId:(unsigned long long)arg2;
 - (void)enableMiniDucking:(_Bool)arg1;
 @property(nonatomic) _Bool duckOthersOption;
+- (void)setMixWithOthersForStream:(unsigned long long)arg1;
+- (void)setDuckOthersForStream:(unsigned long long)arg1;
 - (void)enableSmartRoutingConsiderationForStream:(unsigned long long)arg1 enable:(_Bool)arg2;
+- (_Bool)deactivateAudioSession:(unsigned long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)setRecordMode:(long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
@@ -98,17 +103,19 @@
 - (_Bool)isNarrowBandWithStreamHandleId:(unsigned long long)arg1;
 - (id)recordSettingsWithStreamHandleId:(unsigned long long)arg1;
 - (float)recordingSampleRateWithStreamHandleId:(unsigned long long)arg1;
+- (id)audioDeviceInfoWithStreamHandleId:(unsigned long long)arg1;
 - (id)recordDeviceInfoWithStreamHandleId:(unsigned long long)arg1;
-- (id)recordRouteWithStreamHandleId:(unsigned long long)arg1;
-- (_Bool)isRecordingWithStreamHandleId:(unsigned long long)arg1;
+- (id)recordRouteWithRecordDeviceIndicator:(id)arg1;
+- (_Bool)isRecordingWithRecordDeviceIndicator:(id)arg1;
 - (_Bool)isSessionCurrentlyActivated;
-- (_Bool)stopAudioStreamWithStreamHandleId:(unsigned long long)arg1 error:(id *)arg2;
-- (_Bool)startAudioStreamWithOption:(id)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
-- (_Bool)_startAudioStreamForAudioInjection;
+- (_Bool)stopAudioStreamWithRecordDeviceIndicator:(id)arg1 error:(id *)arg2;
+- (_Bool)startAudioStreamWithOption:(id)arg1 recordDeviceIndicator:(id)arg2 error:(id *)arg3;
+- (_Bool)_startAudioStreamForAudioInjectionWithAVVCContext:(id)arg1;
 - (_Bool)_shouldInjectAudio;
-- (_Bool)prepareAudioStreamRecord:(id)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
+- (_Bool)prepareAudioStreamRecord:(id)arg1 recordDeviceIndicator:(id)arg2 error:(id *)arg3;
 - (_Bool)setCurrentContext:(id)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
-- (unsigned long long)setContext:(id)arg1 error:(id *)arg2;
+- (void)setContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setAnnounceCallsEnabled:(_Bool)arg1 withStreamHandleID:(unsigned long long)arg2;
 - (id)_voiceControllerWithError:(id *)arg1;
 - (void)_destroyVoiceController;
 - (void)dealloc;

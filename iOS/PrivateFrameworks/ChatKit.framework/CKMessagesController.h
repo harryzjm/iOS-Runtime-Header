@@ -11,69 +11,81 @@
 #import <ChatKit/CKBrowserViewControllerStoreSendDelegate-Protocol.h>
 #import <ChatKit/CKChatControllerDelegate-Protocol.h>
 #import <ChatKit/CKComposeChatControllerDelegate-Protocol.h>
+#import <ChatKit/CKConversationListControllerDelegate-Protocol.h>
 #import <ChatKit/CKCoreChatControllerDelegate-Protocol.h>
 #import <ChatKit/CKOnboardingControllerDelegate-Protocol.h>
 #import <ChatKit/UINavigationControllerDelegate-Protocol.h>
 #import <ChatKit/UISplitViewControllerDelegate-Protocol.h>
 
-@class CKAlertController, CKAlertUtilities, CKBlankViewController, CKConversation, CKCoreChatController, CKDetailsNavigationController, CKInboxViewController, CKMacToolbarController, CKNavigationController, CKOnboardingController, NSMutableArray, NSSet, NSString, UIViewController;
+@class CKAlertController, CKAlertUtilities, CKBlankViewController, CKConversation, CKCoreChatController, CKDetailsNavigationController, CKInboxModel, CKMacToolbarController, CKOnboardingController, NSMutableArray, NSSet, NSString, UINavigationController, UIViewController;
 @protocol CKBrowserViewControllerProtocol, CKConversationListControllerProtocol, CKMessagesControllerDelegate;
 
-@interface CKMessagesController : UISplitViewController <UISplitViewControllerDelegate, CKCoreChatControllerDelegate, UINavigationControllerDelegate, CKChatControllerDelegate, CKComposeChatControllerDelegate, CKBrowserViewControllerStoreSendDelegate, CKOnboardingControllerDelegate, CKAlertUtilitiesProtocol, CKAlertSuppressionContextsProviding>
+@interface CKMessagesController : UISplitViewController <UISplitViewControllerDelegate, CKCoreChatControllerDelegate, UINavigationControllerDelegate, CKChatControllerDelegate, CKComposeChatControllerDelegate, CKBrowserViewControllerStoreSendDelegate, CKOnboardingControllerDelegate, CKAlertUtilitiesProtocol, CKAlertSuppressionContextsProviding, CKConversationListControllerDelegate>
 {
     CKConversation *_currentConversation;
     NSMutableArray *_conversationCache;
     unsigned int _attachmentPreviewQosClass;
     _Bool _isInitialLoad;
+    short _pinningInputViewStackCounter;
     id <CKMessagesControllerDelegate> _messagesControllerDelegate;
     CKCoreChatController *_chatController;
     CKCoreChatController *_composeChatController;
     CKDetailsNavigationController *_detailsNavigationController;
-    CKNavigationController *_composeChatNavigationController;
+    UINavigationController *_composeChatNavigationController;
     CDUnknownBlockType _deferredHandleURLBlock;
     UIViewController<CKConversationListControllerProtocol> *_conversationListController;
     CKOnboardingController *_onboardingController;
-    CKNavigationController *_conversationListNavigationController;
-    CKNavigationController *_chatNavigationController;
+    UINavigationController *_conversationListNavigationController;
+    UINavigationController *_chatNavigationController;
     CKMacToolbarController *_macToolbarController;
     CKBlankViewController *_blankViewController;
     UIViewController *_statusBarStyleViewController;
     UIViewController<CKBrowserViewControllerProtocol> *_prewarmedCameraBrowser;
     CKAlertUtilities *_alertUtilities;
-    CKInboxViewController *_inboxViewController;
+    UIViewController *_inboxViewController;
+    CKInboxModel *_inboxModel;
     CKAlertController *_currentSMSRelayPinAlert;
     NSMutableArray *_pendingSMSRelayPINPrompts;
+    CDStruct_644752d7 _columnResizeParams;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) short pinningInputViewStackCounter; // @synthesize pinningInputViewStackCounter=_pinningInputViewStackCounter;
+@property(nonatomic) CDStruct_644752d7 columnResizeParams; // @synthesize columnResizeParams=_columnResizeParams;
 @property(retain, nonatomic) NSMutableArray *pendingSMSRelayPINPrompts; // @synthesize pendingSMSRelayPINPrompts=_pendingSMSRelayPINPrompts;
 @property(nonatomic) __weak CKAlertController *currentSMSRelayPinAlert; // @synthesize currentSMSRelayPinAlert=_currentSMSRelayPinAlert;
-@property(retain, nonatomic) CKInboxViewController *inboxViewController; // @synthesize inboxViewController=_inboxViewController;
+@property(nonatomic) __weak CKInboxModel *inboxModel; // @synthesize inboxModel=_inboxModel;
+@property(retain, nonatomic) UIViewController *inboxViewController; // @synthesize inboxViewController=_inboxViewController;
 @property(retain, nonatomic) CKAlertUtilities *alertUtilities; // @synthesize alertUtilities=_alertUtilities;
 @property(retain, nonatomic) UIViewController<CKBrowserViewControllerProtocol> *prewarmedCameraBrowser; // @synthesize prewarmedCameraBrowser=_prewarmedCameraBrowser;
 @property(retain, nonatomic) UIViewController *statusBarStyleViewController; // @synthesize statusBarStyleViewController=_statusBarStyleViewController;
 @property(nonatomic) _Bool isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
 @property(retain, nonatomic) CKBlankViewController *blankViewController; // @synthesize blankViewController=_blankViewController;
 @property(retain, nonatomic) CKMacToolbarController *macToolbarController; // @synthesize macToolbarController=_macToolbarController;
-@property(retain, nonatomic) CKNavigationController *chatNavigationController; // @synthesize chatNavigationController=_chatNavigationController;
-@property(retain, nonatomic) CKNavigationController *conversationListNavigationController; // @synthesize conversationListNavigationController=_conversationListNavigationController;
+@property(retain, nonatomic) UINavigationController *chatNavigationController; // @synthesize chatNavigationController=_chatNavigationController;
+@property(retain, nonatomic) UINavigationController *conversationListNavigationController; // @synthesize conversationListNavigationController=_conversationListNavigationController;
 @property(retain, nonatomic) CKOnboardingController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property(retain, nonatomic) UIViewController<CKConversationListControllerProtocol> *conversationListController; // @synthesize conversationListController=_conversationListController;
 @property(copy, nonatomic) CDUnknownBlockType deferredHandleURLBlock; // @synthesize deferredHandleURLBlock=_deferredHandleURLBlock;
 @property(retain, nonatomic) CKConversation *currentConversation; // @synthesize currentConversation=_currentConversation;
-@property(retain, nonatomic) CKNavigationController *composeChatNavigationController; // @synthesize composeChatNavigationController=_composeChatNavigationController;
+@property(retain, nonatomic) UINavigationController *composeChatNavigationController; // @synthesize composeChatNavigationController=_composeChatNavigationController;
 @property(nonatomic) __weak CKDetailsNavigationController *detailsNavigationController; // @synthesize detailsNavigationController=_detailsNavigationController;
 @property(retain, nonatomic) CKCoreChatController *composeChatController; // @synthesize composeChatController=_composeChatController;
 @property(retain, nonatomic) CKCoreChatController *chatController; // @synthesize chatController=_chatController;
 @property(nonatomic) __weak id <CKMessagesControllerDelegate> messagesControllerDelegate; // @synthesize messagesControllerDelegate=_messagesControllerDelegate;
+- (_Bool)_isMessageFilteringEnabled;
+@property(readonly, nonatomic) _Bool isThreeColumnLayoutEnabled;
 - (void)teardownCamera;
 - (void)prewarmCameraIfNecessary;
 - (id)_newCameraBrowser;
 - (void)didFinishCheckingMissingCarrierSetting;
 - (void)presentCKAlertController:(id)arg1;
-- (id)_meContact;
+- (id)_fetchMeContactWithError:(id *)arg1;
+- (_Bool)onboardingControllerIsActive;
 - (void)onboardingControllerDidFinish:(id)arg1;
 - (id)presentingViewControllerForOnboardingController:(id)arg1;
+- (id)onboardingControllerCreatingIfNecessary;
+- (void)presentPrivacyView:(id)arg1;
 - (void)presentOnboardingViewController:(id)arg1;
 - (void)presentOnboardingViewControllerIfNeeded;
 - (void)commitSticker:(id)arg1 withDragTarget:(id)arg2;
@@ -99,15 +111,16 @@
 - (void)notifyThatKeepMessagesSettingWasResetIfNeeded;
 - (_Bool)shouldShowImessageAlert;
 - (_Bool)isShowingChatControllerWithUnsentText;
+- (void)_unreadCountDidChange:(id)arg1;
 - (_Bool)showUnreadConversationsWithLastConversation:(id)arg1 ignoringMessages:(id)arg2;
 - (_Bool)hasUnreadFilteredConversationsIgnoringMessages:(id)arg1;
-- (_Bool)isShowingChatController;
+@property(readonly, nonatomic) _Bool isShowingChatController;
 - (_Bool)isShowingInboxViewController;
 @property(readonly, nonatomic) _Bool isShowingConversationListController;
 - (_Bool)isShowingDirtyComposeModalView;
 - (_Bool)currentCompositionHasContent;
-- (_Bool)isAnimatingMessageSend;
-- (_Bool)isComposingMessage;
+@property(readonly, nonatomic) _Bool isAnimatingMessageSend;
+@property(readonly, nonatomic) _Bool isComposingMessage;
 - (_Bool)isShowingBlankChatController;
 - (void)conversationListIsDeletingConversations:(id)arg1;
 - (void)conversationListWillBeginEditing:(_Bool)arg1;
@@ -116,6 +129,7 @@
 - (_Bool)resumeToConversation:(id)arg1;
 - (void)showDetailViewController:(id)arg1;
 - (void)showConversationAndMessageForSearchURL:(id)arg1;
+- (void)showConversationAndMessageForChatGUID:(id)arg1 messageGUID:(id)arg2 withInlineReplyOverlay:(_Bool)arg3 animate:(_Bool)arg4;
 - (void)showConversationAndMessageForChatGUID:(id)arg1 messageGUID:(id)arg2 animate:(_Bool)arg3;
 - (void)showConversation:(id)arg1 animate:(_Bool)arg2 keepAllCurrentlyLoadedMessages:(_Bool)arg3;
 - (void)showConversation:(id)arg1 animate:(_Bool)arg2 userInitiated:(_Bool)arg3;
@@ -126,28 +140,34 @@
 - (void)showConversation:(id)arg1 animate:(_Bool)arg2 forceToTranscript:(_Bool)arg3 keepAllCurrentlyLoadedMessages:(_Bool)arg4;
 - (void)cancelNewMessageComposition;
 - (_Bool)hasBusinessRecipientWithRecipientIDs:(id)arg1;
+- (void)showNewMessageCompositionPanelWithRecipients:(id)arg1 composition:(id)arg2 appendToExistingDraft:(_Bool)arg3 animated:(_Bool)arg4 bizIntent:(id)arg5 launchPluginWithBundleID:(id)arg6 pluginLaunchPayload:(id)arg7;
 - (void)showNewMessageCompositionPanelWithRecipients:(id)arg1 composition:(id)arg2 animated:(_Bool)arg3 bizIntent:(id)arg4 launchPluginWithBundleID:(id)arg5 pluginLaunchPayload:(id)arg6;
+- (void)showNewMessageCompositionPanelAppendingToExistingDraft:(id)arg1 animated:(_Bool)arg2;
 - (void)showNewMessageCompositionPanelWithRecipients:(id)arg1 composition:(id)arg2 animated:(_Bool)arg3;
 - (id)_sharedBalloonPluginManager;
+- (void)presentFocusStatusAuthorizationAlertIfNecessary;
 - (void)executeDeferredHandleURLBlock;
 - (void)executeDeferredTasks;
 - (void)dismissAndReopenDetailsNavigationController;
 - (void)dismissDetailsNavigationController;
 - (void)presentDetailsNavigationController:(id)arg1;
-- (_Bool)isDetailsNavigationControllerDetached;
-- (_Bool)hasDetailsNavigationController;
+@property(readonly, nonatomic) _Bool isDetailsNavigationControllerDetached;
+@property(readonly, nonatomic) _Bool hasDetailsNavigationController;
 - (void)chatController:(id)arg1 didDetachDetailsNavigationController:(id)arg2;
 - (void)screenTimeOKPressedForChatController:(id)arg1;
 - (void)_conversationFilteringStateChangedNotification:(id)arg1;
 - (void)conversationListControllerWillDismissSearchResultsController;
 - (void)conversationListControllerWillPresentSearchResultsController;
 - (double)_sanitizeProposedSidebarWidth:(double)arg1;
+- (double)_macConvertLegacySidebarWidthToModernWidth:(double)arg1;
 - (void)_updateSidebarWidth;
 - (void)persistSidebarWidth:(id)arg1;
 - (double)calculatedPrimaryColumnWidth_iOS;
+- (void)_appStateDidResumeFromInactive:(id)arg1;
 - (void)applicationWillResume:(id)arg1;
 - (void)_appStateChange:(id)arg1;
 - (void)_chatRegistryDidLoad:(id)arg1;
+- (void)_conversationListFinishedMerging:(id)arg1;
 - (void)_conversationLeft:(id)arg1;
 - (void)cleanUpBizNavBarForConversation:(id)arg1;
 - (void)setupBizNavBarForConversation:(id)arg1;
@@ -156,7 +176,7 @@
 - (void)_updateAlertSuppressionContext;
 - (void)__updateAlertSuppressionContext;
 @property(readonly, nonatomic) NSSet *alertSuppressionContexts;
-- (_Bool)_isShowingFullScreenAppViewController;
+- (_Bool)_isShowingExpandedAppViewController;
 - (_Bool)_isShowingModalChatController;
 - (_Bool)_isShowingFullscreenController;
 - (void)keyCommandFind:(id)arg1;
@@ -172,19 +192,25 @@
 - (void)showInboxViewController:(_Bool)arg1;
 - (void)setCurrentConversation:(id)arg1 keepAllCurrentlyLoadedMessages:(_Bool)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)splitViewController:(id)arg1 willShowColumn:(long long)arg2;
+- (void)_splitViewController:(id)arg1 willBeginResizingColumn:(long long)arg2;
 - (double)_splitViewController:(id)arg1 constrainPrimaryColumnWidthForResizeWidth:(double)arg2;
 - (_Bool)_splitViewControllerShouldRestoreResponderAfterTraitCollectionTransition:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (id)splitViewController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
+- (void)dismissPhotosGridIfNeeded;
 - (_Bool)splitViewController:(id)arg1 collapseSecondaryViewController:(id)arg2 ontoPrimaryViewController:(id)arg3;
+- (long long)splitViewController:(id)arg1 displayModeForExpandingToProposedDisplayMode:(long long)arg2;
+- (long long)splitViewController:(id)arg1 topColumnForCollapsingToProposedTopColumn:(long long)arg2;
 - (_Bool)_hasCurrentConversations;
+- (void)updateInboxBackButton;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (_Bool)composeChatControllerShouldShowBackButtonViewDuringSendAnimation:(id)arg1;
 - (void)composeChatController:(id)arg1 didSelectNewConversation:(id)arg2;
 - (void)cancelAndDestroyCompositionWithoutDismiss;
 - (void)composeChatControllerDidCancelComposition:(id)arg1;
 - (_Bool)composeChatControllerCanEditRecipients;
-- (void)chatControllerWillDisplayDetailsPopover:(id)arg1;
 - (long long)unreadCountForCurrentFilterModeForChatController:(id)arg1;
 - (id)navigationBarBackdropLayerGroupNameForChatController:(id)arg1;
 - (void)prewarmCameraIfNecessaryForChatController:(id)arg1;
@@ -200,7 +226,7 @@
 - (void)_showSMSRelayPromptOnLaunchIfNeeded;
 - (_Bool)_shouldShowSMSRelayPrompt;
 - (_Bool)_shouldShowSMSRelayPromptOnLaunch;
-- (_Bool)isCollapsed;
+@property(readonly, nonatomic) _Bool isCollapsed;
 - (void)presentMacToolbarController;
 - (void)configureWithToolbarController:(id)arg1;
 - (void)parentControllerDidBecomeActive;
@@ -220,15 +246,28 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)splitViewControllerDidExpand:(id)arg1;
+- (void)splitViewControllerDidCollapse:(id)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidLayoutSubviews;
+- (void)_handleInitialLoad;
+- (void)setDefaultForUIKitLogging;
 - (_Bool)daemonIsConnected;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (id)newInboxModel;
+- (id)inboxItemForFilterMode:(unsigned long long)arg1 title:(id)arg2 andSystemImage:(id)arg3;
+- (void)changeFilterMode:(unsigned long long)arg1;
+- (id)_unreadCountStringForFilterMode:(unsigned long long)arg1;
 - (void)conversationListControllerTappedDeleteNewMessage:(id)arg1;
 - (id)conversationListControllerIfInitialized;
 - (void)loadView;
+- (void)initialize;
+- (id)initWithStyle:(long long)arg1;
 - (id)init;
 - (void)dealloc;
+- (_Bool)__im_ff_newInboxViewEnabled;
+- (_Bool)__im_ff_systemImageAdoptionEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

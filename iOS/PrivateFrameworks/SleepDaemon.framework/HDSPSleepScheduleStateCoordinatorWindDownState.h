@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 
 - (id)determineExpirationDateForCurrentDate:(id)arg1;
 - (void)bedtimeReached;
-- (void)windDownSkipped;
 - (unsigned long long)scheduleState;
 - (id)stateName;
 

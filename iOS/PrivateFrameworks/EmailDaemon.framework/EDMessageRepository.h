@@ -13,7 +13,7 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMMessageRepositoryInterface-Protocol.h>
 
-@class EDConversationPersistence, EDFetchController, EDMailboxPersistence, EDMailboxPredictionController, EDMessageChangeManager, EDMessagePersistence, EDPersistenceHookRegistry, EDThreadPersistence, EDVIPManager, NSConditionLock, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class EDConversationPersistence, EDFetchController, EDMailboxPersistence, EDMailboxPredictionController, EDMessageChangeManager, EDMessagePersistence, EDPersistenceHookRegistry, EDRemoteContentCacheConfiguration, EDRemoteContentManager, EDRemoteContentPersistence, EDThreadPersistence, EDVIPManager, NSConditionLock, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol EDRemoteSearchProvider, EDResumable, EFScheduler, EMUserProfileProvider, OS_dispatch_queue;
 
 @interface EDMessageRepository : NSObject <EDAccountChangeHookResponder, EDThreadQueryHandlerDelegate, EFContentProtectionObserver, EMMessageRepositoryInterface, EDReconciliationQueryProvider, EFLoggable>
@@ -28,6 +28,7 @@
     EDMessagePersistence *_messagePersistence;
     EDConversationPersistence *_conversationPersistence;
     EDThreadPersistence *_threadPersistence;
+    EDRemoteContentPersistence *_remoteContentPersistence;
     EDMessageChangeManager *_messageChangeManager;
     NSConditionLock *_performQueryOnSerializationQueue;
     NSObject<OS_dispatch_queue> *_serializationQueue;
@@ -38,6 +39,8 @@
     id <EDRemoteSearchProvider> _remoteSearchProvider;
     EDFetchController *_fetchController;
     id <EDResumable> _observerResumer;
+    EDRemoteContentManager *_remoteContentManager;
+    EDRemoteContentCacheConfiguration *_remoteContentCacheConfiguration;
     id <EFScheduler> _updateThrottlerResetScheduler;
     CDUnknownBlockType _updateThrottlerResetBlock;
 }
@@ -47,6 +50,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak CDUnknownBlockType updateThrottlerResetBlock; // @synthesize updateThrottlerResetBlock=_updateThrottlerResetBlock;
 @property(readonly, nonatomic) id <EFScheduler> updateThrottlerResetScheduler; // @synthesize updateThrottlerResetScheduler=_updateThrottlerResetScheduler;
+@property(readonly, nonatomic) EDRemoteContentCacheConfiguration *remoteContentCacheConfiguration; // @synthesize remoteContentCacheConfiguration=_remoteContentCacheConfiguration;
+@property(readonly, nonatomic) EDRemoteContentManager *remoteContentManager; // @synthesize remoteContentManager=_remoteContentManager;
 @property(readonly, nonatomic) id <EDResumable> observerResumer; // @synthesize observerResumer=_observerResumer;
 @property(readonly, nonatomic) EDFetchController *fetchController; // @synthesize fetchController=_fetchController;
 @property(readonly, nonatomic) id <EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
@@ -57,6 +62,7 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serializationQueue; // @synthesize serializationQueue=_serializationQueue;
 @property(readonly, nonatomic) NSConditionLock *performQueryOnSerializationQueue; // @synthesize performQueryOnSerializationQueue=_performQueryOnSerializationQueue;
 @property(retain, nonatomic) EDMessageChangeManager *messageChangeManager; // @synthesize messageChangeManager=_messageChangeManager;
+@property(readonly, nonatomic) EDRemoteContentPersistence *remoteContentPersistence; // @synthesize remoteContentPersistence=_remoteContentPersistence;
 @property(retain, nonatomic) EDThreadPersistence *threadPersistence; // @synthesize threadPersistence=_threadPersistence;
 @property(readonly, nonatomic) EDConversationPersistence *conversationPersistence; // @synthesize conversationPersistence=_conversationPersistence;
 @property(retain, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
@@ -68,6 +74,10 @@
 - (id)threadReconciliationQueries;
 - (id)messageReconciliationQueries;
 - (void)_resetUpdateThrottlersWithLogMessage:(id)arg1;
+- (void)parseRemoteContentURLsFromMessageWithObjectID:(id)arg1 requestID:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getRemoteContentURLInfoOrderedBy:(long long)arg1 inReverseOrder:(_Bool)arg2 limit:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)noteViewOfRemoteContentLinks:(id)arg1;
+- (void)getURLCacheInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)messageObjectIDsForSearchableItemIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)messageObjectIDForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadOlderMessagesForMailboxes:(id)arg1;
@@ -108,9 +118,10 @@
 - (void)performQuery:(id)arg1 withObserver:(id)arg2 observationIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)performCountQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performQuery:(id)arg1 limit:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)isDataAccessible:(CDUnknownBlockType)arg1;
 - (void)test_tearDown;
 - (void)dealloc;
-- (id)initWithMessagePersistence:(id)arg1 conversationPersistence:(id)arg2 threadPersistence:(id)arg3 messageChangeManager:(id)arg4 hookRegistry:(id)arg5 mailboxPersistence:(id)arg6 remoteSearchProvider:(id)arg7 userProfileProvider:(id)arg8 vipManager:(id)arg9 fetchController:(id)arg10 observerResumer:(id)arg11;
+- (id)initWithMessagePersistence:(id)arg1 conversationPersistence:(id)arg2 threadPersistence:(id)arg3 remoteContentPersistence:(id)arg4 messageChangeManager:(id)arg5 hookRegistry:(id)arg6 mailboxPersistence:(id)arg7 remoteSearchProvider:(id)arg8 userProfileProvider:(id)arg9 vipManager:(id)arg10 fetchController:(id)arg11 observerResumer:(id)arg12 remoteContentManager:(id)arg13 remoteContentCacheConfiguration:(id)arg14;
 - (unsigned long long)signpostID;
 
 // Remaining properties

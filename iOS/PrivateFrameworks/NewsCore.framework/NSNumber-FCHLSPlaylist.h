@@ -7,7 +7,6 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (FCHLSPlaylist)
-- (unsigned long long)bl_hlsUnsignedIntegerValue;
 @property(readonly, nonatomic) double CGFloatValue;
 - (_Bool)fc_isGreaterThan:(id)arg1;
 - (_Bool)fc_isLessThanOrEqualTo:(id)arg1;

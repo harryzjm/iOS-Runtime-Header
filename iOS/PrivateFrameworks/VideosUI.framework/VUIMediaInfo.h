@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVMediaInfo.h>
+#import <objc/NSObject.h>
 
-@class IKAppContext, NSString, TVImageProxy, TVPPlaylist;
+#import <VideosUI/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface VUIMediaInfo : TVMediaInfo
+@class NSArray, NSString, TVPPlaylist, UIColor, UIView, VUIAppContext, VUIImageProxy;
+
+@interface VUIMediaInfo : NSObject <NSCopying>
 {
     _Bool _hasProgress;
     _Bool _showsSecondaryVideoView;
@@ -19,23 +20,30 @@ __attribute__((visibility("hidden")))
     _Bool _shouldDelayLoadingImage;
     _Bool _allowsPictureInPicture;
     _Bool _overridesStartTimeWithResumeTime;
+    unsigned long long _intent;
+    UIView *_contentView;
+    UIColor *_backgroundColor;
+    NSArray *_imageProxies;
+    TVPPlaylist *_playlist;
+    UIView *_overlayView;
     TVPPlaylist *_tvpPlaylist;
+    NSArray *_videosPlayables;
     unsigned long long _playbackStartReason;
     unsigned long long _playbackStopReason;
     unsigned long long _playbackContext;
-    IKAppContext *_appContext;
+    VUIAppContext *_appContext;
     double _playbackDelayInterval;
-    TVImageProxy *_alphaImageProxy;
+    VUIImageProxy *_alphaImageProxy;
     NSString *_alphaLayerAccessibilityText;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool overridesStartTimeWithResumeTime; // @synthesize overridesStartTimeWithResumeTime=_overridesStartTimeWithResumeTime;
 @property(retain, nonatomic) NSString *alphaLayerAccessibilityText; // @synthesize alphaLayerAccessibilityText=_alphaLayerAccessibilityText;
-@property(retain, nonatomic) TVImageProxy *alphaImageProxy; // @synthesize alphaImageProxy=_alphaImageProxy;
+@property(retain, nonatomic) VUIImageProxy *alphaImageProxy; // @synthesize alphaImageProxy=_alphaImageProxy;
 @property(nonatomic) double playbackDelayInterval; // @synthesize playbackDelayInterval=_playbackDelayInterval;
 @property(nonatomic) _Bool allowsPictureInPicture; // @synthesize allowsPictureInPicture=_allowsPictureInPicture;
-@property(retain, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property(retain, nonatomic) VUIAppContext *appContext; // @synthesize appContext=_appContext;
 @property(nonatomic) unsigned long long playbackContext; // @synthesize playbackContext=_playbackContext;
 @property(nonatomic) _Bool shouldDelayLoadingImage; // @synthesize shouldDelayLoadingImage=_shouldDelayLoadingImage;
 @property(nonatomic) _Bool restrictionsAlreadyUnlocked; // @synthesize restrictionsAlreadyUnlocked=_restrictionsAlreadyUnlocked;
@@ -44,11 +52,20 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long playbackStartReason; // @synthesize playbackStartReason=_playbackStartReason;
 @property(nonatomic, getter=isAutomaticPlaybackStart) _Bool automaticPlaybackStart; // @synthesize automaticPlaybackStart=_automaticPlaybackStart;
 @property(nonatomic) _Bool showsSecondaryVideoView; // @synthesize showsSecondaryVideoView=_showsSecondaryVideoView;
+@property(retain, nonatomic) NSArray *videosPlayables; // @synthesize videosPlayables=_videosPlayables;
 @property(retain, nonatomic) TVPPlaylist *tvpPlaylist; // @synthesize tvpPlaylist=_tvpPlaylist;
 @property(readonly, nonatomic) _Bool hasProgress; // @synthesize hasProgress=_hasProgress;
+@property(retain, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
+@property(retain, nonatomic) TVPPlaylist *playlist; // @synthesize playlist=_playlist;
+@property(copy, nonatomic) NSArray *imageProxies; // @synthesize imageProxies=_imageProxies;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property(nonatomic) unsigned long long intent; // @synthesize intent=_intent;
+- (id)_hlsURLUpdatedWithBingeWatchingParamFromURL:(id)arg1;
 - (id)_hlsURLEnsuringDsidQueryParamIsPresentFromURL:(id)arg1;
 - (id)_playbackOverridesForURL:(id)arg1 orAdamID:(id)arg2;
 - (id)_tvpMediaTypeFromPlayable:(id)arg1;
+- (void)_populateMediaItem:(id)arg1 withResumeTimeInfoFromPlayable:(id)arg2;
 - (void)_populateMediaItem:(id)arg1 withMetadataOverrides:(id)arg2;
 - (void)_populateMediaItem:(id)arg1 withMetadataFromVideosPlayable:(id)arg2;
 - (id)_auxMediaItemFromVideosPlayable:(id)arg1;
@@ -57,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)_tvpRatingDomainFromUTSRatingDomain:(id)arg1;
 - (void)_updatePlaybackStartReason;
 - (void)setUserPlaybackInitiationDate:(id)arg1 openURLCompletionDate:(id)arg2;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -69,7 +87,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithPlaybackContext:(unsigned long long)arg1 mpMediaItems:(id)arg2;
 - (id)_playlistForVUIMediaItems:(id)arg1;
 - (id)initWithPlaybackContext:(unsigned long long)arg1 vuiMediaItems:(id)arg2;
-- (id)initWithBackgroundImageDictionary:(id)arg1;
 
 @end
 

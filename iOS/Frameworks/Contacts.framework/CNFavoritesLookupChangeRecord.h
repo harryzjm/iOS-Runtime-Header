@@ -10,15 +10,21 @@
 
 @interface CNFavoritesLookupChangeRecord : NSObject
 {
-    int identifier;
-    int uid;
-    NSString *value;
-    NSString *name;
-    NSString *label;
-    NSString *abDatabaseUUID;
+    int _identifier;
+    int _uid;
+    NSString *_value;
+    NSString *_name;
+    NSString *_label;
+    NSString *_abDatabaseUUID;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSString *abDatabaseUUID; // @synthesize abDatabaseUUID=_abDatabaseUUID;
+@property(retain) NSString *label; // @synthesize label=_label;
+@property(retain) NSString *name; // @synthesize name=_name;
+@property(retain) NSString *value; // @synthesize value=_value;
+@property int uid; // @synthesize uid=_uid;
+@property int identifier; // @synthesize identifier=_identifier;
 
 @end
 

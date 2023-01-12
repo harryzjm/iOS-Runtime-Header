@@ -33,9 +33,9 @@
 - (id)_createNewDatabaseSQLiteStatement;
 - (_Bool)deleteAllEntries;
 - (_Bool)deleteEntryWithHost:(id)arg1;
-- (int)_updateEntry:(id)arg1;
-- (int)_insertEntry:(id)arg1;
-- (_Bool)saveEntry:(id)arg1;
+- (id)_updateEntry:(id)arg1;
+- (id)_insertEntry:(id)arg1;
+- (id)saveEntry:(id)arg1;
 - (id)allEntries;
 - (id)entryWithHost:(id)arg1;
 - (int)_setDatabaseSchemaVersion:(int)arg1;

@@ -18,7 +18,7 @@
 - (id)_timeTitle;
 - (id)_locationTitle;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithMomentNodes:(id)arg1 supersetLocationNode:(id)arg2 supersetDateInterval:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 supersetLocationNode:(id)arg2 supersetDateInterval:(id)arg3 titleGenerationContext:(id)arg4;
 
 @end
 

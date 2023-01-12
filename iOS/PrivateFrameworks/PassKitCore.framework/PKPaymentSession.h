@@ -11,6 +11,7 @@
 @interface PKPaymentSession : NSObject
 {
     NSObject<OS_dispatch_queue> *_internalSessionSerialQueue;
+    unsigned long long _lifecycleState;
 }
 
 + (id)startApplePayTrustSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
@@ -19,12 +20,18 @@
 + (id)startPeerPaymentSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startReaderSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startReaderSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startSTSContactlessInterfaceSessionWithDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)forceContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
++ (id)forceContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startDigitalCarKeySessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
++ (id)startDigitalCarKeySessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long lifecycleState;
+@property(readonly, nonatomic) unsigned long long lifecycleState; // @synthesize lifecycleState=_lifecycleState;
+- (void)createSessionHandoffTokenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidateSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidateSession;
 

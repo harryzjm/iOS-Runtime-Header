@@ -9,6 +9,7 @@
 @protocol TISKEventProtocol
 - (void)reportInterKeyTiming:(TISKSessionSamples *)arg1 previousEvent:(TISKEvent *)arg2;
 - (void)reportToSession:(TISKSessionSamples *)arg1;
+- (NSString *)privateDescription;
 - (NSString *)description;
 - (double)touchUpTimestamp;
 - (double)touchDownTimestamp;

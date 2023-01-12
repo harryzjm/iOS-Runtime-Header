@@ -6,12 +6,12 @@
 
 #import <DeviceManagement/CATOperation.h>
 
-@class CRKASMRosterProviderConfiguration, NSArray, NSDictionary, NSSet;
+@class CRKASMRosterProviderEnvironment, NSArray, NSDictionary, NSSet;
 @protocol CRKClassKitCurrentUser;
 
 @interface CRKASMWorldBuildOperation : CATOperation
 {
-    CRKASMRosterProviderConfiguration *_configuration;
+    CRKASMRosterProviderEnvironment *_environment;
     id <CRKClassKitCurrentUser> _classKitCurrentUser;
     NSArray *_classKitClasses;
     NSDictionary *_classKitLocationsByLocationID;
@@ -28,7 +28,8 @@
 @property(copy, nonatomic) NSDictionary *classKitLocationsByLocationID; // @synthesize classKitLocationsByLocationID=_classKitLocationsByLocationID;
 @property(retain, nonatomic) NSArray *classKitClasses; // @synthesize classKitClasses=_classKitClasses;
 @property(retain, nonatomic) id <CRKClassKitCurrentUser> classKitCurrentUser; // @synthesize classKitCurrentUser=_classKitCurrentUser;
-@property(readonly, nonatomic) CRKASMRosterProviderConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly, nonatomic) CRKASMRosterProviderEnvironment *environment; // @synthesize environment=_environment;
+- (id)rosterRequirements;
 - (id)compileResult;
 - (id)makeHousekeeperWithRoster:(id)arg1;
 - (void)housekeepKeychainWithRoster:(id)arg1;
@@ -43,7 +44,7 @@
 - (void)checkAccountEligibility;
 - (void)main;
 - (_Bool)isAsynchronous;
-- (id)initWithConfiguration:(id)arg1;
+- (id)initWithEnvironment:(id)arg1;
 
 @end
 

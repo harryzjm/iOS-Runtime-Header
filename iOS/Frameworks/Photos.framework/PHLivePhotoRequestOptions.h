@@ -19,9 +19,13 @@
     long long _version;
     long long _deliveryMode;
     CDUnknownBlockType _progressHandler;
+    long long _downloadIntent;
+    long long _downloadPriority;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long downloadPriority; // @synthesize downloadPriority=_downloadPriority;
+@property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property(nonatomic) _Bool liveRenderVideoIfNeeded; // @synthesize liveRenderVideoIfNeeded=_liveRenderVideoIfNeeded;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;

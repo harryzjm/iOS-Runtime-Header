@@ -9,6 +9,6 @@
 @class NSArray, PXSidebarOutlineSectionController;
 
 @protocol PXSidebarOutlineSectionControllerDelegate <NSObject>
-- (void)sidebarOutlineSectionController:(PXSidebarOutlineSectionController *)arg1 willApplySnapshotWithChangedItemsBeforeChange:(NSArray *)arg2 changedItemsAfterChange:(NSArray *)arg3 applyBlock:(void (^)(void))arg4;
+- (void)sidebarOutlineSectionController:(PXSidebarOutlineSectionController *)arg1 willApplySnapshotWithChangedItemsAfterChange:(NSArray *)arg2 applyBlock:(void (^)(void))arg3;
 @end
 

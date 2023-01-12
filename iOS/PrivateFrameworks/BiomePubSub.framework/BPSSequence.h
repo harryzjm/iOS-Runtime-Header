@@ -16,6 +16,7 @@
 - (void)subscribe:(id)arg1;
 - (id)initWithSequence:(id)arg1;
 - (id)init;
+- (id)bookmarkableUpstreams;
 
 @end
 

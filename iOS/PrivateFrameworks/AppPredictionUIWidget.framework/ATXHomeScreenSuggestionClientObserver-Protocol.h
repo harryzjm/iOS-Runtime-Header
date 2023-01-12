@@ -9,9 +9,9 @@
 @class ATXHomeScreenSuggestionClient;
 
 @protocol ATXHomeScreenSuggestionClientObserver <NSObject>
-- (void)suggestionClientDidRefreshSuggestions:(ATXHomeScreenSuggestionClient *)arg1;
 
 @optional
-- (void)suggestionClientDidRefreshSuggestionsForSuggestionsWidget:(ATXHomeScreenSuggestionClient *)arg1;
+- (void)suggestionClientDidRefreshProactiveWidgetLayouts:(ATXHomeScreenSuggestionClient *)arg1;
+- (void)suggestionClientDidRefreshSuggestions:(ATXHomeScreenSuggestionClient *)arg1;
 @end
 

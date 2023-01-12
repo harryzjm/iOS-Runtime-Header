@@ -35,9 +35,10 @@
 @property(retain) NSString *fileUTI; // @synthesize fileUTI=_fileUTI;
 @property long long orientation; // @synthesize orientation=_orientation;
 @property CDStruct_912cb5d2 size; // @synthesize size=_size;
-@property(retain) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property(retain, nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(retain) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(retain) NSURL *url; // @synthesize url=_url;
+- (void)dealloc;
 @property(readonly, copy) NSString *description;
 
 // Remaining properties

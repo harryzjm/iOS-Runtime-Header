@@ -15,9 +15,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double score; // @synthesize score=_score;
-@property(retain, nonatomic) FCTopicalNode *node; // @synthesize node=_node;
-- (id)initWithNode:(id)arg1 score:(double)arg2;
 
 @end
 

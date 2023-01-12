@@ -13,7 +13,7 @@
 
 @interface PXCuratedLibraryChapterHeaderLayout <PXChangeObserver, PXGStringSource, PXGNamedImageSource>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     unsigned short _titleVersion;
     struct CGSize _chevronSize;
     unsigned short _chevronVersion;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class INIntent, NSString;
 
 @protocol _SBUIPopoverExtensionRemoteInterface
+- (void)_invalidateSBUIPopoverExtension;
+- (void)_updateForWidgetConfiguration:(INIntent *)arg1;
 - (void)_updateForBundleIdentifier:(NSString *)arg1;
 @end
 

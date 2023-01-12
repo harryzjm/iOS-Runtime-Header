@@ -18,7 +18,6 @@
 + (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (void)_deleteRecords:(id)arg1 container:(id)arg2;
 - (void)main;
 @property(copy) NSArray *recordIDsToDelete;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

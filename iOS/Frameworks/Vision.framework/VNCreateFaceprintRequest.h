@@ -13,14 +13,15 @@
 }
 
 + (id)descriptionForPrivateRevision:(unsigned long long)arg1;
-+ (_Bool)supportsPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
-+ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
++ (id)createVNEntityIdentificationModelEntryPrintForRevision:(unsigned long long)arg1 fromDescriptorData:(const void *)arg2 length:(unsigned long long)arg3 elementCount:(unsigned long long)arg4 error:(id *)arg5;
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 @property(nonatomic) _Bool forceFaceprintCreation;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputFacesThatNeedFaceprints:(id)arg4;
 - (long long)dependencyProcessingOrdinality;
@@ -31,6 +32,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSArray *inputFaceObservations;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

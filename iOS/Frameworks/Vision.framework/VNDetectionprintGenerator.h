@@ -9,13 +9,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
++ (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 + (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
-- (id)supportedImageSizeSetForProcessingOptions:(id)arg1;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
 - (id)_analyzePixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)_detectionprintTensorForOutputBuffer:(const CDStruct_cf098810 *)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
+- (id)_detectionprintTensorForOutputBuffer:(const CDStruct_0a65202a *)arg1 originatingRequestSpecifier:(id)arg2 error:(id *)arg3;
 
 @end
 

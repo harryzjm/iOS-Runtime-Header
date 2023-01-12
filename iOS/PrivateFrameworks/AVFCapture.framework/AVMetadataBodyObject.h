@@ -14,7 +14,7 @@
 @property(readonly) long long bodyID; // @synthesize bodyID=_bodyID;
 - (id)initDerivedMetadataObjectFromMetadataObject:(id)arg1 withTransform:(struct CGAffineTransform)arg2 isVideoMirrored:(_Bool)arg3 rollAdjustment:(double)arg4 type:(id)arg5 bodyID:(long long)arg6;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithType:(id)arg1 bodyID:(long long)arg2 time:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 bounds:(struct CGRect)arg5 originalMetadataObject:(id)arg6 sourceCaptureInput:(id)arg7;
+- (id)initWithType:(id)arg1 bodyID:(long long)arg2 time:(CDStruct_1b6d18a9)arg3 duration:(CDStruct_1b6d18a9)arg4 bounds:(struct CGRect)arg5 optionalInfoDict:(id)arg6 originalMetadataObject:(id)arg7 sourceCaptureInput:(id)arg8;
 - (id)initWithFigEmbeddedCaptureDeviceObjectDictionary:(id)arg1 input:(id)arg2 timeStamp:(id)arg3 type:(id)arg4;
 
 @end

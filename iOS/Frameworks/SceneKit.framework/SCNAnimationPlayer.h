@@ -50,7 +50,6 @@
 - (_Bool)isAnimationForKeyPaused:(id)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
-- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)resumeAnimationForKey:(id)arg1;
 - (void)pauseAnimationForKey:(id)arg1;
 - (void)_pauseAnimation:(_Bool)arg1 forKey:(id)arg2 pausedByNode:(_Bool)arg3;
@@ -60,7 +59,9 @@
 - (id)animationForKey:(id)arg1;
 - (void)_syncObjCAnimations;
 @property(readonly) NSArray *animationKeys;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAllAnimationsWithBlendOutDuration:(double)arg1;
 - (void)removeAllAnimations;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;

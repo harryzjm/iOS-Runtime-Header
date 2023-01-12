@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardFoundation/ISPlayerViewDelegatePrivate-Protocol.h>
 #import <SpringBoardFoundation/SBFIrisWallpaperView-Protocol.h>
+#import <SpringBoardFoundation/SBFLivePhotoPlayerViewDelegate-Protocol.h>
 
-@class ISAVPlayer, ISPlayerView, NSString, NSURL, UIGestureRecognizer, UIImageView;
-@protocol SBFIrisWallpaperViewDelegate;
+@class ISAVPlayer, NSMutableSet, NSString, NSURL, SBFLivePhotoPlayerView, UIGestureRecognizer, UIImageView;
+@protocol SBFIrisWallpaperPlayerDelegate;
 
-@interface SBFIrisWallpaperView <ISPlayerViewDelegatePrivate, SBFIrisWallpaperView>
+@interface SBFIrisWallpaperView <SBFLivePhotoPlayerViewDelegate, SBFIrisWallpaperView>
 {
-    id <SBFIrisWallpaperViewDelegate> _irisDelegate;
+    id <SBFIrisWallpaperPlayerDelegate> _irisDelegate;
     long long _currentMode;
     UIImageView *_imageView;
     NSURL *_videoFileURL;
@@ -20,30 +20,32 @@
     _Bool _useRewindPlaybackStyle;
     ISAVPlayer *_prewiredAVPlayer;
     struct CGSize _prewiredSize;
-    ISPlayerView *_playerView;
+    SBFLivePhotoPlayerView *_playerView;
     long long _playerState;
     long long _playbackState;
     _Bool _isInteracting;
     UIGestureRecognizer *_playerGestureRecognizer;
+    NSMutableSet *_simulatedTouchReasons;
 }
 
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long currentIrisMode; // @synthesize currentIrisMode=_currentMode;
 @property(readonly, copy, nonatomic) NSURL *videoFileURL; // @synthesize videoFileURL=_videoFileURL;
 @property(readonly, nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
-@property(nonatomic) __weak id <SBFIrisWallpaperViewDelegate> irisDelegate; // @synthesize irisDelegate=_irisDelegate;
+@property(nonatomic) __weak id <SBFIrisWallpaperPlayerDelegate> irisDelegate; // @synthesize irisDelegate=_irisDelegate;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 - (id)videoPlayerForPlayerView:(id)arg1;
 - (void)playerViewIsInteractingDidChange:(id)arg1;
 - (void)playerViewPlaybackStateDidChange:(id)arg1;
-- (void)playerViewGestureRecognizerDidChange:(id)arg1;
 - (void)_populateContentView;
 - (_Bool)_setupContentViewForMode:(long long)arg1;
 - (void)_resetPrewiredAVPlayer;
 - (void)_setPlayerGestureRecognizer:(id)arg1;
 - (void)_setupContentViewWithOptions:(unsigned long long)arg1;
 - (void)_setImage:(id)arg1;
+- (id)_playbackReasonForSimulatedTouchReason:(id)arg1;
+- (void)endSimulatedTouchWithReason:(id)arg1;
+- (void)beginSimulatedTouchWithReason:(id)arg1;
 - (id)irisGestureRecognizer;
 @property(readonly, nonatomic) _Bool isIrisInteracting;
 @property(readonly, nonatomic) long long irisPlaybackState;

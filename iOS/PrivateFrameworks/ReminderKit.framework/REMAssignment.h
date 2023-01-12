@@ -35,12 +35,12 @@
 + (_Bool)supportsSecureCoding;
 + (_Bool)isChangeTrackableFetchableModel;
 + (_Bool)isChangeTrackableModel;
-+ (CDUnknownBlockType)rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
++ (CDUnknownBlockType)rem_DA_deletedKeyFromConcealedModelObjectBlock;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromTombstoneBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDsBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDBlock;
-+ (id)rem_DA_lazyDeleteProperties;
-+ (_Bool)rem_DA_supportsLazyDelete;
++ (id)rem_DA_propertiesAffectingIsConcealed;
++ (_Bool)rem_DA_supportsConcealedObjects;
 + (_Bool)rem_DA_supportsFetching;
 + (id)nullifiedOriginatorAssignmentWithObjectID:(id)arg1 accountID:(id)arg2 reminderID:(id)arg3 assigneeID:(id)arg4 status:(long long)arg5 assignedDate:(id)arg6;
 - (void).cxx_destruct;

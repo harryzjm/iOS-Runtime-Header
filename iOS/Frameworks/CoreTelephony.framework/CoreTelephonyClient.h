@@ -22,7 +22,13 @@
 @property(retain, nonatomic) CoreTelephonyClientMux *mux; // @synthesize mux=_mux;
 @property(nonatomic) struct queue userQueue; // @synthesize userQueue=_userQueue;
 @property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
+- (void)registerBlockForInvalidationNotification:(struct __CTAssertionType *)arg1 callback:(CDUnknownBlockType)arg2;
+- (struct __CTAssertionType *)createCTAssertionForConnectionType:(int)arg1 allocator:(struct __CFAllocator *)arg2 proxy:(id)arg3;
+- (void)dispatchBlockToClientAsync:(CDUnknownBlockType)arg1;
+- (_Bool)supportsCellular;
 - (void)ping:(CDUnknownBlockType)arg1;
+- (void)cacheValue:(id)arg1 forSelector:(SEL)arg2;
+- (id)cachedValueForSelector:(SEL)arg1;
 - (id)synchronousProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)proxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)getActiveContexts:(id *)arg1;
@@ -30,8 +36,6 @@
 - (id)getDescriptorsForDomain:(long long)arg1 error:(id *)arg2;
 - (void)getDescriptorsForDomain:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)getDualSimCapability:(id *)arg1;
-- (id)getSimLessContexts:(id *)arg1;
-- (void)getSimLessContextsWithCallback:(CDUnknownBlockType)arg1;
 - (id)getSubscriptionInfoWithError:(id *)arg1;
 - (void)getSubscriptionInfo:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -44,8 +48,11 @@
 - (id)private_getActiveConnections:(id)arg1 error:(id *)arg2;
 - (id)private_getConnectionAvailability:(id)arg1 connectionType:(int)arg2 error:(id *)arg3;
 - (id)private_setPacketContextActiveByServiceType:(id)arg1 connectionType:(int)arg2 active:(_Bool)arg3;
+- (const void *)createAssertionForConnectionType:(int)arg1 allocator:(const struct __CFAllocator *)arg2 error:(id *)arg3 onReAssertError:(CDUnknownBlockType)arg4;
 - (id)enterLoopBackMode;
+- (id)getTetheringStatusSync:(id *)arg1 connectionType:(int)arg2;
 - (id)getTetheringStatusSync:(id *)arg1;
+- (void)getTetheringStatus:(CDUnknownBlockType)arg1 connectionType:(int)arg2;
 - (void)getTetheringStatus:(CDUnknownBlockType)arg1;
 - (id)getPreferredDataServiceDescriptorSync:(id *)arg1;
 - (id)getPreferredDataSubscriptionContextSync:(id *)arg1;
@@ -61,6 +68,10 @@
 - (unsigned int)getNATTKeepAliveOverCell:(id *)arg1;
 - (unsigned int)getNATTKeepAliveOverCell:(id)arg1 error:(id *)arg2;
 - (void)getNATTKeepAliveOverCell:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned int)getPublicNrFrequencyRangeSync:(id *)arg1;
+- (void)getPublicNrFrequencyRange:(CDUnknownBlockType)arg1;
+- (int)getPublicDataBearerSync:(id *)arg1;
+- (void)getPublicDataBearer:(CDUnknownBlockType)arg1;
 - (id)getInternetDataStatusSync:(id *)arg1;
 - (void)getInternetDataStatus:(CDUnknownBlockType)arg1;
 - (id)getDataStatus:(id)arg1 error:(id *)arg2;
@@ -107,8 +118,6 @@
 - (id)getWiFiCallingSettingPreferences:(id)arg1 key:(id)arg2 error:(id *)arg3;
 - (void)getWiFiCallingSettingPreferences:(id)arg1 key:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setWiFiCallingSettingPreferences:(id)arg1 key:(id)arg2 value:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)copyNormalEmergencyModeWithError:(id *)arg1;
-- (void)copyNormalEmergencyMode:(CDUnknownBlockType)arg1;
 - (id)copyEmergencyModeWithError:(id *)arg1;
 - (void)copyEmergencyMode:(CDUnknownBlockType)arg1;
 - (void)copyLocationAreaCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -153,6 +162,11 @@
 - (id)billingCycleEndDatesForLastPeriods:(unsigned long long)arg1 error:(id *)arg2;
 - (void)dataUsageForLastPeriodsOnActivePairedDevice:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dataUsageForLastPeriods:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)hasCellularAndValidContext:(id)arg1 error:(id *)arg2;
+- (id)getEnglishCarrierNameFor:(id)arg1 error:(id *)arg2;
+- (id)getCountryBundleIdentifierForCountryCode:(id)arg1 error:(id *)arg2;
+- (id)getCountryBundleLocationForBundleIdentifier:(id)arg1 error:(id *)arg2;
+- (_Bool)restoreToSystemBundles:(id *)arg1;
 - (id)copyBundleIdentifier:(id)arg1 bundleType:(id)arg2 error:(id *)arg3;
 - (void)copyBundleIdentifier:(id)arg1 bundleType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)copyBundleVersion:(id)arg1 bundleType:(id)arg2 error:(id *)arg3;
@@ -169,6 +183,7 @@
 - (void)copyCarrierBundleLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)context:(id)arg1 getCarrierBundleValue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)context:(id)arg1 getCarrierBundleValue:(id)arg2 error:(id *)arg3;
+- (id)copyCarrierBundleValueWithCountryBundleLookup:(id)arg1 keyHierarchy:(id)arg2 matchingInfo:(id)arg3 error:(id *)arg4;
 - (id)copyCarrierBundleValueWithDefault:(id)arg1 keyHierarchy:(id)arg2 bundleType:(id)arg3 error:(id *)arg4;
 - (void)copyCarrierBundleValueWithDefault:(id)arg1 keyHierarchy:(id)arg2 bundleType:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)copyCarrierBundleValueWithDefault:(id)arg1 key:(id)arg2 bundleType:(id)arg3 error:(id *)arg4;
@@ -192,6 +207,7 @@
 - (id)getSIMToolkitListItems:(id)arg1 items:(id *)arg2;
 - (id)selectSIMToolkitMenuItem:(id)arg1 index:(id)arg2;
 - (id)getSIMToolkitMenu:(id)arg1 menu:(id *)arg2;
+- (id)getLastKnownSimDeactivationInfoFor:(id)arg1 error:(id *)arg2;
 - (id)getUserDefaultVoiceSubscriptionContext:(id *)arg1;
 - (void)refreshUserAuthToken:(id)arg1 error:(id *)arg2;
 - (id)getUserAuthToken:(id)arg1 error:(id *)arg2;
@@ -207,6 +223,8 @@
 - (void)setLabel:(id)arg1 label:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)copyLabel:(id)arg1 error:(id *)arg2;
 - (void)copyLabel:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)getSubscriptionUserFacingName:(id)arg1 error:(id *)arg2;
+- (void)getSubscriptionUserFacingName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getShortLabel:(id)arg1 error:(id *)arg2;
 - (void)getShortLabel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getSimLabel:(id)arg1 error:(id *)arg2;
@@ -237,6 +255,7 @@
 - (id)getMobileSubscriberHomeCountryList:(id)arg1 error:(id *)arg2;
 - (void)getMobileSubscriberHomeCountryList:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)isEsimFor:(id)arg1 error:(id *)arg2;
+- (id)getSimHardwareInfo:(id)arg1 error:(id *)arg2;
 - (id)copyMobileSubscriberIsoSubregionCode:(id)arg1 MNC:(id)arg2 error:(id *)arg3;
 - (id)copyMobileSubscriberIsoCountryCode:(id)arg1 error:(id *)arg2;
 - (id)copyMobileSubscriberCountryCode:(id)arg1 error:(id *)arg2;
@@ -276,12 +295,21 @@
 - (void)setSweetgumUserConsent:(id)arg1 userConsent:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getSweetgumUserConsentInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSweetgumCapabilities:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remotePlanSignupInfoFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remotePlanSignupInfoFor:(id)arg1 userConsent:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getRemotePlanManageAccountInfoFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transferRemotePlan:(id)arg1 fromDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)getRemoteDeviceForTransferWithEID:(id)arg1 error:(id *)arg2;
 - (id)getRemoteDeviceOfType:(unsigned long long)arg1 withEID:(id)arg2 error:(id *)arg3;
 - (id)getRemoteDevicesForTransferOrError:(id *)arg1;
 - (id)getRemoteDevicesOfType:(unsigned long long)arg1 error:(id *)arg2;
+- (id)requestQoSLinkCharacteristics;
+- (id)getQoSLinkCharacteristics:(id *)arg1;
+- (id)getListOfPresentDedicatedBearers;
+- (_Bool)isDedicatedBearerPresent:(id)arg1 error:(id *)arg2;
+- (id)removeAllDedicatedBearers;
+- (id)removeDedicatedBearer:(id)arg1;
+- (id)addDedicatedBearer:(id)arg1 error:(id *)arg2;
+- (_Bool)hasDedicatedBearerSupport;
 - (id)context:(id)arg1 getPhoneNumberSignature:(id *)arg2;
 - (void)context:(id)arg1 getPhoneNumberSignatureWithCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)isPhoneNumberCredentialValid:(id)arg1 outError:(id *)arg2;
@@ -302,6 +330,7 @@
 - (id)getPhoneServicesDeviceList:(id *)arg1;
 - (void)getPhoneServicesDeviceListWithCompletion:(CDUnknownBlockType)arg1;
 - (id)context:(id)arg1 recheckPhoneServicesAccountStatus:(id)arg2;
+- (id)getSupports5G:(id)arg1 error:(id *)arg2;
 - (id)context:(id)arg1 getSystemCapabilities:(id *)arg2;
 - (void)context:(id)arg1 getSystemCapabilitiesWithCompletion:(CDUnknownBlockType)arg2;
 - (id)context:(id)arg1 setCapability:(id)arg2 enabled:(_Bool)arg3 with:(id)arg4;
@@ -348,6 +377,7 @@
 - (id)getBandInfo:(id)arg1 error:(id *)arg2;
 - (void)setBandInfo:(id)arg1 bands:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)copyBandInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)setRatSelectionMask:(id)arg1 selection:(unsigned char)arg2 preferred:(unsigned char)arg3;
 - (void)setRatSelection:(id)arg1 selection:(id)arg2 preferred:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)getRatSelectionMask:(id)arg1 error:(id *)arg2;
 - (void)getRatSelection:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -355,6 +385,9 @@
 - (void)copyWirelessTechnology:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)copyRadioAccessTechnology:(id)arg1 error:(id *)arg2;
 - (void)copyRadioAccessTechnology:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)setSupports5GStandalone:(id)arg1 enabled:(_Bool)arg2;
+- (id)getSupports5GStandalone:(id)arg1 error:(id *)arg2;
+- (id)getNRDisableStatus:(id)arg1 error:(id *)arg2;
 - (id)getLocalizedOperatorName:(id)arg1 error:(id *)arg2;
 - (void)copyLocalizedOperatorName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)copyOperatorName:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -373,10 +406,21 @@
 - (void)copyRegistrationDisplayStatus:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)copyRegistrationStatus:(id)arg1 error:(id *)arg2;
 - (void)copyRegistrationStatus:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performNetworkAccessFlowIfAllowed:(id)arg1 ignoreForeground:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removePoliciesFromLocalDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setRemotePolicies:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)setLocalPolicies:(id)arg1;
+- (void)setLocalPolicies:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemotePolicies:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)getLocalPolicies:(id)arg1 error:(id *)arg2;
+- (void)getLocalPolicies:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)transferPersonalWallet:(id)arg1 to:(id)arg2;
 - (id)renamePersonalWallet:(id)arg1 to:(id)arg2;
 - (id)listPersonalWallets:(id *)arg1;
 - (id)deletePersonalWallet:(id)arg1;
 - (void)deletePersonalWallet:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)loadGSMASettings:(id)arg1 state:(_Bool)arg2;
+- (unsigned long long)getGSMAUIControlSetting:(id)arg1 error:(id *)arg2;
 - (id)getConfiguredApns:(id)arg1 error:(id *)arg2;
 - (void)getConfiguredApns:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetUIConfiguredApns:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -389,6 +433,17 @@
 - (id)bootstrapPlanTransferForEndpoint:(unsigned long long)arg1 usingMessageSession:(id)arg2;
 - (id)bootstrapPlanTransferForEndpoint:(unsigned long long)arg1;
 - (_Bool)isAnyPlanTransferableFromThisDeviceOrError:(id *)arg1;
+- (void)getRadioPersonality:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)getRadioPersonality:(id)arg1 error:(id *)arg2;
+- (void)terminateProcess:(CDUnknownBlockType)arg1;
+- (id)terminateProcess;
+- (void)getPrefForKey:(id)arg1 heirarchy:(id)arg2 storage:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)getPrefForKey:(id)arg1 heirarchy:(id)arg2 storage:(id)arg3 error:(id *)arg4;
+- (void)setPrefForKey:(id)arg1 heirarchy:(id)arg2 value:(id)arg3 storage:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)setPrefForKey:(id)arg1 heirarchy:(id)arg2 value:(id)arg3 storage:(id)arg4;
+- (void)setVinylTestMode:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)isVinylTestModeEnabledWithCompletion:(CDUnknownBlockType)arg1;
+- (id)isVinylTapeSupportedWithError:(id *)arg1;
 - (id)saveCallingLineIdRestrictionValue:(id)arg1 restrictionValue:(int)arg2;
 - (void)saveCallingLineIdRestrictionValue:(id)arg1 restrictionValue:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)saveCallBarringValue:(id)arg1 facility:(int)arg2 callClass:(int)arg3 enabled:(_Bool)arg4 password:(id)arg5;
@@ -414,6 +469,8 @@
 - (void)fetchCallWaitingValue:(id)arg1 callClass:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)setVisualVoicemailState:(id)arg1 subscribed:(_Bool)arg2;
 - (void)getVoicemailInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (CDStruct_3d581f42)getPrivacyProxyState:(id)arg1 error:(id *)arg2;
+- (id)setPrivacyProxyState:(id)arg1 enabled:(_Bool)arg2;
 - (id)setInterfaceCost:(id)arg1 expensive:(_Bool)arg2;
 - (_Bool)interfaceCostExpensive:(id)arg1 error:(id *)arg2;
 - (_Bool)isHighDataModeSupported:(id)arg1 error:(id *)arg2;
@@ -437,12 +494,16 @@
 - (void)selectPhonebook:(id)arg1 forPhonebookName:(int)arg2 withPassword:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)getActivationPolicyState:(id *)arg1;
 - (void)copyPriVersion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)submitSimSetupUsage:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getDeviceInfo:(CDUnknownBlockType)arg1;
+- (void)purchaseAddOnPlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemoteDevices:(CDUnknownBlockType)arg1;
 - (void)installPendingPlanList:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)installPendingPlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)plansPendingInstallWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteZone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteTransferPlansForImei:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getCurrentIMessageIccidsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)convertPhysicalToeSIMWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)cancelCellularPlanTransfer:(id)arg1 fromDevice:(id)arg2;
 - (id)cancelPlanTransfer:(id)arg1 fromDevice:(id)arg2;
 - (void)transferCellularPlans:(id)arg1 fromDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -460,6 +521,7 @@
 - (void)addPlanWith:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addPlanWith:(id)arg1 appName:(id)arg2 appType:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addPlanWith:(id)arg1 request:(id)arg2 appName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)supportsHydraWithError:(id *)arg1;
 
 @end
 

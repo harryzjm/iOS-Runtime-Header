@@ -12,9 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)createAccessibilityFriendlyLabelWithoutConstraints;
-+ (id)createHiddenHighlightViewWithoutConstraints;
 + (id)createHiddenOverlayViewWithoutConstraints;
-+ (id)createAssetImageViewWithoutConstraints;
 - (id)init;
 
 @end

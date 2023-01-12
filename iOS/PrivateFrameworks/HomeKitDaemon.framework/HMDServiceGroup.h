@@ -11,16 +11,18 @@
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, HMFUnfairLock, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDServiceGroup : HMFObject <HMDHomeMessageReceiver, HMFDumpState, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
+    HMFUnfairLock *_lock;
+    NSMutableDictionary *_serviceMapping;
+    NSMutableArray *_serviceUUIDs;
     NSString *_name;
     NSUUID *_uuid;
+    NSUUID *_spiClientIdentifier;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSMutableArray *_serviceUUIDs;
-    NSMutableDictionary *_serviceMapping;
     HMDHome *_home;
     HMFMessageDispatcher *_msgDispatcher;
     HMDApplicationData *_appData;
@@ -32,11 +34,9 @@
 @property(retain, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
-@property(retain, nonatomic) NSMutableDictionary *serviceMapping; // @synthesize serviceMapping=_serviceMapping;
-@property(retain, nonatomic) NSMutableArray *serviceUUIDs; // @synthesize serviceUUIDs=_serviceUUIDs;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly, copy) NSUUID *spiClientIdentifier; // @synthesize spiClientIdentifier=_spiClientIdentifier;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)fixupServiceGroup;
 - (id)backingStoreObjects:(long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
@@ -60,12 +60,14 @@
 - (void)setServiceIfPresent:(id)arg1;
 - (void)fixupServicesForReplacementAccessory:(id)arg1;
 - (void)_handleRenameRequest:(id)arg1;
+@property(copy) NSString *name; // @synthesize name=_name;
+@property(readonly, copy) NSArray *serviceUUIDs;
 - (id)dumpState;
 - (void)configure:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 home:(id)arg3 queue:(id)arg4;
-- (id)assistantObject;
-- (id)urlString;
+@property(readonly, copy) NSDictionary *assistantObject;
+@property(readonly, copy) NSString *urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

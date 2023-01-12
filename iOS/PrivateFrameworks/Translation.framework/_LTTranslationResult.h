@@ -12,6 +12,7 @@
 
 @interface _LTTranslationResult : NSObject <NSSecureCoding>
 {
+    _Bool _isFinal;
     NSString *_identifier;
     NSLocale *_locale;
     NSArray *_translations;
@@ -27,6 +28,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *alignments; // @synthesize alignments=_alignments;
 @property(nonatomic) long long route; // @synthesize route=_route;
+@property(nonatomic) _Bool isFinal; // @synthesize isFinal=_isFinal;
 @property(copy, nonatomic) NSString *sanitizedSourceString; // @synthesize sanitizedSourceString=_sanitizedSourceString;
 @property(copy, nonatomic) NSString *sourceString; // @synthesize sourceString=_sourceString;
 @property(copy, nonatomic) NSArray *translations; // @synthesize translations=_translations;
@@ -34,6 +36,7 @@
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (void)updateAlignmentWithSourceSpan:(id)arg1 targetSpan:(id)arg2;
 - (id)initWithOspreyBatchResponse:(id)arg1;
 - (id)initWithOspreyResponse:(id)arg1;

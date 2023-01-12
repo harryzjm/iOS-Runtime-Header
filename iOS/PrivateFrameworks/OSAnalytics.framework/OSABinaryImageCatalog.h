@@ -24,8 +24,9 @@
 
 + (_Bool)isApplePath:(id)arg1 orBundle:(id)arg2;
 - (void).cxx_destruct;
-- (id)reportUsedImagesLegacyInfo;
+- (id)reportUsedImagesFullInfoUsingBlock:(CDUnknownBlockType)arg1;
 - (id)reportUsedImages;
+- (id)searchFrame:(unsigned long long)arg1 in:(id)arg2 regions:(id)arg3 result:(id *)arg4;
 - (id)searchFrame:(unsigned long long)arg1 in:(id)arg2 result:(id *)arg3;
 - (void)appendNotesTo:(id)arg1;
 - (_Bool)isAddressInTargetedCache:(unsigned long long)arg1;

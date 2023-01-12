@@ -8,11 +8,14 @@
 {
 }
 
++ (id)pigmentFaceDomain;
 + (id)_richComplicationSlotsForDevice:(id)arg1;
 + (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 + (id)_orderedComplicationSlots;
 + (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
 + (id)_complicationSlotDescriptors;
+- (_Bool)supportsPigmentEditOption;
+- (id)allowedComplicationsForSlot:(id)arg1 includingComplication:(id)arg2;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
 - (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;

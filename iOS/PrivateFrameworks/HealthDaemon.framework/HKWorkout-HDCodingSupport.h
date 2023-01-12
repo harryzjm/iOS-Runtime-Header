@@ -13,7 +13,6 @@
 @interface HKWorkout (HDCodingSupport) <HDCoding>
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
-- (id)codableWorkoutEvents;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
 - (_Bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5;

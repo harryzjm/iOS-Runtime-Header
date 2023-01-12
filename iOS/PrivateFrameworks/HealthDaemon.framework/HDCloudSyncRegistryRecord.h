@@ -19,6 +19,7 @@
 + (id)recordType;
 + (_Bool)requiresUnderlyingMessage;
 - (void).cxx_destruct;
+- (id)printDescription;
 - (id)description;
 - (void)removeStoreIdentifier:(id)arg1 ownerIdentifier:(id)arg2;
 - (void)addStoreIdentifier:(id)arg1 ownerIdentifier:(id)arg2;
@@ -29,8 +30,6 @@
 - (id)serializeUnderlyingMessage;
 @property(copy, nonatomic) HKProfileIdentifier *sharedProfileIdentifier;
 @property(copy, nonatomic) HKProfileIdentifier *ownerProfileIdentifier;
-- (id)_codableProfileIdentifierWithProfileIdentifier:(id)arg1;
-- (id)_profileIdentifierWithCodableProfileIdentifier:(id)arg1;
 @property(copy, nonatomic) NSDate *displayNameModificationDate;
 @property(copy, nonatomic) NSString *displayLastName;
 @property(copy, nonatomic) NSString *displayFirstName;

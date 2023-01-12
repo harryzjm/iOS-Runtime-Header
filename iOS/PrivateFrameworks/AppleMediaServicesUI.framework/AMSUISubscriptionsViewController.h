@@ -13,6 +13,7 @@
 
 @interface AMSUISubscriptionsViewController : UIViewController <AMSBagConsumer>
 {
+    NSString *_subscriptionType;
     AMSUIWebViewController *_webViewController;
 }
 
@@ -22,6 +23,7 @@
 + (id)bagKeySet;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AMSUIWebViewController *webViewController; // @synthesize webViewController=_webViewController;
+@property(retain, nonatomic) NSString *subscriptionType; // @synthesize subscriptionType=_subscriptionType;
 - (void)_startLoading;
 - (void)_setupLayout;
 - (void)_setChildViewController:(id)arg1;

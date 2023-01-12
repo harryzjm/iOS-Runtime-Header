@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
+#import <Translation/FTBatchTranslationResponseDelegate-Protocol.h>
 #import <Translation/FTSpeechTranslationResponseDelegate-Protocol.h>
 
 @class FTBlazarService, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LTLoggingRequestHandler : NSObject <FTSpeechTranslationResponseDelegate>
+@interface _LTLoggingRequestHandler : NSObject <FTSpeechTranslationResponseDelegate, FTBatchTranslationResponseDelegate>
 {
     FTBlazarService *_mtAppService;
 }
 
 - (void).cxx_destruct;
+- (void)streamFailVerifyBatchTranslationStreamingResponse:(id)arg1;
+- (void)streamDidReceiveBatchTranslationStreamingResponse:(id)arg1;
 - (void)streamFailVerifySpeechTranslationStreamingResponse:(id)arg1;
 - (void)streamDidReceiveSpeechTranslationStreamingResponse:(id)arg1;
 - (void)startSafariFeedbackRequest:(id)arg1;
 - (void)startSafariLatencyLoggingRequest:(id)arg1;
+- (void)startSpeechSensesLoggingRequest:(id)arg1;
 - (void)startSpeechLIDRequest:(id)arg1;
 - (void)startLoggingRequest:(id)arg1;
 @property(readonly, nonatomic) FTBlazarService *mtAppService; // @synthesize mtAppService=_mtAppService;

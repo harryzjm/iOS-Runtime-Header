@@ -10,6 +10,12 @@
 {
 }
 
++ (int)pidFromAuditToken:(CDStruct_6ad76789)arg1;
++ (id)machoUUIDFromPID:(int)arg1;
++ (id)stringFromLinkQualityValue:(int)arg1;
++ (id)copyTrueClientIPAddressFromPreferences;
++ (void)postNotification:(id)arg1 value:(unsigned long long)arg2;
++ (long long)certificateDateIsValid:(struct __SecCertificate *)arg1;
 + (id)copyNetworkDescription:(id)arg1;
 + (id)copyDataHexString:(id)arg1;
 + (id)getHashForObject:(id)arg1;
@@ -33,6 +39,7 @@
 + (long long)interfaceTypeOfNWInterface:(id)arg1;
 + (long long)interfaceTypeOfInterface:(id)arg1;
 + (id)copyItemIdentifiersFromKeychainWithAccountName:(id)arg1;
++ (void)removeDataFromKeychainWithIdentifier:(id)arg1 accountName:(id)arg2;
 + (void)removeDataFromKeychainWithIdentifier:(id)arg1;
 + (void)saveDataToKeychain:(id)arg1 withIdentifier:(id)arg2 accountName:(id)arg3;
 + (id)copyDataFromKeychainWithIdentifier:(id)arg1 accountName:(id)arg2;

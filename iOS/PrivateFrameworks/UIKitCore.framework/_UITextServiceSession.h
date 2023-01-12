@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSString, UIInputResponderController, UIResponder, UIView, UIViewController;
+@class NSString, UIKeyboardSceneDelegate, UIResponder, UIView, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface _UITextServiceSession : NSObject <UIPopoverPresentationControllerDelegate>
@@ -17,11 +17,12 @@ __attribute__((visibility("hidden")))
     UIViewController *_modalViewController;
     UIView *_contextView;
     UIResponder *_pinnedResponder;
-    UIInputResponderController *_inputResponderController;
+    UIKeyboardSceneDelegate *_keyboardSceneDelegate;
     _Bool _dismissed;
     CDUnknownBlockType _dismissedHandler;
 }
 
++ (_Bool)textServiceIsDisplaying;
 + (id)textServiceSessionForType:(long long)arg1;
 + (id)showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 + (id)showServiceForType:(long long)arg1 withContext:(id)arg2;

@@ -10,22 +10,17 @@
 
 @interface _TtC7SwiftUI18ResolvedStyledText : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *string;
-    MISSING_TYPE *truncationMode;
-    MISSING_TYPE *lineLimit;
-    MISSING_TYPE *minScaleFactor;
-    MISSING_TYPE *lineSpacing;
-    MISSING_TYPE *lineHeightMultiple;
-    MISSING_TYPE *maximumLineHeight;
-    MISSING_TYPE *minimumLineHeight;
-    MISSING_TYPE *hyphenationFactor;
-    MISSING_TYPE *bodyHeadOutdent;
+    MISSING_TYPE *storage;
+    MISSING_TYPE *layoutProperties;
+    MISSING_TYPE *stylePadding;
     MISSING_TYPE *resolvableConfiguration;
-    MISSING_TYPE *pixelLength;
     MISSING_TYPE *cache;
-    MISSING_TYPE *dynamicRendering;
+    MISSING_TYPE *isArchived;
+    MISSING_TYPE *isCollapsible;
+    MISSING_TYPE *features;
+    MISSING_TYPE *layoutMargins;
     MISSING_TYPE *scaleFactorOverride;
-    MISSING_TYPE *$__lazy_storage_$_pixelMargins;
+    MISSING_TYPE *$__lazy_storage_$_drawingMargins;
 }
 
 @end

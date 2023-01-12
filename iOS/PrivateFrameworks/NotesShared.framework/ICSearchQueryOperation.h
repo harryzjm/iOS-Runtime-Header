@@ -79,12 +79,9 @@
 - (void)performPrefixAndFuzzyAndSubstringQueries;
 - (unsigned long long)countOfNonSpaceCharsInSearchString;
 - (id)jointQueryWithSuggestions:(id)arg1;
-- (id)suggestionsQueryStringFromSuggestions:(id)arg1;
 - (id)initWithQueryString:(id)arg1 rankingQueries:(id)arg2;
-- (id)initWithSearchString:(id)arg1 performNLSearch:(_Bool)arg2 performTopHitSearch:(_Bool)arg3 suggestions:(id)arg4;
-- (id)initWithUserInput:(id)arg1 performNLSearch:(_Bool)arg2 performTopHitSearch:(_Bool)arg3 modernResultsOnly:(_Bool)arg4;
 - (id)initWithQueryString:(id)arg1 rankingQueries:(id)arg2 performTopHitSearch:(_Bool)arg3 modernResultsOnly:(_Bool)arg4;
-- (id)initWithSearchString:(id)arg1 performNLSearch:(_Bool)arg2 performTopHitSearch:(_Bool)arg3 suggestions:(id)arg4 modernResultsOnly:(_Bool)arg5;
+- (id)initWithSearchString:(id)arg1 performNLSearch:(_Bool)arg2 performTopHitSearch:(_Bool)arg3 suggestions:(id)arg4 suggestionsQueryString:(id)arg5 modernResultsOnly:(_Bool)arg6;
 - (id)init;
 
 @end

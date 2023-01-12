@@ -7,17 +7,18 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol OS_os_log;
 
 @interface PGPhotoChangeToGraphChangeConverter : NSObject
 {
     NSMutableDictionary *_entityTranslatorByEntityName;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *entityTranslatorByEntityName; // @synthesize entityTranslatorByEntityName=_entityTranslatorByEntityName;
 - (id)graphChangesWithPhotoChange:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)_registerTranslatorsWithPhotoLibrary:(id)arg1;
-- (id)initWithPhotoLibrary:(id)arg1;
+- (id)initWithPhotoLibrary:(id)arg1 loggingConnection:(id)arg2;
 
 @end
 

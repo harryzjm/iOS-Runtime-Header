@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class CKDZoneGatekeeperImplementation;
 
-__attribute__((visibility("hidden")))
 @interface CKDZoneGatekeeper : NSObject
 {
-    NSMutableDictionary *_zoneIDsToGateHolders;
-    NSMutableArray *_waiterWrappers;
+    CKDZoneGatekeeperImplementation *_foreground;
+    CKDZoneGatekeeperImplementation *_background;
 }
 
++ (id)gatekeeperForContainerID:(id)arg1 accountID:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *waiterWrappers; // @synthesize waiterWrappers=_waiterWrappers;
-@property(retain, nonatomic) NSMutableDictionary *zoneIDsToGateHolders; // @synthesize zoneIDsToGateHolders=_zoneIDsToGateHolders;
+@property(retain, nonatomic) CKDZoneGatekeeperImplementation *background; // @synthesize background=_background;
+@property(retain, nonatomic) CKDZoneGatekeeperImplementation *foreground; // @synthesize foreground=_foreground;
 - (id)CKStatusReportArray;
 - (_Bool)hasStatusToReport;
 - (void)relinquishLocksForWaiter:(id)arg1 deferRelinquish:(_Bool)arg2;
-- (void)registerWaiter:(id)arg1 forZoneIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)init;
+- (void)registerWaiter:(id)arg1 forZoneIDs:(id)arg2 expectDelayBeforeRequestBegins:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)_init;
 
 @end
 

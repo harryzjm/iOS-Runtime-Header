@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)failedToApplyContactUpdateOfKind:(const char *)arg1 value:(id)arg2 property:(id)arg3 error:(id)arg4;
 - (void)deleteImageRecentsMetadataRequestFailed:(id)arg1;
 - (void)setContactImageDataZeroCropRect:(id)arg1 format:(const char *)arg2;
 - (void)setContactImageData:(id)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;

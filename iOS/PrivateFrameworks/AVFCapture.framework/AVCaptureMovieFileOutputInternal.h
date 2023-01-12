@@ -22,7 +22,12 @@ __attribute__((visibility("hidden")))
     _Bool sendLastVideoPreviewFrame;
     _Bool recording;
     _Bool paused;
-    NSString *bravoCameraSelectionBehaviorForRecording;
+    _Bool primaryConstituentDeviceSwitchingBehaviorForRecordingEnabled;
+    long long primaryConstituentDeviceSwitchingBehavior;
+    unsigned long long primaryConstituentDeviceRestrictedSwitchingBehaviorConditions;
+    _Bool deviceSupportsConstituentDeviceSwitching;
+    _Bool streamingDepthSupported;
+    _Bool depthCaptureEnabled;
 }
 
 - (void)dealloc;

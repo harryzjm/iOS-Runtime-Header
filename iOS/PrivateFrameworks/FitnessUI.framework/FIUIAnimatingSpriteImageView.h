@@ -17,6 +17,9 @@
     unsigned long long _framesPerSecond;
 }
 
++ (void)_resetLayer:(id)arg1;
++ (void)_resumeLayer:(id)arg1;
++ (void)_pauseLayer:(id)arg1;
 + (id)_createNewSpriteArray:(id)arg1 currentFrame:(unsigned long long)arg2 arraySize:(unsigned long long)arg3 interrupted:(_Bool)arg4;
 + (unsigned long long)_findSpriteIndex:(struct CGPoint)arg1 centerPoints:(id)arg2;
 - (void).cxx_destruct;
@@ -24,6 +27,9 @@
 @property(nonatomic) long long spriteColumnCount; // @synthesize spriteColumnCount=_spriteColumnCount;
 @property(nonatomic) long long spriteFrameCount; // @synthesize spriteFrameCount=_spriteFrameCount;
 @property(retain, nonatomic) UIImage *spriteImage; // @synthesize spriteImage=_spriteImage;
+- (void)_addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)resumeAnimating;
+- (void)pauseAnimating;
 - (void)animateOnce;
 - (_Bool)isAnimating;
 - (void)stopAnimatingFinishingCycle:(_Bool)arg1;

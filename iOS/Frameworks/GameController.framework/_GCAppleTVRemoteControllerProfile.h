@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <GameController/CoalescableMicroGamepad-Protocol.h>
 #import <GameController/DigitizerValueChangedDelegate-Protocol.h>
 
 @class GCControllerDirectionPad, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCAppleTVRemoteControllerProfile <DigitizerValueChangedDelegate>
+@interface _GCAppleTVRemoteControllerProfile <DigitizerValueChangedDelegate, CoalescableMicroGamepad>
 {
     double _windowX;
     double _windowY;
@@ -24,11 +25,12 @@ __attribute__((visibility("hidden")))
     int _candidateOrientation;
     NSDate *_candidateOrientationTimestamp;
     unsigned long long _owner;
+    long long _deviceType;
 }
 
-+ (int)updateDevice:(struct __IOHIDDevice *)arg1 withButtonDebounceTime:(unsigned char)arg2 withDelay:(_Bool)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long owner; // @synthesize owner=_owner;
+@property(nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 - (void)setAllowsRotation:(_Bool)arg1;
 - (id)name;
 - (id)initWithController:(id)arg1;

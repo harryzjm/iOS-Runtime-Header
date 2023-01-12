@@ -39,6 +39,7 @@
     NSString *_localizedConsentText;
 }
 
++ (id)profileWithData:(id)arg1 fileName:(id)arg2 allowEmptyPayload:(_Bool)arg3 outError:(id *)arg4;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 outError:(id *)arg3;
 + (id)profileWithData:(id)arg1 outError:(id *)arg2;
 + (id)stringForDeviceType:(unsigned long long)arg1;
@@ -60,9 +61,10 @@
 + (id)profileWithData:(id)arg1 options:(id)arg2 fileName:(id)arg3 allowEmptyPayload:(_Bool)arg4 outError:(id *)arg5;
 + (id)missingFieldErrorWithField:(id)arg1;
 + (id)badFieldTypeErrorWithField:(id)arg1;
++ (id)_unsupportedProfileTypeError;
++ (id)_unsupportedEnrollmentServiceProfileError;
 + (id)_malformedProfileError;
 + (id)profileWithData:(id)arg1 options:(id)arg2 outError:(id *)arg3;
-+ (id)profileWithData:(id)arg1 fileName:(id)arg2 allowEmptyPayload:(_Bool)arg3 outError:(id *)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *localizedConsentText; // @synthesize localizedConsentText=_localizedConsentText;
 @property(nonatomic) _Bool mustInstallNonInteractively; // @synthesize mustInstallNonInteractively=_mustInstallNonInteractively;
@@ -82,6 +84,8 @@
 @property(readonly, retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, retain, nonatomic) NSString *profileDescription; // @synthesize profileDescription=_profileDescription;
+- (id)payloadsOfKindOfClass:(Class)arg1;
+@property(readonly, nonatomic) _Bool isSupervisionProfile;
 @property(readonly, nonatomic) NSString *managingProfileIdentifier;
 @property(readonly, nonatomic) _Bool isManagedByMDM;
 - (void)replacePayloadWithUUID:(id)arg1 withPayload:(id)arg2;
@@ -113,15 +117,18 @@
 - (struct __SecCertificate *)copyCertificateFromPayloadWithUUID:(id)arg1;
 - (id)payloadWithUUID:(id)arg1;
 @property(readonly, retain, nonatomic) NSArray *managedPayloads;
+@property(readonly, retain, nonatomic) NSArray *payloadsContentInfo;
 @property(readonly, retain, nonatomic) NSArray *payloads;
 - (id)installationWarningsIncludeUnsignedProfileWarning:(_Bool)arg1;
 @property(readonly, retain, nonatomic) NSArray *installationWarnings;
 @property(retain, nonatomic) NSArray *signerCertificates;
 @property(readonly, nonatomic) NSString *signerSummary;
+@property(readonly, nonatomic) NSArray *signerCertificatesData;
 @property(readonly, nonatomic) struct __SecCertificate *signerCertificate;
 @property(readonly, nonatomic) int trustLevel;
 @property(retain, nonatomic) NSString *removalPasscode; // @synthesize removalPasscode=_removalPasscode;
 - (_Bool)isUserEnrollmentProfile;
+- (id)loggingID;
 - (id)signatureVersion;
 - (unsigned long long)countOfPayloadsOfClass:(Class)arg1;
 - (_Bool)containsOnlyPayloadsOfClasses:(id)arg1;

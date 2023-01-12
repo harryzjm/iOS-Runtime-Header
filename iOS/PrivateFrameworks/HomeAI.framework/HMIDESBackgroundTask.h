@@ -16,6 +16,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)scheduleTask:(id)arg1;
 + (Class)taskRunnerClass;
 + (id)logCategory;
 - (void).cxx_destruct;

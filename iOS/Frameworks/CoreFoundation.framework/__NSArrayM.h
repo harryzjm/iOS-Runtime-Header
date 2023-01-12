@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)removeObjectAtIndex:(unsigned long long)arg1;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_mutate;
+- (id)allObjects;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)count;

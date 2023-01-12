@@ -10,8 +10,8 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMDaemonInterfaceXPC-Protocol.h>
 
-@class EDAccountRepository, EDActivityRegistry, EDClientResumer, EDClientState, EDDaemonInterfaceFactory, EDFetchController, EDInteractionLogger, EDMailboxRepository, EDMessageRepository, EDOutgoingMessageRepository, EDSearchableIndex, NSString, NSXPCConnection;
-@protocol EMVIPManagerInterface;
+@class EDAccountRepository, EDActivityRegistry, EDClientResumer, EDClientState, EDDaemonInterfaceFactory, EDDiagnosticInfoGatherer, EDFetchController, EDInteractionLogger, EDMailboxRepository, EDMessageRepository, EDOutgoingMessageRepository, EDSearchableIndex, NSString, NSXPCConnection;
+@protocol EDServerRemoteClientsProvider, EMVIPManagerInterface;
 
 @interface EDRemoteClient : NSObject <EFLoggable, EMDaemonInterfaceXPC, EDReconciliationQueryProvider>
 {
@@ -26,24 +26,28 @@
     EDActivityRegistry *_activityRegistry;
     NSXPCConnection *_clientConnection;
     EDDaemonInterfaceFactory *_daemonInterfaceFactory;
+    id <EDServerRemoteClientsProvider> _serverRemoteClientsProvider;
     EDClientState *_clientState;
     EDMessageRepository *_messageRepository;
     EDClientResumer *_clientResumer;
+    EDDiagnosticInfoGatherer *_diagnosticInfoGatherer;
 }
 
 + (id)exportedInterface;
 + (id)log;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) EDDiagnosticInfoGatherer *diagnosticInfoGatherer; // @synthesize diagnosticInfoGatherer=_diagnosticInfoGatherer;
 @property(readonly, nonatomic) EDClientResumer *clientResumer; // @synthesize clientResumer=_clientResumer;
 @property(readonly, nonatomic) EDMessageRepository *messageRepository; // @synthesize messageRepository=_messageRepository;
 @property(readonly, nonatomic) EDClientState *clientState; // @synthesize clientState=_clientState;
+@property(readonly, nonatomic) __weak id <EDServerRemoteClientsProvider> serverRemoteClientsProvider; // @synthesize serverRemoteClientsProvider=_serverRemoteClientsProvider;
 @property(readonly, nonatomic) EDDaemonInterfaceFactory *daemonInterfaceFactory; // @synthesize daemonInterfaceFactory=_daemonInterfaceFactory;
 @property(readonly, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
 - (id)threadReconciliationQueries;
 - (id)messageReconciliationQueries;
 - (void)setAllowsBackgroundResume:(_Bool)arg1;
 - (void)launchForEarlyRecovery:(CDUnknownBlockType)arg1;
-- (void)debugStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getDiagnosticInfoGathererInterface:(CDUnknownBlockType)arg1;
 - (void)getActivityRegistryInterface:(CDUnknownBlockType)arg1;
 - (void)getVIPManagerInterface:(CDUnknownBlockType)arg1;
 - (void)getInteractionLoggerInterface:(CDUnknownBlockType)arg1;
@@ -64,7 +68,7 @@
 @property(readonly, nonatomic) EDAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
 - (void)test_tearDown;
 - (void)dealloc;
-- (id)initWithConnection:(id)arg1 daemonInterfaceFactory:(id)arg2;
+- (id)initWithConnection:(id)arg1 daemonInterfaceFactory:(id)arg2 serverRemoteClientsProvider:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

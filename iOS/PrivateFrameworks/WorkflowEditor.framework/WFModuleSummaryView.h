@@ -10,8 +10,8 @@
 #import <WorkflowEditor/WFSlotTemplateViewDelegate-Protocol.h>
 #import <WorkflowEditor/WFVariableDelegate-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSMutableDictionary, NSSet, NSString, UIColor, UIFont, WFModuleSummaryEditor, WFModuleSummaryTemplateBuilder, WFSlotIdentifier, WFSlotTemplateView, WFVariable;
-@protocol WFModuleSummaryViewDelegate, WFVariableProvider, WFVariableUIDelegate;
+@class NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSSet, NSString, UIColor, UIFont, WFModuleSummaryEditor, WFModuleSummaryTemplateBuilder, WFSlotIdentifier, WFSlotTemplateView, WFVariable;
+@protocol WFEditorAuxiliaryViewPresenter, WFModuleSummaryViewDelegate, WFVariableProvider, WFVariableUIDelegate;
 
 @interface WFModuleSummaryView : UIView <WFSlotTemplateViewDelegate, WFModuleSummaryEditorDelegate, WFVariableDelegate>
 {
@@ -20,10 +20,12 @@
     NSSet *_parameters;
     NSSet *_editableParameters;
     NSDictionary *_parameterStates;
+    NSArray *_exclusionRects;
     CDUnknownBlockType _updateBlock;
     id <WFModuleSummaryViewDelegate> _delegate;
     id <WFVariableProvider> _variableProvider;
     id <WFVariableUIDelegate> _variableUIDelegate;
+    id <WFEditorAuxiliaryViewPresenter> _auxiliaryViewPresenter;
     WFSlotTemplateView *_templateView;
     NSMutableDictionary *_mutableStagedParameterStates;
     WFModuleSummaryEditor *_currentEditor;
@@ -45,15 +47,18 @@
 @property(retain, nonatomic) WFModuleSummaryEditor *currentEditor; // @synthesize currentEditor=_currentEditor;
 @property(retain, nonatomic) NSMutableDictionary *mutableStagedParameterStates; // @synthesize mutableStagedParameterStates=_mutableStagedParameterStates;
 @property(nonatomic) __weak WFSlotTemplateView *templateView; // @synthesize templateView=_templateView;
+@property(nonatomic) __weak id <WFEditorAuxiliaryViewPresenter> auxiliaryViewPresenter; // @synthesize auxiliaryViewPresenter=_auxiliaryViewPresenter;
 @property(nonatomic) __weak id <WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
 @property(nonatomic) __weak id <WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
 @property(nonatomic) __weak id <WFModuleSummaryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool processing; // @synthesize processing=_processing;
 @property(copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
+@property(copy, nonatomic) NSArray *exclusionRects; // @synthesize exclusionRects=_exclusionRects;
 @property(readonly, copy, nonatomic) NSDictionary *parameterStates; // @synthesize parameterStates=_parameterStates;
 @property(readonly, copy, nonatomic) NSSet *editableParameters; // @synthesize editableParameters=_editableParameters;
 @property(readonly, copy, nonatomic) NSSet *parameters; // @synthesize parameters=_parameters;
 @property(readonly, copy, nonatomic) NSString *summaryFormatString; // @synthesize summaryFormatString=_summaryFormatString;
+- (double)heightForWidth:(double)arg1;
 - (void)variableDidChange:(id)arg1;
 - (void)updateVariableAttachmentAppearanceInContents:(id)arg1;
 - (void)updateVariableObservationsWithContents:(id)arg1;
@@ -68,11 +73,12 @@
 - (void)destroyCurrentEditor;
 - (void)removeElementFromArrayAtIndex:(unsigned long long)arg1 forParameterKey:(id)arg2;
 - (id)addElementToArrayForParameterKey:(id)arg1;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceRect:(struct CGRect)arg2 fromLongPressGesture:(_Bool)arg3 fromTextAttachment:(id)arg4;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceRect:(struct CGRect)arg2 fromContextMenuGesture:(_Bool)arg3 fromTextAttachment:(id)arg4;
 - (Class)editorClassForParameter:(id)arg1;
 - (id)currentParameterStateForParameterKey:(id)arg1;
 - (id)parameterForKey:(id)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *stagedParameterStates;
+- (void)slotTemplateView:(id)arg1 disclosureArrowDidChange:(_Bool)arg2;
 - (void)slotTemplateViewDidInvalidateSize:(id)arg1;
 - (void)slotTemplateView:(id)arg1 deletePressedOnUnpopulatedSlotWithIdentifier:(id)arg2;
 - (void)slotTemplateView:(id)arg1 didEndTypingInSlotWithIdentifier:(id)arg2;
@@ -84,19 +90,25 @@
 - (void)slotTemplateView:(id)arg1 willBeginTypingInSlotWithIdentifier:(id)arg2 usingTextEntry:(id)arg3 allowMultipleLines:(_Bool *)arg4;
 - (void)slotTemplateView:(id)arg1 didTapTextAttachment:(id)arg2 inSlotWithIdentifier:(id)arg3;
 - (_Bool)slotTemplateView:(id)arg1 shouldTapTextAttachment:(id)arg2 inSlotWithIdentifier:(id)arg3;
-- (void)slotTemplateView:(id)arg1 didLongPressSlotWithIdentifier:(id)arg2 sourceRect:(struct CGRect)arg3 textAttachmentToSelect:(id)arg4;
-- (_Bool)slotTemplateView:(id)arg1 shouldLongPressSlotWithIdentifier:(id)arg2;
-- (void)slotTemplateView:(id)arg1 didDeselectSlotWithIdentifier:(id)arg2;
+- (void)slotTemplateView:(id)arg1 didActivateContextMenuForSlotWithIdentifier:(id)arg2 sourceRect:(struct CGRect)arg3 textAttachmentToSelect:(id)arg4;
+- (_Bool)slotTemplateView:(id)arg1 shouldActivateContextMenuForSlotWithIdentifier:(id)arg2;
+- (void)slotTemplateView:(id)arg1 didDeselectSlotWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)slotTemplateView:(id)arg1 didSelectSlotWithIdentifier:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (void)tintColorDidChange;
 - (void)setDisabledSlotTitleColor:(id)arg1 backgroundColor:(id)arg2 animated:(_Bool)arg3;
 @property(readonly, nonatomic) UIColor *disabledSlotBackgroundColor;
 @property(readonly, nonatomic) UIColor *disabledSlotTitleColor;
+- (void)updateExclusionRectsWithBounds:(struct CGRect)arg1;
+@property(nonatomic) _Bool disclosureArrowIsOpen;
+@property(nonatomic) _Bool showsDisclosureArrow;
 @property(nonatomic) _Bool extendSlotBackgroundOffEdges;
 @property(nonatomic) long long textAlignment;
 @property(nonatomic) double horizontalPadding;
 @property(retain, nonatomic) UIFont *summaryUnpopulatedFont;
 @property(retain, nonatomic) UIFont *summaryFont;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setSummaryFormatString:(id)arg1 withParameters:(id)arg2 editableParameters:(id)arg3 parameterStates:(id)arg4;
 - (void)updateTemplateContentsAnimated:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

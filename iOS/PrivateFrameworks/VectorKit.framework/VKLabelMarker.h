@@ -8,10 +8,10 @@
 
 @interface VKLabelMarker
 {
-    shared_ptr_2d33c5e4 _labelMarker;
+    struct shared_ptr<md::LabelMarker> _labelMarker;
 }
 
-+ (id)markerWithLabelMarker:(const shared_ptr_2d33c5e4 *)arg1;
++ (id)markerWithLabelMarker:(const void *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)parentClusterLabelMarker;
@@ -43,7 +43,6 @@
 - (id)routeInfo;
 - (id)trafficCamera;
 - (id)incident;
-- (id)featureTile;
 - (int)featureType;
 - (_Bool)positionOfInterest:(CDStruct_c3b9c2ee *)arg1 zoom:(float *)arg2;
 - (unsigned char)venueComponentType;
@@ -81,6 +80,10 @@
 - (struct CGRect)_calloutAnchorRect:(_Bool)arg1;
 - (id)mapRegion;
 - (Box_3d7e3c2c)_bounds;
+- (float)buildingFaceAzimuth;
+- (_Bool)hasBuildingFaceAzimuth;
+- (float)buildingHeight;
+- (CDStruct_071ac149)coordinate3D;
 - (CDStruct_c3b9c2ee)coordinate;
 @property(readonly, nonatomic) NSArray *transitSystems;
 @property(readonly, nonatomic) NSArray *iconImageKeys;
@@ -88,8 +91,8 @@
 - (id)locale;
 - (id)subtext;
 - (id)text;
-- (const shared_ptr_2d33c5e4 *)labelMarkerImpl;
-- (id)initWithLabelMarkerPtr:(const shared_ptr_2d33c5e4 *)arg1;
+- (const void *)labelMarkerImpl;
+- (id)initWithLabelMarkerPtr:(const void *)arg1;
 
 @end
 

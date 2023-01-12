@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isWritable;
 - (id)key;
 - (_Bool)setABValue:(void *)arg1 onABSource:(void *)arg2 error:(struct __CFError **)arg3;
+- (void *)ABValueForABSource:(void *)arg1;
 - (id)CNValueFromABValue:(void *)arg1;
 - (void *)ABValueFromCNValue:(id)arg1;
 - (int)abPropertyID;

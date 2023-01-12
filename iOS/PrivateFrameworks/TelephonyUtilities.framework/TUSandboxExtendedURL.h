@@ -10,9 +10,9 @@
 
 @class NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface TUSandboxExtendedURL : NSObject <NSSecureCoding>
 {
+    int _pid;
     NSString *_sandboxExtensionClass;
     NSURL *_URL;
     NSString *_sandboxExtensionToken;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *sandboxExtensionToken; // @synthesize sandboxExtensionToken=_sandboxExtensionToken;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(copy, nonatomic) NSString *sandboxExtensionClass; // @synthesize sandboxExtensionClass=_sandboxExtensionClass;
+@property(nonatomic) int pid; // @synthesize pid=_pid;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;

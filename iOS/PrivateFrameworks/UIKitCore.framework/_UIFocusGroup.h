@@ -6,32 +6,60 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol UIFocusEnvironment;
+@class NSArray, NSMutableArray, NSString, UIView;
+@protocol UICoordinateSpace, UIFocusItem;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusGroup : NSObject
 {
-    _UIFocusGroup *_parentGroup;
-    id <UIFocusEnvironment> _rootEnvironment;
+    struct {
+        unsigned int itemOrderValid:1;
+        unsigned int childGroupOrderValid:1;
+        unsigned int primaryItemValid:1;
+        unsigned int primaryRectValid:1;
+    } _flags;
+    NSMutableArray *_childGroups;
+    NSMutableArray *_items;
+    id <UIFocusItem> _primaryItem;
     NSString *_identifier;
+    _UIFocusGroup *_parentGroup;
+    id <UICoordinateSpace> _coordinateSpace;
+    UIView *_owningView;
+    struct CGRect _primaryRect;
+    struct CGRect _boundingBox;
 }
 
-+ (id)invalidGroup;
-+ (id)nullGroup;
++ (id)nullGroupWithCoordinateSpace:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic, getter=_identifier) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) __weak id <UIFocusEnvironment> rootEnvironment; // @synthesize rootEnvironment=_rootEnvironment;
+@property(readonly, nonatomic, getter=_owningView) UIView *owningView; // @synthesize owningView=_owningView;
+@property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
+@property(readonly, nonatomic) struct CGRect boundingBox; // @synthesize boundingBox=_boundingBox;
+@property(readonly, nonatomic) __weak _UIFocusGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)childGroupWithIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
+- (id)debugDescription;
 - (id)description;
-- (id)_commonAncestorWithGroup:(id)arg1;
 - (_Bool)isEqualToFocusGroup:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-@property(readonly, nonatomic) _UIFocusGroup *parentGroup;
-- (id)childGroupWithIdentifier:(id)arg1 rootEnvironment:(id)arg2;
-- (id)childGroupWithIdentifier:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 rootEnvironment:(id)arg2;
-- (id)initWithIdentifier:(id)arg1;
+- (void)_validatePrimaryRectIfNeccessary;
+- (void)_invalidatePrimaryRect;
+- (void)_validatePrimaryItemIfNecessary;
+- (void)_invalidatePrimaryItem;
+- (void)_validateChildGroupOrderIfNecessary;
+- (void)_invalidateChildGroupOrder;
+- (void)_validateItemOrderIfNecessary;
+- (void)_invalidateItemOrder;
+@property(readonly, nonatomic) struct CGRect primaryRect; // @synthesize primaryRect=_primaryRect;
+@property(readonly, nonatomic) id <UIFocusItem> primaryItem; // @synthesize primaryItem=_primaryItem;
+@property(readonly, nonatomic) NSArray *items;
+@property(readonly, nonatomic) NSArray *childGroups;
+- (void)_updateWithEnvironment:(id)arg1;
+- (void)_insertItem:(id)arg1;
+- (void)_insertChildGroup:(id)arg1;
+- (id)_deepCopyWithNewIdentifierToGroupMap:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 parentGroup:(id)arg2 coordinateSpace:(id)arg3;
 
 @end
 

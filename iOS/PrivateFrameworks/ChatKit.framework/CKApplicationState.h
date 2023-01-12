@@ -11,6 +11,7 @@
 }
 
 + (_Bool)_isUIExtension;
++ (_Bool)isWindowForegroundActive:(id)arg1;
 + (void)setActive:(_Bool)arg1;
 + (_Bool)isResizing;
 + (_Bool)isBackground;

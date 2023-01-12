@@ -10,7 +10,6 @@
 
 @class CKDPRecordIdentifier, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordDeleteRequest : PBRequest <NSCopying>
 {
     NSString *_etag;

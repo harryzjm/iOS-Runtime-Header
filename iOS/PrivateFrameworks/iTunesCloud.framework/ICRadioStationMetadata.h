@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *playbackAuthorizationToken;
 @property(readonly, copy, nonatomic) ICRadioStationProviderResource *providerResource;
 @property(readonly, nonatomic, getter=isSubscriptionRequired) _Bool subscriptionRequired;
 @property(readonly, nonatomic) long long subtype;

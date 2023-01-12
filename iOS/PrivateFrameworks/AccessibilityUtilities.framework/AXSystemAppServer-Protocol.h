@@ -10,9 +10,14 @@
 
 @protocol AXSystemAppServer <NSObject>
 + (id <AXSystemAppServer>)server;
+- (_Bool)showControlCenter:(_Bool)arg1;
+- (_Bool)isLockScreenVisible;
+- (_Bool)isScreenshotWindowVisible;
+- (_Bool)isPasscodeLockVisible;
 - (void)wakeUpDeviceIfNecessary;
 - (_Bool)isSystemSleeping;
 - (_Bool)isNonExclusiveSystemUIFocusableIncludingPIPWindow:(_Bool)arg1;
+- (void)dismissShelfSwitcher;
 - (void)rebootDevice;
 - (_Bool)isMediaPlaying;
 - (_Bool)isReceivingAirPlay;
@@ -24,6 +29,7 @@
 - (_Bool)isControlCenterVisible;
 - (_Bool)isNotificationCenterVisible;
 - (_Bool)isDockVisible;
+- (_Bool)isShelfSwitcherVisible;
 - (_Bool)isAppSwitcherVisible;
 - (_Bool)isSiriVisible;
 - (_Bool)dismissSiri;
@@ -31,9 +37,5 @@
 - (long long)activeInterfaceOrientation;
 - (void)pid:(void (^)(int))arg1;
 - (int)pid;
-
-@optional
-- (_Bool)isScreenshotWindowVisible;
-- (_Bool)isPasscodeLockVisible;
 @end
 

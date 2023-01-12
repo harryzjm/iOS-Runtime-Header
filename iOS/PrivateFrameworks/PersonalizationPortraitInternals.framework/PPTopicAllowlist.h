@@ -7,22 +7,22 @@
 #import <objc/NSObject.h>
 
 @class PPTrialWrapper, _PASCFBurstTrie;
+@protocol TRINotificationToken;
 
 @interface PPTopicAllowlist : NSObject
 {
     _PASCFBurstTrie *_allowlistTrie;
     PPTrialWrapper *_trialWrapper;
+    id <TRINotificationToken> _trialToken;
 }
 
-+ (id)_keyFor:(id)arg1 of:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)filterTopicDictionary:(id)arg1 clientProcess:(id)arg2;
 - (id)indicesOfAllowedTopicsInScoredTopicArray:(id)arg1 clientProcess:(id)arg2;
 - (id)indicesOfAllowedTopicsInRecordArray:(id)arg1 clientProcess:(id)arg2;
-- (_Bool)_topicIsAllowedForClientProcess:(id)arg1 topic:(id)arg2;
 - (_Bool)shouldBypassAllowlist:(id)arg1;
-- (void)_loadAssetData;
+- (void)dealloc;
 - (id)initWithTrialWrapper:(id)arg1;
 
 @end

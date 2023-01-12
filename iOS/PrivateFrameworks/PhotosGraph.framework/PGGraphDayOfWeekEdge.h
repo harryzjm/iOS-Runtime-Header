@@ -10,7 +10,7 @@
 
 - (unsigned short)domain;
 - (id)label;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
 - (id)initFromDateNode:(id)arg1 toDayOfWeekNode:(id)arg2;
 
 @end

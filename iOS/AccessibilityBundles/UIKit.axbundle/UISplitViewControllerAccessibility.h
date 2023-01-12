@@ -15,7 +15,6 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setViewControllers:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)_axModalizeViewControllerViews;
 
 @end
 

@@ -68,7 +68,7 @@ struct processor_set_load_info {
     int _field4;
 };
 
-struct rusage_info_v4 {
+struct rusage_info_v5 {
     unsigned char _field1[16];
     unsigned long long _field2;
     unsigned long long _field3;
@@ -105,6 +105,7 @@ struct rusage_info_v4 {
     unsigned long long _field34;
     unsigned long long _field35;
     unsigned long long _field36;
+    unsigned long long _field37;
 };
 
 struct vm_statistics64 {

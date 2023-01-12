@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+@class NSArray, NSSet;
 @protocol REMChangeTrackingClientIdentifying, REMDaemonController;
 
 @interface REMChangeTracking : NSObject
 {
     id <REMChangeTrackingClientIdentifying> _changeTrackingClientID;
     id <REMDaemonController> _daemonController;
-    NSString *_entityName;
+    NSArray *_entityNames;
     unsigned long long _transactionFetchLimit;
     NSSet *_transactionAuthorKeysToExclude;
 }
@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *transactionAuthorKeysToExclude; // @synthesize transactionAuthorKeysToExclude=_transactionAuthorKeysToExclude;
 @property(nonatomic) unsigned long long transactionFetchLimit; // @synthesize transactionFetchLimit=_transactionFetchLimit;
-@property(retain, nonatomic) NSString *entityName; // @synthesize entityName=_entityName;
+@property(retain, nonatomic) NSArray *entityNames; // @synthesize entityNames=_entityNames;
 @property(readonly, nonatomic) id <REMDaemonController> daemonController; // @synthesize daemonController=_daemonController;
 @property(readonly, nonatomic) id <REMChangeTrackingClientIdentifying> changeTrackingClientID; // @synthesize changeTrackingClientID=_changeTrackingClientID;
 - (void)_performChangeTrackingWithReason:(id)arg1 block:(CDUnknownBlockType)arg2 xpcErrorHandler:(CDUnknownBlockType)arg3;

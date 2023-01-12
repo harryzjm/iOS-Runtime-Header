@@ -19,9 +19,12 @@
     NSUUID *_handle;
 }
 
++ (_Bool)disableLogging_4watchdogd;
++ (void)setDisableLogging_4watchdogd:(_Bool)arg1;
 + (id)copyJobWithPid:(int)arg1;
 + (id)submitExtension:(id)arg1 overlay:(id)arg2 domain:(id)arg3 error:(id *)arg4;
 + (id)copyJobWithLabel:(id)arg1 domain:(id)arg2;
++ (id)copyJobWithHandle:(id)arg1;
 + (id)copyJobsManagedBy:(id)arg1 error:(id *)arg2;
 + (int)_monitorNormalizeError:(int)arg1;
 + (id)jobInfoFromMessage:(id)arg1;
@@ -40,7 +43,11 @@
 - (void)monitorOnQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (_Bool)remove:(id *)arg1;
 - (id)start:(id *)arg1;
+- (_Bool)submit:(id *)arg1;
 - (id)submitAndStart:(id *)arg1;
+- (void)_startMonitoringAfterSubmit:(id)arg1;
+- (void)_populateHandle:(id)arg1;
+- (id)_newSubmitRequest;
 
 @end
 

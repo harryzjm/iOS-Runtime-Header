@@ -15,9 +15,9 @@
 }
 
 + (id)dataWithGeometry:(id)arg1 texcoordGenerator:(id)arg2;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCH3DTexCoordGeneration *texcoordGenerator; // @synthesize texcoordGenerator=_texcoordGenerator;
 @property(readonly, retain, nonatomic) TSCH3DGeometry *geometry; // @synthesize geometry=_geometry;
-- (void)dealloc;
 - (id)initWithGeometry:(id)arg1 texcoordGenerator:(id)arg2;
 
 @end

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)readFrom:(id)arg1 styleSheet:(id)arg2;
-+ (void)initializeStyles:(id)arg1 with:(struct WrdStyleSheet *)arg2 reader:(id)arg3;
++ (void)initializeStyles:(id)arg1 with:(void *)arg2 reader:(id)arg3;
 
 @end
 

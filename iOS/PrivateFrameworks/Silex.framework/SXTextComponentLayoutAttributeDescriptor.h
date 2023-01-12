@@ -12,10 +12,7 @@
     struct _NSRange _range;
 }
 
-+ (id)descriptorWithFromLayoutAttribute:(int)arg1 toLayoutAttribute:(int)arg2 ignoreMargin:(_Bool)arg3 withRange:(struct _NSRange)arg4;
 - (void).cxx_destruct;
-@property(retain, nonatomic) SXTextExclusionPath *resultingExclusionPath; // @synthesize resultingExclusionPath=_resultingExclusionPath;
-@property(nonatomic) struct _NSRange range; // @synthesize range=_range;
 
 @end
 

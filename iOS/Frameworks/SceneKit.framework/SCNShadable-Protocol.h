@@ -6,11 +6,12 @@
 
 #import <SceneKit/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, SCNProgram;
+@class NSDictionary, NSNumber, NSString, SCNProgram;
 
 @protocol SCNShadable <NSObject>
 
 @optional
+@property(retain, nonatomic) NSNumber *minimumLanguageVersion;
 @property(copy, nonatomic) NSDictionary *shaderModifiers;
 @property(retain, nonatomic) SCNProgram *program;
 - (void)handleUnbindingOfSymbol:(NSString *)arg1 usingBlock:(void (^)(unsigned int, unsigned int, SCNNode *, SCNRenderer *))arg2;

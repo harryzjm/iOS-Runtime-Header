@@ -7,26 +7,33 @@
 #import <objc/NSObject.h>
 
 @class TSCHChartInfo, TSCHChartModel;
+@protocol TSWPStyleProviding;
 
 @interface TSCHChartLayout : NSObject
 {
-    _Bool mNeedsLayout;
-    TSCHChartInfo *mChartInfo;
-    CDStruct_b1c75024 mLayoutSettings;
+    _Bool _needsLayout;
+    TSCHChartInfo *_chartInfo;
+    id <TSWPStyleProviding> _styleProvidingSource;
+    CDStruct_c48db077 _layoutSettings;
     struct CGRect _legendModelGeometryFrame;
 }
 
 + (id)propertiesThatInvalidateLayout;
-+ (struct CGSize)legendSizeForChartInfo:(id)arg1 initialWidth:(double)arg2;
 + (id)chartLayoutWithChartInfo:(id)arg1;
++ (struct CGSize)legendSizeForChartInfo:(id)arg1 initialWidth:(double)arg2;
++ (struct CGRect)outerRectForRects:(id)arg1;
++ (struct CGRect)normalizeRect:(struct CGRect)arg1 outerRect:(struct CGRect)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool needsLayout; // @synthesize needsLayout=_needsLayout;
+@property CDStruct_c48db077 layoutSettings; // @synthesize layoutSettings=_layoutSettings;
 @property struct CGRect legendModelGeometryFrame; // @synthesize legendModelGeometryFrame=_legendModelGeometryFrame;
-@property CDStruct_b1c75024 layoutSettings; // @synthesize layoutSettings=mLayoutSettings;
-@property(readonly) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
-- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+@property(nonatomic) __weak id <TSWPStyleProviding> styleProvidingSource; // @synthesize styleProvidingSource=_styleProvidingSource;
+@property(retain, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=_chartInfo;
+- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
 - (id)hitChartElements:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (void)setForceLegendAtBottom:(_Bool)arg1;
 - (void)setForceTitleAtTop:(_Bool)arg1;
 - (void)setForceOmitLabelPlacement:(_Bool)arg1;
 - (void)setForceOmitLegend:(_Bool)arg1;
@@ -45,7 +52,7 @@
 - (void)endDynamicOperation;
 - (void)beginDynamicOperation;
 - (void)invalidateCachedOriginRelativeToChartAreaFrame;
-- (_Bool)isValid;
+@property(readonly, nonatomic) _Bool isValid;
 - (void)invalidate;
 - (void)processChanges:(id)arg1;
 - (_Bool)layoutFrameShouldEncloseInfoGeometry;
@@ -61,7 +68,7 @@
 @property(readonly) struct CGRect chartAreaFrame;
 @property(readonly) struct CGRect outerShadowFrame;
 @property(readonly) struct CGRect outerLayoutFrame;
-@property(readonly) TSCHChartModel *model;
+@property(readonly, nonatomic) TSCHChartModel *model;
 - (id)initWithChartInfo:(id)arg1;
 
 @end

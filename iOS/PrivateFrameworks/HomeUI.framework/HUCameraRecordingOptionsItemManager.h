@@ -13,9 +13,11 @@
 @interface HUCameraRecordingOptionsItemManager : HFItemManager <HUCameraRecordingSettingsModuleDelegate>
 {
     HUCameraRecordingSettingsModule *_cameraRecordingItemModule;
+    unsigned long long _displayStyle;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property(retain, nonatomic) HUCameraRecordingSettingsModule *cameraRecordingItemModule; // @synthesize cameraRecordingItemModule=_cameraRecordingItemModule;
 - (void)cameraRecordingSettingsModule:(id)arg1 didUpdateItem:(id)arg2;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;

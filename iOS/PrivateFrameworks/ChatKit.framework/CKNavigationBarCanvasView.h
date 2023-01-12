@@ -8,7 +8,7 @@
 
 #import <ChatKit/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CKNavigationButtonView, NSString, UIButton, UIColor, UIContextMenuInteraction, UIImageView, UIMenu;
+@class CKNavigationButtonView, NSMutableArray, NSString, UIButton, UIColor, UIContextMenuInteraction, UIImageView, UIMenu;
 @protocol CKNavigationBarCanvasViewDelegate;
 
 @interface CKNavigationBarCanvasView : UIView <UIContextMenuInteractionDelegate>
@@ -18,6 +18,7 @@
     _Bool _isBusinessChat;
     _Bool _videoEnabled;
     _Bool _audioEnabled;
+    _Bool _expanseEnabled;
     _Bool _shouldAnimateAvatarLayoutChanges;
     _Bool _isInEditingMode;
     _Bool _isShowingControls;
@@ -36,6 +37,7 @@
     CKNavigationButtonView *_buttonViewFaceTimeVideo;
     CKNavigationButtonView *_buttonViewInfo;
     UIMenu *_titleViewContextMenu;
+    NSMutableArray *_buttonsToDisplay;
     UIImageView *_statusIndicatorImageView;
     UIButton *_invisibleContextMenuButton;
     UIContextMenuInteraction *_secondaryTitleInteraction;
@@ -58,6 +60,7 @@
 @property(nonatomic) _Bool isAnimatingAvatars; // @synthesize isAnimatingAvatars=_isAnimatingAvatars;
 @property(nonatomic) _Bool isTearingDownButtonViews; // @synthesize isTearingDownButtonViews=_isTearingDownButtonViews;
 @property(retain, nonatomic) UIImageView *statusIndicatorImageView; // @synthesize statusIndicatorImageView=_statusIndicatorImageView;
+@property(retain, nonatomic) NSMutableArray *buttonsToDisplay; // @synthesize buttonsToDisplay=_buttonsToDisplay;
 @property(retain, nonatomic) UIMenu *titleViewContextMenu; // @synthesize titleViewContextMenu=_titleViewContextMenu;
 @property(retain, nonatomic) CKNavigationButtonView *buttonViewInfo; // @synthesize buttonViewInfo=_buttonViewInfo;
 @property(retain, nonatomic) CKNavigationButtonView *buttonViewFaceTimeVideo; // @synthesize buttonViewFaceTimeVideo=_buttonViewFaceTimeVideo;
@@ -68,6 +71,7 @@
 @property(nonatomic) _Bool isShowingControls; // @synthesize isShowingControls=_isShowingControls;
 @property(nonatomic) _Bool isInEditingMode; // @synthesize isInEditingMode=_isInEditingMode;
 @property(nonatomic) _Bool shouldAnimateAvatarLayoutChanges; // @synthesize shouldAnimateAvatarLayoutChanges=_shouldAnimateAvatarLayoutChanges;
+@property(nonatomic) _Bool expanseEnabled; // @synthesize expanseEnabled=_expanseEnabled;
 @property(nonatomic) _Bool audioEnabled; // @synthesize audioEnabled=_audioEnabled;
 @property(nonatomic) _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property(nonatomic) _Bool isBusinessChat; // @synthesize isBusinessChat=_isBusinessChat;
@@ -78,7 +82,7 @@
 @property(retain, nonatomic) UIView *leftItemView; // @synthesize leftItemView=_leftItemView;
 @property(retain, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
 @property(nonatomic) __weak id <CKNavigationBarCanvasViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (struct CGRect)_calculateFrameForButtonPositionType:(long long)arg1 shouldOffset:(_Bool)arg2;
+- (struct CGRect)_calculateFrameForButton:(id)arg1 shouldOffset:(_Bool)arg2;
 - (void)layoutSubviews;
 - (void)layoutTitleViewIfNeeded:(struct CGRect)arg1;
 - (struct UIEdgeInsets)systemMinimumLayoutMarginsFromDelegate;
@@ -97,6 +101,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 preferredHeight:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)__im_ff_isExpanseEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

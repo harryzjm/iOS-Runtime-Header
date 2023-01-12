@@ -8,19 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBDataReader, PBUnknownFields;
+@class PBDataReader;
 
 @interface GEORPAmenityCorrections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _addedAmenities;
     CDStruct_95bda58d _removedAmenities;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
-        unsigned int read_unknownFields:1;
         unsigned int read_addedAmenities:1;
         unsigned int read_removedAmenities:1;
         unsigned int wrote_anyField:1;
@@ -29,8 +27,6 @@
 
 + (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

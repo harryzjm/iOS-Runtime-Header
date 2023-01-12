@@ -13,7 +13,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) long long capacity;
 - (id)initWithCapacity:(long long)arg1;
-- (struct DataSet *)_data;
+- (void *)_data;
 
 @end
 

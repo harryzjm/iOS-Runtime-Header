@@ -22,6 +22,7 @@
     int _error;
     id <__NSCFLocalDownloadFileOpener> _fileProvider;
     CDUnknownBlockType _finishCompletion;
+    NSString *_protectionType;
 }
 
 @property(retain) NSString *path; // @synthesize path=_path;

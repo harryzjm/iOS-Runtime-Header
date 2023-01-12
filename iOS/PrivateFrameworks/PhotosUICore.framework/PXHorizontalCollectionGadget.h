@@ -12,6 +12,7 @@
 
 @interface PXHorizontalCollectionGadget <PXMutableHorizontalCollectionGadget, PXGadget>
 {
+    _Bool _selectionFollowsFocus;
     _Bool _isFixedHeight;
     _Bool _prefersPagingEnabled;
     _Bool _visibleGadgetsLoaded;
@@ -50,6 +51,7 @@
 @property(copy, nonatomic) NSDictionary *columnSpans; // @synthesize columnSpans=_columnSpans;
 @property(nonatomic) long long defaultColumnSpan; // @synthesize defaultColumnSpan=_defaultColumnSpan;
 @property(nonatomic) _Bool isFixedHeight; // @synthesize isFixedHeight=_isFixedHeight;
+@property(readonly, nonatomic) _Bool selectionFollowsFocus; // @synthesize selectionFollowsFocus=_selectionFollowsFocus;
 @property(readonly, nonatomic) double collectionHeight; // @synthesize collectionHeight=_collectionHeight;
 @property(readonly, copy, nonatomic) NSString *collectionAccessoryButtonTitle; // @synthesize collectionAccessoryButtonTitle=_collectionAccessoryButtonTitle;
 @property(readonly, nonatomic) unsigned long long collectionAccessoryButtonType; // @synthesize collectionAccessoryButtonType=_collectionAccessoryButtonType;
@@ -73,8 +75,12 @@
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (void)prefetchDuringScrollingForWidth:(double)arg1;
 - (id)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (void)commitPreviewView:(id)arg1;
+- (void)didDismissPreviewWithPreviewView:(id)arg1 committing:(_Bool)arg2;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
 - (void)commitPreviewViewController:(id)arg1;
+- (id)contextMenuWithSuggestedActions:(id)arg1;
+- (id)previewParametersForTargetPreviewView:(id)arg1;
 - (id)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(id)arg2;
 - (void)gadgetControllerFinishedUpdatingDataSourceWithChange:(id)arg1;
 - (void)gadgetControllerHasDisappeared;

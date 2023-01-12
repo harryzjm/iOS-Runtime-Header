@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct Token quasarToken; // @synthesize quasarToken=_quasarToken;
 - (id)description;
+@property(readonly, nonatomic) _Bool endsWithAutoPunctuation;
 @property(readonly, nonatomic) NSString *ipaPhoneSequence;
 @property(readonly, nonatomic) NSString *phoneSequence;
 @property(readonly, nonatomic) _Bool hasSpaceBefore;
@@ -29,7 +30,8 @@
 @property(readonly, nonatomic) double start;
 @property(readonly, copy, nonatomic) NSString *tokenName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)_initWithQuasarToken:(const struct Token *)arg1;
+- (id)_initWithQuasarToken:(const void *)arg1;
+- (id)initWithTokenName:(id)arg1 start:(double)arg2 end:(double)arg3 silenceStart:(double)arg4 confidence:(double)arg5 hasSpaceAfter:(_Bool)arg6 hasSpaceBefore:(_Bool)arg7 phoneSequence:(id)arg8 ipaPhoneSequence:(id)arg9 endsWithAutoPunctuation:(_Bool)arg10;
 - (id)initWithTokenName:(id)arg1 start:(double)arg2 end:(double)arg3 silenceStart:(double)arg4 confidence:(double)arg5 hasSpaceAfter:(_Bool)arg6 hasSpaceBefore:(_Bool)arg7 phoneSequence:(id)arg8 ipaPhoneSequence:(id)arg9;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)appearIfNeeded;
 @property(readonly, nonatomic) _Bool canAppear;
 - (void)viewDidRetryFailedRequest;
+- (void)viewDidFailRequest:(id)arg1 withError:(id)arg2;
 - (void)viewDidEndRenderWithPredicate:(id)arg1;
 - (void)viewDidAction;
 - (void)viewDidSetHidden;

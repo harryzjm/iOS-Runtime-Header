@@ -33,6 +33,7 @@
 - (id)payloadIDForTombstone:(id)arg1;
 - (id)payloadForChangedKeys:(id)arg1;
 - (id)payloadID;
+- (_Bool)isValidForJournalPersistence;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

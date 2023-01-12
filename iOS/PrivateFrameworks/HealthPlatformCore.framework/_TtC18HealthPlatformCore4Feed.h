@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSDate, NSOrderedSet, NSString;
+@class NSDate, NSOrderedSet, NSString, _TtC18HealthPlatformCore7Profile;
 
 @interface _TtC18HealthPlatformCore4Feed : NSManagedObject
 {
@@ -15,6 +15,7 @@
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties
+@property(nonatomic, retain) _TtC18HealthPlatformCore7Profile *associatedProfile; // @dynamic associatedProfile;
 @property(nonatomic, copy) NSDate *dateUpdated; // @dynamic dateUpdated;
 @property(nonatomic, copy) NSString *kindRawValue; // @dynamic kindRawValue;
 @property(nonatomic, retain) NSOrderedSet *sections; // @dynamic sections;

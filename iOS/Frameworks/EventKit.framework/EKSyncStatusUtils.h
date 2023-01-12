@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_whiteListedClassesForArchivingLastSyncErrorUserInfo;
++ (id)_permittedClassesForArchivingLastSyncErrorUserInfo;
 + (id)errorUserInfoFromData:(id)arg1;
 + (id)dataFromErrorUserInfo:(id)arg1;
 

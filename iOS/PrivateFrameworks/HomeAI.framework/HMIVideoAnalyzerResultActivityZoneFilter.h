@@ -11,12 +11,15 @@
 @interface HMIVideoAnalyzerResultActivityZoneFilter <HMFLogging>
 {
     NSArray *_activityZones;
+    NSArray *_motionDetections;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) NSArray *motionDetections; // @synthesize motionDetections=_motionDetections;
+@property(readonly) NSArray *activityZones; // @synthesize activityZones=_activityZones;
 - (id)applyWithFrameResult:(id)arg1;
-- (id)initWithActivityZones:(id)arg1;
+- (id)initWithActivityZones:(id)arg1 motionDetections:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,9 +9,12 @@
 @interface RMMediaSessionOptions : NSObject
 {
     unsigned long long _predictionIntervalMicroseconds;
+    long long _clientMode;
 }
 
+@property(nonatomic) long long clientMode; // @synthesize clientMode=_clientMode;
 @property(nonatomic) unsigned long long predictionIntervalMicroseconds; // @synthesize predictionIntervalMicroseconds=_predictionIntervalMicroseconds;
+- (id)init;
 
 @end
 

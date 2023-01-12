@@ -13,5 +13,8 @@
 @property(readonly, nonatomic) double continuousCornerRadius;
 @property(readonly, nonatomic) struct CGRect visibleBounds;
 - (UIView *)sourceView;
+
+@optional
+- (UIView *)sourceBackgroundView:(UIView *)arg1;
 @end
 

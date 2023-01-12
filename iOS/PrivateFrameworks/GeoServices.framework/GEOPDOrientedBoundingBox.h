@@ -10,7 +10,6 @@
 
 @class GEOPDOrientedPosition;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDOrientedBoundingBox : PBCodable <NSCopying>
 {
     double _depth;

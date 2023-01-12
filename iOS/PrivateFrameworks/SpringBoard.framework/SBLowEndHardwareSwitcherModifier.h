@@ -16,7 +16,7 @@
 - (_Bool)_shouldResignActiveAppsUnderFloatingApp;
 - (id)keyboardSuppressionMode;
 - (id)appLayoutsToResignActive;
-- (id)handleMainTransitionEvent:(id)arg1;
+- (id)handleTransitionEvent:(id)arg1;
 - (double)wallpaperScale;
 - (double)homeScreenScale;
 - (double)homeScreenAlpha;

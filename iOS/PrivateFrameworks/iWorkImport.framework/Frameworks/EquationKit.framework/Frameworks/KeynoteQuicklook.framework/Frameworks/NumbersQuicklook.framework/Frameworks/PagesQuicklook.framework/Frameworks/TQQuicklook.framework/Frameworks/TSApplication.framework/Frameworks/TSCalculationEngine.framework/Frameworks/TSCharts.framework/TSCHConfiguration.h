@@ -10,19 +10,19 @@
 
 @interface TSCHConfiguration : NSObject
 {
-    _Bool mSupportsChartDataEditor;
-    _Bool mSupportsChartRangeEditingMode;
-    _Bool mSupportsNumberFormatSameAsSource;
-    _Bool mShowMessageOnSelection;
-    _Bool mDisableHighQualityRenderingIfNecessary;
-    _Bool mSupports3DFillDataEmbeddingRecovery;
-    _Bool mUse3DFillFor3DChartFallback;
-    _Bool mShouldForceDiscreteGraphicsFor3D;
-    _Bool mExportsUsingSageKeynoteChartNonStyleDefaultsOverride;
-    _Bool mSupportsTextBackground;
-    _Bool mSupportsTextWrapping;
-    Class mMultiDataChartOptionsControllerBuildSupportClass;
-    NSString *mModifyChartDataHelpKey;
+    _Bool _supportsChartDataEditor;
+    _Bool _supportsChartRangeEditingMode;
+    _Bool _supportsNumberFormatSameAsSource;
+    _Bool _showMessageOnSelection;
+    _Bool _disableHighQualityRenderingIfNecessary;
+    _Bool _supports3DFillDataEmbeddingRecovery;
+    _Bool _use3DFillFor3DChartFallback;
+    _Bool _shouldForceDiscreteGraphicsFor3D;
+    _Bool _exportsUsingSageKeynoteChartNonStyleDefaultsOverride;
+    _Bool _supportsTextBackground;
+    _Bool _supportsTextWrapping;
+    Class _multiDataChartOptionsControllerBuildSupportClass;
+    NSString *_modifyChartDataHelpKey;
     long long _analyticsAppType;
 }
 
@@ -32,19 +32,19 @@
 + (id)_singletonAlloc;
 - (void).cxx_destruct;
 @property(nonatomic) long long analyticsAppType; // @synthesize analyticsAppType=_analyticsAppType;
-@property(copy, nonatomic) NSString *modifyChartDataHelpKey; // @synthesize modifyChartDataHelpKey=mModifyChartDataHelpKey;
-@property(retain, nonatomic) Class multiDataChartOptionsControllerBuildSupportClass; // @synthesize multiDataChartOptionsControllerBuildSupportClass=mMultiDataChartOptionsControllerBuildSupportClass;
-@property(nonatomic) _Bool supportsTextWrapping; // @synthesize supportsTextWrapping=mSupportsTextWrapping;
-@property(nonatomic) _Bool supportsTextBackground; // @synthesize supportsTextBackground=mSupportsTextBackground;
-@property(nonatomic) _Bool exportsUsingSageKeynoteChartNonStyleDefaultsOverride; // @synthesize exportsUsingSageKeynoteChartNonStyleDefaultsOverride=mExportsUsingSageKeynoteChartNonStyleDefaultsOverride;
-@property(nonatomic) _Bool shouldForceDiscreteGraphicsFor3D; // @synthesize shouldForceDiscreteGraphicsFor3D=mShouldForceDiscreteGraphicsFor3D;
-@property(nonatomic) _Bool use3DFillFor3DChartFallback; // @synthesize use3DFillFor3DChartFallback=mUse3DFillFor3DChartFallback;
-@property(nonatomic) _Bool supports3DFillDataEmbeddingRecovery; // @synthesize supports3DFillDataEmbeddingRecovery=mSupports3DFillDataEmbeddingRecovery;
-@property(nonatomic) _Bool disableHighQualityRenderingIfNecessary; // @synthesize disableHighQualityRenderingIfNecessary=mDisableHighQualityRenderingIfNecessary;
-@property(nonatomic) _Bool showMessageOnSelection; // @synthesize showMessageOnSelection=mShowMessageOnSelection;
-@property(nonatomic) _Bool supportsNumberFormatSameAsSource; // @synthesize supportsNumberFormatSameAsSource=mSupportsNumberFormatSameAsSource;
-@property(nonatomic) _Bool supportsChartRangeEditingMode; // @synthesize supportsChartRangeEditingMode=mSupportsChartRangeEditingMode;
-@property(nonatomic) _Bool supportsChartDataEditor; // @synthesize supportsChartDataEditor=mSupportsChartDataEditor;
+@property(copy, nonatomic) NSString *modifyChartDataHelpKey; // @synthesize modifyChartDataHelpKey=_modifyChartDataHelpKey;
+@property(retain, nonatomic) Class multiDataChartOptionsControllerBuildSupportClass; // @synthesize multiDataChartOptionsControllerBuildSupportClass=_multiDataChartOptionsControllerBuildSupportClass;
+@property(nonatomic) _Bool supportsTextWrapping; // @synthesize supportsTextWrapping=_supportsTextWrapping;
+@property(nonatomic) _Bool supportsTextBackground; // @synthesize supportsTextBackground=_supportsTextBackground;
+@property(nonatomic) _Bool exportsUsingSageKeynoteChartNonStyleDefaultsOverride; // @synthesize exportsUsingSageKeynoteChartNonStyleDefaultsOverride=_exportsUsingSageKeynoteChartNonStyleDefaultsOverride;
+@property(nonatomic) _Bool shouldForceDiscreteGraphicsFor3D; // @synthesize shouldForceDiscreteGraphicsFor3D=_shouldForceDiscreteGraphicsFor3D;
+@property(nonatomic) _Bool use3DFillFor3DChartFallback; // @synthesize use3DFillFor3DChartFallback=_use3DFillFor3DChartFallback;
+@property(nonatomic) _Bool supports3DFillDataEmbeddingRecovery; // @synthesize supports3DFillDataEmbeddingRecovery=_supports3DFillDataEmbeddingRecovery;
+@property(nonatomic) _Bool disableHighQualityRenderingIfNecessary; // @synthesize disableHighQualityRenderingIfNecessary=_disableHighQualityRenderingIfNecessary;
+@property(nonatomic) _Bool showMessageOnSelection; // @synthesize showMessageOnSelection=_showMessageOnSelection;
+@property(nonatomic) _Bool supportsNumberFormatSameAsSource; // @synthesize supportsNumberFormatSameAsSource=_supportsNumberFormatSameAsSource;
+@property(nonatomic) _Bool supportsChartRangeEditingMode; // @synthesize supportsChartRangeEditingMode=_supportsChartRangeEditingMode;
+@property(nonatomic) _Bool supportsChartDataEditor; // @synthesize supportsChartDataEditor=_supportsChartDataEditor;
 @property(readonly) TSSPropertyMap *appSpecificPropertyOverrides;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;

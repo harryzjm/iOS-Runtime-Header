@@ -28,7 +28,6 @@
 @property(retain, nonatomic) NSMutableSet *broadcastNotifiedDevices; // @synthesize broadcastNotifiedDevices=_broadcastNotifiedDevices;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *broadcastGroup; // @synthesize broadcastGroup=_broadcastGroup;
 @property(retain, nonatomic) NSUUID *currentKeyUUID; // @synthesize currentKeyUUID=_currentKeyUUID;
-- (id)logIdentifier;
 - (void)_handleKeyTransferAgentMessage:(id)arg1;
 - (void)_endPairingWithError:(id)arg1;
 - (void)beginPairingWithCompletionHandler:(CDUnknownBlockType)arg1;

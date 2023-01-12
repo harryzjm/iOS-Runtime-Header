@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKAccount, PKFeatureApplication;
+@class NSSet, PKAccount, PKFeatureApplication;
 
 @interface PKApplyWebServiceApplyResponse
 {
     PKFeatureApplication *_featureApplication;
     PKAccount *_account;
+    unsigned long long _requiredDeviceMetadataFields;
+    NSSet *_actionIdentifiersRequiringAuthentication;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSSet *actionIdentifiersRequiringAuthentication; // @synthesize actionIdentifiersRequiringAuthentication=_actionIdentifiersRequiringAuthentication;
+@property(readonly, nonatomic) unsigned long long requiredDeviceMetadataFields; // @synthesize requiredDeviceMetadataFields=_requiredDeviceMetadataFields;
 @property(readonly, nonatomic) PKAccount *account; // @synthesize account=_account;
 @property(readonly, nonatomic) PKFeatureApplication *featureApplication; // @synthesize featureApplication=_featureApplication;
 - (void)encodeWithCoder:(id)arg1;

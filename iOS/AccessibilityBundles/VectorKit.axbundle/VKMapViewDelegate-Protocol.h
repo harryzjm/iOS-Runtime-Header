@@ -6,11 +6,13 @@
 
 #import "NSObject-Protocol.h"
 
-@class NSError, NSString, VKLabelMarker, VKMapView, VKMuninJunction, VKMuninRoad, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker;
+@class NSError, NSString, VKARWalkingFeatureDidUpdateInfo, VKARWalkingFeatureSet, VKLabelMarker, VKMapView, VKMuninJunction, VKMuninRoad, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker;
 
 @protocol VKMapViewDelegate <NSObject>
 
 @optional
+- (void)mapLayer:(VKMapView *)arg1 activeARWalkingFeatureDidUpdate:(VKARWalkingFeatureDidUpdateInfo *)arg2;
+- (void)mapLayer:(VKMapView *)arg1 arWalkingFeatureSetStateDidUpdate:(VKARWalkingFeatureSet *)arg2;
 - (void)mapLayer:(VKMapView *)arg1 nearestJunctionDidChange:(VKMuninJunction *)arg2 currentRoad:(VKMuninRoad *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 venueCreated:(VKVenueFeatureMarker *)arg2 venueCreatedBuilding:(VKVenueBuildingFeatureMarker *)arg3;
 - (void)mapLayer:(VKMapView *)arg1 venueWithFocusDidChange:(VKVenueFeatureMarker *)arg2 building:(VKVenueBuildingFeatureMarker *)arg3;

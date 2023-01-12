@@ -10,6 +10,7 @@
 
 @interface _TtC15MediaFoundation13EventReporter : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *stream;
     MISSING_TYPE *activeSubsystems;
     MISSING_TYPE *queue;
 }

@@ -13,10 +13,14 @@
     _Bool _previouslySentReachability;
     _Bool _currentReachability;
     NSString *_accessoryUUID;
+    unsigned long long _previouslySentSuspendedState;
+    unsigned long long _currentSuspendedState;
 }
 
 + (id)tupleWithAccessoryUUID:(id)arg1 reachable:(_Bool)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long currentSuspendedState; // @synthesize currentSuspendedState=_currentSuspendedState;
+@property(nonatomic) unsigned long long previouslySentSuspendedState; // @synthesize previouslySentSuspendedState=_previouslySentSuspendedState;
 @property(nonatomic) _Bool currentReachability; // @synthesize currentReachability=_currentReachability;
 @property(nonatomic) _Bool previouslySentReachability; // @synthesize previouslySentReachability=_previouslySentReachability;
 @property(retain, nonatomic) NSString *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;

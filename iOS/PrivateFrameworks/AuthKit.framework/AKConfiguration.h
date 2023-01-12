@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long requestedCloudPartition;
 - (_Bool)_validCloudPartition:(long long)arg1;
+@property(nonatomic) long long shouldBypassCustodianDeviceCheck;
+@property(readonly, nonatomic) unsigned long long internalFeaturesMaskValue;
 @property(nonatomic) unsigned long long lastKnownIDMSEnvironment;
 @property(nonatomic) long long shouldAutocycleAppsInWebTakeover;
 @property(nonatomic) long long shouldAlwaysShowWelcome;
@@ -28,6 +30,7 @@
 @property(nonatomic) long long shouldEnableTestAccountMode;
 @property(nonatomic) long long shouldAllowTestApplication;
 @property(nonatomic) long long shouldAllowDemoMode;
+@property(nonatomic) long long shouldHideInternalBuildHeader;
 @property(nonatomic) long long shouldAllowExperimentalMode;
 @property(nonatomic) long long shouldAllowPhoneNumberAccounts;
 @property(nonatomic) long long shouldAddHSA2CreateHeader;

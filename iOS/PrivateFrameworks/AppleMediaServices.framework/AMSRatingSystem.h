@@ -14,10 +14,12 @@
     NSString *_label;
     NSArray *_contentRatings;
     NSString *_ratingSystemID;
+    NSArray *_types;
 }
 
 + (id)ratingSystemWithDictionary:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *types; // @synthesize types=_types;
 @property(readonly, nonatomic) NSString *ratingSystemID; // @synthesize ratingSystemID=_ratingSystemID;
 @property(readonly, nonatomic) NSArray *contentRatings; // @synthesize contentRatings=_contentRatings;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;

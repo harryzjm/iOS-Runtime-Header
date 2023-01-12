@@ -14,6 +14,7 @@
 }
 
 + (id)synchronizedLayerWithPlayerItem:(id)arg1;
++ (void)initialize;
 - (void)dealloc;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 @property(retain, nonatomic) AVPlayerItem *playerItem;

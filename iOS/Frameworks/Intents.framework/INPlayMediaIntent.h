@@ -60,6 +60,7 @@
 - (id)_intents_backgroundHandlingAssertionForBundleIdentifier:(id)arg1 context:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_titleWithLocalizer:(id)arg1 fromBundleURL:(id)arg2;
 - (_Bool)_intents_isExemptFromMulitWindowRequirementForInAppHandling;
+- (CDStruct_8caa76fc)_intents_preferredScaledImageSize;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

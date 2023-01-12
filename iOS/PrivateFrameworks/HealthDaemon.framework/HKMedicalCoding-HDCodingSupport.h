@@ -11,9 +11,6 @@
 @class NSString;
 
 @interface HKMedicalCoding (HDCodingSupport) <HDCoding>
-+ (id)codeableRepresentationForMedicalCodings:(id)arg1;
-+ (id)multipleMedicalCodingsWithCodables:(id)arg1;
-+ (id)medicalCodingsWithCodeable:(id)arg1;
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
 

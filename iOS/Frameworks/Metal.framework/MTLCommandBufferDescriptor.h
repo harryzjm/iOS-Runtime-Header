@@ -10,14 +10,15 @@
 
 @interface MTLCommandBufferDescriptor : NSObject <NSCopying>
 {
-    _Bool _retainedReferences;
-    unsigned long long _errorOptions;
 }
 
-@property(nonatomic) unsigned long long errorOptions; // @synthesize errorOptions=_errorOptions;
-@property(nonatomic) _Bool retainedReferences; // @synthesize retainedReferences=_retainedReferences;
++ (id)allocWithZone:(struct _NSZone *)arg1;
++ (id)alloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
+
+// Remaining properties
+@property(nonatomic) unsigned long long errorOptions; // @dynamic errorOptions;
+@property(nonatomic) _Bool retainedReferences; // @dynamic retainedReferences;
 
 @end
 

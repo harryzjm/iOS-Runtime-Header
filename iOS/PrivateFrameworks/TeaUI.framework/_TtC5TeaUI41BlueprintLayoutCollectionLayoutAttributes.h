@@ -14,6 +14,9 @@
     MISSING_TYPE *rubberbandEdge;
     MISSING_TYPE *model;
     MISSING_TYPE *source;
+    MISSING_TYPE *isPlugin;
+    MISSING_TYPE *isEditing;
+    MISSING_TYPE *isSelected;
 }
 
 - (void).cxx_destruct;

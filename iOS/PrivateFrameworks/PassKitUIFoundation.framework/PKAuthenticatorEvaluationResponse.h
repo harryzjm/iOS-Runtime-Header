@@ -19,7 +19,7 @@
 + (id)responseWithResult:(long long)arg1 biometricMatch:(_Bool)arg2 credential:(id)arg3;
 + (id)responseWithResult:(long long)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSData *credential; // @synthesize credential=_credential;
+@property(readonly, copy, nonatomic) NSData *credential; // @synthesize credential=_credential;
 @property(copy, nonatomic) NSString *kextBlacklistVersion; // @synthesize kextBlacklistVersion=_kextBlacklistVersion;
 @property(readonly, nonatomic) _Bool biometricMatch; // @synthesize biometricMatch=_biometricMatch;
 @property(readonly, nonatomic) long long result; // @synthesize result=_result;

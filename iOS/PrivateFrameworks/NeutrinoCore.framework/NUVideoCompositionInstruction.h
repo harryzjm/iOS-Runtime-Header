@@ -9,13 +9,15 @@
 #import <NeutrinoCore/AVVideoCompositionInstruction-Protocol.h>
 #import <NeutrinoCore/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NUColorSpace, NUComposition, NURenderContext, NURenderJob;
+@class NSArray, NSMutableDictionary, NSString, NUColorSpace, NUComposition, NURenderContext, NURenderJob, NURenderNode;
 
 @interface NUVideoCompositionInstruction : NSObject <AVVideoCompositionInstruction, NSCopying>
 {
     NSMutableDictionary *_sourceIdentifiersByTrackID;
+    NSMutableDictionary *_sourceIdentifiersByMetadataTrackID;
     NSArray *_requiredSourceTrackIDs;
     NURenderJob *_renderJob;
+    NURenderNode *_videoRenderPrepareNode;
     NSString *_name;
     NURenderContext *_renderContext;
     NUComposition *_adjustmentComposition;
@@ -26,8 +28,8 @@
     CDStruct_e83c9415 _timeRange;
 }
 
-+ (id)instructionFromBase:(id)arg1;
 + (id)instructionForVideoTrack:(id)arg1;
++ (id)defaultInstructionForAsset:(id)arg1 error:(out id *)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) long long sampleMode; // @synthesize sampleMode=_sampleMode;
 @property(retain, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
@@ -36,14 +38,20 @@
 @property(retain, nonatomic) NUComposition *adjustmentComposition; // @synthesize adjustmentComposition=_adjustmentComposition;
 @property(retain) NURenderContext *renderContext; // @synthesize renderContext=_renderContext;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(retain) NURenderNode *videoRenderPrepareNode; // @synthesize videoRenderPrepareNode=_videoRenderPrepareNode;
 @property(nonatomic) __weak NURenderJob *renderJob; // @synthesize renderJob=_renderJob;
 @property(retain, nonatomic) NSArray *requiredSourceTrackIDs; // @synthesize requiredSourceTrackIDs=_requiredSourceTrackIDs;
 @property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToInstruction:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)metadataTrackIDForSourceIdentifier:(id)arg1;
+- (id)sourceIdentifierForMetadataTrackID:(id)arg1;
+- (void)setSourceIdentifier:(id)arg1 forMetadataTrackID:(id)arg2;
+- (id)trackIDForSourceIdentifier:(id)arg1;
 - (id)sourceIdentifierForTrackID:(id)arg1;
 - (void)setSourceIdentifier:(id)arg1 forTrackID:(id)arg2;
+@property(readonly, nonatomic) NSArray *requiredSourceSampleDataTrackIDs;
 @property(readonly, nonatomic) int passthroughTrackID;
 @property(readonly, nonatomic) _Bool containsTweening;
 @property(readonly, nonatomic) _Bool enablePostProcessing;

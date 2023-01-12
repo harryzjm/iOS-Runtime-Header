@@ -12,6 +12,7 @@
 @interface PHCollectionListChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     PHCollectionList *_originalCollectionList;
+    _Bool _isTopLevelUserCollection;
     PHRelationshipChangeRequestHelper *_collectionsHelper;
 }
 
@@ -20,14 +21,15 @@
 + (void)expungeCollectionLists:(id)arg1;
 + (void)deleteCollectionLists:(id)arg1;
 + (id)creationRequestForCollectionListWithTitle:(id)arg1;
++ (id)changeRequestForTopLevelCollectionListUserCollections:(id)arg1;
 + (id)changeRequestForCollectionList:(id)arg1 childCollections:(id)arg2;
 + (id)changeRequestForCollectionList:(id)arg1;
 + (id)_changeRequestForCollectionList:(id)arg1 optionalChildCollections:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isTopLevelUserCollection; // @synthesize isTopLevelUserCollection=_isTopLevelUserCollection;
 @property(readonly, nonatomic) PHRelationshipChangeRequestHelper *collectionsHelper; // @synthesize collectionsHelper=_collectionsHelper;
 @property(readonly, copy) NSString *description;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
-- (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)removeChildCollections:(id)arg1;

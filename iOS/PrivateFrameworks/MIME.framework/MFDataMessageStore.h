@@ -27,7 +27,6 @@
 - (id)account;
 - (id)message;
 - (void)setMessageClass:(Class)arg1;
-- (void)writeUpdatedMessageDataToDisk;
 - (void)setStoragePath:(id)arg1;
 - (id)storagePath;
 - (id)storePath;

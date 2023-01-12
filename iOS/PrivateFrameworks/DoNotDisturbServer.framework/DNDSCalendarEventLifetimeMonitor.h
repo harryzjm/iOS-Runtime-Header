@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKEventStore, PCPersistentTimer;
+@class EKEventStore, NSDate;
 
 @interface DNDSCalendarEventLifetimeMonitor
 {
     EKEventStore *_eventStore;
-    PCPersistentTimer *_lifetimeTimer;
+    NSDate *_lifetimeTimerFireDate;
 }
 
 + (Class)lifetimeClass;
 - (void).cxx_destruct;
+- (id)_eventForCalendarEventLifetime:(id)arg1 assertionStartDate:(id)arg2;
 - (void)_calendarEventStoreChangedWithNotification:(id)arg1;
-- (void)_timerFired:(id)arg1;
 - (id)updateForModeAssertions:(id)arg1 date:(id)arg2;
 - (id)activeDateIntervalForCalendarEventLifetime:(id)arg1 assertionStartDate:(id)arg2;
+- (void)setDelegate:(id)arg1;
 - (id)init;
 
 @end

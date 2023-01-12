@@ -8,7 +8,7 @@
 
 #import <RespiratoryHealth/HKFeatureAvailabilityProvidingObserver-Protocol.h>
 
-@class NSUserDefaults;
+@class NSString, NSUserDefaults;
 @protocol HKFeatureAvailabilityProviding, HKRPUserDefaultsSyncProviding, OS_dispatch_queue;
 
 @interface HKRPOxygenSaturationOnboardingCacher : NSObject <HKFeatureAvailabilityProvidingObserver>
@@ -26,6 +26,12 @@
 - (void)dealloc;
 - (id)initWithFeatureAvailabilityProviding:(id)arg1 userDefaults:(id)arg2 userDefaultsSyncProvider:(id)arg3 didStart:(CDUnknownBlockType)arg4;
 - (id)initWithFeatureAvailabilityProviding:(id)arg1 userDefaults:(id)arg2 userDefaultsSyncProvider:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

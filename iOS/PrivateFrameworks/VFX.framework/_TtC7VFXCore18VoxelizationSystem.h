@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore18VoxelizationSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *voxelQuery;
+    MISSING_TYPE *queryColorOpacity;
 }
 
 @end

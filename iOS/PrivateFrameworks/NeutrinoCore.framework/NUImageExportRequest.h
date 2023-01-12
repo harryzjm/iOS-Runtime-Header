@@ -11,15 +11,17 @@
 @interface NUImageExportRequest <NUTimeBased>
 {
     _Bool _renderToData;
+    _Bool _renderWithIOSurface;
     NUColorSpace *_colorSpace;
     NUImageExportFormat *_format;
     NSDictionary *_imageProperties;
-    NSDictionary *_coreGraphicsInfoDictionariesByAuxiliaryType;
+    NSDictionary *_auxImages;
 }
 
 - (void).cxx_destruct;
-@property(copy) NSDictionary *coreGraphicsInfoDictionariesByAuxiliaryType; // @synthesize coreGraphicsInfoDictionariesByAuxiliaryType=_coreGraphicsInfoDictionariesByAuxiliaryType;
+@property(copy) NSDictionary *auxImages; // @synthesize auxImages=_auxImages;
 @property(copy) NSDictionary *imageProperties; // @synthesize imageProperties=_imageProperties;
+@property(nonatomic) _Bool renderWithIOSurface; // @synthesize renderWithIOSurface=_renderWithIOSurface;
 @property(nonatomic) _Bool renderToData; // @synthesize renderToData=_renderToData;
 @property(copy, nonatomic) NUImageExportFormat *format; // @synthesize format=_format;
 @property(retain, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;

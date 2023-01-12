@@ -10,15 +10,14 @@
 {
 }
 
-+ (id)possibleUserLocalesFromGraph:(id)arg1;
-+ (id)topPersonLocalIdentifierFor2PersonSocialGroupsInGraph:(id)arg1 personNodes:(id)arg2;
-+ (id)_momentsAtHomeOrWorkForMomentNodes:(id)arg1 atHome:(_Bool)arg2 atWork:(_Bool)arg3;
-+ (id)momentsAtHomeForMomentNodes:(id)arg1;
-+ (id)momentsAtWorkForMomentNodes:(id)arg1;
-+ (id)momentNodesbyAddressNodeFromMomentNodes:(id)arg1;
-+ (id)personCountedSetFromMomentNodes:(id)arg1 amongPersonNodes:(id)arg2;
++ (_Bool)socialGroupNodes:(id)arg1 intersectWithBestSocialGroupsInGraph:(id)arg2;
++ (_Bool)anyPersonNodes:(id)arg1 belongToBestSocialGroupsInGraph:(id)arg2;
++ (id)topPersonNodeIdentifierForTwoPersonSocialGroupsFromPersonNodes:(id)arg1 personNodes:(id)arg2;
++ (id)momentNodesAtHomeInMomentNodes:(id)arg1;
++ (id)momentNodesAtWorkInMomentNodes:(id)arg1;
++ (id)momentNodesByAddressNodeFromMomentNodes:(id)arg1;
++ (id)countedPersonNodesFromMomentNodes:(id)arg1 amongPersonNodes:(id)arg2;
 + (id)personLocalIdentifierByContactIdentifierFromPersonNodes:(id)arg1;
-+ (id)momentNodesLinkedToPersonNodes:(id)arg1;
 + (_Bool)signalInRunOptions:(unsigned long long)arg1 signal:(unsigned long long)arg2;
 + (_Bool)isValidContact:(id)arg1;
 

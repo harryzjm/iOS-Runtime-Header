@@ -10,7 +10,7 @@
 
 @interface PXGPPTAnimationLayout <PXGSolidColorSource>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     NSArray *_colors;
     unsigned int _numberOfRows;
     unsigned int _numberOfColumns;

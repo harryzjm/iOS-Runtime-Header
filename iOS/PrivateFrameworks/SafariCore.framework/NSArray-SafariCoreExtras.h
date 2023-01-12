@@ -9,6 +9,10 @@
 @interface NSArray (SafariCoreExtras)
 + (id)safari_arrayWithPropertyListData:(id)arg1 options:(unsigned long long)arg2;
 + (id)safari_arrayFromDictionaryOfObjectsByIndex:(id)arg1;
+- (id)safari_longestIncreasingSubsequenceUsingValues:(CDUnknownBlockType)arg1;
+- (id)safari_splitArrayUsingCondition:(CDUnknownBlockType)arg1;
+- (id)safari_objectAfter:(id)arg1;
+- (id)safari_objectBefore:(id)arg1;
 - (id)safari_prefixWithMaxLength:(unsigned long long)arg1;
 - (id)safari_flattenedArray;
 - (id)safari_arrayByAddingObjectsFromArrayIfNotDuplicates:(id)arg1;
@@ -27,6 +31,7 @@
 - (id)safari_mapObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_orderedSetByApplyingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_setByApplyingBlock:(CDUnknownBlockType)arg1;
+- (void)safari_enumerateOutwardFromIndex:(unsigned long long)arg1 otherIndex:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)safari_enumerateOutwardFromIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)safari_enumerateZippedValuesWithArray:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)safari_mapAndFilterObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;

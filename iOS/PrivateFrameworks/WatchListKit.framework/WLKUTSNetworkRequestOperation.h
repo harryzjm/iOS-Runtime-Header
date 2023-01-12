@@ -21,6 +21,7 @@
 - (id)responseDictionary;
 - (void)processResponse;
 - (void)handleResult:(id)arg1 error:(id)arg2;
+- (void)configureSession;
 - (void)prepareURLRequest:(CDUnknownBlockType)arg1;
 - (id)shortDescription;
 - (id)initWithRequestProperties:(id)arg1;

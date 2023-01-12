@@ -25,6 +25,7 @@
 
 + (id)infoWithPipeline:(id)arg1 index:(tvec2_3b141483)arg2 resourceIndex:(tvec2_3b141483)arg3 renderString:(id)arg4 position:(tvec3_17f03ce0)arg5 offset:(tvec3_17f03ce0)arg6 alignment:(unsigned int)arg7 wrapWidth:(float)arg8 offset2D:(tvec2_84d5962d)arg9 rotation:(float)arg10 alignmentPadding:(tvec2_84d5962d)arg11;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) tvec2_84d5962d alignmentPadding; // @synthesize alignmentPadding=_alignmentPadding;
 @property(readonly, nonatomic) float wrapWidth; // @synthesize wrapWidth=_wrapWidth;
 @property(readonly, nonatomic) tvec2_3b141483 resourceIndex; // @synthesize resourceIndex=_resourceIndex;
@@ -36,7 +37,6 @@
 @property(readonly, copy, nonatomic) NSString *renderString; // @synthesize renderString=_renderString;
 @property(readonly, nonatomic) tvec2_3b141483 index; // @synthesize index=_index;
 @property(readonly, retain, nonatomic) TSCH3DSceneRenderPipeline *pipeline; // @synthesize pipeline=_pipeline;
-- (void)dealloc;
 - (id)initWithPipeline:(id)arg1 index:(tvec2_3b141483)arg2 resourceIndex:(tvec2_3b141483)arg3 renderString:(id)arg4 position:(tvec3_17f03ce0)arg5 offset:(tvec3_17f03ce0)arg6 alignment:(unsigned int)arg7 wrapWidth:(float)arg8 offset2D:(tvec2_84d5962d)arg9 rotation:(float)arg10 alignmentPadding:(tvec2_84d5962d)arg11;
 
 @end

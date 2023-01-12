@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSMutableDictionary, TPSNotificationCache;
+@class NSBundle, NSMutableDictionary, TPSLocalNotificationController, TPSNotificationCache;
 @protocol OS_dispatch_queue, TPSNotificationControllerDelegate;
 
 @interface TPSNotificationController : NSObject
@@ -16,13 +16,25 @@
     long long _notificationCount;
     NSObject<OS_dispatch_queue> *_syncQueue;
     NSMutableDictionary *_assetURLSessionMap;
+    TPSLocalNotificationController *_localNotificationController;
     NSBundle *_frameworkBundle;
 }
 
++ (void)removeNotificationCache;
++ (void)removeAssetCacheDirectory;
++ (id)cacheDirectoryCreateIfEmpty:(_Bool)arg1;
 + (long long)remainingCountOfNotificationsUntilOptOut;
-+ (_Bool)isNotificationSettingDisabled;
++ (id)displayDarwinNotificationKey;
++ (double)standardNotificationInterval;
++ (_Bool)supportsWelcomeNotification;
++ (_Bool)supportsRemoteIcon;
++ (_Bool)supportsNotification;
++ (_Bool)supportsExtension;
++ (_Bool)respectsOptout;
++ (_Bool)alwaysDisplayCollectionIcon;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSBundle *frameworkBundle; // @synthesize frameworkBundle=_frameworkBundle;
+@property(retain, nonatomic) TPSLocalNotificationController *localNotificationController; // @synthesize localNotificationController=_localNotificationController;
 @property(retain, nonatomic) NSMutableDictionary *assetURLSessionMap; // @synthesize assetURLSessionMap=_assetURLSessionMap;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property(nonatomic) long long notificationCount; // @synthesize notificationCount=_notificationCount;
@@ -31,13 +43,13 @@
 - (id)copyFileURL:(id)arg1 cachePath:(id)arg2;
 - (id)cacheAssetFileURLForDocument:(id)arg1;
 - (id)cacheFilePathForFile:(id)arg1;
-- (void)clearAssetCaches;
-- (id)cacheDirectoryCreateIfEmpty:(_Bool)arg1;
 - (id)assetsConfigurationForDocument:(id)arg1;
 - (void)fetchNotificationAssetIfNeededCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)shouldDisplayCollectionIcon;
 - (_Bool)isDocumentHintDisplayedOnOtherDevices:(id)arg1;
 - (_Bool)collectionEligibleForNotification:(id)arg1;
 - (void)updateNotificationCount;
+- (void)updateLastNotificationDate;
 - (void)increaseUserNotificationCount;
 - (void)clearNotificationCount;
 - (void)showNotificationWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -53,7 +65,10 @@
 - (void)updateArchiveCache;
 - (void)clearNotificationCache;
 - (void)removeAllNotifications;
-- (void)updateDocumentToNotifyWithPreferredIdentifier:(id)arg1 collectionOrder:(id)arg2 collectionMap:(id)arg3 collectionDeliveryInfoMap:(id)arg4 tipMap:(id)arg5 tipsDeliveryInfoMap:(id)arg6 deliveryInfoMap:(id)arg7 documentDictionaryMap:(id)arg8 metadataDictionary:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
+- (void)removeNotificationWithIdentifier:(id)arg1;
+- (void)updateDocumentToNotifyWithPreferredIdentifiers:(id)arg1 collectionOrder:(id)arg2 collectionMap:(id)arg3 collectionDeliveryInfoMap:(id)arg4 tipMap:(id)arg5 tipsDeliveryInfoMap:(id)arg6 deliveryInfoMap:(id)arg7 documentDictionaryMap:(id)arg8 metadataDictionary:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
+@property(readonly, nonatomic) _Bool validNotificationInterval; // @dynamic validNotificationInterval;
+@property(readonly, nonatomic, getter=isNotificationSettingValid) _Bool notificationSettingValid; // @dynamic notificationSettingValid;
 - (id)init;
 
 @end

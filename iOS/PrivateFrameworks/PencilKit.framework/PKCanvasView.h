@@ -92,6 +92,7 @@
 @property(nonatomic) SEL drawingUndoSelector;
 @property(nonatomic) __weak id drawingUndoTarget;
 - (void)performUndo:(id)arg1;
+@property(readonly, nonatomic) PKTiledView *_tiledView;
 @property(nonatomic) long long _maxFileFormatVersion;
 - (id)_currentStroke;
 @property(nonatomic) unsigned long long drawingPolicy;

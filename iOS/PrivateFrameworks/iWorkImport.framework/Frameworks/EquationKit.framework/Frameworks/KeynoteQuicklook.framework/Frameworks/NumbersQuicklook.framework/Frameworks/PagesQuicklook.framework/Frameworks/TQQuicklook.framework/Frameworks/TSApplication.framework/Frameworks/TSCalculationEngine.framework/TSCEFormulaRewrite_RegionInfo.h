@@ -10,27 +10,26 @@
 
 @interface TSCEFormulaRewrite_RegionInfo : NSObject
 {
-    UUIDData_5fbc143e _tableUID;
-    UUIDData_5fbc143e _condStyleOwnerUID;
+    struct TSKUIDStruct _tableUID;
+    struct TSKUIDStruct _condStyleOwnerUID;
     TSCEFormulaRewrite_Uids *_columnUids;
     TSCEFormulaRewrite_Uids *_rowUids;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSCEFormulaRewrite_Uids *rowUids; // @synthesize rowUids=_rowUids;
 @property(readonly, nonatomic) TSCEFormulaRewrite_Uids *columnUids; // @synthesize columnUids=_columnUids;
-@property(readonly, nonatomic) UUIDData_5fbc143e condStyleOwnerUID; // @synthesize condStyleOwnerUID=_condStyleOwnerUID;
-@property(readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
-- (void)saveToMessage:(struct RegionInfoArchive *)arg1;
-- (id)initFromMessage:(const struct RegionInfoArchive *)arg1;
+@property(readonly, nonatomic) struct TSKUIDStruct condStyleOwnerUID; // @synthesize condStyleOwnerUID=_condStyleOwnerUID;
+@property(readonly, nonatomic) struct TSKUIDStruct tableUID; // @synthesize tableUID=_tableUID;
+- (void)saveToMessage:(void *)arg1;
+- (id)initFromMessage:(const void *)arg1;
 - (struct TSCERangeCoordinate)mergingRange;
 - (struct TSUCellCoord)bottomRightCellCoord;
 - (struct TSUCellCoord)topLeftCellCoord;
 - (void)unloadIndexes;
 - (void)loadIndexesForTable:(id)arg1 uidResolver:(id)arg2;
 - (id)description;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 columnUids:(const vector_4dc5f307 *)arg2 rowUids:(const vector_4dc5f307 *)arg3;
+- (id)initWithTableUID:(const struct TSKUIDStruct *)arg1 columnUids:(const void *)arg2 rowUids:(const void *)arg3;
 
 @end
 

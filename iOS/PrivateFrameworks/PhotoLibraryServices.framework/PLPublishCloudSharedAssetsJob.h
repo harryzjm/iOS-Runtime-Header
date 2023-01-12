@@ -27,7 +27,7 @@
 @property(retain, nonatomic) NSArray *stillImageOnlyAssetUUIDs; // @synthesize stillImageOnlyAssetUUIDs=_stillImageOnlyAssetUUIDs;
 @property(retain, nonatomic) NSArray *originalAssetUUIDs; // @synthesize originalAssetUUIDs=_originalAssetUUIDs;
 @property(retain, nonatomic) NSString *publishAlbumCloudGUID; // @synthesize publishAlbumCloudGUID=_publishAlbumCloudGUID;
-- (void)retrieveURLsFromAsset:(id)arg1 withExportedFileURL:(id)arg2 primaryURL:(id *)arg3 videoComplementURL:(id *)arg4;
+- (_Bool)retrieveURLsFromAssetWithUUID:(id)arg1 withExportedFileURL:(id)arg2 primaryURL:(id *)arg3 videoComplementURL:(id *)arg4;
 - (void)executeDaemonOperation;
 - (void)runDaemonSide;
 - (_Bool)shouldArchiveXPCToDisk;

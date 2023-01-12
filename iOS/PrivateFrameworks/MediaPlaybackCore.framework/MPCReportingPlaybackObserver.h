@@ -8,6 +8,7 @@
 
 @class MPAVController, MPAVItem, MPCReportingController, NSData, NSOperationQueue, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCReportingPlaybackObserver : NSObject
 {
     NSData *_currentJingleReportingTimedMetadata;

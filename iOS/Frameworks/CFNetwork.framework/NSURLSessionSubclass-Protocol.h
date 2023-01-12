@@ -6,7 +6,7 @@
 
 #import <CFNetwork/NSObject-Protocol.h>
 
-@class AVURLAsset, NSArray, NSData, NSDictionary, NSMutableURLRequest, NSString, NSURL, NSURLSessionAVAggregateAssetDownloadTask, NSURLSessionAVAssetDownloadTask, NSURLSessionDataTask, NSURLSessionDownloadTask, NSURLSessionUploadTask, NSURLSessionWebSocketTask, __NSCFTaskForClass;
+@class AVAssetDownloadConfiguration, AVURLAsset, NSArray, NSData, NSDictionary, NSMutableURLRequest, NSString, NSURL, NSURLSessionAVAggregateAssetDownloadTask, NSURLSessionAVAssetDownloadTask, NSURLSessionDataTask, NSURLSessionDownloadTask, NSURLSessionUploadTask, NSURLSessionWebSocketTask, __NSCFTaskForClass;
 
 @protocol NSURLSessionSubclass <NSObject>
 - (void)_onqueue_getTasksWithCompletionHandler:(void (^)(NSArray *))arg1;
@@ -16,7 +16,7 @@
 - (NSURLSessionWebSocketTask *)webSocketTaskForURL:(NSURL *)arg1 protocols:(NSArray *)arg2;
 - (NSURLSessionWebSocketTask *)webSocketTaskForRequest:(NSMutableURLRequest *)arg1;
 - (NSURLSessionAVAggregateAssetDownloadTask *)AVAggregateAssetDownloadTaskForURLAsset:(AVURLAsset *)arg1 mediaSelections:(NSArray *)arg2 assetTitle:(NSString *)arg3 assetArtworkData:(NSData *)arg4 options:(NSDictionary *)arg5;
-- (NSURLSessionAVAssetDownloadTask *)AVAssetDownloadTaskForURLAsset:(AVURLAsset *)arg1 assetTitle:(NSString *)arg2 assetArtworkData:(NSData *)arg3 options:(NSDictionary *)arg4;
+- (NSURLSessionAVAssetDownloadTask *)AVAssetDownloadTaskForURLAsset:(AVURLAsset *)arg1 assetTitle:(NSString *)arg2 assetArtworkData:(NSData *)arg3 options:(NSDictionary *)arg4 downloadConfiguration:(AVAssetDownloadConfiguration *)arg5;
 - (NSURLSessionAVAssetDownloadTask *)AVAssetDownloadTaskForURLAsset:(AVURLAsset *)arg1 destinationURL:(NSURL *)arg2 options:(NSDictionary *)arg3;
 - (NSURLSessionAVAssetDownloadTask *)_AVAssetDownloadTaskForURL:(NSURL *)arg1 destinationURL:(NSURL *)arg2 options:(NSDictionary *)arg3;
 - (NSURLSessionDownloadTask *)_downloadTaskWithTaskForClass:(__NSCFTaskForClass *)arg1;

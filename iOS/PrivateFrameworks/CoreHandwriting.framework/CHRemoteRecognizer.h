@@ -8,7 +8,7 @@
 
 #import <CoreHandwriting/CHRecognizing-Protocol.h>
 
-@class NSCharacterSet, NSLocale, NSString, NSXPCConnection;
+@class NSArray, NSCharacterSet, NSDictionary, NSLocale, NSString, NSXPCConnection;
 
 @interface CHRemoteRecognizer : NSObject <CHRecognizing>
 {
@@ -19,9 +19,10 @@
     int _recognitionMode;
     int _contentType;
     int _autoCapitalizationMode;
-    NSLocale *_locale;
-    NSCharacterSet *_activeCharacterSet;
+    int _autoCorrectionMode;
     unsigned long long _maxRecognitionResultCount;
+    NSArray *_locales;
+    NSDictionary *_activeCharacterSetPerLocale;
     long long _priority;
     NSXPCConnection *__connection;
     struct CGSize _minimumDrawingSize;
@@ -32,15 +33,16 @@
 @property(readonly, nonatomic) NSXPCConnection *_connection; // @synthesize _connection=__connection;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(nonatomic) _Bool shouldUseTextReplacements; // @synthesize shouldUseTextReplacements=_shouldUseTextReplacements;
+@property(readonly, copy, nonatomic) NSDictionary *activeCharacterSetPerLocale; // @synthesize activeCharacterSetPerLocale=_activeCharacterSetPerLocale;
+@property(readonly, copy, nonatomic) NSArray *locales; // @synthesize locales=_locales;
 @property(readonly, nonatomic) _Bool enableGen2CharacterLMIfAvailable; // @synthesize enableGen2CharacterLMIfAvailable=_enableGen2CharacterLMIfAvailable;
 @property(readonly, nonatomic) _Bool enableGen2ModelIfAvailable; // @synthesize enableGen2ModelIfAvailable=_enableGen2ModelIfAvailable;
 @property(readonly, nonatomic) _Bool enableCachingIfAvailable; // @synthesize enableCachingIfAvailable=_enableCachingIfAvailable;
 @property(nonatomic) struct CGSize minimumDrawingSize; // @synthesize minimumDrawingSize=_minimumDrawingSize;
+@property(nonatomic) int autoCorrectionMode; // @synthesize autoCorrectionMode=_autoCorrectionMode;
 @property(nonatomic) int autoCapitalizationMode; // @synthesize autoCapitalizationMode=_autoCapitalizationMode;
 @property(nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) unsigned long long maxRecognitionResultCount; // @synthesize maxRecognitionResultCount=_maxRecognitionResultCount;
-@property(retain, nonatomic) NSCharacterSet *activeCharacterSet; // @synthesize activeCharacterSet=_activeCharacterSet;
-@property(readonly, copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(readonly, nonatomic) int recognitionMode; // @synthesize recognitionMode=_recognitionMode;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -52,6 +54,9 @@
 - (id)textRecognitionResultForDrawing:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)_teardownXPCConnection;
 - (void)_setupXPCConnectionIfNeeded;
+@property(retain, nonatomic) NSCharacterSet *activeCharacterSet;
+@property(readonly, copy, nonatomic) NSLocale *locale;
+- (id)initWithMode:(int)arg1 locales:(id)arg2 activeCharacterSetPerLocale:(id)arg3 recognizerOptions:(id)arg4;
 - (id)initWithMode:(int)arg1 locale:(id)arg2 recognizerOptions:(id)arg3;
 - (id)initWithMode:(int)arg1 locale:(id)arg2;
 

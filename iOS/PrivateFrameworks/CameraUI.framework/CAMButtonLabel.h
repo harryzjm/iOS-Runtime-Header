@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) _Bool wantsLegibilityShadow; // @synthesize wantsLegibilityShadow=_wantsLegibilityShadow;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
-- (void)updateToContentSize:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 @property(nonatomic) long long textAlignment;
 - (void)setHighlightedTextColor:(id)arg1;
 - (id)highlightedTextColor;

@@ -17,8 +17,12 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)_deleteLibraryFromFilesystemAtURL:(id)arg1 error:(id *)arg2;
+- (void)_closePhotoLibraryAtURL:(id)arg1 delete:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)resetSyndicationLibraryWithReply:(CDUnknownBlockType)arg1;
 - (void)closeAndDeletePhotoLibraryAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getPhotoLibraryURLsWithReply:(CDUnknownBlockType)arg1;
+- (void)closePhotoLibraryAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getPhotoLibraryURLsWithLibraryURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getActivePhotoLibrariesWithReply:(CDUnknownBlockType)arg1;
 - (void)setSystemPhotoLibraryURL:(id)arg1 sandboxExtension:(id)arg2 options:(unsigned short)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)initWithConnectionAuthorization:(id)arg1 bundleController:(id)arg2;

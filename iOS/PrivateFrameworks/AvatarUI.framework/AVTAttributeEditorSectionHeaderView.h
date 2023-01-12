@@ -27,7 +27,6 @@
 - (void)updateButtonForSelectedSectionItem;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
-- (_Bool)shouldPresentAlert;
 - (_Bool)isRTL;
 @property(copy, nonatomic) NSString *displayString;
 - (void)updateMenu;

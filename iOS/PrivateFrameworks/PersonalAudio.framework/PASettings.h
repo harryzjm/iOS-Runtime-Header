@@ -13,8 +13,13 @@
 }
 
 + (id)sharedInstance;
+@property(nonatomic) _Bool personalMediaAutomationSkipHeadphoneRequirement; // @dynamic personalMediaAutomationSkipHeadphoneRequirement;
 @property(nonatomic) _Bool personalMediaDebugMode; // @dynamic personalMediaDebugMode;
 @property(nonatomic) _Bool personalSoundVisible; // @dynamic personalSoundVisible;
+- (void)setTransparencyNoiseSupressor:(double)arg1 forAddress:(id)arg2;
+- (double)transparencyNoiseSupressorForAddress:(id)arg1;
+- (void)setTransparencyBeamforming:(_Bool)arg1 forAddress:(id)arg2;
+- (_Bool)transparencyBeamformingForAddress:(id)arg1;
 - (void)setTransparencyTone:(double)arg1 forAddress:(id)arg2;
 - (double)transparencyToneForAddress:(id)arg1;
 - (void)setTransparencyBalance:(double)arg1 forAddress:(id)arg2;
@@ -27,6 +32,8 @@
 @property(retain, nonatomic) PAConfiguration *personalMediaConfiguration;
 - (void)setConfiguration:(id)arg1 forKey:(id)arg2;
 - (id)configurationWithKey:(id)arg1;
+@property(retain, nonatomic) NSDictionary *transparencyNoiseSupressor; // @dynamic transparencyNoiseSupressor;
+@property(retain, nonatomic) NSDictionary *transparencyBeamforming; // @dynamic transparencyBeamforming;
 @property(retain, nonatomic) NSDictionary *transparencyTone; // @dynamic transparencyTone;
 @property(retain, nonatomic) NSDictionary *transparencyBalance; // @dynamic transparencyBalance;
 @property(retain, nonatomic) NSDictionary *transparencyAmplification; // @dynamic transparencyAmplification;

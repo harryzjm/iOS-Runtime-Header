@@ -21,23 +21,11 @@
 
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType unitTest_timeoutTriggered; // @synthesize unitTest_timeoutTriggered=_unitTest_timeoutTriggered;
+@property(copy) CDUnknownBlockType unitTest_timeoutTriggered; // @synthesize unitTest_timeoutTriggered=_unitTest_timeoutTriggered;
 @property(nonatomic) double tinkerSharingSetupTimeout; // @synthesize tinkerSharingSetupTimeout=_tinkerSharingSetupTimeout;
-- (_Bool)_updateProfile:(id)arg1 withDateOfBirth:(id)arg2 firstName:(id)arg3 lastName:(id)arg4 dsid:(id)arg5 error:(id *)arg6;
-- (id)_lookupOrCreateTinkerProfileForRequest:(id)arg1 metadata:(id)arg2 acceptedShares:(id)arg3 error:(id *)arg4;
-- (void)_setupTinkerProfileForRequest:(id)arg1 metadata:(id)arg2 acceptedShares:(id)arg3;
-- (void)_acceptSharingForRequest:(id)arg1 metadata:(id)arg2;
-- (id)_existingTinkerProfileForRequest:(id)arg1 metadata:(id)arg2 acceptedShares:(id)arg3 error:(id *)arg4;
-- (void)_sendSharingRequestToTinkerDevice:(id)arg1;
-- (void)_prepareGuardianForSharingForRequest:(id)arg1;
-- (void)_presentFailedTeardownAlert;
-- (void)_cancelTaskTimeout;
-- (void)_didTimeOutWithHandler:(CDUnknownBlockType)arg1;
-- (void)_scheduleTaskTimeout:(double)arg1 timeoutHandler:(CDUnknownBlockType)arg2;
 - (void)remote_fetchSharingStatusForCurrentAppleIDWithOwnerEmailAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchSharingStatusWithPairedGuardianWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_tearDownHealthSharingWithTinkerDeviceWithNRUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)removePrivacyAlerts;
 - (void)remote_tearDownHealthSharingWithPairedGuardianWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_performEndToEndCloudSyncWithNRDeviceUUID:(id)arg1 syncParticipantFirst:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setupHealthSharingForSecondaryPairedDeviceWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -46,7 +34,6 @@
 - (void)connectionInterrupted;
 - (id)exportedInterface;
 - (id)remoteInterface;
-- (void)_finishWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 @end

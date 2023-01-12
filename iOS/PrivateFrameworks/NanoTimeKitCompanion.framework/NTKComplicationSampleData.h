@@ -9,26 +9,30 @@
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
 
 @interface NTKComplicationSampleData : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_familyToTemplate;
+    NSMutableDictionary *_familyToTemplatePath;
     NSMutableSet *_supportedFamilies;
-    NSObject<OS_dispatch_queue> *_internalQueue;
+    _Bool _encodesTemplatesAsPaths;
     NSString *_clientID;
     NSString *_applicationID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy) NSString *applicationID; // @synthesize applicationID=_applicationID;
-@property(copy) NSString *clientID; // @synthesize clientID=_clientID;
+@property(nonatomic) _Bool encodesTemplatesAsPaths; // @synthesize encodesTemplatesAsPaths=_encodesTemplatesAsPaths;
+@property(copy, nonatomic) NSString *applicationID; // @synthesize applicationID=_applicationID;
+@property(copy, nonatomic) NSString *clientID; // @synthesize clientID=_clientID;
+- (void)_decodeAllTemplates;
+- (id)_decodedTemplateFromPath:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)supportedFamilies;
-- (id)loadedFamilies;
+- (void)setTemplatePath:(id)arg1 forFamily:(long long)arg2;
 - (void)setTemplate:(id)arg1 forFamily:(long long)arg2;
+- (id)templatePathForFamily:(long long)arg1;
 - (id)templateForFamily:(long long)arg1;
 - (void)_commonInit;
 - (id)initWithSupportedFamilies:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <CoreAutoLayout/NSISVariableDelegate-Protocol.h>
 
-@class NSHashTable, NSISObjectiveLinearExpression, NSISVariable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSThread, _NSISVariableObservable;
+@class NSHashTable, NSISObjectiveLinearExpression, NSISVariable, NSISVariableObservation, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, NSThread, _NSISVariableObservable;
 @protocol NSISEngineDelegate, NSObservable;
 
 @interface NSISEngine : NSObject <NSISVariableDelegate>
@@ -41,8 +41,8 @@
     _Bool _accessedFromMainThread;
     _Bool _engineNeedsRebuildFromConstraints;
     _Bool _changeNotificationsDirty;
-    NSMapTable *_variablesObservations;
-    NSMutableSet *_dirtyVariables;
+    struct NSISObjectTable *_variablesObservations;
+    NSISVariableObservation *_dirtyVariableObservations;
     NSMapTable *_rows;
     CDStruct_52118125 _engineVarTable;
     CDStruct_52118125 _rowTables[2];

@@ -7,9 +7,10 @@
 #import <MapKit/NSObject-Protocol.h>
 
 @class NSString;
-@protocol GEOTransitLine;
+@protocol GEOTransitDepartureSequence, GEOTransitLine;
 
 @protocol MKInactiveTransitLine <NSObject>
+@property(readonly, nonatomic) id <GEOTransitDepartureSequence> departuresSequence;
 @property(readonly, nonatomic) NSString *serviceResumesDescription;
 @property(readonly, nonatomic) id <GEOTransitLine> line;
 @end

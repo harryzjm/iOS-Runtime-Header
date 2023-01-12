@@ -6,12 +6,13 @@
 
 #import <Home/HFItemModule.h>
 
+#import <HomeUI/HFAccessoryObserver-Protocol.h>
 #import <HomeUI/HFAppleMusicAccountObserver-Protocol.h>
 
 @class HFStaticItemProvider, HUAppleMusicAccountItemProvider, HUAppleMusicItem, NSString;
 @protocol HFMediaProfileContainer;
 
-@interface HUAppleMusicAccountModule : HFItemModule <HFAppleMusicAccountObserver>
+@interface HUAppleMusicAccountModule : HFItemModule <HFAppleMusicAccountObserver, HFAccessoryObserver>
 {
     id <HFMediaProfileContainer> _mediaProfileContainer;
     HUAppleMusicAccountItemProvider *_appleMusicAccountItemProvider;
@@ -32,6 +33,7 @@
 @property(readonly, nonatomic) HUAppleMusicItem *loggedInUsernameItem; // @synthesize loggedInUsernameItem=_loggedInUsernameItem;
 @property(readonly, nonatomic) HUAppleMusicAccountItemProvider *appleMusicAccountItemProvider; // @synthesize appleMusicAccountItemProvider=_appleMusicAccountItemProvider;
 @property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+- (void)accessoryDidUpdatePreferredMediaUser:(id)arg1;
 - (void)dispatcher:(id)arg1 appleMusicAccountsDidUpdate:(id)arg2;
 @property(readonly, nonatomic) NSString *explicitAccountSignedInMessage;
 - (id)signInMessage:(_Bool)arg1;

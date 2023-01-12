@@ -22,6 +22,7 @@
 - (id)switcherTemplateWithFamily:(long long)arg1;
 - (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (id)init;
+- (id)_segmentedTemplate:(id)arg1 family:(long long)arg2;
 - (id)utilitarianSmallTemplateForConditions:(id)arg1;
 - (id)utilitarianLargeTemplateForLocation:(id)arg1 conditions:(id)arg2;
 - (id)modularSmallTemplateForLocation:(id)arg1 conditions:(id)arg2;

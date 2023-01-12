@@ -66,7 +66,7 @@
 - (id)_navigation_routeMatch;
 - (_Bool)_navigation_hasValidCourse;
 - (_Bool)_navigation_isStale;
-- (CDStruct_66740237 *)_roadFeature;
+- (id)_roadFeature;
 - (id)matchInfo;
 @property(readonly, nonatomic) _Bool isProjected;
 @property(readonly, nonatomic) unsigned long long stepIndex;
@@ -76,10 +76,9 @@
 - (id)initWithRawLocation:(id)arg1 locationMatchType:(unsigned long long)arg2;
 - (id)initWithRoadMatch:(id)arg1 rawLocation:(id)arg2 locationMatchType:(unsigned long long)arg3;
 - (id)initWithRouteMatch:(id)arg1 rawLocation:(id)arg2 locationMatchType:(unsigned long long)arg3;
-- (id)initWithClientLocation:(CDStruct_a4140ae0)arg1;
-@property(readonly, nonatomic) int _nav_source;
+- (id)initWithClientLocation:(CDStruct_7cf4616f)arg1;
+- (id)initWithCLLocation:(id)arg1;
 @property(nonatomic) unsigned long long traceIndex;
-- (id)initWithGEOLocation:(id)arg1;
 
 @end
 

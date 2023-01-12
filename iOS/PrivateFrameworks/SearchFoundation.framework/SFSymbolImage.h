@@ -12,11 +12,25 @@
 
 @interface SFSymbolImage <SFSymbolImage, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int punchThroughBackground:1;
+        unsigned int backgroundColor:1;
+        unsigned int primaryColor:1;
+        unsigned int secondaryColor:1;
+    } _has;
+    _Bool _punchThroughBackground;
+    int _backgroundColor;
+    int _primaryColor;
+    int _secondaryColor;
     NSString *_symbolName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) int secondaryColor; // @synthesize secondaryColor=_secondaryColor;
+@property(nonatomic) int primaryColor; // @synthesize primaryColor=_primaryColor;
+@property(nonatomic) int backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(nonatomic) _Bool punchThroughBackground; // @synthesize punchThroughBackground=_punchThroughBackground;
 @property(copy, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -25,9 +39,14 @@
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasSecondaryColor;
+- (_Bool)hasPrimaryColor;
+- (_Bool)hasBackgroundColor;
+- (_Bool)hasPunchThroughBackground;
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties
+@property(copy, nonatomic) NSString *accessibilityLabel;
 @property(copy, nonatomic) NSString *contentType;
 @property(nonatomic) double cornerRadius;
 @property(nonatomic) int cornerRoundingStyle;

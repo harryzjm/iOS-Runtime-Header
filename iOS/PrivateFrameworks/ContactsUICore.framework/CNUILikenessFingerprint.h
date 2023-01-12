@@ -6,10 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@interface CNUILikenessFingerprint : NSObject
+#import <ContactsUICore/NSCopying-Protocol.h>
+
+@protocol _CNUILikenessFingerprintImpl;
+
+@interface CNUILikenessFingerprint : NSObject <NSCopying>
 {
+    id <_CNUILikenessFingerprintImpl> _impl;
 }
 
++ (id)implForContact:(id)arg1;
 + (id)fingerprintForScope:(id)arg1;
 + (id)publicFingerprintForContacts:(id)arg1 scope:(id)arg2;
 + (id)fingerprintForContacts:(id)arg1 scope:(id)arg2;
@@ -17,6 +23,15 @@
 + (id)fingerprintForContactIdentifier:(id)arg1;
 + (id)publicFingerprintForContact:(id)arg1;
 + (id)fingerprintForContact:(id)arg1;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)hasContactIdentifier:(id)arg1;
+- (id)initWithImpl:(id)arg1;
+- (id)initWithContacts:(id)arg1 badges:(id)arg2 scope:(id)arg3;
+- (id)initWithContact:(id)arg1;
 
 @end
 

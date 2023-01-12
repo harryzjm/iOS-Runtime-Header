@@ -16,10 +16,10 @@
 
 + (id)attributeWithVariable:(id)arg1 value:(tvec2_84d5962d)arg2;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(nonatomic) tvec2_84d5962d value; // @synthesize value=_value;
 @property(retain, nonatomic) TSCH3DShaderVariable *variable; // @synthesize variable=_variable;
 - (_Bool)isValid;
-- (void)dealloc;
 - (id)initWithVariable:(id)arg1 value:(tvec2_84d5962d)arg2;
 - (id)init;
 

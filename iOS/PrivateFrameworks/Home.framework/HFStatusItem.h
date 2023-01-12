@@ -22,6 +22,7 @@
 + (id)characteristicTypesForServiceType:(id)arg1 includingAssociatedTypes:(_Bool)arg2;
 + (id)_associatedServiceTypeToServiceTypeMap;
 + (id)_serviceTypeToAssociatedServiceTypesMap;
++ (id)_criticalServiceTypes;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool needsInvalidation; // @synthesize needsInvalidation=_needsInvalidation;
 @property(retain, nonatomic) NSDate *invalidationDate; // @synthesize invalidationDate=_invalidationDate;
@@ -39,10 +40,12 @@
 - (id)filteredServicesOfTypes:(id)arg1;
 - (id)filteredServices;
 - (double)invalidationTimeout;
+- (_Bool)canRepresentAbnormalAndNormalHomeKitObjectsTogether;
 - (id)defaultTitleForRepresentedHomeKitObjects:(id)arg1;
 - (id)iconDescriptorForRepresentedHomeKitObjects:(id)arg1;
 - (id)displayNameForHomeKitObject:(id)arg1;
 - (id)shortTitleForFormat:(id)arg1;
+- (_Bool)_shouldForceVisibleForService:(id)arg1;
 - (void)_updateInvalidationDate;
 - (void)scheduleInvalidation;
 - (_Bool)canScheduleInvalidation;

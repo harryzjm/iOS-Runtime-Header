@@ -4,23 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SFSearchSuggestion;
+@class NSArray, NSString, SFSearchSuggestion;
 
 @interface SPSearchSuggestionResult
 {
+    NSString *_query;
     SFSearchSuggestion *_suggestion;
     NSArray *_searchEntities;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)_richDisplayTextForSuggestion:(id)arg1 forQuery:(id)arg2;
++ (id)searchSuggestionRankingResultWithSuggestion:(id)arg1 query:(id)arg2 sectionBundleIdentifier:(id)arg3 queryId:(unsigned long long)arg4;
++ (id)searchSuggestionRankingResultWithResult:(id)arg1 query:(id)arg2 sectionBundleIdentifier:(id)arg3 queryId:(unsigned long long)arg4;
++ (void)updateRankingItemForSuggestionResult:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *searchEntities; // @synthesize searchEntities=_searchEntities;
-@property(readonly, nonatomic) SFSearchSuggestion *suggestion; // @synthesize suggestion=_suggestion;
+@property(retain, nonatomic) SFSearchSuggestion *suggestion; // @synthesize suggestion=_suggestion;
+@property(retain, nonatomic) NSString *query; // @synthesize query=_query;
+- (id)suggestionsFeedbackData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithSearchSuggestion:(id)arg1 query:(id)arg2 sectionBundleIdentifier:(id)arg3 queryId:(unsigned long long)arg4;
+- (id)initWithSearchResult:(id)arg1 query:(id)arg2 sectionBundleIdentifier:(id)arg3 queryId:(unsigned long long)arg4;
 
 @end
 

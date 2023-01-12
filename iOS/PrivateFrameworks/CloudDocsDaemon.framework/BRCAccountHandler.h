@@ -8,54 +8,67 @@
 
 #import <CloudDocsDaemon/MCProfileConnectionObserver-Protocol.h>
 
-@class BRCAccountSession, NSMutableDictionary, NSString;
-@protocol BRCAccountHandlerDelegate, OS_dispatch_queue, OS_dispatch_workloop;
+@class BRCAccountSession, BRDSIDString, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_workloop;
 
 @interface BRCAccountHandler : NSObject <MCProfileConnectionObserver>
 {
+    NSString *_accountPath;
+    NSString *_ubiquityTokenSalt;
     BRCAccountSession *_session;
-    NSString *_currentAccountID;
+    BRDSIDString *_dbAccountDSID;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_migrationStatusSetterQueue;
     _Bool _hasSetMigrationComplete;
+    NSMutableArray *_accountsNeedingAddDomain;
     NSMutableDictionary *_syncPolicyByFolderType;
-    id <BRCAccountHandlerDelegate> _delegate;
+    NSHashTable *_delegates;
+    _Bool _doesNotHaveEnoughDiskSpaceToBeFunctional;
+    NSString *_acAccountID;
     NSObject<OS_dispatch_workloop> *_pushWorkloop;
+    NSError *_loggedOutError;
 }
 
-+ (_Bool)destroyCurrentAccountSynchronously;
-+ (id)primaryiCloudAccountID;
-+ (id)primaryiCloudAccount;
-+ (void)_migrateAccountIfNecessaryForAccountID:(id)arg1;
-+ (id)mobileDocsAccountID;
-+ (id)dbAccountID;
-+ (id)accountIDPath;
++ (id)currentiCloudAccountID;
++ (id)currentiCloudAccount;
++ (void)_migrateAccountIfNecessaryForAccountDSID:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSError *loggedOutError; // @synthesize loggedOutError=_loggedOutError;
 @property(readonly, nonatomic) NSObject<OS_dispatch_workloop> *pushWorkloop; // @synthesize pushWorkloop=_pushWorkloop;
+@property(readonly, nonatomic) NSString *accountPath; // @synthesize accountPath=_accountPath;
 @property(readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
-@property(nonatomic) __weak id <BRCAccountHandlerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) NSString *acAccountID; // @synthesize acAccountID=_acAccountID;
+@property(nonatomic) _Bool doesNotHaveEnoughDiskSpaceToBeFunctional; // @synthesize doesNotHaveEnoughDiskSpaceToBeFunctional=_doesNotHaveEnoughDiskSpaceToBeFunctional;
 - (void)setSyncPolicy:(long long)arg1 forSyncedFolderType:(unsigned long long)arg2;
 - (long long)syncPolicyforSyncedFolderType:(unsigned long long)arg1;
 - (void)reloadSyncedFolderPoliciesDisableiCloudDesktop:(_Bool)arg1;
 - (void)reloadSyncedFolderPolicies;
 - (void)markMigrationCompletedForDSID:(id)arg1;
+- (void)setMigrationStatus:(BOOL)arg1 forDSID:(id)arg2 shouldUpdateAccount:(_Bool)arg3 shouldPostAccountChangedNotification:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setMigrationStatus:(BOOL)arg1 forDSID:(id)arg2 shouldUpdateAccount:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-- (_Bool)createCurrentAccountSessionWithID:(id)arg1 error:(id *)arg2;
-- (void)destroyCurrentSessionSynchronously;
-- (void)_updateAccountToAccountID:(id)arg1;
+- (_Bool)createAccountSessionWithDSID:(id)arg1 error:(id *)arg2;
+- (_Bool)destroySessionSynchronously;
+- (void)_updateAccountToDSID:(id)arg1;
+- (_Bool)destroyCurrentAccountSynchronously;
 - (void)_handleAccountDidChange;
 - (void)_handleAccountWillChange;
 - (_Bool)_createCurrentAccountSessionWithID:(id)arg1 error:(id *)arg2;
-- (_Bool)_loadCurrentOnDiskAccountSessionWithError:(id *)arg1;
+- (_Bool)_loadOnDiskAccountSessionWithError:(id *)arg1;
+- (_Bool)checkEnoughDiskSpaceToBeFunctional;
+- (id)ubiquityTokenSalt;
 - (void)_destroyCurrentSessionSynchronously;
 - (void)__destroySessionWithIntents:(id)arg1;
 - (void)jetsamCloudDocsApps;
-- (void)startAndLoadCurrentAccountSynchronously;
+- (void)addFileProviderDomainForAccount:(id)arg1 error:(id *)arg2;
+- (void)startAndLoadAccountSynchronously:(id)arg1;
 - (void)_cleanupPushAndActivitiesStatesWhenNoSessionExists;
-- (_Bool)setDBAccountID:(id)arg1;
+- (_Bool)_cleanupAPFSSnapshotWhenNoSessionExists;
+- (_Bool)setDBAccountDSID:(id)arg1;
 - (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
+- (void)removeDelegate:(id)arg1;
+- (void)addDelegate:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithACAccountID:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

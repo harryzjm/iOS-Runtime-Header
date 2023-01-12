@@ -10,7 +10,6 @@
 
 @class CKDOperationMetrics, NSMutableDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationStatistics : NSObject <NSCopying>
 {
     NSString *_operationClassName;

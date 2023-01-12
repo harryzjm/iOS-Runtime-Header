@@ -20,9 +20,11 @@
     long long _desiredWallpaperOrientation;
     long long _wallpaperStyle;
     SBWallpaperEffectView *_wallpaperEffectView;
+    unsigned long long _maskedCorners;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(readonly, nonatomic) SBWallpaperEffectView *wallpaperEffectView; // @synthesize wallpaperEffectView=_wallpaperEffectView;
@@ -33,7 +35,6 @@
 - (void)_updateWallpaperOrientation;
 - (void)_updateCornerRadius;
 - (id)_viewForWallpaperWrapper;
-- (_Bool)_deviceSupportsEdgeAntiAliasing;
 @property(readonly, nonatomic) _Bool contentRequiresGroupOpacity;
 - (struct CGRect)_wallpaperFrame;
 - (void)layoutSubviews;

@@ -8,17 +8,17 @@
 
 @interface TSKFractionFormat <NSCopying>
 {
+    BOOL _fractionAccuracy;
     _Bool _usePlusSign;
-    int _fractionAccuracy;
 }
 
 @property(readonly, nonatomic) _Bool usePlusSign; // @synthesize usePlusSign=_usePlusSign;
-@property(readonly, nonatomic) int fractionAccuracy; // @synthesize fractionAccuracy=_fractionAccuracy;
+@property(readonly, nonatomic) BOOL fractionAccuracy; // @synthesize fractionAccuracy=_fractionAccuracy;
 - (id)asFractionFormat;
 - (id)stringFromDouble:(double)arg1 locale:(id)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithFractionAccuracy:(int)arg1;
+- (id)initWithFractionAccuracy:(BOOL)arg1;
 - (id)initWithFormatType:(unsigned int)arg1;
 
 @end

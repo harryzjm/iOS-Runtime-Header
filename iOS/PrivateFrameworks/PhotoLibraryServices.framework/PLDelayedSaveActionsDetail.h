@@ -13,6 +13,7 @@
 @interface PLDelayedSaveActionsDetail : NSObject <NSSecureCoding>
 {
     _Bool _shouldReloadWidgetTimeline;
+    _Bool _shouldUpdateFeaturedContent;
     NSArray *_cloudFeedAlbumUpdates;
     NSArray *_cloudFeedAssetInserts;
     NSArray *_cloudFeedAssetUpdates;
@@ -28,16 +29,21 @@
     NSArray *_assetsForFilesystemPersistency;
     NSDictionary *_searchIndexUpdates;
     NSSet *_albumCountsAndDateRangeUpdates;
+    NSSet *_importSessionCountsAndDateRangeUpdates;
     NSSet *_assetsForDuetDelete;
     NSSet *_memoriesForDuetDelete;
+    NSSet *_memoriesForAssetUpdate;
 }
 
 + (id)_decodeMomentDeletes:(id)arg1 urlToObjectID:(CDUnknownBlockType)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *memoriesForAssetUpdate; // @synthesize memoriesForAssetUpdate=_memoriesForAssetUpdate;
+@property(nonatomic) _Bool shouldUpdateFeaturedContent; // @synthesize shouldUpdateFeaturedContent=_shouldUpdateFeaturedContent;
 @property(nonatomic) _Bool shouldReloadWidgetTimeline; // @synthesize shouldReloadWidgetTimeline=_shouldReloadWidgetTimeline;
 @property(copy, nonatomic) NSSet *memoriesForDuetDelete; // @synthesize memoriesForDuetDelete=_memoriesForDuetDelete;
 @property(copy, nonatomic) NSSet *assetsForDuetDelete; // @synthesize assetsForDuetDelete=_assetsForDuetDelete;
+@property(copy, nonatomic) NSSet *importSessionCountsAndDateRangeUpdates; // @synthesize importSessionCountsAndDateRangeUpdates=_importSessionCountsAndDateRangeUpdates;
 @property(copy, nonatomic) NSSet *albumCountsAndDateRangeUpdates; // @synthesize albumCountsAndDateRangeUpdates=_albumCountsAndDateRangeUpdates;
 @property(copy, nonatomic) NSDictionary *searchIndexUpdates; // @synthesize searchIndexUpdates=_searchIndexUpdates;
 @property(copy, nonatomic) NSArray *assetsForFilesystemPersistency; // @synthesize assetsForFilesystemPersistency=_assetsForFilesystemPersistency;

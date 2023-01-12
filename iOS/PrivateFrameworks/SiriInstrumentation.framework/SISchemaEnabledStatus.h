@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
+@class NSData, SISchemaAnnounceEnabledStatus;
 
-@class NSData;
-
-@interface SISchemaEnabledStatus : PBCodable
+@interface SISchemaEnabledStatus
 {
     _Bool _assistantEnabled;
     _Bool _dictationEnabled;
@@ -23,6 +21,8 @@
     _Bool _typeToSiriEnabled;
     _Bool _isPreciseLocationEnabled;
     int _voiceFeedback;
+    SISchemaAnnounceEnabledStatus *_announceEnabledStatus;
+    _Bool _isAdaptiveVolumeEnabled;
     struct {
         unsigned int assistantEnabled:1;
         unsigned int dictationEnabled:1;
@@ -37,9 +37,15 @@
         unsigned int typeToSiriEnabled:1;
         unsigned int isPreciseLocationEnabled:1;
         unsigned int voiceFeedback:1;
+        unsigned int isAdaptiveVolumeEnabled:1;
     } _has;
+    _Bool _hasAnnounceEnabledStatus;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool hasAnnounceEnabledStatus; // @synthesize hasAnnounceEnabledStatus=_hasAnnounceEnabledStatus;
+@property(nonatomic) _Bool isAdaptiveVolumeEnabled; // @synthesize isAdaptiveVolumeEnabled=_isAdaptiveVolumeEnabled;
+@property(retain, nonatomic) SISchemaAnnounceEnabledStatus *announceEnabledStatus; // @synthesize announceEnabledStatus=_announceEnabledStatus;
 @property(nonatomic) int voiceFeedback; // @synthesize voiceFeedback=_voiceFeedback;
 @property(nonatomic) _Bool isPreciseLocationEnabled; // @synthesize isPreciseLocationEnabled=_isPreciseLocationEnabled;
 @property(nonatomic) _Bool typeToSiriEnabled; // @synthesize typeToSiriEnabled=_typeToSiriEnabled;
@@ -61,6 +67,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasIsAdaptiveVolumeEnabled;
 @property(nonatomic) _Bool hasVoiceFeedback;
 @property(nonatomic) _Bool hasIsPreciseLocationEnabled;
 @property(nonatomic) _Bool hasTypeToSiriEnabled;

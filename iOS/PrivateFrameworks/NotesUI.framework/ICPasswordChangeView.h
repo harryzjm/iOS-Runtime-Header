@@ -8,6 +8,7 @@
 
 @class ICPasswordChangeViewController;
 
+__attribute__((visibility("hidden")))
 @interface ICPasswordChangeView : UIView
 {
     ICPasswordChangeViewController *_parentViewController;

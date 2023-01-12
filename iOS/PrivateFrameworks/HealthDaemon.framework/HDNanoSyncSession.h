@@ -22,11 +22,9 @@
 - (id)changeSetWithChanges:(id)arg1 statusCode:(int)arg2 error:(id)arg3;
 - (_Bool)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (id)syncPredicate;
-- (id)_syncPredicate;
-- (id)_intervalForSecondsSinceDaysAgo:(unsigned long long)arg1;
 - (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
 - (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
-- (id)newChangeWithSyncEntityClass:(Class)arg1;
+- (id)newChangeWithSyncEntityClass:(Class)arg1 version:(CDStruct_c12fb951)arg2;
 @property(readonly, nonatomic) HDNanoSyncStore *nanoSyncStore;
 @property(readonly, nonatomic, getter=isLastChance) _Bool lastChance;
 @property(readonly, nonatomic, getter=isRequestedByRemote) _Bool requestedByRemote;

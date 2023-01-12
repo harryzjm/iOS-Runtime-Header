@@ -11,20 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface VKNotificationObserver : NSObject
 {
-    struct _geo_weak_ptr<id<VKNotificationObserverDelegate>> {
-        id <VKNotificationObserverDelegate> _p;
-    } _target;
+    id <VKNotificationObserverDelegate> _target;
     SEL _selector;
     NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_receivedLocalChangedNotification;
 - (void)_receivedFlushTileCachesNotification;
 - (void)_receivedMemoryNotification;
 - (void)dealloc;
-- (id)initWithTarget:(id)arg1 taskContext:(const struct TaskContext *)arg2;
+- (id)initWithTarget:(id)arg1 taskContext:(const void *)arg2;
 
 @end
 

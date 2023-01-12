@@ -46,6 +46,7 @@
 - (void)resetChangedAnnotations;
 - (id)changedAnnotations;
 - (void)clearAnnotationChanges;
+- (id)lastAnnotationChange;
 - (id)annotationChanges;
 - (void)changedAnnotation:(id)arg1;
 - (id)scannedAnnotationAtPoint:(struct CGPoint)arg1;
@@ -60,7 +61,7 @@
 - (void)enableUndoManagerForAK:(_Bool)arg1;
 - (_Bool)disableUndoManagerForAK;
 - (id)scannedAnnotations;
-- (void)drawBurnedInAnnotationsWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
+- (void)drawAnnotationsWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (struct CGAffineTransform)getDrawingTransformForBox:(long long)arg1;
 - (id)view;
 - (void)setView:(id)arg1;
@@ -78,6 +79,8 @@
 - (void)_buildPageLayout;
 - (struct __CFDictionary *)gcCreateBoxDictionary;
 - (_Bool)_writeToConsumer:(struct CGDataConsumer *)arg1;
+- (void)clearDisplayList;
+- (void)_releaseDisplayList;
 - (void)_ensureDisplayListIsCreated;
 - (void)createDisplayList;
 - (struct CGDisplayList *)displayList;
@@ -109,7 +112,7 @@
 - (struct CGAffineTransform)transformForBox:(long long)arg1;
 - (struct CGRect)columnFrameAtPoint:(struct CGPoint)arg1;
 - (id)selectionForCodeRange:(struct _NSRange)arg1;
-- (struct CGImage *)_newCGImageWithBox:(long long)arg1 bitmapSize:(struct CGSize)arg2 scale:(double)arg3 offset:(struct CGPoint)arg4 backgroundColor:(id)arg5 withRotation:(_Bool)arg6 withAntialiasing:(_Bool)arg7 withAnnotations:(_Bool)arg8 withBookmark:(_Bool)arg9 withDelegate:(id)arg10;
+- (struct CGImage *)_newCGImageWithBox:(long long)arg1 bitmapSize:(struct PDFSizeIntegral)arg2 scale:(double)arg3 offset:(struct CGPoint)arg4 backgroundColor:(id)arg5 withRotation:(_Bool)arg6 withAntialiasing:(_Bool)arg7 withAnnotations:(_Bool)arg8 withBookmark:(_Bool)arg9 withDelegate:(id)arg10;
 - (id)imageOfSize:(struct CGSize)arg1 forBox:(long long)arg2 withOptions:(id)arg3;
 - (id)thumbnailOfSize:(struct CGSize)arg1 forBox:(long long)arg2 withBookmark:(_Bool)arg3 withAnnotations:(_Bool)arg4;
 - (id)thumbnailOfSize:(struct CGSize)arg1 forBox:(long long)arg2 withBookmark:(_Bool)arg3;

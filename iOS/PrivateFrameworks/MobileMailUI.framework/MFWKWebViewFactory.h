@@ -6,24 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class EFQueue, WKProcessPool;
+#import <MobileMailUI/EFLoggable-Protocol.h>
 
-@interface MFWKWebViewFactory : NSObject
+@class EFQueue, EMRemoteContentURLSchemeHandler, EMRemoteContentURLSession, NSString, WKProcessPool;
+
+@interface MFWKWebViewFactory : NSObject <EFLoggable>
 {
+    EMRemoteContentURLSchemeHandler *_proxySchemeHandler;
+    EMRemoteContentURLSchemeHandler *_noProxySchemeHandler;
+    EMRemoteContentURLSession *_urlSession;
     EFQueue *_preallocatedWebViews;
     WKProcessPool *_processPool;
 }
 
 + (id)sharedWebViewFactory;
++ (void)setDaemonInterface:(id)arg1 URLCacheWithMemoryCapacity:(unsigned long long)arg2;
++ (id)log;
 - (void).cxx_destruct;
 @property(retain, nonatomic) WKProcessPool *processPool; // @synthesize processPool=_processPool;
 @property(retain, nonatomic) EFQueue *preallocatedWebViews; // @synthesize preallocatedWebViews=_preallocatedWebViews;
+@property(readonly, nonatomic) EMRemoteContentURLSession *urlSession; // @synthesize urlSession=_urlSession;
 - (id)webView;
 - (void)preallocateWebViewIfNeeded;
 - (void)preallocateWebViews;
 - (id)_instantiateWebView;
 - (void)_didReceiveMemoryWarning:(id)arg1;
+- (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

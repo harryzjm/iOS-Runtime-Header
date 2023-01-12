@@ -8,7 +8,7 @@
 
 #import <VideosUI/NSCopying-Protocol.h>
 
-@class NSString, UIColor, UIImage;
+@class UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface VUIMonogramViewConfiguration : NSObject <NSCopying>
@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
     double _focusedShadowAlpha;
     UIImage *_unfocusedShadowImage;
     UIImage *_focusedShadowImage;
-    NSString *_titleTextStyle;
+    long long _titleTextStyle;
     UIColor *_titleUnfocusedColor;
     UIColor *_titleFocusedColor;
-    NSString *_subtitleTextStyle;
+    long long _subtitleTextStyle;
     UIColor *_subtitleUnfocusedColor;
     UIColor *_subtitleFocusedColor;
 }
@@ -32,10 +32,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *subtitleFocusedColor; // @synthesize subtitleFocusedColor=_subtitleFocusedColor;
 @property(retain, nonatomic) UIColor *subtitleUnfocusedColor; // @synthesize subtitleUnfocusedColor=_subtitleUnfocusedColor;
-@property(copy, nonatomic) NSString *subtitleTextStyle; // @synthesize subtitleTextStyle=_subtitleTextStyle;
+@property(nonatomic) long long subtitleTextStyle; // @synthesize subtitleTextStyle=_subtitleTextStyle;
 @property(retain, nonatomic) UIColor *titleFocusedColor; // @synthesize titleFocusedColor=_titleFocusedColor;
 @property(retain, nonatomic) UIColor *titleUnfocusedColor; // @synthesize titleUnfocusedColor=_titleUnfocusedColor;
-@property(copy, nonatomic) NSString *titleTextStyle; // @synthesize titleTextStyle=_titleTextStyle;
+@property(nonatomic) long long titleTextStyle; // @synthesize titleTextStyle=_titleTextStyle;
 @property(retain, nonatomic) UIImage *focusedShadowImage; // @synthesize focusedShadowImage=_focusedShadowImage;
 @property(retain, nonatomic) UIImage *unfocusedShadowImage; // @synthesize unfocusedShadowImage=_unfocusedShadowImage;
 @property(nonatomic) double focusedShadowAlpha; // @synthesize focusedShadowAlpha=_focusedShadowAlpha;

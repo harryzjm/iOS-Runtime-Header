@@ -43,7 +43,6 @@
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (id)toIPMessage;
 
 @end
 

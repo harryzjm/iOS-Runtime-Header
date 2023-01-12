@@ -4,15 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HDCloudSyncRepairStoreRecordsOperation
+#import <HealthDaemon/HDSynchronousTaskGroupDelegate-Protocol.h>
+
+@class HDSynchronousTaskGroup, NSString;
+
+@interface HDCloudSyncRepairStoreRecordsOperation <HDSynchronousTaskGroupDelegate>
 {
+    HDSynchronousTaskGroup *_taskGroup;
 }
 
-- (void)_repairStoreRecordWithRandomOwnerIdentifier:(id)arg1;
-- (void)_repairStoreRecord:(id)arg1 unifiedSyncZone:(id)arg2;
-- (void)_repairStoreRecordsForZone:(id)arg1;
-- (void)_repairRecordsForContainer:(id)arg1 database:(id)arg2;
+- (void).cxx_destruct;
+- (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
 - (void)main;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -28,6 +28,9 @@ __attribute__((visibility("hidden")))
     int _overridenSelectedKeyType;
     _Bool _shouldConfigureFloatingContentView;
     _Bool _shouldToggleLetterCaseNext;
+    struct CGPoint _keyplaneSwitchSelectedKeyFrameCenter;
+    _Bool _selectInitialKey;
+    unsigned long long _lastSelectedKeyIndex;
     UIAlertController *_recentInputsAlert;
     NSString *_keyplaneBeforeDictation;
     long long _selectedKeyBeforeDictation;
@@ -41,8 +44,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *keyplaneBeforeDictation; // @synthesize keyplaneBeforeDictation=_keyplaneBeforeDictation;
 @property(retain, nonatomic) UIAlertController *recentInputsAlert; // @synthesize recentInputsAlert=_recentInputsAlert;
 @property(readonly, nonatomic, getter=isSlimLinearKeyboardTV) _Bool slimLinearKeyboardTV;
-- (_Bool)_isKeyboardReverseOfSystemLanguageCharacterDirection;
-- (unsigned long long)_indexOfFirstKeyOfInteractionType:(int)arg1;
+- (id)getRomanAccentVariantsForString:(id)arg1 inputMode:(id)arg2 keyboardVariantIndludes:(int)arg3;
+- (_Bool)_isKeyboardReverseOfAppLayoutDirection;
+- (unsigned long long)_indexOfFirstKeyPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)_handleMoveWithEvent:(id)arg1;
 - (_Bool)_isDirectionalHeading:(unsigned long long)arg1;
 - (void)_moveWithEvent:(id)arg1;
@@ -67,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canHandleEvent:(id)arg1;
 - (id)keyHitTestInSameRowAsCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2;
 - (long long)targetKeyIndexAtOffset:(struct CGPoint)arg1 fromKey:(id)arg2;
+- (long long)targetKeyIndexFromPoint:(struct CGPoint)arg1 inKeys:(id)arg2;
 - (long long)targetKeyIndexFromPoint:(struct CGPoint)arg1;
 - (void)setHighlightedVariantIndex:(long long)arg1 key:(id)arg2;
 - (_Bool)refreshSelectedCellIfNecessaryForKey:(id)arg1;
@@ -124,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (void)setKeyboardAppearance:(long long)arg1;
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+- (Class)keyViewAnimatorClassForCurrentKeyboardLayout;
 - (id)keyViewAnimator;
 - (void)_reducedTransparencyDidChange:(id)arg1;
 - (void)_accessibilityBoldTextChanged:(id)arg1;

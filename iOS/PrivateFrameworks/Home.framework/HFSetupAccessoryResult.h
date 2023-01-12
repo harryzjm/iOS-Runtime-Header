@@ -16,7 +16,6 @@
     HMSetupAccessoryPayload *_setupPayload;
 }
 
-+ (_Bool)isHomeKitURL:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isValidForPairing; // @synthesize isValidForPairing=_isValidForPairing;
 @property(readonly, nonatomic) _Bool hasAddRequest; // @synthesize hasAddRequest=_hasAddRequest;
@@ -26,6 +25,7 @@
 - (id)description;
 - (id)initWithSetupCode:(id)arg1;
 - (id)initWithSetupURL:(id)arg1;
+- (id)initWithPayload:(id)arg1;
 - (id)initWithPayload:(id)arg1 hasAddRequest:(_Bool)arg2;
 - (id)initWithPayload:(id)arg1 error:(id)arg2 hasAddRequest:(_Bool)arg3;
 

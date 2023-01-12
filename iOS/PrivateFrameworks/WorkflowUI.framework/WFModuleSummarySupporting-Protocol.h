@@ -12,6 +12,7 @@
 @protocol WFModuleSummarySupporting <NSObject>
 
 @optional
++ (Class)moduleSummaryEditorClass;
 - (_Bool)moduleSummaryShowsAddButtonForState:(id <WFParameterState>)arg1;
 - (id <WFParameterState>)defaultStateForNewArrayElement;
 - (NSArray *)moduleSummarySlotsForState:(id <WFParameterState>)arg1;

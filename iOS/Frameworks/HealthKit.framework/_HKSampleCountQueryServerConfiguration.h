@@ -6,17 +6,17 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSSet;
+@class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _HKSampleCountQueryServerConfiguration <NSSecureCoding>
 {
-    NSSet *_sampleQueryDescriptions;
+    NSArray *_queryDescriptors;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSSet *sampleQueryDescriptions; // @synthesize sampleQueryDescriptions=_sampleQueryDescriptions;
+@property(copy, nonatomic) NSArray *queryDescriptors; // @synthesize queryDescriptors=_queryDescriptors;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

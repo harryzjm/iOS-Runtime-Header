@@ -11,8 +11,7 @@
 @interface _TtC7SwiftUIP33_F2BB00CEA25D2617C18DE8984EB64B5319UserDefaultObserver : NSObject
 {
     MISSING_TYPE *state;
-    MISSING_TYPE *host;
-    MISSING_TYPE *signal;
+    MISSING_TYPE *target;
 }
 
 - (void).cxx_destruct;

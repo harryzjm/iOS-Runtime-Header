@@ -26,14 +26,16 @@ __attribute__((visibility("hidden")))
 - (void)optOutStreamIDs:(id)arg1;
 - (void)optInStreamIDs:(id)arg1;
 - (void)requestSessionInfoWithOptions:(id)arg1;
+- (void)startMKMRecoveryForParticipantIDs:(id)arg1;
+- (void)setOneToOneModeEnabled:(_Bool)arg1 isInitiator:(_Bool)arg2;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (void)queryProbingResultsWithOptions:(id)arg1;
 - (void)stopActiveProbingWithOptions:(id)arg1;
 - (void)startActiveProbingWithOptions:(id)arg1;
 - (void)setWiFiAssist:(_Bool)arg1;
 - (void)setChannelPreferences:(id)arg1;
-- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_c3727dd2 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_4aae7d13 *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_c6a5d548 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)osChannelInfoLog;
 - (void)readyToRead;
 - (void)setEventHandler:(CDUnknownBlockType)arg1;

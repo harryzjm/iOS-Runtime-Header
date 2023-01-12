@@ -25,7 +25,6 @@
 + (id)contextForReading;
 + (id)contextForWritingProtectedData;
 + (id)contextForWriting;
-+ (id)_cachedContextForOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDDatabaseTransactionContextStatistics *statistics; // @synthesize statistics=_statistics;
 @property(readonly, nonatomic) long long cacheScope; // @synthesize cacheScope=_cacheScope;
@@ -36,7 +35,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, copy, nonatomic) NSSet *accessibilityAssertions;
-- (void)_applyOptions:(unsigned long long)arg1 enable:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool highPriority;
 @property(readonly, nonatomic) _Bool requiresProtectedData;
 @property(readonly, nonatomic) _Bool requiresWrite;
@@ -48,7 +46,6 @@
 - (id)copyForReadingProtectedData;
 - (id)copyForWritingProtectedData;
 - (id)copyForWriting;
-- (id)_initWithOptions:(unsigned long long)arg1 journalType:(long long)arg2 cacheScope:(long long)arg3 assertions:(id)arg4 statistics:(id)arg5;
 - (id)_initWithOptions:(unsigned long long)arg1;
 - (id)init;
 

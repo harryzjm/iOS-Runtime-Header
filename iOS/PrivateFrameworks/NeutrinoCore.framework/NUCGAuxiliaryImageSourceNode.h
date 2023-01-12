@@ -14,12 +14,17 @@
 
 - (void).cxx_destruct;
 @property(retain) NUCGImageSourceNode *sourceNode; // @synthesize sourceNode=_sourceNode;
+- (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;
-- (_Bool)canPropagateOriginalAuxiliaryData;
 - (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
+- (_Bool)supportsPipelineState:(id)arg1 error:(out id *)arg2;
+- (_Bool)shouldCacheNodeForPipelineState:(id)arg1;
+- (_Bool)canPropagateOriginalAuxiliaryData;
 - (long long)sourceOrientation;
 - (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
 - (id)pipelineOptionsForPipelineState:(id)arg1 error:(out id *)arg2;
+@property(readonly) long long auxiliaryImageType;
 - (id)initWithSourceNode:(id)arg1 auxiliaryImageProperties:(id)arg2;
 - (id)initWithSettings:(id)arg1;
 

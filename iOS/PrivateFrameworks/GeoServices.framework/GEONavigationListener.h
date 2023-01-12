@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEONavigationServerListenerXPCInterface-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class GEOLocation, NSString, NSXPCConnection;
 @protocol GEONavigationListenerDelegate, OS_dispatch_queue;
 
 @interface GEONavigationListener : NSObject <GEONavigationServerListenerXPCInterface>
@@ -18,6 +18,7 @@
     int _navigationStartedToken;
     int _navigationStoppedToken;
     int _navigationRoutePreviewToken;
+    _Bool _wantsRoutes;
     id <GEONavigationListenerDelegate> _delegate;
     CDUnknownBlockType _routeSummaryUpdatedHandler;
     CDUnknownBlockType _transitSummaryUpdatedHandler;
@@ -31,6 +32,7 @@
     CDUnknownBlockType _navigationVoiceVolumeUpdatedHandler;
     unsigned long long _navigationState;
     int _transportType;
+    GEOLocation *_lastLocation;
     NSString *_currentRoadName;
 }
 
@@ -48,18 +50,6 @@
 @property(readonly, nonatomic) NSString *currentRoadName; // @synthesize currentRoadName=_currentRoadName;
 @property(readonly, nonatomic) unsigned long long navigationState; // @synthesize navigationState=_navigationState;
 @property(nonatomic) __weak id <GEONavigationListenerDelegate> delegate; // @synthesize delegate=_delegate;
-- (unsigned long long)_listenerStateForSessionState:(unsigned long long)arg1;
-- (void)_notifyWithNavigationVoiceVolume:(int)arg1;
-- (void)_notifyWithPositionFromDestination:(CDStruct_c3b9c2ee)arg1;
-- (void)_notifyWithPositionFromManeuver:(CDStruct_c3b9c2ee)arg1;
-- (void)_notifyWithPositionFromSign:(CDStruct_c3b9c2ee)arg1;
-- (void)_notifyWithRideSelections:(id)arg1;
-- (void)_notifyWithStepNameInfo:(id)arg1;
-- (void)_notifyWithStepIndex:(unsigned long long)arg1;
-- (void)_notifyWithActiveRouteDetailsData:(id)arg1;
-- (void)_notifyWithGuidanceState:(id)arg1;
-- (void)_notifyWithTransitSummary:(id)arg1;
-- (void)_notifyWithRouteSummary:(id)arg1;
 - (void)currentRoadNameUpdated:(id)arg1;
 - (void)navigationUpdatedWithVoiceVolumeData:(id)arg1;
 - (void)routeSummaryUpdatedWithRideSelectionData:(id)arg1;
@@ -72,10 +62,11 @@
 - (void)routeSummaryUpdatedWithGuidanceStateData:(id)arg1;
 - (void)routeSummaryUpdatedWithTransitSummaryData:(id)arg1;
 - (void)routeSummaryUpdatedWithNavigationRouteSummaryData:(id)arg1;
+- (void)didArriveAtWaypoint:(id)arg1 endOfLegIndex:(unsigned long long)arg2;
+- (void)didUpdateTrafficForCurrentRoute:(id)arg1;
+- (void)didUpdateRoute:(id)arg1;
+- (void)didUpdateLocation:(id)arg1;
 - (void)navigationStateChanged:(unsigned long long)arg1 transportType:(int)arg2;
-- (void)_connectToDaemonIfNeeded;
-- (void)_close;
-- (void)_open;
 - (void)requestNavigationVoiceVolume;
 - (void)requestPositionFromDestination;
 - (void)requestPositionFromManeuver;
@@ -90,6 +81,9 @@
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic) GEOLocation *lastLocation;
+- (void)requestRoute;
+- (id)initWithQueue:(id)arg1 wantsRoutes:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

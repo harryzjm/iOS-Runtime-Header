@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSArray *_infos;
     NSArray *_groupedInfos;
     NSArray *_normalizedGroupedInfos;
-    long long _layoutType;
     double _lineSpacing;
     UIView *_headerView;
     UIView *_footerView;
@@ -28,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct UIEdgeInsets headerMargin; // @synthesize headerMargin=_headerMargin;
 @property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property(readonly, nonatomic) double lineSpacing; // @synthesize lineSpacing=_lineSpacing;
-@property(nonatomic) long long layoutType; // @synthesize layoutType=_layoutType;
 @property(copy, nonatomic) NSArray *normalizedGroupedInfos; // @synthesize normalizedGroupedInfos=_normalizedGroupedInfos;
 @property(copy, nonatomic) NSArray *groupedInfos; // @synthesize groupedInfos=_groupedInfos;
 @property(copy, nonatomic) NSArray *infos; // @synthesize infos=_infos;

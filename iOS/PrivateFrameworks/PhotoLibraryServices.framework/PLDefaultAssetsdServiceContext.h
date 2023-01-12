@@ -24,6 +24,7 @@
 @property(readonly, copy, nonatomic) NSString *clientDebugDescription;
 - (void)awaitLibraryState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)hasEntitlement:(id)arg1;
+- (void)invalidateClientAuthorizationCache;
 @property(readonly, nonatomic) _Bool isClientAuthorizedForTCCServicePhotosAdd;
 @property(readonly, nonatomic) _Bool isClientAuthorizedForTCCServicePhotos;
 - (id)libraryServicesManager;

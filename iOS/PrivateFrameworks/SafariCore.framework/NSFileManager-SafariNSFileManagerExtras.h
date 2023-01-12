@@ -7,6 +7,7 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (SafariNSFileManagerExtras)
+- (void)safari_removeContentsOfDirectory:(id)arg1;
 - (_Bool)safari_removeDirectoryIfEmpty:(id)arg1;
 - (id)safari_frameworksDirectoryURLs;
 - (id)safari_pathWithUniqueFilenameForPath:(id)arg1;
@@ -20,11 +21,14 @@
 - (id)safari_nonContaineredSettingsDirectoryURL;
 - (id)safari_settingsDirectoryURL;
 - (id)safari_settingsDirectoryForHomeDirectory:(id)arg1;
+- (id)safari_webExtensionsSettingsDirectoryURL;
 - (id)safari_settingsDirectoryForLibraryDirectory:(id)arg1;
 - (id)safari_safariLibraryDirectory;
 - (id)_safari_libraryDirectoryForHomeDirectory:(id)arg1;
-- (id)_safari_containerDirectory;
+- (_Bool)safari_currentProcessIsContainerized;
+- (id)safari_mobileSafariContainerDirectoryURL;
 - (id)safari_subdirectoryWithName:(id)arg1 inUserDomainOfDirectory:(unsigned long long)arg2;
 - (id)safari_ensureDirectoryExists:(id)arg1;
+- (void)_safari_getMobileSafariContainerDirectoryURL:(id *)arg1 isContainerized:(_Bool *)arg2;
 @end
 

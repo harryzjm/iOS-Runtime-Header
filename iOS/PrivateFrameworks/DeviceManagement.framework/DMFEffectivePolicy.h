@@ -9,11 +9,12 @@
 #import <DeviceManagement/NSCopying-Protocol.h>
 #import <DeviceManagement/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSSet, NSString;
 
 @interface DMFEffectivePolicy : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_type;
+    NSSet *_excludedIdentifiers;
     NSDictionary *_currentPoliciesByIdentifier;
     NSDictionary *_prioritiesByIdentifier;
     long long _defaultPolicy;
@@ -30,17 +31,18 @@
 @property(readonly, nonatomic) long long defaultPolicy; // @synthesize defaultPolicy=_defaultPolicy;
 @property(readonly, copy, nonatomic) NSDictionary *prioritiesByIdentifier; // @synthesize prioritiesByIdentifier=_prioritiesByIdentifier;
 @property(readonly, copy, nonatomic) NSDictionary *currentPoliciesByIdentifier; // @synthesize currentPoliciesByIdentifier=_currentPoliciesByIdentifier;
+@property(readonly, copy, nonatomic) NSSet *excludedIdentifiers; // @synthesize excludedIdentifiers=_excludedIdentifiers;
 @property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
+- (id)_valueForMatchingHostName:(id)arg1 inRegisteredHostNames:(id)arg2;
 - (long long)priorityForIdentifier:(id)arg1;
-- (long long)policyForIdentifier:(id)arg1;
+- (long long)policyForIdentifier:(id)arg1 excludableIdentifiers:(id)arg2;
 @property(readonly, nonatomic) _Bool downtimeEnforced;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithType:(id)arg1 defaultPolicy:(long long)arg2 currentPoliciesByIdentifier:(id)arg3 defaultPriority:(unsigned long long)arg4 prioritiesByIdentifier:(id)arg5;
-- (id)_valueForMatchingHostName:(id)arg1 inRegisteredHostNames:(id)arg2;
+- (id)initWithType:(id)arg1 defaultPolicy:(long long)arg2 currentPoliciesByIdentifier:(id)arg3 defaultPriority:(unsigned long long)arg4 prioritiesByIdentifier:(id)arg5 excludedIdentifiers:(id)arg6;
 - (unsigned long long)priorityForHostName:(id)arg1;
 - (long long)policyForHostName:(id)arg1;
 

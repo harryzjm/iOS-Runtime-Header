@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
     NSString *_itemID;
     NSString *_itemType;
     NSString *_channelID;
+    NSString *_adamID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
 @property(retain, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 @property(retain, nonatomic) NSString *itemType; // @synthesize itemType=_itemType;
 @property(retain, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;

@@ -9,23 +9,27 @@
 #import <ClassroomKit/CRKClassKitRosterRequirements-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString;
-@protocol CRKClassKitFacade;
+@protocol CRKCancelable, CRKClassKitFacade;
 
 @interface CRKConcreteClassKitRosterRequirements : NSObject <CRKClassKitRosterRequirements>
 {
     _Bool _forInstructor;
-    int _membershipChangeDarwinNotificationToken;
     NSObject<CRKClassKitFacade> *_classKitFacade;
+    id <CRKCancelable> _membershipDidChangeSubscription;
+    id <CRKCancelable> _userDidChangeSubscription;
     NSArray *_dataObservers;
-    NSMutableDictionary *_observersByToken;
+    NSMutableDictionary *_generalObserversByToken;
+    NSMutableDictionary *_personObserversByToken;
 }
 
 + (id)instructorRosterRequirementsWithClassKitFacade:(id)arg1;
 + (id)studentRosterRequirementsWithClassKitFacade:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableDictionary *observersByToken; // @synthesize observersByToken=_observersByToken;
-@property(nonatomic) int membershipChangeDarwinNotificationToken; // @synthesize membershipChangeDarwinNotificationToken=_membershipChangeDarwinNotificationToken;
+@property(readonly, nonatomic) NSMutableDictionary *personObserversByToken; // @synthesize personObserversByToken=_personObserversByToken;
+@property(readonly, nonatomic) NSMutableDictionary *generalObserversByToken; // @synthesize generalObserversByToken=_generalObserversByToken;
 @property(readonly, copy, nonatomic) NSArray *dataObservers; // @synthesize dataObservers=_dataObservers;
+@property(retain, nonatomic) id <CRKCancelable> userDidChangeSubscription; // @synthesize userDidChangeSubscription=_userDidChangeSubscription;
+@property(retain, nonatomic) id <CRKCancelable> membershipDidChangeSubscription; // @synthesize membershipDidChangeSubscription=_membershipDidChangeSubscription;
 @property(readonly, nonatomic, getter=isForInstructor) _Bool forInstructor; // @synthesize forInstructor=_forInstructor;
 @property(readonly, nonatomic) NSObject<CRKClassKitFacade> *classKitFacade; // @synthesize classKitFacade=_classKitFacade;
 - (void)locationsWithObjectIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -48,8 +52,9 @@
 - (id)objectIDsOfTrustedPersonsInClass:(id)arg1;
 - (id)objectIDsOfPersonsInClass:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (id)addObserver:(CDUnknownBlockType)arg1;
-- (void)callObserversWithReason:(id)arg1;
+- (id)addObserverForPersonIDs:(id)arg1 observerBlock:(CDUnknownBlockType)arg2;
+- (id)addGeneralObserver:(CDUnknownBlockType)arg1;
+- (void)callGeneralObserversWithReason:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)stopObservingAccountState;
 - (void)startObservingAccountState;
@@ -61,8 +66,10 @@
 - (id)makeDataObservers;
 - (void)unregisterForMembershipChangeDarwinNotification;
 - (void)registerForMembershipChangeDarwinNotification;
-- (void)currentUserDidChange:(id)arg1;
 - (void)registerForCurrentUserChangeNotification;
+- (id)makeToken;
+- (void)removePersonObserver:(id)arg1;
+- (void)removeGeneralObserver:(id)arg1;
 - (_Bool)isForStudent;
 - (_Bool)ownsError:(id)arg1;
 - (id)initWithClassKitFacade:(id)arg1 isForInstructor:(_Bool)arg2;

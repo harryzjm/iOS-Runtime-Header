@@ -10,6 +10,8 @@
 {
 }
 
++ (void)deleteWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)mapObjectsByContextWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)commitWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)init;

@@ -10,13 +10,13 @@
 
 @interface TSPAlternateArchiver <TSPKnownFieldRuleProvider>
 {
-    RepeatedPtrField_02f83fb8 _fieldPathsToRemove;
+    struct RepeatedPtrField<TSP::FieldPath> _fieldPathsToRemove;
     struct {
         unsigned int hasPreserveNewerValueRule:1;
         unsigned int hasPreserveNewerValueUntilModifiedRule:1;
     } _flags;
     _Bool _isDiff;
-    const struct FieldPath *_fieldPath;
+    const void *_fieldPath;
     unsigned long long _diffReadVersion;
     TSPArchiverBase *_parentArchiver;
 }
@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak TSPArchiverBase *parentArchiver; // @synthesize parentArchiver=_parentArchiver;
 @property(readonly, nonatomic) unsigned long long diffReadVersion; // @synthesize diffReadVersion=_diffReadVersion;
-@property(readonly, nonatomic) const struct FieldPath *fieldPath; // @synthesize fieldPath=_fieldPath;
+@property(readonly, nonatomic) const void *fieldPath; // @synthesize fieldPath=_fieldPath;
 @property(readonly, nonatomic) _Bool isDiff; // @synthesize isDiff=_isDiff;
 - (void)enumerateKnownFieldRulesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isContentUnknown;
@@ -47,10 +47,10 @@
 - (void)setPreserveNewerValueRuleForFieldPath:(int *)arg1 fileFormatVersion:(unsigned long long)arg2 message:(const struct Message *)arg3;
 - (void)setPreserveNewerValueRuleForField:(int)arg1 fileFormatVersion:(unsigned long long)arg2 featureIdentifier:(id)arg3 message:(const struct Message *)arg4;
 - (void)setPreserveNewerValueRuleForField:(int)arg1 fileFormatVersion:(unsigned long long)arg2 message:(const struct Message *)arg3;
-- (const struct FieldPath *)baseFieldPathAndReturnShouldDeleteReturnedValue:(_Bool *)arg1;
-@property(readonly, nonatomic) const RepeatedPtrField_02f83fb8 *fieldPathsToRemove;
+- (const void *)baseFieldPathAndReturnShouldDeleteReturnedValue:(_Bool *)arg1;
+@property(readonly, nonatomic) const void *fieldPathsToRemove;
 - (void)dealloc;
-- (id)initWithObject:(id)arg1 version:(unsigned long long)arg2 fieldPath:(const struct FieldPath *)arg3 isDiff:(_Bool)arg4 diffReadVersion:(unsigned long long)arg5 parentArchiver:(id)arg6;
+- (id)initWithObject:(id)arg1 version:(unsigned long long)arg2 fieldPath:(const void *)arg3 isDiff:(_Bool)arg4 diffReadVersion:(unsigned long long)arg5 parentArchiver:(id)arg6;
 - (id)initWithObject:(id)arg1;
 
 // Remaining properties

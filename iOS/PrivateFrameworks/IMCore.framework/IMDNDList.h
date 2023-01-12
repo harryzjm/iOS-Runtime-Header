@@ -11,6 +11,8 @@
 }
 
 + (id)sharedList;
+- (void)_updateGroupID:(id)arg1 toGroupID:(id)arg2 forChat:(id)arg3;
+- (void)_handleChatGroupIDDidChangeNotification:(id)arg1;
 - (void)_handleDNDListChanged;
 - (void)syncToPairedDeviceIncludingVersion:(_Bool)arg1;
 - (id)groupHashForHandleIDs:(id)arg1;
@@ -23,6 +25,7 @@
 - (_Bool)isMutedChatIdentifier:(id)arg1 handleIDs:(id)arg2 style:(unsigned char)arg3 isSMS:(_Bool)arg4;
 - (_Bool)isMutedChat:(id)arg1;
 - (id)currentList;
+- (id)dndIdentifiersForChat:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

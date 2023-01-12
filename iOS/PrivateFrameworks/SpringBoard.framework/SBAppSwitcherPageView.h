@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 
-@class NSString, SBAppSwitcherPageShadowView, SBAppSwitcherSettings, SBWallpaperEffectView;
-@protocol SBAppSwitcherPageContentView;
+@class NSString, SBAppSwitcherPageShadowView, SBAppSwitcherSettings, SBWallpaperEffectView, UIView;
+@protocol SBAppSwitcherPageContentView, SBAppSwitcherPageViewDelegate;
 
-@interface SBAppSwitcherPageView : UIView <PTSettingsKeyObserver>
+@interface SBAppSwitcherPageView <PTSettingsKeyObserver>
 {
     UIView *_hitTestBlocker;
     UIView *_dimmingView;
@@ -21,11 +19,12 @@
     UIView<SBAppSwitcherPageContentView> *_view;
     UIView *_overlayClippingView;
     UIView *_overlayView;
+    SBAppSwitcherPageShadowView *_shadowView;
     long long _shadowStyle;
     double _shadowAlpha;
     double _shadowOffset;
+    UIView *_contentContainerView;
     struct UIRectCornerRadii _cornerRadii;
-    SBAppSwitcherPageShadowView *_shadowView;
     SBAppSwitcherSettings *_settings;
     long long _orientation;
     _Bool _shouldClipContentView;
@@ -33,19 +32,23 @@
     _Bool _needsBackgroundWallpaperTreatment;
     unsigned long long _highlightType;
     double _switcherCardScale;
-    double _darkeningAlpha;
+    double _dimmingAlpha;
     double _wallpaperOverlayAlpha;
     double _lighteningAlpha;
+    unsigned long long _maskedCorners;
+    id <SBAppSwitcherPageViewDelegate> _delegate;
     struct CGSize _overlayViewSize;
     struct CGSize _fullyPresentedSize;
     struct CGRect _contentClippingFrame;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <SBAppSwitcherPageViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property(nonatomic) double lighteningAlpha; // @synthesize lighteningAlpha=_lighteningAlpha;
 @property(nonatomic) double wallpaperOverlayAlpha; // @synthesize wallpaperOverlayAlpha=_wallpaperOverlayAlpha;
 @property(nonatomic) _Bool needsBackgroundWallpaperTreatment; // @synthesize needsBackgroundWallpaperTreatment=_needsBackgroundWallpaperTreatment;
-@property(nonatomic) double darkeningAlpha; // @synthesize darkeningAlpha=_darkeningAlpha;
+@property(nonatomic) double dimmingAlpha; // @synthesize dimmingAlpha=_dimmingAlpha;
 @property(readonly, nonatomic) SBAppSwitcherPageShadowView *_shadowView; // @synthesize _shadowView;
 @property(readonly, nonatomic) UIView *_overlayClippingView; // @synthesize _overlayClippingView;
 @property(nonatomic) _Bool shouldScaleOverlayToFillBounds; // @synthesize shouldScaleOverlayToFillBounds=_shouldScaleOverlayToFillBounds;
@@ -64,11 +67,9 @@
 @property(retain, nonatomic) UIView<SBAppSwitcherPageContentView> *view; // @synthesize view=_view;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (struct CGRect)_viewFrame;
 - (void)_updateCornerRadius;
 - (void)_updateEffectOverlayViews;
-- (void)_setupShadowView;
-- (void)_updateShadow;
+- (void)_updateShadowPresence;
 - (void)invalidate;
 - (void)_updateLighteningAlpha;
 - (void)_updateWallpaperOverlayAlpha;
@@ -83,6 +84,8 @@
 - (void)_layoutOverlayView;
 - (void)layoutSubviews;
 - (void)_orderSubviews;
+- (void)_addContentView:(id)arg1;
+- (_Bool)_supportsAsymmetricalCornerRadii;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

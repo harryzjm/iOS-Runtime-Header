@@ -6,10 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UIImageView, UILabel;
+@class UIImageView, UILabel, WFTrigger;
 
 @interface WFTriggerTypeCell : UITableViewCell
 {
+    WFTrigger *_trigger;
     Class _triggerTypeClass;
     UIImageView *_triggerIconView;
     UILabel *_triggerTitleLabel;
@@ -21,6 +22,7 @@
 @property(readonly, nonatomic) UILabel *triggerTitleLabel; // @synthesize triggerTitleLabel=_triggerTitleLabel;
 @property(readonly, nonatomic) UIImageView *triggerIconView; // @synthesize triggerIconView=_triggerIconView;
 @property(retain, nonatomic) Class triggerTypeClass; // @synthesize triggerTypeClass=_triggerTypeClass;
+@property(retain, nonatomic) WFTrigger *trigger; // @synthesize trigger=_trigger;
 - (void)updateUI;
 - (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

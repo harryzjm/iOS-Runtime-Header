@@ -25,9 +25,11 @@
 @property(nonatomic) _Bool wantsSidebarHidden; // @synthesize wantsSidebarHidden=_wantsSidebarHidden;
 @property(readonly, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(readonly, nonatomic) UIViewController *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (long long)splitViewController:(id)arg1 displayModeForExpandingToProposedDisplayMode:(long long)arg2;
 - (void)splitViewController:(id)arg1 willChangeToDisplayMode:(long long)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dismissPrimaryColumnIfOverlay;
 - (void)toggleSidebarVisibilityAnimated;
 @property(readonly, nonatomic) _Bool isSidebarVisible;

@@ -22,7 +22,9 @@
 - (id)formattedValueStringForChartData:(id)arg1 options:(long long)arg2;
 - (id)formattedUnitStringForChartData:(id)arg1;
 - (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
+- (id)selectedRangeSeparatorString;
 - (id)_makeSelectedRangeDataWithMin:(double)arg1 max:(double)arg2 unit:(id)arg3 statisticsType:(long long)arg4;
+- (id)_makeSelectedRangeDataWithAvg:(double)arg1 unit:(id)arg2 showUnit:(_Bool)arg3 statisticsType:(long long)arg4;
 - (void)configureFormatterForDisplayType:(id)arg1 quantityType:(id)arg2 chartRangeProvider:(id)arg3 timeScope:(long long)arg4 context:(long long)arg5;
 - (id)_formattedSelectedRangeLabelDataWithChartData:(id)arg1 items:(id)arg2;
 - (id)_formatMin:(double)arg1 max:(double)arg2 unit:(id)arg3;

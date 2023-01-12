@@ -11,6 +11,9 @@
 - (double)ibAdditionalBaselineOffsetFromTop;
 - (struct CGSize)sizeThatFitsBounds;
 - (struct CGRect)ibTextRect;
+- (id)ibSwizzledBackgroundColor;
+- (void)setIbUsingDefaultNilBackgroundColorForCompiling:(_Bool)arg1;
+- (_Bool)ibUsingDefaultNilBackgroundColorForCompiling;
 - (void)setIbTextAlignment:(long long)arg1;
 - (void)setIbTextContentType:(id)arg1;
 - (void)setIbSpellCheckingType:(long long)arg1;
@@ -25,5 +28,6 @@
 - (void)setIbEnablesReturnKeyAutomatically:(_Bool)arg1;
 - (void)setIbAutocorrectionType:(long long)arg1;
 - (void)setIbAutocapitalizationType:(long long)arg1;
+- (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

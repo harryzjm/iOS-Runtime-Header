@@ -32,6 +32,7 @@
 + (id)queryWithPredicate:(id)arg1 onPairedDevice:(id)arg2;
 + (id)queryWithPredicate:(id)arg1;
 + (id)queryForSystemAppsOnPairedDevice:(id)arg1;
++ (id)queryForBetaAppsWithStoreItemIDs:(id)arg1;
 + (id)queryForStoreItemIDs:(id)arg1;
 + (id)queryForStoreApps;
 + (id)queryForBetaAppsOnPairedDevice:(id)arg1;

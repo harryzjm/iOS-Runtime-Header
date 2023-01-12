@@ -17,17 +17,20 @@
     NSDate *_nowPlayingTimestamp;
     NSString *_mediaType;
     NSString *_groupIdentifier;
+    _Bool _isProxyGroupPlayer;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasPlaybackState:1;
         unsigned int hasNowPlayingTimestamp:1;
         unsigned int hasMediaType:1;
         unsigned int hasGroupIdentifier:1;
+        unsigned int hasIsProxyGroupPlayer:1;
     } _mutationFlags;
 }
 
 - (void).cxx_destruct;
 - (id)generate;
+- (void)setIsProxyGroupPlayer:(_Bool)arg1;
 - (void)setGroupIdentifier:(id)arg1;
 - (void)setMediaType:(id)arg1;
 - (void)setNowPlayingTimestamp:(id)arg1;

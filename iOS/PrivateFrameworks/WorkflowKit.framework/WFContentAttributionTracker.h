@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <WorkflowKit/NSSecureCoding-Protocol.h>
+
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
-@interface WFContentAttributionTracker : NSObject
+@interface WFContentAttributionTracker : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_attributionSets;
     NSObject<OS_dispatch_queue> *_trackingAttributionSetQueue;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *trackingAttributionSetQueue; // @synthesize trackingAttributionSetQueue=_trackingAttributionSetQueue;
 @property(readonly, nonatomic) NSMutableDictionary *attributionSets; // @synthesize attributionSets=_attributionSets;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)trackedAttributionSet;
 - (id)attributionSetForParameter:(id)arg1;
 - (void)addAttributionSet:(id)arg1 forParameter:(id)arg2;
+- (id)initWithAttributionSets:(id)arg1;
 - (id)init;
 
 @end

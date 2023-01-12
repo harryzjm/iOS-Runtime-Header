@@ -11,7 +11,7 @@
     CKComponent *_componentToActivate;
 }
 
-+ (id)newWithAttributes:(const unordered_map_b2cee720 *)arg1 componentToActivate:(id)arg2 component:(id)arg3;
++ (id)newWithAttributes:(const void *)arg1 componentToActivate:(id)arg2 component:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CKComponent *componentToActivate; // @synthesize componentToActivate=_componentToActivate;
 

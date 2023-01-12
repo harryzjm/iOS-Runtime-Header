@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class ASAuthorizationProviderExtensionAuthorizationRequest, NSData, NSDate, NSString, NSUUID, SOKerberosExtensionData, SOKerberosExtensionUserData, SOKerberosRealmSettings, SONetworkIdentity, SORealmSettingManager, SOSiteCode;
+@class ASAuthorizationProviderExtensionAuthorizationRequest, LAContext, NSData, NSDate, NSString, NSUUID, SOKerberosExtensionData, SOKerberosExtensionUserData, SOKerberosPacData, SOKerberosRealmSettings, SONetworkIdentity, SOSiteCode;
 @protocol OS_dispatch_group;
 
 @interface SOKerberosContext : NSObject
 {
     _Bool _userNameIsReadOnly;
     _Bool _returnCredentialOnly;
+    _Bool _refreshCredential;
     _Bool _credsCameFromKeychain;
     _Bool _requestCancelled;
     _Bool _attemptedToGetCredsFromKeychain;
@@ -22,6 +23,7 @@
     _Bool _requestStarted;
     NSString *_userPrincipalName;
     NSString *_userName;
+    SOKerberosRealmSettings *_currentSettings;
     NSString *_realm;
     SOKerberosExtensionData *_extensionData;
     SOKerberosExtensionUserData *_extensionUserData;
@@ -31,30 +33,32 @@
     NSString *_password;
     NSString *_changedPassword;
     NSUUID *_credentialUUID;
-    NSData *_certificateSerialNumber;
-    NSData *_certificateIssuer;
     NSString *_certificateTokenID;
+    struct __SecIdentity *_pkinitIdentity;
+    NSData *_pkinitPersistientRef;
+    LAContext *_smartCardLAContext;
     SOSiteCode *_siteCode;
     NSString *_cacheName;
     NSString *_callerBundleIdentifier;
+    NSString *_impersonationBundleIdentifier;
     NSString *_callerLocalizedName;
     NSDate *_loginTimeStamp;
     NSObject<OS_dispatch_group> *_siteCodeGroup;
     SONetworkIdentity *_networkIdentity;
     NSData *_auditToken;
+    SOKerberosPacData *_pacData;
     ASAuthorizationProviderExtensionAuthorizationRequest *_authorizationRequest;
     NSObject<OS_dispatch_group> *_dispatchGroup;
-    SORealmSettingManager *_settingsManager;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool requestStarted; // @synthesize requestStarted=_requestStarted;
-@property(retain, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property(retain) NSObject<OS_dispatch_group> *dispatchGroup; // @synthesize dispatchGroup=_dispatchGroup;
 @property(retain, nonatomic) ASAuthorizationProviderExtensionAuthorizationRequest *authorizationRequest; // @synthesize authorizationRequest=_authorizationRequest;
+@property(retain, nonatomic) SOKerberosPacData *pacData; // @synthesize pacData=_pacData;
 @property(nonatomic) _Bool smartCardNeedsInsert; // @synthesize smartCardNeedsInsert=_smartCardNeedsInsert;
-@property(readonly, nonatomic) _Bool isManagedApp; // @synthesize isManagedApp=_isManagedApp;
-@property(readonly, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
+@property(nonatomic) _Bool isManagedApp; // @synthesize isManagedApp=_isManagedApp;
+@property(retain, nonatomic) NSData *auditToken; // @synthesize auditToken=_auditToken;
 @property(retain, nonatomic) SONetworkIdentity *networkIdentity; // @synthesize networkIdentity=_networkIdentity;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *siteCodeGroup; // @synthesize siteCodeGroup=_siteCodeGroup;
 @property(retain, nonatomic) NSDate *loginTimeStamp; // @synthesize loginTimeStamp=_loginTimeStamp;
@@ -63,13 +67,16 @@
 @property(nonatomic) _Bool requestCancelled; // @synthesize requestCancelled=_requestCancelled;
 @property(nonatomic) _Bool credsCameFromKeychain; // @synthesize credsCameFromKeychain=_credsCameFromKeychain;
 @property(retain, nonatomic) NSString *callerLocalizedName; // @synthesize callerLocalizedName=_callerLocalizedName;
+@property(retain, nonatomic) NSString *impersonationBundleIdentifier; // @synthesize impersonationBundleIdentifier=_impersonationBundleIdentifier;
 @property(retain, nonatomic) NSString *callerBundleIdentifier; // @synthesize callerBundleIdentifier=_callerBundleIdentifier;
+@property(nonatomic) _Bool refreshCredential; // @synthesize refreshCredential=_refreshCredential;
 @property(nonatomic) _Bool returnCredentialOnly; // @synthesize returnCredentialOnly=_returnCredentialOnly;
 @property(retain, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
 @property(retain, nonatomic) SOSiteCode *siteCode; // @synthesize siteCode=_siteCode;
+@property(retain) LAContext *smartCardLAContext; // @synthesize smartCardLAContext=_smartCardLAContext;
+@property(retain) NSData *pkinitPersistientRef; // @synthesize pkinitPersistientRef=_pkinitPersistientRef;
+@property struct __SecIdentity *pkinitIdentity; // @synthesize pkinitIdentity=_pkinitIdentity;
 @property(retain, nonatomic) NSString *certificateTokenID; // @synthesize certificateTokenID=_certificateTokenID;
-@property(retain, nonatomic) NSData *certificateIssuer; // @synthesize certificateIssuer=_certificateIssuer;
-@property(retain, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
 @property(retain, nonatomic) NSUUID *credentialUUID; // @synthesize credentialUUID=_credentialUUID;
 @property(nonatomic) _Bool userNameIsReadOnly; // @synthesize userNameIsReadOnly=_userNameIsReadOnly;
 @property(retain, nonatomic) NSString *changedPassword; // @synthesize changedPassword=_changedPassword;
@@ -80,9 +87,9 @@
 @property(retain, nonatomic) SOKerberosExtensionUserData *extensionUserData; // @synthesize extensionUserData=_extensionUserData;
 @property(retain, nonatomic) SOKerberosExtensionData *extensionData; // @synthesize extensionData=_extensionData;
 @property(retain, nonatomic) NSString *realm; // @synthesize realm=_realm;
+@property(readonly, nonatomic) SOKerberosRealmSettings *currentSettings; // @synthesize currentSettings=_currentSettings;
 @property(retain, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property(retain, nonatomic) NSString *userPrincipalName; // @synthesize userPrincipalName=_userPrincipalName;
-@property(readonly, nonatomic) SOKerberosRealmSettings *currentSettings;
 - (void)presentAuthorizationViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)completeRequestWithDoNotHandle;
 - (void)completeRequestWithError:(id)arg1;
@@ -96,7 +103,7 @@
 - (void)finishRequest;
 - (void)startRequest;
 - (void)setUserPrincipalNameAfterAuth:(id)arg1;
-- (id)initWithRequest:(id)arg1 extensionData:(id)arg2 settingsManager:(id)arg3;
+- (id)initWithRequest:(id)arg1 extensionData:(id)arg2;
 
 @end
 

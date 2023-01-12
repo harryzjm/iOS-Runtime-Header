@@ -11,6 +11,7 @@
 @protocol FCCoreConfigurationObserving <NSObject>
 
 @optional
+- (void)configurationManagerScienceExperimentFieldsDidChange:(id <FCCoreConfigurationManager>)arg1;
 - (void)configurationManager:(id <FCCoreConfigurationManager>)arg1 configurationDidChange:(id <FCCoreConfiguration>)arg2;
 @end
 

@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSString;
 
 @interface GEOFeatureInfo : NSObject
 {
     NSString *_name;
-    NSArray *_environments;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *environments; // @synthesize environments=_environments;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) long long state;
-- (id)initWithName:(id)arg1 environments:(id)arg2;
+- (id)initWithName:(id)arg1;
 
 @end
 

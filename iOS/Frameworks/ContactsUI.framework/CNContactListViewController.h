@@ -30,6 +30,7 @@
     CNContact *_preferredForNameMeContact;
     _Bool _shouldDisplayMeContactBanner;
     _Bool _shouldAutoHideMeContactBanner;
+    _Bool _allowsMultiSelection;
     _Bool _shouldDisplayTipContentView;
     _Bool _presentsSearchUI;
     _Bool _isHandlingSearch;
@@ -41,6 +42,8 @@
     _Bool _shouldAllowDrags;
     _Bool _shouldAllowDrops;
     _Bool _shouldDisplayEmergencyContacts;
+    _Bool _shouldAllowSearchForMultiSelect;
+    _Bool _didDeleteContact;
     NSObject<CNContactDataSource> *_dataSource;
     _UIContentUnavailableView *_noContactsView;
     id <CNContactListViewControllerDelegate> _delegate;
@@ -68,11 +71,14 @@
     CNContactListStyleApplier *_defaultContactListStyleApplier;
     CNContactListViewController *_searchResultsController;
     CNContactListStyleApplier *_contactListStyleApplier;
+    struct CGPoint _noContactsTableViewOffsetStash;
 }
 
 + (id)emptyContact;
 + (id)descriptorForRequiredKeysForPreferredForNameMeContact;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool didDeleteContact; // @synthesize didDeleteContact=_didDeleteContact;
+@property(nonatomic) _Bool shouldAllowSearchForMultiSelect; // @synthesize shouldAllowSearchForMultiSelect=_shouldAllowSearchForMultiSelect;
 @property(retain, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
 @property(nonatomic) _Bool shouldDisplayEmergencyContacts; // @synthesize shouldDisplayEmergencyContacts=_shouldDisplayEmergencyContacts;
 @property(nonatomic) _Bool shouldAllowDrops; // @synthesize shouldAllowDrops=_shouldAllowDrops;
@@ -95,6 +101,7 @@
 @property(readonly, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
 @property(nonatomic) _Bool isHandlingSearch; // @synthesize isHandlingSearch=_isHandlingSearch;
 @property(readonly, nonatomic) _Bool presentsSearchUI; // @synthesize presentsSearchUI=_presentsSearchUI;
+@property(nonatomic) struct CGPoint noContactsTableViewOffsetStash; // @synthesize noContactsTableViewOffsetStash=_noContactsTableViewOffsetStash;
 @property(readonly, nonatomic) double contentOffsetDueToMeContactBanner; // @synthesize contentOffsetDueToMeContactBanner=_contentOffsetDueToMeContactBanner;
 @property(retain, nonatomic) CNContactListBannerView *meContactBanner; // @synthesize meContactBanner=_meContactBanner;
 @property(retain, nonatomic) TPKContent *tipContent; // @synthesize tipContent=_tipContent;
@@ -105,6 +112,7 @@
 @property(retain, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 @property(retain, nonatomic) CNAvatarCardController *cardController; // @synthesize cardController=_cardController;
+@property(nonatomic) _Bool allowsMultiSelection; // @synthesize allowsMultiSelection=_allowsMultiSelection;
 @property(retain, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property(copy, nonatomic) NSString *meContactBannerFootnoteValue; // @synthesize meContactBannerFootnoteValue=_meContactBannerFootnoteValue;
 @property(copy, nonatomic) NSString *meContactBannerFootnoteLabel; // @synthesize meContactBannerFootnoteLabel=_meContactBannerFootnoteLabel;
@@ -138,6 +146,7 @@
 - (void)refreshTableViewHeaderIfVisibleWithSize:(struct CGSize)arg1;
 - (void)refreshTableViewHeaderIfVisible;
 @property(readonly, nonatomic) CNContact *preferredForNameMeContact;
+- (void)tableView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (void)tableView:(id)arg1 didUnhighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
@@ -180,6 +189,7 @@
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)didPresentSearchController:(id)arg1;
 - (void)willPresentSearchController:(id)arg1;
+@property(readonly, nonatomic) NSString *currentSearchString;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)searchForString:(id)arg1 animated:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic, getter=isSearching) _Bool searching;
@@ -191,10 +201,16 @@
 - (void)_contactCountTelemetry:(unsigned long long)arg1;
 - (void)reloadContacts;
 - (void)selectRowAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(long long)arg3;
+- (void)scrollToRowAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(long long)arg3;
 - (_Bool)selectContact:(id)arg1 animated:(_Bool)arg2 scrollPosition:(long long)arg3;
+- (void)scrollTopToContactWithIdentifier:(id)arg1 animated:(_Bool)arg2;
+- (void)setCellStateSelectedForContact:(id)arg1;
+- (_Bool)isValidIndexPath:(id)arg1;
 @property(readonly, nonatomic) NSArray *selectedContacts;
 - (void)setupForMultiSelection;
+- (void)adjustTableViewOffsetForIncomingSearchUI;
 - (void)disableSearchUI;
+- (void)performWhenSearchCompleted:(CDUnknownBlockType)arg1;
 - (void)performWhenViewIsLaidOut:(CDUnknownBlockType)arg1;
 - (void)applyStyle;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -206,6 +222,7 @@
 - (void)viewDidLoad;
 - (void)_updateTableViewRowHeight;
 - (void)loadView;
+@property(readonly, nonatomic) CNContactListViewController *visibleListViewController;
 - (id)createTableView;
 - (id)contactStore;
 @property(readonly, nonatomic) id <CNContactDataSource> originalDataSource;

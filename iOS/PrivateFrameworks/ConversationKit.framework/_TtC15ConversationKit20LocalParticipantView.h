@@ -6,19 +6,35 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, UIControl, _TtC15ConversationKit28LocalParticipantControlsView;
 
 @interface _TtC15ConversationKit20LocalParticipantView : UIView
 {
     MISSING_TYPE *participantView;
+    MISSING_TYPE *collapseButton;
+    MISSING_TYPE *cameraBlurButton;
+    MISSING_TYPE *$__lazy_storage_$_controlsView;
+    MISSING_TYPE *constraintsForStyle;
+    MISSING_TYPE *currentConstraints;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *dragEnabled;
+    MISSING_TYPE *blurEnabled;
+    MISSING_TYPE *controlsAreHidden;
+    MISSING_TYPE *topControlsAlpha;
+    MISSING_TYPE *supportsRotation;
+    MISSING_TYPE *supportsCameraBlur;
     MISSING_TYPE *isInRoster;
 }
 
 - (void).cxx_destruct;
+- (void)toggleCameraBlur;
+- (void)toggleExpandCollapse;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, retain) _TtC15ConversationKit28LocalParticipantControlsView *controlsView;
+@property(nonatomic, readonly) UIControl *cameraBlurButton; // @synthesize cameraBlurButton;
+@property(nonatomic, readonly) UIControl *collapseButton; // @synthesize collapseButton;
 
 @end
 

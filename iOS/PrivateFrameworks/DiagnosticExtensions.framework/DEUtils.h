@@ -10,6 +10,7 @@
 {
 }
 
++ (id)uniqueTemporaryDirectory;
 + (id)processErrorResponse:(id)arg1;
 + (id)findEntriesInDirectory:(id)arg1 createdAfter:(id)arg2 matchingPattern:(id)arg3;
 + (void)removeFile:(id)arg1;

@@ -8,11 +8,14 @@
 {
 }
 
++ (long long)maximumCompatibilityVersion;
++ (long long)minimumCompatibilityVersion;
 + (id)assertionForNewsestCompatibleImageCaptionModelAssetWithStage:(id)arg1 language:(id)arg2 clientIdentifier:(id)arg3;
 - (void)_partitionAssets:(id)arg1 intoValidAssets:(id)arg2 invalidAssets:(id)arg3;
 - (id)assetsToDownloadFromRefreshedAssets:(id)arg1;
 - (id)assetsToPurgeFromInstalledAssets:(id)arg1;
 - (id)assetType;
+- (_Bool)daemonShouldDownloadInBackgroundIfNeeded;
 - (id)launchActivityIdentifier;
 
 @end

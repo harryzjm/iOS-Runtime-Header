@@ -10,7 +10,7 @@
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSourceDelegate-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsObservers, MapsSuggestionsTracker, NSArray, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class CLLocation, GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsCompositeSource, MapsSuggestionsObservers, MapsSuggestionsTracker, NSArray, NSDate, NSMutableDictionary, NSString;
 @protocol MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy, OS_dispatch_queue;
 
 @interface MapsSuggestionsManager : NSObject <MapsSuggestionsObject, MapsSuggestionsSourceDelegate, MapsSuggestionsLocationUpdaterDelegate>
@@ -22,7 +22,7 @@
     MapsSuggestionsTracker *_tracker;
     NSDate *_etaValidUntil;
     MapsSuggestionsObservers *_sinks;
-    NSMutableSet *_sources;
+    MapsSuggestionsCompositeSource *_compositeSource;
     NSMutableDictionary *_storage;
     NSArray *_latestResults;
     int _defaultTansportType;
@@ -30,6 +30,7 @@
     MapsSuggestionsCanKicker *_wipeStaleETAWiper;
     MapsSuggestionsCanKicker *_deferredSourcesUpdater;
     CLLocation *_oldLocation;
+    _Bool _sourcesRunning;
     int _mapType;
     GEOAutomobileOptions *_automobileOptions;
     id <MapsSuggestionsLocationUpdater> _locationUpdater;
@@ -40,6 +41,9 @@
 @property(retain, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property(nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property(retain, nonatomic) id <MapsSuggestionsStrategy> strategy; // @synthesize strategy=_strategy;
+- (id)additionalFiltersPerSink;
+- (id)tracker;
+- (id)storageQueue;
 - (void)awaitStorageQueue;
 - (void)awaitGatheringQueue;
 - (id)sinks;
@@ -53,6 +57,7 @@
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)trackerRefreshedETAsUntil:(id)arg1;
+- (void)removeEntry:(id)arg1;
 - (unsigned long long)addOrUpdateSuggestionEntries:(id)arg1 source:(id)arg2;
 - (BOOL)loadStorageFromFile:(id)arg1 callback:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
 - (_Bool)loadStorageFromFile:(id)arg1;

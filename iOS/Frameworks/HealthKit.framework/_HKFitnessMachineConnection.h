@@ -14,6 +14,7 @@
 
 @interface _HKFitnessMachineConnection : NSObject <_HKXPCExportable, HKFitnessMachineConnectionClientInterface>
 {
+    _Atomic _Bool _requiresRegistration;
     HKTaskServerProxyProvider *_proxyProvider;
     NSUUID *_currentSessionUUID;
     _HKFitnessMachine *_fitnessMachine;
@@ -42,7 +43,7 @@
 - (id)currentSessionConfiguration;
 - (void)endWithFitnessMachineSessionUUID:(id)arg1;
 - (void)end;
-- (void)_registerClient;
+- (void)_registerClientIfNeeded;
 - (void)markClientReady;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;

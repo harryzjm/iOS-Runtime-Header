@@ -8,19 +8,19 @@
 
 #import <TSPersistence/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface TSPDocumentRevision : NSObject <NSCopying>
 {
     int _sequence;
-    NSString *_identifier;
+    NSUUID *_identifier;
 }
 
 + (id)documentRevisionAtURL:(id)arg1 passphrase:(id)arg2 error:(id *)arg3;
 + (id)revisionWithRevisionString:(id)arg1;
 + (id)revisionWithSequence:(int)arg1 identifier:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) int sequence; // @synthesize sequence=_sequence;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

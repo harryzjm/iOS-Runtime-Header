@@ -9,12 +9,18 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSSet, NSString, NSUUID, SPBeaconRole, SPHandle, SPLostModeInfo;
+@class NSDate, NSDictionary, NSSet, NSString, NSUUID, SPBeaconRole, SPDiscoveredAccessoryProductInformation, SPHandle, SPLostModeInfo;
 
 @interface SPBeacon : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _accepted;
+    _Bool _isZeus;
+    _Bool _connected;
+    _Bool _canBeLeashedByHost;
+    _Bool _connectionAllowed;
     NSUUID *_identifier;
+    NSUUID *_groupIdentifier;
+    long long _partIdentifier;
     SPHandle *_owner;
     NSString *_name;
     NSString *_model;
@@ -25,17 +31,51 @@
     NSString *_systemVersion;
     long long _vendorId;
     long long _productId;
+    NSString *_type;
+    long long _batteryLevel;
+    long long _connectableDeviceCount;
+    NSString *_separationState;
+    long long _beaconSeparationState;
+    NSSet *_safeLocations;
+    NSSet *_locationProviders;
+    SPDiscoveredAccessoryProductInformation *_accessoryProductInfo;
     NSString *_stableIdentifier;
     NSDate *_pairingDate;
     NSString *_correlationIdentifier;
+    NSDate *_connectedStateExpiryDate;
+    NSString *_serialNumber;
+    unsigned long long _keySyncLastObservedIndex;
+    NSDate *_keySyncLastIndexObservationDate;
+    unsigned long long _keySyncWildIndexFallback;
+    unsigned long long _keyAlignmentLastObservedIndex;
+    NSDate *_keyAlignmentLastIndexObservationDate;
 }
 
 + (id)SPOwner;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *keyAlignmentLastIndexObservationDate; // @synthesize keyAlignmentLastIndexObservationDate=_keyAlignmentLastIndexObservationDate;
+@property(nonatomic) unsigned long long keyAlignmentLastObservedIndex; // @synthesize keyAlignmentLastObservedIndex=_keyAlignmentLastObservedIndex;
+@property(nonatomic) unsigned long long keySyncWildIndexFallback; // @synthesize keySyncWildIndexFallback=_keySyncWildIndexFallback;
+@property(copy, nonatomic) NSDate *keySyncLastIndexObservationDate; // @synthesize keySyncLastIndexObservationDate=_keySyncLastIndexObservationDate;
+@property(nonatomic) unsigned long long keySyncLastObservedIndex; // @synthesize keySyncLastObservedIndex=_keySyncLastObservedIndex;
+@property(copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property(copy, nonatomic) NSDate *connectedStateExpiryDate; // @synthesize connectedStateExpiryDate=_connectedStateExpiryDate;
 @property(copy, nonatomic) NSString *correlationIdentifier; // @synthesize correlationIdentifier=_correlationIdentifier;
 @property(copy, nonatomic) NSDate *pairingDate; // @synthesize pairingDate=_pairingDate;
 @property(copy, nonatomic) NSString *stableIdentifier; // @synthesize stableIdentifier=_stableIdentifier;
+@property(copy, nonatomic) SPDiscoveredAccessoryProductInformation *accessoryProductInfo; // @synthesize accessoryProductInfo=_accessoryProductInfo;
+@property(copy, nonatomic) NSSet *locationProviders; // @synthesize locationProviders=_locationProviders;
+@property(copy, nonatomic) NSSet *safeLocations; // @synthesize safeLocations=_safeLocations;
+@property(nonatomic) long long beaconSeparationState; // @synthesize beaconSeparationState=_beaconSeparationState;
+@property(copy, nonatomic) NSString *separationState; // @synthesize separationState=_separationState;
+@property(nonatomic) long long connectableDeviceCount; // @synthesize connectableDeviceCount=_connectableDeviceCount;
+@property(nonatomic) _Bool connectionAllowed; // @synthesize connectionAllowed=_connectionAllowed;
+@property(nonatomic) _Bool canBeLeashedByHost; // @synthesize canBeLeashedByHost=_canBeLeashedByHost;
+@property(nonatomic) _Bool connected; // @synthesize connected=_connected;
+@property(nonatomic) _Bool isZeus; // @synthesize isZeus=_isZeus;
+@property(nonatomic) long long batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(nonatomic) long long productId; // @synthesize productId=_productId;
 @property(nonatomic) long long vendorId; // @synthesize vendorId=_vendorId;
 @property(copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
@@ -47,6 +87,8 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) _Bool accepted; // @synthesize accepted=_accepted;
 @property(copy, nonatomic) SPHandle *owner; // @synthesize owner=_owner;
+@property(nonatomic) long long partIdentifier; // @synthesize partIdentifier=_partIdentifier;
+@property(copy, nonatomic) NSUUID *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (id)debugDescription;
 - (id)initWithCoder:(id)arg1;

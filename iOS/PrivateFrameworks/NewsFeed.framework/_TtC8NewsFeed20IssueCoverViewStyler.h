@@ -11,7 +11,6 @@
 @interface _TtC8NewsFeed20IssueCoverViewStyler : _TtCs12_SwiftObject
 {
     MISSING_TYPE *issueCoverColorPalette;
-    MISSING_TYPE *colorPaletteProvider;
 }
 
 @end

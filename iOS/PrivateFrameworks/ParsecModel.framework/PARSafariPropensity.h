@@ -6,13 +6,17 @@
 
 #import <CoreData/NSManagedObject.h>
 
+#import <ParsecModel/NSFetchRequestResult-Protocol.h>
+
 @class NSDate;
 
-@interface PARSafariPropensity : NSManagedObject
+@interface PARSafariPropensity : NSManagedObject <NSFetchRequestResult>
 {
 }
 
-+ (id)fetchRequest;
+- (void).cxx_destruct;
+- (void).cxx_construct;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) short goToSite; // @dynamic goToSite;
@@ -32,7 +36,7 @@
 @property(nonatomic) short thirdPartyCompletionOrRecentSearch; // @dynamic thirdPartyCompletionOrRecentSearch;
 @property(nonatomic) short thirdPartyGoto; // @dynamic thirdPartyGoto;
 @property(nonatomic) short thirdPartyTap; // @dynamic thirdPartyTap;
-@property(copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+@property(nonatomic, copy) NSDate *timestamp; // @dynamic timestamp;
 
 @end
 

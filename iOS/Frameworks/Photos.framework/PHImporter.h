@@ -38,6 +38,7 @@
 
 + (void)dumpMetadataForData:(id)arg1;
 + (void)dumpImageData:(id)arg1;
++ (id)removeItemAtPath:(id)arg1 type:(unsigned long long)arg2 recursive:(_Bool)arg3;
 + (void)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 progress:(id *)arg5 delegate:(id)arg6 atEnd:(CDUnknownBlockType)arg7;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PHImportSource *source; // @synthesize source=_source;

@@ -16,8 +16,8 @@
 @property(nonatomic) long long drawableAnchorLocation; // @synthesize drawableAnchorLocation=_drawableAnchorLocation;
 @property(nonatomic) long long captionAnchorLocation; // @synthesize captionAnchorLocation=_captionAnchorLocation;
 - (id)copyWithContext:(id)arg1;
-- (void)saveToMessage:(struct CaptionPlacementArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromMessage:(const struct CaptionPlacementArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (_Bool)isEqualToCaptionPlacement:(id)arg1;

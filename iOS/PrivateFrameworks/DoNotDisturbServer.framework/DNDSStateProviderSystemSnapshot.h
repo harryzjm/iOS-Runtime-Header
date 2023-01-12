@@ -9,7 +9,7 @@
 #import <DoNotDisturbServer/NSCopying-Protocol.h>
 #import <DoNotDisturbServer/NSMutableCopying-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDate, NSDictionary;
 
 @interface DNDSStateProviderSystemSnapshot : NSObject <NSCopying, NSMutableCopying>
 {
@@ -18,9 +18,11 @@
     NSDictionary *_activeDateIntervalByAssertionUUID;
     unsigned long long _interruptionBehaviorSetting;
     unsigned long long _lostModeState;
+    NSDate *_lastUpdate;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDate *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property(readonly, nonatomic) unsigned long long lostModeState; // @synthesize lostModeState=_lostModeState;
 @property(readonly, nonatomic) unsigned long long interruptionBehaviorSetting; // @synthesize interruptionBehaviorSetting=_interruptionBehaviorSetting;
 @property(readonly, copy, nonatomic) NSDictionary *activeDateIntervalByAssertionUUID; // @synthesize activeDateIntervalByAssertionUUID=_activeDateIntervalByAssertionUUID;
@@ -31,7 +33,7 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)_initWithAssertions:(id)arg1 activeAssertionUUIDs:(id)arg2 activeDateIntervalByAssertionUUID:(id)arg3 interruptionBehaviorSetting:(unsigned long long)arg4 lostModeState:(unsigned long long)arg5;
+- (id)_initWithAssertions:(id)arg1 activeAssertionUUIDs:(id)arg2 activeDateIntervalByAssertionUUID:(id)arg3 interruptionBehaviorSetting:(unsigned long long)arg4 lostModeState:(unsigned long long)arg5 lastUpdate:(id)arg6;
 - (id)_initWithSnapshot:(id)arg1;
 - (id)init;
 

@@ -6,12 +6,13 @@
 
 #import <HMFoundation/HMFOperation.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
 @class MPCAssistantRemoteControlDestination, MPPlaybackArchive, NSArray, NSDictionary, NSNumber, NSString;
 @protocol HMDMPCSendMRCommandOperationExternalObjectInterface;
 
-@interface HMDMPCSendMRCommandOperation : HMFOperation <HMFObject>
+@interface HMDMPCSendMRCommandOperation : HMFOperation <HMFLogging, HMFObject>
 {
     MPCAssistantRemoteControlDestination *_destination;
     MPPlaybackArchive *_playbackArchive;
@@ -20,9 +21,10 @@
     id <HMDMPCSendMRCommandOperationExternalObjectInterface> _externalObjectInterface;
 }
 
++ (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <HMDMPCSendMRCommandOperationExternalObjectInterface> externalObjectInterface; // @synthesize externalObjectInterface=_externalObjectInterface;
+@property(readonly) id <HMDMPCSendMRCommandOperationExternalObjectInterface> externalObjectInterface; // @synthesize externalObjectInterface=_externalObjectInterface;
 @property(readonly, nonatomic) NSNumber *mediaRemoteCommand; // @synthesize mediaRemoteCommand=_mediaRemoteCommand;
 @property(readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(readonly, nonatomic) MPPlaybackArchive *playbackArchive; // @synthesize playbackArchive=_playbackArchive;
@@ -32,7 +34,9 @@
 @property(readonly, copy) NSString *privateDescription;
 @property(readonly, copy) NSString *shortDescription;
 - (void)main;
+- (id)initWithPlaybackArchive:(id)arg1 destination:(id)arg2 externalObjectInterface:(id)arg3;
 - (id)initWithPlaybackArchive:(id)arg1 destination:(id)arg2;
+- (id)initWithCommand:(unsigned int)arg1 options:(id)arg2 destination:(id)arg3 externalObjectInterface:(id)arg4;
 - (id)initWithCommand:(unsigned int)arg1 options:(id)arg2 destination:(id)arg3;
 
 // Remaining properties

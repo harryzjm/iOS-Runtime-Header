@@ -8,17 +8,17 @@
 
 @interface TSCH2DChartLayout
 {
-    TSCHChartRootLayoutItem *mLayoutTreeRoot;
-    struct CGSize mLastChartBodySize;
-    struct CGSize mStartingSize;
-    struct CGRect mStartingLegendInnerFrame;
-    struct CGRect mStartingChartInnerFrame;
-    NSValue *mCachedOriginRelativeToChartAreaFrame;
+    TSCHChartRootLayoutItem *_layoutTreeRoot;
+    struct CGSize _lastChartBodySize;
+    struct CGSize _startingSize;
+    struct CGRect _startingLegendInnerFrame;
+    struct CGRect _startingChartInnerFrame;
+    NSValue *_cachedOriginRelativeToChartAreaFrame;
 }
 
 + (id)propertiesThatInvalidateLayout;
 - (void).cxx_destruct;
-- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
 - (id)hitChartElements:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
@@ -42,7 +42,8 @@
 - (void)layoutForChartAreaSize:(struct CGSize)arg1;
 - (void)layoutForCircumscribingSize:(struct CGSize)arg1;
 @property(readonly) TSCHChartRootLayoutItem *p_layoutTree;
-- (void)setLayoutSettings:(CDStruct_b1c75024)arg1;
+- (void)setStyleProvidingSource:(id)arg1;
+- (void)setLayoutSettings:(CDStruct_c48db077)arg1;
 - (struct CGRect)chartBodyFrame;
 - (void)setLegendModelGeometryFrame:(struct CGRect)arg1;
 - (struct CGRect)legendModelGeometryFrame;
@@ -56,7 +57,6 @@
 - (struct CGRect)chartAreaFrame;
 - (struct CGRect)outerShadowFrame;
 - (struct CGRect)outerLayoutFrame;
-- (void)dealloc;
 - (id)initWithChartInfo:(id)arg1;
 
 @end

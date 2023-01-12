@@ -6,19 +6,21 @@
 
 #import <UIKit/UIWindow.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, UIViewController;
 
 @interface TUDebugWindow : UIWindow
 {
-    MISSING_TYPE *resolver;
+    MISSING_TYPE *debugDelegate;
     MISSING_TYPE *isAllowed;
     MISSING_TYPE *isPresenting;
+    MISSING_TYPE *_observableRootViewController;
 }
 
 - (void).cxx_destruct;
-- (id)initWithWindowScene:(id)arg1;
+@property(nonatomic, retain) UIViewController *rootViewController;
 - (void)motionBegan:(long long)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithWindowScene:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

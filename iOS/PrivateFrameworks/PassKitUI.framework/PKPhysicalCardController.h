@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKSetupFlowControllerProtocol-Protocol.h>
 
-@class NSString, PKAccount, PKAccountService, PKPaymentPass, PKPhysicalCard;
+@class NSString, PKAccount, PKAccountService, PKAccountUser, PKPaymentPass, PKPhysicalCard;
 @protocol PKPaymentSetupViewControllerDelegate, PKSetupFlowControllerProtocol;
 
 @interface PKPhysicalCardController : NSObject <PKSetupFlowControllerProtocol>
@@ -16,6 +16,7 @@
     PKAccountService *_accountService;
     _Bool _updatingOrderController;
     PKAccount *_account;
+    PKAccountUser *_accountUser;
     PKPaymentPass *_paymentPass;
     id <PKSetupFlowControllerProtocol> _parentFlowController;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
@@ -30,19 +31,22 @@
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property(retain, nonatomic) id <PKSetupFlowControllerProtocol> parentFlowController; // @synthesize parentFlowController=_parentFlowController;
 @property(readonly, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
+@property(readonly, nonatomic) PKAccountUser *accountUser; // @synthesize accountUser=_accountUser;
 @property(readonly, nonatomic) PKAccount *account; // @synthesize account=_account;
 - (void)_updatePhysicalCards;
 - (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)orderFlowViewControllerForReason:(unsigned long long)arg1 content:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool physicalCardBlocked;
 @property(readonly, nonatomic) _Bool primaryPhysicalCardEnabled;
+- (_Bool)_userSupportsActivatingPhysicalCard;
+- (_Bool)_userSupportsRequestingPhysicalCard;
 @property(readonly, nonatomic) _Bool canReplacePhysicalCard;
 @property(readonly, nonatomic) _Bool canRequestPhysicalCard;
 @property(readonly, nonatomic) _Bool canActivatePhysicalCard;
 @property(readonly, nonatomic) _Bool hasPrimaryPhysicalCard;
 - (void)updateWithAccount:(id)arg1;
 - (void)dealloc;
-- (id)initWithAccountService:(id)arg1 paymentPass:(id)arg2 account:(id)arg3;
+- (id)initWithAccountService:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 accountUser:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

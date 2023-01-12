@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel;
+@class UIImageView, UILabel, UIStackView;
 
 __attribute__((visibility("hidden")))
 @interface CLSNotificationBannerView : UIView
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_imageView;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
+    UIStackView *_labelsStackView;
     double _preferredWidthPad;
     double _duration;
     CDUnknownBlockType _completionHandler;
@@ -27,13 +28,14 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic) double preferredWidthPad; // @synthesize preferredWidthPad=_preferredWidthPad;
+@property(retain, nonatomic) UIStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
 @property(retain, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 - (void)callCompletionHandler;
 - (void)hideBanner;
 - (void)showWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)layoutSubviews;
+- (void)applyConstraints;
 - (id)initWithTitle:(id)arg1 message:(id)arg2;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 message:(id)arg3;
 - (id)initWithTitle:(id)arg1 imageView:(id)arg2 message:(id)arg3;

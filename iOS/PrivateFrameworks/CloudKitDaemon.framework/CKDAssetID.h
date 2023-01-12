@@ -10,7 +10,6 @@
 
 @class CKDPRecordIdentifier, NSData, NSNumber;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetID : NSObject <NSCopying>
 {
     CKDPRecordIdentifier *_recordID;

@@ -15,7 +15,7 @@
     _Bool _hasRenderedForCurrentUpdate;
     double _currentTime;
     double _previousTime;
-    struct SKCRenderer *_skcRenderer;
+    void *_skcRenderer;
     SKScene *_scene;
     SKScene *_nextScene;
     SKTransition *_transition;
@@ -42,7 +42,7 @@
 - (void)renderWithViewport:(struct CGRect)arg1 renderCommandEncoder:(id)arg2 renderPassDescriptor:(id)arg3 commandQueue:(id)arg4;
 - (void)dealloc;
 - (void)_initialize;
-- (id)initWithSKCRenderer:(struct SKCRenderer *)arg1;
+- (id)initWithSKCRenderer:(void *)arg1;
 
 @end
 

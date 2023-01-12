@@ -16,7 +16,6 @@
     _Bool _copyOriginal;
     _Bool _copySinglePhotoFromBurst;
     _Bool _copyAsAlternateAsset;
-    CDUnknownBlockType _destinationAssetAvailabilityHandler;
     PHAssetCreationAdjustmentBakeInOptions *_adjustmentBakeInOptions;
     PHAssetCreationMetadataCopyOptions *_metadataCopyOptions;
     CDStruct_1b6d18a9 _stillSourceTime;
@@ -31,7 +30,6 @@
 @property(nonatomic) CDStruct_1b6d18a9 stillSourceTime; // @synthesize stillSourceTime=_stillSourceTime;
 @property(copy, nonatomic) PHAssetCreationMetadataCopyOptions *metadataCopyOptions; // @synthesize metadataCopyOptions=_metadataCopyOptions;
 @property(copy, nonatomic) PHAssetCreationAdjustmentBakeInOptions *adjustmentBakeInOptions; // @synthesize adjustmentBakeInOptions=_adjustmentBakeInOptions;
-@property(copy, nonatomic) CDUnknownBlockType destinationAssetAvailabilityHandler; // @synthesize destinationAssetAvailabilityHandler=_destinationAssetAvailabilityHandler;
 @property(nonatomic) _Bool shouldDownloadOrCloudReReferenceMissingResources; // @synthesize shouldDownloadOrCloudReReferenceMissingResources=_shouldDownloadOrCloudReReferenceMissingResources;
 - (id)init;
 

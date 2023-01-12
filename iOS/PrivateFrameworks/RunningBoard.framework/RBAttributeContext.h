@@ -6,40 +6,60 @@
 
 #import <objc/NSObject.h>
 
-@class RBAssertion, RBConcreteTarget, RBInheritanceCollection, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentity;
-@protocol RBBundlePropertiesManaging, RBDomainAttributeManaging, RBEntitlementManaging;
+#import <RunningBoard/RBAssertionContextProviding-Protocol.h>
 
-@interface RBAttributeContext : NSObject
+@class NSDictionary, NSString, RBAssertion, RBInheritanceCollection, RBProcess, RBProcessState, RBSAssertionIdentifier, RBSProcessIdentity;
+@protocol RBBundleProperties, RBBundlePropertiesManaging, RBConcreteTargeting, RBDomainAttributeManaging, RBEntitlementManaging, RBEntitlementPossessing;
+
+@interface RBAttributeContext : NSObject <RBAssertionContextProviding>
 {
     unsigned long long _activeDueToInheritedEndowmentCount;
     _Bool _targetIsSystem;
+    RBProcess *_targetProcess;
+    id <RBBundleProperties> _targetProperties;
+    id <RBEntitlementPossessing> _targetEntitlements;
+    RBProcess *_originatorProcess;
+    id <RBBundleProperties> _originatorProperties;
+    id <RBEntitlementPossessing> _originatorEntitlements;
     RBAssertion *_assertion;
     RBSAssertionIdentifier *_assertionID;
-    RBConcreteTarget *_target;
-    RBProcess *_targetProcess;
+    id <RBConcreteTargeting> _target;
     RBSProcessIdentity *_targetIdentity;
     RBProcessState *_initialProcessState;
     RBInheritanceCollection *_availableInheritances;
     id <RBDomainAttributeManaging> _domainAttributeManager;
     id <RBBundlePropertiesManaging> _bundlePropertiesManager;
     id <RBEntitlementManaging> _entitlementManager;
+    NSDictionary *_savedEndowments;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *savedEndowments; // @synthesize savedEndowments=_savedEndowments;
 @property(retain, nonatomic) id <RBEntitlementManaging> entitlementManager; // @synthesize entitlementManager=_entitlementManager;
 @property(retain, nonatomic) id <RBBundlePropertiesManaging> bundlePropertiesManager; // @synthesize bundlePropertiesManager=_bundlePropertiesManager;
 @property(retain, nonatomic) id <RBDomainAttributeManaging> domainAttributeManager; // @synthesize domainAttributeManager=_domainAttributeManager;
 @property(retain, nonatomic) RBInheritanceCollection *availableInheritances; // @synthesize availableInheritances=_availableInheritances;
 @property(retain, nonatomic) RBProcessState *initialProcessState; // @synthesize initialProcessState=_initialProcessState;
 @property(readonly, nonatomic) RBSProcessIdentity *targetIdentity; // @synthesize targetIdentity=_targetIdentity;
-@property(readonly, nonatomic) RBProcess *targetProcess; // @synthesize targetProcess=_targetProcess;
 @property(readonly, nonatomic) _Bool targetIsSystem; // @synthesize targetIsSystem=_targetIsSystem;
-@property(readonly, nonatomic) RBConcreteTarget *target; // @synthesize target=_target;
+@property(readonly, nonatomic) id <RBConcreteTargeting> target; // @synthesize target=_target;
 @property(readonly, nonatomic) RBSAssertionIdentifier *assertionID; // @synthesize assertionID=_assertionID;
 @property(retain, nonatomic) RBAssertion *assertion; // @synthesize assertion=_assertion;
+@property(readonly, nonatomic) RBProcess *originatorProcess; // @synthesize originatorProcess=_originatorProcess;
+@property(readonly, nonatomic) RBProcess *targetProcess; // @synthesize targetProcess=_targetProcess;
 @property(readonly, nonatomic) _Bool isActiveDueToInheritedEndowment;
 - (void)popActiveDueToInheritedEndowment;
 - (void)pushActiveDueToInheritedEndowment;
+@property(readonly, nonatomic) id <RBEntitlementPossessing> originatorEntitlements; // @synthesize originatorEntitlements=_originatorEntitlements;
+@property(readonly, nonatomic) id <RBBundleProperties> originatorProperties; // @synthesize originatorProperties=_originatorProperties;
+@property(readonly, nonatomic) id <RBEntitlementPossessing> targetEntitlements; // @synthesize targetEntitlements=_targetEntitlements;
+@property(readonly, nonatomic) id <RBBundleProperties> targetProperties; // @synthesize targetProperties=_targetProperties;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

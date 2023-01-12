@@ -15,6 +15,7 @@
     MISSING_TYPE *healthStore;
     MISSING_TYPE *waitUntilShouldProceed;
     MISSING_TYPE *completionQueue;
+    MISSING_TYPE *lock;
 }
 
 - (void).cxx_destruct;

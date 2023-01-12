@@ -17,17 +17,7 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *resultHeadlines; // @synthesize resultHeadlines=_resultHeadlines;
-@property(nonatomic) _Bool useFallbackArticleSource; // @synthesize useFallbackArticleSource=_useFallbackArticleSource;
-@property(retain, nonatomic) id <FCFeedTransforming> transformation; // @synthesize transformation=_transformation;
-@property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-- (id)_promiseTemporaryFallbackHeadlinesForFeedItems:(id)arg1;
-- (id)_promiseTemporaryFallbackFeedItemsWithConfiguration:(id)arg1;
-- (id)_promiseHeadlinesForArticleIDs:(id)arg1;
-- (id)_promiseFilteredArticleIDsFromArticleRecords:(id)arg1;
-- (id)_promiseArticleRecordsWithConfiguration:(id)arg1;
-- (id)_promiseConfiguration;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

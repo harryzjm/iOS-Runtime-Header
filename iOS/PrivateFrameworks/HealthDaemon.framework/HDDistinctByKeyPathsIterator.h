@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDDeletedObjectIterator-Protocol.h>
 #import <HealthDaemon/HDRestorableIterator-Protocol.h>
 #import <HealthDaemon/HDSampleIterator-Protocol.h>
 
-@class HKSample, NSArray, NSMutableSet, NSString;
-@protocol HDSampleIterator><HDRestorableIterator;
+@class HKDeletedObject, HKSample, NSArray, NSMutableSet, NSString;
+@protocol HDSampleIterator><HDDeletedObjectIterator><HDRestorableIterator;
 
-@interface HDDistinctByKeyPathsIterator : NSObject <HDSampleIterator, HDRestorableIterator>
+@interface HDDistinctByKeyPathsIterator : NSObject <HDSampleIterator, HDDeletedObjectIterator, HDRestorableIterator>
 {
-    id <HDSampleIterator><HDRestorableIterator> _sourceIterator;
+    id <HDSampleIterator><HDDeletedObjectIterator><HDRestorableIterator> _sourceIterator;
     NSArray *_keyPaths;
     NSMutableSet *_seenValues;
 }
@@ -23,6 +24,7 @@
 - (id)iteratorStateData;
 - (_Bool)restoreIteratorStateFromData:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) HKDeletedObject *deletedObject;
 @property(readonly, nonatomic) long long objectID;
 @property(readonly, nonatomic) HKSample *sample;
 - (id)object;

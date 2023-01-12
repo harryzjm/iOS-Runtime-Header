@@ -8,7 +8,6 @@
 
 @class NSArray, NSLayoutConstraint, UIImageView, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface WDDataListViewControllerCell : UITableViewCell
 {
     NSLayoutConstraint *_largeTextIconImageCenterYAnchorConstraint;

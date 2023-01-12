@@ -18,7 +18,7 @@
     NSTimer *_syncTimer;
     _Bool _pendingChanges;
     NSObject<OS_dispatch_queue> *_queue;
-    double _lastChangedTimestamp;
+    unsigned long long _lastChangedTimestamp;
     _Bool _changedIDsValid;
     NSMutableArray *_changedIDs;
     int _ignoreSyncTimer;

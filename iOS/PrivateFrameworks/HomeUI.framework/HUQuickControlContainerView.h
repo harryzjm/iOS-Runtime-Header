@@ -14,6 +14,7 @@
     _Bool _shouldShowActiveControl;
     _Bool _shouldShowDetailsButton;
     _Bool _controlViewSupportsTransformTransition;
+    _Bool _isExternallyAnimating;
     double _controlTransitionProgress;
     double _chromeTransitionProgress;
     double _initialSourceViewScale;
@@ -39,6 +40,7 @@
 
 + (_Bool)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isExternallyAnimating; // @synthesize isExternallyAnimating=_isExternallyAnimating;
 @property(retain, nonatomic) UILayoutGuide *topToSummarySpacingLayoutGuide; // @synthesize topToSummarySpacingLayoutGuide=_topToSummarySpacingLayoutGuide;
 @property(retain, nonatomic) UILayoutGuide *contentToAuxiliarySpacingLayoutGuide; // @synthesize contentToAuxiliarySpacingLayoutGuide=_contentToAuxiliarySpacingLayoutGuide;
 @property(retain, nonatomic) UIButton *detailsButton; // @synthesize detailsButton=_detailsButton;
@@ -82,10 +84,14 @@
 - (_Bool)_useCompactHeightLayout;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateDetailsButtonVisibility;
+- (void)externalAnimationsEnded;
+- (void)externalAnimationsBegan;
 - (void)hideAuxiliaryView;
 - (void)showAuxiliaryView:(id)arg1;
 - (void)_detailsButtonTapped:(id)arg1;
 - (_Bool)_shouldShowControlView;
+- (void)layoutSubviews;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2 sourceRect:(struct CGRect)arg3;
 
 @end

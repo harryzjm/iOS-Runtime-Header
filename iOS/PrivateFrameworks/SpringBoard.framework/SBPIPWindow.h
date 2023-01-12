@@ -12,15 +12,22 @@
 
 - (_Bool)isActive;
 - (id)_pipWindowRootVC;
+- (void)showAllContainersAnimated:(_Bool)arg1;
+- (void)bringTetheredChildViewControllersToFront;
+- (void)hideContainersExcludingContainerForContentViewControllerAndTetheredOnes:(id)arg1 animated:(_Bool)arg2;
+- (void)removeActiveOrientationObserver:(id)arg1;
+- (void)addActiveOrientationObserver:(id)arg1;
+- (void)relinquishInterfaceOrientationLockForContainerViewController:(id)arg1;
+- (void)acquireInterfaceOrientationLockForContainerViewController:(id)arg1;
 - (void)updateActiveInterfaceOrientationForManualPictureInPictureStart;
 - (long long)interfaceOrientationForContainerViewController:(id)arg1;
-- (id)containerViewControllerForPictureInPictureViewController:(id)arg1;
+- (id)containerViewControllerForPictureInPictureContentViewController:(id)arg1;
 - (void)removeContainerViewController:(id)arg1;
 - (void)addContainerViewController:(id)arg1;
 @property(readonly, nonatomic) NSArray *containerViewControllers;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setRootViewController:(id)arg1;
-- (id)init;
+- (id)initWithPIPController:(id)arg1;
 
 @end
 

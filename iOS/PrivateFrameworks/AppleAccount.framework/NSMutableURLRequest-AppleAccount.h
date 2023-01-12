@@ -7,6 +7,7 @@
 #import <CFNetwork/NSMutableURLRequest.h>
 
 @interface NSMutableURLRequest (AppleAccount)
+- (void)aa_addSpyglassModeHeaderWithMask:(unsigned long long)arg1;
 - (void)aa_addAppProvidedContext:(id)arg1;
 - (void)aa_addProxiedAuthHeaderWithAccount:(id)arg1;
 - (void)aa_addLocationSharingAllowedHeader;

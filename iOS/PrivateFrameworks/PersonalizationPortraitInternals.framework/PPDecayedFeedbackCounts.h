@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PersonalizationPortraitInternals/MLFeatureProvider-Protocol.h>
+@class NSDate;
 
-@class NSDate, NSSet;
-
-@interface PPDecayedFeedbackCounts : NSObject <MLFeatureProvider>
+@interface PPDecayedFeedbackCounts : NSObject
 {
     double _engagedExplicitly;
     double _engagedImplicitly;
@@ -25,8 +23,6 @@
 @property(readonly, nonatomic) double rejectedExplicitly; // @synthesize rejectedExplicitly=_rejectedExplicitly;
 @property(readonly, nonatomic) double engagedImplicitly; // @synthesize engagedImplicitly=_engagedImplicitly;
 @property(readonly, nonatomic) double engagedExplicitly; // @synthesize engagedExplicitly=_engagedExplicitly;
-- (id)featureValueForName:(id)arg1;
-@property(readonly, nonatomic) NSSet *featureNames;
 - (id)toDictionary;
 - (id)initWithLatestDate:(id)arg1 engagedExplicitly:(double)arg2 engagedImplicitly:(double)arg3 rejectedExplicitly:(double)arg4 rejectedImplicitly:(double)arg5;
 

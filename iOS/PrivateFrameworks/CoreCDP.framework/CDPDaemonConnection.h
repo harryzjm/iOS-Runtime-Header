@@ -20,6 +20,7 @@
 - (id)synchronousDaemonWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)daemonWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)daemon;
+- (void)dealloc;
 - (id)connection;
 - (id)init;
 

@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class PKSelectionController, PKStrokeSelection, PKStrokeSelectionImage, UIImageView;
+@class PKImageView, PKSelectionController, PKStrokeSelection, PKStrokeSelectionImage;
 @protocol PKSelectionRendering;
 
 @interface PKAdornmentView : UIView
 {
-    UIImageView *_strokeSelectionImageView;
+    PKImageView *_strokeSelectionImageView;
     _Bool _isInteracting;
     PKStrokeSelection *_strokeSelection;
     PKSelectionController *_selectionController;

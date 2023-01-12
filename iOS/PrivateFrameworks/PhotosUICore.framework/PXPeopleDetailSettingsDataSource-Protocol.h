@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) _Bool hasMoreDetails;
 @property(readonly, nonatomic) unsigned long long numberOfItems;
 @property(copy, nonatomic) NSString *title;
+- (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(void (^)(UIImage *, struct CGRect))arg4;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(void (^)(UIImage *))arg3;
 
 @optional

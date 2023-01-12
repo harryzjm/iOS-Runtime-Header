@@ -13,6 +13,6 @@
 - (void)_willPerformDiff:(_Bool)arg1;
 - (void)_reloadData;
 - (void)_deleteAllItems;
-- (void)_performUpdateWithCollectionViewUpdateItems:(NSArray *)arg1 dataSourceSnapshot:(id <_UIDataSourceSnapshotTranslating>)arg2 updateHandler:(void (^)(void))arg3 completion:(void (^)(void))arg4 viewPropertyAnimator:(UIViewPropertyAnimator *)arg5 customAnimationsProvider:(void (^)(id <_UICollectionViewAnimationContext>))arg6;
+- (void)_performUpdateWithCollectionViewUpdateItems:(NSArray *)arg1 dataSourceSnapshot:(id <_UIDataSourceSnapshotTranslating>)arg2 updateHandler:(void (^)(void))arg3 completion:(void (^)(void))arg4 viewPropertyAnimator:(UIViewPropertyAnimator *)arg5 customAnimationsProvider:(void (^)(id <_UICollectionViewAnimationContext>))arg6 animated:(_Bool)arg7;
 @end
 

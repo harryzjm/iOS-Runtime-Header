@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
     unsigned char localPrivKey[32];
     unsigned char localPubKey[32];
     unsigned int useLargeUUIDForTesting:1;
+    unsigned int failConnectionAfterVerificationFailsForTesting:1;
+    unsigned int failConnectionAfterVerificationPassesForTesting:1;
 }
 
 - (void).cxx_destruct;

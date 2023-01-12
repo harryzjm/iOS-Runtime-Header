@@ -7,11 +7,14 @@
 #import <Foundation/NSXPCConnection.h>
 
 @interface NSXPCConnection (PGAdditions)
+- (_Bool)PG_hasScreenSharingEntitlement;
+- (_Bool)PG_hasMultitaskingCameraAccessEntitlement;
 - (id)PG_remoteObjectProxyWithDebugMethodAndPointerProem:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)PG_remoteObjectWithDebugMethodAndPointerProem:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)PG_appProxyWithDebugMethodAndPointerProem:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)PG_remoteObjectProxyWithDebugMethodAndPointerProem:(id)arg1;
 - (id)PG_remoteObjectWithDebugMethodAndPointerProem:(id)arg1;
 - (id)PG_appProxyWithDebugMethodAndPointerProem:(id)arg1;
+- (_Bool)PG_hasMenuItemProviderEntitlement;
 @end
 

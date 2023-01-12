@@ -13,10 +13,12 @@
 {
     _Bool _sync;
     MTLFunction *_function;
+    unsigned long long _functionOptions;
     unsigned long long _pipelineOptions;
     NSObject<OS_dispatch_data> *_frameworkData;
     NSObject<OS_dispatch_data> *_driverKeyData;
     id <MTLPipelineCache> _pipelineCache;
+    CDStruct_41a22ec7 _archiveHashKey;
     id <MTLBinaryArchive> _destinationBinaryArchive;
     NSArray *_binaryArchives;
     NSArray *_visibleFunctions;
@@ -24,13 +26,16 @@
     NSDictionary *_visibleFunctionGroups;
 }
 
++ (id)newVisibleRequestWithFunction:(id)arg1 descriptor:(id)arg2;
 @property(copy, nonatomic) NSDictionary *visibleFunctionGroups; // @synthesize visibleFunctionGroups=_visibleFunctionGroups;
 @property(copy, nonatomic) NSArray *privateVisibleFunctions; // @synthesize privateVisibleFunctions=_privateVisibleFunctions;
 @property(copy, nonatomic) NSArray *visibleFunctions; // @synthesize visibleFunctions=_visibleFunctions;
 @property(copy, nonatomic) NSArray *binaryArchives; // @synthesize binaryArchives=_binaryArchives;
 @property(retain, nonatomic) id <MTLBinaryArchive> destinationBinaryArchive; // @synthesize destinationBinaryArchive=_destinationBinaryArchive;
+@property(nonatomic) CDStruct_41a22ec7 archiveHashKey; // @synthesize archiveHashKey=_archiveHashKey;
 @property(retain, nonatomic) id <MTLPipelineCache> pipelineCache; // @synthesize pipelineCache=_pipelineCache;
 @property(nonatomic) unsigned long long pipelineOptions; // @synthesize pipelineOptions=_pipelineOptions;
+@property(nonatomic) unsigned long long functionOptions; // @synthesize functionOptions=_functionOptions;
 @property(retain, nonatomic) MTLFunction *function; // @synthesize function=_function;
 @property(nonatomic) _Bool sync; // @synthesize sync=_sync;
 - (void)dealloc;

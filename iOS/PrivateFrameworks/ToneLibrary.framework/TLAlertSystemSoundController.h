@@ -9,21 +9,18 @@
 #import <ToneLibrary/TLAlertPlaybackBackEndController-Protocol.h>
 #import <ToneLibrary/TLBacklightObserver-Protocol.h>
 
-@class NSMapTable, NSString;
-@protocol OS_dispatch_queue;
+@class NSMapTable, NSString, TLAudioQueue;
 
 @interface TLAlertSystemSoundController : NSObject <TLBacklightObserver, TLAlertPlaybackBackEndController>
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSString *_accessQueueLabel;
+    TLAudioQueue *_audioQueue;
+    struct os_unfair_lock_s _lock;
     NSMapTable *_alertSystemSoundContexts;
     long long _backlightStatus;
     unsigned long long _backlightObservationRequestsCount;
 }
 
-+ (void)_reportPlaybackFailureWithPlaybackCompletionContext:(id)arg1;
 + (id)_optionsForSystemSoundAlert:(id)arg1 withSound:(id)arg2;
-+ (double)_unduckTimeForAlert:(id)arg1;
 + (id)_descriptionForAlertComponentsSuppressionFlags:(unsigned int)arg1;
 + (unsigned int)_componentSuppressionFlagsForAlert:(id)arg1;
 + (id)_vibrationPatternForAlert:(id)arg1 withSound:(id)arg2;
@@ -31,22 +28,24 @@
 + (id)_toneIdentifierForDeemphasizingAlert:(id)arg1;
 + (id)_soundForAlert:(id)arg1 toneIdentifierForDeemphasizingAlert:(id)arg2;
 - (void).cxx_destruct;
+- (void)_processDeemphasizableAlertChangesForBackglightStatus:(long long)arg1 stopTasksDescriptorForDeemphasizedAlerts:(id)arg2 playbackCompletionTypeForDeemphasizedAlerts:(long long)arg3 deemphasizableAlertBeginPlayingContexts:(id)arg4;
 - (void)backlightStatusDidChange:(long long)arg1;
 - (void)_endRequiringBacklightObservation;
 - (void)_beginRequiringBacklightObservation;
-- (void)_notifyOfPlaybackCompletionWithContext:(id)arg1;
+- (void)_recordPlaybackFailureIntoPlaybackCompletionContext:(id)arg1;
+- (void)_processPlaybackCompletionContexts:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_didCompletePlaybackForAlert:(id)arg1;
-- (void)_preheatForAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_preheatForAlert:(id)arg1 backlightStatus:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preheatForAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_willBeginPlayingAlert:(id)arg1 withSound:(id)arg2;
-- (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_playAlert:(id)arg1 withSound:(id)arg2;
-- (void)_playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_prepareForPreemptingAlertsBeforeBeginningPlaybackOfAlert:(id)arg1 withSound:(id)arg2 playbackCompletionType:(long long)arg3;
+- (void)_processStopTasksDescriptor:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)_prepareForStoppingAlerts:(id)arg1 playbackCompletionType:(long long)arg2;
+- (_Bool)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_processPlayTaskDescriptors:(id)arg1;
+- (id)_playTaskDescriptorForAlert:(id)arg1 withSound:(id)arg2 alertSystemSoundContext:(id)arg3;
+- (CDStruct_fa0c26dd)_considerDeferringPlayingAlertForBacklightStatusResolution:(id)arg1 alertSystemSoundContext:(id)arg2;
+- (void)_playAlert:(id)arg1 alertSystemSoundContext:(id)arg2 toneIdentifierForDeemphasizingAlert:(id)arg3 backlightStatusResolutionDeferralContext:(CDStruct_fa0c26dd)arg4;
 - (void)playAlert:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_assertRunningOnAccessQueue;
-- (void)_performBlockOnAccessQueue:(CDUnknownBlockType)arg1;
-- (void)_prepareForDealloc;
 - (void)dealloc;
 - (id)init;
 

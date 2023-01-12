@@ -6,12 +6,9 @@
 
 #import <ChronoCore/NSXPCListenerDelegate-Protocol.h>
 #import <ChronoCore/_TtP9WidgetKit27WidgetCenterConnection_Host_-Protocol.h>
-#import <ChronoCore/_TtP9WidgetKit32AvocadoControllerConnection_Host_-Protocol.h>
 
-@interface (null) (ChronoCore) <NSXPCListenerDelegate, _TtP9WidgetKit32AvocadoControllerConnection_Host_, _TtP9WidgetKit27WidgetCenterConnection_Host_>
+@interface (null) (ChronoCore) <NSXPCListenerDelegate, _TtP9WidgetKit27WidgetCenterConnection_Host_>
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)_reloadWidgetsInExtensionBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_reloadWidgetsFor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_reloadAllTimelines:(CDUnknownBlockType)arg1;
 - (void)_reloadTimelinesOfKind:(id)arg1 inBundle:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reloadTimelinesOfKind:(id)arg1 completion:(CDUnknownBlockType)arg2;

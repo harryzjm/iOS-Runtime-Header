@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIContextMenuInteraction, UIImage, UIScrollView;
+@class NSArray, NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIContextMenuInteraction, UIImage, UIScrollView;
 @protocol PXAssetImportStatusManager;
 
 @protocol PXOneUpPresentationDelegate <NSObject>
@@ -15,6 +15,7 @@
 - (PXAssetsDataSourceManager *)oneUpPresentationDataSourceManager:(PXOneUpPresentation *)arg1;
 
 @optional
+- (NSArray *)oneUpPresentationMatchedQueryStrings:(PXOneUpPresentation *)arg1;
 - (UIScrollView *)oneUpPresentationHelperScrollView:(PXOneUpPresentation *)arg1;
 - (id <PXAssetImportStatusManager>)oneUpPresentationImportStatusManager:(PXOneUpPresentation *)arg1;
 - (PXGestureProvider *)oneUpPresentationGestureProvider:(PXOneUpPresentation *)arg1;

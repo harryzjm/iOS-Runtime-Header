@@ -25,7 +25,7 @@
     NSArray *_recentMessages;
 }
 
-+ (id)contextFromLDContext:(const struct LDContext *)arg1;
++ (id)contextFromLDContext:(const void *)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *recentMessages; // @synthesize recentMessages=_recentMessages;
 @property(copy, nonatomic) NSDictionary *dictationLanguagePriors; // @synthesize dictationLanguagePriors=_dictationLanguagePriors;

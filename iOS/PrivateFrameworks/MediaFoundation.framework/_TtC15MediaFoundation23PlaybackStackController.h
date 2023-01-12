@@ -6,10 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE, NSDictionary;
+@class MISSING_TYPE, NSDictionary, NSString;
 
 @interface _TtC15MediaFoundation23PlaybackStackController : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *playerID;
     MISSING_TYPE *queueController;
     MISSING_TYPE *queueAssetLoader;
     MISSING_TYPE *playerController;
@@ -17,14 +18,22 @@
     MISSING_TYPE *internalController;
     MISSING_TYPE *errorController;
     MISSING_TYPE *backgroundTaskController;
-    MISSING_TYPE *currentQueueRestorationItem;
     MISSING_TYPE *currentSetQueueIdentifier;
 }
 
 @property(nonatomic, readonly) NSDictionary *stateDictionary;
 - (void)reset;
-- (_Bool)setAudioSessionActive:(_Bool)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;
+- (void)activateAudioSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateAudioSessionWithConfiguration:(id)arg1;
+- (void)setupForManagedSessionWithAudioSession:(id)arg1;
+- (void)setupForShared;
+- (void)setupForSolo;
+@property(nonatomic, readonly) _Bool isModeManagedSession;
+@property(nonatomic, readonly) _Bool isModeShared;
+@property(nonatomic, readonly) _Bool isModeSolo;
+@property(nonatomic, readonly) NSString *modeDescription;
+- (void)setRelativeVolume:(float)arg1;
+- (void)setSpatializationFormat:(long long)arg1;
 
 @end
 

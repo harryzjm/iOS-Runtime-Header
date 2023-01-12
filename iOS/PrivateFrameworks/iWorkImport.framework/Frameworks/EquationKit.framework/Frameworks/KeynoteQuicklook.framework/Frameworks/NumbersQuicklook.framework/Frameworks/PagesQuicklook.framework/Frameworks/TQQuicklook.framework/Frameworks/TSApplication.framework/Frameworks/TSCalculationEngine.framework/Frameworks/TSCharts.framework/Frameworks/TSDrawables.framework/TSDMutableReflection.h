@@ -8,8 +8,9 @@
 {
 }
 
-- (void)setFadeAcceleration:(double)arg1;
-- (void)setOpacity:(double)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) double fadeAcceleration; // @dynamic fadeAcceleration;
+@property(nonatomic) double opacity; // @dynamic opacity;
 
 @end
 

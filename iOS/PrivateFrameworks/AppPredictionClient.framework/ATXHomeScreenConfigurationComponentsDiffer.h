@@ -11,15 +11,21 @@
 @interface ATXHomeScreenConfigurationComponentsDiffer : NSObject
 {
     NSOrderedCollectionDifference *_pinnedWidgetsDifference;
-    NSOrderedCollectionDifference *_stackedWidgetsDifference;
     NSOrderedCollectionDifference *_stacksDifference;
+    NSArray *_userAddedStackedWidgets;
+    NSArray *_userDeletedStackedWidgets;
+    NSArray *_userAddedPreviousSuggestedWidgets;
+    NSArray *_deletedPreviousSuggestedWidgets;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *deletedPreviousSuggestedWidgets; // @synthesize deletedPreviousSuggestedWidgets=_deletedPreviousSuggestedWidgets;
+@property(readonly, nonatomic) NSArray *userAddedPreviousSuggestedWidgets; // @synthesize userAddedPreviousSuggestedWidgets=_userAddedPreviousSuggestedWidgets;
+@property(readonly, nonatomic) NSArray *userDeletedStackedWidgets; // @synthesize userDeletedStackedWidgets=_userDeletedStackedWidgets;
+@property(readonly, nonatomic) NSArray *userAddedStackedWidgets; // @synthesize userAddedStackedWidgets=_userAddedStackedWidgets;
+- (id)_widgetsByWidgetUniqueIds:(id)arg1;
 @property(readonly, nonatomic) NSArray *deletedStacks;
 @property(readonly, nonatomic) NSArray *addedStacks;
-@property(readonly, nonatomic) NSArray *deletedStackedWidgets;
-@property(readonly, nonatomic) NSArray *addedStackedWidgets;
 @property(readonly, nonatomic) NSArray *deletedPinnedWidgets;
 @property(readonly, nonatomic) NSArray *addedPinnedWidgets;
 - (id)initWithPreviousComponents:(id)arg1 currentComponents:(id)arg2;

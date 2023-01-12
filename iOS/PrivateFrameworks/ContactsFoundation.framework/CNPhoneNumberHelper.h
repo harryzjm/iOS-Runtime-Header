@@ -10,6 +10,10 @@
 {
 }
 
++ (id)makePhoneNumberRegex;
++ (_Bool)isStringPhoneNumber:(id)arg1;
++ (id)internationalizedUnformattedNumber:(id)arg1 countryCode:(id)arg2;
++ (id)internationalizedFormattedNumber:(id)arg1 countryCode:(id)arg2;
 + (id)countryCodeForNumber:(id)arg1;
 + (id)defaultCountryCode;
 + (id)lastFourDigitsForNumber:(id)arg1;

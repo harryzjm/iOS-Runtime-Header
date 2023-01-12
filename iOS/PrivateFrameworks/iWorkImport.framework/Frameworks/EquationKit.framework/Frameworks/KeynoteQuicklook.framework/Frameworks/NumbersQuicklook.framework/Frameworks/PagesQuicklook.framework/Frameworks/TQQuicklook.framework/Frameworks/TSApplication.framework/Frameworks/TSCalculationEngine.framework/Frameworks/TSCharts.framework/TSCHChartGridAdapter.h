@@ -12,12 +12,12 @@
 
 @interface TSCHChartGridAdapter : NSObject <NSFastEnumeration>
 {
-    TSCHChartGrid *mGrid;
-    unsigned long long mIndex;
+    TSCHChartGrid *_grid;
+    unsigned long long _index;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCHChartGrid *grid; // @synthesize grid=mGrid;
+@property(readonly, nonatomic) TSCHChartGrid *grid; // @synthesize grid=_grid;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 @property(retain, nonatomic) NSString *name;
 - (void)setValue:(id)arg1 atIndex:(unsigned long long)arg2;

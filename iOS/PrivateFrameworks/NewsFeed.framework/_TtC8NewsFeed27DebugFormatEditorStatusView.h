@@ -13,6 +13,9 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *onHistoryTap;
     MISSING_TYPE *historyButton;
+    MISSING_TYPE *onPackageTap;
+    MISSING_TYPE *packageButton;
+    MISSING_TYPE *onErrorTap;
     MISSING_TYPE *errorButton;
     MISSING_TYPE *statusLabel;
     MISSING_TYPE *editor;

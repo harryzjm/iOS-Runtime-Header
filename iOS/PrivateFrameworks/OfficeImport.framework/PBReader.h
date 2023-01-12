@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (struct OCCBinaryStreamer *)allocBinaryStreamerWithCryptoKey:(struct OCCCryptoKey *)arg1 baseOutputFilenameInUTF8:(const char *)arg2;
 - (struct OCCEncryptionInfoReader *)encryptionInfoReader;
-@property(readonly, nonatomic) struct PptBinaryReader *pptReader;
+@property(readonly, nonatomic) void *pptReader;
 - (id)read;
 - (_Bool)start;
 - (void)dealloc;

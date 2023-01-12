@@ -9,20 +9,30 @@
 #import <TSPersistence/TSPFileCoordinatorDelegate-Protocol.h>
 #import <TSPersistence/TSPPassphraseConsumer-Protocol.h>
 
-@class NSData, NSString, NSURL, SFUCryptoKey, TSPDocumentProperties, TSPPackage;
+@class NSData, NSString, NSURL, SFUCryptoKey, TSPDocumentProperties, TSPPackage, TSUOnce;
 
 @interface TSPPackageDataReader : NSObject <TSPFileCoordinatorDelegate, TSPPassphraseConsumer>
 {
     TSPPackage *_package;
     NSString *_lastPasswordAttempted;
+    struct map<const std::string, TSP::DataInfo, std::less<const std::string>, std::allocator<std::pair<const std::string, TSP::DataInfo>>> _dataInfos;
+    TSUOnce *_dataInfosDispatchOnce;
     NSURL *_URL;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+- (id)newDataCopyInputStreamProviderWithDigest:(id)arg1 encryptionInfo:(id)arg2 error:(id *)arg3;
+- (id)newDataCopyReadChannelProviderWithDigest:(id)arg1 encryptionInfo:(id)arg2 length:(out unsigned long long *)arg3 error:(id *)arg4;
+- (id)newDataCopyReadChannelProviderWithDigest:(id)arg1 encryptionInfo:(id)arg2 error:(id *)arg3;
+- (id)newDataCopyURLProviderWithDigest:(id)arg1 encryptionInfo:(id)arg2 error:(id *)arg3;
 - (struct CGImage *)newCGImageAtRelativePath:(id)arg1;
 - (struct CGImageSource *)newCGImageSourceAtRelativePath:(id)arg1;
 - (struct CGDataProvider *)newCGDataProviderAtRelativePath:(id)arg1;
+- (id)decryptionInfoForDataWithDigest:(id)arg1;
+- (id)relativePathForDataWithDigest:(id)arg1;
+- (const void *)infoForDigest:(id)arg1;
 - (_Bool)hasDataAtRelativePath:(id)arg1;
 - (_Bool)checkPassword:(id)arg1;
 @property(readonly, nonatomic) SFUCryptoKey *lastDecryptionKeyAttempted;

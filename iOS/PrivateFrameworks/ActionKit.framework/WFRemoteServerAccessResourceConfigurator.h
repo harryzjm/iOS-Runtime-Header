@@ -10,6 +10,7 @@
 {
 }
 
++ (id)invalidHostnameErrorForInputURL:(id)arg1;
 + (void)configureResourcesOfAction:(id)arg1 usingInputURLsWithCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end

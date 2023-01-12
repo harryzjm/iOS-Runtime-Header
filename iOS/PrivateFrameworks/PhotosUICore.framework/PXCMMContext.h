@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSendBackSuggestionSource, PXRecipient, PXUIMediaProvider;
+@class NSArray, NSDate, NSDictionary, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMSendBackSuggestionSource, PXPeopleSuggestionsDataSourceManager, PXRecipient, PXUIMediaProvider;
 @protocol PXDisplayAsset, PXUIImageProvider;
 
 @interface PXCMMContext : NSObject
@@ -18,9 +18,8 @@
     PXUIMediaProvider *_mediaProvider;
     unsigned long long _activityType;
     unsigned long long _sourceType;
-    PXCMMPeopleSuggestionsDataSourceManager *_peopleSuggestionsPreviewDataSourceManager;
-    PXCMMPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
-    PXCMMPeopleSuggestionsMediaProvider *_peopleSuggestionsMediaProvider;
+    PXPeopleSuggestionsDataSourceManager *_peopleSuggestionsPreviewDataSourceManager;
+    PXPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
     NSString *_originalTitle;
     NSString *_title;
     NSString *_subtitle;
@@ -60,9 +59,8 @@
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) NSString *originalTitle; // @synthesize originalTitle=_originalTitle;
-@property(retain, nonatomic) PXCMMPeopleSuggestionsMediaProvider *peopleSuggestionsMediaProvider; // @synthesize peopleSuggestionsMediaProvider=_peopleSuggestionsMediaProvider;
-@property(retain, nonatomic) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager; // @synthesize peopleSuggestionsDataSourceManager=_peopleSuggestionsDataSourceManager;
-@property(retain, nonatomic) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsPreviewDataSourceManager; // @synthesize peopleSuggestionsPreviewDataSourceManager=_peopleSuggestionsPreviewDataSourceManager;
+@property(retain, nonatomic) PXPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager; // @synthesize peopleSuggestionsDataSourceManager=_peopleSuggestionsDataSourceManager;
+@property(retain, nonatomic) PXPeopleSuggestionsDataSourceManager *peopleSuggestionsPreviewDataSourceManager; // @synthesize peopleSuggestionsPreviewDataSourceManager=_peopleSuggestionsPreviewDataSourceManager;
 @property(nonatomic) unsigned long long sourceType; // @synthesize sourceType=_sourceType;
 @property(readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
 @property(readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;

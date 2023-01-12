@@ -24,12 +24,16 @@
 @property(retain, nonatomic) _PASBundleIdResolver *bundleIdResolver; // @synthesize bundleIdResolver=_bundleIdResolver;
 @property(copy, nonatomic) NSString *clientProcessName; // @synthesize clientProcessName=_clientProcessName;
 - (void)warmUpWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_forwardFeedbackToQuickResponsesPersonalizationWithResponseItems:(id)arg1 request:(id)arg2 isSelected:(_Bool)arg3;
+- (id)_quickResponsesConfigFromPSGInputSuggestionsRequest:(id)arg1;
+- (id)_mlStringsFromResponseItems:(id)arg1;
 - (void)logSpeedMetricForLocaleIdentifier:(id)arg1 messageDurationMilliseconds:(int)arg2 messageLength:(int)arg3 messageWords:(int)arg4;
 - (void)logErrorForRequest:(id)arg1 trigger:(id)arg2 errorType:(unsigned char)arg3;
 - (void)logEngagement:(id)arg1 request:(id)arg2 position:(unsigned long long)arg3;
 - (void)logImpression:(id)arg1 request:(id)arg2;
 - (void)logPrediction:(id)arg1 request:(id)arg2 latencyMillis:(double)arg3;
 - (void)logTrigger:(id)arg1 request:(id)arg2;
+- (void)_forwardFeedbackToPortraitWithResponseItems:(id)arg1 feedbackType:(unsigned int)arg2;
 - (void)_logRequest:(id)arg1 config:(id)arg2;
 - (id)_getExperimentConfigForLogging:(id)arg1;
 - (void)inputSuggestionsWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

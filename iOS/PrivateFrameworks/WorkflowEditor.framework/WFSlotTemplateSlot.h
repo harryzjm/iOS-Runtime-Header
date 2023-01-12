@@ -17,6 +17,7 @@
     _Bool _invalid;
     _Bool _prefersNoWrapping;
     _Bool _standaloneTextAttachment;
+    _Bool _isEnumeration;
     WFSlotIdentifier *_identifier;
     NSString *_localizedName;
     NSString *_localizedPlaceholder;
@@ -27,6 +28,7 @@
 + (id)slotWithLocalizedName:(id)arg1 localizedPlaceholder:(id)arg2 key:(id)arg3;
 + (id)addingSlotWithKey:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isEnumeration; // @synthesize isEnumeration=_isEnumeration;
 @property(nonatomic) long long userInputInsertionIndex; // @synthesize userInputInsertionIndex=_userInputInsertionIndex;
 @property(nonatomic) _Bool standaloneTextAttachment; // @synthesize standaloneTextAttachment=_standaloneTextAttachment;
 @property(nonatomic) _Bool prefersNoWrapping; // @synthesize prefersNoWrapping=_prefersNoWrapping;

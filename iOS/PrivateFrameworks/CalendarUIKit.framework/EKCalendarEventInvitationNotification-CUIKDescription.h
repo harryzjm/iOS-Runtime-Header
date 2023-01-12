@@ -16,10 +16,9 @@
 - (id)_organizerString:(unsigned long long)arg1;
 - (id)_identityStringWithOptions:(unsigned long long)arg1;
 - (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
-- (id)importantDescriptionStringWithOptions:(unsigned long long)arg1;
 - (id)senderStringWithOptions:(unsigned long long)arg1;
 - (id)descriptionStrings:(unsigned long long)arg1;
-- (id)_allDescriptionStringsDictionaryWithStyle:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (void)_populateDescriptionStringsArray:(id)arg1 dictionary:(id)arg2 options:(unsigned long long)arg3;
 - (_Bool)supportsDisplay;
 @end
 

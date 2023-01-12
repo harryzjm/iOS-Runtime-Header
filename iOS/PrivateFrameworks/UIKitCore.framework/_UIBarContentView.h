@@ -6,7 +6,7 @@
 
 #import <UIKitCore/_UIButtonBarAppearanceDelegate-Protocol.h>
 
-@class NSString, UIColor, UIImage, _UIBarButtonItemAppearanceStorage;
+@class NSString, UIColor, UIImage, UIImageSymbolConfiguration, _UIBarButtonItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarContentView <_UIButtonBarAppearanceDelegate>
@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 

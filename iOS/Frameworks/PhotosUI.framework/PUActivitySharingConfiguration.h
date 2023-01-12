@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
 {
     _Bool _allowsAirPlayActivity;
     _Bool _allowsRemoveFromFeaturedPhotosActivity;
+    _Bool _allowsSuggestLessPersonActivity;
+    _Bool _allowsEditDateTimeActivity;
+    _Bool _allowsEditLocationActivity;
     _Bool _wantsActionSheet;
     _Bool _excludeShareActivity;
     PHFetchResult *_collectionListFetchResult;
@@ -37,6 +40,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool excludeShareActivity; // @synthesize excludeShareActivity=_excludeShareActivity;
 @property(nonatomic) _Bool wantsActionSheet; // @synthesize wantsActionSheet=_wantsActionSheet;
 @property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
+@property(nonatomic) _Bool allowsEditLocationActivity; // @synthesize allowsEditLocationActivity=_allowsEditLocationActivity;
+@property(nonatomic) _Bool allowsEditDateTimeActivity; // @synthesize allowsEditDateTimeActivity=_allowsEditDateTimeActivity;
+@property(nonatomic) _Bool allowsSuggestLessPersonActivity; // @synthesize allowsSuggestLessPersonActivity=_allowsSuggestLessPersonActivity;
 @property(nonatomic) _Bool allowsRemoveFromFeaturedPhotosActivity; // @synthesize allowsRemoveFromFeaturedPhotosActivity=_allowsRemoveFromFeaturedPhotosActivity;
 @property(nonatomic) _Bool allowsAirPlayActivity; // @synthesize allowsAirPlayActivity=_allowsAirPlayActivity;
 @property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;

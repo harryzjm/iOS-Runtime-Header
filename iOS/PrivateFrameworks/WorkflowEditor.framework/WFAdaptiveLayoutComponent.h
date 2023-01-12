@@ -6,10 +6,10 @@
 
 @interface WFAdaptiveLayoutComponent
 {
-    vector_e48f0605 _children;
+    struct vector<CKComponent *, std::allocator<CKComponent *>> _children;
 }
 
-+ (id)newWithChildren:(const vector_e48f0605 *)arg1 size:(const struct CKComponentSize *)arg2;
++ (id)newWithChildren:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1;

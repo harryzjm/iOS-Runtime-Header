@@ -11,7 +11,7 @@
 @interface _TtC15HealthRecordsUI30CategoryRecordQueryDescription : _TtCs12_SwiftObject
 {
     MISSING_TYPE *category;
-    MISSING_TYPE *sampleQueryDescription;
+    MISSING_TYPE *queryDescriptor;
 }
 
 @end

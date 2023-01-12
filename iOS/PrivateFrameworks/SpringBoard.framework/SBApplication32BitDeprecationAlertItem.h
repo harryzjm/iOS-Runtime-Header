@@ -18,6 +18,8 @@
 - (id)_message;
 - (id)_title;
 - (_Bool)dismissOnLock;
+- (_Bool)shouldShowInLockScreen;
+- (_Bool)forcesModalAlertAppearance;
 - (void)configure:(_Bool)arg1 requirePasscodeForActions:(_Bool)arg2;
 - (id)initWithApplication:(id)arg1;
 

@@ -12,11 +12,12 @@
 
 @property(nonatomic) _Bool isShortWord; // @synthesize isShortWord=_isShortWord;
 @property(nonatomic) long long wordPosition; // @synthesize wordPosition=_wordPosition;
+- (id)privateDescription;
 - (id)description;
 - (void)reportInterKeyTiming:(id)arg1 previousEvent:(id)arg2;
 - (void)reportToSession:(id)arg1;
 - (long long)_metricWordKeyPostion:(long long)arg1;
-- (id)init:(id)arg1 order:(long long)arg2;
+- (id)init:(id)arg1 emojiSearchMode:(_Bool)arg2 order:(long long)arg3;
 
 @end
 

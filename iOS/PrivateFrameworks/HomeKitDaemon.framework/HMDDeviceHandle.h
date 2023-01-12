@@ -19,7 +19,6 @@
 + (_Bool)supportsSecureCoding;
 + (id)deviceHandleForDestination:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, copy) _HMDDeviceHandle *internal; // @synthesize internal=_internal;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

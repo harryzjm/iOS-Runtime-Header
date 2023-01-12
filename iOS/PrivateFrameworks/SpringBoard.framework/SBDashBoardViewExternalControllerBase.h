@@ -11,7 +11,7 @@
 #import <SpringBoard/CSExternalEventHandling-Protocol.h>
 #import <SpringBoard/CSExternalPresentationProviding-Protocol.h>
 
-@class NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
+@class NSArray, NSSet, NSString, _UILegibilitySettings;
 @protocol UICoordinateSpace;
 
 @interface SBDashBoardViewExternalControllerBase : CSCoverSheetViewControllerBase <CSExternalAppearanceProviding, CSExternalBehaviorProviding, CSExternalPresentationProviding, CSExternalEventHandling>
@@ -29,8 +29,6 @@
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
-@property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 @property(readonly, copy) NSString *debugDescription;

@@ -30,8 +30,11 @@
 - (_Bool)_hasOriginalSize;
 - (void)_sortSupportedSizesArray;
 - (void)_sortResponseArray;
+@property(readonly, nonatomic) NSArray *textGradient;
+@property(readonly, nonatomic) unsigned long long imageTraits;
 @property(readonly, copy, nonatomic) NSString *stringRepresentation;
 @property(readonly, nonatomic) struct CGSize originalSize;
+- (struct CGColor *)colorFromStringRepresentation:(id)arg1;
 - (struct CGColor *)copyColorWithKind:(id)arg1;
 - (id)artworkURLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3 preferP3ColorSpace:(_Bool)arg4;
 - (id)artworkURLWithSize:(struct CGSize)arg1 cropStyle:(id)arg2 format:(id)arg3;
@@ -40,6 +43,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithArtworkResponseValue:(id)arg1;
 - (id)initWithArtworkURL:(id)arg1;

@@ -10,7 +10,7 @@
 #import <NanoPassKit/PKPaymentWebServiceArchiver-Protocol.h>
 #import <NanoPassKit/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class IDSService, NPKCompanionAgentConnection, NPKSubcredentialInvitationCoordinator, NPKTapToRadarManager, NPKTargetDeviceAssertionManager, NRActiveDeviceAssertion, NSMutableDictionary, NSString;
+@class IDSService, NPKCompanionAgentConnection, NPKSubcredentialInvitationCoordinator, NPKTapToRadarManager, NPKTargetDeviceAssertionManager, NRActiveDeviceAssertion, NSMutableDictionary, NSString, PUConnection;
 @protocol NPKPasscodeChangeCoordinatorProtocol, NPKPaymentWebServiceCompanionTargetDeviceDelegate, OS_dispatch_queue;
 
 @interface NPKPaymentWebServiceCompanionTargetDevice : NSObject <IDSServiceDelegate, PKPaymentWebServiceTargetDeviceProtocol, PKPaymentWebServiceArchiver>
@@ -28,10 +28,12 @@
     id <NPKPasscodeChangeCoordinatorProtocol> _passcodeChangeCoordinator;
     id _passcodeUpgradeFlowController;
     NPKSubcredentialInvitationCoordinator *_subcredentialInvitationCoordinator;
+    PUConnection *_passcodeConnection;
 }
 
 + (id)bridgedClientInfoHTTPHeader;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PUConnection *passcodeConnection; // @synthesize passcodeConnection=_passcodeConnection;
 @property(retain, nonatomic) NPKSubcredentialInvitationCoordinator *subcredentialInvitationCoordinator; // @synthesize subcredentialInvitationCoordinator=_subcredentialInvitationCoordinator;
 @property(nonatomic) __weak id passcodeUpgradeFlowController; // @synthesize passcodeUpgradeFlowController=_passcodeUpgradeFlowController;
 @property(retain, nonatomic) id <NPKPasscodeChangeCoordinatorProtocol> passcodeChangeCoordinator; // @synthesize passcodeChangeCoordinator=_passcodeChangeCoordinator;
@@ -50,24 +52,55 @@
 - (id)_expressModesFromExpressPassesInformation:(id)arg1;
 - (id)_expressPassesInformationFromDataArray:(id)arg1;
 - (_Bool)_deviceIsConnected;
-- (_Bool)_deviceIsFortuneOrLater;
-- (_Bool)_deviceIsDaytonaOrLater;
 - (_Bool)deviceSupportTransitReminderSetting;
 - (_Bool)deviceSupportMultipleExpressPasses;
 - (id)_serialNumbersOfAllPairedDevices;
+- (id)_sendProtobuf:(id)arg1 responseExpected:(_Bool)arg2 extraOptions:(id)arg3 priority:(long long)arg4;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(_Bool)arg2 extraOptions:(id)arg3;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(_Bool)arg2;
 - (id)_sendProtobuf:(id)arg1 responseIdentifier:(id)arg2;
 - (void)_trackOutstandingRequestWithMessageIdentifier:(id)arg1 completionHandler:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)_invalidateAssertionOfType:(unsigned long long)arg1;
 - (void)_acquireAssertionOfType:(unsigned long long)arg1;
+- (void)serviceProviderDataForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)serviceProviderDataForPassWithUniqueIdentifierResponse:(id)arg1;
+- (_Bool)areUnifiedAccessPassesSupported;
+- (void)addISO18013BlobsResponse:(id)arg1;
+- (void)addISO18013Blobs:(id)arg1 cardType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)deleteKeyMaterialForSubCredentialId:(id)arg1;
+- (void)generateSEEncryptionCertificateForSubCredentialIdResponse:(id)arg1;
+- (void)generateSEEncryptionCertificateForSubCredentialId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)generateTransactionKeyWithParametersResponse:(id)arg1;
+- (void)paymentWebService:(id)arg1 generateTransactionKeyWithParameters:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)requestAndStoreExternalizedAuthWithCompletionResponse:(id)arg1;
+- (void)requestAndStoreExternalizedAuthWithCompletion:(CDUnknownBlockType)arg1;
+- (void)generateISOEncryptionCertificateForSubCredentialIdResponse:(id)arg1;
+- (void)generateISOEncryptionCertificateForSubCredentialId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)signWithFidoKeyResponse:(id)arg1;
+- (void)signWithFidoKeyForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 fidoKeyHash:(id)arg3 challenge:(id)arg4 publicKeyIdentifier:(id)arg5 externalizedAuth:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)checkFidoKeyResponse:(id)arg1;
+- (void)checkFidoKeyPresenceForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 fidoKeyHash:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)createFidoKeyResponse:(id)arg1;
+- (void)createFidoKeyForRelyingParty:(id)arg1 relyingPartyAccountHash:(id)arg2 challenge:(id)arg3 externalizedAuth:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)availableHomeKeyPassesResponse:(id)arg1;
+- (void)availableHomeKeyPassesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)provisionHomeKeyPassForSerialNumbersResponse:(id)arg1;
+- (void)provisionHomeKeyPassForSerialNumbers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)featureApplicationsForAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)featureApplicationsForAccountIdentifierResponse:(id)arg1;
 - (void)photosForFamilyMembersWithDSIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)photosForFamilyMembersWithDSIDsResponse:(id)arg1;
+- (void)performDeviceRegistrationForReason:(id)arg1 brokerURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)paymentWebServiceRegisterResponse:(id)arg1;
 - (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
-- (void)familyMembersResponse:(id)arg1;
 - (void)consistencyCheck;
 - (_Bool)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 - (void)requestAutomaticProvisioningForCompanionPaymentPass:(id)arg1;
+- (void)paymentWebService:(id)arg1 resumeRangingForPairedReaderIdentifier:(id)arg2;
+- (void)paymentWebService:(id)arg1 pauseRangingForPairedReaderIdentifier:(id)arg2 durationInSeconds:(id)arg3;
+- (void)presentStandaloneTransactionForPassUniqueIdentifierResponse:(id)arg1;
+- (void)_paymentWebService:(id)arg1 presentStandaloneTransaction:(long long)arg2 forPassUniqueIdentifier:(id)arg3 validUntilDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)paymentWebService:(id)arg1 presentStandaloneTransaction:(long long)arg2 forPassUniqueIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)declineRelatedSharingInvitationsIfNecessaryResponse:(id)arg1;
 - (void)declineRelatedSharingInvitationsIfNecessaryRequest:(id)arg1;
 - (void)paymentWebService:(id)arg1 declineRelatedSharingInvitationsIfNecessary:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -94,9 +127,16 @@
 - (void)paymentWebService:(id)arg1 acceptSubcredentialInvitationWithIdentifier:(id)arg2 metadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)subcredentialInvitationsResponse:(id)arg1;
 - (void)paymentWebService:(id)arg1 subcredentialInvitationsWithCompletion:(CDUnknownBlockType)arg2;
+- (void)canAcceptInvitationRequest:(id)arg1;
 - (void)canAcceptInvitationResponse:(id)arg1;
 - (void)paymentWebService:(id)arg1 canAcceptInvitation:(id)arg2 withCompletionV2:(CDUnknownBlockType)arg3;
+- (void)canAddSecureElementPassWithConfigurationResponse:(id)arg1;
+- (void)_canAddSecureElementPassWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 canAddSecureElementPassWithConfiguration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)deviceIDSIdentifier;
+- (_Bool)_isUnifiedAccessProvisioningSupported;
+- (_Bool)_isHomeKeyProvisioningSupported;
+- (_Bool)_isSubcredentialProvisioningSupportedOverUWB;
 - (_Bool)_isSubcredentialProvisioningSupported;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(_Bool)arg1;
@@ -146,6 +186,7 @@
 - (void)paymentWebService:(id)arg1 setDefaultPaymentPassUniqueIdentifier:(id)arg2;
 - (void)performProductActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performProductActionResponse:(id)arg1;
+- (void)productsWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)availableProductsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)availableProductsResponse:(id)arg1;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
@@ -215,7 +256,7 @@
 - (void)dumpLogsResponse:(id)arg1;
 - (void)removeAIDsFromSecureElement:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)secureElementRemoveAppletsResponse:(id)arg1;
-- (void)secureElementCardsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)secureElementAppletsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)secureElementGetAppletsResponse:(id)arg1;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;
 - (_Bool)claimSecureElementForCurrentUser;
@@ -247,7 +288,6 @@
 - (void)paymentWebService:(id)arg1 provisioningDataIncludingDeviceMetadata:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)provisioningDataResponse:(id)arg1;
 - (void)_paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)appleAccountInformation;
@@ -265,7 +305,7 @@
 - (void)getPairingInfoResponse:(id)arg1;
 - (void)_setNewAuthRandomReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomResponse:(id)arg1;
-- (void)paymentWebService:(id)arg1 validateAcceptInvitationPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 validateAddBiometricPassPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)paymentWebService:(id)arg1 canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg2;

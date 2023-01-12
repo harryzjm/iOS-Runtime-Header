@@ -29,6 +29,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(_Bool)arg2 requestCancellationReason:(long long)arg3 dismissalReason:(unsigned long long)arg4 shouldTurnScreenOff:(_Bool)arg5;
+- (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(_Bool)arg2 requestCancellationReason:(long long)arg3 dismissalReason:(unsigned long long)arg4;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(_Bool)arg2 requestCancellationReason:(long long)arg3;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(_Bool)arg2 dismissalReason:(unsigned long long)arg3;
 - (id)initWithDeactivationOptions:(unsigned long long)arg1 animated:(_Bool)arg2;

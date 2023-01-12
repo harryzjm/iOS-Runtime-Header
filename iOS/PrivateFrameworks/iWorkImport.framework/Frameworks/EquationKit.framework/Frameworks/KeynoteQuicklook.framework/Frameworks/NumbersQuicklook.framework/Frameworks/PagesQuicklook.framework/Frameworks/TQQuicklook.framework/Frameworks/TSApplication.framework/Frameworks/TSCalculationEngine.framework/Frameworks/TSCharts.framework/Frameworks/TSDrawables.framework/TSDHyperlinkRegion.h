@@ -10,14 +10,14 @@
 
 @interface TSDHyperlinkRegion : NSObject
 {
-    NSURL *mURL;
-    TSUBezierPath *mBezierPath;
+    NSURL *_URL;
+    TSUBezierPath *_bezierPath;
 }
 
 + (id)hyperlinkRegionWithURL:(id)arg1 bezierPath:(id)arg2;
 - (void).cxx_destruct;
-@property(copy, nonatomic) TSUBezierPath *bezierPath; // @synthesize bezierPath=mBezierPath;
-@property(copy, nonatomic) NSURL *URL; // @synthesize URL=mURL;
+@property(readonly, copy, nonatomic) TSUBezierPath *bezierPath; // @synthesize bezierPath=_bezierPath;
+@property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

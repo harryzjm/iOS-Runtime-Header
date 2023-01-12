@@ -13,7 +13,8 @@
 + (void)getNoteContentFromInput:(id)arg1 includingImages:(_Bool)arg2 actionName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)userInterfaceProtocol;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;
-- (id)targetContentAttribution;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (_Bool)requiresRemoteExecution;
 - (id)prioritizedParameterKeysForRemoteExecution;
 - (id)localizedKeyParameterDisplayName;

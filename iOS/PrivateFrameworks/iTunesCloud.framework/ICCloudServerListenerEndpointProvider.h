@@ -10,6 +10,7 @@
 
 @class NSString, NSXPCConnection;
 
+__attribute__((visibility("hidden")))
 @interface ICCloudServerListenerEndpointProvider : NSObject <ICCloudServerListenerEndpointProviding>
 {
     NSXPCConnection *_listenerEndpointProviderConnection;
@@ -19,6 +20,7 @@
 - (void).cxx_destruct;
 - (id)_listenerEndpointProviderConnection;
 - (id)listenerEndpointForService:(long long)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

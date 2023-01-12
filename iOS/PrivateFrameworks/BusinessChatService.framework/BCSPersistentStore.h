@@ -11,6 +11,7 @@
 @class NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface BCSPersistentStore : NSObject <BCSBatchable>
 {
     struct sqlite3 *_openedDatabase;
@@ -21,8 +22,6 @@
 + (const char *)debugQueueName;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct sqlite3 *openedDatabase; // @synthesize openedDatabase=_openedDatabase;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) long long batchCount; // @synthesize batchCount=_batchCount;
 - (const char *)schema;
 - (void)schemaVersionDidChangeForDatabase:(struct sqlite3 *)arg1 fromSchemaVersion:(long long)arg2 toSchemaVersion:(long long)arg3;
 - (void)schemaVersionWillChangeForDatabase:(struct sqlite3 *)arg1 fromSchemaVersion:(long long)arg2 toSchemaVersion:(long long)arg3;
@@ -30,12 +29,6 @@
 - (id)databasePath;
 - (void)endBatch;
 - (void)beginBatch;
-- (_Bool)_setDatabaseSchemaVersion:(long long)arg1 forDatabase:(struct sqlite3 *)arg2;
-- (long long)_databaseSchemaVersionForDatabase:(struct sqlite3 *)arg1;
-- (void)queue_closeDatabase;
-- (void)queue_openDatabaseIfNecessary;
-- (_Bool)_generateTableWithDatabase:(struct sqlite3 *)arg1;
-- (struct sqlite3 *)_createDatabaseFileAtPath:(id)arg1;
 - (_Bool)deleteDatabaseFile;
 - (void)dealloc;
 - (id)init;

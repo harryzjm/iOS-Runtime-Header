@@ -6,9 +6,11 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCArticle, NSString;
+@class FCArticle, NSArray, NSString;
 
 @protocol NUArticleDataProvider <NSObject>
+@property(nonatomic) long long relativePriority;
+@property(readonly, nonatomic) NSArray *linkedContentProviders;
 @property(readonly, nonatomic) FCArticle *article;
 @property(readonly, copy, nonatomic) NSString *articleID;
 - (void)cancelAssetPrefetch;

@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _portraitDescriptionMargin;
 }
 
-+ (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets portraitDescriptionMargin; // @synthesize portraitDescriptionMargin=_portraitDescriptionMargin;
 @property(readonly, nonatomic) VUITextLayout *portraitLegendDescriptionLayout; // @synthesize portraitLegendDescriptionLayout=_portraitLegendDescriptionLayout;

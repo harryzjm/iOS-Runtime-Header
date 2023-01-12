@@ -8,17 +8,21 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class GEOComposedRouteEVChargingStationInfo, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _GEOComposedETARouteLeg : NSObject <NSSecureCoding>
 {
+    unsigned long long _originalLegIndex;
     NSArray *_steps;
+    GEOComposedRouteEVChargingStationInfo *_chargingStationInfo;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) GEOComposedRouteEVChargingStationInfo *chargingStationInfo; // @synthesize chargingStationInfo=_chargingStationInfo;
 @property(retain, nonatomic) NSArray *steps; // @synthesize steps=_steps;
+@property(nonatomic) unsigned long long originalLegIndex; // @synthesize originalLegIndex=_originalLegIndex;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)descriptionWithPrecision:(unsigned long long)arg1;

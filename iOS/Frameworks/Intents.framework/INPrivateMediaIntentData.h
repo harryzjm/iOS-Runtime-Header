@@ -10,7 +10,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INAppIdentifier, INSpeakerIDInfo, INWholeHouseAudioMetadata, NSNumber, NSString;
+@class INAppIdentifier, INHomeAutomationEntityProvider, INSpeakerIDInfo, INWholeHouseAudioMetadata, NSNumber, NSString;
 
 @interface INPrivateMediaIntentData : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
@@ -26,11 +26,13 @@
     NSNumber *_asrConfidenceScore;
     long long _asrConfidenceLevel;
     NSString *_resolvedSharedUserID;
+    INHomeAutomationEntityProvider *_homeAutomationEntityProvider;
 }
 
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) INHomeAutomationEntityProvider *homeAutomationEntityProvider; // @synthesize homeAutomationEntityProvider=_homeAutomationEntityProvider;
 @property(copy, nonatomic) NSString *resolvedSharedUserID; // @synthesize resolvedSharedUserID=_resolvedSharedUserID;
 @property(readonly, nonatomic) long long asrConfidenceLevel; // @synthesize asrConfidenceLevel=_asrConfidenceLevel;
 @property(readonly, copy, nonatomic) NSNumber *asrConfidenceScore; // @synthesize asrConfidenceScore=_asrConfidenceScore;
@@ -42,7 +44,7 @@
 @property(copy, nonatomic) NSNumber *useDialogMemoryForAttribution; // @synthesize useDialogMemoryForAttribution=_useDialogMemoryForAttribution;
 @property(copy, nonatomic) NSNumber *isAppAttributionRequired; // @synthesize isAppAttributionRequired=_isAppAttributionRequired;
 @property(copy, nonatomic) INAppIdentifier *proxiedThirdPartyAppInfo; // @synthesize proxiedThirdPartyAppInfo=_proxiedThirdPartyAppInfo;
-@property(readonly, copy, nonatomic) INSpeakerIDInfo *speakerIDInfo; // @synthesize speakerIDInfo=_speakerIDInfo;
+@property(copy, nonatomic) INSpeakerIDInfo *speakerIDInfo; // @synthesize speakerIDInfo=_speakerIDInfo;
 - (id)_dictionaryRepresentation;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
@@ -52,6 +54,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)initWithSpeakerIDInfo:(id)arg1 proxiedThirdPartyAppInfo:(id)arg2 isAppAttributionRequired:(id)arg3 useDialogMemoryForAttribution:(id)arg4 isAppCorrection:(id)arg5 fallbackUsername:(id)arg6 wholeHouseAudioMetadata:(id)arg7 nlConfidenceScore:(id)arg8 nlConfidenceLevel:(long long)arg9 asrConfidenceScore:(id)arg10 asrConfidenceLevel:(long long)arg11 resolvedSharedUserID:(id)arg12 homeAutomationEntityProvider:(id)arg13;
 - (id)initWithSpeakerIDInfo:(id)arg1 proxiedThirdPartyAppInfo:(id)arg2 isAppAttributionRequired:(id)arg3 useDialogMemoryForAttribution:(id)arg4 isAppCorrection:(id)arg5 fallbackUsername:(id)arg6 wholeHouseAudioMetadata:(id)arg7 nlConfidenceScore:(id)arg8 nlConfidenceLevel:(long long)arg9 asrConfidenceScore:(id)arg10 asrConfidenceLevel:(long long)arg11 resolvedSharedUserID:(id)arg12;
 - (id)initWithSpeakerIDInfo:(id)arg1 proxiedThirdPartyAppInfo:(id)arg2 isAppAttributionRequired:(id)arg3 useDialogMemoryForAttribution:(id)arg4 isAppCorrection:(id)arg5 fallbackUsername:(id)arg6 wholeHouseAudioMetadata:(id)arg7 nlConfidenceScore:(id)arg8 nlConfidenceLevel:(long long)arg9 asrConfidenceScore:(id)arg10 asrConfidenceLevel:(long long)arg11;
 

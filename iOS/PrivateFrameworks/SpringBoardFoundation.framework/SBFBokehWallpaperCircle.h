@@ -6,40 +6,38 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class NSTimer;
+#import <SpringBoardFoundation/CAAnimationDelegate-Protocol.h>
 
-@interface SBFBokehWallpaperCircle : CALayer
+@class NSString;
+
+@interface SBFBokehWallpaperCircle : CALayer <CAAnimationDelegate>
 {
-    NSTimer *_lifetimeTimer;
-    long long _fillColor;
-    _Bool _shouldBlink;
-    _Bool _isFading;
-    long long _direction;
-    double _velocity;
-    struct CGRect _originalFrame;
-    _Bool _fadingOut;
-    _Bool _shouldPause;
-    _Bool _isPulsating;
     struct CGRect _superviewBounds;
+    long long _color;
+    double _dxdt;
+    double _dydt;
+    double _speed;
 }
 
-- (void).cxx_destruct;
-@property(nonatomic) _Bool isPulsating; // @synthesize isPulsating=_isPulsating;
-@property(nonatomic) _Bool shouldPause; // @synthesize shouldPause=_shouldPause;
++ (id)_newScaleAnimation;
++ (id)_newFlickerAnimation;
++ (id)_newFadeAnimation;
 @property(nonatomic) struct CGRect superviewBounds; // @synthesize superviewBounds=_superviewBounds;
-@property(nonatomic, getter=isFadingOut) _Bool fadingOut; // @synthesize fadingOut=_fadingOut;
+- (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)_resumeAnimations;
 - (void)_pauseAnimations;
 - (void)setAnimationsEnabled:(_Bool)arg1;
-- (double)randomOpacity;
-- (void)_animateInNewCircle;
-- (void)prepareForReuse;
-- (void)_timerFired;
-- (double)desiredOpacity;
-- (void)startPulsatingCircle;
-- (struct CGPoint)desiredPositionDeltaForX:(double)arg1 y:(double)arg2 lockScreen:(_Bool)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 fillColor:(long long)arg2;
-- (void)setCircleColor:(long long)arg1;
+- (void)configureAnimationsWithPhase:(double)arg1;
+- (void)setColor:(long long)arg1;
+- (void)updatePositionWithTime:(double)arg1 dx:(double)arg2 dy:(double)arg3 lockScreen:(_Bool)arg4;
+- (void)randomize;
+- (id)initWithSuperviewBounds:(struct CGRect)arg1 color:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

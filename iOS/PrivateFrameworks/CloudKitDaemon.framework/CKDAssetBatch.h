@@ -8,7 +8,6 @@
 
 @class CKDAssetTokenRequest, CKDAssetZone, NSArray, NSData, NSDictionary, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetBatch : NSObject
 {
     _Bool _isFailed;

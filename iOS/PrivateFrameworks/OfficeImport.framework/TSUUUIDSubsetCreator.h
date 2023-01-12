@@ -12,16 +12,16 @@ __attribute__((visibility("hidden")))
 @interface TSUUUIDSubsetCreator : NSObject
 {
     TSUUUIDSetStore *_uuidSetStore;
-    vector_4dc5f307 _baseUuidVector;
+    vector_c12f63ac _baseUuidVector;
     NSMutableDictionary *_createdSubsetsByRange;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly) TSUUUIDSetStore *uuidSetStore; // @synthesize uuidSetStore=_uuidSetStore;
-@property(readonly) const vector_4dc5f307 *baseUuidVector; // @synthesize baseUuidVector=_baseUuidVector;
+@property(readonly) const void *baseUuidVector; // @synthesize baseUuidVector=_baseUuidVector;
 - (unsigned int)uuidSetStoreIndexForIndexesInRange:(struct _NSRange)arg1;
-- (id)initWithUuidSetStore:(id)arg1 baseUuidVector:(const vector_4dc5f307 *)arg2;
+- (id)initWithUuidSetStore:(id)arg1 baseUuidVector:(const void *)arg2;
 
 @end
 

@@ -13,11 +13,12 @@
     MISSING_TYPE *garbageCollectorIdentityKey;
     MISSING_TYPE *accountStore;
     MISSING_TYPE *isAccountVerificationPending;
+    MISSING_TYPE *fmipAccountIdentifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *paths;
 }
 
-- (void)scheduleAccountVerification;
+- (void)scheduleAccountVerificationWithNotification:(id)arg1;
 
 @end
 

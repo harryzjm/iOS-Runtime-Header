@@ -10,7 +10,7 @@
 #import <Message/EFPubliclyDescribable-Protocol.h>
 #import <Message/NSCopying-Protocol.h>
 
-@class EMObjectID, MFInvocationQueue, MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSURL;
+@class EMMailboxObjectID, MFInvocationQueue, MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSURL;
 
 @interface MFMailboxUid : NSObject <NSCopying, EFPubliclyDescribable, EDIndexableMailbox>
 {
@@ -77,7 +77,7 @@
 - (id)URLStringNonNil;
 @property(readonly, copy, nonatomic) NSString *persistentID;
 - (long long)mailboxID;
-@property(readonly, nonatomic) EMObjectID *objectID;
+@property(readonly, nonatomic) EMMailboxObjectID *objectID;
 @property(readonly, copy, nonatomic) NSString *URLString;
 - (id)oldURLString;
 - (id)URLWithAccount:(id)arg1;
@@ -140,6 +140,7 @@
 - (id)mutableDictionaryRepresentation;
 - (id)dictionaryRepresentation;
 - (id)_dictionaryRepresentation;
+- (id)initWithName:(id)arg1 attributes:(unsigned int)arg2 forAccount:(id)arg3 extraAttributes:(id)arg4 type:(int)arg5;
 - (id)initWithName:(id)arg1 attributes:(unsigned int)arg2 forAccount:(id)arg3 extraAttributes:(id)arg4;
 - (id)_initWithName:(id)arg1 attributes:(unsigned int)arg2 forAccount:(id)arg3;
 - (id)initWithAccount:(id)arg1;

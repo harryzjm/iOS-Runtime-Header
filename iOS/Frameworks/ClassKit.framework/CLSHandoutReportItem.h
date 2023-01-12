@@ -21,6 +21,7 @@
     NSString *_reportID;
     NSDate *_startDate;
     NSDate *_endDate;
+    unsigned long long _changeHash;
     CLSActivityReport *_primaryActivityReport;
     NSArray *_additionalActivityReports;
 }
@@ -29,6 +30,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *additionalActivityReports; // @synthesize additionalActivityReports=_additionalActivityReports;
 @property(copy, nonatomic) CLSActivityReport *primaryActivityReport; // @synthesize primaryActivityReport=_primaryActivityReport;
+@property(readonly, nonatomic) unsigned long long changeHash; // @synthesize changeHash=_changeHash;
 @property(nonatomic, getter=isCompleted) _Bool completed; // @synthesize completed=_completed;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;

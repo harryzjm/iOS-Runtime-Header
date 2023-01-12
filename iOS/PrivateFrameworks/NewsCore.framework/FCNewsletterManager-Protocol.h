@@ -6,10 +6,11 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NFPromise, NSString, NTPBVersionedPersonalizationVector;
+@class NFPromise, NSArray, NSSet, NSString, NTPBVersionedPersonalizationVector;
 @protocol FCNewsletterSubscriptionObserver;
 
 @protocol FCNewsletterManager <NSObject>
+@property(readonly, nonatomic) long long includeOptions;
 @property(readonly, nonatomic) _Bool canUnsubscribe;
 @property(readonly, nonatomic) _Bool canSubscribe;
 @property(readonly, nonatomic) _Bool isSubscribed;
@@ -20,14 +21,19 @@
 - (void)removeObserver:(id <FCNewsletterSubscriptionObserver>)arg1;
 - (void)addObserver:(id <FCNewsletterSubscriptionObserver>)arg1;
 - (void)deletePersonalizationVector;
-- (void)submitPersonalizationVector:(NTPBVersionedPersonalizationVector *)arg1;
+- (void)submitPersonalizationVector:(NTPBVersionedPersonalizationVector *)arg1 subscribedBundleChannelIDs:(NSSet *)arg2;
 - (_Bool)shouldSubmitPersonalizationVector;
-- (void)updateCacheWithNewsletterString:(NSString *)arg1;
+- (void)updateCacheWithNewsletterString:(NSString *)arg1 includeArray:(NSArray *)arg2;
 - (NFPromise *)forceUpdateSubscription;
 - (NFPromise *)updateSubscription;
+- (void)optOutOfIssues;
+- (void)optIntoIssues;
 - (void)unsubscribe;
 - (void)subscribe;
 - (void)subscribeTo:(long long)arg1;
+- (_Bool)isOptedIntoIssues;
+- (_Bool)canOptIntoIssues;
+- (long long)issueOptinStatus;
 - (_Bool)canSubscribeToNewsletter:(long long)arg1;
 - (long long)subscriptionStatusForNewsletter:(long long)arg1;
 @end

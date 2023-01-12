@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPNotificationSyncRequest : PBRequest <NSCopying>
 {
     unsigned int _maxChanges;

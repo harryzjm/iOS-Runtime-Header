@@ -6,24 +6,24 @@
 
 @interface TSCH3DRectangleLens
 {
-    float mLeft;
-    float mRight;
-    float mBottom;
-    float mTop;
+    float _left;
+    float _right;
+    float _bottom;
+    float _top;
 }
 
-@property(nonatomic) float top; // @synthesize top=mTop;
-@property(nonatomic) float bottom; // @synthesize bottom=mBottom;
-@property(nonatomic) float right; // @synthesize right=mRight;
-@property(nonatomic) float left; // @synthesize left=mLeft;
-- (id)shiftedByPercentage:(tvec2_84d5962d *)arg1;
-- (id)shiftByPercentage:(tvec2_84d5962d *)arg1;
-- (id)narrowedByNormalizedBounds:(box_80622335 *)arg1;
-- (id)narrowByNormalizedBounds:(box_80622335 *)arg1;
+@property(nonatomic) float top; // @synthesize top=_top;
+@property(nonatomic) float bottom; // @synthesize bottom=_bottom;
+@property(nonatomic) float right; // @synthesize right=_right;
+@property(nonatomic) float left; // @synthesize left=_left;
+- (id)shiftedByPercentage:(void *)arg1;
+- (id)shiftByPercentage:(void *)arg1;
+- (id)narrowedByNormalizedBounds:(void *)arg1;
+- (id)narrowByNormalizedBounds:(void *)arg1;
 @property(readonly, nonatomic) float height;
 @property(readonly, nonatomic) float width;
-- (void)setPerPixelSize:(tvec2_3b141483 *)arg1;
-- (void)setPerPixel:(box_0260e9b3 *)arg1;
+- (void)setPerPixelSize:(void *)arg1;
+- (void)setPerPixel:(void *)arg1;
 - (void)deviceNormalize;
 - (void)normalize;
 - (id)frustumRect;

@@ -9,7 +9,7 @@
 @protocol EMDaemonInterfaceXPC <NSObject>
 - (void)setAllowsBackgroundResume:(_Bool)arg1;
 - (void)launchForEarlyRecovery:(void (^)(void))arg1;
-- (void)debugStatusWithCompletionHandler:(void (^)(NSString *))arg1;
+- (void)getDiagnosticInfoGathererInterface:(void (^)(id <EMDiagnosticInfoGathererInterface>))arg1;
 - (void)getActivityRegistryInterface:(void (^)(id <EMActivityRegistryInterface>))arg1;
 - (void)getVIPManagerInterface:(void (^)(id <EMVIPManagerInterface>))arg1;
 - (void)getInteractionLoggerInterface:(void (^)(id <EMInteractionLoggerInterface>))arg1;

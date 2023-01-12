@@ -17,8 +17,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresEventOrReminderAccess;
 - (void)CADDatabaseGetTTLLocationAuthorizationStatus:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetSecurityScopedLocalURLWrapperForAttachment:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseShouldWhitelistOrganizerPhoneNumberFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseShouldWhitelistOrganizerEmailFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseGetAttachmentWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseShouldPermitOrganizerPhoneNumberFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseShouldPermitOrganizerEmailFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADOccurrencesExistInRangeForEvent:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 mustStartInInterval:(_Bool)arg4 timezone:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)CADOccurrenceCacheCancelSearchWithReplyID:(int)arg1;
 - (void)CADOccurrenceCacheSearchLocationsWithTerm:(id)arg1 inCalendars:(id)arg2 responseToken:(int)arg3 reply:(CDUnknownBlockType)arg4;
@@ -44,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseGetSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSetBirthdayCalendarEnabled:(_Bool)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetBirthdayCalendarEnabledWithReply:(CDUnknownBlockType)arg1;
-- (void *)_chooseRealSubscribedCalendarStoreFromStoresAndDeleteTheOtherOnes:(struct __CFArray *)arg1 withDatabase:(struct CalDatabase *)arg2;
 - (void)CADDatabaseGetOrCreateBirthdayCalendar:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetOrCreateSubscribedCalendarsSource:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSetDefaultCalendarForNewEvents:(id)arg1 delegateSource:(id)arg2;

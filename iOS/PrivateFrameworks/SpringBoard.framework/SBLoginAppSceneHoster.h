@@ -10,7 +10,7 @@
 #import <SpringBoard/SBLoginAppSceneHoster-Protocol.h>
 
 @class FBApplicationUpdateScenesTransaction, FBScene, NSString, SBApplication, SBDeviceApplicationSceneHandle, SBSUILoginUISceneClientSettingsDiffInspector, UIView;
-@protocol SBLoginAppSceneHosterDelegate, UIScenePresenter;
+@protocol BSInvalidatable, SBLoginAppSceneHosterDelegate, UIScenePresenter;
 
 @interface SBLoginAppSceneHoster : NSObject <FBSceneObserver, SBLoginAppSceneHoster>
 {
@@ -20,6 +20,7 @@
     long long _cachedActivationOrientationForInitialClientSettings;
     SBSUILoginUISceneClientSettingsDiffInspector *_appClientSettingsDiffInspector;
     SBDeviceApplicationSceneHandle *_sceneHandle;
+    id <BSInvalidatable> _keyboardFocusRedirectAssertion;
     _Bool _deferHIDEvents;
     _Bool _hidEventDeferralsInstalled;
     id <SBLoginAppSceneHosterDelegate> _delegate;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_b4e49498)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_b4e49498)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *raw_nbest_choices;
 @property(readonly, nonatomic) FTRecognitionSausage *raw_sausage;
 - (id)copyWithZone:(struct _NSZone *)arg1;

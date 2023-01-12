@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
+
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
 @class HMDAccessoryVersion, NSString;
 
-@interface HMDCameraRecordingReachabilityLogEvent <HMDCoreAnalyticsLogging>
+@interface HMDCameraRecordingReachabilityLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     _Bool _reachable;
     _Bool _didCreateEventModel;
@@ -19,7 +21,6 @@
     NSString *_model;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(readonly) NSString *model; // @synthesize model=_model;
 @property(readonly) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
@@ -31,6 +32,9 @@
 - (id)initWithReachability:(_Bool)arg1 didCreateEventModel:(_Bool)arg2 reachabilityChangeDebounceCount:(unsigned long long)arg3 offlineDuration:(double)arg4 hapAccessory:(id)arg5;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

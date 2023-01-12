@@ -14,21 +14,24 @@ __attribute__((visibility("hidden")))
     _Bool _showingInStandAloneWindow;
     UIView *_detailsPopoverPresentationSourceView;
     CKConversation *_conversation;
+    IMHandle *_handle;
     CKBusinessMacToolbarView *_toolbarView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKBusinessMacToolbarView *toolbarView; // @synthesize toolbarView=_toolbarView;
 @property(readonly, nonatomic) _Bool showingInStandAloneWindow; // @synthesize showingInStandAloneWindow=_showingInStandAloneWindow;
+@property(retain, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
 @property(readonly, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(retain, nonatomic) UIView *detailsPopoverPresentationSourceView; // @synthesize detailsPopoverPresentationSourceView=_detailsPopoverPresentationSourceView;
 - (void)_handleAddressBookPartialChange:(id)arg1;
-- (void)_updateBannerImage;
+- (void)_updateBrandColors;
+- (void)_updateFallbackTitle;
+- (void)_updateBannerImageData;
 - (struct CGRect)_detailsPopoverFrame;
-@property(readonly, nonatomic) IMHandle *handle;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (void)loadView;
 - (void)dealloc;
 - (id)initWithConversation:(id)arg1 showingInStandAloneWindow:(_Bool)arg2;
 

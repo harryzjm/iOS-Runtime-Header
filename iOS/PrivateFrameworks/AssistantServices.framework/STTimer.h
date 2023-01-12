@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+@class NSNumber, NSString;
 
 @interface STTimer
 {
+    NSString *_timerId;
     long long _state;
     NSNumber *_value;
 }
@@ -16,6 +17,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *value; // @synthesize value=_value;
 @property(nonatomic) long long state; // @synthesize state=_state;
+@property(copy, nonatomic) NSString *timerId; // @synthesize timerId=_timerId;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

@@ -10,7 +10,6 @@
 
 @class CKCodeRecordTransport;
 
-__attribute__((visibility("hidden")))
 @interface CKDPTranscodeResponse : PBCodable <NSCopying>
 {
     CKCodeRecordTransport *_record;

@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@interface SBHLibraryCategoryPodBackgroundView : UIView
+@interface SBHLibraryCategoryPodBackgroundView
 {
 }
 
-- (void)_updateVisualStyle;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)didMoveToSuperview;
++ (id)visualStyleSetNameForUserInterfaceStyle:(long long)arg1;
 
 @end
 

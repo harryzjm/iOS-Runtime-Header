@@ -17,40 +17,45 @@
     NSDictionary *_subitemChangeDetailsByItemBySection;
     NSNumber *_hasAnyChangesCache;
     NSNumber *_hasAnyInsertionsRemovalsOrMovesCache;
-    unsigned long long _fromDataSourceIdentifier;
-    unsigned long long _toDataSourceIdentifier;
+    long long _fromDataSourceIdentifier;
+    long long _toDataSourceIdentifier;
     PXArrayChangeDetails *_sectionChanges;
     NSIndexSet *_sectionsWithItemChanges;
 }
 
 + (void)debug_assertValidChangeDetails:(id)arg1 fromDataSource:(id)arg2 toDataSource:(id)arg3;
 + (_Bool)changeDetailsAreOnlyInsertionsOrOnlyRemovalsAtEnd:(id)arg1 fromDataSource:(id)arg2 toDataSource:(id)arg3;
-+ (id)changeDetailsWithNoChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
-+ (id)changeDetailsWithoutIncrementalChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
++ (id)changeDetailsWithNoChangesFromDataSourceIdentifier:(long long)arg1 toDataSourceIdentifier:(long long)arg2;
++ (id)changeDetailsWithoutIncrementalChangesFromDataSourceIdentifier:(long long)arg1 toDataSourceIdentifier:(long long)arg2;
 + (_Bool)changesHaveAnyInsertionsRemovalsOrMoves:(id)arg1;
 + (id)indexPathSetAfterRevertingChanges:(id)arg1 fromIndexPathSet:(id)arg2 hasIncrementalChanges:(out _Bool *)arg3;
 + (id)indexPathSetAfterApplyingChanges:(id)arg1 toIndexPathSet:(id)arg2 hasIncrementalChanges:(out _Bool *)arg3;
++ (struct PXSimpleIndexPath)indexPathAfterRevertingChanges:(id)arg1 fromIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out _Bool *)arg3 objectChanged:(out _Bool *)arg4 changedProperties:(id)arg5;
 + (struct PXSimpleIndexPath)indexPathAfterRevertingChanges:(id)arg1 fromIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out _Bool *)arg3 objectChanged:(out _Bool *)arg4;
++ (struct PXSimpleIndexPath)indexPathAfterApplyingChanges:(id)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out _Bool *)arg3 objectChanged:(out _Bool *)arg4 changedProperties:(id)arg5;
 + (struct PXSimpleIndexPath)indexPathAfterApplyingChanges:(id)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out _Bool *)arg3 objectChanged:(out _Bool *)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSIndexSet *sectionsWithItemChanges; // @synthesize sectionsWithItemChanges=_sectionsWithItemChanges;
 @property(readonly, nonatomic) PXArrayChangeDetails *sectionChanges; // @synthesize sectionChanges=_sectionChanges;
-@property(readonly, nonatomic) unsigned long long toDataSourceIdentifier; // @synthesize toDataSourceIdentifier=_toDataSourceIdentifier;
-@property(readonly, nonatomic) unsigned long long fromDataSourceIdentifier; // @synthesize fromDataSourceIdentifier=_fromDataSourceIdentifier;
+@property(readonly, nonatomic) long long toDataSourceIdentifier; // @synthesize toDataSourceIdentifier=_toDataSourceIdentifier;
+@property(readonly, nonatomic) long long fromDataSourceIdentifier; // @synthesize fromDataSourceIdentifier=_fromDataSourceIdentifier;
 - (id)changedItemsInSection:(long long)arg1;
 - (id)insertedItemsInSection:(long long)arg1;
 - (id)deletedItemsInSection:(long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)indexPathSetAfterRevertingChangesFromIndexPathSet:(id)arg1 hasIncrementalChanges:(out _Bool *)arg2;
 - (id)indexPathSetAfterApplyingChangesToIndexPathSet:(id)arg1 hasIncrementalChanges:(out _Bool *)arg2;
+- (struct PXSimpleIndexPath)indexPathAfterRevertingChangesFromIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out _Bool *)arg2 objectChanged:(out _Bool *)arg3 changedProperties:(id)arg4;
 - (struct PXSimpleIndexPath)indexPathAfterRevertingChangesFromIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out _Bool *)arg2 objectChanged:(out _Bool *)arg3;
+- (struct PXSimpleIndexPath)indexPathAfterApplyingChangesToIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out _Bool *)arg2 objectChanged:(out _Bool *)arg3 changedProperties:(id)arg4;
 - (struct PXSimpleIndexPath)indexPathAfterApplyingChangesToIndexPath:(struct PXSimpleIndexPath)arg1 hasIncrementalChanges:(out _Bool *)arg2 objectChanged:(out _Bool *)arg3;
 @property(readonly, nonatomic) _Bool hasAnyInsertionsRemovalsOrMoves;
 @property(readonly, nonatomic) _Bool hasAnyChanges;
 - (id)subitemChangesInItem:(long long)arg1 section:(long long)arg2;
 - (id)itemsWithSubitemChangesInSection:(long long)arg1;
 - (id)itemChangesInSection:(long long)arg1;
-- (id)initWithFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2 sectionChanges:(id)arg3 itemChangeDetailsBySection:(id)arg4 subitemChangeDetailsByItemBySection:(id)arg5;
+- (id)initWithSectionedDataSourceChangeDetails:(id)arg1 withFromDataSourceIdentifier:(long long)arg2 toDataSourceIdentifier:(long long)arg3;
+- (id)initWithFromDataSourceIdentifier:(long long)arg1 toDataSourceIdentifier:(long long)arg2 sectionChanges:(id)arg3 itemChangeDetailsBySection:(id)arg4 subitemChangeDetailsByItemBySection:(id)arg5;
 - (id)init;
 
 // Remaining properties

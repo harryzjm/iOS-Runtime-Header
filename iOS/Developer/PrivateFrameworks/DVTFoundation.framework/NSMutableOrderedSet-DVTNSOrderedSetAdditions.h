@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableOrderedSet.h>
 
 @interface NSMutableOrderedSet (DVTNSOrderedSetAdditions)
+- (_Bool)dvt_addReturningDidMutate:(id)arg1;
 - (void)dvt_addObjectIfNotNil:(id)arg1;
 @end
 

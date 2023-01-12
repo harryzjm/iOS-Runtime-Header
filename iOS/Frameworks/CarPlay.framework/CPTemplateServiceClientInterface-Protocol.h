@@ -6,9 +6,10 @@
 
 #import <CarPlay/CPBannerDelegate-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSError, NSString, NSUUID;
 
 @protocol CPTemplateServiceClientInterface <CPBannerDelegate>
+- (void)clientAssistantCellUnavailableWithError:(NSError *)arg1;
 - (void)clientPushNowPlayingTemplateAnimated:(_Bool)arg1;
 - (void)updateInterestingLayoutGuideWithInsets:(struct UIEdgeInsets)arg1;
 - (void)templateIdentifierDidDismiss:(NSUUID *)arg1;

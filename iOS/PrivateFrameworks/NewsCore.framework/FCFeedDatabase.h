@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCFeedDatabaseProtocol-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 
 @class NSEntityDescription, NSManagedObjectContext, NSMutableDictionary, NSMutableSet, NSPersistentStore, NSString, NSURL;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
-@interface FCFeedDatabase : NSObject <FCOperationThrottlerDelegate>
+@interface FCFeedDatabase : NSObject <FCOperationThrottlerDelegate, FCFeedDatabaseProtocol>
 {
     unsigned short _version;
     int _nextFeedLookupID;
@@ -34,37 +35,16 @@
 + (id)temporaryFeedDatabaseWithEndpoint:(long long)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <FCOperationThrottler> saveThrottler; // @synthesize saveThrottler=_saveThrottler;
-@property(retain, nonatomic) NSMutableSet *modifiedFeedIDs; // @synthesize modifiedFeedIDs=_modifiedFeedIDs;
-@property(nonatomic) int nextFeedLookupID; // @synthesize nextFeedLookupID=_nextFeedLookupID;
-@property(retain, nonatomic) NSMutableDictionary *cachedFeedsByID; // @synthesize cachedFeedsByID=_cachedFeedsByID;
-@property(retain, nonatomic) NSEntityDescription *feedItemEntity; // @synthesize feedItemEntity=_feedItemEntity;
-@property(retain, nonatomic) NSEntityDescription *feedItemIndexEntity; // @synthesize feedItemIndexEntity=_feedItemIndexEntity;
-@property(retain, nonatomic) NSEntityDescription *feedSegmentEntity; // @synthesize feedSegmentEntity=_feedSegmentEntity;
-@property(retain, nonatomic) NSEntityDescription *feedEntity; // @synthesize feedEntity=_feedEntity;
-@property(retain, nonatomic) NSPersistentStore *persistentStore; // @synthesize persistentStore=_persistentStore;
-@property(retain, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *initQueue; // @synthesize initQueue=_initQueue;
-@property(nonatomic) unsigned short version; // @synthesize version=_version;
 @property(readonly, nonatomic) long long endpoint; // @synthesize endpoint=_endpoint;
-@property(nonatomic) long long usage; // @synthesize usage=_usage;
+@property(readonly, nonatomic) long long usage;
 @property(readonly, copy, nonatomic) NSURL *parentDirectoryURL; // @synthesize parentDirectoryURL=_parentDirectoryURL;
-- (void)d_sanityCheckFeed:(id)arg1;
-- (id)_feedItemsForLookups:(id)arg1 withFeedsByID:(id)arg2 boundedByCount:(unsigned long long)arg3;
-- (id)_serviceLookup:(id)arg1 withFeed:(id)arg2 feedItems:(id)arg3;
-- (id)_shortCircuitLookup:(id)arg1 withFeed:(id)arg2;
-- (id)_feedItemsForLookups:(id)arg1 withFeedsByID:(id)arg2;
-- (id)_feedsForLookups:(id)arg1;
-- (void)_initMOC;
-- (void)_synchronizedInitMOC;
-- (void)_performWithMOCAndWait:(CDUnknownBlockType)arg1;
 - (void)operationThrottlerPerformOperation:(id)arg1;
-- (void)saveFeedItems:(id)arg1 forFeedID:(id)arg2 insertionToken:(id)arg3 requestDate:(id)arg4 followingCKCursor:(id)arg5 reachedToOrder:(_Bool)arg6 extent:(unsigned long long)arg7 reachedEnd:(_Bool)arg8;
-- (id)performDatabaseLookups:(id)arg1 boundedByCount:(unsigned long long)arg2;
-- (id)performDatabaseLookups:(id)arg1;
+- (void)saveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)prewarm;
 - (void)teardown;
 - (id)initWithParentDirectoryURL:(id)arg1 usage:(long long)arg2 endpoint:(long long)arg3;
+- (id)t_lookupFeedID:(id)arg1 range:(id)arg2 maxCount:(unsigned long long)arg3;
+- (void)t_insertSegmentForFeedID:(id)arg1 range:(id)arg2 items:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

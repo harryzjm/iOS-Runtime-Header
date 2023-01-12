@@ -22,6 +22,7 @@
 - (void)loadMessageWithGUID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
+- (_Bool)__im_ff_chatCacheEnabled;
 
 @end
 

@@ -8,7 +8,6 @@
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchArchivedRecordsURLRequest <CKDURLRequestPipelining>
 {
     _Bool _shouldFetchAssetContent;

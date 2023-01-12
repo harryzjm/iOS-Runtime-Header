@@ -6,9 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class NSSet, NSString;
+@class HFItem, NSSet, NSString;
 
 @protocol HFTriggerBuilderContextProviding <NSObject>
+@property(readonly, nonatomic) HFItem *suggestionItem;
 @property(readonly, copy, nonatomic) NSSet *unsupportedTriggers;
 @property(readonly, copy, nonatomic) NSString *doneButtonTitle;
 @property(readonly, copy, nonatomic) NSString *deleteConfirmationAlertMessage;

@@ -52,7 +52,6 @@
 - (void)updateTextFonts;
 - (void)contentSizeCategoryDidChange;
 - (void)updateTextLayout;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

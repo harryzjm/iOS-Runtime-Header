@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 
-@class NSError, NSString, PKAccount, PKAccountService, PKAccountWebServicePhysicalCardActionRequest, PKPaymentAuthorizationCoordinator, PKPaymentDevice;
+@class NSError, NSString, PKAccount, PKAccountService, PKAccountUser, PKAccountWebServicePhysicalCardActionRequest, PKPaymentAuthorizationCoordinator, PKPaymentDevice;
 @protocol PKPhysicalCardActionControllerDelegate;
 
 @interface PKPhysicalCardActionController : NSObject <PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate>
@@ -22,11 +22,13 @@
     NSError *_lastActionError;
     PKPaymentAuthorizationCoordinator *_authorizationCoordinator;
     PKAccount *_account;
+    PKAccountUser *_accountUser;
     long long _state;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
+@property(readonly, nonatomic) PKAccountUser *accountUser; // @synthesize accountUser=_accountUser;
 @property(readonly, nonatomic) PKAccount *account; // @synthesize account=_account;
 - (void)_transitionToState:(long long)arg1 withError:(id)arg2;
 - (_Bool)_canPerformActionWithState:(long long)arg1;
@@ -43,7 +45,7 @@
 - (void)enablePhysicalCard:(id)arg1;
 - (void)activatePhysicalCardWithoutActivationCode:(id)arg1;
 - (void)activatePhysicalCard:(id)arg1 withActivationCode:(id)arg2;
-- (id)initWithAccountService:(id)arg1 account:(id)arg2 delegate:(id)arg3;
+- (id)initWithAccountService:(id)arg1 account:(id)arg2 accountUser:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

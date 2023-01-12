@@ -21,12 +21,12 @@
     _Bool _optOutOfRTL;
     _Bool _requiresHighResolution;
     _Bool _fakingRequiresHighResolution;
-    int _ignoredOverrides;
     long long _requestedStatusBarStyle;
     long long _backgroundStyle;
     NSString *_launchImageFile;
     NSString *_keyColorAssetName;
     long long _supportedUserInterfaceStyle;
+    unsigned long long _ignoredOverrides;
     unsigned long long _viewControllerBasedStatusBarAppearance;
     long long _whitePointAdaptivityStyle;
 }
@@ -40,7 +40,7 @@
 @property(readonly, nonatomic) _Bool optOutOfRTL; // @synthesize optOutOfRTL=_optOutOfRTL;
 @property(readonly, nonatomic) _Bool systemWindowsSecure; // @synthesize systemWindowsSecure=_systemWindowsSecure;
 @property(readonly, nonatomic) unsigned long long viewControllerBasedStatusBarAppearance; // @synthesize viewControllerBasedStatusBarAppearance=_viewControllerBasedStatusBarAppearance;
-@property(readonly, nonatomic) int ignoredOverrides; // @synthesize ignoredOverrides=_ignoredOverrides;
+@property(readonly, nonatomic) unsigned long long ignoredOverrides; // @synthesize ignoredOverrides=_ignoredOverrides;
 @property(readonly, nonatomic) long long supportedUserInterfaceStyle; // @synthesize supportedUserInterfaceStyle=_supportedUserInterfaceStyle;
 @property(readonly, copy, nonatomic) NSString *keyColorAssetName; // @synthesize keyColorAssetName=_keyColorAssetName;
 @property(readonly, copy, nonatomic) NSString *launchImageFile; // @synthesize launchImageFile=_launchImageFile;

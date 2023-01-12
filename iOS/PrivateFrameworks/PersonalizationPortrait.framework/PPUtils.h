@@ -15,6 +15,7 @@
 + (_Bool)localizedTimeStructForDate:(id)arg1 tm:(struct tm *)arg2;
 + (_Bool)isFirstPartyApp:(id)arg1;
 + (id)sqliteGlobEscape:(id)arg1;
++ (double)jaroSimilarityForString:(id)arg1 other:(id)arg2;
 + (id)reduceSpotlightDomainIdentifiers:(id)arg1;
 + (id)currentLocaleLanguageCode;
 + (_Bool)yesWithProbability:(double)arg1;

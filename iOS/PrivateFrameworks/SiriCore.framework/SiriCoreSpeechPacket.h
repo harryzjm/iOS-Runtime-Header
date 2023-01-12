@@ -25,6 +25,7 @@
 @property(copy, nonatomic) NSString *refId; // @synthesize refId=_refId;
 @property(copy, nonatomic) NSString *aceId; // @synthesize aceId=_aceId;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)siriCore_supportedByRemoteLimitedSession;
 - (_Bool)siriCore_supportedByLocalSession;
 - (id)groupIdentifier;
 - (id)encodedClassName;

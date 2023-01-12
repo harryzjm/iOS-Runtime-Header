@@ -17,12 +17,14 @@
     double _endTime;
     long long _status;
     NSURL *_URL;
+    unsigned long long _specialization;
     LPEvent *_parent;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *children; // @synthesize children=_children;
 @property(readonly, nonatomic) __weak LPEvent *parent; // @synthesize parent=_parent;
+@property(nonatomic) unsigned long long specialization; // @synthesize specialization=_specialization;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, nonatomic) long long status; // @synthesize status=_status;
 @property(readonly, nonatomic) double endTime; // @synthesize endTime=_endTime;

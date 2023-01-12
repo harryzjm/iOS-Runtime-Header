@@ -12,6 +12,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axScheduleAnnouncementForRow:(unsigned long long)arg1 col:(unsigned long long)arg2;
+- (id)_axIconForIconView:(id)arg1;
+- (void)iconDropSession:(id)arg1 didPauseAtLocation:(struct CGPoint)arg2 inIconListView:(id)arg3;
+- (void)_accessibilitySetLastAnnouncedIcon:(id)arg1;
+- (id)_accessibilityGetLastAnnouncedIcon;
 - (void)iconDropSessionDidEnd:(id)arg1 identifier:(id)arg2 draggedIconIdentifiers:(id)arg3;
 - (id)iconDropSessionDidUpdate:(id)arg1 inIconListView:(id)arg2;
 - (void)iconViewWillBeginDrag:(id)arg1 session:(id)arg2;

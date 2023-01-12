@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class AFPreferences;
 @protocol SVXExpressionParsingServing;
 
 __attribute__((visibility("hidden")))
 @interface _SVXExpressionParser : NSObject
 {
     id <SVXExpressionParsingServing> _parsingService;
+    AFPreferences *_preferences;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <SVXExpressionParsingServing> parsingService; // @synthesize parsingService=_parsingService;
-- (id)initWithParsingService:(id)arg1;
-- (id)init;
+@property(readonly, nonatomic) AFPreferences *preferences; // @synthesize preferences=_preferences;
+@property(readonly, nonatomic) id <SVXExpressionParsingServing> parsingService; // @synthesize parsingService=_parsingService;
+- (id)initWithParsingService:(id)arg1 preferences:(id)arg2;
 
 @end
 

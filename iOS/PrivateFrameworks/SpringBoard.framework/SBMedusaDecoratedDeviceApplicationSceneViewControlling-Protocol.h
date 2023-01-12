@@ -8,14 +8,11 @@
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSceneLayoutMedusaStatusBarAssertionProviding-Protocol.h>
 
-@class BSUIAnimationFactory, SBInlineAppExposeContainerViewController, SBMainWorkspaceTransitionRequest, SBUIAnimationController;
-
 @protocol SBMedusaDecoratedDeviceApplicationSceneViewControlling <SBDeviceApplicationSceneViewControlling, SBLayoutStateTransitionObserver, SBSceneLayoutMedusaStatusBarAssertionProviding>
 @property(nonatomic, getter=isNubViewHighlighted) _Bool nubViewHighlighted;
 @property(nonatomic, getter=isNubViewHidden) _Bool nubViewHidden;
 @property(readonly, nonatomic, getter=isBlurred) _Bool blurred;
-- (SBUIAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
-- (void)setInlineAppExposeContainerViewController:(SBInlineAppExposeContainerViewController *)arg1;
-- (void)blurApplicationContent:(_Bool)arg1 withAnimationFactory:(BSUIAnimationFactory *)arg2 completion:(void (^)(void))arg3;
+@property(nonatomic) double blurViewIconScale;
+- (void)setLiveContentBlurEnabled:(_Bool)arg1 duration:(double)arg2 blurDelay:(double)arg3 iconViewScale:(double)arg4 began:(void (^)(void))arg5 completion:(void (^)(void))arg6;
 @end
 

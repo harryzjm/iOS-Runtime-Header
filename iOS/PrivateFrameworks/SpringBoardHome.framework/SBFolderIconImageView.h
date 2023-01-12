@@ -44,11 +44,11 @@
 - (id)_folderIconImageCache;
 - (id)_currentPageElement;
 - (id)_folderIcon;
-- (struct CGSize)_interiorGridSizeClipRect;
-- (struct CGSize)_interPageSpacing;
+- (struct CGSize)_interiorGridSize;
 - (Class)_iconGridImageClass;
 - (void)_updateAccessibilityBackgroundContrast;
 - (void)setIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3;
+- (void)setIconView:(id)arg1;
 - (void)_performScrollingDirection:(long long)arg1 targetPageIndex:(unsigned long long)arg2 targetPageScrollRow:(unsigned long long)arg3 newLeftElement:(id)arg4 newRightElement:(id)arg5 animated:(_Bool)arg6;
 - (void)_updateRasterization;
 - (void)_setAnimating:(_Bool)arg1;

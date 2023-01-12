@@ -42,6 +42,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -64,7 +66,8 @@
 - (id)init;
 - (id)initWithMerchantIndustryCode:(long long)arg1 mapsIdentifier:(unsigned long long)arg2 merchantName:(id)arg3 merchantRawName:(id)arg4 merchantIndustryCategory:(id)arg5 merchantURL:(id)arg6 merchantFormattedAddress:(id)arg7 transactionTime:(double)arg8 transactionType:(id)arg9 transactionLocation:(CDStruct_c3b9c2ee)arg10;
 - (_Bool)isPOIEnrichment;
-- (id)initWithIncidentLocation:(id)arg1 type:(int)arg2 historicalLocations:(id)arg3;
+- (id)initWithIncidentAnnotationDetails:(id)arg1 userPath:(id)arg2;
+- (id)initWithIncidentLocation:(id)arg1 userLocation:(id)arg2 type:(int)arg3 historicalLocations:(id)arg4 userPath:(id)arg5;
 
 @end
 

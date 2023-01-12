@@ -12,7 +12,9 @@
 - (void)pushSessionData:(id)arg1;
 - (void)endSessionWithEndDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)endSync;
 - (void)endSession;
+- (void)startSessionForKind:(long long)arg1 withName:(id)arg2 identifier:(id)arg3 startDate:(id)arg4 timestampJitter:(id)arg5;
 - (void)startSessionForKind:(long long)arg1 withName:(id)arg2 identifier:(id)arg3 startDate:(id)arg4;
 - (void)startSessionForKind:(long long)arg1 withName:(id)arg2 startDate:(id)arg3;
 - (void)startSessionForKind:(long long)arg1 withName:(id)arg2 identifier:(id)arg3;

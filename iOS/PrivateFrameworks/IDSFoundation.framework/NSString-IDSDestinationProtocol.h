@@ -7,7 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (IDSDestinationProtocol)
-- (id)groupID;
 - (id)destinationURIs;
 @end
 

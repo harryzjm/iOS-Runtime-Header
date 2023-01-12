@@ -6,42 +6,108 @@
 
 #import <UIKit/UIView.h>
 
+#import <PencilKit/PKHashtagViewDelegate-Protocol.h>
+#import <PencilKit/PKMentionViewDelegate-Protocol.h>
 #import <PencilKit/PKRecognitionSessionManagerDelegate-Protocol.h>
 #import <PencilKit/PKSelectionObserving-Protocol.h>
 #import <PencilKit/PKStrokeSpatialCacheDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NSUUID, PKDrawing, PKRecognitionSessionManager, PKStrokeSpatialCache;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, NSUUID, PKDrawing, PKRecognitionSessionManager, PKStrokeSpatialCache, PKTiledView;
+@protocol PKAttachmentViewHashtagsAndMentionsDelegate;
 
-@interface PKAttachmentView : UIView <PKStrokeSpatialCacheDelegate, PKRecognitionSessionManagerDelegate, PKSelectionObserving>
+@interface PKAttachmentView : UIView <PKStrokeSpatialCacheDelegate, PKRecognitionSessionManagerDelegate, PKHashtagViewDelegate, PKMentionViewDelegate, PKSelectionObserving>
 {
     NSUUID *_listenerID;
     _Bool _contentHidden;
+    _Bool _sixChannelBlending;
     _Bool _wantsDataDetection;
+    _Bool _wantsMentionDetection;
+    _Bool _wantsHashtagDetection;
+    _Bool _detectionViewsHidden;
+    _Bool _hideUntilScroll;
+    _Bool _toolPickerVisible;
+    _Bool _isDraggingSelection;
+    _Bool _ignoreInitialDetectionItemsForStatistics;
+    _Bool _deferMentionUpdate;
     PKDrawing *_drawing;
     NSMutableDictionary *_tiles;
     NSMutableDictionary *_offscreenTiles;
+    NSMutableDictionary *_purgedTiles;
     NSArray *_additionalStrokes;
     UIView *_tileContainerView;
     PKStrokeSpatialCache *_strokeSpatialCache;
     PKRecognitionSessionManager *_recognitionManager;
+    id <PKAttachmentViewHashtagsAndMentionsDelegate> _hashtagAndMentionsDelegate;
+    NSMutableArray *_dataDetectorViews;
+    NSMutableArray *_hashtagViews;
+    NSMutableArray *_mentionViews;
+    NSMutableArray *_previousDataDetectorItems;
+    NSMutableArray *_previousHashtagItems;
+    NSMutableArray *_previousMentionItems;
+    NSMutableDictionary *_mentionUUIDtoParticipant;
     struct CGRect _cachedBounds;
+    struct CGAffineTransform _tileDrawingTransform;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *mentionUUIDtoParticipant; // @synthesize mentionUUIDtoParticipant=_mentionUUIDtoParticipant;
+@property(retain, nonatomic) NSMutableArray *previousMentionItems; // @synthesize previousMentionItems=_previousMentionItems;
+@property(retain, nonatomic) NSMutableArray *previousHashtagItems; // @synthesize previousHashtagItems=_previousHashtagItems;
+@property(retain, nonatomic) NSMutableArray *previousDataDetectorItems; // @synthesize previousDataDetectorItems=_previousDataDetectorItems;
+@property(nonatomic) _Bool deferMentionUpdate; // @synthesize deferMentionUpdate=_deferMentionUpdate;
+@property(nonatomic) _Bool ignoreInitialDetectionItemsForStatistics; // @synthesize ignoreInitialDetectionItemsForStatistics=_ignoreInitialDetectionItemsForStatistics;
+@property(nonatomic) _Bool isDraggingSelection; // @synthesize isDraggingSelection=_isDraggingSelection;
+@property(nonatomic) _Bool toolPickerVisible; // @synthesize toolPickerVisible=_toolPickerVisible;
+@property(nonatomic) _Bool hideUntilScroll; // @synthesize hideUntilScroll=_hideUntilScroll;
+@property(nonatomic) _Bool detectionViewsHidden; // @synthesize detectionViewsHidden=_detectionViewsHidden;
+@property(retain, nonatomic) NSMutableArray *mentionViews; // @synthesize mentionViews=_mentionViews;
+@property(retain, nonatomic) NSMutableArray *hashtagViews; // @synthesize hashtagViews=_hashtagViews;
+@property(retain, nonatomic) NSMutableArray *dataDetectorViews; // @synthesize dataDetectorViews=_dataDetectorViews;
 @property(nonatomic) struct CGRect cachedBounds; // @synthesize cachedBounds=_cachedBounds;
+@property(nonatomic) __weak id <PKAttachmentViewHashtagsAndMentionsDelegate> hashtagAndMentionsDelegate; // @synthesize hashtagAndMentionsDelegate=_hashtagAndMentionsDelegate;
+@property(nonatomic) _Bool wantsHashtagDetection; // @synthesize wantsHashtagDetection=_wantsHashtagDetection;
+@property(nonatomic) _Bool wantsMentionDetection; // @synthesize wantsMentionDetection=_wantsMentionDetection;
 @property(nonatomic) _Bool wantsDataDetection; // @synthesize wantsDataDetection=_wantsDataDetection;
 @property(retain, nonatomic) PKRecognitionSessionManager *recognitionManager; // @synthesize recognitionManager=_recognitionManager;
 @property(readonly, nonatomic) PKStrokeSpatialCache *strokeSpatialCache; // @synthesize strokeSpatialCache=_strokeSpatialCache;
+@property(nonatomic) struct CGAffineTransform tileDrawingTransform; // @synthesize tileDrawingTransform=_tileDrawingTransform;
+@property(nonatomic) _Bool sixChannelBlending; // @synthesize sixChannelBlending=_sixChannelBlending;
 @property(nonatomic) _Bool contentHidden; // @synthesize contentHidden=_contentHidden;
 @property(retain, nonatomic) UIView *tileContainerView; // @synthesize tileContainerView=_tileContainerView;
 @property(retain, nonatomic) NSArray *additionalStrokes; // @synthesize additionalStrokes=_additionalStrokes;
+@property(readonly, nonatomic) NSMutableDictionary *purgedTiles; // @synthesize purgedTiles=_purgedTiles;
 @property(readonly, nonatomic) NSMutableDictionary *offscreenTiles; // @synthesize offscreenTiles=_offscreenTiles;
 @property(readonly, nonatomic) NSMutableDictionary *tiles; // @synthesize tiles=_tiles;
 @property(copy, nonatomic) PKDrawing *drawing; // @synthesize drawing=_drawing;
-- (void)setAttachmentChromeVisible:(_Bool)arg1 animated:(_Bool)arg2 highlightBackground:(_Bool)arg3;
-- (id)dataDetectorViewAtPoint:(struct CGPoint)arg1;
+- (id)_accessibilityUserTestingChildren;
+- (struct CGRect)boundingBoxForHashtagOrMentionWithUUID:(id)arg1;
+- (void)_updateAllPossibleParticipantNameTokens:(id)arg1;
+- (void)updateAllPossibleParticipantNameTokens;
+- (void)updateMentionResults:(id)arg1;
+- (void)updateHashtagResults:(id)arg1;
 - (void)updateDataDetectorResults:(id)arg1;
+- (void)revealDetectionViews;
+- (void)updateDetectionViewVisibility;
+- (void)layoutInlineViews;
+- (id)inlineViewAtPoint:(struct CGPoint)arg1;
+- (void)mentionViewDidDeactivateMention:(id)arg1;
+- (void)mentionViewWillDeactivateMention:(id)arg1;
+- (void)mentionViewDidActivateMention:(id)arg1 withParticpant:(id)arg2;
+- (void)mentionView:(id)arg1 registerCommand:(id)arg2;
+- (void)hashtagViewDidDeactivateHashtag:(id)arg1;
+- (void)hashtagViewWillDeactivateHashtag:(id)arg1;
+- (void)hashtagViewDidActivateHashtag:(id)arg1;
+- (void)hashtagView:(id)arg1 registerCommand:(id)arg2;
+@property(readonly, nonatomic) PKTiledView *tiledView;
+- (void)updateDetectionViews:(id)arg1 withItems:(id)arg2 previousItems:(id)arg3;
+- (void)recognitionSessionManager:(id)arg1 foundMentionItems:(id)arg2;
+- (void)recognitionSessionManager:(id)arg1 foundHashtagItems:(id)arg2;
 - (void)recognitionSessionManager:(id)arg1 foundDataDetectorItems:(id)arg2;
+- (void)setAttachmentChromeVisible:(_Bool)arg1 animated:(_Bool)arg2 highlightBackground:(_Bool)arg3;
+@property(readonly, nonatomic) UIView *attachmentContainerView;
+- (void)didMoveToWindow;
+- (void)removeDetectionViews;
+- (void)willMoveToWindow:(id)arg1;
 - (long long)contentTypeForIntersectedStrokes:(id)arg1;
 - (void)fetchStrokesAmbiguouslyBelowAndAboveInsertSpaceHandleWithStrokes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_lastStrokesInSelectedStrokes:(id)arg1;
@@ -68,17 +134,23 @@
 - (void)drawingDidEraseStrokes;
 - (void)didFinishCalculatingVisibleOnscreenStrokes:(id)arg1;
 - (void)visibleOnscreenBoundsDidChange:(struct CGRect)arg1;
+- (void)drawingDidChangeVisibleStrokes:(_Bool)arg1;
 - (void)drawingDidChange;
+- (void)toolPickerDidHide;
+- (void)toolPickerDidShow;
+- (void)_toolPickerDidShowHide:(id)arg1;
 - (_Bool)hitByTouchLocation:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 - (_Bool)hitChrome:(struct CGPoint)arg1 isStylus:(_Bool)arg2;
 @property(readonly, nonatomic) UIView *tileMaskView;
-@property(readonly, nonatomic) double drawingScale;
+@property(readonly, nonatomic) struct CGAffineTransform drawingTransform;
 - (_Bool)disableTileAnimations;
 - (void)fullyRendered;
 - (_Bool)wantsFullyRendered;
 @property(readonly, nonatomic) _Bool isAtEndOfDocument;
 - (void)didMoveToSuperview;
 - (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 drawing:(id)arg2;
 
 // Remaining properties

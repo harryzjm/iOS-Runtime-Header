@@ -10,6 +10,7 @@
 @protocol EDIndexableItem;
 
 @protocol EDSearchableIndexDataSource <NSObject>
+- (void)clearOrphanedSearchableMessagesFromDatabase;
 - (NSDictionary *)verificationDataSamplesForSearchableIndex:(EDSearchableIndex *)arg1 count:(unsigned long long)arg2 lastVerifiedMessageID:(long long)arg3;
 - (NSArray *)searchableIndex:(EDSearchableIndex *)arg1 invalidateItemsInTransactions:(NSArray *)arg2;
 - (void)searchableIndex:(EDSearchableIndex *)arg1 invalidateItemsGreaterThanTransaction:(long long)arg2;
@@ -21,6 +22,7 @@
 - (EDSearchableIndexUpdates *)updatesForSearchableIndex:(EDSearchableIndex *)arg1 excludingIdentifiers:(NSArray *)arg2 count:(unsigned long long)arg3 cancelationToken:(EFCancelationToken *)arg4;
 
 @optional
+- (NSArray *)searchableIndex:(EDSearchableIndex *)arg1 attachmentItemsForMessageWithIdentifier:(NSString *)arg2;
 - (void)searchableIndex:(EDSearchableIndex *)arg1 prepareToIndexAttachmentsForMessageWithIdentifier:(NSString *)arg2;
 - (void)searchableIndex:(EDSearchableIndex *)arg1 foundAttachmentPaths:(NSArray *)arg2 forMessagePersistentID:(NSString *)arg3;
 @end

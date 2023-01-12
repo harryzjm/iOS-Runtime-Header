@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE, _TtC12GameCenterUI16DynamicTypeLabel;
+@class MISSING_TYPE, NSLayoutYAxisAnchor, _TtC12GameCenterUI16DynamicTypeLabel;
 
 __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI14CountBadgeView : UIView
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(nonatomic, readonly) _TtC12GameCenterUI16DynamicTypeLabel *accessibilityCountLabel;
+@property(nonatomic, readonly) NSLayoutYAxisAnchor *firstBaselineAnchor;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithCoder:(id)arg1;

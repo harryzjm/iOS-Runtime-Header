@@ -9,15 +9,17 @@
 #import <SilexWeb/WKURLSchemeTask-Protocol.h>
 
 @class NSString, NSURLRequest;
-@protocol WKURLSchemeTask;
+@protocol SWLogger, WKURLSchemeTask;
 
 @interface SWURLSchemeTask : NSObject <WKURLSchemeTask>
 {
     CDUnknownBlockType _completionBlock;
     id <WKURLSchemeTask> _task;
+    id <SWLogger> _logger;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <SWLogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) id <WKURLSchemeTask> task; // @synthesize task=_task;
 @property(copy, nonatomic, setter=onCompletion:) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 - (void)performBlockOnMainThread:(CDUnknownBlockType)arg1;
@@ -26,7 +28,7 @@
 - (void)didReceiveData:(id)arg1;
 - (void)didReceiveResponse:(id)arg1;
 @property(readonly, copy, nonatomic) NSURLRequest *request;
-- (id)initWithTask:(id)arg1;
+- (id)initWithTask:(id)arg1 logger:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

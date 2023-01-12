@@ -24,6 +24,7 @@
         unsigned int linkedBeforeWhitetailAndInitializedFromCoder:1;
         unsigned int disableBlurTinting:1;
         unsigned int delegateRespondsToInterfaceOrientationWindowSelector:1;
+        unsigned int appearanceHint:2;
     } _toolbarFlags;
     id __appearanceStorage;
     _UIToolbarVisualProvider *_visualProvider;
@@ -35,6 +36,8 @@
     UIView *_shadowView;
     long long _barPosition;
     UIToolbarAppearance *_standardAppearance;
+    UIToolbarAppearance *_scrollEdgeAppearance;
+    UIToolbarAppearance *_compactScrollEdgeAppearance;
     UIToolbarAppearance *_compactAppearance;
     UIBarButtonItem *_centerItem;
     NSArray *_backgroundEffects;
@@ -53,6 +56,8 @@
 @property(retain, nonatomic) UIBarButtonItem *centerItem; // @synthesize centerItem=_centerItem;
 @property(copy, nonatomic) UIToolbarAppearance *compactAppearance; // @synthesize compactAppearance=_compactAppearance;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
+@property(copy, nonatomic) UIToolbarAppearance *compactScrollEdgeAppearance; // @synthesize compactScrollEdgeAppearance=_compactScrollEdgeAppearance;
+@property(copy, nonatomic) UIToolbarAppearance *scrollEdgeAppearance; // @synthesize scrollEdgeAppearance=_scrollEdgeAppearance;
 @property(readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 @property(retain, nonatomic, setter=_setShadowView:) UIView *_shadowView; // @synthesize _shadowView;
 @property(retain, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
@@ -101,6 +106,9 @@
 - (void)_customViewChangedForButtonItem:(id)arg1;
 - (void)setItems:(id)arg1 animated:(_Bool)arg2;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
+@property(nonatomic, setter=_setAppearanceHint:) long long _appearanceHint;
+@property(readonly, nonatomic) long long _hintFromCurrentAppearance;
+@property(nonatomic, setter=_setBackgroundTransitionProgress:) double _backgroundTransitionProgress;
 @property(copy, nonatomic) UIToolbarAppearance *standardAppearance; // @synthesize standardAppearance=_standardAppearance;
 - (void)_installDefaultAppearance;
 @property(nonatomic, setter=_setItemDistribution:) long long _itemDistribution;

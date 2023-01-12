@@ -13,6 +13,7 @@
 @interface MIPMediaItem : PBCodable <NSCopying>
 {
     long long _accountId;
+    long long _assetStoreItemId;
     long long _bookmarkTimeMilliseconds;
     long long _creationDateTime;
     long long _drmKey1IdCode;
@@ -23,10 +24,12 @@
     long long _fileSize;
     long long _lastPlayedDateTime;
     long long _lastSkippedDateTime;
+    long long _likedStateChangeDate;
     long long _modificationDateTime;
     long long _purchaseDateTime;
     long long _purchaseHistoryId;
     long long _releaseDateTime;
+    long long _reportingStoreItemId;
     long long _sagaId;
     long long _storeId;
     long long _storePlaylistId;
@@ -80,12 +83,14 @@
     _Bool _hidden;
     _Bool _inUsersCloudLibrary;
     _Bool _isInUsersLibrary;
+    _Bool _isPreorder;
     _Bool _likedStateChanged;
     _Bool _needsReporting;
     _Bool _rememberBookmark;
     _Bool _userDisabled;
     struct {
         unsigned int accountId:1;
+        unsigned int assetStoreItemId:1;
         unsigned int bookmarkTimeMilliseconds:1;
         unsigned int creationDateTime:1;
         unsigned int drmKey1IdCode:1;
@@ -96,10 +101,12 @@
         unsigned int fileSize:1;
         unsigned int lastPlayedDateTime:1;
         unsigned int lastSkippedDateTime:1;
+        unsigned int likedStateChangeDate:1;
         unsigned int modificationDateTime:1;
         unsigned int purchaseDateTime:1;
         unsigned int purchaseHistoryId:1;
         unsigned int releaseDateTime:1;
+        unsigned int reportingStoreItemId:1;
         unsigned int sagaId:1;
         unsigned int storeId:1;
         unsigned int storePlaylistId:1;
@@ -130,6 +137,7 @@
         unsigned int hidden:1;
         unsigned int inUsersCloudLibrary:1;
         unsigned int isInUsersLibrary:1;
+        unsigned int isPreorder:1;
         unsigned int likedStateChanged:1;
         unsigned int needsReporting:1;
         unsigned int rememberBookmark:1;
@@ -144,6 +152,8 @@
 @property(retain, nonatomic) MIPTVShow *tvShow; // @synthesize tvShow=_tvShow;
 @property(retain, nonatomic) MIPMovie *movie; // @synthesize movie=_movie;
 @property(retain, nonatomic) MIPSong *song; // @synthesize song=_song;
+@property(nonatomic) long long assetStoreItemId; // @synthesize assetStoreItemId=_assetStoreItemId;
+@property(nonatomic) long long reportingStoreItemId; // @synthesize reportingStoreItemId=_reportingStoreItemId;
 @property(retain, nonatomic) NSString *cloudUniversalLibraryId; // @synthesize cloudUniversalLibraryId=_cloudUniversalLibraryId;
 @property(nonatomic) long long subscriptionStoreItemId; // @synthesize subscriptionStoreItemId=_subscriptionStoreItemId;
 @property(retain, nonatomic) NSString *storeXID; // @synthesize storeXID=_storeXID;
@@ -156,6 +166,8 @@
 @property(nonatomic) long long storefrontId; // @synthesize storefrontId=_storefrontId;
 @property(nonatomic) long long storeId; // @synthesize storeId=_storeId;
 @property(retain, nonatomic) NSMutableArray *libraryIdentifiers; // @synthesize libraryIdentifiers=_libraryIdentifiers;
+@property(nonatomic) long long likedStateChangeDate; // @synthesize likedStateChangeDate=_likedStateChangeDate;
+@property(nonatomic) _Bool isPreorder; // @synthesize isPreorder=_isPreorder;
 @property(retain, nonatomic) NSData *flattenedChapterData; // @synthesize flattenedChapterData=_flattenedChapterData;
 @property(nonatomic) _Bool hasChapterData; // @synthesize hasChapterData=_hasChapterData;
 @property(retain, nonatomic) NSString *secondaryArtworkId; // @synthesize secondaryArtworkId=_secondaryArtworkId;
@@ -224,6 +236,8 @@
 @property(readonly, nonatomic) _Bool hasTvShow;
 @property(readonly, nonatomic) _Bool hasMovie;
 @property(readonly, nonatomic) _Bool hasSong;
+@property(nonatomic) _Bool hasAssetStoreItemId;
+@property(nonatomic) _Bool hasReportingStoreItemId;
 @property(readonly, nonatomic) _Bool hasCloudUniversalLibraryId;
 @property(nonatomic) _Bool hasSubscriptionStoreItemId;
 @property(readonly, nonatomic) _Bool hasStoreXID;
@@ -239,6 +253,8 @@
 - (unsigned long long)libraryIdentifiersCount;
 - (void)addLibraryIdentifiers:(id)arg1;
 - (void)clearLibraryIdentifiers;
+@property(nonatomic) _Bool hasLikedStateChangeDate;
+@property(nonatomic) _Bool hasIsPreorder;
 @property(readonly, nonatomic) _Bool hasFlattenedChapterData;
 @property(nonatomic) _Bool hasHasChapterData;
 @property(readonly, nonatomic) _Bool hasSecondaryArtworkId;

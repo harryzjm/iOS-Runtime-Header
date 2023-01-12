@@ -11,6 +11,7 @@
     GKTurnBasedMatch *_match;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -21,7 +22,6 @@
 - (long long)itemCount;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)initWithMatch:(id)arg1;
 
 @end

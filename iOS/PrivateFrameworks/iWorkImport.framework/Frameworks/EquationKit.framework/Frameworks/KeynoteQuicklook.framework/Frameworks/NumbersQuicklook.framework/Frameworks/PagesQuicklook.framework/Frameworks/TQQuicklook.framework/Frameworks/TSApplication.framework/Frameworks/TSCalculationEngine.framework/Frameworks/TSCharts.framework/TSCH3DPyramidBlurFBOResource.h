@@ -6,12 +6,12 @@
 
 @interface TSCH3DPyramidBlurFBOResource
 {
-    tvec2_3b141483 mSize;
+    tvec2_3b141483 _size;
 }
 
 + (id)pyramidResourceWithFBOSize:(tvec2_3b141483)arg1;
 - (id).cxx_construct;
-@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=mSize;
+@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
 - (id)initWithFBOSize:(tvec2_3b141483)arg1;
 
 @end

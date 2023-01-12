@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     TVImageLayout *_imageViewLayout;
 }
 
-+ (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 + (id)maxImageContentSizeCategory;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TVImageLayout *imageViewLayout; // @synthesize imageViewLayout=_imageViewLayout;

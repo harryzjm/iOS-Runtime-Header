@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
+#import <SpringBoardHome/SBSearchScrollViewDelegate-Protocol.h>
 #import <SpringBoardHome/UIScrollViewDelegate-Protocol.h>
 
 @class NSHashTable, NSMutableSet, NSString, SBSearchScrollView, UIPanGestureRecognizer, UIView;
+@protocol SBSearchGestureDelegate;
 
-@interface SBSearchGesture : NSObject <UIScrollViewDelegate, BSDescriptionProviding>
+@interface SBSearchGesture : NSObject <UIScrollViewDelegate, SBSearchScrollViewDelegate, BSDescriptionProviding>
 {
     NSHashTable *_observers;
     SBSearchScrollView *_scrollView;
@@ -21,7 +23,9 @@
     NSMutableSet *_disabledReasons;
     _Bool _isDismissing;
     _Bool _ignoreScrollingEnded;
+    _Bool _isDraggingAccordingToScrollView;
     _Bool _animatingResetOrReveal;
+    id <SBSearchGestureDelegate> _delegate;
     UIView *_targetView;
 }
 
@@ -29,10 +33,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isAnimatingResetOrReveal) _Bool animatingResetOrReveal; // @synthesize animatingResetOrReveal=_animatingResetOrReveal;
 @property(retain, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
+@property(nonatomic) __weak id <SBSearchGestureDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (_Bool)searchScrollViewShouldRecognize:(id)arg1;
 - (void)requireGestureRecognizerToFail:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScrollToTop:(id)arg1;
@@ -43,11 +49,13 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)_updateScrollingEnabled;
+@property(readonly, nonatomic, getter=isDragging) _Bool dragging;
 @property(readonly, nonatomic, getter=isTracking) _Bool tracking;
 @property(readonly, nonatomic, getter=isShowingSearch) _Bool showingSearch;
 - (_Bool)_isShowingSearch;
 - (void)_updateForFinalContentOffset;
 - (void)_updateForScrollingEnded;
+- (void)_notifyThatGestureEndedWithShowingIfNeeded:(_Bool)arg1;
 - (void)_notifyThaWeStartedShowingOrHiding;
 - (struct CGPoint)locationInView:(id)arg1;
 - (void)setDisabled:(_Bool)arg1 forReason:(id)arg2;

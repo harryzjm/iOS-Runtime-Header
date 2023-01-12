@@ -6,7 +6,7 @@
 
 #import <ShareSheet/UIActivity.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIImage;
 @protocol DOCItemActivityPerformer;
 
 @interface DOCActivity : UIActivity
@@ -15,6 +15,7 @@
     NSArray *_items;
     NSString *_identifier;
     NSString *_imageName;
+    UIImage *_image;
     NSString *_localizedTitle;
 }
 
@@ -23,9 +24,12 @@
 + (id)_imageNameForActivityIdentifier:(id)arg1;
 + (long long)_activityStyleForActivityIdentifier:(id)arg1;
 + (_Bool)isDestructiveActionIdentifier:(id)arg1;
++ (id)_activityWithIdentifier:(id)arg1 forBrowserAction:(id)arg2 actionPerformerProxy:(id)arg3;
++ (id)activityForBrowserAction:(id)arg1 actionPerformerProxy:(id)arg2;
 + (id)activityWithIdentifier:(id)arg1 actionPerformerProxy:(id)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
+@property(copy, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
@@ -35,9 +39,11 @@
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (_Bool)_needsResolvedActivityItems;
 - (id)_systemImageName;
+- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
-- (id)initWithProxy:(id)arg1 identifier:(id)arg2;
+- (void)validate;
+- (id)initWithIdentifier:(id)arg1 actionPerformer:(id)arg2 forBrowserAction:(id)arg3;
 
 @end
 

@@ -7,63 +7,44 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
-@class HDAppAssertionManager, HDBackgroundTaskScheduler, HDProfile, NSMutableDictionary, NSMutableSet, NSString;
+@class HDBackgroundAppLauncher, HDBackgroundTaskScheduler, HDProfile, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDAppSubscriptionManager : NSObject <HDDatabaseProtectedDataObserver>
+@interface HDAppSubscriptionManager : NSObject <HDDatabaseProtectedDataObserver, HDProfileReadyObserver>
 {
+    NSMutableSet *_observedDataTypeCodes;
+    NSMutableDictionary *_outstandingLaunchesByBundleIdentifier;
     _Bool _shouldScheduleLaunches;
     int _backgroundAppRefreshNotifyToken;
     HDProfile *_profile;
-    HDAppAssertionManager *_appAssertionManager;
+    HDBackgroundAppLauncher *_backgroundAppLauncher;
     HDBackgroundTaskScheduler *_backgroundTaskScheduler;
     NSObject<OS_dispatch_queue> *_launchQueue;
     NSMutableDictionary *_pendingTypeCodesToAnchors;
-    NSMutableSet *_pendingFirstLaunchBundleIdentifiers;
     NSMutableDictionary *_launchTimers;
     NSMutableDictionary *_launchTimerLaunchTimes;
-    NSObject<OS_dispatch_queue> *_launchTimerQueue;
+    CDUnknownBlockType _unitTesting_backgroundAppRefreshStatusGenerator;
+    CDUnknownBlockType _unitTesting_launchEventHandler;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool shouldScheduleLaunches; // @synthesize shouldScheduleLaunches=_shouldScheduleLaunches;
-@property(nonatomic) int backgroundAppRefreshNotifyToken; // @synthesize backgroundAppRefreshNotifyToken=_backgroundAppRefreshNotifyToken;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *launchTimerQueue; // @synthesize launchTimerQueue=_launchTimerQueue;
-@property(retain, nonatomic) NSMutableDictionary *launchTimerLaunchTimes; // @synthesize launchTimerLaunchTimes=_launchTimerLaunchTimes;
-@property(retain, nonatomic) NSMutableDictionary *launchTimers; // @synthesize launchTimers=_launchTimers;
-@property(retain, nonatomic) NSMutableSet *pendingFirstLaunchBundleIdentifiers; // @synthesize pendingFirstLaunchBundleIdentifiers=_pendingFirstLaunchBundleIdentifiers;
-@property(retain, nonatomic) NSMutableDictionary *pendingTypeCodesToAnchors; // @synthesize pendingTypeCodesToAnchors=_pendingTypeCodesToAnchors;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *launchQueue; // @synthesize launchQueue=_launchQueue;
-@property(retain, nonatomic) HDBackgroundTaskScheduler *backgroundTaskScheduler; // @synthesize backgroundTaskScheduler=_backgroundTaskScheduler;
-@property(retain, nonatomic) HDAppAssertionManager *appAssertionManager; // @synthesize appAssertionManager=_appAssertionManager;
-@property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
+@property(copy, nonatomic) CDUnknownBlockType unitTesting_launchEventHandler; // @synthesize unitTesting_launchEventHandler=_unitTesting_launchEventHandler;
+@property(copy, nonatomic) CDUnknownBlockType unitTesting_backgroundAppRefreshStatusGenerator; // @synthesize unitTesting_backgroundAppRefreshStatusGenerator=_unitTesting_backgroundAppRefreshStatusGenerator;
 - (void)unitTesting_synchronizeWithQueue;
+- (_Bool)unitTesting_isAwaitingLaunchForBundleID:(id)arg1 anchor:(id)arg2 dataTypeCode:(long long)arg3;
+- (_Bool)unitTesting_isObservingDataTypeCode:(long long)arg1;
 - (_Bool)areSubscriptionsSupportedForDataTypeCode:(long long)arg1;
-- (void)ackForBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 ackTime:(id)arg4;
+- (void)ackForBundleID:(id)arg1 dataTypes:(id)arg2 anchor:(id)arg3 ackTime:(id)arg4;
 - (void)setAnchor:(id)arg1 forDataCode:(long long)arg2;
-- (void)subscribeForBundleID:(id)arg1 dataCode:(long long)arg2 frequencyInSeconds:(unsigned long long)arg3;
+- (void)subscribeForBundleID:(id)arg1 dataCode:(long long)arg2 frequencyInSeconds:(unsigned long long)arg3 appSDKVersion:(unsigned int)arg4;
 - (void)removeBundleID:(id)arg1;
 - (void)removeSubscriptionForBundleID:(id)arg1 dataCode:(long long)arg2;
-- (void)updateBundleID:(id)arg1 dataCode:(long long)arg2 launchTime:(id)arg3;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)_applicationsInstalled:(id)arg1;
-- (_Bool)_shouldDoAFirstLaunchForBundleIdentifier:(id)arg1;
-- (void)_queue_updateBundleID:(id)arg1 dataCode:(long long)arg2 launchTime:(id)arg3;
-- (void)_queue_ackForBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 ackTime:(id)arg4;
-- (void)_queue_subscribeForBundleID:(id)arg1 dataCode:(long long)arg2 frequencyInSeconds:(unsigned long long)arg3;
-- (void)_removeSubscriptionForBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3;
-- (void)_removeBundleID:(id)arg1;
-- (void)_launchTimerFired:(id)arg1 code:(id)arg2 anchor:(id)arg3;
-- (id)_appSubscriptionsForDataTypeCode:(long long)arg1 lastAppLaunchTimes:(id)arg2 error:(id *)arg3;
-- (void)_queue_scheduleLaunches:(long long)arg1 anchor:(id)arg2;
-- (void)_removeLaunchForSubscription:(id)arg1 anchor:(id)arg2;
-- (void)_queue_scheduleLaunchForSubscription:(id)arg1 anchor:(id)arg2;
-- (id)_activityNameForSubscription:(id)arg1 anchor:(id)arg2;
-- (id)_queue_subscriptionForActivityName:(id)arg1 anchor:(id *)arg2;
-- (void)_queue_launchSubscription:(id)arg1 anchor:(id)arg2;
-- (void)_backgroundTaskFiredWithName:(id)arg1;
 - (void)dealloc;
+- (void)_isBackgroundAppRefreshDisabledForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)profileDidBecomeReady:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (id)init;
 

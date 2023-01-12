@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEORestrictionInfo, NSString, PBDataReader, PBUnknownFields;
+@class GEOLatLng, GEOPBTransitArtwork, GEORestrictionInfo, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORouteIncident : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPBTransitArtwork *_artwork;
     NSString *_crossStreet;
     long long _endTime;
     NSString *_incidentId;
@@ -23,9 +24,11 @@
     long long _startTime;
     NSString *_street;
     long long _updateTime;
+    NSMutableArray *_userReportIds;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _delaySeconds;
     unsigned int _laneClosureCount;
     int _laneClosureType;
     int _significance;
@@ -37,6 +40,7 @@
         unsigned int has_endTime:1;
         unsigned int has_startTime:1;
         unsigned int has_updateTime:1;
+        unsigned int has_delaySeconds:1;
         unsigned int has_laneClosureCount:1;
         unsigned int has_laneClosureType:1;
         unsigned int has_significance:1;
@@ -45,17 +49,20 @@
         unsigned int has_endTimeReliable:1;
         unsigned int has_shouldDisplayOnMap:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_artwork:1;
         unsigned int read_crossStreet:1;
         unsigned int read_incidentId:1;
         unsigned int read_info:1;
         unsigned int read_position:1;
         unsigned int read_restrictionInfo:1;
         unsigned int read_street:1;
+        unsigned int read_userReportIds:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)userReportIdType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -64,6 +71,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -72,6 +80,15 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOPBTransitArtwork *artwork;
+@property(readonly, nonatomic) _Bool hasArtwork;
+@property(nonatomic) _Bool hasDelaySeconds;
+@property(nonatomic) unsigned int delaySeconds;
+- (id)userReportIdAtIndex:(unsigned long long)arg1;
+- (unsigned long long)userReportIdsCount;
+- (void)addUserReportId:(id)arg1;
+- (void)clearUserReportIds;
+@property(retain, nonatomic) NSMutableArray *userReportIds;
 @property(nonatomic) _Bool hasShouldDisplayOnMap;
 @property(nonatomic) _Bool shouldDisplayOnMap;
 @property(nonatomic) _Bool hasUserReportsCount;

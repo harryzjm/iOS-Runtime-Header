@@ -7,7 +7,7 @@
 #import <SetupAssistantUI/NSObject-Protocol.h>
 
 @class BFFNavigationController, NSArray, NSString, UIViewController;
-@protocol BFFFlowItemDelegate;
+@protocol BFFFlowItemDelegate, BYEnvironment;
 
 @protocol BFFFlowItem <NSObject>
 + (NSString *)cloudConfigSkipKey;
@@ -15,8 +15,10 @@
 - (id)init;
 
 @optional
-+ (_Bool)isTrailing;
++ (_Bool)isTrailingWithEnvironment:(id <BYEnvironment>)arg1;
 + (_Bool)controllerNeedsToRun;
++ (_Bool)hiddenFromStoreDemoMode;
++ (void)skippedByCloudConfigWithEnvironment:(id <BYEnvironment>)arg1;
 + (void)skippedByCloudConfig;
 + (_Bool)controllerAffectedByTapFreeSetup;
 + (NSString *)internalSkipKey;
@@ -31,6 +33,7 @@
 - (void)presentHostedViewControllerOnNavigationController:(BFFNavigationController *)arg1 completion:(void (^)(UIViewController *))arg2;
 - (_Bool)responsibleForViewController:(UIViewController *)arg1;
 - (UIViewController *)viewController;
+- (unsigned long long)allowedTerminationSources;
 - (void)setNavigationController:(BFFNavigationController *)arg1;
 - (_Bool)isEphemeral;
 - (_Bool)controllerAllowsNavigatingBack;
@@ -39,6 +42,7 @@
 - (_Bool)shouldPresentModally;
 - (_Bool)shouldSuppressExtendedInitializationActivityIndicator;
 - (void)performExtendedInitializationWithCompletion:(void (^)(_Bool))arg1;
+- (_Bool)controllerNeedsToRun;
 - (void)didReceiveInternalSkipInfo;
 @end
 

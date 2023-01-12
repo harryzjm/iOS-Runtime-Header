@@ -8,7 +8,7 @@
 
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 
-@class NSString, SBAppSwitcherSettings, SBMedusaSettings, UIView;
+@class NSString, SBAppSwitcherSettings, SBMedusaSettings, UIBezierPath, UIView;
 
 @interface SBAppSwitcherPageShadowView : SBFView <PTSettingsKeyObserver>
 {
@@ -30,11 +30,13 @@
     double _switcherCardScale;
     long long _style;
     unsigned long long _highlightType;
+    UIBezierPath *_shadowPath;
     double _shadowOffset;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
+@property(retain, nonatomic) UIBezierPath *shadowPath; // @synthesize shadowPath=_shadowPath;
 @property(nonatomic) unsigned long long highlightType; // @synthesize highlightType=_highlightType;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) double switcherCardScale; // @synthesize switcherCardScale=_switcherCardScale;

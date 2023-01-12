@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface SNDSPGraphInterpreter : NSObject
 {
-    struct unique_ptr<DSPGraph::Interpreter, std::__1::default_delete<DSPGraph::Interpreter>> _interpreter;
+    struct unique_ptr<DSPGraph::Interpreter, std::default_delete<DSPGraph::Interpreter>> _interpreter;
 }
 
-+ (vector_9492931a)stringVectorFromStringArray:(id)arg1;
-+ (unordered_map_0ace0ab1)stringMapFromStringDictionary:(id)arg1;
++ (vector_74824a0a)stringVectorFromStringArray:(id)arg1;
++ (unordered_map_048dd119)stringMapFromStringDictionary:(id)arg1;
 + (id)compileText:(id)arg1 withSubstitutions:(id)arg2 includingPaths:(id)arg3;
 + (id)compileFile:(id)arg1 withSubstitutions:(id)arg2 includingPaths:(id)arg3;
 - (id).cxx_construct;

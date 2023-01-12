@@ -27,19 +27,18 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)_saveServerConfigurationDictionaryToDB:(id)arg1;
-- (void)_loadCachedServerConfigurationDictionaryFromDB:(id)arg1;
 - (void)reset;
 - (void)_reset;
 - (void)_loadServerConfigurationDictionary;
 - (void)_parsePlistWithURL:(id)arg1;
+- (void)loadCachedServerConfiguration;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;
 - (void)_setServerConfigurationURL:(id)arg1 whenLoaded:(CDUnknownBlockType)arg2;
 - (id)defaultsForIdentifier:(id)arg1;
-- (id)init;
+- (id)initWithPersonaID:(id)arg1;
 - (void)_prepopulateGlobalUserDefaults;
 
 // Remaining properties

@@ -11,7 +11,6 @@
     UIButton *_button;
 }
 
-+ (long long)tableViewCellStyle;
 - (void).cxx_destruct;
 - (void)_buttonTapped;
 - (void)layoutSubviews;

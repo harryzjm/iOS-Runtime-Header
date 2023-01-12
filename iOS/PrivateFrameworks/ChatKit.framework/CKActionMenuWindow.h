@@ -6,35 +6,24 @@
 
 #import <UIKit/UIAutoRotatingWindow.h>
 
-#import <ChatKit/CKDismissViewDelegate-Protocol.h>
+@class CKActionMenuView;
 
-@class CKActionMenuView, CKDismissView, NSArray, NSString;
-
-@interface CKActionMenuWindow : UIAutoRotatingWindow <CKDismissViewDelegate>
+@interface CKActionMenuWindow : UIAutoRotatingWindow
 {
+    _Bool _shouldDismissOnTap;
     CKActionMenuView *_actionMenuView;
-    CKDismissView *_dismissView;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CKDismissView *dismissView; // @synthesize dismissView=_dismissView;
+@property(nonatomic) _Bool shouldDismissOnTap; // @synthesize shouldDismissOnTap=_shouldDismissOnTap;
 @property(retain, nonatomic) CKActionMenuView *actionMenuView; // @synthesize actionMenuView=_actionMenuView;
 - (_Bool)_canAffectStatusBarAppearance;
-- (void)dismissViewWasTapped:(id)arg1;
 - (void)actionMenuGestureRecognized:(id)arg1;
-@property(copy, nonatomic) NSArray *passthroughViews;
 - (void)dismissActionMenuViewAnimated:(_Bool)arg1;
 - (void)presentActionMenuView:(id)arg1 fromPoint:(struct CGPoint)arg2 inView:(id)arg3 animated:(_Bool)arg4;
 - (_Bool)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

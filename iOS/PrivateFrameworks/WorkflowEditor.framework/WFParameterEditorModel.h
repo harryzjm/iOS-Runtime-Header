@@ -6,26 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSString, WFGradient, WFParameter;
+@class NSError, WFGradient, WFParameter;
 @protocol WFParameterState;
 
 @interface WFParameterEditorModel : NSObject
 {
+    _Bool _becomeFirstResponder;
     WFParameter *_parameter;
     id <WFParameterState> _state;
     NSError *_resourceError;
     WFGradient *_buttonGradient;
-    NSString *_widgetSizeClass;
+    long long _widgetFamily;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *widgetSizeClass; // @synthesize widgetSizeClass=_widgetSizeClass;
+@property(nonatomic) _Bool becomeFirstResponder; // @synthesize becomeFirstResponder=_becomeFirstResponder;
+@property(readonly, nonatomic) long long widgetFamily; // @synthesize widgetFamily=_widgetFamily;
 @property(readonly, nonatomic) WFGradient *buttonGradient; // @synthesize buttonGradient=_buttonGradient;
 @property(readonly, nonatomic) NSError *resourceError; // @synthesize resourceError=_resourceError;
 @property(readonly, nonatomic) id <WFParameterState> state; // @synthesize state=_state;
 @property(readonly, nonatomic) WFParameter *parameter; // @synthesize parameter=_parameter;
 - (id)initWithResourceError:(id)arg1 buttonGradient:(id)arg2;
-- (id)initWithParameter:(id)arg1 state:(id)arg2 widgetSizeClass:(id)arg3;
+- (id)initWithParameter:(id)arg1 state:(id)arg2 widgetFamily:(long long)arg3;
 - (id)initWithParameter:(id)arg1 state:(id)arg2;
 
 @end

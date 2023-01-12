@@ -13,8 +13,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _HKMedicalIDData *medicalIDDataToPersist; // @synthesize medicalIDDataToPersist=_medicalIDDataToPersist;
-- (_Bool)_persistMedicalIDToDisk:(id)arg1 errorOut:(id *)arg2;
-- (void)main;
+- (_Bool)performWithError:(id *)arg1;
 
 @end
 

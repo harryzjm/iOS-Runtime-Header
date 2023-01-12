@@ -23,7 +23,7 @@
     NSArray *_persistentDeactivations;
 }
 
-+ (id)sessionWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 invalidationRouter:(id)arg3 activations:(id)arg4 persistentDeactivations:(id)arg5;
++ (id)sessionWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 invalidationRouter:(id)arg3 activations:(id)arg4 persistentDeactivations:(id)arg5 queue:(id)arg6;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 - (void)invalidationRouter:(id)arg1 didReceiveInvalidationError:(id)arg2;

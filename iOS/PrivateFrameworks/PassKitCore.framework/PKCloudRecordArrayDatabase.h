@@ -21,6 +21,7 @@
 @property(retain, nonatomic) NSMutableDictionary *cloudRecordByDatabaseZone; // @synthesize cloudRecordByDatabaseZone=_cloudRecordByDatabaseZone;
 - (id)countByZoneID;
 - (long long)count;
+- (id)allRecordIDs;
 - (id)allRecordNames;
 - (id)allRecordsWithRecordType:(id)arg1;
 - (id)allObjects;

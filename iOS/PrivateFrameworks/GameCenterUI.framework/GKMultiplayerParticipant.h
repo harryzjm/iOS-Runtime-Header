@@ -19,6 +19,7 @@
 }
 
 + (id)stringFromGKMultiplayerParticipantStatus:(long long)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) long long number; // @synthesize number=_number;
 @property(retain, nonatomic) GKPlayer *player; // @synthesize player=_player;
 @property(nonatomic) long long status; // @synthesize status=_status;
@@ -27,7 +28,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

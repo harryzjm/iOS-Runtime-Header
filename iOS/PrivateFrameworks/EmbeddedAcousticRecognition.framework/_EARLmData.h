@@ -9,6 +9,7 @@
 @interface _EARLmData : NSObject
 {
     _Bool _roundingEnabled;
+    long long _inputType;
     shared_ptr_98d1cd41 _data;
 }
 
@@ -16,6 +17,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) shared_ptr_98d1cd41 data; // @synthesize data=_data;
+@property(readonly, nonatomic) long long inputType; // @synthesize inputType=_inputType;
 @property(nonatomic) _Bool roundingEnabled; // @synthesize roundingEnabled=_roundingEnabled;
 - (id)metrics;
 - (double)minAge;
@@ -23,7 +25,12 @@
 - (unsigned long long)queryLimit;
 - (id)sources;
 - (_Bool)roomForMoreData;
+- (void)setInputFormat:(long long)arg1;
+- (void)addNgramCountWithType:(unsigned long long)arg1 content:(id)arg2;
 - (void)addSentenceWithType:(unsigned long long)arg1 uuid:(id)arg2 content:(id)arg3;
+- (void)addSentenceWithType:(unsigned long long)arg1 uuid:(id)arg2 content:(id)arg3 hasWeights:(_Bool)arg4;
+- (void)addLineWithType:(unsigned long long)arg1 uuid:(id)arg2 content:(id)arg3;
+- (void)addDocumentWithUUID:(id)arg1 content:(id)arg2 metadata:(id)arg3;
 - (void)addDocumentWithUUID:(id)arg1 content:(id)arg2;
 - (id)initWithConfiguration:(id)arg1 ncsRoot:(id)arg2 recognizerConfiguration:(id)arg3;
 

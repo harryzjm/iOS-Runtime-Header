@@ -4,18 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
 
-@interface HMDPhotoLibraryImportingFaceCropsImportedLogEvent <HMDCoreAnalyticsLogging>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
+
+@class NSString;
+
+@interface HMDPhotoLibraryImportingFaceCropsImportedLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
     long long _numberOfImportedFaceCrops;
 }
 
-+ (id)identifier;
 @property(readonly) long long numberOfImportedFaceCrops; // @synthesize numberOfImportedFaceCrops=_numberOfImportedFaceCrops;
 - (id)initWithNumberOfImportedFaceCrops:(long long)arg1;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

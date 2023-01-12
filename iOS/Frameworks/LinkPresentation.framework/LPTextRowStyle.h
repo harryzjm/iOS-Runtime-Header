@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)applyToAllTextViewStyles:(CDUnknownBlockType)arg1;
 - (id)right;
 - (id)left;
-- (id)initWithPlatform:(long long)arg1;
+- (id)initWithPlatform:(long long)arg1 fontScalingFactor:(double)arg2;
 
 @end
 

@@ -16,6 +16,7 @@
     long long _symptomsStatus;
 }
 
++ (id)_localizedClassification:(unsigned long long)arg1 withActiveAlgorithmVersion:(long long)arg2;
 + (_Bool)supportsEquivalence;
 + (_Bool)supportsSecureCoding;
 + (_Bool)_isConcreteObjectClass;

@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <BoardServices/BSInvalidatable-Protocol.h>
+#import <BoardServices/BSServiceConnectionClient-Protocol.h>
 #import <BoardServices/BSServiceConnectionContext-Protocol.h>
+#import <BoardServices/BSServiceConnectionHost-Protocol.h>
 #import <BoardServices/BSXPCServiceConnectionMessaging-Protocol.h>
 
-@class BSAtomicSignal, BSProcessHandle, BSXPCServiceConnection, NSString, _BSServiceConnectionConfiguration;
+@class BSAtomicSignal, BSProcessHandle, BSXPCServiceConnection, NSString, RBSTarget, _BSServiceConnectionConfiguration;
 @protocol NSCopying;
 
-@interface BSServiceConnection : NSObject <BSServiceConnectionContext, BSXPCServiceConnectionMessaging, BSInvalidatable>
+@interface BSServiceConnection : NSObject <BSServiceConnectionClient, BSServiceConnectionHost, BSServiceConnectionContext, BSXPCServiceConnectionMessaging, BSInvalidatable>
 {
     BSXPCServiceConnection *_connection;
     id <NSCopying> _userInfo;
@@ -22,6 +24,7 @@
     BSAtomicSignal *_lock_activatedSignal;
     _Bool _lock_invalidated;
     _Bool _lock_noAssertInvalidatedOnDealloc;
+    _Bool _requiresMessagingAfterHandshake;
     NSString *_service;
     NSString *_instance;
 }
@@ -37,11 +40,14 @@
 - (id)createMessageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)createMessage;
 - (void)invalidate;
+@property(readonly, nonatomic) RBSTarget *remoteAssertionTarget;
+- (id)remoteTargetWithAssertionAttributes:(id)arg1;
 @property(readonly, nonatomic) id remoteTarget;
 - (void)activate;
 - (void)configureConnection:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) id <NSCopying> userInfo;
 @property(readonly, nonatomic) BSProcessHandle *remoteProcess;
+- (id)remoteTargetWithLaunchingAssertionAttributes:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

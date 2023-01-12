@@ -6,24 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-@class ADCountdownButton, ADInterstitialAd;
-
 @interface ADInterstitialAdPresentationViewController : UIViewController
 {
-    ADInterstitialAd *_interstitialAd;
-    ADCountdownButton *_closeButton;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) ADCountdownButton *closeButton; // @synthesize closeButton=_closeButton;
-@property(nonatomic) __weak ADInterstitialAd *interstitialAd; // @synthesize interstitialAd=_interstitialAd;
 - (_Bool)shouldTestVisibilityAtPoint:(struct CGPoint)arg1;
-- (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)viewDidLayoutSubviews;
-- (_Bool)wantsFullScreenLayout;
-- (_Bool)prefersStatusBarHidden;
-- (void)loadView;
 - (id)initForInterstitialAd:(id)arg1;
 
 @end

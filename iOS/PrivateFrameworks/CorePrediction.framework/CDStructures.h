@@ -37,26 +37,9 @@ struct CPMLDelegateEngine {
     void *_field2;
 };
 
-struct CPMLFeatureVector {
-    int _field1;
-    struct VectorClass _field2;
-    struct vector<VectorClass, std::__1::allocator<VectorClass>> _field3;
-    double _field4;
-    struct vector<VectorClass, std::__1::allocator<VectorClass>> _field5;
-    struct vector<ProbIndex, std::__1::allocator<ProbIndex>> _field6;
-};
-
 struct CPMLIterator;
 
-struct CPMLRemapper {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-    struct sqlite3 *_field4;
-    struct CPMLStatistics *_field5;
-    vector_12bd641b *_field6;
-    vector_12bd641b *_field7;
-};
+struct CPMLRemapper;
 
 struct CPMLSerialization {
     CDUnknownFunctionPointerType *_field1;
@@ -67,24 +50,7 @@ struct CPMLSerialization {
     struct sqlite3 *_field6;
 };
 
-struct CPMLStatistics {
-    vector_12bd641b _field1;
-    struct vector<double, std::__1::allocator<double>> _field2;
-    vector_12bd641b _field3;
-    vector_12bd641b _field4;
-    vector_12bd641b _field5;
-    int _field6;
-    int _field7;
-    int _field8;
-    int _field9;
-    _Bool _field10;
-    struct vector<double, std::__1::allocator<double>> _field11;
-    struct vector<double, std::__1::allocator<double>> _field12;
-    struct vector<double, std::__1::allocator<double>> _field13;
-    struct vector<double, std::__1::allocator<double>> _field14;
-    struct vector<double, std::__1::allocator<double>> _field15;
-    void *_field16;
-};
+struct CPMLStatistics;
 
 struct CPMLTunableData {
     int _field1;
@@ -92,55 +58,13 @@ struct CPMLTunableData {
     void *_field3;
 };
 
-struct ProbIndex;
-
-struct VectorClass {
-    vector_12bd641b *_field1;
-    struct vector<double, std::__1::allocator<double>> *_field2;
-};
-
 struct sqlite3;
 
-struct vector<ProbIndex, std::__1::allocator<ProbIndex>> {
-    struct ProbIndex *_field1;
-    struct ProbIndex *_field2;
-    struct __compressed_pair<ProbIndex *, std::__1::allocator<ProbIndex>> {
-        struct ProbIndex *_field1;
-    } _field3;
-};
-
-struct vector<VectorClass, std::__1::allocator<VectorClass>> {
-    struct VectorClass *_field1;
-    struct VectorClass *_field2;
-    struct __compressed_pair<VectorClass *, std::__1::allocator<VectorClass>> {
-        struct VectorClass *_field1;
-    } _field3;
-};
-
-struct vector<double, std::__1::allocator<double>> {
-    double *_field1;
-    double *_field2;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
-        double *_field1;
-    } _field3;
-};
-
-struct vector<int, std::__1::allocator<int>> {
+struct vector<int, std::allocator<int>> {
     int *__begin_;
     int *__end_;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
+    struct __compressed_pair<int *, std::allocator<int>> {
         int *__value_;
     } __end_cap_;
 };
-
-#pragma mark Typedef'd Structures
-
-// Template types
-typedef struct vector<int, std::__1::allocator<int>> {
-    int *__begin_;
-    int *__end_;
-    struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *__value_;
-    } __end_cap_;
-} vector_12bd641b;
 

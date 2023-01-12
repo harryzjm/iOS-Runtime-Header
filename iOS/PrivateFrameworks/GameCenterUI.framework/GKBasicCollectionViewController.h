@@ -13,6 +13,7 @@
     GKCollectionViewDataSource *_initialDataSource;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKCollectionViewDataSource *initialDataSource; // @synthesize initialDataSource=_initialDataSource;
 @property(retain, nonatomic) NSArray *metricsForSections; // @synthesize metricsForSections=_metricsForSections;
 @property(retain, nonatomic) id target; // @synthesize target=_target;
@@ -20,7 +21,6 @@
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)configureDataSource;
 - (void)setDataSource:(id)arg1;
-- (void)dealloc;
 - (id)initWithDataSource:(id)arg1 title:(id)arg2;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/HAP2CharacteristicTupleValue-Protocol.h>
 #import <CoreHAP/HMFMerging-Protocol.h>
 #import <CoreHAP/NSCopying-Protocol.h>
 
-@class CBCharacteristic, HAPCharacteristicMetadata, HAPService, HMFUnfairLock, NSDate, NSNumber, NSString;
+@class CBCharacteristic, HAPCharacteristicMetadata, HAPService, HMFUnfairLock, NSData, NSDate, NSNumber, NSString;
 
-@interface HAPCharacteristic : HMFObject <NSCopying, HMFMerging>
+@interface HAPCharacteristic : HMFObject <HAP2CharacteristicTupleValue, HMFMerging, NSCopying>
 {
     HMFUnfairLock *_lock;
     _Bool _eventNotificationsEnabled;
@@ -21,6 +22,7 @@
     NSDate *_valueUpdatedTime;
     id _value;
     NSNumber *_stateNumber;
+    NSData *_notificationContext;
     NSString *_type;
     NSNumber *_instanceID;
     HAPService *_service;
@@ -43,8 +45,10 @@
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 - (_Bool)mergeObject:(id)arg1;
 - (_Bool)shouldMergeObject:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsEventNotificationContext;
 @property(readonly, nonatomic) _Bool supportsAdditionalAuthorizationData;
 @property(readonly, nonatomic) _Bool supportsWriteWithResponse;
+@property(retain, nonatomic) NSData *notificationContext; // @synthesize notificationContext=_notificationContext;
 @property(retain, nonatomic) NSDate *valueUpdatedTime; // @synthesize valueUpdatedTime=_valueUpdatedTime;
 @property(readonly, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
 - (void)setStateNumber:(id)arg1;
@@ -54,12 +58,12 @@
 - (_Bool)isEqualToCharacteristic:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithType:(id)arg1 instanceID:(id)arg2 value:(id)arg3 stateNumber:(id)arg4 properties:(unsigned long long)arg5 eventNotificationsEnabled:(_Bool)arg6 implicitWriteWithResponse:(_Bool)arg7 metadata:(id)arg8;
 - (id)initWithType:(id)arg1 instanceID:(id)arg2 value:(id)arg3 stateNumber:(id)arg4 properties:(unsigned long long)arg5 eventNotificationsEnabled:(_Bool)arg6 metadata:(id)arg7;
 @property(retain, nonatomic, setter=setCBCharacteristic:) CBCharacteristic *cbCharacteristic;
 - (_Bool)hap2_canUseCachedValue;
 - (_Bool)hap2_mergeWithCharacteristic:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;
 - (id)_generateValidMetadata:(id)arg1;
 - (void)_updateMetadata:(id)arg1 withProvidedMetadata:(id)arg2;

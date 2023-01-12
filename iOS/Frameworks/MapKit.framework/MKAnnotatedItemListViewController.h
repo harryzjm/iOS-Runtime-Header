@@ -8,15 +8,17 @@
 
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKPictureItemContainerAnalyticsDelegate-Protocol.h>
+#import <MapKit/MKPictureItemContainerDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
 @class GEOMapItemAttribution, NSString, UIView;
-@protocol _MKInfoCardAnalyticsDelegate;
+@protocol MKAnnotatedItemListViewControllerDelegate, _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKAnnotatedItemListViewController : UIViewController <MKPictureItemContainerAnalyticsDelegate, MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate>
+@interface MKAnnotatedItemListViewController : UIViewController <MKPictureItemContainerAnalyticsDelegate, MKPictureItemContainerDelegate, MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate>
 {
     id <_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
+    id <MKAnnotatedItemListViewControllerDelegate> _delegate;
     UIViewController *_annotatedItemListViewController;
     GEOMapItemAttribution *_attribution;
     NSString *_headerTitle;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property(readonly, nonatomic) GEOMapItemAttribution *attribution; // @synthesize attribution=_attribution;
 @property(readonly, nonatomic) UIViewController *annotatedItemListViewController; // @synthesize annotatedItemListViewController=_annotatedItemListViewController;
+@property(nonatomic) __weak id <MKAnnotatedItemListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 - (void)captureUserAction:(int)arg1;
 - (id)infoCardChildUnactionableUIElements;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isBottomSeparatorHidden) _Bool bottomSeparatorHidden;
 @property(nonatomic, getter=isTopSeparatorHidden) _Bool topSeparatorHidden;
 - (void)openAttribution;
+- (void)pictureItemContainerRequestsSceneActivationWithPhotoGallery:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithTextItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (id)initWithPictureItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3 presentingProtocol:(id)arg4;

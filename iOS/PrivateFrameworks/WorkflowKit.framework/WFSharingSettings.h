@@ -10,7 +10,12 @@
 {
 }
 
++ (id)privateSharingDisabledAlertWithShortcutName:(id)arg1;
++ (id)privateSharingDisabledErrorWithShortcutName:(id)arg1;
++ (_Bool)isPrivateSharingEnabled;
++ (id)shortcutFileSharingDisabledError;
 + (id)shortcutFileSharingDisabledAlert;
++ (id)sharingDisabledAlertWithShortcutName:(id)arg1;
 + (id)sharingDisabledAlertWithWorkflowName:(id)arg1;
 + (_Bool)shortcutFileSharingEnabled;
 + (_Bool)sharingEnabled;

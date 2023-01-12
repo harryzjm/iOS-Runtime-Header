@@ -34,7 +34,7 @@
 @property(retain, nonatomic) id fromValue; // @synthesize fromValue=_fromValue;
 @property(retain, nonatomic) NSString *property; // @synthesize property=_property;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_finish;
+- (void)_finishCancelled:(_Bool)arg1;
 - (void)_validate;
 - (_Bool)_isCompleted;
 - (void)_applyWithCurrentDate:(id)arg1;

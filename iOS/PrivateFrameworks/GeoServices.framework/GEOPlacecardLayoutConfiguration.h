@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 @class GEOModuleLayoutEntry, GEOPDPlacecardLayoutConfiguration;
+@protocol GEOModuleConfigurationProvider;
 
 @interface GEOPlacecardLayoutConfiguration : NSObject
 {
     GEOPDPlacecardLayoutConfiguration *_placecardLayoutConfiguration;
+    id <GEOModuleConfigurationProvider> _moduleConfigProvider;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GEOModuleLayoutEntry *currentModuleLayoutEntry;
-- (id)initWithPlacecardLayoutConfiguration:(id)arg1;
+- (id)initWithPlacecardLayoutConfiguration:(id)arg1 moduleConfigurationProvider:(id)arg2;
 
 @end
 

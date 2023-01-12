@@ -24,6 +24,7 @@
     _Bool _showMergeCandidateSuggestionsAfterBootstrapNaming;
     _Bool _allowOneUpGesture;
     _Bool _allowSwipeSelection;
+    _Bool _allowSendBackInGridZero;
     _Bool _simulateImport;
     _Bool _simulateImportFailure;
     _Bool _simulateShouldPromptUserToIgnoreBudgets;
@@ -32,6 +33,7 @@
     _Bool _disableOneUpDescriptiveAdd;
     _Bool _disableDescriptiveWaiting;
     _Bool _disableClickyOrb;
+    _Bool _disablePrintAction;
     _Bool _disableShareAction;
     _Bool _disableShowInAllPhotosAction;
     _Bool _disableCopyAction;
@@ -56,9 +58,9 @@
     _Bool _showDebugStatus;
     _Bool _alwaysTapToRetry;
     _Bool _useDebugColors;
+    _Bool _useStackBubbleView;
     _Bool _simulateMomentShareBubbleError;
     _Bool _showMessageTextEntryGadget;
-    _Bool _insertNewRecipientsAtTheEnd;
     _Bool _graphSuggestionEnabled;
     _Bool _showCMMSuggestionGadgets;
     _Bool _showCMMInvitationGadgets;
@@ -115,10 +117,10 @@
 @property(nonatomic) double peopleSuggestionsTimeout; // @synthesize peopleSuggestionsTimeout=_peopleSuggestionsTimeout;
 @property(nonatomic) _Bool graphSuggestionEnabled; // @synthesize graphSuggestionEnabled=_graphSuggestionEnabled;
 @property(nonatomic) long long sharingLinkType; // @synthesize sharingLinkType=_sharingLinkType;
-@property(nonatomic) _Bool insertNewRecipientsAtTheEnd; // @synthesize insertNewRecipientsAtTheEnd=_insertNewRecipientsAtTheEnd;
 @property(nonatomic) _Bool showMessageTextEntryGadget; // @synthesize showMessageTextEntryGadget=_showMessageTextEntryGadget;
 @property(nonatomic) long long simulatedMomentShareBubbleErrorType; // @synthesize simulatedMomentShareBubbleErrorType=_simulatedMomentShareBubbleErrorType;
 @property(nonatomic) _Bool simulateMomentShareBubbleError; // @synthesize simulateMomentShareBubbleError=_simulateMomentShareBubbleError;
+@property(nonatomic) _Bool useStackBubbleView; // @synthesize useStackBubbleView=_useStackBubbleView;
 @property(nonatomic) _Bool useDebugColors; // @synthesize useDebugColors=_useDebugColors;
 @property(nonatomic) long long overrideNumberOfColumnsInLandscape; // @synthesize overrideNumberOfColumnsInLandscape=_overrideNumberOfColumnsInLandscape;
 @property(nonatomic) long long overrideNumberOfColumnsInPortrait; // @synthesize overrideNumberOfColumnsInPortrait=_overrideNumberOfColumnsInPortrait;
@@ -147,6 +149,7 @@
 @property(nonatomic) _Bool disableCopyAction; // @synthesize disableCopyAction=_disableCopyAction;
 @property(nonatomic) _Bool disableShowInAllPhotosAction; // @synthesize disableShowInAllPhotosAction=_disableShowInAllPhotosAction;
 @property(nonatomic) _Bool disableShareAction; // @synthesize disableShareAction=_disableShareAction;
+@property(nonatomic) _Bool disablePrintAction; // @synthesize disablePrintAction=_disablePrintAction;
 @property(nonatomic) _Bool disableClickyOrb; // @synthesize disableClickyOrb=_disableClickyOrb;
 @property(nonatomic) _Bool disableDescriptiveWaiting; // @synthesize disableDescriptiveWaiting=_disableDescriptiveWaiting;
 @property(nonatomic) _Bool disableOneUpDescriptiveAdd; // @synthesize disableOneUpDescriptiveAdd=_disableOneUpDescriptiveAdd;
@@ -155,6 +158,7 @@
 @property(nonatomic) _Bool simulateShouldPromptUserToIgnoreBudgets; // @synthesize simulateShouldPromptUserToIgnoreBudgets=_simulateShouldPromptUserToIgnoreBudgets;
 @property(nonatomic) _Bool simulateImportFailure; // @synthesize simulateImportFailure=_simulateImportFailure;
 @property(nonatomic) _Bool simulateImport; // @synthesize simulateImport=_simulateImport;
+@property(nonatomic) _Bool allowSendBackInGridZero; // @synthesize allowSendBackInGridZero=_allowSendBackInGridZero;
 @property(nonatomic) _Bool allowSwipeSelection; // @synthesize allowSwipeSelection=_allowSwipeSelection;
 @property(nonatomic) _Bool allowOneUpGesture; // @synthesize allowOneUpGesture=_allowOneUpGesture;
 @property(nonatomic) long long initialLayoutType; // @synthesize initialLayoutType=_initialLayoutType;

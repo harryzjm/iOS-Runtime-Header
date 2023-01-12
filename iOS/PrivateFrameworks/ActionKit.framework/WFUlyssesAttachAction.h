@@ -10,6 +10,7 @@
 {
 }
 
+- (id)contentDestinationWithError:(id *)arg1;
 - (_Bool)inputRequired;
 - (_Bool)inputPassthrough;
 - (id)inputContentClasses;

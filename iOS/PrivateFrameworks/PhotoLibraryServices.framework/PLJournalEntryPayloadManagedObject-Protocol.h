@@ -10,5 +10,6 @@
 @protocol PLJournalEntryPayloadManagedObject
 - (id <PLJournalEntryPayload>)payloadForChangedKeys:(NSSet *)arg1;
 - (id <PLJournalEntryPayloadID>)payloadID;
+- (_Bool)isValidForJournalPersistence;
 @end
 

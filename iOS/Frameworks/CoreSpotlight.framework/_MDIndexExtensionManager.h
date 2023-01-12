@@ -10,6 +10,7 @@
 
 + (void)setMemoryPressureStatus:(unsigned long long)arg1;
 + (id)sharedManager;
+- (void)loadExtensions;
 - (id)init;
 
 @end

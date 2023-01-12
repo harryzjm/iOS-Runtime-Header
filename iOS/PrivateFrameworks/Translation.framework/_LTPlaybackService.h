@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 @interface _LTPlaybackService : NSObject
 {
     struct AudioStreamBasicDescription _asbd;
-    unsigned int _sessionID;
     struct OpaqueAudioQueue *_audioQueue;
     struct _opaque_pthread_mutex_t {
         long long __sig;
@@ -34,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)start;
 - (void)handleMediaServerReset;
 - (void)dealloc;
-- (id)initWithAudioSessionID:(unsigned int)arg1 ASBD:(struct AudioStreamBasicDescription)arg2;
+- (id)initWithContext:(id)arg1 ASBD:(struct AudioStreamBasicDescription)arg2;
 
 @end
 

@@ -31,7 +31,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)sortDescriptorForDefaultPaymentInstrument:(id)arg1 supportedNetworks:(id)arg2 merchantCapabilities:(unsigned long long)arg3 webService:(id)arg4;
++ (id)sortDescriptorForDefaultPaymentInstrument:(id)arg1 paymentSupportedQuery:(id)arg2;
 + (id)remotePaymentInstrumentWithProtobuf:(id)arg1;
 + (id)thumbnailCachePathForManifestHash:(id)arg1 size:(struct CGSize)arg2;
 - (void).cxx_destruct;

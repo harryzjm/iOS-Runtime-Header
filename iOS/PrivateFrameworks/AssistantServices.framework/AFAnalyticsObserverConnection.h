@@ -17,7 +17,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_semaphore> *_semaphore;
     NSXPCConnection *_connection;
-    CDUnknownBlockType _observation;
+    CDUnknownBlockType _observationHandler;
 }
 
 - (void).cxx_destruct;

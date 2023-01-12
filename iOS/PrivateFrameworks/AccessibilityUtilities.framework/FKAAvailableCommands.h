@@ -25,6 +25,7 @@
 @property(retain, nonatomic) AXSSKeyboardCommandMap *commandMap;
 @property(readonly, nonatomic) NSArray *categories;
 @property(readonly, nonatomic) NSSet *commands;
+- (id)_siriShortcutCommands;
 - (void)dealloc;
 - (id)init;
 

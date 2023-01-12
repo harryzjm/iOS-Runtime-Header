@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)incrementMetric:(id)arg1;
++ (void)recordMetadataFetchEvent:(id)arg1;
++ (void)recordEvent:(id)arg1;
 
 @end
 

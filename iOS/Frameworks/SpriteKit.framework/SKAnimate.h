@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface SKAnimate
 {
-    struct SKCAnimate *_mycaction;
+    void *_mycaction;
     NSArray *_textures;
 }
 

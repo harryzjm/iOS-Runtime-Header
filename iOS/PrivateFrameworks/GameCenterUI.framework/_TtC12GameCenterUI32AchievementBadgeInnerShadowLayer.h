@@ -11,10 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)drawInContext:(struct CGContext *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;
 - (id)init;
-- (void)drawInContext:(struct CGContext *)arg1;
 
 @end
 

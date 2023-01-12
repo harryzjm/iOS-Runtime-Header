@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAsset, AVWeakReference, NSDictionary, NSString;
+@class AVAsset, AVWeakReference, NSDictionary, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerItemTrackInternal : NSObject
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     _Bool activeHapticChannelIndexWasSet;
     float hapticVolume;
     _Bool hapticVolumeWasSet;
+    NSMutableArray *sampleBufferOutputs;
 }
 
 @end

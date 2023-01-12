@@ -49,11 +49,13 @@
 @property(retain, nonatomic) REMObjectID *parentReminderID; // @synthesize parentReminderID=_parentReminderID;
 @property(retain, nonatomic) REMObjectID *listID; // @synthesize listID=_listID;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+- (id)description;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithReminderPredicateDescriptor:(id)arg1;
 - (id)initWithType:(long long)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFApplicationStateObserver-Protocol.h>
 
-@class ICScheme, NSLock, NSMutableArray;
+@class ICScheme, NSDistributedNotificationCenter, NSLock, NSMutableArray;
 
 @interface ICManager : NSObject <WFApplicationStateObserver>
 {
@@ -18,10 +18,12 @@
     ICScheme *_callbackScheme;
     NSMutableArray *_queuedRequests;
     NSLock *_queueLock;
+    NSDistributedNotificationCenter *_notificationCenter;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDistributedNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property(nonatomic) _Bool resignedActiveWhileOpeningURL; // @synthesize resignedActiveWhileOpeningURL=_resignedActiveWhileOpeningURL;
 @property(nonatomic) _Bool enteringForeground; // @synthesize enteringForeground=_enteringForeground;
 @property(retain, nonatomic) NSLock *queueLock; // @synthesize queueLock=_queueLock;
@@ -38,7 +40,9 @@
 - (void)registerHandler:(CDUnknownBlockType)arg1 forIncomingRequestsWithAction:(id)arg2 legacyAction:(id)arg3 scheme:(id)arg4;
 - (void)registerHandler:(CDUnknownBlockType)arg1 forIncomingRequestsWithAction:(id)arg2 scheme:(id)arg3;
 - (_Bool)handleIncomingRequest:(id)arg1;
+- (_Bool)handleOpenURL:(id)arg1 fromSourceApplication:(id)arg2 errorHandler:(CDUnknownBlockType)arg3 postNotification:(_Bool)arg4;
 - (_Bool)handleOpenURL:(id)arg1 fromSourceApplication:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)handleOpenURLRequestNotification:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

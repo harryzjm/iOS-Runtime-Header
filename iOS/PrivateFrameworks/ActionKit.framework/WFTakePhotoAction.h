@@ -6,31 +6,17 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/AVCapturePhotoCaptureDelegate-Protocol.h>
-
-@class AVCaptureSession, NSString;
-
-@interface WFTakePhotoAction : WFAction <AVCapturePhotoCaptureDelegate>
+@interface WFTakePhotoAction : WFAction
 {
     unsigned long long _remainingPhotos;
-    AVCaptureSession *_session;
 }
 
 + (id)userInterfaceXPCInterface;
 + (id)userInterfaceProtocol;
-- (void).cxx_destruct;
-@property(retain, nonatomic) AVCaptureSession *session; // @synthesize session=_session;
 @property(nonatomic) unsigned long long remainingPhotos; // @synthesize remainingPhotos=_remainingPhotos;
-- (void)captureOutput:(id)arg1 didFinishProcessingPhoto:(id)arg2 error:(id)arg3;
-- (void)takePhoto;
 - (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (_Bool)showCameraPreview;
 
 @end
 

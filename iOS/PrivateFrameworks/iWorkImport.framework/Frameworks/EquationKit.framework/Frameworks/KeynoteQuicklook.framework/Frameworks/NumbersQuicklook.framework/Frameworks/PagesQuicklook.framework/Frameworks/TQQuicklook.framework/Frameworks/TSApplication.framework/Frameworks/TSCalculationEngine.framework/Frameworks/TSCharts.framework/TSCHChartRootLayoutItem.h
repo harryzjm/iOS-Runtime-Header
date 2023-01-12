@@ -4,27 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class NSDictionary, TSCHChartAbstractAreaLayoutItem, TSCHChartInfo, TSCHChartModel, TSCHLegendAreaLayoutItem;
+@protocol TSWPStyleProviding;
 
-@interface TSCHChartRootLayoutItem <TSCHUnretainedParent>
+@interface TSCHChartRootLayoutItem
 {
-    TSCHChartInfo *mChartInfo;
-    TSCHChartAbstractAreaLayoutItem *mChartArea;
-    TSCHLegendAreaLayoutItem *mLegend;
-    CDStruct_b1c75024 mLayoutSettings;
-    struct CGRect mLegendInnerFrame;
-    struct CGRect mChartInnerFrame;
-    _Bool mInResize;
-    struct CGSize mStartingSize;
-    NSDictionary *mSeriesIndexedPieWedgeExplosions;
-    TSCHChartModel *mChartModel;
+    TSCHChartInfo *_chartInfo;
+    id <TSWPStyleProviding> _styleProvidingSource;
+    TSCHChartAbstractAreaLayoutItem *_chartArea;
+    TSCHLegendAreaLayoutItem *_legend;
+    CDStruct_c48db077 _layoutSettings;
+    struct CGRect _legendInnerFrame;
+    struct CGRect _chartInnerFrame;
+    _Bool _inResize;
+    struct CGSize _startingSize;
+    NSDictionary *_seriesIndexedPieWedgeExplosions;
+    TSCHChartModel *_chartModel;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *seriesIndexedPieWedgeExplosions; // @synthesize seriesIndexedPieWedgeExplosions=mSeriesIndexedPieWedgeExplosions;
-- (void)clearParent;
+@property(copy, nonatomic) NSDictionary *seriesIndexedPieWedgeExplosions; // @synthesize seriesIndexedPieWedgeExplosions=_seriesIndexedPieWedgeExplosions;
 - (void)invalidateTransientModel;
 @property(nonatomic) unsigned long long dataSetIndex;
 @property(readonly, copy, nonatomic) NSDictionary *seriesIndexedPieNormalizedLabelDistancesFromWedgeTips;
@@ -37,11 +36,13 @@
 - (void)beginResizeWithStartingSize:(struct CGSize)arg1;
 - (id)renderersWithRep:(id)arg1;
 - (void)buildSubTree;
-- (void)p_layoutOutward;
+- (void)layoutOutward;
 - (void)setChartBodySize:(struct CGSize)arg1;
-- (void)p_layoutInward;
+- (void)layoutInward;
 - (void)updateLayoutOffset;
 - (void)updateLayoutSize;
+- (void)positionLegendAtBottom;
+- (struct CGPoint)bottomLegendOffsetForChartAreaFrame:(struct CGRect)arg1 legendFrame:(struct CGRect)arg2;
 - (void)setLegendSize:(struct CGSize)arg1;
 - (void)setChartInnerFrame:(struct CGRect)arg1 legendInnerFrame:(struct CGRect)arg2;
 - (struct CGRect)calcOverhangRect;
@@ -49,13 +50,13 @@
 - (void)clearAll;
 @property(readonly, nonatomic) TSCHLegendAreaLayoutItem *legendAreaLayoutItem;
 @property(readonly, nonatomic) TSCHChartAbstractAreaLayoutItem *chartAreaLayoutItem;
+- (id)styleProvidingSource;
 - (id)model;
 - (id)chartInfo;
-- (void)setLayoutSettings:(CDStruct_b1c75024)arg1;
-- (CDStruct_b1c75024)layoutSettings;
+- (void)setLayoutSettings:(CDStruct_c48db077)arg1;
+- (CDStruct_c48db077)layoutSettings;
 - (id)root;
-- (void)dealloc;
-- (id)initWithChartInfo:(id)arg1;
+- (id)initWithChartInfo:(id)arg1 styleProvidingSource:(id)arg2;
 
 @end
 

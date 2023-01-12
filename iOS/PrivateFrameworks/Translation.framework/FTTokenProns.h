@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_5b0c17b4)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_5b0c17b4)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *normalized_prons;
 @property(readonly, nonatomic) NSArray *prons;
 @property(readonly, nonatomic) NSArray *sanitized_sequences;

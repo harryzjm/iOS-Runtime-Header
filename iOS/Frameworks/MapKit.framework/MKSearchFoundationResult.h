@@ -71,6 +71,8 @@
 - (id)_businessReviewText;
 - (id)_appleRatingsDescription;
 - (id)_defaultRichTextItems;
+- (id)_populateButtonItem:(id)arg1 imageName:(id)arg2 command:(id)arg3;
+- (id)_populateButtonItemsAndCommands;
 - (void)_commonInit;
 - (void)dealloc;
 - (id)initWithMapsData:(id)arg1 iconSize:(unsigned long long)arg2 bundleID:(id)arg3;

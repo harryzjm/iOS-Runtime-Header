@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AFMyriadAdvertisementContextManager, AFMyriadAdvertisementContextRecord, AFMyriadEmergencyCallPunchout, AFMyriadRecord, AFMyriadSession, AFNotifyStatePublisher, AFPowerAssertionManager, AFWatchdogTimer, NSData, NSDate, NSDateFormatter, NSMutableDictionary, NSString, NSUUID, SFDiagnostics, _DKKnowledgeStore;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
+#import <AssistantServices/AFNotifyObserverDelegate-Protocol.h>
 
-@interface AFMyriadCoordinator : NSObject
+@class AFMyriadAdvertisementContextManager, AFMyriadAdvertisementContextRecord, AFMyriadEmergencyCallPunchout, AFMyriadGoodnessScoreEvaluator, AFMyriadPreferences, AFMyriadRecord, AFMyriadSession, AFNotifyObserver, AFNotifyStatePublisher, AFPowerAssertionManager, AFWatchdogTimer, NSData, NSDate, NSDateFormatter, NSMutableDictionary, NSString, NSUUID, SFDiagnostics;
+@protocol OS_dispatch_queue, OS_dispatch_source;
+
+@interface AFMyriadCoordinator : NSObject <AFNotifyObserverDelegate>
 {
     unsigned long long _myriadState;
     unsigned long long _nextState;
@@ -35,13 +37,11 @@
     double _deviceInEarInterval;
     unsigned char _deviceGroup;
     NSObject<OS_dispatch_queue> *_myriadWorkQueue;
-    NSObject<OS_dispatch_queue> *_myriadReadinessQueue;
     NSObject<OS_dispatch_queue> *_myriadAdvertisementContextQueue;
     NSString *_timerLabel;
     NSObject<OS_dispatch_source> *_timer;
     NSUUID *_eventToken;
     AFWatchdogTimer *_overallTimeout;
-    NSObject<OS_dispatch_semaphore> *_wiproxReadinessSemaphore;
     AFPowerAssertionManager *_powerAssertionManager;
     struct __CFNotificationCenter *_center;
     AFMyriadRecord *_triggerRecord;
@@ -52,6 +52,7 @@
     int _nTimesContinued;
     int _nTimesExtended;
     BOOL _incomingAdjustment;
+    AFMyriadRecord *_overrideMyriadRecord;
     int _slowdownMsecs;
     int _testInducedSlowdownMsecs;
     AFMyriadRecord *_maxSlowdownRecord;
@@ -73,14 +74,12 @@
     _Bool _clientIsRespondingToSlowdown;
     _Bool _clientDoneRespondingToSlowdown;
     _Bool _clientRespondingToCarPlay;
+    _Bool _clientIsDeciding;
     int _constantGoodness;
     NSObject<OS_dispatch_source> *_timerSource;
     NSDateFormatter *_dateFormat;
-    _DKKnowledgeStore *_coreDuetStore;
     NSUUID *_designatedSelfID;
-    double _lastSiriActivationTime;
     NSDate *_triggerTime;
-    NSDate *_advertTriggerAdvStartTime;
     int _nDeltaTs;
     AFMyriadEmergencyCallPunchout *_callPunchout;
     unsigned long long _lastDecisionTime;
@@ -95,14 +94,26 @@
         _Bool didRequestForBTLEScan;
         _Bool didRequestForBTLEAdvertisement;
     } _heySiriBTLEState;
+    struct {
+        NSObject<OS_dispatch_source> *waitTimer;
+        CDUnknownBlockType waitBlock;
+        _Bool isWaitTimerSuspended;
+    } _wiproxReadinessTimer;
+    struct {
+        NSDate *advertTriggerAdvStartTime;
+        NSDate *advertTriggerEndTime;
+    } _advTiming;
     AFMyriadAdvertisementContextManager *_advContextManager;
     AFMyriadAdvertisementContextRecord *_contextRecord;
+    AFMyriadGoodnessScoreEvaluator *_goodnessScoreEvaluator;
     AFMyriadSession *_myriadSession;
     AFNotifyStatePublisher *_electionBeginPublisher;
     AFNotifyStatePublisher *_electionWinPublisher;
     AFNotifyStatePublisher *_electionLossPublisher;
     AFNotifyStatePublisher *_electionRepostWinDecisionPublisher;
+    AFNotifyObserver *_preferencesChangedNotification;
     unsigned long long _electionPublisherState;
+    AFMyriadPreferences *_preferences;
 }
 
 + (void)clearCurrentCoordinator;
@@ -120,12 +131,19 @@
 - (void)startAdvertisingEmergencySignal;
 - (void)startListeningToEmergencySignal;
 - (void)injectAdvertisementForTesting:(id)arg1 forDevice:(id)arg2;
+- (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
 - (void)_signalEmergencyCallHandled;
-- (unsigned char)recentEventBump;
+- (void)_triggerABCForType:(id)arg1 context:(id)arg2;
 - (void)_leaveBLEDiagnosticMode;
 - (void)_enterBLEDiagnosticMode;
 - (void)_waitWiProxAndExecute:(CDUnknownBlockType)arg1;
+- (void)waitWiProx:(long long)arg1 andExecute:(CDUnknownBlockType)arg2;
 - (void)_waitWiProx:(long long)arg1 andExecute:(CDUnknownBlockType)arg2;
+- (void)_createWaitWiProxTimer:(long long)arg1 waitBlock:(CDUnknownBlockType)arg2;
+- (void)_clearWiProxReadinessTimer;
+- (void)_suspendWiProxReadinessTimer;
+- (void)_resumeWiProxReadinessTimer;
+- (void)_initializeWiProxReadinessTimer;
 - (void)_ageWedgeFilter;
 - (_Bool)_testAndUpdateWedgeFilter:(id)arg1;
 - (unsigned long long)_nextElectionPublisherState;
@@ -159,6 +177,7 @@
 - (_Bool)_okayToSuppressOnOutput;
 - (void)_advertiseSlowdown;
 - (void)_advertiseTrigger;
+- (void)_resetAdvertisementTimings;
 - (void)setupAdvIntervalsInDelay:(float *)arg1 interval:(float *)arg2 withSlowdown:(int)arg3;
 - (void)_duringNextWindowEnterState:(unsigned long long)arg1;
 - (void)_duringNextWindowExecute:(CDUnknownBlockType)arg1;
@@ -182,8 +201,8 @@
 - (void)startListening:(CDUnknownBlockType)arg1;
 - (void)startListening;
 - (void)_startListening:(CDUnknownBlockType)arg1;
-- (void)preheatWiProx;
 - (void)resetReplies;
+- (void)_enteringIntoState:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
 - (id)_stateAsString:(unsigned long long)arg1;
 - (id)_stateAsString;
 - (void)enterState:(unsigned long long)arg1;
@@ -202,12 +221,13 @@
 - (void)_createMyriadSessionIfRequired;
 - (void)_addElectionAdvertisementDataToMyriadSession:(id)arg1;
 - (id)_myriadSession;
+- (void)_loseElection;
+- (void)_winElection;
+- (_Bool)_deviceShouldContinue:(id)arg1;
 - (void)setupEnabled:(_Bool)arg1;
 - (void)setInTask:(_Bool)arg1;
 - (_Bool)inTask;
 - (void)endTask;
-- (void)_loseElection;
-- (_Bool)_deviceShouldContinue:(id)arg1;
 - (void)endAdvertisingWithDeviceProhibitions:(id)arg1;
 - (void)_endAdvertisingWithDeviceProhibitions:(id)arg1;
 - (id)_endAdvertisingAnalyticsContext:(_Bool)arg1;
@@ -235,8 +255,7 @@
 - (void)startWatchAdvertisingFromDirectTrigger;
 - (void)startWatchAdvertisingFromVoiceTriggerWithContext:(id)arg1;
 - (void)startWatchAdvertisingFromVoiceTrigger;
-- (double)_targetDelayAfterTrigger:(unsigned long long)arg1;
-- (void)_startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1;
+- (void)startAdvertisingFromVoiceTriggerWithGoodnessScoreContext:(id)arg1 withContext:(id)arg2;
 - (void)startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1 withContext:(id)arg2;
 - (void)startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1;
 - (void)resetStateMachine;
@@ -244,12 +263,19 @@
 - (void)startAdvertisingFromVoiceTriggerWithContext:(id)arg1;
 - (void)startAdvertisingFromVoiceTrigger;
 - (void)startAdvertisingForPHSSetupAfterDelay:(float)arg1 maxInterval:(float)arg2;
+- (void)preheatWiProx;
 - (void)_setMyraidAudioData:(id)arg1;
 - (void)_initDeviceClassAndAdjustments;
 - (void)_readDefaults;
 - (void)readDefaults;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

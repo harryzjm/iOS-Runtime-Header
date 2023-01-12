@@ -6,20 +6,25 @@
 
 #import <AssistantServices/AFSiriRequest.h>
 
-@class STTimer;
+@class NSArray;
 
 @interface STTimerShowTimerAndPerformAction : AFSiriRequest
 {
+    NSArray *_timers;
+    NSArray *_templateActions;
     unsigned long long _action;
-    STTimer *_timer;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *templateActions; // @synthesize templateActions=_templateActions;
+@property(copy, nonatomic) NSArray *timers; // @synthesize timers=_timers;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)action;
 - (id)timer;
+- (id)_initWithTimers:(id)arg1 templateActions:(id)arg2 timerAction:(unsigned long long)arg3;
+- (id)_initWithTimers:(id)arg1 action:(unsigned long long)arg2;
 - (id)_initWithTimer:(id)arg1 action:(unsigned long long)arg2;
 
 @end

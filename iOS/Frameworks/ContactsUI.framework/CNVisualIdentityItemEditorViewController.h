@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)updateDoneButtonEnabledStateForText:(id)arg1;
 - (void)setupBarButtonItems;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (_Bool)editorViewOverlapsWindowBasedKeyboardRect:(struct CGRect)arg1;
 - (double)editorViewBottomYForAvatarSize:(double)arg1 withContainerTopMargin:(double)arg2;
 - (void)adjustAvatarViewConstraintsForKeyboardFrame:(struct CGRect)arg1;
 - (void)keyboardWillShow:(id)arg1;

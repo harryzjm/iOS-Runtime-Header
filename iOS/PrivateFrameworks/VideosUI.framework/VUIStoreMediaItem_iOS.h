@@ -13,7 +13,9 @@
 __attribute__((visibility("hidden")))
 @interface VUIStoreMediaItem_iOS <TVPMediaItemReportingDelegate, TVPContentKeyLoading, VUIStoreFPSKeyLoaderDelegate>
 {
+    _Bool _isBingeWatched;
     _Bool _needsRentalCheckin;
+    _Bool _needsRentalCheckoutPriorToPlayback;
     NSNumber *_startTime;
     NSURL *_fpsCertificateURL;
     NSURL *_fpsKeyServerURL;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool needsRentalCheckoutPriorToPlayback; // @synthesize needsRentalCheckoutPriorToPlayback=_needsRentalCheckoutPriorToPlayback;
 @property(retain, nonatomic) NSError *fpsKeyError; // @synthesize fpsKeyError=_fpsKeyError;
 @property(retain, nonatomic) NSObject *parentReportingToken; // @synthesize parentReportingToken=_parentReportingToken;
 @property(nonatomic) _Bool needsRentalCheckin; // @synthesize needsRentalCheckin=_needsRentalCheckin;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSNumber *fileSize; // @synthesize fileSize=_fileSize;
 @property(retain, nonatomic) NSDictionary *sinfsDict; // @synthesize sinfsDict=_sinfsDict;
 @property(nonatomic) unsigned long long loadingContext; // @synthesize loadingContext=_loadingContext;
+@property(nonatomic) _Bool isBingeWatched; // @synthesize isBingeWatched=_isBingeWatched;
 @property(copy, nonatomic) NSDictionary *fpsAdditionalServerParams; // @synthesize fpsAdditionalServerParams=_fpsAdditionalServerParams;
 @property(copy, nonatomic) NSURL *fpsKeyServerURL; // @synthesize fpsKeyServerURL=_fpsKeyServerURL;
 @property(copy, nonatomic) NSURL *fpsCertificateURL; // @synthesize fpsCertificateURL=_fpsCertificateURL;
@@ -79,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (id)reportingDelegate;
 - (void)cleanUpMediaItem;
 - (id)replacementErrorForPlaybackError:(id)arg1;
+- (_Bool)shouldRetryPlaybackForError:(id)arg1;
 - (void)prepareForPlaybackInitiationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareForLoadingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)mediaItemMetadataForProperty:(id)arg1;

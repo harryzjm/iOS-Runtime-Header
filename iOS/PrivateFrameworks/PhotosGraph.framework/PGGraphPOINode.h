@@ -8,21 +8,25 @@
 #import <PhotosGraph/PGGraphPortraitTopic-Protocol.h>
 #import <PhotosGraph/PGGraphSynonymSupport-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PGGraphPOINodeCollection;
 
 @interface PGGraphPOINode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport>
 {
     NSString *_label;
 }
 
++ (id)momentOfPOI;
++ (id)filterWithLabel:(id)arg1;
 + (id)_localizationKeyForPOINode:(id)arg1;
 + (id)validPOILabels;
++ (id)filter;
 - (void).cxx_destruct;
 - (id)label;
 @property(readonly, nonatomic) NSArray *localizedSynonyms;
 @property(readonly, nonatomic) NSString *localizedName;
+@property(readonly, nonatomic) PGGraphPOINodeCollection *collection;
 - (unsigned short)domain;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 - (id)initWithLabel:(id)arg1;
 @property(readonly, nonatomic) NSString *pg_topic;
 

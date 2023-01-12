@@ -7,28 +7,35 @@
 #import <objc/NSObject.h>
 
 #import <WeatherFoundation/NSCopying-Protocol.h>
+#import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSString;
 
-@interface WFNextHourPrecipitationDescription : NSObject <NSCopying>
+@interface WFNextHourPrecipitationDescription : NSObject <NSCopying, NSSecureCoding>
 {
+    NSString *_token;
     NSDate *_validUntil;
     NSString *_shortTemplate;
     NSString *_longTemplate;
     NSDictionary *_parameters;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property(copy, nonatomic) NSString *longTemplate; // @synthesize longTemplate=_longTemplate;
 @property(copy, nonatomic) NSString *shortTemplate; // @synthesize shortTemplate=_shortTemplate;
 @property(readonly, copy, nonatomic) NSDate *validUntil; // @synthesize validUntil=_validUntil;
+@property(copy, nonatomic) NSString *token; // @synthesize token=_token;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fillTemplate:(id)arg1 withDate:(id)arg2;
 - (_Bool)isValidAtDate:(id)arg1;
 @property(readonly, nonatomic) NSString *longDescription;
 @property(readonly, nonatomic) NSString *shortDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithShortTemplate:(id)arg1 longTemplate:(id)arg2 parameters:(id)arg3 validUntil:(id)arg4;
+- (id)initWithToken:(id)arg1 shortTemplate:(id)arg2 longTemplate:(id)arg3 parameters:(id)arg4 validUntil:(id)arg5;
 
 @end
 

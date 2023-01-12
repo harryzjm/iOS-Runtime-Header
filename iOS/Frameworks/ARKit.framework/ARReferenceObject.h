@@ -26,6 +26,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)referenceObjectsInGroupNamed:(id)arg1 catalogName:(id)arg2 bundle:(id)arg3;
++ (id)referenceObjectsInGroupNamed:(id)arg1 catalogURL:(id)arg2;
 + (id)referenceObjectsInGroupNamed:(id)arg1 bundle:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *keyframes; // @synthesize keyframes=_keyframes;
@@ -43,8 +45,13 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)referenceObjectByMergingObject:(id)arg1 error:(id *)arg2;
 - (id)referenceObjectByApplyingTransform:(CDStruct_14d5dc5e)arg1;
+- (id)exportObjectToMemoryWithPreviewImage:(id)arg1 error:(id *)arg2;
 - (_Bool)exportObjectToURL:(id)arg1 previewImage:(id)arg2 error:(id *)arg3;
+- (id)initWithTrackingData:(id)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2;
+- (id)initWithArchiveData:(id)arg1 name:(id)arg2 error:(id *)arg3;
+- (id)initWithArchiveData:(id)arg1 error:(id *)arg2;
 - (id)initWithArchiveURL:(id)arg1 error:(id *)arg2;
+- (id)writeToArchiveWithPreviewImage:(id)arg1 error:(id *)arg2;
 
 @end
 

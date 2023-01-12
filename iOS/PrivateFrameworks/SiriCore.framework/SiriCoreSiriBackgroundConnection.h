@@ -63,6 +63,7 @@
     long long _secondaryConnectionOpenState;
     id <SiriCoreConnectionProvider> _secondaryConnectionProvider;
     _Bool _dispatchedSnapshotMetrics;
+    double _receivedDataTime;
 }
 
 - (void).cxx_destruct;
@@ -100,7 +101,6 @@
 - (id)_headerDataForURL:(id)arg1 aceHost:(id)arg2 languageCode:(id)arg3 syncAssistantId:(id)arg4;
 - (void)_networkProviderDidOpen;
 - (void)_connectionHasBytesAvailable:(id)arg1;
-- (void)_cancelForExtendedValidationFailureWithTrustInfo:(id)arg1;
 - (_Bool)_consumeAceDataWithData:(id)arg1 bytesRead:(unsigned long long *)arg2 error:(id *)arg3;
 - (_Bool)_consumeAceHeaderWithData:(id)arg1 bytesRead:(unsigned long long *)arg2 error:(id *)arg3;
 - (id)_connectionType;

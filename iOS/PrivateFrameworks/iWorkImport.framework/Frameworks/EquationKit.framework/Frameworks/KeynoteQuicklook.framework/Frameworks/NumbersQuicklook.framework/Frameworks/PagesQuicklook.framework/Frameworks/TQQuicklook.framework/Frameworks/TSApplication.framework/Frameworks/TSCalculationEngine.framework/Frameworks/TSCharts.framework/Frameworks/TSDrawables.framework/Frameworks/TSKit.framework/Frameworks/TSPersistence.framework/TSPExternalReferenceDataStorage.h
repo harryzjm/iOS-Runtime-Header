@@ -18,7 +18,7 @@
 - (_Bool)isReadable;
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
 - (id)bookmarkDataForArchiver:(id)arg1;
-- (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
+- (_Bool)archiveInfoMessage:(void *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)initWithBookmarkData:(id)arg1 context:(id)arg2;
 - (id)initWithURL:(id)arg1;
 

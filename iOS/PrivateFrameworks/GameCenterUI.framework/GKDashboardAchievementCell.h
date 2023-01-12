@@ -17,6 +17,7 @@
     UILabel *_pointsTextLabel;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) UILabel *pointsTextLabel; // @synthesize pointsTextLabel=_pointsTextLabel;
 @property(nonatomic) UILabel *pointsLabel; // @synthesize pointsLabel=_pointsLabel;
 @property(nonatomic) GKResizingLabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
@@ -26,7 +27,6 @@
 @property(retain, nonatomic) GKAchievement *achievement; // @synthesize achievement=_achievement;
 - (void)setupForAchievement:(id)arg1 localAchievement:(id)arg2;
 @property(readonly, nonatomic) UIView *popoverSourceView;
-- (void)dealloc;
 
 @end
 

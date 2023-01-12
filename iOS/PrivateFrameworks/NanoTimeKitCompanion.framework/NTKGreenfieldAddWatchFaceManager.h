@@ -52,7 +52,7 @@
 - (id)_queue_fetchLocallyAvailableAppsWithError:(id *)arg1;
 - (void)_queue_fetchInstalledAppsOnWatchWithithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)_appNameFromItemId:(id)arg1;
-- (id)_canAddDecodedFaceToLibrary;
+- (id)canAddWatchFaceFromDecodedRecipe:(id)arg1 toLibrary:(id)arg2;
 - (id)_addToLibraryOrUpdateFaceInLibrary;
 - (void)_updateUIStateAndNotifyDelegate:(unsigned long long)arg1;
 - (void)_moveAndNotifyDelegateToStartStateIfPossible;

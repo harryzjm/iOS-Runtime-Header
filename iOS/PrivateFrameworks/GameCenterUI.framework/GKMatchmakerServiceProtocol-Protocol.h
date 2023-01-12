@@ -22,6 +22,7 @@
 - (void)setConnectingStateForPlayer:(GKPlayerInternal *)arg1;
 - (void)setPlayer:(GKPlayerInternal *)arg1 responded:(long long)arg2;
 - (void)setAutomatchPlayerCount:(long long)arg1;
+- (void)setCanStartWithMinimumPlayers:(_Bool)arg1;
 - (void)setDefaultInvitationMessage:(NSString *)arg1;
 - (void)setExistingPlayers:(NSArray *)arg1;
 - (void)setAcceptedInviteInternal:(GKInviteInternal *)arg1;

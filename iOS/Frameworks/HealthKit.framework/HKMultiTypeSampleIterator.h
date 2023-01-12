@@ -8,11 +8,11 @@
 
 #import <HealthKit/HKIterator-Protocol.h>
 
-@class HKHealthStore, HKMultiTypeQueryCursor, HKQueryAnchor, HKSample, NSArray, NSMutableArray, NSString;
+@class HKHealthStore, HKQueryAnchor, HKSample, HKSampleIteratorQueryCursor, NSArray, NSMutableArray, NSString;
 
 @interface HKMultiTypeSampleIterator : NSObject <HKIterator>
 {
-    NSArray *_sampleQueryDescriptions;
+    NSArray *_queryDescriptors;
     NSArray *_sortDescriptors;
     HKQueryAnchor *_followingAnchor;
     HKQueryAnchor *_upToAndIncludingAnchor;
@@ -21,7 +21,7 @@
     unsigned long long _limit;
     HKHealthStore *_healthStore;
     unsigned long long _state;
-    HKMultiTypeQueryCursor *_queryCursor;
+    HKSampleIteratorQueryCursor *_queryCursor;
     NSMutableArray *_buffer;
     HKSample *_current;
     unsigned long long _numberOfSamplesDelivered;
@@ -32,8 +32,8 @@
 @property(readonly, copy, nonatomic) HKSample *sample;
 - (id)object;
 - (_Bool)advanceWithError:(id *)arg1;
-- (id)initWithSampleQueryDescriptions:(id)arg1 sortDescriptors:(id)arg2 bufferSize:(long long)arg3 healthStore:(id)arg4;
-- (id)initWithSampleQueryDescriptions:(id)arg1 sortDescriptors:(id)arg2 followingAnchor:(id)arg3 upToAndIncludingAnchor:(id)arg4 distinctByKeyPaths:(id)arg5 bufferSize:(unsigned long long)arg6 limit:(unsigned long long)arg7 healthStore:(id)arg8;
+- (id)initWithQueryDescriptors:(id)arg1 sortDescriptors:(id)arg2 bufferSize:(long long)arg3 healthStore:(id)arg4;
+- (id)initWithQueryDescriptors:(id)arg1 sortDescriptors:(id)arg2 followingAnchor:(id)arg3 upToAndIncludingAnchor:(id)arg4 distinctByKeyPaths:(id)arg5 bufferSize:(unsigned long long)arg6 limit:(unsigned long long)arg7 healthStore:(id)arg8;
 - (_Bool)_queryForNextPageIfNecessaryWithError:(id *)arg1;
 - (id)init;
 

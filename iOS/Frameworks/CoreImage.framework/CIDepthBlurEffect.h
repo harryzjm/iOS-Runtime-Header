@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
     CIImage *inputDisparityImage;
     CIImage *inputMatteImage;
     CIImage *inputHairImage;
+    CIImage *inputGlassesImage;
+    CIImage *inputGainMap;
     NSNumber *inputAperture;
     CIVector *inputLeftEyePositions;
     CIVector *inputRightEyePositions;
@@ -43,6 +45,8 @@ __attribute__((visibility("hidden")))
 @property(retain) CIVector *inputLeftEyePositions; // @synthesize inputLeftEyePositions;
 @property(retain, nonatomic) NSNumber *inputLumaNoiseScale; // @synthesize inputLumaNoiseScale;
 @property(retain, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
+@property(retain) CIImage *inputGainMap; // @synthesize inputGainMap;
+@property(retain) CIImage *inputGlassesImage; // @synthesize inputGlassesImage;
 @property(retain) CIImage *inputHairImage; // @synthesize inputHairImage;
 @property(retain) CIImage *inputMatteImage; // @synthesize inputMatteImage;
 @property(retain) CIImage *inputDisparityImage; // @synthesize inputDisparityImage;
@@ -50,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)outputImage;
 - (id)_getFocusRect:(id)arg1 focusRect:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)prewarm:(id)arg1;
 
 @end
 

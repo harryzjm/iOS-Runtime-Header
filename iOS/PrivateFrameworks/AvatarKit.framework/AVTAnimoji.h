@@ -17,7 +17,6 @@
     NSString *_name;
 }
 
-+ (unsigned char)classIdentifier;
 + (void)preloadAnimojiNamed:(id)arg1;
 + (id)thumbnailForAnimojiNamed:(id)arg1 options:(id)arg2;
 + (id)animojiNamed:(id)arg1;
@@ -35,7 +34,6 @@
 - (void)configureForBestAnimationQuality;
 - (id)stickerPhysicsStateIdentifier;
 - (id)specializationSettings;
-- (void)_encode:(id)arg1;
 - (void)setPuppetState:(id)arg1;
 - (id)puppetState;
 - (void)setName:(id)arg1;
@@ -47,8 +45,9 @@
 - (id)copyWithUsageIntent:(unsigned long long)arg1;
 - (unsigned long long)usageIntent;
 - (id)description;
-- (id)initWithDictionaryRepresentation:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;
-- (id)initWithName:(id)arg1;
+- (id)initWithDescriptor:(id)arg1 usageIntent:(unsigned long long)arg2 error:(id *)arg3;
+- (id)newDescriptor;
+- (id)initWithName:(id)arg1 error:(id *)arg2;
 - (void)update;
 - (id)headNode;
 - (id)avatarNode;

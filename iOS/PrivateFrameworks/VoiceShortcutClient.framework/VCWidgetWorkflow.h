@@ -12,6 +12,7 @@
 
 + (struct CGSize)largeGlyphSize;
 + (struct CGSize)smallGlyphSize;
++ (struct CGSize)extraSmallGlyphSize;
 
 @end
 

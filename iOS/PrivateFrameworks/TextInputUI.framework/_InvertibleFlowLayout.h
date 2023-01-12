@@ -10,6 +10,7 @@
 {
 }
 
+- (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (_Bool)flipsHorizontallyInOppositeLayoutDirection;
 
 @end

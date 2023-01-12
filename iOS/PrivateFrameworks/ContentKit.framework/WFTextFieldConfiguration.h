@@ -20,6 +20,7 @@
     _Bool _smartDashesDisabled;
     _Bool _focusImmediatelyWhenPresented;
     _Bool _showsDateFormattingHint;
+    _Bool _dateHintPrefersDateOnly;
     _Bool _doesRelativeDateFormatting;
     NSString *_prefix;
     NSString *_text;
@@ -41,6 +42,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *localizedIncompleteHintString; // @synthesize localizedIncompleteHintString=_localizedIncompleteHintString;
 @property(nonatomic) _Bool doesRelativeDateFormatting; // @synthesize doesRelativeDateFormatting=_doesRelativeDateFormatting;
+@property(nonatomic) _Bool dateHintPrefersDateOnly; // @synthesize dateHintPrefersDateOnly=_dateHintPrefersDateOnly;
 @property(nonatomic) unsigned long long timeFormatStyle; // @synthesize timeFormatStyle=_timeFormatStyle;
 @property(nonatomic) unsigned long long dateFormatStyle; // @synthesize dateFormatStyle=_dateFormatStyle;
 @property(nonatomic) _Bool showsDateFormattingHint; // @synthesize showsDateFormattingHint=_showsDateFormattingHint;

@@ -9,7 +9,7 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, PUSharedAlbumAvatarView, PUStackView, PXUIButton, UIFont, UILabel, UITextField;
+@class NSString, PUPeopleAvatarView, PUStackView, PXFocusInfo, PXUIButton, UIFont, UILabel, UITextField;
 @protocol PUAlbumListCellDelegate;
 
 @interface PUAlbumListCellContentView : UIView <UITextFieldDelegate, UIGestureRecognizerDelegate>
@@ -17,6 +17,7 @@
     _Bool _combinesPhotoDecorations;
     _Bool _topInsetEnabled;
     _Bool _showsAvatarView;
+    _Bool _shouldCenterTextHorizontally;
     _Bool _editing;
     _Bool _enabled;
     _Bool _showsDeleteButtonWhenEditing;
@@ -25,7 +26,7 @@
     _Bool _usesLabelForTitle;
     id <PUAlbumListCellDelegate> _delegate;
     PUStackView *_stackView;
-    PUSharedAlbumAvatarView *_avatarView;
+    PUPeopleAvatarView *_avatarView;
     UIView *_customImageView;
     NSString *_title;
     NSString *_subtitle;
@@ -56,11 +57,12 @@
 @property(nonatomic) unsigned long long editCapabilities; // @synthesize editCapabilities=_editCapabilities;
 @property(nonatomic) long long layout; // @synthesize layout=_layout;
 @property(nonatomic) double xInset; // @synthesize xInset=_xInset;
+@property(nonatomic) _Bool shouldCenterTextHorizontally; // @synthesize shouldCenterTextHorizontally=_shouldCenterTextHorizontally;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIView *customImageView; // @synthesize customImageView=_customImageView;
 @property(nonatomic) _Bool showsAvatarView; // @synthesize showsAvatarView=_showsAvatarView;
-@property(retain, nonatomic) PUSharedAlbumAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property(retain, nonatomic) PUPeopleAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property(nonatomic) _Bool topInsetEnabled; // @synthesize topInsetEnabled=_topInsetEnabled;
 @property(nonatomic) _Bool combinesPhotoDecorations; // @synthesize combinesPhotoDecorations=_combinesPhotoDecorations;
 @property(retain, nonatomic, setter=_setStackView:) PUStackView *stackView; // @synthesize stackView=_stackView;
@@ -75,6 +77,7 @@
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (void)cancelPerformRetitleAction;
+- (void)startPerformRetitleAction;
 - (void)_updateSubtitleLabelAnimated:(_Bool)arg1;
 - (void)_updateTitleFieldAnimated:(_Bool)arg1;
 - (double)_titleFieldAlpha;
@@ -92,6 +95,7 @@
 - (void)handleTransitionFade:(_Bool)arg1 animate:(_Bool)arg2;
 - (void)setShowsTitle:(_Bool)arg1 animated:(_Bool)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+@property(readonly, nonatomic) PXFocusInfo *focusInfo;
 - (void)layoutSubviews;
 - (struct CGPoint)_deleteButtonCenter;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -7,11 +7,14 @@
 #import <ShareSheet/UIManagedConfigurationRestrictableActivity-Protocol.h>
 
 @class LPLinkMetadata, MFMessageComposeViewController, NSString;
+@protocol SHSheetUIPeopleSuggestion;
 
 @interface UIMessageActivity <UIManagedConfigurationRestrictableActivity>
 {
     _Bool _isContentManaged;
+    _Bool _ppt_forceImageTypeSupport;
     NSString *_sourceApplicationBundleID;
+    id <SHSheetUIPeopleSuggestion> _peopleSuggestion;
     MFMessageComposeViewController *_messageComposeViewController;
     LPLinkMetadata *_linkMetadata;
 }
@@ -23,6 +26,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property(retain, nonatomic) MFMessageComposeViewController *messageComposeViewController; // @synthesize messageComposeViewController=_messageComposeViewController;
+@property(nonatomic) _Bool ppt_forceImageTypeSupport; // @synthesize ppt_forceImageTypeSupport=_ppt_forceImageTypeSupport;
+@property(retain, nonatomic) id <SHSheetUIPeopleSuggestion> peopleSuggestion; // @synthesize peopleSuggestion=_peopleSuggestion;
 @property(copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 - (void)_cleanup;

@@ -24,8 +24,6 @@
 - (unsigned long long)hash;
 - (id)description;
 - (_Bool)isEqualToRemoteEndpoint:(id)arg1;
-- (_Bool)isOnSameHostButDifferentPortAsRemoteEndpoint:(id)arg1;
-- (_Bool)isOnSameHostAsRemoteEndpoint:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *stringValue;
 - (id)initWithIPAddress:(id)arg1 port:(unsigned short)arg2;
 - (id)init;

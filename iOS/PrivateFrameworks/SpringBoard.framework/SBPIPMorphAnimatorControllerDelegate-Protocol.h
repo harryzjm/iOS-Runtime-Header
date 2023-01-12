@@ -6,9 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBPIPMorphAnimatorController;
+@class NSString, SBPIPMorphAnimatorController;
+@protocol SBViewMorphAnimatorDataSource;
 
 @protocol SBPIPMorphAnimatorControllerDelegate <NSObject>
+- (id <SBViewMorphAnimatorDataSource>)morphAnimatorController:(SBPIPMorphAnimatorController *)arg1 dataSourceWithTargetProcessIdentifier:(int)arg2 scenePersistenceIdentifier:(NSString *)arg3 gestureInitiated:(_Bool)arg4;
 - (void)morphAnimatorControllerDidTerminate:(SBPIPMorphAnimatorController *)arg1;
 @end
 

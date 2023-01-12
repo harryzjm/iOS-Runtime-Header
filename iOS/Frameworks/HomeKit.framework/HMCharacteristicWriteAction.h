@@ -15,13 +15,13 @@
     id _targetValue;
 }
 
++ (id)allowedTargetValueClassesForShortcuts;
 + (_Bool)supportsSecureCoding;
 + (id)_actionWithInfo:(id)arg1 home:(id)arg2;
 - (void).cxx_destruct;
 - (id)encodeAsProtoBuf;
 - (id)initWithProtoBuf:(id)arg1 home:(id)arg2;
 - (_Bool)isKindOfAllowedTargetValueClass:(id)arg1;
-- (id)allowedTargetValueClasses;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;

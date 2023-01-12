@@ -17,10 +17,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *featuredHeadlines; // @synthesize featuredHeadlines=_featuredHeadlines;
-@property(readonly, copy, nonatomic) NSArray *recentHeadlines; // @synthesize recentHeadlines=_recentHeadlines;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithRecentHeadlines:(id)arg1 featuredHeadlines:(id)arg2;
 
 @end
 

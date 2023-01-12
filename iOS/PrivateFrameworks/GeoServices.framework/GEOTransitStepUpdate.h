@@ -8,12 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOInstructionSet, GEOTransitScheduleInfo, GEOTransitVehiclePositionInfo, NSData, PBDataReader, PBUnknownFields;
+@class GEOInstructionSet, GEOTransitBoardingInfo, GEOTransitScheduleInfo, GEOTransitVehiclePositionInfo, NSData, PBDataReader, PBUnknownFields;
 
 @interface GEOTransitStepUpdate : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOTransitBoardingInfo *_boardingInfo;
     GEOInstructionSet *_instructions;
     GEOTransitScheduleInfo *_scheduleInfo;
     NSData *_updateIdentifier;
@@ -23,6 +24,7 @@
     struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
+        unsigned int read_boardingInfo:1;
         unsigned int read_instructions:1;
         unsigned int read_scheduleInfo:1;
         unsigned int read_updateIdentifier:1;
@@ -48,6 +50,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOTransitBoardingInfo *boardingInfo;
+@property(readonly, nonatomic) _Bool hasBoardingInfo;
 @property(retain, nonatomic) GEOTransitScheduleInfo *scheduleInfo;
 @property(readonly, nonatomic) _Bool hasScheduleInfo;
 @property(retain, nonatomic) GEOTransitVehiclePositionInfo *vehiclePositionInfo;

@@ -11,12 +11,12 @@
 @interface MLFeatureVectorizer <MLModelSpecificationLoader>
 {
     NSArray *_output_array_shape;
-    struct vector<std::__1::pair<unsigned long, unsigned long>, std::__1::allocator<std::__1::pair<unsigned long, unsigned long>>> index_mapping;
+    struct vector<std::pair<unsigned long, unsigned long>, std::allocator<std::pair<unsigned long, unsigned long>>> index_mapping;
     NSArray *_columnNameEncoding;
     NSArray *_dimensionEncoding;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *dimensionEncoding; // @synthesize dimensionEncoding=_dimensionEncoding;

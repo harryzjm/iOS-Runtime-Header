@@ -17,9 +17,9 @@
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
-- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)headerTextProviderFromTemplate:(id)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (id)body;
 

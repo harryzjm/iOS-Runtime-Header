@@ -9,6 +9,7 @@
 @class UIWindow;
 
 @interface UIApplication (Bridge)
+- (void)ts_installCACommitCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)ts_statusBarWindow;
 - (double)defaultStatusBarHeight;
 - (_Bool)isRunningPerformanceTest;

@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSString, WFParameter;
+@protocol WFParameterState, WFParameterValuePickable;
+
 @interface WFParameterValueWrapper : NSObject
 {
-    id _value;
+    id <WFParameterState> _value;
+    WFParameter<WFParameterValuePickable> *_parameter;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id value; // @synthesize value=_value;
-- (id)initWithValue:(id)arg1;
+@property(readonly, nonatomic) WFParameter<WFParameterValuePickable> *parameter; // @synthesize parameter=_parameter;
+@property(readonly, nonatomic) id <WFParameterState> value; // @synthesize value=_value;
+@property(readonly, copy, nonatomic) NSString *readableTitle;
+- (id)initWithValue:(id)arg1 parameter:(id)arg2;
 
 @end
 

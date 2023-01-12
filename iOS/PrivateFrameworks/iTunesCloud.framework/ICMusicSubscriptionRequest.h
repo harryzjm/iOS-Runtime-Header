@@ -6,6 +6,7 @@
 
 @class ICStoreRequestContext;
 
+__attribute__((visibility("hidden")))
 @interface ICMusicSubscriptionRequest
 {
     ICStoreRequestContext *_storeRequestContext;

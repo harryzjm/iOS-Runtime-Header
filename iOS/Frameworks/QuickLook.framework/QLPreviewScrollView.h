@@ -47,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize contentViewSize; // @synthesize contentViewSize=_contentViewSize;
 @property(nonatomic) _Bool needsZoomUpdate; // @synthesize needsZoomUpdate=_needsZoomUpdate;
 - (id)viewForZoomingInScrollView:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewDidZoom:(id)arg1;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (struct CGRect)zoomRectForScale:(double)arg1 withCenter:(struct CGPoint)arg2;

@@ -9,7 +9,7 @@
 #import <SpringBoard/NSCopying-Protocol.h>
 #import <SpringBoard/NSMutableCopying-Protocol.h>
 
-@class SBTransientOverlayViewController;
+@class BSProcessHandle, SBTransientOverlayViewController;
 
 @interface SBTransientOverlayPresentationRequest : NSObject <NSCopying, NSMutableCopying>
 {
@@ -17,9 +17,11 @@
     CDUnknownBlockType _completionHandler;
     _Bool _shouldDismissSiri;
     SBTransientOverlayViewController *_viewController;
+    BSProcessHandle *_originatingProcess;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) BSProcessHandle *originatingProcess; // @synthesize originatingProcess=_originatingProcess;
 @property(readonly, nonatomic) SBTransientOverlayViewController *viewController; // @synthesize viewController=_viewController;
 @property(readonly, nonatomic) _Bool shouldDismissSiri; // @synthesize shouldDismissSiri=_shouldDismissSiri;
 @property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;

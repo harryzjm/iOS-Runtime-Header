@@ -6,7 +6,6 @@
 
 @class CNContact;
 
-__attribute__((visibility("hidden")))
 @interface CNChangeHistoryPreferredContactForNameEvent
 {
     CNContact *_preferredContact;

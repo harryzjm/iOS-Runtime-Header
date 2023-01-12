@@ -9,13 +9,13 @@
 #import <SensorKit/SRAuthorizationClientDelegate-Protocol.h>
 #import <SensorKit/SRDaemonNotificationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSXPCConnection, SRAuthorizationClient, SRDaemonNotification, SRSensorDatastore;
+@class NSDate, NSDictionary, NSString, NSXPCConnection, SRAuthorizationClient, SRDaemonNotification, SRDatastore;
 @protocol SRSensorReaderDelegate;
 
 @interface SRSensorReader : NSObject <SRAuthorizationClientDelegate, SRDaemonNotificationDelegate>
 {
     SRDaemonNotification *_daemonNotification;
-    SRSensorDatastore *_datastore;
+    SRDatastore *_datastore;
     NSDictionary *_deviceDetails;
     double _serviceStartTime;
     double _earliestEligibleTime;
@@ -28,12 +28,11 @@
     SRAuthorizationClient *_authorizationClient;
     NSXPCConnection *_connection;
     NSString *_bundleId;
+    NSDate *__lastModifiedAuthorizationTime;
     Class _sampleClass;
     Class _exportingSampleClass;
 }
 
-+ (CDUnknownBlockType)createExportDataForServices:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-+ (CDUnknownBlockType)createExportDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)authorizationRequestStatusForBundle:(id)arg1 sensors:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)requestAuthorizationForBundle:(id)arg1 sensors:(id)arg2 legacyPromptErrorBehavior:(_Bool)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 + (void)requestAuthorizationForBundle:(id)arg1 sensors:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -43,10 +42,13 @@
 + (id)remoteInterface;
 + (id)clientInterface;
 + (void)initialize;
++ (CDUnknownBlockType)createExportDataForServices:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (CDUnknownBlockType)createExportDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool bypassHoldingPeriod; // @synthesize bypassHoldingPeriod=_bypassHoldingPeriod;
 @property(readonly, nonatomic) Class exportingSampleClass; // @synthesize exportingSampleClass=_exportingSampleClass;
 @property(readonly, nonatomic) Class sampleClass; // @synthesize sampleClass=_sampleClass;
+@property(retain) NSDate *_lastModifiedAuthorizationTime; // @synthesize _lastModifiedAuthorizationTime=__lastModifiedAuthorizationTime;
 @property(copy) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain) SRAuthorizationClient *authorizationClient; // @synthesize authorizationClient=_authorizationClient;
@@ -54,16 +56,16 @@
 @property(retain) NSDictionary *nextDatastoreFiles; // @synthesize nextDatastoreFiles=_nextDatastoreFiles;
 @property __weak id <SRSensorReaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy) NSString *sensor; // @synthesize sensor=_sensor;
-- (CDUnknownBlockType)createExportDataWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)authorizedServicesDidChange:(id)arg1 deniedServices:(id)arg2 dataCollectionEnabled:(_Bool)arg3 onboardingCompleted:(_Bool)arg4 forBundleIdentifier:(id)arg5;
+- (void)authorizedServicesDidChange:(id)arg1 deniedServices:(id)arg2 dataCollectionEnabled:(_Bool)arg3 onboardingCompleted:(_Bool)arg4 lastModifiedTimes:(id)arg5 forBundleIdentifier:(id)arg6;
 - (void)setAuthorizationStatus:(long long)arg1;
 @property(readonly) long long authorizationStatus;
 - (_Bool)isAuthorized;
-- (id)authorizedServices;
 - (void)fetchDevices:(CDUnknownBlockType)arg1;
+- (void)fetchDevicesWithRetryAttempt:(int)arg1;
 - (void)fetchDevices;
 - (void)stopRecordingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopRecording;
+- (void)_startRecordingWithSensorConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startRecordingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startRecording;
 - (void)fetchSampleBytesFrom:(double)arg1 to:(double)arg2 inSegment:(id)arg3 fetchRequest:(id)arg4 retryAttempt:(long long)arg5 sampleCallback:(CDUnknownBlockType)arg6;
@@ -79,13 +81,13 @@
 - (void)fetchingRequest:(id)arg1 failedWithError:(id)arg2;
 - (void)didCompleteFetch:(id)arg1;
 - (_Bool)fetchingRequest:(id)arg1 didFetchResult:(id)arg2;
-@property(readonly, retain) SRSensorDatastore *datastore;
+@property(readonly, retain) SRDatastore *datastore;
 - (void)resetDatastoreFiles:(id)arg1;
 @property(readonly, nonatomic) double earliestEligibleTime;
 @property(readonly, nonatomic) double serviceStartTime;
 - (void)fetchReaderMetadata;
-- (void)setExportingSampleClass:(Class)arg1;
-- (void)setSampleClass:(Class)arg1;
+- (void)setExportingSampleFromDescription:(id)arg1;
+- (void)setSampleClassFromDescription:(id)arg1;
 - (void)setupConnection;
 - (void)daemonNotificationDaemonDidStart:(id)arg1;
 - (void)dealloc;
@@ -93,6 +95,7 @@
 - (id)initWithSensor:(id)arg1 bundle:(id)arg2;
 - (id)initWithSensor:(id)arg1;
 - (id)init;
+- (CDUnknownBlockType)createExportDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

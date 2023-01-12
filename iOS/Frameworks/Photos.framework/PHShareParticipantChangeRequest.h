@@ -14,10 +14,12 @@
 }
 
 + (void)deleteShareParticipants:(id)arg1;
-+ (id)creationRequestForShareParticipantWithPhoneNumber:(id)arg1;
-+ (id)creationRequestForShareParticipantWithEmailAddress:(id)arg1;
++ (id)creationRequestForShareParticipantWithPhoneNumber:(id)arg1 permission:(short)arg2;
++ (id)creationRequestForShareParticipantWithEmailAddress:(id)arg1 permission:(short)arg2;
 + (id)changeRequestForShareParticipant:(id)arg1;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
+- (void)setPermission:(short)arg1;
+- (short)permission;
 - (void)setRole:(unsigned short)arg1;
 - (unsigned short)role;
 @property(retain, nonatomic) NSString *phoneNumber;

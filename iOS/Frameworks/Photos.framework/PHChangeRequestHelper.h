@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) PHPerformChangesRequest *request; // @synthesize request=_request;
 @property(nonatomic) __weak id <PHChangeRequest> changeRequest; // @synthesize changeRequest=_changeRequest;
+@property(readonly, nonatomic) id <PLClientAuthorization> clientAuthorization; // @synthesize clientAuthorization=_clientAuthorization;
 @property(readonly, nonatomic) NSMutableSet *nilMutations; // @synthesize nilMutations=_nilMutations;
 @property(readonly, nonatomic) NSMutableDictionary *mutations; // @synthesize mutations=_mutations;
 - (id)description;

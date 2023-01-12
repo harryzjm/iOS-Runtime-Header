@@ -20,8 +20,10 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(readonly, nonatomic) NSArray *logEventMatchers; // @synthesize logEventMatchers=_logEventMatchers;
-- (void)logEvent:(id)arg1 withLabel:(id)arg2 shouldLogEventName:(_Bool)arg3 propertiesToLog:(id)arg4;
+- (id)_descriptionComponentsForEvent:(id)arg1 forProperties:(id)arg2;
+- (void)_logEvent:(id)arg1 withLabel:(id)arg2 shouldLogEventName:(_Bool)arg3 propertiesToLog:(id)arg4 publicPropertiesToLog:(id)arg5;
 - (id)_logEventMatchersInConfiguration:(id)arg1;
+- (void)updateWithConfig:(id)arg1;
 - (void)processEvent:(id)arg1;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 - (id)init;
@@ -29,6 +31,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) _Bool disabled;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

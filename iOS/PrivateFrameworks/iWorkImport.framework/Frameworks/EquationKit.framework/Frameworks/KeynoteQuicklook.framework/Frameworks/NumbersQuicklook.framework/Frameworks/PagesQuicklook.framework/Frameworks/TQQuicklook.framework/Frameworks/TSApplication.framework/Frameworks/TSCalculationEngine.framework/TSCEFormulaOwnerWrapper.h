@@ -10,17 +10,16 @@
 
 @interface TSCEFormulaOwnerWrapper : NSObject <NSCopying>
 {
-    UUIDData_5fbc143e _ownerUID;
+    struct TSKUIDStruct _ownerUID;
 }
 
-- (id).cxx_construct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToTSCEFormulaOwnerWrapper:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) const UUIDData_5fbc143e *ownerUID;
-- (id)initWithFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1;
+@property(readonly, nonatomic) const struct TSKUIDStruct *ownerUID;
+- (id)initWithFormulaOwnerUID:(const struct TSKUIDStruct *)arg1;
 
 @end
 

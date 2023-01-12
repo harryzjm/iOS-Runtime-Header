@@ -20,13 +20,13 @@
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
-    float _distanceRemaining;
+    unsigned int _distanceCm;
     unsigned int _expectedTime;
     unsigned int _stepID;
     unsigned int _zilchPathIndex;
     int _zilchPointIndex;
     struct {
-        unsigned int has_distanceRemaining:1;
+        unsigned int has_distanceCm:1;
         unsigned int has_expectedTime:1;
         unsigned int has_stepID:1;
         unsigned int has_zilchPathIndex:1;
@@ -41,8 +41,6 @@
 
 + (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool hasDistanceRemaining;
-@property(nonatomic) float distanceRemaining;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
@@ -58,6 +56,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDistanceCm;
+@property(nonatomic) unsigned int distanceCm;
 @property(retain, nonatomic) GEOEVStateInfo *evStateInfo;
 @property(readonly, nonatomic) _Bool hasEvStateInfo;
 @property(retain, nonatomic) GEOStopStepEVInfo *evInfo;

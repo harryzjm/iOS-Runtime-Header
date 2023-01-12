@@ -10,211 +10,123 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Block;
+struct AutodiffOpData;
 
-struct Listener;
-
-struct MLIRContext {
-    struct unique_ptr<mlir::MLIRContextImpl, std::__1::default_delete<mlir::MLIRContextImpl>> impl;
-};
-
-struct MLIRContextImpl;
-
-struct MPSSymbolTable {
-    struct StringMap<std::__1::basic_string<char>, llvm::MallocAllocator> _field1;
-};
-
-struct MallocAllocator;
+struct MLIRContext;
 
 struct ModuleOp {
     struct Operation *state;
 };
 
-struct OpBuilder {
-    struct MLIRContext *_field1;
-    struct Block *_field2;
-    struct ilist_iterator<llvm::ilist_detail::node_options<mlir::Operation, false, false, void>, false, false> _field3;
-    struct Listener *_field4;
-};
-
 struct Operation;
 
 struct OwningModuleRef {
-    struct ModuleOp module;
+    struct ModuleOp op;
 };
-
-struct PointerIntPair<void *, 2, mlir::Value::Kind, mlir::Value::ImplTypeTraits, llvm::PointerIntPairInfo<void *, 2, mlir::Value::ImplTypeTraits>> {
-    long long Value;
-};
-
-struct StringMap<std::__1::basic_string<char>, llvm::MallocAllocator> {
-    struct StringMapEntryBase **_field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    struct MallocAllocator _field6;
-};
-
-struct StringMapEntryBase;
 
 struct Value {
-    struct PointerIntPair<void *, 2, mlir::Value::Kind, mlir::Value::ImplTypeTraits, llvm::PointerIntPairInfo<void *, 2, mlir::Value::ImplTypeTraits>> ownerAndKind;
+    struct ValueImpl *impl;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*> *_field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*> *__next_;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
-};
+struct ValueImpl;
 
 struct _opaque_pthread_mutex_t {
     long long __sig;
     char __opaque[56];
 };
 
-struct ilist_iterator<llvm::ilist_detail::node_options<mlir::Operation, false, false, void>, false, false> {
-    struct ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, false, false, void>> *_field1;
+struct shared_ptr<mlir::MLIRContext> {
+    struct MLIRContext *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
-struct ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, false, false, void>>;
-
-struct map<MPSGraphTensor *, mlir::Operation *, std::__1::less<MPSGraphTensor *>, std::__1::allocator<std::__1::pair<MPSGraphTensor *const, mlir::Operation *>>> {
-    struct __tree<std::__1::__value_type<MPSGraphTensor *, mlir::Operation *>, std::__1::__map_value_compare<MPSGraphTensor *, std::__1::__value_type<MPSGraphTensor *, mlir::Operation *>, std::__1::less<MPSGraphTensor *>, true>, std::__1::allocator<std::__1::__value_type<MPSGraphTensor *, mlir::Operation *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MPSGraphTensor *, mlir::Operation *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MPSGraphTensor *, std::__1::__value_type<MPSGraphTensor *, mlir::Operation *>, std::__1::less<MPSGraphTensor *>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct map<MPSGraphTensor *, mlir::Value, std::__1::less<MPSGraphTensor *>, std::__1::allocator<std::__1::pair<MPSGraphTensor *const, mlir::Value>>> {
-    struct __tree<std::__1::__value_type<MPSGraphTensor *, mlir::Value>, std::__1::__map_value_compare<MPSGraphTensor *, std::__1::__value_type<MPSGraphTensor *, mlir::Value>, std::__1::less<MPSGraphTensor *>, true>, std::__1::allocator<std::__1::__value_type<MPSGraphTensor *, mlir::Value>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MPSGraphTensor *, mlir::Value>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MPSGraphTensor *, std::__1::__value_type<MPSGraphTensor *, mlir::Value>, std::__1::less<MPSGraphTensor *>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct map<void *, MPSGraphTensor *, std::__1::less<void *>, std::__1::allocator<std::__1::pair<void *const, MPSGraphTensor *>>> {
-    struct __tree<std::__1::__value_type<void *, MPSGraphTensor *>, std::__1::__map_value_compare<void *, std::__1::__value_type<void *, MPSGraphTensor *>, std::__1::less<void *>, true>, std::__1::allocator<std::__1::__value_type<void *, MPSGraphTensor *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<void *, MPSGraphTensor *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<void *, std::__1::__value_type<void *, MPSGraphTensor *>, std::__1::less<void *>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct unique_ptr<mlir::MLIRContextImpl, std::__1::default_delete<mlir::MLIRContextImpl>> {
-    struct __compressed_pair<mlir::MLIRContextImpl *, std::__1::default_delete<mlir::MLIRContextImpl>> {
-        struct MLIRContextImpl *__value_;
+struct unique_ptr<AutodiffOpData, std::default_delete<AutodiffOpData>> {
+    struct __compressed_pair<AutodiffOpData *, std::default_delete<AutodiffOpData>> {
+        struct AutodiffOpData *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unordered_map<mlir::Operation *, int, std::__1::hash<mlir::Operation *>, std::__1::equal_to<mlir::Operation *>, std::__1::allocator<std::__1::pair<mlir::Operation *const, int>>> {
-    struct __hash_table<std::__1::__hash_value_type<mlir::Operation *, int>, std::__1::__unordered_map_hasher<mlir::Operation *, std::__1::__hash_value_type<mlir::Operation *, int>, std::__1::hash<mlir::Operation *>, true>, std::__1::__unordered_map_equal<mlir::Operation *, std::__1::__hash_value_type<mlir::Operation *, int>, std::__1::equal_to<mlir::Operation *>, true>, std::__1::allocator<std::__1::__hash_value_type<mlir::Operation *, int>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mlir::Operation *, int>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<mlir::Operation *, std::__1::__hash_value_type<mlir::Operation *, int>, std::__1::hash<mlir::Operation *>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<mlir::Operation *, std::__1::__hash_value_type<mlir::Operation *, int>, std::__1::equal_to<mlir::Operation *>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
 };
 
-struct unordered_map<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, void *>*> __value_;
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unordered_map<std::string, mlir::OwningModuleRef, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, mlir::OwningModuleRef>>> {
+    struct __hash_table<std::__hash_value_type<std::string, mlir::OwningModuleRef>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, mlir::OwningModuleRef>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, mlir::OwningModuleRef>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, mlir::OwningModuleRef>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, mlir::OwningModuleRef>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, std::__1::hash<unsigned long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, mlir::OwningModuleRef>, std::hash<std::string>, std::equal_to<std::string>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::unique_ptr<GPURuntime, std::__1::default_delete<GPURuntime>>>, std::__1::equal_to<unsigned long long>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, mlir::OwningModuleRef>, std::equal_to<std::string>, std::hash<std::string>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct vector<mlir::Operation *, std::__1::allocator<mlir::Operation *>> {
-    struct Operation **_field1;
-    struct Operation **_field2;
-    struct __compressed_pair<mlir::Operation **, std::__1::allocator<mlir::Operation *>> {
-        struct Operation **_field1;
-    } _field3;
-};
-
-struct vector<mlir::Value, std::__1::allocator<mlir::Value>> {
-    struct Value *_field1;
-    struct Value *_field2;
-    struct __compressed_pair<mlir::Value *, std::__1::allocator<mlir::Value>> {
-        struct Value *_field1;
-    } _field3;
-};
-
-#pragma mark Typedef'd Structures
-
-// Template types
-typedef struct map<MPSGraphTensor *, mlir::Value, std::__1::less<MPSGraphTensor *>, std::__1::allocator<std::__1::pair<MPSGraphTensor *const, mlir::Value>>> {
-    struct __tree<std::__1::__value_type<MPSGraphTensor *, mlir::Value>, std::__1::__map_value_compare<MPSGraphTensor *, std::__1::__value_type<MPSGraphTensor *, mlir::Value>, std::__1::less<MPSGraphTensor *>, true>, std::__1::allocator<std::__1::__value_type<MPSGraphTensor *, mlir::Value>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MPSGraphTensor *, mlir::Value>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MPSGraphTensor *, std::__1::__value_type<MPSGraphTensor *, mlir::Value>, std::__1::less<MPSGraphTensor *>, true>> {
+struct unordered_map<std::string, std::unique_ptr<BaseRuntime>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::unique_ptr<BaseRuntime>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
             unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-} map_b1b11e52;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unique_ptr<BaseRuntime>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
 
-typedef struct vector<mlir::Value, std::__1::allocator<mlir::Value>> {
-    struct Value *_field1;
-    struct Value *_field2;
-    struct __compressed_pair<mlir::Value *, std::__1::allocator<mlir::Value>> {
-        struct Value *_field1;
-    } _field3;
-} vector_c90d9c45;
+struct unordered_map<std::string, std::unique_ptr<GPURuntime>, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, std::unique_ptr<GPURuntime>>>> {
+    struct __hash_table<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, std::hash<std::string>, std::equal_to<std::string>, true>, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, std::equal_to<std::string>, std::hash<std::string>, true>, std::allocator<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, void *>*> {
+                void *__next_;
+            } __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<std::string, std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, std::hash<std::string>, std::equal_to<std::string>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__unordered_map_equal<std::string, std::__hash_value_type<std::string, std::unique_ptr<GPURuntime>>, std::equal_to<std::string>, std::hash<std::string>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
 

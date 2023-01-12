@@ -23,7 +23,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CRRecentContactsLibrary *recentContactsLibrary; // @synthesize recentContactsLibrary=_recentContactsLibrary;
 @property(nonatomic, getter=isMeCardCachingEnabled) _Bool meCardCachingEnabled; // @synthesize meCardCachingEnabled=_meCardCachingEnabled;
-- (id)_correctCountryCodeIfNecessaryForPostalAddress:(id)arg1;
 - (id)_contactsFromKeychainForPreference:(id)arg1;
 - (void)_deleteRecentContactsFromKeychainForContactKey:(id)arg1;
 - (void)_deleteRecentContactsFromKeychainForPreference:(id)arg1;
@@ -37,6 +36,8 @@
 - (id)_labelsToPropertiesDictionaryForContact:(id)arg1;
 - (void)_updateRecentsWithContactsFromContactInformation:(id)arg1 currentKeychainContacts:(id)arg2 forContactKey:(id)arg3;
 - (void)updateRecentsAndKeychainWithContactInformation:(id)arg1;
+- (id)_meCardEntries:(id)arg1 forContactKey:(id)arg2 labelsToProperties:(id)arg3;
+- (id)_meCardEntries:(id)arg1 forContactKeys:(id)arg2 labelsToProperties:(id)arg3;
 - (void)meCardEntriesForPreference:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)meCardEntriesForPreference:(id)arg1;
 - (void)deleteAllRecentsWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;

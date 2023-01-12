@@ -10,18 +10,18 @@
 
 @interface TSCH3DTransforms : NSObject
 {
-    NSMutableArray *mArray;
-    tvec2_3b141483 mSize;
+    NSMutableArray *_array;
+    tvec2_3b141483 _size;
 }
 
 + (id)transformsWithSize:(tvec2_3b141483)arg1;
 + (id)transforms;
 - (id).cxx_construct;
-@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=mSize;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
 - (long long)arrayIndex:(tvec2_3b141483)arg1;
 - (id)transformAtIndex:(tvec2_3b141483)arg1;
 - (void)setTransform:(id)arg1 atIndex:(tvec2_3b141483)arg2;
-- (void)dealloc;
 
 @end
 

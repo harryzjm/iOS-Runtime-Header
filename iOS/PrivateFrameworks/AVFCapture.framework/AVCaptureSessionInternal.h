@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     AVWeakReference *weakReference;
     NSString *sessionPreset;
     int beginConfigRefCount;
+    int graphRebuildFromCommitConfigRefCount;
     FigCaptureSessionConfiguration *sessionConfig;
     struct OpaqueFigCaptureSession *figCaptureSession;
     _Bool figCaptureSessionRunning;
@@ -34,11 +35,13 @@ __attribute__((visibility("hidden")))
     _Bool waitingForFigCaptureSessionToStart;
     _Bool waitingForFigCaptureSessionToStop;
     _Bool waitingForFigCaptureSessionConfigurationToBecomeLive;
+    long long graphRebuildSignalCount;
     struct OpaqueCMClock *masterClock;
     _Bool notifiesOnMainThread;
     NSMutableArray *devicesToResetVideoZoomFactorAndMinMaxFrameDurations;
     _Bool authorizedToUseCameraInMultipleForegroundAppLayout;
     _Bool xctestAuthorizedToStealDevice;
+    struct OpaqueFigReentrantMutex *figCaptureSourceConfigChangeCacheMutex;
 }
 
 @end

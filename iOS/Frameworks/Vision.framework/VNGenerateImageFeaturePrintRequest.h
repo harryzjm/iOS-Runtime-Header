@@ -12,7 +12,6 @@
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (Class)configurationClass;
 @property(readonly) NSArray *supportedImageSizeSet;
 - (CDUnknownBlockType)resultsSortingComparator;
@@ -28,6 +27,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

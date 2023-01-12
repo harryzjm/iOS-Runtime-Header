@@ -10,7 +10,7 @@
 
 @interface _TtC8NewsFeed25DebugFormatCodeJSONLoader : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *data;
+    MISSING_TYPE *result;
 }
 
 @end

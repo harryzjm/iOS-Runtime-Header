@@ -11,5 +11,7 @@
 @protocol PKRemoteTransactionAuthenticationPasscodeViewControllerProtocol <NSObject>
 - (void)passcodeViewControllerDidGenerateEncryptedPasscode:(PKEncryptedDataObject *)arg1;
 - (void)passcodeViewControllerDidCancel;
+- (void)passcodeViewControllerDidEndSessionExchange;
+- (void)passcodeViewControllerRequestSessionExchangeTokenWithHandler:(void (^)(NSData *))arg1;
 @end
 

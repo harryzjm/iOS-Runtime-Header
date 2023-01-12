@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SpringBoardHome/NSObject-Protocol.h>
+
 @class SBHIconLibraryTableViewController, SBIcon;
 
-@protocol SBHIconLibraryTableViewControllerObserver
+@protocol SBHIconLibraryTableViewControllerObserver <NSObject>
 - (void)libraryTableViewControllerDidLaunchIcon:(SBIcon *)arg1;
 - (void)libraryTableViewControllerWillDisappear:(SBHIconLibraryTableViewController *)arg1;
 - (void)libraryTableViewControllerDidAppear:(SBHIconLibraryTableViewController *)arg1;

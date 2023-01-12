@@ -6,10 +6,10 @@
 
 #import <SystemStatus/NSObject-Protocol.h>
 
-@protocol STStatusDomainData, STStatusDomainDataDiff;
+@protocol STStatusDomainData, STStatusDomainData><STStatusDomainDataDifferencing, STStatusDomainDataDiff;
 
 @protocol STStatusDomainDataDifferencing <NSObject>
-- (id <STStatusDomainData>)dataByApplyingDiff:(id <STStatusDomainDataDiff>)arg1;
+- (id <STStatusDomainData><STStatusDomainDataDifferencing>)dataByApplyingDiff:(id <STStatusDomainDataDiff>)arg1;
 - (id <STStatusDomainDataDiff>)diffFromData:(id <STStatusDomainData>)arg1;
 @end
 

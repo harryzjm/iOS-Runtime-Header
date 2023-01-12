@@ -38,9 +38,9 @@
 - (oneway void)_client_coordinatorShouldResumeWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorShouldPrioritizeWithUUID:(id)arg1;
 - (oneway void)_client_coordinatorDidRegisterForObservationWithUUID:(id)arg1;
-- (void)unregisterDataPromiseForUpdates:(id)arg1;
+- (void)unregisterForUpdatesForDataPromiseWithUUID:(id)arg1;
 - (void)registerDataPromiseForUpdates:(id)arg1 notifyDaemon:(_Bool)arg2;
-- (void)unregisterAppInstallCoordinatorForUpdates:(id)arg1;
+- (void)unregisterForUpdatesForAppInstallCoordinatorWithUUID:(id)arg1;
 - (void)registerAppInstallCoordinatorForUpdates:(id)arg1 notifyDaemon:(_Bool)arg2;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_onQueue_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
@@ -48,7 +48,10 @@
 - (id)_onQueue_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (_Bool)_onQueue_createXPCConnectionIfNecessary;
+- (void)_onQueue_doCleanupForPromiseWithUUID:(id)arg1;
+- (void)_onQueue_doCleanupForCoordinatorWithUUID:(id)arg1;
 - (void)_onQueue_reSetupObserversAfter:(id)arg1;
+- (void)_onQueue_scanForAndRemoveEmptyHashTables;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -22,6 +22,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (unsigned long long)_accessibilityAutomationType;
+- (_Bool)_accessibilityIsGroupedParent;
 
 @end
 

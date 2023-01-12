@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSHashTable, NSMutableArray, NSSet, TSDInteractiveCanvasController, TSDLayoutController, TSKAccessController, TSKChangeNotifier, TSKDocumentRoot, TSPObjectContext, TSUColor, TSUPointerKeyDictionary;
-@protocol OS_dispatch_queue, TSDCanvasDelegate;
+@protocol TSDCanvasDelegate;
 
 @interface TSDCanvas : NSObject
 {
@@ -35,7 +35,7 @@
     _Bool mInLayout;
     NSArray *mPreviouslyVisibleLayouts;
     NSMutableArray *mBlocksToPerform;
-    NSObject<OS_dispatch_queue> *mBlocksToPerformAccessQueue;
+    struct os_unfair_lock_s mBlocksToPerformLock;
     NSHashTable *mCanvasLayoutObservers;
     _Bool mIgnoringClickThrough;
     TSUColor *mBackgroundColor;
@@ -45,6 +45,7 @@
     _Bool mEnableInstructionalText;
     _Bool mSuppressesShapeText;
     _Bool mShouldRenderInvisibleContentForNonInteractiveCanvas;
+    _Bool mShouldClampGroupsToParentsByScaling;
     double i_viewScaleForAudioObjectsInNonInteractiveCanvas;
 }
 
@@ -54,6 +55,7 @@
 @property(nonatomic) double viewScale; // @synthesize viewScale=mViewScale;
 @property(nonatomic) struct CGSize unscaledSize; // @synthesize unscaledSize=mUnscaledSize;
 @property(nonatomic) double i_viewScaleForAudioObjectsInNonInteractiveCanvas; // @synthesize i_viewScaleForAudioObjectsInNonInteractiveCanvas;
+@property(nonatomic) _Bool shouldClampGroupsToParentsByScaling; // @synthesize shouldClampGroupsToParentsByScaling=mShouldClampGroupsToParentsByScaling;
 @property(nonatomic) _Bool shouldRenderInvisibleContentForNonInteractiveCanvas; // @synthesize shouldRenderInvisibleContentForNonInteractiveCanvas=mShouldRenderInvisibleContentForNonInteractiveCanvas;
 @property(nonatomic) _Bool suppressesShapeText; // @synthesize suppressesShapeText=mSuppressesShapeText;
 @property(nonatomic) _Bool suppressesShadowsAndReflections; // @synthesize suppressesShadowsAndReflections=mSuppressesShadowsAndReflections;

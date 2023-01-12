@@ -29,6 +29,8 @@
 - (void)commitViewController:(id)arg1;
 - (id)previewViewController;
 - (void)handledAction:(id)arg1 state:(unsigned long long)arg2;
+- (id)toolTipForComponentView:(id)arg1;
+- (id)contextMenuForComponentView:(id)arg1 sourceRect:(struct CGRect)arg2;
 - (void)handleInteractionType:(unsigned long long)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (id)initWithAction:(id)arg1 actionManager:(id)arg2 actionSerializer:(id)arg3 analyticsReportingProvider:(id)arg4;
 

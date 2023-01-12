@@ -76,6 +76,7 @@
 - (void)_deletePass;
 - (void)_sharePass;
 - (void)_done:(id)arg1;
+- (void)passHeaderViewPassWasDeleted:(id)arg1;
 - (void)passHeaderViewDidChangePass:(id)arg1;
 - (void)_reloadPassAndView;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
@@ -90,7 +91,7 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (id)_locationHelpViewForTableView:(id)arg1;
 - (id)_locationHelpTextWithLink:(id *)arg1 linkRange:(struct _NSRange *)arg2;
 - (void)_bluetoothPowerChanged:(id)arg1;

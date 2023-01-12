@@ -34,6 +34,7 @@
     _Bool _hideClearActionInList;
     _Bool _numberOfLinesInfinite;
     _Bool _preemptsPresentedNotification;
+    _Bool _displaysActionsInline;
     _Bool _revealsAdditionalContentOnPresentation;
     _Bool _suppressesTitleWhenLocked;
     _Bool _suppressesSubtitleWhenLocked;
@@ -46,9 +47,11 @@
     _Bool _allowActionsForCarPlay;
     _Bool _playMediaWhenRaised;
     _Bool _hideCloseActionForCarPlay;
+    _Bool _shouldAnnounceForCarPlay;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldAnnounceForCarPlay; // @synthesize shouldAnnounceForCarPlay=_shouldAnnounceForCarPlay;
 @property(readonly, nonatomic) _Bool hideCloseActionForCarPlay; // @synthesize hideCloseActionForCarPlay=_hideCloseActionForCarPlay;
 @property(readonly, nonatomic) _Bool playMediaWhenRaised; // @synthesize playMediaWhenRaised=_playMediaWhenRaised;
 @property(readonly, nonatomic) _Bool allowActionsForCarPlay; // @synthesize allowActionsForCarPlay=_allowActionsForCarPlay;
@@ -61,6 +64,7 @@
 @property(readonly, nonatomic) _Bool suppressesSubtitleWhenLocked; // @synthesize suppressesSubtitleWhenLocked=_suppressesSubtitleWhenLocked;
 @property(readonly, nonatomic) _Bool suppressesTitleWhenLocked; // @synthesize suppressesTitleWhenLocked=_suppressesTitleWhenLocked;
 @property(readonly, nonatomic) _Bool revealsAdditionalContentOnPresentation; // @synthesize revealsAdditionalContentOnPresentation=_revealsAdditionalContentOnPresentation;
+@property(readonly, nonatomic) _Bool displaysActionsInline; // @synthesize displaysActionsInline=_displaysActionsInline;
 @property(readonly, nonatomic) _Bool preemptsPresentedNotification; // @synthesize preemptsPresentedNotification=_preemptsPresentedNotification;
 @property(readonly, nonatomic, getter=isNumberOfLinesInfinite) _Bool numberOfLinesInfinite; // @synthesize numberOfLinesInfinite=_numberOfLinesInfinite;
 @property(readonly, nonatomic) _Bool hideClearActionInList; // @synthesize hideClearActionInList=_hideClearActionInList;

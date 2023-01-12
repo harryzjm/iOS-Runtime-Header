@@ -9,36 +9,42 @@
 #import <ContentKit/NSSecureCoding-Protocol.h>
 #import <ContentKit/WFSerializableContent-Protocol.h>
 
-@class NSString;
+@class NSOrderedSet, NSString, WFContentDestination;
 
 @interface WFContentAttribution : NSObject <NSSecureCoding, WFSerializableContent>
 {
+    unsigned long long _count;
     unsigned long long _disclosureLevel;
-    unsigned long long _managedLevel;
+    WFContentDestination *_origin;
+    NSOrderedSet *_privateItemIdentifiers;
 }
 
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)shortcutsAppAttributionWithDisclosureLevel:(unsigned long long)arg1;
 + (id)shortcutsAppAttribution;
-+ (id)attributionWithDisclosureLevel:(unsigned long long)arg1 managedLevel:(unsigned long long)arg2;
-+ (id)attributionWithBundleIdentifier:(id)arg1 accountIdentifier:(id)arg2 disclosureLevel:(unsigned long long)arg3 managedLevel:(unsigned long long)arg4;
-+ (id)attributionWithBundleIdentifier:(id)arg1 disclosureLevel:(unsigned long long)arg2;
-+ (id)attributionWithAccountBasedBundleIdentifier:(id)arg1 accountIdentifier:(id)arg2 disclosureLevel:(unsigned long long)arg3;
-@property(readonly, nonatomic) unsigned long long managedLevel; // @synthesize managedLevel=_managedLevel;
++ (id)attributionWithDisclosureLevel:(unsigned long long)arg1 origin:(id)arg2 originalItemIdentifier:(id)arg3;
++ (id)attributionWithDisclosureLevel:(unsigned long long)arg1 origin:(id)arg2 originalItemIdentifiers:(id)arg3 count:(unsigned long long)arg4;
++ (id)attributionWithDisclosureLevel:(unsigned long long)arg1 origin:(id)arg2 originalItemIdentifiers:(id)arg3;
++ (id)attributionWithAppDescriptor:(id)arg1 accountIdentifier:(id)arg2 disclosureLevel:(unsigned long long)arg3 managedLevel:(unsigned long long)arg4;
++ (id)attributionWithAppDescriptor:(id)arg1 disclosureLevel:(unsigned long long)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSOrderedSet *privateItemIdentifiers; // @synthesize privateItemIdentifiers=_privateItemIdentifiers;
+@property(readonly, nonatomic) WFContentDestination *origin; // @synthesize origin=_origin;
 @property(readonly, nonatomic) unsigned long long disclosureLevel; // @synthesize disclosureLevel=_disclosureLevel;
+@property(readonly, copy) NSString *description;
 - (id)wfSerializedRepresentation;
-- (id)localizedDescription;
-- (_Bool)isEqual:(id)arg1;
-@property(readonly) unsigned long long hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDisclosureLevel:(unsigned long long)arg1 managedLevel:(unsigned long long)arg2;
-- (id)attributionIdentifier;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
+- (id)identifier;
+- (id)attributionByReplacingAccountWithAppOrigin;
+- (id)initWithDisclosureLevel:(unsigned long long)arg1 origin:(id)arg2 originalItemIdentifiers:(id)arg3 count:(unsigned long long)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

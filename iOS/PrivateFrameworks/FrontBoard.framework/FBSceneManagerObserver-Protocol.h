@@ -23,5 +23,7 @@
 - (void)sceneManager:(FBSceneManager *)arg1 didDestroyScene:(FBScene *)arg2;
 - (void)sceneManager:(FBSceneManager *)arg1 willDestroyScene:(FBScene *)arg2;
 - (void)sceneManager:(FBSceneManager *)arg1 didCreateScene:(FBScene *)arg2;
+- (void)sceneManager:(FBSceneManager *)arg1 willRemoveScene:(FBScene *)arg2;
+- (void)sceneManager:(FBSceneManager *)arg1 didAddScene:(FBScene *)arg2;
 @end
 

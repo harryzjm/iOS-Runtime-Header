@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI216AudioDataManager : NSObject
 {
     MISSING_TYPE *state;
@@ -17,12 +18,13 @@
     MISSING_TYPE *playlistStore;
     MISSING_TYPE *recentlyPlayedStore;
     MISSING_TYPE *suggestionsStore;
-    MISSING_TYPE *reloadQueue;
+    MISSING_TYPE *updateQueue;
     MISSING_TYPE *audioTabVisibilitySignal;
     MISSING_TYPE *audioStateFactory;
     MISSING_TYPE *completedListeningProcessor;
     MISSING_TYPE *expirationTimer;
     MISSING_TYPE *topOfFeedTrack;
+    MISSING_TYPE *dailyBriefingTrack;
     MISSING_TYPE *upNextTracks;
     MISSING_TYPE *suggestedTracks;
     MISSING_TYPE *recentlyPlayedTracks;

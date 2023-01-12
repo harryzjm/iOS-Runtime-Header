@@ -10,13 +10,17 @@
 
 @interface _TtC10ChronoCore31ClientConfigurationModelService : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_metricsSpecification;
+    MISSING_TYPE *_configurationsPublisher;
     MISSING_TYPE *_metricsSpecificationPublisher;
-    MISSING_TYPE *_configuredWidgetContainerDescriptors;
     MISSING_TYPE *_configuredWidgetContainerDescriptorsPublisher;
-    MISSING_TYPE *widgetConfigurationManager;
-    MISSING_TYPE *configuredWidgetMetadataCache;
-    MISSING_TYPE *lock;
+    MISSING_TYPE *_orphanedConfigurationsPublisher;
+    MISSING_TYPE *_locked_configurations;
+    MISSING_TYPE *_configuredWidgetMetadataCache;
+    MISSING_TYPE *_lock;
+    MISSING_TYPE *_locked_orphanedIdentifiersToExpirationTime;
+    MISSING_TYPE *_locked_orphanedConfigurationsPurgeTimer;
+    MISSING_TYPE *_locked_orphanPurgeTime;
+    MISSING_TYPE *_orphanedLeeway;
 }
 
 @end

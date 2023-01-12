@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     NSArray *_syncedRootURLs;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
+    NSString *_personaID;
+    _Bool _usingOtherPersona;
 }
 
 - (void).cxx_destruct;
@@ -26,7 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)_fetchSyncedRootURLs;
 - (void)_accountWillChange;
 - (void)registerForSyncedLocationsChangesNotifications;
-- (id)init;
+- (_Bool)_checkIfPersonaStillValid;
+- (id)initWithPersona:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

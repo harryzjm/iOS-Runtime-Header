@@ -12,10 +12,15 @@
 {
     MISSING_TYPE *participants;
     MISSING_TYPE *participantsBeforeFocus;
+    MISSING_TYPE *layoutStyle;
     MISSING_TYPE *forceAudioPriorityButton;
+    MISSING_TYPE *nonFullScreenConstraints;
+    MISSING_TYPE *fullScreenConstraints;
+    MISSING_TYPE *isLocalMemberAuthorizedToChangeGroupMembership;
     MISSING_TYPE *focusedParticipant;
     MISSING_TYPE *sashedParticipant;
     MISSING_TYPE *selectedParticipant;
+    MISSING_TYPE *fullScreenFocusedParticipant;
     MISSING_TYPE *participantsViewControllerDelegate;
     MISSING_TYPE *participantGridViewControllerDelegate;
 }

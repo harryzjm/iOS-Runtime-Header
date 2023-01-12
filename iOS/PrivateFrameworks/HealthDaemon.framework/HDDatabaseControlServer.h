@@ -19,6 +19,7 @@
 - (void)remote_performMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_obliterateHealthDataWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_getHealthDirectorySizeInBytesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remote_getHealthDatabaseIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

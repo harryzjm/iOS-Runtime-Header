@@ -18,6 +18,7 @@
 }
 
 + (id)log;
++ (void)createConnectionWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *prefetchSpansIfLoaded; // @synthesize prefetchSpansIfLoaded=_prefetchSpansIfLoaded;
 @property(nonatomic) _Bool hasScheduledBatchRequest; // @synthesize hasScheduledBatchRequest=_hasScheduledBatchRequest;
@@ -32,8 +33,11 @@
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 lockupFetcher:(id)arg2;
+- (void)_cacheLockupsWithCollectionRequest:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)_lockupDictionaryForRequest:(id)arg1 includingKeys:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)_cacheLockupsWithRequests:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_prefetchLockupsWithRequests:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)_lockupRequestForBundleID:(id)arg1 withContext:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end
 

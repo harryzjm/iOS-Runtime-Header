@@ -4,23 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PGGraphMomentNode;
+@class NSString;
 
 @interface PGGraphMomentChange
 {
-    NSString *_momentLocalIdentifier;
-    PGGraphMomentNode *_momentNode;
+    NSString *_momentUUID;
     unsigned long long _updateTypes;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long updateTypes; // @synthesize updateTypes=_updateTypes;
-@property(retain, nonatomic) PGGraphMomentNode *momentNode; // @synthesize momentNode=_momentNode;
-@property(readonly, nonatomic) NSString *momentLocalIdentifier; // @synthesize momentLocalIdentifier=_momentLocalIdentifier;
+@property(readonly, nonatomic) NSString *momentUUID; // @synthesize momentUUID=_momentUUID;
 - (id)description;
 - (unsigned long long)type;
 - (void)mergeChange:(id)arg1;
-- (id)initWithMomentLocalIdentifier:(id)arg1 updateTypes:(unsigned long long)arg2;
+- (id)initWithMomentUUID:(id)arg1 updateTypes:(unsigned long long)arg2;
 
 @end
 

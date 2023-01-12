@@ -17,7 +17,7 @@
 + (id)reuseIdentifier;
 + (id)supplementaryViewKindForGUID:(id)arg1;
 + (id)supplementaryViewKindPrefix;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

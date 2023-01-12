@@ -24,6 +24,8 @@
 - (id)lastSyncStartDate;
 - (void)setSubscriptionID:(id)arg1;
 - (id)subscriptionID;
+- (void)setRefreshInterval:(int)arg1;
+- (int)refreshInterval;
 - (void)setRefreshDate:(id)arg1;
 - (id)refreshDate;
 - (id)allAlarms;
@@ -31,12 +33,17 @@
 - (void)setDigest:(id)arg1;
 - (id)digest;
 @property(copy, nonatomic) NSString *pushKey; // @dynamic pushKey;
+- (void)setSubcalURL:(id)arg1;
+- (id)subcalURL;
 @property(copy, nonatomic) NSString *subcalAccountID; // @dynamic subcalAccountID;
+- (void)setPubcalAccountID:(id)arg1;
+- (id)pubcalAccountID;
 - (void)setNotes:(id)arg1;
 - (id)notes;
 @property(copy, nonatomic) NSString *ownerIdentityLastName; // @dynamic ownerIdentityLastName;
 @property(copy, nonatomic) NSString *ownerIdentityFirstName; // @dynamic ownerIdentityFirstName;
-@property(copy, nonatomic) NSString *ownerIdentityAddress; // @dynamic ownerIdentityAddress;
+- (void)setOwnerIdentityAddressString:(id)arg1;
+- (id)ownerIdentityAddressString;
 @property(copy, nonatomic) NSString *ownerIdentityPhoneNumber; // @dynamic ownerIdentityPhoneNumber;
 @property(copy, nonatomic) NSString *ownerIdentityEmail; // @dynamic ownerIdentityEmail;
 @property(copy, nonatomic) NSString *ownerIdentityDisplayName; // @dynamic ownerIdentityDisplayName;
@@ -44,7 +51,7 @@
 - (int)ownerIdentityId;
 @property(copy, nonatomic) NSString *selfIdentityLastName; // @dynamic selfIdentityLastName;
 @property(copy, nonatomic) NSString *selfIdentityFirstName; // @dynamic selfIdentityFirstName;
-@property(copy, nonatomic) NSString *selfIdentityAddress; // @dynamic selfIdentityAddress;
+@property(copy, nonatomic) NSString *selfIdentityAddressString; // @dynamic selfIdentityAddressString;
 @property(copy, nonatomic) NSString *selfIdentityPhoneNumber; // @dynamic selfIdentityPhoneNumber;
 @property(copy, nonatomic) NSString *selfIdentityEmail; // @dynamic selfIdentityEmail;
 @property(copy, nonatomic) NSString *selfIdentityDisplayName; // @dynamic selfIdentityDisplayName;
@@ -57,10 +64,10 @@
 - (id)notifications;
 @property(nonatomic, getter=isPublished) _Bool published; // @dynamic published;
 - (void)setIsPublished:(_Bool)arg1;
-- (void)setPublishURL:(id)arg1;
-- (id)publishURL;
+- (void)setPublishURLString:(id)arg1;
+- (id)publishURLString;
 @property(nonatomic) unsigned long long sharingInvitationResponse; // @dynamic sharingInvitationResponse;
-@property(copy, nonatomic) NSString *sharedOwnerURL; // @dynamic sharedOwnerURL;
+@property(copy, nonatomic) NSString *sharedOwnerURLString; // @dynamic sharedOwnerURLString;
 @property(copy, nonatomic) NSString *sharedOwnerName; // @dynamic sharedOwnerName;
 @property(nonatomic) unsigned long long sharingStatus; // @dynamic sharingStatus;
 @property(nonatomic) int flags; // @dynamic flags;
@@ -80,8 +87,10 @@
 - (id)externalIDTag;
 @property(copy, nonatomic) NSString *externalID; // @dynamic externalID;
 - (int)entityType;
+- (id)propertyKeyForUniqueIdentifier;
 
 // Remaining properties
+@property(copy, nonatomic) NSString *ownerIdentityAddress; // @dynamic ownerIdentityAddress;
 @property(copy, nonatomic) NSString *publishedURL; // @dynamic publishedURL;
 
 @end

@@ -8,13 +8,14 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSMutableArray, PBDataReader, PBUnknownFields;
+@class GEOFormattedString, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOTrafficBannerText : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEOFormattedString *_bannerDescription;
+    NSString *_bannerId;
     GEOFormattedString *_bannerLargeText;
     GEOFormattedString *_bannerSmallText;
     NSMutableArray *_buttons;
@@ -52,6 +53,7 @@
         unsigned int has_shouldShowTimer:1;
         unsigned int read_unknownFields:1;
         unsigned int read_bannerDescription:1;
+        unsigned int read_bannerId:1;
         unsigned int read_bannerLargeText:1;
         unsigned int read_bannerSmallText:1;
         unsigned int read_buttons:1;
@@ -84,6 +86,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *bannerId;
+@property(readonly, nonatomic) _Bool hasBannerId;
 @property(retain, nonatomic) GEOFormattedString *bannerDescription;
 @property(readonly, nonatomic) _Bool hasBannerDescription;
 @property(nonatomic) _Bool hasZilchPathIndex;

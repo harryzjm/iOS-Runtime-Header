@@ -6,12 +6,13 @@
 
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIImpactFeedbackGenerator, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class NSString, UIImpactFeedbackGenerator, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 
 @interface PXUILivePhotoTrimScrubber <UIGestureRecognizerDelegate>
 {
     UIPanGestureRecognizer *_panGesture;
     UITapGestureRecognizer *_tapGesture;
+    UILongPressGestureRecognizer *_longPressGesture;
     UIImpactFeedbackGenerator *_impactGenerator;
 }
 
@@ -27,6 +28,7 @@
 + (id)createSnappingControllerWithSnappingTarget:(double)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImpactFeedbackGenerator *impactGenerator; // @synthesize impactGenerator=_impactGenerator;
+@property(retain, nonatomic) UILongPressGestureRecognizer *longPressGesture; // @synthesize longPressGesture=_longPressGesture;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGesture; // @synthesize tapGesture=_tapGesture;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGesture; // @synthesize panGesture=_panGesture;
 - (struct CGSize)intrinsicContentSize;
@@ -35,6 +37,7 @@
 - (void)setDisabled:(_Bool)arg1;
 - (void)_handleChangePanGesture:(id)arg1;
 - (void)_handleBeginPanGesture:(id)arg1;
+- (void)_handleLongPress:(id)arg1;
 - (void)_handlePan:(id)arg1;
 - (void)_handleTap:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;

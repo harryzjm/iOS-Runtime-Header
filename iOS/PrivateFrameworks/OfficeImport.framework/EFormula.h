@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface EFormula : NSObject
 {
     id <EFHelper> mHelper;
-    struct EFLexer *mYylex;
+    void *mYylex;
     Class mFormulaClass;
     EDFormula *mFormula;
     EFTableData *mTableData;

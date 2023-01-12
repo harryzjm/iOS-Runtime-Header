@@ -8,13 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPIncidentAnnotationDetails, GEORPNewIncidentDetails, PBDataReader;
+@class GEORPIncidentAnnotationDetails, GEORPIncidentUserPath, GEORPNewIncidentDetails, GEORPSiriContext, PBDataReader;
 
 @interface GEORPIncidentFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     GEORPIncidentAnnotationDetails *_incidentAnnotationDetails;
     GEORPNewIncidentDetails *_newIncidentDetails;
+    GEORPSiriContext *_siriContext;
+    GEORPIncidentUserPath *_userPath;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -23,6 +25,8 @@
         unsigned int has_type:1;
         unsigned int read_incidentAnnotationDetails:1;
         unsigned int read_newIncidentDetails:1;
+        unsigned int read_siriContext:1;
+        unsigned int read_userPath:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
@@ -34,6 +38,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -42,6 +48,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEORPIncidentUserPath *userPath;
+@property(readonly, nonatomic) _Bool hasUserPath;
+@property(retain, nonatomic) GEORPSiriContext *siriContext;
+@property(readonly, nonatomic) _Bool hasSiriContext;
 @property(retain, nonatomic) GEORPIncidentAnnotationDetails *incidentAnnotationDetails;
 @property(readonly, nonatomic) _Bool hasIncidentAnnotationDetails;
 @property(retain, nonatomic) GEORPNewIncidentDetails *newIncidentDetails;

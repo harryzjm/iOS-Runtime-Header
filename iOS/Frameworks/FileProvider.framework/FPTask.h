@@ -6,31 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSFileHandle;
 
 @interface FPTask : NSObject
 {
-    NSArray *_argv;
-    NSString *_redirectStdoutToFileAtPath;
-    int _redirectStdoutToFileDescriptor;
-    NSString *_redirectStderrToFileAtPath;
-    int _redirectStderrToFileDescriptor;
     int _waitStatus;
+    NSArray *_argv;
+    NSFileHandle *_standardOutput;
+    NSFileHandle *_standardError;
 }
 
 + (id)sanitizeStringForFilename:(id)arg1;
++ (id)taskWithArguments:(id)arg1;
 + (id)taskWithCommandWithArguments:(id)arg1;
 + (id)taskWithCommand:(id)arg1;
 + (id)taskWithRedirectedOutputAndCommand:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int waitStatus; // @synthesize waitStatus=_waitStatus;
-@property(nonatomic) int redirectStderrToFileDescriptor; // @synthesize redirectStderrToFileDescriptor=_redirectStderrToFileDescriptor;
-@property(retain, nonatomic) NSString *redirectStderrToFileAtPath; // @synthesize redirectStderrToFileAtPath=_redirectStderrToFileAtPath;
-@property(nonatomic) int redirectStdoutToFileDescriptor; // @synthesize redirectStdoutToFileDescriptor=_redirectStdoutToFileDescriptor;
-@property(retain, nonatomic) NSString *redirectStdoutToFileAtPath; // @synthesize redirectStdoutToFileAtPath=_redirectStdoutToFileAtPath;
+@property(retain, nonatomic) NSFileHandle *standardError; // @synthesize standardError=_standardError;
+@property(retain, nonatomic) NSFileHandle *standardOutput; // @synthesize standardOutput=_standardOutput;
 @property(retain, nonatomic) NSArray *argv; // @synthesize argv=_argv;
 - (void)resetRedirect;
 - (int)exec;
+- (int)execAsync;
+- (int)_prepareRedirections:(void **)arg1;
 - (void)setCommandWithArguments:(id)arg1;
 - (void)setCommand:(id)arg1;
 - (id)init;

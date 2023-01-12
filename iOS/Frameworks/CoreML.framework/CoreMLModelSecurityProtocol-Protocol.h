@@ -10,7 +10,7 @@
 - (void)extractTeamIdentifierWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)stopDecryptionOfModelAtPath:(NSString *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)startDecryptionOfModelAtPath:(NSString *)arg1 usingKeyBlob:(NSData *)arg2 completionBlock:(void (^)(NSError *))arg3;
-- (void)createPersistentKeyBlobForKeyID:(NSString *)arg1 completionBlock:(void (^)(NSData *, NSError *))arg2;
+- (void)createPersistentKeyBlobForKeyID:(NSString *)arg1 usesCodeSigningIdentityForEncryption:(_Bool)arg2 completionBlock:(void (^)(NSData *, NSError *))arg3;
 - (void)secureModelMLFeatureDescription:(MLFeatureDescription *)arg1 withReply:(void (^)(MLFeatureDescription *, NSString *))arg2;
 - (void)secureModelMLModelDescription:(MLModelDescription *)arg1 withReply:(void (^)(MLModelDescription *, NSString *))arg2;
 - (void)secureModelMLDictionaryFeatureProvider:(MLDictionaryFeatureProvider *)arg1 withReply:(void (^)(MLDictionaryFeatureProvider *, NSString *))arg2;

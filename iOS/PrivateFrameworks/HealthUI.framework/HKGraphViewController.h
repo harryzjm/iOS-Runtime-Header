@@ -22,11 +22,12 @@
 @property(nonatomic) __weak id <HKGraphViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <HKGraphViewDelegate> graphViewDelegateProxy; // @synthesize graphViewDelegateProxy=_graphViewDelegateProxy;
 @property(readonly, nonatomic) HKGraphView *graphView; // @synthesize graphView=_graphView;
+- (void)graphViewExternalSelectionEnd:(id)arg1;
 - (void)graphView:(id)arg1 startupTime:(long long)arg2;
 - (void)graphViewDidTapYAxis:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;
-- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3;
+- (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3 changeContext:(long long)arg4;
 - (void)graphView:(id)arg1 didUpdateYAxisWidth:(double)arg2 toWidth:(double)arg3;
 - (void)graphViewSizeChanged:(id)arg1;
 - (id)graphView:(id)arg1 graphSeriesForZoom:(long long)arg2 stackOffset:(long long)arg3;
@@ -37,6 +38,7 @@
 - (void)graphViewDidEndSelection:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateSelectedPoint:(id)arg2;
 - (void)graphViewDidBeginSelection:(id)arg1;
+- (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(id)arg1;
 - (void)setDetailView:(id)arg1;
 - (id)initWithGraphView:(id)arg1 dateZoom:(long long)arg2;
 

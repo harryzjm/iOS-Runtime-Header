@@ -14,6 +14,8 @@
     CKContainer *_container;
     CKDatabase *_database;
     NSArray *_preferredLocalizations;
+    NSString *_currentRegion;
+    NSString *_currentIdiom;
     NSCache *_workflowSearchCache;
     NSCache *_collectionSearchCache;
     NSCache *_pageCache;
@@ -23,12 +25,15 @@
 
 + (id)defaultPreferredLocalizations;
 + (id)sharedManager;
++ (id)currentDeviceIdiom;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSCache *bannerImageCache; // @synthesize bannerImageCache=_bannerImageCache;
 @property(readonly, nonatomic) NSCache *workflowCache; // @synthesize workflowCache=_workflowCache;
 @property(readonly, nonatomic) NSCache *pageCache; // @synthesize pageCache=_pageCache;
 @property(readonly, nonatomic) NSCache *collectionSearchCache; // @synthesize collectionSearchCache=_collectionSearchCache;
 @property(readonly, nonatomic) NSCache *workflowSearchCache; // @synthesize workflowSearchCache=_workflowSearchCache;
+@property(readonly, copy, nonatomic) NSString *currentIdiom; // @synthesize currentIdiom=_currentIdiom;
+@property(readonly, copy, nonatomic) NSString *currentRegion; // @synthesize currentRegion=_currentRegion;
 @property(readonly, copy, nonatomic) NSArray *preferredLocalizations; // @synthesize preferredLocalizations=_preferredLocalizations;
 @property(readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
 @property(readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
@@ -42,10 +47,12 @@
 - (void)updatePage:(id)arg1 withName:(id)arg2 banners:(id)arg3 collections:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)createCollection:(id)arg1 small2xImage:(id)arg2 large2xImage:(id)arg3 small3xImage:(id)arg4 large3xImage:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)createBannerWithName:(id)arg1 detailPage:(id)arg2 iphone2xImage:(id)arg3 iphone3xImage:(id)arg4 ipadImage:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)unshareSharedShortcut:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)reportWorkflow:(id)arg1 iCloudIdentifier:(id)arg2 reportReason:(id)arg3 reportMessage:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)unshareSharedShortcut:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)updateItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getCurrentUserIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getCollectionForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getCollectionForPersistentIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)getWorkflowForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)sortAndFilterSearchResults:(id)arg1 query:(id)arg2;
 - (id)searchCollections:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -55,6 +62,11 @@
 - (id)searchWorkflows:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)searchWorkflowsAndCollections:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)loadWorkflowInGalleryWorkflow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)workflowIsRestricted:(id)arg1;
+- (_Bool)collectionIsRestricted:(id)arg1;
+- (_Bool)bannerIsRestricted:(id)arg1;
+- (id)collectionWithoutRestrictedContent:(id)arg1;
+- (id)pageWithoutRestrictedContent:(id)arg1;
 - (id)preferredPageInPages:(id)arg1 preferredLanguages:(id)arg2;
 - (id)getImageForBanner:(id)arg1 size:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getPageWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -62,7 +74,7 @@
 - (void)getHomeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)createItemRequest;
 @property(readonly, nonatomic) NSString *containerDescription;
-- (id)initWithContainer:(id)arg1 preferredLocalizations:(id)arg2 performExpensiveFetchOperations:(_Bool)arg3;
+- (id)initWithContainer:(id)arg1 preferredLocalizations:(id)arg2 currentRegion:(id)arg3 currentIdiom:(id)arg4 performExpensiveFetchOperations:(_Bool)arg5;
 - (id)init;
 
 @end

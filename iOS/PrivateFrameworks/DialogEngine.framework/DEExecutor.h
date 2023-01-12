@@ -6,52 +6,67 @@
 
 #import <objc/NSObject.h>
 
-@class DEContext, DEDistribution, NSDictionary, NSString;
+@class DEDistribution, DEExecutionContext, NSDictionary, NSString;
 
 @interface DEExecutor : NSObject
 {
+    _Bool _visual;
     _Bool _debug;
     _Bool _test;
     _Bool _resetState;
     _Bool _multiuser;
     _Bool _grounding;
     _Bool _enableUpdates;
+    _Bool _createTrace;
+    _Bool _deterministic;
     unsigned int _randomSeed;
     NSString *_templateDir;
     NSString *_catId;
     NSString *_locale;
+    NSString *_interactionId;
+    NSString *_patternId;
     NSDictionary *_parameters;
     NSDictionary *_globalParameters;
+    NSDictionary *_userSettings;
     NSString *_pluginName;
-    DEContext *_context;
+    DEExecutionContext *_context;
     CDUnknownBlockType _callback;
     NSString *_voiceGender;
     long long _currentTime;
     DEDistribution *_distribution;
+    NSDictionary *_customPronunciations;
 }
 
 + (void)executeWithJson:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)executeWithJson:(id)arg1 callback:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (void)executeWithJson:(id)arg1 paramsString:(id)arg2 localeString:(id)arg3 callback:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
-+ (CDUnknownBlockType)prepareCallback:(CDUnknownBlockType)arg1 forContext:(struct Context *)arg2;
++ (CDUnknownBlockType)prepareCallback:(CDUnknownBlockType)arg1 forContext:(void *)arg2;
++ (id)bundleTemplateDir:(id)arg1;
 + (void)preload;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool deterministic; // @synthesize deterministic=_deterministic;
+@property(retain, nonatomic) NSDictionary *customPronunciations; // @synthesize customPronunciations=_customPronunciations;
 @property(retain, nonatomic) DEDistribution *distribution; // @synthesize distribution=_distribution;
 @property(nonatomic) long long currentTime; // @synthesize currentTime=_currentTime;
 @property(nonatomic) unsigned int randomSeed; // @synthesize randomSeed=_randomSeed;
 @property(retain, nonatomic) NSString *voiceGender; // @synthesize voiceGender=_voiceGender;
+@property(nonatomic) _Bool createTrace; // @synthesize createTrace=_createTrace;
 @property(nonatomic) _Bool enableUpdates; // @synthesize enableUpdates=_enableUpdates;
 @property(nonatomic) _Bool grounding; // @synthesize grounding=_grounding;
 @property(nonatomic) _Bool multiuser; // @synthesize multiuser=_multiuser;
 @property(nonatomic) _Bool resetState; // @synthesize resetState=_resetState;
 @property(nonatomic) _Bool test; // @synthesize test=_test;
 @property(nonatomic) _Bool debug; // @synthesize debug=_debug;
+@property(nonatomic) _Bool visual; // @synthesize visual=_visual;
 @property(copy, nonatomic) CDUnknownBlockType callback; // @synthesize callback=_callback;
-@property(retain, nonatomic) DEContext *context; // @synthesize context=_context;
+@property(retain, nonatomic) DEExecutionContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *pluginName; // @synthesize pluginName=_pluginName;
+@property(retain, nonatomic) NSDictionary *userSettings; // @synthesize userSettings=_userSettings;
 @property(retain, nonatomic) NSDictionary *globalParameters; // @synthesize globalParameters=_globalParameters;
 @property(retain, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
+@property(retain, nonatomic) NSString *patternId; // @synthesize patternId=_patternId;
+@property(retain, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSString *catId; // @synthesize catId=_catId;
 @property(retain, nonatomic) NSString *templateDir; // @synthesize templateDir=_templateDir;
@@ -59,11 +74,12 @@
 - (void)executeWithParams:(id)arg1 locale:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)execute;
 - (void)executeWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)consumeContext:(struct Context *)arg1 localePath:(basic_string_7c0a1c0b)arg2;
-- (basic_string_7c0a1c0b)consumeContextForJson:(struct Context *)arg1;
-- (void)updateContext:(struct Context *)arg1 localePath:(basic_string_7c0a1c0b)arg2;
-- (struct Context *)getContext:(struct ElapsedTimer)arg1;
+- (id)consumeContext:(shared_ptr_3beef14e)arg1 paramsPath:(basic_string_0ec669f3)arg2 localePath:(basic_string_0ec669f3)arg3 visualPath:(basic_string_0ec669f3)arg4;
+- (basic_string_0ec669f3)consumeContextForJson:(shared_ptr_3beef14e)arg1;
+- (void)updateContext:(void *)arg1 paramsPath:(basic_string_0ec669f3)arg2 localePath:(basic_string_0ec669f3)arg3 visualPath:(basic_string_0ec669f3)arg4;
+- (shared_ptr_3beef14e)getContext:(struct ElapsedTimer)arg1;
 - (id)init;
+- (void)LogCurareCATExecution:(const void *)arg1;
 
 @end
 

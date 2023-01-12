@@ -33,6 +33,7 @@
 - (_Bool)subObjectsHaveDatabaseAssertions;
 - (void)setCurrentCalendarOverride:(id)arg1;
 - (void)setCurrentDateOverride:(id)arg1;
+- (id)_minimumValueForMonthlyChallengeType:(unsigned long long)arg1;
 - (id)_maximumValueForMonthlyChallengeType:(unsigned long long)arg1;
 - (double)_roundedGoalValue:(double)arg1 monthlyChallengeType:(unsigned long long)arg2;
 - (id)_suffixForCurrentMonthForType:(unsigned long long)arg1 template:(id)arg2;

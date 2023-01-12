@@ -18,7 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSArray *postProcessingMetricHandlers; // @synthesize postProcessingMetricHandlers=_postProcessingMetricHandlers;
 @property(readonly, nonatomic) id <BCSMeasurementFactoryProtocol> measurementFactory; // @synthesize measurementFactory=_measurementFactory;
 - (id)megashardPrefetchMetricForType:(long long)arg1;
 - (id)configPrefetchMetricForConfigType:(long long)arg1;

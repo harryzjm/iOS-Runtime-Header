@@ -10,15 +10,21 @@
 {
 }
 
++ (unsigned long long)indexOfChatItem:(id)arg1 inChatItemsArray:(id)arg2;
++ (id)quickSaveConfirmationAlertForMediaObjects:(id)arg1 momentShareURL:(id)arg2 popoverSource:(id)arg3 metricsSource:(id)arg4 cancelHandler:(CDUnknownBlockType)arg5 preSaveHandler:(CDUnknownBlockType)arg6 postSaveHandler:(CDUnknownBlockType)arg7;
++ (id)quickSaveConfirmationAlertWithPhotoCount:(unsigned long long)arg1 videoCount:(unsigned long long)arg2 otherCount:(unsigned long long)arg3 alreadySavedCount:(unsigned long long)arg4 popoverSource:(id)arg5 cancelHandler:(CDUnknownBlockType)arg6 saveHandler:(CDUnknownBlockType)arg7 navigationHandler:(CDUnknownBlockType)arg8;
++ (_Bool)isMessagePromotionsNotificationDisabled;
++ (_Bool)isMessageTransactionsNotificationDisabled;
++ (_Bool)isMessageUnknownSenderNotificationDisabled;
 + (unsigned long long)messageJunkStatus;
 + (id)deviceSpecificNameForKey:(id)arg1;
 + (id)imMessageForIMMessageItem:(id)arg1;
 + (id)threadOriginatorForMessagePart:(id)arg1;
 + (id)threadIdentifierForMessagePart:(id)arg1;
 + (_Bool)isIpad;
-+ (_Bool)carrierDefaultBoolForKey:(id)arg1;
-+ (_Bool)carrierDefaultBoolForKey:(id)arg1 defaultValue:(_Bool)arg2;
++ (id)imDefaultsSharedInstance;
 + (_Bool)userDefaultBoolForKey:(id)arg1;
++ (id)nsUserDefaultsStandardUserDefaults;
 + (_Bool)deviceHasMultipleSubscriptions;
 
 @end

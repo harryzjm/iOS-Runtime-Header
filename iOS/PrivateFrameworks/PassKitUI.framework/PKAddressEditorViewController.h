@@ -39,6 +39,7 @@
     NSString *_originalFamilyName;
     NSString *_originalPhoneticGivenName;
     NSString *_originalPhoneticFamilyName;
+    NSString *_originalCountry;
     CNMutablePostalAddress *_originalAddress;
     CNPostalAddressFormattingSpecification *_addressFormatter;
     NSArray *_suggestions;
@@ -77,6 +78,7 @@
 @property(retain, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property(retain, nonatomic) CNPostalAddressFormattingSpecification *addressFormatter; // @synthesize addressFormatter=_addressFormatter;
 @property(retain, nonatomic) CNMutablePostalAddress *originalAddress; // @synthesize originalAddress=_originalAddress;
+@property(retain, nonatomic) NSString *originalCountry; // @synthesize originalCountry=_originalCountry;
 @property(retain, nonatomic) NSString *originalPhoneticFamilyName; // @synthesize originalPhoneticFamilyName=_originalPhoneticFamilyName;
 @property(retain, nonatomic) NSString *originalPhoneticGivenName; // @synthesize originalPhoneticGivenName=_originalPhoneticGivenName;
 @property(retain, nonatomic) NSString *originalFamilyName; // @synthesize originalFamilyName=_originalFamilyName;

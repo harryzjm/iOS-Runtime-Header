@@ -8,7 +8,6 @@
 
 @class UILabel;
 
-__attribute__((visibility("hidden")))
 @interface MCCertificatePickerCell : PSTableCell
 {
     UILabel *_issuedByLabel;

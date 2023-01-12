@@ -28,7 +28,7 @@
 - (id)logIdentifier;
 - (void)dumpDebug;
 - (void)dumpDebug:(id)arg1;
-- (id)debugString:(_Bool)arg1;
+- (void)dumpWithVerbosity:(_Bool)arg1 prefix:(id)arg2 logType:(unsigned char)arg3;
 @property(readonly, copy) NSString *description;
 - (void)save;
 - (void)save:(CDUnknownBlockType)arg1;

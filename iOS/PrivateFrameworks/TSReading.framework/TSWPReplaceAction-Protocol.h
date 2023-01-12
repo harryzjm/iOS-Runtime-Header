@@ -12,6 +12,6 @@
 - (struct _NSRange)insertedRange;
 - (long long)delta;
 - (unsigned long long)targetCharIndex;
-- (void)performWithStorage:(TSWPStorage *)arg1 delta:(long long)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3 replaceBlock:(void (^)(TSWPSelection *, NSString *))arg4;
+- (void)performWithStorage:(TSWPStorage *)arg1 delta:(long long)arg2 undoTransaction:(void *)arg3 replaceBlock:(void (^)(TSWPSelection *, NSString *))arg4;
 @end
 

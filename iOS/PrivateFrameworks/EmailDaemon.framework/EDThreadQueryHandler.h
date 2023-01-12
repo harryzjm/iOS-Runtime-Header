@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <EmailDaemon/EDMessageRepositoryQueryHandler-Protocol.h>
+#import <EmailDaemon/EDThreadChangeHookResponder-Protocol.h>
 #import <EmailDaemon/EDThreadMigratorDelegate-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMMessageListItemQueryResultsObserver-Protocol.h>
@@ -14,7 +15,7 @@
 @class EDMessagePersistence, EDPersistenceHookRegistry, EDThreadPersistence, EDVIPManager, EFLocked, EFQuery, EMObjectID, EMThreadScope, NSString;
 @protocol EDRemoteSearchProvider, EDResumable, EDThreadQueryHandlerDelegate, EMMessageListItemQueryResultsObserver;
 
-@interface EDThreadQueryHandler : NSObject <EDThreadMigratorDelegate, EMMessageListItemQueryResultsObserver, EFLoggable, EDMessageRepositoryQueryHandler>
+@interface EDThreadQueryHandler : NSObject <EDThreadChangeHookResponder, EDThreadMigratorDelegate, EMMessageListItemQueryResultsObserver, EFLoggable, EDMessageRepositoryQueryHandler>
 {
     _Atomic char _state;
     struct atomic_flag _isRunning;
@@ -48,6 +49,7 @@
 @property(readonly, copy, nonatomic) EFQuery *query; // @synthesize query=_query;
 - (id)messageReconciliationQueries;
 - (id)threadReconciliationQueries;
+- (void)persistenceDidResetThreadScope:(id)arg1;
 - (void)observer:(id)arg1 matchedOldestItemsUpdatedForMailboxes:(id)arg2;
 - (void)observerWillRestart:(id)arg1;
 - (void)observer:(id)arg1 replacedExistingObjectID:(id)arg2 withNewObjectID:(id)arg3;
@@ -71,7 +73,7 @@
 - (void)test_tearDown;
 - (void)_tearDownWithQueryHandlerBlock:(CDUnknownBlockType)arg1;
 - (void)cancel;
-- (void)start;
+- (_Bool)start;
 - (void)_createUnderlyingHandlerIfNeededAndStart;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 threadPersistence:(id)arg3 hookRegistry:(id)arg4 vipManager:(id)arg5 remoteSearchProvider:(id)arg6 observer:(id)arg7 observationIdentifier:(id)arg8 delegate:(id)arg9 observationResumer:(id)arg10;
 

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_879bd826)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_879bd826)addObjectToBuffer:(void *)arg1;
 - (void)prompts_v2:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSData *prompts_v2;
 @property(readonly, nonatomic) NSArray *prompts;

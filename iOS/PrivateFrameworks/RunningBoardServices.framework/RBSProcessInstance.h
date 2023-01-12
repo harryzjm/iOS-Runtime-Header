@@ -38,7 +38,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithEuid:(unsigned int)arg1;
+- (id)copyWithAuid:(unsigned int)arg1;
 - (id)init;
 
 // Remaining properties

@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface AVPlayerVolumeController : NSObject <AVVolumeController>
 {
+    _Bool _prefersSystemVolumeHUDHidden;
     _Bool _changingVolume;
     AVPlayerController *_playerController;
     AVObservationController *_keyValueObservationController;
@@ -23,11 +24,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVObservationController *keyValueObservationController; // @synthesize keyValueObservationController=_keyValueObservationController;
 @property(nonatomic, getter=isChangingVolume) _Bool changingVolume; // @synthesize changingVolume=_changingVolume;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
+@property(nonatomic) _Bool prefersSystemVolumeHUDHidden; // @synthesize prefersSystemVolumeHUDHidden=_prefersSystemVolumeHUDHidden;
 - (void)endChangingVolume;
-- (void)beginChangingVolumeForWindowSceneSessionID:(id)arg1;
-- (void)setClientWithIdentifier:(id)arg1 prefersSystemVolumeHUDHidden:(_Bool)arg2 forWindowSceneSessionWithIdentifier:(id)arg3;
+- (void)beginChangingVolume;
+- (void)setClientWithIdentifier:(id)arg1 forWindowSceneSessionWithIdentifier:(id)arg2;
 @property(readonly, nonatomic) _Bool currentRouteHasVolumeControl;
-@property(readonly, nonatomic) float effectiveVolumeLimit;
 - (void)setTargetVolume:(float)arg1;
 @property(readonly, nonatomic) float volume;
 - (void)dealloc;

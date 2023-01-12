@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPaletteMoreOptionsViewControllerDelegate-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
 #import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
@@ -16,9 +16,9 @@
 @class NSLayoutConstraint, NSString, PKPaletteButton, PKPaletteButtonGroupView, PKPaletteKeyboardButton, PKPaletteMoreOptionsViewController, UIStackView, UIViewController;
 @protocol PKPaletteAdditionalOptionsViewDelegate, PKPalettePopoverPresenting;
 
-@interface PKPaletteAdditionalOptionsView : UIView <PKPaletteMoreOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PKEdgeLocatable, PKPalettePopoverUpdating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
+@interface PKPaletteAdditionalOptionsView : UIView <PKPaletteMoreOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PKPaletteEdgeLocating, PKPalettePopoverUpdating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
 {
-    _Bool _supportsAnnotationEditing;
+    _Bool _showsPlusButton;
     _Bool _autoHideOn;
     _Bool _isFingerDrawsOn;
     _Bool _shouldShowFingerDrawsOption;
@@ -68,7 +68,7 @@
 @property(nonatomic) _Bool shouldShowFingerDrawsOption; // @synthesize shouldShowFingerDrawsOption=_shouldShowFingerDrawsOption;
 @property(nonatomic) _Bool isFingerDrawsOn; // @synthesize isFingerDrawsOn=_isFingerDrawsOn;
 @property(nonatomic, getter=isAutoHideOn) _Bool autoHideOn; // @synthesize autoHideOn=_autoHideOn;
-@property(nonatomic) _Bool supportsAnnotationEditing; // @synthesize supportsAnnotationEditing=_supportsAnnotationEditing;
+@property(nonatomic) _Bool showsPlusButton; // @synthesize showsPlusButton=_showsPlusButton;
 @property(nonatomic) __weak id <PKPaletteAdditionalOptionsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <PKPalettePopoverPresenting> palettePopoverPresenting; // @synthesize palettePopoverPresenting=_palettePopoverPresenting;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;

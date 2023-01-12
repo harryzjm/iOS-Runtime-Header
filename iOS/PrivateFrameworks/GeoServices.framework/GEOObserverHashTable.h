@@ -6,23 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, Protocol;
+@class NSArray, NSHashTable, NSMapTable, Protocol;
 @protocol OS_dispatch_queue;
 
 @interface GEOObserverHashTable : NSObject
 {
     Protocol *_protocol;
     NSHashTable *_observers;
+    NSMapTable *_observerQueues;
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 - (void).cxx_destruct;
 - (id)description;
+- (void)enumerateObserversWithGroup:(id)arg1 visitor:(CDUnknownBlockType)arg2;
 - (void)forwardInvocation:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1 queue:(id)arg2;
+- (void)registerObserver:(id)arg1;
+@property(readonly, nonatomic) NSArray *allObservers;
 @property(readonly, nonatomic) _Bool hasObservers;
 - (id)initWithProtocol:(id)arg1 queue:(id)arg2;
 - (id)init;

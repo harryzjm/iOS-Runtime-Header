@@ -10,8 +10,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
-+ (_Bool)isToken:(id)arg1 correctForBundleIdentifier:(id)arg2 connection:(id)arg3;
-- (id)initWithBundleIdentifier:(id)arg1;
 
 @end
 

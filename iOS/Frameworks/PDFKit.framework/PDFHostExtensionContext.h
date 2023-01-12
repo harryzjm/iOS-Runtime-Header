@@ -19,6 +19,7 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
 @property(nonatomic) __weak PDFHostViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
+- (oneway void)extensionSnapshotToHost:(id)arg1 scale:(double)arg2;
 - (oneway void)extensionToHost:(id)arg1;
 
 // Remaining properties

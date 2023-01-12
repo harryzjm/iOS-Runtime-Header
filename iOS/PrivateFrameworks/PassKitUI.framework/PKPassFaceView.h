@@ -55,17 +55,17 @@
     _Bool _clipsContent;
     _Bool _allowBackgroundPlaceholders;
     _Bool _liveMotionEnabled;
-    _Bool _reduceMotionEnabled;
     _Bool _viewExpanded;
     long long _backgroundMode;
     unsigned long long _visibleRegions;
     double _clippedContentHeight;
-    NSData *_additionalBarcodeData;
+    NSData *_dynamicBarcodeData;
     id <PKPassFaceViewDelegate> _delegate;
     long long _style;
     PKPassFaceTemplate *_faceTemplate;
     PKPassBucketTemplate *_headerBucketTemplate;
     NSArray *_buckets;
+    struct CGSize _cobrandLogoSize;
 }
 
 + (id)newFrontFaceViewForStyle:(long long)arg1;
@@ -73,14 +73,14 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
 @property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(readonly, nonatomic) struct CGSize cobrandLogoSize; // @synthesize cobrandLogoSize=_cobrandLogoSize;
 @property(readonly, nonatomic) PKPassBucketTemplate *headerBucketTemplate; // @synthesize headerBucketTemplate=_headerBucketTemplate;
 @property(readonly, nonatomic) PKPassFaceTemplate *faceTemplate; // @synthesize faceTemplate=_faceTemplate;
 @property(retain, nonatomic) NSMutableArray *headerBucketViews; // @synthesize headerBucketViews=_headerBucketViews;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) __weak id <PKPassFaceViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(copy, nonatomic) NSData *additionalBarcodeData; // @synthesize additionalBarcodeData=_additionalBarcodeData;
+@property(copy, nonatomic) NSData *dynamicBarcodeData; // @synthesize dynamicBarcodeData=_dynamicBarcodeData;
 @property(nonatomic) _Bool viewExpanded; // @synthesize viewExpanded=_viewExpanded;
-@property(nonatomic, getter=isReduceMotionEnabled) _Bool reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property(nonatomic) _Bool liveMotionEnabled; // @synthesize liveMotionEnabled=_liveMotionEnabled;
 @property(nonatomic) double clippedContentHeight; // @synthesize clippedContentHeight=_clippedContentHeight;
 @property(nonatomic) _Bool allowBackgroundPlaceholders; // @synthesize allowBackgroundPlaceholders=_allowBackgroundPlaceholders;

@@ -6,26 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class AXElement, NSString;
+@class AXElement, NSHashTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AXFocusManager : NSObject
 {
     int _pidForSuccessfulTypeaheadMovement;
+    struct os_unfair_lock_s _observersLock;
     NSString *_typeaheadString;
     NSObject<OS_dispatch_queue> *_movementQueue;
+    NSHashTable *_observers;
+    NSObject<OS_dispatch_queue> *_observersQueue;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct os_unfair_lock_s observersLock; // @synthesize observersLock=_observersLock;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *observersQueue; // @synthesize observersQueue=_observersQueue;
+@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *movementQueue; // @synthesize movementQueue=_movementQueue;
 @property(nonatomic) int pidForSuccessfulTypeaheadMovement; // @synthesize pidForSuccessfulTypeaheadMovement=_pidForSuccessfulTypeaheadMovement;
 @property(retain, nonatomic) NSString *typeaheadString; // @synthesize typeaheadString=_typeaheadString;
+- (void)_enumerateObservers:(CDUnknownBlockType)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
 @property(readonly, nonatomic) AXElement *currentApplication;
 - (id)currentElement;
-- (_Bool)_recursiveMoveFocusInApplication:(id)arg1 withHeading:(unsigned long long)arg2;
-- (void)_handleFailedFocusMovementWithHeading:(unsigned long long)arg1;
-- (_Bool)_moveFocusWithHeading:(unsigned long long)arg1 shouldWrap:(_Bool)arg2;
-- (_Bool)_moveFocusInRemoteElement:(id)arg1 withHeading:(unsigned long long)arg2;
+- (_Bool)_recursiveMoveFocusInApplication:(id)arg1 withHeading:(unsigned long long)arg2 byGroup:(_Bool)arg3;
+- (void)_handleFailedFocusMovementWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2;
+- (_Bool)_moveFocusWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2 shouldWrap:(_Bool)arg3;
+- (_Bool)_moveFocusInRemoteElement:(id)arg1 withHeading:(unsigned long long)arg2 byGroup:(_Bool)arg3;
 - (_Bool)_recursiveMoveFocusInApplication:(id)arg1 withHeading:(unsigned long long)arg2 queryString:(id)arg3;
 - (_Bool)_moveFocusInApplication:(id)arg1 withHeading:(unsigned long long)arg2 queryString:(id)arg3;
 - (void)_moveToElementWithHeading:(unsigned long long)arg1 queryString:(id)arg2;
@@ -34,9 +43,11 @@
 - (unsigned long long)_indexOfTypeaheadPIDInApplications:(id)arg1;
 - (_Bool)_focusOnApplicationWithPID:(int)arg1;
 - (void)focusOnApplicationForTypeahead;
+- (void)_moveFocusWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2 queryString:(id)arg3 shouldWrap:(_Bool)arg4;
 - (void)moveFocusWithHeading:(unsigned long long)arg1 queryString:(id)arg2;
+- (void)moveFocusInsideForward:(_Bool)arg1 shouldWrap:(_Bool)arg2;
 - (void)moveFocusInsideForward:(_Bool)arg1;
-- (void)moveFocusWithHeading:(unsigned long long)arg1;
+- (void)moveFocusWithHeading:(unsigned long long)arg1 byGroup:(_Bool)arg2;
 - (id)_moveApplicationFocusInDirection:(long long)arg1;
 - (id)init;
 

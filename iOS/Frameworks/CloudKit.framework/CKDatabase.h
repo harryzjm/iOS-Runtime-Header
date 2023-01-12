@@ -6,41 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, NSOperationQueue;
-@protocol OS_dispatch_queue;
+@class CKContainer, CKDatabaseImplementation, NSOperationQueue;
 
 @interface CKDatabase : NSObject
 {
-    NSObject<OS_dispatch_queue> *_underlyingDispatchQueue;
     CKContainer *_container;
-    long long _scope;
-    NSOperationQueue *_operationQueue;
+    CKDatabaseImplementation *_implementation;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property(readonly, nonatomic) long long scope; // @synthesize scope=_scope;
+@property(readonly, nonatomic) CKDatabaseImplementation *implementation; // @synthesize implementation=_implementation;
 @property(nonatomic) __weak CKContainer *container; // @synthesize container=_container;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *underlyingDispatchQueue; // @synthesize underlyingDispatchQueue=_underlyingDispatchQueue;
-- (id)CKStatusReportArray;
-- (void)fetchPCSFromCacheForZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)clearCacheEntriesForZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)clearCacheEntriesForRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)clearCachesWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getCorruptRecordsForAllZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getPCSDiagnosticsForZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)clearAuthTokensForRecordWithID:(id)arg1;
 - (void)clearRecordCache;
-- (void)showAssetCache;
-- (void)clearAssetCache;
-- (unsigned long long)countAssetCacheItems;
-- (id)daemonWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)addOperation:(id)arg1;
-@property(readonly, nonatomic) long long databaseScope;
-- (id)description;
-- (id)CKPropertiesDescription;
-- (id)_initWithContainer:(id)arg1 scope:(long long)arg2;
-- (id)init;
 - (void)fetchAllSubscriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchSubscriptionWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteSubscriptionWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -53,7 +30,16 @@
 - (void)deleteRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_scheduleOperation:(id)arg1;
+- (void)addOperation:(id)arg1;
+@property(readonly, nonatomic) NSOperationQueue *operationQueue;
+@property(readonly, nonatomic) long long scope;
+@property(readonly, nonatomic) long long databaseScope;
+- (id)forwardingTargetForSelector:(SEL)arg1;
+- (id)description;
+- (id)CKPropertiesDescription;
+- (id)_initWithImplementation:(id)arg1 container:(id)arg2;
+- (id)_initWithContainer:(id)arg1 scope:(long long)arg2;
+- (id)init;
 
 @end
 

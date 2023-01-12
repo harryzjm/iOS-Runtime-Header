@@ -7,8 +7,9 @@
 #import <ContactsUI/NSObject-Protocol.h>
 
 @class CNUIContactSaveConfiguration, CNUIContactSaveResult;
+@protocol CNUIContactSaveDelegate;
 
 @protocol CNUIContactSaveExecutor <NSObject>
-- (CNUIContactSaveResult *)executeSaveWithConfiguration:(CNUIContactSaveConfiguration *)arg1;
+- (CNUIContactSaveResult *)executeSaveWithConfiguration:(CNUIContactSaveConfiguration *)arg1 saveDelegate:(id <CNUIContactSaveDelegate>)arg2;
 @end
 

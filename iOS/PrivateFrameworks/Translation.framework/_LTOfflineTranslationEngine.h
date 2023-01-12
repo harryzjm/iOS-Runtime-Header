@@ -8,7 +8,7 @@
 
 #import <Translation/_LTTranslationEngine-Protocol.h>
 
-@class EMTTranslator, NSArray, NSDictionary, NSLocale, NSString, NSURL, _LTLanguageDetectionResult, _LTLocalePair, _LTMultilingualSpeechRecognizer, _LTOfflineSpeechSynthesizer, _LTSpeechTranslationAssetInfo, _LTTextToSpeechCache;
+@class EMTTranslator, NSArray, NSDictionary, NSError, NSLocale, NSString, NSURL, _LTLanguageDetectionResult, _LTLocalePair, _LTMultilingualSpeechRecognizer, _LTOfflineSpeechSynthesizer, _LTSpeechTranslationAssetInfo, _LTTextToSpeechCache;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSLocale *_lidBestResult;
     _LTLanguageDetectionResult *_lidResult;
     _Bool _didEndpointSpeech;
+    NSError *_earError;
     NSArray *_asrModelURLs;
     NSURL *_mtModelURL;
     _LTTextToSpeechCache *_ttsCache;
@@ -40,8 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)endAudio;
 - (void)startSpeechTranslationWithContext:(id)arg1 delegate:(id)arg2;
 - (void)startTextToSpeechTranslationWithContext:(id)arg1 text:(id)arg2 delegate:(id)arg3;
-- (void)_translate:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_speak:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_translatePrepare:(id)arg1;
+- (void)_translate:(id)arg1 withContext:(id)arg2 isFinal:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)speak:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_waitForLIDWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_getBestRecognitionResult:(id)arg1 context:(id)arg2;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)_translate:(id)arg1 withContext:(id)arg2 toLocale:(id)arg3 paragraphResult:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_translateParagraph:(id)arg1 withContext:(id)arg2 toLocale:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_paragraphResultFromSentences:(id)arg1;
-- (void)_translateString:(id)arg1 withContext:(id)arg2 toLocale:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_translateString:(id)arg1 withContext:(id)arg2 toLocale:(id)arg3 withSpans:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_handleTranslationResults:(id)arg1 withContext:(id)arg2;
 - (void)preheatAsynchronously:(_Bool)arg1 withContext:(id)arg2;
 - (void)_loadTranslatorForTask:(id)arg1;

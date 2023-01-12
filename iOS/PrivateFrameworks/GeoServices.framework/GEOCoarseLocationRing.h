@@ -16,26 +16,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _pointsSpace;
 }
 
-+ (_Bool)isValid:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (void)setPoints:(struct GEOCoarseLocationPoint *)arg1 count:(unsigned long long)arg2;
-- (struct GEOCoarseLocationPoint)pointsAtIndex:(unsigned long long)arg1;
-- (void)addPoints:(struct GEOCoarseLocationPoint)arg1;
-- (void)clearPoints;
-@property(readonly, nonatomic) struct GEOCoarseLocationPoint *points;
-@property(readonly, nonatomic) unsigned long long pointsCount;
 - (void)dealloc;
 
 @end

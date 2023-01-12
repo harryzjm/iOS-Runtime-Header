@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)addResourceBindingsForArgument:(id)arg1 frequency:(int)arg2 needsRenderResource:(_Bool)arg3 block:(CDUnknownBlockType)arg4;
 - (void)_checkForAssociatedSamplerOnBinding:(id)arg1 argument:(id)arg2;
 - (id)_dictionaryForFrequency:(int)arg1;
-- (void)generateBindingsForPipeline:(id)arg1 withReflection:(id)arg2 program:(struct __C3DFXProgram *)arg3 material:(struct __C3DMaterial *)arg4 geometry:(struct __C3DGeometry *)arg5 pass:(struct __C3DFXPass *)arg6;
+- (void)generateBindingsForPipeline:(id)arg1 withReflection:(id)arg2 program:(struct __C3DFXMetalProgram *)arg3 material:(struct __C3DMaterial *)arg4 geometry:(struct __C3DGeometry *)arg5 pass:(struct __C3DFXPass *)arg6;
 - (void)_parseArguments:(id)arg1 function:(id)arg2 renderPipeline:(id)arg3;
 - (long long)_searchArguments:(id)arg1 forArgumentNamed:(id)arg2 type:(unsigned long long)arg3;
 - (void)dealloc;

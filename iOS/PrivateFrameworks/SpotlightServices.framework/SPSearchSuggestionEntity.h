@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSString;
 
 @interface SPSearchSuggestionEntity
 {
+    NSString *_searchString;
     NSString *_queryString;
-    NSString *_tokenText;
-    NSArray *_preferredBundleIDs;
+    NSString *_spotlightQueryString;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *preferredBundleIDs; // @synthesize preferredBundleIDs=_preferredBundleIDs;
-@property(retain, nonatomic) NSString *tokenText; // @synthesize tokenText=_tokenText;
-@property(retain, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
-- (id)initWithQueryString:(id)arg1 tokenText:(id)arg2 preferredBundleIDs:(id)arg3;
+- (id)spotlightQueryString;
+- (id)queryString;
+- (id)searchString;
+- (void)updateSearchString:(id)arg1;
+- (id)initWithSearchString:(id)arg1 spotlightQueryString:(id)arg2 preferredBundleIDs:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

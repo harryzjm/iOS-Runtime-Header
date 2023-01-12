@@ -55,6 +55,7 @@
 - (void)didUpdateActivityZoneCanvas:(id)arg1;
 - (void)didUpdateActivityZone:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewDidAppear:(_Bool)arg1;
 - (id)initWithCameraProfile:(id)arg1;
 
 // Remaining properties

@@ -6,9 +6,10 @@
 
 #import <MobileMailUI/NSObject-Protocol.h>
 
-@class MFLoadBlockedContentBannerView;
+@class MFLoadBlockedContentBannerView, UIViewController;
 
 @protocol MFLoadBlockedContentBannerViewDelegate <NSObject>
+- (void)presentViewController:(UIViewController *)arg1;
 - (void)loadBlockedContentBannerDidTriggerLoad:(MFLoadBlockedContentBannerView *)arg1;
 @end
 

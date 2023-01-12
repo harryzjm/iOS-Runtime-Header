@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSDictionary, NSString;
 
 @interface SGContactPipelineHelper : NSObject
 {
-    NSMutableDictionary *_lengthsCounts;
+    NSDictionary *_lengthsCounts;
     unsigned long long _phonesSeenInContacts;
     NSString *_mostCommonCountryCode;
     struct _opaque_pthread_mutex_t _helperLock;

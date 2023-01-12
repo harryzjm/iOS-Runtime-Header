@@ -10,11 +10,10 @@
 
 @interface _TtC18HealthPlatformCore25DiskHealthExperienceStore : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *diskHealthExperienceStoreVersionKey;
-    MISSING_TYPE *diskHealthExperienceStoreLocaleKey;
     MISSING_TYPE *previousMergeFailed;
     MISSING_TYPE *fetchLimit;
-    MISSING_TYPE *$__lazy_storage_$_sharedBackgroundContext;
+    MISSING_TYPE *notificationManager;
+    MISSING_TYPE *__sharedBackgroundContext;
     MISSING_TYPE *$__lazy_storage_$_allEntities;
     MISSING_TYPE *persistentHistoryToken;
     MISSING_TYPE *mergeNotificationQueue;

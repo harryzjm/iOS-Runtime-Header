@@ -8,11 +8,11 @@
 
 @interface UIImage (PhotosUICore)
 + (id)px_roundedCornerMaskImage:(CDStruct_2bd92d94)arg1 size:(struct CGSize)arg2;
-+ (id)px_imageWithSize:(struct CGSize)arg1 path:(id)arg2 color:(id)arg3 displayScale:(double)arg4;
 + (id)_px_createOverlayImageWithGlyphStyle:(unsigned long long)arg1 backgroundWhite:(double)arg2 backgroundAlpha:(double)arg3 glyphAlpha:(double)arg4;
 + (void)px_preloadPlayOverlayGlyphsIfNeeded;
 + (id)px_playOverlayImage:(unsigned long long)arg1;
 + (id)px_imageFromSolidColor:(id)arg1;
++ (id)px_systemImageNamed:(id)arg1;
 + (id)px_imageNamed:(id)arg1;
 - (id)px_predrawnImage;
 - (id)px_backdropImageWithStyle:(long long)arg1;

@@ -18,6 +18,7 @@
 - (void)noteDidReplaceDocument;
 - (void)noteDidSaveAndClearDecryptedData;
 - (void)noteWillTurnIntoFault;
+- (void)noteWillReleaseTextStorage;
 - (_Bool)shouldReleaseTextStorageWhenTurningIntoFault;
 @end
 

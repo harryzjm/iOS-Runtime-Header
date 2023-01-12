@@ -6,22 +6,21 @@
 
 #import <UserActivity/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSObject, NSString, NSUUID;
-@protocol NSSecureCoding;
+@class NSArray, NSData, NSDictionary, NSString, NSUUID;
 
 @protocol UAResumableActivitiesAdministrativeProtocol <NSObject>
 - (void)doGetPairedDevices:(NSDictionary *)arg1 completionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg2;
 - (void)doGetSFActivityAdvertisement:(NSDictionary *)arg1 completionHandler:(void (^)(NSData *, NSDate *, NSUUID *, NSError *))arg2;
 - (void)doSetLocalPasteboardReflection:(_Bool)arg1;
-- (void)doSetRemotePasteboardAvalible:(_Bool)arg1;
+- (void)doSetRemotePasteboardAvailable:(_Bool)arg1;
 - (void)doReplayCommands:(NSArray *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)doSetupRendevous:(NSString *)arg1 domain:(NSString *)arg2 activate:(_Bool)arg3;
 - (void)doSetupNetworkedPairs:(NSString *)arg1 port:(long long)arg2;
 - (void)doWillSaveDelegate:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)doSetDefaults:(NSString *)arg1 value:(NSObject<NSSecureCoding> *)arg2;
+- (void)doSetDefaults:(NSString *)arg1 archivedValue:(NSData *)arg2;
 - (void)doCopyDefaults:(_Bool)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)doCopySimulatorStatusString:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *))arg2;
-- (void)doInjectBTLE:(NSUUID *)arg1 type:(unsigned long long)arg2 identifier:(NSString *)arg3 title:(NSString *)arg4 activityPayload:(NSData *)arg5 frameworkPayload:(NSData *)arg6 payloadDelay:(double)arg7;
+- (void)doInjectBTLEItem:(NSUUID *)arg1 type:(unsigned long long)arg2 identifier:(NSString *)arg3 title:(NSString *)arg4 activityPayload:(NSData *)arg5 webPageURL:(NSString *)arg6 remoteModel:(NSString *)arg7 duration:(double)arg8 payloadDelay:(double)arg9;
 - (void)doGetCurrentAdvertisedItemUUID:(void (^)(NSUUID *))arg1;
 - (void)doTerminateServer;
 - (void)doCopyDynamicUserActivitiesString:(NSDictionary *)arg1 completionHandler:(void (^)(NSString *))arg2;

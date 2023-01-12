@@ -13,7 +13,6 @@
 @interface HKDeletedObject (HDCodingSupport) <HDCoding>
 + (id)createWithCodable:(id)arg1;
 - (id)codableRepresentationForSync;
-- (_Bool)addCodableRepresentationToCollection:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

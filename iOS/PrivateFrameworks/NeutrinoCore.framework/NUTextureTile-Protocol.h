@@ -7,9 +7,9 @@
 #import <NeutrinoCore/NUImageTile-Protocol.h>
 #import <NeutrinoCore/NUSharableImage-Protocol.h>
 
-@class NUGLTexture;
+@protocol MTLTexture;
 
 @protocol NUTextureTile <NUImageTile, NUSharableImage>
-@property(readonly, nonatomic) NUGLTexture *texture;
+@property(readonly, nonatomic) id <MTLTexture> texture;
 @end
 

@@ -16,10 +16,12 @@
     MISSING_TYPE *showOnLockScreen;
     MISSING_TYPE *showInNotificationCenter;
     MISSING_TYPE *showBanners;
+    MISSING_TYPE *scheduledDeliverySetting;
 }
 
 - (id)init;
 - (id)initWithSystemSettings:(id)arg1;
+@property(nonatomic, readonly) int scheduledDeliverySetting; // @synthesize scheduledDeliverySetting;
 @property(nonatomic, readonly) _Bool showBanners; // @synthesize showBanners;
 @property(nonatomic, readonly) _Bool showInNotificationCenter; // @synthesize showInNotificationCenter;
 @property(nonatomic, readonly) _Bool showOnLockScreen; // @synthesize showOnLockScreen;

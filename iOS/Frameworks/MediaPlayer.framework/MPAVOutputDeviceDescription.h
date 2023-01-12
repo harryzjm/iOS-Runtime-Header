@@ -13,14 +13,18 @@
     long long _routeType;
     long long _routeSubtype;
     NSString *_uid;
+    NSString *_modelID;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
 @property(readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property(readonly, nonatomic) long long routeSubtype; // @synthesize routeSubtype=_routeSubtype;
 @property(readonly, nonatomic) long long routeType; // @synthesize routeType=_routeType;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)description;
+- (id)initWithDeviceType:(long long)arg1 deviceSubtype:(long long)arg2 uid:(id)arg3 modelID:(id)arg4;
 - (id)initWithDeviceType:(long long)arg1 deviceSubtype:(long long)arg2 uid:(id)arg3;
 
 @end

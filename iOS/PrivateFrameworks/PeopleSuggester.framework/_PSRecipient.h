@@ -15,9 +15,13 @@
     _Bool _familyHeuristic;
     NSString *_identifier;
     NSString *_handle;
+    NSString *_handleString;
+    long long _handleType;
     NSString *_displayName;
     CNContact *_contact;
     NSString *_senderHandle;
+    NSString *_givenName;
+    NSString *_familyName;
     NSString *_mostRecentTransportBundleId;
 }
 
@@ -26,9 +30,13 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *mostRecentTransportBundleId; // @synthesize mostRecentTransportBundleId=_mostRecentTransportBundleId;
 @property(nonatomic) _Bool familyHeuristic; // @synthesize familyHeuristic=_familyHeuristic;
+@property(copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
+@property(copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
 @property(copy, nonatomic) NSString *senderHandle; // @synthesize senderHandle=_senderHandle;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property long long handleType; // @synthesize handleType=_handleType;
+@property(copy, nonatomic) NSString *handleString; // @synthesize handleString=_handleString;
 @property(copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;

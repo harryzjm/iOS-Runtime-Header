@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemon/NSObject-Protocol.h>
+
 @protocol HKFeatureAvailabilityProviding;
 
-@protocol HKFeatureAvailabilityProvidingObserver
+@protocol HKFeatureAvailabilityProvidingObserver <NSObject>
 - (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id <HKFeatureAvailabilityProviding>)arg1;
 - (void)featureAvailabilityProvidingDidUpdateOnboardingCompletion:(id <HKFeatureAvailabilityProviding>)arg1;
+
+@optional
+- (void)featureAvailabilityProvidingDidUpdateSettings:(id <HKFeatureAvailabilityProviding>)arg1;
 @end
 

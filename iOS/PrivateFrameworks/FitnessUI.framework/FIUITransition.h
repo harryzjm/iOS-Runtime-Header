@@ -22,7 +22,7 @@
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(nonatomic) long long event; // @synthesize event=_event;
 @property(nonatomic) __weak FIUIState *toState; // @synthesize toState=_toState;
-@property(retain, nonatomic) NSString *label; // @synthesize label=_label;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 
 @end
 

@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardHome/SBHRecentsDocumentExtensionWrappingViewControllerDelegate-Protocol.h>
 #import <SpringBoardHome/_SBUIPopoverExtensionHostDelegate-Protocol.h>
 
 @class NSExtension, NSString, SBHRecentsDocumentExtensionWrappingViewController, SBUIPopoverExtensionHostViewController;
 @protocol SBHRecentsDocumentExtensionProviderDelegate, _SBUIPopoverExtensionRemoteInterface;
 
-@interface SBHRecentsDocumentExtensionProvider : NSObject <_SBUIPopoverExtensionHostDelegate>
+@interface SBHRecentsDocumentExtensionProvider : NSObject <_SBUIPopoverExtensionHostDelegate, SBHRecentsDocumentExtensionWrappingViewControllerDelegate>
 {
-    struct CGSize _compactPreferredContentSize;
     id <SBHRecentsDocumentExtensionProviderDelegate> _delegate;
     SBHRecentsDocumentExtensionWrappingViewController *_wrappingViewController;
     SBUIPopoverExtensionHostViewController *_hostViewController;
     NSExtension *_extension;
     id <_SBUIPopoverExtensionRemoteInterface> _remoteService;
+    struct CGSize _compactPreferredContentSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct CGSize compactPreferredContentSize; // @synthesize compactPreferredContentSize=_compactPreferredContentSize;
 @property(retain, nonatomic) id <_SBUIPopoverExtensionRemoteInterface> remoteService; // @synthesize remoteService=_remoteService;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(readonly, nonatomic) SBUIPopoverExtensionHostViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
@@ -29,14 +31,18 @@
 @property(nonatomic) __weak id <SBHRecentsDocumentExtensionProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_teardownHostViewController;
 - (void)_setupHostViewController:(id)arg1;
-- (void)_loadRemoteViewControllerWithBundleIdentifer:(id)arg1;
+- (void)_loadRemoteViewControllerWithConfiguration:(CDUnknownBlockType)arg1;
+- (id)_viewControllerConfiguration:(CDUnknownBlockType)arg1;
 - (void)_loadExtensionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_preferredExtensionIdentifier;
 - (void)_extensionWillExit:(id)arg1;
+- (_Bool)recentsDocumentExtensionWrappingViewControllerHasTransparentContent:(id)arg1;
 - (void)popoverHostExtensionDidExit:(id)arg1;
 - (void)popoverHostExtensionRequestsDismiss:(id)arg1;
 - (id)recentsDocumentViewControllerForBundleIdentifier:(id)arg1;
 - (_Bool)canShowRecentsDocumentExtensionProviderForBundleIdentifier:(id)arg1;
+@property(nonatomic) _Bool usesIntrinsicContentSizeBasedOnScreenSize;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

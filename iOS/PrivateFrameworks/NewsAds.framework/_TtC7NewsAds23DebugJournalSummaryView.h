@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <NewsAds/APPCVisibilityIgnorable-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC7NewsAds23DebugJournalSummaryView : UIView <APPCVisibilityIgnorable>
+@interface _TtC7NewsAds23DebugJournalSummaryView : UIView
 {
     MISSING_TYPE *placementIdentifierLabel;
     MISSING_TYPE *placementIdentifier;

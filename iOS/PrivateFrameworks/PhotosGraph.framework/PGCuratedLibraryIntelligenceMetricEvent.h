@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <PhotosGraph/PLMetricEvent-Protocol.h>
-
-@class NSDate, NSDictionary, NSString, PGGraph, PGManager;
+@class NSDate, NSDictionary, NSObject, PGManager;
 @protocol OS_dispatch_semaphore;
 
-@interface PGCuratedLibraryIntelligenceMetricEvent : NSObject <PLMetricEvent>
+@interface PGCuratedLibraryIntelligenceMetricEvent
 {
     NSObject<OS_dispatch_semaphore> *_semaphore;
     NSDate *_debugDate;
-    NSString *_identifier;
-    PGGraph *_graph;
     PGManager *_manager;
     NSDictionary *_payload;
     unsigned long long _librarySize;
@@ -134,8 +128,6 @@
 @property(nonatomic) long long librarySizeRange; // @synthesize librarySizeRange=_librarySizeRange;
 @property(nonatomic) unsigned long long librarySize; // @synthesize librarySize=_librarySize;
 @property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-@property(retain, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSDate *debugDate; // @synthesize debugDate=_debugDate;
 @property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
 - (id)_longTripDayGroups;
@@ -150,8 +142,7 @@
 - (id)utilityPredicate;
 - (id)_assetsStatisticsInHighlights:(id)arg1 photoLibrary:(id)arg2 includeUtility:(_Bool)arg3;
 - (unsigned long long)_debugNumberOfAssets;
-@property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
+- (id)payload;
 - (void)_saveKey:(id)arg1 stringValue:(id)arg2 payload:(id)arg3;
 - (void)_saveKey:(id)arg1 integerValue:(unsigned long long)arg2 payload:(id)arg3;
 - (void)_saveKey:(id)arg1 doubleValue:(double)arg2 payload:(id)arg3;
@@ -167,12 +158,8 @@
 - (void)_fillDayHighlightsStatisticsWithGraph:(id)arg1 withProgressBlock:(CDUnknownBlockType)arg2;
 - (void)_fillGenericStatisticsWithGraph:(id)arg1;
 - (void)gatherMetricsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (id)identifier;
 - (id)initWithGraphManager:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

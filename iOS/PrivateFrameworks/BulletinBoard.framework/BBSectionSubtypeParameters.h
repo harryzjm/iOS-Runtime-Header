@@ -8,7 +8,7 @@
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBColor, BBSectionIcon, NSNumber, NSSet, NSString;
+@class BBSectionIcon, NSNumber, NSSet, NSString;
 
 @interface BBSectionSubtypeParameters : NSObject <NSSecureCoding>
 {
@@ -22,7 +22,6 @@
     NSString *_fullAlternateActionLabel;
     NSString *_alternateActionLabel;
     BBSectionIcon *_sectionIconOverride;
-    BBColor *_tintColor;
     NSString *_bannerAccessoryRemoteViewControllerClassName;
     NSString *_bannerAccessoryRemoteServiceBundleIdentifier;
     NSString *_secondaryContentRemoteViewControllerClassName;
@@ -85,7 +84,6 @@
 @property(copy, nonatomic) NSString *secondaryContentRemoteViewControllerClassName; // @synthesize secondaryContentRemoteViewControllerClassName=_secondaryContentRemoteViewControllerClassName;
 @property(copy, nonatomic) NSString *bannerAccessoryRemoteServiceBundleIdentifier; // @synthesize bannerAccessoryRemoteServiceBundleIdentifier=_bannerAccessoryRemoteServiceBundleIdentifier;
 @property(copy, nonatomic) NSString *bannerAccessoryRemoteViewControllerClassName; // @synthesize bannerAccessoryRemoteViewControllerClassName=_bannerAccessoryRemoteViewControllerClassName;
-@property(retain, nonatomic) BBColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(copy, nonatomic) NSString *alternateActionLabel; // @synthesize alternateActionLabel=_alternateActionLabel;
 @property(copy, nonatomic) NSString *fullAlternateActionLabel; // @synthesize fullAlternateActionLabel=_fullAlternateActionLabel;
 @property(copy, nonatomic) NSString *unlockActionLabel; // @synthesize unlockActionLabel=_unlockActionLabel;

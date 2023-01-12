@@ -26,6 +26,8 @@
 @property(nonatomic) unsigned long long flowType; // @synthesize flowType=_flowType;
 @property(nonatomic) unsigned long long suggestionFetchType; // @synthesize suggestionFetchType=_suggestionFetchType;
 @property(nonatomic) unsigned long long initialPageLimit; // @synthesize initialPageLimit=_initialPageLimit;
+- (void)_saveUserFeedbackType:(unsigned long long)arg1 toBackingPerson:(id)arg2 personChangeRequest:(id)arg3;
+- (unsigned long long)_mergedUserFeedbackTypeFromConfirmedSuggestions:(id)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)stopListeningForLibraryChanges;
 - (void)startListeningForLibraryChanges;

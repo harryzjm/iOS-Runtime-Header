@@ -14,6 +14,7 @@
     MISSING_TYPE *provider;
     MISSING_TYPE *backingStore;
     MISSING_TYPE *_descriptorUpdatePublisher;
+    MISSING_TYPE *localeTokenGenerator;
     MISSING_TYPE *extensionCache;
     MISSING_TYPE *outstandingFetches;
 }

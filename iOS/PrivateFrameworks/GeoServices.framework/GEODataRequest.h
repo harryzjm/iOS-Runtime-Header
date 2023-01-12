@@ -45,7 +45,6 @@
 @property(readonly, nonatomic) _Bool requirePluggedIn;
 @property(readonly, nonatomic) _Bool requireInexpensiveNetwork;
 @property(readonly, nonatomic) _Bool needsProxy;
-@property(readonly, nonatomic) _Bool allowTCPFastOpen;
 @property(readonly, nonatomic) _Bool allowTLSSessionTicketUse;
 @property(readonly, nonatomic) _Bool useHTTPPost;
 - (id)initWithKind:(CDStruct_d1a7ebee)arg1 URL:(id)arg2 auditToken:(id)arg3 timeoutInterval:(double)arg4 additionalHTTPHeaders:(id)arg5 bodyData:(id)arg6 userAgent:(id)arg7 entityTag:(id)arg8 cachedData:(id)arg9 requestCounterTicket:(id)arg10 multipathServiceType:(unsigned long long)arg11 multipathAlternatePort:(unsigned long long)arg12 throttleToken:(id)arg13 options:(unsigned long long)arg14;

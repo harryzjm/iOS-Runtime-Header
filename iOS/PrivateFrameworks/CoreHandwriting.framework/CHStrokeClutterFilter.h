@@ -12,7 +12,7 @@
 
 @interface CHStrokeClutterFilter : NSObject <NSCopying>
 {
-    struct CHCanvasHeatmap *_heatMap;
+    void *_heatMap;
     NSDictionary *_CHStrokeID2HeatmapItemID;
     NSDictionary *_heatmapItemID2CHStrokeID;
 }
@@ -25,7 +25,7 @@
 - (id)clutterFilterByAddingStrokes:(id)arg1 removingStrokeIdentifiers:(id)arg2 affectedStrokeIdentifiers:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithCanvasHeatmap:(struct CHCanvasHeatmap *)arg1 stroke2ItemMapping:(id)arg2 item2StrokeMapping:(id)arg3;
+- (id)initWithCanvasHeatmap:(void *)arg1 stroke2ItemMapping:(id)arg2 item2StrokeMapping:(id)arg3;
 - (id)init;
 
 @end

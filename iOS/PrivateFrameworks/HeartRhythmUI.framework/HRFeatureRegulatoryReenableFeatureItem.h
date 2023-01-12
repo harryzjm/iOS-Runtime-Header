@@ -9,7 +9,7 @@
 #import <HeartRhythmUI/HRFeatureRegulatoryPanelDisplayable-Protocol.h>
 
 @class NSAttributedString, NSString;
-@protocol HRFeatureRegulatoryPanelDisplayUpdateDelegate, HRFeatureRegulatoryReenableFeatureActionDelegate;
+@protocol HRFeatureRegulatoryReenableFeatureActionDelegate;
 
 @interface HRFeatureRegulatoryReenableFeatureItem : NSObject <HRFeatureRegulatoryPanelDisplayable>
 {
@@ -32,7 +32,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(nonatomic) __weak id <HRFeatureRegulatoryPanelDisplayUpdateDelegate> updateDelegate;
 
 @end
 

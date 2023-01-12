@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOCollectionResult, GEODirectionIntent, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, MKMapItem, NSArray, NSString;
+@class GEOCollectionResult, GEODirectionIntent, GEOPublisherResult, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, GEOStyleAttributes, MKMapItem, NSArray, NSString;
 @protocol GEOCompletionItem;
 
 @interface MKLocalSearchCompletion : NSObject
@@ -44,6 +44,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+@property(readonly, nonatomic) GEOStyleAttributes *iconStyleAttributes;
+@property(readonly, nonatomic) NSArray *resultRefinements;
 @property(readonly, nonatomic) NSArray *childItems;
 @property(readonly, nonatomic) GEOPublisherResult *publisherResult;
 @property(readonly, nonatomic) GEOCollectionResult *collectionResult;

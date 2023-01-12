@@ -6,19 +6,29 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
 @class HMDDevice, NSString;
 
-@interface HMDCameraIDSSessionInviterDeviceVerifier : HMFObject
+@interface HMDCameraIDSSessionInviterDeviceVerifier : HMFObject <HMFLogging>
 {
     NSString *_sessionID;
     HMDDevice *_expectedInviter;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
 @property(readonly) HMDDevice *expectedInviter; // @synthesize expectedInviter=_expectedInviter;
 @property(readonly) NSString *sessionID; // @synthesize sessionID=_sessionID;
+- (id)logIdentifier;
 - (_Bool)canAcceptInvitationFromDeviceWithHandle:(id)arg1 forSessionWithIdentifier:(id)arg2;
 - (id)initWithSessionID:(id)arg1 expectedInviter:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

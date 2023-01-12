@@ -10,6 +10,7 @@
 
 @protocol PLResourceAvailabilityMarking <NSObject>
 - (void)markAsLocallyAvailableWithFilePath:(NSString *)arg1;
+- (void)markAsNotLocallyAvailableAfterPurge;
 - (void)markAsNotLocallyAvailable;
 @end
 

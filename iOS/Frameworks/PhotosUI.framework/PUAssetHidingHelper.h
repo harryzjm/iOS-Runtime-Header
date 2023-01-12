@@ -15,15 +15,15 @@ __attribute__((visibility("hidden")))
 {
     _Bool _areAllAssetsHidden;
     _Bool _didCheckAllAssetHidden;
-    _Bool _canToogleAssetsVisibility;
-    _Bool _didCheckCanToogleAssetsVisibility;
+    _Bool _canToggleAssetsVisibility;
+    _Bool _didCheckCanToggleAssetsVisibility;
+    NSArray *_assets;
     PHManualFetchResult *__assetsFetchResults;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic, setter=_setAssetsFetchResult:) PHManualFetchResult *_assetsFetchResults; // @synthesize _assetsFetchResults=__assetsFetchResults;
-- (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (id)prepareForPhotoLibraryChange:(id)arg1;
+@property(copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
 - (id)attemptTogglingAssetsVisibilityFromViewController:(id)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)alertControllerForTogglingAssetsVisibilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)applyHiddenState:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -32,9 +32,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isHiding;
 - (_Bool)_areAllAssetsHidden;
 - (void)_prepareAssetsVisibilityValueIfNeeded;
-@property(copy, nonatomic) NSArray *assets;
-- (void)dealloc;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

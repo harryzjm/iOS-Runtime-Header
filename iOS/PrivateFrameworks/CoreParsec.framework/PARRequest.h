@@ -8,7 +8,7 @@
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, SFCommand;
 @protocol OS_nw_activity;
 
 @interface PARRequest : NSObject <NSSecureCoding>
@@ -23,9 +23,11 @@
     NSString *_experimentNamespaceId;
     NSString *_experimentId;
     NSString *_treatmentId;
+    NSString *_clientShortName;
     unsigned long long _triggerEvent;
     NSArray *_queryItems;
     NSDictionary *_headerItems;
+    SFCommand *_queryCommand;
     NSObject<OS_nw_activity> *_nwActivity;
     char *_nwActivityToken;
 }
@@ -41,17 +43,20 @@
 + (id)moreResultsRequestWithURL:(id)arg1 queryId:(unsigned long long)arg2;
 + (id)moreResultsRequestWithURL:(id)arg1;
 + (id)searchReplayRequestWithString:(id)arg1;
++ (id)searchRequestWithCommand:(id)arg1 triggerEvent:(unsigned long long)arg2 queryId:(unsigned long long)arg3;
 + (id)searchRequestWithEngagedSuggestion:(id)arg1 triggerEvent:(unsigned long long)arg2 queryId:(unsigned long long)arg3;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2 queryId:(unsigned long long)arg3;
 + (id)searchRequestWithString:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) char *nwActivityToken; // @synthesize nwActivityToken=_nwActivityToken;
 @property(retain, nonatomic) NSObject<OS_nw_activity> *nwActivity; // @synthesize nwActivity=_nwActivity;
+@property(copy, nonatomic) SFCommand *queryCommand; // @synthesize queryCommand=_queryCommand;
 @property(copy, nonatomic) NSDictionary *headerItems; // @synthesize headerItems=_headerItems;
 @property(copy, nonatomic) NSArray *queryItems; // @synthesize queryItems=_queryItems;
 @property(nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(nonatomic) _Bool pretend; // @synthesize pretend=_pretend;
 @property(nonatomic) _Bool verboseReply; // @synthesize verboseReply=_verboseReply;
+@property(copy, nonatomic) NSString *clientShortName; // @synthesize clientShortName=_clientShortName;
 @property(copy, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
 @property(copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property(nonatomic) _Bool isInReservedAllocationForExperiment; // @synthesize isInReservedAllocationForExperiment=_isInReservedAllocationForExperiment;
@@ -59,10 +64,9 @@
 @property(copy, nonatomic) NSString *experimentNamespaceId; // @synthesize experimentNamespaceId=_experimentNamespaceId;
 @property(copy, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
-@property(readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
+@property(nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property(readonly, nonatomic) unsigned int nwActivityLabel;
 - (Class)responseClass;
-- (void)setQueryId:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long clientQueryId;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

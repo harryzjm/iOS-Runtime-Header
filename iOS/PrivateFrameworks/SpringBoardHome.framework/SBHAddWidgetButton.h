@@ -19,8 +19,15 @@
 @property(retain, nonatomic) MTStylingProvidingSolidColorView *backgroundView; // @synthesize backgroundView=_backgroundView;
 - (void)mt_removeAllVisualStyling;
 - (void)mt_applyVisualStyling:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (id)_addSymbolImage;
+- (id)_titleLabelFont;
+- (struct CGSize)intrinsicContentSize;
+- (double)_buttonCornerRadius;
 - (void)layoutSubviews;
 - (void)setHighlighted:(_Bool)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

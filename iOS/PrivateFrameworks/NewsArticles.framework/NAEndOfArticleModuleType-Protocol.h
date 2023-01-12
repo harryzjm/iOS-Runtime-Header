@@ -8,6 +8,6 @@
 @protocol NAArticleFooterType><NAEndOfArticleResultProviderType;
 
 @protocol NAEndOfArticleModuleType
-- (UIViewController<NAArticleFooterType><NAEndOfArticleResultProviderType> *)createViewControllerFor:(NAArticleFooterContext *)arg1 options:(NAEndOfArticlePresentationOptions *)arg2;
+- (UIViewController<NAArticleFooterType><NAEndOfArticleResultProviderType> *)createViewControllerFor:(NAArticleFooterContext *)arg1 presentationOptions:(NAEndOfArticlePresentationOptions *)arg2;
 @end
 

@@ -15,7 +15,6 @@
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
-- (void)hd_cleanupBeforeJournalInsertion;
 - (id)hd_relatedJournalEntries;
 - (_Bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (id)hd_associatedSampleTypes;

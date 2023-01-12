@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI13RenderBoxView
 {
+    MISSING_TYPE *rendersFirstFrameAsynchronously;
 }
 
 + (Class)layerClass;

@@ -10,7 +10,7 @@
 
 @interface _WKTouchEventGenerator : NSObject
 {
-    struct __IOHIDEventSystemClient *_ioSystemClient;
+    struct RetainPtr<__IOHIDEventSystemClient *> _ioSystemClient;
     struct {
         int identifier;
         struct CGPoint point;
@@ -24,6 +24,8 @@
 
 + (long long)nextEventCallbackID;
 + (id)sharedTouchEventGenerator;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *eventCallbacks; // @synthesize eventCallbacks=_eventCallbacks;
 - (void)receivedHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)moveToPoint:(struct CGPoint)arg1 duration:(double)arg2 completionBlock:(CDUnknownBlockType)arg3;

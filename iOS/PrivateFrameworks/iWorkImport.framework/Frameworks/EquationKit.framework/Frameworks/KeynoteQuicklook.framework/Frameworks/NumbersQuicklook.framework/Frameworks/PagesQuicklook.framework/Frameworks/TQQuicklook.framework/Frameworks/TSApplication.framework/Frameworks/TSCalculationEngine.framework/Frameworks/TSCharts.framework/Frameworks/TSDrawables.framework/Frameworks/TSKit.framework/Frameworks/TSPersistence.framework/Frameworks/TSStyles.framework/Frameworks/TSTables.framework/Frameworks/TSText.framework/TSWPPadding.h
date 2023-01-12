@@ -34,10 +34,11 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (void)saveToArchive:(struct PaddingArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (struct UIEdgeInsets)edgeInsets;
 - (id)paddingByMirroringHorizontal;
 - (void)transform:(struct CGAffineTransform)arg1;
-- (id)initWithArchive:(const struct PaddingArchive *)arg1 unarchiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTopInset:(double)arg1 leftInset:(double)arg2 bottomInset:(double)arg3 rightInset:(double)arg4;
 - (id)init;

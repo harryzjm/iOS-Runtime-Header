@@ -35,7 +35,6 @@
 @property(readonly, nonatomic, getter=isDevice) _Bool device;
 @property(readonly, nonatomic, getter=isGuest) _Bool guest;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)groupID;
 - (id)destinationURIs;
 - (id)normalizedURIStrings;
 - (id)normalizedURIs;

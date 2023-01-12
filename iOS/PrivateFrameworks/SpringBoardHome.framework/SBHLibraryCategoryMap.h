@@ -10,11 +10,11 @@
 #import <SpringBoardHome/NSMutableCopying-Protocol.h>
 #import <SpringBoardHome/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSMutableOrderedSet, NSString;
 
 @interface SBHLibraryCategoryMap : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
-    NSMutableArray *_categoryIdentifiers;
+    NSMutableOrderedSet *_categoryIdentifiers;
     NSMutableDictionary *_sortedApplicationIdentifiersByCategoryIdentifier;
     NSMutableDictionary *_localizedCategoryNameByCategoryIdentifier;
     _Bool _loadedFromDisk;

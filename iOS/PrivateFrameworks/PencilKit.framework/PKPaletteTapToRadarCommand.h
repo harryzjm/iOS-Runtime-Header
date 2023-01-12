@@ -6,16 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <PencilKit/UIEditingOverlayInteractionWithView-Protocol.h>
+
+@class PKPaletteTapToRadarCommandExecution;
 @protocol PKPaletteTapToRadarCommandDelegate;
 
-@interface PKPaletteTapToRadarCommand : NSObject
+@interface PKPaletteTapToRadarCommand : NSObject <UIEditingOverlayInteractionWithView>
 {
+    PKPaletteTapToRadarCommandExecution *_execution;
     id <PKPaletteTapToRadarCommandDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PKPaletteTapToRadarCommandDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) __weak id <PKPaletteTapToRadarCommandDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)editingOverlayContainerDidChangeToSceneBounds:(struct CGRect)arg1;
 - (void)execute;
+- (id)initWithDelegate:(id)arg1;
 
 @end
 

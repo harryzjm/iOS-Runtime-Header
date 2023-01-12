@@ -11,6 +11,7 @@
 @protocol SFWatchListItem <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool isMediaContainer;
 @property(copy, nonatomic) NSString *watchLiveTextFormat;
 @property(copy, nonatomic) NSString *addedToUpNextText;
 @property(copy, nonatomic) NSString *addToUpNextText;

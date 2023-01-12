@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class AVSemanticStyle, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface AVCaptureResolvedPhotoSettingsInternal : NSObject
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     CDStruct_79c71658 hairSegmentationMatteDimensions;
     CDStruct_79c71658 skinSegmentationMatteDimensions;
     CDStruct_79c71658 teethSegmentationMatteDimensions;
+    CDStruct_79c71658 glassesSegmentationMatteDimensions;
     CDStruct_79c71658 spatialOverCapturePhotoDimensions;
     _Bool turboModeEnabled;
     _Bool flashEnabled;
@@ -35,10 +36,12 @@ __attribute__((visibility("hidden")))
     _Bool squareCropEnabled;
     CDStruct_79c71658 deferredPhotoProxyDimensions;
     CDStruct_e83c9415 photoProcessingTimeRange;
+    _Bool contentAwareDistortionCorrectionEnabled;
     NSArray *photoManifest;
     unsigned long long digitalFlashUserInterfaceHints;
     NSArray *digitalFlashUserInterfaceRGBEstimate;
     _Bool captureBeforeResolvingSettingsEnabled;
+    AVSemanticStyle *semanticStyle;
 }
 
 - (void)dealloc;

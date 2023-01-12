@@ -24,10 +24,10 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) struct TSUCellCoord coordinate;
 @property(readonly, retain, nonatomic) NSUUID *tableID;
-@property(readonly, nonatomic) UUIDData_5fbc143e tableUID;
+@property(readonly, nonatomic) struct TSKUIDStruct tableUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCellCoord:(struct TSUCellCoord)arg1 tableID:(id)arg2;
-- (id)initWithCellCoord:(struct TSUCellCoord)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
+- (id)initWithCellCoord:(struct TSUCellCoord)arg1 tableUID:(struct TSKUIDStruct)arg2;
 - (id)initWithCellRef:(const struct TSCECellRef *)arg1;
 - (id)init;
 

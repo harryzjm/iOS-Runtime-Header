@@ -39,7 +39,7 @@
 - (void)postChargingReminderNotification;
 - (void)batteryLevelChanged:(float)arg1;
 - (void)batteryMonitoringEventDue;
-- (id)stateMachineLog;
+- (unsigned long long)loggingCategory;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 
 // Remaining properties

@@ -6,39 +6,52 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServicesUI/AMSUIWebJSAppQueryManagerDelegate-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebJSPropertiesDelegate-Protocol.h>
 
-@class AMSUIWebClientContext, AMSUIWebJSProperties, AMSUIWebView, NSString;
+@class AMSUIWebClientContext, AMSUIWebJSAppQueryManager, AMSUIWebJSProperties, AMSUIWebView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebJSDataProvider : NSObject <AMSUIWebJSPropertiesDelegate>
+@interface AMSUIWebJSDataProvider : NSObject <AMSUIWebJSAppQueryManagerDelegate, AMSUIWebJSPropertiesDelegate>
 {
+    AMSUIWebJSAppQueryManager *_appQueryManager;
     AMSUIWebView *_webView;
     AMSUIWebClientContext *_context;
     AMSUIWebJSProperties *_properties;
+    NSString *_otpIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *otpIdentifier; // @synthesize otpIdentifier=_otpIdentifier;
 @property(retain, nonatomic) AMSUIWebJSProperties *properties; // @synthesize properties=_properties;
 @property(nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak AMSUIWebView *webView; // @synthesize webView=_webView;
 - (id)_syncPropertiesScriptWithProperties:(id)arg1;
+- (void)_safariDataUpdate:(id)arg1;
 - (void)_purchaseDidSucceed:(id)arg1;
 - (void)_postSubscriptionChangedWithType:(long long)arg1;
+- (void)_postMediaQueryResultsChangeEventWithApps:(id)arg1;
 - (void)_observeNotifications;
 - (_Bool)_canInteractWithJS;
 - (void)propertiesDidChange:(id)arg1;
+- (void)appQueryManager:(id)arg1 didReceiveApps:(id)arg2;
 - (void)_subscriptionStatusChangeiCloud:(id)arg1;
 - (void)_subscriptionStatusChangeTV:(id)arg1;
 - (void)_subscriptionStatusChangeNews:(id)arg1;
 - (void)_subscriptionStatusChangeAppStore:(id)arg1;
+- (void)_subscriptionStatusChangeActivity:(id)arg1;
 - (void)_subscriptionStatusChangeMusic:(id)arg1;
 - (id)syncProperties;
+- (_Bool)stopOTPListener;
+- (_Bool)startOTPListener;
+- (id)runSafariCallback:(id)arg1;
 - (id)runJSRequest:(id)arg1;
 - (id)postEvent:(id)arg1 options:(id)arg2;
 - (id)loadPageModelWithInfo:(id)arg1;
 - (id)createWebView;
+- (void)dealloc;
 - (id)initWithContext:(id)arg1;
+@property(readonly, nonatomic) AMSUIWebJSAppQueryManager *appQueryManager;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

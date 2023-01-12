@@ -13,7 +13,7 @@
 @interface RLMWeakObjectHandle : NSObject <NSCopying>
 {
     struct BasicRow<realm::Table> _row;
-    struct RLMClassInfo *_info;
+    void *_info;
     Class _objectClass;
 }
 

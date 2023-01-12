@@ -10,15 +10,15 @@
 
 @interface TSCH3DDictionaryOfDictionary : NSObject
 {
-    NSMutableDictionary *mDictionary;
+    NSMutableDictionary *_dictionary;
 }
 
+- (void).cxx_destruct;
 - (void)addEntriesFromDictionaryOfDictionary:(id)arg1;
 - (void)removeObjectForFirstLevelKey:(id)arg1 secondLevelKey:(id)arg2;
 - (id)objectForFirstLevelKey:(id)arg1 secondLevelKey:(id)arg2;
 - (void)setObject:(id)arg1 forFirstLevelKey:(id)arg2 secondLevelKey:(id)arg3;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 
 @end

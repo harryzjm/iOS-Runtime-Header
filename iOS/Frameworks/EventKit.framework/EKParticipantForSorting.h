@@ -9,17 +9,21 @@
 #import <EventKit/NSCopying-Protocol.h>
 
 @class EKParticipant, NSString;
+@protocol EKIdentityProtocol;
 
 @interface EKParticipantForSorting : NSObject <NSCopying>
 {
     _Bool _isEmail;
     _Bool _isPhone;
     EKParticipant *_participant;
+    id <EKIdentityProtocol> _identity;
     NSString *_firstName;
     NSString *_lastName;
     NSString *_cachedDisplayName;
 }
 
++ (id)_sharedParticipantForSortingWithIdentity:(id)arg1 participant:(id)arg2 contactPredicate:(id)arg3;
++ (id)participantForSortingWithIdentity:(id)arg1;
 + (id)participantForSortingWithEKParticipant:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isPhone; // @synthesize isPhone=_isPhone;
@@ -27,6 +31,7 @@
 @property(copy, nonatomic) NSString *cachedDisplayName; // @synthesize cachedDisplayName=_cachedDisplayName;
 @property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property(nonatomic) __weak id <EKIdentityProtocol> identity; // @synthesize identity=_identity;
 @property(nonatomic) __weak EKParticipant *participant; // @synthesize participant=_participant;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)compareByContactNames:(id)arg1;

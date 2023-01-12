@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSNumber, NSString, PKDSPContext, PKPaymentDeviceProvisioningData, PKPaymentEligibilityResponse;
+@class NSArray, NSData, NSNumber, NSString, PKDSPContext, PKPaymentDeviceMetadata, PKPaymentEligibilityResponse;
 
 @interface PKPaymentProvisioningRequest
 {
     NSNumber *_primaryJSBLSequenceCounter;
     NSArray *_certChain;
     _Bool _devSigned;
-    PKPaymentDeviceProvisioningData *_deviceData;
+    PKPaymentDeviceMetadata *_deviceData;
     _Bool _disableDeviceScore;
     long long _style;
     PKPaymentEligibilityResponse *_eligibilityResponse;
@@ -23,10 +23,38 @@
     NSData *_cryptogram;
     NSData *_challengeResponse;
     NSString *_referrerIdentifier;
+    NSString *_applicationIdentifier;
+    NSData *_fidoAttestation;
+    NSData *_fidoKey;
+    NSData *_fidoSignedChallenge;
+    NSData *_seBlobDeviceEncryptionCertificate;
+    NSArray *_transactionKeyCertificateChain;
+    NSData *_transactionKey;
+    NSArray *_isoDeviceEncryptionAttestation;
+    NSData *_isoDeviceEncryptionAuthorization;
+    NSString *_subCredentialIdentifier;
+    NSArray *_authorizationKeyAttestation;
+    NSData *_transactionKeyAttestation;
+    NSData *_transactionKeySignature;
+    NSData *_transactionKeyAuthorization;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSData *transactionKeyAuthorization; // @synthesize transactionKeyAuthorization=_transactionKeyAuthorization;
+@property(copy, nonatomic) NSData *transactionKeySignature; // @synthesize transactionKeySignature=_transactionKeySignature;
+@property(copy, nonatomic) NSData *transactionKeyAttestation; // @synthesize transactionKeyAttestation=_transactionKeyAttestation;
+@property(copy, nonatomic) NSArray *authorizationKeyAttestation; // @synthesize authorizationKeyAttestation=_authorizationKeyAttestation;
+@property(copy, nonatomic) NSString *subCredentialIdentifier; // @synthesize subCredentialIdentifier=_subCredentialIdentifier;
+@property(copy, nonatomic) NSData *isoDeviceEncryptionAuthorization; // @synthesize isoDeviceEncryptionAuthorization=_isoDeviceEncryptionAuthorization;
+@property(copy, nonatomic) NSArray *isoDeviceEncryptionAttestation; // @synthesize isoDeviceEncryptionAttestation=_isoDeviceEncryptionAttestation;
+@property(copy, nonatomic) NSData *transactionKey; // @synthesize transactionKey=_transactionKey;
+@property(copy, nonatomic) NSArray *transactionKeyCertificateChain; // @synthesize transactionKeyCertificateChain=_transactionKeyCertificateChain;
+@property(copy, nonatomic) NSData *seBlobDeviceEncryptionCertificate; // @synthesize seBlobDeviceEncryptionCertificate=_seBlobDeviceEncryptionCertificate;
+@property(copy, nonatomic) NSData *fidoSignedChallenge; // @synthesize fidoSignedChallenge=_fidoSignedChallenge;
+@property(copy, nonatomic) NSData *fidoKey; // @synthesize fidoKey=_fidoKey;
+@property(copy, nonatomic) NSData *fidoAttestation; // @synthesize fidoAttestation=_fidoAttestation;
+@property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property(copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
 @property(copy, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
 @property(copy, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
@@ -40,6 +68,8 @@
 @property(nonatomic) long long style; // @synthesize style=_style;
 - (void)_updateContextUsingWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deviceScoreWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_secureParemters;
+- (void)_encryptSecureDictionary:(id)arg1 intoDictionary:(id)arg2;
 - (void)_requestBodyWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateRequestForRedirect:(id)arg1 overrides:(id)arg2 webService:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_updateRequestForRetry:(id)arg1 retryFields:(id)arg2 webService:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;

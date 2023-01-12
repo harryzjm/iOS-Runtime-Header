@@ -22,7 +22,7 @@
 - (_Bool)canOpenURL:(id)arg1;
 - (_Bool)_saveSnapshotWithName:(id)arg1;
 - (_Bool)handleStatusBarHoverActionForRegion:(long long)arg1;
-- (_Bool)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
+- (_Bool)handleDoubleHeightStatusBarTapWithStyleOverride:(unsigned long long)arg1;
 - (void)resetIdleTimerAndUndim;
 - (_Bool)isSuspendedUnderLock;
 - (_Bool)isSuspendedEventsOnly;

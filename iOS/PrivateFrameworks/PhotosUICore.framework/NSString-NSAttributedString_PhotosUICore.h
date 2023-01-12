@@ -26,5 +26,6 @@
 - (_Bool)px_hasStringIgnoringCaseAndDiacritics:(id)arg1;
 - (_Bool)px_hasPrefixIgnoringCaseAndDiacritics:(id)arg1;
 - (id)px_stringByApplyingCapitalization:(long long)arg1;
+- (id)px_stringByTruncatingToLength:(long long)arg1 addEllipsis:(_Bool)arg2;
 @end
 

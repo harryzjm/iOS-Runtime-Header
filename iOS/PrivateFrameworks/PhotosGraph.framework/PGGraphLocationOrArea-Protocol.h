@@ -6,6 +6,9 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
+@protocol PGGraphLocationOrAreaNodeCollection;
+
 @protocol PGGraphLocationOrArea <NSObject>
+@property(readonly, nonatomic) id <PGGraphLocationOrAreaNodeCollection> locationOrAreaNodeCollection;
 @end
 

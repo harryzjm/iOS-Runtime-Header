@@ -22,6 +22,7 @@
 + (id)responseForError:(id)arg1;
 + (id)responseWithInfo:(id)arg1;
 + (id)response;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, copy, nonatomic) BSSettings *info; // @synthesize info=_info;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -37,8 +38,8 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)init;
 - (id)initWithInfo:(id)arg1 error:(id)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

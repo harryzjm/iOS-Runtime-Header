@@ -9,9 +9,9 @@
     struct TSCENumberValue *_numberValue;
 }
 
-- (void)encodeToArchive:(struct NumberCellValueArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1;
 - (void)setPopulatedCustomFormat:(id)arg1;
-- (id)initWithArchive:(const struct NumberCellValueArchive *)arg1 locale:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 locale:(id)arg2;
 - (long long)compareToCellValue:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

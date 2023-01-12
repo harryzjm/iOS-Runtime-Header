@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSURL, VUIAppContext;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionAppPunchout
 {
-    NSURL *_punchoutURLWithoutAssociatedPlayable;
+    _Bool _isSensitiveURL;
+    NSURL *_punchoutURL;
+    VUIAppContext *_appContext;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSURL *punchoutURLWithoutAssociatedPlayable; // @synthesize punchoutURLWithoutAssociatedPlayable=_punchoutURLWithoutAssociatedPlayable;
-- (_Bool)_openPunchoutURL:(id)arg1 isPlaybackURL:(_Bool)arg2;
+@property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
+@property(readonly, nonatomic) _Bool isSensitiveURL; // @synthesize isSensitiveURL=_isSensitiveURL;
+@property(readonly, nonatomic) NSURL *punchoutURL; // @synthesize punchoutURL=_punchoutURL;
+- (void)_openPunchoutURL:(id)arg1;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithContextData:(id)arg1;
+- (id)initWithContextData:(id)arg1 appContext:(id)arg2;
 
 @end
 

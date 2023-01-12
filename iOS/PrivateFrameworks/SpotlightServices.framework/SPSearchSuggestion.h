@@ -6,10 +6,14 @@
 
 #import <SearchFoundation/SFSearchSuggestion.h>
 
-@class NSArray;
+@class NSArray, NSDictionary, NSString;
 
 @interface SPSearchSuggestion : SFSearchSuggestion
 {
+    NSString *_completion;
+    NSString *_spotlightQuery;
+    NSDictionary *_categories;
+    NSDictionary *_terms;
     _Bool _isSingleThread;
     _Bool _hasUsedDate;
     _Bool _isShortcut;
@@ -33,6 +37,7 @@
     NSArray *_bundleIDs;
 }
 
++ (id)suggestionsWithNLPData:(id)arg1 queryString:(id)arg2;
 + (id)suggestionsWithData:(id)arg1 queryString:(id)arg2;
 - (void).cxx_destruct;
 @property(retain) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
@@ -59,12 +64,12 @@
 @property(readonly, nonatomic) NSArray *searchEntities;
 - (id)suggestionsFeedbackData;
 - (long long)compare:(id)arg1;
-- (id)query;
-- (id)suggestion;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (Class)classForKeyedArchiver;
+- (void)encodeWithCoder:(id)arg1;
+- (Class)classForCoder;
+- (id)initWithNLPData:(id)arg1 queryString:(id)arg2;
 - (id)initWithSuggestion:(id)arg1 query:(id)arg2 scores:(id)arg3 bundleIDs:(id)arg4;
 
 @end

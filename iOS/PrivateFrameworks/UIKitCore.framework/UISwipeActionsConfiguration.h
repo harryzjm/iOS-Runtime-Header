@@ -14,10 +14,12 @@
     _Bool _autosizesButtons;
     NSArray *_actions;
     long long __swipeActionsStyle;
+    double __roundedStyleCornerRadius;
 }
 
 + (id)configurationWithActions:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, getter=_roundedStyleCornerRadius, setter=_setRoundedStyleCornerRadius:) double _roundedStyleCornerRadius; // @synthesize _roundedStyleCornerRadius=__roundedStyleCornerRadius;
 @property(nonatomic, getter=_swipeActionsStyle, setter=_setSwipeActionsStyle:) long long _swipeActionsStyle; // @synthesize _swipeActionsStyle=__swipeActionsStyle;
 @property(nonatomic, getter=_autosizesButtons, setter=_setAutosizesButtons:) _Bool autosizesButtons; // @synthesize autosizesButtons=_autosizesButtons;
 @property(nonatomic) _Bool performsFirstActionWithFullSwipe; // @synthesize performsFirstActionWithFullSwipe=_performsFirstActionWithFullSwipe;

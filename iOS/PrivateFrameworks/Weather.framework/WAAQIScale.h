@@ -15,17 +15,7 @@
     struct _NSRange _range;
 }
 
-+ (id)scaleForUnitedStates;
-+ (id)scaleForUnitedKingdom;
-+ (id)scaleForSouthKorea;
-+ (id)scaleForSingapore;
-+ (id)scaleForMexico;
-+ (id)scaleForIndia;
-+ (id)scaleForHongKong;
-+ (id)scaleForEurope;
-+ (id)scaleForChina;
-+ (id)scaleForCanada;
-+ (id)scaleFromScaleIdentifier:(id)arg1 fallbackCountryCode:(id)arg2;
++ (id)scaleFromFoundationScale:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSMutableArray *categories; // @synthesize categories=_categories;
 @property(readonly, nonatomic) WAAQIGradient *gradient; // @synthesize gradient=_gradient;

@@ -10,7 +10,6 @@
 
 @interface _TtC3ECS6Logger : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *defaultOSLogger;
     MISSING_TYPE *publisher;
 }
 

@@ -6,6 +6,7 @@
 
 @interface SBPPTBlockOperation
 {
+    _Bool _cancelled;
     double _timeoutInterval;
     CDUnknownBlockType _timeoutBlock;
     unsigned long long _state;
@@ -14,6 +15,7 @@
 
 + (id)keyPathsForValuesAffectingIsFinished;
 + (id)keyPathsForValuesAffectingIsExecuting;
++ (id)operationWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (id)operationWithBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
@@ -28,7 +30,9 @@
 - (void)cancelAndFailTestWithReason:(id)arg1;
 - (void)cancel;
 - (void)finish;
+- (id)description;
 - (id)init;
+- (id)initWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end

@@ -12,7 +12,7 @@
 
 @interface CHSubstroke : NSObject <NSSecureCoding>
 {
-    vector_2e7754b6 _convexHull;
+    vector_48b48a27 _convexHull;
     CHEncodedStrokeIdentifier *_strokeIdentifier;
     double _startTimestamp;
     double _endTimestamp;
@@ -33,9 +33,9 @@
 - (_Bool)isEqualToSubstroke:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (vector_2e7754b6 *)convexHull;
+- (void *)convexHull;
 - (void)dealloc;
-- (id)initWithStrokeIdentifier:(id)arg1 bounds:(struct CGRect)arg2 startTimestamp:(double)arg3 endTimestamp:(double)arg4 convexHull:(const vector_2e7754b6 *)arg5 curvature:(double)arg6;
+- (id)initWithStrokeIdentifier:(id)arg1 bounds:(struct CGRect)arg2 startTimestamp:(double)arg3 endTimestamp:(double)arg4 convexHull:(const void *)arg5 curvature:(double)arg6;
 
 @end
 

@@ -10,7 +10,7 @@
 
 + (id)defaultBrowserBundleIdentifier;
 + (void)invalidateDefaultBrowserBundleIdentifier;
-- (id)loadImage;
+- (id)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2;
 - (_Bool)shouldInvalidateAppIconForChangedBundleIdentifier:(id)arg1;
 - (id)initWithVariant:(unsigned long long)arg1;
 

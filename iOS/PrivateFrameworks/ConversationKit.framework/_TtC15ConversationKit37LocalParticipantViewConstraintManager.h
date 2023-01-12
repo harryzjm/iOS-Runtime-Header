@@ -14,12 +14,26 @@
     MISSING_TYPE *heightConstraint;
     MISSING_TYPE *trailingConstraint;
     MISSING_TYPE *bottomConstraint;
+    MISSING_TYPE *leadingConstraint;
+    MISSING_TYPE *topConstraint;
     MISSING_TYPE *centerXConstraint;
     MISSING_TYPE *centerYConstraint;
+    MISSING_TYPE *autoWidthConstraint;
+    MISSING_TYPE *autoHeightConstraint;
+    MISSING_TYPE *autoTrailingConstraint;
+    MISSING_TYPE *autoBottomConstraint;
+    MISSING_TYPE *aboveBannerConstraint;
+    MISSING_TYPE *controlsBottomConstraint;
     MISSING_TYPE *centeredConstraints;
-    MISSING_TYPE *portraitCenteringConstraints;
-    MISSING_TYPE *landscapeCenteringConstraints;
+    MISSING_TYPE *fullScreenConstraints;
     MISSING_TYPE *constraints;
+    MISSING_TYPE *aspectRatio;
+    MISSING_TYPE *centeringGuide;
+    MISSING_TYPE *containingGuide;
+    MISSING_TYPE *localPIPView;
+    MISSING_TYPE *controlsView;
+    MISSING_TYPE *effectsControlsView;
+    MISSING_TYPE *rosterCellLayoutGuide;
     MISSING_TYPE *type;
 }
 

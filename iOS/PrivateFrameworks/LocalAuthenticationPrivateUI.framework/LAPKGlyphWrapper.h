@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _fastAnimations;
     _Bool _grayedOut;
+    _Bool _hidden;
     UIView *_view;
     UIView<GlyphMethods> *_glyphView;
     UIView<GlyphMethods> *_idleTouchID;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *glyphQueue; // @synthesize glyphQueue=_glyphQueue;
 @property(readonly, nonatomic) UIView<GlyphMethods> *idleTouchID; // @synthesize idleTouchID=_idleTouchID;
 @property(readonly, nonatomic) UIView<GlyphMethods> *glyphView; // @synthesize glyphView=_glyphView;
+@property(nonatomic) _Bool hidden; // @synthesize hidden=_hidden;
 @property(nonatomic) _Bool grayedOut; // @synthesize grayedOut=_grayedOut;
 @property(nonatomic) _Bool fastAnimations; // @synthesize fastAnimations=_fastAnimations;
 @property(readonly, nonatomic) UIView *view; // @synthesize view=_view;

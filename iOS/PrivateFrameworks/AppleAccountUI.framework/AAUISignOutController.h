@@ -39,7 +39,6 @@
 - (_Bool)_hasPaymentPasses;
 - (_Bool)_hasiCloudPhotosData;
 - (_Bool)_hasiCloudDriveData;
-- (_Bool)_hasHealthData;
 - (id)_appendToSignoutMessage:(id)arg1 appendedString:(id)arg2;
 - (id)_signOutMessageSimplified:(_Bool)arg1 withConfirmation:(_Bool)arg2;
 - (id)_spinnerViewControllerForActions:(id)arg1;

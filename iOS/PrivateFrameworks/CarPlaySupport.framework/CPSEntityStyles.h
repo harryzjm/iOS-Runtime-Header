@@ -10,6 +10,7 @@
 {
 }
 
++ (id)mapAnnotationDropShadow;
 + (id)mapButtonDropShadow;
 + (id)mapButtonBackgroundColor;
 + (id)pickerInfoButtonFont;

@@ -6,15 +6,19 @@
 
 #import <Metal/MTLDynamicLibrarySPI-Protocol.h>
 
-@class MTLDynamicLibraryContainer, NSArray, NSObject, NSString;
+@class MTLDebugInstrumentationData, MTLDynamicLibraryContainer, NSArray, NSObject, NSString;
 @protocol MTLDevice, OS_dispatch_data;
 
 @interface _MTLDynamicLibrary <MTLDynamicLibrarySPI>
 {
     NSString *_libraryPath;
     MTLDynamicLibraryContainer *_container;
+    NSArray *_relocations;
+    _Bool _shaderValidationEnabled;
 }
 
+@property(readonly, nonatomic) _Bool shaderValidationEnabled; // @synthesize shaderValidationEnabled=_shaderValidationEnabled;
+@property(copy, nonatomic) NSArray *relocations; // @synthesize relocations=_relocations;
 @property(readonly) NSString *libraryPath; // @synthesize libraryPath=_libraryPath;
 - (_Bool)serializeToURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
@@ -27,6 +31,7 @@
 - (id)initWithURL:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4;
 - (id)initWithURL:(id)arg1 device:(id)arg2 error:(id *)arg3;
 - (id)initWithLibrary:(id)arg1 binaryData:(id)arg2 device:(id)arg3 error:(id *)arg4;
+@property(retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) NSString *installName;
 @property(readonly) NSArray *importedLibraries;
 @property(readonly) NSArray *importedSymbols;

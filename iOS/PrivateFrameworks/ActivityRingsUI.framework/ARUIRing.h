@@ -8,7 +8,7 @@
 
 #import <ActivityRingsUI/NSCopying-Protocol.h>
 
-@class MISSING_TYPE, UIColor;
+@class ARUICelebration, MISSING_TYPE, UIColor;
 
 @interface ARUIRing : NSObject <NSCopying>
 {
@@ -23,6 +23,7 @@
     UIColor *_topColor;
     UIColor *_bottomColor;
     MISSING_TYPE *_translation;
+    ARUICelebration *_celebration;
     MISSING_TYPE *_topColorVector;
     MISSING_TYPE *_topColorPremultipliedVector;
     MISSING_TYPE *_bottomColorVector;
@@ -35,6 +36,7 @@
 @property(readonly, nonatomic) MISSING_TYPE *bottomColorVector; // @synthesize bottomColorVector=_bottomColorVector;
 @property(readonly, nonatomic) MISSING_TYPE *topColorPremultipliedVector; // @synthesize topColorPremultipliedVector=_topColorPremultipliedVector;
 @property(readonly, nonatomic) MISSING_TYPE *topColorVector; // @synthesize topColorVector=_topColorVector;
+@property(retain, nonatomic) ARUICelebration *celebration; // @synthesize celebration=_celebration;
 @property(nonatomic) MISSING_TYPE *translation; // @synthesize translation=_translation;
 @property(nonatomic) float zRotation; // @synthesize zRotation=_zRotation;
 @property(nonatomic) float scale; // @synthesize scale=_scale;

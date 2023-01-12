@@ -17,7 +17,7 @@
 
 + (id)nativeLocaleIdentifier;
 + (id)kNilStockAttributeString;
-+ (id)stockFromArchive:(const struct StockArchive *)arg1;
++ (id)stockFromArchive:(const void *)arg1;
 + (id)stockWithAttributes:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSUSparseArray *attributes; // @synthesize attributes=_attributes;
@@ -30,8 +30,8 @@
 @property(readonly, nonatomic) _Bool up;
 - (id)valueForAttribute:(long long)arg1 forLocale:(id)arg2;
 - (id)valueForAttribute:(long long)arg1;
-- (void)encodeToArchive:(struct StockArchive *)arg1;
-- (id)initFromArchive:(const struct StockArchive *)arg1;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithSymbol:(id)arg1;
 - (id)init;

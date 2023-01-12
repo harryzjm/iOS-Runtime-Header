@@ -8,10 +8,12 @@
 
 @interface BLTAlertStateTester : NSObject
 {
+    _Bool _testCheckedSubsections;
     CDUnknownBlockType _sectionInfoRetriever;
 }
 
 - (void).cxx_destruct;
+@property _Bool testCheckedSubsections; // @synthesize testCheckedSubsections=_testCheckedSubsections;
 @property(copy, nonatomic) CDUnknownBlockType sectionInfoRetriever; // @synthesize sectionInfoRetriever=_sectionInfoRetriever;
 - (_Bool)isScreenTimeBlockedForBundleIdentifier:(id)arg1 ignoresDowntime:(_Bool)arg2;
 - (unsigned long long)_blockingReasonForSectionInfo:(id)arg1 isCritical:(_Bool)arg2;

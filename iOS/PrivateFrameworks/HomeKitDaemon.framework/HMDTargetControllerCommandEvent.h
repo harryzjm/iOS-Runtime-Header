@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class HMDHAPAccessory, NSString;
 
-@interface HMDTargetControllerCommandEvent <HMDAWDLogEvent>
+@interface HMDTargetControllerCommandEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     unsigned long long _commandType;
     HMDHAPAccessory *_accessory;
 }
 
 + (id)commandEventWithCommandType:(unsigned long long)arg1 accessory:(id)arg2;
-+ (id)uuid;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) unsigned long long commandType; // @synthesize commandType=_commandType;

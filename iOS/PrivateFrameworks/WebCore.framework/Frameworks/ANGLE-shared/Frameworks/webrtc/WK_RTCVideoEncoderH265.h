@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface WK_RTCVideoEncoderH265 : NSObject <RTCVideoEncoder>
 {
     WK_RTCVideoCodecInfo *_codecInfo;
-    struct unique_ptr<webrtc::BitrateAdjuster, std::__1::default_delete<webrtc::BitrateAdjuster>> _bitrateAdjuster;
+    struct unique_ptr<webrtc::BitrateAdjuster, std::default_delete<webrtc::BitrateAdjuster>> _bitrateAdjuster;
     unsigned int _targetBitrateBps;
     unsigned int _encoderBitrateBps;
     struct __CFString *_profile;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     struct OpaqueVTCompressionSession *_compressionSession;
     unsigned long long _mode;
     int framesLeft;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _nv12ScaleBuffer;
+    struct vector<unsigned char, std::allocator<unsigned char>> _nv12ScaleBuffer;
 }
 
 - (id).cxx_construct;

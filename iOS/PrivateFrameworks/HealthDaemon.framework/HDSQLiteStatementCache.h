@@ -21,16 +21,8 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long faultCount; // @synthesize faultCount=_faultCount;
-- (void)_assertNoActiveStatements;
-- (id)_statementStorage;
-- (void)_setCachedStatement:(struct sqlite3_stmt *)arg1 forSQL:(id)arg2;
-- (void)_setCachedStatement:(struct sqlite3_stmt *)arg1 forKey:(const char *)arg2;
-- (struct sqlite3_stmt *)_cachedStatementForSQL:(id)arg1 active:(_Bool *)arg2;
-- (struct sqlite3_stmt *)_cachedStatementForKey:(const char *)arg1 active:(_Bool *)arg2;
 - (void)clearCachedStatements;
 - (void)checkInStatement:(struct sqlite3_stmt *)arg1;
-- (struct sqlite3_stmt *)_prepareStatementForSQL:(id)arg1 error:(id *)arg2;
-- (void)_activateStatement:(struct sqlite3_stmt *)arg1 cached:(_Bool)arg2;
 - (struct sqlite3_stmt *)checkOutCachedStatementForKey:(const char *)arg1 SQLGenerator:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (struct sqlite3_stmt *)checkOutStatementForSQL:(id)arg1 shouldCache:(_Bool)arg2 error:(id *)arg3;
 - (void)endTransaction;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface OBPrivacyLinkButton : UIButton
 {
     _Bool _largeIcon;
+    _Bool _underlineLinks;
     UIImageView *_iconView;
     UITextView *_textView;
     UILabel *_buttonLabel;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property(nonatomic) _Bool underlineLinks; // @synthesize underlineLinks=_underlineLinks;
 @property _Bool largeIcon; // @synthesize largeIcon=_largeIcon;
 @property(readonly) NSString *buttonText; // @synthesize buttonText=_buttonText;
 @property(readonly) NSString *captionText; // @synthesize captionText=_captionText;
@@ -40,7 +42,6 @@ __attribute__((visibility("hidden")))
 - (void)setEnabled:(_Bool)arg1;
 - (id)titleForState:(unsigned long long)arg1;
 - (void)_updateButtonColorWithColor:(id)arg1;
-- (id)buttonColor;
 - (struct CGSize)intrinsicContentSize;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;

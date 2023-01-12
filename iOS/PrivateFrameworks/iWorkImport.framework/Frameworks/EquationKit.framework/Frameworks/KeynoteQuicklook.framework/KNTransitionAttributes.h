@@ -11,13 +11,13 @@
 + (_Bool)customAttributeKeyIsValid:(id)arg1;
 + (id)supportedCustomAttributes;
 + (id)defaultAttributesForEffect:(id)arg1;
-+ (id)p_readDeprecatedAttributesForArchive:(const struct TransitionAttributesArchive *)arg1 intoDictionary:(id)arg2;
-+ (void)p_readTransitionAttributesForArchive:(const struct TransitionAttributesArchive *)arg1 intoDictionary:(id)arg2;
-+ (void)p_readSharedAttributesForArchive:(struct AnimationAttributesArchive *)arg1 intoDictionary:(id)arg2;
-- (void)p_writeTransitionAttributesToArchive:(struct TransitionAttributesArchive *)arg1;
-- (void)p_writeSharedAttributesToArchive:(struct TransitionAttributesArchive *)arg1;
-- (void)encodeToArchive:(struct TransitionAttributesArchive *)arg1;
-- (id)initFromTransitionAttributesArchive:(const struct TransitionAttributesArchive *)arg1;
++ (id)p_readDeprecatedAttributesForArchive:(const void *)arg1 intoDictionary:(id)arg2;
++ (void)p_readTransitionAttributesForArchive:(const void *)arg1 intoDictionary:(id)arg2;
++ (void)p_readSharedAttributesForArchive:(void *)arg1 intoDictionary:(id)arg2;
+- (void)p_writeTransitionAttributesToArchive:(void *)arg1;
+- (void)p_writeSharedAttributesToArchive:(void *)arg1;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initFromTransitionAttributesArchive:(const void *)arg1;
 
 @end
 

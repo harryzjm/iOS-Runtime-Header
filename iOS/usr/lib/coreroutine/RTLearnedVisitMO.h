@@ -31,6 +31,7 @@
 @property(copy, nonatomic) NSNumber *locationLatitude; // @dynamic locationLatitude;
 @property(copy, nonatomic) NSNumber *locationLongitude; // @dynamic locationLongitude;
 @property(copy, nonatomic) NSNumber *locationReferenceFrame; // @dynamic locationReferenceFrame;
+@property(copy, nonatomic) NSNumber *locationSourceAccuracy; // @dynamic locationSourceAccuracy;
 @property(copy, nonatomic) NSNumber *locationUncertainty; // @dynamic locationUncertainty;
 @property(copy, nonatomic) NSNumber *locationVerticalUncertainty; // @dynamic locationVerticalUncertainty;
 @property(retain, nonatomic) RTLearnedTransitionMO *outbound; // @dynamic outbound;

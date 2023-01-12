@@ -4,30 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <HMFoundation/HMFObject.h>
 
-@class CLLocation, NSArray;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@interface HMDLocationCluster : NSObject
+@class CLLocation, NSArray, NSString;
+
+@interface HMDLocationCluster : HMFObject <HMFLogging>
 {
-    NSArray *_groups;
-    CLLocation *_homeLocation;
     NSArray *_locations;
-    unsigned long long _numOfClusters;
 }
 
++ (id)logCategory;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long numOfClusters; // @synthesize numOfClusters=_numOfClusters;
-@property(copy, nonatomic) NSArray *locations; // @synthesize locations=_locations;
-@property(readonly, nonatomic) CLLocation *homeLocation; // @synthesize homeLocation=_homeLocation;
-@property(readonly, nonatomic) NSArray *groups; // @synthesize groups=_groups;
-- (void)printGroups:(id)arg1;
-- (void)calculateHomeLocationFromGroups;
+@property(readonly, copy) NSArray *locations; // @synthesize locations=_locations;
+- (id)attributeDescriptions;
+- (id)locationFromKMeansClusteredGroups:(id)arg1;
 - (id)generateNewGroupsFromGroups:(id)arg1;
 - (void)clusterWithGroups:(id)arg1;
-- (void)startKMeans;
-- (void)startGrouping;
+- (id)kMeansClusteredGroups;
+@property(readonly, copy) CLLocation *bestLocation;
 - (id)initWithLocations:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

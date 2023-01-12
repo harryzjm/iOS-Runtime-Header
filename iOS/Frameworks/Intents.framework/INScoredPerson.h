@@ -15,10 +15,12 @@
 {
     INPerson *_person;
     NSNumber *_score;
+    long long _recommendation;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long recommendation; // @synthesize recommendation=_recommendation;
 @property(readonly, copy, nonatomic) NSNumber *score; // @synthesize score=_score;
 @property(readonly, copy, nonatomic) INPerson *person; // @synthesize person=_person;
 - (id)_dictionaryRepresentation;
@@ -29,6 +31,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithPerson:(id)arg1 score:(id)arg2 recommendation:(long long)arg3;
+- (id)initWithPerson:(id)arg1 recommendation:(long long)arg2;
 - (id)initWithPerson:(id)arg1 score:(id)arg2;
 
 @end

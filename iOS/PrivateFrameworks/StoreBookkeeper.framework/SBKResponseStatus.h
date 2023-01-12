@@ -21,18 +21,18 @@ __attribute__((visibility("hidden")))
 
 + (id)responseStatusForStatusCodeNumber:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly) _Bool isPuntedError; // @synthesize isPuntedError=_isPuntedError;
-@property(readonly) _Bool shouldFileRadar; // @synthesize shouldFileRadar=_shouldFileRadar;
-@property(readonly) _Bool isError; // @synthesize isError=_isError;
-@property(readonly) _Bool isRecoverable; // @synthesize isRecoverable=_isRecoverable;
-@property(readonly, copy) NSString *consoleDescription; // @synthesize consoleDescription=_consoleDescription;
-@property(readonly) long long statusCode; // @synthesize statusCode=_statusCode;
-@property(readonly) _Bool isGenericError;
-@property(readonly) _Bool isValidationError;
-@property(readonly) _Bool isAuthenticationError;
-@property(readonly) _Bool isUnsupportedClient;
-@property(readonly) NSError *requestError;
-@property(readonly) _Bool isSuccess;
+@property(readonly, nonatomic) _Bool isPuntedError; // @synthesize isPuntedError=_isPuntedError;
+@property(readonly, nonatomic) _Bool shouldFileRadar; // @synthesize shouldFileRadar=_shouldFileRadar;
+@property(readonly, nonatomic) _Bool isError; // @synthesize isError=_isError;
+@property(readonly, nonatomic) _Bool isRecoverable; // @synthesize isRecoverable=_isRecoverable;
+@property(readonly, copy, nonatomic) NSString *consoleDescription; // @synthesize consoleDescription=_consoleDescription;
+@property(readonly, nonatomic) long long statusCode; // @synthesize statusCode=_statusCode;
+@property(readonly, nonatomic) _Bool isGenericError;
+@property(readonly, nonatomic) _Bool isValidationError;
+@property(readonly, nonatomic) _Bool isAuthenticationError;
+@property(readonly, nonatomic) _Bool isUnsupportedClient;
+@property(readonly, nonatomic) NSError *requestError;
+@property(readonly, nonatomic) _Bool isSuccess;
 - (id)initWithStatus:(long long)arg1 isRecoverable:(_Bool)arg2 isError:(_Bool)arg3 consoleDescription:(id)arg4 shouldFileRadar:(_Bool)arg5;
 
 @end

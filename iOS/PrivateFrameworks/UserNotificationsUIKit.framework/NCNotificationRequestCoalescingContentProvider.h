@@ -22,11 +22,12 @@
 - (id)_localizedStringWithPlaceholderFormat:(id)arg1 count:(unsigned long long)arg2;
 - (void)_updateSummaryText;
 - (unsigned long long)_indexOfMatchingNotificationRequest:(id)arg1;
-- (_Bool)_shouldShowContent;
+- (_Bool)isHidingContent;
 - (id)thumbnail;
 - (id)_placeholderSecondaryText;
 - (_Bool)_shouldShowNotificationBody;
 - (id)summaryText;
+- (id)importantText;
 - (id)secondaryText;
 - (id)primarySubtitleText;
 - (id)primaryText;
@@ -36,6 +37,7 @@
 - (void)removeCoalescedNotificationRequest:(id)arg1;
 - (void)coalesceNotificationRequest:(id)arg1;
 - (unsigned long long)coalesceCount;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithNotificationRequest:(id)arg1;
 

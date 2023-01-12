@@ -11,6 +11,10 @@
 - (void)ibGenerateRectsForSpaceItems;
 - (id)_ibItemFramesArray;
 - (void)setItems:(id)arg1;
+- (id)ibCompactScrollEdgeAppearance;
+- (void)setIbCompactScrollEdgeAppearance:(id)arg1;
+- (id)ibScrollEdgeAppearance;
+- (void)setIbScrollEdgeAppearance:(id)arg1;
 - (void)awakeAfterMarshallerDidEstablishRelationshipsWithContext:(id)arg1 populatingWarningMessages:(id)arg2;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end

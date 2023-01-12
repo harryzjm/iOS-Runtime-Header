@@ -11,7 +11,6 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_operationQueue;
-    double _currentLatchedAbsoluteTimestamp;
     _Bool _useCLPermissiveTimer;
     _Bool _isQueueSuspended;
 }
@@ -20,12 +19,12 @@
 - (id)debugDescription;
 - (id)operationQueue;
 - (id)queue;
+- (void)heartBeat:(id)arg1;
 - (void)afterInterval:(double)arg1 async:(CDUnknownBlockType)arg2;
 - (void)sync:(CDUnknownBlockType)arg1;
 - (void)async:(CDUnknownBlockType)arg1;
 - (id)newTimer;
 - (double)currentLatchedAbsoluteTimestamp;
-- (void)updateLatchedAbsoluteTimestamp;
 - (void)_setLatchedAbsoluteTimestamp:(double)arg1;
 - (_Bool)isSuspended;
 - (void)resume;

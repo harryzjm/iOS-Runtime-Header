@@ -10,22 +10,15 @@
 {
 }
 
-+ (id)assetResolver;
-+ (id)configurationEventStreamSubscriber;
-+ (id)configurationStatusUpdater;
-+ (id)configurationSubscriberClient;
++ (id)accountHelper;
++ (id)debouncetimer;
 + (id)enrollmentController;
-+ (id)extensionConfigurationSubscriber;
-+ (id)extensionContext;
-+ (id)extensionRequestHandler;
-+ (id)extensionStatusPublisher;
-+ (id)httpLogging;
 + (id)legacyProfilesFilter;
 + (id)locations;
++ (id)mdmHelper;
 + (id)personaHelper;
 + (id)profilesController;
-+ (id)unresolvedDataAsset;
-+ (id)unresolvedFileAsset;
++ (id)timeddispatch;
 
 @end
 

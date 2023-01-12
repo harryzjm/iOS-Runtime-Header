@@ -53,6 +53,7 @@
 + (Class)spokenLanguageType;
 + (Class)displayLanguageType;
 + (id)photoLookupRequestWithVendorIdentifier:(id)arg1 mapItemIdentifier:(id)arg2 range:(struct _NSRange)arg3 traits:(id)arg4;
++ (id)comingledPhotoLookupRequestWithCategoryIdentifier:(id)arg1 mapItemIdentifier:(id)arg2 range:(struct _NSRange)arg3 traits:(id)arg4;
 + (id)createRequestedComponentsForReason:(unsigned long long)arg1 traits:(id)arg2 count:(unsigned int)arg3;
 + (id)componentInfoWithType:(int)arg1 count:(unsigned int)arg2 traits:(id)arg3;
 + (id)publisherComponentInfoForReason:(unsigned long long)arg1 count:(unsigned int)arg2 traits:(id)arg3;
@@ -71,7 +72,8 @@
 - (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -130,9 +132,13 @@
 - (_Bool)isForwardGeocoderRequest;
 - (id)initForDatasetCheckWithTraits:(id)arg1;
 - (_Bool)isBrandLookupRequest;
+- (id)initForMapsHomeWithTraits:(id)arg1;
+- (id)initCitySelectorViewWithTraits:(id)arg1 batchSize:(unsigned int)arg2;
 - (id)initWithAllCollectionViewWithBatchSize:(unsigned int)arg1 keywordFilter:(id)arg2 addressFilter:(id)arg3 withTraits:(id)arg4;
 - (id)initForCuratedCollectionItemLookupWithIdentifiers:(id)arg1 collectionIdentifier:(id)arg2 traits:(id)arg3;
-- (id)initForCuratedCollectionLookupWithIdentifiers:(id)arg1 isBatchLookup:(_Bool)arg2 traits:(id)arg3;
+- (id)initForGuideLocationLookupWithIdentifiers:(id)arg1 traits:(id)arg2;
+- (id)initForCuratedCollectionLookupWithIdentifiers:(id)arg1 isBatchLookup:(_Bool)arg2 overrideSuppress:(_Bool)arg3 traits:(id)arg4;
+- (id)initWithGuideHomeWithFilter:(id)arg1 guideLocation:(id)arg2 withTraits:(id)arg3;
 - (id)initPublisherViewWithPublisherIdentifier:(id)arg1 keywordFilter:(id)arg2 addressFilter:(id)arg3 batchSize:(unsigned int)arg4 withTraits:(id)arg5;
 - (id)initForSearchHomeWithTraits:(id)arg1;
 - (id)initWithSpatialEventLookupParameters:(id)arg1 traits:(id)arg2;
@@ -150,7 +156,6 @@
 - (id)initWithCategory:(id)arg1 routeInfo:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)initWithCategory:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)initForDFRCategoryListWithTraits:(id)arg1;
-- (id)initForSpotlightCategoryListWithTraits:(id)arg1;
 - (int)userPreferredTransportTypeFromTransportType:(int)arg1;
 - (int)geoUserPreferredTransportType;
 - (double)localTimestamp;
@@ -162,11 +167,12 @@
 - (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 filters:(id)arg7 suppressResultsRequiringAttribution:(_Bool)arg8 traits:(id)arg9 error:(id *)arg10;
 - (id)initWithCanonicalLocationSearchQueryString:(id)arg1 traits:(id)arg2;
 - (id)initWithTripIds:(id)arg1 traits:(id)arg2;
-- (id)initWithTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
-- (id)initWithTransitTripDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
-- (id)initWithUpdatedTransitScheduleDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
-- (id)initWithTransitScheduleAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
-- (id)_initWithTransitScheduleRequestForStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 routingParameters:(id)arg4 traits:(id)arg5;
+- (id)initWithNearbyTransitDeparturesWithLookupOrigin:(id)arg1 userLocation:(id)arg2 traits:(id)arg3;
+- (id)initWithTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
+- (id)initWithTransitTripDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
+- (id)initWithUpdatedTransitScheduleDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
+- (id)initWithTransitScheduleAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
+- (id)_initWithTransitScheduleRequestForStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripId:(unsigned long long)arg3 includeAllDirectionNames:(_Bool)arg4 routingParameters:(id)arg5 traits:(id)arg6;
 - (id)initWithBrandMUID:(unsigned long long)arg1 traits:(id)arg2;
 - (id)initWithVendorSpecificPlaceRefinementParameters:(id)arg1 traits:(id)arg2;
 - (id)initWithPlaceRefinementParameters:(id)arg1 traits:(id)arg2;

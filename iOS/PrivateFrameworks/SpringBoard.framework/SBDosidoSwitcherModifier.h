@@ -11,9 +11,11 @@
     SBAppLayout *_fromAppLayout;
     SBAppLayout *_toAppLayout;
     unsigned long long _direction;
+    _Bool _shouldSuppressScaleAnimation;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldSuppressScaleAnimation; // @synthesize shouldSuppressScaleAnimation=_shouldSuppressScaleAnimation;
 - (id)appLayoutsToCacheSnapshots;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
@@ -21,15 +23,15 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
 - (id)transitionWillUpdate;
 - (id)transitionWillBegin;
-- (_Bool)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (_Bool)shouldAsyncRenderUntilDelay:(inout double *)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 direction:(unsigned long long)arg4;
 
 @end

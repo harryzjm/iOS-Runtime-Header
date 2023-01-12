@@ -41,6 +41,7 @@
 @property(readonly) _Bool connectable; // @synthesize connectable=_connectable;
 @property(readonly) _Bool discoverable; // @synthesize discoverable=_discoverable;
 @property(readonly) _Bool inquiryState; // @synthesize inquiryState=_inquiryState;
+- (void)alertUserNotificationIsReady;
 - (void)handlePeerDisconnectionCompleted:(id)arg1;
 - (void)handlePeerConnectionCompleted:(id)arg1;
 - (void)handleSDPRecordAdded:(id)arg1;
@@ -56,13 +57,16 @@
 - (void)cancelPeerConnection:(id)arg1 force:(_Bool)arg2;
 - (void)cancelPeerConnection:(id)arg1;
 - (void)connectPeer:(id)arg1 options:(id)arg2;
+- (unsigned int)addServiceWithData:(id)arg1;
 - (void)addService:(id)arg1 sdpRecord:(id)arg2 sdpRecordAddedHandler:(CDUnknownBlockType)arg3;
 - (void)removeAllServicesFromInquiryList;
 - (void)removeServiceFromInquiryList:(id)arg1;
 - (void)addServiceToInquiryList:(id)arg1;
 - (void)removeAllServices;
+- (void)removeServiceHandle:(unsigned int)arg1;
 - (void)removeService:(id)arg1;
 - (void)addService:(id)arg1;
+- (id)getLocalSDPDatabase;
 - (id)retrievePairedPeersWithOptions:(id)arg1;
 - (void)stopInquiry;
 - (void)startInquiryWithOptions:(id)arg1 classicPeerDiscovered:(CDUnknownBlockType)arg2;

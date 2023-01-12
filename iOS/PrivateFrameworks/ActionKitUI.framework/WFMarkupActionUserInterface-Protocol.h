@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSArray;
 
-@protocol WFMarkupActionUserInterface <WFRemoteUserInterface>
+@protocol WFMarkupActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithPreviewItems:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 @end
 

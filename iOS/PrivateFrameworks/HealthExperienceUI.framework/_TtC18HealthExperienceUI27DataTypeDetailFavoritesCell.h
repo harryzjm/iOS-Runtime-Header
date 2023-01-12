@@ -4,30 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKit/UICollectionViewListCell.h>
 
-@class MISSING_TYPE, UIButton, UILabel, _TtC18HealthExperienceUI11PlatterView;
+@class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI27DataTypeDetailFavoritesCell : UICollectionViewCell
+@interface _TtC18HealthExperienceUI27DataTypeDetailFavoritesCell : UICollectionViewListCell
 {
-    MISSING_TYPE *platterView;
-    MISSING_TYPE *titleLabel;
-    MISSING_TYPE *favoriteButton;
-    MISSING_TYPE *favoritesController;
-    MISSING_TYPE *parentViewController;
     MISSING_TYPE *item;
+    MISSING_TYPE *parentViewController;
+    MISSING_TYPE *textStyle;
+    MISSING_TYPE *$__lazy_storage_$_notFavoritedImage;
+    MISSING_TYPE *$__lazy_storage_$_favoritedImage;
+    MISSING_TYPE *$__lazy_storage_$_accessoryImageView;
 }
 
 - (void).cxx_destruct;
+- (void)_bridgedUpdateConfigurationUsingState:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic) _Bool highlighted;
-- (_Bool)isHighlighted;
-- (void)awakeFromNib;
-@property(nonatomic) __weak UIButton *favoriteButton; // @synthesize favoriteButton;
-@property(nonatomic) __weak UILabel *titleLabel; // @synthesize titleLabel;
-@property(nonatomic) __weak _TtC18HealthExperienceUI11PlatterView *platterView; // @synthesize platterView;
+@property(nonatomic, readonly) _Bool axItemIsFavorited;
 
 @end
 

@@ -11,11 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface VKMuninCameraController <VKGesturingCameraController>
 {
-    struct MuninSceneLogic *_muninSceneLogic;
+    void *_muninSceneLogic;
+    void *_elevationLogic;
     shared_ptr_e963992e _taskContext;
     struct optional<(anonymous namespace)::PointSegment> _currentPointSegment;
-    shared_ptr_781019ee _pathAnimator;
-    struct unique_ptr<(anonymous namespace)::BumpAnimator, std::__1::default_delete<(anonymous namespace)::BumpAnimator>> _bumpAnimator;
+    struct shared_ptr<(anonymous namespace)::PathAnimator> _pathAnimator;
+    struct unique_ptr<(anonymous namespace)::BumpAnimator, std::default_delete<(anonymous namespace)::BumpAnimator>> _bumpAnimator;
     _Bool _panning;
     _Bool _panStopping;
     Matrix_8746f91e _panLocation;
@@ -38,17 +39,16 @@ __attribute__((visibility("hidden")))
     CameraFrame_406dbd31 _previousCameraFrame;
     unsigned long long _tapIndex;
     struct shared_ptr<geo::Task> _preparePath;
-    struct unique_ptr<(anonymous namespace)::PathAnimationDescription, std::__1::default_delete<(anonymous namespace)::PathAnimationDescription>> _currentPathAnimation;
-    struct unique_ptr<(anonymous namespace)::PendingPathAnimation, std::__1::default_delete<(anonymous namespace)::PendingPathAnimation>> _pendingPathAnimation;
+    struct unique_ptr<(anonymous namespace)::PathAnimationDescription, std::default_delete<(anonymous namespace)::PathAnimationDescription>> _currentPathAnimation;
+    struct unique_ptr<(anonymous namespace)::PendingPathAnimation, std::default_delete<(anonymous namespace)::PendingPathAnimation>> _pendingPathAnimation;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool virtualParallaxEnabled; // @synthesize virtualParallaxEnabled=_virtualParallaxEnabled;
+- (_Bool)usesVKCamera;
 - (double)zoomLevelAdjustmentForTileSize:(long long)arg1;
-- (id)viewportInfo;
 - (double)topDownMinimumZoomLevelForTileSize:(long long)arg1;
-- (_Bool)restoreViewportFromInfo:(id)arg1;
 - (double)minimumZoomLevelForTileSize:(long long)arg1;
 - (double)maximumZoomLevelForTileSize:(long long)arg1;
 - (double)currentZoomLevelForTileSize:(long long)arg1;
@@ -78,12 +78,12 @@ __attribute__((visibility("hidden")))
 - (Unit_3d259e8a)_horizontalFieldOfView:(Unit_3d259e8a)arg1;
 - (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(_Bool)arg2;
 - (_Bool)tapAtPoint:(struct CGPoint)arg1;
-- (void)moveAlongPath:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_6683d8a9)arg3 continued:(_Bool)arg4;
+- (void)moveAlongPath:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_eabd84a1)arg3 continued:(_Bool)arg4;
 - (void)pathAnimationComplete:(unsigned long long)arg1;
-- (void)pathAnimationPrepared:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_6683d8a9)arg3;
-- (void)runBumpAnimation:(const Geocentric_d8fde6f2 *)arg1 targetPoint:(const Geocentric_d8fde6f2 *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)animatePath:(vector_e91c9c3b *)arg1 withTarget:(const Geocentric_d8fde6f2 *)arg2 lookAtTarget:(_Bool)arg3 constantLod:(_Bool)arg4 prePruneData:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)animatePath:(vector_e91c9c3b *)arg1 animator:(const shared_ptr_781019ee *)arg2 preloadedRequiredViews:(unordered_map_6683d8a9 *)arg3 prePruneData:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)pathAnimationPrepared:(struct PathAnimationDescription)arg1 tap:(struct TapDescription)arg2 preloadedViews:(unordered_map_eabd84a1)arg3;
+- (void)runBumpAnimation:(const void *)arg1 targetPoint:(const void *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)animatePath:(void *)arg1 withTarget:(const void *)arg2 lookAtTarget:(_Bool)arg3 constantLod:(_Bool)arg4 prePruneData:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)animatePath:(void *)arg1 animator:(const void *)arg2 preloadedRequiredViews:(void *)arg3 prePruneData:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)isAnimationsRunning;
 - (_Bool)isBumpAnimationRunning;
 - (_Bool)isPathAnimationRunning;
@@ -92,24 +92,24 @@ __attribute__((visibility("hidden")))
 - (_Bool)cancelPendingMove;
 - (void)stopAnimations;
 - (void)stopAnimationsExceptBump;
-- (void)setCurrentSegment:(struct PointSegment *)arg1;
-- (_Bool)moveToPoint:(const struct CollectionPoint *)arg1 withHeading:(Unit_3d259e8a)arg2 withPitch:(Unit_3d259e8a)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)selectLabelMarker:(const shared_ptr_2d33c5e4 *)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setCurrentSegment:(void *)arg1;
+- (_Bool)moveToPoint:(const void *)arg1 withHeading:(Unit_3d259e8a)arg2 withPitch:(Unit_3d259e8a)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)selectLabelMarker:(const void *)arg1 completion:(CDUnknownBlockType)arg2;
 - (Matrix_8746f91e)screenPointWithOffset:(struct CGPoint)arg1;
 - (void)updateCurrentPointView:(_Bool)arg1;
-- (const struct CollectionPoint *)currentPoint;
-- (void)setCurrentPoint:(const struct CollectionPoint *)arg1 secondaryPoint:(optional_ff574c75)arg2;
-- (void)setCurrentPoint:(const struct CollectionPoint *)arg1;
+- (const void *)currentPoint;
+- (void)setCurrentPoint:(const void *)arg1 secondaryPoint:(optional_ff574c75)arg2;
+- (void)setCurrentPoint:(const void *)arg1;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCameraFrame:(CameraFrame_406dbd31)arg1;
-- (void)setCamera:(id)arg1;
+- (void)setVkCamera:(id)arg1;
 - (double)altitude;
 - (double)pitch;
 - (void)_setHeading:(Unit_3d259e8a)arg1;
 - (double)heading;
 - (CDStruct_c3b9c2ee)centerCoordinate;
-- (void)updateWithTimestamp:(double)arg1;
-- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(struct MapDataAccess *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5 muninSceneLogic:(struct MuninSceneLogic *)arg6;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(void *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5 muninSceneLogic:(void *)arg6 elevationLogic:(void *)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

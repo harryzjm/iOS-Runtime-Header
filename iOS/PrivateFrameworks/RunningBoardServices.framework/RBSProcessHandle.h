@@ -10,7 +10,7 @@
 #import <RunningBoardServices/RBSProcessIdentifier-Protocol.h>
 #import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class BSAuditToken, BSProcessHandle, NSString, RBSMachPortTaskNameRight, RBSProcessBundle, RBSProcessExitContext, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessState;
+@class BSAuditToken, BSProcessHandle, NSString, NSUUID, RBSMachPortTaskNameRight, RBSProcessBundle, RBSProcessExitContext, RBSProcessIdentity, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessState;
 @protocol OS_xpc_object;
 
 @interface RBSProcessHandle : NSObject <RBSXPCSecureCoding, RBSProcessIdentifier, NSSecureCoding>
@@ -23,6 +23,7 @@
     unsigned long long _data;
     NSString *_cachedName;
     int _pid;
+    unsigned int _euid;
     RBSProcessIdentity *_identity;
     RBSProcessBundle *_bundle;
 }
@@ -31,13 +32,13 @@
 + (_Bool)supportsSecureCoding;
 + (id)observeForImminentAssertionsExpiration:(CDUnknownBlockType)arg1;
 + (id)handleForLegacyHandle:(id)arg1 error:(out id *)arg2;
-+ (void)clearAllHandles;
 + (id)handleForKey:(unsigned long long)arg1 fetchIfNeeded:(_Bool)arg2;
 + (id)handleForPredicate:(id)arg1 error:(out id *)arg2;
 + (id)handleForIdentifier:(id)arg1 error:(out id *)arg2;
 + (id)currentProcess;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) RBSProcessBundle *bundle; // @synthesize bundle=_bundle;
+@property(readonly, nonatomic) unsigned int euid; // @synthesize euid=_euid;
 @property(readonly, copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 - (id)initWithRBSXPCCoder:(id)arg1;
@@ -51,6 +52,12 @@
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
 - (int)rbs_pid;
+@property(readonly, nonatomic, getter=isApplication) _Bool application;
+@property(readonly, nonatomic) NSUUID *uuid;
+@property(readonly, copy, nonatomic) NSString *xpcServiceIdentifier;
+@property(readonly, nonatomic, getter=isXPCService) _Bool XPCService;
+@property(readonly, copy, nonatomic) NSString *daemonJobLabel;
+@property(readonly, nonatomic, getter=isDaemon) _Bool daemon;
 - (double)elapsedCPUTimeForFrontBoard;
 - (id)legacyHandle;
 @property(readonly, nonatomic) int platform;
@@ -74,7 +81,6 @@
 - (void)dealloc;
 - (id)init;
 @property(readonly, copy, nonatomic) NSString *beforeTranslocationBundlePath;
-- (void)plugInHandshakeComplete;
 
 // Remaining properties
 @property(readonly) Class superclass;

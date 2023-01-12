@@ -4,31 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSHashTable, UIImage;
+#import <objc/NSObject.h>
 
-@interface TLKImage
+@class NSCache, UIImage;
+
+@interface TLKImage : NSObject
 {
     _Bool _isTemplate;
     _Bool _useFastPathShadow;
     UIImage *_uiImage;
+    double _aspectRatio;
     unsigned long long _cornerRoundingStyle;
     double _cornerRadius;
-    NSHashTable *_completionTable;
+    NSCache *_imageCache;
     struct CGSize _size;
 }
 
++ (_Bool)imageIsSymbol:(id)arg1;
++ (id)keyForScale:(double)arg1 isDarkStyle:(_Bool)arg2;
++ (id)applyTintColor:(id)arg1 toImage:(id)arg2;
++ (id)templateImageForImage:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSHashTable *completionTable; // @synthesize completionTable=_completionTable;
+@property(retain) NSCache *imageCache; // @synthesize imageCache=_imageCache;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) _Bool useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
 @property(nonatomic) unsigned long long cornerRoundingStyle; // @synthesize cornerRoundingStyle=_cornerRoundingStyle;
 @property(nonatomic) _Bool isTemplate; // @synthesize isTemplate=_isTemplate;
+@property(nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(retain, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
-- (void)didLoadImageWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cacheImage:(id)arg1 forScale:(double)arg2 isDarkStyle:(_Bool)arg3;
+- (id)cachedImageForScale:(double)arg1 isDarkStyle:(_Bool)arg2;
+- (void)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithImage:(id)arg1;
 - (id)init;
-@property(readonly, nonatomic) UIImage *uiImageToRender;
 
 @end
 

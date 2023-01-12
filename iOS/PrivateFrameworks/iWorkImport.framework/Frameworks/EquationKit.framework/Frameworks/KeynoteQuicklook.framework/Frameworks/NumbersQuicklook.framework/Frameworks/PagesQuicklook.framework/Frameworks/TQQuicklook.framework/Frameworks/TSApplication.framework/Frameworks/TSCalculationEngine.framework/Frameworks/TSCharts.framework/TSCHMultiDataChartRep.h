@@ -8,31 +8,32 @@
 
 @interface TSCHMultiDataChartRep
 {
-    CALayer *mRootLayer;
-    CALayer *mElementsContainerLayer;
-    _Bool mRenderingBackgroundLayer;
-    _Bool mRenderingElementShapeLayer;
-    _Bool mRenderingElementLabelsLayer;
-    _Bool mRenderingDataSetNameLayer;
-    _Bool mRenderingReferenceLineLayer;
-    _Bool mAnimatedLayersNeedUpdate;
-    _Bool mShouldAnimateLabelsQuickly;
-    _Bool mIsAnimatingForBuilds;
-    unsigned long long mElementLayersMultiDataSetIndex;
-    int mGridDirection;
-    NSMutableDictionary *mIndexedElements;
-    TSCHMultiDataChartRepElementIndex *mCurrentRepElementIndex;
-    CALayer *mDataSetNameLayer;
-    CALayer *mReferenceLinesContainerLayer;
-    NSSet *mReferenceLinesToRender;
-    NSSet *mReferenceLineLabelsSearchSelectionsToRender;
-    NSMutableDictionary *mLayerIdToLayerMap;
-    NSMutableDictionary *mPreviousOutsideBodyBounds;
+    CALayer *_rootLayer;
+    CALayer *_elementsContainerLayer;
+    _Bool _renderingBackgroundLayer;
+    _Bool _renderingElementShapeLayer;
+    _Bool _renderingElementLabelsLayer;
+    _Bool _renderingDataSetNameLayer;
+    _Bool _renderingReferenceLineLayer;
+    _Bool _animatedLayersNeedUpdate;
+    _Bool _shouldAnimateLabelsQuickly;
+    _Bool _isAnimatingForBuilds;
+    unsigned long long _elementLayersMultiDataSetIndex;
+    int _gridDirection;
+    NSMutableDictionary *_indexedElements;
+    TSCHMultiDataChartRepElementIndex *_currentRepElementIndex;
+    CALayer *_dataSetNameLayer;
+    CALayer *_referenceLinesContainerLayer;
+    NSSet *_referenceLinesToRender;
+    NSSet *_referenceLineLabelsSearchSelectionsToRender;
+    NSMutableDictionary *_layerIdToLayerMap;
+    NSMutableDictionary *_previousOutsideBodyBounds;
     _Bool _shouldDisableMultiDataControls;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldDisableMultiDataControls; // @synthesize shouldDisableMultiDataControls=_shouldDisableMultiDataControls;
+- (void)invalidateAnimationState;
 - (void)didEndZooming;
 - (void)willBeginZooming;
 - (_Bool)shouldUseLegendLayerForLayerBasedRep;

@@ -10,7 +10,7 @@
 
 @interface SKTransition : NSObject <NSCopying>
 {
-    struct SKCTransitionNode *_skcTransitionNode;
+    void *_skcTransitionNode;
 }
 
 + (id)transitionWithCIFilter:(id)arg1 duration:(double)arg2;
@@ -41,7 +41,7 @@
 + (id)revealWithDirection:(long long)arg1 duration:(double)arg2;
 - (void)dealloc;
 - (id)_filter;
-- (struct SKCTransitionNode *)_backingNode;
+- (void *)_backingNode;
 - (double)_duration;
 @property(nonatomic) _Bool pausesOutgoingScene;
 @property(nonatomic) _Bool pausesIncomingScene;

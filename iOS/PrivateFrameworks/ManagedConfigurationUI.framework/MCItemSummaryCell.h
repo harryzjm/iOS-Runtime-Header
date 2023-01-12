@@ -16,16 +16,12 @@
     UILabel *_itemSubtitleLabel;
 }
 
-+ (double)titleOriginX;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *itemSubtitleLabel; // @synthesize itemSubtitleLabel=_itemSubtitleLabel;
 @property(retain, nonatomic) UILabel *itemTitleLabel; // @synthesize itemTitleLabel=_itemTitleLabel;
 @property(retain, nonatomic) UIView *itemTitleView; // @synthesize itemTitleView=_itemTitleView;
 @property(retain, nonatomic) UIImageView *itemImageView; // @synthesize itemImageView=_itemImageView;
-- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
-- (double)cellHeight;
 - (void)_setupConstraints;
-- (id)_profileImageAppropriateForDevice;
 - (void)_setupCell;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

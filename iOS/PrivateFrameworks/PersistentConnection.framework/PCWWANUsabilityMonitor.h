@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSString *_interfaceName;
     PCInterfaceUsabilityMonitor *_interfaceMonitor;
     int _currentRAT;
+    unsigned int _currentDataBearerSoMask;
     int _powerlogCDRXToken;
     CoreTelephonyClient *_ctClient;
     int _wwanContextID;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int currentRAT; // @synthesize currentRAT=_currentRAT;
 - (id)_currentDataSimContext;
 @property(readonly, nonatomic) NSString *networkCode;
+@property(readonly, nonatomic) unsigned long long interface5GMode;
 @property(readonly, nonatomic) _Bool isLTEWithCDRX;
 - (_Bool)_isCurrentDataSimContextOnIvarQueue:(id)arg1;
 - (void)_adjustInterfaceNameForWWANContextID:(int)arg1 interfaceName:(id)arg2 forContext:(id)arg3;

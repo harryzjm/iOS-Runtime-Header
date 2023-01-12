@@ -8,6 +8,8 @@
 {
 }
 
+@property(readonly, nonatomic) unsigned long long compressionFootprint;
+@property(readonly) long long compressionType;
 @property(readonly) unsigned long long allocationID;
 
 @end

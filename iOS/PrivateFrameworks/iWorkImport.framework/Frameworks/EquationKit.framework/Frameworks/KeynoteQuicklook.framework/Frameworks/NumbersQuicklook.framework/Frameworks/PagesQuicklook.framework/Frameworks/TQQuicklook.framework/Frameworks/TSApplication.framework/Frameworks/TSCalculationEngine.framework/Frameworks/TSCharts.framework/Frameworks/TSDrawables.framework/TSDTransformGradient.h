@@ -28,8 +28,8 @@
 - (struct CGPoint)endPointForPath:(id)arg1 andBounds:(struct CGRect)arg2;
 - (struct CGPoint)startPointForPath:(id)arg1 andBounds:(struct CGRect)arg2;
 - (struct CGAffineTransform)transformForSize:(struct CGSize)arg1;
-- (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
-- (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)paintPath:(const struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
+- (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 atAngle:(double)arg3;
 - (void)p_setBaseNaturalSize:(struct CGSize)arg1;
@@ -47,8 +47,8 @@
 - (id)initWithGradient:(id)arg1 inPath:(id)arg2 andBounds:(struct CGRect)arg3;
 - (id)initWithGradientStops:(id)arg1 type:(unsigned long long)arg2;
 - (id)initWithStartColor:(id)arg1 endColor:(id)arg2 type:(unsigned long long)arg3;
-- (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

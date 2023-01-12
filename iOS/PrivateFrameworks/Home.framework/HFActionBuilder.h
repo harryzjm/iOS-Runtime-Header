@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMAction;
+#import <Home/HFComparable-Protocol.h>
 
-@interface HFActionBuilder
+@class HMAction, NSString;
+
+@interface HFActionBuilder <HFComparable>
 {
 }
 
 + (id)actionBuilderForAction:(id)arg1 inHome:(id)arg2;
 + (Class)homeKitRepresentationClass;
+@property(readonly, copy) NSString *debugDescription;
 - (id)performValidation;
 - (_Bool)hasSameTargetAsActionBuilder:(id)arg1;
 - (_Bool)hasSameTargetAsAction:(id)arg1;
@@ -22,8 +25,15 @@
 - (id)copyForCreatingNewAction;
 @property(readonly, nonatomic) _Bool requiresDeviceUnlock;
 - (_Bool)updateWithActionBuilder:(id)arg1;
+- (_Bool)canUpdateWithActionBuilder:(id)arg1;
 - (void)setAction:(id)arg1;
 @property(readonly, nonatomic) HMAction *action;
+@property(readonly) unsigned long long hash;
+- (id)compareToObject:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

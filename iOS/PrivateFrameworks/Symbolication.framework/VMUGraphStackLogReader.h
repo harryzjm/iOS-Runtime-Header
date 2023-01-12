@@ -11,7 +11,6 @@
 
 @interface VMUGraphStackLogReader <NSSecureCoding, VMUStackLogReader>
 {
-    struct _CSTypeRef _symbolicator;
     VMUProcessObjectGraph *_graph;
     NSData *_diskLogs;
     VMUDebugTimer *_debugTimer;
@@ -25,7 +24,6 @@
 }
 
 + (void)initialize;
-+ (void)_claimUnarchivingOfClass:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *diskLogs; // @synthesize diskLogs=_diskLogs;
@@ -53,6 +51,7 @@
 - (struct _VMURange)binaryImageRangeForPCaddress:(unsigned long long)arg1;
 - (id)binaryImagePathForPCaddress:(unsigned long long)arg1;
 - (void)symbolicateBacktraceUniquingTable;
+- (void)enumerateUniquingTable:(CDUnknownBlockType)arg1;
 - (void)populateBacktraceUniquingTableWithStackLogs:(id)arg1;
 - (_Bool)copyOriginalUniquingTable:(id)arg1;
 - (void)streamFullStackLogsToBlock:(CDUnknownBlockType)arg1;
@@ -69,6 +68,7 @@
 @property(readonly) unsigned long long hash;
 @property(readonly) VMUVMRegionTracker *regionTracker;
 @property(readonly) Class superclass;
+@property(readonly) struct _CSTypeRef symbolicator;
 @property(readonly) unsigned int task;
 @property(readonly) _Bool usesLiteMode;
 

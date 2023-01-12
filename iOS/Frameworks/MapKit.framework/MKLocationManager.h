@@ -55,9 +55,9 @@
     NSMutableArray *_recentLocationUpdateIntervals;
     NSLock *_lastLocationLock;
     NSLock *_observersLock;
-    int _preciseLocationAuthorizationState;
+    int _accuracyAuthorizationState;
     _Bool _temporaryPreciseLocationAuthorizationPromptShown;
-    geo_isolater *_authorizedForPreciseLocationIsolater;
+    geo_isolater *_accuracyAuthorizationIsolater;
     _Bool _hasCustomDesiredAccuracy;
     _Bool _continuesWhileInactive;
     _Bool _logStartStopLocationUpdates;
@@ -116,7 +116,7 @@
 - (void)pushLocation:(id)arg1;
 - (_Bool)_shouldAllowLocationUpdateInterval:(double)arg1;
 - (void)dismissHeadingCalibrationDisplay;
-- (void)dampenGPSLocationAccuracy:(id *)arg1 oldLocationSource:(int)arg2;
+- (void)dampenGPSLocationAccuracy:(id *)arg1;
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
 @property(nonatomic) long long activityType;
@@ -157,7 +157,6 @@
 @property(readonly, nonatomic) CLLocation *lastProviderLocation;
 @property(readonly, nonatomic) CLLocation *lastGoodLocation; // @synthesize lastGoodLocation=_lastGoodLocation;
 @property(readonly, nonatomic) CLLocation *lastLocation;
-@property(readonly, nonatomic) int lastLocationSource;
 @property(retain, nonatomic) id <MKLocationProvider> locationProvider;
 @property(copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property(retain, nonatomic) NSBundle *effectiveBundle;

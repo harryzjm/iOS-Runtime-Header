@@ -11,6 +11,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned int size;
+    unsigned int state;
+} CDStruct_2942c33b;
+
+typedef struct {
     unsigned long long _field1;
     double _field2;
     unsigned int _field3;
@@ -20,10 +25,7 @@ typedef struct {
 
 typedef struct {
     union {
-        struct {
-            unsigned int size;
-            unsigned int state;
-        } frameStatus;
+        CDStruct_2942c33b frameStatus;
         unsigned long long frameStatusData;
     } ;
     struct {

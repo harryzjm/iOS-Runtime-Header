@@ -20,7 +20,9 @@
 - (void).cxx_destruct;
 @property(readonly) NSURL *networkPath; // @synthesize networkPath=_networkPath;
 @property(readonly) HMIDESDataset *data; // @synthesize data=_data;
-- (id)trainLayers:(id)arg1 epochs:(unsigned long long)arg2 inferenceInputs:(id)arg3 inferenceOutputs:(id)arg4 trainingInputs:(id)arg5 trainingOutputs:(id)arg6 error:(id *)arg7;
+- (id)trainLayers:(id)arg1 epochs:(unsigned long long)arg2 fromTask:(id)arg3 shouldCalculatePreTrainingLoss:(_Bool)arg4 error:(id *)arg5;
+- (float)preTrainingInferenceOutputDictionary:(id)arg1 preTrainingtrainingLossKeyName:(id)arg2 error:(id *)arg3;
+- (id)inferenceInputs:(id)arg1 inferenceOutputs:(id)arg2 trainingInputs:(id)arg3 trainingOutputs:(id)arg4 learningRate:(id)arg5 error:(id *)arg6;
 - (id)getParametersFromLayers:(id)arg1 fromTask:(id)arg2 error:(id *)arg3;
 - (id)initWithTrainingNetworkPath:(id)arg1 data:(id)arg2 error:(id *)arg3;
 

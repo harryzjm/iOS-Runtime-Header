@@ -8,10 +8,12 @@
 {
 }
 
++ (_Bool)canPerformBlockingOnAssetCollection:(id)arg1;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
++ (id)createStandardActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
++ (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (id)systemImageNameForAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
-+ (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 - (void)performBackgroundTask;
 - (_Bool)_didUserConfirmDeleteOfMemory;

@@ -20,8 +20,12 @@ __attribute__((visibility("hidden")))
     unsigned int _networkPayload;
     unsigned short _evsChannelAwareOffset;
     _Bool _evsHeaderFullOnly;
+    unsigned long long _pTime;
+    _Bool _isOpusInBandFecEnabled;
 }
 
+@property(nonatomic) _Bool isOpusInBandFecEnabled; // @synthesize isOpusInBandFecEnabled=_isOpusInBandFecEnabled;
+@property(nonatomic) unsigned long long pTime; // @synthesize pTime=_pTime;
 @property(nonatomic) _Bool evsHeaderFullOnly; // @synthesize evsHeaderFullOnly=_evsHeaderFullOnly;
 @property(nonatomic) unsigned short evsChannelAwareOffset; // @synthesize evsChannelAwareOffset=_evsChannelAwareOffset;
 @property(nonatomic) unsigned int networkPayload; // @synthesize networkPayload=_networkPayload;

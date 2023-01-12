@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class AWDHomeKitValue, NSString;
 
-@interface HMDWHASettingEvent <HMDAWDLogEvent>
+@interface HMDWHASettingEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     NSString *_keyPath;
     AWDHomeKitValue *_value;
 }
 
 + (id)eventWithKeyPath:(id)arg1 value:(id)arg2;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(copy, nonatomic) AWDHomeKitValue *value; // @synthesize value=_value;
 @property(copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;

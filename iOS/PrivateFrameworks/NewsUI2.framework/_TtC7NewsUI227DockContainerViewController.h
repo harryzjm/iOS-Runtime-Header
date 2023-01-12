@@ -8,9 +8,10 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227DockContainerViewController : UIViewController
 {
-    MISSING_TYPE *rootViewController;
+    MISSING_TYPE *_rootViewController;
     MISSING_TYPE *lazyDockableViewController;
     MISSING_TYPE *presentationMode;
     MISSING_TYPE *dockView;

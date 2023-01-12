@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSProcessInfo, NSData, NSDictionary, NSError, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics;
+@class AMSProcessInfo, AMSURLRequestProperties, NSData, NSDictionary, NSError, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics;
 @protocol AMSBagProtocol;
 
 @interface AMSMetricsLoadURLContext : NSObject
@@ -19,9 +19,11 @@
     NSURLSessionTask *_task;
     NSURLSessionTaskMetrics *_taskMetrics;
     NSDictionary *_decodedResponseBody;
+    AMSURLRequestProperties *_properties;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) AMSURLRequestProperties *properties; // @synthesize properties=_properties;
 @property(retain, nonatomic) NSDictionary *decodedResponseBody; // @synthesize decodedResponseBody=_decodedResponseBody;
 @property(retain, nonatomic) NSURLSessionTaskMetrics *taskMetrics; // @synthesize taskMetrics=_taskMetrics;
 @property(retain, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;

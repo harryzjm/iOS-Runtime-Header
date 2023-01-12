@@ -9,12 +9,12 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDecimalNumber, NSString, PKCurrencyAmount;
+@class NSArray, NSDate, NSDecimalNumber, NSSet, NSString, PKCurrencyAmount;
 
 @interface PKPaymentBalance : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _isPrimary;
-    NSString *_identifier;
+    NSSet *_identifiers;
     NSDecimalNumber *_value;
     NSString *_currencyCode;
     long long _exponent;
@@ -22,10 +22,13 @@
     NSString *_localizedDescription;
     NSDate *_lastUpdateDate;
     NSString *_preformattedString;
+    NSArray *_componentBalances;
 }
 
++ (id)identifiersFromComponentBalances:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *componentBalances; // @synthesize componentBalances=_componentBalances;
 @property(copy, nonatomic) NSString *preformattedString; // @synthesize preformattedString=_preformattedString;
 @property(copy, nonatomic) NSDate *lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
 @property(nonatomic) _Bool isPrimary; // @synthesize isPrimary=_isPrimary;
@@ -34,7 +37,8 @@
 @property(nonatomic) long long exponent; // @synthesize exponent=_exponent;
 @property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property(copy, nonatomic) NSDecimalNumber *value; // @synthesize value=_value;
-@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSSet *identifiers; // @synthesize identifiers=_identifiers;
+- (_Bool)isComposed;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
@@ -42,7 +46,12 @@
 @property(readonly, nonatomic) PKCurrencyAmount *currencyValue;
 @property(readonly, nonatomic) _Bool isCurrency;
 - (void)_setValueWithRounding:(id)arg1;
+- (id)initWithComponentBalances:(id)arg1 identifiers:(id)arg2 expiredBalances:(id)arg3;
+- (id)initWithComponentBalances:(id)arg1 identifiers:(id)arg2;
+- (id)initWithComponentBalances:(id)arg1;
+- (id)initWithIdentifiers:(id)arg1 forValue:(id)arg2 roundingToExponent:(long long)arg3;
 - (id)initWithIdentifier:(id)arg1 forValue:(id)arg2 roundingToExponent:(long long)arg3;
+- (id)initWithIdentifiers:(id)arg1 forCurrencyAmount:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 forCurrencyAmount:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;

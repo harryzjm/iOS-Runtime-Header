@@ -6,7 +6,6 @@
 
 @class CKServerChangeToken, NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordZoneChangesOperation
 {
     _Bool _clientIsUsingLegacyCKFetchRecordChangesOperationAPI;
@@ -41,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)_noteCompletedURLRequest:(id)arg1 withSchedulerInfo:(id)arg2;
 - (id)activityCreate;
 - (id)pipeliningDescription;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 @end
 

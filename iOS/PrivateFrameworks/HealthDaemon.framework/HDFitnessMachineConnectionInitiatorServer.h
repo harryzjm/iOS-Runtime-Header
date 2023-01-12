@@ -18,7 +18,6 @@
 + (id)taskIdentifier;
 + (id)createTaskServerWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <HDFitnessMachineConnectionInitiatorProtocol> connectionInitiatorServer; // @synthesize connectionInitiatorServer=_connectionInitiatorServer;
 - (void)remote_simulateTapWithFitnessMachineType:(unsigned long long)arg1;
 - (void)remote_simulateAccept;
 - (void)remote_registerConnectionInitiatorClient:(id)arg1;

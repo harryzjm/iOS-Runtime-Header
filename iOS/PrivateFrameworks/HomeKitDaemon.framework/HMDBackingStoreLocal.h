@@ -32,6 +32,7 @@
     struct sqlite3_stmt *insertRecord;
     struct sqlite3_stmt *updateRecordSchema;
     struct sqlite3_stmt *selectRecordCountGroup;
+    struct sqlite3_stmt *selectRecordGroupTypeSchema;
     struct sqlite3_stmt *selectRecordGroup;
     struct sqlite3_stmt *selectRecordGroupMap;
     struct sqlite3_stmt *selectRecordUUID;
@@ -46,6 +47,7 @@
     struct sqlite3_stmt *deleteRecord;
     struct sqlite3_stmt *flushPushedXact;
     struct sqlite3_stmt *insertLog;
+    struct sqlite3_stmt *updateLogToDiskCommited;
     struct sqlite3_stmt *updateLogXactID;
     struct sqlite3_stmt *selectLog;
     struct sqlite3_stmt *selectChangeExistsLog;
@@ -54,9 +56,12 @@
     struct sqlite3_stmt *selectLogOptions;
     struct sqlite3_stmt *updateLog;
     struct sqlite3_stmt *deleteLog;
+    struct sqlite3_stmt *insertArchive;
+    struct sqlite3_stmt *selectArchive;
     struct sqlite3_stmt *commit;
     struct sqlite3_stmt *rollback;
     struct sqlite3_stmt *begin;
+    _Bool _isTransactionReplayFeatureEnabled;
     NSString *_datastoreFile;
     NSMutableArray *_zoneCache;
     NSMutableDictionary *_storeCache;
@@ -67,8 +72,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *storeCache; // @synthesize storeCache=_storeCache;
 @property(retain, nonatomic) NSMutableArray *zoneCache; // @synthesize zoneCache=_zoneCache;
+@property(readonly) _Bool isTransactionReplayFeatureEnabled; // @synthesize isTransactionReplayFeatureEnabled=_isTransactionReplayFeatureEnabled;
 @property(readonly, nonatomic) NSString *datastoreFile; // @synthesize datastoreFile=_datastoreFile;
 - (id)logIdentifier;
+- (_Bool)_selectArchiveWithIdentifier:(id)arg1 archive:(id *)arg2 controllerUserName:(id *)arg3 error:(id *)arg4;
+- (unsigned long long)_insertArchive:(id)arg1 identifier:(id)arg2 controllerUserName:(id)arg3 error:(id *)arg4;
 - (id)_deleteLog:(long long)arg1;
 - (id)_updateLog:(long long)arg1 mask:(long long)arg2 set:(long long)arg3;
 - (void)_selectAllLog:(CDUnknownBlockType)arg1;
@@ -85,6 +93,7 @@
 - (void)_fetchRecordsWithGroupID:(long long)arg1 uuids:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)_fetchRecordsWithGroupID:(long long)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_fetchRecordMapWithGroupID:(long long)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)_fetchRecordTypeSchemaWithGroupID:(long long)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_fetchRecordCountWithGroupID:(long long)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)_deleteRecordWithGroupID:(long long)arg1 recordName:(id)arg2;
 - (id)_updateRecordWithGroupID:(long long)arg1 store:(long long)arg2 name:(id)arg3 model:(id)arg4;
@@ -101,6 +110,9 @@
 - (long long)_insertZoneWithName:(id)arg1 error:(id *)arg2;
 - (id)_fillZoneCache;
 - (unsigned long long)_fetchIDForStore:(id)arg1 error:(id *)arg2;
+- (id)_fetchUncommittedAndPushedTransactions;
+- (id)_dropUncommittedUnpushedTransactions;
+- (long long)_numUncommittedTransactions;
 - (id)_fillStoreCache;
 - (void)_rollback;
 - (id)_commit;
@@ -110,8 +122,11 @@
 - (void)_freeResources;
 - (id)flush:(_Bool)arg1;
 - (void)dealloc;
+- (id)initWithDatastore:(id)arg1 shouldEnableTransactionReplayMode:(_Bool)arg2;
 - (id)initWithDatastore:(id)arg1;
+- (id)initWithDB:(id)arg1 migrate:(_Bool)arg2 shouldEnableTransactionReplayMode:(_Bool)arg3 error:(id *)arg4;
 - (id)initWithDB:(id)arg1 migrate:(_Bool)arg2 error:(id *)arg3;
+- (id)_createDatastoreTables:(id)arg1;
 - (id)_createNewDatastore:(id)arg1;
 - (id)_runSQLite3:(const char *)arg1 bind:(id)arg2 error:(id *)arg3;
 

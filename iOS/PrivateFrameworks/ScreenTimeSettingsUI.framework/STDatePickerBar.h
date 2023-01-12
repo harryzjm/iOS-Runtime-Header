@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) UIButton *leftArrowButton; // @synthesize leftArrowButton=_leftArrowButton;
 @property(readonly) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property(readonly) UIImage *horizontalLineImage;
+- (void)_configureArrowButton:(id)arg1 isLeft:(_Bool)arg2 isLayoutDirectionRightToLeft:(_Bool)arg3;
 - (void)_stDatePickerBarCommonInit;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

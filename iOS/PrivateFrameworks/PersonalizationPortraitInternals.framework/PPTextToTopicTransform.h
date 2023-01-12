@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSString, _PASLock, _PASNotificationToken;
+@protocol TRINotificationToken;
 
 @interface PPTextToTopicTransform : NSObject
 {
     _PASLock *_lock;
+    id <TRINotificationToken> _trialToken;
     NSString *_vocabularyPath;
     NSString *_weightsPath;
     NSString *_mappingId;
@@ -24,7 +26,7 @@
 @property(readonly, nonatomic) float threshold;
 @property(readonly, nonatomic) unsigned long long outputTopicCount;
 - (id)init;
-- (_Bool)_updateFromAssetData;
+- (void)dealloc;
 - (id)_initWithVocabulary:(id)arg1 weights:(id)arg2;
 - (id)_init;
 

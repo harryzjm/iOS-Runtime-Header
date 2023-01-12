@@ -11,10 +11,10 @@
     struct PXSimpleIndexPath _toIndexPath;
 }
 
-- (void)_adjustGeometries:(inout CDStruct_3ab912e1 *)arg1 styles:(inout CDStruct_506f5052 *)arg2 infos:(inout CDStruct_9d1ebe49 *)arg3 spriteIndexRange:(struct _PXGSpriteIndexRange)arg4 appearing:(_Bool)arg5;
-- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_3ab912e1 *)arg2 styles:(inout CDStruct_506f5052 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteDisappearingFromRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
-- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_3ab912e1 *)arg2 styles:(inout CDStruct_506f5052 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteAppearingIntoRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
-- (id)animation:(id)arg1 doubleSidedAnimatedSpriteIndexesForModifiedSpriteIndexes:(id)arg2 rootLayout:(id)arg3 presentedGeometries:(const CDStruct_3ab912e1 *)arg4 styles:(const CDStruct_506f5052 *)arg5 infos:(const CDStruct_9d1ebe49 *)arg6;
+- (void)_adjustGeometries:(inout CDStruct_4f725fed *)arg1 styles:(inout CDStruct_76b550e2 *)arg2 infos:(inout CDStruct_9d1ebe49 *)arg3 spriteIndexRange:(struct _PXGSpriteIndexRange)arg4 appearing:(_Bool)arg5;
+- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_4f725fed *)arg2 styles:(inout CDStruct_76b550e2 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteDisappearingFromRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
+- (void)animation:(id)arg1 adjustGeometries:(inout CDStruct_4f725fed *)arg2 styles:(inout CDStruct_76b550e2 *)arg3 infos:(inout CDStruct_9d1ebe49 *)arg4 forSpriteAppearingIntoRootIndexRange:(struct _PXGSpriteIndexRange)arg5;
+- (id)animation:(id)arg1 doubleSidedAnimatedSpriteIndexesForModifiedSpriteIndexes:(id)arg2 rootLayout:(id)arg3 presentedGeometries:(const CDStruct_4f725fed *)arg4 styles:(const CDStruct_76b550e2 *)arg5 infos:(const CDStruct_9d1ebe49 *)arg6;
 - (_Bool)_shoulAnimateSpriteWithInfo:(const CDStruct_9d1ebe49 *)arg1 matchingSectionIndexPath:(struct PXSimpleIndexPath)arg2 spriteKind:(out unsigned char *)arg3;
 - (double)animationDuration;
 - (long long)animationCurve;

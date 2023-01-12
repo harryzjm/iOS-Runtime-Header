@@ -10,24 +10,30 @@
 
 @interface CLLocationInternal : NSObject
 {
-    CDStruct_0f4838e9 fLocation;
+    CDStruct_2fb123db fLocation;
     CLLocationMatchInfo *fMatchInfo;
     _CLLocationGroundAltitude *fGroundAltitude;
     double fTrustedTimestamp;
     NSData *fCoarseMetaData;
     _CLLocationFusionInfo *fFusionInfo;
     double fRawHorizontalAccuracy;
+    double fRawAltitude;
+    double fRawVerticalAccuracy;
     double fRawCourseAccuracy;
+    int fPositionContextState;
+    double fProbabilityPositionContextStateIndoor;
+    double fProbabilityPositionContextStateOutdoor;
 }
 
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawCourseAccuracy:(double)arg7;
-- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4;
-- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 clientLocationPrivate:(CDStruct_9ef4a103)arg2 coarseMetaData:(id)arg3;
-- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 clientLocationPrivate:(CDStruct_9ef4a103)arg2;
-- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 coarseMetaData:(id)arg2;
-- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawAltitude:(double)arg7 rawVerticalAccuracy:(double)arg8 rawCourseAccuracy:(double)arg9 positionContextStateType:(int)arg10 probabilityPositionContextStateIndoor:(double)arg11 probabilityPositionContextStateOutdoor:(double)arg12 coarseMetaData:(id)arg13;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawAltitude:(double)arg7 rawVerticalAccuracy:(double)arg8 rawCourseAccuracy:(double)arg9 positionContextStateType:(int)arg10 probabilityPositionContextStateIndoor:(double)arg11 probabilityPositionContextStateOutdoor:(double)arg12;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 clientLocationPrivate:(CDStruct_d25f1cbc)arg2 coarseMetaData:(id)arg3;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 clientLocationPrivate:(CDStruct_d25f1cbc)arg2;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 coarseMetaData:(id)arg2;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1;
 
 @end
 

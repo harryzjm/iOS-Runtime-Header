@@ -15,13 +15,18 @@
 @interface MNHybridLocationProvider : NSObject <MNLocationProviderDelegate, MNLocationProvider>
 {
     unsigned long long _mode;
-    double _desiredAccuracy;
+    double _distanceFilter;
+    double _nonLeechedDesiredAccuracy;
+    double _effectiveAccuracy;
     MNCoreLocationProvider *_coreLocationProvider;
     id <MNLocationProviderDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)locationProvider:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
+- (void)locationProvider:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationProvider:(id)arg1 didEnterRegion:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationProvider:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
@@ -32,22 +37,15 @@
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
+- (void)stopMonitoringForRegion:(id)arg1;
+- (void)startMonitoringForRegion:(id)arg1;
 @property(readonly, nonatomic) double timeScale;
 @property(readonly, nonatomic) unsigned long long traceVersion;
 @property(readonly, nonatomic) _Bool isTracePlayer;
-@property(readonly, nonatomic) _Bool isSimulation;
-@property(readonly, nonatomic) _Bool usesCLMapCorrection;
 @property(readonly, nonatomic) _Bool coarseModeEnabled;
-@property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) double expectedGpsUpdateInterval;
-- (void)requestWhenInUseAuthorizationWithPrompt;
-- (void)requestWhenInUseAuthorization;
-@property(copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property(nonatomic) int headingOrientation;
-@property(nonatomic) _Bool matchInfoEnabled;
-@property(nonatomic) double distanceFilter;
-@property(nonatomic, getter=isLocationServicesPreferencesDialogEnabled) _Bool locationServicesPreferencesDialogEnabled;
-@property(nonatomic) double desiredAccuracy;
+@property(readonly, nonatomic) _Bool isAuthorized;
 @property(copy, nonatomic) NSString *effectiveBundleIdentifier;
 @property(retain, nonatomic) NSBundle *effectiveBundle;
 - (void)resetForActiveTileGroupChanged;
@@ -63,6 +61,8 @@
 - (id)coreLocationProvider;
 - (void)_setEffectiveAccuracy:(double)arg1;
 - (void)_sharedInit;
+@property(nonatomic) double desiredAccuracy;
+@property(nonatomic) double distanceFilter;
 @property(nonatomic) unsigned long long mode;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1;
 - (id)initWithEffectiveBundle:(id)arg1;

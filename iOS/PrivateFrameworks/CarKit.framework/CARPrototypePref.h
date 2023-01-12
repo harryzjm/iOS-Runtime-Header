@@ -30,6 +30,7 @@
 + (id)showInternalSettings;
 + (id)nowPlayingAlbumArt;
 + (id)showPrototypeApps;
++ (id)showCarPlayTemplateUIHostInCluster;
 + (id)useNightModeTester;
 + (id)disableLocationNightMode;
 + (id)useSceneInterfaceStyle;

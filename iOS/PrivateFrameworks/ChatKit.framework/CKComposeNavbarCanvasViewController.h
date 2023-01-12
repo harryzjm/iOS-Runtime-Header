@@ -29,12 +29,13 @@
 - (void)_initializeForTraitCollection:(id)arg1;
 - (double)_preferredHeightForTraitCollection:(id)arg1;
 - (id)_windowTraitCollection;
-- (_Bool)_shouldUseRTL;
 - (void)_setupDefaultCanvasView;
+- (void)updateContentsForConversation:(id)arg1;
 - (void)updateTitle:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_canShowWhileLocked;
 - (void)loadView;
 - (void)viewDidLoad;
+- (_Bool)__im_ff_uiConsistencyEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

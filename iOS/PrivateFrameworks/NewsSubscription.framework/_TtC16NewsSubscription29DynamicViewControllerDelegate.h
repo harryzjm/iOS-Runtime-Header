@@ -15,8 +15,6 @@
     MISSING_TYPE *purchaseContext;
     MISSING_TYPE *resultDelegate;
     MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *purchasingSpinnerViewControllerFactory;
-    MISSING_TYPE *$__lazy_storage_$_verificationSpinner;
     MISSING_TYPE *router;
 }
 

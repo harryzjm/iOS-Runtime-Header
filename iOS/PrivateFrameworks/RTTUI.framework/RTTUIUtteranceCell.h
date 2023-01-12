@@ -30,6 +30,7 @@
 - (_Bool)_accessibilityRealtimeCompleted;
 - (_Bool)_accessibilityRealtimeHasUnread;
 - (void)_accessibilityHandleATFocused:(_Bool)arg1 assistiveTech:(id)arg2;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (void)textViewDidChange:(id)arg1;

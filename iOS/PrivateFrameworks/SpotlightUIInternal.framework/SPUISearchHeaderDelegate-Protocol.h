@@ -9,6 +9,7 @@
 @class SPSearchQueryContext, SPUISearchHeader;
 
 @protocol SPUISearchHeaderDelegate <NSObject>
+- (void)highlightResultAfterUnmarkingText;
 - (void)removeCompletionAndHighlightAsTyped:(_Bool)arg1;
 - (void)performWebSearch;
 - (void)returnKeyPressed;

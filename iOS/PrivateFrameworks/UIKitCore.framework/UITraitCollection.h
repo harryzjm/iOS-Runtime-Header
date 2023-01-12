@@ -10,7 +10,7 @@
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 #import <UIKitCore/_UIFallbackEnvironment-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, UIColor;
 
 @interface UITraitCollection : NSObject <_UIFallbackEnvironment, NSCopying, NSSecureCoding>
 {
@@ -37,9 +37,12 @@
         long long userInterfaceLevel;
         long long vibrancy;
         long long activeAppearance;
+        long long focusSystemState;
+        long long selectionFollowsFocus;
     } _builtinTraits;
     NSDictionary *_clientDefinedTraits;
     NSObject *_environmentWrapper;
+    UIColor *_tintColor;
 }
 
 + (void)_setCurrentTraitCollection:(id)arg1;
@@ -52,6 +55,8 @@
 + (id)_traitCollectionWithBackgroundLevel:(long long)arg1;
 + (id)_traitCollectionWithContrast:(long long)arg1;
 + (id)_traitCollectionWithVibrancy:(long long)arg1;
++ (id)_traitCollectionForSidebarAppearance;
++ (id)_traitCollectionWithFocusSystemState:(long long)arg1;
 + (id)_traitCollectionWithSplitViewControllerContext:(long long)arg1;
 + (id)_traitCollectionWithPresentationSemanticContext:(long long)arg1;
 + (id)traitCollectionWithArtworkSubtype:(unsigned long long)arg1;
@@ -83,6 +88,7 @@
 - (long long)_backgroundLevel;
 - (long long)_contrast;
 - (long long)_vibrancy;
+- (long long)_focusSystemState;
 - (_Bool)_hasSplitViewControllerContextSidebarColumn;
 - (_Bool)_hasSplitViewControllerContextPrimaryColumn;
 - (long long)_splitViewControllerContext;

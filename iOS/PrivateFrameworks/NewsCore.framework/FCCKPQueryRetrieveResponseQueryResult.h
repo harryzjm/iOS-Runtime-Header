@@ -10,6 +10,7 @@
 
 @class FCCKPRecord, FCCKPRecordIdentifier, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQueryRetrieveResponseQueryResult : PBCodable <NSCopying>
 {
     NSString *_etag;
@@ -19,24 +20,14 @@
     CDStruct_f953fb60 _has;
 }
 
-@property(retain, nonatomic) FCCKPRecord *record; // @synthesize record=_record;
-@property(retain, nonatomic) NSString *etag; // @synthesize etag=_etag;
-@property(retain, nonatomic) FCCKPRecordIdentifier *identifier; // @synthesize identifier=_identifier;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasRecord;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type; // @synthesize type=_type;
-@property(readonly, nonatomic) _Bool hasEtag;
-@property(readonly, nonatomic) _Bool hasIdentifier;
-- (void)dealloc;
 
 @end
 

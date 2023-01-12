@@ -20,8 +20,6 @@
 + (void)invalidate;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)refreshListingForSource:(id)arg1 isUserRequested:(_Bool)arg2;
-- (_Bool)sourceListingNeedsRefresh:(id)arg1;
 - (int)sortOrderForStoreType:(long long)arg1;
 - (int)sortOrderForSourceType:(long long)arg1;
 - (int)sortOrderForSource:(id)arg1;

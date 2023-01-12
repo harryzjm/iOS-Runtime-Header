@@ -6,7 +6,7 @@
 
 #import <UIKit/UIWindowScene.h>
 
-@class CHSWidget, CHSWidgetMetrics, NSString;
+@class CHSWidget, CHSWidgetMetrics, CHUISWidgetVisibilitySettings, NSString;
 
 @interface CHUISAvocadoWindowScene : UIWindowScene
 {
@@ -16,8 +16,8 @@
 @property(nonatomic, getter=shouldVisibleEntrySnapshot) _Bool visibleEntryShouldSnapshot; // @synthesize visibleEntryShouldSnapshot=_visibleEntryShouldSnapshot;
 - (id)_sceneSettings;
 @property(readonly, nonatomic, getter=areAnimationsDisabled) _Bool animationsDisabled;
-@property(readonly, nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled;
-@property(readonly, nonatomic, getter=isVisiblySettled) _Bool visiblySettled;
+@property(readonly, copy, nonatomic) CHUISWidgetVisibilitySettings *visibility;
+@property(readonly, copy, nonatomic) NSString *widgetHostIdentifier;
 @property(readonly, copy, nonatomic) NSString *widgetConfigurationIdentifier;
 @property(readonly, nonatomic) unsigned long long style;
 @property(readonly, copy, nonatomic) CHSWidgetMetrics *metrics;

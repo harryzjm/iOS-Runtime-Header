@@ -7,7 +7,6 @@
 #import <MediaPlayer/MPMediaLibraryDataProvider-Protocol.h>
 
 @class MIPMultiverseIdentifier, MPMediaItem, MPStoreItemLibraryImport, NSArray, NSData, NSDate, NSDictionary, NSIndexSet, NSString;
-@protocol MPArtworkDataSource;
 
 @protocol MPMediaLibraryDataProviderPrivate <MPMediaLibraryDataProvider>
 
@@ -15,10 +14,10 @@
 + (void)setOnDiskProviders:(NSArray *)arg1;
 + (NSArray *)onDiskProviders;
 @property(readonly, nonatomic) NSArray *localizedSectionIndexTitles;
-@property(readonly, nonatomic) id <MPArtworkDataSource> completeMyCollectionArtworkDataSource;
 @property(readonly, nonatomic) NSArray *preferredSubtitleLanguages;
 @property(readonly, nonatomic) NSArray *preferredAudioLanguages;
 @property(readonly, nonatomic) _Bool isGeniusEnabled;
+@property(readonly, nonatomic) long long photosMemoriesPlaylistPersistentID;
 @property(readonly, nonatomic) long long playbackHistoryPlaylistPersistentID;
 @property(readonly, nonatomic) NSString *databasePath;
 @property(readonly, copy, nonatomic) NSString *accountDSID;

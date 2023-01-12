@@ -19,7 +19,7 @@
 @property(readonly, nonatomic) NSString *meaningLabel; // @synthesize meaningLabel=_meaningLabel;
 @property(readonly, nonatomic) id <PGEventEnrichment> collection; // @synthesize collection=_collection;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithCollection:(id)arg1 meaningLabel:(id)arg2 createVerboseTitle:(_Bool)arg3;
+- (id)initWithCollection:(id)arg1 meaningLabel:(id)arg2 createVerboseTitle:(_Bool)arg3 titleGenerationContext:(id)arg4;
 
 @end
 

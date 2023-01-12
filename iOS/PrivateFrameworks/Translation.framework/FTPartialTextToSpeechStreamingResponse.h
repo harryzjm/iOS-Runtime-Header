@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_cde40885)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_cde40885)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTTextToSpeechFeature *feature;
 @property(readonly, nonatomic) NSArray *word_timing_info;
 - (void)audio:(CDUnknownBlockType)arg1;

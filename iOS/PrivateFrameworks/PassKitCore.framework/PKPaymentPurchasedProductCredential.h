@@ -17,6 +17,9 @@
 @property(readonly, nonatomic) PKServiceProviderPurchase *purchase; // @synthesize purchase=_purchase;
 @property(copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property(retain, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
+- (_Bool)isEqualToPaymentPurchasedProductCredential:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 @property(readonly, copy, nonatomic) NSString *statusDescription;
 @property(readonly, copy, nonatomic) NSString *summaryMetadataDescription;
 @property(readonly, copy, nonatomic) NSArray *metadata;

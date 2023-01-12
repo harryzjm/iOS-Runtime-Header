@@ -9,6 +9,7 @@
 }
 
 + (id)previewActionForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
+- (id)menuHeaderView;
 - (struct CGSize)suggestedContentSize;
 - (id)menuActionClasses;
 - (id)menuActions;
@@ -22,6 +23,7 @@
 - (_Bool)wantsCustomViewControllerCommit;
 - (_Bool)wantsSeamlessCommit;
 - (id)commitURL;
+- (id)previewViewController;
 - (id)viewController;
 - (id)createViewController;
 - (void)dealloc;

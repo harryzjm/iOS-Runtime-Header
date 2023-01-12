@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)_newStationCardUIEnabled;
 - (void)_contentSizeCategoryDidChange;
 - (void)tintColorDidChange;
 - (void)_updateConstraintValues;
 - (id)_moreString;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 @property(copy, nonatomic) NSString *attributionSummary;
+- (void)setAttribution:(id)arg1;
 
 @end
 

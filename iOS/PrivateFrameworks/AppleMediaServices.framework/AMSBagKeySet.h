@@ -21,7 +21,6 @@
 + (void)resetRegisteredBagKeySets;
 + (id)registeredBagKeySetForProfile:(id)arg1 profileVersion:(id)arg2;
 + (void)registerBagKeySet:(id)arg1 forProfile:(id)arg2 profileVersion:(id)arg3;
-+ (id)bagKeySetCacheAccessQueue;
 + (id)bagKeySetCache;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *keys; // @synthesize keys=_keys;

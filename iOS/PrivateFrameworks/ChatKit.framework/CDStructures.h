@@ -118,6 +118,7 @@ struct IMPreviewConstraints {
     struct CGSize _field2;
     double _field3;
     _Bool _field4;
+    _Bool _field5;
 };
 
 struct NSDirectionalEdgeInsets {
@@ -125,6 +126,32 @@ struct NSDirectionalEdgeInsets {
     double _field2;
     double _field3;
     double _field4;
+};
+
+struct PXMediaProviderThumbnailDataFormat {
+    unsigned long long _field1;
+    struct __CFString *_field2;
+    unsigned short _field3;
+    unsigned short _field4;
+    _Bool _field5;
+};
+
+struct PXMediaProviderThumbnailDataSpec {
+    struct PXMediaProviderThumbnailDataFormat _field1;
+    unsigned short _field2;
+    unsigned short _field3;
+    unsigned short _field4;
+    unsigned short _field5;
+    unsigned short _field6;
+    unsigned short _field7;
+    unsigned short _field8;
+};
+
+struct PXSimpleIndexPath {
+    long long _field1;
+    long long _field2;
+    long long _field3;
+    long long _field4;
 };
 
 struct UIEdgeInsets {
@@ -147,6 +174,10 @@ struct _Spec {
     long long _field5;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -160,11 +191,18 @@ typedef struct {
 } CDStruct_e950349b;
 
 typedef struct {
+    unsigned long long photosCount;
+    unsigned long long videosCount;
+    unsigned long long othersCount;
+} CDStruct_aa0b146f;
+
+typedef struct {
     unsigned long long _field1;
     unsigned long long _field2;
     double _field3;
     double _field4;
-} CDStruct_c53b0b9a;
+    long long _field5;
+} CDStruct_96a80611;
 
 typedef struct {
     unsigned long long _field1;
@@ -172,6 +210,19 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
+
+typedef struct {
+    unsigned long long count;
+    long long type;
+} CDStruct_15189878;
+
+typedef struct {
+    double currentDragDistance;
+    double previousProposedWidth;
+    _Bool proposedPreviouslyIncreasing;
+    _Bool previouslyAtSnap;
+    _Bool previouslyAtMin;
+} CDStruct_644752d7;
 
 typedef struct {
     long long value;

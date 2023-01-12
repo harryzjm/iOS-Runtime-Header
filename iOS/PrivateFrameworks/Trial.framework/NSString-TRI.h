@@ -8,6 +8,9 @@
 
 @interface NSString (TRI)
 + (id)triHashStrings:(id)arg1 withDataSalt:(id)arg2;
+- (_Bool)triIsPathSafePlausibleUniqueId;
+- (_Bool)triIsPathSafe;
+- (id)triStringByResolvingSymlinksInPath;
 - (id)triTrim;
 - (id)triSanitizedPathComponentWithMaxLength:(unsigned long long)arg1 addHash:(_Bool)arg2 error:(id *)arg3;
 - (unsigned long long)triJavaHash;

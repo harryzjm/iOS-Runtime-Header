@@ -15,7 +15,7 @@
 
 @interface LSRecord : NSObject <LSDetachable, NSSecureCoding, NSCopying, NSDiscardableContent>
 {
-    struct unordered_map<SEL *, id, std::__1::hash<SEL *>, std::__1::equal_to<SEL *>, std::__1::allocator<std::__1::pair<SEL *const, id>>> *_resolvedProperties;
+    void *_resolvedProperties;
     struct LSContext _context;
     unsigned int _unitID;
     unsigned int _tableID:16;
@@ -43,6 +43,8 @@
 - (void)detach;
 - (id)debugDescription;
 - (id)description;
+- (unsigned int)tableID;
+- (unsigned int)unitID;
 @property(nonatomic, getter=_isShared, setter=_setShared:) _Bool _shared;
 - (id)_attributedDescription;
 - (void)_ifAttached:(CDUnknownBlockType)arg1 else:(CDUnknownBlockType)arg2;
@@ -55,6 +57,7 @@
 - (id)_initInvalid;
 - (id)_initWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3;
 - (id)initWithPersistentIdentifier:(id)arg1;
+- (id)_initWithContext:(struct LSContext *)arg1 persistentIdentifier:(id)arg2;
 @property(readonly) NSData *persistentIdentifier;
 @property(readonly, nonatomic) id compatibilityObject;
 - (void)dealloc;
@@ -67,7 +70,7 @@
 - (id)_persistentIdentifierWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const void *)arg4;
 - (id)_compatibilityObjectWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const void *)arg4;
 - (id)_propertyClassesForCoding;
-- (const vector_a8c3fa3f *)_resolvingMethods;
+- (const void *)_resolvingMethods;
 
 @end
 

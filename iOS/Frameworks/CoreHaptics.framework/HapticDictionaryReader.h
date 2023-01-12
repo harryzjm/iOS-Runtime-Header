@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
 - (id)parseEventParams:(id)arg1;
 - (id)parseEvent:(id)arg1;
 - (_Bool)parseEventsAndParameters:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)scanForEmbeddedURLs:(id)arg1;
-- (_Bool)verifyVersion:(id)arg1;
+- (id)scanForEmbeddedResources:(id)arg1;
+- (id)parseConfiguration:(id)arg1 error:(id *)arg2;
+- (id)readAndVerifyVersion:(id)arg1 error:(id *)arg2;
+- (id)readPatternID:(id)arg1 error:(id *)arg2;
 
 @end
 

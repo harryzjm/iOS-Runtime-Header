@@ -21,9 +21,13 @@
     NSURL *_outputFileURL;
     NSURL *__offlineMTModelURL;
     long long __mtConfidenceThreshold;
+    NSString *_appIdentifier;
+    long long _sourceOrigin;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+@property(copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property(nonatomic) _Bool autodetectLanguage; // @synthesize autodetectLanguage=_autodetectLanguage;
 @property(nonatomic) long long _mtConfidenceThreshold; // @synthesize _mtConfidenceThreshold=__mtConfidenceThreshold;
 @property(retain, nonatomic) NSURL *_offlineMTModelURL; // @synthesize _offlineMTModelURL=__offlineMTModelURL;
@@ -35,6 +39,7 @@
 @property(nonatomic) long long taskHint; // @synthesize taskHint=_taskHint;
 @property(copy, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
+- (id)serviceDelegate;
 - (id)requestContext;
 - (void)_translationFailedWithError:(id)arg1;
 - (void)_startTranslationWithService:(id)arg1 done:(CDUnknownBlockType)arg2;

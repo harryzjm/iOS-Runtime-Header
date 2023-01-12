@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface _GEOPlaceRequestTicket
 {
     GEOPDPlaceRequest *_request;
+    id _requestToken;
     GEOPDPlaceResponse *_response;
     id <GEOMapItem> _mapItemToRefine;
     CDUnknownBlockType _preSubmitUpdateRequestBlock;

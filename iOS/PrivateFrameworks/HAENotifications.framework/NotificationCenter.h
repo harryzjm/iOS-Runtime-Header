@@ -17,6 +17,7 @@
     NSString *_subtitle;
     NSString *_body;
     _Bool _hasHealthApp;
+    _Bool _hasHaptics;
 }
 
 + (_Bool)_healthAppHidden;

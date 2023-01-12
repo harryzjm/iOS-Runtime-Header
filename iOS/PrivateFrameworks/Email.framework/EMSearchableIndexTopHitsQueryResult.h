@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CSTopHitSearchQuery, NSArray;
+@class NSArray;
+@protocol EMTopHitSearchQueryable;
 
 @interface EMSearchableIndexTopHitsQueryResult : NSObject
 {
-    CSTopHitSearchQuery *_topHitSearchQuery;
+    id <EMTopHitSearchQueryable> _topHitSearchQuery;
     NSArray *_foundItems;
     NSArray *_searchableItemIdentifiers;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *searchableItemIdentifiers; // @synthesize searchableItemIdentifiers=_searchableItemIdentifiers;
 @property(copy, nonatomic) NSArray *foundItems; // @synthesize foundItems=_foundItems;
-@property(retain, nonatomic) CSTopHitSearchQuery *topHitSearchQuery; // @synthesize topHitSearchQuery=_topHitSearchQuery;
+@property(retain, nonatomic) id <EMTopHitSearchQueryable> topHitSearchQuery; // @synthesize topHitSearchQuery=_topHitSearchQuery;
 - (long long)rankingIndexForConversationID:(id)arg1;
 - (void)userDidInteractWithConversationID:(id)arg1;
 - (long long)rankingIndexForMessageLibraryID:(id)arg1;

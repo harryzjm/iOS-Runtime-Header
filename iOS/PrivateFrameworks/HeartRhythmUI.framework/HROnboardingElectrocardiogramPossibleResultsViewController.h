@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKOnboardingBaseViewController.h>
+
 #import <HeartRhythmUI/HRLinkTextViewDelegate-Protocol.h>
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
-@class HKElectrocardiogram, HKHealthStore, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
+@class HKElectrocardiogram, HROnboardingElectrocardiogramResultView, HRStackedButtonView, NSLayoutAnchor, NSLayoutConstraint, UILabel;
 
-@interface HROnboardingElectrocardiogramPossibleResultsViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate>
+@interface HROnboardingElectrocardiogramPossibleResultsViewController : HKOnboardingBaseViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate>
 {
     HKElectrocardiogram *_electrocardiogram;
-    HKHealthStore *_healthStore;
     UILabel *_titleLabel;
     HROnboardingElectrocardiogramResultView *_sinusRhythmResultReview;
     HROnboardingElectrocardiogramResultView *_atrialFibrillationResultView;
@@ -40,7 +41,6 @@
 @property(retain, nonatomic) HROnboardingElectrocardiogramResultView *atrialFibrillationResultView; // @synthesize atrialFibrillationResultView=_atrialFibrillationResultView;
 @property(retain, nonatomic) HROnboardingElectrocardiogramResultView *sinusRhythmResultReview; // @synthesize sinusRhythmResultReview=_sinusRhythmResultReview;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(retain, nonatomic) HKElectrocardiogram *electrocardiogram; // @synthesize electrocardiogram=_electrocardiogram;
 - (void)_pauseResultViewVideos;
 - (void)_playResultViewVideos;
@@ -67,10 +67,8 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)algorithmVersion;
-- (id)initWithHealthStore:(id)arg1 onboarding:(_Bool)arg2;
 - (id)initWithSample:(id)arg1;
-- (id)initForOnboarding:(_Bool)arg1;
+- (id)initForOnboarding:(_Bool)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
 
 @end
 

@@ -24,8 +24,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIAppInstallerViewController *installerViewController; // @synthesize installerViewController=_installerViewController;
 @property(retain, nonatomic) NSString *contentTitle; // @synthesize contentTitle=_contentTitle;
 @property(retain, nonatomic) WLKChannelDetails *channelDetails; // @synthesize channelDetails=_channelDetails;
-- (void)_installAppWithChannel:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)installAppWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_installAppWithChannel:(id)arg1 punchoutURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)installAppWithPunchoutURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithChannelDetails:(id)arg1 contentTitle:(id)arg2;

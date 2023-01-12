@@ -10,6 +10,7 @@
 {
 }
 
++ (struct CGRect)flattenRect:(struct CGRect)arg1 toParentFrame:(struct CGRect)arg2;
 + (struct CGRect)rect:(struct CGRect)arg1 withFlippedOriginXRelativeTo:(struct CGRect)arg2;
 
 @end

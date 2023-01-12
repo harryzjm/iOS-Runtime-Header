@@ -11,6 +11,7 @@
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBFAuthenticationResponder-Protocol.h>
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBFluidGestureDismissable-Protocol.h>
 #import <SpringBoard/SBHomeGesturePanGestureRecognizerInterfaceDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
@@ -20,10 +21,10 @@
 #import <SpringBoard/SiriPresentationSpringBoardMainScreenViewControllerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSSet, NSString, SBAssistantActiveInterfaceOrientationWindow, SBAssistantWindow, SBFAuthenticationAssertion, SBFluidDismissalState, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant, SBSystemAnimationSettings, SBTransientOverlayViewController, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSSet, NSString, SBAssistantActiveInterfaceOrientationWindow, SBAssistantWindow, SBFAuthenticationAssertion, SBFZStackParticipant, SBFluidDismissalState, SBHomeGesturePanGestureRecognizer, SBHomeGestureParticipant, SBSystemAnimationSettings, SBTransientOverlayViewController, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol BSInvalidatable, SBIdleTimer, SBIdleTimerCoordinating;
 
-@interface SBAssistantController : NSObject <SBFluidGestureDismissable, CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBFAuthenticationResponder, SiriPresentationSpringBoardMainScreenViewControllerDelegate, UIGestureRecognizerDelegate, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
+@interface SBAssistantController : NSObject <SBFluidGestureDismissable, CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBFAuthenticationResponder, SiriPresentationSpringBoardMainScreenViewControllerDelegate, UIGestureRecognizerDelegate, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
 {
     BSEventQueue *_operationQueue;
     NSString *_appDisplayIDBeingHosted;
@@ -36,6 +37,7 @@
     UIApplicationSceneDeactivationAssertion *_resignActiveAssertion;
     id <BSInvalidatable> _deferOrientationUpdatesAssertion;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
     SiriPresentationSpringBoardMainScreenViewController *_mainScreenSiriPresentation;
     SiriPresentationSpringBoardMainScreenViewController *_presentedMainScreenSiriPresentation;
     _Bool _visible;
@@ -49,7 +51,6 @@
     NSMutableArray *_windowLevelAssertions;
     UITapGestureRecognizer *_tapToDismissSiriGestureRecognizer;
     SBHomeGesturePanGestureRecognizer *_bottomEdgeDismissGestureRecognizer;
-    _Bool _shouldPassTapsThroughToSiri;
     _Bool _shareHomeGesture;
     _Bool _tapsDismissSiri;
     _Bool _swipesDismissSiri;
@@ -83,7 +84,6 @@
 - (void)siriPresentation:(id)arg1 didUpdateShouldDismissForSwipesOutsideContent:(_Bool)arg2;
 - (void)siriPresentation:(id)arg1 didUpdateShouldDismissForTapsOutsideContent:(_Bool)arg2;
 - (void)siriPresentation:(id)arg1 didUpdateHomeGestureSharing:(_Bool)arg2;
-- (void)siriPresentation:(id)arg1 didUpdateShouldPassTapsThroughTo:(_Bool)arg2;
 - (void)siriPresentation:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
 - (_Bool)siriPresentation:(id)arg1 requestsDeviceUnlockWithPassword:(id)arg2;
 - (void)deviceUnlockRequestedWithPassword:(id)arg1;
@@ -103,10 +103,13 @@
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)homeGrabberViewDidReceiveClick:(id)arg1;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantResolvedHomeAffordanceSuppressionDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (void)_removeScreenEdgePanGestureRecognizerIfNecessary;
 - (void)_removeHomeGesture;
+- (void)_updateZStackParticipantWithReason:(id)arg1;
 - (void)_updateHomeGestureParticipant;
 - (void)_configureHomeGesture;
 @property(readonly, nonatomic) long long proximityDetectionMode;
@@ -157,7 +160,6 @@
 - (void)_viewWillDisappearOnMainScreen:(_Bool)arg1;
 - (void)_viewDidAppearOnMainScreen:(_Bool)arg1;
 - (void)_setShareHomeGesture:(_Bool)arg1;
-- (void)_updateShouldPassTapsThrough;
 - (void)_handleBottomEdgeDismissGesture:(id)arg1;
 - (void)_viewWillAppearOnMainScreen:(_Bool)arg1;
 - (id)_activationSettingsWithPunchoutStyle:(long long)arg1;

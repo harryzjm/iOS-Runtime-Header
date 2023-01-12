@@ -6,7 +6,6 @@
 
 @class UIView;
 
-__attribute__((visibility("hidden")))
 @interface _UIConstraintBasedLayoutHostingView
 {
     UIView *_hostedView;

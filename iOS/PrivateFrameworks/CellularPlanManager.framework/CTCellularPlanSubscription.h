@@ -45,6 +45,7 @@
 @property(readonly, nonatomic) double billingStartDate; // @synthesize billingStartDate=_billingStartDate;
 @property(readonly, nonatomic) _Bool autoRenew; // @synthesize autoRenew=_autoRenew;
 @property(readonly, nonatomic) NSString *iccid; // @synthesize iccid=_iccid;
+- (id)redactedDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

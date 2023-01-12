@@ -6,18 +6,32 @@
 
 #import <CoverSheet/CSModalViewDelegate-Protocol.h>
 
-@class NSString, SBFDeviceBlockTimer;
-@protocol SBFBlockStatusProvider;
+@class ACAccount, ACAccountStore, CSLockScreenSettings, NSObject, NSString, SBFDeviceBlockTimer;
+@protocol OS_dispatch_queue, SBFBlockStatusProvider;
 
 @interface CSDeviceBlockViewController <CSModalViewDelegate>
 {
     id <SBFBlockStatusProvider> _blockStatusProvider;
     SBFDeviceBlockTimer *_blockTimer;
+    CSLockScreenSettings *_lockScreenSettings;
+    CDUnknownBlockType _pendingAction;
+    NSObject<OS_dispatch_queue> *_accountAccessQueue;
+    ACAccountStore *_accountStore;
+    ACAccount *_queue_findMyAccount;
+    _Bool _attemptingErase;
 }
 
 - (void).cxx_destruct;
+- (void)_cancelPendingActionAfterDelay:(double)arg1;
+- (void)_eraseDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)disableFindMyWithMessage:(id)arg1 confirmationButtonTitle:(id)arg2 presentingViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)_isFindMyChangingState;
+- (_Bool)_isFindMyEnabled;
+- (void)_attemptErase;
+- (void)_handleDeviceLocatorStateDidChange:(id)arg1;
 - (void)_updateText;
 - (void)handleSecondaryActionForView:(id)arg1;
+- (void)handlePrimaryActionForView:(id)arg1;
 - (long long)presentationPriority;
 - (void)aggregateBehavior:(id)arg1;
 - (void)aggregateAppearance:(id)arg1;

@@ -10,10 +10,14 @@
 
 @interface _TtCV7SwiftUI11DisplayList11ViewUpdater : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *host;
     MISSING_TYPE *viewCache;
     MISSING_TYPE *seed;
+    MISSING_TYPE *asyncSeed;
     MISSING_TYPE *nextUpdate;
     MISSING_TYPE *lastContentsScale;
+    MISSING_TYPE *lastList;
+    MISSING_TYPE *lastTime;
     MISSING_TYPE *isValid;
     MISSING_TYPE *wasValid;
 }

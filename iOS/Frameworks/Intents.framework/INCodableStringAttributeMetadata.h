@@ -36,25 +36,25 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionCapitalizationKey;
-- (id)__INIntentResponseCodableDescriptionCapitalizationKey;
-- (id)__INTypeCodableDescriptionCapitalizationKey;
 - (id)__INCodableDescriptionDefaultValueKey;
-- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
-- (id)__INTypeCodableDescriptionDefaultValueKey;
 - (id)__INCodableDescriptionDefaultValueIDKey;
-- (id)__INIntentResponseCodableDescriptionDefaultValueIDKey;
-- (id)__INTypeCodableDescriptionDefaultValueIDKey;
 - (id)__INCodableDescriptionDisableAutocorrectKey;
-- (id)__INIntentResponseCodableDescriptionDisableAutocorrectKey;
-- (id)__INTypeCodableDescriptionDisableAutocorrectKey;
 - (id)__INCodableDescriptionDisableSmartDashesKey;
-- (id)__INIntentResponseCodableDescriptionDisableSmartDashesKey;
-- (id)__INTypeCodableDescriptionDisableSmartDashesKey;
 - (id)__INCodableDescriptionDisableSmartQuotesKey;
-- (id)__INIntentResponseCodableDescriptionDisableSmartQuotesKey;
-- (id)__INTypeCodableDescriptionDisableSmartQuotesKey;
 - (id)__INCodableDescriptionMultilineKey;
+- (id)__INIntentResponseCodableDescriptionCapitalizationKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueIDKey;
+- (id)__INIntentResponseCodableDescriptionDisableAutocorrectKey;
+- (id)__INIntentResponseCodableDescriptionDisableSmartDashesKey;
+- (id)__INIntentResponseCodableDescriptionDisableSmartQuotesKey;
 - (id)__INIntentResponseCodableDescriptionMultilineKey;
+- (id)__INTypeCodableDescriptionCapitalizationKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionDefaultValueIDKey;
+- (id)__INTypeCodableDescriptionDisableAutocorrectKey;
+- (id)__INTypeCodableDescriptionDisableSmartDashesKey;
+- (id)__INTypeCodableDescriptionDisableSmartQuotesKey;
 - (id)__INTypeCodableDescriptionMultilineKey;
 
 // Remaining properties

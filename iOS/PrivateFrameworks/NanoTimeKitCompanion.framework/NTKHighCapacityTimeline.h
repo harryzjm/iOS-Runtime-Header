@@ -10,7 +10,7 @@
 {
 }
 
-- (long long)nowWindowNodeCapacity;
+- (unsigned long long)nodeCapacity;
 
 @end
 

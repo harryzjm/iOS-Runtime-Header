@@ -12,16 +12,18 @@
 {
     _Bool _administrator;
     _Bool _remoteAccessAllowed;
+    _Bool _announceAccessAllowed;
     NSString *_userID;
     unsigned long long _camerasAccessLevel;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isAnnounceAccessAllowed) _Bool announceAccessAllowed; // @synthesize announceAccessAllowed=_announceAccessAllowed;
 @property(readonly, nonatomic) unsigned long long camerasAccessLevel; // @synthesize camerasAccessLevel=_camerasAccessLevel;
 @property(readonly, nonatomic, getter=isRemoteAccessAllowed) _Bool remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
 @property(readonly, nonatomic, getter=isAdministrator) _Bool administrator; // @synthesize administrator=_administrator;
 @property(readonly, copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
-- (id)initWithUser:(id)arg1 administrator:(_Bool)arg2 remoteAccess:(_Bool)arg3 camerasAccessLevel:(unsigned long long)arg4;
+- (id)initWithUser:(id)arg1 administrator:(_Bool)arg2 remoteAccess:(_Bool)arg3 announceAccess:(_Bool)arg4 camerasAccessLevel:(unsigned long long)arg5;
 - (id)initWithUser:(id)arg1 administrator:(_Bool)arg2 remoteAccess:(_Bool)arg3;
 - (id)init;
 

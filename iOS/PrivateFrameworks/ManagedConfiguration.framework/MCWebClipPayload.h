@@ -33,7 +33,7 @@
 @property(readonly, nonatomic) NSNumber *precomposedNum; // @synthesize precomposedNum=_precomposedNum;
 @property(readonly, nonatomic) NSNumber *isRemovableNum; // @synthesize isRemovableNum=_isRemovableNum;
 @property(retain, nonatomic) NSString *savedIdentifier; // @synthesize savedIdentifier=_savedIdentifier;
-@property(readonly, nonatomic) NSString *targetApplicationBundleIdentifier; // @synthesize targetApplicationBundleIdentifier=_targetApplicationBundleIdentifier;
+@property(retain, nonatomic) NSString *targetApplicationBundleIdentifier; // @synthesize targetApplicationBundleIdentifier=_targetApplicationBundleIdentifier;
 @property(readonly, nonatomic) NSString *contentMode; // @synthesize contentMode=_contentMode;
 @property(readonly, nonatomic) _Bool ignoreManifestScope; // @synthesize ignoreManifestScope=_ignoreManifestScope;
 @property(readonly, nonatomic) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;

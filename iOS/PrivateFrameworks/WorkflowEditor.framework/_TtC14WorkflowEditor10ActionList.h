@@ -12,9 +12,11 @@
 {
     MISSING_TYPE *workflow;
     MISSING_TYPE *_visibleActions;
-    MISSING_TYPE *collapsedActions;
+    MISSING_TYPE *manuallyCollapsedActions;
+    MISSING_TYPE *collapsedActionsForDragging;
     MISSING_TYPE *tree;
     MISSING_TYPE *actionsObserver;
+    MISSING_TYPE *lastActions;
 }
 
 @end

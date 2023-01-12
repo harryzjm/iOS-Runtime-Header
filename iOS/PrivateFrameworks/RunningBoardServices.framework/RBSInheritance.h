@@ -25,7 +25,6 @@
 + (_Bool)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_xpc_object> *encodedEndowment; // @synthesize encodedEndowment=_encodedEndowment;
-@property(readonly, nonatomic) unsigned long long originatingAttributePath; // @synthesize originatingAttributePath=_originatingAttributePath;
 @property(readonly, copy, nonatomic) RBSAssertionIdentifier *originatingIdentifier; // @synthesize originatingIdentifier=_originatingIdentifier;
 @property(readonly, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property(readonly, copy, nonatomic) NSString *endowmentNamespace; // @synthesize endowmentNamespace=_endowmentNamespace;

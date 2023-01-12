@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface PUTilingLayoutTransitionContext : NSObject
 {
     _Bool _isCancelingTransition;
+    _Bool _isViewControllerTransition;
     _Bool _isUpdatingDisplayedContent;
     NSObject<OS_dispatch_group> *_displayedContentUpdateGroup;
 }
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *displayedContentUpdateGroup; // @synthesize displayedContentUpdateGroup=_displayedContentUpdateGroup;
 @property(nonatomic) _Bool isUpdatingDisplayedContent; // @synthesize isUpdatingDisplayedContent=_isUpdatingDisplayedContent;
+@property(nonatomic) _Bool isViewControllerTransition; // @synthesize isViewControllerTransition=_isViewControllerTransition;
 @property(nonatomic, setter=setCancelingTransition:) _Bool isCancelingTransition; // @synthesize isCancelingTransition=_isCancelingTransition;
 
 @end

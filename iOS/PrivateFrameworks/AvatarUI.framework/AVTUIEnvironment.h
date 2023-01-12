@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarConfigurationImageRenderer, AVTCoreEnvironment, AVTCoreModel, AVTDeviceResourceManager, NSNotificationCenter, NSURL, NSUserDefaults;
+@class AVTAvatarConfigurationImageRenderer, AVTCoreEnvironment, AVTCoreModel, AVTDeviceResourceManager, AVTMemoji, NSNotificationCenter, NSURL, NSUserDefaults;
 @protocol AVTImageCache, AVTUILogger, AVTUsageTrackingSession, OS_dispatch_queue;
 
 @interface AVTUIEnvironment : NSObject
@@ -14,6 +14,7 @@
     unsigned long long _platform;
     AVTCoreModel *_editorCoreModel;
     AVTAvatarConfigurationImageRenderer *_renderer;
+    AVTMemoji *_editorThumbnailAvatar;
     id <AVTImageCache> _inMemoryImageCache;
     id <AVTUsageTrackingSession> _usageTrackingSession;
     _Bool _deviceIsPad;
@@ -58,6 +59,7 @@
 @property(readonly, nonatomic) NSUserDefaults *userDefaults;
 @property(readonly, nonatomic) id <AVTUsageTrackingSession> usageTrackingSession;
 @property(readonly, nonatomic) id <AVTImageCache> inMemoryImageCache;
+@property(readonly, nonatomic) AVTMemoji *editorThumbnailAvatar;
 @property(readonly, nonatomic) AVTAvatarConfigurationImageRenderer *renderer;
 @property(readonly, nonatomic) AVTCoreModel *editorCoreModel;
 - (void)flushResourcesForEnteringBackground;

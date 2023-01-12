@@ -23,15 +23,15 @@
     _Bool _disableASLR;
     _Bool _checkForLeaks;
     long long _launchIntent;
-    unsigned int _launchAssertionFlags;
     id <FBProcessWatchdogProviding> _watchdogProvider;
     double _watchdogExtension;
+    unsigned int _launchAssertionFlags;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned int launchAssertionFlags; // @synthesize launchAssertionFlags=_launchAssertionFlags;
 @property(nonatomic) double watchdogExtension; // @synthesize watchdogExtension=_watchdogExtension;
 @property(retain, nonatomic) id <FBProcessWatchdogProviding> watchdogProvider; // @synthesize watchdogProvider=_watchdogProvider;
-@property(nonatomic) unsigned int launchAssertionFlags; // @synthesize launchAssertionFlags=_launchAssertionFlags;
 @property(nonatomic) long long launchIntent; // @synthesize launchIntent=_launchIntent;
 @property(nonatomic) _Bool checkForLeaks; // @synthesize checkForLeaks=_checkForLeaks;
 @property(nonatomic) _Bool disableASLR; // @synthesize disableASLR=_disableASLR;
@@ -43,7 +43,6 @@
 @property(copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned int)_launchAssertionFlags;
 - (id)_initWithExecutionContext:(id)arg1;
 - (id)initWithIdentity:(id)arg1;
 

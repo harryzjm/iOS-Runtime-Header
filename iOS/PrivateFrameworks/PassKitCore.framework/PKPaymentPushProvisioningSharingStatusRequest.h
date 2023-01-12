@@ -9,16 +9,18 @@
 @interface PKPaymentPushProvisioningSharingStatusRequest
 {
     NSString *_sharingIdentifier;
+    NSString *_cardConfigurationIdentifer;
     PKEncryptedPushProvisioningTarget *_encryptedProvisioningTarget;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PKEncryptedPushProvisioningTarget *encryptedProvisioningTarget; // @synthesize encryptedProvisioningTarget=_encryptedProvisioningTarget;
+@property(copy, nonatomic) NSString *cardConfigurationIdentifer; // @synthesize cardConfigurationIdentifer=_cardConfigurationIdentifer;
 @property(copy, nonatomic) NSString *sharingIdentifier; // @synthesize sharingIdentifier=_sharingIdentifier;
 - (id)requestBody;
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 - (id)initWithEncryptedProvisioningTarget:(id)arg1;
-- (id)initWithProvisioningSharingIdentifier:(id)arg1;
+- (id)initWithProvisioningSharingIdentifier:(id)arg1 cardCardConfigurationIdentifer:(id)arg2;
 
 @end
 

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <EventKit/CADClientInterface-Protocol.h>
+#import <EventKit/CADXPCProxyHelperDelegate-Protocol.h>
 
-@class CADDatabaseInitializationOptions, NSMutableDictionary, NSXPCConnection;
+@class CADDatabaseInitializationOptions, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol CADInterface, EKDaemonConnectionDelegate, OS_dispatch_queue;
 
-@interface EKDaemonConnection : NSObject <CADClientInterface>
+@interface EKDaemonConnection : NSObject <CADClientInterface, CADXPCProxyHelperDelegate>
 {
     NSObject<OS_dispatch_queue> *_connectionLock;
     id <CADInterface> _remoteOperationProxy;
@@ -21,6 +22,9 @@
     unsigned int _nextCancellationToken;
     _Bool _registeredForStartNote;
     _Bool _wasAbortedDueToExcessiveConnctions;
+    struct os_unfair_lock_s _databaseRestoreGenerationLock;
+    int _databaseRestoreGeneration;
+    _Bool _databaseRestoreGenerationHasEverChangedSignificantly;
     _Bool _hasEverConnected;
     NSXPCConnection *_xpcConnection;
     id <EKDaemonConnectionDelegate> _delegate;
@@ -39,6 +43,10 @@
 - (void)cancelRemoteOperation:(unsigned int)arg1;
 - (void)removeCancellableRemoteOperation:(unsigned int)arg1;
 - (unsigned int)addCancellableRemoteOperation:(id)arg1;
+- (void)databaseRestoreGenerationChangedByThisClient:(int)arg1;
+- (void)setDatabaseRestoreGeneration:(int)arg1;
+@property(readonly, nonatomic) int databaseRestoreGeneration;
+@property(readonly, nonatomic) _Bool shouldValidateObjectIDs;
 - (void)_daemonRestarted;
 @property(readonly, retain, nonatomic) id <CADInterface> CADOperationProxySync;
 @property(readonly, retain, nonatomic) id <CADInterface> CADOperationProxy;
@@ -48,6 +56,12 @@
 - (void)_createConnectionAndOperationProxyIfNeeded;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

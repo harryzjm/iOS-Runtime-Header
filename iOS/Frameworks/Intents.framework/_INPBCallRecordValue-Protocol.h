@@ -6,17 +6,24 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBCallMetrics, _INPBContactValue, _INPBDateTime, _INPBInteger;
+@class NSArray, NSString, _INPBCallMetrics, _INPBContactValue, _INPBDateTime, _INPBInteger;
 
 @protocol _INPBCallRecordValue <NSObject>
++ (Class)participantsType;
 @property(nonatomic) _Bool hasUnseen;
 @property(nonatomic) _Bool unseen;
 @property(readonly, nonatomic) _Bool hasProviderId;
 @property(copy, nonatomic) NSString *providerId;
+@property(readonly, nonatomic) _Bool hasProviderBundleId;
+@property(copy, nonatomic) NSString *providerBundleId;
 @property(nonatomic) _Bool hasPreferredCallProvider;
 @property(nonatomic) int preferredCallProvider;
+@property(readonly, nonatomic) unsigned long long participantsCount;
+@property(copy, nonatomic) NSArray *participants;
 @property(readonly, nonatomic) _Bool hasNumberOfCalls;
 @property(retain, nonatomic) _INPBInteger *numberOfCalls;
+@property(nonatomic) _Bool hasIsCallerIdBlocked;
+@property(nonatomic) _Bool isCallerIdBlocked;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 @property(copy, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) _Bool hasDateCreated;
@@ -31,6 +38,9 @@
 @property(nonatomic) int callCapability;
 - (int)StringAsPreferredCallProvider:(NSString *)arg1;
 - (NSString *)preferredCallProviderAsString:(int)arg1;
+- (_INPBContactValue *)participantsAtIndex:(unsigned long long)arg1;
+- (void)addParticipants:(_INPBContactValue *)arg1;
+- (void)clearParticipants;
 - (int)StringAsCallType:(NSString *)arg1;
 - (NSString *)callTypeAsString:(int)arg1;
 - (int)StringAsCallCapability:(NSString *)arg1;

@@ -6,28 +6,27 @@
 
 #import <objc/NSObject.h>
 
+@class AMSFairPlayContext;
 @protocol OS_dispatch_queue;
 
 @interface AMSKeybag : NSObject
 {
-    unsigned int _fairPlayContextID;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    AMSFairPlayContext *_fairPlayContext;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned int fairPlayContextID; // @synthesize fairPlayContextID=_fairPlayContextID;
+@property(retain, nonatomic) AMSFairPlayContext *fairPlayContext; // @synthesize fairPlayContext=_fairPlayContext;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
-- (unsigned int)_getFairplayContext:(id *)arg1;
-- (void)_destroyContext;
 - (void)resetContext;
 - (id)kybsyncData:(id)arg1 transationType:(unsigned int)arg2 error:(id *)arg3;
 - (id)keybagSyncDataWithAccountID:(id)arg1 transactionType:(unsigned int)arg2 error:(id *)arg3;
 - (id)keybagSyncData:(id)arg1 transactionType:(unsigned int)arg2 outError:(id *)arg3;
+- (_Bool)importDiversityBagWithData:(id)arg1 error:(id *)arg2;
 - (_Bool)importKeybagData:(id)arg1 outError:(id *)arg2;
 - (_Bool)importKeybagWithData:(id)arg1 error:(id *)arg2;
 - (unsigned int)fairplayContextWithError:(id *)arg1;
-- (unsigned int)fairplayContext:(id *)arg1;
 - (id)init;
 
 @end

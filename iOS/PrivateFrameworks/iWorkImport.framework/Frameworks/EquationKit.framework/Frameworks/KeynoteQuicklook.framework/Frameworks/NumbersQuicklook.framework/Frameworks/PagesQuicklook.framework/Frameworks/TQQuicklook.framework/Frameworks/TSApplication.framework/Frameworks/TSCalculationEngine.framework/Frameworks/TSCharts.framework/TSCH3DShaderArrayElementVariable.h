@@ -4,19 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCH3DShaderVariable;
 
-@interface TSCH3DShaderArrayElementVariable <TSCHUnretainedParent>
+@interface TSCH3DShaderArrayElementVariable
 {
-    TSCH3DShaderVariable *mParent;
-    unsigned long long mIndex;
+    TSCH3DShaderVariable *_parent;
+    unsigned long long _index;
 }
 
 + (id)variableWithParentVariable:(id)arg1 index:(unsigned long long)arg2;
-- (void)clearParent;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithParentVariable:(id)arg1 index:(unsigned long long)arg2;
 
 @end

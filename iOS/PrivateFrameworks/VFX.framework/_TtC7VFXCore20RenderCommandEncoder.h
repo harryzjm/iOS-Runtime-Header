@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *encoder;
     MISSING_TYPE *renderPassFormat;
+    MISSING_TYPE *bufferPool;
+    MISSING_TYPE *workerIndex;
     MISSING_TYPE *counterRecorder;
     MISSING_TYPE *winding;
     MISSING_TYPE *cullMode;

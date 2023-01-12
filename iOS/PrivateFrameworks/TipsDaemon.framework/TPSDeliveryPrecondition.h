@@ -10,13 +10,13 @@
 
 @interface TPSDeliveryPrecondition : TPSSerializableObject
 {
-    unsigned long long _joinType;
+    long long _joinType;
     NSArray *_conditions;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *conditions; // @synthesize conditions=_conditions;
-@property(nonatomic) unsigned long long joinType; // @synthesize joinType=_joinType;
+@property(nonatomic) long long joinType; // @synthesize joinType=_joinType;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictionary:(id)arg1;

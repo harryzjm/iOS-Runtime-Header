@@ -30,6 +30,7 @@
     unsigned long long _activeFetchEvents;
     NSArray *_currentApps;
     NSArray *_elementCache;
+    AXElementGroup *_elementCommunityGroupCache;
     AXElementGroup *_rootGroupCache;
     AXElementGroup *_keyboardGroupCache;
     NSMutableDictionary *_postFetchFilters;
@@ -46,6 +47,7 @@
 @property(retain, nonatomic) NSMutableDictionary *postFetchFilters; // @synthesize postFetchFilters=_postFetchFilters;
 @property(retain, nonatomic) AXElementGroup *keyboardGroupCache; // @synthesize keyboardGroupCache=_keyboardGroupCache;
 @property(retain, nonatomic) AXElementGroup *rootGroupCache; // @synthesize rootGroupCache=_rootGroupCache;
+@property(retain, nonatomic) AXElementGroup *elementCommunityGroupCache; // @synthesize elementCommunityGroupCache=_elementCommunityGroupCache;
 @property(retain, nonatomic) NSArray *elementCache; // @synthesize elementCache=_elementCache;
 @property(retain, nonatomic) NSArray *currentApps; // @synthesize currentApps=_currentApps;
 @property(nonatomic) unsigned long long activeFetchEvents; // @synthesize activeFetchEvents=_activeFetchEvents;
@@ -88,7 +90,7 @@
 - (void)removeAllPostFetchFilters;
 - (void)removePostFetchFilterWithIdentifier:(id)arg1;
 - (void)addPostFetchFilter:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
-- (id)_fetchUnprocessedElements;
+- (id)_fetchUnprocessedElements:(id)arg1;
 - (_Bool)_fetchElements:(_Bool)arg1;
 - (void)_sendFakeScreenChangeIfNecessaryForGroups:(id)arg1 orElements:(id)arg2 appsDidChange:(_Bool)arg3;
 - (_Bool)_shouldConsiderCacheAsInvalid;
@@ -121,6 +123,7 @@
 - (void)unregisterAllFetchObservers;
 - (void)unregisterFetchObserver:(id)arg1;
 - (void)registerFetchObserver:(id)arg1 targetQueue:(id)arg2;
+@property(readonly, nonatomic) AXElementGroup *elementCommunityGroup;
 @property(readonly, nonatomic) AXElementGroup *lastKeyboardRow;
 @property(readonly, nonatomic) AXElementGroup *firstKeyboardRow;
 @property(readonly, nonatomic) AXElementGroup *keyboardGroup;

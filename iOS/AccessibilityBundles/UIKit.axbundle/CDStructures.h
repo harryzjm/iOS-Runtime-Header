@@ -43,7 +43,8 @@ typedef struct {
     unsigned char _field1;
     long long _field2;
     _Bool _field3;
-} CDStruct_65ebe2bc;
+    _Bool _field4;
+} CDStruct_75b03505;
 
 typedef struct {
     unsigned long long _field1;

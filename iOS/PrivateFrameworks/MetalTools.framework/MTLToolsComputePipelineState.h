@@ -16,6 +16,7 @@
 
 @property(readonly, retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) unsigned long long uniqueIdentifier;
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 @property(readonly, nonatomic) unsigned long long gpuAddress;
 @property(readonly, nonatomic) unsigned long long resourceIndex;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
@@ -29,7 +30,6 @@
 - (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 - (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1;
 - (id)functionHandleWithFunction:(id)arg1;
-- (id)functionHandleToToolsFunctionHandle:(id)arg1 parentFunction:(id)arg2;
 - (id)functionPointerHandlesWithFunctions:(id)arg1 range:(struct _NSRange)arg2;
 - (id)functionPointerHandleWithFunction:(id)arg1;
 @property(readonly) id <MTLDevice> device;

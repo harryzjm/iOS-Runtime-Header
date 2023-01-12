@@ -8,10 +8,12 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI226OfflineIssueAutoDownloader : NSObject
 {
     MISSING_TYPE *currentIssuesChecker;
     MISSING_TYPE *offlineIssueManager;
+    MISSING_TYPE *issueReadingHistory;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *triggerDeduper;
 }

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBObjectBasedMarshallingResult.h>
-
 @class IBAutolayoutStatus;
 
-@interface IBAutolayoutStatusMarshallingResult : IBObjectBasedMarshallingResult
+@interface IBAutolayoutStatusMarshallingResult
 {
     IBAutolayoutStatus *_autolayoutStatus;
 }

@@ -8,9 +8,11 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)showCommandsWithReplacements:(id)arg1;
+- (id)_accessibilityUserTestingChildren;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 #import <RemoteUI/RUIHeader-Protocol.h>
 #import <RemoteUI/RUIWebContainerViewDelegate-Protocol.h>
@@ -24,10 +24,14 @@
 @property(retain, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property(nonatomic) __weak id <RUIHeaderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)webContainerView:(id)arg1 didClickLinkWithURL:(id)arg2;
+- (double)webViewWidth;
+- (void)setHTMLContent:(id)arg1 toElementsMatchingQuery:(id)arg2;
+- (id)quoteEncodedStringWithString:(id)arg1;
 - (void)layoutSubviews;
 - (void)setSectionIsFirst:(_Bool)arg1;
 - (double)headerHeightForWidth:(double)arg1 inView:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setFooterStyleText:(id)arg1 attributes:(id)arg2;
 - (void)setText:(id)arg1 attributes:(id)arg2;
 - (id)initWithAttributes:(id)arg1;
 

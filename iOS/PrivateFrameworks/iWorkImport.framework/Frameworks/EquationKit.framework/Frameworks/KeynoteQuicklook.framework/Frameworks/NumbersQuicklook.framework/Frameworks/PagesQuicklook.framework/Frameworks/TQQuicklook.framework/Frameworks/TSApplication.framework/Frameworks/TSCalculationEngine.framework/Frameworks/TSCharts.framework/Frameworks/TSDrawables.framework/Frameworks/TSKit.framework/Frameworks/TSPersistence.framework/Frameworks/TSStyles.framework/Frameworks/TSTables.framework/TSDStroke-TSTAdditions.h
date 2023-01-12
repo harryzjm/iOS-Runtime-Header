@@ -11,6 +11,8 @@
 + (id)mergeRangeEmptyStroke;
 + (id)zeroWidthEmptyStroke;
 + (id)emptyStrokeWithWidth:(double)arg1;
+- (id)strokeApplyingWidth:(double)arg1;
+- (id)strokeApplyingEmphasis;
 - (_Bool)isPortalStroke;
 - (_Bool)isEqualToStroke:(id)arg1;
 @property(readonly, nonatomic) _Bool solid;

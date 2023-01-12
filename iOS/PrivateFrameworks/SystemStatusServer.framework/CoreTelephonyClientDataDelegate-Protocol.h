@@ -11,13 +11,16 @@
 @protocol CoreTelephonyClientDataDelegate <NSObject>
 
 @optional
+- (void)dataRoamingSettingsChanged:(CTServiceDescriptor *)arg1 status:(_Bool)arg2;
 - (void)serviceDisconnection:(CTXPCServiceSubscriptionContext *)arg1 status:(CTServiceDisconnectionStatus *)arg2;
+- (void)tetheringStatus:(CTTetheringStatus *)arg1 connectionType:(int)arg2;
 - (void)tetheringStatus:(CTTetheringStatus *)arg1;
 - (void)internetConnectionAvailability:(_Bool)arg1;
 - (void)internetDataStatus:(CTDataStatus *)arg1;
 - (void)internetConnectionActivationError:(int)arg1;
 - (void)internetConnectionStateChanged:(CTDataConnectionStatus *)arg1;
 - (void)dataSettingsChanged:(CTDataSettings *)arg1;
+- (void)regDataModeChanged:(CTXPCServiceSubscriptionContext *)arg1 dataMode:(int)arg2;
 - (void)dataStatus:(CTXPCServiceSubscriptionContext *)arg1 dataStatusInfo:(CTDataStatus *)arg2;
 - (void)connectionAvailability:(CTXPCServiceSubscriptionContext *)arg1 availableConnections:(NSArray *)arg2;
 - (void)servingNetworkChanged:(CTXPCServiceSubscriptionContext *)arg1;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSURL, WFFileRepresentation;
 
-@protocol WFShowWebPageActionUserInterface <WFRemoteUserInterface>
+@protocol WFShowWebPageActionUserInterface <WFActionRemoteUserInterface>
 - (void)showRichText:(WFFileRepresentation *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)showURL:(NSURL *)arg1 readerView:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 @end

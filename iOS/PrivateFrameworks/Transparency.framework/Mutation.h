@@ -14,6 +14,7 @@
 
 // Remaining properties
 @property(copy, nonatomic) NSData *accountId; // @dynamic accountId;
+@property(nonatomic) _Bool accountMismatch; // @dynamic accountMismatch;
 @property(nonatomic) unsigned long long appVersion; // @dynamic appVersion;
 @property(copy, nonatomic) NSData *clientDataVrfoutput; // @dynamic clientDataVrfoutput;
 @property(copy, nonatomic) NSData *deviceIdVrfoutput; // @dynamic deviceIdVrfoutput;

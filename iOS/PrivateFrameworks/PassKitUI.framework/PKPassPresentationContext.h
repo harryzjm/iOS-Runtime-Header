@@ -11,7 +11,6 @@
 
 @interface PKPassPresentationContext : NSObject
 {
-    _Bool _animated;
     _Bool _fieldDetect;
     _Bool _postPayment;
     _Bool _forcePayment;
@@ -19,25 +18,29 @@
     _Bool _wasAutomaticallySelected;
     _Bool _forcedFromButton;
     _Bool _limitServerLoad;
+    _Bool _presentFanned;
+    _Bool _standaloneTransaction;
+    long long _standaloneTransactionType;
     NSArray *_additionalPassUniqueIdentifiers;
     id <NSCopying> _userInfo;
 }
 
-+ (id)contextWithAnimation:(_Bool)arg1 wasAutomaticallySelected:(_Bool)arg2 additionalPassUniqueIdentifiers:(id)arg3 userInfo:(id)arg4;
-+ (id)contextWithAnimation:(_Bool)arg1 wasAutomaticallySelected:(_Bool)arg2 additionalPassUniqueIdentifiers:(id)arg3;
-+ (id)contextWithAnimation:(_Bool)arg1 additionalPassUniqueIdentifiers:(id)arg2;
-+ (id)contextWithAnimation:(_Bool)arg1;
++ (id)contextWithWasAutomaticallySelected:(_Bool)arg1 additionalPassUniqueIdentifiers:(id)arg2 userInfo:(id)arg3;
++ (id)contextWithWasAutomaticallySelected:(_Bool)arg1 additionalPassUniqueIdentifiers:(id)arg2;
++ (id)contextWithAdditionalPassUniqueIdentifiers:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isStandaloneTransaction) _Bool standaloneTransaction; // @synthesize standaloneTransaction=_standaloneTransaction;
+@property(nonatomic) _Bool presentFanned; // @synthesize presentFanned=_presentFanned;
 @property(nonatomic) _Bool limitServerLoad; // @synthesize limitServerLoad=_limitServerLoad;
 @property(copy, nonatomic) id <NSCopying> userInfo; // @synthesize userInfo=_userInfo;
 @property(nonatomic, getter=wasForcedFromButton) _Bool forcedFromButton; // @synthesize forcedFromButton=_forcedFromButton;
 @property(nonatomic) _Bool wasAutomaticallySelected; // @synthesize wasAutomaticallySelected=_wasAutomaticallySelected;
 @property(copy, nonatomic) NSArray *additionalPassUniqueIdentifiers; // @synthesize additionalPassUniqueIdentifiers=_additionalPassUniqueIdentifiers;
 @property(nonatomic, getter=wantsPersistentCardEmulation) _Bool persistentCardEmulation; // @synthesize persistentCardEmulation=_persistentCardEmulation;
+@property(nonatomic) long long standaloneTransactionType; // @synthesize standaloneTransactionType=_standaloneTransactionType;
 @property(nonatomic, getter=wantsForcedPayment) _Bool forcePayment; // @synthesize forcePayment=_forcePayment;
 @property(nonatomic, getter=isPostPayment) _Bool postPayment; // @synthesize postPayment=_postPayment;
 @property(nonatomic, getter=isFieldDetect) _Bool fieldDetect; // @synthesize fieldDetect=_fieldDetect;
-@property(nonatomic) _Bool animated; // @synthesize animated=_animated;
 - (id)description;
 
 @end

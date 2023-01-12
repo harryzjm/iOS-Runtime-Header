@@ -16,11 +16,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
-@property(readonly, nonatomic) NSString *type; // @synthesize type=_type;
 - (id)description;
-- (void)setPropertiesFromAttributeList:(id)arg1;
 
 @end
 

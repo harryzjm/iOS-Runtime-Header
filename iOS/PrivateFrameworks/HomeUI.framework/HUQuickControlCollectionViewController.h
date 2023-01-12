@@ -7,14 +7,15 @@
 #import <HomeUI/HFAccessoryObserver-Protocol.h>
 #import <HomeUI/HUQuickControlCollectionViewDelegateLayout-Protocol.h>
 #import <HomeUI/HUQuickControlContentCharacteristicWriting-Protocol.h>
+#import <HomeUI/HUQuickControlContentHelper-Protocol.h>
 #import <HomeUI/HUQuickControlInteractiveContentContaining-Protocol.h>
 #import <HomeUI/HUQuickControlItemUpdating-Protocol.h>
 #import <HomeUI/HUQuickControlTouchContinuing-Protocol.h>
 
-@class HUQuickControlCollectionItemManager, HUQuickControlCollectionViewControllerLayoutOptions, HUQuickControlCollectionViewLayout, HUQuickControlContentCharacteristicWritingUpdateAdapter, NSMapTable, NSSet, NSString;
-@protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting;
+@class HFItemManager, HUQuickControlCollectionViewControllerLayoutOptions, HUQuickControlCollectionViewLayout, HUQuickControlContentCharacteristicWritingUpdateAdapter, NSMapTable, NSSet, NSString;
+@protocol HULayoutAnchorProviding, HUQuickControlCollectionItemManaging, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting;
 
-@interface HUQuickControlCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HFAccessoryObserver, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlTouchContinuing>
+@interface HUQuickControlCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HFAccessoryObserver, HUQuickControlContentHelper, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlTouchContinuing>
 {
     _Bool _userInteractionEnabled;
     _Bool _disableItemUpdatesForOverrideCharacteristicValueChanges;
@@ -39,6 +40,9 @@
 - (id)overrideValueForCharacteristic:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *affectedCharacteristics;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
+- (void)shouldHideQuickControlHeaderText:(_Bool)arg1 forSectionIdentifier:(id)arg2;
+- (void)shouldHideQuickControlHeaderButton:(_Bool)arg1 forSectionIdentifier:(id)arg2;
+- (void)invalidateContentViewLayout;
 - (void)quickControlItemHost:(id)arg1 didUpdateVisibility:(_Bool)arg2;
 - (double)heightForSupplementaryViewAtIndexPath:(id)arg1;
 - (id)intrinsicSizeDescriptorForItemAtIndexPath:(id)arg1 itemSize:(unsigned long long)arg2;
@@ -52,15 +56,19 @@
 - (unsigned long long)_titlePositionForItem:(id)arg1;
 - (void)_reconfigureLayoutOptions;
 - (id)_controlItemsForItem:(id)arg1;
+- (void)_setReachabilityForHeaderForIdentifier:(id)arg1 to:(_Bool)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
 - (void)itemManager:(id)arg1 didRemoveItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)viewLayoutMarginsDidChange;
 - (_Bool)_canShowWhileLocked;
+- (void)viewWillDismiss;
 - (void)viewDidLoad;
 - (void)loadView;
+- (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
 - (id)initWithItemManager:(id)arg1;
 
 // Remaining properties
@@ -68,7 +76,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) HUQuickControlCollectionItemManager *itemManager; // @dynamic itemManager;
+@property(readonly, nonatomic) HFItemManager<HUQuickControlCollectionItemManaging> *itemManager; // @dynamic itemManager;
 @property(readonly) Class superclass;
 
 @end

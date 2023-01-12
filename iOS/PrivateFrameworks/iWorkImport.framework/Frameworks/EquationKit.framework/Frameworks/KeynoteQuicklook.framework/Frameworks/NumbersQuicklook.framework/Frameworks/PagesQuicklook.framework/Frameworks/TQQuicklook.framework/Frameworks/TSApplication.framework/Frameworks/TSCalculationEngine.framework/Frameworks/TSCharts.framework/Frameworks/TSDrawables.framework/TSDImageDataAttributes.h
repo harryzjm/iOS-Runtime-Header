@@ -26,8 +26,8 @@
 - (id)copyWithIsSRGB:(_Bool)arg1;
 - (id)copyWithPixelSize:(struct CGSize)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToMessage:(struct DataAttributes *)arg1;
-- (id)initWithMessage:(const struct DataAttributes *)arg1;
+- (void)saveToMessage:(void *)arg1;
+- (id)initWithMessage:(const void *)arg1;
 - (id)initWithShouldBeInterpretedAsGenericIfUntagged:(_Bool)arg1;
 - (id)initWithIsSRGB:(_Bool)arg1;
 - (id)initWithPixelSize:(struct CGSize)arg1;

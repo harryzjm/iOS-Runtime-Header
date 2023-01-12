@@ -10,7 +10,9 @@
 {
 }
 
-- (id)lookupSRVWithQuery:(id)arg1 andBundleIdentifier:(id)arg2;
+- (void)lookupHost:(id)arg1 port:(id)arg2 bundleIdentifier:(id)arg3 auditTokenData:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)lookupSRVWithQuery:(id)arg1 bundleIdentifier:(id)arg2 auditTokenData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)lookupSRVWithQuery:(id)arg1 bundleIdentifier:(id)arg2 auditTokenData:(id)arg3;
 - (id)init;
 
 @end

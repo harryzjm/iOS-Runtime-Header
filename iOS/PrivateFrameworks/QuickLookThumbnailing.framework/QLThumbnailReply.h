@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface QLThumbnailReply : NSObject
 {
+    struct CGColorSpace *_colorSpace;
     int _iconFlavor;
+    NSString *_extensionBadge;
     CDUnknownBlockType _drawingBlock;
     CDUnknownBlockType _drawInContextBlock;
     CDUnknownBlockType _ioSurfaceBlock;
@@ -31,6 +33,8 @@
 @property(copy, nonatomic) CDUnknownBlockType ioSurfaceBlock; // @synthesize ioSurfaceBlock=_ioSurfaceBlock;
 @property(copy, nonatomic) CDUnknownBlockType drawInContextBlock; // @synthesize drawInContextBlock=_drawInContextBlock;
 @property(copy, nonatomic) CDUnknownBlockType drawingBlock; // @synthesize drawingBlock=_drawingBlock;
+@property(copy, nonatomic) NSString *extensionBadge; // @synthesize extensionBadge=_extensionBadge;
+@property(nonatomic) struct CGColorSpace *colorSpace;
 - (id)init;
 
 @end

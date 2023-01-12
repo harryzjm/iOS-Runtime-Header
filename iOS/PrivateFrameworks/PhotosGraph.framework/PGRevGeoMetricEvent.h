@@ -4,15 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <PhotosGraph/PLMetricEvent-Protocol.h>
-
-@class NSDictionary, NSString;
-
-@interface PGRevGeoMetricEvent : NSObject <PLMetricEvent>
+@interface PGRevGeoMetricEvent
 {
-    NSString *_identifier;
     double _numberOfAssetClustersPerMomentMean;
     double _numberOfAssetClustersPerMomentStdDev;
     double _numberOfAssetsPerClusterMean;
@@ -24,7 +17,6 @@
     double _ratioAssetClusters100mPlusFromCenter;
 }
 
-- (void).cxx_destruct;
 @property(readonly, nonatomic) double ratioAssetClusters100mPlusFromCenter; // @synthesize ratioAssetClusters100mPlusFromCenter=_ratioAssetClusters100mPlusFromCenter;
 @property(readonly, nonatomic) double ratioAssetClustersWithin100mOfCenter; // @synthesize ratioAssetClustersWithin100mOfCenter=_ratioAssetClustersWithin100mOfCenter;
 @property(readonly, nonatomic) double ratioAssetClustersWithin50mOfCenter; // @synthesize ratioAssetClustersWithin50mOfCenter=_ratioAssetClustersWithin50mOfCenter;
@@ -34,16 +26,9 @@
 @property(readonly, nonatomic) double numberOfAssetsPerClusterMean; // @synthesize numberOfAssetsPerClusterMean=_numberOfAssetsPerClusterMean;
 @property(readonly, nonatomic) double numberOfAssetClustersPerMomentStdDev; // @synthesize numberOfAssetClustersPerMomentStdDev=_numberOfAssetClustersPerMomentStdDev;
 @property(readonly, nonatomic) double numberOfAssetClustersPerMomentMean; // @synthesize numberOfAssetClustersPerMomentMean=_numberOfAssetClustersPerMomentMean;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) NSDictionary *payload;
-- (void)gatherMetricsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (id)payload;
+- (id)identifier;
 - (id)initWithNumberOfAssetClustersPerMomentMean:(double)arg1 numberOfAssetClustersPerMomentStdDev:(double)arg2 numberOfAssetsPerClusterMean:(double)arg3 numberOfAssetsPerClusterStdDev:(double)arg4 ratioAssetClustersWithin10mOfCenter:(double)arg5 ratioAssetClustersWithin20mOfCenter:(double)arg6 ratioAssetClustersWithin50mOfCenter:(double)arg7 ratioAssetClustersWithin100mOfCenter:(double)arg8 ratioAssetClusters100mPlusFromCenter:(double)arg9;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

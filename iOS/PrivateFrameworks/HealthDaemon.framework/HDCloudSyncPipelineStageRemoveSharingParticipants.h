@@ -15,7 +15,6 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *participantsToRemove; // @synthesize participantsToRemove=_participantsToRemove;
 @property(nonatomic) _Bool removeAllParticipants; // @synthesize removeAllParticipants=_removeAllParticipants;
-- (id)_delegateToOperationForRemoveSharingParticipants:(id)arg1;
 - (void)main;
 
 @end

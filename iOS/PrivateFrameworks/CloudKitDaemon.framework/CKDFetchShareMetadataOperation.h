@@ -7,7 +7,6 @@
 @class NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
 @protocol CKFetchShareMetadataOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchShareMetadataOperation
 {
     _Bool _forceDSRefetch;
@@ -47,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 - (int)operationType;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchShareMetadataOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

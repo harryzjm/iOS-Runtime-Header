@@ -13,6 +13,7 @@
 @interface SFCredentialProviderExtensionHelperProxy : NSObject <SFCredentialProviderExtensionHelperProtocol>
 {
     NSXPCConnection *_connection;
+    struct os_unfair_lock_s _lock;
 }
 
 - (void).cxx_destruct;

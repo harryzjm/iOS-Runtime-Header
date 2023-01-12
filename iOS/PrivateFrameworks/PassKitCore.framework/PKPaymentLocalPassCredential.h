@@ -21,6 +21,7 @@
 - (unsigned long long)hash;
 - (_Bool)_isEqualToCredential:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *summaryMetadataDescription;
 - (id)initWithPaymentPass:(id)arg1;
 - (id)init;
 

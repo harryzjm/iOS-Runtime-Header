@@ -8,7 +8,7 @@
 
 @interface GKRTree : NSObject
 {
-    struct GKCRTree<NSObject, float __attribute__((ext_vector_type(2)))> *_cRTree;
+    void *_cRTree;
     unsigned long long _queryReserve;
 }
 

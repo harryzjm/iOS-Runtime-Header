@@ -51,12 +51,10 @@
 - (_Bool)openURL:(id)arg1 displayAlertOnError:(_Bool)arg2;
 @property(readonly, nonatomic) double maximumAspectRatioForPreviewImage;
 @property(readonly, nonatomic) double mimimumAspectRatioForPreviewImage;
-- (id)applicationTemplateVariantsForLocale:(id)arg1;
-- (void)p_registerDrawableInfoClassMapping;
+- (void)registerDrawableInfoClassMapping;
 - (void)registerDefaults;
 - (void)persistenceError:(id)arg1;
 - (void)registerSOSClassTypeMappings;
-@property(readonly, nonatomic) Class documentRootClass;
 - (id)init;
 
 @end

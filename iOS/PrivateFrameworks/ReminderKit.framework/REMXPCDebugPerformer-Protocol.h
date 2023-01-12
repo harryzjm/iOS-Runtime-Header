@@ -4,9 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, NSURL, NSUUID, REMObjectID, REMStoreContainerToken;
+@class NSDate, NSString, NSURL, NSUUID, REMObjectID, REMStoreContainerToken;
 
 @protocol REMXPCDebugPerformer
+- (void)updateRemCurrentRuntimeVersionDebuggingOverride:(long long)arg1;
+- (void)updateMinimumSupportedVersionWithObjectID:(REMObjectID *)arg1 minimumSupportedVersion:(long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)fetchAccountListOrderedIdentifiersWithAccountID:(NSUUID *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)validateSharedToMeReminderPlaceholdersWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)validateHashtagsWithSharedToMeReminderCKIdentifierAndMismatchedReminderCKIdentifierWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)validateHashtagsWithMismatchedHashtagsWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)validateHashtagsWithoutHashtagLabelWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)validateHashtagLabelsWithConcealedHashtagsWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)validateHashtagLabelsWithoutHashtagWithRepair:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)refreshHashtagLabelsImmediately;
+- (void)setupManualHashtagLabelUpdater;
+- (void)updateManualSortHintWithIdentifier:(NSUUID *)arg1 lastAccessed:(NSDate *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)resetManualSortHintBeforeLastAccessed:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)resetManualSortHintWithListType:(NSString *)arg1 listID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)resetManualSortHintWithIdentifier:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)resetAllManualSortHintsWithCompletion:(void (^)(NSError *))arg1;
+- (void)removeManualSortHintWithIdentifier:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)fetchManualSortHintWithListType:(NSString *)arg1 listID:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)fetchAllManualSortHintsWithDetails:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)downloadContainerToOutputDir:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)resetBabysitterWithRestrictedAccountID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)dataAccessStatusReports:(void (^)(NSArray *, NSError *))arg1;

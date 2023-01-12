@@ -7,7 +7,9 @@
 #import <WebKit/WKWebView.h>
 
 @interface WKWebView (MessageContentView)
+- (id)mcv_dictionaryFromJavaScriptMethod:(id)arg1 arguments:(id)arg2;
+- (id)mcv_stringFromJavaScriptMethod:(id)arg1 arguments:(id)arg2;
 - (id)mcv_executeJavaScriptExpression:(id)arg1;
-- (id)mcv_executeJavaScriptMethod:(id)arg1 arguments:(id)arg2;
+- (id)_mcv_executeJavaScriptMethod:(id)arg1 arguments:(id)arg2;
 @end
 

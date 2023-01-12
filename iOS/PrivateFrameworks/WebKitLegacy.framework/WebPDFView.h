@@ -15,7 +15,7 @@
 {
     _Bool dataSourceHasBeenSet;
     struct CGPDFDocument *_PDFDocument;
-    NSString *_title;
+    struct RetainPtr<NSString> _title;
     struct CGRect *_pageRects;
 }
 
@@ -23,6 +23,8 @@
 + (struct CGColor *)backgroundColor;
 + (struct CGColor *)shadowColor;
 + (id)supportedMIMETypes;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (struct CGRect)rectForPageNumber:(unsigned int)arg1;
 - (struct CGPDFDocument *)doc;
 - (unsigned int)totalPages;

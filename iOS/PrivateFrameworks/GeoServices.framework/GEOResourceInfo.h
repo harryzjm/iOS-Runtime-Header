@@ -12,13 +12,11 @@
 {
     GEOResource *_resource;
     NSArray *_equivalentResources;
-    _Bool _allowResumingPartialDownload;
     NSString *_eTag;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *eTag; // @synthesize eTag=_eTag;
-@property(nonatomic, getter=_allowResumingPartialDownload, setter=_setAllowResumingPartialDownload:) _Bool allowResumingPartialDownload; // @synthesize allowResumingPartialDownload=_allowResumingPartialDownload;
 @property(readonly, nonatomic) GEOResource *resource; // @synthesize resource=_resource;
 @property(copy, nonatomic) NSArray *equivalentResources; // @synthesize equivalentResources=_equivalentResources;
 - (id)description;

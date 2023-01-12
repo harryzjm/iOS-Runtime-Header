@@ -13,13 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface VKRouteLineObserver : NSObject <VKRouteLineObserverProtocol>
 {
-    struct LabelTransitSupport *_transitSupport;
+    void *_transitSupport;
     VKRouteLine *_routeLine;
 }
 
 - (void)routeLineDidUpdateSections:(id)arg1;
 - (void)dealloc;
-- (id)initWithTransitSupport:(struct LabelTransitSupport *)arg1 andRouteLine:(id)arg2;
+- (id)initWithTransitSupport:(void *)arg1 andRouteLine:(id)arg2;
 
 @end
 

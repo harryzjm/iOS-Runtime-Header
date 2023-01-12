@@ -8,9 +8,11 @@
 
 @interface CKAggregateAcknowledgmentChatItem
 {
+    _Bool _overrideBalloonOrientationForPhotoGrid;
     long long _latestAcknowledgmentType;
 }
 
+@property(nonatomic) _Bool overrideBalloonOrientationForPhotoGrid; // @synthesize overrideBalloonOrientationForPhotoGrid=_overrideBalloonOrientationForPhotoGrid;
 @property(readonly, nonatomic) long long latestAcknowledgmentType; // @synthesize latestAcknowledgmentType=_latestAcknowledgmentType;
 - (struct UIEdgeInsets)contentInsets;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
@@ -19,6 +21,7 @@
 @property(readonly) UIColor *acknowledgmentImageColor;
 @property(readonly, copy) NSString *acknowledgmentImageName;
 @property(readonly, copy, nonatomic) NSArray *acknowledgments;
+@property(readonly, nonatomic) long long fromMeAcknowledgmentType;
 @property(readonly, nonatomic) _Bool includesMultiple;
 @property(readonly, nonatomic) _Bool latestIsFromMe;
 @property(readonly, nonatomic) _Bool includesFromMe;

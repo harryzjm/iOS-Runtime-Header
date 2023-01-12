@@ -11,7 +11,7 @@
 #import <UIKitCore/UIPanelControllerDelegate-Protocol.h>
 #import <UIKitCore/UISplitViewControllerImpl-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, UIBarButtonItem, UIDimmingView, UIFocusContainerGuide, UIImage, UIKeyCommand, UINavigationBar, UIPanGestureRecognizer, UIPanelController, UIResponder, UIScreenEdgePanGestureRecognizer, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, _UIFloatableBarButtonItem, _UIHyperConstantExtender, _UIHyperInteractor, _UIHyperrectangle, _UIHyperregionUnion;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString, UIBarButtonItem, UIDimmingView, UIFocusContainerGuide, UIImage, UINavigationBar, UIPanGestureRecognizer, UIPanelController, UIResponder, UIScreenEdgePanGestureRecognizer, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, _UIFloatableBarButtonItem, _UIHyperConstantExtender, _UIHyperInteractor, _UIHyperrectangle, _UIHyperregionUnion;
 @protocol UISplitViewControllerDelegate;
 
 @interface UISplitViewControllerPanelImpl : NSObject <UIPanelControllerDelegate, UIDimmingViewDelegate, UIGestureRecognizerDelegate, UISplitViewControllerImpl>
@@ -44,6 +44,7 @@
     struct CGSize _suspendedSize;
     UISlidingBarStateRequest *_suspendedStateRequest;
     long long _suspendedState;
+    UIResponder *_suspendedFirstResponder;
     UIResponder *_postTransitionResponder;
     long long _primaryEdge;
     NSMutableArray *_hyperpoints;
@@ -51,7 +52,6 @@
     _UIHyperrectangle *_hyperrectangle;
     _UIHyperInteractor *_interactor;
     _UIHyperConstantExtender *_extender;
-    UIKeyCommand *_sidebarDisplayKeyCommand;
     struct {
         unsigned int usedNewSPI:1;
         unsigned int primaryHidingState:2;
@@ -70,7 +70,8 @@
         unsigned int isForcingOverlayForGesture:1;
         unsigned int allowToggleSidebarButtonWithoutGesture:1;
         unsigned int alwaysHideToggleSidebarButton:1;
-        unsigned int isSidebarKeyCommandInstalled:1;
+        unsigned int allowsTriggeringSidebarKeyCommandAction:1;
+        unsigned int wantsHideSidebarDisplayNameForKeyCommand:1;
         unsigned int allowsDimmedSecondaryAsDeepestUnambiguousResponder:1;
         unsigned int allowSecondaryOnlyButton:1;
         unsigned int lockedForDelegateCallback:1;
@@ -136,6 +137,8 @@
 - (void)_updateFocusContainerGuideFrames;
 - (void)_setUpFocusContainerGuides;
 - (void)_allowingMutationsInDelegateCallback:(CDUnknownBlockType)arg1;
+- (id)_navigationController:(id)arg1 navigationBarAdditionalActionsForBackButtonMenu:(id)arg2;
+- (void)_navigationController:(id)arg1 navigationBar:(id)arg2 itemBackButtonUpdated:(id)arg3;
 - (void)_navigationController:(id)arg1 navigationBar:(id)arg2 topItemUpdatedContentLayout:(id)arg3;
 - (void)_updateDisplayModeButtonItemAndResetForCanceledAnimationWithTransitionCoordinator:(id)arg1;
 - (_Bool)_navigationControllerShouldNotAdjustTransitioningSizeForChildContainer:(id)arg1;
@@ -144,6 +147,8 @@
 - (void)_updateDisplayModeButtonItemIfNecessaryForChangingNavigationController:(id)arg1;
 - (long long)_columnForMonitoredNavigationController:(id)arg1;
 - (void)_tabBarControllerDidChangeSelection:(id)arg1;
+- (_Bool)_isViewControllerForObservableScrollViewAmbiguous;
+- (id)_viewControllerForObservableScrollView;
 - (void)_viewControllerChildViewControllersDidChange:(id)arg1;
 - (void)_stopTransitionsInViewController:(id)arg1;
 - (_Bool)_setPanelConfigurationWithIsPrimaryShown:(_Bool)arg1 shouldUseOverlay:(_Bool)arg2;
@@ -163,10 +168,13 @@
 - (void)_triggerDisplayModeAction:(id)arg1;
 - (void)_triggerSecondaryOnlyShortcutAction:(id)arg1;
 - (void)_triggerSidebarKeyCommandAction:(id)arg1;
+- (void)_updateAllowsTriggeringSidebarKeyCommandAction;
+- (_Bool)_allowsTriggeringSidebarKeyCommandAction;
+- (void)_validateTriggerSidebarKeyCommand:(id)arg1;
+- (void)_updateTriggerSidebarKeyCommandTitleForNewDisplayMode:(long long)arg1;
 - (void)_unspecifiedStyleTriggerDisplayModeAction:(id)arg1;
 - (void)_updateDisplayModeButtonItem;
 - (void)_updateDisplayModeButtonItemForDisplayMode:(long long)arg1;
-- (void)_updateSidebarDisplayKeyCommand;
 - (_Bool)_alwaysHideSidebarToggleButton;
 @property(nonatomic, setter=_setForceDisplayModeBarButtonHidden:) _Bool _forceDisplayModeBarButtonHidden;
 - (_Bool)_isDisplayModeBarButtonVisible;
@@ -181,6 +189,7 @@
 - (long long)_effectiveTargetDisplayModeForDisplayMode:(long long)arg1;
 - (long long)_nextTargetDisplayModeForDisplayMode:(long long)arg1 showMoreIfPossible:(_Bool)arg2;
 - (long long)_effectiveTargetDisplayMode;
+- (_Bool)_allowsFocusBehindDimmingView;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)_updateDimmingView;
 - (void)_setPrimaryShownFromGesture:(_Bool)arg1 hideAll:(_Bool)arg2;
@@ -218,6 +227,8 @@
 - (_Bool)_configurationPermitsFluidOpenGestureWithPrimaryShown:(_Bool)arg1 supplementaryShown:(_Bool)arg2;
 - (_Bool)_unspecifiedStyleGestureRecognizerShouldBegin:(id)arg1;
 - (id)panelController:(id)arg1 navigationBarForViewController:(id)arg2;
+- (id)_navigationBarForSidebarButtonForDisplayMode:(long long)arg1;
+- (_Bool)_wantsSideBarImageForOneOverSecondary;
 - (id)_navigationBarForSidebarButtonForColumn:(long long)arg1;
 - (void)panelController:(id)arg1 adjustTrailingViewController:(id)arg2 forKeyboardInfo:(id)arg3;
 - (void)panelController:(id)arg1 adjustLeadingViewController:(id)arg2 forKeyboardInfo:(id)arg3;
@@ -244,7 +255,7 @@
 - (void)callDeprecatedWillHideDelegateCallbackIfNecessary;
 - (CDUnknownBlockType)panelControllerWillUpdate:(id)arg1;
 - (id)_newBarContentAnimationClippingView;
-- (double)panelController:(id)arg1 expectedWidthForColumnForViewController:(id)arg2 forceNoSupplementaryFill:(_Bool)arg3;
+- (double)panelController:(id)arg1 expectedWidthForColumnForViewController:(id)arg2;
 - (long long)validDisplayModeWithAllColumns;
 - (void)_getPrimaryShown:(_Bool *)arg1 supplementaryShown:(_Bool *)arg2 shouldUseOverlay:(_Bool *)arg3 dimMainIfNecessary:(_Bool *)arg4;
 - (void)_getPrimaryShown:(_Bool *)arg1 supplementaryShown:(_Bool *)arg2 shouldUseOverlay:(_Bool *)arg3 dimMainIfNecessary:(_Bool *)arg4 forDisplayMode:(long long)arg5;
@@ -255,11 +266,11 @@
 - (struct CGSize)_defaultViewSizeForResolvingDisplayModeOrSplitBehavior;
 - (void)_supplementaryOrPrimaryColumnWidthAffectingPropertyDidChange;
 - (void)_primaryColumnWidthAffectingPropertyDidChange;
-- (void)getPrimaryColumnWidth:(double *)arg1 supplementaryColumnWidth:(double *)arg2 forSize:(struct CGSize)arg3 displayMode:(long long)arg4 isCompact:(_Bool)arg5 shouldUseOverlay:(_Bool)arg6 forceNoSupplementaryFill:(_Bool)arg7;
 - (void)getPrimaryColumnWidth:(double *)arg1 supplementaryColumnWidth:(double *)arg2 forSize:(struct CGSize)arg3 displayMode:(long long)arg4 isCompact:(_Bool)arg5 shouldUseOverlay:(_Bool)arg6;
 - (double)_primaryColumnWidthForSize:(struct CGSize)arg1 isCompact:(_Bool)arg2 shouldUseOverlay:(_Bool)arg3;
 - (void)getPrimaryColumnWidth:(double *)arg1 supplementaryColumnWidth:(double *)arg2 forSize:(struct CGSize)arg3 displayMode:(long long)arg4 shouldUseOverlay:(_Bool)arg5;
 - (double)_primaryColumnWidthForSize:(struct CGSize)arg1 shouldUseOverlay:(_Bool)arg2;
+- (double)_defaultMaximumTVWidthForColumn:(long long)arg1 withSize:(struct CGSize)arg2;
 - (double)_defaultMaximumIPadWidthForColumn:(long long)arg1 withSize:(struct CGSize)arg2;
 - (double)_defaultMaximumSupplementaryColumnWidthForSize:(struct CGSize)arg1;
 - (double)_defaultMaximumPrimaryColumnWidthForSize:(struct CGSize)arg1;
@@ -279,7 +290,8 @@
 - (id)_allContainedViewControllers;
 @property(readonly, copy) NSString *description;
 - (_Bool)_disableAutomaticKeyboardBehavior;
-- (id)_deepestUnambiguousResponder;
+- (id)_nextVisibleViewControllerForResponderAfterChildViewController:(id)arg1;
+- (id)_deepestActionResponder;
 @property(nonatomic, getter=_allowsDimmedSecondaryAsDeepestUnambiguousResponder, setter=_setAllowsDimmedSecondaryAsDeepestUnambiguousResponder:) _Bool _allowsDimmedSecondaryAsDeepestUnambiguousResponder;
 - (id)_primaryContentResponder;
 - (void)_didChangeToFirstResponder:(id)arg1;
@@ -293,6 +305,7 @@
 - (void)_updateChildContentMargins;
 - (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(_Bool *)arg2;
+- (struct UIEdgeInsets)_tvOSColumnStyleExtraInsetsForChildViewController:(id)arg1;
 - (_Bool)_usePaddingForEdgeInsetsForChildViewController:(id)arg1;
 - (_Bool)_optsOutOfPopoverControllerHierarchyCheck;
 - (_Bool)_shouldPersistViewWhenCoding;
@@ -309,6 +322,7 @@
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (id)childViewControllerForStatusBarStyle;
+- (long long)preferredCenterStatusBarStyle;
 - (long long)preferredTrailingStatusBarStyle;
 - (long long)preferredLeadingStatusBarStyle;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
@@ -362,10 +376,10 @@
 - (_Bool)_isPrimaryLeading;
 - (_Bool)_layoutPrimaryOnRight;
 @property(nonatomic) long long primaryEdge;
+@property(nonatomic) long long displayModeButtonVisibility;
 - (id)transitionCoordinator;
 - (void)showColumn:(long long)arg1;
 - (void)hideColumn:(long long)arg1;
-- (_Bool)_supplementaryColumnFills;
 - (_Bool)_allowClientAnimationCoordination;
 - (id)viewControllerForColumn:(long long)arg1;
 - (void)setViewController:(id)arg1 forColumn:(long long)arg2;

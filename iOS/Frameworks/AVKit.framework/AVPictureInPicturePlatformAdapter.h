@@ -33,6 +33,8 @@ __attribute__((visibility("hidden")))
     AVPlayerController *_playerController;
     long long _controlsStyle;
     AVPictureInPicturePrerollAttributes *_prerollAttributes;
+    NSString *_activitySessionIdentifier;
+    long long _backgroundPlaybackPolicy;
     AVPictureInPictureViewController *_pictureInPictureViewController;
     long long _status;
     PGPictureInPictureProxy *_pegasusProxy;
@@ -73,6 +75,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long status; // @synthesize status=_status;
 @property(readonly, nonatomic, getter=isAnyPictureInPictureActive) _Bool anyPictureInPictureActive; // @synthesize anyPictureInPictureActive=_anyPictureInPictureActive;
 @property(readonly, nonatomic) AVPictureInPictureViewController *pictureInPictureViewController; // @synthesize pictureInPictureViewController=_pictureInPictureViewController;
+@property(nonatomic) long long backgroundPlaybackPolicy; // @synthesize backgroundPlaybackPolicy=_backgroundPlaybackPolicy;
+@property(copy, nonatomic) NSString *activitySessionIdentifier; // @synthesize activitySessionIdentifier=_activitySessionIdentifier;
 @property(nonatomic) _Bool managesWiredSecondScreenPlayback; // @synthesize managesWiredSecondScreenPlayback=_managesWiredSecondScreenPlayback;
 @property(retain, nonatomic) AVPictureInPicturePrerollAttributes *prerollAttributes; // @synthesize prerollAttributes=_prerollAttributes;
 @property(nonatomic, getter=isMicrophoneEnabled) _Bool microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
@@ -87,6 +91,8 @@ __attribute__((visibility("hidden")))
 - (void)_removeSecondScreenConnection;
 - (void)pictureInPictureViewControllerViewWillDisappear:(id)arg1;
 - (void)pictureInPictureViewControllerViewDidAppear:(id)arg1;
+- (_Bool)pictureInPictureProxyCanIssueOptionalCommand:(id)arg1;
+- (void)pictureInPictureProxy:(id)arg1 didReceiveTestingCommand:(id)arg2;
 - (void)pictureInPictureProxy:(id)arg1 didReceivePlaybackCommand:(id)arg2;
 - (void)pictureInPictureProxy:(id)arg1 didUpdateResourcesUsageReductionReasons:(unsigned long long)arg2 oldReasons:(unsigned long long)arg3;
 - (id)pictureInPictureProxyViewControllerWindowForTransitionAnimation:(id)arg1;
@@ -104,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)_startObservation;
 - (void)_createProxyIfNeeded;
 - (void)_updateProxyPlaybackState;
+- (long long)_proxyControlsStyle;
 - (void)_updatePictureInPictureShouldStartWhenEnteringBackground;
 - (void)updateLayoutDependentBehaviors;
 @property(readonly, nonatomic, getter=isSystemPictureInPicturePossible) _Bool systemPictureInPicturePossible;
@@ -112,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)startPictureInPicture;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1;
+@property(readonly, nonatomic, getter=isContentSourceSupported) _Bool contentSourceSupported;
 - (void)_setRoutingVideoToHostedWindow:(_Bool)arg1 pictureInPictureViewController:(id)arg2 source:(id)arg3;
 - (void)_updateStatusUsingProposedStatus:(long long)arg1;
 - (void)_updateStatus;

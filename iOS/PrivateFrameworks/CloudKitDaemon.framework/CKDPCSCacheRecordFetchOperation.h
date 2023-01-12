@@ -6,7 +6,6 @@
 
 @class CKDRecordPCSData, CKRecordID, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSCacheRecordFetchOperation
 {
     _Bool _serverRecordHasNoProtectionData;

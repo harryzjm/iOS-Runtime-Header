@@ -46,6 +46,7 @@ struct PHAssetResourceTableDataSpecification {
     int _field4;
     int _field5;
     int _field6;
+    long long _field7;
 };
 
 struct _NSRange {

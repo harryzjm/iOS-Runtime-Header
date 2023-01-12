@@ -18,3 +18,15 @@ typedef struct {
     _Bool _field5;
 } CDStruct_df7f102b;
 
+typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned char _field5;
+} CDStruct_de0e5961;
+
+typedef struct {
+    unsigned char _field1[6];
+} CDStruct_5cfa2073;
+

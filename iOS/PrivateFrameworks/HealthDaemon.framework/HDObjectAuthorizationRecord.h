@@ -12,8 +12,9 @@
 
 @interface HDObjectAuthorizationRecord : NSObject <NSSecureCoding>
 {
-    NSUUID *_objectID;
-    NSUUID *_sourceID;
+    NSUUID *_objectUUID;
+    NSUUID *_sourceUUID;
+    NSUUID *_sessionUUID;
     long long _status;
     double _modificationDate;
 }
@@ -22,8 +23,9 @@
 - (void).cxx_destruct;
 @property(nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(nonatomic) long long status; // @synthesize status=_status;
-@property(copy, nonatomic) NSUUID *sourceID; // @synthesize sourceID=_sourceID;
-@property(copy, nonatomic) NSUUID *objectID; // @synthesize objectID=_objectID;
+@property(copy, nonatomic) NSUUID *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
+@property(copy, nonatomic) NSUUID *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
+@property(copy, nonatomic) NSUUID *objectUUID; // @synthesize objectUUID=_objectUUID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

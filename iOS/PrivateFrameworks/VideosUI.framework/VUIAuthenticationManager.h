@@ -6,30 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class AMSBinaryPromise, AMSPromise, NSString, SSAuthenticateRequest;
+@class ACAccount, AMSBinaryPromise, AMSPromise;
 
 @interface VUIAuthenticationManager : NSObject
 {
-    _Bool __isObservingAccountStoreChange;
     AMSPromise *__authPromise;
     AMSBinaryPromise *__signoutPromise;
-    NSString *__accountIdentifier;
-    SSAuthenticateRequest *__authRequest;
+    ACAccount *__activeUserAccount;
 }
 
-+ (void)_performAuthenticationWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (id)_userSSAccount;
-+ (void)_signOutSSUserWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (void)_signInSSUserWithAppleID:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (void)_requestSSAuthenticationAlwaysPrompt:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-+ (id)_ssCreditsString;
-+ (id)_userSSFullName;
-+ (id)_userSSLastName;
-+ (id)_userSSFirstName;
-+ (id)_userSSAccountName;
-+ (id)_ssDSID;
-+ (_Bool)_userHasActiveSSAccount;
-+ (_Bool)_useStoreServices;
++ (id)storefrontId;
 + (void)_recordLog:(id)arg1 isSignOut:(_Bool)arg2 isSilent:(_Bool)arg3;
 + (void)_performAuthenticationTask:(id)arg1 isSilent:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)_userAccount;
@@ -47,12 +33,12 @@
 + (_Bool)userHasActiveAccount;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain, nonatomic) SSAuthenticateRequest *_authRequest; // @synthesize _authRequest=__authRequest;
-@property(retain, nonatomic) NSString *_accountIdentifier; // @synthesize _accountIdentifier=__accountIdentifier;
-@property(nonatomic) _Bool _isObservingAccountStoreChange; // @synthesize _isObservingAccountStoreChange=__isObservingAccountStoreChange;
+@property(readonly, nonatomic) ACAccount *_activeUserAccount; // @synthesize _activeUserAccount=__activeUserAccount;
 @property(retain, nonatomic) AMSBinaryPromise *_signoutPromise; // @synthesize _signoutPromise=__signoutPromise;
 @property(retain, nonatomic) AMSPromise *_authPromise; // @synthesize _authPromise=__authPromise;
+- (_Bool)_shouldNotifyAccountChange:(id)arg1 newAccount:(id)arg2;
 - (void)_accountStoreDidChange:(id)arg1;
+- (id)init;
 
 @end
 

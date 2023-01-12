@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_d0166a8b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_d0166a8b)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *positional_tok_phrase_alt;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct RecognitionSausage *)arg2 verify:(_Bool)arg3;

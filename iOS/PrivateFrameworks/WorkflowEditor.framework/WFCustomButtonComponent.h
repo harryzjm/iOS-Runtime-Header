@@ -4,13 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSAttributedString, NSString, UIFont, UIImage, UITraitCollection;
+
 @interface WFCustomButtonComponent
 {
     struct CGSize _intrinsicSize;
+    NSAttributedString *_attributedTitle;
+    NSString *_title;
+    UIFont *_titleFont;
+    UIImage *_image;
+    UIImage *_backgroundImage;
+    struct UIEdgeInsets _contentEdgeInsets;
+    double _spacing;
+    long long _numberOfLines;
+    UITraitCollection *_traitCollection;
 }
 
-+ (id)newWithTitles:(const unordered_map_56564eaf *)arg1 attributedTitles:(const unordered_map_303f88f0 *)arg2 titleColors:(const unordered_map_ed3b4ccc *)arg3 images:(const unordered_map_25560788 *)arg4 backgroundImages:(const unordered_map_25560788 *)arg5 titleFont:(id)arg6 selected:(_Bool)arg7 enabled:(_Bool)arg8 action:(CKTypedComponentAction_e16478d5)arg9 size:(const struct CKComponentSize *)arg10 buttonClass:(const struct CKComponentViewClass *)arg11 attributes:(const unordered_map_b2cee720 *)arg12 titleLabelAttributes:(const unordered_map_b2cee720 *)arg13 accessibilityConfiguration:(struct CKButtonComponentAccessibilityConfiguration)arg14;
-+ (id)newWithTitles:(const unordered_map_56564eaf *)arg1 attributedTitles:(const unordered_map_303f88f0 *)arg2 titleColors:(const unordered_map_ed3b4ccc *)arg3 images:(const unordered_map_25560788 *)arg4 backgroundImages:(const unordered_map_25560788 *)arg5 titleFont:(id)arg6 selected:(_Bool)arg7 enabled:(_Bool)arg8 action:(CKTypedComponentAction_e16478d5)arg9 size:(const struct CKComponentSize *)arg10 buttonClass:(const struct CKComponentViewClass *)arg11 attributes:(const unordered_map_b2cee720 *)arg12 accessibilityConfiguration:(struct CKButtonComponentAccessibilityConfiguration)arg13;
++ (id)newWithTitles:(const void *)arg1 attributedTitles:(const void *)arg2 titleColors:(const void *)arg3 images:(const void *)arg4 backgroundImages:(const void *)arg5 titleFont:(id)arg6 selected:(_Bool)arg7 enabled:(_Bool)arg8 traitCollection:(id)arg9 action:(CKTypedComponentAction_e16478d5)arg10 size:(const struct CKComponentSize *)arg11 buttonClass:(const void *)arg12 attributes:(const void *)arg13 titleLabelAttributes:(const void *)arg14 accessibilityConfiguration:(struct CKButtonComponentAccessibilityConfiguration)arg15;
++ (id)newWithTitles:(const void *)arg1 attributedTitles:(const void *)arg2 titleColors:(const void *)arg3 images:(const void *)arg4 backgroundImages:(const void *)arg5 titleFont:(id)arg6 selected:(_Bool)arg7 enabled:(_Bool)arg8 action:(CKTypedComponentAction_e16478d5)arg9 size:(const struct CKComponentSize *)arg10 buttonClass:(const void *)arg11 attributes:(const void *)arg12 accessibilityConfiguration:(struct CKButtonComponentAccessibilityConfiguration)arg13;
+- (void).cxx_destruct;
 - (struct CKComponentLayout)computeLayoutThatFits:(struct CKSizeRange)arg1;
 
 @end

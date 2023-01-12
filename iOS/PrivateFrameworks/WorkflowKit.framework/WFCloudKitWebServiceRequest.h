@@ -26,6 +26,7 @@
 - (id)pathComponentsForType:(unsigned long long)arg1 parameters:(id)arg2;
 - (unsigned long long)webServiceForRequestType:(unsigned long long)arg1;
 - (id)databaseName;
+- (id)getJSONFromURL:(id)arg1 headers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getJSONFromURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)postJSON:(id)arg1 toURL:(id)arg2 cacheKey:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryWithItemType:(Class)arg1 filter:(id)arg2;

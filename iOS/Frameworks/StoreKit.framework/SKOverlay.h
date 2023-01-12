@@ -18,6 +18,7 @@
     SKOverlayConfiguration *_configuration;
 }
 
++ (id)unsupportedPlatformErrorWithAPIName:(id)arg1;
 + (void)dismissOverlayInScene:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy) SKOverlayConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -30,6 +31,7 @@
 - (void)storeOverlay:(id)arg1 willStartPresentation:(id)arg2;
 @property(readonly, copy) id <ASOOverlayConfiguration> overlayConfiguration;
 @property(readonly, nonatomic) __weak id <ASOOverlayDelegate> overlayDelegate;
+- (_Bool)isReadyToPresentInScene:(id)arg1;
 - (void)presentInScene:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 

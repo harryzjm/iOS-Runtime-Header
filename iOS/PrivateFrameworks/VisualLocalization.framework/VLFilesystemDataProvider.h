@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <VLLocalizationDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)determineAvailabilityForCoordinate:(const CDStruct_160d0e14 *)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)determineAvailabilityForCoordinate:(const CDStruct_160d0e14 *)arg1 purpose:(long long)arg2 callbackQueue:(id)arg3 callback:(CDUnknownBlockType)arg4;
 - (id)fileURLForKey:(const CDStruct_4c217994 *)arg1 error:(id *)arg2;
 - (id)initWithBaseDirectory:(id)arg1;
 

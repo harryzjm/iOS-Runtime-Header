@@ -12,11 +12,12 @@
 
 @interface TSCH3DDictionaryOfSet : NSObject <NSFastEnumeration>
 {
-    NSMutableDictionary *mSets;
+    NSMutableDictionary *_sets;
 }
 
 + (id)dictionaryWithMutableDictionaryClass:(Class)arg1;
 + (id)dictionary;
+- (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)objectsForKey:(id)arg1;
 - (void)removeObject:(id)arg1 forKey:(id)arg2;
@@ -24,7 +25,6 @@
 - (unsigned long long)count;
 - (id)allKeys;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 - (id)initWithMutableDictionaryClass:(Class)arg1;
 

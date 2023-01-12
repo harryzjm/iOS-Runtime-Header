@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXGMetalSpriteTexture-Protocol.h>
 
-@class MISSING_TYPE, NSIndexSet, NSString, PXGColorProgram;
+@class MISSING_TYPE, NSIndexSet, NSString, PXGColorProgram, PXGMetalTextureCache;
 @protocol MTLTexture;
 
 @interface PXGMetalImageTexture <PXGMetalSpriteTexture>
@@ -17,10 +17,12 @@
     id <MTLTexture> _chromaTexture;
     PXGColorProgram *_colorProgram;
     long long _renderPipelineIndex;
+    PXGMetalTextureCache *_textureCache;
     MISSING_TYPE *_orientationTransform;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak PXGMetalTextureCache *textureCache; // @synthesize textureCache=_textureCache;
 @property(readonly, nonatomic) int shaderFlags; // @synthesize shaderFlags=_shaderFlags;
 @property(readonly, nonatomic) _Bool isOpaque; // @synthesize isOpaque=_isOpaque;
 @property(nonatomic) long long renderPipelineIndex; // @synthesize renderPipelineIndex=_renderPipelineIndex;
@@ -36,14 +38,17 @@
 @property(readonly, nonatomic) struct CGSize pixelSize;
 - (MISSING_TYPE *)orientationTransform;
 @property(readonly, copy) NSString *description;
+- (void)dealloc;
 - (id)init;
 - (id)initWithTexture:(id)arg1 chromaTexture:(id)arg2 colorProgram:(id)arg3 isOpaque:(_Bool)arg4 shaderFlags:(int)arg5 orientationTransform: /* Error: Ran out of types for this method. */;
 - (id)initWithTexture:(id)arg1 colorProgram:(id)arg2 isOpaque:(_Bool)arg3 shaderFlags:(int)arg4 orientationTransform: /* Error: Ran out of types for this method. */;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) _Bool hasSprites;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) struct CGImage *imageRepresentation;
+@property(readonly, nonatomic) _Bool isDegraded;
 @property(readonly, nonatomic) unsigned int spriteCount;
 @property(readonly, nonatomic) NSIndexSet *spriteIndexes;
 @property(readonly) Class superclass;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_469a18c2)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_469a18c2)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int num_of_succeeded;
 @property(readonly, nonatomic) int num_of_processed;
 @property(readonly, nonatomic) int num_of_requested;

@@ -21,6 +21,7 @@
 + (id)containerForViewsFontsLeadings:(id)arg1 options:(long long)arg2;
 + (id)containerViewForViews:(id)arg1 overlap:(double)arg2 vertical:(_Bool)arg3 applyOrthogonalConstraints:(_Bool)arg4;
 + (id)containerViewForViews:(id)arg1 overlap:(double)arg2 vertical:(_Bool)arg3;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *replaceableConstraints; // @synthesize replaceableConstraints=_replaceableConstraints;
 @property(nonatomic) _Bool applyOrthogonalConstraints; // @synthesize applyOrthogonalConstraints=_applyOrthogonalConstraints;
 @property(nonatomic) _Bool vertical; // @synthesize vertical=_vertical;
@@ -32,7 +33,6 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)replaceSubviews:(id)arg1;
 - (void)_addContiguousSubviews:(id)arg1;
-- (void)dealloc;
 
 @end
 

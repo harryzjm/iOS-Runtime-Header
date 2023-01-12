@@ -19,6 +19,7 @@
     _Bool _includeTravelTimeAggressive;
     _Bool _includeTravelTimeConservative;
     _Bool _includeTravelTimeEstimate;
+    _Bool _supportsArMode;
     struct {
         unsigned int has_excludeGuidance:1;
         unsigned int has_includeSnapScoreMetadataDebug:1;
@@ -26,6 +27,7 @@
         unsigned int has_includeTravelTimeAggressive:1;
         unsigned int has_includeTravelTimeConservative:1;
         unsigned int has_includeTravelTimeEstimate:1;
+        unsigned int has_supportsArMode:1;
     } _flags;
 }
 
@@ -46,6 +48,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSupportsArMode;
+@property(nonatomic) _Bool supportsArMode;
 @property(nonatomic) _Bool hasIncludeSnapScoreMetadataDebug;
 @property(nonatomic) _Bool includeSnapScoreMetadataDebug;
 @property(nonatomic) _Bool hasIncludeSummaryForPredictedDestination;

@@ -6,9 +6,10 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, PGManager;
+@class NSArray, NSObject, PGGraph, PHPhotoLibrary;
+@protocol OS_os_log;
 
 @protocol PGFeatureExtractionSource <NSObject>
-- (NSArray *)extractSharingRecordsWithManager:(PGManager *)arg1 progressBlock:(void (^)(double, _Bool *))arg2;
+- (NSArray *)extractSharingRecordsFromGraph:(PGGraph *)arg1 photoLibrary:(PHPhotoLibrary *)arg2 loggingConnection:(NSObject<OS_os_log> *)arg3 progressBlock:(void (^)(double, _Bool *))arg4;
 @end
 

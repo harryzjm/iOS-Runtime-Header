@@ -15,6 +15,7 @@
 + (_Bool)canInterpretDataWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2;
 + (id)knownFormatsVersionsMap;
 + (id)validatedCompositionCopyForComposition:(id)arg1 mediaType:(long long)arg2;
++ (void)handlePIGlobalSettings:(id)arg1;
 + (id)adjustmentConstants;
 + (id)newCompositionControllerWithComposition:(id)arg1;
 + (id)pipelineFiltersForRAWShowingOriginalWithGeometry;
@@ -25,6 +26,7 @@
 + (id)filterNameForEffectName:(id)arg1;
 + (id)effectNameForFilterName:(id)arg1;
 + (_Bool)isAVAssetEditable:(id)arg1;
++ (_Bool)areCPVAssetsEditable;
 + (_Bool)isPortraitStageEffect:(id)arg1;
 + (_Bool)isPortraitEffect:(id)arg1;
 + (_Bool)is3DEffect:(id)arg1;

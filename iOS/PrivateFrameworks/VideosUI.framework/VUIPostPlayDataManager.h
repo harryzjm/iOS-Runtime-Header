@@ -11,10 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_generateMediaItemFromJSResponse:(id)arg1;
++ (id)_generateMediaInfoFromJSResponse:(id)arg1 canAutoPlay:(_Bool)arg2;
 + (void)_fetchContentFromLibraryForCurrentMediaItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_fetchPostPlayItemFromLibraryContentForStoreID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_fetchPostPlayItemFromJSForSeriesCanonicalID:(id)arg1 andVideoCanonicalID:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)_metricsForPostPlayMediaItemFromLibrary:(id)arg1;
 + (void)fetchPostPlayItemForCurrentMediaItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

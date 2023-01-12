@@ -8,15 +8,16 @@
 
 #import <PhotosUICore/PXForYouMemoriesViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXGadget-Protocol.h>
+#import <PhotosUICore/PXProgrammaticNavigationParticipant-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXUIViewControllerZoomTransitionEndPoint-Protocol.h>
 
-@class NSMutableDictionary, NSString, PXGadgetSpec, PXMemoriesFeedWidgetDataSourceManager;
+@class NSMutableDictionary, NSString, PXGadgetSpec, PXMemoriesFeedWidgetDataSourceManager, PXProgrammaticNavigationDestination;
 @protocol PXGadgetDelegate, PXUIViewControllerZoomTransitionEndPoint;
 
-@interface PXMemoryRowGadget : UIViewController <PXSectionedDataSourceManagerObserver, PXForYouMemoriesViewControllerDelegate, PXUIViewControllerZoomTransitionEndPoint, PXGadget>
+@interface PXMemoryRowGadget : UIViewController <PXSectionedDataSourceManagerObserver, PXForYouMemoriesViewControllerDelegate, PXUIViewControllerZoomTransitionEndPoint, PXProgrammaticNavigationParticipant, PXGadget>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     _Bool _hasAppeared;
     PXGadgetSpec *_gadgetSpec;
     long long _priority;
@@ -42,6 +43,10 @@
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+@property(readonly, nonatomic) PXProgrammaticNavigationDestination *px_navigationDestination;
+- (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (long long)_columnSpanForRowType:(unsigned long long)arg1;
 - (struct CGRect)_frameForRowType:(unsigned long long)arg1 inRect:(struct CGRect)arg2;
 - (_Bool)_shouldPageForRowType:(unsigned long long)arg1;
@@ -50,7 +55,6 @@
 - (void)_refreshViewControllerForRowType:(unsigned long long)arg1 visibility:(long long)arg2;
 - (void)_fillViewControllerEntryForRowType:(unsigned long long)arg1;
 - (void)_transitionFromCurrentVisibility:(long long)arg1 toNewVisibility:(long long)arg2;
-- (void)prepareToNavigateToDetailsForMemoryUUID:(id)arg1;
 - (id)px_endPointForTransition:(id)arg1;
 - (_Bool)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
@@ -58,7 +62,6 @@
 - (void)_configureMetricsForSingleRow:(id)arg1 dataSourceRange:(struct _NSRange)arg2;
 - (void)forYouMemoriesViewController:(id)arg1 configureMetrics:(id)arg2;
 - (void)forYouMemoriesViewController:(id)arg1 transitionToViewController:(id)arg2 animated:(_Bool)arg3;
-- (id)showAllMemoriesFeedAnimated:(_Bool)arg1;
 - (void)userDidSelectAccessoryButton:(id)arg1;
 - (void)gadgetControllerHasDisappeared;
 - (void)gadgetControllerHasAppeared;

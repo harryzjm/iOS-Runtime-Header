@@ -9,13 +9,14 @@
 #import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface RBSTerminateContext : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     unsigned char _maximumTerminationResistance;
     _Bool _preventIfBeingDebugged;
     unsigned int _exceptionDomain;
+    NSDictionary *_additionalPayload;
     NSString *_explanation;
     unsigned long long _reportType;
     unsigned long long _exceptionCode;
@@ -32,6 +33,7 @@
 @property(nonatomic) unsigned int exceptionDomain; // @synthesize exceptionDomain=_exceptionDomain;
 @property(nonatomic) unsigned long long reportType; // @synthesize reportType=_reportType;
 @property(copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
+@property(copy, nonatomic) NSDictionary *additionalPayload; // @synthesize additionalPayload=_additionalPayload;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;

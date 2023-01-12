@@ -30,7 +30,6 @@
 @property(nonatomic) _Bool invalidated; // @synthesize invalidated=_invalidated;
 @property(retain, nonatomic) BSServiceConnection<BSServiceConnectionHost> *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) BSServiceConnectionEndpointInjector *workspaceServiceInjector; // @synthesize workspaceServiceInjector=_workspaceServiceInjector;
-- (oneway void)handleMarkBulletinWithIdentifier:(id)arg1 asRead:(id)arg2;
 - (id)bulletinForIdentifier:(id)arg1;
 - (id)bulletinsOnLockScreen;
 - (id)allBulletins;

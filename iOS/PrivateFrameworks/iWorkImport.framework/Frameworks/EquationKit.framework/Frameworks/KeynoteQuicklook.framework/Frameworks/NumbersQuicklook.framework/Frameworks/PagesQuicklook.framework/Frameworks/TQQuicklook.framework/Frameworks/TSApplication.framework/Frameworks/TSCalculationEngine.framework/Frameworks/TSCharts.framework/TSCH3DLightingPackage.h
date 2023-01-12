@@ -21,11 +21,12 @@
 + (id)packageFromName:(id)arg1;
 + (id)allNamedPackages;
 + (id)localizedNameForName:(id)arg1;
-+ (id)instanceWithArchive:(const struct Chart3DLightingPackageArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)packageWithSageLightingPackageData:(id)arg1;
 + (id)sageNameFromLightingPackageName:(id)arg1;
 + (id)nameFromSageLightingPackageName:(id)arg1;
 + (id)p_sageLightingPackageNames;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)didInitFromSOS;
 @property(readonly, copy, nonatomic) NSString *localizedName;
@@ -34,10 +35,9 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
-- (void)saveToArchive:(struct Chart3DLightingPackageArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DLightingPackageArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

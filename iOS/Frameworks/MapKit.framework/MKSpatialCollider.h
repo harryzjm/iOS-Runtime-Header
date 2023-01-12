@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     _MKSpatialColliderPairSet *_previousCollisionPairs;
     _MKSpatialColliderPairSet *_registeredCollisonPairs;
     _Bool _isVertical;
-    struct vector<MKAnnotationView *, std::__1::allocator<MKAnnotationView *>> _sortedAnnotationViews;
+    struct vector<MKAnnotationView *, std::allocator<MKAnnotationView *>> _sortedAnnotationViews;
     double _maxLength;
     unsigned long long mutator;
 }

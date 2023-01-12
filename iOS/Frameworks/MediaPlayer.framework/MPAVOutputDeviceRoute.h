@@ -20,10 +20,19 @@
 @property(readonly, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 - (_Bool)_anyOutputDevicePassesTest:(CDUnknownBlockType)arg1;
 - (_Bool)_anyOutputDevicePassesMRFunction:(CDUnknownFunctionPointerType)arg1;
+- (_Bool)isLowFidelityRoute;
+- (id)designatedGroupLeaderRouteUID;
+- (long long)clusterType;
 - (id)clusterComposition;
 - (_Bool)isLowLatencyRoute;
 - (_Bool)isSplitterCapable;
+- (_Bool)supportsAirPlayGrouping;
 - (_Bool)supportsGrouping;
+- (_Bool)headTrackedSpatialAudioEnabled;
+- (_Bool)supportsHeadTrackedSpatialAudio;
+- (_Bool)isMacRoute;
+- (_Bool)isPhoneRoute;
+- (_Bool)isHomeTheaterRoute;
 - (_Bool)isClusterRoute;
 - (_Bool)isStereoPair;
 - (_Bool)requiresPassword;
@@ -43,6 +52,7 @@
 - (_Bool)isProxyGroupPlayer;
 - (_Bool)isDeviceSpeakerRoute;
 - (_Bool)isDeviceRoute;
+- (_Bool)isB520Route;
 - (_Bool)isHomePodRoute;
 - (_Bool)isCarplayRoute;
 - (_Bool)isAppleTVRoute;

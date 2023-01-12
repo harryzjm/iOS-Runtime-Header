@@ -10,6 +10,7 @@
 {
 }
 
+- (_Bool)affectsScreenOrientation;
 - (_Bool)affectsAppLifecycleIfInternal;
 - (_Bool)isInternal;
 - (Class)uiSceneMinimumClass;
@@ -20,6 +21,7 @@
 - (id)connectionHandlers;
 - (id)uiSceneSessionRole;
 - (id)baseSceneComponentClassDictionary;
+- (id)coreSceneComponentClassDictionary;
 - (id)finalActionHandlers;
 - (id)initialActionHandlers;
 - (id)initialSettingsDiffActions;

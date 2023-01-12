@@ -13,7 +13,7 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)threadCollector;
 + (id)_singletonAlloc;
-- (void)registerChange:(int)arg1 details:(id)arg2 forChangeSource:(id)arg3;
+- (void)registerChange:(unsigned int)arg1 details:(id)arg2 forChangeSource:(id)arg3;
 - (id)peekCollectedChanges;
 - (void)endCollectingChangesAndDiscardChanges;
 - (id)endCollectingChanges;

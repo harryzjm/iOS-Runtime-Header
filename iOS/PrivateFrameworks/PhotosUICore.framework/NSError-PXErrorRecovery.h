@@ -13,6 +13,9 @@
 + (id)px_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescription:(id)arg4;
 + (id)px_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 localizedDescription:(id)arg4;
 + (id)_px_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 localizedDescription:(id)arg4 debugDescription:(id)arg5;
++ (id)px_audioSessionErrorWithCode:(long long)arg1 userInfo:(id)arg2;
++ (id)px_audioSessionErrorWithCode:(long long)arg1 underlyingError:(id)arg2;
++ (id)px_audioSessionErrorWithCode:(long long)arg1;
 - (id)px_errorWithRecoveryOptions:(id)arg1 preferredOptionIndex:(long long)arg2;
 - (id)px_errorWithRecoveryOptions:(id)arg1;
 @end

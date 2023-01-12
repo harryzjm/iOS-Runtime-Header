@@ -8,8 +8,8 @@
 
 #import <ViceroyTrace/VCAdaptiveLearningDelegate-Protocol.h>
 
-@class NSNumber, NSString;
-@protocol OS_dispatch_queue, VCAggregatorDelegate;
+@class NSDate, NSNumber, NSString, TimingCollection, VCAlgosStreamingScoreAggregator, VCAlgosStreamingScorer;
+@protocol OS_dispatch_queue, OS_nw_activity, VCAggregatorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregator : NSObject <VCAdaptiveLearningDelegate>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_localInterfaceType;
     NSString *_connectionType;
     unsigned int _switchIntoDupCount;
+    TimingCollection *_cameraTimers;
     unsigned int _direction;
     NSNumber *_streamToken;
     NSString *_sessionID;
@@ -26,8 +27,20 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_notificationQueue;
     id <VCAggregatorDelegate> _delegate;
     CDUnknownBlockType _periodicAggregationOccuredHandler;
+    VCAlgosStreamingScoreAggregator *_algosScoreAggregator;
+    VCAlgosStreamingScorer *_algosScorerDefault;
+    NSObject<OS_nw_activity> *_sessionNwActivity;
+    NSObject<OS_nw_activity> *_nwActivity;
+    _Bool _useNwActivitySubmitMetrics;
+    NSDate *_conversationTimeBase;
+    int _startDate;
+    long long _onceAggregatedReportsToken;
+    _Bool _isNWActivityReportingEnabled;
+    int _thermalTimeToModerate;
+    int _thermalTimeToHeavy;
 }
 
+@property(readonly) VCAlgosStreamingScoreAggregator *algosScoreAggregator; // @synthesize algosScoreAggregator=_algosScoreAggregator;
 @property(readonly) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly) unsigned int direction; // @synthesize direction=_direction;
 @property(readonly) NSNumber *streamToken; // @synthesize streamToken=_streamToken;
@@ -48,10 +61,14 @@ __attribute__((visibility("hidden")))
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 - (int)adaptiveLearningState;
+- (void)setNWActivityReportingEnabled:(_Bool)arg1;
+- (void)addCameraMetricsToReportDictionary:(id)arg1 totalDuration:(int)arg2;
 - (id)aggregatedSessionReport;
 - (id)aggregatedCallReports;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)saveCallSegmentHistory;
+- (void)addThermalMetricsToReportDictionary:(id)arg1;
+- (void)updateThermalMetricsFromPayload:(id)arg1;
 - (id)aggregatedSegmentQRReport;
 - (id)aggregatedSegmentReport:(int)arg1;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
@@ -60,7 +77,9 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <VCAggregatorDelegate> delegate;
 - (void)setPeriodicAggregationOccuredHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1 nwParentActivity:(id)arg2 conversationTimeBase:(id)arg3;
+- (id)initWithDelegate:(id)arg1 nwParentActivity:(id)arg2;
+@property(readonly) long long *onceAggregatedReportsToken;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

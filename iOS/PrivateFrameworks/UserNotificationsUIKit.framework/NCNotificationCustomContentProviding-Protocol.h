@@ -6,10 +6,10 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationViewController, UIViewController;
+@class NCNotificationRequest, UIViewController;
 @protocol NCNotificationCustomContent;
 
 @protocol NCNotificationCustomContentProviding <NSObject>
-- (UIViewController<NCNotificationCustomContent> *)longLookContentProvidingViewControllerForNotificationViewController:(NCNotificationViewController *)arg1;
+- (UIViewController<NCNotificationCustomContent> *)customContentViewControllerForNotificationRequest:(NCNotificationRequest *)arg1;
 @end
 

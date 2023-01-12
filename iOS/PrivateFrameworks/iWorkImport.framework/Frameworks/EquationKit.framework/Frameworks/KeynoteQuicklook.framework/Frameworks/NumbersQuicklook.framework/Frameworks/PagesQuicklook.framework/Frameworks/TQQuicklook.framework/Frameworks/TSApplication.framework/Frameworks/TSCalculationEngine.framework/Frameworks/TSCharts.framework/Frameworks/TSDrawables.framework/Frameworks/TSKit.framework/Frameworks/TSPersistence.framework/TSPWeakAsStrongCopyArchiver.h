@@ -8,8 +8,8 @@
 {
 }
 
-- (void)setWeakLazyReference:(id)arg1 message:(struct Reference *)arg2;
-- (void)setWeakReference:(id)arg1 message:(struct Reference *)arg2;
+- (void)setWeakLazyReference:(id)arg1 message:(void *)arg2;
+- (void)setWeakReference:(id)arg1 message:(void *)arg2;
 
 @end
 

@@ -17,13 +17,13 @@
     NSArray *_values;
     NSString *_valueType;
     long long _type;
-    unsigned long long _joinType;
+    long long _joinType;
 }
 
 + (id)conditionFromDictionary:(id)arg1;
 + (long long)typeFromConditionDictionary:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long joinType; // @synthesize joinType=_joinType;
+@property(nonatomic) long long joinType; // @synthesize joinType=_joinType;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *valueType; // @synthesize valueType=_valueType;
 @property(copy, nonatomic) NSArray *values; // @synthesize values=_values;
@@ -31,7 +31,7 @@
 @property(readonly, copy) NSString *debugDescription;
 - (id)_valuesFromValuesArray:(id)arg1;
 - (void)validateWithCompletion:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) unsigned long long defaultJoinType;
+@property(readonly, nonatomic) long long defaultJoinType;
 @property(readonly, nonatomic) NSArray *targetingValidations;
 - (id)initWithDictionary:(id)arg1;
 

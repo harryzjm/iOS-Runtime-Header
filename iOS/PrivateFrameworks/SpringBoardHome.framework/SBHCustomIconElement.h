@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardHome/NSCopying-Protocol.h>
 #import <SpringBoardHome/SBLeafIconDataSource-Protocol.h>
 
 @class NSString;
 
-@interface SBHCustomIconElement : NSObject <SBLeafIconDataSource>
+@interface SBHCustomIconElement : NSObject <NSCopying, SBLeafIconDataSource>
 {
-    _Bool _suggestion;
     NSString *_uniqueIdentifier;
     NSString *_containerBundleIdentifier;
+    long long _suggestionSource;
 }
 
 + (id)elementIdentifier;
++ (Class)elementClassWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic, getter=isSuggestion) _Bool suggestion; // @synthesize suggestion=_suggestion;
+@property(readonly, nonatomic) long long suggestionSource; // @synthesize suggestionSource=_suggestionSource;
 @property(readonly, copy, nonatomic) NSString *containerBundleIdentifier; // @synthesize containerBundleIdentifier=_containerBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
 - (unsigned long long)priorityForIcon:(id)arg1;
-- (id)copyWithUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *displayName;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)copyWithUniqueIdentifier;
+- (id)copyWithSuggestionSource:(long long)arg1;
 - (id)init;
 - (id)initWithUniqueIdentifier:(id)arg1;
 

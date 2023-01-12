@@ -10,9 +10,13 @@
 {
     NSURL *_passURL;
     NSData *_credentialAttestation;
+    NSData *_ephemeralPublicKey;
+    NSData *_encryptedData;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSData *encryptedData; // @synthesize encryptedData=_encryptedData;
+@property(readonly, nonatomic) NSData *ephemeralPublicKey; // @synthesize ephemeralPublicKey=_ephemeralPublicKey;
 @property(readonly, nonatomic) NSData *credentialAttestation; // @synthesize credentialAttestation=_credentialAttestation;
 @property(readonly, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 - (id)initWithData:(id)arg1;

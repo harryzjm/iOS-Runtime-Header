@@ -9,14 +9,14 @@
 #import <HealthRecordsUI/UITableViewDataSource-Protocol.h>
 #import <HealthRecordsUI/UITableViewDelegate-Protocol.h>
 
-@class HKClinicalAccount, HRProfile, NSArray, NSString, UIButton, UITableView, UIView;
+@class HKClinicalAccount, HRProfile, NSArray, NSString, UIButton, UITableView, UIView, WDClinicalAccountOnboardingSession;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalAccountEducationViewController : HKViewController <UITableViewDataSource, UITableViewDelegate>
 {
     _Bool _promptForDataCollection;
     CDUnknownBlockType _completionBlock;
-    HRProfile *_profile;
+    WDClinicalAccountOnboardingSession *_onboardingSession;
     HKClinicalAccount *_account;
     NSArray *_sections;
     UIButton *_nextButton;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property(nonatomic) _Bool promptForDataCollection; // @synthesize promptForDataCollection=_promptForDataCollection;
 @property(readonly, copy, nonatomic) HKClinicalAccount *account; // @synthesize account=_account;
-@property(readonly, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
+@property(readonly, nonatomic) WDClinicalAccountOnboardingSession *onboardingSession; // @synthesize onboardingSession=_onboardingSession;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 - (_Bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (_Bool)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
@@ -54,7 +54,8 @@ __attribute__((visibility("hidden")))
 - (void)loadView;
 - (void)updateNextButton;
 - (void)fetchShouldPromptForDataCollection;
-- (id)initWithProfile:(id)arg1 account:(id)arg2;
+@property(readonly, nonatomic) HRProfile *profile;
+- (id)initWithOnboardingSession:(id)arg1 account:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

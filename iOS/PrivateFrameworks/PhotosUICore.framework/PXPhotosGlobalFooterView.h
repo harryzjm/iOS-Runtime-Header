@@ -15,6 +15,7 @@
 @interface PXPhotosGlobalFooterView : UICollectionReusableView <UITextViewDelegate, PXChangeObserver>
 {
     UIView *_accessoryView;
+    UIView *_topAccessoryView;
     UIView *_filterView;
     _Bool _hasAnimatedIconView;
     PXFooterAnimatedIconView *_animatedIconView;
@@ -56,6 +57,7 @@
 - (void)_configurePhotoCollectionGlobalFooterTitleLabel:(id)arg1;
 - (void)_configurePhotoCollectionGlobalFooterLabel:(id)arg1 withFont:(id)arg2 textColor:(id)arg3;
 - (void)_updateFilterView;
+- (void)_updateTopAccessory;
 - (void)_updateAccessory;
 - (void)_updateProgressAnimated:(_Bool)arg1;
 - (void)_updateSubtitle2;

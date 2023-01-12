@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_f0c4c3ad)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_f0c4c3ad)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTFinalBlazarResponse *contentAsFTFinalBlazarResponse;
 @property(readonly, nonatomic) FTAudioLimitExceeded *contentAsFTAudioLimitExceeded;
 @property(readonly, nonatomic) FTRequestStatsResponse *contentAsFTRequestStatsResponse;

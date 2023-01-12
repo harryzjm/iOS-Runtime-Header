@@ -10,13 +10,14 @@
 #import <network/nw_listener_inbox_delegate-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_array, OS_nw_connection, OS_nw_dictionary, OS_nw_endpoint, OS_nw_error, OS_nw_group_descriptor, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
+@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_array, OS_nw_connection, OS_nw_context, OS_nw_dictionary, OS_nw_endpoint, OS_nw_error, OS_nw_group_descriptor, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_listener : NSObject <nw_listener_inbox_delegate, OS_nw_listener>
 {
     struct os_unfair_lock_s lock;
     NSObject<OS_nw_parameters> *parameters;
+    NSObject<OS_nw_context> *context;
     NSObject<OS_nw_group_descriptor> *multicast_descriptor;
     unsigned short id_value;
     char id_str[6];
@@ -26,8 +27,10 @@ __attribute__((visibility("hidden")))
     unsigned int client_qos_class;
     CDUnknownBlockType event_handler;
     CDUnknownBlockType new_connection_handler;
+    CDUnknownBlockType new_connection_group_handler;
     unsigned int new_connection_limit;
     CDUnknownBlockType new_packet_handler;
+    CDUnknownBlockType advertised_endpoint_changed_handler;
     int state;
     NSObject<OS_nw_error> *last_error;
     NSObject<OS_nw_array> *inboxes;
@@ -43,11 +46,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_path_evaluator> *advertise_evaluator;
     NSObject<OS_nw_path> *advertise_path;
     NSObject<OS_nw_advertise_descriptor> *advertise_descriptor;
-    CDUnknownBlockType advertised_endpoint_changed_handler;
     struct _DNSServiceRef_t *dnsref;
+    NSObject<OS_nw_endpoint> *advertised_endpoint;
     NSObject<OS_nw_endpoint> *local_endpoint;
     unsigned int defer_socket;
+    unsigned short port;
     unsigned int cancelling:1;
+    unsigned int reported_state:1;
+    unsigned int allow_new_connection_inline:1;
 }
 
 - (void).cxx_destruct;

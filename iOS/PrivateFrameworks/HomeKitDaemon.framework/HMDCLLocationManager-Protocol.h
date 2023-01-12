@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class CLRegion, NSBundle, NSSet;
+@class CLRegion, NSBundle, NSDictionary, NSSet;
 @protocol HMDCLLocationManagerDelegate;
 
 @protocol HMDCLLocationManager <NSObject>
@@ -15,6 +15,8 @@
 @property(readonly, copy, nonatomic) NSSet *monitoredRegions;
 @property(nonatomic) double desiredAccuracy;
 @property(nonatomic) __weak id <HMDCLLocationManagerDelegate> delegate;
+- (void)requestMicroLocationRecordingScanWithAdditionalInformation:(NSDictionary *)arg1;
+- (void)requestCurrentMicroLocationWithAdditionalInformation:(NSDictionary *)arg1;
 - (int)authorizationStatus;
 - (void)requestStateForRegion:(CLRegion *)arg1;
 - (void)stopMonitoringForRegion:(CLRegion *)arg1;

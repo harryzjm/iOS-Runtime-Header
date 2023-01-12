@@ -29,6 +29,7 @@
 - (void)executeOnFirstSave:(id)arg1;
 - (_Bool)attributesEqual:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(nonatomic, readonly) long long placesCount;
 @property(nonatomic, readonly) NSSet *places;
 @property(nonatomic, readonly) NSString *title;
 @property(nonatomic, readonly) NSString *imageUrl;

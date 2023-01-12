@@ -6,9 +6,10 @@
 
 #import <UIKit/UICollectionView.h>
 
-@class NSIndexPath;
+@class NSArray, NSIndexPath;
 
 @interface UICollectionView (IC)
+@property(readonly, nonatomic) NSArray *indexPathsForFocusedItems;
 - (void)ic_reloadDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ic_selectCellAtIndexPath:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)ic_selectFirstItemIfNoneSelected;

@@ -6,12 +6,15 @@
 
 #import <UIKit/UIView.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC15ConversationKit26ParticipantVideoCameraView : UIView
 {
+    MISSING_TYPE *style;
 }
 
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

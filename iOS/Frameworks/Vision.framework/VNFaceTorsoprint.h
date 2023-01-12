@@ -10,14 +10,19 @@
 {
     VNFaceprint *_faceprint;
     VNTorsoprint *_torsoprint;
+    unsigned long long _personId;
 }
 
++ (_Bool)shouldAssumeOriginatingRequestClassForHeaderSerializationVersion:(unsigned int)arg1;
++ (_Bool)shouldIgnoreLagecyLabelsAndConfidenceForHeaderSerializationVersion:(unsigned int)arg1;
 + (unsigned long long)currentSerializationVersion;
 + (_Bool)supportsSecureCoding;
 + (id)codingTypesToCodingKeys;
 + (unsigned int)currentCodingVersion;
 + (id)currentVersion;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long personId; // @synthesize personId=_personId;
 @property(readonly, nonatomic) VNTorsoprint *torsoprint; // @synthesize torsoprint=_torsoprint;
 @property(readonly, nonatomic) VNFaceprint *faceprint; // @synthesize faceprint=_faceprint;
 - (unsigned long long)serializedLength;
@@ -25,12 +30,15 @@
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
 @property(readonly, nonatomic, getter=isValidTorsoprint) _Bool validTorsoprint;
+@property(readonly, nonatomic, getter=isValidFaceprint) _Bool validFaceprint;
 - (id)computeDistance:(id)arg1 withDistanceFunction:(unsigned long long)arg2 error:(id *)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFaceprint:(id)arg1 torsoPrint:(id)arg2 originatingRequestSpecifier:(id)arg3;
 - (id)initWithFaceprint:(id)arg1 torsoPrint:(id)arg2 requestRevision:(unsigned long long)arg3;
-- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 validTorsoprint:(_Bool)arg6 requestRevision:(unsigned long long)arg7;
-- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 requestRevision:(unsigned long long)arg6;
+- (id)initWithFaceprint:(id)arg1 torsoprint:(id)arg2;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 faceprintConfidence:(float)arg5 torsoprintConfidence:(float)arg6 originatingRequestSpecifier:(id)arg7;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 faceprintConfidence:(float)arg5 torsoprintConfidence:(float)arg6;
 
 @end
 

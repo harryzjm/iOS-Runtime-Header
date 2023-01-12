@@ -23,7 +23,7 @@
 - (id)trimInput:(id)arg1 startTime:(CDStruct_1b6d18a9)arg2 endTime:(CDStruct_1b6d18a9)arg3 error:(out id *)arg4;
 - (_Bool)resetTag:(id)arg1 input:(id)arg2 error:(out id *)arg3;
 - (void)resetTag:(id)arg1 input:(id)arg2;
-- (id)auxiliaryImageFromComposition:(id)arg1 type:(id)arg2 error:(out id *)arg3;
+- (id)auxiliaryImageFromComposition:(id)arg1 type:(id)arg2 mediaComponentType:(id)arg3 error:(out id *)arg4;
 - (_Bool)isSourceAvailable:(id)arg1 sourceSettings:(id)arg2;
 - (id)vectorWithFloats:(id)arg1;
 - (_Bool)isCIFilterAvailable:(id)arg1 propertyName:(id)arg2;

@@ -11,15 +11,16 @@
 
 @interface PXDeferrableDataSourceManager <PXSectionedDataSourceManagerObserver>
 {
-    PXSectionedDataSourceManager *_underlyingDataSourceManager;
     _Bool _hasInitialDataSource;
     _Bool _clientIsHandlingDataSourceTransition;
     PXSectionedDataSource *_pendingDataSource;
     NSArray *_pendingDataSourceChangeDetails;
     id <PXDeferrableDataSourceManagerDelegate> _delegate;
+    PXSectionedDataSourceManager *_underlyingDataSourceManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXSectionedDataSourceManager *underlyingDataSourceManager; // @synthesize underlyingDataSourceManager=_underlyingDataSourceManager;
 @property(nonatomic) __weak id <PXDeferrableDataSourceManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)resumeDataSourceChanges;

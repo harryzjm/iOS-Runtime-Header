@@ -8,7 +8,7 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class NSArray, NSOperationQueue, NSString;
+@class HMHomeManager, NSArray, NSOperationQueue, NSString;
 
 @interface HMIHomeKitClient : HMFObject <HMFLogging>
 {
@@ -16,10 +16,12 @@
     NSArray *_homes;
     NSOperationQueue *_homeKitOperationQueue;
     unsigned long long _cachePolicy;
+    HMHomeManager *_homeManager;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(retain) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(readonly) unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
 @property(readonly, getter=isSetup) _Bool setup; // @synthesize setup=_setup;
 @property(readonly) NSOperationQueue *homeKitOperationQueue; // @synthesize homeKitOperationQueue=_homeKitOperationQueue;

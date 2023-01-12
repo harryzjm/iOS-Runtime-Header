@@ -37,6 +37,8 @@
 @property(readonly, nonatomic) UICubicTimingParameters *cubicTimingParameters;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithParameters:(id)arg1;
+- (id)initWithParameters:(id)arg1 initialVelocity:(struct CGVector)arg2;
 - (id)initWithDampingRatio:(double)arg1 response:(double)arg2;
 - (id)initWithDampingRatio:(double)arg1 response:(double)arg2 initialVelocity:(struct CGVector)arg3;
 - (id)initWithDampingRatio:(double)arg1;

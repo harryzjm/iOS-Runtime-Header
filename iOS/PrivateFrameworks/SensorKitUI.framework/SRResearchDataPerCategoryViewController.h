@@ -7,18 +7,20 @@
 #import <UIKit/UITableViewController.h>
 
 #import <SensorKitUI/SRAuthorizationCellDelegate-Protocol.h>
-#import <SensorKitUI/SRAuthorizationStoreDelegate-Protocol.h>
 #import <SensorKitUI/SRSensorPrunerDelegate-Protocol.h>
 #import <SensorKitUI/SRSensorReaderDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, SRAuthorizationGroup;
+@class NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, SRAuthorizationGroup, SRAuthorizationStore;
 @protocol OS_dispatch_group;
 
-@interface SRResearchDataPerCategoryViewController : UITableViewController <SRAuthorizationCellDelegate, SRSensorReaderDelegate, SRSensorPrunerDelegate, SRAuthorizationStoreDelegate>
+@interface SRResearchDataPerCategoryViewController : UITableViewController <SRAuthorizationCellDelegate, SRSensorReaderDelegate, SRSensorPrunerDelegate>
 {
     SRAuthorizationGroup *_authGroup;
+    SRAuthorizationStore *_authStore;
     NSMutableSet *_authorizedBundleIds;
+    NSMutableSet *_authorizedWriterBundleIds;
     NSArray *_appBundles;
+    NSArray *_writerAppBundles;
     NSSet *_sensorIdentifiers;
     NSMutableArray *_readers;
     NSMutableArray *_pruners;
@@ -34,14 +36,17 @@
 @property(copy) CDUnknownBlockType cancelExportBlock; // @synthesize cancelExportBlock=_cancelExportBlock;
 @property(nonatomic) long long numberOfDays; // @synthesize numberOfDays=_numberOfDays;
 @property(retain, nonatomic) NSMutableArray *tombstones; // @synthesize tombstones=_tombstones;
-@property(nonatomic) NSObject<OS_dispatch_group> *fetchGroup; // @synthesize fetchGroup=_fetchGroup;
+@property(retain, nonatomic) NSObject<OS_dispatch_group> *fetchGroup; // @synthesize fetchGroup=_fetchGroup;
 @property(nonatomic) double end; // @synthesize end=_end;
 @property(nonatomic) double start; // @synthesize start=_start;
 @property(retain, nonatomic) NSMutableArray *pruners; // @synthesize pruners=_pruners;
 @property(retain, nonatomic) NSMutableArray *readers; // @synthesize readers=_readers;
 @property(retain, nonatomic) NSSet *sensorIdentifiers; // @synthesize sensorIdentifiers=_sensorIdentifiers;
+@property(retain, nonatomic) NSArray *writerAppBundles; // @synthesize writerAppBundles=_writerAppBundles;
 @property(retain, nonatomic) NSArray *appBundles; // @synthesize appBundles=_appBundles;
+@property(retain, nonatomic) NSMutableSet *authorizedWriterBundleIds; // @synthesize authorizedWriterBundleIds=_authorizedWriterBundleIds;
 @property(retain, nonatomic) NSMutableSet *authorizedBundleIds; // @synthesize authorizedBundleIds=_authorizedBundleIds;
+@property(retain) SRAuthorizationStore *authStore; // @synthesize authStore=_authStore;
 @property(retain, nonatomic) SRAuthorizationGroup *authGroup; // @synthesize authGroup=_authGroup;
 - (void)deleteAllUnreleasedData;
 - (void)presentDownloadPath:(id)arg1 sandboxExtensionToken:(id)arg2;
@@ -53,23 +58,23 @@
 - (void)sensorReader:(id)arg1 fetchingRequest:(id)arg2 failedWithError:(id)arg3;
 - (void)sensorReader:(id)arg1 didCompleteFetch:(id)arg2;
 - (_Bool)sensorReader:(id)arg1 fetchingRequest:(id)arg2 didFetchResult:(id)arg3;
-- (void)confirmAuthChangeForBundle:(id)arg1 value:(_Bool)arg2;
-- (void)setValue:(_Bool)arg1 indexPath:(id)arg2;
+- (void)confirmAuthChangeForBundle:(id)arg1 value:(_Bool)arg2 authService:(id)arg3 authorizedBundleIds:(id)arg4 setOverride:(_Bool)arg5;
+- (void)authorizationSwitchToggledWithValue:(_Bool)arg1 indexPath:(id)arg2;
 - (id)prepareExportCell;
 - (id)prepareDeleteCell;
 - (id)prepareDayCell;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)bundleForRow:(unsigned long long)arg1;
+- (id)bundleForIndexPath:(id)arg1;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (long long)tableSectionFromIndexPathSection:(long long)arg1;
 - (void)dealloc;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

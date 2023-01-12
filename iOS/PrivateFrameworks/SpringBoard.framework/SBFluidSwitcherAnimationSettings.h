@@ -10,6 +10,7 @@
 
 @interface SBFluidSwitcherAnimationSettings : PTSettings
 {
+    _Bool _performTwoPhaseFullScreenToPeekTransition;
     _Bool _allowIconZoomFromMediumWidgets;
     _Bool _allowIconZoomFromLargeWidgets;
     SBFFluidBehaviorSettings *_layoutSettings;
@@ -19,7 +20,6 @@
     SBFFluidBehaviorSettings *_switcherZoomDownIconFadeOutSettings;
     SBFFluidBehaviorSettings *_iconFadeInSettings;
     SBFFluidBehaviorSettings *_switcherFadeOutSettings;
-    SBFFluidBehaviorSettings *_gestureInitiatedZoomDownSettings;
     SBFFluidBehaviorSettings *_centerZoomSettings;
     SBFFluidBehaviorSettings *_slideOverSettings;
     SBFFluidBehaviorSettings *_switcherToHomeSettings;
@@ -28,6 +28,17 @@
     SBFFluidBehaviorSettings *_launchAppFromSwitcherSettings;
     SBFFluidBehaviorSettings *_continuityBannerSlideUpSettings;
     SBFFluidBehaviorSettings *_stackedSwitcherTrackingSettings;
+    SBFFluidBehaviorSettings *_fullScreenToPeekFirstPhaseAnimationSettings;
+    SBFFluidBehaviorSettings *_fullScreenToPeekSecondPhaseAnimationSettings;
+    double _fullScreenToPeekSecondPhaseAnimationDelay;
+    SBFFluidBehaviorSettings *_splitViewToSlideOverSettings;
+    SBFFluidBehaviorSettings *_slideOverToFullScreenAnimationSettings;
+    double _slideOverToFullScreenOutgoingAppScaleBack;
+    double _slideOverToFullScreenOutgoingFinalOpacity;
+    SBFFluidBehaviorSettings *_centerToSlideOverAnimationSettings;
+    SBFFluidBehaviorSettings *_swapAppSidesLayoutAnimationSettings;
+    SBFFluidBehaviorSettings *_swapAppSidesOpacityAnimationSettings;
+    double _swapAppSidesShadowFadeOutDelay;
     SBFFluidBehaviorSettings *_homeGestureCenterRowZoomUpSettings;
     SBFFluidBehaviorSettings *_homeGestureEdgeRowZoomUpSettings;
     SBFFluidBehaviorSettings *_homeGestureTopRowZoomDownLayoutSettings;
@@ -77,11 +88,13 @@
     double _crossblurDosidoBlurRadius;
     double _crossblurRasterizationScale;
     SBFFluidBehaviorSettings *_crossfadeDosidoSettings;
+    SBFFluidBehaviorSettings *_slideUpSettings;
     SBFFluidBehaviorSettings *_backdropBlurSettings;
     SBFFluidBehaviorSettings *_homeScreenOpacitySettings;
     SBFFluidBehaviorSettings *_homeScreenScaleSettings;
     SBFFluidBehaviorSettings *_opacitySettings;
     SBFFluidBehaviorSettings *_centerZoomOpacitySettings;
+    SBFFluidBehaviorSettings *_swipeToKillOpacitySettings;
     SBFFluidBehaviorSettings *_wallpaperScaleSettings;
     SBFFluidBehaviorSettings *_appSelectionSquishSettings;
     SBFFluidBehaviorSettings *_statusBarFadeInSettings;
@@ -106,6 +119,9 @@
     SBFFluidBehaviorSettings *_bannerUnfurlSettings;
     SBFFluidBehaviorSettings *_bannerUnfurlWallpaperAlphaSettings;
     double _bannerUnfurlWallpaperAlphaDelay;
+    SBFFluidBehaviorSettings *_pulseScaleSettings;
+    double _pulseScale;
+    double _pulseSecondStageDelay;
     double _disableAsyncRenderingTransitionPercentage;
     double _disallowAcceleratedHomeButtonPressTransitionPercentage;
     double _centerZoomScale;
@@ -125,10 +141,14 @@
     double _reduceMotionCrossfadeDuration;
     double _iconZoomFloatingDockFadeDelay;
     double _emptySwitcherDismissDelay;
+    double _resizeBlurDelay;
+    double _appSwitcherTitleAndIconFadeInSlowDownFactor;
 }
 
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+@property(nonatomic) double appSwitcherTitleAndIconFadeInSlowDownFactor; // @synthesize appSwitcherTitleAndIconFadeInSlowDownFactor=_appSwitcherTitleAndIconFadeInSlowDownFactor;
+@property(nonatomic) double resizeBlurDelay; // @synthesize resizeBlurDelay=_resizeBlurDelay;
 @property(nonatomic) double emptySwitcherDismissDelay; // @synthesize emptySwitcherDismissDelay=_emptySwitcherDismissDelay;
 @property(nonatomic) double iconZoomFloatingDockFadeDelay; // @synthesize iconZoomFloatingDockFadeDelay=_iconZoomFloatingDockFadeDelay;
 @property(nonatomic) double reduceMotionCrossfadeDuration; // @synthesize reduceMotionCrossfadeDuration=_reduceMotionCrossfadeDuration;
@@ -148,6 +168,9 @@
 @property(nonatomic) double centerZoomScale; // @synthesize centerZoomScale=_centerZoomScale;
 @property(nonatomic) double disallowAcceleratedHomeButtonPressTransitionPercentage; // @synthesize disallowAcceleratedHomeButtonPressTransitionPercentage=_disallowAcceleratedHomeButtonPressTransitionPercentage;
 @property(nonatomic) double disableAsyncRenderingTransitionPercentage; // @synthesize disableAsyncRenderingTransitionPercentage=_disableAsyncRenderingTransitionPercentage;
+@property(nonatomic) double pulseSecondStageDelay; // @synthesize pulseSecondStageDelay=_pulseSecondStageDelay;
+@property(nonatomic) double pulseScale; // @synthesize pulseScale=_pulseScale;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *pulseScaleSettings; // @synthesize pulseScaleSettings=_pulseScaleSettings;
 @property(nonatomic) double bannerUnfurlWallpaperAlphaDelay; // @synthesize bannerUnfurlWallpaperAlphaDelay=_bannerUnfurlWallpaperAlphaDelay;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *bannerUnfurlWallpaperAlphaSettings; // @synthesize bannerUnfurlWallpaperAlphaSettings=_bannerUnfurlWallpaperAlphaSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *bannerUnfurlSettings; // @synthesize bannerUnfurlSettings=_bannerUnfurlSettings;
@@ -172,11 +195,13 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *statusBarFadeInSettings; // @synthesize statusBarFadeInSettings=_statusBarFadeInSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *appSelectionSquishSettings; // @synthesize appSelectionSquishSettings=_appSelectionSquishSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *wallpaperScaleSettings; // @synthesize wallpaperScaleSettings=_wallpaperScaleSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *swipeToKillOpacitySettings; // @synthesize swipeToKillOpacitySettings=_swipeToKillOpacitySettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *centerZoomOpacitySettings; // @synthesize centerZoomOpacitySettings=_centerZoomOpacitySettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *opacitySettings; // @synthesize opacitySettings=_opacitySettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeScreenScaleSettings; // @synthesize homeScreenScaleSettings=_homeScreenScaleSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeScreenOpacitySettings; // @synthesize homeScreenOpacitySettings=_homeScreenOpacitySettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *backdropBlurSettings; // @synthesize backdropBlurSettings=_backdropBlurSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *slideUpSettings; // @synthesize slideUpSettings=_slideUpSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *crossfadeDosidoSettings; // @synthesize crossfadeDosidoSettings=_crossfadeDosidoSettings;
 @property(nonatomic) double crossblurRasterizationScale; // @synthesize crossblurRasterizationScale=_crossblurRasterizationScale;
 @property(nonatomic) double crossblurDosidoBlurRadius; // @synthesize crossblurDosidoBlurRadius=_crossblurDosidoBlurRadius;
@@ -228,6 +253,18 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureTopRowZoomDownLayoutSettings; // @synthesize homeGestureTopRowZoomDownLayoutSettings=_homeGestureTopRowZoomDownLayoutSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureEdgeRowZoomUpSettings; // @synthesize homeGestureEdgeRowZoomUpSettings=_homeGestureEdgeRowZoomUpSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *homeGestureCenterRowZoomUpSettings; // @synthesize homeGestureCenterRowZoomUpSettings=_homeGestureCenterRowZoomUpSettings;
+@property(nonatomic) double swapAppSidesShadowFadeOutDelay; // @synthesize swapAppSidesShadowFadeOutDelay=_swapAppSidesShadowFadeOutDelay;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *swapAppSidesOpacityAnimationSettings; // @synthesize swapAppSidesOpacityAnimationSettings=_swapAppSidesOpacityAnimationSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *swapAppSidesLayoutAnimationSettings; // @synthesize swapAppSidesLayoutAnimationSettings=_swapAppSidesLayoutAnimationSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *centerToSlideOverAnimationSettings; // @synthesize centerToSlideOverAnimationSettings=_centerToSlideOverAnimationSettings;
+@property(nonatomic) double slideOverToFullScreenOutgoingFinalOpacity; // @synthesize slideOverToFullScreenOutgoingFinalOpacity=_slideOverToFullScreenOutgoingFinalOpacity;
+@property(nonatomic) double slideOverToFullScreenOutgoingAppScaleBack; // @synthesize slideOverToFullScreenOutgoingAppScaleBack=_slideOverToFullScreenOutgoingAppScaleBack;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *slideOverToFullScreenAnimationSettings; // @synthesize slideOverToFullScreenAnimationSettings=_slideOverToFullScreenAnimationSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *splitViewToSlideOverSettings; // @synthesize splitViewToSlideOverSettings=_splitViewToSlideOverSettings;
+@property(nonatomic) double fullScreenToPeekSecondPhaseAnimationDelay; // @synthesize fullScreenToPeekSecondPhaseAnimationDelay=_fullScreenToPeekSecondPhaseAnimationDelay;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *fullScreenToPeekSecondPhaseAnimationSettings; // @synthesize fullScreenToPeekSecondPhaseAnimationSettings=_fullScreenToPeekSecondPhaseAnimationSettings;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *fullScreenToPeekFirstPhaseAnimationSettings; // @synthesize fullScreenToPeekFirstPhaseAnimationSettings=_fullScreenToPeekFirstPhaseAnimationSettings;
+@property(nonatomic) _Bool performTwoPhaseFullScreenToPeekTransition; // @synthesize performTwoPhaseFullScreenToPeekTransition=_performTwoPhaseFullScreenToPeekTransition;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *stackedSwitcherTrackingSettings; // @synthesize stackedSwitcherTrackingSettings=_stackedSwitcherTrackingSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *continuityBannerSlideUpSettings; // @synthesize continuityBannerSlideUpSettings=_continuityBannerSlideUpSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *launchAppFromSwitcherSettings; // @synthesize launchAppFromSwitcherSettings=_launchAppFromSwitcherSettings;
@@ -236,7 +273,6 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *switcherToHomeSettings; // @synthesize switcherToHomeSettings=_switcherToHomeSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *slideOverSettings; // @synthesize slideOverSettings=_slideOverSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *centerZoomSettings; // @synthesize centerZoomSettings=_centerZoomSettings;
-@property(retain, nonatomic) SBFFluidBehaviorSettings *gestureInitiatedZoomDownSettings; // @synthesize gestureInitiatedZoomDownSettings=_gestureInitiatedZoomDownSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *switcherFadeOutSettings; // @synthesize switcherFadeOutSettings=_switcherFadeOutSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *iconFadeInSettings; // @synthesize iconFadeInSettings=_iconFadeInSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *switcherZoomDownIconFadeOutSettings; // @synthesize switcherZoomDownIconFadeOutSettings=_switcherZoomDownIconFadeOutSettings;
@@ -245,6 +281,9 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *zoomUpSettings; // @synthesize zoomUpSettings=_zoomUpSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *layoutSettings; // @synthesize layoutSettings=_layoutSettings;
 - (void)_setHomeGestureAnimationDefaultValues;
+- (void)_setKeyboardShortcutDefaultValues;
+- (void)_setEntityPresentationDefaultValues;
+- (void)_setTopAffordanceTransitionDefaultValues;
 - (void)setDefaultValues;
 - (double)homeScreenDimmingAlphaForMode:(long long)arg1;
 - (double)wallpaperScaleForMode:(long long)arg1;

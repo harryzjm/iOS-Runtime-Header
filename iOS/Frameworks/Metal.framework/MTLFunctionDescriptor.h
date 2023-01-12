@@ -8,26 +8,37 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLFunctionConstantValues, NSString;
+@class MTLFunctionConstantValues, NSArray, NSDictionary, NSString;
 
 @interface MTLFunctionDescriptor : NSObject <NSCopying>
 {
     struct MTLFunctionDescriptorPrivate _private;
+    unsigned long long _pipelineOptions;
+    NSDictionary *_pluginData;
 }
 
 + (id)functionDescriptor;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
+- (_Bool)applyFunctionConstants;
+- (void)setApplyFunctionConstants:(_Bool)arg1;
+- (id)pluginData;
+- (void)setPluginData:(id)arg1;
+- (unsigned long long)pipelineOptions;
+- (void)setPipelineOptions:(unsigned long long)arg1;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (CDStruct_41a22ec7)hashStableWithFunction:(id)arg1;
 - (unsigned long long)hash;
+@property(copy, nonatomic) NSArray *binaryArchives;
 @property(nonatomic) unsigned long long options; // @dynamic options;
 @property(copy, nonatomic) MTLFunctionConstantValues *constantValues; // @dynamic constantValues;
 @property(copy, nonatomic) NSString *specializedName; // @dynamic specializedName;
 @property(copy, nonatomic) NSString *name; // @dynamic name;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)init;
 
 @end
 

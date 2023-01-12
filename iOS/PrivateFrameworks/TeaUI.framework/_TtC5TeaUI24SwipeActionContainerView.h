@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *isAutoActionEnabled;
     MISSING_TYPE *isAutoActionActivated;
     MISSING_TYPE *presentation;
+    MISSING_TYPE *autoActionThreshold;
     MISSING_TYPE *pinningEdge;
     MISSING_TYPE *feedbackGenerator;
     MISSING_TYPE *swipeActionViewWidth;

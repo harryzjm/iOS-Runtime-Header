@@ -6,17 +6,18 @@
 
 #import <CoverSheet/BCBatteryDeviceObserving-Protocol.h>
 
-@class BCBatteryDeviceController, CSBatteryChargingInfo, CSBatteryChargingView, NSString;
+@class BCBatteryDeviceController, CSBatteryChargingInfo, CSBatteryChargingView, NSMutableSet, NSString;
 
 @interface CSChargingViewController <BCBatteryDeviceObserving>
 {
     BCBatteryDeviceController *_batteryController;
     CSBatteryChargingView *_chargingView;
     CSBatteryChargingInfo *_chargingInfo;
+    NSMutableSet *_displayedBatteryDevices;
 }
 
 - (void).cxx_destruct;
-- (void)_createNewChargingViewForDoubleBattery:(_Bool)arg1;
+- (void)_createNewChargingViewForDoubleBattery:(id)arg1;
 - (void)_updateChargingViewIfNecessary;
 - (void)connectedDevicesDidChange:(id)arg1;
 - (long long)presentationStyle;
@@ -26,6 +27,7 @@
 - (double)durationBeforeDismissal;
 - (void)_updateChargingViewLegibility;
 - (_Bool)handleEvent:(id)arg1;
+- (void)aggregateBehavior:(id)arg1;
 - (void)aggregateAppearance:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;

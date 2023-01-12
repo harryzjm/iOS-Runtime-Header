@@ -8,7 +8,7 @@
 
 #import <SafariServices/_SFDownloadDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, NSTimer, NSURL, WBSCoalescedAsynchronousWriter, _SFDownloadIconCache;
+@class NSArray, NSDate, NSMapTable, NSMutableArray, NSString, NSTimer, NSURL, WBSCoalescedAsynchronousWriter, _SFDownloadIconCache;
 @protocol _SFDownloadDelegate;
 
 @interface _SFDownloadManager : NSObject <_SFDownloadDelegate>
@@ -21,6 +21,7 @@
     NSMapTable *_downloadsToDeferAdding;
     NSTimer *_removeDownloadsTimer;
     NSTimer *_updateTotalProgressTimer;
+    long long _viewingDownloadsCount;
     NSURL *_downloadsRootURL;
     id <_SFDownloadDelegate> _extraDownloadDelegate;
     _SFDownloadIconCache *_iconCache;
@@ -47,6 +48,12 @@
 - (void)downloadDidStart:(id)arg1;
 - (void)downloadDidFail:(id)arg1;
 - (void)downloadDidFinish:(id)arg1;
+- (void)didEndViewingDownloads;
+- (void)didBeginViewingDownloads;
+- (void)_setHasUnviewedDownloadsIfNeeded;
+- (void)setHasUnviewedDownloads:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool hasUnviewedDownloads;
+@property(retain, nonatomic, setter=_setLastUnviewedDownloadDate:) NSDate *_lastUnviewedDownloadDate;
 - (_Bool)_canExpireDownloadOnCompletion:(id)arg1;
 - (double)_calculateTotalProgress;
 - (void)_updateTotalProgress:(id)arg1;
@@ -67,6 +74,7 @@
 - (void)_loadDownloadHistoryAsynchronous:(_Bool)arg1;
 - (void)_loadDownloadHistory;
 - (void)reloadDownloadsSynchronously;
+@property(readonly, nonatomic) unsigned long long runningDownloadsCount;
 - (id)_dataForPersistingToHistory;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -15,7 +15,7 @@
 #import <Preferences/UITableViewDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSString, PSURLControllerHandler, UIColor, UIKeyboard, UITableView, UIView;
-@protocol PSSpecifierDataSource;
+@protocol PSListControllerAppearanceProvider, PSListControllerNavigationCoordinator, PSSpecifierDataSource;
 
 @interface PSListController <UIAppearance, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, PSSpecifierObserver, PSViewControllerOffsetProtocol, PSURLControllerHandlerDelegate>
 {
@@ -32,9 +32,7 @@
     NSMutableArray *_bundleControllers;
     _Bool _bundlesLoaded;
     _Bool _keyboardWasVisible;
-    UIKeyboard *_keyboard;
     _Bool _popupIsModal;
-    _Bool _popupIsDismissing;
     _Bool _hasAppeared;
     _Bool _showingSetupController;
     float _verticalContentOffset;
@@ -46,7 +44,10 @@
     _Bool _requestingSpecifiersFromDataSource;
     _Bool _sectionContentInsetInitialized;
     UIView *_containerView;
+    UIKeyboard *_keyboard;
     NSIndexPath *_savedSelectedIndexPath;
+    id <PSListControllerAppearanceProvider> _appearanceProvider;
+    id <PSListControllerNavigationCoordinator> _navigationCoordinator;
     _Bool _edgeToEdgeCells;
     _Bool _prefetchingEnabled;
     _Bool _contentSizeDidChange;
@@ -83,6 +84,8 @@
 + (id)aggregateReportingDomainOverride;
 + (void)setAggregateReportingDomainOverride:(id)arg1;
 + (_Bool)displaysButtonBar;
++ (void)registerDefaultAppearanceProviderClass:(Class)arg1;
++ (void)registerDefaultNavigationCoordinatorClass:(Class)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *segmentedSliderTrackColor; // @synthesize segmentedSliderTrackColor=_segmentedSliderTrackColor;
 @property(retain, nonatomic) UIColor *footerHyperlinkColor; // @synthesize footerHyperlinkColor=_footerHyperlinkColor;
@@ -200,7 +203,7 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (_Bool)isValidCellStyle:(long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)createPrequeuedPSTableCells:(unsigned long long)arg1;
 - (id)cachedCellForSpecifierID:(id)arg1;
@@ -227,6 +230,7 @@
 - (void)delayedContentSizeDidChange;
 - (void)didBecomeActive:(id)arg1;
 - (id)init;
+- (void)_ensureAppearanceProviderAndNavigationCoordinator;
 - (void)dealloc;
 - (void)_unloadBundleControllers;
 - (void)_loadBundleControllers;
@@ -313,6 +317,9 @@
 - (id)popupStylePopoverController;
 - (void)showPINSheet:(id)arg1;
 - (void)showPINSheet:(id)arg1 allowOptionsButton:(_Bool)arg2;
+@property(retain, nonatomic) id <PSListControllerAppearanceProvider> appearanceProvider;
+@property(retain, nonatomic) id <PSListControllerNavigationCoordinator> navigationCoordinator;
+@property(readonly, nonatomic) NSArray *unprotectedSpecifiers;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

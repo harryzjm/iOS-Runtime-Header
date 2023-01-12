@@ -35,19 +35,28 @@ struct UIEdgeInsets {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
+
+typedef struct {
+    CDStruct_f261e59c origin;
+    struct {
+        long long width;
+        long long height;
+    } size;
+} CDStruct_996ac03c;
+
+// Ambiguous groups
+typedef struct {
     long long _field1;
-    int _field2;
-    unsigned int _field3;
-    long long _field4;
-} CDStruct_198678f7;
+    long long _field2;
+} CDStruct_912cb5d2;
 
 typedef struct {
     long long x;
     long long y;
 } CDStruct_f261e59c;
-
-typedef struct {
-    CDStruct_f261e59c _field1;
-    CDStruct_f261e59c _field2;
-} CDStruct_efd166d3;
 

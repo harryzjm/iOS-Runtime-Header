@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CPMapTemplate, CPTrip, NSArray;
+@class CPMapTemplate, CPTrip, NAFuture, NSArray;
 @protocol CPNavigationSessionManaging;
 
 @interface CPNavigationSession : NSObject
 {
     NSArray *_upcomingManeuvers;
     CPTrip *_trip;
-    id <CPNavigationSessionManaging> _manager;
     CPMapTemplate *_mapTemplate;
+    NAFuture *_navigationSessionManagerFuture;
+    id <CPNavigationSessionManaging> _manager;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak CPMapTemplate *mapTemplate; // @synthesize mapTemplate=_mapTemplate;
 @property(retain, nonatomic) id <CPNavigationSessionManaging> manager; // @synthesize manager=_manager;
+@property(retain, nonatomic) NAFuture *navigationSessionManagerFuture; // @synthesize navigationSessionManagerFuture=_navigationSessionManagerFuture;
+@property(nonatomic) __weak CPMapTemplate *mapTemplate; // @synthesize mapTemplate=_mapTemplate;
 @property(retain, nonatomic) CPTrip *trip; // @synthesize trip=_trip;
 @property(copy, nonatomic) NSArray *upcomingManeuvers; // @synthesize upcomingManeuvers=_upcomingManeuvers;
 - (void)updateTravelEstimates:(id)arg1 forManeuver:(id)arg2;
@@ -27,7 +29,7 @@
 - (void)finishTrip;
 - (void)pauseTripForReason:(unsigned long long)arg1 description:(id)arg2;
 - (id)_currentTripId;
-- (id)initWithTrip:(id)arg1 manager:(id)arg2 mapTemplate:(id)arg3;
+- (id)initWithTrip:(id)arg1 mapTemplate:(id)arg2;
 
 @end
 

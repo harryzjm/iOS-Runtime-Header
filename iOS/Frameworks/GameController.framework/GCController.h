@@ -12,7 +12,7 @@
 #import <GameController/_GCIPCObject-Protocol.h>
 
 @class GCControllerSettings, GCDeviceBattery, GCDeviceHaptics, GCDeviceLight, GCExtendedGamepad, GCGamepad, GCMicroGamepad, GCMotion, GCPhysicalInputProfile, NSArray, NSMutableArray, NSString;
-@protocol GCControllerMotionConfigurableSensors, GCControllerPlayerIndicator, GCControllerProductInfo, GCControllerSettingsComponent, GCDeviceBatteryComponent, GCDeviceHapticCapabilityInfo, GCDeviceLightComponent, GCNamedProfile, NSCopying><NSObject><NSSecureCoding, OS_dispatch_queue;
+@protocol GCControllerMotionConfigurableSensors, GCControllerPlayerIndicator, GCControllerProductInfo, GCControllerSettingsComponent, GCDeviceBatteryComponent, GCDeviceGameIntentComponent, GCDeviceHapticCapabilityInfo, GCDeviceLightComponent, GCNamedProfile, GCSystemGestureComponent, NSCopying><NSObject><NSSecureCoding, OS_dispatch_queue;
 
 @interface GCController : NSObject <_GCIPCObject, NSSecureCoding, GCDeviceLegacy, GCDevice>
 {
@@ -28,6 +28,8 @@
     id <GCDeviceHapticCapabilityInfo> _hapticCapabilityInfo;
     id <GCDeviceLightComponent> _light;
     id <GCDeviceBatteryComponent> _battery;
+    id <GCDeviceGameIntentComponent> _gameIntent;
+    id <GCSystemGestureComponent> _systemGesture;
     id <GCNamedProfile> _profile;
     NSString *_uniqueIdentifier;
     unsigned int _service;
@@ -47,6 +49,8 @@
     CDUnknownBlockType _controllerPausedHandler;
 }
 
++ (_Bool)shouldMonitorBackgroundEvents;
++ (void)setShouldMonitorBackgroundEvents:(_Bool)arg1;
 + (id)controllerWithExtendedGamepad;
 + (id)controllerWithMicroGamepad;
 + (void)stopWirelessControllerDiscovery;
@@ -67,6 +71,7 @@
 @property(copy, nonatomic) CDUnknownBlockType controllerPausedHandler; // @synthesize controllerPausedHandler=_controllerPausedHandler;
 @property(copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
+- (void)_triggerGameIntent;
 - (void)dealloc;
 - (id)capture;
 - (void)_setSnapshot:(_Bool)arg1;
@@ -91,14 +96,19 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqualToController:(id)arg1;
 @property(readonly, nonatomic, getter=isAttachedToDevice) _Bool attachedToDevice;
+- (id)anonymizedIdentifier;
+- (id)detailedProductCategory;
 @property(readonly, nonatomic) NSString *productCategory;
 @property(readonly, copy, nonatomic) NSString *vendorName;
 - (void)removeComponent:(id)arg1;
-- (void)addComponent:(id)arg1;
 - (id)initWithComponents:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 components:(id)arg2;
 @property(copy, nonatomic) CDUnknownBlockType __deprecated_controllerPausedHandler;
+- (id)_componentOfClass:(Class)arg1;
+- (id)_componentWithProtocol:(id)arg1;
+- (void)_addComponent:(id)arg1;
 - (id)controllerSettings;
+@property(readonly, nonatomic) id <GCSystemGestureComponent> systemGestureComponent;
 @property(readonly, nonatomic) id <GCControllerMotionConfigurableSensors> motionConfigurableSensors;
 @property(readonly, nonatomic, getter=isComponentBased) _Bool componentBased;
 - (id)_legacy_batteryStatus;
@@ -113,7 +123,7 @@
 - (void)_legacy_setPlayerIndex:(long long)arg1;
 - (long long)_legacy_playerIndex;
 - (unsigned int)sampleRate;
-- (_Bool)supportsMotionLite;
+- (_Bool)isATVRemote;
 - (void)clearServiceRef;
 - (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (_Bool)hasServiceRef:(struct __IOHIDServiceClient *)arg1;
@@ -123,6 +133,7 @@
 - (void *)createInputBufferForDevice:(struct __IOHIDDevice *)arg1 withSize:(unsigned long long)arg2;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
 - (id)_legacy_description;
+- (void)_legacy_invalidateDescription;
 - (_Bool)_legacy_isEqualToController:(id)arg1;
 - (id)_legacy_productCategory;
 - (_Bool)displayTrueSiriRemoteName;
@@ -135,7 +146,6 @@
 @property(copy, nonatomic) NSString *debugName;
 - (void)setDeviceHash:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long deviceHash;
-@property(readonly, nonatomic, getter=isBluetoothAndUSBMirrored) _Bool bluetoothAndUSBMirrored;
 @property(nonatomic) _Bool physicalDeviceUsesCompass;
 @property(retain, nonatomic) NSString *physicalDeviceUniqueID;
 - (void)setService:(unsigned int)arg1;
@@ -147,6 +157,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;
+- (id)initWithProfileClass:(Class)arg1 serviceRef:(struct __IOHIDServiceClient *)arg2;
 - (id)initWithProfile:(id)arg1;
 - (id)initWithProfileClass:(Class)arg1 services:(id)arg2;
 

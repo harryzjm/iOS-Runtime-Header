@@ -6,19 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, _MRAVOutputDeviceDescriptorProtobuf;
 
 @interface MRAVOutputDeviceDescription : NSObject
 {
     unsigned int _deviceType;
     unsigned int _deviceSubtype;
     NSString *_uid;
+    NSString *_name;
+    NSString *_modelID;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property(readonly, nonatomic) unsigned int deviceSubtype; // @synthesize deviceSubtype=_deviceSubtype;
 @property(readonly, nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
+@property(readonly, nonatomic) NSString *composedTypeDescription;
+@property(readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
+- (id)initWithDeviceType:(unsigned int)arg1 deviceSubtype:(unsigned int)arg2 uid:(id)arg3 name:(id)arg4 modelID:(id)arg5;
+- (id)initWithDeviceType:(unsigned int)arg1 deviceSubtype:(unsigned int)arg2 uid:(id)arg3 name:(id)arg4;
 - (id)initWithDeviceType:(unsigned int)arg1 deviceSubtype:(unsigned int)arg2 uid:(id)arg3;
 
 @end

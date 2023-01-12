@@ -39,8 +39,8 @@
 - (void)handleDidSaveNotification:(id)arg1;
 - (void)loadPersistentStores;
 - (long long)currentSequenceId:(id *)arg1;
-- (void)createDataStores;
-- (void)createContexts;
+- (_Bool)createDataStores:(id *)arg1;
+- (_Bool)createContexts:(id *)arg1;
 - (_Bool)moveAsideDatabase:(id)arg1;
 - (_Bool)shouldMoveAsideDatabase:(id)arg1;
 @property(readonly) _Bool loadedStore;

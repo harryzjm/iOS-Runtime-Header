@@ -39,14 +39,14 @@
 - (void)_fromDaemon_addFace:(id)arg1 forUUID:(id)arg2;
 - (void)flushCompleteForIdentifier:(id)arg1;
 - (void)removeFaceForUUID:(id)arg1 seqId:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)addFace:(id)arg1 forUUID:(id)arg2 seqId:(id)arg3;
-- (void)upgradeFace:(id)arg1 forUUID:(id)arg2 seqID:(id)arg3;
+- (void)addFaceInstanceDescriptor:(id)arg1 forUUID:(id)arg2 seqId:(id)arg3;
+- (void)upgradeFaceInstanceDescriptor:(id)arg1 forUUID:(id)arg2 seqID:(id)arg3;
 - (void)updateFaceForUUID:(id)arg1 withResourceDirectory:(id)arg2 seqId:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateFaceForUUID:(id)arg1 withConfiguration:(id)arg2 seqId:(id)arg3;
 - (void)updateOrderedFaceUUIDs:(id)arg1 seqId:(id)arg2;
 - (void)updateSelectedFaceUUID:(id)arg1 seqId:(id)arg2;
-- (void)resetClientCollection;
-- (void)loadFullCollectionWithOrderedUUIDs:(id)arg1 selectedUUID:(id)arg2 facesByUUID:(id)arg3 seqId:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)resetClientCollectionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)loadFullCollectionWithOrderedUUIDs:(id)arg1 selectedUUID:(id)arg2 facesDescriptorsByUUID:(id)arg3 seqId:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_serverProxy;
 - (void)_sendToDaemonFlushWithIdentifier:(id)arg1;
 - (void)_sendToDaemonReset;
@@ -55,7 +55,7 @@
 - (void)_sendToDaemonUpgradeForFace:(id)arg1 withUUID:(id)arg2;
 - (void)_sendToDaemonUpdatedResourceDirectoryForFace:(id)arg1 withUUID:(id)arg2;
 - (void)_sendToDaemonUpdatedConfigurationForFace:(id)arg1 withUUID:(id)arg2;
-- (void)_sendToDaemonSelectedUUID;
+- (void)_sendToDaemonSelectedUUIDSuppressingCallback:(_Bool)arg1;
 - (void)_sendToDaemonOrderedUUIDs;
 - (void)_notifyReset;
 - (void)_notifyLoaded;
@@ -67,7 +67,7 @@
 - (void)suspendUpdatesFromDaemon;
 - (void)reset;
 - (void)_didRemoveFace:(id)arg1 withUUID:(id)arg2;
-- (void)_didSelectFaceUUID:(id)arg1;
+- (void)_didSelectFaceUUID:(id)arg1 suppressingCallback:(_Bool)arg2;
 - (void)_didMoveFace:(id)arg1 withUUID:(id)arg2 toIndex:(unsigned long long)arg3;
 - (void)_didAddFace:(id)arg1 withUUID:(id)arg2 atIndex:(unsigned long long)arg3;
 - (_Bool)hasLoaded;

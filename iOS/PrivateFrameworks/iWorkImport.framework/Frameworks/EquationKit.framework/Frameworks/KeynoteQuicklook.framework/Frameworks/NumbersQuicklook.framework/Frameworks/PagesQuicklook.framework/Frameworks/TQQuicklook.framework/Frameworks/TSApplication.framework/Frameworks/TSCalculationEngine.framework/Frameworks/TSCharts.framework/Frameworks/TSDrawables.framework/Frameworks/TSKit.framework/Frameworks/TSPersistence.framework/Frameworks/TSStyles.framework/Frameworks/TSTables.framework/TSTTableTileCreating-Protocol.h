@@ -10,7 +10,7 @@
 @property(readonly, nonatomic) struct TSUModelColumnIndex numberOfColumns;
 @property(readonly, nonatomic) struct TSUModelRowIndex numberOfRows;
 - (void)enumerateCellsForSOSSerializationWithBlock:(void (^)(TSTCell *, struct TSUCellCoord, _Bool *))arg1;
-- (TSWPParagraphStyle *)textStyleAtBaseCellCoord:(struct TSUModelCellCoord)arg1 isDefault:(out _Bool *)arg2;
+- (TSWPParagraphStyle *)textStyleAtModelCellCoord:(struct TSUModelCellCoord)arg1 isDefault:(out _Bool *)arg2;
 - (struct TSUModelCellRect)range;
 @end
 

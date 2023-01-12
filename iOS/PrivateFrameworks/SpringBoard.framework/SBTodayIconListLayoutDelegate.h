@@ -22,11 +22,17 @@
     double _dismissProgress;
     NSMutableDictionary *_catchupProperties;
     NSMutableDictionary *_catchupTimers;
+    double _collapseHeight;
+    double _distanceToApex;
+    double _revealProgressMaxTranslation;
     struct UIEdgeInsets _carouselInsets;
     struct UIEdgeInsets _additionalLayoutInsets;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double revealProgressMaxTranslation; // @synthesize revealProgressMaxTranslation=_revealProgressMaxTranslation;
+@property(readonly, nonatomic) double distanceToApex; // @synthesize distanceToApex=_distanceToApex;
+@property(readonly, nonatomic) double collapseHeight; // @synthesize collapseHeight=_collapseHeight;
 @property(retain, nonatomic) NSMutableDictionary *catchupTimers; // @synthesize catchupTimers=_catchupTimers;
 @property(retain, nonatomic) NSMutableDictionary *catchupProperties; // @synthesize catchupProperties=_catchupProperties;
 @property(nonatomic, getter=isVisuallyRevealed) _Bool visuallyRevealed; // @synthesize visuallyRevealed=_visuallyRevealed;
@@ -35,15 +41,18 @@
 @property(nonatomic, getter=isRevealed) _Bool revealed; // @synthesize revealed=_revealed;
 @property(nonatomic) struct UIEdgeInsets additionalLayoutInsets; // @synthesize additionalLayoutInsets=_additionalLayoutInsets;
 @property(nonatomic) struct UIEdgeInsets carouselInsets; // @synthesize carouselInsets=_carouselInsets;
-@property(nonatomic) _Bool carouselLayout; // @synthesize carouselLayout=_carouselLayout;
+@property(nonatomic, getter=isCarouselLayout) _Bool carouselLayout; // @synthesize carouselLayout=_carouselLayout;
 @property(nonatomic) __weak UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic) __weak UIView *containerView; // @synthesize containerView=_containerView;
 @property(readonly, nonatomic) __weak SBIconListView *iconListView; // @synthesize iconListView=_iconListView;
 - (double)_iconListView:(id)arg1 originYForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(id)arg3 adjustedForRevealProgress:(_Bool)arg4;
+- (void)_layoutFocusGuideViewsInListView:(id)arg1;
+- (void)_reorderSubviewsForCarouselLayoutInListView:(id)arg1;
 - (void)iconListViewDidLayoutIcons:(id)arg1;
 - (void)iconListView:(id)arg1 willLayoutIconView:(id)arg2;
 - (struct CGSize)iconListView:(id)arg1 sizeThatFits:(struct CGSize)arg2 metrics:(id)arg3 proposedSize:(struct CGSize)arg4;
 - (unsigned long long)iconListView:(id)arg1 rowAtPoint:(struct CGPoint)arg2 metrics:(id)arg3 proposedRow:(unsigned long long)arg4;
+- (struct CGPoint)iconListView:(id)arg1 centerForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(id)arg3 proposedCenter:(struct CGPoint)arg4;
 - (struct CGPoint)iconListView:(id)arg1 originForIconCoordinate:(struct SBIconCoordinate)arg2 metrics:(id)arg3 proposedOrigin:(struct CGPoint)arg4;
 - (void)setVisuallyRevealed:(_Bool)arg1 animated:(_Bool)arg2;
 - (double)unadjustedOriginYForIconCoordinate:(struct SBIconCoordinate)arg1;

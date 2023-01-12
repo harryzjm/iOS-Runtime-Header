@@ -5,12 +5,13 @@
 //
 
 #import <LinkPresentation/LPLinkMetadataBackwardCompatibility-Protocol.h>
+#import <LinkPresentation/LPLinkMetadataFallbackIconTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPresentationTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPreviewTransformer-Protocol.h>
 
 @class LPImage, NSString;
 
-@interface LPMapCollectionPublisherMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataBackwardCompatibility>
+@interface LPMapCollectionPublisherMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataFallbackIconTransformer, LPLinkMetadataBackwardCompatibility>
 {
     unsigned int _numberOfPublishedCollections;
     NSString *_name;
@@ -30,11 +31,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)populateMetadataForBackwardCompatibility:(id)arg1;
+- (id)fallbackIconForTransformer:(id)arg1;
 - (id)previewImageForTransformer:(id)arg1;
 - (id)previewSummaryForTransformer:(id)arg1;
 - (_Bool)canGeneratePresentationPropertiesForURL:(id)arg1;
 - (id)presentationPropertiesForTransformer:(id)arg1;
-- (id)_bottomLine;
+- (id)_guideCount;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

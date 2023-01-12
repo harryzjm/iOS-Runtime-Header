@@ -8,11 +8,11 @@
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)__orderedValuesForDevice:(id)arg1;
 + (id)_orderedValuesForDevice:(id)arg1;
 + (id)optionWithColor:(unsigned long long)arg1 forDevice:(id)arg2;
+- (id)pigmentEditOption;
 - (id)_valueToFaceBundleStringDict;
 @property(readonly, nonatomic) unsigned long long color;
 

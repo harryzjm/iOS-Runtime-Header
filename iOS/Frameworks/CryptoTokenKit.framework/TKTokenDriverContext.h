@@ -6,8 +6,7 @@
 
 #import <CryptoTokenKit/TKTokenDriverProtocol-Protocol.h>
 
-@class NSString, TKTokenConfigurationConnection, TKTokenDriver;
-@protocol TKTokenDriverHostProtocol;
+@class NSString, NSXPCListenerEndpoint, TKTokenConfigurationConnection, TKTokenDriver;
 
 __attribute__((visibility("hidden")))
 @interface TKTokenDriverContext <TKTokenDriverProtocol>
@@ -15,21 +14,23 @@ __attribute__((visibility("hidden")))
     TKTokenConfigurationConnection *_configurationConnection;
     id _initialKeepAlive;
     TKTokenDriver *_driver;
+    NSXPCListenerEndpoint *_configurationEndpoint;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSXPCListenerEndpoint *configurationEndpoint; // @synthesize configurationEndpoint=_configurationEndpoint;
 @property(readonly, nonatomic) TKTokenDriver *driver; // @synthesize driver=_driver;
 - (void)releaseTokenWithInstanceID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)configureWithReply:(CDUnknownBlockType)arg1;
 - (void)acquireTokenWithSlot:(id)arg1 AID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)acquireTokenWithInstanceID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)startRequestWithError:(id *)arg1;
+- (void)setConfigurationEndpoint:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setup;
 @property(readonly, nonatomic) double idleTimeout;
 - (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 success:(_Bool)arg3;
 - (id)configurationForTokenID:(id)arg1;
 @property(readonly, nonatomic) TKTokenConfigurationConnection *configurationConnection;
-@property(readonly, nonatomic) id <TKTokenDriverHostProtocol> host;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

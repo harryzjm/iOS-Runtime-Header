@@ -5,7 +5,6 @@
 //
 
 @protocol APPCMediaMetricsHelping
-- (void)updateVisiblePercentage:(long long)arg1;
 - (void)mediaProgress:(long long)arg1;
 - (void)mediaFinished;
 - (void)mediaStarted;
@@ -16,7 +15,9 @@
 - (void)mediaSkippedAtPosition:(double)arg1;
 - (void)mediaPausedAtPosition:(double)arg1;
 - (void)mediaPlayedAtPosition:(double)arg1;
-- (void)mediaChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
+- (void)videoChosenWithVideoWidth:(float)arg1 videoHeight:(float)arg2;
 - (void)mediaLoaded;
+@property(nonatomic, copy) CDUnknownBlockType visiblePercentageChanged;
+@property(nonatomic) long long visiblePercentage;
 @end
 

@@ -25,7 +25,6 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mergedConfiguration:(id)arg1;
-- (id)initWithType:(unsigned long long)arg1 interval:(double)arg2 latency:(double)arg3;
 - (id)init;
 
 @end

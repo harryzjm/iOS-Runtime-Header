@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SetupAssistantUI/BFFNavigationFlowDelegate-Protocol.h>
 #import <SetupAssistantUI/NSObject-Protocol.h>
 
 @protocol BFFFlowItem;
 
-@protocol BFFFlowItemDelegate <NSObject>
+@protocol BFFFlowItemDelegate <NSObject, BFFNavigationFlowDelegate>
 - (void)flowItemDone:(id <BFFFlowItem>)arg1 nextItemClass:(Class)arg2;
 - (void)flowItemDone:(id <BFFFlowItem>)arg1 nextItem:(id <BFFFlowItem>)arg2;
 - (void)flowItemDone:(id <BFFFlowItem>)arg1;

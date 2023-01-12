@@ -14,14 +14,13 @@
 }
 
 - (void).cxx_destruct;
-- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
-- (long long)transitionLiveContentRasterizationStyle;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
 - (id)appLayoutsToCacheSnapshots;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (_Bool)wantsSwitcherDimmingView;
 - (long long)switcherBackdropBlurType;
 - (_Bool)wantsSwitcherBackdropBlur;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;

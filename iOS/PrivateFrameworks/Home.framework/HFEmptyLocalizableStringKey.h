@@ -8,8 +8,6 @@
 {
 }
 
-+ (id)description;
-- (id)debugDescription;
 - (id)localizedStringWithArgumentBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 

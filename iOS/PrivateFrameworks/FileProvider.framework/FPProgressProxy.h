@@ -13,20 +13,21 @@
     id _subscriber;
     NSURL *_fileURL;
     _Bool _shouldStopAccessingURL;
-    NSObservation *_observation;
+    NSObservation *_totalUnitCountObservation;
+    NSObservation *_fractionCompletedObservation;
     _Bool _didSetupParentProgress;
     _Bool _updateFileCount;
 }
 
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool updateFileCount; // @synthesize updateFileCount=_updateFileCount;
 - (void)setProgressDidSetupHandler:(CDUnknownBlockType)arg1;
 - (void)stopTrackingIfStarted;
+- (void)_stopTrackingIfStarted;
 - (void)startTrackingFileURL:(id)arg1 kind:(id)arg2;
 - (void)setCancellationHandler:(CDUnknownBlockType)arg1;
-- (void)_updateWithProgress:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)updateWithProgress:(id)arg1;
+- (id)shortDescription;
 - (void)dealloc;
 
 @end

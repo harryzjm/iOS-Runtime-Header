@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRouteCoordinateArray, GEOElevationProfile, GEOMapRegion, NSArray;
+@class GEOComposedRouteCellularCoverage, GEOComposedRouteCoordinateArray, GEOElevationProfile, GEOMapRegion, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface GEORouteBuilderOutput : NSObject
@@ -17,17 +17,25 @@ __attribute__((visibility("hidden")))
     NSArray *_steps;
     NSArray *_guidanceEvents;
     NSArray *_enrouteNotices;
+    NSArray *_visualInfos;
     NSArray *_pointSections;
+    GEOComposedRouteCellularCoverage *_cellularCoverage;
     GEOMapRegion *_boundingMapRegion;
-    unsigned int _distance;
+    double _distance;
     _Bool _usesZilch;
+    NSArray *_cameraInfos;
+    NSArray *_roadComplexities;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned int distance; // @synthesize distance=_distance;
+@property(nonatomic) double distance; // @synthesize distance=_distance;
 @property(retain, nonatomic) GEOMapRegion *boundingMapRegion; // @synthesize boundingMapRegion=_boundingMapRegion;
 @property(retain, nonatomic) NSArray *pointSections; // @synthesize pointSections=_pointSections;
 @property(nonatomic) _Bool usesZilch; // @synthesize usesZilch=_usesZilch;
+@property(retain, nonatomic) GEOComposedRouteCellularCoverage *cellularCoverage; // @synthesize cellularCoverage=_cellularCoverage;
+@property(retain, nonatomic) NSArray *roadComplexities; // @synthesize roadComplexities=_roadComplexities;
+@property(retain, nonatomic) NSArray *cameraInfos; // @synthesize cameraInfos=_cameraInfos;
+@property(retain, nonatomic) NSArray *visualInfos; // @synthesize visualInfos=_visualInfos;
 @property(retain, nonatomic) NSArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
 @property(retain, nonatomic) NSArray *guidanceEvents; // @synthesize guidanceEvents=_guidanceEvents;
 @property(retain, nonatomic) NSArray *steps; // @synthesize steps=_steps;

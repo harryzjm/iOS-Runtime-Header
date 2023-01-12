@@ -17,8 +17,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void)secureMicrophoneEngagedNotification;
 - (void)unregisterBlocksForService;
 - (void)registerBlocksForService;
+- (void)unregisterFromMutedTalkerNotfications;
+- (void)registerForMutedTalkerNotfications;
+- (void)handleMutedTalkerNotification:(unsigned int)arg1;
 - (void)dealloc;
 - (id)init;
 

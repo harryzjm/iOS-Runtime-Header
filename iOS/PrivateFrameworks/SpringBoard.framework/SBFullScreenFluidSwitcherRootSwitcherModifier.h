@@ -18,7 +18,9 @@
 - (id)insertionModifierForInsertionEvent:(id)arg1;
 - (id)_entityRemovalModifierForMainTransitionEvent:(id)arg1;
 - (id)multitaskingModifierForEvent:(id)arg1;
+- (id)shelfModifierForTransitionEvent:(id)arg1;
 - (id)reduceMotionModifierForReduceMotionChangedEvent:(id)arg1;
+- (id)floorModifierForGestureEvent:(id)arg1;
 - (id)floorModifierForTransitionEvent:(id)arg1;
 - (id)transitionModifierForMainTransitionEvent:(id)arg1;
 - (id)gestureModifierForGestureEvent:(id)arg1;

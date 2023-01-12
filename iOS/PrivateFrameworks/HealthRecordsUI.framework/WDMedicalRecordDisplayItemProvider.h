@@ -8,20 +8,22 @@
 
 #import <HealthRecordsUI/WDMedicalRecordDaySummaryDelegate-Protocol.h>
 
-@class HKConcept, HKMultiTypeSampleIterator, HRProfile, NSArray, NSDictionary, NSMutableArray, NSPredicate, NSUUID, WDMedicalRecordPagingContext;
+@class HKConcept, HKMedicalUserDomainConcept, HKMultiTypeSampleIterator, HRProfile, NSArray, NSDictionary, NSMutableArray, NSPredicate, NSUUID, WDMedicalRecordPagingContext;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface WDMedicalRecordDisplayItemProvider : NSObject <WDMedicalRecordDaySummaryDelegate>
 {
+    _Bool _shouldClearPagingCacheOnNextReload;
     _Bool _shouldCancelDataCollection;
     long long _displayItemOptions;
     NSDictionary *_additionalPredicates;
     NSPredicate *_filter;
+    NSDictionary *_filterPredicatesByType;
     CDUnknownBlockType _errorHandler;
     long long _numOfRemovedRecords;
     HRProfile *_profile;
     HKConcept *_concept;
+    HKMedicalUserDomainConcept *_userDomainConcept;
     NSArray *_preloadedRecords;
     NSMutableArray *_medicalRecordGroups;
     NSMutableArray *_dateLessGroups;
@@ -56,23 +58,28 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *dateLessGroups; // @synthesize dateLessGroups=_dateLessGroups;
 @property(retain, nonatomic) NSMutableArray *medicalRecordGroups; // @synthesize medicalRecordGroups=_medicalRecordGroups;
 @property(copy, nonatomic) NSArray *preloadedRecords; // @synthesize preloadedRecords=_preloadedRecords;
+@property(retain, nonatomic) HKMedicalUserDomainConcept *userDomainConcept; // @synthesize userDomainConcept=_userDomainConcept;
 @property(retain, nonatomic) HKConcept *concept; // @synthesize concept=_concept;
 @property(retain, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
+@property(nonatomic) _Bool shouldClearPagingCacheOnNextReload; // @synthesize shouldClearPagingCacheOnNextReload=_shouldClearPagingCacheOnNextReload;
 @property(nonatomic) long long numOfRemovedRecords; // @synthesize numOfRemovedRecords=_numOfRemovedRecords;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property(copy, nonatomic) NSDictionary *filterPredicatesByType; // @synthesize filterPredicatesByType=_filterPredicatesByType;
 @property(retain, nonatomic) NSPredicate *filter; // @synthesize filter=_filter;
 @property(readonly, copy, nonatomic) NSDictionary *additionalPredicates; // @synthesize additionalPredicates=_additionalPredicates;
 @property(nonatomic) long long displayItemOptions; // @synthesize displayItemOptions=_displayItemOptions;
 - (void)daySummaryHasDisplayItemUpdate:(id)arg1;
 - (id)_sortedDisplayItemGroupWithDateDisplay:(id)arg1 sourceDaySummaryMapping:(id)arg2;
 - (void)_displayItemGroupsForSummaryOfRecords:(id)arg1 displayRemovedRecords:(_Bool)arg2 style:(long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_processAccumulatedRecordsForPage:(id)arg1;
+- (void)_queue_processAccumulatedRecordsForPage:(id)arg1;
 - (void)_queue_queryForNextBatchOfData;
 - (void)_commitPendingGroupsAndCallUpdateHandlerBypassGroupChangeDetermination:(_Bool)arg1;
 - (id)_displayItemGroupAtIndex:(long long)arg1;
 - (id)_queue_synthesizedPredicatesForMedicalType:(id)arg1;
+- (void)_queue_resetPagingCache;
 - (void)_queue_resetPagingInformation;
 - (void)_queue_setupIterator;
+- (void)_queue_reload;
 - (id)removedRecords;
 - (id)subtitleForGroupAtIndex:(long long)arg1;
 - (id)titleForGroupAtIndex:(long long)arg1;
@@ -86,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)setSampleTypes:(id)arg1 predicatesPerType:(id)arg2 accountsPredicate:(id)arg3;
 - (void)reload;
 - (id)initWithProfile:(id)arg1 displayItemOptions:(long long)arg2 sampleTypes:(id)arg3 filter:(id)arg4 additionalPredicates:(id)arg5 sortDescriptors:(id)arg6;
+- (id)initWithProfile:(id)arg1 userDomainConcept:(id)arg2 preloadedRecords:(id)arg3 displayItemOptions:(long long)arg4 sampleTypes:(id)arg5 filter:(id)arg6 additionalPredicates:(id)arg7 sortDescriptors:(id)arg8;
 - (id)initWithProfile:(id)arg1 concept:(id)arg2 preloadedRecords:(id)arg3 displayItemOptions:(long long)arg4 sampleTypes:(id)arg5 filter:(id)arg6 additionalPredicates:(id)arg7 sortDescriptors:(id)arg8;
 
 @end

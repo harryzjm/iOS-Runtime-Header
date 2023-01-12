@@ -17,6 +17,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void)setReferenceFrame:(int)arg1;
+- (int)referenceFrame;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

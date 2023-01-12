@@ -14,13 +14,19 @@
     UIView *_scalingView;
     double _cornerRadius;
     unsigned long long _maskedCorners;
+    _Bool _allowStatusBarToOverlap;
     _Bool _usesNonuniformScaling;
     _Bool _hasOpaqueContents;
+    _Bool _stretchToFillBounds;
+    _Bool _allowsEdgeAntialiasing;
     long long _orientationForClassicLayout;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long orientationForClassicLayout; // @synthesize orientationForClassicLayout=_orientationForClassicLayout;
+@property(nonatomic) _Bool allowStatusBarToOverlap; // @synthesize allowStatusBarToOverlap=_allowStatusBarToOverlap;
+@property(nonatomic) _Bool allowsEdgeAntialiasing; // @synthesize allowsEdgeAntialiasing=_allowsEdgeAntialiasing;
+@property(nonatomic) _Bool stretchToFillBounds; // @synthesize stretchToFillBounds=_stretchToFillBounds;
 @property(nonatomic) _Bool hasOpaqueContents; // @synthesize hasOpaqueContents=_hasOpaqueContents;
 @property(nonatomic) _Bool usesNonuniformScaling; // @synthesize usesNonuniformScaling=_usesNonuniformScaling;
 - (void)_updateCornerRadius;

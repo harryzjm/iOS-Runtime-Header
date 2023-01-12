@@ -7,60 +7,63 @@
 #import <objc/NSObject.h>
 
 #import <AVKit/AVVolumeController-Protocol.h>
+#import <AVKit/AVVolumeHUDAssertionDelegate-Protocol.h>
 
 @class AVSystemController, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVSystemVolumeController : NSObject <AVVolumeController>
+@interface AVSystemVolumeController : NSObject <AVVolumeHUDAssertionDelegate, AVVolumeController>
 {
+    NSObject<OS_dispatch_queue> *_systemControllerQueue;
+    _Bool _observingSystemController;
+    _Bool _prefersSystemVolumeHUDHidden;
     _Bool _changingVolume;
     _Bool _currentRouteHasVolumeControl;
-    _Bool _EUVolumeLimitEnabled;
-    _Bool _EUVolumeLimitOverridden;
     _Bool _volumeChangesThrottled;
-    _Bool _canOverrideEUVolumeLimit;
     _Bool _fullyInitialized;
-    float _EUVolumeLimit;
     float _volume;
+    AVSystemController *_sharedSystemController;
     NSNumber *_targetVolumeInternal;
     NSNumber *_maximumTargetVolumeSinceChangingVolumeBegan;
     NSString *_volumeCategory;
-    AVSystemController *_sharedSystemController;
+    NSString *_uniqueIdentifier;
+    NSString *_windowSceneSessionIdentifier;
 }
 
 + (id)windowSceneVolumeHUDAssertions;
 + (id)volumeController;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *windowSceneSessionIdentifier; // @synthesize windowSceneSessionIdentifier=_windowSceneSessionIdentifier;
+@property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(nonatomic, getter=isFullyInitialized) _Bool fullyInitialized; // @synthesize fullyInitialized=_fullyInitialized;
-@property(retain, nonatomic) AVSystemController *sharedSystemController; // @synthesize sharedSystemController=_sharedSystemController;
 @property(readonly, nonatomic) NSString *volumeCategory; // @synthesize volumeCategory=_volumeCategory;
 @property(retain, nonatomic) NSNumber *maximumTargetVolumeSinceChangingVolumeBegan; // @synthesize maximumTargetVolumeSinceChangingVolumeBegan=_maximumTargetVolumeSinceChangingVolumeBegan;
 @property(retain, nonatomic) NSNumber *targetVolumeInternal; // @synthesize targetVolumeInternal=_targetVolumeInternal;
-@property(nonatomic) _Bool canOverrideEUVolumeLimit; // @synthesize canOverrideEUVolumeLimit=_canOverrideEUVolumeLimit;
 @property(nonatomic) _Bool volumeChangesThrottled; // @synthesize volumeChangesThrottled=_volumeChangesThrottled;
 @property(nonatomic) float volume; // @synthesize volume=_volume;
-@property(nonatomic, getter=isEUVolumeLimitOverridden) _Bool EUVolumeLimitOverridden; // @synthesize EUVolumeLimitOverridden=_EUVolumeLimitOverridden;
-@property(nonatomic, getter=isEUVolumeLimitEnabled) _Bool EUVolumeLimitEnabled; // @synthesize EUVolumeLimitEnabled=_EUVolumeLimitEnabled;
-@property(nonatomic) float EUVolumeLimit; // @synthesize EUVolumeLimit=_EUVolumeLimit;
 @property(nonatomic) _Bool currentRouteHasVolumeControl; // @synthesize currentRouteHasVolumeControl=_currentRouteHasVolumeControl;
 @property(nonatomic, getter=isChangingVolume) _Bool changingVolume; // @synthesize changingVolume=_changingVolume;
+@property(retain, nonatomic) AVSystemController *sharedSystemController; // @synthesize sharedSystemController=_sharedSystemController;
+@property(nonatomic) _Bool prefersSystemVolumeHUDHidden; // @synthesize prefersSystemVolumeHUDHidden=_prefersSystemVolumeHUDHidden;
 - (void)_performOnMainThread:(CDUnknownBlockType)arg1;
 - (void)_applyProposedVolumeImmediately;
 - (void)_applyProposedVolumeIfNeeded;
 - (void)_handleCurrentRouteHasVolumeControlDidChangeNotification:(id)arg1;
 - (void)_handleSystemVolumeDidChangeNotification:(id)arg1;
-- (void)_handleEUVolumeLimitDidChangeNotification:(id)arg1;
 - (void)_handleSystemControllerServerDiedNotification;
-- (void)_unobserveSystemController;
-- (void)_observeSystemController;
+- (void)_unobserveSystemControllerIfNeeded;
+- (void)_observeSystemControllerIfNeeded;
+- (void)_setupSystemController;
+- (id)_requestSharedSystemController;
 - (void)_postNotificationForNameIfFullyInitialized:(id)arg1 userInfo:(id)arg2;
+- (id)currentSystemController;
 - (void)setSystemVolumeHUDEnabled:(_Bool)arg1 forWindowSceneSessionIdentifier:(id)arg2;
-- (id)_windowSceneIdentifiersWithVolumeHUDAssertions;
+- (void)setSystemVolumeHUDEnabled:(_Bool)arg1 forSceneVolumeHudAssertion:(id)arg2;
 - (void)_removeVolumeHUDAssertionsForClientID:(id)arg1;
-- (void)setClientWithIdentifier:(id)arg1 prefersSystemVolumeHUDHidden:(_Bool)arg2 forWindowSceneSessionWithIdentifier:(id)arg3;
+- (void)setClientWithIdentifier:(id)arg1 forWindowSceneSessionWithIdentifier:(id)arg2;
 - (void)endChangingVolume;
-- (void)beginChangingVolumeForWindowSceneSessionID:(id)arg1;
-@property(readonly, nonatomic) float effectiveVolumeLimit;
+- (void)beginChangingVolume;
 - (void)setTargetVolume:(float)arg1;
 - (void)dealloc;
 - (id)init;

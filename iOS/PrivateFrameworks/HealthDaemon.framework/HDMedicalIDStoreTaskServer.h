@@ -17,7 +17,6 @@
 + (_Bool)validateClient:(id)arg1 error:(id *)arg2;
 - (id)remoteInterface;
 - (id)exportedInterface;
-- (void)remote_badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_medicalIDClinicalContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_medicalIDEmergencyContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_deleteMedicalIDDataWithLastFetchedMedicalIDData:(id)arg1 completion:(CDUnknownBlockType)arg2;

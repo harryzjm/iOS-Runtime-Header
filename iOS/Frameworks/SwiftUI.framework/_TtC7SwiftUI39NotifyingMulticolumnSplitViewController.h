@@ -6,6 +6,8 @@
 
 #import <UIKit/UISplitViewController.h>
 
+@class UIViewController;
+
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI39NotifyingMulticolumnSplitViewController : UISplitViewController
 {
@@ -14,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, readonly) UIViewController *childViewControllerForStatusBarHidden;
 - (id)makeDetailNavigationControllerWithRoot:(id)arg1;
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;
 

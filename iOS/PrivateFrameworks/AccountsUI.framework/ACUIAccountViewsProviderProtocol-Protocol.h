@@ -16,6 +16,8 @@
 - (NSArray *)supportedAccountTypeIdentifiers;
 
 @optional
+- (Class)controllerClassForCreatingRemoteAccountWithType:(NSString *)arg1;
+- (NSString *)localizedStringForDataclass:(NSString *)arg1 withSuffix:(NSString *)arg2 forAccount:(ACAccount *)arg3;
 - (_Bool)setDelegate:(id)arg1 forSignInController:(id)arg2;
 - (Class)controllerClassForCreatingAccountWithType:(NSString *)arg1;
 @end

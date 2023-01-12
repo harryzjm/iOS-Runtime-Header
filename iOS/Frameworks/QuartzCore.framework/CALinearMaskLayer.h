@@ -13,7 +13,7 @@
 + (id)defaultValueForKey:(id)arg1;
 @property struct CGColor *foregroundColor;
 - (void)drawInLinearMaskContext:(struct CALinearMaskContext *)arg1;
-- (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
+- (void *)_copyRenderLayer:(void *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 
 // Remaining properties
 @property __weak id <CALinearMaskLayerDelegate><CALayerDelegate> delegate; // @dynamic delegate;

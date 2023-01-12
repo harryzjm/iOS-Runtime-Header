@@ -13,6 +13,7 @@
     NSString *_contentIdentifier;
     NSString *_bundleIdentifier;
     unsigned long long _displayType;
+    unsigned long long _flags;
     long long _state;
     long long _ineligibleReason;
     NSArray *_eligibleContext;
@@ -24,7 +25,9 @@
 + (id)performedOutcomeEventWithContentIdentifer:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 context:(id)arg4 date:(id)arg5;
 + (id)ineligibleEventWithContentIdentifer:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 context:(id)arg4 reason:(long long)arg5 date:(id)arg6;
 + (id)contentViewedEventWithContentIdentifer:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 date:(id)arg4;
++ (id)hintDisplayedEventWithContentIdentifer:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 flags:(unsigned long long)arg4 context:(id)arg5 date:(id)arg6;
 + (id)hintDisplayedEventWithContentIdentifer:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 context:(id)arg4 date:(id)arg5;
++ (id)eligibleEventWithContentIdentifer:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 flags:(unsigned long long)arg4 eligibleContext:(id)arg5 date:(id)arg6;
 + (id)eligibleEventWithContentIdentifer:(id)arg1 bundleIdentifier:(id)arg2 type:(unsigned long long)arg3 eligibleContext:(id)arg4 date:(id)arg5;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDate *date; // @synthesize date=_date;
@@ -32,6 +35,7 @@
 @property(copy, nonatomic) NSArray *eligibleContext; // @synthesize eligibleContext=_eligibleContext;
 @property(nonatomic) long long ineligibleReason; // @synthesize ineligibleReason=_ineligibleReason;
 @property(nonatomic) long long state; // @synthesize state=_state;
+@property(nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property(nonatomic) unsigned long long displayType; // @synthesize displayType=_displayType;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;

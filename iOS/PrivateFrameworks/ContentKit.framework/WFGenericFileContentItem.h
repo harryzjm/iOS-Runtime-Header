@@ -13,7 +13,8 @@
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4 cachingIdentifier:(id)arg5;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (_Bool)isContent;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;

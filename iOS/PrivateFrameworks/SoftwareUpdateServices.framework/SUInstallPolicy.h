@@ -8,8 +8,11 @@
 
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface SUInstallPolicy : NSObject <NSSecureCoding>
 {
+    NSString *_clientName;
     unsigned long long _skipsAllowed;
     unsigned long long _type;
     _Bool _autoUpdateEnabled;
@@ -21,6 +24,7 @@
 @property(readonly, nonatomic) _Bool autoUpdateEnabled; // @synthesize autoUpdateEnabled=_autoUpdateEnabled;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(nonatomic) unsigned long long skipsAllowed; // @synthesize skipsAllowed=_skipsAllowed;
+@property(retain, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
@@ -29,6 +33,7 @@
 - (void)_setDarkBoolEnabled:(_Bool)arg1;
 - (void)_setAutoUpdateEnabled:(_Bool)arg1;
 - (void)_setType:(unsigned long long)arg1;
+- (void)_setClientName:(id)arg1;
 - (id)initWithInstallPolicyType:(unsigned long long)arg1;
 - (id)init;
 

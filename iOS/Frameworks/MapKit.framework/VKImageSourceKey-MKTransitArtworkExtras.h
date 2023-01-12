@@ -10,7 +10,7 @@
 #import <MapKit/GEOTransitIconDataSource-Protocol.h>
 #import <MapKit/GEOTransitShieldDataSource-Protocol.h>
 
-@class NSString;
+@class GEOStyleAttributes, NSString;
 @protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
 @interface VKImageSourceKey (MKTransitArtworkExtras) <GEOTransitArtworkDataSource, GEOTransitIconDataSource, GEOTransitShieldDataSource>
@@ -35,6 +35,7 @@
 @property(readonly, nonatomic) unsigned int iconAttributeValue;
 @property(readonly, nonatomic) NSString *shieldText;
 @property(readonly, nonatomic) long long shieldType;
+@property(readonly, nonatomic) GEOStyleAttributes *styleAttributes;
 @property(readonly) Class superclass;
 @end
 

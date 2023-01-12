@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (id)findExistingDetectedFaceForRebuildFace:(id)arg1 onAsset:(id)arg2;
 - (id)insertDetectedFaceForRebuildFace:(id)arg1 onAsset:(id)arg2;
+- (void)_insertDetectionTraitsForRebuildTrait:(id)arg1 onDetection:(id)arg2;
 - (id)findOrInsertDetectedFaceForRebuildFace:(id)arg1 onAsset:(id)arg2;
 - (void)rebuildHiddenFace:(id)arg1 onAsset:(id)arg2;
 - (void)rebuildRejectedFace:(id)arg1 onAsset:(id)arg2 person:(id)arg3;

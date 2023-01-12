@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebMediaSessionHelper : NSObject
 {
-    struct MediaSessionHelperiOS *_callback;
+    void *_callback;
     struct RetainPtr<AVRouteDetector> _routeDetector;
     _Bool _monitoringAirPlayRoutes;
     _Bool _startMonitoringAirPlayRoutesPending;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasWirelessTargetsAvailable;
 - (void)clearCallback;
 - (void)dealloc;
-- (id)initWithCallback:(struct MediaSessionHelperiOS *)arg1;
+- (id)initWithCallback:(void *)arg1;
 
 @end
 

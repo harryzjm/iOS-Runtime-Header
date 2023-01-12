@@ -16,6 +16,7 @@
 @interface WFWidgetViewController : UIViewController <WFWidgetGridViewDelegate, WFWorkflowRunnerClientDelegate, WFObservableResultObserver>
 {
     _Bool _running;
+    _Bool _needsLayout;
     WFObservableResult *_observedResult;
     WFWidgetGridView *_gridView;
     double _cornerRadius;
@@ -27,12 +28,13 @@
 + (id)progressSubscribers;
 + (id)runningStates;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
+@property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
+@property(nonatomic) _Bool needsLayout; // @synthesize needsLayout=_needsLayout;
 @property(nonatomic) _Bool running; // @synthesize running=_running;
 @property(retain, nonatomic) WFWidgetWorkflowRunnerClient *client; // @synthesize client=_client;
 @property(readonly, nonatomic) WFWidgetOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property(retain, nonatomic) WFWidgetGridView *gridView; // @synthesize gridView=_gridView;
+@property(readonly, nonatomic) WFWidgetGridView *gridView; // @synthesize gridView=_gridView;
 @property(retain, nonatomic) WFObservableResult *observedResult; // @synthesize observedResult=_observedResult;
 - (void)workflowRunnerClient:(id)arg1 didFinishRunningWorkflowWithError:(id)arg2 cancelled:(_Bool)arg3;
 - (void)gridView:(id)arg1 cellDidTransitionToRunningState:(long long)arg2;
@@ -52,9 +54,10 @@
 - (_Bool)_canShowWhileLocked;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)addDefaultShortcutsIfNecessaryWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)refreshWorkflowsWithLimit:(long long)arg1;
-- (void)layoutWithWorkflows:(id)arg1;
+- (void)refreshWorkflows;
+- (void)layoutWithObservableResult:(id)arg1;
 - (void)performInitialFetch;
+- (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithOptions:(id)arg1;

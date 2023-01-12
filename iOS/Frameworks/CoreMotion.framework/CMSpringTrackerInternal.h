@@ -10,7 +10,7 @@
 
 @interface CMSpringTrackerInternal : NSObject
 {
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
     _Bool fTrackingStarted;
     CDUnknownBlockType fHandler;

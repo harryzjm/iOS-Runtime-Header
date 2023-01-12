@@ -6,12 +6,13 @@
 
 @class SBAppLayout, SBCoplanarSwitcherModifier, SBFullScreenToHomeIconZoomSwitcherModifier;
 
-@interface SBFullScreenToHomePiPSwitcherModifier
+@interface SBFullScreenToHomePIPSwitcherModifier
 {
     SBAppLayout *_appLayout;
     struct CGPoint _finalCenter;
     double _finalScale;
     double _sourceAlpha;
+    _Bool _shouldHide;
     SBCoplanarSwitcherModifier *_coplanarModifier;
     SBFullScreenToHomeIconZoomSwitcherModifier *_zoomModifier;
 }
@@ -27,13 +28,17 @@
 - (long long)wallpaperStyle;
 - (_Bool)isWallpaperRequiredForSwitcher;
 - (long long)homeScreenBackdropBlurType;
-- (double)opacityForIndex:(unsigned long long)arg1;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (double)rotationAngleForIndex:(unsigned long long)arg1;
+- (id)visibleHomeAffordanceLayoutElements;
 - (id)visibleAppLayouts;
+- (_Bool)clipsToBoundsAtIndex:(unsigned long long)arg1;
+- (struct CGRect)clippingFrameForIndex:(unsigned long long)arg1 withBounds:(struct CGRect)arg2;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
+- (id)handleHideMorphToPIPAppLayoutEvent:(id)arg1;
 - (id)transitionWillBegin;
 - (void)didMoveToParentModifier:(id)arg1;
 - (_Bool)completesWhenChildrenComplete;

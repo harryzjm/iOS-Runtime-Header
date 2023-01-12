@@ -8,6 +8,9 @@
 {
 }
 
++ (id)_traitsArbiterOrientationActuationRole;
++ (_Bool)sb_autorotates;
+- (_Bool)isContentHidden;
 - (_Bool)_canBecomeKeyWindow;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)floatingDockRootViewController;

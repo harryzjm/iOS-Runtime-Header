@@ -17,6 +17,8 @@
     _Bool _URLStartedAccessingSecurityScopedResource;
 }
 
++ (id)sandboxedURLByResolvingBookmarkData:(id)arg1 options:(unsigned long long)arg2 relativeToURL:(id)arg3 bookmarkDataIsStale:(_Bool *)arg4 error:(id *)arg5;
++ (id)sandboxedURLByResolvingBookmarkData:(id)arg1 relativeToURL:(id)arg2 bookmarkDataIsStale:(_Bool *)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 @property(readonly) TSUSandboxedURL *sandboxedURL;
 @property(readonly) unsigned long long hash;
@@ -28,6 +30,8 @@
 @property(readonly) _Bool hasSandboxAccess;
 @property(readonly) NSURL *URL;
 - (void)dealloc;
+- (id)initByResolvingBookmarkData:(id)arg1 options:(unsigned long long)arg2 relativeToURL:(id)arg3 bookmarkDataIsStale:(_Bool *)arg4 error:(id *)arg5;
+- (id)initByResolvingBookmarkData:(id)arg1 relativeToURL:(id)arg2 bookmarkDataIsStale:(_Bool *)arg3 error:(id *)arg4;
 - (id)initWithURL:(id)arg1;
 - (id)init;
 - (_Bool)hasUnresolvedConflicts:(out _Bool *)arg1 error:(id *)arg2;

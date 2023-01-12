@@ -13,14 +13,14 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreTextTrackRepresentationCocoaHelper : NSObject <CALayerDelegate>
 {
-    struct TextTrackRepresentationCocoa *_parent;
+    void *_parent;
 }
 
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-@property struct TextTrackRepresentationCocoa *parent;
+@property void *parent;
 - (void)dealloc;
-- (id)initWithParent:(struct TextTrackRepresentationCocoa *)arg1;
+- (id)initWithParent:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

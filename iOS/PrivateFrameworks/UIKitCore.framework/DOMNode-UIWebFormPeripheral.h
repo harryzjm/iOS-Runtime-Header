@@ -11,12 +11,11 @@
 #import <UIKitCore/UITextInputPrivate-Protocol.h>
 #import <UIKitCore/UITextInputTokenizer-Protocol.h>
 #import <UIKitCore/UITextInput_Internal-Protocol.h>
-#import <UIKitCore/UIWebSelectionBlock-Protocol.h>
 
-@class NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UIResponder, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView;
+@class NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UIResponder, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UISupplementalLexicon;
 @protocol UITextInput, UITextInputDelegate, UITextInputPrivate, UITextInputSuggestionDelegate, UITextInputTokenizer;
 
-@interface DOMNode (UIWebFormPeripheral) <UITextInput_Internal, UIWebSelectionBlock, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer>
+@interface DOMNode (UIWebFormPeripheral) <UITextInput_Internal, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer>
 - (id)createPeripheral;
 - (id)itemTitle;
 - (void)populateCell:(id)arg1;
@@ -57,6 +56,7 @@
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
 - (id)_rangeOfSmartSelectionIncludingRange:(id)arg1;
 - (id)_findPleasingWordBoundaryFromPosition:(id)arg1;
+- (_Bool)_range:(id)arg1 isEqualToRange:(id)arg2;
 - (id)_intersectionOfRange:(id)arg1 andRange:(id)arg2;
 - (_Bool)_range:(id)arg1 intersectsRange:(id)arg2;
 - (_Bool)_range:(id)arg1 containsRange:(id)arg2;
@@ -75,6 +75,7 @@
 - (void)_transpose;
 - (void)_deleteForwardAndNotify:(_Bool)arg1;
 - (void)_deleteBackwardAndNotify:(_Bool)arg1;
+- (void)_deleteTextRange:(id)arg1;
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToStartOfLine;
@@ -115,30 +116,6 @@
 - (id)_keyInput;
 @property(readonly, nonatomic, getter=_proxyTextInput) UIResponder<UITextInput> *__content;
 @property(readonly, nonatomic) UIView *textInputView;
-- (id)lastDescendantOfAboutTheSameWidthOrHeight;
-- (id)firstDescendantOfAboutTheSameWidthOrHeight;
-- (id)firstDescendantOfAboutTheSameWidthOrHeightAsRect:(struct CGRect)arg1 withDescentDirection:(int)arg2;
-- (id)enclosingDocument;
-- (struct CGRect)boundingRectAndInsideFixedPosition:(int *)arg1;
-- (struct CGRect)boundingRect;
-- (_Bool)canShrinkDirectlyToTextOnly;
-- (id)rangeOfContents;
-- (_Bool)containsRange:(id)arg1;
-- (id)asDomRange;
-- (id)asDomNode;
-- (_Bool)rendersAsBlock;
-- (id)largerParent;
-- (_Bool)strictlyContainsBlock:(id)arg1;
-- (_Bool)containsBlock:(id)arg1;
-- (_Bool)isSameBlock:(id)arg1;
-- (_Bool)hasCustomLineHeight;
-- (_Bool)selectable;
-- (id)parentBlock;
-- (id)webFrame;
-- (id)enclosingElementIncludingSelf;
-- (id)asElement;
-- (_Bool)strictlyContainsNode:(id)arg1;
-- (_Bool)containsNode:(id)arg1;
 - (id)urlScheme;
 - (id)tagName;
 - (id)_realNode;
@@ -297,6 +274,7 @@
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(readonly, copy) NSString *description;
 @property(nonatomic, getter=isDevicePasscodeEntry) _Bool devicePasscodeEntry;
+@property(nonatomic) _Bool disableHandwritingKeyboard;
 @property(nonatomic) _Bool disableInputBars;
 @property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureEditsUsingPlainText;
@@ -322,12 +300,17 @@
 @property(nonatomic) _Bool loadKeyboardsForSiriLanguage;
 @property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) _Bool preferOnlineDictation;
+@property(nonatomic) long long preferredKeyboardStyle;
 @property(copy, nonatomic) NSString *recentInputIdentifier;
 @property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
 @property(retain, nonatomic) UIColor *selectionBarColor;
+@property(retain, nonatomic) UIColor *selectionBorderColor;
+@property(nonatomic) double selectionBorderWidth;
+@property(nonatomic) double selectionCornerRadius;
 @property(retain, nonatomic) UIImage *selectionDragDotImage;
+@property(nonatomic) struct UIEdgeInsets selectionEdgeInsets;
 @property(nonatomic) long long selectionGranularity;
 @property(retain, nonatomic) UIColor *selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType;
@@ -337,9 +320,12 @@
 @property(nonatomic) long long smartQuotesType;
 @property(nonatomic) long long spellCheckingType;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) _UISupplementalLexicon *supplementalLexicon;
+@property(retain, nonatomic) UIImage *supplementalLexiconAmbiguousItemIcon;
 @property(readonly, nonatomic) _Bool supportsImagePaste;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(copy, nonatomic) NSString *textContentType;
+@property(readonly, nonatomic) UITextRange *textRangeForServicesInteraction;
 @property(nonatomic) long long textScriptType;
 @property(nonatomic) int textSelectionBehavior;
 @property(retain, nonatomic) UIColor *underlineColorForSpelling;

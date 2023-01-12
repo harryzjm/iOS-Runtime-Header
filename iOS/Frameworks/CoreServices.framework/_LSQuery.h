@@ -24,6 +24,8 @@
 - (id)init;
 - (_Bool)_requiresDatabaseMappingEntitlement;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)resolveExpensiveQueryRemotelyUsingResolver:(id)arg1 error:(id *)arg2;
+- (_Bool)_remoteResolutionIsExpensive;
 - (_Bool)_canResolveLocallyWithoutMappingDatabase;
 - (id)_init;
 

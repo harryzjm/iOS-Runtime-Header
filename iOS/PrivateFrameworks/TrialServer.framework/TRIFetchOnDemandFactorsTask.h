@@ -4,26 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TrialServer/TRICancellableTask-Protocol.h>
 #import <TrialServer/TRIMetricsProviding-Protocol.h>
 #import <TrialServer/TRIRetryableTask-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableArray, NSString;
-@protocol TRITaskAttributing, TRITaskQueueStateProviding;
+@class NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString, TRIRolloutDeployment, TRITrialSystemTelemetry, _PASLock;
+@protocol TRIArtifactProvider, TRITaskAttributing, TRITaskQueueStateProviding;
 
-@interface TRIFetchOnDemandFactorsTask <TRIRetryableTask, TRIMetricsProviding>
+@interface TRIFetchOnDemandFactorsTask <TRIRetryableTask, TRIMetricsProviding, TRICancellableTask>
 {
     NSDictionary *_assetIndexesByTreatment;
+    NSDictionary *_assetIdsByFactorPack;
+    NSSet *_rolloutFactorNames;
     NSString *_namespaceName;
     id <TRITaskAttributing> _taskAttributing;
     int _retryCount;
     NSString *_notificationKey;
+    _Atomic _Bool _isCurrentlyExecuting;
+    TRITrialSystemTelemetry *_trialSystemTelemetry;
     NSMutableArray *_metrics;
+    NSMutableArray *_dimensions;
+    id <TRIArtifactProvider> _artifactProvider;
+    _PASLock *_lock;
+    NSMutableDictionary *_factorNameByAssetId;
+    _Bool wasDeferred;
+    TRIRolloutDeployment *_deployment;
+    NSString *_experimentId;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)parseFromData:(id)arg1;
-+ (id)taskWithAssetIndexesByTreatment:(id)arg1 namespaceName:(id)arg2 taskAttributing:(id)arg3 notificationKey:(id)arg4;
++ (id)taskWithAssetIndexesByTreatment:(id)arg1 experimentId:(id)arg2 assetIdsByFactorPack:(id)arg3 rolloutFactorNames:(id)arg4 rolloutDeployment:(id)arg5 namespaceName:(id)arg6 taskAttributing:(id)arg7 notificationKey:(id)arg8;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+@property(readonly, nonatomic) TRIRolloutDeployment *deployment; // @synthesize deployment=_deployment;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;
@@ -31,14 +46,34 @@
 @property(nonatomic) int retryCount;
 - (id)serialize;
 - (id)_asPersistedTask;
+- (void)_logOnDemandFactor:(id)arg1 metricName:(id)arg2 namespaceName:(id)arg3 client:(id)arg4;
+- (id)trialSystemTelemetry;
 - (id)dimensions;
 - (id)metrics;
+- (void)_addDimension:(id)arg1;
 - (void)_addMetric:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (void)willBeCancelledByTaskQueue:(id)arg1 withContext:(id)arg2;
+- (void)_asyncFetchAssetsFromAssetRecordsWithContext:(id)arg1 plan:(id)arg2 aggregateProgress:(id)arg3 downloadSize:(unsigned long long *)arg4 options:(id)arg5 group:(id)arg6 downloadedFactors:(id)arg7;
+- (id)_fetchDiffsFromAssetDiffRecordsWithContext:(id)arg1 plan:(id)arg2 aggregateProgress:(id)arg3 downloadSize:(unsigned long long *)arg4 options:(id)arg5 downloadedFactors:(id)arg6;
+- (void)_asyncFetchAssetsFromTreatmentRecordsWithContext:(id)arg1 plan:(id)arg2 aggregateProgress:(id)arg3 downloadSize:(unsigned long long *)arg4 downloadOptions:(id)arg5 group:(id)arg6;
+- (id)_planForFetchingAssetsFromFactorPacksWithContext:(id)arg1 assetDiffFetchPlan:(id)arg2 requiredAssetIds:(id)arg3 downloadOptions:(id)arg4 updatingAggregateProgress:(id)arg5;
+- (id)_planForFetchingAssetDiffsWithContext:(id)arg1 downloadOptions:(id)arg2 updatingAggregateProgress:(id)arg3 nonDiffableAssetIds:(id *)arg4;
+- (id)_planForFetchingAssetsFromTreatmentRecordsWithContext:(id)arg1 downloadOptions:(id)arg2 updatingAggregateProgress:(id)arg3;
+- (id)_currentTaskStatus;
+- (void)_completeTaskWithStatus:(int)arg1 earliestRetryDate:(id)arg2 error:(id)arg3 aggregateProgress:(id)arg4 context:(id)arg5;
 - (id)runUsingContext:(id)arg1 withTaskQueue:(id)arg2;
-- (int)_processTreatmentArtifact:(id)arg1 treatmentId:(id)arg2 paths:(id)arg3;
-- (id)initWithAssetIndexesByTreatment:(id)arg1 namespaceName:(id)arg2 taskAttributing:(id)arg3 notificationKey:(id)arg4;
+- (id)_fetchOptionsWithDownloadOptions:(id)arg1 paths:(id)arg2;
+- (id)_assetIdsFromKeysInDictionary:(id)arg1;
+- (_Bool)_updateFactorPacksByMergingAssetsWithIds:(id)arg1 paths:(id)arg2;
+- (_Bool)_saveNamedAssetURLs:(id)arg1 usingAssetMetadata:(id)arg2 downloadSize:(unsigned long long *)arg3 paths:(id)arg4 error:(id *)arg5;
+- (_Bool)_saveIndexedAssetURLs:(id)arg1 withTreatmentId:(id)arg2 usingAssetMetadata:(id)arg3 paths:(id)arg4 downloadSize:(unsigned long long *)arg5 error:(id *)arg6;
+@property(readonly, nonatomic) NSArray *tags;
+@property(readonly, nonatomic) id <TRITaskAttributing> taskAttribution;
+- (id)_telemetryForFactorPackIds:(id)arg1 rolloutDeployment:(id)arg2 treatmentIds:(id)arg3 experimentId:(id)arg4 namespaceName:(id)arg5 taskAttributing:(id)arg6;
+- (id)initWithAssetIndexesByTreatment:(id)arg1 experimentId:(id)arg2 assetIdsByFactorPack:(id)arg3 rolloutFactorNames:(id)arg4 rolloutDeployment:(id)arg5 namespaceName:(id)arg6 taskAttributing:(id)arg7 notificationKey:(id)arg8;
+@property(readonly, nonatomic) _Bool isCurrentlyExecuting;
 @property(readonly, nonatomic) int taskType;
 
 // Remaining properties
@@ -47,7 +82,6 @@
 @property(copy, nonatomic) NSDate *startTime;
 @property(nonatomic) __weak id <TRITaskQueueStateProviding> stateProvider;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) NSArray *tags;
 @property(readonly, nonatomic) NSString *taskName;
 
 @end

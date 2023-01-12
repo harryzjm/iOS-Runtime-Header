@@ -7,7 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface CHLogServer
 {
-    struct unordered_map<const char *, os_log_s *, std::__1::hash<const char *>, std::__1::equal_to<const char *>, std::__1::allocator<std::__1::pair<const char *const, os_log_s *>>> fLogHandles;
+    struct unordered_map<const char *, os_log_s *, std::hash<const char *>, std::equal_to<const char *>, std::allocator<std::pair<const char *const, os_log_s *>>> fLogHandles;
 }
 
 + (id)instance;

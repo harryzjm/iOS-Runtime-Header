@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class SBHWidgetWrapperViewController, UIView;
+@class SBHWidgetWrapperViewController, UILabel, UIView;
 
 @interface SBHAddWidgetSheetGalleryCollectionViewCell : UICollectionViewCell
 {
@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property(retain, nonatomic) SBHWidgetWrapperViewController *widgetWrapperViewController; // @synthesize widgetWrapperViewController=_widgetWrapperViewController;
+@property(readonly, nonatomic) UILabel *debugLabel;
 - (void)prepareForReuse;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;

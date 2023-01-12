@@ -13,25 +13,30 @@
 @interface PXForYouGadgetViewController <PXSettingsKeyObserver, PXNavigableForYouViewController, PXNavigableSharedAlbumActivityFeedHostViewController>
 {
     _Bool _needsRefresh;
+    _Bool _rootGadgetControllerHasAppearedOnce;
     PXForYouBadgeManager *_badgeManager;
     PXForYouGadgetPriorityManager *_priorityManager;
 }
 
-+ (id)lastExitedForYouDate;
 + (void)setLastExitedForYouDate:(id)arg1;
++ (id)lastExitedForYouDate;
++ (id)lastExitedDateAccessor;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool rootGadgetControllerHasAppearedOnce; // @synthesize rootGadgetControllerHasAppearedOnce=_rootGadgetControllerHasAppearedOnce;
 @property(nonatomic) _Bool needsRefresh; // @synthesize needsRefresh=_needsRefresh;
 @property(retain, nonatomic) PXForYouGadgetPriorityManager *priorityManager; // @synthesize priorityManager=_priorityManager;
 @property(retain, nonatomic) PXForYouBadgeManager *badgeManager; // @synthesize badgeManager=_badgeManager;
+- (void)ppt_navigateToContentSyndicationGridViewControllerWithCompleteHandler:(CDUnknownBlockType)arg1;
+- (void)ppt_navigateToLatestMemoryWithWillPresentHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)ppt_navigateToFirstInvitationCMM:(_Bool)arg1 withCompleteHandler:(CDUnknownBlockType)arg2;
 - (void)ppt_navigateToFirstSuggestedCMMComposeRecipientViewAfterOneSecondWithCompleteHandler:(CDUnknownBlockType)arg1;
 - (void)ppt_navigateToFirstSuggestedCMMAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)px_navigationDestination;
+- (unsigned long long)_gadgetTypeForDestinationType:(long long)arg1;
 - (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)routingOptionsForDestination:(id)arg1;
+- (unsigned long long)routingOptionsForDestination:(id)arg1;
 - (void)navigateToSharedAlbumActivityFeedAnimated:(_Bool)arg1 configuration:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)navigateToShowAllMemoriesFeedAnimated:(_Bool)arg1;
-- (void)navigateToDetailsForMemoryWithLocalIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)_userDidViewCloudFeedContent;
 - (id)_suggestionDumpURL;
 - (void)_handleTapToRadar;

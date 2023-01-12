@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
     double _controlInfoArrivalTime;
     CDStruct_b4442fdd _controlFeedbackParameter;
     _Bool _videoEnabled;
+    unsigned short _controlInfoSequenceNumber;
+    _Bool _controlInfoIsDuplicatePacket;
+    _Bool _controlInfoIsReceivedOnPrimary;
 }
 
 @property _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
@@ -23,8 +26,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasInfoType:(unsigned int)arg1;
 - (int)setInfo:(void *)arg1 size:(unsigned long long)arg2 type:(unsigned int)arg3;
 - (int)getInfoUnserialized:(CDStruct_b4442fdd *)arg1 type:(unsigned int)arg2;
-- (int)configureWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_39aa150d *)arg3;
-- (int)handleOptionalControlInfo:(CDStruct_39aa150d *)arg1;
+- (int)configureWithBuffer:(const char *)arg1 length:(unsigned long long)arg2 optionalControlInfo:(CDStruct_d3f1d543 *)arg3;
+- (int)handleOptionalControlInfo:(CDStruct_d3f1d543 *)arg1;
 - (id)description;
 - (unsigned long long)serializedSize;
 @property(readonly) unsigned long long feedbackSize;

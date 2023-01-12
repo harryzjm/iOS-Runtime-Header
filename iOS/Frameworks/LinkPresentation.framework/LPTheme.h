@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarStyle, LPImageViewStyle, LPPointUnit, LPTapToLoadViewStyle, LPTextViewStyle, LPVideoViewStyle, UIColor, UIFont;
+@class LPCaptionBarStyle, LPContactsBadgeStyle, LPImageViewStyle, LPPointUnit, LPQuotedTextViewStyle, LPTapToLoadViewStyle, LPVideoViewStyle, NSString, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface LPTheme : NSObject
@@ -15,12 +15,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _sizeClass;
     long long _platform;
     _Bool _isFallbackIcon;
+    double _dynamicTypeLeadingScalingFactor;
+    NSString *_preferredContentSizeCategory;
+    LPPointUnit *_cornerRadius;
     UIColor *_backgroundColor;
     UIColor *_highlightColor;
     LPCaptionBarStyle *_captionBar;
-    LPTextViewStyle *_quotedText;
+    LPQuotedTextViewStyle *_quotedText;
     LPImageViewStyle *_mediaImage;
-    LPImageViewStyle *_placeholderIcon;
+    LPImageViewStyle *_placeholderImage;
     LPVideoViewStyle *_mediaVideo;
     UIColor *_mediaBackgroundColor;
     LPCaptionBarStyle *_mediaTopCaptionBar;
@@ -28,6 +31,8 @@ __attribute__((visibility("hidden")))
     LPTapToLoadViewStyle *_tapToLoad;
     UIFont *_domainNameIndicatorFont;
     UIFont *_domainNameIndicatorIconFont;
+    LPImageViewStyle *_backgroundImage;
+    LPContactsBadgeStyle *_contactsBadgeStyle;
     LPPointUnit *_maximumWidth;
     LPPointUnit *_maximumIntrinsicHeight;
     double _widthFractionForTallMedia;
@@ -36,7 +41,7 @@ __attribute__((visibility("hidden")))
 + (id)iconPlatterCornerRadius;
 + (id)iconPlatterPaddingForReason:(long long)arg1;
 + (void)addClient:(id)arg1;
-+ (id)themeWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4;
++ (id)themeWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4 preferredContentSizeCategory:(id)arg5;
 + (id)secondaryLabelColor;
 + (id)primaryLabelColor;
 + (double)largestIconSizeInPoints;
@@ -46,6 +51,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double widthFractionForTallMedia; // @synthesize widthFractionForTallMedia=_widthFractionForTallMedia;
 @property(retain, nonatomic) LPPointUnit *maximumIntrinsicHeight; // @synthesize maximumIntrinsicHeight=_maximumIntrinsicHeight;
 @property(retain, nonatomic) LPPointUnit *maximumWidth; // @synthesize maximumWidth=_maximumWidth;
+@property(readonly, nonatomic) LPContactsBadgeStyle *contactsBadgeStyle; // @synthesize contactsBadgeStyle=_contactsBadgeStyle;
+@property(readonly, nonatomic) LPImageViewStyle *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(readonly, nonatomic) UIFont *domainNameIndicatorIconFont; // @synthesize domainNameIndicatorIconFont=_domainNameIndicatorIconFont;
 @property(readonly, nonatomic) UIFont *domainNameIndicatorFont; // @synthesize domainNameIndicatorFont=_domainNameIndicatorFont;
 @property(readonly, nonatomic) LPTapToLoadViewStyle *tapToLoad; // @synthesize tapToLoad=_tapToLoad;
@@ -53,19 +60,19 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) LPCaptionBarStyle *mediaTopCaptionBar; // @synthesize mediaTopCaptionBar=_mediaTopCaptionBar;
 @property(retain, nonatomic) UIColor *mediaBackgroundColor; // @synthesize mediaBackgroundColor=_mediaBackgroundColor;
 @property(readonly, nonatomic) LPVideoViewStyle *mediaVideo; // @synthesize mediaVideo=_mediaVideo;
-@property(readonly, nonatomic) LPImageViewStyle *placeholderIcon; // @synthesize placeholderIcon=_placeholderIcon;
+@property(readonly, nonatomic) LPImageViewStyle *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property(readonly, nonatomic) LPImageViewStyle *mediaImage; // @synthesize mediaImage=_mediaImage;
-@property(readonly, nonatomic) LPTextViewStyle *quotedText; // @synthesize quotedText=_quotedText;
+@property(readonly, nonatomic) LPQuotedTextViewStyle *quotedText; // @synthesize quotedText=_quotedText;
 @property(readonly, nonatomic) LPCaptionBarStyle *captionBar; // @synthesize captionBar=_captionBar;
 @property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-- (id)CSSTextForProperty:(id)arg1 withValue:(id)arg2 allowsAlternateProperties:(_Bool)arg3;
-- (id)CSSTextForThemeProperty:(id)arg1 allowsAlternateProperties:(_Bool)arg2;
+@property(retain, nonatomic) LPPointUnit *cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+- (id)CSSTextForProperty:(id)arg1 withValue:(id)arg2;
+- (id)CSSTextForThemeProperty:(id)arg1;
 - (id)valueForThemeProperty:(id)arg1;
-- (id)CSSCustomPropertiesForThemePropertiesInSet:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)adjustForStyle;
-- (id)initWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4;
+- (id)initWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4 preferredContentSizeCategory:(id)arg5;
 
 @end
 

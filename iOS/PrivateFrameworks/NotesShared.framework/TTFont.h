@@ -31,8 +31,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)serialize;
-- (void)saveToArchive:(struct Font *)arg1;
-- (id)initWithArchive:(const struct Font *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)initWithData:(id)arg1;
 
 @end

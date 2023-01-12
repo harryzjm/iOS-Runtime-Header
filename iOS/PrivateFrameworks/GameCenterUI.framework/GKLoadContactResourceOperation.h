@@ -13,6 +13,7 @@
 }
 
 + (double)mainScreenScale;
+- (void).cxx_destruct;
 @property(retain, nonatomic) CNAvatarImageRenderer *monogrammer; // @synthesize monogrammer=_monogrammer;
 @property(readonly, copy, nonatomic) NSString *contactId; // @synthesize contactId=_contactId;
 - (id)makeFetchError;

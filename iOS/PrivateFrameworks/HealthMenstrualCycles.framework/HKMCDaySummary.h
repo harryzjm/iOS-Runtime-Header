@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <HealthMenstrualCycles/HKMCAdjacentFlowDay-Protocol.h>
+#import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, NSDictionary, NSNumber, NSSet;
+@class HKQuantity, NSArray, NSDictionary, NSNumber, NSSet, NSString;
 
-@interface HKMCDaySummary : NSObject <HKMCAdjacentFlowDay, NSSecureCoding, NSCopying>
+@interface HKMCDaySummary : NSObject <HKMCAdjacentFlowDay, HKRedactedDescription, NSSecureCoding, NSCopying>
 {
     _Bool _intermenstrualBleeding;
     long long _dayIndex;
@@ -20,23 +21,32 @@
     unsigned long long _symptoms;
     long long _sexualActivity;
     long long _ovulationTestResult;
+    long long _pregnancyTestResult;
+    long long _progesteroneTestResult;
     long long _cervicalMucusQuality;
     HKQuantity *_basalBodyTemperature;
     long long _menstrualFlowModificationDayIndex;
     NSNumber *_startOfCycleFromCycleTracking;
+    NSArray *_startedCycleFactors;
+    NSArray *_endedCycleFactors;
     NSDictionary *_sampleCountByType;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)emptyDaySummaryWithDayIndex:(long long)arg1;
-+ (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(_Bool)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 cervicalMucusQuality:(long long)arg7 basalBodyTemperature:(id)arg8 sampleCountByType:(id)arg9;
-+ (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(_Bool)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 cervicalMucusQuality:(long long)arg7 basalBodyTemperature:(id)arg8;
++ (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(_Bool)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 pregnancyTestResult:(long long)arg7 progesteroneTestResult:(long long)arg8 cervicalMucusQuality:(long long)arg9 basalBodyTemperature:(id)arg10 startedCycleFactors:(id)arg11 endedCycleFactors:(id)arg12 sampleCountByType:(id)arg13;
++ (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(_Bool)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 pregnancyTestResult:(long long)arg7 progesteroneTestResult:(long long)arg8 cervicalMucusQuality:(long long)arg9 basalBodyTemperature:(id)arg10 sampleCountByType:(id)arg11;
++ (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(_Bool)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 pregnancyTestResult:(long long)arg7 progesteroneTestResult:(long long)arg8 cervicalMucusQuality:(long long)arg9 basalBodyTemperature:(id)arg10;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *sampleCountByType; // @synthesize sampleCountByType=_sampleCountByType;
+@property(retain, nonatomic) NSArray *endedCycleFactors; // @synthesize endedCycleFactors=_endedCycleFactors;
+@property(retain, nonatomic) NSArray *startedCycleFactors; // @synthesize startedCycleFactors=_startedCycleFactors;
 @property(copy, nonatomic) NSNumber *startOfCycleFromCycleTracking; // @synthesize startOfCycleFromCycleTracking=_startOfCycleFromCycleTracking;
 @property(nonatomic) long long menstrualFlowModificationDayIndex; // @synthesize menstrualFlowModificationDayIndex=_menstrualFlowModificationDayIndex;
 @property(copy, nonatomic) HKQuantity *basalBodyTemperature; // @synthesize basalBodyTemperature=_basalBodyTemperature;
 @property(nonatomic) long long cervicalMucusQuality; // @synthesize cervicalMucusQuality=_cervicalMucusQuality;
+@property(nonatomic) long long progesteroneTestResult; // @synthesize progesteroneTestResult=_progesteroneTestResult;
+@property(nonatomic) long long pregnancyTestResult; // @synthesize pregnancyTestResult=_pregnancyTestResult;
 @property(nonatomic) long long ovulationTestResult; // @synthesize ovulationTestResult=_ovulationTestResult;
 @property(nonatomic) long long sexualActivity; // @synthesize sexualActivity=_sexualActivity;
 @property(nonatomic) unsigned long long symptoms; // @synthesize symptoms=_symptoms;
@@ -44,6 +54,8 @@
 @property(nonatomic) long long menstrualFlow; // @synthesize menstrualFlow=_menstrualFlow;
 @property(readonly, nonatomic) long long dayIndex; // @synthesize dayIndex=_dayIndex;
 @property(readonly, nonatomic) long long cervicalMucusQualitySampleCount;
+@property(readonly, nonatomic) long long progesteroneTestResultSampleCount;
+@property(readonly, nonatomic) long long pregnancyTestResultSampleCount;
 @property(readonly, nonatomic) long long ovulationTestResultSampleCount;
 @property(readonly, nonatomic) long long sexualActivitySampleCount;
 @property(readonly, nonatomic) long long menstrualFlowSampleCount;
@@ -52,6 +64,8 @@
 @property(readonly, nonatomic) _Bool isDataLogged;
 - (_Bool)_isBasalBodyTemperatureLogged;
 - (_Bool)_isCervicalMucusQualityLogged;
+- (_Bool)_isProgesteroneTestResultLogged;
+- (_Bool)_isPregnancyTestResultLogged;
 - (_Bool)_isOvulationTestResultLogged;
 - (_Bool)_isSexualActivityLogged;
 - (_Bool)_isSymptomsLogged;
@@ -62,7 +76,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)redactedDescription;
+@property(readonly, copy) NSString *hk_redactedDescription;
 - (id)description;
 - (_Bool)hasFlow;
 - (_Bool)hasConfirmedNoFlow;

@@ -10,7 +10,7 @@
 
 @interface _TtC13SiriInference24DateTimeConstraintSolver : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *constraintSet;
+    MISSING_TYPE *constraints;
     MISSING_TYPE *context;
     MISSING_TYPE *solvers;
     MISSING_TYPE *orderedConstraints;

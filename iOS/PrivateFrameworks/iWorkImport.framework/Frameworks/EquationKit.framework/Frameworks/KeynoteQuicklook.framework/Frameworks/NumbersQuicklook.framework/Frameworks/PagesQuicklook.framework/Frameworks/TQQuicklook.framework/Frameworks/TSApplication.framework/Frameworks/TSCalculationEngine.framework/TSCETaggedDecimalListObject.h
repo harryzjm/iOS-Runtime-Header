@@ -11,10 +11,10 @@
     struct TSCETaggedDecimalList _taggedList;
 }
 
-+ (id)createFromVector:(const struct TSCEVector *)arg1 functionSpec:(id)arg2 argumentIndex:(int)arg3 evaluationContext:(struct TSCEEvaluationContext *)arg4 ignoreError:(_Bool)arg5 ignoreDuplicates:(_Bool)arg6;
++ (id)createFromVector:(const struct TSCEGrid *)arg1 functionSpec:(id)arg2 argumentIndex:(int)arg3 evaluationContext:(struct TSCEEvaluationContext *)arg4 ignoreError:(_Bool)arg5 ignoreDuplicates:(_Bool)arg6;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct TSCETaggedDecimalList *)taggedDecimalList;
+- (void *)taggedDecimalList;
 
 @end
 

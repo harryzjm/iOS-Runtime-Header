@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebLogAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebLogAction <AMSUIWebActionRunnable>
 {
-    AMSUIWebClientContext *_context;
     long long _level;
     NSString *_message;
 }
@@ -21,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(nonatomic) long long level; // @synthesize level=_level;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 - (unsigned char)_logTypeFromLevel:(long long)arg1;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;

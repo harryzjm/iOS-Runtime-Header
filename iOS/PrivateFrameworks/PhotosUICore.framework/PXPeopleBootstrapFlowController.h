@@ -8,11 +8,12 @@
 
 #import <PhotosUICore/PXPeopleFlowController-Protocol.h>
 
-@class NSArray, NSString, PXPeopleBootstrapContext, UIViewController;
+@class NSArray, NSString, PXPeopleBootstrapContext, UIBarButtonItem, UIViewController;
 @protocol PXPeopleBootstrapFlowDelegate, PXPeopleFlowViewController, PXPeopleSuggestionManagerDataSource;
 
 @interface PXPeopleBootstrapFlowController : NSObject <PXPeopleFlowController>
 {
+    _Bool _wantsCancelButton;
     id <PXPeopleBootstrapFlowDelegate> _bootstrapDelegate;
     id <PXPeopleSuggestionManagerDataSource> _bootstrapDataSource;
     PXPeopleBootstrapContext *_context;
@@ -31,6 +32,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)cancel:(id)arg1;
 - (void)done:(id)arg1;
+@property(readonly, nonatomic) _Bool wantsCancelButton; // @synthesize wantsCancelButton=_wantsCancelButton;
 @property(readonly, nonatomic) UIViewController<PXPeopleFlowViewController> *previousViewController;
 @property(readonly, nonatomic) _Bool hasPreviousViewController;
 @property(readonly, nonatomic) UIViewController<PXPeopleFlowViewController> *nextViewController;
@@ -49,6 +51,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIBarButtonItem *leftBarButton;
 @property(readonly) Class superclass;
 
 @end

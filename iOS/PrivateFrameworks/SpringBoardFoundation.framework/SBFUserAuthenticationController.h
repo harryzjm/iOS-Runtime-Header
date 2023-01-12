@@ -44,6 +44,7 @@
 - (void)_clearUnblockTimer;
 - (void)_scheduleUnblockTimer;
 - (double)_timeUntilUnblockedSinceReferenceDate;
+- (_Bool)_isUserRequestedEraseEnabled;
 - (_Bool)_isPermanentlyBlocked;
 - (_Bool)_isTemporarilyBlocked;
 - (void)_notifyAboutTemporaryBlockStatusChanged;

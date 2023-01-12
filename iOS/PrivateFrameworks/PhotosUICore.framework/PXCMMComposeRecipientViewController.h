@@ -6,93 +6,54 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUICore/CNContactViewControllerDelegate-Protocol.h>
-#import <PhotosUICore/PXCMMComposeRecipientDataSourceManagerDelegate-Protocol.h>
-#import <PhotosUICore/PXCMMComposeRecipientSelectionManagerDelegate-Protocol.h>
-#import <PhotosUICore/PXCMMComposeRecipientValidationManagerDelegate-Protocol.h>
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
+#import <PhotosUICore/PXComposeRecipientTableViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
-#import <PhotosUICore/PXPhotoRecipientViewControllerDelegate-Protocol.h>
-#import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
-#import <PhotosUICore/UITableViewDataSource-Protocol.h>
-#import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
-@class NSMutableSet, NSProgress, NSString, PXCMMComposeRecipientDataSource, PXCMMComposeRecipientDataSourceManager, PXCMMComposeRecipientSelectionManager, PXCMMComposeRecipientValidationManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSession, PXCMMSpecManager, PXPhotoRecipientViewController, PXUpdater, UIButton, UILabel, UITableView, UIVisualEffectView;
-@protocol PXCMMActionControllerDelegate, PXCMMComposeRecipientViewControllerDelegate, PXCMMPersonSuggestion;
+@class NSProgress, NSString, PXCMMSession, PXCMMSpecManager, PXComposeRecipientTableViewController, PXComposeRecipientTableViewModel, PXUpdater, UIButton, UILabel, UIVisualEffectView;
+@protocol PXCMMActionControllerDelegate;
 
-@interface PXCMMComposeRecipientViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PXPhotoRecipientViewControllerDelegate, PXCMMComposeRecipientDataSourceManagerDelegate, PXCMMComposeRecipientSelectionManagerDelegate, PXCMMComposeRecipientValidationManagerDelegate, CNContactViewControllerDelegate, PXSettingsKeyObserver, PXDiagnosticsEnvironment>
+@interface PXCMMComposeRecipientViewController : UIViewController <PXChangeObserver, PXComposeRecipientTableViewControllerDelegate, PXDiagnosticsEnvironment>
 {
     PXCMMSession *_session;
-    id <PXCMMComposeRecipientViewControllerDelegate> _delegate;
     id <PXCMMActionControllerDelegate> _actionDelegate;
     PXCMMSpecManager *_specManager;
     PXUpdater *_updater;
-    UITableView *_composeRecipientTableView;
+    PXComposeRecipientTableViewModel *_tableViewModel;
+    PXComposeRecipientTableViewController *_tableViewController;
     UIVisualEffectView *_footerVisualEffectView;
     UILabel *_privacyMessageLabel;
     UIButton *_sendButton;
     NSProgress *_actionProgress;
-    PXCMMComposeRecipientDataSourceManager *_recipientManager;
-    PXCMMComposeRecipientDataSource *_recipientsDataSource;
-    PXCMMComposeRecipientSelectionManager *_recipientsSelectionManager;
-    PXCMMComposeRecipientValidationManager *_recipientsValidationManager;
-    PXCMMPeopleSuggestionsMediaProvider *_peopleSuggestionsMediaProvider;
-    PXPhotoRecipientViewController *_bootstrapRecipientViewController;
-    id <PXCMMPersonSuggestion> _personSuggestionForBootstrapping;
-    PXPhotoRecipientViewController *_addPeopleRecipientViewController;
     double _maximumContentWidth;
-    NSMutableSet *_transientRecipientSelection;
     UIButton *_tapToRadarButton;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIButton *tapToRadarButton; // @synthesize tapToRadarButton=_tapToRadarButton;
-@property(retain, nonatomic) NSMutableSet *transientRecipientSelection; // @synthesize transientRecipientSelection=_transientRecipientSelection;
 @property(nonatomic) double maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
-@property(retain, nonatomic) PXPhotoRecipientViewController *addPeopleRecipientViewController; // @synthesize addPeopleRecipientViewController=_addPeopleRecipientViewController;
-@property(retain, nonatomic) id <PXCMMPersonSuggestion> personSuggestionForBootstrapping; // @synthesize personSuggestionForBootstrapping=_personSuggestionForBootstrapping;
-@property(retain, nonatomic) PXPhotoRecipientViewController *bootstrapRecipientViewController; // @synthesize bootstrapRecipientViewController=_bootstrapRecipientViewController;
-@property(readonly, nonatomic) PXCMMPeopleSuggestionsMediaProvider *peopleSuggestionsMediaProvider; // @synthesize peopleSuggestionsMediaProvider=_peopleSuggestionsMediaProvider;
-@property(retain, nonatomic) PXCMMComposeRecipientValidationManager *recipientsValidationManager; // @synthesize recipientsValidationManager=_recipientsValidationManager;
-@property(retain, nonatomic) PXCMMComposeRecipientSelectionManager *recipientsSelectionManager; // @synthesize recipientsSelectionManager=_recipientsSelectionManager;
-@property(retain, nonatomic) PXCMMComposeRecipientDataSource *recipientsDataSource; // @synthesize recipientsDataSource=_recipientsDataSource;
-@property(retain, nonatomic) PXCMMComposeRecipientDataSourceManager *recipientManager; // @synthesize recipientManager=_recipientManager;
 @property(retain, nonatomic) NSProgress *actionProgress; // @synthesize actionProgress=_actionProgress;
 @property(retain, nonatomic) UIButton *sendButton; // @synthesize sendButton=_sendButton;
 @property(retain, nonatomic) UILabel *privacyMessageLabel; // @synthesize privacyMessageLabel=_privacyMessageLabel;
 @property(retain, nonatomic) UIVisualEffectView *footerVisualEffectView; // @synthesize footerVisualEffectView=_footerVisualEffectView;
-@property(retain, nonatomic) UITableView *composeRecipientTableView; // @synthesize composeRecipientTableView=_composeRecipientTableView;
+@property(retain, nonatomic) PXComposeRecipientTableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
+@property(retain, nonatomic) PXComposeRecipientTableViewModel *tableViewModel; // @synthesize tableViewModel=_tableViewModel;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property(readonly, nonatomic) PXCMMSpecManager *specManager; // @synthesize specManager=_specManager;
 @property(nonatomic) __weak id <PXCMMActionControllerDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
-@property(nonatomic) __weak id <PXCMMComposeRecipientViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) PXCMMSession *session; // @synthesize session=_session;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (void)_contactViewController:(id)arg1 didSelectContact:(id)arg2;
-- (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
-- (void)_bootstrapPersonSuggestion:(id)arg1 withContact:(id)arg2;
-- (void)_dismissRecipientViewController:(id)arg1;
-- (void)photoRecipientViewController:(id)arg1 didCompleteWithRecipients:(id)arg2;
-- (void)photoRecipientViewControllerDidCancel:(id)arg1;
-- (void)composeRecipientValidationManager:(id)arg1 didUpdateValidationWithChangedIndexes:(id)arg2;
-- (void)composeRecipientSelectionManager:(id)arg1 didUpdateSelectionSnapshotWithChangeDetails:(id)arg2;
-- (void)composeRecipientDataSourceManager:(id)arg1 didUpdateDataSourceWithChangeDetails:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)_validationTextColorForComposeRecipient:(id)arg1;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (void)dismissPresentedViewControllerAnimated:(_Bool)arg1 forComposeRecipientTableViewController:(id)arg2;
+- (void)presentViewController:(id)arg1 animated:(_Bool)arg2 forComposeRecipientTableViewController:(id)arg3;
+- (void)composeRecipientTableViewControllerDidChangeHeight:(id)arg1;
 - (void)_updateUserInteraction;
-- (double)_headerHeight;
 - (void)_updateTableView;
 - (void)_updateFooter;
 - (void)_setNeedsUpdate;
 - (void)_tapToRadarTapped:(id)arg1;
 - (void)_handleActionButton:(id)arg1;
-- (void)_handleAddRecipient:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;

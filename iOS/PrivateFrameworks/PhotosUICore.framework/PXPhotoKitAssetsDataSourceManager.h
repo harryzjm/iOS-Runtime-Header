@@ -7,26 +7,31 @@
 #import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSNumber, NSObject, NSPredicate, NSString, PXPhotoKitAssetsDataSource, PXPhotosDataSource;
+@class NSNumber, NSObject, NSPredicate, NSString, PHPhotoLibrary, PXPhotoKitAssetsDataSource, PXPhotosDataSource;
 @protocol OS_dispatch_queue, PXPhotosDataSourceProvider;
 
 @interface PXPhotoKitAssetsDataSourceManager <PXPhotosDataSourceChangeObserver, PXMutableAssetsDataSourceManager>
 {
     PXPhotosDataSource *_photosDataSource;
     NSNumber *_backgroundFetchOriginSection;
-    _Bool _isLoadingInitialPhotosDataSource;
     NSObject<OS_dispatch_queue> *_initialDataSourceLoadingQueue;
     NSString *_localizedLoadingInitialDataSourceMessage;
+    _Bool __isLoadingInitialPhotosDataSource;
     id <PXPhotosDataSourceProvider> _photosDataSourceProvider;
 }
 
 + (id)dataSourceManagerForConfiguration:(id)arg1;
++ (_Bool)_includeUnsavedSyndicatedAssetsForAssetCollection:(id)arg1;
 + (id)dataSourceManagerForAssetCollection:(id)arg1 existingAssetsFetchResult:(id)arg2 existingKeyAssetsFetchResult:(id)arg3 fetchPropertySets:(id)arg4 basePredicate:(id)arg5 options:(unsigned long long)arg6;
 + (id)dataSourceManagerForAssetCollection:(id)arg1;
++ (id)dataSourceManagerWithAssets:(id)arg1 containerTitle:(id)arg2 options:(unsigned long long)arg3;
++ (id)dataSourceManagerWithAssets:(id)arg1;
 + (id)dataSourceManagerWithAsset:(id)arg1 options:(unsigned long long)arg2;
 + (id)dataSourceManagerWithAsset:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setLoadingInitialPhotosDataSource:) _Bool _isLoadingInitialPhotosDataSource; // @synthesize _isLoadingInitialPhotosDataSource=__isLoadingInitialPhotosDataSource;
 @property(retain, nonatomic) id <PXPhotosDataSourceProvider> photosDataSourceProvider; // @synthesize photosDataSourceProvider=_photosDataSourceProvider;
+- (void)_didFinishLoadingInitialPhotosDataSource;
 - (void)photosDataSourceDidFinishBackgroundFetching:(id)arg1;
 - (id)photosDataSourceInterestingAssetReferences:(id)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
@@ -46,10 +51,11 @@
 - (void)startBackgroundFetchIfNeeded;
 @property(nonatomic) long long backgroundFetchOriginSection;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
-- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1 identifier:(id)arg2;
 - (_Bool)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
 - (_Bool)forceAccurateSectionsIfNeeded:(id)arg1;
 - (void)setCurationEnabled:(_Bool)arg1 forAssetCollection:(id)arg2;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
 @property(retain, nonatomic) PXPhotosDataSource *photosDataSource;
 - (void)setPhotosDataSource:(id)arg1 publishIntermediateEmptySnapshot:(_Bool)arg2;
 - (void)updateWithPhotosDataSource:(id)arg1 andDataSourceChange:(id)arg2;

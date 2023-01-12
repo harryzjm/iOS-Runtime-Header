@@ -13,6 +13,9 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *cardSectionRowModels; // @synthesize cardSectionRowModels=_cardSectionRowModels;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (Class)collectionViewCellClass;
+- (id)cardSection;
 - (Class)cellViewClass;
 - (_Bool)isDraggable;
 - (id)dragSubtitle;

@@ -10,7 +10,7 @@
 
 @interface TSKCOAbstractOperation : NSObject
 {
-    vector_4dc5f307 _address;
+    struct vector<TSU::UUIDData<TSP::UUIDData>, std::allocator<TSU::UUIDData<TSP::UUIDData>>> _address;
     _Bool _noop;
 }
 
@@ -18,19 +18,19 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isNoop; // @synthesize isNoop=_noop;
-- (void)saveRangeVector:(vector_b5e32e34 *)arg1 rangeList:(RepeatedField_b20a0771 *)arg2;
-- (void)saveAddress:(const vector_4dc5f307 *)arg1 identifier:(RepeatedField_88f7bd5c *)arg2;
-- (void)populateRangeVector:(vector_b5e32e34 *)arg1 fromRangeList:(const RepeatedField_b20a0771 *)arg2;
-- (void)populateAddressFromIdentifier:(const RepeatedField_88f7bd5c *)arg1;
-- (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
-- (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
+- (void)saveRangeVector:(void *)arg1 rangeList:(void *)arg2;
+- (void)saveAddress:(const void *)arg1 identifier:(void *)arg2;
+- (void)populateRangeVector:(void *)arg1 fromRangeList:(const void *)arg2;
+- (void)populateAddressFromIdentifier:(const void *)arg1;
+- (void)saveToArchiver:(id)arg1 message:(void *)arg2;
+- (id)initWithUnarchiver:(id)arg1 message:(const void *)arg2;
 @property(readonly, nonatomic) NSString *toString;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly, nonatomic) const vector_4dc5f307 *UUIDAddress;
+@property(readonly, nonatomic) const void *UUIDAddress;
 @property(readonly, nonatomic) TSUUUIDPath *UUIDPath;
-- (id)initWithAddress:(const vector_4dc5f307 *)arg1 noop:(_Bool)arg2;
+- (id)initWithAddress:(const void *)arg1 noop:(_Bool)arg2;
 - (shared_ptr_f167ad79)newTransformableOperation;
 
 @end

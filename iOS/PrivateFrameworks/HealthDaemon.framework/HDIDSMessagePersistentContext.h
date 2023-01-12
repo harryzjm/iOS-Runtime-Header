@@ -23,12 +23,6 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic, getter=isFromRequest) _Bool fromRequest; // @synthesize fromRequest=_fromRequest;
-@property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
-@property(retain, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
-@property(copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
-@property(copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
-@property(nonatomic) unsigned short messageID; // @synthesize messageID=_messageID;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

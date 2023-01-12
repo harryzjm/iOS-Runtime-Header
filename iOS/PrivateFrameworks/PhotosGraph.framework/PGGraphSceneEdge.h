@@ -9,26 +9,32 @@
     unsigned int _numberOfAssets:32;
     unsigned int _numberOfHighConfidenceAssets:32;
     unsigned int _numberOfSearchConfidenceAssets:32;
+    unsigned int _numberOfDominantSceneAssets:32;
     unsigned int _isReliable:1;
     float _weight;
 }
 
++ (id)dominantSceneAssetsFilter;
++ (id)searchConfidenceAssetsFilter;
++ (id)highConfidenceAssetsFilter;
++ (id)isReliableFilter;
 + (id)filter;
+@property(readonly, nonatomic) unsigned long long numberOfDominantSceneAssets; // @synthesize numberOfDominantSceneAssets=_numberOfDominantSceneAssets;
 @property(readonly, nonatomic) unsigned long long numberOfSearchConfidenceAssets; // @synthesize numberOfSearchConfidenceAssets=_numberOfSearchConfidenceAssets;
 @property(readonly, nonatomic) unsigned long long numberOfHighConfidenceAssets; // @synthesize numberOfHighConfidenceAssets=_numberOfHighConfidenceAssets;
 @property(readonly, nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
 @property(readonly, nonatomic) _Bool isReliable; // @synthesize isReliable=_isReliable;
-@property(nonatomic) float weight; // @synthesize weight=_weight;
+- (float)weight;
 - (unsigned short)domain;
 - (id)label;
 - (id)debugDescription;
 @property(readonly, nonatomic) _Bool isSearchableForEvent;
 - (id)edgeDescription;
+- (id)propertyForKey:(id)arg1;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
-- (id)initFromMomentNode:(id)arg1 toSceneNode:(id)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5 properties:(id)arg6;
+- (id)initFromMomentNode:(id)arg1 toSceneNode:(id)arg2 weight:(float)arg3 isReliable:(_Bool)arg4 numberOfAssets:(unsigned long long)arg5 numberOfHighConfidenceAssets:(unsigned long long)arg6 numberOfSearchConfidenceAssets:(unsigned long long)arg7 numberOfDominantSceneAssets:(unsigned long long)arg8;
 
 @end
 

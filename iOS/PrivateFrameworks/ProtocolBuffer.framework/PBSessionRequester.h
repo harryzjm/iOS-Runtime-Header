@@ -60,6 +60,7 @@
 }
 
 + (_Bool)usesEncodedMessages;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned long long nwActivityLabel; // @synthesize nwActivityLabel=_nwActivityLabel;
 @property(nonatomic) unsigned long long nwActivityDomain; // @synthesize nwActivityDomain=_nwActivityDomain;
 @property(copy, nonatomic) NSString *apsRelayTopic; // @synthesize apsRelayTopic=_apsRelayTopic;
@@ -73,6 +74,7 @@
 @property(retain, nonatomic) NSDictionary *httpResponseHeaders; // @synthesize httpResponseHeaders=_httpResponseHeaders;
 @property(retain, nonatomic) NSURLSessionTask *currentTask; // @synthesize currentTask=_currentTask;
 @property(retain, nonatomic) NSURLSession *session; // @synthesize session=_session;
+@property(readonly, nonatomic) __weak id <PBSessionRequesterDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 - (void)startWithConnectionProperties:(id)arg1;
 - (id)newSessionTaskOnSession:(id)arg1 withURLRequest:(id)arg2;
@@ -106,12 +108,11 @@
 - (id)responseForRequest:(id)arg1;
 - (void)addRequest:(id)arg1;
 - (void)clearRequests;
-@property(readonly, nonatomic) NSArray *requests;
+@property(readonly, nonatomic) __weak NSArray *requests;
 - (void)setNeedsCancel;
 @property(nonatomic) _Bool ignoresResponse;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
-@property(readonly) __weak id <PBSessionRequesterDelegate> delegate;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

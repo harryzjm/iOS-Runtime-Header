@@ -18,7 +18,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)currentOSVersionWithProfile:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *operatingSystemBuild; // @synthesize operatingSystemBuild=_operatingSystemBuild;
 @property(readonly, nonatomic) CDStruct_f6aba300 operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;

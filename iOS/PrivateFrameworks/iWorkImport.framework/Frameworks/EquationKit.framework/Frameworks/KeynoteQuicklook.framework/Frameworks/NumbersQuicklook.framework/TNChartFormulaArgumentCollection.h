@@ -18,9 +18,9 @@
     _Bool _storeBadRef;
 }
 
-+ (id)evalArgumentCollectionFromFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3;
-+ (id)argumentCollectionFromFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3 storeBadRef:(_Bool)arg4;
-+ (id)argumentCollectionFromFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3;
++ (id)evalArgumentCollectionFromFormula:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2 usingCalcEngine:(id)arg3;
++ (id)argumentCollectionFromFormula:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2 usingCalcEngine:(id)arg3 storeBadRef:(_Bool)arg4;
++ (id)argumentCollectionFromFormula:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2 usingCalcEngine:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool storeBadRef; // @synthesize storeBadRef=_storeBadRef;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -35,8 +35,8 @@
 - (unsigned long long)components;
 - (id)wrappedChartFormulaWithID:(struct TSUCellCoord)arg1 andLocale:(id)arg2;
 - (id)description;
-- (id)initWithFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3;
-- (id)initWithFormula:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3 storeBadRef:(_Bool)arg4;
+- (id)initWithFormula:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2 usingCalcEngine:(id)arg3;
+- (id)initWithFormula:(id)arg1 inOwner:(const struct TSKUIDStruct *)arg2 usingCalcEngine:(id)arg3 storeBadRef:(_Bool)arg4;
 - (id)initWithArray:(id)arg1;
 
 @end

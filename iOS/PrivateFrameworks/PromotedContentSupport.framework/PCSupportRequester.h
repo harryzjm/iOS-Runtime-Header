@@ -15,7 +15,8 @@
 - (void)connectionInvalidated;
 - (void)connectionInterrupted;
 - (id)remoteObjectInterface;
-- (id)fetchSegmentData;
+- (id)policyForPlacement:(id)arg1 placementType:(id)arg2 bannerType:(id)arg3;
+- (id)fetchGenderAndAgeGroupData;
 - (void)addClientToSegments:(id)arg1 replaceExisting:(_Bool)arg2 privateSegment:(_Bool)arg3;
 - (id)init;
 

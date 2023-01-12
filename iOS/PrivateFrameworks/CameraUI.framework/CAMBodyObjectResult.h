@@ -19,13 +19,14 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) AVMetadataBodyObject *_metadataBodyObject; // @synthesize _metadataBodyObject=__metadataBodyObject;
 @property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(readonly, nonatomic) unsigned long long syntheticFocusMode;
 @property(readonly, copy, nonatomic) NSString *metadataType;
 @property(readonly, nonatomic) AVMetadataObject *underlyingMetadataObject;
+@property(readonly, copy) NSString *description;
 - (id)initWithBodyObject:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

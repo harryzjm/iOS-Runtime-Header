@@ -4,57 +4,73 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <TSPersistence/TSPObject.h>
 
 #import <TSTables/TSTCellWillChangeProtocol-Protocol.h>
 #import <TSTables/TSTMergeChangeProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, TSCECalculationEngine, TSTTableInfo, TSTTableModel;
+@class NSArray, NSMutableArray, TSCECalculationEngine, TSTTableModel;
+@protocol TSCEFormulaReplacing;
 
-@interface TSTCategoryOwner : NSObject <TSTCellWillChangeProtocol, TSTMergeChangeProtocol>
+@interface TSTCategoryOwner : TSPObject <TSTCellWillChangeProtocol, TSTMergeChangeProtocol>
 {
-    TSTTableInfo *_tableInfo;
+    TSTTableModel *_tableModel;
     TSCECalculationEngine *_calcEngine;
-    UUIDData_5fbc143e _baseTableUID;
-    UUIDData_5fbc143e _ownerUID;
+    struct TSKUIDStruct _baseTableUID;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_groupBys;
+    id <TSCEFormulaReplacing> _minion;
+    _Bool _isRegisteredWithCalcEngine;
 }
 
-- (id).cxx_construct;
++ (long long)p_compareGroupByViaOwnerIndexes:(id)arg1 otherGroupBy:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *groupBys; // @synthesize groupBys=_groupBys;
-@property(nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
-@property(nonatomic) UUIDData_5fbc143e baseTableUID; // @synthesize baseTableUID=_baseTableUID;
-- (void)didAddRows:(const vector_4dc5f307 *)arg1;
-- (void)willRemoveRows:(const vector_4dc5f307 *)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
+@property(readonly, nonatomic) _Bool isRegisteredWithCalcEngine; // @synthesize isRegisteredWithCalcEngine=_isRegisteredWithCalcEngine;
+@property(retain, nonatomic) id <TSCEFormulaReplacing> minion; // @synthesize minion=_minion;
+@property(nonatomic) struct TSKUIDStruct baseTableUID; // @synthesize baseTableUID=_baseTableUID;
+@property(nonatomic) __weak TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
+- (_Bool)verifyConnectionsWithPivotDataModel:(id)arg1;
+- (void)didAddRows:(const void *)arg1;
+- (void)willRemoveRows:(const void *)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
 - (void)didUnmergeRange:(struct TSUModelCellRect)arg1;
 - (void)didMergeRange:(struct TSUModelCellRect)arg1;
-- (void)willApplyConcurrentCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyBaseCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
-- (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
-- (UUIDData_5fbc143e)p_willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 refreshCategoryInfo:(_Bool)arg3;
-- (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_71b9b5e2 *)arg1 calcEngine:(id)arg2;
-- (void)saveToArchive:(struct CategoryOwnerArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CategoryOwnerArchive *)arg1 unarchiver:(id)arg2 forBaseTableUID:(const UUIDData_5fbc143e *)arg3;
+- (void)willApplyConcurrentCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyBaseCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2;
+- (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
+- (struct TSKUIDStruct)p_willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 refreshCategoryInfo:(_Bool)arg3;
+- (_Bool)verifySubOwnerUIDsUsed:(const struct TSKUIDStruct *)arg1;
+- (void)setFormulaOwnerUIDsWithMap:(id)arg1;
+- (void)remapTableUIDsInFormulasWithMap:(const void *)arg1 calcEngine:(id)arg2;
+- (void)unpackAfterUnarchive:(id)arg1;
+- (void)saveToArchiver:(id)arg1;
+- (void)loadFromUnarchiver:(id)arg1;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2 forBaseTable:(id)arg3;
+@property(readonly, nonatomic) _Bool allowRegistrationOfAggFormulas;
 - (void)updateWithDocumentRoot:(id)arg1;
-- (id)categoryInfos;
 - (void)unregisterGroupBy:(id)arg1;
-- (id)registerGroupByForColumns:(id)arg1;
-- (id)groupByByUid:(const UUIDData_5fbc143e *)arg1;
-- (void)registerGroupBy:(id)arg1;
+- (id)registerGroupByForColumns:(id)arg1 ownerIndex:(unsigned short)arg2 hiddenStates:(id)arg3 groupBySet:(id)arg4;
+- (id)groupByForOwnerIndex:(unsigned short)arg1;
+- (id)groupByByUid:(const struct TSKUIDStruct *)arg1;
+- (void)resetAllGroupings;
+- (void)linkGroupBy:(id)arg1;
+- (void)setCalcEngine:(id)arg1;
 - (id)calcEngine;
 - (void)unregisterFromCalcEngine;
-- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const struct TSKUIDStruct *)arg2;
 - (void)teardown;
-@property(readonly, nonatomic) TSTTableModel *tableModel;
-@property(nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (void)unregisterFromDistributors;
 - (void)registerWithDistributors;
 - (id)description;
+- (void)sortGroupBys;
+- (void)addGroupByInSortedOrder:(id)arg1;
+- (void)willModify;
+@property(readonly, nonatomic) _Bool backwardCompatibleToPrePivot;
 - (_Bool)hasEnabledGroupBys;
 - (void)dealloc;
-- (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1;
-- (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;
+@property(readonly, nonatomic) NSArray *groupBys;
+- (id)initWithBaseTableModel:(id)arg1;
+- (id)initWithContext:(id)arg1;
 
 @end
 

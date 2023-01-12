@@ -9,7 +9,7 @@
 #import <Foundation/NSXPCProxyCreating-Protocol.h>
 
 @class NSString, NSXPCInterface, NSXPCListenerEndpoint, _NSXPCConnectionClassCache, _NSXPCConnectionExpectedReplies, _NSXPCConnectionExportedObjectTable, _NSXPCConnectionImportInfo, _NSXPCConnectionRequestedReplies;
-@protocol NSObject, OS_dispatch_queue, OS_xpc_object;
+@protocol NSObject, OS_dispatch_queue, OS_xpc_object, _NSXPCTransport;
 
 @interface NSXPCConnection : NSObject <NSXPCProxyCreating>
 {
@@ -32,11 +32,13 @@
     _NSXPCConnectionClassCache *_dCache;
     NSObject<OS_xpc_object> *_bootstrap;
     struct os_unfair_lock_s _lock;
+    id <_NSXPCTransport> _transport;
 }
 
 + (void)endTransaction;
 + (void)beginTransaction;
 + (id)currentConnection;
++ (void)_handoffCurrentReplyToQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 @property(retain) NSXPCInterface *remoteObjectInterface; // @synthesize remoteObjectInterface=_remoteObjectInterface;
 - (void)_decodeProgressMessageWithData:(id)arg1 flags:(unsigned long long)arg2;
 - (void)_resumeProgress:(unsigned long long)arg1;
@@ -95,6 +97,7 @@
 - (void)resume;
 - (void)suspend;
 - (void)dealloc;
+- (id)_initWithCustomTransport:(id)arg1;
 - (id)initWithListenerEndpoint:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
 - (id)initWithMachServiceName:(id)arg1;

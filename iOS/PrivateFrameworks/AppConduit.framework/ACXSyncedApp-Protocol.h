@@ -8,7 +8,7 @@
 #import <AppConduit/NSObject-Protocol.h>
 #import <AppConduit/NSSecureCoding-Protocol.h>
 
-@class LSApplicationProxy, NSArray, NSDictionary, NSString, NSUUID;
+@class LSApplicationRecord, NSArray, NSDictionary, NSString, NSUUID;
 
 @protocol ACXSyncedApp <NSObject, NSSecureCoding, NSCopying>
 @property(readonly, nonatomic) _Bool isDeletable;
@@ -19,6 +19,6 @@
 @property(readonly, nonatomic) NSUUID *databaseUUID;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;
 - (NSDictionary *)serializeAsRemoteApplication;
-- (id)initWithApplicationProxy:(LSApplicationProxy *)arg1 databaseUUID:(NSUUID *)arg2 sequenceNumber:(unsigned long long)arg3;
+- (id)initWithApplicationRecord:(LSApplicationRecord *)arg1 databaseUUID:(NSUUID *)arg2 sequenceNumber:(unsigned long long)arg3;
 @end
 

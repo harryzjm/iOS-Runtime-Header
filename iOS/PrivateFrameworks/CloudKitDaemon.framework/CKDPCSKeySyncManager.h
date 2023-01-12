@@ -9,7 +9,6 @@
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSKeySyncManager : NSObject
 {
     NSMutableDictionary *_keySyncTrackerByServiceName;
@@ -22,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *keySyncTrackerByServiceName; // @synthesize keySyncTrackerByServiceName=_keySyncTrackerByServiceName;
 - (void)syncUserKeysForService:(id)arg1 context:(id)arg2 bundleID:(id)arg3 serviceIsManatee:(_Bool)arg4 account:(id)arg5 shouldThrottle:(_Bool)arg6 testOverrideProvider:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)getKeySyncEligibilityForService:(id)arg1 isManatee:(_Bool)arg2 zonePCSModificationDate:(id)arg3 testOverrideProvider:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)performKeySyncWithSyncTracker:(id)arg1 testableSyncConfig:(unsigned long long)arg2 shouldThrottle:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)performKeySyncWithSyncTracker:(id)arg1 testableSyncConfig:(unsigned long long)arg2 shouldThrottle:(_Bool)arg3 testOverrideProvider:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)syncTrackerForService:(id)arg1 manatee:(_Bool)arg2 shortThrottlePeriod:(_Bool)arg3;
 - (id)createSyncTrackerForService:(id)arg1 manatee:(_Bool)arg2;
 - (id)init;

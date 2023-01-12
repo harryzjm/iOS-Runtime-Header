@@ -24,6 +24,7 @@
 + (id)defaultButtonTitleColor;
 + (id)defaultButtonBackgroundColor;
 + (id)defaultLine;
++ (id)lobbyCellBackground;
 + (id)lobbyCardBackground;
 + (id)placeholderBackgroundStandout;
 + (id)placeholderBackground;

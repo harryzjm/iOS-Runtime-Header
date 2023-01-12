@@ -9,8 +9,6 @@
 @interface _TtC8VideosUI14ProgressLayout
 {
     MISSING_TYPE *fillColor;
-    MISSING_TYPE *gradientStartColor;
-    MISSING_TYPE *gradientEndColor;
     MISSING_TYPE *shouldProgressBarUseRoundCorner;
     MISSING_TYPE *useMaterial;
     MISSING_TYPE *useVisualEffectViewForMaterial;

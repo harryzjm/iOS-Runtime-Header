@@ -228,10 +228,7 @@
 @property(readonly, nonatomic) double startTime;
 - (double)_scrubberStartTime;
 - (void)cancelTrim;
-- (void)trimUsingMode:(int)arg1 saveACopy:(_Bool)arg2;
-- (_Bool)wasTrimmedInPlace;
 - (_Bool)isTrimming;
-- (_Bool)deleteOriginalFileAfterTrim;
 - (void)_exportCompletedWithSuccess:(_Bool)arg1;
 - (void)_cancelRemaking:(id)arg1;
 - (void)setProgress:(id)arg1;

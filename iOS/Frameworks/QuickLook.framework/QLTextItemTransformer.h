@@ -15,8 +15,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)wrapperFromData:(id)arg1 encoding:(unsigned long long)arg2 typeIdentifier:(id)arg3 error:(id *)arg4;
++ (id)attributedStringFromData:(id)arg1 encoding:(unsigned long long)arg2 typeIdentifier:(id)arg3 error:(id *)arg4;
 + (id)allowedOutputClasses;
-- (id)wrapperFromData:(id)arg1 encoding:(unsigned long long)arg2 mimeType:(id)arg3 error:(id *)arg4;
 - (id)transformedContentsFromData:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)transformedContentsFromURL:(id)arg1 context:(id)arg2 error:(id *)arg3;
 

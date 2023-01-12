@@ -6,13 +6,14 @@
 
 #import <MediaPlayer/NSObject-Protocol.h>
 
-@class MPIdentifierSet, NSData, NSDate, NSDictionary, NSString, NSURL;
+@class MPIdentifierSet, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
 
 @protocol MPServerObjectDatabaseOperations <NSObject>
 - (_Bool)removeRelationshipsForParentIdentifiers:(MPIdentifierSet *)arg1 childKey:(NSString *)arg2;
 - (_Bool)relateIdentifiers:(MPIdentifierSet *)arg1 toParentIdentifiers:(MPIdentifierSet *)arg2 childKey:(NSString *)arg3 order:(long long)arg4;
-- (_Bool)importAssetMiniSINF:(NSData *)arg1 forIdentifier:(NSString *)arg2 hashedPersonID:(NSString *)arg3 flavor:(long long)arg4;
-- (_Bool)importAssetURL:(NSURL *)arg1 forIdentifiers:(MPIdentifierSet *)arg2 flavor:(long long)arg3;
+- (_Bool)importPlaybackAuthorizationToken:(NSDictionary *)arg1 identifiers:(MPIdentifierSet *)arg2 source:(long long)arg3 type:(NSString *)arg4 expirationDate:(NSDate *)arg5;
+- (_Bool)importAssetSinf:(NSData *)arg1 type:(long long)arg2 forIdentifier:(NSString *)arg3 hashedPersonID:(NSString *)arg4 flavor:(long long)arg5 sinfPayload:(NSArray *)arg6;
+- (_Bool)importAssetURL:(NSURL *)arg1 forIdentifiers:(MPIdentifierSet *)arg2 flavor:(long long)arg3 expirationDate:(NSDate *)arg4;
 - (_Bool)importObject:(NSDictionary *)arg1 type:(NSString *)arg2 identifiers:(MPIdentifierSet *)arg3 source:(long long)arg4 expiration:(NSDate *)arg5;
 @end
 

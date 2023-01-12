@@ -6,18 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <AssistantServices/AFAssertionCoordinatorDelegate-Protocol.h>
 
-@interface AFPowerAssertionManager : NSObject
+@class AFAssertionCoordinator, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue;
+
+@interface AFPowerAssertionManager : NSObject <AFAssertionCoordinatorDelegate>
 {
-    NSString *_debugName;
+    NSString *_identifier;
+    NSObject<OS_dispatch_queue> *_queue;
+    AFAssertionCoordinator *_assertionCoordinator;
+    NSMutableDictionary *_assertionsByName;
 }
 
 - (void).cxx_destruct;
+- (void)_releasePowerAssertion;
+- (void)_createPowerAssertion;
+- (void)assertionCoordinator:(id)arg1 didRemoveAssertion:(id)arg2 isLastAssertion:(_Bool)arg3;
+- (void)assertionCoordinator:(id)arg1 didDeactivateAssertion:(id)arg2 isLastAssertion:(_Bool)arg3;
+- (void)assertionCoordinator:(id)arg1 didActivateAssertion:(id)arg2 isFirstAssertion:(_Bool)arg3;
+- (void)assertionCoordinator:(id)arg1 didAddAssertion:(id)arg2 isFirstAssertion:(_Bool)arg3;
 - (void)dealloc;
-- (void)releasePowerAssertion;
+- (void)releaseAllPowerAssertions;
+- (void)releasePowerAssertionWithName:(id)arg1;
 - (void)takePowerAssertionWithName:(id)arg1;
-- (id)init;
+- (id)initWithIdentifier:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -13,5 +13,8 @@
 - (void)finishEnumeratingChangesUpToSyncAnchor:(NSData *)arg1 moreComing:(_Bool)arg2;
 - (void)didDeleteItemsWithIdentifiers:(NSArray *)arg1;
 - (void)didUpdateItems:(NSArray *)arg1;
+
+@optional
+@property(readonly, nonatomic) long long suggestedBatchSize;
 @end
 

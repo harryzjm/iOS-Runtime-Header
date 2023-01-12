@@ -10,23 +10,26 @@
 #import <SpringBoard/SBHWidgetSheetViewControllerPresenter-Protocol.h>
 #import <SpringBoard/WGWidgetGroupViewControllerDelegate-Protocol.h>
 
-@class MTMaterialView, NSLayoutConstraint, NSString, SBFTodayGestureSettings, SBHRootFolderVisualConfiguration, SBHRootSidebarController, SBTitledHomeScreenButton, UIViewFloatAnimatableProperty;
-@protocol SBHOccludable, SBHomeScreenOverlayViewControllerDelegate;
+@class MTMaterialView, NSCountedSet, NSLayoutConstraint, NSString, SBFTodayGestureSettings, SBHRootFolderVisualConfiguration, SBHRootSidebarController, SBTitledHomeScreenButton, UIViewFloatAnimatableProperty;
+@protocol SBHOccludable, SBHomeScreenOverlayViewControllerDelegate, SBIconListLayoutProvider;
 
 @interface SBHomeScreenOverlayViewController : UIViewController <WGWidgetGroupViewControllerDelegate, SBHWidgetSheetViewControllerPresenter, SBHOccludable>
 {
+    NSCountedSet *_reasonsToSnapshotBackgroundView;
     _Bool _occluded;
     _Bool _fromLeading;
     _Bool _shouldUseReducedMotionAnimation;
     _Bool _suppressesExtraEditingButtons;
     _Bool _showsDoneButton;
     _Bool _showsAddWidgetButton;
+    _Bool _transitioningPresentationProgress;
     double _titledButtonsAlpha;
     id <SBHomeScreenOverlayViewControllerDelegate> _delegate;
     double _presentationProgress;
     SBHRootSidebarController *_contentViewController;
-    UIViewController<SBHOccludable> *_leftSidebarViewController;
-    UIViewController<SBHOccludable> *_rightSidebarViewController;
+    UIViewController<SBHOccludable> *_leadingSidebarViewController;
+    UIViewController<SBHOccludable> *_trailingSidebarViewController;
+    id <SBIconListLayoutProvider> _listLayoutProvider;
     MTMaterialView *_backgroundView;
     SBHRootFolderVisualConfiguration *_rootFolderVisualConfiguration;
     NSLayoutConstraint *_contentLeadingConstraint;
@@ -38,6 +41,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isTransitioningPresentationProgress) _Bool transitioningPresentationProgress; // @synthesize transitioningPresentationProgress=_transitioningPresentationProgress;
 @property(retain, nonatomic) UIViewFloatAnimatableProperty *overlayPresentationFloatAnimatableProperty; // @synthesize overlayPresentationFloatAnimatableProperty=_overlayPresentationFloatAnimatableProperty;
 @property(retain, nonatomic) SBFTodayGestureSettings *gestureSettings; // @synthesize gestureSettings=_gestureSettings;
 @property(nonatomic) _Bool showsAddWidgetButton; // @synthesize showsAddWidgetButton=_showsAddWidgetButton;
@@ -48,9 +52,10 @@
 @property(retain, nonatomic) NSLayoutConstraint *contentLeadingConstraint; // @synthesize contentLeadingConstraint=_contentLeadingConstraint;
 @property(readonly, nonatomic) SBHRootFolderVisualConfiguration *rootFolderVisualConfiguration; // @synthesize rootFolderVisualConfiguration=_rootFolderVisualConfiguration;
 @property(readonly, nonatomic) MTMaterialView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(readonly, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
 @property(nonatomic) _Bool suppressesExtraEditingButtons; // @synthesize suppressesExtraEditingButtons=_suppressesExtraEditingButtons;
-@property(retain, nonatomic) UIViewController<SBHOccludable> *rightSidebarViewController; // @synthesize rightSidebarViewController=_rightSidebarViewController;
-@property(retain, nonatomic) UIViewController<SBHOccludable> *leftSidebarViewController; // @synthesize leftSidebarViewController=_leftSidebarViewController;
+@property(retain, nonatomic) UIViewController<SBHOccludable> *trailingSidebarViewController; // @synthesize trailingSidebarViewController=_trailingSidebarViewController;
+@property(retain, nonatomic) UIViewController<SBHOccludable> *leadingSidebarViewController; // @synthesize leadingSidebarViewController=_leadingSidebarViewController;
 @property(readonly, nonatomic) SBHRootSidebarController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(nonatomic) _Bool shouldUseReducedMotionAnimation; // @synthesize shouldUseReducedMotionAnimation=_shouldUseReducedMotionAnimation;
 @property(nonatomic, getter=isFromLeading) _Bool fromLeading; // @synthesize fromLeading=_fromLeading;
@@ -58,8 +63,11 @@
 @property(nonatomic) __weak id <SBHomeScreenOverlayViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double titledButtonsAlpha; // @synthesize titledButtonsAlpha=_titledButtonsAlpha;
 @property(nonatomic, getter=isOccluded) _Bool occluded; // @synthesize occluded=_occluded;
+- (void)_updateBackgroundView;
+- (id)acquireUseSnapshotAsBackgroundViewAssertionForReason:(id)arg1;
 - (void)setSuppressesEditingStateForListView:(_Bool)arg1;
 - (void)updateExtraButtonVisibilityAnimated:(_Bool)arg1;
+- (_Bool)isDisplayingEditingButtons;
 - (unsigned long long)presenterType;
 - (void)_updateLayoutForEditButtons;
 - (void)_button:(id)arg1 disappearAnimated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -89,11 +97,12 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)loadView;
 @property(readonly, nonatomic) struct CGRect contentRect;
 - (double)contentWidthWithContainerWidth:(double)arg1;
 @property(readonly, nonatomic) double contentWidth;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithListLayoutProvider:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

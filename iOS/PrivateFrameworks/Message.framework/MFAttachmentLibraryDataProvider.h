@@ -8,19 +8,20 @@
 
 #import <Message/MFAttachmentDataProviderProtocol-Protocol.h>
 
-@class MFMessageLibrary, NSString;
+@class EDAttachmentPersistenceManager, MFMailMessageLibrary, NSString;
 
 @interface MFAttachmentLibraryDataProvider : NSObject <MFAttachmentDataProviderProtocol>
 {
-    MFMessageLibrary *_messageLibrary;
+    MFMailMessageLibrary *_messageLibrary;
+    EDAttachmentPersistenceManager *_persistenceManager;
 }
 
 - (void).cxx_destruct;
-@property __weak MFMessageLibrary *messageLibrary; // @synthesize messageLibrary=_messageLibrary;
+@property(retain, nonatomic) EDAttachmentPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
+@property __weak MFMailMessageLibrary *messageLibrary; // @synthesize messageLibrary=_messageLibrary;
 - (id)storageLocationForAttachment:(id)arg1 withMessage:(id)arg2;
 - (id)messageForAttachment:(id)arg1;
 - (void)fetchDataForAttachment:(id)arg1 consumer:(id)arg2 progress:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)initWithLibrary:(id)arg1;
 
 // Remaining properties

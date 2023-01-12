@@ -78,7 +78,7 @@
 @property(readonly, nonatomic) _Bool isCalloutLine;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct PencilAnnotationStorageArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) _Bool needsTextRecognition;
 - (void)initializeTextRecognition;
 @property(readonly, nonatomic) TSUBezierPath *unscaledPath;
@@ -100,6 +100,7 @@
 - (id)initWithContext:(id)arg1 drawing:(id)arg2 markupOffset:(struct CGPoint)arg3 rasterizedImageTSPData:(id)arg4 attachedLocation:(long long)arg5 attachedType:(long long)arg6 encodedDrawing:(id)arg7 legacyEncodedDrawing:(id)arg8 path:(struct CGPath *)arg9 unscaledBoundsOfStrokes:(struct CGRect)arg10 originalAttachedSize:(struct CGSize)arg11 percentOfPAContainedInParentRep:(double)arg12 textBaselinesTouchedCount:(unsigned long long)arg13 visibleStrokesCount:(unsigned long long)arg14 penColor:(id)arg15 toolType:(long long)arg16 compoundAnnotationType:(long long)arg17 subStorages:(id)arg18 creationDate:(id)arg19 pencilAnnotationDrawingScale:(double)arg20 strokePointsFrame:(struct CGRect)arg21 renderedFrame:(struct CGRect)arg22;
 - (id)initFromSOSWithContext:(id)arg1 markupOffset:(struct CGPoint)arg2 rasterizedImageTSPData:(id)arg3 attachedLocation:(long long)arg4 attachedType:(long long)arg5 encodedDrawing:(id)arg6 legacyEncodedDrawing:(id)arg7 path:(struct CGPath *)arg8 unscaledBoundsOfStrokes:(struct CGRect)arg9 originalAttachedSize:(struct CGSize)arg10 percentOfPAContainedInParentRep:(double)arg11 textBaselinesTouchedCount:(unsigned long long)arg12 visibleStrokesCount:(unsigned long long)arg13 penColor:(id)arg14 toolType:(long long)arg15 compoundAnnotationType:(long long)arg16 subStorages:(id)arg17 creationDate:(id)arg18 pencilAnnotationDrawingScale:(double)arg19 strokePointsFrame:(struct CGRect)arg20 renderedFrame:(struct CGRect)arg21;
 - (id)initWithContext:(id)arg1 drawing:(id)arg2 markupOffset:(struct CGPoint)arg3 rasterizedImage:(id)arg4 attachedLocation:(long long)arg5 attachedType:(long long)arg6 path:(struct CGPath *)arg7 unscaledBoundsOfStrokes:(struct CGRect)arg8 originalAttachedSize:(struct CGSize)arg9 percentOfPAContainedInParentRep:(double)arg10 textBaselinesTouchedCount:(unsigned long long)arg11 visibleStrokesCount:(unsigned long long)arg12 penColor:(id)arg13 toolType:(long long)arg14 compoundAnnotationType:(long long)arg15 subStorages:(id)arg16 creationDate:(id)arg17 pencilAnnotationDrawingScale:(double)arg18;
+- (void)setRasterizedImageTSPData:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -40,6 +40,8 @@
 @property(copy, nonatomic) NSString *lastName;
 @property(nonatomic) _Bool hasIsMe;
 @property(nonatomic) _Bool isMe;
+@property(nonatomic) _Bool hasIsContactSuggestion;
+@property(nonatomic) _Bool isContactSuggestion;
 @property(readonly, nonatomic) _Bool hasImage;
 @property(retain, nonatomic) _INPBImageValue *image;
 @property(readonly, nonatomic) _Bool hasHandle;

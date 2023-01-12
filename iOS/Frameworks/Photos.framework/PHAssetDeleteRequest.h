@@ -4,12 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PHAssetDeleteOptions;
+
 @interface PHAssetDeleteRequest
 {
+    PHAssetDeleteOptions *_deleteOptions;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) PHAssetDeleteOptions *deleteOptions; // @synthesize deleteOptions=_deleteOptions;
+- (void)_updateSyndicationStateForSyndicationIdentifier:(id)arg1 savedAssetType:(short)arg2 sourceLibraryID:(long long)arg3;
 - (void)deleteManagedObject:(id)arg1 photoLibrary:(id)arg2;
 - (_Bool)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;
+- (void)encodeToXPCDict:(id)arg1;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 
 @end
 

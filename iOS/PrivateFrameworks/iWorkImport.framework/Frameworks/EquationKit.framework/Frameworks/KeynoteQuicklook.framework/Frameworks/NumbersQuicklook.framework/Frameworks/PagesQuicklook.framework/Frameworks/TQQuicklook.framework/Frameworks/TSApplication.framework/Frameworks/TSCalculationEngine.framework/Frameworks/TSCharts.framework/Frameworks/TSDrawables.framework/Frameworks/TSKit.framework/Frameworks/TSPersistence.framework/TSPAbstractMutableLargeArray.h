@@ -15,7 +15,7 @@
     unsigned long long _maxSegmentElementCount;
     unsigned long long _maxSegmentSize;
     NSMutableArray *_segments;
-    struct vector<_NSRange, std::__1::allocator<_NSRange>> _segmentRanges;
+    struct vector<_NSRange, std::allocator<_NSRange>> _segmentRanges;
     long long _bisectedSegmentIdentifier;
     unsigned long long _bisectedSegmentIndex;
     unsigned long long _mergingSegmentIndex;
@@ -29,8 +29,8 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long estimatedByteSize; // @synthesize estimatedByteSize=_estimatedByteSize;
-- (void)loadFromLargeArrayMessage:(const struct LargeArray *)arg1 unarchiver:(id)arg2;
-- (void)saveToLargeArrayMessage:(struct LargeArray *)arg1 archiver:(id)arg2;
+- (void)loadFromLargeArrayMessage:(const void *)arg1 unarchiver:(id)arg2;
+- (void)saveToLargeArrayMessage:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 @property(nonatomic) unsigned int delayedArchivingPriority;

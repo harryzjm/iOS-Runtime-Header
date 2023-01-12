@@ -21,7 +21,7 @@
     NSMutableArray *_pendingQueue;
     NSObject<OS_dispatch_queue> *_pendingQueueLock;
     id <MTLCommandQueue> _downloadQueue;
-    _Bool _insertDebugBoundaryUsed;
+    _Bool _perfSampleHandlerUsed;
 }
 
 - (void).cxx_destruct;
@@ -68,12 +68,12 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
 - (id)commandBufferWithDescriptor:(id)arg1;
 - (void)commitCommandBuffer:(id)arg1;
 - (void)enqueueCommandBuffer:(id)arg1;
 - (void)dealloc;
 - (void)insertDebugCaptureBoundary;
-@property(readonly) _Bool insertDebugBoundaryUsed;
 @property(readonly) id <MTLCommandQueue> baseObject;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 

@@ -11,25 +11,37 @@
 @interface CLSAssetFaceInformationSummary : NSObject
 {
     unsigned short _numberOfFaces;
+    unsigned short _numberOfFacesIncludingPets;
     unsigned short _numberOfFacesOfVerifiedPersons;
     unsigned short _numberOfFacesOfHiddenPersons;
     unsigned short _numberOfGoodFaces;
+    unsigned short _numberOfGoodFacesIncludingPets;
     unsigned short _numberOfGoodFacesOfVerifiedPersons;
     double _averageFaceQuality;
+    double _averageFaceQualityIncludingPets;
     double _averageFaceQualityOfVerifiedPersons;
     NSDictionary *_faceInformationByPersonLocalIdentifier;
+    NSDictionary *_faceInformationByConsolidatedPersonLocalIdentifier;
 }
 
++ (id)_faceInformationByPersonLocalIdentifierFromDictionaryRepresentation:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly) NSDictionary *faceInformationByConsolidatedPersonLocalIdentifier; // @synthesize faceInformationByConsolidatedPersonLocalIdentifier=_faceInformationByConsolidatedPersonLocalIdentifier;
 @property(readonly) NSDictionary *faceInformationByPersonLocalIdentifier; // @synthesize faceInformationByPersonLocalIdentifier=_faceInformationByPersonLocalIdentifier;
 @property(readonly) double averageFaceQualityOfVerifiedPersons; // @synthesize averageFaceQualityOfVerifiedPersons=_averageFaceQualityOfVerifiedPersons;
+@property(readonly) double averageFaceQualityIncludingPets; // @synthesize averageFaceQualityIncludingPets=_averageFaceQualityIncludingPets;
 @property(readonly) double averageFaceQuality; // @synthesize averageFaceQuality=_averageFaceQuality;
 @property(readonly) unsigned short numberOfGoodFacesOfVerifiedPersons; // @synthesize numberOfGoodFacesOfVerifiedPersons=_numberOfGoodFacesOfVerifiedPersons;
+@property(readonly) unsigned short numberOfGoodFacesIncludingPets; // @synthesize numberOfGoodFacesIncludingPets=_numberOfGoodFacesIncludingPets;
 @property(readonly) unsigned short numberOfGoodFaces; // @synthesize numberOfGoodFaces=_numberOfGoodFaces;
 @property(readonly) unsigned short numberOfFacesOfHiddenPersons; // @synthesize numberOfFacesOfHiddenPersons=_numberOfFacesOfHiddenPersons;
 @property(readonly) unsigned short numberOfFacesOfVerifiedPersons; // @synthesize numberOfFacesOfVerifiedPersons=_numberOfFacesOfVerifiedPersons;
+@property(readonly) unsigned short numberOfFacesIncludingPets; // @synthesize numberOfFacesIncludingPets=_numberOfFacesIncludingPets;
 @property(readonly) unsigned short numberOfFaces; // @synthesize numberOfFaces=_numberOfFaces;
-- (id)initWithNumberOfFaces:(unsigned long long)arg1 numberOfFacesOfVerifiedPersons:(unsigned long long)arg2 numberOfFacesOfHiddenPersons:(unsigned long long)arg3 numberOfGoodFaces:(unsigned long long)arg4 numberOfGoodFacesOfVerifiedPersons:(unsigned long long)arg5 averageFaceQuality:(double)arg6 averageFaceQualityOfVerifiedPersons:(double)arg7 faceInformationByPersonLocalIdentifier:(id)arg8;
+- (id)_dictionaryRepresentationForFaceInformationByPersonLocalIdentifier:(id)arg1;
+- (id)dictionaryRepresentation;
+- (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithNumberOfFaces:(unsigned long long)arg1 numberOfFacesIncludingPets:(unsigned long long)arg2 numberOfFacesOfVerifiedPersons:(unsigned long long)arg3 numberOfFacesOfHiddenPersons:(unsigned long long)arg4 numberOfGoodFaces:(unsigned long long)arg5 numberOfGoodFacesIncludingPets:(unsigned long long)arg6 numberOfGoodFacesOfVerifiedPersons:(unsigned long long)arg7 averageFaceQuality:(double)arg8 averageFaceQualityIncludingPets:(double)arg9 averageFaceQualityOfVerifiedPersons:(double)arg10 faceInformationByPersonLocalIdentifier:(id)arg11 faceInformationByConsolidatedPersonLocalIdentifier:(id)arg12;
 
 @end
 

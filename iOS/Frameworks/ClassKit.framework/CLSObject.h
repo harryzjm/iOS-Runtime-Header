@@ -24,6 +24,7 @@
     NSMutableDictionary *_childrenByID;
     CLSObject *_parent;
     struct os_unfair_recursive_lock_s _lock;
+    _Bool _needsRepair;
     _Bool _temporary;
     unsigned int _generation;
     NSDate *_dateCreated;
@@ -42,6 +43,8 @@
 @property(nonatomic, getter=isTemporary) _Bool temporary; // @synthesize temporary=_temporary;
 @property(retain, nonatomic) NSDate *dateLastModified; // @synthesize dateLastModified=_dateLastModified;
 @property(retain, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+- (void)setNeedsRepair:(_Bool)arg1;
+- (_Bool)needsRepair;
 - (id)ancestorOfClass:(Class)arg1;
 - (long long)effectiveAuthorizationStatus;
 - (id)dictionaryRepresentation;

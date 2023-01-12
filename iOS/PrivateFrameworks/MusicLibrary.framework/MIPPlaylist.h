@@ -37,7 +37,9 @@
     NSString *_name;
     MIPMultiverseIdentifier *_parentIdentifier;
     int _playCount;
+    int _playlistCategoryTypeMask;
     NSString *_playlistDescription;
+    NSString *_playlistGroupingSortKey;
     int _remoteSourceType;
     NSString *_secondaryArtworkId;
     int _secondaryArtworkSourceType;
@@ -69,6 +71,7 @@
         unsigned int distinguishedKind:1;
         unsigned int likedState:1;
         unsigned int playCount:1;
+        unsigned int playlistCategoryTypeMask:1;
         unsigned int remoteSourceType:1;
         unsigned int secondaryArtworkSourceType:1;
         unsigned int sortType:1;
@@ -94,6 +97,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *items; // @synthesize items=_items;
 @property(retain, nonatomic) NSMutableArray *childIdentifiers; // @synthesize childIdentifiers=_childIdentifiers;
+@property(retain, nonatomic) NSString *playlistGroupingSortKey; // @synthesize playlistGroupingSortKey=_playlistGroupingSortKey;
+@property(nonatomic) int playlistCategoryTypeMask; // @synthesize playlistCategoryTypeMask=_playlistCategoryTypeMask;
 @property(retain, nonatomic) NSString *secondaryArtworkId; // @synthesize secondaryArtworkId=_secondaryArtworkId;
 @property(nonatomic) int secondaryArtworkSourceType; // @synthesize secondaryArtworkSourceType=_secondaryArtworkSourceType;
 @property(retain, nonatomic) NSString *cloudUniversalLibraryId; // @synthesize cloudUniversalLibraryId=_cloudUniversalLibraryId;
@@ -153,6 +158,8 @@
 - (unsigned long long)childIdentifiersCount;
 - (void)addChildIdentifiers:(id)arg1;
 - (void)clearChildIdentifiers;
+@property(readonly, nonatomic) _Bool hasPlaylistGroupingSortKey;
+@property(nonatomic) _Bool hasPlaylistCategoryTypeMask;
 @property(readonly, nonatomic) _Bool hasSecondaryArtworkId;
 @property(nonatomic) _Bool hasSecondaryArtworkSourceType;
 @property(readonly, nonatomic) _Bool hasCloudUniversalLibraryId;

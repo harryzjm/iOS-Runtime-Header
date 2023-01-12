@@ -5,21 +5,25 @@
 //
 
 #import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCRateAdaptationDelegate-Protocol.h>
 
 @class NSDictionary, NSError, NSString, VCSession;
 
-@protocol VCSessionDelegate <NSObject>
-- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 spatialAudioSourceIDDidChange:(unsigned long long)arg3;
+@protocol VCSessionDelegate <NSObject, VCRateAdaptationDelegate>
+- (void)vcSessionShouldReconnect:(VCSession *)arg1;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 didDetectError:(NSError *)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 didChangeMediaPriority:(unsigned char)arg3 description:(NSString *)arg4;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoPausedDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteAudioPausedDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 videoPaused:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 audioPaused:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteScreenEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteAudioEnabledDidChange:(_Bool)arg3;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 screenEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 videoEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 audioEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(NSError *)arg5;
+- (void)vcSession:(VCSession *)arg1 oneToOneModeEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
 - (void)vcSession:(VCSession *)arg1 updateConfiguration:(NSDictionary *)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
 - (void)vcSession:(VCSession *)arg1 removeParticipantWithID:(NSString *)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;
 - (void)vcSession:(VCSession *)arg1 addParticipantWithID:(NSString *)arg2 didSucceed:(_Bool)arg3 error:(NSError *)arg4;

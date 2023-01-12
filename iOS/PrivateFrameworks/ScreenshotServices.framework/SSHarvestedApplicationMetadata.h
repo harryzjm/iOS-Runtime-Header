@@ -9,18 +9,20 @@
 #import <ScreenshotServices/BSXPCCoding-Protocol.h>
 #import <ScreenshotServices/SSLoggable-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, NSURL;
 
 @interface SSHarvestedApplicationMetadata : NSObject <BSXPCCoding, SSLoggable>
 {
     _Bool _canGenerateDocument;
     NSString *_userActivityTitle;
+    NSURL *_userActivityURL;
     NSArray *_contentRects;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool canGenerateDocument; // @synthesize canGenerateDocument=_canGenerateDocument;
 @property(copy, nonatomic) NSArray *contentRects; // @synthesize contentRects=_contentRects;
+@property(copy, nonatomic) NSURL *userActivityURL; // @synthesize userActivityURL=_userActivityURL;
 @property(copy, nonatomic) NSString *userActivityTitle; // @synthesize userActivityTitle=_userActivityTitle;
 @property(readonly, nonatomic) NSString *loggableDescription;
 - (void)encodeWithXPCDictionary:(id)arg1;

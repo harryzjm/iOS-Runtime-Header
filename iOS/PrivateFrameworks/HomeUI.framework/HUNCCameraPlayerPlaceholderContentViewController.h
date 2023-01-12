@@ -6,16 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
+@class NSURL, UIImage, UIImageView;
 
-@class HFCameraPlaybackEngine, HMCameraClip, NSString, NSURL, UIImage, UIImageView;
-
-@interface HUNCCameraPlayerPlaceholderContentViewController : UIViewController <HFCameraPlaybackEngineObserver>
+@interface HUNCCameraPlayerPlaceholderContentViewController : UIViewController
 {
     _Bool _shouldShowPlaceholderContent;
-    HFCameraPlaybackEngine *_playbackEngine;
     UIImageView *_placeholderImageView;
-    HMCameraClip *_lastRequestedClip;
     NSURL *_imageURL;
     UIImage *_notificationImage;
 }
@@ -23,25 +19,11 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *notificationImage; // @synthesize notificationImage=_notificationImage;
 @property(retain, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
-@property(retain, nonatomic) HMCameraClip *lastRequestedClip; // @synthesize lastRequestedClip=_lastRequestedClip;
 @property(retain, nonatomic) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
-@property(nonatomic) __weak HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) _Bool shouldShowPlaceholderContent; // @synthesize shouldShowPlaceholderContent=_shouldShowPlaceholderContent;
-- (_Bool)_shouldHidePlaceholderContentForCurrentAccessMode;
 - (void)updatePlaceholderImage:(id)arg1;
-- (void)updatePlaceholderContent;
-- (void)hu_reloadData;
-- (void)playbackEngine:(id)arg1 didUpdatePlaybackError:(id)arg2;
-- (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
-- (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
 - (void)viewDidLoad;
-- (id)initWithPlaybackEngine:(id)arg1 imageURL:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithImageURL:(id)arg1;
 
 @end
 

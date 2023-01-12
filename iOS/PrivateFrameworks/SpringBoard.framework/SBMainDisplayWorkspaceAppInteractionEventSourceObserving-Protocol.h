@@ -13,6 +13,7 @@
 @optional
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 didFinishTransitionToMode:(long long)arg2 withLayoutState:(SBMainDisplayLayoutState *)arg3 activatingElement:(SBLayoutElement *)arg4 triggeredBy:(long long)arg5;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 didBeginTransitionToMode:(long long)arg2 withLayoutState:(SBMainDisplayLayoutState *)arg3 activatingElement:(SBLayoutElement *)arg4 triggeredBy:(long long)arg5;
+- (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userTouchedApplication:(NSString *)arg2 pid:(int)arg3 inContext:(unsigned int)arg4;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 keyboardFocusChangedToApplication:(NSString *)arg2;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userTouchedApplication:(NSString *)arg2;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userDeletedWebBookmark:(SBBookmark *)arg2;

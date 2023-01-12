@@ -22,6 +22,7 @@
 - (id)possibleStates;
 - (id)defaultSerializedRepresentation;
 - (void)reloadStates;
+- (void)storeDidChange;
 - (void)wasRemovedFromWorkflow;
 - (void)wasAddedToWorkflow;
 - (id)initWithDefinition:(id)arg1;

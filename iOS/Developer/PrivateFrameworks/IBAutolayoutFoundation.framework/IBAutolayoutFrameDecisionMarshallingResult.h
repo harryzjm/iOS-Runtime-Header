@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBObjectBasedMarshallingResult.h>
-
 @class IBAutolayoutStatus, NSDictionary;
 @protocol IBCollection;
 
-@interface IBAutolayoutFrameDecisionMarshallingResult : IBObjectBasedMarshallingResult
+@interface IBAutolayoutFrameDecisionMarshallingResult
 {
     NSDictionary *_framesByItem;
     id <IBCollection> _constraintsAdded;

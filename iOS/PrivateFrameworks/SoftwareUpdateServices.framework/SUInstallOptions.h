@@ -7,14 +7,19 @@
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface SUInstallOptions <NSSecureCoding, NSCopying>
 {
     _Bool _darkBoot;
     _Bool _required;
     _Bool _managed;
+    NSString *_clientName;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property(nonatomic, getter=isManaged) _Bool managed; // @synthesize managed=_managed;
 @property(nonatomic, getter=isRequired) _Bool required; // @synthesize required=_required;
 @property(nonatomic, getter=isDarkBoot) _Bool darkBoot; // @synthesize darkBoot=_darkBoot;

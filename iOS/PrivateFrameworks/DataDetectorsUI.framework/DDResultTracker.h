@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long maximumDistanceForEmails; // @synthesize maximumDistanceForEmails;
 @property(readonly) unsigned int totalCountRemaining; // @synthesize totalCountRemaining;
 - (id)results;
-- (_Bool)addResultIfAppropriate:(struct __DDResult *)arg1;
+- (_Bool)addResultIfAppropriate:(struct __DDResult *)arg1 referenceDate:(id)arg2 referenceTimeZone:(id)arg3;
 - (void)dealloc;
 - (id)initWithReferenceResult:(struct __DDResult *)arg1;
 

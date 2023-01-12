@@ -13,7 +13,7 @@
 }
 
 + (_Bool)canSuggestHighlightNodeWithoutPeople:(id)arg1 loggingConnection:(id)arg2;
-+ (_Bool)shouldSuggestHighlightNode:(id)arg1 loggingConnection:(id)arg2;
++ (_Bool)shouldSuggestHighlightNode:(id)arg1 neighborScoreComputer:(id)arg2 loggingConnection:(id)arg3;
 + (id)suggestionSubtypes;
 + (id)suggestionTypes;
 - (id)suggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;

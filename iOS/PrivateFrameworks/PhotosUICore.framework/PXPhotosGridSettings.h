@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PXPhotosGridSettings
 {
     _Bool _emulatesEmptyLibrary;
@@ -23,6 +25,7 @@
     _Bool _enableInOtherAlbums;
     _Bool _enableInAppPicker;
     _Bool _enableInImagePicker;
+    _Bool _enableInCMM;
     _Bool _enableSuperzoom;
     _Bool _enableInvisibleNavBars;
     _Bool _enableSortAction;
@@ -50,12 +53,15 @@
     double _headerGradientAlpha;
     double _behindContentBackgroundGradientAlpha;
     double _filteringTimeoutDuration;
+    NSString *_actionMenuGlyphName;
 }
 
 + (id)sharedInstance;
 + (id)_enableTungstenNewFeaturesActionPredicate;
 + (id)_enableTungstenNewFeaturesAction;
 + (id)settingsControllerModule;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *actionMenuGlyphName; // @synthesize actionMenuGlyphName=_actionMenuGlyphName;
 @property(nonatomic) double filteringTimeoutDuration; // @synthesize filteringTimeoutDuration=_filteringTimeoutDuration;
 @property(nonatomic) double behindContentBackgroundGradientAlpha; // @synthesize behindContentBackgroundGradientAlpha=_behindContentBackgroundGradientAlpha;
 @property(nonatomic) double headerGradientAlpha; // @synthesize headerGradientAlpha=_headerGradientAlpha;
@@ -82,6 +88,7 @@
 @property(nonatomic) _Bool enableSortAction; // @synthesize enableSortAction=_enableSortAction;
 @property(nonatomic) _Bool enableInvisibleNavBars; // @synthesize enableInvisibleNavBars=_enableInvisibleNavBars;
 @property(nonatomic) _Bool enableSuperzoom; // @synthesize enableSuperzoom=_enableSuperzoom;
+@property(nonatomic) _Bool enableInCMM; // @synthesize enableInCMM=_enableInCMM;
 @property(nonatomic) _Bool enableInImagePicker; // @synthesize enableInImagePicker=_enableInImagePicker;
 @property(nonatomic) _Bool enableInAppPicker; // @synthesize enableInAppPicker=_enableInAppPicker;
 @property(nonatomic) _Bool enableInOtherAlbums; // @synthesize enableInOtherAlbums=_enableInOtherAlbums;

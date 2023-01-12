@@ -24,33 +24,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsResultSubtype:(id)arg1;
-- (id)resultSubtypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasResultSubtype;
-@property(nonatomic) int resultSubtype;
-- (int)StringAsResultType:(id)arg1;
-- (id)resultTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasResultType;
-@property(nonatomic) int resultType;
-@property(nonatomic) _Bool hasSortPriority;
-@property(nonatomic) int sortPriority;
 
 @end
 

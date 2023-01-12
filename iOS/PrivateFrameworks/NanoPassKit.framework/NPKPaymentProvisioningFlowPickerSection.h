@@ -21,6 +21,8 @@
 @property(readonly, copy, nonatomic) NSMutableArray *items; // @synthesize items=_items;
 @property(copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) _Bool isPaymentSection;
+@property(readonly, nonatomic) _Bool isTransitSection;
 - (id)description;
 
 @end

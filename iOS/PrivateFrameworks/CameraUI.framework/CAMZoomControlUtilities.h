@@ -14,8 +14,10 @@
 + (double)piecewiseLinearMappingForX:(double)arg1 fromXValues:(id)arg2 toYValues:(id)arg3;
 + (double)zoomControlDisplayValueForZoomFactor:(double)arg1 mode:(long long)arg2 device:(long long)arg3 videoConfiguration:(long long)arg4;
 + (_Bool)shouldApplyContinuousZoomForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3 zoomFactors:(id *)arg4 displayZoomFactors:(id *)arg5;
++ (_Bool)shouldEmulateWideDualCameraZoomForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
 + (_Bool)shouldEmulateTripleCameraZoomForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
 + (double)zoomScaleFromDevice:(long long)arg1 toDevice:(long long)arg2;
++ (_Bool)_shouldEmulateZoomSwitchingDualDevicesForMode:(long long)arg1;
 + (long long)deviceForEmulatingZoomFactor:(double)arg1 fromDevice:(long long)arg2 mode:(long long)arg3;
 + (double)_zoomControlRadiusForZoomControl:(id)arg1 layoutSide:(long long)arg2 layoutStyle:(long long)arg3 width:(double)arg4 centerOfZoomControlInContainerBounds:(struct CGPoint)arg5 marginForZoomDiaFromEdge:(double)arg6;
 + (void)layoutZoomControl:(id)arg1 forLayoutStyle:(long long)arg2 bottomBarAlignmentRect:(struct CGRect)arg3 bottomBarTransparent:(_Bool)arg4 shutterButtonAlignmentRect:(struct CGRect)arg5 previewViewAlignmentRect:(struct CGRect)arg6;

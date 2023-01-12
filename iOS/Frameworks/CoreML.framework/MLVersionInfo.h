@@ -16,6 +16,7 @@
     NSString *_variantString;
 }
 
++ (id)versionInfoWithStringProgressive:(id)arg1;
 + (id)versionInfoWithString:(id)arg1;
 + (id)versionInfoWithMajor:(long long)arg1 minor:(long long)arg2 patch:(long long)arg3 variant:(id)arg4;
 - (void).cxx_destruct;

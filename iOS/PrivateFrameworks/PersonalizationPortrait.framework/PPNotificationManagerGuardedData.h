@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, EKEventStore, PPNotificationHandler;
+@class CNContactStore, EKCalendarVisibilityManager, EKEventStore, PPNotificationHandler;
 @protocol NSObject, SGSuggestionsServiceContactsProtocol;
 
 @interface PPNotificationManagerGuardedData : NSObject
@@ -25,6 +25,8 @@
     id <NSObject> _eventKitToken;
     EKEventStore *_ekStore;
     long long _eventKitChangeTrackingToken;
+    PPNotificationHandler *_calendarHandler;
+    EKCalendarVisibilityManager *_calendarVisibilityManager;
     id <SGSuggestionsServiceContactsProtocol> _suggestionsService;
     PPNotificationHandler *_suggestionsHandler;
     id _suggestionsToken;

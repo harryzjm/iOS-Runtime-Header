@@ -25,6 +25,10 @@
 - (struct CGRect)ibFrameForAutolayoutGuide:(id)arg1;
 - (id)ibContainingItemForAutolayoutGuide:(id)arg1;
 @property(retain, nonatomic) NSArray *ibShadowedLayoutGuides;
+- (unsigned long long)ibEstimatedMemorySizeOfViewHierarchy:(id)arg1;
+- (id)ibIoSurfaceForLayerContents:(void *)arg1;
+- (id)ibEstimatedMemorySizeOfRootViewHierarchy;
+- (_Bool)ibNeedsAccessibilityOverridesRefresh;
 - (id)ibEditorMetrics;
 - (double)ibBottomLayoutGuideOffsetFromBottom;
 - (double)ibTopLayoutGuideOffsetFromTop;

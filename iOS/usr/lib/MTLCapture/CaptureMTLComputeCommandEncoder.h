@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)waitForFence:(id)arg1;
 - (void)useResources:(const id *)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResourceGroup:(id)arg1 usage:(unsigned long long)arg2;
 - (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
 - (void)useHeaps:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)useHeap:(id)arg1;
@@ -48,7 +49,6 @@
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
 - (void)setBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
-- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(_Bool)arg3;
 - (void)pushDebugGroup:(id)arg1;
 - (void)popDebugGroup;
@@ -57,6 +57,13 @@
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)insertDebugSignpost:(id)arg1;
 - (void)endEncoding;
+- (void)encodeStartWhile:(id)arg1 offset:(unsigned long long)arg2 comparison:(unsigned long long)arg3 referenceValue:(unsigned int)arg4;
+- (void)encodeStartIf:(id)arg1 offset:(unsigned long long)arg2 comparison:(unsigned long long)arg3 referenceValue:(unsigned int)arg4;
+- (void)encodeStartElse;
+- (void)encodeStartDoWhile;
+- (_Bool)encodeEndWhile;
+- (_Bool)encodeEndIf;
+- (_Bool)encodeEndDoWhile:(id)arg1 offset:(unsigned long long)arg2 comparison:(unsigned long long)arg3 referenceValue:(unsigned int)arg4;
 - (void)dispatchThreadsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2;
 - (void)dispatchThreads:(CDStruct_14f26992)arg1 threadsPerThreadgroup:(CDStruct_14f26992)arg2;
 - (void)dispatchThreadgroupsWithIndirectBuffer:(id)arg1 indirectBufferOffset:(unsigned long long)arg2 threadsPerThreadgroup:(CDStruct_14f26992)arg3;
@@ -74,6 +81,7 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)enableNullBufferBinds:(_Bool)arg1;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;

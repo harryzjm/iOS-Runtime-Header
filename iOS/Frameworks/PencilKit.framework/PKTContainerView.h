@@ -14,7 +14,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PKTextInputContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end

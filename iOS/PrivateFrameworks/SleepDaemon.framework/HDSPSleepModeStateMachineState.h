@@ -15,16 +15,17 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)userDisengagedCurrentMode;
-- (void)userEngagedBedtimeMode;
+- (void)sleepFocusModeDidChange;
+- (void)automationTurnedOffSleepModeWithReason:(unsigned long long)arg1;
+- (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
+- (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
+- (void)userTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)sleepScheduleStateChangedToDisabledFromState:(unsigned long long)arg1;
 - (void)sleepScheduleStateChangedToWakeUp:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToBedtimeFromState:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToWindDownFromState:(unsigned long long)arg1;
-@property(readonly, nonatomic) _Bool isUserRequested;
+- (void)sleepScheduleStateChangedToBedtime:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
+- (void)sleepScheduleStateChangedToWindDown:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
+@property(readonly, nonatomic) unsigned long long defaultChangeReason;
 @property(readonly, nonatomic) long long sleepMode;
-- (_Bool)isSleepModeDuringWindDownEnabled;
-- (_Bool)isScheduledSleepModeEnabled;
 - (id)determineNextState;
 - (void)updateState;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;

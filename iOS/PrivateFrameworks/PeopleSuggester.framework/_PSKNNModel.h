@@ -11,6 +11,7 @@
 
 @interface _PSKNNModel : NSObject
 {
+    _Bool __PSInteractionModelInUse;
     unsigned long long _k;
     id <_DKKnowledgeQuerying> _knowledgeStore;
     _CDInteractionStore *_interactionStore;
@@ -18,19 +19,30 @@
     NSArray *_filterBundleIds;
     _CDInteractionCache *_messageInteractionCache;
     _CDInteractionCache *_shareInteractionCache;
+    NSArray *_groupActivityInteractionCache;
     unsigned long long __PSKnnTopKShares;
     unsigned long long __PSKnnMessagesZkwTopNFilter;
     unsigned long long __PSKnnModelRecencyMarginToPromoteShares;
     unsigned long long __PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId;
     unsigned long long __PSKnnModelRecencyMarginToRetainShares;
+    unsigned long long __PSKnnModelSharesMinimumOccuranceRegularizer;
+    unsigned long long __PSKnnTopKGroupActivities;
+    unsigned long long __PSKnnModelRecencyMarginToRetainGroupActivities;
+    unsigned long long __PSKnnModelGroupActivitiesMinimumOccuranceRegularizer;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool _PSInteractionModelInUse; // @synthesize _PSInteractionModelInUse=__PSInteractionModelInUse;
+@property(nonatomic) unsigned long long _PSKnnModelGroupActivitiesMinimumOccuranceRegularizer; // @synthesize _PSKnnModelGroupActivitiesMinimumOccuranceRegularizer=__PSKnnModelGroupActivitiesMinimumOccuranceRegularizer;
+@property(nonatomic) unsigned long long _PSKnnModelRecencyMarginToRetainGroupActivities; // @synthesize _PSKnnModelRecencyMarginToRetainGroupActivities=__PSKnnModelRecencyMarginToRetainGroupActivities;
+@property(nonatomic) unsigned long long _PSKnnTopKGroupActivities; // @synthesize _PSKnnTopKGroupActivities=__PSKnnTopKGroupActivities;
+@property(nonatomic) unsigned long long _PSKnnModelSharesMinimumOccuranceRegularizer; // @synthesize _PSKnnModelSharesMinimumOccuranceRegularizer=__PSKnnModelSharesMinimumOccuranceRegularizer;
 @property(nonatomic) unsigned long long _PSKnnModelRecencyMarginToRetainShares; // @synthesize _PSKnnModelRecencyMarginToRetainShares=__PSKnnModelRecencyMarginToRetainShares;
 @property(nonatomic) unsigned long long _PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId; // @synthesize _PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId=__PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId;
 @property(nonatomic) unsigned long long _PSKnnModelRecencyMarginToPromoteShares; // @synthesize _PSKnnModelRecencyMarginToPromoteShares=__PSKnnModelRecencyMarginToPromoteShares;
 @property(nonatomic) unsigned long long _PSKnnMessagesZkwTopNFilter; // @synthesize _PSKnnMessagesZkwTopNFilter=__PSKnnMessagesZkwTopNFilter;
 @property(nonatomic) unsigned long long _PSKnnTopKShares; // @synthesize _PSKnnTopKShares=__PSKnnTopKShares;
+@property(retain, nonatomic) NSArray *groupActivityInteractionCache; // @synthesize groupActivityInteractionCache=_groupActivityInteractionCache;
 @property(retain, nonatomic) _CDInteractionCache *shareInteractionCache; // @synthesize shareInteractionCache=_shareInteractionCache;
 @property(retain, nonatomic) _CDInteractionCache *messageInteractionCache; // @synthesize messageInteractionCache=_messageInteractionCache;
 @property(readonly, nonatomic) NSArray *filterBundleIds; // @synthesize filterBundleIds=_filterBundleIds;
@@ -52,30 +64,40 @@
 - (id)rankedLabelsFromInteractionsMaintainRecipientsArray:(id)arg1 andDistances:(id)arg2 freqOnly:(_Bool)arg3;
 - (id)extractNearestNeighborLabelsForQueryResult:(id)arg1 andNeighbors:(id)arg2 frequencyOnly:(_Bool)arg3 rankerType:(long long)arg4 contactsOnly:(_Bool)arg5;
 - (id)mergedSuggestionsFromShares:(id)arg1 andInteractions:(id)arg2;
+- (id)featureVectorFromAbsolutePredictionTime:(double)arg1 bundleId:(id)arg2;
 - (id)featureVectorFromPredictionDate:(id)arg1 bundleId:(id)arg2;
 - (id)targetBundleIdsForFilterBundlesIds:(id)arg1;
-- (id)filterShareInteractions:(id)arg1 minimumOccurences:(unsigned long long)arg2;
+- (id)filterGroupActivityInteractionsWithMinimumOccurences:(unsigned long long)arg1 contextBundleId:(id)arg2 filterOutNonMatchingSourceBundleIDs:(_Bool)arg3;
+- (id)filterShareInteractions:(id)arg1 minimumOccurences:(unsigned long long)arg2 contextBundleId:(id)arg3 filterOutNonMatchingSourceBundleIDs:(_Bool)arg4;
 - (id)splitShareLabels:(id)arg1 suggestionDate:(id)arg2 contextBundleId:(id)arg3;
 - (id)interactionLabelsForQueryResult:(id)arg1 queryPoint:(id)arg2 rankerType:(long long)arg3 frequencyOnly:(_Bool)arg4 contactsOnly:(_Bool)arg5;
 - (id)normalizedScoresForInputDictionary:(id)arg1;
 - (id)softmaxAppliedOnScoresForInputDictionary:(id)arg1;
+- (id)messagesGroupsMatchingSearchPrefix:(id)arg1 inInteractions:(id)arg2;
+- (id)suggestionProxiesBasedOnNonSharingInteractionsWithPredictionContext:(id)arg1;
+- (id)suggestionProxiesBasedOnExpanseInteractionsWithPredictionContext:(id)arg1 withOnlyTopCandidates:(_Bool)arg2 withFilterOutNonMatchingSourceBundleIDs:(_Bool)arg3;
+- (id)suggestionProxiesBasedOnSharingInteractionsWithPredictionContext:(id)arg1 withOnlyTopShares:(_Bool)arg2 withFilterOutNonMatchingSourceBundleIDs:(_Bool)arg3;
 - (id)suggestionProxiesWithPredictionContext:(id)arg1;
 - (id)rankedGlobalSuggestionsForSiriNLWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)rankedGlobalSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 contactsOnly:(_Bool)arg3 interactions:(id)arg4 contactIdsCurrentlyInStore:(id)arg5;
 - (id)normalizedStringFromString:(id)arg1;
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 forName:(id)arg2;
+- (id)_rankedZkwSuggestionsWithPredictionContext:(id)arg1 bundleId:(id)arg2 maxSuggestions:(unsigned long long)arg3 frequencyOnly:(_Bool)arg4 interactions:(id)arg5 interactionCache:(id)arg6;
 - (id)rankedMessagesZkwSuggestionsWithPredictionContext:(id)arg1 bundleId:(id)arg2 maxSuggestions:(unsigned long long)arg3 frequencyOnly:(_Bool)arg4 interactions:(id)arg5;
-- (id)rankedZkwSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
+- (id)rankedCoRecipientSuggestionsWithPredictionContext:(id)arg1 modelConfiguration:(id)arg2 maxSuggestions:(unsigned long long)arg3;
+- (id)rankedZkwSuggestionsWithPredictionContext:(id)arg1 modelConfiguration:(id)arg2 maxSuggestions:(unsigned long long)arg3;
 - (id)candidatePropertyFromCandidates:(id)arg1;
 - (id)indexesOfObjectsWithKey:(id)arg1 withValues:(id)arg2 inArray:(id)arg3;
 - (long long)suggestionExists:(id)arg1 withValue:(id)arg2 inArray:(id)arg3;
 - (id)filterSuggestionsFrom:(id)arg1 byFilteringOutSeedRecipients:(id)arg2;
+- (id)messagesGroupResultsForPredictionContext:(id)arg1;
 - (id)rankedMessagesAutocompleteSuggestionsWithPredictionContext:(id)arg1 bundleId:(id)arg2 candidates:(id)arg3;
+- (id)rankedNonMessagesAutocompleteSuggestionsWithPredictionContext:(id)arg1 bundleId:(id)arg2 candidates:(id)arg3 performSecondarySearch:(_Bool)arg4;
 - (id)rankedAutocompleteSuggestionsWithPredictionContext:(id)arg1 candidates:(id)arg2;
 - (id)rankedHandlesFromCandidateHandles:(id)arg1;
 - (id)rankedSiriMLCRHandles:(id)arg1 context:(id)arg2;
 - (void)updateModelProperties:(id)arg1;
-- (id)initWithK:(unsigned long long)arg1 interactionStore:(id)arg2 filterByBundleIds:(id)arg3 knowledgeStore:(id)arg4 contactResolver:(id)arg5 messageInteractionCache:(id)arg6 shareInteractionCache:(id)arg7;
+- (id)initWithK:(unsigned long long)arg1 interactionStore:(id)arg2 filterByBundleIds:(id)arg3 knowledgeStore:(id)arg4 contactResolver:(id)arg5 messageInteractionCache:(id)arg6 shareInteractionCache:(id)arg7 groupActivityInteractionCache:(id)arg8;
 
 @end
 

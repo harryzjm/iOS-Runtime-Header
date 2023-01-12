@@ -23,10 +23,12 @@
 @property(copy, nonatomic) NSString *userToken;
 @property(copy, nonatomic) NSNumber *userHistoryUnmodifiable;
 @property(copy, nonatomic) NSString *status;
+@property(nonatomic) _Bool isPromotionRelatedStatus;
 @property(copy, nonatomic) NSArray *inContextUsersStates;
 @property(copy, nonatomic) NSString *iTunesMatchSubscriptionStatus;
 @property(copy, nonatomic) NSNumber *iCloudMusicLibraryToggle;
 @property(retain, nonatomic) SACalendar *expirationDate;
+@property(copy, nonatomic) NSArray *eligibleOffers;
 @property(retain, nonatomic) SAUserState *defaultUserState;
 @property(nonatomic) _Bool ageVerificationRequired;
 @property(nonatomic) _Bool activeTvUser;

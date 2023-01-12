@@ -11,14 +11,21 @@
 @interface GEOPlaceQuestionnaire : NSObject
 {
     GEOPDScorecardLayout *_scorecardLayout;
+    _Bool _alwaysPositionInitialRatingCtaTowardsTop;
+    _Bool _canCollectRatings;
+    _Bool _canCollectPhotos;
     NSString *_version;
     NSArray *_ratingCategories;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool canCollectPhotos; // @synthesize canCollectPhotos=_canCollectPhotos;
+@property(readonly, nonatomic) _Bool alwaysPositionInitialRatingCtaTowardsTop; // @synthesize alwaysPositionInitialRatingCtaTowardsTop=_alwaysPositionInitialRatingCtaTowardsTop;
 @property(readonly, nonatomic) NSArray *ratingCategories; // @synthesize ratingCategories=_ratingCategories;
 @property(readonly, copy, nonatomic) NSString *version; // @synthesize version=_version;
-- (id)initWithScorecardLayout:(id)arg1;
+@property(readonly, nonatomic) _Bool canShowCallToAction;
+@property(readonly, nonatomic) _Bool canCollectRatings; // @synthesize canCollectRatings=_canCollectRatings;
+- (id)initWithGEOPDPlaceQuestionnaire:(id)arg1;
 
 @end
 

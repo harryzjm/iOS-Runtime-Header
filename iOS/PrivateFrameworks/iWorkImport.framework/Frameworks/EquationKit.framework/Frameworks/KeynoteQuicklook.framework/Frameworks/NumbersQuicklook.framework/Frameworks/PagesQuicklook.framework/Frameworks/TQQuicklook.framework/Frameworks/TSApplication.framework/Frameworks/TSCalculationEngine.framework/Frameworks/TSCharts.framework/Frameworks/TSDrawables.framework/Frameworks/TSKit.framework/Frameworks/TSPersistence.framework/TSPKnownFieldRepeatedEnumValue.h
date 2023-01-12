@@ -6,16 +6,16 @@
 
 @interface TSPKnownFieldRepeatedEnumValue
 {
-    shared_ptr_b9bbcad9 _unknownFieldSet;
+    struct shared_ptr<google::protobuf::UnknownFieldSet> _unknownFieldSet;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (void)mergeToMessage:(struct Message *)arg1 reflection:(const struct Reflection *)arg2;
-- (void)mergeToUnknownFieldSet:(struct UnknownFieldSet *)arg1;
+- (void)mergeToUnknownFieldSet:(void *)arg1;
 - (_Bool)hasUnknownValues;
-- (id)initWithFieldDescriptor:(const struct FieldDescriptor *)arg1 fieldInfo:(const struct FieldInfo *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4 unknownFieldSet:(shared_ptr_b9bbcad9 *)arg5;
+- (id)initWithFieldDescriptor:(const void *)arg1 fieldInfo:(const void *)arg2 message:(const struct Message *)arg3 reflection:(const struct Reflection *)arg4 unknownFieldSet:(void *)arg5;
 
 @end
 

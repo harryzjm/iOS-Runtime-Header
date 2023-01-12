@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NUJobQueue, NUScheduledQueue;
+@class NSMutableSet, NSString, NUJobQueue, NUScheduledQueue;
 @protocol OS_dispatch_queue;
 
 @interface NUScheduler : NSObject
@@ -17,6 +17,7 @@
     NUJobQueue *_completeQueue;
     NSMutableSet *_scheduledContextWakeups;
     NUScheduledQueue *_rateLimiterQueue;
+    NSString *_name;
 }
 
 + (id)sharedScheduler;
@@ -32,7 +33,7 @@
 - (void)_enqueueJobsForRequests:(id)arg1 withGroup:(id)arg2;
 - (id)_queueForStage:(long long)arg1;
 - (void)submitRequests:(id)arg1 withGroup:(id)arg2;
-- (id)init;
+- (id)initWithName:(id)arg1;
 - (_Bool)_coalesceJobs:(id)arg1;
 - (_Bool)_prepareNewJob:(id)arg1 at:(unsigned long long)arg2;
 

@@ -12,14 +12,14 @@
 
 @interface TSCHStyleOwnerPropertyKey : NSObject <NSCopying>
 {
-    TSCHStyleOwnerPath *mStyleOwnerPath;
-    int mProperty;
+    TSCHStyleOwnerPath *_styleOwnerPath;
+    int _property;
 }
 
 + (id)propertyKeyWithStyleOwnerPath:(id)arg1 property:(int)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) int property; // @synthesize property=mProperty;
-@property(readonly, nonatomic) TSCHStyleOwnerPath *styleOwnerPath; // @synthesize styleOwnerPath=mStyleOwnerPath;
+@property(readonly, nonatomic) int property; // @synthesize property=_property;
+@property(readonly, nonatomic) TSCHStyleOwnerPath *styleOwnerPath; // @synthesize styleOwnerPath=_styleOwnerPath;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

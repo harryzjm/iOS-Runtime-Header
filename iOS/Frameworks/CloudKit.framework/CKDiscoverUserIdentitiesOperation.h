@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKDiscoverUserIdentitiesOperationCallbacks-Protocol.h>
 
-@class CKDiscoverUserIdentitiesOperationInfo, NSArray;
+@class CKDiscoverUserIdentitiesOperationInfo, NSArray, NSMutableSet;
 @protocol CKDiscoverUserIdentitiesOperationCallbacks;
 
 @interface CKDiscoverUserIdentitiesOperation <CKDiscoverUserIdentitiesOperationCallbacks>
@@ -14,9 +14,11 @@
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverUserIdentitiesCompletionBlock;
     NSArray *_userIdentityLookupInfos;
+    NSMutableSet *_discoveredLookupInfos;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableSet *discoveredLookupInfos; // @synthesize discoveredLookupInfos=_discoveredLookupInfos;
 @property(copy, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)handleUserIdentityDiscoveryForLookupInfo:(id)arg1 userIdentity:(id)arg2;

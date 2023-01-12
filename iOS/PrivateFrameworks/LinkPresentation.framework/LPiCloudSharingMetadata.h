@@ -5,12 +5,13 @@
 //
 
 #import <LinkPresentation/LPLinkMetadataBackwardCompatibility-Protocol.h>
+#import <LinkPresentation/LPLinkMetadataFallbackIconTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPresentationTransformer-Protocol.h>
 #import <LinkPresentation/LPLinkMetadataPreviewTransformer-Protocol.h>
 
 @class LPImage, NSString;
 
-@interface LPiCloudSharingMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataBackwardCompatibility>
+@interface LPiCloudSharingMetadata <LPLinkMetadataPresentationTransformer, LPLinkMetadataPreviewTransformer, LPLinkMetadataFallbackIconTransformer, LPLinkMetadataBackwardCompatibility>
 {
     NSString *_applicationBundleIdenfier;
     NSString *_application;
@@ -33,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)populateMetadataForBackwardCompatibility:(id)arg1;
+- (id)fallbackIconForTransformer:(id)arg1;
 - (id)previewImageForTransformer:(id)arg1;
 - (id)previewSummaryForTransformer:(id)arg1;
 - (_Bool)canGeneratePresentationPropertiesForURL:(id)arg1;

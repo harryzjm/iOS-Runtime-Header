@@ -11,19 +11,7 @@
 @interface CRCoder : NSObject
 {
     NSMutableOrderedSet *_encodedObjects;
-    struct Document {
-        CDUnknownFunctionPointerType *;
-        basic_string_7c0a1c0b;
-        unsigned int [1];
-        int;
-        struct VectorTimestamp *;
-        struct VectorTimestamp *;
-        struct RepeatedPtrField<CRDT::Document_DocObject>;
-        struct RepeatedPtrField<std::__1::basic_string<char>>;
-        struct RepeatedPtrField<std::__1::basic_string<char>>;
-        struct RepeatedPtrField<std::__1::basic_string<char>>;
-        struct VectorTimestamp *;
-    } *_currentDocument;
+    void *_currentDocument;
     NSOrderedSet *_clusterTypeSet;
 }
 
@@ -32,7 +20,7 @@
 + (void)registerCRClasses;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSOrderedSet *clusterTypeSet; // @synthesize clusterTypeSet=_clusterTypeSet;
-@property(nonatomic) struct Document *currentDocument; // @synthesize currentDocument=_currentDocument;
+@property(nonatomic) void *currentDocument; // @synthesize currentDocument=_currentDocument;
 @property(retain, nonatomic) NSMutableOrderedSet *encodedObjects; // @synthesize encodedObjects=_encodedObjects;
 - (unsigned long long)typeIndexForClass:(Class)arg1;
 @property(readonly, nonatomic) NSDictionary *typeToClassDict;

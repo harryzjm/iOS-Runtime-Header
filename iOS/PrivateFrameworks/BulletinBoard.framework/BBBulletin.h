@@ -9,11 +9,12 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBColor, BBContent, BBImage, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone;
+@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBCommunicationContext, BBContent, BBImage, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone;
 
 @interface BBBulletin : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _hasCriticalIcon;
+    _Bool _hasSubordinateIcon;
     _Bool _hasEventDate;
     _Bool _dateIsAllDay;
     _Bool _clearable;
@@ -22,11 +23,14 @@
     _Bool _ignoresQuietMode;
     _Bool _ignoresDowntime;
     _Bool _preemptsPresentedAlert;
+    _Bool _displaysActionsInline;
     _Bool _expiresOnPublisherDeath;
     _Bool _usesExternalSync;
     _Bool _loading;
     _Bool _preventAutomaticRemovalFromLockScreen;
+    float _relevanceScore;
     NSString *_sectionID;
+    NSString *_sectionBundlePath;
     NSSet *_subsectionIDs;
     NSString *_publisherRecordID;
     NSString *_publisherBulletinID;
@@ -37,6 +41,7 @@
     long long _sectionSubtype;
     NSArray *_intentIDs;
     unsigned long long _counter;
+    unsigned long long _interruptionLevel;
     BBContent *_content;
     BBContent *_modalAlertContent;
     BBContent *_starkBannerContent;
@@ -71,8 +76,11 @@
     long long _lockScreenPriority;
     long long _backgroundStyle;
     NSString *_header;
+    NSString *_footer;
+    NSString *_contentType;
     unsigned long long realertCount;
     NSSet *alertSuppressionAppIDs_deprecated;
+    BBCommunicationContext *_communicationContext;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -83,8 +91,11 @@
 + (id)_observerAssociationSet;
 + (id)_lifeAssertionAssociationSet;
 - (void).cxx_destruct;
+@property(retain, nonatomic) BBCommunicationContext *communicationContext; // @synthesize communicationContext=_communicationContext;
 @property(copy, nonatomic) NSSet *alertSuppressionAppIDs_deprecated; // @synthesize alertSuppressionAppIDs_deprecated;
 @property(nonatomic) unsigned long long realertCount; // @synthesize realertCount;
+@property(copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property(copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property(copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(nonatomic) long long lockScreenPriority; // @synthesize lockScreenPriority=_lockScreenPriority;
@@ -106,6 +117,7 @@
 @property(copy, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property(retain, nonatomic) NSMutableDictionary *supplementaryActionsByLayout; // @synthesize supplementaryActionsByLayout=_supplementaryActionsByLayout;
 @property(retain, nonatomic) NSMutableDictionary *actions; // @synthesize actions=_actions;
+@property(nonatomic) _Bool displaysActionsInline; // @synthesize displaysActionsInline=_displaysActionsInline;
 @property(nonatomic) _Bool preemptsPresentedAlert; // @synthesize preemptsPresentedAlert=_preemptsPresentedAlert;
 @property(nonatomic) _Bool ignoresDowntime; // @synthesize ignoresDowntime=_ignoresDowntime;
 @property(nonatomic) _Bool ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;
@@ -125,6 +137,7 @@
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(nonatomic) _Bool hasEventDate; // @synthesize hasEventDate=_hasEventDate;
+@property(nonatomic) _Bool hasSubordinateIcon; // @synthesize hasSubordinateIcon=_hasSubordinateIcon;
 @property(nonatomic) _Bool hasCriticalIcon; // @synthesize hasCriticalIcon=_hasCriticalIcon;
 @property(retain, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
 @property(nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
@@ -132,6 +145,8 @@
 @property(retain, nonatomic) BBContent *starkBannerContent; // @synthesize starkBannerContent=_starkBannerContent;
 @property(retain, nonatomic) BBContent *modalAlertContent; // @synthesize modalAlertContent=_modalAlertContent;
 @property(retain, nonatomic) BBContent *content; // @synthesize content=_content;
+@property(nonatomic) float relevanceScore; // @synthesize relevanceScore=_relevanceScore;
+@property(nonatomic) unsigned long long interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(nonatomic) unsigned long long counter; // @synthesize counter=_counter;
 @property(copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
 @property(nonatomic) long long sectionSubtype; // @synthesize sectionSubtype=_sectionSubtype;
@@ -142,6 +157,7 @@
 @property(copy, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
 @property(copy, nonatomic) NSString *recordID; // @synthesize recordID=_publisherRecordID;
 @property(copy, nonatomic) NSSet *subsectionIDs; // @synthesize subsectionIDs=_subsectionIDs;
+@property(copy, nonatomic) NSString *sectionBundlePath; // @synthesize sectionBundlePath=_sectionBundlePath;
 @property(copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 - (id)shortDescription;
 - (id)safeDescription;
@@ -185,6 +201,8 @@
 - (unsigned long long)numberOfAdditionalAttachmentsOfType:(long long)arg1;
 - (unsigned long long)numberOfAdditionalAttachments;
 - (long long)primaryAttachmentType;
+@property(readonly, nonatomic, getter=isCallNotification) _Bool callNotification;
+@property(readonly, nonatomic, getter=isMessagingNotification) _Bool messagingNotification;
 @property(copy, nonatomic) NSString *section;
 @property(copy, nonatomic) NSString *message;
 @property(copy, nonatomic) NSString *subtitle;
@@ -215,7 +233,6 @@
 @property(readonly, nonatomic) NSString *secondaryContentRemoteViewControllerClassName;
 @property(readonly, nonatomic) NSString *bannerAccessoryRemoteServiceBundleIdentifier;
 @property(readonly, nonatomic) NSString *bannerAccessoryRemoteViewControllerClassName;
-@property(readonly, nonatomic) BBColor *tintColor;
 @property(readonly, nonatomic) long long iPodOutAlertType;
 @property(readonly, nonatomic) unsigned long long subtypePriority;
 @property(readonly, nonatomic) _Bool playsSoundForModify;

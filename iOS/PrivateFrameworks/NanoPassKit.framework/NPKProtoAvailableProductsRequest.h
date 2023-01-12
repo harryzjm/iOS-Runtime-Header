@@ -8,10 +8,15 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
+@class NSData;
+
 @interface NPKProtoAvailableProductsRequest : PBRequest <NSCopying>
 {
+    NSData *_productsRequestData;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSData *productsRequestData; // @synthesize productsRequestData=_productsRequestData;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -21,6 +26,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasProductsRequestData;
 
 @end
 

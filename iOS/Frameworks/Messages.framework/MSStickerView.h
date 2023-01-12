@@ -9,7 +9,7 @@
 #import <Messages/CKAnimationTimerObserver-Protocol.h>
 #import <Messages/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CKAnimatedImage, CKImageData, MSSticker, NSArray, NSError, NSString, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class CKAnimatedImage, CKImageData, MSSticker, NSArray, NSError, NSString, UIImage, UIImageView, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
 @interface MSStickerView : UIView <UIGestureRecognizerDelegate, CKAnimationTimerObserver>
 {
@@ -26,13 +26,11 @@
     NSArray *_frames;
     UITapGestureRecognizer *_tapRecognizer;
     UILongPressGestureRecognizer *_longPressRecognizer;
-    UIPanGestureRecognizer *_panRecognizer;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isPeeled; // @synthesize isPeeled=_isPeeled;
 @property(nonatomic) _Bool animating; // @synthesize animating=_animating;
-@property(readonly, nonatomic) UIPanGestureRecognizer *panRecognizer; // @synthesize panRecognizer=_panRecognizer;
 @property(readonly, nonatomic) UILongPressGestureRecognizer *longPressRecognizer; // @synthesize longPressRecognizer=_longPressRecognizer;
 @property(readonly, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 @property(nonatomic) _Bool initialLayoutComplete; // @synthesize initialLayoutComplete=_initialLayoutComplete;
@@ -46,6 +44,7 @@
 @property(retain, nonatomic) MSSticker *sticker; // @synthesize sticker=_sticker;
 - (id)_stickerSendManager;
 - (void)handleLongPress:(id)arg1;
+- (void)stageSticker;
 - (void)handleTap:(id)arg1;
 - (void)animationTimerFired:(unsigned long long)arg1;
 - (void)didMoveToWindow;

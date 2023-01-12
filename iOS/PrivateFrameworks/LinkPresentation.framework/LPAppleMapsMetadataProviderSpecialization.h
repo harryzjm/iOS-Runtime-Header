@@ -32,7 +32,9 @@ __attribute__((visibility("hidden")))
 - (void)completeWithSearchQuery:(id)arg1;
 - (void)fail;
 - (void)cancel;
-- (void)continueWithBaseSnapshotOptions:(id)arg1 mapItems:(id)arg2;
+- (void)continueWithSnapshotOfMapItems:(id)arg1 inRegion:(CDStruct_26e8d939)arg2;
+- (void)continueWithSnapshotOfMapRegion:(CDStruct_26e8d939)arg1;
+- (void)continueWithLookAroundSnapshotWithOptions:(id)arg1;
 - (void)start;
 - (id)geocoder;
 - (void)resolveMapRegionWithCompletionHandler:(CDUnknownBlockType)arg1;

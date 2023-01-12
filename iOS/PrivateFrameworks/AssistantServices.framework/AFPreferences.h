@@ -6,22 +6,28 @@
 
 #import <objc/NSObject.h>
 
+@class AFInstanceContext;
 @protocol OS_dispatch_queue;
 
 @interface AFPreferences : NSObject
 {
-    _Bool _registeredForInternalPrefs;
-    _Bool _registeredForLanguageCode;
-    _Bool _registeredForOutputVoice;
-    _Bool _registeredForNanoPrefs;
+    struct atomic_flag _registeredForInternalPrefs;
+    struct atomic_flag _registeredForLanguageCode;
+    struct atomic_flag _registeredForOutputVoice;
+    struct atomic_flag _registeredForNanoPrefs;
+    struct atomic_flag _registeredForAssistantEnablement;
+    struct atomic_flag _registeredForDictationEnablement;
     NSObject<OS_dispatch_queue> *_navTokenQueue;
     _Bool _navTokenIsValid;
     int _navToken;
     long long _tlsSessionTicketFlushRequestPending;
+    AFInstanceContext *_instanceContext;
 }
 
 + (id)sharedPreferences;
++ (id)sharedPreferencesWithInstanceContext:(id)arg1;
 - (void).cxx_destruct;
+- (void)erasePreferences;
 - (id)nanoOfflineDictationStatus;
 - (void)setNanoSiriDataSharingOptInStatus:(long long)arg1;
 - (long long)nanoSiriDataSharingOptInStatus;
@@ -39,6 +45,7 @@
 - (_Bool)nanoRaiseToSpeakEnabled;
 - (void)setNanoPhraseSpotterEnabled:(_Bool)arg1;
 - (_Bool)nanoPhraseSpotterEnabled;
+- (void)setNanoLanguageCode:(id)arg1 outputVoice:(id)arg2 forTinkerDevice:(id)arg3;
 - (void)setNanoDictationEnabled:(_Bool)arg1;
 - (_Bool)nanoDictationEnabled;
 - (void)setNanoAssistantEnabled:(_Bool)arg1;
@@ -78,6 +85,9 @@
 - (void)setValue:(id)arg1 forSessionContextKey:(id)arg2;
 - (id)valueForSessionContextPreferenceKey:(id)arg1;
 - (void)_registerForNavStatusIfNeeded;
+- (_Bool)mediaPlaybackEnabled;
+- (void)setMediaPlaybackEnabled:(_Bool)arg1;
+- (void)getExperimentForConfigurationIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)keepRecordedAudioFiles;
 - (void)setKeepRecordedAudioFiles:(_Bool)arg1;
 - (_Bool)isDictationOnDeviceSamplingDisabled;
@@ -88,6 +98,7 @@
 - (long long)useDeviceSpeakerForTTS;
 - (void)setLanguageCode:(id)arg1 outputVoice:(id)arg2;
 - (void)setOutputVoice:(id)arg1;
+- (id)_outputVoiceWithFallback:(_Bool)arg1;
 - (id)outputVoice;
 - (void)setInProgressOutputVoice:(id)arg1;
 - (id)inProgressOutputVoice;
@@ -101,15 +112,12 @@
 - (id)_languagePreferencesForCurrentSystemConfiguration;
 - (_Bool)isLocaleIdentifierNativelySupported:(id)arg1;
 - (_Bool)isCurrentLocaleNativelySupported;
+- (id)_languageCodeWithFallback:(_Bool)arg1;
 - (id)languageCode;
 - (void)setAssistantLanguageForceRTL:(_Bool)arg1;
 - (_Bool)assistantLanguageForceRTL;
 - (void)setDisableAssistantWhilePasscodeLocked:(_Bool)arg1;
 - (_Bool)disableAssistantWhilePasscodeLocked;
-- (void)setApplySASToFirstPartyDomains:(_Bool)arg1;
-- (_Bool)applySASToFirstPartyDomains;
-- (void)setUseSASAutoSelectionFeature:(_Bool)arg1;
-- (_Bool)useSASAutoSelectionFeature;
 - (void)setEnableNonFullScreenAppearance:(_Bool)arg1;
 - (_Bool)enableNonFullScreenAppearance;
 - (void)setEnableDragAndDrop:(_Bool)arg1;
@@ -131,13 +139,20 @@
 - (void)setDatabaseSyncEnabled:(_Bool)arg1;
 - (void)setLimitedAudioLoggingEnabled:(_Bool)arg1;
 - (_Bool)limitedAudioLoggingEnabled;
+- (void)setOpportuneSpeakingFileLoggingIsEnabled:(_Bool)arg1;
+- (_Bool)opportuneSpeakingFileLoggingIsEnabled;
 - (void)setOpportuneSpeakingTimeoutInterval:(double)arg1;
 - (double)opportuneSpeakingTimeoutInterval;
 - (void)setOpportuneSpeakingPauseInterval:(double)arg1;
 - (double)opportuneSpeakingPauseInterval;
+- (void)setMyriadMaxNoOperationDelay:(double)arg1;
+- (double)myriadMaxNoOperationDelay;
 - (id)myriadMonitorTimeOutInterval;
-- (_Bool)myriadShouldIgnoreAdjustedBoost;
+- (void)setIgnoreMyriadPlatformBias:(_Bool)arg1;
+- (_Bool)ignoreMyriadPlatformBias;
 - (void)setIgnoreMyriadAdjustedBoost:(_Bool)arg1;
+- (_Bool)myriadShouldIgnoreAdjustedBoost;
+- (void)setMyriadDeviceVTEndTimeDistanceThreshold:(double)arg1;
 - (double)myriadDeviceVTEndTimeDistanceThreshold;
 - (void)setMyriadLastWin;
 - (id)myriadLastWin;
@@ -163,8 +178,9 @@
 - (id)myriadDeviceGroup;
 - (void)setMyriadDuckingEnabled:(_Bool)arg1;
 - (_Bool)myriadDuckingEnabled;
-- (void)setMyriadCoordinationEnabled:(_Bool)arg1;
 - (_Bool)disableMyriadBLEActivity;
+- (void)setMyriadCoordinationEnabled:(_Bool)arg1;
+- (_Bool)myriadCoordinationEnabledForAccessoryLogging;
 - (_Bool)myriadCoordinationEnabled;
 - (void)setCompanionConnectionsOverBLEEnabled:(_Bool)arg1;
 - (_Bool)companionConnectionsOverBLEEnabled;
@@ -174,8 +190,6 @@
 - (id)manualEndpointingThreshold;
 - (void)setIgnoreServerManualEndpointingThreshold:(_Bool)arg1;
 - (_Bool)ignoreServerManualEndpointingThreshold;
-- (void)setActivitySummaryReportDateToNow;
-- (id)activitySummaryReportDate;
 - (id)horsemanSupplementalLanguageDictionary;
 - (id)supplementalLanguagesModificationDate;
 - (id)supplementalLanguages;
@@ -187,10 +201,24 @@
 - (void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDesignModeEnabled:(_Bool)arg1;
 - (_Bool)designModeIsEnabled;
+- (void)clearAnnounceNotificationsInCarPlayType;
+- (void)setAnnounceNotificationsInCarPlayType:(long long)arg1;
+- (void)getAnnounceNotificationsInCarPlayTypeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)clearAnnounceNotificationsInCarPlayTemporarilyDisabled;
+- (void)setAnnounceNotificationsInCarPlayTemporarilyDisabled:(_Bool)arg1;
+- (void)getAnnounceNotificationsInCarPlayTemporarilyDisabledWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setAnnounceNotificationsTemporarilyDisabledUntil:(id)arg1 forApp:(id)arg2 platform:(long long)arg3;
+- (void)getAnnounceNotificationsTemporarilyDisabledEndDateForApp:(id)arg1 platform:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getAnnounceNotificationsTemporarilyDisabledForApp:(id)arg1 platform:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setAnnounceNotificationsTemporarilyDisabledUntil:(id)arg1 platform:(long long)arg2;
+- (void)getAnnounceNotificationsTemporarilyDisabledEndDateForPlatform:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getAnnounceNotificationsTemporarilyDisabledStatusForPlatform:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSpokenNotificationShouldSkipTriggerlessRepliesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setSpokenNotificationShouldSkipTriggerlessReplies:(_Bool)arg1;
-- (void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setSpokenNotificationShouldAlwaysSpeakNotifications:(_Bool)arg1;
+- (void)getSpokenNotificationShouldAnnounceAllNotificationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setSpokenNotificationShouldAnnounceAllNotifications:(_Bool)arg1;
+- (void)getSpokenNotificationIsAlwaysOpportuneWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setSpokenNotificationIsAlwaysOpportune:(_Bool)arg1;
 - (_Bool)spokenNotificationSkipTriggerlessReplyConfirmation;
 - (void)setSpokenNotificationSkipTriggerlessReplyConfirmation:(_Bool)arg1;
 - (void)setSpokenNotificationsProxCardSeen;
@@ -206,6 +234,8 @@
 - (id)cloudSyncEnabledModificationDate;
 - (void)setCloudSyncEnabled:(_Bool)arg1;
 - (_Bool)cloudSyncEnabled;
+- (void)setCurareOrchestrationEnabled:(_Bool)arg1;
+- (_Bool)curareOrchestrationEnabled;
 - (void)setListenAfterSpeakingDisabled:(_Bool)arg1;
 - (_Bool)listenAfterSpeakingDisabled;
 - (void)setCrownActivationEnabled:(_Bool)arg1;
@@ -229,6 +259,10 @@
 - (_Bool)debugButtonIsEnabled;
 - (void)setShowServerOnUI:(_Bool)arg1;
 - (_Bool)showServerOnUI;
+- (void)setStartAlertEnabled:(_Bool)arg1;
+- (_Bool)startAlertEnabled;
+- (_Bool)isOnDeviceDictationForced;
+- (_Bool)isDictationHIPAACompliant;
 - (void)resetSessionLanguage;
 - (void)setDictationSLSLanguagesEnabled:(id)arg1;
 - (void)setPreferOnlineRecognitionEnabled:(_Bool)arg1;
@@ -241,6 +275,8 @@
 - (void)setOnDeviceDictationAvailableAlertPresented:(_Bool)arg1;
 - (void)_setOnDeviceDictationAvailableAlertPresentedLocal:(_Bool)arg1;
 - (_Bool)onDeviceDictationAvailableAlertPresented;
+- (void)_setDictationIsAllowed:(_Bool)arg1;
+- (_Bool)_dictationIsAllowed;
 - (void)setDictationIsEnabled:(_Bool)arg1;
 - (void)setAssistantIsEnabled:(_Bool)arg1;
 - (void)_setDictationIsEnabledLocal:(_Bool)arg1;
@@ -256,24 +292,27 @@
 - (id)dictationSLSLanguagesEnabled;
 - (_Bool)dictationIsEnabled;
 - (_Bool)assistantIsEnabled;
+- (void)_registerForDictationEnablementChangeNotifications;
+- (void)_registerForAssistantEnablementChangeNotifications;
 - (void)_registerForNanoPrefsChangeNotifications;
 - (void)_registerForOutputVoice;
 - (void)_registerForLanguageCodeChangeNotifications;
 - (void)_registerForInternalPrefs;
 - (void)synchronize;
+- (id)instanceContext;
 - (void)dealloc;
 - (id)init;
+- (id)initWithInstanceContext:(id)arg1;
+- (id)description;
 - (void)synchronizeAVVCPreferencesDomain;
 - (void)synchronizeLogPreferencesDomain;
+- (void)_dictationEnablementDidChangeExternally;
+- (void)_assistantEnablementDidChangeExternally;
 - (void)_nanoPrefsDidChangeExternally;
 - (void)_outputVoiceDidChangeExternally;
 - (void)_languageCodeDidChangeExternally;
 - (void)_internalPreferencesDidChangeExternally;
 - (void)_preferencesDidChangeExternally;
-- (void)setRespectsSystemMute:(_Bool)arg1;
-- (_Bool)respectsSystemMute;
-- (void)setHandsFreeMode:(long long)arg1;
-- (long long)handsFreeMode;
 
 @end
 

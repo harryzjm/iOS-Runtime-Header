@@ -55,6 +55,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) NSObject<OS_nw_interface> *cInterface;
 - (id)copyLocalAddressForDefaultIPv4;
 - (id)copyLocalAddressForDefaultIPv6;
 - (id)copyLocalAddressForRemoteAddress:(id)arg1;

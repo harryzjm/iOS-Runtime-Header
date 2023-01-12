@@ -10,15 +10,16 @@
 
 @interface TSCH3DGeometry : NSObject
 {
-    TSCH3Dvec3DataBuffer *mVertexBuffer;
-    TSCH3Dvec3DataBuffer *mNormalBuffer;
-    int mNumVertices;
-    box_a3bd9649 mGeometryBounds;
+    TSCH3Dvec3DataBuffer *_vertexBuffer;
+    TSCH3Dvec3DataBuffer *_normalBuffer;
+    int _numVertices;
+    box_c9ef104e _geometryBounds;
 }
 
 + (id)geometry;
 - (id).cxx_construct;
-@property(readonly, nonatomic) box_a3bd9649 geometryBounds;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) box_c9ef104e geometryBounds;
 - (id)elementsBoundsPositions;
 - (id)selectionKnobPositions;
 - (unsigned int)capCount;
@@ -26,16 +27,15 @@
 - (int)geometryCount;
 - (unsigned int)geometryOffset;
 - (void)allocateArrays:(int)arg1;
-- (void)transformArrays:(const tmat4x4_3074befe *)arg1;
-- (tvec3_17f03ce0 *)normalArrayPointer;
-- (tvec3_17f03ce0 *)vertexArrayPointer;
-- (vector_7200ab52 *)normalArray;
-- (vector_7200ab52 *)vertexArray;
+- (void)transformArrays:(const void *)arg1;
+- (void *)normalArrayPointer;
+- (void *)vertexArrayPointer;
+- (void *)normalArray;
+- (void *)vertexArray;
 - (id)normalBuffer;
 - (id)vertexBuffer;
 - (void)reset;
 - (int)numVertices;
-- (void)dealloc;
 - (id)init;
 
 @end

@@ -23,6 +23,7 @@
 + (id)fetchMomentsForFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForAssetsWithOIDs:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)predicateForUserCollections;
 + (id)fetchTopLevelUserCollectionsWithOptions:(id)arg1;
 + (id)fetchCollectionsInCollectionList:(id)arg1 options:(id)arg2;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;

@@ -9,10 +9,11 @@
 @class HKGraphSeries, HKGraphView, HKValueRange, NSArray, UIColor;
 
 @protocol HKGraphViewDelegate <NSObject>
+- (void)graphViewExternalSelectionEnd:(HKGraphView *)arg1;
 - (void)graphViewDidTapYAxis:(HKGraphView *)arg1;
 - (void)graphView:(HKGraphView *)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
 - (UIColor *)seriesSelectionLineColorForGraphView:(HKGraphView *)arg1;
-- (void)graphView:(HKGraphView *)arg1 didUpdateSeries:(HKGraphSeries *)arg2 newDataArrived:(_Bool)arg3;
+- (void)graphView:(HKGraphView *)arg1 didUpdateSeries:(HKGraphSeries *)arg2 newDataArrived:(_Bool)arg3 changeContext:(long long)arg4;
 - (void)graphView:(HKGraphView *)arg1 didUpdateYAxisWidth:(double)arg2 toWidth:(double)arg3;
 - (void)graphViewSizeChanged:(HKGraphView *)arg1;
 - (NSArray *)graphView:(HKGraphView *)arg1 graphSeriesForZoom:(long long)arg2 stackOffset:(long long)arg3;
@@ -23,6 +24,7 @@
 - (void)graphViewDidEndSelection:(HKGraphView *)arg1;
 - (void)graphView:(HKGraphView *)arg1 didUpdateSelectedPoint:(NSArray *)arg2;
 - (void)graphViewDidBeginSelection:(HKGraphView *)arg1;
+- (_Bool)graphViewPointSelectionDifferentiatesSeriesGroups:(HKGraphView *)arg1;
 
 @optional
 - (void)graphView:(HKGraphView *)arg1 startupTime:(long long)arg2;

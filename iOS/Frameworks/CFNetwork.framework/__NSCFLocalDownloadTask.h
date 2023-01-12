@@ -45,6 +45,8 @@
 - (int)openItemForPath:(id)arg1 mode:(int)arg2;
 - (void)dealloc;
 - (const struct __CFDictionary *)_copySocketStreamProperties;
+- (void)set_keepDownloadTaskFile:(_Bool)arg1;
+- (_Bool)_keepDownloadTaskFile;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

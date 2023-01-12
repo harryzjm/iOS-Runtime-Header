@@ -6,14 +6,11 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HKConcept, HKConceptIdentifier, HKSample, NSURL;
+@class HKConceptIdentifier, NSURL;
 
 @protocol HKConceptStoreServerInterface <NSObject>
 - (void)remote_resetOntologyUsingAssetAtLocation:(NSURL *)arg1 rememberLocation:(_Bool)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)remote_queryCountOfConceptsAssociatedToUserRecordsWithCompletion:(void (^)(long long, NSError *))arg1;
-- (void)remote_cleanUpAfterUnitTestWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)remote_breakAssociationFromSample:(HKSample *)arg1 toConcept:(HKConcept *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)remote_makeAssociationFromSample:(HKSample *)arg1 toConcept:(HKConcept *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)remote_queryCountOfConceptsAssociatedToUserRecordsWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)remote_queryRelationshipsForNodeWithID:(HKConceptIdentifier *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_queryConceptByIdentifier:(HKConceptIdentifier *)arg1 loadRelationships:(_Bool)arg2 completion:(void (^)(HKConcept *, NSError *))arg3;
 - (void)remote_ontologyVersionWithCompletion:(void (^)(NSNumber *, NSError *))arg1;

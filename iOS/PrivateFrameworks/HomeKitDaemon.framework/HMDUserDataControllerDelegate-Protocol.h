@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/NSObject-Protocol.h>
-
 @class HMDUserDataController, HMDUserSettingsBackingStoreController, NSUUID;
 
-@protocol HMDUserDataControllerDelegate <NSObject>
-@property(readonly) _Bool isUserSettingsPrefEnabled;
+@protocol HMDUserDataControllerDelegate
 - (HMDUserSettingsBackingStoreController *)privateZoneControllerForUserDataController:(HMDUserDataController *)arg1;
 - (HMDUserSettingsBackingStoreController *)sharedZoneControllerForUserDataController:(HMDUserDataController *)arg1;
 - (void)userDataControllerDidUpdateMediaContentProfile:(HMDUserDataController *)arg1;
 - (void)userDataControllerDidUpdateAssistantAccessControl:(HMDUserDataController *)arg1;
+- (_Bool)userDataController:(HMDUserDataController *)arg1 isHAPAccessory:(NSUUID *)arg2;
+- (_Bool)userDataController:(HMDUserDataController *)arg1 isAppleMediaAccessory:(NSUUID *)arg2;
 - (_Bool)userDataController:(HMDUserDataController *)arg1 isPersonalRequestCapableAccessoryID:(NSUUID *)arg2;
 - (_Bool)userDataController:(HMDUserDataController *)arg1 isMediaContentProfileCapableAccessoryID:(NSUUID *)arg2;
 @end

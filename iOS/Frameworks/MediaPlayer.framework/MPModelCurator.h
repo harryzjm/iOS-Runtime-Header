@@ -13,16 +13,19 @@
 + (id)__handle_KEY;
 + (id)__brandLogoArtworkCatalogBlock_KEY;
 + (id)__editorialArtworkCatalogBlock_KEY;
++ (id)__curatorSubKind_KEY;
 + (id)__curatorKind_KEY;
 + (id)__shortEditorNotes_KEY;
 + (id)__editorNotes_KEY;
 + (id)__shortName_KEY;
++ (long long)genericObjectType;
 - (id)brandLogoArtworkCatalog;
 - (id)editorialArtworkCatalog;
 
 // Remaining properties
 @property(copy, nonatomic) CDUnknownBlockType brandLogoArtworkCatalogBlock; // @dynamic brandLogoArtworkCatalogBlock;
 @property(nonatomic) long long curatorKind; // @dynamic curatorKind;
+@property(nonatomic) long long curatorSubKind; // @dynamic curatorSubKind;
 @property(copy, nonatomic) NSString *editorNotes; // @dynamic editorNotes;
 @property(copy, nonatomic) CDUnknownBlockType editorialArtworkCatalogBlock; // @dynamic editorialArtworkCatalogBlock;
 @property(copy, nonatomic) NSString *handle; // @dynamic handle;

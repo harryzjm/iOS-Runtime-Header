@@ -10,7 +10,7 @@
 @protocol TSCHChartGridValue, TSCHDataFormatter, TSCHDataFormatterPersistableStyleObject, TSCHDataFormatterSupportedClientFormatObject;
 
 @protocol TSCHDataFormatter <NSObject>
-- (long long)numberOfDecimalPlaces;
+@property(readonly, nonatomic) long long numberOfDecimalPlaces;
 - (id <TSCHDataFormatterSupportedClientFormatObject>)convertToSupportedClientFormatObjectWithLocale:(TSULocale *)arg1;
 - (id <TSCHDataFormatterPersistableStyleObject>)convertToPersistableStyleObject;
 - (_Bool)isCompatibleWithDataFormatter:(id <TSCHDataFormatter>)arg1;

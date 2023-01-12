@@ -20,15 +20,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isReceivingViewportChanges; // @synthesize isReceivingViewportChanges=_isReceivingViewportChanges;
-@property(nonatomic) __weak SXComponentView *componentView; // @synthesize componentView=_componentView;
-@property(nonatomic) double previousYOffset; // @synthesize previousYOffset=_previousYOffset;
-@property(retain, nonatomic) SXImageView *imageView; // @synthesize imageView=_imageView;
-@property(nonatomic) __weak SXViewport *viewport; // @synthesize viewport=_viewport;
-- (void)unregisterForViewportChanges;
-- (void)registerForViewportChanges;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;
-- (id)initWithImageComponentView:(id)arg1 viewport:(id)arg2 imageView:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

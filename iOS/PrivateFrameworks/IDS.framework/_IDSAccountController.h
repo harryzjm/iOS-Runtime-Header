@@ -18,6 +18,7 @@
     NSString *_service;
     NSMutableSet *_cachedAccounts;
     NSMutableSet *_enabledAccounts;
+    NSMutableDictionary *_pendingAccountsToRemove;
     NSMutableDictionary *_transactionIDToHandlersMap;
     _Bool _accountsLoaded;
     _Bool _isLocalAccountVisible;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, PKExpressTransactionState, PKFelicaAppletHistory, PKPaymentApplication, PKPaymentPass, PKPaymentTransaction, PKTransitAppletHistory;
+@class NSArray, NSDate, NSString, PKExpressTransactionState, PKFelicaAppletHistory, PKPaymentApplication, PKPaymentPass, PKPaymentTransaction, PKTransitAppletHistory;
 
 @interface PKContactlessInterfaceTransactionContext : NSObject
 {
@@ -15,6 +15,8 @@
     NSDate *_date;
     PKPaymentPass *_paymentPass;
     PKPaymentApplication *_paymentApplication;
+    NSString *_appletIdentifier;
+    NSString *_credentialIdentifier;
     PKPaymentTransaction *_transaction;
     NSArray *_valueAddedServicePasses;
     NSArray *_valueAddedServiceTransactions;
@@ -30,6 +32,8 @@
 @property(retain, nonatomic) NSArray *valueAddedServiceTransactions; // @synthesize valueAddedServiceTransactions=_valueAddedServiceTransactions;
 @property(retain, nonatomic) NSArray *valueAddedServicePasses; // @synthesize valueAddedServicePasses=_valueAddedServicePasses;
 @property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property(retain, nonatomic) NSString *credentialIdentifier; // @synthesize credentialIdentifier=_credentialIdentifier;
+@property(retain, nonatomic) NSString *appletIdentifier; // @synthesize appletIdentifier=_appletIdentifier;
 @property(retain, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property(retain, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property(retain, nonatomic) NSDate *date; // @synthesize date=_date;

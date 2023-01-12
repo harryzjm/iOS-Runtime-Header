@@ -4,37 +4,56 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVOutputDeviceDiscoverySession, NSArray, NSObject, NSString;
+#import <MediaRemote/MRCompanionConnectionControllerDelegate-Protocol.h>
+#import <MediaRemote/MRExpanseManagerObserver-Protocol.h>
+
+@class AVOutputDeviceDiscoverySession, MRAVOutputDevice, MRAVRoutingDiscoverySession, MRCompanionConnectionController, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MRAVConcreteRoutingDiscoverySession
+@interface MRAVConcreteRoutingDiscoverySession <MRCompanionConnectionControllerDelegate, MRExpanseManagerObserver>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_reloadQueue;
     AVOutputDeviceDiscoverySession *_avDiscoverySession;
+    MRAVRoutingDiscoverySession *_idsDiscoverySession;
     unsigned int _endpointFeatures;
     unsigned int _discoveryMode;
     unsigned int _targetAudioSessionID;
+    _Bool _hasClientProvidedTargetAudioSessionID;
+    _Bool _hasRegisteredForExpanseMonitoring;
     NSString *_routingContextUID;
     NSArray *_availableOutputDevices;
     NSArray *_virtualOutputDevices;
     _Bool _scheduledAvailableOutputDevicesReload;
     int _airplayActiveNotificationToken;
     _Bool _isLocalDeviceBeingAirplayedTo;
+    MRCompanionConnectionController *_companionController;
+    MRAVRoutingDiscoverySession *_companionDiscoverySession;
+    MRAVOutputDevice *_unclusteredLocalOutputDevice;
+    NSArray *_unclusteredOutputDevices;
 }
 
 + (void)setDaemonVirtualDevices:(id)arg1;
 + (id)daemonVirtualDevices;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *virtualOutputDevices; // @synthesize virtualOutputDevices=_virtualOutputDevices;
-- (void)_checkClusterConsistencyWithLeaders:(id)arg1 members:(id)arg2;
+- (void)expanseManagerDidLeaveExpanseSession:(id)arg1;
+- (void)expanseManagerDidJoinExpanseSession:(id)arg1;
+- (void)_handleDidJoinExpanse;
+- (void)_setTargetAudioSessionID:(unsigned int)arg1;
+- (_Bool)_shouldDiscoveryAuxiliaryDevices;
 - (_Bool)_shouldCreateClusterOutputDevices;
 - (void)_scheduleAvailableOutputDevicesReload;
 - (void)_scheduleReload;
-- (id)description;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 - (void)_onQueue_reloadAvailableOutputDevices;
 - (void)_onQueue_reload;
 - (void)_availableOutputDevicesDidChangeNotification:(id)arg1;
+- (void)controllerDidUndiscoverCompanion:(id)arg1;
+- (void)controller:(id)arg1 didDiscoverCompanion:(id)arg2;
+@property(retain, nonatomic) MRAVOutputDevice *unclusteredLocalOutputDevice; // @synthesize unclusteredLocalOutputDevice=_unclusteredLocalOutputDevice;
+@property(retain, nonatomic) NSArray *unclusteredOutputDevices; // @synthesize unclusteredOutputDevices=_unclusteredOutputDevices;
 - (void)setRoutingContextUID:(id)arg1;
 - (id)routingContextUID;
 - (void)setTargetAudioSessionID:(unsigned int)arg1;
@@ -47,6 +66,10 @@
 - (unsigned int)endpointFeatures;
 - (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
+
+// Remaining properties
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

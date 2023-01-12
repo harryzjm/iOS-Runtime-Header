@@ -30,6 +30,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKPlayerInternal *player; // @synthesize player=_player;
 @property(nonatomic) double percentComplete; // @synthesize percentComplete=_percentComplete;
 @property(retain, nonatomic) NSDate *lastReportedDate; // @synthesize lastReportedDate=_lastReportedDate;
@@ -50,7 +51,6 @@
 - (id)serverRepresentation;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
 - (void)mergePropertiesFromDescription:(id)arg1;
 
 @end

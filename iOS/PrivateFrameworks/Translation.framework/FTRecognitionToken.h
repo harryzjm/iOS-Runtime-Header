@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_78c36486)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_78c36486)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *ipa_phone_seq;
 @property(readonly, nonatomic) NSString *phone_seq;
 @property(readonly, nonatomic) _Bool add_space_after;

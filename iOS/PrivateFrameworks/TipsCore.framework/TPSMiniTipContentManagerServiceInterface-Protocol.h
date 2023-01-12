@@ -5,15 +5,16 @@
 //
 
 #import <TipsCore/TPSAnalyticsXPCServerInterface-Protocol.h>
+#import <TipsCore/TPSRecordXPCServerInterface-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
-@protocol TPSMiniTipContentManagerServiceInterface <TPSAnalyticsXPCServerInterface>
-- (oneway void)hintDismissedByPerformedOutcomeForIdentifier:(NSString *)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3;
-- (oneway void)hintDismissedByUserForIdentifier:(NSString *)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3;
-- (oneway void)hintDisplayedForIdentifier:(NSString *)arg1 context:(NSString *)arg2;
+@protocol TPSMiniTipContentManagerServiceInterface <TPSAnalyticsXPCServerInterface, TPSRecordXPCServerInterface>
+- (oneway void)restartTrackingForContentIdentifiers:(NSArray *)arg1;
+- (oneway void)hintDismissedForIdentifier:(NSString *)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3 reason:(long long)arg4;
+- (oneway void)hintDisplayedForIdentifier:(NSString *)arg1 correlationID:(NSString *)arg2 context:(NSString *)arg3;
 - (oneway void)personalizationFailedForContentID:(NSString *)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3;
-- (void)validateAndPrepareContentForDisplay:(id)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3 completionHandler:(void (^)(_Bool, id, NSError *))arg4;
-- (void)contentWithContentID:(NSString *)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3 completionHandler:(void (^)(id, NSArray *, long long, NSError *))arg4;
+- (void)validateAndPrepareContentForDisplay:(id)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3 skipUsageCheck:(_Bool)arg4 completionHandler:(void (^)(_Bool, id, NSError *))arg5;
+- (void)contentWithContentIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 context:(NSString *)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
 @end
 

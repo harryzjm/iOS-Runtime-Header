@@ -7,29 +7,35 @@
 #import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardInputManagerLogging-Protocol.h>
+#import <TextInputCore/TITypologyLogDelegate-Protocol.h>
 
 @class NSString, TITypologyLog, TITypologyStatistic;
+@protocol TITypologyPreferences;
 
-@interface TIKeyboardInputManagerLogger : NSObject <TIKeyboardInputManagerLogging>
+@interface TIKeyboardInputManagerLogger : NSObject <TITypologyLogDelegate, TIKeyboardInputManagerLogging>
 {
+    _Bool _hadSecureText;
+    id <TITypologyPreferences> _typologyPreferences;
     NSString *_inputModeIdentifier;
     TITypologyLog *_typologyLog;
     TITypologyStatistic *_typologyStatistic;
 }
 
-+ (void)pruneTypologyLogsToMaxNumBytes:(long long)arg1 satisfyingPredicate:(CDUnknownBlockType)arg2;
-+ (_Bool)shouldSubmitStructuredDataReportForTypologyLog:(id)arg1;
-+ (id)generateStructuredDataReportForTypologyLog:(id)arg1;
-+ (void)submitStructuredDataReportForTypologyLog:(id)arg1;
++ (void)pruneTypologyLogsAtDirectoryURL:(id)arg1 toMaxNumBytes:(long long)arg2 expirationInterval:(double)arg3 satisfyingPredicate:(CDUnknownBlockType)arg4;
 + (void)submitAggregrateDictionaryReport:(id)arg1 inputModeIdentifier:(id)arg2;
-+ (void)writeHumanReadableTraceForTypologyLog:(id)arg1;
-+ (id)writePropertyList:(id)arg1 withFilename:(id)arg2;
++ (void)_backgroundPruneLogsWithPreferences:(id)arg1;
++ (void)_backgroundWriteLog:(id)arg1 preferences:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)_writeHumanReadableTraceForTypologyLog:(id)arg1 directoryURL:(id)arg2;
++ (id)_writePropertyList:(id)arg1 withFilename:(id)arg2 directoryURL:(id)arg3;
 + (id)accessibilityConfigInfo;
-+ (id)writeToFileWithTypologyLog:(id)arg1;
++ (id)_writeToFileWithTypologyLog:(id)arg1 directoryURL:(id)arg2;
++ (_Bool)createTypologyDirectoryAtURL:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool hadSecureText; // @synthesize hadSecureText=_hadSecureText;
 @property(retain, nonatomic) TITypologyStatistic *typologyStatistic; // @synthesize typologyStatistic=_typologyStatistic;
 @property(retain, nonatomic) TITypologyLog *typologyLog; // @synthesize typologyLog=_typologyLog;
 @property(retain, nonatomic) NSString *inputModeIdentifier; // @synthesize inputModeIdentifier=_inputModeIdentifier;
+@property(readonly, nonatomic) id <TITypologyPreferences> typologyPreferences; // @synthesize typologyPreferences=_typologyPreferences;
 - (void)logKeyboardLayout:(id)arg1 name:(id)arg2;
 - (void)logReceivedLastAcceptedCandidateCorrected;
 - (void)logReceivedCandidateRejected:(id)arg1;
@@ -41,18 +47,21 @@
 - (void)logRefinements:(id)arg1 forCandidate:(id)arg2 keyboardState:(id)arg3;
 - (void)logReplacements:(id)arg1 forString:(id)arg2 keyLayout:(id)arg3;
 - (void)logKeyboardConfig:(id)arg1 textToCommit:(id)arg2 forAcceptedCandidate:(id)arg3 keyboardState:(id)arg4;
-- (void)logCandidateResultSet:(id)arg1 forKeyboardState:(id)arg2;
-- (void)logAutocorrections:(id)arg1 forKeyboardState:(id)arg2 requestToken:(id)arg3;
-- (void)logKeyboardOutput:(id)arg1 keyboardConfiguration:(id)arg2 forKeyboardInput:(id)arg3 keyboardState:(id)arg4;
+- (void)logCandidateResultSet:(id)arg1 trace:(id)arg2 forKeyboardState:(id)arg3;
+- (void)logAutocorrections:(id)arg1 trace:(id)arg2 forKeyboardState:(id)arg3 requestToken:(id)arg4;
+- (void)logKeyboardOutput:(id)arg1 keyboardConfiguration:(id)arg2 trace:(id)arg3 forKeyboardInput:(id)arg4 keyboardState:(id)arg5;
 - (void)logKeyboardConfig:(id)arg1 forSyncToKeyboardState:(id)arg2;
-- (void)logToHumanReadableTrace:(id)arg1;
+- (void)_tryWriteToSyslogWithTrace:(id)arg1;
 - (void)setConfig:(id)arg1;
-- (void)backgroundWriteLogsAndSubmitReport;
+- (void)backgroundWriteLogs;
 - (id)writeToFile;
+- (void)didReachMaximumEntries:(id)arg1;
 - (void)disableTypologyLogIfNecessaryForKeyboardState:(id)arg1;
+- (void)tryStartingTypologyLogForSyncToKeyboardState:(id)arg1;
+- (_Bool)allowTypologyLogForKeyboardState:(id)arg1;
 - (_Bool)shouldWriteToTypologyLogForKeyboardState:(id)arg1;
 - (_Bool)shouldWriteToSyslogForKeyboardState:(id)arg1;
-- (id)init;
+- (id)initWithTypologyPreferences:(id)arg1;
 - (void)dealloc;
 
 // Remaining properties

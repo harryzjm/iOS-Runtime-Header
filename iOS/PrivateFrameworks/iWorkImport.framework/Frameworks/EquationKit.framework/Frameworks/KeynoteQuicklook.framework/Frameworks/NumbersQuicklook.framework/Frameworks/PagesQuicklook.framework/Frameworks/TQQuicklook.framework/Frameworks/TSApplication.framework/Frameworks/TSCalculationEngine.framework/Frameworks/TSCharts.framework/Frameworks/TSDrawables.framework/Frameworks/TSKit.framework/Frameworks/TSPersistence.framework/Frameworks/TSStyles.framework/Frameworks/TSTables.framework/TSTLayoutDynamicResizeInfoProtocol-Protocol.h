@@ -6,7 +6,7 @@
 
 #import <TSTables/NSObject-Protocol.h>
 
-@class TSTCellRegion, TSTMasterLayout;
+@class TSTCellRegion, TSTLayoutEngine;
 @protocol TSTLayoutDynamicResizeInfoProtocol;
 
 @protocol TSTLayoutDynamicResizeInfoProtocol <NSObject>
@@ -16,7 +16,7 @@
 - (double)totalCurrentRowHeights;
 - (double)totalCapturedColumnWidths;
 - (double)totalCapturedRowHeights;
-- (void)captureNewMinimumRowHeights:(TSTMasterLayout *)arg1;
+- (void)captureNewMinimumRowHeights:(TSTLayoutEngine *)arg1;
 - (double)applyResizeWidthFactor:(double)arg1;
 - (double)applyResizeHeightFactor:(double)arg1;
 - (double)getColumnWidthResize:(unsigned short)arg1;
@@ -30,9 +30,9 @@
 - (void)invalidate;
 - (_Bool)valid;
 - (id)initWithDynamicResizeInfo:(id <TSTLayoutDynamicResizeInfoProtocol>)arg1;
-- (id)initWithMasterLayout:(TSTMasterLayout *)arg1 rowRegion:(TSTCellRegion *)arg2;
-- (id)initWithMasterLayout:(TSTMasterLayout *)arg1 columnRegion:(TSTCellRegion *)arg2;
-- (id)initWithMasterLayout:(TSTMasterLayout *)arg1;
-- (id)initWithMasterLayout:(TSTMasterLayout *)arg1 columnRegion:(TSTCellRegion *)arg2 rowRegion:(TSTCellRegion *)arg3;
+- (id)initWithLayoutEngine:(TSTLayoutEngine *)arg1 rowRegion:(TSTCellRegion *)arg2;
+- (id)initWithLayoutEngine:(TSTLayoutEngine *)arg1 columnRegion:(TSTCellRegion *)arg2;
+- (id)initWithLayoutEngine:(TSTLayoutEngine *)arg1;
+- (id)initWithLayoutEngine:(TSTLayoutEngine *)arg1 columnRegion:(TSTCellRegion *)arg2 rowRegion:(TSTCellRegion *)arg3;
 @end
 

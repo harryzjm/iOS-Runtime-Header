@@ -10,8 +10,8 @@
 
 @protocol HKCloudSyncShareParticipantManagerServerInterface <NSObject>
 - (void)remote_tearDownHealthSharingForProfile:(HKProfileIdentifier *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
-- (void)remote_revokeAccessForAllShareParticipantsWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)remote_fetchAllShareParticipantEmailAddressesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)remote_revokeAccessForAllShareParticipantsForSharingType:(unsigned long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)remote_fetchAllShareParticipantEmailAddressesForSharingType:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_fetchSharingParticipantStatus:(void (^)(long long))arg1;
 @end
 

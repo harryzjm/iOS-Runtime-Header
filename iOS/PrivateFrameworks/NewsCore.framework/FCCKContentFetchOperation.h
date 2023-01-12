@@ -21,17 +21,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *resultRecordsByRecordID; // @synthesize resultRecordsByRecordID=_resultRecordsByRecordID;
-@property(nonatomic) int networkEventType; // @synthesize networkEventType=_networkEventType;
-@property(copy, nonatomic) NSArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
-@property(copy, nonatomic) CDUnknownBlockType fetchRecordsCompletionBlock; // @synthesize fetchRecordsCompletionBlock=_fetchRecordsCompletionBlock;
-@property(copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
-@property(nonatomic) _Bool getPermanentAssetURLs; // @synthesize getPermanentAssetURLs=_getPermanentAssetURLs;
-@property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
-@property(retain, nonatomic) NSDictionary *recordIDsToETags; // @synthesize recordIDsToETags=_recordIDsToETags;
-@property(copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
-@property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (id)_operationForRecordID:(id)arg1;
 - (id)throttleGroup;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

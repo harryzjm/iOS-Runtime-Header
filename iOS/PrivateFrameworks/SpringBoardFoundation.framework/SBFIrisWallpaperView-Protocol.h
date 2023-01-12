@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardFoundation/NSObject-Protocol.h>
+#import <SpringBoardFoundation/SBFIrisWallpaperPlaying-Protocol.h>
 
-@class NSURL, UIGestureRecognizer;
-@protocol SBFIrisWallpaperViewDelegate;
+@class NSURL;
 
-@protocol SBFIrisWallpaperView <NSObject>
+@protocol SBFIrisWallpaperView <SBFIrisWallpaperPlaying>
 @property(readonly, nonatomic) double stillTimeInVideo;
 @property(readonly, copy, nonatomic) NSURL *videoFileURL;
-@property(readonly, nonatomic) _Bool isIrisInteracting;
-@property(readonly, nonatomic) long long irisPlaybackState;
-@property(nonatomic) __weak id <SBFIrisWallpaperViewDelegate> irisDelegate;
-- (UIGestureRecognizer *)irisGestureRecognizer;
 @end
 

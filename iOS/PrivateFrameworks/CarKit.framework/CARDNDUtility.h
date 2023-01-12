@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) CARAutomaticDNDStatus *DNDStatus; // @synthesize DNDStatus=_DNDStatus;
 - (id)outputFromRhodesUtility;
+- (id)init;
 
 @end
 

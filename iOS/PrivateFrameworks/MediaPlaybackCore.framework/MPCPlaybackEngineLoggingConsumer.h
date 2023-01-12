@@ -11,18 +11,16 @@
 @class NSString;
 @protocol MPCPlaybackEngineEventStreamSubscription;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackEngineLoggingConsumer : NSObject <MPCPlaybackEngineEventConsumer>
 {
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
 }
 
 + (id)identifier;
-+ (id)dateFormatter;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
-- (id)_symbolForCommand:(unsigned int)arg1;
-- (id)_prefixWithCursor:(id)arg1;
-- (_Bool)_logAccountEvent:(id)arg1 cursor:(id)arg2;
+- (_Bool)_logAccountEvent:(id)arg1 subscription:(id)arg2 cursor:(id)arg3;
 - (void)unsubscribeFromEventStream:(id)arg1;
 - (void)subscribeToEventStream:(id)arg1;
 

@@ -31,7 +31,7 @@
 - (_Bool)close;
 - (_Bool)_openWithFlags:(int)arg1;
 - (id)currentTransactionID;
-- (void)setProfilingLevel:(int)arg1;
+- (void)setProfilingLevel:(long long)arg1;
 - (void)setReadOnly:(_Bool)arg1;
 - (_Bool)isReadOnly;
 - (_Bool)isOpen;

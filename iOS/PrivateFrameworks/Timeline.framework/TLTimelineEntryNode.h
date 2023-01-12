@@ -14,11 +14,11 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <TLTimelineEntry> entry; // @synthesize entry=_entry;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, copy, nonatomic) NSDate *date;
+@property(retain, nonatomic) id <TLTimelineEntry> entry; // @synthesize entry=_entry;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)leftEntryNode;

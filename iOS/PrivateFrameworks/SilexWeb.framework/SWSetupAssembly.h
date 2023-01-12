@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SilexWeb/NFAssembly-Protocol.h>
+#import <SilexWeb/TFAssembly-Protocol.h>
 
 @class NSString;
 
-@interface SWSetupAssembly : NSObject <NFAssembly>
+@interface SWSetupAssembly : NSObject <TFAssembly>
 {
 }
 

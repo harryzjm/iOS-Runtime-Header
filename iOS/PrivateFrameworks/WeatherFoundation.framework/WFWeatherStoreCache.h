@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)removeObjectsFromCache:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (id)createCacheIfNecessary:(id)arg1 error:(id *)arg2;
-+ (id)wf_masterDomains;
++ (id)wf_mainDomains;
 - (void).cxx_destruct;
 @property(retain) NSMutableSet *dirtyCacheDomains; // @synthesize dirtyCacheDomains=_dirtyCacheDomains;
 @property(retain) NSMutableDictionary *cacheForDomain; // @synthesize cacheForDomain=_cacheForDomain;

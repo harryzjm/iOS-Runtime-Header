@@ -62,7 +62,6 @@
 - (void)_accessibilityRepostEvent:(id)arg1;
 - (void)_sendCancelTouchEvent;
 - (void)_setDeviceOrientationCapability:(_Bool)arg1;
-- (void)_sendDeviceChangeEvent:(int)arg1;
 - (void)observerClientDied;
 - (void)resetAssistiveTouchHitPort;
 - (void)resetAccessibilityUIHitPort;

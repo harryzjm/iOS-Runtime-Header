@@ -7,19 +7,22 @@
 #import <UIKit/UIViewController.h>
 
 #import <ChatKit/CKPluginEntryViewController-Protocol.h>
+#import <ChatKit/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CKBalloonView, IMBalloonPlugin, IMBalloonPluginDataSource, NSString;
+@class CKBalloonView, IMBalloonPlugin, IMBalloonPluginDataSource, NSString, UIContextMenuInteraction;
 @protocol CKPluginEntryViewControllerDelegate, CKTranscriptBalloonPluginController;
 
-@interface CKDefaultPluginEntryViewController : UIViewController <CKPluginEntryViewController>
+@interface CKDefaultPluginEntryViewController : UIViewController <UIContextMenuInteractionDelegate, CKPluginEntryViewController>
 {
     IMBalloonPluginDataSource *_datasource;
     UIViewController<CKTranscriptBalloonPluginController> *_pluginBubbleViewController;
     CKBalloonView *_balloonView;
     IMBalloonPlugin *_plugin;
+    UIContextMenuInteraction *_contextMenuInteraction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIContextMenuInteraction *contextMenuInteraction; // @synthesize contextMenuInteraction=_contextMenuInteraction;
 @property(retain, nonatomic) IMBalloonPlugin *plugin; // @synthesize plugin=_plugin;
 @property(retain, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
 @property(retain, nonatomic) UIViewController<CKTranscriptBalloonPluginController> *pluginBubbleViewController; // @synthesize pluginBubbleViewController=_pluginBubbleViewController;
@@ -39,6 +42,9 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)loadView;
+- (id)_saveActionForImageBalloonView;
+- (id)_copyActionForImageBalloonView;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 entryViewDelegate:(id)arg2 andPlugin:(id)arg3;
 - (void)payloadWillClear;

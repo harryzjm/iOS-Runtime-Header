@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface TLKStarsView
 {
+    _Bool _useCompactMode;
     double _starRating;
     UIFont *_font;
     double _currentStarRating;
@@ -16,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) double currentStarRating; // @synthesize currentStarRating=_currentStarRating;
+@property(nonatomic) _Bool useCompactMode; // @synthesize useCompactMode=_useCompactMode;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(nonatomic) double starRating; // @synthesize starRating=_starRating;
 - (void)updateStarImages;

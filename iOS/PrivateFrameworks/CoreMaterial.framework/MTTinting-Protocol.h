@@ -6,9 +6,11 @@
 
 #import <CoreMaterial/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @protocol MTTinting <NSObject>
+@property(readonly, nonatomic) long long tintColorUIStyle;
+@property(readonly, copy, nonatomic) NSString *tintColorName;
 @property(readonly, nonatomic) double tintAlpha;
 @property(readonly, nonatomic) struct CGColor *tintColor;
 @property(readonly, copy, nonatomic) NSDictionary *tintColorDescription;

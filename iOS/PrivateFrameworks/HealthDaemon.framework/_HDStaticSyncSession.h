@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
 - (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
-- (id)newChangeWithSyncEntityClass:(Class)arg1;
+- (id)newChangeWithSyncEntityClass:(Class)arg1 version:(CDStruct_c12fb951)arg2;
 
 @end
 

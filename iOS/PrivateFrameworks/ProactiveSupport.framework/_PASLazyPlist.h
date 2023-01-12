@@ -14,6 +14,9 @@
 + (CDUnknownBlockType)deserializationStatsHandler;
 + (void)setSerializationStatsHandler:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)serializationStatsHandler;
++ (id)lazyPlistWithPlist:(id)arg1;
++ (id)lazyPlistArrayWithPlistArray:(id)arg1;
++ (id)lazyPlistDictionaryWithPlistDictionary:(id)arg1;
 + (_Bool)isLazyPlistLikelyContainedInFileAtPath:(id)arg1 format:(unsigned long long *)arg2;
 + (_Bool)isLazyPlistLikelyContainedInData:(id)arg1 format:(unsigned long long *)arg2;
 + (id)fileBackedDataWithPropertyList:(id)arg1 appendedToFd:(int)arg2 startOfs:(long long *)arg3 error:(id *)arg4;

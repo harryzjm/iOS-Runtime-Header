@@ -6,14 +6,13 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/WFApplicationStateObserver-Protocol.h>
-
-@interface WFWaitToReturnAction : WFAction <WFApplicationStateObserver>
+@interface WFWaitToReturnAction : WFAction
 {
+    int _token;
 }
 
-- (void)applicationContext:(id)arg1 applicationStateDidChange:(long long)arg2;
-- (void)finishRunningWithError:(id)arg1;
+@property(nonatomic) int token; // @synthesize token=_token;
+- (void)dealloc;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

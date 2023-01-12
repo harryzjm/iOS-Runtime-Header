@@ -6,26 +6,26 @@
 
 #import <Intents/INObject.h>
 
-@class NSArray, NSString;
+@class NSNumber, NSString;
 
 @interface DeviceQuery : INObject
 {
 }
 
-@property(nonatomic, readonly) NSString *description;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 
 // Remaining properties
-@property(copy, nonatomic) NSArray *accessoryNames; // @dynamic accessoryNames;
-@property(copy, nonatomic) NSArray *deviceGroups; // @dynamic deviceGroups;
-@property(copy, nonatomic) NSString *deviceQuantifier; // @dynamic deviceQuantifier;
-@property(copy, nonatomic) NSArray *deviceTypes; // @dynamic deviceTypes;
-@property(copy, nonatomic) NSArray *fromEntities; // @dynamic fromEntities;
-@property(nonatomic) long long mediaType; // @dynamic mediaType;
-@property(copy, nonatomic) NSArray *placeHints; // @dynamic placeHints;
-@property(copy, nonatomic) NSArray *roomNames; // @dynamic roomNames;
-@property(copy, nonatomic) NSArray *serviceNames; // @dynamic serviceNames;
-@property(copy, nonatomic) NSArray *toEntities; // @dynamic toEntities;
-@property(copy, nonatomic) NSArray *zoneNames; // @dynamic zoneNames;
+@property(nonatomic, copy) NSString *accessoryName; // @dynamic accessoryName;
+@property(nonatomic, copy) NSString *deviceQuantifierString; // @dynamic deviceQuantifierString;
+@property(nonatomic, copy) NSString *deviceTypeString; // @dynamic deviceTypeString;
+@property(nonatomic, retain) NSNumber *fromEntity; // @dynamic fromEntity;
+@property(nonatomic, copy) NSString *placeHintString; // @dynamic placeHintString;
+@property(nonatomic, copy) NSString *referenceString; // @dynamic referenceString;
+@property(nonatomic, copy) NSString *roomName; // @dynamic roomName;
+@property(nonatomic, copy) NSString *serviceGroup; // @dynamic serviceGroup;
+@property(nonatomic, copy) NSString *serviceName; // @dynamic serviceName;
+@property(nonatomic, copy) NSString *zoneName; // @dynamic zoneName;
 
 @end
 

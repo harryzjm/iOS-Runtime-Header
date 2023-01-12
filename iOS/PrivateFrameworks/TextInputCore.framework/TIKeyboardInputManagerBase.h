@@ -7,14 +7,17 @@
 #import <objc/NSObject.h>
 
 @class NSString, TIInputMode;
+@protocol TITypologyPreferences;
 
 @interface TIKeyboardInputManagerBase : NSObject
 {
     _Bool _hasHandledInput;
     TIInputMode *_inputMode;
+    id <TITypologyPreferences> _typologyPreferences;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <TITypologyPreferences> typologyPreferences; // @synthesize typologyPreferences=_typologyPreferences;
 @property(readonly, nonatomic) _Bool hasHandledInput; // @synthesize hasHandledInput=_hasHandledInput;
 @property(readonly, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
 - (void)logDiscoverabilityEvent:(int)arg1 userInfo:(id)arg2;

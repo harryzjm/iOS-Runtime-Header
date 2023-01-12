@@ -8,7 +8,6 @@
 
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface BRCSyncBudgetThrottle : NSObject <NSSecureCoding>
 {
     double _t0;

@@ -6,9 +6,10 @@
 
 #import <HealthUI/HKDataMetadataSectionDataReceiver-Protocol.h>
 
-@class HKDisplayTypeController, HKUnitPreferenceController;
+@class HKCalendarCache, HKDisplayTypeController, HKUnitPreferenceController;
 
 @protocol HKDataMetadataDetailSectionDataReceiver <HKDataMetadataSectionDataReceiver>
+@property(readonly, nonatomic) HKCalendarCache *calendarCache;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitController;
 @property(readonly, nonatomic) HKDisplayTypeController *displayTypeController;
 @end

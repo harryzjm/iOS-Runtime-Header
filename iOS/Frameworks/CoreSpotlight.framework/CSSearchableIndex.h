@@ -13,6 +13,7 @@
 {
     CSIndexingQueue *_activityQueue;
     _Bool _batchOpen;
+    _Bool _noBatching;
     id <CSSearchableIndexDelegate> _indexDelegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSString *_name;
@@ -43,6 +44,7 @@
 + (void)setConnectionName:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *indexID; // @synthesize indexID=_indexID;
+@property(nonatomic) _Bool noBatching; // @synthesize noBatching=_noBatching;
 @property(nonatomic) _Bool batchOpen; // @synthesize batchOpen=_batchOpen;
 @property(nonatomic) long long options; // @synthesize options=_options;
 @property(retain, nonatomic) NSMutableArray *batchedItemIdentifiersToDelete; // @synthesize batchedItemIdentifiersToDelete=_batchedItemIdentifiersToDelete;
@@ -80,6 +82,10 @@
 - (void)fetchLastClientStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_issueNonLaunchingCommand:(id)arg1;
 - (void)_issueCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideFileURLForBundle:(id)arg1 itemIdentifier:(id)arg2 typeIdentifier:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)provideDataForBundle:(id)arg1 itemIdentifier:(id)arg2 typeIdentifier:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)provideFileURLForBundle:(id)arg1 itemIdentifier:(id)arg2 typeIdentifier:(id)arg3 inPlace:(_Bool)arg4 allowDownload:(_Bool)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)provideDataForBundle:(id)arg1 itemIdentifier:(id)arg2 typeIdentifier:(id)arg3 allowDownload:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)provideFileURLForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)provideDataForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)deleteSearchableItemsSinceDate:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -107,8 +113,8 @@
 - (id)_itemsBySanitizingItemsForSpotlight:(id)arg1;
 - (void)indexSearchableItems:(id)arg1 returningItemsSanitizedForSpotlightTo:(CDUnknownBlockType)arg2;
 - (void)endIndexBatchWithClientState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)endIndexBatchWithClientState:(id)arg1 critical:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)beginIndexBatch;
-- (_Bool)_supportsBatching;
 @property __weak id <CSSearchableIndexDelegate> indexDelegate; // @synthesize indexDelegate=_indexDelegate;
 - (void)_delegateCheckIn:(id)arg1;
 - (id)xpc_dictionary_for_command:(const char *)arg1 requiresInitialization:(_Bool)arg2;
@@ -117,6 +123,7 @@
 - (void)dealloc;
 - (void)_commonInit;
 - (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4;
+- (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4 disableBatching:(_Bool)arg5;
 - (id)init;
 - (id)initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3;
 - (id)initWithName:(id)arg1 protectionClass:(id)arg2;

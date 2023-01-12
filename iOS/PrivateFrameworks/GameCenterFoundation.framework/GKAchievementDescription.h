@@ -24,6 +24,7 @@
 + (id)_achievementDescriptionFromGame:(id)arg1 propertyListDictionary:(id)arg2;
 + (void)loadAchievementDescriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(retain) GKAchievementInternal *internal; // @synthesize internal=_internal;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -34,7 +35,6 @@
 - (id)game;
 - (id)imageNameForIcon;
 - (id)description;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

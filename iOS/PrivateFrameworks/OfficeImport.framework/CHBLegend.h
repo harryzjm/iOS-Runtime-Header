@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)readCHDLegendEntryFrom:(const struct XlChartCustomLegend *)arg1 state:(id)arg2;
-+ (id)readFrom:(struct XlChartLegendFrame *)arg1 state:(id)arg2;
++ (id)readCHDLegendEntryFrom:(const void *)arg1 state:(id)arg2;
++ (id)readFrom:(void *)arg1 state:(id)arg2;
 + (int)xlLegendPositionEnumFromCHDLegendPosition:(int)arg1;
 + (int)chdLegendPositionEnumFromXlLegendPosition:(int)arg1;
 

@@ -11,7 +11,7 @@
 @interface _TtC5TeaUI18LazyViewController : UIViewController
 {
     MISSING_TYPE *identifier;
-    MISSING_TYPE *loadedViewController;
+    MISSING_TYPE *_loadedViewController;
     MISSING_TYPE *eventManager;
 }
 

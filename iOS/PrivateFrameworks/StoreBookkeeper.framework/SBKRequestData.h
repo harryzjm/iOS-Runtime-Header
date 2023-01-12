@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)propertyListBodyWithTransaction:(id)arg1;
 - (void).cxx_destruct;
-@property(retain) SBKTransaction *transaction; // @synthesize transaction=_transaction;
+@property(retain, nonatomic) SBKTransaction *transaction; // @synthesize transaction=_transaction;
 - (id)serializableRequestBodyPropertyList;
 - (id)initWithTransaction:(id)arg1;
 

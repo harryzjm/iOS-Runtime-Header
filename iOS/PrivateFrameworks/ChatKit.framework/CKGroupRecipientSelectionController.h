@@ -23,6 +23,7 @@
 - (void)_updateNavigationButton;
 - (double)topInsetForNavBar;
 - (struct UIEdgeInsets)navigationBarInsetsForRecipientSelectionController:(id)arg1;
+- (void)recipientSelectionControllerShouldResignFirstResponder:(id)arg1;
 - (void)recipientSelectionController:(id)arg1 didFinishAvailaiblityLookupForRecipient:(id)arg2;
 - (void)recipientSelectionControllerDidPushABViewController:(id)arg1;
 - (void)recipientSelectionControllerRequestDismissKeyboard:(id)arg1;

@@ -24,14 +24,14 @@
     double _lastPanningTranslation;
     long long _currentSkimmingIndex;
     NSArray *_skimmingIndexes;
-    unsigned long long _skimmingDataSourceIdentifier;
+    long long _skimmingDataSourceIdentifier;
     NSTimer *_slideshowTimer;
 }
 
 + (id)new;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *slideshowTimer; // @synthesize slideshowTimer=_slideshowTimer;
-@property(nonatomic) unsigned long long skimmingDataSourceIdentifier; // @synthesize skimmingDataSourceIdentifier=_skimmingDataSourceIdentifier;
+@property(nonatomic) long long skimmingDataSourceIdentifier; // @synthesize skimmingDataSourceIdentifier=_skimmingDataSourceIdentifier;
 @property(retain, nonatomic) NSArray *skimmingIndexes; // @synthesize skimmingIndexes=_skimmingIndexes;
 @property(nonatomic) long long currentSkimmingIndex; // @synthesize currentSkimmingIndex=_currentSkimmingIndex;
 @property(nonatomic) double lastPanningTranslation; // @synthesize lastPanningTranslation=_lastPanningTranslation;

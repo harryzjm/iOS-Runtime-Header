@@ -22,6 +22,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)resourceFromTrial:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSDictionary *resourceMimeTypes; // @synthesize resourceMimeTypes=_resourceMimeTypes;
 @property(copy, nonatomic) NSArray *resourceList; // @synthesize resourceList=_resourceList;
@@ -32,14 +33,11 @@
 @property(copy, nonatomic) NSDictionary *voiceConfig; // @synthesize voiceConfig=_voiceConfig;
 @property(copy, nonatomic) NSURL *searchPathURL; // @synthesize searchPathURL=_searchPathURL;
 @property(copy, nonatomic) NSArray *languages; // @synthesize languages=_languages;
-- (id)defaultFootprintString;
-- (id)defaultTypeString;
-- (id)serverVoiceNameForGender:(long long)arg1;
-- (long long)defaultVoiceFootprint;
-- (long long)defaultVoiceType;
-- (long long)defaultVoiceGender;
-- (id)_defaultVoice;
 - (id)defaultVoice;
+- (long long)defaultVoiceType;
+- (id)defaultVoiceNameForGender:(long long)arg1;
+- (long long)defaultVoiceGender;
+- (id)_defaultVoices;
 - (id)key;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

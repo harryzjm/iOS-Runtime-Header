@@ -4,16 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BMStreamDatastoreWriter;
+@class BMComputeSourceClient, BMStreamDatastoreWriter, BMStreamsAccessClient;
 
 @interface BMStoreSource
 {
     BMStreamDatastoreWriter *_writer;
+    BMStreamsAccessClient *_accessClient;
+    _Bool _isPublicStream;
+    BMComputeSourceClient *_computeSource;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) BMComputeSourceClient *computeSource; // @synthesize computeSource=_computeSource;
+@property(readonly, nonatomic) _Bool isPublicStream; // @synthesize isPublicStream=_isPublicStream;
+- (void)sendEvent:(id)arg1 timestampNumber:(id)arg2;
 - (void)sendEvent:(id)arg1 timestamp:(double)arg2;
 - (void)sendEvent:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 storeConfig:(id)arg2 accessClient:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 storeConfig:(id)arg2;
 
 @end

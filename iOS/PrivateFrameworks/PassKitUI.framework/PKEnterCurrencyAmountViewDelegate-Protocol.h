@@ -11,5 +11,8 @@
 @protocol PKEnterCurrencyAmountViewDelegate <NSObject>
 - (void)enterCurrencyAmountViewDidChangeAmount:(PKEnterCurrencyAmountView *)arg1;
 - (_Bool)enterCurrencyAmountView:(PKEnterCurrencyAmountView *)arg1 shouldChangeAmountFrom:(NSDecimalNumber *)arg2 to:(NSDecimalNumber *)arg3;
+
+@optional
+- (void)enterCurrencyAmountViewDidLayoutKeyboard:(PKEnterCurrencyAmountView *)arg1;
 @end
 

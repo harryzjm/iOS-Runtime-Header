@@ -13,7 +13,7 @@
 
 @interface MapsSuggestionsQueue : NSObject <MapsSuggestionsObject>
 {
-    struct unique_ptr<MSg::Queue, std::__1::default_delete<MSg::Queue>> _cppQueue;
+    struct unique_ptr<MSg::Queue, std::default_delete<MSg::Queue>> _cppQueue;
 }
 
 + (id)serialQueueWithName:(id)arg1;

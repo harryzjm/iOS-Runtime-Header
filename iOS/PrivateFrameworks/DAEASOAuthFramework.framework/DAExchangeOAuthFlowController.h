@@ -8,10 +8,10 @@
 {
 }
 
-- (void)exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)exchangeAuthCode:(id)arg1 codeVerifier:(id)arg2 claims:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)_accountDescription;
 - (id)initialRedirectURL;
-- (id)initWithAuthURI:(id)arg1 easEndPoint:(id)arg2 username:(id)arg3;
+- (id)initWithAuthURI:(id)arg1 easEndPoint:(id)arg2 username:(id)arg3 claims:(id)arg4;
 
 @end
 

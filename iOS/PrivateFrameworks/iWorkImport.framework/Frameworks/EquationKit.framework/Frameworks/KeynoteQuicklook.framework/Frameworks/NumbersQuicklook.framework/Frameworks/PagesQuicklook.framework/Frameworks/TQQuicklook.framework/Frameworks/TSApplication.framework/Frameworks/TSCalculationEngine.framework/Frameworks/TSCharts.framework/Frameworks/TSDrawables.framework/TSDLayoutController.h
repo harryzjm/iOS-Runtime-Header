@@ -46,6 +46,7 @@
 - (id)layoutsForInfo:(id)arg1;
 - (id)layoutForInfo:(id)arg1;
 - (void)invalidateLayoutForRecreation:(id)arg1;
+- (void)invalidateAllLayoutFrames;
 - (void)invalidateChildrenOfLayout:(id)arg1;
 - (void)invalidateLayout:(id)arg1;
 - (void)setInfos:(id)arg1;

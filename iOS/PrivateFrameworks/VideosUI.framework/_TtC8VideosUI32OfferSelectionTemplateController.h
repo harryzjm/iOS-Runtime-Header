@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)vui_viewDidLayoutSubviews;
 - (id)initWithCoder:(id)arg1;
 
 @end

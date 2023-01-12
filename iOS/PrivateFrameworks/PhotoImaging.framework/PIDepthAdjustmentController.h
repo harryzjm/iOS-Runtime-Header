@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSDictionary, NSNumber;
 
 @interface PIDepthAdjustmentController
 {
 }
 
++ (id)glassesMatteAllowedKey;
 + (id)apertureKey;
 + (id)depthInfoKey;
+@property(copy, nonatomic) NSNumber *glassesMatteAllowed;
 - (id)capturedAperture;
 @property(nonatomic) double aperture;
 @property(copy, nonatomic) NSDictionary *depthInfo;

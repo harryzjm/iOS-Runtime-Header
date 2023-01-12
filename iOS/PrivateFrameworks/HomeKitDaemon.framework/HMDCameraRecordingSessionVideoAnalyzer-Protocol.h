@@ -6,14 +6,17 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMICameraVideoFragment, HMIHomePersonManager, NSSet;
+@class HMIAnalysisStateManager, HMIHomePersonManager, HMIVideoAnalyzerDynamicConfiguration, HMIVideoFragment, NSSet;
 @protocol HMDCameraRecordingSessionVideoAnalyzerDelegate;
 
 @protocol HMDCameraRecordingSessionVideoAnalyzer <NSObject>
+@property(retain) HMIAnalysisStateManager *analysisStateManager;
 @property __weak id <HMDCameraRecordingSessionVideoAnalyzerDelegate> delegate;
 @property(copy) NSSet *externalPersonManagers;
 @property(retain) HMIHomePersonManager *homePersonManager;
-- (void)clearPendingFragments;
-- (void)analyzeFragment:(HMICameraVideoFragment *)arg1;
+- (void)finishWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)cancel;
+- (void)flushAsync;
+- (void)analyzeFragment:(HMIVideoFragment *)arg1 configuration:(HMIVideoAnalyzerDynamicConfiguration *)arg2;
 @end
 

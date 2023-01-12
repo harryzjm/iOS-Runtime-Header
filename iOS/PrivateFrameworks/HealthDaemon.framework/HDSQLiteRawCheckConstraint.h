@@ -14,7 +14,6 @@
 + (id)checkConstraintWithSQL:(id)arg1;
 - (void).cxx_destruct;
 - (id)SQLCheckConstraint;
-- (id)_initWithSQL:(id)arg1;
 
 @end
 

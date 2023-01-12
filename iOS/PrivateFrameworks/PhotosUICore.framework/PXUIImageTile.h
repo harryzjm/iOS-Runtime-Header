@@ -23,6 +23,7 @@
     } _needsUpdateFlags;
     PXImageUIView *_imageView;
     unsigned long long _animationFlags;
+    _Bool _drawsFocusRing;
     PXImageRequester *_imageRequester;
     PXImageViewSpec *__spec;
     double __displayScale;
@@ -37,6 +38,7 @@
 @property(nonatomic, setter=_setDisplayScale:) double _displayScale; // @synthesize _displayScale=__displayScale;
 @property(nonatomic, setter=_setContentSize:) struct CGSize _contentSize; // @synthesize _contentSize=__contentSize;
 @property(retain, nonatomic, setter=_setSpec:) PXImageViewSpec *_spec; // @synthesize _spec=__spec;
+@property(nonatomic) _Bool drawsFocusRing; // @synthesize drawsFocusRing=_drawsFocusRing;
 @property(retain, nonatomic) PXImageRequester *imageRequester; // @synthesize imageRequester=_imageRequester;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForReuse;

@@ -7,8 +7,6 @@
 #import <BusinessChatService/NSObject-Protocol.h>
 
 @protocol BCSShardItemIdentifying <NSObject>
-@property(readonly, nonatomic) long long shardCount;
-@property(readonly, nonatomic) long long startIndex;
 @property(readonly, nonatomic) long long type;
 @end
 

@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak CLKUIQuadView *quadView; // @synthesize quadView=_quadView;
 @property(nonatomic, getter=isOpaque) _Bool opaque; // @synthesize opaque=_opaque;
+- (void)renderFailedForReason:(unsigned long long)arg1;
 - (void)renderForDisplayWithEncoder:(id)arg1;
 - (void)performOffscreenPassesWithCommandBuffer:(id)arg1;
 - (void)encodeGLforSize:(struct CLKUIQuadSize)arg1;

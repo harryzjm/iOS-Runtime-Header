@@ -8,7 +8,7 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class HMFLogEventSession, NSArray, NSDate, NSMutableSet, NSObject, NSString, NSUUID;
+@class HMFLogEventSession, NSArray, NSMutableSet, NSObject, NSString, NSUUID;
 @protocol OS_os_activity, OS_voucher;
 
 @interface HMFActivity <HMFLogging, HMFObject, HMFActivityMarking>
@@ -18,12 +18,14 @@
     NSMutableSet *_threadContexts;
     struct os_unfair_lock_s _lock;
     _Bool _valid;
+    HMFLogEventSession *_logSession;
     NSUUID *_identifier;
     HMFActivity *_parent;
     NSString *_name;
+    NSString *_clientMetricIdentifier;
     unsigned long long _options;
     NSArray *_internalAssertions;
-    NSDate *_startDate;
+    unsigned long long _startMachTime;
 }
 
 + (id)logCategory;
@@ -41,10 +43,15 @@
 + (void)activityWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 @property(readonly) unsigned long long options; // @synthesize options=_options;
+@property(copy, nonatomic) NSString *clientMetricIdentifier; // @synthesize clientMetricIdentifier=_clientMetricIdentifier;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
 @property(readonly) __weak HMFActivity *parent; // @synthesize parent=_parent;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (id)logIdentifier;
+- (void)enableReportingWithServiceName:(id)arg1 rootUUID:(id)arg2;
+- (void)enableReportingWithServiceName:(id)arg1;
+@property(getter=isEventReportingEnabled) _Bool eventReportingEnabled;
+@property(readonly) HMFLogEventSession *logSession; // @synthesize logSession=_logSession;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)blockWithQualityOfService:(long long)arg1 block:(CDUnknownBlockType)arg2;
 - (CDUnknownBlockType)blockWithBlock:(CDUnknownBlockType)arg1;
@@ -67,10 +74,6 @@
 - (id)initWithName:(id)arg1 parent:(id)arg2;
 - (id)initWithName:(id)arg1;
 - (id)init;
-- (void)enableReportingWithServiceName:(id)arg1 rootUUID:(id)arg2;
-- (void)enableReportingWithServiceName:(id)arg1;
-@property(getter=isEventReportingEnabled) _Bool eventReportingEnabled;
-@property(readonly) HMFLogEventSession *logSession;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

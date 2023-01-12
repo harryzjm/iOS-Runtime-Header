@@ -8,12 +8,11 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSString;
 
 @interface AWDHomeKitCameraSettings : PBCodable <NSCopying>
 {
     NSString *_numActivityZonesBinString;
-    NSMutableArray *_numPointsInActivityZonesBinStrings;
     unsigned int _recordingEventTriggers;
     _Bool _isInclusionZone;
     _Bool _isReachabilityNotificationEnabled;
@@ -32,9 +31,7 @@
     } _has;
 }
 
-+ (Class)numPointsInActivityZonesBinStringsType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *numPointsInActivityZonesBinStrings; // @synthesize numPointsInActivityZonesBinStrings=_numPointsInActivityZonesBinStrings;
 @property(retain, nonatomic) NSString *numActivityZonesBinString; // @synthesize numActivityZonesBinString=_numActivityZonesBinString;
 @property(nonatomic) _Bool isRecordingCapable; // @synthesize isRecordingCapable=_isRecordingCapable;
 @property(nonatomic) _Bool isReachabilityNotificationEnabled; // @synthesize isReachabilityNotificationEnabled=_isReachabilityNotificationEnabled;
@@ -52,10 +49,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)numPointsInActivityZonesBinStringsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)numPointsInActivityZonesBinStringsCount;
-- (void)addNumPointsInActivityZonesBinStrings:(id)arg1;
-- (void)clearNumPointsInActivityZonesBinStrings;
 @property(readonly, nonatomic) _Bool hasNumActivityZonesBinString;
 @property(nonatomic) _Bool hasIsRecordingCapable;
 @property(nonatomic) _Bool hasIsReachabilityNotificationEnabled;

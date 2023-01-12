@@ -11,7 +11,7 @@
 @interface CMGestureManagerInternal : NSObject
 {
     int fPriority;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     CDUnknownBlockType fGestureHandler;
     NSObject<OS_dispatch_queue> *fPrivateQueue;
 }

@@ -8,6 +8,7 @@
 
 #import <SpringBoardHome/BSUIScrollViewDelegate-Protocol.h>
 #import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
+#import <SpringBoardHome/SBHWidgetContainerViewControllerDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconViewCustomImageViewControllerObserving-Protocol.h>
 #import <SpringBoardHome/SBIconViewCustomImageViewControlling-Protocol.h>
 #import <SpringBoardHome/SBLeafIconObserver-Protocol.h>
@@ -15,37 +16,39 @@
 @class BSUIScrollView, NSArray, NSHashTable, NSMutableDictionary, NSString, NSTimer, SBFFluidBehaviorSettings, SBHWidgetSettings, SBWidgetIcon, UIPageControl, UIView, _UILegibilitySettings;
 @protocol BSInvalidatable, SBHWidgetStackViewControllerDataSource, SBHWidgetStackViewControllerDelegate, SBLeafIconDataSource;
 
-@interface SBHWidgetStackViewController : UIViewController <BSUIScrollViewDelegate, SBLeafIconObserver, PTSettingsKeyObserver, SBIconViewCustomImageViewControllerObserving, SBIconViewCustomImageViewControlling>
+@interface SBHWidgetStackViewController : UIViewController <BSUIScrollViewDelegate, SBLeafIconObserver, PTSettingsKeyObserver, SBIconViewCustomImageViewControllerObserving, SBHWidgetContainerViewControllerDelegate, SBIconViewCustomImageViewControlling>
 {
     NSHashTable *_observers;
+    NSHashTable *_containerViewControllersRequiringLayoutUponActivation;
     _Bool _editing;
     _Bool _showingContextMenu;
     _Bool _overlapping;
     _Bool _userInteractionEnabled;
-    _Bool _backgroundBlurEnabled;
-    _Bool _visiblySettled;
     _Bool _automaticallyUpdatesVisiblySettled;
-    _Bool _privateModeEnabled;
+    _Bool _showsSnapshotWhenDeactivated;
     _Bool _showsSquareCorners;
     _Bool _alwaysShowsAsStack;
     _Bool _highlightsAtAnySize;
     _Bool _forcesEdgeAntialiasing;
     _Bool _showStackBorderWhenShowingPageControl;
     _Bool _flashPageControlOnNextAppearance;
+    _Bool _flashPageControlOnNextAlphaChange;
     CDUnknownBlockType _backgroundViewProvider;
+    CDUnknownBlockType _backgroundViewConfigurator;
     double _brightness;
+    unsigned long long _userVisibilityStatus;
     unsigned long long _presentationMode;
     unsigned long long _imageViewAlignment;
     unsigned long long _pauseReasons;
     _UILegibilitySettings *_legibilitySettings;
+    UIPageControl *_pageControl;
+    UIView *_backgroundView;
     id <SBHWidgetStackViewControllerDataSource> _dataSource;
     id <SBHWidgetStackViewControllerDelegate> _delegate;
     SBWidgetIcon *_icon;
     id <SBLeafIconDataSource> _activeWidget;
     BSUIScrollView *_scrollView;
     UIView *_containerView;
-    UIView *_backgroundView;
-    UIPageControl *_pageControl;
     NSTimer *_pageControlHidingTimer;
     UIView *_dimmingView;
     NSMutableDictionary *_widgetContainerViewControllers;
@@ -56,6 +59,7 @@
     NSHashTable *_imageUpdateDisableAssertions;
     id <BSInvalidatable> _scrollingTouchCancellationAssertion;
     id <BSInvalidatable> _imageUpdatesDisabledForContextMenuAssertion;
+    struct SBIconApproximateLayoutPosition _approximateLayoutPosition;
     struct SBIconImageInfo _iconImageInfo;
 }
 
@@ -68,38 +72,41 @@
 @property(retain, nonatomic) SBFFluidBehaviorSettings *animationSettings; // @synthesize animationSettings=_animationSettings;
 @property(retain, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;
 @property(retain, nonatomic) NSMutableDictionary *widgetContainerViewControllers; // @synthesize widgetContainerViewControllers=_widgetContainerViewControllers;
+@property(nonatomic) _Bool flashPageControlOnNextAlphaChange; // @synthesize flashPageControlOnNextAlphaChange=_flashPageControlOnNextAlphaChange;
 @property(nonatomic) _Bool flashPageControlOnNextAppearance; // @synthesize flashPageControlOnNextAppearance=_flashPageControlOnNextAppearance;
 @property(nonatomic) _Bool showStackBorderWhenShowingPageControl; // @synthesize showStackBorderWhenShowingPageControl=_showStackBorderWhenShowingPageControl;
 @property(retain, nonatomic) UIView *dimmingView; // @synthesize dimmingView=_dimmingView;
 @property(retain, nonatomic) NSTimer *pageControlHidingTimer; // @synthesize pageControlHidingTimer=_pageControlHidingTimer;
-@property(retain, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
-@property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) BSUIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) id <SBLeafIconDataSource> activeWidget; // @synthesize activeWidget=_activeWidget;
 @property(retain, nonatomic) SBWidgetIcon *icon; // @synthesize icon=_icon;
 @property(nonatomic) __weak id <SBHWidgetStackViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <SBHWidgetStackViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(retain, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property(nonatomic) _Bool forcesEdgeAntialiasing; // @synthesize forcesEdgeAntialiasing=_forcesEdgeAntialiasing;
 @property(nonatomic) _Bool highlightsAtAnySize; // @synthesize highlightsAtAnySize=_highlightsAtAnySize;
 @property(nonatomic) _Bool alwaysShowsAsStack; // @synthesize alwaysShowsAsStack=_alwaysShowsAsStack;
 @property(nonatomic) _Bool showsSquareCorners; // @synthesize showsSquareCorners=_showsSquareCorners;
+@property(nonatomic) struct SBIconApproximateLayoutPosition approximateLayoutPosition; // @synthesize approximateLayoutPosition=_approximateLayoutPosition;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(nonatomic) unsigned long long pauseReasons; // @synthesize pauseReasons=_pauseReasons;
 @property(nonatomic) unsigned long long imageViewAlignment; // @synthesize imageViewAlignment=_imageViewAlignment;
-@property(nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled; // @synthesize privateModeEnabled=_privateModeEnabled;
+@property(nonatomic) _Bool showsSnapshotWhenDeactivated; // @synthesize showsSnapshotWhenDeactivated=_showsSnapshotWhenDeactivated;
 @property(nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property(nonatomic) _Bool automaticallyUpdatesVisiblySettled; // @synthesize automaticallyUpdatesVisiblySettled=_automaticallyUpdatesVisiblySettled;
-@property(nonatomic, getter=isVisiblySettled) _Bool visiblySettled; // @synthesize visiblySettled=_visiblySettled;
+@property(nonatomic) unsigned long long userVisibilityStatus; // @synthesize userVisibilityStatus=_userVisibilityStatus;
 @property(nonatomic) double brightness; // @synthesize brightness=_brightness;
+@property(copy, nonatomic) CDUnknownBlockType backgroundViewConfigurator; // @synthesize backgroundViewConfigurator=_backgroundViewConfigurator;
 @property(copy, nonatomic) CDUnknownBlockType backgroundViewProvider; // @synthesize backgroundViewProvider=_backgroundViewProvider;
-@property(nonatomic, getter=isBackgroundBlurEnabled) _Bool backgroundBlurEnabled; // @synthesize backgroundBlurEnabled=_backgroundBlurEnabled;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property(nonatomic, getter=isOverlapping) _Bool overlapping; // @synthesize overlapping=_overlapping;
 @property(nonatomic, getter=isShowingContextMenu) _Bool showingContextMenu; // @synthesize showingContextMenu=_showingContextMenu;
 @property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
 @property(nonatomic) struct SBIconImageInfo iconImageInfo; // @synthesize iconImageInfo=_iconImageInfo;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_handleInstalledAppsChanged:(id)arg1;
 - (void)_updateAccessibilityValue;
 - (void)_flashPageControlAnimated:(_Bool)arg1;
@@ -107,15 +114,19 @@
 - (_Bool)_alwaysShowStackBorder;
 - (_Bool)_insetWidgetsForTrackingAppearance;
 - (_Bool)_isScrollViewTracking;
+- (_Bool)_isContentViewExtendingOutsideBounds;
 - (_Bool)_showAdjacentWidgets;
+- (void)_updateApproximateLayoutPositionForWidgetViewControllers;
 - (void)_updatePauseReasonForWidgetViewControllers;
-- (void)_updatePrivateModeForWidgetViewControllers;
+- (void)_updateShowsSnapshotWhenDeactivatedForWidgetViewControllers;
 - (void)_updatePresentationModeForWidgetViewControllers;
 - (void)_updateVisiblySettledForWidgetViewControllers;
 - (void)_updateScrollViewDelaysContentTouches;
 - (void)_updateWidgetViewEdgeAntialiasing;
 - (void)_updateWidgetViewHitTesting;
 - (_Bool)_widgetHitTestingDisabled;
+- (void)_configureBackgroundViewIfNecessary:(id)arg1;
+- (void)_configureBackgroundViewIfNecessary;
 - (_Bool)_shouldDrawSystemBackgroundMaterialForWidget:(id)arg1;
 - (void)_updateWidgetViewClippingAndBackgroundView;
 - (void)_decrementBackgroundAnimationCount;
@@ -131,11 +142,17 @@
 - (struct CGSize)_scrollViewContentSize;
 - (struct CGSize)_pageSize;
 - (void)_updatePageControlWithAnimationUpdateMode:(long long)arg1;
+- (void)_updateBackgroundViewWithAnimationUpdateMode:(long long)arg1 allowingOutsetting:(_Bool)arg2;
 - (void)_updateBackgroundViewWithAnimationUpdateMode:(long long)arg1;
 - (void)_updateWidgetViewsWithAnimationUpdateMode:(long long)arg1;
 - (void)_layoutWithAnimationUpdateMode:(long long)arg1;
-- (void)_createBackgroundViewIfNecessary;
+- (_Bool)_containerRequiresClippingToBoundsForWidget:(id)arg1;
+- (id)_createBackgroundView;
+- (void)_createBackgroundViewIfNecessary:(_Bool)arg1;
 - (_Bool)_createViewControllerForWidgetIfNecessary:(id)arg1 usingSize:(struct CGSize)arg2;
+- (void)_requireLayoutUponActivationForWidgetContainerViewController:(id)arg1;
+- (void)widgetContainerViewControllerContentViewControllerWillDeactivate:(id)arg1;
+- (void)widgetContainerViewControllerContentViewControllerDidActivate:(id)arg1;
 - (void)customImageViewControllerWantsLabelHiddenDidChange:(id)arg1;
 - (void)scrollViewDidEndScrolling:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
@@ -144,9 +161,11 @@
 - (void)scrollViewDidScroll:(id)arg1;
 @property(readonly, nonatomic) double continuousCornerRadius;
 @property(readonly, nonatomic) struct CGRect visibleBounds;
+- (id)sourceBackgroundView:(id)arg1;
 - (id)sourceView;
-- (void)_animateRemovalOfWidget:(id)arg1;
+- (void)_removeWidget:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_scrollToActiveWidgetAnimated:(_Bool)arg1;
+@property(readonly, nonatomic) UIView *springLoadingEffectTargetView;
 @property(readonly, nonatomic) UIView *snapshotView;
 - (id)cancelTouchesForCurrentEventInHostedContent;
 - (id)_disableImageUpdatesForReason:(id)arg1 animateChangesUponInvalidation:(_Bool)arg2;
@@ -158,6 +177,7 @@
 - (void)didSelectApplicationShortcutItem:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *applicationShortcutItems;
 @property(readonly, nonatomic) _Bool wantsCaptureOnlyBackgroundView;
+- (void)evaluateBackground;
 - (void)willShowContextMenuAtLocation:(struct CGPoint)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) id <SBLeafIconDataSource> visiblyActiveDataSource;
@@ -183,7 +203,9 @@
 @property(readonly, copy) NSString *description;
 @property(nonatomic, getter=isDropping) _Bool dropping;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) struct CGPoint snapshotViewCenter;
 @property(readonly) Class superclass;
+@property(nonatomic) _Bool wantsEditingDisplayStyle;
 @property(readonly, nonatomic) _Bool wantsLabelHidden;
 
 @end

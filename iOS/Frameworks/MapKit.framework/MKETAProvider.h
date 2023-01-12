@@ -19,8 +19,10 @@
     _MKQuickRouteManager *_quickRouteManager;
     NSNumber *_lastTransportTypeFound;
     MKMapItem *_nearestStationItem;
+    _Bool _distanceOrETAIsSuppressed;
     _Bool _distanceOrETAWasFound;
     NSString *_distanceTextItem;
+    NSString *_rawDistanceString;
     unsigned long long _etaTransportType;
     double _etaTravelTime;
     _Bool _active;
@@ -33,6 +35,7 @@
     GEOTransitOptions *_transitOptions;
     GEOCyclingOptions *_cyclingOptions;
     id <_MKPlaceItem> _placeItem;
+    MKMapItem *_mapItem;
     id <GEOTransitLineItem> _lineItem;
     NSHashTable *_observers;
     NSLock *_observersLock;
@@ -42,6 +45,7 @@
 @property(retain, nonatomic) NSLock *observersLock; // @synthesize observersLock=_observersLock;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(readonly, nonatomic) id <GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
+@property(readonly, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(readonly, nonatomic) id <_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
 @property(retain, nonatomic) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property(retain, nonatomic) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
@@ -69,6 +73,7 @@
 - (_Bool)_areDistanceAndETAInformationAvailable;
 - (void)configureWithNearestStationMapItem:(id)arg1;
 @property(readonly, nonatomic) NSNumber *transportTypePreferenceNumber;
+@property(readonly, nonatomic) NSString *rawDistanceString;
 @property(readonly, nonatomic) NSString *distanceString;
 @property(readonly, nonatomic) double etaTravelTime;
 @property(readonly, nonatomic) unsigned long long etaTransportType;
@@ -81,6 +86,7 @@
 - (void)_refreshTimer;
 - (void)_willEnterForeground;
 - (void)_didEnterBackground;
+- (void)_locationManagerApprovalDidChange:(id)arg1;
 - (void)cancel;
 - (void)pause;
 - (void)restart;
@@ -88,6 +94,7 @@
 - (void)_commonInit;
 - (void)dealloc;
 - (id)initWithLineItem:(id)arg1;
+- (id)initWithMapItem:(id)arg1;
 - (id)initWithPlaceItem:(id)arg1;
 
 // Remaining properties

@@ -18,7 +18,6 @@
 }
 
 + (id)speechActsForCategory:(unsigned long long)arg1 platform:(id)arg2;
-+ (id)responsesForFullScreenMoments:(id)arg1 withLanguage:(id)arg2;
 + (id)responsesForFullScreenMoments:(id)arg1;
 + (id)responsesForFixedPhrase:(id)arg1 withLanguage:(id)arg2;
 - (void).cxx_destruct;

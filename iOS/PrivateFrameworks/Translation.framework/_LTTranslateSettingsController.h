@@ -10,10 +10,9 @@
 {
 }
 
-- (void)openAppToLanguages:(id)arg1;
-- (void)confirmOnDeviceIfNeeded:(id)arg1 specifier:(id)arg2;
 - (void)showTranslatePrivacy;
 - (id)specifiers;
+- (_Bool)isOnDeviceOnlyTranslationForced;
 
 @end
 

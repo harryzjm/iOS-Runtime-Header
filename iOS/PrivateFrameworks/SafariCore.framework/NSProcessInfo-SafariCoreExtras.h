@@ -9,7 +9,10 @@
 @class NSString;
 
 @interface NSProcessInfo (SafariCoreExtras)
+@property(readonly, nonatomic) _Bool safari_systemSupportsBroadway;
 @property(readonly, nonatomic) _Bool safari_systemSupportsBookmarkDAVMoves;
 @property(readonly, copy, nonatomic) NSString *safari_deviceUDID;
+- (id)_safari_operatingSystemVersionStringFromOperatingSystemVersion:(CDStruct_2ec95fd7)arg1;
+@property(readonly, copy, nonatomic) NSString *safari_operatingSystemVersionString;
 @end
 

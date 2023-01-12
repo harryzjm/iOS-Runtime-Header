@@ -21,9 +21,9 @@
 @property(readonly, nonatomic) unsigned long long pointId;
 @property(readonly, nonatomic) _Bool canMoveToMarker;
 @property(readonly, nonatomic) NSDate *collectionDate;
-@property(readonly, nonatomic) const struct CollectionPoint *collectionPoint;
+@property(readonly, nonatomic) const void *collectionPoint;
 - (id)initWithCoordinate:(CDStruct_071ac149)arg1;
-- (id)initWithCollectionPoint:(const struct CollectionPoint *)arg1;
+- (id)initWithCollectionPoint:(const void *)arg1;
 
 @end
 

@@ -10,23 +10,20 @@
 
 @class _MRUpdateActiveSystemEndpointRequestProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRUpdateActiveSystemEndpointMessageProtobuf : PBCodable <NSCopying>
 {
     _MRUpdateActiveSystemEndpointRequestProtobuf *_request;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRUpdateActiveSystemEndpointRequestProtobuf *request; // @synthesize request=_request;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasRequest;
 
 @end
 

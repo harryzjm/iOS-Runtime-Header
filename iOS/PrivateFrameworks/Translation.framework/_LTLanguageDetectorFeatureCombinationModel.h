@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class MLModel, NSMutableArray, NSNumber, NSString;
+@class MLModel, NSDictionary, NSMutableArray, NSNumber, NSString;
 
 @interface _LTLanguageDetectorFeatureCombinationModel : NSObject
 {
     MLModel *_mlModel;
     NSString *_modelInput;
+    _Bool _modelInputIsMatrix;
     NSString *_modelOutput;
     NSMutableArray *_features;
+    NSNumber *_missingFeatureValueDefault;
     NSNumber *_missingLanguageDetectorDefault;
+    NSDictionary *_languageLocaleToIdentifier;
 }
 
 - (void).cxx_destruct;
-- (id)estimateLanguage:(id)arg1 languageDetectionResult:(id)arg2 finalSpeechResults:(id)arg3;
-- (id)getModelFeatures:(id)arg1 canonicalPair:(id)arg2 sourceSpeechResult:(id)arg3 targetSpeechResult:(id)arg4;
+- (id)estimateLanguage:(id)arg1 languageDetectionResults:(id)arg2 partialSpeechResultConfidences:(id)arg3 finalSpeechResults:(id)arg4 modelVersions:(id)arg5;
+- (id)estimateLanguage:(id)arg1 languageDetectionResults:(id)arg2 partialSpeechResultConfidences:(id)arg3 finalSpeechResults:(id)arg4 modelVersions:(id)arg5 useFinalThresholds:(_Bool)arg6;
+- (id)getModelFeatures:(id)arg1 canonicalPair:(id)arg2 partialSpeechResultConfidences:(id)arg3 finalSpeechResults:(id)arg4 modelVersion:(id)arg5;
+- (id)getAcousticLidConfidenceFromResult:(id)arg1 locale:(id)arg2;
 - (id)initWithConfig:(id)arg1;
 
 @end

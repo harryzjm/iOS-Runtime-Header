@@ -9,6 +9,7 @@
 }
 
 + (id)accessoryButton;
+- (id)init;
 
 @end
 

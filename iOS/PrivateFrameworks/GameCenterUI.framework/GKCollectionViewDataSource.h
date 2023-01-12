@@ -44,7 +44,6 @@
 - (void)notifySectionsRemoved:(id)arg1;
 - (void)notifySectionsInserted:(id)arg1;
 - (void)notifyItemMovedFromIndexPath:(id)arg1 toIndexPaths:(id)arg2;
-- (void)notifyItemsRefreshedAtIndexPaths:(id)arg1 animated:(_Bool)arg2;
 - (void)notifyItemsRefreshedAtIndexPaths:(id)arg1;
 - (void)notifyItemsRemovedAtIndexPaths:(id)arg1;
 - (void)notifyItemsInsertedAtIndexPaths:(id)arg1;

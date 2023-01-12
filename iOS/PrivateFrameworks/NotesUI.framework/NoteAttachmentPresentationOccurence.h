@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NotesUI/QLPreviewItem-Protocol.h>
+@class DOMHTMLElement, NoteAttachmentPresentation;
 
-@class DOMHTMLElement, NSString, NSURL, NoteAttachmentPresentation;
-
-@interface NoteAttachmentPresentationOccurence : NSObject <QLPreviewItem>
+@interface NoteAttachmentPresentationOccurence : NSObject
 {
     NoteAttachmentPresentation *_presentation;
     DOMHTMLElement *_element;
@@ -19,16 +17,10 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) DOMHTMLElement *element; // @synthesize element=_element;
 @property(readonly, nonatomic) NoteAttachmentPresentation *presentation; // @synthesize presentation=_presentation;
-@property(readonly, nonatomic) NSURL *previewItemURL;
+- (id)previewItemTitle;
+- (id)previewItemURL;
 - (id)initWithPresentation:(id)arg1 element:(id)arg2;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSString *previewItemTitle;
-@property(readonly) Class superclass;
 
 @end
 

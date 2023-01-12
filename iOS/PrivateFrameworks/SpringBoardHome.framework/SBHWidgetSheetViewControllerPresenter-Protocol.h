@@ -8,6 +8,7 @@
 @property(nonatomic) double titledButtonsAlpha;
 - (void)setSuppressesEditingStateForListView:(_Bool)arg1;
 - (void)updateExtraButtonVisibilityAnimated:(_Bool)arg1;
+- (_Bool)isDisplayingEditingButtons;
 - (unsigned long long)presenterType;
 @end
 

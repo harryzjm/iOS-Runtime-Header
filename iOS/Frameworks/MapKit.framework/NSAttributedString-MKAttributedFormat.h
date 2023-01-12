@@ -11,6 +11,9 @@
 + (id)_mapkit_attributedStringWithBindingFormat:(id)arg1 replacements:(id)arg2 attributes:(id)arg3;
 + (id)_mapkit_attributedStringWithBindingFormat:(id)arg1 replacements:(id)arg2 defaultReplacementAttributes:(id)arg3 startTokenDelimiter:(id)arg4 endTokenDelimiter:(id)arg5 error:(id *)arg6;
 + (id)_mapkit_attributedStringWithBindingFormat:(id)arg1 replacements:(id)arg2 attributes:(id)arg3 error:(id *)arg4;
++ (id)_mapkit_attributedLiveTransitStringFromAttributedDepartureString:(id)arg1 liveStatus:(long long)arg2 darkMode:(_Bool)arg3 symbolOverrideColor:(id)arg4;
++ (id)_mapkit_attributedLiveTransitStringFromDepartureString:(id)arg1 departure:(id)arg2 textAttributes:(id)arg3 darkMode:(_Bool)arg4 symbolOverrideColor:(id)arg5;
++ (id)_mapkit_attributedLiveTransitStringFromDepartureString:(id)arg1 departure:(id)arg2 darkMode:(_Bool)arg3;
 + (id)_mapkit_attributedTransitStringForServerFormattedString:(id)arg1 defaultAttributes:(id)arg2 variableOverrides:(id)arg3 options:(CDStruct_57af2063)arg4;
 + (id)_mapkit_attributedTransitStringForServerFormattedString:(id)arg1 defaultAttributes:(id)arg2 variableOverrides:(id)arg3;
 + (id)_mapkit_attributedTransitStringForServerFormattedString:(id)arg1 defaultAttributes:(id)arg2;

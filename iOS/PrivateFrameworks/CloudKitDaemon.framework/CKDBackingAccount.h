@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, NSPersonNameComponents, NSString, NSURL;
+@class ACAccount, NSPersonNameComponents, NSString, NSURL;
 
 @interface CKDBackingAccount : NSObject
 {
-    _Bool _iCloudDriveAllowsCellularAccess;
-    ACAccountStore *_accountStore;
     ACAccount *_appleAccount;
 }
 
@@ -19,13 +17,11 @@
 + (void)ensureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
 + (_Bool)_lockedEnsureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
 + (id)accountQueue;
-+ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
-+ (id)primaryAccountInStore:(id)arg1;
-+ (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
++ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
++ (id)primaryAccount;
++ (id)accountWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) ACAccount *appleAccount; // @synthesize appleAccount=_appleAccount;
-@property(readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
-@property(readonly, nonatomic) _Bool iCloudDriveAllowsCellularAccess; // @synthesize iCloudDriveAllowsCellularAccess=_iCloudDriveAllowsCellularAccess;
 - (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *personaIdentifier;
 @property(readonly, nonatomic) NSString *sharingURLHostname;
@@ -39,8 +35,8 @@
 - (id)urlForDataclass:(id)arg1 preferringGateway:(_Bool)arg2;
 - (void)_setOverridesOnVettingContext:(id)arg1;
 - (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAccountPropertiesAndSaveAccount:(CDUnknownBlockType)arg1;
+- (void)renewAuthTokenWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
 @property(readonly, nonatomic) _Bool isFakeAccount;
 @property(readonly, nonatomic) NSString *serverPreferredPushEnvironment;
@@ -59,7 +55,6 @@
 @property(readonly, nonatomic) NSString *primaryEmail;
 @property(readonly, nonatomic) ACAccount *ckAccount;
 - (id)init;
-- (id)_initWithAccountStore:(id)arg1;
 
 @end
 

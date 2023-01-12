@@ -13,6 +13,7 @@
 @interface HDCodableOnboardingCompletion : PBCodable <NSCopying>
 {
     double _completionDate;
+    long long _countryCodeProvenance;
     double _modificationDate;
     long long _version;
     NSString *_countryCode;
@@ -21,6 +22,7 @@
     _Bool _deleted;
     struct {
         unsigned int completionDate:1;
+        unsigned int countryCodeProvenance:1;
         unsigned int modificationDate:1;
         unsigned int version:1;
         unsigned int deleted:1;
@@ -28,6 +30,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long countryCodeProvenance; // @synthesize countryCodeProvenance=_countryCodeProvenance;
 @property(nonatomic) _Bool deleted; // @synthesize deleted=_deleted;
 @property(nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(retain, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
@@ -44,6 +47,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasCountryCodeProvenance;
 @property(nonatomic) _Bool hasDeleted;
 @property(nonatomic) _Bool hasModificationDate;
 @property(readonly, nonatomic) _Bool hasCountryCode;

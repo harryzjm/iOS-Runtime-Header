@@ -10,9 +10,9 @@
 {
 }
 
-- (id)profileNameForIdentifier:(id)arg1;
 - (void)uninstallProfileWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)installProfileData:(id)arg1 configuration:(id)arg2 deviceChannel:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)installProfileData:(id)arg1 store:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)profileNameForIdentifier:(id)arg1;
 - (id)allInstalledProfileIdentifiers;
 
 @end

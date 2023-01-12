@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HDSPWakeUpResultsNotificationBuilder : NSObject
 {
     NSArray *_daySummaries;
+    NSString *_userFirstName;
     CDStruct_ef5fcbe6 _morningIndexRange;
 }
 
 - (void).cxx_destruct;
-- (id)_randomVariantForMaximum:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSString *userFirstName; // @synthesize userFirstName=_userFirstName;
+@property(readonly, nonatomic) CDStruct_ef5fcbe6 morningIndexRange; // @synthesize morningIndexRange=_morningIndexRange;
+@property(readonly, nonatomic) NSArray *daySummaries; // @synthesize daySummaries=_daySummaries;
+- (id)_notificationForCategory:(unsigned long long)arg1 morningIndexRange:(CDStruct_ef5fcbe6)arg2 goalAchieved:(id)arg3;
+- (long long)_randomNotificationVariantForCategory:(unsigned long long)arg1;
 - (id)_sleepDurationGoalAchievedLastNightNotification;
 - (id)_sleepDurationGoalAchievedShortWeekNotification;
 - (id)_sleepDurationGoalAchievedTwoWeekNotification;
 - (_Bool)_didMeetSleepDurationGoalLastNight;
 - (id)buildNotification;
-- (id)initWithDaySummaries:(id)arg1 morningIndexRange:(CDStruct_ef5fcbe6)arg2;
+- (id)initWithDaySummaries:(id)arg1 morningIndexRange:(CDStruct_ef5fcbe6)arg2 userFirstName:(id)arg3;
 
 @end
 

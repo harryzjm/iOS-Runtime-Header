@@ -12,17 +12,19 @@
 
 @interface HDNanoRegistryPairedDeviceCapabilityProvider : NSObject <HDPairedDeviceCapabilityProviding>
 {
+    int _pairedDeviceDidChangeCapabilitiesNotificationToken;
     id <HDPairedDeviceCapabilityProvidingDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HDPairedDeviceCapabilityProvidingDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)isCapabilitySupported:(id)arg1 onDevice:(id)arg2 error:(id *)arg3;
-- (id)deviceForPairingID:(id)arg1;
+- (_Bool)isCapabilitySupported:(id)arg1 onDevice:(id)arg2;
 - (id)activePairedDevice;
 - (id)isCapabilitySupportedOnActivePairedDevice:(id)arg1 error:(id *)arg2;
 - (void)_pairedOrActiveDevicesDidChange:(id)arg1;
+- (void)dealloc;
 - (void)startListeningForUpdates;
+- (id)init;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @interface HUCameraRecordingOptionsTableViewController <UITextViewDelegate>
 {
+    unsigned long long _displayStyle;
     HUCameraRecordingOptionsItemManager *_detailsItemManager;
     HUCameraSettingsModuleController *_cameraSettingsModuleController;
 }
@@ -17,6 +18,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HUCameraSettingsModuleController *cameraSettingsModuleController; // @synthesize cameraSettingsModuleController=_cameraSettingsModuleController;
 @property(nonatomic) __weak HUCameraRecordingOptionsItemManager *detailsItemManager; // @synthesize detailsItemManager=_detailsItemManager;
+@property(nonatomic) unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;
 - (void)dismissTextViewController;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

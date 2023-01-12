@@ -6,11 +6,10 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFStaticItemProvider, HUAddTriggerItem, HUTriggerItemProvider, HUTriggerListHeadlineItem, HUTriggerListSubheadlineItem;
+@class HFStaticItemProvider, HUAddTriggerItem, HUTriggerItemProvider, HUTriggerListSubheadlineItem;
 
 @interface HUTriggerListItemManager : HFItemManager
 {
-    HUTriggerListHeadlineItem *_headlineItem;
     HUTriggerListSubheadlineItem *_subheadlineItem;
     HUAddTriggerItem *_addTriggerItem;
     HFStaticItemProvider *_staticItemProvider;
@@ -22,8 +21,8 @@
 @property(retain, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property(retain, nonatomic) HUAddTriggerItem *addTriggerItem; // @synthesize addTriggerItem=_addTriggerItem;
 @property(retain, nonatomic) HUTriggerListSubheadlineItem *subheadlineItem; // @synthesize subheadlineItem=_subheadlineItem;
-@property(retain, nonatomic) HUTriggerListHeadlineItem *headlineItem; // @synthesize headlineItem=_headlineItem;
 - (id)_currentSectionIdentifiers;
+- (id)currentSectionIdentifiersSnapshot;
 - (id)_sectionIdentifierForItem:(id)arg1;
 - (id)_identifierForSection:(unsigned long long)arg1;
 - (unsigned long long)_numberOfSections;

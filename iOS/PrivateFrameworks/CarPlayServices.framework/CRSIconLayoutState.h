@@ -8,21 +8,31 @@
 
 #import <CarPlayServices/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface CRSIconLayoutState : NSObject <NSSecureCoding>
 {
+    _Bool _displaysOEMIcon;
     NSArray *_pages;
+    NSArray *_hiddenIcons;
+    NSString *_oemIconLabel;
+    unsigned long long _rows;
+    unsigned long long _columns;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long columns; // @synthesize columns=_columns;
+@property(nonatomic) unsigned long long rows; // @synthesize rows=_rows;
+@property(nonatomic) _Bool displaysOEMIcon; // @synthesize displaysOEMIcon=_displaysOEMIcon;
+@property(retain, nonatomic) NSString *oemIconLabel; // @synthesize oemIconLabel=_oemIconLabel;
+@property(readonly, nonatomic) NSArray *hiddenIcons; // @synthesize hiddenIcons=_hiddenIcons;
 @property(readonly, nonatomic) NSArray *pages; // @synthesize pages=_pages;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 - (id)iconOrder;
-- (id)initWithPages:(id)arg1;
+- (id)initWithPages:(id)arg1 hiddenIcons:(id)arg2;
 
 @end
 

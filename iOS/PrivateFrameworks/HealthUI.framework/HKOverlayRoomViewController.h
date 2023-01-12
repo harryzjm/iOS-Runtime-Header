@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthUI/HKChartOverlayVersionProviding-Protocol.h>
 #import <HealthUI/HKDisplayTypeSectionedContextViewDelegate-Protocol.h>
 #import <HealthUI/HKInteractiveChartViewObserver-Protocol.h>
 #import <HealthUI/HKSampleTypeDateRangeControllerObserver-Protocol.h>
 #import <HealthUI/HKSampleTypeUpdateControllerObserver-Protocol.h>
 
-@class HKDisplayType, HKDisplayTypeSectionedContextView, HKInteractiveChartOverlayViewController, HKOverlayContextLocation, HKOverlayRoomApplicationItems, HKValueRange, NSArray, NSDate, NSDateInterval, NSObject, NSString;
+@class HKDisplayType, HKDisplayTypeSectionedContextView, HKInteractiveChartOverlayViewController, HKOverlayContextLocation, HKOverlayRoomApplicationItems, HKValueRange, NSArray, NSDate, NSDateInterval, NSObject, NSString, NSUserActivity;
 @protocol HKOverlayRoomViewControllerLayoutDelegate, OS_dispatch_queue;
 
-@interface HKOverlayRoomViewController <HKDisplayTypeSectionedContextViewDelegate, HKInteractiveChartViewObserver, HKSampleTypeDateRangeControllerObserver, HKSampleTypeUpdateControllerObserver>
+@interface HKOverlayRoomViewController <HKDisplayTypeSectionedContextViewDelegate, HKInteractiveChartViewObserver, HKSampleTypeDateRangeControllerObserver, HKSampleTypeUpdateControllerObserver, HKChartOverlayVersionProviding>
 {
     _Bool _shouldSelectInitialOverlay;
     _Bool _userHasOverriddenPreferredOverlay;
+    _Bool _showAllFiltersVisible;
     HKOverlayRoomApplicationItems *_applicationItems;
     HKDisplayType *_primaryDisplayType;
     NSDate *_displayDate;
@@ -23,6 +25,7 @@
     HKInteractiveChartOverlayViewController *_chartController;
     HKValueRange *_initialVisibleDateRange;
     id <HKOverlayRoomViewControllerLayoutDelegate> _layoutDelegate;
+    NSUserActivity *_restorationUserActivity;
     long long _currentChartTimeScope;
     NSDateInterval *_currentChartDateInterval;
     HKOverlayContextLocation *_currentSelectedContextLocation;
@@ -30,9 +33,14 @@
     NSArray *_overlayContextSections;
     HKOverlayContextLocation *_initialSelectedContextLocation;
     NSObject<OS_dispatch_queue> *_contextUpdateQueue;
+    NSUserActivity *_showAllFiltersActivity;
+    HKOverlayContextLocation *_restorationContextLocation;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HKOverlayContextLocation *restorationContextLocation; // @synthesize restorationContextLocation=_restorationContextLocation;
+@property(retain, nonatomic) NSUserActivity *showAllFiltersActivity; // @synthesize showAllFiltersActivity=_showAllFiltersActivity;
+@property(nonatomic) _Bool showAllFiltersVisible; // @synthesize showAllFiltersVisible=_showAllFiltersVisible;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *contextUpdateQueue; // @synthesize contextUpdateQueue=_contextUpdateQueue;
 @property(retain, nonatomic) HKOverlayContextLocation *initialSelectedContextLocation; // @synthesize initialSelectedContextLocation=_initialSelectedContextLocation;
 @property(retain, nonatomic) NSArray *overlayContextSections; // @synthesize overlayContextSections=_overlayContextSections;
@@ -41,6 +49,7 @@
 @property(retain, nonatomic) HKOverlayContextLocation *currentSelectedContextLocation; // @synthesize currentSelectedContextLocation=_currentSelectedContextLocation;
 @property(copy, nonatomic) NSDateInterval *currentChartDateInterval; // @synthesize currentChartDateInterval=_currentChartDateInterval;
 @property(nonatomic) long long currentChartTimeScope; // @synthesize currentChartTimeScope=_currentChartTimeScope;
+@property(readonly, nonatomic) NSUserActivity *restorationUserActivity; // @synthesize restorationUserActivity=_restorationUserActivity;
 @property(nonatomic) __weak id <HKOverlayRoomViewControllerLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
 @property(retain, nonatomic) HKValueRange *initialVisibleDateRange; // @synthesize initialVisibleDateRange=_initialVisibleDateRange;
 @property(nonatomic) _Bool shouldSelectInitialOverlay; // @synthesize shouldSelectInitialOverlay=_shouldSelectInitialOverlay;
@@ -49,32 +58,43 @@
 @property(readonly, copy, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
 @property(retain, nonatomic) HKDisplayType *primaryDisplayType; // @synthesize primaryDisplayType=_primaryDisplayType;
 @property(retain, nonatomic) HKOverlayRoomApplicationItems *applicationItems; // @synthesize applicationItems=_applicationItems;
+@property(readonly, nonatomic) NSString *chartOverlayVersion;
+- (void)_unselectCurrentContext;
 - (void)_refreshContextItemsAndUpdateChart:(_Bool)arg1;
 - (void)_invalidateContextItems;
 - (_Bool)_shouldUpdateContextItemsForChanges:(id)arg1;
+- (void)saveRestorationState;
+- (id)restorationStateDictionary;
+- (void)restoreUserActivityState:(id)arg1;
+- (void)setRestorationUserActivity:(id)arg1;
 - (void)_refreshUpdatedItemsWithChartUpdate:(_Bool)arg1 invalidateChartItems:(_Bool)arg2;
 - (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
-- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
+- (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4 recoveringFromError:(_Bool)arg5;
 - (void)sampleTypeDateRangeController:(id)arg1 didUpdateDateRanges:(id)arg2;
-- (void)newDataArrivedWithValueRange:(id)arg1;
+- (void)didUpdateSeriesWithNewValueRange:(id)arg1;
 - (void)didUpdateVisibleValueRange:(id)arg1 changeContext:(long long)arg2;
+- (_Bool)_currentSelectedContextValidForTimeScope:(long long)arg1;
 - (void)didUpdateFromDateZoom:(long long)arg1 toDateZoom:(long long)arg2 newVisibleRange:(id)arg3;
 - (void)contextViewDidInvalidateLayout:(id)arg1;
 - (void)contextView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)contextView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (_Bool)contextView:(id)arg1 canSelectItemAtIndexPath:(id)arg2;
 - (void)_updateChartForOverlaySelection:(id)arg1 previousSelection:(id)arg2;
+- (_Bool)_canSelectOverlayLocation:(id)arg1 previousSelection:(id)arg2;
 - (long long)_contextItemCount;
 - (void)fetchContextItemsIfNeededWithDateInterval:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_currentIndexPath;
 - (void)_selectContextItemAtLocation:(id)arg1 animated:(_Bool)arg2;
 - (id)_findNavigationController;
 - (id)_currentChartEffectiveVisibleRange;
+- (void)_didPresentShowAllFilters;
+- (void)_willPresentShowAllFilters;
+- (void)_showAllFilters;
 - (void)_showAllFilters:(id)arg1;
 - (void)_layoutNoVerticalExpansion:(id)arg1;
 - (void)_pinView:(id)arg1 toSafeAreaOf:(id)arg2;
 - (void)_setupOverlayContextItems;
 - (id)_contextViewBackgroundColor;
-- (id)_makeSeparatorView;
 - (void)_setupInterface;
 - (id)createChartOverlayViewController;
 - (void)_setupPrimaryDisplayType;
@@ -83,7 +103,10 @@
 - (void)refreshOverlayContextItems;
 - (void)reloadOverlayContextItems;
 - (void)dealloc;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)didChangeFromContextItem:(id)arg1 toContextItem:(id)arg2;
+- (_Bool)stacksOverlays;
 - (id)showAllFiltersButtonTitle;
 - (_Bool)supportsShowAllFilters;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;

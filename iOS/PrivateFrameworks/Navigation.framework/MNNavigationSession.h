@@ -7,34 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <Navigation/GEOMotionContextDelegate-Protocol.h>
+#import <Navigation/MNAudioManagerObserver-Protocol.h>
 #import <Navigation/MNGuidanceManagerDelegate-Protocol.h>
 #import <Navigation/MNLocationManagerHeadingObserver-Protocol.h>
 #import <Navigation/MNLocationManagerObserver-Protocol.h>
 #import <Navigation/MNLocationTrackerDelegate-Protocol.h>
-#import <Navigation/MNNavigationAudioSessionDelegate-Protocol.h>
 #import <Navigation/MNSessionUpdateManagerDelegate-Protocol.h>
 #import <Navigation/MNTimeAndDistanceUpdaterDelegate-Protocol.h>
 #import <Navigation/MNTracePlayerObserver-Protocol.h>
 #import <Navigation/MNVehicleMonitorDelegate-Protocol.h>
-#import <Navigation/MNVoiceControllerObserver-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOComposedWaypoint, GEOMotionContext, GEONavigationGuidanceState, GEOResourceManifestUpdateAssertion, MNClassicGuidanceManager, MNGuidanceEventManager, MNGuidanceSignInfo, MNLocation, MNLocationTracker, MNNavigationSessionLogger, MNNavigationTraceManager, MNObserverHashTable, MNRouteManager, MNTimeAndDistanceUpdater, MNTraceNavigationEventRecorder, MNTrafficIncidentAlert, MNVehicleMonitor, NSString, NSUUID;
-@protocol MNAudioSession, MNGuidanceManager;
+@class GEOApplicationAuditToken, GEOComposedWaypoint, GEOMotionContext, GEONavigationGuidanceState, GEOResourceManifestUpdateAssertion, MNAudioManager, MNGuidanceManager, MNGuidanceSignInfo, MNLocation, MNLocationTracker, MNNavigationSessionLogger, MNNavigationTraceManager, MNObserverHashTable, MNRouteManager, MNTimeAndDistanceUpdater, MNTraceNavigationEventRecorder, MNTrafficIncidentAlert, MNVehicleMonitor, NSString, NSUUID;
+@protocol MNAudioProvider;
 
-@interface MNNavigationSession : NSObject <GEOMotionContextDelegate, MNGuidanceManagerDelegate, MNLocationManagerHeadingObserver, MNLocationManagerObserver, MNLocationTrackerDelegate, MNNavigationAudioSessionDelegate, MNTimeAndDistanceUpdaterDelegate, MNTracePlayerObserver, MNVehicleMonitorDelegate, MNVoiceControllerObserver, MNSessionUpdateManagerDelegate>
+@interface MNNavigationSession : NSObject <GEOMotionContextDelegate, MNAudioManagerObserver, MNGuidanceManagerDelegate, MNLocationManagerHeadingObserver, MNLocationManagerObserver, MNLocationTrackerDelegate, MNTimeAndDistanceUpdaterDelegate, MNTracePlayerObserver, MNVehicleMonitorDelegate, MNSessionUpdateManagerDelegate>
 {
     int _navigationType;
     MNRouteManager *_routeManager;
     GEOComposedWaypoint *_destination;
     MNLocationTracker *_locationTracker;
     GEOMotionContext *_motionContext;
-    id <MNAudioSession> _audioSession;
-    id <MNGuidanceManager> _guidanceManager;
-    MNClassicGuidanceManager *_classicGuidanceManager;
-    MNGuidanceEventManager *_guidanceEventManager;
+    MNAudioManager *_audioProvider;
+    MNGuidanceManager *_guidanceManager;
     MNTimeAndDistanceUpdater *_timeAndDistanceUpdater;
     MNVehicleMonitor *_vehicleMonitor;
-    NSString *_voiceLanguage;
     MNNavigationSessionLogger *_logger;
     MNNavigationTraceManager *_traceManager;
     MNTraceNavigationEventRecorder *_navigationEventRecorder;
@@ -47,19 +43,18 @@
     NSString *_tileLoaderClient;
     GEOApplicationAuditToken *_auditToken;
     GEOResourceManifestUpdateAssertion *_manifestUpdateAssertion;
+    _Bool _etaUpdatesDisabled;
     MNGuidanceSignInfo *_lastSignInfo;
     NSUUID *_lastLaneID;
     NSUUID *_lastJunctionViewID;
     _Bool _isAllowedToSwitchTransportTypes;
-    double _remainingTime;
-    double _remainingDistance;
+    unsigned long long _displayedStepIndex;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long displayedStepIndex; // @synthesize displayedStepIndex=_displayedStepIndex;
 @property(nonatomic) _Bool isConnectedToCarplay; // @synthesize isConnectedToCarplay=_isConnectedToCarplay;
 @property(nonatomic) _Bool guidancePromptsEnabled; // @synthesize guidancePromptsEnabled=_guidancePromptsEnabled;
-@property(readonly, nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
-@property(readonly, nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 @property(readonly, nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
 @property(readonly, nonatomic) _Bool isAllowedToSwitchTransportTypes; // @synthesize isAllowedToSwitchTransportTypes=_isAllowedToSwitchTransportTypes;
 @property(readonly, nonatomic) MNNavigationTraceManager *traceManager; // @synthesize traceManager=_traceManager;
@@ -67,21 +62,19 @@
 @property(readonly, nonatomic) MNRouteManager *routeManager; // @synthesize routeManager=_routeManager;
 @property(readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 @property(readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
-@property(retain, nonatomic) id <MNAudioSession> audioSession; // @synthesize audioSession=_audioSession;
+@property(retain, nonatomic) id <MNAudioProvider> audioProvider; // @synthesize audioProvider=_audioProvider;
 - (id)userLocationForUpdateManager:(id)arg1;
 - (id)routeInfoForUpdateManager:(id)arg1;
 - (_Bool)wantsETAUpdates;
-- (void)updateManager:(id)arg1 didReceiveETAError:(id)arg2;
-- (void)updateManager:(id)arg1 didUpdateETAForRouteInfo:(id)arg2;
-- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
+- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2;
 - (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
 - (void)updateManager:(id)arg1 didReceiveTransitError:(id)arg2;
 - (void)updateManager:(id)arg1 didReceiveTransitUpdates:(id)arg2;
 - (void)updateManager:(id)arg1 willSendTransitUpdateRequestForRouteIDs:(id)arg2;
 - (void)updateManager:(id)arg1 didReceiveTransitUpdateResponse:(id)arg2;
 - (void)updateManager:(id)arg1 willSendTransitUpdateRequests:(id)arg2;
-- (void)voiceController:(id)arg1 didStartSpeakingPrompt:(id)arg2;
-- (void)voiceController:(id)arg1 didActivateAudioSession:(_Bool)arg2;
+- (void)audioManager:(id)arg1 didStartSpeakingPrompt:(id)arg2;
+- (void)audioManager:(id)arg1 didActivateAudioSession:(_Bool)arg2;
 - (void)vehicleMonitorDidDisconnectFromVehicle:(id)arg1;
 - (void)tracePlayer:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
 - (void)tracePlayer:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
@@ -104,29 +97,20 @@
 - (void)timeAndDistanceUpdater:(id)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
 - (void)guidanceManager:(id)arg1 updatedGuidanceEventFeedback:(id)arg2;
 - (void)guidanceManager:(id)arg1 newGuidanceEventFeedback:(id)arg2;
-- (void)guidanceManager:(id)arg1 didArriveWithAnnouncement:(id)arg2;
+- (void)guidanceManager:(id)arg1 hideJunctionViewForId:(id)arg2;
+- (void)guidanceManager:(id)arg1 showJunctionView:(id)arg2;
+- (void)guidanceManager:(id)arg1 usePersistentDisplay:(_Bool)arg2;
+- (void)guidanceManager:(id)arg1 updateSignsWithARInfo:(id)arg2;
+- (void)guidanceManager:(id)arg1 updateSignsWithInfo:(id)arg2;
+- (void)guidanceManager:(id)arg1 hideLaneDirectionsForId:(id)arg2;
+- (void)guidanceManager:(id)arg1 showLaneDirections:(id)arg2;
 - (void)guidanceManager:(id)arg1 triggerHaptics:(int)arg2;
 - (void)guidanceManager:(id)arg1 didProcessSpeechEvent:(id)arg2;
 - (void)guidanceManager:(id)arg1 willProcessSpeechEvent:(id)arg2;
-- (void)guidanceManager:(id)arg1 announce:(id)arg2 shortPromptType:(unsigned long long)arg3 ignorePromptStyle:(_Bool)arg4 stage:(unsigned long long)arg5 hasSecondaryManeuver:(_Bool)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)guidanceManager:(id)arg1 announce:(id)arg2 isImportant:(_Bool)arg3 shortPromptType:(unsigned long long)arg4 ignorePromptStyle:(_Bool)arg5 stage:(unsigned long long)arg6 hasSecondaryManeuver:(_Bool)arg7 completionBlock:(CDUnknownBlockType)arg8;
 - (void)guidanceManager:(id)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
-- (void)guidanceManager:(id)arg1 usePersistentDisplay:(_Bool)arg2;
-- (void)guidanceManager:(id)arg1 updateSignsWithInfo:(id)arg2;
-- (void)guidanceManager:(id)arg1 hideJunctionViewForId:(id)arg2;
-- (void)guidanceManager:(id)arg1 showJunctionView:(id)arg2;
-- (void)guidanceManager:(id)arg1 hideLaneDirectionsForId:(id)arg2;
-- (void)guidanceManager:(id)arg1 showLaneDirections:(id)arg2;
 - (void)guidanceManagerEndGuidanceUpdate:(id)arg1;
 - (void)guidanceManagerBeginGuidanceUpdate:(id)arg1;
-- (void)guidanceManagerHideSecondaryStep:(id)arg1;
-- (void)guidanceManager:(id)arg1 displaySecondaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6;
-- (void)guidanceManager:(id)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
-- (void)guidanceManager:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(_Bool)arg8;
-- (void)guidanceManagerDidUpdateProgress:(id)arg1 currentStepIndex:(unsigned long long)arg2 distanceUntilSign:(double)arg3 timeUntilSign:(double)arg4;
-- (void)guidanceManagerProceedingToRoute:(id)arg1 proceedToRouteDistance:(double)arg2 displayString:(id)arg3 closestStepIndex:(unsigned long long)arg4;
-- (void)guidanceManager:(id)arg1 didStartWithAnnouncement:(id)arg2;
-- (void)audioSessionDidFinishAnnouncingArrival:(id)arg1;
-- (void)audioSessionWillAnnounceArrival:(id)arg1;
 - (void)locationManagerUpdatedHeading:(id)arg1;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
@@ -136,6 +120,8 @@
 - (void)locationManagerDidReset:(id)arg1;
 - (void)locationManagerFailedToUpdateLocation:(id)arg1 withError:(id)arg2;
 - (void)locationManagerUpdatedLocation:(id)arg1;
+- (void)locationTracker:(id)arg1 didReceiveRouteSignalStrength:(unsigned long long)arg2;
+- (void)locationTracker:(id)arg1 didReceiveTransitAlert:(id)arg2;
 - (void)locationTracker:(id)arg1 shouldShowChargingInfoForWaypoint:(id)arg2;
 - (void)locationTracker:(id)arg1 updatedTrafficIncidentAlert:(id)arg2;
 - (void)locationTracker:(id)arg1 invalidatedTrafficIncidentAlert:(id)arg2;
@@ -161,10 +147,12 @@
 - (void)motionContextDidUpdateMotion:(id)arg1;
 - (void)_stopVirtualGarageUpdates;
 - (void)_startVirtualGarageUpdates;
+- (id)_transitStopAtStopIndex:(unsigned long long)arg1;
 - (void)_stopTravelTimeUpdates;
 - (void)_startTravelTimeUpdates;
 - (void)_stopGuidance;
-- (void)_startGuidanceAllowMidRouteStart:(_Bool)arg1;
+- (void)_startGuidanceAllowMidRouteStart:(_Bool)arg1 announcementsToIgnore:(id)arg2;
+- (void)didChangeUserOptionsFrom:(id)arg1 to:(id)arg2;
 - (void)_stopAudioSession;
 - (void)_startAudioSession;
 - (void)_stopMotionUpdates;
@@ -176,9 +164,12 @@
 - (id)_locationTrackerForTransportType:(int)arg1 navigationType:(int)arg2;
 - (void)_closeTileLoader;
 - (void)_openTileLoader;
+- (void)enableNavigationCapability:(unsigned long long)arg1;
+- (void)disableNavigationCapability:(unsigned long long)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)setIsNavigatingInLowGuidance:(_Bool)arg1;
 - (void)traceJumpedInTime;
+- (double)durationForAnnouncement:(id)arg1;
 - (_Bool)isCurrentlySpeaking;
 - (double)timeUntilNextAnnouncement;
 - (double)timeSinceLastAnnouncement;
@@ -187,14 +178,14 @@
 - (_Bool)repeatCurrentTrafficAlert;
 - (_Bool)repeatCurrentGuidance;
 - (void)switchToRoute:(id)arg1;
+- (void)forceReroute;
 - (void)resumeOriginalDestination;
 - (void)updateDestination:(id)arg1;
-- (void)stopNavigationSession;
+- (void)stopNavigationSessionWithReason:(unsigned long long)arg1;
+- (void)updateWithInitialLocation:(id)arg1;
 - (void)startNavigationSessionWithDetails:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-@property(readonly, nonatomic) double distanceToManeuverEnd;
-@property(readonly, nonatomic) double distanceToManeuverStart;
 @property(readonly, nonatomic) int navigationState;
 @property(readonly, nonatomic) MNLocation *lastMatchedLocation;
 - (void)dealloc;

@@ -48,7 +48,9 @@
 + (id)supervisedRequiredPayloads;
 + (id)cellularRequiredPayloads;
 + (id)mdmAdoptablePayloads;
++ (id)hrnRequiredPayloads;
 + (id)unavailablePayloadsInEphemeralMultiUser;
++ (id)accountPayloads;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool mustInstallNonInteractively; // @synthesize mustInstallNonInteractively=_mustInstallNonInteractively;
 @property(retain, nonatomic) NSString *persistentResourceID; // @synthesize persistentResourceID=_persistentResourceID;

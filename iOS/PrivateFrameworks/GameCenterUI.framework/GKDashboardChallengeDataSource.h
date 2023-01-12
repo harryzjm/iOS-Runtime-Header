@@ -15,6 +15,7 @@
     NSArray *_challenges;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *challenges; // @synthesize challenges=_challenges;
 @property(retain, nonatomic) GKGameRecord *gameRecord; // @synthesize gameRecord=_gameRecord;
 @property(nonatomic) _Bool shouldShowPlay; // @synthesize shouldShowPlay=_shouldShowPlay;
@@ -31,7 +32,6 @@
 - (long long)itemCount;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setupCollectionView:(id)arg1;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1;
 
 @end

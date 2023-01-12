@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, PHFetchResult, PXPhotosDataSource;
+@class NSArray, NSString, PHFetchResult, PHPerson, PXPhotosDataSource;
 @protocol PXDisplayAsset;
 
 @interface PXActivitySharingContext : NSObject
@@ -19,11 +19,13 @@
     NSString *_title;
     NSString *_subtitle;
     id <PXDisplayAsset> _keyAsset;
+    PHPerson *_person;
     long long _sourceOrigin;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+@property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property(retain, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;

@@ -10,11 +10,11 @@
 
 @interface CKComponentDelegateForwarder : NSObject
 {
-    vector_f9fd24f3 _selectors;
+    vector_290ed355 _selectors;
     UIView *_view;
 }
 
-+ (id)newWithSelectors:(vector_f9fd24f3)arg1;
++ (id)newWithSelectors:(vector_290ed355)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;

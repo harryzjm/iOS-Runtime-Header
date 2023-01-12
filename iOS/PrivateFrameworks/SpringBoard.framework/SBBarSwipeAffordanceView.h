@@ -6,55 +6,52 @@
 
 #import <UIKit/UIView.h>
 
+#import <SpringBoard/SBFBarSwipeBehaviorDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureInteractionDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGesturePanGestureRecognizerInterfaceDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGrabberDelegate-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, SBHomeGestureInteraction, SBHomeGrabberView, SBSystemGestureManager, UINotificationFeedbackGenerator;
+@class NSHashTable, NSString, SBFBarSwipeBehavior, SBHomeGestureInteraction, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBSystemGestureManager;
 @protocol SBBarSwipeAffordanceDelegate, SBHomeGrabberPointerClickDelegate;
 
-@interface SBBarSwipeAffordanceView : UIView <UIGestureRecognizerDelegate, SBHomeGrabberDelegate, SBSystemGestureRecognizerDelegate, SBHomeGestureInteractionDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate>
+@interface SBBarSwipeAffordanceView : UIView <UIGestureRecognizerDelegate, SBHomeGrabberDelegate, SBSystemGestureRecognizerDelegate, SBHomeGestureInteractionDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBFBarSwipeBehaviorDelegate>
 {
     NSHashTable *_observers;
-    UINotificationFeedbackGenerator *_dismissalFeedbackGenerator;
-    double _additionalEdgeSpacing;
+    SBFBarSwipeBehavior *_barSwipeBehavior;
     SBHomeGestureInteraction *_homeGestureInteraction;
     SBSystemGestureManager *_gestureManager;
     _Bool _active;
     _Bool _homeAffordanceHidden;
     id <SBBarSwipeAffordanceDelegate> _delegate;
+    SBKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
     SBHomeGrabberView *_grabberView;
-    long long _feedbackType;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long feedbackType; // @synthesize feedbackType=_feedbackType;
 @property(readonly, nonatomic) SBHomeGrabberView *grabberView; // @synthesize grabberView=_grabberView;
+@property(retain, nonatomic) SBKeyboardHomeAffordanceAssertion *keyboardHomeAffordanceAssertion; // @synthesize keyboardHomeAffordanceAssertion=_keyboardHomeAffordanceAssertion;
 @property(nonatomic, getter=isHomeAffordanceHidden) _Bool homeAffordanceHidden; // @synthesize homeAffordanceHidden=_homeAffordanceHidden;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(nonatomic) __weak id <SBBarSwipeAffordanceDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)_settleAffordanceAnimationBehaviorDescription;
 - (id)_unhideHomeAffordanceAnimationSettings;
 - (id)_hideHomeAffordanceAnimationSettings;
-- (void)_setGrabberAdditionalEdgeSpacing:(double)arg1;
-- (void)_offsetGrabberForProgress:(double)arg1;
-- (void)_settleGrabber;
-- (void)_fireAction;
-- (double)_progressWithTranslation:(struct CGPoint)arg1 liftoffVelocity:(struct CGPoint)arg2;
 - (_Bool)shouldAllowAutoHideForHomeGrabberView:(id)arg1;
 - (_Bool)shouldAllowThinStyleForHomeGrabberView:(id)arg1;
 - (double)additionalEdgeSpacingForHomeGrabberView:(id)arg1;
 - (long long)touchInterfaceOrientationForGestureRecognizer:(id)arg1;
 - (long long)_effectiveOrientationAccountingForTransforms;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
+- (void)barSwipeBehavior:(id)arg1 didUpdateAdditionalEdgeSpacing:(double)arg2;
+- (void)barSwipeBehaviorActionPerformed:(id)arg1;
 - (void)homeGestureInteractionCancelled:(id)arg1;
 - (void)homeGestureInteractionEnded:(id)arg1;
 - (void)homeGestureInteractionChanged:(id)arg1;
 - (void)homeGestureInteractionBegan:(id)arg1;
 - (id)customScreenEdgePanGestureRecognizerForHomeGestureInteraction:(id)arg1;
 - (unsigned long long)homeGestureInteraction:(id)arg1 systemGestureTypeForType:(long long)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (void)didAddSubview:(id)arg1;
 - (void)_runBlockOnObservers:(CDUnknownBlockType)arg1;
@@ -64,7 +61,7 @@
 - (void)_activate;
 - (void)_updateHomeAffordanceVisibility;
 @property(nonatomic) long long colorBias; // @dynamic colorBias;
-- (void)_createFeedbackGenerator;
+@property(nonatomic) long long feedbackType;
 @property(nonatomic) __weak id <SBHomeGrabberPointerClickDelegate> pointerClickDelegate;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 systemGestureManager:(id)arg2 enableGestures:(_Bool)arg3;

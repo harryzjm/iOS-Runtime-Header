@@ -12,7 +12,7 @@
 
 @interface TSCERemoteDataValueMap : NSObject <NSCopying>
 {
-    struct unordered_map<unsigned long, NSMutableDictionary<TSCERemoteDataSpecifier *, TSCECellValue *>*, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, NSMutableDictionary<TSCERemoteDataSpecifier *, TSCECellValue *>*>>> _coldDataByYear;
+    struct unordered_map<unsigned long, NSMutableDictionary<TSCERemoteDataSpecifier *, TSCECellValue *>*, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<const unsigned long, NSMutableDictionary<TSCERemoteDataSpecifier *, TSCECellValue *>*>>> _coldDataByYear;
     NSMutableDictionary *_data;
 }
 
@@ -21,9 +21,9 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *data; // @synthesize data=_data;
-- (void)saveToArchive:(struct RemoteDataValueMapArchive *)arg1;
-- (void)p_saveMap:(id)arg1 toArchive:(struct RemoteDataValueMapArchive *)arg2;
-- (id)initFromArchive:(const struct RemoteDataValueMapArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (void)p_saveMap:(id)arg1 toArchive:(void *)arg2;
+- (id)initFromArchive:(const void *)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)enumerateSpecifiersAndValuesWithBlock:(CDUnknownBlockType)arg1;

@@ -6,13 +6,12 @@
 
 #import <VectorKit/VKGesturingCameraController-Protocol.h>
 
-@class NSString, VKMapCanvas, VKMapModel, VKTimedAnimation;
+@class NSString, VKTimedAnimation;
 
 __attribute__((visibility("hidden")))
 @interface VKMapCameraController <VKGesturingCameraController>
 {
-    VKMapModel *_mapModel;
-    VKMapCanvas *_mapCanvas;
+    void *_mapEngine;
     VKTimedAnimation *_horizontalOffsetAnimation;
     double _minDistanceToGroundAlongForwardVector;
     double _maxDistanceToGroundAlongForwardVector;
@@ -20,8 +19,9 @@ __attribute__((visibility("hidden")))
     double _finalPitch;
 }
 
-@property(nonatomic) VKMapCanvas *mapCanvas; // @synthesize mapCanvas=_mapCanvas;
-@property(retain, nonatomic) VKMapModel *mapModel; // @synthesize mapModel=_mapModel;
+@property(nonatomic) void *mapEngine; // @synthesize mapEngine=_mapEngine;
+- (void)updateWithTimestamp:(double)arg1 withContext:(void *)arg2;
+- (void)setCamera:(shared_ptr_46708168)arg1;
 - (double)zoomLevelAdjustmentForTileSize:(long long)arg1;
 - (double)topDownMinimumZoomLevel;
 - (double)currentZoomLevel;
@@ -65,14 +65,12 @@ __attribute__((visibility("hidden")))
 - (void)clampPitch:(double *)arg1 yaw:(double *)arg2 atTargetPositionZ:(double)arg3;
 - (_Bool)snapMapIfNecessary:(_Bool)arg1;
 - (void)startTrackingAnnotation:(id)arg1 trackHeading:(_Bool)arg2 animated:(_Bool)arg3 duration:(double)arg4 timingFunction:(CDUnknownBlockType)arg5;
-- (_Bool)restoreViewportFromInfo:(id)arg1;
-- (id)viewportInfo;
 - (void)zoomToLevel:(double)arg1 withPoint:(Matrix_6e1d3589)arg2;
 - (void)zoom:(double)arg1 withPoint:(Matrix_6e1d3589)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)tapZoom:(struct CGPoint)arg1 levels:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)rotateToYaw:(double)arg1 withPoint:(const Matrix_6e1d3589 *)arg2 animated:(_Bool)arg3;
-- (void)rotateToPitch:(double)arg1 withPoint:(const Matrix_6e1d3589 *)arg2 preserveAltitude:(_Bool)arg3 animated:(_Bool)arg4 exaggerate:(_Bool)arg5;
+- (void)rotateToYaw:(double)arg1 withPoint:(const void *)arg2 animated:(_Bool)arg3;
+- (void)rotateToPitch:(double)arg1 withPoint:(const void *)arg2 preserveAltitude:(_Bool)arg3 animated:(_Bool)arg4 exaggerate:(_Bool)arg5;
 - (float)maxPitchForNormalizedZoomLevel:(float)arg1;
 - (float)idealPitchForNormalizedZoomLevel:(float)arg1;
 - (float)minimumPitchForNormalizedZoomLevel:(float)arg1;
@@ -88,7 +86,7 @@ __attribute__((visibility("hidden")))
 - (long long)tileSize;
 - (void)canvasDidLayout;
 - (void)dealloc;
-- (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
+- (id)initWithMapDataAccess:(void *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

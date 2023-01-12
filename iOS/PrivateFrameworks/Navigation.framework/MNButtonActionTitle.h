@@ -6,18 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <Navigation/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface MNButtonActionTitle : NSObject
+__attribute__((visibility("hidden")))
+@interface MNButtonActionTitle : NSObject <NSSecureCoding>
 {
     unsigned long long _action;
     NSString *_title;
+    int _buttonDisplay;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int buttonDisplay; // @synthesize buttonDisplay=_buttonDisplay;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) unsigned long long action; // @synthesize action=_action;
-- (id)initWithAction:(unsigned long long)arg1 withTitle:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithAction:(unsigned long long)arg1 withTitle:(id)arg2 buttonDisplay:(int)arg3;
 
 @end
 

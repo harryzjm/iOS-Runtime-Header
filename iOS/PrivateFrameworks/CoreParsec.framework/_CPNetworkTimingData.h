@@ -9,7 +9,7 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPNetworkTimingData-Protocol.h>
 
-@class NSData, NSString, _CPTCPInfo, _CPTuscanyConnectionInfo;
+@class NSData, NSString, _CPTCPInfo;
 
 @interface _CPNetworkTimingData : PBCodable <_CPNetworkTimingData, NSSecureCoding>
 {
@@ -42,7 +42,6 @@
     NSString *_connectionUUID;
     NSString *_networkProtocolName;
     double _timingDataInit;
-    _CPTuscanyConnectionInfo *_tuscany;
 }
 
 + (id)startMetricsForNormalization;
@@ -59,7 +58,6 @@
 @property(nonatomic) unsigned int domainLookupStart; // @synthesize domainLookupStart=_domainLookupStart;
 @property(nonatomic) unsigned int connectEnd; // @synthesize connectEnd=_connectEnd;
 @property(nonatomic) unsigned int connectStart; // @synthesize connectStart=_connectStart;
-@property(retain, nonatomic) _CPTuscanyConnectionInfo *tuscany; // @synthesize tuscany=_tuscany;
 @property(nonatomic) double timingDataInit; // @synthesize timingDataInit=_timingDataInit;
 @property(nonatomic) _Bool TFOSuccess; // @synthesize TFOSuccess=_TFOSuccess;
 @property(nonatomic) unsigned int responseHeaderSize; // @synthesize responseHeaderSize=_responseHeaderSize;
@@ -77,10 +75,6 @@
 @property(nonatomic) _Bool connectionRace; // @synthesize connectionRace=_connectionRace;
 @property(copy, nonatomic) NSData *peerAddress; // @synthesize peerAddress=_peerAddress;
 @property(copy, nonatomic) NSString *interfaceIdentifier; // @synthesize interfaceIdentifier=_interfaceIdentifier;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -90,6 +84,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

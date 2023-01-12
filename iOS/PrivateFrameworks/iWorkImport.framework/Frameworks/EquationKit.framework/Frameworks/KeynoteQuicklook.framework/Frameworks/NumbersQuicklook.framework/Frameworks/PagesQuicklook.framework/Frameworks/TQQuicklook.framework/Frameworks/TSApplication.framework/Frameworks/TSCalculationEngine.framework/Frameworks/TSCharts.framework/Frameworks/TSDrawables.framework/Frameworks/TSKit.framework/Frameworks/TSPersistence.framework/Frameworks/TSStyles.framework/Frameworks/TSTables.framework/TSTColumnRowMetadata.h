@@ -10,7 +10,7 @@
 
 @interface TSTColumnRowMetadata : TSKSosBase
 {
-    UUIDData_5fbc143e _columnRowUID;
+    struct UUIDData<TSP::UUIDData> _columnRowUID;
     double _size;
     unsigned char _hidingAction;
     TSTCellStyle *_cellStyle;
@@ -19,7 +19,7 @@
     _Bool _definedTextStyle;
 }
 
-+ (id)metadataWithUid:(const UUIDData_5fbc143e *)arg1;
++ (id)metadataWithUid:(const struct TSKUIDStruct *)arg1;
 + (id)metadata;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -27,12 +27,12 @@
 @property(readonly, nonatomic) double size; // @synthesize size=_size;
 @property(readonly, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
 @property(readonly, nonatomic) TSTCellStyle *cellStyle; // @synthesize cellStyle=_cellStyle;
-- (const UUIDData_5fbc143e *)columnRowUID;
+- (struct TSKUIDStruct)columnRowUID;
 - (_Bool)migrateStylesToDocument:(id)arg1;
 @property(readonly, nonatomic) _Bool isValid;
 - (id)init;
-- (id)initWithSize:(double)arg1 hidingAction:(unsigned char)arg2 cellStyle:(id)arg3 textStyle:(id)arg4 columnRowUID:(UUIDData_5fbc143e)arg5;
-- (id)metadataWithUid:(const UUIDData_5fbc143e *)arg1;
+- (id)initWithSize:(double)arg1 hidingAction:(unsigned char)arg2 cellStyle:(id)arg3 textStyle:(id)arg4 columnRowUID:(struct TSKUIDStruct)arg5;
+- (id)metadataWithUid:(const struct TSKUIDStruct *)arg1;
 
 @end
 

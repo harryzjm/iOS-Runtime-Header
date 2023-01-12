@@ -10,8 +10,8 @@
 }
 
 - (void)setPopulatedCustomFormat:(id)arg1;
-- (void)encodeToArchive:(struct StringCellValueArchive *)arg1;
-- (id)initWithArchive:(const struct StringCellValueArchive *)arg1 locale:(id)arg2;
+- (void)encodeToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 locale:(id)arg2;
 - (long long)compareToCellValue:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -23,7 +23,7 @@
 - (struct TSCEStringValue *)stringValue;
 - (struct TSCEValue)tsceValue;
 - (void)dealloc;
-- (id)initWithStringValue:(struct TSCEStringValue *)arg1 locale:(id)arg2;
+- (id)initWithStringValue:(const struct TSCEStringValue *)arg1 locale:(id)arg2;
 - (id)initWithString:(id)arg1 locale:(id)arg2;
 
 @end

@@ -8,12 +8,14 @@
 
 #import <AvatarUI/AVTPresetResourcesProviding-Protocol.h>
 
-@class AVTCoreModelGroup, NSArray, NSDictionary, NSString;
+@class AVTAvatarAttributeEditorPreviewMode, AVTCoreModelGroup, NSArray, NSDictionary, NSString;
 
 @interface AVTAvatarAttributeEditorCategory : NSObject <AVTPresetResourcesProviding>
 {
+    NSArray *_sectionProviders;
     NSArray *_sections;
     NSString *_localizedName;
+    AVTAvatarAttributeEditorPreviewMode *_previewMode;
     NSDictionary *_symbolNames;
     AVTCoreModelGroup *_modelGroup;
 }
@@ -21,11 +23,13 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVTCoreModelGroup *modelGroup; // @synthesize modelGroup=_modelGroup;
 @property(readonly, copy, nonatomic) NSDictionary *symbolNames; // @synthesize symbolNames=_symbolNames;
+@property(readonly, nonatomic) AVTAvatarAttributeEditorPreviewMode *previewMode; // @synthesize previewMode=_previewMode;
 @property(readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(readonly, copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property(readonly, copy, nonatomic) NSArray *sectionProviders; // @synthesize sectionProviders=_sectionProviders;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) CDUnknownBlockType symbolNameProvider;
-- (id)initWithSections:(id)arg1 localizedName:(id)arg2 modelGroup:(id)arg3 symbolNames:(id)arg4;
+- (id)initWithSectionProviders:(id)arg1 localizedName:(id)arg2 previewMode:(id)arg3 modelGroup:(id)arg4 symbolNames:(id)arg5;
 - (id)representedAVTPresetResources;
 
 // Remaining properties

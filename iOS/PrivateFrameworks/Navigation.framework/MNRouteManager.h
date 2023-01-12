@@ -8,7 +8,7 @@
 
 #import <Navigation/MNLocationManagerObserver-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, GEORoutePreloader, MNActiveRouteInfo, NSArray, NSMutableArray, NSString;
+@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, GEORoutePreloader, MNActiveRouteInfo, NSArray, NSMutableArray, NSString;
 
 @interface MNRouteManager : NSObject <MNLocationManagerObserver>
 {
@@ -20,6 +20,7 @@
     GEORouteAttributes *_routeAttributes;
     GEODirectionsRequest *_directionsRequest;
     GEODirectionsResponse *_directionsResponse;
+    GEOCommonOptions *_commonOptions;
     NSString *_requestingAppIdentifier;
     GEOComposedWaypoint *_originalDestination;
     MNActiveRouteInfo *_originalRouteInfo;
@@ -34,6 +35,7 @@
 @property(readonly, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
 @property(readonly, nonatomic) GEOComposedWaypoint *originalDestination; // @synthesize originalDestination=_originalDestination;
 @property(readonly, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
+@property(readonly, nonatomic) GEOCommonOptions *commonOptions; // @synthesize commonOptions=_commonOptions;
 @property(readonly, nonatomic) GEODirectionsResponse *directionsResponse; // @synthesize directionsResponse=_directionsResponse;
 @property(readonly, nonatomic) GEODirectionsRequest *directionsRequest; // @synthesize directionsRequest=_directionsRequest;
 @property(readonly, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;

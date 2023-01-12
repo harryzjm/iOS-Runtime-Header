@@ -10,7 +10,6 @@
 
 @class CKDMMCSItem, CKDMMCSItemGroupContext, NSMutableData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemFileWriter : NSObject <CKDMMCSItemReaderWriterProtocol>
 {
     NSMutableData *_data;

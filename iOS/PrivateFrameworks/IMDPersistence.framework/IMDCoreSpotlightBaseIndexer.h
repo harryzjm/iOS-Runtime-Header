@@ -14,11 +14,16 @@
 {
 }
 
++ (void)stopTimingWithProfiler:(id)arg1;
++ (void)startTimingWithProfiler:(id)arg1;
++ (id)timingProfileKey;
++ (id)chatUniqueIdentifierKey;
++ (id)messageServiceCustomKey;
 + (id)isBusinessChatCustomKey;
 + (id)isFromMeCustomKey;
 + (id)indexTypeCustomKey;
-+ (id)auxiliaryItemsForPrimaryAttributes:(id)arg1 withItem:(id)arg2 chat:(id)arg3 isReindexing:(_Bool)arg4;
-+ (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(id)arg4;
++ (id)auxiliaryItemsForPrimaryAttributes:(id)arg1 withItem:(id)arg2 chat:(id)arg3 isReindexing:(_Bool)arg4 timingProfiler:(id)arg5;
++ (void)indexItem:(id)arg1 withChat:(id)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(id)arg4 timingProfiler:(id)arg5;
 + (_Bool)cancelIndexingForItem:(id)arg1;
 
 // Remaining properties

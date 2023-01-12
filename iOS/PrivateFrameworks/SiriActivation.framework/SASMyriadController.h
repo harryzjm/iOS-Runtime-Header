@@ -14,24 +14,24 @@
 
 @interface SASMyriadController : NSObject <SASLockStateMonitorDelegate, AFMyriadDelegate>
 {
-    NSObject<OS_dispatch_semaphore> *_myriadFinishedSemaphore;
+    id <SASMyriadControllerDelegate> _delegate;
     AFMyriadCoordinator *_myriadCoordinator;
-    CMMotionActivityManager *_activityManager;
-    _Bool _isLifted;
-    double _liftEndTime;
     _Bool _isLocked;
-    SASLockStateMonitor *_lockStateMonitor;
+    NSObject<OS_dispatch_semaphore> *_myriadFinishedSemaphore;
     FBSDisplayLayoutMonitor *_displayMonitor;
     double _raiseToWakeTime;
-    CDUnknownBlockType _shouldContinueBlock;
-    CDUnknownBlockType _shoudAbortAnotherDeviceBetterBlock;
-    id <SASMyriadControllerDelegate> _delegate;
+    double _unlockTime;
+    SASLockStateMonitor *_lockStateMonitor;
+    _Bool _isStationary;
+    double _liftEndTime;
+    struct os_unfair_lock_s _activityManagerLock;
+    CMMotionActivityManager *_activityManager;
     _Bool _canceledByMyriad;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool canceledByMyriad; // @synthesize canceledByMyriad=_canceledByMyriad;
-- (void)_handleCMMotionActivity:(id)arg1;
+- (void)_configureMotionActivityManager;
 - (void)didChangeLockState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (void)shouldAbortAnotherDeviceBetter:(id)arg1;
 - (void)shouldContinue:(id)arg1;

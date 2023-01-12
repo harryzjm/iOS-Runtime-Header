@@ -6,19 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, SBWallpaperDefaults;
+@class SBWallpaperDefaults;
 
 @interface SBFWallpaperDefaults : NSObject
 {
     SBWallpaperDefaults *_defaultsStore;
-    NSMutableDictionary *_lockScreenDefaultsStoreWrapper;
-    NSMutableDictionary *_homeScreenDefaultsStoreWrapper;
 }
 
 + (id)defaults;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableDictionary *homeScreenDefaultsStoreWrapper; // @synthesize homeScreenDefaultsStoreWrapper=_homeScreenDefaultsStoreWrapper;
-@property(readonly, nonatomic) NSMutableDictionary *lockScreenDefaultsStoreWrapper; // @synthesize lockScreenDefaultsStoreWrapper=_lockScreenDefaultsStoreWrapper;
 @property(readonly, nonatomic) SBWallpaperDefaults *defaultsStore; // @synthesize defaultsStore=_defaultsStore;
 - (_Bool)proceduralUserSetForVariant:(long long)arg1;
 - (void)setProceduralUserSet:(_Bool)arg1 forLocations:(long long)arg2;

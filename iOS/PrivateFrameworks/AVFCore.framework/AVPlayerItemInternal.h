@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAsset, AVAudioMix, AVCustomVideoCompositorSession, AVMediaSelection, AVPlayerConnection, AVPlayerItem, AVVideoComposition, AVWeakReference, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, NSURL;
+@class AVAsset, AVAudioMix, AVCustomVideoCompositorSession, AVMediaSelection, AVPlayerConnection, AVPlayerItem, AVPlayerItemInterstitialEventCollector, AVPlayerPlaybackCoordinator, AVVideoComposition, AVWeakReference, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, NSURL;
 @protocol AVLoggingIdentifier, AVPlayerItemDelegate, NSObject><NSCopying, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -53,6 +53,8 @@ __attribute__((visibility("hidden")))
     NSError *error;
     CDStruct_1b6d18a9 forwardPlaybackEndTime;
     CDStruct_1b6d18a9 reversePlaybackEndTime;
+    CDStruct_1b6d18a9 timeToPauseBuffering;
+    CDStruct_1b6d18a9 timeToPausePlayback;
     CDStruct_1b6d18a9 advanceTimeForOverlappedPlayback;
     _Bool advanceTimeForOverlappedPlaybackWasSet;
     _Bool preservesTimeOffsetFromLive;
@@ -67,9 +69,11 @@ __attribute__((visibility("hidden")))
     CDStruct_1b6d18a9 maximumForwardBufferDuration;
     CDStruct_1b6d18a9 maximumTrailingBufferDuration;
     double preferredPeakBitRate;
+    double preferredPeakBitRateForExpensiveNetworks;
     int startsOnFirstEligibleVariant;
     NSArray *itemCollectors;
     NSMutableArray *itemMetadataCollectors;
+    AVPlayerItemInterstitialEventCollector *interstitialEventCollector;
     unsigned int RTCReportingFlags;
     NSDictionary *gaplessInfo;
     float soundCheckVolumeNormalization;
@@ -97,10 +101,15 @@ __attribute__((visibility("hidden")))
     NSDate *initialEstimatedDate;
     _Bool requiresAccessLog;
     _Bool suppressesAudioOnlyVariants;
+    _Bool prefersOfflinePlayableVariants;
+    unsigned long long variantPreferences;
+    double preferredMaximumAudioSampleRate;
     NSArray *imageQueueInterpolationCurve;
     _Bool imageQueueInterpolationCurveWasSet;
     _Bool blendsVideoFrames;
     _Bool blendsVideoFramesWasSet;
+    _Bool appliesPerFrameHDRDisplayMetadata;
+    _Bool appliesPerFrameHDRDisplayMetadataWasSet;
     NSString *videoApertureMode;
     _Bool usesMinimalLatencyForVideoCompositionRendering;
     _Bool initialAlwaysMonitorsPlayability;
@@ -113,6 +122,7 @@ __attribute__((visibility("hidden")))
     struct CGSize IFramePrefetchTargetDimensions;
     id <NSObject><NSCopying> AVKitData;
     struct CGSize preferredMaximumResolution;
+    struct CGSize preferredMaximumResolutionForExpensiveNetworks;
     struct CGSize preferredMinimumResolution;
     _Bool canPlayFastForward;
     _Bool canPlayFastReverse;
@@ -132,12 +142,17 @@ __attribute__((visibility("hidden")))
     _Bool hasEnabledAudio;
     _Bool hasEnqueuedVideoFrame;
     _Bool externalProtectionRequested;
+    _Bool automaticallyHandlesInterstitialEvents;
     NSArray *seekableTimeRanges;
     double seekableTimeRangesLastModifiedTime;
     NSArray *loadedTimeRanges;
     CDStruct_e83c9415 loopTimeRange;
     id <AVLoggingIdentifier> loggingIdentifier;
     AVMediaSelection *currentMediaSelection;
+    NSString *videoEnhancementMode;
+    _Bool isRenderingSpatialAudio;
+    AVPlayerPlaybackCoordinator *playerPlaybackCoordinator;
+    id coordinatedPlaybackIdentifierChangeNotificationToken;
     _Bool needToSeekAfterCreatingFigPlaybackItem;
     CDStruct_1b6d18a9 initialTime;
     unsigned int initialSetTimeFlags;
@@ -154,10 +169,12 @@ __attribute__((visibility("hidden")))
     AVWeakReference *clientsOriginalVideoComposition;
     AVCustomVideoCompositorSession *customVideoCompositorSession;
     void *figVideoCompositor;
+    AVPlayerItem *interstitialTemplate;
     int eqPreset;
     NSDictionary *rampInOutInfo;
     NSDictionary *audibleDRMInfo;
     long long initialVariantIndex;
+    NSString *currentStableVariantID;
     NSMutableDictionary *mediaOptionsSelectedByClient;
     NSString *serviceIdentifier;
     NSArray *timedMetadata;
@@ -174,7 +191,6 @@ __attribute__((visibility("hidden")))
     AVWeakReference *playerReference;
     _Bool didSetAssetToAssetWithFigPlaybackItem;
     struct OpaqueFigCPEProtector *figCPEProtector;
-    NSString *videoEnhancementMode;
 }
 
 @end

@@ -20,6 +20,7 @@
 - (void)_editingDidEnd;
 - (void)layoutSubviews;
 - (id)headerTextProviderFromTemplate:(id)arg1;
+- (struct CGSize)_bodySize;
 - (id)body;
 - (id)init;
 

@@ -32,6 +32,7 @@
 - (double)_disambiguationDistanceForDevicePlacementType:(unsigned long long)arg1;
 - (unsigned long long)_devicePlacementTypeForLocationsOfInterestVisits:(id)arg1;
 - (_Bool)isRemoteLocation:(id)arg1 inDateInterval:(id)arg2;
+- (id)locationOfInterestVisitsInDateInterval:(id)arg1;
 - (id)locationOfInterestVisitsAtLocation:(id)arg1 inDateInterval:(id)arg2;
 - (id)locationOfInterestAtLocation:(id)arg1;
 - (id)locationOfInterestCloseToLocation:(id)arg1 inDateInterval:(id)arg2;

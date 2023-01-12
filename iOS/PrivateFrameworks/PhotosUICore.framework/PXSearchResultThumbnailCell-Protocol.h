@@ -12,5 +12,8 @@
 + (NSString *)reuseIdentifier;
 - (void)setThumbnailImage:(UIImage *)arg1;
 - (struct CGSize)thumbnailImageViewPixelSize;
+
+@optional
+- (void)shouldDisplayUnsavedSyndicatedAssetBadge:(_Bool)arg1;
 @end
 

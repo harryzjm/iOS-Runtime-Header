@@ -49,7 +49,7 @@
 - (void)_stopIdleTimer;
 - (void)_startIdleTimer;
 - (void)invalidate;
-- (void)openBulkSendSessionForFileType:(id)arg1 reason:(id)arg2 queue:(id)arg3 callback:(CDUnknownBlockType)arg4;
+- (void)openBulkSendSessionForFileType:(id)arg1 reason:(id)arg2 metadata:(id)arg3 queue:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)dataStreamDidUpdateActiveStatus:(id)arg1;
 - (void)dataStreamDidReceiveRawFrame:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
@@ -62,6 +62,7 @@
 - (void)dataStreamSetupOperation:(id)arg1 didSucceedWithTransport:(id)arg2 sessionEncryption:(id)arg3;
 - (void)dataStreamInitializationSetupOperation:(id)arg1 didCompleteSupportReadWithStatus:(_Bool)arg2;
 - (void)_initiateStreamSetup;
+- (_Bool)setupRequiresCharactertisticReads;
 - (_Bool)_isDataStreamCapable;
 - (void)_createStreamSocketWithStreamProtocol:(id)arg1 applicationProtocolName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_getStreamProtocol;
@@ -75,10 +76,13 @@
 - (id)_getActiveProtocolWithName:(id)arg1;
 - (void)handleAccessoryDisconnected:(id)arg1;
 - (void)_handleAccessoryConnected;
+- (void)_readRequiredTransportCharacteristicsIfNeededWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)_isDataStreamConfigurationValid;
 - (void)handleAccessoryConnected;
 - (void)_resetTransportInfo;
 - (void)handleAccessoryConnected:(id)arg1;
-- (void)registerForMessages;
+- (void)deRegisterFromNotifications;
+- (void)registerForNotifications;
 - (id)initWithAccessory:(id)arg1 service:(id)arg2 workQueue:(id)arg3 dataStreamFactory:(CDUnknownBlockType)arg4;
 - (id)initWithAccessory:(id)arg1 service:(id)arg2 workQueue:(id)arg3;
 

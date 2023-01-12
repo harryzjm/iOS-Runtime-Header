@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     double mDefaultRowHeight;
     OCPPackagePart *mCurrentPart;
     OCPPackagePart *mWorkbookPart;
-    struct map<long, unsigned long, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, unsigned long>>> mSharedFormulasMap;
+    struct map<long, unsigned long, std::less<long>, std::allocator<std::pair<const long, unsigned long>>> mSharedFormulasMap;
     NSMutableArray *mArrayedFormulas;
     EDReference *mSheetDimension;
     EXOfficeArtState *mOfficeArtState;

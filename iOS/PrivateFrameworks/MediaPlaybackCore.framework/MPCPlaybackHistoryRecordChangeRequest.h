@@ -10,6 +10,7 @@
 
 @class MPModelGenericObject, MPModelPlayEvent;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackHistoryRecordChangeRequest : NSObject <NSCopying>
 {
     _Bool _allowsStoreContainerImport;

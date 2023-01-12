@@ -26,6 +26,7 @@
 + (void)presentHostedIssueControllerWithChallenge:(id)arg1 players:(id)arg2 defaultMessage:(id)arg3;
 + (id)presentationQueue;
 + (id)hostedIssueControllerWithChallenge:(id)arg1 players:(id)arg2 defaultMessage:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType receivedRemoteHandler; // @synthesize receivedRemoteHandler=_receivedRemoteHandler;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;

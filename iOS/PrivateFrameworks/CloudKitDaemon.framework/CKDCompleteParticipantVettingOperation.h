@@ -7,7 +7,6 @@
 @class CKShareMetadata, NSData, NSString;
 @protocol CKCompleteParticipantVettingOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDCompleteParticipantVettingOperation
 {
     CDUnknownBlockType _verifyProgressURLReconstructedBlock;
@@ -19,7 +18,6 @@ __attribute__((visibility("hidden")))
     NSData *_encryptedKey;
     NSString *_baseToken;
     NSString *_displayedHostname;
-    struct _OpaquePCSShareProtection *_protectionInfo;
     NSString *_shortToken;
     CKShareMetadata *_shareMetadata;
 }
@@ -27,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;
 @property(retain, nonatomic) NSString *shortToken; // @synthesize shortToken=_shortToken;
-@property(nonatomic) struct _OpaquePCSShareProtection *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
 @property(readonly, nonatomic) NSString *displayedHostname; // @synthesize displayedHostname=_displayedHostname;
 @property(readonly, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
 @property(readonly, nonatomic) NSData *encryptedKey; // @synthesize encryptedKey=_encryptedKey;
@@ -37,7 +34,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *vettingToken; // @synthesize vettingToken=_vettingToken;
 @property(copy, nonatomic) CDUnknownBlockType verifyProgressShareMetadataFetchedBlock; // @synthesize verifyProgressShareMetadataFetchedBlock=_verifyProgressShareMetadataFetchedBlock;
 @property(copy, nonatomic) CDUnknownBlockType verifyProgressURLReconstructedBlock; // @synthesize verifyProgressURLReconstructedBlock=_verifyProgressURLReconstructedBlock;
-- (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (void)_verifyOONParticipant;
 - (void)_reconstructShareURL;
@@ -49,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKCompleteParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

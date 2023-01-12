@@ -14,15 +14,19 @@
 {
     struct GEOSessionID _navSessionId;
     struct GEOSessionID _sessionId;
+    double _ageOfSessionIdInSeconds;
     GEOLocalTime *_eventTime;
     double _navSessionRelativeTimestamp;
     double _relativeTimestamp;
+    unsigned long long _sessionEpoch;
     unsigned int _sequenceNumber;
     struct {
         unsigned int has_navSessionId:1;
         unsigned int has_sessionId:1;
+        unsigned int has_ageOfSessionIdInSeconds:1;
         unsigned int has_navSessionRelativeTimestamp:1;
         unsigned int has_relativeTimestamp:1;
+        unsigned int has_sessionEpoch:1;
         unsigned int has_sequenceNumber:1;
     } _flags;
 }
@@ -42,6 +46,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAgeOfSessionIdInSeconds;
+@property(nonatomic) double ageOfSessionIdInSeconds;
+@property(nonatomic) _Bool hasSessionEpoch;
+@property(nonatomic) unsigned long long sessionEpoch;
 @property(retain, nonatomic) GEOLocalTime *eventTime;
 @property(readonly, nonatomic) _Bool hasEventTime;
 @property(nonatomic) _Bool hasNavSessionRelativeTimestamp;

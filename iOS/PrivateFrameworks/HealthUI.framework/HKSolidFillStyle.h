@@ -14,7 +14,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) UIColor *color; // @synthesize color=_color;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_renderInContext:(struct CGContext *)arg1 size:(struct CGSize)arg2;
+- (void)renderPath:(struct CGPath *)arg1 context:(struct CGContext *)arg2 axisRect:(struct CGRect)arg3 alpha:(double)arg4;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class FigCaptureSemanticStyle, NSArray;
 
 @interface FigCaptureVideoPreviewSinkConfiguration
 {
@@ -13,6 +13,8 @@
     NSArray *_filters;
     float _simulatedAperture;
     float _portraitLightingEffectStrength;
+    _Bool _semanticStyleRenderingEnabled;
+    FigCaptureSemanticStyle *_semanticStyle;
     _Bool _primaryCaptureRectModificationEnabled;
     double _primaryCaptureRectAspectRatio;
     struct CGPoint _primaryCaptureRectCenter;
@@ -23,6 +25,8 @@
 @property(nonatomic) struct CGPoint primaryCaptureRectCenter; // @synthesize primaryCaptureRectCenter=_primaryCaptureRectCenter;
 @property(nonatomic) double primaryCaptureRectAspectRatio; // @synthesize primaryCaptureRectAspectRatio=_primaryCaptureRectAspectRatio;
 @property(nonatomic) _Bool primaryCaptureRectModificationEnabled; // @synthesize primaryCaptureRectModificationEnabled=_primaryCaptureRectModificationEnabled;
+@property(retain, nonatomic) FigCaptureSemanticStyle *semanticStyle; // @synthesize semanticStyle=_semanticStyle;
+@property(nonatomic) _Bool semanticStyleRenderingEnabled; // @synthesize semanticStyleRenderingEnabled=_semanticStyleRenderingEnabled;
 @property(nonatomic) float portraitLightingEffectStrength; // @synthesize portraitLightingEffectStrength=_portraitLightingEffectStrength;
 @property(nonatomic) float simulatedAperture; // @synthesize simulatedAperture=_simulatedAperture;
 @property(copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;

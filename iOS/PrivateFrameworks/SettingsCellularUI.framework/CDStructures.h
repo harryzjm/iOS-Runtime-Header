@@ -25,3 +25,10 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    _Bool fFeatureEnabled;
+    _Bool fUserEnabled;
+} CDStruct_7152cabe;
+

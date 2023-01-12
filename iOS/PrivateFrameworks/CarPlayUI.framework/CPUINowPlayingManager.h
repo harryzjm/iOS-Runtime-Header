@@ -35,7 +35,6 @@
 - (_Bool)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
 - (void)performCommandRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setNeedsReload;
 - (void)removeNowPlayingObserver:(id)arg1;
 - (void)addNowPlayingObserver:(id)arg1;
 - (void)dealloc;

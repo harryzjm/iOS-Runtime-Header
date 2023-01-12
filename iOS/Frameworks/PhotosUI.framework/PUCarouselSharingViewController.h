@@ -153,6 +153,7 @@
 - (void)_handleTapInMainCollectionView:(id)arg1;
 - (void)_handleTapAtIndexPath:(id)arg1;
 - (void)_playLivePhotoHintIfNeededAtIndexPath:(id)arg1;
+- (void)_arrowKey:(id)arg1;
 - (void)_handleSelectionOption:(id)arg1;
 @property(readonly, nonatomic) NSString *localizedSelectionTitle;
 - (void)_updateOptionView:(id)arg1 atIndexPath:(id)arg2;

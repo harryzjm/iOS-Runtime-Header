@@ -28,21 +28,10 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(nonatomic) double currentTimerValue; // @synthesize currentTimerValue=_currentTimerValue;
-@property(nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
-@property(retain, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
-@property(readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property(readonly, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
-@property(readonly, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) __weak id <HMDSharedHomeUpdateSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 - (id)dumpState;
-- (void)_callDelegate;
 - (void)timerDidFire:(id)arg1;
-- (void)startTimer;
-- (void)_requestDataSync;
-- (id)_selectResident;
 - (void)requestDataSync;
 @property(readonly, nonatomic) NSString *homeIdentifier;
 @property(readonly, copy) NSString *description;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKApplyController, PKPaymentInstallmentConfiguration;
+@class NSMutableArray, PKAccount, PKApplyController, PKPaymentInstallmentConfiguration;
 
 @interface PKFeatureOnBoardingViewController
 {
@@ -12,11 +12,27 @@
     PKApplyController *_applyController;
     _Bool _isMainFeatureOnboardingPage;
     _Bool _useCompactLayout;
+    unsigned long long _layout;
+    _Bool _didBeginOnboardingSubject;
+    PKAccount *_defaultFeatureAccount;
+    _Bool _fetchedDefaultFeatureAccount;
+    long long _onboardingContext;
+    NSMutableArray *_defaultFeatureAccountCompletions;
     PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
+- (void)_endReportingIfNecessary;
+- (void)_beginReportingIfNecessary;
+- (void)_defaultFeatureAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_defaultFeatureAccountAnalyticsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_reportAnalyticsSubject:(id)arg1 withPartialEventDictionary:(id)arg2;
+- (id)_analyticsPartialEventDictionaryForButtonTapWithButtonTagKey:(id)arg1;
+- (void)_reportRatesAndTermsTapped;
+- (void)_reportCancelTapped;
+- (void)_reportContinueTapped;
+- (void)_openSecondaryActionItem;
 - (void)_openTermsAndConditions;
 - (void)_checkSecurityCapabilities:(unsigned long long)arg1 nextStep:(CDUnknownBlockType)arg2;
 - (void)_handleApplyFlowWithCompletion:(CDUnknownBlockType)arg1;
@@ -24,8 +40,16 @@
 - (id)nextOnboardingViewControllerWithPage:(id)arg1 product:(id)arg2;
 - (void)handleProductAvailable;
 - (void)handleSetupLater;
+- (void)_reportAnalyticsViewDidAppear:(_Bool)arg1;
+- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
+- (void)explanationViewDidUpdateLayout:(id)arg1;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
+- (void)updateForHeroImage;
+- (void)didMoveToParentViewController:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithParentFlowController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 featureIdentifier:(unsigned long long)arg4 provisioningController:(id)arg5 paymentSetupProduct:(id)arg6 currentPage:(id)arg7;
+- (id)initWithParentFlowController:(id)arg1 setupDelegate:(id)arg2 setupContext:(long long)arg3 onboardingContext:(long long)arg4 featureIdentifier:(unsigned long long)arg5 provisioningController:(id)arg6 paymentSetupProduct:(id)arg7 currentPage:(id)arg8;
 
 @end
 

@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, NSUUID, WBSCloudTab, WebBookmark, _SFTabStateData, _WKActivatedElementInfo;
+@class NSArray, NSDictionary, NSString, NSURL, NSUUID, UIEventAttribution, WBSCloudTab, WebBookmark, _SFTabStateData, _WKActivatedElementInfo;
 
 @interface _SFNavigationIntent : NSObject
 {
     id _value;
+    _Bool _shouldPromptBeforeHandling;
     _Bool _shouldRelateToSourceTab;
+    _Bool _neverPromptWhenOpeningMultipleIntents;
     unsigned long long _type;
     long long _policy;
     long long _provenance;
@@ -22,11 +24,13 @@
 
 + (long long)defaultTabOrder;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool neverPromptWhenOpeningMultipleIntents; // @synthesize neverPromptWhenOpeningMultipleIntents=_neverPromptWhenOpeningMultipleIntents;
 @property(nonatomic) _Bool shouldRelateToSourceTab; // @synthesize shouldRelateToSourceTab=_shouldRelateToSourceTab;
 @property(retain, nonatomic) _WKActivatedElementInfo *sourceElementInfo; // @synthesize sourceElementInfo=_sourceElementInfo;
 @property(retain, nonatomic) NSUUID *sourceWindowUUID; // @synthesize sourceWindowUUID=_sourceWindowUUID;
 @property(retain, nonatomic) NSUUID *sourceTabUUID; // @synthesize sourceTabUUID=_sourceTabUUID;
 @property(nonatomic) long long provenance; // @synthesize provenance=_provenance;
+@property(readonly, nonatomic) _Bool shouldPromptBeforeHandling; // @synthesize shouldPromptBeforeHandling=_shouldPromptBeforeHandling;
 @property(nonatomic) long long policy; // @synthesize policy=_policy;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) _Bool externalURLSourceApplicationIsSpotlight;
@@ -37,6 +41,7 @@
 @property(readonly, nonatomic) _Bool shouldOrderToForeground;
 @property(readonly, copy, nonatomic) NSArray *navigationIntents;
 @property(readonly, copy, nonatomic) NSDictionary *externalOptions;
+@property(readonly, nonatomic) UIEventAttribution *eventAttribution;
 @property(readonly, copy, nonatomic) NSString *text;
 @property(readonly, copy, nonatomic) NSURL *URL;
 @property(readonly, nonatomic) WBSCloudTab *cloudTab;

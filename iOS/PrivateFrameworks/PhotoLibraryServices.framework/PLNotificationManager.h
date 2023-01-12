@@ -22,7 +22,8 @@
     PLNotificationUNCenter *_UNCenter;
 }
 
-+ (id)_bestDateForDeliveringNotificationWithError:(id *)arg1;
++ (id)_bestDateForDeliveringNotificationFromCoreDuetWithError:(id *)arg1;
++ (id)_bestDateForDeliveringNotification;
 + (id)_notificationDeliveryDate;
 + (id)filteredAlbumListForContentMode:(int)arg1 library:(id)arg2;
 + (id)sharedManager;
@@ -55,7 +56,7 @@
 - (void)_deleteNotificationsForObjectWithUUID:(id)arg1 notificationDictionaryKey:(id)arg2 notificationTypes:(id)arg3;
 - (void)removeNotificationForInterestingMemoryWithUUID:(id)arg1;
 - (void)postNotificationForInterestingMemoryWithMemoryUUID:(id)arg1 library:(id)arg2 notificationDeliveryDate:(id)arg3;
-- (id)_generateMemoryNotificationRepresentationWithMemoryUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4 notificationDeliveryDate:(id)arg5;
+- (id)_generateMemoryNotificationRepresentationWithMemoryUUID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4 notificationDeliveryDate:(id)arg5 pathManager:(id)arg6;
 - (id)_memoryNotificationFromDictionaryRepresentation:(id)arg1;
 - (void)userViewedNotificationWithAlbumCloudGUID:(id)arg1;
 - (void)noteUserDidChangeStatusForMomentShare:(id)arg1 photoLibrary:(id)arg2;

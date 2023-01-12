@@ -12,6 +12,7 @@
 - (NSString *)sectionIdentifier;
 
 @optional
+- (NSString *)sectionBundlePath;
 - (NSString *)parentSectionIdentifier;
 - (NSData *)sectionIconData;
 - (BBSectionIcon *)sectionIcon;

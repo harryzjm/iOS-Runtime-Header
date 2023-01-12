@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSNumber, NSString, UIImage;
+@class NSData, NSDate, NSNumber, NSString, UIImage;
 
 @interface PXImageAsset : NSObject <PXDisplayAsset>
 {
@@ -31,6 +31,9 @@
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
 @property(readonly, nonatomic) NSDate *localCreationDate;
 @property(readonly, nonatomic) NSDate *creationDate;
+@property(readonly, nonatomic) struct CGRect faceAreaRect;
+@property(readonly, nonatomic) struct CGRect acceptableCropRect;
+@property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) long long mediaType;
 - (id)initWithImage:(id)arg1;
@@ -41,10 +44,12 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) NSData *fetchColorNormalizationData;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) long long playbackVariation;

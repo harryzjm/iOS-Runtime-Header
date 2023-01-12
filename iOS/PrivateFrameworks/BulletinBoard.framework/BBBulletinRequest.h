@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBContent, BBImage, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSSet, NSString, NSTimeZone;
+@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBCommunicationContext, BBContent, BBImage, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSSet, NSString, NSTimeZone;
 
 @interface BBBulletinRequest
 {
@@ -46,7 +46,9 @@
 @property(copy, nonatomic) NSArray *buttons; // @dynamic buttons;
 @property(copy, nonatomic) NSString *categoryID; // @dynamic categoryID;
 @property(nonatomic) _Bool clearable; // @dynamic clearable;
+@property(retain, nonatomic) BBCommunicationContext *communicationContext; // @dynamic communicationContext;
 @property(nonatomic) long long contentPreviewSetting; // @dynamic contentPreviewSetting;
+@property(copy, nonatomic) NSString *contentType; // @dynamic contentType;
 @property(retain, nonatomic) NSDictionary *context; // @dynamic context;
 @property(nonatomic) unsigned long long counter; // @dynamic counter;
 @property(retain, nonatomic) NSDate *date; // @dynamic date;
@@ -55,17 +57,21 @@
 @property(copy, nonatomic) BBAction *defaultAction; // @dynamic defaultAction;
 @property(copy, nonatomic) BBAction *dismissAction; // @dynamic dismissAction;
 @property(copy, nonatomic) NSString *dismissalID; // @dynamic dismissalID;
+@property(nonatomic) _Bool displaysActionsInline; // @dynamic displaysActionsInline;
 @property(retain, nonatomic) NSDate *endDate; // @dynamic endDate;
 @property(retain, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 @property(copy, nonatomic) BBAction *expireAction; // @dynamic expireAction;
 @property(nonatomic) _Bool expiresOnPublisherDeath; // @dynamic expiresOnPublisherDeath;
+@property(copy, nonatomic) NSString *footer; // @dynamic footer;
 @property(nonatomic) _Bool hasCriticalIcon; // @dynamic hasCriticalIcon;
 @property(nonatomic) _Bool hasEventDate; // @dynamic hasEventDate;
+@property(nonatomic) _Bool hasSubordinateIcon; // @dynamic hasSubordinateIcon;
 @property(copy, nonatomic) NSString *header; // @dynamic header;
 @property(retain, nonatomic) BBSectionIcon *icon; // @dynamic icon;
 @property(nonatomic) _Bool ignoresDowntime; // @dynamic ignoresDowntime;
 @property(nonatomic) _Bool ignoresQuietMode; // @dynamic ignoresQuietMode;
 @property(copy, nonatomic) NSArray *intentIDs; // @dynamic intentIDs;
+@property(nonatomic) unsigned long long interruptionLevel; // @dynamic interruptionLevel;
 @property(retain, nonatomic) NSDate *lastInterruptDate; // @dynamic lastInterruptDate;
 @property(nonatomic, getter=isLoading) _Bool loading; // @dynamic loading;
 @property(nonatomic) long long lockScreenPriority; // @dynamic lockScreenPriority;
@@ -82,7 +88,9 @@
 @property(nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property(retain, nonatomic) NSDate *recencyDate; // @dynamic recencyDate;
 @property(copy, nonatomic) NSString *recordID; // @dynamic recordID;
+@property(nonatomic) float relevanceScore; // @dynamic relevanceScore;
 @property(copy, nonatomic) NSString *section; // @dynamic section;
+@property(copy, nonatomic) NSString *sectionBundlePath; // @dynamic sectionBundlePath;
 @property(copy, nonatomic) NSString *sectionID; // @dynamic sectionID;
 @property(nonatomic) long long sectionSubtype; // @dynamic sectionSubtype;
 @property(copy, nonatomic) BBAction *silenceAction; // @dynamic silenceAction;

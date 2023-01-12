@@ -6,13 +6,14 @@
 
 #import <UIKit/UIButton.h>
 
-@class ICTrackedParagraph;
+@class ICTrackedParagraph, UIColor;
 
 @interface ICTodoButton : UIButton
 {
     _Bool _done;
     _Bool _trackedParagraphIsRTL;
     ICTrackedParagraph *_trackedParagraph;
+    UIColor *_highlightColor;
     struct CGSize _defaultSize;
     struct CGSize _defaultImageSize;
 }
@@ -21,15 +22,19 @@
 @property(nonatomic) _Bool trackedParagraphIsRTL; // @synthesize trackedParagraphIsRTL=_trackedParagraphIsRTL;
 @property(nonatomic) struct CGSize defaultImageSize; // @synthesize defaultImageSize=_defaultImageSize;
 @property(nonatomic) struct CGSize defaultSize; // @synthesize defaultSize=_defaultSize;
+@property(copy, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property(nonatomic) __weak ICTrackedParagraph *trackedParagraph; // @synthesize trackedParagraph=_trackedParagraph;
 @property(nonatomic, getter=isDone) _Bool done; // @synthesize done=_done;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (id)debugDescription;
 - (void)setDone:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)init;
+- (id)_icaxParentUITextView;
+- (id)icaxCorrespondingParagraphText;
 - (void)setFrame:(struct CGRect)arg1 leftToRight:(_Bool)arg2;
 - (struct CGRect)imageFrame;
+- (void)updateTintColor;
 - (void)updateImagesAnimated:(_Bool)arg1;
 - (id)imageForChecked:(_Bool)arg1 withHighlight:(_Bool)arg2;
 - (void)wasPressed;

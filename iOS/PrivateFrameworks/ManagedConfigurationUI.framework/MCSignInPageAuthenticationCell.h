@@ -8,7 +8,6 @@
 
 @class UIView;
 
-__attribute__((visibility("hidden")))
 @interface MCSignInPageAuthenticationCell : UITableViewCell
 {
     UIView *_authView;

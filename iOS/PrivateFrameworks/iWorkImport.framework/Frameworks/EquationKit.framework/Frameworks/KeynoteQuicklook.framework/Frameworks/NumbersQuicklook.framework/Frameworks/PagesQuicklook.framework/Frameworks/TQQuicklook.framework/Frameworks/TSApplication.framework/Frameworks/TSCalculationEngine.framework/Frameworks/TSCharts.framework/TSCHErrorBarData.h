@@ -6,27 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCHChartSeries;
 
-@interface TSCHErrorBarData : NSObject <TSCHUnretainedParent>
+@interface TSCHErrorBarData : NSObject
 {
-    TSCHChartSeries *mSeries;
-    _Bool mSupportsXAxisBars;
-    double mMaxValue;
-    double mMinValue;
-    long long mMaxValueGroupIndex;
-    long long mMinValueGroupIndex;
-    double mMaxValueScatterX;
-    double mMinValueScatterX;
-    double mStandardError;
-    double mStandardDeviation;
-    double mStandardDeviationMean;
-    double mStandardErrorScatterX;
-    double mStandardDeviationScatterX;
-    double mStandardDeviationMeanScatterX;
-    _Bool mErrorBarsInvalid;
+    TSCHChartSeries *_series;
+    _Bool _supportsXAxisBars;
+    double _maxValue;
+    double _minValue;
+    long long _maxValueGroupIndex;
+    long long _minValueGroupIndex;
+    double _maxValueScatterX;
+    double _minValueScatterX;
+    double _standardError;
+    double _standardDeviation;
+    double _standardDeviationMean;
+    double _standardErrorScatterX;
+    double _standardDeviationScatterX;
+    double _standardDeviationMeanScatterX;
+    _Bool _errorBarsInvalid;
 }
 
 + (long long)p_errorBarSettingForSeries:(id)arg1 useXAxis:(_Bool)arg2 axisID:(id)arg3;
@@ -34,8 +32,8 @@
 + (_Bool)errorBarIsVerticalForAxisID:(id)arg1 series:(id)arg2;
 + (_Bool)hasErrorBarsForSeries:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long minValueGroupIndex; // @synthesize minValueGroupIndex=mMinValueGroupIndex;
-@property(readonly, nonatomic) long long maxValueGroupIndex; // @synthesize maxValueGroupIndex=mMaxValueGroupIndex;
+@property(readonly, nonatomic) long long minValueGroupIndex; // @synthesize minValueGroupIndex=_minValueGroupIndex;
+@property(readonly, nonatomic) long long maxValueGroupIndex; // @synthesize maxValueGroupIndex=_maxValueGroupIndex;
 - (struct CGPoint)p_getValuePointForGroupIndex:(unsigned long long)arg1 inputAxis:(id)arg2 inputAxisContinuous:(_Bool)arg3 outputAxis:(id)arg4 barVertical:(_Bool)arg5;
 - (void)p_updateDataForAxisID:(id)arg1;
 - (void)p_updateMinMaxForStackedPercentageAxis:(id)arg1 forValues:(double *)arg2 withOffsets:(double *)arg3 numberOfModelValues:(unsigned long long)arg4;
@@ -68,7 +66,6 @@
 - (id)strokeForAxisID:(id)arg1;
 - (float)opacityForAxisID:(id)arg1;
 - (_Bool)showErrorBarsForAxisID:(id)arg1;
-- (void)clearParent;
 - (id)initWithSeries:(id)arg1;
 
 @end

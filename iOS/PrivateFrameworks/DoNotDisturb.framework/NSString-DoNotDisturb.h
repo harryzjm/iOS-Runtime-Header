@@ -7,6 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (DoNotDisturb)
-- (id)dnds_privacyObfuscatedString;
+- (id)dnd_privacyObfuscatedString;
 @end
 

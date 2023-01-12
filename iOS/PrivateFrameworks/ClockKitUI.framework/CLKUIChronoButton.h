@@ -21,6 +21,8 @@
     struct UIEdgeInsets _touchEdgeInsets;
 }
 
++ (id)_ringImageWithRadius:(double)arg1 lineThickness:(double)arg2;
++ (id)_fillImageWithRadius:(double)arg1 lineThickness:(double)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) struct UIEdgeInsets touchEdgeInsets; // @synthesize touchEdgeInsets=_touchEdgeInsets;
 @property(retain, nonatomic) UIColor *ringSwapColor; // @synthesize ringSwapColor=_ringSwapColor;
@@ -34,6 +36,9 @@
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
 - (void)setEnabled:(_Bool)arg1;
+- (void)_setupImagesWithDiameter:(double)arg1 lineThickness:(double)arg2;
+- (id)initWithDiameter:(double)arg1 lineThickness:(double)arg2;
+- (id)initWithDiameter:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

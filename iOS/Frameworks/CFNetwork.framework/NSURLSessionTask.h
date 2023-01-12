@@ -9,8 +9,8 @@
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSProgressReporting-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSError, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionEffectiveConfiguration, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator, NSUUID, __CFN_TaskMetrics, __CFN_TransactionMetrics;
-@protocol NSURLSessionAppleIDContext, OS_dispatch_queue, OS_nw_activity, OS_nw_endpoint, OS_voucher, SZExtractor, __NSURLSessionTaskGroupForConfiguration;
+@class NSArray, NSData, NSDate, NSDictionary, NSError, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionConfiguration, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator, NSUUID, __CFN_TaskMetrics, __CFN_TransactionMetrics, __NSCFURLSessionDelegateWrapper;
+@protocol NSURLSessionAppleIDContext, NSURLSessionTaskDelegate, OS_dispatch_queue, OS_nw_activity, OS_nw_endpoint, OS_voucher, SZExtractor, __NSURLSessionTaskGroupForConfiguration;
 
 @interface NSURLSessionTask : NSObject <NSCopying, NSProgressReporting>
 {
@@ -30,6 +30,7 @@
     _Bool _preventsAppSSO;
     _Bool _appSSOFallback;
     _Bool _appleIDContextRedirect;
+    _Bool _proxyHandshakePending;
     _Bool _shouldPipelineHTTP;
     _Bool _shouldUsePipelineHeuristics;
     _Bool _shouldSkipPipelineProbe;
@@ -48,9 +49,12 @@
     _Bool _authenticatorConfiguredViaTaskProperty;
     _Bool _isTopLevelNavigation;
     _Bool _disallowCellular;
-    _Bool _knownHTTP3Capable;
+    _Bool _assumesHTTP3Capable;
     _Bool _preconnect;
     _Bool _prefersIncrementalDeliveryAPIStorage;
+    _Bool _isKnownTracker;
+    _Bool _privacyProxyFailClosed;
+    _Bool _callCompletionHandlerInline;
     unsigned short __TLSMinimumSupportedProtocolVersion;
     unsigned short __TLSMaximumSupportedProtocolVersion;
     unsigned short _TLSNegotiatedCipherSuite;
@@ -118,7 +122,7 @@
     CDUnknownBlockType _httpConnectionInfoCompletionBlock;
     NSObject<OS_nw_endpoint> *_hostOverride;
     id <__NSURLSessionTaskGroupForConfiguration> __taskGroup;
-    NSURLSessionEffectiveConfiguration *_effectiveConfiguration;
+    NSURLSessionConfiguration *_effectiveConfiguration;
     NSDate *earliestBeginDate;
     NSProgress *_progress;
     __CFN_TaskMetrics *_metrics;
@@ -132,20 +136,31 @@
     double _timeWindowDelay;
     double _timeWindowDuration;
     NSString *_boundInterfaceIdentifier;
+    __NSCFURLSessionDelegateWrapper *_publicDelegateWrapper;
+    __NSCFURLSessionDelegateWrapper *_internalDelegateWrapper;
     NSArray *_resolvedCNAMEChain;
     CDUnknownBlockType _cookieTransformCallback;
+    unsigned long long _attribution;
+    NSString *_trackerContext;
+    NSData *_backtrace;
 }
 
 + (id)new;
+@property(nonatomic) _Bool _callCompletionHandlerInline; // @synthesize _callCompletionHandlerInline;
+@property(retain, nonatomic) NSData *_backtrace; // @synthesize _backtrace;
+@property _Bool _privacyProxyFailClosed; // @synthesize _privacyProxyFailClosed;
+@property(copy) NSString *_trackerContext; // @synthesize _trackerContext;
+@property _Bool _isKnownTracker; // @synthesize _isKnownTracker;
+@property unsigned long long _attribution; // @synthesize _attribution;
 @property(copy, nonatomic) CDUnknownBlockType _cookieTransformCallback; // @synthesize _cookieTransformCallback;
 @property(readonly, nonatomic) NSArray *_resolvedCNAMEChain; // @synthesize _resolvedCNAMEChain;
-@property _Bool _knownHTTP3Capable; // @synthesize _knownHTTP3Capable;
+@property _Bool _assumesHTTP3Capable; // @synthesize _assumesHTTP3Capable;
 @property(copy) NSDictionary *_cachedSocketStreamProperties; // @synthesize _cachedSocketStreamProperties;
 @property(retain) NSObject<OS_nw_activity> *_private_nw_activity; // @synthesize _private_nw_activity;
 @property(retain) NSObject<OS_nw_activity> *_nw_activity; // @synthesize _nw_activity;
 @property(retain) __CFN_TaskMetrics *_metrics; // @synthesize _metrics;
 @property(copy) NSDate *earliestBeginDate; // @synthesize earliestBeginDate;
-@property(copy, nonatomic) NSURLSessionEffectiveConfiguration *_effectiveConfiguration; // @synthesize _effectiveConfiguration;
+@property(copy, nonatomic) NSURLSessionConfiguration *_effectiveConfiguration; // @synthesize _effectiveConfiguration;
 @property(readonly, retain) id <__NSURLSessionTaskGroupForConfiguration> _taskGroup; // @synthesize _taskGroup=__taskGroup;
 @property(retain, nonatomic) NSObject<OS_nw_endpoint> *_hostOverride; // @synthesize _hostOverride;
 @property(copy, nonatomic) CDUnknownBlockType _httpConnectionInfoCompletionBlock; // @synthesize _httpConnectionInfoCompletionBlock;
@@ -192,6 +207,7 @@
 @property _Bool _shouldUsePipelineHeuristics; // @synthesize _shouldUsePipelineHeuristics;
 @property _Bool _shouldPipelineHTTP; // @synthesize _shouldPipelineHTTP;
 @property(copy) NSDictionary *_sslSettings; // @synthesize _sslSettings;
+@property _Bool _proxyHandshakePending; // @synthesize _proxyHandshakePending;
 @property(copy) NSDictionary *_proxySettings; // @synthesize _proxySettings;
 @property double _timeoutInterval; // @synthesize _timeoutInterval;
 @property unsigned long long _cachePolicy; // @synthesize _cachePolicy;
@@ -245,7 +261,7 @@
 - (_Bool)shouldHandleCookiesAndSchemeIsAppropriate;
 - (void)_setExplicitCookieStorage:(struct OpaqueCFHTTPCookieStorage *)arg1;
 - (void)_setExplicitStorageSession:(struct __CFURLStorageSession *)arg1;
-- (void)_setConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
+- (void)_setConnectionCacheKey:(void *)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (const struct XCookieStorage *)_createXCookieStorage;
@@ -258,6 +274,7 @@
 - (const struct __CFDictionary *)_copySocketStreamProperties;
 - (long long)computeAdjustedPoolPriority;
 @property(copy) NSDictionary *_legacySocketStreamProperties; // @synthesize _legacySocketStreamProperties;
+@property(nonatomic) _Bool _keepDownloadTaskFile;
 - (void)set_resolvedCNAMEChain:(id)arg1;
 @property int _networkServiceType; // @synthesize _networkServiceType;
 @property int _allowsCellularOverride; // @synthesize _allowsCellularOverride;
@@ -280,6 +297,8 @@
 - (void)_onqueue_adjustPriorityHint:(float)arg1 incremental:(_Bool)arg2;
 @property _Bool prefersIncrementalDelivery;
 @property float priority;
+@property(retain, nonatomic) id <NSURLSessionTaskDelegate> _internalDelegate;
+@property(retain) id <NSURLSessionTaskDelegate> delegate;
 @property(readonly, retain) NSObject<OS_dispatch_queue> *workQueue;
 - (void)resume;
 - (void)suspend;
@@ -288,6 +307,7 @@
 @property(copy) NSUUID *_uniqueIdentifier; // @synthesize _uniqueIdentifier;
 @property unsigned long long taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSString *_description;
 - (id)initWithTask:(id)arg1;
 - (id)initWithOriginalRequest:(id)arg1 ident:(unsigned long long)arg2 taskGroup:(id)arg3;
 - (void)_onqueue_adoptEffectiveConfiguration:(id)arg1;
@@ -295,6 +315,7 @@
 - (void)_didSendMetrics;
 - (_Bool)_needSendingMetrics;
 @property(readonly, nonatomic) _Bool _isAVAssetTask;
+- (void)didReceiveInformationalResponse:(id)arg1;
 - (void)_onqueue_expectedProgressTargetChanged;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 @property(readonly, retain) NSURLSession *session;

@@ -17,17 +17,22 @@
     unsigned int _engagedCount;
     unsigned int _evaluatedCount;
     unsigned int _k;
+    NSString *_mappingId;
+    unsigned int _offeredCount;
     unsigned int _rejectedCount;
     struct {
         unsigned int domain:1;
         unsigned int engagedCount:1;
         unsigned int evaluatedCount:1;
         unsigned int k:1;
+        unsigned int offeredCount:1;
         unsigned int rejectedCount:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *mappingId; // @synthesize mappingId=_mappingId;
+@property(nonatomic) unsigned int offeredCount; // @synthesize offeredCount=_offeredCount;
 @property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 @property(nonatomic) unsigned int rejectedCount; // @synthesize rejectedCount=_rejectedCount;
 @property(nonatomic) unsigned int engagedCount; // @synthesize engagedCount=_engagedCount;
@@ -42,6 +47,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasMappingId;
+@property(nonatomic) _Bool hasOfferedCount;
 @property(readonly, nonatomic) _Bool hasActiveTreatments;
 - (int)StringAsDomain:(id)arg1;
 - (id)domainAsString:(int)arg1;

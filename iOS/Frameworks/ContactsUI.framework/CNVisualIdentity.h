@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSArray *_contacts;
     NSArray *_linkedContacts;
     long long _identityType;
+    NSData *_memojiMetadata;
     struct CGRect _cropRect;
 }
 
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 + (id)descriptorForRequiredKeys;
 + (id)log;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *memojiMetadata; // @synthesize memojiMetadata=_memojiMetadata;
 @property(nonatomic) long long identityType; // @synthesize identityType=_identityType;
 @property(retain, nonatomic) NSArray *linkedContacts; // @synthesize linkedContacts=_linkedContacts;
 @property(retain, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;

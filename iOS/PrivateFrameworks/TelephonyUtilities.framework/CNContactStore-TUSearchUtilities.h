@@ -6,15 +6,25 @@
 
 #import <Contacts/CNContactStore.h>
 
+#import <TelephonyUtilities/TUContactProvider-Protocol.h>
 #import <TelephonyUtilities/TUContactsDataSource-Protocol.h>
 
 @class NSString;
 
-@interface CNContactStore (TUSearchUtilities) <TUContactsDataSource>
+@interface CNContactStore (TUSearchUtilities) <TUContactsDataSource, TUContactProvider>
++ (id)tu_contactStore;
++ (_Bool)tu_isAuthorized;
++ (long long)tu_authorizationStatus;
 - (id)contactForDestinationId:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactForDestinationId:(id)arg1;
 - (id)contactForIdentifier:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactForIdentifier:(id)arg1;
+- (id)tu_enumeratorForChangeHistoryFetchRequest:(id)arg1 error:(id *)arg2;
+- (id)tu_contactsByHandleForHandles:(id)arg1 keyDescriptors:(id)arg2 error:(id *)arg3;
+- (id)tu_contactsForHandles:(id)arg1 keyDescriptors:(id)arg2 error:(id *)arg3;
+- (id)tu_contactsByContactHandleForContactHandles:(id)arg1 keyDescriptors:(id)arg2 error:(id *)arg3;
+- (id)tu_contactsForContactHandles:(id)arg1 keyDescriptors:(id)arg2 error:(id *)arg3;
+- (id)tu_contactHandlesForHandle:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

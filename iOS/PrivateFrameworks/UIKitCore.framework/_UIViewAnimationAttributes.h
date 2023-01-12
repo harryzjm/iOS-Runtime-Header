@@ -13,6 +13,8 @@
     double _duration;
     double _delay;
     unsigned long long _options;
+    struct CAFrameRateRange _preferredFrameRateRange;
+    unsigned int _updateReason;
     _Bool _hasSpringAttributes;
     double _springDamping;
     double _springVelocity;
@@ -28,6 +30,8 @@
 @property(readonly, nonatomic, getter=_hasSpringAttributes) _Bool hasSpringAttributes; // @synthesize hasSpringAttributes=_hasSpringAttributes;
 @property(readonly, nonatomic, getter=_delay) double delay; // @synthesize delay=_delay;
 @property(readonly, nonatomic, getter=_duration) double duration; // @synthesize duration=_duration;
+@property(readonly, nonatomic, getter=_updateReason) unsigned int updateReason;
+@property(readonly, nonatomic, getter=_preferredFrameRateRange) struct CAFrameRateRange preferredFrameRateRange;
 @property(readonly, nonatomic, getter=_frameInterval) double frameInterval;
 @property(readonly, nonatomic, getter=_curve) long long curve;
 - (void)encodeWithCoder:(id)arg1;

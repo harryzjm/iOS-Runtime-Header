@@ -15,22 +15,29 @@
     NSMutableOrderedSet *_recentActions;
     NSMutableSet *_accumulators;
     unsigned long long _maxDepth;
+    _Bool _trackingDuration;
+    unsigned long long _beginTimestamp;
     id <UITextInputSessionActionAnalyticsDelegateSource> _delegateSource;
 }
 
 + (void)q_notifyEndingObserversWithSessionAnalytics:(id)arg1;
++ (void)q_notifyStartingObservers;
 + (void)removeEndingObserver:(id)arg1;
 + (void)addEndingObserver:(id)arg1;
++ (void)removeObserver:(id)arg1;
++ (void)addObserver:(id)arg1;
 + (id)allowedValuesForTextInputSource;
 + (id)stringValueForSource:(long long)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <UITextInputSessionActionAnalyticsDelegateSource> delegateSource; // @synthesize delegateSource=_delegateSource;
+- (void)beginTrackingSessionDurationIfNecessary;
 - (void)didOther;
 - (void)didRedo;
 - (void)didUndo;
 - (void)didChangeToSelection:(struct _NSRange)arg1 relativeRangeBefore:(struct _NSRange)arg2;
 - (void)didDeleteBackward:(unsigned long long)arg1 relativeRangeBefore:(struct _NSRange)arg2;
 - (void)didInsertText:(id)arg1 relativeRangeBefore:(struct _NSRange)arg2;
+- (unsigned long long)_optionsForText:(id)arg1;
 - (void)didBegin;
 - (id)_instanceOfActionClass:(Class)arg1;
 - (void)q_flushRecentActions;

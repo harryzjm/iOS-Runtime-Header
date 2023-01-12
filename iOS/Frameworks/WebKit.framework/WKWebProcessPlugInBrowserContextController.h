@@ -30,6 +30,7 @@
 @property(readonly) WKDOMDocument *mainFrameDocument;
 - (void)dealloc;
 @property __weak id <WKWebProcessPlugInLoadDelegate> loadDelegate;
+@property(readonly, nonatomic) NSString *_groupIdentifier;
 @property(readonly, nonatomic) _Bool _usesNonPersistentWebsiteDataStore;
 @property(nonatomic, setter=_setDefersLoading:) _Bool _defersLoading;
 @property(setter=_setEditingDelegate:) __weak id <WKWebProcessPlugInEditingDelegate> _editingDelegate;

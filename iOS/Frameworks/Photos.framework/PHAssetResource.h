@@ -8,7 +8,7 @@
 
 #import <Photos/PHCPLAssetResource-Protocol.h>
 
-@class NSDate, NSManagedObjectID, NSString, NSURL, PHPhotoLibrary;
+@class NSDate, NSManagedObjectID, NSString, NSURL, PHPhotoLibrary, PLPhotoLibraryPathManagerIdentifier;
 @protocol PLResourceIdentity;
 
 @interface PHAssetResource : NSObject <PHCPLAssetResource>
@@ -20,9 +20,11 @@
     _Bool _locallyAvailable;
     NSDate *_trashedDate;
     _Bool _trashed;
+    _Bool _inCloud;
     PHPhotoLibrary *_photoLibrary;
     CDUnknownBlockType _privateFileLoader;
     _Bool _current;
+    unsigned short _dataStoreClassID;
     unsigned int _orientation;
     long long _type;
     NSString *_assetLocalIdentifier;
@@ -31,7 +33,7 @@
     id <PLResourceIdentity> _backingResourceIdentity;
     NSManagedObjectID *_assetObjectID;
     unsigned long long _cplResourceType;
-    NSString *_libraryID;
+    PLPhotoLibraryPathManagerIdentifier *_libraryID;
 }
 
 + (id)assetResourcesForLivePhoto:(id)arg1;
@@ -42,12 +44,13 @@
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(_Bool)arg2 includeMetadata:(_Bool)arg3;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(_Bool)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
+@property(readonly, nonatomic) PLPhotoLibraryPathManagerIdentifier *libraryID; // @synthesize libraryID=_libraryID;
 @property(readonly, nonatomic, getter=isCurrent) _Bool current; // @synthesize current=_current;
 @property(retain, nonatomic) NSURL *privateFileURL; // @synthesize privateFileURL=_privateFileURL;
 @property(nonatomic, getter=isLocallyAvailable) _Bool locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;
 @property(nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
 @property(nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
+@property(readonly, nonatomic) unsigned short dataStoreClassID; // @synthesize dataStoreClassID=_dataStoreClassID;
 @property(readonly, nonatomic) NSManagedObjectID *assetObjectID; // @synthesize assetObjectID=_assetObjectID;
 @property(readonly, nonatomic) id <PLResourceIdentity> backingResourceIdentity; // @synthesize backingResourceIdentity=_backingResourceIdentity;
 @property(readonly, copy, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
@@ -59,6 +62,7 @@
 - (id)initWithType:(long long)arg1 livePhoto:(id)arg2;
 - (id)initWithResource:(id)arg1 asset:(id)arg2 hasAdjustments:(_Bool)arg3;
 @property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
+@property(readonly, nonatomic, getter=isInCloud) _Bool inCloud;
 @property(readonly, nonatomic) unsigned long long fileSize;
 @property(readonly, nonatomic) long long analysisType;
 @property(readonly, nonatomic, getter=isTrashed) _Bool trashed;

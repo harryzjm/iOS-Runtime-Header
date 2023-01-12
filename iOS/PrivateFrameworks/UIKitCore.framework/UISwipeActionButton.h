@@ -15,6 +15,11 @@ __attribute__((visibility("hidden")))
     UIView *_backgroundView;
 }
 
++ (double)_titleFontWeightForCurrentIdiom;
++ (double)_horizontalPaddingForCurrentIdiom;
++ (double)_maxFontSizeForCurrentIdiom;
++ (double)_minFontSizeForCurrentIdiom;
++ (double)_minScaleFactorForFont:(id)arg1;
 + (id)titleFont;
 + (id)titleFontOfSize:(double)arg1;
 + (double)defaultButtonWidth;
@@ -23,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool autosizes; // @synthesize autosizes=_autosizes;
 @property(retain, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
 @property(retain, nonatomic) UIColor *defaultBackgroundColor; // @synthesize defaultBackgroundColor=_defaultBackgroundColor;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 @property(readonly, nonatomic) double buttonWidth;
 @property(readonly, nonatomic) UIView *sourceView;
 - (void)setHighlighted:(_Bool)arg1;

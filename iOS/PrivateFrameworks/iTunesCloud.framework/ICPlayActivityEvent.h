@@ -10,7 +10,7 @@
 #import <iTunesCloud/NSMutableCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICPlayActivityEnqueuerProperties, ICPlayActivityEventContainerIDs, ICPlayActivityEventItemIDs, NSArray, NSData, NSDate, NSNumber, NSString, NSTimeZone;
+@class ICPlayActivityAudioQualityProperties, ICPlayActivityEnqueuerProperties, ICPlayActivityEventContainerIDs, ICPlayActivityEventItemIDs, NSArray, NSData, NSDate, NSNumber, NSString, NSTimeZone;
 
 @interface ICPlayActivityEvent : NSObject <NSSecureCoding, NSCopying, NSMutableCopying>
 {
@@ -42,6 +42,7 @@
     long long _persistentID;
     NSString *_personalizedContainerID;
     NSNumber *_privateListeningEnabled;
+    NSString *_queueGroupingID;
     unsigned long long _reasonHintType;
     NSData *_recommendationData;
     unsigned long long _repeatPlayMode;
@@ -58,6 +59,12 @@
     NSData *_timedMetadata;
     NSData *_trackInfo;
     long long _version;
+    unsigned long long _audioQualityPreference;
+    unsigned long long _playbackFormatPreference;
+    ICPlayActivityAudioQualityProperties *_targetedAudioQuality;
+    ICPlayActivityAudioQualityProperties *_providedAudioQuality;
+    unsigned long long _sharedActivityGroupSizeCurrent;
+    unsigned long long _sharedActivityGroupSizeMax;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -67,6 +74,12 @@
 @property(readonly, copy, nonatomic) NSString *personalizedContainerID; // @synthesize personalizedContainerID=_personalizedContainerID;
 @property(readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property(readonly, copy, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
+@property(readonly, nonatomic) unsigned long long sharedActivityGroupSizeMax; // @synthesize sharedActivityGroupSizeMax=_sharedActivityGroupSizeMax;
+@property(readonly, nonatomic) unsigned long long sharedActivityGroupSizeCurrent; // @synthesize sharedActivityGroupSizeCurrent=_sharedActivityGroupSizeCurrent;
+@property(readonly, copy, nonatomic) ICPlayActivityAudioQualityProperties *providedAudioQuality; // @synthesize providedAudioQuality=_providedAudioQuality;
+@property(readonly, copy, nonatomic) ICPlayActivityAudioQualityProperties *targetedAudioQuality; // @synthesize targetedAudioQuality=_targetedAudioQuality;
+@property(readonly, nonatomic) unsigned long long playbackFormatPreference; // @synthesize playbackFormatPreference=_playbackFormatPreference;
+@property(readonly, nonatomic) unsigned long long audioQualityPreference; // @synthesize audioQualityPreference=_audioQualityPreference;
 @property(readonly, copy, nonatomic) NSData *trackInfo; // @synthesize trackInfo=_trackInfo;
 @property(readonly, copy, nonatomic) NSData *timedMetadata; // @synthesize timedMetadata=_timedMetadata;
 @property(readonly, nonatomic) long long systemReleaseType; // @synthesize systemReleaseType=_systemReleaseType;
@@ -81,6 +94,7 @@
 @property(readonly, nonatomic) unsigned long long repeatPlayMode; // @synthesize repeatPlayMode=_repeatPlayMode;
 @property(readonly, copy, nonatomic) NSData *recommendationData; // @synthesize recommendationData=_recommendationData;
 @property(readonly, nonatomic) unsigned long long reasonHintType; // @synthesize reasonHintType=_reasonHintType;
+@property(readonly, copy, nonatomic) NSString *queueGroupingID; // @synthesize queueGroupingID=_queueGroupingID;
 @property(readonly, copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
 @property(readonly, nonatomic, getter=isOffline) _Bool offline; // @synthesize offline=_offline;
 @property(readonly, nonatomic) unsigned long long mediaType; // @synthesize mediaType=_mediaType;

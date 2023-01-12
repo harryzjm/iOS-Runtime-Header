@@ -9,15 +9,17 @@
 #import <CoreBluetooth/CBPairingAgentParentDelegate-Protocol.h>
 #import <CoreBluetooth/CBXpcConnectionDelegate-Protocol.h>
 
-@class CBPairingAgent, CBXpcConnection, NSData, NSString;
+@class CBPairingAgent, CBXpcConnection, NSData, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CBManager : NSObject <CBXpcConnectionDelegate, CBPairingAgentParentDelegate>
 {
     CBXpcConnection *_connection;
     CBPairingAgent *_pairingAgent;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSMutableDictionary *_cnxDict;
     _Bool _tccComplete;
     long long _state;
-    long long _authorization;
     NSData *_advertisingAddress;
     long long _advertisingAddressType;
     NSData *_nonConnectableAdvertisingAddress;
@@ -36,9 +38,8 @@
 @property(readonly, nonatomic) long long advertisingAddressType; // @synthesize advertisingAddressType=_advertisingAddressType;
 @property(copy, nonatomic) NSData *advertisingAddress; // @synthesize advertisingAddress=_advertisingAddress;
 @property(nonatomic) _Bool tccComplete; // @synthesize tccComplete=_tccComplete;
-@property(nonatomic) long long authorization; // @synthesize authorization=_authorization;
 @property(nonatomic) long long state; // @synthesize state=_state;
-- (unsigned int)getAppSDKVersion;
+- (_Bool)getCBPrivacySupported;
 - (void)performTCCCheck:(id)arg1;
 - (void)doneWithTCC;
 - (id)peerWithInfo:(id)arg1;
@@ -52,9 +53,20 @@
 - (_Bool)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (void)handlePairingAgentMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handleStateUpdatedMsg:(id)arg1;
-- (id)sendSyncMsg:(unsigned short)arg1 args:(id)arg2;
+@property(readonly, nonatomic) long long authorization;
+- (void)retrieveSupportedResources:(id)arg1 subKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeWhbRemoteId:(id)arg1;
+- (id)getWhbLocalIdForRemoteId:(id)arg1;
+- (void)setWhbLocalId:(id)arg1 forRemoteId:(id)arg2;
+- (void)didReceiveForwardedMessageForCBManager:(id)arg1;
+- (void)removeCnxInstanceForIdentifier:(id)arg1;
+- (id)getCnxInstanceForIdentifier:(id)arg1;
+- (id)createCnxWithInfo:(id)arg1;
 - (void)_handleAdvertisingAddressChanged:(id)arg1;
 - (void)closeL2CAPChannelForPeerUUID:(id)arg1 withPsm:(unsigned short)arg2;
+- (void)setWHBMsgReplyHandler:(CDUnknownBlockType)arg1;
+- (_Bool)sendMsg:(unsigned short)arg1 args:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (id)sendSyncMsg:(unsigned short)arg1 args:(id)arg2;
 - (_Bool)sendMsg:(unsigned short)arg1 args:(id)arg2;
 - (id)sendDebugSyncMsg:(unsigned short)arg1 args:(id)arg2;
 - (_Bool)sendDebugMsg:(unsigned short)arg1 args:(id)arg2;

@@ -4,19 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionView.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI19StackCollectionView : UICollectionView
+@interface _TtC8VideosUI19StackCollectionView
 {
-    MISSING_TYPE *stackDelegate;
     MISSING_TYPE *$__lazy_storage_$_registeredCells;
 }
 
 - (void).cxx_destruct;
-- (void)registerClass:(Class)arg1 forCellWithReuseIdentifier:(id)arg2;
+- (void)vui_registerClass:(Class)arg1 forCellWithReuseIdentifier:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 

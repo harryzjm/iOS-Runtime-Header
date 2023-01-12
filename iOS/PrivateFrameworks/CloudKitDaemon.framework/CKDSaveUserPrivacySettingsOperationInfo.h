@@ -6,7 +6,6 @@
 
 #import <CloudKit/CKOperationInfo.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDSaveUserPrivacySettingsOperationInfo : CKOperationInfo
 {
     long long _discoverable;

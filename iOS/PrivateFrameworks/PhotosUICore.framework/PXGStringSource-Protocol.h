@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXGLayoutContentSource-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSString, PXGLayout;
+@class NSAttributedString, NSDictionary, NSString, NSStringDrawingContext, PXGLayout;
 
 @protocol PXGStringSource <PXGLayoutContentSource>
 - (NSAttributedString *)attributedStringForSpriteAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
@@ -15,6 +15,9 @@
 - (NSString *)stringAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 
 @optional
+- (struct CGSize)attributedStringBoundingSizeForSpriteAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
+- (NSStringDrawingContext *)drawingContextForSpriteAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
+- (struct UIEdgeInsets)paddingForSpriteAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (long long)stringDrawingOptionsForSpriteAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 @end
 

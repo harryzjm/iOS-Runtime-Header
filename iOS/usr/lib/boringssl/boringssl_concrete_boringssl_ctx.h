@@ -61,6 +61,8 @@ __attribute__((visibility("hidden")))
     struct __SecKey *peer_public_key;
     struct __CFArray *peer_cert_chain;
     struct __SecTrust *peer_trust_ref;
+    struct __CFArray *server_raw_public_key_certificates;
+    struct __CFArray *client_raw_public_key_certificates;
     boringssl_concrete_boringssl_session_state *session_state;
     struct ssl_st *ssl_session;
     struct ssl_ctx_st *ssl_ctx;
@@ -69,7 +71,8 @@ __attribute__((visibility("hidden")))
     unsigned long long handshake_end;
     unsigned long long current_flight_time;
     unsigned long long total_flight_time;
-    unsigned short round_trips;
+    unsigned long long request_epoch_ms;
+    unsigned long long response_epoch_ms;
     unsigned long long outbound_byte_count;
     unsigned long long inbound_byte_count;
     unsigned long long write_stalls;

@@ -24,6 +24,8 @@
 @property(retain, nonatomic) VOSGesture *gesture; // @synthesize gesture=_gesture;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)description;
 - (id)_initWithGesture:(id)arg1;
 

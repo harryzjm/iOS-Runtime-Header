@@ -6,11 +6,17 @@
 
 #import <CoreSuggestionsUI/SGSuggestionViewControllerPresenter-Protocol.h>
 
+@class UIViewController;
 @protocol SGSuggestion;
 
 @protocol SGSuggestionDelegate <SGSuggestionViewControllerPresenter>
 - (long long)suggestionsUIContext;
 - (void)suggestionWasUpdated:(id <SGSuggestion>)arg1;
 - (void)suggestion:(id <SGSuggestion>)arg1 actionFinished:(_Bool)arg2;
+
+@optional
+- (void)bannerDismissAction;
+- (UIViewController *)tableViewController;
+- (void)bannerPrimaryAction;
 @end
 

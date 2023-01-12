@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
 - (id)drainOutputHIDEvents;
 - (void)addOutputHIDEvent:(id)arg1;
-- (id)_inputEventsForHIDEvent:(struct __IOHIDEvent *)arg1;
+- (id)_inputEventsForHIDEvent:(struct __IOHIDEvent *)arg1 contextId:(unsigned int)arg2;
 - (id)handleHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)initWithRunLoop:(struct __CFRunLoop *)arg1;
 

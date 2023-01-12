@@ -9,6 +9,8 @@
 @class NSData, WiFiAwareDataSessionIssueReport, WiFiAwarePublishDatapathServiceSpecificInfo, WiFiAwarePublishServiceSpecificInfo, WiFiAwarePublisherDataSessionHandle, WiFiMACAddress;
 
 @protocol WiFiAwarePublisherXPC <NSObject>
+- (void)generateStatisticsReportForDataSession:(WiFiAwarePublisherDataSessionHandle *)arg1 completionHandler:(void (^)(long long, WiFiAwareDataSessionStatisticsReport *))arg2;
+- (void)updateLinkStatus:(long long)arg1 forDataSession:(WiFiAwarePublisherDataSessionHandle *)arg2;
 - (void)reportIssue:(WiFiAwareDataSessionIssueReport *)arg1 forDataSession:(WiFiAwarePublisherDataSessionHandle *)arg2;
 - (void)updateServiceSpecificInfo:(WiFiAwarePublishServiceSpecificInfo *)arg1 completionHandler:(void (^)(long long))arg2;
 - (void)updateDatapathServiceSpecificInfo:(WiFiAwarePublishDatapathServiceSpecificInfo *)arg1 completionHandler:(void (^)(long long))arg2;

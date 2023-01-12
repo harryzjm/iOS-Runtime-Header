@@ -26,11 +26,11 @@
 + (_Bool)_isConcreteObjectClass;
 + (_Bool)supportsEquivalence;
 + (_Bool)supportsSecureCoding;
-+ (id)_newDiagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodingCollection:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19 config:(CDUnknownBlockType)arg20;
-+ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodingCollection:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19;
++ (id)_newDiagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodingCollection:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19 config:(CDUnknownBlockType)arg20;
++ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 country:(id)arg11 state:(unsigned long long)arg12 diagnosticTestCodingCollection:(id)arg13 panelName:(id)arg14 results:(id)arg15 effectiveStartDate:(id)arg16 statusCoding:(id)arg17 effectiveEndDate:(id)arg18 issueDate:(id)arg19;
 + (id)cachedConceptRelationshipKeyPaths;
 + (id)indexableConceptKeyPaths;
-+ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 diagnosticTestCodingCollection:(id)arg12 panelName:(id)arg13 results:(id)arg14 effectiveStartDate:(id)arg15 statusCoding:(id)arg16 effectiveEndDate:(id)arg17 issueDate:(id)arg18;
++ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(_Bool)arg3 modifiedDate:(id)arg4 originIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 country:(id)arg10 state:(unsigned long long)arg11 diagnosticTestCodingCollection:(id)arg12 panelName:(id)arg13 results:(id)arg14 effectiveStartDate:(id)arg15 statusCoding:(id)arg16 effectiveEndDate:(id)arg17 issueDate:(id)arg18;
 + (id)defaultDisplayString;
 - (void).cxx_destruct;
 @property(readonly, copy) HKDiagnosticTestReportType *diagnosticTestReportType;
@@ -63,6 +63,7 @@
 - (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)medicalRecordCodings;
+@property(readonly, nonatomic) long long recordCategoryType;
 
 // Remaining properties
 @property(readonly) NSUUID *UUID;

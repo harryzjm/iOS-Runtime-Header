@@ -10,6 +10,7 @@
 
 @protocol ASCMetricsService <NSObject>
 - (void)logErrorMessage:(NSArray *)arg1;
+- (void)recordQToken:(NSString *)arg1 campaignToken:(NSString *)arg2 advertisementID:(NSString *)arg3 withLockup:(ASCLockup *)arg4 withReplyHandler:(void (^)(NSError *))arg5;
 - (void)recordCampaignToken:(NSString *)arg1 providerToken:(NSString *)arg2 withLockup:(ASCLockup *)arg3 withReplyHandler:(void (^)(NSError *))arg4;
 - (void)processViewRenderWithPredicate:(ASCSignpostPredicate *)arg1 withReplyHandler:(void (^)(NSError *))arg2;
 - (void)processMetricsData:(ASCMetricsData *)arg1 pageFields:(NSDictionary *)arg2 activity:(ASCMetricsActivity *)arg3 withReplyHandler:(void (^)(NSError *))arg4;

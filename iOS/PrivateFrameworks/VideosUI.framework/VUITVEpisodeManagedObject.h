@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(copy, nonatomic) NSNumber *episodeNumberInSeason; // @dynamic episodeNumberInSeason;
 @property(copy, nonatomic) NSNumber *episodeNumberInSeries; // @dynamic episodeNumberInSeries;
+@property(copy, nonatomic) NSNumber *fractionalEpisodeNumberInSeason; // @dynamic fractionalEpisodeNumberInSeason;
 @property(retain, nonatomic) VUITVSeasonManagedObject *season; // @dynamic season;
 @property(retain, nonatomic) VUITVSeriesManagedObject *series; // @dynamic series;
 

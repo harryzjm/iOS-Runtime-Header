@@ -16,16 +16,22 @@
     NSArray *_stacks;
     NSArray *_panels;
     NSDictionary *_appLocations;
+    NSDictionary *_webClipLocations;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *webClipLocations; // @synthesize webClipLocations=_webClipLocations;
 @property(copy, nonatomic) NSDictionary *appLocations; // @synthesize appLocations=_appLocations;
 @property(copy, nonatomic) NSArray *panels; // @synthesize panels=_panels;
 @property(copy, nonatomic) NSArray *stacks; // @synthesize stacks=_stacks;
 @property(nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
+- (id)nonFolderAppsOnPage;
+- (_Bool)containsAppPredictionPanel;
+- (_Bool)containsSuggestionsWidget;
+- (_Bool)_containsWidgetWithExtensionBundleId:(id)arg1;
 - (id)initFromDictionaryRepresentation:(id)arg1;
-- (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationIncludingAllApps:(_Bool)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

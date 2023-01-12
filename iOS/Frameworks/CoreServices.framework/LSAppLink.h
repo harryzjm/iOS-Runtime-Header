@@ -8,21 +8,26 @@
 
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class LSApplicationProxy, LSApplicationRecord, NSDictionary, NSURL, _LSValidationToken;
+@class LSApplicationProxy, LSApplicationRecord, NSDictionary, NSURL;
 
 @interface LSAppLink : NSObject <NSSecureCoding>
 {
     NSURL *_URL;
     LSApplicationProxy *_targetApplicationProxy;
     LSApplicationRecord *_targetApplicationRecord;
-    _LSValidationToken *__validationToken;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)areEnabledByDefault;
++ (void)afterAppLinksBecomeAvailableForURL:(id)arg1 limit:(unsigned long long)arg2 performBlock:(CDUnknownBlockType)arg3;
 + (void)getAppLinksWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)getAppLinkWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)appLinksWithURL:(id)arg1 limit:(unsigned long long)arg2 includeLinksForCurrentApplication:(_Bool)arg3 error:(id *)arg4;
 + (id)appLinksWithURL:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
++ (_Bool)auditTokenHasWriteAccess:(CDStruct_4c969caf)arg1;
++ (_Bool)currentProcessHasWriteAccess;
++ (_Bool)auditTokenHasReadAccess:(CDStruct_4c969caf)arg1;
++ (_Bool)currentProcessHasReadAccess;
 + (_Bool)setSettingsSwitchState:(long long)arg1 forApplicationIdentifier:(id)arg2 error:(id *)arg3;
 + (long long)settingsSwitchStateForApplicationIdentifier:(id)arg1;
 + (void)openWithURL:(id)arg1 configuration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -31,18 +36,15 @@
 + (void)_openAppLink:(id)arg1 state:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)_openWithAppLink:(id)arg1 state:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)_appLinkWithURL:(id)arg1 applicationRecord:(id)arg2 plugInClass:(Class)arg3;
-+ (id)_appLinksWithState:(id)arg1 context:(struct LSContext *)arg2 limit:(unsigned long long)arg3 requireEntitlement:(_Bool)arg4 error:(id *)arg5;
-+ (id)_appLinksWithState:(id)arg1 limit:(unsigned long long)arg2 requireEntitlement:(_Bool)arg3 error:(id *)arg4;
++ (id)_appLinksWithState:(id)arg1 context:(struct LSContext *)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 + (_Bool)_URLIsValidForAppLinks:(id)arg1 error:(id *)arg2;
 + (id)_dispatchQueue;
 + (id)_appLinksWithState:(id)arg1 context:(struct LSContext *)arg2 limit:(unsigned long long)arg3 URLComponents:(id)arg4 error:(id *)arg5;
 + (_Bool)URLComponentsAreValidForAppLinks:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-@property(retain) _LSValidationToken *_validationToken; // @synthesize _validationToken=__validationToken;
 @property(retain) LSApplicationRecord *targetApplicationRecord; // @synthesize targetApplicationRecord=_targetApplicationRecord;
 @property(readonly) LSApplicationProxy *targetApplicationProxy; // @synthesize targetApplicationProxy=_targetApplicationProxy;
 @property(copy) NSURL *URL; // @synthesize URL=_URL;
-- (id)_validationTokenPayload;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)debugDescription;
@@ -59,7 +61,6 @@
 - (void)openInWebBrowser:(_Bool)arg1 setOpenStrategy:(long long)arg2 webBrowserState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openInWebBrowser:(_Bool)arg1 setAppropriateOpenStrategyAndWebBrowserState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property long long openStrategy; // @dynamic openStrategy;
-- (_Bool)_validateReturningError:(id *)arg1;
 - (id)_userActivityWithState:(id)arg1 error:(id *)arg2;
 
 @end

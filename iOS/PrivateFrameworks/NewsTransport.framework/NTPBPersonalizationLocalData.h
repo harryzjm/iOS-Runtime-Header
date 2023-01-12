@@ -12,14 +12,17 @@
 
 @interface NTPBPersonalizationLocalData : PBCodable <NSCopying>
 {
+    NSMutableArray *_aggregates;
     NSMutableArray *_closedChangeGroups;
     NSString *_currentInstanceIdentifier;
     NSMutableArray *_openChangeGroupDeltas;
     NSData *_remoteRecordData;
 }
 
++ (Class)aggregatesType;
 + (Class)closedChangeGroupsType;
 + (Class)openChangeGroupDeltasType;
+@property(retain, nonatomic) NSMutableArray *aggregates; // @synthesize aggregates=_aggregates;
 @property(retain, nonatomic) NSString *currentInstanceIdentifier; // @synthesize currentInstanceIdentifier=_currentInstanceIdentifier;
 @property(retain, nonatomic) NSData *remoteRecordData; // @synthesize remoteRecordData=_remoteRecordData;
 @property(retain, nonatomic) NSMutableArray *closedChangeGroups; // @synthesize closedChangeGroups=_closedChangeGroups;
@@ -32,6 +35,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)aggregatesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)aggregatesCount;
+- (void)addAggregates:(id)arg1;
+- (void)clearAggregates;
 @property(readonly, nonatomic) _Bool hasCurrentInstanceIdentifier;
 @property(readonly, nonatomic) _Bool hasRemoteRecordData;
 - (id)closedChangeGroupsAtIndex:(unsigned long long)arg1;

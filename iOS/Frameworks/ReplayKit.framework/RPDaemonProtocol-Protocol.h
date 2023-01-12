@@ -16,12 +16,14 @@
 - (oneway void)macApplicationDidResignActive;
 - (oneway void)reportCameraUsage:(long long)arg1;
 - (oneway void)saveVideo:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
+- (oneway void)saveClipToCameraRoll:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)saveVideoToCameraRoll:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
 - (oneway void)updateProcessIDForAudioCaptureWithPID:(int)arg1;
 - (oneway void)getSystemBroadcastExtensionInfo:(void (^)(NSArray *, NSError *))arg1;
-- (oneway void)generateClipWithSeconds:(double)arg1 handler:(void (^)(NSURL *, NSError *))arg2;
-- (oneway void)stopClipBufferingWithHandler:(void (^)(NSError *))arg1;
-- (oneway void)startClipBufferingWithMicrophoneEnabled:(_Bool)arg1 windowSize:(struct CGSize)arg2 withHandler:(void (^)(NSError *))arg3;
+- (oneway void)resumeInAppClipWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(void (^)(NSError *, _Bool, _Bool))arg2;
+- (oneway void)exportClipToURL:(NSURL *)arg1 duration:(double)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (oneway void)stopClipBufferingWithCompletionHandler:(void (^)(NSError *))arg1;
+- (oneway void)startClipBufferingWithContextID:(NSNumber *)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(_Bool)arg3 cameraEnabled:(_Bool)arg4 withCompletionHandler:(void (^)(NSError *, _Bool, _Bool))arg5;
 - (oneway void)openControlCenterSystemRecordingView;
 - (oneway void)setBroadcastPickerPreferredExt:(NSString *)arg1 showsMicButton:(_Bool)arg2;
 - (oneway void)getSystemBroadcastPickerInfo:(void (^)(NSString *, _Bool))arg1;
@@ -53,6 +55,7 @@
 
 @optional
 - (oneway void)saveVideo:(NSURL *)arg1 extensionToken:(NSString *)arg2 handler:(void (^)(NSError *))arg3;
+- (oneway void)exportClipToURL:(NSURL *)arg1 duration:(double)arg2 extensionToken:(id)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (oneway void)stopInAppRecordingWithUrl:(NSURL *)arg1 extensionToken:(NSString *)arg2 handler:(void (^)(NSError *))arg3;
 @end
 

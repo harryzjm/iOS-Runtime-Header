@@ -17,11 +17,14 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
 @property(retain, nonatomic) RUIMultiChoiceView *view; // @synthesize view=_view;
+- (id)viewControllerForPresentation;
+- (void)didTapFooter:(id)arg1;
 - (void)didTapChoice:(id)arg1;
 - (void)stopActivityIndicatorForChoice:(id)arg1;
 - (void)startActivityIndicatorForChoice:(id)arg1;
 - (double)estimatedViewHeight;
 - (id)viewForElementIdentifier:(id)arg1;
+- (id)sourceURL;
 - (void)addChoice:(id)arg1;
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 

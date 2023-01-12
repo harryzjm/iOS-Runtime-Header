@@ -9,7 +9,7 @@
 #import <Silex/SXDocumentSectionManager-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NFMultiDelegate, NSMutableDictionary, NSMutableSet, NSString, SXViewport;
+@class NSMutableDictionary, NSMutableSet, NSString, SXViewport, TFMultiDelegate;
 @protocol SXDocumentSectionHosting;
 
 @interface SXDocumentSectionManager : NSObject <SXViewportChangeListener, SXDocumentSectionManager>
@@ -18,11 +18,11 @@
     SXViewport *_viewport;
     NSMutableDictionary *_blueprints;
     NSMutableSet *_visibleViewControllers;
-    NFMultiDelegate *_multiScrollDelegate;
+    TFMultiDelegate *_multiScrollDelegate;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NFMultiDelegate *multiScrollDelegate; // @synthesize multiScrollDelegate=_multiScrollDelegate;
+@property(readonly, nonatomic) TFMultiDelegate *multiScrollDelegate; // @synthesize multiScrollDelegate=_multiScrollDelegate;
 @property(readonly, nonatomic) NSMutableSet *visibleViewControllers; // @synthesize visibleViewControllers=_visibleViewControllers;
 @property(readonly, nonatomic) NSMutableDictionary *blueprints; // @synthesize blueprints=_blueprints;
 @property(readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;

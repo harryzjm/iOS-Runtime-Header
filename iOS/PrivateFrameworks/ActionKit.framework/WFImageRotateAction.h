@@ -11,6 +11,8 @@
 }
 
 + (_Bool)outputIsExemptFromTaintTrackingInheritance;
+- (void)rotateMovie:(id)arg1 byDegrees:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)rotateImage:(id)arg1 byDegrees:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

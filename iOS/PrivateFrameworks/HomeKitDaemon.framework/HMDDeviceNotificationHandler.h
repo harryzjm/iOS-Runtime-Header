@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHome, HMFTimer, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
+@class HMDHome, HMFTimer, NSMutableArray, NSMutableDictionary, NSString;
 @protocol HMFLocking;
 
 @interface HMDDeviceNotificationHandler : HMFObject <HMFTimerDelegate>
@@ -19,27 +19,27 @@
     NSMutableDictionary *_updatedMediaPropertiesByMediaProfile;
     NSString *_destination;
     NSString *_requestIdentifier;
-    NSMutableSet *_updatedCharacteristics;
+    NSMutableArray *_updatedCharacteristicsTuples;
     HMFTimer *_coalesceTimer;
     HMFTimer *_delayTimer;
-    NSUUID *_notificationUpdateIdentifier;
+    NSString *_notificationUpdateIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSUUID *notificationUpdateIdentifier; // @synthesize notificationUpdateIdentifier=_notificationUpdateIdentifier;
+@property(retain, nonatomic) NSString *notificationUpdateIdentifier; // @synthesize notificationUpdateIdentifier=_notificationUpdateIdentifier;
 @property(nonatomic) _Bool delaySupported; // @synthesize delaySupported=_delaySupported;
 @property(retain, nonatomic) HMFTimer *delayTimer; // @synthesize delayTimer=_delayTimer;
 @property(retain, nonatomic) HMFTimer *coalesceTimer; // @synthesize coalesceTimer=_coalesceTimer;
-@property(retain, nonatomic) NSMutableSet *updatedCharacteristics; // @synthesize updatedCharacteristics=_updatedCharacteristics;
+@property(retain, nonatomic) NSMutableArray *updatedCharacteristicsTuples; // @synthesize updatedCharacteristicsTuples=_updatedCharacteristicsTuples;
 @property(retain, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property(retain, nonatomic) NSString *destination; // @synthesize destination=_destination;
 @property(retain, nonatomic) NSMutableDictionary *updatedMediaPropertiesByMediaProfile; // @synthesize updatedMediaPropertiesByMediaProfile=_updatedMediaPropertiesByMediaProfile;
 @property(nonatomic) __weak HMDHome *home; // @synthesize home=_home;
 - (void)timerDidFire:(id)arg1;
-- (id)_dispatchNotification;
-- (id)_beginCoalesce:(_Bool)arg1;
-- (id)sendNotificationForMediaProperties:(id)arg1 withRequestIdentifier:(id)arg2;
-- (id)sendNotificationForCharacteristicChanges:(id)arg1 withRequestIdentifier:(id)arg2;
+- (void)_dispatchNotification;
+- (void)_beginCoalesce:(_Bool)arg1;
+- (void)sendNotificationForMediaProperties:(id)arg1 withRequestIdentifier:(id)arg2 notificationUpdateIdentifier:(id)arg3;
+- (void)sendNotificationForCharacteristicChanges:(id)arg1 withRequestIdentifier:(id)arg2 notificationUpdateIdentifier:(id)arg3 broadcast:(_Bool)arg4;
 - (id)initWithDestination:(id)arg1 watchDevice:(_Bool)arg2 withRequestIdentifier:(id)arg3 home:(id)arg4;
 
 // Remaining properties

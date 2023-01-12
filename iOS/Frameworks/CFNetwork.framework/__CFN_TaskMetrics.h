@@ -13,8 +13,8 @@
 @interface __CFN_TaskMetrics : NSObject <NSSecureCoding>
 {
     struct os_unfair_lock_s _lock;
-    _Bool _completed;
     _Bool _ignoreNextRedirection;
+    int _pidForHAR;
     __CFN_SessionMetrics *_sessionMetrics;
     NSUUID *_UUID;
     unsigned long long _identifier;
@@ -31,8 +31,8 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(retain) __CFN_TransactionMetrics *_daemon_currentTransactionMetrics;
-@property(retain, nonatomic) NSMutableArray *_daemon_transactionMetrics;
+@property(readonly) __CFN_TransactionMetrics *_daemon_currentTransactionMetrics;
+@property(readonly, nonatomic) NSMutableArray *_daemon_transactionMetrics;
 
 @end
 

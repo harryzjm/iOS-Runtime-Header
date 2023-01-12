@@ -16,8 +16,8 @@
 - (CDStruct_14d5dc5e)float4x4AtTime:(double)arg1;
 - (void)setDouble4x4:(CDStruct_14d5dc5e)arg1 atTime:(double)arg2;
 - (void)setFloat4x4:(CDStruct_14d5dc5e)arg1 atTime:(double)arg2;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
-- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2 time:(double)arg3;
+- (void)resetWithUsdAttribute:(const void *)arg1 timeScale:(double)arg2;
 - (struct VtValue)defaultVtValue;
 - (unsigned long long)precision;
 - (id)copyWithZone:(struct _NSZone *)arg1;

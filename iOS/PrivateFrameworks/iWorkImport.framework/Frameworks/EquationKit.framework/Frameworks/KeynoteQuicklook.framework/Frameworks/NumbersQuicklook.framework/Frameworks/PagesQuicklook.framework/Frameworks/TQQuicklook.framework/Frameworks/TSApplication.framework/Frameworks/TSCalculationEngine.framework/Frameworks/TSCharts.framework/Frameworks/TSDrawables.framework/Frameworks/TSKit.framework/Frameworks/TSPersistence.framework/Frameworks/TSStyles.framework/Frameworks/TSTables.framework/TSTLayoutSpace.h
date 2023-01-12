@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TSTCoordinateArray, TSTLayout, TSTLayoutSpaceBezierPathCache, TSTLayoutSpaceBundle, TSTMasterLayout;
+@class TSTCoordinateArray, TSTLayout, TSTLayoutEngine, TSTLayoutSpaceBezierPathCache, TSTLayoutSpaceBundle;
 
 @interface TSTLayoutSpace : NSObject
 {
@@ -192,7 +192,7 @@
 @property(readonly, nonatomic) _Bool isFrozen;
 @property(readonly, nonatomic) _Bool isMain;
 - (_Bool)p_getLayoutDirectionLeftToRight;
-@property(readonly, nonatomic) __weak TSTMasterLayout *masterLayout;
+@property(readonly, nonatomic) __weak TSTLayoutEngine *layoutEngine;
 @property(readonly, nonatomic) __weak TSTLayout *layout;
 
 @end

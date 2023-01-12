@@ -51,6 +51,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSCollectionLayoutSize *layoutSize;
+- (id)_externalDescription;
 - (id)description;
 - (id)initWithSize:(id)arg1 contentInsets:(struct NSDirectionalEdgeInsets)arg2 edgeSpacing:(id)arg3 supplementaryItems:(id)arg4 decorationItems:(id)arg5 name:(id)arg6 identifier:(id)arg7;
 - (id)_visualDescription;

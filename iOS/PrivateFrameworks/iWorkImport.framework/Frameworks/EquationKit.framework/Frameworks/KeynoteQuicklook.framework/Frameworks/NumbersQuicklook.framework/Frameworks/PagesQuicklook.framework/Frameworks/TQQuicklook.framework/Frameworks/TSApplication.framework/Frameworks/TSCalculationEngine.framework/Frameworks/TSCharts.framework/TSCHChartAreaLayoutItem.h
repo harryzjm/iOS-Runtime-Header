@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSCHChartAxisLayoutItem, TSCHChartReferenceLineLabelsLayoutItem;
+@class TSCHChartAxisLayoutItem, TSCHChartReferenceLineLabelsLayoutItem, _TtC8TSCharts23TSCHChartGridLayoutItem;
 
 @interface TSCHChartAreaLayoutItem
 {
-    TSCHChartAxisLayoutItem *mTopHorizontalAxis;
-    TSCHChartAxisLayoutItem *mBottomHorizontalAxis;
-    TSCHChartAxisLayoutItem *mLeftVerticalAxis;
-    TSCHChartAxisLayoutItem *mRightVerticalAxis;
-    unsigned long long mRelayoutDepth;
-    _Bool mInOutwardLayout;
+    TSCHChartAxisLayoutItem *_topHorizontalAxis;
+    TSCHChartAxisLayoutItem *_bottomHorizontalAxis;
+    TSCHChartAxisLayoutItem *_leftVerticalAxis;
+    TSCHChartAxisLayoutItem *_rightVerticalAxis;
+    _TtC8TSCharts23TSCHChartGridLayoutItem *_gridLayoutItem;
+    unsigned long long _relayoutDepth;
+    _Bool _inOutwardLayout;
 }
 
 - (void).cxx_destruct;
-- (void)protected_iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)p_updateMinHitSizes;
 - (struct CGRect)i_currentBufferAreaUnitRect;
 - (id)renderersWithRep:(id)arg1;
-- (void)p_layoutOutward;
-- (void)p_layoutInward;
+- (void)layoutOutward;
+- (void)layoutInward;
 - (void)buildSubTree;
 - (double)p_dataSetNameLabelPadding;
 - (void)p_arrangeSizedChildren;

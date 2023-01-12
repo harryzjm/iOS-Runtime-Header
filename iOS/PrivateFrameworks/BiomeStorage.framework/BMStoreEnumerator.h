@@ -4,30 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class BMFrameStore, BMStoreBookmark, BMStreamDatastore;
-
-@interface BMStoreEnumerator : NSObject
+@interface BMStoreEnumerator
 {
-    BMStreamDatastore *_ds;
-    BMFrameStore *_currentFrameStore;
-    unsigned long long _frameStoreOffset;
-    double _iterationStartTime;
 }
-
-@property(readonly, nonatomic) BMFrameStore *currentFrameStore; // @synthesize currentFrameStore=_currentFrameStore;
-@property(readonly, nonatomic) BMStoreBookmark *bookmark;
-- (id)copyNextEventAndMoveBookmark:(_Bool)arg1;
-- (id)copyPeekUntypedEvent;
-- (id)copyPeekEvent;
-- (void)nextEventWithContext:(CDUnknownBlockType)arg1;
-- (id)copyNextUntypedEvent;
-- (id)copyNextEvent;
-- (void)dealloc;
-- (id)initWithStreamDatastore:(id)arg1 currentFrameStore:(id)arg2 frameStoreOffset:(unsigned long long)arg3 iterationStartTime:(double)arg4;
-- (id)initWithStreamDatastore:(id)arg1 startTime:(double)arg2;
-- (id)initWithStreamDatastore:(id)arg1 bookmark:(id)arg2;
 
 @end
 

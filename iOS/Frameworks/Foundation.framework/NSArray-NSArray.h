@@ -12,6 +12,7 @@
 + (id)arrayWithContentsOfURL:(id)arg1 error:(id *)arg2;
 + (id)arrayWithContentsOfURL:(id)arg1;
 + (id)arrayWithContentsOfFile:(id)arg1;
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
 - (_Bool)writeToURL:(id)arg1 atomically:(_Bool)arg2;
 - (_Bool)writeToFile:(id)arg1 atomically:(_Bool)arg2;

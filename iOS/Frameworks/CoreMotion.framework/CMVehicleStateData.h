@@ -15,9 +15,13 @@
 {
     CMMotionTimeRange *fTimeRange;
     NSString *fDeviceId;
+    unsigned long long fVehicularState;
+    unsigned long long fVehicularHints;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) unsigned long long vehicularHints;
+@property(readonly, nonatomic) unsigned long long vehicularState;
 @property(readonly, nonatomic) NSString *deviceId;
 @property(readonly, nonatomic) CMMotionTimeRange *timeRange;
 - (id)description;
@@ -25,6 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)initWithTimestamp:(id)arg1 state:(unsigned long long)arg2 hints:(unsigned long long)arg3;
 - (id)initWithTimeRange:(id)arg1 deviceId:(id)arg2;
 
 @end

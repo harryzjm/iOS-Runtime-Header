@@ -18,7 +18,9 @@
     GEOLatLng *_tripOrigin;
     _Bool _wasEverConnectedToCarplay;
     _Bool _hasEnteredPreArrivalMode;
-    _Bool _isVLFImprovementUsed;
+    NSNumber *_isVLFImprovementUsed;
+    NSNumber *_arWalkingUsedInRoutePlanning;
+    NSNumber *_arWalkingUsedInNavigation;
     _Bool _batteryDied;
     _Bool _chargingStopAdded;
     _Bool _isCoarseLocationUsed;
@@ -30,6 +32,9 @@
     NSArray *_waypoints;
     NSString *_evConsumptionModel;
     NSString *_evChargingModel;
+    int _voiceGuidanceLevel;
+    int _transportType;
+    NSNumber *_isHandsFreeProfileUsed;
 }
 
 - (void).cxx_destruct;
@@ -49,8 +54,12 @@
 - (void)setIsCoarseLocationUsed:(_Bool)arg1;
 - (void)changeNavigationType:(int)arg1;
 - (void)setChargingStopAdded:(_Bool)arg1;
+- (void)setARWalkingUsedInNavigation:(_Bool)arg1;
+- (void)setARWalkingUsedInRoutePlanning:(_Bool)arg1;
 - (void)setIsVLFImprovementUsed:(_Bool)arg1;
 - (void)setModalities:(id)arg1;
+- (void)setIsHandsFreeProfileUsed:(_Bool)arg1;
+- (void)setVoiceGuidanceLevel:(int)arg1;
 - (void)setAudioFeedback:(struct GEONavigationAudioFeedback *)arg1;
 - (void)addAlightNotificationFeedback:(id)arg1;
 - (void)setHasEnteredPreArrivalMode:(_Bool)arg1;
@@ -59,6 +68,7 @@
 - (void)addRouteID:(id)arg1 routeIndex:(unsigned int)arg2 stepID:(unsigned int)arg3 completeStep:(_Bool)arg4;
 - (void)addStepFeedback:(id)arg1;
 - (void)addGuidanceEventFeedback:(id)arg1;
+- (void)setTransportType:(int)arg1;
 - (void)setWasEverConnectedToCarplay:(_Bool)arg1;
 - (void)setTripOrigin:(id)arg1;
 - (void)setOriginalExpectedTime:(double)arg1;
@@ -67,6 +77,7 @@
 - (void)_updateFeedbackSessionWithResponseID:(id)arg1;
 - (void)reset;
 - (void)dealloc;
+- (id)init;
 
 @end
 

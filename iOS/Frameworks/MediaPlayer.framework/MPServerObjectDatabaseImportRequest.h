@@ -13,9 +13,13 @@
     id _payload;
     ICUserIdentity *_userIdentity;
     NSDate *_expirationDate;
+    NSDate *_assetURLExpirationDate;
+    NSDate *_playbackAuthorizationTokenHalfLifeDate;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDate *playbackAuthorizationTokenHalfLifeDate; // @synthesize playbackAuthorizationTokenHalfLifeDate=_playbackAuthorizationTokenHalfLifeDate;
+@property(readonly, copy, nonatomic) NSDate *assetURLExpirationDate; // @synthesize assetURLExpirationDate=_assetURLExpirationDate;
 @property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(retain, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property(retain, nonatomic) id payload; // @synthesize payload=_payload;

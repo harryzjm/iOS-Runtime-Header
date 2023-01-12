@@ -13,7 +13,7 @@
 }
 
 + (id)hmbProperties;
-@property unsigned long long currentAccessModeChangeReason;
+@property long long currentAccessModeChangeReason;
 @property unsigned long long currentAccessMode;
 
 // Remaining properties

@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)didAddSubview:(id)arg1;
 - (void)_didRemoveSubview:(id)arg1;
-- (void)_accessibilityClearTableCellChildren;
 
 @end
 

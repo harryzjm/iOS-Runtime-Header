@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, VGVirtualGarage;
+@class NSArray, VGVehicle, VGVirtualGarage;
 
 @protocol VGVirtualGarageDelegate
+- (void)virtualGarage:(VGVirtualGarage *)arg1 didUpdateCarPlayConnection:(_Bool)arg2 associatedVehicle:(VGVehicle *)arg3;
 - (void)virtualGarage:(VGVirtualGarage *)arg1 didUpdateUnpairedVehicles:(NSArray *)arg2;
 - (void)virtualGarageDidUpdate:(VGVirtualGarage *)arg1;
 @end

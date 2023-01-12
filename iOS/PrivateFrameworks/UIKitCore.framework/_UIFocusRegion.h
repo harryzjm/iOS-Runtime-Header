@@ -10,11 +10,13 @@
 #import <UIKitCore/_UIFocusDebugQuickLookImageDrawing-Protocol.h>
 
 @class NSMutableArray, NSString;
+@protocol _UIFocusRegionContainer;
 
 @interface _UIFocusRegion : NSObject <_UIFocusDebugQuickLookImageDrawing, NSCopying>
 {
     NSMutableArray *_mutableOccludingRegions;
     _UIFocusRegion *_originalRegion;
+    id <_UIFocusRegionContainer> _regionContainer;
     struct CGRect _frame;
 }
 
@@ -22,6 +24,7 @@
 + (id)_regionsByOccludingRegions:(id)arg1 beneathRegions:(id)arg2;
 + (id)_regionsByEvaluatingOcclusionsForRegions:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <_UIFocusRegionContainer> regionContainer; // @synthesize regionContainer=_regionContainer;
 @property(retain, nonatomic, getter=_originalRegion, setter=_setOriginRegion:) _UIFocusRegion *originalRegion; // @synthesize originalRegion=_originalRegion;
 @property(nonatomic, setter=_setFrame:) struct CGRect frame; // @synthesize frame=_frame;
 @property(retain, nonatomic, getter=_mutableOccludingRegions, setter=_setMutableOccludingRegions:) NSMutableArray *mutableOccludingRegions; // @synthesize mutableOccludingRegions=_mutableOccludingRegions;
@@ -37,6 +40,8 @@
 - (id)_resizeToRect:(struct CGRect)arg1;
 - (unsigned long long)_effectiveBoundariesBlockingFocusMovementRequest:(id)arg1;
 - (unsigned long long)_effectiveFocusableBoundariesForHeading:(unsigned long long)arg1;
+- (_Bool)_ignoresSpeedBumpEdges;
+- (double)_focusPriority;
 - (long long)_preferredDistanceComparisonType;
 - (unsigned long long)_boundariesBlockingFocusMovementRequest:(id)arg1;
 - (unsigned long long)_focusableBoundaries;
@@ -44,6 +49,7 @@
 - (_Bool)_shouldUseNextFocusedItemForLinearSorting;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (id)_defaultFocusItem;
+- (_Bool)_isUnclippable;
 - (_Bool)_shouldCropRegionToSearchArea;
 - (_Bool)_canBeOccludedByRegionsAbove;
 - (_Bool)_canOccludeRegionsBelow;

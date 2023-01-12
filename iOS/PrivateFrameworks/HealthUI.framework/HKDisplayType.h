@@ -23,6 +23,7 @@
     NSString *_titleEmbeddedDisplayNameKey;
     NSString *_keywordsNameKey;
     NSString *_summaryNameKey;
+    NSString *_summaryForEnhancedFeatureNameKey;
     NSString *_summaryPairedWatchNameKey;
     NSString *_displayNameFitnessJrKey;
     NSString *_summaryFitnessJrKey;
@@ -39,6 +40,7 @@
     _Bool _disallowsSourceReordering;
     _Bool _excludeFromDataTypeSearch;
     _Bool _useSecondsWhenDisplayingDuration;
+    _Bool _isCriticalForAutoscale;
     _Bool _shouldUseSingleSecondaryValue;
     _Bool __wheelchairUser;
     long long _displayTypeIdentifier;
@@ -53,11 +55,13 @@
     HKObjectType *_objectType;
 }
 
++ (id)hk_enumeratedValueLabelsWithDisplayTypeIdentifier:(long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *displayNameKey; // @synthesize displayNameKey=_displayNameKey;
 @property(getter=_isWheelchairUser, setter=_setWheelchairUser:) _Bool _wheelchairUser; // @synthesize _wheelchairUser=__wheelchairUser;
 @property(readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
 @property(readonly, nonatomic) _Bool shouldUseSingleSecondaryValue; // @synthesize shouldUseSingleSecondaryValue=_shouldUseSingleSecondaryValue;
+@property(nonatomic) _Bool isCriticalForAutoscale; // @synthesize isCriticalForAutoscale=_isCriticalForAutoscale;
 @property(readonly, nonatomic) _Bool useSecondsWhenDisplayingDuration; // @synthesize useSecondsWhenDisplayingDuration=_useSecondsWhenDisplayingDuration;
 @property(readonly, nonatomic) _Bool excludeFromDataTypeSearch; // @synthesize excludeFromDataTypeSearch=_excludeFromDataTypeSearch;
 @property(retain, nonatomic) HKValueRange *defaultAxisRangeOverride; // @synthesize defaultAxisRangeOverride=_defaultAxisRangeOverride;
@@ -83,6 +87,7 @@
 @property(readonly, nonatomic) NSString *cautionaryText;
 @property(readonly, nonatomic) NSString *summaryForPairedWatch;
 @property(readonly, nonatomic) NSString *summaryForFitnessJr;
+@property(readonly, nonatomic) NSString *summaryForEnhancedFeature;
 @property(readonly, nonatomic) NSString *summary;
 @property(readonly, nonatomic) NSString *titleEmbeddedDisplayName;
 @property(readonly, nonatomic) NSString *embeddedDisplayName;
@@ -126,12 +131,11 @@
 - (double)adjustedDoubleForDaemonDouble:(double)arg1;
 - (id)adjustedValueForClientValue:(id)arg1;
 - (id)adjustedValueForDaemonValue:(id)arg1;
-- (id)unitDisplayNameKeyOverrideForUnit:(id)arg1;
+- (id)unitDisplayNameKeyOverrideForUnit:(id)arg1 nameContext:(long long)arg2;
 - (void)_applyChartingProperties:(id)arg1;
 - (void)_applySummaryAndAttributionPropertiesWithDictionary:(id)arg1;
 - (void)_applyTextualPropertiesWithDictionary:(id)arg1 displayNameKey:(id)arg2;
 - (void)_applyScalarValue:(id)arg1;
-- (id)init;
 - (id)initFromDictionary:(id)arg1;
 - (id)hk_numberFormatterForUnit:(id)arg1 formattingContext:(long long)arg2;
 - (id)hk_numberFormatterForUnit:(id)arg1;
@@ -152,17 +156,15 @@
 - (id)_stackedDataSourceForCategoryType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (id)_timePeriodDisplayPrefix;
 - (id)_timePeriodDataSourceForSampleType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
-- (CDUnknownBlockType)_singleValueUserInfoBlockWithUnitController:(id)arg1 displayType:(id)arg2 statisticsOption:(unsigned long long)arg3;
 - (CDUnknownBlockType)_minMaxUserInfoBlockWithUnitController:(id)arg1 displayType:(id)arg2;
 - (CDUnknownBlockType)_bloodPressureUserInfoBlock;
+- (id)hk_standardSeriesForTimeScope:(long long)arg1 graphSeriesDataSource:(id)arg2 displayCategory:(id)arg3 unitController:(id)arg4 dataCacheController:(id)arg5 displayCategoryController:(id)arg6;
 - (id)hk_standardSeriesForTimeScope:(long long)arg1 displayCategory:(id)arg2 unitController:(id)arg3 dataCacheController:(id)arg4 displayCategoryController:(id)arg5;
 - (id)_generateGraphSeriesForTimeScope:(long long)arg1 displayCategory:(id)arg2 unitController:(id)arg3;
-- (id)_generateDistributionSeriesWithColor:(id)arg1 numberFormatter:(id)arg2;
+- (id)_generateJulianIndexedSevenDayQuantitySeriesWithColor:(id)arg1;
 - (id)_generateLevelCategorySeriesWithColor:(id)arg1;
 - (id)_generateSingleLineSeriesWithColor:(id)arg1 timeScope:(long long)arg2;
 - (id)_generateStackedSeriesWithColor:(id)arg1;
-- (id)_generateScatterPlotSeriesWithColor:(id)arg1;
-- (id)_generateLineSeriesWithColor:(id)arg1 timeScope:(long long)arg2;
 - (id)_generateHandwashingBarSeriesWithDisplayCategory:(id)arg1;
 - (id)_generateInsulinBarSeriesWithDisplayCategory;
 - (id)_generateBarSeriesWithFillStyle:(id)arg1;
@@ -185,6 +187,7 @@
 - (_Bool)_supportsFiveYearTimeScope;
 - (_Bool)_supportsYearTimeScope;
 - (_Bool)_supportsMonthTimeScope;
+- (_Bool)_supportsSixMonthTimeScope;
 - (_Bool)_supportsWeekTimeScope;
 - (_Bool)_supportsDayTimeScope;
 - (_Bool)_supportsHourTimeScope;
@@ -193,6 +196,14 @@
 - (long long)hk_stackedChartSectionsCountForTimeScope:(long long)arg1;
 - (_Bool)contextItemShouldDisplayEventCountForDistributionStyle:(long long)arg1;
 - (_Bool)contextItemShouldUseTightSpacingBetweenValueAndUnit;
+- (id)generateDistributionSeriesWithColor:(id)arg1 numberFormatter:(id)arg2 lineWidth:(double)arg3;
+- (id)generateDistributionSeriesWithColor:(id)arg1 numberFormatter:(id)arg2;
+- (id)generateScatterPlotSeriesWithColor:(id)arg1;
+- (id)generateLineSeriesWithColor:(id)arg1 timeScope:(long long)arg2;
+- (CDUnknownBlockType)_singleValueUserInfoBlockWithUnitController:(id)arg1 displayType:(id)arg2 statisticsOption:(unsigned long long)arg3;
+- (id)respiratoryRateHistogramDataSourceWithHealthStore:(id)arg1 unitController:(id)arg2;
+- (id)cardioFitnessDataSourceWithUnitController:(id)arg1 healthStore:(id)arg2;
+- (id)bloodGlucoseHistogramDataSourceWithHealthStore:(id)arg1 unitController:(id)arg2;
 
 @end
 

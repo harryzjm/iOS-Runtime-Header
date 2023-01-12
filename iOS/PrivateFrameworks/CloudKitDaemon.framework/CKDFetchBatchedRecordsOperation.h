@@ -9,14 +9,12 @@
 @class CKDRecordCache, CKDRecordFetchAggregator, NSArray, NSDictionary, NSMutableArray, NSObject, NSSet, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchBatchedRecordsOperation <CKDOperationPipelining>
 {
+    CKDRecordCache *_recordCache;
     _Bool _shouldFetchAssetContents;
     _Bool _fetchAllChanges;
     _Bool _forcePCSDecryptionAttempt;
-    _Bool _shouldReportAllPerItemFailures;
-    CKDRecordCache *_recordCache;
     NSObject<OS_dispatch_group> *_fetchRecordsGroup;
     NSSet *_desiredAssetKeys;
     NSArray *_recordZoneIDs;
@@ -25,10 +23,11 @@ __attribute__((visibility("hidden")))
     CKDRecordFetchAggregator *_recordFetcher;
     NSMutableArray *_requestInfos;
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
+    long long _errorReportingStyle;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
+@property(nonatomic) long long errorReportingStyle; // @synthesize errorReportingStyle=_errorReportingStyle;
 @property(nonatomic) _Bool forcePCSDecryptionAttempt; // @synthesize forcePCSDecryptionAttempt=_forcePCSDecryptionAttempt;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(retain, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;
@@ -58,9 +57,9 @@ __attribute__((visibility("hidden")))
 - (void)_handleRecordDelete:(id)arg1 recordType:(id)arg2 perRequestSchedulerInfo:(id)arg3;
 - (void)_handleChangedRecords:(id)arg1 perRequestSchedulerInfo:(id)arg2;
 - (void)_handleFetchChangesRequestFinishedWithSchedulerInfo:(id)arg1;
-@property(readonly, nonatomic) CKDRecordCache *recordCache; // @synthesize recordCache=_recordCache;
+- (id)recordCache:(id *)arg1;
 - (id)relevantZoneIDs;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue;

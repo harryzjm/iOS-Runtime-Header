@@ -6,12 +6,12 @@
 
 #import <CarPlayServices/NSObject-Protocol.h>
 
-@class CRSIconLayoutState, NSArray, NSString;
+@class CRSIconLayoutState, NSString;
 
 @protocol CRSIconLayoutClientToServerInterface <NSObject>
 - (void)fetchApplicationIconInformationForBundleIdentifier:(NSString *)arg1 vehicleID:(NSString *)arg2 completion:(void (^)(CRSApplicationIcon *, NSError *))arg3;
 - (void)resetIconStateForVehicleID:(NSString *)arg1;
-- (void)setIconState:(CRSIconLayoutState *)arg1 hiddenIcons:(NSArray *)arg2 forVehicleID:(NSString *)arg3;
-- (void)fetchIconStateForVehicleID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)setIconState:(CRSIconLayoutState *)arg1 forVehicleID:(NSString *)arg2;
+- (void)fetchIconStateForVehicleID:(NSString *)arg1 completion:(void (^)(CRSIconLayoutState *, NSError *))arg2;
 @end
 

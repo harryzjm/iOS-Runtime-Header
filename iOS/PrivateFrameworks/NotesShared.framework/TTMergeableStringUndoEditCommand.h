@@ -12,12 +12,12 @@
 
 @interface TTMergeableStringUndoEditCommand : NSObject <TTMergeableStringUndoCommand>
 {
-    vector_4b213608 *_deleteRanges;
-    vector_252d7b3a *_insertStrings;
+    void *_deleteRanges;
+    void *_insertStrings;
 }
 
-@property(readonly, nonatomic) vector_252d7b3a *insertStrings; // @synthesize insertStrings=_insertStrings;
-@property(readonly, nonatomic) vector_4b213608 *deleteRanges; // @synthesize deleteRanges=_deleteRanges;
+@property(readonly, nonatomic) void *insertStrings; // @synthesize insertStrings=_insertStrings;
+@property(readonly, nonatomic) void *deleteRanges; // @synthesize deleteRanges=_deleteRanges;
 @property(readonly, copy) NSString *description;
 - (_Bool)addToGroup:(id)arg1;
 - (void)applyToString:(id)arg1;

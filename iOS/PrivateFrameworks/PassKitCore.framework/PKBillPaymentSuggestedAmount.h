@@ -18,6 +18,7 @@
     long long _merchantCategory;
 }
 
++ (id)roundingAmount:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) long long merchantCategory; // @synthesize merchantCategory=_merchantCategory;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;

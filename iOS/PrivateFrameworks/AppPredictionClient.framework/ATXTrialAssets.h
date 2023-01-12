@@ -22,7 +22,9 @@
 - (id)pathForLegacyResourcePath:(id)arg1;
 - (_Bool)clearStaleUnarchivedLevels;
 - (id)filePathForResource:(id)arg1;
+- (id)filePathForClassName:(id)arg1;
 - (id)filePathForClass:(Class)arg1;
+- (id)dictionaryForClassName:(id)arg1;
 - (id)dictionaryForClass:(Class)arg1;
 - (id)dictionaryForResource:(id)arg1;
 - (id)client;

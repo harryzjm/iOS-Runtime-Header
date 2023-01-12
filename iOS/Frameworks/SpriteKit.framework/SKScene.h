@@ -20,7 +20,7 @@
     _Bool _usesExplicitRender;
     SKPhysicsBody *_scenePinBody;
     id _view;
-    struct SKCSceneNode *_skcSceneNode;
+    void *_skcSceneNode;
     SKNode *_listener;
     AVAudioEngine *_audioEngine;
     _Bool __needsUpdate;
@@ -83,7 +83,7 @@
 - (void)setPosition:(struct CGPoint)arg1;
 - (struct CGPoint)position;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 - (void)set_anchorPoint:(struct CGPoint)arg1;
 @property(nonatomic) struct CGPoint anchorPoint;
 @property(readonly, retain, nonatomic) AVAudioEngine *audioEngine;

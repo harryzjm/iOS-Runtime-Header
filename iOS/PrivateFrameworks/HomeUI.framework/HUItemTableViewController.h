@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HFDiffableDataItemManagerDelegate-Protocol.h>
 #import <HomeUI/HFExecutionEnvironmentObserver-Protocol.h>
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
+#import <HomeUI/HUExpandableTextViewCellDelegate-Protocol.h>
 #import <HomeUI/HUItemManagerContainer-Protocol.h>
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
+#import <HomeUI/HUTableViewDiffableDataSourceDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString;
+@class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString, UIVisualEffectView;
 @protocol NACancelable;
 
-@interface HUItemTableViewController <HFExecutionEnvironmentObserver, UITextViewDelegate, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
+@interface HUItemTableViewController <HFExecutionEnvironmentObserver, UITextViewDelegate, HUTableViewDiffableDataSourceDelegate, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController, HFDiffableDataItemManagerDelegate, HUExpandableTextViewCellDelegate>
 {
     _Bool _wantsPreferredContentSize;
     _Bool _viewHasAppeared;
@@ -32,12 +35,14 @@
     id <NACancelable> _deferredVisibilityUpdate;
     NSMapTable *_textFieldToCellMap;
     HUGridLayoutOptions *_gridLayoutOptions;
+    UIVisualEffectView *_backgroundVisualEffectView;
 }
 
 + (unsigned long long)updateMode;
 + (_Bool)adoptsDefaultGridLayoutMargins;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldUseAlternateCellColor; // @synthesize shouldUseAlternateCellColor=_shouldUseAlternateCellColor;
+@property(retain, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property(retain, nonatomic) HUGridLayoutOptions *gridLayoutOptions; // @synthesize gridLayoutOptions=_gridLayoutOptions;
 @property(readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
 @property(retain, nonatomic) id <NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
@@ -53,7 +58,8 @@
 @property(nonatomic) _Bool viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 @property(nonatomic) unsigned long long appearState; // @synthesize appearState=_appearState;
 @property(nonatomic) _Bool wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
-- (void)reloadCellForItems:(id)arg1;
+- (void)reloadCellForItems:(id)arg1 withDiffableDataSourceReload:(_Bool)arg2;
+- (void)updateCellForItems:(id)arg1;
 - (id)presentingViewControllerForModuleController:(id)arg1;
 - (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
@@ -71,6 +77,7 @@
 - (void)scrollToItem:(id)arg1 animated:(_Bool)arg2;
 - (void)highlightItemAnimated:(id)arg1 duration:(double)arg2;
 - (void)highlightItemAnimated:(id)arg1;
+- (void)expandableTextViewCellStateDidChange:(id)arg1;
 - (void)itemManagerDidFinishUpdate:(id)arg1;
 - (void)itemManager:(id)arg1 didUpdateItemModules:(id)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
@@ -85,6 +92,11 @@
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (long long)_rowAnimationForOperationType:(unsigned long long)arg1 item:(id)arg2;
+- (_Bool)shouldPerformUpdateWithAnimationForDiffableDataItemManager:(id)arg1;
+- (void)itemManagerDidUpdate:(id)arg1;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
+- (void)diffableDataItemManager:(id)arg1 willUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4 isInitialLoad:(_Bool)arg5;
+- (void)diffableDataItemManager:(id)arg1 prefetchResourcesForItems:(id)arg2;
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 leadingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
@@ -113,9 +125,12 @@
 - (id)_visibleCellForItem:(id)arg1;
 - (void)_performCommonUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)_dispatchUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
+- (void)_updateMaterials;
 @property(readonly, copy) NSString *description;
 - (id)textFieldForVisibleItem:(id)arg1;
 - (id)moduleControllerForItem:(id)arg1;
+- (id)contentConfigurationForFooterViewAtSectionIndex:(unsigned long long)arg1;
+- (id)contentConfigurationForHeaderViewAtSectionIndex:(unsigned long long)arg1;
 - (id)trailingSwipeActionsForItem:(id)arg1;
 - (id)leadingSwipeActionsForItem:(id)arg1;
 - (id)childViewControllersToPreload;
@@ -150,6 +165,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)setUpDiffableDataItemManagerIfNeeded;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 

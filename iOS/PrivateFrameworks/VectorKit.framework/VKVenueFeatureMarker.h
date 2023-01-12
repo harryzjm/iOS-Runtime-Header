@@ -16,8 +16,8 @@
 @property(readonly, nonatomic) NSArray *buildings;
 @property(readonly, nonatomic) GEOMapItemIdentifier *mapIdentifier;
 @property(readonly, nonatomic) unsigned long long businessID;
-- (const shared_ptr_c500bfa8 *)venueFeatureMarker;
-- (id)initWithVenue:(const struct Venue *)arg1 localize:(_Bool)arg2;
+- (const void *)venueFeatureMarker;
+- (id)initWithVenue:(const void *)arg1 localize:(_Bool)arg2;
 
 @end
 

@@ -14,15 +14,17 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_items;
     CDUnknownBlockType _finishedBlock;
     NSData *_syncAnchor;
+    long long _suggestedPageSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long suggestedPageSize; // @synthesize suggestedPageSize=_suggestedPageSize;
 @property(copy) NSData *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 @property(copy) CDUnknownBlockType finishedBlock; // @synthesize finishedBlock=_finishedBlock;
 - (void)finishEnumeratingWithError:(id)arg1;
 - (void)finishEnumeratingUpToPage:(id)arg1;
 - (void)didEnumerateItems:(id)arg1;
-- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2;
+- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 nsFileProviderRequest:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,7 +14,7 @@
 
 @interface HDStatisticsCollectionCalculator : NSObject <HDStatisticsSourceOrderProvider, NSSecureCoding>
 {
-    struct unique_ptr<_HDStatisticsCollectionCalculatorImplementation, std::__1::default_delete<_HDStatisticsCollectionCalculatorImplementation>> _implementation;
+    struct unique_ptr<_HDStatisticsCollectionCalculatorImplementation, std::default_delete<_HDStatisticsCollectionCalculatorImplementation>> _implementation;
     CDUnknownBlockType _statisticsHandler;
     long long _computationMethod;
     NSArray *_maskedIntervals;
@@ -31,7 +31,7 @@
 @property(copy, nonatomic) CDUnknownBlockType statisticsHandler; // @synthesize statisticsHandler=_statisticsHandler;
 @property(readonly, copy, nonatomic) NSArray *maskedIntervals; // @synthesize maskedIntervals=_maskedIntervals;
 @property(readonly, nonatomic) long long computationMethod; // @synthesize computationMethod=_computationMethod;
-- (void)orderSourceIDs:(vector_d87a6415 *)arg1;
+- (void)orderSourceIDs:(void *)arg1;
 - (id)sourceForSourceID:(long long)arg1;
 - (id)bundleIdentifierForSourceID:(long long)arg1;
 - (id)archivedRepresentationWithError:(id *)arg1;
@@ -41,8 +41,10 @@
 - (void)reset;
 - (_Bool)invalidateInterval:(id)arg1 error:(id *)arg2;
 - (_Bool)queryForInitialStatisticsWithError:(id *)arg1;
+- (_Bool)performInitialStatisticsTransaction:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (_Bool)performAddSampleTransaction:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (_Bool)addSampleValue:(double)arg1 startTime:(double)arg2 endTime:(double)arg3 sourceID:(long long)arg4 error:(id *)arg5;
+- (void)setStatisticsConfiguration:(id)arg1;
 @property(nonatomic) __weak id <HDStatisticsCollectionCalculatorDataSource> dataSource;
 - (void)configureMergeAnchor:(id)arg1;
 @property(copy, nonatomic) NSDateInterval *dateInterval;
@@ -52,7 +54,6 @@
 @property(readonly, nonatomic) unsigned long long options;
 @property(readonly, copy, nonatomic) _HKDateIntervalCollection *intervalCollection;
 @property(readonly, copy, nonatomic) HKQuantityType *quantityType;
-- (id)initForQuantityType:(id)arg1 intervalCollection:(id)arg2 options:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 computationMethod:(long long)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

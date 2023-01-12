@@ -89,6 +89,7 @@
 - (id)CalDateRoundedDownToNearestMinuteIncrement:(long long)arg1 inCalendar:(id)arg2;
 - (_Bool)isTodayInCalendar:(id)arg1;
 - (_Bool)isAfterOrSameDayAsDate:(id)arg1 inCalendar:(id)arg2;
+- (_Bool)isAfterDayForDate:(id)arg1 inCalendar:(id)arg2;
 - (_Bool)isBeforeOrSameDayAsDate:(id)arg1 inCalendar:(id)arg2;
 - (_Bool)isBeforeDayForDate:(id)arg1 inCalendar:(id)arg2;
 - (_Bool)isEqualToDateIgnoringTimeComponents:(id)arg1 inCalendar:(id)arg2;
@@ -104,6 +105,8 @@
 - (id)roundToCurrentMondayInCalendar:(id)arg1;
 - (id)roundToCurrentWeekInCalendar:(id)arg1 withFirstWeekdayIndex:(long long)arg2;
 - (id)roundToCurrentDayInCalendar:(id)arg1;
+- (id)subtractOneSecondIfAt0InCalendar:(id)arg1;
+- (id)roundUpOneSecondIfAt59InCalendar:(id)arg1;
 - (id)roundSecondsAndMinutesUpInCalendar:(id)arg1;
 - (id)roundSecondsAndMinutesDownInCalendar:(id)arg1;
 - (id)roundSecondsDownInCalendar:(id)arg1;

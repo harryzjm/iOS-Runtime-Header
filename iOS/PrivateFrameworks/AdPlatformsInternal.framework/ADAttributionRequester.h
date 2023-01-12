@@ -21,10 +21,12 @@
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(retain, nonatomic) NSNumber *transactionToken; // @synthesize transactionToken=_transactionToken;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+- (void)setServerToTest:(long long)arg1;
 - (void)setStocksAdEnabled:(_Bool)arg1;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
 - (void)beginAttributionRequest:(id)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)attachSearchMetadataTo:(id)arg1 forAdamID:(id)arg2;
+- (void)_clearDownloadDataFromRequest:(id)arg1;
 - (void)attachDownloadDataTo:(id)arg1 forAdamID:(id)arg2;
 - (void)requestAttributionDetails:(CDUnknownBlockType)arg1;
 - (_Bool)_isAppTrackingAuthorized;

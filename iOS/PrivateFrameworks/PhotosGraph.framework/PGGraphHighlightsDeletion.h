@@ -8,15 +8,15 @@
 
 @interface PGGraphHighlightsDeletion
 {
-    NSSet *_highlightLocalIdentifiers;
+    NSSet *_highlightUUIDs;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSSet *highlightLocalIdentifiers; // @synthesize highlightLocalIdentifiers=_highlightLocalIdentifiers;
+@property(readonly, nonatomic) NSSet *highlightUUIDs; // @synthesize highlightUUIDs=_highlightUUIDs;
 - (id)description;
 - (unsigned long long)changeCount;
 - (unsigned long long)type;
-- (id)initWithHighlightLocalIdentifiers:(id)arg1;
+- (id)initWithHighlightUUIDs:(id)arg1;
 
 @end
 

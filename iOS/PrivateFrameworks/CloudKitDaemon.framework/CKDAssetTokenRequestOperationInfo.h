@@ -8,7 +8,6 @@
 
 @class CKDAssetTokenRequest;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetTokenRequestOperationInfo : CKDatabaseOperationInfo
 {
     CKDAssetTokenRequest *_assetTokenRequest;

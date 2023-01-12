@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class CAGradientLayer;
 
-@interface _TtCC8VideosUI16FlowcaseViewCellP33_FBAB717E7E30D69FDDD7D1B4C16BFCA712GradientView : UIView
+@interface _TtCC8VideosUI16FlowcaseViewCellP33_FBAB717E7E30D69FDDD7D1B4C16BFCA712GradientView
 {
 }
 

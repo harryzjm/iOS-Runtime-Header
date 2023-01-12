@@ -48,6 +48,8 @@ __attribute__((visibility("hidden")))
 - (id)pathForFlickPopupGeometries:(id)arg1;
 - (id)pathForFlickGeometry:(id)arg1;
 - (id)pathForFlickWidth:(double)arg1 height:(double)arg2 handleLength:(double)arg3 keyMiddle:(struct CGPoint)arg4 angle:(double)arg5;
+- (id)watchPathForRenderGeometry:(id)arg1;
+- (id)defaultPathForRenderGeometry:(id)arg1;
 - (id)pathForRenderGeometry:(id)arg1;
 - (id)pathForConcaveCornerWithGeometry:(id)arg1;
 - (void)addPathForSplitGeometry:(id)arg1;
@@ -65,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)renderKeyStringContents:(id)arg1 withTraits:(id)arg2 status:(unsigned long long)arg3;
 - (_Bool)_drawKeyString:(id)arg1 inRect:(struct CGRect)arg2 withStyle:(id)arg3;
 - (_Bool)_drawSingleSymbol:(id)arg1 inRect:(struct CGRect)arg2 withStyle:(id)arg3;
+- (long long)symbolImageRenderingModeForIdiom:(long long)arg1;
+- (id)symbolImageConfigForKey:(id)arg1 traitCollection:(id)arg2;
 - (unsigned long long)renderKeyImageContents:(id)arg1 withTraits:(id)arg2 status:(unsigned long long)arg3;
 - (void)_drawKeyImage:(id)arg1 inRect:(struct CGRect)arg2 withStyle:(id)arg3 force1xImages:(_Bool)arg4 flipHorizontally:(_Bool)arg5;
 - (void)_renderVariantsFromKeyContents:(id)arg1 withTraits:(id)arg2;

@@ -12,7 +12,7 @@
 @property(readonly, nonatomic) NSString *hk_localizedWakeTime;
 @property(readonly, nonatomic) NSString *hk_localizedBedtime;
 @property(readonly, nonatomic) NSString *hk_localizedScheduledSleepDuration;
-- (id)hk_localizedWeekdaysListWithCalendar:(id)arg1 standaloneFormatter:(id)arg2 listItemFormatter:(id)arg3;
+- (id)hk_localizedWeekdaysListWithGregorianCalendar:(id)arg1 standaloneFormatter:(id)arg2 listItemFormatter:(id)arg3;
 @property(readonly, nonatomic) NSString *hk_localizedWeekdaysList;
 - (void)addDetailValuesToSection:(id)arg1;
 @end

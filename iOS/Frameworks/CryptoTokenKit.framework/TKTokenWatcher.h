@@ -22,7 +22,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TKClientToken *client; // @synthesize client=_client;
-- (id)getReaderAndDriverNameFor:(id)arg1;
+- (id)tokenInfoForTokenID:(id)arg1;
 @property(readonly) NSArray *tokenIDs;
 - (void)removedToken:(id)arg1;
 - (void)insertedToken:(id)arg1;

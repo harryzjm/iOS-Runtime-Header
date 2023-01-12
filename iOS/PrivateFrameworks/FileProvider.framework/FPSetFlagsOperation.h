@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol NSFileProviderItemFlags;
-
 @interface FPSetFlagsOperation
 {
-    id <NSFileProviderItemFlags> _flags;
+    unsigned long long _flags;
 }
 
-- (void).cxx_destruct;
 - (id)fp_prettyDescription;
 - (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
-- (id)initWithItems:(id)arg1 flags:(id)arg2;
+- (id)initWithItems:(id)arg1 flags:(unsigned long long)arg2;
 - (id)replicateForItems:(id)arg1;
 
 @end

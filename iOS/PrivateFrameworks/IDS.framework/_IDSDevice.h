@@ -18,9 +18,11 @@
     _Bool _connected;
     _Bool _immutableCloudConnected;
     _Bool _cloudConnected;
+    IDSEndpointCapabilities *_capabilities;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) IDSEndpointCapabilities *capabilities; // @synthesize capabilities=_capabilities;
 - (void)_setService:(id)arg1;
 - (void)_setAccount:(id)arg1;
 - (void)_stateChanged;
@@ -28,13 +30,13 @@
 - (void)_connectedStateChanged;
 - (void)_nearbyStateChanged;
 - (_Bool)isTinker;
-@property(readonly, nonatomic) IDSEndpointCapabilities *capabilities;
 - (void)_addIdentity:(id)arg1;
 @property(readonly, nonatomic) NSArray *identities;
 @property(readonly, nonatomic) NSData *pushToken;
 @property(readonly, nonatomic) _Bool isHSATrusted;
 @property(readonly, nonatomic) NSString *enclosureColor;
 @property(readonly, nonatomic) NSString *deviceColor;
+@property(readonly, nonatomic) long long deviceType;
 @property(readonly, nonatomic) _Bool supportsPhoneCalls;
 @property(readonly, nonatomic) _Bool supportsMMSRelay;
 @property(readonly, nonatomic) _Bool supportsSMSRelay;
@@ -42,6 +44,7 @@
 @property(readonly, nonatomic) _Bool supportsHandoff;
 @property(readonly, nonatomic) _Bool supportsTethering;
 @property(readonly, nonatomic) _Bool supportsiCloudPairing;
+@property(readonly, nonatomic) NSUUID *stableBluetoothIdentifier;
 @property(retain, nonatomic, setter=setNSUUID:) NSUUID *nsuuid;
 @property(readonly, nonatomic) NSArray *linkedUserURIs;
 @property(readonly, nonatomic) unsigned long long serviceMinCompatibilityVersion;

@@ -9,11 +9,12 @@
 #import <NanoPassKit/PKPaymentServiceDelegate-Protocol.h>
 
 @class NPKPaymentBarcode, NSData, NSString, PKAssertion, PKPaymentPass, PKPaymentService, PKPaymentTransaction;
-@protocol NPKBarcodePaymentSessionDelegate, OS_dispatch_source;
+@protocol NPKBarcodePaymentSessionDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface NPKBarcodePaymentSession : NSObject <PKPaymentServiceDelegate>
 {
     _Bool _sessionStarted;
+    _Bool _submittingAuthenticationResult;
     id <NPKBarcodePaymentSessionDelegate> _delegate;
     NPKPaymentBarcode *_currentPaymentBarcode;
     unsigned long long _currentTransactionStatus;
@@ -23,13 +24,18 @@
     PKPaymentService *_paymentService;
     NSObject<OS_dispatch_source> *_sessionTimeoutTimer;
     PKAssertion *_notificationSuppressionAssertion;
+    PKAssertion *_expressTransactionSuppressionAssertion;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(retain, nonatomic) PKAssertion *expressTransactionSuppressionAssertion; // @synthesize expressTransactionSuppressionAssertion=_expressTransactionSuppressionAssertion;
 @property(retain, nonatomic) PKAssertion *notificationSuppressionAssertion; // @synthesize notificationSuppressionAssertion=_notificationSuppressionAssertion;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *sessionTimeoutTimer; // @synthesize sessionTimeoutTimer=_sessionTimeoutTimer;
 @property(retain, nonatomic) PKPaymentService *paymentService; // @synthesize paymentService=_paymentService;
 @property(retain, nonatomic) NSData *authorizationCredential; // @synthesize authorizationCredential=_authorizationCredential;
+@property(nonatomic) _Bool submittingAuthenticationResult; // @synthesize submittingAuthenticationResult=_submittingAuthenticationResult;
 @property(readonly, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property(retain, nonatomic) PKPaymentTransaction *currentTransaction; // @synthesize currentTransaction=_currentTransaction;
 @property(nonatomic) unsigned long long currentTransactionStatus; // @synthesize currentTransactionStatus=_currentTransactionStatus;
@@ -40,6 +46,8 @@
 - (void)_extendSessionTimeoutTimer;
 - (void)_stopSessionTimeoutTimer;
 - (void)_startSessionTimeoutTimer;
+- (void)_releaseExpressTransactionSuppressionAssertion;
+- (void)_acquireExpressTransactionSuppressAssertion;
 - (void)_releaseNotificationSuppressionAssertion;
 - (void)_acquireNotificationSuppressionAssertion;
 - (void)_completedAuthenticationForTransaction:(id)arg1;

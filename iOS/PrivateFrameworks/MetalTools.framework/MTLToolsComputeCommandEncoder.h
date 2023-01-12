@@ -13,6 +13,14 @@
 {
 }
 
+- (_Bool)encodeEndIf;
+- (void)encodeStartElse;
+- (void)encodeStartIf:(id)arg1 offset:(unsigned long long)arg2 comparison:(unsigned long long)arg3 referenceValue:(unsigned int)arg4;
+- (_Bool)encodeEndWhile;
+- (void)encodeStartWhile:(id)arg1 offset:(unsigned long long)arg2 comparison:(unsigned long long)arg3 referenceValue:(unsigned int)arg4;
+- (_Bool)encodeEndDoWhile:(id)arg1 offset:(unsigned long long)arg2 comparison:(unsigned long long)arg3 referenceValue:(unsigned int)arg4;
+- (void)encodeStartDoWhile;
+- (void)useResourceGroup:(id)arg1 usage:(unsigned long long)arg2;
 - (void)setAccelerationStructure:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;

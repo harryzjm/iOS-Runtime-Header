@@ -8,6 +8,8 @@
 
 #import <IconServices/ISCompositorRecipe-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface ISMessagesAppRecipe : NSObject <ISCompositorRecipe>
 {
@@ -17,6 +19,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
 - (id)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

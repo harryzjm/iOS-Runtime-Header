@@ -10,11 +10,24 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct atomic_flag {
+    _Atomic _Bool _Value;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    id _field1;
+    id _field2;
+    id _field3;
+    id _field4;
+    id _field5;
+    id _field6;
+} CDStruct_d92d5ea2;
 
 typedef struct {
     id _field1;
@@ -30,7 +43,7 @@ typedef struct {
         id _field3;
     } _field1;
     CDStruct_89ddc8e1 _field2;
-    CDStruct_89ddc8e1 _field3;
+    CDStruct_d92d5ea2 _field3;
     struct {
         id _field1;
         id _field2;
@@ -40,19 +53,16 @@ typedef struct {
         id _field6;
         id _field7;
         id _field8;
+        id _field9;
+        id _field10;
+        id _field11;
+        id _field12;
     } _field4;
     struct {
         id _field1;
         id _field2;
     } _field5;
-    struct {
-        id _field1;
-        id _field2;
-        id _field3;
-        id _field4;
-        id _field5;
-        id _field6;
-    } _field6;
+    CDStruct_d92d5ea2 _field6;
     struct {
         id _field1;
     } _field7;
@@ -66,5 +76,5 @@ typedef struct {
         id _field7;
     } _field8;
     CDStruct_89ddc8e1 _field9;
-} CDStruct_0a6492a9;
+} CDStruct_c4e2040f;
 

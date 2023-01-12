@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     _Bool _showsContactOnTap;
     CNContactFormatter *_contactFormatter;
     id <CNAvatarViewDelegate><CNQuickActionsViewDelegate> _delegate;
-    long long _monogrammerStyle;
     NSDictionary *_nameTextAttributes;
     NSArray *_actionCategories;
     CNQuickActionsManager *_actionsManager;
@@ -39,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *actionCategories; // @synthesize actionCategories=_actionCategories;
 @property(nonatomic) _Bool showsContactOnTap; // @synthesize showsContactOnTap=_showsContactOnTap;
 @property(copy, nonatomic) NSDictionary *nameTextAttributes; // @synthesize nameTextAttributes=_nameTextAttributes;
-@property(nonatomic) long long monogrammerStyle; // @synthesize monogrammerStyle=_monogrammerStyle;
 @property(nonatomic) struct UIEdgeInsets avatarMargins; // @synthesize avatarMargins=_avatarMargins;
 @property(nonatomic) struct CGSize avatarSize; // @synthesize avatarSize=_avatarSize;
 @property(nonatomic) __weak id <CNAvatarViewDelegate><CNQuickActionsViewDelegate> delegate; // @synthesize delegate=_delegate;

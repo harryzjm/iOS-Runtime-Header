@@ -23,9 +23,12 @@
 - (id)createNewAction;
 - (_Bool)requiresDeviceUnlock;
 - (_Bool)updateWithActionBuilder:(id)arg1;
+- (_Bool)canUpdateWithActionBuilder:(id)arg1;
 - (id)description;
 - (id)copyForCreatingNewAction;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (unsigned long long)hash;
+- (id)compareToObject:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) HMCharacteristicWriteAction *action; // @dynamic action;

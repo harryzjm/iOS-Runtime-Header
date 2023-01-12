@@ -17,6 +17,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)_accessibilityLabelHelper;
 - (_Bool)_axIsCircularProgressView;
 - (id)_axCustomView;
 - (_Bool)isAccessibilityElement;

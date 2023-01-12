@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <XCTTargetBootstrap/NSXPCListenerDelegate-Protocol.h>
-#import <XCTTargetBootstrap/XCTTarget-Protocol.h>
+#import <XCTTargetBootstrap/XCTMessagingChannel_DaemonToUIProcess-Protocol.h>
 
 @class NSString, NSXPCConnection, NSXPCListener;
 @protocol OS_dispatch_queue, XCTConnectionAccepting;
 
-@interface XCTTargetSession : NSObject <NSXPCListenerDelegate, XCTTarget>
+@interface XCTTargetSession : NSObject <NSXPCListenerDelegate, XCTMessagingChannel_DaemonToUIProcess>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_daemonConnection;
@@ -33,7 +33,7 @@
 - (void)_on_queue_connect;
 - (void)connect;
 - (id)initWithDaemonConnection:(id)arg1;
-- (id)init;
+- (id)initWithServiceName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

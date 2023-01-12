@@ -14,10 +14,6 @@
 - (id)labelForAxis:(id)arg1 index:(unsigned long long)arg2;
 - (double)unitSpaceValueForAxis:(id)arg1 index:(unsigned long long)arg2;
 - (unsigned long long)count:(id)arg1;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

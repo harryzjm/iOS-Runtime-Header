@@ -19,7 +19,9 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <CRCard> card; // @synthesize card=_card;
+- (_Bool)isShortcutCard:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *providerIdentifier;
+- (unsigned long long)displayPriorityForCardSection:(id)arg1;
 @property(readonly, nonatomic) NSArray *viewConfigurations; // @synthesize viewConfigurations=_viewConfigurations;
 - (id)initWithCard:(id)arg1;
 

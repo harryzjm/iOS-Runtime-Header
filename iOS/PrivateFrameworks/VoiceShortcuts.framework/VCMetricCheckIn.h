@@ -21,9 +21,11 @@
 @property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property(readonly, copy, nonatomic) NSDate *currentDate; // @synthesize currentDate=_currentDate;
 - (id)checkInKey;
+@property(readonly, copy, nonatomic) NSDate *intervalStartDate;
 @property(readonly, copy, nonatomic) NSDate *checkInDate;
 - (void)updateCheckInToNow;
 - (_Bool)isCheckInAllowed;
+- (id)calendar;
 - (id)initWithCurrentDate:(id)arg1 mode:(long long)arg2 defaults:(id)arg3;
 
 @end

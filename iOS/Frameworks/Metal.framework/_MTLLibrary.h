@@ -6,7 +6,7 @@
 
 #import <Metal/MTLLibrarySPI-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSData, NSMutableDictionary, NSString, NSUUID;
 @protocol MTLDevice;
 
 @interface _MTLLibrary <MTLLibrarySPI>
@@ -15,8 +15,10 @@
     struct MTLLibraryData *_libraryData;
     NSMutableDictionary *_functionDictionary;
     struct MTLLibraryContainer *_cacheEntry;
+    _Bool _shaderValidationEnabled;
 }
 
+@property(nonatomic) _Bool shaderValidationEnabled; // @synthesize shaderValidationEnabled=_shaderValidationEnabled;
 @property(readonly) struct MTLLibraryContainer *cacheEntry; // @synthesize cacheEntry=_cacheEntry;
 @property(readonly, retain, nonatomic) NSMutableDictionary *functionDictionary; // @synthesize functionDictionary=_functionDictionary;
 @property(readonly) struct MTLLibraryData *libraryData; // @synthesize libraryData=_libraryData;
@@ -27,10 +29,14 @@
 @property(readonly) NSString *installName;
 @property(readonly) long long type; // @dynamic type;
 - (id)initWithLibraryContainer:(struct MTLLibraryContainer *)arg1 device:(id)arg2;
+- (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
 - (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)newIntersectionFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 error:(id *)arg3;
 - (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (id)newSpecializedFunctionWithDescriptorInternal:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
 - (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)newFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 functionCache:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 functionCache:(id)arg3 error:(id *)arg4;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -41,8 +47,10 @@
 - (id)newFunctionWithName:(id)arg1;
 - (id)newExternFunctionWithName:(id)arg1;
 - (id)newFunctionWithNameInternal:(id)arg1;
+@property(readonly) NSData *bitcodeData; // @dynamic bitcodeData;
 @property(readonly, retain) NSArray *externFunctionNames; // @dynamic externFunctionNames;
 @property(readonly, retain) NSArray *functionNames; // @dynamic functionNames;
+@property(readonly, copy) NSUUID *libraryIdentifier; // @dynamic libraryIdentifier;
 @property(copy) NSString *overrideTriple; // @dynamic overrideTriple;
 - (id)libraryDataContents;
 @property(readonly) NSArray *variableList;

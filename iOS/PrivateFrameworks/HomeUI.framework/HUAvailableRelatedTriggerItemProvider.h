@@ -6,7 +6,7 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HMHome, HURecommendationItemProvider, HUTriggerItemProvider, NSArray, NSMutableSet, NSSet;
+@class HMHome, HRERecommendationItemProvider, HUTriggerItemProvider, NSArray, NSMutableSet, NSSet;
 @protocol HUAvailableRelatedTriggerItemModuleContextProviding;
 
 @interface HUAvailableRelatedTriggerItemProvider : HFItemProvider
@@ -15,7 +15,7 @@
     NSArray *_relatedItems;
     CDUnknownBlockType _triggerFilter;
     id <HUAvailableRelatedTriggerItemModuleContextProviding> _context;
-    HURecommendationItemProvider *_recommendationItemProvider;
+    HRERecommendationItemProvider *_recommendationItemProvider;
     HUTriggerItemProvider *_relatedActiveTriggerItemProvider;
     NSMutableSet *_triggerItems;
     NSMutableSet *_updatesDisabledReasons;
@@ -25,7 +25,7 @@
 @property(retain, nonatomic) NSMutableSet *updatesDisabledReasons; // @synthesize updatesDisabledReasons=_updatesDisabledReasons;
 @property(retain, nonatomic) NSMutableSet *triggerItems; // @synthesize triggerItems=_triggerItems;
 @property(retain, nonatomic) HUTriggerItemProvider *relatedActiveTriggerItemProvider; // @synthesize relatedActiveTriggerItemProvider=_relatedActiveTriggerItemProvider;
-@property(retain, nonatomic) HURecommendationItemProvider *recommendationItemProvider; // @synthesize recommendationItemProvider=_recommendationItemProvider;
+@property(retain, nonatomic) HRERecommendationItemProvider *recommendationItemProvider; // @synthesize recommendationItemProvider=_recommendationItemProvider;
 @property(readonly, nonatomic) id <HUAvailableRelatedTriggerItemModuleContextProviding> context; // @synthesize context=_context;
 @property(copy, nonatomic) CDUnknownBlockType triggerFilter; // @synthesize triggerFilter=_triggerFilter;
 @property(readonly, nonatomic) NSArray *relatedItems; // @synthesize relatedItems=_relatedItems;
@@ -36,7 +36,6 @@
 - (id)reloadAvailableTriggerItemsWithObjects:(id)arg1;
 - (_Bool)relatedItemsAffectedByTrigger:(id)arg1;
 - (id)itemsToHideInSet:(id)arg1;
-- (void)updateNaturalLanguageTitleOptionsWithItems:(id)arg1;
 - (id)reloadItems;
 @property(readonly, nonatomic) NSSet *itemProviders;
 - (id)items;

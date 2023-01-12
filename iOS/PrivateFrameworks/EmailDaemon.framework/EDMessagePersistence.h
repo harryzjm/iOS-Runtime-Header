@@ -10,7 +10,7 @@
 #import <EmailDaemon/EDMessageObjectIDToDatabaseIDConverter-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
-@class EDMailboxPersistence, EDPersistenceDatabase, NSNumber, NSString;
+@class EDMailboxPersistence, EDMessageTransformer, EDPersistenceDatabase, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 @interface EDMessagePersistence : NSObject <EFLoggable, EDMailboxPredictionQueryAdapter, EDMessageObjectIDToDatabaseIDConverter>
@@ -20,6 +20,7 @@
     NSObject<OS_dispatch_queue> *_cachedMetadataIsolation;
     NSNumber *_cachedMetadataEstimatedRowCount;
     EDPersistenceDatabase *_database;
+    EDMessageTransformer *_messageTransformer;
 }
 
 + (id)protectedMessageDataTableSchema;
@@ -27,7 +28,6 @@
 + (id)subjectsTableSchema;
 + (id)addressesTableSchema;
 + (id)protectedTablesAndForeignKeysToResolve:(id *)arg1;
-+ (id)attachmentsTableSchemaAndForeignKeysToResolve:(id *)arg1;
 + (id)messageGlobalDataTableSchema;
 + (id)_cachedMetadataTableSchema;
 + (id)_messageReferencesTableSchema;
@@ -39,15 +39,16 @@
 + (id)objectPropertyMapperForSchema:(id)arg1 protectedSchema:(id)arg2;
 + (id)messageGlobalDataTableName;
 + (id)addressesTableName;
-+ (id)attachmentsTableName;
 + (id)messagesTableName;
 + (id)log;
 - (void).cxx_destruct;
+@property(retain, nonatomic) EDMessageTransformer *messageTransformer; // @synthesize messageTransformer=_messageTransformer;
 @property(readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
 @property(nonatomic) int cachedMetadataUpdatesSinceLastCheck; // @synthesize cachedMetadataUpdatesSinceLastCheck=_cachedMetadataUpdatesSinceLastCheck;
 @property(retain, nonatomic) NSNumber *cachedMetadataEstimatedRowCount; // @synthesize cachedMetadataEstimatedRowCount=_cachedMetadataEstimatedRowCount;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *cachedMetadataIsolation; // @synthesize cachedMetadataIsolation=_cachedMetadataIsolation;
 @property(readonly, nonatomic) __weak EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
+- (void)iterateMessagesMatchingSmartSortQuery:(id)arg1 limit:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)requestSummaryForMessageObjectID:(id)arg1;
 - (id)requestContentForMessageObjectID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
@@ -55,6 +56,8 @@
 - (long long)globalIDForMessageWithDatabaseID:(long long)arg1 mailboxScope:(id *)arg2;
 - (long long)globalIDForMessageIDHeader:(id)arg1;
 - (id)messageObjectIDForURL:(id)arg1;
+- (_Bool)compressDirectory:(id)arg1 shouldCancel:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (_Bool)compressFile:(id)arg1 error:(id *)arg2;
 - (id)cachedDatabaseIDsDictionaryForGlobalMessageIDs:(id)arg1;
 - (void)_checkCachedMetadataRowLimitWithConnection:(id)arg1;
 - (void)_setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 globalMessageID:(long long)arg3;
@@ -64,6 +67,7 @@
 - (id)_groupMessageObjectIDsByMailboxScope:(id)arg1;
 - (id)messagesForMessageObjectIDs:(id)arg1 missedMessageObjectIDs:(id *)arg2;
 - (id)messagesForPersistedMessages:(id)arg1 mailboxScope:(id)arg2;
+- (id)persistedMessageIDsForGlobalMessageIDs:(id)arg1;
 - (id)persistedMessagesForDatabaseIDs:(id)arg1 requireProtectedData:(_Bool)arg2 temporarilyUnavailableDatabaseIDs:(id *)arg3;
 - (id)persistedMessagesForMessageObjectIDs:(id)arg1 requireProtectedData:(_Bool)arg2 temporarilyUnavailableMessageObjectIDs:(id *)arg3;
 - (id)_threadQueryForThreadObjectID:(id)arg1;
@@ -85,7 +89,7 @@
 - (void)performDatabaseReadBlock:(CDUnknownBlockType)arg1;
 - (void)performDatabaseWorkInBlockWithHighPriority:(CDUnknownBlockType)arg1;
 - (void)reconcileJournalWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2;
+- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2 userProfileProvider:(id)arg3 blockedSenderManager:(id)arg4 vipReader:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

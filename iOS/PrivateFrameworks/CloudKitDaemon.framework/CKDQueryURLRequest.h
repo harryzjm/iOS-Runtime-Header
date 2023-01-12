@@ -8,7 +8,6 @@
 
 @class CKQuery, CKRecordZoneID, NSArray, NSData, NSMutableArray, NSSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDQueryURLRequest <CKDURLRequestPipelining>
 {
     NSMutableArray *_queryResponses;
@@ -40,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
+- (_Bool)requiresCKAnonymousUserIDs;
+- (_Bool)handlesAnonymousCKUserIDPropagation;
 - (id)zoneIDsToLock;
 - (_Bool)requestGETPreAuth;
 - (_Bool)allowsAnonymousAccount;

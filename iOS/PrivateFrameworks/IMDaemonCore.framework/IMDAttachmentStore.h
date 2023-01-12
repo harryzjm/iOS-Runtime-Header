@@ -10,6 +10,10 @@
 {
 }
 
++ (_Bool)updateTransferIn:(id)arg1 fromGUID:(id)arg2 toGUID:(id)arg3;
++ (void)_askToTapToRadarForErrorString:(id)arg1 path:(id)arg2;
++ (_Bool)fileEligibleForCacheDelete:(id)arg1;
++ (_Bool)_cloudkitSyncingEnabled;
 + (id)sharedInstance;
 - (_Bool)_transferCanBeMarkedPurgable:(id)arg1;
 - (_Bool)isSafeToDeleteAttachmentAtPath:(id)arg1;
@@ -18,7 +22,7 @@
 - (_Bool)deleteAttachmentsWithGUIDs:(id)arg1;
 - (void)markAllAttachmentsAsNeedingCloudKitSync;
 - (id)_updatedMessageBody:(id)arg1 replacingGuid:(id)arg2 withGuid:(id)arg3;
-- (_Bool)_updateLegacyTransferGUIDOnMessageIfNeeded:(id)arg1 andUpdateTransfer:(id)arg2;
+- (_Bool)_updateLegacyTransferGUIDOn:(id)arg1 andUpdateMessageIfNeeded:(id)arg2 transfersToSync:(id)arg3;
 - (void)_reindexMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_updateAttachmentGUID:(id)arg1 withGUID:(id)arg2;
 - (id)_IMTransferGUIDForMessageGUID:(id)arg1 andIndex:(unsigned long long)arg2;
@@ -26,15 +30,15 @@
 - (struct _IMDAttachmentRecordStruct *)_loadAttachmentRecordForGUID:(id)arg1;
 - (_Bool)updateLegacyTransferGUIDOnMessageIfNeeded:(id)arg1;
 - (_Bool)_shouldEarlyReturnForWrongItemType:(id)arg1;
-- (_Bool)updateLegacyTransferGUIDIfNeeded:(id)arg1;
+- (_Bool)updateLegacyTransferGUIDIfNeeded:(id)arg1 transfersToSync:(id)arg2;
 - (id)fileTransferWithAttachmentRecordRef:(struct _IMDAttachmentRecordStruct *)arg1;
+- (id)attachmentsWithGUIDs:(id)arg1;
 - (id)attachmentWithGUID:(id)arg1;
 - (void)markAllAttachmentsAsNotPurgeable;
-- (id)getAuxVideoPath:(id)arg1;
+- (void)markAttachment:(id)arg1 purgeable:(_Bool)arg2;
+- (void)markAttachmentUnpurgeable:(id)arg1;
 - (void)markAttachmentPurgeable:(id)arg1;
-- (_Bool)_fileEligibleForCacheDelete:(id)arg1;
-- (_Bool)_cloudkitSyncingEnabled;
-- (void)markFileAsPurgeable:(id)arg1;
+- (void)markFile:(id)arg1 asPurgeable:(_Bool)arg2;
 - (_Bool)updateAttachment:(id)arg1 chatGUID:(id)arg2 storeAtExternalPath:(_Bool)arg3;
 - (_Bool)updateAttachment:(id)arg1;
 - (_Bool)removeAttachment:(id)arg1 fromMessageWithGUID:(id)arg2;

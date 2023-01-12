@@ -9,7 +9,7 @@
 #import <network/OS_nw_endpoint_handler-Protocol.h>
 
 @class NSString;
-@protocol NWConcrete_nw_endpoint_mode_handler, OS_nw_association, OS_nw_endpoint, OS_nw_object, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
+@protocol NWConcrete_nw_endpoint_mode_handler, OS_nw_association, OS_nw_context, OS_nw_endpoint, OS_nw_object, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint_handler : NSObject <OS_nw_endpoint_handler>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_object> *callback_context;
     NSObject<OS_nw_endpoint> *endpoint;
     NSObject<OS_nw_parameters> *parameters;
+    NSObject<OS_nw_context> *context;
     NSObject<OS_nw_association> *association;
     NSObject<OS_nw_path> *current_path;
     NWConcrete_nw_endpoint_handler *parent_handler;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
     char id_str[75];
     NSObject<NWConcrete_nw_endpoint_mode_handler> *mode_handler;
     NSObject<OS_nw_path_evaluator> *override_evaluator;
+    int privacy_stance;
     unsigned int dry_run:1;
     unsigned int triggering_voluntary_agents:1;
     unsigned int reuse_association:1;

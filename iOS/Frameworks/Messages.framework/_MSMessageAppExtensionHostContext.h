@@ -28,6 +28,7 @@
 - (void)_openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_remoteViewDidBecomeReadyForDisplay;
 - (void)_updateSnapshotForNextLaunch:(id)arg1;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 destructiveButtonTitle:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_dismissAndPresentPhotosApp;
 - (void)_dismiss;

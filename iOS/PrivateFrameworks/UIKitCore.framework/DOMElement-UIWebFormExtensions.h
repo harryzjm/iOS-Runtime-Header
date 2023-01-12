@@ -10,10 +10,7 @@
 - (void)getTextWritingDirection:(long long *)arg1 override:(_Bool *)arg2;
 - (_Bool)isHidden;
 - (_Bool)inDocument;
-- (_Bool)hasCustomLineHeight;
-- (_Bool)selectable;
 - (_Bool)touchCalloutEnabled;
 - (id)tapHighlightColor;
-- (_Bool)exceedsStructuralComplexity:(int)arg1;
 @end
 

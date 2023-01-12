@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/_TVAppNavigationController_iOS.h>
-
-@interface VUIAppNavigationController : _TVAppNavigationController_iOS
+@interface VUIAppNavigationController
 {
 }
 

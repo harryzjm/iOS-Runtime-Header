@@ -7,7 +7,7 @@
 #import <TSUtility/TSUMutableLinkedPointerSet.h>
 
 @interface TSUMutableLinkedPointerSet (TSPArchivingUtility)
-- (void)encodeToOwnedReferenceMessage:(RepeatedPtrField_54b3089c *)arg1 archiver:(id)arg2;
-- (void)encodeToReferenceMessage:(RepeatedPtrField_54b3089c *)arg1 archiver:(id)arg2;
+- (void)encodeToOwnedReferenceMessage:(void *)arg1 archiver:(id)arg2;
+- (void)encodeToReferenceMessage:(void *)arg1 archiver:(id)arg2;
 @end
 

@@ -25,15 +25,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <HDGymKitSettingsDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)_isSatelliteWatch;
-- (void)_currentActivityMoveModeWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_setConnectedGymPreferencesDefaultNFCAlwaysOnEnabled:(_Bool)arg1;
-- (void)_enableNFCAlwaysOnIfWatchWorkout;
-- (void)_stopObservingWatchWorkouts;
-- (void)_startObservingWatchWorkouts;
-- (void)_handleNFCPreferencesForNFCAlwaysOn:(_Bool)arg1;
 - (void)_setNFCAlwaysOnPreferenceIfNecessary;
-- (void)_monitorFieldAndPrivacySettings;
 - (void)unitTest_simulateNRDeviceUpdate;
 - (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
@@ -41,7 +33,7 @@
 @property(readonly, nonatomic) _Bool fitnessTrackingEnabled;
 @property(readonly, nonatomic) unsigned long long nfcPermission;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1;
+- (id)initWithProfile:(id)arg1 queue:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

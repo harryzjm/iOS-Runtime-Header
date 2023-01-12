@@ -10,7 +10,7 @@
 
 @interface TSCHAssetColorMap : NSObject
 {
-    NSDictionary *mAssetPathToColorMap;
+    NSDictionary *_assetPathToColorMap;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

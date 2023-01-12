@@ -8,20 +8,24 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString, PKAccount, PKPaymentTransaction, PKTransactionReceipt, PKTransactionSource;
+@class NSString, PKAccount, PKAccountUserCollection, PKFamilyMemberCollection, PKPaymentTransaction, PKTransactionReceipt, PKTransactionSourceCollection;
 
 @interface PKDashboardTransactionReceiptItem : NSObject <PKDashboardItem>
 {
     PKTransactionReceipt *_receipt;
     PKPaymentTransaction *_transaction;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     PKAccount *_account;
+    PKAccountUserCollection *_accountUserCollection;
+    PKFamilyMemberCollection *_familyCollection;
 }
 
 + (id)identifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKFamilyMemberCollection *familyCollection; // @synthesize familyCollection=_familyCollection;
+@property(retain, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
 @property(retain, nonatomic) PKAccount *account; // @synthesize account=_account;
-@property(retain, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(retain, nonatomic) PKTransactionSourceCollection *transactionSourceCollection; // @synthesize transactionSourceCollection=_transactionSourceCollection;
 @property(retain, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 @property(retain, nonatomic) PKTransactionReceipt *receipt; // @synthesize receipt=_receipt;
 

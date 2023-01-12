@@ -22,7 +22,6 @@
 + (_Bool)supportsSecureCoding;
 + (id)domainForExtrasValues;
 + (id)domainForSyncingMusicLibraryWithLibraryPath:(id)arg1;
-+ (id)allSyncingDomains;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool supportsSyncProtocol; // @synthesize supportsSyncProtocol=_supportsSyncProtocol;
 @property(readonly, nonatomic) NSString *foreignDatabasePath; // @synthesize foreignDatabasePath=_foreignDatabasePath;

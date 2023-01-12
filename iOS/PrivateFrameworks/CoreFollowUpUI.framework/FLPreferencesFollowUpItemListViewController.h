@@ -29,6 +29,7 @@
 - (id)followUpItemSpecifiers;
 - (void)handleURL:(id)arg1;
 - (id)specifiers;
+- (void)reloadSpecifiers;
 - (void)setSpecifier:(id)arg1;
 - (id)_viewModel;
 

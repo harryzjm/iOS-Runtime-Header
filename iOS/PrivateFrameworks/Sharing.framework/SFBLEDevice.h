@@ -15,6 +15,7 @@
     char _rssiHistory[8];
     unsigned char _rssiCount;
     unsigned char _rssiIndex;
+    _Bool _useBTPipe;
     _Bool _insideBubble;
     _Bool _insideSmallBubble;
     _Bool _insideMediumBubble;
@@ -71,6 +72,7 @@
 @property(nonatomic) long long rssi; // @synthesize rssi=_rssi;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) _Bool insideBubble; // @synthesize insideBubble=_insideBubble;
+@property(nonatomic) _Bool useBTPipe; // @synthesize useBTPipe=_useBTPipe;
 @property(copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) unsigned long long foundTicks; // @synthesize foundTicks=_foundTicks;
 @property(nonatomic) long long distance; // @synthesize distance=_distance;

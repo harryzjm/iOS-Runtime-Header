@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/CPLStatusDelegate-Protocol.h>
 #import <Photos/PHBatchFetchingArrayDataSource-Protocol.h>
 #import <Photos/PHPerformChangesRequest-Protocol.h>
 
 @class CPLStatus, NSError, NSHashTable, NSManagedObjectID, NSMutableDictionary, NSProgress, NSString, NSURL, PAImageConversionServiceClient, PAVideoConversionServiceClient, PHPerformChangesRequest, PHPersistentChangeToken, PHPhotoLibraryAppPrivateData, PLAssetsdClient, PLCacheMetricsCollectorClient, PLFileSystemVolume, PLLazyObject, PLPhotoAnalysisServiceClient, PLPhotoKitVariationCache, PLPhotoLibrary, PLPhotoLibraryBundle;
 @protocol OS_dispatch_queue, PLPhotoAnalysisServiceTaxonomyResolver;
 
-@interface PHPhotoLibrary : NSObject <PHBatchFetchingArrayDataSource, PHPerformChangesRequest>
+@interface PHPhotoLibrary : NSObject <PHBatchFetchingArrayDataSource, CPLStatusDelegate, PHPerformChangesRequest>
 {
     PLLazyObject *_lazyPhotoLibrary;
     PLLazyObject *_lazyMainQueueConcurrencyPhotoLibrary;
@@ -25,8 +26,11 @@
     PLLazyObject *_lazyProjectAlbumRootFolderObjectID;
     PLLazyObject *_lazyAppPrivateData;
     PLLazyObject *_lazyCacheMetricsCollectorClient;
+    PLLazyObject *_lazyCPLStatus;
+    PLLazyObject *_lazyIsReadyForAnalysis;
     PLFileSystemVolume *_libraryFileSystemVolume;
     _Atomic _Bool _isCompletedPostOpenInitialization;
+    long long _wellKnownPhotoLibraryIdentifier;
     _Bool _unknownMergeEvent;
     _Bool _isChangeProcessingPending;
     _Bool _clearsOIDCacheAfterFetchResultDealloc;
@@ -72,6 +76,9 @@
 + (const char *)systemPhotoLibraryAvailableNotificationName;
 + (const char *)systemPhotoLibraryURLChangeNotificationName;
 + (_Bool)setSystemPhotoLibraryURL:(id)arg1 error:(id *)arg2;
++ (_Bool)createOrUpgradePhotoLibraryWithWellKnownIdentifier:(long long)arg1 error:(id *)arg2;
++ (id)openPhotoLibraryWithWellKnownIdentifier:(long long)arg1 error:(id *)arg2;
++ (id)wellKnownPhotoLibraryURLForIdentifier:(long long)arg1;
 + (id)systemPhotoLibraryURL;
 + (_Bool)isMultiLibraryModeEnabled;
 + (void)enableMultiLibraryMode;
@@ -89,6 +96,7 @@
 + (id)_sharedPhotoLibrary;
 + (id)sharedPhotoLibrary;
 + (void)initialize;
++ (double)nextOverrideTimeIntervalForSystemBudgets:(unsigned long long)arg1;
 + (void)setSharedPhotoLibrary:(id)arg1;
 + (_Bool)hasSharedPhotoLibrary;
 + (void)assertRunningInExtension;
@@ -117,6 +125,11 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain) NSError *unavailabilityReason; // @synthesize unavailabilityReason=_unavailabilityReason;
 @property(readonly, nonatomic) unsigned short type; // @synthesize type=_type;
+- (void)legacySaveScreenshotToCameraRoll:(id)arg1 completionTarget:(id)arg2 completionSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)legacySaveImageToCameraRoll:(id)arg1 completionTarget:(id)arg2 completionSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)legacySaveVideoToCameraRoll:(id)arg1 completionTarget:(id)arg2 completionSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)legacySaveImageDataToCameraRoll:(id)arg1 completionTarget:(id)arg2 completionSelector:(SEL)arg3 contextInfo:(void *)arg4;
+- (void)_callLegacyCompletionTarget:(id)arg1 completionSelector:(SEL)arg2 contextInfo:(void *)arg3 withSuccess:(_Bool)arg4 error:(id)arg5;
 - (void)resetLimitedLibraryAccessForApplication:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)countOfReferencedMediaWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isReadyForAnalysis;
@@ -134,8 +147,8 @@
 - (id)fetchUpdatedObject:(id)arg1;
 - (id)fetchPHObjectsForUUIDs:(id)arg1 entityName:(id)arg2;
 - (id)fetchedObjectsForOIDs:(id)arg1 propertySetClass:(Class)arg2;
-- (id)fetchPHObjectsForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2 includeTrash:(_Bool)arg3;
-- (id)fetchDictionariesByPHClassForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2 includeTrash:(_Bool)arg3;
+- (id)fetchPHObjectsForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2 includeTrash:(_Bool)arg3 overrideResultsWithClass:(Class)arg4;
+- (id)fetchDictionariesByPHClassForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2 includeTrash:(_Bool)arg3 overrideWithPHClass:(Class)arg4;
 - (id)fetchPHObjectsForOIDs:(id)arg1;
 - (id)queryForType:(id)arg1 withIdentifiers:(id)arg2 local:(_Bool)arg3;
 - (id)urlForApplicationDataFolderIdentifier:(long long)arg1;
@@ -156,6 +169,8 @@
 - (void)_cancelTransactionOnExecutionContext:(id)arg1 withInstrumentation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_endTransaction;
 - (void)_sendChangesRequest:(id)arg1 onExecutionContext:(id)arg2 withInstrumentation:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_sendChangesRequest:(id)arg1 onExecutionContext:(id)arg2 withInstrumentation:(id)arg3 remainingRetryCount:(long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (long long)_initialRetryCountForChangesRequest:(id)arg1;
 - (id)_popChangesRequest;
 - (void)_commitTransactionOnExecutionContext:(id)arg1 withInstrumentation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_beginTransaction;
@@ -184,7 +199,6 @@
 - (id)objectFetchingManagedObjectContextForObject:(id)arg1 propertySet:(id)arg2;
 - (id)objectFetchingContextForCurrentQueueQoS;
 - (id)photoLibraryForCurrentQueueQoS;
-- (id)managedObjectContextForCurrentQueueQoS;
 @property(readonly) PLPhotoLibrary *backgroundQueueObjectFetchingPhotoLibrary;
 @property(readonly) PLPhotoLibrary *userInitiatedQueuePhotoLibrary;
 @property(readonly) PLPhotoLibrary *backgroundQueuePhotoLibrary;
@@ -199,6 +213,10 @@
 - (id)pl_photoLibraryForCMM;
 @property(readonly) PLPhotoKitVariationCache *variationCache;
 - (id)libraryID;
+- (void)accountDidChange:(id)arg1;
+- (id)_initializeIsReadyForAnalysis;
+- (void)statusDidChange:(id)arg1;
+- (id)_initializeCPLStatus;
 - (void)dealloc;
 - (void)_invalidateEverythingWithReason:(id)arg1;
 - (id)initWithPhotoLibraryBundle:(id)arg1 type:(unsigned short)arg2;
@@ -208,10 +226,13 @@
 - (_Bool)isPHPhotoLibraryForCMM;
 - (void)closeWithReason:(id)arg1;
 - (void)close;
+- (void)resetFaceAnalysisWithResetLevel:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)upgradePhotoLibraryUsingOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)openAndWaitWithUpgrade:(_Bool)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)openAndWaitWithUpgrade:(_Bool)arg1 error:(id *)arg2;
 - (id)plLibraryOptionsFromPHOptions:(id)arg1 createOptions:(unsigned long long *)arg2;
+- (_Bool)shouldMobileSlideShowLaunchWithError:(id *)arg1;
+- (_Bool)createOrUpgradeLibraryUsingOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)createPhotoLibraryUsingOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)createPhotoLibraryWithOptions:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)createPhotoLibraryWithError:(id *)arg1;
@@ -224,24 +245,40 @@
 @property(readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) _Bool cloudPhotoLibraryEnabled;
 @property(readonly, nonatomic) _Bool isCloudPhotoLibrary;
 @property(readonly, nonatomic) _Bool isSystemPhotoLibrary;
+@property(readonly, nonatomic) long long wellKnownPhotoLibraryIdentifier;
 - (id)initWithPhotoLibraryURL:(id)arg1;
 - (id)initMomentShareLibrary;
 - (id)initSharedLibrary;
 - (id)init;
 @property(readonly, nonatomic) NSString *uuid;
+- (void)_importIntoLibraryWithAssetCollection:(id)arg1 assetBundles:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (void)_importExportRequests:(id)arg1 assetCollection:(id)arg2 bundleStagingDirectoryURL:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (void)_importRenderedAssets:(id)arg1 assetCollection:(id)arg2 bundleStagingDirectoryURL:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (void)importAssetsFromLibrary:(id)arg1 assetIdentifiers:(id)arg2 containerIdentifier:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (int)requestProcessingTypes:(unsigned long long)arg1 forAssetsWithLocalIdentifiers:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)sharingSuggestionWithRandomPick:(_Bool)arg1 fallbackToRecentMoments:(_Bool)arg2 needsNotification:(_Bool)arg3;
 - (id)pl_syncProgressAlbums;
 - (id)migrationDate;
+- (id)managedObjectContextForCurrentQueueQoS;
+- (id)sceneTaxonomyDetectorNodeSceneIDsFromSceneID:(unsigned int)arg1;
 - (id)sceneInformationFromStartDate:(id)arg1 toEndDate:(id)arg2;
 @property(retain, nonatomic) id <PLPhotoAnalysisServiceTaxonomyResolver> taxonomyResolver;
 - (void)setWidgetTimelineGeneratedForDisplaySize:(struct CGSize)arg1;
 - (id)cloudIdentifiersForLocalIdentifiers:(id)arg1;
 - (id)localIdentifiersForCloudIdentifiers:(id)arg1;
+- (id)cloudIdentifierMappingsForLocalIdentifiers:(id)arg1;
+- (id)localIdentifierMappingsForCloudIdentifiers:(id)arg1;
+- (id)_fingerPrintsForAssetUUIDs:(id)arg1;
+- (id)_computeFingerprintsForAssetsWithObjectIDsByUUID:(id)arg1;
+- (id)_getAssetLocalIdentifiersByFingerPrintForFingerPrints:(id)arg1;
+- (id)lookupCloudIdentifiersForLocalIdentifiers:(id)arg1;
+- (id)lookupLocalIdentifiersForCloudIdentifiers:(id)arg1;
+- (id)_getCloudClient;
 - (id)_getPhotoKitClient;
 - (id)_cloudIdentifierKeysByFetchType;
 - (id)bfa_photoLibrary;
-- (id)bfa_tombstoneObjectForOID:(id)arg1 uuid:(id)arg2 propertyHint:(unsigned long long)arg3;
-- (id)bfa_fetchObjectsForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2;
+- (id)bfa_tombstoneObjectForOID:(id)arg1 uuid:(id)arg2 propertyHint:(unsigned long long)arg3 overrideResultsWithClass:(Class)arg4;
+- (id)bfa_fetchObjectsForOIDs:(id)arg1 propertyHint:(unsigned long long)arg2 overrideResultsWithClass:(Class)arg3;
 - (id)bfa_fetchedObjectsForOIDs:(id)arg1 propertySetClass:(Class)arg2;
 - (id)newUnclusteredFacesFetchOptions;
 - (id)newFaceCropsToBeGeneratedFetchOptions;
@@ -272,13 +309,11 @@
 - (id)requestZeroKeywordsWithOptions:(id)arg1 error:(id *)arg2;
 - (void)requestSearchIndexGraphUpdates:(id)arg1 supportingData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)requestSearchIndexUpdates:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)unloadGraph;
-- (void)loadGraph;
+- (void)requestSyndicationProcessingWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestGenerateQuestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)runPFLWithAttachments:(id)arg1 recipeUserInfo:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)requestTextFeaturesForMomentLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (void)simulateMemoriesNotificationWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)generateMemoriesRelatedDiagnosticsLogsWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)requestEnrichmentWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)requestAssetRevGeocodingForAssetLocalIdentifiers:(id)arg1 withError:(id *)arg2;
 - (_Bool)requestAssetRevGeocodingWithError:(id *)arg1;
@@ -303,14 +338,16 @@
 - (id)highlightDebugInformationForHighlightWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)memoryDebugInformationForMemoryWithLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (void)cancelOperationsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)workInfoForAnalysisWithWorkerType:(short)arg1 additionalStatesToExclude:(id)arg2 fetchLimit:(unsigned long long)arg3 error:(id *)arg4;
+- (_Bool)photoAnalysisClientAllowed;
 - (double)_analysisProgressForHighlight:(id)arg1 fetchCountBlock:(CDUnknownBlockType)arg2;
-- (double)sceneAnalysisProgressForHighlight:(id)arg1 usingSceneVersion:(unsigned long long)arg2;
+- (double)sceneAnalysisProgressForHighlight:(id)arg1 usingSceneVersion:(short)arg2;
+- (double)ratioOfAssetsWithFullAnalysisProcessed;
 - (double)ratioOfAssetsWithFacesProcessed;
 - (double)ratioOfAssetsWithScenesProcessed;
-- (double)ratioOfAssetsAtOrAboveSceneAnalysisVersion:(unsigned long long)arg1;
+- (double)ratioOfAssetsAtOrAboveSceneAnalysisVersion:(short)arg1;
 - (id)analysisProgressCountsForWorkerType:(short)arg1;
 - (id)faceAnalysisProgressCounts;
+- (_Bool)petVIPModelExists;
 - (id)assetUUIDsAllowedForCurationFromAssets:(id)arg1;
 - (double)faceAnalysisProgressForHighlight:(id)arg1 error:(id *)arg2;
 - (id)_assetOIDsForHighlight:(id)arg1 withContext:(id)arg2;

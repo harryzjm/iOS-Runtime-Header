@@ -17,13 +17,17 @@
     _Bool _edited;
     _Bool _image;
     _Bool _video;
+    long long _assetSource;
     NSArray *_keywords;
     NSArray *_uuids;
+    long long _libraryType;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long libraryType; // @synthesize libraryType=_libraryType;
 @property(copy, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;
 @property(copy, nonatomic) NSArray *keywords; // @synthesize keywords=_keywords;
+@property(nonatomic) long long assetSource; // @synthesize assetSource=_assetSource;
 @property(nonatomic) _Bool video; // @synthesize video=_video;
 @property(nonatomic) _Bool image; // @synthesize image=_image;
 @property(nonatomic) _Bool edited; // @synthesize edited=_edited;
@@ -35,12 +39,13 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (_Bool)isFilterActive:(long long)arg1;
+- (_Bool)isContentFilterActive:(long long)arg1;
 - (id)predicateForUseCase:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *localizedFooterDescriptionForFilters;
 @property(readonly, nonatomic) NSString *localizedDescriptionForFilters;
-- (long long)ruleCount;
+- (id)initWithLibraryType:(long long)arg1;
 @property(readonly, nonatomic) _Bool hasRules;
+@property(readonly, nonatomic) long long ruleCount;
 
 @end
 

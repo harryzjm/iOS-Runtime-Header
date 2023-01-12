@@ -19,6 +19,7 @@
     NSUUID *_uniqueIdentifier;
     NSDate *_startDate;
     double _duration;
+    long long _quality;
     double _targetFragmentDuration;
     NSArray *_posterFrames;
     NSSet *_significantEvents;
@@ -36,6 +37,7 @@
 @property(readonly, copy) NSSet *significantEvents; // @synthesize significantEvents=_significantEvents;
 @property(readonly, copy) NSArray *posterFrames; // @synthesize posterFrames=_posterFrames;
 @property(readonly) double targetFragmentDuration; // @synthesize targetFragmentDuration=_targetFragmentDuration;
+@property(readonly) long long quality; // @synthesize quality=_quality;
 @property(readonly, getter=isDonated) _Bool donated; // @synthesize donated=_donated;
 @property(readonly, getter=isComplete) _Bool complete; // @synthesize complete=_complete;
 @property(readonly) double duration; // @synthesize duration=_duration;
@@ -45,14 +47,18 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSArray *videoDataSegments;
 @property(readonly) _Bool canAskForUserFeedback;
 @property(readonly, copy) NSData *encryptionKey;
 @property(readonly, copy) NSDictionary *videoAssetRequiredHTTPHeaders;
-- (id)description;
-- (id)initWithUniqueIdentifier:(id)arg1 startDate:(id)arg2 duration:(double)arg3 targetFragmentDuration:(double)arg4 isComplete:(_Bool)arg5 isDonated:(_Bool)arg6 streamingAssetVersion:(id)arg7 encryptionContext:(id)arg8 posterFrames:(id)arg9 videoSegments:(id)arg10 significantEvents:(id)arg11;
+@property(readonly, copy) NSString *description;
+- (id)initWithUniqueIdentifier:(id)arg1 startDate:(id)arg2 duration:(double)arg3 targetFragmentDuration:(double)arg4 isComplete:(_Bool)arg5 isDonated:(_Bool)arg6 quality:(long long)arg7 streamingAssetVersion:(id)arg8 encryptionContext:(id)arg9 posterFrames:(id)arg10 videoSegments:(id)arg11 significantEvents:(id)arg12;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

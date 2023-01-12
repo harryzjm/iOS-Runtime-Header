@@ -11,6 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface VCMockIDSDatagramChannel : IDSDatagramChannel
 {
+    NSDictionary *_subscribedStreamsByParticipantID;
+    int _socket;
+    _Bool _isValid;
     VCMockIDSDataChannelLinkContext *_linkContext;
     CDUnknownBlockType _eventHandler;
     CDUnknownBlockType _readHandler;
@@ -25,10 +28,11 @@ __attribute__((visibility("hidden")))
     _Bool _usingOptions;
     double _emulatedRxPLR;
     struct _opaque_pthread_mutex_t _streamSubscriptionLock;
-    NSDictionary *_subscribedStreamsByParticipantID;
     long long _participantGenerationCounter;
+    _Bool _isTestingOneToOneMode;
 }
 
+- (void)setUPlusOneMode:(_Bool)arg1;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (void)queryStatusWithOptions:(id)arg1;
 - (void)stopActiveProbingWithOptions:(id)arg1;
@@ -37,7 +41,9 @@ __attribute__((visibility("hidden")))
 - (void)setWiFiAssist:(_Bool)arg1;
 - (void)osChannelInfoLog;
 - (int)readyToRead;
+- (int)drainUnderlyingFileDescriptor;
 - (int)underlyingFileDescriptor;
+- (_Bool)createSocket;
 - (void)reportFirstPacketTimeForMKI:(id)arg1;
 - (void)requestSessionInfoWithOptions:(id)arg1;
 - (void)setChannelPreferences:(id)arg1;
@@ -46,22 +52,26 @@ __attribute__((visibility("hidden")))
 - (void)setEventHandler:(CDUnknownBlockType)arg1;
 - (void)start;
 - (void)invalidate;
-- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_c3727dd2 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_4aae7d13 *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_c6a5d548 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)readDatagramsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_54fea20c)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_4aae7d13)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)readDatagramWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dequeueDatagramPacket:(CDUnknownBlockType)arg1;
 - (_Bool)shouldReadPacket:(struct _VCMockIDSDatagramChannelPacket *)arg1;
 - (id)newArrayOfStreamIdsForPacket:(struct _VCMockIDSDatagramChannelPacket *)arg1;
 - (_Bool)isControlChannelDatagram:(struct _VCMockIDSDatagramChannelPacket *)arg1;
-- (_Bool)enqueueDatagramPacket:(const void *)arg1 datagramSize:(unsigned int)arg2 options:(CDStruct_c3727dd2 *)arg3 error:(id *)arg4;
+- (_Bool)enqueueDatagramPacket:(const void *)arg1 datagramSize:(unsigned int)arg2 options:(CDStruct_c6a5d548 *)arg3 error:(id *)arg4;
+- (void)signalUnderlyingFileDescriptor;
 - (void)setReadyToReadBlock:(CDUnknownBlockType)arg1;
 - (void)setWriteDatagramBlock:(CDUnknownBlockType)arg1;
 - (void)setWriteDatagramsBlock:(CDUnknownBlockType)arg1;
-- (void)readDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramOptions:(CDStruct_c3727dd2 *)arg3;
+- (void)readDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramOptions:(CDStruct_c6a5d548 *)arg3;
 - (void)dealloc;
+- (void)flushDatagramPacketsList;
+- (id)initCreateSocketRequiresOptions:(_Bool)arg1;
 - (id)initRequiresOptions:(_Bool)arg1;
+- (_Bool)setupMockIDSDatagramChannelRequiresOptions:(_Bool)arg1;
 
 @end
 

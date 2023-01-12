@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSString, SearchUIWatchListUtilities, WLKCanonicalPlayablesResponse;
+@class NSHashTable, NSString, SearchUIWatchListState, WLKCanonicalPlayablesResponse;
 
 @interface SearchUIWatchListCardsManager : NSObject
 {
@@ -14,17 +14,17 @@
     NSHashTable *_rowModels;
     NSString *_watchListIdentifier;
     WLKCanonicalPlayablesResponse *_response;
-    SearchUIWatchListUtilities *_watchListUtility;
+    SearchUIWatchListState *_watchListState;
 }
 
 + (_Bool)isUpNextCardSection:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isInUpNext; // @synthesize isInUpNext=_isInUpNext;
-@property(retain, nonatomic) SearchUIWatchListUtilities *watchListUtility; // @synthesize watchListUtility=_watchListUtility;
+@property(retain, nonatomic) SearchUIWatchListState *watchListState; // @synthesize watchListState=_watchListState;
 @property(retain, nonatomic) WLKCanonicalPlayablesResponse *response; // @synthesize response=_response;
 @property(retain, nonatomic) NSString *watchListIdentifier; // @synthesize watchListIdentifier=_watchListIdentifier;
 @property(retain, nonatomic) NSHashTable *rowModels; // @synthesize rowModels=_rowModels;
-- (void)toggleUpNextWithDelegate:(id)arg1;
+- (void)toggleUpNext;
 - (long long)currentUpNextButtonState;
 - (id)currentUpNextTextForRowModel:(id)arg1;
 - (_Bool)isTappable;

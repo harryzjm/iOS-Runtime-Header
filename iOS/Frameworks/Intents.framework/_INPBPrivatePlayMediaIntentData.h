@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBPrivatePlayMediaIntentData-Protocol.h>
 
-@class NSArray, NSString, _INPBPrivateMediaIntentData;
+@class NSArray, NSString, _INPBPrivateMediaIntentData, _INPBString;
 
 @interface _INPBPrivatePlayMediaIntentData : PBCodable <_INPBPrivatePlayMediaIntentData, NSSecureCoding, NSCopying>
 {
@@ -40,6 +40,7 @@
     int _entityConfidenceSignalsFrequencyDenominatorInternal;
     int _entityConfidenceSignalsFrequencyDenominatorProd;
     int _entityConfidenceSignalsMaxItemsToDisambiguate;
+    _INPBString *_alternativeProviderBundleIdentifier;
     NSArray *_audioSearchResults;
     NSArray *_internalSignals;
     _INPBPrivateMediaIntentData *_privateMediaIntentData;
@@ -63,6 +64,7 @@
 @property(nonatomic) _Bool appSelectionSignalsEnabled; // @synthesize appSelectionSignalsEnabled=_appSelectionSignalsEnabled;
 @property(nonatomic) _Bool appSelectionEnabled; // @synthesize appSelectionEnabled=_appSelectionEnabled;
 @property(nonatomic) _Bool appInferred; // @synthesize appInferred=_appInferred;
+@property(retain, nonatomic) _INPBString *alternativeProviderBundleIdentifier; // @synthesize alternativeProviderBundleIdentifier=_alternativeProviderBundleIdentifier;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -92,6 +94,7 @@
 @property(nonatomic) _Bool hasAppSelectionSignalsEnabled;
 @property(nonatomic) _Bool hasAppSelectionEnabled;
 @property(nonatomic) _Bool hasAppInferred;
+@property(readonly, nonatomic) _Bool hasAlternativeProviderBundleIdentifier;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

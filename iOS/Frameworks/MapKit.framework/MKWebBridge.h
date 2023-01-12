@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_operatingSystemVersion;
 + (id)_operatingSystemName;
-+ (id)URLByAddingConfiguration:(id)arg1 toURL:(id)arg2;
++ (id)URLByAddingConfiguration:(id)arg1 toURL:(id)arg2 additionalQueryItems:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MKWebBridgeDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;

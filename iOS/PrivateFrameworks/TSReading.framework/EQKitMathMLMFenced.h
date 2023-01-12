@@ -21,7 +21,7 @@
 - (int)isOperatorPaddingRequired;
 - (_Bool)isBaseFontNameUsed;
 - (void)dealloc;
-- (const set_25e6ba53 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 - (id)initWithChildren:(id)arg1 node:(struct _xmlNode *)arg2;
 - (id)initWithChildren:(id)arg1;

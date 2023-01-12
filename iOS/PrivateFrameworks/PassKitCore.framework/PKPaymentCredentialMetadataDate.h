@@ -13,6 +13,9 @@
 
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *displayFormat; // @synthesize displayFormat=_displayFormat;
+- (unsigned long long)hash;
+- (_Bool)_isEqualToMetadata:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)displayString;
 - (id)initWithConfiguration:(id)arg1;
 

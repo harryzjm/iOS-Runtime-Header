@@ -12,7 +12,7 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)applySettings:(id)arg1;
-@property(nonatomic) int styleOverridesToCancel; // @dynamic styleOverridesToCancel;
+@property(nonatomic) unsigned long long styleOverridesToCancel; // @dynamic styleOverridesToCancel;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @dynamic legibilitySettings;
 @property(nonatomic) long long style; // @dynamic style;
 @property(retain, nonatomic) NSNumber *alpha; // @dynamic alpha;

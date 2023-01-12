@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) float progress; // @synthesize progress=_progress;
 - (void)layoutSubviews;
+- (void)setStatusText:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 progressBarVisible:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 useWhiteLogo:(_Bool)arg2;

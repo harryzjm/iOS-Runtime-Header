@@ -13,12 +13,12 @@
 
 @interface TUCallProvider : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _supportsCurrentPlatform;
     _Bool _supportsAudioOnly;
     _Bool _supportsAudioAndVideo;
     _Bool _supportsEmergency;
     _Bool _supportsVoicemail;
     _Bool _supportsRecents;
-    _Bool _supportsCurrentPlatform;
     unsigned int _audioSessionID;
     NSString *_identifier;
     NSString *_localizedName;
@@ -41,7 +41,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
 @property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
-@property(nonatomic) _Bool supportsCurrentPlatform; // @synthesize supportsCurrentPlatform=_supportsCurrentPlatform;
 @property(nonatomic) _Bool supportsRecents; // @synthesize supportsRecents=_supportsRecents;
 @property(nonatomic) unsigned long long maximumCallsPerCallGroup; // @synthesize maximumCallsPerCallGroup=_maximumCallsPerCallGroup;
 @property(nonatomic) unsigned long long maximumCallGroups; // @synthesize maximumCallGroups=_maximumCallGroups;
@@ -74,6 +73,7 @@
 - (id)displayAppBundleIdentifier;
 - (id)senderIdentityForHandle:(id)arg1;
 - (id)senderIdentityForAccountUUID:(id)arg1;
+@property(nonatomic) _Bool supportsCurrentPlatform; // @synthesize supportsCurrentPlatform=_supportsCurrentPlatform;
 - (id)senderIdentityForUUID:(id)arg1;
 - (_Bool)hasRestrictionsInRetailEnvironment;
 - (_Bool)prefersShowingInCallUI;

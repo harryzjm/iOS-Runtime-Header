@@ -26,6 +26,7 @@
 - (_Bool)sendSMSWithText:(id)arg1 serviceCenter:(id)arg2 toAddress:(id)arg3 withID:(unsigned int)arg4;
 - (_Bool)sendSMSWithText:(id)arg1 text:(id)arg2 serviceCenter:(id)arg3 toAddress:(id)arg4;
 - (_Bool)sendSMSWithText:(id)arg1 serviceCenter:(id)arg2 toAddress:(id)arg3;
+- (CDStruct_1ef3fb1f)isMmsEnabledForSub:(id)arg1 enabled:(_Bool *)arg2;
 - (_Bool)isMmsConfiguredForSub:(id)arg1;
 - (_Bool)isMmsConfigured;
 - (_Bool)isMmsEnabledForSub:(id)arg1;
@@ -34,14 +35,12 @@
 - (CDStruct_1ef3fb1f)isDeliveryReportsEnabled:(_Bool *)arg1;
 - (id)decodeMessage:(id)arg1;
 - (id)encodeMessage:(id)arg1;
-- (id)deferredMessageWithId:(unsigned int)arg1;
-- (id)incomingMessageWithId:(unsigned int)arg1;
 - (void)acknowledgeOutgoingMessageWithId:(unsigned int)arg1;
 - (void)acknowledgeIncomingMessageWithId:(unsigned int)arg1;
 - (id)allIncomingMessages;
 - (void)addMessageOfType:(int)arg1 toArray:(id)arg2 withIdsFromArray:(id)arg3;
 - (int)incomingMessageCount;
-- (id)incomingMessageWithId:(unsigned int)arg1 isDeferred:(_Bool)arg2;
+- (id)incomingMessageWithId:(unsigned int)arg1;
 - (CDStruct_1ef3fb1f)send:(id)arg1 withMoreToFollow:(_Bool)arg2;
 - (CDStruct_1ef3fb1f)send:(id)arg1;
 - (CDStruct_1ef3fb1f)sendMMS:(id)arg1;

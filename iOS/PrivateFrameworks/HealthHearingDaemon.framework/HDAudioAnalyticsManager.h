@@ -6,37 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthHearingDaemon/HDAudioAnalyticsDataProvider-Protocol.h>
 #import <HealthHearingDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 #import <HealthHearingDaemon/HDPeriodicActivityDelegate-Protocol.h>
 
-@class HDAudioAnalyticsCalculator, HDPeriodicActivity, HDProfile, NSString;
+@class HDPeriodicActivity, HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface HDAudioAnalyticsManager : NSObject <HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate, HDAudioAnalyticsDataProvider>
+@interface HDAudioAnalyticsManager : NSObject <HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate>
 {
     HDProfile *_profile;
     double _calculationPeriod;
     double _retryPeriod;
     HDPeriodicActivity *_periodicActivity;
     NSObject<OS_dispatch_queue> *_queue;
-    HDAudioAnalyticsCalculator *_calculator;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HDAudioAnalyticsCalculator *calculator; // @synthesize calculator=_calculator;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) HDPeriodicActivity *periodicActivity; // @synthesize periodicActivity=_periodicActivity;
 @property(readonly, nonatomic) double retryPeriod; // @synthesize retryPeriod=_retryPeriod;
 @property(readonly, nonatomic) double calculationPeriod; // @synthesize calculationPeriod=_calculationPeriod;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
-- (_Bool)_hasEligibleWatchPaired;
-- (id)_numberForValue:(double)arg1;
-- (_Bool)_booleanPreferenceForAudioKey:(id)arg1 defaultIfNoValue:(_Bool)arg2;
-- (void)captureHeadphoneAudioExposure:(double)arg1 headphoneDuration:(double)arg2 headphoneDose:(double)arg3 environmentExposure:(double)arg4 environmentDuration:(double)arg5 environmentAlerts:(long long)arg6;
-- (id)audioExposureEventsBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (id)audioAverageAndDurationForExposureType:(long long)arg1 startDate:(id)arg2 endDate:(id)arg3 error:(id *)arg4;
+- (_Bool)_dayComponents:(id)arg1 lessThan:(id)arg2;
+- (id)_dayForDate:(id)arg1;
+- (_Bool)_recordedDataForToday;
+- (id)capturePhoneAnalytics;
 - (id)lastSuccessfulCalculation;
 - (_Bool)periodicActivityRequiresProtectedData:(id)arg1;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;

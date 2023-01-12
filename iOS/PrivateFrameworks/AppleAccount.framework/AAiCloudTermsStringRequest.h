@@ -9,6 +9,7 @@
 }
 
 + (Class)responseClass;
+- (id)initWithAccount:(id)arg1 termsEntries:(id)arg2 preferPassword:(_Bool)arg3;
 - (id)initWithAccount:(id)arg1 preferPassword:(_Bool)arg2;
 - (id)initWithAccount:(id)arg1;
 

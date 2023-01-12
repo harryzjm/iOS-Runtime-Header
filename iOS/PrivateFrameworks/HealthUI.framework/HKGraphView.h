@@ -15,14 +15,13 @@
 #import <HealthUI/HKSeriesDelegate-Protocol.h>
 #import <HealthUI/UIScrollViewDelegate-Protocol.h>
 
-@class HKAxis, HKBorderLineView, HKGraphViewSelectionStyle, HKMultiTouchPressGestureRecognizer, HKPropertyAnimationApplier, HKValueRange, NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimer, UIColor, UIImage, UIScrollView, _HKGraphViewOverlayView;
+@class HKAxis, HKBorderLineView, HKGraphViewSelectionStyle, HKMultiTouchPressGestureRecognizer, HKPropertyAnimationApplier, HKValueRange, NSArray, NSCalendar, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, NSTimer, UIColor, UIImage, UIScrollView, _HKGraphViewOverlayView;
 @protocol HKGraphRenderer, HKGraphViewDelegate;
 
 @interface HKGraphView : UIView <UIScrollViewDelegate, HKSeriesDelegate, HKGraphRenderDelegate, HKMultiTouchPressGestureRecognizerDelegate, HKGraphTileDrawingDelegate, HKGraphSeriesOverlayDelegate, HKScrollPerformanceTestable, HKInteractiveChartRangeProvider>
 {
     NSMutableArray *_seriesGroupRows;
     _Bool _needsUpdateGraphViewConfiguration;
-    HKPropertyAnimationApplier *_animationApplier;
     _Bool _shouldInformDelegateOfUpdates;
     _Bool _shouldListenToScrollViewDelegate;
     HKValueRange *_chartableValueRange;
@@ -46,12 +45,17 @@
     _Bool _enableZoomInGesture;
     _Bool _enableInteractiveSelectionLine;
     _Bool _tilingDisabled;
+    _Bool _prefersOpaqueLegends;
+    _Bool _drawsGridlinesPerSeriesGroup;
     _Bool _contentOffsetIsSet;
     _Bool _tilesHidden;
     _Bool _tileScrollingOverride;
     _Bool _tilesTransientDisabled;
     _Bool _tilesWaitingForInitialRender;
     _Bool _measuringStartupTime;
+    _Bool _measurementStartupAutoscale;
+    _Bool _animationAutoscaleInProgress;
+    _Bool _externalSelectionScheduled;
     id <HKGraphViewDelegate> _delegate;
     HKAxis *_xAxis;
     double _xAxisSpace;
@@ -74,6 +78,7 @@
     long long _minimumDateZoom;
     long long _maximumDateZoom;
     long long _scrollingOptions;
+    NSCalendar *_currentCalendar;
     HKMultiTouchPressGestureRecognizer *_multiTouchGestureRecognizer;
     double _zoomScale;
     UIView *_detailView;
@@ -85,6 +90,7 @@
     long long _tileLastColumn;
     long long _tileColumnHysteresis;
     NSMutableDictionary *_tilesByColumnNumber;
+    NSMutableArray *_tileQueue;
     double _tileZoomScaleOverride;
     CDUnknownBlockType _tileMarkDirtyCompletion;
     long long _tileInitialRedrawCount;
@@ -96,6 +102,10 @@
     double _lastEndTime;
     NSTimer *_startupTimer;
     double _firstNonemptyDrawTime;
+    HKPropertyAnimationApplier *_animationApplier;
+    NSMutableDictionary *_currentAnimationProperties;
+    id _externalSelectionModelCoordinate;
+    double _externalSelectionLastLocation;
     struct CGPoint _contentOffset;
     struct CGPoint _tileContentOffsetOverride;
     struct UIEdgeInsets _axisInset;
@@ -105,6 +115,13 @@
 + (id)_rangeFromModelCoordinateMin:(double)arg1 max:(double)arg2 axis:(id)arg3;
 + (double)_modelCoordinateSpanForRange:(id)arg1 axis:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) double externalSelectionLastLocation; // @synthesize externalSelectionLastLocation=_externalSelectionLastLocation;
+@property(nonatomic) _Bool externalSelectionScheduled; // @synthesize externalSelectionScheduled=_externalSelectionScheduled;
+@property(retain, nonatomic) id externalSelectionModelCoordinate; // @synthesize externalSelectionModelCoordinate=_externalSelectionModelCoordinate;
+@property(retain, nonatomic) NSMutableDictionary *currentAnimationProperties; // @synthesize currentAnimationProperties=_currentAnimationProperties;
+@property(retain, nonatomic) HKPropertyAnimationApplier *animationApplier; // @synthesize animationApplier=_animationApplier;
+@property(nonatomic) _Bool animationAutoscaleInProgress; // @synthesize animationAutoscaleInProgress=_animationAutoscaleInProgress;
+@property(nonatomic) _Bool measurementStartupAutoscale; // @synthesize measurementStartupAutoscale=_measurementStartupAutoscale;
 @property(nonatomic) double firstNonemptyDrawTime; // @synthesize firstNonemptyDrawTime=_firstNonemptyDrawTime;
 @property(retain, nonatomic) NSTimer *startupTimer; // @synthesize startupTimer=_startupTimer;
 @property(nonatomic) double lastEndTime; // @synthesize lastEndTime=_lastEndTime;
@@ -121,6 +138,7 @@
 @property(nonatomic) double tileZoomScaleOverride; // @synthesize tileZoomScaleOverride=_tileZoomScaleOverride;
 @property(nonatomic) struct CGPoint tileContentOffsetOverride; // @synthesize tileContentOffsetOverride=_tileContentOffsetOverride;
 @property(nonatomic) _Bool tileScrollingOverride; // @synthesize tileScrollingOverride=_tileScrollingOverride;
+@property(retain, nonatomic) NSMutableArray *tileQueue; // @synthesize tileQueue=_tileQueue;
 @property(retain, nonatomic) NSMutableDictionary *tilesByColumnNumber; // @synthesize tilesByColumnNumber=_tilesByColumnNumber;
 @property(nonatomic) _Bool tilesHidden; // @synthesize tilesHidden=_tilesHidden;
 @property(nonatomic) long long tileColumnHysteresis; // @synthesize tileColumnHysteresis=_tileColumnHysteresis;
@@ -134,12 +152,15 @@
 @property(nonatomic) _Bool contentOffsetIsSet; // @synthesize contentOffsetIsSet=_contentOffsetIsSet;
 @property(nonatomic) struct CGPoint contentOffset; // @synthesize contentOffset=_contentOffset;
 @property(nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
+@property(nonatomic) _Bool drawsGridlinesPerSeriesGroup; // @synthesize drawsGridlinesPerSeriesGroup=_drawsGridlinesPerSeriesGroup;
+@property(nonatomic) _Bool prefersOpaqueLegends; // @synthesize prefersOpaqueLegends=_prefersOpaqueLegends;
 @property(nonatomic) _Bool tilingDisabled; // @synthesize tilingDisabled=_tilingDisabled;
 @property(nonatomic) _Bool enableInteractiveSelectionLine; // @synthesize enableInteractiveSelectionLine=_enableInteractiveSelectionLine;
 @property(nonatomic) _Bool enableZoomInGesture; // @synthesize enableZoomInGesture=_enableZoomInGesture;
 @property(readonly, nonatomic) HKMultiTouchPressGestureRecognizer *multiTouchGestureRecognizer; // @synthesize multiTouchGestureRecognizer=_multiTouchGestureRecognizer;
 @property(nonatomic) _Bool enableStickySelection; // @synthesize enableStickySelection=_enableStickySelection;
 @property(nonatomic) _Bool contentWidthFromTimeScope; // @synthesize contentWidthFromTimeScope=_contentWidthFromTimeScope;
+@property(retain, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
 @property(nonatomic) long long scrollingOptions; // @synthesize scrollingOptions=_scrollingOptions;
 @property(nonatomic) long long maximumDateZoom; // @synthesize maximumDateZoom=_maximumDateZoom;
 @property(nonatomic) long long minimumDateZoom; // @synthesize minimumDateZoom=_minimumDateZoom;
@@ -166,7 +187,7 @@
 @property(nonatomic) struct UIEdgeInsets axisInset; // @synthesize axisInset=_axisInset;
 @property(nonatomic) _Bool disableXAxis; // @synthesize disableXAxis=_disableXAxis;
 @property(nonatomic) double xAxisSpace; // @synthesize xAxisSpace=_xAxisSpace;
-@property(copy, nonatomic) HKAxis *xAxis; // @synthesize xAxis=_xAxis;
+@property(retain, nonatomic) HKAxis *xAxis; // @synthesize xAxis=_xAxis;
 @property(nonatomic) __weak id <HKGraphViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_overlayViewsForOverlayData:(id)arg1 overlayView:(id)arg2;
 - (void)_drawOverlaysIfNeeded:(id)arg1;
@@ -193,12 +214,13 @@
 - (_Bool)_tilesReconfigurableAfterInitialRender;
 - (_Bool)_tilesConfigurableAfterInitialRender;
 - (_Bool)_tilesAreEnabled;
-- (void)setAxesToShowSimultaneously:(id)arg1 stackOffset:(long long)arg2;
+- (void)setIndependentAxes:(id)arg1 stackOffset:(long long)arg2;
 - (void)setPreviousDateZoom:(long long)arg1;
 - (id)primarySeries;
 - (id)findVisibleBlockCoordinatesForPrimarySeries;
 - (void)testScrollPerformanceWithTestName:(id)arg1 iterations:(int)arg2 delta:(int)arg3 length:(int)arg4;
 - (void)testScrollPerformanceWithTestName:(id)arg1 iterations:(int)arg2 delta:(int)arg3 options:(id)arg4;
+- (void)_notifyDidEndExternalSelection;
 - (void)_notifyDelegateOfTapOnYAxis;
 - (void)_notifyDelegateSeriesUpdate:(id)arg1 newDataArrived:(_Bool)arg2;
 - (void)_notifyDelegateOfYAxisWidth:(double)arg1 toWidth:(double)arg2;
@@ -213,6 +235,14 @@
 - (void)_activateStickySelection;
 - (void)_deactivateStickySelection;
 - (_Bool)_stickySelectionActive;
+- (void)_processExternalSelection;
+- (void)_scheduleExternalSelectionIfNeededClearingLastLocation;
+- (void)_scheduleRequiredExternalSelection;
+- (void)_scheduleExternalSelectionIfNeeded;
+- (void)_cancelExternalSelection;
+- (void)_endExternalSelectionViaTimer;
+- (void)_installExternalSelectionEndTimer;
+- (void)touchSelectionAtModelX:(id)arg1;
 - (void)_moveSeriesToFront:(id)arg1;
 - (void)_selectionRecognizerDidFinish:(id)arg1;
 - (void)_finishSelection;
@@ -243,6 +273,7 @@
 - (id)_closestGraphSeriesForTouchPoint:(struct CGPoint)arg1 seriesGroup:(id)arg2;
 - (void)_enumerateSeriesSelectionRegionsForSeriesGroup:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (long long)_currentSelectionStateForSeriesGroup:(id)arg1;
+- (void)_touchAtPoint:(struct CGPoint)arg1;
 - (void)_toggleStickySelectionAction:(id)arg1;
 - (void)_addTapGestureRecognizerForTogglingStickyToView:(id)arg1;
 - (void)_tapOnViewAction:(id)arg1;
@@ -273,6 +304,7 @@
 - (void)setZoomScale:(double)arg1 animated:(_Bool)arg2;
 - (void)graphRenderer:(id)arg1 shouldRenderSceneWithContext:(struct CGContext *)arg2 chartRect:(struct CGRect)arg3;
 - (struct CGRect)_yAxisRectForSeriesGroupRow:(long long)arg1 chartRect:(struct CGRect)arg2;
+- (struct CGRect)_yAxisRectForSeriesGroupRow:(long long)arg1 insetForLegends:(_Bool)arg2 chartRect:(struct CGRect)arg3;
 - (struct _HKLocationSpan)_locationSpanForSeriesGroupRow:(long long)arg1 chartRect:(struct CGRect)arg2;
 - (double)_renderXAxisLabelsInContext:(struct CGContext *)arg1;
 - (void)_renderYAxisLabelsInContext:(struct CGContext *)arg1 chartRect:(struct CGRect)arg2;
@@ -280,9 +312,9 @@
 - (void)_renderXAxisGridlinesInContext:(struct CGContext *)arg1 withBlendMode:(int)arg2;
 - (void)_renderBaselineWithContext:(struct CGContext *)arg1 chartRect:(struct CGRect)arg2;
 - (id)_visibleSeriesForSeriesGroup:(id)arg1;
-- (id)_seriesForCommonAxesForSeriesGroup:(id)arg1;
-- (_Bool)_simultaneousAxesAreEqualForSeriesGroup:(id)arg1;
 - (void)_renderSelectionLineWithContext:(struct CGContext *)arg1;
+- (void)_updateAllLegendsWithSelectedValues:(id)arg1;
+- (id)_gridlineRangesForChartRect:(struct CGRect)arg1;
 - (double)_topBaselineYValueForChartRect:(struct CGRect)arg1;
 - (double)_bottomBaselineYValueForChartRect:(struct CGRect)arg1;
 - (void)_renderVirtualMarginsWithContext:(struct CGContext *)arg1;
@@ -291,18 +323,30 @@
 - (void)_renderVirtualMarginGridLines:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_renderSeriesWithContext:(struct CGContext *)arg1 secondaryRenderContext:(id)arg2 chartRect:(struct CGRect)arg3;
 - (void)_renderDataAreaDividersWithContext:(struct CGContext *)arg1;
-- (void)forceYAxisScaleToRange:(id)arg1 animated:(_Bool)arg2;
-- (void)forceYAxisAutoScaleAnimated:(_Bool)arg1;
-- (void)_forceYAxisAutoScaleForSeriesGroupRow:(long long)arg1 chartRect:(struct CGRect)arg2 animated:(_Bool)arg3;
-- (void)_autoScaleYAxisIfNecessaryForAllGroupsForChartRect:(struct CGRect)arg1;
-- (void)_autoScaleYAxisIfNecessaryForGroupRow:(long long)arg1 chartRect:(struct CGRect)arg2;
-- (id)_yAxisRangeForSynchronizedAxesForDateZoom:(long long)arg1 chartRect:(struct CGRect)arg2 seriesGroup:(id)arg3;
+- (id)_combinedYAxisRangeForAutoscaleSeries:(id)arg1 yAxisRect:(struct CGRect)arg2;
+- (void)_cancelAutoscaleAnimations;
+- (void)_removeAutoscaleAnimationWithName:(id)arg1 cancelled:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_insertAutoscaleAnimation:(id)arg1;
+- (void)_autoscaleAnimationCancelled;
+- (void)_autoscaleAnimationEnd;
+- (void)_autoscaleAnimationStart;
+- (void)_actionsAfterAnimationTransform:(id)arg1 finalVisibleRange:(id)arg2;
+- (void)_actionsBeforeAnimationTransform:(id)arg1;
+- (id)_propertyAnimationForTransform:(id)arg1;
+- (_Bool)_allSeriesAreInverted:(id)arg1;
+- (id)_autoscaleTransformsFromAutoscaleSeriesList:(id)arg1 specificRange:(id)arg2;
+- (_Bool)_seriesRequiresYAutoscale:(id)arg1;
+- (_Bool)_autoscaleTransformIsSignificant:(id)arg1;
+- (id)_findAutoscaleSeriesForYAxis:(id)arg1 allAutoscaleSeries:(id)arg2;
+- (id)_autoscaleSeriesOnlyIfNeeded:(_Bool)arg1;
+- (void)autoscaleYAxesAnimated:(_Bool)arg1 specificRange:(id)arg2 onlyIfNeeded:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_autoScaleXAxis;
 - (id)_defaultXAxisValueRange;
+- (double)snapScreenCoordinateToXAxisResolution:(double)arg1;
 - (void)nonemptyDrawComplete;
 - (_Bool)rangeIsVisible:(id)arg1;
-- (void)autoscaleStateChangedForSeries:(id)arg1;
 - (struct CGRect)screenRectForSeries:(id)arg1;
+- (struct CGPoint)seriesContentOffset;
 - (_Bool)seriesDrawingDuringTiling;
 - (_Bool)seriesDrawingDuringAutoscale;
 - (_Bool)seriesDrawingDuringScrolling;
@@ -336,6 +380,7 @@
 - (void)removeSeries;
 - (void)setNeedsReloadSeries;
 - (void)_loadSeriesForZoom:(long long)arg1;
+- (void)_shareYAxesForSeriesGroup:(id)arg1;
 - (id)_graphSeriesForZoom:(long long)arg1 seriesGroupRow:(long long)arg2;
 - (void)_layoutYAxisAccessoryViewsForChartRect:(struct CGRect)arg1;
 - (void)_installAccessoryViews;
@@ -352,7 +397,6 @@
 - (void)_startupTimerCallback:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 - (void)layoutSubviews;
-- (void)_loadFeatheringImages;
 - (void)_loadScrollView;
 @property(readonly, nonatomic) _Bool isScrollViewDecelerating;
 @property(readonly, nonatomic) NSArray *allSeries;
@@ -368,8 +412,6 @@
 @property(readonly, nonatomic) double yAxisWidth;
 - (_Bool)_configureYAxisViewIfNeeded;
 - (_Bool)_needsYAxisUpdateDuringRender;
-- (void)_cancelAllInFlightAutoscales;
-- (_Bool)_anySeriesAnimatingDuringAutoscale;
 - (id)_firstSelectionContext;
 - (long long)_countOfAllSeries;
 - (long long)_groupRowForSeries:(id)arg1;

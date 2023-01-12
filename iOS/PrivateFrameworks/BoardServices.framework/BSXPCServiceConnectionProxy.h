@@ -6,17 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class BSObjCProtocol, BSXPCServiceConnection;
+@class BSObjCProtocol, BSXPCServiceConnection, NSArray, RBSAssertion, RBSTarget;
 @protocol BSServiceDispatchingQueue, OS_dispatch_queue, OS_xpc_object;
 
 @interface BSXPCServiceConnectionProxy : NSObject
 {
-    BSObjCProtocol *_remoteProtocol;
-    BSObjCProtocol *_localProtocol;
     BSXPCServiceConnection *_connection;
-    NSObject<OS_xpc_object> *_XPCConnection;
-    NSObject<OS_dispatch_queue> *_XPCConnectionTargetQueue;
+    BSObjCProtocol *_remoteProtocol;
+    NSObject<OS_xpc_object> *_underlyingConnection;
+    NSObject<OS_dispatch_queue> *_targetQueue;
     id <BSServiceDispatchingQueue> _replyQueue;
+    RBSTarget *_target;
+    NSArray *_attributes;
+    CDUnknownBlockType _assertionProvider;
+    RBSAssertion *_lock_assertion;
+    struct os_unfair_lock_s _lock;
+    unsigned int _lock_messagesCount;
 }
 
 - (void)dealloc;

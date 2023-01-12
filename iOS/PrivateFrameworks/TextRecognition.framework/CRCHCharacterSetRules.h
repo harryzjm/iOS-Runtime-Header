@@ -34,8 +34,8 @@
     NSCharacterSet *_emailPunctuationCharSet;
     NSCharacterSet *_urlPunctuationCharSet;
     NSObject<OS_dispatch_queue> *__charSetRulesQueue;
-    map_0512c6b1 _strokeMaxPenalties;
-    map_fc1db4e5 _signatureUniChar;
+    map_aaf15588 _strokeMaxPenalties;
+    map_3815c996 _signatureUniChar;
 }
 
 + (unsigned long long)characterType:(unsigned int)arg1;
@@ -45,8 +45,8 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *_charSetRulesQueue; // @synthesize _charSetRulesQueue=__charSetRulesQueue;
-@property(nonatomic) map_fc1db4e5 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
-@property(nonatomic) map_0512c6b1 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
+@property(nonatomic) map_3815c996 signatureUniChar; // @synthesize signatureUniChar=_signatureUniChar;
+@property(nonatomic) map_aaf15588 strokeMaxPenalties; // @synthesize strokeMaxPenalties=_strokeMaxPenalties;
 @property(retain, nonatomic) NSCharacterSet *urlPunctuationCharSet; // @synthesize urlPunctuationCharSet=_urlPunctuationCharSet;
 @property(retain, nonatomic) NSCharacterSet *emailPunctuationCharSet; // @synthesize emailPunctuationCharSet=_emailPunctuationCharSet;
 @property(retain, nonatomic) NSCharacterSet *emailAtCharSet; // @synthesize emailAtCharSet=_emailAtCharSet;

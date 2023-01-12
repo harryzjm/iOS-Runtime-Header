@@ -12,6 +12,7 @@
 
 @interface PCSMTT : NSObject <NSSecureCoding>
 {
+    _Bool _returnedExistingIdentity;
     NSDate *_startTime;
     NSMutableArray *_completedPoints;
     NSUUID *_parentUUID;
@@ -26,6 +27,7 @@
 @property(readonly) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property(retain) NSMutableArray *completedPoints; // @synthesize completedPoints=_completedPoints;
 @property(retain) NSDate *startTime; // @synthesize startTime=_startTime;
+@property _Bool returnedExistingIdentity; // @synthesize returnedExistingIdentity=_returnedExistingIdentity;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)completePoint:(id)arg1;

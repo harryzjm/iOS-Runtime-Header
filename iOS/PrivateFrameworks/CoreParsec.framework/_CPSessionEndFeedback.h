@@ -10,7 +10,7 @@
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 #import <CoreParsec/_CPSessionEndFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSString;
 
 @interface _CPSessionEndFeedback : PBCodable <_CPProcessableFeedback, _CPSessionEndFeedback, NSSecureCoding>
 {
@@ -20,10 +20,6 @@
 
 @property(nonatomic) int reason; // @synthesize reason=_reason;
 @property(nonatomic) unsigned long long timestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -33,7 +29,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) id feedbackJSON;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

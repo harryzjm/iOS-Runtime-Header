@@ -16,18 +16,16 @@ __attribute__((visibility("hidden")))
     _Bool errorOccurred;
     unsigned int skipDepth;
     unsigned int unitsPerEm;
-    unsigned int elementCount;
-    unique_ptr_bd23540c *root;
-    vector_61f1bb43 stack;
-    unordered_map_aadc992e namespaces;
+    void *root;
+    vector_feaf3631 stack;
+    unordered_map_823f4523 namespaces;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property unordered_map_aadc992e namespaces; // @synthesize namespaces;
-@property vector_61f1bb43 stack; // @synthesize stack;
-@property unique_ptr_bd23540c *root; // @synthesize root;
-@property unsigned int elementCount; // @synthesize elementCount;
+@property unordered_map_823f4523 namespaces; // @synthesize namespaces;
+@property vector_feaf3631 stack; // @synthesize stack;
+@property void *root; // @synthesize root;
 @property unsigned int unitsPerEm; // @synthesize unitsPerEm;
 @property unsigned int skipDepth; // @synthesize skipDepth;
 @property _Bool errorOccurred; // @synthesize errorOccurred;

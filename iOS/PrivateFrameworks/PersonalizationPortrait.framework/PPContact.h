@@ -63,6 +63,7 @@
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)setEmailAddressForTesting:(id)arg1;
 - (void)setIdentifierForTesting:(id)arg1;
 - (void)_generateLocalizedFullName;
 - (id)description;

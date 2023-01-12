@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSString;
+@class BRKSettings, NSArray, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface BRKDataCollectionBundle : NSObject
 {
     NSMutableDictionary *_writers;
     NSMutableSet *_manifest;
     struct os_unfair_lock_s _writersLock;
+    BRKSettings *_settings;
     _Bool _isPackaged;
     NSString *_folderName;
     NSString *_basePath;
@@ -27,7 +28,6 @@
 - (_Bool)packageBundleToPath:(id *)arg1 filePrioritization:(id)arg2;
 - (void)closeWriterForFile:(id)arg1;
 - (id)_writerForClass:(Class)arg1 file:(id)arg2 configuration:(CDUnknownBlockType)arg3;
-- (id)embeddingsWriterForFile:(id)arg1;
 - (id)logWriterForFile:(id)arg1;
 - (id)audioWriterForFile:(id)arg1;
 - (id)accelerationWriterForFile:(id)arg1 valueCount:(unsigned long long)arg2;

@@ -12,7 +12,7 @@
 @class NSString, PSPasscodeField, RUIElement, RUIHTMLHeaderElement, RUIHTMLHeaderView, RUIHeaderElement, RUIObjectModel, RUIPage, UIColor, UIScrollView, UITextField, UIView;
 @protocol RUIHeader, RemoteUITableFooter;
 
-@interface RUIPasscodeView <RUITableFooterDelegate, PSPasscodeFieldDelegate, CAAnimationDelegate, RUITopLevelPageElement>
+@interface RUIPasscodeView <RUITableFooterDelegate, CAAnimationDelegate, PSPasscodeFieldDelegate, RUITopLevelPageElement>
 {
     UIScrollView *_containerView;
     UIView<RUIHeader> *_headerView;
@@ -47,6 +47,9 @@
 @property(copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
 @property(nonatomic) __weak RUIPage *page; // @synthesize page=_page;
 @property(nonatomic) __weak RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
+- (void)setImageAlignment:(int)arg1;
+- (void)setImageSize:(struct CGSize)arg1;
+- (void)setImage:(id)arg1;
 - (_Bool)_requiresLocalPasscodeValidation;
 - (void)_jiggleView:(id)arg1;
 - (void)_doneButtonTapped:(id)arg1;

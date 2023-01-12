@@ -9,12 +9,12 @@
 #import <NeutrinoKit/CALayerDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, NUImageGeometry;
-@protocol NUTextureImage;
+@protocol NUPurgeableTextureImage, NUTextureImage;
 
 @interface NUTiledImageLayer : CALayer <CALayerDelegate>
 {
     struct CGColor *_debugColor;
-    id <NUTextureImage> __image;
+    id <NUPurgeableTextureImage> __image;
     NUImageGeometry *__geometry;
     NSMutableArray *__tileLayers;
     CDStruct_f261e59c _validRegionInsets;
@@ -24,10 +24,12 @@
 - (void).cxx_destruct;
 @property(retain) NSMutableArray *_tileLayers; // @synthesize _tileLayers=__tileLayers;
 @property(retain) NUImageGeometry *_geometry; // @synthesize _geometry=__geometry;
-@property(retain) id <NUTextureImage> _image; // @synthesize _image=__image;
-@property(nonatomic) CDStruct_f261e59c validRegionInsets; // @synthesize validRegionInsets=_validRegionInsets;
+@property(retain) id <NUPurgeableTextureImage> _image; // @synthesize _image=__image;
+@property(nonatomic) CDStruct_912cb5d2 validRegionInsets; // @synthesize validRegionInsets=_validRegionInsets;
 @property(retain) struct CGColor *debugColor; // @synthesize debugColor=_debugColor;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+@property(readonly, copy) NSString *debugDescription;
+- (id)snapshotImage;
 - (void)_updateSublayers;
 @property(readonly, nonatomic) _Bool nu_contentsAreFlipped;
 @property(retain) NUImageGeometry *geometry;
@@ -37,7 +39,6 @@
 - (id)init;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

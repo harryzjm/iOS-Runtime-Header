@@ -8,7 +8,7 @@
 
 #import <HomeUI/HFTriggerBuilderContextProviding-Protocol.h>
 
-@class NSSet, NSString;
+@class HFItem, NSSet, NSString;
 
 @interface HUTriggerBuilderContext : NSObject <HFTriggerBuilderContextProviding>
 {
@@ -25,6 +25,7 @@
     NSString *_actionEditorInstructionsDescription;
     NSString *_triggerContextAwareTitle;
     NSSet *_unsupportedTriggers;
+    HFItem *_suggestionItem;
     NSString *_doneButtonTitle;
     NSString *_deleteConfirmationAlertTitle;
     NSString *_deleteConfirmationAlertMessage;
@@ -34,6 +35,7 @@
 @property(copy, nonatomic) NSString *deleteConfirmationAlertMessage; // @synthesize deleteConfirmationAlertMessage=_deleteConfirmationAlertMessage;
 @property(copy, nonatomic) NSString *deleteConfirmationAlertTitle; // @synthesize deleteConfirmationAlertTitle=_deleteConfirmationAlertTitle;
 @property(copy, nonatomic) NSString *doneButtonTitle; // @synthesize doneButtonTitle=_doneButtonTitle;
+@property(retain, nonatomic) HFItem *suggestionItem; // @synthesize suggestionItem=_suggestionItem;
 @property(copy, nonatomic) NSSet *unsupportedTriggers; // @synthesize unsupportedTriggers=_unsupportedTriggers;
 @property(copy, nonatomic) NSString *triggerContextAwareTitle; // @synthesize triggerContextAwareTitle=_triggerContextAwareTitle;
 @property(copy, nonatomic) NSString *actionEditorInstructionsDescription; // @synthesize actionEditorInstructionsDescription=_actionEditorInstructionsDescription;

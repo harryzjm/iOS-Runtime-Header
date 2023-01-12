@@ -10,8 +10,12 @@
 {
 }
 
-+ (CDUnknownBlockType)updaterForPairingCategory:(id)arg1 variationStore:(id)arg2;
-+ (CDUnknownBlockType)updaterForColor:(id)arg1 variationStore:(id)arg2 pairedColor:(id)arg3;
++ (CDUnknownBlockType)updaterForAggregatingUpdaters:(id)arg1;
++ (CDUnknownBlockType)updaterForClearingColorsForCategory:(long long)arg1 destination:(long long)arg2;
++ (CDUnknownBlockType)updaterForPairingCategory:(id)arg1 colorsState:(id)arg2;
++ (CDUnknownBlockType)updaterForColor:(id)arg1 variationOverride:(id)arg2 colorsState:(id)arg3 pairedColors:(id)arg4 additionalColor:(id)arg5 saveToColorsState:(_Bool)arg6;
++ (CDUnknownBlockType)updaterForColor:(id)arg1 colorsState:(id)arg2 pairedColors:(id)arg3 additionalColor:(id)arg4 saveToColorsState:(_Bool)arg5;
++ (CDUnknownBlockType)updaterForColor:(id)arg1 colorsState:(id)arg2 pairedColors:(id)arg3 additionalColor:(id)arg4;
 + (CDUnknownBlockType)updaterForPreset:(id)arg1 pairedPreset:(id)arg2;
 
 @end

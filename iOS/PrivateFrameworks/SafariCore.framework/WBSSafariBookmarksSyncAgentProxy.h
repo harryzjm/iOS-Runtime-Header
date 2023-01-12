@@ -22,8 +22,17 @@
 - (void)generateDAVServerIDsForExistingBookmarksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearLocalDataIncludingMigrationState:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resetToDAVDatabaseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchCloudSettingsChangesImmediately;
+- (void)syncUpSafariSettingsSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)syncDownSafariSettingsSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)triggerImmediateBackgroundImageSaveIfApplicable;
+- (void)scheduleCloudBackgroundImageSaveWithURL:(id)arg1 isLightAppearance:(_Bool)arg2 successCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)deleteBackgroundImageFromCloudKitWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)saveCloudBackgroundImageWithURL:(id)arg1 isLightAppearance:(_Bool)arg2 successCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)saveCloudSettingWithDictionaryRepresentation:(id)arg1 successCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchCloudTabDevicesAndCloseRequests;
 - (void)getCloudTabContainerManateeStateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)triggerSafariTabGroupSync;
 - (void)getCloudTabDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deleteCloudTabCloseRequestsWithUUIDStrings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

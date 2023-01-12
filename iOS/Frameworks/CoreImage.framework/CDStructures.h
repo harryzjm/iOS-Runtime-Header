@@ -25,8 +25,6 @@ struct CGAffineTransform {
 
 struct CGColorSpace;
 
-struct CGContext;
-
 struct CGPoint {
     double x;
     double y;
@@ -59,14 +57,15 @@ struct CIKernelReflection {
     int _field2;
     char *_field3;
     char *_field4;
-    struct vector<CI::KernelArgumentType, std::__1::allocator<CI::KernelArgumentType>> _field5;
-    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field6;
+    struct vector<CI::KernelArgumentType, std::allocator<CI::KernelArgumentType>> _field5;
+    struct vector<std::string, std::allocator<std::string>> _field6;
     id _field7;
     unsigned int _field8;
     int _field9;
     unsigned long long _field10;
     unsigned long long _field11;
     _Bool _field12;
+    _Bool _field13;
 };
 
 struct CIPredictionModelImageFeatures {
@@ -97,41 +96,6 @@ struct CIRenderDestinationInternal {
     _Bool _field12;
     _Bool _field13;
     id _field14;
-};
-
-struct Context {
-    CDUnknownFunctionPointerType *_field1;
-    struct atomic<unsigned int> _field2;
-    struct CGColorSpace *_field3;
-    struct CGColorSpace *_field4;
-    int _field5;
-    float _field6;
-    _Bool _field7;
-    _Bool _field8;
-    _Bool _field9;
-    _Bool _field10;
-    _Bool _field11;
-    struct CGContext *_field12;
-    float _field13;
-    _Bool _field14;
-    struct CGRect _field15;
-    struct CGAffineTransform _field16;
-    unsigned int _field17;
-    unsigned long long _field18;
-    unsigned long long _field19;
-    int _field20;
-    char _field21[64];
-    _Bool _field22;
-    struct ObjectCache<CI::MainProgram, false> *_field23;
-    struct ObjectCache<CI::Node, false> *_field24;
-    struct ObjectCache<CI::Node, false> *_field25;
-    double _field26;
-    double _field27;
-    struct RenderTask *_field28;
-    int _field29;
-    int _field30;
-    struct Context *_field31;
-    unsigned long long _field32;
 };
 
 struct FastRegistration_Signatures {
@@ -165,45 +129,7 @@ struct ISize {
     unsigned long long _field2;
 };
 
-struct Image {
-    CDUnknownFunctionPointerType *_field1;
-    struct atomic<unsigned int> _field2;
-    struct CGRect _field3;
-    struct __CFURL *_field4;
-    void *_field5;
-    void *_field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned long long _field9;
-};
-
-struct Kernel {
-    CDUnknownFunctionPointerType *_field1;
-    struct atomic<unsigned int> _field2;
-    char *_field3;
-    char *_field4;
-    _Bool _field5;
-    struct SerialIntArray *_field6;
-    struct SerialStringArray *_field7;
-    struct __CFString *_field8;
-    int _field9;
-    int _field10;
-    struct ISize _field11;
-    _Bool _field12;
-    _Bool _field13;
-    _Bool _field14;
-    _Bool _field15;
-    _Bool _field16;
-    _Bool _field17;
-};
-
 struct LineCostProxy;
-
-struct Node;
-
-struct ObjectCache<CI::MainProgram, false>;
-
-struct ObjectCache<CI::Node, false>;
 
 struct Projections_meanStdTable {
     float *sumTable;
@@ -222,41 +148,7 @@ struct Rectangle {
     double _field4;
 };
 
-struct RenderDestination {
-    CDUnknownFunctionPointerType *_field1;
-    struct atomic<unsigned int> _field2;
-    struct __CFString *_field3;
-    struct CGColorSpace *_field4;
-};
-
-struct RenderTask {
-    CDUnknownFunctionPointerType *_field1;
-    struct atomic<unsigned int> _field2;
-    char *_field3;
-    char *_field4;
-    char *_field5;
-    int _field6;
-    _Bool _field7;
-    unsigned long long _field8;
-    int _field9;
-    char _field10[64];
-    unsigned long long _field11;
-    struct Node *_field12;
-    struct CGRect _field13;
-    int _field14;
-    unsigned long long _field15;
-    struct __CFString *_field16;
-    struct __CFString *_field17;
-    struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> _field18;
-    double _field19;
-    double _field20;
-    unsigned long long _field21;
-    unsigned long long _field22;
-    unsigned long long _field23;
-    unsigned long long _field24;
-};
-
-struct SerialIntArray;
+struct RenderDestination;
 
 struct SerialObjectPtrArray {
     int _field1;
@@ -264,8 +156,6 @@ struct SerialObjectPtrArray {
     int _field3;
     void **_field4;
 };
-
-struct SerialStringArray;
 
 struct SharpnessGridElement_t {
     unsigned char _field1;
@@ -287,36 +177,16 @@ struct Texture {
             unsigned int _field1;
             unsigned int _field2;
         } _field2;
-        void *_field3;
+        struct {
+            void *_field1;
+            void *_field2;
+        } _field3;
     } _field1;
 };
 
 struct Trilean {
     char _field1;
 };
-
-struct WarpKernel {
-    CDUnknownFunctionPointerType *_field1;
-    struct atomic<unsigned int> _field2;
-    char *_field3;
-    char *_field4;
-    _Bool _field5;
-    struct SerialIntArray *_field6;
-    struct SerialStringArray *_field7;
-    struct __CFString *_field8;
-    int _field9;
-    int _field10;
-    struct ISize _field11;
-    _Bool _field12;
-    _Bool _field13;
-    _Bool _field14;
-    _Bool _field15;
-    _Bool _field16;
-    _Bool _field17;
-    CDUnknownFunctionPointerType *_field18;
-};
-
-struct __CFString;
 
 struct __SVMParameters {
     struct __SVMScaleOffset {
@@ -359,14 +229,6 @@ struct __sbuf {
     int _field2;
 };
 
-struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__1::__cxx_atomic_base_impl<unsigned int>> {
-        _Atomic unsigned int _field1;
-    } _field1;
-};
-
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>;
-
 struct filterShape {
     struct CGRect _field1;
 };
@@ -374,8 +236,6 @@ struct filterShape {
 struct float3x3 {
     MISSING_TYPE *columns[3];
 };
-
-struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>;
 
 struct vImage_Buffer {
     void *_field1;
@@ -385,60 +245,59 @@ struct vImage_Buffer {
 };
 
 struct vec2 {
-    float _field1;
-    float _field2;
+    CDUnion_48fbf68f _field1;
+    CDUnion_48fbf68f _field2;
 };
 
 struct vec3 {
-    float _field1;
-    float _field2;
-    float _field3;
+    union {
+        CDStruct_12b04d25 _field1;
+        CDStruct_12b04d25 _field2;
+        CDStruct_a6b098fc _field3;
+        CDStruct_a6b098fc _field4;
+    } _field1;
 };
 
 struct vec4 {
-    float _field1;
-    float _field2;
-    float _field3;
-    float _field4;
+    union {
+        CDStruct_818bb265 _field1;
+        CDStruct_818bb265 _field2;
+        CDStruct_92ccd070 _field3;
+        CDStruct_92ccd070 _field4;
+        CDStruct_6324a431 _field5;
+        CDStruct_6324a431 _field6;
+    } _field1;
 };
 
-struct vector<CI::KernelArgumentType, std::__1::allocator<CI::KernelArgumentType>> {
+struct vector<CI::KernelArgumentType, std::allocator<CI::KernelArgumentType>> {
     int *_field1;
     int *_field2;
-    struct __compressed_pair<CI::KernelArgumentType *, std::__1::allocator<CI::KernelArgumentType>> {
+    struct __compressed_pair<CI::KernelArgumentType *, std::allocator<CI::KernelArgumentType>> {
         int *_field1;
     } _field3;
 };
 
-struct vector<CI::Perspective::Line, std::__1::allocator<CI::Perspective::Line>> {
+struct vector<CI::Perspective::Line, std::allocator<CI::Perspective::Line>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<CI::Perspective::Line *, std::__1::allocator<CI::Perspective::Line>> {
+    struct __compressed_pair<CI::Perspective::Line *, std::allocator<CI::Perspective::Line>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<LineCostProxy, std::__1::allocator<LineCostProxy>> {
+struct vector<LineCostProxy, std::allocator<LineCostProxy>> {
     struct LineCostProxy *__begin_;
     struct LineCostProxy *__end_;
-    struct __compressed_pair<LineCostProxy *, std::__1::allocator<LineCostProxy>> {
+    struct __compressed_pair<LineCostProxy *, std::allocator<LineCostProxy>> {
         struct LineCostProxy *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field2;
-    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
-        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> {
-    struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field1;
-    struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field2;
-    struct __compressed_pair<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>*, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> {
-        struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field1;
+struct vector<std::string, std::allocator<std::string>> {
+    void *_field1;
+    void *_field2;
+    struct __compressed_pair<std::string *, std::allocator<std::string>> {
+        void *_field1;
     } _field3;
 };
 
@@ -844,6 +703,19 @@ typedef struct {
     id _field6;
 } CDStruct_1b0b1413;
 
+typedef struct {
+    struct vec2 _field1;
+    struct vec2 _field2;
+} CDStruct_92ccd070;
+
+typedef struct {
+    struct vec2 _field1;
+} CDStruct_a6b098fc;
+
+typedef struct {
+    struct vec3 _field1;
+} CDStruct_6324a431;
+
 // Ambiguous groups
 typedef struct {
     MISSING_TYPE *a__b;
@@ -869,4 +741,11 @@ typedef struct {
     int mincol;
     int maxcol;
 } CDStruct_5973fb4f;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    float _field1;
+    float _field2;
+} CDUnion_48fbf68f;
 

@@ -8,13 +8,14 @@
 
 @interface PXGSplitLayout
 {
-    CDStruct_d97c9657 _updateFlags;
-    CDStruct_d97c9657 _additionalUpdateFlags;
+    CDStruct_af00bf4e _updateFlags;
+    CDStruct_af00bf4e _additionalUpdateFlags;
     _Bool _settingSublayouts;
     _Bool _isUpdatingSublayouts;
     _Bool _isPerformingAdditionalUpdate;
     _Bool _floatingModesRespectSafeArea;
     _Bool _shouldExcludeTopAndBottomPaddingFromReferenceSize;
+    _Bool _allowsRepeatedSublayoutsUpdates;
     PXGLayout *_firstSublayout;
     PXGLayout *_secondSublayout;
     long long _mode;
@@ -24,6 +25,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool allowsRepeatedSublayoutsUpdates; // @synthesize allowsRepeatedSublayoutsUpdates=_allowsRepeatedSublayoutsUpdates;
 @property(readonly, nonatomic) struct UIEdgeInsets presentedPadding; // @synthesize presentedPadding=_presentedPadding;
 @property(nonatomic) _Bool shouldExcludeTopAndBottomPaddingFromReferenceSize; // @synthesize shouldExcludeTopAndBottomPaddingFromReferenceSize=_shouldExcludeTopAndBottomPaddingFromReferenceSize;
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
@@ -43,10 +45,15 @@
 - (void)screenScaleDidChange;
 - (void)safeAreaInsetsDidChange;
 - (void)visibleRectDidChange;
+- (void)referenceDepthDidChange;
 - (void)referenceSizeDidChange;
 - (void)viewEnvironmentDidChange;
+- (void)_performUpdateSublayoutGeometries;
 - (void)_updateSublayoutGeometries;
+- (void)didUpdate;
 - (void)update;
+- (void)willUpdate;
+- (long long)scrollableAxis;
 - (void)removeSublayoutsInRange:(struct _NSRange)arg1;
 @property(readonly, nonatomic) long long secondSublayoutIndex;
 @property(readonly, nonatomic) long long firstSublayoutIndex;

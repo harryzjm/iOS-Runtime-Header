@@ -34,11 +34,13 @@
 + (id)cellIdentifierForClass:(Class)arg1;
 + (id)cellIdentifierForEditingProperty:(id)arg1;
 + (id)cellIdentifierForProperty:(id)arg1;
++ (id)cellIdentifierForContactContainerEditingGroup;
 + (id)cellIdentifierForLinkedCardsPlaceholderGroup;
 + (id)cellIdentifierForLinkedCardsEditingGroup;
 + (id)cellIdentifierForLinkedCardsGroup;
 + (id)cellIdentifierForFaceTimeGroup;
 + (id)cellIdentifierForPropertyPlaceholder;
++ (id)cellIdentifierForDropdownMenuActions;
 + (id)cellIdentifierForSplitActions;
 + (id)cellIdentifierForActions;
 - (void).cxx_destruct;

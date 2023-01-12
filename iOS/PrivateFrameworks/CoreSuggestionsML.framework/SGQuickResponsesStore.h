@@ -34,7 +34,7 @@
 - (id)getModelVersion;
 - (id)getProfanityLocale;
 - (void)filterBatchWithMinimumDistinctRecipients:(unsigned long long)arg1 minimumReplyOccurences:(unsigned long long)arg2;
-- (void)designateFilteringBatch:(unsigned long long)arg1;
+- (unsigned long long)designateFilteringBatch:(unsigned long long)arg1;
 - (void)recordKnownCustomResponsesInBatchWithEmbedder:(CDUnknownBlockType)arg1 compatibilityVersion:(unsigned long long)arg2;
 - (id)embeddingForPrompt:(id)arg1 language:(id)arg2 embedder:(CDUnknownBlockType)arg3;
 - (_Bool)addingMessageExceedsBatchLimit:(unsigned long long)arg1 tableLimit:(unsigned long long)arg2 message:(id)arg3 language:(id)arg4 prompt:(id)arg5 recipientHandle:(id)arg6 sentAt:(id)arg7;

@@ -22,9 +22,8 @@
 - (void)finishedProactiveTileDownloadForIdentifier:(NSString *)arg1 policy:(unsigned char)arg2 tilesConsidered:(unsigned int)arg3 tileDownloadAttempts:(unsigned int)arg4 successes:(unsigned int)arg5 failures:(unsigned int)arg6 bytesDownloaded:(unsigned long long)arg7;
 - (void)startedProactiveTileDownloadForIdentifier:(NSString *)arg1 policy:(unsigned char)arg2;
 - (void)clearCounters;
-- (void)startPowerLogSessionWithName:(NSString *)arg1;
-- (void)readRequestLogsSince:(NSDate *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
-- (void)readRequestsPerAppSince:(NSDate *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)readRequestLogsDuring:(NSDateInterval *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (void)readRequestsPerAppDuring:(NSDateInterval *)arg1 handler:(void (^)(NSDictionary *, NSError *))arg2;
 - (id <GEORequestCounterTicket>)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(NSString *)arg2;
 @end
 

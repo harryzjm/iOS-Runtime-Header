@@ -8,7 +8,7 @@
 {
 }
 
-+ (unsigned long long)confidenceTypeForRevision:(unsigned long long)arg1;
++ (unsigned long long)confidenceTypeForOriginatingRequestSpecifier:(id)arg1;
 
 @end
 

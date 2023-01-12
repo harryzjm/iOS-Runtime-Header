@@ -8,3 +8,10 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct _PCTimeRange {
+    double start;
+    double duration;
+};
+

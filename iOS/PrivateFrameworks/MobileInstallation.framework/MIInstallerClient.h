@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)clearUninstalledIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)lookupUninstalledWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)uninstallIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)revertIdentifier:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)installURL:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_waitForPendingDelegateMessages;
 - (void)delegateMessageDeliveryCompleteWithError:(id)arg1;

@@ -9,6 +9,7 @@
 @interface AVAsset (TSUAdditions)
 + (id)tsu_containsHDRContentKeys;
 + (id)keyPathsForValuesAffectingTsu_isPlayable;
++ (id)tsu_codecTypesForProRes;
 + (id)tsu_playableKeysWithKeys:(id)arg1;
 + (id)keyPathsForValuesAffectingNaturalSizeWithPreferredTransforms;
 @property(readonly, nonatomic) _Bool tsu_containsHDRContent;

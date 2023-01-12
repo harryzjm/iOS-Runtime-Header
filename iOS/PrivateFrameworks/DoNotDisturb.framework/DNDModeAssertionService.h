@@ -19,20 +19,19 @@
     struct atomic_flag _registeredForUpdates;
     DNDModeAssertion *_activeAssertion;
     struct os_unfair_lock_s _activeAssertionLock;
+    _Bool _activeAssertionQueried;
 }
 
 + (id)serviceForClientIdentifier:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-- (void)_handleXPCInterruption;
 - (void)_registerForAssertionUpdatesIfRequiredWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleChangeActiveModeAssertion:(id)arg1 invalidation:(id)arg2;
 - (void)remoteService:(id)arg1 didChangeActiveModeAssertion:(id)arg2 invalidation:(id)arg3;
-- (void)didReceiveConnectionInvalidatedEventForRemoteService:(id)arg1;
-- (void)didReceiveConnectionInterruptedEventForRemoteService:(id)arg1;
 - (void)removeAssertionUpdateListener:(id)arg1;
 - (void)addAssertionUpdateListener:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)allModeAssertionsWithError:(id *)arg1;
 - (_Bool)invalidateAllActiveModeAssertionsWithError:(id *)arg1;
 - (id)latestModeAssertionInvalidationWithError:(id *)arg1;
 - (id)activeModeAssertionWithError:(id *)arg1;

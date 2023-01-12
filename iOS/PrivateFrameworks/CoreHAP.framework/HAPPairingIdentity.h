@@ -13,11 +13,15 @@
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) unsigned long long permissions; // @synthesize permissions=_permissions;
+- (id)attributeDescriptions;
+- (_Bool)isStrictlyEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithIdentifier:(id)arg1 controllerKeyIdentifier:(id)arg2 publicKey:(id)arg3 privateKey:(id)arg4 permissions:(unsigned long long)arg5;
 - (id)initWithIdentifier:(id)arg1 publicKey:(id)arg2 privateKey:(id)arg3 permissions:(unsigned long long)arg4;
 - (id)initWithIdentifier:(id)arg1 publicKey:(id)arg2 privateKey:(id)arg3;
+- (id)initWithKeychainItem:(id)arg1;
 
 @end
 

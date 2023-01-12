@@ -8,12 +8,12 @@
 #import <HomeUI/HUPresenceUserPickerItemModuleControllerDelegate-Protocol.h>
 #import <HomeUI/HUTriggerConditionEditorItemModuleControllerDelegate-Protocol.h>
 
-@class HFLocationTriggerBuilder, HULocationTriggerEditorSummaryItemManager, HUPresenceUserPickerItemModuleController, HUTriggerConditionEditorItemModuleController, NSString;
+@class HFEventTriggerBuilder, HULocationTriggerEditorSummaryItemManager, HUPresenceUserPickerItemModuleController, HUTriggerConditionEditorItemModuleController, NSString;
 @protocol HUTriggerEditorDelegate;
 
 @interface HULocationTriggerEditorSummaryViewController <HUTriggerConditionEditorItemModuleControllerDelegate, HULocationTriggerRegionEditorViewControllerDelegate, HUPresenceUserPickerItemModuleControllerDelegate>
 {
-    HFLocationTriggerBuilder *_triggerBuilder;
+    HFEventTriggerBuilder *_triggerBuilder;
     unsigned long long _mode;
     id <HUTriggerEditorDelegate> _delegate;
     HUPresenceUserPickerItemModuleController *_userPickerModuleController;
@@ -26,7 +26,7 @@
 @property(readonly, nonatomic) HUPresenceUserPickerItemModuleController *userPickerModuleController; // @synthesize userPickerModuleController=_userPickerModuleController;
 @property(readonly, nonatomic) __weak id <HUTriggerEditorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property(readonly, nonatomic) HFLocationTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
+@property(readonly, nonatomic) HFEventTriggerBuilder *triggerBuilder; // @synthesize triggerBuilder=_triggerBuilder;
 - (void)presenceUserPickerItemModuleController:(id)arg1 presentViewController:(id)arg2;
 - (void)resetSelectedLocationToHomeForPresenceUserPickerItemModuleController:(id)arg1;
 - (void)regionEditorDidCancel:(id)arg1;
@@ -38,6 +38,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
+- (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)itemModuleControllers;
 - (void)viewDidLoad;

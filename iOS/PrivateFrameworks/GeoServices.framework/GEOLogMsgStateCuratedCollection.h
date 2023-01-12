@@ -21,11 +21,15 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     unsigned int _horizontalIndex;
+    int _localSearchProviderID;
     int _placecardType;
+    int _repeatableSectionIndex;
     unsigned int _verticalIndex;
     struct {
         unsigned int has_horizontalIndex:1;
+        unsigned int has_localSearchProviderID:1;
         unsigned int has_placecardType:1;
+        unsigned int has_repeatableSectionIndex:1;
         unsigned int has_verticalIndex:1;
         unsigned int read_impossibleActions:1;
         unsigned int read_possibleActions:1;
@@ -50,6 +54,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasRepeatableSectionIndex;
+@property(nonatomic) int repeatableSectionIndex;
+@property(nonatomic) _Bool hasLocalSearchProviderID;
+@property(nonatomic) int localSearchProviderID;
 @property(nonatomic) _Bool hasHorizontalIndex;
 @property(nonatomic) unsigned int horizontalIndex;
 @property(nonatomic) _Bool hasVerticalIndex;

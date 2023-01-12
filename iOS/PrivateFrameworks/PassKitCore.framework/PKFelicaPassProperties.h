@@ -82,7 +82,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTransitAppletState:(id)arg1 paymentApplication:(id)arg2;
+- (id)initWithTransitAppletState:(id)arg1 paymentApplication:(id)arg2 fieldCollection:(id)arg3;
 - (id)initWithFelicaAppletState:(id)arg1 paymentApplication:(id)arg2;
 
 @end

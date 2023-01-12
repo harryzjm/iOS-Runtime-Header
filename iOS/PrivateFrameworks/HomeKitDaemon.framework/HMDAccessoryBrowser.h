@@ -19,7 +19,7 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPAccessoryServerBrowser, HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HAPAccessoryServerBrowserRelay, HAPWACAccessoryBrowser, HMDAuthServer, HMDDAccessoryServerBrowserDemo, HMDHAP2Storage, HMDHomeManager, HMDMediaBrowser, HMDUnassociatedWACAccessory, HMDWACBrowser, HMFMessageDispatcher, HMFTimer, HMFUnfairLock, NSArray, NSData, NSHashTable, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
+@class HAPAccessoryServerBrowser, HAPAccessoryServerBrowserBTLE, HAPAccessoryServerBrowserIP, HAPAccessoryServerBrowserRelay, HMDAccessoryServerBrowserDemo, HMDAuthServer, HMDHAP2Storage, HMDHomeManager, HMDMediaBrowser, HMDUnassociatedWACAccessory, HMDWACBrowser, HMFMessageDispatcher, HMFTimer, HMFUnfairLock, NSArray, NSData, NSHashTable, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
 @protocol HMDAccessoryBrowserManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMDAccessoryBrowser : HMFObject <HAPAccessoryServerBrowserDelegate, HAPAccessoryServerDelegate, HMFMessageReceiver, HMFTimerDelegate, HMDMediaBrowserDelegate, HMDWACBrowserDelegate, HMDWACAccessoryConfigurationDelegate, HMDWatchSystemStateDelegate, HMDAuthServerDelegate, HMFLogging, HMDAccessoryBrowserProtocol, HMDAccessoryBrowserHapProtocol>
@@ -44,15 +44,15 @@
     unsigned long long _generationCounter;
     HMDHomeManager *_homeManager;
     NSMutableArray *_accessoryServerBrowsers;
+    NSHashTable *_discoveringAccessoryServerBrowsers;
     HAPAccessoryServerBrowserIP *_ipAccessoryServerBrowser;
     HAPAccessoryServerBrowserBTLE *_btleAccessoryServerBrowser;
-    HAPWACAccessoryBrowser *_wacAccessoryBrowser;
     HAPAccessoryServerBrowser *_hap2AccessoryServerBrowser;
     HMDHAP2Storage *_hap2Storage;
     HMDMediaBrowser *_mediaBrowser;
     HMDWACBrowser *_wacBrowser;
     HMDAuthServer *_authServer;
-    HMDDAccessoryServerBrowserDemo *_demoAccessoryServerBrowser;
+    HMDAccessoryServerBrowserDemo *_demoAccessoryServerBrowser;
     HMFTimer *_stopReprovisioningTimer;
     HMFTimer *_stopBrowsingAccessoriesNeedingReprovisioningTimer;
     NSString *_identifierOfAccessoryBeingReprovisioned;
@@ -65,10 +65,12 @@
     NSHashTable *_tombstonedHAPAccessoryServers;
     NSHashTable *_discoveringBLEAccessoryServerIdentifiers;
     NSMutableSet *_discoveredAccessoryServerIdentifiers;
+    NSArray *_browseableLinkTypes;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *browseableLinkTypes; // @synthesize browseableLinkTypes=_browseableLinkTypes;
 @property(retain, nonatomic) NSMutableSet *discoveredAccessoryServerIdentifiers; // @synthesize discoveredAccessoryServerIdentifiers=_discoveredAccessoryServerIdentifiers;
 @property(readonly, nonatomic) NSHashTable *discoveringBLEAccessoryServerIdentifiers; // @synthesize discoveringBLEAccessoryServerIdentifiers=_discoveringBLEAccessoryServerIdentifiers;
 @property(readonly, nonatomic) NSHashTable *tombstonedHAPAccessoryServers; // @synthesize tombstonedHAPAccessoryServers=_tombstonedHAPAccessoryServers;
@@ -80,17 +82,17 @@
 @property(retain, nonatomic) NSString *countrycodeForAccessoryReprovisioning; // @synthesize countrycodeForAccessoryReprovisioning=_countrycodeForAccessoryReprovisioning;
 @property(retain, nonatomic) NSData *wiFiPSKForAccessoryReprovisioning; // @synthesize wiFiPSKForAccessoryReprovisioning=_wiFiPSKForAccessoryReprovisioning;
 @property(retain, nonatomic) NSString *identifierOfAccessoryBeingReprovisioned; // @synthesize identifierOfAccessoryBeingReprovisioned=_identifierOfAccessoryBeingReprovisioned;
-@property(retain, nonatomic) HMFTimer *stopBrowsingAccessoriesNeedingReprovisioningTimer; // @synthesize stopBrowsingAccessoriesNeedingReprovisioningTimer=_stopBrowsingAccessoriesNeedingReprovisioningTimer;
-@property(retain, nonatomic) HMFTimer *stopReprovisioningTimer; // @synthesize stopReprovisioningTimer=_stopReprovisioningTimer;
-@property(retain, nonatomic) HMDDAccessoryServerBrowserDemo *demoAccessoryServerBrowser; // @synthesize demoAccessoryServerBrowser=_demoAccessoryServerBrowser;
+@property(readonly, nonatomic) HMFTimer *stopBrowsingAccessoriesNeedingReprovisioningTimer; // @synthesize stopBrowsingAccessoriesNeedingReprovisioningTimer=_stopBrowsingAccessoriesNeedingReprovisioningTimer;
+@property(readonly, nonatomic) HMFTimer *stopReprovisioningTimer; // @synthesize stopReprovisioningTimer=_stopReprovisioningTimer;
+@property(retain, nonatomic) HMDAccessoryServerBrowserDemo *demoAccessoryServerBrowser; // @synthesize demoAccessoryServerBrowser=_demoAccessoryServerBrowser;
 @property(retain, nonatomic) HMDAuthServer *authServer; // @synthesize authServer=_authServer;
 @property(retain, nonatomic) HMDWACBrowser *wacBrowser; // @synthesize wacBrowser=_wacBrowser;
 @property(retain, nonatomic) HMDMediaBrowser *mediaBrowser; // @synthesize mediaBrowser=_mediaBrowser;
 @property(retain, nonatomic) HMDHAP2Storage *hap2Storage; // @synthesize hap2Storage=_hap2Storage;
 @property(retain, nonatomic) HAPAccessoryServerBrowser *hap2AccessoryServerBrowser; // @synthesize hap2AccessoryServerBrowser=_hap2AccessoryServerBrowser;
-@property(retain, nonatomic) HAPWACAccessoryBrowser *wacAccessoryBrowser; // @synthesize wacAccessoryBrowser=_wacAccessoryBrowser;
 @property(retain, nonatomic) HAPAccessoryServerBrowserBTLE *btleAccessoryServerBrowser; // @synthesize btleAccessoryServerBrowser=_btleAccessoryServerBrowser;
 @property(retain, nonatomic) HAPAccessoryServerBrowserIP *ipAccessoryServerBrowser; // @synthesize ipAccessoryServerBrowser=_ipAccessoryServerBrowser;
+@property(retain, nonatomic) NSHashTable *discoveringAccessoryServerBrowsers; // @synthesize discoveringAccessoryServerBrowsers=_discoveringAccessoryServerBrowsers;
 @property(retain, nonatomic) NSMutableArray *accessoryServerBrowsers; // @synthesize accessoryServerBrowsers=_accessoryServerBrowsers;
 @property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
@@ -110,7 +112,6 @@
 - (void)browser:(id)arg1 didRemoveSessions:(id)arg2;
 - (void)browser:(id)arg1 didRemoveAdvertisements:(id)arg2;
 - (void)browser:(id)arg1 didAddAdvertisements:(id)arg2;
-- (_Bool)shouldEnableReachabilityForAccessoryServer:(id)arg1;
 - (void)accessoryServer:(id)arg1 confirmUUID:(id)arg2 token:(id)arg3;
 - (void)accessoryServer:(id)arg1 authenticateUUID:(id)arg2 token:(id)arg3;
 - (void)accessoryServer:(id)arg1 validateCert:(id)arg2 model:(id)arg3;
@@ -123,9 +124,10 @@
 - (void)accessoryServerDidUpdateStateNumber:(id)arg1;
 - (void)accessoryServer:(id)arg1 didUpdateHasPairings:(_Bool)arg2;
 - (void)_notifyDelegateOfAccessoryServer:(id)arg1 didUpdateHasPairings:(_Bool)arg2;
+- (void)accessoryServer:(id)arg1 didUpdateWakeNumber:(id)arg2;
+- (void)accessoryServer:(id)arg1 didDisconnectWithError:(id)arg2;
 - (void)accessoryServer:(id)arg1 didUpdateValuesForCharacteristics:(id)arg2 stateNumber:(id)arg3 broadcast:(_Bool)arg4;
 - (void)_notifyDelegateOfAccessoryServer:(id)arg1 didUpdateValuesForCharacteristics:(id)arg2 stateNumber:(id)arg3 broadcast:(_Bool)arg4;
-- (void)accessoryServer:(id)arg1 isBlockedWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)continueAddingAccessoryToHomeAfterUserConfirmation:(id)arg1 withError:(id)arg2;
 - (void)accessoryServer:(id)arg1 didDiscoverAccessories:(id)arg2 transaction:(id)arg3 error:(id)arg4;
 - (void)accessoryServer:(id)arg1 updatePairingProgress:(long long)arg2;
@@ -141,6 +143,7 @@
 - (void)removeAccessoryCacheForIdentifier:(id)arg1;
 - (void)fetchAccessoryCacheForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveAccessoryCache:(id)arg1 forIdentifier:(id)arg2;
+- (_Bool)isServerLinkTypeBrowseable:(long long)arg1;
 - (void)accessoryServerBrowser:(id)arg1 removeCacheForAccessoryWithIdentifier:(id)arg2;
 - (void)accessoryServerBrowser:(id)arg1 getCacheForAccessoryWithIdentifier:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)accessoryServerBrowser:(id)arg1 saveCache:(id)arg2 serverIdentifier:(id)arg3;
@@ -201,12 +204,16 @@
 - (void)discoverAccessories:(id)arg1;
 - (void)_startDiscoveringAccessoriesNeedingReprovisioning;
 - (void)startDiscoveringAccessoriesNeedingReprovisioning;
-- (void)_stopDiscoveringAccessoriesWithForce:(_Bool)arg1 error:(id)arg2;
+- (void)_stopDiscoveryForAccessoryServerBrowser:(id)arg1;
+- (void)_stopDiscoveringAccessoriesWithError:(id)arg1;
+- (void)_stopDiscoveringAccessoriesWithLinkType:(id)arg1 force:(_Bool)arg2 error:(id)arg3;
 - (void)_stopDiscoveringMediaAccessories;
 - (void)_startDiscoveringMediaAccessories;
-- (void)_startDiscoveringAccessories;
+- (void)_startDiscoveryForAccessoryServerBrowser:(id)arg1;
+- (void)_startDiscoveringAccessoriesWithLinkType:(id)arg1;
 - (void)handleStartDiscoveringAssociatedMediaAccessories:(_Bool)arg1 forTransport:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_startDiscoveringPairedAccessories;
+- (void)_startDiscoveringPairedAccessories:(id)arg1;
+- (void)currentlyFoundHAPAccessoryServerWithIdentifier:(id)arg1 linkType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_discoverAccessoryServer:(id)arg1 linkType:(long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)timerDidFire:(id)arg1;
 - (void)_stopReprovisioningTimerHandler;
@@ -255,7 +262,6 @@
 - (void)handleNewlyPairedAccessory:(id)arg1 linkType:(long long)arg2;
 - (void)homeLocationChangeNotification:(id)arg1;
 - (void)handleConnectionDeactivation:(id)arg1;
-- (_Bool)__isCurrentDevicePrimaryResident;
 - (void)_reprovisionAccessoryWithIdentifier:(id)arg1 wiFiPSK:(id)arg2 countryCode:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)reprovisionAccessoryWithIdentifier:(id)arg1 wiFiPSK:(id)arg2 countryCode:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)activate:(_Bool)arg1;
@@ -263,10 +269,14 @@
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(id)arg1;
 - (void)btleAccessoryReachabilityProbeTimer:(_Bool)arg1;
 - (void)stopDiscoveringMediaAccessories;
+- (void)stopDiscoveringAccessoriesWithLinkType:(long long)arg1;
 - (void)stopDiscoveringAccessories;
 - (void)startDiscoveringMediaAccessories;
+- (void)startDiscoveringAccessoriesWithLinkType:(long long)arg1;
 - (void)startDiscoveringAccessories;
+- (void)startDiscoveringPairedAccessoriesWithLinkType:(long long)arg1;
 - (void)startDiscoveringPairedAccessories;
+- (_Bool)isDiscoveringAccessoriesWithLinkType:(long long)arg1;
 - (void)resetConfiguration;
 - (void)_handleRemovedAccessoryAdvertisements:(id)arg1;
 - (void)_handleAddedAccessoryAdvertisements:(id)arg1;
@@ -282,6 +292,7 @@
 - (id)identifiersOfPairedBTLEAccessories;
 - (_Bool)areThereAnyPairedAccessories;
 - (id)__identifiersOfPairedAccessoriesWithTransports:(unsigned long long)arg1;
+- (id)pairedHMDHAPAccessoryWithAccessoryServer:(id)arg1;
 - (id)pairedAccessoryInformationWithSetupID:(id)arg1;
 - (id)pairedAccessoryInformationWithIdentifier:(id)arg1;
 - (void)removePairedAccessoryInfoWithIdentifier:(id)arg1;
@@ -316,6 +327,9 @@
 - (void)removeUnassociatedAccessory:(id)arg1;
 - (void)removeUnassociatedAccessoryWithIdentifier:(id)arg1;
 - (void)addUnassociatedAccessory:(id)arg1 forDeviceSetup:(_Bool)arg2;
+- (void)_handleTestModeConfigRequest:(id)arg1;
+- (void)configureDemoBrowserWithDemoAccessories:(id)arg1 finalized:(_Bool)arg2;
+- (void)validateLinkTypes:(id)arg1;
 - (void)dealloc;
 - (void)updateBroadcastKeyForIdentifer:(id)arg1 key:(id)arg2 keyUpdatedStateNumber:(id)arg3 keyUpdatedTime:(double)arg4;
 - (void)updateStateForIdentifier:(id)arg1 stateNumber:(id)arg2;
@@ -323,9 +337,7 @@
 - (void)setQOS:(long long)arg1;
 - (void)configureAccessory:(id)arg1 trackState:(_Bool)arg2 connectionPriority:(_Bool)arg3;
 - (void)configureWithHomeManager:(id)arg1;
-- (void)configureDemoBrowserWithTestAccessories:(id)arg1;
-- (void)configureDemoBrowserWithDemoAccessories:(id)arg1 finalized:(_Bool)arg2;
-- (id)initWithMessageDispatcher:(id)arg1 workQueue:(id)arg2 injectedSettings:(id)arg3;
+- (id)initWithMessageDispatcher:(id)arg1 injectedSettings:(id)arg2;
 - (id)initWithMessageDispatcher:(id)arg1;
 
 // Remaining properties

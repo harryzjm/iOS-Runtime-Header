@@ -11,6 +11,7 @@
 
 @class NSIndexSet, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _ICPlayActivityEndpointRevisionInformation : NSObject <NSCopying, NSSecureCoding>
 {
     NSIndexSet *_additionalPendingRevisionsIndexSet;

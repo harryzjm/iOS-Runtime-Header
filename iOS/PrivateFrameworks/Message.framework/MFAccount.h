@@ -21,6 +21,7 @@
     struct os_unfair_lock_s _privacyDescriptionLock;
     NSString *_cachedPrivacySafeDescription;
     NSString *_cachedDescription;
+    _Bool _allowsTrustPrompt;
     NSArray *emailAddressStrings;
     ECAccount *_baseAccount;
     NSString *_sourceApplicationBundleIdentifier;
@@ -34,6 +35,11 @@
 + (_Bool)isCommonPortNumber:(unsigned int)arg1;
 + (unsigned int)defaultSecurePortNumber;
 + (unsigned int)defaultPortNumber;
++ (_Bool)accountRestrictsRecentsSyncing:(id)arg1;
++ (_Bool)accountIsRestrictedFromTransfersToOtherAccounts:(id)arg1;
++ (_Bool)accountIsPreventedFromSendingFromExternalProcesses:(id)arg1;
++ (_Bool)accountSourceIsManaged:(id)arg1;
++ (_Bool)accountIsManaged:(id)arg1;
 + (id)hostname;
 + (id)accountPropertiesValueForKey:(id)arg1 value:(id)arg2;
 + (void *)legacyKeychainProtocol;
@@ -99,7 +105,7 @@
 - (id)clientCertificates;
 @property(retain, nonatomic) NSString *domain;
 - (void)setTryDirectSSL:(_Bool)arg1;
-- (_Bool)allowsTrustPrompt;
+@property _Bool allowsTrustPrompt; // @synthesize allowsTrustPrompt=_allowsTrustPrompt;
 - (void)setUsesSSL:(_Bool)arg1;
 - (_Bool)usesSSL;
 - (void)releaseAllForcedConnections;
@@ -134,11 +140,11 @@
 @property(readonly) NSString *managedTag;
 @property(readonly, nonatomic, getter=isManaged) _Bool managed;
 @property(copy, nonatomic) NSString *hostname;
-@property(retain) NSString *username;
-@property(retain, nonatomic) NSString *displayName;
+@property(copy, nonatomic) NSString *username;
+@property(copy, nonatomic) NSString *displayName;
 - (_Bool)canGoOffline;
 - (void)setActive:(_Bool)arg1;
-- (_Bool)isActive;
+@property(readonly, nonatomic) _Bool isActive;
 - (_Bool)_boolForAccountInfoKey:(id)arg1 defaultValue:(_Bool)arg2;
 - (id)_objectForAccountInfoKey:(id)arg1;
 - (id)valueInAccountPropertiesForKey:(id)arg1;

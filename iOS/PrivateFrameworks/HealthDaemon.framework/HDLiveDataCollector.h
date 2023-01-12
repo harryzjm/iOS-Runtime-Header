@@ -10,7 +10,6 @@
 
 - (id)hkObjectsFromSensorDatum:(id)arg1 context:(id)arg2;
 - (void)beginUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)_queue_handleSensorDatum:(id)arg1 context:(id)arg2;
 - (void)_queue_beginStreaming;
 
 @end

@@ -12,7 +12,6 @@
 }
 
 - (struct CGRect)rect;
-- (id)initWithRect:(struct CGRect)arg1;
 
 @end
 

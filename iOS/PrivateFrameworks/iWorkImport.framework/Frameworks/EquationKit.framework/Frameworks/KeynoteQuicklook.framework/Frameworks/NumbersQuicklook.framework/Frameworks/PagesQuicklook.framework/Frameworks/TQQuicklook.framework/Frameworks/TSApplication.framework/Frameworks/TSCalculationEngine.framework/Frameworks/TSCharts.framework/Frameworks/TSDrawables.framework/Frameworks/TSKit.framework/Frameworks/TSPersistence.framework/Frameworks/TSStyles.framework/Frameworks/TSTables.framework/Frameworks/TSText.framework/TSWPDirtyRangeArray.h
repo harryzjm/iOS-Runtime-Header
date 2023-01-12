@@ -11,7 +11,7 @@
 
 @interface TSWPDirtyRangeArray : NSObject <NSCopying, NSMutableCopying>
 {
-    vector_e3deae5b _rangeVector;
+    struct vector<TSWPDirtyRange, std::allocator<TSWPDirtyRange>> _rangeVector;
 }
 
 - (id).cxx_construct;
@@ -26,7 +26,7 @@
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithRangeVector:(const vector_e3deae5b *)arg1;
+- (id)initWithRangeVector:(const void *)arg1;
 - (id)initWithDirtyRange:(CDStruct_9ae92562)arg1;
 - (id)init;
 

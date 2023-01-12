@@ -8,7 +8,6 @@
 {
 }
 
-- (id)fr_description;
 - (id)initWithPersonalizationIdentifier:(id)arg1;
 - (id)initWithPublisherTagID:(id)arg1;
 - (id)init;

@@ -24,6 +24,7 @@
 @property(retain, nonatomic) NSString *backStepIdentifier; // @synthesize backStepIdentifier=_backStepIdentifier;
 @property(retain, nonatomic) NSString *stepIdentifier; // @synthesize stepIdentifier=_stepIdentifier;
 @property(readonly) NPKPaymentProvisioningFlowControllerRequestContext *requestContext; // @synthesize requestContext=_requestContext;
+- (id)chooseTransitProductStepContext;
 - (id)getIssuerApplicationAddRequestStepContext;
 - (id)verificationCodeStepContext;
 - (id)verificationFieldsStepContext;

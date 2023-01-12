@@ -18,10 +18,9 @@
 - (void).cxx_destruct;
 @property(readonly) NSDictionary *homePresenceByPairingIdentity; // @synthesize homePresenceByPairingIdentity=_homePresenceByPairingIdentity;
 @property(readonly, copy) HMDCameraRecordingSessionSignificantEvent *significantEvent; // @synthesize significantEvent=_significantEvent;
-- (void)localZone:(id)arg1 willPerformMirrorOutputForModel:(id)arg2;
 - (id)attributeDescriptions;
-- (id)modelsToUpdate;
-- (void)main;
+- (void)updateMirrorOutputModel:(id)arg1;
+- (id)modelsToAdd;
 - (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 significantEvent:(id)arg3 homePresenceByPairingIdentity:(id)arg4 dataSource:(id)arg5;
 - (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 significantEvent:(id)arg3 homePresenceByPairingIdentity:(id)arg4;
 

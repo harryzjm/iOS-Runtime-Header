@@ -11,6 +11,7 @@
 @protocol CPSLaunchContentViewControllerDelegate <NSObject>
 
 @optional
+- (void)launchContentViewController:(CPSLaunchContentViewController *)arg1 didTapCloseButton:(_Bool)arg2;
 - (void)launchContentViewControllerDidDisappear:(CPSLaunchContentViewController *)arg1 didOpenClip:(_Bool)arg2;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTSound, NSNumber, NSString;
+@class MTSound, NSDictionary, NSNumber, NSString;
 
 @interface MTMutableAlarm
 {
@@ -26,6 +26,7 @@
 @property(nonatomic) unsigned long long month; // @dynamic month;
 @property(nonatomic) unsigned long long playOptions; // @dynamic playOptions;
 @property(nonatomic) unsigned long long repeatSchedule; // @dynamic repeatSchedule;
+@property(copy, nonatomic) NSDictionary *siriContext; // @dynamic siriContext;
 @property(nonatomic) _Bool sleepMode; // @dynamic sleepMode;
 @property(nonatomic) unsigned long long sleepModeOptions; // @dynamic sleepModeOptions;
 @property(nonatomic) _Bool sleepSchedule; // @dynamic sleepSchedule;

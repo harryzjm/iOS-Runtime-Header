@@ -6,14 +6,29 @@
 
 @interface VNTorsoprint
 {
+    float _confidence;
 }
 
-+ (id)emptyVNTorsoprintForRevision:(unsigned long long)arg1;
++ (id)emptyTorsoprintDataForRevision:(unsigned long long)arg1;
++ (_Bool)shouldAssumeOriginatingRequestClassForHeaderSerializationVersion:(unsigned int)arg1;
++ (_Bool)shouldIgnoreLagecyLabelsAndConfidenceForHeaderSerializationVersion:(unsigned int)arg1;
 + (unsigned long long)currentSerializationVersion;
 + (unsigned long long)serializationMagicNumber;
 + (id)codingTypesToCodingKeys;
 + (unsigned int)currentCodingVersion;
 + (id)currentVersion;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
++ (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) float confidence; // @synthesize confidence=_confidence;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
+- (unsigned long long)serializedLength;
+- (id)initWithState:(id)arg1 byteOffset:(unsigned long long *)arg2 error:(id *)arg3;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 confidence:(float)arg5 originatingRequestSpecifier:(id)arg6;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 confidence:(float)arg5 requestRevision:(unsigned long long)arg6;
 
 @end
 

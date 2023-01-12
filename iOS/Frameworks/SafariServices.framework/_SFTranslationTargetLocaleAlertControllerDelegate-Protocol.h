@@ -11,6 +11,7 @@
 @protocol _SFTranslationTargetLocaleAlertControllerDelegate <NSObject>
 
 @optional
+- (_Bool)translationAlertControllerShouldDismissAfterSelection:(_SFTranslationTargetLocaleAlertController *)arg1;
 - (void)translationAlertController:(_SFTranslationTargetLocaleAlertController *)arg1 validateTargetLocale:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)translationAlertController:(_SFTranslationTargetLocaleAlertController *)arg1 didSelectLocale:(NSString *)arg2;
 @end

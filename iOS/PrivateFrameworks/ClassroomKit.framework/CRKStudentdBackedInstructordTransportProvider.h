@@ -15,13 +15,16 @@
 {
     id <CRKRequestPerformingProtocol> _studentDaemonProxy;
     NSURL *_classroomAppBundleURL;
+    NSString *_instructordBundleIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *instructordBundleIdentifier; // @synthesize instructordBundleIdentifier=_instructordBundleIdentifier;
 @property(retain, nonatomic) NSURL *classroomAppBundleURL; // @synthesize classroomAppBundleURL=_classroomAppBundleURL;
 @property(retain, nonatomic) id <CRKRequestPerformingProtocol> studentDaemonProxy; // @synthesize studentDaemonProxy=_studentDaemonProxy;
 - (void)fetchTransportOperationDidFinish:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchTransportWithCompletion:(CDUnknownBlockType)arg1;
+- (id)initWithStudentDaemonProxy:(id)arg1 classroomAppBundleURL:(id)arg2 instructordBundleIdentifier:(id)arg3;
 - (id)initWithStudentDaemonProxy:(id)arg1 classroomAppBundleURL:(id)arg2;
 - (id)initWithStudentDaemonProxy:(id)arg1;
 - (id)init;

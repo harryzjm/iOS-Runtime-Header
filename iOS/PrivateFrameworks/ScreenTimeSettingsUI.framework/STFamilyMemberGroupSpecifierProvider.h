@@ -11,13 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface STFamilyMemberGroupSpecifierProvider <MCProfileConnectionObserver>
 {
+    _Bool _presentedAsModal;
 }
 
++ (id)providerWithCoordinator:(id)arg1 presentedAsModal:(_Bool)arg2;
+@property(nonatomic) _Bool presentedAsModal; // @synthesize presentedAsModal=_presentedAsModal;
 - (void)showChildViewController:(id)arg1;
 - (id)totalChildUsageTime:(id)arg1;
 - (void)imageDidUpdate:(id)arg1;
 - (id)familySpecifiers;
-- (id)createSpecifierForUser:(id)arg1 devices:(id)arg2;
+- (id)createSpecifierForUser:(id)arg1 shouldWarn:(_Bool)arg2;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;

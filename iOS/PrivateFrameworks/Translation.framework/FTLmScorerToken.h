@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_72cd248a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_72cd248a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) int ngram_used;
 @property(readonly, nonatomic) double log10_score;
 @property(readonly, nonatomic) NSString *token_str;

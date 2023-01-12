@@ -6,15 +6,17 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UIColor, UILabel;
+@class NSString, UIColor, UIImage, UIImageView, UILabel;
 
 @interface PKStackedLabelCell : UITableViewCell
 {
     UILabel *_titleLabel;
     UILabel *_detailLabel;
+    UIImageView *_detailImageView;
     _Bool _isRTL;
     NSString *_titleText;
     NSString *_detailText;
+    UIImage *_detailImage;
     UIColor *_titleTextColor;
     UIColor *_detailTextColor;
 }
@@ -22,6 +24,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *detailTextColor; // @synthesize detailTextColor=_detailTextColor;
 @property(retain, nonatomic) UIColor *titleTextColor; // @synthesize titleTextColor=_titleTextColor;
+@property(retain, nonatomic) UIImage *detailImage; // @synthesize detailImage=_detailImage;
 @property(copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property(copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 - (void)traitCollectionDidChange:(id)arg1;

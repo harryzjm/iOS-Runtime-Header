@@ -8,37 +8,45 @@
 
 #import <VoiceServices/VSSpeechServiceDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, VSPresynthesizedAudioRequest, VSSpeechConnection, VSSpeechRequest;
+@class NSMutableArray, NSMutableDictionary, NSString, VSPresynthesizedAudioRequest, VSSpeechConnection, VSSpeechRequest;
 @protocol VSSpeechConnectionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VSSpeechConnectionDelegateWrapper : NSObject <VSSpeechServiceDelegate>
 {
     id <VSSpeechConnectionDelegate> _delegate;
-    VSSpeechRequest *_request;
+    VSSpeechRequest *_currentRequest;
+    NSMutableArray *_requests;
     NSMutableDictionary *_concurrentSynthesisRequests;
-    VSPresynthesizedAudioRequest *_presynthesizedAudioRequest;
+    VSPresynthesizedAudioRequest *_currentAudioRequest;
+    NSMutableArray *_audioRequests;
     VSSpeechConnection *_connection;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak VSSpeechConnection *connection; // @synthesize connection=_connection;
-@property(retain, nonatomic) VSPresynthesizedAudioRequest *presynthesizedAudioRequest; // @synthesize presynthesizedAudioRequest=_presynthesizedAudioRequest;
+@property(retain, nonatomic) NSMutableArray *audioRequests; // @synthesize audioRequests=_audioRequests;
+@property(retain, nonatomic) VSPresynthesizedAudioRequest *currentAudioRequest; // @synthesize currentAudioRequest=_currentAudioRequest;
 @property(retain, nonatomic) NSMutableDictionary *concurrentSynthesisRequests; // @synthesize concurrentSynthesisRequests=_concurrentSynthesisRequests;
-@property(retain, nonatomic) VSSpeechRequest *request; // @synthesize request=_request;
+@property(retain, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
+@property(retain, nonatomic) VSSpeechRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property(nonatomic) __weak id <VSSpeechConnectionDelegate> delegate; // @synthesize delegate=_delegate;
-- (oneway void)presynthesizedAudioRequestSuccessWithInstrumentMetrics:(id)arg1 error:(id)arg2;
-- (oneway void)presynthesizedAudioRequestDidStopAtEnd:(_Bool)arg1 error:(id)arg2;
-- (oneway void)presynthesizedAudioRequestDidStart;
+- (oneway void)audioRequest:(id)arg1 didReportInstrumentMetrics:(id)arg2 error:(id)arg3;
+- (oneway void)audioRequest:(id)arg1 didStopAtEnd:(_Bool)arg2 error:(id)arg3;
+- (oneway void)audioRequestDidStart:(id)arg1;
 - (oneway void)synthesisRequest:(id)arg1 didFinishWithInstrumentMetrics:(id)arg2 error:(id)arg3;
-- (oneway void)speechRequestDidStopWithSuccess:(_Bool)arg1 phonemesSpoken:(id)arg2 error:(id)arg3;
-- (oneway void)speechRequestSuccessWithInstrumentMetrics:(id)arg1;
+- (oneway void)synthesisRequest:(id)arg1 didGenerateAudioChunk:(id)arg2;
+- (oneway void)speechRequest:(id)arg1 didStopWithSuccess:(_Bool)arg2 phonemesSpoken:(id)arg3 error:(id)arg4;
+- (oneway void)speechRequest:(id)arg1 didReportInstrumentMetrics:(id)arg2;
 - (oneway void)synthesisRequest:(id)arg1 didReceiveTimingInfo:(id)arg2;
-- (oneway void)speechRequestDidReceiveTimingInfo:(id)arg1;
-- (oneway void)speechRequestMark:(long long)arg1 didStartForRange:(struct _NSRange)arg2;
-- (oneway void)speechRequestDidContinue;
-- (oneway void)speechRequestDidPause;
-- (oneway void)speechRequestDidStart;
+- (oneway void)speechRequest:(id)arg1 didReceiveTimingInfo:(id)arg2;
+- (oneway void)speechRequest:(id)arg1 didStartWithMark:(long long)arg2 forRange:(struct _NSRange)arg3;
+- (oneway void)speechRequestDidContinue:(id)arg1;
+- (oneway void)speechRequestDidPause:(id)arg1;
+- (oneway void)speechRequestDidStart:(id)arg1;
+- (id)getLocalAudioRequest:(id)arg1;
+- (id)getLocalRequest:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

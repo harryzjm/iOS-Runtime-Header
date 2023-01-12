@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMIFaceRecognition, NSNumber;
+@class HMIFaceRecognition, HMITorsoAnnotation, NSNumber, NSUUID;
 
 @interface HMIVideoAnalyzerEventFace
 {
     HMIFaceRecognition *_faceRecognition;
     NSNumber *_yaw;
     NSNumber *_roll;
+    HMITorsoAnnotation *_torsoAnnotation;
 }
 
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly) HMITorsoAnnotation *torsoAnnotation; // @synthesize torsoAnnotation=_torsoAnnotation;
 @property(readonly) NSNumber *roll; // @synthesize roll=_roll;
 @property(readonly) NSNumber *yaw; // @synthesize yaw=_yaw;
 @property(readonly) HMIFaceRecognition *faceRecognition; // @synthesize faceRecognition=_faceRecognition;
@@ -25,6 +27,8 @@
 - (id)shortDescription;
 - (id)attributeDescriptions;
 - (id)description;
+@property(readonly) NSUUID *sessionEntityUUID;
+- (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 yaw:(id)arg3 roll:(id)arg4 faceRecognition:(id)arg5 torsoAnnotation:(id)arg6 userInfo:(id)arg7;
 - (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 yaw:(id)arg3 roll:(id)arg4 faceRecognition:(id)arg5 userInfo:(id)arg6;
 - (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2 faceRecognition:(id)arg3;
 - (id)initWithConfidence:(id)arg1 boundingBox:(struct CGRect)arg2;

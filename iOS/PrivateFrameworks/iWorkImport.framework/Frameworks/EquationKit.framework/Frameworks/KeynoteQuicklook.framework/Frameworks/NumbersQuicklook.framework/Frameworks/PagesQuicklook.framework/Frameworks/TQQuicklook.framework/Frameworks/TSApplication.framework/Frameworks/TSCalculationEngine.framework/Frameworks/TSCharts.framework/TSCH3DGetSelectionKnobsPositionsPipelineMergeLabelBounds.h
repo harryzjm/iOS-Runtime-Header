@@ -10,14 +10,15 @@
 
 @interface TSCH3DGetSelectionKnobsPositionsPipelineMergeLabelBounds : NSObject
 {
-    int mLabelType;
-    int mKnobsMode;
-    NSMutableArray *mLabelsBounds;
+    int _labelType;
+    int _knobsMode;
+    NSMutableArray *_labelsBounds;
 }
 
 + (id)boundsWithLabelType:(int)arg1 knobsMode:(int)arg2;
-@property(readonly, nonatomic) int knobsMode; // @synthesize knobsMode=mKnobsMode;
-@property(readonly, nonatomic) int labelType; // @synthesize labelType=mLabelType;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) int knobsMode; // @synthesize knobsMode=_knobsMode;
+@property(readonly, nonatomic) int labelType; // @synthesize labelType=_labelType;
 - (void)mergeBoundsIntoProjectedPoints:(id)arg1;
 - (_Bool)p_hasExtentPointsForBounds:(id)arg1 returningMinPoint:(struct CGPoint *)arg2 maxPoint:(struct CGPoint *)arg3;
 - (struct CGPoint)p_maxPoint:(struct CGPoint)arg1 otherPoint:(struct CGPoint)arg2;
@@ -25,7 +26,6 @@
 - (_Bool)p_isHorizontal;
 - (void)addBounds:(struct CGRect)arg1;
 - (void)addNewBoundsArray;
-- (void)dealloc;
 - (id)initWithLabelType:(int)arg1 knobsMode:(int)arg2;
 
 @end

@@ -6,39 +6,47 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSCalculationEngine/TSCEReferenceTrackerDelegate-Protocol.h>
+#import <TSCalculationEngine/TSCEFormulaOwning-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSCEReferenceTracker;
+@class NSString, TSCECalculationEngine, TSCETrackedReferenceStore;
 
-@interface TSCENamedReferenceManager : TSPObject <TSCEReferenceTrackerDelegate>
+@interface TSCENamedReferenceManager : TSPObject <TSCEFormulaOwning>
 {
-    TSCEReferenceTracker *_referenceTracker;
-    TSCEReferenceTracker *_weakReferenceTracker;
+    struct TSKUIDStruct _ownerUID;
+    TSCETrackedReferenceStore *_trackedRefsStore;
+    TSCETrackedReferenceStore *_weakTrackedRefsStore;
     TSCECalculationEngine *_calcEngine;
+    _Bool _isRegisteredWithCalculationEngine;
 }
 
 - (void).cxx_destruct;
 @property __weak TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
+- (void)invalidateForCalcEngine:(id)arg1;
+- (void)writeResultsForCalcEngine:(id)arg1;
+- (struct TSCERecalculationState)multiEvaluateFormulasAt:(const void *)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
+- (struct TSCERecalculationState)evaluateFormulaAt:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
+- (long long)evaluationMode;
+- (id)linkedResolver;
+- (struct TSKUIDStruct)ownerUID;
+- (id)trackedReferenceAtCoord:(struct TSUCellCoord)arg1;
+- (void)setFormulaOwnerUID:(const struct TSKUIDStruct *)arg1;
+- (struct TSKUIDStruct)formulaOwnerUID;
+- (id)formulaOwner;
+- (void)endTrackingReference:(id)arg1;
+- (id)beginTrackingReferenceWithCellRef:(const struct TSCECellRef *)arg1;
+- (void)beginTrackingReference:(id)arg1;
+- (void)unregisterFromCalcEngine;
+- (void)registerWithCalcEngine:(_Bool)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (id)cellRangeWasInserted:(const struct TSCERangeRef *)arg1;
-- (_Bool)shouldRewriteOnTableIDReassignment;
-- (_Bool)shouldRewriteOnTranspose;
-- (_Bool)shouldRewriteOnCellMerge;
-- (_Bool)shouldRewriteOnTectonicShift;
-- (_Bool)shouldRewriteOnRangeMove;
-- (_Bool)shouldRewriteOnSort;
-- (void)referencedCellWasModified:(id)arg1;
-- (_Bool)trackedReferencesExistForTable:(const UUIDData_5fbc143e *)arg1;
-- (void)updateTrackedHeaders:(const UUIDData_5fbc143e *)arg1;
-- (id)referenceTracker;
-- (void)endTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
-- (void)beginTrackingNameInCell:(struct TSUCellCoord)arg1 ofTableUID:(const UUIDData_5fbc143e *)arg2 addingTrackedReferencesTo:(id)arg3;
-- (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofTableUID:(const UUIDData_5fbc143e *)arg2 addingTrackedReferencesTo:(id)arg3;
-- (id)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1 limitedToRange:(struct TSCERangeCoordinate)arg2;
-- (void)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
-- (void)headerCellContentWasModified:(id)arg1;
-- (UUIDData_5fbc143e)formulaOwnerUID;
+- (_Bool)trackedReferencesExistForTable:(const struct TSKUIDStruct *)arg1;
+- (void)updateTrackedHeaders:(const struct TSKUIDStruct *)arg1;
+- (unsigned short)ownerKind;
+- (void)endTrackingNamesInTable:(const struct TSKUIDStruct *)arg1;
+- (void)beginTrackingNameInCell:(struct TSUCellCoord)arg1 ofTableUID:(const struct TSKUIDStruct *)arg2 addingTrackedReferencesTo:(id)arg3;
+- (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofTableUID:(const struct TSKUIDStruct *)arg2 addingTrackedReferencesTo:(id)arg3;
+- (id)beginTrackingNamesInTable:(const struct TSKUIDStruct *)arg1 limitedToRange:(struct TSCERangeCoordinate)arg2;
+- (void)beginTrackingNamesInTable:(const struct TSKUIDStruct *)arg1;
 - (void)setCalculationEngine:(id)arg1;
 - (void)willClose;
 - (id)initWithContext:(id)arg1 calculationEngine:(id)arg2;

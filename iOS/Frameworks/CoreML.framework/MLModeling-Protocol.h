@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MLLayerPath, MLModelDescription, MLModelExecutionSchedule, MLModelInterface, MLModelMetadata, MLPredictionOptions, NSString;
+@class MLLayerPath, MLModelDescription, MLModelExecutionSchedule, MLModelMetadata, MLPredictionEvent, MLPredictionOptions, NSString;
 @protocol MLBatchProvider, MLFeatureProvider;
 
 @protocol MLModeling
+@property(retain, nonatomic) MLPredictionEvent *predictionEvent;
 @property(readonly) MLModelMetadata *metadata;
-@property(readonly) MLModelInterface *interface;
 @property(retain, nonatomic) MLModelDescription *modelDescription;
 - (MLLayerPath *)modelPath;
 - (void)setModelPath:(MLLayerPath *)arg1 modelName:(NSString *)arg2;

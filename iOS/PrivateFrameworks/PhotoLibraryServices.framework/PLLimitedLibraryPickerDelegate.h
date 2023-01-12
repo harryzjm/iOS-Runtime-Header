@@ -6,12 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class PLAssetsdClient;
+
 @interface PLLimitedLibraryPickerDelegate : NSObject
 {
     CDUnknownBlockType _dismissalBlock;
+    CDUnknownBlockType _finishedPickingBlock;
+    PLAssetsdClient *_assetsdClient;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PLAssetsdClient *assetsdClient; // @synthesize assetsdClient=_assetsdClient;
+@property(copy, nonatomic) CDUnknownBlockType finishedPickingBlock; // @synthesize finishedPickingBlock=_finishedPickingBlock;
 @property(copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;

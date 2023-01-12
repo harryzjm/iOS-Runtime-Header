@@ -6,20 +6,28 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFStaticItem, HUInstructionsItem;
+@class HFItemModule, HFStaticItem, HUInstructionsItem;
 
 @interface HUTriggerTypePickerItemManager : HFItemManager
 {
+    _Bool _showSuggestedAutomations;
     HFStaticItem *_leavingLocationTriggerItem;
     HFStaticItem *_arrivingAtLocationTriggerItem;
     HFStaticItem *_timerTriggerItem;
     HFStaticItem *_characteristicTriggerItem;
     HFStaticItem *_alarmTriggerItem;
-    HUInstructionsItem *_instructionsItem;
+    HFStaticItem *_customAutomationItem;
+    HFItemModule *_suggestedAutomationsModule;
+    HUInstructionsItem *_eventsInstructionsItem;
+    HUInstructionsItem *_suggestionsInstructionsItem;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) HUInstructionsItem *instructionsItem; // @synthesize instructionsItem=_instructionsItem;
+@property(retain, nonatomic) HUInstructionsItem *suggestionsInstructionsItem; // @synthesize suggestionsInstructionsItem=_suggestionsInstructionsItem;
+@property(retain, nonatomic) HUInstructionsItem *eventsInstructionsItem; // @synthesize eventsInstructionsItem=_eventsInstructionsItem;
+@property(nonatomic) _Bool showSuggestedAutomations; // @synthesize showSuggestedAutomations=_showSuggestedAutomations;
+@property(retain, nonatomic) HFItemModule *suggestedAutomationsModule; // @synthesize suggestedAutomationsModule=_suggestedAutomationsModule;
+@property(retain, nonatomic) HFStaticItem *customAutomationItem; // @synthesize customAutomationItem=_customAutomationItem;
 @property(retain, nonatomic) HFStaticItem *alarmTriggerItem; // @synthesize alarmTriggerItem=_alarmTriggerItem;
 @property(retain, nonatomic) HFStaticItem *characteristicTriggerItem; // @synthesize characteristicTriggerItem=_characteristicTriggerItem;
 @property(retain, nonatomic) HFStaticItem *timerTriggerItem; // @synthesize timerTriggerItem=_timerTriggerItem;
@@ -30,11 +38,12 @@
 - (id)_createCharacteristicItemForSource:(unsigned long long)arg1;
 - (id)_createLocationItemForType:(unsigned long long)arg1;
 - (id)_createTimeItem;
-- (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
-- (id)_sectionIdentifierForItem:(id)arg1;
-- (id)_identifierForSection:(unsigned long long)arg1;
-- (unsigned long long)_numberOfSections;
+- (id)_createCustomItem;
+- (id)_itemsToHideInSet:(id)arg1;
+- (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
+- (id)_buildItemModulesForHome:(id)arg1;
+- (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 
 @end
 

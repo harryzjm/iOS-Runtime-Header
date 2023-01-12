@@ -45,11 +45,13 @@
 - (void)activityViewControllerWithSessionID:(id)arg1 favoritedActivity:(_Bool)arg2 withIdentifier:(id)arg3 activityCategory:(long long)arg4;
 - (void)activityViewControllerWithSessionID:(id)arg1 toggledActivityWithIdentifier:(id)arg2 activityCategory:(long long)arg3;
 - (void)activityViewControllerWithSessionID:(id)arg1 didLongPressShareActivityWithIdentifier:(id)arg2;
+- (void)activityViewControllerWithSessionID:(id)arg1 provideFeedbackForPeopleSuggestionWithIdentifier:(id)arg2;
 - (void)activityViewControllerWithSessionID:(id)arg1 removedPersonWithIdentifier:(id)arg2;
 - (void)activityViewControllerWithSessionID:(id)arg1 selectedPersonWithIdentifier:(id)arg2;
 - (void)activityViewControllerWithSessionID:(id)arg1 selectedActionWithIdentifier:(id)arg2;
 - (void)activityViewControllerWithSessionID:(id)arg1 selectedActivityWithIdentifier:(id)arg2;
 - (void)sendConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)connectToDaemonWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)connectToDaemonWithSessionID:(id)arg1 discoveryContext:(id)arg2 assetIdentifiers:(id)arg3 urlsBeingShared:(id)arg4 shouldSuggestFamilyMembers:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
 - (void)invalidate;

@@ -26,6 +26,7 @@
     NSArray *_cloudPhotoIDs;
     NSArray *_contentText;
     NSString *_shareSheetSessionID;
+    _Bool _shouldHideClearPluginButton;
     CKModalTranscriptController *_modalTranscriptController;
     id <CKSMSComposeViewServiceControllerDelegate> _composeDelegate;
     CDUnknownBlockType _gameCenterPickerBlock;
@@ -39,6 +40,7 @@
 @property(copy, nonatomic) CDUnknownBlockType entryViewCompletion; // @synthesize entryViewCompletion=_entryViewCompletion;
 @property(copy, nonatomic) CDUnknownBlockType gameCenterPickerBlock; // @synthesize gameCenterPickerBlock=_gameCenterPickerBlock;
 @property(nonatomic) __weak id <CKSMSComposeViewServiceControllerDelegate> composeDelegate; // @synthesize composeDelegate=_composeDelegate;
+@property(nonatomic) _Bool shouldHideClearPluginButton; // @synthesize shouldHideClearPluginButton=_shouldHideClearPluginButton;
 @property(retain, nonatomic) CKModalTranscriptController *modalTranscriptController; // @synthesize modalTranscriptController=_modalTranscriptController;
 - (void)donateInteractionWithConversation:(id)arg1;
 - (void)_willAppearInRemoteViewController;
@@ -59,13 +61,17 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)setTextEntryContentsVisible:(_Bool)arg1;
 - (void)disableCameraAttachments;
+- (void)setNavBarTitle:(id)arg1;
 @property(nonatomic) _Bool shouldDisableEntryField; // @dynamic shouldDisableEntryField;
+- (void)setShouldIgnoreEmailsWhenSending:(_Bool)arg1;
 @property(nonatomic) _Bool canEditRecipients; // @dynamic canEditRecipients;
 - (void)setPendingAddresses:(id)arg1;
 - (void)setShareSheetSessionID:(id)arg1;
 - (id)recipientsFromChatGUID:(id)arg1 groupName:(id)arg2 handles:(id)arg3;
 - (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3 chatGUID:(id)arg4 groupName:(id)arg5;
+- (void)displaySubscriptionSwitchIfAvailable:(_Bool)arg1;
 - (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3;
+- (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3 shouldHideClearPluginButton:(_Bool)arg4;
 - (void)setGameCenterPickedHandles:(id)arg1 playerNames:(id)arg2;
 - (void)setGameCenterModeWithPickerBlock:(CDUnknownBlockType)arg1;
 - (void)forceMMS;

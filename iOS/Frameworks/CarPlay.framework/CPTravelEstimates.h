@@ -15,6 +15,7 @@
     NSMeasurement *_distanceRemaining;
     double _timeRemaining;
     unsigned long long _timeRemainingColor;
+    NSMeasurement *_distanceRemainingDisplay;
 }
 
 + (id)_orangeColor;
@@ -23,12 +24,14 @@
 + (id)timeRemainingColorForColor:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSMeasurement *distanceRemainingDisplay; // @synthesize distanceRemainingDisplay=_distanceRemainingDisplay;
 @property(nonatomic) unsigned long long timeRemainingColor; // @synthesize timeRemainingColor=_timeRemainingColor;
 @property(readonly, nonatomic) double timeRemaining; // @synthesize timeRemaining=_timeRemaining;
 @property(readonly, copy, nonatomic) NSMeasurement *distanceRemaining; // @synthesize distanceRemaining=_distanceRemaining;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDistanceRemaining:(id)arg1 distanceRemainingDisplay:(id)arg2 timeRemaining:(double)arg3;
 - (id)initWithDistanceRemaining:(id)arg1 timeRemaining:(double)arg2;
 - (id)_init;
 

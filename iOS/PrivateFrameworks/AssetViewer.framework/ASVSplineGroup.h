@@ -8,9 +8,9 @@
 
 @interface ASVSplineGroup : NSObject
 {
-    struct vector<ASVControlPoint, std::__1::allocator<ASVControlPoint>> _controlPoints;
-    struct vector<ASVPatchData, std::__1::allocator<ASVPatchData>> _patchData;
-    struct vector<unsigned short, std::__1::allocator<unsigned short>> _indices;
+    struct vector<ASVControlPoint, std::allocator<ASVControlPoint>> _controlPoints;
+    struct vector<ASVPatchData, std::allocator<ASVPatchData>> _patchData;
+    struct vector<unsigned short, std::allocator<unsigned short>> _indices;
 }
 
 - (id).cxx_construct;

@@ -14,6 +14,8 @@
 + (id)recordIDWithZoneID:(id)arg1;
 + (id)recordType;
 + (_Bool)requiresUnderlyingMessage;
+- (id)printDescription;
+- (id)description;
 - (id)serializeUnderlyingMessage;
 
 @end

@@ -35,6 +35,7 @@
 @property(retain, nonatomic) NSMutableDictionary *chatItemGUIDToCacheKeyMap; // @synthesize chatItemGUIDToCacheKeyMap=_chatItemGUIDToCacheKeyMap;
 @property(retain, nonatomic) NSMutableDictionary *cache; // @synthesize cache=_cache;
 - (void)systemApplicationDidSuspend;
+- (void)applicationWillResignActive;
 - (void)_updateKeyMap:(id)arg1 forKey:(id)arg2 sizeCacheKey:(id)arg3;
 - (id)_generateChatItemGuidToCacheKeyMapWithCache:(id)arg1;
 - (void)_inflateCache;

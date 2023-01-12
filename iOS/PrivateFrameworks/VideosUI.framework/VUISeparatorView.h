@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class UIColor;
+@class UIColor, UIView;
 
 __attribute__((visibility("hidden")))
-@interface VUISeparatorView : UIView
+@interface VUISeparatorView
 {
     UIColor *_color;
     UIColor *_darkColor;
@@ -22,11 +20,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double lineHeight; // @synthesize lineHeight=_lineHeight;
 @property(retain, nonatomic) UIColor *darkColor; // @synthesize darkColor=_darkColor;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateLineColor;
-- (void)layoutSubviews;
+- (void)vui_traitCollectionDidChange:(id)arg1;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (struct CGSize)intrinsicContentSize;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)lineColor;
 - (void)initializeVUISeparatorView;
 - (id)initWithFrame:(struct CGRect)arg1;

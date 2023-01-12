@@ -55,6 +55,10 @@
 @property(nonatomic) double interGroupSpacing; // @synthesize interGroupSpacing=_interGroupSpacing;
 @property(nonatomic) struct NSDirectionalEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_preferredContainerBackgroundColor;
+- (_Bool)_supportsBandSelection;
+- (_Bool)_pinnedSupplementariesShouldOverlap;
+- (double)_paddingToBoundarySupplementaries;
 - (_Bool)shouldRestrictOrthogonalAxisDuringInteractiveMovement;
 - (double)_alignedContentMarginGivenMargin:(double)arg1;
 - (void)_didEndSwiping;

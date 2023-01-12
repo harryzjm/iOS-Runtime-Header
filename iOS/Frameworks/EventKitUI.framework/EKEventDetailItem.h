@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool detailItemVisibilityChanged;
 @property(readonly, nonatomic) unsigned long long maximumNumberOfSubItems;
 @property(readonly, nonatomic) _Bool requiresLayoutForSubitemCount;
+- (void)notifyDidCommit;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
 - (id)editItemEventToDetach;
 - (_Bool)editItemViewControllerShouldShowDetachAlert;
@@ -49,15 +50,19 @@ __attribute__((visibility("hidden")))
 - (void)notifyDidEndEditing;
 - (void)notifyDidStartEditing;
 - (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
+- (void)eventViewControllerDidTapInfoButton:(id)arg1;
 - (void)eventViewController:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
+- (_Bool)eventViewController:(id)arg1 shouldSelectSubitem:(unsigned long long)arg2;
 - (void)eventViewController:(id)arg1 didUnhighlightSubitem:(unsigned long long)arg2;
 - (void)eventViewController:(id)arg1 didHighlightSubitem:(unsigned long long)arg2;
+- (id)infoDetailViewControllerWithFrame:(struct CGRect)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (_Bool)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1 withTraitCollection:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)layoutCellsForWidth:(double)arg1 position:(int)arg2;
 - (unsigned long long)numberOfSubitems;
+- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 forceUpdate:(_Bool)arg3;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (_Bool)configureWithCalendar:(id)arg1 preview:(_Bool)arg2;
 - (void)reset;

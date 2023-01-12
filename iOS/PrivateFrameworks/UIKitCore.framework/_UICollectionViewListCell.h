@@ -12,6 +12,7 @@
 }
 
 @property(nonatomic, setter=_setBackgroundViewConfigurationGrouping:) long long _backgroundViewConfigurationGrouping; // @synthesize _backgroundViewConfigurationGrouping=__backgroundViewConfigurationGrouping;
+- (void)_setShowingCompactContextMenu:(_Bool)arg1;
 - (unsigned long long)_maskedCornersForSystemBackgroundView;
 @property(readonly, nonatomic) UILayoutGuide *_separatorLayoutGuide;
 @property(nonatomic) _Bool expanded; // @dynamic expanded;
@@ -25,11 +26,11 @@
 - (long long)accessoryTypeForAxis:(long long)arg1;
 
 // Remaining properties
-@property(copy, nonatomic) NSArray *leadingAccessoryConfigurations; // @dynamic leadingAccessoryConfigurations;
-@property(copy, nonatomic) NSArray *leadingEditingAccessoryConfigurations; // @dynamic leadingEditingAccessoryConfigurations;
+@property(copy, nonatomic) NSArray *leadingAccessoryConfigurations;
+@property(copy, nonatomic) NSArray *leadingEditingAccessoryConfigurations;
 @property(nonatomic) long long selectionStyle; // @dynamic selectionStyle;
-@property(copy, nonatomic) NSArray *trailingAccessoryConfigurations; // @dynamic trailingAccessoryConfigurations;
-@property(copy, nonatomic) NSArray *trailingEditingAccessoryConfigurations; // @dynamic trailingEditingAccessoryConfigurations;
+@property(copy, nonatomic) NSArray *trailingAccessoryConfigurations;
+@property(copy, nonatomic) NSArray *trailingEditingAccessoryConfigurations;
 
 @end
 

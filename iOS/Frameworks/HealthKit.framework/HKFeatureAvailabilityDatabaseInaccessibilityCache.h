@@ -19,16 +19,24 @@
 }
 
 - (void).cxx_destruct;
-- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)saveOnboardingCompletion:(id)arg1 settings:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setCurrentOnboardingVersionCompletedForCountryCode:(id)arg1 countryCodeProvenance:(long long)arg2 date:(id)arg3 settings:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)resetOnboardingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerObserver:(id)arg1 queue:(id)arg2;
 - (void)unregisterObserver:(id)arg1;
-- (id)isFeatureCapabilitySupportedOnDevice:(id)arg1 error:(id *)arg2;
+- (id)regionAvailabilityWithError:(id *)arg1;
 - (id)isFeatureCapabilitySupportedOnActivePairedDeviceWithError:(id *)arg1;
-- (id)onboardedCountryCodeSupportedStateForDevice:(id)arg1 error:(id *)arg2;
 - (id)onboardedCountryCodeSupportedStateWithError:(id *)arg1;
-- (id)canCompleteOnboardingForCountryCode:(id)arg1 device:(id)arg2 error:(id *)arg3;
+- (id)pairedFeatureAttributesWithError:(id *)arg1;
+- (id)onboardingEligibilityForCountryCode:(id)arg1 error:(id *)arg2;
+- (id)featureAvailabilityRequirementsWithError:(id *)arg1;
 - (id)canCompleteOnboardingForCountryCode:(id)arg1 error:(id *)arg2;
+- (void)getFeatureOnboardingRecordWithCompletion:(CDUnknownBlockType)arg1;
+- (id)featureOnboardingRecordWithError:(id *)arg1;
+- (void)removeFeatureSettingValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setFeatureSettingString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setFeatureSettingData:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)earliestDateLowestOnboardingVersionCompletedWithError:(id *)arg1;
 - (void)isCurrentOnboardingVersionCompletedWithCompletion:(CDUnknownBlockType)arg1;
 - (id)isCurrentOnboardingVersionCompletedWithError:(id *)arg1;

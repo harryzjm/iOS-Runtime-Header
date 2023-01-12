@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/LPMediaPlayer-Protocol.h>
+#import <LinkPresentation/LPAudioPlayer-Protocol.h>
+#import <LinkPresentation/LPInProcessMediaPlayable-Protocol.h>
 
 @class AVPlayer, AVPlayerItem, LPAudio, NSHashTable, NSString;
 
-@interface LPStreamingAudioPlayer : NSObject <LPMediaPlayer>
+@interface LPStreamingAudioPlayer : NSObject <LPAudioPlayer, LPInProcessMediaPlayable>
 {
     LPAudio *_audio;
     AVPlayerItem *_item;
@@ -23,20 +24,23 @@
 
 + (id)playerWithAudio:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)transitionToState:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool shouldUnmuteWhenUserAdjustsVolume;
 @property(readonly, nonatomic, getter=isFullScreen) _Bool fullScreen;
 @property(readonly, nonatomic) _Bool usesSharedAudioSession;
-@property(readonly, nonatomic, getter=isPlaying) _Bool playing;
+- (void)resetPlaybackState;
+@property(nonatomic, getter=isPlaying) _Bool playing;
+@property(readonly, nonatomic) _Bool hasMuteControl;
 @property(readonly, nonatomic, getter=isMuted) _Bool muted;
 @property(nonatomic, getter=isActive) _Bool active;
 - (void)dispatchDidFailToPlayToAllClients;
 - (void)dispatchDidTransitionToStateToAllClients:(unsigned long long)arg1;
 - (void)dispatchDidChangeProgressToAllClients:(float)arg1;
+- (void)reset;
 - (void)removeClient:(id)arg1;
 - (void)addClient:(id)arg1;
+@property(readonly, nonatomic) unsigned long long state;
 @property(readonly, nonatomic) float progress;
 - (void)pause;
 - (void)play;

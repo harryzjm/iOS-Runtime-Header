@@ -8,21 +8,27 @@
 #import <CoreSpeech/CSLanguageCodeUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerAssetDownloadMonitorDelegate-Protocol.h>
 
-@class CSAsset, NSString;
+@class CSAsset, NSMutableDictionary, NSString;
 
 @interface CSVoiceTriggerAssetHandlerMac <CSVoiceTriggerAssetDownloadMonitorDelegate, CSFirstUnlockMonitorDelegate, CSLanguageCodeUpdateMonitorDelegate>
 {
     CSAsset *_cachedAsset;
+    NSMutableDictionary *_cachedEndpointAssets;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSMutableDictionary *cachedEndpointAssets; // @synthesize cachedEndpointAssets=_cachedEndpointAssets;
 @property(retain) CSAsset *cachedAsset; // @synthesize cachedAsset=_cachedAsset;
 - (void)CSFirstUnlockMonitor:(id)arg1 didReceiveFirstUnlock:(_Bool)arg2;
 - (void)CSLanguageCodeUpdateMonitor:(id)arg1 didReceiveLanguageCodeChanged:(id)arg2;
 - (void)CSVoiceTriggerAssetDownloadMonitor:(id)arg1 didInstallNewAsset:(_Bool)arg2;
+- (void)_checkNewAssetAvailablityForEndpoint;
 - (void)_checkNewAssetAvailablity;
+- (void)_getVoiceTriggerAssetFromAssetManagerWithLocale:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getVoiceTriggerAssetFromAssetManager:(CDUnknownBlockType)arg1;
-- (void)getVoiceTriggerAsset:(CDUnknownBlockType)arg1;
+- (void)getVoiceTriggerAssetWithEndpointId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleEndpointVoiceTriggerAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleVoiceTriggerAssetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)start;
 - (id)init;
 

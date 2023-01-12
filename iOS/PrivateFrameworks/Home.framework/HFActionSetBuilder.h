@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFComparable-Protocol.h>
+
 @class NSString;
 @protocol HFIconDescriptor;
 
-@interface HFActionSetBuilder
+@interface HFActionSetBuilder <HFComparable>
 {
     _Bool _isFavorite;
     NSString *_name;
@@ -18,6 +20,7 @@
 @property(retain, nonatomic) id <HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;
 @property(nonatomic) _Bool isFavorite; // @synthesize isFavorite=_isFavorite;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_deleteActionSet:(id)arg1 fromHome:(id)arg2;
 - (id)_lazilyUpdateIcon;
 - (id)_lazilyUpdateFavorite;
@@ -26,6 +29,13 @@
 - (id)deleteActionSet;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (id)initWithHome:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (id)compareToObject:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

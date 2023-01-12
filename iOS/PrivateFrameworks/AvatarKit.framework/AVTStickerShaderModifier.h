@@ -12,7 +12,7 @@
 {
     _Bool _forceDoubleSided;
     NSString *_entryPoint;
-    NSString *_geometryName;
+    id _nodeNames;
     NSString *_data;
     NSArray *_properties;
     NSDictionary *_dictionary;
@@ -27,19 +27,15 @@
 @property(readonly, nonatomic) _Bool forceDoubleSided; // @synthesize forceDoubleSided=_forceDoubleSided;
 @property(readonly, nonatomic) NSArray *properties; // @synthesize properties=_properties;
 @property(readonly, nonatomic) NSString *data; // @synthesize data=_data;
-@property(readonly, nonatomic) NSString *geometryName; // @synthesize geometryName=_geometryName;
+@property(readonly, nonatomic) id nodeNames; // @synthesize nodeNames=_nodeNames;
 @property(readonly, nonatomic) NSString *entryPoint; // @synthesize entryPoint=_entryPoint;
 - (id)description;
 - (id)dictionaryWithTargetPath:(id)arg1;
-- (_Bool)applyToNodeHierarchy:(id)arg1;
-- (_Bool)applyToNode:(id)arg1;
-- (_Bool)applyToAvatar:(id)arg1;
-- (id)findMaterialsForGeometryName:(id)arg1 inAvatar:(id)arg2;
-- (_Bool)applyToMaterial:(id)arg1;
-- (_Bool)removeFromMaterial:(id)arg1;
-- (void)removeFromAvatar:(id)arg1 error:(id *)arg2;
+- (void)applyToMaterialsOfMatchedNodesInHierarchy:(id)arg1 reversionContext:(id)arg2;
+- (void)applyToAllMaterialsOfNode:(id)arg1 reversionContext:(id)arg2;
+- (void)applyToMaterial:(id)arg1 reversionContext:(id)arg2;
 - (id)cloneWithProperties:(id)arg1;
-- (id)initWithEntryPoint:(id)arg1 geometryName:(id)arg2 data:(id)arg3 properties:(id)arg4 forceDoubleSided:(_Bool)arg5;
+- (id)initWithEntryPoint:(id)arg1 nodeNames:(id)arg2 data:(id)arg3 properties:(id)arg4 forceDoubleSided:(_Bool)arg5;
 
 @end
 

@@ -15,10 +15,10 @@
     NSString *_scheme;
 }
 
+- (void).cxx_destruct;
 - (_Bool)matchesURL:(id)arg1 parameters:(id *)arg2;
 - (_Bool)matchesURL:(id)arg1;
 - (id)nonParameterCharacterSet;
-- (void)dealloc;
 - (id)initWithString:(id)arg1 scheme:(id)arg2;
 - (id)initWithString:(id)arg1;
 

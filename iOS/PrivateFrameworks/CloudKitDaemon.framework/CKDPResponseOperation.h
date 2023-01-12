@@ -8,11 +8,12 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPArchiveRecordsResponse, CKDPAssetUploadTokenRetrieveResponse, CKDPBundlesForContainerResponse, CKDPCodeFunctionInvokeResponse, CKDPDeleteContainerResponse, CKDPFetchArchivedRecordsResponse, CKDPMarkAssetBrokenResponse, CKDPNotificationMarkReadResponse, CKDPNotificationSyncResponse, CKDPOperation, CKDPQueryRetrieveResponse, CKDPRecordDeleteResponse, CKDPRecordResolveTokenResponse, CKDPRecordRetrieveChangesResponse, CKDPRecordRetrieveResponse, CKDPRecordRetrieveVersionsResponse, CKDPRecordSaveResponse, CKDPResponseOperationHeader, CKDPResponseOperationResult, CKDPSetBadgeCountResponse, CKDPShareAcceptResponse, CKDPShareVettingInitiateResponse, CKDPSubscriptionCreateResponse, CKDPSubscriptionDeleteResponse, CKDPSubscriptionRetrieveResponse, CKDPTokenRegistrationResponse, CKDPTokenUnregistrationResponse, CKDPUpdateMissingAssetStatusResponse, CKDPUserAvailableQuotaResponse, CKDPUserPrivacySettingsBatchLookupResponse, CKDPUserPrivacySettingsResetResponse, CKDPUserPrivacySettingsRetrieveResponse, CKDPUserPrivacySettingsUpdateResponse, CKDPUserQueryResponse, CKDPUserRetrieveResponse, CKDPWebAuthTokenRetrieveResponse, CKDPZoneDeleteResponse, CKDPZoneRetrieveChangesResponse, CKDPZoneRetrieveResponse, CKDPZoneSaveResponse;
+@class CKDPAnonymousShareAddResponse, CKDPAnonymousShareRemoveResponse, CKDPArchiveRecordsResponse, CKDPAssetUploadTokenRetrieveResponse, CKDPBundlesForContainerResponse, CKDPCodeFunctionInvokeResponse, CKDPDeleteContainerResponse, CKDPFetchArchivedRecordsResponse, CKDPMarkAssetBrokenResponse, CKDPNotificationMarkReadResponse, CKDPNotificationSyncResponse, CKDPOperation, CKDPQueryRetrieveResponse, CKDPRecordDeleteResponse, CKDPRecordResolveTokenResponse, CKDPRecordRetrieveChangesResponse, CKDPRecordRetrieveResponse, CKDPRecordRetrieveVersionsResponse, CKDPRecordSaveResponse, CKDPResponseOperationHeader, CKDPResponseOperationResult, CKDPSetBadgeCountResponse, CKDPShareAcceptResponse, CKDPShareVettingInitiateResponse, CKDPSubscriptionCreateResponse, CKDPSubscriptionDeleteResponse, CKDPSubscriptionRetrieveResponse, CKDPTokenRegistrationResponse, CKDPTokenUnregistrationResponse, CKDPUpdateMissingAssetStatusResponse, CKDPUserAvailableQuotaResponse, CKDPUserPrivacySettingsBatchLookupResponse, CKDPUserPrivacySettingsResetResponse, CKDPUserPrivacySettingsRetrieveResponse, CKDPUserPrivacySettingsUpdateResponse, CKDPUserQueryResponse, CKDPUserRetrieveResponse, CKDPWebAuthTokenRetrieveResponse, CKDPZoneDeleteResponse, CKDPZoneRetrieveChangesResponse, CKDPZoneRetrieveResponse, CKDPZoneSaveResponse;
 
-__attribute__((visibility("hidden")))
 @interface CKDPResponseOperation : PBCodable <NSCopying>
 {
+    CKDPAnonymousShareAddResponse *_anonymousShareAddResponse;
+    CKDPAnonymousShareRemoveResponse *_anonymousShareRemoveResponse;
     CKDPArchiveRecordsResponse *_archiveRecordsResponse;
     CKDPAssetUploadTokenRetrieveResponse *_assetUploadTokenRetrieveResponse;
     CKDPBundlesForContainerResponse *_bundlesForContainerResponse;
@@ -119,6 +120,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasUpdateMissingAssetStatusResponse;
 @property(retain, nonatomic) CKDPShareAcceptResponse *shareAcceptResponse;
 @property(readonly, nonatomic) _Bool hasShareAcceptResponse;
+@property(retain, nonatomic) CKDPAnonymousShareAddResponse *anonymousShareAddResponse;
+@property(readonly, nonatomic) _Bool hasAnonymousShareAddResponse;
+@property(retain, nonatomic) CKDPAnonymousShareRemoveResponse *anonymousShareRemoveResponse;
+@property(readonly, nonatomic) _Bool hasAnonymousShareRemoveResponse;
 @property(retain, nonatomic) CKDPCodeFunctionInvokeResponse *functionInvokeResponse;
 @property(readonly, nonatomic) _Bool hasFunctionInvokeResponse;
 @property(retain, nonatomic) CKDPSubscriptionCreateResponse *subscriptionCreateResponse;

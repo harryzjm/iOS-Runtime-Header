@@ -13,23 +13,23 @@
 
 @interface PXGVideoSessionPixelBufferSource : NSObject <PXChangeObserver, PXGDisplayAssetPixelBufferSource>
 {
-    PXVideoSession *_videoSession;
     NSString *_bufferRequestIdentifier;
     CDUnknownBlockType _pixelBufferDidChangeHandler;
-    long long _desiredPlayState;
+    PXVideoSession *_videoSession;
+    double _scale;
+    struct CGSize _maxOutputSize;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long desiredPlayState; // @synthesize desiredPlayState=_desiredPlayState;
+@property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
+@property(readonly, nonatomic) struct CGSize maxOutputSize; // @synthesize maxOutputSize=_maxOutputSize;
+@property(readonly, nonatomic) PXVideoSession *videoSession; // @synthesize videoSession=_videoSession;
 @property(copy, nonatomic) CDUnknownBlockType pixelBufferDidChangeHandler; // @synthesize pixelBufferDidChangeHandler=_pixelBufferDidChangeHandler;
 @property(readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property(readonly, nonatomic) struct __CVBuffer *currentPixelBuffer;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)_updateVideoSession:(id)arg1;
-- (void)_prepareVideoSession;
 - (void)dealloc;
-- (id)initWithDisplayAsset:(id)arg1 mediaProvider:(id)arg2;
-- (id)initWithVideoSession:(id)arg1;
+- (id)initWithVideoSession:(id)arg1 maxOutputSize:(struct CGSize)arg2 scale:(double)arg3;
 - (id)init;
 
 // Remaining properties

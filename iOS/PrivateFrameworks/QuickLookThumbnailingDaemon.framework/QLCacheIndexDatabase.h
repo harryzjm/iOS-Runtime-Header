@@ -40,6 +40,9 @@
 - (id)enumeratorForAllUbiquitousFiles:(_Bool)arg1 withExtraInfo:(_Bool)arg2;
 - (id)queryCacheForFileRequests:(id)arg1;
 - (_Bool)setLastHitDateOfAllCachedThumbnailsToDate:(id)arg1;
+- (unsigned long long)missingRemoteThumbnailsCountForFileProviderIds:(id)arg1;
+- (id)removeFilesFromUninstalledFileProvidersWithIdentifiers:(id)arg1 whichAreRemaining:(_Bool)arg2;
+- (id)removeFilesFromUninstalledFileProvidersWithIdentifiers:(id)arg1;
 - (id)removeFilesFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(id)arg1;
 - (id)removeFilesWithFileInfo:(id)arg1;
 - (void)removeBasicFilesWithRowids:(id)arg1;
@@ -55,7 +58,7 @@
 - (id)removePercentageOldestThumbnails:(unsigned long long)arg1;
 - (id)removeAllThumbnailsForCacheId:(unsigned long long)arg1;
 - (id)removeThumbnailForFileIdentifier:(id)arg1;
-- (_Bool)insertOrUpdateImageDataForCacheId:(unsigned long long)arg1 size:(float)arg2 iconMode:(unsigned char)arg3 badgeType:(unsigned long long)arg4 iconVariant:(long long)arg5 interpolationQuality:(int)arg6 width:(unsigned long long)arg7 height:(unsigned long long)arg8 bitsPerComponent:(unsigned long long)arg9 bitsPerPixel:(unsigned long long)arg10 bytesPerRow:(unsigned long long)arg11 bitmapInfo:(unsigned int)arg12 bitmapDataBlobInfo:(id)arg13 metadataBlobInfo:(id)arg14 flavor:(int)arg15 contentRect:(struct CGRect)arg16 externalGeneratorDataHash:(unsigned long long)arg17 lastHitDate:(id)arg18;
+- (_Bool)insertOrUpdateImageDataForCacheId:(unsigned long long)arg1 size:(float)arg2 iconMode:(unsigned char)arg3 badgeType:(unsigned long long)arg4 iconVariant:(long long)arg5 interpolationQuality:(int)arg6 bitmapFormat:(id)arg7 bitmapDataBlobInfo:(id)arg8 metadataBlobInfo:(id)arg9 flavor:(int)arg10 contentRect:(struct CGRect)arg11 externalGeneratorDataHash:(unsigned long long)arg12 lastHitDate:(id)arg13;
 - (_Bool)getBlobInfoForCacheId:(unsigned long long)arg1 size:(float)arg2 iconMode:(unsigned char)arg3 badgeType:(unsigned long long)arg4 iconVariant:(long long)arg5 interpolationQuality:(int)arg6 externalGeneratorDataHash:(unsigned long long)arg7 bitmapDataBlobInfo:(id *)arg8 plistBufferBlobInfo:(id *)arg9;
 - (unsigned long long)insertOrUpdateThumbnailWithVersionedFileIdentifier:(id)arg1 shouldInvalidAllThumbnailSizes:(_Bool *)arg2 added:(_Bool *)arg3;
 - (void)updateHitCount:(id)arg1 forFileIdentifier:(id)arg2;

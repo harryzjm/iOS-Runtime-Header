@@ -13,10 +13,12 @@
     _Bool _hoverAnimationEnabled;
     _Bool _titleAndSubtitleVisible;
     SBIconView *_contentView;
+    double _extraSpacingBetweenWidgetAndTitle;
     SBHShadowedWidgetView *_shadowedWidgetView;
     UIView *_shadowView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
+    NSLayoutConstraint *_widgetToTitleSpacingConstraint;
     NSLayoutConstraint *_contentHeightConstraint;
     NSLayoutConstraint *_contentWidthConstraint;
     struct CGSize _contentSize;
@@ -26,13 +28,19 @@
 @property(readonly, nonatomic) _Bool titleAndSubtitleVisible; // @synthesize titleAndSubtitleVisible=_titleAndSubtitleVisible;
 @property(retain, nonatomic) NSLayoutConstraint *contentWidthConstraint; // @synthesize contentWidthConstraint=_contentWidthConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *contentHeightConstraint; // @synthesize contentHeightConstraint=_contentHeightConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *widgetToTitleSpacingConstraint; // @synthesize widgetToTitleSpacingConstraint=_widgetToTitleSpacingConstraint;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(readonly, nonatomic) UIView *shadowView; // @synthesize shadowView=_shadowView;
 @property(readonly, nonatomic) SBHShadowedWidgetView *shadowedWidgetView; // @synthesize shadowedWidgetView=_shadowedWidgetView;
+@property(nonatomic) double extraSpacingBetweenWidgetAndTitle; // @synthesize extraSpacingBetweenWidgetAndTitle=_extraSpacingBetweenWidgetAndTitle;
 @property(nonatomic, getter=isHoverAnimationEnabled) _Bool hoverAnimationEnabled; // @synthesize hoverAnimationEnabled=_hoverAnimationEnabled;
 @property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(retain, nonatomic) SBIconView *contentView; // @synthesize contentView=_contentView;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (id)_subititleLabelFont;
+- (id)_titleLabelFont;
 - (void)_updateHoverAnimation;
 @property(readonly, nonatomic) struct CATransform3D hoverTransform;
 - (void)didMoveToWindow;
@@ -42,6 +50,7 @@
 @property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
 - (id)newPortaledShadowedWidgetView;
+- (void)dealloc;
 - (id)initWithTitleAndSubtitleVisible:(_Bool)arg1;
 - (id)init;
 

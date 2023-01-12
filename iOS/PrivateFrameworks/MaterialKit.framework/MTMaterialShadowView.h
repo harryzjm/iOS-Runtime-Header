@@ -30,7 +30,6 @@
 - (void)_configureShadowViewIfNecessary;
 - (void)groupNameDidChangeForMaterialView:(id)arg1;
 - (void)weightingDidChangeForMaterialView:(id)arg1;
-- (void)configurationDidChangeForMaterialView:(id)arg1;
 - (void)recipeNameDidChangeForMaterialView:(id)arg1;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)layoutSubviews;

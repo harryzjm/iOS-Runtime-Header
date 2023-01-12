@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSData, NSString, PLPhotoLibrary;
 
 @protocol PLCloudPersistentHistoryMigratorContext
-- (void)updateTransferCountsWithInsertedPhotoCount:(unsigned long long)arg1 insertedVideoCount:(unsigned long long)arg2;
-- (void)saveTokenObject:(id)arg1;
+- (void)updateTransferCountsWithInsertedPhotoCount:(unsigned long long)arg1 insertedVideoCount:(unsigned long long)arg2 inLibrary:(PLPhotoLibrary *)arg3;
+- (void)saveCloudTrackerTokenObject:(NSData *)arg1;
 - (void)resetSyncDueToMigrationMarker;
 - (NSString *)readLocalVersion;
 - (void)setLocalVersion:(NSString *)arg1;

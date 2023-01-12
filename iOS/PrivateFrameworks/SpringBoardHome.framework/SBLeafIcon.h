@@ -22,7 +22,6 @@
 
 + (id)formattedBadgeNumberOrString:(id)arg1;
 + (id)iconImageForDataSource:(id)arg1 ofIcon:(id)arg2 info:(struct SBIconImageInfo)arg3;
-+ (Class)downloadingIconClass;
 - (void).cxx_destruct;
 - (id)nodeIdentifier;
 - (_Bool)supportsRasterization;
@@ -33,6 +32,10 @@
 - (void)completeUninstall;
 - (void)setUninstalled;
 - (_Bool)isUninstallSupported;
+- (id)iTunesCategoriesOrderedByRelevancy;
+- (id)tags;
+- (id)folderFallbackTitle;
+- (id)folderTitleOptions;
 - (unsigned long long)supportedGridSizeClasses;
 - (long long)labelAccessoryType;
 - (long long)accessoryTypeForLocation:(id)arg1;
@@ -41,9 +44,11 @@
 - (_Bool)isProgressPaused;
 - (double)progressPercent;
 - (long long)progressState;
+- (id)statusDescriptionForLocation:(id)arg1;
 - (_Bool)canTightenLabel;
 - (_Bool)canTruncateLabel;
 - (id)displayNameForLocation:(id)arg1;
+- (_Bool)canGenerateIconsInBackground;
 - (id)unmaskedIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)genericIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)generateIconImageWithInfo:(struct SBIconImageInfo)arg1;
@@ -64,6 +69,8 @@
 - (void)didRemoveIconDataSource:(id)arg1;
 - (void)didAddIconDataSource:(id)arg1;
 - (void)replaceIconDataSource:(id)arg1 withIconDataSource:(id)arg2;
+- (void)removeAllIconDataSources;
+- (void)removeIconDataSourcesPassingTest:(CDUnknownBlockType)arg1;
 - (void)removeIconDataSourcesOfClass:(Class)arg1;
 - (void)removeIconDataSource:(id)arg1;
 - (void)insertIconDataSources:(id)arg1 atIndexes:(id)arg2;
@@ -84,11 +91,13 @@
 - (_Bool)hasObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+@property(readonly, nonatomic) _Bool leafIdentifierAndApplicationBundleIDMatches;
 - (id)copyWithLeafIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
+- (id)initWithUniqueLeafIdentifier;
 - (id)initWithLeafIdentifier:(id)arg1 applicationBundleID:(id)arg2;
 - (id)init;
 @property(readonly, copy, nonatomic) NSString *sbh_iconLibraryItemIdentifier;

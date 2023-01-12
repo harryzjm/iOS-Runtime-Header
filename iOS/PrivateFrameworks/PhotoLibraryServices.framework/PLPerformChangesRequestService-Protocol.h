@@ -10,6 +10,8 @@
 
 @protocol PLPerformChangesRequestService <NSObject>
 - (NSString *)clientDescription;
+- (NSString *)clientDisplayName;
+- (NSString *)clientBundleID;
 - (PLLibraryServicesManager *)libraryServicesManager;
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 @end

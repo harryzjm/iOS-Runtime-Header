@@ -9,36 +9,30 @@
 #import <AACCore/AEPreferences-Protocol.h>
 
 @class NSString;
+@protocol AEPreferencePrimitives;
 
 __attribute__((visibility("hidden")))
 @interface AEConcretePreferences : NSObject <AEPreferences>
 {
-    _Bool createAssessmentFile;
-    _Bool disableSiri;
-    _Bool enterSandbox;
-    _Bool presentShields;
-    _Bool restrictFrontmostApp;
-    _Bool scrubPasteboard;
-    _Bool pauseMedia;
-    _Bool disableTrackpadLookup;
-    _Bool disableContinuity;
-    _Bool restrictNetworkAccess;
-    _Bool stopAirPlayBeforehand;
-    _Bool restrictContentCapture;
+    id <AEPreferencePrimitives> _primitives;
 }
 
-@property(nonatomic, getter=shouldRestrictContentCapture) _Bool restrictContentCapture; // @synthesize restrictContentCapture;
-@property(nonatomic, getter=shouldStopAirplayBeforehand) _Bool stopAirPlayBeforehand; // @synthesize stopAirPlayBeforehand;
-@property(nonatomic, getter=shouldRestrictNetworkAccess) _Bool restrictNetworkAccess; // @synthesize restrictNetworkAccess;
-@property(nonatomic, getter=shouldDisableContinuity) _Bool disableContinuity; // @synthesize disableContinuity;
-@property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup; // @synthesize disableTrackpadLookup;
-@property(nonatomic, getter=shouldPauseMedia) _Bool pauseMedia; // @synthesize pauseMedia;
-@property(nonatomic, getter=shouldScrubPasteboard) _Bool scrubPasteboard; // @synthesize scrubPasteboard;
-@property(nonatomic, getter=shouldRestrictFrontmostApp) _Bool restrictFrontmostApp; // @synthesize restrictFrontmostApp;
-@property(nonatomic, getter=shouldPresentShields) _Bool presentShields; // @synthesize presentShields;
-@property(nonatomic, getter=shouldEnterSandbox) _Bool enterSandbox; // @synthesize enterSandbox;
-@property(nonatomic, getter=shouldDisableSiri) _Bool disableSiri; // @synthesize disableSiri;
-@property(nonatomic, getter=shouldCreateAssessmentFile) _Bool createAssessmentFile; // @synthesize createAssessmentFile;
+- (void).cxx_destruct;
+@property(nonatomic, getter=shouldElevateWindows) _Bool elevateWindows;
+@property(nonatomic, getter=shouldCaptureDisplays) _Bool captureDisplays;
+@property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup;
+@property(nonatomic, getter=shouldRestrictContentCapture) _Bool restrictContentCapture;
+@property(nonatomic, getter=shouldStopAirplayBeforehand) _Bool stopAirPlayBeforehand;
+@property(nonatomic, getter=shouldPauseMedia) _Bool pauseMedia;
+@property(nonatomic, getter=shouldRestrictFrontmostApp) _Bool restrictFrontmostApp;
+@property(nonatomic, getter=shouldRestrictNetworkAccess) _Bool restrictNetworkAccess;
+@property(nonatomic, getter=shouldScrubPasteboard) _Bool scrubPasteboard;
+@property(nonatomic, getter=shouldDisableContinuity) _Bool disableContinuity;
+@property(nonatomic, getter=shouldDisableSiri) _Bool disableSiri;
+@property(nonatomic, getter=shouldCreateAssessmentFile) _Bool createAssessmentFile;
+@property(nonatomic, getter=shouldPresentShields) _Bool presentShields;
+@property(nonatomic, getter=shouldEnterSandbox) _Bool enterSandbox;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

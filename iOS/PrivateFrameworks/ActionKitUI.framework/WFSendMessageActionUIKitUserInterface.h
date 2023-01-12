@@ -4,24 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 #import <ActionKitUI/MFMessageComposeViewControllerDelegate-Protocol.h>
 #import <ActionKitUI/WFSendMessageActionUserInterface-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFSendMessageActionUIKitUserInterface : WFActionUserInterface <WFSendMessageActionUserInterface, MFMessageComposeViewControllerDelegate>
+@interface WFSendMessageActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFSendMessageActionUserInterface, MFMessageComposeViewControllerDelegate>
 {
     CDUnknownBlockType _completionHandler;
+    NSArray *_files;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *files; // @synthesize files=_files;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishWithError:(id)arg1;
+- (void)showWithRecipients:(id)arg1 content:(id)arg2 files:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)showWithRecipients:(id)arg1 content:(id)arg2 attachments:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 // Remaining properties
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

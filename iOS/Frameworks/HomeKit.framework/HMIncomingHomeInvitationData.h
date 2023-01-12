@@ -13,10 +13,12 @@
     NSUUID *_homeUUID;
     NSString *_inviterName;
     NSUUID *_inviterUUID;
+    NSString *_inviterMergeID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *inviterMergeID; // @synthesize inviterMergeID=_inviterMergeID;
 @property(readonly, copy, nonatomic) NSUUID *inviterUUID; // @synthesize inviterUUID=_inviterUUID;
 @property(copy, nonatomic) NSString *inviterName; // @synthesize inviterName=_inviterName;
 @property(readonly, copy, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;

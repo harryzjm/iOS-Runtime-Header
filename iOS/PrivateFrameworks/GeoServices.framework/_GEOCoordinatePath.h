@@ -8,31 +8,36 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface _GEOCoordinatePath : NSObject <NSSecureCoding>
 {
-    union {
-        struct ControlPoint *zilch;
-        CDStruct_183601bc *basic;
-        void *data;
-    } _coordinates;
-    _Bool _usesZilch;
-    unsigned long long _count;
-    double *_pointLengths;
+    struct vector<GEOLocationCoordinate3D, std::allocator<GEOLocationCoordinate3D>> _basicCoordinates;
+    struct vector<zilch::ControlPoint, std::allocator<zilch::ControlPoint>> _zilchPoints;
+    NSArray *_supportPoints;
+    struct vector<double, std::allocator<double>> _pointLengths;
+    unsigned long long _pathStartIndex;
+    double _pathStartOffset;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) double *pointLengths; // @synthesize pointLengths=_pointLengths;
-@property(readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(nonatomic) double pathStartOffset; // @synthesize pathStartOffset=_pathStartOffset;
+@property(nonatomic) unsigned long long pathStartIndex; // @synthesize pathStartIndex=_pathStartIndex;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(readonly, nonatomic) double length;
+- (void)calibratePointLengths:(void *)arg1 startIndex:(unsigned long long)arg2 endIndex:(unsigned long long)arg3 rangeLength:(double)arg4;
 - (CDStruct_39925896)coordinateAt:(unsigned long long)arg1;
-- (void)setPointLengths:(double *)arg1;
-- (void)setBasicCoordinates:(CDStruct_39925896 *)arg1 count:(unsigned long long)arg2;
-- (void)setZilchCoordinates:(struct ControlPoint *)arg1 count:(unsigned long long)arg2;
-- (void)dealloc;
+- (void)setPointLengths:(void *)arg1;
+- (void)setBasicCoordinates:(void *)arg1;
+- (void)setZilchPoints:(void *)arg1;
+@property(readonly, nonatomic) double *pointLengths;
+@property(readonly, nonatomic) double length;
+@property(readonly, nonatomic) unsigned long long count;
 @property(readonly, nonatomic) struct ControlPoint *zilchControlPoints;
+- (id)initWithGeoRoutingPathData:(id)arg1 pathStartIndex:(unsigned long long)arg2;
 
 @end
 

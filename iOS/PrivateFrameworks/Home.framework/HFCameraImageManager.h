@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class HFCameraClipVideoAssetOperationCache, HFCameraImageCache, HMCameraProfile, NSMutableDictionary, NSOperationQueue;
+#import <Home/HFCameraTimelapseVideoDownloaderDelegate-Protocol.h>
 
-@interface HFCameraImageManager : NSObject
+@class HFCameraClipVideoAssetOperationCache, HFCameraImageCache, HFCameraPosterFrameProvider, HMCameraProfile, NSMutableDictionary, NSOperationQueue;
+
+@interface HFCameraImageManager : NSObject <HFCameraTimelapseVideoDownloaderDelegate>
 {
     HMCameraProfile *_cameraProfile;
     HFCameraClipVideoAssetOperationCache *_fetchCache;
@@ -20,11 +22,16 @@
     NSMutableDictionary *_requestedHeroFrameCache;
     NSMutableDictionary *_requestedFaceCropCache;
     NSMutableDictionary *_requestedPosterFrameCache;
+    HFCameraPosterFrameProvider *_cameraPosterFrameProvider;
+    NSMutableDictionary *_offsetsForFile;
+    struct CGSize _videoSize;
 }
 
 + (id)clipIdentifierStringFromDate:(id)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *offsetsForFile; // @synthesize offsetsForFile=_offsetsForFile;
+@property(retain, nonatomic) HFCameraPosterFrameProvider *cameraPosterFrameProvider; // @synthesize cameraPosterFrameProvider=_cameraPosterFrameProvider;
 @property(retain, nonatomic) NSMutableDictionary *requestedPosterFrameCache; // @synthesize requestedPosterFrameCache=_requestedPosterFrameCache;
 @property(retain, nonatomic) NSMutableDictionary *requestedFaceCropCache; // @synthesize requestedFaceCropCache=_requestedFaceCropCache;
 @property(retain, nonatomic) NSMutableDictionary *requestedHeroFrameCache; // @synthesize requestedHeroFrameCache=_requestedHeroFrameCache;
@@ -33,26 +40,30 @@
 @property(retain, nonatomic) NSMutableDictionary *imageObservers; // @synthesize imageObservers=_imageObservers;
 @property(retain, nonatomic) HFCameraImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property(retain, nonatomic) NSOperationQueue *posterFrameQueue; // @synthesize posterFrameQueue=_posterFrameQueue;
+@property(nonatomic) struct CGSize videoSize; // @synthesize videoSize=_videoSize;
 @property(retain, nonatomic) HFCameraClipVideoAssetOperationCache *fetchCache; // @synthesize fetchCache=_fetchCache;
 @property(nonatomic) __weak HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
+- (void)_generateImagesForForTimelapseClip:(id)arg1 atLocation:(id)arg2;
+- (void)failedToDownloadVideoFileForTimelapseClip:(id)arg1;
+- (void)foundVideoFileForTimelapseClip:(id)arg1 atLocation:(id)arg2;
+- (void)didDownloadVideoFileForTimelapseClip:(id)arg1 atLocation:(id)arg2;
 - (void)dealloc;
 - (void)resetForCameraDismissal;
-- (void)cacheDemoPosterFramesForAsset:(id)arg1 forClip:(id)arg2;
+- (void)_updateDemoObserversForImage:(id)arg1 forClip:(id)arg2 withOffset:(double)arg3;
+- (void)generateDemoPosterFramesForAsset:(id)arg1 forClip:(id)arg2;
 - (void)_addPosterFrameImage:(id)arg1 forClip:(id)arg2 withOffset:(double)arg3;
 - (void)purgePosterFrames;
+- (void)purgeVideoFiles;
 - (id)keyForClip:(id)arg1;
 - (id)keyForClip:(id)arg1 timeOffset:(double)arg2;
 - (double)_timeScaleAdjustedOffset:(double)arg1;
-- (void)_generateMissingPosterFrameImageForClip:(id)arg1 atOffset:(double)arg2 observer:(id)arg3;
-- (void)_generateImagesUsingAsset:(id)arg1 clip:(id)arg2 observer:(id)arg3;
-- (void)_generateImageUsingAsset:(id)arg1 clip:(id)arg2 offset:(double)arg3 observer:(id)arg4;
+- (void)generatePosterFrameImageForClip:(id)arg1 atOffset:(double)arg2 observer:(id)arg3;
+- (struct CGSize)posterFrameSize;
+- (void)generateImageUsingAsset:(id)arg1 clip:(id)arg2 offset:(double)arg3;
 - (void)addDemoPosterFrameImageObserver:(id)arg1 forClip:(id)arg2 atOffset:(double)arg3;
-- (id)_posterFrameForClip:(id)arg1 atOffset:(double)arg2;
 - (void)removePosterFrameImageObserver:(id)arg1 forClip:(id)arg2 atOffset:(double)arg3;
-- (void)addOperationForObserver:(id)arg1 clip:(id)arg2 posterFrame:(id)arg3 withKey:(id)arg4;
-- (void)_addOperationForObserver:(id)arg1 clip:(id)arg2 posterFrame:(id)arg3;
 - (void)addPosterFrameImageObserver:(id)arg1 forClip:(id)arg2 atOffset:(double)arg3;
-- (void)_fetchPosterFrameImageForObserver:(id)arg1 forClip:(id)arg2 offset:(double)arg3;
+- (void)getPosterFrameImage:(id)arg1 forClip:(id)arg2 atOffset:(double)arg3;
 - (void)removeHeroFrameImageObserver:(id)arg1 forClip:(id)arg2;
 - (void)failToFindHeroFrameForClip:(id)arg1;
 - (void)addHeroFrameImageObserver:(id)arg1 forClip:(id)arg2;
@@ -60,8 +71,9 @@
 - (void)failedToFindFaceCropForClip:(id)arg1 withKey:(id)arg2;
 - (void)addFaceCropImageObserver:(id)arg1 forClip:(id)arg2 usingSignificantEvent:(id)arg3;
 - (id)imageObserversForKey:(id)arg1;
+- (id)firstPosterFrameImageForClip:(id)arg1;
 - (id)representativeImageForClip:(id)arg1;
-- (id)cachedPosterFrameImageForClip:(id)arg1 offset:(double)arg2;
+- (id)cachedPosterFrameImageForClip:(id)arg1 offset:(double)arg2 requestor:(id)arg3;
 - (id)faceCropImagesForClip:(id)arg1 atOffset:(double)arg2;
 - (id)faceCropForPersonName:(id)arg1;
 - (id)faceCropForClip:(id)arg1 atOffset:(double)arg2;

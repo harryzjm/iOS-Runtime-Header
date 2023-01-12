@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *symbologies; // @synthesize symbologies=_symbologies;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequestClass:(Class)arg1;
+- (void)setDefaultSymbologiesForRevision:(unsigned long long)arg1;
 
 @end
 

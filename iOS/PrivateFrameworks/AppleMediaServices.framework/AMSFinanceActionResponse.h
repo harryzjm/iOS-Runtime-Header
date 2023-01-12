@@ -13,6 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface AMSFinanceActionResponse : NSObject <AMSFinancePerformable>
 {
+    _Bool _shouldRetry;
+    _Bool _tidContinue;
     ACAccount *_account;
     NSString *_creditString;
     long long _kind;
@@ -20,15 +22,22 @@ __attribute__((visibility("hidden")))
     NSURL *_URL;
 }
 
++ (id)_URLForCommerceUIFromURL:(id)arg1 taskInfo:(id)arg2 tidContinue:(_Bool)arg3;
++ (id)_presentEngagementForURL:(id)arg1 taskInfo:(id)arg2;
++ (id)_bodyObjectFromRequest:(id)arg1;
++ (id)handleGotoURL:(id)arg1 taskInfo:(id)arg2 gotoType:(long long)arg3 accountURL:(_Bool)arg4 tidContinue:(_Bool)arg5 retryOnSuccess:(_Bool)arg6;
++ (void)handleExternalGotoURL:(id)arg1;
 + (id)actionWithUpdatedCreditString:(id)arg1 account:(id)arg2 taskInfo:(id)arg3;
 + (id)actionWithActionDictionary:(id)arg1 taskInfo:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool tidContinue; // @synthesize tidContinue=_tidContinue;
+@property(nonatomic) _Bool shouldRetry; // @synthesize shouldRetry=_shouldRetry;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(retain, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 @property(nonatomic) long long kind; // @synthesize kind=_kind;
 @property(retain, nonatomic) NSString *creditString; // @synthesize creditString=_creditString;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (id)_performOpenAppURL;
+- (id)_handleGotoAction;
 - (id)_performOpenStandardURL;
 - (id)_performGotoURL;
 - (id)_performCreditDisplayUpdate;

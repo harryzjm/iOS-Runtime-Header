@@ -17,6 +17,7 @@
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
 - (_Bool)containsObject:(id <PXDisplayAsset>)arg1;
 - (NSArray *)objectsAtIndexes:(NSIndexSet *)arg1;
+- (id <PXDisplayAsset>)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id <PXDisplayAsset>)objectAtIndex:(unsigned long long)arg1;
 @end
 

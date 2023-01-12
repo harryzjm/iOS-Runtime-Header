@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EMMessage, _MFMailCompositionContext;
+@class EMMessage, MFMailMessage, NSError, _MFMailCompositionContext;
 
 @protocol _MFMailCompositionContextDelegate
-- (void)messageDidChangeForCompositionContext:(_MFMailCompositionContext *)arg1 newMessage:(EMMessage *)arg2;
+- (void)mailCompositionContext:(_MFMailCompositionContext *)arg1 didFinishLoadingMessage:(EMMessage *)arg2 legacyMessage:(MFMailMessage *)arg3 error:(NSError *)arg4;
+- (void)mailCompositionContext:(_MFMailCompositionContext *)arg1 messageDidChange:(EMMessage *)arg2;
 @end
 

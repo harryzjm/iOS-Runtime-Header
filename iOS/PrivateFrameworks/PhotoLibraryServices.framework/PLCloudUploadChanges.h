@@ -12,6 +12,7 @@
 {
     NSMutableArray *_insertedAssets;
     NSMutableArray *_updatedAssets;
+    NSMutableArray *_deferredAssets;
     NSMutableSet *_adjustedAssetUuids;
     NSMutableSet *_propertyChangedAssetUuids;
     NSMutableSet *_faceChangedAssetUuids;
@@ -24,6 +25,7 @@
     NSMutableArray *_personChanges;
     NSMutableArray *_faceCropChanges;
     NSMutableArray *_suggestionChanges;
+    NSMutableArray *_userFeedbackChanges;
     NSMutableSet *_updatedRelationship;
     NSMutableArray *_deletedRecords;
 }
@@ -31,6 +33,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *deletedRecords; // @synthesize deletedRecords=_deletedRecords;
 @property(retain, nonatomic) NSMutableSet *updatedRelationship; // @synthesize updatedRelationship=_updatedRelationship;
+@property(retain, nonatomic) NSMutableArray *userFeedbackChanges; // @synthesize userFeedbackChanges=_userFeedbackChanges;
 @property(retain, nonatomic) NSMutableArray *suggestionChanges; // @synthesize suggestionChanges=_suggestionChanges;
 @property(retain, nonatomic) NSMutableArray *faceCropChanges; // @synthesize faceCropChanges=_faceCropChanges;
 @property(retain, nonatomic) NSMutableArray *personChanges; // @synthesize personChanges=_personChanges;
@@ -43,6 +46,7 @@
 @property(retain, nonatomic) NSMutableSet *faceChangedAssetUuids; // @synthesize faceChangedAssetUuids=_faceChangedAssetUuids;
 @property(retain, nonatomic) NSMutableSet *propertyChangedAssetUuids; // @synthesize propertyChangedAssetUuids=_propertyChangedAssetUuids;
 @property(retain, nonatomic) NSMutableSet *adjustedAssetUuids; // @synthesize adjustedAssetUuids=_adjustedAssetUuids;
+@property(retain, nonatomic) NSMutableArray *deferredAssets; // @synthesize deferredAssets=_deferredAssets;
 @property(retain, nonatomic) NSMutableArray *updatedAssets; // @synthesize updatedAssets=_updatedAssets;
 @property(retain, nonatomic) NSMutableArray *insertedAssets; // @synthesize insertedAssets=_insertedAssets;
 - (id)summaryDescription;

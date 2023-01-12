@@ -10,6 +10,8 @@
 
 @protocol _CPSearchViewAppearFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool isUsingLoweredSearchBar;
+@property(copy, nonatomic) NSString *originatingApp;
 @property(copy, nonatomic) NSString *preexistingInput;
 @property(nonatomic) _Bool readerTextAvailable;
 @property(nonatomic) _Bool isOverApp;

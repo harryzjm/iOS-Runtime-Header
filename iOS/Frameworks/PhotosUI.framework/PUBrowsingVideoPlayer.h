@@ -23,9 +23,11 @@
     _Bool _isMuted;
     _Bool _isPlayerLoadingAllowed;
     _Bool _isActivated;
+    _Bool _shouldPreloadVideoContent;
     _Bool __isUpdatingAudioSession;
     _Bool _shouldLoadVideoSession;
     _Bool _shouldRegisterForPlayback;
+    _Bool _shouldFadeNextVolumeChange;
     float _volume;
     unsigned long long _activityCoordinatorQueuePosition;
     NSHashTable *_timeObservers;
@@ -45,6 +47,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldFadeNextVolumeChange; // @synthesize shouldFadeNextVolumeChange=_shouldFadeNextVolumeChange;
 @property(nonatomic) _Bool shouldRegisterForPlayback; // @synthesize shouldRegisterForPlayback=_shouldRegisterForPlayback;
 @property(readonly, nonatomic) PXActivityCoordinator *playbackCoordinator; // @synthesize playbackCoordinator=_playbackCoordinator;
 @property(nonatomic) _Bool shouldLoadVideoSession; // @synthesize shouldLoadVideoSession=_shouldLoadVideoSession;
@@ -54,6 +57,7 @@
 @property(retain, nonatomic, setter=_setPlayerLoadingDisablingReasons:) NSMutableSet *_playerLoadingDisablingReasons; // @synthesize _playerLoadingDisablingReasons=__playerLoadingDisablingReasons;
 @property(retain, nonatomic, setter=_setError:) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic, setter=_setPlayerItem:) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
+@property(nonatomic) _Bool shouldPreloadVideoContent; // @synthesize shouldPreloadVideoContent=_shouldPreloadVideoContent;
 @property(nonatomic, setter=setActivated:) _Bool isActivated; // @synthesize isActivated=_isActivated;
 @property(nonatomic) CDStruct_1b6d18a9 desiredSeekTime; // @synthesize desiredSeekTime=_desiredSeekTime;
 @property(retain, nonatomic) PXVideoSession *videoSession; // @synthesize videoSession=_videoSession;
@@ -67,6 +71,7 @@
 @property(readonly, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(retain, nonatomic) id <PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property(nonatomic) unsigned long long activityCoordinatorQueuePosition; // @synthesize activityCoordinatorQueuePosition=_activityCoordinatorQueuePosition;
+- (void)_setVideoSessionVolume:(id)arg1;
 - (void)_performPendingSeekIfNeeded;
 - (void)_updatePlayerVolume;
 - (void)_updateVideoSessionDesiredPlayState;
@@ -78,8 +83,6 @@
 @property(readonly, nonatomic) NSHashTable *videoOutputs; // @synthesize videoOutputs=_videoOutputs;
 @property(readonly, nonatomic) NSHashTable *timeObservers; // @synthesize timeObservers=_timeObservers;
 - (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
-- (void)_handleDidBecomeActiveNotification:(id)arg1;
-- (void)_handleWillResignActiveNotification:(id)arg1;
 - (void)videoSessionAudioSessionOutputVolumeDidChange:(id)arg1 fromVolume:(float)arg2 toVolume:(float)arg3;
 - (void)videoSessionDidPlayToEnd:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

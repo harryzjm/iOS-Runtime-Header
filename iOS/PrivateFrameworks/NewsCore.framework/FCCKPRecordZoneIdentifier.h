@@ -10,26 +10,21 @@
 
 @class FCCKPIdentifier;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRecordZoneIdentifier : PBCodable <NSCopying>
 {
     FCCKPIdentifier *_ownerIdentifier;
     FCCKPIdentifier *_value;
 }
 
-@property(retain, nonatomic) FCCKPIdentifier *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
-@property(retain, nonatomic) FCCKPIdentifier *value; // @synthesize value=_value;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasOwnerIdentifier;
-@property(readonly, nonatomic) _Bool hasValue;
-- (void)dealloc;
 
 @end
 

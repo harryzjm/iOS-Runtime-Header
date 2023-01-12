@@ -8,8 +8,8 @@
 
 @interface StitchedRegionDAG : MPSKernelDAGObject
 {
-    struct unordered_map<mlir::Operation *, int, std::__1::hash<mlir::Operation *>, std::__1::equal_to<mlir::Operation *>, std::__1::allocator<std::__1::pair<mlir::Operation *const, int>>> *_placeholderOpToUsesInStitchedRegionMap;
-    struct vector<mlir::Operation *, std::__1::allocator<mlir::Operation *>> *_placeholdersInDAG;
+    void *_placeholderOpToUsesInStitchedRegionMap;
+    void *_placeholdersInDAG;
 }
 
 - (void)dealloc;

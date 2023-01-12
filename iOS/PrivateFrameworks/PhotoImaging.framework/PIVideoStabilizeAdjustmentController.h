@@ -8,5 +8,8 @@
 {
 }
 
+@property(nonatomic) unsigned long long analysisType;
+@property(nonatomic) double cropFraction;
+
 @end
 

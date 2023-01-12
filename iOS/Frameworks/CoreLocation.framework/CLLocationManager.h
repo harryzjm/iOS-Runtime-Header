@@ -27,8 +27,19 @@
 + (void)setDefaultEffectiveBundleIdentifier:(id)arg1;
 + (void)setBackgroundIndicatorEnabled:(_Bool)arg1 forBundle:(id)arg2;
 + (void)setBackgroundIndicatorEnabled:(_Bool)arg1 forBundleIdentifier:(id)arg2;
++ (void)grantTemporaryAuthorizationUsingLocationButtonToClientWithAuditToken:(CDStruct_6ad76789)arg1 voiceInteractionEnabled:(_Bool)arg2;
 + (void)setTemporaryAuthorizationGranted:(_Bool)arg1 forBundle:(id)arg2;
 + (void)setTemporaryAuthorizationGranted:(_Bool)arg1 forBundleIdentifier:(id)arg2;
++ (void)deleteInterestZoneWithId:(id)arg1 registeredForBundle:(id)arg2 error:(id *)arg3;
++ (void)deleteInterestZoneWithId:(id)arg1 registeredForBundleIdentifier:(id)arg2 error:(id *)arg3;
++ (void)setRelevance:(_Bool)arg1 forInterestZoneWithId:(id)arg2 registeredForBundle:(id)arg3 error:(id *)arg4;
++ (void)setRelevance:(_Bool)arg1 forInterestZoneWithId:(id)arg2 registeredForBundleIdentifier:(id)arg3 error:(id *)arg4;
++ (void)setAuthorizationStatus:(int)arg1 withCorrectiveCompensation:(int)arg2 forInterestZoneWithId:(id)arg3 registeredForBundle:(id)arg4;
++ (void)setAuthorizationStatus:(int)arg1 withCorrectiveCompensation:(int)arg2 forInterestZoneWithId:(id)arg3 registeredForBundleIdentifier:(id)arg4;
++ (void)registerPhenolicInterestZoneWithId:(id)arg1 phenolicLocation:(int)arg2 serviceMaskOperator:(int)arg3 provenanceType:(int)arg4 forBundle:(id)arg5 error:(id *)arg6;
++ (void)registerPhenolicInterestZoneWithId:(id)arg1 phenolicLocation:(int)arg2 serviceMaskOperator:(int)arg3 provenanceType:(int)arg4 forBundleIdentifier:(id)arg5 error:(id *)arg6;
++ (void)registerCircularInterestZoneWithId:(id)arg1 latitue:(double)arg2 longitude:(double)arg3 radius:(double)arg4 serviceMaskOperator:(int)arg5 provenanceType:(int)arg6 forBundle:(id)arg7 error:(id *)arg8;
++ (void)registerCircularInterestZoneWithId:(id)arg1 latitue:(double)arg2 longitude:(double)arg3 radius:(double)arg4 serviceMaskOperator:(int)arg5 provenanceType:(int)arg6 forBundleIdentifier:(id)arg7 error:(id *)arg8;
 + (void)getIncidentalUseMode:(int *)arg1 forBundleIdentifier:(id)arg2;
 + (void)getIncidentalUseMode:(int *)arg1 forBundle:(id)arg2;
 + (void)setIncidentalUseMode:(int)arg1 forBundleIdentifier:(id)arg2;
@@ -47,6 +58,8 @@
 + (int)_authorizationStatusForBundleIdentifier:(id)arg1 bundle:(id)arg2;
 + (id)_applyArchivedAuthorizationDecisions:(id)arg1;
 + (id)_archivedAuthorizationDecisionsWithError:(id *)arg1;
++ (id)metadataForHomekitActionSetEventWithUUID:(id)arg1 name:(id)arg2 type:(id)arg3 clientName:(id)arg4 source:(id)arg5 homeName:(id)arg6;
++ (id)metadataForHomekitAccessoryControlEventWithUUID:(id)arg1 stateString:(id)arg2 serviceUUID:(id)arg3 serviceType:(id)arg4 characteristicType:(id)arg5 serviceGroupUUID:(id)arg6 source:(id)arg7 roomUUID:(id)arg8;
 + (_Bool)isPeerRangingAvailable;
 + (_Bool)deferredLocationUpdatesAvailable;
 + (_Bool)_checkAndExerciseAuthorizationForBundle:(id)arg1 error:(id *)arg2;
@@ -70,6 +83,9 @@
 + (void)setEntityAuthorization:(unsigned long long)arg1 withCorrectiveCompensation:(_Bool)arg2 forLocationDictionary:(id)arg3;
 + (void)setEntityAuthorization:(unsigned long long)arg1 forLocationDictionary:(id)arg2;
 + (void)setEntityAuthorized:(_Bool)arg1 forLocationDictionary:(id)arg2;
++ (_Bool)isInterestZoneReleventForLocationDictionary:(id)arg1;
++ (id)interestZoneDictionaryIdentifiedById:(id)arg1 forLocationDictionary:(id)arg2;
++ (id)interestZonesIdentifierListForLocationDictionary:(id)arg1;
 + (unsigned long long)incidentalUseModeForLocationDictionary:(id)arg1;
 + (_Bool)correctiveCompensationStatusForLocationDictionary:(id)arg1;
 + (unsigned long long)allowableAuthorizationForLocationDictionary:(id)arg1;
@@ -102,6 +118,7 @@
 @property(readonly, nonatomic, getter=isAuthorizedForPreciseLocation) _Bool authorizedForPreciseLocation;
 @property(readonly, nonatomic) int _authorizationStatus;
 @property(readonly, nonatomic) int authorizationStatus;
+- (void)onClientEventSignificantLocationVisitStateRequest:(id)arg1;
 - (void)onClientEventSignificantLocationVisit:(id)arg1;
 - (void)onClientEventVehicleHeading:(id)arg1;
 - (void)onClientEventVehicleSpeed:(id)arg1;
@@ -134,10 +151,14 @@
 - (void)onClientEvent:(int)arg1 supportInfo:(id)arg2;
 - (void)onRangingRequestTimeout;
 - (void)onLocationRequestTimeout;
+- (id)_zAxisStatistics;
 - (id)technologiesInUse;
 - (id)appsUsingLocationWithDetails;
 - (id)appsUsingLocation;
 - (void)resetApps;
+- (void)requestMicroLocationRecordingScanWithAdditionalInformation:(id)arg1;
+- (void)requestCurrentMicroLocationWithAdditionalInformation:(id)arg1;
+- (id)getMicroLocationInternalVersion;
 - (void)stopRangingFromPeers:(id)arg1;
 - (void)startRangingFromPeers:(id)arg1;
 - (void)stopRangingToPeers:(id)arg1;
@@ -156,6 +177,8 @@
 - (void)stopMonitoringForRegion:(id)arg1;
 - (void)startMonitoringForRegion:(id)arg1;
 - (void)startMonitoringForRegion:(id)arg1 desiredAccuracy:(double)arg2;
+- (void)stopMonitoringLocationPushes;
+- (void)startMonitoringLocationPushesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopMonitoringSignificantLocationChanges;
 - (void)_startMonitoringSignificantLocationChangesOfDistance:(double)arg1 withPowerBudget:(int)arg2;
 - (void)startMonitoringSignificantLocationChanges;
@@ -213,6 +236,7 @@
 @property(nonatomic, getter=_isGroundAltitudeEnabled, setter=_setGroundAltitudeEnabled:) _Bool _groundAltitudeEnabled;
 - (void)_setFusionInfoEnabled:(_Bool)arg1;
 - (_Bool)_isFusionInfoEnabled;
+- (void)_requestVisitState;
 - (void)_startLeechingVisits;
 - (void)stopMonitoringVisits;
 - (void)startMonitoringVisits;
@@ -220,6 +244,7 @@
 - (void)_fetchContinuousPlaceInferencesWithFidelityPolicy:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchPlaceInferencesWithFidelityPolicy:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)_startPlaceInferencesCommonLogic:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchEstimatedLocationAtDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_updateVLLocalizationResult:(id)arg1;
 - (void)_updateARSessionState:(unsigned long long)arg1;
 - (void)_updateVIOEstimation:(id)arg1;

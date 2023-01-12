@@ -16,7 +16,6 @@
 {
     FBSSceneDefinition *_definition;
     FBScene *_scene;
-    long long _contentState;
     FBSDisplayIdentity *_displayIdentity;
     _Bool _manuallyControlsLifecycle;
     FBSceneMonitor *_sceneMonitor;

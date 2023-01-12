@@ -15,7 +15,8 @@
 }
 
 - (_Bool)isVideoInitData:(id)arg1 combinableWithVideoInitData:(id)arg2;
-- (id)createUploaderWithClipUUID:(id)arg1 startDate:(id)arg2 targetFragmentDuration:(double)arg3 localZone:(id)arg4 workQueue:(id)arg5 logIdentifier:(id)arg6;
+- (id)createUploaderWithClipUUID:(id)arg1 startDate:(id)arg2 targetFragmentDuration:(double)arg3 quality:(long long)arg4 localZone:(id)arg5 workQueue:(id)arg6 logIdentifier:(id)arg7;
+- (id)createTimelapseFragmentManagerWithLogIdentifier:(id)arg1;
 - (id)createSignificantEventManagerWithWorkQueue:(id)arg1 faceClassificationResolver:(id)arg2 logIdentifier:(id)arg3;
 - (id)createVideoAnalyzerWithConfiguration:(id)arg1 identifier:(id)arg2;
 @property(readonly) double recordingExtensionDuration;

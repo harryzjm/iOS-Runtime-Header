@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     NSString *operationDescription;
     long long state;
     id reactor;
+    NSString *reactorID;
 }
 
-+ (id)operationRecordWithDescription:(id)arg1;
-@property id reactor; // @synthesize reactor;
++ (id)operationRecordWithDescription:(id)arg1 reactor:(id)arg2;
+- (void).cxx_destruct;
+@property(readonly) __weak id reactor; // @synthesize reactor;
 @property(readonly) long long state; // @synthesize state;
 @property(readonly) NSString *operationDescription; // @synthesize operationDescription;
 - (id)description;

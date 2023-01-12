@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_0fed96ae)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_0fed96ae)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTUserAcousticProfile *updated_acoustic_profile;
 @property(readonly, nonatomic) NSString *return_str;
 @property(readonly, nonatomic) int return_code;

@@ -14,7 +14,7 @@
     NSString *_displayName;
     unsigned long long _indexInGroup;
     AUParameterGroup *_parentNode;
-    struct AUObserverList *_observerList;
+    void *_observerList;
     CDUnknownBlockType _impl_implementorValueObserver;
     CDUnknownBlockType _impl_implementorValueProvider;
     CDUnknownBlockType _impl_implementorStringFromValueCallback;
@@ -28,7 +28,7 @@
 @property(copy, nonatomic) CDUnknownBlockType impl_implementorStringFromValueCallback; // @synthesize impl_implementorStringFromValueCallback=_impl_implementorStringFromValueCallback;
 @property(copy, nonatomic) CDUnknownBlockType impl_implementorValueProvider; // @synthesize impl_implementorValueProvider=_impl_implementorValueProvider;
 @property(copy, nonatomic) CDUnknownBlockType impl_implementorValueObserver; // @synthesize impl_implementorValueObserver=_impl_implementorValueObserver;
-@property(nonatomic) struct AUObserverList *observerList; // @synthesize observerList=_observerList;
+@property(nonatomic) void *observerList; // @synthesize observerList=_observerList;
 @property(nonatomic) __weak AUParameterGroup *parentNode; // @synthesize parentNode=_parentNode;
 @property(nonatomic) unsigned long long indexInGroup; // @synthesize indexInGroup=_indexInGroup;
 @property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;

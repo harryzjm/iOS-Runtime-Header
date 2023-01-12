@@ -27,15 +27,17 @@
 @property(readonly, nonatomic) NSMutableDictionary *accounts; // @synthesize accounts=_accounts;
 @property(readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *operatingQueue; // @synthesize operatingQueue=_operatingQueue;
-@property(readonly, nonatomic) ACAccount *primaryAppleAccount; // @synthesize primaryAppleAccount=_primaryAppleAccount;
 - (void)handleManagedAppDidChangeNotification:(id)arg1;
 - (void)handleAccountStoreDidChangeNotification:(id)arg1;
 - (void)removeCachedChildrenAccountForAccount:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *managedAppBundleIDs; // @synthesize managedAppBundleIDs=_managedAppBundleIDs;
+@property(readonly, nonatomic) ACAccount *primaryAppleAccount; // @synthesize primaryAppleAccount=_primaryAppleAccount;
 - (id)initWithProfileConnection:(id)arg1 accountStore:(id)arg2;
 - (id)init;
 - (id)accountIdentifiersEnabledForDataclass:(id)arg1;
 - (id)accountWithIdentifier:(id)arg1;
+- (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(_Bool)arg3;
+- (unsigned long long)managedLevelForContentOfURLs:(id)arg1;
 - (unsigned long long)managedLevelForContentOfURL:(id)arg1;
 - (_Bool)isAccountBasedSourceApp:(id)arg1;
 - (_Bool)isAccountManaged:(id)arg1;
@@ -43,6 +45,8 @@
 @property(readonly) _Bool mayOpenFromManagedToUnmanaged;
 @property(readonly) _Bool mayOpenFromUnmanagedToManaged;
 @property(readonly) _Bool isOpenInRestrictionInEffect;
+@property(readonly) _Bool isWallpaperModificationAllowed;
+@property(readonly) _Bool isScreenShotAllowed;
 @property(readonly) _Bool isBluetoothModificationAllowed;
 @property(readonly) _Bool isWiFiPowerModificationAllowed;
 

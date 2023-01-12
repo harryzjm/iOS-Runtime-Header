@@ -8,7 +8,7 @@
 
 @interface TSTTableRepProcessChangesActions : NSObject
 {
-    vector_e87daf7b _dirtyCellRanges;
+    vector_fad096c6 _dirtyCellRanges;
     _Bool _invalidateAllChrome;
     _Bool _invalidateAllChromeCaches;
     _Bool _invalidateColumnChrome;
@@ -43,7 +43,7 @@
 @property(nonatomic) _Bool invalidateAllChromeCaches; // @synthesize invalidateAllChromeCaches=_invalidateAllChromeCaches;
 @property(nonatomic) _Bool invalidateAllChrome; // @synthesize invalidateAllChrome=_invalidateAllChrome;
 @property(nonatomic) struct TSUCellRect dirtyStrokeRange; // @synthesize dirtyStrokeRange=_dirtyStrokeRange;
-- (vector_e87daf7b *)dirtyCellRanges;
+- (void *)dirtyCellRanges;
 - (void)setDirtyCellRange:(struct TSUCellRect)arg1;
 
 @end

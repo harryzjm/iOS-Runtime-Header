@@ -27,6 +27,7 @@
 - (id)keyboardPrefixForWidth:(float)arg1 andEdge:(_Bool)arg2;
 - (void)addKeyboardPrefix:(id)arg1 forWidth:(float)arg2 minEdge:(_Bool)arg3;
 - (id)objectForOffset:(int *)arg1;
+- (id)_UIKBTreeForOffset:(int *)arg1 withFlags:(unsigned long long)arg2;
 - (id)UIKBTreeForOffset:(int *)arg1 withFlags:(unsigned long long)arg2;
 - (id)mergeActionForOffset:(int *)arg1 withFlags:(unsigned long long)arg2;
 - (id)shapeForOffset:(int *)arg1 withFlags:(unsigned long long)arg2;

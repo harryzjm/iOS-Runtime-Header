@@ -14,9 +14,11 @@
     UIImageView *_titleIconImageView;
     long long _titleIconImageType;
     NSSet *_titleIconImageTypesSupportingRotation;
+    struct CGRect _textRectForAccessoryImageView;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct CGRect textRectForAccessoryImageView; // @synthesize textRectForAccessoryImageView=_textRectForAccessoryImageView;
 @property(nonatomic) _Bool shouldHaveRotatedTitleIconImage; // @synthesize shouldHaveRotatedTitleIconImage=_shouldHaveRotatedTitleIconImage;
 @property(retain, nonatomic) NSSet *titleIconImageTypesSupportingRotation; // @synthesize titleIconImageTypesSupportingRotation=_titleIconImageTypesSupportingRotation;
 @property(nonatomic) long long titleIconImageType; // @synthesize titleIconImageType=_titleIconImageType;
@@ -26,11 +28,13 @@
 - (void)setShouldHaveRotatedTitleIconImage:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)titleIconImageTypeSupportsRotation:(long long)arg1;
 - (struct CGSize)sizeOfAccessoryImageView;
-- (struct CGSize)sizeOfTitleLabel;
+- (_Bool)hasAccessoryImageView;
+- (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (struct CGRect)rectToDrawTextInForRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setTextColor:(id)arg1;
 
 @end
 

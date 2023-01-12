@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic) _Bool useSmartCard;
 @property(nonatomic) _Bool userSetKeychainChoice;
 @property(nonatomic) _Bool useKeychain;
 

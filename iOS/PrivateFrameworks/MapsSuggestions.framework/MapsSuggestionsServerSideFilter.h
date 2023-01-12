@@ -31,7 +31,7 @@
     _Bool _enabledEntryTypeUserPlace;
     _Bool _enabledEntryTypeSchool;
     _Bool _enabledEntryTypeVehicleSetup;
-    _Bool _enabledEntryTypeRatingRequest;
+    _Bool _enabledEntryTypeFavoriteButton;
 }
 
 + (_Bool)isEnabled;

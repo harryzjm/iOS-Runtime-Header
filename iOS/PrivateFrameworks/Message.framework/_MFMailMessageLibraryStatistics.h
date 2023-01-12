@@ -19,8 +19,14 @@
     unsigned long long _messageDataDeleted;
     unsigned long long _messagesMarkedAsJournaled;
     unsigned long long _mailboxesNeedingReconcilication;
+    unsigned long long _indexableMessages;
+    unsigned long long _messagesIndexed;
+    unsigned long long _messagesToIndex;
 }
 
+@property(nonatomic) unsigned long long messagesToIndex; // @synthesize messagesToIndex=_messagesToIndex;
+@property(nonatomic) unsigned long long messagesIndexed; // @synthesize messagesIndexed=_messagesIndexed;
+@property(nonatomic) unsigned long long indexableMessages; // @synthesize indexableMessages=_indexableMessages;
 @property(nonatomic) unsigned long long mailboxesNeedingReconcilication; // @synthesize mailboxesNeedingReconcilication=_mailboxesNeedingReconcilication;
 @property(nonatomic) unsigned long long messagesMarkedAsJournaled; // @synthesize messagesMarkedAsJournaled=_messagesMarkedAsJournaled;
 @property(nonatomic) unsigned long long messageDataDeleted; // @synthesize messageDataDeleted=_messageDataDeleted;

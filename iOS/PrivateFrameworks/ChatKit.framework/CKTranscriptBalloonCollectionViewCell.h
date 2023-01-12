@@ -19,7 +19,7 @@
 - (void)clearFilters;
 - (void)addFilter:(id)arg1;
 - (id)_balloonViewForChatItem:(id)arg1;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 - (id)description;
 - (void)prepareForReuse;
 - (void)layoutSubviews;

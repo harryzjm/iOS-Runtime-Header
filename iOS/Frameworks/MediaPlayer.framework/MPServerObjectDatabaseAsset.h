@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString, NSURL;
+@class NSArray, NSData, NSString, NSURL;
 
 @interface MPServerObjectDatabaseAsset : NSObject
 {
@@ -15,9 +15,11 @@
     long long _flavor;
     NSURL *_url;
     NSData *_miniSINF;
+    NSArray *_sinfs;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSArray *sinfs; // @synthesize sinfs=_sinfs;
 @property(readonly, copy, nonatomic) NSData *miniSINF; // @synthesize miniSINF=_miniSINF;
 @property(readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) long long flavor; // @synthesize flavor=_flavor;
@@ -25,6 +27,8 @@
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
 - (id)initWithSQLRowResult:(id)arg1;
+- (id)_initWithIdentifier:(id)arg1 hashedPersonID:(id)arg2 flavor:(long long)arg3 url:(id)arg4 miniSINF:(id)arg5 sinfs:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 hashedPersonID:(id)arg2 flavor:(long long)arg3 url:(id)arg4 sinfs:(id)arg5;
 - (id)initWithIdentifier:(id)arg1 hashedPersonID:(id)arg2 flavor:(long long)arg3 url:(id)arg4 miniSINF:(id)arg5;
 
 @end

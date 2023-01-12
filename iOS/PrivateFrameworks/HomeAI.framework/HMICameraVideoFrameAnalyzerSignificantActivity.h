@@ -9,46 +9,57 @@
 #import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/HMICameraVideoFrameAnalyzer-Protocol.h>
 
-@class HMFOSTransaction, HMFUnfairLock, HMIFaceClassifierVIP, HMISignificantActivityDetector, NSCache, NSDictionary, NSMapTable, NSOperationQueue, NSString;
+@class HMFOSTransaction, HMIFaceClassifierVIP, HMISessionEntityManager, HMISignificantActivityFcosDetector, HMITorsoClassifier, HMIVideoAnalyzerConfiguration, NSDictionary, NSMapTable, NSOperationQueue, NSString;
 
 @interface HMICameraVideoFrameAnalyzerSignificantActivity : HMFObject <HMICameraVideoFrameAnalyzer, HMFLogging>
 {
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSDictionary *_mediumConfidenceThresholds;
     NSDictionary *_highConfidenceThresholds;
     NSOperationQueue *_regionOfInterestOperationQueue;
     NSMapTable *_regionOfInterestOperations;
-    HMISignificantActivityDetector *_significantActivityDetector;
+    HMISignificantActivityFcosDetector *_significantActivityFcosDetector;
     HMIFaceClassifierVIP *_faceClassifier;
+    HMITorsoClassifier *_torsoClassifier;
     HMFOSTransaction *_transaction;
-    NSCache *_sessionEntityManagers;
+    HMIVideoAnalyzerConfiguration *_analyzerConfiguration;
+    HMISessionEntityManager *_sessionEntityManager;
 }
 
 + (id)logCategory;
++ (id)desLabelIndexForEventClass:(Class)arg1;
++ (id)labelIndexForEventClass:(Class)arg1;
 + (id)classHierarchyMap;
 - (void).cxx_destruct;
-@property(readonly) NSCache *sessionEntityManagers; // @synthesize sessionEntityManagers=_sessionEntityManagers;
+@property(readonly) HMISessionEntityManager *sessionEntityManager; // @synthesize sessionEntityManager=_sessionEntityManager;
+@property(readonly) HMIVideoAnalyzerConfiguration *analyzerConfiguration; // @synthesize analyzerConfiguration=_analyzerConfiguration;
 @property(retain, nonatomic) HMFOSTransaction *transaction; // @synthesize transaction=_transaction;
+@property(readonly) HMITorsoClassifier *torsoClassifier; // @synthesize torsoClassifier=_torsoClassifier;
 @property(readonly) HMIFaceClassifierVIP *faceClassifier; // @synthesize faceClassifier=_faceClassifier;
-@property(readonly) HMISignificantActivityDetector *significantActivityDetector; // @synthesize significantActivityDetector=_significantActivityDetector;
+@property(readonly) HMISignificantActivityFcosDetector *significantActivityFcosDetector; // @synthesize significantActivityFcosDetector=_significantActivityFcosDetector;
 @property(readonly) NSMapTable *regionOfInterestOperations; // @synthesize regionOfInterestOperations=_regionOfInterestOperations;
 @property(readonly) NSOperationQueue *regionOfInterestOperationQueue; // @synthesize regionOfInterestOperationQueue=_regionOfInterestOperationQueue;
 @property(readonly) NSDictionary *highConfidenceThresholds; // @synthesize highConfidenceThresholds=_highConfidenceThresholds;
 @property(readonly) NSDictionary *mediumConfidenceThresholds; // @synthesize mediumConfidenceThresholds=_mediumConfidenceThresholds;
-@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
-- (void)saveDESRecordVideoFrame:(id)arg1 withResult:(id)arg2;
-- (id)_eventsWithFaceClassificationAppliedFromEvents:(id)arg1 videoFrame:(id)arg2 sessionIdentifier:(id)arg3 homeUUID:(id)arg4 error:(id *)arg5;
-- (id)_filterEvents:(id)arg1 withMotionDetections:(id)arg2 cropRectNormalized:(struct CGRect)arg3;
+- (void)saveDESRecordVideoFrame:(id)arg1 analyzerEvents:(id)arg2 regionOfInterest:(struct CGRect)arg3;
+- (void)_ensureSessionEntityManagerWithFrameDimensions:(struct CGSize)arg1;
+- (id)_eventsWithSessionEntitiesFromEvents:(id)arg1 videoFrame:(id)arg2 homeUUID:(id)arg3;
+- (id)_eventsWithClassificationsFromEvents:(id)arg1 videoFrame:(id)arg2 regionOfInterest:(struct CGRect)arg3 homeUUID:(id)arg4 enableTorsoRecognition:(_Bool)arg5;
 - (id)_filterEvents:(id)arg1 targetEventClasses:(id)arg2;
 - (id)_createStationaryEventFromEvent:(id)arg1;
 - (id)_analyzerEventsFromObjectDetections:(id)arg1;
-- (id)_targetEventsSetFromTargetEventTypes:(long long)arg1 enableFaceClassification:(_Bool)arg2;
+- (id)_targetEventsSetFromTargetEventTypes:(long long)arg1 enableFaceClassification:(_Bool)arg2 enableTorsoRecognition:(_Bool)arg3;
 - (long long)_rankForEventClass:(Class)arg1;
 - (id)_simulatedEventForEventClass:(Class)arg1;
-- (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 enableFaceClassification:(_Bool)arg3 sessionIdentifier:(id)arg4 homeUUID:(id)arg5 error:(id *)arg6;
-- (void)handleMotionDetection:(id)arg1 sessionPTS:(CDStruct_1b6d18a9)arg2 frameDimensions:(struct CGSize)arg3 sessionIdentifier:(id)arg4;
+- (id)eventsWithFaceEventsFromTorsoEventsFromEvents:(id)arg1 homeUUID:(id)arg2;
+- (id)flushAndGetAnalysisStateUpdateForHome:(id)arg1 enableFaceClassification:(_Bool)arg2;
+- (id)_predictEventsFromCropPixelBuffer:(struct __CVBuffer *)arg1 cropRect:(struct CGRect)arg2 imageSize:(struct CGSize)arg3 error:(id *)arg4;
+- (id)analyzePixelBuffer:(struct __CVBuffer *)arg1 regionOfInterest:(struct CGRect)arg2 error:(id *)arg3;
+- (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 enableFaceClassification:(_Bool)arg3 homeUUID:(id)arg4 error:(id *)arg5;
+- (void)handleMotionDetection:(id)arg1 inFrame:(struct opaqueCMSampleBuffer *)arg2;
 - (void)preAnalyze:(id)arg1;
-- (id)initWithMediumConfidenceThresholds:(id)arg1 highConfidenceThresholds:(id)arg2 nmsConfiguration:(id)arg3 assetPath:(id)arg4 error:(id *)arg5;
+@property(readonly) struct CGSize inputDimensions;
+- (id)initWithMediumConfidenceThresholds:(id)arg1 highConfidenceThresholds:(id)arg2 analyzerConfiguration:(id)arg3 error:(id *)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

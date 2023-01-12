@@ -8,6 +8,7 @@
 
 @interface FCRefreshNotificationsForChannelsCommand
 {
+    int _deviceDigestMode;
     NSArray *_channelIDs;
     NSArray *_paidChannelIDs;
     NSString *_userID;
@@ -17,6 +18,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) int deviceDigestMode; // @synthesize deviceDigestMode=_deviceDigestMode;
 @property(copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(copy, nonatomic) NSString *deviceToken; // @synthesize deviceToken=_deviceToken;
 @property(copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
@@ -25,7 +27,7 @@
 - (void)executeWithContext:(id)arg1 delegate:(id)arg2 qualityOfService:(long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithChannelIDs:(id)arg1 paidChannelIDs:(id)arg2 userID:(id)arg3 deviceToken:(id)arg4 storefrontID:(id)arg5;
+- (id)initWithChannelIDs:(id)arg1 paidChannelIDs:(id)arg2 userID:(id)arg3 deviceToken:(id)arg4 storefrontID:(id)arg5 deviceDigestMode:(int)arg6;
 
 @end
 

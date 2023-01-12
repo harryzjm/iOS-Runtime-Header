@@ -11,6 +11,7 @@
 @interface NSXPCConnection (TUCallServicesAdditions)
 + (id)callServicesClientXPCInterface;
 + (id)callServicesServerXPCInterface;
+- (void)performBlockOnQueue:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSString *processBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *processName;
 @end

@@ -11,6 +11,8 @@
 }
 
 + (_Bool)shouldPowerLogEvent:(id)arg1;
++ (id)PUSHTRACE;
++ (id)pubSub;
 + (id)ttlCollection;
 + (id)taskManager;
 + (id)connectionServer;

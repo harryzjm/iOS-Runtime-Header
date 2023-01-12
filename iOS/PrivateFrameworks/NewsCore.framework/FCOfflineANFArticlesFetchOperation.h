@@ -10,30 +10,22 @@
 @interface FCOfflineANFArticlesFetchOperation
 {
     _Bool _cachedOnly;
-    unsigned long long _maximumMissingArticles;
+    unsigned long long _maxBatchSize;
+    unsigned long long _maxMissingArticles;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
     CDUnknownBlockType _fetchCompletionHandler;
     id <FCContentContext> _context;
     id <FCFlintHelper> _flintHelper;
     NSArray *_articleIDs;
-    id _resultHoldToken;
+    NSArray *_inputHeadlines;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id resultHoldToken; // @synthesize resultHoldToken=_resultHoldToken;
-@property(retain, nonatomic) NSArray *articleIDs; // @synthesize articleIDs=_articleIDs;
-@property(retain, nonatomic) id <FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
-@property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
-@property(copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-@property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-@property(nonatomic) unsigned long long maximumMissingArticles; // @synthesize maximumMissingArticles=_maximumMissingArticles;
-@property(nonatomic) _Bool cachedOnly; // @synthesize cachedOnly=_cachedOnly;
-- (id)_promiseANFResourcesFromHeadlines:(id)arg1;
-- (id)_promiseThumbnailsAndANFDocumentsFromHeadlines:(id)arg1;
-- (id)_promiseHeadlines;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
-- (id)initWithContext:(id)arg1 flintHelper:(id)arg2 articleIDs:(id)arg3;
+- (_Bool)validateOperation;
 
 @end
 

@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray, _UIAccessibilityNavigationViewInfo;
+
 @interface UINavigationBarAccessibility
 {
+    _UIAccessibilityNavigationViewInfo *__accessibilityNavigationViewInfo;
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void).cxx_destruct;
 - (void)_accessibility_navigationBarContentsDidChange;
 - (void)insertSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)insertSubview:(id)arg1 aboveSubview:(id)arg2;
@@ -18,29 +22,20 @@
 - (void)willRemoveSubview:(id)arg1;
 - (void)addSubview:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_accessibilityFetchCachedNavBarElements;
 - (unsigned long long)_accessibilityAutomationType;
-- (id)_accessibilityRightButtonElements;
-- (id)_accessibilityLeftButtonElements;
-- (id)_accessibilityStaticBarButtonItemWithContents:(id)arg1;
-- (id)_accessibilityStaticBarButtonItem;
-- (_Bool)_accessibilityHasStaticNavBarButtonChanged;
-- (void)_axSetCachedStaticNavBarButton:(id)arg1;
-- (id)_axGetCachedStaticNavBarButton;
-- (_Bool)_accessibilityHasTitleViewChanged;
-- (_Bool)_accessibilityHasLeftRightButtonCountChanged;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (id)accessibilityElements;
 - (_Bool)accessibilityPerformEscape;
 - (id)accessibilityIdentifier;
+- (id)_accessibilityRoleDescription;
+- (_Bool)_accessibilityIncludeRoleInGroupNavigationOnly;
+- (_Bool)_accessibilityIsGroupedParent;
 - (long long)accessibilityContainerType;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (_Bool)_accessibilityAllowOutOfBoundsHitTestAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)_accessibilitySetFauxBackButton:(id)arg1;
 - (id)_accessibilityFauxBackButton;
-- (void)_accessibilitySetNavBarElements:(id)arg1;
-- (id)_accessibilityNavBarElements;
+@property(retain, nonatomic, setter=_accessibilitySetNavBarElements:) NSArray *_accessibilityNavBarElements;
 
 @end
 

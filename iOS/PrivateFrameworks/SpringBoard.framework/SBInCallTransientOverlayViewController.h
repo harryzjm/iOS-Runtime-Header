@@ -33,7 +33,7 @@
 - (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
 - (id)idleTimerProvider:(id)arg1 didProposeBehavior:(id)arg2 forReason:(id)arg3;
-- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(int)arg2;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(unsigned long long)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarHiddenTo:(_Bool)arg2 withAnimation:(long long)arg3;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAlphaTo:(double)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2;
@@ -42,7 +42,7 @@
 - (_Bool)shouldUseSceneBasedKeyboardFocus;
 - (void)setIdleTimerCoordinator:(id)arg1;
 - (void)setContainerOrientation:(long long)arg1;
-- (int)preferredStatusBarStyleOverridesToCancel;
+- (unsigned long long)preferredStatusBarStyleOverridesToCancel;
 - (id)preferredDisplayLayoutElementIdentifier;
 - (id)newTransientOverlayPresentationTransitionCoordinator;
 - (id)newTransientOverlayDismissalTransitionCoordinator;

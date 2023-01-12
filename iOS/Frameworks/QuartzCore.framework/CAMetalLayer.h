@@ -8,7 +8,7 @@
 
 @interface CAMetalLayer
 {
-    struct _CAMetalLayerPrivate *_priv;
+    void *_priv;
 }
 
 + (_Bool)CA_automaticallyNotifiesObservers:(Class)arg1;
@@ -18,7 +18,7 @@
 - (_Bool)displaySyncEnabled;
 @property _Bool presentsWithTransaction;
 @property unsigned long long maximumDrawableCount;
-- (void)_didCommitLayer:(struct Transaction *)arg1;
+- (void)_didCommitLayer:(void *)arg1;
 - (void)setContents:(id)arg1;
 - (void)_display;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
@@ -35,6 +35,7 @@
 - (void)dealloc;
 - (void)didChangeValueForKey:(id)arg1;
 - (_Bool)shouldArchiveValueForKey:(id)arg1;
+@property(nonatomic) unsigned long long protectionOptions;
 @property(nonatomic) double drawableTimeoutSeconds;
 @property(nonatomic) double inputTime;
 @property(nonatomic) _Bool exclusiveMode;

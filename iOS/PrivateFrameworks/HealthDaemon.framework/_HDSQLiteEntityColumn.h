@@ -22,7 +22,6 @@
 @property(readonly, copy, nonatomic) NSString *columnType; // @synthesize columnType=_columnType;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (id)description;
-- (id)_columnNameAndTypeString;
 - (id)creationSQL;
 - (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned char)arg3 targetEntityClass:(Class)arg4 targetProperty:(id)arg5 deletionAction:(long long)arg6;
 - (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned char)arg3 foreignKey:(id)arg4;

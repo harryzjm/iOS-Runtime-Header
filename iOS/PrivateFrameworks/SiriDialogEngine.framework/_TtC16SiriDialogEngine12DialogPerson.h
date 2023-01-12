@@ -21,6 +21,8 @@
     MISSING_TYPE *related;
     MISSING_TYPE *personHandle;
     MISSING_TYPE *friendlyPhoneNumberName;
+    MISSING_TYPE *relationship;
+    MISSING_TYPE *useRelationshipName;
 }
 
 @end

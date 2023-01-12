@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *store;
     MISSING_TYPE *objectIDs;
+    MISSING_TYPE *sortingStyle;
     MISSING_TYPE *showCompleted;
     MISSING_TYPE *countCompleted;
 }

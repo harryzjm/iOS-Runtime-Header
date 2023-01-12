@@ -4,26 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDictionary;
+
 @interface CLSHolidayCalendarEventRuleRequiredTraits
 {
     _Bool _mustContainMePerson;
-    _Bool _allowSceneClassificationBasedEvaluation;
+    _Bool _allowApproximateDateCalculation;
     unsigned long long _type;
-    unsigned long long _category;
-    struct _NSRange _peopleRange;
+    unsigned long long _eventCategory;
+    unsigned long long _minimumPeopleCount;
+    NSDictionary *_defaultScenesWithImportanceString;
 }
 
++ (unsigned long long)importanceEnumForImportanceString:(id)arg1;
 + (id)_peopleTraitDebugStringForTrait:(unsigned long long)arg1;
 + (id)_locationTraitDebugStringForTrait:(unsigned long long)arg1;
-@property(nonatomic) _Bool allowSceneClassificationBasedEvaluation; // @synthesize allowSceneClassificationBasedEvaluation=_allowSceneClassificationBasedEvaluation;
-@property(nonatomic) struct _NSRange peopleRange; // @synthesize peopleRange=_peopleRange;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *defaultScenesWithImportanceString; // @synthesize defaultScenesWithImportanceString=_defaultScenesWithImportanceString;
+@property(readonly, nonatomic) _Bool allowApproximateDateCalculation; // @synthesize allowApproximateDateCalculation=_allowApproximateDateCalculation;
+@property(nonatomic) unsigned long long minimumPeopleCount; // @synthesize minimumPeopleCount=_minimumPeopleCount;
 @property(nonatomic) _Bool mustContainMePerson; // @synthesize mustContainMePerson=_mustContainMePerson;
-@property(nonatomic) unsigned long long category; // @synthesize category=_category;
+@property(nonatomic) unsigned long long eventCategory; // @synthesize eventCategory=_eventCategory;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
+- (unsigned long long)importanceForScene:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) _Bool isCelebration;
 - (_Bool)peopleCountRangeIsRequired;
-- (_Bool)evaluateWithTraits:(id)arg1;
+- (_Bool)evaluateWithTraits:(id)arg1 evaluateLocationTraits:(_Bool)arg2;
 - (id)initWithDescription:(id)arg1;
 
 @end

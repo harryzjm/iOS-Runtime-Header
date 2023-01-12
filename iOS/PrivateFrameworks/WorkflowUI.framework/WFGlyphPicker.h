@@ -25,11 +25,13 @@
     NSArray *_glyphSections;
     long long _control;
     WFGlyphPickerTabBar *_tabBar;
+    long long _lastEvent;
     struct UIEdgeInsets _sectionInset;
 }
 
 + (unsigned long long)numberOfSections;
 - (void).cxx_destruct;
+@property(nonatomic) long long lastEvent; // @synthesize lastEvent=_lastEvent;
 @property(nonatomic) _Bool useOutlineGlyphsOnly; // @synthesize useOutlineGlyphsOnly=_useOutlineGlyphsOnly;
 @property(nonatomic) __weak WFGlyphPickerTabBar *tabBar; // @synthesize tabBar=_tabBar;
 @property(nonatomic) long long control; // @synthesize control=_control;
@@ -46,6 +48,7 @@
 - (void)pickedSegment:(id)arg1;
 - (id)indexPathForGlyphCharacter:(unsigned short)arg1;
 - (unsigned short)glyphCharacterAtIndexPath:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

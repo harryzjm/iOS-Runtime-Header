@@ -19,7 +19,7 @@
 - (struct CGSize)collectionViewContentSize;
 - (_Bool)prefersPagingEnabled;
 - (void)invalidateLayout;
-- (id)initWithHorizontalLayoutDelegate:(id)arg1;
+- (id)initWithHorizontalLayoutDelegate:(id)arg1 showsHorizontalScrollIndicator:(_Bool)arg2;
 
 @end
 

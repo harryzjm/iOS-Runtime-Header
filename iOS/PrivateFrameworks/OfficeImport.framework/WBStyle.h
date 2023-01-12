@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)readFrom:(id)arg1 wrdStyle:(struct WrdStyle *)arg2 style:(id)arg3;
-+ (void)readTableProperties:(id)arg1 style:(id)arg2 from:(struct WrdStyle *)arg3;
++ (void)readFrom:(id)arg1 wrdStyle:(void *)arg2 style:(id)arg3;
++ (void)readTableProperties:(id)arg1 style:(id)arg2 from:(void *)arg3;
 
 @end
 

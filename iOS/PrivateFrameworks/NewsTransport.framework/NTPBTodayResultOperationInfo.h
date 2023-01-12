@@ -27,6 +27,7 @@
     NSString *_keyboardInputMode;
     NTPBTodayModuleContentRequest *_request;
     NTPBSectionSlotCostInfo *_sectionSlotCostInfo;
+    int _widgetSize;
     _Bool _allowOnlyWatchEligibleSections;
     _Bool _allowSectionTitles;
     _Bool _fetchWidgetConfig;
@@ -46,6 +47,7 @@
         unsigned int thumbnailSizePreset:1;
         unsigned int dynamicThumbnailSizePresetMinimumHeightInPixels:1;
         unsigned int dynamicThumbnailSizePresetMinimumWidthInPixels:1;
+        unsigned int widgetSize:1;
         unsigned int allowOnlyWatchEligibleSections:1;
         unsigned int allowSectionTitles:1;
         unsigned int fetchWidgetConfig:1;
@@ -87,6 +89,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasWidgetSize;
+@property(nonatomic) int widgetSize; // @synthesize widgetSize=_widgetSize;
 @property(nonatomic) _Bool hasMaxHeadlineScale;
 @property(nonatomic) _Bool hasMinHeadlineScale;
 @property(readonly, nonatomic) _Bool hasRequest;

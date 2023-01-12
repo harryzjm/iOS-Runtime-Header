@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SpringBoard/AFSiriUserNotificationRequestCapabilityObserving-Protocol.h>
 #import <SpringBoard/BBObserverDelegate-Protocol.h>
 
 @class BBObserver, DNDEventBehaviorResolutionService, NSString;
 
-@interface SBBulletinSpokenObserverGateway : NSObject <BBObserverDelegate, AFSiriUserNotificationRequestCapabilityObserving>
+@interface SBBulletinSpokenObserverGateway : NSObject <BBObserverDelegate>
 {
     BBObserver *_bbObserver;
     DNDEventBehaviorResolutionService *_dndEventBehaviorResolutionService;
@@ -19,8 +18,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)requestCanBeHandledChanged:(_Bool)arg1;
-- (void)hasEligibleSetupChanged:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

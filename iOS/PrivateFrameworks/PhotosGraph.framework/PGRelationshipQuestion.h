@@ -22,7 +22,7 @@
 - (unsigned short)entityType;
 - (unsigned short)displayType;
 - (unsigned short)type;
-- (id)initWithRelationshipLabel:(id)arg1 personIdentifier:(id)arg2 localFactoryScore:(double)arg3;
+- (id)initWithRelationshipLabel:(id)arg1 personUUID:(id)arg2 localFactoryScore:(double)arg3;
 
 @end
 

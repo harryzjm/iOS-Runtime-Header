@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IBFoundation/IBProjectImageInfo.h>
+#import <AssetCatalogFoundation/IBProjectImageInfo.h>
 
 @interface IBProjectImageInfo (IBCTTSupport)
 + (id)imageCache;
 - (id)image;
+- (_Bool)scaleNeedsToMatchForRepInfo:(id)arg1;
+- (_Bool)shouldGenerateImageForMissingScaleForImageRepInfo:(id)arg1;
+- (_Bool)isNonVectorImageForImageRepInfo:(id)arg1;
 @end
 

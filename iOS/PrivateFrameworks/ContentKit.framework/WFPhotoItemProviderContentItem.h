@@ -11,12 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)defaultSourceForRepresentation:(id)arg1;
++ (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)itemWithItemProviderItem:(id)arg1 photoMediaFileRepresentation:(id)arg2 assetIdentifier:(id)arg3;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (id)outputTypes;
 
 @end

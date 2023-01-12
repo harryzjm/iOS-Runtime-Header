@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSURL;
+@class NSArray, NSData, NSDictionary, NSURL;
 
 @interface FigCaptureMovieFileRecordingSettings
 {
@@ -18,19 +18,27 @@
     _Bool _sendPreviewIOSurface;
     _Bool _irisRecording;
     _Bool _debugMetadataSidecarFileEnabled;
-    int _bravoCameraSelectionBehavior;
+    CDStruct_53454c09 _bravoCameraSelectionConfigurationForRecording;
     _Bool _irisMovieRecording;
     NSURL *_spatialOverCaptureMovieURL;
     NSArray *_spatialOverCaptureMovieLevelMetadata;
     unsigned long long _movieStartTimeOverride;
+    _Bool _personSegmentationRenderingEnabled;
+    NSData *_personSegmentationForegroundColorCube;
+    NSData *_personSegmentationBackgroundColorCube;
+    _Bool _videoSTFEnabled;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool videoSTFEnabled; // @synthesize videoSTFEnabled=_videoSTFEnabled;
+@property(retain, nonatomic) NSData *personSegmentationBackgroundColorCube; // @synthesize personSegmentationBackgroundColorCube=_personSegmentationBackgroundColorCube;
+@property(retain, nonatomic) NSData *personSegmentationForegroundColorCube; // @synthesize personSegmentationForegroundColorCube=_personSegmentationForegroundColorCube;
+@property(nonatomic) _Bool personSegmentationRenderingEnabled; // @synthesize personSegmentationRenderingEnabled=_personSegmentationRenderingEnabled;
 @property(nonatomic) unsigned long long movieStartTimeOverride; // @synthesize movieStartTimeOverride=_movieStartTimeOverride;
 @property(copy, nonatomic) NSArray *spatialOverCaptureMovieLevelMetadata; // @synthesize spatialOverCaptureMovieLevelMetadata=_spatialOverCaptureMovieLevelMetadata;
 @property(copy, nonatomic) NSURL *spatialOverCaptureMovieURL; // @synthesize spatialOverCaptureMovieURL=_spatialOverCaptureMovieURL;
 @property(nonatomic, getter=isIrisMovieRecording) _Bool irisMovieRecording; // @synthesize irisMovieRecording=_irisMovieRecording;
-@property(nonatomic) int bravoCameraSelectionBehavior; // @synthesize bravoCameraSelectionBehavior=_bravoCameraSelectionBehavior;
+@property(nonatomic) CDStruct_53454c09 bravoCameraSelectionConfigurationForRecording; // @synthesize bravoCameraSelectionConfigurationForRecording=_bravoCameraSelectionConfigurationForRecording;
 @property(nonatomic) _Bool debugMetadataSidecarFileEnabled; // @synthesize debugMetadataSidecarFileEnabled=_debugMetadataSidecarFileEnabled;
 @property(nonatomic, getter=isIrisRecording) _Bool irisRecording; // @synthesize irisRecording=_irisRecording;
 @property(nonatomic) _Bool sendPreviewIOSurface; // @synthesize sendPreviewIOSurface=_sendPreviewIOSurface;

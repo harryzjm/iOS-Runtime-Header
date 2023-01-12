@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_5953e935)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_5953e935)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *speech_id;
 @property(readonly, nonatomic) int processed_audio_duration_ms;
 - (id)copyWithZone:(struct _NSZone *)arg1;

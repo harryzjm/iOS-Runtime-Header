@@ -10,7 +10,6 @@
 
 @class CKDPShare;
 
-__attribute__((visibility("hidden")))
 @interface CKDPShareAcceptResponse : PBCodable <NSCopying>
 {
     CKDPShare *_share;

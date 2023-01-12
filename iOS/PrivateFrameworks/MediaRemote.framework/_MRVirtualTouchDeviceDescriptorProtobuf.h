@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRVirtualTouchDeviceDescriptorProtobuf : PBCodable <NSCopying>
 {
     float _screenSizeHeight;
@@ -22,23 +23,13 @@
     } _has;
 }
 
-@property(nonatomic) float screenSizeHeight; // @synthesize screenSizeHeight=_screenSizeHeight;
-@property(nonatomic) float screenSizeWidth; // @synthesize screenSizeWidth=_screenSizeWidth;
-@property(nonatomic) _Bool integratedDisplay; // @synthesize integratedDisplay=_integratedDisplay;
-@property(nonatomic) _Bool absolute; // @synthesize absolute=_absolute;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasScreenSizeHeight;
-@property(nonatomic) _Bool hasScreenSizeWidth;
-@property(nonatomic) _Bool hasIntegratedDisplay;
-@property(nonatomic) _Bool hasAbsolute;
 
 @end
 

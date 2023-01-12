@@ -14,7 +14,7 @@
 - (void).cxx_destruct;
 @property(retain) MLSVREngine *engine; // @synthesize engine=_engine;
 - (id)regress:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)initWithEngine:(id)arg1 interface:(id)arg2 metadata:(id)arg3 error:(id *)arg4;
+- (id)initWithEngine:(id)arg1 description:(id)arg2 error:(id *)arg3;
 
 @end
 

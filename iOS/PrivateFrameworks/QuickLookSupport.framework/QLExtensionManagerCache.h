@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_semaphore> *_waitForExtensionsSemaphore;
 }
 
++ (id)bestMatchingExtensionsFromSupportingExtensions:(id)arg1 includingExtensionsWithSupportingParentTypes:(_Bool)arg2 byContentType:(id)arg3;
 - (void).cxx_destruct;
 @property(retain) NSObject<OS_dispatch_semaphore> *waitForExtensionsSemaphore; // @synthesize waitForExtensionsSemaphore=_waitForExtensionsSemaphore;
 @property(nonatomic) _Bool isMatchingExtensions; // @synthesize isMatchingExtensions=_isMatchingExtensions;
@@ -31,7 +32,6 @@
 - (void)dealloc;
 - (void)_synchronouslyWaitForExtensionListIfNeeded;
 - (_Bool)_supportedContentTypesFromExtension:(id)arg1 matches:(id)arg2 allowMatchingWithParentTypes:(_Bool)arg3;
-- (id)_bestMatchingExtensionsFromSupportingExtensions:(id)arg1 includingExtensionsWithSupportingParentTypes:(_Bool)arg2 byContentType:(id)arg3;
 - (id)extensionWithMatchingAttributes:(id)arg1 allowExtensionsForParentTypes:(_Bool)arg2 extensionPath:(id)arg3;
 - (id)extensionWithMatchingAttributes:(id)arg1 allowExtensionsForParentTypes:(_Bool)arg2 extensionPath:(id)arg3 firstPartyExtension:(_Bool)arg4;
 - (_Bool)hasExtensionWithMatchingAttributes:(id)arg1;

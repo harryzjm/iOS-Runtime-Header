@@ -9,6 +9,7 @@
 }
 
 - (struct CGRect)frameForEditingTextForSelectionPath:(id)arg1;
+- (id)p_labelGeometryForSelectionPath:(id)arg1;
 - (_Bool)canEditTextForSelectionPath:(id)arg1;
 - (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2 useWrapWidth:(_Bool)arg3;
 - (_Bool)p_doesSelectionPathReferToAxisSeriesLabel:(id)arg1;

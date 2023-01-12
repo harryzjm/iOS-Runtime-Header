@@ -26,7 +26,8 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_willRemoveFromPhysicsWorld:(id)arg1;
-- (void)_addToPhysicsWorld:(id)arg1;
+- (void)_addToPhysicsWorld:(id)arg1 definition:(CDStruct_0557a1bb)arg2;
+- (void)_copyDefinition:(CDStruct_0557a1bb *)arg1;
 @property(nonatomic) struct SCNVector3 anchorB;
 @property(nonatomic) struct SCNVector3 anchorA;
 @property(nonatomic) struct SCNVector3 axisB;

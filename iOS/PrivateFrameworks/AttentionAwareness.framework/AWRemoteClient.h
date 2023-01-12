@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _eventMask;
     unsigned long long _attentionLostEventMask;
     _Bool _sampleWhileAbsent;
+    _Bool _retroactiveTimeoutMode;
     NSArray *_attentionLostTimeoutsSec;
     NSSet *_allowedHIDEventsForRemoteEvent;
     int _clientIndex;

@@ -18,10 +18,12 @@
     NSMutableArray *_serverSearchResults;
     _CNAutocompleteResultsTableViewModel *_tableViewModel;
     _Bool _tableViewNeedsReload;
+    _Bool _ignoreDidEndDisplayingCell;
     _Bool _deferTableViewUpdates;
     _Bool _inDisambiguationMode;
     _Bool _hasPerformedRecipientExpansion;
     _Bool _supportsInfoButton;
+    _Bool _shouldHideInfoButton;
     id <CNAutocompleteResultsTableViewControllerDelegate> _delegate;
     NSArray *_recipients;
     double _trailingButtonMidlineInsetFromLayoutMargin;
@@ -30,9 +32,11 @@
 }
 
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
++ (id)log;
 + (_Bool)avatarsAreHidden;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNAvatarViewControllerSettings *sharedAvatarViewControllerSettings; // @synthesize sharedAvatarViewControllerSettings=_sharedAvatarViewControllerSettings;
+@property(nonatomic) _Bool shouldHideInfoButton; // @synthesize shouldHideInfoButton=_shouldHideInfoButton;
 @property(nonatomic) _Bool supportsInfoButton; // @synthesize supportsInfoButton=_supportsInfoButton;
 @property(nonatomic) _Bool hasPerformedRecipientExpansion; // @synthesize hasPerformedRecipientExpansion=_hasPerformedRecipientExpansion;
 @property(nonatomic) _Bool inDisambiguationMode; // @synthesize inDisambiguationMode=_inDisambiguationMode;
@@ -41,20 +45,27 @@
 @property(nonatomic, getter=isDeferringTableViewUpdates) _Bool deferTableViewUpdates; // @synthesize deferTableViewUpdates=_deferTableViewUpdates;
 @property(copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(nonatomic) __weak id <CNAutocompleteResultsTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)didTapInfoButtonForCell:(id)arg1;
 - (_Bool)shouldShowCheckmarkForRecipient:(id)arg1 preferredRecipient:(id)arg2;
+- (_Bool)updateCell:(id)arg1 withPreferredRecipient:(id)arg2 isInvalidation:(_Bool)arg3;
 - (_Bool)updatePreferredRecipientForCell:(id)arg1 isInvalidation:(_Bool)arg2;
 - (void)updateLabelColorForCell:(id)arg1;
 - (void)invalidatePreferredRecipients;
 - (void)invalidateAddressTintColors;
+- (void)setPreferredRecipient:(id)arg1 forRecipient:(id)arg2;
+- (void)setTintColor:(id)arg1 forRecipient:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (_Bool)tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;
 - (_Bool)recipientIsDisambiguationRecipient:(id)arg1;
 - (_Bool)recipientIsExpanded:(id)arg1;
 - (_Bool)recipientIsExpandedChild:(id)arg1;
 - (_Bool)recipientIsExpandedParent:(id)arg1;
 - (void)updateBackgroundAndSeparatorsForCell:(id)arg1 atIndexPath:(id)arg2;
+- (void)callEndDisplayingRowForRecipientIndex:(id)arg1;
+- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewLayoutMarginsDidChange;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -66,6 +77,7 @@
 - (void)didToggleDisambiguationAtIndexPath:(id)arg1;
 - (void)didTapDisambiguationChevronForCell:(id)arg1;
 - (void)invalidateSearchResultRecipient:(id)arg1;
+- (void)endDisplayOfVisibleCellsExcludingIndexPath:(id)arg1;
 - (void)_selectSearchResultsRecipientAtIndexPath:(id)arg1;
 - (id)_unifiedRecipientForRecipientAtIndexPath:(id)arg1;
 - (id)_recipientAtIndexPath:(id)arg1;
@@ -81,7 +93,7 @@
 - (id)_flattenedIndexPaths;
 - (void)updateRecipients:(id)arg1 disambiguatingRecipient:(id)arg2;
 - (id)unificationIdentifierForRecipient:(id)arg1;
-- (_Bool)_deviceIsLockedWithPassword;
+- (id)visibleRecipients;
 - (void)_updateTableViewModelAnimated:(_Bool)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)selectRowAtIndexPath:(id)arg1;

@@ -10,5 +10,6 @@
 
 @protocol SBHLibraryPodFolderControllerDelegate <NSObject>
 - (void)libraryPodFolderControllerRequestsDismissal:(SBHLibraryPodFolderController *)arg1;
+- (void)libraryPodFolderController:(SBHLibraryPodFolderController *)arg1 willLayoutDisplayedCategories:(unsigned long long)arg2;
 @end
 

@@ -6,14 +6,14 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE, OS_dispatch_queue;
+@class AAAccessQueue, MISSING_TYPE;
 
 @interface _TtC13NewsAnalytics13SessionAccess : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *accessorQueue;
+    MISSING_TYPE *accessQueue;
 }
 
-@property(nonatomic, readonly) OS_dispatch_queue *accessorQueue; // @synthesize accessorQueue;
+@property(nonatomic, readonly) AAAccessQueue *accessQueue; // @synthesize accessQueue;
 
 @end
 

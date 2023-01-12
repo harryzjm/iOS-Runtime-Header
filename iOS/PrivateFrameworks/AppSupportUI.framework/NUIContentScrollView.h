@@ -29,8 +29,10 @@
 - (id)viewForFirstBaselineLayout;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (struct CGSize)_finalSizeForTargetSize:(struct CGSize)arg1 resultSize:(struct CGSize)arg2 insets:(struct UIEdgeInsets)arg3;
+- (struct CGSize)_measureSizeForTargetSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
-- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
+- (CDStruct_6c92d79e)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (unsigned long long)_axesForDerivingIntrinsicContentSizeFromLayoutSize;
 - (_Bool)_layoutHeightDependsOnWidth;
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;

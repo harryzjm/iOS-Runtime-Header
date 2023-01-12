@@ -21,6 +21,8 @@
 + (id)_mappedAccountErrorFromError:(id)arg1;
 + (void)_updateStatusForCalendar:(id)arg1 lastSyncStartDate:(id)arg2 lastSyncEndDate:(id)arg3 lastSyncError:(id)arg4 canceled:(_Bool)arg5;
 + (void)_updateStatusForCalendarWithExternalID:(id)arg1 lastSyncStartDate:(id)arg2 lastSyncEndDate:(id)arg3 lastSyncError:(id)arg4 canceled:(_Bool)arg5;
++ (void)syncEndedForCalendar:(id)arg1 withError:(id)arg2;
++ (void)syncStartedForCalendar:(id)arg1;
 + (void)syncEndedForCalendarWithExternalID:(id)arg1 withError:(id)arg2;
 + (void)syncStartedForCalendarWithExternalID:(id)arg1;
 + (void)_updateStatusForStoreWithExternalID:(id)arg1 lastSyncStartDate:(id)arg2 lastSyncEndDate:(id)arg3 lastSyncError:(id)arg4 canceled:(_Bool)arg5;

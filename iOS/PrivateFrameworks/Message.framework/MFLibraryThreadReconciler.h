@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class EDPersistence, EDPersistenceDatabase, EDPersistenceHookRegistry, EDThreadPersistence;
+@class EDPersistenceDatabase, EDPersistenceHookRegistry, EDThreadPersistence;
 
 @interface MFLibraryThreadReconciler : NSObject
 {
     EDPersistenceHookRegistry *_hookRegistry;
-    EDPersistence *_persistence;
     EDPersistenceDatabase *_database;
     EDThreadPersistence *_threadPersistence;
 }

@@ -11,24 +11,27 @@
 @class MKPlaceActionManager, MKPlaceCardActionsRowView, MKPlaceSectionItemView, MKPlaceholderGridCache, NSArray, NSString;
 @protocol _MKPlaceViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceCardActionsRowViewController : UIViewController <MKModuleViewControllerProtocol>
 {
     MKPlaceSectionItemView *_hairlineView;
-    MKPlaceCardActionsRowView *_actionsRowView;
     MKPlaceholderGridCache *_placeholderGridCache;
     NSArray *_items;
     MKPlaceActionManager *_actionManager;
     id <_MKPlaceViewControllerDelegate> _placeViewControllerDelegate;
+    MKPlaceCardActionsRowView *_actionsRowView;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) MKPlaceCardActionsRowView *actionsRowView; // @synthesize actionsRowView=_actionsRowView;
 @property(nonatomic) __weak id <_MKPlaceViewControllerDelegate> placeViewControllerDelegate; // @synthesize placeViewControllerDelegate=_placeViewControllerDelegate;
 @property(nonatomic) __weak MKPlaceActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property(copy, nonatomic) NSArray *items; // @synthesize items=_items;
+@property(nonatomic) Class buttonBackgroundViewClass;
 - (void)viewDidLayoutSubviews;
 - (void)infoCardThemeChanged;
 - (void)viewDidLoad;
+@property(readonly, nonatomic) NSArray *actionButtons;
+- (void)updateActionsRowView;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)loadView;
 - (_Bool)_canShowWhileLocked;

@@ -15,6 +15,7 @@
 {
 }
 
++ (id)_valuesBetweenMinValue:(id)arg1 maxValue:(id)arg2 stepValue:(id)arg3;
 - (id)_characteristicTypesFromControlPanelItem:(id)arg1;
 - (id)sectionFooterForItem:(id)arg1 forSourceItem:(id)arg2;
 - (id)sectionTitleForItem:(id)arg1 forSourceItem:(id)arg2;

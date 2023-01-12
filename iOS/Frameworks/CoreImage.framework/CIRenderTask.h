@@ -11,11 +11,11 @@
     void *_priv;
 }
 
-+ (id)rendertaskWithInternalTask:(struct RenderTask *)arg1;
++ (id)rendertaskWithInternalTask:(void *)arg1;
 - (id)waitUntilCompletedAndReturnError:(id *)arg1;
 - (void)dealloc;
-- (struct RenderTask *)internalRepresentation;
-- (id)initWithInternalTask:(struct RenderTask *)arg1;
+- (void *)internalRepresentation;
+- (id)initWithInternalTask:(void *)arg1;
 - (id)init;
 - (id)_pdfDataRepresentation;
 

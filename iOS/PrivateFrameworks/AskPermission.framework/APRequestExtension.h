@@ -20,6 +20,7 @@
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)_finish;
 - (void)requestUpdatedWithResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)checkDownloadQueue;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

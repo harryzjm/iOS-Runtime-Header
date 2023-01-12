@@ -15,11 +15,13 @@
 {
     id <GEOTransitArtworkDataSource> _artwork;
     long long _shieldSize;
+    long long _fallbackShieldSize;
     MKArtworkDataSourceCache *_artworkCache;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MKArtworkDataSourceCache *artworkCache; // @synthesize artworkCache=_artworkCache;
+@property(readonly, nonatomic) long long fallbackShieldSize; // @synthesize fallbackShieldSize=_fallbackShieldSize;
 @property(readonly, nonatomic) long long shieldSize; // @synthesize shieldSize=_shieldSize;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> artwork; // @synthesize artwork=_artwork;
 - (id)badgeImageToDisplayWithScreenScale:(double)arg1 nightMode:(_Bool)arg2;
@@ -27,6 +29,7 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToTransitArtworkViewMode:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithArtwork:(id)arg1 shieldSize:(long long)arg2 fallbackShieldSize:(long long)arg3 artworkCache:(id)arg4;
 - (id)initWithArtwork:(id)arg1 shieldSize:(long long)arg2 artworkCache:(id)arg3;
 - (id)initWithArtwork:(id)arg1 shieldSize:(long long)arg2;
 

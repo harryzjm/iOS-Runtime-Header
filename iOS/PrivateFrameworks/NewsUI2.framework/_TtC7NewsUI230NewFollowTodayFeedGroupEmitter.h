@@ -16,7 +16,6 @@
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *tagService;
     MISSING_TYPE *headlineService;
-    MISSING_TYPE *topicColorProvider;
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *name;
 }

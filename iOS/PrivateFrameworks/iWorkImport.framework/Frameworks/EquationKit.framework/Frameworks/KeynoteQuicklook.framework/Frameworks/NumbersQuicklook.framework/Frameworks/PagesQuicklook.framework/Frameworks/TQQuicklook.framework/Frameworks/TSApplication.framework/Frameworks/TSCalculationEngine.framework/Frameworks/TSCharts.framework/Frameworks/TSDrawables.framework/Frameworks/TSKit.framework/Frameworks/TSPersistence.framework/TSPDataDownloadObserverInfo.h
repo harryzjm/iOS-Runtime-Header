@@ -10,7 +10,7 @@
 
 - (_Bool)shouldClearObserverForStatus:(long long)arg1;
 - (_Bool)shouldNotifyStatus:(long long)arg1;
-- (id)initWithDownloadObserver:(id)arg1 data:(id)arg2 options:(unsigned long long)arg3 isInternalObserver:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithDownloadObserver:(id)arg1 data:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

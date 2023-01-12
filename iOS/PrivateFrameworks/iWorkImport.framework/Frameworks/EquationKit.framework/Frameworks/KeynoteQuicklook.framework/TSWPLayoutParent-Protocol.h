@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, TSKSelectionPath, TSWPAttachment, TSWPLayout;
-@protocol NSFastEnumeration, TSWPStyleProvider;
+#import <KeynoteQuicklook/NSObject-Protocol.h>
 
-@protocol TSWPLayoutParent
+@class NSSet, TSKSelectionPath, TSWPAttachment, TSWPLayout;
+@protocol NSFastEnumeration;
+
+@protocol TSWPLayoutParent <NSObject>
 - (_Bool)descendersCannotClip;
 - (Class)repClassForTextLayout:(TSWPLayout *)arg1;
 - (id <NSFastEnumeration>)dependentsOfTextLayout:(TSWPLayout *)arg1;
@@ -29,7 +31,7 @@
 - (double)maxAutoGrowBlockHeightForTextLayout:(TSWPLayout *)arg1;
 - (double)maxAutoGrowLineWidthForTextLayout:(TSWPLayout *)arg1;
 - (NSSet *)reliedOnLayoutsForTextLayout:(TSWPLayout *)arg1;
-- (id <TSWPStyleProvider>)styleProvider;
 - (void)invalidateForAutosizingTextLayout:(TSWPLayout *)arg1;
+- (_Bool)forceParentAutosizeFlagsForTextLayout:(TSWPLayout *)arg1;
 @end
 

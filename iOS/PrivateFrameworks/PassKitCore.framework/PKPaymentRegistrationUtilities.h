@@ -10,11 +10,12 @@
 {
 }
 
++ (void)registrationIsSupportedInCurrentRegionWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_shouldShowAddCardFlowForWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (_Bool)_isPaymentSetupSupportedForWebService:(id)arg1;
 + (void)configureWebServiceIfNecessary:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)registrationIsSupportedInCurrentRegionWithWebService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)shouldShowPasscodeAccessibilityOverride:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)shouldShowWalletInSettingsWithApplePaySupportInformation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)shouldShowWalletInSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)shouldShowWalletInBuddy:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

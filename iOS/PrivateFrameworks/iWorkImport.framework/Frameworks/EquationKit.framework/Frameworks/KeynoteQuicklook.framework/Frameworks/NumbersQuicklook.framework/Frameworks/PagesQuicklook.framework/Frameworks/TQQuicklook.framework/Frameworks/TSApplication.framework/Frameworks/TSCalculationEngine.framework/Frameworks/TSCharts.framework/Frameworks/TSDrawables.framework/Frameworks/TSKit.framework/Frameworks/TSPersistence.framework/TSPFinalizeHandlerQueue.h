@@ -14,18 +14,18 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     long long _rootObjectIdentifier;
     TSPCancellationState *_cancellationState;
-    struct vector<TSP::FinalizeHandlerItem *, std::__1::allocator<TSP::FinalizeHandlerItem *>> _order;
-    struct unordered_map<const long long, TSP::FinalizeHandlerItem, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::FinalizeHandlerItem>>> _map;
-    struct FinalizeHandlerItem *_currentItem;
+    struct vector<TSP::FinalizeHandlerItem *, std::allocator<TSP::FinalizeHandlerItem *>> _order;
+    struct IdentifierMap<TSP::FinalizeHandlerItem> _map;
+    void *_currentItem;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (long long)currentObjectIdentifier;
 - (_Bool)runFinalizeHandlers;
-- (void)runFinalizeHandlerForItem:(struct FinalizeHandlerItem *)arg1;
-- (void)visitItemForCycleDetection:(struct FinalizeHandlerItem *)arg1;
-- (void)addFinalizeHandlers:(vector_3c415888 *)arg1 strongReferencesOrNull:(unordered_map_38045d47 *)arg2 forIdentifier:(long long)arg3;
+- (void)runFinalizeHandlerForItem:(void *)arg1;
+- (void)visitItemForCycleDetection:(void *)arg1;
+- (void)addFinalizeHandlers:(void *)arg1 strongReferences:(void *)arg2 forIdentifier:(long long)arg3;
 - (void)reset;
 - (id)initWithRootObjectIdentifier:(long long)arg1 cancellationState:(id)arg2;
 - (id)initWithRootObjectIdentifier:(long long)arg1;

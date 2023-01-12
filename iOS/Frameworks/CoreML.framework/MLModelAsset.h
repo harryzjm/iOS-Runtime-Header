@@ -22,8 +22,10 @@
 + (_Bool)needsANECompilationForModelAtURL:(id)arg1 result:(_Bool *)arg2 error:(id *)arg3;
 + (id)fetchNetworkURLFromCompiledModelAtURL:(id)arg1 error:(id *)arg2;
 + (_Bool)isANESupported;
++ (id)modelAssetWithSpecificationURL:(id)arg1 compilerOptions:(id)arg2 error:(id *)arg3;
 + (id)modelAssetWithSpecificationURL:(id)arg1 error:(id *)arg2;
-+ (id)modelAssetWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
++ (id)modelAssetWithSpecification:(void *)arg1 compilerOptions:(id)arg2 error:(id *)arg3;
++ (id)modelAssetWithSpecification:(void *)arg1 error:(id *)arg2;
 + (id)modelAssetWithURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 + (id)modelAssetWithURL:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;

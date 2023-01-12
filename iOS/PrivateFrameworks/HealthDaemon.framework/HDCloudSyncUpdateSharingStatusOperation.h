@@ -9,7 +9,6 @@
 }
 
 + (_Bool)shouldLogAtOperationStart;
-- (void)finishOperationWithParticipantSharingStatus:(long long)arg1;
 - (void)main;
 
 @end

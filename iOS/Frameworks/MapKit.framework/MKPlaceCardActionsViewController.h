@@ -9,6 +9,7 @@
 #import <MapKit/_MKStackViewDelegate-Protocol.h>
 
 @class MKPlaceActionManager, NSArray, NSString;
+@protocol _MKPlaceViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceCardActionsViewController <MKPlaceCardActionSectionViewDelegate, _MKStackViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate>
@@ -22,9 +23,11 @@ __attribute__((visibility("hidden")))
     NSArray *_actionItemArray;
     NSArray *_viewArray;
     MKPlaceActionManager *_actionManager;
+    id <_MKPlaceViewControllerDelegate> _placeViewControllerDelegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak id <_MKPlaceViewControllerDelegate> placeViewControllerDelegate; // @synthesize placeViewControllerDelegate=_placeViewControllerDelegate;
 @property(nonatomic) __weak MKPlaceActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property(nonatomic) _Bool showTopButtonSeparator; // @synthesize showTopButtonSeparator=_showTopButtonSeparator;
 @property(nonatomic) _Bool useMarginLayout; // @synthesize useMarginLayout=_useMarginLayout;

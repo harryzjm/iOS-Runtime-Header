@@ -9,6 +9,10 @@
 @class ISLivePhotoUIView;
 
 @protocol PXMutableLivePhotoViewModulator <NSObject>
+@property(nonatomic) _Bool revealsGainMapImage;
+@property(nonatomic) float gainMapValue;
+@property(retain, nonatomic) struct CGImage *gainMapImage;
 @property(retain, nonatomic) ISLivePhotoUIView *livePhotoView;
+- (void)setGainMapImage:(struct CGImage *)arg1 animated:(_Bool)arg2;
 @end
 

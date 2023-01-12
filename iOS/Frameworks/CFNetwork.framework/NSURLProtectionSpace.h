@@ -22,7 +22,9 @@
 - (struct _CFURLProtectionSpace *)_CFURLProtectionSpace;
 - (struct _CFURLProtectionSpace *)_cfurlprtotectionspace;
 @property(readonly, copy) NSString *protocol;
+- (void)_setServerTrust:(struct __SecTrust *)arg1;
 - (struct __SecTrust *)serverTrust;
+- (void)_setDistinguishedNames:(id)arg1;
 - (id)distinguishedNames;
 @property(readonly, copy) NSString *authenticationMethod;
 - (_Bool)isEqual:(id)arg1;

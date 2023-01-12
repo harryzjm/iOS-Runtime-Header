@@ -10,6 +10,7 @@
 @protocol CNCancelable, CNCapabilities, CNUIUserActionListConsumer;
 
 @protocol CNUIUserActionListDataSource <NSObject>
++ (NSString *)displayNameForDisambiguationForActionType:(NSString *)arg1;
 + (NSArray *)allSupportedActionTypesWithCapabilities:(id <CNCapabilities>)arg1;
 + (NSArray *)allSupportedActionTypes;
 + (NSArray *)allActionTypes;
@@ -24,6 +25,7 @@
 - (NSString *)consumer:(id <CNUIUserActionListConsumer>)arg1 localizedDisplayNameForButtonWithDefaultAction:(CNUIUserActionItem *)arg2 actionType:(NSString *)arg3;
 - (NSString *)consumer:(id <CNUIUserActionListConsumer>)arg1 localizedButtonDisplayNameForActionType:(NSString *)arg2;
 - (NSString *)consumer:(id <CNUIUserActionListConsumer>)arg1 localizedDisplayNameForActionType:(NSString *)arg2;
+- (void)consumer:(id <CNUIUserActionListConsumer>)arg1 didSelectItem:(CNUIUserActionItem *)arg2 forContact:(CNContact *)arg3 actionType:(NSString *)arg4;
 - (CNObservable *)consumer:(id <CNUIUserActionListConsumer>)arg1 actionModelsForContact:(CNContact *)arg2 actionType:(NSString *)arg3;
 - (CNUIUserActionListModel *)consumer:(id <CNUIUserActionListConsumer>)arg1 currentActionModelForContact:(CNContact *)arg2 actionType:(NSString *)arg3;
 - (id <CNCancelable>)consumer:(id <CNUIUserActionListConsumer>)arg1 actionModelsForContact:(CNContact *)arg2 actionType:(NSString *)arg3 handler:(void (^)(CNUIUserActionListModel *))arg4;

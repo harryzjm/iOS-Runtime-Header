@@ -8,7 +8,7 @@
 
 @interface MDLPhotometricLight
 {
-    struct RTIESLight *_iesLight;
+    void *_iesLight;
     NSMutableData *_sphericalHarmonicsCoefficients;
     MDLTexture *_lightCubeMap;
     unsigned long long _sphericalHarmonicsLevel;

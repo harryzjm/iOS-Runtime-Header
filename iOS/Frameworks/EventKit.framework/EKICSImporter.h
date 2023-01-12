@@ -17,7 +17,7 @@
     CDUnknownBlockType _selectCalendar;
     CDUnknownBlockType _importFoundBackupFile;
     CDUnknownBlockType _importDroppedReminders;
-    CDUnknownBlockType _shouldImportContinueGivenDecision;
+    CDUnknownBlockType _makeDecision;
     CDUnknownBlockType _importSetProgressValue;
     CDUnknownBlockType _importSetProgressAsIndeterminate;
     unsigned long long _numInvalidEvents;
@@ -65,7 +65,7 @@
 @property(nonatomic) _Bool asynchronous; // @synthesize asynchronous=_asynchronous;
 @property(copy, nonatomic) CDUnknownBlockType importSetProgressAsIndeterminate; // @synthesize importSetProgressAsIndeterminate=_importSetProgressAsIndeterminate;
 @property(copy, nonatomic) CDUnknownBlockType importSetProgressValue; // @synthesize importSetProgressValue=_importSetProgressValue;
-@property(copy, nonatomic) CDUnknownBlockType shouldImportContinueGivenDecision; // @synthesize shouldImportContinueGivenDecision=_shouldImportContinueGivenDecision;
+@property(copy, nonatomic) CDUnknownBlockType makeDecision; // @synthesize makeDecision=_makeDecision;
 @property(copy, nonatomic) CDUnknownBlockType importDroppedReminders; // @synthesize importDroppedReminders=_importDroppedReminders;
 @property(copy, nonatomic) CDUnknownBlockType importFoundBackupFile; // @synthesize importFoundBackupFile=_importFoundBackupFile;
 @property(copy, nonatomic) CDUnknownBlockType selectCalendar; // @synthesize selectCalendar=_selectCalendar;
@@ -81,12 +81,14 @@
 - (int)countReminders:(id)arg1;
 - (id)eventFromDocument:(id)arg1;
 - (id)_defaultImportCalendarRequiringSource:(id)arg1;
-- (_Bool)_organizer:(id)arg1 matchesDomainForURL:(id)arg2;
 - (id)_matchingAttendeeAddressesFrom:(id)arg1 organizer:(id)arg2 inSource:(id)arg3;
 - (_Bool)_isAnyAttendeeAddressFrom:(id)arg1 organizer:(id)arg2 equivalentTo:(id)arg3;
 - (id)_findPreferredSourceForDocument:(id)arg1;
 - (id)_findCalendarForExistingEvent:(id)arg1;
+- (id)_existingEventFromICSEvent:(id)arg1;
 - (_Bool)_doImportFiles;
+- (_Bool)_doITIPFileImport;
+- (_Bool)_message:(id)arg1 hasNewSelfOrganizedEventForCalendar:(id)arg2;
 - (_Bool)_separateICalFilesForITIP;
 - (unsigned long long)_separateFilesForImport:(id)arg1;
 - (id)_getImportedCalendarItems;

@@ -8,8 +8,8 @@
 #import <CoreCDPUI/CDPRemoteSecretEntryDelegate-Protocol.h>
 #import <CoreCDPUI/KeychainSyncViewControllerDelegate-Protocol.h>
 
-@class CDPContext, CDPDevicePickerViewController, CDPRecoveryKeyEntryViewModel, CDPRemoteDeviceSecretValidator, NSArray, NSNumber, NSString, UINavigationController, UIViewController;
-@protocol CDPUIDelegate;
+@class CDPContext, CDPDevicePickerViewController, CDPRecoveryKeyEntryViewModel, CDPRemoteDeviceSecretValidator, NSArray, NSString, UINavigationController, UIViewController;
+@protocol CDPUIDelegate, CDPUIInheritanceUIProvider;
 
 @interface CDPUIController <KeychainSyncViewControllerDelegate, CDPDevicePickerDelegate, CDPRemoteSecretEntryDelegate>
 {
@@ -18,12 +18,9 @@
     CDPRemoteDeviceSecretValidator *_remoteSecretValidator;
     CDPDevicePickerViewController *_devicePicker;
     UIViewController *_rootViewController;
-    _Bool _isUsingMultipleICSC;
-    _Bool _isRandomICSC;
-    _Bool _isNumericICSC;
-    NSNumber *_icscNumericLength;
     CDPContext *_activeContext;
     CDPRecoveryKeyEntryViewModel *_recoveryKeyViewModel;
+    id <CDPUIInheritanceUIProvider> _inheritanceUIProvider;
     _Bool _forceInlinePresentation;
     id <CDPUIDelegate> _delegate;
 }
@@ -42,12 +39,21 @@
 - (id)_localDeviceClass;
 - (id)_waitingForApprovalEscapeOffer;
 - (id)_enterSecretLaterEscapeOptionWithSecret:(unsigned long long)arg1;
-- (id)_signInLaterEscapeOffer;
-- (id)_signInLaterEscapeOption;
+- (void)_dismissPresentedViewControllerWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)recoveryKeyEntryControllerForCircleJoinWithCancel:(_Bool)arg1;
 - (id)_recoveryKeyEscapeOptionWithPresentationBlock:(CDUnknownBlockType)arg1;
+- (id)_enterCustodianCodeEscapeOptionWithCustodianController:(id)arg1 presentationBlock:(CDUnknownBlockType)arg2;
+- (id)_enterCustodianCodeEscapeOptionWithCustodianController:(id)arg1;
+- (id)_enterCustodianCodeEscapeOfferWithCustodianController:(id)arg1;
 - (id)_recoveryKeyEscapeOption;
 - (id)_recoveryKeyEscapeOffer;
+- (id)_escapeOfferForCustodianFlowWithMask:(unsigned long long)arg1;
+- (void)_presentCustodianAttemptLimitAlert;
+- (void)_validateCustodianRecoveryInfo:(id)arg1;
+- (id)_custodianCodeEntryViewControllerWithController:(id)arg1;
+- (id)_instructionsControllerForPlatform:(unsigned long long)arg1 controller:(id)arg2;
+- (id)custodianOSSelectionViewControllerWithCustodianController:(id)arg1;
+- (id)_custodianRecoveryEscapeOption;
 - (id)_resetAccountDataEscapeOption;
 - (id)_escapeOfferForSingleApprovalWithMask:(unsigned long long)arg1;
 - (id)_escapeOfferForMultiApprovalWithMask:(unsigned long long)arg1;
@@ -58,6 +64,7 @@
 - (void)remoteSecretEntry:(id)arg1 depletedRemainingAttemptsForDevice:(id)arg2;
 - (_Bool)performingAccountRecovery;
 - (void)exceededMaximumAttemptsForRemoteSecretEntry:(id)arg1;
+- (void)dismissRecoveryFlow:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissRecoveryFlow:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishValidation:(id)arg1 withError:(id)arg2;
 - (void)performAccountReset:(id)arg1;
@@ -73,6 +80,7 @@
 - (void)_presentRemoteApprovalViewControllerWithEscapeOfferMask:(unsigned long long)arg1;
 - (void)_presentRemoteSecretControllerWithNewestDevice:(id)arg1;
 - (id)_remoteSecretControllerForDevice:(id)arg1;
+- (void)cdpContext:(id)arg1 promptForBeneficiaryAccessKeyWithCompletion:(CDUnknownBlockType)arg2;
 - (id)_remoteSecretControllerForNewestDevice:(id)arg1;
 - (void)cdpContext:(id)arg1 promptForRemoteSecretWithDevices:(id)arg2 offeringRemoteApproval:(_Bool)arg3 validator:(id)arg4;
 - (id)_recoveryKeyControllerWithContext:(id)arg1 validator:(id)arg2 completion:(CDUnknownBlockType)arg3;

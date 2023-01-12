@@ -30,9 +30,7 @@
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-@property __weak id <HDWorkoutDataAccumulator> accumulator; // @synthesize accumulator=_accumulator;
 @property(readonly, copy, nonatomic) HKSource *clientSource; // @synthesize clientSource=_clientSource;
-- (void)_queue_setupSessionServer;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
@@ -56,11 +54,11 @@
 - (void)remote_setTargetState:(long long)arg1 date:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setWorkoutDataAccumulator:(id)arg1;
 - (void)setAssociatedWorkoutBuilderEntity:(id)arg1;
+@property(readonly, nonatomic) _Bool supports3rdPartyAOT;
 @property(readonly, nonatomic) _Bool shouldStopPreviousSession;
 @property(readonly, nonatomic) _Bool supportsAppRelaunchForRecovery;
 @property(readonly, nonatomic) _Bool requiresCoreLocationAssertion;
 - (void)connectionConfigured;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 clientSource:(id)arg4 delegate:(id)arg5 sessionServer:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

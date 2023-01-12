@@ -9,6 +9,7 @@
 @class CADisplayLink;
 
 @protocol PXNumberAnimatorDisplayLinkTarget <NSObject>
-- (void)_handleDisplayLink:(CADisplayLink *)arg1;
+@property(readonly, nonatomic) double currentTime;
+- (void)handleDisplayLink:(CADisplayLink *)arg1;
 @end
 

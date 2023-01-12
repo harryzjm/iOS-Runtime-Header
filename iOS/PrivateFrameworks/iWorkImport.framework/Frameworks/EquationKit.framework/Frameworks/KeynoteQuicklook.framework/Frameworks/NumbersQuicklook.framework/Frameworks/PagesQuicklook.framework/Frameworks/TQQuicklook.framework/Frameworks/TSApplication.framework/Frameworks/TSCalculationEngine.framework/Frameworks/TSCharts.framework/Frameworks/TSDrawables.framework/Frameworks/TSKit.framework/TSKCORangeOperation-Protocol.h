@@ -5,6 +5,6 @@
 //
 
 @protocol TSKCORangeOperation
-@property(readonly, nonatomic) const vector_b5e32e34 *rangeVector;
+@property(readonly, nonatomic) const void *rangeVector;
 @end
 

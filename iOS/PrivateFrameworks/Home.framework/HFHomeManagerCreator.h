@@ -11,21 +11,21 @@
 
 @interface HFHomeManagerCreator : NSObject
 {
-    _Bool _allowCreationInTest;
+    HMHomeManagerConfiguration *_configuration;
     long long _hostProcessType;
     unsigned long long _creationPolicy;
     id <HFHomeConfigurationStatus> _homeStatus;
     id <HFHomeManagerCreatorDelegate> _delegate;
-    HMHomeManagerConfiguration *_configuration;
 }
 
++ (void)setAllowCreationInTest:(_Bool)arg1;
++ (_Bool)allowCreationInTest;
 - (void).cxx_destruct;
-@property(copy, nonatomic) HMHomeManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) __weak id <HFHomeManagerCreatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) id <HFHomeConfigurationStatus> homeStatus; // @synthesize homeStatus=_homeStatus;
 @property(nonatomic) unsigned long long creationPolicy; // @synthesize creationPolicy=_creationPolicy;
 @property(nonatomic) long long hostProcessType; // @synthesize hostProcessType=_hostProcessType;
-@property(nonatomic) _Bool allowCreationInTest; // @synthesize allowCreationInTest=_allowCreationInTest;
+@property(copy, nonatomic) HMHomeManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 - (unsigned long long)_homeManagerCreationPolicy;
 - (_Bool)_shouldCreateHomeManager;
 - (void)_createHomeManagerOnQueue;

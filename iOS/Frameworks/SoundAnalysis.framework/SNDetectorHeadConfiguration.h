@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _windowLengthFrames;
     unsigned int _stepSizeFrames;
     id <SNProcessorCreating> _featureExtractorConfiguration;
+    NSString *_detectorIdentifier;
     id <SNMLModel> _model;
     NSString *_outputLabel;
     double _sampleRate;
@@ -26,8 +27,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 @property(readonly, nonatomic) NSString *outputLabel; // @synthesize outputLabel=_outputLabel;
 @property(readonly, nonatomic) id <SNMLModel> model; // @synthesize model=_model;
+@property(readonly, nonatomic) NSString *detectorIdentifier; // @synthesize detectorIdentifier=_detectorIdentifier;
 @property(readonly, nonatomic) id <SNProcessorCreating> featureExtractorConfiguration; // @synthesize featureExtractorConfiguration=_featureExtractorConfiguration;
-- (id)initWithMLModel:(id)arg1 outputLabel:(id)arg2 sampleRate:(double)arg3 windowLengthFrames:(unsigned int)arg4 stepSizeFrames:(unsigned int)arg5 featureExtractorConfiguration:(id)arg6;
+- (id)initWithMLModel:(id)arg1 detectorIdentifier:(id)arg2 outputLabel:(id)arg3 sampleRate:(double)arg4 windowLengthFrames:(unsigned int)arg5 stepSizeFrames:(unsigned int)arg6 featureExtractorConfiguration:(id)arg7;
 
 @end
 

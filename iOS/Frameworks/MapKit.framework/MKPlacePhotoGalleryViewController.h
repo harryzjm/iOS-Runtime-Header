@@ -7,18 +7,19 @@
 #import <UIKit/UIViewController.h>
 
 #import <MapKit/MKActivityObserving-Protocol.h>
+#import <MapKit/MUPlacePhotoGalleryAttributionViewDelegate-Protocol.h>
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
 
 @class MKMapItem, MKPlacePhotoGalleryAttributionView, NSArray, NSMutableArray, NSNumber, NSString, UIActivityIndicatorView, UIBarButtonItem, UIScrollView, UIView;
 @protocol MKPlacePhotoGalleryViewControllerDelegate;
 
-@interface MKPlacePhotoGalleryViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, MKActivityObserving>
+@interface MKPlacePhotoGalleryViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, MUPlacePhotoGalleryAttributionViewDelegate, MKActivityObserving>
 {
     _Bool _panAndSwipeToDismissGestureEnabled;
     _Bool _shouldFinishAnimation;
+    UIBarButtonItem *_addPhotoBarButtonItem;
     id <MKPlacePhotoGalleryViewControllerDelegate> _delegate;
-    UIBarButtonItem *_rapBarButton;
     NSArray *_photos;
     MKMapItem *_mapItem;
     NSArray *_photoViews;
@@ -33,16 +34,12 @@
     double _lastScrollViewOffsetBeforeScrolling;
     UIBarButtonItem *_openNavigationBarButton;
     UIActivityIndicatorView *_spinner;
-    UIBarButtonItem *_doneBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
-    UIBarButtonItem *_addPhotoBarButtonItem;
     struct CGPoint _imageViewCenterPoint;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIBarButtonItem *addPhotoBarButtonItem; // @synthesize addPhotoBarButtonItem=_addPhotoBarButtonItem;
 @property(retain, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
-@property(retain, nonatomic) UIBarButtonItem *doneBarButtonItem; // @synthesize doneBarButtonItem=_doneBarButtonItem;
 @property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property(retain, nonatomic) UIBarButtonItem *openNavigationBarButton; // @synthesize openNavigationBarButton=_openNavigationBarButton;
 @property(nonatomic) double lastScrollViewOffsetBeforeScrolling; // @synthesize lastScrollViewOffsetBeforeScrolling=_lastScrollViewOffsetBeforeScrolling;
@@ -59,9 +56,10 @@
 @property(copy, nonatomic) NSArray *photoViews; // @synthesize photoViews=_photoViews;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(copy, nonatomic) NSArray *photos; // @synthesize photos=_photos;
-@property(retain, nonatomic) UIBarButtonItem *rapBarButton; // @synthesize rapBarButton=_rapBarButton;
 @property(nonatomic) _Bool panAndSwipeToDismissGestureEnabled; // @synthesize panAndSwipeToDismissGestureEnabled=_panAndSwipeToDismissGestureEnabled;
 @property(nonatomic) __weak id <MKPlacePhotoGalleryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)attributionViewDidTapAttributionPunchout:(id)arg1;
+- (void)attributionViewDidTapReportAnIssue:(id)arg1;
 - (void)scrollRight;
 - (void)scrollLeft;
 - (void)endAnimatingActivityIndicatorWithError:(id)arg1;
@@ -78,6 +76,7 @@
 - (void)dismiss;
 - (void)didTapDone;
 - (void)didTapOpen;
+@property(readonly, nonatomic) UIBarButtonItem *addPhotoBarButtonItem; // @synthesize addPhotoBarButtonItem=_addPhotoBarButtonItem;
 @property(readonly, nonatomic) UIBarButtonItem *rightBarButtonItem;
 @property(readonly, nonatomic) UIBarButtonItem *leftBarButtonItem;
 - (void)_addPhotoButtonPressed;
@@ -99,15 +98,19 @@
 - (void)downloadImageForPhotoViewAtIndex:(unsigned long long)arg1;
 - (void)downloadImageForURL:(id)arg1 forIndex:(unsigned long long)arg2;
 - (void)downloadImageForVisibleViews;
+- (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;
-- (id)attributionLogoUsingDarkAppearance:(_Bool)arg1;
+- (id)attributionLogoUsingDarkAppearance:(_Bool)arg1 forPhoto:(id)arg2;
 - (void)setupAttributionView;
 - (void)setupAdditionalView:(id)arg1 withStackView:(id)arg2;
+@property(readonly, nonatomic) UIView *rapBarButtonView;
 - (void)setupPhotoViewsWithStackView:(id)arg1;
 - (void)setupViewsWithAdditionalView:(id)arg1;
-@property(readonly, nonatomic) _Bool isShowingPhotosProvidedByApple;
+- (_Bool)isPhotoProvidedByApple:(id)arg1;
 - (void)dealloc;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (id)keyCommands;
+- (_Bool)canBecomeFirstResponder;
 - (id)initWithPhotos:(id)arg1 additionalView:(id)arg2 scrollToIndex:(unsigned long long)arg3 mapItem:(id)arg4 delegate:(id)arg5;
 - (_Bool)_canShowWhileLocked;
 

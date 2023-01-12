@@ -25,10 +25,14 @@
     MISSING_TYPE *interstitialAdManager;
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *featureManager;
+    MISSING_TYPE *toolbarManager;
     MISSING_TYPE *featureTransitions;
     MISSING_TYPE *hasPresentedFirstPage;
     MISSING_TYPE *pageSheetPresentationObserver;
     MISSING_TYPE *commands;
+    MISSING_TYPE *onPagePresented;
+    MISSING_TYPE *state;
+    MISSING_TYPE *isPagingEnabled;
 }
 
 - (void).cxx_destruct;

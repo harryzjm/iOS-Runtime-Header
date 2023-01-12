@@ -8,11 +8,12 @@
 
 @interface TSCH3DChartLabelsContainingSceneObject
 {
-    TSCH3DLabelsRenderer *mLabelsRenderer;
+    TSCH3DLabelsRenderer *_labelsRenderer;
 }
 
+- (void).cxx_destruct;
 - (void)renderLabelRenderInfo:(id)arg1;
-- (void)renderLabelsResourcesSessionWithResources:(id)arg1 expectedSize:(const tvec2_3b141483 *)arg2 pipeline:(id)arg3 renderBlock:(CDUnknownBlockType)arg4;
+- (void)renderLabelsResourcesSessionWithResources:(id)arg1 expectedSize:(const void *)arg2 pipeline:(id)arg3 renderBlock:(CDUnknownBlockType)arg4;
 - (void)dispatchElementLabelHandler:(CDUnknownBlockType)arg1;
 - (void)getSceneObjectElementsBounds:(id)arg1;
 - (void)getSelectionKnobsPositions:(id)arg1;
@@ -26,9 +27,8 @@
 - (void)render:(id)arg1;
 - (void)renderAnnotatedLabels:(id)arg1;
 - (void)renderLabels:(id)arg1;
-- (void)p_render:(id)arg1 selector:(SEL)arg2;
+- (void)p_renderWithPipeline:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)labelsRenderer;
-- (void)dealloc;
 - (id)init;
 
 @end

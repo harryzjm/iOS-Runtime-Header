@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)keyboardLayout:(id)arg1 willChangeRenderConfig:(id)arg2;
 - (id)keyboardLayout:(id)arg1 containingViewForActiveKey:(id)arg2 inKeyplaneView:(id)arg3;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)keyboardLayout:(id)arg1 didSwitchToKeyplane:(id)arg2;
 - (long long)overrideUserInterfaceStyle;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *inputModeIdentifier;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (struct CGSize)preferredContentSize;
+- (double)preferredTextFieldHeight;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithInputModeIdentifier:(id)arg1 textInputTraits:(id)arg2 taskQueue:(id)arg3;

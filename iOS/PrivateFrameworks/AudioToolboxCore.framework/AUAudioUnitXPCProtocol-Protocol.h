@@ -26,7 +26,7 @@
 - (void)parameterNode:(NSString *)arg1 displayNameWithLength:(long long)arg2 reply:(void (^)(NSError *, NSString *))arg3;
 - (void)parameterValueFromString:(NSString *)arg1 address:(unsigned long long)arg2 reply:(void (^)(NSError *, float))arg3;
 - (void)parameterStringFromValue:(float)arg1 currentValue:(_Bool)arg2 address:(unsigned long long)arg3 reply:(void (^)(NSError *, NSString *))arg4;
-- (void)getParameter:(unsigned long long)arg1 reply:(void (^)(NSError *, float))arg2;
+- (void)getParameter:(unsigned long long)arg1 sequenceNumber:(unsigned int)arg2 reply:(void (^)(NSError *, float))arg3;
 - (void)getParameterTree:(void (^)(NSError *, AUParameterTree *))arg1;
 - (void)setValue:(id)arg1 forKey:(NSString *)arg2 reply:(void (^)(NSError *, NSArray *))arg3;
 - (void)valueForKey:(NSString *)arg1 reply:(void (^)(NSError *, id))arg2;

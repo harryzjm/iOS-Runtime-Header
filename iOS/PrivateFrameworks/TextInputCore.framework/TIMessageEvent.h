@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, TIKeyboardState;
+@class NSString;
 
 @interface TIMessageEvent : NSObject
 {
@@ -18,6 +18,7 @@
     int _addressBookCount;
     int _namedEntitiesCount;
     int _oovCount;
+    int _supplementalLexiconCount;
     int _emojiPlaneCount;
     int _emojiPredictionCount;
     int _emojiSearchCount;
@@ -28,11 +29,9 @@
     NSString *_messageText;
     double _startTime;
     double _endTime;
-    TIKeyboardState *_lastKeyboardState;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TIKeyboardState *lastKeyboardState; // @synthesize lastKeyboardState=_lastKeyboardState;
 @property int multilingualCount; // @synthesize multilingualCount=_multilingualCount;
 @property int pqtCount; // @synthesize pqtCount=_pqtCount;
 @property int responseKitCount; // @synthesize responseKitCount=_responseKitCount;
@@ -40,6 +39,7 @@
 @property int emojiSearchCount; // @synthesize emojiSearchCount=_emojiSearchCount;
 @property int emojiPredictionCount; // @synthesize emojiPredictionCount=_emojiPredictionCount;
 @property int emojiPlaneCount; // @synthesize emojiPlaneCount=_emojiPlaneCount;
+@property int supplementalLexiconCount; // @synthesize supplementalLexiconCount=_supplementalLexiconCount;
 @property int oovCount; // @synthesize oovCount=_oovCount;
 @property int namedEntitiesCount; // @synthesize namedEntitiesCount=_namedEntitiesCount;
 @property int addressBookCount; // @synthesize addressBookCount=_addressBookCount;
@@ -52,7 +52,7 @@
 @property double startTime; // @synthesize startTime=_startTime;
 @property(retain, nonatomic) NSString *messageText; // @synthesize messageText=_messageText;
 - (int)durationInSecondsFromStartTime:(double)arg1 endTime:(double)arg2;
-- (void)dispatchWithTestingParameters:(id)arg1;
+- (void)dispatchWithFeatureUsageMetricsCache:(id)arg1 andContext:(id)arg2 assetAvailabilityStatus:(long long)arg3;
 - (_Bool)hasText:(id)arg1;
 - (void)adjustEmojiCountsFromKeyboardInputForWordAligned:(id)arg1;
 - (void)analyzeWordEntryAligned:(id)arg1;

@@ -21,10 +21,9 @@
 - (void)autosaveSessionForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getIdleAutosaves:(CDUnknownBlockType)arg1;
 - (void)autosaveMessageData:(id)arg1 replacingIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)autosavedMessageDataWithIdentifier:(id)arg1 error:(id *)arg2;
+- (id)autosavedMessageDataWithIdentifier:(id)arg1;
 - (void)removeAutosavedMessageWithIdentifier:(id)arg1;
 - (_Bool)hasAutosavedMessageWithIdentifier:(id)arg1;
-- (id)_timeout;
 - (id)initWithRemoteObjectInterface:(id)arg1;
 - (id)init;
 

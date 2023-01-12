@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CMOutlineState, NSMutableDictionary, WDParagraph, WDText;
+@class CMOutlineState, NSMutableArray, NSMutableDictionary, WDText;
 
 __attribute__((visibility("hidden")))
 @interface WMState
@@ -25,11 +25,14 @@ __attribute__((visibility("hidden")))
     _Bool mIsFrameEnd;
     _Bool mIsHeaderOrFooter;
     float mTotalPageHeight;
-    WDParagraph *_currentParagraph;
+    NSMutableArray *_paragraphStack;
 }
 
 - (void).cxx_destruct;
-@property(retain) WDParagraph *currentParagraph; // @synthesize currentParagraph=_currentParagraph;
+@property(retain) NSMutableArray *paragraphStack; // @synthesize paragraphStack=_paragraphStack;
+- (_Bool)containsParagraph:(id)arg1;
+- (void)popParagraph;
+- (void)pushParagraph:(id)arg1;
 - (_Bool)isHeaderOrFooter;
 - (void)setIsHeaderOrFooter:(_Bool)arg1;
 - (_Bool)isFrameEnd;

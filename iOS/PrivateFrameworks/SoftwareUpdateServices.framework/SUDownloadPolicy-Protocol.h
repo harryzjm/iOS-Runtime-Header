@@ -15,6 +15,7 @@
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2 powerRequired:(_Bool *)arg3;
 - (_Bool)isDownloadableForCurrentNetworkConditions:(long long *)arg1 cellularFeesApply:(_Bool *)arg2;
 - (unsigned long long)wifiOnlyPeriodInDays;
+- (_Bool)is5GDownloadAllowed;
 - (_Bool)allowExpensiveNetwork;
 - (_Bool)isDownloadAllowableForWiFi;
 - (_Bool)isDownloadAllowableForCellularRoaming;

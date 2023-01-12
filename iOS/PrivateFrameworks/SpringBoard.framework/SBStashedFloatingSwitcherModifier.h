@@ -14,10 +14,11 @@
 - (void).cxx_destruct;
 - (_Bool)isSwitcherWindowUserInteractionEnabled;
 - (_Bool)isSwitcherWindowVisible;
-- (double)shadowOpacityForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForLayoutRole:(long long)arg1 atIndex:(unsigned long long)arg2;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (id)visibleAppLayouts;
-- (id)init;
+- (id)handleTapSlideOverTongueEvent:(id)arg1;
+- (id)initWithFloatingConfiguration:(long long)arg1 environmentMode:(long long)arg2;
 
 @end
 

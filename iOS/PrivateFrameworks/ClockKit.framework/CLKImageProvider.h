@@ -26,6 +26,7 @@
     struct CGSize _maxSize;
 }
 
++ (id)imageProviderWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)imageProviderWithImageViewCreationHandler:(CDUnknownBlockType)arg1;
 + (id)imageProviderWithOnePieceImage:(id)arg1 twoPieceImageBackground:(id)arg2 twoPieceImageForeground:(id)arg3;
@@ -35,15 +36,15 @@
 @property(nonatomic, getter=isForegroundAccentImageTinted) _Bool foregroundAccentImageTinted; // @synthesize foregroundAccentImageTinted=_foregroundAccentImageTinted;
 @property(retain, nonatomic) UIColor *foregroundAccentImageColor; // @synthesize foregroundAccentImageColor=_foregroundAccentImageColor;
 @property(retain, nonatomic) UIImage *foregroundAccentImage; // @synthesize foregroundAccentImage=_foregroundAccentImage;
-@property(readonly, nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
 @property(copy, nonatomic) CDUnknownBlockType imageViewCreationHandler; // @synthesize imageViewCreationHandler=_imageViewCreationHandler;
+@property(readonly, nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
 @property(retain, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property(retain, nonatomic) UIImage *twoPieceImageForeground; // @synthesize twoPieceImageForeground=_twoPieceImageForeground;
 @property(retain, nonatomic) UIImage *twoPieceImageBackground; // @synthesize twoPieceImageBackground=_twoPieceImageBackground;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(retain, nonatomic) UIImage *onePieceImage; // @synthesize onePieceImage=_onePieceImage;
-- (void)_resizeImagesIfNecessaryWithCornerRadius:(double)arg1;
-- (void)_resizeImagesIfNecessaryAndMaskToCircle:(_Bool)arg1;
+- (void)_resizeImagesIfNecessaryWithMaxSDKSize:(struct CGSize)arg1 andCornerRadius:(double)arg2;
+- (void)_resizeImagesIfNecessaryWithMaxSDKSize:(struct CGSize)arg1 andMaskToCircle:(_Bool)arg2;
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1;
 - (id)initWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -51,8 +52,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalizeWithMaxSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
-- (void)finalizeWithMaxSize:(struct CGSize)arg1 maskToCircle:(_Bool)arg2;
+- (void)finalizeWithMaxSDKSize:(struct CGSize)arg1 maxDeviceSize:(struct CGSize)arg2 cornerRadius:(double)arg3;
+- (void)finalizeWithMaxSDKSize:(struct CGSize)arg1 maxDeviceSize:(struct CGSize)arg2 maskToCircle:(_Bool)arg3;
 - (_Bool)validate;
 - (id)initWithForegroundAccentImage:(id)arg1;
 - (id)initWithOnePieceImage:(id)arg1 twoPieceImageBackground:(id)arg2 twoPieceImageForeground:(id)arg3;

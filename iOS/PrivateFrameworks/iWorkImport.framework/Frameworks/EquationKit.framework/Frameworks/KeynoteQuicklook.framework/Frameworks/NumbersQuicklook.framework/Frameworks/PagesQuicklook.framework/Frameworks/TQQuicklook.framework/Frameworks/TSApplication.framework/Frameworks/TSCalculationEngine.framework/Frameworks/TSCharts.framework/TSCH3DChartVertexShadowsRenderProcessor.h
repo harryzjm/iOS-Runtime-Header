@@ -8,13 +8,13 @@
 
 @interface TSCH3DChartVertexShadowsRenderProcessor
 {
-    NSArray *mShadowsEffects;
+    NSArray *_shadowsEffects;
 }
 
+- (void).cxx_destruct;
 - (void)submit:(id)arg1;
-- (long long)texture:(id)arg1 resource:(id)arg2 attributes:(const struct TextureAttributes *)arg3;
+- (long long)texture:(id)arg1 resource:(id)arg2 attributes:(const void *)arg3;
 - (long long)attribute:(id)arg1 resource:(id)arg2 specs:(const struct AttributeSpecs *)arg3;
-- (void)dealloc;
 - (id)init;
 - (id)p_effects;
 

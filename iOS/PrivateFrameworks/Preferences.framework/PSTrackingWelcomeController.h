@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) OBTextWelcomeController *controller; // @synthesize controller=_controller;
 - (void)donePressed;
+- (id)aboutText;
 - (id)init;
 
 @end

@@ -21,6 +21,8 @@
 @property(copy, nonatomic) NSURL *launchURL; // @dynamic launchURL;
 @property(nonatomic) _Bool requiresAuthentication; // @dynamic requiresAuthentication;
 @property(nonatomic) unsigned long long activationMode; // @dynamic activationMode;
+@property(copy, nonatomic) NSString *iconImageBundlePath; // @dynamic iconImageBundlePath;
+@property(copy, nonatomic) NSString *iconImageName; // @dynamic iconImageName;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
 

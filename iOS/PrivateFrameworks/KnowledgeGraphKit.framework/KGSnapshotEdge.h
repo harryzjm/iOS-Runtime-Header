@@ -31,6 +31,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)resolveIdentifier:(unsigned long long)arg1;
 - (id)oppositeNodeFromNode:(id)arg1;
 - (id)initWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4 sourceNode:(id)arg5 targetNode:(id)arg6;
 

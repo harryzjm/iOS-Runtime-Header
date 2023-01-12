@@ -6,40 +6,54 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class HKClinicalProvider, HRProfile, SFSafariViewController, WDClinicalGatewayProxy;
+#import <HealthRecordsUI/HRClinicalSharingOnboardingDelegate-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface WDClinicalOnboardingOAuthNavigationViewController : UINavigationController
+@class HKClinicalAccount, HKClinicalProvider, HRProfile, SFSafariViewController, WDClinicalAccountOnboardingSession, WDClinicalGatewayProxy;
+@protocol AccountSharingOnboardingDelegate;
+
+@interface WDClinicalOnboardingOAuthNavigationViewController : UINavigationController <HRClinicalSharingOnboardingDelegate>
 {
     _Bool _showProviderNotFound;
     _Bool _onboardingSourceIsDeepLink;
-    HRProfile *_profile;
+    id <AccountSharingOnboardingDelegate> _onboardingDelegate;
     SFSafariViewController *_safariViewController;
     HKClinicalProvider *_providerToPresent;
     WDClinicalGatewayProxy *_gatewayProxyToTry;
+    UINavigationController *_onboardingTileNavigationViewController;
+    WDClinicalAccountOnboardingSession *_onboardingSession;
+    HKClinicalAccount *_onboardingAccount;
 }
 
-+ (id)clinicalOnboardingOauthViewControllerWithProfile:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) HKClinicalAccount *onboardingAccount; // @synthesize onboardingAccount=_onboardingAccount;
+@property(readonly, nonatomic) WDClinicalAccountOnboardingSession *onboardingSession; // @synthesize onboardingSession=_onboardingSession;
+@property(nonatomic) UINavigationController *onboardingTileNavigationViewController; // @synthesize onboardingTileNavigationViewController=_onboardingTileNavigationViewController;
 @property(nonatomic) _Bool onboardingSourceIsDeepLink; // @synthesize onboardingSourceIsDeepLink=_onboardingSourceIsDeepLink;
 @property(nonatomic) _Bool showProviderNotFound; // @synthesize showProviderNotFound=_showProviderNotFound;
 @property(retain, nonatomic) WDClinicalGatewayProxy *gatewayProxyToTry; // @synthesize gatewayProxyToTry=_gatewayProxyToTry;
 @property(retain, nonatomic) HKClinicalProvider *providerToPresent; // @synthesize providerToPresent=_providerToPresent;
 @property(readonly, nonatomic) SFSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
-@property(readonly, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
-- (void)dismissViewController;
+@property(nonatomic) __weak id <AccountSharingOnboardingDelegate> onboardingDelegate; // @synthesize onboardingDelegate=_onboardingDelegate;
+- (void)didCompleteOnboardingFor:(id)arg1;
+- (void)_dismissViewController;
+- (void)dismissWithAccount:(id)arg1 error:(id)arg2 animated:(_Bool)arg3;
+- (void)dismissSafariViewControllerAnimatedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentSafariViewController;
-- (void)showClinicalAccountEducationViewControllerWithAccount:(id)arg1;
-- (id)_onboardingViewController;
+- (void)presentSafariViewController:(id)arg1 withGatewayUrl:(id)arg2;
+- (void)didLoginToAccount:(id)arg1;
+- (id)_createInitialRootViewController;
 - (void)createRootViewController;
 - (void)completionNotificationHandler:(id)arg1;
+- (void)stopListeningToNotification;
 - (void)beginListeningToNotification;
-- (void)presentSafariViewController:(id)arg1 withGatewayUrl:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+@property(readonly, nonatomic) HRProfile *profile;
+- (id)initWithSession:(id)arg1 existingAccount:(id)arg2;
+- (id)initWithContext:(long long)arg1 onboardingOptions:(unsigned long long)arg2 profile:(id)arg3 existingAccount:(id)arg4;
 - (id)init;
-- (id)initWithProfile:(id)arg1;
 
 @end
 

@@ -17,7 +17,7 @@
 @property(readonly, getter=isFatal) _Bool fatal; // @synthesize fatal=_fatal;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3 fatal:(_Bool)arg4 shouldDeny:(_Bool)arg5;
+- (id)initWithCode:(long long)arg1 bundleID:(id)arg2 reason:(id)arg3 fatal:(_Bool)arg4;
 
 @end
 

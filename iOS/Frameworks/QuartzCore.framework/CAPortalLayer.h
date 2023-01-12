@@ -21,7 +21,7 @@
 @property unsigned long long sourceLayerRenderId;
 @property __weak CALayer *sourceLayer;
 - (_Bool)_renderLayerDefinesProperty:(unsigned int)arg1;
-- (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
+- (void *)_copyRenderLayer:(void *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 - (void)didChangeValueForKey:(id)arg1;
 

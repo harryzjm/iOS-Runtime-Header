@@ -17,11 +17,13 @@
     NSDictionary *_options;
     long long _format;
     NSString *_altText;
+    NSString *_header;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldRemoveQuietZone; // @synthesize shouldRemoveQuietZone=_shouldRemoveQuietZone;
+@property(copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property(copy, nonatomic) NSString *altText; // @synthesize altText=_altText;
 @property(nonatomic) long long format; // @synthesize format=_format;
 @property(copy, nonatomic) NSDictionary *options; // @synthesize options=_options;

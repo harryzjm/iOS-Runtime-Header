@@ -18,8 +18,6 @@
 + (id)focusLayerForUserInterfaceStyle:(long long)arg1;
 + (id)layer;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CAShapeLayer *outerBorder; // @synthesize outerBorder=_outerBorder;
-@property(retain, nonatomic) CAShapeLayer *innerBorder; // @synthesize innerBorder=_innerBorder;
 - (void)setPath:(struct CGPath *)arg1;
 
 @end

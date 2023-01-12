@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/NSCopying-Protocol.h>
 
-@class NSString, PHAsset, PHAssetCollection, PHFetchResult;
+@class NSString, PHAsset, PHAssetCollection, PHFetchResult, PHMemory;
 
 @interface PXMemoryInfo : NSObject <NSCopying>
 {
@@ -31,6 +31,8 @@
 @property(readonly, nonatomic) PHAsset *primaryAsset;
 @property(readonly, nonatomic) double score;
 @property(readonly, nonatomic) unsigned long long category;
+@property(readonly, nonatomic) _Bool isFavorite;
+@property(readonly, nonatomic) PHMemory *memory;
 - (id)memoryInfoWithUpdatedKeyAssetFetchResult:(id)arg1;
 
 @end

@@ -6,26 +6,26 @@
 
 #import <ReminderKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString, REMObjectID;
 
 @interface REMSmartListsDataViewInvocation_fetchSmartList <NSSecureCoding>
 {
     _Bool _createIfNeeded;
-    NSString *_smartListTag;
-    NSArray *_reminderIDs;
+    NSString *_smartListType;
+    REMObjectID *_objectID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool createIfNeeded; // @synthesize createIfNeeded=_createIfNeeded;
-@property(readonly, nonatomic) NSArray *reminderIDs; // @synthesize reminderIDs=_reminderIDs;
-@property(readonly, nonatomic) NSString *smartListTag; // @synthesize smartListTag=_smartListTag;
+@property(readonly, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
+@property(readonly, nonatomic) NSString *smartListType; // @synthesize smartListType=_smartListType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSmartListTag:(id)arg1 reminderIDs:(id)arg2 createIfNeeded:(_Bool)arg3;
+- (id)initWithSmartListType:(id)arg1 objectID:(id)arg2 createIfNeeded:(_Bool)arg3;
 
 @end
 

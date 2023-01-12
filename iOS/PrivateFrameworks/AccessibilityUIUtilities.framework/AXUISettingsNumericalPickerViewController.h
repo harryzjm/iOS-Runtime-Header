@@ -19,6 +19,7 @@
 - (double)maximumValueForSpecifier:(id)arg1;
 - (double)minimumValueForSpecifier:(id)arg1;
 - (double)stepValueForSpecifier:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (id)_delayPickerFooterSpecifier;
 - (id)_delayPickerSpecifier;

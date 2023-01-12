@@ -52,7 +52,6 @@
 - (void)readTransaction:(CDUnknownBlockType)arg1;
 - (_Bool)frailWriteTransaction:(CDUnknownBlockType)arg1;
 - (void)writeTransaction:(CDUnknownBlockType)arg1;
-- (void)clearCaches;
 - (id)selectColumns:(id)arg1 fromTable:(id)arg2 whereClause:(id)arg3 onPrep:(CDUnknownBlockType)arg4 onError:(CDUnknownBlockType)arg5;
 - (void)insertOrReplaceIntoTable:(id)arg1 dictionary:(id)arg2 onError:(CDUnknownBlockType)arg3;
 - (void)updateTable:(id)arg1 dictionary:(id)arg2 whereClause:(id)arg3 onError:(CDUnknownBlockType)arg4;

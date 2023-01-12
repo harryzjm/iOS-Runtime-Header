@@ -10,7 +10,6 @@
 
 @class CKDPLocationBound, CKDPRecordFieldIdentifier, CKDPRecordFieldValue;
 
-__attribute__((visibility("hidden")))
 @interface CKDPQueryFilter : PBCodable <NSCopying>
 {
     CKDPLocationBound *_bounds;

@@ -15,6 +15,7 @@
     id _constraintsValue;
     NSMutableDictionary *_properties;
     NSMutableOrderedSet *_propertyKeys;
+    long long _userInterfaceStyle;
     long long _userInterfaceIdiom;
     double _displayScale;
     long long _horizontalSizeClass;
@@ -33,12 +34,13 @@
 @property(copy, nonatomic) NSArray *subviews; // @synthesize subviews=_subviewsValue;
 @property(retain, nonatomic) NSArray *preferredContentSizeCategories; // @synthesize preferredContentSizeCategories=_preferredContentSizeCategories;
 @property(readonly, nonatomic) unsigned long long specificity; // @synthesize specificity=_specificity;
-@property(copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
+@property(retain, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property(nonatomic) long long forceTouchCapability; // @synthesize forceTouchCapability=_forceTouchCapability;
 @property(nonatomic) long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;
 @property(nonatomic) long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
 @property(nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
 @property(nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property(nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 - (void)applyToTraitEnvironment:(id)arg1;
 @property(readonly, nonatomic) UITraitCollection *traitCollection;
 - (void)setTMLValue:(id)arg1 forKeyPath:(id)arg2;

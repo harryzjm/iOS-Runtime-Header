@@ -11,10 +11,13 @@
 @interface HMIVideoFrameAnalyzerDelegateAdapter : HMFObject <HMIVideoFrameAnalyzerDelegate>
 {
     CDUnknownBlockType _frameAnalyzerDidAnalyzeFrame;
+    CDUnknownBlockType _frameAnalyzerDidProduceAnalysisStateUpdate;
 }
 
 - (void).cxx_destruct;
+@property(copy) CDUnknownBlockType frameAnalyzerDidProduceAnalysisStateUpdate; // @synthesize frameAnalyzerDidProduceAnalysisStateUpdate=_frameAnalyzerDidProduceAnalysisStateUpdate;
 @property(copy) CDUnknownBlockType frameAnalyzerDidAnalyzeFrame; // @synthesize frameAnalyzerDidAnalyzeFrame=_frameAnalyzerDidAnalyzeFrame;
+- (void)frameAnalyzer:(id)arg1 didProduceAnalysisStateUpdate:(id)arg2;
 - (void)frameAnalyzer:(id)arg1 didAnalyzeFrame:(id)arg2 error:(id)arg3;
 
 @end

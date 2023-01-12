@@ -8,11 +8,11 @@
 {
 }
 
-+ (void)configureSiblingSprites:(CDStruct_92550dd7)arg1 siblingsSpriteIndexRange:(struct _PXGSpriteIndexRange)arg2 siblingsTexture:(id)arg3 forMainRenderSpriteRef:(CDStruct_a6175b54)arg4 mainPresentationSpriteRef:(CDStruct_a6175b54)arg5 mainSpriteIndex:(unsigned int)arg6 mainSpriteTexture:(id)arg7 effectData:(const CDStruct_8a1a641f *)arg8 screenScale:(double)arg9;
-+ (id)createSiblingsTextureForMainSpriteTexture:(id)arg1;
+- (void)configureSiblingSprites:(CDStruct_d5f63e8f)arg1 siblingsSpriteIndexRange:(struct _PXGSpriteIndexRange)arg2 siblingsTexture:(id)arg3 forMainRenderSpriteRef:(CDStruct_d23a385d)arg4 mainPresentationSpriteRef:(CDStruct_d23a385d)arg5 mainSpriteIndex:(unsigned int)arg6 mainSpriteTexture:(id)arg7 screenScale:(double)arg8;
+- (id)createSiblingsTextureForMainSpriteTexture:(id)arg1;
 @property(nonatomic) long long numberOfItemsStackedBehind;
-- (unsigned short)type;
-- (id)initWithMetadataStore:(id)arg1;
+- (id)shader;
+- (id)initWithEntityManager:(id)arg1;
 
 @end
 

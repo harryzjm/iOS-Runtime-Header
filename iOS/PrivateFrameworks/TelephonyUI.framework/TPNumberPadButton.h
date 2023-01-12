@@ -39,7 +39,6 @@
 + (id)imageForCharacter:(long long)arg1 highlighted:(_Bool)arg2;
 + (id)imageForCharacter:(long long)arg1;
 + (struct UIEdgeInsets)paddingOutsideRing;
-+ (_Bool)useLargeFont;
 + (double)outerCircleDiameter;
 + (struct CGRect)circleBounds;
 + (struct CGSize)defaultSize;
@@ -60,6 +59,7 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setGreyedOut:(_Bool)arg1;
 - (void)reloadImagesForCurrentCharacter;
+- (id)initForCharacter:(long long)arg1 style:(long long)arg2;
 - (id)initForCharacter:(long long)arg1;
 @property(readonly, nonatomic) UIColor *highlightedButtonColor;
 

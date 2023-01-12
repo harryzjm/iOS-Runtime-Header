@@ -9,16 +9,20 @@
 #import <FrontBoard/NSCopying-Protocol.h>
 #import <FrontBoard/NSMutableCopying-Protocol.h>
 
+@class NSString;
+
 @interface FBSystemShellInitializationOptions : NSObject <NSCopying, NSMutableCopying>
 {
     _Bool _initializeReadyForInteraction;
     _Bool _shouldWaitForMigrator;
     _Bool _resetDarkBootState;
+    NSString *_independentWatchdogPortName;
     double _systemSleepInterval;
     CDUnknownBlockType _registerServicesBlock;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *independentWatchdogPortName; // @synthesize independentWatchdogPortName=_independentWatchdogPortName;
 @property(readonly, copy, nonatomic) CDUnknownBlockType registerAdditionalServicesBlock; // @synthesize registerAdditionalServicesBlock=_registerServicesBlock;
 @property(readonly, nonatomic) double systemSleepInterval; // @synthesize systemSleepInterval=_systemSleepInterval;
 @property(readonly, nonatomic) _Bool shouldWaitForMigrator; // @synthesize shouldWaitForMigrator=_shouldWaitForMigrator;

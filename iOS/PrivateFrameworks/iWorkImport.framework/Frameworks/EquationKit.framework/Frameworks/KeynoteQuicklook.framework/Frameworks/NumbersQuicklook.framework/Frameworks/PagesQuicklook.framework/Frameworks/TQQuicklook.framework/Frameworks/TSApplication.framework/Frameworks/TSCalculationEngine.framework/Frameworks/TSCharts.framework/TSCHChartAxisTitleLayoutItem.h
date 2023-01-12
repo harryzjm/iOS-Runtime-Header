@@ -6,17 +6,17 @@
 
 @interface TSCHChartAxisTitleLayoutItem
 {
-    struct CGSize mChartBodySize;
-    double mMinHitSize;
+    struct CGSize _chartBodySize;
+    double _minHitSize;
 }
 
-@property(nonatomic) double minHitSize; // @synthesize minHitSize=mMinHitSize;
-@property(nonatomic) struct CGSize chartBodySize; // @synthesize chartBodySize=mChartBodySize;
-- (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
+@property(nonatomic) double minHitSize; // @synthesize minHitSize=_minHitSize;
+@property(nonatomic) struct CGSize chartBodySize; // @synthesize chartBodySize=_chartBodySize;
+- (const struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (double)titlePaddingForAxis:(id)arg1;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;
-- (void)protected_iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (struct CGAffineTransform)transformForRenderingRange:(struct _NSRange)arg1 outElementSize:(struct CGSize *)arg2 outClipRect:(struct CGRect *)arg3;
 - (struct CGAffineTransform)transformForRenderingOutElementSize:(struct CGSize *)arg1 outClipRect:(struct CGRect *)arg2;
 - (struct CGAffineTransform)p_transformForRenderingRangePtr:(struct _NSRange *)arg1 outElementSize:(struct CGSize *)arg2 outClipRect:(struct CGRect *)arg3;

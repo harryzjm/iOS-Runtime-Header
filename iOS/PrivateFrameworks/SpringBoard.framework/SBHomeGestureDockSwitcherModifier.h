@@ -16,6 +16,7 @@
     _Bool _wasTrackingDockWhenGestureBegan;
     _Bool _hadOpenDockFolderWhenGestureBegan;
     _Bool _hadOpenHomeScreenFolderWhenGestureBegan;
+    _Bool _hadOpenForegroundLibraryWhenGestureBegan;
     _Bool _verticallyRubberbandedOutOfDock;
     _Bool _wantsDockAssertion;
     _Bool _highEnoughToShowDock;

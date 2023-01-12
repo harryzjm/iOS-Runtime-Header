@@ -9,6 +9,7 @@
 #import <NeutrinoCore/NSCopying-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NURenderTagGroup;
+@protocol NUDevice;
 
 @interface NURenderPipelineState : NSObject <NSCopying>
 {
@@ -19,8 +20,10 @@
     long long _auxiliaryImageType;
     long long _sampleMode;
     long long _roundingPolicy;
+    id <NUDevice> _device;
     NSArray *_pipelineFilters;
     NSDictionary *_videoFrames;
+    NSDictionary *_videoMetadataSamples;
     NURenderTagGroup *_rootGroup;
     NURenderTagGroup *_currentGroup;
     unsigned long long _groupCount;
@@ -33,8 +36,10 @@
 @property(readonly) unsigned long long groupCount; // @synthesize groupCount=_groupCount;
 @property(readonly) NURenderTagGroup *currentGroup; // @synthesize currentGroup=_currentGroup;
 @property(readonly) NURenderTagGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
+@property(copy, nonatomic) NSDictionary *videoMetadataSamples; // @synthesize videoMetadataSamples=_videoMetadataSamples;
 @property(copy, nonatomic) NSDictionary *videoFrames; // @synthesize videoFrames=_videoFrames;
 @property(copy, nonatomic) NSArray *pipelineFilters; // @synthesize pipelineFilters=_pipelineFilters;
+@property(retain, nonatomic) id <NUDevice> device; // @synthesize device=_device;
 @property long long roundingPolicy; // @synthesize roundingPolicy=_roundingPolicy;
 @property CDStruct_912cb5d2 scale; // @synthesize scale=_scale;
 @property long long sampleMode; // @synthesize sampleMode=_sampleMode;

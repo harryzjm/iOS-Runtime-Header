@@ -7,7 +7,7 @@
 #import <PhotosUICore/PXCMMCloudGadgetViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSString, PXCMMInvitationsHorizontalGadgetProvider, PXCMMSuggestionsHorizontalGadgetProvider, PXCloudWelcomeGadgetProvider, PXForYouEditSuggestionsGadgetProvider, PXForYouFooterGadgetProvider, PXForYouGadgetPriorityManager, PXForYouMemoryGadgetProvider, PXForYouRecentInterestSuggestionsGadgetProvider, PXGadgetNavigationHelper, PXHorizontalCollectionGadgetProvider, PXPeopleQuestionsGadgetProvider, PXSampleSuggestionProvider, PXSharedAlbumActivityHorizontalGadgetProvider;
+@class NSArray, NSString, PXCMMInvitationsHorizontalGadgetProvider, PXCMMSuggestionsHorizontalGadgetProvider, PXCloudWelcomeGadgetProvider, PXForYouFooterGadgetProvider, PXForYouGadgetPriorityManager, PXForYouMemoryGadgetProvider, PXForYouRecentInterestSuggestionsGadgetProvider, PXGadgetNavigationHelper, PXHorizontalCollectionGadgetProvider, PXHorizontalContentSyndicationGadgetProvider, PXPeopleQuestionsGadgetProvider, PXSampleSuggestionProvider, PXSharedAlbumActivityHorizontalGadgetProvider;
 @protocol PXGadgetDelegate, PXGadgetTransition;
 
 @interface PXForYouGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate, PXSettingsKeyObserver>
@@ -20,8 +20,6 @@
     PXCloudWelcomeGadgetProvider *_CMMCloudWelcomeGadgetProvider;
     PXSharedAlbumActivityHorizontalGadgetProvider *_icpsActivityHorizontalGadgetProvider;
     PXHorizontalCollectionGadgetProvider *_inboxHorizontalGadgetProvider;
-    PXHorizontalCollectionGadgetProvider *_editSuggestionsHorizontalGadgetProvider;
-    PXForYouEditSuggestionsGadgetProvider *_editSuggestionsGadgetProvider;
     PXHorizontalCollectionGadgetProvider *_recentInterestSuggestionsHorizontalGadgetProvider;
     PXForYouRecentInterestSuggestionsGadgetProvider *_recentInterestsSuggestionsGadgetProvider;
     PXForYouMemoryGadgetProvider *_memoryGadgetProvider;
@@ -29,9 +27,11 @@
     PXHorizontalCollectionGadgetProvider *_peopleQuestionsHorizontalGadgetProvider;
     PXForYouFooterGadgetProvider *_footerGadgetProvider;
     PXSampleSuggestionProvider *_sampleSuggestionGadgetsProvider;
+    PXHorizontalContentSyndicationGadgetProvider *_contentSyndicationGadgetProvider;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXHorizontalContentSyndicationGadgetProvider *contentSyndicationGadgetProvider; // @synthesize contentSyndicationGadgetProvider=_contentSyndicationGadgetProvider;
 @property(retain, nonatomic) PXSampleSuggestionProvider *sampleSuggestionGadgetsProvider; // @synthesize sampleSuggestionGadgetsProvider=_sampleSuggestionGadgetsProvider;
 @property(retain, nonatomic) PXForYouFooterGadgetProvider *footerGadgetProvider; // @synthesize footerGadgetProvider=_footerGadgetProvider;
 @property(retain, nonatomic) PXHorizontalCollectionGadgetProvider *peopleQuestionsHorizontalGadgetProvider; // @synthesize peopleQuestionsHorizontalGadgetProvider=_peopleQuestionsHorizontalGadgetProvider;
@@ -39,8 +39,6 @@
 @property(retain, nonatomic) PXForYouMemoryGadgetProvider *memoryGadgetProvider; // @synthesize memoryGadgetProvider=_memoryGadgetProvider;
 @property(retain, nonatomic) PXForYouRecentInterestSuggestionsGadgetProvider *recentInterestsSuggestionsGadgetProvider; // @synthesize recentInterestsSuggestionsGadgetProvider=_recentInterestsSuggestionsGadgetProvider;
 @property(retain, nonatomic) PXHorizontalCollectionGadgetProvider *recentInterestSuggestionsHorizontalGadgetProvider; // @synthesize recentInterestSuggestionsHorizontalGadgetProvider=_recentInterestSuggestionsHorizontalGadgetProvider;
-@property(retain, nonatomic) PXForYouEditSuggestionsGadgetProvider *editSuggestionsGadgetProvider; // @synthesize editSuggestionsGadgetProvider=_editSuggestionsGadgetProvider;
-@property(retain, nonatomic) PXHorizontalCollectionGadgetProvider *editSuggestionsHorizontalGadgetProvider; // @synthesize editSuggestionsHorizontalGadgetProvider=_editSuggestionsHorizontalGadgetProvider;
 @property(retain, nonatomic) PXHorizontalCollectionGadgetProvider *inboxHorizontalGadgetProvider; // @synthesize inboxHorizontalGadgetProvider=_inboxHorizontalGadgetProvider;
 @property(retain, nonatomic) PXSharedAlbumActivityHorizontalGadgetProvider *icpsActivityHorizontalGadgetProvider; // @synthesize icpsActivityHorizontalGadgetProvider=_icpsActivityHorizontalGadgetProvider;
 @property(retain, nonatomic) PXCloudWelcomeGadgetProvider *CMMCloudWelcomeGadgetProvider; // @synthesize CMMCloudWelcomeGadgetProvider=_CMMCloudWelcomeGadgetProvider;
@@ -64,6 +62,7 @@
 - (CDUnknownBlockType)gadgetProviderSortComparator;
 - (CDUnknownBlockType)gadgetSortComparator;
 - (void)didLoadDataForPriorities;
+- (_Bool)_canShowHubbleSurveyQuestionsGadget;
 - (_Bool)_canShowSurveyQuestionsGadget;
 - (id)gadgetProviders;
 - (void)removeCachedProviders;

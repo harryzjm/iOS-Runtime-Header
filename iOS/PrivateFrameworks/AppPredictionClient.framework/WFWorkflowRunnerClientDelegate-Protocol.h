@@ -6,11 +6,12 @@
 
 #import <AppPredictionClient/NSObject-Protocol.h>
 
-@class NSError, NSProgress, WFWorkflowRunnerClient;
+@class NSError, NSProgress, WFContentCollection, WFWorkflowRunnerClient;
 
 @protocol WFWorkflowRunnerClientDelegate <NSObject>
 
 @optional
+- (void)workflowRunnerClient:(WFWorkflowRunnerClient *)arg1 didFinishRunningWorkflowWithOutput:(WFContentCollection *)arg2 error:(NSError *)arg3 cancelled:(_Bool)arg4;
 - (void)workflowRunnerClient:(WFWorkflowRunnerClient *)arg1 didFinishRunningWorkflowWithError:(NSError *)arg2 cancelled:(_Bool)arg3;
 - (void)workflowRunnerClient:(WFWorkflowRunnerClient *)arg1 didStartRunningWorkflowWithProgress:(NSProgress *)arg2;
 @end

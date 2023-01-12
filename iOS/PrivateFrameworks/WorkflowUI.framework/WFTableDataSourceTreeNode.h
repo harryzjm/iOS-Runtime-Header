@@ -6,15 +6,27 @@
 
 #import <WorkflowUICore/WFTreeNode.h>
 
-@class WFTableDataSource;
+@class NSArray, NSIndexPath, WFTableDataSource;
+@protocol WFTreeObserver;
 
 @interface WFTableDataSourceTreeNode : WFTreeNode
 {
     WFTableDataSource *_dataSource;
+    id <WFTreeObserver> _observer;
+    NSArray *_flattenedDescendents;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *flattenedDescendents; // @synthesize flattenedDescendents=_flattenedDescendents;
+@property(nonatomic) __weak id <WFTreeObserver> observer; // @synthesize observer=_observer;
 @property(nonatomic) __weak WFTableDataSource *dataSource; // @synthesize dataSource=_dataSource;
+- (void)setFlattenedDescendents:(id)arg1 changeSource:(id)arg2;
+- (void)childDescendentsDidChange:(id)arg1 oldValue:(id)arg2 changeSource:(id)arg3;
+- (void)removeNodeAtIndex:(unsigned long long)arg1;
+- (void)insertNode:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)setChildNodes:(id)arg1;
+@property(readonly, nonatomic) NSIndexPath *indexPath;
+- (id)initWithRepresentedObject:(id)arg1;
 
 @end
 

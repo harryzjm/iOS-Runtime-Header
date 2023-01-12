@@ -15,7 +15,7 @@
     struct _PXLayoutGeometry *_generatorGeometryBuffer;
     long long _generatorGeometryBufferCount;
     _Bool _isUpdatingSprites;
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     double _interitemSpacing;
     _Bool _useSaliency;
     int _mediaKind;

@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
+#import <BridgePreferences/BPSWatchViewProtocol-Protocol.h>
+
 @class BPSRemoteImageView, NSString, UIImageView;
 
-@interface BPSWatchView : UIView
+@interface BPSWatchView : UIView <BPSWatchViewProtocol>
 {
     _Bool _wantsLightenBlendedScreen;
     _Bool _wantsInternalFPOLabel;
@@ -47,6 +49,12 @@
 - (id)initWithStyle:(unsigned long long)arg1 allowsMaterialFallback:(_Bool)arg2;
 - (id)initWithStyle:(unsigned long long)arg1 andVersionModifier:(id)arg2;
 - (id)initWithStyle:(unsigned long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

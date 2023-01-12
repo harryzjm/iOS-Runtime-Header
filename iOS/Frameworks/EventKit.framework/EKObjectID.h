@@ -18,8 +18,10 @@
     int _rowID;
 }
 
++ (id)EKObjectIDsFromData:(id)arg1 range:(struct _NSRange)arg2;
++ (id)EKObjectIDsFromData:(id)arg1;
 + (id)EKObjectIDsFromCADObjectIDs:(id)arg1;
-+ (id)CADObjectIDsFromEKObjectIDs:(id)arg1;
++ (id)CADObjectIDsFromEKObjectIDs:(id)arg1 withGeneration:(int)arg2;
 + (id)objectIDWithURL:(id)arg1;
 + (id)temporaryObjectIDWithEntityType:(int)arg1;
 + (id)objectIDWithEntityType:(int)arg1 rowID:(int)arg2;
@@ -33,6 +35,7 @@
 - (id)description;
 @property(readonly, nonatomic) _Bool isTemporary;
 @property(readonly, nonatomic) CADObjectID *CADObjectID;
+- (id)CADObjectIDWithGeneration:(int)arg1;
 @property(readonly, nonatomic) int rowID;
 @property(readonly, nonatomic) long long entityType;
 @property(readonly, nonatomic) NSString *entityName;

@@ -13,17 +13,17 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAccessorySettingModel, HMFMessageDispatcher, NSArray, NSMutableArray, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol HMFLocking, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface HMDAccessorySetting : HMFObject <HMFLogging, HMDAccessorySettingUpdateProtocol, HMDAccessorySettingProtocol, NSSecureCoding, HMDSettingBaseProtocol>
 {
-    id <HMFLocking> _lock;
+    struct os_unfair_lock_s _lock;
     NSMutableSet *_inMemoryCachedConstraintRemovals;
     NSMutableArray *_inMemoryCachedConstraints;
+    NSMutableArray *_constraints;
     id _value;
     NSString *_name;
     long long _type;
-    NSMutableArray *_constraints;
     _Bool _reflected;
     unsigned long long _configurationVersion;
     NSUUID *_parentIdentifier;

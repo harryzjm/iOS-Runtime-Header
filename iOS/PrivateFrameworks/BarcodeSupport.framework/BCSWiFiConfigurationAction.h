@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)actionIcon;
 - (_Bool)isWiFiAction;
 - (id)actionPickerItems;
 - (void)performDefaultActionWithCompletionHandler:(CDUnknownBlockType)arg1;

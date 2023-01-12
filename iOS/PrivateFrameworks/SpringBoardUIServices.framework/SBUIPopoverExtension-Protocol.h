@@ -6,9 +6,10 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class NSString;
+@class INIntent, NSString;
 
 @protocol SBUIPopoverExtension <NSObject>
+- (void)updateForWidgetConfiguration:(INIntent *)arg1;
 - (void)updateForBundleIdentifier:(NSString *)arg1;
 @end
 

@@ -52,8 +52,8 @@
 - (_Bool)_isDraggingEnabledForPresentable:(id)arg1;
 - (_Bool)_isDraggingInteractionEnabledForPresentable:(id)arg1;
 - (_Bool)_isDraggingDismissalEnabledForPresentable:(id)arg1;
-- (id)_dismissPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 animated:(_Bool)arg4 userInfo:(id)arg5;
-- (id)_presentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2;
+- (id)_dismissPresentablesWithIdentification:(id)arg1 reason:(id)arg2 animated:(_Bool)arg3 userInfo:(id)arg4;
+- (id)_presentablesWithIdentification:(id)arg1;
 - (void)_dismissPresentable:(id)arg1 withReason:(id)arg2 animated:(_Bool)arg3 userInfo:(id)arg4;
 - (void)_removePresentable:(id)arg1;
 - (void)_insertPresentable:(id)arg1 beneathPresentable:(id)arg2 withTransitioningDelegate:(id)arg3;
@@ -85,9 +85,8 @@
 - (_Bool)shouldFenceAnimationsForPresentable:(id)arg1;
 - (id)userInterfaceStyleTransitionAnimationSettingsForPresentable:(id)arg1 forTransitionToStyle:(long long)arg2;
 - (id)sizeTransitionAnimationSettingsForPresentable:(id)arg1;
-- (id)dismissAllPresentablesWithRequesterIdentifier:(id)arg1 withReason:(id)arg2 userInfo:(id)arg3;
-- (id)dismissPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 animated:(_Bool)arg4 userInfo:(id)arg5;
-- (id)dismissPresentableWithRequestIdentifier:(id)arg1 requesterIdentifier:(id)arg2 reason:(id)arg3 userInfo:(id)arg4;
+- (id)dismissPresentablesWithIdentification:(id)arg1 reason:(id)arg2 animated:(_Bool)arg3 userInfo:(id)arg4;
+- (id)dismissPresentablesWithIdentification:(id)arg1 reason:(id)arg2 userInfo:(id)arg3;
 - (void)presentPresentable:(id)arg1 withOptions:(unsigned long long)arg2 userInfo:(id)arg3;
 - (id)initWithAuthority:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -106,6 +105,7 @@
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
 - (_Bool)canBecomeFirstResponder;
+@property(readonly, copy, nonatomic) NSArray *allPresentables;
 @property(readonly, copy, nonatomic) NSArray *presentedPresentables;
 @property(readonly, copy, nonatomic) NSArray *topPresentables;
 @property(readonly, nonatomic) id <BNLayoutManaging> layoutManager; // @synthesize layoutManager=_layoutManager;

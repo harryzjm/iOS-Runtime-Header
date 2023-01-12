@@ -6,32 +6,22 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSLayoutConstraint, UIImageView, UILabel, UIStackView, WFCodableAttributeBackedSubstitutableState, WFParameter;
-@protocol WFParameterValuePickable;
+@class UIViewController, WFCodableAttributeBackedSubstitutableState, WFParameter;
+@protocol WFParameterValuePickable, WFParameterValuePickerTableViewCellDelegate;
 
 @interface WFParameterValuePickerTableViewCell : UITableViewCell
 {
+    _Bool _containedInState;
     WFParameter<WFParameterValuePickable> *_parameter;
     WFCodableAttributeBackedSubstitutableState *_state;
-    UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
-    UIImageView *_iconImageView;
-    NSLayoutConstraint *_iconImageViewWidgetConstraint;
-    NSLayoutConstraint *_subtitleHeightConstraint;
-    NSLayoutConstraint *_subtitleTopConstraint;
-    UIStackView *_contentStackView;
-    UIStackView *_labelsStackView;
+    UIViewController *_parentViewController;
+    id <WFParameterValuePickerTableViewCellDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
-@property(readonly, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
-@property(readonly, nonatomic) NSLayoutConstraint *subtitleTopConstraint; // @synthesize subtitleTopConstraint=_subtitleTopConstraint;
-@property(readonly, nonatomic) NSLayoutConstraint *subtitleHeightConstraint; // @synthesize subtitleHeightConstraint=_subtitleHeightConstraint;
-@property(readonly, nonatomic) NSLayoutConstraint *iconImageViewWidgetConstraint; // @synthesize iconImageViewWidgetConstraint=_iconImageViewWidgetConstraint;
-@property(readonly, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
-@property(readonly, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(nonatomic) __weak id <WFParameterValuePickerTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
+@property(nonatomic, getter=isContainedInState) _Bool containedInState; // @synthesize containedInState=_containedInState;
 @property(retain, nonatomic) WFCodableAttributeBackedSubstitutableState *state; // @synthesize state=_state;
 @property(retain, nonatomic) WFParameter<WFParameterValuePickable> *parameter; // @synthesize parameter=_parameter;
 - (void)tintColorDidChange;

@@ -42,7 +42,7 @@
 - (id)recordingByAddingMissingEventsForRadar49654305;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToArchive:(struct RecordingArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 
 @end
 

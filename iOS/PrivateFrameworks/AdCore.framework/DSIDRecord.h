@@ -65,6 +65,7 @@
 - (_Bool)iAdIDRecordsDirty;
 @property(readonly, nonatomic) _Bool isRestrictedByApple;
 - (id)idAccountsDictionaryRepresentation;
+- (id)_parseItunesFlags;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)encryptedIDForClientType:(long long)arg1;

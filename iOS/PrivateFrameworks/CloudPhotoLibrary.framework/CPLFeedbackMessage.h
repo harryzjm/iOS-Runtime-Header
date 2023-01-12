@@ -11,14 +11,17 @@
 @interface CPLFeedbackMessage : NSObject
 {
     NSDate *_creationDate;
+    NSString *_libraryIdentifier;
     NSString *_feedbackType;
 }
 
 + (id)feedbackType;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *feedbackType; // @synthesize feedbackType=_feedbackType;
+@property(readonly, nonatomic) NSString *libraryIdentifier; // @synthesize libraryIdentifier=_libraryIdentifier;
 @property(readonly, nonatomic) CPLServerFeedbackMessage *serverMessage;
-- (id)init;
+@property(readonly, nonatomic) NSString *libraryIdentifierDescription;
+- (id)initWithLibraryIdentifier:(id)arg1;
 
 @end
 

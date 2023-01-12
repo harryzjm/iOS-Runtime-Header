@@ -11,16 +11,19 @@
 @interface OSASymbolInfo : NSObject
 {
     unsigned char _uuid[16];
-    NSString *legacy_name;
     NSString *legacy_arch;
     _Bool _isAppleCode;
     unsigned long long _start;
     unsigned long long _size;
     NSString *_path;
+    NSString *_name;
+    NSString *_cpuArch;
 }
 
 - (void).cxx_destruct;
+@property(retain) NSString *cpuArch; // @synthesize cpuArch=_cpuArch;
 @property _Bool isAppleCode; // @synthesize isAppleCode=_isAppleCode;
+@property(retain) NSString *name; // @synthesize name=_name;
 @property(readonly) NSString *path; // @synthesize path=_path;
 @property unsigned long long size; // @synthesize size=_size;
 @property unsigned long long start; // @synthesize start=_start;

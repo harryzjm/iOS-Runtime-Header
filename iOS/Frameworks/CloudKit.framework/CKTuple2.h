@@ -15,6 +15,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id v2; // @synthesize v2=_v2;
 @property(retain, nonatomic) id v1; // @synthesize v1=_v1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)initWithObject1:(id)arg1 object2:(id)arg2;
 

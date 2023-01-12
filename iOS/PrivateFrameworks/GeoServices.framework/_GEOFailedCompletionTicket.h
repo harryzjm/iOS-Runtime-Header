@@ -20,10 +20,15 @@ __attribute__((visibility("hidden")))
 - (void)applyToPlaceInfo:(id)arg1;
 - (void)applyToCorrectedSearch:(id)arg1;
 - (void)submitWithAutoCompletionHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
+- (long long)highlightType;
+- (id)placeSummaryLayoutMetadata;
+- (_Bool)shouldUseDistanceFeatureServerResults;
 - (_Bool)showAutocompleteClientSource;
 - (_Bool)autocompleteTopSectionIsQuerySuggestions;
 - (id)sortPriorityMapping;
 - (id)clientRankingModel;
+- (_Bool)shouldEnableGrayscaleHighlighting;
+- (_Bool)hasShouldEnableGrayscaleHighlighting;
 - (_Bool)shouldDisplayNoResults;
 - (_Bool)hasShouldDisplayNoResults;
 - (double)retainSearchTime;

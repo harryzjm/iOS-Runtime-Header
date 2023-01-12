@@ -28,13 +28,13 @@
 - (id)init;
 
 // Remaining properties
-@property(nonatomic) double absoluteTimestamp;
-@property(copy, nonatomic) NSString *bundleID;
-@property(copy, nonatomic) NSDateInterval *dateInterval;
+@property(nonatomic) double absoluteTimestamp; // @dynamic absoluteTimestamp;
+@property(copy, nonatomic) NSString *bundleID; // @dynamic bundleID;
+@property(copy, nonatomic) NSDateInterval *dateInterval; // @dynamic dateInterval;
 @property(readonly, copy) NSString *debugDescription;
-@property(nonatomic) double duration;
+@property(nonatomic) double duration; // @dynamic duration;
 @property(readonly) unsigned long long hash;
-@property(nonatomic, getter=isStarting) _Bool starting;
+@property(nonatomic, getter=isStarting) _Bool starting; // @dynamic starting;
 @property(readonly) Class superclass;
 
 @end

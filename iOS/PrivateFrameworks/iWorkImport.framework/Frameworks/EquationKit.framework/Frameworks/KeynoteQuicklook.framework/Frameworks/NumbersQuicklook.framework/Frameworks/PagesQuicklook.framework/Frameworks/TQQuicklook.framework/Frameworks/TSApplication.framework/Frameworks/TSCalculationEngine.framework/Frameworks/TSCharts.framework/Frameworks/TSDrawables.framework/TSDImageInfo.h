@@ -38,19 +38,17 @@
 }
 
 + (id)presetKinds;
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3 reservedCount:(unsigned long long)arg4;
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
-+ (id)bootstrapPropertyMapForPresetIndex:(unsigned long long)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3 reservedCount:(unsigned long long)arg4;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
++ (id)bootstrapPropertyMapForPresetIndex:(unsigned long long)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (void)adjustIncomingImageGeometry:(id)arg1 maskGeometry:(id)arg2 forImageData:(id)arg3 maskedWithInstantAlphaPath:(id)arg4 withNaturalSize:(struct CGSize)arg5 forTargetImageGeometry:(id)arg6 withTargetMaskGeometry:(id)arg7;
-+ (id)i_thumbnailForImageData:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TSPData *adjustedImageData; // @synthesize adjustedImageData=mAdjustedImageData;
 @property(copy, nonatomic) TSDImageAdjustments *imageAdjustments; // @synthesize imageAdjustments=mImageAdjustments;
 @property(retain, nonatomic) TSDMaskInfo *maskInfo; // @synthesize maskInfo=mMaskInfo;
 - (id)style;
 @property(retain, nonatomic) TSPData *originalImageData; // @synthesize originalImageData=mOriginalImageData;
-@property(retain, nonatomic) TSPData *thumbnailImageData; // @synthesize thumbnailImageData=mThumbnailImageData;
-@property(retain, nonatomic) TSPData *imageData; // @synthesize imageData=mImageData;
+@property(readonly, retain, nonatomic) TSPData *imageData; // @synthesize imageData=mImageData;
 - (id)mediaDataForDragging;
 - (void)acceptVisitor:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
@@ -68,17 +66,17 @@
 - (id)typesToPromiseWhenCopyingSingleDrawable;
 - (_Bool)hasPDFDataForCopy;
 - (_Bool)isPDF;
-- (id)updatedMaskInfoGeometryForImageDraggedBy:(struct CGPoint)arg1;
 - (id)defaultMaskInfo;
 - (id)defaultMaskInfoWithContext:(id)arg1;
 - (_Bool)maskCanBeReset;
 - (_Bool)isMasked;
 - (id)objectForProperty:(int)arg1;
 @property(readonly, nonatomic) double descentForInlineLayout;
+@property(readonly, nonatomic) unsigned long long estimatedDataSizeForNewAdjustmentSentToServer;
 - (void)setAdjustedImageData:(id)arg1 thumbnailData:(id)arg2;
 @property(readonly, nonatomic) _Bool canAdjustImage;
 @property(retain, nonatomic) TSUBezierPath *instantAlphaPath;
-- (id)i_instantAlphaPathIgnoringNaturalSize;
+@property(readonly, nonatomic) TSUBezierPath *instantAlphaPathIgnoringNaturalSize;
 @property(readonly, nonatomic) _Bool canBeMasked;
 - (_Bool)canResetMediaSize;
 - (struct CGSize)rawDataSize;
@@ -86,7 +84,10 @@
 - (struct CGSize)originalSize;
 - (void)setStyle:(id)arg1;
 @property(readonly, nonatomic) TSPData *imageDataForExport;
+- (void)i_forciblyRegenerateThumbnail;
+- (void)p_setImageData:(id)arg1 thumbnailData:(id)arg2;
 - (void)setImageData:(id)arg1 thumbnailData:(id)arg2;
+@property(retain, nonatomic) TSPData *imageDataNonnull;
 - (id)mediaFileType;
 - (id)mediaDisplayName;
 - (_Bool)p_canCopy:(id)arg1;
@@ -102,6 +103,8 @@
 - (id)infoForSelectionPath:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *childInfos;
 - (id)styleIdentifierTemplateForNewPreset;
+- (id)typeName;
+@property(readonly, nonatomic) _Bool shouldGenerateThumbnails;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
@@ -125,12 +128,13 @@
 @property(nonatomic) _Bool shouldTracePDFData;
 @property(retain, nonatomic) TSPData *enhancedImageData;
 @property(retain, nonatomic) TSPData *thumbnailAdjustedImageData;
+@property(retain, nonatomic) TSPData *thumbnailImageData;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct ImageArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)p_upgradeImageThumbnail;
 - (void)p_upgradeImageGeometry;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct ImageArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 // Remaining properties
 @property(readonly, nonatomic, getter=isAnchoredToText) _Bool anchoredToText; // @dynamic anchoredToText;

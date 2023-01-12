@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_0c0a1494)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_0c0a1494)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTAStarFuzzyMatchingConfig *config;
 @property(readonly, nonatomic) NSString *target;
 @property(readonly, nonatomic) NSString *query;

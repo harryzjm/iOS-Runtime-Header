@@ -6,12 +6,16 @@
 
 #import <MTLCapture/NSObject-Protocol.h>
 
-@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSObject, NSString, NSURL;
+@class MTLAccelerationStructureDescriptor, MTLBinaryArchiveDescriptor, MTLCompileOptions, MTLComputePipelineDescriptor, MTLCounterSampleBufferDescriptor, MTLDepthStencilDescriptor, MTLHeapDescriptor, MTLIndirectCommandBufferDescriptor, MTLRasterizationRateMapDescriptor, MTLRenderPipelineDescriptor, MTLSamplerDescriptor, MTLSharedEventHandle, MTLStitchedLibraryDescriptor, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSBundle, NSObject, NSString, NSURL;
 @protocol MTLAccelerationStructure, MTLArgumentEncoder, MTLBinaryArchive, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLCounterSampleBuffer, MTLDepthStencilState, MTLDynamicLibrary, MTLEvent, MTLFence, MTLFunction, MTLHeap, MTLIndirectCommandBuffer, MTLLibrary, MTLRasterizationRateMap, MTLRenderPipelineState, MTLSamplerState, MTLSharedEvent, MTLTexture, OS_dispatch_data;
 
 @protocol MTLDevice <NSObject>
+@property(readonly) _Bool supportsPrimitiveMotionBlur;
+@property(readonly) _Bool supportsRaytracingFromRender;
+@property(readonly) _Bool supportsFunctionPointersFromRender;
 @property(readonly) _Bool supportsFunctionPointers;
 @property(readonly) _Bool supportsRaytracing;
+@property(readonly) _Bool supportsRenderDynamicLibraries;
 @property(readonly) _Bool supportsDynamicLibraries;
 @property(readonly) NSArray *counterSets;
 @property(readonly) unsigned long long maxBufferLength;
@@ -24,6 +28,7 @@
 @property(readonly, getter=areBarycentricCoordsSupported) _Bool barycentricCoordsSupported;
 @property(readonly) _Bool supportsPullModelInterpolation;
 @property(readonly) _Bool supportsBCTextureCompression;
+@property(readonly) _Bool supportsQueryTextureLOD;
 @property(readonly) _Bool supports32BitMSAA;
 @property(readonly) _Bool supports32BitFloatFiltering;
 @property(readonly, getter=areRasterOrderGroupsSupported) _Bool rasterOrderGroupsSupported;
@@ -75,6 +80,8 @@
 - (void)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 completionHandler:(void (^)(id <MTLRenderPipelineState>, NSError *))arg2;
 - (id <MTLRenderPipelineState>)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id <MTLRenderPipelineState>)newRenderPipelineStateWithDescriptor:(MTLRenderPipelineDescriptor *)arg1 error:(id *)arg2;
+- (void)newLibraryWithStitchedDescriptor:(MTLStitchedLibraryDescriptor *)arg1 completionHandler:(void (^)(id <MTLLibrary>, NSError *))arg2;
+- (id <MTLLibrary>)newLibraryWithStitchedDescriptor:(MTLStitchedLibraryDescriptor *)arg1 error:(id *)arg2;
 - (void)newLibraryWithSource:(NSString *)arg1 options:(MTLCompileOptions *)arg2 completionHandler:(void (^)(id <MTLLibrary>, NSError *))arg3;
 - (id <MTLLibrary>)newLibraryWithSource:(NSString *)arg1 options:(MTLCompileOptions *)arg2 error:(id *)arg3;
 - (id <MTLLibrary>)newLibraryWithData:(NSObject<OS_dispatch_data> *)arg1 error:(id *)arg2;

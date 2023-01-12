@@ -6,7 +6,7 @@
 
 #import <Photos/PHImageCacheDelegate-Protocol.h>
 
-@class NSMutableSet, NSObject, NSString, PHImageCache, PHPhotoLibrary;
+@class NSMutableSet, NSObject, NSString, PHImageCache;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PHCachingImageManager <PHImageCacheDelegate>
@@ -16,7 +16,6 @@
     PHImageCache *_imageCache;
     _Bool _imageCacheCommitScheduled;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    PHPhotoLibrary *_photoLibrary;
     NSObject<OS_dispatch_source> *_memoryEventSource;
     _Bool _allowsCachingHighQualityImages;
 }
@@ -38,7 +37,7 @@
 - (void)_handleMemoryWarning;
 - (void)_preheatImageTable:(id)arg1 forAssets:(id)arg2;
 - (id)_imageTableForPreheatingDegradedOpportunisticRequestsWithPhotoLibrary:(id)arg1;
-- (id)_tableFormats;
+- (id)_tableFormatsForLibrary:(id)arg1;
 - (void)additionalWorkForImageRequestCompletedWithResult:(id)arg1 request:(id)arg2 context:(id)arg3;
 - (id)init;
 

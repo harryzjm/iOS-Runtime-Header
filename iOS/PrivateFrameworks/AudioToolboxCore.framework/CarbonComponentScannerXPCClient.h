@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)rescan:(id)arg1 added:(struct AudioComponentVector *)arg2 removed:(struct AudioComponentVector *)arg3;
+- (void)rescan:(id)arg1 added:(void *)arg2 removed:(void *)arg3;
 - (struct AudioComponentVector)initialScan:(id)arg1;
 - (void)handleConnectionError:(_Bool)arg1;
 - (id)xpcConnection;

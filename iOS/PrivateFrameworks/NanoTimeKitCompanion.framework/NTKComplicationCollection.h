@@ -29,6 +29,8 @@
     NSUUID *_deviceUUID;
 }
 
++ (id)_bundleForWatchKitAppID:(id)arg1;
++ (id)lsSDKVersionForApplicationID:(id)arg1;
 + (id)sharedRemoteCollection;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasLoaded; // @synthesize hasLoaded=_hasLoaded;
@@ -60,7 +62,6 @@
 - (void)removeComplicationSampleTemplatesForClientIdentifier:(id)arg1 descriptor:(id)arg2;
 - (void)setComplicationDescriptors:(id)arg1 forClientIdentifier:(id)arg2;
 - (void)setLocalizableSampleTemplate:(id)arg1 forClientIdentifier:(id)arg2 descriptor:(id)arg3 family:(long long)arg4;
-- (id)_bundleForWatchKitAppID:(id)arg1;
 - (id)complicationDescriptorsForClientIdentifier:(id)arg1;
 - (id)sampleTemplateForClientIdentifier:(id)arg1 descriptor:(id)arg2 applicationID:(id)arg3 family:(long long)arg4;
 - (_Bool)hasSampleTemplateForClientIdentifier:(id)arg1 descriptor:(id)arg2 family:(long long)arg3;

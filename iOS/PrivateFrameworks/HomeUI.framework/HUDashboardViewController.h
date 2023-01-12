@@ -10,20 +10,20 @@
 #import <HomeUI/HFUserObserver-Protocol.h>
 #import <HomeUI/HUBannerCellDelegate-Protocol.h>
 #import <HomeUI/HUDashboardItemManagerDelegate-Protocol.h>
-#import <HomeUI/HUDashboardMenuAddActionDelegate-Protocol.h>
 #import <HomeUI/HUDashboardMenuNavigationActionDelegate-Protocol.h>
 #import <HomeUI/HUDashboardScrollingAnimationControllerDelegate-Protocol.h>
 #import <HomeUI/HUGridEmptyHomeViewDelegate-Protocol.h>
 #import <HomeUI/HUHomeKitObjectPresenting-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
 #import <HomeUI/HUPrototypeLayoutOptionsEditorViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUSoftwareUpdateUIPresentationDelegate-Protocol.h>
 #import <HomeUI/UIDropInteractionDelegate-Protocol.h>
 #import <HomeUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class AMSUIUpdateMultiUserTokenTask, HUDashboardContext, HUDashboardItemManager, HUDashboardLargeTitleButton, HUDashboardNavigationButton, HUDashboardScrollingAnimationController, HUDynamicScrollingOptions, HUGridActionSetListViewController, HUGridCameraListViewController, HUGridEmptyHomeView, HUGridLayoutOptions, HUGridStatusListViewController, HUHomeStatusViewController, HUWallpaperView, NAFuture, NSMutableArray, NSMutableDictionary, NSString, NSUserDefaults, UIDropInteraction;
+@class AMSUIUpdateMultiUserTokenTask, HUCameraController, HUDashboardContext, HUDashboardItemManager, HUDashboardNavigationButton, HUDashboardScrollingAnimationController, HUGridActionSetListViewController, HUGridCameraListViewController, HUGridEmptyHomeView, HUGridLayoutOptions, HUGridStatusListViewController, HUROARUpgradeView, HUWallpaperView, NAFuture, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUserDefaults, UIButton, UIDropInteraction, UIListContentConfiguration, UINavigationController, UIVisualEffectView;
 @protocol HUDashboardNavigator, HUDashboardViewControllerDelegate;
 
-@interface HUDashboardViewController <HFAccessoryObserver, HUDashboardItemManagerDelegate, HUDashboardScrollingAnimationControllerDelegate, HUGridEmptyHomeViewDelegate, HUPrototypeLayoutOptionsEditorViewControllerDelegate, UIDropInteractionDelegate, UIViewControllerTransitioningDelegate, HFHomeObserver, HUBannerCellDelegate, HFHomeManagerObserver, HFUserObserver, HUPresentationDelegate, HUHomeKitObjectPresenting, HUDashboardMenuNavigationActionDelegate, HUDashboardMenuAddActionDelegate>
+@interface HUDashboardViewController <HFAccessoryObserver, HUDashboardItemManagerDelegate, HUDashboardScrollingAnimationControllerDelegate, HUGridEmptyHomeViewDelegate, HUPrototypeLayoutOptionsEditorViewControllerDelegate, UIDropInteractionDelegate, UIViewControllerTransitioningDelegate, HFHomeObserver, HUBannerCellDelegate, HFHomeManagerObserver, HFUserObserver, HUSoftwareUpdateUIPresentationDelegate, HUPresentationDelegate, HUHomeKitObjectPresenting, HUDashboardMenuNavigationActionDelegate>
 {
     _Bool _useCustomDragAndDrop;
     _Bool _isHomeViewShown;
@@ -35,33 +35,41 @@
     _Bool _wallpapersWerePreloaded;
     _Bool _shouldTrackProgrammableSwitchActivations;
     HUGridStatusListViewController *_statusListViewController;
-    HUHomeStatusViewController *_homeStatusViewController;
     HUGridActionSetListViewController *_actionSetListViewController;
     HUGridCameraListViewController *_cameraListViewController;
     id <HUDashboardViewControllerDelegate> _delegate;
     id <HUDashboardNavigator> _dashboardNavigator;
     HUDashboardItemManager *_dashboardItemManager;
     HUGridEmptyHomeView *_emptyHomeView;
-    HUDashboardLargeTitleButton *_largeTitleButton;
-    HUDynamicScrollingOptions *_dynamicScrollingOptions;
+    UIButton *_largeTitleButton;
     HUDashboardNavigationButton *_navigationAddButton;
+    HUDashboardNavigationButton *_navigationAnnounceButton;
     HUDashboardNavigationButton *_navigationHomesAndRoomsButton;
     HUDashboardNavigationButton *_navigationEditDoneButton;
-    HUDashboardScrollingAnimationController *_statusAnimationController;
     HUDashboardScrollingAnimationController *_headlineAnimationController;
     HUDashboardScrollingAnimationController *_finishSetupAnimationController;
     NSMutableArray *_viewFullyVisibleFutures;
+    NSMutableSet *_itemsWaitingOnViewVisibility;
     UIDropInteraction *_dropInteraction;
     NSMutableDictionary *_cachedLayoutOptionsKeyedBySectionIdentifier;
+    UIListContentConfiguration *_cachedHeaderContentConfiguration;
     HUWallpaperView *_wallpaperView;
     long long __debug_nontrivialUpdateRequestCount;
     NAFuture *_accountFuture;
     NSUserDefaults *_defaults;
     AMSUIUpdateMultiUserTokenTask *_multiUserTokenFixTask;
+    UINavigationController *_proxCardNavigationController;
+    UIVisualEffectView *_backdropView;
+    NSArray *_upgradeViewConstraints;
+    HUROARUpgradeView *_homeUpgradedToRoarView;
     struct UIEdgeInsets _displayedSystemContentInset;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HUROARUpgradeView *homeUpgradedToRoarView; // @synthesize homeUpgradedToRoarView=_homeUpgradedToRoarView;
+@property(retain, nonatomic) NSArray *upgradeViewConstraints; // @synthesize upgradeViewConstraints=_upgradeViewConstraints;
+@property(retain, nonatomic) UIVisualEffectView *backdropView; // @synthesize backdropView=_backdropView;
+@property(retain, nonatomic) UINavigationController *proxCardNavigationController; // @synthesize proxCardNavigationController=_proxCardNavigationController;
 @property(retain, nonatomic) AMSUIUpdateMultiUserTokenTask *multiUserTokenFixTask; // @synthesize multiUserTokenFixTask=_multiUserTokenFixTask;
 @property(retain, nonatomic) NSUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property(retain, nonatomic) NAFuture *accountFuture; // @synthesize accountFuture=_accountFuture;
@@ -70,21 +78,22 @@
 @property(nonatomic) _Bool shouldTrackProgrammableSwitchActivations; // @synthesize shouldTrackProgrammableSwitchActivations=_shouldTrackProgrammableSwitchActivations;
 @property(nonatomic) _Bool wallpapersWerePreloaded; // @synthesize wallpapersWerePreloaded=_wallpapersWerePreloaded;
 @property(retain, nonatomic) HUWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
+@property(retain, nonatomic) UIListContentConfiguration *cachedHeaderContentConfiguration; // @synthesize cachedHeaderContentConfiguration=_cachedHeaderContentConfiguration;
 @property(retain, nonatomic) NSMutableDictionary *cachedLayoutOptionsKeyedBySectionIdentifier; // @synthesize cachedLayoutOptionsKeyedBySectionIdentifier=_cachedLayoutOptionsKeyedBySectionIdentifier;
 @property(retain, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
+@property(retain, nonatomic) NSMutableSet *itemsWaitingOnViewVisibility; // @synthesize itemsWaitingOnViewVisibility=_itemsWaitingOnViewVisibility;
 @property(retain, nonatomic) NSMutableArray *viewFullyVisibleFutures; // @synthesize viewFullyVisibleFutures=_viewFullyVisibleFutures;
 @property(nonatomic) _Bool viewIsFullyVisible; // @synthesize viewIsFullyVisible=_viewIsFullyVisible;
 @property(retain, nonatomic) HUDashboardScrollingAnimationController *finishSetupAnimationController; // @synthesize finishSetupAnimationController=_finishSetupAnimationController;
 @property(retain, nonatomic) HUDashboardScrollingAnimationController *headlineAnimationController; // @synthesize headlineAnimationController=_headlineAnimationController;
-@property(retain, nonatomic) HUDashboardScrollingAnimationController *statusAnimationController; // @synthesize statusAnimationController=_statusAnimationController;
 @property(nonatomic) _Bool isDisplayingEmptyHomeDashboard; // @synthesize isDisplayingEmptyHomeDashboard=_isDisplayingEmptyHomeDashboard;
 @property(nonatomic) _Bool isTransitioningSizes; // @synthesize isTransitioningSizes=_isTransitioningSizes;
 @property(nonatomic) _Bool hasFinishedInitialDashboardLoad; // @synthesize hasFinishedInitialDashboardLoad=_hasFinishedInitialDashboardLoad;
 @property(retain, nonatomic) HUDashboardNavigationButton *navigationEditDoneButton; // @synthesize navigationEditDoneButton=_navigationEditDoneButton;
 @property(retain, nonatomic) HUDashboardNavigationButton *navigationHomesAndRoomsButton; // @synthesize navigationHomesAndRoomsButton=_navigationHomesAndRoomsButton;
+@property(retain, nonatomic) HUDashboardNavigationButton *navigationAnnounceButton; // @synthesize navigationAnnounceButton=_navigationAnnounceButton;
 @property(retain, nonatomic) HUDashboardNavigationButton *navigationAddButton; // @synthesize navigationAddButton=_navigationAddButton;
-@property(retain, nonatomic) HUDynamicScrollingOptions *dynamicScrollingOptions; // @synthesize dynamicScrollingOptions=_dynamicScrollingOptions;
-@property(retain, nonatomic) HUDashboardLargeTitleButton *largeTitleButton; // @synthesize largeTitleButton=_largeTitleButton;
+@property(retain, nonatomic) UIButton *largeTitleButton; // @synthesize largeTitleButton=_largeTitleButton;
 @property(readonly, nonatomic) HUGridEmptyHomeView *emptyHomeView; // @synthesize emptyHomeView=_emptyHomeView;
 @property(nonatomic) __weak HUDashboardItemManager *dashboardItemManager; // @synthesize dashboardItemManager=_dashboardItemManager;
 @property(nonatomic) __weak id <HUDashboardNavigator> dashboardNavigator; // @synthesize dashboardNavigator=_dashboardNavigator;
@@ -93,19 +102,20 @@
 @property(nonatomic) __weak id <HUDashboardViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)setUseCustomDragAndDrop:(_Bool)arg1;
 - (_Bool)useCustomDragAndDrop;
+- (void)bannerCell:(id)arg1 footerViewTapped:(id)arg2;
+- (_Bool)bannerCell:(id)arg1 shouldReceiveFooterViewTaps:(id)arg2;
 - (_Bool)_canShowWhileLocked;
 - (void)accessory:(id)arg1 service:(id)arg2 didUpdateValueForCharacteristic:(id)arg3;
 - (void)bounceItem:(id)arg1;
+- (id)_markAccessoriesAsUserNotified:(id)arg1;
 - (_Bool)homeHasAccessories;
 - (void)_setupLargeTitleButtonIfNecessary;
 - (void)_updateShowLargeTitleEditButtonAnimated:(_Bool)arg1;
-- (void)_updateEditButtonAnimated:(_Bool)arg1;
 - (id)_navigationHost;
 - (id)_quickControlDetailViewControllerForItem:(id)arg1;
 - (_Bool)_hasDetailViewControllerForItem:(id)arg1;
 - (void)_updateEmptyHomeDashboardStateIfNeededAnimated:(_Bool)arg1;
-- (void)_updateScrollingAnimationControllersAnimated:(_Bool)arg1;
-- (void)_updateAllowedNavigationOverlap;
+- (void)_configureRoarUpgradeView;
 - (void)setNavigationButtons:(id)arg1 forEdge:(unsigned long long)arg2;
 - (void)_updateRightBarButtons;
 - (void)_updateLeftBarButtons;
@@ -119,6 +129,8 @@
 @property(retain, nonatomic) HUGridLayoutOptions *layoutOptions;
 - (id)_defaultLayoutOptionsForViewSize:(struct CGSize)arg1;
 - (id)_performTapActionForItem:(id)arg1;
+- (id)softwareUpdateUIManager:(id)arg1 dismissViewController:(id)arg2;
+- (id)softwareUpdateUIManager:(id)arg1 presentViewController:(id)arg2;
 - (void)addSceneTileAction:(id)arg1;
 - (id)actionSetListViewController:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
@@ -130,13 +142,8 @@
 - (id)finishPresentation:(id)arg1 animated:(_Bool)arg2;
 - (void)layoutOptionsEditorDidFinish:(id)arg1;
 - (void)layoutOptionsEditor:(id)arg1 didUpdateLayoutOptions:(id)arg2;
-- (void)scrollViewDidScroll:(id)arg1;
 - (void)dashboardDidUpdateDashboardContext:(id)arg1;
 - (void)dashboardItemManagerDidUpdateWallpaper:(id)arg1;
-- (double)_scaleFactorWithCurrentScrollDistance:(struct CGSize)arg1 dynamicScrollingSetting:(CDStruct_d6c048b4)arg2 timingFunction:(id)arg3 iterationCount:(long long)arg4;
-- (struct CGSize)collectionView:(id)arg1 gridLayout:(id)arg2 positionOffsetForItemAtIndexPath:(id)arg3 scrollDistance:(struct CGSize)arg4;
-- (double)collectionView:(id)arg1 gridLayout:(id)arg2 alphaForItemAtIndexPath:(id)arg3 scrollDistance:(struct CGSize)arg4;
-- (_Bool)collectionView:(id)arg1 gridLayout:(id)arg2 wantsScrollingAdjustmentsForItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
@@ -149,10 +156,14 @@
 - (void)homeKitDispatcher:(id)arg1 manager:(id)arg2 didChangeHome:(id)arg3;
 - (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
 - (void)homeManager:(id)arg1 didAddHome:(id)arg2;
+- (void)homeDidUpdateToROAR:(id)arg1;
+- (void)home:(id)arg1 didUpdateRoom:(id)arg2 forAccessory:(id)arg3;
 - (void)home:(id)arg1 didUpdateNameForRoom:(id)arg2;
 - (void)home:(id)arg1 didRemoveRoom:(id)arg2;
 - (void)home:(id)arg1 didAddRoom:(id)arg2;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
+- (void)home:(id)arg1 didRemoveResidentDevice:(id)arg2;
+- (void)home:(id)arg1 didAddResidentDevice:(id)arg2;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)homeDidUpdateName:(id)arg1;
 - (void)itemManager:(id)arg1 didInsertItem:(id)arg2 atIndexPath:(id)arg3;
@@ -160,6 +171,9 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
+- (void)diffableDataItemManager:(id)arg1 didUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4;
+- (void)diffableDataItemManager:(id)arg1 willUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4 isInitialLoad:(_Bool)arg5;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
 - (id)detailsViewControllerForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
@@ -174,6 +188,7 @@
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)contentSizeCategoryDidChange;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
@@ -195,8 +210,6 @@
 - (id)presentCameraProfile:(id)arg1 forCameraClip:(id)arg2 animated:(_Bool)arg3;
 - (id)presentCameraProfile:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 animated:(_Bool)arg4;
 - (id)presentHomeKitObject:(id)arg1 destination:(unsigned long long)arg2 animated:(_Bool)arg3;
-- (void)addSceneToHome:(id)arg1;
-- (void)addAccessoryToHome:(id)arg1;
 - (_Bool)canEditScreen;
 - (void)startEditing;
 - (void)showRoomSettings:(id)arg1;
@@ -205,24 +218,24 @@
 - (void)showRoom:(id)arg1;
 - (void)showHome:(id)arg1;
 - (void)_didTapLargeTitleButton:(id)arg1;
-- (void)_didTapHomesAndRoomsButton:(id)arg1;
 - (void)showDashboardEditor;
 - (void)_finishEditing:(id)arg1;
 - (void)_startEditing:(id)arg1;
+- (void)welcomeUISelected:(id)arg1;
 - (void)showAddSceneMenu;
-- (void)showAddMenu:(id)arg1;
 - (void)showAddSceneNoAccessoriesAlert;
 - (unsigned long long)_incomingInvitationsCount;
 - (void)_setUpHomesAndRoomsMenuForButton:(id)arg1;
+@property(readonly, nonatomic) HUCameraController *ppt_cameraController;
 @property(readonly, nonatomic) HUGridCameraListViewController *cameraListViewController; // @synthesize cameraListViewController=_cameraListViewController;
 @property(readonly, nonatomic) HUGridActionSetListViewController *actionSetListViewController; // @synthesize actionSetListViewController=_actionSetListViewController;
-@property(readonly, nonatomic) HUHomeStatusViewController *homeStatusViewController; // @synthesize homeStatusViewController=_homeStatusViewController;
 @property(readonly, nonatomic) HUGridStatusListViewController *statusListViewController; // @synthesize statusListViewController=_statusListViewController;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) HUDashboardContext *context;
 - (id)_dashboardItemManager;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 delegate:(id)arg2;
+- (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
 - (id)init;
 
 // Remaining properties

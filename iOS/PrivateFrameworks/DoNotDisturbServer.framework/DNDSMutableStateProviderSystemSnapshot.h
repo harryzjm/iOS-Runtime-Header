@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDate, NSDictionary;
 
 @interface DNDSMutableStateProviderSystemSnapshot
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) NSDate *lastUpdate; // @dynamic lastUpdate;
 @property(nonatomic) unsigned long long lostModeState; // @dynamic lostModeState;
 @property(nonatomic) unsigned long long interruptionBehaviorSetting; // @dynamic interruptionBehaviorSetting;
 @property(copy, nonatomic) NSDictionary *activeDateIntervalByAssertionUUID; // @dynamic activeDateIntervalByAssertionUUID;

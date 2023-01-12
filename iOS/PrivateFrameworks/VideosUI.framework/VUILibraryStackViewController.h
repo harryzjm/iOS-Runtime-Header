@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface VUILibraryStackViewController : UIViewController <UICollectionViewDelegate>
 {
+    double _lastAppearWidth;
     _Bool _requiresRelayout;
     NSIndexPath *_focusedIndexPath;
     VUILibraryStackView *_stackView;
@@ -32,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)configureWithCollectionView:(id)arg1;
 - (void)viewDidLoad;

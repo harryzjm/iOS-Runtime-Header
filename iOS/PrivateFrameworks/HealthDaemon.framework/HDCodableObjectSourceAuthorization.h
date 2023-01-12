@@ -14,6 +14,7 @@
 {
     long long _authorizationStatus;
     double _modificationDate;
+    NSData *_sessionUUID;
     NSData *_sourceUUID;
     struct {
         unsigned int authorizationStatus:1;
@@ -22,6 +23,7 @@
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
 @property(nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
 @property(nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property(retain, nonatomic) NSData *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
@@ -34,6 +36,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasSessionUUID;
 @property(nonatomic) _Bool hasModificationDate;
 @property(nonatomic) _Bool hasAuthorizationStatus;
 @property(readonly, nonatomic) _Bool hasSourceUUID;

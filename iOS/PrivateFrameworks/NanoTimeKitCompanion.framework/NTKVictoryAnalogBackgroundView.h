@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMediaTimingFunction, CLKDevice, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NTKVictoryLogoButton, UIImage;
+@class CAMediaTimingFunction, CLKDevice, NSArray, NSMutableArray, NSMutableDictionary, NTKVictoryLogoButton, UIImage;
 @protocol NTKVictoryAnalogBackgroundColorPalette, NTKVictoryAnalogBackgroundViewDelegate;
 
 @interface NTKVictoryAnalogBackgroundView : UIView
@@ -19,14 +19,8 @@
     NSArray *_largeHourMarkerLabels;
     NSArray *_mediumNumberLayers;
     NSMutableDictionary *_smallHourMarkerLabelsByIndex;
-    NSArray *_temporaryNumberLayers;
     NSArray *_activeDigitIndices;
     _Bool _canonicalDigitStatesByStyle[3][12];
-    NSDictionary *_transitionDigitTargetStates;
-    NSArray *_transitionDigitIndices;
-    NSArray *_transitionStaticDigitIndices;
-    unsigned long long _transitionFromStyle;
-    unsigned long long _transitionToStyle;
     CAMediaTimingFunction *_transitionTimingFunction;
     NTKVictoryLogoButton *_logoButton;
     NTKVictoryLogoButton *_smallLogoButton;
@@ -52,8 +46,6 @@
 @property(retain, nonatomic) id <NTKVictoryAnalogBackgroundColorPalette> palette; // @synthesize palette=_palette;
 - (id)_dotImage;
 - (id)_circularDialLogoImage;
-- (id)_bigNumberInitialTransforms;
-- (struct CGAffineTransform)_affineTransformFromTransform3D:(struct CATransform3D)arg1;
 - (id)_createAndAddLayersWithCount:(unsigned long long)arg1;
 - (id)_createSmallHourMarkerLabelForIndex:(id)arg1;
 - (id)_createHourMarkerLabelsWithFontSize:(double)arg1;
@@ -68,11 +60,11 @@
 - (struct CGColor *)_layerTransitionColorFromColor:(id)arg1 toColor:(id)arg2 amount:(double)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3 style:(unsigned long long)arg4 animateElements:(_Bool)arg5;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3 style:(unsigned long long)arg4;
+- (id)digitForLargeNumberAtIndex:(long long)arg1;
 - (void)_applyPalette:(id)arg1 forStyle:(unsigned long long)arg2;
+- (struct CGSize)logoSizeForStyle:(unsigned long long)arg1;
 - (struct CGPoint)logoPositionForStyle:(unsigned long long)arg1;
-- (void)_clearTransitionStateForStyle:(unsigned long long)arg1;
-- (struct CATransform3D)_intermediateTransformForBigNumberAtIndex:(unsigned long long)arg1 fraction:(double)arg2;
-- (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3 fromPalette:(id)arg4 toPalette:(id)arg5;
+- (void)_clearTransitionStateForStyle:(unsigned long long)arg1 palette:(id)arg2;
 - (id)_activeRingObjects;
 - (id)_activeRingLayers;
 - (void)applyTransitionFraction:(double)arg1 fromOlympusStyle:(unsigned long long)arg2 toOlympusStyle:(unsigned long long)arg3;

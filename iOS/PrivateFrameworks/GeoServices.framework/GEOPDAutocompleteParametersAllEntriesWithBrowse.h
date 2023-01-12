@@ -8,17 +8,20 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntry, GEOPDRetainedSearchMetadata, GEOPDVenueIdentifier, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteEntry, GEOPDRetainedSearchMetadata, GEOPDSSearchEvChargingParameters, GEOPDVenueIdentifier, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteParametersAllEntriesWithBrowse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _knownRefinementTypes;
     CDStruct_95bda58d _supportedAutocompleteResultCellTypes;
+    CDStruct_95bda58d _supportedHighlightTypes;
     CDStruct_95bda58d _supportedListTypes;
+    CDStruct_95bda58d _supportedPlaceSummaryFormatTypes;
     NSData *_categorySuggestionEntryMetadata;
     GEOPDAutocompleteEntry *_categorySuggestionEntry;
+    GEOPDSSearchEvChargingParameters *_evChargingParameters;
     GEOPDAutocompleteEntry *_querySuggestionEntry;
     NSString *_query;
     GEOPDRetainedSearchMetadata *_retainedSearch;
@@ -29,6 +32,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _readerLock;
     int _maxQueryBuilderSuggestions;
     int _maxResults;
+    int _placeSummaryRevision;
     _Bool _highlightDiff;
     _Bool _interleaveCategorySuggestions;
     _Bool _supportClientRankingFeatureMetadata;
@@ -39,6 +43,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_maxQueryBuilderSuggestions:1;
         unsigned int has_maxResults:1;
+        unsigned int has_placeSummaryRevision:1;
         unsigned int has_highlightDiff:1;
         unsigned int has_interleaveCategorySuggestions:1;
         unsigned int has_supportClientRankingFeatureMetadata:1;
@@ -47,10 +52,14 @@ __attribute__((visibility("hidden")))
         unsigned int has_supportSectionHeader:1;
         unsigned int has_supportUnresolvedDirectionIntent:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_knownRefinementTypes:1;
         unsigned int read_supportedAutocompleteResultCellTypes:1;
+        unsigned int read_supportedHighlightTypes:1;
         unsigned int read_supportedListTypes:1;
+        unsigned int read_supportedPlaceSummaryFormatTypes:1;
         unsigned int read_categorySuggestionEntryMetadata:1;
         unsigned int read_categorySuggestionEntry:1;
+        unsigned int read_evChargingParameters:1;
         unsigned int read_querySuggestionEntry:1;
         unsigned int read_query:1;
         unsigned int read_retainedSearch:1;
@@ -69,7 +78,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -78,6 +88,36 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsSupportedHighlightTypes:(id)arg1;
+- (id)supportedHighlightTypesAsString:(int)arg1;
+- (void)setSupportedHighlightTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedHighlightTypeAtIndex:(unsigned long long)arg1;
+- (void)addSupportedHighlightType:(int)arg1;
+- (void)clearSupportedHighlightTypes;
+@property(readonly, nonatomic) int *supportedHighlightTypes;
+@property(readonly, nonatomic) unsigned long long supportedHighlightTypesCount;
+@property(retain, nonatomic) GEOPDSSearchEvChargingParameters *evChargingParameters;
+@property(readonly, nonatomic) _Bool hasEvChargingParameters;
+- (int)StringAsSupportedPlaceSummaryFormatTypes:(id)arg1;
+- (id)supportedPlaceSummaryFormatTypesAsString:(int)arg1;
+- (void)setSupportedPlaceSummaryFormatTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedPlaceSummaryFormatTypeAtIndex:(unsigned long long)arg1;
+- (void)addSupportedPlaceSummaryFormatType:(int)arg1;
+- (void)clearSupportedPlaceSummaryFormatTypes;
+@property(readonly, nonatomic) int *supportedPlaceSummaryFormatTypes;
+@property(readonly, nonatomic) unsigned long long supportedPlaceSummaryFormatTypesCount;
+- (int)StringAsPlaceSummaryRevision:(id)arg1;
+- (id)placeSummaryRevisionAsString:(int)arg1;
+@property(nonatomic) _Bool hasPlaceSummaryRevision;
+@property(nonatomic) int placeSummaryRevision;
+- (int)StringAsKnownRefinementTypes:(id)arg1;
+- (id)knownRefinementTypesAsString:(int)arg1;
+- (void)setKnownRefinementTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (int)knownRefinementTypeAtIndex:(unsigned long long)arg1;
+- (void)addKnownRefinementType:(int)arg1;
+- (void)clearKnownRefinementTypes;
+@property(readonly, nonatomic) int *knownRefinementTypes;
+@property(readonly, nonatomic) unsigned long long knownRefinementTypesCount;
 @property(nonatomic) _Bool hasSupportRapAffordance;
 @property(nonatomic) _Bool supportRapAffordance;
 - (int)StringAsSupportedAutocompleteResultCellTypes:(id)arg1;

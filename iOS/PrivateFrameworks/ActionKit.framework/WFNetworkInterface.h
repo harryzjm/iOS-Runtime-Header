@@ -22,8 +22,6 @@
 - (id)ipAddressForFamily:(unsigned char)arg1;
 @property(readonly, nonatomic) NSString *IPv6Address;
 @property(readonly, nonatomic) NSString *IPv4Address;
-@property(readonly, nonatomic) NSString *BSSID;
-@property(readonly, nonatomic) NSString *SSID;
 - (id)initWithInterface:(id)arg1;
 
 @end

@@ -15,11 +15,11 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *replyDate; // @synthesize replyDate=_replyDate;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSDictionary *localizableMessage; // @synthesize localizableMessage=_localizableMessage;
 @property(nonatomic) unsigned char recipientIndex; // @synthesize recipientIndex=_recipientIndex;
-- (void)dealloc;
 
 @end
 

@@ -6,16 +6,16 @@
 
 @interface TSCH3DPlaneProjectRenderProcessor
 {
-    plane_849e6053 mPlane;
-    tvec3_17f03ce0 mProjPt;
-    box_a3bd9649 mBounds;
+    struct plane<glm::detail::tvec3<float>> _plane;
+    tvec3_17f03ce0 _projPt;
+    box_c9ef104e _bounds;
 }
 
-+ (id)processorWithPlane:(const plane_849e6053 *)arg1 projPt:(const tvec3_17f03ce0 *)arg2;
++ (id)processorWithPlane:(const void *)arg1 projPt:(const void *)arg2;
 - (id).cxx_construct;
-@property(readonly, nonatomic) const box_a3bd9649 *bounds; // @synthesize bounds=mBounds;
+@property(readonly, nonatomic) const void *bounds; // @synthesize bounds=_bounds;
 - (void)submit:(id)arg1;
-- (id)initWithPlane:(const plane_849e6053 *)arg1 projPt:(const tvec3_17f03ce0 *)arg2;
+- (id)initWithPlane:(const void *)arg1 projPt:(const void *)arg2;
 
 @end
 

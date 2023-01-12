@@ -32,6 +32,7 @@
 - (_Bool)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(_Bool)arg3;
 - (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
+@property(nonatomic) _Bool enabled;
 @property(nonatomic) __weak id <MFComposeSubjectViewDelegate> delegate; // @dynamic delegate;
 @property(copy, nonatomic) NSString *text;
 - (void)layoutManager:(id)arg1 didCompleteLayoutForTextContainer:(id)arg2 atEnd:(_Bool)arg3;

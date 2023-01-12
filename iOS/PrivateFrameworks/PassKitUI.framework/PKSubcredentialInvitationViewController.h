@@ -8,7 +8,7 @@
 #import <PassKitUI/PKSubcredentialInvitationProvisioningFlowControllerOperation-Protocol.h>
 #import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
-@class NSString, PKAppletSubcredentialSharingSession, PKHeroCardExplainationHeaderView, PKPeerPaymentContactResolver, PKSubcredentialInvitationFlowControllerContext;
+@class NSString, PKAppletSubcredentialSharingSession, PKContactResolver, PKHeroCardExplainationHeaderView, PKSubcredentialInvitationFlowControllerContext;
 @protocol PKSubcredentialInvitationFlowControllerProtocol, PKSubcredentialProvisioningViewModelProtocol;
 
 @interface PKSubcredentialInvitationViewController <PKExplanationViewControllerDelegate, PKSubcredentialInvitationProvisioningFlowControllerOperation, PKViewControllerPreflightable>
@@ -18,7 +18,7 @@
     id <PKSubcredentialProvisioningViewModelProtocol> _provisioningViewModel;
     id <PKSubcredentialProvisioningViewModelProtocol> _remoteProvisioningViewModel;
     NSString *_contactName;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     _Bool _shouldSurfaceRemoteDeviceProvisioningErrors;
     PKSubcredentialInvitationFlowControllerContext *_provisioningContext;
     id <PKSubcredentialInvitationFlowControllerProtocol> _flowController;

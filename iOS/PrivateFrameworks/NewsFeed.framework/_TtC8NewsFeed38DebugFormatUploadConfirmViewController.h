@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed38DebugFormatUploadConfirmViewController : UIViewController
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *editor;
     MISSING_TYPE *uploadService;
     MISSING_TYPE *tableView;
     MISSING_TYPE *sections;
-    MISSING_TYPE *results;
-    MISSING_TYPE *$__lazy_storage_$_versionLabel;
+    MISSING_TYPE *entries;
 }
 
 - (void).cxx_destruct;

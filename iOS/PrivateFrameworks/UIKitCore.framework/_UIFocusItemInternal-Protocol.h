@@ -13,6 +13,8 @@
 
 @optional
 @property(readonly, nonatomic, getter=_focusTouchSensitivityStyle) long long focusTouchSensitivityStyle;
+- (_Bool)_wantsKeyEventsWhenDeferred;
+- (long long)_systemDefaultFocusGroupPriority;
 - (struct CGRect)_globalFocusCastingFrameForHeading:(unsigned long long)arg1;
 - (_Bool)_drawsFocusRingWhenChildrenFocused;
 - (unsigned long long)_insertionIndexOfFocusLayerInView;

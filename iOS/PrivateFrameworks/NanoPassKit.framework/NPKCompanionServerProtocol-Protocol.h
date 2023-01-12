@@ -6,11 +6,13 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSError, NSSet, NSString, NSURL, NSUUID, PKAddSecureElementPassConfiguration, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitCommutePlan, PKVerificationChannel;
+@class NSData, NSDate, NSError, NSSet, NSString, NSURL, NSUUID, PKPaymentApplication, PKPaymentBalance, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitCommutePlan, PKVerificationChannel;
 
 @protocol NPKCompanionServerProtocol <PDXPCServiceExportedInterface>
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(NSString *)arg1 sessionData:(NSData *)arg2 handler:(void (^)(NSString *, unsigned long long, NSData *, NSError *))arg3;
-- (_Bool)canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg1;
+- (void)presentStandaloneTransaction:(long long)arg1 forPassUniqueIdentifier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)markPendingTransactionAsProcessedForPassWithUniqueID:(NSString *)arg1;
+- (void)fetchPendingTransactionForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentPass *, PKPaymentTransaction *, NSString *))arg2;
 - (void)noteForegroundVerificationObserverActive:(_Bool)arg1;
 - (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
 - (void)setCommutePlanReminder:(PKPaymentCommutePlanReminder *)arg1 forCommutePlan:(PKTransitCommutePlan *)arg2 pass:(PKPaymentPass *)arg3 completion:(void (^)(_Bool))arg4;

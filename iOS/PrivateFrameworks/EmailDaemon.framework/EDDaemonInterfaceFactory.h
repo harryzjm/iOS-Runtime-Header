@@ -18,6 +18,7 @@
 @property(retain, nonatomic) EDCategorySubsystem *categorySubsystem; // @synthesize categorySubsystem=_categorySubsystem;
 @property(readonly, nonatomic) EDPersistence *persistence; // @synthesize persistence=_persistence;
 - (id)newClientResumerWithClientState:(id)arg1;
+- (id)newDiagnosticInfoGathererWithServerRemoteClientsProvider:(id)arg1;
 - (id)newActivityRegistry;
 - (id)newVIPManagerInterface;
 - (id)sharedDonationController;

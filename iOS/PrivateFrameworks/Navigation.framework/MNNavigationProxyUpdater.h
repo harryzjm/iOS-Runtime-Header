@@ -26,7 +26,9 @@
 - (void)navigationSession:(id)arg1 didUpdateDestination:(id)arg2;
 - (void)navigationSession:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3;
 - (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4 rerouteReason:(unsigned long long)arg5;
+- (void)navigationSession:(id)arg1 didUpdateETAResponseForRoute:(id)arg2;
 - (void)navigationSession:(id)arg1 didUpdateDisplayETA:(id)arg2 remainingDistance:(id)arg3;
+- (void)navigationSession:(id)arg1 didArriveAtWaypoint:(id)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didUpdateStepNameInfo:(id)arg2;
 - (void)navigationSession:(id)arg1 matchedToStepIndex:(unsigned long long)arg2 segmentIndex:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didUpdateMatchedLocation:(id)arg2;
@@ -34,7 +36,7 @@
 - (int)_geoNavigationTypeForNavigationType:(int)arg1;
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
 - (void)setIsNavigatingInLowGuidance:(_Bool)arg1;
-- (void)setVoiceVolume:(unsigned long long)arg1;
+- (void)setVoiceGuidance:(unsigned long long)arg1;
 - (void)updateClusteredSectionSelectedRideForNavigationSession:(id)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)navigationSessionStopped:(id)arg1;

@@ -16,21 +16,25 @@
     struct os_unfair_lock_s _importInProgressLock;
     _Bool _importInProgress;
     ICDeviceBrowser *_deviceBrowser;
-    NSMutableDictionary *_importDeviceSources;
+    NSMutableDictionary *_importSources;
     NSHashTable *_observers;
     id _processInfoActivityToken;
 }
 
-+ (id)importSourceForUrls:(id)arg1;
++ (void)dispatchApply:(unsigned long long)arg1 withConcurrencyLimit:(unsigned long long)arg2 canceler:(id)arg3 ofBlock:(CDUnknownBlockType)arg4;
++ (_Bool)isDeviceVolumeAtURL:(id)arg1;
++ (_Bool)isValidFolderAtURL:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id processInfoActivityToken; // @synthesize processInfoActivityToken=_processInfoActivityToken;
 @property(nonatomic) _Bool importInProgress; // @synthesize importInProgress=_importInProgress;
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
-@property(retain, nonatomic) NSMutableDictionary *importDeviceSources; // @synthesize importDeviceSources=_importDeviceSources;
+@property(retain, nonatomic) NSMutableDictionary *importSources; // @synthesize importSources=_importSources;
 @property(retain, nonatomic) ICDeviceBrowser *deviceBrowser; // @synthesize deviceBrowser=_deviceBrowser;
 - (void)deviceBrowser:(id)arg1 didRemoveDevice:(id)arg2 moreGoing:(_Bool)arg3;
 - (void)deviceBrowser:(id)arg1 didAddDevice:(id)arg2 moreComing:(_Bool)arg3;
+- (void)_removeImportSourceWithUUID:(id)arg1;
+- (void)_addImportSource:(id)arg1;
 - (void)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 progress:(id *)arg5 delegate:(id)arg6 performanceDelegate:(id)arg7 atEnd:(CDUnknownBlockType)arg8;
 - (void)importAssets:(id)arg1 fromImportSource:(id)arg2 withOptions:(id)arg3 progress:(id *)arg4 delegate:(id)arg5 atEnd:(CDUnknownBlockType)arg6;
 - (id)importUrls:(id)arg1 intoLibrary:(id)arg2 withOptions:(id)arg3 delegate:(id)arg4 performanceDelegate:(id)arg5 atEnd:(CDUnknownBlockType)arg6;
@@ -40,8 +44,13 @@
 - (void)accessSourceList:(CDUnknownBlockType)arg1;
 - (void)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibraryAtURL:(id)arg3 withOptions:(id)arg4 progress:(id *)arg5 delegate:(id)arg6 performanceDelegate:(id)arg7 atEnd:(CDUnknownBlockType)arg8;
 - (id)importUrls:(id)arg1 withOptions:(id)arg2 delegate:(id)arg3 atEnd:(CDUnknownBlockType)arg4;
+- (void)removeImportSource:(id)arg1;
+- (void)_notifyOfFailureToAddImportSource:(id)arg1 exceptions:(id)arg2;
+- (void)addImportSourceForUrls:(id)arg1;
 - (_Bool)sourceIsConnected:(id)arg1;
 - (void)addImportControllerObserver:(id)arg1;
+- (id)supportedTypes;
+- (void)enableDeviceImport;
 - (id)init;
 
 // Remaining properties

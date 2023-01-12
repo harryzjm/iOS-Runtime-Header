@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (_Bool)_accessibilityCanRequestSetupControllerSafely;
 - (_Bool)_accessibilityFinishSetupIfAppropriate;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel;

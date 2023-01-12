@@ -6,7 +6,7 @@
 
 #import <TemplateKit/TLKTextAreaViewDelegate-Protocol.h>
 
-@class NSArray, NSString, TLKImage, TLKRichText, TLKTextAreaView;
+@class NSArray, NSString, TLKImage, TLKRichText, TLKTextAreaView, UIView;
 @protocol TLKDetailsViewDelegate;
 
 @interface TLKDetailsView <TLKTextAreaViewDelegate>
@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <TLKDetailsViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool isAccessoryViewBottomAligned;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (void)layoutMarginsDidChange;
@@ -27,6 +28,7 @@
 - (id)detailsFields;
 - (id)titleContainer;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic) UIView *accessoryView;
 @property(retain, nonatomic) NSString *footnoteButtonText;
 @property(retain, nonatomic) TLKRichText *footnote;
 @property(retain, nonatomic) NSArray *details;

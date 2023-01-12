@@ -6,12 +6,16 @@
 
 @interface GEOClientRankingModelFeatureSourceIdentifier
 {
-    int _source;
+    long long _sourceType;
+    int _suggestionType;
+    int _serverEntryType;
 }
 
-@property(readonly, nonatomic) int source; // @synthesize source=_source;
+@property(readonly, nonatomic) int serverEntryType; // @synthesize serverEntryType=_serverEntryType;
+@property(readonly, nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
+@property(readonly, nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
 - (long long)featureIdentifierType;
-- (id)initWithSource:(int)arg1;
+- (id)initWithSuggestionType:(int)arg1 serverEntryType:(int)arg2 sourceType:(long long)arg3;
 - (id)init;
 
 @end

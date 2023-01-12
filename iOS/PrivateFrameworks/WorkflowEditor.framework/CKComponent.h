@@ -13,13 +13,13 @@
 {
     CKComponentScopeHandle *_scopeHandle;
     struct CKComponentViewConfiguration _viewConfiguration;
-    struct unique_ptr<CKComponentMountInfo, std::__1::default_delete<CKComponentMountInfo>> _mountInfo;
+    struct unique_ptr<CKComponentMountInfo, std::default_delete<CKComponentMountInfo>> _mountInfo;
     struct CKComponentSize _size;
 }
 
 + (id)initialState;
 + (id)new;
-+ (id)newWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2;
++ (id)newWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct CKComponentSize size; // @synthesize size=_size;
@@ -36,16 +36,16 @@
 - (struct CKComponentLayout)layoutThatFits:(struct CKSizeRange)arg1 parentSize:(struct CGSize)arg2;
 - (id)viewForAnimation;
 - (struct CKComponentBoundsAnimation)boundsAnimationFromPreviousComponent:(id)arg1;
-- (vector_035bbd4a)animationsFromPreviousComponent:(id)arg1;
-- (vector_035bbd4a)animationsOnInitialMount;
+- (vector_e842ebe3)animationsFromPreviousComponent:(id)arg1;
+- (vector_e842ebe3)animationsOnInitialMount;
 - (void)childrenDidMount;
 - (void)_relinquishMountedView;
 - (void)unmount;
-- (struct MountResult)mountInContext:(const struct MountContext *)arg1 size:(struct CGSize)arg2 children:(shared_ptr_6a94d7a4)arg3 supercomponent:(id)arg4;
+- (struct MountResult)mountInContext:(const void *)arg1 size:(struct CGSize)arg2 children:(shared_ptr_3e79f8e7)arg3 supercomponent:(id)arg4;
 - (struct CKComponentViewContext)viewContext;
-- (const struct CKComponentViewConfiguration *)viewConfiguration;
+- (const void *)viewConfiguration;
 - (void)dealloc;
-- (id)initWithView:(const struct CKComponentViewConfiguration *)arg1 size:(const struct CKComponentSize *)arg2;
+- (id)initWithView:(const void *)arg1 size:(const struct CKComponentSize *)arg2;
 - (id)init;
 - (void)wf_applyVisualStying:(id)arg1;
 

@@ -14,6 +14,7 @@
     MISSING_TYPE *model;
     MISSING_TYPE *styler;
     MISSING_TYPE *label;
+    MISSING_TYPE *imageView;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *visualEffectView;
     MISSING_TYPE *keyboardObserver;

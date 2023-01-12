@@ -11,6 +11,7 @@
 @class GEOApplicationAuditToken, GEOComposedETARoute, GEODataRequestThrottlerToken, GEOETATrafficUpdateRequest, GEOLatLng, GEOTransitRouteUpdater, NSDate, NSError, NSMutableDictionary, NSString, NSTimer;
 @protocol MNSessionUpdateManagerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MNSessionUpdateManager : NSObject <GEOTransitRouteUpdaterDelegate>
 {
     id <MNSessionUpdateManagerDelegate> _delegate;
@@ -46,7 +47,7 @@
 - (void)transitRouteUpdater:(id)arg1 willUpdateTransitForRouteIDs:(id)arg2;
 - (void)transitRouteUpdater:(id)arg1 didReceiveResponse:(id)arg2;
 - (void)transitRouteUpdater:(id)arg1 willSendRequests:(id)arg2;
-- (void)_handleETAResponse:(id)arg1 forRouteInfo:(id)arg2 etaRoute:(id)arg3 request:(id)arg4 error:(id)arg5;
+- (void)_handleETAResponse:(id)arg1 forRouteInfo:(id)arg2 etaRoute:(id)arg3;
 - (id)_updateETARequest:(id)arg1 withRouteInfo:(id)arg2 andUserLocation:(id)arg3;
 - (id)_baseETARequest;
 - (void)_sendETARequestWithRouteAttributes:(id)arg1;

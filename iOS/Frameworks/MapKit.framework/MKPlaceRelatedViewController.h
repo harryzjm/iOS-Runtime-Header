@@ -6,7 +6,7 @@
 
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 
-@class MKMapItem, NSArray, NSString;
+@class GEORelatedPlaceList, MKMapItem, NSArray, NSString;
 @protocol MKPlaceRelatedViewControllerDelegate, _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSArray *_fetchedMapItems;
     NSArray *_cells;
     _Bool _isExpanded;
+    GEORelatedPlaceList *_relatedPlaceList;
     id <MKPlaceRelatedViewControllerDelegate> _delegate;
     id <_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
     MKMapItem *_mapItem;

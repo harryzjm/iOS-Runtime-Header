@@ -30,8 +30,12 @@
 - (id)_createPresenceDetectOperationsForDeviceTypes:(id)arg1 error:(id *)arg2;
 - (unsigned long long)_biometricEventForFaceDetectFeedback:(long long)arg1;
 - (unsigned long long)_eventForLockoutState:(long long)arg1;
+- (void)_sendDelegateEventForFaceWUPoseEligibilityInfo:(id)arg1;
+- (void)_sendDelegateEventForFaceOcclusionInfo:(id)arg1;
 - (void)_sendDelegateEventForFeedback:(long long)arg1;
 - (void)_sendDelegateEvent:(unsigned long long)arg1;
+- (void)matchOperation:(id)arg1 providedFaceWUPoseEligibilityInfo:(id)arg2;
+- (void)matchOperation:(id)arg1 providedFaceOcclusionInfo:(id)arg2;
 - (void)matchOperation:(id)arg1 providedFeedback:(long long)arg2;
 - (void)matchOperation:(id)arg1 matchedWithResult:(id)arg2;
 - (void)operation:(id)arg1 presenceStateChanged:(_Bool)arg2;

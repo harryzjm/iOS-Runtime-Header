@@ -6,11 +6,12 @@
 
 #import <Foundation/NSData.h>
 
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/CKRecordValue-Protocol.h>
 
 @class NSString;
 
-@interface NSData (CKUtilsAdditions) <CKRecordValue>
+@interface NSData (CKUtilsAdditions) <CKRecordValue, CKPropertiesDescription>
 + (id)CKDataFromBase64URLSafeString:(id)arg1;
 + (id)CKDataWithHexString:(id)arg1;
 + (id)CKDataWithHexString:(id)arg1 stringIsUppercase:(_Bool)arg2;
@@ -22,6 +23,7 @@
 - (id)CKHashedDescription;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)CKDescribePropertiesUsing:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

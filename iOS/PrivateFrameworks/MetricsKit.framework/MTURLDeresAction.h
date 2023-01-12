@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface MTURLDeresAction
 {
     NSString *_scope;
+    NSDictionary *_allowedParams;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *allowedParams; // @synthesize allowedParams=_allowedParams;
 @property(retain, nonatomic) NSString *scope; // @synthesize scope=_scope;
+- (id)allowedQueryItemsFromItems:(id)arg1;
 - (id)performAction:(id)arg1 context:(id)arg2;
 - (id)initWithField:(id)arg1 configDictionary:(id)arg2;
 

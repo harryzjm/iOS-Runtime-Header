@@ -65,6 +65,7 @@
 - (id)extraKeyTag;
 - (_Bool)hasTag:(id)arg1;
 - (id)tags;
+- (void)removeTag:(id)arg1;
 - (void)addTag:(id)arg1;
 - (_Bool)isFromForwardedMessage;
 - (_Bool)isCancelled;

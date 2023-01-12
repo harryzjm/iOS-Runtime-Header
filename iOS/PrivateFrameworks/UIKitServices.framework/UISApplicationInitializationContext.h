@@ -11,21 +11,25 @@
 #import <UIKitServices/NSCopying-Protocol.h>
 #import <UIKitServices/NSMutableCopying-Protocol.h>
 
-@class FBSSceneIdentityToken, NSSet, NSString, UISDeviceContext, UISDisplayContext;
+@class FBSSceneIdentityToken, NSSet, NSString, UISCompatibilityContext, UISDeviceContext, UISDisplayContext;
 
 @interface UISApplicationInitializationContext : NSObject <BSXPCCoding, NSCopying, NSMutableCopying, BSXPCSecureCoding>
 {
     UISDisplayContext *_displayContext;
     UISDeviceContext *_deviceContext;
+    UISCompatibilityContext *_compatibilityContext;
     NSSet *_persistedSceneIdentifiers;
     FBSSceneIdentityToken *_defaultSceneToken;
+    _Bool _supportAppSceneRequests;
 }
 
 + (_Bool)supportsBSXPCSecureCoding;
 + (id)defaultContext;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportAppSceneRequests; // @synthesize supportAppSceneRequests=_supportAppSceneRequests;
 @property(readonly, nonatomic) FBSSceneIdentityToken *defaultSceneToken; // @synthesize defaultSceneToken=_defaultSceneToken;
 @property(readonly, nonatomic) NSSet *persistedSceneIdentifiers; // @synthesize persistedSceneIdentifiers=_persistedSceneIdentifiers;
+@property(readonly, nonatomic) UISCompatibilityContext *compatibilityContext; // @synthesize compatibilityContext=_compatibilityContext;
 @property(readonly, nonatomic) UISDeviceContext *deviceContext; // @synthesize deviceContext=_deviceContext;
 @property(readonly, nonatomic) UISDisplayContext *displayContext; // @synthesize displayContext=_displayContext;
 @property(readonly, copy) NSString *description;
@@ -33,9 +37,12 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithXPCDictionary:(id)arg1;
+- (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithBSXPCCoder:(id)arg1;
 - (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)initWithUISApplicationInitializationContext:(id)arg1;
+- (id)initWithDisplayContext:(id)arg1 deviceContext:(id)arg2 persistedSceneIdentifiers:(id)arg3 supportAppSceneRequests:(_Bool)arg4;
 - (id)initWithDisplayContext:(id)arg1 deviceContext:(id)arg2 persistedSceneIdentifiers:(id)arg3;
 
 // Remaining properties

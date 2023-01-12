@@ -13,7 +13,7 @@
 
 @interface UASharedPasteboardManager : NSObject <UASharedPasteboardManagerResponseProtocol>
 {
-    _Bool _remotePasteboardAvaliable;
+    _Bool _remotePasteboardAvailable;
     _Bool _currentGenerationHasUpdates;
     _Bool _updateScheduled;
     int _disableCount;
@@ -24,7 +24,8 @@
     NSXPCConnection *_controllConnection;
     id _controllSyncObject;
     NSObject<OS_dispatch_queue> *_pasteboardReadQ;
-    NSSet *_disallowdTypes;
+    NSSet *_disallowedTypesForSending;
+    NSSet *_disallowedTypesForReceiving;
     NSSet *_bomCheckTypes;
     NSDictionary *_typeBOMs;
     NSDictionary *_typeAliases;
@@ -39,11 +40,12 @@
 @property(retain) NSDictionary *typeAliases; // @synthesize typeAliases=_typeAliases;
 @property(retain) NSDictionary *typeBOMs; // @synthesize typeBOMs=_typeBOMs;
 @property(retain) NSSet *bomCheckTypes; // @synthesize bomCheckTypes=_bomCheckTypes;
-@property(retain) NSSet *disallowdTypes; // @synthesize disallowdTypes=_disallowdTypes;
+@property(retain) NSSet *disallowedTypesForReceiving; // @synthesize disallowedTypesForReceiving=_disallowedTypesForReceiving;
+@property(retain) NSSet *disallowedTypesForSending; // @synthesize disallowedTypesForSending=_disallowedTypesForSending;
 @property(retain) NSObject<OS_dispatch_queue> *pasteboardReadQ; // @synthesize pasteboardReadQ=_pasteboardReadQ;
 @property _Bool updateScheduled; // @synthesize updateScheduled=_updateScheduled;
 @property _Bool currentGenerationHasUpdates; // @synthesize currentGenerationHasUpdates=_currentGenerationHasUpdates;
-@property _Bool remotePasteboardAvaliable; // @synthesize remotePasteboardAvaliable=_remotePasteboardAvaliable;
+@property _Bool remotePasteboardAvailable; // @synthesize remotePasteboardAvailable=_remotePasteboardAvailable;
 @property(retain) id controllSyncObject; // @synthesize controllSyncObject=_controllSyncObject;
 @property int disableCount; // @synthesize disableCount=_disableCount;
 @property(retain) NSXPCConnection *controllConnection; // @synthesize controllConnection=_controllConnection;
@@ -61,16 +63,18 @@
 - (void)requestRemotePasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)requestRemotePasteboardTypesForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)currentRemoteDeviceName;
-- (_Bool)isRemotePasteboardAvaliable;
+- (_Bool)isRemotePasteboardAvailable;
 - (id)serializeType:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3;
 - (id)serializeFileType:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3 intoDir:(id)arg4;
 - (id)serializeItem:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3 intoDir:(id)arg4;
 - (void)pickupLocalChanges:(id)arg1 iterNumber:(long long)arg2 cloneDir:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)writeLocalPasteboardToFile:(id)arg1 itemDir:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)writeLocalPasteboardToFile:(id)arg1 itemDir:(id)arg2 extension:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)clearLocalPasteboardInformation;
 - (void)sendUpdateToServer:(id)arg1;
 - (_Bool)addData:(id)arg1 toItemAtIndex:(unsigned long long)arg2 generation:(unsigned long long)arg3;
-- (_Bool)typeIsDisallowed:(id)arg1;
+- (_Bool)typeIsDisallowedForReceiving:(id)arg1;
+- (_Bool)typeIsDisallowedForSending:(id)arg1;
 - (void)stopPreventingPasteboardSharing;
 - (void)startPreventingPasteboardSharing;
 - (void)dealloc;

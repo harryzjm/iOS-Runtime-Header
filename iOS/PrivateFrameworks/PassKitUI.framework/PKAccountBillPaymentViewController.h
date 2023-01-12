@@ -15,7 +15,7 @@
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSArray, NSDateFormatter, NSDecimalNumber, NSDictionary, NSMutableDictionary, NSNumberFormatter, NSString, PKAccount, PKAccountBillPaymentAmountDescriptionView, PKAccountBillPaymentController, PKAccountServiceAccountResolutionCofiguration, PKAccountServiceAccountResolutionController, PKAddBankAccountInformationViewController, PKBillPaymentRingView, PKBillPaymentSuggestedAmountController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKTransactionSource, UIButton, UIImageView, UILabel, UIScrollView, UITapGestureRecognizer, _PKUIKVisibilityBackdropView;
+@class CLInUseAssertion, NSArray, NSDateFormatter, NSDecimalNumber, NSDictionary, NSMutableDictionary, NSNumberFormatter, NSString, PKAccount, PKAccountBillPaymentAmountDescriptionView, PKAccountBillPaymentController, PKAccountServiceAccountResolutionCofiguration, PKAccountServiceAccountResolutionController, PKAccountUserCollection, PKAddBankAccountInformationViewController, PKBillPaymentRingView, PKBillPaymentSuggestedAmountController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKTransactionSource, UIButton, UIImageView, UILabel, UIScrollView, UITapGestureRecognizer, _PKUIKVisibilityBackdropView;
 @protocol PKAccountBillPaymentObserver;
 
 @interface PKAccountBillPaymentViewController : UIViewController <_PKUIKVisibilityBackdropViewDelegate, PKBillPaymentRingViewDelegate, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKBillPaymentRingViewDataSource, PKAccountBillPaymentAmountDescriptionViewDelegate, UIScrollViewDelegate, PKAccountServiceAccountResolutionControllerDelegate>
@@ -65,6 +65,7 @@
     PKAccountServiceAccountResolutionController *_accountResolutionController;
     CLInUseAssertion *_CLInUse;
     unsigned char _visibility;
+    PKAccountUserCollection *_accountUserCollection;
     id <PKAccountBillPaymentObserver> _observer;
 }
 
@@ -72,8 +73,8 @@
 + (double)smallRingTopMargin;
 + (double)ringTopMargin;
 + (struct UIEdgeInsets)contentMargins;
-+ (void)_billPaymentViewControllerForAccount:(id)arg1 transactionSource:(id)arg2 configuration:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-+ (void)billPaymentViewControllerForAccount:(id)arg1 transactionSource:(id)arg2 configuration:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
++ (void)_billPaymentViewControllerForAccount:(id)arg1 accountUserCollection:(id)arg2 transactionSource:(id)arg3 configuration:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
++ (void)billPaymentViewControllerForAccount:(id)arg1 accountUserCollection:(id)arg2 transactionSource:(id)arg3 configuration:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 + (id)backgroundColor;
 + (id)alertControllerForDisplayableError:(id)arg1;
 + (id)displayableErrorForAccount:(id)arg1 reason:(unsigned long long)arg2;
@@ -81,6 +82,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PKAccountBillPaymentObserver> observer; // @synthesize observer=_observer;
 @property(readonly, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
+@property(readonly, nonatomic) PKAccountUserCollection *accountUserCollection; // @synthesize accountUserCollection=_accountUserCollection;
 @property(readonly, nonatomic) PKAccount *account; // @synthesize account=_account;
 - (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)_presentAlertControllerForError:(id)arg1;
@@ -144,8 +146,8 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithAccount:(id)arg1 transactionSource:(id)arg2 suggestedAmountController:(id)arg3 configuration:(id)arg4 interstitalState:(unsigned long long)arg5;
-- (id)initWithSuggestedAmountController:(id)arg1 account:(id)arg2 transactionSource:(id)arg3 configuration:(id)arg4 interstitialState:(unsigned long long)arg5;
+- (id)initWithAccount:(id)arg1 accountUserCollection:(id)arg2 transactionSource:(id)arg3 suggestedAmountController:(id)arg4 configuration:(id)arg5 interstitalState:(unsigned long long)arg6;
+- (id)initWithSuggestedAmountController:(id)arg1 account:(id)arg2 accountUserCollection:(id)arg3 transactionSource:(id)arg4 configuration:(id)arg5 interstitialState:(unsigned long long)arg6;
 - (id)initWithSuggestedAmountController:(id)arg1 transactionSource:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

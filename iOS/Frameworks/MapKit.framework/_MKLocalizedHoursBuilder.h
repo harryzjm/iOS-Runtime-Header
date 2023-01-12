@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOBusinessHours, NSDate, NSString, NSTimeZone, UIColor;
+@class GEOBusinessHours, NSArray, NSDate, NSString, NSTimeZone, UIColor;
 
 @interface _MKLocalizedHoursBuilder : NSObject
 {
@@ -16,10 +16,13 @@
     _Bool _isOpeningSoon;
     _Bool _isPermanentlyClosed;
     _Bool _isTemporarilyClosed;
+    _Bool _isOpenTodayAllDay;
+    _Bool _isCurrentlyOpen;
     NSString *_localizedOperatingHours;
     NSString *_localizedOpenState;
     UIColor *_hoursStateLabelColor;
     NSDate *_compareDate;
+    long long _state;
     unsigned long long _geoMapItemOpeningHourOptions;
     unsigned long long _localizedHoursStringOptions;
     NSTimeZone *_timeZone;
@@ -27,6 +30,7 @@
 }
 
 + (id)localizedHoursDayRangeString:(id)arg1;
++ (id)hoursDelimeter;
 + (id)localizedHoursStringSpecialHours;
 + (id)localizedHoursStringNormalHours;
 + (id)testGetHoursFormatter;
@@ -39,12 +43,15 @@
 @property(nonatomic) unsigned long long localizedHoursStringOptions; // @synthesize localizedHoursStringOptions=_localizedHoursStringOptions;
 @property(nonatomic) unsigned long long geoMapItemOpeningHourOptions; // @synthesize geoMapItemOpeningHourOptions=_geoMapItemOpeningHourOptions;
 @property(retain, nonatomic) NSDate *compareDate; // @synthesize compareDate=_compareDate;
+@property(readonly, nonatomic) NSArray *AMPMSymbols;
 - (id)concatenateStrings:(id)arg1 joinedByString:(id)arg2;
 - (void)calculateWidthsForData:(id)arg1;
 - (id)formatData:(id)arg1;
 - (void)updateHoursLabelColorWithDefaultLabelColor:(id)arg1;
 - (void)updateHoursLabelColor;
+- (id)_formattedStringForHourRangesWithStartAndEndDates:(id)arg1 timeZone:(id)arg2;
 - (id)_updateLocalizedOperatingHoursString:(unsigned long long)arg1;
+@property(readonly, nonatomic) long long state; // @synthesize state=_state;
 - (void)_updateLocalizedString;
 @property(readonly, nonatomic) UIColor *hoursStateLabelColor; // @synthesize hoursStateLabelColor=_hoursStateLabelColor;
 @property(readonly, nonatomic) NSString *localizedOpenState; // @synthesize localizedOpenState=_localizedOpenState;

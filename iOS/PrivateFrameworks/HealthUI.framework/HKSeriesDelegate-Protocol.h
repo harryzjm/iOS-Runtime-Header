@@ -9,9 +9,10 @@
 @protocol HKSeriesDelegate
 - (void)nonemptyDrawComplete;
 - (_Bool)measuringStartupTime;
+- (double)snapScreenCoordinateToXAxisResolution:(double)arg1;
 - (_Bool)rangeIsVisible:(HKValueRange *)arg1;
-- (void)autoscaleStateChangedForSeries:(HKGraphSeries *)arg1;
 - (struct CGRect)screenRectForSeries:(HKGraphSeries *)arg1;
+- (struct CGPoint)seriesContentOffset;
 - (_Bool)seriesDrawingDuringTiling;
 - (_Bool)seriesDrawingDuringAutoscale;
 - (_Bool)seriesDrawingDuringScrolling;

@@ -17,8 +17,6 @@
 
 - (void).cxx_destruct;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (void)_saveUpdatedShares:(id)arg1 container:(id)arg2;
-- (id)_updatedSharesByRemovingParticipants:(id)arg1 container:(id)arg2;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 participantsToRemove:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

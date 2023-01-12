@@ -15,7 +15,7 @@
     NSDictionary *_textureDict;
     NSString *_atlasName;
     _Bool _isCUIImageAtlas;
-    struct unordered_map<std::__1::basic_string<char>, SKTexture *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, SKTexture *>>> _textureMap;
+    struct unordered_map<std::string, SKTexture *, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, SKTexture *>>> _textureMap;
 }
 
 + (void)preloadTextureAtlasesNamed:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

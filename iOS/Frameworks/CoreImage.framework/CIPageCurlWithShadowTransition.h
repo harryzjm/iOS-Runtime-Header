@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) CIImage *inputBacksideImage; // @synthesize inputBacksideImage;
+@property(retain, nonatomic) CIImage *inputTargetImage; // @synthesize inputTargetImage;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (id)_CIPageCurlNoShadowTransition;
 - (id)_CIPageCurlWithShadowTransition;

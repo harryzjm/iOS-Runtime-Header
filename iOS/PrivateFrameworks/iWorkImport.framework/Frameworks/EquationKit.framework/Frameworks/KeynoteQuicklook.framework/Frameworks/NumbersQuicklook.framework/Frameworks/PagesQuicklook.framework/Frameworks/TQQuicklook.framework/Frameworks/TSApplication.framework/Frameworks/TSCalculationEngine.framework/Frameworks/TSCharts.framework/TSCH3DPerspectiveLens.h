@@ -6,15 +6,15 @@
 
 @interface TSCH3DPerspectiveLens
 {
-    float mFOV;
-    float mAspect;
+    float _FOV;
+    float _aspect;
 }
 
-@property(nonatomic) float aspect; // @synthesize aspect=mAspect;
-@property(nonatomic) float fov; // @synthesize fov=mFOV;
-- (void)calculateCullingPlanes:(vector_5e6a89be *)arg1;
-- (id)shiftedByPercentage:(tvec2_84d5962d *)arg1;
-- (id)narrowedByNormalizedBounds:(box_80622335 *)arg1;
+@property(nonatomic) float aspect; // @synthesize aspect=_aspect;
+@property(nonatomic) float fov; // @synthesize fov=_FOV;
+- (void)calculateCullingPlanes:(void *)arg1;
+- (id)shiftedByPercentage:(void *)arg1;
+- (id)narrowedByNormalizedBounds:(void *)arg1;
 - (id)asFrustumLens;
 - (tmat4x4_3074befe)matrix;
 - (id)frustumRectAtDistance:(float)arg1;

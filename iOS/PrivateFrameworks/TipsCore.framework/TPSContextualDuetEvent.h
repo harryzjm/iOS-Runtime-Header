@@ -4,22 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, TPSContextualDuetEventMeta, TPSContextualDuetEventSource, TPSContextualDuetEventValue;
+@class NSArray, NSString, TPSContextualDuetEventMeta, TPSContextualDuetEventSource, TPSContextualDuetEventValue;
 
 @interface TPSContextualDuetEvent
 {
     NSString *_stream;
+    long long _storeType;
+    NSArray *_groupByKeyPaths;
     TPSContextualDuetEventMeta *_meta;
     TPSContextualDuetEventSource *_source;
     TPSContextualDuetEventValue *_value;
 }
 
-+ (id)classSet;
++ (long long)_defaultStoreTypeForStream:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) TPSContextualDuetEventValue *value; // @synthesize value=_value;
 @property(copy, nonatomic) TPSContextualDuetEventSource *source; // @synthesize source=_source;
 @property(copy, nonatomic) TPSContextualDuetEventMeta *meta; // @synthesize meta=_meta;
+@property(copy, nonatomic) NSArray *groupByKeyPaths; // @synthesize groupByKeyPaths=_groupByKeyPaths;
+@property(nonatomic) long long storeType; // @synthesize storeType=_storeType;
 @property(copy, nonatomic) NSString *stream; // @synthesize stream=_stream;
 - (id)debugDescription;
 - (id)newStateFromStateDictionary:(id)arg1;

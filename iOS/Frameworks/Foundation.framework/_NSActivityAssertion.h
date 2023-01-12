@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BKSProcessAssertion, NSString;
+@class NSString;
 @protocol NSObject, OS_os_transaction, OS_voucher;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_voucher> *_voucher;
     NSObject<OS_voucher> *_previousVoucher;
     id <NSObject> _xpcBoost;
-    BKSProcessAssertion *_processAssertion;
+    id _processAssertion;
     CDUnknownBlockType _expirationHandler;
     struct os_unfair_lock_s _lock;
     _Atomic _Bool _ended;

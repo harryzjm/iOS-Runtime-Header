@@ -10,21 +10,19 @@
 
 @interface PKPaymentRequestShippingContactUpdate <NSSecureCoding>
 {
-    NSArray *_shippingMethods;
     NSArray *_errors;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *errors; // @synthesize errors=_errors;
-@property(copy, nonatomic) NSArray *shippingMethods; // @synthesize shippingMethods=_shippingMethods;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStatus:(long long)arg1 errors:(id)arg2 paymentSummaryItems:(id)arg3 shippingMethods:(id)arg4;
 - (id)initWithErrors:(id)arg1 paymentSummaryItems:(id)arg2 shippingMethods:(id)arg3;
 - (id)initWithPaymentSummaryItems:(id)arg1;
-- (id)initWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
+
+// Remaining properties
+@property(copy, nonatomic) NSArray *shippingMethods; // @dynamic shippingMethods;
 
 @end
 

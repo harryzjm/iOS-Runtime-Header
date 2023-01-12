@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSMutableArray, NSMutableDictionary, NSString;
+@class NSCache, NSMutableArray, NSMutableDictionary, NSString, _PASSqliteStatementCache;
 @protocol _PASSqliteErrorHandlerProtocol;
 
 @interface _PASSqliteDatabase : NSObject
@@ -44,6 +44,8 @@
         int _field19;
         long long _field20;
     } *_explainedQueriesLogFile;
+    _PASSqliteStatementCache *_statementCache;
+    _Bool _preparedForFirstQuery;
     _Bool _isInMemory;
     long long _contentProtectionType;
 }
@@ -77,7 +79,6 @@
 - (void)disableQueryPlanLogging;
 - (_Bool)enableQueryPlanLoggingWithPath:(id)arg1;
 - (id)languageForFTSTable:(id)arg1;
-- (void)finalizeLater:(struct sqlite3_stmt *)arg1;
 - (void)withDbLockExecuteBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)numberOfRowsInTable:(id)arg1;
 - (_Bool)hasIndexNamed:(id)arg1;
@@ -113,8 +114,12 @@
 - (_Bool)runQuery:(id)arg1 onRow:(CDUnknownBlockType)arg2;
 - (_Bool)runQuery:(id)arg1 onRow:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) struct sqlite3 *handle;
+- (_Bool)vacuumWithShouldContinueBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (unsigned long long)_pagesToVacuum;
+- (unsigned long long)valueForPragmaName:(id)arg1;
 - (long long)lastInsertRowId;
 - (void)simulateOnDiskDatabase;
+- (void)_prepareForFirstQuery;
 - (void)closePermanently;
 - (void)dealloc;
 - (id)init;

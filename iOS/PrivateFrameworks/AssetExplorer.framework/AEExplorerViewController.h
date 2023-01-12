@@ -22,7 +22,7 @@
 #import <AssetExplorer/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class AECameraAssetPackageGenerator, AEPackageTransport, AEProgressViewModel, CAMCameraReviewAdapter, NSArray, NSIndexSet, NSMutableSet, NSString, PUAssetExplorerReviewScreenViewController, PXAssetsScene, PXBasicUIViewTileAnimator, PXMediaProvider, PXPhotoKitAssetsDataSourceManager, PXTilingController, PXUIScrollViewController, UIPopoverPresentationController, UIView;
-@protocol AEExplorerViewControllerDelegate, AEHostStatisticsManager;
+@protocol AEExplorerViewControllerDelegate;
 
 @interface AEExplorerViewController : UIViewController <PXChangeObserver, PXTileSource, PXReusableObjectPoolDelegate, PXAssetsSceneDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXPhotoLibraryUIChangeObserver, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PUAssetExplorerReviewScreenViewControllerDelegate, UIPopoverPresentationControllerDelegate, AEBrowserLayoutDelegate, PXPhotoLibraryPresenting>
 {
@@ -32,7 +32,6 @@
     AEPackageTransport *__packageTransport;
     PXPhotoKitAssetsDataSourceManager *__dataSourceManager;
     PXMediaProvider *__mediaProvider;
-    id <AEHostStatisticsManager> __statisticsManager;
     NSArray *__clientGestureRecognizers;
     NSIndexSet *__missingThumbnailAssetIndexes;
     NSIndexSet *__pendingMissingThumbnailAssetIndexes;
@@ -68,7 +67,6 @@
 @property(retain, nonatomic, setter=_setPendingMissingThumbnailAssetIndexes:) NSIndexSet *_pendingMissingThumbnailAssetIndexes; // @synthesize _pendingMissingThumbnailAssetIndexes=__pendingMissingThumbnailAssetIndexes;
 @property(retain, nonatomic, setter=_setMissingThumbnailAssetIndexes:) NSIndexSet *_missingThumbnailAssetIndexes; // @synthesize _missingThumbnailAssetIndexes=__missingThumbnailAssetIndexes;
 @property(readonly) NSArray *_clientGestureRecognizers; // @synthesize _clientGestureRecognizers=__clientGestureRecognizers;
-@property(readonly, nonatomic) id <AEHostStatisticsManager> _statisticsManager; // @synthesize _statisticsManager=__statisticsManager;
 @property(readonly, nonatomic) PXMediaProvider *_mediaProvider; // @synthesize _mediaProvider=__mediaProvider;
 @property(readonly, nonatomic) PXPhotoKitAssetsDataSourceManager *_dataSourceManager; // @synthesize _dataSourceManager=__dataSourceManager;
 @property(readonly, nonatomic) AEPackageTransport *_packageTransport; // @synthesize _packageTransport=__packageTransport;
@@ -135,7 +133,7 @@
 - (void)loadView;
 - (Class)assetsSceneClass;
 - (void)dealloc;
-- (id)initWithPackageTransport:(id)arg1 mediaProvider:(id)arg2 dataSourceManager:(id)arg3 statisticsManager:(id)arg4 additionalGestureRecognizers:(id)arg5;
+- (id)initWithPackageTransport:(id)arg1 mediaProvider:(id)arg2 dataSourceManager:(id)arg3 additionalGestureRecognizers:(id)arg4;
 - (_Bool)confirmAsset:(id)arg1 matchesView:(id)arg2;
 - (void)associateAsset:(id)arg1 withTile:(void *)arg2;
 - (void)ppt_scrollThumbnailGridWithTestName:(id)arg1 fakeExpensiveBadges:(_Bool)arg2;

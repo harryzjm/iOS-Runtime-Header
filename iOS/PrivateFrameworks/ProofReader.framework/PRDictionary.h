@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSURL;
+@class NLParameterBundle, NSData, NSDictionary, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface PRDictionary : NSObject
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     NSDictionary *_offsetsDictionary;
     NSDictionary *_numEntriesDictionary;
     NSDictionary *_dictionariesDictionary;
+    NLParameterBundle *_parameterBundle;
     PRDictionary *_fallbackDictionary;
 }
 
+- (id)parameterBundle;
 - (id)fallbackDictionary;
 - (id)dictionaryAtIndex:(unsigned long long)arg1;
 - (_Bool)checkWordBuffer:(char *)arg1 length:(unsigned long long)arg2 encoding:(unsigned int)arg3 index:(unsigned long long)arg4 caseInsensitive:(_Bool)arg5;

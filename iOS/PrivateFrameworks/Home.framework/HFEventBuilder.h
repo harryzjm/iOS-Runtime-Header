@@ -6,14 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@interface HFEventBuilder : NSObject
+#import <Home/HFComparable-Protocol.h>
+
+@class NSString;
+
+@interface HFEventBuilder : NSObject <HFComparable>
 {
+    NSString *_eventType;
 }
 
 + (id)eventBuilderForEvent:(id)arg1;
-- (id)buildNewEventFromCurrentState;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *eventType; // @synthesize eventType=_eventType;
+- (id)comparisonKey;
+- (id)naturalLanguageNameWithOptions:(id)arg1;
+- (id)buildNewEventsFromCurrentState;
 - (id)initWithEvent:(id)arg1;
 - (id)init;
+@property(readonly) unsigned long long hash;
+- (id)compareToObject:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

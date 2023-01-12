@@ -8,69 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDMapsIdentifier, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDMapsIdentifier, GEOPDQuickLinkItem, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPlaceCollectionItem : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    GEOPDQuickLinkItem *_appClip;
+    NSMutableArray *_itemDescriptionBytes;
+    NSMutableArray *_itemDescriptionHtmls;
     NSMutableArray *_itemDescriptions;
     GEOPDMapsIdentifier *_itemId;
     NSMutableArray *_photos;
+    NSMutableArray *_punchOutTexts;
     NSString *_url;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    _Bool _disableAppClipFallback;
     _Bool _enableImageFallback;
     struct {
+        unsigned int has_disableAppClipFallback:1;
         unsigned int has_enableImageFallback:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_appClip:1;
+        unsigned int read_itemDescriptionBytes:1;
+        unsigned int read_itemDescriptionHtmls:1;
         unsigned int read_itemDescriptions:1;
         unsigned int read_itemId:1;
         unsigned int read_photos:1;
+        unsigned int read_punchOutTexts:1;
         unsigned int read_url:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)itemDescriptionType;
-+ (Class)photoType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasEnableImageFallback;
-@property(nonatomic) _Bool enableImageFallback;
-@property(retain, nonatomic) NSString *url;
-@property(readonly, nonatomic) _Bool hasUrl;
-- (id)itemDescriptionAtIndex:(unsigned long long)arg1;
-- (unsigned long long)itemDescriptionsCount;
-- (void)addItemDescription:(id)arg1;
-- (void)clearItemDescriptions;
-@property(retain, nonatomic) NSMutableArray *itemDescriptions;
-- (id)photoAtIndex:(unsigned long long)arg1;
-- (unsigned long long)photosCount;
-- (void)addPhoto:(id)arg1;
-- (void)clearPhotos;
-@property(retain, nonatomic) NSMutableArray *photos;
-@property(retain, nonatomic) GEOPDMapsIdentifier *itemId;
-@property(readonly, nonatomic) _Bool hasItemId;
 - (id)initWithData:(id)arg1;
 - (id)init;
+- (id)punchOutText;
+- (id)itemHTMLDescription;
 - (id)itemDescription;
 
 @end

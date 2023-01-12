@@ -10,7 +10,7 @@
 
 @protocol CSAudioRecorderDelegate <NSObject>
 - (void)audioRecorderBufferAvailable:(CSAudioRecorder *)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(CSAudioChunkForTV *)arg3;
-- (void)audioRecorderBufferAvailable:(CSAudioRecorder *)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(NSData *)arg3 remoteVAD:(NSData *)arg4 atTime:(unsigned long long)arg5;
+- (void)audioRecorderBufferAvailable:(CSAudioRecorder *)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(NSData *)arg3 remoteVAD:(NSData *)arg4 atTime:(unsigned long long)arg5 arrivalTimestampToAudioRecorder:(unsigned long long)arg6 numberOfChannels:(int)arg7;
 
 @optional
 - (void)audioRecorderStreamHandleIdInvalidated:(unsigned long long)arg1;

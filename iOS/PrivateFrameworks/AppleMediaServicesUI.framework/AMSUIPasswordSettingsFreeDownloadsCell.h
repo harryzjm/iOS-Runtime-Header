@@ -19,9 +19,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) UISwitch *toggle; // @synthesize toggle=_toggle;
 @property(nonatomic) id <AMSUIPasswordSettingsFreeDownloadsCellDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)toggleChanged:(id)arg1;
+- (void)_toggleChanged:(id)arg1;
 - (void)layoutSubviews;
 - (long long)selectionStyle;
+- (void)_setup;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

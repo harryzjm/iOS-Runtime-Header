@@ -11,12 +11,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
 };
 
 struct CGPoint {
@@ -32,6 +32,11 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
+};
+
+struct CGVector {
+    double _field1;
+    double _field2;
 };
 
 struct CLLocationCoordinate2D {
@@ -56,6 +61,10 @@ typedef struct {
 } CDStruct_6a59ab51;
 
 typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
+
+typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
@@ -64,17 +73,4 @@ typedef struct {
     struct CLLocationCoordinate2D _field1;
     CDStruct_c3b9c2ee _field2;
 } CDStruct_2b0c6e0b;
-
-// Ambiguous groups
-typedef struct {
-    unsigned int actionCount:1;
-} CDStruct_810980b6;
-
-typedef struct {
-    unsigned int completed:1;
-} CDStruct_c267e6e8;
-
-typedef struct {
-    unsigned int duration:1;
-} CDStruct_84479c50;
 

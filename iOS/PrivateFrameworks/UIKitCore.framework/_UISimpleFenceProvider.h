@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/FBSWorkspaceFencing-Protocol.h>
+#import <UIKitCore/UIFenceProviding-Protocol.h>
 
 @class BSAtomicFlag, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISimpleFenceProvider : NSObject <FBSWorkspaceFencing>
+@interface _UISimpleFenceProvider : NSObject <UIFenceProviding>
 {
     BSAtomicFlag *_trackingAny;
     _Bool _synchronizing;

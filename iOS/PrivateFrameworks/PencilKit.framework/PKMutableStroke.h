@@ -13,7 +13,6 @@
 - (void)_setColor:(id)arg1;
 @property(copy, nonatomic) UIColor *_color;
 - (void)_setLocation:(struct CGPoint)arg1 atIndex:(unsigned long long)arg2;
-- (void)_applyTransform:(struct CGAffineTransform)arg1;
 
 @end
 

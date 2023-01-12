@@ -26,7 +26,8 @@
 - (_Bool)isFeatureEnabled:(id)arg1;
 - (void)addFeature:(id)arg1 withControlName:(id)arg2 defaultValue:(_Bool)arg3;
 - (id)init;
-- (_Bool)isNNv2Enabled;
+- (_Bool)isMPSGraphFP16Enabled;
+- (_Bool)isMPSGraphEnabled;
 - (void)defineFeatures;
 
 @end

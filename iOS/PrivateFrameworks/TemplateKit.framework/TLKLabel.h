@@ -22,7 +22,6 @@
     unsigned long long _adjustedProminence;
 }
 
-+ (id)genericLabel;
 + (id)tertiaryLabel;
 + (id)secondaryLabel;
 + (id)primaryLabel;

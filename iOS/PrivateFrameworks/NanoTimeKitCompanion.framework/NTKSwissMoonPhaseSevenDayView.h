@@ -27,7 +27,6 @@
 - (void)resumeLiveFullColorImageView;
 - (void)pauseLiveFullColorImageView;
 - (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
-- (void)enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)configureWithImageProvider:(id)arg1 reason:(long long)arg2;
 - (id)initFullColorImageViewWithDevice:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

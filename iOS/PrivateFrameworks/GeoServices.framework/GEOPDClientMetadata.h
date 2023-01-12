@@ -8,13 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABSecondPartyPlaceRequestClientMetaData, GEOAdditionalEnabledMarkets, GEOLocalizationCapabilities, GEOLocation, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOABSecondPartyPlaceRequestClientMetaData, GEOAdditionalEnabledMarkets, GEOLocalizationCapabilities, GEOLocation, GEOPDMapsSuggestionsTouristInfo, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDClientMetadata : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _clientRevisions;
     CDStruct_95bda58d _knownClientResolvedTypeDeprecateds;
     CDStruct_95bda58d _knownClientResolvedTypes;
     CDStruct_95bda58d _supportedMapsResultTypes;
@@ -29,7 +29,10 @@ __attribute__((visibility("hidden")))
     NSString *_deviceKeyboardLanguage;
     NSString *_deviceSku;
     NSString *_deviceSpokenLanguage;
+    NSString *_displayRegion;
     GEOLocalizationCapabilities *_localizationCapabilities;
+    GEOPDMapsSuggestionsTouristInfo *_mapsSuggestionsTouristInfo;
+    NSString *_preferredDisplayCurrencySymbol;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -51,6 +54,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_enablePreflightVenues:1;
         unsigned int has_siriUserConsentsForAnalysis:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_clientRevisions:1;
         unsigned int read_knownClientResolvedTypeDeprecateds:1;
         unsigned int read_knownClientResolvedTypes:1;
         unsigned int read_supportedMapsResultTypes:1;
@@ -65,7 +69,10 @@ __attribute__((visibility("hidden")))
         unsigned int read_deviceKeyboardLanguage:1;
         unsigned int read_deviceSku:1;
         unsigned int read_deviceSpokenLanguage:1;
+        unsigned int read_displayRegion:1;
         unsigned int read_localizationCapabilities:1;
+        unsigned int read_mapsSuggestionsTouristInfo:1;
+        unsigned int read_preferredDisplayCurrencySymbol:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
@@ -83,7 +90,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -92,6 +100,20 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) NSString *displayRegion;
+@property(readonly, nonatomic) _Bool hasDisplayRegion;
+@property(retain, nonatomic) NSString *preferredDisplayCurrencySymbol;
+@property(readonly, nonatomic) _Bool hasPreferredDisplayCurrencySymbol;
+- (int)StringAsClientRevisions:(id)arg1;
+- (id)clientRevisionsAsString:(int)arg1;
+- (void)setClientRevisions:(int *)arg1 count:(unsigned long long)arg2;
+- (int)clientRevisionsAtIndex:(unsigned long long)arg1;
+- (void)addClientRevisions:(int)arg1;
+- (void)clearClientRevisions;
+@property(readonly, nonatomic) int *clientRevisions;
+@property(readonly, nonatomic) unsigned long long clientRevisionsCount;
+@property(retain, nonatomic) GEOPDMapsSuggestionsTouristInfo *mapsSuggestionsTouristInfo;
+@property(readonly, nonatomic) _Bool hasMapsSuggestionsTouristInfo;
 - (int)StringAsSupportedMapsResultTypes:(id)arg1;
 - (id)supportedMapsResultTypesAsString:(int)arg1;
 - (void)setSupportedMapsResultTypes:(int *)arg1 count:(unsigned long long)arg2;

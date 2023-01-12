@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface SKGroup
 {
-    struct SKCGroup *_mycaction;
+    void *_mycaction;
     NSArray *_actions;
 }
 

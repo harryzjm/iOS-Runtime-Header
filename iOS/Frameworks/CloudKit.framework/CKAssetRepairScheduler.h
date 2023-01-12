@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, CKUploadRequestConfiguration, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSURL;
+@class CKContainer, CKUploadRequestConfiguration, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSURL;
 @protocol CKAssetRepairSchedulerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface CKAssetRepairScheduler : NSObject
 {
     id <CKAssetRepairSchedulerDelegate> _delegate;
+    NSURL *_temporaryAssetDirectory;
     CKContainer *_container;
     CKUploadRequestConfiguration *_repairContainerOverrides;
-    NSURL *_temporaryAssetDirectory;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSOperationQueue *_requestOperationQueue;
@@ -34,49 +34,20 @@
 + (long long)estimatedSizeForAssetOrPackage:(id)arg1;
 + (id)nameForEvent:(long long)arg1;
 + (long long)repairRetryCount;
-+ (unsigned long long)diskSpaceBuffer;
 + (double)defaultSuspensionTime;
-+ (long long)packageSizeEstimate;
-+ (long long)assetSizeEstimate;
-+ (long long)cacheSizeLimit;
 + (long long)cacheCountLimit;
 + (long long)repairBatchCountLimit;
-+ (long long)repairBatchSizeLimit;
 + (double)requestTimeout;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *retryCountForAssets; // @synthesize retryCountForAssets=_retryCountForAssets;
-@property(retain, nonatomic) NSMutableSet *assetsBeingUploaded; // @synthesize assetsBeingUploaded=_assetsBeingUploaded;
-@property(retain, nonatomic) NSMutableSet *assetsBeingRequested; // @synthesize assetsBeingRequested=_assetsBeingRequested;
-@property(retain, nonatomic) NSMutableSet *confirmedMissingAssets; // @synthesize confirmedMissingAssets=_confirmedMissingAssets;
-@property(retain, nonatomic) NSMutableDictionary *assetCache; // @synthesize assetCache=_assetCache;
-@property(retain, nonatomic) NSMutableDictionary *remainingAssetsToRequestCallbacks; // @synthesize remainingAssetsToRequestCallbacks=_remainingAssetsToRequestCallbacks;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *uploadSuspensionTimer; // @synthesize uploadSuspensionTimer=_uploadSuspensionTimer;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *uploadPendingRequestTimer; // @synthesize uploadPendingRequestTimer=_uploadPendingRequestTimer;
-@property(retain, nonatomic) NSOperationQueue *uploadOperationQueue; // @synthesize uploadOperationQueue=_uploadOperationQueue;
-@property(retain, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(copy, nonatomic) NSURL *temporaryAssetDirectory; // @synthesize temporaryAssetDirectory=_temporaryAssetDirectory;
-@property(copy, nonatomic) CKUploadRequestConfiguration *repairContainerOverrides; // @synthesize repairContainerOverrides=_repairContainerOverrides;
-@property(nonatomic) __weak CKContainer *container; // @synthesize container=_container;
 @property __weak id <CKAssetRepairSchedulerDelegate> delegate; // @synthesize delegate=_delegate;
-- (unsigned long long)cacheCount;
-- (unsigned long long)cacheSize;
 - (id)allRemainingUploadableAssets;
 - (id)allRemainingRequestableAssets;
 - (_Bool)hasPendingWork;
-- (void)removeAssetFromCacheWithMetadata:(id)arg1;
-- (void)cacheAsset:(id)arg1 withMetadata:(id)arg2;
 - (id)clonedAsset:(id)arg1 withError:(id *)arg2;
 - (void)cancelAllOperations;
 - (void)clearAssetCache;
-- (void)scheduleClearAssetCache;
-- (void)scheduleUploadBatch;
-- (void)scheduleRequestsWithMaxCount:(long long)arg1;
-- (void)respondToEvent:(long long)arg1 withObject:(id)arg2;
 - (void)tickle;
-@property(readonly, nonatomic) NSSet *confirmedAvailableAssets;
-@property(readonly, nonatomic) NSSet *remainingAssets;
 - (void)removeUploadRequestWithRecordID:(id)arg1;
 - (void)addUploadRequestsWithMetadata:(id)arg1 requestBlocks:(id)arg2;
 - (id)initWithContainer:(id)arg1 repairContainerOverrides:(id)arg2;

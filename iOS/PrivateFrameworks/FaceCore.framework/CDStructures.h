@@ -50,9 +50,9 @@ struct face {
     float _field6;
     int _field7;
     int _field8;
-    struct vector<double, std::__1::allocator<double>> _field9;
+    struct vector<double, std::allocator<double>> _field9;
     int _field10;
-    vector_88fc712c _field11;
+    struct vector<vision::lib::coord, std::allocator<vision::lib::coord>> _field11;
     int _field12;
     _Bool _field13;
     _Bool _field14;
@@ -73,18 +73,18 @@ struct image {
 
 struct naturalSmileData;
 
-struct vector<double, std::__1::allocator<double>> {
+struct vector<double, std::allocator<double>> {
     double *_field1;
     double *_field2;
-    struct __compressed_pair<double *, std::__1::allocator<double>> {
+    struct __compressed_pair<double *, std::allocator<double>> {
         double *_field1;
     } _field3;
 };
 
-struct vector<vision::lib::coord, std::__1::allocator<vision::lib::coord>> {
+struct vector<vision::lib::coord, std::allocator<vision::lib::coord>> {
     struct coord *_field1;
     struct coord *_field2;
-    struct __compressed_pair<vision::lib::coord *, std::__1::allocator<vision::lib::coord>> {
+    struct __compressed_pair<vision::lib::coord *, std::allocator<vision::lib::coord>> {
         struct coord *_field1;
     } _field3;
 };
@@ -95,13 +95,4 @@ typedef struct {
     struct CGPoint center;
     struct CGRect bounds;
 } CDStruct_ac082cae;
-
-// Template types
-typedef struct vector<vision::lib::coord, std::__1::allocator<vision::lib::coord>> {
-    struct coord *_field1;
-    struct coord *_field2;
-    struct __compressed_pair<vision::lib::coord *, std::__1::allocator<vision::lib::coord>> {
-        struct coord *_field1;
-    } _field3;
-} vector_88fc712c;
 

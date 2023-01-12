@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (unsigned long long)_accessibilityTraitsForElementAtIndex:(unsigned long long)arg1;
 - (void)setSelectedIndex:(unsigned long long)arg1;
 - (id)accessibilityElements;
 

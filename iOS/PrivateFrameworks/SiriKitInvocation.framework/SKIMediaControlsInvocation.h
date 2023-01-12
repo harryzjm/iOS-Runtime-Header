@@ -10,6 +10,7 @@
 {
 }
 
++ (id)quickStopDirectInvocationPayload;
 + (id)stopMediaDirectInvocationPayload;
 
 @end

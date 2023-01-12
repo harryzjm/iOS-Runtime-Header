@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
-
-@interface GKDynamicButton : UIButton
+@interface GKDynamicButton
 {
 }
 
+- (void)layoutSubviews;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)didMoveToWindow;
 - (void)dealloc;

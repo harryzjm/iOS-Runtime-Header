@@ -11,6 +11,7 @@
 {
     HMIGreedyClustering *_clusterer;
     id <HMIFaceClassifier> _faceClassifier;
+    struct os_unfair_lock_s _lock;
     id <HMIHomePersonManagerDataSource> _dataSource;
     NSUUID *_sourceUUID;
     HMIPersonsModelManager *_personsModelManager;
@@ -25,15 +26,16 @@
 @property(readonly) HMIPersonsModelManager *personsModelManager; // @synthesize personsModelManager=_personsModelManager;
 @property(readonly) NSUUID *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
 @property(readonly) id <HMIHomePersonManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+- (void)removePerson:(id)arg1;
 - (id)personCreatedDateFromFaceCrops:(id)arg1;
 - (void)finish;
-- (void)_stageSix_expireUnnamedPersons;
-- (void)_stageFive_associateFaceCropsWithClusterMapping:(id)arg1 faceprints:(id)arg2;
-- (void)_stageFour_addPersons:(id)arg1 clusterMapping:(id)arg2 faceprints:(id)arg3;
-- (void)_stageThree_clusterFaceprints:(id)arg1;
-- (void)_stageTwo_generateFaceprintsForFaceCrops:(id)arg1 existingFaceprints:(id)arg2;
-- (void)_stageOne_fetchFaceprints:(id)arg1;
-- (void)_stageZero_fetchFaceCrops;
+- (void)_stageSix_associateFaceCropsWithClusterMapping:(id)arg1 faceprints:(id)arg2;
+- (void)_stageFive_addPersons:(id)arg1 clusterMapping:(id)arg2 faceprints:(id)arg3;
+- (void)_stageFour_clusterFaceprints:(id)arg1;
+- (void)_stageThree_generateFaceprintsForFaceCrops:(id)arg1 existingFaceprints:(id)arg2;
+- (void)_stageTwo_fetchFaceprints:(id)arg1;
+- (void)_stageOne_fetchFaceCrops;
+- (void)_stageZero_expireUnnamedPersons;
 - (void)main;
 - (id)initWithTaskID:(int)arg1 homeUUID:(id)arg2 dataSource:(id)arg3 sourceUUID:(id)arg4 personsModelManager:(id)arg5 error:(id *)arg6;
 

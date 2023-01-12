@@ -11,10 +11,12 @@
 
 @interface NEExtensionPacketTunnelProviderContext <NEExtensionPacketTunnelProviderProtocol, NEExtensionPacketTunnelProviderHostProtocol>
 {
+    _Bool _testDisconnectAndDisposeTimeout;
 }
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
+@property(nonatomic) _Bool testDisconnectAndDisposeTimeout; // @synthesize testDisconnectAndDisposeTimeout=_testDisconnectAndDisposeTimeout;
 - (Class)requiredProviderSuperClass;
 - (id)extensionPoint;
 - (void)setTunnelConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

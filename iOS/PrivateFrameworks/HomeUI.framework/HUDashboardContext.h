@@ -11,10 +11,11 @@
 @interface HUDashboardContext : NSObject
 {
     _Bool _allowsAdding;
+    _Bool _allowsAnnounce;
     _Bool _allowsEditing;
+    _Bool _allowsBanners;
     _Bool _shouldHideHeadline;
     _Bool _shouldHideStatus;
-    _Bool _shouldHideStatusBanner;
     _Bool _shouldHideCameras;
     _Bool _shouldHidePlaceholderButtons;
     _Bool _shouldIncludeRoomInAccessoryNames;
@@ -33,20 +34,22 @@
 @property(nonatomic) _Bool shouldIncludeRoomInAccessoryNames; // @synthesize shouldIncludeRoomInAccessoryNames=_shouldIncludeRoomInAccessoryNames;
 @property(nonatomic) _Bool shouldHidePlaceholderButtons; // @synthesize shouldHidePlaceholderButtons=_shouldHidePlaceholderButtons;
 @property(nonatomic) _Bool shouldHideCameras; // @synthesize shouldHideCameras=_shouldHideCameras;
-@property(nonatomic) _Bool shouldHideStatusBanner; // @synthesize shouldHideStatusBanner=_shouldHideStatusBanner;
 @property(nonatomic) _Bool shouldHideStatus; // @synthesize shouldHideStatus=_shouldHideStatus;
 @property(nonatomic) _Bool shouldHideHeadline; // @synthesize shouldHideHeadline=_shouldHideHeadline;
+@property(nonatomic) _Bool allowsBanners; // @synthesize allowsBanners=_allowsBanners;
 @property(nonatomic) _Bool allowsEditing; // @synthesize allowsEditing=_allowsEditing;
+@property(nonatomic) _Bool allowsAnnounce; // @synthesize allowsAnnounce=_allowsAnnounce;
 @property(nonatomic) _Bool allowsAdding; // @synthesize allowsAdding=_allowsAdding;
 @property(readonly, nonatomic) HMRoom *room; // @synthesize room=_room;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)_shouldHideMediaProfileContainer:(id)arg1;
-- (_Bool)_shouldHideServiceGroup:(id)arg1;
-- (_Bool)_shouldHideAccessory:(id)arg1;
-- (_Bool)_shouldHideService:(id)arg1;
+- (_Bool)_shouldHideServiceGroup:(id)arg1 limitedByServiceTypes:(id)arg2;
+- (_Bool)_shouldHideAccessory:(id)arg1 limitedByServiceTypes:(id)arg2;
+- (_Bool)_shouldHideService:(id)arg1 limitedByServiceTypes:(id)arg2;
 - (_Bool)_hasOnlySensorServices:(id)arg1;
+- (_Bool)shouldHideHomeKitObject:(id)arg1 limitedByServiceTypes:(id)arg2;
 - (_Bool)shouldHideHomeKitObject:(id)arg1;
 @property(readonly, nonatomic) NSString *identifier;
 - (id)description;

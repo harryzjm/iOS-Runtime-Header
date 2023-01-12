@@ -6,18 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class HKConceptStore, HKHealthRecordsStore, HKMedicalRecord, NSMutableDictionary;
+@class HKClinicalAccount, HKConceptStore, HKHealthRecordsStore, HKMedicalRecord, HRMedicalRecordFormatter, HRSignedClinicalDataGroupContext, NSMutableDictionary;
 @protocol OS_dispatch_queue, WDMedicalRecordDetailDataProviderDelegate;
 
 __attribute__((visibility("hidden")))
 @interface WDMedicalRecordDetailDataProvider : NSObject
 {
+    long long _sectionFHIRSourceData;
+    long long _rowSignedClinicalDataQRCode;
+    long long _rowSignedClinicalDataMultiRecord;
+    long long _rowSignedClinicalDataIssuer;
+    long long _sectionSignedClinicalDataStatus;
+    long long _sectionSignedClinicalDataDeletion;
+    HRSignedClinicalDataGroupContext *_signedClinicalDataGroupContext;
     HKHealthRecordsStore *_healthRecordsStore;
     HKConceptStore *_conceptStore;
     HKMedicalRecord *_medicalRecord;
+    HKClinicalAccount *_account;
     id <WDMedicalRecordDetailDataProviderDelegate> _delegate;
+    HRMedicalRecordFormatter *_formatter;
     NSMutableDictionary *_displayItemsBySection;
     NSMutableDictionary *_sectionTitles;
+    NSMutableDictionary *_sectionFooter;
     NSObject<OS_dispatch_queue> *_resourceQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
@@ -25,21 +35,36 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
+@property(retain, nonatomic) NSMutableDictionary *sectionFooter; // @synthesize sectionFooter=_sectionFooter;
 @property(retain, nonatomic) NSMutableDictionary *sectionTitles; // @synthesize sectionTitles=_sectionTitles;
 @property(retain, nonatomic) NSMutableDictionary *displayItemsBySection; // @synthesize displayItemsBySection=_displayItemsBySection;
+@property(retain, nonatomic) HRMedicalRecordFormatter *formatter; // @synthesize formatter=_formatter;
 @property(nonatomic) __weak id <WDMedicalRecordDetailDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) HKClinicalAccount *account; // @synthesize account=_account;
 @property(retain, nonatomic) HKMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 @property(retain, nonatomic) HKConceptStore *conceptStore; // @synthesize conceptStore=_conceptStore;
 @property(retain, nonatomic) HKHealthRecordsStore *healthRecordsStore; // @synthesize healthRecordsStore=_healthRecordsStore;
+@property(readonly, copy, nonatomic) HRSignedClinicalDataGroupContext *signedClinicalDataGroupContext; // @synthesize signedClinicalDataGroupContext=_signedClinicalDataGroupContext;
+@property(readonly, nonatomic) long long sectionSignedClinicalDataDeletion; // @synthesize sectionSignedClinicalDataDeletion=_sectionSignedClinicalDataDeletion;
+@property(readonly, nonatomic) long long sectionSignedClinicalDataStatus; // @synthesize sectionSignedClinicalDataStatus=_sectionSignedClinicalDataStatus;
+@property(readonly, nonatomic) long long rowSignedClinicalDataIssuer; // @synthesize rowSignedClinicalDataIssuer=_rowSignedClinicalDataIssuer;
+@property(readonly, nonatomic) long long rowSignedClinicalDataMultiRecord; // @synthesize rowSignedClinicalDataMultiRecord=_rowSignedClinicalDataMultiRecord;
+@property(readonly, nonatomic) long long rowSignedClinicalDataQRCode; // @synthesize rowSignedClinicalDataQRCode=_rowSignedClinicalDataQRCode;
+@property(readonly, nonatomic) long long sectionFHIRSourceData; // @synthesize sectionFHIRSourceData=_sectionFHIRSourceData;
 - (void)_updatePlacementForDisplayItems:(id)arg1;
-- (long long)sectionFHIRSourceData;
 - (void)_rqueue_recomputeDisplayItems;
+- (void)_rqueue_didReverifyRecordSignature:(long long)arg1;
+- (void)_rqueue_updateSignedClinicalDataQRCodeIfNecessary;
+- (void)_rqueue_didReceiveSignedClinicalDataGroup:(id)arg1 store:(id)arg2;
+- (void)_rqueue_fetchSignedRecordIfAvailableAndRecomputeDisplayItems;
+- (id)_createSignedClinicalDataStoreUsingHealthRecordsStore:(id)arg1;
 - (id)displayItemForSection:(long long)arg1 row:(long long)arg2;
 - (id)displayItemsForSection:(long long)arg1;
+- (id)footerForSection:(long long)arg1;
 - (id)titleForSection:(long long)arg1;
 - (long long)numberOfRowsForSection:(long long)arg1;
 - (long long)numberOfSections;
-- (id)initWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 medicalRecord:(id)arg3 delegate:(id)arg4;
+- (id)initWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 medicalRecord:(id)arg3 account:(id)arg4 delegate:(id)arg5;
 
 @end
 

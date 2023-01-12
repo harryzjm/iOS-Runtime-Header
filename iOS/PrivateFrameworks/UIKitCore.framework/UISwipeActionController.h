@@ -58,6 +58,7 @@
 @property(readonly, nonatomic) UIView *swipedItemView;
 @property(readonly, nonatomic) NSIndexPath *swipedIndexPath;
 @property(readonly, nonatomic) NSSet *swipedIndexPaths;
+- (void)reconfigureActiveSwipeOccurrences;
 - (void)updateLayout;
 - (void)resetSwipedItemAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)swipeItemAtIndexPath:(id)arg1 configuration:(id)arg2 direction:(unsigned long long)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;

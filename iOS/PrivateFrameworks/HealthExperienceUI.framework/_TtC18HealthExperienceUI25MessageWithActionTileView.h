@@ -14,6 +14,7 @@
     MISSING_TYPE *bodyLabel;
     MISSING_TYPE *actionButton;
     MISSING_TYPE *actionButtonTopConstraint;
+    MISSING_TYPE *bottomContraint;
     MISSING_TYPE *didTapActionButton;
 }
 

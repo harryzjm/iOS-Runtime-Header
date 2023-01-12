@@ -16,9 +16,11 @@
     NSString *_cachePath;
     NSData *_state;
     unsigned long long _requestRevision;
+    unsigned long long _torsoprintRequestRevision;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long torsoprintRequestRevision; // @synthesize torsoprintRequestRevision=_torsoprintRequestRevision;
 @property(nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 @property(nonatomic) float torsoThreshold; // @synthesize torsoThreshold=_torsoThreshold;
 @property(nonatomic) float threshold; // @synthesize threshold=_threshold;
@@ -27,8 +29,9 @@
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 - (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5;
 - (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4;
-- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 requestRevision:(unsigned long long)arg6;
+- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 requestRevision:(unsigned long long)arg6 torsoprintRequestRevision:(unsigned long long)arg7;
 - (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 requestRevision:(unsigned long long)arg5;
+- (id)initWithType:(id)arg1 cachePath:(id)arg2 state:(id)arg3 threshold:(float)arg4 torsoThreshold:(float)arg5 requestRevision:(unsigned long long)arg6;
 
 @end
 

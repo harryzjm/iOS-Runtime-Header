@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSSet, NSString;
+@class CNContact, NSDate, NSNumber, NSSet, NSString;
 
 @interface PKFamilyMember : NSObject <NSSecureCoding>
 {
@@ -18,20 +18,28 @@
     _Bool _childAccount;
     _Bool _parent;
     _Bool _organizer;
+    long long _status;
     NSString *_appleID;
     NSSet *_appleIDAliases;
     NSNumber *_dsid;
     NSString *_altDSID;
-    NSString *_firstName;
-    NSString *_lastName;
+    CNContact *_contact;
     unsigned long long _age;
     NSDate *_dateOfBirth;
     long long _memberType;
     NSDate *_joinedDate;
+    NSString *_inviteEmail;
+    NSDate *_invitationDate;
+    NSString *_firstName;
+    NSString *_lastName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property(copy, nonatomic) NSDate *invitationDate; // @synthesize invitationDate=_invitationDate;
+@property(copy, nonatomic) NSString *inviteEmail; // @synthesize inviteEmail=_inviteEmail;
 @property(nonatomic, getter=isOrganizer) _Bool organizer; // @synthesize organizer=_organizer;
 @property(nonatomic, getter=isParent) _Bool parent; // @synthesize parent=_parent;
 @property(nonatomic, getter=isChildAccount) _Bool childAccount; // @synthesize childAccount=_childAccount;
@@ -41,14 +49,15 @@
 @property(nonatomic) long long memberType; // @synthesize memberType=_memberType;
 @property(copy, nonatomic) NSDate *dateOfBirth; // @synthesize dateOfBirth=_dateOfBirth;
 @property(nonatomic) unsigned long long age; // @synthesize age=_age;
-@property(copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
-@property(copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
+@property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(copy, nonatomic) NSNumber *dsid; // @synthesize dsid=_dsid;
 @property(copy, nonatomic) NSSet *appleIDAliases; // @synthesize appleIDAliases=_appleIDAliases;
 @property(copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property(nonatomic, getter=isMe) _Bool me; // @synthesize me=_me;
+@property(nonatomic) long long status; // @synthesize status=_status;
 - (id)description;
+- (unsigned long long)hash;
 - (_Bool)isEqualToFamilyMember:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

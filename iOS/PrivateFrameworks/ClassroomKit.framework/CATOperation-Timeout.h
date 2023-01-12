@@ -7,6 +7,7 @@
 #import <DeviceManagement/CATOperation.h>
 
 @interface CATOperation (Timeout)
+- (id)crk_timingOutOperationWithTimerPrimitives:(id)arg1 operationQueue:(id)arg2 timerIdentifier:(id)arg3 timeout:(double)arg4;
 - (id)crk_operationWithTimeout:(double)arg1;
 @end
 

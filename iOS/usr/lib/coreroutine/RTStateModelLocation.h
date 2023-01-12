@@ -10,6 +10,7 @@
 
 @interface RTStateModelLocation : NSObject <NSSecureCoding>
 {
+    int _referenceFrame;
     double _Latitude_deg;
     double _Longitude_deg;
     double _uncertainty_m;
@@ -18,6 +19,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) int referenceFrame; // @synthesize referenceFrame=_referenceFrame;
 @property(nonatomic) double timestamp_s; // @synthesize timestamp_s=_timestamp_s;
 @property(nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(nonatomic) double uncertainty_m; // @synthesize uncertainty_m=_uncertainty_m;
@@ -30,6 +32,7 @@
 - (id)initWithRTLocation:(id)arg1;
 - (id)initWithCLLocation:(id)arg1;
 - (id)initWithLat:(double)arg1 Lon:(double)arg2 Uncertainty:(double)arg3 confidence:(double)arg4 andTimestamp_s:(double)arg5;
+- (id)initWithLat:(double)arg1 Lon:(double)arg2 Uncertainty:(double)arg3 confidence:(double)arg4 andTimestamp_s:(double)arg5 referenceFrame:(int)arg6;
 - (id)init;
 
 @end

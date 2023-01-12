@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class ACAccount, AMSUIWebClientContext, NSString;
+@class ACAccount, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebVerifyCredentialsAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebVerifyCredentialsAction <AMSUIWebActionRunnable>
 {
     _Bool _ephemeral;
     _Bool _usernameEditable;
-    AMSUIWebClientContext *_context;
     ACAccount *_account;
     NSString *_buttonText;
     long long _serviceType;
@@ -34,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool ephemeral; // @synthesize ephemeral=_ephemeral;
 @property(retain, nonatomic) NSString *buttonText; // @synthesize buttonText=_buttonText;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

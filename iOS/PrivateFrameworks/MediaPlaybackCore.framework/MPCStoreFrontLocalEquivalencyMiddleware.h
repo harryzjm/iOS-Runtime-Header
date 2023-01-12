@@ -8,11 +8,11 @@
 
 #import <MediaPlaybackCore/MPCPlayerResponseBuilder-Protocol.h>
 #import <MediaPlaybackCore/MPMiddleware-Protocol.h>
-#import <MediaPlaybackCore/_MPCStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPModelGenericObject, NSArray, NSIndexPath, NSString;
 
-@interface MPCStoreFrontLocalEquivalencyMiddleware : NSObject <MPCPlayerResponseBuilder, _MPCStateDumpPropertyListTransformable, MPMiddleware>
+__attribute__((visibility("hidden")))
+@interface MPCStoreFrontLocalEquivalencyMiddleware : NSObject <MPCPlayerResponseBuilder, MPMiddleware>
 {
     NSArray *_invalidationObservers;
     MPModelGenericObject *_overridePlayingItem;

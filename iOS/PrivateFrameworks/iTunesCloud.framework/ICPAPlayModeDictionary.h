@@ -8,6 +8,7 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface ICPAPlayModeDictionary : PBCodable <NSCopying>
 {
     int _autoPlayMode;
@@ -20,27 +21,13 @@
     } _has;
 }
 
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsAutoPlayMode:(id)arg1;
-- (id)autoPlayModeAsString:(int)arg1;
-@property(nonatomic) _Bool hasAutoPlayMode;
-@property(nonatomic) int autoPlayMode; // @synthesize autoPlayMode=_autoPlayMode;
-- (int)StringAsShufflePlayMode:(id)arg1;
-- (id)shufflePlayModeAsString:(int)arg1;
-@property(nonatomic) _Bool hasShufflePlayMode;
-@property(nonatomic) int shufflePlayMode; // @synthesize shufflePlayMode=_shufflePlayMode;
-- (int)StringAsRepeatPlayMode:(id)arg1;
-- (id)repeatPlayModeAsString:(int)arg1;
-@property(nonatomic) _Bool hasRepeatPlayMode;
-@property(nonatomic) int repeatPlayMode; // @synthesize repeatPlayMode=_repeatPlayMode;
 
 @end
 

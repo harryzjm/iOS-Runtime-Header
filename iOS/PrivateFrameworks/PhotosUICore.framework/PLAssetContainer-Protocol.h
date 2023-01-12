@@ -28,6 +28,7 @@
 - (_Bool)canPerformEditOperation:(unsigned long long)arg1;
 
 @optional
++ (NSString *)entityName;
 @property(readonly, retain, nonatomic) NSDate *endDate;
 @property(readonly, retain, nonatomic) NSDate *startDate;
 @end

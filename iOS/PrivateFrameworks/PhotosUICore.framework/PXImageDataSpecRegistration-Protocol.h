@@ -7,6 +7,6 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @protocol PXImageDataSpecRegistration <NSObject>
-- (long long)registerImageDataSpec:(CDStruct_1b544862)arg1;
+- (long long)registerImageDataSpec:(CDStruct_6c943d2a)arg1;
 @end
 

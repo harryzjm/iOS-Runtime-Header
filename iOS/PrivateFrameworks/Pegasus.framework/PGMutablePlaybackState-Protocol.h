@@ -9,6 +9,7 @@
 @class PGPlaybackStatePrerollAttributes;
 
 @protocol PGMutablePlaybackState <NSObject>
+@property(nonatomic) long long backgroundAudioPolicy;
 @property(nonatomic, getter=isRoutingVideoToHostedWindow) _Bool routingVideoToHostedWindow;
 @property(retain, nonatomic) PGPlaybackStatePrerollAttributes *prerollAttributes;
 @property(nonatomic) _Bool requiresLinearPlayback;

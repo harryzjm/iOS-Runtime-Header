@@ -7,23 +7,25 @@
 #import <NeutrinoCore/NUPurgeableStorage-Protocol.h>
 #import <NeutrinoCore/NUSurfaceStorage-Protocol.h>
 
-@class NSString, NUGLTexture, NUIOSurface, NUPixelFormat, NURegion;
+@class NSString, NUIOSurface, NUPixelFormat, NURegion;
+@protocol NUDevice;
 
 @interface NUIOSurfaceStorage <NUSurfaceStorage, NUPurgeableStorage>
 {
     long long _purgeLevel;
     _Bool _purgeable;
     NUIOSurface *_surface;
-    NUGLTexture *_texture;
+    id <NUDevice> _device;
 }
 
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
+- (long long)_copyFromIOSurfaceStorage:(id)arg1 region:(id)arg2 device:(id)arg3;
 - (long long)copyFromStorage:(id)arg1 region:(id)arg2;
 - (long long)useAsCIRenderDestinationWithRenderer:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)useAsCIImageWithOptions:(id)arg1 renderer:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (long long)writeTextureInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (long long)readTextureInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (long long)writeTextureInRegion:(id)arg1 device:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (long long)readTextureInRegion:(id)arg1 device:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (long long)writeSurfaceInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)readSurfaceInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)writeBufferInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -39,7 +41,6 @@
 - (void)adjustPurgeLevel:(long long)arg1;
 - (long long)purgeLevel;
 - (_Bool)isPurgeable;
-- (id)_texture;
 - (void)_allocateSurface;
 @property(readonly) long long sizeInBytes;
 - (long long)rowBytes;

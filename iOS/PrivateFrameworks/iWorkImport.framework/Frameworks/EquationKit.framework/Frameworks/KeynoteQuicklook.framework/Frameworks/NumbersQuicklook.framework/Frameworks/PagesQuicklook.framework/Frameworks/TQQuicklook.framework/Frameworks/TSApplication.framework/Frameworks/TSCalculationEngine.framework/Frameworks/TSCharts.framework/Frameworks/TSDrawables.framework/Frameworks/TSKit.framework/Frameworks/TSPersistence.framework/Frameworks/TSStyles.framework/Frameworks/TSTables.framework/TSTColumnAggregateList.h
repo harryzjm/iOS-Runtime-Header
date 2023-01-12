@@ -16,12 +16,17 @@
 }
 
 - (void).cxx_destruct;
-- (void)encodeToArchive:(struct ColumnAggregateListArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ColumnAggregateListArchive *)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) NSArray *columnAggregateUuids;
+- (TSKUIDStructVectorTemplate_de88e035)columnAggregateUidList;
 - (id)description;
 - (id)aggregatesOnLevel:(unsigned char)arg1;
 @property(readonly, nonatomic) NSArray *asArray;
+- (id)aggregateAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long count;
 - (id)initWithColumnAggregates:(id)arg1;
 
 @end

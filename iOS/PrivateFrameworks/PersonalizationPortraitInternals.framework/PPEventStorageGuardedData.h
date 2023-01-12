@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class EKCalendarVisibilityManager, EKEventStore, NSArray;
+@class EKTimedEventStorePurger, NSSet;
 
 @interface PPEventStorageGuardedData : NSObject
 {
-    EKEventStore *_store;
-    NSArray *_calendars;
-    EKCalendarVisibilityManager *_calendarVisibilityManager;
+    EKTimedEventStorePurger *_ekStorePurger;
+    NSSet *_calendarIdentifiers;
+    NSSet *_invisibleCalendarIdentifiers;
 }
 
 - (void).cxx_destruct;
+- (id)ekStore;
 
 @end
 

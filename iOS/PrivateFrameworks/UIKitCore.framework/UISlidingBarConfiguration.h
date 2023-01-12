@@ -21,8 +21,6 @@
             unsigned int allowMixedSideBySideAndOverlay:1;
             unsigned int allowTotalWidthGreaterThanParent:1;
             unsigned int forceOverlay:1;
-            unsigned int supplementaryComplementsLeadingTrailing:1;
-            unsigned int detachedMain:1;
             unsigned int leadingBorderWidthIsInPixels:1;
             unsigned int trailingBorderWidthIsInPixels:1;
             unsigned int shouldFadeStaticNavBarButton:1;
@@ -68,8 +66,6 @@
 - (void)setLeadingBorderWidthInPixels:(double)arg1;
 - (double)leadingBorderWidthForScale:(double)arg1;
 @property(nonatomic) _Bool shouldFadeStaticNavBarButton;
-@property(nonatomic) _Bool detachedMain;
-@property(nonatomic) _Bool supplementaryComplementsLeadingTrailing;
 @property(nonatomic) _Bool forceOverlay;
 @property(nonatomic) _Bool allowTotalWidthGreaterThanParent;
 @property(nonatomic) _Bool allowMixedSideBySideAndOverlay;

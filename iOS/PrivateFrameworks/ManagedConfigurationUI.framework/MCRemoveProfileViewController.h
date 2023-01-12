@@ -9,7 +9,6 @@
 
 @class MCProfile, NSString, UITextField;
 
-__attribute__((visibility("hidden")))
 @interface MCRemoveProfileViewController <MCProfileViewControllerDelegate, DevicePINControllerDelegate>
 {
     _Bool _profileWantsToReEnroll;
@@ -36,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)_didFinishEnteringPINWithCompletion:(CDUnknownBlockType)arg1;
 - (void)didCancelEnteringPIN;
 - (void)didAcceptEnteredPIN:(id)arg1;
+- (void)profileViewControllerDidSelectPoll:(id)arg1;
+- (_Bool)profileViewControllerShouldDisplayPoll:(id)arg1;
 - (void)profileViewControllerDidSelectUpdateProfile:(id)arg1;
 - (void)profileViewControllerDidSelectRemoveProfile:(id)arg1;
 - (_Bool)profileViewControllerIsProfileInstalled;

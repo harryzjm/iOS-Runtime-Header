@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContextKitExtraction/CKContextDonationItem.h>
+#import <ContextKitCore/CKContextDonationItem.h>
 
 @class CKContextClient, NSArray, NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString;
 
@@ -13,6 +13,8 @@
     CKContextClient *_client;
     _Bool _textIsRaw;
     _Bool _includeHigherLevelTopics;
+    _Bool _includeStructuredExtractionResults;
+    _Bool _includeLeadImage;
     _Bool _dontSkip;
     _Bool _timing;
     _Bool _overrideEnableCoreNLPTagging;
@@ -26,7 +28,10 @@
     NSString *_url;
     NSDictionary *_itemIds;
     long long _maxConstellationTopics;
+    long long _maxProductTopics;
     NSSet *_allowedTopicTypeTags;
+    unsigned long long _fingerprintMax;
+    double _donationTimeout;
     NSNumber *_overrideBlendAlpha;
     NSNumber *_overrideBlendBeta;
     NSNumber *_overrideBlendGamma;
@@ -66,7 +71,12 @@
 @property(retain, nonatomic) NSNumber *overrideBlendAlpha; // @synthesize overrideBlendAlpha=_overrideBlendAlpha;
 @property(nonatomic) _Bool timing; // @synthesize timing=_timing;
 @property(nonatomic) _Bool dontSkip; // @synthesize dontSkip=_dontSkip;
+@property(nonatomic) double donationTimeout; // @synthesize donationTimeout=_donationTimeout;
+@property(nonatomic) unsigned long long fingerprintMax; // @synthesize fingerprintMax=_fingerprintMax;
+@property(nonatomic) _Bool includeLeadImage; // @synthesize includeLeadImage=_includeLeadImage;
+@property(nonatomic) _Bool includeStructuredExtractionResults; // @synthesize includeStructuredExtractionResults=_includeStructuredExtractionResults;
 @property(retain, nonatomic) NSSet *allowedTopicTypeTags; // @synthesize allowedTopicTypeTags=_allowedTopicTypeTags;
+@property(nonatomic) long long maxProductTopics; // @synthesize maxProductTopics=_maxProductTopics;
 @property(nonatomic) long long maxConstellationTopics; // @synthesize maxConstellationTopics=_maxConstellationTopics;
 @property(retain, nonatomic) NSDictionary *itemIds; // @synthesize itemIds=_itemIds;
 @property(nonatomic) _Bool includeHigherLevelTopics; // @synthesize includeHigherLevelTopics=_includeHigherLevelTopics;

@@ -13,14 +13,15 @@
 
 @interface MapsSuggestionsBaseSource : NSObject <MapsSuggestionsSource>
 {
+    NSString *_name;
     id <MapsSuggestionsSourceDelegate> _delegate;
-    NSString *_uniqueName;
 }
 
 + (unsigned long long)disposition;
 + (_Bool)isEnabled;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSString *uniqueName; // @synthesize uniqueName=_uniqueName;
+@property(nonatomic) __weak id <MapsSuggestionsSourceDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) NSString *uniqueName;
 - (unsigned long long)addOrUpdateMySuggestionEntries:(id)arg1;
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
@@ -31,7 +32,6 @@
 - (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
 - (void)start;
-@property(nonatomic) __weak id <MapsSuggestionsSourceDelegate> delegate;
 - (id)initFromResourceDepot:(id)arg1;
 - (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 - (id)initWithDelegate:(id)arg1 name:(id)arg2;

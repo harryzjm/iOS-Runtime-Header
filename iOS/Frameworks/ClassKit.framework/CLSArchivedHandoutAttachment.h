@@ -6,7 +6,7 @@
 
 #import <ClassKit/CLSRelationable-Protocol.h>
 
-@class CLSArchivedHandout, NSArray, NSString, NSURL;
+@class CLSArchivedHandout, CLSArchivedSurvey, NSArray, NSString, NSURL;
 
 @interface CLSArchivedHandoutAttachment <CLSRelationable>
 {
@@ -16,6 +16,7 @@
     NSArray *_contextPath;
     NSString *_contextSummary;
     NSString *_contextCustomTypeName;
+    _Bool _contextSourceIsCatalog;
     NSString *_title;
     NSString *_bundleIdentifier;
     NSString *_contentStoreIdentifier;
@@ -32,6 +33,7 @@
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSString *contentStoreIdentifier; // @synthesize contentStoreIdentifier=_contentStoreIdentifier;
 @property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(readonly, nonatomic) _Bool contextSourceIsCatalog; // @synthesize contextSourceIsCatalog=_contextSourceIsCatalog;
 @property(readonly, nonatomic) NSString *contextCustomTypeName; // @synthesize contextCustomTypeName=_contextCustomTypeName;
 @property(readonly, nonatomic) NSString *contextSummary; // @synthesize contextSummary=_contextSummary;
 @property(readonly, nonatomic) NSArray *contextPath; // @synthesize contextPath=_contextPath;
@@ -46,6 +48,7 @@
 - (void)setPermissionType:(int)arg1;
 - (void)setDisplayOrder:(long long)arg1;
 - (void)setContextType:(long long)arg1;
+- (void)setContextSourceIsCatalog:(_Bool)arg1;
 - (void)setContextCustomTypeName:(id)arg1;
 - (void)setContextSummary:(id)arg1;
 - (void)setContextPath:(id)arg1;
@@ -55,6 +58,7 @@
 - (void)setURL:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, copy, nonatomic) CLSArchivedSurvey *archivedSurvey;
 @property(readonly, nonatomic) NSArray *archivedAssets;
 @property(readonly, nonatomic) NSArray *assets;
 - (id)initWithType:(int)arg1 title:(id)arg2;

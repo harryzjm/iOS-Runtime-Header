@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _progressIndicatorSize;
 }
 
++ (_Bool)wantsRenderViewForTypeOfProcessingNeeded:(unsigned short)arg1;
 + (id)_loadErrorIconForSizeClass:(long long)arg1;
 + (struct CGSize)renderIndicatorTileSizeForSizeClass:(long long)arg1;
 + (struct CGSize)progressIndicatorTileSizeForSizeClass:(long long)arg1;

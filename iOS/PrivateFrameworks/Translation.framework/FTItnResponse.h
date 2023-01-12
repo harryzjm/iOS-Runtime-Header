@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_3e5afc79)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_3e5afc79)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *formatted_words_list;
 @property(readonly, nonatomic) NSString *return_str;
 @property(readonly, nonatomic) int return_code;

@@ -6,7 +6,6 @@
 
 @class NSArray, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDAcceptSharesURLRequest
 {
     CDUnknownBlockType _shareAcceptedBlock;
@@ -20,8 +19,12 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType shareAcceptedBlock; // @synthesize shareAcceptedBlock=_shareAcceptedBlock;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
+- (void)addSignatureForRequestOperation:(id)arg1;
 - (id)generateRequestOperations;
+- (_Bool)requiresCKAnonymousUserIDs;
+- (_Bool)handlesAnonymousCKUserIDPropagation;
 - (id)requestOperationClasses;
+- (id)zoneIDsToLock;
 - (id)initWithOperation:(id)arg1 shareMetadatasToAccept:(id)arg2;
 
 @end

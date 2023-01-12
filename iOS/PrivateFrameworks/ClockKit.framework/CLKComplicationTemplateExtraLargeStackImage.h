@@ -13,7 +13,7 @@
     unsigned long long _highlightMode;
 }
 
-+ (struct CGSize)imageSize;
++ (void)imageSDKSize:(struct CGSize *)arg1 deviceSize:(struct CGSize *)arg2 forSDKVersion:(long long)arg3;
 + (id)templateWithLine1ImageProvider:(id)arg1 line2TextProvider:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long highlightMode; // @synthesize highlightMode=_highlightMode;

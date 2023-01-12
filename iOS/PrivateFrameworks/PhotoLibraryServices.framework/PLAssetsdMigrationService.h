@@ -16,6 +16,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_migrateWellknownLibraries;
 - (void)moveiPhotoLibraryMediaWithReply:(CDUnknownBlockType)arg1;
 - (void)dataMigrationWillFinishWithReply:(CDUnknownBlockType)arg1;
 - (void)cleanupModelForDataMigrationForRestoreType:(long long)arg1 reply:(CDUnknownBlockType)arg2;

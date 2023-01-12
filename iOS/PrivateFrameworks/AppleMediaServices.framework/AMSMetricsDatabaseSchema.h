@@ -11,15 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)migrateVersion4to5WithMigration:(id)arg1;
 + (void)migrateVersion3to4WithMigration:(id)arg1;
 + (void)migrateVersion2to3WithMigration:(id)arg1;
 + (void)migrateVersion1to2WithMigration:(id)arg1;
 + (void)migrateVersion0to1WithMigration:(id)arg1;
-+ (id)_containerURLForContainerId:(id)arg1;
-+ (void)_applyProtectionClassForDirectoryAtURL:(id)arg1;
-+ (_Bool)_addSkipBackupAttribute:(_Bool)arg1 forURL:(id)arg2;
-+ (_Bool)removeDatabaseForContainerId:(id)arg1;
-+ (id)databasePathForContainerId:(id)arg1;
 + (_Bool)createOrUpdateSchemaUsingConnection:(id)arg1;
 
 @end

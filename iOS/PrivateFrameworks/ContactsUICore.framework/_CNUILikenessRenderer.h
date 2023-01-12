@@ -18,7 +18,7 @@
 }
 
 + (struct CGImage *)cgImageForLikenessProvider:(id)arg1 pointSize:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 alwaysUsePointSize:(_Bool)arg5;
-+ (id)renderedLikenessesForProviders:(id)arg1 scope:(id)arg2;
++ (id)renderedLikenessesForProviders:(id)arg1 likenessBadgeProviders:(id)arg2 scope:(id)arg3;
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
@@ -27,8 +27,13 @@
 - (id)renderedBasicMonogramForString:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
 - (id)renderedBasicMonogramFromString:(id)arg1 scope:(id)arg2;
 - (id)loadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
-- (id)renderedLikenessesForLikenessProviders:(id)arg1 scope:(id)arg2 likenessFingerprint:(id)arg3;
+- (id)renderedLikenessForBadgeProvider:(id)arg1 scope:(id)arg2;
+- (id)renderedLikenessesForLikenessProviders:(id)arg1 badges:(id)arg2 scope:(id)arg3 likenessFingerprint:(id)arg4;
+- (id)likenessProvidersForBadges:(id)arg1;
+- (id)likenessProvidersForBadges:(id)arg1 workScheduler:(id)arg2;
 - (id)likenessProvidersForContacts:(id)arg1 likenessResolverOptions:(id)arg2 workScheduler:(id)arg3;
+- (id)renderedLikenessesForContacts:(id)arg1 withBadges:(id)arg2 scope:(id)arg3 workScheduler:(id)arg4;
+- (id)renderedLikenessForBadge:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (id)initWithLikenessResolver:(id)arg1 schedulerProvider:(id)arg2;
 

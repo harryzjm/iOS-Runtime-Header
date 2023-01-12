@@ -12,7 +12,9 @@
 @interface PXUIAssetBadgeView : UIView
 {
     struct {
+        _Bool menuForBadges;
         _Bool userDidSelectBadges;
+        _Bool dismissPresentedViewController;
     } _delegateRespondsTo;
     _Bool _isPerformingUpdate;
     struct {
@@ -71,6 +73,7 @@
 - (_Bool)_needsUpdate;
 - (void)_setBackgroundImage:(id)arg1;
 - (void)_handleButton:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)_layoutBottomLabel;
 - (void)_layoutBottomCornersImages;

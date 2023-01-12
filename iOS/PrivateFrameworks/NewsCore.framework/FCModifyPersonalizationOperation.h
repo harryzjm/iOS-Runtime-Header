@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecord, FCCKPrivateDatabase, FCPersonalizationTreatment, NSArray, NSError, NTPBPersonalizationProfile;
+@class CKRecord, FCCKPrivateDatabase, FCPersonalizationTreatment, NSDictionary, NSError, NTPBPersonalizationProfile;
 
 @interface FCModifyPersonalizationOperation
 {
     FCCKPrivateDatabase *_database;
-    NSArray *_changeGroups;
+    NSDictionary *_aggregates;
     FCPersonalizationTreatment *_treatment;
     CKRecord *_remoteRecord;
     CDUnknownBlockType _saveCompletionHandler;
@@ -18,6 +18,7 @@
     NSError *_resultError;
 }
 
++ (void)applyAggregates:(id)arg1 toProfile:(id)arg2 maxRatio:(double)arg3;
 + (void)pruneAggregates:(id)arg1;
 + (void)applyDeltas:(id)arg1 toProfile:(id)arg2 treatment:(id)arg3 prune:(_Bool)arg4;
 + (void)applyChangeGroups:(id)arg1 toProfile:(id)arg2 treatment:(id)arg3 prune:(_Bool)arg4;
@@ -29,7 +30,7 @@
 @property(copy, nonatomic) CDUnknownBlockType saveCompletionHandler; // @synthesize saveCompletionHandler=_saveCompletionHandler;
 @property(retain, nonatomic) CKRecord *remoteRecord; // @synthesize remoteRecord=_remoteRecord;
 @property(retain, nonatomic) FCPersonalizationTreatment *treatment; // @synthesize treatment=_treatment;
-@property(retain, nonatomic) NSArray *changeGroups; // @synthesize changeGroups=_changeGroups;
+@property(retain, nonatomic) NSDictionary *aggregates; // @synthesize aggregates=_aggregates;
 @property(retain, nonatomic) FCCKPrivateDatabase *database; // @synthesize database=_database;
 - (void)resetForRetry;
 - (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;

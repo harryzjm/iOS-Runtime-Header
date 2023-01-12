@@ -9,7 +9,7 @@
 }
 
 + (id)sharedInstance;
-- (_Bool)isInPhoneCallState;
+- (unsigned long long)phoneCallState;
 - (void)_stopMonitoring;
 - (void)_startMonitoringWithQueue:(id)arg1;
 

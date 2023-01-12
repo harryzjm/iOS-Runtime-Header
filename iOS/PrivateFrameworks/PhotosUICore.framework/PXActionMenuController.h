@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 
-@class NSArray, NSSet, NSString, UIAlertController;
+@class NSArray, NSOrderedSet, NSSet, NSString, UIAlertController;
 
 @interface PXActionMenuController : NSObject <PXActionPerformerDelegate>
 {
@@ -17,6 +17,8 @@
     NSArray *_alertActionViewControllers;
     NSArray *_alertActionTypes;
     NSArray *_activityActions;
+    NSArray *_actions;
+    NSOrderedSet *_defaultActivityTypeOrder;
     NSSet *_disabledActionTypes;
     NSSet *_excludedActionTypes;
     NSArray *_actionManagers;
@@ -26,10 +28,12 @@
 @property(readonly, nonatomic) NSArray *actionManagers; // @synthesize actionManagers=_actionManagers;
 @property(copy, nonatomic) NSSet *excludedActionTypes; // @synthesize excludedActionTypes=_excludedActionTypes;
 @property(copy, nonatomic) NSSet *disabledActionTypes; // @synthesize disabledActionTypes=_disabledActionTypes;
+@property(copy, nonatomic) NSOrderedSet *defaultActivityTypeOrder; // @synthesize defaultActivityTypeOrder=_defaultActivityTypeOrder;
 - (void)invalidateActions;
 - (void)_updateActionsIfNeeded;
 - (_Bool)shouldAllowPerformanceOfActionType:(id)arg1;
 @property(readonly, nonatomic) NSArray *availableActionTypes;
+@property(readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property(readonly, nonatomic) UIAlertController *alertController;
 @property(readonly, nonatomic) NSArray *alertActionTypes; // @synthesize alertActionTypes=_alertActionTypes;
 @property(readonly, nonatomic) NSArray *activityActions; // @synthesize activityActions=_activityActions;

@@ -8,14 +8,17 @@
 
 @interface PKPaymentAvailableProductsRequest
 {
-    _Bool _ignoreCache;
     NSString *_preferredLanguage;
+    long long _context;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool ignoreCache; // @synthesize ignoreCache=_ignoreCache;
+@property(nonatomic) long long context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *preferredLanguage; // @synthesize preferredLanguage=_preferredLanguage;
 - (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPreferredLanguage:(id)arg1;
 
 @end

@@ -11,11 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)sharedInstance;
-+ (_Bool)_hasEntitlementForAuthorizationExemption;
-+ (void)validatePermissionsExpiryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)requestAuthorization:(CDUnknownBlockType)arg1;
-- (long long)authorizationStatus;
++ (void)requestAuthorization:(CDUnknownBlockType)arg1;
++ (long long)authorizationStatus;
++ (long long)_authorizationStatusFromUnderlyingAuthorizationStatus:(long long)arg1;
++ (id)_sharedCloudServiceStatusMonitor;
 
 @end
 

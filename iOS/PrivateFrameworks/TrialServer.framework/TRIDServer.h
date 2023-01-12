@@ -23,12 +23,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isRunning; // @synthesize isRunning=_isRunning;
 - (unsigned long long)_getDiskUsageInBytes;
+- (void)_registerSetupAssistantFetchActivityOnce;
 - (void)_registerXpcStreamEventHandler;
 - (_Bool)_shouldContinue;
 - (void)_dispatchIfUnlocked:(CDUnknownBlockType)arg1;
 - (void)_logMetrics:(id)arg1 stopwatch:(id)arg2;
 - (void)start;
-- (id)_getFreeDiskSpace;
 - (void)_asyncStartWithMetrics:(id)arg1;
 - (void)_updateSystemInfo;
 - (id)initWithPath:(id)arg1;

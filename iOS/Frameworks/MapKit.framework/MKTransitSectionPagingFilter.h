@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _numLinesFallbackValue;
 }
 
++ (_Bool)_newStationCardUIEnabled;
++ (unsigned long long)_kMaxLinesInSectionBeforePage;
++ (unsigned long long)_kNumLinesFallbackValue;
 + (id)defaultFilterForInactiveLines;
 + (id)defaultFilterForDepartures;
 @property(nonatomic) unsigned long long numLinesFallbackValue; // @synthesize numLinesFallbackValue=_numLinesFallbackValue;

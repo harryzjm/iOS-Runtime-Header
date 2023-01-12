@@ -82,6 +82,7 @@
 - (id)error;
 - (long long)decodingFailurePolicy;
 - (void)failWithError:(id)arg1;
+- (id)__decoderInfoForAllowedClassesWarning;
 - (struct CGRect)decodeRect;
 - (void)encodeRect:(struct CGRect)arg1;
 - (struct CGSize)decodeSize;

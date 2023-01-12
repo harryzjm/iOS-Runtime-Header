@@ -7,30 +7,27 @@
 #import <objc/NSObject.h>
 
 #import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-#import <SleepDaemon/HDSPNotificationObserver-Protocol.h>
 #import <SleepDaemon/HDSPSource-Protocol.h>
 
 @class HDSPEnvironment, NSString;
-@protocol HDSPSource;
+@protocol HDSPSource, NAScheduler;
 
-@interface HDSPSleepScheduleModelMigrationManager : NSObject <HDSPNotificationObserver, HDSPSource, HDSPEnvironmentAware>
+@interface HDSPSleepScheduleModelMigrationManager : NSObject <HDSPSource, HDSPEnvironmentAware>
 {
     HDSPEnvironment *_environment;
+    id <NAScheduler> _scheduler;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <NAScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
-- (void)migrateToMobileTimerIfNecessary;
-- (id)_migrateSleepDurationFromHealthKit;
-- (id)migrateFromHealthKitIfNecessary;
-- (id)notificationListener:(id)arg1 didReceiveNotificationWithName:(id)arg2;
-- (id)_migrateSleepScreen;
+- (id)_migrateSleepFocusMode;
+- (id)_migrateOnboardingSettings;
 - (id)_migrateSleepScheduleFromMobileTimer;
 - (id)performDataMigration;
 - (_Bool)needDataMigration;
-- (void)environmentDidBecomeReady:(id)arg1;
-- (void)environmentWillBecomeReady:(id)arg1;
+- (id)initWithEnvironment:(id)arg1 scheduler:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
 
 // Remaining properties

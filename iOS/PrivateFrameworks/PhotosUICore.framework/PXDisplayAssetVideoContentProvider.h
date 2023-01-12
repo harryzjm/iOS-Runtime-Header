@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXDisplayAssetVideoContentProviderRequestDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSString, PXMediaProvider;
+@class ISWrappedAVAudioSession, NSArray, NSMutableDictionary, NSObject, NSString, PXMediaProvider;
 @protocol OS_dispatch_queue, PXDisplayAsset;
 
 @interface PXDisplayAssetVideoContentProvider <PXDisplayAssetVideoContentProviderRequestDelegate>
@@ -18,15 +18,20 @@
     long long _loadingQueue_lastRequestedPriority;
     id <PXDisplayAsset> _loadingQueue_asset;
     double _videoAspectRatio;
+    NSArray *_strategies;
+    _Bool _requestURLOnly;
     NSString *_contentIdentifier;
+    ISWrappedAVAudioSession *_audioSession;
     PXMediaProvider *_mediaProvider;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+- (id)audioSession;
 - (id)contentIdentifier;
-- (void)request:(id)arg1 didFinishWithPlayerItem:(id)arg2 info:(id)arg3;
+- (void)request:(id)arg1 didFinishWithPlayerItem:(id)arg2 videoURL:(id)arg3 downloadedTimeRange:(CDStruct_e83c9415)arg4 info:(id)arg5;
 - (void)requestLoadingProgressDidChange:(id)arg1;
+- (void)_handleMediaServicesWereResetNotification:(id)arg1;
 - (void)_loadingQueue_reloadContent;
 - (void)_handlePostprocessedPlayerItem:(id)arg1 priority:(long long)arg2 description:(id)arg3;
 - (void)_postprocessingQueue_performPostprocessingOfItem:(id)arg1 info:(id)arg2 priority:(long long)arg3;
@@ -35,6 +40,7 @@
 - (void)_loadingQueue_cancelAllRequests;
 - (void)_loadingQueueBeginLoadingWithPriority:(long long)arg1;
 - (void)_loadingQueue_setAsset:(id)arg1;
+- (void)makeUniqueContentIdentifier;
 - (void)cancelLoading;
 @property(retain, nonatomic) id <PXDisplayAsset> asset;
 - (void)reloadContent;
@@ -44,7 +50,7 @@
 - (id)videoAspectRatio;
 - (void)beginLoadingWithPriority:(long long)arg1;
 - (id)analyticsPayload;
-- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2;
+- (id)initWithAsset:(id)arg1 mediaProvider:(id)arg2 deliveryStrategies:(id)arg3 audioSession:(id)arg4 requestURLOnly:(_Bool)arg5;
 - (id)init;
 
 // Remaining properties

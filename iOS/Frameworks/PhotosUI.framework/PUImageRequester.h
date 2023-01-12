@@ -15,12 +15,16 @@ __attribute__((visibility("hidden")))
     _Bool _shouldRequestPenultimateVersion;
     _Bool _useLowMemoryMode;
     _Bool _networkAccessAllowed;
+    _Bool _requiresFullQualityImage;
     _Bool _imageIsFullQuality;
+    _Bool _highPriorityRequest;
+    _Bool _includeGainMap;
     _Bool _imageIsPlaceholder;
     _Bool __needsUpdate;
     _Bool __hasRequestedFullsizeImageData;
     _Bool __hasCurrentIncompleteRequest;
     _Bool __shouldUpdateImageOnCurrentRequestCompletion;
+    float _gainMapValue;
     int __currentFullsizeImageDataRequestID;
     int __currentImageRequestID;
     PUMediaProvider *_mediaProvider;
@@ -29,6 +33,7 @@ __attribute__((visibility("hidden")))
     UIImage *_image;
     NSData *_fullsizeImageData;
     NSURL *_fullsizeImageURL;
+    struct CGImage *_gainMapImage;
     NSHashTable *__observers;
     long long __changeCount;
     PUImageRequesterChange *__currentChange;
@@ -48,10 +53,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setChangeCount:) long long _changeCount; // @synthesize _changeCount=__changeCount;
 @property(retain, nonatomic, setter=_setObserver:) NSHashTable *_observers; // @synthesize _observers=__observers;
 @property(nonatomic, setter=_setImageIsPlaceholder:) _Bool imageIsPlaceholder; // @synthesize imageIsPlaceholder=_imageIsPlaceholder;
+@property(nonatomic, setter=_setGainMapValue:) float gainMapValue; // @synthesize gainMapValue=_gainMapValue;
+@property(retain, nonatomic, setter=_setGainMapImage:) struct CGImage *gainMapImage; // @synthesize gainMapImage=_gainMapImage;
+@property(nonatomic) _Bool includeGainMap; // @synthesize includeGainMap=_includeGainMap;
+@property(nonatomic) _Bool highPriorityRequest; // @synthesize highPriorityRequest=_highPriorityRequest;
 @property(retain, nonatomic, setter=_setFullsizeImageURL:) NSURL *fullsizeImageURL; // @synthesize fullsizeImageURL=_fullsizeImageURL;
 @property(retain, nonatomic, setter=_setFullsizeImageData:) NSData *fullsizeImageData; // @synthesize fullsizeImageData=_fullsizeImageData;
 @property(nonatomic, setter=_setImageIsFullQuality:) _Bool imageIsFullQuality; // @synthesize imageIsFullQuality=_imageIsFullQuality;
 @property(retain, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
+@property(readonly, nonatomic) _Bool requiresFullQualityImage; // @synthesize requiresFullQualityImage=_requiresFullQualityImage;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(retain, nonatomic) NSArray *requestFullSizeImageDataUTTypes; // @synthesize requestFullSizeImageDataUTTypes=_requestFullSizeImageDataUTTypes;
 @property(nonatomic) _Bool useLowMemoryMode; // @synthesize useLowMemoryMode=_useLowMemoryMode;
@@ -74,7 +84,8 @@ __attribute__((visibility("hidden")))
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
-- (id)initWithMediaProvider:(id)arg1 asset:(id)arg2;
+- (void)dealloc;
+- (id)initWithMediaProvider:(id)arg1 asset:(id)arg2 requiresFullQualityImage:(_Bool)arg3;
 - (id)init;
 
 @end

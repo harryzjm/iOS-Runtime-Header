@@ -12,13 +12,14 @@
 #import <Silex/WKUIDelegate-Protocol.h>
 #import <Silex/_WKFullscreenDelegate-Protocol.h>
 
-@class NFMultiDelegate, NSMutableSet, NSString, SWCrashRetryThrottler, SXEmbedResource, SXRelatedWebViewCache, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
-@protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedDataProvider, SXEmbedType, SXLayoutInvalidator, SXProxyAuthenticationHandler;
+@class NSMutableSet, NSString, SWCrashRetryThrottler, SXEmbedResource, SXRelatedWebViewCache, TFMultiDelegate, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
+@protocol SWReachabilityProvider, SXComponentActionHandler, SXEmbedDataProvider, SXEmbedType, SXLayoutInvalidator, SXProxyAuthenticationHandler, SXSceneStateMonitor;
 
 @interface SXEmbedComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener, _WKFullscreenDelegate>
 {
     _Bool _failedLoading;
     _Bool _hasRegisteredScriptMessageHandlers;
+    _Bool _usingElementFullscreen;
     id <SWReachabilityProvider> _reachabilityProvider;
     id <SXEmbedDataProvider> _embedDataProvider;
     id <SXComponentActionHandler> _actionHandler;
@@ -34,20 +35,23 @@
     NSMutableSet *_expectedMessages;
     UIActivityIndicatorView *_activityIndicator;
     WKNavigation *_initialNavigation;
-    NFMultiDelegate *_scriptMessageHandler;
+    TFMultiDelegate *_scriptMessageHandler;
     WKWebsiteDataStore *_dataStore;
     SXRelatedWebViewCache *_relatedWebViewCache;
     id <SXProxyAuthenticationHandler> _proxyAuthenticationHandler;
+    id <SXSceneStateMonitor> _sceneStateMonitor;
     struct CGSize _currentlyLayoutingForSize;
     struct CGSize _currentLayoutSize;
     struct CGSize _currentViewportSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool usingElementFullscreen; // @synthesize usingElementFullscreen=_usingElementFullscreen;
+@property(readonly, nonatomic) id <SXSceneStateMonitor> sceneStateMonitor; // @synthesize sceneStateMonitor=_sceneStateMonitor;
 @property(readonly, nonatomic) id <SXProxyAuthenticationHandler> proxyAuthenticationHandler; // @synthesize proxyAuthenticationHandler=_proxyAuthenticationHandler;
 @property(readonly, nonatomic) SXRelatedWebViewCache *relatedWebViewCache; // @synthesize relatedWebViewCache=_relatedWebViewCache;
 @property(readonly, nonatomic) WKWebsiteDataStore *dataStore; // @synthesize dataStore=_dataStore;
-@property(readonly, nonatomic) NFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
+@property(readonly, nonatomic) TFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
 @property(nonatomic) _Bool hasRegisteredScriptMessageHandlers; // @synthesize hasRegisteredScriptMessageHandlers=_hasRegisteredScriptMessageHandlers;
 @property(retain, nonatomic) WKNavigation *initialNavigation; // @synthesize initialNavigation=_initialNavigation;
 @property(nonatomic) struct CGSize currentViewportSize; // @synthesize currentViewportSize=_currentViewportSize;
@@ -114,7 +118,7 @@
 - (void)renderContents;
 - (void)loadComponent:(id)arg1;
 - (void)dealloc;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedDataProvider:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10 proxyAuthenticationHandler:(id)arg11;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedDataProvider:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10 proxyAuthenticationHandler:(id)arg11 sceneStateMonitor:(id)arg12;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

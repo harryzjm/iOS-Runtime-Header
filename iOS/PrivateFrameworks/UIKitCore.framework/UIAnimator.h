@@ -14,6 +14,7 @@
     double _lastUpdateTime;
     id _heartbeat[3];
     int _heartbeatClientCount[3];
+    struct _UIUpdateSequenceItemInternal *_updateSequenceItem;
 }
 
 + (void)enableAnimation;

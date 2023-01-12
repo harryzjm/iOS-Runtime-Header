@@ -8,6 +8,7 @@
 
 @class NSMutableDictionary, NSMutableOrderedSet;
 
+__attribute__((visibility("hidden")))
 @interface ICSearchResultSection : NSObject
 {
     NSMutableOrderedSet *_searchResults;

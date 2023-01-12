@@ -26,7 +26,6 @@
 @property(readonly, nonatomic) id <MTLCaptureScope> captureScope;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property(readonly, nonatomic) id <MTLDevice> device;
-@property(readonly, nonatomic) struct Device *rb_device;
 - (id)initWithDevice:(id)arg1;
 - (void)dealloc;
 

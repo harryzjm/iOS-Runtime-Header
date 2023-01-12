@@ -7,19 +7,20 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSObject, PXGImageTexture, PXGPayloadTexture;
-@protocol NSCopying, OS_dispatch_queue, PXGTextureAtlasManager;
+@protocol NSCopying, OS_dispatch_queue, PXGDisplayAssetAdjustment, PXGTextureAtlasManager;
 
 @protocol PXGTextureConverter <NSObject>
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *processingQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *requestQueue;
-@property(readonly, nonatomic) _Bool supportsTextureAtlas;
 @property(readonly, nonatomic) PXGImageTexture *transparentTexture;
 @property(nonatomic) _Bool lowMemoryMode;
+@property(readonly, nonatomic) unsigned long long supportedContentTypes;
 @property(readonly, nonatomic) int presentationType;
 - (PXGImageTexture *)createAtlasForTextureAtlasManager:(id <PXGTextureAtlasManager>)arg1;
-- (id <PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_1b544862)arg1;
+- (id <PXGTextureAtlasManager>)createTextureAtlasManagerForImageDataSpec:(CDStruct_6c943d2a)arg1;
 - (PXGPayloadTexture *)createPayloadTextureFromPayload:(id <NSCopying>)arg1;
-- (PXGImageTexture *)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(struct CGAffineTransform)arg2;
-- (PXGImageTexture *)createTextureFromCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2;
+- (PXGImageTexture *)applyAdjustment:(id <PXGDisplayAssetAdjustment>)arg1 toTexture:(PXGImageTexture *)arg2 options:(CDStruct_6238c8e0)arg3;
+- (PXGImageTexture *)createTextureFromCVPixelBuffer:(struct __CVBuffer *)arg1 transform:(CDStruct_6238c8e0)arg2 options: /* Error: Ran out of types for this method. */;
+- (PXGImageTexture *)createTextureFromCGImage:(struct CGImage *)arg1 transform:(CDStruct_6238c8e0)arg2 options: /* Error: Ran out of types for this method. */;
 @end
 

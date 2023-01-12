@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet;
+@class NSSet, NSString, PGTimeTitleOptions;
 
 @interface PGPeopleMemoryTitleGenerator
 {
+    NSString *_seasonName;
     unsigned long long _type;
     NSSet *_personNodes;
+    PGTimeTitleOptions *_timeTitleOptions;
 }
 
++ (id)peopleOverTimeTimeTitleOptionsWithMomentNodes:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PGTimeTitleOptions *timeTitleOptions; // @synthesize timeTitleOptions=_timeTitleOptions;
 @property(readonly, nonatomic) NSSet *personNodes; // @synthesize personNodes=_personNodes;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 - (_Bool)_useSplitTimeTitlesIfNeeded;
@@ -21,10 +25,13 @@
 - (_Bool)_person:(id)arg1 isPresentInAnyMomentOfMomentNodes:(id)arg2;
 - (id)_timeTitleForEarlyMoments;
 - (id)_titleForEarlyMoments;
+- (id)_titleForChildAndPerson;
 - (id)_titleForSocialGroup;
 - (id)_titleForPeople;
 - (void)_generateTitleAndSubtitleWithResult:(CDUnknownBlockType)arg1;
-- (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2 type:(unsigned long long)arg3;
+- (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2 seasonName:(id)arg3 type:(unsigned long long)arg4 titleGenerationContext:(id)arg5;
+- (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2 timeTitleOptions:(id)arg3 type:(unsigned long long)arg4 titleGenerationContext:(id)arg5;
+- (id)initWithMomentNodes:(id)arg1 personNodes:(id)arg2 type:(unsigned long long)arg3 titleGenerationContext:(id)arg4;
 
 @end
 

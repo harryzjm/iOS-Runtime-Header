@@ -13,6 +13,7 @@
 
 - (void)viewDidLoad;
 - (id)initWithUsingInsetStyling:(_Bool)arg1;
+- (id)init;
 - (unsigned long long)supportedInterfaceOrientations;
 
 @end

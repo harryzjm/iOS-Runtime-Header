@@ -6,17 +6,17 @@
 
 #import <CarPlaySupport/NSObject-Protocol.h>
 
-@class CPTemplate, NSUUID;
+@class NSUUID;
 
 @protocol CPTemplateDelegate <NSObject>
 - (void)handleActionForControlIdentifier:(NSUUID *)arg1;
 
 @optional
 - (_Bool)isCarPlayCanvasActive;
-- (void)templateDidDismiss:(CPTemplate *)arg1;
-- (void)templateDidDisappear:(CPTemplate *)arg1 animated:(_Bool)arg2;
-- (void)templateWillDisappear:(CPTemplate *)arg1 animated:(_Bool)arg2;
-- (void)templateDidAppear:(CPTemplate *)arg1 animated:(_Bool)arg2;
-- (void)templateWillAppear:(CPTemplate *)arg1 animated:(_Bool)arg2;
+- (void)templateDidDismissWithIdentifier:(NSUUID *)arg1;
+- (void)templateDidDisappearWithIdentifier:(NSUUID *)arg1 animated:(_Bool)arg2;
+- (void)templateWillDisappearWithIdentifier:(NSUUID *)arg1 animated:(_Bool)arg2;
+- (void)templateDidAppearWithIdentifier:(NSUUID *)arg1 animated:(_Bool)arg2;
+- (void)templateWillAppearWithIdentifier:(NSUUID *)arg1 animated:(_Bool)arg2;
 @end
 

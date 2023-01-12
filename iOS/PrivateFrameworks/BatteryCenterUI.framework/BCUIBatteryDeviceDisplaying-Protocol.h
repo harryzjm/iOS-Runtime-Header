@@ -10,6 +10,7 @@
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol BCUIBatteryDeviceDisplaying <NSObject>
+@property(nonatomic) double scaleFactor;
 @property(retain, nonatomic) UIImage *glyph;
 @property(nonatomic, getter=isLowPowerModeEnabled) _Bool lowPowerModeEnabled;
 @property(nonatomic, getter=isLowCharge) _Bool lowCharge;

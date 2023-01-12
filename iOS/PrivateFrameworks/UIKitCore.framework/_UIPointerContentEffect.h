@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/_UIContentEffect-Protocol.h>
 #import <UIKitCore/_UIViewSubtreeMonitor-Protocol.h>
 
-@class NSString, UIPointerInteractionAnimator, UIPointerRegion, UIPointerStyle, UIView, UIWindow, _UIPointerEffectPlatterView;
+@class NSMutableArray, NSString, UIPointerInteractionAnimator, UIPointerRegion, UIPointerStyle, UIView, UIWindow, _UIPointerEffectPlatterView;
+@protocol _UIContentEffectDescriptor;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerContentEffect : NSObject <_UIViewSubtreeMonitor>
+@interface _UIPointerContentEffect : NSObject <_UIViewSubtreeMonitor, _UIContentEffect>
 {
     struct {
         _Bool isRearrangingEffectViews;
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
     _UIPointerEffectPlatterView *_platterView;
     UIView *_lumaSamplingBackdrop;
     UIView *_pointerPortal;
-    CDUnknownBlockType _completion;
+    NSMutableArray *_completions;
     long long _state;
     unsigned long long _animationCount;
     UIView *_positionReferenceView;
@@ -45,15 +47,18 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIView *positionReferenceView; // @synthesize positionReferenceView=_positionReferenceView;
 @property(nonatomic) unsigned long long animationCount; // @synthesize animationCount=_animationCount;
 @property(nonatomic) long long state; // @synthesize state=_state;
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property(readonly, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
 @property(nonatomic) __weak UIView *pointerPortal; // @synthesize pointerPortal=_pointerPortal;
 @property(nonatomic) __weak UIView *lumaSamplingBackdrop; // @synthesize lumaSamplingBackdrop=_lumaSamplingBackdrop;
 @property(retain, nonatomic) _UIPointerEffectPlatterView *platterView; // @synthesize platterView=_platterView;
-@property(nonatomic, getter=isPressed) _Bool pressed; // @synthesize pressed=_pressed;
 @property(retain, nonatomic) UIPointerInteractionAnimator *exitAnimator; // @synthesize exitAnimator=_exitAnimator;
 @property(retain, nonatomic) UIPointerInteractionAnimator *entranceAnimator; // @synthesize entranceAnimator=_entranceAnimator;
 @property(retain, nonatomic) UIPointerStyle *style; // @synthesize style=_style;
 @property(copy, nonatomic) UIPointerRegion *region; // @synthesize region=_region;
+- (void)addCompletion:(CDUnknownBlockType)arg1;
+- (id)previewForContinuingToEffectWithPreview:(id)arg1;
+- (void)setDescriptor:(id)arg1 andKey:(id)arg2;
+@property(readonly, nonatomic) id <_UIContentEffectDescriptor> descriptor;
 - (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (_Bool)_monitorsView:(id)arg1;
@@ -67,15 +72,15 @@ __attribute__((visibility("hidden")))
 - (void)_createAndInstallPlatterView;
 - (void)_commitPointerStyleToArbiterWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateFromState:(long long)arg1 toState:(long long)arg2;
+- (void)setPressed:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)end:(_Bool)arg1;
 - (void)begin;
 - (void)_updatePlatterView:(id)arg1 forStyle:(id)arg2;
-- (void)setStyle:(id)arg1 andRegion:(id)arg2;
+- (void)_setStyle:(id)arg1 andRegion:(id)arg2;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)_targetedPreviewForContinuingEffectWithPreview:(id)arg1;
 - (void)dealloc;
-- (id)initWithStyle:(id)arg1 region:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithStyle:(id)arg1 region:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

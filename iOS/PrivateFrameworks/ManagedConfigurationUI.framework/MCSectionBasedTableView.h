@@ -8,7 +8,6 @@
 
 @class UITableView;
 
-__attribute__((visibility("hidden")))
 @interface MCSectionBasedTableView : UIView
 {
     UITableView *_tableView;

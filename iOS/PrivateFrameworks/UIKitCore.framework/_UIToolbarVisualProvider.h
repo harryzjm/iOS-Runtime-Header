@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)updateItemsForNewFrame:(id)arg1;
 - (void)positionToolbarButtonsAndResetFontScaleAdjustment:(_Bool)arg1;
 - (void)layoutSubviews;
+@property(nonatomic) double backgroundTransitionProgress; // @dynamic backgroundTransitionProgress;
 - (void)updateBarBackgroundSize;
 - (void)updateBarBackground;
 - (void)prepare;

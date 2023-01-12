@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (Class)layerClass;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

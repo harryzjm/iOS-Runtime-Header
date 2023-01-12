@@ -12,7 +12,7 @@
 {
     shared_ptr_130f66cc _realm;
     struct RLMSchemaInfo _info;
-    struct unique_ptr<RLMResultsSetInfo, std::__1::default_delete<RLMResultsSetInfo>> _resultsSetInfo;
+    struct unique_ptr<RLMResultsSetInfo, std::default_delete<RLMResultsSetInfo>> _resultsSetInfo;
     NSHashTable *_collectionEnumerators;
     _Bool _sendingNotifications;
     _Bool _dynamic;
@@ -69,7 +69,7 @@
 - (id)addNotificationBlock:(CDUnknownBlockType)arg1;
 - (void)verifyNotificationsAreSupported:(_Bool)arg1;
 @property(nonatomic) _Bool autorefresh;
-@property(readonly, nonatomic) struct Group *group;
+@property(readonly, nonatomic) void *group;
 @property(readonly, nonatomic) _Bool inWriteTransaction;
 - (void)verifyThread;
 @property(readonly, nonatomic) _Bool isEmpty;

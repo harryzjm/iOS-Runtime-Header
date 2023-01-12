@@ -33,6 +33,7 @@
         unsigned int maskedCorners:4;
         unsigned int hasDefaultLayoutMargins:1;
         unsigned int removeMaskViewAfterAnimation:1;
+        unsigned int pinnedToVisibleBounds:1;
     } _layoutFlags;
     _Bool _hasMaskViewFrame;
     long long _zIndex;
@@ -55,12 +56,7 @@
 @property(nonatomic) struct CGPoint center; // @synthesize center=_center;
 @property(readonly, nonatomic) NSString *representedElementKind;
 @property(readonly, nonatomic) unsigned long long representedElementCategory;
-- (_Bool)_isSupplementaryView;
-- (_Bool)_isDecorationView;
-- (_Bool)_isCell;
 @property(readonly) unsigned long long hash;
-- (_Bool)_isTransitionVisibleTo:(id)arg1;
-- (_Bool)_isEquivalentTo:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isSizeEqualForPreferredFittingAttributes:(id)arg1;
 @property(readonly, copy) NSString *description;
@@ -71,6 +67,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_valueForCustomAttribute:(id)arg1;
 - (void)_setValue:(id)arg1 forCustomAttribute:(id)arg2;
+@property(nonatomic, getter=_isPinnedToVisibleBounds, setter=_setPinnedToVisibleBounds:) _Bool pinnedToVisibleBounds;
 @property(nonatomic, getter=_selectionGrouping, setter=_setSelectionGrouping:) unsigned long long selectionGrouping; // @synthesize selectionGrouping=_selectionGrouping;
 @property(nonatomic, getter=_defaultLayoutMargins, setter=_setDefaultLayoutMargins:) struct UIEdgeInsets defaultLayoutMargins; // @synthesize defaultLayoutMargins=_defaultLayoutMargins;
 @property(readonly, nonatomic, getter=_hasDefaultLayoutMargins) _Bool hasDefaultLayoutMargins;
@@ -79,18 +76,10 @@
 - (void)_setMaskViewFrame:(struct CGRect)arg1 removeAfterAnimation:(_Bool)arg2;
 @property(nonatomic, getter=_maskedCorners, setter=_setMaskedCorners:) unsigned long long maskedCorners;
 @property(nonatomic, getter=_masksToBounds, setter=_setMasksToBounds:) _Bool masksToBounds;
-- (id)_reuseIdentifier;
-- (void)_setReuseIdentifier:(id)arg1;
-- (id)_elementKind;
-- (void)_setElementKind:(id)arg1;
-- (_Bool)_isClone;
-- (void)_setIsClone:(_Bool)arg1;
 @property(nonatomic, getter=isHidden) _Bool hidden;
 - (long long)_zPosition;
 - (void)_setZPosition:(long long)arg1;
 - (id)init;
-- (id)__indexPath;
-- (id)__elementKind;
 
 // Remaining properties
 @property(readonly, nonatomic) UIBezierPath *collisionBoundingPath;

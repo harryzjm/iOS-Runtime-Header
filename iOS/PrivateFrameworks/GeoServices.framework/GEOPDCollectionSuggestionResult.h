@@ -8,38 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class GEOPDExploreGuides, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCollectionSuggestionResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_collectionIds;
+    GEOPDExploreGuides *_exploreGuidesMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_collectionIds:1;
+        unsigned int read_exploreGuidesMetadata:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)collectionIdType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)collectionIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)collectionIdsCount;
-- (void)addCollectionId:(id)arg1;
-- (void)clearCollectionIds;
-@property(retain, nonatomic) NSMutableArray *collectionIds;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

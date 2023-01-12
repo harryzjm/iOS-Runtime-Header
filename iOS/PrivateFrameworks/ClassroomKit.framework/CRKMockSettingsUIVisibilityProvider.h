@@ -16,6 +16,7 @@
 }
 
 @property _Bool settingsUIVisible; // @synthesize settingsUIVisible=_settingsUIVisible;
+@property(readonly, copy, nonatomic) NSString *paneStatus;
 - (void)connectToDaemon;
 
 // Remaining properties

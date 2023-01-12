@@ -12,9 +12,22 @@
 {
     MISSING_TYPE *stateConstraints;
     MISSING_TYPE *participantListHeightConstraint;
-    MISSING_TYPE *localParticipantViewHeightConstraint;
+    MISSING_TYPE *localParticipantViewRegularWidthConstraint;
+    MISSING_TYPE *localParticipantViewRegularHeightConstraint;
+    MISSING_TYPE *localParticipantViewEnlargedWidthConstraint;
+    MISSING_TYPE *localParticipantViewEnlargedHeightConstraint;
+    MISSING_TYPE *localParticipantViewExpandedWidthConstraint;
+    MISSING_TYPE *localParticipantViewExpandedHeightConstraint;
+    MISSING_TYPE *localParticipantControlsViewBottomConstraint;
+    MISSING_TYPE *shutterButtonLeadingConstraint;
+    MISSING_TYPE *localParticipantAspectRatio;
+    MISSING_TYPE *constraintManagers;
     MISSING_TYPE *effectsConstraintManagers;
+    MISSING_TYPE *participantLabelsView;
+    MISSING_TYPE *containingView;
+    MISSING_TYPE *localParticipantView;
     MISSING_TYPE *currentConstraints;
+    MISSING_TYPE *bannerViewConstraintManager;
 }
 
 @end

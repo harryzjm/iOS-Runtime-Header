@@ -6,31 +6,45 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/NSCopying-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class GEOPBTransitArtwork, NSArray;
 @protocol GEOServerFormattedString;
 
-@interface GEOComposedRouteAdvisory : NSObject <NSSecureCoding>
+@interface GEOComposedRouteAdvisory : NSObject <NSSecureCoding, NSCopying>
 {
     id <GEOServerFormattedString> _inlineTitle;
-    id <GEOServerFormattedString> _cardTitle;
-    id <GEOServerFormattedString> _cardDetails;
     _Bool _alwaysClickable;
     NSArray *_routeIncidents;
+    NSArray *routeAdvisoryCards;
+    id <GEOServerFormattedString> _title;
+    GEOPBTransitArtwork *_artwork;
+    _Bool _isClickable;
+    NSArray *_advisoryItems;
+    _Bool _initialisedForTransit;
+    NSArray *_routeAdvisoryCards;
+    NSArray *_analyticsMessageValues;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_fallbackAdvisoryArtwork;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *analyticsMessageValues; // @synthesize analyticsMessageValues=_analyticsMessageValues;
+@property(readonly, nonatomic) NSArray *advisoryItems; // @synthesize advisoryItems=_advisoryItems;
+@property(readonly, nonatomic) _Bool isClickable; // @synthesize isClickable=_isClickable;
+@property(readonly, nonatomic) GEOPBTransitArtwork *artwork; // @synthesize artwork=_artwork;
+@property(readonly, nonatomic) id <GEOServerFormattedString> title; // @synthesize title=_title;
+@property(retain, nonatomic) NSArray *routeAdvisoryCards; // @synthesize routeAdvisoryCards=_routeAdvisoryCards;
 @property(retain, nonatomic) NSArray *routeIncidents; // @synthesize routeIncidents=_routeIncidents;
 @property(nonatomic) _Bool alwaysClickable; // @synthesize alwaysClickable=_alwaysClickable;
-@property(retain, nonatomic) id <GEOServerFormattedString> cardDetails; // @synthesize cardDetails=_cardDetails;
-@property(retain, nonatomic) id <GEOServerFormattedString> cardTitle; // @synthesize cardTitle=_cardTitle;
 @property(retain, nonatomic) id <GEOServerFormattedString> inlineTitle; // @synthesize inlineTitle=_inlineTitle;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 - (id)initWithMessage:(id)arg1 incidents:(id)arg2;
+- (id)initWithGeoAdvisoryNotice:(id)arg1 transitIncidents:(id)arg2;
 - (id)initWithGeoAdvisoryNotice:(id)arg1 incidents:(id)arg2;
 - (id)initWithGeoAdvisoryNotice:(id)arg1;
 

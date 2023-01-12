@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class RTLearnedPlace, RTLearnedPlaceTypeInferenceStats;
+@class NSDictionary, RTLearnedLocationStore, RTLearnedPlace, RTLearnedPlaceTypeInferenceStats;
 
 @interface RTLearnedPlaceTypeInferencePlaceStats : NSObject
 {
     RTLearnedPlaceTypeInferenceStats *_stats;
+    RTLearnedLocationStore *_learnedLocationStore;
     RTLearnedPlace *_place;
     unsigned long long _visitsCount;
+    NSDictionary *_mlFeatures;
 }
 
 + (id)extractWeeklyStatsFromDailyStats:(id)arg1;
@@ -20,12 +22,15 @@
 + (double)extractTopMedianDwellTimeFromVisits:(id)arg1;
 + (id)visitsWithDwellTimeBetweenDateRange:(id)arg1 start:(id)arg2 end:(id)arg3;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *mlFeatures; // @synthesize mlFeatures=_mlFeatures;
 @property(nonatomic) unsigned long long visitsCount; // @synthesize visitsCount=_visitsCount;
 @property(retain, nonatomic) RTLearnedPlace *place; // @synthesize place=_place;
+@property(retain, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
 @property(readonly, nonatomic) RTLearnedPlaceTypeInferenceStats *stats; // @synthesize stats=_stats;
 - (id)description;
 - (void)log;
-- (id)initWithPlace:(id)arg1 visits:(id)arg2;
+- (id)initWithLearnedLocationStore:(id)arg1 place:(id)arg2 visits:(id)arg3;
+- (id)localDeviceVisitsForVisits:(id)arg1;
 
 @end
 

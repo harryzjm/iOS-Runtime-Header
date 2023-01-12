@@ -57,13 +57,13 @@
 - (void)stopStream;
 - (void)updateStreamConfiguration:(id)arg1;
 - (void)updateReconfigurationMode:(_Bool)arg1;
-- (void)_startStream:(id)arg1;
-- (void)startStream:(id)arg1;
-- (_Bool)_initializeStreamRemoteLocal;
-- (_Bool)_initializeStreamRemoteSender:(id)arg1;
+- (void)_startStreamWithConfig:(id)arg1;
+- (void)startStreamWithConfig:(id)arg1;
+- (_Bool)_initializeLocalStreamWithLocalNetworkConfig:(id)arg1;
+- (_Bool)_initializeStreamRemoteSender:(id)arg1 localNetworkConfig:(id)arg2;
 - (_Bool)_initializeStreamRemoteSocketReceiver:(id)arg1;
 - (_Bool)_initializeStreamRemoteDestinationReceiver:(id)arg1;
-- (_Bool)_createLocalSocket;
+- (_Bool)_createLocalSocketWithNetworkConfig:(id)arg1;
 @property(readonly, nonatomic) NSNumber *streamToken;
 @property(readonly, nonatomic) NSNumber *syncSource;
 - (void)dealloc;

@@ -7,7 +7,7 @@
 #import <Foundation/NSUUID.h>
 
 @interface NSUUID (TSPArchivingUtility)
-- (void)tsp_saveToMessage:(struct UUID *)arg1;
-- (id)tsp_initWithMessage:(const struct UUID *)arg1;
+- (void)tsp_saveToMessage:(void *)arg1;
+- (id)tsp_initWithMessage:(const void *)arg1;
 @end
 

@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
+- (id)description;
 @property(nonatomic) _Bool hasRepairedMaxNetworkBitrate;
 @property(nonatomic) _Bool hasRepairedStreamID;
 @property(nonatomic) _Bool hasMaxPacketsPerSecond;
@@ -66,7 +67,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasMetadata;
 @property(nonatomic) _Bool hasMaxNetworkBitrate;
 - (void)printWithLogFile:(void *)arg1;
-- (id)description;
 @property(readonly, nonatomic) _Bool isSubStream;
 - (id)newMultiwayVideoStream;
 - (id)initWithStreamConfig:(id)arg1;

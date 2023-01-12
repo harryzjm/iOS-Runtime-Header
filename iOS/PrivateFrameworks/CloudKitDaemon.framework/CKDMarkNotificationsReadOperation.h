@@ -7,7 +7,6 @@
 @class NSArray, NSMutableDictionary, NSMutableSet;
 @protocol CKMarkNotificationsReadOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDMarkNotificationsReadOperation
 {
     CDUnknownBlockType _notificationMarkedRead;
@@ -27,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (int)operationType;
 - (void)_handleNotificationID:(id)arg1 withResponse:(id)arg2;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKMarkNotificationsReadOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

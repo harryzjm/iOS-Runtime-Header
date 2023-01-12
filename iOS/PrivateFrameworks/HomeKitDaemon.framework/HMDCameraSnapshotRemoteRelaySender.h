@@ -32,6 +32,7 @@
 - (void)relayInitiatorDidSendDataSuccessfully:(id)arg1;
 - (void)relayInitiator:(id)arg1 didEndIDSSessionWithError:(id)arg2;
 - (void)snapshotLocal:(id)arg1 didSaveSnapshotFile:(id)arg2 error:(id)arg3 sessionID:(id)arg4;
+- (void)_callDidSaveSnapshotFileDelegate:(id)arg1;
 - (void)_callDidCompleteSendImageDelegate:(id)arg1;
 - (void)_callDidStartCaptureImageDelegate:(id)arg1;
 - (void)snapShotTransferComplete;

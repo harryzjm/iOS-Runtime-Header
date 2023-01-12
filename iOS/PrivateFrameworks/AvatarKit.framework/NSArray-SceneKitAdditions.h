@@ -11,10 +11,10 @@
 @interface NSArray (SceneKitAdditions)
 + (id)avt_arrayWithFloat4: /* Error: Ran out of types for this method. */;
 + (id)avt_arrayWithFloat3: /* Error: Ran out of types for this method. */;
-+ (id)avt_arrayWithFloat4x4:(CDStruct_f1db2b5e)arg1;
++ (id)avt_arrayWithFloat4x4:(CDStruct_14d5dc5e)arg1;
 - (id)avt_randomObject;
 - (MISSING_TYPE *)avt_float4;
 - (MISSING_TYPE *)avt_float3;
-- (CDStruct_f1db2b5e)avt_float4x4;
+- (CDStruct_14d5dc5e)avt_float4x4;
 @end
 

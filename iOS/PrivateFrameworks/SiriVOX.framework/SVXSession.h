@@ -12,8 +12,8 @@
 #import <SiriVOX/SVXSpeechSynthesisListening-Protocol.h>
 #import <SiriVOX/SVXTaskTrackingCenterDelegate-Protocol.h>
 
-@class AFAnalyticsTurnBasedInstrumentationContext, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFConnection, AFExperiment, AFSpeechRequestOptions, AFXPCWrapper, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, NSUserActivity, SASetApplicationContext, SVXActivationContext, SVXDeactivationContext, SVXDeviceProblemsState, SVXDeviceSetupContext, SVXServiceCommandHandler, SVXSpeechSynthesizer, SVXTaskTrackingCenter;
-@protocol AFExperimentForSiriVOXSounds, AFExperimentForSiriVOXTapToSiriBehavior, SVXPerforming, SVXSessionDelegate;
+@class AFAnalytics, AFAnalyticsTurnBasedInstrumentationContext, AFConnection, AFDeviceContext, AFHomeAccessoryInfo, AFInstanceContext, AFPreferences, AFSpeechRequestOptions, AFXPCWrapper, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, NSUserActivity, SASetApplicationContext, SRSTClient, SVXActivationContext, SVXDeactivationContext, SVXDeviceProblemsState, SVXDeviceSetupContext, SVXServiceCommandHandler, SVXSpeechSynthesizer, SVXTaskTrackingCenter;
+@protocol AFRelinquishableAssertion, SVXPerforming, SVXSessionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SVXSession : NSObject <AFAssistantUIService, AFSpeechDelegate, SVXSpeechSynthesisListening, SVXTaskTrackingCenterDelegate, SVXAudioSessionProviding>
@@ -42,25 +42,26 @@ __attribute__((visibility("hidden")))
     id <SVXPerforming> _performer;
     SVXServiceCommandHandler *_serviceCommandHandler;
     SVXSpeechSynthesizer *_speechSynthesizer;
+    AFInstanceContext *_instanceContext;
+    AFPreferences *_preferences;
+    AFAnalytics *_analytics;
     id <SVXSessionDelegate> _delegate;
     int _currentInstrumentationUIState;
     NSMutableArray *_pendingRequestBarriers;
-    AFExperiment<AFExperimentForSiriVOXSounds> *_experimentForSiriVOXSounds;
-    AFExperiment<AFExperimentForSiriVOXTapToSiriBehavior> *_experimentForSiriVOXTapToSiriBehavior;
     _Bool _isMostRecentRequestStartingMediaPlaybackLocally;
     _Bool _isMostRecentRequestSuppressedError;
     SASetApplicationContext *_setApplicationContext;
-    long long _nowPlayingAppPlaybackState;
     SVXDeviceProblemsState *_deviceProblemsState;
     SVXDeviceSetupContext *_deviceSetupContext;
-    AFClockAlarmSnapshot *_clockAlarmSnapshot;
-    AFClockTimerSnapshot *_clockTimerSnapshot;
-    float _mediaPlaybackVolume;
+    AFDeviceContext *_localDeviceContext;
+    AFHomeAccessoryInfo *_currentAccessoryInfo;
     id _myriadToken;
     long long _myriadState;
     NSMutableArray *_pendingMyriadDecisionHandlers;
     NSMutableDictionary *_playbackRequestInfo;
     NSUserActivity *_userActivity;
+    id <AFRelinquishableAssertion> _audioDuckingCoordinationAssertion;
+    SRSTClient *_client;
     NSUUID *_sessionUUID;
 }
 
@@ -82,7 +83,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleSpeechSynthesizerDidBecomeIdle;
 - (void)_handleSpeechSynthesizerWillBecomeBusy;
 - (void)_endThinking;
-- (void)_performThinkingStage:(unsigned long long)arg1 requestUUID:(id)arg2;
 - (void)_beginThinking;
 - (void)_didChangeFromState:(long long)arg1 toState:(long long)arg2;
 - (void)_willChangeFromState:(long long)arg1 toState:(long long)arg2;
@@ -120,6 +120,8 @@ __attribute__((visibility("hidden")))
 - (void)_resignActiveForReason:(id)arg1;
 - (void)_performBlockAfterResignActive:(CDUnknownBlockType)arg1;
 - (void)_checkIsActiveWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_currentAccessoryInfo;
+- (void)_getAlarmAndTimerFiringContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setAudioSessionID:(unsigned int)arg1;
 - (void)_forceAudioSessionInactiveWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -141,18 +143,18 @@ __attribute__((visibility("hidden")))
 - (void)_beginWaitingForMyriadDecisionWithToken:(id)arg1;
 - (void)endWaitingForMyriadDecisionWithToken:(id)arg1 result:(_Bool)arg2;
 - (id)beginWaitingForMyriadDecision;
-- (void)_startActiveAudioSessionRequestWithOptions:(unsigned long long)arg1 taskTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_startSpeechSynthesisRequest:(id)arg1 languageCode:(id)arg2 gender:(long long)arg3 audioSessionID:(unsigned int)arg4 introductionSoundID:(long long)arg5 conclusionSoundID:(long long)arg6 taskTracker:(id)arg7 postActivationHandler:(CDUnknownBlockType)arg8 completion:(CDUnknownBlockType)arg9;
-- (void)_startRequestWithInfo:(id)arg1 clearsContext:(_Bool)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 taskTracker:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_startActiveAudioSessionRequestForType:(long long)arg1 taskTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_startSpeechSynthesisRequest:(id)arg1 languageCode:(id)arg2 voiceName:(id)arg3 gender:(long long)arg4 audioSessionID:(unsigned int)arg5 introductionSoundID:(long long)arg6 conclusionSoundID:(long long)arg7 taskTracker:(id)arg8 postActivationHandler:(CDUnknownBlockType)arg9 completion:(CDUnknownBlockType)arg10;
+- (void)_startRequestWithInfo:(id)arg1 clearsContext:(_Bool)arg2 deviceSetupContext:(id)arg3 taskTracker:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_updateSpeechEndpointerOperationMode:(long long)arg1;
 - (void)_transitSpeechToAutomaticEndpointing;
 - (void)_transitSpeechToManualEndpointing;
 - (void)_stopSpeechWithCurrentSpeechRequestOptions;
 - (void)_stopSpeech;
-- (void)_startSpeechRequestWithOptions:(id)arg1 clearsContext:(_Bool)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 taskTracker:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)_startSpeechRequestWithOptions:(id)arg1 clearsContext:(_Bool)arg2 deviceSetupContext:(id)arg3 deviceProblemsState:(id)arg4 localDeviceContext:(id)arg5 taskTracker:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_preheatWithStyle:(long long)arg1;
 - (void)_deactivateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_activateWithContext:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 mediaPlaybackVolume:(float)arg8 speechSynthesisRecord:(id)arg9 speechSynthesisState:(long long)arg10 speechRecordingAlertPolicy:(id)arg11 taskTracker:(id)arg12 completion:(CDUnknownBlockType)arg13;
+- (void)_activateWithContext:(id)arg1 options:(unsigned long long)arg2 deviceSetupContext:(id)arg3 deviceProblemsState:(id)arg4 localDeviceContext:(id)arg5 speechSynthesisRecord:(id)arg6 speechSynthesisState:(long long)arg7 speechRecordingAlertPolicy:(id)arg8 taskTracker:(id)arg9 completion:(CDUnknownBlockType)arg10;
 - (void)taskTrackingCenterDidBecomeIdle:(id)arg1;
 - (void)taskTrackingCenter:(id)arg1 didEndTrackingTaskWithContext:(id)arg2;
 - (void)taskTrackingCenter:(id)arg1 didBeginTrackingTaskWithContext:(id)arg2;
@@ -201,18 +203,16 @@ __attribute__((visibility("hidden")))
 - (void)assistantConnection:(id)arg1 speechRecordingDidBeginOnAVRecordRoute:(id)arg2 audioSessionID:(unsigned int)arg3;
 - (void)assistantConnection:(id)arg1 speechRecordingWillBeginWithInputAudioPowerXPCWrapper:(id)arg2;
 - (void)assistantConnectionSpeechRecordingWillBegin:(id)arg1;
-- (void)activateWithSpeechRequestOptions:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 completion:(CDUnknownBlockType)arg8;
-- (void)updateClockTimerSnapshot:(id)arg1;
-- (void)updateClockAlarmSnapshot:(id)arg1;
+- (void)activateWithSpeechRequestOptions:(id)arg1 options:(unsigned long long)arg2 deviceSetupContext:(id)arg3 deviceProblemsState:(id)arg4 localDeviceContext:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)updateLocalDeviceContext:(id)arg1;
 - (void)updateDeviceSetupContext:(id)arg1;
 - (void)updateDeviceProblemsState:(id)arg1;
-- (void)updateMediaPlaybackVolume:(float)arg1;
-- (void)updateNowPlayingAppPlaybackState:(long long)arg1;
 - (void)invalidate;
 - (void)handleCommand:(id)arg1 taskTracker:(id)arg2;
 - (void)addRequestBarrier:(CDUnknownBlockType)arg1;
 - (void)stopAudioPlaybackRequest:(id)arg1 immediately:(_Bool)arg2;
 - (void)startAudioPlaybackRequest:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getAlarmAndTimerFiringContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAudioPowerWithType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getActivityStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getStateWithCompletion:(CDUnknownBlockType)arg1;
@@ -224,10 +224,10 @@ __attribute__((visibility("hidden")))
 - (void)preheatWithStyle:(long long)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)deactivateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)activateWithContext:(id)arg1 options:(unsigned long long)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 nowPlayingAppPlaybackState:(long long)arg7 mediaPlaybackVolume:(float)arg8 speechSynthesisRecord:(id)arg9 speechSynthesisState:(long long)arg10 speechRecordingAlertPolicy:(id)arg11 completion:(CDUnknownBlockType)arg12;
+- (id)activateWithContext:(id)arg1 options:(unsigned long long)arg2 deviceSetupContext:(id)arg3 deviceProblemsState:(id)arg4 localDeviceContext:(id)arg5 speechSynthesisRecord:(id)arg6 speechSynthesisState:(long long)arg7 speechRecordingAlertPolicy:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (id)activateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prewarmWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithPerformer:(id)arg1 serviceCommandHandler:(id)arg2 speechSynthesizer:(id)arg3 experimentContext:(id)arg4 delegate:(id)arg5;
+- (id)initWithPerformer:(id)arg1 serviceCommandHandler:(id)arg2 speechSynthesizer:(id)arg3 instanceContext:(id)arg4 preferences:(id)arg5 analytics:(id)arg6 delegate:(id)arg7;
 - (void)dealloc;
 @property(readonly, copy) NSString *description;
 

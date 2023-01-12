@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedWaypoint, MNActiveRouteInfo, MNAudioOutputSetting, MNSettings, MNStartNavigationDetails, MNTrafficIncidentAlert, NSArray, NSData, NSString, NSUUID;
+@class GEOComposedWaypoint, MNActiveRouteInfo, MNStartNavigationDetails, MNTrafficIncidentAlert, MNUserOptions, NSArray, NSData, NSString, NSUUID;
 
 @protocol MNNavigationServiceProxy <NSObject>
 - (void)checkinForNavigationService:(void (^)(char *))arg1;
@@ -19,26 +19,25 @@
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTraceIsPlaying:(_Bool)arg1;
 - (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
+- (void)enableNavigationCapability:(unsigned long long)arg1;
+- (void)disableNavigationCapability:(unsigned long long)arg1;
 - (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)setRideIndex:(unsigned long long)arg1 forSegmentIndex:(unsigned long long)arg2;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
 - (void)setGuidancePromptsEnabled:(_Bool)arg1;
 - (void)setHeadingOrientation:(int)arg1;
-- (void)setCurrentAudioOutputSetting:(MNAudioOutputSetting *)arg1;
-- (void)setHFPPreference:(_Bool)arg1 forSetting:(MNAudioOutputSetting *)arg2;
 - (void)stopCurrentGuidancePrompt;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(void (^)(_Bool))arg2;
 - (void)repeatCurrentTrafficAlertWithReply:(void (^)(_Bool))arg1;
 - (void)repeatCurrentGuidanceWithReply:(void (^)(_Bool))arg1;
-- (void)changeSettings:(MNSettings *)arg1;
-- (void)setFullGuidanceMode:(_Bool)arg1;
+- (void)changeUserOptions:(MNUserOptions *)arg1;
+- (void)setGuidanceType:(unsigned long long)arg1;
 - (void)switchToRoute:(MNActiveRouteInfo *)arg1;
+- (void)forceReroute;
 - (void)resumeOriginalDestination;
 - (void)updateDestination:(GEOComposedWaypoint *)arg1;
-- (void)stopPredictingDestinations;
-- (void)startPredictingDestinationsWithHandler:(void (^)(void))arg1;
-- (void)stopNavigation;
+- (void)stopNavigationWithReason:(unsigned long long)arg1;
 - (void)startNavigationWithDetails:(MNStartNavigationDetails *)arg1 activeBlock:(void (^)(void))arg2;
 - (void)setRoutesForPreview:(NSArray *)arg1 selectedRouteIndex:(unsigned long long)arg2;
 @end

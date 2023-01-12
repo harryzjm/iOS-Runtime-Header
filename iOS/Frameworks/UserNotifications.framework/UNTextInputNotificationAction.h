@@ -11,6 +11,7 @@
 }
 
 + (id)actionWithIdentifier:(id)arg1 title:(id)arg2 options:(unsigned long long)arg3 textInputButtonTitle:(id)arg4 textInputPlaceholder:(id)arg5;
++ (id)actionWithIdentifier:(id)arg1 title:(id)arg2 options:(unsigned long long)arg3 icon:(id)arg4 textInputButtonTitle:(id)arg5 textInputPlaceholder:(id)arg6;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 

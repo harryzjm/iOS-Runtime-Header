@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebTiledBackingLayer : CALayer
 {
-    struct unique_ptr<WebCore::TileController, std::__1::default_delete<WebCore::TileController>> _tileController;
+    struct unique_ptr<WebCore::TileController, std::default_delete<WebCore::TileController>> _tileController;
 }
 
 - (id).cxx_construct;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)setOpaque:(_Bool)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (id)actionForKey:(id)arg1;
-- (struct TileController *)createTileController:(struct PlatformCALayer *)arg1;
+- (void *)createTileController:(void *)arg1;
 - (void)dealloc;
 - (id)init;
 

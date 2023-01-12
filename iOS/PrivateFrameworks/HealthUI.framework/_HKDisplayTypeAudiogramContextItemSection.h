@@ -8,7 +8,7 @@
 
 #import <HealthUI/HKDisplayTypeContextItemSection-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIAction;
 
 @interface _HKDisplayTypeAudiogramContextItemSection : NSObject <HKDisplayTypeContextItemSection>
 {
@@ -21,6 +21,7 @@
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 
 // Remaining properties
+@property(retain, nonatomic) UIAction *accessoryButtonAction;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

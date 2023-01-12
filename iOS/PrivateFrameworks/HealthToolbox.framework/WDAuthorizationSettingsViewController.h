@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (id)specialCellWithIdentifier:(id)arg1 textLabelText:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)sectionsForAuthController:(id)arg1;
 - (void)_applicationWillEnterForeground;
 - (id)initWithProfile:(id)arg1 style:(long long)arg2;

@@ -6,9 +6,13 @@
 
 #import <RemoteUI/NSObject-Protocol.h>
 
-@class RUIChoice;
+@class RUIChoice, RUIElement, UIViewController;
 
 @protocol RUIMultiChoiceActionHandler <NSObject>
+- (void)didTapFooter:(RUIElement *)arg1;
 - (void)didTapChoice:(RUIChoice *)arg1;
+
+@optional
+- (UIViewController *)viewControllerForPresentation;
 @end
 

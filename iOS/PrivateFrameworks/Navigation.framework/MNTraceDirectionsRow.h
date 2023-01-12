@@ -18,9 +18,11 @@
     GEODirectionsResponse *_response;
     NSError *_error;
     NSArray *_waypoints;
+    unsigned long long _selectedRouteIndex;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long selectedRouteIndex; // @synthesize selectedRouteIndex=_selectedRouteIndex;
 @property(retain, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;

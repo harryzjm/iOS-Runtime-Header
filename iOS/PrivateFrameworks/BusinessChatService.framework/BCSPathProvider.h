@@ -11,9 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_createBundleBasedDirectoryIfNecessary:(id)arg1;
-+ (id)tempPath;
-+ (id)cachesPath;
-
 @end
 

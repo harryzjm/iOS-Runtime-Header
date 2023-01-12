@@ -14,13 +14,13 @@
     unsigned long long _mode;
     NSSet *_prioritizedServices;
     HFStaticItem *_nameAndIconItem;
+    NSSet *_instructionsItems;
     HFStaticItem *_mediaInstructionsItem;
     HFStaticItem *_mediaItem;
     HFStaticItem *_changeServicesItem;
     HFStaticItem *_testSceneItem;
     HFStaticItem *_favoriteItem;
     HFStaticItem *_deleteSceneItem;
-    NSMutableDictionary *_instructionsItemsByEditorType;
     NSMutableDictionary *_actionGridItemsByEditorType;
 }
 
@@ -29,13 +29,13 @@
 + (unsigned long long)actionGridEditorTypeForSectionIdentifier:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableDictionary *actionGridItemsByEditorType; // @synthesize actionGridItemsByEditorType=_actionGridItemsByEditorType;
-@property(readonly, nonatomic) NSMutableDictionary *instructionsItemsByEditorType; // @synthesize instructionsItemsByEditorType=_instructionsItemsByEditorType;
 @property(retain, nonatomic) HFStaticItem *deleteSceneItem; // @synthesize deleteSceneItem=_deleteSceneItem;
 @property(retain, nonatomic) HFStaticItem *favoriteItem; // @synthesize favoriteItem=_favoriteItem;
 @property(retain, nonatomic) HFStaticItem *testSceneItem; // @synthesize testSceneItem=_testSceneItem;
 @property(retain, nonatomic) HFStaticItem *changeServicesItem; // @synthesize changeServicesItem=_changeServicesItem;
 @property(retain, nonatomic) HFStaticItem *mediaItem; // @synthesize mediaItem=_mediaItem;
-@property(retain, nonatomic) HFStaticItem *mediaInstructionsItem; // @synthesize mediaInstructionsItem=_mediaInstructionsItem;
+@property(readonly, nonatomic) HFStaticItem *mediaInstructionsItem; // @synthesize mediaInstructionsItem=_mediaInstructionsItem;
+@property(readonly, nonatomic) NSSet *instructionsItems; // @synthesize instructionsItems=_instructionsItems;
 @property(retain, nonatomic) HFStaticItem *nameAndIconItem; // @synthesize nameAndIconItem=_nameAndIconItem;
 @property(copy, nonatomic) NSSet *prioritizedServices; // @synthesize prioritizedServices=_prioritizedServices;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
@@ -46,7 +46,6 @@
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
 @property(readonly, nonatomic) NSSet *itemsToHideWhenEmpty;
-@property(readonly, nonatomic) NSSet *instructionsItems;
 @property(readonly, nonatomic) NSSet *actionGridItems;
 - (id)initWithActionSetBuilder:(id)arg1 mode:(unsigned long long)arg2 delegate:(id)arg3;
 

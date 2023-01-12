@@ -67,6 +67,7 @@
 - (void)loadScoresForRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)scoreRequestForGame:(id)arg1;
 - (void)loadScoresWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) double duration;
 @property(readonly, getter=isLoading) _Bool loading;
 @property(nonatomic) struct _NSRange range; // @synthesize range=_range;
 - (id)description;
@@ -80,7 +81,6 @@
 // Remaining properties
 @property(readonly, nonatomic) NSString *baseLeaderboardID; // @dynamic baseLeaderboardID;
 @property(copy, nonatomic) NSString *category; // @dynamic category;
-@property(readonly, nonatomic) double duration; // @dynamic duration;
 @property(readonly, nonatomic) long long friendRank; // @dynamic friendRank;
 @property(readonly, nonatomic) long long friendRankCount; // @dynamic friendRankCount;
 @property(readonly, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;

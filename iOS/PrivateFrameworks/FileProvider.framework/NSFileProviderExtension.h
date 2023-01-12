@@ -54,8 +54,6 @@
 - (id)providerIdentifier;
 - (void)invalidate;
 - (id)init;
-- (id)enumeratorForSearchQuery:(id)arg1 error:(id *)arg2;
-- (id)enumeratorForContainerItemIdentifier:(id)arg1 error:(id *)arg2;
 - (void)handleEventsForBackgroundURLSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)performActionWithIdentifier:(id)arg1 onItemsWithIdentifiers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)disconnectWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -72,8 +70,11 @@
 - (void)importDocumentAtURL:(id)arg1 toParentItemIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)fetchThumbnailsForItemIdentifiers:(id)arg1 requestedSize:(struct CGSize)arg2 perThumbnailCompletionHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)supportedServiceSourcesForItemIdentifier:(id)arg1 error:(id *)arg2;
+- (id)enumeratorForSearchQuery:(id)arg1 error:(id *)arg2;
+- (id)enumeratorForContainerItemIdentifier:(id)arg1 error:(id *)arg2;
 - (void)materializedItemsDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 contents:(id)arg3 options:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)_fp_itemsMightBeTheSame:(id)arg1 otherItem:(id)arg2 url:(id)arg3;
 - (void)deleteItemWithIdentifier:(id)arg1 baseVersion:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)importDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
 

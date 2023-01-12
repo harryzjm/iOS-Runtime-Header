@@ -8,7 +8,7 @@
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUICore/PXTouchingUIGestureRecognizerDelegate-Protocol.h>
 
-@class NSError, NSString, NSURL, PHFetchResult, PHMomentShare, PHPhotoLibrary, PXCMMPreviewAsset, PXCMMPreviewUIImageProvider, PXCMMSpecManager, PXCMMTranscriptBubbleStatusView, PXCMMTranscriptBubbleView, PXMomentShareStatusPresentation;
+@class NSError, NSString, NSURL, PHFetchResult, PHMomentShare, PHPhotoLibrary, PXCMMPreviewAsset, PXCMMPreviewUIImageProvider, PXCMMSpecManager, PXCMMStackBubbleView, PXCMMTranscriptBubbleStatusView, PXCMMTranscriptBubbleView, PXMomentShareStatusPresentation;
 @protocol PXCMMTranscriptBubbleTouchDelegate, PXUIImageProvider;
 
 @interface PXCMMTranscriptBubbleViewController <PXPhotoLibraryUIChangeObserver, PXChangeObserver, PXTouchingUIGestureRecognizerDelegate>
@@ -28,6 +28,8 @@
     _Bool _readyForBubbleStateTransitions;
     _Bool _isExpungingAndRefetching;
     _Bool _triggeredForcedSync;
+    _Bool _useStackBubbleView;
+    PXCMMStackBubbleView *_stackBubbleView;
     _Bool _isSender;
     _Bool _isPending;
     _Bool _highlighted;
@@ -61,6 +63,7 @@
 - (void)_updateContent;
 - (void)_updateBubbleView;
 - (_Bool)_shouldShowContent;
+- (void)_installGestures;
 - (void)viewDidLoad;
 - (void)_longPressGesture:(id)arg1;
 - (void)_doubleTapGesture:(id)arg1;

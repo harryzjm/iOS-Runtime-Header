@@ -66,6 +66,7 @@
 - (void)_resetStats;
 - (_Bool)isEqualToDataSet:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)enumerateValues:(CDUnknownBlockType)arg1;
 - (double)valueAtIndex:(long long)arg1;
 @property(readonly, nonatomic) long long count;
@@ -76,7 +77,7 @@
 - (id)initWithValues:(const double *)arg1 count:(long long)arg2;
 - (id)initWithValue:(double)arg1;
 - (id)init;
-- (const struct DataSet *)_const_data;
+- (const void *)_const_data;
 
 @end
 

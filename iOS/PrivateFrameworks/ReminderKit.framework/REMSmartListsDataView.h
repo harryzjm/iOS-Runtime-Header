@@ -13,11 +13,14 @@
     REMStore *_store;
 }
 
-+ (id)smartListsFromSmartListStorages:(id)arg1 store:(id)arg2;
++ (id)smartListsFromSmartListStorages:(id)arg1 accountStorages:(id)arg2 parentListStorages:(id)arg3 store:(id)arg4;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
-- (id)fetchSmartListWithSmartListTag:(id)arg1 reminderIDs:(id)arg2 createIfNeeded:(_Bool)arg3 error:(id *)arg4;
-- (id)fetchSmartListWithSmartListTag:(id)arg1 createIfNeeded:(_Bool)arg2 error:(id *)arg3;
+- (id)fetchCustomSmartListsInGroup:(id)arg1 error:(id *)arg2;
+- (id)fetchCustomSmartListsInAccount:(id)arg1 error:(id *)arg2;
+- (id)fetchCustomSmartListsWithError:(id *)arg1;
+- (id)fetchCustomSmartListWithObjectID:(id)arg1 error:(id *)arg2;
+- (id)fetchNonCustomSmartListWithSmartListType:(id)arg1 createIfNeeded:(_Bool)arg2 error:(id *)arg3;
 - (id)initWithStore:(id)arg1;
 
 @end

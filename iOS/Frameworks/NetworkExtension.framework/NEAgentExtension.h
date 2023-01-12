@@ -58,6 +58,7 @@
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateConfiguration:(id)arg1;
 - (void)startWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)copyProcessIdentities;
 @property(readonly, nonatomic) NSXPCInterface *driverInterface;
 @property(readonly, nonatomic) NSXPCInterface *managerInterface;
 @property(readonly, nonatomic) NSArray *uuids;
@@ -70,7 +71,7 @@
 - (void)handleInitWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleExtensionExit:(id)arg1;
 - (void)dealloc;
-- (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginEndpoint:(id)arg3 pluginUUID:(id)arg4 queue:(id)arg5 factory:(id)arg6;
+- (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginEndpoint:(id)arg3 pluginProcessIdentity:(id)arg4 queue:(id)arg5 factory:(id)arg6;
 - (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginInfo:(id)arg3 queue:(id)arg4 factory:(id)arg5;
 
 // Remaining properties

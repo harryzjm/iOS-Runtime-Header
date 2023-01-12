@@ -48,7 +48,7 @@
 - (_Bool)isEqualToStrokeGroup:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (const struct CGPath *)newEstimatedBaselineForStrokesWithIdentifiers:(id)arg1 estimatedDescenderLocations:(id)arg2;
+- (const struct CGPath *)newEstimatedBaselineForStrokesWithTokens:(id)arg1 tokenStrokeIdentifiers:(id)arg2;
 - (id)groupByAddingStrokeIdentifiers:(id)arg1 removingStrokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect)arg5 classification:(long long)arg6 groupingConfidence:(double)arg7 firstStrokeOrigin:(struct CGPoint)arg8;
 @property(readonly, nonatomic) struct CGVector averageWritingOrientation;
 - (id)description;

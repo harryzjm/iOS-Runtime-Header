@@ -18,14 +18,13 @@ __attribute__((visibility("hidden")))
     _ASIncomingCallObserver *_callObserver;
 }
 
-+ (_Bool)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
 - (void)passwordPickerTableViewController:(id)arg1 didPickSavedPassword:(id)arg2;
 - (void)passwordPickerTableViewControllerDidCancel:(id)arg1;
 - (void)_dismiss;
 - (void)_appDidEnterBackground:(id)arg1;
 - (void)dealloc;
-- (id)initWithPrompt:(id)arg1 forUserNamesOnly:(_Bool)arg2 appNames:(id)arg3 appID:(id)arg4 matchedSites:(id)arg5 urlString:(id)arg6 minimumNumberOfCredentialsToShowLikelyMatchesSection:(unsigned long long)arg7 shouldShowIcons:(_Bool)arg8 shouldGetHintStrings:(_Bool)arg9 completionHandler:(CDUnknownBlockType)arg10;
+- (id)initWithConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

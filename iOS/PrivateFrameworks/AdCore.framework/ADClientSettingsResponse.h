@@ -14,13 +14,16 @@
 {
     double _expirationDate;
     NSMutableArray *_searchAdsSettingsParams;
+    NSMutableArray *_searchLandingAdsSettingsParams;
     struct {
         unsigned int expirationDate:1;
     } _has;
 }
 
++ (Class)searchLandingAdsSettingsParamsType;
 + (Class)searchAdsSettingsParamsType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *searchLandingAdsSettingsParams; // @synthesize searchLandingAdsSettingsParams=_searchLandingAdsSettingsParams;
 @property(retain, nonatomic) NSMutableArray *searchAdsSettingsParams; // @synthesize searchAdsSettingsParams=_searchAdsSettingsParams;
 @property(nonatomic) double expirationDate; // @synthesize expirationDate=_expirationDate;
 - (void)mergeFrom:(id)arg1;
@@ -32,6 +35,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)searchLandingAdsSettingsParamsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)searchLandingAdsSettingsParamsCount;
+- (void)addSearchLandingAdsSettingsParams:(id)arg1;
+- (void)clearSearchLandingAdsSettingsParams;
 - (id)searchAdsSettingsParamsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)searchAdsSettingsParamsCount;
 - (void)addSearchAdsSettingsParams:(id)arg1;

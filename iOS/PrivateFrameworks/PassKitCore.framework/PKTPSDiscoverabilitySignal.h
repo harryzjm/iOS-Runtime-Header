@@ -15,12 +15,10 @@
     NSString *_context;
 }
 
-+ (id)osBuild;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *context; // @synthesize context=_context;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (id)_discoverabilitySignalsStream;
 - (void)donateSignalWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 context:(id)arg3;
 - (id)initWithIdentifier:(id)arg1;

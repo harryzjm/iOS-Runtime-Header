@@ -14,24 +14,16 @@
 
 @interface BTLEScanner : HMFObject <HMFTimerDelegate, HAPBTLECentralManagerDelegate>
 {
-    NSObject<OS_dispatch_queue> *workQueue;
-    HMFTimer *scanTimer;
-    CUBLEScanner *cubleScanner;
-    HAPBTLECentralManager *centralManager;
-    HMDAccessoryQueues *scanQueue;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    HMFTimer *_scanTimer;
+    CUBLEScanner *_cubleScanner;
+    HAPBTLECentralManager *_centralManager;
+    HMDAccessoryQueues *_scanQueue;
 }
 
-+ (id)initializeScanner;
-+ (id)sharedScanLock;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMDAccessoryQueues *scanQueue; // @synthesize scanQueue;
-@property(retain, nonatomic) HAPBTLECentralManager *centralManager; // @synthesize centralManager;
-@property(retain, nonatomic) CUBLEScanner *cubleScanner; // @synthesize cubleScanner;
-@property(retain, nonatomic) HMFTimer *scanTimer; // @synthesize scanTimer;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue;
 - (void)timerDidFire:(id)arg1;
 - (void)_stopScan;
-- (_Bool)startScan:(id)arg1 timeout:(double)arg2;
 - (void)_checkCanScan;
 - (void)_stopTimer;
 - (void)_flushQueue;

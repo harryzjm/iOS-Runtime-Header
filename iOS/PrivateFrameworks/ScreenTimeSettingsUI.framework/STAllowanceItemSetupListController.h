@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_addCustomWebDomain:(id)arg1 specifier:(id)arg2;
 - (void)_addWebsiteButtonPressed:(id)arg1;
 - (id)_categoryDetailText:(id)arg1;
-- (id)_webDomainSpecifierForDomain:(id)arg1;
+- (id)_webDomainSpecifierForDomain:(id)arg1 usageItem:(id)arg2;
 - (id)_categorySpecifierForIdentifier:(id)arg1;
 - (id)_applicationSpecifierForBundleIdentifier:(id)arg1 categoryIdentifier:(id)arg2;
 - (void)_updateApplicationSpecifiersWithBundleIdentifier:(id)arg1 categoryIdentifier:(id)arg2 shouldInsertSpecifier:(_Bool)arg3;
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_showNewCategoriesCompatibilityAlertIfNeeded;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (long long)tableViewStyle;
 - (_Bool)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (id)init;

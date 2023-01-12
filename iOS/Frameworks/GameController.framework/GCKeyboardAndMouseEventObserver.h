@@ -10,7 +10,7 @@
 #import <GameController/GCKeyboardEventObserverDelegate-Protocol.h>
 #import <GameController/GCMouseEventObserverDelegate-Protocol.h>
 
-@class GCFrontmostApplicationObserver, GCKeyboardEventObserver, GCMouseEventObserver, NSString, _GCIPCRemoteProcess;
+@class GCFrontmostApplicationObserver, GCKeyboardEventObserver, GCMouseEventObserver, NSString, _GCAppClientConnection, _GCIPCRemoteProcess;
 @protocol GCAppConnectionsFilter;
 
 @interface GCKeyboardAndMouseEventObserver : NSObject <GCKeyboardEventObserverDelegate, GCMouseEventObserverDelegate, GCFrontmostApplicationObserverDelegate>
@@ -19,7 +19,9 @@
     GCKeyboardEventObserver *_keyboardEventObserver;
     GCMouseEventObserver *_mouseEventObserver;
     _GCIPCRemoteProcess *_frontMostClient;
+    _GCAppClientConnection *_frontMostAppClientConnection;
     int _pid;
+    _Bool _observingEvents;
     GCFrontmostApplicationObserver *_frontmostApplicationObserver;
 }
 
@@ -27,8 +29,15 @@
 - (void)onFrontmostApplicationChanged:(int)arg1;
 - (void)onMouseEvent:(id)arg1;
 - (void)onKeyboardEvent:(id)arg1;
+- (_Bool)locateFrontMostAppClientConnection;
+- (void)setFrontMostClient:(id)arg1;
 - (void)clientRemoved:(id)arg1;
 - (void)clientAdded:(id)arg1;
+- (void)pidsWithKeyboardAndMouseSupportDidChange;
+- (void)stopObservingKeyboardAndMouseEvents;
+- (void)beginObservingKeyboardAndMouseEvents;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
 - (id)initWithFilter:(id)arg1;
 
 // Remaining properties

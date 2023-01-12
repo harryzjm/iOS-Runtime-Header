@@ -17,7 +17,7 @@
 + (id)defaultValueForKey:(id)arg1;
 @property(copy) NSDictionary *drawableProperties;
 @property _Bool presentsWithTransaction;
-- (void)_didCommitLayer:(struct Transaction *)arg1;
+- (void)_didCommitLayer:(void *)arg1;
 - (void)_display;
 - (_Bool)_defersDidBecomeVisiblePostCommit;
 - (void)layerDidBecomeVisible:(_Bool)arg1;

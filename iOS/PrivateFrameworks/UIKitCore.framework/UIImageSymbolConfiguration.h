@@ -4,25 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-@protocol UIImageSymbolConfigurationProvider;
+@class NSArray, NSDictionary, NSString;
 
 @interface UIImageSymbolConfiguration
 {
     double _pointSize;
     struct {
         unsigned int hasFixedPointSize:1;
-        unsigned int providerUpdates:1;
-        unsigned int ignoresDynamicType:1;
+        unsigned int usesHierarchicalColors:1;
+        unsigned int prefersMulticolor:1;
+        unsigned int specifiedPrefersMulticolor:1;
     } _configFlags;
+    NSDictionary *_namedColorStyles;
+    NSArray *_colors;
     long long _scale;
     long long _weight;
     NSString *_textStyle;
-    id <UIImageSymbolConfigurationProvider> _provider;
     double _customFontPointSizeMultiplier;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)configurationPreferringMulticolor;
++ (id)configurationWithPaletteColors:(id)arg1;
++ (id)configurationWithHierarchicalColor:(id)arg1;
++ (id)_configurationWithHierarchicalColors:(id)arg1;
++ (id)_configurationWithNamedColorStyles:(id)arg1;
 + (id)configurationWithFont:(id)arg1 scale:(long long)arg2;
 + (id)configurationWithFont:(id)arg1;
 + (id)configurationWithTextStyle:(id)arg1 scale:(long long)arg2;
@@ -37,10 +43,13 @@
 + (id)_defaultConfiguration;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double customFontPointSizeMultiplier; // @synthesize customFontPointSizeMultiplier=_customFontPointSizeMultiplier;
-@property(readonly, nonatomic) __weak id <UIImageSymbolConfigurationProvider> provider; // @synthesize provider=_provider;
 @property(readonly, copy, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
 @property(readonly, nonatomic) long long weight; // @synthesize weight=_weight;
 @property(readonly, nonatomic) long long scale; // @synthesize scale=_scale;
+@property(readonly, nonatomic) NSArray *_colors; // @synthesize _colors;
+@property(readonly, nonatomic) NSDictionary *_namedColorStyles; // @synthesize _namedColorStyles;
+- (id)_paletteColorsWithTraitCollection:(id)arg1;
+- (id)_hierarchicalColorForLayerLevel:(long long)arg1 traitCollection:(id)arg2;
 - (void)_deriveGlyphSize:(long long *)arg1 weight:(long long *)arg2 pointSize:(double *)arg3;
 - (_Bool)isEquivalentToConfiguration:(id)arg1;
 - (_Bool)isSimilarToConfiguration:(id)arg1;
@@ -55,6 +64,7 @@
 - (id)configurationWithoutTextStyle;
 - (void)_applyConfigurationValuesTo:(id)arg1;
 - (_Bool)_shouldApplyConfiguration:(id)arg1;
+- (_Bool)_hasColorConfigurationWithTintColor;
 - (_Bool)_isUnspecified;
 @property(readonly, nonatomic) double pointSizeForScalingWithTextStyle;
 - (_Bool)_hasSpecifiedScale;
@@ -62,6 +72,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_initWithTraitCollection:(id)arg1;
+- (id)_configurationByReplacingColors:(id)arg1;
 
 @end
 

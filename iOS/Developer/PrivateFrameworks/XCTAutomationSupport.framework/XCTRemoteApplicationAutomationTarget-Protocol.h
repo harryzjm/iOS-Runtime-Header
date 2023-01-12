@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, XCAccessibilityElement, XCTCapabilities, XCTElementQuery;
+@class NSArray, NSNumber, XCAccessibilityElement, XCTCapabilities, XCTElementQuery;
 
 @protocol XCTRemoteApplicationAutomationTarget
+- (id)_XCT_setMallocStackLoggingWithMode:(NSNumber *)arg1;
 - (id)_XCT_notifyWhenAnimationsAreIdle;
 - (id)_XCT_notifyWhenMainRunLoopIsIdle;
 - (id)_XCT_attributesForElement:(XCAccessibilityElement *)arg1 attributes:(NSArray *)arg2;

@@ -8,18 +8,16 @@
 
 #import <ActionKit/SHSessionDelegate-Protocol.h>
 
-@class NSString, SHAudioMatchingRemoteStore, SHSession;
+@class NSString, SHManagedSession;
 
 @interface WFShazamMediaAction : WFAction <SHSessionDelegate>
 {
-    SHSession *_session;
-    SHAudioMatchingRemoteStore *_store;
+    SHManagedSession *_managedSession;
 }
 
 + (id)userInterfaceProtocol;
 - (void).cxx_destruct;
-@property(retain, nonatomic) SHAudioMatchingRemoteStore *store; // @synthesize store=_store;
-@property(retain, nonatomic) SHSession *session; // @synthesize session=_session;
+@property(retain, nonatomic) SHManagedSession *managedSession; // @synthesize managedSession=_managedSession;
 - (void)session:(id)arg1 didNotFindMatchForSignature:(id)arg2 error:(id)arg3;
 - (void)session:(id)arg1 didFindMatch:(id)arg2;
 - (void)finishRunningWithError:(id)arg1;

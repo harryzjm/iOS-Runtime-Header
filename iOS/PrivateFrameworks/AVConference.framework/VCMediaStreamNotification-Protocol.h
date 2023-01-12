@@ -6,10 +6,13 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class VCMasterKeyIndex, VCMediaStream;
+@class NSArray, VCMediaKeyIndex, VCMediaStream;
 
 @protocol VCMediaStreamNotification <NSObject>
-- (void)mediaStream:(VCMediaStream *)arg1 didReceiveNewMasterKeyIndex:(VCMasterKeyIndex *)arg2;
+- (void)mediaStream:(VCMediaStream *)arg1 didReceiveNewMediaKeyIndex:(VCMediaKeyIndex *)arg2;
 - (void)didReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
+
+@optional
+- (void)mediaStream:(VCMediaStream *)arg1 didReceiveFlushRequestWithPayloads:(NSArray *)arg2;
 @end
 

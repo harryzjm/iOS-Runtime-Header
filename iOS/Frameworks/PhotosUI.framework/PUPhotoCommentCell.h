@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)_updateContent;
 - (void)delete:(id)arg1;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

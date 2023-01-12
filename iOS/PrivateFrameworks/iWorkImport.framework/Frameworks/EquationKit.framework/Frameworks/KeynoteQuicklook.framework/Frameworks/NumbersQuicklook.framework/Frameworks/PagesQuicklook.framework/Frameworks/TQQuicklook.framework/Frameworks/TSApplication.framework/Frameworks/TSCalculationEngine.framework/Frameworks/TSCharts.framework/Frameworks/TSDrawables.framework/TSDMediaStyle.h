@@ -23,16 +23,22 @@
 + (id)movieStylePresetStyleDescriptor;
 + (id)imageStylePresetStyleDescriptor;
 + (void)initialize;
-+ (void)saveMediaStylePropertyMap:(id)arg1 toArchive:(struct MediaStylePropertiesArchive *)arg2 archiver:(id)arg3;
-+ (void)loadMediaStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct MediaStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
++ (void)saveMediaStylePropertyMap:(id)arg1 toArchive:(void *)arg2 archiver:(id)arg3;
++ (void)loadMediaStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const void *)arg2 unarchiver:(id)arg3;
 - (id)boxedValueForProperty:(int)arg1 oldBoxedValue:(id)arg2 transformedByTransform:(struct CGAffineTransform)arg3;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 @property(readonly, nonatomic) NSString *presetKind;
-- (void)saveToArchive:(struct MediaStyleArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromArchive:(const struct MediaStyleArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

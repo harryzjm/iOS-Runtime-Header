@@ -10,8 +10,6 @@
 {
 }
 
-- (id)nextTargetTopicNumbers;
-- (id)previousTargetTopicNumbers;
 - (id)nextTargetFirstColumn;
 - (_Bool)discardLayoutsForDrawableAttachmentsInRange:(struct _NSRange)arg1;
 - (void)validate;

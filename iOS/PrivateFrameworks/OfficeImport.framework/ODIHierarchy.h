@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 - (void)mapNode:(id)arg1;
 - (struct CGRect)boundsOfNode:(id)arg1;
 - (void)setAbsolutePositionOfNode:(id)arg1 parentRow:(int)arg2 parentXOffset:(float)arg3;
-- (void)mapLogicalBoundsWithXRanges:(const struct ODIHRangeVector *)arg1;
-- (struct ODIHRangeVector *)mapRangesForNode:(id)arg1;
+- (void)mapLogicalBoundsWithXRanges:(const void *)arg1;
+- (void *)mapRangesForNode:(id)arg1;
 - (void)createInfoForNode:(id)arg1 depth:(int)arg2;
 - (id)infoForNode:(id)arg1;
 - (id)initWithType:(int)arg1 state:(id)arg2;

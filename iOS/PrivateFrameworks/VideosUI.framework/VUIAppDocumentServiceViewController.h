@@ -10,7 +10,7 @@
 #import <VideosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <VideosUI/VUIAppDocumentUpdateEventMonitorObserving-Protocol.h>
 
-@class IKAppContext, NSMutableArray, NSMutableOrderedSet, NSString, VUIAppDocumentUpdateEventStore;
+@class NSMutableArray, NSMutableOrderedSet, NSString, VUIAppContext, VUIAppDocumentUpdateEventStore;
 @protocol VUIAppDocumentUpdateContext;
 
 @interface VUIAppDocumentServiceViewController : _TVAppDocumentRequestController <IKUpdateServiceRequestDelegate, VUIAppDocumentUpdateEventMonitorObserving, UIPopoverPresentationControllerDelegate>
@@ -20,7 +20,7 @@
     NSString *_viewControllerIdentifier;
     NSString *_viewControllerDocumentIdentifier;
     NSMutableArray *_impressionableSwiftViewControllers;
-    IKAppContext *_appContext;
+    VUIAppContext *_appContext;
     NSString *_documentRef;
     id <VUIAppDocumentUpdateContext> _documentUpdateContext;
     NSMutableOrderedSet *_documentUpdateViewElements;
@@ -37,7 +37,7 @@
 @property(retain, nonatomic) NSMutableOrderedSet *documentUpdateViewElements; // @synthesize documentUpdateViewElements=_documentUpdateViewElements;
 @property(retain, nonatomic) id <VUIAppDocumentUpdateContext> documentUpdateContext; // @synthesize documentUpdateContext=_documentUpdateContext;
 @property(copy, nonatomic) NSString *documentRef; // @synthesize documentRef=_documentRef;
-@property(nonatomic) __weak IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
 @property(retain, nonatomic) NSMutableArray *impressionableSwiftViewControllers; // @synthesize impressionableSwiftViewControllers=_impressionableSwiftViewControllers;
 @property(retain, nonatomic) NSString *viewControllerDocumentIdentifier; // @synthesize viewControllerDocumentIdentifier=_viewControllerDocumentIdentifier;
 @property(retain, nonatomic) NSString *viewControllerIdentifier; // @synthesize viewControllerIdentifier=_viewControllerIdentifier;
@@ -59,8 +59,6 @@
 - (void)documentDidUpdate:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
-- (void)vui_handleEvent:(id)arg1 forElement:(id)arg2 sourceView:(id)arg3;
-- (id)interactionPreviewControllerForViewController:(id)arg1 presentingView:(id)arg2 presentingElement:(id)arg3;
 - (_Bool)handleEvent:(id)arg1 targetResponder:(id)arg2 viewElement:(id)arg3 extraInfo:(id *)arg4;
 - (void)didCompleteDocumentCreationWithStatus:(long long)arg1 errorDictionary:(id)arg2;
 - (void)updateServiceRequest:(id)arg1 documentDidChange:(id)arg2;
@@ -68,8 +66,6 @@
 - (void)appDocumentHasBecomeActive;
 - (void)appDocumentDidReceiveEvent:(id)arg1;
 - (void)viewWillAppearAfterTabSwitch;
-- (void)recordedImpressions;
-- (void)snapshotImpressions;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

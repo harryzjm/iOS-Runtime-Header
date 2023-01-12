@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemonFoundation/HDAssertion.h>
+
 @class NSObject, NSString;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _HDAlertSuppressorAssertion
+@interface _HDAlertSuppressorAssertion : HDAssertion
 {
     NSString *_processBundleIdentifier;
     NSObject<OS_dispatch_source> *_keepaliveTimer;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *keepaliveTimer; // @synthesize keepaliveTimer=_keepaliveTimer;
-@property(readonly, copy, nonatomic) NSString *processBundleIdentifier; // @synthesize processBundleIdentifier=_processBundleIdentifier;
-- (id)initWithOwnerIdentifier:(id)arg1 processBundleIdentifier:(id)arg2;
 
 @end
 

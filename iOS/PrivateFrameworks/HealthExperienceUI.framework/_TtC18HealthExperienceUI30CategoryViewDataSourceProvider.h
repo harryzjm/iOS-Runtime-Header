@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *summarySectionPredicate;
     MISSING_TYPE *getMoreFromHealthPredicate;
+    MISSING_TYPE *articlesPredicate;
+    MISSING_TYPE *typeGroup;
     MISSING_TYPE *store;
     MISSING_TYPE *chrOnly;
     MISSING_TYPE *sourceProfile;

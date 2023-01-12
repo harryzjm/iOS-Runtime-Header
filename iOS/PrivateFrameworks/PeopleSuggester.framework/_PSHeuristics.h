@@ -14,20 +14,24 @@
     id <_DKKnowledgeQuerying> _knowledgeStore;
     _CDInteractionStore *_interactionStore;
     _PSContactResolver *_contactResolver;
+    _CDInteractionCache *_messageInteractionCache;
     _CDInteractionCache *_recencyCache;
     double _recencyMargin;
 }
 
++ (id)templateForPhoneCallHeuristicWithHandles:(id)arg1 reason:(id)arg2;
 + (id)templateForPhoneCallHeuristicWithContactId:(id)arg1 handle:(id)arg2 reason:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) double recencyMargin; // @synthesize recencyMargin=_recencyMargin;
 @property(retain, nonatomic) _CDInteractionCache *recencyCache; // @synthesize recencyCache=_recencyCache;
+@property(readonly, nonatomic) _CDInteractionCache *messageInteractionCache; // @synthesize messageInteractionCache=_messageInteractionCache;
 @property(readonly, nonatomic) _PSContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property(readonly, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
 @property(readonly, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 - (id)hourOfDayProbabilitiesToInteractWithContacts:(id)arg1;
 - (id)backFillProxiesByRecencyUsingInteractions:(id)arg1 startIndex:(unsigned long long)arg2;
-- (id)inPhoneCallHeuristicSuggestionProxies;
+- (id)inExpanseSessionHeuristicSuggestionProxiesWithBundleIds:(id)arg1 suggestionDate:(id)arg2;
+- (id)inPhoneCallHeuristicSuggestionProxiesWithBundleIds:(id)arg1;
 - (id)hyperRecentHeuristicSuggestionProxiesWithReferenceDate:(id)arg1 predictionContextBundleId:(id)arg2;
 - (id)proximityBoostingHeuristicWithProximityBooster:(id)arg1 existingSuggestions:(id)arg2;
 - (id)maximalIntersectionGroupChatSuggestionProxyWithSeedContactIdentifiers:(id)arg1 bundleIds:(id)arg2 meContactIdentifier:(id)arg3;
@@ -36,8 +40,8 @@
 - (id)seedSuggestionsForChatGuidsAndEmails:(id)arg1;
 - (void)prepareRecencyCacheWithSupportedBundleIds:(id)arg1;
 - (void)updateModelProperties:(id)arg1;
-- (id)initWithKnowledgeStore:(id)arg1 interactionStore:(id)arg2 contactResolver:(id)arg3 shareSheetSupportedBundleIds:(id)arg4;
-- (id)initWithKnowledgeStore:(id)arg1 interactionStore:(id)arg2 contactResolver:(id)arg3;
+- (id)initWithKnowledgeStore:(id)arg1 interactionStore:(id)arg2 contactResolver:(id)arg3 shareSheetSupportedBundleIds:(id)arg4 messageInteractionCache:(id)arg5;
+- (id)initWithKnowledgeStore:(id)arg1 interactionStore:(id)arg2 contactResolver:(id)arg3 messageInteractionCache:(id)arg4;
 
 @end
 

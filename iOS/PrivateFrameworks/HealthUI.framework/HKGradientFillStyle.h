@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor;
+@class UIColor, UIImage;
 
 @interface HKGradientFillStyle
 {
@@ -13,9 +13,11 @@
     double _fillPercentage;
     long long _fillDirection;
     double _gradientSize;
+    UIImage *_cachedImage;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *cachedImage; // @synthesize cachedImage=_cachedImage;
 @property(nonatomic) double gradientSize; // @synthesize gradientSize=_gradientSize;
 @property(nonatomic) long long fillDirection; // @synthesize fillDirection=_fillDirection;
 @property(nonatomic) double fillPercentage; // @synthesize fillPercentage=_fillPercentage;
@@ -24,6 +26,14 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_renderInContext:(struct CGContext *)arg1 size:(struct CGSize)arg2;
 - (_Bool)_useReversedFillDirection;
+- (_Bool)_needsRenderForSize:(struct CGSize)arg1;
+- (void)_renderCacheIfNecessaryForSize:(struct CGSize)arg1;
+- (void)_renderCacheIfNecessaryForWidth:(double)arg1;
+- (void)_renderCacheIfNecessaryForHeight:(double)arg1;
+- (void)renderPath:(struct CGPath *)arg1 context:(struct CGContext *)arg2 axisRect:(struct CGRect)arg3 alpha:(double)arg4;
+- (id)fillImageWithWidth:(double)arg1;
+- (id)fillImageWithHeight:(double)arg1;
+- (void)clearCache;
 - (id)init;
 
 @end

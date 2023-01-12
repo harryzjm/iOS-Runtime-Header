@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSNumber, NSString, _GCHapticClientProxy, _GCHapticDynamicParameter, _GCHapticLogicalDevice;
+@class NSArray, NSMutableArray, NSNumber, _GCHapticClientProxy, _GCHapticDynamicParameter, _GCHapticLogicalDevice;
 
 __attribute__((visibility("hidden")))
 @interface _GCHapticPlayer : NSObject
@@ -50,12 +50,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSNumber *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) __weak _GCHapticLogicalDevice *hapticLogicalDevice; // @synthesize hapticLogicalDevice=_hapticLogicalDevice;
 @property(readonly, copy, nonatomic) NSArray *actuators; // @synthesize actuators=_actuators;
+- (id)controllerProductCategory;
+- (id)bundleIdentifier;
+- (double)activeLifetimeInSeconds;
 - (void)dealloc;
 - (void)teardown;
 - (id)description;
 - (void)handleCommand:(id)arg1;
 - (void)clearParameters;
-- (void)scheduleCommand:(const struct HapticCommand *)arg1;
+- (void)scheduleCommand:(const void *)arg1;
 - (_Bool)isActiveAtTime:(double)arg1;
 - (_Bool)hasScheduledEventsByTime:(double)arg1;
 - (_Bool)hasProcessedActiveEventsThisSlice;
@@ -69,9 +72,6 @@ __attribute__((visibility("hidden")))
 - (void)processSliceForLogicalDevice:(id)arg1 startTime:(double)arg2 endTime:(double)arg3;
 - (_Bool)transientsEnqueuedSinceLastQuery;
 - (id)initWithIdentifier:(unsigned long long)arg1 actuators:(id)arg2 client:(id)arg3;
-@property(readonly, nonatomic) NSString *controllerProductCategory;
-@property(readonly, nonatomic) NSString *bundleIdentifier;
-@property(readonly, nonatomic) double activeLifetimeInSeconds;
 
 @end
 

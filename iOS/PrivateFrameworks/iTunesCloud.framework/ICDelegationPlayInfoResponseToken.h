@@ -8,6 +8,7 @@
 
 @class NSData, NSDate, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationPlayInfoResponseToken : NSObject
 {
     NSData *_tokenData;

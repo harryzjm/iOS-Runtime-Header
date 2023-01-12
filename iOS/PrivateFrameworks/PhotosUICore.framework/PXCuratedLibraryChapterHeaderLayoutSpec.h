@@ -10,6 +10,7 @@
 {
     _Bool _shouldFloat;
     _Bool _shouldAbbreviateMonth;
+    _Bool _shouldAlwaysShowFloatingVersion;
     UIFont *_titleFont;
     double _titleHeight;
     UIColor *_titleEmphasizedColor;
@@ -29,6 +30,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldAlwaysShowFloatingVersion; // @synthesize shouldAlwaysShowFloatingVersion=_shouldAlwaysShowFloatingVersion;
 @property(readonly, nonatomic) double floatingFadeOutDistance; // @synthesize floatingFadeOutDistance=_floatingFadeOutDistance;
 @property(readonly, nonatomic) double floatingAppearanceCrossfadeDuration; // @synthesize floatingAppearanceCrossfadeDuration=_floatingAppearanceCrossfadeDuration;
 @property(readonly, nonatomic) double floatingAppearanceCrossfadeDistance; // @synthesize floatingAppearanceCrossfadeDistance=_floatingAppearanceCrossfadeDistance;

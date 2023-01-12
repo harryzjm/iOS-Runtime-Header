@@ -12,7 +12,7 @@
 {
 }
 
-- (id)purchaseReceipt;
+- (id)purchaseReceiptWithBundleID:(id)arg1;
 
 @end
 

@@ -15,6 +15,9 @@
 {
     PUTileIdentifier *_tileIdentifier;
     double _alpha;
+    double _cornerRadius;
+    NSString *_cornerCurve;
+    unsigned long long _cornerMask;
     double _zPosition;
     id <PUTilingCoordinateSystem> _coordinateSystem;
     struct CGPoint _center;
@@ -32,6 +35,9 @@
 @property(readonly, nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property(nonatomic, setter=_setZPosition:) double zPosition; // @synthesize zPosition=_zPosition;
 @property(nonatomic, setter=_setTransform:) struct CGAffineTransform transform; // @synthesize transform=_transform;
+@property(nonatomic, setter=_setCornerMask:) unsigned long long cornerMask; // @synthesize cornerMask=_cornerMask;
+@property(retain, nonatomic, setter=_setCornerCurve:) NSString *cornerCurve; // @synthesize cornerCurve=_cornerCurve;
+@property(nonatomic, setter=_setCornerRadius:) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic, setter=_setAlpha:) double alpha; // @synthesize alpha=_alpha;
 @property(nonatomic, setter=_setSize:) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic, setter=_setCenter:) struct CGPoint center; // @synthesize center=_center;
@@ -53,6 +59,8 @@
 @property(readonly, nonatomic) NSString *dataSourceIdentifier;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 cornerRadius:(double)arg5 cornerCurve:(id)arg6 cornerMask:(unsigned long long)arg7 transform:(struct CGAffineTransform)arg8 zPosition:(double)arg9 contentsRect:(struct CGRect)arg10 hitTestOutset:(struct UIEdgeInsets)arg11 coordinateSystem:(id)arg12;
+- (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 cornerRadius:(double)arg5 cornerCurve:(id)arg6 cornerMask:(unsigned long long)arg7 transform:(struct CGAffineTransform)arg8 zPosition:(double)arg9 contentsRect:(struct CGRect)arg10 coordinateSystem:(id)arg11;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 contentsRect:(struct CGRect)arg7 hitTestOutset:(struct UIEdgeInsets)arg8 coordinateSystem:(id)arg9;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 contentsRect:(struct CGRect)arg7 coordinateSystem:(id)arg8;
 - (id)initWithTileIdentifier:(id)arg1 center:(struct CGPoint)arg2 size:(struct CGSize)arg3 alpha:(double)arg4 transform:(struct CGAffineTransform)arg5 zPosition:(double)arg6 coordinateSystem:(id)arg7;

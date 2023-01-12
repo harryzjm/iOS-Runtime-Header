@@ -19,8 +19,8 @@
 - (void)_accessibilityUpdateIsSystemAppServer;
 - (_Bool)_accessibilityIsSystemAppServer;
 - (_Bool)_accessibilityIsAppReadyToBeProbed;
-- (_Bool)_axApplicationIsWidgetExtension;
 - (double)_accessibilityMaximumAllowedOutOfBoundsPercent;
+@property(copy, nonatomic) CDUnknownBlockType accessibilityKeyboardKeyDispatchOverride;
 @property(retain, nonatomic) NSDate *accessibilityLastGesturedTextInputStatusChange;
 - (id)accessibilityPresentingViewController;
 @end

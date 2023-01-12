@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)createReaderWebViewForReaderController:(id)arg1;
 - (void)readerController:(id)arg1 didClickLinkInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkRequestingNewWindowInReaderWithRequest:(id)arg2;
+- (void)readerController:(id)arg1 didDetermineAdditionalTextSamples:(id)arg2 dueTo:(long long)arg3;
 - (void)readerController:(id)arg1 didDetermineReaderAvailability:(id)arg2 dueTo:(long long)arg3;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;
 - (void)invalidate;

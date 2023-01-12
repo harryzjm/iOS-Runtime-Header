@@ -25,6 +25,9 @@
 - (void)cancelAnalysis;
 - (void)analyzeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)analyze;
+- (void)analyzeInRange:(CDStruct_e83c9415)arg1;
+- (CDStruct_e83c9415)fullFileTimeRange;
+- (unsigned int)advanceSamples:(unsigned int)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 
 @end

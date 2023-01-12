@@ -10,12 +10,14 @@
 {
     _Bool _shouldIgnoreAuthFailures;
     _Bool _shouldForceInteractiveAuth;
+    _Bool _shouldUseAIDA;
     NSSet *_targetedServices;
     UIViewController *_presentingViewController;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property(nonatomic) _Bool shouldUseAIDA; // @synthesize shouldUseAIDA=_shouldUseAIDA;
 @property(nonatomic) _Bool shouldForceInteractiveAuth; // @synthesize shouldForceInteractiveAuth=_shouldForceInteractiveAuth;
 @property(nonatomic) _Bool shouldIgnoreAuthFailures; // @synthesize shouldIgnoreAuthFailures=_shouldIgnoreAuthFailures;
 @property(retain, nonatomic) NSSet *targetedServices; // @synthesize targetedServices=_targetedServices;

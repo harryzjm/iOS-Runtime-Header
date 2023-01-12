@@ -10,6 +10,8 @@
 
 - (id)_recordSetBucketsForNameRecords:(id)arg1;
 - (_Bool)deleteCacheIfTooOld;
+- (void)setLastCreatedAt:(long long)arg1;
+- (long long)lastCreatedAt;
 - (id)_createNewCacheObjectWithCreatedAt:(long long)arg1;
 - (_Bool)_writeCache:(id)arg1 path:(id)arg2 error:(id *)arg3;
 - (_Bool)deleteNameRecordCache;

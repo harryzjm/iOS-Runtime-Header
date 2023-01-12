@@ -8,11 +8,12 @@
 #import <PhotosUI/CEKSliderDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoEditApertureToolbarDelegate-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
+#import <PhotosUI/PXNavigationActionReceiver-Protocol.h>
 
-@class CEKApertureButton, CEKLightingControl, CEKLightingNameBadge, CEKSlider, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, PFCoalescer, PUPhotoEditApertureToolbar, PXUIButton, UIView, _PULightingGradientView;
+@class CEKApertureButton, CEKLightingControl, CEKLightingNameBadge, CEKSlider, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber, NSString, PUPhotoEditApertureToolbar, PXUIButton, UIView, _PULightingGradientView;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotoEditPortraitToolController <PUPhotoEditApertureToolbarDelegate, CEKLightingControlDelegate, CEKSliderDelegate, PXChangeObserver>
+@interface PUPhotoEditPortraitToolController <PUPhotoEditApertureToolbarDelegate, CEKLightingControlDelegate, CEKSliderDelegate, PXChangeObserver, PXNavigationActionReceiver>
 {
     CEKApertureButton *_apertureButton;
     PXUIButton *_lightingIntensityButton;
@@ -28,9 +29,9 @@ __attribute__((visibility("hidden")))
     NSArray *_lightingControlConstraints;
     CEKSlider *_lightingSlider;
     PUPhotoEditApertureToolbar *_apertureToolbar;
-    PFCoalescer *_apertureUpdateCoalescer;
     NSMutableArray *_toolConstraints;
     NSDictionary *_cachedPortraitEffectSettings;
+    NSNumber *_cachedSpillMatteAllowed;
     _Bool _isStageLightEnabled;
     NSMutableDictionary *_lightingIntensityCache;
     CEKLightingControl *_lightingControl;
@@ -50,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateLightingIntensityCache;
 - (void)_updateIntensityForLightingType:(long long)arg1;
 - (void)_updateCompositionWithLightingIntensity;
-- (void)_updateCompositionWithApertureValue;
 - (void)_updateLightingNameBadgeForOrientation:(long long)arg1 expanded:(_Bool)arg2;
 - (void)_updateLabelOrientation;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
@@ -63,6 +63,14 @@ __attribute__((visibility("hidden")))
 - (void)lightingControlDidChangeExpanded:(id)arg1;
 - (void)lightingControl:(id)arg1 willChangeExpanded:(_Bool)arg2;
 - (void)lightingControlDidChangeSelectedLightingType:(id)arg1;
+- (void)navigateToNextTab:(id)arg1;
+- (void)navigateToPreviousTab:(id)arg1;
+- (void)decreaseSliderValue:(_Bool)arg1;
+- (void)increaseSliderValue:(_Bool)arg1;
+- (_Bool)wantsSliderKeyControl;
+- (void)decreaseScrubberValue:(_Bool)arg1;
+- (void)increaseScrubberValue:(_Bool)arg1;
+- (_Bool)wantsScrubberKeyControl;
 - (_Bool)wantsZoomAndPanEnabled;
 - (long long)toolControllerTag;
 - (_Bool)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
@@ -75,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)setBackdropViewGroupName:(id)arg1;
 - (void)willBecomeActiveTool;
 - (_Bool)canResetToDefaultValue;
+- (id)toolbarIconAccessibilityLabel;
 - (id)toolbarIcon;
 - (id)localizedName;
 - (id)_depthButtonTitle;
@@ -83,10 +92,12 @@ __attribute__((visibility("hidden")))
 - (void)_refreshLightingWithCompositionController:(id)arg1;
 - (void)_updateNavigationButtonsAnimated:(_Bool)arg1;
 - (void)_handlePortraitNavigationButtons:(id)arg1;
+- (void)_selectNextEffectType:(_Bool)arg1;
 - (_Bool)_setupApertureControlsIfNeeded;
 - (_Bool)_setupLightingControlsIfNeeded;
 - (_Bool)_setupDepthControlsIfNeeded;
 - (void)_refreshFromValuesCalculator;
+- (void)validateCommand:(id)arg1;
 - (_Bool)_shouldShowPortraitV2;
 - (void)_updateApertureSliderLength;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

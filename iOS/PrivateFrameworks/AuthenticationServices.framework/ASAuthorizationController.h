@@ -8,7 +8,7 @@
 
 #import <AuthenticationServices/SOAuthorizationDelegate-Protocol.h>
 
-@class NSArray, NSString, NSURL, SOAuthorization, UIViewController, UIWindow;
+@class ASCAgentProxy, NSArray, NSString, NSURL, SOAuthorization, UIViewController, UIWindow;
 @protocol ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding;
 
 @interface ASAuthorizationController : NSObject <SOAuthorizationDelegate>
@@ -17,26 +17,41 @@
     NSURL *_appSSORequestURL;
     UIWindow *_appSSOPresentationAnchor;
     UIViewController *_appSSOViewController;
+    ASCAgentProxy *_authenticationServicesAgentProxy;
     NSArray *_authorizationRequests;
     id <ASAuthorizationControllerDelegate> _delegate;
     id <ASAuthorizationControllerPresentationContextProviding> _presentationContextProvider;
+    NSArray *_customAuthorizationMethods;
 }
 
 + (id)new;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *customAuthorizationMethods; // @synthesize customAuthorizationMethods=_customAuthorizationMethods;
 @property(nonatomic) __weak id <ASAuthorizationControllerPresentationContextProviding> presentationContextProvider; // @synthesize presentationContextProvider=_presentationContextProvider;
 @property(nonatomic) __weak id <ASAuthorizationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSArray *authorizationRequests; // @synthesize authorizationRequests=_authorizationRequests;
+- (void)dealloc;
+- (id)_convertCoreErrorToPublicError:(id)arg1;
+- (id)_requestContextWithRequests:(id)arg1 error:(id *)arg2;
+- (id)_authenticationServicesAgentProxy;
+- (void)_performAuthorizationRequests:(id)arg1;
+- (id)_authorizationRequestsHandledByAuthenticationServicesDaemon:(id)arg1;
+- (_Bool)_onlyHasAppleIDRequest:(id)arg1;
+- (_Bool)_shouldPerformRequestsWithAuthKit:(id)arg1;
 - (void)authorization:(id)arg1 presentViewController:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)authorization:(id)arg1 didCompleteWithError:(id)arg2;
+- (void)authorization:(id)arg1 didCompleteWithAuthorizationResult:(id)arg2;
 - (void)authorization:(id)arg1 didCompleteWithHTTPResponse:(id)arg2 httpBody:(id)arg3;
 - (void)authorization:(id)arg1 didCompleteWithHTTPAuthorizationHeaders:(id)arg2;
 - (void)authorizationDidComplete:(id)arg1;
 - (void)authorizationDidCancel:(id)arg1;
 - (void)authorizationDidNotHandle:(id)arg1;
+- (id)_authenticatedResponseFromHTTPResponse:(id)arg1 httpBody:(id)arg2;
 - (void)_finishAppSSO;
 - (id)_authorizationFromAuthKitResult:(id)arg1;
+- (id)_authKitRequestFromAppleIDRequest:(id)arg1;
 - (id)_authKitRequests;
+- (void)_performAuthKitRequests:(id)arg1;
 - (void)performRequests;
 - (id)initWithAuthorizationRequests:(id)arg1;
 - (id)init;

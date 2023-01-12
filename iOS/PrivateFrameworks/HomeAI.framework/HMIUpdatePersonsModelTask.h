@@ -23,6 +23,7 @@
 @property(readonly) NSUUID *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
 - (id)logIdentifier;
 - (void)subsampleFacesForPersons:(id)arg1 withFaceObservationsMap:(id)arg2 dataSource:(id)arg3 vnUUIDToFaceCropUUIDMap:(id)arg4;
+- (id)limitEnforcedSubsetFromPersons:(id)arg1;
 - (void)main;
 - (id)initWithTaskID:(int)arg1 homeUUID:(id)arg2 sourceUUID:(id)arg3 dataSource:(id)arg4 externalLibrary:(_Bool)arg5 removeExcessFaceCrops:(_Bool)arg6;
 

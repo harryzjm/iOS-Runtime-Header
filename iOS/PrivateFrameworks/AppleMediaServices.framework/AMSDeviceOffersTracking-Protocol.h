@@ -6,10 +6,14 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class AMSDeviceOfferRegistrationItem, NSArray, NSDictionary;
 
 @protocol AMSDeviceOffersTracking <NSObject>
+@property(retain, nonatomic) NSArray *deviceRegistrationBlacklist;
 @property(retain, nonatomic) NSArray *deviceOffers;
 @property(retain, nonatomic) NSDictionary *deviceOfferEligibility;
+@property(readonly, nonatomic) NSArray *companionSerialNumbers;
+@property(retain, nonatomic) NSArray *cachedRegistrationGroups;
+- (void)removeCachedRegistrationItem:(AMSDeviceOfferRegistrationItem *)arg1;
 @end
 

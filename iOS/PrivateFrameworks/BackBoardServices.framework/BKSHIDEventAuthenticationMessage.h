@@ -6,51 +6,55 @@
 
 #import <objc/NSObject.h>
 
+#import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 #import <BackBoardServices/BSProtobufSerializable-Protocol.h>
 #import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class BKSHIDEventHitTestLayerInformation, NSData, NSString;
 
-@interface BKSHIDEventAuthenticationMessage : NSObject <NSSecureCoding, NSCopying, BSProtobufSerializable>
+@interface BKSHIDEventAuthenticationMessage : NSObject <BSDescriptionStreamable, NSSecureCoding, NSCopying, BSProtobufSerializable>
 {
     long long _versionedPID;
     unsigned int _eventType;
+    unsigned int _targetSlotID;
+    unsigned int _targetContextID;
+    BKSHIDEventHitTestLayerInformation *_hitTestInformationFromStartEvent;
+    BKSHIDEventHitTestLayerInformation *_hitTestInformationFromEndEvent;
     unsigned long long _timestamp;
-    long long _keyGeneration;
     unsigned long long _originIdentifier;
     unsigned long long _context;
+    _Bool _registrantEntitled;
     NSData *_signature;
 }
 
 + (id)protobufSchema;
 + (_Bool)supportsSecureCoding;
 + (id)new;
-+ (id)messageWithOriginIdentifier:(unsigned long long)arg1 context:(unsigned long long)arg2 destinationAuditToken:(id)arg3 signWithKey:(id)arg4;
 + (id)withKey:(id)arg1 buildMessage:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool registrantEntitled; // @synthesize registrantEntitled=_registrantEntitled;
 @property(readonly, nonatomic) unsigned long long context; // @synthesize context=_context;
 @property(readonly, nonatomic) unsigned long long originIdentifier; // @synthesize originIdentifier=_originIdentifier;
-@property(readonly, nonatomic) long long keyGeneration; // @synthesize keyGeneration=_keyGeneration;
 @property(readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property(readonly, nonatomic) BKSHIDEventHitTestLayerInformation *hitTestInformationFromEndEvent; // @synthesize hitTestInformationFromEndEvent=_hitTestInformationFromEndEvent;
+@property(readonly, nonatomic) BKSHIDEventHitTestLayerInformation *hitTestInformationFromStartEvent; // @synthesize hitTestInformationFromStartEvent=_hitTestInformationFromStartEvent;
+@property(readonly, nonatomic) unsigned int targetContextID; // @synthesize targetContextID=_targetContextID;
+@property(readonly, nonatomic) unsigned int targetSlotID; // @synthesize targetSlotID=_targetSlotID;
 @property(readonly, nonatomic) unsigned int eventType; // @synthesize eventType=_eventType;
 @property(readonly, nonatomic) long long versionedPID; // @synthesize versionedPID=_versionedPID;
 - (id)initForProtobufDecoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)destinationAuditToken;
+- (void)appendDescriptionToFormatter:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithOriginIdentifier:(unsigned long long)arg1 context:(unsigned long long)arg2 destinationAuditToken:(id)arg3 signWithKey:(id)arg4;
-- (_Bool)_verifySignatureWithKey:(id)arg1;
-- (_Bool)verifySignatureWithKey:(id)arg1;
-- (_Bool)verifySignatureWithKeys:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

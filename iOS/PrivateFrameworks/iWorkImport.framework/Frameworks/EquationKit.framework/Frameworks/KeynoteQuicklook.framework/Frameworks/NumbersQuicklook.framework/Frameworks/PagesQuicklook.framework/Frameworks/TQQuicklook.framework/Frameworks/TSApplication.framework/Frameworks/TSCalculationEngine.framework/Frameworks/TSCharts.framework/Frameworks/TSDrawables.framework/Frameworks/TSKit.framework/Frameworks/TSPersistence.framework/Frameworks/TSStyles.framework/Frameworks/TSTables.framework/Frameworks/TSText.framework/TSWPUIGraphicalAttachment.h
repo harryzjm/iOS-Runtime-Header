@@ -14,8 +14,8 @@
 - (void)invalidate;
 - (id)rendererForAttachment;
 - (unsigned int)elementKind;
-- (void)saveToArchive:(struct UIGraphicalAttachment *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct UIGraphicalAttachment *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 

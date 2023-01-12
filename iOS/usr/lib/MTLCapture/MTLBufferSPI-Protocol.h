@@ -17,6 +17,8 @@
 - (void)didModifyRange:(struct _NSRange)arg1;
 
 @optional
+@property(nonatomic) unsigned long long parentGPUSize;
+@property(nonatomic) unsigned long long parentGPUAddress;
 @property(readonly, nonatomic) unsigned long long resourceIndex;
 @end
 

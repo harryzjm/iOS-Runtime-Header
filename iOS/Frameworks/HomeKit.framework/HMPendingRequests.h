@@ -23,6 +23,7 @@
 - (void)addTrigger:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;
 - (id)removeProgressBlockForIdentifier:(id)arg1;
 - (id)removeAccessoryDescriptionForIdentifier:(id)arg1;
+- (id)uuidForAccessoryDescriptionUUID:(id)arg1;
 - (void)addAccessoryDescription:(id)arg1 progressBlock:(id)arg2 andCompletionBlock:(id)arg3 forIdentifier:(id)arg4;
 - (id)removeAccessoryForIdentifier:(id)arg1;
 - (void)addAccessory:(id)arg1 andCompletionBlock:(id)arg2 forIdentifier:(id)arg3;

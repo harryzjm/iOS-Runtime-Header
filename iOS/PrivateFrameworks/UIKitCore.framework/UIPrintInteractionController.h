@@ -6,19 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableSet, NSURL, PKPrintSettings, PKPrinter, UIPrintFormatter, UIPrintInfo, UIPrintPageRenderer, UIPrintPanelViewController, UIPrintPaper, UIPrintingProgress, UIWindowScene;
-@protocol OS_dispatch_queue, UIPrintInteractionControllerActivityDelegate, UIPrintInteractionControllerDelegate;
+@class NSArray, NSMutableSet, NSOperationQueue, NSString, NSURL, PKPrintSettings, PKPrinter, UIPrintFormatter, UIPrintInfo, UIPrintPageRenderer, UIPrintPanelViewController, UIPrintPaper, UIPrintingProgress, UIWindowScene;
+@protocol UIPrintInteractionControllerActivityDelegate, UIPrintInteractionControllerDelegate;
 
 @interface UIPrintInteractionController : NSObject
 {
     _Bool _isContentManaged;
     unsigned long long _backgroundTaskIdentifier;
-    NSObject<OS_dispatch_queue> *_previewQueue;
-    NSObject<OS_dispatch_queue> *_printQueue;
+    NSOperationQueue *_previewQueue;
     id _temporaryRetainCycle;
+    long long _currentRenderingQuality;
     _Bool _showsPageRange;
     _Bool _showsNumberOfCopies;
     _Bool _showsPaperSelectionForLoadedPapers;
+    _Bool _showsPaperOrientation;
     _Bool _printStateActive;
     _Bool _supressNotifyDismissed;
     _Bool _manualPrintPageEnabled;
@@ -48,6 +49,7 @@
     UIPrintInfo *_activePrintInfo;
     UIPrintPageRenderer *_formatterRenderer;
     NSURL *_saveFileURL;
+    NSString *_pdfPassword;
     id <UIPrintInteractionControllerActivityDelegate> _printActivityDelegate;
     struct _NSRange _currentRange;
 }
@@ -60,6 +62,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <UIPrintInteractionControllerActivityDelegate> printActivityDelegate; // @synthesize printActivityDelegate=_printActivityDelegate;
 @property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
+@property(retain) NSString *pdfPassword; // @synthesize pdfPassword=_pdfPassword;
 @property _Bool showPrintingProgress; // @synthesize showPrintingProgress=_showPrintingProgress;
 @property(retain) NSURL *saveFileURL; // @synthesize saveFileURL=_saveFileURL;
 @property _Bool manualPrintPageEnabled; // @synthesize manualPrintPageEnabled=_manualPrintPageEnabled;
@@ -83,16 +86,16 @@
 @property(retain, nonatomic) UIPrintFormatter *printFormatter; // @synthesize printFormatter=_printFormatter;
 @property(retain, nonatomic) UIPrintPageRenderer *printPageRenderer; // @synthesize printPageRenderer=_printPageRenderer;
 @property(readonly, nonatomic) UIPrintPaper *printPaper; // @synthesize printPaper=_printPaper;
+@property(nonatomic) _Bool showsPaperOrientation; // @synthesize showsPaperOrientation=_showsPaperOrientation;
 @property(nonatomic) _Bool showsPaperSelectionForLoadedPapers; // @synthesize showsPaperSelectionForLoadedPapers=_showsPaperSelectionForLoadedPapers;
 @property(nonatomic) _Bool showsNumberOfCopies; // @synthesize showsNumberOfCopies=_showsNumberOfCopies;
 @property(nonatomic) _Bool showsPageRange; // @synthesize showsPageRange=_showsPageRange;
 @property(nonatomic) __weak id <UIPrintInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIPrintInfo *printInfo; // @synthesize printInfo=_printInfo;
 @property(copy) CDUnknownBlockType _completionHandler; // @synthesize _completionHandler;
-- (void)_endPrintJob:(_Bool)arg1 error:(id)arg2;
+- (void)_endPrintJobWithAction:(long long)arg1 error:(id)arg2;
 - (id)_printPageRenderer:(id)arg1;
 - (struct CGContext *)_newSaveContext:(id)arg1 withMediaRect:(struct CGRect)arg2;
-- (id)_printItem:(id)arg1;
 - (void)_printItemAsync:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_completePrintPageWithError:(id)arg1;
 - (void)_printPage;
@@ -111,21 +114,39 @@
 - (id)_paperForPDFItem:(id)arg1 withDuplexMode:(long long)arg2;
 - (void)_preparePrintInfo;
 - (void)_updateCutterBehavior;
-- (void)_printPanelDidDismiss;
+- (void)_printPanelDidDismissWithAction:(long long)arg1;
 - (void)_setPrintInfoState:(int)arg1;
-- (void)_printPanelWillDismiss:(_Bool)arg1;
+- (void)_printPanelWillDismissWithAction:(long long)arg1;
 - (void)_printPanelDidPresent;
 - (void)_cancelAllPreviewGeneration;
+- (void)_addPDFWithData:(id)arg1 toContext:(struct CGContext *)arg2;
+- (void)_drawPageWithItem:(id)arg1 toContext:(struct CGContext *)arg2;
+- (id)_convertToPrintableItem:(id)arg1;
 - (void)_generatePrintPreview:(CDUnknownBlockType)arg1;
+- (void)_generatePrintPreviewWithRange:(struct _NSRange)arg1 useFullRange:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)drawPagesWithRange:(struct _NSRange)arg1 withExistsURL:(id)arg2 withPreviewState:(id)arg3;
+- (void)_generatePDFInRange:(struct _NSRange)arg1 useFullRange:(_Bool)arg2 withQuality:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_generatePDFForQuickLookCompletion:(CDUnknownBlockType)arg1;
+- (id)_printingItemPrintablePDFURL;
+- (_Bool)_fullRangeNeeded;
+- (struct CGRect)_mediaRect;
+- (_Bool)_pageRendererAvailable;
+- (_Bool)_isPageCancelled:(id)arg1;
+- (struct _NSRange)_fullPagesRange;
+- (void)_updateRendererWithQuality:(long long)arg1;
+- (id)_tempFileForPreview;
 - (id)_newPDFPreviewURLWithPath:(id)arg1 isContentManaged:(_Bool)arg2;
 - (_Bool)_setupPrintPanel:(CDUnknownBlockType)arg1 forPDFGenerationOnly:(_Bool)arg2;
 - (_Bool)_setupPrintPanel:(CDUnknownBlockType)arg1;
 - (void)_updatePageCount;
+- (id)rendererToUse;
 - (void)_updatePrintInfoWithAnnotations;
+- (void)removeFileAtURL:(id)arg1;
 @property(retain) NSURL *tempPreviewFileURL; // @synthesize tempPreviewFileURL=_tempPreviewFileURL;
 @property(retain, nonatomic) UIPrintPaper *paper; // @synthesize paper=_paper;
 @property(retain, nonatomic) PKPrinter *printer; // @synthesize printer=_printer;
 @property(retain, nonatomic) NSArray *pageRanges; // @synthesize pageRanges=_pageRanges;
+- (_Bool)_canShowOrientation;
 - (_Bool)_canShowPreview;
 - (_Bool)_canShowAnnotations;
 - (_Bool)_canShowPunch;
@@ -144,6 +165,7 @@
 - (_Bool)presentFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)presentAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_presentAnimated:(_Bool)arg1 hostingScene:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_cancelPreviewQueue:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 - (_Bool)presentAnimated:(_Bool)arg1 hostingScene:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

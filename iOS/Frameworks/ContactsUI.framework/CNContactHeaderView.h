@@ -36,7 +36,7 @@
 }
 
 + (id)sizeAttributesShowingNavBar:(_Bool)arg1;
-+ (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(_Bool)arg2 shouldAllowImageDrops:(_Bool)arg3 monogramOnly:(_Bool)arg4;
++ (id)makePhotoViewWithShouldAllowTakePhotoAction:(_Bool)arg1 shouldAllowImageDrops:(_Bool)arg2 monogramOnly:(_Bool)arg3;
 + (struct CGSize)defaultPhotoSize;
 + (_Bool)requiresConstraintBasedLayout;
 + (id)descriptorForRequiredKeysIncludingAvatarViewDescriptors:(_Bool)arg1;
@@ -90,7 +90,7 @@
 - (id)contactStyle;
 - (void)dealloc;
 - (void)updateForShowingNavBar:(_Bool)arg1;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowTakePhotoAction:(_Bool)arg4 shouldAllowImageDrops:(_Bool)arg5 showingNavBar:(_Bool)arg6 monogramOnly:(_Bool)arg7 delegate:(id)arg8;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 shouldAllowTakePhotoAction:(_Bool)arg3 shouldAllowImageDrops:(_Bool)arg4 showingNavBar:(_Bool)arg5 monogramOnly:(_Bool)arg6 delegate:(id)arg7;
 - (id)descriptorForRequiredKeys;
 
 // Remaining properties

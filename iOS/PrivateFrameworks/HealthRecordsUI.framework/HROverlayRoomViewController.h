@@ -6,7 +6,7 @@
 
 #import <HealthUI/HKOverlayRoomViewController.h>
 
-@class HKConcept, NSArray, _TtC15HealthRecordsUI28MedicalRecordChartDataSource;
+@class HKConcept, HKUserDomainConcept, NSArray, _TtC15HealthRecordsUI28MedicalRecordChartDataSource;
 @protocol _TtP15HealthRecordsUI31MedicalRecordChartConfiguration_;
 
 __attribute__((visibility("hidden")))
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _hasChart;
     HKConcept *_concept;
+    HKUserDomainConcept *_userConcept;
     id <_TtP15HealthRecordsUI31MedicalRecordChartConfiguration_> _configuration;
     NSArray *_displayTypes;
     _TtC15HealthRecordsUI28MedicalRecordChartDataSource *_masterDataSource;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_verticalAxis;
++ (void)determineChartabilityOfUserConcept:(id)arg1 records:(id)arg2 withApplicationItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)determineChartabilityOfConcept:(id)arg1 withApplicationItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _TtC15HealthRecordsUI28MedicalRecordChartDataSource *noRangeDataSource; // @synthesize noRangeDataSource=_noRangeDataSource;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _TtC15HealthRecordsUI28MedicalRecordChartDataSource *masterDataSource; // @synthesize masterDataSource=_masterDataSource;
 @property(copy, nonatomic) NSArray *displayTypes; // @synthesize displayTypes=_displayTypes;
 @property(retain, nonatomic) id <_TtP15HealthRecordsUI31MedicalRecordChartConfiguration_> configuration; // @synthesize configuration=_configuration;
+@property(retain, nonatomic) HKUserDomainConcept *userConcept; // @synthesize userConcept=_userConcept;
 @property(retain, nonatomic) HKConcept *concept; // @synthesize concept=_concept;
 @property(readonly, nonatomic) _Bool hasChart; // @synthesize hasChart=_hasChart;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
@@ -40,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (id)createChartOverlayViewController;
 - (_Bool)supportsShowAllFilters;
+- (id)initWithUserConcept:(id)arg1 configuration:(id)arg2 displayDate:(id)arg3 masterDataSource:(id)arg4 seriesDataSources:(id)arg5 outOfRangeDataSource:(id)arg6 noRangeDataSource:(id)arg7 overlayMode:(long long)arg8 applicationItems:(id)arg9;
 - (id)initWithConcept:(id)arg1 configuration:(id)arg2 displayDate:(id)arg3 masterDataSource:(id)arg4 seriesDataSources:(id)arg5 outOfRangeDataSource:(id)arg6 noRangeDataSource:(id)arg7 overlayMode:(long long)arg8 applicationItems:(id)arg9;
 
 @end

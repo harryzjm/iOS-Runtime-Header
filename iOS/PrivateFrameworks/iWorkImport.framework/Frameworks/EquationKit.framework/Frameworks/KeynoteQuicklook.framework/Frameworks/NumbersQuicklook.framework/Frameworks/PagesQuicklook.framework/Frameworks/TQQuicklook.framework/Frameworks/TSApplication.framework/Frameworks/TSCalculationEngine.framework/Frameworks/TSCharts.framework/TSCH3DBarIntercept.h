@@ -15,9 +15,9 @@
 }
 
 + (id)interceptWithValueAxis:(id)arg1 value:(double)arg2;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCHChartAxis *valueAxis; // @synthesize valueAxis=_valueAxis;
 @property(readonly, nonatomic) double value; // @synthesize value=_value;
-- (void)dealloc;
 - (id)initWithValueAxis:(id)arg1 value:(double)arg2;
 
 @end

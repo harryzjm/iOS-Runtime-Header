@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface CKDDatabaseOperation
 {
     long long _databaseScope;
@@ -14,10 +13,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)supportsClearAssetEncryption;
 - (id)analyticsPayload;
 - (id)CKStatusReportProperties;
-- (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 clientContext:(id)arg4 operationConfigurationBlock:(CDUnknownBlockType)arg5;
+- (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 container:(id)arg4 operationConfigurationBlock:(CDUnknownBlockType)arg5;
 - (id)flowControlKey;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedShareID:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedZoneID:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedRecordID:(id)arg2;

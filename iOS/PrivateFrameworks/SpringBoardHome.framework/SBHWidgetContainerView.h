@@ -12,7 +12,9 @@
 {
     UILabel *_titleLabel;
     UILabel *_descriptionLabel;
+    _Bool _lastRequestedClipToBoundsValue;
     _Bool _blockedForScreenTimeExpiration;
+    _Bool _requiresClippingToBounds;
     UIView *_widgetView;
     MTMaterialView *_screenTimeLockoutView;
     unsigned long long _gridSizeClass;
@@ -20,14 +22,17 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool requiresClippingToBounds; // @synthesize requiresClippingToBounds=_requiresClippingToBounds;
 @property(copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property(nonatomic) unsigned long long gridSizeClass; // @synthesize gridSizeClass=_gridSizeClass;
 @property(nonatomic, getter=isBlockedForScreenTimeExpiration) _Bool blockedForScreenTimeExpiration; // @synthesize blockedForScreenTimeExpiration=_blockedForScreenTimeExpiration;
 @property(readonly, nonatomic) MTMaterialView *screenTimeLockoutView; // @synthesize screenTimeLockoutView=_screenTimeLockoutView;
 @property(nonatomic) __weak UIView *widgetView; // @synthesize widgetView=_widgetView;
-- (id)_fontWithTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
+- (id)_fontWithTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 maxSizeCategory:(id)arg3;
 - (void)_updateScreenTimeLockoutView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
+- (void)setClipsToBounds:(_Bool)arg1;
 - (id)initWithGridSizeClass:(unsigned long long)arg1 applicationName:(id)arg2;
 
 @end

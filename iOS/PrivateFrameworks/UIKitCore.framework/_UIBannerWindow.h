@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isSystemWindow;
+- (id)_roleHint;
 - (_Bool)_shouldForceTraitPropagationThroughHierarchy;
 - (_Bool)_shouldAdjustSizeClassesAndResizeWindow;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;

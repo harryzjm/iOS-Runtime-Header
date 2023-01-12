@@ -47,6 +47,7 @@
 @property(readonly, nonatomic) unsigned long long outgoingPayloadSize;
 @property(readonly, nonatomic) unsigned long long incomingPayloadSize;
 @property(readonly, copy, nonatomic) NSURL *downloadedFileURL;
+@property(readonly, nonatomic) unsigned long long receivedDataLength;
 @property(readonly, nonatomic) NSData *receivedData;
 @property(readonly, nonatomic) _Bool protocolBufferHasPreamble;
 @property(readonly, nonatomic) id <NSObject> parsedResponse;
@@ -59,6 +60,7 @@
 - (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(CDStruct_d1a7ebee)arg4 requestCounterTicket:(id)arg5;
 - (_Bool)validateTileResponse:(_Bool)arg1 error:(id *)arg2;
 - (void)_didCompleteSubtask:(id)arg1;
+- (void)dataSession:(id)arg1 shouldConvertDataTask:(id)arg2 toDownloadTaskForEstimatedResponseSize:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dataSession:(id)arg1 willSendRequest:(id)arg2 forTask:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
 @property(readonly, nonatomic) NSURL *originalRequestURL;

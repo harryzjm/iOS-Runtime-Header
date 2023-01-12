@@ -30,6 +30,7 @@
 @property(retain, nonatomic) GKGame *game; // @synthesize game=_game;
 @property(retain, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
 @property(nonatomic) __weak NSObject<GKTurnBasedMatchDetailViewControllerDelegate> *delegate; // @synthesize delegate=_delegateWeak;
+- (id)preferredFocusEnvironments;
 - (void)doneButtonPressed:(id)arg1;
 - (id)_gkRepresentedObject;
 - (void)buyButtonPressed:(id)arg1;
@@ -49,6 +50,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)addBackgroundVisualEffect;
 - (void)viewDidLoad;
 - (void)didEnterNoContentState;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

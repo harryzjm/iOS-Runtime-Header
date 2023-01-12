@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSPredicate, PHCollectionList, PHFetchOptions, PHFetchResult;
+@class NSPredicate, PHCollectionList, PHFetchResult;
 
 @interface PXPhotoKitCollectionsDataSourceManagerConfiguration : NSObject
 {
@@ -15,22 +15,28 @@
     _Bool _skipKeyAssetFetches;
     _Bool _skipKeyAssetFetchesForSmartAlbums;
     _Bool _skipAssetFetches;
+    _Bool _skipSyndicatedAssetFetches;
     _Bool _updateKeyAssetFetchesInBackground;
+    _Bool _simulateNonIncrementalChanges;
     _Bool _shouldIgnoreLibraryChanges;
     PHFetchResult *_collectionsFetchResult;
     PHCollectionList *_collectionList;
     NSPredicate *_assetsFilterPredicate;
     unsigned long long _assetTypesToInclude;
     unsigned long long _collectionTypesToInclude;
+    long long _pausedChangeDetailsBufferLength;
 }
 
 + (id)_generatePredicateForAssetTypesToInclude:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property _Bool shouldIgnoreLibraryChanges; // @synthesize shouldIgnoreLibraryChanges=_shouldIgnoreLibraryChanges;
+@property(nonatomic) long long pausedChangeDetailsBufferLength; // @synthesize pausedChangeDetailsBufferLength=_pausedChangeDetailsBufferLength;
+@property(nonatomic) _Bool simulateNonIncrementalChanges; // @synthesize simulateNonIncrementalChanges=_simulateNonIncrementalChanges;
 @property(nonatomic) unsigned long long collectionTypesToInclude; // @synthesize collectionTypesToInclude=_collectionTypesToInclude;
 @property(nonatomic) unsigned long long assetTypesToInclude; // @synthesize assetTypesToInclude=_assetTypesToInclude;
 @property(retain, nonatomic) NSPredicate *assetsFilterPredicate; // @synthesize assetsFilterPredicate=_assetsFilterPredicate;
 @property(nonatomic) _Bool updateKeyAssetFetchesInBackground; // @synthesize updateKeyAssetFetchesInBackground=_updateKeyAssetFetchesInBackground;
+@property(nonatomic) _Bool skipSyndicatedAssetFetches; // @synthesize skipSyndicatedAssetFetches=_skipSyndicatedAssetFetches;
 @property(nonatomic) _Bool skipAssetFetches; // @synthesize skipAssetFetches=_skipAssetFetches;
 @property(nonatomic) _Bool skipKeyAssetFetchesForSmartAlbums; // @synthesize skipKeyAssetFetchesForSmartAlbums=_skipKeyAssetFetchesForSmartAlbums;
 @property(nonatomic) _Bool skipKeyAssetFetches; // @synthesize skipKeyAssetFetches=_skipKeyAssetFetches;
@@ -42,7 +48,8 @@
 - (void)setIsRootFolder:(_Bool)arg1;
 - (id)newConfigurationWithCollectionsFetchResult:(id)arg1;
 - (id)newConfigurationWithCollectionList:(id)arg1;
-@property(readonly) PHFetchOptions *customFetchOptions;
+- (_Bool)_shouldSupportSyndicatedAssetFetches:(id)arg1;
+- (id)customFetchOptionsForCollection:(id)arg1;
 @property(readonly) PHFetchResult *collectionsFetchResult; // @synthesize collectionsFetchResult=_collectionsFetchResult;
 - (id)initWithCollectionList:(id)arg1 collectionsFetchResult:(id)arg2;
 - (id)initWithCollectionsFetchResult:(id)arg1;

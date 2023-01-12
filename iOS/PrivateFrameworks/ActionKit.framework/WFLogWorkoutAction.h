@@ -10,12 +10,12 @@
 {
 }
 
+- (id)localizedSmartPromptUsageSentenceWithcontentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
 - (id)appIdentifier;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)resourceAvailabilityChanged;
 - (void)wasRemovedFromWorkflow:(id)arg1;
 - (void)wasAddedToWorkflow:(id)arg1;
-- (void)initializeParameters;
 
 @end
 

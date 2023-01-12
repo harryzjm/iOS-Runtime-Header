@@ -8,11 +8,13 @@
 {
 }
 
-+ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1;
++ (_Bool)isValidForPersistenceWithObjectDictionary:(id)arg1 additionalEntityName:(id)arg2;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (unsigned int)payloadVersion;
 + (id)payloadClassID;
++ (id)persistedPropertyNamesForEntityNames;
 + (id)modelProperties;
++ (id)nonPersistedModelPropertiesDescription;
 + (id)modelPropertiesDescription;
 - (id)insertDeferredRebuildFaceFromDataInManagedObjectContext:(id)arg1;
 

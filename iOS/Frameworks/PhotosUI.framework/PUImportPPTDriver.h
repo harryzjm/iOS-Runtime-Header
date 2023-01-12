@@ -8,12 +8,11 @@
 
 #import <PhotosUI/PUImportActionCoordinatorDelegate-Protocol.h>
 #import <PhotosUI/PXImportAssetsDataSourceManagerObserver-Protocol.h>
-#import <PhotosUI/PXImportMediaProviderNotificationsReceiver-Protocol.h>
 
 @class NSDictionary, NSMutableDictionary, NSString, PUImportActionCoordinator, PUImportPPTImportSource, PUTabbedLibraryViewController, PXImportAssetsDataSourceManager, PXImportController, PXImportMediaProvider;
 @protocol OS_dispatch_semaphore;
 
-@interface PUImportPPTDriver : NSObject <PXImportAssetsDataSourceManagerObserver, PXImportMediaProviderNotificationsReceiver, PUImportActionCoordinatorDelegate>
+@interface PUImportPPTDriver : NSObject <PXImportAssetsDataSourceManagerObserver, PUImportActionCoordinatorDelegate>
 {
     CDUnknownBlockType _insertDatasourceReply;
     CDUnknownBlockType _thumbnailTestReply;

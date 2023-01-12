@@ -6,12 +6,17 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class IDSDestination, NSString, NSUUID, TUAnswerRequest, TUDialRequest, TUProxyCall;
+@class IDSDestination, NSString, NSUUID, TUAnswerRequest, TUCallScreenShareAttributes, TUDialRequest, TUProxyCall;
 
 @protocol TUCallServicesProxyCallActions <NSObject>
+- (oneway void)sendUserScoreToRTCReporting:(NSString *)arg1 withScore:(int)arg2;
 - (oneway void)activateInCallUIWithActivityContinuationIdentifier:(NSUUID *)arg1;
 - (oneway void)shouldAllowRingingCallStatusIndicator:(_Bool)arg1;
 - (oneway void)shouldSuppressInCallStatusBar:(_Bool)arg1;
+- (oneway void)setBluetoothAudioFormatForCallWithUniqueProxyIdentifier:(NSString *)arg1 bluetoothAudioFormat:(long long)arg2;
+- (oneway void)setSharingScreen:(_Bool)arg1 attributes:(TUCallScreenShareAttributes *)arg2 forCallWithUniqueProxyIdentifier:(NSString *)arg3;
+- (oneway void)setScreenShareAttributesForCallWithUniqueProxyIdentifier:(NSString *)arg1 attributes:(TUCallScreenShareAttributes *)arg2;
+- (oneway void)setSharingScreen:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setIsSendingVideo:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setDownlinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setUplinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
@@ -35,6 +40,7 @@
 - (oneway void)ungroupCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)groupCallWithUniqueProxyIdentifier:(NSString *)arg1 withOtherCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)disconnectCallWithUniqueProxyIdentifier:(NSString *)arg1;
+- (oneway void)requestVideoUpgradeForCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)unholdCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)holdCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)answerCallWithRequest:(TUAnswerRequest *)arg1;

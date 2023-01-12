@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVWeakReference;
+@class AVDispatchOnce, AVWeakReference;
 
 __attribute__((visibility("hidden")))
 @interface AVTrackReaderInspector
 {
     struct OpaqueFigFormatReader *_formatReader;
     struct OpaqueFigTrackReader *_trackReader;
+    AVDispatchOnce *_copySampleCursorServiceOnce;
+    struct OpaqueFigSampleCursorService *_figSampleCursorService;
+    _Bool _sampleCursorTimeAccuracyIsExact;
     int _trackID;
     unsigned int _mediaType;
     AVWeakReference *_weakReferenceToAsset;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEnabled;
 - (id)formatDescriptions;
 - (void *)_valueAsCFTypeForProperty:(struct __CFString *)arg1;
+- (struct OpaqueFigSampleCursorService *)_getFigSampleCursorServiceReportingTimeAccuracy:(_Bool *)arg1;
 - (struct OpaqueFigTrackReader *)_figTrackReader;
 - (id)mediaType;
 - (unsigned int)_figMediaType;

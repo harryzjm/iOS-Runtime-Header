@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/CLKFullColorImageView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationImageView-Protocol.h>
 
-@class CLKImageProvider, NSString, UIColor, UIImageView, UILabel;
+@class CLKImageProvider, CLKSymbolImageProvider, NSString, UIColor, UIImageView, UILabel;
 @protocol CLKMonochromeFilterProvider;
 
 @interface NTKPeopleComplicationImageView : UIView <NTKComplicationImageView, CLKFullColorImageView>
@@ -18,6 +18,8 @@
     UIImageView *_profileImageView;
     UIView *_ringView;
     double _monochromeTintAmount;
+    _Bool _usingPersonSymbol;
+    CLKSymbolImageProvider *_personSymbolImageProvider;
     _Bool _usesLegibility;
     CLKImageProvider *_imageProvider;
     UIColor *_color;

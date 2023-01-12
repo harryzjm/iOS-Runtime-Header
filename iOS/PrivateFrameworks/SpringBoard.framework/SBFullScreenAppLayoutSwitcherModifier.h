@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBCoplanarSwitcherModifier, _SBFullScreenAppFloorSwitcherModifier;
+@class NSUUID, SBCoplanarSwitcherModifier, _SBFullScreenAppFloorSwitcherModifier;
 
 @interface SBFullScreenAppLayoutSwitcherModifier
 {
     SBCoplanarSwitcherModifier *_coplanarModifier;
     _SBFullScreenAppFloorSwitcherModifier *_floorModifier;
+    NSUUID *_homeAffordanceReuseIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *homeAffordanceReuseIdentifier; // @synthesize homeAffordanceReuseIdentifier=_homeAffordanceReuseIdentifier;
+- (id)initWithActiveAppLayout:(id)arg1 homeAffordanceReuseIdentifier:(id)arg2;
 - (id)initWithActiveAppLayout:(id)arg1;
 
 @end

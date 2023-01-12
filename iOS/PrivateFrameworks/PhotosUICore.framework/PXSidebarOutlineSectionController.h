@@ -8,21 +8,21 @@
 
 #import <PhotosUICore/PXSidebarDataSourceControllerDelegate-Protocol.h>
 
-@class NSString, PXSidebarDataController, _UIDiffableDataSourceOutlineSectionController;
+@class NSString, PXSidebarDataController, UICollectionViewDiffableDataSource;
 @protocol PXSidebarOutlineSectionControllerDelegate;
 
 @interface PXSidebarOutlineSectionController : NSObject <PXSidebarDataSourceControllerDelegate>
 {
     _Bool _animateDataSourceUpdates;
     PXSidebarDataController *_dataController;
-    _UIDiffableDataSourceOutlineSectionController *_outlineSectionController;
+    UICollectionViewDiffableDataSource *_dataSource;
     id <PXSidebarOutlineSectionControllerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PXSidebarOutlineSectionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool animateDataSourceUpdates; // @synthesize animateDataSourceUpdates=_animateDataSourceUpdates;
-@property(readonly, nonatomic) _UIDiffableDataSourceOutlineSectionController *outlineSectionController; // @synthesize outlineSectionController=_outlineSectionController;
+@property(readonly, nonatomic) UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly, nonatomic) PXSidebarDataController *dataController; // @synthesize dataController=_dataController;
 - (void)sidebarDataSourceController:(id)arg1 didChangeChildrenOfItem:(id)arg2 changeDetails:(id)arg3;
 - (id)_applyChangeDetails:(id)arg1 forItem:(id)arg2 toSnapshot:(id)arg3 outChangedItemsBeforeChange:(id *)arg4 outChangedItemsAfterChange:(id *)arg5;
@@ -36,10 +36,11 @@
 - (void)reloadFromDataControllerApplyAnimated:(_Bool)arg1 onQueue:(id)arg2;
 - (id)expandItemsToRevealFirstEditableItemIfNeededAnimated:(_Bool)arg1;
 - (void)expandItemsForIdentifiersIfNeeded:(id)arg1 animated:(_Bool)arg2;
+- (id)currentSectionSnapshot;
 - (void)sectionControllerWillCollapseItem:(id)arg1;
 - (void)sectionControllerWillExpandItem:(id)arg1;
 - (void)loadRootItems;
-- (id)initWithSidebarDataController:(id)arg1 outlineSectionController:(id)arg2;
+- (id)initWithSidebarDataController:(id)arg1 dataSource:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -23,6 +23,7 @@
 @property(readonly) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 - (void)cleanup;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 @property(readonly) NSString *searchTerm;
 - (void)startWithService:(id)arg1;

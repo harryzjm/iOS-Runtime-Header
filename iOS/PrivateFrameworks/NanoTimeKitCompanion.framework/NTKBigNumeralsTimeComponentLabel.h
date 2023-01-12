@@ -6,25 +6,29 @@
 
 #import <UIKit/UIView.h>
 
-@class CLKDevice, NSDate, NSDateFormatter, NTKColoringLabel, UIColor, UIFont;
+@class CLKDevice, CLKFont, NSDate, NSDateFormatter, NSString, NTKColoringLabel, UIColor, UIFont;
 
 @interface NTKBigNumeralsTimeComponentLabel : UIView
 {
     CLKDevice *_device;
     _Bool _useLigatures;
-    UIFont *_filledFont;
-    UIFont *_outlinedFont;
+    CLKFont *_filledFont;
+    CLKFont *_outlinedFont;
     NTKColoringLabel *_label;
     NTKColoringLabel *_transitioningLabel;
     NSDateFormatter *_formatter;
     unsigned long long _timeComponent;
     unsigned long long _fontVariant;
+    NSString *_filledFontSectName;
+    NSString *_outlinedFontSectName;
+    const struct mach_header_64 *_dsoHandle;
     NSDate *_date;
     unsigned long long _typeface;
     unsigned long long _style;
     UIColor *_color;
 }
 
++ (id)localeForTypeface:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIColor *color; // @synthesize color=_color;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
@@ -45,7 +49,8 @@
 - (void)setupFontsForVariant:(unsigned long long)arg1 fontSize:(double)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (id)initWithDevice:(id)arg1 timeComponent:(unsigned long long)arg2 fontVariant:(unsigned long long)arg3 fontSize:(double)arg4 useLigatures:(_Bool)arg5;
+- (void)dealloc;
+- (id)initWithDevice:(id)arg1 timeComponent:(unsigned long long)arg2 fontVariant:(unsigned long long)arg3 filledFontSectName:(id)arg4 outlineFontSectName:(id)arg5 dsoHandle:(const struct mach_header_64 *)arg6 fontSize:(double)arg7 useLigatures:(_Bool)arg8;
 
 @end
 

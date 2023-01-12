@@ -6,24 +6,16 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class PKFamilyMember, PKFamilyMemberRowModel, UIImage;
+@protocol PKFamilyMemberRowModel;
 
 @interface PKFamilyMemberTableViewCell : UITableViewCell
 {
-    PKFamilyMember *_familyMember;
-    UIImage *_familyMemberImage;
-    unsigned long long _state;
-    PKFamilyMemberRowModel *_rowModel;
+    id <PKFamilyMemberRowModel> _rowModel;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PKFamilyMemberRowModel *rowModel; // @synthesize rowModel=_rowModel;
+@property(retain, nonatomic) id <PKFamilyMemberRowModel> rowModel; // @synthesize rowModel=_rowModel;
 - (void)prepareForReuse;
-- (void)layoutSubviews;
-- (void)setState:(unsigned long long)arg1;
-- (void)setFamilyMemberImage:(id)arg1;
-- (void)setFamilyMember:(id)arg1;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

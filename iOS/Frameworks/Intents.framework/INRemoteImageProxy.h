@@ -14,6 +14,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)proxyImageSynchronously:(id)arg1 usingService:(id)arg2 error:(id *)arg3;
++ (id)requestProxyByStoringImage:(id)arg1 qualityOfService:(unsigned int)arg2 scaled:(_Bool)arg3 storeType:(unsigned long long)arg4 error:(id *)arg5;
 + (void)requestProxyByStoringImage:(id)arg1 qualityOfService:(unsigned int)arg2 scaled:(_Bool)arg3 storeType:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
 @property(copy, nonatomic, setter=_setProxyIdentifier:) NSString *_proxyIdentifier; // @synthesize _proxyIdentifier;

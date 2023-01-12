@@ -8,7 +8,7 @@
 #import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
 #import <SafariServices/_ASAccountAuthenticationModificationHostViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSExtension, NSString, NSURLCredential, SFPasswordAlertController, WBSAutoFillQuirksManager, WBSPasswordWarning, WBSSavedPasswordStore, _ASAccountAuthenticationModificationHostViewController;
+@class NSArray, NSExtension, NSString, NSURLCredential, UIAlertController, WBSAutoFillQuirksManager, WBSPasswordWarning, WBSSavedPasswordStore, _ASAccountAuthenticationModificationHostViewController;
 
 __attribute__((visibility("hidden")))
 @interface SFPasswordSavingServiceViewController <_ASAccountAuthenticationModificationExtensionManagerObserver, _ASAccountAuthenticationModificationHostViewControllerDelegate, SFPasswordSavingServiceViewControllerProtocol>
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_domainForSavePasswordAction;
     NSURLCredential *_credential;
     NSString *_tokenForShowingPrompt;
-    SFPasswordAlertController *_prompt;
+    UIAlertController *_prompt;
     WBSAutoFillQuirksManager *_autoFillQuirksManager;
     WBSPasswordWarning *_passwordWarning;
     NSExtension *_accountModificationExtension;

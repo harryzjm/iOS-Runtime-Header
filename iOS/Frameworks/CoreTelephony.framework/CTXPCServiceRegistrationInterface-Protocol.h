@@ -10,6 +10,9 @@
 - (void)getCurrentRat:(CTServiceDescriptor *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getPublicSignalStrength:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)setSupports5GStandalone:(CTServiceDescriptor *)arg1 enabled:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (void)getSupports5GStandalone:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)getNRDisableStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTNRStatus *, NSError *))arg2;
 - (void)getSignalStrengthMeasurementsAsync:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getSignalStrengthMeasurements:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getEncryptionStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTEncryptionStatusInfo *, NSError *))arg2;
@@ -37,6 +40,7 @@
 - (void)getBandInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTBandInfo *, NSError *))arg2;
 - (void)setBandInfo:(CTXPCServiceSubscriptionContext *)arg1 bands:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)copyBandInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)setRatSelectionMask:(CTServiceDescriptor *)arg1 selection:(unsigned char)arg2 preferred:(unsigned char)arg3 completion:(void (^)(NSError *))arg4;
 - (void)getRatSelectionMask:(CTServiceDescriptor *)arg1 completion:(void (^)(CTRatSelection *, NSError *))arg2;
 - (void)setRatSelection:(CTXPCServiceSubscriptionContext *)arg1 selection:(NSString *)arg2 preferred:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)getRatSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;

@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, CLKDevice, NSArray, NTKBlackcombDialColorPalette;
+@class CALayer, CLKDevice, NSArray, NTKBlackcombColorPalette;
 
 @interface NTKBlackcombBackgroundView : UIView
 {
     CLKDevice *_device;
-    NTKBlackcombDialColorPalette *_palette;
+    NTKBlackcombColorPalette *_palette;
     CALayer *_smallTickCoveringLayer;
     NSArray *_smallTicks;
     NSArray *_mediumTicks;
@@ -24,7 +24,6 @@
 @property(nonatomic) _Bool usesLongSideTicks; // @synthesize usesLongSideTicks=_usesLongSideTicks;
 - (double)_innerDialRadiusAtLargeTick:(long long)arg1 verticalLength:(double)arg2 horizontalLength:(double)arg3;
 - (double)_outerDialRadiusAtMediumTick:(long long)arg1 verticalLength:(double)arg2 horizontalLength:(double)arg3;
-- (void)applyZoomFraction:(double)arg1;
 - (void)configureTicksForStatus:(_Bool)arg1;
 - (void)applyTransitionFractionToUsesLongSideTicks:(double)arg1;
 - (void)_layoutTopLargeTick;

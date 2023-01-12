@@ -9,17 +9,30 @@
 #import <HomeUI/HFHomeKitItemProtocol-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HMHome, NSString;
+@class HMHome, NSNumber, NSString;
 @protocol HFHomeKitObject;
 
 @interface HUStatusBannerItem : HFItem <HFHomeKitItemProtocol, NSCopying>
 {
+    _Bool _hasFetchedUpgradeOffer;
     HMHome *_home;
+    NSString *_offerTitle;
+    NSString *_offerMessage;
+    NSString *_offerActionTitle;
+    NSNumber *_planLimit;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *planLimit; // @synthesize planLimit=_planLimit;
+@property(retain, nonatomic) NSString *offerActionTitle; // @synthesize offerActionTitle=_offerActionTitle;
+@property(retain, nonatomic) NSString *offerMessage; // @synthesize offerMessage=_offerMessage;
+@property(retain, nonatomic) NSString *offerTitle; // @synthesize offerTitle=_offerTitle;
+@property(nonatomic) _Bool hasFetchedUpgradeOffer; // @synthesize hasFetchedUpgradeOffer=_hasFetchedUpgradeOffer;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)_namesOfAccessoriesNeedingNaturalLightingOnboarding;
+- (id)_determineRequiredLockAccessorySetupReminders:(id)arg1;
+- (id)_determineRequiredAccessorySetupReminders:(id)arg1;
+- (id)_possibleDependentKeyPaths;
 - (id)_determineRequiredOnboardingReminders:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

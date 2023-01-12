@@ -23,7 +23,7 @@
 @property(readonly, nonatomic) IMMessageItem *messageItem; // @synthesize messageItem=_messageItem;
 - (_Bool)canDelete;
 - (_Bool)isReplyContextPreview;
-- (id)_initWithItem:(id)arg1 parentItem:(id)arg2 replyMessageGUID:(id)arg3 replyIsFromMe:(_Bool)arg4 initialPayload:(id)arg5 index:(long long)arg6 messagePartRange:(struct _NSRange)arg7 parentChatHasKnownParticipants:(_Bool)arg8;
+- (id)_initWithItem:(id)arg1 parentItem:(id)arg2 replyMessageGUID:(id)arg3 replyIsFromMe:(_Bool)arg4 initialPayload:(id)arg5 index:(long long)arg6 messagePartRange:(struct _NSRange)arg7 parentChatHasKnownParticipants:(_Bool)arg8 chatContext:(id)arg9;
 
 @end
 

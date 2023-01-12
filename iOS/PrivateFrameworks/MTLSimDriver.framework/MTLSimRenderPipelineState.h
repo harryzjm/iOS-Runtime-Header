@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDevice:(id)arg1 pipelineRef:(unsigned int)arg2 descriptor:(id)arg3;
 
 // Remaining properties
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) id <MTLDevice> device;

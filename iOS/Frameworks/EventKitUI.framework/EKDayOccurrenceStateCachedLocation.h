@@ -6,24 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSAttributedString, NSString, NSURL;
 
 @interface EKDayOccurrenceStateCachedLocation : NSObject
 {
     _Bool _originalOccurrenceLocationIsPrediction;
     _Bool _originalHasNewTimeProposed;
-    NSString *_generatedLocationString;
+    NSAttributedString *_generatedLocationString;
     NSString *_originalOccurrenceLocation;
     NSString *_originalOccurrenceLocationWithoutPrediction;
+    NSURL *_originalConferenceURL;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSURL *originalConferenceURL; // @synthesize originalConferenceURL=_originalConferenceURL;
 @property(readonly, nonatomic) _Bool originalHasNewTimeProposed; // @synthesize originalHasNewTimeProposed=_originalHasNewTimeProposed;
 @property(readonly, nonatomic) _Bool originalOccurrenceLocationIsPrediction; // @synthesize originalOccurrenceLocationIsPrediction=_originalOccurrenceLocationIsPrediction;
 @property(readonly, nonatomic) NSString *originalOccurrenceLocationWithoutPrediction; // @synthesize originalOccurrenceLocationWithoutPrediction=_originalOccurrenceLocationWithoutPrediction;
 @property(readonly, nonatomic) NSString *originalOccurrenceLocation; // @synthesize originalOccurrenceLocation=_originalOccurrenceLocation;
-@property(readonly, nonatomic) NSString *generatedLocationString; // @synthesize generatedLocationString=_generatedLocationString;
-- (id)initWithGeneratedLocationString:(id)arg1 originalOccurrenceLocation:(id)arg2 originalOccurrenceLocationWithoutPrediction:(id)arg3 originalOccurrenceLocationIsPrediction:(_Bool)arg4 originalHasNewTimeProposed:(_Bool)arg5;
+@property(readonly, nonatomic) NSAttributedString *generatedLocationString; // @synthesize generatedLocationString=_generatedLocationString;
+- (id)initWithGeneratedLocationString:(id)arg1 originalOccurrenceLocation:(id)arg2 originalOccurrenceLocationWithoutPrediction:(id)arg3 originalOccurrenceLocationIsPrediction:(_Bool)arg4 originalHasNewTimeProposed:(_Bool)arg5 originalConferenceURL:(id)arg6;
 
 @end
 

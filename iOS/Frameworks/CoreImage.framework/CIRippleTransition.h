@@ -20,6 +20,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) CIImage *inputShadingImage; // @synthesize inputShadingImage;
+@property(retain, nonatomic) CIImage *inputTargetImage; // @synthesize inputTargetImage;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (id)_CIRippleTransition;
 

@@ -18,7 +18,6 @@
     id <CAMPanoramaViewDelegate> _delegate;
     CAMPanoramaPreviewView *_previewView;
     long long _layoutStyle;
-    double _currentOrientedAcceleration;
     UIView *__stripBackgroundView;
     UIView *__stripContainerView;
     UIView *__maskingView;
@@ -31,8 +30,7 @@
     NSString *__arrowString;
     NSString *__instructionString;
     CAMPanoramaPaintingStatus *__currentPaintingStatus;
-    double __initialPaintingAcceleration;
-    double __currentPaintingAcceleration;
+    double __filteredNormalizedBaselineOffset;
     double *__previousSpeeds;
     double __currentAverageSpeed;
     unsigned long long __arrowUpdateFrame;
@@ -48,8 +46,7 @@
 @property(nonatomic, getter=_isCurrentlyMovingTooFast, setter=_setCurrentlyMovingTooFast:) _Bool _currentlyMovingTooFast; // @synthesize _currentlyMovingTooFast=__currentlyMovingTooFast;
 @property(readonly, nonatomic) double *_previousSpeeds; // @synthesize _previousSpeeds=__previousSpeeds;
 @property(nonatomic, getter=_isCurrentlyShowingMoveInstructions, setter=_setCurrentlyShowingMoveInstructions:) _Bool _currentlyShowingMoveInstructions; // @synthesize _currentlyShowingMoveInstructions=__currentlyShowingMoveInstructions;
-@property(nonatomic, setter=_setCurrentPaintingAcceleration:) double _currentPaintingAcceleration; // @synthesize _currentPaintingAcceleration=__currentPaintingAcceleration;
-@property(nonatomic, setter=_setInitialPaintingAcceleration:) double _initialPaintingAcceleration; // @synthesize _initialPaintingAcceleration=__initialPaintingAcceleration;
+@property(nonatomic, setter=_setFilteredNormalizedBaselineOffset:) double _filteredNormalizedBaselineOffset; // @synthesize _filteredNormalizedBaselineOffset=__filteredNormalizedBaselineOffset;
 @property(retain, nonatomic, setter=_setCurrentPaintingStatus:) CAMPanoramaPaintingStatus *_currentPaintingStatus; // @synthesize _currentPaintingStatus=__currentPaintingStatus;
 @property(nonatomic, setter=_setLastLayoutBounds:) struct CGRect _lastLayoutBounds; // @synthesize _lastLayoutBounds=__lastLayoutBounds;
 @property(nonatomic, setter=_setInitialArrowCenter:) struct CGPoint _initialArrowCenter; // @synthesize _initialArrowCenter=__initialArrowCenter;
@@ -64,14 +61,12 @@
 @property(readonly, nonatomic) UIView *_maskingView; // @synthesize _maskingView=__maskingView;
 @property(readonly, nonatomic) UIView *_stripContainerView; // @synthesize _stripContainerView=__stripContainerView;
 @property(readonly, nonatomic) UIView *_stripBackgroundView; // @synthesize _stripBackgroundView=__stripBackgroundView;
-@property(nonatomic, setter=_setCurrentOrientedAcceleration:) double currentOrientedAcceleration; // @synthesize currentOrientedAcceleration=_currentOrientedAcceleration;
 @property(nonatomic, getter=isPainting, setter=_setPainting:) _Bool painting; // @synthesize painting=_painting;
 @property(nonatomic) struct CGSize panoramaCaptureSize; // @synthesize panoramaCaptureSize=_panoramaCaptureSize;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property(readonly, nonatomic) CAMPanoramaPreviewView *previewView; // @synthesize previewView=_previewView;
 @property(nonatomic) __weak id <CAMPanoramaViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long direction; // @synthesize direction=_direction;
-- (void)updateToContentSize:(id)arg1;
 - (void)_showArrowInstructions;
 - (void)_hideArrowInstructionsAfterDelay;
 - (void)_showSpeedInstructions;
@@ -88,12 +83,13 @@
 - (void)startProcessingPanorama;
 - (void)setDirection:(long long)arg1 animated:(_Bool)arg2;
 - (void)stopPainting;
-- (void)updateOrientedAcceleration:(double)arg1;
 - (void)updatePaintingWithStatus:(id)arg1;
 - (void)startPainting;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)_frameForArrowViewWithDirection:(long long)arg1 offset:(double)arg2;
 - (void)layoutSubviews;
+- (struct CGSize)_previewSizeForBounds:(struct CGRect)arg1;
 @property(readonly, nonatomic) UIView *instructionView;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

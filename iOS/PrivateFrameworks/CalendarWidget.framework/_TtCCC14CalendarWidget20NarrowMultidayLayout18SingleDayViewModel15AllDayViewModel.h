@@ -13,8 +13,10 @@
     MISSING_TYPE *id;
     MISSING_TYPE *events;
     MISSING_TYPE *collapsed;
+    MISSING_TYPE *numEventsToShowIfNotCollapsed;
     MISSING_TYPE *individualHeight;
     MISSING_TYPE *spacingBetweenItems;
+    MISSING_TYPE *xMoreHeight;
 }
 
 @end

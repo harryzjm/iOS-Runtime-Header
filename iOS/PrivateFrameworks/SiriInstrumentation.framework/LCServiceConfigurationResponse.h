@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class LCServiceLoggingConfiguration, NSData;
 
-@interface LCServiceConfigurationResponse : PBCodable
+@interface LCServiceConfigurationResponse
 {
+    LCServiceLoggingConfiguration *_configuration;
     _Bool _hasConfiguration;
     unsigned long long _whichResponse;
-    LCServiceLoggingConfiguration *_configuration;
 }
 
 - (void).cxx_destruct;

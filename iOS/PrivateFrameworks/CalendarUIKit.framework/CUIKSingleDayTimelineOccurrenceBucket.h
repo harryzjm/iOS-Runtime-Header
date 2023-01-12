@@ -27,6 +27,7 @@
     NSMutableArray *_currentOccurrences;
 }
 
++ (struct CGRect)roundRectToScreenScaleForRect:(struct CGRect)arg1 screenUtilsDelegate:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *currentOccurrences; // @synthesize currentOccurrences=_currentOccurrences;
 @property __weak id <CUIKSingleDayTimelineGeometryDelegate> geometryDelegate; // @synthesize geometryDelegate=_geometryDelegate;

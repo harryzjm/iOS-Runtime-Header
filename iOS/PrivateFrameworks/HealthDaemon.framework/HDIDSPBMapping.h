@@ -14,8 +14,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) Class responseClass; // @synthesize responseClass=_responseClass;
-@property(retain, nonatomic) Class requestClass; // @synthesize requestClass=_requestClass;
 
 @end
 

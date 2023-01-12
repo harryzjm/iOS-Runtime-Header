@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)senseTapped:(id)arg1;
+- (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;

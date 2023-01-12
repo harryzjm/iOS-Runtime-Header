@@ -8,15 +8,15 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKConceptAttribute, HKConceptIdentifier, HKMedicalCoding, NSArray, NSMutableArray, NSSet, NSString;
+@class HKConceptAttribute, HKConceptIdentifier, HKMedicalCoding, NSArray, NSSet, NSString;
 
 @interface HKConcept : NSObject <NSSecureCoding>
 {
     NSArray *_relationships;
-    NSMutableArray *_attributes;
     _Bool _relationshipsAreLoaded;
     _Bool _isUndefined;
     HKConceptIdentifier *_identifier;
+    NSArray *_attributes;
     NSString *_nodeName;
 }
 
@@ -29,22 +29,21 @@
 @property(copy, nonatomic) NSString *nodeName; // @synthesize nodeName=_nodeName;
 @property(readonly, nonatomic) _Bool isUndefined; // @synthesize isUndefined=_isUndefined;
 @property(readonly, nonatomic) _Bool relationshipsAreLoaded; // @synthesize relationshipsAreLoaded=_relationshipsAreLoaded;
+@property(readonly, copy, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
 @property(readonly, copy, nonatomic) HKConceptIdentifier *identifier; // @synthesize identifier=_identifier;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setRelationships:(id)arg1;
-- (void)addAttribute:(id)arg1;
+@property(readonly, copy, nonatomic) HKMedicalCoding *coding;
 @property(readonly, copy, nonatomic) HKMedicalCoding *RxNormCoding;
-@property(readonly, copy, nonatomic) NSArray *modifiers;
-@property(readonly, copy, nonatomic) HKConcept *form;
-@property(readonly, copy, nonatomic) HKConcept *strength;
 @property(readonly, copy, nonatomic) HKMedicalCoding *LOINCCode;
 @property(readonly, copy, nonatomic) HKConceptAttribute *adHocCode;
-@property(readonly, copy, nonatomic) NSArray *brandNames;
 @property(readonly, copy, nonatomic) NSArray *synonyms;
 @property(readonly, nonatomic) _Bool hidesOutOfRangeFilter;
 @property(readonly, nonatomic) _Bool chartsBloodPressure;
+@property(readonly, nonatomic) _Bool isInMemory;
+@property(readonly, nonatomic) _Bool isLowUtility;
 @property(readonly, nonatomic) _Bool isNebulous;
 @property(readonly, nonatomic) _Bool isAdHoc;
 - (id)stringsForAttributeType:(long long)arg1;
@@ -60,12 +59,20 @@
 - (id)_conceptsOfRelationshipType:(long long)arg1;
 - (id)_firstConceptOfRelationshipType:(long long)arg1;
 @property(readonly, copy, nonatomic) NSArray *relationships;
-@property(readonly, copy, nonatomic) NSArray *attributes;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 attributes:(id)arg2 relationships:(id)arg3 relationshipsAreLoaded:(_Bool)arg4;
+@property(readonly, copy, nonatomic) NSString *patientEducationExcerpt;
+@property(readonly, copy, nonatomic) NSArray *brandNames;
+@property(readonly, copy, nonatomic) NSArray *modifiers;
+@property(readonly, copy, nonatomic) HKConcept *boSS;
+@property(readonly, copy, nonatomic) HKConcept *tradeName;
+@property(readonly, copy, nonatomic) HKConcept *route;
+@property(readonly, copy, nonatomic) HKConcept *form;
+@property(readonly, copy, nonatomic) HKConcept *strength;
+@property(readonly, copy, nonatomic) HKConceptAttribute *labEducationalContent;
 
 @end
 

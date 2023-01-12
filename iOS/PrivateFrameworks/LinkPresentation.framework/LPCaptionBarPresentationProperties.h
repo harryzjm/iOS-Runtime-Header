@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionRowPresentationProperties, LPImage, LPImagePresentationProperties, NSArray, NSNumber, NSString;
+@class LPCaptionButtonPresentationProperties, LPCaptionRowPresentationProperties, LPImage, LPImagePresentationProperties, NSArray, NSNumber, NSString;
 
 @interface LPCaptionBarPresentationProperties : NSObject
 {
@@ -18,12 +18,16 @@
     LPImage *_leadingIcon;
     NSArray *_additionalLeadingIcons;
     LPImagePresentationProperties *_leadingIconProperties;
+    LPImage *_leadingIconBadge;
+    LPImagePresentationProperties *_leadingIconBadgeProperties;
     LPImage *_trailingIcon;
     NSArray *_additionalTrailingIcons;
     LPImagePresentationProperties *_trailingIconProperties;
+    LPImage *_trailingIconBadge;
+    LPImagePresentationProperties *_trailingIconBadgeProperties;
     long long _leadingAccessoryType;
     long long _trailingAccessoryType;
-    NSString *_buttonCaption;
+    LPCaptionButtonPresentationProperties *_button;
     NSNumber *_minimumHeight;
     struct CGSize _leadingIconSize;
     struct CGSize _trailingIconSize;
@@ -32,17 +36,22 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property(nonatomic) _Bool shouldHighlightIndependently; // @synthesize shouldHighlightIndependently=_shouldHighlightIndependently;
-@property(copy, nonatomic) NSString *buttonCaption; // @synthesize buttonCaption=_buttonCaption;
+@property(retain, nonatomic) LPCaptionButtonPresentationProperties *button; // @synthesize button=_button;
 @property(nonatomic) long long trailingAccessoryType; // @synthesize trailingAccessoryType=_trailingAccessoryType;
 @property(nonatomic) long long leadingAccessoryType; // @synthesize leadingAccessoryType=_leadingAccessoryType;
+@property(retain, nonatomic) LPImagePresentationProperties *trailingIconBadgeProperties; // @synthesize trailingIconBadgeProperties=_trailingIconBadgeProperties;
+@property(retain, nonatomic) LPImage *trailingIconBadge; // @synthesize trailingIconBadge=_trailingIconBadge;
 @property(retain, nonatomic) LPImagePresentationProperties *trailingIconProperties; // @synthesize trailingIconProperties=_trailingIconProperties;
 @property(retain, nonatomic) NSArray *additionalTrailingIcons; // @synthesize additionalTrailingIcons=_additionalTrailingIcons;
 @property(nonatomic) struct CGSize trailingIconSize; // @synthesize trailingIconSize=_trailingIconSize;
 @property(retain, nonatomic) LPImage *trailingIcon; // @synthesize trailingIcon=_trailingIcon;
+@property(retain, nonatomic) LPImagePresentationProperties *leadingIconBadgeProperties; // @synthesize leadingIconBadgeProperties=_leadingIconBadgeProperties;
+@property(retain, nonatomic) LPImage *leadingIconBadge; // @synthesize leadingIconBadge=_leadingIconBadge;
 @property(retain, nonatomic) LPImagePresentationProperties *leadingIconProperties; // @synthesize leadingIconProperties=_leadingIconProperties;
 @property(retain, nonatomic) NSArray *additionalLeadingIcons; // @synthesize additionalLeadingIcons=_additionalLeadingIcons;
 @property(nonatomic) struct CGSize leadingIconSize; // @synthesize leadingIconSize=_leadingIconSize;
 @property(retain, nonatomic) LPImage *leadingIcon; // @synthesize leadingIcon=_leadingIcon;
+@property(copy, nonatomic) NSString *buttonCaption;
 - (long long)rightAccessoryType;
 - (long long)leftAccessoryType;
 - (id)rightIconProperties;

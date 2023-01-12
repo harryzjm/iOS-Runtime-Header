@@ -16,12 +16,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *data; // @synthesize data=_data;
-@property(readonly, copy, nonatomic) NSUUID *seriesIdentifier; // @synthesize seriesIdentifier=_seriesIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
-- (id)initWithSeriesPersistentID:(id)arg1 locationData:(id)arg2;
 
 @end
 

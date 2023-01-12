@@ -4,26 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeUI/HULockupViewDelegate-Protocol.h>
 #import <HomeUI/HUSoftwareUpdateUIPresentationDelegate-Protocol.h>
 
-@class HUSoftwareUpdateItemModule, NSString;
-@protocol HUSoftwareUpdateItemModuleControllerDelegate;
+@class HUSoftwareUpdateItemModule, NSMapTable, NSString;
+@protocol HUExpandableTextViewCellDelegate, HUSoftwareUpdateItemModuleControllerDelegate;
 
-@interface HUSoftwareUpdateItemModuleController <HUSoftwareUpdateUIPresentationDelegate>
+@interface HUSoftwareUpdateItemModuleController <HUSoftwareUpdateUIPresentationDelegate, HULockupViewDelegate>
 {
     id <HUSoftwareUpdateItemModuleControllerDelegate> _delegate;
+    id <HUExpandableTextViewCellDelegate> _expandableTextViewCellDelegate;
+    NSMapTable *_serviceGridViewControllersByItems;
+    NSMapTable *_expandedStateByItems;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMapTable *expandedStateByItems; // @synthesize expandedStateByItems=_expandedStateByItems;
+@property(readonly, nonatomic) NSMapTable *serviceGridViewControllersByItems; // @synthesize serviceGridViewControllersByItems=_serviceGridViewControllersByItems;
+@property(readonly, nonatomic) __weak id <HUExpandableTextViewCellDelegate> expandableTextViewCellDelegate; // @synthesize expandableTextViewCellDelegate=_expandableTextViewCellDelegate;
 @property(readonly, nonatomic) __weak id <HUSoftwareUpdateItemModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)softwareUpdateUIManager:(id)arg1 dismissViewController:(id)arg2;
 - (id)softwareUpdateUIManager:(id)arg1 presentViewController:(id)arg2;
 - (void)_startUpdateOnAccessories:(id)arg1;
-- (unsigned long long)didSelectItem:(id)arg1;
+- (void)updateAllAccessories;
 - (_Bool)canSelectItem:(id)arg1;
+- (void)lockupView:(id)arg1 expandableTextViewDidExpand:(id)arg2;
+- (void)lockupView:(id)arg1 downloadControlTapped:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;
+- (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1;
-- (id)initWithModule:(id)arg1 delegate:(id)arg2;
+- (id)initWithModule:(id)arg1 delegate:(id)arg2 expandableTextViewCellDelegate:(id)arg3;
 - (id)initWithModule:(id)arg1;
 
 // Remaining properties

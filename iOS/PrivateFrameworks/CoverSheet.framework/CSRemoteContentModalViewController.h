@@ -20,7 +20,7 @@
     UIViewFloatAnimatableProperty *_alphaProperty;
     SBFFluidBehaviorSettings *_alphaSettings;
     UIView *_grabberView;
-    _Bool _suppressingWhitePointReduction;
+    _Bool _userHasInteractedSinceWake;
     _Bool _dismissing;
     SBSRemoteContentDefinition *_definition;
     CSRemoteContentHostViewController *_contentViewController;
@@ -62,6 +62,7 @@
 - (void)addGrabberView:(id)arg1;
 - (void)_updateForPropertyChanged;
 - (void)_createProperties;
+- (void)_setUserHasInteractedSinceWake:(_Bool)arg1;
 - (void)didReceiveTouch;
 - (void)handleSecondaryActionForView:(id)arg1;
 - (void)remoteContentHostViewController:(id)arg1 didTerminateWithError:(id)arg2;

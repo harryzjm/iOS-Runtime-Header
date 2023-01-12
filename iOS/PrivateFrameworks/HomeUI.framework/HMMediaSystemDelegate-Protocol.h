@@ -11,6 +11,7 @@
 @protocol HMMediaSystemDelegate <HMMediaObjectDelegate>
 
 @optional
+- (void)mediaSystemDidUpdateAudioDestination:(HMMediaSystem *)arg1;
 - (void)mediaSystem:(HMMediaSystem *)arg1 didUpdateApplicationData:(HMApplicationData *)arg2;
 - (void)mediaSystem:(HMMediaSystem *)arg1 didUpdateComponents:(NSArray *)arg2;
 - (void)mediaSystem:(HMMediaSystem *)arg1 didUpdateConfiguredName:(NSString *)arg2;

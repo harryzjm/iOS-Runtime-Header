@@ -15,13 +15,15 @@
 {
     id <MTLBuffer> _currentDispatchBuffer;
     unsigned long long _offsetToCurrentFree;
-    struct MPSDevice *_mpsDevice;
+    void *_mpsDevice;
     MPSPredicate *_predicate;
     id <MTLCommandBuffer> _commandBuffer;
+    struct MPSCommandBufferDescriptor _mpsCommandBufferDescriptor;
 }
 
 + (id)commandBufferWithCommandBuffer:(id)arg1;
 + (id)commandBufferFromCommandQueue:(id)arg1;
+@property struct MPSCommandBufferDescriptor mpsCommandBufferDescriptor; // @synthesize mpsCommandBufferDescriptor=_mpsCommandBufferDescriptor;
 @property(readonly, retain, nonatomic) id <MTLCommandBuffer> commandBuffer; // @synthesize commandBuffer=_commandBuffer;
 @property(retain, nonatomic) MPSPredicate *predicate; // @synthesize predicate=_predicate;
 - (void)prefetchHeapForWorkloadSize:(unsigned long long)arg1;

@@ -6,14 +6,16 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class PKFamilyMember;
-@protocol PKPeerPaymentAssociatedAccountSetupDelegate;
+@class PKFamilyMember, PKFamilyMemberCollection;
+@protocol PKPassLibraryDataProvider, PKPeerPaymentAssociatedAccountSetupDelegate;
 
 @interface PKPeerPaymentTurnOnAssociatedAccountViewController : UITableViewController
 {
     PKFamilyMember *_familyMember;
-    PKFamilyMember *_viewer;
+    PKFamilyMemberCollection *_familyCollection;
     long long _context;
+    long long _setupType;
+    id <PKPassLibraryDataProvider> _passLibraryDataProvider;
     id <PKPeerPaymentAssociatedAccountSetupDelegate> _delegate;
 }
 
@@ -26,7 +28,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)viewDidLoad;
-- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 delegate:(id)arg3 context:(long long)arg4;
+- (id)initWithFamilyMember:(id)arg1 familyCollection:(id)arg2 delegate:(id)arg3 passLibraryDataProvider:(id)arg4 context:(long long)arg5 setupType:(long long)arg6;
 
 @end
 

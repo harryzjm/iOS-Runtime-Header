@@ -15,15 +15,16 @@
 
 + (id)processor;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSCH3DFramebuffer *activeFramebuffer; // @synthesize activeFramebuffer=_activeFramebuffer;
 - (void)resetBuffers;
 - (void)endFrame;
 - (void)beginFrame;
-- (void)setRenderHints:(const struct RenderHints *)arg1;
+- (void)setRenderHints:(const void *)arg1;
 - (struct RenderHints)renderHints;
 - (void)popRenderState;
 - (void)pushRenderState;
-- (void)setRenderState:(const struct RenderState *)arg1;
+- (void)setRenderState:(const void *)arg1;
 - (struct RenderState)renderState;
 - (void)updateRenderState;
 - (void)popState;
@@ -32,8 +33,7 @@
 - (void)texcoords:(id)arg1;
 - (void)normals:(id)arg1;
 - (void)geometry:(id)arg1;
-- (void)wipeActiveFramebuffer:(const tvec4_ac57c72d *)arg1;
-- (void)dealloc;
+- (void)wipeActiveFramebuffer:(const void *)arg1;
 - (_Bool)canRenderPrefilteredLines;
 
 @end

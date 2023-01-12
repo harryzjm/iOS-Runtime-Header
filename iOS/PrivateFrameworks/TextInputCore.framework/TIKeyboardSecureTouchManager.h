@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BKSHIDEventAuthenticationMessage, NSArray, NSMutableDictionary;
+@class BKSHIDEventAuthenticationMessage, NSMutableDictionary;
 
 @interface TIKeyboardSecureTouchManager : NSObject
 {
     _Bool _bypassCommunication;
     NSMutableDictionary *_slots;
     BKSHIDEventAuthenticationMessage *_lastEventAuthenticationMessage;
-    NSArray *_keys;
     unsigned long long _lastVerifiedMessageTimestamp;
 }
 
@@ -21,7 +20,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool bypassCommunication; // @synthesize bypassCommunication=_bypassCommunication;
 @property(nonatomic) unsigned long long lastVerifiedMessageTimestamp; // @synthesize lastVerifiedMessageTimestamp=_lastVerifiedMessageTimestamp;
-@property(retain, nonatomic) NSArray *keys; // @synthesize keys=_keys;
 @property(retain, nonatomic) BKSHIDEventAuthenticationMessage *lastEventAuthenticationMessage; // @synthesize lastEventAuthenticationMessage=_lastEventAuthenticationMessage;
 @property(retain, nonatomic) NSMutableDictionary *slots; // @synthesize slots=_slots;
 - (unsigned long long)authenticationMessageContextForSlotID:(unsigned int)arg1;

@@ -20,6 +20,7 @@
 @property(readonly, copy, nonatomic) NSDictionary *descriptorsByExtensionIdentifier; // @synthesize descriptorsByExtensionIdentifier=_descriptorsByExtensionIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)_performValidation;
 @property(readonly, copy, nonatomic) NSSet *descriptors;
 - (id)initWithDescriptors:(id)arg1;
 

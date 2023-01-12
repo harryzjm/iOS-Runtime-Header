@@ -16,6 +16,7 @@
 }
 
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
+- (int)setOwnerWithIdentity:(unsigned int)arg1;
 @property(readonly) unsigned long long allocatedSize;
 - (void)validateCPUWriteable;
 - (void)validateCPUReadable;

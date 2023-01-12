@@ -7,15 +7,16 @@
 #import <CoverSheet/MTVisualStylingRequiring-Protocol.h>
 #import <CoverSheet/NSObject-Protocol.h>
 
-@class UIView;
-@protocol PLPlatter;
+@class PLPlatterView, UIView;
 
 @protocol CSAdjunctItemHosting <NSObject, MTVisualStylingRequiring>
 - (UIView *)view;
 - (struct CGSize)preferredContentSize;
 
 @optional
-- (UIView<PLPlatter> *)platterView;
+@property(nonatomic) double containerCornerRadius;
+- (_Bool)usesBackgroundView;
+- (PLPlatterView *)platterView;
 - (void)setContainerSize:(struct CGSize)arg1;
 @end
 

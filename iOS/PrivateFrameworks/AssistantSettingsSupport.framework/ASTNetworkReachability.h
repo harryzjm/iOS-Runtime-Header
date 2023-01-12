@@ -10,10 +10,10 @@
 {
 }
 
-+ (_Bool)reachabilityHasNonWWANNetworkConnection:(struct __SCNetworkReachability *)arg1;
-+ (struct __SCNetworkReachability *)createReachabilityForVoiceDownload;
++ (_Bool)reachabilityHasCellOnlyNetworkConnection:(struct __SCNetworkReachability *)arg1;
 + (_Bool)reachabilityHasNetworkConnection:(struct __SCNetworkReachability *)arg1;
-+ (_Bool)hasNonWWANNetworkConnection;
++ (struct __SCNetworkReachability *)createReachabilityForVoiceDownload;
++ (_Bool)hasCellOnlyNetworkConnection;
 + (_Bool)hasNetworkConnection;
 
 @end

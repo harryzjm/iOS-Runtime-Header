@@ -9,22 +9,27 @@
 #import <SensorKit/NSSecureCoding-Protocol.h>
 #import <SensorKit/SRSampleExporting-Protocol.h>
 
-@class NSString;
+@class NSArray, NSMutableArray, NSString;
 
 @interface SRApplicationUsage : NSObject <SRSampleExporting, NSSecureCoding>
 {
     NSString *_bundleIdentifier;
     double _usageTime;
+    NSString *_reportApplicationIdentifier;
+    NSMutableArray *_mutableTextInputSessions;
 }
 
-+ (id)applicationUsageWithBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2;
++ (id)applicationUsageWithBundleIdentifier:(id)arg1 reportApplicationIdentifier:(id)arg2 totalUsageTime:(double)arg3;
 + (_Bool)supportsSecureCoding;
+@property(retain) NSMutableArray *mutableTextInputSessions; // @synthesize mutableTextInputSessions=_mutableTextInputSessions;
+@property(copy) NSString *reportApplicationIdentifier; // @synthesize reportApplicationIdentifier=_reportApplicationIdentifier;
 @property double usageTime; // @synthesize usageTime=_usageTime;
 @property(copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (id)sr_dictionaryRepresentation;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+@property(readonly, copy) NSArray *textInputSessions;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

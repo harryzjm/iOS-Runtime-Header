@@ -10,6 +10,7 @@
 
 @interface _TtC7VFXCore30ParticleSubSpawnAddStateSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *resetQuery;
     MISSING_TYPE *addState;
     MISSING_TYPE *removeState;
 }

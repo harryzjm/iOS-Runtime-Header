@@ -15,10 +15,27 @@
 + (void)setLocationSearchContinuityEnabled:(_Bool)arg1;
 + (_Bool)isLocationSearchContinuityEnabled;
 + (id)sharedInstance;
-+ (_Bool)isMessagesOnSiriKitNative;
-+ (_Bool)isEucalyptusEnabled;
++ (_Bool)isCrossDeviceVoiceFollowUpEnabled;
++ (_Bool)isAnnounceMessagesInCarPlayEnabled;
++ (_Bool)isCrossDeviceTVControlEnabled;
++ (_Bool)isAnnounceNotificationsEnabled;
++ (_Bool)isSiriRequestDispatcherEnabled;
++ (_Bool)isHomeAutomationBackgroundRequestEnabled;
++ (_Bool)isListeningOnBothStereoPairUnitsEnabled;
++ (_Bool)isTimerAlarmCoordinationEnabled;
++ (_Bool)isAnnounceGroupFaceTimeInviteEnabled;
++ (_Bool)isAnnounceTelephonyEnabled;
++ (_Bool)isLassoEnabled;
++ (_Bool)isMyriadNonSpeakerRawScoreThresholdEnabled;
++ (_Bool)isRemoraEnabled;
++ (_Bool)isThemisABEnabled;
++ (_Bool)isAudioSessionCoordinationEnabled;
 + (_Bool)isHintsEnabled;
-+ (_Bool)isHALEnabled;
++ (_Bool)isTrialDictationAssetDeliveryEnabled;
++ (_Bool)isDictationVoiceTriggerEnabled;
++ (_Bool)isSiriUODAvailableForLanguage:(id)arg1;
++ (_Bool)isSiriXEnabled;
++ (_Bool)isAnnounceEnabled;
 
 @end
 

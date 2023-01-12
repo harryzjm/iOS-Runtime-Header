@@ -27,7 +27,6 @@
 - (id)_verticalNumericalAxis;
 - (id)_heartbeatSequenceSeriesForSource:(id)arg1 axis:(id)arg2 color:(id)arg3 lineWidth:(double)arg4 markerRadius:(double)arg5 dashStyle:(long long)arg6 annotate:(_Bool)arg7;
 - (void)_recomputeAxisRanges;
-- (void)_synchronizeVerticalAxes;
 - (void)_adjustGraphViewOptions;
 - (void)addSequenceData:(id)arg1 color:(id)arg2 lineWidth:(double)arg3 markerRadius:(double)arg4 dashStyle:(long long)arg5 annotate:(_Bool)arg6;
 - (void)addSequenceData:(id)arg1;

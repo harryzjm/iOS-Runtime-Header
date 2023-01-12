@@ -13,9 +13,8 @@
 - (void)_observerForKey:(long long)arg1 observer:(CDUnknownBlockType)arg2;
 - (void)observeVisibleEntryShouldSnapshotWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeAnimationDisablementWithBlock:(CDUnknownBlockType)arg1;
-- (void)observePrivateModeWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeStyleWithBlock:(CDUnknownBlockType)arg1;
-- (void)observeVisiblySettledWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeVisibilityWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWidgetConfigurationIdentifierBlock:(CDUnknownBlockType)arg1;
 - (void)observeMetricsWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWidgetWithBlock:(CDUnknownBlockType)arg1;

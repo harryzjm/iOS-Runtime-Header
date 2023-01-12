@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/UITextViewDelegate-Protocol.h>
 
-@class NSString, UIButton, UIFont, _PXUITextView;
+@class NSString, PXWidgetSpec, UIButton, UIFont, _PXUITextView;
 @protocol PXCaptionHashtagsEntryViewDelegate;
 
 @interface PXCaptionHashtagsEntryView : UIView <UITextViewDelegate>
@@ -18,6 +18,7 @@
     NSString *_originalText;
     double _maxHeightInEditMode;
     unsigned long long _numberOfHashtagsInText;
+    PXWidgetSpec *_spec;
     _PXUITextView *_textView;
     UIButton *_moreButton;
     UIFont *_font;
@@ -30,6 +31,7 @@
 @property(nonatomic) _Bool showAllText; // @synthesize showAllText=_showAllText;
 @property(retain, nonatomic) UIButton *moreButton; // @synthesize moreButton=_moreButton;
 @property(retain, nonatomic) _PXUITextView *textView; // @synthesize textView=_textView;
+@property(retain, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
 @property(readonly, nonatomic) unsigned long long numberOfHashtagsInText; // @synthesize numberOfHashtagsInText=_numberOfHashtagsInText;
 @property(nonatomic) double maxHeightInEditMode; // @synthesize maxHeightInEditMode=_maxHeightInEditMode;
 @property(copy, nonatomic) NSString *originalText; // @synthesize originalText=_originalText;

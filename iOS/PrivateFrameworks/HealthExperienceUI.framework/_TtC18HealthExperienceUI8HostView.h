@@ -16,7 +16,7 @@
     MISSING_TYPE *recreateViewControllerOnHostedFeedItemChange;
     MISSING_TYPE *parentViewController;
     MISSING_TYPE *hostedFeedItem;
-    MISSING_TYPE *hostedViewController;
+    MISSING_TYPE *hostedViewable;
     MISSING_TYPE *hostedView;
 }
 

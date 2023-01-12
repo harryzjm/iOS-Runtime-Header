@@ -6,29 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableDictionary, NSString;
 
 @interface _ICTransientLexicon : NSObject
 {
     struct _LXLexicon *_lexicon;
-    int _count;
+    NSMutableDictionary *_tokenIdentifierToEntitiesMap;
+    NSMutableDictionary *_entityToTokenIdentifiersMap;
+    NSMutableDictionary *_entityToAdditionalDataMap;
+    unsigned int _identifier;
     unsigned char _typeFlags;
     NSString *_name;
-    unsigned long long _entryCount;
 }
 
++ (id)transientLexiconForIdentifier:(unsigned int)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long entryCount; // @synthesize entryCount=_entryCount;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) unsigned char typeFlags; // @synthesize typeFlags=_typeFlags;
 - (struct _LXLexicon *)getLexiconImplementation;
-- (struct _LXEntry *)copyEntryForString:(id)arg1;
-- (id)getSortKeyEquivalents:(id)arg1;
+- (id)sortKeyEquivalents:(id)arg1;
 - (_Bool)contains:(id)arg1;
-- (void)removeEntriesBySource:(unsigned char)arg1;
-- (void)removeAllEntries;
-- (void)removeEntry:(id)arg1 source:(unsigned char)arg2;
-- (_Bool)addEntry:(id)arg1 source:(unsigned char)arg2 type:(unsigned char)arg3;
+- (_Bool)containsEntity:(id)arg1;
+- (void)removeAllEntities;
+- (void)removeEntity:(id)arg1;
+- (void)addEntity:(id)arg1 forEntry:(id)arg2;
+- (void)addEntity:(id)arg1 asAliasOfEntity:(id)arg2;
+- (void)setIsHyphenatedWord:(_Bool)arg1 forEntity:(id)arg2;
+- (_Bool)entityIsHyphenatedWord:(id)arg1;
+- (void)createAdditionalDataForEntityIfNeeded:(id)arg1;
+@property(readonly, nonatomic) unsigned long long entryCount;
+- (id)namedEntitiesForEntry:(id)arg1;
 - (id)initWithName:(id)arg1 typeFlags:(unsigned char)arg2;
 - (void)dealloc;
 - (id)getUsageCount:(id)arg1;

@@ -31,6 +31,11 @@
 - (_Bool)isEquivalent:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)hasEquivalentOverrideDayToSleepSchedule:(id)arg1;
+- (_Bool)hasEquivalentTimesToSleepSchedule:(id)arg1;
+- (id)bedtimeDateIntervalForMorningIndex:(long long)arg1 calendar:(id)arg2;
+- (id)bedtimeDateIntervalForWakeTime:(id)arg1 calendar:(id)arg2;
+- (id)wakeDateComponentsForMorningIndex:(long long)arg1 calendar:(id)arg2;
 - (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)description;
 - (id)init;

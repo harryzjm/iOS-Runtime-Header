@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class EDListUnsubscribeHandler, EDMailDropMetadataGenerator, EDMessagePersistence, EMContentRequestOptions, EMMessageObjectID, MFMailMessage, MFMessageTransformer, NSString;
+@class EDListUnsubscribeHandler, EDMailDropMetadataGenerator, EDMessagePersistence, EDMessageTransformer, EMContentRequestOptions, EMMessageObjectID, MFMailMessage, NSString;
 @protocol EFScheduler, EMContentItemRequestDelegate;
 
 @interface MFMessageContentRequest : NSObject
@@ -15,7 +15,7 @@
     EMMessageObjectID *_objectID;
     EDMessagePersistence *_messagePersistence;
     MFMailMessage *_legacyMessage;
-    MFMessageTransformer *_messageTransformer;
+    EDMessageTransformer *_messageTransformer;
     NSString *_clientIdentifier;
     EMContentRequestOptions *_options;
     EDMailDropMetadataGenerator *_mailDropAttachmentGenerator;
@@ -32,7 +32,7 @@
 @property(readonly, nonatomic) EDMailDropMetadataGenerator *mailDropAttachmentGenerator; // @synthesize mailDropAttachmentGenerator=_mailDropAttachmentGenerator;
 @property(readonly, nonatomic) EMContentRequestOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-@property(readonly, nonatomic) MFMessageTransformer *messageTransformer; // @synthesize messageTransformer=_messageTransformer;
+@property(readonly, nonatomic) EDMessageTransformer *messageTransformer; // @synthesize messageTransformer=_messageTransformer;
 @property(readonly, nonatomic) MFMailMessage *legacyMessage; // @synthesize legacyMessage=_legacyMessage;
 @property(readonly, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property(readonly, nonatomic) EMMessageObjectID *objectID; // @synthesize objectID=_objectID;

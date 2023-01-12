@@ -10,14 +10,18 @@
 {
 }
 
++ (id)additionalAllowedFileURLDirectories;
++ (void)setAdditionalAllowedFileURLDirectories:(id)arg1;
 + (id)customLoader;
 + (void)setCustomLoader:(id)arg1;
++ (_Bool)forceMonospaceFonts;
++ (void)setForceMonospaceFonts:(_Bool)arg1;
 + (_Bool)forceAllowPreviewingFilesOutsideApplicationContainer;
 + (void)setForceAllowPreviewingFilesOutsideApplicationContainer:(_Bool)arg1;
++ (_Bool)forceIgnoreAllTCCChecks;
++ (void)setForceIgnoreAllTCCChecks:(_Bool)arg1;
 + (_Bool)forceEnableAllEntitlements;
 + (void)setForceEnableAllEntitlements:(_Bool)arg1;
-+ (id)forceContentSizeCategory;
-+ (void)setForceContentSizeCategory:(id)arg1;
 + (id)forceSubsampleImagesToScreenSize;
 + (void)setForceSubsampleImagesToScreenSize:(id)arg1;
 + (unsigned long long)forceImageLoadingScaleFactor;

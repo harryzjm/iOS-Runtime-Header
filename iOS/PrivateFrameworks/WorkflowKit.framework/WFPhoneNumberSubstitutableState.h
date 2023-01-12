@@ -9,7 +9,7 @@
 }
 
 - (id)valueItemClasses;
-- (id)stringInterpretedAsContactHandle:(id)arg1;
+- (id)stringInterpretedAsContactHandle:(id)arg1 allowsCustomHandles:(_Bool)arg2;
 - (_Bool)reinterpretsStringsAsContactHandlesFromVariable:(_Bool)arg1;
 
 @end

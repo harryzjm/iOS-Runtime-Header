@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (BPSSequence)
+- (id)bpsPublisher;
 - (id)publisher;
 @end
 

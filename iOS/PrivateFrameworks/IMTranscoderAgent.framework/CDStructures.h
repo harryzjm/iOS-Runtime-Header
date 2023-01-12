@@ -20,5 +20,6 @@ struct IMPreviewConstraints {
     struct CGSize _field2;
     double _field3;
     _Bool _field4;
+    _Bool _field5;
 };
 

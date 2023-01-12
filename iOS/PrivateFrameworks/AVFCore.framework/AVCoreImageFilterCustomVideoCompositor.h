@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool canConformColorOfSourceFrames;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKCalendar, EKCalendarEditor;
+@class EKAbstractCalendarEditor, EKCalendar;
 
 @interface EKSubscribedCalendarEditItemViewController
 {
     EKCalendar *_calendar;
-    EKCalendarEditor *_calendarEditor;
+    EKAbstractCalendarEditor *_calendarEditor;
 }
 
 - (void).cxx_destruct;

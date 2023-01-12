@@ -20,8 +20,5 @@
 - (void)siriViewDidRecieveStatusViewHoldDidBeginAction:(AFUISiriView *)arg1;
 - (void)siriViewDidRecieveStatusViewTappedAction:(AFUISiriView *)arg1;
 - (float)audioRecordingPowerLevelForSiriView:(AFUISiriView *)arg1;
-
-@optional
-- (void)collapseAndTriggerDismissalFromSiriView:(AFUISiriView *)arg1;
 @end
 

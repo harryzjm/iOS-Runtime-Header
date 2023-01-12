@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     BRCAccountSession *_session;
     BRCPrivateClientZone *_defaultClientZone;
     _Bool _activated;
-    NSMutableSet *_targetAppLibraries;
     NSMutableSet *_targetSharedServerZones;
     NSMutableSet *_foregroundClients;
     _Bool _needsSave;
@@ -42,11 +41,13 @@ __attribute__((visibility("hidden")))
     NSNumber *_generationID;
     BRContainer *_containerMetadata;
     NSString *_containerMetadataEtag;
+    unsigned long long _containerMetadataSyncRequestID;
     NSNumber *_rootQuotaUsage;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *rootQuotaUsage; // @synthesize rootQuotaUsage=_rootQuotaUsage;
+@property(nonatomic) unsigned long long containerMetadataSyncRequestID; // @synthesize containerMetadataSyncRequestID=_containerMetadataSyncRequestID;
 @property(nonatomic) _Bool containerMetadataNeedsSyncUp; // @synthesize containerMetadataNeedsSyncUp=_containerMetadataNeedsSyncUp;
 @property(retain, nonatomic) NSString *containerMetadataEtag; // @synthesize containerMetadataEtag=_containerMetadataEtag;
 @property(readonly, nonatomic) BRContainer *containerMetadata; // @synthesize containerMetadata=_containerMetadata;
@@ -89,24 +90,20 @@ __attribute__((visibility("hidden")))
 - (id)itemIDByRowID:(unsigned long long)arg1;
 - (id)itemIDByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (void)_addTargetSharedServerZone:(id)arg1;
-- (void)_removeTargetSharedServerZoneForSharedServerZone:(id)arg1;
+- (void)_removeTargetSharedServerZoneIfNecessary:(id)arg1;
 - (void)_addTargetSharedServerZoneForSharedItem:(id)arg1;
-- (void)_removedAliasItemForTargetAppLibrary:(id)arg1;
-- (void)_addTargetAppLibrary:(id)arg1;
-- (void)_addTargetAppLibraryForAliasItem:(id)arg1;
-- (void)_removeAllTargetAppLibrariesAndSharedServerZones;
-- (void)_resolveTargetAppLibrariesAndSharedClientZones;
+- (void)_removeAllTargetSharedServerZonesWhenNoLongerForeground;
+- (void)_resolveTargetSharedClientZonesWhenBecameForeground;
 - (_Bool)isStillTargetingSharedServerZone:(id)arg1;
-- (_Bool)isStillTargetingAppLibrary:(id)arg1;
 - (id)_aliasAppLibraryTargetSQLPrefix;
 - (id)_targetSharedServerZonesEnumerator;
-- (id)_targetAppLibrariesEnumerator;
 @property(readonly, nonatomic) NSString *identifier;
 - (void)didReceiveHandoffRequest;
-@property(readonly, nonatomic) BRCSyncContext *syncContext;
-@property(readonly, nonatomic) BRCSyncContext *syncContextIfExists;
+@property(readonly, nonatomic) BRCSyncContext *transferSyncContext;
+@property(readonly, nonatomic) BRCSyncContext *transferSyncContextIfExists;
 - (void)recomputeShouldEvictState;
 @property(readonly, nonatomic) _Bool shouldEvictUploadedItems;
+- (_Bool)integrityCheckBoosting;
 @property(readonly, nonatomic) _Bool isForeground;
 - (void)removeForegroundClient:(id)arg1;
 - (void)addForegroundClient:(id)arg1;
@@ -159,6 +156,7 @@ __attribute__((visibility("hidden")))
 - (void)close;
 @property(readonly, nonatomic) NSMutableDictionary *plist;
 - (_Bool)supportsSpotlightIndexing;
+- (void)associateWithClientZone:(id)arg1 offline:(_Bool)arg2;
 - (void)associateWithClientZone:(id)arg1;
 - (void)updateWithPlist:(id)arg1;
 - (id)initWithMangledID:(id)arg1 dbRowID:(id)arg2 zoneRowID:(id)arg3 db:(id)arg4 plist:(id)arg5 session:(id)arg6 initialCreation:(_Bool)arg7 createdRootOnDisk:(_Bool)arg8 createdCZMMoved:(_Bool)arg9 rootFileID:(id)arg10;

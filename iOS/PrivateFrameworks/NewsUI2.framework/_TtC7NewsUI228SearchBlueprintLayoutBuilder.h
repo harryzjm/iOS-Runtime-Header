@@ -15,6 +15,8 @@
     MISSING_TYPE *sectionFooterViewLayoutAttributesFactory;
     MISSING_TYPE *styler;
     MISSING_TYPE *feedLayoutSolver;
+    MISSING_TYPE *assetManager;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

@@ -13,21 +13,27 @@
     _Bool _forceFaceprintCreation;
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
-+ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (unsigned long long)torsoprintRequestRevisionForFaceTorsoRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
++ (unsigned long long)faceprintRequestRevisionForFaceTorsoRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
++ (const CDStruct_7d93034e *)revisionAvailability;
 @property(nonatomic) _Bool forceFaceprintCreation; // @synthesize forceFaceprintCreation=_forceFaceprintCreation;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSArray *inputFaceObservations;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

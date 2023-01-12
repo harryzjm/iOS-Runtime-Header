@@ -32,6 +32,7 @@
 @property(readonly, nonatomic) NSDictionary *complicationSlotToItemIdMapping; // @synthesize complicationSlotToItemIdMapping=_complicationSlotToItemIdMapping;
 @property(readonly, nonatomic) NTKFace *watchFace; // @synthesize watchFace=_watchFace;
 @property(readonly, nonatomic) _Bool wasModifiedForThisDevice;
+- (_Bool)_template:(id)arg1 isUnsupportedForComplication:(id)arg2;
 - (void)collectOverrideTemplates;
 - (id)_overrideTemplateForComplication:(id)arg1 atSlot:(id)arg2 face:(id)arg3;
 - (id)initWithCoder:(id)arg1;

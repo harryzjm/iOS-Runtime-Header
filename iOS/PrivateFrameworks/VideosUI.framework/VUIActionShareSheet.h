@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithContextData:(id)arg1 viewElement:(id)arg2 sourceView:(id)arg3;
+- (id)initWithContextData:(id)arg1 sourceView:(id)arg2;
 
 @end
 

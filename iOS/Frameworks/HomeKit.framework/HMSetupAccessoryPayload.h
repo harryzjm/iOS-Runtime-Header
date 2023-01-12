@@ -6,51 +6,67 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFObject-Protocol.h>
+#import <HomeKit/NSCopying-Protocol.h>
+#import <HomeKit/NSMutableCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, NSNumber, NSString, NSURL;
+@class HMAccessoryCategory, HMCHIPAccessorySetupPayload, NSArray, NSNumber, NSString, NSURL;
 
-@interface HMSetupAccessoryPayload : NSObject <NSSecureCoding>
+@interface HMSetupAccessoryPayload : NSObject <HMFObject, NSMutableCopying, NSCopying, NSSecureCoding>
 {
     _Bool _supportsIP;
     _Bool _supportsWAC;
     _Bool _supportsBTLE;
     _Bool _paired;
-    NSString *_accessoryName;
     NSString *_setupCode;
+    long long _communicationProtocol;
+    NSURL *_setupPayloadURL;
     NSString *_setupID;
     NSNumber *_categoryNumber;
-    NSString *_productData;
     NSString *_productNumber;
-    NSURL *_setupPayloadURL;
-    NSNumber *_flags;
+    NSNumber *_threadIdentifier;
+    NSString *_accessoryName;
+    HMCHIPAccessorySetupPayload *_chipAccessorySetupPayload;
 }
 
++ (id)shortDescription;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSNumber *flags; // @synthesize flags=_flags;
-@property(retain, nonatomic) NSURL *setupPayloadURL; // @synthesize setupPayloadURL=_setupPayloadURL;
-@property(nonatomic) _Bool paired; // @synthesize paired=_paired;
+@property(retain, nonatomic) HMCHIPAccessorySetupPayload *chipAccessorySetupPayload; // @synthesize chipAccessorySetupPayload=_chipAccessorySetupPayload;
+@property(readonly, copy, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
+@property(copy, nonatomic) NSNumber *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
+@property(nonatomic, getter=isPaired) _Bool paired; // @synthesize paired=_paired;
 @property(nonatomic) _Bool supportsBTLE; // @synthesize supportsBTLE=_supportsBTLE;
 @property(nonatomic) _Bool supportsWAC; // @synthesize supportsWAC=_supportsWAC;
 @property(nonatomic) _Bool supportsIP; // @synthesize supportsIP=_supportsIP;
-@property(retain, nonatomic) NSString *productNumber; // @synthesize productNumber=_productNumber;
-@property(retain, nonatomic) NSString *productData; // @synthesize productData=_productData;
-@property(retain, nonatomic) NSNumber *categoryNumber; // @synthesize categoryNumber=_categoryNumber;
-@property(retain, nonatomic) NSString *setupID; // @synthesize setupID=_setupID;
-@property(retain, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
-@property(retain, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
-- (unsigned long long)hash;
+@property(copy, nonatomic) NSString *productNumber; // @synthesize productNumber=_productNumber;
+@property(copy, nonatomic) NSNumber *categoryNumber; // @synthesize categoryNumber=_categoryNumber;
+@property(copy, nonatomic) NSString *setupID; // @synthesize setupID=_setupID;
+@property(copy, nonatomic) NSURL *setupPayloadURL; // @synthesize setupPayloadURL=_setupPayloadURL;
+@property(readonly, nonatomic) long long communicationProtocol; // @synthesize communicationProtocol=_communicationProtocol;
+@property(readonly, copy, nonatomic) NSString *setupCode; // @synthesize setupCode=_setupCode;
+@property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *privateDescription;
+@property(readonly, copy) NSString *shortDescription;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)description;
-- (id)_parseSetupPayload:(id)arg1;
-@property(readonly, nonatomic) HMAccessoryCategory *category;
+@property(readonly, copy, nonatomic) HMAccessoryCategory *category;
+- (id)initWithSetupCode:(id)arg1 communicationProtocol:(long long)arg2;
 - (id)initWithSetupCode:(id)arg1;
-- (id)initWithSetupPayload:(id)arg1;
 - (id)initWithSetupPayloadURL:(id)arg1 error:(id *)arg2;
+- (id)initWithHAPSetupCode:(id)arg1;
+- (id)initWithHAPSetupPayloadURL:(id)arg1 error:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *propertyDescription;
+@property(readonly) Class superclass;
 
 @end
 

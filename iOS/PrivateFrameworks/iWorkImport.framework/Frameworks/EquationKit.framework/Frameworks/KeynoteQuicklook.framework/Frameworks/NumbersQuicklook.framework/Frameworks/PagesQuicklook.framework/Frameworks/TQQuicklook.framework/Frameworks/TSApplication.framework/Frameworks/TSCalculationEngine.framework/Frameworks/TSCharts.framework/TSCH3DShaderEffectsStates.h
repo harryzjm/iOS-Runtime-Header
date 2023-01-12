@@ -12,9 +12,10 @@
 
 @interface TSCH3DShaderEffectsStates : NSObject <NSCopying>
 {
-    NSMutableDictionary *mObjects;
+    NSMutableDictionary *_objects;
 }
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)clear;
 - (void)setState:(id)arg1 forStateInfo:(id)arg2;
@@ -22,7 +23,6 @@
 - (id)valueStateForKey:(id)arg1;
 - (void)setValueState:(id)arg1 forKey:(id)arg2;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 
 @end

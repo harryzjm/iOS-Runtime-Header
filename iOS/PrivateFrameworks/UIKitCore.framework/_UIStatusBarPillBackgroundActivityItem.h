@@ -4,25 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIStatusBarPillView;
+@class _UIStatusBarDisplayableContainerView, _UIStatusBarPillView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarPillBackgroundActivityItem
 {
     long long _previousType;
     _UIStatusBarPillView *_combinedView;
+    _UIStatusBarDisplayableContainerView *_iconsView;
     struct CGSize _pillSize;
 }
 
 + (_Bool)shouldKeepIconVisibleForActivityType:(long long)arg1;
++ (_Bool)_identifierContainsSecondaryItemImage:(id)arg1;
 + (_Bool)_identifierContainsItemImage:(id)arg1;
 + (id)pillCombinedDisplayIdentifier;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _UIStatusBarDisplayableContainerView *iconsView; // @synthesize iconsView=_iconsView;
 @property(retain, nonatomic) _UIStatusBarPillView *combinedView; // @synthesize combinedView=_combinedView;
 @property(nonatomic) long long previousType; // @synthesize previousType=_previousType;
 @property(nonatomic) struct CGSize pillSize; // @synthesize pillSize=_pillSize;
 - (_Bool)shouldUpdateIndicatorForIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
+- (void)_create_iconsView;
 - (void)_create_combinedView;
 - (_Bool)_shouldBounceWhenTransitioningFromType:(long long)arg1 toType:(long long)arg2;
 - (id)_backgroundColorForActivityType:(long long)arg1;

@@ -12,6 +12,7 @@
 
 @interface UIStatusBarManager : NSObject <_UISceneComponentProviding>
 {
+    _Bool _overriddingStatusBarHidden;
     _Bool _statusBarHidden;
     _Bool _inStatusBarFadeAnimation;
     long long _statusBarStyle;
@@ -32,6 +33,7 @@
 @property(retain, nonatomic) UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
 @property(readonly, nonatomic, getter=isStatusBarHidden) _Bool statusBarHidden; // @synthesize statusBarHidden=_statusBarHidden;
 @property(readonly, nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
+@property(nonatomic, getter=_isOverridingStatusBarHidden, setter=_setOverridingStatusBarHidden:) _Bool _overriddingStatusBarHidden; // @synthesize _overriddingStatusBarHidden;
 - (_Bool)statusBarHidden;
 - (void)_handleScrollToTopAtXPosition:(double)arg1;
 - (struct CGPoint)_adjustedLocationForXPosition:(double)arg1;
@@ -53,11 +55,13 @@
 - (double)defaultStatusBarHeightInOrientation:(long long)arg1;
 @property(readonly, nonatomic) double defaultStatusBarHeight;
 @property(readonly, nonatomic) double statusBarHeight;
+@property(readonly, nonatomic) struct CGRect _statusBarFrameIgnoringVisibility;
 @property(readonly, nonatomic) struct CGRect statusBarFrame;
 - (struct CGRect)statusBarFrameForStatusBarHeight:(double)arg1;
 - (struct CGRect)statusBarFrameForStatusBarHeight:(double)arg1 inOrientation:(long long)arg2;
 - (id)_settingsDiffActionsForScene:(id)arg1;
 @property(nonatomic, getter=_scene, setter=_setScene:) __weak UIScene *_scene;
+- (void)_setOverridingStatusBarHidden:(_Bool)arg1 animationParameters:(id)arg2;
 - (id)initWithScene:(id)arg1;
 
 // Remaining properties

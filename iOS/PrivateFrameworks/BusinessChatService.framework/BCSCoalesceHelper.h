@@ -18,11 +18,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *coalesceHelperDispatchQueue; // @synthesize coalesceHelperDispatchQueue=_coalesceHelperDispatchQueue;
-@property(readonly, nonatomic) NSMutableDictionary *coalesceObjectPool; // @synthesize coalesceObjectPool=_coalesceObjectPool;
-- (id)_dequeueCoalesceObjectsForCoalesceKey:(id)arg1 inCoalesceObjectPool:(id)arg2;
 - (id)dequeueCoalesceObjectsForCoalesceKey:(id)arg1;
-- (void)_enqueueCoalesceObject:(id)arg1 isDuplicateRequest:(_Bool *)arg2 inCoalesceObjectPool:(id)arg3;
 - (void)enqueueCoalesceObject:(id)arg1 isDuplicateRequest:(_Bool *)arg2;
 - (id)initWithQOSClass:(unsigned int)arg1;
 

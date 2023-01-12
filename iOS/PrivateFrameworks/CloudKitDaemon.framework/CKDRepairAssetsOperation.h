@@ -7,7 +7,6 @@
 @class CKDOperation, CKUploadRequestConfiguration, NSArray, NSDictionary, NSMutableDictionary, NSSet;
 @protocol CKRepairAssetsOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDRepairAssetsOperation
 {
     CDUnknownBlockType _assetOrPackageRepairedBlock;
@@ -38,14 +37,14 @@ __attribute__((visibility("hidden")))
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (id)assetOrPackageForMetadata:(id)arg1 inRecord:(id)arg2;
-- (id)repairContext;
+- (id)repairContainer;
 - (void)_updateMissingAssetServerStatus;
 - (void)_uploadAssetsModify;
 - (void)_fetchAssetMetadata;
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKRepairAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

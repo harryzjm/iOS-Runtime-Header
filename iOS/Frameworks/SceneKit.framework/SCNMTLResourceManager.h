@@ -90,7 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)_materialWillDie:(id)arg1;
 - (void)_passWillDie:(id)arg1;
 - (void)_programWillDie:(id)arg1;
-- (void)_removeMatchingProgram:(struct __C3DFXProgram *)arg1 pass:(struct __C3DFXPass *)arg2;
+- (void)_removeMatchingProgram:(struct __C3DFXMetalProgram *)arg1 pass:(struct __C3DFXPass *)arg2;
 - (void)_rasterizerStateDidDie:(const void *)arg1;
 - (void)_imageProxyWillDie:(id)arg1;
 - (void)_imageWillDie:(id)arg1;
@@ -111,13 +111,13 @@ __attribute__((visibility("hidden")))
 - (id)renderResourcesForEffectSlot:(struct __C3DEffectSlot *)arg1 withEngineContext:(struct __C3DEngineContext *)arg2;
 - (id)unstageTexture:(id)arg1 commandBuffer:(id)arg2;
 - (id)latlongTextureForCubemap:(id)arg1 pixelFormat:(unsigned long long)arg2 renderContext:(id)arg3 needsMipmap:(_Bool)arg4;
-- (id)cubemapTextureForLatlongTexture:(id)arg1 pixelFormat:(unsigned long long)arg2 engineContext:(struct __C3DEngineContext *)arg3 needsMipmap:(_Bool)arg4;
+- (id)newCubemapTextureForLatlongTexture:(id)arg1 pixelFormat:(unsigned long long)arg2 engineContext:(struct __C3DEngineContext *)arg3 needsMipmap:(_Bool)arg4;
 - (_Bool)_copyImage:(struct __C3DImage *)arg1 toTexture:(id)arg2 desc:(id)arg3 textureOptions:(int)arg4 needsMipMapGeneration:(_Bool)arg5;
 - (id)_textureDescriptorFromImage:(struct __C3DImage *)arg1 needsMipMap:(_Bool)arg2 textureOptions:(int)arg3;
 - (void)_enqueueCopyFromTexture:(id)arg1 toTexture:(id)arg2 blitEncoder:(struct SCNMTLBlitCommandEncoder *)arg3 generateMipMaps:(_Bool)arg4;
 - (id)newTextureUsingMTKTextureLoaderWithURL:(id)arg1 options:(id)arg2;
 - (id)newTextureWithDescriptor:(id)arg1;
-- (id)convertTextureToCubeMapIfApplicable:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2 needsMipmap:(_Bool)arg3;
+- (id)copyTextureByConvertingToCubeMapIfApplicable:(id)arg1 engineContext:(struct __C3DEngineContext *)arg2 needsMipmap:(_Bool)arg3;
 - (id)textureForSamplingTexture:(id)arg1 atSize:(unsigned long long)arg2 mipmapLevelCount:(unsigned long long *)arg3 renderContext:(id)arg4;
 - (id)areaLightPrecomputedDataTexture;
 - (id)specularDFGTextureWithRenderContext:(id)arg1;
@@ -130,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultLightingEnvironmentIrradianceTexture;
 - (id)sphericalHarmonicsForEnvironmentTexture:(id)arg1 order:(unsigned long long)arg2 commandBuffer:(id)arg3;
 - (id)shFromCPU:(id)arg1 commandBuffer:(id)arg2;
+- (_Bool)hasCommonProfilePrecompiledFunctions;
 - (void)reloadPipelinesIfNeeded;
 - (id)newComputePipelineStateWithFunctionName:(id)arg1 library:(id)arg2 constantValues:(id)arg3;
 - (id)newComputePipelineStateWithFunctionName:(id)arg1 constantValues:(id)arg2;
@@ -142,10 +143,10 @@ __attribute__((visibility("hidden")))
 - (id)newComputePipelineStateForDesc:(CDStruct_4cea7480)arg1 library:(id)arg2;
 - (void)_configureComputePipeline:(id)arg1 withDescriptor:(id)arg2;
 - (id)_newComputeDescriptorForPipelineDesc:(CDStruct_4cea7480)arg1 library:(id)arg2;
-- (id)newRenderPipelineStateWithDesc:(CDStruct_0aa79a9f)arg1;
-- (void)_createPipelineStateWithDescriptor:(id)arg1 desc:(CDStruct_0aa79a9f)arg2 pipeline:(id)arg3;
-- (struct __C3DFXProgram *)defaultProgramUsingTessellation:(_Bool)arg1;
-- (id)renderResourceForProgramDesc:(CDStruct_1c56e179)arg1 renderPassDescriptor:(id)arg2;
+- (id)newRenderPipelineStateWithDesc:(CDStruct_8dd16330)arg1;
+- (void)_createPipelineStateWithDescriptor:(id)arg1 desc:(CDStruct_8dd16330)arg2 pipeline:(id)arg3;
+- (struct __C3DFXMetalProgram *)defaultProgramUsingTessellation:(_Bool)arg1;
+- (id)renderResourceForProgramDesc:(CDStruct_db84f6ff)arg1 renderPassDescriptor:(id)arg2;
 
 @end
 

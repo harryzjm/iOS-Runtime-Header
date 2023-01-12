@@ -10,7 +10,6 @@
 {
     _Bool _favorite;
     _Bool _rejected;
-    _Bool _userCreated;
     NSString *_title;
     NSString *_subtitle;
     long long _category;
@@ -20,6 +19,7 @@
     NSDate *_creationDate;
     NSData *_graphData;
     long long _graphVersion;
+    long long _userActionOptions;
     NSData *_movieData;
     double _score;
     long long _notificationState;
@@ -30,6 +30,7 @@
 }
 
 + (id)_createTestMemoryWithAssets:(id)arg1;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) long long viewCount; // @synthesize viewCount=_viewCount;
 @property(nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
@@ -38,7 +39,7 @@
 @property(nonatomic) long long notificationState; // @synthesize notificationState=_notificationState;
 @property(nonatomic) double score; // @synthesize score=_score;
 @property(copy, nonatomic) NSData *movieData; // @synthesize movieData=_movieData;
-@property(nonatomic, getter=isUserCreated) _Bool userCreated; // @synthesize userCreated=_userCreated;
+@property(nonatomic) long long userActionOptions; // @synthesize userActionOptions=_userActionOptions;
 @property(nonatomic, getter=isRejected) _Bool rejected; // @synthesize rejected=_rejected;
 @property(nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
 @property(nonatomic) long long graphVersion; // @synthesize graphVersion=_graphVersion;
@@ -54,6 +55,8 @@
 - (id)propertiesDescription;
 - (_Bool)supportsDirectDeletion;
 - (_Bool)supportsDeletion;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)scopedIdentifiersForMapping;

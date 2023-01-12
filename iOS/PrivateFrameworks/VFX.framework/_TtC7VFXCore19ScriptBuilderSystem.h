@@ -13,9 +13,11 @@
     MISSING_TYPE *entityManager;
     MISSING_TYPE *gpuDevice;
     MISSING_TYPE *compileQueue;
+    MISSING_TYPE *compileOperationQueue;
     MISSING_TYPE *lock;
     MISSING_TYPE *pendingCompilationStatuses;
     MISSING_TYPE *cachedBuildResults;
+    MISSING_TYPE *isCompilationDisabledByUserDefault;
 }
 
 @end

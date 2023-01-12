@@ -24,6 +24,7 @@
 - (void)initializeSpeechServerInstance:(unsigned long long)arg1;
 
 @optional
+- (_Bool)isSiriNeuralVoice:(TTSSpeechVoice *)arg1;
 - (_Bool)isNashvilleService;
 - (_Bool)isSiriService;
 - (NSString *)serviceIdentifier;
@@ -31,8 +32,8 @@
 - (NSString *)embeddedVolumeMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 volume:(double)arg3;
 - (NSString *)embeddedPitchMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 pitch:(double)arg3;
 - (NSString *)embeddedRateMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 rate:(double)arg3;
-- (NSString *)nashvilleVoiceName:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4;
-- (NSString *)nashvilleVoiceIdentifier:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4;
+- (NSString *)nashvilleVoiceName:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4 assetVoiceName:(NSString *)arg5;
+- (NSString *)nashvilleVoiceIdentifier:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4 assetVoiceName:(NSString *)arg5;
 - (NSString *)enclosedStringWithPhonemes:(NSString *)arg1;
 - (NSString *)phonemesFromLHPhonemes:(NSString *)arg1 language:(NSString *)arg2;
 - (NSString *)phonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;

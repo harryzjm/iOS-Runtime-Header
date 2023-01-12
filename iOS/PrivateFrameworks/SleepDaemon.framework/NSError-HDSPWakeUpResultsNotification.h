@@ -9,6 +9,5 @@
 @interface NSError (HDSPWakeUpResultsNotification)
 + (id)hdsp_insufficientAsleepDataError;
 - (_Bool)hdsp_isInsufficientAsleepDataError;
-- (_Bool)hdsp_isHealthDatabaseInaccessibleError;
 @end
 

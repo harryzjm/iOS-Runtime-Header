@@ -25,6 +25,7 @@
 + (id)sharedInstanceForIdentifier:(long long)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *networkCode;
+@property(readonly, nonatomic) unsigned long long interface5GMode;
 @property(readonly, nonatomic) _Bool isLTEWithCDRX;
 @property(readonly, nonatomic) struct __CFString *wwanInterfaceName;
 @property(readonly, nonatomic) int currentRAT;

@@ -14,6 +14,7 @@
 @interface HUQuickControlViewProfile : NSObject <NSCopying>
 {
     unsigned long long _controlSize;
+    unsigned long long _suspendedState;
     id <HFDynamicFormattingValue> _supplementaryFormattedValue;
     id <HFIconDescriptor> _decorationIconDescriptor;
     unsigned long long _orientation;
@@ -25,6 +26,7 @@
 @property(nonatomic) unsigned long long orientation; // @synthesize orientation=_orientation;
 @property(retain, nonatomic) id <HFIconDescriptor> decorationIconDescriptor; // @synthesize decorationIconDescriptor=_decorationIconDescriptor;
 @property(retain, nonatomic) id <HFDynamicFormattingValue> supplementaryFormattedValue; // @synthesize supplementaryFormattedValue=_supplementaryFormattedValue;
+@property(nonatomic) unsigned long long suspendedState; // @synthesize suspendedState=_suspendedState;
 @property(nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) _Bool supportsTouchContinuation;

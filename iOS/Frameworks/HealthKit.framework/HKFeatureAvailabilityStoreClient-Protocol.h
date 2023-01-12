@@ -7,6 +7,7 @@
 #import <HealthKit/NSObject-Protocol.h>
 
 @protocol HKFeatureAvailabilityStoreClient <NSObject>
+- (void)client_featureAvailabilityProvidingDidUpdateSettings;
 - (void)client_featureAvailabilityExtensionDidUpdatePairedDeviceCapability;
 - (void)client_featureAvailabilityExtensionDidUpdateOnboardingCompletion;
 @end

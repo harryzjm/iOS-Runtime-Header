@@ -9,7 +9,7 @@
 #import <MapKit/MKPlaceBatchDisplayCoordinator-Protocol.h>
 
 @class NSArray, NSString;
-@protocol MKPlaceBatchGuideConsumer, MKPlaceBatchGuideFetcher, OS_dispatch_queue;
+@protocol MKPlaceBatchConsumer, MKPlaceBatchFetcher, OS_dispatch_queue;
 
 @interface MKPlaceBatchController : NSObject <MKPlaceBatchDisplayCoordinator>
 {
@@ -19,19 +19,18 @@
     long long _state;
     NSArray *_batches;
     unsigned long long _totalIdentifiers;
+    unsigned long long _totalIdentifiersFetched;
     NSObject<OS_dispatch_queue> *_batchControllerQueue;
     unsigned long long _batchSize;
-    long long _batchType;
     unsigned long long _minNumberOfItems;
-    id <MKPlaceBatchGuideFetcher> _guideFetcher;
-    id <MKPlaceBatchGuideConsumer> _guideConsumer;
+    id <MKPlaceBatchFetcher> _batchFetcher;
+    id <MKPlaceBatchConsumer> _batchConsumer;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <MKPlaceBatchGuideConsumer> guideConsumer; // @synthesize guideConsumer=_guideConsumer;
-@property(nonatomic) __weak id <MKPlaceBatchGuideFetcher> guideFetcher; // @synthesize guideFetcher=_guideFetcher;
+@property(nonatomic) __weak id <MKPlaceBatchConsumer> batchConsumer; // @synthesize batchConsumer=_batchConsumer;
+@property(nonatomic) __weak id <MKPlaceBatchFetcher> batchFetcher; // @synthesize batchFetcher=_batchFetcher;
 @property(nonatomic) unsigned long long minNumberOfItems; // @synthesize minNumberOfItems=_minNumberOfItems;
-@property(nonatomic) long long batchType; // @synthesize batchType=_batchType;
 @property(nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 - (long long)stateForTesting;
 - (long long)lastFetchedBatchForTesting;
@@ -39,9 +38,9 @@
 - (id)batchesForTesting;
 - (void)buildBatchesFromIdentifiers:(id)arg1;
 - (void)handleFetchGuidesCompleted:(_Bool)arg1 error:(id)arg2 usingGuides:(id)arg3;
-- (void)fetchGuidesWithIdentifiers:(id)arg1;
+- (void)fetchBatchItemsWithIdentifiers:(id)arg1;
 - (void)didDisplayItemAtIndex:(unsigned long long)arg1;
-- (id)initWithGuideIdentifiers:(id)arg1 withBatchSize:(unsigned long long)arg2 minimumNumberOfItemBeforeFetching:(unsigned long long)arg3 shouldLoadFirstBatchImmediately:(_Bool)arg4 usingGuideBatchFetcher:(id)arg5 usingGuideBatchConsumer:(id)arg6;
+- (id)initWithItemIdentifiers:(id)arg1 withBatchSize:(unsigned long long)arg2 minimumNumberOfItemBeforeFetching:(unsigned long long)arg3 shouldLoadFirstBatchImmediately:(_Bool)arg4 usingBatchFetcher:(id)arg5 usingBatchConsumer:(id)arg6 displayedItemCount:(unsigned long long)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

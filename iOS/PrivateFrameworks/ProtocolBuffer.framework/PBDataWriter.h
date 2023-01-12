@@ -13,6 +13,7 @@
     PBMutableData *_data;
 }
 
+- (void).cxx_destruct;
 - (void)writeTag:(unsigned int)arg1 andType:(unsigned char)arg2;
 - (void)writeBareVarint:(unsigned long long)arg1;
 - (void)writeUint8:(unsigned char)arg1;
@@ -40,7 +41,6 @@
 - (void)writeInt32:(int)arg1 forTag:(unsigned int)arg2;
 - (id)immutableData;
 - (id)data;
-- (void)dealloc;
 - (id)init;
 
 @end

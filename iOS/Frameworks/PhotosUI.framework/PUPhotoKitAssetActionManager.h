@@ -23,7 +23,7 @@
 - (id)actionPerformerForDuplicatingAssetsByAssetCollection:(id)arg1 withNewStillImageTime:(CDStruct_1b6d18a9)arg2;
 - (id)actionPerformerForSettingFavoriteTo:(_Bool)arg1 onAssetsByAssetCollection:(id)arg2;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;
-- (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1;
+- (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1 allowsRemove:(_Bool)arg2;
 - (_Bool)shouldEnableActionType:(unsigned long long)arg1 onAsset:(id)arg2 inAssetCollection:(id)arg3;
 - (_Bool)canPerformActionType:(unsigned long long)arg1 onAsset:(id)arg2 inAssetCollection:(id)arg3;
 

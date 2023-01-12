@@ -14,7 +14,8 @@
 {
 }
 
-+ (_Bool)disabled;
+@property(readonly, nonatomic) _Bool disabled;
+- (void)updateWithConfig:(id)arg1;
 - (void)processEvent:(id)arg1;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 

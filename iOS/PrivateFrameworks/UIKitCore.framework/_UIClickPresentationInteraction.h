@@ -34,6 +34,8 @@
         _Bool interactionEffectForTargetedPreview;
         _Bool endedForPresentation;
         _Bool shouldPlayFeedback;
+        _Bool shouldPresentWithCompletion;
+        _Bool shouldBeDelayedByGestureRecognizer;
     } _delegateImplements;
     _Bool _unableToClick;
     long long _statsPresentation;
@@ -105,12 +107,13 @@
 - (void)_driverEnded;
 - (void)_driverClickedUp;
 - (void)_driverClickedDown;
+- (_Bool)clickDriver:(id)arg1 shouldBeDelayedByGestureRecognizer:(id)arg2;
 - (_Bool)clickDriver:(id)arg1 shouldDelayGestureRecognizer:(id)arg2;
 - (void)clickDriver:(id)arg1 didPerformEvent:(unsigned long long)arg2;
 - (void)clickDriver:(id)arg1 didUpdateHighlightProgress:(double)arg2;
 - (void)clickDriver:(id)arg1 shouldBegin:(CDUnknownBlockType)arg2;
 - (void)_performPresentation;
-@property(readonly, nonatomic) unsigned long long activationMode;
+@property(readonly, nonatomic) unsigned long long activatedDriverStyle;
 - (_Bool)_canPerformPresentation;
 - (void)_performPreviewPresentation;
 - (void)_viewTraitCollectionDidChange:(id)arg1;
@@ -125,6 +128,7 @@
 - (void)beginPanInteraction;
 - (void)cancelInteraction;
 - (void)present;
+@property(readonly, nonatomic) UIGestureRecognizer *gestureRecognizerForFailureRelationship;
 @property(readonly, nonatomic) UIGestureRecognizer *gestureRecognizerForExclusionRelationship;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;

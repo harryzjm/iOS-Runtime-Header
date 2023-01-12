@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, UIUpdateItem;
+@class NSMutableArray, UIUpdateItem;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewUpdateGap : NSObject
@@ -20,18 +20,7 @@ __attribute__((visibility("hidden")))
     UIUpdateItem *_lastUpdateItem;
 }
 
-+ (id)gapWithUpdateItem:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIUpdateItem *lastUpdateItem; // @synthesize lastUpdateItem=_lastUpdateItem;
-@property(retain, nonatomic) UIUpdateItem *firstUpdateItem; // @synthesize firstUpdateItem=_firstUpdateItem;
-@property(readonly, nonatomic) NSArray *insertItems; // @synthesize insertItems=_insertItems;
-@property(readonly, nonatomic) NSArray *deleteItems; // @synthesize deleteItems=_deleteItems;
-@property(readonly, nonatomic) _Bool hasAutomaticAnimationItems;
-@property(readonly, nonatomic) _Bool isSectionBasedGap;
-@property(readonly, nonatomic) NSArray *updateItems;
-@property(readonly, nonatomic) _Bool hasInserts;
-@property(readonly, nonatomic) _Bool isDeleteBasedGap;
-- (void)addUpdateItem:(id)arg1;
 - (id)description;
 - (id)init;
 

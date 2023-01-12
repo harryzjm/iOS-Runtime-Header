@@ -9,6 +9,7 @@
 #import <UIKitCore/NSXPCListenerDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, NSXPCListener;
+@protocol _UIViewServiceSessionManagerDelegate;
 
 @interface _UIViewServiceSessionManager : NSObject <NSXPCListenerDelegate>
 {
@@ -16,12 +17,15 @@
     NSXPCListener *_listener;
     NSMutableArray *_sessions;
     int _connectionNotificationToken;
+    id <_UIViewServiceSessionManagerDelegate> _delegate;
 }
 
 + (id)__serviceSessionManager;
 + (_Bool)hasActiveSessions;
++ (void)startViewServiceSessionWithDelegate:(id)arg1;
 + (void)startViewServiceSessionManagerAsPlugin:(_Bool)arg1;
 - (void).cxx_destruct;
+@property(readonly) id <_UIViewServiceSessionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_startOrStopSystemsForBackgroundRunning;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)_configureSessionForConnection:(id)arg1;
@@ -30,6 +34,7 @@
 - (void)_startListenerWithName:(id)arg1;
 - (void)_startListener;
 - (id)_initAsPlugIn:(_Bool)arg1;
+- (id)_initWithDelegate:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

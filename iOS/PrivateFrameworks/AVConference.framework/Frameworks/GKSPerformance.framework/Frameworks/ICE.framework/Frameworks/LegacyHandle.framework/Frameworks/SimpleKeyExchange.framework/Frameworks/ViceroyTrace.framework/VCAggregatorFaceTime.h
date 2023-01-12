@@ -13,7 +13,9 @@ __attribute__((visibility("hidden")))
 {
     NSString *_remoteInterfaceType;
     NSString *_currentSegmentKey;
+    NSString *_lastSegmentKey;
     NSString *_relayServer;
+    NSString *_endToEndStatus;
     int _relayType;
     NSString *_accessToken;
     NSString *_remoteOSBuild;
@@ -83,6 +85,7 @@ __attribute__((visibility("hidden")))
     unsigned int _callTransportType;
     unsigned int _callErrorCode;
     unsigned int _callDetailedErrorCode;
+    unsigned int _callErrorDomain;
     unsigned int _numberOfSegments;
     unsigned int _REDState;
     unsigned char _wifiAssistState;
@@ -129,14 +132,18 @@ __attribute__((visibility("hidden")))
     unsigned int _cellToWifiHandoverCount;
     _Bool _isDuplicationEnabled;
     _Bool _remoteFaceTimeSwitchesAvailable;
+    _Bool _didSwitchFromOneToOne;
+    double _oneToOneSwitchUpgradeTime;
     double _duplicationStartTime;
     unsigned int _evictedFramesLikelyRecoverableCount;
     unsigned int _evictedFramesTrackedCount;
     unsigned int _evictedFramesAnalysisValidIntervals;
     double _evictedFramesAverageLatePacketDelay;
+    unsigned int _lateFramesScheduledCount;
     unsigned int _fecProcessingTime;
     VCHistogram *_lossPattern;
     double _primaryConnHealthAllowedDelay;
+    NSString *_activeConnectionRegistry;
     unsigned int _linkProbingVersion;
     unsigned int _remoteLinkProbingVersion;
     unsigned int _localAlertStateSwitchCount;
@@ -148,6 +155,8 @@ __attribute__((visibility("hidden")))
     unsigned int _dynamicDupeLinkCount;
     double _rttMeanTotalDelta;
     unsigned char _plrTierTotalDelta;
+    unsigned char _coreMotionActivityValue;
+    unsigned char _coreMotionActivityConfidence;
     unsigned int _isVPCEnabled;
     double _minVPCProcessingTime;
     double _maxVPCProcessingTime;
@@ -155,11 +164,18 @@ __attribute__((visibility("hidden")))
     unsigned int _averageVPCProcessingTimeCounter;
     VCHistogram *_callVideoSwitchPeriodHistogram;
     VCAdaptiveLearning *_adaptiveLearning;
+    unsigned long long _localWRMDuplicationSwitchCount;
+    unsigned long long _remoteWRMDuplicationSwitchCount;
+    int _avSyncOffsetSum;
+    int _minAVSyncOffset;
+    int _maxAVSyncOffset;
+    unsigned int _avSyncOffsetSamplesCount;
 }
 
 @property(readonly) VCHistogram *JBQSizeDeltaAudLarger; // @synthesize JBQSizeDeltaAudLarger=_JBQSizeDeltaAudLarger;
 @property(readonly) VCHistogram *JBQSizeDeltaVidLarger; // @synthesize JBQSizeDeltaVidLarger=_JBQSizeDeltaVidLarger;
 @property(readonly) VCHistogram *WANVJBQSize; // @synthesize WANVJBQSize=_WANVJBQSize;
+@property(copy) NSString *activeConnectionRegistry; // @synthesize activeConnectionRegistry=_activeConnectionRegistry;
 - (int)initialSettledBitrate;
 - (int)shortTermAverageBWEForSegment:(id)arg1;
 - (int)longTermAverageBWEForSegment:(id)arg1;
@@ -182,11 +198,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)isDuplicationChangedForEventType:(unsigned short)arg1;
 - (void)updatePrimaryConnHealthAllowedDelay:(double)arg1;
 - (void)updateVCRCProfileNumber:(unsigned int)arg1;
+- (void)updateCoreMotionActivityWithPayload:(id)arg1;
+- (void)updateNetworkStats:(unsigned int)arg1 payload:(id)arg2;
+- (void)updateAlgoMetrics:(unsigned int)arg1;
 - (void)updateWRMMetrics:(unsigned int)arg1 payload:(id)arg2;
 - (void)updateLinkProbingStats:(unsigned int)arg1 payload:(id)arg2;
 - (void)updateSwitchConfiguration:(unsigned int)arg1 payload:(id)arg2;
 - (void)updateAdaptiveLearningStats:(unsigned int)arg1 payload:(id)arg2;
 - (void)updateVideoSwitchTimes;
+- (void)updateVideoQualityWithPayload:(id)arg1;
 - (void)updateConnectionTimes:(id)arg1;
 - (void)updateRelayInfo:(id)arg1;
 - (void)updateNoRemoteState:(_Bool)arg1;
@@ -197,10 +217,14 @@ __attribute__((visibility("hidden")))
 - (void)updateVideoResolution:(id)arg1;
 - (void)updateVideoFECStats:(id)arg1;
 - (void)updateRTStats:(id)arg1;
+- (void)updateAVSyncOffsetSumAndCountWithValue:(int)arg1;
+- (id)updatePayloadWithSingleParticipantData:(id)arg1;
 - (void)updateVPCStats:(id)arg1;
 - (void)startNewSegment;
 - (id)duplicationIndicator;
 - (_Bool)isLocalInterfaceTypeForSegment:(id)arg1 equalTo:(id)arg2;
+- (_Bool)shouldReportWithCallErrorCode:(unsigned int)arg1;
+- (void)setNWActivityReportingEnabled:(_Bool)arg1;
 - (void)reset;
 - (void)flushCurrentSegment;
 - (id)aggregatedSessionReport;
@@ -211,7 +235,7 @@ __attribute__((visibility("hidden")))
 - (void)saveCallSegmentHistory;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1 nwParentActivity:(id)arg2 conversationTimeBase:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

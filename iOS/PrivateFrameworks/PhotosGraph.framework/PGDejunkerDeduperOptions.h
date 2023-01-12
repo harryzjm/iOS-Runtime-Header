@@ -45,9 +45,11 @@
     double _finalPassMaximumTimeGroupExtension;
     double _finalPassDedupingThreshold;
     NSSet *_identifiersOfRequiredItems;
+    unsigned long long _duration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long duration; // @synthesize duration=_duration;
 @property(retain, nonatomic) NSSet *identifiersOfRequiredItems; // @synthesize identifiersOfRequiredItems=_identifiersOfRequiredItems;
 @property(nonatomic) double finalPassDedupingThreshold; // @synthesize finalPassDedupingThreshold=_finalPassDedupingThreshold;
 @property(nonatomic) double finalPassMaximumTimeGroupExtension; // @synthesize finalPassMaximumTimeGroupExtension=_finalPassMaximumTimeGroupExtension;

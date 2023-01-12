@@ -9,6 +9,7 @@
 @class FBSSceneIdentity, NSString, SBApplication;
 
 @protocol SBApplicationSceneIdentityProviding <NSObject>
+- (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 uniqueIdentifier:(NSString *)arg2 targetContentIdentifier:(NSString *)arg3 sceneSessionRole:(NSString *)arg4;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 uniqueIdentifier:(NSString *)arg2 targetContentIdentifier:(NSString *)arg3;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 uniqueIdentifier:(NSString *)arg2;
 - (FBSSceneIdentity *)sceneIdentityForApplication:(SBApplication *)arg1 targetContentIdentifier:(NSString *)arg2;

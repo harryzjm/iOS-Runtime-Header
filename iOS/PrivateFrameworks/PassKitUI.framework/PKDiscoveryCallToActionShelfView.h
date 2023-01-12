@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKContinuousButton, PKDiscoveryCallToAction, PKDiscoveryCallToActionShelf, PKDiscoveryMedia, UIImageView, UILabel;
+#import <PassKitUI/PKLinkedApplicationObserver-Protocol.h>
+
+@class NSString, PKContinuousButton, PKDiscoveryCallToAction, PKDiscoveryCallToActionShelf, PKDiscoveryMedia, PKLinkedApplication, UIImageView, UILabel;
 @protocol PKDiscoveryCardViewDelegate;
 
-@interface PKDiscoveryCallToActionShelfView
+@interface PKDiscoveryCallToActionShelfView <PKLinkedApplicationObserver>
 {
     PKDiscoveryCallToActionShelf *_ctaShelf;
     PKDiscoveryCallToAction *_callToAction;
     PKDiscoveryMedia *_media;
+    PKLinkedApplication *_linkedApplication;
     UILabel *_titleLabel;
     UILabel *_editorialDescriptionLabel;
     UIImageView *_iconImageView;
@@ -29,10 +32,17 @@
 - (double)_leadingEditorialTextSpace;
 - (double)_leadingTitleSpace;
 - (void)_buttonPressed:(id)arg1;
+- (void)linkedApplicationDidChangeState:(id)arg1;
 - (void)setImage:(id)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithShelf:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

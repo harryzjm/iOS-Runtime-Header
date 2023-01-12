@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType m_finishSplitTransitionBlock;
 }
 
++ (_Bool)canShowKeyboardSettings;
 + (id)activeInstance;
 + (id)sharedInstance;
 @property(nonatomic) _Bool showsSwitches; // @synthesize showsSwitches=_showsSwitches;

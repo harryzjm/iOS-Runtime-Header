@@ -18,13 +18,6 @@
     NSString *_ownerIdentifierString;
 }
 
-+ (_Bool)_rollOwnerDifferentiatorForProfile:(id)arg1 reason:(id)arg2 error:(id *)arg3;
-+ (_Bool)rollOwnerDifferentiatorAfterCloudSyncDisableForProfile:(id)arg1 error:(id *)arg2;
-+ (_Bool)rollOwnerDifferentiatorForProfile:(id)arg1 reason:(id)arg2 error:(id *)arg3;
-+ (_Bool)_canRollOwnerIdentifierForProfile:(id)arg1;
-+ (id)_databaseUUIDForProfile:(id)arg1 error:(id *)arg2;
-+ (id)ownerIdentifierForSyncContainer:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)deviceIDForContainer:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)unitTest_ownerIdentifierWithDatabaseIdentifer:(id)arg1 deviceIdentifier:(id)arg2 ownerDifferentiator:(id)arg3;
 - (void).cxx_destruct;
 - (id)description;
@@ -33,7 +26,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) NSString *cloudKitIdentifier;
 @property(readonly, nonatomic) NSString *string;
-- (id)initWithDatabaseIdentifer:(id)arg1 deviceIdentifier:(id)arg2 ownerDifferentiator:(id)arg3;
+- (id)_initWithDatabaseIdentifer:(id)arg1 deviceIdentifier:(id)arg2 ownerDifferentiator:(id)arg3;
 
 @end
 

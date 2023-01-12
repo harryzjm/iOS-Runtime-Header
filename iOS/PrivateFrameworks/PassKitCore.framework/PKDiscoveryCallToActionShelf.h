@@ -23,6 +23,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)localizeWithBundle:(id)arg1;
+- (void)setItem:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 
 @end

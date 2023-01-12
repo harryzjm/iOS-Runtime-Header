@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HMDHMBLogEvent
+#import <HomeKitMetrics/HMMLogEvent.h>
+
+@interface HMDHMBLogEvent : HMMLogEvent
 {
     int _containerType;
     int _zoneType;
@@ -12,7 +14,7 @@
 
 @property(readonly) int zoneType; // @synthesize zoneType=_zoneType;
 @property(readonly) int containerType; // @synthesize containerType=_containerType;
-- (id)initWithEventType:(id)arg1 cloudZoneID:(id)arg2;
+- (id)initWithCloudZoneID:(id)arg1;
 
 @end
 

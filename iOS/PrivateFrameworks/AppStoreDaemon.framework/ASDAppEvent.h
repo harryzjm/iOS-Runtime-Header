@@ -16,6 +16,7 @@
     _Bool _hasBeenPosted;
     _Bool _isBeta;
     NSString *_accountID;
+    NSString *_appPlatform;
     NSString *_bundleID;
     NSString *_bundleVersion;
     NSString *_cohort;
@@ -60,6 +61,7 @@
 @property(copy, nonatomic) NSString *cohort; // @synthesize cohort=_cohort;
 @property(copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(copy, nonatomic) NSString *appPlatform; // @synthesize appPlatform=_appPlatform;
 @property(copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

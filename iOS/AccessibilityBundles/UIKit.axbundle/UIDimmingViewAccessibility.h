@@ -19,10 +19,8 @@
 - (_Bool)accessibilityPerformEscape;
 - (struct CGPoint)accessibilityActivationPoint;
 - (_Bool)accessibilityActivate;
-- (_Bool)_accessibilityCanDismiss;
 - (_Bool)accessibilityViewIsModal;
 - (id)_accessibilityObscuredScreenAllowedViews;
-- (_Bool)_accessibilityCoversScreen;
 
 @end
 

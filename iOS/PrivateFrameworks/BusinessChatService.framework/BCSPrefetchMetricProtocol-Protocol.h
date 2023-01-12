@@ -7,8 +7,10 @@
 #import <BusinessChatService/NSObject-Protocol.h>
 
 @protocol BCSPrefetchMetricProtocol <NSObject>
+@property(nonatomic) long long errorCode;
 @property(nonatomic) long long hoursSinceLastSuccessfulPrefetch;
 @property(nonatomic) _Bool successful;
+@property(nonatomic) unsigned long long reason;
 @property(readonly, nonatomic) long long type;
 @end
 

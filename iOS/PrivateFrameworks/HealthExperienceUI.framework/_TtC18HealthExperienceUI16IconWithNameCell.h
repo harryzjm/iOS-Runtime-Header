@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UICollectionViewListCell.h>
+#import <UIKit/UICollectionViewListCell.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC18HealthExperienceUI16IconWithNameCell : _UICollectionViewListCell
+@interface _TtC18HealthExperienceUI16IconWithNameCell : UICollectionViewListCell
 {
-    MISSING_TYPE *$__lazy_storage_$_iconWidthConstraint;
-    MISSING_TYPE *$__lazy_storage_$_iconLeadingConstraint;
-    MISSING_TYPE *icon;
-    MISSING_TYPE *name;
     MISSING_TYPE *item;
 }
 
 - (void).cxx_destruct;
+- (void)_bridgedUpdateConfigurationUsingState:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

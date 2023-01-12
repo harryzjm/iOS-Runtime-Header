@@ -8,17 +8,18 @@
 
 #import <SpringBoard/SBGestureRecognizerTouchHistoryProviding-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSString;
 
 @interface SBTouchHistory : NSObject <SBGestureRecognizerTouchHistoryProviding>
 {
     unsigned long long _depth;
-    NSMutableArray *_locations;
-    NSMutableArray *_timestamps;
+    unsigned long long _count;
+    unsigned long long _start;
+    struct TouchHistory *_history;
     double _peakSpeed;
+    double _lastTouchLatency;
 }
 
-- (void).cxx_destruct;
 - (int)touchHistoryDepthForTimeDuration:(double)arg1 forComputingDerivative:(_Bool)arg2;
 - (double)peakSpeed;
 - (double)averageTouchPathAngleOverTimeDuration:(double)arg1;
@@ -26,6 +27,7 @@
 - (void)conformsToSBGestureRecognizerTouchHistoryProviding;
 - (void)reset;
 - (void)updateWithLocation:(struct CGPoint)arg1 timestamp:(double)arg2;
+- (void)dealloc;
 - (id)init;
 - (id)initWithDepth:(unsigned long long)arg1;
 

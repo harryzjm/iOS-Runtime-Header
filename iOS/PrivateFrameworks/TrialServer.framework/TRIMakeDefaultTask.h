@@ -12,6 +12,7 @@
 @interface TRIMakeDefaultTask <TRIRetryableTask>
 {
     TRIMetric *_treatmentMetric;
+    _Bool wasDeferred;
     int retryCount;
 }
 
@@ -19,6 +20,7 @@
 + (id)parseFromData:(id)arg1;
 + (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 @property(nonatomic) int retryCount; // @synthesize retryCount;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

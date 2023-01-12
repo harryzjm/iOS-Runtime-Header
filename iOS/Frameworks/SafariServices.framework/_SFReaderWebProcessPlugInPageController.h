@@ -8,7 +8,7 @@
 
 @interface _SFReaderWebProcessPlugInPageController
 {
-    struct unique_ptr<SafariServices::WebProcessPlugInReaderJSController, std::__1::default_delete<SafariServices::WebProcessPlugInReaderJSController>> _readerJSController;
+    struct unique_ptr<SafariServices::WebProcessPlugInReaderJSController, std::default_delete<SafariServices::WebProcessPlugInReaderJSController>> _readerJSController;
     WKWebProcessPlugInScriptWorld *_isolatedWorldForNextPageDetection;
     _SFWebProcessPlugInReaderEnabledPageController *_originalPageController;
 }

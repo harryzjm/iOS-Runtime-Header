@@ -8,14 +8,15 @@
 
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/NSSecureCoding-Protocol.h>
+#import <WorkflowKit/WFAppInstalledResourceDelegate-Protocol.h>
 #import <WorkflowKit/WFParameterEventObserver-Protocol.h>
 #import <WorkflowKit/WFUUIDProvider-Protocol.h>
 #import <WorkflowKit/WFVariableProvider-Protocol.h>
 
-@class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, WFActionParameterSummary, WFContentAttribution, WFContentAttributionTracker, WFContentCollection, WFImage, WFParameter, WFResourceManager, WFWorkflow;
-@protocol OS_dispatch_queue, WFActionExtendedOperation, WFActionParameterInputProvider, WFRemoteUserInterface, WFUserInterfaceHost, WFVariableDataSource;
+@class ICApp, INAppDescriptor, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, WFActionParameterSummary, WFAppInstalledResource, WFContentAttributionTracker, WFContentCollection, WFIcon, WFImage, WFParameter, WFResourceManager, WFWorkflow;
+@protocol OS_dispatch_queue, WFActionExtendedOperation, WFActionRemoteUserInterface, WFActionRunningDelegate, WFActionSandboxExtensionProvider, WFUserInterfaceHost, WFVariableDataSource;
 
-@interface WFAction : NSObject <WFUUIDProvider, WFParameterEventObserver, NSCopying, NSSecureCoding, WFVariableProvider>
+@interface WFAction : NSObject <WFAppInstalledResourceDelegate, WFUUIDProvider, WFParameterEventObserver, NSCopying, NSSecureCoding, WFVariableProvider>
 {
     _Bool _running;
     _Bool _inputParameterUnlocked;
@@ -29,9 +30,7 @@
     NSProgress *_progress;
     WFContentAttributionTracker *_contentAttributionTracker;
     NSString *_identifier;
-    NSString *_metricsIdentifier;
     NSDictionary *_definition;
-    NSString *_appIdentifier;
     WFContentCollection *_input;
     WFContentCollection *_output;
     id <WFUserInterfaceHost> _userInterface;
@@ -39,15 +38,19 @@
     NSHashTable *_eventObservers;
     NSDictionary *_initialSerializedParameters;
     NSDictionary *_parametersByKey;
+    NSMutableDictionary *_cachedDefaultParameterStates;
     NSMutableDictionary *_userDefinedParameterStates;
     NSMutableDictionary *_supplementalSerializedParameters;
     NSSet *_ignoredParameterKeysForProcessing;
     CDUnknownBlockType _completionHandler;
-    id <WFRemoteUserInterface> _actionUserInterface;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    id <WFActionRemoteUserInterface> _actionUserInterface;
+    NSArray *_currentGeneratedResourceNodes;
     WFWorkflow *_workflow;
     NSDictionary *_processedParameters;
-    id <WFActionParameterInputProvider> _parameterInputProvider;
+    id <WFActionRunningDelegate> _runningDelegate;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    INAppDescriptor *_appDescriptor;
+    WFAppInstalledResource *_appResource;
     NSString *_widgetSizeClass;
     id <WFActionExtendedOperation> _extendedOperation;
 }
@@ -63,18 +66,22 @@
 @property(retain, nonatomic) id <WFActionExtendedOperation> extendedOperation; // @synthesize extendedOperation=_extendedOperation;
 @property(nonatomic) _Bool didRunRemotely; // @synthesize didRunRemotely=_didRunRemotely;
 @property(copy, nonatomic) NSString *widgetSizeClass; // @synthesize widgetSizeClass=_widgetSizeClass;
-@property(readonly, nonatomic) id <WFActionParameterInputProvider> parameterInputProvider; // @synthesize parameterInputProvider=_parameterInputProvider;
+@property(retain, nonatomic) WFAppInstalledResource *appResource; // @synthesize appResource=_appResource;
+@property(retain, nonatomic) INAppDescriptor *appDescriptor; // @synthesize appDescriptor=_appDescriptor;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly, nonatomic) id <WFActionRunningDelegate> runningDelegate; // @synthesize runningDelegate=_runningDelegate;
 @property(readonly, nonatomic) _Bool skipsProcessingHiddenParameters; // @synthesize skipsProcessingHiddenParameters=_skipsProcessingHiddenParameters;
 @property(copy, nonatomic) NSDictionary *processedParameters; // @synthesize processedParameters=_processedParameters;
 @property(readonly, nonatomic) __weak WFWorkflow *workflow; // @synthesize workflow=_workflow;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain, nonatomic) id <WFRemoteUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
+@property(copy, nonatomic) NSArray *currentGeneratedResourceNodes; // @synthesize currentGeneratedResourceNodes=_currentGeneratedResourceNodes;
+@property(retain, nonatomic) id <WFActionRemoteUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
 @property(readonly, nonatomic) struct os_unfair_lock_s parameterInitializationLock; // @synthesize parameterInitializationLock=_parameterInitializationLock;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(nonatomic) _Bool inputParameterUnlocked; // @synthesize inputParameterUnlocked=_inputParameterUnlocked;
 @property(retain, nonatomic) NSSet *ignoredParameterKeysForProcessing; // @synthesize ignoredParameterKeysForProcessing=_ignoredParameterKeysForProcessing;
 @property(retain, nonatomic) NSMutableDictionary *supplementalSerializedParameters; // @synthesize supplementalSerializedParameters=_supplementalSerializedParameters;
 @property(retain, nonatomic) NSMutableDictionary *userDefinedParameterStates; // @synthesize userDefinedParameterStates=_userDefinedParameterStates;
+@property(retain, nonatomic) NSMutableDictionary *cachedDefaultParameterStates; // @synthesize cachedDefaultParameterStates=_cachedDefaultParameterStates;
 @property(copy, nonatomic) NSDictionary *parametersByKey; // @synthesize parametersByKey=_parametersByKey;
 @property(retain, nonatomic) NSDictionary *initialSerializedParameters; // @synthesize initialSerializedParameters=_initialSerializedParameters;
 @property(readonly, nonatomic) NSHashTable *eventObservers; // @synthesize eventObservers=_eventObservers;
@@ -83,12 +90,13 @@
 @property(retain, nonatomic) WFContentCollection *output; // @synthesize output=_output;
 @property(readonly, nonatomic) WFContentCollection *input; // @synthesize input=_input;
 @property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
-@property(readonly, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property(readonly, copy, nonatomic) NSDictionary *definition; // @synthesize definition=_definition;
-@property(readonly, copy, nonatomic) NSString *metricsIdentifier; // @synthesize metricsIdentifier=_metricsIdentifier;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) WFContentAttributionTracker *contentAttributionTracker; // @synthesize contentAttributionTracker=_contentAttributionTracker;
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+@property(readonly, copy, nonatomic) NSString *metricsIdentifier;
+- (void)matchContextualAction:(id)arg1 toContentCollection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)contextualActionsForSurface:(unsigned long long)arg1;
 - (void)setDefaultCoercionOptionsOnInputs;
 - (void)setDefaultCoercionOptionsOnContentCollection:(id)arg1;
 - (void)configureRuntimeResourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -97,20 +105,21 @@
 - (_Bool)requiresUserInteractionWhenRunWithInput:(id)arg1;
 - (_Bool)showsImplicitChooseFromListWhenRunWithInput:(id)arg1;
 @property(readonly, nonatomic) NSArray *supportedAppIdentifiers;
-- (void)getTargetContentAttributionWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) WFContentAttribution *targetContentAttribution;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (void)getContentDestinationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)contentDestinationWithError:(id *)arg1;
 - (id)actionForAppIdentifier:(id)arg1;
 - (void)snapInputParameterIfNecessary;
 - (void)lockInputParameter;
 - (void)unlockInputParameter;
 @property(readonly, nonatomic, getter=isLastAction) _Bool lastAction;
 - (_Bool)isDisabledWhenRunOnDevice:(id)arg1;
-- (_Bool)isUnsupportedWhenRunWithEnvironment:(id)arg1;
 - (_Bool)requiresHandoffWhenRunWithUserInterfaceType:(id)arg1;
 - (_Bool)supportsUserInterfaceType:(id)arg1;
 - (_Bool)shouldBeSuggestedAfterAction:(id)arg1 inWorkflow:(id)arg2;
 - (id)inheritedOutputContentClassesInWorkflow:(id)arg1 context:(id)arg2;
 - (id)inheritedOutputContentClassesInWorkflow:(id)arg1;
+- (id)inheritedInputVariableInWorkflow:(id)arg1 ignoringInputTypes:(_Bool)arg2;
 - (id)inheritedInputVariableInWorkflow:(id)arg1;
 - (id)inputSourceInWorkflow:(id)arg1;
 - (id)outputVariableWithVariableProvider:(id)arg1 UUIDProvider:(id)arg2;
@@ -119,11 +128,13 @@
 - (_Bool)shouldBeConnectedToPreviousActionInWorkflow:(id)arg1 withOutputsConsumedByFollowingActions:(id)arg2;
 - (_Bool)legacyBehaviorIgnoresOutputFromAction:(id)arg1 inWorkflow:(id)arg2;
 - (_Bool)ignoresOutputFromAction:(id)arg1 inWorkflow:(id)arg2;
+- (_Bool)ignoresOutputFromPreviousActionInWorkflow:(id)arg1;
 @property(readonly, nonatomic) NSArray *outputContentClasses; // @synthesize outputContentClasses=_outputContentClasses;
 @property(readonly, nonatomic) NSArray *inputContentClasses; // @synthesize inputContentClasses=_inputContentClasses;
 @property(readonly, nonatomic) NSArray *specifiedOutputContentClasses;
 @property(readonly, nonatomic) NSArray *specifiedInputContentClasses;
 - (id)classesForTypeArray:(id)arg1 includeAllOutputTypes:(_Bool)arg2;
+@property(readonly, nonatomic) Class contentItemClass;
 - (void)wasRemovedFromWorkflow:(id)arg1;
 - (void)wasAddedToWorkflow:(id)arg1;
 - (void)wasAddedToWorkflowByUser:(id)arg1;
@@ -165,22 +176,24 @@
 - (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishRunningWithError:(id)arg1;
 - (id)parameterValueForKey:(id)arg1 ofClass:(Class)arg2;
+- (void)prepareToProcessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)hasChildren;
 @property(readonly, nonatomic) _Bool isDeletable;
-- (void)runWithSiriUserInterface:(id)arg1 input:(id)arg2;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
 - (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (void)checkUserInterfaceAndRunWithInput:(id)arg1;
-- (void)makeAccessResourcesAvailableAtWorkflowLevelAndRun;
-- (_Bool)runWithFallbackUserInterface:(id)arg1;
-- (void)runSynchronouslyWithInput:(id)arg1 error:(id *)arg2;
-- (void)runWithoutUserInterfaceWithInput:(id)arg1;
+- (id)checkForResourceAvailabilityErrors;
+- (void)makeAccessResourcesAvailableAtWorkflowLevelAndRunWithContentItemCache:(id)arg1;
+- (void)performDeletionAuthorizationChecksWithUserInterface:(id)arg1 contentItemCache:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)isRunningInSiriUserInterface;
+- (void)performSmartPromptChecksWithUserInterface:(id)arg1 contentDestination:(id)arg2 contentItemCache:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)performDataAccessChecksWithUserInterface:(id)arg1 contentItemCache:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)isRunningAsAutomation;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (_Bool)runAsynchronouslyWithInput:(id)arg1 userInterfaceType:(id)arg2 userInterface:(id)arg3;
 - (void)runWithInput:(id)arg1 error:(id *)arg2;
-- (void)setParameterInputProvider:(id)arg1;
+@property(readonly, nonatomic) id <WFActionSandboxExtensionProvider> sandboxExtensionProvider;
+- (void)setRunningDelegate:(id)arg1;
 - (id)parametersRequiringUserInputAlongsideParameter:(id)arg1;
-- (void)askForValuesOfParameters:(id)arg1 withDefaultStates:(id)arg2 input:(id)arg3 workQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)askForValuesOfParameters:(id)arg1 withDefaultStates:(id)arg2 prompts:(id)arg3 input:(id)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_processParameterStates:(id)arg1 withInput:(id)arg2 skippingHiddenParameters:(_Bool)arg3 askForValuesIfNecessary:(_Bool)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 @property(readonly, nonatomic) _Bool usesLegacyInputBehavior;
 - (void)processParametersWithoutAskingForValuesWithInput:(id)arg1 workQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -190,7 +203,9 @@
 @property(readonly, nonatomic) _Bool populatesInputFromInputParameter;
 - (_Bool)getInputContentFromVariablesInParameterState:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)previousAction;
-- (void)runWithInput:(id)arg1 userInterface:(id)arg2 parameterInputProvider:(id)arg3 variableSource:(id)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)runWithInput:(id)arg1 userInterface:(id)arg2 runningDelegate:(id)arg3 variableSource:(id)arg4 workQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)generatedResourceNodes;
+- (void)recreateGeneratedResourcesIfNeeded;
 - (id)createResourceManager;
 @property(readonly, nonatomic) WFResourceManager *resourceManager; // @synthesize resourceManager=_resourceManager;
 - (void)parameterDefaultSerializedRepresentationDidChange:(id)arg1;
@@ -199,6 +214,7 @@
 - (_Bool)shouldInsertExpandingParameterForParameter:(id)arg1;
 - (void)_notifyEventObserversParameterStateDidChangeForKey:(id)arg1;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
+- (void)authorizeAccessResourcesImplicitlyForParameterState:(id)arg1 forParameter:(id)arg2;
 - (id)supplementalParameterValueForKey:(id)arg1 ofClass:(Class)arg2;
 - (void)setSupplementalParameterValue:(id)arg1 forKey:(id)arg2;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(_Bool)arg2;
@@ -215,6 +231,12 @@
 - (id)copyWithDefinition:(id)arg1 serializedParameters:(id)arg2;
 - (id)copyWithSerializedParameters:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)appInstalledResource:(id)arg1 didUpdateAppDescriptor:(id)arg2;
+- (_Bool)appResourceRequiresAppInstall;
+- (id)missingAppError;
+- (void)resolveAppDescriptorIfNecessary:(CDUnknownBlockType)arg1;
+- (void)updateAppDescriptorInDatabaseWithSelectedApp:(id)arg1;
+- (void)updateAppDescriptorWithSelectedApp:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy, nonatomic) NSString *localizedKeyParameterDisplayName;
@@ -226,10 +248,16 @@
 - (id)containedVariables;
 - (id)visibleParametersForParameterSummary;
 - (id)visibleParametersWithProcessing:(_Bool)arg1;
+@property(readonly, nonatomic) unsigned long long appearance;
+@property(readonly, nonatomic) _Bool deletesInput;
+@property(readonly, nonatomic) _Bool locallyProcessesData;
+@property(readonly, nonatomic) _Bool requiresUnlock;
 @property(readonly, nonatomic) unsigned long long parameterCollapsingBehavior;
 @property(readonly, nonatomic) _Bool displaysParameterSummary;
 @property(readonly, nonatomic) NSString *parameterSummaryString;
+@property(readonly, nonatomic) NSArray *additionalParameterSummaries;
 @property(readonly, nonatomic) WFActionParameterSummary *parameterSummary;
+@property(readonly, nonatomic) NSArray *additionalParameterSummaryDefinitions;
 @property(readonly, nonatomic) id parameterSummaryDefinition;
 @property(readonly, nonatomic) NSArray *parameterDefinitions;
 @property(readonly, nonatomic) long long rateLimitDelay;
@@ -237,6 +265,7 @@
 @property(readonly, nonatomic) long long rateLimitThreshold;
 @property(readonly, nonatomic) long long initialSuggestionBehavior;
 @property(readonly, nonatomic) _Bool neverSuggested;
+@property(readonly, nonatomic) _Bool highRisk;
 @property(readonly, nonatomic) unsigned long long outputDisclosureLevel;
 @property(readonly, nonatomic) _Bool outputsMultipleItems;
 @property(readonly, nonatomic) _Bool inputsMultipleItems;
@@ -254,6 +283,7 @@
 - (id)localizedSubcategoryForCategory:(id)arg1;
 - (id)subcategoryForCategory:(id)arg1;
 @property(readonly, nonatomic) NSString *appSection;
+@property(readonly, nonatomic) ICApp *appForDisplay;
 @property(readonly, nonatomic) ICApp *app;
 @property(readonly, nonatomic) NSDictionary *userInterfaceClasses;
 @property(readonly, nonatomic) Class configurationViewClass;
@@ -272,7 +302,6 @@
 @property(readonly, nonatomic, getter=isDiscontinued) _Bool discontinued;
 @property(readonly, nonatomic, getter=isDebugAction) _Bool debugAction;
 @property(readonly, nonatomic) NSArray *disabledOnPlatforms;
-@property(readonly, nonatomic) NSArray *unsupportedEnvironments;
 @property(readonly, nonatomic) NSDate *lastModifiedDate;
 @property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly, nonatomic) NSArray *localizedKeywords;
@@ -297,12 +326,15 @@
 @property(readonly, nonatomic) NSDictionary *inputDictionary;
 @property(readonly, nonatomic) NSDictionary *descriptionDictionary;
 @property(readonly, nonatomic) WFImage *keyImage;
-@property(readonly, nonatomic) WFImage *outputIcon;
+@property(readonly, nonatomic) WFImage *outputIconImage;
 - (void)loadIconWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) WFImage *icon;
+@property(readonly, nonatomic) WFImage *iconImage;
+@property(readonly, nonatomic) WFIcon *outputIcon;
+@property(readonly, nonatomic) WFIcon *icon;
 @property(readonly, nonatomic) NSString *iconName;
 @property(readonly, nonatomic) NSArray *localizedCategories;
 @property(readonly, nonatomic) NSArray *categories;
+@property(readonly, nonatomic) NSDictionary *appDefinition;
 @property(readonly, nonatomic) NSAttributedString *localizedFooter;
 @property(readonly, nonatomic) NSString *localizedAttribution;
 @property(readonly, nonatomic) NSString *attribution;
@@ -317,6 +349,8 @@
 @property(readonly, nonatomic) NSString *name;
 @property(nonatomic, getter=isFavorite) _Bool favorite;
 @property(readonly, copy, nonatomic) NSString *appBundleIdentifier;
+- (void)requestUnlock:(CDUnknownBlockType)arg1;
+- (void)requestUnlockIfNeeded:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

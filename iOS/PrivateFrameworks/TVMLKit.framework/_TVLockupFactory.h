@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)_validateCellMetrics:(struct TVCellMetrics *)arg1;
 + (id)_configurationIdentifierForElement:(id)arg1;
 + (void)_configureStackingPoster:(id)arg1 layout:(id)arg2 element:(id)arg3 forMetrics:(_Bool)arg4;
 + (void)_configureCell:(id)arg1 layout:(id)arg2 element:(id)arg3;

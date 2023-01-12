@@ -9,23 +9,26 @@
 #import <Sleep/BSDescriptionProviding-Protocol.h>
 #import <Sleep/HKSPDictionarySerializable-Protocol.h>
 #import <Sleep/HKSPObject-Protocol.h>
+#import <Sleep/HKSPOnboardingModel-Protocol.h>
+#import <Sleep/HKSPXPCObject-Protocol.h>
 #import <Sleep/NAEquatable-Protocol.h>
 #import <Sleep/NAHashable-Protocol.h>
 #import <Sleep/NSMutableCopying-Protocol.h>
 
-@class NSDate, NSSet, NSString;
+@class NSDate, NSDictionary, NSSet, NSString;
+@protocol HKSPSyncAnchor;
 
-@interface HKSPSleepEventRecord : NSObject <BSDescriptionProviding, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
+@interface HKSPSleepEventRecord : NSObject <HKSPOnboardingModel, BSDescriptionProviding, HKSPXPCObject, HKSPObject, HKSPDictionarySerializable, NAEquatable, NAHashable, NSMutableCopying>
 {
     unsigned long long _version;
     NSDate *_lastModifiedDate;
-    NSDate *_bedtimeDelayedUntilDate;
-    NSDate *_bedtimeSkippedDate;
+    id <HKSPSyncAnchor> _syncAnchor;
     NSDate *_wakeUpEarlyNotificationConfirmedDate;
-    NSDate *_wakeUpConfirmedUntilDate;
     NSDate *_wakeUpAlarmDismissedDate;
+    NSDate *_wakeUpWithNoAlarmDate;
+    NSDate *_wakeUpOverriddenDate;
+    NSDate *_wakeUpConfirmedUntilDate;
     NSDate *_wakeUpAlarmSnoozedUntilDate;
-    NSDate *_windDownSkippedDate;
     NSDate *_goodMorningDismissedDate;
     long long _sleepCoachingOnboardingCompletedVersion;
     NSDate *_sleepCoachingOnboardingFirstCompletedDate;
@@ -35,9 +38,8 @@
     NSDate *_sleepWindDownShortcutsOnboardingFirstCompletedDate;
 }
 
++ (void)_appendDateDescriptionIfRelevant:(id)arg1 withName:(id)arg2 toBuilder:(id)arg3;
 + (_Bool)supportsSecureCoding;
-+ (id)testSleepEventRecordWithAllPropertiesSet;
-+ (id)testSleepEventRecord;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDate *sleepWindDownShortcutsOnboardingFirstCompletedDate; // @synthesize sleepWindDownShortcutsOnboardingFirstCompletedDate=_sleepWindDownShortcutsOnboardingFirstCompletedDate;
 @property(readonly, nonatomic) long long sleepWindDownShortcutsOnboardingCompletedVersion; // @synthesize sleepWindDownShortcutsOnboardingCompletedVersion=_sleepWindDownShortcutsOnboardingCompletedVersion;
@@ -46,13 +48,13 @@
 @property(readonly, copy, nonatomic) NSDate *sleepCoachingOnboardingFirstCompletedDate; // @synthesize sleepCoachingOnboardingFirstCompletedDate=_sleepCoachingOnboardingFirstCompletedDate;
 @property(readonly, nonatomic) long long sleepCoachingOnboardingCompletedVersion; // @synthesize sleepCoachingOnboardingCompletedVersion=_sleepCoachingOnboardingCompletedVersion;
 @property(readonly, copy, nonatomic) NSDate *goodMorningDismissedDate; // @synthesize goodMorningDismissedDate=_goodMorningDismissedDate;
-@property(readonly, copy, nonatomic) NSDate *windDownSkippedDate; // @synthesize windDownSkippedDate=_windDownSkippedDate;
 @property(readonly, copy, nonatomic) NSDate *wakeUpAlarmSnoozedUntilDate; // @synthesize wakeUpAlarmSnoozedUntilDate=_wakeUpAlarmSnoozedUntilDate;
-@property(readonly, copy, nonatomic) NSDate *wakeUpAlarmDismissedDate; // @synthesize wakeUpAlarmDismissedDate=_wakeUpAlarmDismissedDate;
 @property(readonly, copy, nonatomic) NSDate *wakeUpConfirmedUntilDate; // @synthesize wakeUpConfirmedUntilDate=_wakeUpConfirmedUntilDate;
+@property(readonly, copy, nonatomic) NSDate *wakeUpOverriddenDate; // @synthesize wakeUpOverriddenDate=_wakeUpOverriddenDate;
+@property(readonly, copy, nonatomic) NSDate *wakeUpWithNoAlarmDate; // @synthesize wakeUpWithNoAlarmDate=_wakeUpWithNoAlarmDate;
+@property(readonly, copy, nonatomic) NSDate *wakeUpAlarmDismissedDate; // @synthesize wakeUpAlarmDismissedDate=_wakeUpAlarmDismissedDate;
 @property(readonly, copy, nonatomic) NSDate *wakeUpEarlyNotificationConfirmedDate; // @synthesize wakeUpEarlyNotificationConfirmedDate=_wakeUpEarlyNotificationConfirmedDate;
-@property(readonly, copy, nonatomic) NSDate *bedtimeSkippedDate; // @synthesize bedtimeSkippedDate=_bedtimeSkippedDate;
-@property(readonly, copy, nonatomic) NSDate *bedtimeDelayedUntilDate; // @synthesize bedtimeDelayedUntilDate=_bedtimeDelayedUntilDate;
+@property(readonly, nonatomic) id <HKSPSyncAnchor> syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(readonly, nonatomic, getter=isAnySleepWindDownShortcutsOnboardingCompleted) _Bool anySleepWindDownShortcutsOnboardingCompleted;
@@ -74,17 +76,23 @@
 - (id)mutableCopy;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) NSSet *significantChanges;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_migrateForCoder:(id)arg1;
 - (_Bool)_needsMigrationForCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)objectWithSyncAnchor:(id)arg1;
 - (void)copyFromObject:(id)arg1;
 - (id)initFromObject:(id)arg1;
 - (id)init;
+- (_Bool)isEqualToModel:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, nonatomic) NSSet *significantChanges;
+@property(readonly, nonatomic) _Bool isCurrentSleepCoachingOnboardingCompleted;
+@property(readonly, nonatomic) _Bool isCurrentSleepTrackingOnboardingCompleted;
+@property(readonly, nonatomic) _Bool isCurrentSleepWindDownShortcutsOnboardingCompleted;
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly) Class superclass;
 
 @end

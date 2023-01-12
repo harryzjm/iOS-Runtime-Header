@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURLSessionTask, VSAuditToken, VSOptional, VSStoreURLBag;
+@class NSOperationQueue, NSURLSessionTask, VSAuditToken, VSOptional;
 
 @interface VSVerificationStateResetOperation
 {
     VSAuditToken *_auditToken;
     VSOptional *_result;
-    VSStoreURLBag *_bag;
     NSURLSessionTask *_resetStateTask;
+    NSOperationQueue *_privateQueue;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(retain, nonatomic) NSURLSessionTask *resetStateTask; // @synthesize resetStateTask=_resetStateTask;
-@property(retain, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
 @property(retain, nonatomic) VSOptional *result; // @synthesize result=_result;
 @property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 - (void)cancel;

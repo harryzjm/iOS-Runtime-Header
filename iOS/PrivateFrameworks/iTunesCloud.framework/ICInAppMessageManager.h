@@ -10,8 +10,8 @@
 #import <iTunesCloud/ICInAppMessageManagerProtocol-Protocol.h>
 #import <iTunesCloud/NSXPCListenerDelegate-Protocol.h>
 
-@class AMSPushHandler, ICInAppMessageStore, ICUserIdentityStore, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
-@protocol OS_dispatch_queue;
+@class ICInAppMessageStore, ICUserIdentityStore, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
+@protocol NSCopying, OS_dispatch_queue;
 
 @interface ICInAppMessageManager : NSObject <NSXPCListenerDelegate, ICInAppMessageManagerProtocol, ICEnvironmentMonitorObserver>
 {
@@ -22,8 +22,8 @@
     ICInAppMessageStore *_messageStore;
     ICUserIdentityStore *_identityStore;
     _Bool _isSystemService;
-    AMSPushHandler *_amsPushHandler;
     NSString *_foregroundApplicationIdentifier;
+    id <NSCopying> _privacyObserverToken;
     NSXPCListener *_xpcServiceListener;
     NSMutableSet *_xpcConnections;
     NSXPCConnection *_xpcClientConnection;
@@ -36,7 +36,6 @@
 - (void)_removeConnection:(id)arg1;
 - (void)_addConnection:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (id)_amsPushHandler;
 - (_Bool)_privacyAcknowledgementRequired;
 - (void)_performCacheConsistencyCheck;
 - (void)_loadConfigurationWithCompletion:(CDUnknownBlockType)arg1;
@@ -44,7 +43,7 @@
 - (void)_downloadResourcesForMessageWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_checkForMessageResourcesNeedingDownloadForcingIfNecessary:(_Bool)arg1;
 - (void)_updateShouldDownloadResources:(_Bool)arg1 onMessageWithIdentifier:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_performSyncRetryIfPending;
+- (void)_performSyncRetryIfPending:(_Bool)arg1;
 - (void)_handleICInAppMessagesDidChangeDistributedNotification:(id)arg1;
 - (void)_removeAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeMessageEntryWithIdentifier:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -55,6 +54,7 @@
 - (void)_schedulePeriodicUpdate;
 - (id)_xpcClientConnection;
 - (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
+- (void)removeApplicationBadgeForBundleIdentifier:(id)arg1 fromPresentedMessageEntry:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setProperty:(id)arg1 forKey:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)getPropertyForKey:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setGlobalProperty:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -71,6 +71,7 @@
 - (void)reportEventForMessageIdentifier:(id)arg1 withParams:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetMessagesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)syncMessagesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addMessageEntryFromAMSDialogRequest:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeMessageEntryWithIdentifier:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;

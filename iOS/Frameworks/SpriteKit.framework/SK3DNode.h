@@ -8,7 +8,7 @@
 
 @interface SK3DNode
 {
-    struct SKC3DNode *_skc3DNode;
+    void *_skc3DNode;
 }
 
 + (id)nodeWithViewportSize:(struct CGSize)arg1;
@@ -27,7 +27,7 @@
 - (id)init;
 - (void)commonInit;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 @property(nonatomic) _Bool autoenablesDefaultLighting;
 @property(retain, nonatomic) SCNNode *pointOfView;
 @property(nonatomic) _Bool loops;

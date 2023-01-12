@@ -13,6 +13,7 @@
 @interface PUOneUpSettings : PXSettings <PXPreferencesObserver>
 {
     NSNumber *_cachedAutoplayVideoEnabled;
+    _Bool _showSuggestionsForAllAssets;
     _Bool _showInitialDetailsIndicator;
     _Bool _enableSuggestionsAnalysis;
     _Bool _initialDetailsIndicatorShouldSlideIn;
@@ -28,9 +29,15 @@
     _Bool _showPaddedFacesRect;
     _Bool _showBestSquareRect;
     _Bool _showToggleCTMButton;
+    _Bool _showGainMapButton;
     _Bool _hideToolbarWhenShowingAccessoryView;
+    _Bool _hideFloatingInfoPanelWhenHidingChrome;
+    _Bool _hideFloatingInfoPanel;
+    _Bool _allowsDetailsToggleButtonInBars;
     _Bool _useGlobalDetailsVisibility;
     _Bool _useGlobalCommentsVisibility;
+    _Bool _squareImageCapToHalfHeight;
+    _Bool _shouldFadeAccessoryView;
     _Bool _persistChromeVisibility;
     _Bool _allowParallax;
     _Bool _allowStatusBar;
@@ -46,11 +53,14 @@
     _Bool _allowPlayButtonInBars;
     _Bool _videoRemuteOnBackgrounding;
     _Bool _videoShowDebugBorders;
+    _Bool _livePhotoSRLCompensationEnabled;
+    _Bool _livePhotoSRLCompensationManualMode;
     _Bool _applyPerspectiveTransformDuringVitality;
     _Bool _lockScrollDuringLivePhotoPlayback;
     _Bool _livePhotoScrubberShowForPlayback;
     _Bool _shouldMergeOverlappingLivePhotos;
     _Bool _showOffBadgeForDisabledLivePhotos;
+    _Bool _vitalityUseInsetLimiting;
     _Bool _showReframedBadge;
     _Bool _allowGIFPlayback;
     _Bool _showGIFLoadingDelays;
@@ -63,9 +73,6 @@
     _Bool _showLoadingIndicatorDuringDownload;
     _Bool _alwaysShowRenderIndicator;
     _Bool _alwaysShowAirPlayButton;
-    long long _suggestionsStyle;
-    long long _suggestionMaximumAssetAgeInDays;
-    long long _simulatedAssetVariationSuggestion;
     double _initialDetailsIndicatorDelay;
     double _initialDetailsIndicatorDuration;
     long long _titleTapAction;
@@ -97,12 +104,15 @@
     double _videoAutoplayThreshold;
     double _videoPauseThreshold;
     double _autoplayScrubberWidth;
+    double _livePhotoSRLCompensationManualValue;
+    NSString *_livePhotoSRLCompensationFilterName;
     double _livePhotoInteractionThreshold;
     double _livePhotoMinimumOverlappingDuration;
     unsigned long long _overlappingLivePhotosCountLimit;
     double _vitalityMaskBlur;
     double _vitalityFeatherScale;
-    double _vitalityMaxAllowedInset;
+    double _vitalityMaxAllowedInsetPoints;
+    double _vitalityMaxAllowedLargeInsetPoints;
     unsigned long long _viewModelCacheCountLimit;
     double _visibilityDurationForEnteringQuickPagingRegime;
     double _visibilityDurationForExitingQuickPagingRegime;
@@ -160,7 +170,9 @@
 @property(nonatomic) double visibilityDurationForEnteringQuickPagingRegime; // @synthesize visibilityDurationForEnteringQuickPagingRegime=_visibilityDurationForEnteringQuickPagingRegime;
 @property(nonatomic) unsigned long long viewModelCacheCountLimit; // @synthesize viewModelCacheCountLimit=_viewModelCacheCountLimit;
 @property(nonatomic) _Bool showReframedBadge; // @synthesize showReframedBadge=_showReframedBadge;
-@property(nonatomic) double vitalityMaxAllowedInset; // @synthesize vitalityMaxAllowedInset=_vitalityMaxAllowedInset;
+@property(nonatomic) _Bool vitalityUseInsetLimiting; // @synthesize vitalityUseInsetLimiting=_vitalityUseInsetLimiting;
+@property(nonatomic) double vitalityMaxAllowedLargeInsetPoints; // @synthesize vitalityMaxAllowedLargeInsetPoints=_vitalityMaxAllowedLargeInsetPoints;
+@property(nonatomic) double vitalityMaxAllowedInsetPoints; // @synthesize vitalityMaxAllowedInsetPoints=_vitalityMaxAllowedInsetPoints;
 @property(nonatomic) double vitalityFeatherScale; // @synthesize vitalityFeatherScale=_vitalityFeatherScale;
 @property(nonatomic) double vitalityMaskBlur; // @synthesize vitalityMaskBlur=_vitalityMaskBlur;
 @property(nonatomic) _Bool showOffBadgeForDisabledLivePhotos; // @synthesize showOffBadgeForDisabledLivePhotos=_showOffBadgeForDisabledLivePhotos;
@@ -171,6 +183,10 @@
 @property(nonatomic) _Bool lockScrollDuringLivePhotoPlayback; // @synthesize lockScrollDuringLivePhotoPlayback=_lockScrollDuringLivePhotoPlayback;
 @property(nonatomic) _Bool applyPerspectiveTransformDuringVitality; // @synthesize applyPerspectiveTransformDuringVitality=_applyPerspectiveTransformDuringVitality;
 @property(nonatomic) double livePhotoInteractionThreshold; // @synthesize livePhotoInteractionThreshold=_livePhotoInteractionThreshold;
+@property(copy, nonatomic) NSString *livePhotoSRLCompensationFilterName; // @synthesize livePhotoSRLCompensationFilterName=_livePhotoSRLCompensationFilterName;
+@property(nonatomic) double livePhotoSRLCompensationManualValue; // @synthesize livePhotoSRLCompensationManualValue=_livePhotoSRLCompensationManualValue;
+@property(nonatomic) _Bool livePhotoSRLCompensationManualMode; // @synthesize livePhotoSRLCompensationManualMode=_livePhotoSRLCompensationManualMode;
+@property(nonatomic) _Bool livePhotoSRLCompensationEnabled; // @synthesize livePhotoSRLCompensationEnabled=_livePhotoSRLCompensationEnabled;
 @property(nonatomic) _Bool videoShowDebugBorders; // @synthesize videoShowDebugBorders=_videoShowDebugBorders;
 @property(nonatomic) double autoplayScrubberWidth; // @synthesize autoplayScrubberWidth=_autoplayScrubberWidth;
 @property(nonatomic) _Bool videoRemuteOnBackgrounding; // @synthesize videoRemuteOnBackgrounding=_videoRemuteOnBackgrounding;
@@ -206,14 +222,20 @@
 @property(nonatomic) long long chromeAutoHideBehaviorOnPlayButton; // @synthesize chromeAutoHideBehaviorOnPlayButton=_chromeAutoHideBehaviorOnPlayButton;
 @property(nonatomic) long long chromeAutoHideBehaviorOnLivePhoto; // @synthesize chromeAutoHideBehaviorOnLivePhoto=_chromeAutoHideBehaviorOnLivePhoto;
 @property(nonatomic) double chromeDefaultAnimationDuration; // @synthesize chromeDefaultAnimationDuration=_chromeDefaultAnimationDuration;
+@property(nonatomic) _Bool shouldFadeAccessoryView; // @synthesize shouldFadeAccessoryView=_shouldFadeAccessoryView;
+@property(nonatomic) _Bool squareImageCapToHalfHeight; // @synthesize squareImageCapToHalfHeight=_squareImageCapToHalfHeight;
 @property(nonatomic) _Bool useGlobalCommentsVisibility; // @synthesize useGlobalCommentsVisibility=_useGlobalCommentsVisibility;
 @property(nonatomic) _Bool useGlobalDetailsVisibility; // @synthesize useGlobalDetailsVisibility=_useGlobalDetailsVisibility;
+@property(nonatomic) _Bool allowsDetailsToggleButtonInBars; // @synthesize allowsDetailsToggleButtonInBars=_allowsDetailsToggleButtonInBars;
+@property(nonatomic) _Bool hideFloatingInfoPanel; // @synthesize hideFloatingInfoPanel=_hideFloatingInfoPanel;
+@property(nonatomic) _Bool hideFloatingInfoPanelWhenHidingChrome; // @synthesize hideFloatingInfoPanelWhenHidingChrome=_hideFloatingInfoPanelWhenHidingChrome;
 @property(nonatomic) _Bool hideToolbarWhenShowingAccessoryView; // @synthesize hideToolbarWhenShowingAccessoryView=_hideToolbarWhenShowingAccessoryView;
 @property(nonatomic) double minimumFullCommentTitleViewWidth; // @synthesize minimumFullCommentTitleViewWidth=_minimumFullCommentTitleViewWidth;
 @property(nonatomic) double minimumVisibleCommentedContentHeight; // @synthesize minimumVisibleCommentedContentHeight=_minimumVisibleCommentedContentHeight;
 @property(nonatomic) double minimumVisibleContentHeight; // @synthesize minimumVisibleContentHeight=_minimumVisibleContentHeight;
 @property(nonatomic) double accessoryInitialTopPosition; // @synthesize accessoryInitialTopPosition=_accessoryInitialTopPosition;
 @property(nonatomic) long long accessoryViewType; // @synthesize accessoryViewType=_accessoryViewType;
+@property(nonatomic) _Bool showGainMapButton; // @synthesize showGainMapButton=_showGainMapButton;
 @property(nonatomic) _Bool showToggleCTMButton; // @synthesize showToggleCTMButton=_showToggleCTMButton;
 @property(nonatomic) _Bool showBestSquareRect; // @synthesize showBestSquareRect=_showBestSquareRect;
 @property(nonatomic) _Bool showPaddedFacesRect; // @synthesize showPaddedFacesRect=_showPaddedFacesRect;
@@ -235,15 +257,12 @@
 @property(nonatomic) _Bool initialDetailsIndicatorShouldSlideIn; // @synthesize initialDetailsIndicatorShouldSlideIn=_initialDetailsIndicatorShouldSlideIn;
 @property(nonatomic) _Bool enableSuggestionsAnalysis; // @synthesize enableSuggestionsAnalysis=_enableSuggestionsAnalysis;
 @property(nonatomic) _Bool showInitialDetailsIndicator; // @synthesize showInitialDetailsIndicator=_showInitialDetailsIndicator;
-@property(nonatomic) long long simulatedAssetVariationSuggestion; // @synthesize simulatedAssetVariationSuggestion=_simulatedAssetVariationSuggestion;
-@property(nonatomic) long long suggestionMaximumAssetAgeInDays; // @synthesize suggestionMaximumAssetAgeInDays=_suggestionMaximumAssetAgeInDays;
-@property(nonatomic) long long suggestionsStyle; // @synthesize suggestionsStyle=_suggestionsStyle;
+@property(nonatomic) _Bool showSuggestionsForAllAssets; // @synthesize showSuggestionsForAllAssets=_showSuggestionsForAllAssets;
 - (void)preferencesDidChange;
 - (_Bool)allowAutoplayVideoForAsset:(id)arg1;
-- (void)_updatePrototypeRelatedSettings;
-- (void)_invalidatePrototypeRelatedSettings;
 - (void)setDefaultValues;
 - (void)createChildren;
+- (long long)version;
 - (id)parentSettings;
 
 // Remaining properties

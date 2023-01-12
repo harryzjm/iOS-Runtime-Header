@@ -12,7 +12,6 @@
 - (_Bool)hasProperties;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
 
 @end
 

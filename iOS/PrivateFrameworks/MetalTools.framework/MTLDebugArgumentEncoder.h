@@ -10,7 +10,7 @@
 {
     id <MTLBuffer> _currentBuffer;
     unsigned long long _currentOffset;
-    struct StructType *_reflectionParser;
+    void *_reflectionParser;
 }
 
 - (void)setIntersectionFunctionTables:(const id *)arg1 withRange:(struct _NSRange)arg2;

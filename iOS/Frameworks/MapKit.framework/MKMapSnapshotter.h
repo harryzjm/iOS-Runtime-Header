@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MKMapSnapshotOptions, NSXPCConnection, VKMapSnapshotCreator;
+@class MKMapSnapshotOptions, NSXPCConnection, VKMapSnapshotCreator, geo_isolater;
 @protocol OS_dispatch_queue;
 
 @interface MKMapSnapshotter : NSObject
@@ -15,21 +15,22 @@
     int _loadingFlag;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CDUnknownBlockType _completionHandler;
+    geo_isolater *_isolation;
+    NSXPCConnection *_snapshotService;
     VKMapSnapshotCreator *_snapshotCreator;
     _Bool _needsResume;
-    NSXPCConnection *_snapshotService;
 }
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (_Bool)_shouldDefaultToDarkContent;
-- (_Bool)_shouldShowDarkContent;
 - (void)_performSnapshot;
 - (void)_setupCustomFeaturesForAnnotationViewsIfNeeded;
 - (void)startWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_shouldRenderLogoForSnapshotDimensions;
 - (_Bool)_isWidget;
+- (void)_deliverSnapshot:(id)arg1;
+- (void)_drawAppleLogoIfNecessaryOnSnapshot:(id)arg1;
 - (void)_succeedWithSnapshot:(id)arg1;
 - (void)_failWithError:(id)arg1;
 - (void)_cleanupSnapshotCreator;

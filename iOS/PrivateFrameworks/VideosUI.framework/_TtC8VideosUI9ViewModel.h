@@ -19,10 +19,8 @@
     MISSING_TYPE *valueData;
     MISSING_TYPE *supplementaryData;
     MISSING_TYPE *metrics;
-    MISSING_TYPE *legacyMetrics;
     MISSING_TYPE *storageDict;
     MISSING_TYPE *parent;
-    MISSING_TYPE *parentViewElement;
     MISSING_TYPE *jsonDictionary;
     MISSING_TYPE *_document;
 }

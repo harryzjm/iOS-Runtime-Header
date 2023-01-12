@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
+@class GEOBuildingFootprintFeature, GEOVectorTile;
+
 @interface GEOMapFeatureBuildingSection : NSObject
 {
     CDStruct_c3b9c2ee *_coordinates;
     unsigned long long _coordinateCount;
     double _baseHeight;
     double _height;
-    CDStruct_1d944ba4 *_feature;
+    GEOBuildingFootprintFeature *_feature;
     unsigned long long _sectionIndex;
+    GEOVectorTile *_tile;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double height; // @synthesize height=_height;
 @property(readonly, nonatomic) double baseHeight; // @synthesize baseHeight=_baseHeight;
 @property(readonly, nonatomic) unsigned long long coordinateCount;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee *coordinates;
 - (void)dealloc;
-- (id)initWithFeature:(CDStruct_1d944ba4 *)arg1 sectionIndex:(unsigned long long)arg2;
+- (id)initWithFeature:(id)arg1 sectionIndex:(unsigned long long)arg2;
 
 @end
 

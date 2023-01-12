@@ -6,37 +6,48 @@
 
 #import <UIKit/UIView.h>
 
-@class CAEmitterLayer, CALayer, NSData, PKDynamicContentView, PKDynamicLayerConfiguration, PKDynamicLayerTransactionEffectConfiguration, PKPass, UIImage, UIImageView;
+@class CAEmitterLayer, CAGradientLayer, CALayer, NSData, PKDynamicContentView, PKDynamicLayerConfiguration, PKDynamicLayerCrossDissolveConfiguration, PKDynamicLayerTransactionEffectConfiguration, PKPass, UIImage, UIImageView, UIMotionEffectGroup, _UIParallaxMotionEffect;
 
 @interface PKDynamicLayerView : UIView
 {
     PKPass *_pass;
     PKDynamicContentView *_backgroundParallaxView;
+    UIImageView *_backgroundParallaxCrossDissolveView;
+    CAGradientLayer *_backgroundRadialGradientLayer;
     PKDynamicContentView *_neutralView;
     PKDynamicContentView *_foregroundParallaxView;
+    UIImageView *_foregroundParallaxCrossDissolveView;
+    CAGradientLayer *_foregroundRadialGradientLayer;
     PKDynamicContentView *_staticOverlayView;
     UIImageView *_staticFallbackView;
     PKDynamicLayerConfiguration *_dynamicLayerConfiguration;
     PKDynamicLayerTransactionEffectConfiguration *_transactionEffectConfiguration;
+    PKDynamicLayerCrossDissolveConfiguration *_crossDissolveConfiguration;
     UIImage *_transactionEffectEmitterImage;
     NSData *_transactionEffectShapeData;
     CAEmitterLayer *_transactionEffectLayer;
     CALayer *_dimmingLayer;
+    _UIParallaxMotionEffect *_bottomEffect;
+    _UIParallaxMotionEffect *_topEffect;
+    UIMotionEffectGroup *_radialMaskEffects;
     _Bool _invalidated;
     _Bool _paused;
     _Bool _loaded;
+    _Bool _effectiveMotionEnabled;
     _Bool _automaticallyLoadContent;
-    _Bool _reduceMotionEnabled;
+    _Bool _motionEnabled;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isReduceMotionEnabled) _Bool reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
+@property(nonatomic, getter=isMotionEnabled) _Bool motionEnabled; // @synthesize motionEnabled=_motionEnabled;
 @property(nonatomic) _Bool automaticallyLoadContent; // @synthesize automaticallyLoadContent=_automaticallyLoadContent;
 - (id)_dimmingLayerAnimationWithDuration:(double)arg1;
 - (void)runTransactionEffect;
 - (void)_removeParallaxMotionEffect;
+- (id)_configureMotionEffectGroupForCrossDissolveConfiguration:(id)arg1;
+- (void)_addRadialMaskEffectsToView:(id)arg1;
 - (void)_addParallaxMotionEffect;
-- (void)_updateDynamicElements;
+- (void)didMoveToWindow;
 - (void)_updateVisibility;
 - (void)_configureDynamicViewsWithImageSet:(id)arg1;
 - (void)_configureViews;

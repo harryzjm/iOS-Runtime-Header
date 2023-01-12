@@ -10,19 +10,19 @@
 
 @interface TSCH3DTextureAtlas : NSObject
 {
-    NSMutableDictionary *mCachedLabels;
-    NSMutableArray *mTextures;
-    float mSamples;
+    NSMutableDictionary *_cachedLabels;
+    NSMutableArray *_textures;
+    float _samples;
 }
 
 + (id)atlasWithSamples:(float)arg1;
 + (id)atlas;
-@property(readonly, nonatomic) float samples; // @synthesize samples=mSamples;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) float samples; // @synthesize samples=_samples;
 - (tvec3_c2818ced)positionForLabel:(id)arg1;
 - (tvec3_c2818ced)p_addLabel:(id)arg1;
 - (id)textureAtIndex:(long long)arg1;
 - (tvec2_3b141483)textureSizeAtIndex:(long long)arg1;
-- (void)dealloc;
 - (id)initWithSamples:(float)arg1;
 
 @end

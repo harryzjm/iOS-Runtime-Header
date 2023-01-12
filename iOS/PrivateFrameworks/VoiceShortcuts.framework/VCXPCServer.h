@@ -9,17 +9,18 @@
 #import <VoiceShortcuts/NSXPCConnectionDelegate-Protocol.h>
 #import <VoiceShortcuts/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCListener, NSXPCListenerEndpoint, VCCKShortcutSyncCoordinator, VCCoreDuetListener, VCVoiceShortcutManager, WFTriggerManager;
-@protocol VCDatabaseProvider, VCSyncDataEndpoint;
+@class NSString, NSXPCListener, NSXPCListenerEndpoint, VCCKShortcutSyncCoordinator, VCVoiceShortcutManager, WFTriggerManager, WFTriggerRegistrar, WFWorkflowRunCoordinator;
+@protocol VCSyncDataEndpoint, WFDatabaseProvider;
 
 @interface VCXPCServer : NSObject <NSXPCListenerDelegate, NSXPCConnectionDelegate>
 {
     _Bool _skipEntitlementsCheck;
-    VCCoreDuetListener *_coreDuetListener;
     VCVoiceShortcutManager *_voiceShortcutManager;
     WFTriggerManager *_triggerManager;
     NSXPCListener *_xpcListener;
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
+    WFTriggerRegistrar *_triggerRegistrar;
+    WFWorkflowRunCoordinator *_runCoordinator;
     VCCKShortcutSyncCoordinator *_syncCoordinator;
     id <VCSyncDataEndpoint> _syncDataEndpoint;
 }
@@ -27,18 +28,18 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <VCSyncDataEndpoint> syncDataEndpoint; // @synthesize syncDataEndpoint=_syncDataEndpoint;
 @property(readonly, nonatomic) VCCKShortcutSyncCoordinator *syncCoordinator; // @synthesize syncCoordinator=_syncCoordinator;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) WFWorkflowRunCoordinator *runCoordinator; // @synthesize runCoordinator=_runCoordinator;
+@property(readonly, nonatomic) WFTriggerRegistrar *triggerRegistrar; // @synthesize triggerRegistrar=_triggerRegistrar;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property(readonly, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 @property(readonly, nonatomic) _Bool skipEntitlementsCheck; // @synthesize skipEntitlementsCheck=_skipEntitlementsCheck;
 @property(readonly, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
-@property(readonly, nonatomic) VCCoreDuetListener *coreDuetListener; // @synthesize coreDuetListener=_coreDuetListener;
-- (id)exportedXPCInterface;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 @property(readonly, nonatomic) VCVoiceShortcutManager *voiceShortcutManager; // @synthesize voiceShortcutManager=_voiceShortcutManager;
 @property(readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
-- (id)initWithXPCListener:(id)arg1 databaseProvider:(id)arg2 coreDuetListener:(id)arg3 syncCoordinator:(id)arg4 syncDataEndpoint:(id)arg5;
+- (id)initWithXPCListener:(id)arg1 databaseProvider:(id)arg2 triggerRegistrar:(id)arg3 syncCoordinator:(id)arg4 syncDataEndpoint:(id)arg5 runCoordinator:(id)arg6;
 - (id)initWithUnsecuredAnonymousListenerAndDatabaseProvider:(id)arg1;
-- (id)initWithDatabaseProvider:(id)arg1 coreDuetListener:(id)arg2 syncCoordinator:(id)arg3 syncDataEndpoint:(id)arg4;
+- (id)initWithDatabaseProvider:(id)arg1 triggerRegistrar:(id)arg2 syncCoordinator:(id)arg3 syncDataEndpoint:(id)arg4 runCoordinator:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

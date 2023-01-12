@@ -48,6 +48,7 @@
 - (id)storedAccessibilityElementsHidden;
 - (id)storedAccessibilityNavigationStyle;
 - (id)storedShouldGroupAccessibilityChildren;
+- (id)storedAccessibilityIdentifier;
 - (id)_internalAccessibilityAttributedUserInputLabels;
 - (id)accessibilityContainer;
 - (id)_internalAccessibilityAttributedHint;
@@ -86,11 +87,13 @@
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 @property(retain, nonatomic) NSArray *accessibilityCustomRotors;
+- (_Bool)__isKindOfUIViewController;
 - (id)_NSItemProviderTypeCoercion_coercedUIImageValueFromNSDataValue:(id)arg1 error:(id *)arg2;
 - (id)_NSItemProviderTypeCoercion_coercedUIImageValueFromNSURLValue:(id)arg1 error:(id *)arg2;
 - (id)uiPresentationManager;
 - (id)__autorotationSanityCheckObjectFromSource:(id)arg1 selector:(SEL)arg2;
 - (_Bool)_isGestureType:(long long)arg1;
+- (_Bool)conformsToProtocolCached:(id)arg1;
 - (void)prepareForInterfaceBuilder;
 - (void)awakeFromNib;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;

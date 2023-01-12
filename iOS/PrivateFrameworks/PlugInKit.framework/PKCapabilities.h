@@ -10,6 +10,7 @@
 {
 }
 
++ (id)frameworkQueueAttr;
 + (_Bool)supportsAutoreleasePoolDuringPlugInLaunch;
 
 @end

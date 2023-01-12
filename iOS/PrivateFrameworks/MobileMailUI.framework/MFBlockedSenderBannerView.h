@@ -15,6 +15,9 @@
 @property(nonatomic) __weak id <MFBlockedSenderBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_bannerDismissed:(id)arg1;
 - (void)_titleControlTapped:(id)arg1;
+- (void)dismissAction;
+- (void)primaryAction;
+- (id)bannerIcon;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

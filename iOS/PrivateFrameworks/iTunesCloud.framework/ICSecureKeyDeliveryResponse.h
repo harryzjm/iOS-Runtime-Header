@@ -28,6 +28,7 @@
 @property(copy, nonatomic) NSError *serverError; // @synthesize serverError=_serverError;
 @property(copy, nonatomic) ICStoreDialogResponse *dialog; // @synthesize dialog=_dialog;
 - (void)finishAssetResourceLoadingRequest:(id)arg1 withError:(id)arg2;
+- (id)description;
 
 @end
 

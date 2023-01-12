@@ -12,13 +12,14 @@
 
 @interface TSCH3DRayPickPipelineDelegate : NSObject <TSCH3DChartAllSceneObjectDelegate>
 {
-    TSCH3DSceneObject *mCurrentSceneObject;
-    tvec2_3b141483 mCurrentElement;
+    TSCH3DSceneObject *_currentSceneObject;
+    tvec2_3b141483 _currentElement;
 }
 
 - (id).cxx_construct;
-@property(nonatomic) tvec2_3b141483 currentElement; // @synthesize currentElement=mCurrentElement;
-@property(retain, nonatomic) TSCH3DSceneObject *currentSceneObject; // @synthesize currentSceneObject=mCurrentSceneObject;
+- (void).cxx_destruct;
+@property(nonatomic) tvec2_3b141483 currentElement; // @synthesize currentElement=_currentElement;
+@property(retain, nonatomic) TSCH3DSceneObject *currentSceneObject; // @synthesize currentSceneObject=_currentSceneObject;
 - (_Bool)willSubmitElement:(id)arg1 sceneObject:(id)arg2;
 - (_Bool)willRenderElement:(id)arg1 sceneObject:(id)arg2;
 - (void)didTransformElement:(id)arg1 sceneObject:(id)arg2;
@@ -32,17 +33,16 @@
 - (_Bool)willSubmitLabelType:(int)arg1 boundsIndex:(long long)arg2 alignment:(unsigned long long)arg3 elementIndex:(unsigned long long)arg4 forSceneObject:(id)arg5;
 - (void)labelsResourcesSessionWillEndForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)labelsResourcesSessionWillBeginForSceneObject:(id)arg1 pipeline:(id)arg2;
-- (void)setOffset:(const tvec3_17f03ce0 *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
+- (void)setOffset:(const void *)arg1 labelType:(int)arg2 boundsIndex:(long long)arg3 forSceneObject:(id)arg4;
 - (void)didSubmitSceneObject:(id)arg1 pipeline:(id)arg2;
 - (_Bool)willSubmitSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)didGenerateShaderEffects:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
-- (void)didGenerateShaderEffectsForSeriesAtIndex:(const tvec2_3b141483 *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
+- (void)didGenerateShaderEffectsForSeriesAtIndex:(const void *)arg1 effects:(id)arg2 sceneObject:(id)arg3 pipeline:(id)arg4;
 - (_Bool)willProcessSeries:(id)arg1 sceneObject:(id)arg2 pipeline:(id)arg3;
 - (struct ElementRenderPass)renderPassForSceneObject:(id)arg1;
 - (_Bool)renderPassDelayDisallowedForSceneObject:(id)arg1 pipeline:(id)arg2;
 - (void)didEndProcessingSceneObject:(id)arg1;
 - (_Bool)willBeginProcessingSceneObject:(id)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

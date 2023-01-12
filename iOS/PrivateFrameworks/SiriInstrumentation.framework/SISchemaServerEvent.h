@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, SISchemaConversationTrace, SISchemaDeviceFixedContext, SISchemaServerEventMetadata, SISchemaServerGeneratedDismissal, SISchemaSpeechResultSelected, SISchemaTurnInteraction, SISchemaUserSpeechDuration;
 
-@interface SISchemaServerEvent : PBCodable
+@interface SISchemaServerEvent
 {
     SISchemaServerEventMetadata *_eventMetadata;
     SISchemaUserSpeechDuration *_userSpeechDuration;
@@ -51,6 +49,7 @@
 @property(retain, nonatomic) SISchemaTurnInteraction *turnInteraction; // @synthesize turnInteraction=_turnInteraction;
 @property(retain, nonatomic) SISchemaConversationTrace *serverConversationTrace; // @synthesize serverConversationTrace=_serverConversationTrace;
 @property(retain, nonatomic) SISchemaUserSpeechDuration *userSpeechDuration; // @synthesize userSpeechDuration=_userSpeechDuration;
+- (id)qualifiedMessageName;
 - (int)getAnyEventType;
 
 @end

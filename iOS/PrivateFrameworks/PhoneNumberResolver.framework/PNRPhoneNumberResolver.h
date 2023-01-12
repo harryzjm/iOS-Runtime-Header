@@ -15,7 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)_recordUsageAnalyticForCountryCode:(id)arg1 success:(_Bool)arg2;
-- (id)resolveFullyQualifiedPhoneNumber:(id)arg1 inCountry:(id)arg2;
+- (void)resolveFullyQualifiedPhoneNumber:(id)arg1 inCountry:(id)arg2 logId:(id)arg3 resultBlock:(CDUnknownBlockType)arg4;
 - (id)resolvePhoneNumber:(id)arg1 countryCode:(id)arg2 error:(id *)arg3;
 - (void)resolvePhoneNumbers:(id)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)resolvePhoneNumbers:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;

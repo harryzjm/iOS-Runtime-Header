@@ -13,10 +13,12 @@
 __attribute__((visibility("hidden")))
 @interface WKRBSAssertionDelegate : NSObject <RBSAssertionObserving>
 {
+    CDUnknownBlockType _prepareForInvalidationCallback;
     CDUnknownBlockType _invalidationCallback;
 }
 
 @property(copy) CDUnknownBlockType invalidationCallback; // @synthesize invalidationCallback=_invalidationCallback;
+@property(copy) CDUnknownBlockType prepareForInvalidationCallback; // @synthesize prepareForInvalidationCallback=_prepareForInvalidationCallback;
 - (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
 - (void)assertionWillInvalidate:(id)arg1;
 - (void)dealloc;

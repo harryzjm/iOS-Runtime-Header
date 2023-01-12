@@ -6,21 +6,19 @@
 
 #import <SwiftUI/UIFocusEnvironment-Protocol.h>
 
-@class _UIFocusGroupDescriptor;
-
 @protocol _UIFocusEnvironmentPrivate <UIFocusEnvironment>
 
 @optional
-- (_UIFocusGroupDescriptor *)_focusGroupDescriptor;
-- (_Bool)_reversesLinearFocusWrapping;
 - (void)_setNeedsNonDeferredFocusUpdate;
 - (long long)_preferredFocusMovementStyle;
+- (_Bool)_isEligibleForFocusOcclusion;
 - (_Bool)_isEligibleForFocusInteraction;
 - (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 @property(nonatomic) _Bool areChildrenFocused;
 
 // Remaining properties
 @property(nonatomic, readonly) _Bool eligibleForFocusInteraction;
+@property(nonatomic, readonly) _Bool eligibleForFocusOcclusion;
 @property(nonatomic, readonly) long long preferredFocusMovementStyle;
 @end
 

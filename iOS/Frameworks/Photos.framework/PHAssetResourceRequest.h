@@ -31,12 +31,14 @@
     CDUnknownBlockType _completionHandler;
     NSDictionary *_info;
     NSString *_taskIdentifier;
+    CDUnknownBlockType _urlReceivedHandler;
     CDUnknownBlockType _dataHandler;
 }
 
 + (id)_globalFileIOQueue;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType dataHandler; // @synthesize dataHandler=_dataHandler;
+@property(copy, nonatomic) CDUnknownBlockType urlReceivedHandler; // @synthesize urlReceivedHandler=_urlReceivedHandler;
 @property(nonatomic, getter=isSynchronous) _Bool synchronous; // @synthesize synchronous=_synchronous;
 @property(nonatomic) _Bool loadURLOnly; // @synthesize loadURLOnly=_loadURLOnly;
 @property(copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
@@ -49,8 +51,8 @@
 @property(readonly, nonatomic) PHAssetResource *assetResource; // @synthesize assetResource=_assetResource;
 - (void)_updateAssetResourceWithLocallyAvailable:(_Bool)arg1 fileURL:(id)arg2;
 - (long long)_streamDataAtURL:(id)arg1 error:(id *)arg2 dataHandler:(CDUnknownBlockType)arg3;
-- (void)_finishAsyncWithFileURL:(id)arg1 error:(id)arg2;
-- (void)_finishWithFileURL:(id)arg1 error:(id)arg2;
+- (void)_finishAsyncWithFileURL:(id)arg1 didBecomeAvailable:(_Bool)arg2 error:(id)arg3;
+- (void)_finishWithFileURL:(id)arg1 didBecomeAvailable:(_Bool)arg2 error:(id)arg3;
 - (void)_setupFilestreamProgressIfNeeded;
 - (void)_addAvailabilityProgressIfNeeded:(id)arg1;
 - (void)_setupTotalProgressIfNeeded;
@@ -58,7 +60,7 @@
 - (void)startRequest;
 - (void)cancel;
 @property(readonly, nonatomic, getter=isCancelled) _Bool cancelled;
-- (id)initWithAssetResource:(id)arg1 options:(id)arg2 requestID:(int)arg3 managerID:(unsigned long long)arg4 delegate:(id)arg5 dataReceivedHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (id)initWithAssetResource:(id)arg1 options:(id)arg2 requestID:(int)arg3 managerID:(unsigned long long)arg4 delegate:(id)arg5 urlReceivedHandler:(CDUnknownBlockType)arg6 dataReceivedHandler:(CDUnknownBlockType)arg7 completionHandler:(CDUnknownBlockType)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

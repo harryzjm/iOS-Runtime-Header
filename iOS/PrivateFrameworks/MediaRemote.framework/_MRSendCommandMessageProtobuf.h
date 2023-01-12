@@ -10,6 +10,7 @@
 
 @class _MRCommandOptionsProtobuf, _MRNowPlayingPlayerPathProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRSendCommandMessageProtobuf : PBCodable <NSCopying>
 {
     int _command;
@@ -21,23 +22,13 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property(retain, nonatomic) _MRCommandOptionsProtobuf *options; // @synthesize options=_options;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasPlayerPath;
-@property(readonly, nonatomic) _Bool hasOptions;
-- (int)StringAsCommand:(id)arg1;
-- (id)commandAsString:(int)arg1;
-@property(nonatomic) _Bool hasCommand;
-@property(nonatomic) int command; // @synthesize command=_command;
 
 @end
 

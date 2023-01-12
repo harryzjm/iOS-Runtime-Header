@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, UIDeferredMenuElement;
+@class NSArray, NSString, UIDeferredMenuElement;
 
 __attribute__((visibility("hidden")))
 @interface CNActionMenuHelper : NSObject
 {
     _Bool _isMenuDisplayed;
+    NSString *_menuTitle;
     NSArray *_currentMenuItems;
     NSArray *_displayedMenuItems;
     UIDeferredMenuElement *_deferredMenuItem;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isMenuDisplayed; // @synthesize isMenuDisplayed=_isMenuDisplayed;
 @property(retain, nonatomic) NSArray *displayedMenuItems; // @synthesize displayedMenuItems=_displayedMenuItems;
 @property(retain, nonatomic) NSArray *currentMenuItems; // @synthesize currentMenuItems=_currentMenuItems;
+@property(retain, nonatomic) NSString *menuTitle; // @synthesize menuTitle=_menuTitle;
 - (void)willDismissMenu;
 - (void)willDisplayMenuWithContextMenuInteraction:(id)arg1;
 - (void)replaceDeferredMenuItemWithMenuItems:(id)arg1;
@@ -31,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)updateVisibleMenuWithMenuItems:(id)arg1 contextMenuInteraction:(id)arg2;
 - (void)updateWithMenuItems:(id)arg1 contextMenuInteraction:(id)arg2;
 - (id)targetedPreviewForSourceView:(id)arg1;
+- (id)menuForProviders;
+- (CDUnknownBlockType)menuProviderWithActionBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)configurationActionProviderWithActionBlock:(CDUnknownBlockType)arg1;
 
 @end

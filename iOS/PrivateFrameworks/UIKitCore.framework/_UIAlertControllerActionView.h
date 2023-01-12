@@ -101,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)_buildNotHavingDescriptiveLabelConstraints;
 - (void)_buildConstraints;
 - (void)dealloc;
+- (long long)_focusItemDeferralMode;
 @property(readonly, copy) NSString *description;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;

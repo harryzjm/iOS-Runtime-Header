@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FTBatchTranslationRequest;
+@class FTBatchTranslationFeedbackRequest, FTBatchTranslationRequest;
 
 __attribute__((visibility("hidden")))
 @interface FTMutableBatchTranslationStreamingRequest
 {
 }
 
+@property(copy, nonatomic) FTBatchTranslationFeedbackRequest *contentAsFTBatchTranslationFeedbackRequest;
 @property(copy, nonatomic) FTBatchTranslationRequest *contentAsFTBatchTranslationRequest;
 @property(nonatomic) long long content_type;
 - (id)copyWithZone:(struct _NSZone *)arg1;

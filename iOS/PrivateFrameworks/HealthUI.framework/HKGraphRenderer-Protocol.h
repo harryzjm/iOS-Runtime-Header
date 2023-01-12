@@ -6,7 +6,7 @@
 
 #import <HealthUI/NSObject-Protocol.h>
 
-@class NSAttributedString, NSNumber, NSString, UIBezierPath, UIColor, UIFont, UIImage;
+@class HKFillStyle, NSAttributedString, NSNumber, NSString, UIBezierPath, UIColor, UIFont, UIImage;
 @protocol HKGraphRenderDelegate, HKGraphRendererExclusion;
 
 @protocol HKGraphRenderer <NSObject>
@@ -15,7 +15,7 @@
 - (void)setNeedsRender;
 - (struct CGSize)drawAttributedText:(NSAttributedString *)arg1 atPoint:(struct CGPoint)arg2 horizontalAlignment:(long long)arg3 verticalAlignment:(long long)arg4 exclusion:(id <HKGraphRendererExclusion>)arg5;
 - (struct CGSize)drawText:(NSString *)arg1 atPoint:(struct CGPoint)arg2 spaceAvailable:(NSNumber *)arg3 horizontalAlignment:(long long)arg4 verticalAlignment:(long long)arg5 textColor:(UIColor *)arg6 font:(UIFont *)arg7 clipToAxis:(_Bool)arg8 exclusion:(id <HKGraphRendererExclusion>)arg9;
-- (void)fillRect:(struct CGRect)arg1 withTexture:(UIImage *)arg2;
+- (void)fillRect:(struct CGRect)arg1 withFillStyle:(HKFillStyle *)arg2 axisRect:(struct CGRect)arg3 alpha:(double)arg4;
 - (void)drawPath:(UIBezierPath *)arg1 strokeColor:(UIColor *)arg2 fillColor:(UIColor *)arg3 markerImage:(UIImage *)arg4 useGradientFill:(_Bool)arg5 blendMode:(int)arg6 clipToAxes:(_Bool)arg7;
 @end
 

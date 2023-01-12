@@ -9,22 +9,33 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class ENRegion, NSString;
+@class ENRegion, NSArray, NSString;
 
 @interface ENRegionServerConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _enEnabled;
+    _Bool _associatedDomainsEnabled;
+    _Bool _textMessageVerificationEnabled;
+    _Bool _preArmTestVerificationEnabled;
     _Bool _hasSubdivisions;
+    _Bool _resetAvailabilityAlertForDeclinedUsers;
     _Bool _dynamicAlgorithmEnabled;
     BOOL _dynamicThrottleDownRSSI;
     _Bool _enableV1;
+    _Bool _isChaffingEnabled;
+    unsigned char _selfReportTimeoutDays;
+    _Bool _telemetryAuthorization;
+    unsigned int _featureFlags;
     unsigned int _dailyDetectExposureLimit;
     unsigned int _detectExposureNKDLimit;
     unsigned int _numberOfAdvSamplesForRPIThreshold;
     unsigned int _dynamicThrottleDownAdvDensity;
     unsigned int _dynamicThrottleUpAdvDensity;
+    unsigned int _maximumChaffsAllowedPerDay;
     unsigned long long _enVersion;
     ENRegion *_region;
+    NSArray *_subdivisions;
+    double _timeToResetAvailabilityAlert;
     NSString *_appBundleID;
     NSString *_publicKey;
     NSString *_publicKeyVersion;
@@ -38,22 +49,40 @@
     double _osTriggeredAppRunInterval;
     double _regionTransitionGracePeriod;
     double _regionDisabledTransitionGracePeriod;
+    double _chaffingSelectionPercentage;
+    double _chaffingSelectionPercentageAlternative;
+    NSString *_textMessagePublicKey;
+    NSString *_textMessagePublicKeyVersion;
     NSString *_phaTelemetryPublicCertificateChain;
     NSString *_phaTelemetryAppleCertificateChain;
+    NSString *_phaTelemetryEndpoint;
+    NSString *_phaTelemetryOptInMessage;
     NSString *_partnerTelemetryPublicCertificateChain;
     NSString *_partnerTelemetryAppleCertificateChain;
+    NSString *_partnerTelemetryEndpoint;
     NSString *_appleTelemetryEndpoint;
     NSString *_appleTelemetryEndpointCredentials;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool telemetryAuthorization; // @synthesize telemetryAuthorization=_telemetryAuthorization;
 @property(copy, nonatomic) NSString *appleTelemetryEndpointCredentials; // @synthesize appleTelemetryEndpointCredentials=_appleTelemetryEndpointCredentials;
 @property(copy, nonatomic) NSString *appleTelemetryEndpoint; // @synthesize appleTelemetryEndpoint=_appleTelemetryEndpoint;
+@property(copy, nonatomic) NSString *partnerTelemetryEndpoint; // @synthesize partnerTelemetryEndpoint=_partnerTelemetryEndpoint;
 @property(copy, nonatomic) NSString *partnerTelemetryAppleCertificateChain; // @synthesize partnerTelemetryAppleCertificateChain=_partnerTelemetryAppleCertificateChain;
 @property(copy, nonatomic) NSString *partnerTelemetryPublicCertificateChain; // @synthesize partnerTelemetryPublicCertificateChain=_partnerTelemetryPublicCertificateChain;
+@property(copy, nonatomic) NSString *phaTelemetryOptInMessage; // @synthesize phaTelemetryOptInMessage=_phaTelemetryOptInMessage;
+@property(copy, nonatomic) NSString *phaTelemetryEndpoint; // @synthesize phaTelemetryEndpoint=_phaTelemetryEndpoint;
 @property(copy, nonatomic) NSString *phaTelemetryAppleCertificateChain; // @synthesize phaTelemetryAppleCertificateChain=_phaTelemetryAppleCertificateChain;
 @property(copy, nonatomic) NSString *phaTelemetryPublicCertificateChain; // @synthesize phaTelemetryPublicCertificateChain=_phaTelemetryPublicCertificateChain;
+@property(readonly, nonatomic) unsigned char selfReportTimeoutDays; // @synthesize selfReportTimeoutDays=_selfReportTimeoutDays;
+@property(readonly, nonatomic) NSString *textMessagePublicKeyVersion; // @synthesize textMessagePublicKeyVersion=_textMessagePublicKeyVersion;
+@property(readonly, nonatomic) NSString *textMessagePublicKey; // @synthesize textMessagePublicKey=_textMessagePublicKey;
+@property(readonly, nonatomic) unsigned int maximumChaffsAllowedPerDay; // @synthesize maximumChaffsAllowedPerDay=_maximumChaffsAllowedPerDay;
+@property(readonly, nonatomic) double chaffingSelectionPercentageAlternative; // @synthesize chaffingSelectionPercentageAlternative=_chaffingSelectionPercentageAlternative;
+@property(readonly, nonatomic) double chaffingSelectionPercentage; // @synthesize chaffingSelectionPercentage=_chaffingSelectionPercentage;
+@property(readonly, nonatomic) _Bool isChaffingEnabled; // @synthesize isChaffingEnabled=_isChaffingEnabled;
 @property(readonly, nonatomic) _Bool enableV1; // @synthesize enableV1=_enableV1;
 @property(readonly, nonatomic) double regionDisabledTransitionGracePeriod; // @synthesize regionDisabledTransitionGracePeriod=_regionDisabledTransitionGracePeriod;
 @property(readonly, nonatomic) double regionTransitionGracePeriod; // @synthesize regionTransitionGracePeriod=_regionTransitionGracePeriod;
@@ -75,14 +104,23 @@
 @property(readonly, copy, nonatomic) NSString *publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
 @property(readonly, copy, nonatomic) NSString *publicKey; // @synthesize publicKey=_publicKey;
 @property(readonly, copy, nonatomic) NSString *appBundleID; // @synthesize appBundleID=_appBundleID;
+@property(readonly, nonatomic) _Bool resetAvailabilityAlertForDeclinedUsers; // @synthesize resetAvailabilityAlertForDeclinedUsers=_resetAvailabilityAlertForDeclinedUsers;
+@property(readonly, nonatomic) double timeToResetAvailabilityAlert; // @synthesize timeToResetAvailabilityAlert=_timeToResetAvailabilityAlert;
+@property(readonly, copy, nonatomic) NSArray *subdivisions; // @synthesize subdivisions=_subdivisions;
 @property(readonly, nonatomic) _Bool hasSubdivisions; // @synthesize hasSubdivisions=_hasSubdivisions;
 @property(readonly, copy, nonatomic) ENRegion *region; // @synthesize region=_region;
+@property(readonly, nonatomic) unsigned int featureFlags; // @synthesize featureFlags=_featureFlags;
+@property(readonly, nonatomic) _Bool preArmTestVerificationEnabled; // @synthesize preArmTestVerificationEnabled=_preArmTestVerificationEnabled;
+@property(readonly, nonatomic) _Bool textMessageVerificationEnabled; // @synthesize textMessageVerificationEnabled=_textMessageVerificationEnabled;
+@property(readonly, nonatomic) _Bool associatedDomainsEnabled; // @synthesize associatedDomainsEnabled=_associatedDomainsEnabled;
 @property(readonly, nonatomic) _Bool enEnabled; // @synthesize enEnabled=_enEnabled;
 @property(readonly, nonatomic) unsigned long long enVersion; // @synthesize enVersion=_enVersion;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)preferredLocalizationsFromArray:(id)arg1;
 - (id)initWithServerResponseDictionary:(id)arg1;
+- (_Bool)supportsFeatures:(unsigned int)arg1;
 - (id)description;
 
 @end

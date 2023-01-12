@@ -11,7 +11,6 @@
 @class NSArray, NSString, UIView;
 @protocol _UIDragInteractionDriverDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _UIDragInteractionDriver : NSObject <_UIDragInteractionDriving>
 {
     struct _UIDragInteractionDriverStateMachine _stateMachine;
@@ -48,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <_UIDragInteractionDriverDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_handleEvent:(unsigned long long)arg1;
+- (unsigned long long)_state;
 - (void)detachFromView:(id)arg1;
 - (void)attachToView:(id)arg1;
 - (void)didTransitionToInactiveState;

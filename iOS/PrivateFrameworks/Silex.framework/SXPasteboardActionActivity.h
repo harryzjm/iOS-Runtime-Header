@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) NSString *label; // @synthesize label=_label;
 - (void)invokeWithAction:(id)arg1 invocationMethod:(unsigned long long)arg2;
+- (id)initWithLabel:(id)arg1 image:(id)arg2 type:(unsigned long long)arg3 pasteboard:(id)arg4 string:(id)arg5;
 - (id)initWithLabel:(id)arg1 type:(unsigned long long)arg2 pasteboard:(id)arg3 string:(id)arg4;
 
 // Remaining properties

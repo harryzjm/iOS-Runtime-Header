@@ -7,6 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface _UISEEdgeTypeRecognizeGestureFeature
 {
+    _Bool _initialFromEdgeTip;
 }
 
 - (void)_incorporateSample:(const struct _UISEGestureFeatureSample *)arg1;

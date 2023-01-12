@@ -14,13 +14,13 @@
 @interface RLMObjectBase : NSObject <RLMThreadConfined, RLMThreadConfined_Private>
 {
     struct BasicRow<realm::Table> _row;
-    struct RLMObservationInfo *_observationInfo;
-    struct RLMClassInfo *_info;
+    void *_observationInfo;
+    void *_info;
     RLMRealm *_realm;
     RLMObjectSchema *_objectSchema;
 }
 
-+ (id)objectWithThreadSafeReference:(unique_ptr_d0e912ad)arg1 metadata:(id)arg2 realm:(id)arg3;
++ (id)objectWithThreadSafeReference:(unique_ptr_14b91335)arg1 metadata:(id)arg2 realm:(id)arg3;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)_realmColumnNames;
 + (id)_realmObjectName;
@@ -32,7 +32,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id objectiveCMetadata;
-- (unique_ptr_d0e912ad)makeThreadSafeReference;
+- (unique_ptr_14b91335)makeThreadSafeReference;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (id)mutableArrayValueForKey:(id)arg1;

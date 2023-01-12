@@ -11,11 +11,11 @@
     GKGameRecord *_localPlayerGameRecord;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKGameRecord *localPlayerGameRecord; // @synthesize localPlayerGameRecord=_localPlayerGameRecord;
 - (void)prepareForReuse;
 - (id)leaderboardStringWithGameRecord:(id)arg1;
 - (void)didUpdateModel;
-- (void)dealloc;
 
 @end
 

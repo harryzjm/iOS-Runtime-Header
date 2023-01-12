@@ -34,9 +34,9 @@
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (id)initRestrictingToCPU:(_Bool)arg1;
 - (id)init;
-- (vector_00ef371e)activationsFromImage:(id)arg1;
-- (id)decodeActivations:(vector_00ef371e *)arg1 blank:(unsigned short)arg2 ctcAllowGarbage:(_Bool)arg3 numResultNeeded:(long long)arg4;
-- (id)decodeActivations:(vector_00ef371e *)arg1;
+- (vector_39e320a3)activationsFromImage:(id)arg1;
+- (id)decodeActivations:(void *)arg1 blank:(unsigned short)arg2 ctcAllowGarbage:(_Bool)arg3 numResultNeeded:(long long)arg4;
+- (id)decodeActivations:(void *)arg1;
 
 @end
 

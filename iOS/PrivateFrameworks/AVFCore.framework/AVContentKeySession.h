@@ -55,6 +55,7 @@
 - (id)_contentKeyRequestForCryptorUUID:(id)arg1 cryptorKeyRequestID:(unsigned long long)arg2;
 - (void)_setContentKeyRequest:(id)arg1 forCryptorUUID:(id)arg2 cryptorKeyRequestID:(unsigned long long)arg3;
 - (id)_internalQueue;
+- (void)contentKeyRequestDidProduceContentKey:(id)arg1;
 - (void)issueContentKeyRequestWithPreloadingRequestOptions:(id)arg1 identifier:(id)arg2 initializationData:(id)arg3 providesPersistableKey:(_Bool)arg4;
 - (void)issueContentKeyRequestWithCustomURLHandler:(struct OpaqueFigCustomURLHandler *)arg1 identifier:(id)arg2 requestInfo:(struct __CFDictionary *)arg3 requestID:(unsigned long long)arg4 providesPersistableKey:(_Bool)arg5;
 - (void)issueRenewableContentKeyRequest:(id)arg1;
@@ -69,7 +70,7 @@
 - (struct OpaqueFigCPECryptor *)copyCryptorForCryptKeyAttributes:(id)arg1;
 - (const struct OpaqueFigCPECryptor *)createCryptorIfNecessaryForInitializationData:(id)arg1 formatDescription:(struct opaqueCMFormatDescription *)arg2 error:(id *)arg3;
 - (const struct OpaqueFigCPECryptor *)copyCryptorForInitializationData:(id)arg1;
-- (void)_sendFinishLoadingForPreloadedKeyRequest:(struct __CFDictionary *)arg1 withRequestID:(unsigned long long)arg2 fromHandler:(struct OpaqueFigCustomURLHandler *)arg3;
+- (void)_sendFinishLoadingForPreloadedKeyRequest:(struct __CFDictionary *)arg1 withRequestID:(unsigned long long)arg2 fromHandler:(struct OpaqueFigCustomURLHandler *)arg3 error:(id)arg4;
 - (id)_contentKeyGroups;
 - (id)_weakReference;
 - (id)issueContentKeyRequestForInitializationData:(id)arg1;

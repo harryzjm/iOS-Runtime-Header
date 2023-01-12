@@ -8,6 +8,7 @@
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCPlayerShuffleCommand <MPCPlayerShuffleCommand>
 {
     _Bool _supportsChangeShuffle;

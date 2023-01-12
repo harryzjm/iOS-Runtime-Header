@@ -6,9 +6,10 @@
 
 #import <HealthKit/HKQueryClientInterface-Protocol.h>
 
-@class HKStatistics, NSArray, NSNumber, NSUUID;
+@class HKStatistics, NSArray, NSError, NSNumber, NSUUID;
 
 @protocol HKStatisticsCollectionQueryClientInterface <HKQueryClientInterface>
+- (void)client_finishedCachingStatisticsWithCacheHits:(long long)arg1 error:(NSError *)arg2;
 - (void)client_deliverUpdatedStatistics:(HKStatistics *)arg1 anchor:(NSNumber *)arg2 query:(NSUUID *)arg3;
 - (void)client_deliverStatisticsBatch:(NSArray *)arg1 resetStatistics:(_Bool)arg2 isFinal:(_Bool)arg3 anchor:(NSNumber *)arg4 query:(NSUUID *)arg5;
 @end

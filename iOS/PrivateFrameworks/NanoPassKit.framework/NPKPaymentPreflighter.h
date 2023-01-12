@@ -22,6 +22,7 @@
     _Bool _needsCompanioniCloudAccount;
     _Bool _needsWatchiCloudAccount;
     _Bool _needsWristDetection;
+    _Bool _needsSetAuthRandom;
     _Bool _preflighting;
     PUConnection *_passcodeConnection;
     NSSManager *_systemSettingsManager;
@@ -38,6 +39,7 @@
 @property(retain, nonatomic) NPKCompanionAgentConnection *companionAgentConnection; // @synthesize companionAgentConnection=_companionAgentConnection;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 @property(copy, nonatomic) CDUnknownBlockType preflightCompletionHandler; // @synthesize preflightCompletionHandler=_preflightCompletionHandler;
+@property(nonatomic) _Bool needsSetAuthRandom; // @synthesize needsSetAuthRandom=_needsSetAuthRandom;
 @property(nonatomic) _Bool needsWristDetection; // @synthesize needsWristDetection=_needsWristDetection;
 @property(nonatomic) _Bool needsWatchiCloudAccount; // @synthesize needsWatchiCloudAccount=_needsWatchiCloudAccount;
 @property(nonatomic) _Bool needsCompanioniCloudAccount; // @synthesize needsCompanioniCloudAccount=_needsCompanioniCloudAccount;
@@ -69,7 +71,8 @@
 - (void)_checkCompanioniCloudAccount;
 - (void)_checkWatchConnected;
 - (void)_checkSpaceAvailableOnSecureElement;
-- (void)acceptInvitationPreflightWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addBiometricPassPreflightWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addSecureElementPassPreflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)transferToCompanionPreflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addCardPreflightWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithWebService:(id)arg1 companionAgentConnection:(id)arg2;

@@ -9,6 +9,7 @@
 @class NSError, RTPersistenceMirroringManager, RTPersistenceMirroringRequest;
 
 @protocol RTPersistenceMirroringMetricsDelegate <NSObject>
+- (void)mirroringManager:(RTPersistenceMirroringManager *)arg1 exceededHistoryType:(unsigned long long)arg2 count:(unsigned long long)arg3 limit:(unsigned long long)arg4;
 - (void)mirroringManager:(RTPersistenceMirroringManager *)arg1 mirroringRequest:(RTPersistenceMirroringRequest *)arg2 didFailWithError:(NSError *)arg3;
 - (void)mirroringManager:(RTPersistenceMirroringManager *)arg1 mirroringRequestDidSucceed:(RTPersistenceMirroringRequest *)arg2;
 @end

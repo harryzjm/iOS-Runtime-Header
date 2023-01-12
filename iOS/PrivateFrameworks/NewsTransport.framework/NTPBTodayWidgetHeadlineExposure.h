@@ -21,15 +21,19 @@
     int _widgetArticleRank;
     int _widgetArticleRankInSection;
     int _widgetContentType;
+    int _widgetExposureStackLocation;
     int _widgetSectionDisplayRank;
     NSString *_widgetSectionId;
+    int _widgetType;
     struct {
         unsigned int widgetArticleCount:1;
         unsigned int widgetArticleCountInSection:1;
         unsigned int widgetArticleRank:1;
         unsigned int widgetArticleRankInSection:1;
         unsigned int widgetContentType:1;
+        unsigned int widgetExposureStackLocation:1;
         unsigned int widgetSectionDisplayRank:1;
+        unsigned int widgetType:1;
     } _has;
 }
 
@@ -52,6 +56,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsWidgetType:(id)arg1;
+- (id)widgetTypeAsString:(int)arg1;
+@property(nonatomic) _Bool hasWidgetType;
+@property(nonatomic) int widgetType; // @synthesize widgetType=_widgetType;
+- (int)StringAsWidgetExposureStackLocation:(id)arg1;
+- (id)widgetExposureStackLocationAsString:(int)arg1;
+@property(nonatomic) _Bool hasWidgetExposureStackLocation;
+@property(nonatomic) int widgetExposureStackLocation; // @synthesize widgetExposureStackLocation=_widgetExposureStackLocation;
 @property(readonly, nonatomic) _Bool hasAlternateHeadline;
 @property(readonly, nonatomic) _Bool hasWebEmbedId;
 - (int)StringAsWidgetContentType:(id)arg1;

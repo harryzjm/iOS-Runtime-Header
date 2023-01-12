@@ -12,19 +12,19 @@
 
 @interface DVTBroadcastSubscription : NSObject <DVTInvalidation>
 {
+    struct os_unfair_lock_s _lock;
     DVTBroadcastCenter *_center;
     DVTBroadcastChannel *_channel;
-    CDUnknownBlockType _handler;
     NSOperationQueue *_queue;
+    CDUnknownBlockType _handler;
+    _Bool _startedTeardown;
 }
 
++ (unsigned long long)assertionBehaviorAfterEndOfEventForSelector:(SEL)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(readonly) NSOperationQueue *queue; // @synthesize queue=_queue;
-@property(readonly) CDUnknownBlockType handler; // @synthesize handler=_handler;
-@property(readonly) DVTBroadcastChannel *channel; // @synthesize channel=_channel;
-@property(readonly) DVTBroadcastCenter *center; // @synthesize center=_center;
 - (void)primitiveInvalidate;
+- (void)atomicllyCaptureChannel:(id *)arg1 handler:(CDUnknownBlockType *)arg2 queue:(id *)arg3 startedTeardown:(_Bool *)arg4;
 - (id)initWithBroadcastCenter:(id)arg1 channel:(id)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 
 // Remaining properties

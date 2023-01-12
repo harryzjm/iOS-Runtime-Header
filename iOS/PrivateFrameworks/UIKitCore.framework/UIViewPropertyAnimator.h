@@ -65,6 +65,7 @@
 + (id)_originalFromValueForKey:(id)arg1 inLayer:(id)arg2 forAnimatorWithTrackingIdentifier:(id)arg3;
 + (id)_currentPropertyAnimator;
 + (id)observedsOfAnimatorWithTrackingId:(id)arg1;
++ (void)removeAllObservedForObservingAnimatorWithId:(id)arg1;
 + (void)removeObserved:(id)arg1 forObservingAnimatorWithId:(id)arg2;
 + (void)animator:(id)arg1 isObserving:(id)arg2;
 + (id)_getPropertyAnimationForState:(id)arg1;

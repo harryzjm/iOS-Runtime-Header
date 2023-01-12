@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CNUICoreContactEditingSession *editingSession; // @synthesize editingSession=_editingSession;
-- (id)executeSaveWithConfiguration:(id)arg1;
+- (id)executeSaveWithConfiguration:(id)arg1 saveDelegate:(id)arg2;
 - (id)initWithEditingSession:(id)arg1;
 - (id)init;
 

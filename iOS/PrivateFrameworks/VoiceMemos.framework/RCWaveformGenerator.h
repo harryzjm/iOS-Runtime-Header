@@ -22,7 +22,7 @@
     AVAudioFile *_activeAudioFile;
     struct PowerMeter _samplePowerMeter;
     _Bool _isSampleRateKnown;
-    vector_7584168e _powerLevelBuffer;
+    struct vector<float, std::allocator<float>> _powerLevelBuffer;
     float _powerLevelBufferLastPushedValue;
     unsigned long long _powerLevelsConsumedSinceLastFlush;
     unsigned long long _framesConsumedSinceLastFlush;

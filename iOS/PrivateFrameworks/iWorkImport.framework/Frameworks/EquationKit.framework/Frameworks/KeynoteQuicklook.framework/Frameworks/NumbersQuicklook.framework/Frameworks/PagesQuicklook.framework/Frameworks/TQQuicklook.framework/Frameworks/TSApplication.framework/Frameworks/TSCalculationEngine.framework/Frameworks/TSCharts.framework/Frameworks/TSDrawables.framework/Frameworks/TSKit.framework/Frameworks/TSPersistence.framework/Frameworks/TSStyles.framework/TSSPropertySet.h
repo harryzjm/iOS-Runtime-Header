@@ -9,6 +9,8 @@
 #import <TSStyles/NSCopying-Protocol.h>
 #import <TSStyles/NSMutableCopying-Protocol.h>
 
+@class NSSet;
+
 @interface TSSPropertySet : NSObject <NSCopying, NSMutableCopying>
 {
     id mIndexSet;
@@ -26,7 +28,7 @@
 - (unsigned long long)hash;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)propertyStrings;
+@property(readonly, nonatomic) NSSet *propertyStrings;
 - (id)propertySetByIntersectingWithPropertySet:(id)arg1;
 - (id)propertySetByRemovingPropertiesFromSet:(id)arg1;
 - (id)propertySetByRemovingProperties:(int)arg1;
@@ -38,8 +40,9 @@
 - (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)containsProperties:(id)arg1;
 - (_Bool)containsProperty:(int)arg1;
-- (unsigned long long)count;
+@property(readonly, nonatomic) unsigned long long count;
 - (id)initWithProperties:(int)arg1;
+- (id)initWithProperty:(int)arg1;
 - (id)initWithPropertySet:(id)arg1;
 - (id)initWithFirstProperty:(int)arg1 argumentList:(char *)arg2;
 - (id)init;

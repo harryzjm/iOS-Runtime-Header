@@ -20,7 +20,6 @@
 - (_Bool)containsLocalizedStringCaseInsensitive:(id)arg1;
 - (_Bool)containsStringCaseInsensitive:(id)arg1;
 - (id)imReversedArray;
-- (id)firstObject;
 - (long long)indexOfObjectWithValue:(id)arg1 forKeyPath:(id)arg2;
 @end
 

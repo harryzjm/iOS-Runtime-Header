@@ -10,6 +10,7 @@
 
 @interface _TtC7FMFCore20FMFActionsController : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
     MISSING_TYPE *interactionController;

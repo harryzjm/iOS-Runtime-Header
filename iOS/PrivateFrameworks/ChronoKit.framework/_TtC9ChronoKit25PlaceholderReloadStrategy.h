@@ -11,9 +11,9 @@
 @interface _TtC9ChronoKit25PlaceholderReloadStrategy : _TtCs12_SwiftObject
 {
     MISSING_TYPE *widgetEnvironment;
-    MISSING_TYPE *statefulStore;
-    MISSING_TYPE *cacheManager;
     MISSING_TYPE *logger;
+    MISSING_TYPE *cacheManager;
+    MISSING_TYPE *extensionManager;
 }
 
 @end

@@ -38,7 +38,6 @@
 @property(readonly, nonatomic) id <UIInteraction> interaction;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithScribbleInteraction:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

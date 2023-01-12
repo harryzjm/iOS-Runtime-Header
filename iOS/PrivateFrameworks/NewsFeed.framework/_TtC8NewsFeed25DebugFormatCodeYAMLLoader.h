@@ -10,7 +10,7 @@
 
 @interface _TtC8NewsFeed25DebugFormatCodeYAMLLoader : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *data;
+    MISSING_TYPE *result;
 }
 
 @end

@@ -10,12 +10,15 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI27OfferCardCollectionViewCell
 {
     MISSING_TYPE *viewLayout;
+    MISSING_TYPE *offerView;
+    MISSING_TYPE *belowCardTextLabel;
 }
 
 - (void).cxx_destruct;
+- (void)vui_prepareForReuse;
+- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

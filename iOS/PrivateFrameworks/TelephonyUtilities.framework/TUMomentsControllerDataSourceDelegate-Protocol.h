@@ -6,11 +6,12 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSString, TUMomentDescriptor, TUMomentsCapabilities;
+@class NSString, NSURL, TUMomentDescriptor, TUMomentsCapabilities;
 @protocol TUMomentsControllerDataSource;
 
 @protocol TUMomentsControllerDataSourceDelegate <NSObject>
 - (void)serverDiedForDataSource:(id <TUMomentsControllerDataSource>)arg1;
+- (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 requestSandboxExtensionForURL:(NSURL *)arg2 reply:(void (^)(TUSandboxExtendedURL *, NSError *))arg3;
 - (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 didReceiveLocallyRequestedMomentDescriptor:(TUMomentDescriptor *)arg2;
 - (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 willCaptureRemoteRequestFromRequesterID:(NSString *)arg2;
 - (void)dataSource:(id <TUMomentsControllerDataSource>)arg1 didUpdateCapabilities:(TUMomentsCapabilities *)arg2 forVideoStreamToken:(long long)arg3;

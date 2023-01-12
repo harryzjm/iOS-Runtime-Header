@@ -6,17 +6,17 @@
 
 @interface TSCH3DGetBoundsRenderProcessor
 {
-    int mMode;
-    struct ObjectBounds mBounds;
+    int _mode;
+    struct ObjectBounds _bounds;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) int mode; // @synthesize mode=mMode;
+@property(nonatomic) int mode; // @synthesize mode=_mode;
 - (void)submit:(id)arg1;
-- (void)extend2DProjectedBounds:(const box_a3bd9649 *)arg1;
+- (void)extend2DProjectedBounds:(const void *)arg1;
 - (void)resetBounds;
-@property(readonly, nonatomic) const struct ObjectBounds *bounds;
+@property(readonly, nonatomic) const void *bounds;
 - (id)init;
 
 @end

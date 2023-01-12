@@ -22,14 +22,22 @@
     NSDictionary *_contextData;
     AMSURLParser *_amsURLParser;
     CDUnknownBlockType _deferredAMSDynamicURLCompletion;
+    NSString *_purchaseOrLinkingAdamID;
+    NSString *_subscriptionChannelTitle;
+    NSString *_subscriptionChannelLink;
 }
 
++ (_Bool)isRedeemURL:(id)arg1;
++ (void)_pushViewControllers:(id)arg1 into:(id)arg2 animated:(_Bool)arg3 clearStack:(_Bool)arg4;
 + (void)_pushPageViewControllers:(id)arg1 viewControllers:(id)arg2 skipLastViewController:(_Bool)arg3;
 + (void)_handleDeeplinkAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)queryParameterStringfromURL:(id)arg1 parameter:(id)arg2;
 + (void)_insertPageBehindTop:(id)arg1 viewControllers:(id)arg2 clearStack:(_Bool)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *subscriptionChannelLink; // @synthesize subscriptionChannelLink=_subscriptionChannelLink;
+@property(retain, nonatomic) NSString *subscriptionChannelTitle; // @synthesize subscriptionChannelTitle=_subscriptionChannelTitle;
+@property(retain, nonatomic) NSString *purchaseOrLinkingAdamID; // @synthesize purchaseOrLinkingAdamID=_purchaseOrLinkingAdamID;
 @property(copy, nonatomic) CDUnknownBlockType deferredAMSDynamicURLCompletion; // @synthesize deferredAMSDynamicURLCompletion=_deferredAMSDynamicURLCompletion;
 @property(retain, nonatomic) AMSURLParser *amsURLParser; // @synthesize amsURLParser=_amsURLParser;
 @property(retain, nonatomic) NSDictionary *contextData; // @synthesize contextData=_contextData;
@@ -38,13 +46,14 @@
 @property(retain, nonatomic) NSURL *deferredOpenURL; // @synthesize deferredOpenURL=_deferredOpenURL;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(nonatomic) _Bool openedByDeeplink; // @synthesize openedByDeeplink=_openedByDeeplink;
-@property(readonly, nonatomic) _Bool isFinished;
-- (void)_setIsFinished:(_Bool)arg1;
+- (void)_postPurchaseOrLinkingProcessing:(id)arg1 isBundlePurchased:(_Bool)arg2;
+@property(nonatomic) _Bool isFinished;
 - (void)_addMetricsTo:(id)arg1;
 - (_Bool)_isBundlePurchased:(id)arg1 forOfferDomain:(id)arg2;
-- (void)_showBundlePurchaseConfirmationForResult:(id)arg1;
+- (void)_showBundlePurchaseConfirmationForResult:(_Bool)arg1;
 - (void)_handleBundleOfferCompletion:(_Bool)arg1;
-- (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
+- (void)dynamicViewController:(id)arg1 didFinishCarrierLinkingWithResult:(id)arg2 error:(id)arg3;
+- (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
 - (void)_handleAMSDynamicURL:(id)arg1 isDeeplink:(_Bool)arg2 contextData:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleAMSWebURL:(id)arg1 useAMSWebView:(_Bool)arg2;
 - (void)_processFamilySetup:(id)arg1;
@@ -54,6 +63,7 @@
 - (void)_processNonLocalLink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processLocalLink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processDeeplink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)openSharedWatchURL:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleDeferredURLWithAppContext:(id)arg1;
 - (void)saveDeferredURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processEntityWithContextData:(id)arg1 appContext:(id)arg2;

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
 #import <CloudKit/CKSQLiteItem-Protocol.h>
 #import <CloudKit/CKXPCSuitableString-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
@@ -13,7 +14,7 @@
 
 @class CKRecordZoneID, NSString;
 
-@interface CKRecordID : NSObject <CKXPCSuitableString, CKSQLiteItem, NSSecureCoding, NSCopying>
+@interface CKRecordID : NSObject <CKXPCSuitableString, CKPropertiesDescription, CKSQLiteItem, NSSecureCoding, NSCopying>
 {
     NSString *_recordName;
     CKRecordZoneID *_zoneID;
@@ -22,19 +23,21 @@
 + (_Bool)isValidRecordName:(id)arg1 outError:(id *)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
-@property(copy, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
+@property(readonly, copy, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
+@property(readonly, copy, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
 - (long long)compareToRecordID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_nilOutRecordName;
+- (_Bool)isEqualIgnoringAnonymousUserIDsToRecordID:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)CKShortDescriptionRedact:(_Bool)arg1;
 - (id)ckShortDescription;
+- (id)redactedDescription;
 @property(readonly, copy) NSString *description;
-- (id)CKPropertiesDescription;
-- (id)CKPropertiesDescriptionWithProperties:(id)arg1;
-- (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
+- (void)CKDescribePropertiesUsing:(id)arg1;
 - (id)initWithSqliteRepresentation:(id)arg1;
 - (id)sqliteRepresentation;
 - (id)initWithRecordName:(id)arg1 zoneID:(id)arg2;

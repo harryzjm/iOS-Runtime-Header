@@ -8,13 +8,17 @@
 
 @interface SBScrollToAppLayoutSwitcherEventResponse
 {
+    _Bool _animated;
     SBAppLayout *_appLayout;
+    long long _alignment;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool animated; // @synthesize animated=_animated;
+@property(readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property(readonly, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)initWithAppLayout:(id)arg1;
+- (id)initWithAppLayout:(id)arg1 alignment:(long long)arg2 animated:(_Bool)arg3;
 - (long long)type;
 
 @end

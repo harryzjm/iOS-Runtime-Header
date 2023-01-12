@@ -24,9 +24,11 @@
     NSURL *_releaseNotesURL;
     NSURL *_licenseAgreementURL;
     NSMutableDictionary *_cachedData;
+    NSString *_iconImageName;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSString *iconImageName; // @synthesize iconImageName=_iconImageName;
 @property(retain, nonatomic) NSNumber *slaVersion; // @synthesize slaVersion=_slaVersion;
 @property(retain, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
 @property(retain, nonatomic) NSString *humanReadableUpdateName; // @synthesize humanReadableUpdateName=_humanReadableUpdateName;
@@ -37,6 +39,10 @@
 @property(retain, nonatomic) NSURL *releaseNotesURL; // @synthesize releaseNotesURL=_releaseNotesURL;
 @property(retain, nonatomic) NSString *releaseNotesFileName; // @synthesize releaseNotesFileName=_releaseNotesFileName;
 @property(retain, nonatomic) NSURL *baseDocumentationURL; // @synthesize baseDocumentationURL=_baseDocumentationURL;
+- (id)pngImageDataFromBundle:(struct __CFBundle *)arg1 fileName:(id)arg2;
+- (id)_getSUImage:(id)arg1;
+- (id)getFullWidthImage;
+- (id)getIconImage;
 - (id)localizedDocumentationStringFromBundle:(struct __CFBundle *)arg1 key:(id)arg2;
 - (id)_localizedResourceURLForDocumentationAsset:(id)arg1 resource:(id)arg2;
 - (id)_cachedDocumentationDataForURL:(id)arg1;
@@ -45,14 +51,11 @@
 - (id)localizedStringFromBundle:(struct __CFBundle *)arg1 key:(id)arg2;
 - (void)_clearTransientDocumentationData;
 - (id)description;
-- (id)pngImageDataFromBundle:(struct __CFBundle *)arg1 fileName:(id)arg2;
-- (id)_getSUImage:(id)arg1;
-- (id)getFullWidthImage;
-- (id)getIconImage;
 - (_Bool)hasAnyDocumentation;
 - (id)licenseAgreement;
 - (id)releaseNotes;
 - (id)releaseNotesSummary;
+- (id)iconImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

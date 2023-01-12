@@ -6,7 +6,7 @@
 
 #import <SAObjects/SATimerTimerAction-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface SATimerTimerShow <SATimerTimerAction>
 {
@@ -15,6 +15,8 @@
 + (id)timerShowWithDictionary:(id)arg1 context:(id)arg2;
 + (id)timerShow;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSArray *timerIds;
+@property(copy, nonatomic) NSArray *actions;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

@@ -6,14 +6,14 @@
 
 @interface TSCHChartBarElementsRenderer
 {
-    _Bool mVertical;
-    _Bool mTouchInResize;
-    _Bool mTouchInBody;
-    unsigned long long mHitSeriesIndex;
-    unsigned long long mHitValueIndex;
-    double mHitFudgeOffset;
-    _Bool mResizeIsOutsideBody;
-    struct CGRect mLastDrawRect;
+    _Bool _vertical;
+    _Bool _touchInResize;
+    _Bool _touchInBody;
+    unsigned long long _hitSeriesIndex;
+    unsigned long long _hitValueIndex;
+    double _hitFudgeOffset;
+    _Bool _resizeIsOutsideBody;
+    struct CGRect _lastDrawRect;
 }
 
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;

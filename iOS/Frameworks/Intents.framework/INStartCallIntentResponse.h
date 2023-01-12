@@ -6,7 +6,7 @@
 
 #import <Intents/INStartCallIntentResponseExport-Protocol.h>
 
-@class INConnectedCall, NSNumber, NSString;
+@class INConnectedCall, NSArray, NSNumber, NSString;
 
 @interface INStartCallIntentResponse <INStartCallIntentResponseExport>
 {
@@ -20,6 +20,7 @@
 - (void)setPropertiesByName:(id)arg1;
 - (id)propertiesByName;
 - (id)_dictionaryRepresentation;
+@property(copy, nonatomic) NSArray *restrictedContacts;
 @property(copy, nonatomic) INConnectedCall *startedCall;
 @property(nonatomic) long long confirmationReason;
 @property(copy, nonatomic) NSNumber *shouldDoEmergencyCountdown;

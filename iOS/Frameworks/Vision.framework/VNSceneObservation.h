@@ -14,6 +14,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)observationWithSceneprints:(id)arg1;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (id)sceneprintCurrentVersion;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *sceneprintVersion; // @synthesize sceneprintVersion=_sceneprintVersion;
@@ -23,9 +24,10 @@
 - (unsigned long long)elementType;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 sceneprints:(id)arg2;
 - (id)initWithRequestRevision:(unsigned long long)arg1 sceneprints:(id)arg2;
 
 @end

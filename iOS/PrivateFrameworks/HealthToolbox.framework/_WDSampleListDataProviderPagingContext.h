@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class HKQuery, NSDate;
+@class NSDate;
+@protocol HKSampleListDataFetcher;
 
 __attribute__((visibility("hidden")))
 @interface _WDSampleListDataProviderPagingContext : NSObject
@@ -14,13 +15,13 @@ __attribute__((visibility("hidden")))
     _Bool _requiresPaging;
     _Bool _fetchingData;
     NSDate *_earliestProcessedSampleDate;
-    HKQuery *_currentQuery;
+    id <HKSampleListDataFetcher> _currentDataFetcher;
     NSDate *_fetchUntilDate;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *fetchUntilDate; // @synthesize fetchUntilDate=_fetchUntilDate;
-@property(retain, nonatomic) HKQuery *currentQuery; // @synthesize currentQuery=_currentQuery;
+@property(retain, nonatomic) id <HKSampleListDataFetcher> currentDataFetcher; // @synthesize currentDataFetcher=_currentDataFetcher;
 @property(retain, nonatomic) NSDate *earliestProcessedSampleDate; // @synthesize earliestProcessedSampleDate=_earliestProcessedSampleDate;
 @property(nonatomic, getter=isFetchingData) _Bool fetchingData; // @synthesize fetchingData=_fetchingData;
 @property(nonatomic) _Bool requiresPaging; // @synthesize requiresPaging=_requiresPaging;

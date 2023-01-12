@@ -8,20 +8,28 @@
 
 #import <TextInputUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSLocale, NSString, TIAutocorrectionList, TUIPredictionViewStackView, UIKBRenderConfig, UIKBVisualEffectView, UILongPressGestureRecognizer;
+@class NSArray, NSLocale, NSString, TIAutocorrectionList, TUIPredictionViewStackView, UIColor, UIKBRenderConfig, UILongPressGestureRecognizer;
 @protocol TUIPredictionViewDelegate;
 
 @interface TUIPredictionView : UIView <UIGestureRecognizerDelegate>
 {
     _Bool _drawsBackdropView;
+    _Bool _disablesHighlight;
+    _Bool _useContinuousCornerInHighlight;
+    _Bool _shouldAnimateCells;
     id <TUIPredictionViewDelegate> _delegate;
     long long _selectedIndex;
     TIAutocorrectionList *_autocorrectionList;
-    UIKBVisualEffectView *_backdropView;
+    UIView *_backdropView;
     unsigned long long _minimumNumberOfCells;
     unsigned long long _maximumEmojiCells;
     NSLocale *_currentLocale;
     UIKBRenderConfig *_renderConfig;
+    UIColor *_separatorColor;
+    double _separatorMargin;
+    UIColor *_highlightColor;
+    double _highlightMargin;
+    double _highlightCornerRadius;
     TUIPredictionViewStackView *_cellStackView;
     UILongPressGestureRecognizer *_tapGestureRecognizer;
 }
@@ -29,11 +37,19 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) UILongPressGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(retain, nonatomic) TUIPredictionViewStackView *cellStackView; // @synthesize cellStackView=_cellStackView;
+@property(nonatomic) _Bool shouldAnimateCells; // @synthesize shouldAnimateCells=_shouldAnimateCells;
+@property(nonatomic) _Bool useContinuousCornerInHighlight; // @synthesize useContinuousCornerInHighlight=_useContinuousCornerInHighlight;
+@property(nonatomic) double highlightCornerRadius; // @synthesize highlightCornerRadius=_highlightCornerRadius;
+@property(nonatomic) double highlightMargin; // @synthesize highlightMargin=_highlightMargin;
+@property(retain, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property(nonatomic) double separatorMargin; // @synthesize separatorMargin=_separatorMargin;
+@property(retain, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
+@property(nonatomic) _Bool disablesHighlight; // @synthesize disablesHighlight=_disablesHighlight;
 @property(retain, nonatomic) NSLocale *currentLocale; // @synthesize currentLocale=_currentLocale;
 @property(nonatomic) unsigned long long maximumEmojiCells; // @synthesize maximumEmojiCells=_maximumEmojiCells;
 @property(nonatomic) unsigned long long minimumNumberOfCells; // @synthesize minimumNumberOfCells=_minimumNumberOfCells;
-@property(retain, nonatomic) UIKBVisualEffectView *backdropView; // @synthesize backdropView=_backdropView;
+@property(retain, nonatomic) UIView *backdropView; // @synthesize backdropView=_backdropView;
 @property(nonatomic) _Bool drawsBackdropView; // @synthesize drawsBackdropView=_drawsBackdropView;
 @property(retain, nonatomic) TIAutocorrectionList *autocorrectionList; // @synthesize autocorrectionList=_autocorrectionList;
 @property(nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
@@ -59,6 +75,7 @@
 - (double)maximumBackgroundWidth;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)test_cellForCandidate:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

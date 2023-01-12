@@ -17,6 +17,8 @@
 
 + (long long)cellStyle;
 - (void).cxx_destruct;
+- (void)_updateConstraintsWithImage;
+- (void)_updateConstraintsWithNoImage;
 - (void)updateConstraints;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)layoutSubviews;

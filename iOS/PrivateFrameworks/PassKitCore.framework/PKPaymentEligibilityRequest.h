@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, PKPaymentCredential;
+@class NSData, NSString, PKAddPaymentPassRequestConfiguration, PKPaymentCredential;
 
 @interface PKPaymentEligibilityRequest
 {
@@ -28,12 +28,14 @@
     NSString *_nonce;
     long long _source;
     NSString *_referrerIdentifier;
+    PKAddPaymentPassRequestConfiguration *_addPaymentPassRequestConfiguration;
     NSString *_passOwnershipToken;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *passOwnershipToken; // @synthesize passOwnershipToken=_passOwnershipToken;
+@property(readonly, nonatomic) PKAddPaymentPassRequestConfiguration *addPaymentPassRequestConfiguration; // @synthesize addPaymentPassRequestConfiguration=_addPaymentPassRequestConfiguration;
 @property(copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
 @property(readonly, nonatomic) long long source; // @synthesize source=_source;
 @property(copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;

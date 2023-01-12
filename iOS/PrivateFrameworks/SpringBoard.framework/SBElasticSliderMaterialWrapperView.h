@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class MTMaterialShadowView, SBElasticSliderView;
+@class CCUIContinuousSliderView, MTMaterialShadowView;
+@protocol SBElasticGlyphView;
 
 @interface SBElasticSliderMaterialWrapperView : UIView
 {
     UIView *_sliderWrapperView;
     UIView *_maskView;
-    SBElasticSliderView *_sliderView;
+    CCUIContinuousSliderView<SBElasticGlyphView> *_sliderView;
     MTMaterialShadowView *_baseMaterialView;
     long long _shadowMode;
 }
@@ -21,11 +22,13 @@
 @property(nonatomic) long long shadowMode; // @synthesize shadowMode=_shadowMode;
 @property(readonly, nonatomic) UIView *maskView; // @synthesize maskView=_maskView;
 @property(readonly, nonatomic) MTMaterialShadowView *baseMaterialView; // @synthesize baseMaterialView=_baseMaterialView;
-@property(readonly, nonatomic) SBElasticSliderView *sliderView; // @synthesize sliderView=_sliderView;
+@property(readonly, nonatomic) CCUIContinuousSliderView<SBElasticGlyphView> *sliderView; // @synthesize sliderView=_sliderView;
 - (void)_updateShadowMode;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)layoutSubviews;
-- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithSliderView:(id)arg1;
 
 @end
 

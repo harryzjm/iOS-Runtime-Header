@@ -6,36 +6,45 @@
 
 #import <objc/NSObject.h>
 
+@class VCAudioUnitSpatialContext;
+
 __attribute__((visibility("hidden")))
 @interface VCAudioUnitProperties : NSObject
 {
-    unsigned int _samplesPerFrame;
-    struct AudioStreamBasicDescription _format;
+    struct tagVCAudioFrameFormat _frameFormatMic;
+    struct tagVCAudioFrameFormat _frameFormatSpeaker;
     unsigned int _audioUnitType;
     _Bool _allowAudioRecording;
     int _operatingMode;
     unsigned int _vpOperatingMode;
+    _Bool _vpEnableSpatialChat;
     int _deviceRole;
     _Bool _isFarEndVersionInfoValid;
     struct VoiceIOFarEndVersionInfo _farEndVersionInfo;
     unsigned int _remoteCodecType;
     double _remoteCodecSampleRate;
     _Bool _enableDNNVAD;
+    unsigned int _audioSessionId;
+    VCAudioUnitSpatialContext *_spatialContext;
 }
 
+@property(nonatomic) unsigned int audioSessionId; // @synthesize audioSessionId=_audioSessionId;
+@property(retain, nonatomic) VCAudioUnitSpatialContext *spatialContext; // @synthesize spatialContext=_spatialContext;
 @property(nonatomic) _Bool enableDNNVAD; // @synthesize enableDNNVAD=_enableDNNVAD;
 @property(readonly, nonatomic) _Bool isFarEndVersionInfoValid; // @synthesize isFarEndVersionInfoValid=_isFarEndVersionInfoValid;
-@property(nonatomic) struct AudioStreamBasicDescription format; // @synthesize format=_format;
 @property(nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
+@property(nonatomic) _Bool vpEnableSpatialChat; // @synthesize vpEnableSpatialChat=_vpEnableSpatialChat;
 @property(nonatomic) unsigned int vpOperatingMode; // @synthesize vpOperatingMode=_vpOperatingMode;
 @property(nonatomic) unsigned int remoteCodecType; // @synthesize remoteCodecType=_remoteCodecType;
 @property(nonatomic) double remoteCodecSampleRate; // @synthesize remoteCodecSampleRate=_remoteCodecSampleRate;
 @property(nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property(nonatomic) _Bool allowAudioRecording; // @synthesize allowAudioRecording=_allowAudioRecording;
 @property(nonatomic) unsigned int audioUnitType; // @synthesize audioUnitType=_audioUnitType;
-@property(nonatomic) unsigned int samplesPerFrame; // @synthesize samplesPerFrame=_samplesPerFrame;
+@property(readonly, nonatomic) struct tagVCAudioFrameFormat *frameFormatSpeaker;
+@property(readonly, nonatomic) struct tagVCAudioFrameFormat *frameFormatMic;
 @property(nonatomic) struct VoiceIOFarEndVersionInfo farEndVersionInfo;
 - (id)description;
+- (void)dealloc;
 
 @end
 

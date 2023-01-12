@@ -15,7 +15,6 @@
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollectionForSync:(id)arg1;
 - (_Bool)addCodableRepresentationToCollectionForJournal:(id)arg1;
-- (id)codableRepresentationForJournal;
 - (id)codableRepresentationForSync;
 
 // Remaining properties

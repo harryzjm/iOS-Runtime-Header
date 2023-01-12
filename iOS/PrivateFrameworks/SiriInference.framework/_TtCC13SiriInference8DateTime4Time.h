@@ -17,6 +17,7 @@
     MISSING_TYPE *definedValue;
     MISSING_TYPE *occurringIn;
     MISSING_TYPE *setByUser;
+    MISSING_TYPE *meridiemSetByUser;
 }
 
 @end

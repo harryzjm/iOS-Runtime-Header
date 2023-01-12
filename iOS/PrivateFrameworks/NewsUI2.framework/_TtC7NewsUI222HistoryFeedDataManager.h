@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI222HistoryFeedDataManager : NSObject
 {
     MISSING_TYPE *delegate;
@@ -15,10 +16,12 @@
     MISSING_TYPE *newsletterManager;
     MISSING_TYPE *personalizationData;
     MISSING_TYPE *readingHistory;
+    MISSING_TYPE *dataProvider;
     MISSING_TYPE *readingList;
     MISSING_TYPE *headlineService;
     MISSING_TYPE *accessQueue;
-    MISSING_TYPE *chunkSize;
+    MISSING_TYPE *feedServiceConfigFetcher;
+    MISSING_TYPE *feedService;
 }
 
 - (void).cxx_destruct;

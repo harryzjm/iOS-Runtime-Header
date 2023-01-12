@@ -34,7 +34,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) HMDAWDRemoteSessionMetric *metric; // @synthesize metric=_metric;
+@property(retain, nonatomic) HMDAWDRemoteSessionMetric *metric; // @synthesize metric=_metric;
 @property(nonatomic) _Bool supportsSharedIdentities; // @synthesize supportsSharedIdentities=_supportsSharedIdentities;
 @property(readonly, nonatomic) HMDDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property(retain, nonatomic) HMDSecureRemoteStreamInternal *remoteSession; // @synthesize remoteSession=_remoteSession;
@@ -46,7 +46,7 @@
 - (void)__handleDeviceRemovedFromAccount:(id)arg1;
 - (void)__handleAccountRemovedFromRegistry:(id)arg1;
 - (void)__handleRemovedIdentity:(id)arg1;
-- (void)handleSecureMessage:(id)arg1 fromTransport:(id)arg2;
+- (void)handleSecureMessage:(id)arg1 fromDevice:(id)arg2 fromTransport:(id)arg3;
 - (void)handleCompletedMessage:(id)arg1 options:(id)arg2 responsePayload:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stop;
@@ -63,7 +63,7 @@
 - (void)setMaximumRemoteStreams:(id)arg1;
 @property(readonly, copy) NSNumber *maximumRemoteStreams; // @synthesize maximumRemoteStreams=_maximumRemoteStreams;
 @property long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property(retain, nonatomic) HMDDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property(retain) HMDDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property(readonly, copy) NSString *propertyDescription;
 @property(readonly, copy) NSString *shortDescription;
 - (void)dealloc;

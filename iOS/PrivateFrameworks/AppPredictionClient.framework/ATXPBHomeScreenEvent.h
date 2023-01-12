@@ -27,16 +27,19 @@
     NSString *_widgetKind;
     int _widgetSize;
     NSString *_widgetUniqueId;
+    _Bool _isSuggestedWidget;
     struct {
         unsigned int date:1;
         unsigned int stackKind:1;
         unsigned int stackLocation:1;
         unsigned int widgetSize:1;
+        unsigned int isSuggestedWidget:1;
     } _has;
 }
 
 + (Class)suggestionIdsType;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isSuggestedWidget; // @synthesize isSuggestedWidget=_isSuggestedWidget;
 @property(retain, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
 @property(retain, nonatomic) ATXPBHomeScreenEventMetadata *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) NSMutableArray *suggestionIds; // @synthesize suggestionIds=_suggestionIds;
@@ -58,6 +61,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsSuggestedWidget;
 - (int)StringAsStackLocation:(id)arg1;
 - (id)stackLocationAsString:(int)arg1;
 @property(nonatomic) _Bool hasStackLocation;

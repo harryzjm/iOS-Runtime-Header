@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 + (void)readClientDataFromTableCell:(id)arg1 toTableCell:(id)arg2 state:(id)arg3;
 + (void)readClientDataFromGroup:(id)arg1 toGroup:(id)arg2 state:(id)arg3;
 + (void)readClientDataFromShape:(id)arg1 toGraphic:(id)arg2 state:(id)arg3;
-+ (void)readEshClientAnchor:(const struct XlEshClientAnchor *)arg1 targetClientData:(id)arg2 state:(id)arg3;
-+ (void)setAutoInsetForShape:(struct EshShape *)arg1;
++ (void)readEshClientAnchor:(const void *)arg1 targetClientData:(id)arg2 state:(id)arg3;
++ (void)setAutoInsetForShape:(void *)arg1;
 
 @end
 

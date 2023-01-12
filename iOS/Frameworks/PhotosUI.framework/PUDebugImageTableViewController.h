@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (id)pidFromPath:(id)arg1;
+- (id)jobNumberFromPath:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

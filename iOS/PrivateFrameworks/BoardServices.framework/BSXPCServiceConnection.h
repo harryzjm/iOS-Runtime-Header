@@ -9,7 +9,7 @@
 #import <BoardServices/BSInvalidatable-Protocol.h>
 #import <BoardServices/BSXPCServiceConnectionParent-Protocol.h>
 
-@class BSXPCServiceConnectionContext, BSXPCServiceConnectionEventHandler, BSXPCServiceConnectionMessage, BSXPCServiceConnectionMessageReply, BSXPCServiceConnectionPeer, NSMutableArray, NSString;
+@class BSXPCServiceConnectionContext, BSXPCServiceConnectionEventHandler, BSXPCServiceConnectionMessage, BSXPCServiceConnectionMessageReply, BSXPCServiceConnectionPeer, NSMutableArray, NSString, RBSTarget;
 @protocol BSServiceDispatchingQueue, BSXPCServiceConnectionParent, OS_xpc_object;
 
 @interface BSXPCServiceConnection : NSObject <BSXPCServiceConnectionParent, BSInvalidatable>
@@ -18,7 +18,7 @@
     struct os_unfair_lock_s _lock;
     unsigned int _lock_activationGeneration;
     BSXPCServiceConnectionPeer *_lock_peer;
-    id <BSServiceDispatchingQueue> _lock_connection_queue;
+    id <BSServiceDispatchingQueue> _configured_connectionQueue;
     NSObject<OS_xpc_object> *_lock_connection;
     NSMutableArray *_lock_childConnections;
     NSMutableArray *_lock_connectionActivatedEvents;
@@ -34,7 +34,9 @@
     _Bool _lock_established;
     _Bool _lock_remotelyInvalidated;
     _Bool _lock_clientInvalidated;
+    _Bool _lock_clientInvalidatedExplicitly;
     _Bool _lock_invalidated;
+    RBSTarget *_remoteAssertionTarget;
     BSXPCServiceConnectionContext *_context;
 }
 

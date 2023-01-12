@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class FCAssetHandle, FCInterestToken, NSString, NSURL, NTPBResourceRecord;
+#import <NewsCore/FCContentArchivable-Protocol.h>
 
-@interface FCResource : NSObject
+@class FCAssetHandle, FCContentArchive, FCInterestToken, NSString, NSURL, NTPBResourceRecord;
+
+@interface FCResource : NSObject <FCContentArchivable>
 {
     NSString *_resourceID;
     FCAssetHandle *_assetHandle;
@@ -21,6 +23,7 @@
 @property(retain, nonatomic) NTPBResourceRecord *resourceRecord; // @synthesize resourceRecord=_resourceRecord;
 @property(readonly, nonatomic) FCAssetHandle *assetHandle; // @synthesize assetHandle=_assetHandle;
 @property(readonly, nonatomic) NSString *resourceID; // @synthesize resourceID=_resourceID;
+@property(readonly, nonatomic) FCContentArchive *contentArchive;
 @property(readonly, nonatomic, getter=isOnDisk) _Bool onDisk;
 @property(readonly, nonatomic) NSURL *fileURL;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -16,6 +16,7 @@
 - (_Bool)updateWithRegisteredTicket:(id)arg1 error:(id *)arg2;
 - (id)keyRollingTicketWithError:(id *)arg1;
 - (_Bool)shouldRollEncryptionIdentity;
+- (void)unsealMessageAndAttributes:(id)arg1 signedByPublicIdentity:(id)arg2 decryptionBlock:(CDUnknownBlockType)arg3;
 - (void)unsealMessage:(id)arg1 signedByPublicIdentity:(id)arg2 decryptionBlock:(CDUnknownBlockType)arg3;
 - (id)unsealMessage:(id)arg1 signedByPublicIdentity:(id)arg2 error:(id *)arg3;
 - (_Bool)eraseFromKeyChain:(id *)arg1;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDMPCSessionControllerExecutionEvent <HMDCoreAnalyticsLogging>
+@interface HMDMPCSessionControllerExecutionEvent <HMMCoreAnalyticsLogging>
 {
     _Bool _didPartiallySucceed;
 }
@@ -18,6 +18,9 @@
 @property(readonly, copy) NSString *resultString;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

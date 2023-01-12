@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAssetTrack, AVPlayerItemTrackInternal;
+@class AVAssetTrack, AVPlayerItemTrackInternal, NSArray;
 
 @interface AVPlayerItemTrack : NSObject
 {
@@ -17,6 +17,7 @@
 - (void)_respondToFigPlaybackItemBecomingReadyForInpection;
 - (void)_attachToFigPlaybackItemOfPlayerItem:(id)arg1;
 - (void)_transferCachedValuesToFig;
+- (void)_updateTrackExtractionIDArrayProperty;
 - (void)_transferHapticVolumeToFig;
 - (float)hapticVolume;
 - (void)setHapticVolume:(float)arg1;
@@ -29,6 +30,8 @@
 - (void)setVideoEnhancementFilterOptions:(id)arg1;
 - (void)_transferVideoEnhancementOptionsToFig;
 - (id)videoEnhancementFilterOptions;
+- (_Bool)willTrimShortDurationAudioSamples;
+- (int)effectiveEQPreset;
 - (void)setLoudnessInfo:(id)arg1;
 - (void)_transferLoudnessInfoToFig;
 - (id)effectiveLoudnessInfo;
@@ -46,6 +49,9 @@
 - (id)description;
 - (void)dealloc;
 - (id)_initWithFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 readyForInspection:(_Bool)arg2 trackID:(int)arg3 asset:(id)arg4 playerItem:(id)arg5;
+@property(readonly, nonatomic) NSArray *outputs;
+- (void)removeOutput:(id)arg1;
+- (void)addOutput:(id)arg1;
 
 @end
 

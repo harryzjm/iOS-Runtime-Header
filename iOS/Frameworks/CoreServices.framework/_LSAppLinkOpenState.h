@@ -14,17 +14,20 @@
 __attribute__((visibility("hidden")))
 @interface _LSAppLinkOpenState : NSObject <NSCopying, NSSecureCoding>
 {
+    struct optional<audit_token_t> _auditToken;
+    NSXPCConnection *_XPCConnection;
+    _Bool _includeLinksForCallingApplication;
     NSURL *_URL;
     NSString *_bundleIdentifier;
     _LSOpenConfiguration *_openConfiguration;
-    NSXPCConnection *_XPCConnection;
     NSDictionary *_browserState;
 }
 
 + (_Bool)supportsSecureCoding;
+- (id).cxx_construct;
 - (void).cxx_destruct;
+@property _Bool includeLinksForCallingApplication; // @synthesize includeLinksForCallingApplication=_includeLinksForCallingApplication;
 @property(copy) NSDictionary *browserState; // @synthesize browserState=_browserState;
-@property(retain) NSXPCConnection *XPCConnection; // @synthesize XPCConnection=_XPCConnection;
 @property(retain) _LSOpenConfiguration *openConfiguration; // @synthesize openConfiguration=_openConfiguration;
 @property(copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(copy) NSURL *URL; // @synthesize URL=_URL;
@@ -32,7 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
-@property(readonly) const CDStruct_4c969caf *auditToken;
+@property(retain, nonatomic) NSXPCConnection *XPCConnection;
+@property(nonatomic) const CDStruct_4c969caf *auditToken;
 
 @end
 

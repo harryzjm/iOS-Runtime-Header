@@ -4,24 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MTLGPUDebugImageData;
+
 @interface MTLGPUDebugFunction
 {
-    struct mutex argumentLayoutsMutex;
-    struct unordered_map<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>>> argumentLayouts;
+    MTLGPUDebugImageData *data;
+    struct mutex _argumentLayoutsMutex;
+    struct unordered_map<unsigned int, std::unique_ptr<GPUDebugArgumentEncoderLayout>, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, std::unique_ptr<GPUDebugArgumentEncoderLayout>>>> _argumentLayouts;
 }
 
 + (id)internalStructTypeFromUserStructType:(id)arg1;
 + (id)internalArrayTypeFromUserArrayType:(id)arg1;
 + (id)convertUserType:(id)arg1;
-+ (id)newFunctionWithFunction:(id)arg1 library:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 binaryArchives:(id)arg3;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 pipelineLibrary:(id)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2 pipelineLibrary:(id)arg3 binaryArchives:(id)arg4;
+- (void)prepareForBinaryFunctionUsage;
+- (void)prepareForComputePipelineUsage;
+- (void)prepareForRenderPipelineUsage;
+- (void)_initImageData;
 - (id)initWithFunction:(id)arg1 library:(id)arg2;
 
 @end

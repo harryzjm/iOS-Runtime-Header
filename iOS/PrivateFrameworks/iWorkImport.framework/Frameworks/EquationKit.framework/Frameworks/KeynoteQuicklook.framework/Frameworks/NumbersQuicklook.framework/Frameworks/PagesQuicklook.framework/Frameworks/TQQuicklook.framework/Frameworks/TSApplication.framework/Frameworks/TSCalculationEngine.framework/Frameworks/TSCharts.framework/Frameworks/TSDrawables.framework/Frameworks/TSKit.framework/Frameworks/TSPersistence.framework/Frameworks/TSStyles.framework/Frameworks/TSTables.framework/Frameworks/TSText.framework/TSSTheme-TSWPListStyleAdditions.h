@@ -9,8 +9,8 @@
 @class NSArray, NSSet, NSString, TSDMediaStyle, TSWPCharacterStyle, TSWPColumnStyle, TSWPDropCapStyle, TSWPListStyle, TSWPParagraphStyle, TSWPTOCEntryStyle;
 
 @interface TSSTheme (TSWPListStyleAdditions)
-- (void)tswpSaveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
-- (void)tswpLoadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
+- (void)tswpSaveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)tswpLoadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)removeTextStylesOfPresetKinds:(id)arg1 notReferencedInDocumentRoot:(id)arg2;
 @property(readonly, nonatomic) NSSet *unmodifiableStyles;
 @property(readonly, nonatomic) NSSet *undeletableStyles;

@@ -9,17 +9,18 @@
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/IDSServiceDelegate-Protocol.h>
 
-@class DEDController, DEDIDSConnection, NSString;
+@class DEDIDSConnection, NSString;
+@protocol DEDIDSInboundDelegate;
 
 @interface DEDIDSInbound : NSObject <IDSServiceDelegate, DEDSecureArchiving>
 {
     DEDIDSConnection *_connection;
-    DEDController *_delegate;
+    id <DEDIDSInboundDelegate> _delegate;
 }
 
 + (id)archivedClasses;
 - (void).cxx_destruct;
-@property __weak DEDController *delegate; // @synthesize delegate=_delegate;
+@property __weak id <DEDIDSInboundDelegate> delegate; // @synthesize delegate=_delegate;
 @property __weak DEDIDSConnection *connection; // @synthesize connection=_connection;
 - (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(CDUnknownBlockType)arg3;
 - (void)serviceAllowedTrafficClassifiersDidReset:(id)arg1;

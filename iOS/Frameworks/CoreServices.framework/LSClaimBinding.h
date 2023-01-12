@@ -20,7 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)_claimBindingsForBindingEvaluator:(const struct BindingEvaluator *)arg1 error:(id *)arg2;
++ (id)_claimBindingsForBindingEvaluator:(const void *)arg1 error:(id *)arg2;
 + (id)claimBindingsWithURL:(id)arg1 error:(id *)arg2;
 + (id)claimBindingsWithTypeIdentifier:(id)arg1 error:(id *)arg2;
 + (id)new;
@@ -33,7 +33,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)detach;
-- (id)_initWithBindingEvaluator:(const struct BindingEvaluator *)arg1 error:(id *)arg2;
+- (id)_initWithBindingEvaluator:(const void *)arg1 error:(id *)arg2;
 - (id)_initWithContext:(struct LSContext *)arg1 binding:(const struct LSBinding *)arg2 coreTypesBundleRecord:(id *)arg3 typeRecord:(id)arg4 error:(id *)arg5;
 - (id)_initWithClaimRecord:(id)arg1 typeRecord:(id)arg2 bundleRecord:(id)arg3;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;

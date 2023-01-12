@@ -20,13 +20,17 @@
     _INPBURLValue *_audioMessageFileURL;
     _INPBFileDataAttachment *_file;
     _INPBURLValue *_fileURL;
+    NSString *_phAssetId;
+    _INPBURLValue *_sharedLink;
     _INPBURLValue *_speechDataURL;
+    NSString *_typeIdentifier;
     unsigned long long _whichDatasource;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long whichDatasource; // @synthesize whichDatasource=_whichDatasource;
+@property(copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -35,8 +39,13 @@
 - (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(readonly, nonatomic) _Bool hasTypeIdentifier;
 @property(readonly, nonatomic) _Bool hasSpeechDataURL;
 @property(retain, nonatomic) _INPBURLValue *speechDataURL; // @synthesize speechDataURL=_speechDataURL;
+@property(readonly, nonatomic) _Bool hasSharedLink;
+@property(retain, nonatomic) _INPBURLValue *sharedLink; // @synthesize sharedLink=_sharedLink;
+@property(readonly, nonatomic) _Bool hasPhAssetId;
+@property(copy, nonatomic) NSString *phAssetId; // @synthesize phAssetId=_phAssetId;
 @property(readonly, nonatomic) _Bool hasFileURL;
 @property(retain, nonatomic) _INPBURLValue *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, nonatomic) _Bool hasFile;

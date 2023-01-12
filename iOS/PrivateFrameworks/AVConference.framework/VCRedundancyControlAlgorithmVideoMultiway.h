@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double redundancyInterval; // @synthesize redundancyInterval=_redundancyInterval;
 @property(readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
 - (void)updateInternalParametersWithMode:(int)arg1;
-- (void)updateRoundTripTimeWithStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateRoundTripTimeWithStatistics:(CDStruct_c0785916)arg1;
 - (void)updateRedundancyPercentage;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_c0785916)arg1;
 - (id)init;
 
 // Remaining properties

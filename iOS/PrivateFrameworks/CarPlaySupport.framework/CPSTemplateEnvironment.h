@@ -8,7 +8,7 @@
 
 #import <CarPlaySupport/CPUINowPlayingObserving-Protocol.h>
 
-@class CARObserverHashTable, NSSet, NSString, NSXPCConnection;
+@class CARObserverHashTable, CARSessionStatus, NSSet, NSString, NSXPCConnection;
 @protocol CPTemplateProviding;
 
 @interface CPSTemplateEnvironment : NSObject <CPUINowPlayingObserving>
@@ -24,6 +24,7 @@
     _Bool _isUserApplication;
     NSXPCConnection *_connection;
     id <CPTemplateProviding> _templateProvider;
+    CARSessionStatus *_sessionStatus;
     NSString *_bundleIdentifier;
     NSSet *_allowedTemplateClasses;
     CARObserverHashTable *_environmentObservers;
@@ -42,9 +43,11 @@
 @property(readonly, nonatomic) _Bool hasNavigationEntitlement; // @synthesize hasNavigationEntitlement=_hasNavigationEntitlement;
 @property(readonly, nonatomic) _Bool isNowPlayingApp; // @synthesize isNowPlayingApp=_isNowPlayingApp;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(readonly, nonatomic) CARSessionStatus *sessionStatus; // @synthesize sessionStatus=_sessionStatus;
 @property(readonly, nonatomic) __weak id <CPTemplateProviding> templateProvider; // @synthesize templateProvider=_templateProvider;
 @property(readonly, nonatomic) __weak NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)nowPlayingManager:(id)arg1 didUpdateSnapshot:(id)arg2;
+@property(readonly, nonatomic) _Bool rightHandDrive;
 - (void)addTemplateEnvironmentDelegate:(id)arg1;
 @property(readonly, nonatomic) unsigned long long maximumClientHierarchyDepth;
 @property(readonly, nonatomic) unsigned long long maximumTabs;

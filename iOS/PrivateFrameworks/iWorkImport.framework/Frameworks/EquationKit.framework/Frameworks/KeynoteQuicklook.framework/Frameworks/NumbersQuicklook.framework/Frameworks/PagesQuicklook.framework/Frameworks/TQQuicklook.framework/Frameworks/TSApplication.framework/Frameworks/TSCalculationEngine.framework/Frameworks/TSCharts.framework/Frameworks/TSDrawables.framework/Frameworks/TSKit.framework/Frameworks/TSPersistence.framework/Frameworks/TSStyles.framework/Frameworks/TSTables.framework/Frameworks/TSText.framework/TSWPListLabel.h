@@ -12,7 +12,7 @@
 {
     _Bool _isLabelRTL;
     _Bool _isLabelTateChuYoko;
-    int _labelType;
+    unsigned long long _labelType;
     double _baselineOffset;
     TSDShadow *_shadow;
     double _labelIndent;
@@ -40,15 +40,15 @@
 @property(retain, nonatomic) TSDShadow *shadow; // @synthesize shadow=_shadow;
 @property(readonly, nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
-@property(readonly, nonatomic) int labelType; // @synthesize labelType=_labelType;
+@property(readonly, nonatomic) unsigned long long labelType; // @synthesize labelType=_labelType;
 @property(readonly, nonatomic) const struct __CTFont *labelFont;
 @property(readonly, nonatomic) struct CGSize naturalImageSize;
 @property(readonly, nonatomic) double height;
 @property(readonly, nonatomic) double width;
 - (_Bool)isEqualToListLabel:(id)arg1;
 - (void)dealloc;
-- (id)initWithType:(int)arg1 labelString:(id)arg2 textLine:(struct __CTLine *)arg3 listNumber:(unsigned long long)arg4 isTateChuYoko:(_Bool)arg5 baselineOffset:(double)arg6;
-- (id)initWithType:(int)arg1 imageProvider:(id)arg2 size:(struct CGSize)arg3 baselineOffset:(double)arg4;
+- (id)initWithType:(unsigned long long)arg1 labelString:(id)arg2 textLine:(struct __CTLine *)arg3 listNumber:(unsigned long long)arg4 isTateChuYoko:(_Bool)arg5 baselineOffset:(double)arg6;
+- (id)initWithType:(unsigned long long)arg1 imageProvider:(id)arg2 size:(struct CGSize)arg3 baselineOffset:(double)arg4;
 
 @end
 

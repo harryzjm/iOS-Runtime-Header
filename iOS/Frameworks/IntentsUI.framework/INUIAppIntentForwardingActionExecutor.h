@@ -6,22 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <IntentsUI/INIntentDelivererDataSource-Protocol.h>
-#import <IntentsUI/INIntentDelivererDelegate-Protocol.h>
+#import <IntentsUI/INIntentDeliveringDelegate-Protocol.h>
 
-@class INIntentDeliverer, NSString, UIApplication;
+@class NSString, UIApplication;
 
-@interface INUIAppIntentForwardingActionExecutor : NSObject <INIntentDelivererDelegate, INIntentDelivererDataSource>
+@interface INUIAppIntentForwardingActionExecutor : NSObject <INIntentDeliveringDelegate>
 {
     id _handlerForIntent;
-    INIntentDeliverer *_intentDeliverer;
-    CDStruct_4c969caf _currentHostProcessAuditToken;
     UIApplication *_application;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIApplication *application; // @synthesize application=_application;
-- (CDStruct_4c969caf)auditTokenForIntentDeliverer:(id)arg1;
 - (void)intentDeliverer:(id)arg1 deliverIntent:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)executeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithApplication:(id)arg1;

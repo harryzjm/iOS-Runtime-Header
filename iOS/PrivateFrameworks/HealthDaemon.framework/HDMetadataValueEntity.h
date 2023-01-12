@@ -8,8 +8,6 @@
 {
 }
 
-+ (id)_predicateForEntityWithObjectID:(id)arg1;
-+ (id)_predicateForEntityWithKeyID:(id)arg1;
 + (_Bool)_insertMetadataValueWithKeyID:(long long)arg1 objectID:(long long)arg2 value:(id)arg3 database:(id)arg4 error:(id *)arg5;
 + (id)deleteStatementForObjectMetadataWithTransaction:(id)arg1;
 + (long long)protectionClass;

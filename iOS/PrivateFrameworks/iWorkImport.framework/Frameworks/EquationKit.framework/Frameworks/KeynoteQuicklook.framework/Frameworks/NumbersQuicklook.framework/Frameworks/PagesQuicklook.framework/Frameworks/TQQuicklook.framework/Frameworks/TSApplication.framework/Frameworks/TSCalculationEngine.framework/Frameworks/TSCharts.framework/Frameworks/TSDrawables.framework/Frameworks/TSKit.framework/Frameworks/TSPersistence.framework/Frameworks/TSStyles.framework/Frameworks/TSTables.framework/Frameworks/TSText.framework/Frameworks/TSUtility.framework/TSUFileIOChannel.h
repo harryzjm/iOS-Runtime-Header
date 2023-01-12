@@ -17,9 +17,12 @@
 {
     NSObject<OS_dispatch_queue> *_ioQueue;
     NSObject<OS_dispatch_io> *_channel;
-    _Bool _isClosed;
+    _Atomic _Bool _isClosed;
+    int _oflag;
 }
 
++ (void)setShouldFullFsyncOnClose:(_Bool)arg1;
++ (_Bool)shouldFullFsyncOnClose;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isValid;
 - (void)truncateToLength:(long long)arg1 completion:(CDUnknownBlockType)arg2;

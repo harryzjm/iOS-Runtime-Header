@@ -8,6 +8,8 @@
 
 @interface FPActionOperationLocator (Daemon)
 + (_Bool)_isMoveAcrossZonesOrSharedRootsForSource:(id)arg1 destination:(id)arg2;
+- (void)annotateWithPersonaSandboxIfNeeded:(id)arg1;
+- (id)startAccessingLocator;
 @property(readonly, nonatomic) _Bool isDownloaded;
 - (unsigned long long)materializeOptionForDestinationItem:(id)arg1 recursively:(_Bool)arg2 isCopy:(_Bool)arg3 extensionManager:(id)arg4;
 - (_Bool)willRequireDownloadForSourceItem:(id)arg1 extensionManager:(id)arg2;

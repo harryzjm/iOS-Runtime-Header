@@ -15,6 +15,7 @@
     MISSING_TYPE *dataSource;
     MISSING_TYPE *serverInteractionController;
     MISSING_TYPE *demoDataInjector;
+    MISSING_TYPE *monitoredDevices;
 }
 
 @end

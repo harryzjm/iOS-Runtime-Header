@@ -8,12 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFeedbackComponentValue, PBUnknownFields;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEORPFeedbackComponent : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    GEORPFeedbackComponentValue *_value;
+    NSMutableArray *_values;
     int _status;
     int _type;
     struct {
@@ -23,6 +23,7 @@
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)valueType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -39,8 +40,11 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEORPFeedbackComponentValue *value;
-@property(readonly, nonatomic) _Bool hasValue;
+- (id)valueAtIndex:(unsigned long long)arg1;
+- (unsigned long long)valuesCount;
+- (void)addValue:(id)arg1;
+- (void)clearValues;
+@property(retain, nonatomic) NSMutableArray *values;
 - (int)StringAsStatus:(id)arg1;
 - (id)statusAsString:(int)arg1;
 @property(nonatomic) _Bool hasStatus;

@@ -20,9 +20,13 @@
     NSString *_name;
     BSProcessHandle *_process;
     SBApplication *_destinationApplication;
+    NSString *_title;
+    NSString *_subtitle;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool confirmedNotInPocket; // @synthesize confirmedNotInPocket=_confirmedNotInPocket;
 @property(nonatomic) _Bool forceAlertAuthenticationUI; // @synthesize forceAlertAuthenticationUI=_forceAlertAuthenticationUI;
 @property(nonatomic) _Bool wantsBiometricPresentation; // @synthesize wantsBiometricPresentation=_wantsBiometricPresentation;

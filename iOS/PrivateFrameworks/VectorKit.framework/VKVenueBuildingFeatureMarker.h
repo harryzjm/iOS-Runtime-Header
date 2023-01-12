@@ -17,8 +17,8 @@
 @property(readonly, nonatomic) NSArray *floorOrdinals;
 @property(readonly, nonatomic) unsigned long long businessId;
 @property(readonly, nonatomic) unsigned long long buildingId;
-- (const shared_ptr_ec62a932 *)venueBuildingFeatureMarker;
-- (id)initWithVenueBuilding:(const struct VenueBuilding *)arg1 localize:(_Bool)arg2;
+- (const void *)venueBuildingFeatureMarker;
+- (id)initWithVenueBuilding:(const void *)arg1 localize:(_Bool)arg2;
 
 @end
 

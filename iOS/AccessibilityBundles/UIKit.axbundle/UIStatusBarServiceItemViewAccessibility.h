@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
-- (id)_accessibilityCoreTelephonyServiceStringName;
 - (_Bool)isAccessibilityElement;
 
 @end

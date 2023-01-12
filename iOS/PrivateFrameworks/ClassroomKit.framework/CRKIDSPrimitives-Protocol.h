@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class CRKIDSMessageOptions, NSDictionary, NSString;
 
 @protocol CRKIDSPrimitives
 @property(readonly, copy, nonatomic) NSDictionary *debugInfo;
-- (void)listenForMessagesWithHandler:(void (^)(NSDictionary *, NSString *, NSString *))arg1 completion:(void (^)(id <CRKIDSListener>, NSError *))arg2;
+- (void)subscribeToMessagesWithHandler:(void (^)(NSDictionary *, NSString *, NSString *))arg1 completion:(void (^)(id <CRKCancelable>, NSError *))arg2;
+- (void)sendMessage:(NSDictionary *)arg1 destinationAddress:(NSString *)arg2 sourceAppleID:(NSString *)arg3 options:(CRKIDSMessageOptions *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)sendMessage:(NSDictionary *)arg1 destinationAddress:(NSString *)arg2 sourceAppleID:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

@@ -20,9 +20,9 @@
 @property(readonly, nonatomic) NSMutableDictionary *timeOfFirstFailureByHMDAccessoryUUID; // @synthesize timeOfFirstFailureByHMDAccessoryUUID=_timeOfFirstFailureByHMDAccessoryUUID;
 @property(readonly, nonatomic) NSMutableDictionary *consecutiveFailureCountByHMDAccessoryUUID; // @synthesize consecutiveFailureCountByHMDAccessoryUUID=_consecutiveFailureCountByHMDAccessoryUUID;
 @property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
-- (double)timeIntervalSinceFirstFailureForAccessory:(id)arg1;
-- (unsigned long long)consecutiveFailureCountForAccessory:(id)arg1;
-- (void)handleSubmittedErrorCode:(long long)arg1 forAccessory:(id)arg2;
+- (double)timeIntervalSinceFirstFailureForAccessoryUUID:(id)arg1;
+- (unsigned long long)consecutiveFailureCountForAccessoryUUID:(id)arg1;
+- (void)handleSubmittedErrorCode:(long long)arg1 forAccessoryUUID:(id)arg2;
 - (id)init;
 
 @end

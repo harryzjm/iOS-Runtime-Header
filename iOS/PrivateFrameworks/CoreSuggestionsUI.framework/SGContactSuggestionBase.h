@@ -29,9 +29,13 @@
 - (id)suggestionCategoryTitle;
 - (id)suggestionCategoryImage;
 - (id)suggestionCategoryId;
+- (long long)suggestionActionButtonType;
 - (id)suggestionPrimaryAction;
 - (id)suggestionCategory;
 - (id)suggestionDismissAction;
+- (id)ignoreActionButtonTitleForContactSuggestion:(id)arg1;
+- (CDStruct_b01a1f36)subtitleAndCategoryFor:(id)arg1;
+- (id)titleForCategory:(long long)arg1;
 - (id)primaryActionTitle;
 - (id)suggestionSubtitle;
 - (id)suggestionTitle;

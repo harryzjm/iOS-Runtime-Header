@@ -23,6 +23,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+@property(readonly, copy, nonatomic) NSString *localizedPairedName;
 @property(readonly, copy, nonatomic) NSString *localizedName;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (id)copyForPairedCategory:(long long)arg1;

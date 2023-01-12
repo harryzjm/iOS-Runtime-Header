@@ -16,6 +16,7 @@
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
+    _Bool _contentsLeading;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -25,9 +26,12 @@
     _SFPBImage *_thumbnail;
     _SFPBRichText *_title;
     _SFPBRichText *_footnote;
+    _SFPBRichText *_thumbnailOverlayText;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) _SFPBRichText *thumbnailOverlayText; // @synthesize thumbnailOverlayText=_thumbnailOverlayText;
+@property(nonatomic) _Bool contentsLeading; // @synthesize contentsLeading=_contentsLeading;
 @property(retain, nonatomic) _SFPBRichText *footnote; // @synthesize footnote=_footnote;
 @property(retain, nonatomic) _SFPBRichText *title; // @synthesize title=_title;
 @property(retain, nonatomic) _SFPBImage *thumbnail; // @synthesize thumbnail=_thumbnail;

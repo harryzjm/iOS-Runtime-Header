@@ -29,11 +29,13 @@
     double _lineWidth;
     long long _percentCharge;
     UIImage *_glyph;
+    double _scaleFactor;
     id <UIViewControllerTransitionCoordinator> _transitionCoordinator;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <UIViewControllerTransitionCoordinator> transitionCoordinator; // @synthesize transitionCoordinator=_transitionCoordinator;
+@property(nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(retain, nonatomic) UIImage *glyph; // @synthesize glyph=_glyph;
 @property(nonatomic, getter=isLowPowerModeEnabled) _Bool lowPowerModeEnabled; // @synthesize lowPowerModeEnabled=_lowPowerModeEnabled;
 @property(nonatomic, getter=isCharging) _Bool charging; // @synthesize charging=_charging;

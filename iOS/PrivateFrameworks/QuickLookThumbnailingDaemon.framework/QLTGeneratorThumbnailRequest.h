@@ -25,13 +25,11 @@
     NSObject<OS_os_activity> *_activity;
     NSNumber *_requestBadgeType;
     QLDiskStore *_diskStore;
-    struct os_activity_scope_state_s _activityState;
 }
 
 - (void).cxx_destruct;
 @property(retain) QLDiskStore *diskStore; // @synthesize diskStore=_diskStore;
 @property(retain, nonatomic) NSNumber *requestBadgeType; // @synthesize requestBadgeType=_requestBadgeType;
-@property struct os_activity_scope_state_s activityState; // @synthesize activityState=_activityState;
 @property(retain) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
 @property(retain) NSObject<OS_os_activity> *topActivity; // @synthesize topActivity=_topActivity;
 @property(readonly, nonatomic) unsigned long long badgeType; // @synthesize badgeType=_badgeType;

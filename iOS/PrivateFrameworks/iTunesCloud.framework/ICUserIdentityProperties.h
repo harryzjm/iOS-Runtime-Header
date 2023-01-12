@@ -36,6 +36,7 @@
     _Bool _activeLocker;
     _Bool _active;
     NSDictionary *_privateListeningEnabledForHomeUsers;
+    NSDictionary *_privacyAcknowledgementVersions;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -57,6 +58,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToIdentityProperties:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *privacyAcknowledgementVersions;
 @property(readonly, copy, nonatomic) NSDictionary *cloudLibraryStateReason;
 @property(readonly, copy, nonatomic) NSNumber *mergeToCloudLibraryPreference;
 @property(readonly, copy, nonatomic) NSDate *ageVerificationExpirationDate;

@@ -11,12 +11,13 @@
 #import <SceneKit/SCNActionable-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 #import <SceneKit/SCNBoundingVolume-Protocol.h>
+#import <SceneKit/SCNTransactionCommandObject-Protocol.h>
 #import <SceneKit/UIFocusItem-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSMutableArray, NSMutableDictionary, NSString, SCNCamera, SCNGeometry, SCNLight, SCNMorpher, SCNNodeComponent, SCNOrderedDictionary, SCNPhysicsBody, SCNPhysicsField, SCNSkinner, UIView;
+@class MISSING_TYPE, NSArray, NSMutableArray, NSMutableDictionary, NSString, SCNCamera, SCNGeometry, SCNLight, SCNMorpher, SCNNodeComponent, SCNOrderedDictionary, SCNPhysicsBody, SCNPhysicsField, SCNSkinner, UIFocusEffect, UIView;
 @protocol SCNNodeRendererDelegate, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface SCNNode : NSObject <NSCopying, NSSecureCoding, SCNAnimatable, SCNActionable, SCNBoundingVolume, UIFocusItem>
+@interface SCNNode : NSObject <SCNTransactionCommandObject, NSCopying, NSSecureCoding, SCNAnimatable, SCNActionable, SCNBoundingVolume, UIFocusItem>
 {
     struct __C3DNode *_node;
     SCNNode *_parent;
@@ -74,7 +75,7 @@
 + (id)_dumpNodeTree:(id)arg1 tab:(id)arg2;
 + (id)nodeWithGeometry:(id)arg1;
 + (id)node;
-+ (id)nodeWithMDLObject:(id)arg1 masterObjects:(id)arg2 sceneNodes:(id)arg3 skinnedMeshes:(id)arg4 skelNodesMap:(struct SkelNodesMap *)arg5 asset:(id)arg6 options:(id)arg7;
++ (id)nodeWithMDLObject:(id)arg1 masterObjects:(id)arg2 sceneNodes:(id)arg3 skinnedMeshes:(id)arg4 skelNodesMap:(void *)arg5 asset:(id)arg6 options:(id)arg7;
 + (id)nodeWithMDLObject:(id)arg1;
 + (id)nodeWithMDLAsset:(id)arg1;
 + (struct SCNVector3)localFront;
@@ -188,7 +189,6 @@
 - (_Bool)isAnimationForKeyPaused:(id)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
-- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)resumeAnimationForKey:(id)arg1;
 - (void)pauseAnimationForKey:(id)arg1;
 - (void)_pauseAnimation:(_Bool)arg1 forKey:(id)arg2 pausedByNode:(_Bool)arg3;
@@ -198,7 +198,9 @@
 - (id)animationForKey:(id)arg1;
 - (void)_syncObjCAnimations;
 @property(readonly) NSArray *animationKeys;
+- (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1;
+- (void)removeAllAnimationsWithBlendOutDuration:(double)arg1;
 - (void)removeAllAnimations;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
@@ -352,10 +354,13 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
 @property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly, nonatomic) struct CGRect frame;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 @property(readonly) Class superclass;
 

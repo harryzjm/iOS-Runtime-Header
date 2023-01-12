@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (MCUtilities)
+- (void)MCFixUpRestrictionsDictionaryForMDMReporting;
 - (void)MCFilterRestrictionPayloadKeys:(id)arg1;
 - (void)MCSetUnionSetting:(id)arg1 values:(id)arg2;
 - (void)MCSetIntersectionSetting:(id)arg1 values:(id)arg2;
@@ -18,7 +19,6 @@
 - (void)MCSetObjectIfNotNil:(id)arg1 forKey:(id)arg2;
 - (void)MCDeepCopyMissingEntriesFromDictionary:(id)arg1;
 - (void)MCDeepCopyEntriesFromDictionary:(id)arg1;
-- (void)MCFixUpRestrictionsDictionaryForMDMReporting;
 - (id)MCMutableDictionaryContainingValidatedKeysAndClasses:(id)arg1 removeKeys:(_Bool)arg2 outError:(id *)arg3;
 - (id)MCValidateAndRemoveArrayOfClass:(Class)arg1 withKey:(id)arg2 isRequired:(_Bool)arg3 outError:(id *)arg4;
 - (id)MCValidateAndRemoveArrayOfClass:(Class)arg1 withKey:(id)arg2 isRequired:(_Bool)arg3 allowZeroLengthString:(_Bool)arg4 outError:(id *)arg5;

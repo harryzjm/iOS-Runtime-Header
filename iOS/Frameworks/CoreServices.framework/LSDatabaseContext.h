@@ -21,6 +21,7 @@
 - (_Bool)startAccessingWithUserID:(unsigned int)arg1 error:(id *)arg2;
 - (_Bool)startAccessingWithOptions:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)startAccessingReturningError:(id *)arg1;
+@property(readonly) _Bool canAccess;
 - (id)init;
 - (void)observeDatabaseChange4WebKit:(id)arg1;
 - (void)removeDatabaseChangeObserver4WebKit:(id)arg1;

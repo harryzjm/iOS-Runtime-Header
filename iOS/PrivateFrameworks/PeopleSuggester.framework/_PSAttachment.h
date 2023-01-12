@@ -30,6 +30,8 @@
 @property(readonly, copy, nonatomic) NSString *photoLocalIdentifier; // @synthesize photoLocalIdentifier=_photoLocalIdentifier;
 @property(readonly, copy, nonatomic) NSString *UTI; // @synthesize UTI=_UTI;
 @property(readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

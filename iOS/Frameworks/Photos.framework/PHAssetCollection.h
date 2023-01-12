@@ -64,13 +64,15 @@
 + (id)graphOptionsForTransientAssetCollection:(id)arg1 needsCompleteMomentsInfo:(_Bool)arg2 options:(id)arg3;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2 identifier:(id)arg3 photoLibrary:(id)arg4;
++ (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 subtype:(long long)arg3;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 subtype:(long long)arg2;
 + (id)transientAssetCollectionWithFetchOptions:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4 identifier:(id)arg5;
++ (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 type:(long long)arg2 subtype:(long long)arg3 title:(id)arg4 subtitle:(id)arg5 titleFontName:(id)arg6;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2;
++ (id)transientAssetCollectionWithAssets:(id)arg1 subtype:(long long)arg2 identifier:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 title:(id)arg6;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2;
 + (id)fetchMomentsInHighlight:(id)arg1 options:(id)arg2;
-+ (id)fetchPhotosHighlightsContainingMomentsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchPhotosHighlightsContainingMoments:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsBackingSuggestion:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsBackingMemory:(id)arg1 options:(id)arg2;
@@ -78,12 +80,13 @@
 + (id)fetchMomentsInMomentList:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsMetadata:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForFileURLs:(id)arg1 options:(id)arg2;
++ (id)assetsMetadataFromAssets:(id)arg1;
 + (id)fetchSuggestedContributionsForAssetsFetchResult:(id)arg1 options:(id)arg2;
++ (id)fetchRecentContentSyndicationAssetCollectionsWithOptions:(id)arg1 maxNumberOfStacks:(long long)arg2 maxNumberOfAssetsPerStack:(long long)arg3;
 + (id)fetchUserLibraryAlbumWithOptions:(id)arg1;
 + (id)fetchAssetCollectionsWithObjectIDs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithALAssetGroupURLs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
-+ (id)fetchAssetCollectionsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
 + (id)fetchAssetCollectionsContainingAssets:(id)arg1 withType:(long long)arg2 options:(id)arg3;
@@ -140,6 +143,8 @@
 - (id)description;
 @property(readonly, nonatomic) unsigned long long titleFontNameHash;
 @property(readonly, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
+- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 orQuery:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleFontName:(id)arg6 identifier:(id)arg7 albumKind:(int)arg8 type:(long long)arg9 subtype:(long long)arg10 startDate:(id)arg11 endDate:(id)arg12 photoLibrary:(id)arg13;
+- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 orQuery:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleFontName:(id)arg6 identifier:(id)arg7 albumKind:(int)arg8 subtype:(long long)arg9 startDate:(id)arg10 endDate:(id)arg11 photoLibrary:(id)arg12;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 orQuery:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleFontName:(id)arg6 identifier:(id)arg7 albumKind:(int)arg8 subtype:(long long)arg9 photoLibrary:(id)arg10;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleFontName:(id)arg5 identifier:(id)arg6 albumKind:(int)arg7 subtype:(long long)arg8 photoLibrary:(id)arg9;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5 subtype:(long long)arg6;
@@ -153,6 +158,7 @@
 @property(readonly, nonatomic) _Bool canShowAvalancheStacks;
 - (_Bool)canContainAssets;
 - (_Bool)canPerformEditOperation:(long long)arg1;
+- (id)identifier;
 - (_Bool)isAlbumContentTitleSort;
 - (_Bool)isAlbumContentSort;
 - (id)effectiveCustomSortKey;

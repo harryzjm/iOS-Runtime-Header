@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MKMapView, NSMutableArray, NSMutableDictionary, NSNumber, NSNumberFormatter, NSString, UIColor, _MKScaleUnitsView;
+@class MKMapView, NSMutableArray, NSMutableDictionary, NSNumber, NSNumberFormatter, NSString, UIColor, UIVisualEffectView, _MKScaleUnitsView;
 
 @interface MKScaleView : UIView
 {
@@ -18,7 +18,7 @@
     UIColor *_borderColorRegular;
     UIColor *_borderColorSatellite;
     NSMutableArray *_segments;
-    NSMutableArray *_blurredSegments;
+    UIVisualEffectView *_blurredSegment;
     _MKScaleUnitsView *_unitsView;
     long long _oldNumberOfSegments;
     UIView *_displayedOutline;

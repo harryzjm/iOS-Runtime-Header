@@ -11,8 +11,8 @@
 @interface TSPDistributableWriter : NSObject
 {
     TSPDistributableArchiveOutputStream *_outputStream;
-    set_713dd2e1 *_encodedIds;
-    struct set<int, std::__1::less<int>, std::__1::allocator<int>> *_typesSeen;
+    void *_encodedIds;
+    void *_typesSeen;
     _Atomic _Bool _isCancelled;
     TSPDatabase *_database;
     TSPDistributableFileManager *_fileManager;

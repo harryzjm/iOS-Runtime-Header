@@ -28,9 +28,11 @@
 - (void)_updatePhotosViewModelWithChanges:(unsigned long long)arg1;
 - (void)_updateZoomableViewModelWithChanges:(unsigned long long)arg1;
 - (_Bool)shouldPreventFaultOutOfBodyLayout:(id)arg1 inAssetSectionLayout:(id)arg2;
+- (void)sectionedLayout:(id)arg1 bodyLayout:(id)arg2 didChangeDataSource:(id)arg3 sectionIndexPath:(struct PXSimpleIndexPath)arg4 hasSectionChanges:(_Bool)arg5;
 - (void)configureSectionBodyLayout:(id)arg1 inAssetSectionLayout:(id)arg2 forSectionedLayout:(id)arg3;
+- (void)_configureZoomableLayoutDecorations:(id)arg1 fromAssetSectionLayout:(id)arg2;
 - (id)createSectionBodyLayoutForSectionedLayout:(id)arg1 dataSource:(id)arg2 sectionIndexPath:(struct PXSimpleIndexPath)arg3 spec:(id)arg4 outWantsDecoration:(_Bool *)arg5;
-- (id)createInteractionForView:(id)arg1;
+- (id)createInteraction;
 - (id)init;
 - (id)initWithViewModel:(id)arg1;
 

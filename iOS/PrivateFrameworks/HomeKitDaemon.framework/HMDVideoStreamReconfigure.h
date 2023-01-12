@@ -27,22 +27,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool reconfigurationMode; // @synthesize reconfigurationMode=_reconfigurationMode;
-@property(readonly) __weak id <HMDVideoStreamReconfigureDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain, nonatomic) HMFTimer *downgradeDebouceTimer; // @synthesize downgradeDebouceTimer=_downgradeDebouceTimer;
-@property(retain, nonatomic) HMFTimer *upgradeDebouceTimer; // @synthesize upgradeDebouceTimer=_upgradeDebouceTimer;
-@property(readonly, nonatomic) NSMutableArray *reconfigureEvents; // @synthesize reconfigureEvents=_reconfigureEvents;
-@property(retain, nonatomic) NSDictionary *downlinkQualityInfo; // @synthesize downlinkQualityInfo=_downlinkQualityInfo;
-- (void)_callNetworkDeteriorated;
-- (void)_callNetworkImproved;
-- (_Bool)_isReconfigureFlipFlop;
-- (void)_addReconfigureEvent:(unsigned long long)arg1;
 - (void)timerDidFire:(id)arg1;
-- (void)_processDownlinkQualityChanged:(id)arg1;
-- (void)_processDownlinkQuality;
 - (void)downlinkQualityChanged:(id)arg1;
 - (void)updateReconfigurationMode:(_Bool)arg1;
 - (id)logIdentifier;

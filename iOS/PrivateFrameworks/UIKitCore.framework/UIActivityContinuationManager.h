@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_userActivityWillSave:(id)arg1;
 - (_Bool)activityContinuationsAreBeingTracked;
 - (id)activityContinuationDictionaryWithAction:(id)arg1;
+- (id)activityContinuationDictionaryWithAction:(id)arg1 sourceApplication:(id)arg2;
 - (void)handleActivityContinuation:(id)arg1 isSuspended:(_Bool)arg2;
 - (void)_clearCurrentActivityContinuationCancelingProgress:(_Bool)arg1;
 - (id)_fetchUserActivityWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -8,15 +8,17 @@
 
 #import <CoreHAP/HMFMerging-Protocol.h>
 
-@class HAPAccessoryServer, HMFMACAddress, NSArray, NSNumber, NSObject, NSString;
-@protocol HAPAccessoryDelegate, OS_dispatch_queue;
+@class HAPAccessoryServer, HMFMACAddress, NSArray, NSDate, NSNumber, NSObject, NSString;
+@protocol HAPAccessoryDelegate, HMFLocking, OS_dispatch_queue;
 
 @interface HAPAccessory : HMFObject <HMFMerging>
 {
+    id <HMFLocking> _lock;
     _Bool _reachable;
     _Bool _primary;
     _Bool _supportsRelay;
     int _consecutiveFailedPingCount;
+    unsigned long long _suspendedState;
     id <HAPAccessoryDelegate> _delegate;
     HAPAccessoryServer *_server;
     NSString *_identifier;
@@ -24,7 +26,9 @@
     NSArray *_services;
     NSString *_serverIdentifier;
     long long _linkType;
+    long long _communicationProtocol;
     HMFMACAddress *_bluetoothClassicMacAddress;
+    NSDate *_timeBecameReachable;
     NSString *_uniqueIdentifier;
     NSString *_name;
     NSString *_model;
@@ -52,10 +56,12 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(nonatomic) _Bool supportsRelay; // @synthesize supportsRelay=_supportsRelay;
+@property(copy, nonatomic) NSDate *timeBecameReachable; // @synthesize timeBecameReachable=_timeBecameReachable;
 @property(copy) HMFMACAddress *bluetoothClassicMacAddress; // @synthesize bluetoothClassicMacAddress=_bluetoothClassicMacAddress;
+@property(readonly) long long communicationProtocol; // @synthesize communicationProtocol=_communicationProtocol;
 @property(readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property(copy, nonatomic) NSString *serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
-@property(retain, nonatomic) NSArray *services; // @synthesize services=_services;
+@property(copy, nonatomic) NSArray *services; // @synthesize services=_services;
 @property(copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic, getter=isPrimary) _Bool primary; // @synthesize primary=_primary;
@@ -75,11 +81,11 @@
 - (void)writeCharacteristicValue:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)shortDescription;
 @property(readonly, copy, nonatomic) NSNumber *category;
-- (void)_setReachable:(_Bool)arg1;
 @property(nonatomic) int consecutiveFailedPingCount; // @synthesize consecutiveFailedPingCount=_consecutiveFailedPingCount;
+@property(nonatomic) unsigned long long suspendedState; // @synthesize suspendedState=_suspendedState;
 @property(nonatomic, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
-- (_Bool)_isReachable;
 @property(readonly, nonatomic, getter=isPaired) _Bool paired;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;

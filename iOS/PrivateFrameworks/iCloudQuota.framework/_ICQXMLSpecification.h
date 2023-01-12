@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)stringForPlaceholder:(id)arg1 withDeviceInfo:(id)arg2;
 - (id)stringForPlaceholder:(id)arg1;
 - (void)stringForPlaceholder:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithPlaceholderInfo:(id)arg1;

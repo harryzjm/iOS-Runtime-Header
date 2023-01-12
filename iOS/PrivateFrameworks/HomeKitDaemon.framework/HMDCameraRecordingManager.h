@@ -15,8 +15,8 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCameraFeaturesDataSource, HMDCameraProfile, HMDCameraRecordingBulkSendDataReadEvent, HMDCameraRecordingBulkSendSessionInitiator, HMDCameraRecordingManagerDependencyFactory, HMDCameraRecordingResidentElector, HMDCameraRecordingSession, HMDCameraRecordingSessionNotificationTrigger, HMDCameraRecordingSessionRetryContext, HMDCameraRecordingSettingsControl, HMDCameraSignificantEventServer, HMDHAPAccessory, HMDStreamDataChunkAssembler, HMFMessageDispatcher, HMFTimer, NSDictionary, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
-@protocol HMDDataStreamBulkSendSession, OS_dispatch_queue;
+@class HMDCameraProfile, HMDCameraRecordingBulkSendSessionInitiator, HMDCameraRecordingLoadBalancer, HMDCameraRecordingManagerDependencyFactory, HMDCameraRecordingSession, HMDCameraRecordingSessionNotificationTrigger, HMDCameraRecordingSessionRetryContext, HMDCameraRecordingSettingsControl, HMDCameraSignificantEventServer, HMDHAPAccessory, HMDStreamDataChunkAssembler, HMFMessageDispatcher, HMFTimer, NSDictionary, NSMutableArray, NSMutableSet, NSNotificationCenter, NSObject, NSSet, NSString, NSUUID;
+@protocol HMDDataStreamBulkSendSession, HMDFeaturesDataSource, OS_dispatch_queue;
 
 @interface HMDCameraRecordingManager : HMFObject <HMDCameraRecordingSessionNotificationTriggerDelegate, HMDCameraRecordingSettingsControlDelegate, HMDDevicePreferenceDataSource, HMFLogging, HMDCameraRecordingSessionDelegate, HMDHomeMessageReceiver, HMDCameraClipManagerDelegate, HMFTimerDelegate>
 {
@@ -24,12 +24,13 @@
     _Bool _motionActive;
     NSUUID *_messageTargetUUID;
     HMDStreamDataChunkAssembler *_dataChunkAssembler;
-    HMDCameraRecordingResidentElector *_recordingResidentElector;
-    HMDCameraRecordingBulkSendDataReadEvent *_readEvent;
-    HMDCameraFeaturesDataSource *_dataSource;
+    HMDCameraRecordingLoadBalancer *_cameraLoadBalancer;
+    id <HMDFeaturesDataSource> _featuresDataSource;
     HMDCameraSignificantEventServer *_significantEventServer;
     NSUUID *_cameraUUID;
     long long _bulkSendSessionReadTimeoutFactor;
+    NSMutableArray *_sessionStartRequests;
+    NSNotificationCenter *_notificationCenter;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDCameraRecordingSessionNotificationTrigger *_notificationTrigger;
     HMDCameraRecordingSettingsControl *_recordingSettingsControl;
@@ -64,19 +65,22 @@
 @property(readonly) HMDCameraRecordingSettingsControl *recordingSettingsControl; // @synthesize recordingSettingsControl=_recordingSettingsControl;
 @property(readonly) HMDCameraRecordingSessionNotificationTrigger *notificationTrigger; // @synthesize notificationTrigger=_notificationTrigger;
 @property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property(readonly) NSMutableArray *sessionStartRequests; // @synthesize sessionStartRequests=_sessionStartRequests;
 @property(readonly) long long bulkSendSessionReadTimeoutFactor; // @synthesize bulkSendSessionReadTimeoutFactor=_bulkSendSessionReadTimeoutFactor;
 @property(readonly, copy) NSUUID *cameraUUID; // @synthesize cameraUUID=_cameraUUID;
 @property(readonly) HMDCameraSignificantEventServer *significantEventServer; // @synthesize significantEventServer=_significantEventServer;
-@property(readonly) HMDCameraFeaturesDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(readonly) id <HMDFeaturesDataSource> featuresDataSource; // @synthesize featuresDataSource=_featuresDataSource;
 @property _Bool didShutDown; // @synthesize didShutDown=_didShutDown;
-@property(retain) HMDCameraRecordingBulkSendDataReadEvent *readEvent; // @synthesize readEvent=_readEvent;
-@property(readonly) HMDCameraRecordingResidentElector *recordingResidentElector; // @synthesize recordingResidentElector=_recordingResidentElector;
+@property(readonly) HMDCameraRecordingLoadBalancer *cameraLoadBalancer; // @synthesize cameraLoadBalancer=_cameraLoadBalancer;
 @property(retain) HMDStreamDataChunkAssembler *dataChunkAssembler; // @synthesize dataChunkAssembler=_dataChunkAssembler;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
 - (_Bool)supportsDeviceWithCapabilities:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
+- (void)handleResidentDeviceUpdated:(id)arg1;
 - (void)session:(id)arg1 didEndWithError:(id)arg2;
 @property(readonly) NSString *logIdentifier;
+- (void)_updateSessionRestoreRegistration;
 - (void)_resetCurrentRecordingSession:(id)arg1;
 - (void)_startSessionRetryTimer;
 - (void)_resetRetryContextWithReason:(id)arg1;
@@ -86,20 +90,20 @@
 - (void)timerDidFire:(id)arg1;
 - (void)_readDataForCurrentSession;
 - (void)_handleBulkSendSessionCreated:(id)arg1;
-- (void)_submitReadEventWithStatus:(unsigned short)arg1;
-- (void)_bulkSendReadDidReceiveStreamDataChunk:(id)arg1;
-- (void)_startBulkSendDataReadEvent;
 - (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2 reason:(id)arg3 completionCallback:(CDUnknownBlockType)arg4;
 @property(readonly) NSString *bulkSendSessionOpenReason;
+- (void)_processQueuedCameraRecordingSessionStartRequests;
 - (void)handleStartRecordingSessionRequest:(id)arg1;
 - (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2 reason:(id)arg3;
 - (void)_createRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2;
-- (void)_forwardRecordingSessionForTrigger:(unsigned long long)arg1 withSortedDevices:(id)arg2 withRetries:(long long)arg3;
+- (void)_submitLoadBalancingEventWithDecision:(id)arg1 numberOfRetries:(unsigned long long)arg2;
+- (void)_forwardRecordingSessionForTrigger:(unsigned long long)arg1 withLoadBalancerDecision:(id)arg2 deviceFilter:(CDUnknownBlockType)arg3 retryAttemptNumber:(long long)arg4;
 @property(readonly) NSDictionary *homePresenceByPairingIdentity;
 - (void)_coordinateRecordingSessionForTrigger:(unsigned long long)arg1;
 - (void)_clipManagerDidStartUpCloudZone;
 - (void)_shutDown;
 - (void)_start;
+- (void)recordingSettingsControlDidFailToConfigure:(id)arg1;
 - (void)recordingSettingsControlDidConfigure:(id)arg1;
 - (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (void)clipManagerDidStop:(id)arg1;
@@ -108,7 +112,7 @@
 - (void)shutDown;
 - (void)start;
 - (void)dealloc;
-- (id)initWithCamera:(id)arg1 recordingManagementService:(id)arg2 dependencyFactory:(id)arg3;
+- (id)initWithCamera:(id)arg1 recordingManagementService:(id)arg2 dependencyFactory:(id)arg3 notificationCenter:(id)arg4;
 - (id)initWithCamera:(id)arg1 recordingManagementService:(id)arg2;
 
 // Remaining properties

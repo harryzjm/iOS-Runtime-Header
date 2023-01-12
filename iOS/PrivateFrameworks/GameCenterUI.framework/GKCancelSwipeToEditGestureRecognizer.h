@@ -13,9 +13,9 @@
     GKCollectionViewCell *_currentEditingCell;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKCollectionViewCell *currentEditingCell; // @synthesize currentEditingCell=_currentEditingCell;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
 
 @end
 

@@ -20,7 +20,7 @@
 + (id)outputTypes;
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
-+ (id)itemWithMapItem:(id)arg1 fromQueryLocation:(id)arg2;
++ (id)itemWithMapItem:(id)arg1 fromQueryLocation:(id)arg2 origin:(id)arg3 disclosureLevel:(unsigned long long)arg4;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CLLocation *queryLocation; // @synthesize queryLocation=_queryLocation;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;

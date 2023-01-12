@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)setHeaderValue:(id)arg1 forHeaderKey:(id)arg2;
 - (id)headerFields;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)attributeDescriptions;
 - (void)dealloc;
 - (id)initWithRequest:(id)arg1 statusCode:(long long)arg2;
 

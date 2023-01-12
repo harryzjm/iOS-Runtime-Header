@@ -25,7 +25,6 @@
     CDUnknownBlockType _viewControllerDismisser;
 }
 
-+ (_Bool)canPerformBlacklistingOnAssetCollection:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType viewControllerDismisser; // @synthesize viewControllerDismisser=_viewControllerDismisser;
 @property(copy, nonatomic) CDUnknownBlockType viewControllerPresenter; // @synthesize viewControllerPresenter=_viewControllerPresenter;
@@ -36,6 +35,8 @@
 @property(nonatomic) __weak id sender; // @synthesize sender=_sender;
 @property(readonly, nonatomic) _Bool success; // @synthesize success=_success;
 @property(readonly, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
+@property(readonly, nonatomic) _Bool presentsMenu;
+- (_Bool)presentAlertWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_completeStateWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)_transitionToState:(unsigned long long)arg1 withSuccess:(_Bool)arg2 error:(id)arg3;
 - (void)_handleStepFinished:(unsigned long long)arg1 withSuccess:(_Bool)arg2 error:(id)arg3;
@@ -55,6 +56,7 @@
 - (void)cancelActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)disambiguationMenuForUseCase:(unsigned long long)arg1 withMenuActionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) _Bool shouldPreventTargetedDismissalAnimation;
 - (id)localizedTitleForUseCase:(unsigned long long)arg1;
 - (id)initWithActionType:(id)arg1;
 - (id)init;
@@ -62,8 +64,10 @@
 - (_Bool)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
 @property(readonly, nonatomic) NSString *activitySystemImageName;
 @property(readonly, nonatomic) NSString *activityType;
+- (id)barButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
 - (id)activity;
 - (id)alertAction;
+- (id)menuElement;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

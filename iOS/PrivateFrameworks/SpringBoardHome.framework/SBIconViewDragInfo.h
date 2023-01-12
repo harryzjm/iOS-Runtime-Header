@@ -9,17 +9,23 @@
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardHome/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL;
+@class NSArray, NSString, NSURL;
 
 @interface SBIconViewDragInfo : NSObject <NSSecureCoding, BSDescriptionProviding>
 {
     NSString *_bundleIdentifier;
     NSURL *_launchURL;
     long long _startLocation;
+    NSString *_activeCustomIconDataSourceUniqueIdentifier;
+    NSArray *_customIconDataSourceConfigurations;
+    unsigned long long _gridSizeClass;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long gridSizeClass; // @synthesize gridSizeClass=_gridSizeClass;
+@property(copy, nonatomic) NSArray *customIconDataSourceConfigurations; // @synthesize customIconDataSourceConfigurations=_customIconDataSourceConfigurations;
+@property(copy, nonatomic) NSString *activeCustomIconDataSourceUniqueIdentifier; // @synthesize activeCustomIconDataSourceUniqueIdentifier=_activeCustomIconDataSourceUniqueIdentifier;
 @property(nonatomic) long long startLocation; // @synthesize startLocation=_startLocation;
 @property(copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;

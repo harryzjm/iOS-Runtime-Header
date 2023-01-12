@@ -118,6 +118,8 @@
 + (id)batteryFullyChargedKey;
 + (id)batteryAdapterIsWirelessKey;
 + (id)batteryAdapterTypeKey;
++ (id)batteryRawExternalConnectedChangeDateKey;
++ (id)batteryRawExternalConnectedKey;
 + (id)batteryExternalConnectedChangeDateKey;
 + (id)batteryExternalConnectedKey;
 + (id)batteryTemperatureKey;
@@ -165,7 +167,11 @@
 + (id)locationOfInterestTypeKey;
 + (id)locationOfInterestUUIDKey;
 + (id)keyPathForPredictedLocationOfInterestTransitions;
++ (id)groupNameKey;
++ (id)groupIDKey;
 + (id)bundleIDKey;
++ (id)calleeHandlesKey;
++ (id)calleeContactIDsKey;
 + (id)calleeHandleKey;
 + (id)calleeContactIDKey;
 + (id)keyPathForActiveCall;

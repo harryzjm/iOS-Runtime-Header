@@ -72,6 +72,7 @@
 - (id)workflowRecordForRecordID:(id)arg1;
 - (id)syncFlagsRecord;
 - (id)workflowOrderingRecordForRecordID:(id)arg1;
+- (id)collectionIdentifierForRecordID:(id)arg1;
 - (id)rootCollectionRecord;
 - (void)sendSyncFlagsIfNeeded;
 - (void)sendWorkflowOrderingsIfNeeded;

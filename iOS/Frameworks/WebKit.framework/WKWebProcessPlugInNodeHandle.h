@@ -17,10 +17,11 @@
 
 + (id)nodeHandleWithJSValue:(id)arg1 inContext:(id)arg2;
 @property(readonly) struct Object *_apiObject;
-@property(readonly) struct InjectedBundleNodeHandle *_nodeHandle;
+@property(readonly) void *_nodeHandle;
 @property(readonly, nonatomic) WKWebProcessPlugInFrame *frame;
 @property(readonly, nonatomic) WKWebProcessPlugInNodeHandle *HTMLTableCellElementCellAbove;
 - (_Bool)isTextField;
+@property(readonly, nonatomic) _Bool isSelectableTextNode;
 @property(readonly, nonatomic) _Bool isSelectElement;
 @property(readonly, nonatomic) _Bool HTMLTextAreaElementIsUserEdited;
 @property(readonly, nonatomic) _Bool HTMLInputElementIsUserEdited;

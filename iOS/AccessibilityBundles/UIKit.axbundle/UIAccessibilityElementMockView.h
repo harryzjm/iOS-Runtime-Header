@@ -17,15 +17,13 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *view; // @synthesize view=_view;
-@property(nonatomic) long long subviewIndex; // @synthesize subviewIndex=_subviewIndex;
-@property(nonatomic) __weak id <UIAccessibilityElementMockViewDelegateProtocol> delegate; // @synthesize delegate=_delegate;
 - (_Bool)canBecomeFocused;
 - (unsigned long long)_accessibilityPositionInDirection:(long long)arg1 offset:(unsigned long long)arg2 forPosition:(unsigned long long)arg3;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+- (_Bool)_accessibilityUpdatesSwitchMenu;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (_Bool)accessibilityRespondsToUserInteraction;
@@ -48,6 +46,7 @@
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityCanPerformEscapeAction;
 - (_Bool)accessibilityPerformMagicTap;
+- (struct _NSRange)_accessibilityVisibleTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
@@ -60,6 +59,7 @@
 - (void)accessibilityIncrement;
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityElementDidLoseFocus;
+- (_Bool)_accessibilityHasNativeFocus;
 - (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;
 - (struct CGRect)accessibilityFrame;
@@ -76,10 +76,8 @@
 - (id)accessibilityLanguage;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (void)revalidate;
 - (id)_accessibilityUserTestingProxyView;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (void)_accessibilitySetValue:(id)arg1;

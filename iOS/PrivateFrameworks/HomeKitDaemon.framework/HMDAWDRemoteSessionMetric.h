@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSDate, NSString, NSUUID;
 
-@interface HMDAWDRemoteSessionMetric <HMDAWDLogEvent>
+@interface HMDAWDRemoteSessionMetric : HMMLogEvent <HMDAWDLogEvent>
 {
     _Bool _submitted;
     _Bool _authenticated;
@@ -19,8 +21,6 @@
 }
 
 + (int)closeReasonFromError:(id)arg1;
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property(readonly, nonatomic) int closeReason; // @synthesize closeReason=_closeReason;

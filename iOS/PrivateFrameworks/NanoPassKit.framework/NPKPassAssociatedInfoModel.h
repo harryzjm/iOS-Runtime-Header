@@ -17,10 +17,14 @@
     PKTransitAppletState *_transitAppletState;
     PKTransitPassProperties *_transitPassProperties;
     NSSet *_balances;
+    NSArray *_tiles;
+    unsigned long long _rangingSuspensionReason;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isCommutePlanValueRequired) _Bool commutePlanValueRequired; // @synthesize commutePlanValueRequired=_commutePlanValueRequired;
+@property(nonatomic) unsigned long long rangingSuspensionReason; // @synthesize rangingSuspensionReason=_rangingSuspensionReason;
+@property(retain, nonatomic) NSArray *tiles; // @synthesize tiles=_tiles;
 @property(copy, nonatomic) NSSet *balances; // @synthesize balances=_balances;
 @property(retain, nonatomic) PKTransitPassProperties *transitPassProperties; // @synthesize transitPassProperties=_transitPassProperties;
 @property(retain, nonatomic) PKTransitAppletState *transitAppletState; // @synthesize transitAppletState=_transitAppletState;
@@ -30,6 +34,7 @@
 - (id)description;
 - (id)_balancePassFieldsFromPass:(id)arg1;
 - (id)_identifierFromAction:(id)arg1 type:(unsigned long long)arg2;
+- (id)_actionWithIdentifiers:(id)arg1 type:(unsigned long long)arg2;
 - (id)_actionWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (id)_commutePlanWithFelicaPassProperties:(id)arg1;
 - (id)_formattedValueWithCommutePlan:(id)arg1 balancesByID:(id)arg2;

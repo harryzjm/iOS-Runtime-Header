@@ -15,11 +15,12 @@
 {
     NSDictionary *_options;
     _Bool _derived;
+    _Bool _hiddenAtLaunch;
     NSString *_identifier;
-    NSDictionary *_configuration;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isHiddenAtLaunch) _Bool hiddenAtLaunch; // @synthesize hiddenAtLaunch=_hiddenAtLaunch;
 @property(readonly, nonatomic, getter=isDerived) _Bool derived; // @synthesize derived=_derived;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -31,7 +32,6 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)optionForKey:(id)arg1;
-@property(readonly, nonatomic, getter=isLaunchWhitelisted) _Bool launchWhitelisted;
 - (id)init;
 
 // Remaining properties

@@ -13,6 +13,7 @@
 - (void)fetchSubscriptionData:(_Bool)arg1 callerProcessID:(int)arg2 completion:(void (^)(WLKSubscriptionData *, NSError *))arg3;
 - (void)clearOffers:(void (^)(NSError *))arg1;
 - (void)fetchOffers:(_Bool)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)removeOfferByBadgeId:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)saveOffer:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)prewarm;
 - (void)ping;

@@ -14,6 +14,7 @@
 
 + (id)itemHeightList;
 + (double)defaultRowHeight;
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 - (void)prepareForReuse;
@@ -22,7 +23,6 @@
 @property(retain, nonatomic) GKGame *game;
 @property(retain, nonatomic) GKGameRecord *gameRecord;
 - (struct CGRect)alignmentRectForText;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

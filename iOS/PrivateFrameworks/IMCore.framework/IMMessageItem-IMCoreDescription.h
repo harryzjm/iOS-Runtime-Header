@@ -19,9 +19,11 @@
 - (_Bool)_isInvitation;
 - (void)_setInivtation:(_Bool)arg1;
 - (id)message;
+- (_Bool)__im_ff_hubbleCMMProcessingEnabled;
+- (_Bool)isExtensibleMessageWithPluginPayload:(id *)arg1 chatContext:(id)arg2;
 - (_Bool)isExtensibleMessageWithPluginPayload:(id *)arg1;
 - (id)_service;
-- (id)_newChatItemsWithLink:(_Bool)arg1 isBusiness:(_Bool)arg2 parentChatIsSpam:(_Bool)arg3 hasKnownParticipants:(_Bool)arg4;
+- (id)_newChatItemsWithChatContext:(id)arg1;
 - (id)_newChatItems;
 - (_Bool)_hasMessageChatItem;
 - (_Bool)isIncomingTypingOrCancelTypingMessage;

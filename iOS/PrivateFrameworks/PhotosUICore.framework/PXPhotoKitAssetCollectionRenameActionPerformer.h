@@ -11,14 +11,15 @@
     UIAlertAction *_renameAction;
 }
 
-+ (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 + (id)systemImageNameForAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 + (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
++ (_Bool)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIAlertAction *renameAction; // @synthesize renameAction=_renameAction;
 - (void)_handleRenameConfirmedWithAlert:(id)arg1;
 - (void)_updateRenameActionWithTextField:(id)arg1;
+- (void)_reallyPerformUserInteractionTask;
 - (void)performUserInteractionTask;
 
 @end

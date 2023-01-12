@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
 #import <EventKitUI/EKEventDetailAttendeeCellDelegate-Protocol.h>
 
 @class EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, NSString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeesDetailItem <EKEventDetailAttendeeCellDelegate>
+@interface EKEventAttendeesDetailItem <EKEventDetailAttendeeCellDelegate, EKEditItemViewControllerDelegate>
 {
     NSMutableDictionary *_attendeesCells;
     UITableViewCell *_titleCell;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
 @property(nonatomic) long long status; // @synthesize status=_status;
+- (void)eventDetailAttendeesCell:(id)arg1 requestViewControllerPresentation:(id)arg2;
 - (void)eventDetailAttendeeCellWantsRefreshForHeightChange;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (_Bool)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)configureWithCalendar:(id)arg1 preview:(_Bool)arg2;
 - (void)eventViewController:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (unsigned long long)numberOfSubitems;
-- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
+- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 forceUpdate:(_Bool)arg3;
 - (void)reset;
 
 // Remaining properties

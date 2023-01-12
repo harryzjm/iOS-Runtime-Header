@@ -8,22 +8,35 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class GEOStyleAttributes, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryQuery : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSString *_completion;
+    NSMutableArray *_resultRefinements;
+    GEOStyleAttributes *_styleAttributes;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _tapBehavior;
+    _Bool _queryHasAttributeIntentsInRefinements;
     _Bool _showIntermediateStateTapBehaviorListView;
     struct {
         unsigned int has_tapBehavior:1;
+        unsigned int has_queryHasAttributeIntentsInRefinements:1;
         unsigned int has_showIntermediateStateTapBehaviorListView:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_completion:1;
+        unsigned int read_resultRefinements:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)resultRefinementType;
 - (void).cxx_destruct;
 - (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -32,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -40,6 +54,15 @@ __attribute__((visibility("hidden")))
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasQueryHasAttributeIntentsInRefinements;
+@property(nonatomic) _Bool queryHasAttributeIntentsInRefinements;
+@property(retain, nonatomic) GEOStyleAttributes *styleAttributes;
+@property(readonly, nonatomic) _Bool hasStyleAttributes;
+- (id)resultRefinementAtIndex:(unsigned long long)arg1;
+- (unsigned long long)resultRefinementsCount;
+- (void)addResultRefinement:(id)arg1;
+- (void)clearResultRefinements;
+@property(retain, nonatomic) NSMutableArray *resultRefinements;
 @property(nonatomic) _Bool hasShowIntermediateStateTapBehaviorListView;
 @property(nonatomic) _Bool showIntermediateStateTapBehaviorListView;
 - (int)StringAsTapBehavior:(id)arg1;
@@ -48,6 +71,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int tapBehavior;
 @property(retain, nonatomic) NSString *completion;
 @property(readonly, nonatomic) _Bool hasCompletion;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

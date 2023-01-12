@@ -14,9 +14,11 @@
     NSString *systemSymbolResourceName;
     long long _resourceRenderingMode;
     UIImageSymbolConfiguration *_resourceSymbolImageConfiguration;
+    NSString *_resourceCatalogName;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *resourceCatalogName; // @synthesize resourceCatalogName=_resourceCatalogName;
 @property(copy, nonatomic) UIImageSymbolConfiguration *resourceSymbolImageConfiguration; // @synthesize resourceSymbolImageConfiguration=_resourceSymbolImageConfiguration;
 @property(nonatomic) long long resourceRenderingMode; // @synthesize resourceRenderingMode=_resourceRenderingMode;
 - (void)encodeWithCoder:(id)arg1;

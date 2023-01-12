@@ -12,6 +12,7 @@
 
 + (id)screentimeiWorkBundleForUTI:(id)arg1;
 + (id)typesForWhichExternalGeneratorsArePreferred;
++ (id)textGeneratorSupportedTypes;
 + (id)internallyClaimedTypes;
 + (id)claimedWebViewTypes;
 + (id)claimedCSVTypes;

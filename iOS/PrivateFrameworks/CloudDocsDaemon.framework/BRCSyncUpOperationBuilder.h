@@ -8,7 +8,6 @@
 
 @class BRCAccountSession, BRCSyncUpOperation, BRCUserDefaults, NSMutableSet;
 
-__attribute__((visibility("hidden")))
 @interface BRCSyncUpOperationBuilder : NSObject
 {
     NSMutableSet *_fullyChainedParentIDWhitelist;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (float)addEditOfFinderBookmark:(id)arg1;
 - (float)addEditOfDocument:(id)arg1;
 - (float)addDeletionOfDocument:(id)arg1;
+- (float)addDeletionOfAlias:(id)arg1;
 - (float)addDeletionOfDirectory:(id)arg1;
 - (float)addEditOfDirectory:(id)arg1;
 - (void)handleEditOfSharedItem:(id)arg1;

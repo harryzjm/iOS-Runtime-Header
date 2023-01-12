@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface AEProgressViewModelSnapshot : NSObject
 {
-    unsigned long long _correspondingDataSourceIdentifier;
+    long long _correspondingDataSourceIdentifier;
     NSDictionary *__progressByIndexPath;
     PXIndexPathSet *__pathsWithProgress;
 }
@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXIndexPathSet *_pathsWithProgress; // @synthesize _pathsWithProgress=__pathsWithProgress;
 @property(readonly, nonatomic) NSDictionary *_progressByIndexPath; // @synthesize _progressByIndexPath=__progressByIndexPath;
-@property(readonly, nonatomic) unsigned long long correspondingDataSourceIdentifier; // @synthesize correspondingDataSourceIdentifier=_correspondingDataSourceIdentifier;
+@property(readonly, nonatomic) long long correspondingDataSourceIdentifier; // @synthesize correspondingDataSourceIdentifier=_correspondingDataSourceIdentifier;
 - (id)progressForIndexPath:(struct PXSimpleIndexPath)arg1;
 - (_Bool)hasProgressForIndexPath:(struct PXSimpleIndexPath)arg1;
-- (id)initWithProgressByIndexPath:(id)arg1 dataSourceIdenfitier:(unsigned long long)arg2;
+- (id)initWithProgressByIndexPath:(id)arg1 dataSourceIdenfitier:(long long)arg2;
 
 @end
 

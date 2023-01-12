@@ -26,5 +26,7 @@
 - (void *)mutableBytes;
 - (_Bool)decompressUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (_Bool)compressUsingAlgorithm:(long long)arg1 error:(id *)arg2;
+- (_Bool)_decompressUsingCompressionAlgorithm:(int)arg1 error:(id *)arg2;
+- (_Bool)_compressUsingCompressionAlgorithm:(int)arg1 error:(id *)arg2;
 @end
 

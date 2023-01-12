@@ -16,6 +16,8 @@
 
 + (id)serverInterface;
 + (void)setArrayClassesForSelectorsInInterface:(id)arg1;
+- (void)removeSupplementalLexiconWithIdentifier:(unsigned long long)arg1;
+- (void)addSupplementalLexicon:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)writeTypologyLogWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)logDiscoverabilityEvent:(int)arg1 userInfo:(id)arg2;
 - (void)lastAcceptedCandidateCorrected;

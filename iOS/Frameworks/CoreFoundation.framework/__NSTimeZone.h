@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
     struct __CFData *_data;
     void **_ucal;
     struct _opaque_pthread_mutex_t _lock;
+    int _secondsFromGMT;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

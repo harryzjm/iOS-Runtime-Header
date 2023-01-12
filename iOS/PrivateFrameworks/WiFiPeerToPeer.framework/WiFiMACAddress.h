@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <WiFiPeerToPeer/NSCopying-Protocol.h>
 #import <WiFiPeerToPeer/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface WiFiMACAddress : NSObject <NSSecureCoding>
+@interface WiFiMACAddress : NSObject <NSSecureCoding, NSCopying>
 {
     NSData *_data;
 }
@@ -18,14 +19,15 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly) NSData *data; // @synthesize data=_data;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) NSData *ipv6LinkLocalAddress;
-- (id)initWithByte1:(unsigned char)arg1 byte2:(unsigned char)arg2 byte3:(unsigned char)arg3 byte4:(unsigned char)arg4 byte5:(unsigned char)arg5 byte6:(unsigned char)arg6;
+- (id)initWithAddress:(struct ether_addr)arg1;
 - (id)initWithData:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

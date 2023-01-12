@@ -22,8 +22,8 @@
 @property(nonatomic) long long imageCount; // @synthesize imageCount=_imageCount;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;
-- (CDUnknownBlockType)_backgroundPreheatBlock;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
+- (_Bool)_canSaveImages;
 - (id)_systemImageName;
 - (id)_activityImage;
 - (id)activityTitle;

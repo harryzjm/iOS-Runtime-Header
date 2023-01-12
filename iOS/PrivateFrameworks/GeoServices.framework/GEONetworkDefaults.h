@@ -20,7 +20,6 @@
 }
 
 + (id)sharedNetworkDefaults;
-+ (void)_ib_disableServerConnection;
 + (_Bool)useLocalProxy;
 + (void)setUseLocalProxy:(_Bool)arg1;
 - (void).cxx_destruct;
@@ -28,7 +27,6 @@
 - (void)allKeysAndValues:(CDUnknownBlockType)arg1;
 - (id)allKeys;
 - (id)valueForKey:(id)arg1;
-- (_Bool)_needsUpdate;
 - (void)updateNetworkDefaults:(CDUnknownBlockType)arg1;
 - (void)updateIfNecessary:(CDUnknownBlockType)arg1;
 - (id)init;

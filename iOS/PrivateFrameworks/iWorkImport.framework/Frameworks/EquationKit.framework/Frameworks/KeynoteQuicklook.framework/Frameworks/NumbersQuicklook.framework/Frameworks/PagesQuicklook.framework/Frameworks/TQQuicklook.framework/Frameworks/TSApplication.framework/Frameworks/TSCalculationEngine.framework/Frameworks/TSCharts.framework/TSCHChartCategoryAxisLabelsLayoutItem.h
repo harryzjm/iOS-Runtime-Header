@@ -11,7 +11,7 @@
 - (id)selectionPathLabelType;
 - (unsigned long long)selectionPathLabelIndexForIndex:(unsigned long long)arg1 axis:(id)arg2;
 - (struct CGPoint)labelAnchorForPosition:(int)arg1 degrees:(float)arg2;
-- (struct CGPoint)axisAnchorForPosition:(int)arg1 degrees:(float)arg2 area:(struct CGRect)arg3 unrotatedSize:(struct CGSize)arg4 unitSpaceValue:(double)arg5;
+- (struct CGPoint)axisAnchorForPosition:(int)arg1 degrees:(float)arg2 inLayoutSize:(struct CGSize)arg3 unrotatedSize:(struct CGSize)arg4 unitSpaceValue:(double)arg5;
 - (id)labelStringForAxis:(id)arg1 index:(unsigned long long)arg2;
 - (double)unitSpaceValueForAxis:(id)arg1 index:(unsigned long long)arg2;
 - (unsigned long long)numberOfLabelsForAxis:(id)arg1;

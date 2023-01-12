@@ -18,10 +18,11 @@
 - (id)objectToArchiveInDependencyTracker;
 - (_Bool)registerLast;
 - (id)nsFormulaOwnerUID;
-- (UUIDData_5fbc143e)formulaOwnerUID;
+- (unsigned short)ownerKind;
+- (struct TSKUIDStruct)formulaOwnerUID;
 - (id)formulaOwner;
 - (void)unregisterFromCalcEngine:(id)arg1;
-- (void)registerWithCalcEngineForDocumentLoad:(id)arg1;
+- (void)registerWithCalcEngineForDocumentLoad:(id)arg1 ownerKind:(unsigned short)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

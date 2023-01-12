@@ -31,7 +31,7 @@
 - (id)_specifierNamed:(id)arg1;
 - (void)_delayedLoadIfNeeded;
 - (_Bool)_launchWithResourceDictionary:(id)arg1;
-- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)handleURL:(id)arg1;
 - (void)_handleSubscriptionListResponse:(id)arg1;
 - (void)_loadSubscriptionServices;
 - (id)_valueForServiceSpecifier:(id)arg1;

@@ -11,15 +11,20 @@
 __attribute__((visibility("hidden")))
 @interface VCConnection : NSObject
 {
+    unsigned short _linkFlags;
+    unsigned short _remoteLinkFlags;
     NSDictionary *_connectionSelectionPriorities;
 }
 
 - (id)getConnectionSelectionPriorities;
-- (long long)compareIpVersionPriority:(id)arg1 selectionPolicy:(CDStruct_2a4d9400 *)arg2;
-- (long long)compareVpnPriority:(id)arg1 selectionPolicy:(CDStruct_2a4d9400 *)arg2;
-- (long long)compareConnectionTypePriority:(id)arg1 selectionPolicy:(CDStruct_2a4d9400 *)arg2;
+- (long long)compareIpVersionPriority:(id)arg1 selectionPolicy:(CDStruct_155bd25f *)arg2;
+- (long long)compareE2EPriority:(id)arg1 selectionPolicy:(CDStruct_155bd25f *)arg2;
+- (long long)compareVpnPriority:(id)arg1 selectionPolicy:(CDStruct_155bd25f *)arg2;
+- (long long)compareConnectionTypePriority:(id)arg1 selectionPolicy:(CDStruct_155bd25f *)arg2;
 - (long long)compareInterfacePriority:(id)arg1 isPrimary:(_Bool)arg2;
-- (long long)compare:(id)arg1 isPrimary:(_Bool)arg2 selectionPolicy:(CDStruct_2a4d9400 *)arg3;
+- (long long)compare:(id)arg1 isPrimary:(_Bool)arg2 selectionPolicy:(CDStruct_155bd25f *)arg3;
+- (void)setRemoteLinkFlags:(unsigned short)arg1;
+- (void)setLinkFlags:(unsigned short)arg1;
 - (void)dealloc;
 - (id)init;
 

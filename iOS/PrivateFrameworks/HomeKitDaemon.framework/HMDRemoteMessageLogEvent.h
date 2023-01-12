@@ -4,42 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
-#import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
-@class HMDRemoteMessage, NSString;
+@class NSString;
 
-@interface HMDRemoteMessageLogEvent <HMDAWDLogEvent, HMDDiagnosticReportLogging, HMDCoreAnalyticsLogging>
+@interface HMDRemoteMessageLogEvent : HMMLogEvent <HMDAWDLogEvent, HMMCoreAnalyticsLogging>
 {
     _Bool _sending;
+    _Bool _secure;
     int _transportType;
-    HMDRemoteMessage *_remoteMessage;
+    NSString *_msgIdentifier;
+    NSString *_transactionIdentifier;
+    NSString *_msgName;
+    long long _msgType;
+    NSString *_peerInformation;
 }
 
-+ (id)receivedRemoteMessage:(id)arg1 transportType:(int)arg2;
 + (id)sendingRemoteMessage:(id)arg1 transportType:(int)arg2;
-+ (id)uuid;
++ (id)sendingRemoteMessage:(id)arg1 identifier:(id)arg2 transactionIdentifier:(id)arg3 messageType:(long long)arg4 peerInformation:(id)arg5 secure:(_Bool)arg6 transportType:(int)arg7;
++ (id)receivedRemoteMessage:(id)arg1 transportType:(int)arg2;
++ (id)receivedRemoteMessage:(id)arg1 identifier:(id)arg2 transactionIdentifier:(id)arg3 messageType:(long long)arg4 peerInformation:(id)arg5 secure:(_Bool)arg6 transportType:(int)arg7;
 + (int)awdMessageTypeFromHMDMessageType:(long long)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *peerInformation; // @synthesize peerInformation=_peerInformation;
+@property(readonly, nonatomic) long long msgType; // @synthesize msgType=_msgType;
+@property(readonly, nonatomic) NSString *msgName; // @synthesize msgName=_msgName;
+@property(readonly, nonatomic) _Bool secure; // @synthesize secure=_secure;
+@property(readonly, copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
+@property(readonly, copy, nonatomic) NSString *msgIdentifier; // @synthesize msgIdentifier=_msgIdentifier;
 @property(readonly, nonatomic) _Bool sending; // @synthesize sending=_sending;
 @property(readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
-@property(readonly, nonatomic) HMDRemoteMessage *remoteMessage; // @synthesize remoteMessage=_remoteMessage;
-- (id)asCommaSeparateValues;
 - (id)serializedEventForDiagnostics:(_Bool)arg1;
-- (_Bool)shouldSubmitEvent;
 - (id)serializedEvent;
 - (id)eventName;
-- (id)initWithRemoteMessage:(id)arg1 transportType:(int)arg2 sending:(_Bool)arg3;
+- (id)initWithRemoteMessage:(id)arg1 identifier:(id)arg2 transactionIdentifier:(id)arg3 messageType:(long long)arg4 peerInformation:(id)arg5 secure:(_Bool)arg6 transportType:(int)arg7 sending:(_Bool)arg8;
 - (id)metricForAWD;
+- (int)toAWDType:(int)arg1;
 - (unsigned int)AWDMessageType;
-- (void)updateDiagnosticReportSignature:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, copy) NSString *diagnosticReportEventSubType;
-@property(readonly, copy) NSString *diagnosticReportEventType;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

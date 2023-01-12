@@ -26,7 +26,7 @@
 - (void)_setup;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDefaultsManager:(id)arg1;
 - (id)init;
 

@@ -21,17 +21,18 @@
     NSString *_messageID;
     _Atomic unsigned long long _conversationFlags;
     NSArray *_references;
+    NSArray *_remoteContentLinks;
 }
 
 + (id)messageWithLibraryID:(long long)arg1;
 + (id)log;
 - (void).cxx_destruct;
+@property(copy) NSArray *remoteContentLinks; // @synthesize remoteContentLinks=_remoteContentLinks;
 @property(copy, nonatomic) NSArray *references; // @synthesize references=_references;
 @property(readonly, nonatomic) unsigned long long fileSize;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (void)_forceLoadOfMessageSummaryFromProtectedStore;
-- (id)attachmentStorageLocation;
-- (id)_attachmentStorageLocation;
+- (id)storageLocationForAttachment:(id)arg1;
 - (id)copyMessageInfo;
 - (_Bool)isLibraryMessage;
 - (id)dataConsumerForMimePart:(id)arg1;
@@ -114,6 +115,7 @@
 @property(readonly, nonatomic, getter=isPartOfExistingThread) _Bool partOfExistingThread;
 @property(readonly, copy, nonatomic) NSArray *senders;
 @property(readonly, copy, nonatomic) ECSubject *subject;
+@property(readonly, copy, nonatomic) NSString *summary;
 @property(readonly) Class superclass;
 @property(readonly, copy, nonatomic) NSArray *to;
 

@@ -6,14 +6,17 @@
 
 #import <UIKitCore/UINavigationBarDelegate-Protocol.h>
 
-@class UINavigationBar, UINavigationItem, UISearchController, UIWindow;
+@class NSArray, UINavigationBar, UINavigationItem, UISearchController, UIWindow;
 @protocol UIViewControllerTransitionCoordinator;
 
 @protocol _UINavigationBarDelegatePrivate <UINavigationBarDelegate>
 
 @optional
+- (NSArray *)_navigationBarAdditionalActionsForBackButtonMenu:(UINavigationBar *)arg1;
+- (void)_navigationBar:(UINavigationBar *)arg1 itemBackButtonUpdated:(UINavigationItem *)arg2;
 - (void)_navigationBar:(UINavigationBar *)arg1 topItemUpdatedContentLayout:(UINavigationItem *)arg2;
 - (void)_navigationBarDidUpdateStack:(UINavigationBar *)arg1;
+- (void)_navigationBar:(UINavigationBar *)arg1 topItemUpdatedLargeTitleDisplayMode:(UINavigationItem *)arg2;
 - (_Bool)_navigationBar:(UINavigationBar *)arg1 getContentOffsetOfObservedScrollViewIfApplicable:(struct CGPoint *)arg2;
 - (_Bool)_navigationBarLayoutIsInInteractiveScroll;
 - (_Bool)_navigationBarShouldUpdateProgress;
@@ -34,7 +37,7 @@
 - (void)_navigationBar:(UINavigationBar *)arg1 requestPopToItem:(UINavigationItem *)arg2;
 - (UIWindow *)_navigationBarWindowForInterfaceOrientation:(UINavigationBar *)arg1;
 - (void)_navigationBar:(UINavigationBar *)arg1 itemEnabledAutoScrollTransition:(UINavigationItem *)arg2;
-- (double)_navigationBar:(UINavigationBar *)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
+- (double)_navigationBar:(UINavigationBar *)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_cf303044)arg2;
 - (struct NSDirectionalEdgeInsets)_layoutMarginsforNavigationBar:(UINavigationBar *)arg1;
 - (void)_navigationBarWillBeginCoordinatedTransitionAnimations:(UINavigationBar *)arg1;
 - (void)_popNavigationBar:(UINavigationBar *)arg1 item:(UINavigationItem *)arg2;

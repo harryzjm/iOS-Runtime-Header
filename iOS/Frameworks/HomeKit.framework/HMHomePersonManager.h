@@ -6,24 +6,15 @@
 
 #import <HomeKit/HMFLogging-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSString;
 
 @interface HMHomePersonManager <HMFLogging>
 {
-    NSUUID *_homeUUID;
 }
 
 + (id)logCategory;
 + (id)personManagerUUIDFromHomeUUID:(id)arg1;
-- (void).cxx_destruct;
-@property(readonly, copy) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
 - (id)logIdentifier;
-- (void)handleDidUpdateSettingsMessage:(id)arg1;
-- (void)configure;
-- (void)updateSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchSettingsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
 - (id)initWithHome:(id)arg1;
 
 // Remaining properties

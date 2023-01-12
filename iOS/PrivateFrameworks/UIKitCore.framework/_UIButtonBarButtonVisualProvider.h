@@ -8,15 +8,17 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIBarButtonItem, UIView, _UIButtonBarButton;
+@class UIBarButtonItem, UIColor, UIView, _UIButtonBarButton;
 
 @interface _UIButtonBarButtonVisualProvider : NSObject <NSCopying>
 {
     _UIButtonBarButton *_button;
     UIBarButtonItem *_barButtonItem;
+    UIColor *_tintColor;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 - (id)buttonSpringLoadedInteractionEffect;
 - (id)buttonSpringLoadedInteractionBehavior;
 - (void)updateMenu;
@@ -25,14 +27,12 @@
 - (id)buttonContextMenuStyleFromDefaultStyle:(id)arg1;
 - (id)buttonContextMenuTargetedPreview;
 - (id)buttonContextMenuInteractionConfiguration;
+- (id)focusEffect;
 - (void)pointerWillExit:(id)arg1;
 - (void)pointerWillEnter:(id)arg1;
-- (void)cursorWillExit:(id)arg1;
-- (void)cursorWillEnter:(id)arg1;
 - (_Bool)shouldLift;
 - (id)matchingPointerShapeForView:(id)arg1 rect:(struct CGRect)arg2 inContainer:(id)arg3;
 - (id)pointerShapeInContainer:(id)arg1;
-- (id)contentCursorInContainer:(id)arg1;
 - (id)pointerPreviewParameters;
 - (_Bool)useLocalPointerInteraction;
 @property(readonly, nonatomic) UIView *alignmentViewForStaticNavBarButtonTrailing;

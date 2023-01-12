@@ -6,15 +6,12 @@
 
 @interface CSLanguageCodeUpdateMonitor
 {
-    int _notifyToken;
 }
 
 + (id)sharedInstance;
-- (void)_notifyObserver:(id)arg1 withLanguageCode:(id)arg2;
-- (void)_didReceiveLanguageCodeUpdate;
+- (void)notifySiriLanguageCodeChanged:(id)arg1;
 - (void)_stopMonitoring;
 - (void)_startMonitoringWithQueue:(id)arg1;
-- (id)init;
 
 @end
 

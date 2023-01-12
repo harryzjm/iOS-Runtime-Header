@@ -12,7 +12,7 @@
 {
 }
 
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;
 + (id)localizedTitleForCreateStyleMenuItem:(id)arg1;
 + (id)localizedTitleForApplyStyleMenuItem:(id)arg1;
@@ -23,8 +23,8 @@
 @property(readonly, nonatomic) TSWPParagraphStyle *titleTextPreset;
 - (void)addCaptionTextStylePresetsForPowerPointImport;
 - (void)addCaptionTextStylePresets;
-- (void)saveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

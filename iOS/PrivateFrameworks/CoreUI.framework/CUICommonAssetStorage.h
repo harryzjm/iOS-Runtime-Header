@@ -50,6 +50,7 @@
 @property(nonatomic) struct _renditionkeyfmt *keyfmt; // @synthesize keyfmt=_keyfmt;
 @property(nonatomic) struct _carextendedMetadata *extendedMetadata; // @synthesize extendedMetadata=_extendedMetadata;
 @property(nonatomic) struct _carheader *header; // @synthesize header=_header;
+- (_Bool)writeToPath:(id)arg1 withTreePageSize:(unsigned int)arg2;
 - (id)localizations;
 - (id)nameForLocalizationIdentifier:(unsigned short)arg1;
 - (unsigned short)localizationIdentifierForName:(id)arg1;
@@ -70,7 +71,7 @@
 - (const struct FontValue *)_fontValueForFontType:(id)arg1;
 - (_Bool)hasColorForName:(const char *)arg1;
 - (_Bool)getColor:(struct _colordef *)arg1 forName:(const char *)arg2;
-- (id)renditionNameForKeyBaseList:(struct _renditionkeytoken *)arg1;
+- (id)renditionNameForKeyBaseList:(const struct _renditionkeytoken *)arg1;
 - (id)renditionNamesWithKeys;
 - (id)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (id)allRenditionNames;

@@ -16,12 +16,14 @@
     NSURL *_actionURL;
     double _confirmedClickInterval;
     NSNumber *_adamIdentifier;
+    long long _templateType;
     NSDictionary *_iTunesMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain) NSDictionary *iTunesMetadata; // @synthesize iTunesMetadata=_iTunesMetadata;
+@property long long templateType; // @synthesize templateType=_templateType;
 @property(retain) NSNumber *adamIdentifier; // @synthesize adamIdentifier=_adamIdentifier;
 @property double confirmedClickInterval; // @synthesize confirmedClickInterval=_confirmedClickInterval;
 @property(retain) NSURL *actionURL; // @synthesize actionURL=_actionURL;

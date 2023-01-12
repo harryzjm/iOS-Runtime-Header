@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray;
-@protocol AEPerformancePrimitives, AEPolicyStore;
+@protocol AEPerformancePrimitives, AEPolicyStore, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AEActivationPool : NSObject
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _invalidationHandler;
     id <AEPolicyStore> _policyStore;
     id <AEPerformancePrimitives> _performancePrimitives;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;

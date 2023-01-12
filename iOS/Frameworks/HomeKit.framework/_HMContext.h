@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class HMDelegateCaller, HMFMessageDispatcher, HMPendingRequests, HMXPCClient, NSDictionary, NSString;
+#import <HomeKit/HMFLogging-Protocol.h>
+
+@class HMDelegateCaller, HMFMessageDispatcher, HMPendingRequests, HMXPCClient, NSString;
 @protocol OS_dispatch_queue;
 
-@interface _HMContext : NSObject
+@interface _HMContext : NSObject <HMFLogging>
 {
     NSString *_name;
-    NSDictionary *_userInfo;
     NSObject<OS_dispatch_queue> *_queue;
     HMPendingRequests *_pendingRequests;
     HMDelegateCaller *_delegateCaller;
@@ -20,8 +21,9 @@
     HMXPCClient *_xpcClient;
 }
 
-+ (id)contextWithName:(id)arg1 userInfo:(id)arg2 delegateCaller:(id)arg3;
-+ (id)contextWithName:(id)arg1 delegateCaller:(id)arg2;
++ (id)logCategory;
++ (id)contextWithName:(id)arg1 xpcClient:(id)arg2 delegateCaller:(id)arg3;
++ (id)contextWithName:(id)arg1 xpcClient:(id)arg2;
 + (id)contextWithName:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HMXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
@@ -29,13 +31,17 @@
 @property(readonly, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property(readonly, nonatomic) HMPendingRequests *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, copy) NSString *name; // @synthesize name=_name;
-@property(readonly, nonatomic) HMXPCClient *messageTransport;
+- (id)logIdentifier;
 - (id)subcontextWithName:(id)arg1;
-- (id)initWithName:(id)arg1 userInfo:(id)arg2 pendingRequests:(id)arg3 delegateCaller:(id)arg4 messageDispatcher:(id)arg5;
-- (id)initWithName:(id)arg1 userInfo:(id)arg2 pendingRequests:(id)arg3 delegateCaller:(id)arg4 messageDispatcher:(id)arg5 messageTransport:(id)arg6;
+- (id)initWithName:(id)arg1 pendingRequests:(id)arg2 delegateCaller:(id)arg3 messageDispatcher:(id)arg4 xpcClient:(id)arg5;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

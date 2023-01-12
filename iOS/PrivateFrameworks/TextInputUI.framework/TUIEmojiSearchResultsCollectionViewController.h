@@ -8,7 +8,7 @@
 
 #import <TextInputUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSArray, NSString, UICollectionViewDiffableDataSource, UILongPressGestureRecognizer, _InvertibleFlowLayout;
+@class NSArray, NSString, UICollectionViewDiffableDataSource, UILabel, UILongPressGestureRecognizer, _InvertibleFlowLayout;
 @protocol TUIEmojiSearchResultsCollectionViewControllerDelegate;
 
 @interface TUIEmojiSearchResultsCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
@@ -20,7 +20,9 @@
     NSArray *_placeholderIdentifiers;
     _Bool _cellHighlightFrozen;
     _Bool _displayingVerbatimResults;
+    _Bool _displayingNoResultsLabel;
     id <TUIEmojiSearchResultsCollectionViewControllerDelegate> _delegate;
+    UILabel *_noResultsLabel;
     UICollectionViewDiffableDataSource *_dataSource;
     _InvertibleFlowLayout *_flowLayout;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
@@ -31,6 +33,8 @@
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property(retain, nonatomic) _InvertibleFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
 @property(retain, nonatomic) UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) UILabel *noResultsLabel; // @synthesize noResultsLabel=_noResultsLabel;
+@property(nonatomic) _Bool displayingNoResultsLabel; // @synthesize displayingNoResultsLabel=_displayingNoResultsLabel;
 @property(nonatomic) _Bool displayingVerbatimResults; // @synthesize displayingVerbatimResults=_displayingVerbatimResults;
 @property(retain, nonatomic) NSArray *displayedEmojis; // @synthesize displayedEmojis=_displayedEmojis;
 @property(nonatomic, getter=isCellHighlightFrozen) _Bool cellHighlightFrozen; // @synthesize cellHighlightFrozen=_cellHighlightFrozen;
@@ -44,6 +48,7 @@
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (_Bool)_isSelectableEmojiTokenAtIndexPath:(id)arg1;
 - (void)resetScrollPositionAnimated:(_Bool)arg1;
+- (void)setDisplayingNoResultsLabel:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setDisplayedEmojis:(id)arg1 verbatimSkinTones:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)viewDidLoad;
 - (id)configuredEmojiCollectionViewCellForCollectionView:(id)arg1 atIndexPath:(id)arg2 forEmojiString:(id)arg3;

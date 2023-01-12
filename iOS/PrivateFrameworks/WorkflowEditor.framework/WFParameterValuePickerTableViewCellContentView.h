@@ -8,7 +8,7 @@
 
 #import <WorkflowEditor/UIContentView-Protocol.h>
 
-@class NSString, UIImageView, UILabel, UIStackView, WFParameterValuePickerTableViewCellConfiguration;
+@class NSString, UIImageView, UILabel, UIStackView, UISwitch, WFIconHostingViewController, WFParameterValuePickerTableViewCellConfiguration;
 
 @interface WFParameterValuePickerTableViewCellContentView : UIView <UIContentView>
 {
@@ -16,6 +16,8 @@
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UIImageView *_iconImageView;
+    WFIconHostingViewController *_iconViewController;
+    UISwitch *_selectedSwitch;
     UIStackView *_contentStackView;
     UIStackView *_labelsStackView;
 }
@@ -23,10 +25,13 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
 @property(readonly, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
+@property(readonly, nonatomic) UISwitch *selectedSwitch; // @synthesize selectedSwitch=_selectedSwitch;
+@property(readonly, nonatomic) WFIconHostingViewController *iconViewController; // @synthesize iconViewController=_iconViewController;
 @property(readonly, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(readonly, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(copy, nonatomic) WFParameterValuePickerTableViewCellConfiguration *configuration; // @synthesize configuration=_configuration;
+- (void)selectedSwitchDidToggle:(id)arg1;
 - (void)applyConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 

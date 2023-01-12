@@ -12,10 +12,13 @@
 {
     MISSING_TYPE *tracker;
     MISSING_TYPE *paywallModel;
+    MISSING_TYPE *paywallTrackerObserver;
     MISSING_TYPE *feedData;
+    MISSING_TYPE *channelData;
     MISSING_TYPE *groupData;
     MISSING_TYPE *sectionData;
     MISSING_TYPE *articleData;
+    MISSING_TYPE *articleExposureContextData;
     MISSING_TYPE *campaignData;
     MISSING_TYPE *adReferralData;
 }

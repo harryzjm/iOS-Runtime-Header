@@ -6,7 +6,7 @@
 
 #import <IMCore/IMVisibleAssociatedMessageHost-Protocol.h>
 
-@class IMMessageItem, NSArray, NSAttributedString, NSString;
+@class IMMessageItem, IMMessagePartHighlightChatItem, NSArray, NSAttributedString, NSString;
 
 @interface IMMessagePartChatItem <IMVisibleAssociatedMessageHost>
 {
@@ -18,39 +18,54 @@
     NSArray *_messageEditChatItems;
     _Bool _isBusiness;
     _Bool _chatInScrutinyMode;
-    _Bool _whitelistedRichLinkSender;
+    _Bool _allowlistedRichLinkSender;
+    long long _syndicationType;
+    long long _syndicationStatus;
+    IMMessagePartHighlightChatItem *_messageHighlightChatItem;
+    long long _syndicationBehavior;
     unsigned long long _replyCount;
 }
 
 + (_Bool)isSiriEnabled;
 + (id)_messageItemWithPartsDeleted:(id)arg1 fromMessageItem:(id)arg2 indexesOfItemsDeleted:(id *)arg3 indexToRangeMapping:(id *)arg4;
 + (_Bool)_shouldAggregateForTransferType:(id)arg1;
-+ (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(_Bool)arg2 isBusiness:(_Bool)arg3 parentChatIsSpam:(_Bool)arg4 hasKnownParticipants:(_Bool)arg5;
-+ (_Bool)_supportsRichLinkURL:(id)arg1 forSender:(id)arg2 isWhitelistedRichLinkSender:(_Bool)arg3;
-+ (id)_richLinkRangesForMessageText:(id)arg1 sender:(id)arg2 isWhitelistedRichLinkSender:(_Bool)arg3;
-+ (id)_additionalSupportedRichLinkSchemesForWhitelistedSender:(id)arg1;
-+ (_Bool)_isWhitelistedRichLinkSender:(id)arg1 isBusiness:(_Bool)arg2;
-+ (_Bool)_isWhiteListedURL:(id)arg1;
-+ (id)_defaultRichLinkWhiteList;
++ (id)messageBodyStringForAttachmentGUIDs:(id)arg1;
++ (id)aggregatePartsForParts:(id)arg1 forMessage:(id)arg2 context:(id)arg3;
++ (long long)_attachmentStackAggregationThreshold;
++ (id)_newMessagePartsForMessageItem:(id)arg1 chatContext:(id)arg2 photosPluginPayload:(id)arg3;
++ (id)messageBodyStringForCMMMessage:(id)arg1;
++ (id)_newMessagePartsForMessageItem:(id)arg1 chatContext:(id)arg2;
++ (_Bool)_supportsRichLinkURL:(id)arg1 forSender:(id)arg2 isAllowlistedRichLinkSender:(_Bool)arg3;
++ (id)_richLinkRangesForMessageText:(id)arg1 sender:(id)arg2 isAllowlistedRichLinkSender:(_Bool)arg3;
++ (id)_additionalSupportedRichLinkSchemesForAllowlistedSender:(id)arg1;
++ (_Bool)_isAllowlistedRichLinkSender:(id)arg1 isBusiness:(_Bool)arg2;
++ (_Bool)_isAllowlistedURL:(id)arg1;
++ (id)_defaultRichLinkAllowlist;
 + (id)_newMessagePartsForMessageItem:(id)arg1;
 + (id)_guidForMessage:(id)arg1 url:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long replyCount; // @synthesize replyCount=_replyCount;
-@property(nonatomic, getter=isWhitelistedRichLinkSender) _Bool whitelistedRichLinkSender; // @synthesize whitelistedRichLinkSender=_whitelistedRichLinkSender;
+@property(nonatomic, getter=isAllowlistedRichLinkSender) _Bool allowlistedRichLinkSender; // @synthesize allowlistedRichLinkSender=_allowlistedRichLinkSender;
 @property(readonly, copy, nonatomic) NSAttributedString *fallbackCorruptText; // @synthesize fallbackCorruptText=_fallbackCorruptText;
 @property(nonatomic) _Bool chatInScrutinyMode; // @synthesize chatInScrutinyMode=_chatInScrutinyMode;
 @property(readonly, nonatomic) NSArray *messageEditChatItems; // @synthesize messageEditChatItems=_messageEditChatItems;
 @property(retain, nonatomic, setter=_setVisibleAssociatedMessageChatItems:) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 @property(nonatomic) struct _NSRange messagePartRange; // @synthesize messagePartRange=_messagePartRange;
-@property(readonly, nonatomic) long long index; // @synthesize index=_index;
+@property(nonatomic, setter=_setIndex:) long long index; // @synthesize index=_index;
 @property(readonly, copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
+@property(readonly, nonatomic) long long syndicationBehavior; // @synthesize syndicationBehavior=_syndicationBehavior;
+@property(readonly, copy, nonatomic) IMMessagePartHighlightChatItem *messageHighlightChatItem; // @synthesize messageHighlightChatItem=_messageHighlightChatItem;
+@property(readonly, nonatomic) long long syndicationStatus; // @synthesize syndicationStatus=_syndicationStatus;
+@property(readonly, nonatomic) long long syndicationType; // @synthesize syndicationType=_syndicationType;
+- (_Bool)isHighlighted;
 @property(readonly, nonatomic) _Bool requiresSiriAttribution;
-- (id)replyContextPreviewChatItemForReply:(id)arg1;
+- (id)replyContextPreviewChatItemForReply:(id)arg1 chatContext:(id)arg2;
 @property(readonly, nonatomic) IMMessageItem *threadOriginator;
 @property(readonly, copy, nonatomic) NSString *threadIdentifier;
 - (_Bool)canSendMessageAcknowledgment;
 - (void)_setMessageEditChatItems:(id)arg1;
 - (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 visibleAssociatedMessageChatItems:(id)arg5;
+- (id)_initWithItem:(id)arg1 index:(long long)arg2 messagePartRange:(struct _NSRange)arg3 syndicationBehavior:(long long)arg4;
 - (id)_initWithItem:(id)arg1 index:(long long)arg2 messagePartRange:(struct _NSRange)arg3;
 @property(readonly, nonatomic) _Bool isCorrupt;
 - (id)transcriptText;
@@ -58,6 +73,7 @@
 - (_Bool)canDelete;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
+- (_Bool)__im_ff_isInterstellarEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

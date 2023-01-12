@@ -6,8 +6,13 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC26SiriPlaybackControlIntents20AnalyticsServiceImpl : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *analyticsServiceLogger;
+    MISSING_TYPE *contextProvider;
+    MISSING_TYPE *metricsState;
 }
 
 @end

@@ -42,6 +42,7 @@
 - (void)_accessibilitySetFocusOnElement:(_Bool)arg1;
 - (id)description;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
+- (_Bool)_accessibilityHasVisibleFrame;
 - (struct CGRect)accessibilityFrame;
 @property(readonly, nonatomic) struct CGRect containerAccessibilityFrame;
 - (void)unregister;
@@ -61,6 +62,7 @@
 - (id)_accessibilityHandwritingElement;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (id)_accessibilityTextOperations;
+- (unsigned int)_accessibilityContextId;
 - (void)platformCleanup;
 @property(readonly, nonatomic) unsigned int localHostingWindowContextId;
 - (id)initWithUUID:(id)arg1 andRemotePid:(int)arg2 andContextId:(unsigned int)arg3;

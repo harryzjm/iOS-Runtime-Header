@@ -16,8 +16,8 @@
     NSMutableArray *_fetchPersonalNicknameCompletionBlocks;
     NSDictionary *_handledNicknames;
     NSDictionary *_pendingNicknameUpdates;
-    NSSet *_whitelistedHandlesForSharing;
-    NSSet *_blacklistedHandlesForSharing;
+    NSSet *_allowListedHandlesForSharing;
+    NSSet *_denyListedHandlesForSharing;
     NSMutableSet *_scrutinyNicknameHandles;
 }
 
@@ -27,8 +27,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
 @property(retain, nonatomic) NSMutableSet *scrutinyNicknameHandles; // @synthesize scrutinyNicknameHandles=_scrutinyNicknameHandles;
-@property(retain, nonatomic) NSSet *blacklistedHandlesForSharing; // @synthesize blacklistedHandlesForSharing=_blacklistedHandlesForSharing;
-@property(retain, nonatomic) NSSet *whitelistedHandlesForSharing; // @synthesize whitelistedHandlesForSharing=_whitelistedHandlesForSharing;
+@property(retain, nonatomic) NSSet *denyListedHandlesForSharing; // @synthesize denyListedHandlesForSharing=_denyListedHandlesForSharing;
+@property(retain, nonatomic) NSSet *allowListedHandlesForSharing; // @synthesize allowListedHandlesForSharing=_allowListedHandlesForSharing;
 @property(retain, nonatomic) NSDictionary *pendingNicknameUpdates; // @synthesize pendingNicknameUpdates=_pendingNicknameUpdates;
 @property(retain, nonatomic) NSDictionary *handledNicknames; // @synthesize handledNicknames=_handledNicknames;
 @property(retain, nonatomic) NSMutableArray *fetchPersonalNicknameCompletionBlocks; // @synthesize fetchPersonalNicknameCompletionBlocks=_fetchPersonalNicknameCompletionBlocks;
@@ -47,7 +47,7 @@
 - (id)_handleIDsForHandle:(id)arg1;
 - (void)handleSharingListsDidChange;
 - (void)nicknameStoreDidChange;
-- (void)updateSharingWhitelist:(id)arg1 blacklist:(id)arg2;
+- (void)updateSharingAllowList:(id)arg1 denyList:(id)arg2;
 - (void)updatePendingNicknames:(id)arg1 handledNicknames:(id)arg2;
 - (void)_updateLocalNicknameStore;
 - (id)imageDataForHandle:(id)arg1;
@@ -60,10 +60,10 @@
 - (_Bool)shouldOfferNicknameSharingForChat:(id)arg1;
 - (void)updatePersonalNickname:(id)arg1;
 - (void)fetchPersonalNicknameWithCompletion:(CDUnknownBlockType)arg1;
-- (void)blacklistHandlesForNicknameSharing:(id)arg1;
-- (void)whitelistHandlesForNicknameSharing:(id)arg1 forChat:(id)arg2;
-- (_Bool)handleIsBlacklistedForSharing:(id)arg1;
-- (_Bool)handleIsWhitelistedForSharing:(id)arg1;
+- (void)denyHandlesForNicknameSharing:(id)arg1;
+- (void)allowHandlesForNicknameSharing:(id)arg1 forChat:(id)arg2;
+- (_Bool)handleIsDeniedForSharing:(id)arg1;
+- (_Bool)handleIsAllowedForSharing:(id)arg1;
 - (void)ignorePendingNicknameUpdatesForHandle:(id)arg1;
 - (void)clearPendingNicknameUpdatesForHandle:(id)arg1;
 - (id)IMSharedHelperMD5Helper:(id)arg1;

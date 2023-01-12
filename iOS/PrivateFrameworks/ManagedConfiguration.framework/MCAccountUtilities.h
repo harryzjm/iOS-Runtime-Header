@@ -16,6 +16,7 @@
 + (_Bool)hasManagedAccountOfDataclasses:(id)arg1;
 + (id)appStoreAccountIdentifierForPersona:(id)arg1;
 + (id)accountDataclassesForBundleID:(id)arg1;
++ (void)checkAccountConsistencyAndReleaseOrphanedAccounts:(_Bool)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *signInQueue; // @synthesize signInQueue=_signInQueue;
 - (_Bool)_signIniTunesAccountWithAuthenticationResult:(id)arg1 personaID:(id)arg2 baseViewController:(id)arg3 outError:(id *)arg4;

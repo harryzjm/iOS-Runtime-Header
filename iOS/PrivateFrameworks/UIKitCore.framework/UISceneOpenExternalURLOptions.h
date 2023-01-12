@@ -6,11 +6,16 @@
 
 #import <objc/NSObject.h>
 
+@class UIEventAttribution;
+
 @interface UISceneOpenExternalURLOptions : NSObject
 {
     _Bool _universalLinksOnly;
+    UIEventAttribution *_eventAttribution;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) UIEventAttribution *eventAttribution; // @synthesize eventAttribution=_eventAttribution;
 @property(nonatomic) _Bool universalLinksOnly; // @synthesize universalLinksOnly=_universalLinksOnly;
 
 @end

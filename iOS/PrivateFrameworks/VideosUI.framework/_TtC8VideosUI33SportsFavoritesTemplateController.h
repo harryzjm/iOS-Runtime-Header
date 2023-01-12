@@ -9,9 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI33SportsFavoritesTemplateController
 {
-    MISSING_TYPE *templateType;
+    MISSING_TYPE *syncTeamFavorites;
+    MISSING_TYPE *templateUpdateObserver;
+    MISSING_TYPE *teamsServiceRequest;
 }
 
+- (void).cxx_destruct;
+- (void)vuiCollectionView:(id)arg1 didSelectItemAt:(id)arg2;
+- (void)dealloc;
+- (void)vui_viewDidLoad;
 - (id)initWithCoder:(id)arg1;
 
 @end

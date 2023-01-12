@@ -19,8 +19,10 @@
 - (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (_Bool)_accessibilityHandwritingAttributeShouldEchoCharacter;
 - (_Bool)_accessibilitySupportsHandwriting;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)slideToNewPasscodeField:(_Bool)arg1 withKeyboard:(_Bool)arg2;
 - (void)setPINPolicyString:(id)arg1 visible:(_Bool)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

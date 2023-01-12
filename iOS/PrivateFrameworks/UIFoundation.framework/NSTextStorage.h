@@ -9,7 +9,7 @@
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray;
-@protocol NSTextStorageControllerPrivate, NSTextStorageDelegate;
+@protocol NSTextStorageDelegate, NSTextStorageObserving, NSTextStorageObservingPrivate;
 
 @interface NSTextStorage : NSMutableAttributedString <NSSecureCoding>
 {
@@ -24,21 +24,34 @@
     } _flags;
     NSMutableArray *_layoutManagers;
     id _sideData;
-    id <NSTextStorageControllerPrivate> _textStorageController;
+    long long _fontFixingDisabledCount;
+    id <NSTextStorageObservingPrivate> _textStorageObserver;
+    _Bool _shouldSetOriginalFontAttribute;
+    Class _intentResolver;
     _Bool _ensuresFixingAttributes;
+    _Bool _ensuresFixingFontAttributes;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
+@property _Bool ensuresFixingFontAttributes; // @synthesize ensuresFixingFontAttributes=_ensuresFixingFontAttributes;
 @property _Bool ensuresFixingAttributes; // @synthesize ensuresFixingAttributes=_ensuresFixingAttributes;
+- (void)_setIntentResolver:(Class)arg1;
+- (Class)_intentResolver;
+- (void)_fixAttributesInRange:(struct _NSRange)arg1;
+- (void)fixGlyphInfoAttributeInRange:(struct _NSRange)arg1;
+- (void)fixFontAttributeInRange:(struct _NSRange)arg1;
+- (_Bool)_shouldFixFontAttributes;
 - (_Bool)_usesSimpleTextEffects;
 - (void)_setUsesSimpleTextEffects:(_Bool)arg1;
 - (id)cuiStyleEffects;
 - (id)cuiCatalog;
+- (void)_setShouldSetOriginalFontAttribute:(_Bool)arg1;
 - (_Bool)_shouldSetOriginalFontAttribute;
 - (id)textStorageController;
 - (void)setTextStorageController:(id)arg1;
+@property(nonatomic) __weak id <NSTextStorageObserving> textStorageObserver;
 @property(nonatomic) __weak id <NSTextStorageDelegate> delegate;
 - (void)fontSetChanged;
 - (void)_notifyEdited:(unsigned long long)arg1 range:(struct _NSRange)arg2 changeInLength:(long long)arg3 invalidatedRange:(struct _NSRange)arg4;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *graph;
     MISSING_TYPE *payload;
+    MISSING_TYPE *normalizedStringPayloads;
     MISSING_TYPE *vertex;
     MISSING_TYPE *name;
     MISSING_TYPE *identifiers;

@@ -22,6 +22,8 @@
 @property(retain) NSArray *scenedAssetLocalIdentifiers; // @synthesize scenedAssetLocalIdentifiers=_scenedAssetLocalIdentifiers;
 @property(readonly) long long year; // @synthesize year=_year;
 @property(readonly) PGGraphROINode *regionNode; // @synthesize regionNode=_regionNode;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
 @property(readonly) NSString *region;
 - (void)addMomentNode:(id)arg1;
 - (id)initWithRegionNode:(id)arg1 year:(long long)arg2;

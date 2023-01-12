@@ -54,14 +54,16 @@
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (_Bool)_shouldUpdateTableViewForDataSource:(id)arg1;
 - (long long)oneUpPresentationHelper:(id)arg1 transitionTypeWithProposedTransitionType:(long long)arg2;
-- (struct CGRect)oneUpPresentationHelper:(id)arg1 rectForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
+- (id)oneUpPresentationHelper:(id)arg1 regionOfInterestForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
 - (_Bool)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (long long)oneUpPresentationHelperPreferredBarStyle:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
 - (long long)oneUpPresentationOrigin:(id)arg1;
+- (unsigned long long)oneUpPresentationHelperAdditionalOptions:(id)arg1;
 - (void)_updateAssetsFetchResultIfNeeded;
 - (void)_presentOneUpViewControllerForAssetAtInderxPath:(id)arg1;
+- (id)_createBrowsingSessionForPresentationHelper;
 - (void)_ensureOneUpPresentationHelper;
 - (id)_videoThumbnailViewForAssetAtIndexPath:(id)arg1;
 @property(readonly, nonatomic) PHImageRequestOptions *_imageRequestOptions; // @synthesize _imageRequestOptions=__imageRequestOptions;

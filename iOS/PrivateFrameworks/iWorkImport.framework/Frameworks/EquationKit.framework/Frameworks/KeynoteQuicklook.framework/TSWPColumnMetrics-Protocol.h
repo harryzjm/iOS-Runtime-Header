@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, TSWPPadding;
+@class TSWPPadding;
 @protocol TSWPLayoutTarget;
 
 @protocol TSWPColumnMetrics
@@ -13,13 +13,13 @@
 @property(readonly, nonatomic) _Bool alwaysStartsNewTarget;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id <TSWPLayoutTarget>)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id <TSWPLayoutTarget>)arg1;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id <TSWPLayoutTarget>)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 
 @optional
 @property(readonly, nonatomic) double textScaleFactor;
-- (TSWPPadding *)layoutMarginsForTarget:(NSObject<TSWPLayoutTarget> *)arg1;
+- (TSWPPadding *)layoutMarginsForTarget:(id <TSWPLayoutTarget>)arg1;
 @end
 

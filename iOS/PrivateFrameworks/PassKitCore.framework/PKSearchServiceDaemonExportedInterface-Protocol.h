@@ -19,7 +19,7 @@
 - (void)updateRegionWithIdentifier:(NSString *)arg1 localizedName:(NSString *)arg2 boundingRegion:(CDStruct_2b0c6e0b)arg3 mapsIdentifier:(unsigned long long)arg4 providerIdentifier:(int)arg5 completion:(void (^)(PKWorldRegion *))arg6;
 - (void)cancelQueryWithIdentifier:(NSString *)arg1;
 - (void)searchWithQuery:(PKSearchQuery *)arg1;
-- (void)hasSearchableContentWithCompletion:(void (^)(_Bool))arg1;
+- (void)hasSearchableContentForQuery:(PKSearchQuery *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)canProvideFullResultsWithCompletion:(void (^)(_Bool))arg1;
 @end
 

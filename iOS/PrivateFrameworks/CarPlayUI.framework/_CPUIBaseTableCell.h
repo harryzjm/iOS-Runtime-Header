@@ -8,13 +8,18 @@
 
 @interface _CPUIBaseTableCell : UITableViewCell
 {
+    _Bool _itemEnabled;
 }
 
++ (id)disabledHighlightedColor;
++ (id)disabledColor;
 + (double)rowHeight;
 + (double)minimumHeight;
 + (id)cellForTableView:(id)arg1;
 + (id)identifier;
+@property(nonatomic) _Bool itemEnabled; // @synthesize itemEnabled=_itemEnabled;
 - (void)configureCell;
+- (void)_updateTintColors;
 
 @end
 

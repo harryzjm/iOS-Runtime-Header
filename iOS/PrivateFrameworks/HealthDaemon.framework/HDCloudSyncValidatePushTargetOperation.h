@@ -9,25 +9,14 @@
 @interface HDCloudSyncValidatePushTargetOperation
 {
     struct os_unfair_lock_s _lock;
-    _Bool _shouldValidateCurrentSequence;
     HDCloudSyncTarget *_target;
     long long _result;
 }
 
++ (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long result; // @synthesize result=_result;
 @property(copy, nonatomic) HDCloudSyncTarget *target; // @synthesize target=_target;
-@property(nonatomic) _Bool shouldValidateCurrentSequence; // @synthesize shouldValidateCurrentSequence=_shouldValidateCurrentSequence;
-- (void)_requireRebaseForTarget;
-- (_Bool)_orderedChangeRecordSequenceRequiresRebase:(id)arg1;
-- (_Bool)_isRelevantChangeRecord:(id)arg1 forStoreRecord:(id)arg2;
-- (void)_validateCurrentSequenceChanges;
-- (void)_validateCurrentSequence;
-- (_Bool)_validateCurrentSequenceChildCount;
-- (_Bool)_validatePersistedStoreState;
-- (_Bool)_validateAnchorRangesForSequenceRecord:(id)arg1;
-- (_Bool)_validateAnchorRanges;
-- (void)_validateSequenceOrdering;
 - (id)analyticsDictionary;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

@@ -15,13 +15,13 @@
 
 @interface TSUColor (TSSArchivingUtilities) <TSSPropertyValueArchiving, TSSPropertyCommandSerializing, TSSPreset, TSSPresetSource>
 + (id)instanceWithArchive:(const struct Message *)arg1 unarchiver:(id)arg2;
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;
-+ (id)p_defaultPresetColors:(int)arg1;
++ (id)p_defaultPresetColors:(unsigned long long)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (void)saveToArchive:(struct Color *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Color *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) NSString *presetKind;
 
 // Remaining properties

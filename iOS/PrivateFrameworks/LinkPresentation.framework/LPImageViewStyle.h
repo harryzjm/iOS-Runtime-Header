@@ -9,16 +9,21 @@
 #import <LinkPresentation/LPEmailCompatibleCaptionBarItemChild-Protocol.h>
 #import <LinkPresentation/NSCopying-Protocol.h>
 
-@class LPPadding, LPPointUnit, LPShadowStyle, LPSize, UIColor;
+@class LPPadding, LPPointUnit, LPShadowStyle, LPSize, NSNumber, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface LPImageViewStyle : NSObject <LPEmailCompatibleCaptionBarItemChild, NSCopying>
 {
     _Bool _requireFixedSize;
+    _Bool _scalesToFitParent;
     _Bool _allowsPlatterPresentation;
+    _Bool _shouldApplyBackground;
     LPSize *_fixedSize;
     LPSize *_minimumSize;
     LPPointUnit *_fixedFallbackImageSize;
+    NSNumber *_fixedFallbackImageWeight;
+    UIFont *_fixedFallbackImageFont;
+    NSNumber *_fixedFallbackImageScale;
     LPPadding *_margin;
     LPPadding *_padding;
     long long _scalingMode;
@@ -37,16 +42,21 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double darkeningAmount; // @synthesize darkeningAmount=_darkeningAmount;
 @property(retain, nonatomic) LPPointUnit *cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(retain, nonatomic) LPPointUnit *backgroundInset; // @synthesize backgroundInset=_backgroundInset;
+@property(nonatomic) _Bool shouldApplyBackground; // @synthesize shouldApplyBackground=_shouldApplyBackground;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) _Bool allowsPlatterPresentation; // @synthesize allowsPlatterPresentation=_allowsPlatterPresentation;
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property(retain, nonatomic) UIColor *maskColor; // @synthesize maskColor=_maskColor;
 @property(retain, nonatomic) LPShadowStyle *shadow; // @synthesize shadow=_shadow;
+@property(nonatomic) _Bool scalesToFitParent; // @synthesize scalesToFitParent=_scalesToFitParent;
 @property(nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 @property(nonatomic) long long filter; // @synthesize filter=_filter;
 @property(nonatomic) long long scalingMode; // @synthesize scalingMode=_scalingMode;
 @property(readonly, retain, nonatomic) LPPadding *padding; // @synthesize padding=_padding;
 @property(readonly, retain, nonatomic) LPPadding *margin; // @synthesize margin=_margin;
+@property(retain, nonatomic) NSNumber *fixedFallbackImageScale; // @synthesize fixedFallbackImageScale=_fixedFallbackImageScale;
+@property(retain, nonatomic) UIFont *fixedFallbackImageFont; // @synthesize fixedFallbackImageFont=_fixedFallbackImageFont;
+@property(retain, nonatomic) NSNumber *fixedFallbackImageWeight; // @synthesize fixedFallbackImageWeight=_fixedFallbackImageWeight;
 @property(retain, nonatomic) LPPointUnit *fixedFallbackImageSize; // @synthesize fixedFallbackImageSize=_fixedFallbackImageSize;
 @property(retain, nonatomic) LPSize *minimumSize; // @synthesize minimumSize=_minimumSize;
 @property(nonatomic) _Bool requireFixedSize; // @synthesize requireFixedSize=_requireFixedSize;

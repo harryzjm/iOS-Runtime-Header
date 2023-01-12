@@ -4,19 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface WFAppPickerParameter
+#import <WorkflowKit/WFDynamicEnumerationDataSource-Protocol.h>
+
+@class NSString;
+
+@interface WFAppPickerParameter <WFDynamicEnumerationDataSource>
 {
+    _Bool _useLegacyIdentifiers;
     long long _appSearchType;
 }
 
+@property(readonly, nonatomic) _Bool useLegacyIdentifiers; // @synthesize useLegacyIdentifiers=_useLegacyIdentifiers;
 @property(readonly, nonatomic) long long appSearchType; // @synthesize appSearchType=_appSearchType;
-- (id)stateForApp:(id)arg1;
-- (id)accessoryIconForState:(id)arg1;
-- (id)localizedLabelForState:(id)arg1;
-- (id)localizedPlaceholder;
-- (id)defaultSupportedVariableTypes;
+- (id)stateForRecord:(id)arg1;
+- (id)enumeration:(id)arg1 accessoryImageForPossibleState:(id)arg2;
+- (id)enumeration:(id)arg1 accessoryIconForPossibleState:(id)arg2;
+- (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
+- (void)loadPossibleStatesForEnumeration:(id)arg1 searchTerm:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)enumerationShouldProvideValuesForParameterSummaryLocalization:(id)arg1;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

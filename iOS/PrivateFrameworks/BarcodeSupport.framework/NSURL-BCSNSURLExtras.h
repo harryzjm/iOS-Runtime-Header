@@ -10,9 +10,13 @@
 + (id)_bcs_URLWithUserTypedString:(id)arg1;
 + (id)_bcs_appStoreSearchURLWithScheme:(id)arg1;
 + (id)_bcs_searchURLWithQuery:(id)arg1;
+- (id)_bcs_hostWithoutWwwDot;
 - (_Bool)_bcs_isDataDetectorURL;
 - (id)_bcs_fullURLDisplayString;
 - (id)_bcs_displayString;
+- (_Bool)_bcs_isOtpauthURL;
+- (_Bool)_bcs_isUPIURL;
+- (_Bool)_bcs_isSHCURL;
 - (_Bool)_bcs_isMapsURL;
 - (_Bool)_bcs_isHTTPFamilyURL;
 @end

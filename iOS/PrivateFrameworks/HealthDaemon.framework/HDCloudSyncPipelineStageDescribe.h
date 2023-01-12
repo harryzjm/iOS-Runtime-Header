@@ -6,14 +6,12 @@
 
 @interface HDCloudSyncPipelineStageDescribe
 {
-    CDUnknownBlockType _descriptionHandler;
+    CDUnknownBlockType _respositoryDescriptionHandler;
 }
 
 - (void).cxx_destruct;
-- (id)_cloudSyncContainerDescriptionFromCloudState:(id)arg1 configuration:(id)arg2;
-- (id)_descriptionForContainer:(id)arg1 configuration:(id)arg2;
 - (void)main;
-- (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 descriptionHandler:(CDUnknownBlockType)arg3;
+- (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 respositoryDescriptionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 
 @end

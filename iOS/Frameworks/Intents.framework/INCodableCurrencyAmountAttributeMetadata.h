@@ -21,10 +21,10 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionCurrencyCodeKey;
-- (id)__INIntentResponseCodableDescriptionCurrencyCodeKey;
-- (id)__INTypeCodableDescriptionCurrencyCodeKey;
 - (id)__INCodableDescriptionCurrencyCodesKey;
+- (id)__INIntentResponseCodableDescriptionCurrencyCodeKey;
 - (id)__INIntentResponseCodableDescriptionCurrencyCodesKey;
+- (id)__INTypeCodableDescriptionCurrencyCodeKey;
 - (id)__INTypeCodableDescriptionCurrencyCodesKey;
 
 @end

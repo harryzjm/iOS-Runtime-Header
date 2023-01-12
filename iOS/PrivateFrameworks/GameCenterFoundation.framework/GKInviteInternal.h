@@ -33,6 +33,7 @@
 + (id)nearbyInviteIDForPlayerID:(id)arg1 deviceID:(id)arg2 bundleID:(id)arg3;
 + (id)inviteFromNearbyPlayer:(id)arg1 participantID:(id)arg2 deviceID:(id)arg3 bundleID:(id)arg4 connectionData:(id)arg5;
 + (id)inviteWithBulletin:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool isMessageBasedInvite; // @synthesize isMessageBasedInvite=_isMessageBasedInvite;
 @property(retain, nonatomic) NSString *rid; // @synthesize rid=_rid;
 @property(nonatomic) unsigned int playerAttributes; // @synthesize playerAttributes=_playerAttributes;
@@ -56,7 +57,6 @@
 @property(readonly, nonatomic) _Bool isNearby; // @dynamic isNearby;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 - (id)init;
 
 @end

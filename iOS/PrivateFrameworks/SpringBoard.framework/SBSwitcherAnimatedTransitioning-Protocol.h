@@ -11,6 +11,6 @@
 @protocol SBSwitcherAnimatedTransitioning <NSObject>
 @property(readonly, copy, nonatomic) BSAnimationSettings *defaultTransitionAnimationSettings;
 @property(readonly, nonatomic) _Bool canInterruptActiveTransition;
-- (void)performTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1 animated:(_Bool)arg2 alongsideAnimationHandler:(void (^)(void (^)(_Bool, _Bool) (^)(NSString *)))arg3 completion:(void (^)(_Bool))arg4;
+- (void)performTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1 animated:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 @end
 

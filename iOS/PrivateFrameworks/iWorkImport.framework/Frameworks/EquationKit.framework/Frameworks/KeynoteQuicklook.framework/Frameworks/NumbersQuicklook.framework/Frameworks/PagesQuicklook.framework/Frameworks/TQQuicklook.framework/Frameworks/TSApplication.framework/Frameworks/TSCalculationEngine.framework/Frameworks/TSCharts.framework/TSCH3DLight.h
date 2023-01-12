@@ -24,7 +24,8 @@
 
 + (id)light;
 + (id)lightClasses;
-+ (id)instanceWithArchive:(const struct Chart3DLightArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) int coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;
 @property(nonatomic) float intensity; // @synthesize intensity=_intensity;
@@ -38,12 +39,11 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
-- (void)saveToLightArchive:(struct Chart3DLightArchive *)arg1 archiver:(id)arg2;
-- (void)saveToArchive:(struct Chart3DLightArchive *)arg1 archiver:(id)arg2;
-- (id)initWithLightArchive:(const struct Chart3DLightArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DLightArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToLightArchive:(void *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithLightArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

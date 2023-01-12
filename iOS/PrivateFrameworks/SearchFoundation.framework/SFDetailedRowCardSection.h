@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFDetailedRowCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFButton, SFCard, SFColor, SFFormattedText, SFImage, SFRichText, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, SFActionItem, SFButton, SFCard, SFColor, SFCommand, SFFormattedText, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFDetailedRowCardSection <SFDetailedRowCardSection, NSSecureCoding, NSCopying>
 {
@@ -20,6 +20,7 @@
         unsigned int preventThumbnailImageScaling:1;
         unsigned int isSecondaryTitleDetached:1;
         unsigned int shouldUseCompactDisplay:1;
+        unsigned int buttonItemsAreTrailing:1;
     } _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
@@ -27,6 +28,7 @@
     _Bool _preventThumbnailImageScaling;
     _Bool _isSecondaryTitleDetached;
     _Bool _shouldUseCompactDisplay;
+    _Bool _buttonItemsAreTrailing;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -44,10 +46,15 @@
     SFFormattedText *_trailingBottomText;
     SFActionItem *_action;
     SFButton *_button;
+    NSArray *_buttonItems;
+    SFImage *_trailingThumbnail;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool buttonItemsAreTrailing; // @synthesize buttonItemsAreTrailing=_buttonItemsAreTrailing;
+@property(retain, nonatomic) SFImage *trailingThumbnail; // @synthesize trailingThumbnail=_trailingThumbnail;
+@property(copy, nonatomic) NSArray *buttonItems; // @synthesize buttonItems=_buttonItems;
 @property(nonatomic) _Bool shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property(retain, nonatomic) SFButton *button; // @synthesize button=_button;
 @property(retain, nonatomic) SFActionItem *action; // @synthesize action=_action;
@@ -71,11 +78,14 @@
 @property(copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property(copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property(copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasButtonItemsAreTrailing;
 - (_Bool)hasShouldUseCompactDisplay;
 - (_Bool)hasIsSecondaryTitleDetached;
 - (_Bool)hasPreventThumbnailImageScaling;
@@ -86,14 +96,22 @@
 - (id)initWithProtobuf:(id)arg1;
 
 // Remaining properties
+@property(retain, nonatomic) NSString *cardSectionDetail;
 @property(copy, nonatomic) NSString *cardSectionId;
+@property(readonly) NSArray *cardsFromButtons;
+@property(readonly) NSArray *cardsFromEmbeddedSections;
+@property(retain, nonatomic) SFCommand *command;
+@property(retain, nonatomic) NSString *commandDetail;
 @property(copy, nonatomic) NSArray *commands;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
+@property(readonly) NSArray *embeddedCards;
 @property(nonatomic) _Bool hideDivider;
 @property(retain, nonatomic) SFCard *nextCard;
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
+@property(copy, nonatomic) NSArray *previewButtonItems;
+@property(retain, nonatomic) NSString *previewButtonItemsTitle;
+@property(retain, nonatomic) SFCommand *previewCommand;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
 @property(retain, nonatomic) SFUserReportRequest *userReportRequest;

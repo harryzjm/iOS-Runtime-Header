@@ -23,7 +23,7 @@
 - (void)addLRUSignature:(id)arg1;
 - (_Bool)lookupLRUSignature:(id)arg1;
 - (id)parseUnverifiedBookmark:(id)arg1;
-- (id)verifyBookmark:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 consumerIdentifier:(id)arg3;
+- (id)verifyBookmark:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 consumerIdentifier:(id)arg3;
 - (id)bookmarkForItemID:(id)arg1 consumerIdentifier:(id)arg2;
 - (id)keyForBundleIdentifier:(id)arg1 generateIfNotFound:(_Bool)arg2 keyGenBlock:(CDUnknownBlockType)arg3;
 - (void)validateDatabase:(id)arg1;

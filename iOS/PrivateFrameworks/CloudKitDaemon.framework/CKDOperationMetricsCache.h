@@ -4,23 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CloudKit/CKSQLite.h>
-
 @class NSObject;
 @protocol OS_dispatch_queue;
 
-@interface CKDOperationMetricsCache : CKSQLite
+@interface CKDOperationMetricsCache
 {
     NSObject<OS_dispatch_queue> *_cacheQueue;
 }
 
 + (id)dbFileName;
-+ (id)sharedCache;
++ (id)cacheDatabaseSchema;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
 - (void)addOperationCombinedMetrics:(id)arg1 forOperationID:(id)arg2 operationType:(long long)arg3 operationGroupID:(id)arg4 operationGroupName:(id)arg5 operationGroupQuantity:(unsigned long long)arg6 operationQualityOfService:(long long)arg7 appContainerTuple:(id)arg8;
 - (void)flushMetricsToPowerLog;
-- (id)_initWithCacheDir:(id)arg1;
+@property(readonly) _Bool hasMetrics;
+- (id)initWithCacheDir:(id)arg1;
 
 @end
 

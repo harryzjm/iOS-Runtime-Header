@@ -10,19 +10,23 @@
 {
     _Bool _updatingOpacity;
     double _dynamicOpacity;
+    double _scaleForInlineClampingChildLayouts;
 }
 
+@property(readonly, nonatomic) double i_scaleForInlineClampingChildLayouts; // @synthesize i_scaleForInlineClampingChildLayouts=_scaleForInlineClampingChildLayouts;
 @property(nonatomic, getter=p_isUpdatingOpacity) _Bool p_updatingOpacity; // @synthesize p_updatingOpacity=_updatingOpacity;
 @property(nonatomic) double p_dynamicOpacity; // @synthesize p_dynamicOpacity=_dynamicOpacity;
 - (id)childrenForPencilAnnotations;
 - (struct CGRect)alignmentFrameForCaptionEdgeInsetsCalculation;
 @property(readonly, nonatomic) double opacity;
 - (id)p_sizeEnforcingChild;
+- (id)layoutGeometryFromInfo;
 - (struct CGRect)computeBoundsForStandardKnobs;
 - (_Bool)descendentWrappablesContainsWrappable:(id)arg1;
 - (id)descendentWrappables;
 - (_Bool)shouldSnapWhileResizing;
 - (id)additionalDependenciesForChildLayout:(id)arg1;
+- (id)computeLayoutGeometry;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(_Bool)arg3;
 - (id)childInfosForChildLayouts;
 @property(readonly, nonatomic) _Bool shouldSpacerShapeProvideSpace;
@@ -30,6 +34,7 @@
 - (struct CGSize)minimumSize;
 - (void)processChangedProperty:(int)arg1;
 @property(readonly, nonatomic) TSDFreehandDrawingInfo *freehandInfo;
+- (id)initWithInfo:(id)arg1;
 
 @end
 

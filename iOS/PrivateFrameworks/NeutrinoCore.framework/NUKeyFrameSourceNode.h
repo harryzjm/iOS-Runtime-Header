@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;
-- (struct __CVBuffer *)_pixelBuffer:(out id *)arg1;
+- (struct __CVBuffer *)_pixelBufferWithAuxiliaryImageType:(long long)arg1 error:(out id *)arg2;
 - (void)dealloc;
 - (id)initWithSettings:(id)arg1 orientation:(long long)arg2;
 - (id)initWithVideoSource:(id)arg1 time:(CDStruct_1b6d18a9)arg2 settings:(id)arg3 orientation:(long long)arg4;

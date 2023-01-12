@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 #import <RemoteUI/RUIWebContainerViewDelegate-Protocol.h>
 #import <RemoteUI/RemoteUITableFooter-Protocol.h>
@@ -25,6 +25,7 @@
 - (void)webContainerView:(id)arg1 didClickLinkWithURL:(id)arg2;
 - (double)footerHeightForWidth:(double)arg1 inView:(id)arg2;
 - (double)footerHeightForWidth:(double)arg1 inTableView:(id)arg2;
+- (double)webViewWidth;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setText:(id)arg1 attributes:(id)arg2;

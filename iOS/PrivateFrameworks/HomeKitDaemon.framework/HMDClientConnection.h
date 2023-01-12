@@ -13,19 +13,20 @@
 
 @interface HMDClientConnection : HMFObject <HMFMessageReceiver>
 {
-    NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     HMDHomeManager *_homeManager;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableArray *_commandsBeingExecuted;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *commandsBeingExecuted; // @synthesize commandsBeingExecuted=_commandsBeingExecuted;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
+- (void)_handleIdmsAccountUsernameModified:(id)arg1;
 - (void)_handleSiriIntentRequest:(id)arg1;
 - (void)_handleDaemonRequest:(id)arg1;
 - (void)_handleSiriSyncDataRequest:(id)arg1;

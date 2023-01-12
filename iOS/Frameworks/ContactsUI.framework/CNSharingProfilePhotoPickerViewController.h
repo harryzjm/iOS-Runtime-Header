@@ -9,7 +9,7 @@
 #import <ContactsUI/UICollectionViewDataSource-Protocol.h>
 #import <ContactsUI/UICollectionViewDelegate-Protocol.h>
 
-@class CNContact, CNPhotoPickerColorVariant, CNPhotoPickerVariantsManager, CNSharingProfileAvatarItemProvider, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, CNSharingProfilePhotoPickerItem, NSArray, NSString, PRMonogramColor, UIButton, UICollectionView, UICollectionViewFlowLayout, UIImageView;
+@class CNContact, CNPhotoPickerColorVariant, CNPhotoPickerVariantsManager, CNSharingProfileAvatarItemProvider, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, CNSharingProfilePhotoPickerItem, NSArray, NSData, NSString, PRMonogramColor, UIButton, UICollectionView, UICollectionViewFlowLayout, UIImageView;
 @protocol AVTAvatarRecord, CNSharingProfilePhotoPickerViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)didSelectCustomizeButton:(id)arg1;
+@property(retain, nonatomic) NSData *memojiMetadata;
 @property(retain, nonatomic) PRMonogramColor *monogramColor;
 - (void)updatePreviewForSelectedItem;
 - (void)updateWithContact:(id)arg1 fromFullPhotoPicker:(_Bool)arg2;

@@ -12,8 +12,8 @@
 {
 }
 
-- (id)featureVectorsWithEntities:(id)arg1 entityLabels:(id)arg2 error:(id *)arg3;
-- (id)floatMatrixWithEntities:(id)arg1 error:(id *)arg2;
+- (id)featureVectorsWithEntities:(id)arg1 entityLabels:(id)arg2 progressReporter:(id)arg3 error:(id *)arg4;
+- (id)floatMatrixWithEntities:(id)arg1 progressReporter:(id)arg2 error:(id *)arg3;
 - (id)featureVectorWithEntity:(id)arg1 error:(id *)arg2;
 - (id)floatVectorWithEntity:(id)arg1 error:(id *)arg2;
 - (id)defaultFloatVectorWithError:(id *)arg1;

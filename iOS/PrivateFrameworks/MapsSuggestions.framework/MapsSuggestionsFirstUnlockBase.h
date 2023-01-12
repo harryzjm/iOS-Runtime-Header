@@ -13,10 +13,9 @@
 }
 
 - (void)triggerFired:(id)arg1;
-- (_Bool)shouldRun;
-- (id)objectForJSON;
 @property(readonly, nonatomic) NSString *uniqueName;
 - (_Bool)hasDeviceBeenUnlocked;
+- (id)initWithName:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

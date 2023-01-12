@@ -14,11 +14,9 @@
 @interface HDSPSetSleepModeIDSMessage : NSObject <BSDescriptionProviding, HDSPIDSMessage>
 {
     _Bool _sleepModeOn;
-    double _timeout;
 }
 
 @property(readonly, nonatomic) _Bool sleepModeOn; // @synthesize sleepModeOn=_sleepModeOn;
-@property(readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -28,7 +26,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *identifier;
-- (id)initWithSleepModeOn:(_Bool)arg1 timeout:(double)arg2;
+- (id)initWithSleepModeOn:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

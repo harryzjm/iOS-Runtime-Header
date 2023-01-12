@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_matchedDisplayNameLanguageCode;
     NSString *_matchedDisplayName;
     NSString *_normalizedQuery;
+    NSString *_secondaryNameOverrideLanguage;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -32,43 +33,20 @@ __attribute__((visibility("hidden")))
         unsigned int read_matchedDisplayNameLanguageCode:1;
         unsigned int read_matchedDisplayName:1;
         unsigned int read_normalizedQuery:1;
+        unsigned int read_secondaryNameOverrideLanguage:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)alternateSearchableNameType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)alternateSearchableNameAtIndex:(unsigned long long)arg1;
-- (unsigned long long)alternateSearchableNamesCount;
-- (void)addAlternateSearchableName:(id)arg1;
-- (void)clearAlternateSearchableNames;
-@property(retain, nonatomic) NSMutableArray *alternateSearchableNames;
-@property(retain, nonatomic) NSString *matchedDisplayNameLanguageCode;
-@property(readonly, nonatomic) _Bool hasMatchedDisplayNameLanguageCode;
-@property(retain, nonatomic) NSString *interpretedCategory;
-@property(readonly, nonatomic) _Bool hasInterpretedCategory;
-@property(retain, nonatomic) NSString *normalizedQuery;
-@property(readonly, nonatomic) _Bool hasNormalizedQuery;
-@property(nonatomic) _Bool hasIsDefaultName;
-@property(nonatomic) _Bool isDefaultName;
-@property(retain, nonatomic) NSString *matchedDisplayName;
-@property(readonly, nonatomic) _Bool hasMatchedDisplayName;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

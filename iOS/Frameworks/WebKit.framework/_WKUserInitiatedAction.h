@@ -20,6 +20,7 @@
 - (void)consume;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

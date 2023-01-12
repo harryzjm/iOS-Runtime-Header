@@ -7,6 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (TSCHArchivingUtilities)
-- (void)tsch_saveToProtobufString:(basic_string_7c0a1c0b *)arg1;
+- (void)tsch_saveToProtobufString:(void *)arg1;
 @end
 

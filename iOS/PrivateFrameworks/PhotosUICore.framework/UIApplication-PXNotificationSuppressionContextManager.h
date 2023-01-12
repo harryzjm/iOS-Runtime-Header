@@ -6,20 +6,19 @@
 
 #import <UIKit/UIApplication.h>
 
-#import <PhotosUICore/PXPPTDelegate-Protocol.h>
-
 @class UIWindow;
 @protocol PXNotificationSuppressionContextManager;
 
-@interface UIApplication (PXNotificationSuppressionContextManager) <PXPPTDelegate>
+@interface UIApplication (PXNotificationSuppressionContextManager)
 @property(readonly, nonatomic) id <PXNotificationSuppressionContextManager> notificationSuppressionContextManager;
 - (void)_px_navigateToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_navigateToOneUpShowingAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_navigateToRevealDroppedAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)px_navigateToCollectionSubtype:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_navigateToMomentsViewRevealingAssetWithUUID:(id)arg1 openOneUp:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)px_navigateToMomentsViewRevealingDisplayAsset:(id)arg1 openOneUp:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)px_navigateToMomentsViewRevealingAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_navigateToWelcomeCloudViewWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) UIWindow *px_firstKeyWindow;
-- (void)failedTest:(id)arg1 withFailureFormat:(id)arg2;
 @end
 

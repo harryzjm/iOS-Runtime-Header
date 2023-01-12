@@ -18,6 +18,7 @@
 + (id)recordIDWithZoneID:(id)arg1;
 - (void).cxx_destruct;
 - (id)serializeUnderlyingMessage;
+- (id)printDescription;
 - (id)description;
 - (void)addMedicalIDEvent:(id)arg1;
 @property(readonly, nonatomic) NSArray *medicalIDLogs;

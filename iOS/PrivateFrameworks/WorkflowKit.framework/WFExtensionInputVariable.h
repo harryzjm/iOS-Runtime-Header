@@ -15,7 +15,8 @@
 - (id)variableProvider;
 - (id)possibleContentClassesWithContext:(id)arg1;
 - (_Bool)isAvailable;
-- (id)icon;
+- (id)iconImage;
+- (id)iconSymbolName;
 - (id)name;
 - (void)retrieveContentCollectionWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;

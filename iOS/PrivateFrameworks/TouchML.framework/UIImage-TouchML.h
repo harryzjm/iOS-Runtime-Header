@@ -19,6 +19,8 @@
 - (id)cropImageToRect:(struct CGRect)arg1;
 - (id)resizableImage:(id)arg1:(long long)arg2;
 - (id)colorPattern;
+- (id)withConfiguration:(id)arg1;
+- (id)withTintColor:(id)arg1;
 - (id)withRenderingMode:(long long)arg1;
 @property(readonly, nonatomic) id CGImageRef;
 

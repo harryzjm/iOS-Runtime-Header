@@ -17,6 +17,7 @@
 
 + (id)progressSourceDetail;
 + (id)progressSource;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKAchievement *localAchievement; // @synthesize localAchievement=_localAchievement;
 @property(retain, nonatomic) GKAchievement *achievement; // @synthesize achievement=_achievement;
 @property(nonatomic) _Bool isDetail; // @synthesize isDetail=_isDetail;
@@ -27,7 +28,6 @@
 - (double)progressForAchievement:(id)arg1;
 - (void)invalidateIntrinsicContentSize;
 - (void)setupForAchievement:(id)arg1 localAchievement:(id)arg2;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

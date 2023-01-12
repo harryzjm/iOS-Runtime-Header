@@ -8,9 +8,9 @@
 
 @interface VKSceneConfiguration : NSObject
 {
-    shared_ptr_c37d6e02 _sceneManager;
-    shared_ptr_a3c46825 _styleManager;
-    struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate2D>> _pointsOfInterest;
+    shared_ptr_30bc05d4 _sceneClientStyleState;
+    shared_ptr_3e3c7f86 _styleManager;
+    struct vector<GEOLocationCoordinate2D, std::allocator<GEOLocationCoordinate2D>> _pointsOfInterest;
     unsigned char _navState;
     unsigned char _distanceToCurrentManeuver;
     double _distanceToDestination;
@@ -20,6 +20,8 @@
     unsigned char _currentIncidentType;
     unsigned char _currentManeuverComplexity;
     unsigned long long _currentGroupedManeuverCount;
+    unsigned char _distanceToCurrentTrafficSection;
+    unsigned char _currentTrafficState;
     unsigned int _lineType;
     int _rampType;
     int _nextManeuverRampType;
@@ -30,15 +32,33 @@
     unsigned long long _roadSpeedZeroes;
     unsigned char _cameraMode;
     unsigned char _navigationDestination;
-    struct ManeveuverDistancesRange _distanceRanges;
+    unsigned int _roadComplexity;
+    unsigned int _nextRoadComplexity;
+    unsigned char _currentTransitManeuver;
+    unsigned char _routeSinuosity;
+    unsigned int _laneCount;
+    struct DistancesRange _distanceRanges;
+    struct SinuosityLevels _sinuosityLevels;
+    struct unordered_map<gss::StyleAttribute, GEOPolylineCoordinateRange, std::hash<gss::StyleAttribute>, std::equal_to<gss::StyleAttribute>, std::allocator<std::pair<const gss::StyleAttribute, GEOPolylineCoordinateRange>>> _styleAttributeCoordinateRanges;
     shared_ptr_e963992e _taskContext;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)removeStyleAttributeKey:(unsigned int)arg1;
+- (void)applyStyleAttributeKeyValue:(unsigned int)arg1 withValue:(unsigned int)arg2 withCoordinateRange:(struct GEOPolylineCoordinateRange)arg3;
+- (void)updateCameraMode;
+- (void)setLaneCount:(unsigned int)arg1;
+- (void)setSinuosity:(double)arg1;
+- (void)setCurrentTransitManeuverType:(int)arg1;
+- (void)setTrafficColor:(unsigned long long)arg1;
+- (void)setDistanceToCurrentTrafficSection:(double)arg1;
+- (void)setNextRoadComplexity:(unsigned int)arg1;
+- (void)setCurrentRoadComplexity:(unsigned int)arg1;
 - (unsigned char)navigationState;
 - (unsigned long long)navigationDestination;
 - (void)setNavigationDestination:(unsigned long long)arg1;
+- (const void *)styleAttributeCoordinateRanges;
 - (unsigned char)navCameraModeStyleAttribute;
 - (unsigned long long)navCameraMode;
 - (void)setNavCameraMode:(unsigned long long)arg1;
@@ -58,13 +78,13 @@
 - (void)setDistanceToDestination:(double)arg1;
 - (void)setDistanceToCurrentManeuver:(double)arg1;
 - (void)setNavigationState:(int)arg1;
-- (shared_ptr_a3c46825)styleManager;
-- (void)setStyleManager:(shared_ptr_a3c46825)arg1;
-- (shared_ptr_c37d6e02)sceneManager;
+- (shared_ptr_3e3c7f86)styleManager;
+- (void)setStyleManager:(shared_ptr_3e3c7f86)arg1;
+- (shared_ptr_30bc05d4)sceneClientStyleState;
 - (void)_updateStyleManager;
-- (void)setSceneManager:(shared_ptr_c37d6e02)arg1;
+- (void)setSceneClientStyleState:(shared_ptr_30bc05d4)arg1;
 - (void)resetState;
-- (id)initWithTaskContext:(const shared_ptr_e963992e *)arg1;
+- (id)initWithTaskContext:(const void *)arg1;
 
 @end
 

@@ -4,17 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface HMCharacteristicWriteRequest
+#import <HomeKit/HMWriteOperation-Protocol.h>
+
+@class NSString;
+@protocol NSCopying><NSObject;
+
+@interface HMCharacteristicWriteRequest <HMWriteOperation>
 {
-    id _value;
+    id <NSCopying><NSObject> _value;
 }
 
 + (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id value; // @synthesize value=_value;
-- (unsigned long long)hash;
+@property(readonly, nonatomic) id <NSCopying><NSObject> value; // @synthesize value=_value;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1 value:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

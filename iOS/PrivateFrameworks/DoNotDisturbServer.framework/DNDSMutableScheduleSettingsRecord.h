@@ -12,6 +12,7 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(copy, nonatomic) NSNumber *bedtimeBehaviorEnabledSetting; // @dynamic bedtimeBehaviorEnabledSetting;
+@property(copy, nonatomic) NSNumber *timePeriodWeekdays; // @dynamic timePeriodWeekdays;
 @property(copy, nonatomic) NSNumber *timePeriodEndTimeMinute; // @dynamic timePeriodEndTimeMinute;
 @property(copy, nonatomic) NSNumber *timePeriodEndTimeHour; // @dynamic timePeriodEndTimeHour;
 @property(copy, nonatomic) NSNumber *timePeriodStartTimeMinute; // @dynamic timePeriodStartTimeMinute;

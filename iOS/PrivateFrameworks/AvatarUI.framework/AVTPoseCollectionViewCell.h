@@ -31,6 +31,7 @@
 - (void)prepareForReuse;
 - (void)cancelAnimations;
 - (void)setSelected:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)updateImage:(id)arg1 animated:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

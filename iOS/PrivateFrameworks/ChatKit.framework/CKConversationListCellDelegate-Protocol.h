@@ -9,6 +9,7 @@
 @class CKConversation, CKConversationListCell, UITableViewCell;
 
 @protocol CKConversationListCellDelegate <NSObject>
+- (double)widthForDeterminingAvatarVisibility;
 
 @optional
 - (void)selectedDeleteButtonForConversation:(CKConversation *)arg1 inCell:(UITableViewCell *)arg2;

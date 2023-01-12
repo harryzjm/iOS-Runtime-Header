@@ -27,41 +27,17 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)appleRatingCategoryType;
 + (id)ratingListForPlaceData:(id)arg1 type:(int)arg2;
 + (id)ratingForPlaceData:(id)arg1 type:(int)arg2;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)appleRatingCategoryAtIndex:(unsigned long long)arg1;
-- (unsigned long long)appleRatingCategorysCount;
-- (void)addAppleRatingCategory:(id)arg1;
-- (void)clearAppleRatingCategorys;
-@property(retain, nonatomic) NSMutableArray *appleRatingCategorys;
-@property(nonatomic) _Bool hasNumRatingsUsedForScore;
-@property(nonatomic) int numRatingsUsedForScore;
-@property(nonatomic) _Bool hasMaxScore;
-@property(nonatomic) double maxScore;
-@property(nonatomic) _Bool hasScore;
-@property(nonatomic) double score;
-- (int)StringAsRatingType:(id)arg1;
-- (id)ratingTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasRatingType;
-@property(nonatomic) int ratingType;
 - (id)displayTitle;
 
 @end

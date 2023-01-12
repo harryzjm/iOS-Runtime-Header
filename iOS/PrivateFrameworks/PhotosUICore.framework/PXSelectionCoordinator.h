@@ -36,6 +36,7 @@
 @property(nonatomic) _Bool selectionLimitReached; // @synthesize selectionLimitReached=_selectionLimitReached;
 @property(retain, nonatomic) NSNumber *selectionCountLimit; // @synthesize selectionCountLimit=_selectionCountLimit;
 - (_Bool)test_validateInternalState;
+- (_Bool)selectionManagerShouldAvoidEmptySelection:(id)arg1;
 - (id)selectionManager:(id)arg1 validateSnapshot:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_performChangesToCoordinatedSelectionManagersWithRemovedOIDs:(id)arg1 insertedOIDs:(id)arg2 originatingSelectionManager:(id)arg3;
@@ -43,6 +44,7 @@
 - (void)_handleSelectionChangeToSelectionManager:(id)arg1 state:(id)arg2;
 - (void)_handleDataSourceChangeToSelectionManager:(id)arg1 state:(id)arg2;
 - (void)_updateSelectionManagerToGlobalState:(id)arg1 managerState:(id)arg2;
+- (void)modifySelectionWithOrder:(id)arg1;
 - (_Bool)modifySelectionWithRemovedOIDs:(id)arg1 insertedOIDs:(id)arg2;
 - (void)checkInSelectionManager:(id)arg1;
 - (id)checkOutSelectionManagerForDataSourceManager:(id)arg1;

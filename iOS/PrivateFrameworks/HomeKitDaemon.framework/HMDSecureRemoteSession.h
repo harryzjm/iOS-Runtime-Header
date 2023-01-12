@@ -30,7 +30,6 @@
 
 + (id)logCategory;
 + (_Bool)isSecureRemoteSessionMessage:(id)arg1;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isReachable) _Bool reachable; // @synthesize reachable=_reachable;
 @property(nonatomic) long long state; // @synthesize state=_state;
@@ -59,9 +58,9 @@
 - (void)handleDeviceIsNotReachable:(id)arg1;
 - (void)handleDeviceIsReachable:(id)arg1;
 - (void)_handleStreamInvalidationMessage:(id)arg1;
-- (void)_handleSecureServerMessage:(id)arg1 transport:(id)arg2;
-- (void)_handleSecureClientMessage:(id)arg1 transport:(id)arg2;
-- (void)receivedSecureMessage:(id)arg1 fromTransport:(id)arg2;
+- (void)_handleSecureServerMessage:(id)arg1 fromDevice:(id)arg2 transport:(id)arg3;
+- (void)_handleSecureClientMessage:(id)arg1 fromDevice:(id)arg2 transport:(id)arg3;
+- (void)receivedSecureMessage:(id)arg1 fromDevice:(id)arg2 fromTransport:(id)arg3;
 - (id)_dequeMessage;
 - (void)_queueMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

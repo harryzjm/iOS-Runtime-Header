@@ -13,6 +13,7 @@
 
 @interface IXAppInstallCoordinatorSeed : NSObject <NSSecureCoding, NSCopying>
 {
+    unsigned int _creatorEUID;
     NSString *_bundleID;
     NSUUID *_uniqueIdentifier;
     unsigned long long _creator;
@@ -22,6 +23,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long intent; // @synthesize intent=_intent;
+@property(nonatomic) unsigned int creatorEUID; // @synthesize creatorEUID=_creatorEUID;
 @property(nonatomic) unsigned long long creator; // @synthesize creator=_creator;
 @property(retain, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;

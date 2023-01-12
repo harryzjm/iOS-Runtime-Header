@@ -10,6 +10,7 @@
 
 @interface CLPNRCellNeighbor : PBCodable <NSCopying>
 {
+    unsigned int _bandwidth;
     int _ecn0;
     int _nrarfcn;
     int _pid;
@@ -18,6 +19,7 @@
     unsigned int _saOrNsaNeighbor;
     unsigned int _scs;
     struct {
+        unsigned int bandwidth:1;
         unsigned int ecn0:1;
         unsigned int nrarfcn:1;
         unsigned int pid:1;
@@ -28,6 +30,7 @@
     } _has;
 }
 
+@property(nonatomic) unsigned int bandwidth; // @synthesize bandwidth=_bandwidth;
 @property(nonatomic) unsigned int saOrNsaNeighbor; // @synthesize saOrNsaNeighbor=_saOrNsaNeighbor;
 @property(nonatomic) unsigned int scs; // @synthesize scs=_scs;
 @property(nonatomic) int rscp; // @synthesize rscp=_rscp;
@@ -44,6 +47,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasBandwidth;
 @property(nonatomic) _Bool hasSaOrNsaNeighbor;
 @property(nonatomic) _Bool hasScs;
 @property(nonatomic) _Bool hasRscp;

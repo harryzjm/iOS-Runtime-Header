@@ -30,11 +30,23 @@ struct CLLocationCoordinate2D {
     double _field2;
 };
 
+struct IMFileSize {
+    unsigned long long file_size;
+    unsigned long long disk_allocation_size;
+};
+
+struct IMMessagePartRanges {
+    struct _NSRange prefixRange;
+    struct _NSRange partNumberRange;
+    struct _NSRange messageGUIDRange;
+};
+
 struct IMPreviewConstraints {
     double _field1;
     struct CGSize _field2;
     double _field3;
     _Bool _field4;
+    _Bool _field5;
 };
 
 struct IMRequirementFailed_t {

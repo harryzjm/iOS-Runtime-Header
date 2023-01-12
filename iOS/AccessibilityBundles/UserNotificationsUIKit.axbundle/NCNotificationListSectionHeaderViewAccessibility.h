@@ -11,8 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_configureCollapseButtonIfNecessary;
 - (void)_configureClearButtonIfNecessary;
 - (long long)_accessibilitySortPriority;
+- (id)axTitle;
+- (id)axDigestCollapseButton;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

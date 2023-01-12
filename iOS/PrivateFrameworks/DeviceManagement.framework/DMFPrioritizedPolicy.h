@@ -12,7 +12,7 @@
     long long _policy;
 }
 
-+ (id)prioritizedPoliciesForAppPolicy:(id)arg1 bundleIdentifiers:(id)arg2 categoryPolicy:(id)arg3 categoryIdentifiers:(id)arg4 webPolicy:(id)arg5 webDomains:(id)arg6;
++ (id)prioritizedPoliciesForAppPolicy:(id)arg1 appCategoryPolicy:(id)arg2 bundleIdentifiers:(id)arg3 categoryPolicy:(id)arg4 categoryIdentifiers:(id)arg5 webPolicy:(id)arg6 webCategoryPolicy:(id)arg7 webDomains:(id)arg8;
 + (long long)arbitratePolicyForPrioritizedPolicies:(id)arg1;
 @property(nonatomic) long long policy; // @synthesize policy=_policy;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
@@ -20,7 +20,7 @@
 - (_Bool)isEqualToPrioritizedPolicy:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithEffectivePolicy:(id)arg1 identifier:(id)arg2;
+- (id)initWithEffectivePolicy:(id)arg1 identifier:(id)arg2 excludableIdentifiers:(id)arg3;
 
 @end
 

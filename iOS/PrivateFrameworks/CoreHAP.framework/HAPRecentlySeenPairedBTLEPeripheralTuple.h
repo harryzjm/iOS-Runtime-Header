@@ -15,6 +15,7 @@
     double _lastSeen;
     CBPeripheral *_peripheral;
     NSNumber *_statusFlags;
+    NSString *_name;
     NSNumber *_stateNumber;
     NSNumber *_configNumber;
     NSNumber *_categoryIdentifier;
@@ -40,13 +41,14 @@
 @property(retain, nonatomic) NSNumber *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property(retain, nonatomic) NSNumber *configNumber; // @synthesize configNumber=_configNumber;
 @property(retain, nonatomic) NSNumber *stateNumber; // @synthesize stateNumber=_stateNumber;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSNumber *statusFlags; // @synthesize statusFlags=_statusFlags;
 @property(retain, nonatomic) CBPeripheral *peripheral; // @synthesize peripheral=_peripheral;
 @property(readonly, nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
 - (id)description;
 - (void)updatePairedPeripheralConfiguration:(_Bool)arg1 connectionPriority:(unsigned long long)arg2;
 - (void)updateWithPeripheral:(id)arg1;
-- (id)initRecentlySeenPairedBTLEPeripheral:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 identifier:(id)arg6 advertisementFormat:(unsigned long long)arg7 setupHash:(id)arg8;
+- (id)initRecentlySeenPairedBTLEPeripheral:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 name:(id)arg6 identifier:(id)arg7 advertisementFormat:(unsigned long long)arg8 setupHash:(id)arg9;
 
 @end
 

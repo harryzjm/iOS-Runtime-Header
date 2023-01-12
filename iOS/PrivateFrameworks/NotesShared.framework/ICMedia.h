@@ -21,13 +21,11 @@
 + (id)containerDirectoryURLForMediaWithIdentifier:(id)arg1 account:(id)arg2;
 + (id)mediaDirectoryURL;
 + (void)purgeMediaFilesForIdentifiers:(id)arg1 account:(id)arg2;
-+ (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
-+ (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)allMediaInContext:(id)arg1;
++ (void)enumerateMediaInContext:(id)arg1 batchSize:(unsigned long long)arg2 saveAfterBatch:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
 + (id)mediaIdentifiersForAccount:(id)arg1;
 + (id)mediaWithIdentifier:(id)arg1 context:(id)arg2;
 + (void)purgeAllMediaFiles;
-+ (void)purgeAllMediaInContext:(id)arg1;
 + (void)purgeMedia:(id)arg1;
 + (void)undeleteMedia:(id)arg1;
 + (void)deleteMedia:(id)arg1;
@@ -37,6 +35,8 @@
 + (id)newMediaWithAttachment:(id)arg1 context:(id)arg2;
 + (id)newMediaWithIdentifier:(id)arg1 attachment:(id)arg2;
 + (id)newMediaWithIdentifier:(id)arg1 account:(id)arg2;
++ (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) __weak ICAccount *placeholderAccount; // @synthesize placeholderAccount;
 - (id)parentCloudObjectForMinimumSupportedVersionPropagation;
@@ -85,10 +85,10 @@
 - (_Bool)hasAllMandatoryFields;
 - (void)fixBrokenReferences;
 - (void)objectWasPushedToCloudWithOperation:(id)arg1 serverRecord:(id)arg2;
-- (_Bool)needsToBePushedToCloud;
+@property(readonly, nonatomic) _Bool needsToBePushedToCloud;
 - (id)newlyCreatedRecordWithObfuscator:(id)arg1;
 - (id)newlyCreatedRecord;
-- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
 - (id)recordType;
 - (id)recordZoneName;
 
@@ -98,6 +98,8 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool needsToBeDeletedFromCloud;
+@property(readonly, nonatomic) _Bool needsToBeFetchedFromCloud;
 @property(readonly) Class superclass;
 
 @end

@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *entityManager;
     MISSING_TYPE *userProjectName;
-    MISSING_TYPE *swiftProjectName;
+    MISSING_TYPE *mangledProjectName;
     MISSING_TYPE *isGeneratingForTesting;
 }
 

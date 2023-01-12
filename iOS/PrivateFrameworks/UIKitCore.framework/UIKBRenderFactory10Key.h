@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldShowTopRowEdge;
 - (_Bool)shouldShowBottomRowEdge;
 - (double)keyCornerRadius;
+- (struct CGPoint)symbolImageControlKeyOffset;
 - (struct CGPoint)numberPadVBarSecondaryTextOffset;
 - (struct CGPoint)numberPadKeySecondaryTextOffset;
 - (struct CGPoint)numberPadKeyPrimaryTextOffset;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)longVowelSignKeyTextOffset;
 - (struct CGPoint)dictationKeyTextOffset;
 - (struct CGPoint)globeKeyTextOffset;
+- (double)symbolImageControlKeyFontSize;
 - (double)capitalAbcSymbolSize;
 - (struct CGPoint)abcKeyTextOffset;
 - (unsigned long long)edgesAdjustedForTranslucentGapsForGeometry:(id)arg1 key:(id)arg2 onKeyplane:(id)arg3;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)controlKeyBackgroundColorName;
 - (id)defaultKeyDividerColorName;
 - (long long)lightHighQualityEnabledBlendForm;
+- (long long)assetIdiom;
 
 @end
 

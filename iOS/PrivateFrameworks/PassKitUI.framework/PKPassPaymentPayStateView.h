@@ -21,6 +21,7 @@
     _Bool _recognizingHint;
     _Bool _persistentEmulationHint;
     _Bool _accessPass;
+    _Bool _homeKeyPass;
     long long _state;
     long long _layoutState;
     PKGlyphView *_glyph;
@@ -34,6 +35,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool homeKeyPass; // @synthesize homeKeyPass=_homeKeyPass;
 @property(nonatomic) _Bool accessPass; // @synthesize accessPass=_accessPass;
 @property(nonatomic) _Bool persistentEmulationHint; // @synthesize persistentEmulationHint=_persistentEmulationHint;
 @property(nonatomic) long long userIntentStyle; // @synthesize userIntentStyle=_userIntentStyle;

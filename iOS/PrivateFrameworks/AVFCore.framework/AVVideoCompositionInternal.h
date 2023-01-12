@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSArray *instructions;
     _Bool auxiliaryTrackLayerSetLast;
     AVVideoCompositionCoreAnimationTool *animationTool;
+    NSArray *sourceSampleDataTracks;
 }
 
 @end

@@ -13,10 +13,10 @@
     WebFramePrivate *_private;
 }
 
-+ (void)_createMainFrameWithSimpleHTMLDocumentWithPage:(struct Page *)arg1 frameView:(id)arg2 style:(id)arg3;
-+ (Ref_840bf4f8)_createSubframeWithOwnerElement:(struct HTMLFrameOwnerElement *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
-+ (void)_createMainFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
-+ (Ref_840bf4f8)_createFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3 ownerElement:(struct HTMLFrameOwnerElement *)arg4;
++ (void)_createMainFrameWithSimpleHTMLDocumentWithPage:(void *)arg1 frameView:(id)arg2 style:(id)arg3;
++ (Ref_50ba636d)_createSubframeWithOwnerElement:(void *)arg1 frameName:(const void *)arg2 frameView:(id)arg3;
++ (void)_createMainFrameWithPage:(void *)arg1 frameName:(const void *)arg2 frameView:(id)arg3;
++ (Ref_50ba636d)_createFrameWithPage:(void *)arg1 frameName:(const void *)arg2 frameView:(id)arg3 ownerElement:(void *)arg4;
 + (id)stringWithData:(id)arg1 textEncodingName:(id)arg2;
 @property(readonly, nonatomic) JSContext *javaScriptContext;
 @property(readonly, nonatomic) struct OpaqueJSContext *globalContext;
@@ -58,15 +58,15 @@
 - (id)_markDOMRange;
 - (struct _NSRange)_convertDOMRangeToNSRange:(id)arg1;
 - (id)_convertNSRangeToDOMRange:(struct _NSRange)arg1;
-- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
-- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1;
-- (struct _NSRange)_convertToNSRange:(const struct SimpleRange *)arg1;
+- (optional_8a7f6590)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
+- (optional_8a7f6590)_convertToDOMRange:(struct _NSRange)arg1;
+- (struct _NSRange)_convertToNSRange:(const void *)arg1;
 - (unsigned char)_selectionGranularity;
 - (_Bool)_needsLayout;
 - (void)_scrollDOMRangeToVisible:(id)arg1 withInset:(double)arg2;
 - (void)_scrollDOMRangeToVisible:(id)arg1;
 - (struct CGRect)_firstRectForDOMRange:(id)arg1;
-- (struct CGRect)_caretRectAtPosition:(const struct Position *)arg1 affinity:(unsigned long long)arg2;
+- (struct CGRect)_caretRectAtPosition:(const void *)arg1 affinity:(unsigned long long)arg2;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1 forceUserGesture:(_Bool)arg2;
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1;
 - (_Bool)_getVisibleRect:(struct CGRect *)arg1;
@@ -253,7 +253,7 @@
 - (id)wordAtPoint:(struct CGPoint)arg1;
 - (id)selectionRects;
 - (id)selectionRectsForRange:(id)arg1;
-- (id)selectionRectsForCoreRange:(const struct SimpleRange *)arg1;
+- (id)selectionRectsForCoreRange:(const void *)arg1;
 - (void)extendSelection:(_Bool)arg1;
 - (void)collapseSelection;
 - (struct CGRect)closestCaretRectInMarkedTextRangeForPoint:(struct CGPoint)arg1;
@@ -263,7 +263,7 @@
 - (void)clearSelection;
 - (struct VisiblePosition)closestWordBoundary:(struct VisiblePosition)arg1;
 - (struct VisiblePosition)visiblePositionForPoint:(struct CGPoint)arg1;
-- (struct Frame *)coreFrame;
+- (void *)coreFrame;
 
 @end
 

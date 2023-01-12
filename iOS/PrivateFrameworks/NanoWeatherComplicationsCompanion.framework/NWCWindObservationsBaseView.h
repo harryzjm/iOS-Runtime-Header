@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)configureWithImageProvider:(id)arg1 reason:(long long)arg2;
 - (id)initFullColorImageViewWithDevice:(id)arg1;
 - (void)_processWindSpeed:(id)arg1 unit:(id)arg2 directionAbbreviation:(id)arg3;
-- (void)_applyConstraintsWithLayoutConstants:(CDStruct_8727d297)arg1;
+- (void)_applyConstraintsWithLayoutConstants:(CDStruct_d83abbfb)arg1;
 - (long long)supportedComplicationFamily;
 
 // Remaining properties

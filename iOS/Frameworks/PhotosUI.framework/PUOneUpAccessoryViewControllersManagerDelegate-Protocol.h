@@ -11,7 +11,9 @@
 @protocol PUOneUpAccessoryViewControllersManagerDelegate <NSObject>
 
 @optional
+- (void)oneUpAccessoryViewControllersManagerInvalidateAccessoryLayout:(PUOneUpAccessoryViewControllersManager *)arg1;
 - (_Bool)oneUpAccessoryViewControllersManagerRequestAccessoryDismissal:(PUOneUpAccessoryViewControllersManager *)arg1;
+- (_Bool)oneUpAccessoryViewControllersManager:(PUOneUpAccessoryViewControllersManager *)arg1 preventInternalFileRadarActionForAssetReference:(PUAssetReference *)arg2;
 - (_Bool)oneUpAccessoryViewControllersManager:(PUOneUpAccessoryViewControllersManager *)arg1 preventRevealInMomentActionForAssetReference:(PUAssetReference *)arg2;
 @end
 

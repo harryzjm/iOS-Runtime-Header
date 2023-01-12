@@ -15,8 +15,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct _NSRange rangeInSelectedParagraph; // @synthesize rangeInSelectedParagraph=_rangeInSelectedParagraph;
 @property(readonly, nonatomic) NSDictionary *selectedParagraphIndexesForSlideNodes; // @synthesize selectedParagraphIndexesForSlideNodes=_selectedParagraphIndexesForSlideNodes;
-- (void)saveToArchive:(struct SlideCollectionSelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct SlideCollectionSelectionArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (id)estimatedTextSelection;
 - (struct _NSRange)absoluteRangeInStorage:(id)arg1;
 - (unsigned long long)hash;

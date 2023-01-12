@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSXPCListener.h>
-
-#import <coreroutine/NSXPCListenerDelegate-Protocol.h>
 #import <coreroutine/RTEventAgentDaemonProtocol-Protocol.h>
 
-@class NSObject, NSString, NSXPCConnection, RTPlatform;
-@protocol OS_dispatch_queue;
+@class NSString, NSXPCConnection, RTPlatform;
 
-@interface RTEventAgentManager : NSXPCListener <NSXPCListenerDelegate, RTEventAgentDaemonProtocol>
+@interface RTEventAgentManager <RTEventAgentDaemonProtocol>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_pluginConnection;
     RTPlatform *_platform;
 }
@@ -22,7 +17,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property(retain, nonatomic) NSXPCConnection *pluginConnection; // @synthesize pluginConnection=_pluginConnection;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)checkin;
 - (void)launchDaemonWithRestorationIdentifier:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_launchDaemonWithRestorationIdentifier:(id)arg1 withReply:(CDUnknownBlockType)arg2;

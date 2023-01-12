@@ -72,6 +72,7 @@
 - (id)_accountInfo:(id *)arg1;
 - (void)clearAccountInfoCache;
 - (void)accountInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchAllEscrowRecordsWithOptionForceFetch:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchEscrowRecordsWithOptionForceFetch:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)synchronizeKeyValueStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2 delegate:(id)arg3;

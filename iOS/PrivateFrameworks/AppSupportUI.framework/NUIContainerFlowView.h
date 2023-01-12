@@ -22,7 +22,7 @@
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
 - (_Bool)setNeedsInvalidation:(long long)arg1;
-- (void)populateFlowArrangementCells:(vector_702fc599 *)arg1;
+- (void)populateFlowArrangementCells:(void *)arg1;
 - (id)calculateViewForLastBaselineLayout;
 - (id)calculateViewForFirstBaselineLayout;
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;

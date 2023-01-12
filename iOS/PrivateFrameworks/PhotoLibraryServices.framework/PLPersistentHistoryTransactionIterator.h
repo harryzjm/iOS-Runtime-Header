@@ -13,23 +13,21 @@
     NSArray *_transactions;
     unsigned long long _transactionIndex;
     NSPersistentHistoryToken *_lastIteratedToken;
-    NSPersistentHistoryToken *_initialToken;
     unsigned long long _count;
     NSManagedObjectContext *_context;
 }
 
-+ (id)iteratorSinceToken:(id)arg1 withBatchSize:(unsigned long long)arg2 managedObjectObjectContext:(id)arg3 error:(id *)arg4;
++ (id)iteratorSinceMarker:(id)arg1 withFetchRequest:(id)arg2 managedObjectObjectContext:(id)arg3 error:(id *)arg4;
 + (id)iteratorSinceToken:(id)arg1 withManagedObjectObjectContext:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSPersistentHistoryToken *lastIteratedToken; // @synthesize lastIteratedToken=_lastIteratedToken;
 @property(readonly, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
-@property(readonly, copy, nonatomic) NSPersistentHistoryToken *initialToken; // @synthesize initialToken=_initialToken;
 - (id)_safeTransactionAtIndex:(unsigned long long)arg1;
 - (_Bool)_enumerateOneTransactionWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRemainingTransactionsWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)_hasMoreTransactions;
-- (id)initWithInitialToken:(id)arg1 transactions:(id)arg2 managedObjectObjectContext:(id)arg3;
+- (id)initWithTransactions:(id)arg1 managedObjectObjectContext:(id)arg2;
 
 @end
 

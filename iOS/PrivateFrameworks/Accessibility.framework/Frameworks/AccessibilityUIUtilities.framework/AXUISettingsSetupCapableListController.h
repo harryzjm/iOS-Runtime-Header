@@ -13,6 +13,7 @@
 
 @property(nonatomic) _Bool inSetup; // @synthesize inSetup=_inSetup;
 - (void)viewDidLayoutSubviews;
+- (void)setupLongTitleSpecifiers:(id)arg1;
 - (void)setAllSpecifiersUnsearchable:(id)arg1;
 - (void)filterBuddy:(id)arg1;
 - (void)viewDidLoad;

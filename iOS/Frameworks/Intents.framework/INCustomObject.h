@@ -22,6 +22,7 @@
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 @property(readonly, nonatomic) INCodableDescription *codableDescription;
+- (id)initWithIntent:(id)arg1 parameterName:(id)arg2 reference:(id)arg3;
 - (id)initWithObject:(id)arg1 codableDescription:(id)arg2;
 - (id)_initWithCodableDescription:(id)arg1;
 

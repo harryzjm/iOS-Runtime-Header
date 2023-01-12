@@ -7,7 +7,7 @@
 #import <Foundation/NSIndexSet.h>
 
 @interface NSIndexSet (TSPArchivingUtility)
-- (id)tsp_initWithMessage:(const struct IndexSet *)arg1;
-- (void)tsp_saveToMessage:(struct IndexSet *)arg1;
+- (id)tsp_initWithMessage:(const void *)arg1;
+- (void)tsp_saveToMessage:(void *)arg1;
 @end
 

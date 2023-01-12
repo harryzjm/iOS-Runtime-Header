@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
-@protocol WFShazamMediaActionUserInterface <WFRemoteUserInterface>
+@protocol WFShazamMediaActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithCompletionHandler:(void (^)(NSError *))arg1;
 @end
 

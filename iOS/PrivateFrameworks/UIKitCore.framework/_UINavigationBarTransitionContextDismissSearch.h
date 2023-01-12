@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)complete;
 - (void)animate;
 - (void)prepare;
+- (_Bool)_shouldCrossfadeDismissal;
 - (int)transition;
 
 @end

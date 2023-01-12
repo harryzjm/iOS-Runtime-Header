@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     _Bool _isNetworkReachable;
     _Bool _isInvalidated;
     id <NSObject> _accountTokenDidChangeNotificationObserver;
+    NSString *_personaID;
 }
 
 - (void).cxx_destruct;

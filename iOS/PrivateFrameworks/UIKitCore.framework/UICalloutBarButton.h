@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITextReplacement;
+@class NSDate, UITextReplacement, _UISlotView;
 
 __attribute__((visibility("hidden")))
 @interface UICalloutBarButton
@@ -20,15 +20,17 @@ __attribute__((visibility("hidden")))
     double m_imageVerticalAdjust;
     long long m_page;
     _Bool m_isText;
-    _Bool m_configured;
     _Bool m_single;
     _Bool m_padLeft;
     _Bool m_padRight;
     _Bool m_dontDismiss;
+    NSDate *m_appearanceDate;
+    _UISlotView *m_securePasteButtonSlotView;
     _Bool forceFlash;
 }
 
-+ (_Bool)_cursorInteractionEnabled;
++ (id)symbolConfigurationForScale:(double)arg1;
++ (id)buttonWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 type:(int)arg4 inView:(id)arg5;
 + (id)buttonWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4;
 + (id)buttonWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4;
 + (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5 inView:(id)arg6;
@@ -44,26 +46,29 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double contentScale; // @synthesize contentScale=m_contentScale;
 @property(readonly, nonatomic) double contentWidth; // @synthesize contentWidth=m_contentWidth;
 @property(readonly, nonatomic) SEL action; // @synthesize action=m_action;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2 withAnimator:(id)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2 withAnimator:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (void)flash;
+- (void)pointerInteraction:(id)arg1 willExitRegion:(id)arg2 animator:(id)arg3;
+- (void)pointerInteraction:(id)arg1 willEnterRegion:(id)arg2 animator:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (void)touchDown;
+- (void)flash:(id)arg1 forEvent:(id)arg2;
 - (void)cancelFlash;
-- (void)fadeAndSendAction;
+- (void)fadeAndSendActionWithAuthenticationMessage:(id)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setContentScale:(double)arg1;
+@property(readonly, nonatomic) _Bool isSecurePasteButton;
+- (void)configureForVerticalPosition:(int)arg1;
 - (void)configureForRightPosition:(int)arg1;
 - (void)configureForMiddlePosition;
 - (void)configureForLeftPosition:(int)arg1;
 - (void)configureForSingle:(int)arg1;
+- (void)configureSecurePasteButtonWithWidth:(double)arg1 height:(double)arg2;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
-- (struct CGRect)adjustRectForPosition:(struct CGRect)arg1 scaleRect:(_Bool)arg2;
+- (struct CGRect)adjustRectForPosition:(struct CGRect)arg1;
 - (void)removeFromSuperview;
-- (void)layoutSubviews;
-- (void)configureLabel;
 - (void)dealloc;
+- (void)setupWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 type:(int)arg4;
 - (void)setupWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3;
 - (void)setupWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3;
 - (void)setupWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5;

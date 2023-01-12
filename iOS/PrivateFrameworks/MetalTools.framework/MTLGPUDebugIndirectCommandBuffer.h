@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol MTLBuffer, MTLIndirectCommandBuffer;
+@protocol MTLBuffer;
 
 @interface MTLGPUDebugIndirectCommandBuffer
 {
     _Bool _hasRender;
+    _Bool _hasCompute;
     _Bool _inheritsBuffers;
     _Bool _inheritsPipelineState;
     id <MTLBuffer> _argumentStorage;
-    id <MTLBuffer> _drawIDBuffer;
+    id <MTLBuffer> _drawOrDispatchIDBuffer;
     unsigned short _maxCommands;
     unsigned char _maxVertexBindings;
     unsigned char _maxFragmentBindings;
+    unsigned char _maxKernelBindings;
+    unsigned char _maxThreadgroupBindings;
     unsigned short _commandByteStride;
     unsigned long long _originalResourceOptions;
-    id <MTLIndirectCommandBuffer> _fencingICB;
 }
 
 - (void)dealloc;
-- (id)fencingICB;
 - (unsigned long long)resourceOptions;
 - (unsigned long long)hazardTrackingMode;
 - (unsigned long long)cpuCacheMode;
@@ -31,14 +32,18 @@
 - (id)indirectRenderCommandAtIndex:(unsigned long long)arg1;
 - (void)onExecuteWithComputeEncoder:(id)arg1;
 - (void)onExecuteWithRenderEncoder:(id)arg1;
+- (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2 commandIndex:(unsigned long long)arg3;
+- (void)setComputePipelineStateBuffers:(id)arg1 commandIndex:(unsigned long long)arg2;
 - (void)setRenderPipelineStateBuffers:(id)arg1 commandIndex:(unsigned long long)arg2;
 - (void)setTessellationControlPointIndexBuffer:(id)arg1 offset:(unsigned long long)arg2 commandIndex:(unsigned long long)arg3;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3 forStage:(unsigned long long)arg4 commandIndex:(unsigned long long)arg5;
-@property(readonly, nonatomic) id <MTLBuffer> internalDrawIDBuffer;
+- (void)resetAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) id <MTLBuffer> internalDrawOrDispatchIDBuffer;
 @property(readonly, nonatomic) id <MTLBuffer> internalICBBuffer;
 @property(readonly, nonatomic) _Bool inheritsPipelineState;
 @property(readonly, nonatomic) _Bool inheritsBuffers;
 @property(readonly, nonatomic) unsigned long long commandByteStride;
+@property(readonly, nonatomic) unsigned long long maxKernelBindings;
 @property(readonly, nonatomic) unsigned long long maxFragmentBindings;
 @property(readonly, nonatomic) unsigned long long maxVertexBindings;
 @property(readonly, nonatomic) unsigned long long maxCommands;

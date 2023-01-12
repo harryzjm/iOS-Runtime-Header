@@ -17,8 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType prefetchBlock; // @synthesize prefetchBlock=_prefetchBlock;
-- (void)triggerPrefetchWithCompletion:(CDUnknownBlockType)arg1;
+- (void)triggerPrefetchForReason:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)schedulePrefetchBlock:(CDUnknownBlockType)arg1;
 
 // Remaining properties

@@ -8,17 +8,19 @@
 
 #import <coreroutine/RTVisitPipelineModule-Protocol.h>
 
-@class NSMutableArray, NSString, RTDefaultsManager, RTDelayedLocationRequester, RTDistanceCalculator, RTHint, RTHintManager, RTLocation, RTVisitHyperParameter, RTVisitSCIStayCluster;
+@class NSArray, NSDate, NSMutableArray, NSString, RTDefaultsManager, RTDelayedLocationRequester, RTDistanceCalculator, RTHint, RTHintManager, RTLocation, RTVisitHyperParameter, RTVisitSCIStayCluster;
 @protocol OS_dispatch_queue;
 
 @interface RTVisitPipelineModuleSCI : NSObject <RTVisitPipelineModule>
 {
     _Bool _useLowConfidence;
-    _Bool _checkedForHintNearEntryLocation;
-    _Bool _hintNearEntryLocation;
     NSMutableArray *_clusters;
     RTLocation *_lastPointProcessed;
     RTDistanceCalculator *_distanceCalculator;
+    NSArray *_hintCache;
+    RTLocation *_hintCacheUpdateLocation;
+    double _requiredDwellTimeCache;
+    NSDate *_requiredDwellTimeCacheDateToUpdate;
     _Bool _latestGeofenceHintChecked;
     RTVisitSCIStayCluster *_workingHypothesis;
     unsigned long long _fsmState;
@@ -31,6 +33,7 @@
     RTHint *_latestGeofenceHint;
 }
 
++ (_Bool)filterHint:(id)arg1 sourceFilter:(id)arg2 inverseFilter:(_Bool)arg3;
 + (id)FSMEventToString:(unsigned long long)arg1;
 + (id)LCFSMStateToString:(unsigned long long)arg1;
 + (id)FSMStateToString:(unsigned long long)arg1;
@@ -46,8 +49,11 @@
 @property(readonly, nonatomic) unsigned long long fsmState; // @synthesize fsmState=_fsmState;
 @property(readonly, nonatomic) RTVisitSCIStayCluster *workingHypothesis; // @synthesize workingHypothesis=_workingHypothesis;
 - (id)process:(id)arg1;
-- (void)logIfLastPointProcessedCouldHaveCalledFastEntryForLocation:(id)arg1 hint:(id)arg2;
-- (_Bool)isLastGeofenceHintNearLocation:(id)arg1 OfSource:(long long)arg2;
+- (_Bool)isLastGeofenceHintNearLocation:(id)arg1 hintSource:(long long)arg2;
+- (_Bool)isValidLatestGeofenceHintSource:(long long)arg1 date:(id)arg2;
+- (id)relevantDateForHintSource:(long long)arg1 date:(id)arg2;
+- (void)refreshLatestGeofenceHintCache;
+- (id)getLastHintUsingSourceFilter:(id)arg1;
 - (_Bool)isDwellTimeSatisfiedForLocation:(id)arg1;
 - (void)_onHintNotification:(id)arg1;
 - (void)onHintNotification:(id)arg1;
@@ -58,12 +64,20 @@
 - (id)handleFSM:(unsigned long long)arg1 point:(id)arg2;
 - (_Bool)isVisitInFlight;
 - (_Bool)isInWorkingHypothesis;
-- (_Bool)isNearLocationOfInterestHint:(id)arg1;
-- (void)setHintNearEntryLocation:(id)arg1;
-- (_Bool)isHintNearEntryLocation:(id)arg1;
+- (_Bool)isHintNearLocation:(id)arg1;
+- (id)getHintWithinDistance:(double)arg1 ofLocation:(id)arg2 sourceFilter:(id)arg3 inverseFilter:(_Bool)arg4;
+- (id)getHintConsistentWithLocation:(id)arg1 sourceFilter:(id)arg2 inverseFilter:(_Bool)arg3;
+- (_Bool)isHintConsistentWithLocation:(id)arg1 hint:(id)arg2;
+- (id)hintsNearLocation:(id)arg1;
+- (void)populateHintCacheNearLocation:(id)arg1 withinDistance:(double)arg2;
+- (id)retrieveNonLOIHintsNearLocation:(id)arg1 withinDistance:(double)arg2;
+- (id)filterHints:(id)arg1 existingHints:(id)arg2;
+- (_Bool)isHint:(id)arg1 withinDistance:(double)arg2 location:(id)arg3;
+- (id)getHintsNearLocation:(id)arg1 withinDistance:(double)arg2 sourceFilter:(id)arg3 fromDate:(id)arg4 limit:(unsigned long long)arg5;
 - (void)addVisitFromWorkingHypothesis:(long long)arg1 confidence:(double)arg2;
 - (void)addToClusters:(id)arg1;
 - (void)exitUntilNotInWorkingHypotheisWithBlock:(CDUnknownBlockType)arg1;
+- (void)processContextOnGeofenceEntry;
 - (void)exitFromWorkingHypothesis;
 - (void)resetWorkingHypothesis;
 - (void)shutdown;
@@ -71,6 +85,7 @@
 - (id)init;
 - (double)minStaticIntervalForSLVArrivalWithHint;
 - (double)minStaticIntervalForSLVArrival;
+- (id)stateMachineConfidenceString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

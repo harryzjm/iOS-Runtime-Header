@@ -11,7 +11,7 @@
 #import <PassKitUI/QLPreviewControllerDelegate-Protocol.h>
 #import <PassKitUI/QLPreviewItemDataProvider-Protocol.h>
 
-@class NSData, NSDateFormatter, NSString, PKDashboardButtonCollectionViewCell, PKDashboardCurrencyAmountCell, PKPaymentTransactionCollectionViewCell, QLItem, QLPreviewController, UIImage;
+@class NSData, NSDateFormatter, NSString, PKDashboardButtonCollectionViewCell, PKDashboardCurrencyAmountCell, PKDashboardTitleMessageCell, PKPaymentTransactionCollectionViewCell, QLItem, QLPreviewController, UIImage;
 
 @interface PKDashboardBalanceSummaryItemPresenter : NSObject <QLPreviewItemDataProvider, QLPreviewControllerDelegate, QLPreviewControllerDataSource, PKDashboardItemPresenter>
 {
@@ -20,6 +20,7 @@
     PKDashboardCurrencyAmountCell *_sampleCurrencyCell;
     PKDashboardButtonCollectionViewCell *_downloadPDFCell;
     PKDashboardButtonCollectionViewCell *_exportStatementDataCell;
+    PKDashboardTitleMessageCell *_sampleTitleMessageCell;
     NSDateFormatter *_formatterMonthYear;
     NSDateFormatter *_formatterMonthAndDay;
     NSDateFormatter *_formatterMonthDayYear;
@@ -40,7 +41,6 @@
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (id)provideDataForItem:(id)arg1;
 - (_Bool)_statementIsFromMonthPriorToSummaryForItem:(id)arg1;
-- (_Bool)_shouldInset;
 - (id)_statementCellTitleForItem:(id)arg1;
 - (id)statementIcon;
 - (void)_downloadAndPresentStatementForItem:(id)arg1 inCollectionView:(id)arg2;
@@ -51,6 +51,10 @@
 - (void)_configureExportStatementDataCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureDailyCashCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureTotalBalanceCell:(id)arg1 forItem:(id)arg2;
+- (void)_configureMergeNoticeCell:(id)arg1 forItem:(id)arg2;
+- (void)_configureMergeBalanceCell:(id)arg1 forItem:(id)arg2;
+- (void)_configureMonthlySpendLimitCell:(id)arg1 forItem:(id)arg2;
+- (void)_configureTransactionLimitCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureInstallmentBalanceCell:(id)arg1 forItem:(id)arg2;
 - (void)_configurePaymentsAndCreditsCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureInterestCell:(id)arg1 forItem:(id)arg2;

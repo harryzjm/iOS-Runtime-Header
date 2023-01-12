@@ -42,6 +42,7 @@
 + (_Bool)imageContainsAlphaForOtherImages:(struct CGImage *)arg1;
 + (_Bool)makeAdditionFromStagingURL:(id)arg1 metadata:(id)arg2 inStorage:(id)arg3 error:(id *)arg4;
 + (_Bool)hasThumbnailOnImmutableDocumentAtURL:(id)arg1;
++ (void)adjustFileProtectionForThumbnail:(id)arg1 fromOriginalDocument:(id)arg2;
 + (_Bool)associateThumbnailImagesDictionary:(id)arg1 serializedQuickLookMetadata:(id)arg2 withImmutableDocument:(_Bool)arg3 atURL:(id)arg4 error:(id *)arg5;
 + (id)imageNameFor1024ThumbnailData:(id)arg1 metadataDictionary:(id)arg2;
 + (id)imageNameFor1024ThumbnailAtURL:(id)arg1 metadataDictionary:(id)arg2;

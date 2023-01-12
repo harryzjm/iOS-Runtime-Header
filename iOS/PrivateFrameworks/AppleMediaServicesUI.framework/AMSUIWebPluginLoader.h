@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *loadedPluginsMap; // @synthesize loadedPluginsMap=_loadedPluginsMap;
 @property(readonly, nonatomic) NSDictionary *installedPluginURLs; // @synthesize installedPluginURLs=_installedPluginURLs;
-@property(readonly, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(readonly, nonatomic) __weak AMSUIWebClientContext *context; // @synthesize context=_context;
 - (id)_loadInstalledPlugins;
 - (id)pluginForBundleIdentifier:(id)arg1;
 @property(readonly, nonatomic) NSArray *loadedPlugins;

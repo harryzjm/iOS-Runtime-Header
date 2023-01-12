@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface SCNCommonProfileProgramGeneratorMetal
 {
+    _Bool _allowHotReload;
     _Bool _useFunctionConstants;
     NSString *_originalSourceCode;
     NSArray *_injectionPointRanges;
@@ -20,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (struct __C3DFXProgram *)_newProgramWithHashCode:(struct __C3DProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 introspectionDataPtr:(void *)arg3;
 - (struct __C3DFXProgram *)_newProgramWithHashCodeWithFunctionConstants:(struct __C3DProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 introspectionDataPtr:(void *)arg3;
 - (void)dealloc;
-- (id)init;
+- (id)initAllowingHotReload:(_Bool)arg1;
 - (void)emptyShaderCache;
 - (void)_loadSourceCode;
 - (int)profile;

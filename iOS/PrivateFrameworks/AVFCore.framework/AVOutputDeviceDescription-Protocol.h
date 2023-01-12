@@ -13,6 +13,7 @@
 @property(readonly, nonatomic) NSString *deviceName;
 
 @optional
+@property(readonly, nonatomic) NSString *modelID;
 @property(readonly, nonatomic) _Bool isClusterLeader;
 @property(readonly, nonatomic) long long deviceSubType;
 @property(readonly, nonatomic) long long deviceType;

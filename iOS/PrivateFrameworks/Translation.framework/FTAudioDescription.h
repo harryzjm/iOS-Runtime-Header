@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_407e0587)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_407e0587)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) unsigned int reserved;
 @property(readonly, nonatomic) unsigned int bits_per_channel;
 @property(readonly, nonatomic) unsigned int channels_per_frame;

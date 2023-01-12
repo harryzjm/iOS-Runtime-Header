@@ -8,15 +8,18 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSString, PKInstallmentPlanProgressCollectionViewCell;
+@class NSString, PKInstallmentPlanProgressCollectionViewCell, PKInstallmentPlanTotalFinancedCollectionViewCell;
 
 @interface PKDashboardInstallmentPlanStatusItemPresenter : NSObject <PKDashboardItemPresenter>
 {
-    PKInstallmentPlanProgressCollectionViewCell *_sampleCell;
+    PKInstallmentPlanProgressCollectionViewCell *_sampleProgressCell;
+    PKInstallmentPlanTotalFinancedCollectionViewCell *_sampleTotalFinancedCell;
 }
 
 - (void).cxx_destruct;
-- (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
+- (_Bool)_showStatusForItem:(id)arg1;
+- (void)_configureProgressCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
+- (void)_configureTotalFinancedCell:(id)arg1 forItem:(id)arg2 inCollection:(id)arg3 forIndexPath:(id)arg4;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;

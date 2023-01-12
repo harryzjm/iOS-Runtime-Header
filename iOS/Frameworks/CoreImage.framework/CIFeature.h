@@ -12,6 +12,7 @@
 {
 }
 
+- (id)debugDescription;
 @property(readonly) struct CGRect bounds;
 @property(readonly, retain) NSString *type;
 - (id)init;

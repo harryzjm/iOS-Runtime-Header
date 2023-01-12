@@ -27,6 +27,7 @@
 - (void)_handleSurroundSoundDefaults:(id)arg1 returnedChannels:(id)arg2 port:(id)arg3 source:(long long)arg4;
 - (id)savedChannelsForOutput:(id)arg1 forSource:(long long)arg2;
 - (id)_savedIdForRouteDescription:(id)arg1;
+- (_Bool)isDolbyAtmosConfigured;
 - (id)init;
 
 @end

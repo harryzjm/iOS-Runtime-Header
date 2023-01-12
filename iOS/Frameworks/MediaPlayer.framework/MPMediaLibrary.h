@@ -100,6 +100,7 @@
 + (id)libraryDataProviders;
 + (id)_libraryDataProviders;
 + (id)_libraryForDataProvider:(id)arg1;
++ (id)mediaLibraryWithUniqueIdentifier:(id)arg1 allowsLoadingFromDisk:(_Bool)arg2;
 + (id)mediaLibraryWithUniqueIdentifier:(id)arg1;
 + (id)sharedMediaLibraries;
 + (id)mediaLibraries;
@@ -108,13 +109,16 @@
 + (void)setRunLoopForNotifications:(id)arg1;
 + (void)setLibraryServerDisabled:(_Bool)arg1;
 + (_Bool)isLibraryServerDisabled;
++ (void)logDatabaseAccessForCurrentProcess;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
-+ (void)validatePermissionsExpiryWithCompletion:(CDUnknownBlockType)arg1;
 + (long long)authorizationStatus;
++ (long long)_mediaLibraryAuthorizationStatusFromCloudServiceAuthorizationStatus:(long long)arg1;
++ (id)_sharedCloudServiceStatusMonitor;
 + (void)endDiscoveringMediaLibraries;
 + (void)beginDiscoveringMediaLibraries;
 + (void)_postNotificationName:(id)arg1 library:(id)arg2 userInfo:(id)arg3;
 + (void)_postNotificationName:(id)arg1 library:(id)arg2;
++ (id)_mediaLibraryWithUniqueIdentifier:(id)arg1 userDSID:(id)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 createIfRequired:(_Bool)arg2;
 + (id)deviceMediaLibraryWithUserIdentity:(id)arg1;
@@ -141,7 +145,6 @@
 - (void)addStoreItemIDs:(id)arg1 referralObject:(id)arg2 andAddTracksToCloudLibrary:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)addStoreItemIDs:(id)arg1 andAddTracksToCloudLibrary:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)addStoreItem:(long long)arg1 andAddTracksToCloudLibrary:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (id)completeMyCollectionArtworkDataSource;
 - (id)artworkDataSource;
 - (id)libraryDataProvider;
 - (id)_initWithLibraryDataProvider:(id)arg1;
@@ -214,6 +217,7 @@
 - (id)addPlaylistWithName:(id)arg1 activeGeniusPlaylist:(_Bool)arg2;
 - (id)addPlaylistWithName:(id)arg1;
 - (id)playlistWithPersistentID:(unsigned long long)arg1;
+- (id)photosMemoriesPlaylist;
 - (id)playbackHistoryPlaylist;
 - (id)localizedSectionIndexTitles;
 - (id)localizedSectionHeaderForSectionIndex:(unsigned long long)arg1;
@@ -264,6 +268,7 @@
 - (void)removeLibraryFilterPredicate:(id)arg1;
 - (void)addLibraryFilterPredicate:(id)arg1;
 - (id)additionalLibraryFilterPredicates;
+- (void)_logDatabaseAccess;
 - (long long)status;
 - (_Bool)writable;
 - (_Bool)isHomeSharingLibrary;
@@ -295,6 +300,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (id)initWithClientIdentity:(id)arg1 userIdentity:(id)arg2;
 - (id)_initWithUserIdentity:(id)arg1;
 - (id)init;
 @property(readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;

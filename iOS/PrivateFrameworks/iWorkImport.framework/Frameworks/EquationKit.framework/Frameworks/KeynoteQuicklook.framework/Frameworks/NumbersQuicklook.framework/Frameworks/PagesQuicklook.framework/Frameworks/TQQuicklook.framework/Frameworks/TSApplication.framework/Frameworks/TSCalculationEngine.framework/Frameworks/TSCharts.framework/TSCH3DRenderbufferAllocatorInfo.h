@@ -17,10 +17,10 @@
 
 + (id)infoWithFramebufferAttributes:(struct FramebufferAttributes)arg1 size:(tvec2_3b141483)arg2 session:(id)arg3;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, retain, nonatomic) TSCH3DSession *session; // @synthesize session=_session;
 @property(nonatomic) tvec2_3b141483 size; // @synthesize size=_size;
 @property(readonly, nonatomic) struct FramebufferAttributes framebufferAttributes; // @synthesize framebufferAttributes=_framebufferAttributes;
-- (void)dealloc;
 - (id)initWithFramebufferAttributes:(struct FramebufferAttributes)arg1 size:(tvec2_3b141483)arg2 session:(id)arg3;
 
 @end

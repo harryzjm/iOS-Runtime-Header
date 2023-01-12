@@ -9,6 +9,7 @@
 }
 
 + (id)sharedManager;
+- (void)loadExtensions;
 - (id)init;
 
 @end

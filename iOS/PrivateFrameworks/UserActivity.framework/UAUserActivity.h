@@ -38,8 +38,10 @@
     _Bool _userActivityWasCreatedSent;
     _Bool _indexInProcess;
     long long _inWillSaveCallback;
+    NSSet *_keywords;
     NSDate *_expirationDate;
     NSString *_contentUserAction;
+    NSSet *_requiredUserInfoKeys;
     NSString *_teamIdentifier;
     unsigned long long _os_state_handler;
     int _forwardToCoreSpotlightIndexerCount;
@@ -52,6 +54,7 @@
     id <UAUserActivityDelegate> _delegate;
     unsigned int _userInfoChangeCount;
     NSDictionary *_savedUserInfo;
+    NSObject<OS_dispatch_queue> *_willCallSaveSerializationQueue;
     _Bool _invalidated;
     _Bool _userInfoContainsFileURLs;
     _Bool _universalLink;
@@ -62,8 +65,6 @@
     NSDate *_madeInitiallyCurrentDate;
     NSDate *_sentToIndexerDate;
     NSData *_cachedEncodedUserInfo;
-    NSSet *_keywords;
-    NSSet *_requiredUserInfoKeys;
     NSDictionary *_userInfo;
     UAUserActivityManager *_manager;
     NSString *_typeIdentifier;
@@ -75,7 +76,6 @@
     NSMutableDictionary *_payloadObjects;
     NSMutableDictionary *_payloadUpdateBlocks;
     NSMutableDictionary *_payloadDataCache;
-    NSObject<OS_dispatch_queue> *_willCallSaveSerializationQueue;
 }
 
 + (void)removeUserActivityObserver:(id)arg1;
@@ -94,6 +94,7 @@
 + (id)allowedWebpageURLSchemes;
 + (void)unregisterForSuggestedActionNudgeOfType:(id)arg1;
 + (id)registerForSuggestedActionNudgeOfType:(unsigned long long)arg1 withOptions:(id)arg2 block:(CDUnknownBlockType)arg3;
++ (_Bool)currentUserActivityProxiesWithOptions:(id)arg1 matching:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (_Bool)determineIfUserActivityIsCurrent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)currentUserActivityUUIDWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)currentUserActivityUUID;
@@ -108,7 +109,6 @@
 + (void)deleteSavedUserActivitiesWithPersistentIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)mainBundleIdentifier;
 - (void).cxx_destruct;
-@property(readonly, retain) NSObject<OS_dispatch_queue> *willCallSaveSerializationQueue; // @synthesize willCallSaveSerializationQueue=_willCallSaveSerializationQueue;
 @property(retain) NSMutableSet *dirtyPayloadIdentifiers; // @synthesize dirtyPayloadIdentifiers=_dirtyPayloadIdentifiers;
 @property(retain) NSMutableDictionary *payloadDataCache; // @synthesize payloadDataCache=_payloadDataCache;
 @property(retain) NSMutableDictionary *payloadUpdateBlocks; // @synthesize payloadUpdateBlocks=_payloadUpdateBlocks;
@@ -118,13 +118,9 @@
 @property(copy) NSDictionary *options; // @synthesize options=_options;
 @property(readonly) unsigned long long suggestedActionType; // @synthesize suggestedActionType=_suggestedActionType;
 @property(readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property(copy) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property(copy) NSString *dynamicIdentifier; // @synthesize dynamicIdentifier=_dynamicIdentifier;
 @property(copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property(readonly) __weak UAUserActivityManager *manager; // @synthesize manager=_manager;
-@property(getter=isUniversalLink) _Bool universalLink; // @synthesize universalLink=_universalLink;
-@property(copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
-@property(copy) NSSet *keywords; // @synthesize keywords=_keywords;
 @property _Bool userInfoContainsFileURLs; // @synthesize userInfoContainsFileURLs=_userInfoContainsFileURLs;
 @property(readonly) unsigned long long os_state_handler; // @synthesize os_state_handler=_os_state_handler;
 @property(copy) NSData *cachedEncodedUserInfo; // @synthesize cachedEncodedUserInfo=_cachedEncodedUserInfo;
@@ -158,10 +154,12 @@
 - (_Bool)archiveURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 @property(readonly, getter=isInvalidated) _Bool invalidated; // @synthesize invalidated=_invalidated;
+@property(readonly, retain) NSObject<OS_dispatch_queue> *willCallSaveSerializationQueue;
 @property(readonly) double madeCurrentInterval; // @synthesize madeCurrentInterval=_madeCurrentInterval;
 - (void)resignCurrent;
 - (void)_resignCurrent;
 - (void)becomeCurrent;
+@property(readonly) _Bool isCurrent;
 - (void)getContinuationStreamsWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property __weak id <UAUserActivityDelegate> delegate; // @dynamic delegate;
 @property _Bool supportsContinuationStreams; // @dynamic supportsContinuationStreams;
@@ -170,6 +168,8 @@
 - (id)teamID;
 @property _Bool needsSave; // @dynamic needsSave;
 @property _Bool dirty; // @dynamic dirty;
+@property(copy) NSString *targetContentIdentifier;
+@property(getter=isUniversalLink) _Bool universalLink; // @synthesize universalLink=_universalLink;
 @property(copy) NSURL *referrerURL; // @dynamic referrerURL;
 @property(copy) NSURL *webpageURL; // @dynamic webpageURL;
 - (void)_setWebpageURL:(id)arg1 throwOnFailure:(_Bool)arg2;
@@ -197,6 +197,7 @@
 - (void)displayInDtrace;
 - (long long)priority;
 - (void)sendUserActivityInfoToLSUserActivityd:(_Bool)arg1 onAsyncQueue:(_Bool)arg2;
+- (id)callWillSaveDelegateIfDirtyAndPackageUpData:(_Bool)arg1 clearDirty:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)callWillSaveDelegateIfDirtyAndPackageUpData:(_Bool)arg1 clearDirty:(_Bool)arg2;
 - (id)userActivityInfoForSelfWithPayload:(_Bool)arg1;
 - (id)userActivityInfoForSelf;
@@ -212,13 +213,18 @@
 @property(getter=isEligibleForSearch) _Bool eligibleForSearch; // @dynamic eligibleForSearch;
 @property(getter=isEligibleForHandoff) _Bool eligibleForHandoff; // @dynamic eligibleForHandoff;
 - (void)addKeywordsFromArray:(id)arg1;
+@property(copy) NSSet *requiredUserInfoKeys; // @dynamic requiredUserInfoKeys;
+@property(copy) NSSet *keywords; // @dynamic keywords;
 @property(copy) NSDate *expirationDate; // @dynamic expirationDate;
 @property(copy) NSString *contentIdentifier; // @dynamic contentIdentifier;
 @property(copy) NSString *contentUserAction; // @dynamic contentUserAction;
 - (_Bool)createUserActivityDataWithSaving:(_Bool)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (_Bool)_encodeIntoUserActivityDataWithSave:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)createUserActivityDataWithSaving:(_Bool)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)_encodeIntoUserActivityDataWithSave:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)createUserActivityStringsWithSaving:(_Bool)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)createUserActivityStringsWithSaving:(_Bool)arg1 options:(id)arg2 optionalString:(id *)arg3 data:(id *)arg4 error:(id *)arg5;
 - (_Bool)_encodeIntoUserActivityStringWithSave:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_encodeIntoUserActivityStringWithSave:(_Bool)arg1 optionalString:(id *)arg2 optionalData:(id *)arg3 error:(id *)arg4;
 - (id)initWithUserActivityData:(id)arg1 options:(id)arg2;
 - (id)initWithUserActivityStrings:(id)arg1 optionalString:(id)arg2 tertiaryData:(id)arg3 options:(id)arg4;
 - (void)indexActivity:(double)arg1 forceIndexing:(_Bool)arg2;

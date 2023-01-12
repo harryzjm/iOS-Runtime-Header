@@ -21,6 +21,7 @@
 @property(retain, nonatomic) GCControllerAxisInput *yAxis; // @synthesize yAxis=_yAxis;
 @property(retain, nonatomic) GCControllerAxisInput *xAxis; // @synthesize xAxis=_xAxis;
 @property(copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
+- (void)setUnmappedLocalizedName:(id)arg1;
 - (int)getAndResetTimesPressed;
 - (void)setValueForXAxis:(float)arg1 yAxis:(float)arg2;
 - (_Bool)_commitPendingValueOnQueue:(id)arg1;

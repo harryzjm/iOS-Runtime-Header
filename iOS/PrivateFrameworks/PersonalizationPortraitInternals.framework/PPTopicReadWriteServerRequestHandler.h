@@ -12,6 +12,7 @@
 {
 }
 
+- (void)computeAndCacheTopicScores:(CDUnknownBlockType)arg1;
 - (void)clearWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThanDate:(id)arg3 completion:(CDUnknownBlockType)arg4;

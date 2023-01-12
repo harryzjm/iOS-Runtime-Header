@@ -68,7 +68,7 @@
 - (id)searchResultForIdentifier:(id)arg1;
 - (void)setSearchResults:(id)arg1 searchAssetResults:(id)arg2 curatedAssetsFetchResult:(id)arg3 reloadItemIdentifiers:(id)arg4 localizedQueryString:(id)arg5;
 - (id)initWithPhotoLibrary:(id)arg1;
-- (void)requestImageForPersonUUID:(id)arg1 photoLibrary:(id)arg2 imageRequestSize:(struct CGSize)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (void)requestImageForPersonUUID:(id)arg1 photoLibrary:(id)arg2 imageRequestSize:(struct CGSize)arg3 displayScale:(double)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (void)requestImageForAssetUUID:(id)arg1 orAsset:(id)arg2 withPhotoLibrary:(id)arg3 cachingImageManager:(id)arg4 imageRequestSize:(struct CGSize)arg5 resultHandler:(CDUnknownBlockType)arg6;
 
 // Remaining properties

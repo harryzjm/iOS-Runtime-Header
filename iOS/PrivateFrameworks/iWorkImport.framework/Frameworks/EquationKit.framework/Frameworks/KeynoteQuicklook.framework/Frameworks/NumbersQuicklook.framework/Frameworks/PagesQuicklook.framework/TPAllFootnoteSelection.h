@@ -12,8 +12,8 @@
 
 + (Class)archivedSelectionClass;
 - (_Bool)isEqual:(id)arg1;
-- (void)saveToArchive:(struct AllFootnoteSelectionArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct AllFootnoteSelectionArchive *)arg1;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1;
 
 @end
 

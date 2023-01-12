@@ -10,14 +10,14 @@
 
 @interface TSCH3DDocumentDataCache : NSObject
 {
-    TSKDocumentRoot *mDocumentRoot;
+    TSKDocumentRoot *_documentRoot;
 }
 
 + (id)dataCacheWithDocumentRoot:(id)arg1;
 + (id)dataFromCache:(id)arg1 forFile:(id)arg2 group:(id)arg3 generateBlock:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 - (id)dataForFile:(id)arg1 group:(id)arg2 generateBlock:(CDUnknownBlockType)arg3;
 - (_Bool)debug_nukeDocumentCachePathForGroup:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithDocumentRoot:(id)arg1;
 

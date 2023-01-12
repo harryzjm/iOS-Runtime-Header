@@ -14,6 +14,7 @@
 
 @interface UIIndirectScribbleInteraction : NSObject <PKScribbleInteractionWrapperProvider, UIInteraction>
 {
+    long long __handlingWritingCount;
     _Bool _handlingWriting;
     _Bool __defaultSystemInteraction;
     id <UIIndirectScribbleInteractionDelegate> _delegate;
@@ -23,13 +24,14 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_isDefaultSystemInteraction) _Bool _defaultSystemInteraction; // @synthesize _defaultSystemInteraction=__defaultSystemInteraction;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
-@property(readonly, nonatomic, getter=isHandlingWriting) _Bool handlingWriting; // @synthesize handlingWriting=_handlingWriting;
+@property(nonatomic, getter=isHandlingWriting, setter=_setHandlingWriting:) _Bool handlingWriting; // @synthesize handlingWriting=_handlingWriting;
 @property(readonly, nonatomic) __weak id <UIIndirectScribbleInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)scribbleInteractionWrapper;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;
 - (void)_setDefaultSystemInteraction:(_Bool)arg1;
-- (void)_setHandlingWriting:(_Bool)arg1;
+- (void)_setHandlingWritingCount:(long long)arg1;
+- (long long)_handlingWritingCount;
 - (id)initWithDelegate:(id)arg1;
 
 // Remaining properties

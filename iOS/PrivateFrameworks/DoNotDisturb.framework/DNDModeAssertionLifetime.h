@@ -16,6 +16,7 @@
 + (id)_secureCodingLifetimeClasses;
 + (_Bool)supportsSecureCoding;
 + (id)lifetimeForUserRequest;
++ (id)lifetimeWithExplicitRegion:(id)arg1;
 + (id)lifetimeUntilEndOfScheduleWithIdentifier:(id)arg1;
 + (id)lifetimeMatchingScheduleWithIdentifier:(id)arg1;
 + (id)lifetimeWithCalendarEventUniqueID:(id)arg1 occurrenceDate:(id)arg2;

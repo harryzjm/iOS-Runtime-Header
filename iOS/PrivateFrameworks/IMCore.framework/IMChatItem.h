@@ -16,6 +16,9 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long syndicationType;
+@property(readonly, nonatomic, getter=isHighlighted) _Bool highlighted;
+@property(readonly, nonatomic) long long syndicationBehavior;
 - (_Bool)isReplyContextPreview;
 @property(readonly, retain, nonatomic) NSString *balloonBundleID;
 - (void)_setTimeAdded:(id)arg1;

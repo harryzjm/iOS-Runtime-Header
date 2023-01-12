@@ -6,44 +6,51 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFNetServiceBrowserDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
-#import <HomeKitDaemon/NSNetServiceBrowserDelegate-Protocol.h>
 
-@class HMFTimer, HMFUnfairLock, NSMutableSet, NSNetServiceBrowser, NSString;
+@class HMFTimer, HMFUnfairLock, NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HMDBonjourBrowserHelper : HMFObject <NSNetServiceBrowserDelegate, HMFTimerDelegate>
+@interface HMDBonjourBrowserHelper : HMFObject <HMFNetServiceBrowserDelegate, HMFTimerDelegate>
 {
-    _Bool _started;
+    unsigned long long _state;
     double _browsingInterval;
     double _browsingPeriodicity;
-    NSString *_serviceType;
     HMFUnfairLock *_lock;
-    HMFTimer *_browsingTimer;
-    HMFTimer *_periodicityTimer;
-    NSNetServiceBrowser *_browser;
-    NSMutableSet *_discoveredServices;
+    HMFTimer *_timer;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    NSArray *_serviceTypes;
+    NSMutableArray *_browsers;
+    NSSet *_latestDiscoveredServices;
+    NSMutableSet *_internalDiscoveredServices;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableSet *discoveredServices; // @synthesize discoveredServices=_discoveredServices;
-@property(retain, nonatomic) NSNetServiceBrowser *browser; // @synthesize browser=_browser;
-@property(retain, nonatomic) HMFTimer *periodicityTimer; // @synthesize periodicityTimer=_periodicityTimer;
-@property(retain, nonatomic) HMFTimer *browsingTimer; // @synthesize browsingTimer=_browsingTimer;
+@property(retain, nonatomic) NSMutableSet *internalDiscoveredServices; // @synthesize internalDiscoveredServices=_internalDiscoveredServices;
+@property(retain, nonatomic) NSSet *latestDiscoveredServices; // @synthesize latestDiscoveredServices=_latestDiscoveredServices;
+@property(retain, nonatomic) NSMutableArray *browsers; // @synthesize browsers=_browsers;
+@property(retain, nonatomic) NSArray *serviceTypes; // @synthesize serviceTypes=_serviceTypes;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(retain, nonatomic) HMFTimer *timer; // @synthesize timer=_timer;
 @property(retain, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
-@property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(nonatomic) double browsingPeriodicity; // @synthesize browsingPeriodicity=_browsingPeriodicity;
 @property(nonatomic) double browsingInterval; // @synthesize browsingInterval=_browsingInterval;
-- (void)netServiceBrowserDidStopSearch:(id)arg1;
-- (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2 moreComing:(_Bool)arg3;
-- (void)netServiceBrowser:(id)arg1 didFindService:(id)arg2 moreComing:(_Bool)arg3;
-- (void)netServiceBrowserWillSearch:(id)arg1;
+- (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;
+- (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2;
+- (void)netServiceBrowser:(id)arg1 didAddService:(id)arg2;
 - (void)timerDidFire:(id)arg1;
-- (void)setStarted:(_Bool)arg1;
-@property(readonly, nonatomic, getter=isStarted) _Bool started; // @synthesize started=_started;
-@property(readonly, nonatomic) unsigned long long discoveredServicesCount;
+- (void)_updateTimerWithTimeout:(double)arg1;
+- (void)_removeBrowser:(id)arg1;
+- (void)_addBrowser:(id)arg1;
+@property(nonatomic) unsigned long long state; // @synthesize state=_state;
+@property(readonly, nonatomic, getter=isStarted) _Bool started;
+- (unsigned long long)discoveredServicesCountForServiceType:(id)arg1;
+- (void)_stopBrowsers;
 - (void)stop;
+- (void)_startBrowsers;
 - (void)start;
-- (id)initWithServicesOfType:(id)arg1 browsingTimeInterval:(double)arg2 browsingPeriodicity:(double)arg3;
+- (id)initWithServicesOfTypes:(id)arg1 browsingTimeInterval:(double)arg2 browsingPeriodicity:(double)arg3 workQueue:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

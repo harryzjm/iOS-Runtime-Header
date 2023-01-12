@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, WFServiceConnection, WFWeatherStoreService;
+@class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, WALocationPrivacySampler, WFServiceConnection, WFWeatherStoreService;
 @protocol OS_dispatch_queue;
 
 @interface WAForecastModelController : NSObject
 {
+    WALocationPrivacySampler *_locationGeocodingSampler;
     NSOperationQueue *_forecastOperationQueue;
     NSObject<OS_dispatch_queue> *_incomingRequestQueue;
     NSObject<OS_dispatch_queue> *_completionHandlerQueue;
@@ -18,6 +19,9 @@
     NSMutableDictionary *_completionHandlersForCity;
     WFServiceConnection *_connection;
     struct ct_green_tea_logger_s *_greenTeaLogger;
+    NSOperationQueue *_priorityForecastOperationQueue;
+    NSMutableSet *_priorityUpdatingCities;
+    NSMutableDictionary *_priorityCompletionHandlersForCity;
     NSString *_trackingParameter;
     WFWeatherStoreService *_store;
 }
@@ -25,6 +29,9 @@
 - (void).cxx_destruct;
 @property(readonly) WFWeatherStoreService *store; // @synthesize store=_store;
 @property(copy) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
+@property(retain) NSMutableDictionary *priorityCompletionHandlersForCity; // @synthesize priorityCompletionHandlersForCity=_priorityCompletionHandlersForCity;
+@property(retain) NSMutableSet *priorityUpdatingCities; // @synthesize priorityUpdatingCities=_priorityUpdatingCities;
+@property(retain) NSOperationQueue *priorityForecastOperationQueue; // @synthesize priorityForecastOperationQueue=_priorityForecastOperationQueue;
 @property(nonatomic) struct ct_green_tea_logger_s *greenTeaLogger; // @synthesize greenTeaLogger=_greenTeaLogger;
 @property(retain, nonatomic) WFServiceConnection *connection; // @synthesize connection=_connection;
 @property(retain) NSMutableDictionary *completionHandlersForCity; // @synthesize completionHandlersForCity=_completionHandlersForCity;
@@ -32,14 +39,22 @@
 @property(retain) NSObject<OS_dispatch_queue> *completionHandlerQueue; // @synthesize completionHandlerQueue=_completionHandlerQueue;
 @property(retain) NSObject<OS_dispatch_queue> *incomingRequestQueue; // @synthesize incomingRequestQueue=_incomingRequestQueue;
 @property(retain) NSOperationQueue *forecastOperationQueue; // @synthesize forecastOperationQueue=_forecastOperationQueue;
+@property(retain, nonatomic) WALocationPrivacySampler *locationGeocodingSampler; // @synthesize locationGeocodingSampler=_locationGeocodingSampler;
+- (_Bool)isPriorityForecastOperationsEnabled;
+- (_Bool)isPriorityCity:(id)arg1;
+- (id)_commaSeparatedNamesForUpdatingCities:(id)arg1;
+- (id)_commaSeparatedPriorityUpdatingCitiesNames;
 - (id)_commaSeparatedUpdatingCitiesNames;
 - (void)_handleForecastOperationCompletion:(id)arg1;
 - (void)cancelAllFetchRequests;
-- (id)_queue_executeFetchForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_queue_executeFetchForCity:(id)arg1 withUnits:(int)arg2 requestOptions:(id)arg3 completion:(CDUnknownBlockType)arg4 completionHandlersForCity:(id)arg5 updatingCities:(id)arg6;
+- (id)_queue_executeFetchForCity:(id)arg1 withUnits:(int)arg2 requestOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_queue_executeFetchForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)fetchForecastForCities:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)fetchForecastForCity:(id)arg1 withUnits:(int)arg2 requestOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)fetchForecastForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)fetchForecastForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)isPriorityCityBeingUpdated:(id)arg1;
 - (_Bool)isCityBeingUpdated:(id)arg1;
 - (void)dealloc;
 - (id)init;

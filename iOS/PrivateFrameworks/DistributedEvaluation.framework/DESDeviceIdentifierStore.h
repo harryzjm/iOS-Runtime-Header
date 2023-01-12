@@ -24,6 +24,7 @@
 - (void)_readIdentifierStore;
 - (id)identifierForBundleId:(id)arg1;
 - (id)initWithStoreURL:(id)arg1;
+- (id)init;
 
 @end
 

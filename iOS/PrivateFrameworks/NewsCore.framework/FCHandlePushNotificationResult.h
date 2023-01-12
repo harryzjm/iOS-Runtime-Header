@@ -17,8 +17,8 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSSet *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
-@property(nonatomic, getter=wasHandled) _Bool handled; // @synthesize handled=_handled;
+@property(readonly, nonatomic) NSSet *recordZoneIDs;
+@property(readonly, nonatomic, getter=wasHandled) _Bool handled;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

@@ -6,10 +6,15 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@interface HMDCameraMediaConfigGenerator : HMFObject
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
+@class NSString;
+
+@interface HMDCameraMediaConfigGenerator : HMFObject <HMFLogging>
 {
 }
 
++ (id)logCategory;
 - (void)_loadMiscConfig:(id)arg1;
 - (_Bool)_loadConfig:(id)arg1 cipherCuite:(id)arg2;
 - (void)_loadConfig:(id)arg1 sendSrtpParameters:(id)arg2 receiveSrtpParameters:(id)arg3;
@@ -17,6 +22,12 @@
 - (_Bool)_loadAVCVideoStreamConfig:(id)arg1 protocolParameters:(id)arg2;
 - (_Bool)_loadAVCAudioStreamConfig:(id)arg1 protocolParameters:(id)arg2;
 - (_Bool)extractSelectedConfigFromProtocolParameters:(id)arg1 videoStreamConfig:(id *)arg2 audioStreamConfig:(id *)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

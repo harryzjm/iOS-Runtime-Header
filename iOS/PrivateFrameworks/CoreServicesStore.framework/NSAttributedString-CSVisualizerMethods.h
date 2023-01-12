@@ -8,6 +8,7 @@
 
 @interface NSAttributedString (CSVisualizerMethods)
 - (id)cs_rangesMatchingPredicate:(id)arg1;
+- (void)cs_writeToFileHandle:(struct __sFILE *)arg1 supportingANSIEscapeCodes:(_Bool)arg2;
 - (void)cs_writeToFileHandle:(struct __sFILE *)arg1;
 @end
 

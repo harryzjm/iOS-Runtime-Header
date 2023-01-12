@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <WeatherFoundation/NSCopying-Protocol.h>
+#import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDate, WFNextHourPrecipitationDescription;
 
-@interface WFNextHourPrecipitation : NSObject <NSCopying>
+@interface WFNextHourPrecipitation : NSObject <NSCopying, NSSecureCoding>
 {
     NSDate *_readDate;
     NSDate *_startDate;
@@ -20,6 +21,7 @@
     NSArray *_conditions;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *conditions; // @synthesize conditions=_conditions;
 @property(readonly, copy, nonatomic) NSArray *precipitationDescriptions; // @synthesize precipitationDescriptions=_precipitationDescriptions;
@@ -27,9 +29,12 @@
 @property(readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, copy, nonatomic) NSDate *readDate; // @synthesize readDate=_readDate;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) WFNextHourPrecipitationDescription *currentDescription;
 @property(readonly, nonatomic) _Bool isRelevant;
+@property(readonly, nonatomic) NSArray *activeMinutes;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

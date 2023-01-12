@@ -7,56 +7,26 @@
 #import <TSText/TSWPPageLayout.h>
 
 #import <PagesQuicklook/TPAttachmentLayoutParent-Protocol.h>
-#import <PagesQuicklook/TSDWrapInvalidationParent-Protocol.h>
 #import <PagesQuicklook/TSWPAttachmentNumberProviding-Protocol.h>
 #import <PagesQuicklook/TSWPColumnMetrics-Protocol.h>
 #import <PagesQuicklook/TSWPLayoutParent-Protocol.h>
 
-@class NSArray, NSMutableSet, NSSet, NSString, TPBodyLayout, TPFootnoteContainerLayout, TPiOSMarginAdjustLayout, TSDFill, TSURetainedPointerKeyDictionary, TSWPPadding;
-@protocol NSFastEnumeration, TPMasterDrawableProvider, TSWPHeaderFooterProvider;
+@class NSString, TPBodyLayout, TPiOSMarginAdjustLayout, TSDFill, TSWPPadding;
+@protocol TPSectionTemplateDrawableProvider;
 
-@interface TPPageLayout : TSWPPageLayout <TSWPLayoutParent, TSWPAttachmentNumberProviding, TSWPColumnMetrics, TPAttachmentLayoutParent, TSDWrapInvalidationParent>
+@interface TPPageLayout : TSWPPageLayout <TSWPLayoutParent, TSWPAttachmentNumberProviding, TSWPColumnMetrics, TPAttachmentLayoutParent>
 {
-    id <TSWPHeaderFooterProvider> _headerFooterProvider;
-    TPFootnoteContainerLayout *_footnoteContainerLayout;
-    unsigned long long _pageNumber;
-    unsigned long long _pageCount;
-    _Bool _shouldHeaderFooterBeVisible;
-    _Bool _childLayoutsValid;
-    TSURetainedPointerKeyDictionary *_oldChildLayouts;
-    id <TPMasterDrawableProvider> _masterDrawableProvider;
-    unsigned long long _contentFlags;
-    int _inInvalidationClusterCount;
-    _Bool _childTextLayoutsNeedInvalidationForExteriorWrap;
     _Bool _validating;
-    _Bool _overrideAllowFootnotes;
-    NSMutableSet *_anchoredDrawableLayouts;
     TPiOSMarginAdjustLayout *_marginAdjustLayout;
+    id <TPSectionTemplateDrawableProvider> _sectionTemplateDrawableProvider;
     TSDFill *_backgroundFill;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
-@property(readonly, nonatomic) TPFootnoteContainerLayout *footnoteContainerLayout; // @synthesize footnoteContainerLayout=_footnoteContainerLayout;
+@property(readonly, nonatomic, getter=isValidating) _Bool validating; // @synthesize validating=_validating;
+@property(readonly, nonatomic) __weak id <TPSectionTemplateDrawableProvider> sectionTemplateDrawableProvider; // @synthesize sectionTemplateDrawableProvider=_sectionTemplateDrawableProvider;
 @property(readonly, nonatomic) TPiOSMarginAdjustLayout *marginAdjustLayout; // @synthesize marginAdjustLayout=_marginAdjustLayout;
-@property(nonatomic) _Bool overrideAllowFootnotes; // @synthesize overrideAllowFootnotes=_overrideAllowFootnotes;
-@property(nonatomic, getter=isValidating) _Bool validating; // @synthesize validating=_validating;
-- (pair_b2618ff2)p_sideMargins;
-- (void)p_removeNoLongerInlineLayoutsFromBodyLayout;
-- (void)p_removeInlineLayoutsFromPageLayout;
-- (_Bool)p_isHeaderFooterLayout:(id)arg1;
-- (void)p_sortChildLayouts;
-- (void)p_populateOldChildLayoutsWithLayouts:(id)arg1;
-- (id)p_insertFootnoteContainerLayout;
-- (id)p_insertBodyLayout;
-- (void)p_validateTextLayoutsForExteriorWrapAffectedByAnchoredAttachments;
-- (id)p_insertValidatedFloatingLayouts;
-- (id)p_insertValidatedMasterLayouts;
-- (id)p_existingChildLayoutForInfo:(id)arg1;
-- (id)p_insertValidatedChildLayoutForInfo:(id)arg1;
-- (id)p_insertChildLayoutForInfo:(id)arg1;
-- (void)p_updateFromLayoutInfoProvider;
-- (id)p_orderedChildInfos;
 @property(readonly, nonatomic) _Bool marginsAreMirrored;
 @property(readonly, nonatomic) _Bool columnsAreLeftToRight;
 - (_Bool)textIsVertical;
@@ -67,10 +37,9 @@
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 @property(readonly, nonatomic) unsigned long long pageCount;
 @property(readonly, nonatomic) unsigned long long pageNumber;
-- (void)evacuateOldChildLayoutCache;
 - (void)validate;
 - (unsigned long long)pageCountForAttachment:(id)arg1;
 - (unsigned long long)pageNumberForAttachment:(id)arg1;
@@ -85,68 +54,18 @@
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (_Bool)descendersCannotClip;
-- (void)wrappableChildInvalidated:(id)arg1;
-- (void)endResizeWrapInvalidationCluster;
-- (void)beginResizeWrapInvalidationCluster;
-- (id)additionalDependenciesForChildLayout:(id)arg1;
 - (void)addAttachmentLayout:(id)arg1;
 - (id)existingAttachmentLayoutForInfo:(id)arg1;
 - (id)layoutsCausingWrapOnTextLayoutTarget:(id)arg1 ignoreIntersection:(_Bool)arg2;
-- (struct CGRect)footnoteContainerFrameWithSize:(struct CGSize)arg1;
-- (void)inflateFootnotesInFootnoteContainer:(id)arg1;
-- (double)blockHeightAvailableForFootnotes;
-- (void)setNeedsInflation;
-- (void)rebuildChildLayoutsOnNextValidationForcingTextLayoutOnTopLevelObjects:(_Bool)arg1;
-- (void)invalidateFootnoteContainers;
-- (void)invalidateFootnoteSeparatorLine;
-- (void)invalidateBodyAndMarginLayouts;
-- (void)invalidateHeaderFooterLayouts;
-- (void)invalidateHeaderFooterLayoutsCache;
-- (void)processWidowAndInflation;
-@property(readonly, nonatomic) NSSet *anchoredDrawableLayouts;
-@property(readonly, nonatomic) NSArray *floatingDrawableLayouts;
-- (_Bool)isRootLevelForInlineGeometry;
-- (_Bool)isRootLayoutForInspectorGeometry;
-@property(readonly, nonatomic) id <NSFastEnumeration> childTextLayoutsForExteriorWrap;
-- (void)invalidateSize;
-- (void)invalidatePosition;
-- (id)dependentLayouts;
-- (id)computeLayoutGeometry;
-- (_Bool)allowIntersectionOfChildLayout:(id)arg1;
-- (struct CGSize)maximumFrameSizeForChild:(id)arg1;
-- (void)p_addLayoutIfAttached:(id)arg1;
-- (void)setChildren:(id)arg1;
-- (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)replaceChild:(id)arg1 with:(id)arg2;
-- (void)updateChildrenFromInfo;
-- (void)parentDidChange;
-- (void)parentWillChangeTo:(id)arg1;
-- (id)pageLayout;
 @property(readonly, nonatomic) unsigned long long pageIndex;
-- (id)layoutsForProvidingGuidesForChildLayouts;
-- (_Bool)providesGuidesForChildLayouts;
-- (_Bool)isReadyForBodyLayout;
 - (id)layoutsForChildInfo:(id)arg1;
 - (id)p_childLayoutInParentLayout:(id)arg1 forChildInfo:(id)arg2;
 - (id)layoutForChildInfo:(id)arg1;
 - (id)primaryLayoutForInfo:(id)arg1;
-- (void)invalidateLayoutsForPageCountChange;
-- (_Bool)hasFooters;
-- (_Bool)hasHeaders;
-- (_Bool)allowsHeaderFooter;
 @property(readonly, nonatomic) _Bool canHavePreviousPageFootnotes;
 @property(readonly, nonatomic) _Bool allowsFootnotes;
-@property(readonly, nonatomic) _Bool allowsBody;
-@property(readonly, nonatomic) struct CGRect bodyRect;
 @property(readonly, nonatomic) __weak TPBodyLayout *bodyLayout;
-@property(readonly, nonatomic) __weak id <TPMasterDrawableProvider> masterDrawableProvider;
-- (_Bool)headerFooterProviderValid;
 - (id)headerFooterProvider;
-- (Class)backgroundFillOwningInfoClass;
-- (_Bool)shouldHeaderFooterBeVisible:(long long)arg1;
-- (_Bool)shouldProvideGuidesDuringExclusiveAlignmentOperation;
-- (void)dealloc;
-- (void)p_addLayoutsForInfos:(id)arg1 toArray:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

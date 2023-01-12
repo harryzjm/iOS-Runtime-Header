@@ -7,12 +7,14 @@
 #import <TrialServer/TRIMetricsProviding-Protocol.h>
 #import <TrialServer/TRIRetryableTask-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class NSArray, NSDate, NSString, TRITrialSystemTelemetry;
 @protocol TRITaskAttributing, TRITaskQueueStateProviding;
 
 @interface TRIFetchExperimentTask <TRIRetryableTask, TRIMetricsProviding>
 {
     id <TRITaskAttributing> _taskAttributing;
+    TRITrialSystemTelemetry *_trialSystemTelemetry;
+    _Bool wasDeferred;
     int retryCount;
 }
 
@@ -20,9 +22,11 @@
 + (id)parseFromData:(id)arg1;
 + (id)taskWithExperimentDeployment:(id)arg1 taskAttributing:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 @property(nonatomic) int retryCount; // @synthesize retryCount;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)trialSystemTelemetry;
 - (id)dimensions;
 - (id)metrics;
 @property(readonly, copy) NSString *description;

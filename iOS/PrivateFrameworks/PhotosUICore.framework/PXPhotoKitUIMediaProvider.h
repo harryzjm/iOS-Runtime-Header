@@ -26,7 +26,9 @@
     PHCachingImageManager *_cachingImageManager;
 }
 
-+ (id)defaultMediaProvider;
++ (id)mediaProviderWithLibrary:(id)arg1;
++ (id)_defaultLoadingStatusManager;
++ (id)_defaultImageManager;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
 @property(readonly, nonatomic) PHImageManager *imageManager; // @synthesize imageManager=_imageManager;
@@ -51,10 +53,12 @@
 - (long long)requestAnimatedImageForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestLivePhotoForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (long long)requestPlayerItemForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (long long)requestImageURLForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestImageDataForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (id)init;
 - (id)initWithImageManager:(id)arg1;
+- (id)initWithImageManager:(id)arg1 library:(id)arg2;
 
 @end
 

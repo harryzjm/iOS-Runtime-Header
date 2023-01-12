@@ -22,7 +22,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *propertiesForChatIdentifiers; // @synthesize propertiesForChatIdentifiers=_propertiesForChatIdentifiers;
 @property(retain, nonatomic) CARAutomaticDNDStatus *automaticDNDStatus; // @synthesize automaticDNDStatus=_automaticDNDStatus;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void)processMessages:(id)arg1 inChat:(id)arg2;
+- (void)processMessages:(id)arg1 inChat:(id)arg2 fromIDSID:(id)arg3;
 @property(nonatomic) __weak id <IMDAutoReplyDelegate> replyDelegate;
 - (void)_handleReceivedUrgentRequestForMessages:(id)arg1;
 - (void)_handleGeneratedAutoReplyText:(id)arg1 forChat:(id)arg2;

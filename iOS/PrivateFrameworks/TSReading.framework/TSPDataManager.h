@@ -14,8 +14,8 @@
     TSPObjectContext *_context;
     NSObject<OS_dispatch_queue> *_datasQueue;
     long long _nextNewIdentifier;
-    struct unordered_map<const long long, TSPData *__weak, TSP::ObjectIdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSPData *__weak>>> _identifierToDataMap;
-    struct unordered_map<const std::__1::array<unsigned char, 20>, TSPData *__weak, TSP::DataDigestHash, TSP::DataDigestEqualTo, std::__1::allocator<std::__1::pair<const std::__1::array<unsigned char, 20>, TSPData *__weak>>> _digestToDataMap;
+    struct unordered_map<const long long, TSPData *__weak, TSP::ObjectIdentifierHash, std::equal_to<const long long>, std::allocator<std::pair<const long long, TSPData *__weak>>> _identifierToDataMap;
+    struct unordered_map<const std::array<unsigned char, 20>, TSPData *__weak, TSP::DataDigestHash, TSP::DataDigestEqualTo, std::allocator<std::pair<const std::array<unsigned char, 20>, TSPData *__weak>>> _digestToDataMap;
     NSObject<OS_dispatch_queue> *_temporaryDirectoryQueue;
     NSURL *_lastDocumentURL;
     NSURL *_temporaryDirectoryURL;
@@ -25,7 +25,7 @@
     NSObject<OS_dispatch_group> *_externalReferenceRemovalGroup;
 }
 
-+ (id)stringForDigest:(const array_019f9a10 *)arg1;
++ (id)stringForDigest:(const void *)arg1;
 + (void)readWithChannel:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -33,19 +33,19 @@
 - (void)removeFileAtPath:(id)arg1;
 - (id)checkForPersistenceWarningsWithPackageURL:(id)arg1;
 - (void)addData:(id)arg1;
-- (id)addNewDataForStorage:(id)arg1 digest:(const array_019f9a10 *)arg2 filename:(id)arg3;
-- (id)dataWithStorage:(id)arg1 digest:(const array_019f9a10 *)arg2 filename:(id)arg3 skipDocumentResourcesLookup:(_Bool)arg4 accessorBlock:(CDUnknownBlockType)arg5;
-- (void)dataForDigest:(const array_019f9a10 *)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)dataForDigest:(const array_019f9a10 *)arg1;
-- (id)dataForDigestImpl:(const array_019f9a10 *)arg1 skipDocumentResourcesLookup:(_Bool)arg2 accessorBlock:(CDUnknownBlockType)arg3;
-- (id)dataForDigestImpl:(const array_019f9a10 *)arg1 accessorBlock:(CDUnknownBlockType)arg2;
+- (id)addNewDataForStorage:(id)arg1 digest:(const void *)arg2 filename:(id)arg3;
+- (id)dataWithStorage:(id)arg1 digest:(const void *)arg2 filename:(id)arg3 skipDocumentResourcesLookup:(_Bool)arg4 accessorBlock:(CDUnknownBlockType)arg5;
+- (void)dataForDigest:(const void *)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)dataForDigest:(const void *)arg1;
+- (id)dataForDigestImpl:(const void *)arg1 skipDocumentResourcesLookup:(_Bool)arg2 accessorBlock:(CDUnknownBlockType)arg3;
+- (id)dataForDigestImpl:(const void *)arg1 accessorBlock:(CDUnknownBlockType)arg2;
 - (void)removeExternalReferenceForData:(id)arg1 storage:(id)arg2;
 - (void)waitForRemoveExternalReferencesToComplete;
 - (void)removeExternalReferences;
 - (id)dataFromExternalReferenceURL:(id)arg1 useFileCoordination:(_Bool)arg2;
 - (void)removeTemporaryDirectory;
 - (void)setDocumentURL:(id)arg1;
-- (id)dataWithTemporaryPath:(id)arg1 digest:(const array_019f9a10 *)arg2 filename:(id)arg3;
+- (id)dataWithTemporaryPath:(id)arg1 digest:(const void *)arg2 filename:(id)arg3;
 - (id)temporaryPathForFilename:(id)arg1;
 - (_Bool)linkTemporaryPath:(id)arg1 fromURL:(id)arg2;
 - (int)openTemporaryPath:(id)arg1;
@@ -58,7 +58,7 @@
 - (id)dataFromNSData:(id)arg1 filename:(id)arg2;
 - (void)findExistingDataForReadChannel:(id)arg1 dataURL:(id)arg2 readHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)findExistingDataForReadChannel:(id)arg1 dataURL:(id)arg2 temporaryPath:(id)arg3 shouldWriteIfFound:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)dataForExistingData:(id)arg1 digest:(const array_019f9a10 *)arg2 filename:(id)arg3 temporaryPath:(id)arg4;
+- (id)dataForExistingData:(id)arg1 digest:(const void *)arg2 filename:(id)arg3 temporaryPath:(id)arg4;
 - (id)dataFromReadChannel:(id)arg1 filename:(id)arg2 temporaryPath:(id)arg3;
 - (id)dataFromReadChannel:(id)arg1 filename:(id)arg2 linkURLOrNil:(id)arg3;
 - (id)dataFromReadChannel:(id)arg1 filename:(id)arg2;

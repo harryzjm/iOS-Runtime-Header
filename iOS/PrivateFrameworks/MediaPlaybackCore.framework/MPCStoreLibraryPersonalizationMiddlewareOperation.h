@@ -10,6 +10,7 @@
 
 @class MPCPlayerRequest, MPCStoreLibraryPersonalizationMiddleware, NSArray, NSError, NSMapTable, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCStoreLibraryPersonalizationMiddlewareOperation : MPAsyncOperation <MPMiddlewareAutomaticDependencyOperation>
 {
     NSMapTable *_inputOperations;

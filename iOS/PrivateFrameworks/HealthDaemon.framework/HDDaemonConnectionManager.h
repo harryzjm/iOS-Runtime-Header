@@ -26,12 +26,10 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType processCreationHandler; // @synthesize processCreationHandler=_processCreationHandler;
 @property(readonly, nonatomic) HDXPCListener *serviceListener; // @synthesize serviceListener=_serviceListener;
-- (id)_processForConnection:(id)arg1 error:(id *)arg2;
 - (id)exportObjectForListener:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (id)clientForListener:(id)arg1 connection:(id)arg2 error:(id *)arg3;
 - (void)endpointInvalidated:(id)arg1;
 - (void)invalidateAllServersForProfile:(id)arg1;
-- (void)_configureListener:(id)arg1;
 - (id)createAnonymousListenerWithLabel:(id)arg1;
 - (id)createListenerWithMachServiceName:(id)arg1;
 - (void)invalidate;

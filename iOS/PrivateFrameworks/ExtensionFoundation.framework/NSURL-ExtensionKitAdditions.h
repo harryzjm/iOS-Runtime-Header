@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (ExtensionKitAdditions)
+- (_Bool)_EX_isContainedInDirectory:(id)arg1;
 - (id)_EX_containingApplicationBundleURL;
 - (_Bool)_EX_isApplication;
 - (_Bool)_EX_isDirectory;

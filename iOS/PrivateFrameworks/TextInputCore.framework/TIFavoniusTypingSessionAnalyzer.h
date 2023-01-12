@@ -8,11 +8,13 @@
 
 #import <TextInputCore/TITypingSessionAnalyzing-Protocol.h>
 
-@class NSString, TIKeyboardState, TITypingSession;
+@class NSArray, NSDictionary, NSString, TIKeyboardState, TITypingSession;
 @protocol TIUserModeling;
 
 @interface TIFavoniusTypingSessionAnalyzer : NSObject <TITypingSessionAnalyzing>
 {
+    NSArray *_activeInputModes;
+    NSDictionary *_testingParameters;
     int _lastMessageWordsEntered;
     id <TIUserModeling> _userModel;
     TITypingSession *_currentSession;

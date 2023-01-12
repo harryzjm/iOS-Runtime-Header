@@ -8,5 +8,7 @@
 {
 }
 
+- (_Bool)matchesNode:(id)arg1;
+
 @end
 

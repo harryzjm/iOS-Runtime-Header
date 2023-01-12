@@ -8,8 +8,8 @@
 
 @interface TSSPropertyCommandObjectRegistry : NSObject
 {
-    struct map<int, std::__1::pair<Class, std::__1::basic_string<char>>, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, std::__1::pair<Class, std::__1::basic_string<char>>>>> _indexToClass;
-    struct map<Class, int, std::__1::less<Class>, std::__1::allocator<std::__1::pair<const Class, int>>> _classToIndex;
+    struct map<int, std::pair<Class, std::string>, std::less<int>, std::allocator<std::pair<const int, std::pair<Class, std::string>>>> _indexToClass;
+    struct map<Class, int, std::less<Class>, std::allocator<std::pair<const Class, int>>> _classToIndex;
 }
 
 + (id)sharedRegistry;
@@ -17,7 +17,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)indexForClass:(Class)arg1;
-- (const basic_string_7c0a1c0b *)nameForIndex:(int)arg1;
+- (const void *)nameForIndex:(int)arg1;
 - (Class)classForIndex:(int)arg1;
 - (void)registerClass:(Class)arg1 withField:(id)arg2;
 - (id)init;

@@ -12,6 +12,7 @@
 @interface MTMaterialLayer : CABackdropLayer
 {
     MTMaterialSettingsInterpolator *_settingsInterpolator;
+    MTMaterialSettingsInterpolator *_previousSettingsInterpolator;
     _Bool _needsConfiguring;
     _Bool _blurEnabled;
     _Bool _zoomEnabled;
@@ -22,6 +23,7 @@
     NSMutableDictionary *_pendingChange;
     NSMutableDictionary *_visualStyleCategoriesToProviders;
     NSHashTable *_prunePromises;
+    long long _allowsInPlaceFiltering;
     struct {
         unsigned int delegateManagesWeighting:1;
         unsigned int delegateImplementsManagingOpacity:1;
@@ -57,6 +59,8 @@
 - (void)_configureIfNecessaryWithSettingsInterpolator:(id)arg1;
 - (void)_updateForChangeInWeighting;
 - (void)_updateForChangeInRecipeAndConfiguration;
+- (void)setAllowsInPlaceFiltering:(_Bool)arg1;
+- (_Bool)allowsInPlaceFiltering;
 - (void)layoutSublayers;
 - (void)didChangeValueForKey:(id)arg1;
 - (void)willChangeValueForKey:(id)arg1;
@@ -83,7 +87,6 @@
 @property(readonly, nonatomic, getter=_privateOpacity) double privateOpacity;
 
 // Remaining properties
-@property(copy, nonatomic) NSString *configuration; // @dynamic configuration;
 @property(copy, nonatomic) NSString *recipe; // @dynamic recipe;
 @property(retain, nonatomic, getter=_recipeSettings, setter=_setRecipeSettings:) id <MTRecipeMaterialSettingsProviding> recipeSettings; // @dynamic recipeSettings;
 @property(nonatomic) double weighting; // @dynamic weighting;

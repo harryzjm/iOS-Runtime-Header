@@ -16,8 +16,10 @@
 - (void)removeAllInheritances;
 - (void)removeInheritance:(id)arg1;
 - (void)addInheritance:(id)arg1;
+- (void)setGuaranteedRunning:(_Bool)arg1;
 - (void)setForceRoleManage:(_Bool)arg1;
 - (void)setThrottleBestEffortNetworking:(_Bool)arg1;
+- (void)setGPURole:(unsigned char)arg1;
 - (void)setRole:(unsigned char)arg1;
 - (void)setPreventIdleSleep:(_Bool)arg1;
 - (void)setMinCPUUsageLimits:(id)arg1 forRole:(unsigned char)arg2;
@@ -26,11 +28,10 @@
 - (void)addPreventIdleSleepIdentifier:(id)arg1;
 - (void)setLegacyFinishTaskReason:(unsigned long long)arg1;
 - (void)setJetsamLenientMode:(_Bool)arg1;
-- (void)setJetsamBand:(unsigned char)arg1;
+- (void)setExplicitJetsamBand:(unsigned long long)arg1;
 - (void)setIsBeingDebugged:(_Bool)arg1;
 - (void)setTerminationResistance:(unsigned char)arg1;
 - (void)setPreventSuspend:(_Bool)arg1;
-- (void)setGPUAllowed:(_Bool)arg1;
 - (void)unionState:(id)arg1;
 
 @end

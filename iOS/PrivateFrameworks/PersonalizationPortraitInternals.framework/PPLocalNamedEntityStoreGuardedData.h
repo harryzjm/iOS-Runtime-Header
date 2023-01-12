@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class PPNamedEntityFilter;
+@class _PASLazyResult;
 
 @interface PPLocalNamedEntityStoreGuardedData : NSObject
 {
     _Bool _pendingNamedEntityChangeNotification;
-    PPNamedEntityFilter *_filter;
+    _PASLazyResult *_filter;
+    _PASLazyResult *_mapsSearchQueryResult;
 }
 
 - (void).cxx_destruct;
-- (id)init;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class CKDPAssetsToDownload, CKDPRecordZoneIdentifier, CKDPRequestedFields, NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordRetrieveChangesRequest : PBRequest <NSCopying>
 {
     CKDPAssetsToDownload *_assetsToDownload;

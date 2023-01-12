@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary, NSObject, NSString;
+@class NSArray, NSDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface PHImportUrlSource
@@ -15,16 +15,14 @@
     _Bool _isReadonlyVolume;
     NSString *_prefix;
     NSArray *_urls;
-    NSMutableDictionary *_pathsByFileBaseName;
+    NSDictionary *_resourcePathsByIdentifier;
     NSArray *_baseNames;
-    NSObject<OS_dispatch_queue> *_pathsByFileBaseNameAccess;
 }
 
 + (_Bool)treatAsReadonlyVolume:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *pathsByFileBaseNameAccess; // @synthesize pathsByFileBaseNameAccess=_pathsByFileBaseNameAccess;
 @property(retain, nonatomic) NSArray *baseNames; // @synthesize baseNames=_baseNames;
-@property(retain, nonatomic) NSMutableDictionary *pathsByFileBaseName; // @synthesize pathsByFileBaseName=_pathsByFileBaseName;
+@property(retain, nonatomic) NSDictionary *resourcePathsByIdentifier; // @synthesize resourcePathsByIdentifier=_resourcePathsByIdentifier;
 @property(nonatomic) _Bool isReadonlyVolume; // @synthesize isReadonlyVolume=_isReadonlyVolume;
 @property(retain, nonatomic) NSArray *urls; // @synthesize urls=_urls;
 - (void)setPrefix:(id)arg1;
@@ -39,11 +37,13 @@
 - (id)name;
 - (void)endWork;
 - (id)assetsByProcessingItem:(id)arg1;
-- (void)beginWork;
+- (void)beginProcessingWithCompletion:(CDUnknownBlockType)arg1;
+- (id)resourcePathsInUrls:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToImportUrlSource:(id)arg1;
 - (void)dealloc;
+- (_Bool)containsSupportedMediaWithImportExceptions:(id *)arg1;
 - (id)initWithUrls:(id)arg1;
 
 @end

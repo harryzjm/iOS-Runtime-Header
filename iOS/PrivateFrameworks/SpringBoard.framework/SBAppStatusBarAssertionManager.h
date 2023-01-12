@@ -64,7 +64,7 @@
 @property(readonly, copy) NSString *description;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (int)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(int)arg3;
+- (unsigned long long)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(unsigned long long)arg3;
 - (id)statusBarSettingsForLevel:(unsigned long long)arg1;
 - (id)currentStatusBarSettings;
 - (id)currentEffectiveStatusBarStyleRequest;

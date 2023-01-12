@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, CNContactStore, CNContainer, CNGroup, CNMutableContact, CNPolicy, NSMutableArray;
+@class CNContact, CNContactStore, CNContainer, CNGroup, CNMutableContact, CNUIContainerContext, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CNUIContactSaveConfiguration : NSObject
@@ -20,13 +20,13 @@ __attribute__((visibility("hidden")))
     CNContactStore *_contactStore;
     CNGroup *_parentGroup;
     CNContainer *_parentContainer;
-    CNPolicy *_policy;
+    CNUIContainerContext *_containerContext;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool saveWasAuthorized; // @synthesize saveWasAuthorized=_saveWasAuthorized;
 @property(readonly, nonatomic) _Bool ignoresParentalRestrictions; // @synthesize ignoresParentalRestrictions=_ignoresParentalRestrictions;
-@property(readonly, nonatomic) CNPolicy *policy; // @synthesize policy=_policy;
+@property(readonly, nonatomic) CNUIContainerContext *containerContext; // @synthesize containerContext=_containerContext;
 @property(readonly, nonatomic) CNContainer *parentContainer; // @synthesize parentContainer=_parentContainer;
 @property(readonly, nonatomic) CNGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
@@ -34,7 +34,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CNMutableContact *shadowCopyOfReadonlyContact; // @synthesize shadowCopyOfReadonlyContact=_shadowCopyOfReadonlyContact;
 @property(readonly, nonatomic) CNMutableContact *mutableContact; // @synthesize mutableContact=_mutableContact;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-- (id)initWithContact:(id)arg1 mutableContact:(id)arg2 shadowCopyOfReadonlyContact:(id)arg3 editingLinkedContacts:(id)arg4 contactStore:(id)arg5 parentGroup:(id)arg6 parentContainer:(id)arg7 policy:(id)arg8 ignoresParentalRestrictions:(_Bool)arg9 saveWasAuthorized:(_Bool)arg10;
+- (id)copyWithEditingLinkedContacts:(id)arg1;
+- (id)initWithContact:(id)arg1 mutableContact:(id)arg2 shadowCopyOfReadonlyContact:(id)arg3 editingLinkedContacts:(id)arg4 contactStore:(id)arg5 parentGroup:(id)arg6 parentContainer:(id)arg7 containerContext:(id)arg8 ignoresParentalRestrictions:(_Bool)arg9 saveWasAuthorized:(_Bool)arg10;
 
 @end
 

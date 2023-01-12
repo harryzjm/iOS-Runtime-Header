@@ -55,7 +55,6 @@
     NSString *_hlsPlaylistURLString;
 }
 
-+ (_Bool)_shouldRespectStoreCellularDataSetting;
 + (_Bool)_shouldRespectMusicCellularDataSetting;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *hlsPlaylistURLString; // @synthesize hlsPlaylistURLString=_hlsPlaylistURLString;
@@ -101,7 +100,6 @@
 - (void)_storeCellularNetworkingAllowedDidChangeNotification:(id)arg1;
 - (void)_musicCellularNetworkingAllowedDidChangeNotification:(id)arg1;
 - (void)_contentTasteControllerDidChangeNotification:(id)arg1;
-- (id)_storeRedownloadProductItem;
 - (_Bool)_requiresPendingItemDownload;
 - (void)_persistURI:(id)arg1 persistentContentKey:(id)arg2;
 - (void)_setNeedsAllowsCellularNetworkingUpdate;

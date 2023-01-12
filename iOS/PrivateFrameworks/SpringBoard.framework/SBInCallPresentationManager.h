@@ -6,40 +6,63 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/FBSceneManagerObserver-Protocol.h>
 #import <SpringBoard/SBApplicationHosting-Protocol.h>
 #import <SpringBoard/SBInCallPresentationRequestServerDelegate-Protocol.h>
 #import <SpringBoard/SBInCallPresentationSessionDelegate-Protocol.h>
+#import <SpringBoard/SBMainDisplaySceneManagerObserver-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, SBApplicationController, SBInCallBannerAuthority, SBInCallPresentationRequestServer, SBInCallPresentationSession, SBMainDisplaySceneManager;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, SBApplicationController, SBExpanseBannerAuthority, SBHideSharePlayContentFromSharedScreenController, SBInCallBannerAuthority, SBInCallPresentationRequestServer, SBInCallPresentationSession, SBMainDisplaySceneManager;
 @protocol SBInCallPresentationManagerDelegate;
 
-@interface SBInCallPresentationManager : NSObject <SBInCallPresentationSessionDelegate, SBInCallPresentationRequestServerDelegate, SBApplicationHosting>
+@interface SBInCallPresentationManager : NSObject <SBInCallPresentationSessionDelegate, SBInCallPresentationRequestServerDelegate, FBSceneManagerObserver, SBMainDisplaySceneManagerObserver, SBApplicationHosting>
 {
     SBApplicationController *_applicationController;
     SBInCallPresentationRequestServer *_presentationRequestServer;
-    SBInCallBannerAuthority *_bannerAuthority;
+    SBInCallBannerAuthority *_inCallBannerAuthority;
+    SBExpanseBannerAuthority *_expanseBannerAuthority;
     NSMutableDictionary *_clientIdentifierToPresentationSession;
     NSMutableArray *_pendingInvalidationSessions;
+    NSMutableSet *_bundleIdentifiersOfObservedApplications;
+    _Bool _supportsHandlingUILockForWindowedAccessoryAttach;
+    SBHideSharePlayContentFromSharedScreenController *_lazy_hideSharePlayContentFromSharedScreenController;
     id <SBInCallPresentationManagerDelegate> _delegate;
     SBMainDisplaySceneManager *_sceneManager;
 }
 
 + (_Bool)isSpecializedAPISupported;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool supportsHandlingUILockForWindowedAccessoryAttach; // @synthesize supportsHandlingUILockForWindowedAccessoryAttach=_supportsHandlingUILockForWindowedAccessoryAttach;
 @property(readonly, nonatomic) SBMainDisplaySceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
 @property(nonatomic) __weak id <SBInCallPresentationManagerDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_hasPendingDismissalOfSceneHandleWithPersistenceIdentifier:(id)arg1;
+- (_Bool)_isManagingSceneOrSceneHandleWithPersistenceIdentifier:(id)arg1;
+- (void)_runZombieChecksForSceneHandle:(id)arg1;
+- (void)_runZombieChecksForScene:(id)arg1;
+- (void)_applicationDidExit:(id)arg1;
 - (id)_newClientPresentationSessionWithSceneHandle:(id)arg1;
 - (id)_hostedPresentationSessions;
-- (void)_dismissClientWithIdentifier:(id)arg1 animated:(_Bool)arg2 shouldFinalizeSceneDestruction:(_Bool)arg3 shouldInvalidate:(_Bool)arg4 analyticsSource:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_dismissClientWithIdentifier:(id)arg1 animated:(_Bool)arg2 analyticsSource:(id)arg3 reason:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_sessionForSceneWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) SBInCallPresentationSession *_lastPresentationSession;
 - (void)_dismissAllPresentations;
+- (void)_dismissAllPresentationsForApplication:(id)arg1;
+@property(readonly, nonatomic) SBHideSharePlayContentFromSharedScreenController *hideSharePlayContentFromSharedScreenController; // @synthesize hideSharePlayContentFromSharedScreenController=_lazy_hideSharePlayContentFromSharedScreenController;
+@property(readonly, nonatomic) _Bool hasFullscreenActiveCallInSwitcher;
+- (void)ensureSwitcherInclusionForRestoringFromPIPForSceneWithPersistenceIdentifer:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleOpenApplicationRequest:(id)arg1 clientWorkspace:(id)arg2 actions:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (_Bool)canHandleOpenApplicationRequestForApplication:(id)arg1;
 - (void)reactivateInCallForReason:(long long)arg1;
 - (void)handleDeviceLockFromSource:(int)arg1;
 - (void)handlePresentationForActivityContinuationIdentifier:(id)arg1;
-@property(readonly, nonatomic) _Bool supportsBecomingVisibleWhenWakingDisplay;
+- (void)handleAccessoryAttachWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)supportsBecomingVisibleWhenUnlockingFromSource:(int)arg1 wakingDisplay:(_Bool)arg2;
 @property(readonly, nonatomic) _Bool disallowsLockHardwareButtonDoublePress;
 @property(readonly, nonatomic) _Bool supportsHandlingDeviceLock;
+- (id)overrideAppSceneEntityForLaunchingApplication:(id)arg1;
+- (_Bool)hasOverrideAppSceneEntityForLaunchingApplication:(id)arg1;
+- (void)sceneManager:(id)arg1 didAddScene:(id)arg2;
+- (void)sceneManager:(id)arg1 didAddExternalForegroundApplicationSceneHandle:(id)arg2;
 - (void)hostedAppWillRotateToInterfaceOrientation:(long long)arg1;
 - (id)hostedAppSceneHandles;
 - (id)hostedAppSceneHandle;
@@ -48,6 +71,8 @@
 - (void)conformsToSBApplicationHosting;
 - (void)inCallPresentationRequestServer:(id)arg1 clientWithIdentifierDidInvalidate:(id)arg2;
 - (void)inCallPresentationRequestServer:(id)arg1 clientWithIdentifier:(id)arg2 requestsPresentationWithConfiguration:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)inCallClientPresentationSession:(id)arg1 canRestoreToPreviousEntity:(id)arg2;
+- (id)inCallClientPresentationSession:(id)arg1 acquireHideSharePlayContentFromClonedDisplaysAssertionForReason:(id)arg2;
 - (void)inCallClientPresentationSession:(id)arg1 callConnectedStatusChangedForPresentableViewController:(id)arg2;
 - (long long)inCallClientPresentationSessionInterfaceOrientationForTransientOverlayPresentation:(id)arg1;
 - (long long)inCallClientPresentationSessionInterfaceOrientationForBannerPresentation:(id)arg1;

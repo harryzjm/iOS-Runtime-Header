@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isRememberingEntryPoint;
     id <_UIFocusCastingControllerDelegate> _delegate;
+    double _entryPointMemorizationTimeout;
     unsigned long long _entryPointAxis;
     struct CGPoint _screenEntryPoint;
 }
@@ -21,18 +22,21 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isRememberingEntryPoint; // @synthesize isRememberingEntryPoint=_isRememberingEntryPoint;
 @property(nonatomic) unsigned long long entryPointAxis; // @synthesize entryPointAxis=_entryPointAxis;
 @property(nonatomic) struct CGPoint screenEntryPoint; // @synthesize screenEntryPoint=_screenEntryPoint;
+@property(nonatomic) double entryPointMemorizationTimeout; // @synthesize entryPointMemorizationTimeout=_entryPointMemorizationTimeout;
 @property(nonatomic) __weak id <_UIFocusCastingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_focusEffectsControllerForFocusedItem;
-- (struct CGRect)_globalFrameForFocusItem:(id)arg1;
 - (struct CGPoint)_movementPointInGlobalFrame:(struct CGRect)arg1;
 - (struct CGPoint)_entryPointInGlobalFrame:(struct CGRect)arg1 forHeading:(unsigned long long)arg2;
-- (void)_forgetEntryPoint;
+- (void)forgetEntryPoint;
+- (void)_startRememberingEntryPoint;
+- (void)_stopRememberingEntryPoint;
 - (struct CGPoint)_castingPointInGlobalFrame:(struct CGRect)arg1 forHeading:(unsigned long long)arg2;
 - (unsigned long long)_axisForHeading:(unsigned long long)arg1;
 - (void)_updateFocusItemFromGlobalFrame:(struct CGRect)arg1 toGlobalFrame:(struct CGRect)arg2 withHeading:(unsigned long long)arg3;
 - (void)_updateFocusFromItem:(id)arg1 toItem:(id)arg2 withHeading:(unsigned long long)arg3;
 - (struct CGRect)castingFrameForFocusedGlobalFrame:(struct CGRect)arg1 heading:(unsigned long long)arg2;
 - (void)updateFocusCastingWithContext:(id)arg1;
+- (void)teardown;
 - (id)init;
 
 @end

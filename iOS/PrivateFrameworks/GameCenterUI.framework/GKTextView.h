@@ -16,6 +16,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 @property(nonatomic) GKLabel *placeholderLabel; // @synthesize placeholderLabel=_placeholderLabel;
 @property(retain, nonatomic) GKTextStyle *appliedStyle; // @synthesize appliedStyle=_appliedStyle;
 @property(retain, nonatomic) GKTextStyle *_baseStyle; // @synthesize _baseStyle=__baseStyle;

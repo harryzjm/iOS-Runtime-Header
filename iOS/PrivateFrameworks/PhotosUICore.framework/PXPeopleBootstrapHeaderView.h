@@ -7,22 +7,30 @@
 #import <UIKit/UICollectionReusableView.h>
 
 @class NSString, PXPeopleScalableAvatarView, UILabel;
+@protocol PXPerson;
 
 @interface PXPeopleBootstrapHeaderView : UICollectionReusableView
 {
-    UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
     PXPeopleScalableAvatarView *_avatarView;
+    id <PXPerson> _person;
+    UILabel *_titleLabel;
+    UILabel *_descriptionLabel;
 }
 
++ (id)_titleFont;
++ (id)_descriptionFont;
++ (struct CGSize)_sizeForString:(id)arg1 width:(double)arg2 multiline:(_Bool)arg3 font:(id)arg4;
++ (struct CGSize)sizeForDescription:(id)arg1 title:(id)arg2 boundingSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PXPeopleScalableAvatarView *avatarView; // @synthesize avatarView=_avatarView;
-@property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(retain, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(copy, nonatomic) NSString *subtitle;
+@property(retain, nonatomic) id <PXPerson> person; // @synthesize person=_person;
+@property(retain, nonatomic) PXPeopleScalableAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+- (_Bool)_enableBootstrapSpeedBump;
+@property(copy, nonatomic) NSString *descriptionText;
 @property(copy, nonatomic) NSString *title;
 - (void)prepareForReuse;
-- (void)setPerson:(id)arg1;
+- (void)_setupHeader;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

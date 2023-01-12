@@ -7,6 +7,7 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (NSKeyValueCoding)
++ (_Bool)_subclassesMustBeExplicitlyMentionedWhenDecoded;
 + (_Bool)supportsSecureCoding;
 - (id)valueForKeyPath:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;

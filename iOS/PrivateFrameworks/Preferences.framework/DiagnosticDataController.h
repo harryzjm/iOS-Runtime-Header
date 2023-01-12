@@ -10,14 +10,18 @@
 
 @interface DiagnosticDataController <UISearchResultsUpdating>
 {
-    NSArray *_allSpecifiers;
     UISearchController *_searchController;
+    unsigned long long __state;
+    NSArray *__allSpecifiers;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *_allSpecifiers; // @synthesize _allSpecifiers=__allSpecifiers;
+@property(nonatomic) unsigned long long _state; // @synthesize _state=__state;
 @property(retain, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (id)specifiers;
+- (void)_loadDiagnosticsDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewDidLoad;
 - (id)init;
 

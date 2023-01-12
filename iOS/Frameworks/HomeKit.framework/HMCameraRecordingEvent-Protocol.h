@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKit/NSObject-Protocol.h>
+
 @class NSDate, NSUUID;
 
-@protocol HMCameraRecordingEvent
+@protocol HMCameraRecordingEvent <NSObject>
 @property(readonly, copy) NSDate *dateOfOccurrence;
 @property(readonly, copy) NSUUID *uniqueIdentifier;
 @end

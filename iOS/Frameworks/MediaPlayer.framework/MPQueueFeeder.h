@@ -6,31 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class MPModelPlayEvent, MPQueueFeederIdentifierRegistry, NSData, NSDictionary, NSString;
+@class MPQueueFeederIdentifierRegistry, NSData, NSDictionary, NSString;
 
 @interface MPQueueFeeder : NSObject
 {
     MPQueueFeederIdentifierRegistry *_identifierRegistry;
     struct os_unfair_lock_s _identifierRegistryLock;
     NSString *_uniqueIdentifier;
+    NSString *_playActivityQueueGroupingID;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     NSString *_siriReferenceIdentifier;
     NSDictionary *_siriWHAMetricsInfo;
-    MPModelPlayEvent *_modelPlayEvent;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) MPModelPlayEvent *modelPlayEvent; // @synthesize modelPlayEvent=_modelPlayEvent;
 @property(copy, nonatomic) NSDictionary *siriWHAMetricsInfo; // @synthesize siriWHAMetricsInfo=_siriWHAMetricsInfo;
 @property(copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property(copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
+@property(copy, nonatomic) NSString *playActivityQueueGroupingID; // @synthesize playActivityQueueGroupingID=_playActivityQueueGroupingID;
 @property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-- (id)playbackInfoForItem:(id)arg1;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
+- (id)firstModelPlayEvent;
 - (id)errorResolverForItem:(id)arg1;
-- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 properties:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)supplementalPlaybackContextWithReason:(long long)arg1;
 - (long long)supplementalPlaybackContextBehavior;
 - (long long)identifierRegistryWithExclusiveAccessReturningInteger:(CDUnknownBlockType)arg1;

@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7VFXCore31AnimationComputeLocalTimeSystem : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *updateGroupTime;
 }
 
 @end

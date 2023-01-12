@@ -6,15 +6,15 @@
 
 #import <HomeUI/HUServiceGridItemManagerDelegate-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface HUInformationalServiceGridViewController <HUServiceGridItemManagerDelegate>
 {
-    CDUnknownBlockType _filter;
+    NSSet *_accessoriesToDisplay;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+@property(copy, nonatomic) NSSet *accessoriesToDisplay; // @synthesize accessoriesToDisplay=_accessoriesToDisplay;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (_Bool)serviceGridItemManager:(id)arg1 shouldHideItem:(id)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;

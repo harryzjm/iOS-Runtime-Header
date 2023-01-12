@@ -10,7 +10,7 @@
 #import <UIKitCore/_UINavigationControllerRefreshControlHostDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationItemChangeObserver-Protocol.h>
 
-@class NSString, UIBarButtonItem, UILabel, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarLargeTitleView, _UINavigationBarModernPromptView, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost, _UIPointerInteractionAssistant;
+@class NSString, UIBarButtonItem, UIFocusContainerGuide, UILabel, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarLargeTitleView, _UINavigationBarModernPromptView, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost, _UIPointerInteractionAssistant;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProviderModernIOS <_UINavigationBarContentViewDelegate, _UINavigationItemChangeObserver, _UIBarAppearanceChangeObserver, _UINavigationControllerRefreshControlHostDelegate, _UIBasicAnimationFactory>
@@ -35,8 +35,10 @@ __attribute__((visibility("hidden")))
     _Bool _isObservingDidEncounterFirstTitleWithExcessiveHeightChanged;
     _Bool _useModernAppearanceAPI;
     _Bool _forceScrollEdgeAppearance;
+    _Bool _hasPendingLargeTitleDisplayModeChangeUpdate;
     long long _appearanceAPIVersion;
     UIBarButtonItem *_staticNavBarButtonItem;
+    UIFocusContainerGuide *_contentFocusContainerGuide;
     _UINavigationControllerRefreshControlHost *_refreshControlHost;
 }
 
@@ -99,7 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupTopNavigationItemAnimated:(_Bool)arg1;
 - (id)restingHeights;
 - (_Bool)topItemHasVariableHeight;
-- (CDStruct_39925896)layoutHeightsFittingWidth:(double)arg1;
+- (CDStruct_cf303044)layoutHeightsFittingWidth:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)safeAreaInsetsDidChange;
@@ -112,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (void)barDidAddSubview:(id)arg1;
 - (void)_setupAccessibilityLimitsForView:(id)arg1;
 - (void)animateForSearchPresentation:(_Bool)arg1;
+- (void)prepareForStackChange;
 - (void)prepareForPop;
 - (void)prepareForPush;
 - (void)_prepareLayouts;
@@ -143,6 +146,8 @@ __attribute__((visibility("hidden")))
 - (void)_enforceLayoutOrdering;
 - (void)_updateContentForTopItem:(id)arg1 backItem:(id)arg2;
 - (void)_updateContentForTopItem:(id)arg1 backItem:(id)arg2 animated:(_Bool)arg3;
+- (void)_refreshBackButtonMenu;
+- (id)_staticNavBarButtonFakeBackMenu;
 - (id)_backButtonMenu;
 - (void)_popToItem:(id)arg1;
 - (_Bool)_isInnerNavigationBarOfNestedNavigationController;
@@ -154,9 +159,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)_stackWantsLargeTitleDisplayedForItem:(id)arg1;
 - (_Bool)_stackWantsExtendedContentViewForItem:(id)arg1;
 - (_Bool)allowLargeTitleView;
+- (_Bool)scrollEdgeAppearanceHasChromelessBehavior;
 - (void)setForceScrollEdgeAppearance:(_Bool)arg1;
 - (_Bool)useManualScrollEdgeAppearanceForItem:(id)arg1;
 - (_Bool)forceScrollEdgeAppearance;
+- (_Bool)alwaysEvaluateChromelessTransitionProgress;
 - (void)_upgradeAppearanceAPIForItemIfNecessary:(id)arg1;
 - (id)appearanceObserver;
 - (void)setAppearanceAPIVersion:(long long)arg1;
@@ -182,6 +189,7 @@ __attribute__((visibility("hidden")))
 - (void)changeAppearance;
 - (double)_contentBackgroundExtension;
 - (void)stackDidChangeFrom:(id)arg1;
+- (void)_setUpContentFocusContainerGuide;
 - (void)teardown;
 - (void)prepare;
 

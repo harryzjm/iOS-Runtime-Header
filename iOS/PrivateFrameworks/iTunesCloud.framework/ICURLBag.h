@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICURLBagLibraryDAAPConfiguration, ICURLBagRadioConfiguration, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString;
+@class ICURLBagEnhancedAudioConfiguration, ICURLBagLibraryDAAPConfiguration, ICURLBagRadioConfiguration, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICURLBag : NSObject
@@ -37,6 +37,7 @@
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
 @property(readonly, nonatomic) _Bool canPostKeybagSyncData;
 @property(readonly, copy, nonatomic) NSString *storefrontHeaderSuffix;
+@property(readonly, nonatomic) ICURLBagEnhancedAudioConfiguration *enhancedAudioConfiguration;
 @property(readonly, nonatomic) ICURLBagLibraryDAAPConfiguration *libraryDAAPConfiguration;
 @property(readonly, nonatomic) ICURLBagRadioConfiguration *radioConfiguration;
 - (id)mescalConfigurationForResponse:(id)arg1;

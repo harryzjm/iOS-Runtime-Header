@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <OspreyRPC> channel; // @synthesize channel=_channel;
+- (id)initWithConnectionConfiguration:(id)arg1;
 - (id)initWithConnectionURL:(id)arg1;
 
 @end

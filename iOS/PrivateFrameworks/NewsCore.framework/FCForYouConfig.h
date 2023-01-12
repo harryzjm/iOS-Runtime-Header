@@ -9,7 +9,6 @@
 #import <NewsCore/NSCopying-Protocol.h>
 
 @class FCGroupConfig, FCInterestToken, FCSpotlightGroupConfig, FCTopStoriesGroupConfig, NSArray, NSDate, NSString, NTPBForYouConfigRecord;
-@protocol FCForYouBridgedConfiguration;
 
 @interface FCForYouConfig : NSObject <NSCopying>
 {
@@ -20,7 +19,6 @@
     NSArray *_demoGroupConfigs;
     NSArray *_topVideosArticleIDs;
     NSString *_moreVideosArticleListID;
-    id <FCForYouBridgedConfiguration> _bridgedConfiguration;
     NTPBForYouConfigRecord *_forYouConfigRecord;
     FCInterestToken *_interestToken;
 }
@@ -28,7 +26,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) FCInterestToken *interestToken; // @synthesize interestToken=_interestToken;
 @property(retain, nonatomic) NTPBForYouConfigRecord *forYouConfigRecord; // @synthesize forYouConfigRecord=_forYouConfigRecord;
-@property(copy, nonatomic) id <FCForYouBridgedConfiguration> bridgedConfiguration; // @synthesize bridgedConfiguration=_bridgedConfiguration;
 @property(readonly, nonatomic) NSString *moreVideosArticleListID; // @synthesize moreVideosArticleListID=_moreVideosArticleListID;
 @property(readonly, nonatomic) NSArray *topVideosArticleIDs; // @synthesize topVideosArticleIDs=_topVideosArticleIDs;
 @property(readonly, nonatomic) NSArray *demoGroupConfigs; // @synthesize demoGroupConfigs=_demoGroupConfigs;
@@ -43,7 +40,7 @@
 @property(readonly, nonatomic) NSArray *editorialArticleListIDs;
 @property(readonly, nonatomic) NSString *trendingArticleListID;
 @property(readonly, nonatomic) NSArray *todayFeedTopStoriesArticleIDs;
-- (id)initWithRecord:(id)arg1 interestToken:(id)arg2 bridgedConfiguration:(id)arg3;
+- (id)initWithRecord:(id)arg1 interestToken:(id)arg2;
 
 @end
 

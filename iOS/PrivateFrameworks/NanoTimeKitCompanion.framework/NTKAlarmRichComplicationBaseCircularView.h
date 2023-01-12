@@ -21,8 +21,8 @@
         double timeLabel24HourLayoutFontSize;
         double timeLabel24HourLayoutMaxWidth;
         double timeLabel24HourLayoutBottom;
-        double timeLabeSnoozeLayoutFontSize;
-        double timeLabeSnoozeLayoutMaxWidth;
+        double timeLabelSnoozeLayoutFontSize;
+        double timeLabelSnoozeLayoutMaxWidth;
         double timeLabelSnoozeLayoutBottom;
         double designatorLabelFontSize;
         double designatorLabelMaxWidth;
@@ -30,6 +30,8 @@
         double designatorLabel12HourDesignatorLeadingLayoutBottom;
         double snoozeIconTop;
         double snoozeRingStrokeWidth;
+        double alarmSymbolPointSize;
+        double snoozeSymbolPointSize;
     } _layoutConstants;
     unsigned long long _layout;
 }
@@ -41,6 +43,7 @@
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)makeBackgroundTransparent;
 - (void)layoutSubviews;
+- (_Bool)_pairedDeviceSupportsComplicationSymbols;
 - (id)initWithFamily:(long long)arg1;
 
 @end

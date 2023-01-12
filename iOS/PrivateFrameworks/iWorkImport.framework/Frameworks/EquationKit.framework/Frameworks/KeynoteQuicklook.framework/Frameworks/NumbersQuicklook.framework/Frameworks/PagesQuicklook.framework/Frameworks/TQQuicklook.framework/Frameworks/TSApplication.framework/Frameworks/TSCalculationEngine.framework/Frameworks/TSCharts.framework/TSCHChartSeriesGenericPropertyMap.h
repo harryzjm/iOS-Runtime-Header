@@ -10,11 +10,11 @@
 {
 }
 
-+ (void)savePropertyMap:(id)arg1 toArchive:(struct ChartSeriesGenericPropertyMapArchive *)arg2 archiver:(id)arg3;
++ (void)savePropertyMap:(id)arg1 toArchive:(void *)arg2 archiver:(id)arg3;
 + (id)imageFillProperties;
 + (id)properties;
-- (void)saveToArchive:(struct ChartSeriesGenericPropertyMapArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ChartSeriesGenericPropertyMapArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

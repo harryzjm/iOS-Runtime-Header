@@ -11,19 +11,19 @@
 @interface PKPaymentAuthorizationPasswordButtonView : UIView
 {
     UIView *_separatorView;
+    UIButton *_passwordButton;
     NSMutableArray *_hiddenConstraints;
     NSLayoutConstraint *_buttonTopPaddingConstraint;
     NSLayoutConstraint *_buttonBottomPaddingConstraint;
     NSLayoutConstraint *_seperatorHeightConstraint;
-    UIButton *_passwordButton;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIButton *passwordButton; // @synthesize passwordButton=_passwordButton;
 - (void)_setupConstraints;
 - (void)setHidden:(_Bool)arg1;
 - (void)updateConstraints;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setActionTitle:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 action:(id)arg2;
 
 @end
 

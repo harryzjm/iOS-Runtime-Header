@@ -18,10 +18,18 @@
 - (id)hf_updateWallpaperImage:(id)arg1;
 @property(readonly, nonatomic) UIImage *hf_wallpaperImage;
 @property(readonly, nonatomic) _Bool hf_hasAtleastOneReachableHomePod;
+- (_Bool)hf_atleastOneMediaAccessorySupportsAndHasAnnounceEnabled;
+- (_Bool)hf_atleastOneHomePodSupportsAnnounce;
+@property(readonly, nonatomic) _Bool hf_shouldShowAnnounceFeatureForThisRoom;
+@property(readonly, nonatomic) _Bool hf_shouldShowAnnounceButtonForThisRoom;
+@property(readonly, nonatomic) _Bool hf_hasVisibleAccessories;
 @property(readonly, nonatomic) NSArray *hf_visibleAccessories;
 @property(readonly, nonatomic) NSSet *hf_allVisibleServices;
 @property(readonly, nonatomic) _Bool hf_hasAtleastOneHomePod;
 - (id)availableHomePodsSupportingStereoPairingVersions:(unsigned long long)arg1;
+- (id)availableHomeTheaterMediaPartnerFor:(id)arg1;
+@property(readonly, nonatomic) NSArray *hf_homePodsNotInHomeTheaterGroup;
+@property(readonly, nonatomic) NSArray *hf_homePodPairsNotInHomeTheaterGroup;
 @property(readonly, nonatomic) NSArray *hf_pairedHomePods;
 @property(readonly, nonatomic) NSArray *hf_allZones;
 @property(readonly, nonatomic) NSArray *hf_allServices;

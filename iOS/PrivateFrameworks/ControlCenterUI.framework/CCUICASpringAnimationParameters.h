@@ -18,9 +18,13 @@
     double _stiffness;
     double _damping;
     id <CCUIAnimationTimingFunctionDescription> _timingFunction;
+    struct CAFrameRateRange _frameRateRange;
+    unsigned int _highFrameRateReason;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned int highFrameRateReason; // @synthesize highFrameRateReason=_highFrameRateReason;
+@property(readonly, nonatomic) struct CAFrameRateRange frameRateRange; // @synthesize frameRateRange=_frameRateRange;
 @property(readonly, copy, nonatomic) id <CCUIAnimationTimingFunctionDescription> timingFunction; // @synthesize timingFunction=_timingFunction;
 @property(readonly, nonatomic) double damping; // @synthesize damping=_damping;
 @property(readonly, nonatomic) double stiffness; // @synthesize stiffness=_stiffness;

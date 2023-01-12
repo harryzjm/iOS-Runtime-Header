@@ -23,8 +23,8 @@
 - (id)_groupTitleWithFeature:(id)arg1 graph:(id)arg2 allowedGroupsFormat:(unsigned long long)arg3;
 - (id)_groupTitleWithMomentNodes:(id)arg1 allowedGroupsFormat:(unsigned long long)arg2;
 - (id)_birthdayTitleWithMomentNodes:(id)arg1;
-- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2;
-- (id)_resolvedStringWithMomentNodes:(id)arg1;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 features:(id)arg2 argumentEvaluationContext:(id)arg3;
+- (id)_resolvedStringWithMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
 - (id)initWithPeopleType:(unsigned long long)arg1;
 - (id)_initWithPeopleType:(unsigned long long)arg1 personNodes:(id)arg2;
 

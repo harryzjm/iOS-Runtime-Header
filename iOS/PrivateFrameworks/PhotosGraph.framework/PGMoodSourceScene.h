@@ -10,7 +10,7 @@
 
 + (id)_plistName;
 + (_Bool)shouldUseSceneIdentifier:(id)arg1;
-- (void)_combineMoodVectors;
+- (void)_combineMoodVectorsWithGraph:(id)arg1;
 - (unsigned long long)_sourceInputCount;
 - (double)weight;
 

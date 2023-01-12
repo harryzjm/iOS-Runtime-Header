@@ -6,10 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @protocol PKServiceTransactionAuthenticationPasscodeViewControllerProtocol <NSObject>
 - (void)resetWithTransactionAuthenticationFailure:(long long)arg1 completion:(void (^)(_Bool))arg2;
-- (void)setPassUniqueIdentifier:(NSString *)arg1 transactionIdentifier:(NSString *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (void)setPassUniqueIdentifier:(NSString *)arg1 transactionIdentifier:(NSString *)arg2 archivedAnalyticsSessionToken:(NSData *)arg3 completionHandler:(void (^)(_Bool))arg4;
 @end
 

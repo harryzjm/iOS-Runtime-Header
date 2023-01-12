@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class PGManager;
-@protocol OS_os_log;
+@class PGManagerWorkingContext;
 
 @interface PGSharingManager : NSObject
 {
-    PGManager *_manager;
-    NSObject<OS_os_log> *_loggingConnection;
+    PGManagerWorkingContext *_workingContext;
 }
 
 + (id)_defaultOptions;
 - (void).cxx_destruct;
-- (id)_learningStreamUtilsWithGraph:(id)arg1;
+- (id)_learningStreamUtils;
 - (id)_sortedSuggestionResults:(id)arg1 withOptions:(id)arg2;
 - (id)_filteredSuggestionResults:(id)arg1 withOptions:(id)arg2 graph:(id)arg3;
 - (void)_mergeSuggestionResultByPersonIdentifer:(id)arg1 withSourceSuggestionResults:(id)arg2;
@@ -29,7 +27,7 @@
 - (id)learningStream;
 - (id)contextualStream;
 - (id)presenceStream;
-- (id)initWithManager:(id)arg1;
+- (id)initWithWorkingContext:(id)arg1;
 
 @end
 

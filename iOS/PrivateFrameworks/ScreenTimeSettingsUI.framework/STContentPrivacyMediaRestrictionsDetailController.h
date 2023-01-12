@@ -6,16 +6,18 @@
 
 #import <Preferences/PSListController.h>
 
-@class NSObject;
+@class NSObject, STRegionRatings;
 @protocol STContentPrivacyViewModelCoordinator;
 
 __attribute__((visibility("hidden")))
 @interface STContentPrivacyMediaRestrictionsDetailController : PSListController
 {
     NSObject<STContentPrivacyViewModelCoordinator> *_coordinator;
+    STRegionRatings *_regionRatings;
 }
 
 - (void).cxx_destruct;
+@property(retain) STRegionRatings *regionRatings; // @synthesize regionRatings=_regionRatings;
 @property(retain, nonatomic) NSObject<STContentPrivacyViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 - (id)defaultSwitchSpecifierWithConfiguration:(id)arg1 key:(id)arg2;
 - (id)radioGroupSpecifierWithName:(id)arg1 footerText:(id)arg2 item:(id)arg3;
@@ -25,10 +27,13 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
 - (void)setItemSpecifierValue:(id)arg1 specifier:(id)arg2;
+- (id)_getSpecifierValueForItem:(id)arg1 viewModel:(id)arg2 restrictionValues:(id)arg3;
 - (id)getItemSpecifierValue:(id)arg1;
 - (void)showWebFilterRestrictions:(id)arg1;
 - (id)specifiers;
-- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRegionRatings:(id)arg1;
 
 @end
 

@@ -13,6 +13,7 @@
 - (oneway void)reportIssueForError:(NSError *)arg1 eventType:(long long)arg2 subtype:(NSString *)arg3 context:(NSDictionary *)arg4;
 - (oneway void)reportIssueForError:(NSError *)arg1 eventType:(long long)arg2 context:(NSDictionary *)arg3;
 - (oneway void)requestOfflineDictationSupportForLanguage:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)requestOfflineAssistantSupportForLanguage:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)getInstalledOfflineLanguagesWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)_sendEngagementFeedback:(long long)arg1 voiceQueryIdentifier:(NSString *)arg2;
 - (oneway void)_startDictationWithURL:(NSURL *)arg1 isNarrowBand:(_Bool)arg2 language:(NSString *)arg3 options:(AFDictationOptions *)arg4;

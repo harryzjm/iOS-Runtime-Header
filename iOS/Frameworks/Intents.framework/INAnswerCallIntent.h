@@ -20,12 +20,15 @@
 - (id)domain;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_dictionaryRepresentation;
+- (void)setCallIdentifier:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *callIdentifier;
 - (void)setAudioRoute:(long long)arg1;
 @property(readonly, nonatomic) long long audioRoute;
-- (id)initWithAudioRoute:(long long)arg1;
+- (id)initWithAudioRoute:(long long)arg1 callIdentifier:(id)arg2;
 - (void)_setMetadata:(id)arg1;
 - (id)_metadata;
 - (id)_typedBackingStore;
+- (id)initWithAudioRoute:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *xpcConnection;
     id <AUPBServing> proxyInterface;
     struct OpaqueAUPBServer *ref;
-    struct vector<NSObject<OS_dispatch_semaphore>*, std::__1::allocator<NSObject<OS_dispatch_semaphore>*>> replySemas;
+    struct vector<NSObject<OS_dispatch_semaphore>*, std::allocator<NSObject<OS_dispatch_semaphore>*>> replySemas;
 }
 
 - (id).cxx_construct;

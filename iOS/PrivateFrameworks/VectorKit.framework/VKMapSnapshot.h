@@ -8,20 +8,25 @@
 
 #import <VectorKit/NSSecureCoding-Protocol.h>
 
-@class VKCamera;
+@class NSArray, NSDictionary, VKCamera;
 
 @interface VKMapSnapshot : NSObject <NSSecureCoding>
 {
-    struct CGImage *_image;
+    NSArray *_images;
     unsigned long long _width;
     unsigned long long _height;
     double _scale;
-    VKCamera *_camera;
+    VKCamera *_vkCamera;
+    CDStruct_80aa614a *_displayStyles;
+    unsigned long long _displayStylesCount;
+    NSDictionary *_memoryStats;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSDictionary *memoryStats; // @synthesize memoryStats=_memoryStats;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
-@property(readonly, nonatomic) struct CGImage *image; // @synthesize image=_image;
+@property(readonly, nonatomic) NSArray *images; // @synthesize images=_images;
+- (void)enumerateImagesWithBlock:(CDUnknownBlockType)arg1;
 - (id)imageDataInFormat:(unsigned long long)arg1;
 - (CDStruct_c3b9c2ee)coordinateForPoint:(struct CGPoint)arg1;
 - (struct CGPoint)pointForCoordinate:(CDStruct_c3b9c2ee)arg1;
@@ -29,7 +34,7 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)_initWithImage:(struct CGImage *)arg1 scale:(double)arg2 camera:(id)arg3;
+- (id)_initWithImages:(id)arg1 displayStyles:(CDStruct_80aa614a *)arg2 displayStylesCount:(unsigned long long)arg3 scale:(double)arg4 camera:(id)arg5;
 
 @end
 

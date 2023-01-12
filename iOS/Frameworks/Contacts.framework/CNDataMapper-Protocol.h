@@ -6,7 +6,7 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactStore, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString, NSURL;
+@class CNAuthorizationContext, CNChangeHistoryClearRequest, CNChangeHistoryFetchRequest, CNChangeHistoryResult, CNContact, CNContactFetchRequest, CNContactsEnvironment, CNContainer, CNManagedConfiguration, CNObservable, CNPolicy, CNResult, CNSaveRequest, NSArray, NSData, NSDictionary, NSNumber, NSPredicate, NSString;
 @protocol CNCancelable, CNKeyDescriptor;
 
 @protocol CNDataMapper <NSObject>
@@ -29,16 +29,6 @@
 @optional
 @property(retain, nonatomic) NSString *legacyTetheredSyncComputerAnchor;
 @property(retain, nonatomic) NSString *legacyTetheredSyncDeviceAnchor;
-- (NSArray *)_smartGroupsMatchingPredicate:(NSPredicate *)arg1 contactStore:(CNContactStore *)arg2;
-- (NSArray *)_smartGroupsForAccountsWithIdentifiers:(NSArray *)arg1 contactStore:(CNContactStore *)arg2;
-- (_Bool)_saveCustomPropertyValuesForRemoteRecords:(NSArray *)arg1 error:(id *)arg2;
-- (_Bool)_saveAddedCustomProperties:(NSArray *)arg1 deletedCustomProperties:(NSArray *)arg2 error:(id *)arg3;
-- (NSURL *)_persistentStoreURLForRecordWithIdentifier:(NSString *)arg1;
-- (NSArray *)_infosForAccountsWithIdentifiers:(NSArray *)arg1 error:(id *)arg2;
-- (NSArray *)_groupsMatchingCoreDataPredicate:(NSPredicate *)arg1 error:(id *)arg2;
-- (NSArray *)_customPropertyValuesForRecordWithIdentifier:(NSString *)arg1 error:(id *)arg2;
-- (id)_createInfo;
-- (NSArray *)_allCustomProperties;
 - (_Bool)resetSortDataIfNeededWithError:(id *)arg1;
 - (_Bool)setDefaultAccountIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (_Bool)writeFavoritesPropertyListData:(NSData *)arg1 toPath:(NSString *)arg2 error:(id *)arg3;
@@ -54,6 +44,7 @@
 - (id <CNKeyDescriptor>)descriptorForRequiredKeysForMatchingDictionary;
 - (NSDictionary *)userActivityUserInfoForContact:(CNContact *)arg1;
 - (CNContact *)contactWithUserActivityUserInfo:(NSDictionary *)arg1 keysToFetch:(NSArray *)arg2;
+- (id <CNKeyDescriptor>)descriptorForRequiredKeysForUserActivityUserInfo;
 - (NSArray *)usedLabelsForPropertyWithKey:(NSString *)arg1 error:(id *)arg2;
 - (id <CNCancelable>)executeFetchRequest:(CNContactFetchRequest *)arg1 progressiveResults:(void (^)(NSArray *, NSDictionary *))arg2 completion:(void (^)(NSError *))arg3;
 - (_Bool)setBestMeIfNeededForGivenName:(NSString *)arg1 familyName:(NSString *)arg2 email:(NSString *)arg3 error:(id *)arg4;

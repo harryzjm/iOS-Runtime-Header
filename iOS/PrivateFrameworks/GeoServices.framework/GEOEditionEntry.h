@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface GEOEditionEntry : NSObject
 {
-    unsigned int _tileset;
+    CDUnion_23a7df3d _tileset;
     unsigned int _edition;
     unsigned int _provider;
     _Bool _invalidateOnly;
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool invalidateOnly; // @synthesize invalidateOnly=_invalidateOnly;
 @property(nonatomic) unsigned int provider; // @synthesize provider=_provider;
 @property(nonatomic) unsigned int edition; // @synthesize edition=_edition;
-@property(nonatomic) unsigned int tileset; // @synthesize tileset=_tileset;
+@property(nonatomic) CDUnion_23a7df3d tileset; // @synthesize tileset=_tileset;
 
 @end
 

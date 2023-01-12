@@ -23,8 +23,10 @@
     double _distanceBuffer;
 }
 
++ (_Bool)_isDefinitelyOutsideOfVisit:(id)arg1 location:(id)arg2 allowingBuffer:(double)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)awaitQueue;
 - (void)didLeaveVisit:(id)arg1;
 - (void)didEnterVisit:(id)arg1;
 - (void)didLoseLocationPermission;

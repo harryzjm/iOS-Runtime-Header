@@ -11,9 +11,9 @@
 
 @interface PXGStackLayout <PXGDataSourceDrivenLayout>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     _Bool _isUpdatingSublayouts;
-    struct CGPoint *_sublayoutOriginsBeforeUpdate;
+    CDStruct_39925896 *_sublayoutOriginsBeforeUpdate;
     _Bool _alignsLastSublayoutToVisibleBottomEdge;
     long long _axis;
     double _interlayoutSpacing;
@@ -33,9 +33,11 @@
 @property(nonatomic) double interlayoutSpacing; // @synthesize interlayoutSpacing=_interlayoutSpacing;
 @property(nonatomic) long long axis; // @synthesize axis=_axis;
 - (struct UIEdgeInsets)flexibleRegionInsets;
+- (long long)scrollableAxis;
 - (void)scrollSpeedRegimeDidChange;
 - (void)screenScaleDidChange;
 - (void)visibleRectDidChange;
+- (void)referenceDepthDidChange;
 - (void)referenceSizeDidChange;
 - (void)viewEnvironmentDidChange;
 - (void)sublayoutDidChangeLastBaseline:(id)arg1;
@@ -47,7 +49,9 @@
 - (void)_updateSublayouts;
 - (void)_updateInterlayoutSpacing;
 - (void)_invalidateEstimatedSublayoutContentSizes;
+- (void)didUpdate;
 - (void)update;
+- (void)willUpdate;
 - (void)invalidateAdditionalSafeAreaInsets;
 - (struct UIEdgeInsets)additionalSafeAreaInsetsForSublayout:(id)arg1;
 - (void)dealloc;

@@ -24,7 +24,6 @@
 @property(copy, nonatomic) NSString *restoreBundleID; // @synthesize restoreBundleID=_restoreBundleID;
 - (void)request:(id)arg1 didFailWithError:(id)arg2;
 - (void)requestDidFinish:(id)arg1;
-- (id)refreshReceiptDirectoryURLWithBundleID:(id)arg1;
 - (id)refreshForPurchase:(id)arg1;
 
 // Remaining properties

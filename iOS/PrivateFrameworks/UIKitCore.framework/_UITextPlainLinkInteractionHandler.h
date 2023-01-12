@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
 - (CDUnknownBlockType)_handlerRequiringUnlockedDevice:(CDUnknownBlockType)arg1;
 - (id)link;
 - (id)contextMenuConfiguration;
-- (id)defaultAction;
-- (id)initWithRange:(struct _NSRange)arg1 rect:(struct CGRect)arg2 inTextContentView:(id)arg3;
+- (id)defaultActionWithContextMenuInteraction:(id)arg1;
+- (id)initWithItem:(id)arg1 inTextContentView:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

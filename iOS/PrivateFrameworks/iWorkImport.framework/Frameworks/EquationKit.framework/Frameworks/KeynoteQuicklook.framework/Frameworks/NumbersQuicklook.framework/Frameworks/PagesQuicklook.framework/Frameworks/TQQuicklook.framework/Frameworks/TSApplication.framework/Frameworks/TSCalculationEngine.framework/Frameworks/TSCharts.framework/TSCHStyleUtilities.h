@@ -10,11 +10,9 @@
 {
 }
 
++ (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2 forStyleOwner:(id)arg3;
++ (_Bool)groupedShadowsForChartModel:(id)arg1;
 + (_Bool)useOutsideParagraphStyleIndexForSeries:(id)arg1 chartType:(id)arg2 layout:(id)arg3;
-+ (double)uiSliderAngleForPropertyAngle:(double)arg1;
-+ (double)propertyAngleForUISliderAngle:(double)arg1;
-+ (double)uiSliderAngleMax;
-+ (double)uiSliderAngleMin;
 + (id)fillForSeries:(id)arg1 chartType:(id)arg2;
 + (id)p_referenceColorForObject:(id)arg1;
 + (id)lineEndForSegmentIndex:(long long)arg1;

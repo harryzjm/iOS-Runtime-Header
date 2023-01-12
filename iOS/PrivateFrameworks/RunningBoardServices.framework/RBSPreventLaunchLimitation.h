@@ -19,7 +19,6 @@
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)description;
-- (id)_initWithPredicate:(id)arg1;
 
 @end
 

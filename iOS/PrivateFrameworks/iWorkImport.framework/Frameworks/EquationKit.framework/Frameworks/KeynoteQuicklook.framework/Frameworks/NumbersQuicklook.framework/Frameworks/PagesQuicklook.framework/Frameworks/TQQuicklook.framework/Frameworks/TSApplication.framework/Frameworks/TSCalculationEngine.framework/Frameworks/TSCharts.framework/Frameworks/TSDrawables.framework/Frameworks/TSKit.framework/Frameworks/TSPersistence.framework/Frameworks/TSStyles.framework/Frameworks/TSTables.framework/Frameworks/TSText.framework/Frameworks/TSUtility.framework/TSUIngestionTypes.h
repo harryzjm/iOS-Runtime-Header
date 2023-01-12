@@ -10,6 +10,7 @@
 {
 }
 
++ (id)imageTypesThatRequireConversion;
 + (id)highEfficiencyImageTypes;
 + (id)p_unsupportedPlainTextTypes;
 + (id)p_supportedPlainTextTypes;

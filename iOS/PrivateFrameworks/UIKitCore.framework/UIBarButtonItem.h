@@ -5,11 +5,12 @@
 //
 
 #import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIMenuForcedAutomaticSelectionDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSSet, NSString, UIAction, UIBarButtonItemGroup, UIColor, UIImage, UILayoutGuide, UIMenu, UINavigationItem, UIToolbarButton, UIView, _UIBarButtonItemAppearanceStorage;
 @protocol _UIBarButtonItemViewOwner;
 
-@interface UIBarButtonItem <NSCoding>
+@interface UIBarButtonItem <UIMenuForcedAutomaticSelectionDelegate, NSCoding>
 {
     NSString *_title;
     NSSet *_possibleTitles;
@@ -37,6 +38,7 @@
         unsigned int springLoaded:1;
         unsigned int showsChevron:1;
         unsigned int wantsThreeUp:1;
+        unsigned int changesSelectionAsPrimaryAction:1;
     } _barButtonItemFlags;
     NSArray *_gestureRecognizers;
     NSArray *_interactions;
@@ -46,6 +48,8 @@
     _Bool _groupRepresentative;
     _Bool __showsBackButtonIndicator;
     _Bool __hidden;
+    _Bool _isKeyboardItem;
+    _Bool __changesSelectionAsPrimaryAction;
     double _minimumWidth;
     double _maximumWidth;
     NSSet *_possibleSystemItems;
@@ -72,7 +76,9 @@
 + (id)flexibleSpaceItem;
 + (id)fixedSpaceItemOfWidth:(double)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setChangesSelectionAsPrimaryAction:) _Bool _changesSelectionAsPrimaryAction; // @synthesize _changesSelectionAsPrimaryAction=__changesSelectionAsPrimaryAction;
 @property(retain, nonatomic, setter=_setItemVariation:) UIBarButtonItem *_itemVariation; // @synthesize _itemVariation=__itemVariation;
+@property(nonatomic) _Bool isKeyboardItem; // @synthesize isKeyboardItem=_isKeyboardItem;
 @property(nonatomic, setter=_setHidden:) _Bool _hidden; // @synthesize _hidden=__hidden;
 @property(nonatomic, setter=_setShowsBackButtonIndicator:) _Bool _showsBackButtonIndicator; // @synthesize _showsBackButtonIndicator=__showsBackButtonIndicator;
 @property(nonatomic, setter=_setToolbarCharge:) double _toolbarCharge; // @synthesize _toolbarCharge=__toolbarCharge;
@@ -93,9 +99,9 @@
 @property(nonatomic, setter=_setFlexible:) _Bool _flexible; // @synthesize _flexible;
 @property(nonatomic, setter=_setMaximumWidth:) double _maximumWidth; // @synthesize _maximumWidth;
 @property(nonatomic, setter=_setMinimumWidth:) double _minimumWidth; // @synthesize _minimumWidth;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (void)_updateView;
 - (void)_getToolbarSystemItemEdgeInsetsWithImageInsets:(struct UIEdgeInsets *)arg1 forBarStyle:(long long)arg2 landscape:(_Bool)arg3 alwaysBordered:(_Bool)arg4;
 - (double)_rightImagePaddingForEdgeMarginInNavBar;
@@ -103,6 +109,8 @@
 - (_Bool)_isImageBarButtonItem;
 - (void)_getNavBarEdgeSizeAdjust:(struct CGSize *)arg1 imageInsets:(struct UIEdgeInsets *)arg2 landscape:(_Bool)arg3;
 - (void)_getSystemItemStyle:(long long *)arg1 title:(id *)arg2 image:(id *)arg3 selectedImage:(id *)arg4 action:(SEL *)arg5 forBarStyle:(long long)arg6 landscape:(_Bool)arg7 alwaysBordered:(_Bool)arg8;
+@property(readonly, copy, nonatomic) NSString *_resolvedLargeContentSizeTitle;
+@property(copy, nonatomic, setter=_setLargeContentSizeTitle:) NSString *_largeContentSizeTitle;
 @property(readonly, nonatomic) UIView *_referenceView; // @dynamic _referenceView;
 @property(readonly, nonatomic) UIView *_configuredFloatableView; // @dynamic _configuredFloatableView;
 @property(readonly, nonatomic, getter=_isFloating) _Bool _floating; // @dynamic _floating;
@@ -126,6 +134,10 @@
 - (_Bool)isSpringLoaded;
 @property(nonatomic) _Bool secondaryActionsArePrimary;
 @property(copy, nonatomic) UIMenu *secondaryActions;
+@property(nonatomic) _Bool changesSelectionAsPrimaryAction;
+- (void)_updateForAutomaticSelection;
+- (void)forcedSelectionOfMenu:(id)arg1 willChangeTo:(id)arg2;
+- (_Bool)_isPopUpMenuButtonWithMenu:(id)arg1;
 @property(readonly, nonatomic) _Bool _menuIsPrimary;
 @property(copy, nonatomic, setter=_setInteractions:) NSArray *_interactions; // @synthesize _interactions;
 @property(copy, nonatomic, setter=_setGestureRecognizers:) NSArray *_gestureRecognizers; // @synthesize _gestureRecognizers;
@@ -161,7 +173,8 @@
 - (id)backgroundImageForState:(unsigned long long)arg1 style:(long long)arg2 barMetrics:(long long)arg3;
 - (void)setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 style:(long long)arg3 barMetrics:(long long)arg4;
 - (id)_appearanceStorage;
-@property(nonatomic) _Bool selected;
+@property(nonatomic, getter=selected, setter=setSelected:) _Bool _selected;
+@property(nonatomic, getter=isSelected) _Bool selected;
 @property(copy, nonatomic, getter=_possibleSystemItems, setter=_setPossibleSystemItems:) NSSet *possibleSystemItems; // @synthesize possibleSystemItems=_possibleSystemItems;
 - (void)_setSystemItem:(long long)arg1;
 @property(readonly, nonatomic) long long systemItem;
@@ -211,6 +224,10 @@
 - (id)initWithImage:(id)arg1 style:(long long)arg2 target:(id)arg3 action:(SEL)arg4;
 - (id)init;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

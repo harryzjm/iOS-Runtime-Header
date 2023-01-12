@@ -18,22 +18,24 @@
     NSString *_buttonTitle;
     NSString *_buttonSubTitle;
     CDUnknownBlockType _buttonSelectedBlock;
+    NSString *_symbolName;
     id <_MKPlaceActionControlledButton> _delegate;
 }
 
-+ (id)actionButtonControllerWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3 disabled:(_Bool)arg4;
++ (id)actionButtonControllerWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3 disabled:(_Bool)arg4 symbolName:(id)arg5;
 + (id)actionButtonControllerWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int analyticsAction; // @synthesize analyticsAction=_analyticsAction;
 @property(readonly, nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
 @property(nonatomic) __weak id <_MKPlaceActionControlledButton> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
 @property(readonly, nonatomic) CDUnknownBlockType buttonSelectedBlock; // @synthesize buttonSelectedBlock=_buttonSelectedBlock;
 @property(readonly, nonatomic) NSString *buttonSubTitle; // @synthesize buttonSubTitle=_buttonSubTitle;
 @property(readonly, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
 - (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 - (void)buttonTextChanged;
-- (id)initWithTitle:(id)arg1 subTitle:(id)arg2 analyticsAction:(int)arg3 selectedBlock:(CDUnknownBlockType)arg4 disabled:(_Bool)arg5;
+- (id)initWithTitle:(id)arg1 subTitle:(id)arg2 analyticsAction:(int)arg3 selectedBlock:(CDUnknownBlockType)arg4 disabled:(_Bool)arg5 symbolName:(id)arg6;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3;
 
 // Remaining properties

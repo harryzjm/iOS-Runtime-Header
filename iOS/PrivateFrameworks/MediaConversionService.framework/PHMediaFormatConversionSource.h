@@ -9,7 +9,7 @@
 @interface PHMediaFormatConversionSource
 {
     _Bool _preflighted;
-    _Bool _containsHEVCVideo;
+    _Bool _containsVideoWithFormatEligibleForTranscoding;
     _Bool _containsHEIFImage;
     _Bool _didCheckForLivePhotoPairingIdentifier;
     NSString *_renderOriginatingSignature;
@@ -17,7 +17,7 @@
     long long _locationMetadataStatus;
     long long _captionMetadataStatus;
     long long _accessibilityDescriptionMetadataStatus;
-    id _hevcTrackFormatDescription;
+    id _transcodingEligibleVideoTrackFormatDescription;
     struct CGSize _imageDimensions;
 }
 
@@ -28,14 +28,14 @@
 + (id)videoSourceForFileURL:(id)arg1;
 + (id)sourceForFileURL:(id)arg1 mediaType:(long long)arg2 imageDimensions:(struct CGSize)arg3;
 - (void).cxx_destruct;
-@property(retain) id hevcTrackFormatDescription; // @synthesize hevcTrackFormatDescription=_hevcTrackFormatDescription;
+@property(retain) id transcodingEligibleVideoTrackFormatDescription; // @synthesize transcodingEligibleVideoTrackFormatDescription=_transcodingEligibleVideoTrackFormatDescription;
 @property long long accessibilityDescriptionMetadataStatus; // @synthesize accessibilityDescriptionMetadataStatus=_accessibilityDescriptionMetadataStatus;
 @property long long captionMetadataStatus; // @synthesize captionMetadataStatus=_captionMetadataStatus;
 @property long long locationMetadataStatus; // @synthesize locationMetadataStatus=_locationMetadataStatus;
 @property _Bool didCheckForLivePhotoPairingIdentifier; // @synthesize didCheckForLivePhotoPairingIdentifier=_didCheckForLivePhotoPairingIdentifier;
 @property(retain, nonatomic) NSString *livePhotoPairingIdentifier; // @synthesize livePhotoPairingIdentifier=_livePhotoPairingIdentifier;
 @property _Bool containsHEIFImage; // @synthesize containsHEIFImage=_containsHEIFImage;
-@property _Bool containsHEVCVideo; // @synthesize containsHEVCVideo=_containsHEVCVideo;
+@property _Bool containsVideoWithFormatEligibleForTranscoding; // @synthesize containsVideoWithFormatEligibleForTranscoding=_containsVideoWithFormatEligibleForTranscoding;
 @property _Bool preflighted; // @synthesize preflighted=_preflighted;
 @property struct CGSize imageDimensions; // @synthesize imageDimensions=_imageDimensions;
 @property(copy) NSString *renderOriginatingSignature; // @synthesize renderOriginatingSignature=_renderOriginatingSignature;
@@ -57,7 +57,9 @@
 - (void)markLivePhotoPairingIdentifierAsCheckedWithValue:(id)arg1;
 - (_Bool)preflightWithError:(id *)arg1;
 - (void)checkForHEIFImage;
-- (void)checkForHEVCVideo;
+- (_Bool)isHDR;
+@property(readonly) _Bool containsHEVCVideo;
+- (void)checkForVideoEligibleForTranscoding;
 - (_Bool)determineMediaTypeFromPathExtensionWithError:(id *)arg1;
 
 @end

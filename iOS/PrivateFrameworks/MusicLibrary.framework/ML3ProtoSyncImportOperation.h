@@ -26,12 +26,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_unlinkUnavailableMediaItems;
-- (_Bool)_processPlaylistOperation:(id)arg1 withImportSession:(struct ML3ImportSession *)arg2;
-- (_Bool)_processMediaItemOperation:(id)arg1 withImportSession:(struct ML3ImportSession *)arg2;
-- (_Bool)_processSyncOperation:(id)arg1 withImportSession:(struct ML3ImportSession *)arg2;
+- (_Bool)_processPlaylistOperation:(id)arg1 withImportSession:(void *)arg2;
+- (_Bool)_processMediaItemOperation:(id)arg1 withImportSession:(void *)arg2;
+- (_Bool)_processSyncOperation:(id)arg1 withImportSession:(void *)arg2;
 - (_Bool)_processSyncError:(id)arg1;
 - (_Bool)_processSyncHeader:(id)arg1;
-- (_Bool)_processSyncPackage:(id)arg1 withImportSession:(struct ML3ImportSession *)arg2;
+- (_Bool)_processSyncPackage:(id)arg1 withImportSession:(void *)arg2;
 - (_Bool)_performImportWithTransaction:(id)arg1;
 - (void)cancel;
 - (void)main;

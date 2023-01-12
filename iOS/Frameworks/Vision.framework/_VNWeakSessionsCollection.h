@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)allSessionsDroppingWeakZeroedObjects:(_Bool)arg1;
 - (void)addSession:(id)arg1 droppingWeakZeroedObjects:(_Bool)arg2;
-- (void)_enumerateSessionsDroppingWeakZeroedObjects:(_Bool)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

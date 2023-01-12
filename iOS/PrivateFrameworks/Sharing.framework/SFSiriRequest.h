@@ -16,16 +16,18 @@ __attribute__((visibility("hidden")))
     double _delaySecs;
     id _owner;
     CDUnknownBlockType _speechCompletion;
-    VSSpeechRequest *_speechRequest;
     CDUnknownBlockType _speechStartHandler;
+    VSSpeechRequest *_speechSynthesisRequest;
+    VSSpeechRequest *_speechUtteranceRequest;
     unsigned long long _startTicks;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool synthesizing; // @synthesize synthesizing=_synthesizing;
 @property(nonatomic) unsigned long long startTicks; // @synthesize startTicks=_startTicks;
+@property(retain, nonatomic) VSSpeechRequest *speechUtteranceRequest; // @synthesize speechUtteranceRequest=_speechUtteranceRequest;
+@property(copy, nonatomic) VSSpeechRequest *speechSynthesisRequest; // @synthesize speechSynthesisRequest=_speechSynthesisRequest;
 @property(copy, nonatomic) CDUnknownBlockType speechStartHandler; // @synthesize speechStartHandler=_speechStartHandler;
-@property(retain, nonatomic) VSSpeechRequest *speechRequest; // @synthesize speechRequest=_speechRequest;
 @property(copy, nonatomic) CDUnknownBlockType speechCompletion; // @synthesize speechCompletion=_speechCompletion;
 @property(retain, nonatomic) id owner; // @synthesize owner=_owner;
 @property(nonatomic) unsigned int flags; // @synthesize flags=_flags;

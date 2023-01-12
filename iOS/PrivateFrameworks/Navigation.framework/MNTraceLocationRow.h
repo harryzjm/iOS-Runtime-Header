@@ -16,13 +16,17 @@
     MNLocation *_location;
     NSError *_error;
     MNLocationMatchInfo *_matchInfo;
+    double _correctedCourse;
     long long _locationEventType;
     unsigned long long _originalMatchType;
+    CDStruct_2c43369c _correctedCoordinate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long originalMatchType; // @synthesize originalMatchType=_originalMatchType;
 @property(nonatomic) long long locationEventType; // @synthesize locationEventType=_locationEventType;
+@property(nonatomic) double correctedCourse; // @synthesize correctedCourse=_correctedCourse;
+@property(nonatomic) CDStruct_c3b9c2ee correctedCoordinate; // @synthesize correctedCoordinate=_correctedCoordinate;
 @property(retain, nonatomic) MNLocationMatchInfo *matchInfo; // @synthesize matchInfo=_matchInfo;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) MNLocation *location; // @synthesize location=_location;

@@ -10,7 +10,7 @@
 #import <ClassroomKit/CRKClassSessionBeaconBrowserDelegate-Protocol.h>
 #import <ClassroomKit/CRKSessionDelegate-Protocol.h>
 
-@class CATNetworkReachability, CRKClassSessionBeaconBrowser, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class CATNetworkReachability, CRKClassSessionBeaconBrowser, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol CRKClassSessionBrowserDelegate, CRKInvitationSessionBrowserDelegate;
 
 @interface CRKClassSessionBrowser : NSObject <CRKSessionDelegate, CRKClassSessionBeaconBrowserDelegate, CATNetworkReachabilityDelegate>
@@ -22,7 +22,6 @@
     CATNetworkReachability *mNetworkReachability;
     NSMutableDictionary *mConnectWithoutBeaconAssertionCountBySessionIdentifier;
     NSMutableDictionary *mConnectWithoutBeaconAssertionCountByInviteSessionEndpoint;
-    NSMapTable *mWhitelistedEndpointsBySessionClass;
     _Bool _allowInvitationSessions;
     _Bool _allowUnenrolledSessions;
     id <CRKClassSessionBrowserDelegate> _delegate;
@@ -57,11 +56,6 @@
 - (void)updateRequiresBeaconFlagForSession:(id)arg1;
 - (void)removeInRangeClassSession:(id)arg1;
 - (void)addInRangeClassSession:(id)arg1;
-- (_Bool)isEndpointWhitelisted:(id)arg1 forSessionClass:(Class)arg2;
-- (void)dewhitelistEndpoint:(id)arg1 forSessionClass:(Class)arg2;
-- (void)whitelistEndpointAndInvalidateNonWhitelistedSessionsOnSameHost:(id)arg1 forSessionClass:(Class)arg2;
-- (void)assertPort:(unsigned short)arg1 canBeWhitelistedForHost:(id)arg2 sessionClass:(Class)arg3;
-- (id)sessionsForClass:(Class)arg1;
 - (void)reachabilityDidChange:(id)arg1;
 - (void)beaconBrowser:(id)arg1 didFindBeaconForInvitationSessionWithEndpoint:(id)arg2;
 - (void)beaconBrowser:(id)arg1 didFindBeaconForClassSession:(id)arg2 flags:(unsigned short)arg3;
@@ -78,6 +72,7 @@
 - (void)sessionDidBecomeConnectable:(id)arg1;
 - (id)trustedAnchorCertificatesForSession:(id)arg1;
 - (id)clientIdentityForSession:(id)arg1;
+@property(readonly, copy, nonatomic) NSSet *inRangeClassSessionIdentifiers;
 @property(readonly, nonatomic, getter=isBrowsing) _Bool browsing;
 - (void)stopBrowsing;
 - (void)startBrowsing;

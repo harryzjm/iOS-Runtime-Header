@@ -6,12 +6,13 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSSet, NSString;
 @protocol DNDSSyncServiceDelegate;
 
 @protocol DNDSSyncService <NSObject>
 @property(nonatomic) __weak id <DNDSSyncServiceDelegate> delegate;
-- (void)sendMessage:(NSDictionary *)arg1 withVersionNumber:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)sendMessage:(NSDictionary *)arg1 withVersionNumber:(unsigned long long)arg2 messageType:(NSString *)arg3 toDestinations:(NSSet *)arg4 identifyingCompletionHandler:(void (^)(_Bool, NSString *, NSError *))arg5;
+- (void)sendMessage:(NSDictionary *)arg1 withVersionNumber:(unsigned long long)arg2 messageType:(NSString *)arg3 toDestinations:(NSSet *)arg4 completionHandler:(void (^)(_Bool, NSError *))arg5;
 - (void)resume;
 @end
 

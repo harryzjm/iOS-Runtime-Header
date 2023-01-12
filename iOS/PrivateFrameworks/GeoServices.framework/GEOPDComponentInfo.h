@@ -29,39 +29,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsUrgency:(id)arg1;
-- (id)urgencyAsString:(int)arg1;
-@property(nonatomic) _Bool hasUrgency;
-@property(nonatomic) int urgency;
-@property(nonatomic) _Bool hasIncludeSource;
-@property(nonatomic) _Bool includeSource;
-@property(retain, nonatomic) GEOPDComponentFilter *filter;
-@property(readonly, nonatomic) _Bool hasFilter;
-@property(nonatomic) _Bool hasCount;
-@property(nonatomic) unsigned int count;
-@property(nonatomic) _Bool hasStartIndex;
-@property(nonatomic) unsigned int startIndex;
-- (int)StringAsType:(id)arg1;
-- (id)typeAsString:(int)arg1;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type;
 - (id)initWithType:(int)arg1 count:(unsigned int)arg2;
 
 @end

@@ -8,12 +8,13 @@
 
 #import <BookLibrary/BLUIHostServiceProtocol-Protocol.h>
 
-@class BLDownloadQueue, BLRequest;
+@class BLDownloadQueue, BLRequest, BLUIHostServiceNonUI;
 @protocol BLDownloadQueueUIManagerProtocol;
 
 @interface BLUIHostServiceProxy : NSObject <BLUIHostServiceProtocol>
 {
     BLDownloadQueue *_downloadQueue;
+    BLUIHostServiceNonUI *_fallback;
     BLRequest *_request;
     id <BLDownloadQueueUIManagerProtocol> _uiManagerDelegate;
 }
@@ -21,6 +22,7 @@
 - (void).cxx_destruct;
 @property(readonly) __weak id <BLDownloadQueueUIManagerProtocol> uiManagerDelegate; // @synthesize uiManagerDelegate=_uiManagerDelegate;
 @property(readonly) __weak BLRequest *request; // @synthesize request=_request;
+@property(readonly) BLUIHostServiceNonUI *fallback; // @synthesize fallback=_fallback;
 @property(readonly) __weak BLDownloadQueue *downloadQueue; // @synthesize downloadQueue=_downloadQueue;
 - (id)_topMostViewController;
 - (void)handleEngagementRequest:(id)arg1 withReply:(CDUnknownBlockType)arg2;

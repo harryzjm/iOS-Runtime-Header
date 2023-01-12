@@ -8,26 +8,27 @@
 
 @interface TSCH3DChartSceneAreaLayoutItem
 {
-    struct CGRect mChartBodyLayoutRect;
-    TSCH3DChartResizerHelper *mResizerHelper;
-    TSCH3DScene *mScene;
-    tvec2_84d5962d mChartBodyLayoutOffsetInChartAreaLayoutSpace;
-    _Bool mIsInvariant;
-    _Bool mIsInvalidated;
-    tvec4_ac57c72d mInitialInfoChartScale;
+    struct CGRect _chartBodyLayoutRect;
+    TSCH3DChartResizerHelper *_resizerHelper;
+    TSCH3DScene *_scene;
+    tvec2_84d5962d _chartBodyLayoutOffsetInChartAreaLayoutSpace;
+    _Bool _isInvariant;
+    _Bool _isInvalidated;
+    tvec4_ac57c72d _initialInfoChartScale;
 }
 
 + (id)worldBoundsDescriptionForScene:(id)arg1;
 - (id).cxx_construct;
-@property(nonatomic) _Bool isInvariant; // @synthesize isInvariant=mIsInvariant;
-@property(nonatomic) struct CGRect chartBodyLayoutRect; // @synthesize chartBodyLayoutRect=mChartBodyLayoutRect;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool isInvariant; // @synthesize isInvariant=_isInvariant;
+@property(nonatomic) struct CGRect chartBodyLayoutRect; // @synthesize chartBodyLayoutRect=_chartBodyLayoutRect;
 - (void)setChartBodyLayoutSize:(struct CGSize)arg1;
 - (void)setLayoutOffset:(struct CGPoint)arg1;
-- (void)setStabilizedChartBodyLayoutRectUsingConverter:(const struct ChartProjectedBoundsConverter *)arg1;
-- (void)p_layoutOutward;
+- (void)setStabilizedChartBodyLayoutRectUsingConverter:(const void *)arg1;
+- (void)layoutOutward;
 - (id)p_cacheOutwardLayout;
 - (_Bool)p_outwardLayoutCanUseCacheItem:(id)arg1;
-- (void)p_layoutInward;
+- (void)layoutInward;
 - (id)p_cacheInwardLayout;
 - (_Bool)p_needsRefinementForInwardLayout;
 - (_Bool)p_inwardLayoutCanUseCacheItem:(id)arg1;
@@ -35,7 +36,7 @@
 - (tvec2_3b141483)p_currentModelSize;
 - (id)p_cache;
 - (void)p_updateFromCacheItem:(id)arg1;
-- (void)p_updateLayoutSize:(struct CGSize)arg1 chartBodyLayoutOffsetInChartAreaLayoutSpace:(const tvec2_84d5962d *)arg2;
+- (void)p_updateLayoutSize:(struct CGSize)arg1 chartBodyLayoutOffsetInChartAreaLayoutSpace:(const void *)arg2;
 - (void)p_updateBodyLayoutRect;
 - (struct CGRect)p_frameForSelectionPath:(id)arg1 sceneObjectClass:(Class)arg2;
 - (struct CGRect)titleFrame;
@@ -43,8 +44,8 @@
 - (id)debug_rotationBounds;
 - (void)invalidateLabelsBoundsForSceneObjectClass:(Class)arg1 boundsIndex:(long long)arg2;
 - (void)invalidateBounds;
-- (const struct ChartProjectedBoundsSpaces *)projectedBoundsWithScene:(id)arg1 forcesAccurateBounds:(_Bool)arg2 allowsEmptyBodyLayoutBounds:(_Bool)arg3;
-@property(readonly, nonatomic) const struct ChartProjectedBoundsSpaces *projectedBounds;
+- (const void *)projectedBoundsWithScene:(id)arg1 forcesAccurateBounds:(_Bool)arg2 allowsEmptyBodyLayoutBounds:(_Bool)arg3;
+@property(readonly, nonatomic) const void *projectedBounds;
 - (id)boundsLayout;
 - (id)boundsLayout:(struct CGRect)arg1 scene:(id)arg2 forcesAccurateBounds:(_Bool)arg3 allowsEmptyBodyLayoutBounds:(_Bool)arg4;
 - (id)p_updatedResizerHelperForcingAccurateBounds:(_Bool)arg1;
@@ -53,9 +54,8 @@
 @property(readonly, nonatomic) tvec2_3b141483 containingViewport;
 - (void)clearAll;
 - (void)clearScene;
-@property(readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=mScene;
+@property(readonly, nonatomic) TSCH3DScene *scene; // @synthesize scene=_scene;
 - (void)p_validate;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1;
 
 @end

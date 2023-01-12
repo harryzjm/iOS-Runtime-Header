@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <ProofReader/NSCopying-Protocol.h>
+#import <ProofReader/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PRLanguage : NSObject
+@interface PRLanguage : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     NSString *_localization;
@@ -21,6 +24,9 @@ __attribute__((visibility("hidden")))
     unsigned char _languageMode;
 }
 
++ (_Bool)supportsSecureCoding;
++ (id)languageObjectWithIdentifier:(id)arg1;
++ (id)languagesUsingOrdinalPeriod;
 + (id)englishLocalizationAdditionForLanguage:(id)arg1;
 + (id)supportedEnglishLocalizationAdditions;
 + (id)transliterationLocalizationForLanguage:(id)arg1;
@@ -28,13 +34,13 @@ __attribute__((visibility("hidden")))
 + (id)supportedCyrillicLanguages;
 + (id)supportedNonLatinLanguages;
 + (id)supportedLatinLanguages;
++ (id)supportedAssetLexiconLanguages;
 + (id)supportedLocalizations;
 + (id)supportedAssetLanguages;
 + (id)supportedLanguages;
-+ (id)languageWithIdentifier:(id)arg1;
 + (void)getCodesForLanguage:(id)arg1 languageCode:(char *)arg2 languageDialect:(char *)arg3 languageMode:(char *)arg4 orthographyIndex:(unsigned long long *)arg5 encoding:(unsigned int *)arg6;
 + (unsigned int)encodingForOrthographyIndex:(unsigned long long)arg1;
-+ (unsigned long long)orthographyIndexForForOtherLanguage:(id)arg1;
++ (unsigned long long)orthographyIndexForOtherLanguage:(id)arg1;
 + (unsigned long long)orthographyIndexForLanguageCode:(unsigned char)arg1;
 + (id)textInputModeForLanguage:(id)arg1;
 + (id)languageModelFallbackLocalizationForLanguage:(id)arg1;
@@ -55,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isPunjabi;
 - (_Bool)isPortuguese;
 - (_Bool)isPolish;
+- (_Bool)isPersian;
 - (_Bool)isNynorsk;
 - (_Bool)isNorwegian;
 - (_Bool)isKorean;
@@ -74,6 +81,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isCzech;
 - (_Bool)isBulgarian;
 - (_Bool)isArabic;
+- (_Bool)usesOrdinalPeriod;
+- (_Bool)isSupportedAssetLexiconLanguage;
 - (_Bool)isBicameral;
 - (const char *)accents;
 - (const char *)twoLetterWords;
@@ -83,10 +92,19 @@ __attribute__((visibility("hidden")))
 - (unsigned char)languageCode;
 - (unsigned long long)orthographyIndex;
 - (unsigned int)encoding;
+- (id)transliterationLocalization;
+- (id)languageModelFallbackLocalization;
+- (id)languageModelLocalization;
 - (id)fallbackLocalization;
 - (id)localization;
 - (id)identifier;
 - (void)dealloc;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)description;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithIdentifier:(id)arg1;
 
 @end

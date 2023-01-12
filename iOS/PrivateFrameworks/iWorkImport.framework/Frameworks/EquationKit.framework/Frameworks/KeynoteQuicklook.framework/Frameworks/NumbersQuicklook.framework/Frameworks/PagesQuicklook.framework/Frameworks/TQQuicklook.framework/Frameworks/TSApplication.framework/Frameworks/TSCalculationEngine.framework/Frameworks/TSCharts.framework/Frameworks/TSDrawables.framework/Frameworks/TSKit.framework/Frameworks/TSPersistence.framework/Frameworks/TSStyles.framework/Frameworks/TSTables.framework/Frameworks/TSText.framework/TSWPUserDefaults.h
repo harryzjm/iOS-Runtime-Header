@@ -22,6 +22,7 @@
 + (void)setSuperscriptNumericalSuffixes:(_Bool)arg1;
 + (void)setAutomaticallyDetectLists:(_Bool)arg1;
 + (void)setUnderlineLinks:(_Bool)arg1;
++ (void)setAutomaticallyDetectPhoneLinks:(_Bool)arg1;
 + (void)setAutomaticallyDetectLinks:(_Bool)arg1;
 + (void)setInvisiblesColor:(id)arg1;
 + (void)setReplacementsDictionary:(id)arg1;
@@ -29,15 +30,19 @@
 + (id)replacementsDictionaryAllowingFractions:(_Bool)arg1;
 + (id)p_caseInsensitiveDictionary:(id)arg1 mergedWithDictionary:(id)arg2;
 + (id)quotesArrayForLanguage:(id)arg1;
++ (void)setShowsQuickFormatBar:(_Bool)arg1;
++ (_Bool)showsQuickFormatBar;
 + (_Bool)automaticTextReplacement;
 + (_Bool)automaticQuoteSubstitution;
 + (_Bool)automaticDashSubstitution;
 + (_Bool)shouldShowInvisibles;
 + (_Bool)spellCheckingEnabled;
++ (_Bool)spellCheckingAllowed;
 + (_Bool)automaticallyFormatFractions;
 + (_Bool)superscriptNumericalSuffixes;
 + (_Bool)automaticallyDetectLists;
 + (_Bool)underlineLinks;
++ (_Bool)automaticallyDetectPhoneLinks;
 + (_Bool)automaticallyDetectLinks;
 + (_Bool)p_cachedBoolForKey:(id)arg1;
 + (id)invisiblesColor;

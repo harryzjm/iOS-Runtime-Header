@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class NSDictionary, NSURL;
+@class NSDictionary, NSSet, NSString, NSURL;
 
 @interface ICStoreHLSAssetInfo : NSObject <NSCopying>
 {
@@ -17,9 +17,17 @@
     NSURL *_keyCertificateURL;
     NSURL *_keyServerURL;
     NSURL *_playlistURL;
+    NSURL *enhancedAudioKeyCertificateURL;
+    NSURL *enhancedAudioKeyServerURL;
+    NSString *_keyServerProtocolType;
+    NSSet *_audioTraits;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSSet *audioTraits; // @synthesize audioTraits=_audioTraits;
+@property(copy, nonatomic) NSString *keyServerProtocolType; // @synthesize keyServerProtocolType=_keyServerProtocolType;
+@property(copy, nonatomic) NSURL *enhancedAudioKeyServerURL; // @synthesize enhancedAudioKeyServerURL;
+@property(copy, nonatomic) NSURL *enhancedAudioKeyCertificateURL; // @synthesize enhancedAudioKeyCertificateURL;
 @property(copy, nonatomic) NSURL *playlistURL; // @synthesize playlistURL=_playlistURL;
 @property(copy, nonatomic) NSURL *keyServerURL; // @synthesize keyServerURL=_keyServerURL;
 @property(copy, nonatomic) NSURL *keyCertificateURL; // @synthesize keyCertificateURL=_keyCertificateURL;

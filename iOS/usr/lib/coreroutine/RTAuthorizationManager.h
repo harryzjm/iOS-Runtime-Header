@@ -37,9 +37,14 @@
 - (_Bool)isCoreRoutineLocationClientEnabled;
 - (_Bool)isLocationServicesEnabled;
 - (void)dealloc;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setup;
 - (void)setup;
+- (void)onDailyMetricsNotification:(id)arg1;
+- (void)_onDailyMetricsNotification:(id)arg1;
+- (id)_getMetrics:(_Bool)arg1;
+- (void)_unregisterForNotifications;
+- (void)_registerForNotifications;
 - (id)initWithPlatform:(id)arg1 userSessionMonitor:(id)arg2;
 - (id)init;
 

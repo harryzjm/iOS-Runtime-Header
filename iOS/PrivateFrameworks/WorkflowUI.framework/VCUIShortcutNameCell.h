@@ -10,14 +10,12 @@
 
 @interface VCUIShortcutNameCell : UITableViewCell
 {
-    _Bool _editable;
     UITextField *_textField;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic, getter=isEditable) _Bool editable; // @synthesize editable=_editable;
 @property(readonly, nonatomic) UITextField *textField; // @synthesize textField=_textField;
-- (_Bool)editable;
+@property(nonatomic, getter=isEditable) _Bool editable;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

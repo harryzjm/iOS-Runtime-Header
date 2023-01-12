@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)chdSeriesWithState:(id)arg1;
-+ (id)readFrom:(struct XlChartDataSeries *)arg1 state:(id)arg2;
++ (id)readFrom:(void *)arg1 state:(id)arg2;
 + (void)resolveSeriesStyle:(id)arg1 state:(id)arg2;
-+ (void)readXlChartSeriesFormat:(struct XlChartDataSeries *)arg1 chdSeries:(id)arg2 state:(id)arg3;
++ (void)readXlChartSeriesFormat:(void *)arg1 chdSeries:(id)arg2 state:(id)arg3;
 + (Class)chdSeriesClassWithState:(id)arg1;
 
 @end

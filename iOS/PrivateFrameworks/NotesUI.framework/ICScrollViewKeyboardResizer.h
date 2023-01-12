@@ -13,6 +13,7 @@
 {
     _Bool _autoResizing;
     _Bool _showingKeyboard;
+    _Bool _fullyShowingKeyboard;
     _Bool _observingKeyboardNotifications;
     _Bool _didResizeScrollView;
     id <ICScrollViewKeyboardResizerDelegate> _delegate;
@@ -21,11 +22,13 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool didResizeScrollView; // @synthesize didResizeScrollView=_didResizeScrollView;
 @property(nonatomic, getter=isObservingKeyboardNotifications) _Bool observingKeyboardNotifications; // @synthesize observingKeyboardNotifications=_observingKeyboardNotifications;
+@property(nonatomic) _Bool fullyShowingKeyboard; // @synthesize fullyShowingKeyboard=_fullyShowingKeyboard;
 @property(nonatomic) _Bool showingKeyboard; // @synthesize showingKeyboard=_showingKeyboard;
 @property(nonatomic, getter=isAutoResizing) _Bool autoResizing; // @synthesize autoResizing=_autoResizing;
 @property(nonatomic) __weak id <ICScrollViewKeyboardResizerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIScrollView *scrollView;
 - (void)handleKeyboardWillHide:(id)arg1;
+- (void)handleKeyboardDidShow:(id)arg1;
 - (void)handleKeyboardWillShow:(id)arg1;
 - (void)clearInsetsWithDuration:(double)arg1;
 - (void)applyInsetsFromKeyboardFrame:(struct CGRect)arg1 duration:(double)arg2;

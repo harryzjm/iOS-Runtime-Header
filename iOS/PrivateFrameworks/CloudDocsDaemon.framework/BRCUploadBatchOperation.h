@@ -6,7 +6,6 @@
 
 @class BRCClientZone;
 
-__attribute__((visibility("hidden")))
 @interface BRCUploadBatchOperation
 {
     BRCClientZone *_clientZone;

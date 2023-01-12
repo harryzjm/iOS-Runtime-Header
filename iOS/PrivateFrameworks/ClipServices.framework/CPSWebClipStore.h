@@ -17,6 +17,10 @@
 + (id)_urlForWebClipWithIdentifier:(id)arg1;
 + (id)sharedStore;
 - (void).cxx_destruct;
+- (void)removeExpiredPoweredByWebClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)removePoweredByWebClipsLastActivatedBefore:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)purgeDuplicateWebClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_webClipsBackedbyAppClipIdentifier:(id)arg1;
 - (void)getWebClipsBackedbyAppClipIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getWebClipWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_createOrUpdateExistingWebClipWithClipMetadata:(id)arg1 createdNewWebClip:(_Bool *)arg2 error:(id *)arg3;
@@ -36,6 +40,7 @@
 - (id)_copyOrReplaceExistingFileAtPath:(id)arg1 withNewFileAtPath:(id)arg2;
 - (void)removeAppClipIconForWebClipWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAppClipIcon:(id)arg1 forWebClipWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateWebClipTitle:(id)arg1 forAppClipBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_saveWebClip:(id)arg1 error:(id *)arg2;
 - (void)saveWebClip:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_removeWebClipWithIdentifier:(id)arg1 error:(id *)arg2;

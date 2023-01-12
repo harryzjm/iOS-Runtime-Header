@@ -14,6 +14,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
+- (unsigned long long)renderTargetIndex;
 - (id)indirectArgumentType;
 - (id)pointerType;
 - (id)textureReferenceType;

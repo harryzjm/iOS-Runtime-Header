@@ -20,7 +20,7 @@
 - (float)chartMinZForScene:(id)arg1;
 - (float)depthForScene:(id)arg1;
 - (void)updateElementEffectsStates:(id)arg1 depthToWidthRatio:(float)arg2;
-- (void)updateTilingEffect:(struct TexCoordTilingShaderEffectState *)arg1 properties:(id)arg2 textureTiling:(id)arg3 size:(tvec3_17f03ce0 *)arg4;
+- (void)updateTilingEffect:(void *)arg1 properties:(id)arg2 textureTiling:(id)arg3 size:(void *)arg4;
 - (void)postrenderElement:(id)arg1;
 - (void)prerenderElement:(id)arg1;
 - (void)renderLabelsSceneObject:(id)arg1 pipeline:(id)arg2 enumerator:(id)arg3 properties:(id)arg4;

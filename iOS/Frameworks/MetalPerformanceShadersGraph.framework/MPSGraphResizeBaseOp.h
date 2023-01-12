@@ -10,10 +10,9 @@
     _Bool _centerResult;
     _Bool _alignCorners;
     unsigned long long _layout;
-    struct MLIRContext *_context;
 }
 
-- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 mode:(unsigned long long)arg4 centerResult:(_Bool)arg5 alignCorners:(_Bool)arg6 layout:(unsigned long long)arg7 name:(id)arg8 context:(struct MLIRContext *)arg9;
+- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 mode:(unsigned long long)arg4 centerResult:(_Bool)arg5 alignCorners:(_Bool)arg6 layout:(unsigned long long)arg7 name:(id)arg8;
 
 @end
 

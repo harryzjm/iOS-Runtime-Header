@@ -13,7 +13,6 @@
 @interface _EMAttachmentContentItem <EFPubliclyDescribable, EMMutableContentItem, NSSecureCoding>
 {
     _Bool _isAvailableLocally;
-    _Bool _isSinglePagePDF;
     int _exchangeEventUID;
     NSArray *_availableRepresentations;
     NSString *_contentID;
@@ -29,7 +28,6 @@
 - (void).cxx_destruct;
 @property(nonatomic) int exchangeEventUID; // @synthesize exchangeEventUID=_exchangeEventUID;
 @property(copy, nonatomic) EMMailDropMetadata *mailDropMetadata; // @synthesize mailDropMetadata=_mailDropMetadata;
-@property(nonatomic) _Bool isSinglePagePDF; // @synthesize isSinglePagePDF=_isSinglePagePDF;
 @property(copy, nonatomic) NSString *UTType; // @synthesize UTType=_UTType;
 @property(nonatomic) long long storageByteCount; // @synthesize storageByteCount=_storageByteCount;
 @property(copy, nonatomic) CDUnknownBlockType loaderBlock; // @synthesize loaderBlock=_loaderBlock;
@@ -38,7 +36,6 @@
 @property(nonatomic) long long dataTransferByteCount; // @synthesize dataTransferByteCount=_dataTransferByteCount;
 @property(copy, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
 @property(copy, nonatomic) NSArray *availableRepresentations; // @synthesize availableRepresentations=_availableRepresentations;
-- (_Bool)_isSinglePagePDFWithContentURL:(id)arg1;
 - (id)requestRepresentationWithOptions:(id)arg1 delegate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)requestRepresentationWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;

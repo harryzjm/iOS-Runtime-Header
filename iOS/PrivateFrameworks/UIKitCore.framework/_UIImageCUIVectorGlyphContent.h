@@ -14,25 +14,38 @@ __attribute__((visibility("hidden")))
     double _glyphScaleFactor;
     double _vectorScale;
     struct CGSize _sizeInPixels;
+    struct CGImage *_overrideImageRef;
+    _Atomic id _isMultiColor;
+    _Atomic id _numberOfHierarchyLayers;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) double glyphScaleFactor; // @synthesize glyphScaleFactor=_glyphScaleFactor;
-- (struct CGImage *)_CGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 paletteColors:(id)arg3;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 hierarchicalColorResolver:(CDUnknownBlockType)arg3;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 namedColorResolver:(CDUnknownBlockType)arg3;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
-- (id)contentWithCGImage:(struct CGImage *)arg1;
 - (struct CGSize)sizeInPixels;
-- (_Bool)_canProvideCGImageDirectly;
-- (_Bool)canProvideFullResCGImage;
+- (unsigned long long)numberOfHierarchyLayers;
+- (_Bool)containsNamedColorStyle:(id)arg1;
+- (_Bool)containsNamedColorStyles;
+- (id)contentWithCGImage:(struct CGImage *)arg1;
 - (id)vectorGlyph;
 - (_Bool)isVectorGlyph;
+- (struct CGImage *)CGImage;
+- (_Bool)_canProvideCGImageDirectly;
+- (_Bool)canScaleImageToTargetResolution;
+- (_Bool)canDrawImage;
+- (_Bool)isCGImage;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)outlinePath;
 - (double)vectorScale;
 - (id)initWithScale:(double)arg1;
-- (id)initWithCGImage:(struct CGImage *)arg1 CUIVectorGlyph:(id)arg2 scale:(double)arg3;
+- (id)initWithCUIVectorGlyph:(id)arg1 scale:(double)arg2;
 
 @end
 

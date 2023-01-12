@@ -32,7 +32,8 @@
 - (void)finishedProactiveTileDownloadForIdentifier:(id)arg1 policy:(unsigned char)arg2 tilesConsidered:(unsigned int)arg3 tileDownloadAttempts:(unsigned int)arg4 successes:(unsigned int)arg5 failures:(unsigned int)arg6 bytesDownloaded:(unsigned long long)arg7;
 - (void)startedProactiveTileDownloadForIdentifier:(id)arg1 policy:(unsigned char)arg2;
 - (void)clearCounters;
-- (void)startPowerLogSessionWithName:(id)arg1;
+- (void)readRequestLogsDuring:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)readRequestsPerAppDuring:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)readRequestLogsSince:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)readRequestsPerAppSince:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)requestCounterTicketForType:(CDStruct_d1a7ebee)arg1 appId:(id)arg2;

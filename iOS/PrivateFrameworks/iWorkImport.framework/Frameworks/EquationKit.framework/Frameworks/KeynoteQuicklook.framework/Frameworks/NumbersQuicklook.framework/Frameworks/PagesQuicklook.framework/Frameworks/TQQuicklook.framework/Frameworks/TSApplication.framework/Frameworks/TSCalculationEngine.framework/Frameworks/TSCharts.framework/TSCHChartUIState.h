@@ -30,8 +30,8 @@
 @property(readonly, nonatomic) unsigned long long lastRowCountInCDE; // @synthesize lastRowCountInCDE=_lastRowCountInCDE;
 @property(readonly, nonatomic) unsigned long long lastRowSelectedInCDE; // @synthesize lastRowSelectedInCDE=_lastRowSelectedInCDE;
 - (void)resetForInitialViewing;
-- (void)saveToArchive:(struct ChartUIState *)arg1;
-- (id)initWithArchive:(const struct ChartUIState *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

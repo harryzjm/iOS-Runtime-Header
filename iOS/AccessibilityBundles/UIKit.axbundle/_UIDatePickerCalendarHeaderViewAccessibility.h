@@ -11,13 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axMarkupMonthSelector;
 - (void)setExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_setupViewHierarchy;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)_accessibilityFKAShouldProcessChildren;
 - (id)_accessibilityUserTestingChildren;
 - (struct CGPoint)accessibilityActivationPoint;
+- (_Bool)_accessibilityUpdatesSwitchMenu;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (unsigned long long)accessibilityTraits;

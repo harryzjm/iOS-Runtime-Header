@@ -82,6 +82,7 @@
 - (_Bool)beginSeek:(int)arg1 eventSource:(long long)arg2;
 - (_Bool)changeTrack:(int)arg1 eventSource:(long long)arg2;
 - (_Bool)_sendMediaCommand:(unsigned int)arg1 options:(id)arg2;
+- (void)_updateVideoOutStatusBarStyleOverride;
 - (void)_startVideoOutStatusBarStyleOverride;
 - (void)_clearVideoOutStatusBarStyleOverride;
 - (void)_updateScreenSharingStatusBarStyleOverrideSuppressionPreference:(id)arg1;

@@ -10,23 +10,20 @@
 
 @class _MRPlaybackSessionMigrateRequestProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionMigrateResponseMessageProtobuf : PBCodable <NSCopying>
 {
     _MRPlaybackSessionMigrateRequestProtobuf *_request;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRPlaybackSessionMigrateRequestProtobuf *request; // @synthesize request=_request;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasRequest;
 
 @end
 

@@ -65,10 +65,10 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (CDStruct_02837cd9)_mapRectWithFraction:(double)arg1 ofVisible:(CDStruct_02837cd9)arg2;
 - (void)transitionTo:(long long)arg1;
-- (void)annotationViewDidChangeCenterOffset:(id)arg1;
 - (_Bool)_updatePriorityMapIfNeeded;
 - (void)_addPrioritiesForAnnotationViewIfNeeded:(id)arg1;
 - (void)_updateZPositionForAnnotationView:(id)arg1 inBounds:(struct CGRect)arg2;
+- (void)annotationViewDidChangeMetrics:(id)arg1;
 - (void)annotationViewDidChangeHidden:(id)arg1;
 - (void)annotationViewDidChangeZPriority:(id)arg1;
 @property(readonly, nonatomic) CDStruct_089f5ccb currentComparisonContext;
@@ -98,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)updateAnnotationView:(id)arg1;
 - (struct CGPoint)pointForCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (struct CLLocationCoordinate2D)coordinateForAnnotationView:(id)arg1;
+- (void)_updateAnnotationViewsForReason:(long long)arg1 updatePositions:(_Bool)arg2;
 - (void)updateAnnotationViewsForReason:(long long)arg1;
 - (void)deselectAnnotationView:(id)arg1 animated:(_Bool)arg2;
 - (void)updateCalloutStateForSelectedAnnotationView:(id)arg1;
@@ -115,6 +116,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MKAnnotationContainerViewDelegate> delegate;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)globalAnnotations;
 - (id)annotationsInMapRect:(CDStruct_02837cd9)arg1;
 - (unsigned char)sceneState;
 - (unsigned char)sceneID;

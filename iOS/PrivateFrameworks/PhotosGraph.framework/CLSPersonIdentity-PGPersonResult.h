@@ -17,12 +17,10 @@
 @property(readonly, nonatomic) _Bool isVerified;
 - (long long)compareToPerson:(id)arg1;
 @property(readonly, nonatomic) NSString *suggestedContactIdentifier;
-@property(readonly, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) NSString *contactIdentifier;
 @property(readonly, nonatomic) NSString *keywordDescription;
 @property(readonly, nonatomic) NSDictionary *locationsByAddressTypes;
 @property(readonly, nonatomic) NSString *contactID;
-@property(readonly, nonatomic) NSString *UUID;
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long ageCategory;
@@ -35,6 +33,7 @@
 @property(readonly, nonatomic) _Bool isFavorite;
 @property(readonly, nonatomic) _Bool isMe;
 @property(readonly, nonatomic) _Bool isUserCreated;
+@property(readonly, nonatomic) NSString *localIdentifier;
 @property(readonly, nonatomic) NSDate *potentialBirthdayDate;
 @property(readonly, nonatomic) unsigned long long relationship;
 @property(readonly, nonatomic) unsigned long long sex;

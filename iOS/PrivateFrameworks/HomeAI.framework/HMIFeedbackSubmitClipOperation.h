@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)feedbackServiceURL;
 - (id)feedbackServiceHost;
 - (id)feedbackRequestURLForClipWithUUID:(id)arg1;
-- (void)_stripAudioTrackFromAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_stripAudioTrackAndFacesFromAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_downloadClipWithCameraProfileUUID:(id)arg1 clipUUID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithFeedbackSession:(id)arg1 cameraProfileUUID:(id)arg2 clipUUID:(id)arg3;

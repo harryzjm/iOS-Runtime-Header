@@ -8,6 +8,5 @@
 
 @protocol UITextFieldContent <_UITextContent>
 @property(nonatomic) _Bool allowsAttachments;
-@property(nonatomic) long long nonEditingLinebreakMode;
 @end
 

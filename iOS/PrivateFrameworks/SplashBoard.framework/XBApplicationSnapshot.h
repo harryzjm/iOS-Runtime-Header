@@ -9,7 +9,7 @@
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBDisplayEdgeInsetsWrapper, XBSnapshotContainerIdentity, XBStatusBarSettings;
+@class BSAtomicFlag, NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBDisplayEdgeInsetsWrapper, XBSnapshotContainerIdentity, XBStatusBarSettings;
 @protocol OS_os_transaction, XBSnapshotManifestStore;
 
 @interface XBApplicationSnapshot : NSObject <NSSecureCoding, BSDescriptionProviding>
@@ -52,7 +52,7 @@
     _Bool _imageOpaque;
     _Bool _keepImageAccessUntilExpiration;
     _Bool _keepImageAccessForPreHeat;
-    _Bool _hasProtectedContent;
+    BSAtomicFlag *_hasProtectedContent;
     struct os_unfair_lock_s _loadImageLock;
     NSString *_baseLogIdentifier;
     NSString *_logIdentifier;
@@ -60,6 +60,7 @@
     NSObject<OS_os_transaction> *_cachedImageTransaction;
     XBDisplayEdgeInsetsWrapper *_customSafeAreaInsets;
     CDUnknownBlockType _imageGenerator;
+    NSString *_dataProviderClassName;
     struct CGAffineTransform _imageTransform;
 }
 
@@ -75,9 +76,11 @@
 @property(nonatomic) struct CGAffineTransform imageTransform; // @synthesize imageTransform=_imageTransform;
 @property(nonatomic) long long fileLocation; // @synthesize fileLocation=_fileLocation;
 @property(copy, nonatomic, getter=_relativePath, setter=_setRelativePath:) NSString *relativePath; // @synthesize relativePath=_relativePath;
+@property(copy, nonatomic) NSString *dataProviderClassName; // @synthesize dataProviderClassName=_dataProviderClassName;
 @property(nonatomic) long long imageOrientation; // @synthesize imageOrientation=_imageOrientation;
 @property(nonatomic, getter=isImageOpaque) _Bool imageOpaque; // @synthesize imageOpaque=_imageOpaque;
 @property(nonatomic) double imageScale; // @synthesize imageScale=_imageScale;
+@property(copy, nonatomic) CDUnknownBlockType imageGenerator; // @synthesize imageGenerator=_imageGenerator;
 @property(copy) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property(readonly, nonatomic, getter=_store) id <XBSnapshotManifestStore> store; // @synthesize store=_store;
 @property(copy) NSDictionary *extendedData; // @synthesize extendedData=_extendedData;
@@ -127,7 +130,8 @@
 - (_Bool)_path:(id)arg1 isRelativeToPath:(id)arg2 outRelativePath:(id *)arg3;
 - (struct CGRect)_referenceBounds;
 - (_Bool)_hasGenerationContext;
-@property(copy, nonatomic) CDUnknownBlockType imageGenerator; // @synthesize imageGenerator=_imageGenerator;
+- (void)setImageGeneratingByProvider:(id)arg1 withBlockingImageGenerator:(CDUnknownBlockType)arg2;
+- (void)clearImageGenerator;
 - (void)_manifestQueueDecode_setStore:(id)arg1;
 - (id)descriptionWithoutVariants;
 - (_Bool)isValidWithReason:(id *)arg1;
@@ -148,6 +152,7 @@
 - (id)cachedImageForInterfaceOrientation:(long long)arg1;
 - (id)imageForInterfaceOrientation:(long long)arg1 generationOptions:(unsigned long long)arg2;
 - (id)imageForInterfaceOrientation:(long long)arg1;
+- (void)willDeleteVariant:(id)arg1;
 - (id)variantWithIdentifier:(id)arg1;
 - (id)variants;
 @property(readonly, nonatomic) _Bool hasFullSizedContent;

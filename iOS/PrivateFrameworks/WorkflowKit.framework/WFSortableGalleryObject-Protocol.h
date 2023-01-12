@@ -6,11 +6,11 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSDate, NSString;
+@class NSString;
 
 @protocol WFSortableGalleryObject <NSObject>
 @property(readonly, nonatomic) NSString *persistentIdentifier;
-@property(readonly, nonatomic) NSDate *modifiedAt;
+@property(readonly, nonatomic) long long minVersion;
 @property(readonly, nonatomic) NSString *language;
 @property(readonly, nonatomic) NSString *name;
 @end

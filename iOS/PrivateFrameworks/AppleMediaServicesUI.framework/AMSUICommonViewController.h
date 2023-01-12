@@ -12,10 +12,13 @@
 {
 }
 
+- (void)_unregisterNotifications;
+- (void)_registerNotifications;
 - (void)loadView;
 - (void)unsetChildViewController:(id)arg1;
 - (void)setChildViewController:(id)arg1;
 @property(retain, nonatomic) AMSUICommonView *view;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

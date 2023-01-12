@@ -12,10 +12,16 @@
 
 + (id)curatedContactsFromContactStore:(id)arg1 matchingPseudoContact:(id)arg2 error:(id *)arg3;
 + (id)realtimeContactWithContactStore:(id)arg1 forPseudoContact:(id)arg2 error:(id *)arg3;
-+ (id)_realtimeContactWithContactStore:(id)arg1 forPseudoContact:(id)arg2 normalizedName:(id)arg3 error:(id *)arg4;
++ (id)realtimeContactWithContactStore:(id)arg1 forPseudoContact:(id)arg2 fromEntity:(id)arg3 error:(id *)arg4;
++ (id)_realtimeContactWithContactStore:(id)arg1 forPseudoContact:(id)arg2 fromEntity:(id)arg3 normalizedName:(id)arg4 error:(id *)arg5;
++ (id)stripStaleBirthdayFromSGContact:(id)arg1 withEntity:(id)arg2;
++ (id)stripBirthdayFromSGContact:(id)arg1;
 + (id)_realtimeContactFromPseudoContact:(id)arg1 andFeatures:(CDStruct_df2c591a *)arg2 assimilatingMatchingCuratedContacts:(id)arg3;
 + (id)_findContactsMatchingPseudoContact:(id)arg1 withName:(id)arg2 andFeatures:(CDStruct_df2c591a *)arg3 fromContactStore:(id)arg4 withKeysToFetch:(id)arg5;
 + (id)_filterCandidates:(id)arg1 similarToName:(id)arg2 exceedingThreshold:(double)arg3;
++ (_Bool)_compareContact:(id)arg1 cnContact:(id)arg2 newDetails:(id *)arg3 matchedDetails:(id *)arg4 matchPreference:(long long)arg5 stopOnNewDetail:(_Bool)arg6 stopOnMatchedDetail:(_Bool)arg7;
++ (_Bool)compareContact:(id)arg1 cnContact:(id)arg2 stopOnNewDetail:(_Bool)arg3 stopOnMatchedDetail:(_Bool)arg4 matchPreference:(long long)arg5;
++ (void)compareContact:(id)arg1 cnContact:(id)arg2 newDetails:(id *)arg3 matchedDetails:(id *)arg4 matchPreference:(long long)arg5;
 + (id)filterCandidates:(id)arg1 withDetailSubsetOfCNContact:(id)arg2;
 + (id)_filterCandidates:(id)arg1 withUniqueDetailMatchesToContact:(id)arg2 andFeatures:(CDStruct_df2c591a *)arg3;
 + (id)_findFuzzyNameCandidatesMatchingPseudoContact:(id)arg1 withName:(id)arg2 andFeatures:(CDStruct_df2c591a *)arg3 fromContactStore:(id)arg4 withKeysToFetch:(id)arg5;

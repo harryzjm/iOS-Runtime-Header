@@ -31,6 +31,7 @@
 - (id)appendSizeT:(unsigned long long)arg1;
 - (id)appendUnsignedInteger:(unsigned long long)arg1;
 - (id)appendInteger:(long long)arg1;
+- (id)appendInt64:(long long)arg1;
 - (id)appendBool:(_Bool)arg1;
 - (id)appendHashingBlocks:(CDUnknownBlockType)arg1;
 

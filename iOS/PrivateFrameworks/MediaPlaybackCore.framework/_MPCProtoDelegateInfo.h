@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoDelegateInfo : PBCodable <NSCopying>
 {
     unsigned long long _accountID;
@@ -31,15 +32,6 @@
 
 + (id)currentDeviceDelegateInfo;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
-@property(retain, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
-@property(retain, nonatomic) NSString *requestUserAgent; // @synthesize requestUserAgent=_requestUserAgent;
-@property(retain, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
-@property(retain, nonatomic) NSString *deviceGUID; // @synthesize deviceGUID=_deviceGUID;
-@property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
-@property(nonatomic) unsigned long long accountID; // @synthesize accountID=_accountID;
-@property(nonatomic) long long delegateInfoID; // @synthesize delegateInfoID=_delegateInfoID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -47,16 +39,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasPrivateListeningEnabled;
-@property(readonly, nonatomic) _Bool hasTimeZoneName;
-@property(readonly, nonatomic) _Bool hasRequestUserAgent;
-@property(nonatomic) _Bool hasSystemReleaseType;
-@property(nonatomic) int systemReleaseType; // @synthesize systemReleaseType=_systemReleaseType;
-@property(readonly, nonatomic) _Bool hasDeviceName;
-@property(readonly, nonatomic) _Bool hasDeviceGUID;
-@property(readonly, nonatomic) _Bool hasUuid;
-@property(nonatomic) _Bool hasAccountID;
-@property(nonatomic) _Bool hasDelegateInfoID;
 - (void)_getPlaybackRequestEnvironmentWithBaseEnvironment:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

@@ -13,14 +13,14 @@
 @interface NTPBAVAssetKey : PBCodable <NSCopying>
 {
     NTPBDate *_createdAt;
-    NSData *_data;
     NTPBDate *_expiresAt;
     NSString *_identifier;
+    NSData *_keyData;
 }
 
 @property(retain, nonatomic) NTPBDate *expiresAt; // @synthesize expiresAt=_expiresAt;
 @property(retain, nonatomic) NTPBDate *createdAt; // @synthesize createdAt=_createdAt;
-@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
+@property(retain, nonatomic) NSData *keyData; // @synthesize keyData=_keyData;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -32,7 +32,7 @@
 - (id)description;
 @property(readonly, nonatomic) _Bool hasExpiresAt;
 @property(readonly, nonatomic) _Bool hasCreatedAt;
-@property(readonly, nonatomic) _Bool hasData;
+@property(readonly, nonatomic) _Bool hasKeyData;
 @property(readonly, nonatomic) _Bool hasIdentifier;
 - (void)dealloc;
 

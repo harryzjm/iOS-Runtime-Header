@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
 - (id)_urlPathFromBag:(id)arg1;
 - (id)_stringForKey:(id)arg1 fromBag:(id)arg2;
 - (id)_realmOverridesFromBag:(id)arg1;
-- (id)_realmFromBag:(id)arg1;
+- (id)_languageTagFromBag:(id)arg1 fallback:(id)arg2;
 - (id)_countryCodeFromBag:(id)arg1;
 - (id)_additionalQueryItems;
-- (id)urlWithServiceType:(id)arg1 placement:(id)arg2 bag:(id)arg3 hydrateRelatedContents:(_Bool)arg4 additionalParameters:(id)arg5;
+- (id)urlWithServiceType:(id)arg1 placement:(id)arg2 bag:(id)arg3 hydrateRelatedContents:(_Bool)arg4 offerHints:(id)arg5 additionalParameters:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

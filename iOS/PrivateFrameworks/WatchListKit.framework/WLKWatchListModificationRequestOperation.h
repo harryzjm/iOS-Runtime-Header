@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) unsigned long long action; // @synthesize action=_action;
 - (void)processResponse;
 - (id)initWithAction:(unsigned long long)arg1 channelID:(id)arg2 externalID:(id)arg3 caller:(id)arg4;
+- (id)_initWithAction:(unsigned long long)arg1 identifier:(id)arg2 identifierType:(id)arg3 brandID:(id)arg4 caller:(id)arg5;
 - (id)initWithAction:(unsigned long long)arg1 identifier:(id)arg2 caller:(id)arg3;
 - (id)initWithAction:(unsigned long long)arg1 statsID:(id)arg2 caller:(id)arg3;
 - (id)initWithAction:(unsigned long long)arg1 canonicalID:(id)arg2 caller:(id)arg3;

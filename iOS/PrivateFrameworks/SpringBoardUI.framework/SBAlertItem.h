@@ -28,14 +28,20 @@
     _Bool _presented;
     _Bool _ignoresQuietMode;
     _Bool _suppressForKeynote;
+    _Bool _shouldMaskIcon;
     unsigned long long _presentationState;
     UIImage *_headerImage;
     UIImage *_attachmentImage;
+    NSString *_contactIdentifier;
+    NSString *_contentType;
 }
 
 + (void)activateAlertItem:(id)arg1;
 + (id)_alertItemsController;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property(retain, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property(nonatomic) _Bool shouldMaskIcon; // @synthesize shouldMaskIcon=_shouldMaskIcon;
 @property(retain, nonatomic, setter=_setAttachmentImage:) UIImage *_attachmentImage; // @synthesize _attachmentImage;
 @property(retain, nonatomic, setter=_setHeaderImage:) UIImage *_headerImage; // @synthesize _headerImage;
 @property(nonatomic, getter=_isPresented, setter=_setPresented:) _Bool presented; // @synthesize presented=_presented;

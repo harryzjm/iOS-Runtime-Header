@@ -10,7 +10,7 @@
 #import <HealthExperienceUI/UIPickerViewDataSource-Protocol.h>
 #import <HealthExperienceUI/UIPickerViewDelegate-Protocol.h>
 
-@class CNAvatarViewController, HKBiologicalSexObject, HKBloodTypeObject, HKDisplayTypeController, HKHealthStore, NSArray, NSCalendar, NSDateComponents, NSDictionary, NSDiffableDataSourceSnapshot, NSString, ProfileCharacteristicDiffableDataSource, UIBarButtonItem, UIDatePicker, UIImage, UIImageView, UIPickerView, UITableViewCell, WDDisplayTypeDescriptionTableFooterView, WDProfileEditableTableViewCell, WDProfileHeaderView, WDProfileTableViewCell, WDUserDefaults;
+@class CNAvatarViewController, HKBiologicalSexObject, HKBirthdateChangeManager, HKBloodTypeObject, HKDisplayTypeController, HKHealthStore, NSArray, NSCalendar, NSDateComponents, NSDictionary, NSDiffableDataSourceSnapshot, NSString, ProfileCharacteristicDiffableDataSource, UIBarButtonItem, UIDatePicker, UIImage, UIImageView, UIPickerView, UITableViewCell, WDDisplayTypeDescriptionTableFooterView, WDProfileEditableTableViewCell, WDProfileHeaderView, WDProfileTableViewCell, WDUserDefaults;
 
 @interface ProfileCharacteristicsViewController : UITableViewController <UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
@@ -35,6 +35,7 @@
     UIPickerView *_fitzpatrickSkinTypePicker;
     UIPickerView *_wheelchairUsePicker;
     UIBarButtonItem *_cancelButtonItem;
+    UIBarButtonItem *_customLeftBarButtonItem;
     WDProfileHeaderView *_headerView;
     WDProfileEditableTableViewCell *_firstNameCell;
     WDProfileEditableTableViewCell *_lastNameCell;
@@ -57,10 +58,12 @@
     _Bool _beginInEditMode;
     _Bool _useMeContactForAvatarImage;
     UIImage *_avatarImage;
+    long long _accessType;
     UIImageView *_avatarOverrideImageView;
     CNAvatarViewController *_avatarViewController;
     NSDiffableDataSourceSnapshot *_currentSnapshot;
     ProfileCharacteristicDiffableDataSource *_dataSource;
+    HKBirthdateChangeManager *_birthdateChangeManager;
 }
 
 + (id)orderedRowIdentifiersBySectionIdentifierWithNameRowsHidden:(_Bool)arg1 andCardioFitnessMedicationsSectionHidden:(_Bool)arg2;
@@ -68,10 +71,12 @@
 + (_Bool)cardioFitnessMedicationsSectionHiddenForProfileIdentifier:(id)arg1;
 + (_Bool)nameRowsHiddenForProfileIdentifier:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HKBirthdateChangeManager *birthdateChangeManager; // @synthesize birthdateChangeManager=_birthdateChangeManager;
 @property(retain, nonatomic) ProfileCharacteristicDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) NSDiffableDataSourceSnapshot *currentSnapshot; // @synthesize currentSnapshot=_currentSnapshot;
 @property(retain, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
 @property(retain, nonatomic) UIImageView *avatarOverrideImageView; // @synthesize avatarOverrideImageView=_avatarOverrideImageView;
+@property(nonatomic) long long accessType; // @synthesize accessType=_accessType;
 @property(retain, nonatomic) UIImage *avatarImage; // @synthesize avatarImage=_avatarImage;
 @property(nonatomic) _Bool useMeContactForAvatarImage; // @synthesize useMeContactForAvatarImage=_useMeContactForAvatarImage;
 - (id)_birthdayCalendar;
@@ -101,7 +106,9 @@
 - (void)_createHeader;
 - (void)_enableEditing;
 - (void)_updateFirstAndLastNameCellsWithDisplayValues;
+- (void)_updateFooters;
 - (void)_fetchDataFromHealthStore;
+- (void)didUpdateName;
 - (void)dismissButtonTapped:(id)arg1;
 - (void)cancelButtonTapped:(id)arg1;
 - (void)didClearBirthdate;
@@ -129,7 +136,7 @@
 - (id)_generalInfoFooterView;
 - (id)_wheelchairFooterTitle;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (id)_titleForFooterInTableView:(id)arg1 section:(long long)arg2 sectionIdentifier:(id)arg3;
+- (id)_titleForFooterInTableViewSection:(long long)arg1 sectionIdentifier:(id)arg2;
 - (void)viewDidLoad;
 - (void)setUpNavigationBar;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

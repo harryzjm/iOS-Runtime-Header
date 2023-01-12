@@ -9,7 +9,6 @@
 @class CNAvatarImageRenderer, NSMutableDictionary;
 @protocol MKInfoCardTheme, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceReviewAvatarGenerator : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -21,8 +20,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) CNAvatarImageRenderer *monogrammer; // @synthesize monogrammer=_monogrammer;
 @property(nonatomic) __weak id <MKInfoCardTheme> theme; // @synthesize theme=_theme;
-- (void)avatarForReview:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)monogramForReviewerName:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)avatarForReview:(id)arg1 pointSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)monogramForReviewerName:(id)arg1 pointSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 
 @end

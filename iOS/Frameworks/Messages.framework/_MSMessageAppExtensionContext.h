@@ -40,6 +40,7 @@
 - (void)_remoteViewDidBecomeReadyForDisplay;
 - (void)_hostDidBeginDeferredTeardown;
 - (void)dismissToKeyboard:(_Bool)arg1;
+- (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 destructiveButtonTitle:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)presentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissAndPresentPhotosApp;
 - (void)dismiss;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_animatorForDuration:(double)arg1 initialVelocity:(struct CGVector)arg2 shouldLayoutSubviews:(_Bool)arg3;
 + (id)_animatorForStiffnessFactor:(double)arg1 initialVelocity:(struct CGVector)arg2;
++ (id)animatorForGenericUpdates;
 + (id)animatorForScanlineCollapse;
 + (id)animatorForCollapseWithAdditivelyAnimatedViews:(id)arg1;
 + (id)animatorForCollapse;

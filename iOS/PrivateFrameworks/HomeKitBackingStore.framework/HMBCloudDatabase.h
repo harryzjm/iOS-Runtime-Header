@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitBackingStore/APSConnectionDelegate-Protocol.h>
+#import <HomeKitBackingStore/HMBCloudPushObserver-Protocol.h>
 #import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@class APSConnection, CKContainer, CKContainerID, CKDatabase, HMBCloudDatabaseConfiguration, HMBCloudDatabaseStateModel, HMBLocalDatabase, HMBLocalZone, HMFUnfairLock, NAFuture, NSMutableDictionary, NSSet, NSString;
+@class CKContainer, CKContainerID, CKDatabase, HMBCloudCredentialsAvailabilityListener, HMBCloudDatabaseConfiguration, HMBCloudDatabaseStateModel, HMBLocalDatabase, HMBLocalZone, HMFUnfairLock, NAFuture, NSMutableDictionary, NSOperationQueue, NSSet, NSString;
 @protocol HMBCloudDatabaseDelegate;
 
-@interface HMBCloudDatabase : HMFObject <APSConnectionDelegate, HMFLogging>
+@interface HMBCloudDatabase : HMFObject <HMBCloudPushObserver, HMFLogging>
 {
     id <HMBCloudDatabaseDelegate> _delegate;
     HMBCloudDatabaseConfiguration *_configuration;
@@ -24,24 +24,28 @@
     HMBCloudDatabaseStateModel *_publicDatabaseState;
     NSMutableDictionary *_zoneStateByZoneID;
     CKContainer *_container;
+    HMBCloudCredentialsAvailabilityListener *_credentialsAvailabilityListener;
     CKDatabase *_sharedDatabase;
     CKDatabase *_privateDatabase;
     CKDatabase *_publicDatabase;
-    APSConnection *_apsConnection;
+    CDUnknownBlockType _cloudZoneFactory;
+    NSOperationQueue *_invitationOperationQueue;
+    NSOperationQueue *_databaseFetchOperationQueue;
     NAFuture *_initialCloudSyncFuture;
-    NAFuture *_manateeAvailabilityFuture;
 }
 
 + (id)logCategory;
 + (id)extantDatabasesLock;
 + (id)extantDatabases;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NAFuture *manateeAvailabilityFuture; // @synthesize manateeAvailabilityFuture=_manateeAvailabilityFuture;
 @property(retain, nonatomic) NAFuture *initialCloudSyncFuture; // @synthesize initialCloudSyncFuture=_initialCloudSyncFuture;
-@property(retain, nonatomic) APSConnection *apsConnection; // @synthesize apsConnection=_apsConnection;
+@property(readonly, nonatomic) NSOperationQueue *databaseFetchOperationQueue; // @synthesize databaseFetchOperationQueue=_databaseFetchOperationQueue;
+@property(readonly, nonatomic) NSOperationQueue *invitationOperationQueue; // @synthesize invitationOperationQueue=_invitationOperationQueue;
+@property(copy, nonatomic) CDUnknownBlockType cloudZoneFactory; // @synthesize cloudZoneFactory=_cloudZoneFactory;
 @property(readonly, nonatomic) CKDatabase *publicDatabase; // @synthesize publicDatabase=_publicDatabase;
 @property(readonly, nonatomic) CKDatabase *privateDatabase; // @synthesize privateDatabase=_privateDatabase;
 @property(readonly, nonatomic) CKDatabase *sharedDatabase; // @synthesize sharedDatabase=_sharedDatabase;
+@property(readonly, nonatomic) HMBCloudCredentialsAvailabilityListener *credentialsAvailabilityListener; // @synthesize credentialsAvailabilityListener=_credentialsAvailabilityListener;
 @property(readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property(readonly, nonatomic) NSMutableDictionary *zoneStateByZoneID; // @synthesize zoneStateByZoneID=_zoneStateByZoneID;
 @property(retain, nonatomic) HMBCloudDatabaseStateModel *publicDatabaseState; // @synthesize publicDatabaseState=_publicDatabaseState;
@@ -54,6 +58,8 @@
 @property(nonatomic) __weak id <HMBCloudDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)attributeDescriptions;
 - (id)logIdentifier;
+- (void)handler:(id)arg1 didReceiveMessageWithUserInfo:(id)arg2;
+- (void)handler:(id)arg1 didReceiveCKNotification:(id)arg2;
 - (id)operationConfigurationWithProcessingOptions:(id)arg1;
 - (void)removeStateForZoneID:(id)arg1;
 - (void)notifyDelegateOfError:(id)arg1 forOperation:(id)arg2;
@@ -66,9 +72,6 @@
 - (void)handleRemovedZoneIDs:(id)arg1 userInitiated:(_Bool)arg2;
 - (void)handleUpdatedZonesIDs:(id)arg1;
 - (void)handleCreatedZoneIDs:(id)arg1;
-- (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
-- (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
-- (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (id)shutdown;
 - (id)performAdministrativeFetchForDatabaseScope:(long long)arg1 withForce:(_Bool)arg2;
 - (id)performAdministrativeFetchForAllDatabases:(_Bool)arg1;
@@ -79,15 +82,11 @@
 - (id)initWithLocalDatabase:(id)arg1 configuration:(id)arg2;
 - (id)initWithLocalDatabase:(id)arg1 stateZone:(id)arg2 container:(id)arg3 configuration:(id)arg4 databaseStateModelsByScope:(id)arg5 zoneStateModels:(id)arg6;
 - (id)peformCodeOperationWithServiceName:(id)arg1 functionName:(id)arg2 request:(id)arg3 responseClass:(Class)arg4;
-- (id)declineInvitation:(id)arg1;
+- (id)_acceptInvitation:(id)arg1;
 - (id)acceptInvitation:(id)arg1;
 - (id)removePrivateZoneWithID:(id)arg1;
 - (id)createPrivateZoneWithID:(id)arg1;
 - (id)fetchZonesOn:(id)arg1;
-- (void)handleAccountChangedNotification:(id)arg1;
-- (id)waitForManateeAvailabilityAndRecheckIfAlreadyAvailable:(_Bool)arg1;
-- (id)waitForManateeAvailabilityAndRecheckIfAlreadyAvailable;
-- (id)waitForManateeAvailability;
 - (void)deallocForZoneWithID:(id)arg1;
 - (void)updateNeedsZoneDeletion:(_Bool)arg1 forZoneWithID:(id)arg2;
 - (void)updateRebuildStatus:(id)arg1 forZoneWithID:(id)arg2;
@@ -97,10 +96,10 @@
 - (id)subscriptionIDForZoneID:(id)arg1 recordType:(id)arg2;
 - (id)subscriptionIDForCloudID:(id)arg1 recordType:(id)arg2;
 - (id)fetchSubscriptionsOn:(id)arg1;
-- (id)fetchUserRecordOn:(id)arg1;
-- (id)acceptInvitations:(id)arg1;
-- (id)fetchShareMetadataForInvitations:(id)arg1;
-- (id)fetchParticipants:(id)arg1;
+- (id)fetchCurrentUserRecordForDatabase:(id)arg1;
+- (id)acceptInvitationWithShareMetadata:(id)arg1;
+- (id)fetchShareMetadataForInvitation:(id)arg1;
+- (id)fetchParticipantWithLookupInfo:(id)arg1;
 - (id)performCloudPullForScope:(long long)arg1;
 - (id)databaseStateForDatabaseScope:(long long)arg1;
 - (id)fetchZones:(_Bool)arg1;
@@ -108,17 +107,18 @@
 @property(readonly, nonatomic) NSSet *sharedZoneIDs;
 @property(readonly, nonatomic) NSSet *privateZoneIDs;
 - (id)_zonesWithScope:(long long)arg1;
+- (id)unregisterSharedSubscriptionForExternalRecordType:(id)arg1;
+- (id)unregisterPrivateSubscriptionForExternalRecordType:(id)arg1;
+- (id)registerSharedSubscriptionForExternalRecordType:(id)arg1;
+- (id)registerPrivateSubscriptionForExternalRecordType:(id)arg1;
+- (id)registerSubscriptionForExternalRecordType:(id)arg1 databaseState:(id)arg2;
+- (id)registerPrivateSubscription:(id)arg1;
 - (id)unregisterSharedSubscriptionForSubscriptionID:(id)arg1;
 - (id)unregisterPrivateSubscriptionForSubscriptionID:(id)arg1;
 - (id)subscriptionsForZoneWithID:(id)arg1;
 - (id)unregisterSubscription:(id)arg1 forZoneWithID:(id)arg2;
 - (id)registerSubscription:(id)arg1 forZoneWithID:(id)arg2;
 - (id)pushSubscriptionsForDatabase:(id)arg1 subscriptionsToSave:(id)arg2 subscriptionIDsToRemove:(id)arg3;
-- (id)unregisterSharedSubscriptionForExternalRecordType:(id)arg1;
-- (id)unregisterPrivateSubscriptionForExternalRecordType:(id)arg1;
-- (id)registerSharedSubscriptionForExternalRecordType:(id)arg1;
-- (id)registerPrivateSubscriptionForExternalRecordType:(id)arg1;
-- (id)registerSubscriptionForExternalRecordType:(id)arg1 databaseState:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

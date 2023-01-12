@@ -12,17 +12,17 @@
 
 @interface TSCH3DGLRenderBufferAllocator : NSObject <TSCH3DRenderBufferAllocator>
 {
-    TSCH3DRenderBufferStorage *mStorage;
+    TSCH3DRenderBufferStorage *_storage;
 }
 
 + (id)allocatorWithStorage:(id)arg1;
 + (id)allocator;
+- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)depthbufferWithAllocatorInfo:(id)arg1;
 - (id)colorbufferWithAllocatorInfo:(id)arg1;
 - (id)bufferWithAllocatorInfo:(id)arg1 internalFormat:(unsigned int)arg2 attachment:(unsigned int)arg3;
 @property(readonly, nonatomic) _Bool isTexturable;
-- (void)dealloc;
 - (id)initWithStorage:(id)arg1;
 
 // Remaining properties

@@ -9,20 +9,20 @@
 #import <SafariFoundation/NSCopying-Protocol.h>
 #import <SafariFoundation/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, SFExternalCredentialIdentityStoreIdentifier;
 
 @interface SFCredentialProviderExtensionState : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _enabled;
     _Bool _supportsIncrementalUpdates;
     NSString *_localizedDisplayName;
-    id _credentialIdentityStoreIdentifier;
+    SFExternalCredentialIdentityStoreIdentifier *_credentialIdentityStoreIdentifier;
 }
 
 + (id)credentialProviderExtensionWithDisabledState;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) id credentialIdentityStoreIdentifier; // @synthesize credentialIdentityStoreIdentifier=_credentialIdentityStoreIdentifier;
+@property(readonly, copy, nonatomic) SFExternalCredentialIdentityStoreIdentifier *credentialIdentityStoreIdentifier; // @synthesize credentialIdentityStoreIdentifier=_credentialIdentityStoreIdentifier;
 @property(readonly, copy, nonatomic) NSString *localizedDisplayName; // @synthesize localizedDisplayName=_localizedDisplayName;
 @property(readonly, nonatomic) _Bool supportsIncrementalUpdates; // @synthesize supportsIncrementalUpdates=_supportsIncrementalUpdates;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;

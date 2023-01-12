@@ -9,8 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setFullGuidanceMode:(_Bool)arg1;
-- (void)enterState;
+- (void)setGuidanceType:(unsigned long long)arg1;
+- (void)postEnterState;
 - (unsigned long long)type;
 
 @end

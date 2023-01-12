@@ -4,26 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString;
+@class NSString, PGGraphBabyNodeCollection;
 
 @interface PGGraphBabyNode
 {
     NSString *_uuid;
 }
 
++ (id)caretakerOfBaby;
++ (id)momentOfBaby;
++ (id)filter;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSSet *momentNodes;
-@property(readonly, nonatomic) NSSet *caretakerNodes;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateCaretakerNodesUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) PGGraphBabyNodeCollection *collection;
 - (unsigned short)domain;
 - (id)label;
 - (id)description;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithUUID:(id)arg1;
 
 @end
 

@@ -9,6 +9,7 @@
 @class BPSCompletion, BPSSubscription;
 
 @protocol BPSSubscriber <NSObject>
+- (void)cancel;
 - (void)receiveCompletion:(BPSCompletion *)arg1;
 - (void)receiveSubscription:(BPSSubscription *)arg1;
 - (long long)receiveInput:(id)arg1;

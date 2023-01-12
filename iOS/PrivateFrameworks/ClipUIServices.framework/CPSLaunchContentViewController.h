@@ -10,24 +10,20 @@
 #import <ClipUIServices/CPSSessionProxyDelegate-Protocol.h>
 #import <ClipUIServices/PRXCardContentProviding-Protocol.h>
 
-@class CPSAppClipUnavailableView, CPSAppMetadataView, CPSButton, CPSClipMetadata, CPSPermissionView, CPSPermissionsViewController, CPSSessionProxy, CPSVibrantLabel, NSLayoutConstraint, NSNumber, NSString, UIButton, UIImage, UIImageView, UIStackView, UIView, UIVisualEffectView;
-@protocol CPSLaunchContentViewControllerDelegate;
+@class CPSAppClipUnavailableView, CPSAppMetadataView, CPSClipMetadata, CPSPermissionView, CPSPermissionsViewController, CPSSessionProxy, CPSVibrantButton, CPSVibrantLabel, NSError, NSLayoutConstraint, NSNumber, NSObject, NSString, UIButton, UIImage, UIImageView, UIStackView, UIView;
+@protocol CPSLaunchContentViewControllerDelegate, OS_nw_path, OS_nw_path_monitor;
 
-__attribute__((visibility("hidden")))
 @interface CPSLaunchContentViewController : UIViewController <CPSSessionProxyDelegate, CPSPermissionsViewControllerDelegate, PRXCardContentProviding>
 {
     UIView *_heroContainerView;
     UIImageView *_heroImageView;
     UIImageView *_heroMirrorImageView;
-    UIVisualEffectView *_closeButtonEffectView;
-    UIButton *_closeButton;
     UIView *_separatorView;
     UIView *_informationContainerView;
     UIStackView *_informationContentView;
     UIView *_clipInformationContainerView;
     CPSVibrantLabel *_clipNameVibrantLabel;
     CPSVibrantLabel *_clipDescriptionVibrantLabel;
-    CPSButton *_openButton;
     CPSAppMetadataView *_appMetadataView;
     CPSClipMetadata *_clipMetadata;
     CPSSessionProxy *_sessionProxy;
@@ -38,13 +34,22 @@ __attribute__((visibility("hidden")))
     _Bool _shouldPlaySoundAndHaptic;
     _Bool _didInstallApplicationPlaceholder;
     _Bool _didSendAnalytics;
+    NSObject<OS_nw_path_monitor> *_networkPathMonitor;
+    NSObject<OS_nw_path> *_networkPath;
+    NSError *_proxyLoadingError;
+    UIButton *_openButton;
+    CPSVibrantButton *_closeButton;
+    CPSVibrantButton *_openVibrantButton;
+    unsigned long long _displayMode;
+    CDUnknownBlockType _delayedPermissionViewUnhideBlock;
+    _Bool _willConfigurePermissionView;
     _Bool _dismissalInProgress;
     id <CPSLaunchContentViewControllerDelegate> _delegate;
     NSNumber *_uiMock_openButtonEnabled;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic, setter=uiMock_setOpenButtonEnabled:) NSNumber *uiMock_openButtonEnabled; // @synthesize uiMock_openButtonEnabled=_uiMock_openButtonEnabled;
+@property(nonatomic, setter=uiMock_setOpenButtonEnabled:) NSNumber *uiMock_openButtonEnabled; // @synthesize uiMock_openButtonEnabled=_uiMock_openButtonEnabled;
 @property(nonatomic) _Bool dismissalInProgress; // @synthesize dismissalInProgress=_dismissalInProgress;
 @property(nonatomic) __weak id <CPSLaunchContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)proxy:(id)arg1 didFinishLoadingWithError:(id)arg2;
@@ -56,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)updatePreferredContentSizeForCardWidth:(double)arg1;
 @property(readonly, nonatomic) _Bool allowsPullToDismiss;
 - (void)permissionsViewControllerDidFinish:(id)arg1;
+- (void)createNetworkPathMonitor;
 - (id)_reasonStringForError:(id)arg1;
 - (void)_updateHeroImageIfNeeded;
 - (_Bool)_canShowWhileLocked;
@@ -86,18 +92,22 @@ __attribute__((visibility("hidden")))
 - (_Bool)_userNotificationAuthorizationDenied;
 - (void)configurePermissionView;
 - (void)setUpClipInformationContainerView;
+- (id)_setUpOpenButtonIfNeeded;
 - (void)setUpInformationSection;
 - (void)setUpHeroSection;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateViewConstraints;
+- (void)_updateCornerRadiusForButtons;
 - (void)viewDidLayoutSubviews;
 - (void)setUpCard;
 - (void)playSoundAndHaptic;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMetadata:(id)arg1;
+- (id)initWithURL:(id)arg1 displayMode:(unsigned long long)arg2;
 - (id)initWithURL:(id)arg1;
 - (void)loadView;
 

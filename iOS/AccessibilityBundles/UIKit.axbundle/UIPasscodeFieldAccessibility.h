@@ -17,7 +17,6 @@
 - (id)accessibilityElements;
 - (void)dealloc;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)_accessibilityChildren;
 - (void)setShowsOKButton:(_Bool)arg1;
 
 @end

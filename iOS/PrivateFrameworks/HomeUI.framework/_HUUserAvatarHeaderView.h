@@ -36,7 +36,7 @@
 - (void)dismissMultiUserTokenFixUI;
 - (void)presentMultiUserTokenFixUIForMediaAccount:(id)arg1 inHome:(id)arg2;
 - (void)dealloc;
-- (id)initWithUserHandle:(id)arg1 home:(id)arg2 delegate:(id)arg3;
+- (id)initWithUser:(id)arg1 home:(id)arg2 delegate:(id)arg3;
 
 @end
 

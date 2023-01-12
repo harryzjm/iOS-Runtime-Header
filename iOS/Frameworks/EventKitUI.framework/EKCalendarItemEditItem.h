@@ -66,6 +66,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldAppearWithVisibility:(int)arg1;
 - (void)applicationDidResume;
 - (void)prepareForReload;
+- (_Bool)forceRefreshAlarmItemOnSave;
+- (_Bool)forceRefreshURLItemOnSave;
 - (_Bool)forceRefreshLocationItemOnSave;
 - (_Bool)forceRefreshInviteesItemOnSave;
 - (_Bool)forceRefreshStartAndEndDatesOnSave;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IMDaemonListener, IMLocalObject, IMRemoteObject, NSArray, NSLock, NSMutableArray, NSMutableDictionary, NSProtocolChecker, NSRecursiveLock, NSString;
+@class IMDaemonListener, IMDaemonQueryController, IMLocalObject, IMRemoteObject, NSArray, NSLock, NSMutableArray, NSMutableDictionary, NSProtocolChecker, NSRecursiveLock, NSString;
 @protocol IMRemoteDaemonProtocol, OS_dispatch_queue;
 
 @interface IMDaemonController : NSObject
@@ -40,6 +40,9 @@
     unsigned int _cachedCapabilities;
     unsigned int _lastUpdatedCapabilities;
     _Bool _requestingConnection;
+    id <IMRemoteDaemonProtocol> _synchronousReplyingRemoteDaemon;
+    id <IMRemoteDaemonProtocol> _replyingRemoteDaemon;
+    IMDaemonQueryController *_queryController;
     NSMutableDictionary *_requestQOSClassCompletionBlocks;
     CDUnknownBlockType _prewarmingBlock;
 }
@@ -53,6 +56,9 @@
 @property(copy, nonatomic) CDUnknownBlockType prewarmingBlock; // @synthesize prewarmingBlock=_prewarmingBlock;
 @property(retain, nonatomic) NSMutableDictionary *requestQOSClassCompletionBlocks; // @synthesize requestQOSClassCompletionBlocks=_requestQOSClassCompletionBlocks;
 @property(readonly, nonatomic, getter=isRequestingConnection) _Bool requestingConnection; // @synthesize requestingConnection=_requestingConnection;
+@property(readonly, nonatomic) IMDaemonQueryController *queryController; // @synthesize queryController=_queryController;
+@property(readonly, nonatomic) id <IMRemoteDaemonProtocol> replyingRemoteDaemon; // @synthesize replyingRemoteDaemon=_replyingRemoteDaemon;
+@property(readonly, nonatomic) id <IMRemoteDaemonProtocol> synchronousReplyingRemoteDaemon; // @synthesize synchronousReplyingRemoteDaemon=_synchronousReplyingRemoteDaemon;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_remoteMessageQueue; // @synthesize _remoteMessageQueue;
 @property(retain, setter=_setServicesToDeny:) NSArray *_servicesToDeny; // @synthesize _servicesToDeny;
 @property(retain, setter=_setServicesToAllow:) NSArray *_servicesToAllow; // @synthesize _servicesToAllow;

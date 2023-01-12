@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_1558193d)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_1558193d)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool recreate_apg_prons;
 @property(readonly, nonatomic) _Bool incomplete_profile;
 @property(readonly, nonatomic) FTUserLanguageProfile *user_language_profile;

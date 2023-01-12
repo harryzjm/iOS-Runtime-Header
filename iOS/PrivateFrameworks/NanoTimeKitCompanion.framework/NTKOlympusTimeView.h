@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKOlympusContentViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKDevice, NSDate, NSString, NTKOlympusTimeContentView, UIImage;
+@class CLKDevice, NSDate, NSString, NTKOlympusColorPalette, NTKOlympusTimeContentView, UIImage;
 @protocol NTKOlympusViewDelegate;
 
 @interface NTKOlympusTimeView : UIView <NTKOlympusContentViewDelegate, NTKTimeView>
@@ -23,7 +23,7 @@
     double _minuteHandAngle;
     unsigned long long _currentStyle;
     unsigned long long _currentDial;
-    unsigned long long _currentColor;
+    NTKOlympusColorPalette *_currentColorPalette;
     CLKDevice *_device;
     NTKOlympusTimeContentView *_contentView;
     NTKOlympusTimeContentView *_overlayContentView;
@@ -39,7 +39,7 @@
 @property(retain, nonatomic) NTKOlympusTimeContentView *overlayContentView; // @synthesize overlayContentView=_overlayContentView;
 @property(retain, nonatomic) NTKOlympusTimeContentView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) CLKDevice *device; // @synthesize device=_device;
-@property(nonatomic) unsigned long long currentColor; // @synthesize currentColor=_currentColor;
+@property(nonatomic) NTKOlympusColorPalette *currentColorPalette; // @synthesize currentColorPalette=_currentColorPalette;
 @property(nonatomic) unsigned long long currentDial; // @synthesize currentDial=_currentDial;
 @property(nonatomic) unsigned long long currentStyle; // @synthesize currentStyle=_currentStyle;
 @property(nonatomic) double minuteHandAngle; // @synthesize minuteHandAngle=_minuteHandAngle;
@@ -75,8 +75,8 @@
 - (void)configureViewsForEditing;
 - (void)createAndRemoveViewsForCurrentStateIfNeeded;
 - (void)layoutSubviews;
-- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 date:(id)arg5 useSmallFont:(_Bool)arg6 circularLogoImage:(id)arg7;
-- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 color:(unsigned long long)arg4 date:(id)arg5;
+- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 colorPalette:(id)arg4 date:(id)arg5 useSmallFont:(_Bool)arg6 circularLogoImage:(id)arg7;
+- (id)initWithDevice:(id)arg1 dial:(unsigned long long)arg2 style:(unsigned long long)arg3 colorPalette:(id)arg4 date:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

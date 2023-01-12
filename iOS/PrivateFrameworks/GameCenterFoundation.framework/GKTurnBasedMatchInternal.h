@@ -35,6 +35,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKGameInternal *game; // @synthesize game=_game;
 @property(retain, nonatomic) NSArray *exchanges; // @synthesize exchanges=_exchanges;
 @property(nonatomic) long long platform; // @synthesize platform=_platform;
@@ -65,7 +66,6 @@
 - (long long)localPlayerParticipantIndex;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 
 @end
 

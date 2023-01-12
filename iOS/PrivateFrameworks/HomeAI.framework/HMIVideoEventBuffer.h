@@ -6,12 +6,12 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFUnfairLock, NSMutableArray;
+@class NSMutableArray;
 
 @interface HMIVideoEventBuffer : HMFObject
 {
     NSMutableArray *_data;
-    HMFUnfairLock *_lock;
+    struct os_unfair_lock_s _lock;
     long long _maxCapacity;
 }
 

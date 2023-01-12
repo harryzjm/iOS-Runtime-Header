@@ -9,9 +9,8 @@
     _Bool _includeSecondaryContainers;
 }
 
++ (_Bool)shouldLogAtOperationStart;
 @property(nonatomic) _Bool includeSecondaryContainers; // @synthesize includeSecondaryContainers=_includeSecondaryContainers;
-- (id)_subcriptionsToValidate;
-- (id)_registerOperationForSubscriptions:(id)arg1 container:(id)arg2;
 - (void)main;
 
 @end

@@ -8,7 +8,7 @@
 #import <coreroutine/RTStoreManager-Protocol.h>
 #import <coreroutine/RTVisitMonitorDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, RTDefaultsManager, RTDeviceLocationPredictor, RTHintManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTPlatform, RTVisitLabeler, RTVisitMonitor, RTVisitStore;
+@class NSMutableArray, NSString, RTDefaultsManager, RTDeviceLocationPredictor, RTHintManager, RTLearnedLocationManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTPlatform, RTVisitLabeler, RTVisitMonitor, RTVisitStore;
 
 @interface RTVisitManager <RTVisitMonitorDelegate, RTPurgable, RTStoreManager>
 {
@@ -16,6 +16,7 @@
     RTDefaultsManager *_defaultsManager;
     RTDeviceLocationPredictor *_deviceLocationPredictor;
     RTHintManager *_hintManager;
+    RTLearnedLocationManager *_learnedLocationManager;
     RTLocationAwarenessManager *_locationAwarenessManager;
     RTLocationManager *_locationManager;
     RTMetricManager *_metricManager;
@@ -37,6 +38,7 @@
 @property(retain, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 @property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) RTLocationAwarenessManager *locationAwarenessManager; // @synthesize locationAwarenessManager=_locationAwarenessManager;
+@property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property(retain, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
 @property(retain, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
 @property(retain, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
@@ -61,12 +63,12 @@
 - (void)_updateStateForLowConfidenceVisitIncidents;
 - (void)_updateStateForLeechedVisitIncidents;
 - (void)_updateStateForVisitIncidents;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_setupVisitMonitorWithHandler:(CDUnknownBlockType)arg1;
 - (void)onVisitStoreNotification:(id)arg1;
 - (void)_onVisitStoreNotification:(id)arg1;
 - (void)_setup;
-- (id)initWithDefaultsManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 platform:(id)arg7 visitLabeler:(id)arg8 visitStore:(id)arg9;
+- (id)initWithDefaultsManager:(id)arg1 deviceLocationPredictor:(id)arg2 hintManager:(id)arg3 learnedLocationManager:(id)arg4 locationAwarenessManager:(id)arg5 locationManager:(id)arg6 metricManager:(id)arg7 platform:(id)arg8 visitLabeler:(id)arg9 visitStore:(id)arg10;
 - (id)init;
 
 // Remaining properties

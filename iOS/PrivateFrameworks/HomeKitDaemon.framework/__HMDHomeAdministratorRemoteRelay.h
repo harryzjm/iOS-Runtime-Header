@@ -10,8 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)logCategory;
-- (void)__handleMessage:(id)arg1;
-- (void)registerForMessage:(id)arg1 policies:(id)arg2;
+- (void)__handleXPCMessage:(id)arg1;
 
 @end
 

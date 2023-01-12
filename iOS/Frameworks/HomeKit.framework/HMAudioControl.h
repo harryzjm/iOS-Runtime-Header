@@ -31,6 +31,7 @@
 @property(getter=isMuted) _Bool muted;
 @property float volume;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier;
+- (void)_unconfigure;
 - (void)__configureWithContext:(id)arg1;
 - (id)initWithMediaSession:(id)arg1;
 

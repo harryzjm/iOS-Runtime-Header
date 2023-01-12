@@ -8,7 +8,7 @@
 
 @interface GKOctree : NSObject
 {
-    struct GKCOctree<NSObject> *_cOctree;
+    void *_cOctree;
 }
 
 + (id)octreeWithBoundingBox:(struct GKBox)arg1 minimumCellSize:(float)arg2;

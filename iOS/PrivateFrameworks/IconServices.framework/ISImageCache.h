@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSData, NSMutableDictionary;
 
 @interface ISImageCache : NSObject
 {
     struct os_unfair_lock_s _lock;
+    NSData *_latestValidationToken;
     NSMutableDictionary *_imageBagsByDescriptor;
 }
 
 - (void).cxx_destruct;
 @property(retain) NSMutableDictionary *imageBagsByDescriptor; // @synthesize imageBagsByDescriptor=_imageBagsByDescriptor;
 @property struct os_unfair_lock_s lock; // @synthesize lock=_lock;
+@property(readonly) NSData *latestValidationToken; // @synthesize latestValidationToken=_latestValidationToken;
 - (id)allImages;
 - (id)debugDescription;
 - (void)setImage:(id)arg1 forDescriptor:(id)arg2;

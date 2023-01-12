@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFItem, HUCameraView, HUGridCameraCellLayoutOptions, HULegibilityLabel, HUVisualEffectContainerView, NADecayingTimer, NSArray, UILabel, UIView, _UILegibilitySettings;
+@class HFItem, HUCameraView, HUGridCameraCellLayoutOptions, HULegibilityLabel, HUVisualEffectContainerView, NADecayingTimer, NSArray, UIImage, UIImageView, UILabel, UIView, _UILegibilitySettings;
 
 @interface HUGridCameraCell
 {
     HFItem *_item;
     HUGridCameraCellLayoutOptions *_layoutOptions;
+    UIImage *_exclamationImage;
+    HUVisualEffectContainerView *_exclamationView;
+    UIImageView *_exclamationImageView;
     UIView *_topBarView;
-    UIView *_recordingIndicator;
+    UIImageView *_recordingIndicatorImageView;
     UILabel *_titleLabel;
     HULegibilityLabel *_descriptionLabel;
     HUCameraView *_cameraView;
@@ -19,13 +22,11 @@
     NSArray *_allConstraints;
     NSArray *_labelsConstraints;
     NADecayingTimer *_descriptionLabelUpdateTimer;
-    HUVisualEffectContainerView *_exclamationView;
 }
 
 + (Class)layoutOptionsClass;
 + (_Bool)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HUVisualEffectContainerView *exclamationView; // @synthesize exclamationView=_exclamationView;
 @property(retain, nonatomic) NADecayingTimer *descriptionLabelUpdateTimer; // @synthesize descriptionLabelUpdateTimer=_descriptionLabelUpdateTimer;
 @property(retain, nonatomic) NSArray *labelsConstraints; // @synthesize labelsConstraints=_labelsConstraints;
 @property(retain, nonatomic) NSArray *allConstraints; // @synthesize allConstraints=_allConstraints;
@@ -33,15 +34,20 @@
 @property(retain, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
 @property(retain, nonatomic) HULegibilityLabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) UIView *recordingIndicator; // @synthesize recordingIndicator=_recordingIndicator;
+@property(retain, nonatomic) UIImageView *recordingIndicatorImageView; // @synthesize recordingIndicatorImageView=_recordingIndicatorImageView;
 @property(retain, nonatomic) UIView *topBarView; // @synthesize topBarView=_topBarView;
+@property(readonly, nonatomic) UIImageView *exclamationImageView; // @synthesize exclamationImageView=_exclamationImageView;
 @property(retain, nonatomic) HUGridCameraCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 - (void)setItem:(id)arg1;
 - (id)item;
+@property(readonly, nonatomic) HUVisualEffectContainerView *exclamationView; // @synthesize exclamationView=_exclamationView;
+@property(readonly, nonatomic) UIImage *exclamationImage; // @synthesize exclamationImage=_exclamationImage;
+- (void)_populateExclamationImageIfNeeded;
 - (id)_descriptionLabelText:(id)arg1;
 - (void)_updateRecordIndicatorColor;
 - (void)_updateCameraViewAppearance;
 - (void)_animateTransitionWithView:(id)arg1 animations:(CDUnknownBlockType)arg2;
+- (void)_handleShouldDifferentiateWithoutColorDidChange;
 - (void)updateConstraints;
 - (void)layoutOptionsDidChange;
 - (_Bool)shouldDisplayAccessModeErrorContent;

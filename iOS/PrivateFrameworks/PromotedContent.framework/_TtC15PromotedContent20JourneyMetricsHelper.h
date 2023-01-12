@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSString, _TtC15PromotedContent31JourneyMetricsHelperDiagnostics;
 @protocol APMetricPrimitiveCreating, APPCPromotableContent;
 
 @interface _TtC15PromotedContent20JourneyMetricsHelper : NSObject
@@ -18,34 +18,47 @@
     MISSING_TYPE *contextIdentifier;
     MISSING_TYPE *hasBeenOnScreen;
     MISSING_TYPE *isCurrentlyOnScreen;
+    MISSING_TYPE *diagnostics;
     MISSING_TYPE *notificationOwner;
+    MISSING_TYPE *clientSource;
     MISSING_TYPE *interactionThreshold;
     MISSING_TYPE *interactionTime;
     MISSING_TYPE *viewReady;
     MISSING_TYPE *wasCreated;
     MISSING_TYPE *hasBeenPlaced;
+    MISSING_TYPE *stop;
+    MISSING_TYPE *$__lazy_storage_$_shownSet;
+    MISSING_TYPE *$__lazy_storage_$_partiallyShownSet;
 }
 
 - (void).cxx_destruct;
 - (id)init;
 - (void)contentLoadFailure;
-- (void)getAppWithButtonState:(long long)arg1 timeToPreviousInstall:(double)arg2;
+- (void)exceededContainer;
+- (void)getAppWithButtonState:(long long)arg1 timeToPreviousInstall:(long long)arg2;
 - (void)adMarkerInteracted;
 - (void)userReturnedFromInteraction;
+- (void)interactedWithElementID:(unsigned char)arg1 atXPos:(float)arg2 yPos:(float)arg3;
 - (void)interactedAtXPos:(float)arg1 yPos:(float)arg2;
+- (void)interacted;
 - (void)offScreenWithCollapsed:(_Bool)arg1;
 - (void)visibleWithPercent:(long long)arg1 starting:(id)arg2 duration:(double)arg3 scrollVelocity:(float)arg4 collapsed:(_Bool)arg5;
+- (void)visibleWithPercent:(long long)arg1 starting:(id)arg2 duration:(double)arg3 collapsed:(_Bool)arg4;
 - (void)onScreenWithCollapsed:(_Bool)arg1;
 - (void)ready;
-- (void)placedWithPlacement:(long long)arg1 wasNative:(_Bool)arg2;
+- (void)placedWithPlacementType:(long long)arg1 wasNativeSlot:(_Bool)arg2;
+- (void)placedWithPlacementType:(long long)arg1;
+- (void)unloaded;
 - (void)loaded;
 - (void)replacedWithHelper:(id)arg1;
 - (void)createdWithAdType:(long long)arg1;
-- (void)notConsumedWithCode:(long long)arg1;
+- (void)notConsumedWithCode:(long long)arg1 placeholder:(_Bool)arg2;
 - (void)discardedWithCode:(long long)arg1;
 - (void)delivered;
 - (void)removeHandler;
 - (void)registerHandlerForAllMetricsWithClosure:(CDUnknownBlockType)arg1;
+@property(nonatomic, retain) _TtC15PromotedContent31JourneyMetricsHelperDiagnostics *diagnostics; // @synthesize diagnostics;
+@property(nonatomic) _Bool isCurrentlyOnScreen; // @synthesize isCurrentlyOnScreen;
 @property(nonatomic) _Bool hasBeenOnScreen; // @synthesize hasBeenOnScreen;
 @property(nonatomic, retain) id <APMetricPrimitiveCreating> primitiveCreator; // @synthesize primitiveCreator;
 @property(nonatomic, copy) NSString *journeyIdentifier;

@@ -15,6 +15,9 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <CHSChronoWidgetServiceServer> server; // @synthesize server=_server;
+- (void)loadSuggestedWidget:(id)arg1 withMetrics:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)suggestionBudgetsForStackIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)loadSuggestedWidget:(id)arg1 metrics:(id)arg2 stackIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithServer:(id)arg1;
 - (id)init;
 

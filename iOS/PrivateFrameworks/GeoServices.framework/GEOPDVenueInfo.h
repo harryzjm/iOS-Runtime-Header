@@ -36,46 +36,16 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)filterElementType;
-+ (Class)venueFeatureIdType;
 + (id)venueInfoForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasGoInsideLevel;
-@property(nonatomic) int goInsideLevel;
-- (id)filterElementAtIndex:(unsigned long long)arg1;
-- (unsigned long long)filterElementsCount;
-- (void)addFilterElement:(id)arg1;
-- (void)clearFilterElements;
-@property(retain, nonatomic) NSMutableArray *filterElements;
-@property(retain, nonatomic) GEOPDLocatedInsideInfo *locatedInside;
-@property(readonly, nonatomic) _Bool hasLocatedInside;
-@property(retain, nonatomic) GEOPDVenueItemList *itemList;
-@property(readonly, nonatomic) _Bool hasItemList;
-- (int)StringAsFeatureType:(id)arg1;
-- (id)featureTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasFeatureType;
-@property(nonatomic) int featureType;
-- (id)venueFeatureIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)venueFeatureIdsCount;
-- (void)addVenueFeatureId:(id)arg1;
-- (void)clearVenueFeatureIds;
-@property(retain, nonatomic) NSMutableArray *venueFeatureIds;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

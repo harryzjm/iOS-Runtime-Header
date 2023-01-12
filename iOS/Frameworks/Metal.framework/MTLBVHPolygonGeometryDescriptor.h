@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
 @protocol MTLBuffer;
 
 @interface MTLBVHPolygonGeometryDescriptor
 {
     unsigned long long _polygonType;
-    id <MTLBuffer> _vertexBuffer;
-    unsigned long long _vertexBufferOffset;
+    NSArray *_vertexBuffers;
     unsigned long long _vertexStride;
     id <MTLBuffer> _indexBuffer;
     unsigned long long _indexBufferOffset;
@@ -21,8 +21,7 @@
 @property(nonatomic) unsigned long long indexBufferOffset; // @synthesize indexBufferOffset=_indexBufferOffset;
 @property(retain, nonatomic) id <MTLBuffer> indexBuffer; // @synthesize indexBuffer=_indexBuffer;
 @property(nonatomic) unsigned long long vertexStride; // @synthesize vertexStride=_vertexStride;
-@property(nonatomic) unsigned long long vertexBufferOffset; // @synthesize vertexBufferOffset=_vertexBufferOffset;
-@property(retain, nonatomic) id <MTLBuffer> vertexBuffer; // @synthesize vertexBuffer=_vertexBuffer;
+@property(retain, nonatomic) NSArray *vertexBuffers; // @synthesize vertexBuffers=_vertexBuffers;
 @property(nonatomic) unsigned long long polygonType; // @synthesize polygonType=_polygonType;
 - (void)dealloc;
 - (unsigned long long)primitiveType;

@@ -35,9 +35,9 @@
 @property(readonly, getter=isOpaque) _Bool opaque;
 - (id)initWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2 data:(id)arg3;
 - (_Bool)_hasAdjustments;
-- (long long)_requiredBaseVersionWithCanHandleAdjustmentData:(_Bool)arg1 assetIsVideo:(_Bool)arg2;
-- (_Bool)_canBeHandledByClientUsingVerificationBlock:(CDUnknownBlockType)arg1;
-- (_Bool)_contentEditingHasAdjustments;
+- (long long)_contentEditing_requiredBaseVersionReadableByClient:(_Bool *)arg1 verificationBlock:(CDUnknownBlockType)arg2;
+- (_Bool)_contentEditing_readableByClientWithVerificationBlock:(CDUnknownBlockType)arg1;
+- (_Bool)_contentEditing_containsValidAdjustment;
 
 @end
 

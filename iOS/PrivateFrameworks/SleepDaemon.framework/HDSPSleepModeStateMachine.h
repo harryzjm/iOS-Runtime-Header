@@ -10,7 +10,7 @@
 #import <SleepDaemon/HDSPSleepModeStateMachineEventHandler-Protocol.h>
 #import <SleepDaemon/HDSPSleepModeStateMachineInfoProvider-Protocol.h>
 
-@class HDSPSleepModeBedtimeState, HDSPSleepModeManualBedtimeState, HDSPSleepModeManualOffState, HDSPSleepModeOffState, HDSPSleepModeWindDownState, HKSPSleepScheduleModel, NSDate, NSString;
+@class HDSPSleepModeAutomatedOffFromManualState, HDSPSleepModeAutomatedOffState, HDSPSleepModeBedtimeState, HDSPSleepModeManualBedtimeState, HDSPSleepModeManualOffState, HDSPSleepModeOffState, HDSPSleepModeWindDownState, HKSPSleepScheduleModel, NSDate, NSString;
 @protocol HDSPSleepModeStateMachineDelegate, HDSPSleepModeStateMachineInfoProvider, NAScheduler;
 
 __attribute__((visibility("hidden")))
@@ -21,26 +21,34 @@ __attribute__((visibility("hidden")))
     HDSPSleepModeManualOffState *_manualOffState;
     HDSPSleepModeBedtimeState *_bedtimeState;
     HDSPSleepModeManualBedtimeState *_manualBedtimeState;
+    HDSPSleepModeAutomatedOffState *_automatedOffState;
+    HDSPSleepModeAutomatedOffFromManualState *_automatedOffFromManualState;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HDSPSleepModeAutomatedOffFromManualState *automatedOffFromManualState; // @synthesize automatedOffFromManualState=_automatedOffFromManualState;
+@property(readonly, nonatomic) HDSPSleepModeAutomatedOffState *automatedOffState; // @synthesize automatedOffState=_automatedOffState;
 @property(readonly, nonatomic) HDSPSleepModeManualBedtimeState *manualBedtimeState; // @synthesize manualBedtimeState=_manualBedtimeState;
 @property(readonly, nonatomic) HDSPSleepModeBedtimeState *bedtimeState; // @synthesize bedtimeState=_bedtimeState;
 @property(readonly, nonatomic) HDSPSleepModeManualOffState *manualOffState; // @synthesize manualOffState=_manualOffState;
 @property(readonly, nonatomic) HDSPSleepModeWindDownState *windDownState; // @synthesize windDownState=_windDownState;
 @property(readonly, nonatomic) HDSPSleepModeOffState *offState; // @synthesize offState=_offState;
-@property(readonly, nonatomic) _Bool isInDemoMode;
+@property(readonly, nonatomic) _Bool hasSleepFocusMode;
+- (_Bool)shouldGoIntoSleepModeDuringState:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long sleepScheduleState;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;
 - (void)sleepModeDidChange:(long long)arg1 previousMode:(long long)arg2 reason:(unsigned long long)arg3;
-- (void)userEngagedBedtimeMode;
-- (void)userDisengagedCurrentMode;
+- (void)sleepFocusModeDidChange;
+- (void)automationTurnedOffSleepModeWithReason:(unsigned long long)arg1;
+- (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
+- (void)userTurnedOnSleepModeWithReason:(unsigned long long)arg1;
+- (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;
 - (void)sleepScheduleStateChangedToDisabledFromState:(unsigned long long)arg1;
 - (void)sleepScheduleStateChangedToWakeUp:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToBedtimeFromState:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToWindDownFromState:(unsigned long long)arg1;
-- (id)stateMachineLog;
+- (void)sleepScheduleStateChangedToBedtime:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
+- (void)sleepScheduleStateChangedToWindDown:(unsigned long long)arg1 fromState:(unsigned long long)arg2;
+- (unsigned long long)loggingCategory;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 
 // Remaining properties

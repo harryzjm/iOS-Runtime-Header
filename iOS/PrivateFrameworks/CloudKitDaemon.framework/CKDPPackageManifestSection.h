@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPPackageManifestSection : PBCodable <NSCopying>
 {
     long long _size;

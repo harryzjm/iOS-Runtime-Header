@@ -23,6 +23,7 @@
     _Bool _allowsCancel;
     _Bool _allowsDone;
     _Bool _allowsDeletion;
+    _Bool _shouldAllowSearchForMultiSelect;
     _Bool _hidesPromptInLandscape;
     _Bool _defaultViewControllerVisible;
     _Bool _autocloses;
@@ -51,6 +52,7 @@
 @property(copy, nonatomic) NSString *bannerTitle; // @synthesize bannerTitle=_bannerTitle;
 @property(nonatomic) _Bool hidesPromptInLandscape; // @synthesize hidesPromptInLandscape=_hidesPromptInLandscape;
 @property(copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property(nonatomic) _Bool shouldAllowSearchForMultiSelect; // @synthesize shouldAllowSearchForMultiSelect=_shouldAllowSearchForMultiSelect;
 @property(nonatomic) _Bool allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property(nonatomic) _Bool allowsDone; // @synthesize allowsDone=_allowsDone;
 @property(nonatomic) _Bool allowsCancel; // @synthesize allowsCancel=_allowsCancel;
@@ -83,6 +85,7 @@
 - (void)notifyDelegateForCancellation;
 - (void)closePickerIfNeeded;
 - (void)_prepareViewController;
+- (void)_logGreenTeaReadingEvent;
 - (_Bool)_shouldBeOutOfProcess;
 - (void)_setupViewController;
 - (void)_setViewController:(id)arg1;

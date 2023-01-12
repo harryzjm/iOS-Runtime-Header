@@ -8,5 +8,8 @@
 
 @protocol SearchUIFirstTimeExperienceDelegate <NSObject>
 - (void)firstTimeExperienceContinueButtonPressed;
+
+@optional
+- (_Bool)firstTimeExperienceIsInPopoverPresentation;
 @end
 

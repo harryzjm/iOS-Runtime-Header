@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSLocale, NSSet, PGTitle, PGTitleGeneratorDateMatching, PHAsset, PHAssetCollection;
+@class NSLocale, NSSet, PGGraphYearNodeCollection, PGTitle, PGTitleGenerationContext, PGTitleGeneratorDateMatching, PHAsset, PHAssetCollection;
 
 @interface PGTitleGenerator : NSObject
 {
@@ -16,20 +16,24 @@
     PHAsset *_keyAsset;
     PHAssetCollection *_curatedAssetCollection;
     PHAssetCollection *_assetCollection;
+    PGTitleGenerationContext *_titleGenerationContext;
     PGTitle *_title;
     PGTitle *_subtitle;
     NSSet *_usedLocationNodes;
     NSLocale *_locale;
     unsigned long long _preferredTitleType;
     unsigned long long _lineBreakBehavior;
+    PGGraphYearNodeCollection *_featuredYearNodes;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PGGraphYearNodeCollection *featuredYearNodes; // @synthesize featuredYearNodes=_featuredYearNodes;
 @property(nonatomic) _Bool isForHighlight; // @synthesize isForHighlight=_isForHighlight;
 @property(nonatomic) unsigned long long lineBreakBehavior; // @synthesize lineBreakBehavior=_lineBreakBehavior;
 @property(nonatomic) unsigned long long preferredTitleType; // @synthesize preferredTitleType=_preferredTitleType;
 @property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSSet *usedLocationNodes; // @synthesize usedLocationNodes=_usedLocationNodes;
+@property(readonly, nonatomic) PGTitleGenerationContext *titleGenerationContext; // @synthesize titleGenerationContext=_titleGenerationContext;
 @property(readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
 @property(readonly, nonatomic) PHAssetCollection *curatedAssetCollection; // @synthesize curatedAssetCollection=_curatedAssetCollection;
 @property(readonly, nonatomic) PHAsset *keyAsset; // @synthesize keyAsset=_keyAsset;
@@ -48,10 +52,10 @@
 - (void)_generateTitleAndSubtitle;
 @property(readonly, nonatomic) PGTitle *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) PGTitle *title; // @synthesize title=_title;
-- (id)initWithMomentNode:(id)arg1 type:(long long)arg2;
-- (id)initWithMomentNodes:(id)arg1 type:(long long)arg2;
-- (id)initWithMomentNodes:(id)arg1 referenceDateInterval:(id)arg2 keyAsset:(id)arg3 curatedAssetCollection:(id)arg4 assetCollection:(id)arg5 type:(long long)arg6;
-- (id)initWithMomentNode:(id)arg1 referenceDateInterval:(id)arg2 keyAsset:(id)arg3 curatedAssetCollection:(id)arg4 assetCollection:(id)arg5 type:(long long)arg6;
+- (id)initWithMomentNode:(id)arg1 type:(long long)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 type:(long long)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithMomentNodes:(id)arg1 referenceDateInterval:(id)arg2 keyAsset:(id)arg3 curatedAssetCollection:(id)arg4 assetCollection:(id)arg5 type:(long long)arg6 titleGenerationContext:(id)arg7;
+- (id)initWithMomentNode:(id)arg1 referenceDateInterval:(id)arg2 keyAsset:(id)arg3 curatedAssetCollection:(id)arg4 assetCollection:(id)arg5 type:(long long)arg6 titleGenerationContext:(id)arg7;
 
 @end
 

@@ -4,38 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoardServices/FBSWorkspaceSceneRequestOptions.h>
+#import <UIKitServices/UISSceneRequestOptions.h>
 
-#import <UIKitCore/BSXPCSecureCoding-Protocol.h>
-
-@class NSSet, NSString;
-
-@interface UISceneRequestOptions : FBSWorkspaceSceneRequestOptions <BSXPCSecureCoding>
+@interface UISceneRequestOptions : UISSceneRequestOptions
 {
-    _Bool _requestFullscreen;
-    _Bool _requestBackground;
-    _Bool _preserveLayout;
-    NSString *_sourceIdentifier;
-    NSSet *_actions;
-    long long _sceneRequestIntent;
 }
 
-+ (_Bool)supportsBSXPCSecureCoding;
-- (void).cxx_destruct;
-@property(nonatomic) long long sceneRequestIntent; // @synthesize sceneRequestIntent=_sceneRequestIntent;
-@property(nonatomic) _Bool preserveLayout; // @synthesize preserveLayout=_preserveLayout;
-@property(nonatomic) _Bool requestBackground; // @synthesize requestBackground=_requestBackground;
-@property(nonatomic) _Bool requestFullscreen; // @synthesize requestFullscreen=_requestFullscreen;
-@property(copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
-@property(copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
-- (id)initWithBSXPCCoder:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
++ (id)initialClientSettings:(id)arg1 activationOptions:(id)arg2 targetSession:(id)arg3;
 
 @end
 

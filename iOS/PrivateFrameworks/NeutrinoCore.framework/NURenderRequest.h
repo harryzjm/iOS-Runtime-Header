@@ -13,13 +13,13 @@
 
 @interface NURenderRequest : NSObject <NSCopying>
 {
-    long long _requestNumber;
     long long _copiedFromRequestNumber;
     long long _parentRequestNumber;
     long long _sampleMode;
     NSArray *_pipelineFilters;
     id <NUDevice> _device;
     NSString *_name;
+    long long _requestNumber;
     NUPriority *_priority;
     NSObject<OS_dispatch_queue> *_responseQueue;
     NURenderContext *_renderContext;
@@ -39,6 +39,7 @@
 @property(retain, nonatomic) NURenderContext *renderContext; // @synthesize renderContext=_renderContext;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *responseQueue; // @synthesize responseQueue=_responseQueue;
 @property(retain, nonatomic) NUPriority *priority; // @synthesize priority=_priority;
+@property(nonatomic) long long requestNumber; // @synthesize requestNumber=_requestNumber;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) id <NUDevice> device; // @synthesize device=_device;
 @property(copy, nonatomic) NSArray *pipelineFilters; // @synthesize pipelineFilters=_pipelineFilters;

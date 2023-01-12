@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SBFMappedImageCache;
+@class NSString, NSURL, SBFMappedImageCache;
 @protocol OS_dispatch_queue;
 
 @interface SBFWallpaperCache : NSObject
 {
     NSString *_path;
+    NSURL *_imageCachePath;
     NSObject<OS_dispatch_queue> *_queue;
     SBFMappedImageCache *_imageCache;
 }
@@ -22,6 +23,7 @@
 - (void)removeEverythingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)warmupForKey:(id)arg1;
 - (id)colorBoxesForKey:(id)arg1 generatingIfNeceesaryFromImage:(id)arg2;
+- (id)imageURLForKey:(id)arg1;
 - (id)imageForKey:(id)arg1 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)imageForKey:(id)arg1 generatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2;
 - (id)initWithOptions:(id)arg1;

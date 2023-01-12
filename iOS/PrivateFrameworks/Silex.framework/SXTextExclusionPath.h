@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SXTextExclusionPathWrapper, UIBezierPath;
-@protocol TSDWrappable;
+@class NSString, SXTextExclusionPathWrapper;
 
 @interface SXTextExclusionPath : NSObject
 {
@@ -30,29 +29,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGRect exclusionRect; // @synthesize exclusionRect=_exclusionRect;
-@property(readonly, nonatomic) SXTextExclusionPathWrapper *wrapper; // @synthesize wrapper=_wrapper;
-@property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
-@property(copy, nonatomic) CDUnknownBlockType minYBlock; // @synthesize minYBlock=_minYBlock;
-@property(copy, nonatomic) CDUnknownBlockType startBlock; // @synthesize startBlock=_startBlock;
-@property(retain, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
-@property(nonatomic) _Bool fullBleed; // @synthesize fullBleed=_fullBleed;
-@property(readonly, nonatomic) struct UIEdgeInsets insets; // @synthesize insets=_insets;
-@property(nonatomic) int lineVerticalAlignment; // @synthesize lineVerticalAlignment=_lineVerticalAlignment;
-@property(nonatomic) double verticalAlignmentFactor; // @synthesize verticalAlignmentFactor=_verticalAlignmentFactor;
-@property(nonatomic) double padding; // @synthesize padding=_padding;
-@property(nonatomic) struct _NSRange range; // @synthesize range=_range;
-@property(readonly, nonatomic) struct CGPoint anchorPoint; // @synthesize anchorPoint=_anchorPoint;
-@property(readonly, nonatomic) struct CGPoint position; // @synthesize position=_position;
-@property(readonly, nonatomic) int type; // @synthesize type=_type;
-@property(nonatomic) struct CGPoint actualPosition; // @synthesize actualPosition=_actualPosition;
-@property(readonly, nonatomic) UIBezierPath *path;
-- (void)callCompletionBlock;
-- (void)adjustYPositionWithCurrentPosition:(struct CGPoint)arg1;
-- (void)callStartBlock;
-@property(readonly, nonatomic) id <TSDWrappable> wrappable;
 - (id)description;
-- (id)initWithTextRange:(struct _NSRange)arg1 position:(struct CGPoint)arg2 rect:(struct CGRect)arg3 withInsets:(struct UIEdgeInsets)arg4;
 
 @end
 

@@ -20,7 +20,6 @@
     _Bool _allowsEmptyNameTextField;
     _Bool _allowsNullResettableName;
     id _homeKitObject;
-    NSString *_name;
 }
 
 + (id)namingComponentFromHomeKitObject:(id)arg1;
@@ -39,7 +38,6 @@
 @property(nonatomic) _Bool isService; // @synthesize isService=_isService;
 @property(nonatomic) _Bool isDiscoveredAccessory; // @synthesize isDiscoveredAccessory=_isDiscoveredAccessory;
 @property(nonatomic) _Bool isAccessory; // @synthesize isAccessory=_isAccessory;
-@property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) id homeKitObject; // @synthesize homeKitObject=_homeKitObject;
 - (id)categoryName;
 - (id)configuredName;
@@ -49,6 +47,7 @@
 - (id)homeKitSafeStringForString:(id)arg1;
 @property(readonly, nonatomic) NSString *textFieldDisplayText;
 @property(readonly, nonatomic) NSString *placeholderText;
+@property(readonly, nonatomic) NSString *name;
 - (id)description;
 - (id)initWithHomeKitObject:(id)arg1;
 

@@ -8,33 +8,41 @@
 
 #import <AppleMediaServicesUI/AMSUIWebModelInterface-Protocol.h>
 
-@class AMSUIWebClientContext, NSString;
+@class AMSUIWebAppViewModel, AMSUIWebButtonModel, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebNavigationBarModel : NSObject <AMSUIWebModelInterface>
 {
     _Bool _hidesBackButton;
     NSString *_backButtonTitle;
+    NSString *_backgroundColor;
+    long long _backgroundStyle;
+    AMSUIWebAppViewModel *_leftAppView;
+    AMSUIWebButtonModel *_leftButton;
+    NSArray *_leftButtons;
+    AMSUIWebAppViewModel *_rightAppView;
+    AMSUIWebButtonModel *_rightButton;
+    NSArray *_rightButtons;
     long long _style;
     NSString *_title;
-    AMSUIWebClientContext *_context;
-    id _leftButtonObj;
-    id _rightButtonObj;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id rightButtonObj; // @synthesize rightButtonObj=_rightButtonObj;
-@property(retain, nonatomic) id leftButtonObj; // @synthesize leftButtonObj=_leftButtonObj;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) long long style; // @synthesize style=_style;
+@property(retain, nonatomic) NSArray *rightButtons; // @synthesize rightButtons=_rightButtons;
+@property(retain, nonatomic) AMSUIWebButtonModel *rightButton; // @synthesize rightButton=_rightButton;
+@property(retain, nonatomic) AMSUIWebAppViewModel *rightAppView; // @synthesize rightAppView=_rightAppView;
+@property(retain, nonatomic) NSArray *leftButtons; // @synthesize leftButtons=_leftButtons;
+@property(retain, nonatomic) AMSUIWebButtonModel *leftButton; // @synthesize leftButton=_leftButton;
+@property(retain, nonatomic) AMSUIWebAppViewModel *leftAppView; // @synthesize leftAppView=_leftAppView;
 @property(nonatomic) _Bool hidesBackButton; // @synthesize hidesBackButton=_hidesBackButton;
+@property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
+@property(retain, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) NSString *backButtonTitle; // @synthesize backButtonTitle=_backButtonTitle;
-- (id)_parseButton:(id)arg1 forContainer:(id)arg2;
-- (void)setRightButton:(id)arg1;
-- (void)setLeftButton:(id)arg1;
-- (id)rightButtonForContainer:(id)arg1;
-- (id)leftButtonForContainer:(id)arg1;
+@property(readonly, nonatomic) _Bool includesRightItems;
+@property(readonly, nonatomic) _Bool includesLeftItems;
+- (id)imageForButtonModel:(id)arg1;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 
 // Remaining properties

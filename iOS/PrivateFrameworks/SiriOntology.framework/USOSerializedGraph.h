@@ -15,24 +15,29 @@
     NSString *_printedForm;
     NSArray *_nodes;
     NSArray *_edges;
+    NSArray *_identifiers;
+    NSArray *_alignments;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *alignments; // @synthesize alignments=_alignments;
+@property(retain, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
 @property(retain, nonatomic) NSArray *edges; // @synthesize edges=_edges;
 @property(retain, nonatomic) NSArray *nodes; // @synthesize nodes=_nodes;
 @property(retain, nonatomic) NSString *printedForm; // @synthesize printedForm=_printedForm;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (unique_ptr_1f6b481a)toCppUsoGraph:(shared_ptr_de47c0c1)arg1 withError:(id *)arg2;
-- (const struct OntologyEdgeName *)getOrCreateEdgeName:(id)arg1 withVocabManager:(shared_ptr_de47c0c1)arg2 withError:(id *)arg3;
-- (const struct OntologyVerbName *)getOrCreateVerbName:(id)arg1 withVocabManager:(shared_ptr_de47c0c1)arg2 withError:(id *)arg3;
-- (const struct OntologyNodeName *)getOrCreateNodeName:(id)arg1 withVocabManager:(shared_ptr_de47c0c1)arg2 withError:(id *)arg3;
-- (id)initWithUsoGraph:(struct UsoGraph *)arg1 withError:(id *)arg2;
+- (unique_ptr_e8bae616)toCppUsoGraph:(shared_ptr_de47c0c1)arg1 withError:(id *)arg2;
+- (const void *)getOrCreateEdgeName:(id)arg1 withVocabManager:(shared_ptr_de47c0c1)arg2 withError:(id *)arg3;
+- (const void *)getOrCreateVerbName:(id)arg1 withVocabManager:(shared_ptr_de47c0c1)arg2 withError:(id *)arg3;
+- (const void *)getOrCreateNodeName:(id)arg1 withVocabManager:(shared_ptr_de47c0c1)arg2 withError:(id *)arg3;
+- (id)initWithUsoGraph:(const void *)arg1 withError:(id *)arg2;
 - (id)createSerializedNode:(const struct UsoGraphNode *)arg1 withError:(id *)arg2;
+- (id)getUtteranceAlignmentsIfExists:(const struct UsoGraphNode *)arg1 nodeIndex:(unsigned long long)arg2;
+- (id)getIdentifiersIfExists:(const struct UsoGraphNode *)arg1 nodeIndex:(unsigned long long)arg2;
+- (id)initWithNodes:(id)arg1 edges:(id)arg2 identifiers:(id)arg3 alignments:(id)arg4;
 - (id)initWithNodes:(id)arg1 edges:(id)arg2;
-- (id)getDebugGraphStringSiriNl;
-- (id)getDebugGraphString;
 
 @end
 

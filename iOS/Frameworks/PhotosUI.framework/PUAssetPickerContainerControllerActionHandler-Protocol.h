@@ -6,12 +6,15 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class UIBarButtonItem, UIButton, UIViewController;
+@class PHAsset, UIBarButtonItem, UIButton, UISearchBar, UIViewController;
 
 @protocol PUAssetPickerContainerControllerActionHandler <NSObject>
-- (void)containerControllerDidAppear:(UIViewController *)arg1;
+- (void)containerController:(UIViewController *)arg1 didTapSearchBar:(UISearchBar *)arg2 canBeginEditing:(_Bool)arg3;
 - (void)containerController:(UIViewController *)arg1 didTapSelectedItemsButton:(UIButton *)arg2;
 - (void)containerController:(UIViewController *)arg1 didTapAddButton:(UIBarButtonItem *)arg2;
+- (void)containerController:(UIViewController *)arg1 didTapClearButton:(UIBarButtonItem *)arg2;
 - (void)containerController:(UIViewController *)arg1 didTapCancelButton:(UIBarButtonItem *)arg2;
+- (void)containerController:(UIViewController *)arg1 didTapAsset:(PHAsset *)arg2;
+- (void)containerControllerDidAppear:(UIViewController *)arg1;
 @end
 

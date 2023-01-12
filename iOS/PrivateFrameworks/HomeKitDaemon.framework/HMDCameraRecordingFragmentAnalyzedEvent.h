@@ -15,7 +15,6 @@
     NSUUID *_clipModelID;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
 @property int recordingReason; // @synthesize recordingReason=_recordingReason;
 @property(retain) NSUUID *clipModelID; // @synthesize clipModelID=_clipModelID;

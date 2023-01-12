@@ -7,6 +7,6 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (TSSProperties)
-- (int)tss_propertyValue;
+@property(readonly, nonatomic) int tss_propertyValue;
 @end
 

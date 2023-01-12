@@ -10,8 +10,11 @@ __attribute__((visibility("hidden")))
 @interface VCMockIDSDataChannelLinkContext : IDSDataChannelLinkContext
 {
     _Bool _forceNetworkCellular;
+    _Bool _isTestingOneToOne;
 }
 
+- (_Bool)isVirtualRelayLink;
+- (long long)connectionType;
 - (unsigned int)remoteRATType;
 - (unsigned int)RATType;
 - (id)init;

@@ -9,17 +9,19 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFMyriadPerceptualAudioHash;
+@class AFMyriadGoodnessScoreOverrideState, AFMyriadPerceptualAudioHash;
 
 @interface AFMyriadContext : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _timestamp;
     AFMyriadPerceptualAudioHash *_perceptualAudioHash;
+    AFMyriadGoodnessScoreOverrideState *_overrideState;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) AFMyriadGoodnessScoreOverrideState *overrideState; // @synthesize overrideState=_overrideState;
 @property(readonly, copy, nonatomic) AFMyriadPerceptualAudioHash *perceptualAudioHash; // @synthesize perceptualAudioHash=_perceptualAudioHash;
 @property(readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 - (void)encodeWithCoder:(id)arg1;
@@ -29,7 +31,7 @@
 - (unsigned long long)hash;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
 - (id)description;
-- (id)initWithTimestamp:(unsigned long long)arg1 perceptualAudioHash:(id)arg2;
+- (id)initWithTimestamp:(unsigned long long)arg1 perceptualAudioHash:(id)arg2 overrideState:(id)arg3;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 
 @end

@@ -6,14 +6,15 @@
 
 #import <AccountsUI/ACUIViewController.h>
 
+#import <FamilyCircleUI/FAFamilySettingsMemberSpecifierProviderDelegeate-Protocol.h>
 #import <FamilyCircleUI/FASharedSubscriptionSpecifierProviderDelegeate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AAGrandSlamSigner, AAUIRemoteUIController, AAUIServerUIHookHandler, ACAccount, ACAccountStore, FACircleRemoteUIDelegate, FAFamilyCircle, FAFamilyCreditCard, FAFamilyMember, FAFamilyNotificationObserver, FAProfilePictureStore, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSOperationQueue, NSString, NSURL, PSSpecifier, UIActivityIndicatorView, UILabel, UINavigationController, UITableViewCell;
+@class AAGrandSlamSigner, AAUIRemoteUIController, AAUIServerUIHookHandler, ACAccount, ACAccountStore, FACircleRemoteUIDelegate, FAFamilyCircle, FAFamilyCreditCard, FAFamilyMember, FAFamilyNotificationObserver, FAFamilySettingsMemberSpecifierProvider, FAProfilePictureStore, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSOperationQueue, NSString, NSURL, PSSpecifier, UIActivityIndicatorView, UILabel, UINavigationController, UITableViewCell;
 @protocol FAFamilySettingsViewControllerDelegate;
 
-@interface FAFamilySettingsViewController : ACUIViewController <UINavigationControllerDelegate, RemoteUIControllerDelegate, FASharedSubscriptionSpecifierProviderDelegeate>
+@interface FAFamilySettingsViewController : ACUIViewController <UINavigationControllerDelegate, RemoteUIControllerDelegate, FASharedSubscriptionSpecifierProviderDelegeate, FAFamilySettingsMemberSpecifierProviderDelegeate>
 {
     AAGrandSlamSigner *_iCloudGrandSlamSigner;
     AAGrandSlamSigner *_appleIDGrandSlamSigner;
@@ -44,6 +45,7 @@
     AAUIServerUIHookHandler *_serverUIHookHandler;
     FACircleRemoteUIDelegate *_faCircleRemoteUIDelegate;
     FASharedSubscriptionSpecifierProvider *_sharedSubscriptionSpecifierProvider;
+    FAFamilySettingsMemberSpecifierProvider *_familySettingsMemberSpecifierProvider;
     UIActivityIndicatorView *_activityIndicatorView;
     UILabel *_navigationBarTitleLabel;
     double _familyHeaderTitleOffset;
@@ -53,6 +55,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <FAFamilySettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)preferredContentSizeCategory;
 - (void)didSelectSpecifier:(id)arg1;
 - (void)reloadSpecifiersForProvider:(id)arg1 oldSpecifiers:(id)arg2 animated:(_Bool)arg3;
 - (void)_updateMemberDetailsPageWithLinkedAppleID:(id)arg1;
@@ -86,19 +89,15 @@
 - (void)_addChildAccount;
 - (void)_performEventWithContext:(id)arg1 specifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_addMemberWithEventType:(id)arg1;
-- (void)_addFamilyMemberButtonWasTapped:(id)arg1;
+- (void)addFamilyMemberButtonWasTapped:(id)arg1;
 - (void)_setFresnoRemoteUIDelgate:(id)arg1;
 - (void)_loadRemoteUIWithRequest:(id)arg1 url:(id)arg2 specifier:(id)arg3 type:(long long)arg4;
 - (void)_loadRemoteUIWithRequest:(id)arg1 specifier:(id)arg2 type:(long long)arg3;
 - (void)_paymentMethodCellWasTapped:(id)arg1;
-- (void)_pendingFamilyMemberCellWasTapped:(id)arg1;
-- (void)_familyMemberCellWasTapped:(id)arg1;
-- (void)_handleServiceSpecifierURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)pendingFamilyMemberCellWasTapped:(id)arg1;
+- (void)familyMemberCellWasTapped:(id)arg1;
 - (id)_createSpecifiersForPaymentInfo;
-- (id)_createSpecifierForPendingMember:(id)arg1;
-- (id)_createSpecifierForFamilyMemberCell:(id)arg1;
 - (void)_learnMoreLinkButtonWasTapped:(id)arg1;
-- (id)_createSpecifierForFamilyMemberGroup;
 - (void)_reloadPaymentInfoSpecifiersAnimated:(_Bool)arg1;
 - (id)_imageFromBundle:(id)arg1;
 - (id)_sharedSubscriptionSpecifierProvider;
@@ -115,7 +114,7 @@
 - (id)_appleIDGrandSlamSigner;
 - (void)_profilePictureStoreDidReload;
 - (void)dealloc;
-- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2 familyCircle:(id)arg3 familyPictureStore:(id)arg4;
+- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2 familyCircle:(id)arg3 familyPictureStore:(id)arg4 familySettingsMemberSpecifierProvider:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,14 +10,14 @@ __attribute__((visibility("hidden")))
 @interface WebLowPowerModeObserver : NSObject
 {
     _Bool _isLowPowerModeEnabled;
-    struct LowPowerModeNotifier *_notifier;
+    void *_notifier;
 }
 
 @property(readonly, nonatomic) _Bool isLowPowerModeEnabled; // @synthesize isLowPowerModeEnabled=_isLowPowerModeEnabled;
-@property(nonatomic) struct LowPowerModeNotifier *notifier; // @synthesize notifier=_notifier;
+@property(nonatomic) void *notifier; // @synthesize notifier=_notifier;
 - (void)_didReceiveLowPowerModeChange;
 - (void)dealloc;
-- (id)initWithNotifier:(struct LowPowerModeNotifier *)arg1;
+- (id)initWithNotifier:(void *)arg1;
 
 @end
 

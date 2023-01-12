@@ -19,6 +19,8 @@
 @property(retain) KTPublicKeyStore *keyStore; // @synthesize keyStore=_keyStore;
 @property(retain) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property(retain) NSMutableDictionary *contexts; // @synthesize contexts=_contexts;
+- (void)receivedSTHsFromPeers:(id)arg1 logClient:(id)arg2 error:(id *)arg3;
+- (id)retrieveTLTSTH:(id)arg1 error:(id *)arg2;
 - (id)serializeTranscripts;
 - (_Bool)runDutyCycleForActivity:(id)arg1 logClient:(id)arg2;
 - (void)runDutyCycleConfigurationStepForActivity:(id)arg1 logClient:(id)arg2;
@@ -37,6 +39,7 @@
 - (void)validateEnrollment:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)validateSelf:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 revalidate:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)contextForApplication:(id)arg1 logClient:(id)arg2 fetchState:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createContextForTLT:(id)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)createContextForApplication:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -20,18 +20,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
-@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property(copy, nonatomic) CDUnknownBlockType sessionCompletion; // @synthesize sessionCompletion=_sessionCompletion;
-- (id)sessionDescriptor;
-- (void)endPromptTransactionWithSuccess:(_Bool)arg1 error:(id)arg2;
-- (void)beginPromptTransactionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)timeoutExpired;
-- (void)beginPromptSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)addCompletion:(CDUnknownBlockType)arg1;
-- (void)addRequest:(id)arg1;
-@property(readonly, nonatomic) unsigned long long requestCount;
-- (id)initWithBundleIdentifier:(id)arg1 profile:(id)arg2;
 
 @end
 

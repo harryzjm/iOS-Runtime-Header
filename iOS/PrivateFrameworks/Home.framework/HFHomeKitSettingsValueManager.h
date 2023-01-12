@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class HMHome, HMSettings, NSMutableDictionary, NSSet;
+@class HMSettings, NSMutableDictionary, NSSet;
 
 @interface HFHomeKitSettingsValueManager : NSObject
 {
-    HMHome *_home;
     HMSettings *_settings;
+    NSSet *_homeKitObjectIdentifiers;
     NSMutableDictionary *_transactionStacks;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *transactionStacks; // @synthesize transactionStacks=_transactionStacks;
+@property(retain, nonatomic) NSSet *homeKitObjectIdentifiers; // @synthesize homeKitObjectIdentifiers=_homeKitObjectIdentifiers;
 @property(retain, nonatomic) HMSettings *settings; // @synthesize settings=_settings;
-@property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 - (void)_clearTransaction:(id)arg1;
 @property(readonly, nonatomic) NSSet *pendingWrites;
 - (id)valueForSettingAtKeyPath:(id)arg1;
@@ -27,7 +27,7 @@
 - (void)_executeNextPendingWriteForSetting:(id)arg1;
 - (id)changeValueForSetting:(id)arg1 toValue:(id)arg2 changeType:(unsigned long long)arg3;
 - (id)changeValueForSetting:(id)arg1 toValue:(id)arg2;
-- (id)initWithSettings:(id)arg1 home:(id)arg2;
+- (id)initWithSettings:(id)arg1 homeKitObjectIdentifiers:(id)arg2;
 
 @end
 

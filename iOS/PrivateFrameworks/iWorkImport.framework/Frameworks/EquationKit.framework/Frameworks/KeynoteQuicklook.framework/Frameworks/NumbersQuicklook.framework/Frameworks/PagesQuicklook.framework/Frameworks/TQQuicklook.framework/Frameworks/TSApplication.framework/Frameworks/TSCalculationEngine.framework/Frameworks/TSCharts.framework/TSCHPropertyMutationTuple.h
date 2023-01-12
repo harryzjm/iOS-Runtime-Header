@@ -11,13 +11,13 @@
 
 @interface TSCHPropertyMutationTuple : NSObject
 {
-    id <TSCHStyleOwning> mStyleOwner;
-    NSDictionary *mMutations;
+    id <TSCHStyleOwning> _styleOwner;
+    NSDictionary *_mutations;
 }
 
 - (void).cxx_destruct;
-@property(readonly) NSDictionary *mutations; // @synthesize mutations=mMutations;
-@property(readonly) id <TSCHStyleOwning> styleOwner; // @synthesize styleOwner=mStyleOwner;
+@property(readonly) NSDictionary *mutations; // @synthesize mutations=_mutations;
+@property(readonly) id <TSCHStyleOwning> styleOwner; // @synthesize styleOwner=_styleOwner;
 - (id)description;
 - (id)initWithStyleOwner:(id)arg1 mutationMap:(id)arg2;
 - (id)initWithStyleOwner:(id)arg1 mutations:(id)arg2;

@@ -18,7 +18,7 @@
 @property(copy) NSString *keyPath;
 @property(getter=isAdditive) _Bool additive;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
 - (void)applyForTime:(double)arg1 presentationObject:(id)arg2 modelObject:(id)arg3;
 
 @end

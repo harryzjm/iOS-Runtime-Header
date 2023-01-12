@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFNetMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCameraClipManager, HMDCameraClipUserNotificationCenter, HMDCameraProfileSettingsManager, HMDCameraRecordingManager, HMDCameraRecordingReachabilityEventManager, HMDCameraResidentMessageHandler, HMDCameraSignificantEventListener, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDPredicateUtilities, HMDService, HMFNetMonitor, HMFTimer, NSMutableArray, NSSet, NSString, NSUUID, _HMCameraUserSettings;
+@class HMDCameraClipManager, HMDCameraClipUserNotificationCenter, HMDCameraProfileSettingsManager, HMDCameraRecordingManager, HMDCameraRecordingReachabilityEventManager, HMDCameraSignificantEventListener, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDPredicateUtilities, HMDService, HMFNetMonitor, HMFTimer, NSDictionary, NSMutableArray, NSSet, NSString, NSUUID, _HMCameraUserSettings;
 
 @interface HMDCameraProfile <HMDCameraSettingProactiveReaderDelegate, HMDCameraProfileSettingsManagerDelegate, HMDCameraSignificantEventListenerDelegate, HMFNetMonitorDelegate, HMFTimerDelegate, HMDCameraClipManagerDelegate>
 {
@@ -27,7 +27,6 @@
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
     NSMutableArray *_settingProactiveReaders;
     HMFNetMonitor *_networkMonitor;
-    HMDCameraResidentMessageHandler *_residentMessageHandler;
     HMDCameraProfileSettingsManager *_cameraSettingsManager;
     HMDCameraRecordingReachabilityEventManager *_reachabilityEventManager;
     HMFTimer *_recordingEventsCleanupTimer;
@@ -52,7 +51,6 @@
 @property(retain) HMFTimer *recordingEventsCleanupTimer; // @synthesize recordingEventsCleanupTimer=_recordingEventsCleanupTimer;
 @property(readonly) HMDCameraRecordingReachabilityEventManager *reachabilityEventManager; // @synthesize reachabilityEventManager=_reachabilityEventManager;
 @property(readonly) HMDCameraProfileSettingsManager *cameraSettingsManager; // @synthesize cameraSettingsManager=_cameraSettingsManager;
-@property(readonly) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property(readonly) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property(readonly) NSMutableArray *settingProactiveReaders; // @synthesize settingProactiveReaders=_settingProactiveReaders;
 @property(readonly) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
@@ -68,6 +66,7 @@
 - (void)timerDidFire:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)networkMonitorIsReachable:(id)arg1;
+- (void)notificationManager:(id)arg1 didReceiveNotificationForCameraSignificantEventIdentifier:(id)arg2;
 - (void)listener:(id)arg1 didReceiveSignificantEvent:(id)arg2 heroFrameData:(id)arg3;
 - (void)cameraProfileSettingsManager:(id)arg1 canDisableRecordingWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cameraProfileSettingsManager:(id)arg1 canEnableRecordingWithCompletion:(CDUnknownBlockType)arg2;
@@ -87,25 +86,26 @@
 - (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
 - (void)_handleStreamControlRequest:(id)arg1;
 - (void)_handleNegotiateStreamRequest:(id)arg1;
+- (void)_postNotificationForUpdatedSignificantEvent:(id)arg1 homePresence:(id)arg2;
 - (_Bool)_shouldNotifyForSignificantEvent:(id)arg1 homePresence:(id)arg2;
 - (void)registerForMessages;
 - (void)_setControlSupport;
-- (id)_createCameraManagers:(id)arg1;
 - (id)dumpState;
 - (void)dealloc;
 - (void)unconfigure;
 - (void)removeCloudData;
 @property(readonly, copy) NSString *description;
+- (void)_setUpBulletinNotificationManagerObserver;
 - (void)_createSignificantEventListener;
 - (void)_createCameraRecordingManager;
 - (void)createCameraClipUserNotificationCenter;
 - (void)tearDownWithReplacementCameraProfile:(id)arg1;
 - (void)setUp;
 @property(readonly, nonatomic, getter=isCameraRecordingFeatureSupported) _Bool supportsCameraRecordingFeature;
-- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5 reachabilityEventManager:(id)arg6;
+- (id)initWithAccessory:(id)arg1 services:(id)arg2 recordingManagementService:(id)arg3 msgDispatcher:(id)arg4 settingsManager:(id)arg5 workQueue:(id)arg6 uniqueIdentifier:(id)arg7 reachabilityEventManager:(id)arg8 networkMonitor:(id)arg9 streamSnapshotHandler:(id)arg10 snapshotManager:(id)arg11 cameraStreamManagers:(id)arg12;
 - (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5;
-- (id)assistantObject;
-- (id)urlString;
+@property(readonly, copy) NSDictionary *assistantObject;
+@property(readonly, copy) NSString *urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

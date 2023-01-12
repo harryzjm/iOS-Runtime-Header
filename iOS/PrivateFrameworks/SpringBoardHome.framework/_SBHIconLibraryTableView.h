@@ -6,15 +6,15 @@
 
 #import <UIKit/UITableView.h>
 
-@class SBHFeatherBlurView;
+@class SBFFeatherBlurView;
 
 @interface _SBHIconLibraryTableView : UITableView
 {
-    SBHFeatherBlurView *_headerBlur;
+    SBFFeatherBlurView *_headerBlur;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) SBHFeatherBlurView *headerBlur; // @synthesize headerBlur=_headerBlur;
+@property(retain, nonatomic) SBFFeatherBlurView *headerBlur; // @synthesize headerBlur=_headerBlur;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 

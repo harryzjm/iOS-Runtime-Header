@@ -20,6 +20,8 @@
 @property(readonly, nonatomic) unsigned long long resourceIndex;
 @property(readonly) id <MTLDevice> device;
 @property(readonly) NSString *label;
+- (void)dealloc;
+- (id)initWithSamplerState:(id)arg1 descriptor:(id)arg2 device:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

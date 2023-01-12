@@ -22,7 +22,7 @@
 - (void)mediaPicker:(id)arg1 didPickMediaItems:(id)arg2;
 - (void)mediaPicker:(id)arg1 didPickPlaybackArchive:(id)arg2;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 presentationAnchor:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

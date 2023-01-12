@@ -8,6 +8,7 @@
 
 @interface NSArray (ContactsFoundation)
 + (id)_cn_arrayWithObject:(id)arg1 count:(unsigned long long)arg2;
+- (id)_cn_lazy;
 - (id)_cn_arrayByRotatingRange:(struct _NSRange)arg1 by:(long long)arg2;
 - (_Bool)_cn_isNonEmpty;
 - (_Bool)_cn_isIdenticalToArray:(id)arg1;

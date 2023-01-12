@@ -14,7 +14,7 @@
 {
 }
 
-+ (_Bool)isDisplayableSinglePagePDFContentItem:(id)arg1;
++ (_Bool)isPDFContentItem:(id)arg1;
 + (_Bool)isDisplayableImageContentItem:(id)arg1;
 + (_Bool)isDisplayableInlineContentItem:(id)arg1;
 + (id)attachmentElementMarkupStringForContentItem:(id)arg1;

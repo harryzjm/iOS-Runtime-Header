@@ -126,10 +126,10 @@
 - (void)_beginDragWithTouches:(id)arg1 itemUpdater:(CDUnknownBlockType)arg2;
 - (void)_immediatelyBeginDragWithTouch:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGPoint)_locationInView:(id)arg1;
-- (_Bool)_isActive;
 - (double)liftDelay;
 - (void)setLiftDelay:(double)arg1;
 - (void)setDragCancellationDelay:(double)arg1;
+@property(readonly, nonatomic, getter=_isActive) _Bool isActive;
 - (void)_cancelDrag;
 - (void)_updateDriverParameters;
 - (id)initWithDelegate:(id)arg1;

@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache;
+@class NSCache, VSTrialService;
 @protocol OS_dispatch_queue;
 
 @interface VSMobileAssetsManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_assetQueryQueue;
-    NSCache *_cachedVoiceSelections;
-    NSCache *_cachedVoiceResources;
+    NSCache *_cachedMAVoiceSelections;
+    NSCache *_cachedMAVoiceResources;
+    VSTrialService *_trialService;
 }
 
 + (_Bool)isVoiceAssetWellDefined:(id)arg1;
@@ -23,59 +24,75 @@
 + (long long)typeFromBundleIdentifier:(id)arg1;
 + (id)bundleIdentifierForVoiceType:(long long)arg1;
 + (id)downloadOptionsWithBattery:(_Bool)arg1;
-+ (void)amendVoiceWithDefaultSettings:(id)arg1;
 + (void)amendVoice:(id)arg1 withDefaultSettingsFrom:(id)arg2;
 + (id)queryForVoiceResourceAsset:(id)arg1 returnTypes:(long long)arg2;
-+ (id)queryForLanguage:(id)arg1 forType:(long long)arg2 voicename:(id)arg3 gender:(long long)arg4 footprint:(long long)arg5 returnTypes:(long long)arg6;
++ (id)queryForLanguage:(id)arg1 forType:(long long)arg2 voiceName:(id)arg3 gender:(long long)arg4 footprint:(long long)arg5 returnTypes:(long long)arg6;
 + (id)preinstallAssetsDirectory;
 + (id)sharedManager;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSCache *cachedVoiceResources; // @synthesize cachedVoiceResources=_cachedVoiceResources;
-@property(retain, nonatomic) NSCache *cachedVoiceSelections; // @synthesize cachedVoiceSelections=_cachedVoiceSelections;
+@property(retain, nonatomic) VSTrialService *trialService; // @synthesize trialService=_trialService;
+@property(retain, nonatomic) NSCache *cachedMAVoiceResources; // @synthesize cachedMAVoiceResources=_cachedMAVoiceResources;
+@property(retain, nonatomic) NSCache *cachedMAVoiceSelections; // @synthesize cachedMAVoiceSelections=_cachedMAVoiceSelections;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *assetQueryQueue; // @synthesize assetQueryQueue=_assetQueryQueue;
 - (id)voiceDataWithBundleIdentifier:(id)arg1 attributes:(id)arg2 voicePathCallback:(CDUnknownBlockType)arg3;
 - (id)voiceDataFromAsset:(id)arg1;
 - (id)installedLocalVoices;
-- (id)_localVoiceForLanguage:(id)arg1 gender:(long long)arg2;
+- (id)_localVoiceForLanguageAndNamePath:(id)arg1;
 - (id)_builtInVoiceForLanguage:(id)arg1;
-- (id)legacyLocalVocalizerVoiceAssetForLanguage:(id)arg1;
 - (void)_purgeAsset:(id)arg1;
 - (void)purgeAsset:(id)arg1;
 - (void)_downloadAsset:(id)arg1 options:(id)arg2 progress:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadCatalog:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)downloadCatalog:(id)arg1 options:(id)arg2;
-- (id)_getVoiceAssetsForType:(long long)arg1 voicename:(id)arg2 language:(id)arg3 gender:(long long)arg4 footprint:(long long)arg5 returnTypes:(long long)arg6;
+- (id)_getVoiceAssetsForType:(long long)arg1 voiceName:(id)arg2 language:(id)arg3 gender:(long long)arg4 footprint:(long long)arg5 returnTypes:(long long)arg6;
 - (id)_getResults:(id)arg1;
 - (id)voiceAssetWithName:(id)arg1 localOnly:(_Bool)arg2 outError:(id *)arg3;
 - (void)removeVoiceResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeMobileAssetVoiceResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeTrialVoiceResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)downloadVoiceResource:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)downloadTrialVoiceResource:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadVoiceResourceCatalogWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadVoiceResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)shouldDownloadTrialResource:(id)arg1;
 - (void)removeVoiceAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeTrialVoice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)cancelTrialVoiceDownload:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_removeTrialVoices:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)cancelDownloads:(id)arg1 error:(id *)arg2;
 - (void)cancelResourceDownload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelDownload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)downloadVoiceAsset:(id)arg1 options:(id)arg2 progressUpdateHandler:(CDUnknownBlockType)arg3;
+- (void)downloadTrialVoice:(id)arg1 options:(id)arg2 progressUpdateHandler:(CDUnknownBlockType)arg3;
+- (_Bool)shouldDownloadTrialVoice:(id)arg1;
 - (void)downloadVoiceAsset:(id)arg1 useBattery:(_Bool)arg2 progressUpdateHandler:(CDUnknownBlockType)arg3;
 - (void)amendVoiceAssetWithLatestKnownData:(id)arg1;
-- (id)selectVoiceForLang:(id)arg1 type:(long long)arg2 gender:(long long)arg3 footprint:(long long)arg4;
+- (id)selectVoiceForLang:(id)arg1 name:(id)arg2 type:(long long)arg3 gender:(long long)arg4 footprint:(long long)arg5;
+- (id)selectSubscribableVoiceForLanguage:(id)arg1 name:(id)arg2 type:(long long)arg3 gender:(long long)arg4;
+- (id)_trialVoiceWithLanguage:(id)arg1 name:(id)arg2 type:(long long)arg3 footprint:(long long)arg4;
 - (id)installedVoiceResources;
+- (id)installedTrialVoiceResources;
 - (id)installedAssetsForType:(long long)arg1 voicename:(id)arg2 language:(id)arg3 gender:(long long)arg4 footprint:(long long)arg5;
+- (id)installedTrialVoicesForType:(long long)arg1 voiceName:(id)arg2 language:(id)arg3 footprint:(long long)arg4;
 - (void)resetResourcesCache;
 - (void)resetCache;
-- (void)cleanOldVoiceResources;
-- (id)cleanUnusedVoiceAssets;
+- (void)cleanMobileAssetVoiceResourcesWithActiveLanguages:(id)arg1;
+- (void)cleanOldMobileAssetVoiceResources;
+- (id)cleanUnusedAssets;
 - (id)inactiveVoiceAssets;
 - (id)activeVoiceAssets;
 - (void)amendVoiceWithDefaultSettings:(id)arg1;
+- (id)definedVoicesForLanguage:(id)arg1 voiceName:(id)arg2 type:(long long)arg3 footprint:(long long)arg4;
 - (id)selectVoiceResourceAssetForLanguage:(id)arg1;
+- (id)_mobileAssetVoiceResourceWithLanguage:(id)arg1;
+- (id)_trialVoiceResourceWithLanguage:(id)arg1;
 - (id)_installedVoiceResourceAssetForLanguage:(id)arg1;
 - (id)builtInVoices;
-- (id)selectPreinstalledVoiceForLanguage:(id)arg1 gender:(long long)arg2;
-- (id)preinstalledVoicesForLanguage:(id)arg1 gender:(long long)arg2;
+- (id)selectPreinstalledVoiceForLanguage:(id)arg1 gender:(long long)arg2 name:(id)arg3;
+- (id)preinstalledVoicesForLanguage:(id)arg1 gender:(long long)arg2 name:(id)arg3;
 - (id)voiceAssetFromPreinstallMetadata:(id)arg1;
 - (id)preinstallAssetsMetadata;
-- (id)_nonCacheVoiceSelectionForLanguage:(id)arg1 type:(long long)arg2 gender:(long long)arg3 footprint:(long long)arg4;
+- (id)_mobileAssetVoiceForLanguage:(id)arg1 name:(id)arg2 type:(long long)arg3 gender:(long long)arg4 footprint:(long long)arg5;
 - (id)init;
 - (void)migrateAssetIfNeededWithAssetType:(id)arg1;
 - (void)migrateAssets;

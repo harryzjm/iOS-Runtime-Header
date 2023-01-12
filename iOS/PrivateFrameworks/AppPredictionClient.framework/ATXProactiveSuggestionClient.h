@@ -8,15 +8,19 @@
 
 #import <AppPredictionClient/ATXProactiveSuggestionClientProtocol-Protocol.h>
 
-@class ATXUICacheManager, NSString;
+@class ATXUICacheManager, NSString, NSXPCConnection;
 
 @interface ATXProactiveSuggestionClient : NSObject <ATXProactiveSuggestionClientProtocol>
 {
     unsigned char _consumer;
     ATXUICacheManager *_cacheManager;
+    NSXPCConnection *_xpcConnection;
 }
 
 - (void).cxx_destruct;
+- (void)setupRemoteClientXPCConnection;
+- (id)remoteSyncBlendingLayerServer;
+- (id)layoutForRequest:(id)arg1;
 - (id)suggestionLayoutFromCache;
 - (id)initWithConsumerSubType:(unsigned char)arg1;
 - (id)init;

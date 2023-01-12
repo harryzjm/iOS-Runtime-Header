@@ -6,14 +6,15 @@
 
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 
-@class UIFocusAnimationCoordinator, UIFocusUpdateContext, _UIFocusGroup;
-@protocol UIFocusEnvironment, UIFocusItem, _UIFocusRegionContainer;
+@class UIFocusAnimationCoordinator, UIFocusUpdateContext, UIResponder;
+@protocol UIFocusEnvironment, _UIFocusRegionContainer;
 
 @protocol _UIFocusEnvironmentInternal <_UIFocusEnvironmentPrivate>
 
 @optional
 @property(readonly, nonatomic, getter=_focusMapContainer) __weak id <_UIFocusRegionContainer> focusMapContainer;
-- (id <UIFocusItem>)_primaryFocusItemForFocusGroup:(_UIFocusGroup *)arg1;
+- (_Bool)_prefersFocusContainment;
+- (UIResponder *)_focusResponderForwardingTarget;
 - (void)_didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (void)_willUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (_Bool)_shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;

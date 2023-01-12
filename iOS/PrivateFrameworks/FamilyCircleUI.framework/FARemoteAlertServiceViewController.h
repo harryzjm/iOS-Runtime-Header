@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <FAFamilyPresenterHostProtocol> hostProxy; // @synthesize hostProxy=_hostProxy;
+- (void)handleButtonActions:(id)arg1;
 - (void)_invalidateLookupConnection;
 - (void)_main_dismissAndExit;
 - (void)_dismissAndExit;
@@ -30,6 +31,7 @@
 - (id)_account;
 - (void)_setupRemoteProxy;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 
 @end
 

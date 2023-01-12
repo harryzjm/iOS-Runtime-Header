@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DNDClientEventSource, NSString;
+@class DNDContactHandle, NSString;
 
 @interface DNDMutableClientEventDetails
 {
@@ -12,7 +12,13 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) _Bool shouldAlwaysInterrupt; // @dynamic shouldAlwaysInterrupt;
-@property(copy, nonatomic) DNDClientEventSource *source; // @dynamic source;
+@property(nonatomic) unsigned long long behavior; // @dynamic behavior;
+@property(nonatomic) _Bool notifyAnyway; // @dynamic notifyAnyway;
+@property(copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;
+@property(copy, nonatomic) DNDContactHandle *sender; // @dynamic sender;
+@property(nonatomic) unsigned long long urgency; // @dynamic urgency;
+@property(nonatomic) unsigned long long type; // @dynamic type;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @dynamic bundleIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
 
 @end

@@ -17,7 +17,7 @@
     CDUnknownBlockType _onError;
     double _startTime;
     double _endTime;
-    NSString *_shortOperationIdentifier;
+    NSString *_loggingPrefix;
     HDProfile *_profile;
     HDCloudSyncOperationConfiguration *_configuration;
     NSProgress *_progress;
@@ -32,6 +32,7 @@
 + (_Bool)shouldProduceOperationAnalytics;
 + (_Bool)shouldLogAtOperationEnd;
 + (_Bool)shouldLogAtOperationStart;
++ (_Bool)shouldFailOnXPCActivityDeferral;
 + (long long)progressCount;
 - (void).cxx_destruct;
 @property(retain) HDCloudSyncCloudState *cloudState; // @synthesize cloudState=_cloudState;
@@ -43,7 +44,6 @@
 - (void)updateCompletedProgressCount:(long long)arg1;
 @property(readonly, copy) NSString *description;
 - (id)analyticsDictionary;
-- (double)_lock_currentDuration;
 - (_Bool)finishWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)delegateToOperation:(id)arg1;
 - (void)skip;

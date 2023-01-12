@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (MRAVAdditions)
+- (id)mr_arrayByRemovingLocalEndpoint;
 - (_Bool)mr_isEqualToOutputDevicesArray:(id)arg1;
 - (int)mr_ifDisabledWhyDisabled:(unsigned int)arg1;
 - (_Bool)mr_isCommandSupportedAndEnabled:(unsigned int)arg1;

@@ -50,10 +50,10 @@
 - (void)_startClearLoggingFilesTimer;
 - (void)_createClearLoggingFileTimer;
 - (void)_reinitializeSmartSiriVolumeWithAsset:(id)arg1;
-- (void)voiceTriggerAssetHandler:(id)arg1 didChangeCachedAsset:(id)arg2;
+- (void)voiceTriggerAssetHandler:(id)arg1 endpointId:(id)arg2 didChangeCachedAsset:(id)arg3;
 - (void)audioRecorderWillBeDestroyed:(id)arg1;
 - (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3;
-- (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 atTime:(unsigned long long)arg5;
+- (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 atTime:(unsigned long long)arg5 arrivalTimestampToAudioRecorder:(unsigned long long)arg6 numberOfChannels:(int)arg7;
 - (void)audioProviderInvalidated:(id)arg1 streamHandleId:(unsigned long long)arg2;
 - (id)_getAudioRecorderWithError:(id *)arg1;
 - (id)fetchFallbackAudioSessionReleaseProvider;
@@ -62,9 +62,9 @@
 - (id)audioProviderWithUUID:(id)arg1;
 - (void)registerSiriClientProxy:(id)arg1;
 - (void)registerSpeechController:(id)arg1;
+- (id)fetchAcousticAnalyzer;
 - (void)_getVoiceTriggerAssetIfNeeded:(CDUnknownBlockType)arg1;
 - (id)audioFingerprintProvider;
-- (id)voiceTriggerEventNotifier;
 - (void)startManager;
 - (void)dealloc;
 - (id)init;

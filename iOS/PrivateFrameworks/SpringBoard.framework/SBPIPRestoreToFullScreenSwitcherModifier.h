@@ -16,11 +16,15 @@
 - (void).cxx_destruct;
 - (_Bool)_isToAppLayout:(unsigned long long)arg1;
 - (_Bool)_isFromAppLayout:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (id)visibleHomeAffordanceLayoutElements;
 - (id)_layoutSettings;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
 - (double)scaleForIndex:(unsigned long long)arg1;
+- (_Bool)clipsToBoundsAtIndex:(unsigned long long)arg1;
+- (struct CGRect)clippingFrameForIndex:(unsigned long long)arg1 withBounds:(struct CGRect)arg2;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)transitionWillBegin;
 - (_Bool)completesWhenChildrenComplete;

@@ -8,23 +8,23 @@
 
 @interface TSCH3DSplineGenerator : NSObject
 {
-    float mDetail;
-    float mTension;
-    float mAdaptiveThreshold;
-    vector_d73af98f mControlPts;
-    vector_afed86a5 mSplineExclude;
+    float _detail;
+    float _tension;
+    float _adaptiveThreshold;
+    struct vector<glm::detail::tvec2<float>, std::allocator<glm::detail::tvec2<float>>> _controlPts;
+    struct vector<long, std::allocator<long>> _splineExclude;
 }
 
 + (id)generator;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) float adaptiveThreshold; // @synthesize adaptiveThreshold=mAdaptiveThreshold;
-@property(nonatomic) float tension; // @synthesize tension=mTension;
-@property(nonatomic) float detail; // @synthesize detail=mDetail;
-- (void)generatePoints:(vector_d73af98f *)arg1;
-- (void)calcControlMatrix:(tmat4x4_3074befe *)arg1 pointNum:(long long)arg2;
-- (vector_afed86a5 *)splineExclude;
-- (vector_d73af98f *)controlPts;
+@property(nonatomic) float adaptiveThreshold; // @synthesize adaptiveThreshold=_adaptiveThreshold;
+@property(nonatomic) float tension; // @synthesize tension=_tension;
+@property(nonatomic) float detail; // @synthesize detail=_detail;
+- (void)generatePoints:(void *)arg1;
+- (void)calcControlMatrix:(void *)arg1 pointNum:(long long)arg2;
+- (void *)splineExclude;
+- (void *)controlPts;
 - (_Bool)isClosed;
 - (id)init;
 

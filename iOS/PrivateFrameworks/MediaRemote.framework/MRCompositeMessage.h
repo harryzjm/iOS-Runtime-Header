@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray;
+@class MRProtocolMessageOptions, NSArray, NSMutableArray;
 
 @interface MRCompositeMessage
 {
     NSMutableArray *_messages;
+    MRProtocolMessageOptions *_transportOptions;
 }
 
 - (void).cxx_destruct;
+- (id)description;
+- (void)setTransportOptions:(id)arg1;
+- (id)transportOptions;
 @property(readonly, nonatomic) NSArray *messages;
 - (void)addMessage:(id)arg1;
 - (id)init;

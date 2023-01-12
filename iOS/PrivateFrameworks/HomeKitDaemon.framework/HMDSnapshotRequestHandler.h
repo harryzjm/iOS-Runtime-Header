@@ -18,41 +18,24 @@
 {
     NSString *_imageCacheDirectory;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSString *_logString;
     HMDAccessory *_accessory;
     NSMutableArray *_pendingRequests;
+    HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
     HMFTimer *_mostRecentSnapshotInvalidationTimer;
     HMDSnapshotFile *_mostRecentSnapshot;
-    HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
+    NSString *_logIdentifier;
     NSSet *_supportedResolutions;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSSet *supportedResolutions; // @synthesize supportedResolutions=_supportedResolutions;
-@property(readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
-@property(retain, nonatomic) HMDSnapshotFile *mostRecentSnapshot; // @synthesize mostRecentSnapshot=_mostRecentSnapshot;
-@property(retain, nonatomic) HMFTimer *mostRecentSnapshotInvalidationTimer; // @synthesize mostRecentSnapshotInvalidationTimer=_mostRecentSnapshotInvalidationTimer;
-@property(readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
-@property(readonly, nonatomic) __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
-@property(readonly, nonatomic) NSString *logString; // @synthesize logString=_logString;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property(readonly, nonatomic) NSString *imageCacheDirectory; // @synthesize imageCacheDirectory=_imageCacheDirectory;
-- (id)_saveSnapshotFile:(id)arg1;
+- (void)timerDidFire:(id)arg1;
 - (void)streamSnapshotHandler:(id)arg1 didGetLastSnapshot:(id)arg2;
 - (void)streamSnapshotHandler:(id)arg1 didGetNewSnapshot:(id)arg2;
-- (void)_handleImageResourceData:(id)arg1 error:(id)arg2 requestedResolution:(id)arg3 snapshotDataTrasaction:(id)arg4;
-- (void)_prepareSupportedResolutionsWithVideoConfiguration:(id)arg1;
-- (void)_handleSupportedParameters:(id)arg1 sessionID:(id)arg2 streamingTierType:(unsigned long long)arg3;
-- (void)_getSupportedVideoResolutions:(id)arg1 streamingTierType:(unsigned long long)arg2;
-- (id)_resolutionToRequest:(unsigned long long)arg1;
-- (id)_supportedResolutionWithType:(unsigned long long)arg1;
-- (void)_sendSnapshotRequest:(id)arg1 streamingTierType:(unsigned long long)arg2;
-- (id)_snapshotRequestOptions:(unsigned long long)arg1 resolution:(id)arg2 accessory:(id)arg3;
-- (void)_updateSnapshotOptions:(id)arg1 withAccessory:(id)arg2 snapshotReason:(unsigned long long)arg3;
 - (void)requestSnapshot:(id)arg1 streamingTierType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)timerDidFire:(id)arg1;
-- (id)logIdentifier;
 - (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 imageCacheDirectory:(id)arg4 logID:(id)arg5;
 
 // Remaining properties

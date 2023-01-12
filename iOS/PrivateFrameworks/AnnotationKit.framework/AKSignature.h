@@ -8,7 +8,7 @@
 
 #import <AnnotationKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSUUID, PKDrawing;
+@class NSDate, NSString, NSUUID, PKDrawing;
 
 @interface AKSignature : NSObject <NSSecureCoding>
 {
@@ -19,14 +19,20 @@
     NSUUID *_uniqueID;
     double _baselineOffset;
     NSDate *_creationDate;
+    long long _descriptionTag;
+    NSString *_customDescription;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *customDescription; // @synthesize customDescription=_customDescription;
+@property long long descriptionTag; // @synthesize descriptionTag=_descriptionTag;
 @property(retain) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property(retain) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property _Bool shouldPersist; // @synthesize shouldPersist=_shouldPersist;
+- (id)accessibilityValue;
+@property(readonly, copy, nonatomic) NSString *accessibilityLabel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +46,7 @@
 - (id)initForTesting;
 - (id)initWithDrawing:(id)arg1 path:(struct CGPath *)arg2 baselineOffset:(double)arg3;
 - (id)initWithDrawing:(id)arg1 path:(struct CGPath *)arg2 baselineOffset:(double)arg3 creationDate:(id)arg4;
+- (id)initWithDrawing:(id)arg1 path:(struct CGPath *)arg2 baselineOffset:(double)arg3 creationDate:(id)arg4 descriptionTag:(long long)arg5 customDescription:(id)arg6;
 
 @end
 

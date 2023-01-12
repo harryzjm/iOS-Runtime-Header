@@ -10,14 +10,20 @@
 
 @interface TIWordSearchChinesePhoneticOperationGetCandidates : TIWordSearchOperationGetCandidates
 {
+    _Bool _regenerateDisambiguationCandidates;
     NSArray *_disambiguationCandidates;
     unsigned long long _selectedDisambiguationCandidateIndex;
+    unsigned long long _unambiguousSyllableCount;
+    unsigned long long _disambiguatedSyllablesCount;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool regenerateDisambiguationCandidates; // @synthesize regenerateDisambiguationCandidates=_regenerateDisambiguationCandidates;
+@property(readonly, nonatomic) unsigned long long disambiguatedSyllablesCount; // @synthesize disambiguatedSyllablesCount=_disambiguatedSyllablesCount;
+@property(readonly, nonatomic) unsigned long long unambiguousSyllableCount; // @synthesize unambiguousSyllableCount=_unambiguousSyllableCount;
 @property(readonly, nonatomic) unsigned long long selectedDisambiguationCandidateIndex; // @synthesize selectedDisambiguationCandidateIndex=_selectedDisambiguationCandidateIndex;
 @property(readonly, nonatomic) NSArray *disambiguationCandidates; // @synthesize disambiguationCandidates=_disambiguationCandidates;
-- (id)initWithWordSearch:(id)arg1 inputString:(id)arg2 keyboardInput:(id)arg3 segmentBreakIndex:(unsigned long long)arg4 disambiguationCandidates:(id)arg5 selectedDisambiguationCandidateIndex:(unsigned long long)arg6 predictionEnabled:(_Bool)arg7 reanalysisMode:(_Bool)arg8 target:(id)arg9 action:(SEL)arg10 geometryModelData:(id)arg11 hardwareKeyboardMode:(_Bool)arg12 logger:(id)arg13;
+- (id)initWithWordSearch:(id)arg1 inputString:(id)arg2 keyboardInput:(id)arg3 segmentBreakIndex:(unsigned long long)arg4 disambiguationCandidates:(id)arg5 unambiguousSyllableCount:(unsigned long long)arg6 selectedDisambiguationCandidateIndex:(unsigned long long)arg7 regenerateDisambiguationCandidates:(_Bool)arg8 predictionEnabled:(_Bool)arg9 reanalysisMode:(_Bool)arg10 target:(id)arg11 action:(SEL)arg12 geometryModelData:(id)arg13 hardwareKeyboardMode:(_Bool)arg14 logger:(id)arg15;
 
 @end
 

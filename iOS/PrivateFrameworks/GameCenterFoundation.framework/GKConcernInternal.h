@@ -15,12 +15,12 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int concernID; // @synthesize concernID=_concernID;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property(retain, nonatomic) GKPlayerInternal *player; // @synthesize player=_player;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 
 @end
 

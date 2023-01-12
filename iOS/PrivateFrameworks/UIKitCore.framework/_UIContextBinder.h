@@ -30,6 +30,7 @@
 - (void)updateBindableOrderWithTest:(CDUnknownBlockType)arg1 force:(_Bool)arg2;
 - (void)updateBindableOrderWithTest:(CDUnknownBlockType)arg1;
 - (void)createContextsWithTest:(CDUnknownBlockType)arg1 creationAction:(CDUnknownBlockType)arg2;
+- (void)purgeContextsWithPurgeAction:(CDUnknownBlockType)arg1 afterPurgeAction:(CDUnknownBlockType)arg2;
 - (void)purgeContextsWithPurgeAction:(CDUnknownBlockType)arg1;
 - (_Bool)bindableIsTopmostAttached:(id)arg1;
 - (_Bool)bindableEnrolled:(id)arg1;

@@ -12,7 +12,7 @@
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSObject<OS_dispatch_queue> *fAppQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     CDUnknownBlockType fOffsetUpdateHandler;
     CDUnknownBlockType fCumulativeUpdateHandler;
     long long fStepCountFromStart;

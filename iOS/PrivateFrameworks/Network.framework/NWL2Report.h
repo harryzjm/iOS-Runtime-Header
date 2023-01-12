@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface NWL2Report : NSObject
 {
     _Bool _cellularKnownGood;
     unsigned char _cellularRadioTechnology;
     unsigned char _cellularBand;
+    unsigned char _cellularDualSimStatus;
+    _Bool _cellularOutranksWiFi;
     _Bool _wifiKnownGood;
     unsigned char _wifiRadioTechnology;
     int _cellularLQM;
@@ -25,16 +27,24 @@
     int _cellularTAC;
     int _cellularBars;
     unsigned int _cellularMode;
+    int _cellularSecondaryMnc;
+    int _cellularSecondaryMcc;
     int _wifiLQM;
     int _wifiRSSI;
     NSString *_cellularCellType;
+    NSMutableArray *_interfaceQueueStats;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *interfaceQueueStats; // @synthesize interfaceQueueStats=_interfaceQueueStats;
 @property(nonatomic) unsigned char wifiRadioTechnology; // @synthesize wifiRadioTechnology=_wifiRadioTechnology;
 @property(nonatomic) _Bool wifiKnownGood; // @synthesize wifiKnownGood=_wifiKnownGood;
 @property(nonatomic) int wifiRSSI; // @synthesize wifiRSSI=_wifiRSSI;
 @property(nonatomic) int wifiLQM; // @synthesize wifiLQM=_wifiLQM;
+@property(nonatomic) _Bool cellularOutranksWiFi; // @synthesize cellularOutranksWiFi=_cellularOutranksWiFi;
+@property(nonatomic) int cellularSecondaryMcc; // @synthesize cellularSecondaryMcc=_cellularSecondaryMcc;
+@property(nonatomic) int cellularSecondaryMnc; // @synthesize cellularSecondaryMnc=_cellularSecondaryMnc;
+@property(nonatomic) unsigned char cellularDualSimStatus; // @synthesize cellularDualSimStatus=_cellularDualSimStatus;
 @property(nonatomic) unsigned int cellularMode; // @synthesize cellularMode=_cellularMode;
 @property(nonatomic) unsigned char cellularBand; // @synthesize cellularBand=_cellularBand;
 @property(nonatomic) int cellularBars; // @synthesize cellularBars=_cellularBars;
@@ -49,7 +59,7 @@
 @property(nonatomic) unsigned char cellularRadioTechnology; // @synthesize cellularRadioTechnology=_cellularRadioTechnology;
 @property(nonatomic) _Bool cellularKnownGood; // @synthesize cellularKnownGood=_cellularKnownGood;
 @property(nonatomic) int cellularLQM; // @synthesize cellularLQM=_cellularLQM;
-- (id)createAWDReport;
+- (id)awdReport;
 - (id)description;
 
 @end

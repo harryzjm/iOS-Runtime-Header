@@ -11,23 +11,26 @@
     _Bool _portraitMode;
     _Bool _userControlled;
     double _timeScale;
-    double _minimumDuration;
-    double _maximumDuration;
+    double _minimumPosterFrameDuration;
+    double _maximumPosterFrameDuration;
 }
 
-@property(nonatomic) double maximumDuration; // @synthesize maximumDuration=_maximumDuration;
+@property(nonatomic) double maximumPosterFrameDuration; // @synthesize maximumPosterFrameDuration=_maximumPosterFrameDuration;
 @property(nonatomic) _Bool userControlled; // @synthesize userControlled=_userControlled;
 @property(nonatomic) _Bool portraitMode; // @synthesize portraitMode=_portraitMode;
-@property(nonatomic) double minimumDuration; // @synthesize minimumDuration=_minimumDuration;
+@property(nonatomic) double minimumPosterFrameDuration; // @synthesize minimumPosterFrameDuration=_minimumPosterFrameDuration;
 @property(nonatomic) double timeScale; // @synthesize timeScale=_timeScale;
+- (void)dealloc;
 - (void)shrinkTimelineToMinimumZoom;
 - (void)expandTimelineToMaximumZoom;
 - (_Bool)isAtMinimumZoom;
 - (double)posterFrameWidthFromCameraLiveSource;
 - (double)posterFrameWidthForEvent:(id)arg1;
 - (double)timelineWidthForEvent:(id)arg1;
-- (double)timeScaleForGestureScale:(double)arg1;
-- (double)timeScaleForGestureScale:(double)arg1 maxDuration:(double)arg2;
+- (double)_numberOfPosterFrameUnitsForEvent:(id)arg1 timeScale:(double)arg2;
+- (double)numberOfPosterFrameUnitsForEvent:(id)arg1;
+- (double)updateTimeScaleForGestureScale:(double)arg1;
+- (double)clampGestureScale:(double)arg1;
 @property(readonly, nonatomic) double maximumGestureScale;
 - (void)updateTimeScaleIfNeeded;
 - (void)reloadEvents:(id)arg1;

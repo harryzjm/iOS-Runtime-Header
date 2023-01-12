@@ -12,7 +12,6 @@
 {
 }
 
-+ (id)valueForPreferenceKey:(id)arg1 domain:(id)arg2;
 + (id)sharedPreferencesController;
 - (_Bool)defaultGlobeAsEmojiKeySetting;
 - (_Bool)useHardwareGlobeKeyAsEmojiKey;

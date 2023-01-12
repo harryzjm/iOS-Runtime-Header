@@ -10,8 +10,8 @@
 #import <PhotosUICore/PXPeopleStripCollectionViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXWidget-Protocol.h>
 
-@class NSString, PXPeopleStripCollectionViewController, PXPhotosDetailsContext, PXSectionedSelectionManager, PXSharingSuggestionDataSource, PXTilingController, PXWidgetSpec;
-@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
+@class NSString, PXAssetActionManager, PXPeopleStripCollectionViewController, PXPhotosDetailsContext, PXSectionedSelectionManager, PXSharingSuggestionDataSource, PXTilingController, PXWidgetSpec;
+@protocol PXAnonymousView, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetInteractionDelegate, PXWidgetUnlockDelegate;
 
 @interface PXSharingSuggestionWidget : NSObject <PXPeopleStripCollectionViewControllerDelegate, PXPeopleDataSourceDelegate, PXWidget>
 {
@@ -61,7 +61,7 @@
 - (void)peopleDataSource:(id)arg1 didAddMembersAtIndexPaths:(id)arg2;
 - (void)peopleDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
 - (void)peopleDataSourceMembersChanged:(id)arg1;
-- (void)memberTappedAtIndexPath:(id)arg1 forPeopleStripController:(id)arg2;
+- (void)memberTappedAtIndexPath:(id)arg1 atPoint:(struct CGPoint)arg2 forPeopleStripController:(id)arg3;
 - (struct UIEdgeInsets)sectionInset;
 - (double)minimumInteritemSpacing;
 - (double)minimumLineSpacing;
@@ -77,6 +77,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowUserInteractionWithSubtitle;
+@property(readonly, nonatomic) PXAssetActionManager *assetActionManager;
 @property(readonly, nonatomic) long long contentLayoutStyle;
 @property(readonly, nonatomic) PXTilingController *contentTilingController;
 @property(readonly, copy) NSString *debugDescription;
@@ -92,11 +93,13 @@
 @property(nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property(nonatomic, getter=isSelecting) _Bool selecting;
 @property(readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
+@property(readonly, nonatomic) NSString *snappableWidgetIdentifier;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool supportsFaceMode;
 @property(readonly, nonatomic) _Bool supportsSelection;
 @property(readonly, nonatomic) _Bool wantsFocus;
 @property(nonatomic) __weak id <PXWidgetEditingDelegate> widgetEditingDelegate;
+@property(nonatomic) __weak id <PXWidgetInteractionDelegate> widgetInteractionDelegate;
 
 @end
 

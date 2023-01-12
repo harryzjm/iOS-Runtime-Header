@@ -6,13 +6,16 @@
 
 #import <ContactsDonation/NSObject-Protocol.h>
 
-@class NSDate;
+@class NSObject;
+@protocol OS_xpc_object;
 
 @protocol CNDonationAnalyticsLogger <NSObject>
-- (void)noDonatedMeCard;
-- (void)noMeCard;
-- (void)withinReportingInterval:(NSDate *)arg1;
 - (void)didReportAnalytics;
 - (void)willReportAnalytics;
+- (void)didPerformAnalysis;
+- (void)willStartAnalysis;
+- (void)noAnalyzerAvailable;
+- (void)analysisServiceCriteria:(NSObject<OS_xpc_object> *)arg1;
+- (void)analysisServiceCheckingIn;
 @end
 

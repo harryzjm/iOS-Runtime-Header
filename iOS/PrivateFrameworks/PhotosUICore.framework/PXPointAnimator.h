@@ -26,7 +26,7 @@
 @property(nonatomic) _Bool isAnimating; // @synthesize isAnimating=_isAnimating;
 @property(nonatomic) struct CGPoint presentationValue; // @synthesize presentationValue=_presentationValue;
 @property(readonly, nonatomic) struct CGPoint value; // @synthesize value=_value;
-- (void)_handleDisplayLink:(id)arg1;
+- (void)handleDisplayLink:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 @property(readonly, nonatomic) PXNumberAnimator<PXMutableNumberAnimator> *yAnimator;
 @property(readonly, nonatomic) PXNumberAnimator<PXMutableNumberAnimator> *xAnimator;
@@ -41,6 +41,7 @@
 - (void)_setInternalValue:(struct CGPoint)arg1;
 - (void)_update;
 - (struct CGPoint)approximateVelocity;
+@property(readonly, nonatomic) double currentTime;
 @property(readonly, nonatomic) double epsilon;
 @property(readonly, copy) NSString *description;
 - (id)initWithValue:(struct CGPoint)arg1 epsilon:(double)arg2;

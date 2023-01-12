@@ -10,12 +10,12 @@
 
 @interface _TtC8FMIPCore27FMIPDeviceActionsController : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *ownerSession;
     MISSING_TYPE *interactionController;
     MISSING_TYPE *authenticationUIProvider;
     MISSING_TYPE *mockAuthenticator;
-    MISSING_TYPE *pendingCommandFuturesUpdateQueue;
-    MISSING_TYPE *pendingCommandFutures;
+    MISSING_TYPE *commandFutures;
 }
 
 @end

@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) SGOrigin *origin; // @synthesize origin=_origin;
 @property(readonly, nonatomic) NSURL *url;
-@property(readonly, nonatomic) NSString *from;
+- (id)contactNameFromPerson:(id)arg1;
+@property(readonly, nonatomic) NSString *with;
 @property(readonly, nonatomic) NSString *date;
 @property(readonly, nonatomic) unsigned long long type;
 @property(readonly, nonatomic) NSString *title;

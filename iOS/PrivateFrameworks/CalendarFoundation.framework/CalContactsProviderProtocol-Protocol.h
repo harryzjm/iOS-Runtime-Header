@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSPredicate;
+@class NSArray, NSPredicate, NSString;
 
 @protocol CalContactsProviderProtocol
+- (NSString *)fullNameForFirstContactMatchingPhoneNumber:(NSString *)arg1;
+- (NSString *)fullNameForFirstContactMatchingEmailAddress:(NSString *)arg1;
 - (NSArray *)unifiedContactsMatchingPredicate:(NSPredicate *)arg1 keysToFetch:(NSArray *)arg2;
 @end
 

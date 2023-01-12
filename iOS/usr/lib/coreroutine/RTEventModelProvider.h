@@ -4,19 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTPurgable-Protocol.h>
 
 @class NSDictionary, NSManagedObjectContext, NSString, RTDefaultsManager, RTEventLocationIdentifier, RTEventManager, RTInvocationDispatcher, RTLearnedLocationManager, RTLocationShifter, RTMetricManager, RTPersistenceManager;
-@protocol OS_dispatch_queue;
 
-@interface RTEventModelProvider : NSObject <RTPurgable>
+@interface RTEventModelProvider <RTPurgable>
 {
     RTEventLocationIdentifier *_reusableLookupIdentifier;
     _Bool _locationsOfInterestsAvailable;
     int _highProbabilityItemMinNumOfEvents;
-    NSObject<OS_dispatch_queue> *_queue;
     RTLearnedLocationManager *_learnedLocationManager;
     RTEventManager *_eventManager;
     RTMetricManager *_metricManager;
@@ -43,7 +39,6 @@
 @property(retain, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 @property(retain, nonatomic) RTEventManager *eventManager; // @synthesize eventManager=_eventManager;
 @property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) _Bool locationsOfInterestsAvailable; // @synthesize locationsOfInterestsAvailable=_locationsOfInterestsAvailable;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_deleteUserInteractionsBeforeDate:(id)arg1;
@@ -65,6 +60,7 @@
 - (void)onLearnedLocationManagerNotification:(id)arg1;
 - (void)refreshAllLOIHistogramsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_buildLocationOfInterestHistogramAndCollectMetrics:(_Bool)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_fetchCalendarEvents;
 - (id)getAllLOIHistogramsForEvents:(id)arg1 andLocationsOfInterest:(id)arg2 collectMetrics:(_Bool)arg3;
 - (_Bool)relativeHighProbabilityHistogramItem:(id)arg1 toItem:(id)arg2;
 - (_Bool)highProbabilityHistogramItem:(id)arg1;
@@ -77,8 +73,7 @@
 - (double)getOverlapTimeForIntervalStart1:(id)arg1 intervalEnd1:(id)arg2 intervalStart2:(id)arg3 intervalEnd2:(id)arg4;
 - (void)updateValueForKey:(id)arg1 expectedClass:(Class)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_updateRegisteredDefaults:(CDUnknownBlockType)arg1;
-- (void)shutdown;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDefaultsManager:(id)arg1 eventManager:(id)arg2 learnedLocationManager:(id)arg3 managedObjectContext:(id)arg4 metricManager:(id)arg5 persistenceManager:(id)arg6;
 - (id)init;
 - (void)_registerScoreBoardSubmission;

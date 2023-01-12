@@ -14,6 +14,7 @@
 {
     _Bool choppingEnabled;
     _Bool errorEncountered;
+    long long errorCode;
     long long successfulChop;
     BCSTimingMeasurement *timingMeasurement;
 }
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) BCSTimingMeasurement *timingMeasurement; // @synthesize timingMeasurement;
 @property(nonatomic) long long successfulChop; // @synthesize successfulChop;
+@property(nonatomic) long long errorCode; // @synthesize errorCode;
 @property(nonatomic) _Bool errorEncountered; // @synthesize errorEncountered;
 @property(nonatomic, getter=isChoppingEnabled) _Bool choppingEnabled; // @synthesize choppingEnabled;
 @property(readonly, nonatomic) NSDictionary *coreAnalyticsPayload;

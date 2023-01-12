@@ -11,9 +11,9 @@
 @interface NSLocale (InternationalSupportExtensions)
 + (id)_parentLocaleIdentifierForIdentifier:(id)arg1;
 + (id)_supportedKeyboardLanguages;
++ (id)_regionLanguageData;
 + (id)_regionLanguageDataForRegionCode:(id)arg1 subdivisionCode:(id)arg2;
 + (id)_languagesForRegion:(id)arg1 subdivision:(id)arg2 withThreshold:(long long)arg3;
-+ (id)_languageNameOverrides;
 + (id)_languagesToExemplarStrings;
 + (id)_ICUdisplayNameForLanguage:(id)arg1 capitalization:(struct ULocaleDisplayNames *)arg2;
 + (id)_normalizedLanguageIdentifierFromString:(id)arg1;
@@ -32,16 +32,17 @@
 + (id)_displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
 + (id)minimizedLanguagesFromLanguages:(id)arg1;
 + (id)_generateMinimizedLanguages;
-+ (id)_minimizedLanguages;
 + (id)languageFromLanguage:(id)arg1 byReplacingRegion:(id)arg2;
 + (id)scriptCodeFromLanguage:(id)arg1;
 + (id)baseLanguageFromLanguage:(id)arg1;
++ (id)containingRegionOfRegion:(id)arg1;
 + (id)_containingRegionOfType:(int)arg1 forRegion:(id)arg2;
 + (id)containingContinentOfRegion:(id)arg1;
 + (id)_availableRegionsOfType:(int)arg1;
 + (id)availableContinents;
 + (id)exemplarRegionForLanguage:(id)arg1;
 + (id)supportedRegions;
++ (id)regionsForLanguage:(id)arg1 withThreshold:(long long)arg2;
 + (id)languagesForRegion:(id)arg1 subdivision:(id)arg2 withThreshold:(long long)arg3 filter:(long long)arg4;
 + (id)exemplarForLanguage:(id)arg1;
 + (id)supportedLanguages;

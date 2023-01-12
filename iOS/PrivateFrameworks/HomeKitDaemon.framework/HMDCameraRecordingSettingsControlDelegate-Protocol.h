@@ -7,6 +7,7 @@
 @class HMDCameraRecordingSettingsControl;
 
 @protocol HMDCameraRecordingSettingsControlDelegate
+- (void)recordingSettingsControlDidFailToConfigure:(HMDCameraRecordingSettingsControl *)arg1;
 - (void)recordingSettingsControlDidConfigure:(HMDCameraRecordingSettingsControl *)arg1;
 @end
 

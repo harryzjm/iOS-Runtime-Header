@@ -6,20 +6,21 @@
 
 #import <VoiceServices/NSObject-Protocol.h>
 
-@class NSArray, NSError, NSString, VSInstrumentMetrics, VSSpeechRequest;
+@class NSArray, NSError, NSString, VSAudioData, VSInstrumentMetrics, VSPresynthesizedAudioRequest, VSSpeechRequest;
 
 @protocol VSSpeechServiceDelegate <NSObject>
-- (oneway void)presynthesizedAudioRequestSuccessWithInstrumentMetrics:(VSInstrumentMetrics *)arg1 error:(NSError *)arg2;
-- (oneway void)presynthesizedAudioRequestDidStopAtEnd:(_Bool)arg1 error:(NSError *)arg2;
-- (oneway void)presynthesizedAudioRequestDidStart;
+- (oneway void)audioRequest:(VSPresynthesizedAudioRequest *)arg1 didReportInstrumentMetrics:(VSInstrumentMetrics *)arg2 error:(NSError *)arg3;
+- (oneway void)audioRequest:(VSPresynthesizedAudioRequest *)arg1 didStopAtEnd:(_Bool)arg2 error:(NSError *)arg3;
+- (oneway void)audioRequestDidStart:(VSPresynthesizedAudioRequest *)arg1;
 - (oneway void)synthesisRequest:(VSSpeechRequest *)arg1 didFinishWithInstrumentMetrics:(VSInstrumentMetrics *)arg2 error:(NSError *)arg3;
+- (oneway void)synthesisRequest:(VSSpeechRequest *)arg1 didGenerateAudioChunk:(VSAudioData *)arg2;
 - (oneway void)synthesisRequest:(VSSpeechRequest *)arg1 didReceiveTimingInfo:(NSArray *)arg2;
-- (oneway void)speechRequestDidReceiveTimingInfo:(NSArray *)arg1;
-- (oneway void)speechRequestSuccessWithInstrumentMetrics:(VSInstrumentMetrics *)arg1;
-- (oneway void)speechRequestDidStopWithSuccess:(_Bool)arg1 phonemesSpoken:(NSString *)arg2 error:(NSError *)arg3;
-- (oneway void)speechRequestMark:(long long)arg1 didStartForRange:(struct _NSRange)arg2;
-- (oneway void)speechRequestDidContinue;
-- (oneway void)speechRequestDidPause;
-- (oneway void)speechRequestDidStart;
+- (oneway void)speechRequest:(VSSpeechRequest *)arg1 didReceiveTimingInfo:(NSArray *)arg2;
+- (oneway void)speechRequest:(VSSpeechRequest *)arg1 didReportInstrumentMetrics:(VSInstrumentMetrics *)arg2;
+- (oneway void)speechRequest:(VSSpeechRequest *)arg1 didStopWithSuccess:(_Bool)arg2 phonemesSpoken:(NSString *)arg3 error:(NSError *)arg4;
+- (oneway void)speechRequest:(VSSpeechRequest *)arg1 didStartWithMark:(long long)arg2 forRange:(struct _NSRange)arg3;
+- (oneway void)speechRequestDidContinue:(VSSpeechRequest *)arg1;
+- (oneway void)speechRequestDidPause:(VSSpeechRequest *)arg1;
+- (oneway void)speechRequestDidStart:(VSSpeechRequest *)arg1;
 @end
 

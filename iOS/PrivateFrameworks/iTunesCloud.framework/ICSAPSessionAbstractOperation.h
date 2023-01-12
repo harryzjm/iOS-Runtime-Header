@@ -6,6 +6,7 @@
 
 @class ICSAPSession;
 
+__attribute__((visibility("hidden")))
 @interface ICSAPSessionAbstractOperation
 {
     ICSAPSession *_sapSession;

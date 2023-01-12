@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HKAnnotationDisplayType *currentOverlayDisplayType; // @synthesize currentOverlayDisplayType=_currentOverlayDisplayType;
 @property(readonly, nonatomic) HKInteractiveChartViewController *chartViewController; // @synthesize chartViewController=_chartViewController;
-- (void)configureDisplayTypes:(id)arg1 timeScope:(long long)arg2 stackOffset:(long long)arg3;
 - (void)removeAnnotationOverlay;
 - (void)installAnnotationOverlayForRange:(id)arg1 trendData:(id)arg2;
 - (void)dealloc;

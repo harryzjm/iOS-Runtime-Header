@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <WeatherFoundation/NSCopying-Protocol.h>
+#import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
 @class NSDate;
 
-@interface WFNextHourPrecipitationMinute : NSObject <NSCopying>
+@interface WFNextHourPrecipitationMinute : NSObject <NSCopying, NSSecureCoding>
 {
     double _intensity;
     double _chance;
@@ -18,11 +19,14 @@
     NSDate *_date;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) double perceivedIntensity; // @synthesize perceivedIntensity=_perceivedIntensity;
 @property(readonly, nonatomic) double chance; // @synthesize chance=_chance;
 @property(readonly, nonatomic) double intensity; // @synthesize intensity=_intensity;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithIntensity:(double)arg1 chance:(double)arg2 perceivedIntensity:(double)arg3 date:(id)arg4;
 

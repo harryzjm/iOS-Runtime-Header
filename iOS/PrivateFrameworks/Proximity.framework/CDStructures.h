@@ -12,26 +12,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct AdditionalInfo {
-    unsigned char _field1;
-    unsigned short _field2;
-    unsigned short _field3;
-    basic_string_7c0a1c0b _field4;
-    unsigned short _field5;
-    unsigned char _field6;
-    unsigned int _field7;
-    basic_string_7c0a1c0b _field8;
-};
-
 struct BtProxData {
     double _field1;
     double _field2;
     unsigned int _field3;
-};
-
-struct BtProximityFilterBase {
-    CDUnknownFunctionPointerType *_field1;
-    basic_string_7c0a1c0b _field2;
 };
 
 struct DaemonBackedService {
@@ -56,16 +40,8 @@ struct GetPowerStatsResponse {
     unsigned int _field13;
 };
 
-struct HelloResponse {
-    basic_string_7c0a1c0b _field1;
-    unsigned char _field2;
-    unsigned char _field3;
-    unsigned short _field4;
-    struct optional<Rose::HelloResponse::AdditionalInfo> _field5;
-};
-
 struct NeighborMeasurements {
-    basic_string_7c0a1c0b _field1;
+    basic_string_05660eb3 _field1;
     double _field2;
     _Bool _field3;
     _Bool _field4;
@@ -79,20 +55,7 @@ struct NeighborMeasurements {
     _Bool _field12;
 };
 
-struct ResponderSuperframeStats {
-    double _field1;
-    unsigned short _field2;
-    struct SlaveSFCompleteEvent _field3;
-    struct optional<double> _field4;
-};
-
-struct SharingImportanceManager;
-
-struct SharingImportanceMeasurements {
-    struct vector<NeighborMeasurements, std::__1::allocator<NeighborMeasurements>> userSharingInput;
-};
-
-struct SlaveSFCompleteEvent {
+struct ResponderSuperframeCompleteEvent {
     unsigned short _field1;
     unsigned short _field2;
     unsigned char _field3;
@@ -112,17 +75,30 @@ struct SlaveSFCompleteEvent {
     unsigned char _field17;
     unsigned char _field18;
     unsigned char _field19;
-    struct vector<Rose::SlaveSFRxPacketInfo, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> _field20;
+    struct vector<Rose::ResponderSuperframeRxPacketInfo, std::allocator<Rose::ResponderSuperframeRxPacketInfo>> _field20;
 };
 
-struct SlaveSFRxPacketInfo;
+struct ResponderSuperframeRxPacketInfo;
+
+struct ResponderSuperframeStats {
+    double _field1;
+    unsigned short _field2;
+    struct ResponderSuperframeCompleteEvent _field3;
+    struct optional<double> _field4;
+};
+
+struct SharingImportanceManager;
+
+struct SharingImportanceMeasurements {
+    struct vector<NeighborMeasurements, std::allocator<NeighborMeasurements>> userSharingInput;
+};
 
 struct array<unsigned char, 8> {
     unsigned char _field1[8];
 };
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
@@ -144,27 +120,19 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
-struct deque<BtProxData, std::__1::allocator<BtProxData>> {
-    struct __split_buffer<BtProxData *, std::__1::allocator<BtProxData *>> {
+struct deque<BtProxData, std::allocator<BtProxData>> {
+    struct __split_buffer<BtProxData *, std::allocator<BtProxData *>> {
         struct BtProxData **__first_;
         struct BtProxData **__begin_;
         struct BtProxData **__end_;
-        struct __compressed_pair<BtProxData **, std::__1::allocator<BtProxData *>> {
+        struct __compressed_pair<BtProxData **, std::allocator<BtProxData *>> {
             struct BtProxData **__value_;
         } __end_cap_;
     } __map_;
     unsigned long long __start_;
-    struct __compressed_pair<unsigned long, std::__1::allocator<BtProxData>> {
+    struct __compressed_pair<unsigned long, std::allocator<BtProxData>> {
         unsigned long long __value_;
     } __size_;
-};
-
-struct optional<Rose::HelloResponse::AdditionalInfo> {
-    union {
-        char _field1;
-        struct AdditionalInfo _field2;
-    } _field1;
-    _Bool _field2;
 };
 
 struct optional<double> {
@@ -180,39 +148,39 @@ struct shared_ptr<rose::ResponderSuperframeStats> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct unique_ptr<SharingImportanceManager, std::__1::default_delete<SharingImportanceManager>> {
-    struct __compressed_pair<SharingImportanceManager *, std::__1::default_delete<SharingImportanceManager>> {
+struct unique_ptr<SharingImportanceManager, std::default_delete<SharingImportanceManager>> {
+    struct __compressed_pair<SharingImportanceManager *, std::default_delete<SharingImportanceManager>> {
         struct SharingImportanceManager *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<SingleThresholdProx::Estimator, std::__1::default_delete<SingleThresholdProx::Estimator>> {
-    struct __compressed_pair<SingleThresholdProx::Estimator *, std::__1::default_delete<SingleThresholdProx::Estimator>> {
+struct unique_ptr<SingleThresholdProx::Estimator, std::default_delete<SingleThresholdProx::Estimator>> {
+    struct __compressed_pair<SingleThresholdProx::Estimator *, std::default_delete<SingleThresholdProx::Estimator>> {
         struct Estimator *__value_;
     } __ptr_;
 };
 
-struct vector<NeighborMeasurements, std::__1::allocator<NeighborMeasurements>> {
+struct vector<NeighborMeasurements, std::allocator<NeighborMeasurements>> {
     struct NeighborMeasurements *__begin_;
     struct NeighborMeasurements *__end_;
-    struct __compressed_pair<NeighborMeasurements *, std::__1::allocator<NeighborMeasurements>> {
+    struct __compressed_pair<NeighborMeasurements *, std::allocator<NeighborMeasurements>> {
         struct NeighborMeasurements *__value_;
     } __end_cap_;
 };
 
-struct vector<Rose::SlaveSFRxPacketInfo, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> {
-    struct SlaveSFRxPacketInfo *_field1;
-    struct SlaveSFRxPacketInfo *_field2;
-    struct __compressed_pair<Rose::SlaveSFRxPacketInfo *, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> {
-        struct SlaveSFRxPacketInfo *_field1;
+struct vector<Rose::ResponderSuperframeRxPacketInfo, std::allocator<Rose::ResponderSuperframeRxPacketInfo>> {
+    struct ResponderSuperframeRxPacketInfo *_field1;
+    struct ResponderSuperframeRxPacketInfo *_field2;
+    struct __compressed_pair<Rose::ResponderSuperframeRxPacketInfo *, std::allocator<Rose::ResponderSuperframeRxPacketInfo>> {
+        struct ResponderSuperframeRxPacketInfo *_field1;
     } _field3;
 };
 
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
@@ -232,5 +200,5 @@ typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocat
             } _field1;
         } _field1;
     } _field1;
-} basic_string_7c0a1c0b;
+} basic_string_05660eb3;
 

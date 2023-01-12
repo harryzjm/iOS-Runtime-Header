@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGSize)sizeInPixels;
-- (_Bool)canProvideFullResCGImage;
+- (_Bool)canScaleImageToTargetResolution;
 - (_Bool)isCIImage;
 - (id)CIImage;
 - (id)initWithScale:(double)arg1;

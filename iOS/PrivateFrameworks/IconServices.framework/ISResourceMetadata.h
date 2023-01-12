@@ -11,20 +11,19 @@
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ISResourceMetadata : NSObject <ISResourceMetadata>
+@interface ISResourceMetaData : NSObject <ISResourceMetadata>
 {
     _Bool _selectedVariant;
-    NSNumber *_diension;
     NSString *_name;
+    NSNumber *_dimension;
     NSNumber *_scale;
 }
 
-+ (id)metadataWithFileName:(id)arg1;
 - (void).cxx_destruct;
 @property _Bool selectedVariant; // @synthesize selectedVariant=_selectedVariant;
 @property(retain) NSNumber *scale; // @synthesize scale=_scale;
+@property(retain) NSNumber *dimension; // @synthesize dimension=_dimension;
 @property(retain) NSString *name; // @synthesize name=_name;
-@property(retain) NSNumber *dimension; // @synthesize dimension=_diension;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

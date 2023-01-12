@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, PLPerson;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, PLPerson;
 
 @interface PLPersistedPersonMetadata : NSObject
 {
     _Bool _cplEnabled;
     short _keyFacePickSource;
+    short _userFeedbackType;
+    short _userFeedbackFeature;
     unsigned int _manualOrder;
     int _type;
     int _verifiedType;
     int _cloudVerifiedType;
     NSString *_personUUID;
+    NSNumber *_detectionType;
     NSString *_mergeTargetPersonUUID;
     NSString *_fullName;
     NSString *_displayName;
@@ -24,6 +27,11 @@
     NSArray *_detectedFaces;
     NSArray *_rejectedFaces;
     NSDictionary *_contactMatchingDictionary;
+    NSString *_userFeedbackUUID;
+    NSString *_userFeedbackContext;
+    NSDate *_userFeedbackLastModifiedDate;
+    NSSet *_userFeedbacks;
+    NSArray *_userFeedbacksDictionaryArray;
     long long _fromVersion;
     PLPerson *_person;
     NSURL *_metadataURL;
@@ -47,6 +55,13 @@
 @property(retain, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property(retain, nonatomic) PLPerson *person; // @synthesize person=_person;
 @property(nonatomic) long long fromVersion; // @synthesize fromVersion=_fromVersion;
+@property(retain, nonatomic) NSArray *userFeedbacksDictionaryArray; // @synthesize userFeedbacksDictionaryArray=_userFeedbacksDictionaryArray;
+@property(retain, nonatomic) NSSet *userFeedbacks; // @synthesize userFeedbacks=_userFeedbacks;
+@property(readonly, nonatomic) NSDate *userFeedbackLastModifiedDate; // @synthesize userFeedbackLastModifiedDate=_userFeedbackLastModifiedDate;
+@property(readonly, nonatomic) NSString *userFeedbackContext; // @synthesize userFeedbackContext=_userFeedbackContext;
+@property(readonly, nonatomic) short userFeedbackFeature; // @synthesize userFeedbackFeature=_userFeedbackFeature;
+@property(readonly, nonatomic) short userFeedbackType; // @synthesize userFeedbackType=_userFeedbackType;
+@property(readonly, nonatomic) NSString *userFeedbackUUID; // @synthesize userFeedbackUUID=_userFeedbackUUID;
 @property(nonatomic) short keyFacePickSource; // @synthesize keyFacePickSource=_keyFacePickSource;
 @property(copy, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property(retain, nonatomic) NSArray *rejectedFaces; // @synthesize rejectedFaces=_rejectedFaces;
@@ -59,6 +74,7 @@
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(retain, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property(retain, nonatomic) NSString *mergeTargetPersonUUID; // @synthesize mergeTargetPersonUUID=_mergeTargetPersonUUID;
+@property(nonatomic) NSNumber *detectionType; // @synthesize detectionType=_detectionType;
 @property(retain, nonatomic) NSString *personUUID; // @synthesize personUUID=_personUUID;
 - (id)jsonDictionary;
 - (_Bool)matchesEntityInLibraryBackedByManagedObjectContext:(id)arg1 diff:(id *)arg2;

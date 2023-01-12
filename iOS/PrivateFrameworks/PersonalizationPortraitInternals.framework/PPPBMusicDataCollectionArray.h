@@ -23,6 +23,7 @@
 
 + (Class)experimentalGroupsType;
 + (Class)recordsType;
++ (id)options;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *assetVersion; // @synthesize assetVersion=_assetVersion;
 @property(retain, nonatomic) NSMutableArray *experimentalGroups; // @synthesize experimentalGroups=_experimentalGroups;

@@ -16,18 +16,21 @@
     NSMutableArray *_notes;
     NSMutableDictionary *_logWritingOptions;
     NSString *_logfile;
+    NSString *_etlKey;
 }
 
++ (id)findBundleAtPath:(id)arg1 withKeys:(id)arg2 bundleURL:(inout id *)arg3;
 + (id)bootArgs;
 + (id)kernelVersionDescription;
 + (id)systemIDWithDescription:(_Bool)arg1;
 + (unsigned char)executeWithTimeout:(unsigned int)arg1 Code:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *etlKey; // @synthesize etlKey=_etlKey;
 @property(readonly, nonatomic) NSString *logfile; // @synthesize logfile=_logfile;
 @property(readonly, nonatomic) NSArray *notes; // @synthesize notes=_notes;
+@property(readonly, nonatomic) double capture_time; // @synthesize capture_time=_capture_time;
 - (int)streamContentAtLevel:(_Bool)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (_Bool)saveWithOptions:(id)arg1;
-- (_Bool)secondChanceToSylog;
 - (void)symlink:(id)arg1;
 - (void)generateLogAtLevel:(_Bool)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)additionalIPSMetadata;

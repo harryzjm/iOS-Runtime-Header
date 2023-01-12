@@ -17,6 +17,7 @@
     NSMutableArray *_invitedKeyToRemoves;
     CKDPProtectionInfo *_invitedPcs;
     NSString *_origin;
+    int _participantSelfRemovalBehavior;
     NSMutableArray *_participants;
     NSMutableArray *_potentialMatchs;
     int _publicAccess;
@@ -28,6 +29,7 @@
     _Bool _anonymousPublicAccess;
     _Bool _publisherModel;
     struct {
+        unsigned int participantSelfRemovalBehavior:1;
         unsigned int publicAccess:1;
         unsigned int publisherModelType:1;
         unsigned int anonymousPublicAccess:1;
@@ -61,6 +63,10 @@
 - (id)description;
 @property(readonly, nonatomic) _Bool hasOrigin;
 @property(readonly, nonatomic) _Bool hasShortTokenHash;
+- (int)StringAsParticipantSelfRemovalBehavior:(id)arg1;
+- (id)participantSelfRemovalBehaviorAsString:(int)arg1;
+@property(nonatomic) _Bool hasParticipantSelfRemovalBehavior;
+@property(nonatomic) int participantSelfRemovalBehavior; // @synthesize participantSelfRemovalBehavior=_participantSelfRemovalBehavior;
 - (int)StringAsPublisherModelType:(id)arg1;
 - (id)publisherModelTypeAsString:(int)arg1;
 @property(nonatomic) _Bool hasPublisherModelType;

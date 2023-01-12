@@ -16,6 +16,13 @@
 - (id)_appTintColor;
 - (id)_fullColorImageProvider;
 - (id)_tintableAppImageProvider;
+- (id)_symbolAppFullColorImageProviderIfSupported;
+- (id)_symbolAppImageProviderIfSupported;
+- (id)_symbolName;
+- (id)_symbolSize;
+- (id)_symbolSizeforTinCanApp;
+- (id)_symbolSizeforMailFindMyApps;
+- (id)_symbolSizeforMapsApp;
 - (id)_appTitle;
 - (id)_graphicExtraLargeTemplate;
 - (id)_signatureCircularTemplate;

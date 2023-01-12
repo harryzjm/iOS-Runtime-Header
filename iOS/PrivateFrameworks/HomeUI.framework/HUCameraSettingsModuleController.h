@@ -6,15 +6,14 @@
 
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, UIColor;
+@class NSString;
 
 @interface HUCameraSettingsModuleController <UITextViewDelegate>
 {
-    UIColor *_cellContentViewBackgroundColor;
+    _Bool _useProxSetupPresentationStyle;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) UIColor *cellContentViewBackgroundColor; // @synthesize cellContentViewBackgroundColor=_cellContentViewBackgroundColor;
+@property(nonatomic) _Bool useProxSetupPresentationStyle; // @synthesize useProxSetupPresentationStyle=_useProxSetupPresentationStyle;
 - (_Bool)canSelectDisabledItem:(id)arg1;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (_Bool)canSelectItem:(id)arg1;

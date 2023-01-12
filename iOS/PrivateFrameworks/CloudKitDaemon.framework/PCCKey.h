@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface PCCKey : NSObject
 {
     struct pcc_invocation_key *_secret;

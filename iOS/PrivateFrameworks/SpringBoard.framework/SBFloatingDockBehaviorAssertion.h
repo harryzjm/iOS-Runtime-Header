@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
+#import <SpringBoard/BSInvalidatable-Protocol.h>
 
 @class NSDate, NSString, SBFloatingDockController;
 
-@interface SBFloatingDockBehaviorAssertion : NSObject <BSDescriptionProviding>
+@interface SBFloatingDockBehaviorAssertion : NSObject <BSDescriptionProviding, BSInvalidatable>
 {
     _Bool _animated;
     _Bool _gesturePossible;

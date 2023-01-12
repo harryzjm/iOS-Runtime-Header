@@ -9,6 +9,7 @@
 @class NSDate, NSString;
 
 @protocol AFMediaPlaybackStateSnapshotMutating <NSObject>
+- (void)setIsProxyGroupPlayer:(_Bool)arg1;
 - (void)setGroupIdentifier:(NSString *)arg1;
 - (void)setMediaType:(NSString *)arg1;
 - (void)setNowPlayingTimestamp:(NSDate *)arg1;

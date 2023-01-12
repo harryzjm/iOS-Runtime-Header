@@ -6,8 +6,8 @@
 
 #import <UIKit/UIView.h>
 
-#import <PencilKit/PKEdgeLocatable-Protocol.h>
 #import <PencilKit/PKPaletteColorPickerControllerDelegate-Protocol.h>
+#import <PencilKit/PKPaletteEdgeLocating-Protocol.h>
 #import <PencilKit/PKPalettePopoverDismissing-Protocol.h>
 #import <PencilKit/PKPalettePopoverUpdating-Protocol.h>
 #import <PencilKit/PKPaletteQuickColorPicking-Protocol.h>
@@ -21,16 +21,16 @@
 @class NSArray, NSString, PKPaletteMulticolorSwatch, UICollectionView, UIColor, UILongPressGestureRecognizer;
 @protocol PKPaletteColorPickerController, PKPalettePopoverPresenting><PKPaletteColorPickerViewDelegate;
 
-@interface PKPaletteColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PKPaletteColorPickerControllerDelegate, PKEdgeLocatable, PKPaletteQuickColorPicking, PKPalettePopoverUpdating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
+@interface PKPaletteColorPickerView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate, PKPaletteColorPickerControllerDelegate, PKPaletteEdgeLocating, PKPaletteQuickColorPicking, PKPalettePopoverUpdating, PKPalettePopoverDismissing, PKPaletteViewSizeScaling>
 {
     unsigned long long _edgeLocation;
     double _scalingFactor;
     id <PKPalettePopoverPresenting><PKPaletteColorPickerViewDelegate> _delegate;
     long long _colorUserInterfaceStyle;
+    PKPaletteMulticolorSwatch *_multicolorSwatch;
     long long _colorPickerMode;
     UICollectionView *_collectionView;
     NSArray *_swatches;
-    PKPaletteMulticolorSwatch *_multicolorSwatch;
     NSArray *_swatchColors;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     id <PKPaletteColorPickerController> _colorPickerController;
@@ -38,17 +38,17 @@
     long long _analyticsColorChangeCount;
 }
 
-+ (id)collectionViewFlowLayoutWithItemSize:(struct CGSize)arg1 minimumLineSpacing:(double)arg2 minimumInteritemSpacing:(double)arg3;
++ (id)collectionViewFlowLayoutWithItemSize:(struct CGSize)arg1 minimumLineSpacing:(double)arg2 minimumInterItemSpacing:(double)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) long long analyticsColorChangeCount; // @synthesize analyticsColorChangeCount=_analyticsColorChangeCount;
 @property(retain, nonatomic) UIColor *analyticsInitialColor; // @synthesize analyticsInitialColor=_analyticsInitialColor;
 @property(retain, nonatomic) id <PKPaletteColorPickerController> colorPickerController; // @synthesize colorPickerController=_colorPickerController;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property(retain, nonatomic) NSArray *swatchColors; // @synthesize swatchColors=_swatchColors;
-@property(retain, nonatomic) PKPaletteMulticolorSwatch *multicolorSwatch; // @synthesize multicolorSwatch=_multicolorSwatch;
 @property(retain, nonatomic) NSArray *swatches; // @synthesize swatches=_swatches;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property(nonatomic) long long colorPickerMode; // @synthesize colorPickerMode=_colorPickerMode;
+@property(retain, nonatomic) PKPaletteMulticolorSwatch *multicolorSwatch; // @synthesize multicolorSwatch=_multicolorSwatch;
 @property(nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property(nonatomic) __weak id <PKPalettePopoverPresenting><PKPaletteColorPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;

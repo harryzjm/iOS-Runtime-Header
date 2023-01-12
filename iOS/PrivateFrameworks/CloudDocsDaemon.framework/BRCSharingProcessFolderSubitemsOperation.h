@@ -8,7 +8,6 @@
 
 @class BRCALRowID, BRCItemID, BRCPrivateClientZone, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BRCSharingProcessFolderSubitemsOperation <BRCOperationSubclass>
 {
     unsigned long long _rowID;

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotoAnalysis/NSObject-Protocol.h>
+
 @class PHAServiceCancelableOperation;
 
-@protocol PHAServiceOperationHandling
+@protocol PHAServiceOperationHandling <NSObject>
 - (void)handleOperation:(PHAServiceCancelableOperation *)arg1;
-
-@optional
-- (void)operationDidFinish:(PHAServiceCancelableOperation *)arg1;
-- (void)operationWillStart:(PHAServiceCancelableOperation *)arg1;
 @end
 

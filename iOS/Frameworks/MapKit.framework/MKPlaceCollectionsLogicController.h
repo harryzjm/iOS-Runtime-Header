@@ -10,16 +10,15 @@
 #import <MapKit/MKCollectionDataProvider-Protocol.h>
 #import <MapKit/MKCollectionUpdater-Protocol.h>
 #import <MapKit/MKCollectionsFetcher-Protocol.h>
-#import <MapKit/MKPlaceBatchGuideConsumer-Protocol.h>
+#import <MapKit/MKPlaceBatchConsumer-Protocol.h>
 
-@class MKPlaceBatchController, NSArray, NSDiffableDataSourceSnapshot, NSRelativeDateTimeFormatter, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIFont;
+@class MKPlaceBatchController, NSArray, NSDiffableDataSourceSnapshot, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIFont;
 @protocol MKCuratedCollectionsSyncCoordinator;
 
-@interface MKPlaceCollectionsLogicController : NSObject <MKCollectionsFetcher, MKCollectionDataProvider, MKCollectionUpdater, CollectionsAnalyticsProvider, MKPlaceBatchGuideConsumer>
+@interface MKPlaceCollectionsLogicController : NSObject <MKCollectionsFetcher, MKCollectionDataProvider, MKCollectionUpdater, CollectionsAnalyticsProvider, MKPlaceBatchConsumer>
 {
     long long _context;
     UIFont *_titleFont;
-    NSRelativeDateTimeFormatter *_collectionDateFormatter;
     UICollectionView *_collectionView;
     NSArray *_collections;
     NSArray *_geoCollections;
@@ -43,14 +42,13 @@
 - (void)_dispatchOnManThread:(CDUnknownBlockType)arg1;
 - (void)createBatchControllerIfNeededUsingIdentifiers:(id)arg1 andPlaceCollections:(id)arg2 usingCollectionFetcher:(id)arg3 usingGuideConsumer:(id)arg4 usingBatchSize:(unsigned long long)arg5;
 - (id)removeIdentifiers:(id)arg1 collidingWithPlaceCollections:(id)arg2;
-- (void)initializeFormatter;
 - (void)initializeFonts;
-- (void)endDisplayingCellAtIndexPath:(id)arg1;
 - (void)clearPreviousModelImageDownloads;
 - (id)buildCuratedCollectionsFrom:(id)arg1 shouldCancelImageDownloads:(_Bool)arg2;
 - (void)prepareSnapshot;
 - (_Bool)isCollectionSavedAtIndex:(long long)arg1;
 - (id)identifierForCollectionAtIndex:(long long)arg1;
+- (void)dismissedCollections;
 - (void)appendBatchOfCollections:(id)arg1;
 - (void)updateUsingBatchedIdentifiers:(id)arg1 usingCollectionFetcher:(id)arg2 usingBatchSize:(unsigned long long)arg3;
 - (void)updateCollectionsWithoutPreparingSnapshot:(id)arg1 usingBatchedIdentifiers:(id)arg2 usingCollectionFetcher:(id)arg3 usingGuideConsumer:(id)arg4 usingBatchSize:(unsigned long long)arg5;
@@ -58,14 +56,15 @@
 - (id)geoCollectionAtIndex:(long long)arg1;
 - (id)collectionAtIndex:(long long)arg1;
 - (long long)numberOfCollections;
+- (long long)sectionKindAtIndex:(long long)arg1;
 - (long long)numberOfSections;
 - (void)refreshCollections;
 - (void)displayCollections;
 - (void)getCollections:(CDUnknownBlockType)arg1;
 - (void)getCollectionsUsingDataSource:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
+- (id)visibleFocusItems;
 - (void)clearSnapshotData;
 - (void)willDisplayCellAtIndexpath:(id)arg1;
-- (void)didEndDisplayingCellAtIndexpath:(id)arg1 usingSnapShot:(id)arg2;
 - (id)initWithCollectionView:(id)arg1 withPlaceCollections:(id)arg2 usingCollectionIds:(id)arg3 usingCollectionFetcher:(id)arg4 usingGuideConsumer:(id)arg5 usingSyncCoordinator:(id)arg6 inContext:(long long)arg7 usingBatchSize:(unsigned long long)arg8;
 - (id)initWithPlaceCollections:(id)arg1 usingSyncCoordinator:(id)arg2 inContext:(long long)arg3;
 

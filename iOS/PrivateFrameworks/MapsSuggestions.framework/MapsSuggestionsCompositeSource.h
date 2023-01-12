@@ -17,6 +17,7 @@
     struct Queue _queue;
     NSObject<OS_dispatch_source> *_updateTimer;
     MapsSuggestionsSuppressor *_suppressor;
+    NSMutableDictionary *_hasStarted;
     _Bool _running;
 }
 
@@ -25,10 +26,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property _Bool running; // @synthesize running=_running;
+- (void)test_awaitQueue;
 - (void)test_resetSuppressions;
 - (double)test_suppressionDurationForBehavior:(long long)arg1 type:(long long)arg2;
 - (id)test_dateUntilSuppressedEntry:(id)arg1;
 - (void)test_sync;
+- (id)sources;
 - (id)children;
 - (_Bool)removeChildSource:(id)arg1;
 - (_Bool)addChildSource:(id)arg1;
@@ -45,6 +48,7 @@
 - (void)stop;
 - (void)start;
 - (void)dealloc;
+- (id)initWithDelegate:(id)arg1 name:(id)arg2;
 - (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 
 // Remaining properties

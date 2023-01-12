@@ -16,13 +16,14 @@
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property(readonly, nonatomic) TSDShapeInfo *freehandDrawingSpacerShape; // @synthesize freehandDrawingSpacerShape=_freehandDrawingSpacerShape;
 - (id)tsaxTypeDescription;
-- (void)saveToArchive:(struct GroupArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct GroupArchive *)arg1 unarchiver:(id)arg2 upgradeDOLC:(_Bool)arg3;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2 upgradeDOLC:(_Bool)arg3;
 - (id)copyWithContext:(id)arg1;
 - (id)allNestedChildrenInfosForWrap;
 - (_Bool)isEffectivelyEmpty;
 - (Class)repClass;
 - (Class)layoutClass;
+- (id)typeName;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

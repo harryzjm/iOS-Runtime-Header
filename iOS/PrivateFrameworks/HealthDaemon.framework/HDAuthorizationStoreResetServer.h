@@ -17,6 +17,7 @@
 + (_Bool)validateClient:(id)arg1 error:(id *)arg2;
 - (id)remoteInterface;
 - (id)exportedInterface;
+- (void)remote_recalibrateEstimatesForSampleType:(id)arg1 effectiveDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_resetAuthorizationStatusForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_resetAuthorizationStatusesForObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_resetObjectAuthorizationStatusForBundleIdentifier:(id)arg1 objectType:(id)arg2 completion:(CDUnknownBlockType)arg3;

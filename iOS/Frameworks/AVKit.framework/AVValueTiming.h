@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/NSCoding-Protocol.h>
 #import <AVKit/NSCopying-Protocol.h>
 #import <AVKit/NSMutableCopying-Protocol.h>
+#import <AVKit/NSSecureCoding-Protocol.h>
 
-@interface AVValueTiming : NSObject <NSCoding, NSCopying, NSMutableCopying>
+@interface AVValueTiming : NSObject <NSSecureCoding, NSCopying, NSMutableCopying>
 {
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (_Bool)supportsSecureCoding;
 + (double)currentTimeStamp;
 + (id)valueTimingWithAnchorValue:(double)arg1 anchorTimeStamp:(double)arg2 rate:(double)arg3;
 @property(readonly, nonatomic) double rate;

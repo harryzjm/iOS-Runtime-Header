@@ -6,13 +6,12 @@
 
 #import <WorkflowKit/WFAction.h>
 
-@protocol WFFileStorageService;
-
 @interface WFStorageServiceAction : WFAction
 {
 }
 
-- (id)targetContentAttribution;
+- (_Bool)skipsProcessingHiddenParameters;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)selectedStorageServiceChanged;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 - (id)showPickerKey;
@@ -27,7 +26,7 @@
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)requiredResources;
 @property(readonly, nonatomic) _Bool showsFilePicker;
-@property(readonly, nonatomic) id <WFFileStorageService> selectedStorageService;
+- (id)storageService;
 - (_Bool)requiresRemoteExecution;
 - (id)prioritizedParameterKeysForRemoteExecution;
 

@@ -21,9 +21,8 @@
 }
 
 + (void)_destroyRetainedLinearArray:(id *)arg1 withCount:(unsigned int)arg2;
-+ (_Bool)supportsSecureCoding;
 + (void)initialize;
-+ (void)_claimUnarchivingOfClass:(id)arg1;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_applyTypeOverlay:(id)arg1;
 @property(readonly, nonatomic) unsigned int fieldInfoCount;

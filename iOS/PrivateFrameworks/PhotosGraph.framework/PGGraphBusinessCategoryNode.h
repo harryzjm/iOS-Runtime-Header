@@ -6,18 +6,23 @@
 
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 
-@class NSString;
+@class NSString, PGGraphBusinessCategoryNodeCollection;
 
 @interface PGGraphBusinessCategoryNode <PGGraphLocalizable>
 {
     NSString *_label;
 }
 
++ (id)filterWithCategory:(id)arg1;
++ (id)filterWithCategories:(id)arg1;
++ (id)filter;
++ (id)businessOfCategory;
 - (void).cxx_destruct;
 - (id)label;
+@property(readonly, nonatomic) PGGraphBusinessCategoryNodeCollection *collection;
 @property(readonly, nonatomic) NSString *localizedName;
 - (unsigned short)domain;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 - (id)initWithLabel:(id)arg1;
 
 // Remaining properties

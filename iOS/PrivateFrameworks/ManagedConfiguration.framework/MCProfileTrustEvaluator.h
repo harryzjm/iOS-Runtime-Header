@@ -12,6 +12,7 @@
 
 - (_Bool)sanitizedProfileSignerCertificateChainIsAllowedToInstallSupervisedRestrictionsOnUnsupervisedDevices:(id)arg1;
 - (_Bool)sanitizedProfileSignerCertificateChainIsAllowedToInstallUnsupportedPayload:(id)arg1;
+- (_Bool)_verifyCerts:(id)arg1 policy:(struct __SecPolicy *)arg2;
 - (_Bool)sanitizedProfileSignerCertificateChainIsAllowedToWriteDefaults:(id)arg1;
 
 @end

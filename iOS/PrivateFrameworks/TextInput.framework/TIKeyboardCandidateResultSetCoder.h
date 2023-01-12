@@ -10,6 +10,7 @@
 
 @interface TIKeyboardCandidateResultSetCoder : NSObject
 {
+    _Bool _offsetHasPassedEndOfData;
     NSMutableData *_mutableData;
     NSData *_data;
     unsigned long long _offset;
@@ -20,6 +21,7 @@
 + (Class)classFromCandidateType:(int)arg1;
 + (id)candidateTypeToClassNameMap;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool offsetHasPassedEndOfData; // @synthesize offsetHasPassedEndOfData=_offsetHasPassedEndOfData;
 @property(nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSMutableData *mutableData; // @synthesize mutableData=_mutableData;
@@ -39,6 +41,7 @@
 - (void)encodeDouble:(double)arg1;
 - (unsigned short)decodeShort;
 - (void)encodeShort:(unsigned short)arg1;
+- (void)readNumberOfBytes:(unsigned long long)arg1 into:(void *)arg2;
 - (unsigned char)decodeByte;
 - (void)encodeByte:(unsigned char)arg1;
 - (_Bool)decodeBool;
@@ -46,6 +49,7 @@
 - (id)decodeCandidate;
 @property(readonly, nonatomic) const char *currentPosition;
 @property(readonly, nonatomic) const char *bytes;
+- (_Bool)isDecoding;
 - (id)initWithData:(id)arg1 mutableData:(id)arg2;
 - (id)initForDecodingWithData:(id)arg1;
 - (id)initForEncoding;

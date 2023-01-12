@@ -15,30 +15,32 @@
 {
     _Bool _constrainedHorizontally;
     NSArray *_buttonGroups;
+    NSArray *_separatorGroups;
     _UIButtonBarButtonVisualProvider *_visualProvider;
     double _minimumInterItemSpace;
-    double _minimumInterGroupSpace;
+    double _effectiveInterItemSpacing;
+    double _barButtonWidth;
     long long _buttonAlignment;
     id <TUIAssistantButtonBarViewDelegate> _delegate;
     double _horizontalMargins;
     id <_UIButtonBarAppearanceDelegate> _appearanceDelegate;
     UIView *_buttonContainer;
-    double _effectiveInterItemSpacing;
     NSMutableOrderedSet *_groupViews;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableOrderedSet *groupViews; // @synthesize groupViews=_groupViews;
-@property(nonatomic) double effectiveInterItemSpacing; // @synthesize effectiveInterItemSpacing=_effectiveInterItemSpacing;
 @property(retain, nonatomic) UIView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
 @property(nonatomic) __weak id <_UIButtonBarAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
 @property(nonatomic) double horizontalMargins; // @synthesize horizontalMargins=_horizontalMargins;
 @property(nonatomic) __weak id <TUIAssistantButtonBarViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool constrainedHorizontally; // @synthesize constrainedHorizontally=_constrainedHorizontally;
 @property(nonatomic) long long buttonAlignment; // @synthesize buttonAlignment=_buttonAlignment;
-@property(nonatomic) double minimumInterGroupSpace; // @synthesize minimumInterGroupSpace=_minimumInterGroupSpace;
+@property(nonatomic) double barButtonWidth; // @synthesize barButtonWidth=_barButtonWidth;
+@property(nonatomic) double effectiveInterItemSpacing; // @synthesize effectiveInterItemSpacing=_effectiveInterItemSpacing;
 @property(nonatomic) double minimumInterItemSpace; // @synthesize minimumInterItemSpace=_minimumInterItemSpace;
 @property(retain, nonatomic) _UIButtonBarButtonVisualProvider *visualProvider; // @synthesize visualProvider=_visualProvider;
+@property(retain, nonatomic) NSArray *separatorGroups; // @synthesize separatorGroups=_separatorGroups;
 @property(retain, nonatomic) NSArray *buttonGroups; // @synthesize buttonGroups=_buttonGroups;
 - (void)_checkBarButtonItemState:(id)arg1;
 - (void)_didTapButtonBarButton:(id)arg1 withEvent:(id)arg2;
@@ -47,17 +49,22 @@
 - (struct CGSize)preferredSizeForButtonBarItem:(id)arg1;
 - (struct CGSize)_preferredTitleSizeForBarButtonItem:(id)arg1;
 - (void)configureButtonBarItemView:(id)arg1 forItem:(id)arg2 group:(id)arg3;
+@property(readonly, nonatomic) _Bool hasVisibleItem;
+- (_Bool)validateButtonGroup:(id)arg1;
+- (_Bool)shouldShowSeparator;
 - (void)validateButtonGroups;
 - (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (_Bool)_containsFlexibleGroupViews;
+- (void)uncollapseAllGroups;
 - (void)_uncollapseAllGroupsForNewSizeIfNecessary:(struct CGSize)arg1;
 - (void)_collapseGroupsIfNecessaryForWidth:(double)arg1;
 - (id)_allVisibleBarItemViews;
 - (id)_uncollapsedGroupViews;
 - (id)_visibleGroups;
 - (id)_visibleGroupViews;
+- (struct CGSize)collapsedSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (struct UIEdgeInsets)_insetsForHorizontalMargin;
@@ -65,6 +72,7 @@
 - (struct CGSize)_totalGroupSizeThatFits:(struct CGSize)arg1;
 - (void)_updateBarButtonItemHiddenState;
 - (id)_groupViewForBarButtonItemGroup:(id)arg1;
+- (void)setButtonGroups:(id)arg1 animated:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

@@ -14,9 +14,9 @@
 {
 }
 
++ (_Bool)jsonDictionaryRepresentationIsValid:(id)arg1 exactly:(_Bool)arg2;
 + (_Bool)supportsSecureCoding;
 - (id)dictionaryRepresentation;
-- (_Bool)jsonDictionaryRepresentationIsValid:(id)arg1 exactly:(_Bool)arg2;
 - (id)initWithDictionaryRepresentation:(id)arg1 exactly:(_Bool)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

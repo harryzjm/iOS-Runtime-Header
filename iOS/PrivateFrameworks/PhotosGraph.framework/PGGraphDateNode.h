@@ -4,16 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PGGraphCalendarUnitNode, PGGraphSeasonNode;
+#import <PhotosGraph/MAUniquelyIdentifiableNode-Protocol.h>
 
-@interface PGGraphDateNode
+@class MANodeFilter, NSString, PGGraphCalendarUnitNode, PGGraphDateNodeCollection, PGGraphSeasonNode;
+
+@interface PGGraphDateNode <MAUniquelyIdentifiableNode>
 {
     NSString *_name;
 }
 
++ (id)holidayOfDate;
 + (id)momentOfDate;
++ (id)weekOfMonthOfDate;
++ (id)weekOfYearOfDate;
++ (id)dayOfDate;
++ (id)monthOfDate;
++ (id)monthDayOfDate;
 + (id)yearOfDate;
 + (id)seasonOfDate;
++ (id)filterWithDateNames:(id)arg1;
 + (id)dateNodeForDayNode:(id)arg1 monthNode:(id)arg2 yearNode:(id)arg3;
 + (id)filter;
 - (void).cxx_destruct;
@@ -23,25 +32,29 @@
 - (id)sameWeekDateNodes;
 - (id)localDate;
 @property(readonly, nonatomic) PGGraphSeasonNode *seasonNode;
-- (void)enumerateMomentNodesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)momentNodes;
+- (void)enumerateMomentEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateHolidayNodesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateHolidayEdgesAndNodesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly) long long day;
 @property(readonly) long long month;
+@property(readonly) long long monthDay;
 @property(readonly) long long year;
 @property(readonly) PGGraphCalendarUnitNode *weekOfMonthNode;
 @property(readonly) PGGraphCalendarUnitNode *weekOfYearNode;
 @property(readonly) PGGraphCalendarUnitNode *dayNode;
 @property(readonly) PGGraphCalendarUnitNode *monthNode;
+@property(readonly) PGGraphCalendarUnitNode *monthDayNode;
 @property(readonly) PGGraphCalendarUnitNode *yearNode;
 - (unsigned short)domain;
 - (id)label;
+@property(readonly, nonatomic) MANodeFilter *uniquelyIdentifyingFilter;
+@property(readonly) PGGraphDateNodeCollection *collection;
 - (id)description;
+- (id)propertyForKey:(id)arg1;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithName:(id)arg1;
 
 @end
 

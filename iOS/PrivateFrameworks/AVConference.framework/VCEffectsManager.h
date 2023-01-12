@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEffectsOn;
 - (void)registerBlocksForService;
 @property(nonatomic) id <VCEffectsManagerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)releaseAllocators;
+- (_Bool)createAllocators;
 - (void)dealloc;
 - (id)init;
 

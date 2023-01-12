@@ -41,8 +41,6 @@
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
-- (_Bool)_lock_shouldAddSample:(id)arg1;
-- (void)_setDataSourceConfiguration:(id)arg1;
 - (void)remote_setDataSourceConfiguration:(id)arg1;
 - (void)remote_startTaskServerIfNeeded;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;

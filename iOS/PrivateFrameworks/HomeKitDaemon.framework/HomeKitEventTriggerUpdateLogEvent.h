@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class HMDAnalyticsUpdateEventTriggerData, NSString;
 
-@interface HomeKitEventTriggerUpdateLogEvent <HMDAWDLogEvent>
+@interface HomeKitEventTriggerUpdateLogEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     HMDAnalyticsUpdateEventTriggerData *_analyticsData;
 }
 
-+ (id)uuid;
-+ (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HMDAnalyticsUpdateEventTriggerData *analyticsData; // @synthesize analyticsData=_analyticsData;
 - (id)metricForAWD;

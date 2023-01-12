@@ -11,11 +11,13 @@
 @interface _TtC9ChronoKit16AvocadoViewModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *currentActionURL;
+    MISSING_TYPE *widget;
+    MISSING_TYPE *widgetMetrics;
     MISSING_TYPE *_handleLaunchRequest;
     MISSING_TYPE *_isHidden;
     MISSING_TYPE *_isSnapshotting;
     MISSING_TYPE *_allowsHitTesting;
-    MISSING_TYPE *disableAnimations;
+    MISSING_TYPE *_disableAnimations;
 }
 
 @end

@@ -6,64 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <AssistantServices/AFNotifyObserverDelegate-Protocol.h>
-#import <AssistantServices/AFSettingsDelegate-Protocol.h>
+#import <AssistantServices/AFAnnouncementRequestCapabilityProvidingDelegate-Protocol.h>
 
-@class AFNotifyObserver, AFSettingsConnection, NSHashTable, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class NSHashTable;
+@protocol AFAnnouncementRequestCapabilityProviding, OS_dispatch_queue;
 
-@interface AFSiriUserNotificationRequestCapabilityManager : NSObject <AFNotifyObserverDelegate, AFSettingsDelegate>
+@interface AFSiriUserNotificationRequestCapabilityManager : NSObject <AFAnnouncementRequestCapabilityProvidingDelegate>
 {
-    _Bool _inWirelessSplitterSession;
-    _Bool _inWirelessSplitterSessionStateValid;
-    _Bool _routeAvailableForSpokenMessages;
-    _Bool _lastKnownEligibilityState;
-    _Bool _localVoiceAssetAvailable;
-    AFSettingsConnection *_settingsConnection;
-    AFNotifyObserver *_pairedInfoChangeObserver;
-    AFNotifyObserver *_wirelessSplitterSessionObserver;
-    AFNotifyObserver *_wirelessGuestConnectionObserver;
-    AFNotifyObserver *_forcedUpdateObserver;
     NSHashTable *_observers;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_group> *_group;
+    id <AFAnnouncementRequestCapabilityProviding> _capabilityProvider;
+    long long _platform;
 }
 
-+ (_Bool)_isRouteAvailableForAnnouncement:(id)arg1;
-+ (id)_requiredIntentIdentifiersForAnnouncementType:(long long)arg1;
-+ (id)_announceableIntentIdentifiersForAnnouncementType:(long long)arg1;
-+ (long long)announcementTypeForBundleID:(id)arg1;
-+ (_Bool)applicationWithBundleID:(id)arg1 canAnnounceNotificationWithIntentIdentifiers:(id)arg2;
 + (_Bool)supportedByApplicationWithBundleID:(id)arg1;
++ (Class)_classForPlatform:(long long)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)fetchElligibleSetupStateAndNotifyObservers:(id)arg1;
-- (void)_settingsConnectionDidDisconnect;
-- (id)_settingsConnection;
-- (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
-- (void)notifyObserver:(id)arg1 didChangeStateFrom:(unsigned long long)arg2 to:(unsigned long long)arg3;
-- (void)_fetchWirelessSplitterSessionInfoAndStartObservingFromSourceWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_fetchPairedBluetoothDevicesFromSourceWithCompletion:(CDUnknownBlockType)arg1;
-- (void)notifyObserversOfCurrentRequestCanBeHandledState;
-- (void)notifyObserversOfCurrentEligibleSetupState:(_Bool)arg1;
-- (void)fetchLocalVoiceAssetAvailabilityWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateWirelessSplitterSessionInfoAndObserve;
-- (_Bool)_updateAudioRouteAvailabilityForSpokenMessagesAndBroadcast:(_Bool)arg1;
-- (void)fetchWirelessSplitterSessionInfoAndStartObservingSync;
-- (void)fetchInitialState;
+- (void)provider:(id)arg1 availableAnnouncementRequestTypesChanged:(unsigned long long)arg2;
+- (void)provider:(id)arg1 eligibleAnnouncementRequestTypesChanged:(unsigned long long)arg2;
+- (void)notifyObserversOfCurrentRequestCanBeHandledState:(_Bool)arg1 onPlatform:(long long)arg2;
+- (void)notifyObserversOfCurrentEligibleSetupState:(_Bool)arg1 onPlatform:(long long)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (_Bool)requestCanBeHandled;
 - (void)fetchRequestCanBeHandledStateWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)hasEligibleSetup;
 - (void)fetchEligibleSetupStateWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)_initWithPlatform:(long long)arg1;
 
 @end
 

@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class BMStreamDatastore, BMStreamsAccessClient;
+@class BMStreamDatastore;
 
 @interface BMStreamDatastorePruner : NSObject
 {
     BMStreamDatastore *_inner;
-    BMStreamsAccessClient *_accessClient;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool canReadOrPruneData;
 - (id)streamIdentifier;
-- (Class)eventClass;
+- (Class)eventBodyClass;
 - (void)syncMappedFiles;
 - (id)newEnumeratorFromBookmark:(id)arg1;
 - (id)newEnumeratorFromStartTime:(double)arg1;
+- (void)eventsFrom:(double)arg1 to:(double)arg2 reason:(unsigned long long)arg3 shouldDeleteUsingBlock:(CDUnknownBlockType)arg4;
 - (void)eventsFrom:(double)arg1 to:(double)arg2 shouldDeleteUsingBlock:(CDUnknownBlockType)arg3;
+- (_Bool)deleteEventAtBookmark:(id)arg1 outTombstoneBookmark:(id *)arg2;
+- (void)removeEventsFrom:(double)arg1 to:(double)arg2 reason:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)removeEventsFrom:(double)arg1 to:(double)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)removeEventsFrom:(double)arg1 to:(double)arg2 callback:(CDUnknownBlockType)arg3;
 - (id)fetchEventsFrom:(double)arg1 to:(double)arg2;

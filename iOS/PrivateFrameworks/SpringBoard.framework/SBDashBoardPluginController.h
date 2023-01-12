@@ -12,7 +12,7 @@
 #import <SpringBoard/SBLockScreenPluginManagerDelegate-Protocol.h>
 #import <SpringBoard/SBLockScreenPluginPresenting-Protocol.h>
 
-@class CSCoverSheetViewController, NSSet, NSString, SBDashBoardPluginViewController, SBLockScreenPluginManager, UIColor, _UILegibilitySettings;
+@class CSCoverSheetViewController, NSSet, NSString, SBDashBoardPluginViewController, SBLockScreenPluginManager, _UILegibilitySettings;
 @protocol SBLockScreenActionProvider;
 
 @interface SBDashBoardPluginController : NSObject <CSExternalAppearanceProviding, CSExternalBehaviorProviding, CSExternalEventHandling, SBLockScreenPluginManagerDelegate, SBLockScreenPluginPresenting>
@@ -41,9 +41,7 @@
 @property(readonly, nonatomic) unsigned long long restrictedCapabilities;
 - (void)conformsToCSExternalBehaviorProviding;
 - (void)conformsToCSBehaviorProviding;
-@property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
-@property(readonly, nonatomic) long long backgroundStyle;
 @property(readonly, copy, nonatomic) NSSet *components;
 @property(readonly, copy, nonatomic) NSString *appearanceIdentifier;
 - (void)conformsToCSAppearanceProviding;

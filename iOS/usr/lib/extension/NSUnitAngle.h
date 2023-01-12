@@ -16,6 +16,7 @@
 + (id)arcSeconds;
 + (id)arcMinutes;
 + (id)degrees;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

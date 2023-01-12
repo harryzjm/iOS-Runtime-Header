@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary;
+@class NSArray;
 
 @interface PKSecureElementConsistencyCheckDeviceState : NSObject
 {
     NSArray *_applets;
     NSArray *_devicePaymentApplications;
-    NSDictionary *_credentialsForAID;
+    NSArray *_deviceCredentials;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSDictionary *credentialsForAID; // @synthesize credentialsForAID=_credentialsForAID;
+@property(copy, nonatomic) NSArray *deviceCredentials; // @synthesize deviceCredentials=_deviceCredentials;
 @property(copy, nonatomic) NSArray *devicePaymentApplications; // @synthesize devicePaymentApplications=_devicePaymentApplications;
 @property(copy, nonatomic) NSArray *applets; // @synthesize applets=_applets;
 

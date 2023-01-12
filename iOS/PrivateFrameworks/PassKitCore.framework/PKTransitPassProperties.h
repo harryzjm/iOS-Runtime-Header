@@ -4,45 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSDate, NSDecimalNumber, NSString, PKFelicaPassProperties;
 
-#import <PassKitCore/NSCopying-Protocol.h>
-#import <PassKitCore/NSSecureCoding-Protocol.h>
-
-@class NSArray, NSDate, NSDecimalNumber, NSString, PKCurrencyAmount, PKFelicaPassProperties;
-
-@interface PKTransitPassProperties : NSObject <NSCopying, NSSecureCoding>
+@interface PKTransitPassProperties
 {
-    _Bool _blacklisted;
-    NSDate *_expirationDate;
-    NSString *_appletFormat;
-    PKCurrencyAmount *_balance;
-    NSArray *_enrouteTransitTypes;
 }
 
-+ (_Bool)supportsSecureCoding;
-+ (Class)equalityClass;
-+ (id)passPropertiesForPass:(id)arg1;
-- (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *enrouteTransitTypes; // @synthesize enrouteTransitTypes=_enrouteTransitTypes;
-@property(copy, nonatomic) PKCurrencyAmount *balance; // @synthesize balance=_balance;
-@property(copy, nonatomic) NSString *appletFormat; // @synthesize appletFormat=_appletFormat;
-@property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property(nonatomic, getter=isBlacklisted) _Bool blacklisted; // @synthesize blacklisted=_blacklisted;
-@property(readonly, nonatomic) _Bool isEnRoute;
-@property(readonly, nonatomic, getter=isInStation) _Bool inStation;
-@property(readonly, nonatomic) NSDecimalNumber *decimalTransitBalance;
-@property(readonly, nonatomic) NSString *displayableTransitBalance;
-@property(readonly, nonatomic) NSString *currencyCode;
 @property(readonly, copy, nonatomic) NSString *transitBalanceCurrencyCode;
 @property(readonly, copy, nonatomic) NSDecimalNumber *transitBalance;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
-- (id)initWithTransitAppletState:(id)arg1 paymentApplication:(id)arg2;
 @property(readonly, nonatomic) PKFelicaPassProperties *felicaProperties;
+
+// Remaining properties
+@property(readonly, nonatomic, getter=isBlacklisted) _Bool blacklisted; // @dynamic blacklisted;
+@property(readonly, nonatomic, getter=isBlocked) _Bool blocked; // @dynamic blocked;
+@property(readonly, copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
+@property(readonly, nonatomic, getter=isInStation) _Bool inStation; // @dynamic inStation;
 
 @end
 

@@ -11,7 +11,7 @@
 @interface _TtC5TeaUI16CoverViewManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *viewController;
-    MISSING_TYPE *cover;
+    MISSING_TYPE *_cover;
     MISSING_TYPE *coverView;
 }
 

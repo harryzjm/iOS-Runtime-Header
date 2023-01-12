@@ -18,8 +18,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(retain, nonatomic) NSMutableDictionary *dict; // @synthesize dict=_dict;
-- (void)recordDidSync:(id)arg1;
-- (id)waitForRecordDidSync:(id)arg1 timeout:(double)arg2;
+- (void)finishPromisesOfRecord:(id)arg1;
+- (id)waitForRecordToSync:(id)arg1 timeout:(double)arg2;
 - (id)initWithCallbackQueue:(id)arg1;
 
 @end

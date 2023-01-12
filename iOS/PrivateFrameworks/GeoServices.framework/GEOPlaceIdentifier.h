@@ -16,32 +16,18 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     GEOLatLng *_center;
     unsigned long long _muid;
-    struct {
-        unsigned int has_muid:1;
-    } _flags;
+    CDStruct_26a2534e _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOLatLng *center;
-@property(readonly, nonatomic) _Bool hasCenter;
-@property(nonatomic) _Bool hasMuid;
-@property(nonatomic) unsigned long long muid;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface CKDPBundlesForContainerResponse : PBCodable <NSCopying>
 {
     NSMutableArray *_bundleIDs;

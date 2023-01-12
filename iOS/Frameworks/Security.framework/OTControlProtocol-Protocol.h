@@ -4,9 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSError, NSString, OTJoiningConfiguration, OTOperationConfiguration, _SFECKeyPair;
+@class NSArray, NSData, NSError, NSString, NSUUID, OTCustodianRecoveryKey, OTInheritanceKey, OTJoiningConfiguration, OTOperationConfiguration, OTSecureElementPeerIdentity, SFECKeyPair;
 
 @protocol OTControlProtocol
+- (void)waitForPriorityViewKeychainDataRecovery:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)fetchAccountWideSettings:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(OTAccountSettingsX *, NSError *))arg3;
+- (void)fetchAccountSettings:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(OTAccountSettingsX *, NSError *))arg3;
+- (void)fetchTrustedSecureElementIdentities:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(OTCurrentSecureElementIdentities *, NSError *))arg3;
+- (void)removeLocalSecureElementIdentityPeerID:(NSString *)arg1 contextID:(NSString *)arg2 secureElementIdentityPeerID:(NSData *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)setLocalSecureElementIdentity:(NSString *)arg1 contextID:(NSString *)arg2 secureElementIdentity:(OTSecureElementPeerIdentity *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)resetAccountCDPContents:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)fetchUserControllableViewsSyncStatus:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)setUserControllableViewsSyncStatus:(NSString *)arg1 contextID:(NSString *)arg2 enabled:(_Bool)arg3 reply:(void (^)(_Bool, NSError *))arg4;
 - (void)invalidateEscrowCache:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
@@ -18,6 +25,14 @@
 - (void)postCDPFollowupResult:(_Bool)arg1 type:(NSString *)arg2 error:(NSError *)arg3 containerName:(NSString *)arg4 contextName:(NSString *)arg5 reply:(void (^)(NSError *))arg6;
 - (void)waitForOctagonUpgrade:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)healthCheck:(NSString *)arg1 context:(NSString *)arg2 skipRateLimitingCheck:(_Bool)arg3 reply:(void (^)(NSError *))arg4;
+- (void)removeInheritanceKey:(NSString *)arg1 contextID:(NSString *)arg2 uuid:(NSUUID *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)preflightJoinWithInheritanceKey:(NSString *)arg1 contextID:(NSString *)arg2 inheritanceKey:(OTInheritanceKey *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)joinWithInheritanceKey:(NSString *)arg1 contextID:(NSString *)arg2 inheritanceKey:(OTInheritanceKey *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)createInheritanceKey:(NSString *)arg1 contextID:(NSString *)arg2 uuid:(NSUUID *)arg3 reply:(void (^)(OTInheritanceKey *, NSError *))arg4;
+- (void)removeCustodianRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 uuid:(NSUUID *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)preflightJoinWithCustodianRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 custodianRecoveryKey:(OTCustodianRecoveryKey *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)joinWithCustodianRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 custodianRecoveryKey:(OTCustodianRecoveryKey *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)createCustodianRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 uuid:(NSUUID *)arg3 reply:(void (^)(OTCustodianRecoveryKey *, NSError *))arg4;
 - (void)joinWithRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)createRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)fetchEscrowContents:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSData *, NSString *, NSData *, NSError *))arg3;
@@ -40,7 +55,7 @@
 - (void)rpcVoucherWithConfiguration:(OTJoiningConfiguration *)arg1 peerID:(NSString *)arg2 permanentInfo:(NSData *)arg3 permanentInfoSig:(NSData *)arg4 stableInfo:(NSData *)arg5 stableInfoSig:(NSData *)arg6 reply:(void (^)(NSData *, NSData *, NSError *))arg7;
 - (void)rpcPrepareIdentityAsApplicantWithConfiguration:(OTJoiningConfiguration *)arg1 reply:(void (^)(NSString *, NSData *, NSData *, NSData *, NSData *, NSError *))arg2;
 - (void)rpcEpochWithConfiguration:(OTJoiningConfiguration *)arg1 reply:(void (^)(unsigned long long, NSError *))arg2;
-- (void)handleIdentityChangeForSigningKey:(_SFECKeyPair *)arg1 ForEncryptionKey:(_SFECKeyPair *)arg2 ForPeerID:(NSString *)arg3 reply:(void (^)(_Bool, NSError *))arg4;
+- (void)handleIdentityChangeForSigningKey:(SFECKeyPair *)arg1 ForEncryptionKey:(SFECKeyPair *)arg2 ForPeerID:(NSString *)arg3 reply:(void (^)(_Bool, NSError *))arg4;
 - (void)reset:(void (^)(_Bool, NSError *))arg1;
 - (void)notifyIDMSTrustLevelChangeForContainer:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)signOut:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;

@@ -18,6 +18,8 @@
     NSString *_title;
     NSString *_subtitle;
     NSString *_body;
+    NSString *_footnote;
+    NSString *_footnoteDisclosure;
     NSString *_primaryActionTitle;
     NSString *_primaryActionIdentifier;
     NSString *_secondaryActionTitle;
@@ -25,10 +27,14 @@
     NSString *_disclosureTitle;
     NSString *_heroImageURL;
     PKDynamicProvisioningPageLearnMoreContent *_learnMore;
+    PKDynamicProvisioningPageLearnMoreContent *_secondaryActionItem;
+    unsigned long long _layout;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned char contentAlignment; // @synthesize contentAlignment=_contentAlignment;
+@property(nonatomic) unsigned long long layout; // @synthesize layout=_layout;
+@property(retain, nonatomic) PKDynamicProvisioningPageLearnMoreContent *secondaryActionItem; // @synthesize secondaryActionItem=_secondaryActionItem;
 @property(retain, nonatomic) PKDynamicProvisioningPageLearnMoreContent *learnMore; // @synthesize learnMore=_learnMore;
 @property(retain, nonatomic) NSString *heroImageURL; // @synthesize heroImageURL=_heroImageURL;
 @property(copy, nonatomic) NSString *disclosureTitle; // @synthesize disclosureTitle=_disclosureTitle;
@@ -36,6 +42,8 @@
 @property(copy, nonatomic) NSString *secondaryActionTitle; // @synthesize secondaryActionTitle=_secondaryActionTitle;
 @property(copy, nonatomic) NSString *primaryActionIdentifier; // @synthesize primaryActionIdentifier=_primaryActionIdentifier;
 @property(copy, nonatomic) NSString *primaryActionTitle; // @synthesize primaryActionTitle=_primaryActionTitle;
+@property(copy, nonatomic) NSString *footnoteDisclosure; // @synthesize footnoteDisclosure=_footnoteDisclosure;
+@property(copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property(copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;

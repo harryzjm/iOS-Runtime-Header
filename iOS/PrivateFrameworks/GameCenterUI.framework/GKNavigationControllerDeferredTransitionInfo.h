@@ -15,10 +15,10 @@
     UIViewController *_viewController;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool animated; // @synthesize animated=_animated;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
-- (void)dealloc;
 
 @end
 

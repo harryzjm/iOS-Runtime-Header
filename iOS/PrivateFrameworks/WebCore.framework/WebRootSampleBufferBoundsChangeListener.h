@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface WebRootSampleBufferBoundsChangeListener : NSObject
 {
-    Function_15535652 _callback;
+    struct Function<void ()> _callback;
     struct RetainPtr<CALayer> _rootLayer;
 }
 
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)begin:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithCallback:(Function_15535652 *)arg1;
+- (id)initWithCallback:(void *)arg1;
 
 @end
 

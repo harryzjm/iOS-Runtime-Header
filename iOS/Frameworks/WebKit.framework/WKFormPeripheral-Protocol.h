@@ -10,8 +10,10 @@
 - (UIView *)assistantView;
 - (void)endEditing;
 - (void)beginEditing;
+- (_Bool)isEditing;
 
 @optional
+@property(nonatomic) _Bool singleTapShouldEndEditing;
 - (_Bool)handleKeyEvent:(UIEvent *)arg1;
 @end
 

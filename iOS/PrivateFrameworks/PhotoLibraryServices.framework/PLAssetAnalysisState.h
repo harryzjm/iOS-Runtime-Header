@@ -10,8 +10,6 @@
 {
 }
 
-+ (_Bool)markAssetsForFaceProcessingByMediaAnalysisAndSaveInManagedObjectContext:(id)arg1 error:(id *)arg2;
-+ (id)workInfoForAnalysisWithWorkerType:(short)arg1 additionalStatesToExclude:(id)arg2 fetchLimit:(unsigned long long)arg3 inLibrary:(id)arg4 error:(id *)arg5;
 + (int)defaultWorkerFlagsForWorkerType:(short)arg1;
 + (void)removeAnalysisRecordsWithNoAssetOrUUIDUseMaintenanceMode:(_Bool)arg1 library:(id)arg2;
 + (void)removeAnalysisRecordsForDeletedAssetUUIDs:(id)arg1 forWorkerType:(short)arg2 library:(id)arg3;

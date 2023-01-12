@@ -39,10 +39,10 @@
 - (void)updateWithDictionary:(id)arg1;
 - (id)initWithName:(id)arg1 codableAttribute:(id)arg2;
 - (id)__INCodableDescriptionPlaceholderKey;
-- (id)__INIntentResponseCodableDescriptionPlaceholderKey;
-- (id)__INTypeCodableDescriptionPlaceholderKey;
 - (id)__INCodableDescriptionPlaceholderIDKey;
+- (id)__INIntentResponseCodableDescriptionPlaceholderKey;
 - (id)__INIntentResponseCodableDescriptionPlaceholderIDKey;
+- (id)__INTypeCodableDescriptionPlaceholderKey;
 - (id)__INTypeCodableDescriptionPlaceholderIDKey;
 
 // Remaining properties

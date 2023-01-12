@@ -14,6 +14,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 + (id)observationWithImageprint:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *imageprintVersion; // @synthesize imageprintVersion=_imageprintVersion;
@@ -25,7 +26,7 @@
 - (float)calculateDistanceFromImageprintObservation:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

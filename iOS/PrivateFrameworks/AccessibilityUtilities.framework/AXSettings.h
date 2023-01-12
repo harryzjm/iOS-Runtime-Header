@@ -4,37 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <AXCoreUtilities/AXBaseSettings.h>
 
-@class AXVoiceOverActivity, NSArray, NSData, NSDate, NSDictionary, NSLock, NSMutableDictionary, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, NSUUID;
+@class AXVoiceOverActivity, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, NSUUID;
 
-@interface AXSettings : NSObject
+@interface AXSettings : AXBaseSettings
 {
-    NSLock *_synchronizeDomainsLock;
     NSMutableSet *_migratedSwitchControlMenuItemsPreferenceKeys;
     NSMutableDictionary *_unarchivedVoiceCache;
-    _Bool _assistiveTouchMotionTrackerShouldOffsetBufferPoints;
     _Bool _assistiveTouchInternalOnlyHiddenNubbitModeEnabled;
     _Bool _writeAXLogsToFile;
     _Bool _voiceOverVerbositySpeakCustomActionsHint;
     _Bool _touchAccommodationsHoldDurationAllowsSwipeGesturesToBypass;
     float _reduceWhitePointLevel;
+    NSArray *_switchControlCombinedTopLevelMenuItems;
     double _voiceOverHapticIntensity;
     double _lastPlatformSwitchTimeResetCount;
     double _lastGuidedAccessTimeLimitResetCount;
     double _lastGuidedAccessTimeResetCount;
     double _lastHearingAidControlPanelTimeResetCount;
     double _lastHearingAidHandoffTimeResetCount;
-    NSMutableSet *_registeredNotifications;
-    NSMutableDictionary *_synchronizeDomains;
-    NSMutableDictionary *_updateBlocks;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
-@property(retain, nonatomic) NSMutableDictionary *synchronizeDomains; // @synthesize synchronizeDomains=_synchronizeDomains;
-@property(retain, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
 @property(nonatomic) double lastHearingAidHandoffTimeResetCount; // @synthesize lastHearingAidHandoffTimeResetCount=_lastHearingAidHandoffTimeResetCount;
 @property(nonatomic) double lastHearingAidControlPanelTimeResetCount; // @synthesize lastHearingAidControlPanelTimeResetCount=_lastHearingAidControlPanelTimeResetCount;
 @property(nonatomic) double lastGuidedAccessTimeResetCount; // @synthesize lastGuidedAccessTimeResetCount=_lastGuidedAccessTimeResetCount;
@@ -46,11 +39,14 @@
 @property(nonatomic) double voiceOverHapticIntensity; // @synthesize voiceOverHapticIntensity=_voiceOverHapticIntensity;
 @property(nonatomic) _Bool writeAXLogsToFile; // @synthesize writeAXLogsToFile=_writeAXLogsToFile;
 @property(nonatomic) _Bool assistiveTouchInternalOnlyHiddenNubbitModeEnabled; // @synthesize assistiveTouchInternalOnlyHiddenNubbitModeEnabled=_assistiveTouchInternalOnlyHiddenNubbitModeEnabled;
-@property(nonatomic) _Bool assistiveTouchMotionTrackerShouldOffsetBufferPoints; // @synthesize assistiveTouchMotionTrackerShouldOffsetBufferPoints=_assistiveTouchMotionTrackerShouldOffsetBufferPoints;
-@property(nonatomic) _Bool voltaDataCollectionEnabled;
-@property(nonatomic) _Bool voltaEnabled;
+@property(retain, nonatomic) NSArray *switchControlCombinedTopLevelMenuItems; // @synthesize switchControlCombinedTopLevelMenuItems=_switchControlCombinedTopLevelMenuItems;
+@property(nonatomic) double soundActionsLastModelAccess;
+@property(nonatomic) double audiogramIngestionLastModelAccess;
 @property(nonatomic) _Bool callAudioRoutingAutoAnswerEnabled;
 @property(nonatomic) double callAudioRoutingAutoAnswerDelay;
+- (void)aggregatePerAppSettingsStatistics;
+@property(copy, nonatomic) NSDictionary *perAppSettingsStats;
+@property(copy, nonatomic) NSArray *perAppSettingsCustomizedAppIDs;
 @property(nonatomic) _Bool reachabilityEnabled;
 @property(nonatomic) _Bool didResetD22Preferences;
 @property(nonatomic) long long guidedAccessUsageCount;
@@ -85,12 +81,17 @@
 @property(nonatomic) _Bool localizationQACaptionShowUSString;
 @property(nonatomic) _Bool localizationQACaptionShowFilePath;
 @property(retain, nonatomic) NSURL *alexLocalAssetURL;
+@property(nonatomic) _Bool voiceOverSceneDescriptionsEnabled;
+@property(nonatomic) long long voiceOverNavigationStyle;
+@property(copy, nonatomic) NSArray *imageCaptioningDisabledApps;
+@property(copy, nonatomic) NSDictionary *voiceOverDirectTouchEnabledApps;
 @property(nonatomic) long long voiceOverSpeakSecondsEncoding;
 - (id)gizmoGetWatchFaceAutoSpeakPreferences;
 - (_Bool)gizmoGetAutoSpeakEnabledForComplication:(id)arg1 slot:(id)arg2 face:(id)arg3;
 - (void)gizmoSetAutoSpeakEnabledForComplication:(id)arg1 slot:(id)arg2 face:(id)arg3 toggle:(_Bool)arg4;
 @property(nonatomic) _Bool gizmoApplicationAccessibilityEnabled;
 @property(nonatomic) _Bool appValidationTestingMode;
+@property(nonatomic) _Bool fullKeyboardAccessShouldShowDebugKeyCommandsView;
 @property(nonatomic) _Bool fullKeyboardAccessShouldShowTextEditingModeInstructions;
 @property(nonatomic) long long fullKeyboardAccessFocusRingColor;
 @property(nonatomic) _Bool fullKeyboardAccessFocusRingHighContrastEnabled;
@@ -103,11 +104,9 @@
 @property(nonatomic) _Bool magnifierFilterInverted;
 @property(nonatomic) unsigned long long magnifierFilterSetIdentifier;
 @property(nonatomic) double magnifierZoomLevel;
-@property(nonatomic) _Bool magnifier2ReadOutEnabled;
-@property(nonatomic) _Bool magnifier2DocumentFiltersEnabled;
-@property(nonatomic) _Bool magnifier2Enabled;
 @property(nonatomic) _Bool magnifierShouldUseVideoStabilization;
 @property(nonatomic) _Bool magnifierShouldAdjustFiltersForAmbientLight;
+- (void)setMagnifierEnabled:(_Bool)arg1 changeTripleClickMenu:(_Bool)arg2;
 @property(nonatomic) _Bool magnifierEnabled;
 @property(nonatomic) _Bool stickyKeysBeepEnabled;
 @property(nonatomic) _Bool stickyKeysShiftToggleEnabled;
@@ -127,9 +126,12 @@
 @property(nonatomic) _Bool touchAccommodationsEnabled;
 - (void)_updateTouchAccommodationsTripleClickSetting;
 @property(nonatomic) _Bool shouldStreamToRightAid;
+@property(nonatomic) double leftRightBalanceValue;
+@property(nonatomic) _Bool leftRightBalanceEnabled;
 @property(nonatomic) _Bool shouldStreamToLeftAid;
 @property(nonatomic) _Bool allowHearingAidControlOnLockScreen;
 @property(nonatomic) _Bool independentHearingAidSettings;
+@property(copy, nonatomic) NSArray *voiceOverQuickSettingsItems;
 - (void)voiceOverResetSoundAndHapticPreferences;
 - (void)voiceOverSetHapticEnabled:(_Bool)arg1 forEvent:(id)arg2;
 - (id)voiceOverHapticEnabledForEvent:(id)arg1;
@@ -139,6 +141,7 @@
 - (id)_voiceOverSoundOrHapticValueForPreference:(id)arg1 outputEvent:(id)arg2;
 @property(retain, nonatomic) NSDictionary *voiceOverSoundAndHapticPreferences;
 @property(nonatomic) _Bool voiceOverAutomaticButtonLabels;
+@property(nonatomic) long long voiceOverNumberFeedback;
 @property(nonatomic) long long voiceOverNeuralElementFeedback;
 @property(nonatomic) _Bool voiceOverShouldSpeakDiscoveredText;
 @property(nonatomic) _Bool voiceOverTouchBrailleShowGeneralStatus;
@@ -166,6 +169,7 @@
 @property(nonatomic) double voiceOverDoubleTapInterval;
 @property(nonatomic) double voiceOverBrailleKeyDebounceTimeout;
 @property(nonatomic) double voiceOverBrailleAlertDisplayDuration;
+@property(nonatomic) _Bool voiceOverBrailleAlertsEnabled;
 @property(nonatomic) _Bool voiceOverTouchBrailleGesturesDidPlayCalibrationHint;
 @property(nonatomic) long long voiceOverTouchBrailleGesturesLockedTypingMode;
 @property(nonatomic) long long voiceOverTouchBrailleGesturesLockedOrientation;
@@ -207,13 +211,14 @@
 @property(nonatomic) _Bool voiceOverAdjustSoundVolumeIndependently;
 @property(nonatomic) double voiceOverSoundVolume;
 @property(nonatomic) _Bool voiceOverVerbosityEmojiSuffixEnabled;
-@property(nonatomic) _Bool voiceOverVerbosityEmojisEnabled;
+@property(nonatomic) long long voiceOverVerbosityEmojiFeedback;
 @property(nonatomic) _Bool voiceOverLanguageDetectionEnabled;
 @property(nonatomic) _Bool voiceOverSoundEffectsEnabled;
 @property(nonatomic) _Bool voiceOverPitchChangeEnabled;
 @property(nonatomic) double voiceOverPitch;
 @property(nonatomic) _Bool voiceOverAudioFollowsHDMIAudio;
 @property(nonatomic) _Bool voiceOverAudioDuckingEnabled;
+@property(retain, nonatomic) NSString *voiceOverSelectedLanguage;
 @property(nonatomic) _Bool voiceOverHintsEnabled;
 @property(nonatomic) double voiceOverBrailleAutoAdvanceDuration;
 @property(nonatomic) _Bool voiceOverBrailleWordWrapEnabled;
@@ -231,6 +236,7 @@
 @property(nonatomic) _Bool voiceOverSpeakTableColumnRowInformation;
 @property(nonatomic) _Bool voiceOverSpeakTableHeaders;
 @property(nonatomic) _Bool voiceOverSpeaksOverTelephoneCalls;
+@property(nonatomic) long long voiceOverQuickNavAnnouncementFeedback;
 @property(nonatomic) _Bool voiceOverTouchSingleLetterQuickNavEnabled;
 @property(nonatomic) long long voiceOverDiscoveredSensitiveContentFeedback;
 @property(nonatomic) long long voiceOverActionsFeedback;
@@ -247,7 +253,6 @@
 @property(nonatomic) long long voiceOverTouchBrailleDisplayOutputMode;
 @property(nonatomic) long long voiceOverTouchBrailleDisplayInputMode;
 @property(retain, nonatomic) NSArray *customPronunciationSubstitutions;
-@property(nonatomic) _Bool speakScreenIsHighlightVisible;
 @property(nonatomic) struct CGPoint quickSpeakNubbitNormalizedPosition;
 @property(nonatomic) _Bool siriAutoUpdateListInitialized;
 - (void)_removeSpeakingRatePreferenceForLanguage:(id)arg1;
@@ -264,6 +269,8 @@
 - (id)_voiceOverDefaultDialect;
 - (void)_clearWhitetailMigrationSettings;
 - (id)selectedSpeechVoiceIdentifiersForSource:(long long)arg1;
+- (void)setSelectedSpeechVoiceIdentifiersWithLanguageSource:(id)arg1;
+- (id)selectedSpeechVoiceIdentifiersWithLanguageSource;
 - (id)selectedSpeechVoiceIdentifiers;
 - (void)setUserDidSelectVoiceForLanguage:(id)arg1 source:(long long)arg2;
 - (void)setSpeechVoiceIdentifier:(id)arg1 forLanguage:(id)arg2 source:(long long)arg3;
@@ -275,7 +282,6 @@
 @property(nonatomic) unsigned long long quickSpeakSentenceHighlightOption;
 @property(nonatomic) float quickSpeakSpeakingRate;
 @property(nonatomic) _Bool quickSpeakUnderlineSentence;
-@property(nonatomic) _Bool quickSpeakHighlightText;
 @property(nonatomic) float quickSpeakVolume;
 @property(nonatomic) long long speechControllerDoubleTapAction;
 @property(nonatomic) long long speechControllerLongPressAction;
@@ -319,10 +325,10 @@
 @property(nonatomic) _Bool automaticAccessibilityEnabled;
 @property(nonatomic) _Bool shouldCaptureVisionEngineDiagnosticsToDisk;
 @property(nonatomic) _Bool voiceOverImageCaptionsEnabled;
-@property(nonatomic) _Bool voiceOverUseOCRAccuratePath;
 @property(readonly, nonatomic) _Bool voiceOverShowBrailleWatchSettings;
 @property(nonatomic) _Bool voiceOverUseDigitalCrownNavigation;
 @property(nonatomic) _Bool voiceOverUseActiveSiriVoice;
+@property(nonatomic) _Bool voiceOverFlashlightNotificationsEnabled;
 @property(nonatomic) long long voiceOverContentDescriptionLevel;
 @property(nonatomic) _Bool didTriggerSOSToday;
 - (_Bool)didTriggerSOSValueSet;
@@ -392,6 +398,7 @@
 @property(nonatomic) _Bool zoomShouldFollowFocus;
 @property(retain, nonatomic) NSString *zoomCurrentLensMode;
 @property(nonatomic) _Bool zoomInStandby;
+@property(nonatomic) _Bool zoomShowedBanner;
 @property(retain, nonatomic) NSString *zoomCurrentLensEffect;
 @property(nonatomic) struct CGPoint zoomSlugNormalizedPosition;
 @property(nonatomic) struct CGPoint zoomPanOffset;
@@ -400,9 +407,10 @@
 @property(nonatomic) struct CGRect zoomWindowFrame;
 @property(nonatomic) _Bool zoomPreferencesWereInitialized;
 - (void)_switchControlClearMenuItemMigrationTracking;
+- (id)_switchControlMenuItemPreferences;
 - (void)_switchControlClearMenuItemPreferences;
 @property(nonatomic) long long switchControlScanAfterTapLocation;
-@property(nonatomic) _Bool switchControlIsEnabledAsSlave;
+@property(nonatomic) _Bool switchControlIsEnabledAsReceiver;
 @property(nonatomic) _Bool switchControlShouldAlwaysActivateKeyboardKeys;
 @property(nonatomic) double switchControlAutoTapTimeout;
 @property(nonatomic) long long switchControlTapBehavior;
@@ -411,6 +419,7 @@
 @property(nonatomic) long long switchControlPointPickerSelectionStyle;
 @property(nonatomic) _Bool switchControlRestartScanningAtCurrentKey;
 @property(nonatomic) _Bool switchControlShouldUseExtendedKeyboardPredictions;
+- (id)_allSubmenuKeys;
 @property(retain, nonatomic) NSArray *switchControlMediaControlsTopLevelMenuItems;
 @property(retain, nonatomic) NSArray *switchControlMediaControlsMenuItems;
 @property(readonly, nonatomic) NSArray *mediaControlsKeys;
@@ -432,6 +441,7 @@
 - (id)_switchControlMenuItemsForPreferenceKey:(id)arg1 allTypes:(id)arg2 enabledByDefault:(_Bool)arg3 topLevel:(_Bool)arg4;
 @property(retain, nonatomic) NSUUID *switchControlLaunchRecipeUUID;
 @property(retain, nonatomic) NSArray *switchControlRecipes;
+@property(nonatomic) _Bool assistiveTouchGameControllerEnabled;
 @property(retain, nonatomic) NSDictionary *assistiveTouchMainScreenCustomization;
 @property(readonly, nonatomic) NSDictionary *assistiveTouchMainScreenDefaultCustomization;
 @property(nonatomic) double assistiveTouchIdleOpacity;
@@ -449,15 +459,6 @@
 @property(nonatomic) _Bool assistiveTouchScannerAddedTripleClickAutomatically;
 @property(nonatomic) _Bool assistiveTouchSwitchUsageConfirmed;
 @property(nonatomic) long long assistiveTouchHeadMovementSensitivity;
-- (void)assistiveTouchMotionTrackerShouldOffsetBufferPoints:(_Bool)arg1;
-@property(nonatomic) double assistiveTouchMotionTrackerYNormalizationOffset;
-@property(nonatomic) double assistiveTouchMotionTrackerXNormalizationOffset;
-@property(nonatomic) double assistiveTouchMotionTrackerYNormalizationOrder;
-@property(nonatomic) double assistiveTouchMotionTrackerXNormalizationOrder;
-@property(nonatomic) double assistiveTouchMotionTrackerSmoothingMaxDelta;
-@property(nonatomic) unsigned long long assistiveTouchMotionTrackerSmoothingBufferSize;
-@property(readonly, nonatomic) _Bool assistiveTouchMotionTrackerConfigurable;
-@property(readonly, nonatomic) _Bool assistiveTouchMotionTrackerEnableHIDTracking;
 @property(nonatomic) unsigned long long assistiveTouchMouseZoomPanningStyle;
 @property(nonatomic) _Bool assistiveTouchMouseDwellControlShowPrompt;
 @property(nonatomic) _Bool assistiveTouchMouseDwellControlMutatedMenu;
@@ -514,34 +515,26 @@
 @property(nonatomic) _Bool assistiveTouchMouseKeysUseMainKeyboardKeys;
 @property(nonatomic) _Bool assistiveTouchMouseKeysOptionToggleEnabled;
 @property(nonatomic) _Bool assistiveTouchMouseKeysEnabled;
+@property(nonatomic) _Bool assistiveTouchMouseBehavesLikeFinger;
 @property(nonatomic) _Bool assistiveTouchOpenMenuSwaggleEnabled;
 @property(nonatomic) _Bool supportsAdvancedDisplayFilters;
 @property(nonatomic) _Bool assistiveTouchAlwaysShowMenuEnabled;
 @property(nonatomic) unsigned long long laserZoomPanningStyle;
 @property(readonly, nonatomic) _Bool laserEnabled;
-- (void)clearExistingValueForPreference:(SEL)arg1;
-- (_Bool)preferenceHasExistingValue:(SEL)arg1;
-- (void)registerUpdateBlock:(CDUnknownBlockType)arg1 forRetrieveSelector:(SEL)arg2 withListener:(id)arg3;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_registerForNotification:(id)arg1;
-- (void)_handlePreferenceChanged:(id)arg1;
 - (void)_handleVoiceUnarchivedCache:(id)arg1;
 - (void)_listenForAccessibilitySupportPassthroughs;
 - (void)nukePrefsForDomains:(int *)arg1 numDomains:(unsigned long long)arg2;
 - (void)nukeAll;
-- (void)dealloc;
 - (id)init;
-- (void)_synchronizeIfNecessary:(id)arg1 domain:(int)arg2;
-- (_Bool)_switchFromRootUserIfNecessary:(CDUnknownBlockType)arg1;
-- (id)_valueForPreferenceKey:(id)arg1;
-- (void)_postNotificationForPreferenceKey:(id)arg1;
-- (void)_setValue:(id)arg1 forPreferenceKey:(id)arg2;
-- (id)_notificationForPreferenceKey:(id)arg1;
+- (id)valueForPreferenceKey:(id)arg1;
+- (void)willPerformUpdateBlocksForPreferenceKey:(id)arg1;
+- (void)willPostNotificationForPreferenceKey:(id)arg1 value:(id)arg2;
 - (id)_migratePreferenceIfNecessary:(id)arg1;
-- (id)_userDefaultsStoreForDomain:(int)arg1;
 - (struct __CFString *)_domainNameForDomain:(int)arg1;
-- (id)_preferenceKeyForSelector:(SEL)arg1;
+- (id)preferenceKeyForSelector:(SEL)arg1;
 - (int)_domainForPreferenceKey:(id)arg1;
+- (id)allDomainNamesForPreferenceKey:(id)arg1;
+- (id)domainNameForPreferenceKey:(id)arg1;
 - (id)keysToIgnoreDuringBuddyTransfer;
 @property double audioLeftRightBalance;
 @property _Bool monoAudioEnabled;
@@ -587,6 +580,7 @@
 @property _Bool assistiveTouchUIEnabled;
 @property _Bool assistiveTouchHardwareEnabled;
 @property _Bool assistiveTouchEnabled;
+@property(nonatomic) _Bool appleTVRemotePreferrsTapsForDirectionalNavigation;
 @property(retain) NSArray *tripleClickOptions;
 @property _Bool applicationAccessibilityEnabled;
 @property(readonly) _Bool accessibilityEnabled;

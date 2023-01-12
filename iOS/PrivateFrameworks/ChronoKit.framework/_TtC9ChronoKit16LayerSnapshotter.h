@@ -10,12 +10,15 @@
 
 @interface _TtC9ChronoKit16LayerSnapshotter : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *options;
+    MISSING_TYPE *coreAnimationSnapshotter;
+    MISSING_TYPE *renderBoxSnapshotter;
     MISSING_TYPE *screenshotManager;
     MISSING_TYPE *_lock_workingSet;
-    MISSING_TYPE *setLock;
-    MISSING_TYPE *osLog;
+    MISSING_TYPE *_lock;
+    MISSING_TYPE *queue;
     MISSING_TYPE *logger;
+    MISSING_TYPE *signposter;
+    MISSING_TYPE *dataProtectionMonitor;
 }
 
 @end

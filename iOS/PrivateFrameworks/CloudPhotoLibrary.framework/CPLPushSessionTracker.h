@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class CPLChangeBatch, CPLEngineScopeStorage, CPLEngineStore, CPLPushChangeTasks, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet;
+@protocol CPLEngineIDMapping;
 
 @interface CPLPushSessionTracker : NSObject
 {
     CPLEngineScopeStorage *_scopes;
+    id <CPLEngineIDMapping> _idMapping;
     NSMutableSet *_unquarantinedRecordScopedIdentifiers;
     NSMutableDictionary *_incomingBatchRecordPerScopedIdentifiers;
     NSMutableDictionary *_storedClientRecords;

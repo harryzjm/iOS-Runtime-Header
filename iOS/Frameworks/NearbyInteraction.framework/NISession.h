@@ -8,8 +8,8 @@
 
 #import <NearbyInteraction/UWBSessionDelegateProxyProtocol-Protocol.h>
 
-@class NIConfiguration, NIDiscoveryToken, NIServerConnection, NSDictionary, NSError, NSString, NSUUID;
-@protocol NISessionDelegate, OS_dispatch_queue, OS_os_log;
+@class NICarKeyEventNotifier, NIConfiguration, NIDiscoveryToken, NIExportedObjectForwarder, NIServerConnection, NSDictionary, NSError, NSString, NSUUID;
+@protocol NIInternalSessionDelegate, NISessionDelegate, OS_dispatch_queue, OS_os_log;
 
 @interface NISession : NSObject <UWBSessionDelegateProxyProtocol>
 {
@@ -17,28 +17,38 @@
     struct mutex _mutex;
     NSUUID *_internalID;
     NIServerConnection *_connection;
-    NSDictionary *_activationResponse;
+    NIExportedObjectForwarder *_exportedObjectForwarder;
     NIConfiguration *_currentConfiguration;
-    struct vector<UWBSessionInterruptionBookkeeping, std::__1::allocator<UWBSessionInterruptionBookkeeping>> _interruptions;
+    struct vector<UWBSessionInterruptionBookkeeping, std::allocator<UWBSessionInterruptionBookkeeping>> _interruptions;
     struct atomic<bool> _readyForCallbacks;
     NSObject<OS_os_log> *_log;
     double _startTime;
     double _duration;
     _Bool _updatedNearbyObjects;
+    long long _motionState;
+    NICarKeyEventNotifier *_carKeyEventNotifier;
+    unsigned long long _connectionOptions;
+    struct atomic<bool> _isObserverSession;
     int _internalState;
     id <NISessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSError *_invalidationError;
+    NSDictionary *_activationResponse;
+    id <NIInternalSessionDelegate> _internalDelegate;
 }
 
 + (_Bool)isSupported;
 + (void)_queryAndCacheCapabilities;
 + (_Bool)_supportedPlatform:(id)arg1;
-+ (id)_oneShotConnection:(_Bool)arg1;
-+ (void)setCachedDeviceCapabilities:(id)arg1;
-+ (id)cachedDeviceCapabilities;
++ (id)_createOneShotConnectionAndResume:(_Bool)arg1;
++ (id)deviceCapabilities;
++ (void)setCachedPlatformCapabilities:(id)arg1;
++ (id)cachedPlatformCapabilities;
++ (id)observerSession;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property __weak id <NIInternalSessionDelegate> internalDelegate; // @synthesize internalDelegate=_internalDelegate;
+@property(retain) NSDictionary *activationResponse; // @synthesize activationResponse=_activationResponse;
 @property(retain) NSError *invalidationError; // @synthesize invalidationError=_invalidationError;
 @property int internalState; // @synthesize internalState=_internalState;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
@@ -56,10 +66,17 @@
 - (void)_handleRunSessionError:(id)arg1;
 - (void)_handleActivationSuccess:(id)arg1;
 - (void)_handleActivationError:(id)arg1;
+- (void)_invalidateInternalOnConnectionQueue:(_Bool)arg1;
 - (void)_pauseInternalOnConnectionQueue:(_Bool)arg1;
 - (void)_reinterruptSessionWithCachedInterruption;
-- (void)_interruptSessionWithInternalReason:(long long)arg1 onConnectionQueue:(_Bool)arg2;
+- (void)_interruptSessionWithInternalReason:(long long)arg1 onConnectionQueue:(_Bool)arg2 cachedInterruption:(_Bool)arg3;
 - (void)_invalidateSessionInternalWithError:(id)arg1;
+- (void)didGenerateShareableConfigurationData:(id)arg1 forObject:(id)arg2;
+- (void)didUpdateHealthStatus:(long long)arg1;
+- (void)relayDCKMessage:(id)arg1;
+- (void)didUpdateMotionState:(long long)arg1;
+- (void)object:(id)arg1 didUpdateRegion:(id)arg2 previousRegion:(id)arg3;
+- (void)didDiscoverNearbyObject:(id)arg1;
 - (void)uwbSessionInterruptionReasonEnded:(long long)arg1 timestamp:(double)arg2;
 - (void)uwbSessionInterruptedWithReason:(long long)arg1 timestamp:(double)arg2;
 - (void)uwbSessionDidInvalidateWithError:(id)arg1;
@@ -82,13 +99,27 @@
 - (void)pause;
 - (void)runWithConfiguration:(id)arg1;
 - (id)init;
+- (_Bool)_isInternalClient;
 @property(readonly, copy, nonatomic) NIDiscoveryToken *discoveryToken;
 @property(readonly, copy, nonatomic) NIConfiguration *configuration;
 - (void)_submitErrorMetric:(id)arg1;
 - (void)_logDurationAndSubmit:(_Bool)arg1;
 - (void)_logTime;
-- (void)_shareSandboxExtensionForCurrentBundle;
-- (id)_initAndConnectToServer;
+- (id)_initAndConnectToServerWithOptions:(unsigned long long)arg1;
+@property(readonly) long long motionState;
+- (void)_removeRegionPredicate:(id)arg1;
+- (void)_addRegionPredicate:(id)arg1;
+- (void)_removeObject:(id)arg1;
+- (void)_addObject:(id)arg1;
+@property(readonly) NICarKeyEventNotifier *carKeyEventNotifier;
+@property(readonly, getter=isRangingLimitExceeded) _Bool rangingLimitExceeded;
+@property long long rangingPriorityPolicy;
+- (id)_setDebugURSK:(id)arg1 transactionIdentifier:(unsigned int)arg2;
+- (id)deleteURSKs;
+- (void)processBluetoothEventWithType:(long long)arg1 btcClockTicks:(unsigned long long)arg2;
+- (void)processDCKMessage:(id)arg1 responseCallback:(CDUnknownBlockType)arg2;
+- (id)_setURSKTTL:(unsigned long long)arg1;
+- (void)_provideTruthTag:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

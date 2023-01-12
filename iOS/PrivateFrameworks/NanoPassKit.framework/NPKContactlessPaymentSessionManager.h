@@ -43,6 +43,8 @@
 - (id)_sessionStateForUserCanceledBarcodeTransaction;
 - (id)_sessionStateForBarcodeTransactionStatus:(unsigned long long)arg1 paymentBarcode:(id)arg2 transaction:(id)arg3;
 - (id)_sessionStateForPaymentBarcode:(id)arg1;
+- (void)_handleRKEActionRequestedForPass:(id)arg1 action:(id)arg2 function:(id)arg3 withSession:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (_Bool)_canHandleRKEActionForTileItem:(id)arg1 pass:(id)arg2 outAction:(id *)arg3 outFunction:(id *)arg4 outError:(id *)arg5;
 - (void)_registerForServiceModeRequestNotification;
 - (void)_handleServiceModeRequestEnded;
 - (void)_handleContactlessInterfaceVisibilityTimeoutTimer;
@@ -84,6 +86,10 @@
 - (void)_cleanupBarcodePaymentSession;
 - (void)barcodePaymentSession:(id)arg1 didUpdateTransactionStatus:(unsigned long long)arg2 withTransaction:(id)arg3;
 - (void)barcodePaymentSession:(id)arg1 didReceivePaymentBarcode:(id)arg2;
+- (void)handleFailureToReleaseDataWithError:(id)arg1;
+- (void)handleAuthorize18013RequestWithDataToRelease:(id)arg1 credential:(id)arg2;
+- (void)handleISO18013TransactionStarted;
+- (void)handleTransactionStarted;
 - (void)handleEndBarcodePaymentSessionRequestedByUI;
 - (void)handleBarcodePaymentPinCodeEntry:(id)arg1;
 - (void)handleBarcodePaymentUserIntentionConfirmation:(_Bool)arg1;
@@ -93,15 +99,18 @@
 - (void)handleLocalAuthenticationError:(id)arg1;
 - (void)handleExpressTransactionStatus:(unsigned long long)arg1 forPass:(id)arg2 paymentApplication:(id)arg3 concreteTransactions:(id)arg4 ephemeralTransaction:(id)arg5 mutatedBalances:(id)arg6 appletState:(id)arg7;
 - (void)handleExpressTransactionStatus:(unsigned long long)arg1 forPass:(id)arg2;
+- (void)handleRKETransactionForPass:(id)arg1 fromTile:(id)arg2;
+- (void)handleStandaloneTransactionWithAction:(unsigned long long)arg1 forPass:(id)arg2;
 - (void)handleAutomaticSelectionValueAddedServicePasses:(id)arg1;
 - (void)handleEndSessionRequested;
+- (void)handleRKEActionRequestedForTileItem:(id)arg1 pass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleServiceModeRequestedForPass:(id)arg1;
 - (void)handleDoublePressReceivedAtDate:(id)arg1;
 - (void)handleUserSelectedPass:(id)arg1;
 - (void)handleCredential:(id)arg1;
 - (void)handleContactlessPaymentInterfaceDidDisappear;
 - (void)handleContactlessPaymentInterfaceDidAppear;
-- (void)handleContactlessPaymentSession:(id)arg1 doublePressExpected:(_Bool)arg2;
+- (void)handleContactlessPaymentSession:(id)arg1 authenticationExpected:(_Bool)arg2;
 - (id)init;
 
 // Remaining properties

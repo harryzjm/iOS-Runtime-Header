@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBColor-Protocol.h>
 
-@class NSData, NSString, _SFPBGraphicalFloat;
+@class NSData, NSString, _SFPBCalendarColor, _SFPBGraphicalFloat;
 
 @interface _SFPBColor : PBCodable <_SFPBColor, NSSecureCoding>
 {
@@ -17,9 +17,12 @@
     _SFPBGraphicalFloat *_greenComponent;
     _SFPBGraphicalFloat *_blueComponent;
     _SFPBGraphicalFloat *_alphaComponent;
+    _SFPBCalendarColor *_calendarColor;
+    unsigned long long _whichValue;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long whichValue; // @synthesize whichValue=_whichValue;
 @property(retain, nonatomic) _SFPBGraphicalFloat *alphaComponent; // @synthesize alphaComponent=_alphaComponent;
 @property(retain, nonatomic) _SFPBGraphicalFloat *blueComponent; // @synthesize blueComponent=_blueComponent;
 @property(retain, nonatomic) _SFPBGraphicalFloat *greenComponent; // @synthesize greenComponent=_greenComponent;
@@ -32,6 +35,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(retain, nonatomic) _SFPBCalendarColor *calendarColor; // @synthesize calendarColor=_calendarColor;
 - (id)initWithFacade:(id)arg1;
 
 // Remaining properties

@@ -9,7 +9,7 @@
 #import <AXMediaUtilities/AXMJSONSerializable-Protocol.h>
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMVisionFeatureAestheticsResult, AXMVisionFeatureAssetMetadata, AXMVisionFeatureColorInfo, AXMVisionFeatureFaceDetectionResult, CMDeviceMotion, NSArray, NSDictionary, NSMutableDictionary, NSString;
+@class AXMTranslatedText, AXMVisionFeatureAestheticsResult, AXMVisionFeatureAssetMetadata, AXMVisionFeatureColorInfo, AXMVisionFeatureFaceDetectionResult, CMDeviceMotion, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol NSSecureCoding;
 
 @interface AXMVisionFeature : NSObject <AXMJSONSerializable, NSSecureCoding>
@@ -23,7 +23,9 @@
     struct CGRect _frame;
     struct CGRect _normalizedFrame;
     NSString *_value;
+    NSArray *_values;
     _Bool _isValueSpeakable;
+    NSArray *_recognizedTextFeatures;
     AXMVisionFeatureColorInfo *_colorInfo;
     AXMVisionFeatureAssetMetadata *_assetMetadata;
     double _blur;
@@ -40,7 +42,10 @@
     NSString *_classificationLabel;
     NSString *_classificationLocalizedValue;
     NSString *_caption;
+    AXMTranslatedText *_translatedCaption;
     NSMutableDictionary *_featureGates;
+    NSMutableSet *_detectorSceneClassIds;
+    NSString *_sceneClassId;
     _Bool _captionMayContainSensitiveContent;
     long long _uiClass;
     AXMVisionFeatureAestheticsResult *_aestheticsResult;
@@ -53,6 +58,7 @@
     struct CGRect _unpaddedDetectedFaceRect;
 }
 
++ (id)filterFeatureList:(id)arg1 basedOnSceneClassIdsForFeature:(id)arg2;
 + (id)flattenedFeatureList:(id)arg1;
 + (void)_append:(id)arg1 toList:(id)arg2;
 + (id)nameForOCRType:(long long)arg1;
@@ -70,8 +76,16 @@
 + (id)featureWithColorInfo:(id)arg1 canvasSize:(struct CGSize)arg2;
 + (id)featureWithMediaLegibility:(id)arg1;
 + (id)featureWithIconClass:(id)arg1 confidence:(double)arg2;
-+ (id)textSequence:(id)arg1 canvasSize:(struct CGSize)arg2;
-+ (id)textLineWithText:(id)arg1 boundingBox:(struct CGRect)arg2 sequences:(id)arg3 canvasSize:(struct CGSize)arg4;
++ (id)tableCellWithText:(id)arg1 boundingBox:(struct CGRect)arg2 confidence:(double)arg3 recognizedTextFeatures:(id)arg4 canvasSize:(struct CGSize)arg5 isHeader:(_Bool)arg6;
++ (id)tableColumnWithText:(id)arg1 boundingBox:(struct CGRect)arg2 cells:(id)arg3 canvasSize:(struct CGSize)arg4;
++ (id)tableRowWithText:(id)arg1 boundingBox:(struct CGRect)arg2 cells:(id)arg3 canvasSize:(struct CGSize)arg4;
++ (id)tableWithText:(id)arg1 isSpeakable:(_Bool)arg2 boundingBox:(struct CGRect)arg3 rows:(id)arg4 columns:(id)arg5 canvasSize:(struct CGSize)arg6 isIncomplete:(_Bool)arg7;
++ (id)receiptWithText:(id)arg1 isSpeakable:(_Bool)arg2 boundingBox:(struct CGRect)arg3 regions:(id)arg4 canvasSize:(struct CGSize)arg5;
++ (id)envelopeRegion:(id)arg1 boundingBox:(struct CGRect)arg2 confidence:(double)arg3 canvasSize:(struct CGSize)arg4;
++ (id)envelopeWithText:(id)arg1 isSpeakable:(_Bool)arg2 boundingBox:(struct CGRect)arg3 regions:(id)arg4 canvasSize:(struct CGSize)arg5;
++ (id)nutritionLabelWithText:(id)arg1 isSpeakable:(_Bool)arg2 boundingBox:(struct CGRect)arg3 rows:(id)arg4 canvasSize:(struct CGSize)arg5;
++ (id)textSequence:(id)arg1 boundingBox:(struct CGRect)arg2 recognizedTextFeatures:(id)arg3 confidence:(double)arg4 canvasSize:(struct CGSize)arg5;
++ (id)textLineWithText:(id)arg1 boundingBox:(struct CGRect)arg2 recognizedTextFeatures:(id)arg3 canvasSize:(struct CGSize)arg4;
 + (id)textRegionWithText:(id)arg1 isSpeakable:(_Bool)arg2 boundingBox:(struct CGRect)arg3 lines:(id)arg4 canvasSize:(struct CGSize)arg5;
 + (id)textDocumentWithText:(id)arg1 isSpeakable:(_Bool)arg2 boundingBox:(struct CGRect)arg3 regions:(id)arg4 canvasSize:(struct CGSize)arg5;
 + (id)groupedFeatureWithElementRect:(struct CGRect)arg1 uiClass:(long long)arg2 confidence:(double)arg3 label:(id)arg4 canvasSize:(struct CGSize)arg5 subElements:(id)arg6;
@@ -82,7 +96,7 @@
 + (id)significantEventClassificationWithCategory:(id)arg1 confidence:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (id)nsfwClassificationWithCategory:(id)arg1 confidence:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (id)sceneClassificationWithLabel:(id)arg1 localizedValue:(id)arg2 confidence:(float)arg3 canvasSize:(struct CGSize)arg4;
-+ (id)objectClassificationWithLabel:(id)arg1 localizedValue:(id)arg2 boundingBox:(struct CGRect)arg3 confidence:(float)arg4 canvasSize:(struct CGSize)arg5;
++ (id)objectClassificationWithLabel:(id)arg1 localizedValue:(id)arg2 boundingBox:(struct CGRect)arg3 confidence:(float)arg4 canvasSize:(struct CGSize)arg5 sceneClassId:(id)arg6;
 + (id)featureWithVisionRequest:(id)arg1 horizonResult:(id)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 brightnessValue:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 blurValue:(float)arg2 canvasSize:(struct CGSize)arg3;
@@ -108,13 +122,16 @@
 @property(readonly, nonatomic) CMDeviceMotion *deviceMotion; // @synthesize deviceMotion=_deviceMotion;
 @property(readonly, nonatomic) AXMVisionFeatureAestheticsResult *aestheticsResult; // @synthesize aestheticsResult=_aestheticsResult;
 @property(readonly, nonatomic) struct CGRect unpaddedDetectedFaceRect; // @synthesize unpaddedDetectedFaceRect=_unpaddedDetectedFaceRect;
-@property(readonly, nonatomic) long long uiClass; // @synthesize uiClass=_uiClass;
+@property(nonatomic) long long uiClass; // @synthesize uiClass=_uiClass;
+@property(readonly, nonatomic) NSArray *values; // @synthesize values=_values;
+@property(readonly, nonatomic) NSArray *recognizedTextFeatures; // @synthesize recognizedTextFeatures=_recognizedTextFeatures;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToAXMVisionFeature:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
 - (void)addFeatureGate:(id)arg1 userInfo:(id)arg2;
+- (struct CGRect)boundingBoxForRange:(struct _NSRange)arg1;
 - (id)_nameForOCRFeatureType:(long long)arg1;
 @property(readonly, nonatomic) _Bool isImageAesthetics;
 @property(readonly, nonatomic) _Bool isIconClass;
@@ -123,6 +140,14 @@
 @property(readonly, nonatomic) _Bool isMotion;
 @property(readonly, nonatomic) _Bool isTextDiacritic;
 @property(readonly, nonatomic) _Bool isTextCharacter;
+@property(readonly, nonatomic) _Bool isReceipt;
+- (_Bool)isEnvelopeRegion;
+@property(readonly, nonatomic) _Bool isEnvelope;
+@property(readonly, nonatomic) _Bool isNutritionLabel;
+@property(readonly, nonatomic) _Bool isTableCell;
+@property(readonly, nonatomic) _Bool isTableColumn;
+@property(readonly, nonatomic) _Bool isTableRow;
+@property(readonly, nonatomic) _Bool isTable;
 @property(readonly, nonatomic) _Bool isTextSequence;
 @property(readonly, nonatomic) _Bool isTextLine;
 @property(readonly, nonatomic) _Bool isTextRegion;
@@ -147,8 +172,11 @@
 @property(readonly, nonatomic) _Bool isBarcode;
 @property(readonly, nonatomic) _Bool isValueSpeakable;
 @property(readonly, nonatomic) NSString *value;
-- (long long)locationUsingThirds:(_Bool)arg1;
+- (long long)locationUsingThirds:(_Bool)arg1 withFlippedYAxis:(_Bool)arg2;
+@property(readonly, nonatomic) NSString *sceneClassId;
+@property(readonly, nonatomic) NSSet *detectorSceneClassIds;
 @property(readonly, nonatomic) NSDictionary *featureGates;
+@property(readonly, nonatomic) AXMTranslatedText *translatedCaption;
 @property(readonly, nonatomic) NSString *caption;
 @property(readonly, nonatomic) NSString *classificationLocalizedValue;
 @property(readonly, nonatomic) NSString *classificationLabel;

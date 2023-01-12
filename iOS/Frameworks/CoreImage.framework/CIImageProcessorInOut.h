@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _region;
     struct __IOSurface *_surface;
     _Bool _usesSRGB;
-    struct Context *_context;
+    void *_context;
     id <MTLTexture> _mtlTexture;
     _Bool _surfaceLocked;
 }
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool usesSRGBTransferFunction;
 @property(readonly, nonatomic) struct __IOSurface *surface;
 - (void)dealloc;
-- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(_Bool)arg3 bounds:(struct CGRect)arg4 context:(struct Context *)arg5;
+- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(_Bool)arg3 bounds:(struct CGRect)arg4 context:(void *)arg5;
 
 @end
 

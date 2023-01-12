@@ -86,6 +86,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initSuper;
 - (id)init;
+- (void)print;
+- (void)_printWithIndent:(int)arg1;
 
 @end
 

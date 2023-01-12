@@ -13,18 +13,16 @@
     CLKDevice *_device;
 }
 
-+ (id)swatchColorForColor:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)mainColorForColor:(unsigned long long)arg1;
-- (id)complicationForegroundColor:(unsigned long long)arg1;
-- (id)platterTextColorForColor:(unsigned long long)arg1;
-- (id)bezelTextColorForColor:(unsigned long long)arg1;
-- (id)dialFillColorForColor:(unsigned long long)arg1;
-- (id)minuteTicksColorForColor:(unsigned long long)arg1;
-- (id)hourTicksColorForColor:(unsigned long long)arg1;
-- (id)secondHandColorForColor:(unsigned long long)arg1;
-- (id)handFillColorForColor:(unsigned long long)arg1;
-- (id)handStrokeColorForColor:(unsigned long long)arg1;
+- (id)complicationForegroundColorPalette:(id)arg1;
+- (id)platterTextColorForColorPalette:(id)arg1;
+- (id)bezelTextColorForColorPalette:(id)arg1;
+- (id)dialFillColorForColorPalette:(id)arg1;
+- (id)minuteTicksColorForColorPalette:(id)arg1;
+- (id)hourTicksColorForColorPalette:(id)arg1;
+- (id)secondHandColorForColorPalette:(id)arg1;
+- (id)handFillColorForColorPalette:(id)arg1;
+- (id)handStrokeColorForColorPalette:(id)arg1;
 - (id)initWithDevice:(id)arg1;
 
 @end

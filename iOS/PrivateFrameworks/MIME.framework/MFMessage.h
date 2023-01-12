@@ -70,7 +70,6 @@
 - (id)bodyDataIsComplete:(_Bool *)arg1;
 - (id)bodyData;
 - (id)persistentID;
-- (id)attachmentStorageLocation;
 - (id)path;
 - (unsigned int)uid;
 - (id)remoteID;

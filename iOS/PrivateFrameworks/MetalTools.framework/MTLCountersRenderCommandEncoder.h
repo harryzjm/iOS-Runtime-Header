@@ -8,6 +8,7 @@
 
 @interface MTLCountersRenderCommandEncoder
 {
+    _Bool _APITimingEnabled;
     MTLCountersTraceRenderCommandEncoder *_traceEncoder;
 }
 

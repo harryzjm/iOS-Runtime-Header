@@ -23,6 +23,8 @@
     _Bool _shouldAppearDisabled;
     _Bool _isActiveDataPlan;
     _Bool _isDefaultVoice;
+    _Bool _isLocalTransferToeSIMSupported;
+    _Bool _isTransferred;
     _Bool _isSelectable;
     NSString *_label;
     CTCellularPlan *_plan;
@@ -45,6 +47,8 @@
 @property(retain, nonatomic) CTUserLabel *userLabel; // @synthesize userLabel=_userLabel;
 @property(retain, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property(nonatomic) _Bool isTransferred; // @synthesize isTransferred=_isTransferred;
+@property(nonatomic) _Bool isLocalTransferToeSIMSupported; // @synthesize isLocalTransferToeSIMSupported=_isLocalTransferToeSIMSupported;
 @property(nonatomic) _Bool isDefaultVoice; // @synthesize isDefaultVoice=_isDefaultVoice;
 @property(nonatomic) _Bool isActiveDataPlan; // @synthesize isActiveDataPlan=_isActiveDataPlan;
 @property(nonatomic) _Bool shouldAppearDisabled; // @synthesize shouldAppearDisabled=_shouldAppearDisabled;
@@ -58,6 +62,7 @@
 @property(readonly, nonatomic) CTCellularPlan *plan; // @synthesize plan=_plan;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 - (id)customDescription;
+- (id)redactedDescription;
 - (id)description;
 - (id)typeAsString:(long long)arg1;
 @property(readonly, nonatomic) NSString *carrierName;
@@ -71,10 +76,13 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithIccid:(id)arg1 uuid:(id)arg2 name:(id)arg3 phoneNumber:(id)arg4 label:(id)arg5 isLocalTransferToeSIMSupported:(_Bool)arg6 isTransferred:(_Bool)arg7;
+- (id)initWithIccid:(id)arg1 uuid:(id)arg2 name:(id)arg3 phoneNumber:(id)arg4 label:(id)arg5 isLocalTransferToeSIMSupported:(_Bool)arg6;
 - (id)initWithIccid:(id)arg1 uuid:(id)arg2 name:(id)arg3 phoneNumber:(id)arg4 label:(id)arg5;
 - (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2 type:(long long)arg3 phoneNumber:(id)arg4 label:(id)arg5;
 - (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2;
 - (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2 iccid:(id)arg3 name:(id)arg4 type:(long long)arg5 phoneNumber:(id)arg6 label:(id)arg7;
+- (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2 iccid:(id)arg3 name:(id)arg4 type:(long long)arg5 phoneNumber:(id)arg6 label:(id)arg7 isLocalTransferToeSIMSupported:(_Bool)arg8 isTransferred:(_Bool)arg9;
 
 @end
 

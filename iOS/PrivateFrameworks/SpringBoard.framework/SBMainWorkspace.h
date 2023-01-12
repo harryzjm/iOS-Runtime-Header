@@ -15,14 +15,15 @@
 #import <SpringBoard/MCProfileConnectionObserver-Protocol.h>
 #import <SpringBoard/SBBacklightControllerObserver-Protocol.h>
 #import <SpringBoard/SBControlCenterModuleTransientOverlayViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBInCallPresentationManagerDelegate-Protocol.h>
 #import <SpringBoard/SBPowerDownViewControllerDelegate-Protocol.h>
 #import <SpringBoard/SBTransientOverlayPresentationManagerDelegate-Protocol.h>
 
-@class BSEventQueueLock, BSWatchdog, FBDisplayLayoutTransition, FBSceneManager, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBControlCenterModuleTransientOverlayViewController, SBHUDController, SBHomeGestureArbiter, SBHomeHardwareButtonLongPressDurationAssertion, SBIdleTimerCoordinatorHelper, SBInCallPresentationManager, SBInCallTransientOverlayManager, SBOrientationAggdLogger, SBPowerDownViewController, SBRingerControl, SBTransientOverlayPresentationManager, SBVolumeControl, SBWorkspaceKeyboardFocusController, SBWorkspaceTransaction;
-@protocol SBIdleTimerCoordinating, SBIdleTimerProviding;
+@class BSEventQueueLock, BSWatchdog, FBDisplayLayoutTransition, FBSceneManager, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBBrightnessControl, SBControlCenterModuleTransientOverlayViewController, SBFZStackParticipant, SBFZStackResolver, SBFocusModesHomeScreenSettingsManager, SBHUDController, SBHardwareButtonZStackClient, SBHomeGestureArbiter, SBHomeHardwareButtonLongPressDurationAssertion, SBIdleTimerCoordinatorHelper, SBInCallPresentationManager, SBInCallTransientOverlayManager, SBKeyboardDismissalManager, SBOrientationAggdLogger, SBPIPControllerCoordinator, SBPowerDownViewController, SBRingerControl, SBSystemNotesManager, SBTransientOverlayPresentationManager, SBUniversalControlServer, SBVolumeControl, SBWorkspaceKeyboardFocusController, SBWorkspaceTransaction, SBZStackAuditor;
+@protocol BSInvalidatable, SBIdleTimerCoordinating, SBIdleTimerProviding;
 
-@interface SBMainWorkspace <BSTransactionObserver, SBBacklightControllerObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver, MCProfileConnectionObserver, BSPowerMonitorObserver, SBPowerDownViewControllerDelegate, SBTransientOverlayPresentationManagerDelegate, CCSModulePresentationEndpoint, SBControlCenterModuleTransientOverlayViewControllerDelegate, SBInCallPresentationManagerDelegate>
+@interface SBMainWorkspace <BSTransactionObserver, SBBacklightControllerObserver, FBSystemServiceDelegate, FBProcessManagerObserver, FBApplicationProcessObserver, BSWatchdogDelegate, FBSceneManagerObserver, MCProfileConnectionObserver, BSPowerMonitorObserver, SBPowerDownViewControllerDelegate, SBTransientOverlayPresentationManagerDelegate, CCSModulePresentationEndpoint, SBControlCenterModuleTransientOverlayViewControllerDelegate, SBInCallPresentationManagerDelegate, SBFZStackParticipantDelegate>
 {
     _Bool _initialized;
     BSEventQueueLock *_suspensionLock;
@@ -39,29 +40,48 @@
     SBPowerDownViewController *_powerDownViewController;
     SBHomeHardwareButtonLongPressDurationAssertion *_powerDownLongPressDurationAssertion;
     SBControlCenterModuleTransientOverlayViewController *_presentedControlCenterModuleTransientOverlayViewController;
+    SBUniversalControlServer *_universalControlServer;
     SBWorkspaceKeyboardFocusController *_keyboardFocusController;
+    id <BSInvalidatable> _lockKeyboardFocusAssertion;
+    SBSystemNotesManager *_systemNotesManager;
+    SBFocusModesHomeScreenSettingsManager *_focusModesHomeScreenSnapshotManager;
+    SBZStackAuditor *_zStackAuditor;
+    SBFZStackParticipant *_keyShortcutHUDZStackParticipant;
     id <SBIdleTimerProviding> _activeIdleTimerProvider;
     SBHUDController *_HUDController;
     SBVolumeControl *_volumeControl;
     SBRingerControl *_ringerControl;
+    SBBrightnessControl *_brightnessControl;
     SBHomeGestureArbiter *_homeGestureArbiter;
+    SBFZStackResolver *_zStackResolver;
+    SBHardwareButtonZStackClient *_zStackHardwareButtonClient;
     SBInCallTransientOverlayManager *_inCallTransientOverlayManager;
     SBTransientOverlayPresentationManager *_transientOverlayPresentationManager;
+    SBKeyboardDismissalManager *_keyboardDismissalManager;
     SBInCallPresentationManager *_inCallPresentationManager;
+    SBPIPControllerCoordinator *_pipCoordinator;
     FBSceneManager *_sceneManager;
 }
 
 + (id)debugDescription;
 + (id)_sharedInstanceWithNilCheckPolicy:(long long)arg1;
 + (id)_instanceIfExists;
++ (id)sharedInstanceIfExists;
 + (id)sharedInstance;
 + (id)start;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) FBSceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
+@property(readonly, nonatomic) SBPIPControllerCoordinator *pipCoordinator; // @synthesize pipCoordinator=_pipCoordinator;
+@property(readonly, nonatomic) SBSystemNotesManager *systemNotesManager; // @synthesize systemNotesManager=_systemNotesManager;
 @property(readonly, nonatomic) SBInCallPresentationManager *inCallPresentationManager; // @synthesize inCallPresentationManager=_inCallPresentationManager;
+@property(readonly, nonatomic) SBKeyboardDismissalManager *keyboardDismissalManager; // @synthesize keyboardDismissalManager=_keyboardDismissalManager;
+@property(readonly, nonatomic) SBUniversalControlServer *universalControlServer; // @synthesize universalControlServer=_universalControlServer;
 @property(readonly, nonatomic) SBTransientOverlayPresentationManager *transientOverlayPresentationManager; // @synthesize transientOverlayPresentationManager=_transientOverlayPresentationManager;
 @property(readonly, nonatomic) SBInCallTransientOverlayManager *inCallTransientOverlayManager; // @synthesize inCallTransientOverlayManager=_inCallTransientOverlayManager;
+@property(readonly, nonatomic) SBHardwareButtonZStackClient *zStackHardwareButtonClient; // @synthesize zStackHardwareButtonClient=_zStackHardwareButtonClient;
+@property(readonly, nonatomic) SBFZStackResolver *zStackResolver; // @synthesize zStackResolver=_zStackResolver;
 @property(readonly, nonatomic) SBHomeGestureArbiter *homeGestureArbiter; // @synthesize homeGestureArbiter=_homeGestureArbiter;
+@property(readonly, nonatomic) SBBrightnessControl *brightnessControl; // @synthesize brightnessControl=_brightnessControl;
 @property(readonly, nonatomic) SBRingerControl *ringerControl; // @synthesize ringerControl=_ringerControl;
 @property(readonly, nonatomic) SBVolumeControl *volumeControl; // @synthesize volumeControl=_volumeControl;
 @property(readonly, nonatomic) SBHUDController *HUDController; // @synthesize HUDController=_HUDController;
@@ -124,6 +144,7 @@
 - (_Bool)_isApplicationRunningAsViewService:(id)arg1;
 - (void)_handleOpenApplicationRequest:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
 - (id)_validateRequestToOpenApplication:(id)arg1 options:(id)arg2 origin:(id)arg3 error:(out id *)arg4;
+- (_Bool)_canAppWithBundleIdentifier:(id)arg1 requestMovingContentToSceneOpenApplicationOptions:(id)arg2;
 - (void)_applyCommonActivationSettings:(id)arg1 forRequestWithOptions:(id)arg2 clientProcess:(id)arg3 application:(id)arg4;
 - (void)systemService:(id)arg1 handleOpenApplicationRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)systemService:(id)arg1 canActivateApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
@@ -136,7 +157,13 @@
 - (void)process:(id)arg1 stateDidChangeFromState:(id)arg2 toState:(id)arg3;
 - (void)processManager:(id)arg1 didRemoveProcess:(id)arg2;
 - (void)processManager:(id)arg1 didAddProcess:(id)arg2;
-- (void)_removeApplicationEntities:(id)arg1 withDestroyalIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
+- (void)_handleKeyShortcutHUDVisibilityDidDismiss;
+- (void)_handleKeyShortcutHUDVisibilityDidPresent;
+- (_Bool)_isLaunchingApplicationAfterSetupForRequestWithBundleIdentifier:(id)arg1 options:(id)arg2 origin:(id)arg3;
+- (_Bool)_removeApplicationEntitiesFromWorkspace:(id)arg1 error:(id *)arg2;
+- (void)_removeApplicationEntities:(id)arg1 withDestructionIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_applicationEntityWasRemovedFromAppSwitcher:(id)arg1;
 - (void)_destroyApplicationSceneEntity:(id)arg1;
 - (void)_coversheetDidDismiss;
@@ -148,6 +175,8 @@
 - (id)_applicationForIdentifier:(id)arg1;
 - (void)_updateFrontMostApplicationEventPort;
 - (void)updateFrontMostApplicationEventPort;
+- (id)pipControllerForType:(long long)arg1;
+- (void)_setupPIPCoordinator;
 - (void)_finishInitialization;
 - (void)_resume;
 - (void)_suspend;
@@ -165,7 +194,8 @@
 - (_Bool)_executeApplicationTransitionRequest:(id)arg1;
 - (_Bool)_executeTransientOverlayTransitionRequest:(id)arg1;
 - (void)_determineSourceForTransitionRequest:(id)arg1;
-- (_Bool)_preflightTransitionRequest:(id)arg1;
+- (_Bool)_preflightTransitionRequest:(id)arg1 forExecution:(_Bool)arg2;
+- (id)_alertItemForPreventingLaunchOfApp:(id)arg1 fromTrustState:(unsigned long long)arg2;
 - (_Bool)_executeTransitionRequest:(id)arg1 options:(unsigned long long)arg2 validator:(CDUnknownBlockType)arg3;
 - (void)_executeSuspendedTransactionForRequest:(id)arg1;
 - (void)_initializeAndObserveDefaults;
@@ -191,6 +221,7 @@
 @property(retain, nonatomic) id <SBIdleTimerCoordinating> idleTimerCoordinator;
 @property(readonly, nonatomic, getter=isSpringBoardActive) _Bool springBoardActive;
 - (id)transactionForTransitionRequest:(id)arg1;
+- (_Bool)_canExecuteTransitionRequest:(id)arg1 forExecution:(_Bool)arg2;
 - (_Bool)canExecuteTransitionRequest:(id)arg1;
 - (id)_transactionForTransitionRequest:(id)arg1;
 - (_Bool)executeTransitionRequest:(id)arg1 withValidator:(CDUnknownBlockType)arg2;

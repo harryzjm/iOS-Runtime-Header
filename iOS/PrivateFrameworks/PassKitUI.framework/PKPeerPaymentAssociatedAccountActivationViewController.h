@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitUI/PKPeerPaymentSetupFlowControllerDelegate-Protocol.h>
+#import <PassKitUI/PKDeviceSharingCapabilitiesManagerObserver-Protocol.h>
 
-@class NSObject, NSString, PKAppleCashSharingRecipientCapabilities, PKFamilyMember, PKPeerPaymentAccount, PKPeerPaymentIconEducationView, PKPeerPaymentSetupFlowController;
+@class NSObject, NSString, PKDeviceSharingCapabilities, PKFamilyMember, PKPeerPaymentAccount, PKPeerPaymentIconEducationView, PKPeerPaymentSetupFlowController;
 @protocol OS_dispatch_source, PKPeerPaymentAssociatedAccountSetupDelegate;
 
-@interface PKPeerPaymentAssociatedAccountActivationViewController <PKPeerPaymentSetupFlowControllerDelegate>
+@interface PKPeerPaymentAssociatedAccountActivationViewController <PKDeviceSharingCapabilitiesManagerObserver>
 {
     PKPeerPaymentSetupFlowController *_controller;
     PKFamilyMember *_familyMember;
     id <PKPeerPaymentAssociatedAccountSetupDelegate> _delegate;
     unsigned long long _state;
+    long long _setupType;
     PKPeerPaymentIconEducationView *_iconEducationView;
     PKPeerPaymentAccount *_account;
     NSObject<OS_dispatch_source> *_timer;
     _Bool _timerHasFired;
-    PKAppleCashSharingRecipientCapabilities *_childAppleCashCapabilities;
+    PKDeviceSharingCapabilities *_childAppleCashCapabilities;
 }
 
 - (void).cxx_destruct;
@@ -28,7 +29,8 @@
 - (void)_presentDisplayableError:(id)arg1;
 - (void)_sendMoneyInMessages;
 - (void)_handlePeerPaymentAccountDidChangeNotification;
-- (void)familyMemberAppleCashCapabilitiesUpdated:(id)arg1 forHandle:(id)arg2;
+- (void)deviceSharingCapabilitiesUpdated:(id)arg1 maximumPossibleDevices:(long long)arg2 forAppleID:(id)arg3;
+- (void)deviceSharingCapabilitiesUpdated:(id)arg1 newSharingCapabilties:(id)arg2 forAppleID:(id)arg3;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (unsigned long long)_nextStateAfterCheckingFamilyMemberAppleCashCapabilities:(_Bool *)arg1;
 - (void)_checkFamilyMemberAppleCashCapabilities;

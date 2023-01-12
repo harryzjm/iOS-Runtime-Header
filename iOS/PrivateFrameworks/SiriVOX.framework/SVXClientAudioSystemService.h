@@ -23,8 +23,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SVXClientAudioSystemServiceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id)arg1 performer:(id)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id)arg1 analytics:(id)arg2 performer:(id)arg3;
 - (void)handleAudioSessionDidBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
 - (void)handleAudioSessionWillBecomeActive:(_Bool)arg1 activationContext:(id)arg2 deactivationContext:(id)arg3;
 

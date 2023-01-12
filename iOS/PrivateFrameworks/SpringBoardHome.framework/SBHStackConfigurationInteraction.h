@@ -8,43 +8,74 @@
 
 #import <SpringBoardHome/SBHIconViewConfigurationInteraction-Protocol.h>
 #import <SpringBoardHome/SBHStackConfigurationViewControllerDelegate-Protocol.h>
-#import <SpringBoardHome/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import <SpringBoardHome/SBHViewControllerTransitionDelegate-Protocol.h>
+#import <SpringBoardHome/SBIconViewObserver-Protocol.h>
 
-@class CHSAvocadoDescriptorProvider, NSString, SBHStackConfiguration, SBHStackConfigurationViewController, SBIconView, UIViewController;
-@protocol SBHIconViewConfigurationInteractionDelegate, SBHStackConfigurationInteractionDelegate, SBHStackConfigurationViewControllerAppearanceDelegate;
+@class NSString, SBHStackConfiguration, SBHStackConfigurationViewController, SBHViewControllerTransition, SBHWidgetSettings, SBIconView, UIViewController;
+@protocol SBHIconViewConfigurationInteractionDelegate, SBHStackConfigurationInteractionDelegate, SBHStackConfigurationViewControllerAppearanceDelegate, SBHWidgetSheetViewControllerPresenter, SBIconListLayoutProvider, SBIconViewProviding, SBLeafIconDataSource;
 
-@interface SBHStackConfigurationInteraction : NSObject <SBHStackConfigurationViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SBHIconViewConfigurationInteraction>
+@interface SBHStackConfigurationInteraction : NSObject <SBHStackConfigurationViewControllerDelegate, SBHViewControllerTransitionDelegate, SBIconViewObserver, SBHIconViewConfigurationInteraction>
 {
+    _Bool _showsDoneButton;
+    _Bool _showsAddButton;
     SBHStackConfiguration *_configuration;
+    id <SBLeafIconDataSource> _configuredDataSource;
+    id <SBHWidgetSheetViewControllerPresenter> _presenter;
     id <SBHIconViewConfigurationInteractionDelegate> _delegate;
     id <SBHStackConfigurationInteractionDelegate> _stackConfigurationDelegate;
     id <SBHStackConfigurationViewControllerAppearanceDelegate> _appearanceDelegate;
     SBIconView *_iconView;
-    SBHStackConfigurationViewController *_configurationViewController;
+    id <SBIconViewProviding> _iconViewProvider;
+    id <SBIconListLayoutProvider> _listLayoutProvider;
+    SBHViewControllerTransition *_transition;
+    SBHWidgetSettings *_widgetSettings;
     UIViewController *_containerViewController;
-    CHSAvocadoDescriptorProvider *_descriptorProvider;
+    SBHStackConfigurationViewController *_configurationViewController;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) CHSAvocadoDescriptorProvider *descriptorProvider; // @synthesize descriptorProvider=_descriptorProvider;
-@property(retain, nonatomic) UIViewController *containerViewController; // @synthesize containerViewController=_containerViewController;
 @property(retain, nonatomic) SBHStackConfigurationViewController *configurationViewController; // @synthesize configurationViewController=_configurationViewController;
-@property(retain, nonatomic) SBIconView *iconView; // @synthesize iconView=_iconView;
+@property(retain, nonatomic) UIViewController *containerViewController; // @synthesize containerViewController=_containerViewController;
+@property(readonly, nonatomic) _Bool showsAddButton; // @synthesize showsAddButton=_showsAddButton;
+@property(readonly, nonatomic) _Bool showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
+@property(readonly, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;
+@property(readonly, nonatomic) SBHViewControllerTransition *transition; // @synthesize transition=_transition;
+@property(readonly, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
+@property(readonly, nonatomic) id <SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
+@property(readonly, nonatomic) SBIconView *iconView; // @synthesize iconView=_iconView;
 @property(nonatomic) __weak id <SBHStackConfigurationViewControllerAppearanceDelegate> appearanceDelegate; // @synthesize appearanceDelegate=_appearanceDelegate;
 @property(nonatomic) __weak id <SBHStackConfigurationInteractionDelegate> stackConfigurationDelegate; // @synthesize stackConfigurationDelegate=_stackConfigurationDelegate;
 @property(nonatomic) __weak id <SBHIconViewConfigurationInteractionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <SBHWidgetSheetViewControllerPresenter> presenter; // @synthesize presenter=_presenter;
+@property(readonly, nonatomic) id <SBLeafIconDataSource> configuredDataSource; // @synthesize configuredDataSource=_configuredDataSource;
 @property(copy, nonatomic) SBHStackConfiguration *configuration; // @synthesize configuration=_configuration;
-- (void)presentationControllerDidDismiss:(id)arg1;
-- (void)stackConfigurationViewControllerViewDidDisappear:(id)arg1;
-- (void)stackConfigurationViewControllerWantsToDismiss:(id)arg1;
+- (void)_handleTransitionWillProgressToEndState:(_Bool)arg1;
+- (struct CGRect)_contentBoundingFrame;
+- (struct CGRect)_sourceContentFrame;
+- (void)_folderExpansionAnimationWillBegin:(id)arg1;
+- (void)iconViewSizeDidChange:(id)arg1;
+- (void)iconViewDidBecomeWindowless:(id)arg1;
+- (void)iconViewWasRecycled:(id)arg1;
+- (id)stackConfigurationViewController:(id)arg1 dragPreviewForIconView:(id)arg2;
+- (void)stackConfigurationViewControllerRequestsDismissal:(id)arg1;
+- (void)stackConfigurationViewControllerWillAnimateWidgetInsertion:(id)arg1;
+- (void)stackConfigurationViewControllerRequestsPresentAddWidgetSheet:(id)arg1;
+- (void)stackConfigurationViewController:(id)arg1 didRemoveSuggestedWidgetIcon:(id)arg2;
+- (void)stackConfigurationViewController:(id)arg1 isConsumingDropSession:(id)arg2;
+- (id)stackConfigurationViewController:(id)arg1 draggedIconForIdentifier:(id)arg2;
 - (void)stackConfigurationViewController:(id)arg1 didCommitStackConfiguration:(id)arg2;
-- (void)stackConfigurationViewController:(id)arg1 didCommitWidgetConfigurationInteraction:(id)arg2;
-- (id)stackConfigurationViewController:(id)arg1 widgetConfigurationInteractionForDataSource:(id)arg2;
+- (void)transitionDidReturnToBeginningState:(id)arg1;
+- (void)transitionWillReturnToBeginningState:(id)arg1;
+- (void)transitionDidProgressToEndState:(id)arg1;
+- (void)transitionWillProgressToEndState:(id)arg1;
+- (id)animatorForTransition:(id)arg1;
+- (void)prepareTransition:(id)arg1;
+- (void)_endConfigurationAnimated:(_Bool)arg1;
 - (void)endConfigurationImmediately;
 - (void)endConfiguration;
-- (void)endConfigurationAnimated:(_Bool)arg1;
+- (void)popConfiguration;
 - (void)beginConfiguration;
-- (id)initWithConfiguration:(id)arg1 iconView:(id)arg2 descriptorProvider:(id)arg3;
+- (id)initWithConfiguration:(id)arg1 iconView:(id)arg2 iconViewProvider:(id)arg3 listLayoutProvider:(id)arg4 showsAddButton:(_Bool)arg5 showsDoneButton:(_Bool)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

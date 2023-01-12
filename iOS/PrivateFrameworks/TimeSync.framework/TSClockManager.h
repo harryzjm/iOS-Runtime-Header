@@ -6,17 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class IOKConnection, NSMutableArray;
+@class IOKConnection, NSMutableArray, TSClock;
 
 @interface TSClockManager : NSObject
 {
     IOKConnection *_connection;
     NSMutableArray *_clockPersonalities;
     struct mach_timebase_info _timebaseInfo;
-    unsigned long long _machAbsoluteNanosecondClockIdentifier;
+    _Bool _timeSyncTimeIsMachAbsoluteTime;
+    unsigned long long _timeSyncTimeClockIdentifier;
+    unsigned long long _translationClockIdentifier;
+    TSClock *_timeSyncClock;
+    TSClock *_translationClock;
 }
 
++ (id)diagnosticInfoForClockService:(id)arg1;
 + (id)diagnosticDescriptionForClockService:(id)arg1 withIndent:(id)arg2;
++ (id)diagnosticInfoForService:(id)arg1;
 + (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (id)defaultClockPersonalities;
 + (id)clockManager;
@@ -25,8 +31,14 @@
 + (id)timeSyncAudioClockDeviceUIDForClockIdentifier:(unsigned long long)arg1;
 + (void)notifyWhenClockManagerIsAvailable:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned long long machAbsoluteNanosecondClockIdentifier; // @synthesize machAbsoluteNanosecondClockIdentifier=_machAbsoluteNanosecondClockIdentifier;
+@property(readonly, nonatomic) TSClock *translationClock; // @synthesize translationClock=_translationClock;
+@property(readonly, nonatomic) TSClock *timeSyncClock; // @synthesize timeSyncClock=_timeSyncClock;
+@property(readonly, nonatomic) _Bool timeSyncTimeIsMachAbsoluteTime; // @synthesize timeSyncTimeIsMachAbsoluteTime=_timeSyncTimeIsMachAbsoluteTime;
+@property(readonly, nonatomic) unsigned long long translationClockIdentifier; // @synthesize translationClockIdentifier=_translationClockIdentifier;
+@property(readonly, nonatomic) unsigned long long timeSyncTimeClockIdentifier; // @synthesize timeSyncTimeClockIdentifier=_timeSyncTimeClockIdentifier;
+- (unsigned long long)machAbsoluteNanosecondsToTicks:(unsigned long long)arg1;
 - (unsigned long long)nanosecondsToMachAbsolute:(unsigned long long)arg1;
+- (unsigned long long)machAbsoluteTicksToNanoseconds:(unsigned long long)arg1;
 - (unsigned long long)machAbsoluteToNanoseconds:(unsigned long long)arg1;
 - (_Bool)removeUserFilteredClockWithIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)addUserFilteredClockWithMachInterval:(unsigned long long)arg1 domainInterval:(unsigned long long)arg2 usingFilterShift:(unsigned char)arg3 isAdaptive:(_Bool)arg4 error:(id *)arg5;
@@ -40,7 +52,8 @@
 - (_Bool)addMappingFromClockID:(unsigned long long)arg1 toCoreAudioClockDomain:(unsigned int *)arg2 error:(id *)arg3;
 - (_Bool)releaseDynamicClockID:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)nextAvailableDynamicClockID:(unsigned long long *)arg1 error:(id *)arg2;
-- (_Bool)getMachAbsoluteClockID:(unsigned long long *)arg1 error:(id *)arg2;
+- (_Bool)getTimeSyncTimeIsMachAbsolute:(_Bool *)arg1 error:(id *)arg2;
+- (_Bool)getTimeSyncTimeClockID:(unsigned long long *)arg1 error:(id *)arg2;
 - (void)removeClockPersonality:(id)arg1;
 - (void)addClockPersonality:(id)arg1;
 - (id)init;

@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     _Bool _allowInteractiveTransitions;
     _Bool _fullScreen;
     _Bool _isEditing;
+    _Bool _currentItemViewControllerIsPerformingFocusedAction;
     _Bool _isTransitioningPage;
     _Bool _hasTriggeredInteractiveTransitionAnimation;
     QLPageViewController *_pageViewController;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property(copy, nonatomic) CDUnknownBlockType prepareForInvalidationCompletionHandler; // @synthesize prepareForInvalidationCompletionHandler=_prepareForInvalidationCompletionHandler;
 @property(nonatomic) _Bool isTransitioningPage; // @synthesize isTransitioningPage=_isTransitioningPage;
+@property(nonatomic) _Bool currentItemViewControllerIsPerformingFocusedAction; // @synthesize currentItemViewControllerIsPerformingFocusedAction=_currentItemViewControllerIsPerformingFocusedAction;
 @property(nonatomic) _Bool isEditing; // @synthesize isEditing=_isEditing;
 @property(nonatomic) _Bool fullScreen; // @synthesize fullScreen=_fullScreen;
 @property(nonatomic) _Bool allowInteractiveTransitions; // @synthesize allowInteractiveTransitions=_allowInteractiveTransitions;
@@ -80,12 +82,16 @@ __attribute__((visibility("hidden")))
 @property(retain) QLPageViewController *pageViewController; // @synthesize pageViewController=_pageViewController;
 - (_Bool)_itemViewControllerIsCurrentlyPresentedItemViewController:(id)arg1;
 - (id)_sandboxExtensionForEditedFileAtURL:(id)arg1;
+- (void)_updateEnableChangingPageUsingGestures;
 - (void)_updateCanChangeCurrentPage;
 - (_Bool)itemPresenterViewControllerShouldForceAutodownloadFile:(id)arg1;
 - (void)previewItemViewController:(id)arg1 wantsToForwardMessageToHost:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)previewItemViewControllerDidChangeCurrentPreviewController:(id)arg1;
 - (void)previewItemViewControllerWantsToDismissQuickLook:(id)arg1;
 - (long long)dragDataOwnerForPreviewItemViewController:(id)arg1;
+- (void)previewItemViewController:(id)arg1 wantsToUpdateStateRestorationWithUserInfo:(id)arg2;
+- (void)previewItemViewControllerDidHandOverLock:(id)arg1;
+- (void)previewItemViewControllerDidAcquireLock:(id)arg1;
 - (void)previewItemViewController:(id)arg1 didEnableEditMode:(_Bool)arg2;
 - (void)previewItemViewController:(id)arg1 hasUnsavedEdits:(_Bool)arg2;
 - (void)previewItemViewControllerDidEditCopyOfPreviewItem:(id)arg1 editedCopy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -132,6 +138,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *parentApplicationDisplayIdentifier;
 - (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
 - (void)setLoadingString:(id)arg1;
+- (_Bool)_isBeingPresented;
 - (_Bool)_isBeingDismissed;
 - (_Bool)pinchDismissGestureInProgress;
 - (_Bool)transitionInProgress;
@@ -141,12 +148,17 @@ __attribute__((visibility("hidden")))
 - (void)keyCommandWasPerformed:(id)arg1;
 - (id)_defaultKeyCommands;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestLockForCurrentItem;
+- (void)shouldDisplayLockActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(_Bool)arg1;
+- (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveCurrentPreviewEditsSynchronously:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)toolbarButtonsForTraitCollection:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)notifyStateRestorationUserInfo:(id)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
 - (void)_setCurrentPreviewItemIndex:(long long)arg1 animated:(_Bool)arg2;

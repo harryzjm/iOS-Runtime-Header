@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class BMBehaviorRetriever, NSUserDefaults, _CDInteractionStore;
+@class BMBehaviorRetriever, CNContactStore, NSUserDefaults, _CDInteractionStore, _PSConfidenceModelForSharing, _PSRuleRankingMLModel;
 @protocol _DKKnowledgeQuerying;
 
 @interface _PSRuleOverlapFeedback : NSObject
 {
     BMBehaviorRetriever *_behaviorRetriever;
+    _PSConfidenceModelForSharing *_confidenceModelForSharing;
     _CDInteractionStore *_interactionStore;
     id <_DKKnowledgeQuerying> _knowledgeStore;
+    CNContactStore *_contactStore;
     NSUserDefaults *_ruleOverlapFeedbackDefaults;
+    _PSRuleRankingMLModel *_ruleRankingModel;
 }
 
 - (void).cxx_destruct;
+@property(retain) _PSRuleRankingMLModel *ruleRankingModel; // @synthesize ruleRankingModel=_ruleRankingModel;
 @property(retain, nonatomic) NSUserDefaults *ruleOverlapFeedbackDefaults; // @synthesize ruleOverlapFeedbackDefaults=_ruleOverlapFeedbackDefaults;
+@property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(retain, nonatomic) id <_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property(retain, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
+@property(retain, nonatomic) _PSConfidenceModelForSharing *confidenceModelForSharing; // @synthesize confidenceModelForSharing=_confidenceModelForSharing;
 @property(readonly, nonatomic) BMBehaviorRetriever *behaviorRetriever; // @synthesize behaviorRetriever=_behaviorRetriever;
 - (id)interactionStoreEventsSinceDate:(id)arg1;
 - (id)sharesheetFeedbackEventsSinceDate:(id)arg1;
@@ -29,15 +35,15 @@
 - (id)constantPETFeaturesFromContextItems:(id)arg1;
 - (id)constantFeaturesFromContextItems:(id)arg1;
 - (_Bool)targetAppPredictedCorrectlyByRule:(id)arg1 bundleId:(id)arg2;
-- (_Bool)recipientPredictedCorrectlyByRule:(id)arg1 interaction:(id)arg2 bundleId:(id)arg3;
 - (id)feedbackPayloadForRule:(id)arg1 ForInteraction:(id)arg2 ForContextItems:(id)arg3 WithConstantFeatures:(id)arg4;
 - (id)feedbackPETPayloadForRule:(id)arg1 ForInteraction:(id)arg2 ForContextItems:(id)arg3 WithConstantFeatures:(id)arg4;
 - (void)loggingForKnowledgeStoreEvent:(id)arg1 WithMatchingInteraction:(id)arg2;
 - (_Bool)wasInteractionAmongSuggestLess:(id)arg1;
-- (_Bool)doesSuggestionProxyMatch:(id)arg1 withInteraction:(id)arg2;
-- (id)getInteractionRecipientFromInteraction:(id)arg1;
 - (void)modelAccuracyLogging:(id)arg1 WithMatchingInteraction:(id)arg2;
+- (void)scoreRanking:(long long)arg1 forModelKey:(id)arg2;
+- (id)loggingTrainDataForContactFillerModel:(id)arg1 withMatchingInteraction:(id)arg2 interactionRecipients:(id)arg3 ruleRankingModel:(id)arg4 contactPropertyCache:(id)arg5 interactionCache:(id)arg6;
 - (id)matchFeedbackEvent:(id)arg1 WithInteractions:(id)arg2;
+- (id)getSessionID;
 - (void)reviewLastDayOfShares;
 - (void)writeRecordObjcWithData:(id)arg1;
 - (id)init;

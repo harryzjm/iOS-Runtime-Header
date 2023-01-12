@@ -10,5 +10,6 @@
 - (void)remote_performMigrationWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)remote_obliterateHealthDataWithOptions:(unsigned long long)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)remote_getHealthDirectorySizeInBytesWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
+- (void)remote_getHealthDatabaseIdentifierWithCompletion:(void (^)(NSUUID *, NSError *))arg1;
 @end
 

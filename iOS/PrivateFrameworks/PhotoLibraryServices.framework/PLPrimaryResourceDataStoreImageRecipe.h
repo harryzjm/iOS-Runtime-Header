@@ -16,19 +16,20 @@
 - (id)description;
 - (id)expectedSizeFromWidth:(long long)arg1 height:(long long)arg2;
 - (void)generateAndStoreForAssetWithPriority:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 isHighPriority:(_Bool)arg5 reason:(id)arg6 progress:(id *)arg7 completion:(CDUnknownBlockType)arg8;
-- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 progress:(id *)arg5 reason:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 conversionServiceOptions:(id)arg5 deferredPhotoFinalizer:(id)arg6 progress:(id *)arg7 reason:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (id)expectedFileURLForVersion:(unsigned int)arg1 asset:(id)arg2;
 - (id)chooseIngredientsFrom:(id)arg1 version:(unsigned int)arg2;
 - (id)supportedVersionsForLocalResourceGeneration;
 - (id)maxPixelCountForAssetWidth:(long long)arg1 height:(long long)arg2;
 - (id)colorSpaceGivenSourceColorSpace:(id)arg1 inContext:(id)arg2;
-- (id)codecInContext:(id)arg1;
+- (id)codecFourCharCodeName;
 - (_Bool)isMarkedFullSize;
 - (_Bool)colorSpaceIsNativeForDisplay;
-- (id)utiInContext:(id)arg1;
+- (id)uti;
 - (id)initWithRecipeID:(unsigned int)arg1;
-- (void)_generateAndStoreUsingMediaConversionServicesForAsset:(id)arg1 version:(unsigned int)arg2 conversionClient:(id)arg3 isHighPriority:(_Bool)arg4 progress:(id *)arg5 reason:(id)arg6 completion:(CDUnknownBlockType)arg7;
-- (id)_mediaConversionServiceOptionsForAsset:(id)arg1 adjustmentData:(id)arg2 largeAdjustmentData:(id)arg3 isHighPriority:(_Bool)arg4 reason:(id)arg5;
+- (void)_generateAndStoreUsingMediaConversionServicesForAsset:(id)arg1 version:(unsigned int)arg2 conversionClient:(id)arg3 videoConversionClient:(id)arg4 conversionServiceOptions:(id)arg5 isHighPriority:(_Bool)arg6 progress:(id *)arg7 reason:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (_Bool)_storeResourceWithType:(unsigned int)arg1 version:(unsigned int)arg2 asset:(id)arg3 destURL:(id)arg4 error:(id *)arg5;
+- (id)_mediaConversionServiceOptionsForAsset:(id)arg1 conversionServiceOptions:(id)arg2 adjustmentData:(id)arg3 largeAdjustmentData:(id)arg4 isHighPriority:(_Bool)arg5 reason:(id)arg6;
 - (id)_resourceGenerationAffectsRecipesForLibraryID:(id)arg1;
 
 @end

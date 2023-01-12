@@ -6,18 +6,20 @@
 
 #import <PassKitUI/PKNavigationItemController-Protocol.h>
 #import <PassKitUI/PKPaymentSetupFieldCellDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentSetupFieldFooterViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
 @class NSArray, NSMapTable, NSString, PKPaymentSetupFieldsModel, PKPaymentWebService, PKTableHeaderView;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupFieldsViewController <UITextFieldDelegate, PKPaymentSetupFieldCellDelegate, PKNavigationItemController>
+@interface PKPaymentSetupFieldsViewController <UITextFieldDelegate, PKPaymentSetupFieldFooterViewDelegate, PKPaymentSetupFieldCellDelegate, PKNavigationItemController>
 {
     PKTableHeaderView *_headerView;
     _Bool _hasScrolledToShowFields;
     _Bool _cellsAreEnabled;
     PKPaymentSetupFieldsModel *_fieldsModel;
     NSMapTable *_fieldIdentifierToCellMap;
+    NSMapTable *_fieldIdentifierToFooterViewMap;
     id _currentNextActionBlock;
     NSArray *_leftBarButtonItems;
     NSArray *_rightBarButtonItems;
@@ -26,18 +28,22 @@
     _Bool _hidesBackButton;
     _Bool _showingActivitySpinner;
     _Bool _performingNextActionLoop;
+    _Bool _provisioningPaymentAccount;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
     PKPaymentWebService *_webService;
+    NSArray *_sectionIdentifiers;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isProvisioningPaymentAccount) _Bool provisioningPaymentAccount; // @synthesize provisioningPaymentAccount=_provisioningPaymentAccount;
 @property(readonly, nonatomic, getter=isPerformingNextActionLoop) _Bool performingNextActionLoop; // @synthesize performingNextActionLoop=_performingNextActionLoop;
 @property(readonly, nonatomic, getter=isShowingActivitySpinner) _Bool showingActivitySpinner; // @synthesize showingActivitySpinner=_showingActivitySpinner;
+@property(retain, nonatomic) NSArray *sectionIdentifiers; // @synthesize sectionIdentifiers=_sectionIdentifiers;
 @property(retain, nonatomic) PKPaymentSetupFieldsModel *fieldsModel; // @synthesize fieldsModel=_fieldsModel;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 @property(nonatomic) __weak id <PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
-- (void)logAggDCheckpointForKey:(id)arg1;
-- (void)logAggDContextSpecificCheckpointForKey:(id)arg1;
+- (void)logAnalyticsCheckpointForKey:(id)arg1;
+- (void)logAnalyticsContextSpecificCheckpointForKey:(id)arg1;
 - (id)_contextSpecificStringForAggDKey:(id)arg1;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
@@ -51,9 +57,14 @@
 - (id)cellForIdentifier:(id)arg1;
 - (id)fieldForIdentifier:(id)arg1;
 - (void)_setCellsEnabled:(_Bool)arg1;
+- (id)identifierForIndexPath:(id)arg1;
+- (id)footerViewForIdentifier:(id)arg1;
+- (void)_noteFieldIdentifiersChangedUpdateHeaders:(_Bool)arg1;
 - (void)noteFieldIdentifiersChanged;
+- (void)noteFieldIdentifiersChangedAndUpdateHeaders;
 - (id)readonlyFieldIdentifiers;
 - (id)visibleFieldIdentifiers;
+- (id)visibleFieldIdentifiersForSection:(unsigned long long)arg1;
 - (id)defaultFields;
 - (void)_updateRightBarButtonState;
 - (void)_updateNavigationItemAnimated:(_Bool)arg1;
@@ -76,6 +87,8 @@
 - (void)triggerNextActionLoop;
 - (void)handleNextButtonTapped:(id)arg1;
 - (void)_handleNextButtonTapped:(id)arg1;
+- (void)fieldFooterViewDidTapButton:(id)arg1;
+- (void)_fieldLabelDidTapButton:(id)arg1;
 - (void)fieldCellDidTapButton:(id)arg1;
 - (_Bool)fieldCellEditableTextFieldShouldClear:(id)arg1;
 - (_Bool)fieldCellEditableTextFieldShouldReturn:(id)arg1;
@@ -86,8 +99,11 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 @property(readonly, nonatomic, getter=isComplete) _Bool complete;
 - (id)footerView;
+- (void)reloadHeaderView;
 - (id)headerView;
 - (_Bool)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (void)viewDidLayoutSubviews;

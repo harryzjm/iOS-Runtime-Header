@@ -20,15 +20,25 @@
     MISSING_TYPE *promotedContent;
     MISSING_TYPE *debugView;
     MISSING_TYPE *forcedReadiness;
+    MISSING_TYPE *wasTapped;
+    MISSING_TYPE *isBackgrounded;
     MISSING_TYPE *timingTracking;
     MISSING_TYPE *visibilityChecker;
+    MISSING_TYPE *needToSendOnScreen;
+    MISSING_TYPE *currentOrientation;
+    MISSING_TYPE *debugOverlay;
     MISSING_TYPE *interactionPresentationDelegate;
-    MISSING_TYPE *visbilityCheckingView;
+    MISSING_TYPE *visibilityCheckingView;
     MISSING_TYPE *offsetObserver;
     MISSING_TYPE *_isCollapsed;
+    MISSING_TYPE *lastTimeVisibilityCheckFrame;
     MISSING_TYPE *readinessObserver;
+    MISSING_TYPE *$__lazy_storage_$_debugViewEnabled;
     MISSING_TYPE *visibleThresholds;
     MISSING_TYPE *contentView;
+    MISSING_TYPE *visibleThresholdsLock;
+    MISSING_TYPE *viewCollapsedState;
+    MISSING_TYPE *lastCollapsedState;
     MISSING_TYPE *ready;
     MISSING_TYPE *readyDelegate;
     MISSING_TYPE *promotedContentInfo;
@@ -36,17 +46,15 @@
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)removeHandler;
-- (void)registerHandlerForAllMetricsWithClosure:(CDUnknownBlockType)arg1;
 - (void)didMoveToWindow;
 - (void)didMoveToSuperview;
 - (void)willMoveToSuperview:(id)arg1;
 - (_Bool)safeCollapseAndReturnError:(id *)arg1;
-- (void)collapse;
 - (_Bool)safeExpandAndReturnError:(id *)arg1;
 - (void)expand;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, readonly) struct UIEdgeInsets metricsViewEdgeInsets;
 @property(nonatomic, retain) APPCPromotedContentInfo *promotedContentInfo; // @synthesize promotedContentInfo;
 @property(nonatomic) struct CGRect frame;
 @property(nonatomic, readonly) id <APPCDiagnosticMetricsHelping> diagnosticMetricHelper;
@@ -55,6 +63,11 @@
 @property(nonatomic, readonly) APPrivacyMarker *privacyMarkerView;
 @property(nonatomic) _Bool ready; // @synthesize ready;
 @property(nonatomic) __weak id <APPCMetricsInteractionPresentationDelegate> interactionPresentationDelegate; // @synthesize interactionPresentationDelegate;
+- (void)appForegrounded:(id)arg1;
+- (void)appBackgrounded:(id)arg1;
+- (void)appWillResignActive:(id)arg1;
+- (void)willEnterforeground;
+- (void)unloadAdViewIfRequired;
 
 @end
 

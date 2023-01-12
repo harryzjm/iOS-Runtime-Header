@@ -6,7 +6,7 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFAccessoryItemProvider, HFCameraItemProvider, HFGenericAccessoryItemProvider, HFProgrammableSwitchItemProvider, HFServiceItemProvider, HFTargetControlItemProvider, NSUUID;
+@class HFAccessoryItemProvider, HFCameraItemProvider, HFGenericAccessoryItemProvider, HFMediaAccessoryItemProvider, HFProgrammableSwitchItemProvider, HFServiceItemProvider, HFTargetControlItemProvider, NSUUID;
 
 @interface HUQuickControlPresentationItemManager : HFItemManager
 {
@@ -16,6 +16,7 @@
     HFGenericAccessoryItemProvider *_genericItemProvider;
     HFProgrammableSwitchItemProvider *_programmableSwitchItemProvider;
     HFTargetControlItemProvider *_targetControlItemProvider;
+    HFMediaAccessoryItemProvider *_mediaAccessoryItemProvider;
     HFServiceItemProvider *_serviceItemProvider;
     HFCameraItemProvider *_cameraItemProvider;
 }
@@ -23,6 +24,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HFCameraItemProvider *cameraItemProvider; // @synthesize cameraItemProvider=_cameraItemProvider;
 @property(retain, nonatomic) HFServiceItemProvider *serviceItemProvider; // @synthesize serviceItemProvider=_serviceItemProvider;
+@property(retain, nonatomic) HFMediaAccessoryItemProvider *mediaAccessoryItemProvider; // @synthesize mediaAccessoryItemProvider=_mediaAccessoryItemProvider;
 @property(retain, nonatomic) HFTargetControlItemProvider *targetControlItemProvider; // @synthesize targetControlItemProvider=_targetControlItemProvider;
 @property(retain, nonatomic) HFProgrammableSwitchItemProvider *programmableSwitchItemProvider; // @synthesize programmableSwitchItemProvider=_programmableSwitchItemProvider;
 @property(retain, nonatomic) HFGenericAccessoryItemProvider *genericItemProvider; // @synthesize genericItemProvider=_genericItemProvider;

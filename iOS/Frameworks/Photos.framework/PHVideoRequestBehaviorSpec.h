@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 #import <Photos/PLVideoChoosingOptions-Protocol.h>
 
 @class NSString;
 
-@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions, NSSecureCoding>
+@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions, NSSecureCoding, NSCopying>
 {
     _Bool _networkAccessAllowed;
     _Bool _streamingAllowed;
@@ -21,19 +22,29 @@
     long long _deliveryMode;
     long long _version;
     long long _streamingVideoIntent;
+    long long _downloadIntent;
+    long long _downloadPriority;
+    CDStruct_e83c9415 _timeRange;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool restrictToPlayableOnCurrentDevice; // @synthesize restrictToPlayableOnCurrentDevice=_restrictToPlayableOnCurrentDevice;
 @property(nonatomic, getter=isMediumHighQualityAllowed) _Bool mediumHighQualityAllowed; // @synthesize mediumHighQualityAllowed=_mediumHighQualityAllowed;
 @property(nonatomic, getter=isVideoComplementAllowed) _Bool videoComplementAllowed; // @synthesize videoComplementAllowed=_videoComplementAllowed;
+@property(nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
+@property(nonatomic) long long downloadPriority; // @synthesize downloadPriority=_downloadPriority;
+@property(nonatomic) long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property(nonatomic) long long streamingVideoIntent; // @synthesize streamingVideoIntent=_streamingVideoIntent;
 @property(nonatomic, getter=isStreamingAllowed) _Bool streamingAllowed; // @synthesize streamingAllowed=_streamingAllowed;
 @property(nonatomic, getter=isNetworkAccessAllowed) _Bool networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property(nonatomic) long long version; // @synthesize version=_version;
 @property(nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
+- (_Bool)isExplicitUserAction;
+- (_Bool)streamingIntentAllowsFallbackToDownload;
+- (_Bool)hasValidTimeRange;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)videoVersion;
 - (long long)videoDeliveryMode;
 - (id)shortDescription;

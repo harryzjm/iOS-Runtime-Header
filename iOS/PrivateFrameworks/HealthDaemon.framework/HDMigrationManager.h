@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDContentProtectionObserver-Protocol.h>
-#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDProfileReadyObserver-Protocol.h>
 
 @class HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDMigrationManager : NSObject <HDContentProtectionObserver, HDHealthDaemonReadyObserver>
+@interface HDMigrationManager : NSObject <HDContentProtectionObserver, HDProfileReadyObserver>
 {
     _Bool _needsProtectedDataMigration;
     HDProfile *_profile;
@@ -20,12 +20,8 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool needsProtectedDataMigration; // @synthesize needsProtectedDataMigration=_needsProtectedDataMigration;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
-- (void)_queue_performMigrationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)daemonReady:(id)arg1;
+- (void)profileDidBecomeReady:(id)arg1;
 - (void)performMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;

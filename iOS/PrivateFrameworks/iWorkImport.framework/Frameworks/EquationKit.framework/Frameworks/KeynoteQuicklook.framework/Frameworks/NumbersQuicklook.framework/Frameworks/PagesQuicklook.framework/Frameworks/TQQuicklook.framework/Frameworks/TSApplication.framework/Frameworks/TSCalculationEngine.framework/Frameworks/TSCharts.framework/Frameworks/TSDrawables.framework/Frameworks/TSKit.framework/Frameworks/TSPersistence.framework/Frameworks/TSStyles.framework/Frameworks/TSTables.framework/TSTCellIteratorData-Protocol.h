@@ -14,7 +14,7 @@
 @property(readonly, nonatomic) _Bool cellHasCustomFormat;
 @property(readonly, nonatomic) _Bool cellHasConditionalStyle;
 @property(readonly, nonatomic) _Bool cellHasFormula;
-@property(readonly, nonatomic) int cellValueType;
+@property(readonly, nonatomic) unsigned char cellValueType;
 @property(readonly, nonatomic) struct TSUCellRect mergeRange;
 @property(readonly, nonatomic) TSTCellFormulaSpec *formulaSpec;
 @property(readonly, nonatomic) TSTCell *cell;

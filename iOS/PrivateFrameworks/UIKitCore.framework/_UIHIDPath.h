@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) long long deliveryPhase; // @synthesize deliveryPhase=_deliveryPhase;
 @property(retain, nonatomic) NSNumber *overridePathId; // @synthesize overridePathId=_overridePathId;
+@property(nonatomic) struct CGPoint position; // @synthesize position=_position;
 @property(readonly, nonatomic, getter=isTouching) _Bool touching; // @synthesize touching=_touching;
 @property(readonly, nonatomic) long long generationCount; // @synthesize generationCount=_generationCount;
 @property(readonly, nonatomic) double twist; // @synthesize twist=_twist;
@@ -40,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double minorRadius; // @synthesize minorRadius=_minorRadius;
 @property(readonly, nonatomic) double force; // @synthesize force=_force;
 @property(readonly, nonatomic) unsigned int identity; // @synthesize identity=_identity;
-@property(readonly, nonatomic) struct CGPoint position; // @synthesize position=_position;
 @property(readonly, nonatomic) NSNumber *pathId; // @synthesize pathId=_pathId;
 - (void)applyTransform:(struct CGAffineTransform)arg1;
 - (void)updateWithHIDEvent:(struct __IOHIDEvent *)arg1;

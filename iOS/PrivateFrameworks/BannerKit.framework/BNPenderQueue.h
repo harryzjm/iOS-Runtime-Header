@@ -26,8 +26,7 @@
 - (_Bool)setSuspended:(_Bool)arg1 forReason:(id)arg2;
 @property(readonly, copy, nonatomic) NSSet *activeSuspensionReasons;
 @property(readonly, nonatomic, getter=isSuspended) _Bool suspended;
-- (id)pullAllPresentablesWithRequesterIdentifier:(id)arg1;
-- (id)pullPresentablesWithRequestIdentifier:(id)arg1 andRequesterIdentifier:(id)arg2;
+- (id)pullPresentablesWithIdentification:(id)arg1;
 - (id)peekPresentable;
 - (void)enqueuePresentable:(id)arg1 withOptions:(unsigned long long)arg2 userInfo:(id)arg3;
 - (_Bool)setPenderSuspended:(_Bool)arg1 forRequesterWithIdentifier:(id)arg2 reason:(id)arg3;

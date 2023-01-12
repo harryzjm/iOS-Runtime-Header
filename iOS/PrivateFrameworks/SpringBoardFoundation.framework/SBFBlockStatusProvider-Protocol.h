@@ -8,6 +8,7 @@
 
 @protocol SBFBlockStatusProvider <NSObject>
 - (double)timeIntervalUntilUnblockedSinceReferenceDate;
+- (_Bool)isUserRequestedEraseEnabled;
 - (_Bool)isThermallyBlocked;
 - (_Bool)isTemporarilyBlocked;
 - (_Bool)isPermanentlyBlocked;

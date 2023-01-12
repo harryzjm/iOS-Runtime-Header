@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/CKSQLiteItem-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKAccountOverrideInfo, CKUploadRequestConfiguration, NSString;
+@class CKAccountOverrideInfo, CKTestDeviceReference, CKUploadRequestConfiguration, NSDictionary, NSString;
 
-@interface CKContainerOptions : NSObject <NSSecureCoding, NSCopying>
+@interface CKContainerOptions : NSObject <CKSQLiteItem, NSSecureCoding, NSCopying>
 {
     _Bool _captureResponseHTTPHeaders;
     _Bool _useZoneWidePCS;
@@ -20,9 +21,11 @@
     _Bool _forceEnableReadOnlyManatee;
     _Bool _useClearAssetEncryption;
     _Bool _accountInfoCacheIsDisabled;
-    _Bool _wantsSiloedContext;
+    _Bool _useAnonymousToServerShareParticipants;
     _Bool _returnPCSMetadata;
-    CKAccountOverrideInfo *_accountInfoOverride;
+    _Bool _returnRequestOperationProto;
+    _Bool _holdAllOperations;
+    CKAccountOverrideInfo *_accountOverrideInfo;
     unsigned long long _mmcsEncryptionSupport;
     NSString *_encryptionServiceName;
     NSString *_applicationBundleIdentifierOverrideForContainerAccess;
@@ -31,18 +34,24 @@
     NSString *_applicationBundleIdentifierOverrideForTCC;
     CKUploadRequestConfiguration *_uploadRequestConfiguration;
     NSString *_personaIdentifier;
+    NSDictionary *_fakeEntitlements;
+    CKTestDeviceReference *_testDeviceReference;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKTestDeviceReference *testDeviceReference; // @synthesize testDeviceReference=_testDeviceReference;
+@property(nonatomic) _Bool holdAllOperations; // @synthesize holdAllOperations=_holdAllOperations;
+@property(retain, nonatomic) NSDictionary *fakeEntitlements; // @synthesize fakeEntitlements=_fakeEntitlements;
+@property(nonatomic) _Bool returnRequestOperationProto; // @synthesize returnRequestOperationProto=_returnRequestOperationProto;
 @property(retain, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
 @property(retain, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
 @property(nonatomic) _Bool returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
-@property(nonatomic) _Bool wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 @property(copy, nonatomic) NSString *applicationBundleIdentifierOverrideForTCC; // @synthesize applicationBundleIdentifierOverrideForTCC=_applicationBundleIdentifierOverrideForTCC;
 @property(copy, nonatomic) NSString *applicationBundleIdentifierOverrideForPushTopicGeneration; // @synthesize applicationBundleIdentifierOverrideForPushTopicGeneration=_applicationBundleIdentifierOverrideForPushTopicGeneration;
 @property(copy, nonatomic) NSString *applicationBundleIdentifierOverrideForNetworkAttribution; // @synthesize applicationBundleIdentifierOverrideForNetworkAttribution=_applicationBundleIdentifierOverrideForNetworkAttribution;
 @property(copy, nonatomic) NSString *applicationBundleIdentifierOverrideForContainerAccess; // @synthesize applicationBundleIdentifierOverrideForContainerAccess=_applicationBundleIdentifierOverrideForContainerAccess;
+@property(nonatomic) _Bool useAnonymousToServerShareParticipants; // @synthesize useAnonymousToServerShareParticipants=_useAnonymousToServerShareParticipants;
 @property(nonatomic) _Bool accountInfoCacheIsDisabled; // @synthesize accountInfoCacheIsDisabled=_accountInfoCacheIsDisabled;
 @property(nonatomic) _Bool useClearAssetEncryption; // @synthesize useClearAssetEncryption=_useClearAssetEncryption;
 @property(nonatomic) _Bool forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
@@ -50,15 +59,26 @@
 @property(nonatomic) _Bool bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
 @property(copy, nonatomic) NSString *encryptionServiceName; // @synthesize encryptionServiceName=_encryptionServiceName;
 @property(nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
-@property(copy, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
+@property(copy, nonatomic) CKAccountOverrideInfo *accountOverrideInfo; // @synthesize accountOverrideInfo=_accountOverrideInfo;
 @property(nonatomic) _Bool useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property(nonatomic) _Bool captureResponseHTTPHeaders; // @synthesize captureResponseHTTPHeaders=_captureResponseHTTPHeaders;
-- (void)setApplicationBundleIdentifierOverride:(id)arg1;
+- (id)initWithSqliteRepresentation:(id)arg1;
+- (id)sqliteRepresentation;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setApplicationBundleIdentifierOverride:(id)arg1;
+@property(copy, nonatomic) CKAccountOverrideInfo *accountInfoOverride;
 - (void)setUseMMCSEncryptionV2:(_Bool)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)ck_bindInStatement:(id)arg1 atIndex:(unsigned long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

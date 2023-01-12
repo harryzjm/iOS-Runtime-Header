@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
         _Bool isInitialized;
         _Bool itemType;
         _Bool url;
+        _Bool reason;
         _Bool backedByStoreItemMetadata;
         _Bool album;
         _Bool playlist;

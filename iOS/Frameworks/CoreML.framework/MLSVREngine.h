@@ -18,14 +18,14 @@
     struct svm_model *_model;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 @property _Bool freeModelOnDealloc; // @synthesize freeModelOnDealloc=_freeModelOnDealloc;
 @property struct svm_model *model; // @synthesize model=_model;
 @property(readonly) unsigned long long inputSize; // @synthesize inputSize=_inputSize;
 @property(readonly) _Bool isInputSizeLowerBoundOnly; // @synthesize isInputSizeLowerBoundOnly=_isInputSizeLowerBoundOnly;
 - (id)predict:(id)arg1;
 - (void)deallocSVMNodeVector:(struct svm_node *)arg1;
-- (void)fillSVMNodeVector:(struct svm_node *)arg1 values:(double *)arg2 count:(unsigned long long)arg3;
+- (void)fillSVMNodeVector:(struct svm_node *)arg1 values:(const double *)arg2 count:(unsigned long long)arg3;
 - (struct svm_node *)allocSVMNodeVector:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithSVMModel:(struct svm_model *)arg1 freeOnDealloc:(_Bool)arg2 isInputSizeLowerBoundOnly:(_Bool)arg3 inputSize:(unsigned long long)arg4;

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_focusGroupDescriptor;
+- (id)focusGroupIdentifier;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (struct CGRect)_axAdjustedFrameForFrame:(struct CGRect)arg1;
 - (_Bool)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;

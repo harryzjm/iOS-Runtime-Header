@@ -12,6 +12,7 @@
 
 @interface FMFMapImageRequest : NSObject <NSSecureCoding>
 {
+    _Bool _isShifted;
     _Bool _cachingEnabled;
     CLLocation *_location;
     double _altitude;
@@ -19,20 +20,26 @@
     double _width;
     double _height;
     long long _priority;
+    double _radius;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) double radius; // @synthesize radius=_radius;
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(nonatomic) _Bool cachingEnabled; // @synthesize cachingEnabled=_cachingEnabled;
 @property(nonatomic) double height; // @synthesize height=_height;
 @property(nonatomic) double width; // @synthesize width=_width;
 @property(nonatomic) double pitch; // @synthesize pitch=_pitch;
 @property(nonatomic) double altitude; // @synthesize altitude=_altitude;
+@property(nonatomic) _Bool isShifted; // @synthesize isShifted=_isShifted;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property(readonly, nonatomic) NSString *key;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLocation:(id)arg1 isShifted:(_Bool)arg2 radius:(double)arg3 width:(double)arg4 height:(double)arg5 andCachingEnabled:(_Bool)arg6;
+- (id)initWithLocation:(id)arg1 radius:(double)arg2 width:(double)arg3 height:(double)arg4 andCachingEnabled:(_Bool)arg5;
+- (id)initWithLocation:(id)arg1 isShifted:(_Bool)arg2 altitude:(double)arg3 pitch:(double)arg4 width:(double)arg5 height:(double)arg6 andCachingEnabled:(_Bool)arg7;
 - (id)initWithLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 height:(double)arg5 andCachingEnabled:(_Bool)arg6;
 
 @end

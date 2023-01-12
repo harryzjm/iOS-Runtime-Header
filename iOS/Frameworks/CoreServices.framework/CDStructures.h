@@ -25,7 +25,7 @@ struct BindingEvaluator {
     unsigned long long _field10;
     unsigned int _field11;
     unsigned int _field12;
-    struct vector<LSBundleClass, std::__1::allocator<LSBundleClass>> _field13;
+    struct vector<LSBundleClass, std::allocator<LSBundleClass>> _field13;
     CDUnknownBlockType _field14;
     id _field15;
     CDUnknownBlockType _field16;
@@ -61,8 +61,6 @@ struct Context {
     NSError *_error;
 };
 
-struct ExtendedBinding;
-
 struct FileInfo {
     unsigned int _field1;
     unsigned int _field2;
@@ -91,7 +89,7 @@ struct LSBinding {
     unsigned int bundle;
     struct LSBundleData *bundleData;
     unsigned int claim;
-    CDStruct_183601bc *claimData;
+    struct *claimData;
     id userInfo;
     NSString *reason;
 };
@@ -101,6 +99,7 @@ struct LSBundleBaseData {
     unsigned int container;
     unsigned int execPath;
     unsigned int exactIdentifier;
+    unsigned int teamID;
     unsigned int platform;
     int registrationTime;
     struct LSVersionNumber version;
@@ -114,13 +113,23 @@ struct LSBundleBaseData {
     unsigned int localizedMicrophoneUsageDescription;
     unsigned int codeInfoIdentifier;
     unsigned int signerOrganization;
+    unsigned int signerIdentity;
     unsigned int infoDictionary;
     unsigned int entitlements;
     unsigned int groupContainers;
     unsigned char containingDirectoryClass;
     unsigned char profileValidationState;
     unsigned int intentDefinitionURLs;
-    unsigned short _archFlags;
+    unsigned short _sliceMask;
+    unsigned int signatureVersion;
+    struct LSBundleBaseFlags flags;
+};
+
+struct LSBundleBaseFlags {
+    unsigned int appleInternal:1;
+    unsigned int requiresObjCGarbageCollection:1;
+    unsigned int builtWithTSan:1;
+    unsigned int _reserved:1;
 };
 
 struct LSBundleData {
@@ -133,6 +142,7 @@ struct LSBundleData {
     struct LSBundleMoreFlags moreFlags;
     unsigned int _hfsType;
     int _mtime;
+    unsigned int minSystemVersionPlatform;
     struct LSVersionNumber _minSystemVersion;
     struct LSVersionNumber _maxSystemVersion;
     unsigned int appStoreToolsBuildVersion;
@@ -140,7 +150,6 @@ struct LSBundleData {
     unsigned long long compatibilityState;
     unsigned long long itemID;
     unsigned int deviceFamilies;
-    unsigned int teamID;
     unsigned int identifier;
     unsigned int counterpartIdentifiers;
     unsigned int filename;
@@ -149,7 +158,6 @@ struct LSBundleData {
     unsigned int installType;
     unsigned long long installFailureReason;
     unsigned int vendorName;
-    unsigned int signerIdentity;
     unsigned int appType;
     unsigned long long staticDiskUsage;
     unsigned long long purchaserDSID;
@@ -165,6 +173,7 @@ struct LSBundleData {
     unsigned long long genreID;
     unsigned int genre;
     unsigned int primaryIconName;
+    unsigned int alternatePrimaryIconName;
     unsigned int iconsDict;
     unsigned int iconFileNames;
     unsigned int libraryPath;
@@ -174,7 +183,7 @@ struct LSBundleData {
     unsigned int plugins;
     unsigned int extensionPoints;
     unsigned int activityTypes;
-    unsigned int schemesWhitelist;
+    unsigned int queriableSchemes;
     unsigned int bgPermittedIDs;
     unsigned int carPlayInstrumentClusterURLSchemes;
     unsigned int appContainerAlias;
@@ -188,6 +197,9 @@ struct LSBundleData {
     int recordModificationTime;
     unsigned int supportedGameControllers;
     unsigned int mobileInstallIDs;
+    unsigned int applicationManagementDomain;
+    unsigned int stashedAppDict;
+    unsigned int linkedParentBundleIdentifier;
     unsigned int _reserved5;
 };
 
@@ -196,7 +208,11 @@ struct LSBundleMoreFlags {
     unsigned int isMailClient:1;
     unsigned int supportsControllerUserInteraction:1;
     unsigned int supportsSpotlightQueryContinuation:1;
+    unsigned int supportsSpotlightActions:1;
     unsigned int isCodeSigningInfoNotAuthoritative:1;
+    unsigned int applicationQueriesSchemesTooBig:1;
+    unsigned int isUpdateAvailable:1;
+    unsigned int isPlaygroundsApp:1;
     unsigned int _reserved:1;
 };
 
@@ -248,7 +264,7 @@ struct LSSchema {
         struct CSMap map;
         unsigned int bindingClass;
         unsigned char isCaseInsensitive;
-    } bindingMaps[12];
+    } bindingMaps[13];
     unsigned int handlerPrefTable;
     unsigned int containerTable;
     unsigned int aliasTable;
@@ -259,6 +275,11 @@ struct LSSchema {
     unsigned int localizedStringTable;
     unsigned int canonicalStringTable;
     struct _LSSchemaCache *_cache;
+};
+
+struct LSSliceData {
+    int _field1;
+    int _field2;
 };
 
 struct LSVersionNumber {
@@ -287,6 +308,16 @@ struct Rect {
     short _field4;
 };
 
+struct State {
+    id _field1;
+    _Bool _field2;
+    _Bool _field3;
+    _Bool _field4;
+    _Bool _field5;
+    _Bool _field6;
+    _Bool _field7;
+};
+
 struct _CSMapHeader;
 
 struct _LSSchemaCache;
@@ -296,23 +327,15 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*> *_field1;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*> *_field1;
-};
-
-struct atomic<int> {
-    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
-        _Atomic int __a_value;
+struct atomic<bool> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
+        _Atomic _Bool __a_value;
     } __a_;
 };
 
-struct atomic_flag {
-    struct __cxx_atomic_impl<bool, std::__1::__cxx_atomic_base_impl<bool>> {
-        _Atomic _Bool __a_value;
+struct atomic<int> {
+    struct __cxx_atomic_impl<int, std::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
     } __a_;
 };
 
@@ -332,116 +355,33 @@ struct optional<LaunchServices::BindingEvaluator> {
     _Bool _field2;
 };
 
-struct optional<bool> {
+struct optional<audit_token_t> {
     union {
-        char _field1;
-        _Bool _field2;
-    } _field1;
-    _Bool _field2;
+        char __null_state_;
+        CDStruct_4c969caf __val_;
+    } ;
+    _Bool __engaged_;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct pair<SEL *, void (*)(id, SEL *)>;
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unordered_map<SEL *, id, std::__1::hash<SEL *>, std::__1::equal_to<SEL *>, std::__1::allocator<std::__1::pair<SEL *const, id>>> {
-    struct __hash_table<std::__1::__hash_value_type<SEL *, id>, std::__1::__unordered_map_hasher<SEL *, std::__1::__hash_value_type<SEL *, id>, std::__1::hash<SEL *>, true>, std::__1::__unordered_map_equal<SEL *, std::__1::__hash_value_type<SEL *, id>, std::__1::equal_to<SEL *>, true>, std::__1::allocator<std::__1::__hash_value_type<SEL *, id>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SEL *, id>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<SEL *, std::__1::__hash_value_type<SEL *, id>, std::__1::hash<SEL *>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<SEL *, std::__1::__hash_value_type<SEL *, id>, std::__1::equal_to<SEL *>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_set<std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> {
-    struct __hash_table<std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::basic_string<char>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::hash<std::__1::basic_string<char>>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::equal_to<std::__1::basic_string<char>>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct vector<LSBundleClass, std::__1::allocator<LSBundleClass>> {
+struct vector<LSBundleClass, std::allocator<LSBundleClass>> {
     unsigned int *_field1;
     unsigned int *_field2;
-    struct __compressed_pair<LSBundleClass *, std::__1::allocator<LSBundleClass>> {
+    struct __compressed_pair<LSBundleClass *, std::allocator<LSBundleClass>> {
         unsigned int *_field1;
     } _field3;
 };
 
-struct vector<LaunchServices::BindingEvaluation::ExtendedBinding, std::__1::allocator<LaunchServices::BindingEvaluation::ExtendedBinding>> {
-    struct ExtendedBinding *_field1;
-    struct ExtendedBinding *_field2;
-    struct __compressed_pair<LaunchServices::BindingEvaluation::ExtendedBinding *, std::__1::allocator<LaunchServices::BindingEvaluation::ExtendedBinding>> {
-        struct ExtendedBinding *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::pair<SEL *, void (*)(id, SEL *)>, std::__1::allocator<std::__1::pair<SEL *, void (*)(id, SEL *)>>> {
-    struct pair<SEL *, void (*)(id, SEL *)> *_field1;
-    struct pair<SEL *, void (*)(id, SEL *)> *_field2;
-    struct __compressed_pair<std::__1::pair<SEL *, void (*)(id, SEL *)>*, std::__1::allocator<std::__1::pair<SEL *, void (*)(id, SEL *)>>> {
-        struct pair<SEL *, void (*)(id, SEL *)> *_field1;
-    } _field3;
-};
-
-struct vector<unsigned int, std::__1::allocator<unsigned int>> {
+struct vector<unsigned int, std::allocator<unsigned int>> {
     unsigned int *__begin_;
     unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
+    struct __compressed_pair<unsigned int *, std::allocator<unsigned int>> {
         unsigned int *__value_;
     } __end_cap_;
 };
-
-#if 0
-// Names with conflicting types:
-typedef struct {
-    id _field1;
-    _Bool _field2;
-    _Bool _field3;
-    _Bool _field4;
-    _Bool _field5;
-    _Bool _field6;
-} State_54569a5c;
-
-#endif
 
 #pragma mark Typedef'd Structures
 
@@ -490,8 +430,6 @@ typedef struct {
     unsigned int val[8];
 } CDStruct_4c969caf;
 
-typedef struct CDStruct_183601bc;
-
 // Template types
 typedef struct optional<LSBinding> {
     union {
@@ -507,38 +445,7 @@ typedef struct optional<LaunchServices::BindingEvaluator> {
         struct BindingEvaluator _field2;
     } _field1;
     _Bool _field2;
-} optional_4acbcc83;
-
-typedef struct unordered_set<std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> {
-    struct __hash_table<std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::basic_string<char>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::hash<std::__1::basic_string<char>>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::equal_to<std::__1::basic_string<char>>> {
-            float _field1;
-        } _field4;
-    } _field1;
-} unordered_set_7cdfe647;
-
-typedef struct vector<std::__1::pair<SEL *, void (*)(id, SEL *)>, std::__1::allocator<std::__1::pair<SEL *, void (*)(id, SEL *)>>> {
-    struct pair<SEL *, void (*)(id, SEL *)> *_field1;
-    struct pair<SEL *, void (*)(id, SEL *)> *_field2;
-    struct __compressed_pair<std::__1::pair<SEL *, void (*)(id, SEL *)>*, std::__1::allocator<std::__1::pair<SEL *, void (*)(id, SEL *)>>> {
-        struct pair<SEL *, void (*)(id, SEL *)> *_field1;
-    } _field3;
-} vector_a8c3fa3f;
-
-typedef struct vector<unsigned int, std::__1::allocator<unsigned int>> {
-    unsigned int *__begin_;
-    unsigned int *__end_;
-    struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
-        unsigned int *__value_;
-    } __end_cap_;
-} vector_12da65de;
+} optional_effd12a0;
 
 #pragma mark Typedef'd Unions
 

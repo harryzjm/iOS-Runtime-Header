@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 
 @end
 

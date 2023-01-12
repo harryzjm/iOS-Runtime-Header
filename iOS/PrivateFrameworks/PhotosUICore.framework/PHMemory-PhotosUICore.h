@@ -7,7 +7,9 @@
 #import <Photos/PHMemory.h>
 
 @interface PHMemory (PhotosUICore)
+- (void)px_assignStoryTitleCategoryIfNeeded;
 - (id)px_mutatedPhotosGraphPropertiesWithRejectReason:(unsigned long long)arg1;
+- (id)px_photosGraphDataByMutatingPropertiesUsingBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (_Bool)px_shouldUseFacesRectForSmartCropping;
 @end
 

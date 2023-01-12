@@ -16,6 +16,7 @@
     NSString *_displayName;
     _Bool _prohibitedByStore;
     _Bool _developer;
+    _Bool _application;
     _Bool _isSetTopBoxSupported;
     _Bool _isSTBOptOutAllowed;
     VSOptional *_uniqueID;
@@ -33,10 +34,14 @@
     NSString *_providerAppArtworkTemplateURL;
     NSNumber *_appPlacementPosition;
     NSString *_userToken;
+    NSArray *_appDescriptions;
+    NSArray *_storefronts;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *storefronts; // @synthesize storefronts=_storefronts;
+@property(copy, nonatomic) NSArray *appDescriptions; // @synthesize appDescriptions=_appDescriptions;
 @property(copy, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
 @property(copy, nonatomic) NSNumber *appPlacementPosition; // @synthesize appPlacementPosition=_appPlacementPosition;
 @property(copy, nonatomic) NSString *providerAppArtworkTemplateURL; // @synthesize providerAppArtworkTemplateURL=_providerAppArtworkTemplateURL;
@@ -47,6 +52,7 @@
 @property(copy, nonatomic) NSArray *appAdamIDs; // @synthesize appAdamIDs=_appAdamIDs;
 @property(copy, nonatomic) NSURL *appStoreRoomURL; // @synthesize appStoreRoomURL=_appStoreRoomURL;
 @property(copy, nonatomic) NSURL *authenticationURL; // @synthesize authenticationURL=_authenticationURL;
+@property(nonatomic, getter=isApplication) _Bool application; // @synthesize application=_application;
 @property(nonatomic, getter=isDeveloper) _Bool developer; // @synthesize developer=_developer;
 @property(nonatomic, getter=isProhibitedByStore) _Bool prohibitedByStore; // @synthesize prohibitedByStore=_prohibitedByStore;
 @property(copy, nonatomic) NSArray *supportedAuthenticationSchemes; // @synthesize supportedAuthenticationSchemes=_supportedAuthenticationSchemes;
@@ -59,6 +65,7 @@
 - (_Bool)isFullySupportedForRequestsExpectingAuthenticationSchemes:(id)arg1;
 - (_Bool)supportsRequestsExpectingAuthenticationSchemes:(id)arg1;
 @property(readonly, nonatomic) VSOptional *displayName;
+- (id)initWithApplicationProvider:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

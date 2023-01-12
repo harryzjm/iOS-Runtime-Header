@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSArray, NSBundle, NSExtension, NSString;
+@class NSArray, NSBundle, NSExtension, NSString, UIImage;
 
 @interface UIKeyboardInputMode <NSCopying>
 {
@@ -19,6 +19,8 @@
     NSString *softwareLayout;
     NSString *hardwareLayout;
     NSArray *_multilingualLanguages;
+    UIImage *_cachedIcon;
+    NSString *_cachedSizeCategory;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -29,6 +31,8 @@
 + (id)hardwareLayoutFromIdentifier:(id)arg1;
 + (id)softwareLayoutFromIdentifier:(id)arg1;
 + (id)canonicalLanguageIdentifierFromIdentifier:(id)arg1;
+@property(retain, nonatomic) NSString *cachedSizeCategory; // @synthesize cachedSizeCategory=_cachedSizeCategory;
+@property(retain, nonatomic) UIImage *cachedIcon; // @synthesize cachedIcon=_cachedIcon;
 @property(nonatomic) _Bool extensionInputModeHasDictation; // @synthesize extensionInputModeHasDictation=_extensionInputModeHasDictation;
 @property(retain, nonatomic) NSArray *multilingualLanguages; // @synthesize multilingualLanguages=_multilingualLanguages;
 @property(nonatomic) _Bool isDisplayed; // @synthesize isDisplayed;
@@ -38,6 +42,14 @@
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier;
 @property(retain, nonatomic) NSString *languageWithRegion; // @synthesize languageWithRegion=_languageWithRegion;
 @property(retain, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
+- (id)imageForInputModeLabel:(id)arg1 secondaryIconLabel:(id)arg2 withBackground:(_Bool)arg3;
+- (void)drawStringInRect:(id)arg1 inRect:(struct CGRect)arg2 useSmallFont:(_Bool)arg3 scale:(double)arg4;
+- (id)_indicatorIconWithBackground:(_Bool)arg1;
+- (double)languageIndicatorScale;
+- (void)_getIconLabel:(out id *)arg1 secondaryIconLabel:(out id *)arg2;
+- (id)_fallbackIconLabel;
+- (id)indicatorTextIcon;
+- (id)indicatorIcon;
 - (void)setLastUsedDictationLanguage;
 @property(retain, nonatomic) NSString *dictationLanguage;
 @property(readonly, nonatomic) NSString *dictationDisplayName;
@@ -56,11 +68,13 @@
 @property(readonly, nonatomic) _Bool isDefaultRightToLeft;
 @property(readonly, nonatomic) NSString *extendedDisplayName;
 @property(readonly, nonatomic) NSString *displayName;
+@property(readonly, nonatomic) _Bool showSWLayoutWithHWKeyboard;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) _Bool isSpecializedInputMode;
 @property(readonly, retain, nonatomic) NSArray *normalizedIdentifierLevels;
 @property(readonly, nonatomic) NSString *identifierWithLayouts;
+- (void)preferencesControllerChanged:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;

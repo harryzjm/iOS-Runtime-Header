@@ -20,7 +20,7 @@
 - (id)_varyStateForURL:(id)arg1;
 - (id)_diskCacheDefaultPath;
 - (id)_cacheDirectory;
-- (const struct _CFURLCache *)_CFURLCache;
+- (const void *)_CFURLCache;
 - (void)dealloc;
 @property(readonly) unsigned long long currentDiskUsage;
 @property(readonly) unsigned long long currentMemoryUsage;
@@ -31,11 +31,13 @@
 - (void)removeCachedResponseForRequest:(id)arg1;
 - (void)storeCachedResponse:(id)arg1 forRequest:(id)arg2;
 - (id)cachedResponseForRequest:(id)arg1;
+- (void)set_maxCacheableEntrySizeRatio:(double)arg1;
+- (double)_maxCacheableEntrySizeRatio;
 - (void)flushWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 relativePath:(id)arg3;
 - (id)initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 diskPath:(id)arg3;
 - (id)initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 directoryURL:(id)arg3;
-- (id)_initWithExistingCFURLCache:(struct _CFURLCache *)arg1;
+- (id)_initWithExistingCFURLCache:(void *)arg1;
 - (id)_initVaryHeaderEnabledWithPath:(id)arg1;
 - (id)init;
 - (id)_initWithIdentifier:(id)arg1 memoryCapacity:(long long)arg2 diskCapacity:(long long)arg3 private:(_Bool)arg4;

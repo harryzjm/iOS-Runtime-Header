@@ -50,15 +50,17 @@
 - (void)webViewController:(SFWebViewController *)arg1 didStartProvisionalNavigation:(WKNavigation *)arg2;
 
 @optional
+- (void)webViewControllerDidUpdateThemeColor:(SFWebViewController *)arg1;
 - (_Bool)webViewControllerCanPromptForAccountSecurityRecommendation:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 willGoToBackForwardListItem:(WKBackForwardListItem *)arg2 inPageCache:(_Bool)arg3;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuDidEndForElement:(WKContextMenuElementInfo *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuForElement:(WKContextMenuElementInfo *)arg2 willCommitWithAnimator:(id <UIContextMenuInteractionCommitAnimating>)arg3;
+- (UIViewController *)webViewController:(SFWebViewController *)arg1 contextMenuContentPreviewForElement:(WKContextMenuElementInfo *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuWillPresentForElement:(WKContextMenuElementInfo *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 contextMenuConfigurationForElement:(WKContextMenuElementInfo *)arg2 completionHandler:(void (^)(UIContextMenuConfiguration *))arg3;
 - (void)webViewController:(SFWebViewController *)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(NSString *)arg3 completionHandler:(void (^)(long long))arg4;
 - (void)webViewControllerDidFirstPaint:(SFWebViewController *)arg1;
-- (void)authenticationChallengeDidNegotiateModernTLS:(NSURLAuthenticationChallenge *)arg1;
+- (void)authenticationChallengeDidNegotiateModernTLS:(NSURL *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 authenticationChallenge:(NSURLAuthenticationChallenge *)arg2 shouldAllowLegacyTLS:(void (^)(_Bool))arg3;
 - (void)webViewControllerDidShowSafeBrowsingWarning:(SFWebViewController *)arg1;
 @end

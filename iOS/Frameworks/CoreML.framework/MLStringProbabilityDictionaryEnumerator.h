@@ -8,16 +8,16 @@
 
 @interface MLStringProbabilityDictionaryEnumerator : NSEnumerator
 {
-    __map_iterator_fde1b26e _iter;
-    __map_iterator_fde1b26e _iterEnd;
+    __map_iterator_722b6d83 _iter;
+    __map_iterator_722b6d83 _iterEnd;
 }
 
-+ (id)enumeratorFromMap:(map_f36cdd6d *)arg1;
++ (id)enumeratorFromMap:(void *)arg1;
 - (id).cxx_construct;
-@property(nonatomic) __map_iterator_fde1b26e iterEnd; // @synthesize iterEnd=_iterEnd;
-@property(nonatomic) __map_iterator_fde1b26e iter; // @synthesize iter=_iter;
+@property(nonatomic) __map_iterator_722b6d83 iterEnd; // @synthesize iterEnd=_iterEnd;
+@property(nonatomic) __map_iterator_722b6d83 iter; // @synthesize iter=_iter;
 - (id)nextObject;
-- (id)initWithStrMap:(map_f36cdd6d *)arg1;
+- (id)initWithStrMap:(void *)arg1;
 
 @end
 

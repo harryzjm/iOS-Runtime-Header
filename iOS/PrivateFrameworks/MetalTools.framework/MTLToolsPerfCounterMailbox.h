@@ -10,9 +10,9 @@ __attribute__((visibility("hidden")))
 @interface MTLToolsPerfCounterMailbox : NSObject
 {
     void *_requester;
-    struct vector<std::__1::pair<NSData *, unsigned long>, std::__1::allocator<std::__1::pair<NSData *, unsigned long>>> _data;
-    struct __wrap_iter<std::__1::pair<NSData *, unsigned long>*> {
-        struct pair<NSData *, unsigned long> *__i;
+    struct vector<std::pair<NSData *, unsigned long>, std::allocator<std::pair<NSData *, unsigned long>>> _data;
+    struct __wrap_iter<std::pair<NSData *, unsigned long>*> {
+        void *__i;
     } _iterator;
 }
 

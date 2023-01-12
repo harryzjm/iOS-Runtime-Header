@@ -10,6 +10,8 @@
 @protocol TUMomentsControllerDataSourceDelegate;
 
 @protocol TUMomentsControllerDataSource <NSObject>
+@property(readonly, copy, nonatomic) NSString *processName;
+@property(readonly, nonatomic) int processIdentifier;
 @property(nonatomic) __weak id <TUMomentsControllerDataSourceDelegate> delegate;
 - (void)invalidate;
 - (void)endRequestWithTransactionID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;

@@ -9,6 +9,9 @@
 @class PUTrimToolController;
 
 @protocol PUTrimToolControllerDelegate <NSObject>
+- (void)removeFocusDecisionAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)trimToolController:(PUTrimToolController *)arg1 didEndInteractivelyEditingElement:(long long)arg2;
+- (void)trimToolController:(PUTrimToolController *)arg1 didBeginInteractivelyEditingElement:(long long)arg2;
 - (void)trimToolControllerDidChange:(PUTrimToolController *)arg1 state:(unsigned long long)arg2;
 @end
 

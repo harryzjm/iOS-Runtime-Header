@@ -45,11 +45,13 @@
     NSLayoutConstraint *_lineImageCompressedLeadingConstraint;
     UIImageView *_disclosureArrowImageView;
     NSLayoutConstraint *_labelToDisclosureArrowConstraint;
+    NSLayoutConstraint *_lineImageViewHeightConstraint;
     _Bool _showNoConnectionEmDash;
     _Bool _showIncidentIcon;
     _Bool _inactive;
     _Bool _useCompressedGutter;
     _Bool _useCompressedLeading;
+    _Bool _useMultilineDeparturesLabel;
     double _lineImageViewSize;
     NSArray *_departures;
     unsigned long long _departureStyle;
@@ -57,6 +59,8 @@
     NSTimeZone *_departureTimeZone;
     NSString *_incidentTitle;
     id <MKTransitDeparturesCellDelegate> _delegate;
+    NSString *_operatingHours;
+    NSString *_frequency;
     NSDate *_departureCutoffDate;
 }
 
@@ -70,18 +74,21 @@
 + (double)_maxExpectedDepartureLabelWidth;
 + (void)_calculateMaxLabelWidths;
 + (_Bool)_needsUpdateMaxLabelWidths;
-+ (double)labelMarginWithLineImageViewWidth:(double)arg1;
 + (double)maxLineImageWidthforWidth:(double)arg1;
 + (void)_addEmDashAttributes:(id)arg1;
 + (void)_enumerateMinutesUntilDepartureDates:(id)arg1 withReferenceDate:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (id)_nowString;
 + (id)displayableCountdowDepartureDatesFromDates:(id)arg1 withReferenceDate:(id)arg2;
 + (id)_attributedStringForCountdownDepartures:(id)arg1 referenceDate:(id)arg2 isShowingNoConnectionEmDash:(_Bool)arg3;
++ (id)_stringForCountdownDepartures:(id)arg1 referenceDate:(id)arg2 isShowingNoConnectionEmDash:(_Bool)arg3;
 + (id)_stringFromTimestampDate:(id)arg1 departureTimeZone:(id)arg2;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useMultilineDeparturesLabel; // @synthesize useMultilineDeparturesLabel=_useMultilineDeparturesLabel;
 @property(retain, nonatomic) NSDate *departureCutoffDate; // @synthesize departureCutoffDate=_departureCutoffDate;
 @property(nonatomic) _Bool useCompressedLeading; // @synthesize useCompressedLeading=_useCompressedLeading;
 @property(nonatomic) _Bool useCompressedGutter; // @synthesize useCompressedGutter=_useCompressedGutter;
+@property(retain, nonatomic) NSString *frequency; // @synthesize frequency=_frequency;
+@property(retain, nonatomic) NSString *operatingHours; // @synthesize operatingHours=_operatingHours;
 @property(nonatomic, getter=isInactive) _Bool inactive; // @synthesize inactive=_inactive;
 @property(nonatomic) __weak id <MKTransitDeparturesCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *incidentTitle; // @synthesize incidentTitle=_incidentTitle;
@@ -92,8 +99,12 @@
 @property(nonatomic) unsigned long long departureStyle; // @synthesize departureStyle=_departureStyle;
 @property(retain, nonatomic) NSArray *departures; // @synthesize departures=_departures;
 @property(nonatomic) double lineImageViewSize; // @synthesize lineImageViewSize=_lineImageViewSize;
+- (double)_labelToBottomScaledConstantForFullCenteredCellStyle;
+- (double)_labelToTopScaledConstantForFullCenteredCellStyle;
+- (_Bool)_newStationCardUIEnabled;
 - (void)setSeparatorHidden:(_Bool)arg1;
 @property(readonly, nonatomic) double labelMargin;
+- (double)_labelMarginWithLineImageViewWidth:(double)arg1;
 - (void)setIncidentButtonHidden:(_Bool)arg1;
 - (void)_incidentButtonPressed;
 - (void)_removeIncidentIcon;
@@ -134,8 +145,9 @@
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (_Bool)_newStationCardUIEnabled;
 - (void)configureCellForRowIndex:(long long)arg1 withMapItem:(id)arg2 sectionController:(id)arg3 outNextLineIsSame:(_Bool *)arg4;
-- (id)_operatingHoursDescriptionForSequence:(id)arg1 mapItem:(id)arg2;
+- (id)_operatingHoursDescriptionForSequence:(id)arg1 mapItem:(id)arg2 useNewLineDelimeter:(_Bool)arg3;
 - (id)_startEndDatesForSequence:(id)arg1 date:(id)arg2 mapItem:(id)arg3;
 - (void)configureLeadingWithTableViewContentMargin:(double)arg1 width:(double)arg2;
 - (id)multipartStringSeparator;

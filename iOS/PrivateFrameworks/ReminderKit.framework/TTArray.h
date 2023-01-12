@@ -54,11 +54,11 @@
 - (id)initWithDocument:(id)arg1;
 - (id)init;
 - (void)encodeWithCRCoder:(id)arg1;
-- (id)initWithCRCoder:(id)arg1 stringArray:(const struct StringArray *)arg2;
+- (id)initWithCRCoder:(id)arg1 stringArray:(const void *)arg2;
 - (id)initWithCRCoder:(id)arg1;
-- (void)saveToArchive:(struct StringArray *)arg1;
-- (id)initWithArchive:(const struct StringArray *)arg1 andReplicaID:(id)arg2;
-- (id)serializeDataFromArchive:(const struct StringArray *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1 andReplicaID:(id)arg2;
+- (id)serializeDataFromArchive:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,15 +6,19 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class WFAutomationTypeExplanationPlatterView;
+@class NSArray, WFAutomationTypeExplanationPlatterView;
 
 @interface WFAutomationEmptyStateCell : UITableViewCell
 {
     WFAutomationTypeExplanationPlatterView *_automationTypeView;
+    NSArray *_currentConstraints;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
 @property(readonly, nonatomic) WFAutomationTypeExplanationPlatterView *automationTypeView; // @synthesize automationTypeView=_automationTypeView;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateLayoutConstraints;
 - (void)prepareForReuse;
 - (void)configureForAutomationType:(unsigned long long)arg1 buttonTarget:(id)arg2 action:(SEL)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

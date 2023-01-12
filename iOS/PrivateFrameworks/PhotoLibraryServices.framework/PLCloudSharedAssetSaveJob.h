@@ -60,12 +60,11 @@
 - (void)executeDaemonOperationSaveAssetMetadataForCollectionsJobType;
 - (void)_performSaveTransactionAndWaitOnLibrary:(id)arg1 transaction:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_addDownloadNotification:(id)arg1;
-- (short)attemptLightweightReimportAssetData;
+- (short)attemptLightweightReimportAssetDataInLibrary:(id)arg1;
 - (void)_updatePhotoIrisPropertiesIfNecessaryForAsset:(id)arg1 inManagedObjectContext:(id)arg2;
 - (void)_updateAsset:(id)arg1 withImageFileURL:(id)arg2;
-- (_Bool)_processSaveAssetWithPlaceholderKind:(short)arg1 withAssetDataFilePath:(id)arg2;
+- (_Bool)_processSaveAssetWithPlaceholderKind:(short)arg1 inLibrary:(id)arg2 withAssetDataFilePath:(id)arg3;
 - (void)_processInFlightCommentsForAsset:(id)arg1 inAlbum:(id)arg2 inPhotoLibrary:(id)arg3;
-- (_Bool)_parseISO6709String:(id)arg1 outLatitude:(double *)arg2 outLongitude:(double *)arg3;
 - (id)_createPlaceHolderInSharedAlbum:(id)arg1;
 - (void)executeDaemonOperationSaveAssetJobType;
 - (short)placeHolderKindFromAssetMetadataType:(unsigned long long)arg1;

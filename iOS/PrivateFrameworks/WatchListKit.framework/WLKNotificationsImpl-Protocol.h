@@ -9,6 +9,7 @@
 
 @protocol WLKNotificationsImpl
 @property(nonatomic) __weak id <WLKNotificationCenterDelegate> delegate;
+- (_Bool)isCategoryBadgeSettingEnabledByUser:(long long)arg1;
 - (_Bool)isCategoryEnabledByUser:(long long)arg1;
 - (void)setBadgeString:(NSString *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
 - (void)setBadgeNumber:(NSNumber *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;

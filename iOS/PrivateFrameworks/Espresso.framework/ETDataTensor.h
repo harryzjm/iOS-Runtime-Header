@@ -16,17 +16,17 @@
     NSArray *_shape;
     NSArray *_strides;
     NSNumber *_maxNumberOfElements;
-    shared_ptr_acd4b298 _blob;
-    vector_fc1f6154 _allocatedImageData;
+    shared_ptr_619761a4 _blob;
+    vector_13bf02a6 _allocatedImageData;
     struct float_buffer_t _float_buffer;
     struct vImage_Buffer _imageBuffer;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property shared_ptr_acd4b298 blob; // @synthesize blob=_blob;
+@property shared_ptr_619761a4 blob; // @synthesize blob=_blob;
 @property struct float_buffer_t float_buffer; // @synthesize float_buffer=_float_buffer;
-@property vector_fc1f6154 allocatedImageData; // @synthesize allocatedImageData=_allocatedImageData;
+@property vector_13bf02a6 allocatedImageData; // @synthesize allocatedImageData=_allocatedImageData;
 @property struct vImage_Buffer imageBuffer; // @synthesize imageBuffer=_imageBuffer;
 @property(retain, nonatomic) NSNumber *maxNumberOfElements; // @synthesize maxNumberOfElements=_maxNumberOfElements;
 @property(retain, nonatomic) NSArray *strides; // @synthesize strides=_strides;
@@ -36,6 +36,7 @@
 @property(nonatomic) void *dataPointer; // @synthesize dataPointer=_dataPointer;
 - (id)description;
 - (id)initWithBlobContainer:(shared_ptr_f15d0389)arg1;
+- (id)initWithBlobContainer:(shared_ptr_f15d0389)arg1 directBind:(_Bool)arg2;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1 imageParameters:(id)arg2 error:(id *)arg3;
 - (id)initWithData:(void *)arg1 type:(unsigned long long)arg2 shape:(id)arg3 strides:(id)arg4;
 

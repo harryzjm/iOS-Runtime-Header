@@ -9,7 +9,7 @@
 #import <HomeKitBackingStore/HMBMirrorProtocol-Protocol.h>
 #import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@class CKDatabase, HMBCloudDatabase, HMBCloudZoneConfiguration, HMBCloudZoneID, HMBCloudZoneShareModel, HMBLocalZone, HMBModelContainer, HMFUnfairLock, NAFuture, NSMapTable, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSUUID;
+@class CKDatabase, HMBCloudDatabase, HMBCloudZoneConfiguration, HMBCloudZoneID, HMBCloudZoneShareModel, HMBLocalZone, HMBModelContainer, HMFUnfairLock, NAFuture, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSString, NSUUID;
 @protocol HMBCloudZoneDelegate, HMBCloudZoneRebuilder;
 
 @interface HMBCloudZone : HMFObject <HMFLogging, HMBMirrorProtocol>
@@ -26,32 +26,38 @@
     NSUUID *_stateModelID;
     HMBCloudZoneID *_zoneID;
     NSMapTable *_modelClassToRequiresPostProcessingMap;
-    NSMapTable *_inflightPushOperations;
+    NSMutableDictionary *_inProgressPushFuturesByOutputBlockRow;
     HMFUnfairLock *_propertyLock;
     NSString *_deviceIdentifier;
-    NSMutableArray *_ckOperations;
     NAFuture *_shutdownFuture;
     NAFuture *_destroyFuture;
     id <HMBCloudZoneRebuilder> _rebuilder;
-    HMBCloudZoneShareModel *_shareModel;
+    NSOperationQueue *_recordOperationQueue;
     NSOperationQueue *_shareOperationQueue;
+    NAFuture *_queuedCloudPullFuture;
+    NSMutableSet *_queuedFetchRecordsContexts;
+    HMBCloudZoneShareModel *_shareModel;
     NSMutableDictionary *_shareParticipantModelsByClientIdentifier;
     HMBModelContainer *_modelContainer;
+    NSArray *_defaultDesiredKeys;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *defaultDesiredKeys; // @synthesize defaultDesiredKeys=_defaultDesiredKeys;
 @property(retain, nonatomic) HMBModelContainer *modelContainer; // @synthesize modelContainer=_modelContainer;
 @property(readonly, nonatomic) NSMutableDictionary *shareParticipantModelsByClientIdentifier; // @synthesize shareParticipantModelsByClientIdentifier=_shareParticipantModelsByClientIdentifier;
-@property(readonly, nonatomic) NSOperationQueue *shareOperationQueue; // @synthesize shareOperationQueue=_shareOperationQueue;
 @property(retain) HMBCloudZoneShareModel *shareModel; // @synthesize shareModel=_shareModel;
+@property(retain) NSMutableSet *queuedFetchRecordsContexts; // @synthesize queuedFetchRecordsContexts=_queuedFetchRecordsContexts;
+@property(retain) NAFuture *queuedCloudPullFuture; // @synthesize queuedCloudPullFuture=_queuedCloudPullFuture;
+@property(readonly, nonatomic) NSOperationQueue *shareOperationQueue; // @synthesize shareOperationQueue=_shareOperationQueue;
+@property(readonly, nonatomic) NSOperationQueue *recordOperationQueue; // @synthesize recordOperationQueue=_recordOperationQueue;
 @property(retain, nonatomic) id <HMBCloudZoneRebuilder> rebuilder; // @synthesize rebuilder=_rebuilder;
 @property(retain, nonatomic) NAFuture *destroyFuture; // @synthesize destroyFuture=_destroyFuture;
 @property(retain, nonatomic) NAFuture *shutdownFuture; // @synthesize shutdownFuture=_shutdownFuture;
-@property(retain, nonatomic) NSMutableArray *ckOperations; // @synthesize ckOperations=_ckOperations;
 @property(readonly, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property(readonly, nonatomic) HMFUnfairLock *propertyLock; // @synthesize propertyLock=_propertyLock;
-@property(retain, nonatomic) NSMapTable *inflightPushOperations; // @synthesize inflightPushOperations=_inflightPushOperations;
+@property(readonly, nonatomic) NSMutableDictionary *inProgressPushFuturesByOutputBlockRow; // @synthesize inProgressPushFuturesByOutputBlockRow=_inProgressPushFuturesByOutputBlockRow;
 @property(readonly, nonatomic) NSMapTable *modelClassToRequiresPostProcessingMap; // @synthesize modelClassToRequiresPostProcessingMap=_modelClassToRequiresPostProcessingMap;
 @property(retain, nonatomic) HMBCloudZoneID *zoneID; // @synthesize zoneID=_zoneID;
 @property(readonly, nonatomic) _Bool needsZoneDeletion; // @synthesize needsZoneDeletion=_needsZoneDeletion;
@@ -67,7 +73,6 @@
 - (id)attributeDescriptions;
 - (id)logIdentifier;
 - (void)handleDeletion;
-- (void)addCKOperation:(id)arg1;
 - (void)handleUpdatedInternalModels:(id)arg1;
 - (_Bool)isInternalModel:(id)arg1;
 - (id)flush;
@@ -100,18 +105,36 @@
 - (_Bool)populateManateeCloudRecord:(id)arg1 withModel:(id)arg2 encodingContext:(id)arg3 error:(id *)arg4;
 - (id)recordIDForModel:(id)arg1;
 - (_Bool)resolveConflicts:(id)arg1 options:(id)arg2;
-- (id)performCloudPullWithFetchToken:(id)arg1 options:(id)arg2;
 - (id)performCloudPullWithOptions:(id)arg1;
+@property(readonly) _Bool hasPerformedInitialFetch;
+- (id)performCloudPullWithFetchToken:(id)arg1 options:(id)arg2;
 - (id)unregisterSubscriptionForExternalRecordType:(id)arg1;
 - (id)registerSubscriptionForExternalRecordType:(id)arg1;
 @property(readonly, copy) NSSet *subscriptions;
+- (id)_fetchCompleteModelsWithIDs:(id)arg1 force:(_Bool)arg2;
 - (id)fetchCompleteModels:(id)arg1 force:(_Bool)arg2;
 - (id)fetchCompleteModel:(id)arg1 force:(_Bool)arg2;
+- (id)fetchCompleteModelsWithIDs:(id)arg1;
+- (id)fetchCompleteModelWithID:(id)arg1;
 - (id)fetchCompleteModelsForRecordIDs:(id)arg1;
 - (id)fetchCompleteModelForRecordID:(id)arg1;
 - (id)fetchRecordWithRecordID:(id)arg1 canRetry:(_Bool)arg2;
-- (id)fetchRecordsWithRecordIDs:(id)arg1 desiredKeys:(id)arg2;
+- (id)fetchRecordsWithRecordIDs:(id)arg1;
+- (void)_fetchRecordsForContexts:(id)arg1;
+- (id)_fetchRecordsWithRecordIDs:(id)arg1;
 - (id)_triggerOutputForOutputRow:(unsigned long long)arg1 options:(id)arg2;
+- (void)pushGroupWithBlockRow:(unsigned long long)arg1 tuples:(id)arg2 options:(id)arg3 activity:(id)arg4 completionPromise:(id)arg5;
+- (id)participantWithClientIdentifier:(id)arg1;
+@property(readonly, nonatomic) NSSet *participants;
+- (id)_revokeShareForParticipant:(id)arg1 usingShare:(id)arg2;
+- (id)revokeShareForParticipant:(id)arg1;
+- (id)_setWriteAccessEnabled:(_Bool)arg1 forParticipant:(id)arg2 usingShare:(id)arg3;
+- (id)setWriteAccessEnabled:(_Bool)arg1 forParticipant:(id)arg2;
+- (id)_fetchInvitationWithContext:(id)arg1 usingShare:(id)arg2;
+- (id)fetchInvitationWithContext:(id)arg1;
+- (id)fetchCloudShareIDForShareParticipantClientIdentifier:(id)arg1;
+- (id)fetchCurrentParticipantCloudShareID;
+- (id)fetchOwnerParticipantCloudShareID;
 - (id)_pushDeletedParticipantRecordID:(id)arg1;
 - (id)_pushUpdatedShare:(id)arg1 participantRecord:(id)arg2;
 - (id)_pushUpdatedShare:(id)arg1;
@@ -127,17 +150,6 @@
 - (_Bool)handleUpdatedShareParticipantRecord:(id)arg1 error:(id *)arg2;
 - (_Bool)handleUpdatedShare:(id)arg1 error:(id *)arg2;
 - (void)initializeShareModels;
-- (id)participantWithClientIdentifier:(id)arg1;
-@property(readonly, nonatomic) NSSet *participants;
-- (id)_revokeShareForParticipant:(id)arg1 usingShare:(id)arg2;
-- (id)revokeShareForParticipant:(id)arg1;
-- (id)_setWriteAccessEnabled:(_Bool)arg1 forParticipant:(id)arg2 usingShare:(id)arg3;
-- (id)setWriteAccessEnabled:(_Bool)arg1 forParticipant:(id)arg2;
-- (id)_fetchInvitationWithContext:(id)arg1 usingShare:(id)arg2;
-- (id)fetchInvitationWithContext:(id)arg1;
-- (id)fetchCloudShareIDForShareParticipantClientIdentifier:(id)arg1;
-- (id)fetchCurrentParticipantCloudShareID;
-- (id)fetchOwnerParticipantCloudShareID;
 - (id)cloudFieldForEncoding:(unsigned long long)arg1;
 - (id)cloudMetadataForModel:(id)arg1 usingEncoding:(unsigned long long)arg2;
 - (_Bool)populateV4CloudRecord:(id)arg1 withModel:(id)arg2 metadataFieldData:(id)arg3 startEncoding:(unsigned long long)arg4 endEncoding:(unsigned long long)arg5 error:(id *)arg6;

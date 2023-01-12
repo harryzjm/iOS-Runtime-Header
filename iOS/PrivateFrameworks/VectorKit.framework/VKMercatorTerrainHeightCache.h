@@ -12,15 +12,15 @@ __attribute__((visibility("hidden")))
 @interface VKMercatorTerrainHeightCache : NSObject
 {
     id <VKMercatorTerrainHeightProvider> _heightProvider;
-    struct map<md::Anchor *, float, std::__1::less<md::Anchor *>, std::__1::allocator<std::__1::pair<md::Anchor *const, float>>> _anchorToHeight;
+    struct map<md::Anchor *, float, std::less<md::Anchor *>, std::allocator<std::pair<md::Anchor *const, float>>> _anchorToHeight;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) id <VKMercatorTerrainHeightProvider> heightProvider; // @synthesize heightProvider=_heightProvider;
-- (void)invalidateRect:(const Box_3d7e3c2c *)arg1;
-- (void)removeCachedValueForAnchor:(struct Anchor *)arg1;
-- (double)heightForAnchor:(struct Anchor *)arg1;
+- (void)invalidateRect:(const void *)arg1;
+- (void)removeCachedValueForAnchor:(void *)arg1;
+- (double)heightForAnchor:(void *)arg1;
 
 @end
 

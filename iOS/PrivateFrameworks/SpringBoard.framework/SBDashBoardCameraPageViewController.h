@@ -8,6 +8,7 @@
 
 #import <SpringBoard/CSApplicationHosting-Protocol.h>
 #import <SpringBoard/SBDashBoardHostedAppViewControllerDelegate-Protocol.h>
+#import <SpringBoard/SBFZStackParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureInteractionDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGesturePanGestureRecognizerInterfaceDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
@@ -15,9 +16,9 @@
 #import <SpringBoard/SBSceneHandleObserver-Protocol.h>
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 
-@class CSLockScreenSettings, NSSet, NSString, NSTimer, SBDashBoardHostedAppViewController, SBFFluidBehaviorSettings, SBHomeGestureInteraction, SBHomeGestureParticipant, SBLockScreenDefaults, UIView, UIViewFloatAnimatableProperty;
+@class CSLockScreenSettings, NSSet, NSString, NSTimer, SBDashBoardHostedAppViewController, SBFFluidBehaviorSettings, SBFZStackParticipant, SBHomeGestureInteraction, SBHomeGestureParticipant, SBLockScreenDefaults, UIView, UIViewFloatAnimatableProperty;
 
-@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBHomeGestureInteractionDelegate, CSApplicationHosting>
+@interface SBDashBoardCameraPageViewController : CSPageViewController <SBDashBoardHostedAppViewControllerDelegate, SBSceneHandleObserver, SBSystemGestureRecognizerDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate, SBHomeGestureParticipantDelegate, SBFZStackParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBHomeGestureInteractionDelegate, CSApplicationHosting>
 {
     UIView *_maskView;
     UIView *_tintView;
@@ -38,11 +39,13 @@
     SBFFluidBehaviorSettings *_scaleSettings;
     SBFFluidBehaviorSettings *_alphaSettings;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    SBFZStackParticipant *_zStackParticipant;
 }
 
 + (_Bool)isAvailableForConfiguration;
 + (unsigned long long)requiredCapabilities;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBFZStackParticipant *zStackParticipant; // @synthesize zStackParticipant=_zStackParticipant;
 @property(retain, nonatomic) SBHomeGestureParticipant *homeGestureParticipant; // @synthesize homeGestureParticipant=_homeGestureParticipant;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *alphaSettings; // @synthesize alphaSettings=_alphaSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *scaleSettings; // @synthesize scaleSettings=_scaleSettings;
@@ -87,6 +90,8 @@
 - (void)_relinquishHomeGestureOwnership;
 - (void)_requestHomeGestureOwnership;
 - (void)homeGrabberViewDidReceiveClick:(id)arg1;
+- (void)zStackParticipant:(id)arg1 updatePreferences:(id)arg2;
+- (void)zStackParticipantDidChange:(id)arg1;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (void)sceneHandle:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
 - (_Bool)handlesRotationIndependentOfCoverSheet;
@@ -111,6 +116,7 @@
 - (void)didTransitionToVisible:(_Bool)arg1;
 - (void)updateTransitionToVisible:(_Bool)arg1 progress:(double)arg2 mode:(long long)arg3;
 - (void)willTransitionToVisible:(_Bool)arg1;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewWillMoveToWindow:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;

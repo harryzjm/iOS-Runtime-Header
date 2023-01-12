@@ -15,15 +15,18 @@
     _Bool _isKeyAsset;
     _Bool _isMovieCurated;
     _Bool _isRepresentative;
+    _Bool _isUserCurated;
     struct {
         unsigned int isCurated:1;
         unsigned int isExtendedCurated:1;
         unsigned int isKeyAsset:1;
         unsigned int isMovieCurated:1;
         unsigned int isRepresentative:1;
+        unsigned int isUserCurated:1;
     } _has;
 }
 
+@property(nonatomic) _Bool isUserCurated; // @synthesize isUserCurated=_isUserCurated;
 @property(nonatomic) _Bool isExtendedCurated; // @synthesize isExtendedCurated=_isExtendedCurated;
 @property(nonatomic) _Bool isKeyAsset; // @synthesize isKeyAsset=_isKeyAsset;
 @property(nonatomic) _Bool isMovieCurated; // @synthesize isMovieCurated=_isMovieCurated;
@@ -38,6 +41,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsUserCurated;
 @property(nonatomic) _Bool hasIsExtendedCurated;
 @property(nonatomic) _Bool hasIsKeyAsset;
 @property(nonatomic) _Bool hasIsMovieCurated;

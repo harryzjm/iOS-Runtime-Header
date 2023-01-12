@@ -10,19 +10,23 @@
 {
     _Bool _animationFinished;
     _Bool _seenThisContentBefore;
+    _Bool _hardwareWelcome;
+    _Bool _softwareWelcome;
     double _timeOnScreen;
     double _animationLoadTime;
     NSString *_contentID;
     NSString *_collectionID;
+    NSString *_correlationID;
     NSString *_viewMethod;
     NSString *_viewMode;
     NSString *_contentStyle;
     NSString *_widgetType;
 }
 
++ (void)setAppReferrer:(id)arg1;
 + (void)incrementSessionViewNumberForKey:(id)arg1;
-+ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 viewMethod:(id)arg3 contentStyle:(id)arg4 viewMode:(id)arg5 timeOnScreen:(double)arg6 animationLoadTime:(double)arg7 animationFinished:(_Bool)arg8 seenThisContentBefore:(_Bool)arg9;
-+ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 widgetType:(id)arg3;
++ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 viewMethod:(id)arg4 contentStyle:(id)arg5 viewMode:(id)arg6 timeOnScreen:(double)arg7 animationLoadTime:(double)arg8 animationFinished:(_Bool)arg9 seenThisContentBefore:(_Bool)arg10 hardwareWelcome:(_Bool)arg11 softwareWelcome:(_Bool)arg12;
++ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 widgetType:(id)arg4 hardwareWelcome:(_Bool)arg5 softwareWelcome:(_Bool)arg6;
 + (_Bool)updateSessionViewNumber;
 + (void)resetSessionViewNumber;
 + (_Bool)supportsSecureCoding;
@@ -31,8 +35,11 @@
 @property(retain, nonatomic) NSString *contentStyle; // @synthesize contentStyle=_contentStyle;
 @property(retain, nonatomic) NSString *viewMode; // @synthesize viewMode=_viewMode;
 @property(retain, nonatomic) NSString *viewMethod; // @synthesize viewMethod=_viewMethod;
+@property(retain, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
 @property(retain, nonatomic) NSString *collectionID; // @synthesize collectionID=_collectionID;
 @property(retain, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property(nonatomic) _Bool softwareWelcome; // @synthesize softwareWelcome=_softwareWelcome;
+@property(nonatomic) _Bool hardwareWelcome; // @synthesize hardwareWelcome=_hardwareWelcome;
 @property(nonatomic) _Bool seenThisContentBefore; // @synthesize seenThisContentBefore=_seenThisContentBefore;
 @property(nonatomic) _Bool animationFinished; // @synthesize animationFinished=_animationFinished;
 @property(nonatomic) double animationLoadTime; // @synthesize animationLoadTime=_animationLoadTime;
@@ -43,8 +50,8 @@
 - (id)eventName;
 - (_Bool)isWidget;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 widgetType:(id)arg3;
-- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 viewMethod:(id)arg3 contentStyle:(id)arg4 viewMode:(id)arg5 timeOnScreen:(double)arg6 animationLoadTime:(double)arg7 animationFinished:(_Bool)arg8 seenThisContentBefore:(_Bool)arg9;
+- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 widgetType:(id)arg4 hardwareWelcome:(_Bool)arg5 softwareWelcome:(_Bool)arg6;
+- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 viewMethod:(id)arg4 contentStyle:(id)arg5 viewMode:(id)arg6 timeOnScreen:(double)arg7 animationLoadTime:(double)arg8 animationFinished:(_Bool)arg9 seenThisContentBefore:(_Bool)arg10 hardwareWelcome:(_Bool)arg11 softwareWelcome:(_Bool)arg12;
 - (id)initWithCoder:(id)arg1;
 
 @end

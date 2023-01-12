@@ -4,31 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <IconFoundation/IFIconSpecification.h>
 
-@class NSArray;
-
-@interface ISIconSpecification : NSObject
+@interface ISIconSpecification : IFIconSpecification
 {
-    double _maxScale;
-    double _minScale;
-    NSArray *_imageSpecifications;
-    struct CGSize _maxSize;
-    struct CGSize _minSize;
 }
-
-+ (id)defaultIconSpecification;
-+ (id)macosTemplateIconSpecification;
-+ (id)macosIconSpecification;
-- (void).cxx_destruct;
-@property(readonly) NSArray *imageSpecifications; // @synthesize imageSpecifications=_imageSpecifications;
-@property(readonly) double minScale; // @synthesize minScale=_minScale;
-@property(readonly) double maxScale; // @synthesize maxScale=_maxScale;
-@property(readonly) struct CGSize minSize; // @synthesize minSize=_minSize;
-@property(readonly) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
-@property(readonly) NSArray *allImageSpecifications;
-- (id)imageSpecificationForSize:(struct CGSize)arg1 scale:(double)arg2;
-- (id)_initWithImageSpecifiactions:(id)arg1;
 
 @end
 

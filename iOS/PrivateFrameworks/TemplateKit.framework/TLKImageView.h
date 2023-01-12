@@ -4,74 +4,64 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TemplateKit/NUIArrangementContainer-Protocol.h>
-#import <TemplateKit/NUIBoxArrangementDataSource-Protocol.h>
+@class TLKImage, TLKProminenceView, UIFont, UIImageView, UIView;
+@protocol TLKImageViewDelegate;
 
-@class NSString, NUIBoxArrangement, TLKArrangementItem, TLKImage, TLKProminenceView, UIImageView, UIView;
-
-@interface TLKImageView <NUIBoxArrangementDataSource, NUIArrangementContainer>
+@interface TLKImageView
 {
     _Bool _useButtonColoring;
     _Bool _alwaysShowPlaceholderView;
+    _Bool _disableCornerRounding;
     TLKImage *_tlkImage;
     unsigned long long _prominence;
-    long long _verticalAlignment;
-    long long _horizontalAlignment;
+    UIFont *_symbolFont;
+    long long _symbolScale;
+    long long _symbolWeight;
     UIImageView *_imageView;
-    UIView *_shadowContainer;
     TLKProminenceView *_placeholderView;
-    TLKArrangementItem *_sizingHelper;
-    NUIBoxArrangement *_boxArrangement;
+    id <TLKImageViewDelegate> _delegate;
+    unsigned long long _alignment;
+    UIView *_shadowContainer;
     TLKImage *_lastTlkImage;
-    struct CGSize _minimumSize;
-    struct CGSize _maximumSize;
 }
 
-+ (_Bool)imageIsEligibleForShadow:(id)arg1 isTemplate:(_Bool)arg2;
++ (_Bool)hasTransparencyAtPoint:(struct CGPoint)arg1 forCGImage:(struct CGImage *)arg2;
++ (_Bool)checkTransparencyForImageAtCorners:(struct CGImage *)arg1 shouldCropToCircle:(_Bool)arg2;
++ (_Bool)imageIsProbablyOpaque:(id)arg1 tlkImage:(id)arg2;
++ (unsigned long long)defaultCornerMask;
 + (struct CGSize)roundedSizeForSize:(struct CGSize)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) TLKImage *lastTlkImage; // @synthesize lastTlkImage=_lastTlkImage;
-@property(retain, nonatomic) NUIBoxArrangement *boxArrangement; // @synthesize boxArrangement=_boxArrangement;
-@property(retain, nonatomic) TLKArrangementItem *sizingHelper; // @synthesize sizingHelper=_sizingHelper;
-@property(retain, nonatomic) TLKProminenceView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property(retain, nonatomic) UIView *shadowContainer; // @synthesize shadowContainer=_shadowContainer;
+@property(nonatomic) unsigned long long alignment; // @synthesize alignment=_alignment;
+@property(nonatomic) _Bool disableCornerRounding; // @synthesize disableCornerRounding=_disableCornerRounding;
+@property(nonatomic) __weak id <TLKImageViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) TLKProminenceView *placeholderView; // @synthesize placeholderView=_placeholderView;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property(nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
-@property(nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
-@property(nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
-@property(nonatomic) struct CGSize minimumSize; // @synthesize minimumSize=_minimumSize;
+@property(nonatomic) long long symbolWeight; // @synthesize symbolWeight=_symbolWeight;
+@property(nonatomic) long long symbolScale; // @synthesize symbolScale=_symbolScale;
+@property(retain, nonatomic) UIFont *symbolFont; // @synthesize symbolFont=_symbolFont;
 @property(nonatomic) _Bool alwaysShowPlaceholderView; // @synthesize alwaysShowPlaceholderView=_alwaysShowPlaceholderView;
 @property(nonatomic) _Bool useButtonColoring; // @synthesize useButtonColoring=_useButtonColoring;
 @property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 @property(retain, nonatomic) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
-- (id)actualImageView;
-- (id)viewForLastBaselineLayout;
-- (id)viewForFirstBaselineLayout;
-- (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
-- (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
-- (void)invalidateIntrinsicContentSizeIfNecessary;
+- (void)applyCornerRoundingStyle:(unsigned long long)arg1 toView:(id)arg2;
 - (void)layoutSubviews;
+- (struct CGRect)aspectRatioPreservedFrameForSize:(struct CGSize)arg1;
 - (void)updateShadow;
-- (_Bool)_imageViewUsesSymbolConfiguration;
-- (struct CGSize)_imageSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateSymbolConfiguration;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)didMoveToWindow;
 - (void)_dynamicUserInterfaceTraitDidChange;
-- (struct CGSize)constrainedSizeForImageSize:(struct CGSize)arg1;
+- (struct CGSize)constrainedSizeForImageSize:(struct CGSize)arg1 fittingSize:(struct CGSize)arg2;
+- (void)invalidateIntrinsicContentSizeIfNecessary;
+- (void)updateSizeAndLayout;
+- (void)updateWithUIImage:(id)arg1 animate:(_Bool)arg2;
 - (void)observedPropertiesChanged;
-- (id)boxArrangement:(id)arg1 itemAtIndex:(long long)arg2 horizontalAlignment:(long long *)arg3 verticalAlignment:(long long *)arg4;
-- (long long)numberOfItemsInBoxArrangement:(id)arg1;
-- (long long)effectiveUserInterfaceLayoutDirection;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

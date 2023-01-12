@@ -12,6 +12,7 @@
 @interface HKLollipopController : NSObject
 {
     _Bool _centerLollipopVertically;
+    _Bool _noAnimationVisibility;
     HKInteractiveChartAnnotationView *_annotationView;
     id <HKLollipopDelegate> _delegate;
     UIView *_parentView;
@@ -19,10 +20,13 @@
     NSMutableArray *_extensionViews;
     NSArray *_lastSelectionLocation;
     NSDate *_lastFirstLollipopDate;
+    double _lastDismissTime;
 }
 
 + (_Bool)pointSelectionContextsHaveUserInfo:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool noAnimationVisibility; // @synthesize noAnimationVisibility=_noAnimationVisibility;
+@property(nonatomic) double lastDismissTime; // @synthesize lastDismissTime=_lastDismissTime;
 @property(retain, nonatomic) NSDate *lastFirstLollipopDate; // @synthesize lastFirstLollipopDate=_lastFirstLollipopDate;
 @property(copy, nonatomic) NSArray *lastSelectionLocation; // @synthesize lastSelectionLocation=_lastSelectionLocation;
 @property(retain, nonatomic) NSMutableArray *extensionViews; // @synthesize extensionViews=_extensionViews;
@@ -34,7 +38,7 @@
 - (void)_setAlpha:(double)arg1;
 - (void)_setHidden:(_Bool)arg1;
 - (void)_bringViewsToFront;
-- (id)firstLollipopDate;
+- (id)firstLollipopDateSinceDelta:(double)arg1;
 - (void)setInvisibleAnimated:(_Bool)arg1;
 - (void)setVisibleWithRect:(struct CGRect)arg1 pointContexts:(id)arg2 animated:(_Bool)arg3;
 - (_Bool)isVisible;

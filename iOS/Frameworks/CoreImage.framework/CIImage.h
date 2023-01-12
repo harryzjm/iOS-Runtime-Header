@@ -74,8 +74,11 @@
 + (id)clearImage:(struct CGRect)arg1;
 + (id)imageWithImageProvider:(id)arg1 size:(unsigned long long)arg2:(unsigned long long)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace *)arg5 options:(id)arg6;
 + (id)imageWithImageProvider:(id)arg1 userInfo:(id)arg2 size:(struct CGSize)arg3 format:(int)arg4 flipped:(_Bool)arg5 colorSpace:(struct CGColorSpace *)arg6;
++ (id)imageYCC444:(id)arg1 matrix:(int)arg2 fullRange:(_Bool)arg3 precision:(int)arg4 colorSpace:(struct CGColorSpace *)arg5;
 + (id)imageYCC444:(id)arg1 matrix:(int)arg2 fullRange:(_Bool)arg3 colorSpace:(struct CGColorSpace *)arg4;
++ (id)imageWithYImage:(id)arg1 CrCbImage:(id)arg2 CrCbScale:(int)arg3 matrix:(int)arg4 fullRange:(_Bool)arg5 precision:(int)arg6 colorSpace:(struct CGColorSpace *)arg7;
 + (id)imageWithYImage:(id)arg1 CrCbImage:(id)arg2 CrCbScale:(int)arg3 matrix:(int)arg4 fullRange:(_Bool)arg5 colorSpace:(struct CGColorSpace *)arg6;
++ (id)imageWithYCCImage:(id)arg1 matrix:(int)arg2 fullRange:(_Bool)arg3 precision:(int)arg4 colorSpace:(struct CGColorSpace *)arg5;
 + (id)imageWithYCCImage:(id)arg1 matrix:(int)arg2 fullRange:(_Bool)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)smartColorAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
 + (id)smartToneAdjustmentsForValue:(double)arg1 localLightAutoValue:(double)arg2 andStatistics:(id)arg3;
@@ -98,7 +101,9 @@
 - (id)userInfo;
 - (void)setUserInfo:(id)arg1;
 @property(readonly) NSURL *url;
+- (int)outputFormat;
 - (_Bool)isOpaque;
+- (struct CGColorSpace *)baseColorSpace;
 @property(readonly) struct CGColorSpace *colorSpace;
 @property(readonly) NSDictionary *properties;
 - (id)debugDescription;
@@ -120,7 +125,9 @@
 - (id)_imageByRenderingToIntermediate;
 - (id)imageByInsertingIntermediate:(_Bool)arg1;
 - (id)imageByInsertingIntermediate;
+- (id)_imageByApplyingColorMatrixRed:green:blue:bias: /* Error: Ran out of types for this method. */;
 - (id)imageByTaggingWithColorSpace:(struct CGColorSpace *)arg1;
+- (id)imageByToneMappingColorSpaceToWorkingSpace:(struct CGColorSpace *)arg1;
 - (id)imageByColorMatchingColorSpaceToWorkingSpace:(struct CGColorSpace *)arg1;
 - (id)_imageByMatchingColorSpaceToWorkingSpace:(struct CGColorSpace *)arg1;
 - (id)imageByColorMatchingWorkingSpaceToRGBorGrayColorSpace:(struct CGColorSpace *)arg1;

@@ -11,6 +11,7 @@
 
 + (id)entityWithPreviousLayoutRole:(long long)arg1;
 @property(readonly, nonatomic) long long previousLayoutRole; // @synthesize previousLayoutRole=_previousLayoutRole;
+- (id)succinctDescriptionBuilder;
 - (_Bool)isPreviousWorkspaceEntity;
 - (id)initWithIdentifier:(id)arg1 displayChangeSettings:(id)arg2;
 - (id)initWithPreviousLayoutRole:(long long)arg1;

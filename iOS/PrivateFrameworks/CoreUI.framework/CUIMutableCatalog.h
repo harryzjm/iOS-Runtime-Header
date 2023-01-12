@@ -10,6 +10,7 @@
     unsigned int _respondsToCheck:1;
 }
 
+- (void)removeImagesNamed:(id)arg1;
 - (void)removeImageNamed:(id)arg1 withDescription:(id)arg2;
 - (void)insertCGImage:(struct CGImage *)arg1 withName:(id)arg2 andDescription:(id)arg3;
 - (void)removeImageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(long long)arg4;

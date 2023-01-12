@@ -4,25 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSIndexSet, NSString, UIEvent, UIImage, UIResponder, UIViewController;
+@class BKSHIDEventDeferringEnvironment, NSArray, NSIndexSet, NSString, UIEvent, UIImage, UIResponder, UIViewController;
 
 @interface UIKeyCommand
 {
     NSString *_lastLayout;
     NSIndexSet *_keyCodes;
+    NSIndexSet *_layoutAwareKeyCodes;
     SEL _upAction;
-    _Bool _repeatable;
-    _Bool _isPlaceholder;
-    long long _buttonType;
+    unsigned int _lastKeyboardType;
     UIEvent *_triggeringEvent;
-    UIResponder *_originatingResponder;
     NSString *_segueIdentifier;
     UIViewController *_controllerForSegue;
-    _Bool _handleAfterKeyEvent;
+    unsigned int _modifierFlags:32;
+    unsigned int _layoutAwareModifierFlags:32;
+    unsigned int _buttonType:32;
+    _Bool _repeatable;
+    unsigned int _isPlaceholder:1;
+    unsigned int _allowGlobeModifier:1;
+    unsigned int _handleAfterKeyEvent:1;
+    unsigned int _wantsPriorityOverSystemBehavior:1;
+    unsigned int _allowsAutomaticLocalization:1;
+    unsigned int _allowsAutomaticMirroring:1;
+    unsigned int _isInputSpecialkey:1;
     NSString *_input;
-    long long _modifierFlags;
     NSString *_layoutAwareInput;
-    long long _layoutAwareModifierFlags;
+    NSString *_layoutAwareDisplayInputOverride;
+    BKSHIDEventDeferringEnvironment *__eventDeferringEnvironment;
+    UIResponder *__originatingResponder;
+    long long __matchingPriority;
 }
 
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 action:(SEL)arg3 upAction:(SEL)arg4 discoverabilityTitle:(id)arg5;
@@ -42,12 +52,22 @@
 + (id)commandWithTitle:(id)arg1 imageName:(id)arg2 action:(SEL)arg3 input:(id)arg4 modifierFlags:(long long)arg5;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setMatchingPriority:) long long _matchingPriority; // @synthesize _matchingPriority=__matchingPriority;
+@property(nonatomic, setter=_setOriginatingResponder:) __weak UIResponder *_originatingResponder; // @synthesize _originatingResponder=__originatingResponder;
+@property(retain, nonatomic, setter=_setEventDeferringEnvironment:) BKSHIDEventDeferringEnvironment *_eventDeferringEnvironment; // @synthesize _eventDeferringEnvironment=__eventDeferringEnvironment;
+@property(retain, nonatomic) NSString *_layoutAwareDisplayInputOverride; // @synthesize _layoutAwareDisplayInputOverride;
 @property(readonly, nonatomic) long long _layoutAwareModifierFlags; // @synthesize _layoutAwareModifierFlags;
 @property(readonly, nonatomic) NSString *_layoutAwareInput; // @synthesize _layoutAwareInput;
+@property(nonatomic) _Bool wantsPriorityOverSystemBehavior; // @synthesize wantsPriorityOverSystemBehavior=_wantsPriorityOverSystemBehavior;
 @property(readonly, nonatomic) long long modifierFlags; // @synthesize modifierFlags=_modifierFlags;
 @property(readonly, nonatomic) NSString *input; // @synthesize input=_input;
+- (id)_readableStringForInputUsingWords:(_Bool)arg1 forHUD:(_Bool)arg2 outIsSingleCharacterOrKeySymbol:(_Bool *)arg3;
+- (id)_readableStringForModifierFlagsUsingWords:(_Bool)arg1 forHUD:(_Bool)arg2;
 - (id)description;
+- (_Bool)_isLikelyToConflictWithTextInputForResponder:(id)arg1;
+- (id)_mutableCopyIfNeeded;
 - (id)_immutableCopy;
+@property(readonly, nonatomic) _Bool allowGlobeModifier;
 - (void)_setViewControllerForSegue:(id)arg1;
 - (long long)_leafKeyModifierFlags;
 - (id)_leafKeyInput;
@@ -55,29 +75,34 @@
 - (void)_markHandleAfterKeyEvent;
 @property(readonly, nonatomic) UIViewController *_controllerForSegue;
 @property(readonly, nonatomic) NSString *_segueIdentifier;
-- (void)_setOriginatingResponder:(id)arg1;
 - (id)nextResponder;
+@property(nonatomic) _Bool allowsAutomaticMirroring; // @synthesize allowsAutomaticMirroring=_allowsAutomaticMirroring;
+@property(nonatomic) _Bool allowsAutomaticLocalization; // @synthesize allowsAutomaticLocalization=_allowsAutomaticLocalization;
+- (struct __GSKeyboard *)_currentGSKeyboard;
+- (_Bool)_isKeyCommandLikelyMirrored;
+- (_Bool)_isKeyCommandLocalized;
 - (void)_setTriggeringEvent:(id)arg1;
 @property(readonly, nonatomic) UIEvent *_triggeringEvent;
 @property(readonly, nonatomic) long long _buttonType;
+@property(readonly, nonatomic) NSIndexSet *_layoutAwareKeyCodes;
 @property(readonly, nonatomic) NSIndexSet *_keyCodes;
 @property(readonly, nonatomic) _Bool isPlaceholder;
 @property(readonly, nonatomic) _Bool repeatable;
 @property(readonly, nonatomic) SEL upAction;
+- (id)_keyCommandUsingAlternate:(id)arg1;
+- (id)_allowGlobeModifierKeyCommand;
 - (id)_placeholderKeyCommand;
 - (id)_nonRepeatableKeyCommand;
 - (_Bool)triggerSegueIfPossible;
 @property(readonly, nonatomic) NSString *discoverabilityInput;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)_localizeWithGSKeyboard:(struct __GSKeyboard *)arg1;
+- (void)_localizeWithGSKeyboard:(struct __GSKeyboard *)arg1 automatically:(_Bool)arg2 force:(_Bool)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithKeyCommand:(id)arg1;
 - (id)_initWithInput:(id)arg1 modifierFlags:(long long)arg2 keyCodes:(id)arg3 action:(SEL)arg4 upAction:(SEL)arg5 discoverabilityTitle:(id)arg6 buttonType:(long long)arg7 segueIdentifier:(id)arg8;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 input:(id)arg4 modifierFlags:(long long)arg5 propertyList:(id)arg6 alternates:(id)arg7 discoverabilityTitle:(id)arg8 attributes:(unsigned long long)arg9 state:(long long)arg10;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 imageName:(id)arg3 action:(SEL)arg4 input:(id)arg5 modifierFlags:(long long)arg6 propertyList:(id)arg7 alternates:(id)arg8 discoverabilityTitle:(id)arg9 attributes:(unsigned long long)arg10 state:(long long)arg11;
 - (id)initWithCommand:(id)arg1;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 propertyList:(id)arg4 alternates:(id)arg5 discoverabilityTitle:(id)arg6 attributes:(unsigned long long)arg7 state:(long long)arg8;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 imageName:(id)arg3 action:(SEL)arg4 propertyList:(id)arg5 alternates:(id)arg6 discoverabilityTitle:(id)arg7 attributes:(unsigned long long)arg8 state:(long long)arg9;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

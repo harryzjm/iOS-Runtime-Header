@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <AppSSOKerberos/SOAuthorizationDelegate-Protocol.h>
+#import <AppSSOKerberos/SOAuthorizationCoreDelegate-Protocol.h>
 
-@class NSString, SOAuthorization;
+@class NSString, SOAuthorizationCore;
 
-@interface SOAuthorizationWrapper : NSObject <SOAuthorizationDelegate>
+@interface SOAuthorizationWrapper : NSObject <SOAuthorizationCoreDelegate>
 {
-    SOAuthorization *_authorization;
+    SOAuthorizationCore *_authorization;
     CDUnknownBlockType _authorizationCompletion;
 }
 
@@ -24,6 +24,7 @@
 - (void)authorizationDidComplete:(id)arg1;
 - (void)authorizationDidCancel:(id)arg1;
 - (void)authorizationDidNotHandle:(id)arg1;
+- (_Bool)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2;
 - (void)beginAuthorizationWithOperation:(id)arg1 url:(id)arg2 httpHeaders:(id)arg3 httpBody:(id)arg4 andCompletion:(CDUnknownBlockType)arg5;
 - (id)init;
 

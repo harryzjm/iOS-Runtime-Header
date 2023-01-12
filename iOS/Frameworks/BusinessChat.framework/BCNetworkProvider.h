@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
 - (void)performDataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 

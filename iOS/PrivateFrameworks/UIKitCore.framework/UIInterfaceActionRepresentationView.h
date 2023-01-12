@@ -79,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (id)_systemDefaultFocusGroupDescriptor;
 - (_Bool)canBecomeFocused;
 - (_Bool)_showsFocusForFocusedView:(id)arg1;
 @property(nonatomic, getter=isSpringLoaded) _Bool springLoaded; // @dynamic springLoaded;

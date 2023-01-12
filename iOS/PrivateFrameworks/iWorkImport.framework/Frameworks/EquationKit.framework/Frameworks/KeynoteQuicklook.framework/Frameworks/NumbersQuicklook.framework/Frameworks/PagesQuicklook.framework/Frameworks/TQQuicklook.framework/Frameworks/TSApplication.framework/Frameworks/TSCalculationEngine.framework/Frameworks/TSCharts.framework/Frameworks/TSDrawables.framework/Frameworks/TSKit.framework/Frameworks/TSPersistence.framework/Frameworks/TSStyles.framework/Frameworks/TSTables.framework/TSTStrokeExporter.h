@@ -13,7 +13,7 @@
 {
     id <TSTTableStrokeProviding> _defaultStrokeProvider;
     id <TSTCustomStrokeProviding> _customStrokeProvider;
-    TSTTableInfo *_tableProvider;
+    TSTTableInfo *_tableInfo;
     NSPointerArray *_topRowStrokes;
     NSPointerArray *_bottomRowStrokes;
     NSPointerArray *_leftColumnStrokes;
@@ -22,19 +22,25 @@
     TSUIntegerKeyDictionary *_columnStrokeExportCache;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) TSUIntegerKeyDictionary *columnStrokeExportCache; // @synthesize columnStrokeExportCache=_columnStrokeExportCache;
 @property(retain, nonatomic) TSUIntegerKeyDictionary *rowStrokeExportCache; // @synthesize rowStrokeExportCache=_rowStrokeExportCache;
-@property(readonly, retain, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
-@property(readonly, retain, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
-@property(readonly, retain, nonatomic) NSPointerArray *bottomRowStrokes; // @synthesize bottomRowStrokes=_bottomRowStrokes;
-@property(readonly, retain, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
-@property(readonly, retain, nonatomic) TSTTableInfo *tableProvider; // @synthesize tableProvider=_tableProvider;
-@property(readonly, retain, nonatomic) id <TSTCustomStrokeProviding> customStrokeProvider; // @synthesize customStrokeProvider=_customStrokeProvider;
-@property(readonly, retain, nonatomic) id <TSTTableStrokeProviding> defaultStrokeProvider; // @synthesize defaultStrokeProvider=_defaultStrokeProvider;
+@property(readonly, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
+@property(readonly, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
+@property(readonly, nonatomic) NSPointerArray *bottomRowStrokes; // @synthesize bottomRowStrokes=_bottomRowStrokes;
+@property(readonly, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
+@property(readonly, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(readonly, nonatomic) id <TSTCustomStrokeProviding> customStrokeProvider; // @synthesize customStrokeProvider=_customStrokeProvider;
+@property(readonly, nonatomic) id <TSTTableStrokeProviding> defaultStrokeProvider; // @synthesize defaultStrokeProvider=_defaultStrokeProvider;
+- (id)p_strokeExportCacheForRowAbove:(unsigned int)arg1 rowBelow:(unsigned int)arg2;
+- (id)p_strokeExportCacheForColumnBefore:(unsigned short)arg1 columnAfter:(unsigned short)arg2;
+- (id)p_strokeExportCacheForGridRow:(unsigned int)arg1;
+- (id)p_strokeExportCacheForGridColumn:(unsigned int)arg1;
+- (id)strokeLayerForRow:(unsigned int)arg1;
+- (id)strokeLayerForColumn:(unsigned int)arg1;
 - (void)strokesForCellID:(struct TSUCellCoord)arg1 top:(id *)arg2 left:(id *)arg3 bottom:(id *)arg4 right:(id *)arg5;
 - (void)p_resolveStrokes;
-- (void)dealloc;
-- (id)initWithDefaultStrokeProvider:(id)arg1 customStrokeProvider:(id)arg2 tableProvider:(id)arg3;
+- (id)initWithDefaultStrokeProvider:(id)arg1 customStrokeProvider:(id)arg2 tableInfo:(id)arg3;
 
 @end
 

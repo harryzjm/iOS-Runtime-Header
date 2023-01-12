@@ -6,6 +6,7 @@
 
 @class ICStoreRequestContext, NSData;
 
+__attribute__((visibility("hidden")))
 @interface ICMachineDataOperation
 {
     NSData *_data;

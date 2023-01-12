@@ -17,10 +17,11 @@
 + (id)logCategory;
 + (_Bool)serializeJSONObject:(id)arg1 url:(id)arg2 error:(id *)arg3;
 + (_Bool)saveFaceClassifications:(id)arg1 videoId:(id)arg2 fragmentId:(unsigned long long)arg3 frameId:(id)arg4 baseURL:(id)arg5 error:(id *)arg6;
-+ (id)eventsWithPersonsAndFacesMergedFromEvents:(id)arg1;
++ (id)mergedPersonEventsFromEvents:(id)arg1;
 + (struct CGRect)estimatePersonBoundingBoxFromFaceBoundingBox:(struct CGRect)arg1;
 + (id)faceObservationFromFaceprint:(id)arg1;
 + (id)faceObservationsFromFaceprintsForClustering:(id)arg1;
++ (unsigned long long)faceprintDefaultRevision;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

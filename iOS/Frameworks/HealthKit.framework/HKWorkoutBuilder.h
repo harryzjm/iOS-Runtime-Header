@@ -61,7 +61,6 @@
 - (void)_recoverWithCompletion:(CDUnknownBlockType)arg1;
 @property(copy, nonatomic) HKWorkoutBuilderConfiguration *configuration;
 - (_Bool)_validateObjects:(id)arg1 forClass:(Class)arg2 error:(out id *)arg3;
-- (CDUnknownBlockType)_successCompletionBlockOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)connectionInterrupted;
 - (void)connectionInvalidated;
 - (id)remoteInterface;

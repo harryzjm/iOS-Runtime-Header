@@ -11,7 +11,7 @@
 
 @interface _SFWebProcessPlugInReaderEnabledPageController <SFReaderWebProcessControllerProtocol>
 {
-    struct unique_ptr<SafariServices::ReaderAvailabilityController, std::__1::default_delete<SafariServices::ReaderAvailabilityController>> _readerAvailabilityController;
+    struct unique_ptr<SafariServices::ReaderAvailabilityController, std::default_delete<SafariServices::ReaderAvailabilityController>> _readerAvailabilityController;
     _WKRemoteObjectInterface *_availabilityControllerInterface;
     id <SFReaderEventsListener> _readerActivityListenerProxy;
     _SFReaderWebProcessPlugInPageController *_readerPageController;
@@ -33,10 +33,12 @@
 @property(copy, nonatomic) NSDictionary *initalArticleScrollPositionAsDictionary; // @synthesize initalArticleScrollPositionAsDictionary=_initalArticleScrollPositionAsDictionary;
 @property(retain, nonatomic) _SFReaderWebProcessPlugInPageController *readerPageController; // @synthesize readerPageController=_readerPageController;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
+@property(readonly, nonatomic) _Bool readerHasBeenActivatedRecently;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishDocumentLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didSameDocumentNavigation:(long long)arg2 forFrame:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didCommitLoadForFrame:(id)arg2;
+- (void)webProcessPlugInBrowserContextController:(id)arg1 willInjectUserScriptForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didStartProvisionalLoadForFrame:(id)arg2;
 - (void)collectArticleContent;
@@ -61,6 +63,7 @@
 - (void)_setUpReaderControllerInterface;
 - (void)_setUpReaderActivityListenerProxy;
 - (void)readerTextWasExtracted:(id)arg1 withMetadata:(id)arg2 wasDeterminingAvailability:(_Bool)arg3;
+- (void)didDetermineAdditionalTextSamples:(id)arg1;
 - (void)didDetermineReaderAvailability:(id)arg1;
 - (void)articleContentDidChange;
 - (void)willDestroyBrowserContextController:(id)arg1;

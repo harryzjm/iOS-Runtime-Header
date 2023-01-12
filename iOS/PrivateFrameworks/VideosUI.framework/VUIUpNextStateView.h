@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class VUILabel, _TVImageView;
+@class UIView, VUILabel;
 
 __attribute__((visibility("hidden")))
-@interface VUIUpNextStateView : UIView
+@interface VUIUpNextStateView
 {
     VUILabel *_label;
-    _TVImageView *_imageView;
+    UIView *_imageView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) VUILabel *label; // @synthesize label=_label;
 
 @end

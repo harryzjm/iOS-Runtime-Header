@@ -6,14 +6,14 @@
 
 @interface TSTTableDataCustomFormat
 {
-    struct TSUCustomFormat *mCustomFormat;
+    void *mCustomFormat;
 }
 
 - (void)dealloc;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initObjectWithCustomFormat:(struct TSUCustomFormat *)arg1;
+- (id)initObjectWithCustomFormat:(void *)arg1;
 
 @end
 

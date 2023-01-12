@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKAppContext, NSArray, NSDate, NSDictionary;
+@class NSArray, NSDate, NSDictionary, VUIAppContext;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionPlay
@@ -12,21 +12,21 @@ __attribute__((visibility("hidden")))
     _Bool _upNextPlayback;
     NSDictionary *_contextData;
     NSArray *_videosPlayables;
-    IKAppContext *_appContext;
+    VUIAppContext *_appContext;
     NSDate *_userPlaybackInitiationDate;
     NSDate *_openURLCompletionDate;
 }
 
-+ (void)_presentPlaybackWithMediaInfo:(id)arg1 extrasInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)_preflightWithMediaInfo:(id)arg1 isRentAndWatchNow:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)_playMediaInfo:(id)arg1 extrasInfo:(id)arg2 isRentAndWatchNow:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)playMediaInfo:(id)arg1 isRentAndWatchNow:(_Bool)arg2;
-+ (void)_playPlayables:(id)arg1 storeDictionary:(id)arg2 appContext:(id)arg3 isUpNextPlayback:(_Bool)arg4 userPlaybackInitiationDate:(id)arg5 openURLCompletionDate:(id)arg6;
++ (void)_presentPlaybackWithMediaInfo:(id)arg1 extrasInfo:(id)arg2 allowsCellular:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)_playMediaInfo:(id)arg1 watchType:(long long)arg2 extrasInfo:(id)arg3 isRentAndWatchNow:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)playMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)playMediaInfo:(id)arg1 watchType:(long long)arg2 isRentAndWatchNow:(_Bool)arg3;
++ (void)_playPlayables:(id)arg1 appContext:(id)arg2 watchType:(long long)arg3 isUpNextPlayback:(_Bool)arg4 userPlaybackInitiationDate:(id)arg5 openURLCompletionDate:(id)arg6;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDate *openURLCompletionDate; // @synthesize openURLCompletionDate=_openURLCompletionDate;
 @property(retain, nonatomic) NSDate *userPlaybackInitiationDate; // @synthesize userPlaybackInitiationDate=_userPlaybackInitiationDate;
 @property(nonatomic, getter=isUpNextPlayback) _Bool upNextPlayback; // @synthesize upNextPlayback=_upNextPlayback;
-@property(nonatomic) __weak IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property(nonatomic) __weak VUIAppContext *appContext; // @synthesize appContext=_appContext;
 @property(retain, nonatomic) NSArray *videosPlayables; // @synthesize videosPlayables=_videosPlayables;
 @property(retain, nonatomic) NSDictionary *contextData; // @synthesize contextData=_contextData;
 - (_Bool)isAccountRequired;

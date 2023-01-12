@@ -9,6 +9,9 @@
 @class CHSAvocadoDescriptorProvider;
 
 @protocol CHSAvocadoDescriptorProviderObserver <NSObject>
+
+@optional
 - (void)descriptorsDidChangeForAvocadoDescriptorProvider:(CHSAvocadoDescriptorProvider *)arg1;
+- (void)descriptorsDidChangeForDescriptorProvider:(CHSAvocadoDescriptorProvider *)arg1;
 @end
 

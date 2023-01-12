@@ -6,10 +6,13 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationSectionSettings, NSString;
+@class NCNotificationRequest, NCNotificationSectionSettings, NSDate, NSString;
 @protocol NCNotificationManagementController;
 
 @protocol NCNotificationManagementControllerSettingsDelegate <NSObject>
+- (void)notificationManagementController:(id <NCNotificationManagementController>)arg1 setScheduledDelivery:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
+- (void)notificationManagementController:(id <NCNotificationManagementController>)arg1 setMuted:(_Bool)arg2 untilDate:(NSDate *)arg3 forNotificationRequest:(NCNotificationRequest *)arg4 withSectionIdentifier:(NSString *)arg5 threadIdentifier:(NSString *)arg6;
+- (void)notificationManagementController:(id <NCNotificationManagementController>)arg1 setAllowsTimeSensitive:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (void)notificationManagementController:(id <NCNotificationManagementController>)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (void)notificationManagementController:(id <NCNotificationManagementController>)arg1 setDeliverQuietly:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (void)notificationManagementController:(id <NCNotificationManagementController>)arg1 setAllowsNotifications:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;

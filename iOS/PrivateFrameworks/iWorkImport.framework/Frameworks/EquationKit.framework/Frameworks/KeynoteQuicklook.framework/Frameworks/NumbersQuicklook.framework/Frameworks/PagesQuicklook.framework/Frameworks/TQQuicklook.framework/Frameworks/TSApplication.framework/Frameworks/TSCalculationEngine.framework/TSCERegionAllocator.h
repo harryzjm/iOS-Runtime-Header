@@ -11,14 +11,13 @@
     struct TSCERegionNode *_head;
     struct TSCERegionNode *_curBlock;
     unsigned int _blockOffset;
-    struct vector<TSCEASTNodeArrayChunk *, std::__1::allocator<TSCEASTNodeArrayChunk *>> _nodeArrayChunks;
+    struct vector<TSCEASTNodeArray *, std::allocator<TSCEASTNodeArray *>> _managedNodeArrays;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)reset;
-- (void *)calloc:(unsigned long long)arg1;
 - (void *)malloc:(unsigned long long)arg1;
 - (struct TSCEASTNodeArray *)managedNodeArrayWithCapacity:(unsigned long long)arg1;
 - (id)initWithInitialCapacity:(unsigned long long)arg1;

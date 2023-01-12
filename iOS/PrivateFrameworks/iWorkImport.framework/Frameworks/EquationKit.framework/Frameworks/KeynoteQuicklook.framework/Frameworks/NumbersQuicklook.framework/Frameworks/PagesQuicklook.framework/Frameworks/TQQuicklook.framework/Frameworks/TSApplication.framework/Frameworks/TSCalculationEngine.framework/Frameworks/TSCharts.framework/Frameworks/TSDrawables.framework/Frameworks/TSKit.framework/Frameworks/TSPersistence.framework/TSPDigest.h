@@ -12,17 +12,21 @@
 
 @interface TSPDigest : NSObject <NSCopying>
 {
-    array_019f9a10 _digestData;
+    struct array<unsigned char, 20> _digestData;
 }
 
++ (id)digestFromReadChannel:(id)arg1 scanForOSLikeCorruption:(_Bool)arg2 foundLikelyOSCorruption:(_Bool *)arg3 foundLikelyZeroBytesCorruption:(_Bool *)arg4 error:(out id *)arg5;
++ (id)digestFromReadChannel:(id)arg1 error:(out id *)arg2;
 + (id)digestFromDispatchData:(id)arg1;
 + (id)digestFromNSData:(id)arg1;
 + (id)digestWithDigestString:(id)arg1;
 + (id)emptyDataDigest;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)saveToProtobufString:(basic_string_90719d97 *)arg1;
-- (id)initFromProtobufString:(const basic_string_90719d97 *)arg1;
-@property(readonly, nonatomic) const array_019f9a10 *digestData;
+- (void)saveToProtobufString:(void *)arg1;
+- (id)initFromProtobufString:(const void *)arg1;
+- (id)anonymousIdentifierWithContext:(id)arg1;
+- (id)anonymousIdentifierWithDocumentProperties:(id)arg1 passphrase:(id)arg2;
+@property(readonly, nonatomic) const void *digestData;
 - (id)initFromDispatchData:(id)arg1;
 - (id)initFromNSData:(id)arg1;
 - (id)initFromSHA1Context:(struct CC_SHA1state_st *)arg1;
@@ -32,6 +36,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(readonly, nonatomic) NSString *digestString;
+- (id)initFromReadChannel:(id)arg1 scanForOSLikeCorruption:(_Bool)arg2 foundLikelyOSCorruption:(_Bool *)arg3 foundLikelyZeroBytesCorruption:(_Bool *)arg4 error:(out id *)arg5;
+- (id)initFromReadChannel:(id)arg1 error:(out id *)arg2;
 - (id)initWithDigestString:(id)arg1;
 - (id)init;
 

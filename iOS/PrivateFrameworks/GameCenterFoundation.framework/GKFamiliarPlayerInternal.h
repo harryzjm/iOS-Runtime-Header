@@ -15,13 +15,13 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)setCompositeName:(id)arg1;
 - (id)compositeName;
 - (void)setLastName:(id)arg1;
 - (id)lastName;
 - (void)setFirstName:(id)arg1;
 - (id)firstName;
-- (void)dealloc;
 
 @end
 

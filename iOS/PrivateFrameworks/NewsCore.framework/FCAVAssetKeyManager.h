@@ -21,19 +21,11 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) FCThreadSafeMutableArray *fetchRequests; // @synthesize fetchRequests=_fetchRequests;
-@property(readonly, nonatomic) NFLazy *sharedContentKeySession; // @synthesize sharedContentKeySession=_sharedContentKeySession;
-@property(readonly, nonatomic) id <FCAVAssetKeyCacheType> cache; // @synthesize cache=_cache;
-@property(readonly, nonatomic) id <FCAVAssetKeyServiceType> service; // @synthesize service=_service;
-- (void)_completeKeyRequest:(id)arg1 withData:(id)arg2 error:(id)arg3;
-- (_Bool)_waitingOnRefreshForKeyURI:(id)arg1;
-- (id)_keyURIForKeyIdentifier:(id)arg1;
 - (void)contentKeySession:(id)arg1 didProvidePersistableContentKeyRequest:(id)arg2;
 - (void)contentKeySession:(id)arg1 didProvideContentKeyRequest:(id)arg2;
 - (void)refreshKeysIfNearExpiration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchKeysWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerAVURLAssetForAutomaticKeyManagement:(id)arg1;
-- (id)initWithService:(id)arg1 cache:(id)arg2;
 - (id)init;
 
 // Remaining properties

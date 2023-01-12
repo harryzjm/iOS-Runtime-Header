@@ -9,6 +9,7 @@
     _Bool _wantsDrawerLayout;
     BOOL _orientation;
     _Bool _shouldConfigureForDarkFSM;
+    _Bool _isInReplyContext;
     _Bool _insertingBeforeReplyPreview;
     _Bool _insertingWithReplyPreview;
     _Bool _suppressAnimationsForLineUpdates;
@@ -25,6 +26,7 @@
 @property(nonatomic) double insertionBeginTime; // @synthesize insertionBeginTime=_insertionBeginTime;
 @property(nonatomic) double insertionDuration; // @synthesize insertionDuration=_insertionDuration;
 @property(nonatomic) long long insertionType; // @synthesize insertionType=_insertionType;
+@property(nonatomic) _Bool isInReplyContext; // @synthesize isInReplyContext=_isInReplyContext;
 @property(nonatomic) _Bool shouldConfigureForDarkFSM; // @synthesize shouldConfigureForDarkFSM=_shouldConfigureForDarkFSM;
 @property(nonatomic) double associatedItemOffset; // @synthesize associatedItemOffset=_associatedItemOffset;
 @property(nonatomic) double drawerPercentRevealed; // @synthesize drawerPercentRevealed=_drawerPercentRevealed;
@@ -43,7 +45,7 @@
 - (void)prepareForReuse;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)configureForChatItem:(id)arg1;
+- (void)configureForChatItem:(id)arg1 context:(id)arg2;
 
 @end
 

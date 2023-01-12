@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+@class HKChartSummaryTrendModel, NSNumber;
 
 @interface HKOverlayRoomHeartViewController
 {
     NSNumber *_preferredOverlayIndex;
     long long _preferredOverlay;
+    HKChartSummaryTrendModel *_trendModel;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HKChartSummaryTrendModel *trendModel; // @synthesize trendModel=_trendModel;
 @property(readonly, nonatomic) long long preferredOverlay; // @synthesize preferredOverlay=_preferredOverlay;
+- (id)createChartOverlayViewController;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
 - (id)initialSelectedContextForMode:(long long)arg1;
 - (long long)_initialPillForPreference:(long long)arg1;
@@ -21,7 +24,7 @@
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (void)viewDidLoad;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 preferredOverlay:(long long)arg4;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 preferredOverlay:(long long)arg4 trendModel:(id)arg5;
 
 @end
 

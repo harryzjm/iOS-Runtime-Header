@@ -18,12 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *valueGetter; // @synthesize valueGetter=_valueGetter;
-@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-@property(readonly, copy, nonatomic) Class aClass; // @synthesize aClass=_aClass;
-@property(readonly, copy, nonatomic) NSString *variableName; // @synthesize variableName=_variableName;
-@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)initWithProperty:(struct objc_property *)arg1;
 
 @end
 

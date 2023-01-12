@@ -15,9 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_pushNewSequence;
-- (_Bool)_updateDisplayNameForRegistryRecord:(id)arg1 error:(id *)arg2;
-- (void)_deleteReplacedSequence;
 - (void)main;
 @property _Bool shouldClearRebaselineDeadline;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 target:(id)arg3 sequence:(id)arg4 replacingSequence:(id)arg5;

@@ -22,10 +22,10 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionCustomUTIsKey;
-- (id)__INIntentResponseCodableDescriptionCustomUTIsKey;
-- (id)__INTypeCodableDescriptionCustomUTIsKey;
 - (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionCustomUTIsKey;
 - (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionCustomUTIsKey;
 - (id)__INTypeCodableDescriptionTypeKey;
 
 @end

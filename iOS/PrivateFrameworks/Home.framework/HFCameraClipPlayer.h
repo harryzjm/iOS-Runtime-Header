@@ -15,6 +15,7 @@
 @interface HFCameraClipPlayer : NSObject <HFCameraClipQueueing, HFCameraClipPlaying>
 {
     _Bool _scrubbing;
+    _Bool _shouldBypassScrubbing;
     _Bool _mutatingQueue;
     id <HFCameraClipPlayerDelegate> _delegate;
     id <HFCameraClipScrubbing> _scrubber;
@@ -30,6 +31,7 @@
 @property(nonatomic) __weak HFCameraClipPlayerItem *lastPlayerItem; // @synthesize lastPlayerItem=_lastPlayerItem;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic, getter=isMutatingQueue) _Bool mutatingQueue; // @synthesize mutatingQueue=_mutatingQueue;
+@property(nonatomic) _Bool shouldBypassScrubbing; // @synthesize shouldBypassScrubbing=_shouldBypassScrubbing;
 @property(retain, nonatomic) NSArray *clips; // @synthesize clips=_clips;
 @property(readonly, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property(nonatomic, getter=isScrubbing) _Bool scrubbing; // @synthesize scrubbing=_scrubbing;

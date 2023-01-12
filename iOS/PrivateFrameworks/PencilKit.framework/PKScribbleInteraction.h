@@ -15,18 +15,17 @@
 @interface PKScribbleInteraction : NSObject <PKScribbleInteractionWrapperProvider, UIInteraction>
 {
     id <PKScribbleInteractionWrapper> _cachedWrapper;
+    UIView *_view;
     _Bool _requestElementsShouldCallBackSynchronously;
     id <PKScribbleInteractionDelegate> _delegate;
     id <PKScribbleInteractionElementSource> _elementSource;
-    UIView *_view;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool requestElementsShouldCallBackSynchronously; // @synthesize requestElementsShouldCallBackSynchronously=_requestElementsShouldCallBackSynchronously;
-@property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <PKScribbleInteractionElementSource> elementSource; // @synthesize elementSource=_elementSource;
 @property(nonatomic) __weak id <PKScribbleInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)scribbleInteractionWrapper;
+@property(readonly, nonatomic) __weak UIView *view;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;
 

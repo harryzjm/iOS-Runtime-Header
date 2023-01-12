@@ -12,13 +12,15 @@
 {
     HMHome *_home;
     NSSet *_sourceItems;
-    NSSet *_sourceActionObjects;
+    NSSet *_sourceRecommendableObjects;
+    NSSet *_homeRecommendableObjects;
     unsigned long long _options;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(retain, nonatomic) NSSet *sourceActionObjects; // @synthesize sourceActionObjects=_sourceActionObjects;
+@property(retain, nonatomic) NSSet *homeRecommendableObjects; // @synthesize homeRecommendableObjects=_homeRecommendableObjects;
+@property(retain, nonatomic) NSSet *sourceRecommendableObjects; // @synthesize sourceRecommendableObjects=_sourceRecommendableObjects;
 @property(retain, nonatomic) NSSet *sourceItems; // @synthesize sourceItems=_sourceItems;
 @property(retain, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)generateRecommendations;

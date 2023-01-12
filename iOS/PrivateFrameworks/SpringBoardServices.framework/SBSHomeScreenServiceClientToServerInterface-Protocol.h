@@ -4,23 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BSMachPortSendRight, NSArray, NSDate, NSError, NSNumber, NSString, NSURL;
+@class BSMachPortSendRight, NSDate, NSError, NSNumber, NSString, NSURL, SBSDebugActiveWidgetInfo, SBSHomeScreenServiceArrayOfNumbers, SBSHomeScreenServiceArrayOfStrings;
 
 @protocol SBSHomeScreenServiceClientToServerInterface
-@property(readonly, copy, nonatomic) NSArray *allHomeScreenApplicationPlaceholderBundleIdentifiers;
-@property(readonly, copy, nonatomic) NSArray *allHomeScreenApplicationBundleIdentifiers;
+@property(readonly, copy, nonatomic) SBSHomeScreenServiceArrayOfNumbers *overflowSlotCounts;
+@property(readonly, copy, nonatomic) NSNumber *homeScreenLayoutAvailability;
+@property(readonly, nonatomic) SBSDebugActiveWidgetInfo *debuggingActiveWidgetInfo;
+@property(readonly, copy, nonatomic) NSString *allIconLists;
+@property(readonly, copy, nonatomic) SBSHomeScreenServiceArrayOfStrings *allHomeScreenApplicationPlaceholderBundleIdentifiers;
+@property(readonly, copy, nonatomic) SBSHomeScreenServiceArrayOfStrings *allHomeScreenApplicationBundleIdentifiers;
 @property(copy, nonatomic) NSNumber *showsBadgesInAppLibraryValue;
 @property(copy, nonatomic) NSNumber *addsNewIconsToHomeScreenValue;
+@property(copy, nonatomic) NSNumber *largeIconLayoutEnabledValue;
+@property(copy, nonatomic) NSNumber *restrictedWidgetsIconLayoutEnabledValue;
 @property(copy, nonatomic) NSNumber *lowDensityIconLayoutEnabledValue;
+- (void)setupHomeScreenForWidgetScrollPerformanceTest;
+- (void)clearAllOverflowSlotCounts;
+- (void)setObservingHomeScreenLayoutAvailability:(NSNumber *)arg1;
+- (void)addEmptyPage;
+- (void)insertEmptyPageAtIndex:(NSNumber *)arg1;
+- (void)setObservingInstalledWebClips:(NSNumber *)arg1;
+- (void)addDebugIconWithSizeClassDescription:(NSString *)arg1 inPage:(NSNumber *)arg2 atPositionDescription:(NSString *)arg3;
+- (void)dismissAppLibraryWithCompletion:(void (^)(NSError *))arg1;
+- (void)presentAppLibraryAnimated:(NSNumber *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)presentAppLibraryCategoryPodForCategoryIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)clearTodayViewLayout;
+- (void)resetTodayViewLayout;
+- (void)reloadHomeScreenLayout;
 - (void)reloadIcons;
 - (void)overrideBadgeValue:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)changeDisplayedDateOffsetOverride:(NSNumber *)arg1;
 - (void)changeDisplayedDateOverride:(NSDate *)arg1;
+- (void)removeWidgetsFromHomeScreen;
 - (void)removeAllWidgets;
 - (void)ignoreAllApps;
 - (void)organizeAllIconsAcrossPagesWithPageCount:(NSNumber *)arg1;
 - (void)organizeAllIconsIntoFoldersWithPageCount:(NSNumber *)arg1;
+- (void)setIconListsHidden:(SBSHomeScreenServiceArrayOfStrings *)arg1;
 - (NSError *)configureCategoryMapProviderToUseCategoryMapAtURL:(NSURL *)arg1;
+- (void)configureLibraryWithCategoryLimit:(NSNumber *)arg1;
 - (void)configureDeweyOneCategoryWithAllApps;
 - (void)configureDeweyEachAppHasItsOwnCategory;
 - (void)refreshAppLibrary:(NSNumber *)arg1 reason:(NSString *)arg2;
@@ -36,6 +58,6 @@
 - (oneway void)resetCategoriesLayoutWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)resetHomeScreenLayoutWithCompletion:(void (^)(NSError *))arg1;
 - (void)addWidgetToTodayViewWithBundleIdentifier:(NSString *)arg1;
-- (NSArray *)folderPathToIconWithBundleIdentifier:(NSString *)arg1;
+- (SBSHomeScreenServiceArrayOfStrings *)folderPathToIconWithBundleIdentifier:(NSString *)arg1;
 @end
 

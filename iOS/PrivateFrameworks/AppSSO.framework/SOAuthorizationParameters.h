@@ -11,11 +11,13 @@
 @interface SOAuthorizationParameters : NSObject
 {
     SOAuthorizationParametersCore *_authorizationParametersCore;
-    long long _responseCode;
+    NSString *_impersonationBundleIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) long long responseCode; // @synthesize responseCode=_responseCode;
+@property(copy, nonatomic) NSString *impersonationBundleIdentifier; // @synthesize impersonationBundleIdentifier=_impersonationBundleIdentifier;
+@property(nonatomic, getter=isCFNetworkInterception, setter=setCFNetworkInterception:) _Bool cfNetworkInterception;
+@property(nonatomic) long long responseCode;
 @property(nonatomic) _Bool useInternalExtensions;
 @property(retain, nonatomic) NSData *auditTokenData;
 @property(retain, nonatomic) NSData *httpBody;

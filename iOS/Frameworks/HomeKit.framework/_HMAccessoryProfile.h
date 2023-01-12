@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 {
     HMFUnfairLock *_lock;
     NSUUID *_uniqueIdentifier;
+    NSString *_assistantIdentifier;
     _HMContext *_context;
     HMAccessory *_accessory;
     HMHome *_home;
@@ -32,17 +33,19 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, nonatomic) __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (void)recomputeAssistantIdentifier;
+- (void)_recomputeAssistantIdentifier;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)handleRuntimeStateUpdate:(id)arg1;
 - (void)_registerNotificationHandlers;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;

@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) TSADocumentInfo *documentInfo;
 @property(readonly, nonatomic) NSString *documentCachePath;
 @property(readonly, nonatomic) NSString *defaultDraftName;
+- (void)presentDocumentWarnings;
 - (_Bool)hasPersistenceWarningsOfKind:(long long)arg1;
 - (void)didMailboxShutdown;
 - (void)handleCollaborationErrorAction:(TSACollaborationErrorAction *)arg1 parentDocumentSerializationToken:(TSUDocumentSerializationToken *)arg2 completion:(void (^)(void))arg3;

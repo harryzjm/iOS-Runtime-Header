@@ -24,6 +24,7 @@
     unsigned long long _paymentMethodType;
     NSString *_recipientIdentifier;
     NSString *_senderAddress;
+    NSString *_recipientPhoneOrEmail;
     NSString *_bankName;
     NSString *_routingNumber;
     NSString *_accountNumber;
@@ -36,6 +37,7 @@
 @property(copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property(copy, nonatomic) NSString *routingNumber; // @synthesize routingNumber=_routingNumber;
 @property(copy, nonatomic) NSString *bankName; // @synthesize bankName=_bankName;
+@property(copy, nonatomic) NSString *recipientPhoneOrEmail; // @synthesize recipientPhoneOrEmail=_recipientPhoneOrEmail;
 @property(copy, nonatomic) NSString *senderAddress; // @synthesize senderAddress=_senderAddress;
 @property(copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property(nonatomic) unsigned long long paymentMethodType; // @synthesize paymentMethodType=_paymentMethodType;

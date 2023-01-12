@@ -12,6 +12,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (long long)triggerBacking;
++ (id)displayGlyphName;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (_Bool)isUserInitiated;

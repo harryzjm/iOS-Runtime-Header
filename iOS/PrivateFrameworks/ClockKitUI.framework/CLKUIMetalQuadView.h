@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CAMetalLayer, MTLRenderPassDescriptor, NSArray;
-@protocol MTLCommandQueue, MTLComputePipelineState, MTLTexture;
+@class CAMetalLayer, MTLRenderPassDescriptor, NSArray, UIImageView;
+@protocol MTLCommandQueue, MTLComputePipelineState, MTLDepthStencilState, MTLTexture;
 
 @interface CLKUIMetalQuadView
 {
@@ -16,24 +16,32 @@
     CAMetalLayer *_metalLayer;
     NSArray *_quads;
     id <MTLTexture> _depthTexture;
+    id <MTLDepthStencilState> _depthStencilState;
     unsigned int _isDepthBufferRequired:1;
     id <MTLComputePipelineState> _aplPipelineState;
     id <MTLComputePipelineState> _colorConversionPipelineState;
     unsigned int _presentWithTransaction:1;
+    unsigned long long _msaaCount;
     id <MTLTexture> _msaaTexture;
     id <MTLTexture> _textureForPrewarming;
+    UIImageView *_snapshotView;
+    unsigned int _useNativeScale:1;
+    _Bool _isSnapshotting;
     unsigned long long _colorPixelFormat;
-    unsigned long long _msaaCount;
 }
 
-+ (id)allocateDepthTextureWithWidth:(float)arg1 height:(float)arg2 sampleCount:(unsigned long long)arg3;
++ (id)allocateMsaaTextureWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(unsigned long long)arg3 sampleCount:(unsigned long long)arg4;
++ (id)allocateDepthTextureWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 sampleCount:(unsigned long long)arg3;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long msaaCount; // @synthesize msaaCount=_msaaCount;
+@property(readonly, nonatomic) _Bool isSnapshotting; // @synthesize isSnapshotting=_isSnapshotting;
 @property(readonly, nonatomic) unsigned long long colorPixelFormat; // @synthesize colorPixelFormat=_colorPixelFormat;
+- (void)dealloc;
 - (void)_updateDrawableSizeIfNecessary;
+- (struct CGSize)drawableSize;
 - (id)_newRenderPassDescriptor;
 - (id)metalLayer;
 - (void)discardContents;
+- (unsigned long long)_msaaCount;
 - (float)computeAPLAndSnapshot:(id *)arg1;
 - (float)computeAPL;
 - (_Bool)_displayAndCheckForDrawable:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -44,6 +52,7 @@
 - (id)snapshotTextureInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
 - (id)snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
 - (void)setSingleBufferMode:(_Bool)arg1;
+- (void)snapshotAndFreeze;
 - (void)_handleQuadArrayChange:(id)arg1;
 - (void)setOpaque:(_Bool)arg1;
 - (void)layoutSubviews;

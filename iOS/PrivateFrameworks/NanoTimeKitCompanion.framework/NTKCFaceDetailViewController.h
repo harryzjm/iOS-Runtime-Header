@@ -10,6 +10,7 @@
 #import <NanoTimeKitCompanion/NTKCFaceDetailComplicationPickerViewControllerDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailComplicationSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailDescriptionSectionDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionModifiedDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailOtherSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailPhotosSectionDelegate-Protocol.h>
@@ -19,24 +20,22 @@
 #import <NanoTimeKitCompanion/UITableViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, NTKGreenfieldCompanionShareController, UIActivityIndicatorView, UIBarButtonItem, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailActionButton, _NTKCDetailHeaderView;
+@class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCFaceDetailPigmentSectionController, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, NTKGreenfieldCompanionShareController, UIActivityIndicatorView, UIBarButtonItem, UIButton, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailHeaderView;
 @protocol NTKCFaceDetailViewControllerDelegate;
 
-@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCTableViewProviding, NTKCFaceDetailComplicationPickerViewControllerDelegate>
+@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailComplicationPickerViewControllerDelegate, NTKCFaceDetailEditOptionModifiedDelegate, NTKCTableViewProviding, NTKCFaceDetailEditOptionSectionDelegate>
 {
+    _Bool _isSuppressingFaceDidChange;
     _Bool _shared;
-    _Bool _inGallery;
     _Bool _faceHasBeenEdited;
+    _Bool _inGallery;
     NTKFace *_face;
     id <NTKCFaceDetailViewControllerDelegate> _delegate;
+    NTKCFaceContainerView *_faceContainer;
     NTKFaceCollection *_library;
-    NTKCompanionFaceViewController *_faceVC;
-    NSArray *_externalAssets;
     double _intrinsicHeaderHeight;
     _NTKCDetailHeaderView *_headerView;
     UILabel *_faceName;
-    _NTKCDetailActionButton *_addButton;
-    UIActivityIndicatorView *_addSpinner;
     UIView *_headerSeparator;
     UITableView *_tableView;
     NSMutableArray *_currentSections;
@@ -47,23 +46,32 @@
     NTKCFaceDetailKaleidoscopeContentSectionController *_kaleidoscopeContentSection;
     NTKCFaceDetailKaleidoscopeStyleSectionController *_kaleidoscopeStyleSection;
     NTKCFaceDetailOtherSectionController *_otherSection;
+    NTKCFaceDetailPigmentSectionController *_pigmentSection;
     CDUnknownBlockType _selectionFinishedHandler;
     UITableViewCell *_editOptionToMakeFullyVisible;
     UIBarButtonItem *_shareNavButton;
     NTKGreenfieldCompanionShareController *_shareController;
     UIViewController *_modalViewControllerPresentedByThisViewController;
-    NTKCFaceContainerView *_faceContainer;
+    NTKCompanionFaceViewController *_faceVC;
+    NSArray *_externalAssets;
+    UIButton *_addButton;
+    UIActivityIndicatorView *_addSpinner;
     struct CGSize _headerFaceSize;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NTKCFaceContainerView *faceContainer; // @synthesize faceContainer=_faceContainer;
+@property(retain, nonatomic) UIActivityIndicatorView *addSpinner; // @synthesize addSpinner=_addSpinner;
+@property(retain, nonatomic) UIButton *addButton; // @synthesize addButton=_addButton;
+@property(copy, nonatomic) NSArray *externalAssets; // @synthesize externalAssets=_externalAssets;
+@property(nonatomic) _Bool inGallery; // @synthesize inGallery=_inGallery;
+@property(retain, nonatomic) NTKCompanionFaceViewController *faceVC; // @synthesize faceVC=_faceVC;
 @property(retain, nonatomic) UIViewController *modalViewControllerPresentedByThisViewController; // @synthesize modalViewControllerPresentedByThisViewController=_modalViewControllerPresentedByThisViewController;
 @property(retain, nonatomic) NTKGreenfieldCompanionShareController *shareController; // @synthesize shareController=_shareController;
 @property(retain, nonatomic) UIBarButtonItem *shareNavButton; // @synthesize shareNavButton=_shareNavButton;
 @property(readonly, nonatomic) _Bool faceHasBeenEdited; // @synthesize faceHasBeenEdited=_faceHasBeenEdited;
 @property(retain, nonatomic) UITableViewCell *editOptionToMakeFullyVisible; // @synthesize editOptionToMakeFullyVisible=_editOptionToMakeFullyVisible;
 @property(copy, nonatomic) CDUnknownBlockType selectionFinishedHandler; // @synthesize selectionFinishedHandler=_selectionFinishedHandler;
+@property(retain, nonatomic) NTKCFaceDetailPigmentSectionController *pigmentSection; // @synthesize pigmentSection=_pigmentSection;
 @property(retain, nonatomic) NTKCFaceDetailOtherSectionController *otherSection; // @synthesize otherSection=_otherSection;
 @property(retain, nonatomic) NTKCFaceDetailKaleidoscopeStyleSectionController *kaleidoscopeStyleSection; // @synthesize kaleidoscopeStyleSection=_kaleidoscopeStyleSection;
 @property(retain, nonatomic) NTKCFaceDetailKaleidoscopeContentSectionController *kaleidoscopeContentSection; // @synthesize kaleidoscopeContentSection=_kaleidoscopeContentSection;
@@ -74,21 +82,18 @@
 @property(retain, nonatomic) NSMutableArray *currentSections; // @synthesize currentSections=_currentSections;
 @property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(retain, nonatomic) UIView *headerSeparator; // @synthesize headerSeparator=_headerSeparator;
-@property(retain, nonatomic) UIActivityIndicatorView *addSpinner; // @synthesize addSpinner=_addSpinner;
-@property(retain, nonatomic) _NTKCDetailActionButton *addButton; // @synthesize addButton=_addButton;
 @property(retain, nonatomic) UILabel *faceName; // @synthesize faceName=_faceName;
 @property(retain, nonatomic) _NTKCDetailHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(nonatomic) double intrinsicHeaderHeight; // @synthesize intrinsicHeaderHeight=_intrinsicHeaderHeight;
-@property(copy, nonatomic) NSArray *externalAssets; // @synthesize externalAssets=_externalAssets;
-@property(nonatomic) _Bool inGallery; // @synthesize inGallery=_inGallery;
 @property(nonatomic) struct CGSize headerFaceSize; // @synthesize headerFaceSize=_headerFaceSize;
-@property(retain, nonatomic) NTKCompanionFaceViewController *faceVC; // @synthesize faceVC=_faceVC;
 @property(retain, nonatomic) NTKFaceCollection *library; // @synthesize library=_library;
+@property(retain, nonatomic) NTKCFaceContainerView *faceContainer; // @synthesize faceContainer=_faceContainer;
 @property(nonatomic) _Bool shared; // @synthesize shared=_shared;
 @property(nonatomic) __weak id <NTKCFaceDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NTKFace *face; // @synthesize face=_face;
 @property(readonly, nonatomic) UITableView *ntk_tableView;
 - (void)_didTapShareButton;
+- (_Bool)_isShareButtonEnabled;
 - (void)_updateShareButton;
 - (void)actionSectionDidDelete:(id)arg1;
 - (void)actionSectionDidSelect:(id)arg1;
@@ -101,8 +106,10 @@
 - (id)complicationSection:(id)arg1 allowedComplicationsForSlot:(id)arg2;
 - (void)photoSectionDidUpdate:(id)arg1;
 - (void)editOptionSection:(id)arg1 didSelectActionForOptionAtIndex:(long long)arg2;
+- (void)_applySectionIndexKeysToCurrentSectionsFromIndex:(unsigned long long)arg1;
 - (void)_addOrRemoveDynamicSectionsWithCollection:(id)arg1;
 - (void)editOptionSection:(id)arg1 didSelectOptionAtIndex:(long long)arg2;
+- (void)editOptionSection:(id)arg1 didModifyEditOption:(id)arg2 transiently:(_Bool)arg3 canceled:(_Bool)arg4;
 - (void)descriptionSection:(id)arg1 didExpand:(_Bool)arg2;
 - (void)faceCollection:(id)arg1 didRemoveFace:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)faceCollection:(id)arg1 didAddFace:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -133,6 +140,7 @@
 - (void)_updateAddButton;
 - (void)_setFaceHasBeenEdited;
 - (_Bool)_isEditOptionFullyVisible:(id)arg1;
+- (void)_setEditOption:(id)arg1 forMode:(long long)arg2 slot:(id)arg3 transiently:(_Bool)arg4;
 - (void)_setEditOption:(id)arg1 forMode:(long long)arg2 slot:(id)arg3;
 - (void)_setComplication:(id)arg1 forSlot:(id)arg2;
 - (void)_loadLibrary;
@@ -152,9 +160,8 @@
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithFace:(id)arg1 inGallery:(_Bool)arg2 externalAssets:(id)arg3;
-- (id)initWithFace:(id)arg1 inGallery:(_Bool)arg2;
-- (id)initWithFace:(id)arg1 externalAssets:(id)arg2;
-- (id)initWithFace:(id)arg1;
+- (id)initWithCandidateFace:(id)arg1 externalAssets:(id)arg2;
+- (id)initWithLibraryFace:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

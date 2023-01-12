@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)_minimumSizeForHitTesting;
 - (void)_updateImageViewIfNeeded;
 - (void)_setNeedsImageViewUpdate;
 - (id)initWithDelegate:(id)arg1 constants:(id)arg2;

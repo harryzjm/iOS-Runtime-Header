@@ -6,7 +6,7 @@
 
 #import <PagesQuicklook/NSObject-Protocol.h>
 
-@class NSArray, NSMutableArray, NSObject, TSDCanvas, TSDLayout, TSDWrapSegments, TSPObject, TSUBezierPath, TSWPStorage;
+@class NSArray, NSMutableArray, NSObject, TSDCanvas, TSDLayout, TSDWrapSegments, TSPObject, TSUBezierPath, TSWPDrawableAttachment, TSWPStorage;
 @protocol TSDHint, TSDInfo, TSWPColumnMetrics, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 @protocol TSWPLayoutTarget <NSObject>
@@ -31,9 +31,8 @@
 @property(readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
 @property(readonly, nonatomic) id <TSWPFootnoteMarkProvider> footnoteMarkProvider;
 @property(readonly, nonatomic) id <TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
+@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumberHints;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
-@property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
 @property(readonly, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
 @property(readonly, nonatomic) NSMutableArray *columns;
 - (_Bool)descendersCannotClip;
@@ -41,7 +40,7 @@
 - (_Bool)containsStartOfRange:(struct _NSRange)arg1;
 - (_Bool)isLayoutOffscreen;
 - (double)textScaleForChild:(TSDLayout *)arg1;
-- (void)addAttachmentLayout:(TSDLayout *)arg1;
+- (TSDLayout *)addPartitionableAttachmentLayout:(TSDLayout *)arg1;
 - (void)markHiddenInlineDrawableLayout:(TSDLayout *)arg1;
 - (void)clearHiddenInlineDrawableLayoutMarks;
 - (NSArray *)currentAnchoredDrawableLayouts;
@@ -54,17 +53,24 @@
 - (NSObject<TSWPColumnMetrics> *)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 
 @optional
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceAfter;
+@property(readonly, nonatomic) _Bool alwaysIncludesSpaceBefore;
+@property(readonly, nonatomic) Class inlineTableOfContentsLayoutClass;
+@property(readonly, nonatomic) _Bool supportsPageNumbers;
+@property(readonly, nonatomic) struct _NSRange restrictedLayoutCharRange;
 @property(readonly, nonatomic) _Bool marginsAreMirrored;
 @property(readonly, nonatomic) _Bool isLinked;
 @property(readonly, nonatomic) _Bool repShouldPreventCaret;
+@property(readonly, nonatomic) _Bool shouldIgnoreAnchoredAttachments;
 @property(readonly, nonatomic) struct __CFLocale *hyphenationLocale;
 @property(readonly, nonatomic) _Bool shouldHyphenate;
-@property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property(readonly, nonatomic) TSDCanvas *canvas;
 @property(retain, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property(readonly, nonatomic) struct CGRect maskRect;
 - (void)didLayoutIntoTarget;
 - (void)willLayoutIntoTarget;
+- (void)layoutForPartitionableAttachmentWasPositioned:(TSDLayout *)arg1;
+- (TSDLayout *)parentLayoutForPartitionableAttachment:(TSWPDrawableAttachment *)arg1 atPosition:(struct CGPoint)arg2;
 - (TSDWrapSegments *)interiorWrapSegments;
 - (_Bool)invalidateForPageCountChange;
 - (unsigned int)pageIndex;

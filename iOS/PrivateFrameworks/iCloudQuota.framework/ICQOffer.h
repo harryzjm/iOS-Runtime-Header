@@ -32,11 +32,13 @@
     _ICQXMLSpecification *_XMLSpecification;
     _ICQDeviceInfo *_deviceInfo;
     NSString *_context;
+    NSURL *_requestedRemoteUIURL;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)sampleOfferForLevel:(long long)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSURL *requestedRemoteUIURL; // @synthesize requestedRemoteUIURL=_requestedRemoteUIURL;
 @property(nonatomic) _Bool iTunesAccountExists; // @synthesize iTunesAccountExists=_iTunesAccountExists;
 @property(retain, nonatomic) NSString *context; // @synthesize context=_context;
 @property(retain, nonatomic) _ICQDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
@@ -55,16 +57,22 @@
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(retain, nonatomic) NSDate *retrievalDate; // @synthesize retrievalDate=_retrievalDate;
 - (id)debugDescription;
+- (unsigned long long)fetchJourneyAvailabilityWithId:(id)arg1;
+- (id)journeyLinkForId:(id)arg1;
+- (id)_processICQURL:(id)arg1;
 @property(readonly, nonatomic) NSURL *remoteUIURL;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)showsPhotoVideoCounts;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
+- (void)_updateRequestedRemoteUIURLWithURL:(id)arg1;
 - (_Bool)placeholderExists;
 - (_Bool)isDetailAppBannerOffer;
 - (id)alertSpecificationAtIndex:(unsigned long long)arg1;
 - (id)alertSpecificationForAlertKey:(id)arg1;
 - (id)storagePurchaseKeybagForButtonId:(id)arg1;
+@property(readonly, nonatomic, getter=isPremiumOffer) _Bool premiumOffer;
+@property(readonly, nonatomic, getter=isDefaultOffer) _Bool defaultOffer;
 @property(readonly, nonatomic, getter=isBuddyOffer) _Bool buddyOffer;
 @property(readonly, nonatomic) double _callbackInterval;
 - (void)updateOfferWithPlanDetails:(id)arg1 actionString:(id)arg2;

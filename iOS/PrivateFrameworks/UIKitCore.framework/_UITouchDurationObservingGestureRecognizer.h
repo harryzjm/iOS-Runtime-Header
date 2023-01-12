@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)reset;
+- (id)_allTouchesMatchingRequirementsForEvent:(id)arg1;
 - (void)_performDelayedBegin;
 - (void)_displayLinkDidFire:(id)arg1;
 @property(readonly, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;

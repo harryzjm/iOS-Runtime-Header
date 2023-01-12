@@ -4,21 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCoreAnalyticsLogging-Protocol.h>
+#import <HomeKitMetrics/HMMLogEvent.h>
 
-@class NSNumber;
+#import <HomeKitDaemon/HMMCoreAnalyticsLogging-Protocol.h>
 
-@interface HMDProcessRelaunchThresholdLogEvent <HMDCoreAnalyticsLogging>
+@class NSNumber, NSString;
+
+@interface HMDProcessRelaunchThresholdLogEvent : HMMLogEvent <HMMCoreAnalyticsLogging>
 {
-    NSNumber *_timeSincePreviousProcessLaunch;
+    NSNumber *_timeIntervalSincePreviousProcessLaunch;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSNumber *timeSincePreviousProcessLaunch; // @synthesize timeSincePreviousProcessLaunch=_timeSincePreviousProcessLaunch;
+@property(readonly, nonatomic) NSNumber *timeIntervalSincePreviousProcessLaunch; // @synthesize timeIntervalSincePreviousProcessLaunch=_timeIntervalSincePreviousProcessLaunch;
 - (id)initWithTimeSincePreviousLaunch:(id)arg1;
 - (id)serializedEvent;
 - (id)eventName;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *accessoryIdentifier;
 
 @end
 

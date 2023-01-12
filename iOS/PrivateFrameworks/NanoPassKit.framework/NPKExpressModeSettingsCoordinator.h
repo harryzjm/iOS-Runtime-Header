@@ -51,6 +51,7 @@
 - (void)disableExpressModeForPass:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enableExpressModeForPass:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)expressModeStateForPass:(id)arg1;
+- (_Bool)needUpgradeForPass:(id)arg1;
 - (_Bool)isExpressModeSupportedForPass:(id)arg1;
 - (id)initWithExpressPassController:(id)arg1 queue:(id)arg2;
 

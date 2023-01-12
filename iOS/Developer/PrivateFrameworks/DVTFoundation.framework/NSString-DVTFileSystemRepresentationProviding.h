@@ -6,11 +6,12 @@
 
 #import <Foundation/NSString.h>
 
+#import <DVTFoundation/DVTBroadcastName-Protocol.h>
 #import <DVTFoundation/DVTPropertyListValue-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSNumber;
 
-@interface NSString (DVTFileSystemRepresentationProviding) <DVTPropertyListValue>
+@interface NSString (DVTFileSystemRepresentationProviding) <DVTBroadcastName, DVTPropertyListValue>
 + (_Bool)dvt_isDataUTF8WithBOM:(id)arg1;
 + (_Bool)dvt_isDataUnicodeEncoded:(id)arg1 isBigEndian:(_Bool *)arg2;
 + (id)dvt_stringWithPotentiallyMalformedUTF8Bytes:(const char *)arg1 length:(unsigned long long)arg2;
@@ -26,6 +27,22 @@
 + (id)dvt_stringWithFileSystemRepresentation:(const char *)arg1 length:(unsigned long long)arg2;
 + (id)dvt_stringWithFileSystemRepresentation:(const char *)arg1;
 - (void)dvt_provideFileSystemRepresentationToBlock:(CDUnknownBlockType)arg1;
+- (id)dvt_debugDescription;
+- (void)dvt_assertInternalConsistency;
+- (id)dvt_stringForm;
+- (_Bool)dvt_isLiteral;
+- (id)dvt_evaluateAsStringListInScope:(id)arg1 withState:(const struct DVTNestedMacroExpansionState *)arg2;
+- (id)dvt_evaluateAsStringInScope:(id)arg1 withState:(const struct DVTNestedMacroExpansionState *)arg2;
+- (id)dvt_literalValueOfCommonString;
+- (id)dvt_parseAsMacroExpansionStringList;
+- (id)dvt_parseAsMacroExpansionStringListReturningError:(id *)arg1;
+- (id)dvt_parseAsMacroExpansionString;
+- (id)dvt_parseAsMacroExpansionStringReturningError:(id *)arg1;
+- (id)dvt_parseAsMacroAssignmentsUsingMacroNameRegistry:(id)arg1 returningErrorString:(id *)arg2;
+- (id)dvt_parseAsMacroAssignmentUsingMacroNameRegistry:(id)arg1 returningErrorString:(id *)arg2;
+- (id)dvt_parseAsMacroAssignmentsWithBlock:(CDUnknownBlockType)arg1 returningErrorString:(id *)arg2;
+- (id)_dvt_parseAsMacroAssignmentsIntoMacroDefinitionTable:(id)arg1 withBlock:(CDUnknownBlockType)arg2 returningErrorString:(id *)arg3;
+- (id)dvt_parseAsMacroAssignmentParsingValueWithBlock:(CDUnknownBlockType)arg1 returningErrorString:(id *)arg2;
 - (id)dvt_sharedCopy;
 @property(readonly) NSDictionary *dictionaryValue;
 @property(readonly) NSArray *arrayValue;
@@ -97,6 +114,8 @@
 - (id)dvt_firstKeyPathComponent;
 - (id)dvt_stringByReplacingWhitespaceRunsWithCharacter:(unsigned short)arg1 range:(struct _NSRange)arg2;
 - (id)dvt_stringByAppendingSuffixIfMissing:(id)arg1;
+- (id)dvt_stringBeforeSuffix:(id)arg1;
+- (id)dvt_stringAfterPrefix:(id)arg1;
 - (id)dvt_stringByRemovingSuffix:(id)arg1;
 - (id)dvt_stringByRemovingPrefix:(id)arg1;
 - (_Bool)dvt_getFileSystemRepresentation:(char *)arg1 maxLength:(unsigned long long)arg2;

@@ -13,6 +13,7 @@
 
 @interface MFConversationItemFooterView : UIView <_UICursorInteractionDelegate>
 {
+    _Bool _messageContainsBlockQuotes;
     _Bool _allowsCursorSnapping;
     UIVisualEffectView *_backgroundView;
     UIButton *_revealActionsButton;
@@ -39,6 +40,7 @@
 @property(retain, nonatomic) MFMessageDisplayMetrics *displayMetrics; // @synthesize displayMetrics=_displayMetrics;
 @property(nonatomic) __weak id <MFMessageFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIButton *revealActionsButton; // @synthesize revealActionsButton=_revealActionsButton;
+@property(nonatomic) _Bool messageContainsBlockQuotes; // @synthesize messageContainsBlockQuotes=_messageContainsBlockQuotes;
 @property(retain, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 - (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;

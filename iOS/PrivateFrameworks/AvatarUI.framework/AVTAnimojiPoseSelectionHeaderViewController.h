@@ -11,7 +11,6 @@
 
 @interface AVTAnimojiPoseSelectionHeaderViewController : UIViewController
 {
-    _Bool _isLiveTracking;
     id <AVTAvatarRecord> _avatarRecord;
     AVTView *_avtView;
     AVTAvatarPose *_displayedPose;
@@ -23,13 +22,10 @@
 @property(retain, nonatomic) AVTAvatarPose *displayedPose; // @synthesize displayedPose=_displayedPose;
 @property(retain, nonatomic) AVTView *avtView; // @synthesize avtView=_avtView;
 @property(retain, nonatomic) id <AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
-@property(nonatomic) _Bool isLiveTracking; // @synthesize isLiveTracking=_isLiveTracking;
-- (void)_updatePose:(id)arg1 fromPose:(id)arg2 animated:(_Bool)arg3;
 - (void)updateForPose:(id)arg1 animated:(_Bool)arg2;
 - (void)endFaceTracking;
+- (void)pauseFaceTracking;
 - (void)beginFaceTrackingWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (_Bool)enableFaceTrackingIfNeeded;
-- (void)updatePreviewForRecord:(id)arg1;
 @property(readonly, nonatomic) AVTAvatarPhysicsState *currentPhysicsState;
 @property(readonly, nonatomic) AVTAvatarPose *currentPose;
 - (void)viewDidLoad;

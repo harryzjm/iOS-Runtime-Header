@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)realtimeSuggestionsClasses;
 + (void)interface:(id)arg1 returnsArrayOf:(Class)arg2 forSelector:(SEL)arg3;
 + (void)interface:(id)arg1 returns:(Class)arg2 forSelector:(SEL)arg3;
 + (void)_whitelistXPCInterface:(id)arg1 forProtocol:(id)arg2 alreadyWhitelisted:(id)arg3;
@@ -18,7 +17,7 @@
 + (void)_addSGXPCResponseToReplyWhitelistForMethods:(struct objc_method_description *)arg1 count:(unsigned int)arg2 interface:(id)arg3;
 + (id)xpcInterfaceForProtocol:(id)arg1;
 + (void)_registerWhitelistBlock:(CDUnknownBlockType)arg1 forProtocol:(id)arg2;
-+ (void)initialize;
++ (void)_initialize;
 + (id)xpcInterface;
 
 @end

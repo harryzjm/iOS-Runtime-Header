@@ -10,7 +10,7 @@
 
 @interface TSTTableHeaderStorageBucket <TSTTableHeaderStorage>
 {
-    struct map<unsigned int, SFUtility::ObjcSharedPtr<NSObject>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, SFUtility::ObjcSharedPtr<NSObject>>>> *mMap;
+    void *mMap;
     double mHorizontalScaleFactor;
 }
 

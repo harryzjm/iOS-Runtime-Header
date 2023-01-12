@@ -71,7 +71,6 @@
 + (id)expressionForDate:(id)arg1;
 + (id)stringForCriterionType:(long long)arg1;
 + (long long)criterionTypeForString:(id)arg1;
-+ (void)_updateAddressComments:(id)arg1;
 + (id)defaultsDictionaryFromCriterion:(id)arg1;
 + (id)criterionFromDefaultsDictionary:(id)arg1;
 + (id)defaultsArrayFromCriteria:(id)arg1;
@@ -153,7 +152,7 @@
 - (_Bool)hasLibraryIDCriterion;
 - (id)SQLExpressionWithContext:(id)arg1 depth:(unsigned int)arg2;
 - (id)fixOnce;
-- (id)_spotlightQueryString;
+- (id)_spotlightQueryStringIsAllSpotlightQuery:(_Bool *)arg1;
 - (id)criteriaForSpotlightCriteria:(id)arg1;
 - (id)_queryWithAttributes:(id)arg1 matchingValue:(id)arg2 qualifier:(int)arg3;
 - (id)_queryWithAttributes:(id)arg1 matchingValue:(id)arg2;

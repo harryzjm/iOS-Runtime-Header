@@ -8,20 +8,30 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class HMIFaceTracker, NSMutableDictionary, NSString;
+@class HMIPersonTracker, NSMutableDictionary, NSString;
 
 @interface HMISessionEntityManager : HMFObject <HMFLogging>
 {
-    HMIFaceTracker *_faceTracker;
-    NSMutableDictionary *_sessionUUIDToPreviousFaceIndex;
     NSMutableDictionary *_sessionUUIDToPreviousFaceprints;
+    NSMutableDictionary *_sessionUUIDToPreviousTorsoprints;
+    HMIPersonTracker *_personTracker;
+    NSMutableDictionary *_sessionUUIDToPreviousPersonIndex;
     NSMutableDictionary *_sessionEntities;
+    double _faceVIPThresholdForTorsoAnnotation;
 }
 
++ (id)updatePersonEventWithPersonEvent:(id)arg1 torsoAnnotation:(id)arg2 sessionEntityUUID:(id)arg3 predictedLinkedEntityUUIDs:(id)arg4 sessionEntityAssignment:(long long)arg5;
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(readonly) double faceVIPThresholdForTorsoAnnotation; // @synthesize faceVIPThresholdForTorsoAnnotation=_faceVIPThresholdForTorsoAnnotation;
 @property(readonly) NSMutableDictionary *sessionEntities; // @synthesize sessionEntities=_sessionEntities;
-- (id)assignSessionEntitiesToPersonWithFaceEvents:(id)arg1 personWithoutFaceEvents:(id)arg2 personWithFilteredFaceEvents:(id)arg3 videoFrame:(id)arg4;
+- (void)updatePreviousPrintsForSessionEntityUUID:(id)arg1 faceRecognition:(id)arg2 torsoRecognition:(id)arg3;
+- (id)createSessionEntityFromFaceRecognition:(id)arg1 torsoRecognition:(id)arg2 predictedLinkedEntityUUIDs:(id)arg3 sessionEntityAssignment:(long long *)arg4;
+- (id)assignSessionEntityToFaceRecognition:(id)arg1 torsoRecognition:(id)arg2 transitionMatrix:(id)arg3 detectionIdx:(unsigned long long)arg4 predictedLinkedEntityUUIDs:(id)arg5 availableSessionEntityUUIDs:(id)arg6 sessionEntityAssignment:(long long *)arg7;
+- (id)assignSessionEntityToFaceRecognition:(id)arg1 torsoRecognition:(id)arg2 predictedLinkedEntityUUIDs:(id)arg3 availableSessionEntityUUIDs:(id)arg4 sessionEntityAssignment:(long long *)arg5;
+- (id)updateTorsoModelAndGetTorsoAnnotationsForHome:(id)arg1;
+- (id)assignSessionEntitiesToPersonEvents:(id)arg1 videoFrame:(id)arg2 homeUUID:(id)arg3;
+- (void)submitTorsoprintsToModelManagerForHome:(id)arg1 withTorsoAnnotations:(id)arg2;
 - (void)handleMotionDetection:(id)arg1 sessionPTS:(CDStruct_1b6d18a9)arg2;
 - (id)initWithFrameDimensions:(struct CGSize)arg1;
 

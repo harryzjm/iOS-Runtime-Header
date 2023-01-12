@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface NSUserDefaults : NSObject
 {
     id _kvo_;
     struct __CFString *_identifier_;
     struct __CFString *_container_;
     void *_reserved[2];
+    NSArray *_volatileDomainNames;
 }
 
+@property(readonly, copy) NSArray *volatileDomainNames; // @synthesize volatileDomainNames=_volatileDomainNames;
+- (void)_setKVO:(id)arg1;
+- (id)_kvo;
 - (_Bool)_observingCFPreferences;
 - (void)_setContainer:(struct __CFURL *)arg1;
 - (struct __CFString *)_container;

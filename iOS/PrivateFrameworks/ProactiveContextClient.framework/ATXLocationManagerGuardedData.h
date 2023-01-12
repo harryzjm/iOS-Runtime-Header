@@ -11,6 +11,7 @@
 @interface ATXLocationManagerGuardedData : NSObject
 {
     CLLocation *currentLocation;
+    NSDate *lastRequestLocationDate;
     unsigned long long currentRoutineMode;
     ATXLocationManagerState *state;
     NSDate *lastLOIUpdateTimestamp;

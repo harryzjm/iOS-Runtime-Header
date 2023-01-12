@@ -18,10 +18,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
-@property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
-@property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (id)runWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithProfile:(id)arg1 options:(unsigned long long)arg2 storeIdentifier:(id)arg3;
 

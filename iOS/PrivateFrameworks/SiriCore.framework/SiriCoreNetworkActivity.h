@@ -28,7 +28,7 @@
 - (long long)parentLabel;
 - (id)nwActivityToken;
 - (id)nwActivity;
-- (void)stopWithCompletionReason:(long long)arg1;
+- (void)stopWithCompletionReason:(long long)arg1 andError:(id)arg2;
 - (void)removeConnection:(id)arg1;
 - (void)addConnection:(id)arg1;
 - (void)activate;

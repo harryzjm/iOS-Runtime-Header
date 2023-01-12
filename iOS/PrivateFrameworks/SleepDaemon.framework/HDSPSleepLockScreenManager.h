@@ -9,25 +9,29 @@
 #import <SleepDaemon/HDSPDiagnosticsProvider-Protocol.h>
 #import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
 #import <SleepDaemon/HDSPGoodMorningAlertObserver-Protocol.h>
+#import <SleepDaemon/HDSPSleepEventHandler-Protocol.h>
+#import <SleepDaemon/HDSPSleepEventProvider-Protocol.h>
 #import <SleepDaemon/HDSPSleepLockScreenAssertionManagerDelegate-Protocol.h>
 #import <SleepDaemon/HDSPSleepLockScreenStateMachineDelegate-Protocol.h>
 #import <SleepDaemon/HDSPSleepLockScreenStateMachineInfoProvider-Protocol.h>
 #import <SleepDaemon/HDSPSleepModeObserver-Protocol.h>
 #import <SleepDaemon/HDSPSleepScheduleModelObserver-Protocol.h>
+#import <SleepDaemon/HDSPTimeChangeObserver-Protocol.h>
 #import <SleepDaemon/HKSPSensitiveUIObserver-Protocol.h>
 
-@class HDSPEnvironment, HDSPSleepLockScreenAssertionManager, HDSPSleepLockScreenStateMachine, HKSPSleepScheduleModel, NSDate, NSDictionary, NSString;
-@protocol NAScheduler;
+@class HDSPEnvironment, HDSPSleepLockScreenStateMachine, HKSPSleepScheduleModel, NSDate, NSDictionary, NSString;
+@protocol HDSPSleepEventDelegate, HDSPSleepLockScreenAssertionManager, NAScheduler;
 
-@interface HDSPSleepLockScreenManager : NSObject <HDSPSleepLockScreenStateMachineInfoProvider, HDSPSleepLockScreenStateMachineDelegate, HDSPSleepLockScreenAssertionManagerDelegate, HKSPSensitiveUIObserver, HDSPDiagnosticsProvider, HDSPSleepModeObserver, HDSPSleepScheduleModelObserver, HDSPGoodMorningAlertObserver, HDSPEnvironmentAware>
+@interface HDSPSleepLockScreenManager : NSObject <HDSPSleepLockScreenStateMachineInfoProvider, HDSPSleepLockScreenStateMachineDelegate, HDSPSleepLockScreenAssertionManagerDelegate, HKSPSensitiveUIObserver, HDSPTimeChangeObserver, HDSPSleepEventHandler, HDSPSleepEventProvider, HDSPDiagnosticsProvider, HDSPSleepModeObserver, HDSPSleepScheduleModelObserver, HDSPGoodMorningAlertObserver, HDSPEnvironmentAware>
 {
     long long _state;
     long long _overrideState;
     NSDictionary *_overrideUserInfo;
     struct os_unfair_lock_s _sleepLockScreenLock;
     HDSPEnvironment *_environment;
+    id <HDSPSleepEventDelegate> _sleepEventDelegate;
     HDSPSleepLockScreenStateMachine *_stateMachine;
-    HDSPSleepLockScreenAssertionManager *_assertionManager;
+    id <HDSPSleepLockScreenAssertionManager> _assertionManager;
     long long _currentLockScreenState;
     CDUnknownBlockType _didUpdateAlertAssertion;
 }
@@ -35,27 +39,39 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType didUpdateAlertAssertion; // @synthesize didUpdateAlertAssertion=_didUpdateAlertAssertion;
 @property(nonatomic) long long currentLockScreenState; // @synthesize currentLockScreenState=_currentLockScreenState;
-@property(readonly, nonatomic) HDSPSleepLockScreenAssertionManager *assertionManager; // @synthesize assertionManager=_assertionManager;
+@property(readonly, nonatomic) id <HDSPSleepLockScreenAssertionManager> assertionManager; // @synthesize assertionManager=_assertionManager;
 @property(readonly, nonatomic) HDSPSleepLockScreenStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(readonly, nonatomic) struct os_unfair_lock_s sleepLockScreenLock; // @synthesize sleepLockScreenLock=_sleepLockScreenLock;
+@property(nonatomic) __weak id <HDSPSleepEventDelegate> sleepEventDelegate; // @synthesize sleepEventDelegate=_sleepEventDelegate;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 - (id)diagnosticInfo;
 - (id)diagnosticDescription;
 - (id)_currentState;
 - (void)lockScreenDidConnect;
+- (id)_bedtimeExpiredEventAfterDate:(id)arg1;
+- (id)upcomingEventsDueAfterDate:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *providerIdentifier;
+- (id)eventIdentifiers;
+- (void)sleepEventIsDue:(id)arg1;
 - (void)overrideLockScreenState:(long long)arg1 userInfo:(id)arg2;
+@property(readonly, nonatomic) _Bool isLockScreenActive;
+@property(readonly, nonatomic) _Bool inUserRequestedSleepMode;
 @property(readonly, nonatomic) long long sleepMode;
 @property(readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property(readonly, nonatomic) NSDate *currentDate;
+- (void)timeZoneChangeDetected:(id)arg1;
+- (void)significantTimeChangeDetected:(id)arg1;
 - (void)sensitiveUIStateChanged;
 - (long long)_lock_resolvedLockScreenState;
 - (_Bool)_lock_overridingLockScreenState;
 - (void)_lock_updateLockScreenAssertion;
 - (_Bool)_lock_shouldShowLockScreenForState:(long long)arg1;
+- (void)unscheduleLockScreenStateChange;
+- (void)scheduleLockScreenStateChange;
 - (void)sleepLockScreenStateDidChange:(long long)arg1 previousState:(long long)arg2;
 - (void)dismissAlertForGoodMorning;
 - (void)presentAlertForGoodMorning;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepSettings:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepSettings:(id)arg2;
 - (void)sleepModeDidChange:(long long)arg1 previousMode:(long long)arg2 reason:(unsigned long long)arg3;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;

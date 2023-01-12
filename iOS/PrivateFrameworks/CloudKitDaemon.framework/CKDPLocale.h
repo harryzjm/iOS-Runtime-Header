@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPLocale : PBCodable <NSCopying>
 {
     NSString *_languageCode;

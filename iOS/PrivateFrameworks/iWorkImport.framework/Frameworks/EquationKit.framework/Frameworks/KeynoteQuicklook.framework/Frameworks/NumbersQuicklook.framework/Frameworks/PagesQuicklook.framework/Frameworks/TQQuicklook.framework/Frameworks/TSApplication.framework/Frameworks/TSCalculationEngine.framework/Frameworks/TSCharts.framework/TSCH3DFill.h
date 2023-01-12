@@ -22,9 +22,10 @@
 + (id)fillWithIdentifier:(id)arg1;
 + (id)fill;
 + (id)fillWithLightingModel:(id)arg1 identifier:(id)arg2;
-+ (id)instanceWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 + (id)lightingModelWithSageFillData:(id)arg1;
 + (id)fillWithSageFillData:(id)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *percentage; // @synthesize percentage=_percentage;
 @property(retain, nonatomic) TSCH3DFillSetIdentifier *identifier; // @synthesize identifier=_identifier;
 - (void)didInitFromSOS;
@@ -55,13 +56,12 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithLightingModel:(id)arg1 identifier:(id)arg2;
 - (id)init;
 @property(readonly) TSDFill *swatchFill; // @synthesize swatchFill=_swatchFill;
 - (id)convertForChartSeriesType:(id)arg1 context:(id)arg2;
-- (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)assignQuicklookColorToMaterialDiffuseColorForLightingModel:(id)arg1;
 - (id)representativeDiffuseColor;
 - (id)sageFillData;

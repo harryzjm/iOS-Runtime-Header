@@ -16,7 +16,6 @@
 - (void)_applicationWillResignActive;
 - (_Bool)accessibilityPerformEscape;
 - (void)_presentHUDWithKeyCommands:(id)arg1;
-- (void)_axSelectFirstHUDElement;
 
 @end
 

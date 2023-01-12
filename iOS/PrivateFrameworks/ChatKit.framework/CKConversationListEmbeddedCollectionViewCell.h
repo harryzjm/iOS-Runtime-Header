@@ -38,6 +38,7 @@
 - (void)forwardStateToEmbeddedCell:(unsigned long long)arg1;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)__im_ff_uiConsistencyEnabled;
 
 @end
 

@@ -14,7 +14,6 @@
 {
 }
 
-- (id)parentRepForMagnification;
 - (void)updateFromLayout;
 
 // Remaining properties

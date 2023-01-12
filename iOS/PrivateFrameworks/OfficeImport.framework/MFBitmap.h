@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (unsigned long long)pixelDataLength;
 - (_Bool)isEmpty;
 - (void)setMonoPalette:(id)arg1;
 - (_Bool)isFlipped;

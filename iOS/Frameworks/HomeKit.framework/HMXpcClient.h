@@ -6,36 +6,45 @@
 
 #import <HMFoundation/HMFMessageTransport.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageTransportDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSString, NSXPCConnection;
+@class HMXPCMessageTransportConfiguration, NSDictionary, NSMutableArray, NSString, NSUUID, NSXPCConnection;
 
-__attribute__((visibility("hidden")))
-@interface HMXPCClient : HMFMessageTransport <HMFMessageTransportDelegate>
+@interface HMXPCClient : HMFMessageTransport <HMFMessageTransportDelegate, HMFLogging>
 {
     NSMutableArray *_reconnectionHandlers;
+    unsigned long long _homeDataAuthorizationStatus;
     _Bool _connectionValid;
     _Bool _requiresCheckin;
-    _Bool _notifyRegistered;
+    _Bool _isAuthorizedForHomeDataAccess;
     int _notifyRegisterToken;
     NSXPCConnection *_connection;
+    NSString *_logIdentifier;
+    NSUUID *_UUID;
+    HMXPCMessageTransportConfiguration *_configuration;
     NSDictionary *_userInfo;
 }
 
++ (id)logCategory;
 + (id)remoteObjectInterface;
 + (id)exportedInterface;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool notifyRegistered; // @synthesize notifyRegistered=_notifyRegistered;
 @property(nonatomic) int notifyRegisterToken; // @synthesize notifyRegisterToken=_notifyRegisterToken;
+@property(nonatomic) _Bool isAuthorizedForHomeDataAccess; // @synthesize isAuthorizedForHomeDataAccess=_isAuthorizedForHomeDataAccess;
 @property(nonatomic) _Bool requiresCheckin; // @synthesize requiresCheckin=_requiresCheckin;
 @property(nonatomic) _Bool connectionValid; // @synthesize connectionValid=_connectionValid;
 @property(readonly, copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property(readonly, copy) HMXPCMessageTransportConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(readonly, copy) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property(readonly, copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerReconnectionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithUserInfo:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 userInfo:(id)arg2;
+- (id)initWithConfiguration:(id)arg1;
 - (id)init;
 
 // Remaining properties

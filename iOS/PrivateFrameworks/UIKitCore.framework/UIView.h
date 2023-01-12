@@ -18,13 +18,16 @@
 #import <UIKitCore/UILayoutItem_Internal-Protocol.h>
 #import <UIKitCore/UITextEffectsOrdering-Protocol.h>
 #import <UIKitCore/UITraitEnvironment-Protocol.h>
+#import <UIKitCore/_UIDropInteractionOwning-Protocol.h>
 #import <UIKitCore/_UIFallbackEnvironment-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 #import <UIKitCore/_UIFocusItemDebuggable-Protocol.h>
 #import <UIKitCore/_UIFocusItemInternal-Protocol.h>
+#import <UIKitCore/_UIFocusItemPrivate-Protocol.h>
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 #import <UIKitCore/_UIFocusRegionContainerInternal-Protocol.h>
 #import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
+#import <UIKitCore/_UIGestureOwning-Protocol.h>
 #import <UIKitCore/_UILayoutItem-Protocol.h>
 #import <UIKitCore/_UILegacyFocusRegion-Protocol.h>
 #import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
@@ -32,10 +35,10 @@
 #import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
 #import <UIKitCore/_UIViewSubtreeMonitor-Protocol.h>
 
-@class CALayer, NSArray, NSISEngine, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIColor, UIDropInteraction, UIImage, UIInputResponderController, UIKBRenderConfig, UILayoutGuide, UIPresentationController, UIStoryboardPreviewingSegueTemplateStorage, UITraitCollection, UIViewAnimationInfo, UIViewController, UIWindow, _UIAccessibilityLimits, _UIBoundingPath, _UIFocusGroupDescriptor, _UITouchForceObservable, _UIViewLayoutEngineRelativeAlignmentRectOriginCache;
-@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer, _UIFocusRegionContainer, _UIViewInternalDraggingSourceDelegate;
+@class CALayer, NSArray, NSISEngine, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIColor, UIDropInteraction, UIFocusEffect, UIFocusSystem, UIImage, UIKBRenderConfig, UIKeyboardLayoutGuide, UIKeyboardSceneDelegate, UILayoutGuide, UIPasteConfiguration, UIPresentationController, UIStoryboardPreviewingSegueTemplateStorage, UITraitCollection, UIViewAnimationInfo, UIViewController, UIWindow, _UIBoundingPath, _UIFocusStyle, _UIFocusSystemSceneComponent, _UITouchForceObservable, _UIViewLayoutEngineRelativeAlignmentRectOriginCache;
+@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer, _UIFocusBehavior, _UIFocusRegionContainer, _UIGestureOwning, _UIViewInternalDraggingSourceDelegate;
 
-@interface UIView <_UIFallbackEnvironment, UILayoutItem_Internal, UITextEffectsOrdering, UILargeContentViewerItem, NSISVariableDelegate, _UILayoutItem, _UIMultilineTextContentSizing, NSISEngineDelegate, _UIScrollViewScrollObserver_Internal, _UIViewSubtreeMonitor, _UITraitEnvironmentInternal, _UIFocusItemInternal, _UIFocusItemDebuggable, _UIFocusRegionContainerInternal, _UILegacyFocusRegion, _UIGeometryChangeObserver, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate>
+@interface UIView <_UIFallbackEnvironment, UILayoutItem_Internal, UITextEffectsOrdering, UILargeContentViewerItem, NSISVariableDelegate, _UILayoutItem, _UIMultilineTextContentSizing, NSISEngineDelegate, _UIScrollViewScrollObserver_Internal, _UIViewSubtreeMonitor, _UIGestureOwning, _UITraitEnvironmentInternal, _UIFocusItemInternal, _UIFocusItemDebuggable, _UIFocusRegionContainerInternal, _UILegacyFocusRegion, _UIGeometryChangeObserver, _UIDropInteractionOwning, _UIFocusEnvironmentPrivate, _UIFocusItemPrivate, _UIFocusRegionContainer, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace, UIFocusItem, UIFocusItemContainer, CALayerDelegate>
 {
     NSMutableArray *_constraintsExceptingSubviewAutoresizingConstraints;
     UITraitCollection *_cachedTraitCollection;
@@ -62,6 +65,7 @@
         unsigned int interceptMouseEvent:1;
         unsigned int deallocating:1;
         unsigned int isInUIViewDealloc:1;
+        unsigned int hasPreparedForWindowDealloc:1;
         unsigned int debugFlash:1;
         unsigned int isAncestorOfFirstResponder:1;
         unsigned int dontAutoresizeSubviews:1;
@@ -146,6 +150,7 @@
         unsigned int preservesSuperviewMargins:4;
         unsigned int insettingLayoutMarginsFromSafeArea:4;
         unsigned int safeAreaInsetsFrozen:1;
+        unsigned int preservesSafeAreaInsets:1;
         unsigned int viewDelegateContentOverlayInsetsAreClean:1;
         unsigned int hasGeometryObservers:1;
         unsigned int observingGeometryChangesForSelfCount:4;
@@ -188,8 +193,14 @@
         unsigned int allowsHighContrastForBackgroundColor:1;
         unsigned int hasPendingTraitStorageConstraints:1;
         unsigned int hasEverBeenInAWindow:1;
-        unsigned int hasFocusGroupDescriptor:2;
+        unsigned int hasFocusGroupIdentifier:2;
+        unsigned int hasFocusGroupPriority:1;
+        unsigned int hasFocusEffect:2;
         unsigned int allowsSkippingLayout:1;
+        unsigned int isResolvingTraitCollection:1;
+        unsigned int needsLayoutAndDisplayOnTintColorChanges:1;
+        unsigned int subviewNeedsAnimationRestorationMessage:1;
+        unsigned int isHostingTrackingForAnimationRestoration:1;
     } _viewFlags;
     unsigned short _unsatisfiableConstraintsLoggingSuspensionCount;
     unsigned int _pseudo_id;
@@ -208,6 +219,7 @@
     NSMapTable *_stashedLayoutVariableObservations;
     NSMutableArray *_internalConstraints;
     UILayoutGuide *_safeAreaLayoutGuide;
+    UIKeyboardLayoutGuide *_keyboardLayoutGuide;
     UILayoutGuide *_readableContentGuide;
     long long __preferedContentsFormat;
     UITraitCollection *__lastNotifiedTraitCollection;
@@ -245,6 +257,8 @@
 + (void)_removeHierarchyTrackingVisitor:(id)arg1;
 + (void)_addHierarchyTrackingVisitor:(id)arg1;
 + (id)_viewWithLayoutConstraints;
++ (_Bool)_allowsUnsupportedMacIdiomBehavior;
++ (void)_setAllowsUnsupportedMacIdiomBehavior:(_Bool)arg1;
 + (void)_enableToolsDebugAlignmentRects:(_Bool)arg1;
 + (void)_enableToolsDebugColorViewBounds:(_Bool)arg1;
 + (_Bool)_toolsDebugAlignmentRects;
@@ -342,6 +356,8 @@
 + (_Bool)_shouldTrackAnimationsWithAnimator;
 + (_Bool)_shouldTrackActionWithAnimator:(id)arg1;
 + (void)modifyAnimationsWithRepeatCount:(double)arg1 autoreverses:(_Bool)arg2 animations:(CDUnknownBlockType)arg3;
++ (void)_modifyAnimationsWithPreferredFrameRateRange:(struct CAFrameRateRange)arg1 updateReason:(unsigned int)arg2 animations:(CDUnknownBlockType)arg3;
++ (void)_modifyAnimationsWithPreferredFrameRateRange:(struct CAFrameRateRange)arg1 reason:(id)arg2 animations:(CDUnknownBlockType)arg3;
 + (void)addKeyframeWithRelativeStartTime:(double)arg1 relativeDuration:(double)arg2 animations:(CDUnknownBlockType)arg3;
 + (void)animateKeyframesWithDuration:(double)arg1 delay:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)setAnimationTransition:(long long)arg1 forView:(id)arg2;
@@ -394,14 +410,19 @@
 - (void)_diagnoseFocusInteractionEligibilityForReport:(id)arg1;
 - (_Bool)_shouldAlwaysDiagnoseFocusInteractionEligibility;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
+- (struct CGRect)_clippingRectInCoordinateSpace:(id)arg1;
 - (id)_attributesForFocusRegionContentInCoordinateSpace:(id)arg1;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
-- (id)_accessibilityFocusContainers;
+- (id)_accessibilityFocusContainers:(_Bool)arg1;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (struct CGRect)_defaultFocusRegionFrame;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (id)focusItemsInRect:(struct CGRect)arg1;
 @property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
+- (id)_focusGesturesForFailureRequirements;
+- (_Bool)_prefersFocusContainment;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
+- (_Bool)_isTransparentFocusItem;
 - (id)_focusDebugOverlayParentView;
 - (_Bool)_isTransparentFocusRegion;
 - (id)_fulfillPromisedFocusRegion;
@@ -412,11 +433,13 @@
 - (struct CGRect)_focusRegionFrame;
 - (_Bool)_legacy_isEligibleForFocusInteraction;
 - (id)_focusRegionFocusSystem;
+@property(nonatomic) long long focusGroupPriority;
+- (long long)_systemDefaultFocusGroupPriority;
 @property(copy, nonatomic) NSString *focusGroupIdentifier;
-- (id)_systemDefaultFocusGroupDescriptor;
-@property(retain, nonatomic, setter=_setFocusGroupDescriptor:) _UIFocusGroupDescriptor *_focusGroupDescriptor;
+- (id)_systemDefaultFocusGroupIdentifier;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly, nonatomic, getter=_focusMapContainer) __weak id <_UIFocusRegionContainer> focusMapContainer;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
 - (void)_setNeedsNonDeferredFocusUpdate;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -442,7 +465,6 @@
 - (struct UIEdgeInsets)_focusableContentMargins;
 - (unsigned long long)_speedBumpEdges;
 - (void)_setSpeedBumpEdges:(unsigned long long)arg1;
-- (_Bool)_isFocusableElement;
 - (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 - (id)_firstCommonAncestorToView:(id)arg1 givenCommonAncestor:(id)arg2;
 - (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -452,6 +474,9 @@
 - (_Bool)_isFocusedOrAncestorOfFocusedView;
 @property(readonly, nonatomic, getter=isFocused) _Bool focused;
 @property(readonly, nonatomic) _Bool canBecomeFocused;
+@property(readonly, nonatomic, getter=_focusSystemSceneComponent) _UIFocusSystemSceneComponent *focusSystemSceneComponent;
+@property(readonly, nonatomic, getter=_focusBehavior) id <_UIFocusBehavior> focusBehavior;
+@property(readonly, nonatomic, getter=_focusSystem) UIFocusSystem *focusSystem;
 @property(readonly, nonatomic, getter=_isContainedInHostedFocusSystem) _Bool containedInHostedFocusSystem;
 @property(nonatomic, getter=_isFocusInteractionEnabled, setter=_setFocusInteractionEnabled:) _Bool focusInteractionEnabled;
 - (id)resizableSnapshotViewFromRect:(struct CGRect)arg1 withCapInsets:(struct UIEdgeInsets)arg2;
@@ -512,6 +537,7 @@
 - (void)_setBackdropMaskViewFlags:(long long)arg1;
 - (long long)_backdropMaskViewFlags;
 @property(nonatomic, setter=_setCornerRadius:) double _cornerRadius;
+- (id)_cornerCurve;
 @property(nonatomic, setter=_setContinuousCornerRadius:) double _continuousCornerRadius;
 - (id)maskView;
 - (void)setMaskView:(id)arg1;
@@ -526,9 +552,6 @@
 - (unsigned long long)_accessibilityResolvedInterfaceStyle;
 - (void)_accessibilitySetInterfaceStyleIntent:(unsigned long long)arg1;
 - (unsigned long long)_accessibilityInterfaceStyleIntent;
-@property(nonatomic, getter=_ancestorDefinesTintAdjustmentMode, setter=_setAncestorDefinesTintAdjustmentMode:) _Bool _ancestorDefinesTintAdjustmentMode;
-@property(nonatomic, getter=_ancestorDefinesTintColor, setter=_setAncestorDefinesTintColor:) _Bool _ancestorDefinesTintColor;
-@property(nonatomic, getter=_ancestorIgnoresInvertColors, setter=_setAncestorIgnoresInvertColors:) _Bool _ancestorIgnoresInvertColors;
 - (void)_endOcclusion:(id)arg1;
 - (void)_beginOcclusion:(id)arg1;
 - (void)interactionTintColorDidChange;
@@ -551,7 +574,6 @@
 - (void)_processDidChangeRecursivelyFromOldTraits:(id)arg1 toCurrentTraits:(id)arg2 forceNotification:(_Bool)arg3;
 - (void)_handleTraitChangeForHierarchyChange;
 - (_Bool)_definesDynamicTintColor;
-- (void)_effectiveThemeTraitCollectionDidChangeInternal;
 - (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)_traitCollectionDidChangeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)_noteLocalTraitsDidChangeRecursively;
@@ -571,14 +593,20 @@
 - (_Bool)_fakeShouldAnimatePropertyWithKey:(id)arg1;
 - (_Bool)_shouldAnimatePropertyAdditivelyWithKey:(id)arg1;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
+@property(readonly, nonatomic) UIKeyboardLayoutGuide *keyboardLayoutGuide; // @synthesize keyboardLayoutGuide=_keyboardLayoutGuide;
 @property(readonly, nonatomic, getter=_safeAreaWidthExceedsReadableWidth) _Bool safeAreaWidthExceedsReadableWidth;
 - (id)_layoutMarginsGuideIfExists;
 - (void)setLayoutMarginsFollowReadableWidth:(_Bool)arg1;
 - (_Bool)layoutMarginsFollowReadableWidth;
 @property(retain, nonatomic, getter=_contentSizeNotificationToken, setter=_setContentSizeNotificationToken:) id contentSizeNotificationToken;
+- (_Bool)_wantsAnimationRestoration;
+- (void)_restoreRemovedAnimationsIncludingSubviews;
+- (void)_finishTrackingForAnimationRestoration;
+- (void)_removeAllAnimationsIncludingSubviewsTrackingForAnimationRestoration;
 @property(readonly, nonatomic) _Bool _ignoreRemoveAllAnimations;
 @property(nonatomic, setter=_setDontUpdateInferredLayoutMargins:) _Bool _dontUpdateInferredLayoutMargins;
 @property(nonatomic, setter=_setViewDelegateContentOverlayInsetsAreClean:) _Bool _viewDelegateContentOverlayInsetsAreClean;
+@property(nonatomic, setter=_setPreservesSafeAreaInsets:) _Bool _preservesSafeAreaInsets;
 - (_Bool)_safeAreaInsetsFrozen;
 - (void)_setSafeAreaInsetsFrozen:(_Bool)arg1;
 - (void)safeAreaInsetsDidChange;
@@ -613,6 +641,7 @@
 - (id)_frameLayoutItem;
 - (struct CGColor *)_backgroundCGColor;
 - (void)_prepareForWindowDealloc;
+- (void)_prepareForWindowHostingSceneRemoval;
 @property(nonatomic) long long compositingMode;
 - (_Bool)cancelTouchTracking;
 - (_Bool)cancelMouseTracking;
@@ -623,8 +652,14 @@
 - (void)_gatherKeyResponders:(id)arg1 indexOfSelf:(unsigned long long *)arg2 visibilityTest:(CDUnknownBlockType)arg3 passingTest:(CDUnknownBlockType)arg4 subviewsTest:(CDUnknownBlockType)arg5;
 - (id)_previousKeyResponder;
 - (id)_nextKeyResponder;
+@property(copy, nonatomic) UIFocusEffect *focusEffect;
+- (id)_defaultFocusEffect;
+@property(readonly, nonatomic) _UIFocusStyle *_focusEffectStyle;
+@property(readonly, nonatomic) UIBezierPath *_focusRingPath;
+@property(readonly, nonatomic) _Bool _wantsFocusRing;
+- (_Bool)_wantsKeyEventsWhenDeferred;
+@property(readonly, nonatomic) long long _focusItemDeferralMode;
 - (long long)_topToBottomLeftToRightViewCompare:(id)arg1;
-- (id)_selectToHereResponderProxy;
 - (id)_textServicesResponderProxy;
 - (id)nextResponder;
 - (void)_setTouchInsets:(struct UIEdgeInsets)arg1;
@@ -707,10 +742,19 @@
 - (_Bool)accessibilityInvertFilterApplied;
 - (id)_enclosingInterfaceActionGroupView;
 - (id)_enclosingInterfaceActionRepresentationView;
+- (id)_uis_outline;
 @property(nonatomic) _Bool allowsGroupBlending;
 @property(nonatomic) _Bool allowsGroupOpacity;
-@property(retain, nonatomic, setter=_setAccessibilityLimits:) _UIAccessibilityLimits *_accessibilityLimits;
-- (id)_accessibilityLimitsOrNil;
+- (id)_appliedContentSizeCategoryLimitsDescription;
+@property(readonly, copy, nonatomic) NSString *appliedContentSizeCategoryLimitsDescription;
+- (id)_contentSizeCategoryLimitedTraitCollection:(id)arg1;
+- (void)_contentSizeCategoryLimitsDidChange;
+- (void)_setMaximumContentSizeCategory:(id)arg1;
+- (id)_maximumContentSizeCategory;
+@property(copy, nonatomic) NSString *maximumContentSizeCategory;
+- (void)_setMinimumContentSizeCategory:(id)arg1;
+- (id)_minimumContentSizeCategory;
+@property(copy, nonatomic) NSString *minimumContentSizeCategory;
 - (void)_uinavigationbar_prepareToAppearInNavigationItem:(id)arg1 onLeft:(_Bool)arg2;
 - (id)_visualRecursiveDescription;
 @property(nonatomic, setter=_setFlipsHorizontalAxis:) _Bool _flipsHorizontalAxis;
@@ -724,8 +768,9 @@
 - (_Bool)_beginDragWithTouches:(id)arg1 orInitialCentroid:(struct CGPoint)arg2 accessibilityEndpoint:(id)arg3;
 - (_Bool)_beginDragWithInteractionTouches:(id)arg1;
 @property(nonatomic, getter=_draggingSourceDelegate, setter=_setDraggingSourceDelegate:) __weak id <_UIViewInternalDraggingSourceDelegate> _draggingSourceDelegate;
-@property(readonly, nonatomic) UIInputResponderController *inputResponderController;
+@property(readonly, nonatomic) UIKeyboardSceneDelegate *keyboardSceneDelegate;
 - (id)_activityItemsConfigurationAtLocation:(struct CGPoint)arg1;
+- (id)inputResponderController;
 - (id)_fallbackTraitCollection;
 - (double)_findAutolayoutHeightConstraint;
 - (_Bool)_hasAutolayoutHeightConstraint;
@@ -754,7 +799,7 @@
 - (id)viewPrintFormatter;
 - (Class)_printFormatterClass;
 @property(readonly, nonatomic) _UITouchForceObservable *_touchForceObservable;
-@property(retain, nonatomic, getter=_dynamicDropInteraction, setter=_setDynamicDropInteraction:) UIDropInteraction *dynamicDropInteraction;
+@property(nonatomic, getter=_dynamicDropInteraction, setter=_setDynamicDropInteraction:) __weak UIDropInteraction *dynamicDropInteraction;
 - (void)_ui_removeFromParentLayoutItem;
 - (void)_ui_insertSubLayoutItem:(id)arg1 atIndex:(long long)arg2;
 - (void)_ui_addSubLayoutItem:(id)arg1;
@@ -764,6 +809,8 @@
 @property(readonly, nonatomic) UIView *_ui_superview;
 @property(nonatomic) struct CGRect _ui_frame;
 @property(readonly, nonatomic) struct CGRect _ui_bounds;
+- (void)_didStopBeingDisplayedInPointerContentEffect;
+- (void)_willBeginBeingDisplayedInPointerContentEffect;
 - (double)_uimorphingView_getInitialAlpha;
 - (void)_uimorphingView_setInitialAlpha:(double)arg1;
 - (long long)compareTextEffectsOrdering:(id)arg1;
@@ -785,12 +832,16 @@
 - (id)_largeContentStoredProperties;
 - (id)_largeContentStoredPropertiesCreatingIfNecessary:(_Bool)arg1;
 - (id)_largeContentViewerItemAtPoint:(struct CGPoint)arg1;
+- (void)_throwForUnsupportedNonMacIdiomBehaviorWithReason:(id)arg1;
 - (id)_colorViewBoundsOverlayCreateIfNecessary:(_Bool)arg1;
 - (void)_removeColorViewBoundsOverlays;
 - (id)_hierarchyRepresentation;
 - (id)_representationOfHierarchyForXcode;
 - (_Bool)_allowsLinkPreviewInteractionInViewServices;
 - (_Bool)_la_isVisible;
+- (void)_ola_willApplyMultilineTextWidthDisambiguationConstraint;
+- (_Bool)_ola_shouldUseImprovedMultilineTextDisambiguation;
+- (_Bool)_ola_isCandidateForMultilineTextWidthDisambiguationWhenArranged;
 - (double)_proportionalFillLengthForOrderedArrangement:(id)arg1 relevantParentAxis:(long long)arg2;
 - (double)_calculatedIntrinsicHeight;
 - (void)_vendedBaselineViewDidMoveForFirst:(_Bool)arg1;
@@ -814,11 +865,7 @@
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (_Bool)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
 - (struct CGSize)_calculatedSystemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3 hasIntentionallyCollapsedHeight:(_Bool *)arg4;
-- (_Bool)_usesHostedLayoutEngineForFittingSizeCalculation;
-- (void)_recursiveCollectTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(_Bool)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3 currentTargetWidth:(double)arg4;
 - (void)_makeTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(_Bool)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3 currentTargetWidth:(double)arg4;
-- (void)_finishTemporaryInternalConstraints:(id)arg1 withEngine:(id)arg2;
-- (void)_populateEngineWithConstraintsForViewSubtree:(id)arg1 forComputingFittingSizeOfView:(id)arg2;
 - (id)_descendantWithAmbiguousLayout;
 - (void)exerciseAmbiguityInLayout;
 - (id)_layoutVariablesWithAmbiguousValue;
@@ -829,99 +876,60 @@
 - (id)_debuggableDescriptionForConstraintsAffectingVerticalAxis;
 - (id)_debuggableDescriptionForConstraintsAffectingHorizontalAxis;
 - (id)_debuggableDescriptionForConstraintsAffectingAxis:(long long)arg1;
-- (void)_removeAlignmentDebuggingOverlays;
 - (id)_alignmentDebuggingOverlayCreateIfNecessary:(_Bool)arg1;
 - (void)invalidateIntrinsicContentSize;
-- (id)_generateContentSizeConstraints;
-- (void)_updateContentSizeConstraints;
 - (id)_containerForContentSizeConstraints;
-- (id)_currentContentSizeHeightConstraint;
-- (_Bool)_intrinsicContentSizeConstraintsAreClean;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (void)_setContentSizeConstraints:(id)arg1;
-- (id)_contentSizeConstraints;
 - (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
 - (float)contentCompressionResistancePriorityForAxis:(long long)arg1;
-- (struct CGSize)_defaultContentCompressionResistancePriorities;
 - (void)_setContentCompressionResistancePriorities:(struct CGSize)arg1;
 - (struct CGSize)_contentCompressionResistancePriorities;
-- (void)_setPrimitiveContentCompressionResistancePrioritiesValue:(id)arg1;
-- (id)_primitiveContentCompressionResistancePrioritiesValue;
 - (void)setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;
 - (float)contentHuggingPriorityForAxis:(long long)arg1;
-- (struct CGSize)_defaultContentHuggingPriorities;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
 - (void)_setContentHuggingPriorities:(struct CGSize)arg1;
 - (struct CGSize)_contentHuggingPriorities;
-- (void)_setPrimitiveContentHuggingPrioritiesValue:(id)arg1;
-- (id)_primitiveContentHuggingPrioritiesValue;
 - (void)_popDisableLayoutFlushing;
 - (void)_pushDisableLayoutFlushing;
-@property(nonatomic, setter=_setDisableLayoutFlushingCount:) long long _disableLayoutFlushingCount;
+- (long long)_disableLayoutFlushingCount;
+- (void)_setDisableLayoutFlushingCount:(long long)arg1;
 - (void)_enableLayoutFlushing;
 - (void)_disableLayoutFlushing;
-- (void)_constraints_frameDidChange;
 - (void)_engineHostConstraints_frameDidChange;
 - (void)_autoresizingConstraints_frameDidChange;
 - (void)_constantsForVerticalAutoresizingConstraints:(double *)arg1:(double *)arg2;
 - (void)_constantsForHorizontalAutoresizingConstraints:(double *)arg1:(double *)arg2;
-- (id)_constraintsEquivalentToAutoresizingMask;
 - (void)_calculateSubviewAlignmentFrame:(struct CGRect *)arg1 superviewAlignmentBounds:(struct CGRect *)arg2 forAutoresizingMask:(unsigned long long)arg3 preservingNonzeroSuperviewAlignmentBoundsOriginForCompatibility:(_Bool)arg4;
-- (unsigned long long)_effectiveAutoresizingMask;
 - (_Bool)_isManuallyResizedBySuperview;
 - (float)_priorityForEngineHostConstraints;
-- (void)_invalidateEngineHostConstraints;
 - (void)_updateLayoutEngineHostConstraints;
 - (id)_engineHostingWidthConstraint;
-- (void)_resetLayoutEngineHostConstraints;
 - (void)_resetLayoutEngineHostConstraintsForAxis:(long long)arg1 collectingViews:(id)arg2;
 - (void)_recursiveInvalidateDescendantsNeedingDoubleUpdateConstraintsCollectingViews:(id)arg1;
 - (void)_relaxLayoutEngineHostConstraints;
 - (void)_relaxLayoutEngineHostConstraintsForAxis:(long long)arg1;
-- (void)_updateAutoresizingConstraints;
 - (void)_uiib_invalidateAutoresizingConstraints;
-- (void)_invalidateAutoresizingConstraints;
-- (void)_effectiveAutoresizingMask_autoresizesSubviewsChanged;
-- (void)_constraints_viewGeometryDidChange;
-- (void)_constraints_subviewDidChangeSuperview:(id)arg1;
 - (void)_constraints_subviewWillChangeSuperview:(id)arg1;
-- (void)_constraints_didChangeAutoresizingConstraintsArrayForContainedView:(id)arg1;
-- (void)_constraints_willChangeAutoresizingConstraintsArrayForContainedView:(id)arg1;
-- (_Bool)_autoresizingConstraintsAreUpdated;
 - (void)_invalidateLayoutEngineHostConstraints;
 - (id)_layoutEngineHostConstraints;
-- (void)_setLayoutEngineHostConstraints:(id)arg1;
-- (void)_setAutoresizingConstraints:(id)arg1;
-- (id)_autoresizingConstraints;
 - (double)nsli_marginOffsetForAttribute:(long long)arg1;
 - (id)nsli_layoutMarginsItem;
-- (id)_constraintForIdentifier:(id)arg1;
 - (id)nsli_installedConstraints;
 - (void)removeConstraints:(id)arg1;
 - (_Bool)nsli_removeConstraint:(id)arg1;
-- (void)_removeConstraint:(id)arg1;
 - (void)removeConstraint:(id)arg1;
 - (void)addConstraints:(id)arg1;
 - (void)nsli_addConstraint:(id)arg1;
 - (void)_scheduleFaultingInGuidesForConstraint:(id)arg1;
 - (void)_faultInGuidesForConstraint:(id)arg1;
-- (void)_addConstraint:(id)arg1;
 - (void)addConstraint:(id)arg1;
 - (_Bool)_uiib_tryToAddConstraint:(id)arg1 roundingAdjustment:(double)arg2 mutuallyExclusiveConstraints:(id *)arg3;
-- (_Bool)_tryToAddConstraint:(id)arg1 roundingAdjustment:(double)arg2 mutuallyExclusiveConstraints:(id *)arg3;
-- (_Bool)_tryToAddConstraintWithoutUpdatingConstraintsArray:(id)arg1 roundingAdjustment:(double)arg2 mutuallyExclusiveConstraints:(id *)arg3;
 - (id)constraints;
-- (void)_layoutEngine_willRemoveLayoutConstraint:(id)arg1;
-- (_Bool)_layoutEngine_didAddLayoutConstraint:(id)arg1 roundingAdjustment:(double)arg2 mutuallyExclusiveConstraints:(id *)arg3;
 - (void)_viewHierarchyUnpreparedForConstraint:(id)arg1;
-- (_Bool)_isViewHierarchyPreparedForConstraint:(id)arg1;
 - (void)_rebuildLayoutFromScratch;
-- (void)_withAutomaticEngineOptimizationDisabled:(CDUnknownBlockType)arg1;
-- (void)_layoutEngine_windowDidChange;
 - (void)_initializeLayoutEngine;
-- (id)_legendEntryForDescriptionForLayout;
 - (id)_descriptionForLayoutTrace;
 - (id)nsli_constraintWithAnchor:(id)arg1 relatedBy:(long long)arg2 toAnchor:(id)arg3 withSystemSpacingMultipliedBy:(double)arg4;
 - (id)nsli_layoutAnchorForAttribute:(long long)arg1;
@@ -981,6 +989,10 @@
 - (id)_viewForLoweringBaselineLayoutAttribute:(int)arg1;
 - (void)_updateConstraintsAtEngineLevelIfNeeded;
 - (void)_updateConstraintsAtEngineLevelIfNeededWithViewForVariableChangeNotifications:(id)arg1;
+- (void)_addBoundsMatchingConstraintsForView:(id)arg1;
+- (void)_insertBoundsMatchingSubview:(id)arg1 belowSubview:(id)arg2;
+- (void)_insertBoundsMatchingSubview:(id)arg1 aboveSubview:(id)arg2;
+- (void)_addBoundsMatchingSubview:(id)arg1;
 - (id)_baselineViewForConstraint:(id)arg1 forFirstItem:(_Bool)arg2 withOffset:(double *)arg3;
 - (void)_setBaselineView:(id)arg1 offset:(double)arg2 forConstraint:(id)arg3 forFirstItem:(_Bool)arg4;
 - (_Bool)_recordBaselineLoweringInfo;
@@ -1157,7 +1169,6 @@
 - (void)movedFromSuperview:(id)arg1;
 - (void)_postMovedFromSuperview:(id)arg1;
 - (struct CGRect)_rectToScrollToVisibleInCellInWindow:(id)arg1;
-- (void)_becomeFirstResponder;
 - (void)_promoteSelfOrDescendantToFirstResponderIfNecessary;
 - (void)deferredBecomeFirstResponder;
 - (_Bool)becomeFirstResponder;
@@ -1261,6 +1272,8 @@
 - (id)initWithSize:(struct CGSize)arg1;
 - (void)_didScroll;
 - (void)_observeScrollViewDidScroll:(id)arg1;
+- (_Bool)_subviewPreventsSkipLayout:(id)arg1;
+- (_Bool)_shouldUseViewForSceneDraggingBehavior;
 - (struct CGRect)_boundsForSceneDraggingConstrainedToSafeArea:(_Bool)arg1;
 - (long long)_sceneDraggingBehaviorOnPan;
 - (_Bool)_shouldIgnoreAutofillSave;
@@ -1340,8 +1353,12 @@
 - (id)_scroller;
 - (_Bool)_subclassImplementsDrawRect;
 - (id)_viewControllerForAncestor;
+- (long long)_depthComparison:(id)arg1;
+@property(readonly, nonatomic) NSArray *_nativeInteractions;
+@property(readonly, nonatomic) id <_UIGestureOwning> _actingGestureParent;
+@property(readonly, nonatomic) id <_UIGestureOwning> gestureParent;
+- (_Bool)_isGestureOwningType:(long long)arg1;
 - (id)_initWithLayer:(id)arg1;
-- (id)_cursorInteraction;
 - (_Bool)_allowAssistanceInSubtree;
 - (id)_firstAncestorInteractionConformingToProtocol:(id)arg1;
 - (void)setInteractions:(id)arg1;
@@ -1355,14 +1372,16 @@
 @property(nonatomic) _Bool deliversButtonsForGesturesToSuperview;
 @property(nonatomic) _Bool deliversTouchesForGesturesToSuperview;
 - (void)setGestureRecognizers:(id)arg1;
-- (id)gestureRecognizers;
+@property(readonly, nonatomic) NSArray *gestureRecognizers;
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)layerWillDraw:(id)arg1;
+- (id)_backdropGroups;
 - (id)_parentDescription;
 - (id)recursiveDescription;
 @property(readonly, copy) NSString *description;
+- (_Bool)_shouldAppendTextInViewDescription;
 - (void)_dumpClippedViewWithScreenshotIfNecessary;
 - (void)_strokeClippedViewIfNecessary;
 - (_Bool)_UIViewDebuggingIsViewClipping;
@@ -1442,6 +1461,7 @@
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(retain, nonatomic, getter=_maskView, setter=_setMaskView:) UIView *maskView;
 @property(setter=nsli_setPiercingToken:) unsigned long long nsli_piercingToken;
+@property(copy, nonatomic) UIPasteConfiguration *pasteConfiguration;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property(readonly) Class superclass;
 

@@ -32,9 +32,11 @@
 @property(readonly) HMIVideoFragment *fragment; // @synthesize fragment=_fragment;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)attributeDescriptions;
 @property(readonly, copy) NSString *description;
 - (id)maxConfidenceEvents;
 - (id)maxConfidenceEventForEventClass:(Class)arg1;
+- (id)redactedCopyWithFrameResults:(_Bool)arg1 fragment:(_Bool)arg2;
 - (id)initWithFragment:(id)arg1 events:(id)arg2 frameResults:(id)arg3 thumbnails:(id)arg4 configuration:(id)arg5 outcome:(id)arg6;
 
 // Remaining properties

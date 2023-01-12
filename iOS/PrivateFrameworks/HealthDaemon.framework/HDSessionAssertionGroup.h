@@ -17,7 +17,6 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
-- (void)_transitionToNewAssertions:(id)arg1;
 - (void)invalidate;
 - (void)transitionToState:(long long)arg1;
 - (void)setupState:(long long)arg1 withAssertions:(id)arg2;

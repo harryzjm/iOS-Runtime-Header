@@ -20,8 +20,8 @@
 - (_Bool)isEmpty;
 @property(retain) NSString *type;
 @property(retain) NSString *name;
-- (shared_ptr_695b9c0c *)getSharedPtr;
-- (id)initWithSharedPtr:(shared_ptr_695b9c0c *)arg1;
+- (void *)getSharedPtr;
+- (id)initWithSharedPtr:(void *)arg1;
 - (id)init;
 
 @end

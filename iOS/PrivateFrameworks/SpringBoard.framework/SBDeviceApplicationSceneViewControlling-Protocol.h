@@ -5,15 +5,26 @@
 //
 
 #import <SpringBoard/SBApplicationSceneViewControlling-Protocol.h>
+#import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSceneLayoutStatusBarAssertionProviding-Protocol.h>
 
-@class SBDeviceApplicationSceneHandle, SBHomeGrabberView, UIView;
+@class NSString, SBDeviceApplicationSceneHandle, SBHomeGrabberView, UIView;
 @protocol SBApplicationSceneBackgroundView;
 
-@protocol SBDeviceApplicationSceneViewControlling <SBApplicationSceneViewControlling, SBSceneLayoutStatusBarAssertionProviding>
+@protocol SBDeviceApplicationSceneViewControlling <SBApplicationSceneViewControlling, SBSceneLayoutStatusBarAssertionProviding, SBLayoutStateTransitionObserver>
+@property(readonly, nonatomic) UIView *sceneContentView;
+@property(nonatomic) _Bool sceneRendersAsynchronously;
+@property(copy, nonatomic) NSString *sceneMinificationFilter;
 @property(nonatomic) long long homeGrabberDisplayMode;
 @property(readonly, nonatomic) SBHomeGrabberView *homeGrabberView;
 @property(readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
 @property(retain, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
+- (void)conformsToProtocolSBDeviceApplicationSceneViewControlling;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2;
+- (void)willRotateFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 alongsideContainerView:(UIView *)arg3 animated:(_Bool)arg4;
+- (double)currentStatusBarHeight;
+- (long long)trailingStatusBarStyle;
+- (long long)leadingStatusBarStyle;
+- (long long)bestHomeAffordanceOrientationForOrientation:(long long)arg1;
 @end
 

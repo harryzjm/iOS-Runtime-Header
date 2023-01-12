@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) double seconds; // @synthesize seconds=_seconds;
 @property(readonly, copy) NSString *description;
 - (id)objectForJSON;
+- (id)nameForJSON;
 - (id)data;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

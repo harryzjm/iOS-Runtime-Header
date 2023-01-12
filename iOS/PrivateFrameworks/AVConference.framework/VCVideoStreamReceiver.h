@@ -6,7 +6,7 @@
 
 #import <AVConference/VCMediaStreamSyncDestination-Protocol.h>
 
-@class NSObject, NSString, VCMediaStreamStats, VCMediaStreamSynchronizer, VCVideoStreamRateAdaptation, VideoAttributes;
+@class NSObject, NSString, VCMediaStreamStats, VCVideoStreamRateAdaptation, VideoAttributes;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
     int _sRecvReset;
     struct VideoPacketBuffer_t *_videoPacketBuffer;
     VideoAttributes *_remoteVideoAttributes;
-    VCMediaStreamSynchronizer *_mediaStreamSynchronizer;
     int _remoteVideoCamera;
     _Bool _remoteVideoMirrored;
     _Bool _enableCVO;
@@ -52,6 +51,8 @@ __attribute__((visibility("hidden")))
     int _reportingModuleID;
     _Bool _enableReceiveBitstreamDump;
     struct OpaqueVCTransportStreamRunLoop *_runLoop;
+    void *_rtcpContext;
+    CDUnknownFunctionPointerType _rtcpPacketsCallback;
 }
 
 - (void)handleActiveConnectionChange:(id)arg1;
@@ -71,7 +72,8 @@ __attribute__((visibility("hidden")))
 - (void)processReceptionReportBlock:(struct tagRTCP_RRB *)arg1 blockCount:(unsigned int)arg2 arrivalNTPTime:(union tagNTP)arg3;
 - (void)rtcpSendIntervalElapsed;
 - (int)processVideoRTP;
-- (void)scheduleVideoDecode:(unsigned int *)arg1 schedule_n:(int)arg2;
+- (struct tagVCVideoPacketBufferConfig)newVideoPacketBufferConfig:(struct _RTPMediaPacket *)arg1;
+- (void)scheduleVideoDecode:(unsigned int)arg1;
 - (void)scheduleDecodeForTimestamp:(unsigned int)arg1;
 - (void)updateSequenceNumber:(unsigned short)arg1;
 - (void *)networkReceivePackets;
@@ -88,7 +90,7 @@ __attribute__((visibility("hidden")))
 - (void)setEnableRateAdaptation:(_Bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)setEnableCVO:(_Bool)arg1 cvoExtensionID:(unsigned long long)arg2;
 - (void)dealloc;
-- (id)initWithRTP:(struct tagHANDLE *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5 statisticsCollector:(id)arg6 useTransportStreamRunLoop:(_Bool)arg7;
+- (id)initWithConfig:(struct tagVCVideoStreamReceiverConfig *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

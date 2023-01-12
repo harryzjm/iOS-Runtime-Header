@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AFVoiceInfo, NSArray, NSXPCConnection;
+@class AFInstanceContext, AFVoiceInfo, NSArray, NSXPCConnection;
 @protocol AFSettingsDelegate, OS_dispatch_queue;
 
 @interface AFSettingsConnection : NSObject
@@ -17,14 +17,28 @@
     AFVoiceInfo *_selectedVoice;
     id <AFSettingsDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    AFInstanceContext *_instanceContext;
 }
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (oneway void)getAssistantIsEnabledForDeviceWithSiriInfo:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)triggerABCForType:(id)arg1 subType:(id)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getSpeakerCapabilityForAccessoryWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pushMyriadAdvertisementContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getCurrentRequestIsWatchAuthenticatedWithCompletion:(CDUnknownBlockType)arg1;
+- (oneway void)getAssetStatusForLanguage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)areSiriUODAssetsAvailable:(CDUnknownBlockType)arg1;
+- (void)hasEverSetLanguageCodeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRecordedAudioDirectoryPathsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)trimRecordedAudioWithIdentifier:(id)arg1 offset:(double)arg2 duration:(double)arg3 outputFileType:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)accessRecordedAudioWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)resetExperimentForConfigurationIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)synchronizeExperimentConfigurationsIfApplicableWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getExperimentForConfigurationIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getProximityTuplesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getCapabilitiesDataFromReachableDevicesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getManagedLocalAndRemotePeerInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setHardcodedBluetoothProximity:(id)arg1;
 - (void)getContextCollectorsInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getOriginDeviceInfoForContextIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -41,6 +55,7 @@
 - (void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)siriGradingIsEnabled:(CDUnknownBlockType)arg1;
 - (void)setSiriGradingEnabled:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)showMultiUserSharedUserIDsCompletion:(CDUnknownBlockType)arg1;
 - (void)showPrimaryUserSharedUserIDWithCompletion:(CDUnknownBlockType)arg1;
 - (void)showMultiUsers:(CDUnknownBlockType)arg1;
 - (void)removeMultiUserWithSharedUserID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -86,9 +101,11 @@
 - (void)getSupplementalLanguagesDictionary:(CDUnknownBlockType)arg1;
 - (void)setSupplementalLanguages:(id)arg1 forProduct:(id)arg2 forBuildVersion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setSupplementalLanguageDictionary:(id)arg1 forProduct:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)postTestResultSelectedWithRcId:(id)arg1;
+- (void)postTestResultCandidateWithRcId:(id)arg1 recognitionSausage:(id)arg2;
 - (void)stopAllAudioPlaybackRequests:(_Bool)arg1;
 - (void)stopAudioPlaybackRequest:(id)arg1 immediately:(_Bool)arg2;
-- (void)startAudioPlaybackRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startAudioPlaybackRequest:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPeerIdentifiers:(CDUnknownBlockType)arg1;
 - (void)startRemoteRequest:(id)arg1 onPeer:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissUI;
@@ -100,6 +117,7 @@
 - (void)startUIRequestWithInfo:(id)arg1;
 - (void)startUIRequestWithText:(id)arg1;
 - (void)startUIRequest:(id)arg1;
+- (void)getCurrentAccessoryInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setLanguage:(id)arg1 outputVoice:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setLanguage:(id)arg1 outputVoice:(id)arg2;
 - (void)setLanguage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -110,6 +128,7 @@
 - (void)setOfflineDictationProfileOverridePath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)createOfflineSpeechProfileWithLanguage:(id)arg1 modelOverridePath:(id)arg2 JSONData:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)getOfflineDictationStatusWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getOfflineAssistantStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateOfflineSpeechProfileWithLanguage:(id)arg1 modelOverridePath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getAvailableVoicesForSynthesisLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAvailableVoicesForRecognitionLanguage:(id)arg1 includeAssetInfo:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
@@ -118,21 +137,30 @@
 - (id)_filterVoices:(id)arg1 forLanguage:(id)arg2;
 - (id)_voices;
 - (void)_setVoices:(id)arg1;
+- (void)getAudioSessionCoordinationSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)currectNWActivityId:(CDUnknownBlockType)arg1;
 - (void)homeOnboardingFlowInvoked:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchMultiUserVoiceIdentificationSetting:(CDUnknownBlockType)arg1;
 - (void)clearOpportuneSpeakingEdgeDetectorSignalOverride;
 - (void)setOpportuneSpeakingEdgeDetectorSignalOverride:(long long)arg1;
+- (oneway void)clearAnnounceNotificationsInCarPlayType;
+- (oneway void)setAnnounceNotificationsInCarPlayType:(long long)arg1;
+- (oneway void)getAnnounceNotificationsInCarPlayTypeWithCompletion:(CDUnknownBlockType)arg1;
+- (oneway void)clearAnnounceNotificationsInCarPlayTemporarilyDisabled;
+- (oneway void)getAnnounceNotificationsInCarPlayTemporarilyDisabledWithCompletion:(CDUnknownBlockType)arg1;
+- (oneway void)setAnnounceNotificationsInCarPlayTemporarilyDisabled:(_Bool)arg1;
+- (oneway void)setAnnounceNotificationsTemporarilyDisabledUntil:(id)arg1 forApp:(id)arg2 platform:(long long)arg3;
+- (oneway void)getAnnounceNotificationsTemporarilyDisabledEndDateForApp:(id)arg1 platform:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (oneway void)setAnnounceNotificationsTemporarilyDisabledUntil:(id)arg1 platform:(long long)arg2;
+- (oneway void)getAnnounceNotificationsTemporarilyDisabledEndDateForPlatform:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSpokenNotificationProxCardSeen:(_Bool)arg1;
 - (void)setSpokenNotificationShouldSkipTriggerlessReplies:(_Bool)arg1;
 - (void)getSpokenNotificationShouldSkipTriggerlessRepliesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setSpokenNotificationShouldAlwaysSpeakNotifications:(_Bool)arg1;
-- (void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setSpokenNotificationTemporarilyDisabledForApp:(id)arg1 until:(id)arg2;
-- (void)getSpokenNotificationTemporarilyDisabledEndDateForApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setSpokenNotificationShouldAnnounceAllNotifications:(_Bool)arg1;
+- (void)getSpokenNotificationShouldAnnounceAllNotificationsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setSpokenNotificationIsAlwaysOpportune:(_Bool)arg1;
+- (void)getSpokenNotificationIsAlwaysOpportuneWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearSpokenNotificationTemporarilyDisabledStatus;
-- (void)setSpokenNotificationTemporarilyDisabledUntil:(id)arg1;
-- (void)getSpokenNotificationTemporarilyDisabledEndDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)forceMultiUserSync:(_Bool)arg1 download:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)configOverrides:(CDUnknownBlockType)arg1;
 - (void)setConfigOverrides:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -149,6 +177,7 @@
 - (void)deleteAccountWithIdentifier:(id)arg1;
 - (void)saveAccount:(id)arg1 setActive:(_Bool)arg2;
 - (id)accounts;
+- (void)fetchActiveAccount:(CDUnknownBlockType)arg1;
 - (void)fetchAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAccountsSynchronously:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSupportedMultiUserLanguageCodes:(CDUnknownBlockType)arg1;
@@ -160,9 +189,13 @@
 - (void)dealloc;
 - (void)setXPCConnectionManagementQueue:(id)arg1;
 - (id)init;
+- (id)initWithInstanceContext:(id)arg1;
+- (id)description;
 - (void)_tellDelegateServerVerificationReport:(id)arg1;
 - (void)_tellDelegatePartialVerificationResult:(id)arg1;
 @property(nonatomic, setter=_setDelegate:) __weak id <AFSettingsDelegate> _delegate;
+- (void)_handleCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_setAllowExplicitContent:(_Bool)arg1;
 - (void)_getSharedUserID:(CDUnknownBlockType)arg1;
 - (void)_updateMultiUserInfoForUser:(id)arg1 score:(id)arg2 companionId:(id)arg3 companionSpeechId:(id)arg4 idsIdentifier:(id)arg5 aceHost:(id)arg6 reset:(_Bool)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_getSharedCompanionInfo:(CDUnknownBlockType)arg1;

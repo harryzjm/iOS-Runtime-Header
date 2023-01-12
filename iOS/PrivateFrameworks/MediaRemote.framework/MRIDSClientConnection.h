@@ -4,20 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
-
 @interface MRIDSClientConnection
 {
-    NSMutableDictionary *_discoveryModesForFeatures;
+    unsigned int _discoveryMode;
 }
 
-- (void).cxx_destruct;
-- (id)decryptData:(id)arg1 error:(id *)arg2;
-- (id)encryptDataForMessage:(id)arg1;
-- (void)clearDiscoveryModes;
-- (unsigned int)discoveryModeForFeature:(unsigned int)arg1;
-- (void)setDiscoveryMode:(unsigned int)arg1 forFeature:(unsigned int)arg2;
-- (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
+@property(nonatomic) unsigned int discoveryMode; // @synthesize discoveryMode=_discoveryMode;
+- (id)initWithConnection:(id)arg1;
 
 @end
 

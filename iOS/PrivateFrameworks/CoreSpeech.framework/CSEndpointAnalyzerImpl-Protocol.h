@@ -6,7 +6,7 @@
 
 #import <CoreSpeech/CSEndpointAnalyzer-Protocol.h>
 
-@class CSAudioChunk, CSServerEndpointFeatures, NSDictionary, NSString;
+@class CSAudioChunk, CSAudioRecordContext, CSServerEndpointFeatures, NSDate, NSDictionary, NSString, OSDFeatures;
 @protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate;
 
 @protocol CSEndpointAnalyzerImpl <CSEndpointAnalyzer>
@@ -18,11 +18,18 @@
 - (void)recordingStoppedForReason:(long long)arg1;
 - (void)stopEndpointer;
 - (void)processAudioSamplesAsynchronously:(CSAudioChunk *)arg1;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(NSDictionary *)arg2 recordSettings:(NSDictionary *)arg3;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(CSAudioRecordContext *)arg2;
 
 @optional
 @property(readonly, nonatomic) double elapsedTimeWithNoSpeech;
 @property(readonly, nonatomic) NSString *endpointerModelVersion;
+- (void)processTaskString:(NSString *)arg1;
+- (void)processASRFeatures:(CSServerEndpointFeatures *)arg1 fromServer:(_Bool)arg2;
+- (void)logAnchorMachAbsTime:(unsigned long long)arg1 numSamplesProcessedBeforeAnchorTime:(unsigned long long)arg2 isAnchorTimeBuffered:(_Bool)arg3;
+- (long long)fetchCurrentEndpointerOperationMode;
+- (void)setEndpointerOperationMode:(long long)arg1;
+- (void)processFirstAudioPacketTimestamp:(NSDate *)arg1 firstAudioSampleSensorTimestamp:(unsigned long long)arg2;
+- (void)processOSDFeatures:(OSDFeatures *)arg1 withFrameDurationMs:(double)arg2;
 - (void)handleVoiceTriggerWithActivationInfo:(NSDictionary *)arg1;
 - (void)logFeaturesWithEvent:(NSString *)arg1 locale:(NSString *)arg2;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(void (^)(_Bool, NSArray *))arg2;

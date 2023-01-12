@@ -25,8 +25,6 @@
 + (id)contextualKeyPath;
 + (id)sleepAppForegroundPredicate;
 + (id)healthAppForegroundPredicate;
-+ (id)doNotDisturbPredicate;
-+ (id)alarmPredicate;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) struct os_unfair_lock_s contextLock; // @synthesize contextLock=_contextLock;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
@@ -35,7 +33,7 @@
 - (void)sleepModeDidChange:(long long)arg1 previousMode:(long long)arg2 reason:(unsigned long long)arg3;
 - (void)sleepEventIsDue:(id)arg1;
 - (void)updateForScheduleModelModifiedOnDate:(id)arg1;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (void)unregister:(id)arg1;

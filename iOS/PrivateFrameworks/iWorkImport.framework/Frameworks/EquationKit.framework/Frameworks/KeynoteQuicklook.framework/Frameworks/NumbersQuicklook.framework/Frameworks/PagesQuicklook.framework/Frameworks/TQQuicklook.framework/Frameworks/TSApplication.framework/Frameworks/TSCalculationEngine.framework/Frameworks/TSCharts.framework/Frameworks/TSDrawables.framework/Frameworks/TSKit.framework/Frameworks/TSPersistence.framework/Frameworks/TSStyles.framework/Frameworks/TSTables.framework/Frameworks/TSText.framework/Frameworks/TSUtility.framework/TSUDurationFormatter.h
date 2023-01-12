@@ -12,10 +12,10 @@
 {
     NSString *mFormat;
     TSULocale *mLocale;
-    int mCompactStyleStartUnit;
+    unsigned char mCompactStyleStartUnit;
 }
 
-@property(nonatomic) int compactStyleStartUnit; // @synthesize compactStyleStartUnit=mCompactStyleStartUnit;
+@property(nonatomic) unsigned char compactStyleStartUnit; // @synthesize compactStyleStartUnit=mCompactStyleStartUnit;
 @property(readonly) TSULocale *locale; // @synthesize locale=mLocale;
 @property(copy, nonatomic) NSString *format; // @synthesize format=mFormat;
 - (_Bool)getObjectValue:(out id *)arg1 forString:(id)arg2 errorDescription:(out id *)arg3;

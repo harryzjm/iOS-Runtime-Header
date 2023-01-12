@@ -12,7 +12,7 @@
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
+@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMFMessageDispatcher, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDServiceOwner, HMFLocking, OS_dispatch_queue;
 
 @interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
@@ -54,7 +54,9 @@
 }
 
 + (_Bool)hasMessageReceiverChildren;
++ (_Bool)_parseOperatingStateResponseValue:(id)arg1 intoState:(id *)arg2 abnormalReasons:(id *)arg3;
 + (_Bool)supportsSecureCoding;
++ (_Bool)_processUpdateOnPowerManagementServiceForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 accessory:(id)arg4 accessoryTransaction:(id)arg5;
 + (_Bool)processUpdateForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 service:(id)arg4 serviceTransactionGetter:(CDUnknownBlockType)arg5 accessory:(id)arg6 accessoryTransaction:(id)arg7 accessoryTransactionChanged:(_Bool *)arg8;
 + (_Bool)validateProvidedName:(id)arg1;
 + (id)logCategory;
@@ -103,15 +105,6 @@
 - (void)_createAndRunTransactionWithName:(id)arg1 transaction:(id)arg2 message:(id)arg3;
 - (void)updateMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
 - (void)persistMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
-- (void)_updateAndCacheOperatingStateAndResponse;
-- (void)persistLastKnownOperatingStateResponse;
-- (_Bool)_updateLastKnownOperatingStateWithValue:(id)arg1;
-- (_Bool)_updateLastKnownOperatingStateResponse:(id)arg1;
-- (void)_updateAndCacheDiscoveryModeState;
-- (void)persistLastKnownDiscoveryMode;
-- (_Bool)_validateAndUpdateLastKnownDiscoveryMode:(id)arg1;
-- (_Bool)_validateLastKnownDiscoveryMode:(id)arg1;
-- (_Bool)_updateLastKnownDiscoveryMode:(id)arg1;
 - (_Bool)isEmptyConfiguredNameAllowed;
 - (_Bool)updateCharacteristics:(id)arg1;
 - (void)appDataRemoved:(id)arg1 message:(id)arg2;
@@ -123,7 +116,6 @@
 - (void)_saveForLastSeenConfiguredNameUpdate;
 - (void)_saveForExpectedConfiguredNameUpdate;
 - (id)_messagesForConfiguredNameChange;
-- (_Bool)listsEqual:(id)arg1 to:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -164,6 +156,7 @@
 - (id)dumpState;
 @property(readonly, copy) NSString *description;
 @property(copy, nonatomic) NSArray *characteristics; // @synthesize characteristics=_characteristics;
+@property(readonly, copy, nonatomic) NSUUID *spiClientIdentifier;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (void)_recalculateUUID;
 - (void)dealloc;
@@ -172,8 +165,8 @@
 - (id)init;
 @property(readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property(readonly, copy, nonatomic) NSString *contextID;
-- (id)assistantObject;
-- (id)urlString;
+@property(readonly, copy) NSDictionary *assistantObject;
+@property(readonly, copy) NSString *urlString;
 - (id)_serviceSubtypeFromLinkedServicesForServiceType:(id)arg1 accessoryCategory:(id)arg2;
 
 // Remaining properties

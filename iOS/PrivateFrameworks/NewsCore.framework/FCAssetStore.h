@@ -6,36 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class FCThreadSafeMutableSet, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface FCAssetStore : NSObject
 {
     NSString *_directoryPath;
     NSString *_preferredExtension;
-    NSMutableDictionary *_fileURLsByKey;
+    NSMutableSet *_knownKeys;
+    NSObject<OS_dispatch_queue> *_removalQueue;
+    FCThreadSafeMutableSet *_keysAwaitingRemoval;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSMutableDictionary *fileURLsByKey; // @synthesize fileURLsByKey=_fileURLsByKey;
-@property(copy, nonatomic) NSString *preferredExtension; // @synthesize preferredExtension=_preferredExtension;
-@property(copy, nonatomic) NSString *directoryPath; // @synthesize directoryPath=_directoryPath;
-- (unsigned long long)_sizeOfFileAtURL:(id)arg1;
-- (id)_keyForFileName:(id)arg1;
-- (id)_filePathForKey:(id)arg1;
 - (id)allKeys;
 - (unsigned long long)storeSizeForKeys:(id)arg1;
 - (unsigned long long)storeSize;
 - (unsigned long long)sizeOfFileForKey:(id)arg1;
 - (id)fileURLForKey:(id)arg1;
 - (id)filePathForKey:(id)arg1;
-- (_Bool)removeAllFiles;
-- (_Bool)removeAllFilesExceptKeys:(id)arg1;
-- (_Bool)removeFileWithKey:(id)arg1;
+- (void)removeAllFiles;
+- (void)removeAllFilesExceptKeys:(id)arg1;
+- (void)removeFileWithKey:(id)arg1;
 - (id)copyData:(id)arg1 withKey:(id)arg2;
 - (id)moveFileAtURL:(id)arg1 withKey:(id)arg2;
 - (id)moveFileAtPath:(id)arg1 withKey:(id)arg2;
 - (id)copyFileAtPath:(id)arg1 withKey:(id)arg2;
-@property(readonly, nonatomic) NSString *rootDirectory;
+- (id)initWithDirectoryAtPath:(id)arg1 preferredAssetPathExtension:(id)arg2 knownKeys:(id)arg3;
 - (id)initWithDirectoryAtPath:(id)arg1 preferredAssetPathExtension:(id)arg2;
 
 @end

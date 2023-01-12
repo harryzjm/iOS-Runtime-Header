@@ -15,6 +15,7 @@
 }
 
 - (id)_allApplicationsFilteredBySystem:(_Bool)arg1 bySplashBoard:(_Bool)arg2;
+- (id)recentlyUsedBundleIDs;
 - (id)allInstalledApplications;
 - (id)splashBoardSystemApplications;
 - (id)allSplashBoardApplications;

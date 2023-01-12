@@ -80,7 +80,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) NSString *originalImageDescription;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsImageDescriptionEditing;
 
 @end
 

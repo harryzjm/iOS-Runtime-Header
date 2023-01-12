@@ -15,6 +15,7 @@
 {
     NSObject<OS_xpc_object> *_endpoint;
     NSString *_eDesc;
+    int _targetPID;
     unsigned int _invalidationGeneration;
 }
 

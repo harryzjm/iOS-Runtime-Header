@@ -30,19 +30,19 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionDefaultValueKey;
-- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
-- (id)__INTypeCodableDescriptionDefaultValueKey;
 - (id)__INCodableDescriptionMaximumValueKey;
-- (id)__INIntentResponseCodableDescriptionMaximumValueKey;
-- (id)__INTypeCodableDescriptionMaximumValueKey;
 - (id)__INCodableDescriptionMinimumValueKey;
-- (id)__INIntentResponseCodableDescriptionMinimumValueKey;
-- (id)__INTypeCodableDescriptionMinimumValueKey;
 - (id)__INCodableDescriptionSupportsNegativeNumbersKey;
-- (id)__INIntentResponseCodableDescriptionSupportsNegativeNumbersKey;
-- (id)__INTypeCodableDescriptionSupportsNegativeNumbersKey;
 - (id)__INCodableDescriptionTypeKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionMaximumValueKey;
+- (id)__INIntentResponseCodableDescriptionMinimumValueKey;
+- (id)__INIntentResponseCodableDescriptionSupportsNegativeNumbersKey;
 - (id)__INIntentResponseCodableDescriptionTypeKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionMaximumValueKey;
+- (id)__INTypeCodableDescriptionMinimumValueKey;
+- (id)__INTypeCodableDescriptionSupportsNegativeNumbersKey;
 - (id)__INTypeCodableDescriptionTypeKey;
 
 // Remaining properties

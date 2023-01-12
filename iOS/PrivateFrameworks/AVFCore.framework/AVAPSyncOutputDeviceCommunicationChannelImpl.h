@@ -8,7 +8,7 @@
 
 #import <AVFCore/AVOutputDeviceCommunicationChannelImpl-Protocol.h>
 
-@class NSString;
+@class AVOutputDeviceCommunicationChannel, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVAPSyncOutputDeviceCommunicationChannelImpl : NSObject <AVOutputDeviceCommunicationChannelImpl>
@@ -16,8 +16,11 @@ __attribute__((visibility("hidden")))
     NSString *_deviceID;
     struct __CFString *_commChannelUUID;
     struct OpaqueAPSyncController *_syncController;
+    AVOutputDeviceCommunicationChannel *_parentChannel;
 }
 
+- (void).cxx_destruct;
+@property __weak AVOutputDeviceCommunicationChannel *parentChannel; // @synthesize parentChannel=_parentChannel;
 - (void)close;
 - (void)sendData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

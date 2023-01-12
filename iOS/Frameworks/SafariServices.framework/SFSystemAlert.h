@@ -19,6 +19,7 @@
     CDUnknownBlockType _completionBlock;
 }
 
++ (id)searchEngineSettingAlert;
 + (id)readingListAlertForDomain:(id)arg1 appBundleID:(id)arg2;
 + (id)webAuthenticationAlertForDomain:(id)arg1 appBundleID:(id)arg2;
 + (id)_displayNameForBundleID:(id)arg1;

@@ -11,6 +11,7 @@
 @class ICDelegateAccountStoreOptions, ICValueHistory;
 @protocol ICUserIdentityStoreBackend;
 
+__attribute__((visibility("hidden")))
 @interface ICUserIdentityStoreCoding : NSObject <NSSecureCoding>
 {
     struct os_unfair_lock_s _lock;

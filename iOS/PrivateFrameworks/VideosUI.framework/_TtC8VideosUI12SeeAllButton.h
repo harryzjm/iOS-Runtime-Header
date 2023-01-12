@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(unsigned long long)arg2;
 
 @end
 

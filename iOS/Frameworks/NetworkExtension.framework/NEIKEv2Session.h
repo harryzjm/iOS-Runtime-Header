@@ -54,7 +54,7 @@
     NSMutableDictionary *_receivedInitiatorFragments;
     NSMutableDictionary *_receivedResponderFragments;
     NSObject<OS_dispatch_source> *_ikeLifetimeTimer;
-    NSObject<OS_dispatch_source> *_dpdTimer;
+    NSObject<OS_dispatch_source> *_dpdDispatchTimer;
     NSMutableArray *_childSAs;
     NSObject<OS_dispatch_source> *_sendTimer;
     NSObject<OS_dispatch_source> *_receiveTimer;
@@ -91,7 +91,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *receiveTimer; // @synthesize receiveTimer=_receiveTimer;
 @property(retain) NSObject<OS_dispatch_source> *sendTimer; // @synthesize sendTimer=_sendTimer;
 @property(retain) NSMutableArray *childSAs; // @synthesize childSAs=_childSAs;
-@property(retain) NSObject<OS_dispatch_source> *dpdTimer; // @synthesize dpdTimer=_dpdTimer;
+@property(retain) NSObject<OS_dispatch_source> *dpdDispatchTimer; // @synthesize dpdDispatchTimer=_dpdDispatchTimer;
 @property(retain) NSObject<OS_dispatch_source> *ikeLifetimeTimer; // @synthesize ikeLifetimeTimer=_ikeLifetimeTimer;
 @property int lastReceivedMessageID; // @synthesize lastReceivedMessageID=_lastReceivedMessageID;
 @property unsigned short responderFragmentCount; // @synthesize responderFragmentCount=_responderFragmentCount;
@@ -127,10 +127,12 @@
 @property unsigned long long state; // @synthesize state=_state;
 @property(retain) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 - (void)sendPendingRequestContext;
+- (void)flushPendingRequestContexts;
 - (void)enqueuePendingRequestContext:(id)arg1;
 - (void)resetChild:(id)arg1;
 - (void)resetAll;
 - (void)invalidate;
+- (void)invalidateWithCompletionHandler:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reportTrafficSelectorsForChildSA:(id)arg1;
 - (void)uninstallAllChildSAs;
 - (void)uninstallChildSA:(id)arg1;
@@ -185,6 +187,7 @@
 - (void)setIKESA:(id)arg1;
 - (void)startIKELifetimeTimer;
 - (void)startDPDTimer;
+- (void)dpdTimerFired;
 - (unsigned int)addChild:(id)arg1;
 - (void)addFirstChild:(id)arg1;
 - (void)sendMOBIKEWithRetries:(unsigned int)arg1 retryInterval:(unsigned long long)arg2 interfaceName:(id)arg3 invalidateTransport:(_Bool)arg4 resetEndpoint:(id)arg5 callbackQueue:(id)arg6 callback:(CDUnknownBlockType)arg7;

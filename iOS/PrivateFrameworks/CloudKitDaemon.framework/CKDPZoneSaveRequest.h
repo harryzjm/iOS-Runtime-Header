@@ -10,7 +10,6 @@
 
 @class CKDPZone, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneSaveRequest : PBRequest <NSCopying>
 {
     CKDPZone *_recordZone;

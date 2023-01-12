@@ -7,6 +7,7 @@
 @class HMIVideoFrameSelector, NSArray;
 
 @protocol HMIVideoFrameSelectorDelegate
-- (void)frameSelector:(HMIVideoFrameSelector *)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 detections:(NSArray *)arg3;
+- (void)frameSelector:(HMIVideoFrameSelector *)arg1 didDetectMotion:(NSArray *)arg2 inFrame:(struct opaqueCMSampleBuffer *)arg3;
+- (void)frameSelector:(HMIVideoFrameSelector *)arg1 didSelectFrame:(struct opaqueCMSampleBuffer *)arg2 motionDetections:(NSArray *)arg3 motionScore:(double)arg4;
 @end
 

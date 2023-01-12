@@ -6,22 +6,25 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSManagedObjectContext, NSProgress, NSSet, NSString, NSURL, PLInternalResource, PLManagedAsset, PLPhotoLibraryPathManager, PLResourceDataStoreOptions, PLResourceLocalAvailabilityRequestOptions, PLValidatedExternalResource;
-@protocol PLAssetID, PLResource, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
+@class NSArray, NSData, NSManagedObjectContext, NSProgress, NSSet, NSString, NSURL, PLInternalResource, PLManagedAsset, PLPhotoLibraryPathManager, PLResourceDataStoreOptions, PLResourceLocalAvailabilityRequestOptions, PLUniformTypeIdentifier, PLValidatedExternalResource;
+@protocol PLAssetID, PLResource, PLResourceDataStoreKey;
 
 @protocol PLResourceDataStore <NSObject>
 + (NSArray *)supportedRecipes;
 + (_Bool)keyDataIsValid:(NSData *)arg1;
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
-+ (unsigned int)storeClassID;
++ (unsigned short)storeClassID;
 @property(readonly, nonatomic) PLPhotoLibraryPathManager *pathManager;
-- (void)requestStreamingURLForResource:(id <PLResource>)arg1 asset:(PLManagedAsset *)arg2 intent:(unsigned long long)arg3 inContext:(NSManagedObjectContext *)arg4 clientBundleID:(NSString *)arg5 completion:(void (^)(NSError *, NSURL *, NSDate *))arg6;
+- (_Bool)supportsTimeRange;
+- (void)markAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
+- (_Bool)canMarkAsynchronousLocalRenderAsOptionalForProgress:(NSProgress *)arg1;
+- (void)requestStreamingURLForResource:(id <PLResource>)arg1 asset:(PLManagedAsset *)arg2 intent:(unsigned long long)arg3 timeRange:(CDStruct_3c1748cc)arg4 inContext:(NSManagedObjectContext *)arg5 clientBundleID:(NSString *)arg6 completion:(void (^)(NSError *, NSURL *, NSDate *))arg7;
 - (_Bool)canStreamResource:(id <PLResource>)arg1;
 - (_Bool)videoResource:(id <PLResource>)arg1 matchesOrExceedsQualityLevel:(unsigned int)arg2;
-- (_Bool)dataStoreSubtypeIsDownloadable:(unsigned long long)arg1;
+- (_Bool)dataStoreSubtypeIsDownloadable:(long long)arg1;
 - (NSProgress *)requestLocalAvailabilityChange:(short)arg1 forResource:(PLInternalResource *)arg2 options:(PLResourceLocalAvailabilityRequestOptions *)arg3 completion:(void (^)(NSError *, long long, NSURL *))arg4;
 - (_Bool)storeExternalResource:(PLValidatedExternalResource *)arg1 forAsset:(PLManagedAsset *)arg2 inContext:(NSManagedObjectContext *)arg3 options:(PLResourceDataStoreOptions *)arg4 error:(id *)arg5 resultingResource:(id *)arg6;
-- (id <PLUniformTypeIdentifierIdentity>)guessUTIForExternalResource:(PLValidatedExternalResource *)arg1 forAssetKind:(short)arg2 managedObjectContext:(NSManagedObjectContext *)arg3;
+- (PLUniformTypeIdentifier *)guessUTIForExternalResource:(PLValidatedExternalResource *)arg1 forAssetKind:(short)arg2 managedObjectContext:(NSManagedObjectContext *)arg3;
 - (_Bool)canStoreExternalResource:(PLValidatedExternalResource *)arg1;
 - (NSArray *)virtualResourcesForAsset:(PLManagedAsset *)arg1;
 - (NSSet *)updateDerivativeResourcesForAsset:(PLManagedAsset *)arg1 forLifecycleEvent:(unsigned int)arg2;

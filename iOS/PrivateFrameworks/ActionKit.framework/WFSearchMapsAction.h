@@ -13,7 +13,7 @@
 - (id)appIdentifier;
 - (void)openMapsURL:(id)arg1 withAppIdentifier:(id)arg2;
 - (void)openMapsLink:(id)arg1 inAppNamed:(id)arg2;
-- (void)openMapItem:(id)arg1;
+- (void)openMapItems:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

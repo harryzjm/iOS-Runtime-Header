@@ -10,13 +10,13 @@
 #import <NewsUI/SXURLPreviewing-Protocol.h>
 
 @class NSMutableArray, NSString;
-@protocol NUPreviewViewControllerFactory, NUURLHandlerDelegate, NUURLHandling, NUWebViewControllerFactory;
+@protocol NUPreviewViewControllerFactory, NUURLHandlerDelegate, NUURLHandling, NUWebViewControllerFactoryType;
 
 @interface NUURLHandler : NSObject <SXURLHandling, SXURLPreviewing>
 {
     _Bool _universalLinksEnabled;
     id <NUURLHandlerDelegate> _delegate;
-    id <NUWebViewControllerFactory> _webViewControllerFactory;
+    id <NUWebViewControllerFactoryType> _webViewControllerFactory;
     id <NUPreviewViewControllerFactory> _previewViewControllerFactory;
     id <NUURLHandling> _URLHandling;
     NSMutableArray *_modifiers;
@@ -27,7 +27,7 @@
 @property(readonly, nonatomic) _Bool universalLinksEnabled; // @synthesize universalLinksEnabled=_universalLinksEnabled;
 @property(readonly, nonatomic) id <NUURLHandling> URLHandling; // @synthesize URLHandling=_URLHandling;
 @property(retain, nonatomic) id <NUPreviewViewControllerFactory> previewViewControllerFactory; // @synthesize previewViewControllerFactory=_previewViewControllerFactory;
-@property(retain, nonatomic) id <NUWebViewControllerFactory> webViewControllerFactory; // @synthesize webViewControllerFactory=_webViewControllerFactory;
+@property(retain, nonatomic) id <NUWebViewControllerFactoryType> webViewControllerFactory; // @synthesize webViewControllerFactory=_webViewControllerFactory;
 @property(nonatomic) __weak id <NUURLHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2;
 - (id)modifyURL:(id)arg1;

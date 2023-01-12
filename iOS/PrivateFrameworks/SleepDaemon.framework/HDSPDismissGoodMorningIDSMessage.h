@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)dateDescription;
 @property(readonly, nonatomic) NSDate *goodMorningDismissed;
-- (id)initWithGoodMorningDismissedDate:(id)arg1 timeout:(double)arg2;
+- (id)initWithGoodMorningDismissedDate:(id)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, PLLazyObject, PLPhotoLibrary, PLVolumeInfo;
+@class NSMutableArray, PLLazyObject, PLLibraryServicesManager, PLVolumeInfo;
 @protocol OS_dispatch_queue;
 
 @interface PLManagedAssetRecoveryManager : NSObject
@@ -17,10 +17,9 @@
     unsigned long long _totalDownloadedResourceBytes;
     unsigned long long _resourceDownloadBytesLimit;
     NSMutableArray *_recoveryErrors;
+    PLLibraryServicesManager *_lsm;
     PLLazyObject *_imageClient;
     PLLazyObject *_videoClient;
-    PLPhotoLibrary *_photoLibrary;
-    PLPhotoLibrary *_syncablePhotoLibrary;
     NSObject<OS_dispatch_queue> *_workQueue;
     long long _state;
 }
@@ -33,10 +32,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(retain, nonatomic) PLPhotoLibrary *syncablePhotoLibrary; // @synthesize syncablePhotoLibrary=_syncablePhotoLibrary;
-@property(retain, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
-- (void)_generateMissingFullSizeAdjustedResourcesForAsset:(id)arg1 recipesToGenerate:(id)arg2 cloudPhotoLibraryManager:(id)arg3 recoveryState:(unsigned long long)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (void)_fixMissingFullSizeAdjustedResources:(id)arg1 cloudPhotoLibraryManager:(id)arg2 recoveryState:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_generateMissingFullSizeAdjustedResourcesForAsset:(id)arg1 recipesToGenerate:(id)arg2 cloudPhotoLibraryManager:(id)arg3 recoveryState:(unsigned long long)arg4 usingSyncableLibrary:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)_fixMissingFullSizeAdjustedResources:(id)arg1 cloudPhotoLibraryManager:(id)arg2 recoveryState:(unsigned long long)arg3 usingSyncableLibrary:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)_performTransactionOnLibrary:(id)arg1 withObjectID:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (_Bool)_fixIrisWithZeroVideoComplementDuration:(id)arg1 usingExistingVideoComplementAtPath:(id)arg2 error:(id *)arg3;
 - (void)_fixIrisWithZeroVideoComplementDuration:(id)arg1 cloudPhotoLibraryManager:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -44,12 +41,12 @@
 - (void)_fixOriginalAssetDimensionsForAsset:(id)arg1 cloudPhotoLibraryManager:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_fixDimensionsForAsset:(id)arg1 cloudPhotoLibraryManager:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_downloadResources:(id)arg1 forAsset:(id)arg2 usingCloudPhotoLibraryManager:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_performAssetRecoveryTaskForInconsistentState:(id)arg1 state:(unsigned long long)arg2 cloudPhotoLibraryManager:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)_recoverNextRecoveryState:(id)arg1 forAsset:(id)arg2 cloudPhotoLibraryManager:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)_recoverNextAssetWithEnumerator:(id)arg1 cloudPhotoLibraryManager:(id)arg2 transaction:(id)arg3;
+- (void)_performAssetRecoveryTaskForInconsistentState:(id)arg1 state:(unsigned long long)arg2 cloudPhotoLibraryManager:(id)arg3 usingSyncableLibrary:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_recoverNextRecoveryState:(id)arg1 forAsset:(id)arg2 cloudPhotoLibraryManager:(id)arg3 usingSyncableLibrary:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_recoverNextAssetWithEnumerator:(id)arg1 cloudPhotoLibraryManager:(id)arg2 transaction:(id)arg3 usingNonSyncableLibrary:(id)arg4 andSyncableLibrary:(id)arg5;
 - (id)_recoveryStatesToProcessForAttributes:(id)arg1;
 - (id)_loadObjectWithObjectID:(id)arg1 managedObjectContext:(id)arg2;
-- (void)_setCloudRecoveryState:(unsigned long long)arg1 forAssetsWithFetchRequestPredicate:(id)arg2 resultsFilterPredicate:(id)arg3;
+- (void)_setCloudRecoveryState:(unsigned long long)arg1 forAssetsWithFetchRequestPredicate:(id)arg2 resultsFilterPredicate:(id)arg3 usingNonSyncableLibrary:(id)arg4;
 - (void)_startRecoveryUsingCloudPhotoLibraryManager:(id)arg1 transaction:(id)arg2;
 - (void)startRecoveryUsingCloudPhotoLibraryManager:(id)arg1 transaction:(id)arg2 shouldIdentifyInconsistentAssets:(_Bool)arg3;
 - (void)identifyAssetsWithInconsistentCloudState;

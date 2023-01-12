@@ -35,8 +35,13 @@
 @property(readonly, nonatomic) NSArray *emojiList; // @synthesize emojiList=_emojiList;
 @property(readonly, nonatomic) NSArray *predictions; // @synthesize predictions=_predictions;
 @property(readonly, nonatomic) TIKeyboardCandidate *autocorrection; // @synthesize autocorrection=_autocorrection;
+@property(readonly, nonatomic) NSArray *predictionsIfSupplemental;
+@property(readonly, nonatomic) TIKeyboardCandidate *autocorrectionIfSupplemental;
+@property(readonly, nonatomic) _Bool hasSupplementalCandidates;
+- (_Bool)hasSupplementalItems;
 @property(readonly, nonatomic) _Bool shouldAcceptTopCandidate;
 @property(readonly, nonatomic) NSArray *candidates;
+@property(readonly, nonatomic) _Bool empty;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <SettingsCellularUI/Loggable-Protocol.h>
 
-@class CTCellularPlanItem, Logger, NSArray, NSDictionary, NSString;
+@class CTCellularPlanItem, CTDisplayPlanList, CoreTelephonyClient, Logger, NSArray, NSDictionary, NSString;
 
 @interface PSUICellularPlanManagerCache : NSObject <Loggable>
 {
@@ -26,20 +26,31 @@
     _Bool _isActivationCodeFlowSupported;
     _Bool _isCarrierItemFlowSupported;
     Logger *_logger;
+    _Bool _remoteListFetchCompleted;
     _Bool _carrierListFetchInProgress;
+    _Bool _remoteListFetchInProgress;
     NSArray *_cachedCarrierItems;
+    CTDisplayPlanList *_cachedRemotePlans;
+    CoreTelephonyClient *_coreTelephonyClient;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
+@property _Bool remoteListFetchInProgress; // @synthesize remoteListFetchInProgress=_remoteListFetchInProgress;
 @property _Bool carrierListFetchInProgress; // @synthesize carrierListFetchInProgress=_carrierListFetchInProgress;
+@property(retain) CTDisplayPlanList *cachedRemotePlans; // @synthesize cachedRemotePlans=_cachedRemotePlans;
 @property(retain) NSArray *cachedCarrierItems; // @synthesize cachedCarrierItems=_cachedCarrierItems;
+@property(nonatomic) _Bool remoteListFetchCompleted; // @synthesize remoteListFetchCompleted=_remoteListFetchCompleted;
 - (id)getLogger;
+- (void)didEnablePlanItems:(id)arg1;
+- (void)purchaseAddOnPlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)subscriptionContextForPlanItem:(id)arg1 cachedSubscriptionContexts:(id)arg2;
 - (void)setLabel:(id)arg1 forPlan:(id)arg2;
 - (id)predefinedLabels;
-- (void)clearCachedCarrierItems;
+- (void)clearCachedCarrierItemsAndRemotePlans;
 @property(readonly, nonatomic) NSArray *carrierItems;
+@property(readonly, nonatomic) CTDisplayPlanList *remotePlans;
 @property(readonly, nonatomic) _Bool isCarrierItemFlowSupported;
 @property(readonly, nonatomic) _Bool isActivationCodeFlowSupported;
 @property(readonly, nonatomic) _Bool isWebUIFlowSupported;

@@ -10,7 +10,7 @@
 
 @interface MPSCommandBufferImageCache : NSObject
 {
-    struct MPSDevice *_device;
+    void *_device;
     id <MTLCommandBuffer> _cmdBuffer;
     long long _debugMode;
     struct HeapNode *_freeList[65];

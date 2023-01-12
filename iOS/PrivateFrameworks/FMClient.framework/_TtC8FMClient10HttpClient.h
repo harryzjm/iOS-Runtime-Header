@@ -16,11 +16,13 @@
     MISSING_TYPE *endpoint;
     MISSING_TYPE *statusCodeHandlers;
     MISSING_TYPE *statusCodeHandlerQueue;
+    MISSING_TYPE *sessionQueue;
     MISSING_TYPE *$__lazy_storage_$_session;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)dealloc;
 
 @end
 

@@ -15,6 +15,7 @@
 @interface PKCreditAccountStatement : NSObject <NSSecureCoding, PKRecordObject, NSCopying>
 {
     NSString *_identifier;
+    NSString *_accountIdentifier;
     NSDate *_openingDate;
     NSDate *_closingDate;
     NSDate *_paymentDueDate;
@@ -59,6 +60,7 @@
 @property(copy, nonatomic) NSDate *paymentDueDate; // @synthesize paymentDueDate=_paymentDueDate;
 @property(copy, nonatomic) NSDate *closingDate; // @synthesize closingDate=_closingDate;
 @property(copy, nonatomic) NSDate *openingDate; // @synthesize openingDate=_openingDate;
+@property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
@@ -68,6 +70,7 @@
 - (id)initWithRecord:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) unsigned long long monthNumber;
 - (id)initWithDictionary:(id)arg1;
 
 // Remaining properties

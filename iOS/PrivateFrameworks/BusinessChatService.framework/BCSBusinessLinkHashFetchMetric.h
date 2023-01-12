@@ -13,10 +13,12 @@
 {
     _Bool errorEncountered;
     BCSTimingMeasurement *timingMeasurement;
+    long long errorCode;
 }
 
 + (id)metricWithPostProcessingMetricHandlers:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) long long errorCode; // @synthesize errorCode;
 @property(retain, nonatomic) BCSTimingMeasurement *timingMeasurement; // @synthesize timingMeasurement;
 @property(nonatomic) _Bool errorEncountered; // @synthesize errorEncountered;
 @property(readonly, nonatomic) NSDictionary *coreAnalyticsPayload;

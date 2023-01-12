@@ -9,6 +9,7 @@
 @class CDPContext, CDPLocalDeviceSecretHandler, CDPRemoteDeviceSecretValidator, NSArray, NSError, NSNumber;
 
 @protocol CDPStateUIProvider <CDPRecoveryKeyUIProvider>
+- (void)cdpContext:(CDPContext *)arg1 promptForBeneficiaryAccessKeyWithCompletion:(void (^)(AKInheritanceAccessKey *, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForInteractiveAuthenticationWithCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForAdoptionOfMultipleICSC:(void (^)(_Bool, NSError *))arg2;
 - (void)cdpContext:(CDPContext *)arg1 promptForICSCWithIsNumeric:(_Bool)arg2 numericLength:(NSNumber *)arg3 isRandom:(_Bool)arg4 validator:(CDPRemoteDeviceSecretValidator *)arg5;

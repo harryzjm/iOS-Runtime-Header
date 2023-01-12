@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CDPContext *cdpContext; // @synthesize cdpContext=_cdpContext;
+- (id)fetchAllEscrowRecords:(id)arg1 forceFetch:(_Bool)arg2 error:(id *)arg3;
 - (id)fetchEscrowRecords:(id)arg1 forceFetch:(_Bool)arg2 error:(id *)arg3;
 - (id)initWithContext:(id)arg1;
 

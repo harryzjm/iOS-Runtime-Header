@@ -6,21 +6,24 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class PKServiceProviderOrder;
+@class NSString, PKServiceProviderOrder;
 
 @interface PKServiceProviderPaymentRequest <NSSecureCoding>
 {
     PKServiceProviderOrder *_serviceProviderOrder;
+    NSString *_targetDeviceSerialNumber;
 }
 
 + (id)availableNetworks;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *targetDeviceSerialNumber; // @synthesize targetDeviceSerialNumber=_targetDeviceSerialNumber;
 @property(readonly, nonatomic) PKServiceProviderOrder *serviceProviderOrder; // @synthesize serviceProviderOrder=_serviceProviderOrder;
 - (id)merchantIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)initWithServiceProviderOrder:(id)arg1 targetDeviceSerialNumber:(id)arg2;
 - (id)initWithServiceProviderOrder:(id)arg1;
 
 @end

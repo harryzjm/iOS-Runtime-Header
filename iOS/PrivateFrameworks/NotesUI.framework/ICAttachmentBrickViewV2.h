@@ -117,6 +117,7 @@
 - (void)updateAccessoryView;
 - (void)updateText;
 - (void)updateForAppearanceChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)layoutSubviews;
 - (void)layoutAccessoryTypeMapMarker;
@@ -147,6 +148,8 @@
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 defaultBrickSize:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)typeDescriptionsForVoiceControl;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 

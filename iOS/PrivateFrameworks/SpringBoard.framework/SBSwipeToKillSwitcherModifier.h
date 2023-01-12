@@ -4,37 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SBAppLayout;
+@class SBAppLayout, SBHighlightSwitcherModifier;
 
 @interface SBSwipeToKillSwitcherModifier
 {
+    long long _layoutRole;
     SBAppLayout *_appLayout;
+    SBAppLayout *_leafAppLayout;
+    _Bool _fadeOutSwipedItems;
     double _progress;
+    struct CGPoint _translation;
+    double _decelerationTargetProgress;
+    _Bool _isDragging;
     _Bool _hasPrepared;
     _Bool _simulatingPostRemovalState;
     unsigned long long _interpolationDirection;
+    SBHighlightSwitcherModifier *_highlightModifier;
 }
 
 - (void).cxx_destruct;
+- (_Bool)_dragHasBeenReleasedTowardKill;
 - (unsigned long long)_interpolatingAdjacentIndexForIndex:(unsigned long long)arg1;
 - (void)_calculateInterpolationDirection;
-- (id)topMostLayoutElements;
+- (_Bool)shouldUseAnchorPointToPinLayoutRolesToSpace:(unsigned long long)arg1;
+- (struct CGPoint)contentViewOffsetForAccessoriesOfAppLayout:(id)arg1;
+- (struct CGPoint)contentViewOffsetForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
 - (double)shadowOffsetForIndex:(unsigned long long)arg1;
-- (double)shadowOpacityForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForLayoutRole:(long long)arg1 atIndex:(unsigned long long)arg2;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
-- (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
 - (double)lighteningAlphaForIndex:(unsigned long long)arg1;
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (id)animationAttributesForLayoutElement:(id)arg1;
 - (id)visibleAppLayouts;
+- (struct UIRectCornerRadii)cornerRadiiForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 withCornerRadii:(struct UIRectCornerRadii)arg3;
+- (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
+- (double)dimmingAlphaForLayoutRole:(long long)arg1 inAppLayout:(id)arg2;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleSwipeToKillEvent:(id)arg1;
 - (void)_performBlockWhileSimulatingPostRemovalAppLayoutState:(CDUnknownBlockType)arg1;
-- (id)initWithAppLayout:(id)arg1;
+- (id)initWithLayoutRole:(long long)arg1 inAppLayout:(id)arg2 fadeOutSwipedItems:(_Bool)arg3;
 
 @end
 

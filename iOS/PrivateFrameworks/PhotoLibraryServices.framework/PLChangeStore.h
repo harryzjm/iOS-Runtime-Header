@@ -16,6 +16,7 @@
     struct sqlite3 *_database;
     NSObject<OS_dispatch_queue> *_databaseIsolation;
     unsigned long long _firstOnDiskEventIndex;
+    int _sqliteOpenFlags;
     PLPhotoLibraryPathManager *_photoLibraryPathManager;
     NSURL *_databaseFileURL;
 }

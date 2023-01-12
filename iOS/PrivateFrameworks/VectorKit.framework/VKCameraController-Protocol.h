@@ -6,7 +6,7 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class GEOMapRegion, VKViewportInfo;
+@class GEOMapRegion;
 
 @protocol VKCameraController <NSObject>
 @property(readonly, nonatomic) struct RunLoopController *runLoopController;
@@ -18,13 +18,13 @@
 @property(readonly, nonatomic) double maxPitch;
 @property(readonly, nonatomic) double minPitch;
 @property(readonly, nonatomic) double altitude;
+@property(readonly, nonatomic) GEOMapRegion *mapRegionIgnoringEdgeInsets;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
 @property(nonatomic) double pitch;
 @property(nonatomic) double heading;
 @property(nonatomic) double distanceFromCenterCoordinate;
 @property(nonatomic) CDStruct_c3b9c2ee centerCoordinate;
-- (_Bool)restoreViewportFromInfo:(VKViewportInfo *)arg1;
-- (VKViewportInfo *)viewportInfo;
+- (long long)tileSize;
 - (_Bool)canZoomOutForTileSize:(long long)arg1;
 - (_Bool)canZoomInForTileSize:(long long)arg1;
 - (double)topDownMinimumZoomLevelForTileSize:(long long)arg1;

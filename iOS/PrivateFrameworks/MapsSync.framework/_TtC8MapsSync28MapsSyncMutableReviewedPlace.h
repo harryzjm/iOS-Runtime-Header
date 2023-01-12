@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSDate, _TtC8MapsSync27MapsSyncAnonymousCredential;
+@class MISSING_TYPE, NSDate, NSNumber, _TtC8MapsSync27MapsSyncAnonymousCredential;
 
 @interface _TtC8MapsSync28MapsSyncMutableReviewedPlace
 {
@@ -13,6 +13,10 @@
 
 - (void).cxx_destruct;
 @property(nonatomic, retain) _TtC8MapsSync27MapsSyncAnonymousCredential *anonymousCredential;
+- (void)setMapItemIdentifier:(id)arg1;
+@property(nonatomic) short version;
+@property(nonatomic) int uploadedPhotosCount;
+@property(nonatomic, retain) NSNumber *rating;
 @property(nonatomic) _Bool hasUserReviewed;
 @property(nonatomic, copy) NSDate *lastSuggestedReviewDate;
 @property(nonatomic) unsigned long long muid;

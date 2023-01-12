@@ -14,6 +14,8 @@
 {
     long long _minimumArticleExposureDurationToBePreseen;
     double _prerollLoadingTimeout;
+    long long _widgetSystemReloadInterval;
+    long long _widgetSystemReloadJitterMax;
     NSString *_audioIndicatorColor;
     NSString *_backgroundColorDark;
     NSString *_backgroundColorLight;
@@ -23,12 +25,16 @@
     struct {
         unsigned int minimumArticleExposureDurationToBePreseen:1;
         unsigned int prerollLoadingTimeout:1;
+        unsigned int widgetSystemReloadInterval:1;
+        unsigned int widgetSystemReloadJitterMax:1;
         unsigned int minimumNumberOfTimesPreseenToBeSeen:1;
         unsigned int contentPrefetchEnabled:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long widgetSystemReloadJitterMax; // @synthesize widgetSystemReloadJitterMax=_widgetSystemReloadJitterMax;
+@property(nonatomic) long long widgetSystemReloadInterval; // @synthesize widgetSystemReloadInterval=_widgetSystemReloadInterval;
 @property(retain, nonatomic) NSString *audioIndicatorColor; // @synthesize audioIndicatorColor=_audioIndicatorColor;
 @property(nonatomic) _Bool contentPrefetchEnabled; // @synthesize contentPrefetchEnabled=_contentPrefetchEnabled;
 @property(retain, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
@@ -45,6 +51,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasWidgetSystemReloadJitterMax;
+@property(nonatomic) _Bool hasWidgetSystemReloadInterval;
 @property(readonly, nonatomic) _Bool hasAudioIndicatorColor;
 @property(nonatomic) _Bool hasContentPrefetchEnabled;
 @property(readonly, nonatomic) _Bool hasBackgroundColorDark;

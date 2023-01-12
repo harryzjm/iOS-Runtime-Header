@@ -11,6 +11,7 @@
 @class NSXPCConnection, StreamingUnzipState;
 @protocol OS_dispatch_queue, OS_os_transaction, StreamingUnzipDelegateProtocol;
 
+__attribute__((visibility("hidden")))
 @interface StreamingUnzipper : NSObject <StreamingUnzipProtocol>
 {
     long long _sandboxToken;

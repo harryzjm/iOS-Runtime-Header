@@ -31,6 +31,8 @@
     DEUpdaterState *_state;
 }
 
++ (_Bool)updatesExistFor:(id)arg1 updateDir:(id)arg2;
++ (id)getUpdatedURLFor:(id)arg1 updateDir:(id)arg2;
 + (void)remove:(id)arg1 from:(id)arg2;
 + (id)getUpdateDirFor:(id)arg1 base:(id)arg2;
 + (id)loadPublication:(id)arg1 defaultTag:(id)arg2 allowAllKeys:(_Bool)arg3;
@@ -63,7 +65,7 @@
 @property(nonatomic) _Bool logToCoreAnalytics; // @synthesize logToCoreAnalytics=_logToCoreAnalytics;
 @property(nonatomic) _Bool foregroundManifestSync; // @synthesize foregroundManifestSync=_foregroundManifestSync;
 @property(nonatomic) _Bool disableManifestSync; // @synthesize disableManifestSync=_disableManifestSync;
-@property(nonatomic) _Bool manifestSyncing; // @synthesize manifestSyncing=_manifestSyncing;
+@property _Bool manifestSyncing; // @synthesize manifestSyncing=_manifestSyncing;
 @property(retain, nonatomic) DEUpdaterState *state; // @synthesize state=_state;
 @property(retain, nonatomic) DEWorkQueues *syncQueues; // @synthesize syncQueues=_syncQueues;
 @property(retain, nonatomic) DEWorkQueues *queues; // @synthesize queues=_queues;
@@ -116,6 +118,7 @@
 - (id)initWithBuiltinDir:(id)arg1 updateDir:(id)arg2;
 - (id)initWithPublicationURL:(id)arg1 downloadURLPrefix:(id)arg2 builtinDir:(id)arg3;
 - (id)initWithPublicationURL:(id)arg1 downloadURLPrefix:(id)arg2 builtinDir:(id)arg3 updateDir:(id)arg4 filter:(id)arg5;
+- (void)setUpdatesExist;
 - (void)prepareLatestManifest;
 - (id)chooseURLFor:(id)arg1 version:(id)arg2 versionFound:(_Bool *)arg3;
 - (_Bool)prepareBuiltinManifest:(_Bool)arg1 filter:(id)arg2;
@@ -130,6 +133,8 @@
 - (id)getStorageURLFor:(id)arg1 version:(id)arg2;
 - (id)getVersionFor:(id)arg1;
 - (id)getVersionFor:(id)arg1 encryptedVersion:(id *)arg2;
+- (id)getLatestManifestAsset:(id)arg1;
+- (id)getLatestManifestVersion;
 - (_Bool)directoryDistributionValid;
 - (_Bool)individualDistributionValid;
 - (_Bool)isDirectoryDistribution;

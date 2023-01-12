@@ -8,21 +8,23 @@
 
 #import <PhotosGraph/PGGraphIngestMoment-Protocol.h>
 
-@class CLSClueCollection, CLSInvestigationPhotoKitFeeder, NSDate, NSNumber, NSString, PGManager;
+@class CLSClueCollection, CLSCurationContext, CLSInvestigationPhotoKitFeeder, NSDate, NSNumber, NSString, PGCurationManager;
 
 @interface PGGraphIngestMomentContainer : NSObject <PGGraphIngestMoment>
 {
+    PGCurationManager *_curationManager;
+    double _topTierAestheticScore;
     CLSClueCollection *_clueCollection;
     CLSInvestigationPhotoKitFeeder *_feeder;
     NSNumber *_isInterestingNumber;
     NSNumber *_isInterestingWithAlternateJunkingNumber;
     NSNumber *_isSmartInterestingNumber;
     NSNumber *_contentScoreNumber;
-    PGManager *_manager;
+    CLSCurationContext *_curationContext;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
+@property(retain, nonatomic) CLSCurationContext *curationContext; // @synthesize curationContext=_curationContext;
 @property(retain, nonatomic) NSNumber *contentScoreNumber; // @synthesize contentScoreNumber=_contentScoreNumber;
 @property(retain, nonatomic) NSNumber *isSmartInterestingNumber; // @synthesize isSmartInterestingNumber=_isSmartInterestingNumber;
 @property(retain, nonatomic) NSNumber *isInterestingWithAlternateJunkingNumber; // @synthesize isInterestingWithAlternateJunkingNumber=_isInterestingWithAlternateJunkingNumber;
@@ -53,7 +55,7 @@
 @property(readonly, nonatomic) _Bool isSmartInteresting;
 @property(readonly, nonatomic) _Bool isInterestingWithAlternateJunking;
 @property(readonly, nonatomic) _Bool isInteresting;
-- (id)initMomentContainerWithFeeder:(id)arg1 clueCollection:(id)arg2 manager:(id)arg3;
+- (id)initMomentContainerWithFeeder:(id)arg1 clueCollection:(id)arg2 curationManager:(id)arg3 topTierAestheticScore:(double)arg4 curationContext:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

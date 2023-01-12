@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString, SISchemaViewContainer;
 
-@interface SISchemaPunchOut : PBCodable
+@interface SISchemaPunchOut
 {
     NSString *_appID;
     NSString *_urlScheme;
     SISchemaViewContainer *_viewContainer;
     NSData *_viewElementID;
+    int _punchOutUI;
+    struct {
+        unsigned int punchOutUI:1;
+    } _has;
     _Bool _hasAppID;
     _Bool _hasUrlScheme;
     _Bool _hasViewContainer;
@@ -25,6 +27,7 @@
 @property(nonatomic) _Bool hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
 @property(nonatomic) _Bool hasUrlScheme; // @synthesize hasUrlScheme=_hasUrlScheme;
 @property(nonatomic) _Bool hasAppID; // @synthesize hasAppID=_hasAppID;
+@property(nonatomic) int punchOutUI; // @synthesize punchOutUI=_punchOutUI;
 @property(copy, nonatomic) NSData *viewElementID; // @synthesize viewElementID=_viewElementID;
 @property(retain, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 @property(copy, nonatomic) NSString *urlScheme; // @synthesize urlScheme=_urlScheme;
@@ -37,6 +40,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasPunchOutUI;
 
 @end
 

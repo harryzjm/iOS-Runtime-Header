@@ -26,8 +26,8 @@
 - (void)_setContents:(id)arg1;
 - (void)setContents:(id)arg1;
 - (id)contents;
-- (void)encodeIntoProtobufRegisterLatest:(struct RegisterLatest *)arg1 coder:(id)arg2;
-- (id)initWithProtobufRegisterLatest:(const struct RegisterLatest *)arg1 decoder:(id)arg2;
+- (void)encodeIntoProtobufRegisterLatest:(void *)arg1 coder:(id)arg2;
+- (id)initWithProtobufRegisterLatest:(const void *)arg1 decoder:(id)arg2;
 - (id)initWithCRCoder:(id)arg1;
 - (void)encodeWithCRCoder:(id)arg1;
 - (id)initWithContents:(id)arg1 timestamp:(id)arg2 document:(id)arg3;

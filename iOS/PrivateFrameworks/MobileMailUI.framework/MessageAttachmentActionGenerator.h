@@ -10,8 +10,9 @@
 {
 }
 
-+ (id)markupDocumentActionForURL:(id)arg1 contentRepresentationHandlingDelegate:(id)arg2;
-+ (id)quicklookActionForURL:(id)arg1 contentRepresentationHandlingDelegate:(id)arg2;
++ (id)quicklookActionForAttachmentContext:(id)arg1 alternateAction:(id)arg2;
++ (id)markupDocumentActionForURL:(id)arg1 messageObjectID:(id)arg2 mailboxObjectID:(id)arg3 subject:(id)arg4 contentRepresentationHandlingDelegate:(id)arg5;
++ (id)quicklookActionForURL:(id)arg1 messageObjectID:(id)arg2 mailboxObjectID:(id)arg3 subject:(id)arg4 contentRepresentationHandlingDelegate:(id)arg5;
 + (id)saveAllAttachmentsActionWithTitle:(id)arg1 futureRepresentations:(id)arg2;
 + (id)saveVideoActionForFutureRepresentation:(id)arg1;
 + (id)saveImageActionForFutureRepresentation:(id)arg1;

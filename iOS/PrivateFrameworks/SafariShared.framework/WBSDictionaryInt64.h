@@ -12,19 +12,19 @@
 
 @interface WBSDictionaryInt64 : NSObject <NSCoding, NSSecureCoding, NSCopying>
 {
-    unordered_map_fcbaed0a _map;
+    unordered_map_86398ced _map;
 }
 
 + (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) const unordered_map_fcbaed0a *map;
+@property(readonly, nonatomic) const void *map;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copy;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMovableMap:(unordered_map_fcbaed0a *)arg1;
-- (id)initWithMap:(const unordered_map_fcbaed0a *)arg1;
+- (id)initWithMovableMap:(void *)arg1;
+- (id)initWithMap:(const void *)arg1;
 - (id)init;
 
 @end

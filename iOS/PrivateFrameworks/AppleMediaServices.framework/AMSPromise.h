@@ -13,6 +13,7 @@
     AMSPromiseCompletionBlocks *_completionBlocks;
     AMSPromiseResult *_promiseResult;
     NSConditionLock *_stateLock;
+    Promise_1e2762c9 _backingPromise;
 }
 
 + (id)_globalPromiseStorageAccessQueue;
@@ -30,10 +31,12 @@
 + (id)promiseWithResult:(id)arg1;
 + (id)promiseWithError:(id)arg1;
 + (id)promiseFinishedWithDefaultErrorOrResult:(id)arg1;
+- (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSConditionLock *stateLock; // @synthesize stateLock=_stateLock;
-@property(retain, nonatomic) AMSPromiseResult *promiseResult; // @synthesize promiseResult=_promiseResult;
-@property(retain, nonatomic) AMSPromiseCompletionBlocks *completionBlocks; // @synthesize completionBlocks=_completionBlocks;
+@property Promise_1e2762c9 backingPromise; // @synthesize backingPromise=_backingPromise;
+@property(retain) NSConditionLock *stateLock; // @synthesize stateLock=_stateLock;
+@property(retain) AMSPromiseResult *promiseResult; // @synthesize promiseResult=_promiseResult;
+@property(retain) AMSPromiseCompletionBlocks *completionBlocks; // @synthesize completionBlocks=_completionBlocks;
 - (_Bool)_isFinished;
 - (_Bool)_finishWithResult:(id)arg1 error:(id)arg2 logDuplicateFinishes:(_Bool)arg3;
 - (void)_addBlock:(CDUnknownBlockType)arg1 orCallWithResult:(CDUnknownBlockType)arg2;

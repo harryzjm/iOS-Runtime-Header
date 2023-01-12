@@ -9,16 +9,15 @@
 #import <network/OS_nw_group_descriptor-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_array, OS_nw_endpoint;
+@protocol OS_nw_array, OS_nw_endpoint;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_group_descriptor : NSObject <OS_nw_group_descriptor>
 {
     int type;
+    unsigned char group_id[16];
     NSObject<OS_nw_array> *members;
     NSObject<OS_nw_endpoint> *specific_source;
-    NSObject<OS_dispatch_queue> *member_change_queue;
-    CDUnknownBlockType member_change_handler;
     unsigned int disable_unicast_traffic:1;
     unsigned int __pad_bits:7;
 }
@@ -26,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithType:(int)arg1 member:(id)arg2;
+- (id)initWithType:(int)arg1 member:(id)arg2 groupID:(unsigned char [16])arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

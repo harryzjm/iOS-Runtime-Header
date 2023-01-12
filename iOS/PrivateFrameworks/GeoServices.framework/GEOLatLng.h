@@ -13,10 +13,12 @@
 @interface GEOLatLng : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    double _elevationM;
     double _lat;
     double _lng;
     _Bool _gtLog;
     struct {
+        unsigned int has_elevationM:1;
         unsigned int has_gtLog:1;
     } _flags;
 }
@@ -32,6 +34,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -40,6 +43,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasElevationM;
+@property(nonatomic) double elevationM;
 @property(nonatomic) double lng;
 @property(nonatomic) double lat;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;

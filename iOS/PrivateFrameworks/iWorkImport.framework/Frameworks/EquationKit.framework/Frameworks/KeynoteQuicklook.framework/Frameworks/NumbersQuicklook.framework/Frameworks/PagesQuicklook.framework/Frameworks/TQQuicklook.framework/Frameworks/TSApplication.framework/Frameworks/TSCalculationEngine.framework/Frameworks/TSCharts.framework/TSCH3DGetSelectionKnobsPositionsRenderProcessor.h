@@ -8,17 +8,17 @@
 
 @interface TSCH3DGetSelectionKnobsPositionsRenderProcessor
 {
-    NSMutableArray *mProjectedPoints;
-    TSCH3DGetSelectionKnobsPositionsPipelineDelegate *mSceneObjectDelegate;
-    float mNormalizedKnobRadius;
+    NSMutableArray *_projectedPoints;
+    TSCH3DGetSelectionKnobsPositionsPipelineDelegate *_sceneObjectDelegate;
+    float _normalizedKnobRadius;
 }
 
-@property(nonatomic) float normalizedKnobRadius; // @synthesize normalizedKnobRadius=mNormalizedKnobRadius;
-@property(retain, nonatomic) NSMutableArray *projectedPoints; // @synthesize projectedPoints=mProjectedPoints;
-@property(retain, nonatomic) TSCH3DGetSelectionKnobsPositionsPipelineDelegate *sceneObjectDelegate; // @synthesize sceneObjectDelegate=mSceneObjectDelegate;
+- (void).cxx_destruct;
+@property(nonatomic) float normalizedKnobRadius; // @synthesize normalizedKnobRadius=_normalizedKnobRadius;
+@property(retain, nonatomic) NSMutableArray *projectedPoints; // @synthesize projectedPoints=_projectedPoints;
+@property(retain, nonatomic) TSCH3DGetSelectionKnobsPositionsPipelineDelegate *sceneObjectDelegate; // @synthesize sceneObjectDelegate=_sceneObjectDelegate;
 - (void)submit:(id)arg1;
 - (tmat4x4_3074befe)modelViewNormalizedProjection;
-- (void)dealloc;
 
 @end
 

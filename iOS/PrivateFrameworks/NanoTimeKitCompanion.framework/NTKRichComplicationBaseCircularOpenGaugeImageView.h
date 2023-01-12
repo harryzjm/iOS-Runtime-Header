@@ -15,6 +15,7 @@
 @property(retain, nonatomic) NTKRichComplicationImageView *bottomImageView; // @synthesize bottomImageView=_bottomImageView;
 - (void)updateMonochromeColor;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
+- (long long)tritiumUpdateMode;
 - (void)setPaused:(_Bool)arg1;
 - (void)gaugeProvider:(id *)arg1 andCenterTextProvider:(id *)arg2 fromTemplate:(id)arg3;
 - (id)bottomView;

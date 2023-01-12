@@ -17,6 +17,7 @@
     struct __SCNetworkReachability *_reachability;
     NSHashTable *_observers;
     int _currentNetworkType;
+    int _currentCellularType;
     _Bool _roaming;
     CoreTelephonyClient *_ctClient;
     NSObject<OS_dispatch_queue> *_ctQueue;
@@ -36,12 +37,15 @@
 - (_Bool)isCellularDataRoamingEnabled;
 - (void)setCellularRoaming:(_Bool)arg1;
 - (int)_networkTypeFromCurrentCellularDataWithError:(id *)arg1;
+- (int)_networkTypeFromCurrentCellularDataRespectingWifiAssist:(_Bool)arg1;
 - (int)_networkTypeFromCurrentCellularData;
 - (_Bool)usingWifi;
 - (int)_networkTypeFromFlags:(unsigned int)arg1;
 - (void)_resetCtClient;
 - (void)_initNetworkObservation;
+- (int)_queue_currentCellularType;
 - (int)_queue_currentNetworkType;
+- (void)setCurrentCellularType:(int)arg1;
 - (void)setCurrentNetworkType:(int)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
@@ -49,6 +53,7 @@
 - (_Bool)isNetworkTypeCellular:(int)arg1;
 - (_Bool)isCurrentNetworkTypeExpensive;
 - (_Bool)isCurrentNetworkTypeCellular;
+- (int)currentCellularType;
 - (int)currentNetworkType;
 - (void)setSubscriptions;
 - (void)dealloc;

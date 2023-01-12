@@ -9,13 +9,16 @@
 #import <MediaPlayer/MPMediaControlsProtocol-Protocol.h>
 #import <MediaPlayer/NSXPCListenerDelegate-Protocol.h>
 
-@class MPMediaControlsConfiguration, NSString, NSXPCConnection, NSXPCListener;
+@class MPMediaControlsConfiguration, NSString, NSXPCConnection, NSXPCListener, UIView;
 
 @interface MPMediaControls : NSObject <MPMediaControlsProtocol, NSXPCListenerDelegate>
 {
     _Bool _shouldObserveRoutingContextUIDChanges;
     unsigned long long _dismissalReason;
+    UIView *_sourceView;
     CDUnknownBlockType _dismissHandler;
+    NSString *_routeUID;
+    double _preferredWidth;
     NSXPCListener *_listener;
     NSXPCConnection *_connection;
     MPMediaControlsConfiguration *_configuration;
@@ -27,7 +30,10 @@
 @property(readonly, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
+@property(nonatomic) double preferredWidth; // @synthesize preferredWidth=_preferredWidth;
+@property(copy, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property(copy, nonatomic) CDUnknownBlockType dismissHandler; // @synthesize dismissHandler=_dismissHandler;
+@property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 - (_Bool)_shouldUpdateStyleForCurrentConfigurationStyle:(long long)arg1;
 - (id)_dismissalReasonString:(unsigned long long)arg1;
 - (unsigned long long)_MPRouteSharingPolicyToAVRouteSharingPolicy:(unsigned long long)arg1;

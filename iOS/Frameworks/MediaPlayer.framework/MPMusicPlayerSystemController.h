@@ -17,6 +17,9 @@
 - (id)_nowPlaying;
 - (id)_queueDescriptor;
 - (void)_establishConnectionIfNeeded;
+- (void)setShuffleMode:(long long)arg1;
+- (void)setRepeatMode:(long long)arg1;
+- (long long)repeatMode;
 - (void)openToPlayQueueDescriptor:(id)arg1;
 - (void)setUserQueueModificationsDisabled:(_Bool)arg1;
 - (_Bool)userQueueModificationsDisabled;

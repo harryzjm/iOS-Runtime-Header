@@ -7,23 +7,25 @@
 #import <objc/NSObject.h>
 
 #import <RenderBox/NSCopying-Protocol.h>
+#import <RenderBox/RBLineStroke-Protocol.h>
 #import <RenderBox/RBParticleStroke-Protocol.h>
 #import <RenderBox/RBStroke-Protocol.h>
 
 @class NSString;
 
-@interface RBStrokeAccumulator : NSObject <RBStroke, RBParticleStroke, NSCopying>
+@interface RBStrokeAccumulator : NSObject <RBStroke, RBLineStroke, RBParticleStroke, NSCopying>
 {
-    struct vector<RBStrokeElement, std::__1::allocator<RBStrokeElement>> _elements;
-    struct vector<float, std::__1::allocator<float>> _values;
+    struct vector<RBStrokeElement, 0, unsigned long> _elements;
+    struct vector<float, 0, unsigned long> _values;
     struct cf_ptr<CGImage *> _image;
     float _imageScale;
-    int _imageCount;
+    unsigned long long _imageCount;
     int _strokeType;
     int _blendMode;
     int _lineCap;
     int _lineJoin;
     float _miterLimit;
+    float _maxLineWidth;
     long long _seed;
     struct CGRect _bounds;
     float _borderWidth;
@@ -38,12 +40,13 @@
 @property(readonly, nonatomic) float borderWidth;
 @property(readonly, nonatomic) struct CGRect boundingRect;
 @property(nonatomic) long long seed;
+@property(readonly, nonatomic) float maxLineWidth;
 @property(nonatomic) float miterLimit;
 @property(nonatomic) int lineJoin;
 @property(nonatomic) int lineCap;
 @property(nonatomic) int blendMode;
 @property(nonatomic) _Bool rotatesImage;
-@property(nonatomic) int imageCount;
+@property(nonatomic) unsigned long long imageCount;
 @property(nonatomic) float imageScale;
 @property(retain, nonatomic) struct CGImage *image;
 @property(nonatomic) int strokeType;

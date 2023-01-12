@@ -8,11 +8,14 @@
 
 #import <MapKit/MKCompassView-Protocol.h>
 
-@class NSString, UIImageView;
+@class NSArray, NSString, UIImageView;
 
 @interface MKCompassView : UIView <MKCompassView>
 {
-    UIImageView *_imageView;
+    UIImageView *_containerImageView;
+    UIImageView *_assetImageView;
+    NSArray *_compassPointLocalizedAbbreviations;
+    int _lastDrawnCompassDirection;
     long long _compassViewSize;
     long long _compassViewStyle;
 }
@@ -22,15 +25,20 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long compassViewStyle; // @synthesize compassViewStyle=_compassViewStyle;
 @property(readonly, nonatomic) long long compassViewSize; // @synthesize compassViewSize=_compassViewSize;
+- (void)_populateCompassPointLocalizedAbbreviationsArray;
+- (id)stringForCompassPoint:(int)arg1;
 - (_Bool)isPointInNorthEastHalf:(struct CGPoint)arg1;
 - (struct CGSize)intrinsicContentSize;
 @property(nonatomic) double yaw;
 @property(nonatomic) double mapHeading;
+- (id)_compassDirectionImageForKey:(id)arg1 sizeParams:(id)arg2 styleParams:(id)arg3 scale:(double)arg4;
+- (void)_updateImageForCompassDirection:(int)arg1;
 - (void)_updateLayerForCurrentSizeAndStyle;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setCompassViewSize:(long long)arg1 style:(long long)arg2;
 - (void)_adaptCompassStyleToUserInterfaceStyle;
 - (void)_updateStyle;
+- (void)_setupImageView:(id)arg1;
 - (void)layoutSubviews;
 - (void)updateLocale:(id)arg1;
 - (void)dealloc;

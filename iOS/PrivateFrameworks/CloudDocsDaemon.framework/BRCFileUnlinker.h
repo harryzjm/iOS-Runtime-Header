@@ -12,19 +12,21 @@
 __attribute__((visibility("hidden")))
 @interface BRCFileUnlinker : NSObject
 {
+    _Atomic int _suspendCount;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_cachePurgeSource;
     NSString *_unlinkRootPath;
 }
 
-+ (id)fileUnlinker;
 - (void).cxx_destruct;
 - (_Bool)renameAndUnlinkInBackgroundItemAt:(int)arg1 path:(id)arg2;
 - (void)forcePurgeWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_purge;
 - (_Bool)renameAndUnlinkInBackgroundItemAtPath:(id)arg1;
+- (void)suspend;
 - (void)resume;
-- (id)init;
+- (void)dealloc;
+- (id)initWithCacheDirPath:(id)arg1;
 
 @end
 

@@ -12,7 +12,7 @@
 
 @interface NTKPhoto : NSObject <NSCopying>
 {
-    NTKPhotoAnalysis *_analyses[4];
+    NTKPhotoAnalysis *_analyses[6];
     _Bool _isIris;
     NSString *_localIdentifier;
     NSDate *_modificationDate;

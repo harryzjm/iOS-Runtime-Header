@@ -14,7 +14,6 @@
 @interface HMIVideoAnalyzerDynamicConfiguration : HMFObject <HMFLogging, NSSecureCoding>
 {
     _Bool _recognizeFaces;
-    _Bool _detectPackages;
     long long _eventTriggers;
     NSArray *_activityZones;
 }
@@ -22,7 +21,6 @@
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 - (void).cxx_destruct;
-@property _Bool detectPackages; // @synthesize detectPackages=_detectPackages;
 @property(retain) NSArray *activityZones; // @synthesize activityZones=_activityZones;
 @property long long eventTriggers; // @synthesize eventTriggers=_eventTriggers;
 @property _Bool recognizeFaces; // @synthesize recognizeFaces=_recognizeFaces;

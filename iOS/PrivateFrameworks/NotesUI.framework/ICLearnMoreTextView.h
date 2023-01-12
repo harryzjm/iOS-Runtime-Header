@@ -11,18 +11,20 @@
 @interface ICLearnMoreTextView : UITextView
 {
     _Bool _isShowingLearnMore;
+    NSString *_helpProductName;
     NSString *_helpTopicID;
     NSString *_helpVersion;
-    UITapGestureRecognizer *_tapGestureRecognizer;
     UIViewController *_parentViewController;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isShowingLearnMore; // @synthesize isShowingLearnMore=_isShowingLearnMore;
-@property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
-@property(retain, nonatomic) NSString *helpVersion; // @synthesize helpVersion=_helpVersion;
-@property(retain, nonatomic) NSString *helpTopicID; // @synthesize helpTopicID=_helpTopicID;
+@property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
+@property(copy, nonatomic) NSString *helpVersion; // @synthesize helpVersion=_helpVersion;
+@property(copy, nonatomic) NSString *helpTopicID; // @synthesize helpTopicID=_helpTopicID;
+@property(copy, nonatomic) NSString *helpProductName; // @synthesize helpProductName=_helpProductName;
 - (void)updateForAccessibilityDarkerSystemColors;
 - (_Bool)_accessibilityHasTextOperations;
 - (id)accessibilityHint;

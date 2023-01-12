@@ -9,6 +9,11 @@
 @class NSURL, _UIFeedbackParameters;
 
 @protocol _UIFeedbackData <NSObject>
+@property(readonly, nonatomic) _Bool canReuseCoreHapticsPlayer;
+@property(readonly, nonatomic) _Bool disableEventUseVolumeEnvelope;
+@property(readonly, nonatomic) float sharpness;
+@property(readonly, nonatomic) float intensity;
+@property(readonly, nonatomic) _Bool isTransientHaptic;
 @property(readonly, nonatomic) unsigned long long fileFeedbackType;
 @property(readonly, nonatomic) NSURL *fileURL;
 @property(readonly, nonatomic) unsigned int effectiveSystemSoundID;

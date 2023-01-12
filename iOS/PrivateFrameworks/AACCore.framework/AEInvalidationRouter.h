@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)fetchCapturedErrorWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setRouterDelegate:(id)arg1;
 - (void)setRouterMode:(long long)arg1;
-- (id)init;
+- (id)initWithQueue:(id)arg1;
 
 @end
 

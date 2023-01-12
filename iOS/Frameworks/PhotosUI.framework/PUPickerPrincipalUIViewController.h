@@ -8,12 +8,13 @@
 
 #import <PhotosUI/NSExtensionRequestHandling-Protocol.h>
 #import <PhotosUI/PUAssetPickerCoordinatorActionHandler-Protocol.h>
+#import <PhotosUI/PUPickerPrincipalUIViewControllerInterface-Protocol.h>
 #import <PhotosUI/_PUPickerUnavailableUIViewControllerDelegate-Protocol.h>
 
-@class NSFileProviderDomain, NSLayoutConstraint, NSString, PUAssetPickerCoordinator;
+@class NSDate, NSFileProviderDomain, NSLayoutConstraint, NSOrderedSet, NSString, PUAssetPickerCoordinator;
 
 __attribute__((visibility("hidden")))
-@interface PUPickerPrincipalUIViewController : UIViewController <PUAssetPickerCoordinatorActionHandler, _PUPickerUnavailableUIViewControllerDelegate, NSExtensionRequestHandling>
+@interface PUPickerPrincipalUIViewController : UIViewController <PUAssetPickerCoordinatorActionHandler, _PUPickerUnavailableUIViewControllerDelegate, NSExtensionRequestHandling, PUPickerPrincipalUIViewControllerInterface>
 {
     NSFileProviderDomain *_domain;
     PUAssetPickerCoordinator *_coordinator;
@@ -23,10 +24,17 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_trailingConstraint;
     NSLayoutConstraint *_leadingSafeAreaConstraint;
     NSLayoutConstraint *_trailingSafeAreaConstraint;
+    NSOrderedSet *_selectedObjectIDs;
+    NSDate *_selectionDate;
 }
 
++ (_Bool)shouldDebounceDidFinishPicking:(id)arg1 previousSelectedObjectIDs:(id)arg2 previousSelectionDate:(id)arg3;
 + (id)_remoteViewControllerInterface;
++ (id)_exportedInterface;
++ (void)initialize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *selectionDate; // @synthesize selectionDate=_selectionDate;
+@property(retain, nonatomic) NSOrderedSet *selectedObjectIDs; // @synthesize selectedObjectIDs=_selectedObjectIDs;
 @property(retain, nonatomic) NSLayoutConstraint *trailingSafeAreaConstraint; // @synthesize trailingSafeAreaConstraint=_trailingSafeAreaConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *leadingSafeAreaConstraint; // @synthesize leadingSafeAreaConstraint=_leadingSafeAreaConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *trailingConstraint; // @synthesize trailingConstraint=_trailingConstraint;
@@ -35,8 +43,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
 @property(retain, nonatomic) PUAssetPickerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(retain, nonatomic) NSFileProviderDomain *domain; // @synthesize domain=_domain;
-- (void)coordinator:(id)arg1 didFinishWithAssets:(id)arg2;
-- (void)_pickerUnavailableUIViewController:(id)arg1 cancelButtonTapped:(id)arg2;
+- (void)coordinator:(id)arg1 didFinishPicking:(id)arg2;
+- (void)_moveAssetWithIdentifier:(id)arg1 afterIdentifier:(id)arg2;
+- (void)_deselectAssetsWithIdentifiers:(id)arg1;
+- (void)_pickerUnavailableUIViewControllerCancelButtonTapped:(id)arg1;
+- (void)finishPicking:(id)arg1;
+- (void)confirmPicking:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)logExitIfNeeded:(id)arg1;
 - (_Bool)setImagePickerPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (id)synchronousLoadConfigurationFromExtensionContext:(id *)arg1;

@@ -9,18 +9,17 @@
 #import <EmailDaemon/EDMailboxProviderDelegate-Protocol.h>
 #import <EmailDaemon/EMMailboxTypeResolver-Protocol.h>
 
-@class NSMutableDictionary, NSSet, NSString;
-@protocol EDMailboxProvider;
+@class EDMailboxProvider, NSMutableDictionary, NSSet, NSString;
 
 @interface EDMailboxPersistence : NSObject <EDMailboxProviderDelegate, EMMailboxTypeResolver>
 {
     struct os_unfair_lock_s _changeObserversByIdentifierLock;
     NSMutableDictionary *_changeObserversByIdentifier;
-    id <EDMailboxProvider> _mailboxProvider;
+    EDMailboxProvider *_mailboxProvider;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <EDMailboxProvider> mailboxProvider; // @synthesize mailboxProvider=_mailboxProvider;
+@property(retain, nonatomic) EDMailboxProvider *mailboxProvider; // @synthesize mailboxProvider=_mailboxProvider;
 @property(retain, nonatomic) NSMutableDictionary *changeObserversByIdentifier; // @synthesize changeObserversByIdentifier=_changeObserversByIdentifier;
 - (_Bool)renameMailbox:(id)arg1 newName:(id)arg2;
 - (_Bool)moveMailbox:(id)arg1 newParentMailboxID:(id)arg2;
@@ -40,6 +39,7 @@
 - (void)allMailboxesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)mailboxListInvalidated;
 - (id)allMailboxes;
+- (void)test_tearDown;
 - (id)initWithMailboxProvider:(id)arg1;
 
 // Remaining properties

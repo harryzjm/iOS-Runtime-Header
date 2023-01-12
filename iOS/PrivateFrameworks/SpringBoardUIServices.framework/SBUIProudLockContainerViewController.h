@@ -93,8 +93,10 @@
 @property(readonly, nonatomic) _Bool isPortrait;
 - (void)_updateLockForMatchStarted;
 - (void)_updateLockForFaceInView;
+- (void)_provideFeedbackForCoachingCondition:(unsigned long long)arg1;
 - (void)_handleBiometricEvent:(unsigned long long)arg1;
 - (void)handleBiometricEvent:(unsigned long long)arg1;
+- (void)handlePhoneUnlockWithWatchError:(id)arg1;
 - (void)updateForScreenWillTurnOff;
 - (void)updateLockForBiometricMatchFailure;
 - (void)reset;

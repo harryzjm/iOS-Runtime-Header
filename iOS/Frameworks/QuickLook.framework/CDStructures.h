@@ -96,14 +96,6 @@ typedef struct {
 } CDStruct_3ea018b0;
 
 typedef struct {
-    long long version;
-    CDUnknownFunctionPointerType retain;
-    CDUnknownFunctionPointerType release;
-    CDUnknownFunctionPointerType copyDescription;
-    CDUnknownFunctionPointerType equal;
-} CDStruct_b3b3fc87;
-
-typedef struct {
     long long _field1;
     int _field2;
     unsigned int _field3;

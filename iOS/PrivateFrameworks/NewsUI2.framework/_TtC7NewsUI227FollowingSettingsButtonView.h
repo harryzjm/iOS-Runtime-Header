@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIButton.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC7NewsUI227FollowingSettingsButtonView : UIView
+__attribute__((visibility("hidden")))
+@interface _TtC7NewsUI227FollowingSettingsButtonView : UIButton
 {
-    MISSING_TYPE *button;
     MISSING_TYPE *onTap;
     MISSING_TYPE *isEditing;
 }

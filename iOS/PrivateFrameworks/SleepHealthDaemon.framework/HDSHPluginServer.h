@@ -6,20 +6,18 @@
 
 #import <HealthDaemon/HDStandardTaskServer.h>
 
-#import <SleepHealthDaemon/HDContentProtectionObserver-Protocol.h>
 #import <SleepHealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <SleepHealthDaemon/HDSleepHealthDaemonPluginServerInterface-Protocol.h>
 
-@class HDAssertion, HDHealthStoreClient, HDProfile, HDSHProfileExtension, NSObject, NSString;
+@class HDHealthStoreClient, HDProfile, HDSHProfileExtension, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDSHPluginServer : HDStandardTaskServer <HDDiagnosticObject, HDSleepHealthDaemonPluginServerInterface, HDContentProtectionObserver>
+@interface HDSHPluginServer : HDStandardTaskServer <HDDiagnosticObject, HDSleepHealthDaemonPluginServerInterface>
 {
     HDProfile *_profile;
     HDSHProfileExtension *_profileExtension;
     HDHealthStoreClient *_client;
-    HDAssertion *_accessibilityAssertion;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_serializer;
 }
 
 + (id)requiredEntitlements;
@@ -36,10 +34,6 @@
 - (void)remote_saveSleepTrackingSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_stopSleepTrackingSession;
 - (void)remote_startSleepTrackingSession;
-- (void)_queue_takeAccessibilityAssertion;
-- (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
-- (void)_restoreSleepTrackingState;
-@property(nonatomic, getter=isSleepTrackingSessionInProgress) _Bool sleepTrackingSessionInProgress;
 - (_Bool)_populateSamplesToInsert:(id)arg1 samplesToDelete:(id)arg2 forSleepDurationGoal:(id)arg3 error:(id *)arg4;
 - (_Bool)_populateSamplesToInsert:(id)arg1 samplesToDelete:(id)arg2 forSleepSchedules:(id)arg3 error:(id *)arg4;
 - (void)remote_updateCurrentSleepSchedules:(id)arg1 sleepDurationGoal:(id)arg2 completion:(CDUnknownBlockType)arg3;

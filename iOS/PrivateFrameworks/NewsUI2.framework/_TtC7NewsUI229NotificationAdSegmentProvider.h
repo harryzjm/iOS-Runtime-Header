@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *needsUpdate;
     MISSING_TYPE *tagService;
+    MISSING_TYPE *subscriptionService;
 }
 
 @end

@@ -8,15 +8,27 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class MTLPipelineBufferDescriptorArray, MTLRenderPipelineColorAttachmentDescriptorArray, MTLVertexDescriptor, NSArray, NSString;
+@class MTLLinkedFunctions, MTLPipelineBufferDescriptorArray, MTLRenderPipelineColorAttachmentDescriptorArray, MTLVertexDescriptor, NSArray, NSString;
 @protocol MTLFunction;
 
 @interface MTLRenderPipelineDescriptor : NSObject <NSCopying>
 {
+    _Bool _supportAddingVertexBinaryFunctions;
+    _Bool _supportAddingFragmentBinaryFunctions;
+    NSArray *_vertexPreloadedLibraries;
+    NSArray *_fragmentPreloadedLibraries;
+    unsigned long long _maxVertexCallStackDepth;
+    unsigned long long _maxFragmentCallStackDepth;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
+@property(nonatomic) unsigned long long maxFragmentCallStackDepth; // @synthesize maxFragmentCallStackDepth=_maxFragmentCallStackDepth;
+@property(nonatomic) unsigned long long maxVertexCallStackDepth; // @synthesize maxVertexCallStackDepth=_maxVertexCallStackDepth;
+@property(nonatomic) _Bool supportAddingFragmentBinaryFunctions; // @synthesize supportAddingFragmentBinaryFunctions=_supportAddingFragmentBinaryFunctions;
+@property(nonatomic) _Bool supportAddingVertexBinaryFunctions; // @synthesize supportAddingVertexBinaryFunctions=_supportAddingVertexBinaryFunctions;
+@property(copy, nonatomic) NSArray *fragmentPreloadedLibraries; // @synthesize fragmentPreloadedLibraries=_fragmentPreloadedLibraries;
+@property(copy, nonatomic) NSArray *vertexPreloadedLibraries; // @synthesize vertexPreloadedLibraries=_vertexPreloadedLibraries;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reset;
 
@@ -28,6 +40,7 @@
 @property(nonatomic) unsigned long long depthAttachmentPixelFormat; // @dynamic depthAttachmentPixelFormat;
 @property(readonly) MTLPipelineBufferDescriptorArray *fragmentBuffers; // @dynamic fragmentBuffers;
 @property(retain, nonatomic) id <MTLFunction> fragmentFunction; // @dynamic fragmentFunction;
+@property(copy, nonatomic) MTLLinkedFunctions *fragmentLinkedFunctions; // @dynamic fragmentLinkedFunctions;
 @property(nonatomic) unsigned long long inputPrimitiveTopology; // @dynamic inputPrimitiveTopology;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
 @property(nonatomic) unsigned long long maxTessellationFactor; // @dynamic maxTessellationFactor;
@@ -46,6 +59,7 @@
 @property(readonly) MTLPipelineBufferDescriptorArray *vertexBuffers; // @dynamic vertexBuffers;
 @property(copy, nonatomic) MTLVertexDescriptor *vertexDescriptor; // @dynamic vertexDescriptor;
 @property(retain, nonatomic) id <MTLFunction> vertexFunction; // @dynamic vertexFunction;
+@property(copy, nonatomic) MTLLinkedFunctions *vertexLinkedFunctions; // @dynamic vertexLinkedFunctions;
 
 @end
 

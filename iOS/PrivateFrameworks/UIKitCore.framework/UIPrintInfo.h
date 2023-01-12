@@ -9,21 +9,36 @@
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface UIPrintInfo : NSObject <NSCopying, NSCoding>
 {
+    _Bool _scaleUp;
+    _Bool _pdfAnnotationsAvailable;
+    _Bool _scaleToFit;
+    _Bool _scaleDownOnly;
+    _Bool _imagePDFAnnotations;
     NSString *_printerID;
     NSString *_jobName;
     long long _outputType;
     long long _orientation;
     long long _duplex;
     long long _copies;
-    _Bool _scaleUp;
-    _Bool _staple;
-    _Bool _punch;
-    _Bool _imagePDFAnnotations;
+    long long _staple;
+    long long _punch;
+    long long _fold;
+    long long _laminate;
+    long long _coat;
+    long long _trim;
+    NSString *_finishingTemplate;
+    NSString *_outputBin;
+    NSString *_pageStackOrder;
     NSString *_jobAccountID;
+    NSString *_inputSlot;
+    NSString *_mediaType;
+    long long _pageCount;
+    NSArray *_pageRanges;
+    long long _quality;
     NSString *_pdfPassword;
 }
 
@@ -33,9 +48,24 @@
 @property(nonatomic) _Bool imagePDFAnnotations; // @synthesize imagePDFAnnotations=_imagePDFAnnotations;
 @property(retain, nonatomic) NSString *pdfPassword; // @synthesize pdfPassword=_pdfPassword;
 @property(nonatomic) _Bool scaleUp; // @synthesize scaleUp=_scaleUp;
+@property(nonatomic) _Bool scaleDownOnly; // @synthesize scaleDownOnly=_scaleDownOnly;
+@property(nonatomic) _Bool scaleToFit; // @synthesize scaleToFit=_scaleToFit;
+@property(nonatomic) _Bool pdfAnnotationsAvailable; // @synthesize pdfAnnotationsAvailable=_pdfAnnotationsAvailable;
+@property(nonatomic) long long quality; // @synthesize quality=_quality;
+@property(retain, nonatomic) NSArray *pageRanges; // @synthesize pageRanges=_pageRanges;
+@property(nonatomic) long long pageCount; // @synthesize pageCount=_pageCount;
+@property(retain, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
+@property(retain, nonatomic) NSString *inputSlot; // @synthesize inputSlot=_inputSlot;
 @property(retain, nonatomic) NSString *jobAccountID; // @synthesize jobAccountID=_jobAccountID;
-@property(nonatomic) _Bool punch; // @synthesize punch=_punch;
-@property(nonatomic) _Bool staple; // @synthesize staple=_staple;
+@property(retain, nonatomic) NSString *pageStackOrder; // @synthesize pageStackOrder=_pageStackOrder;
+@property(retain, nonatomic) NSString *outputBin; // @synthesize outputBin=_outputBin;
+@property(retain, nonatomic) NSString *finishingTemplate; // @synthesize finishingTemplate=_finishingTemplate;
+@property(nonatomic) long long trim; // @synthesize trim=_trim;
+@property(nonatomic) long long coat; // @synthesize coat=_coat;
+@property(nonatomic) long long laminate; // @synthesize laminate=_laminate;
+@property(nonatomic) long long fold; // @synthesize fold=_fold;
+@property(nonatomic) long long punch; // @synthesize punch=_punch;
+@property(nonatomic) long long staple; // @synthesize staple=_staple;
 @property(nonatomic) long long copies; // @synthesize copies=_copies;
 @property(nonatomic) long long duplex; // @synthesize duplex=_duplex;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -45,6 +75,7 @@
 - (id)_createPrintSettingsForPrinter:(id)arg1;
 - (void)_updateWithPrinter:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)updateWithDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;

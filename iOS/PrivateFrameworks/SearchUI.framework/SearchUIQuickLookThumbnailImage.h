@@ -4,26 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class QLThumbnailGenerationRequest, SFSearchResult;
+@class FPItemID, NSURL, QLThumbnailGenerationRequest;
 
 @interface SearchUIQuickLookThumbnailImage
 {
     _Bool _isCompact;
-    SFSearchResult *_result;
+    NSURL *_url;
+    FPItemID *_fpItemID;
     QLThumbnailGenerationRequest *_request;
 }
 
 - (void).cxx_destruct;
 @property _Bool isCompact; // @synthesize isCompact=_isCompact;
 @property __weak QLThumbnailGenerationRequest *request; // @synthesize request=_request;
-@property(retain, nonatomic) SFSearchResult *result; // @synthesize result=_result;
+@property(retain, nonatomic) FPItemID *fpItemID; // @synthesize fpItemID=_fpItemID;
+@property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (Class)classForCoder;
-- (id)url;
+- (void)loadImageWithScale:(double)arg1 isDarkStyle:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (id)initWithResult:(id)arg1 isCompact:(_Bool)arg2;
+- (void)updateSize;
+- (id)initWithResult:(id)arg1 url:(id)arg2 isCompact:(_Bool)arg3;
+- (id)initWithSFImage:(id)arg1;
 
 @end
 

@@ -13,6 +13,7 @@
     NSString *_friendCode;
     NSString *_friendSupportPageURL;
     NSArray *_recipients;
+    NSString *_chatGUID;
     UIViewController *_requestingViewController;
 }
 
@@ -21,12 +22,14 @@
 + (void)addFriends:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UIViewController *requestingViewController; // @synthesize requestingViewController=_requestingViewController;
+@property(retain, nonatomic) NSString *chatGUID; // @synthesize chatGUID=_chatGUID;
 @property(retain, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(retain, nonatomic) NSString *friendSupportPageURL; // @synthesize friendSupportPageURL=_friendSupportPageURL;
 @property(retain, nonatomic) NSString *friendCode; // @synthesize friendCode=_friendCode;
 @property(nonatomic) __weak NSObject<GKFriendRequestViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 - (id)_presentingViewController;
 - (void)notifyDelegateOnWillFinish;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (id)serviceSideViewControllerClassName;
 - (id)init;
 

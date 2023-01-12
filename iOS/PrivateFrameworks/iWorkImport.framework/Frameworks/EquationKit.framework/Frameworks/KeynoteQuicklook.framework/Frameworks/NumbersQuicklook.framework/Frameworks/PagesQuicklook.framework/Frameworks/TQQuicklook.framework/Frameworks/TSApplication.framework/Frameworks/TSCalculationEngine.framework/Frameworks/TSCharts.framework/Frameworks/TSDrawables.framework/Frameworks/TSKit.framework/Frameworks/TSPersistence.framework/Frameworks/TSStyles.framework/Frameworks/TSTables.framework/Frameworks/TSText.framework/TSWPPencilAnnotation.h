@@ -28,7 +28,7 @@
 @property(nonatomic) __weak TSWPStorage *parentStorage; // @synthesize parentStorage=_parentStorage;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadFromArchive:(const struct PencilAnnotationArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) NSString *uuid;
 - (_Bool)isInDocument;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

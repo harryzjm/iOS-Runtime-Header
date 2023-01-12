@@ -7,22 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <UserNotificationsUIKit/NCNotificationStaticContentProviding-Protocol.h>
+#import <UserNotificationsUIKit/NSCopying-Protocol.h>
 
-@class NCNotificationRequest, NSArray, NSDate, NSString, NSTimeZone, UIImage;
+@class MTVisualStylingProvider, NCNotificationRequest, NSArray, NSDate, NSString, NSTimeZone, UIImage, UIView;
 @protocol NCNotificationStaticContentProvidingDelegate;
 
-@interface NCNotificationRequestContentProvider : NSObject <NCNotificationStaticContentProviding>
+@interface NCNotificationRequestContentProvider : NSObject <NCNotificationStaticContentProviding, NSCopying>
 {
+    _Bool _contentHidingDisabled;
     id <NCNotificationStaticContentProvidingDelegate> _delegate;
     NSArray *_overriddenActions;
+    UIView *_communicationAvatar;
     NCNotificationRequest *_notificationRequest;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
+@property(readonly, nonatomic, getter=isContentHidingDisabled) _Bool contentHidingDisabled; // @synthesize contentHidingDisabled=_contentHidingDisabled;
 @property(copy, nonatomic) NSArray *overriddenActions; // @synthesize overriddenActions=_overriddenActions;
 @property(nonatomic) __weak id <NCNotificationStaticContentProvidingDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_invalidateCachedData;
+- (id)_iconImageForNotificationAction:(id)arg1;
 - (id)_appBundleIdentifer;
+- (id)copyWithContentHidingDisabled:(_Bool)arg1;
+@property(readonly, nonatomic, getter=isHidingContent) _Bool hidingContent;
 @property(readonly, nonatomic) unsigned long long coalesceCount;
 @property(readonly, copy, nonatomic) NSArray *currentActions;
 @property(readonly, nonatomic) _Bool showsTextInputOnAppearance;
@@ -32,10 +40,17 @@
 @property(readonly, copy, nonatomic) CDUnknownBlockType cancelAction;
 @property(readonly, copy, nonatomic) CDUnknownBlockType defaultAction;
 - (CDUnknownBlockType)_actionForNotificationAction:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *menuActions;
 @property(readonly, nonatomic) NSArray *interfaceActions;
+@property(readonly, nonatomic) UIView *communicationAvatar; // @synthesize communicationAvatar=_communicationAvatar;
 @property(readonly, nonatomic) UIImage *thumbnail;
 @property(readonly, nonatomic, getter=isNumberOfLinesInfinite) _Bool numberOfLinesInfinite;
+@property(readonly, copy, nonatomic) NSString *footerText;
 @property(readonly, copy, nonatomic) NSString *summaryText;
+@property(readonly, nonatomic) MTVisualStylingProvider *importantTextVisualStylingProvider;
+- (id)importantAttributedTextWithImageConfiguration:(id)arg1;
+- (id)_criticalAlertIconAttributedStringWithImageConfiguration:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *importantText;
 @property(readonly, copy, nonatomic) NSString *secondaryText;
 @property(readonly, copy, nonatomic) NSString *primarySubtitleText;
 @property(readonly, copy, nonatomic) NSString *primaryText;
@@ -44,6 +59,7 @@
 @property(readonly, copy, nonatomic) NSDate *date;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, nonatomic) NSArray *icons;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithNotificationRequest:(id)arg1;
 

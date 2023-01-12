@@ -8,7 +8,6 @@
 
 @interface PUTabbedLibrarySettings : PXSettings
 {
-    _Bool _enablePhotosTab;
     _Bool _enableMemoriesTab;
     _Bool _enableSharedTab;
     _Bool _enableAlbumsTab;
@@ -21,15 +20,16 @@
     _Bool _sidebarAllPhotosSuspendsNavigationHighlights;
     _Bool _sidebarScrollSelectedItemToCenter;
     _Bool _sidebarOnlyScrollOffscreenItemOnScreen;
-    _Bool _sidebarExpandSelectedItems;
-    _Bool _sidebarAnimateExpandSelectedItems;
     _Bool _sidebarAnimateDataSourceUpdates;
     _Bool _sidebarUseMacStructure;
     _Bool _sidebarEditAutoExpandToEditableItem;
     _Bool _sidebarHideNavBackButtonForSelectedItem;
     _Bool _sidebarLaunchAnimateLoad;
     _Bool _sidebarSymbolImagesOnly;
+    _Bool _sidebarSimulateNonIncrementalChanges;
+    _Bool _sidebarPauseChangeProcessingWhenHidden;
     long long _sidebarLaunchLoadMode;
+    long long _sidebarPausedChangeDetailsBufferLength;
     long long _sidebarEnabledMode;
 }
 
@@ -38,6 +38,9 @@
 + (id)sharedInstance;
 + (id)settingsControllerModule;
 @property(nonatomic) long long sidebarEnabledMode; // @synthesize sidebarEnabledMode=_sidebarEnabledMode;
+@property(nonatomic) long long sidebarPausedChangeDetailsBufferLength; // @synthesize sidebarPausedChangeDetailsBufferLength=_sidebarPausedChangeDetailsBufferLength;
+@property(nonatomic) _Bool sidebarPauseChangeProcessingWhenHidden; // @synthesize sidebarPauseChangeProcessingWhenHidden=_sidebarPauseChangeProcessingWhenHidden;
+@property(nonatomic) _Bool sidebarSimulateNonIncrementalChanges; // @synthesize sidebarSimulateNonIncrementalChanges=_sidebarSimulateNonIncrementalChanges;
 @property(nonatomic) _Bool sidebarSymbolImagesOnly; // @synthesize sidebarSymbolImagesOnly=_sidebarSymbolImagesOnly;
 @property(nonatomic) _Bool sidebarLaunchAnimateLoad; // @synthesize sidebarLaunchAnimateLoad=_sidebarLaunchAnimateLoad;
 @property(nonatomic) long long sidebarLaunchLoadMode; // @synthesize sidebarLaunchLoadMode=_sidebarLaunchLoadMode;
@@ -45,8 +48,6 @@
 @property(nonatomic) _Bool sidebarEditAutoExpandToEditableItem; // @synthesize sidebarEditAutoExpandToEditableItem=_sidebarEditAutoExpandToEditableItem;
 @property(nonatomic) _Bool sidebarUseMacStructure; // @synthesize sidebarUseMacStructure=_sidebarUseMacStructure;
 @property(nonatomic) _Bool sidebarAnimateDataSourceUpdates; // @synthesize sidebarAnimateDataSourceUpdates=_sidebarAnimateDataSourceUpdates;
-@property(nonatomic) _Bool sidebarAnimateExpandSelectedItems; // @synthesize sidebarAnimateExpandSelectedItems=_sidebarAnimateExpandSelectedItems;
-@property(nonatomic) _Bool sidebarExpandSelectedItems; // @synthesize sidebarExpandSelectedItems=_sidebarExpandSelectedItems;
 @property(nonatomic) _Bool sidebarOnlyScrollOffscreenItemOnScreen; // @synthesize sidebarOnlyScrollOffscreenItemOnScreen=_sidebarOnlyScrollOffscreenItemOnScreen;
 @property(nonatomic) _Bool sidebarScrollSelectedItemToCenter; // @synthesize sidebarScrollSelectedItemToCenter=_sidebarScrollSelectedItemToCenter;
 @property(nonatomic) _Bool sidebarAllPhotosSuspendsNavigationHighlights; // @synthesize sidebarAllPhotosSuspendsNavigationHighlights=_sidebarAllPhotosSuspendsNavigationHighlights;
@@ -59,7 +60,6 @@
 @property(nonatomic) _Bool enableAlbumsTab; // @synthesize enableAlbumsTab=_enableAlbumsTab;
 @property(nonatomic) _Bool enableSharedTab; // @synthesize enableSharedTab=_enableSharedTab;
 @property(nonatomic) _Bool enableMemoriesTab; // @synthesize enableMemoriesTab=_enableMemoriesTab;
-@property(nonatomic) _Bool enablePhotosTab; // @synthesize enablePhotosTab=_enablePhotosTab;
 @property(readonly, nonatomic, getter=isSidebarEnabled) _Bool sidebarEnabled;
 - (long long)countOfEnabledTabs;
 - (id)allTabs;

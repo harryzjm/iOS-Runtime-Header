@@ -21,6 +21,7 @@
 @property(readonly, nonatomic) double labelAlpha;
 @property(readonly, nonatomic) UIFont *labelFont;
 @property(readonly, nonatomic) CAFilter *imageCompositingFilter;
+@property(readonly, nonatomic) UIColor *afterLabelImageTintColor;
 @property(readonly, nonatomic) UIColor *imageTintColor;
 @property(readonly, nonatomic) double imageAlpha;
 @property(readonly, nonatomic) UIImageSymbolConfiguration *imageConfiguration;

@@ -8,20 +8,23 @@
 
 #import <NewsCore/FCBundleEntitlementsProviderType-Protocol.h>
 
+@class FCEntitlementService;
 @protocol FCCoreConfigurationManager, FCEntitlementsOverrideProviderType;
 
 @interface FCBundleEntitlementsProvider : NSObject <FCBundleEntitlementsProviderType>
 {
     id <FCEntitlementsOverrideProviderType> entitlementsOverrideProvider;
     id <FCCoreConfigurationManager> _configurationManager;
+    FCEntitlementService *_entitlementService;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) FCEntitlementService *entitlementService; // @synthesize entitlementService=_entitlementService;
 @property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property(retain, nonatomic) id <FCEntitlementsOverrideProviderType> entitlementsOverrideProvider; // @synthesize entitlementsOverrideProvider;
 - (void)_fetchEntitlementsWithIgnoreCache:(_Bool)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchEntitlementsWithIgnoreCache:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithConfigurationManager:(id)arg1;
+- (id)initWithConfigurationManager:(id)arg1 entitlementService:(id)arg2;
 
 @end
 

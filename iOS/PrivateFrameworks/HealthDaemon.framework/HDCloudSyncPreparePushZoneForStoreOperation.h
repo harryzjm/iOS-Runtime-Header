@@ -14,8 +14,6 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) HDCloudSyncTarget *pushTarget; // @synthesize pushTarget=_pushTarget;
-- (void)_finishWithZone:(id)arg1;
-- (void)_createZoneWithIdentifier:(id)arg1;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 store:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

@@ -10,6 +10,10 @@
 {
 }
 
++ (id)contextForReadingProtectedData;
++ (id)contextForReading;
++ (id)contextForWritingProtectedData;
++ (id)contextForWriting;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(retain, nonatomic) HDDatabaseTransactionContextStatistics *statistics; // @dynamic statistics;
 @property(nonatomic) _Bool requiresNewDatabaseConnection; // @dynamic requiresNewDatabaseConnection;
@@ -19,6 +23,7 @@
 @property(nonatomic) _Bool requiresWrite; // @dynamic requiresWrite;
 @property(nonatomic) long long cacheScope; // @dynamic cacheScope;
 @property(nonatomic) long long journalType; // @dynamic journalType;
+- (id)contextWithAccessibilityAssertion:(id)arg1;
 - (void)addAccessibilityAssertion:(id)arg1;
 
 @end

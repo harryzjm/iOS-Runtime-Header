@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <WeatherFoundation/NSCopying-Protocol.h>
+#import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
 @class NSDate;
 
-@interface WFNextHourPrecipitationCondition : NSObject <NSCopying>
+@interface WFNextHourPrecipitationCondition : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _type;
     double _intensity;
@@ -18,12 +19,16 @@
     NSDate *_validUntil;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *validUntil; // @synthesize validUntil=_validUntil;
 @property(readonly, nonatomic) double probability; // @synthesize probability=_probability;
 @property(readonly, nonatomic) double intensity; // @synthesize intensity=_intensity;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_stringForType:(unsigned long long)arg1;
 - (unsigned long long)typeForString:(id)arg1;
 - (id)initWithType:(id)arg1 intensity:(double)arg2 probability:(double)arg3 validUntil:(id)arg4;
 

@@ -8,11 +8,11 @@
 
 #import <Message/MFBaseMessage-Protocol.h>
 
-@class MFMailboxUid, MFMessageLibrary, NSString;
+@class MFMailMessageLibrary, MFMailboxUid, NSString;
 
 @interface MFMessageDetails : NSObject <MFBaseMessage>
 {
-    MFMessageLibrary *library;
+    MFMailMessageLibrary *library;
     long long libraryID;
     unsigned long long messageFlags;
     unsigned int uid;

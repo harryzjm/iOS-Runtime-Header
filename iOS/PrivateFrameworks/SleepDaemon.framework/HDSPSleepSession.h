@@ -22,7 +22,6 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)sleepSessionWithDateInterval:(id)arg1 sleepIntervals:(id)arg2 endReason:(unsigned long long)arg3 metadata:(id)arg4 requiresFirstUnlock:(_Bool)arg5;
-+ (id)testSleepSession;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool requiresFirstUnlock; // @synthesize requiresFirstUnlock=_requiresFirstUnlock;
 @property(readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;

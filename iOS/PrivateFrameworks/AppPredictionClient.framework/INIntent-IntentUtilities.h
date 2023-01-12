@@ -11,6 +11,7 @@
 - (id)_atx_intentsForAllParameterCombinations;
 - (_Bool)atx_isValidSuggestionIntentForWidgetIntent:(id)arg1;
 - (_Bool)atx_isEqualToIntent:(id)arg1;
+- (unsigned long long)atx_backingStoreDataHash;
 - (id)atx_hashApproximately;
 - (id)atx_nonNilParametersByName;
 @end

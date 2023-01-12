@@ -52,7 +52,7 @@
 + (id)largeModular:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool displayEntryDateInGraphicCircularView; // @synthesize displayEntryDateInGraphicCircularView=_displayEntryDateInGraphicCircularView;
-@property(retain, nonatomic) NSArray *eventColors; // @synthesize eventColors=_eventColors;
+@property(copy, nonatomic) NSArray *eventColors; // @synthesize eventColors=_eventColors;
 @property(retain, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(nonatomic) unsigned long long eventsInDayCount; // @synthesize eventsInDayCount=_eventsInDayCount;
 @property(nonatomic) _Bool overlappingDates; // @synthesize overlappingDates=_overlappingDates;
@@ -60,13 +60,13 @@
 @property(nonatomic) _Bool displayAsFirstInDay; // @synthesize displayAsFirstInDay=_displayAsFirstInDay;
 @property(nonatomic) _Bool displayAsConflicting; // @synthesize displayAsConflicting=_displayAsConflicting;
 @property(nonatomic) _Bool displayAsTomorrow; // @synthesize displayAsTomorrow=_displayAsTomorrow;
-@property(retain, nonatomic) NSString *primaryEventOrganizerName; // @synthesize primaryEventOrganizerName=_primaryEventOrganizerName;
-@property(retain, nonatomic) NSString *secondaryEventTitle; // @synthesize secondaryEventTitle=_secondaryEventTitle;
-@property(retain, nonatomic) NSString *primaryEventLocation; // @synthesize primaryEventLocation=_primaryEventLocation;
-@property(retain, nonatomic) NSString *primaryEventTitle; // @synthesize primaryEventTitle=_primaryEventTitle;
+@property(copy, nonatomic) NSString *primaryEventOrganizerName; // @synthesize primaryEventOrganizerName=_primaryEventOrganizerName;
+@property(copy, nonatomic) NSString *secondaryEventTitle; // @synthesize secondaryEventTitle=_secondaryEventTitle;
+@property(copy, nonatomic) NSString *primaryEventLocation; // @synthesize primaryEventLocation=_primaryEventLocation;
+@property(copy, nonatomic) NSString *primaryEventTitle; // @synthesize primaryEventTitle=_primaryEventTitle;
 @property(retain, nonatomic) NSDate *eventEndDate; // @synthesize eventEndDate=_eventEndDate;
 @property(retain, nonatomic) NSDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)_wrappedPrimaryEventOrganizerName;
 - (id)_wrappedPrimaryEventLocation;
 - (id)_wrappedSecondaryEventTitle;

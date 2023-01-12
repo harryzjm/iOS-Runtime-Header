@@ -16,16 +16,21 @@
     NSString *_attachmentUTI;
 }
 
++ (_Bool)typeUTIIsInlineAttachment:(id)arg1;
++ (_Bool)isInlineAttachment:(id)arg1;
 + (_Bool)isAttachment:(id)arg1 equalToModelComparable:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *attachmentUTI; // @synthesize attachmentUTI=_attachmentUTI;
-@property(retain, nonatomic) NSString *attachmentIdentifier; // @synthesize attachmentIdentifier=_attachmentIdentifier;
+@property(copy, nonatomic) NSString *attachmentUTI; // @synthesize attachmentUTI=_attachmentUTI;
+@property(copy, nonatomic) NSString *attachmentIdentifier; // @synthesize attachmentIdentifier=_attachmentIdentifier;
+- (struct CGRect)attachmentBoundsForAttributes:(id)arg1 location:(id)arg2 textContainer:(id)arg3 proposedLineFragment:(struct CGRect)arg4 position:(struct CGPoint)arg5;
+- (id)inlineAttachmentInContext:(id)arg1;
 - (id)attachmentInContext:(id)arg1;
 - (_Bool)isEqualToModelComparable:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly, copy) NSString *description;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

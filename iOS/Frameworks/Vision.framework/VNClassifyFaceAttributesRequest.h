@@ -12,9 +12,11 @@
 {
 }
 
-+ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
-+ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
++ (id)supportedPrivateRevisions;
++ (const CDStruct_d47b9615 *)dependentRequestCompatibility;
 + (const CDStruct_7d93034e *)revisionAvailability;
+- (_Bool)resultsAreAssignedWithOriginatingRequestSpecifier;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 
@@ -23,6 +25,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(copy, nonatomic) NSArray *inputFaceObservations;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

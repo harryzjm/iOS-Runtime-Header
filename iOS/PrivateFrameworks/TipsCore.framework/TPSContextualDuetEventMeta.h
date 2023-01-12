@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString;
 
 @interface TPSContextualDuetEventMeta
 {
     NSString *_context;
+    NSDictionary *_userInfo;
     NSString *_domain;
     NSString *_intentVerb;
     NSString *_intentClass;
@@ -16,7 +17,6 @@
     NSNumber *_donatedBySiri;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSNumber *donatedBySiri; // @synthesize donatedBySiri=_donatedBySiri;
@@ -24,6 +24,7 @@
 @property(copy, nonatomic) NSString *intentClass; // @synthesize intentClass=_intentClass;
 @property(copy, nonatomic) NSString *intentVerb; // @synthesize intentVerb=_intentVerb;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(copy, nonatomic) NSString *context; // @synthesize context=_context;
 - (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -5,12 +5,14 @@
 //
 
 #import <PencilKit/NSObject-Protocol.h>
+#import <PencilKit/PKPalettePopoverPresenting-Protocol.h>
 
-@class PKPaletteToolPickerView;
+@class PKPaletteToolPickerView, PKPaletteToolView;
 
-@protocol PKPaletteToolPickerViewDelegate <NSObject>
+@protocol PKPaletteToolPickerViewDelegate <NSObject, PKPalettePopoverPresenting>
+- (double)toolPickerView:(PKPaletteToolPickerView *)arg1 widthForToolAtIndex:(long long)arg2 isCompactSize:(_Bool)arg3;
 - (void)toolPickerViewDidChangeTraitCollectionSizeClass:(PKPaletteToolPickerView *)arg1;
 - (void)toolPickerDidToggleRulerTool:(PKPaletteToolPickerView *)arg1;
-- (void)toolPickerDidChangeSelectedTool:(PKPaletteToolPickerView *)arg1;
+- (void)toolPicker:(PKPaletteToolPickerView *)arg1 didSelectTool:(PKPaletteToolView *)arg2 atIndex:(unsigned long long)arg3;
 @end
 

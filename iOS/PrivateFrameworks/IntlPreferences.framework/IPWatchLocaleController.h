@@ -20,6 +20,7 @@
 @property(retain, nonatomic) NPSManager *syncManager; // @synthesize syncManager=_syncManager;
 @property(retain, nonatomic) NPSDomainAccessor *gizmoGlobalDomain; // @synthesize gizmoGlobalDomain=_gizmoGlobalDomain;
 - (void)mirrorLanguagesAndLocaleToWatch;
+- (_Bool)isMirroringEnabled;
 - (void)initializeMirrorSettings;
 - (void)setLocale:(id)arg1;
 - (void)resetTimeFormat;

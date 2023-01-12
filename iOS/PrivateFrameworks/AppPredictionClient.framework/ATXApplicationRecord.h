@@ -10,14 +10,20 @@
 {
 }
 
++ (_Bool)isDeviceManagementPolicyOkForBundleId:(id)arg1;
++ (_Bool)isInternalOrSystemAppForBundleId:(id)arg1;
++ (_Bool)isSystemAppForBundleId:(id)arg1;
 + (_Bool)isAppClipGivenAppRecord:(id)arg1;
 + (id)parentAppBundleIdForClipBundleID:(id)arg1;
++ (_Bool)isAppClipWebClipBundleId:(id)arg1;
 + (_Bool)isAppClipForBundleId:(id)arg1;
 + (id)bundleIdForAdamIdIfInstalled:(unsigned long long)arg1;
 + (id)recordForAdamId:(unsigned long long)arg1;
 + (id)schemaWithoutFallbackForBundle:(id)arg1;
 + (id)appInfoForBundle:(id)arg1;
 + (void)getDeviceManagementPolicyForBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (_Bool)isRestoreInstallTypeForBundle:(id)arg1;
++ (id)registrationDateForBundle:(id)arg1;
 + (id)genreForBundle:(id)arg1;
 + (_Bool)isBetaAppForBundle:(id)arg1;
 + (_Bool)isUPPValidatedForBundle:(id)arg1;
@@ -25,6 +31,7 @@
 + (_Bool)isArcadeAppForBundle:(id)arg1;
 + (_Bool)isLaunchProhibitedForBundle:(id)arg1;
 + (id)localizedNameForBundle:(id)arg1;
++ (id)localizedShortnameForBundle:(id)arg1;
 + (_Bool)isInstalledForBundle:(id)arg1;
 + (_Bool)isOffloadedForBundle:(id)arg1;
 + (_Bool)isInstallingForBundle:(id)arg1;

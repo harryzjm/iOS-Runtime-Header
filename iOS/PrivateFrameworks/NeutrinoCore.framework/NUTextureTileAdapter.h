@@ -8,17 +8,18 @@
 
 #import <NeutrinoCore/NUTextureTile-Protocol.h>
 
-@class NSString, NUGLTexture;
+@class NSString;
+@protocol MTLTexture;
 
 @interface NUTextureTileAdapter : NSObject <NUTextureTile>
 {
-    NUGLTexture *_texture;
+    id <MTLTexture> _texture;
     CDStruct_996ac03c _frameRect;
     CDStruct_996ac03c _contentRect;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NUGLTexture *texture; // @synthesize texture=_texture;
+@property(readonly, nonatomic) id <MTLTexture> texture; // @synthesize texture=_texture;
 @property(readonly, nonatomic) CDStruct_996ac03c contentRect; // @synthesize contentRect=_contentRect;
 @property(readonly, nonatomic) CDStruct_996ac03c frameRect; // @synthesize frameRect=_frameRect;
 - (int)useCount;
@@ -26,6 +27,7 @@
 - (void)incrementUseCount;
 - (_Bool)isInUse;
 - (_Bool)isShared;
+- (id)_surface;
 - (id)init;
 - (id)initWithFrameRect:(CDStruct_996ac03c)arg1 contentRect:(CDStruct_996ac03c)arg2 texture:(id)arg3;
 

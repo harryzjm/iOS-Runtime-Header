@@ -16,6 +16,9 @@
 }
 
 - (void).cxx_destruct;
+- (id)_sanitizeRelevanceScore:(id)arg1;
+- (unsigned long long)_interruptionLevelForString:(id)arg1;
+- (id)_sanitizeInterruptionLevelString:(id)arg1;
 - (id)_sanitizeUnsignedInteger:(id)arg1;
 - (id)_sanitizeVolume:(id)arg1;
 - (id)_sanitizeFlag:(id)arg1;

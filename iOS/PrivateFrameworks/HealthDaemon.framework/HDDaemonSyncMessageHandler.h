@@ -26,12 +26,11 @@
     NSError *_sendChangesError;
 }
 
-+ (long long)_sendChanges:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSError *sendChangesError; // @synthesize sendChangesError=_sendChangesError;
 @property(readonly, nonatomic) long long sendChangesStatus; // @synthesize sendChangesStatus=_sendChangesStatus;
 @property(readonly, nonatomic) long long currentAnchor; // @synthesize currentAnchor=_currentAnchor;
-- (_Bool)_sendChangesWithError:(id *)arg1;
+- (_Bool)sendCodableChange:(id)arg1 version:(CDStruct_c12fb951)arg2 resultAnchor:(long long)arg3 sequence:(long long)arg4 done:(_Bool)arg5 error:(id *)arg6;
 - (_Bool)sendCodableChange:(id)arg1 resultAnchor:(long long)arg2 sequence:(long long)arg3 done:(_Bool)arg4 error:(id *)arg5;
 - (id)description;
 - (void)dealloc;

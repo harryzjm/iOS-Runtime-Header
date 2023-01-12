@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface MRAVOutputContextModification : NSObject
 {
+    _Bool _shouldFadeAudio;
     unsigned long long _modificationType;
     NSArray *_concreteOutputDevices;
     NSArray *_outputDevices;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldFadeAudio; // @synthesize shouldFadeAudio=_shouldFadeAudio;
 @property(copy, nonatomic) NSString *initiator; // @synthesize initiator=_initiator;
 @property(copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property(readonly, nonatomic) NSArray *avOutputDevices; // @synthesize avOutputDevices=_avOutputDevices;

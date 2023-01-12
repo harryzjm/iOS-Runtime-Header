@@ -11,6 +11,7 @@
 - (void)hibernate;
 - (void)warmUp;
 - (void)unloadLexicons;
+- (NSArray *)loadLexicons;
 - (NSArray *)loadLexiconsUsingFilter:(NSString * (^)(NSString *))arg1;
 - (NSArray *)loadLexicons:(NSString * (^)(NSString *))arg1;
 - (void)removeContactObserver:(void (^)(NSDictionary *))arg1;

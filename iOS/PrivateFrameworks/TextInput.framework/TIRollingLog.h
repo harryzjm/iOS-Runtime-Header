@@ -19,6 +19,8 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long maxCount; // @synthesize maxCount=_maxCount;
+@property(readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
 @property(readonly, nonatomic) NSArray *currentEntries;
 - (void)addEntries:(id)arg1;
 - (void)addEntry:(id)arg1;

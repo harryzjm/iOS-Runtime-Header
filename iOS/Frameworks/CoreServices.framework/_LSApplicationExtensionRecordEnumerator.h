@@ -13,11 +13,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _options;
     CDUnknownBlockType _filterBlock;
     LSPropertyList *_propertyList;
-    vector_12da65de _plugins;
+    struct vector<unsigned int, std::allocator<unsigned int>> _plugins;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
 - (id)initWithExtensionPointIdentifier:(id)arg1 options:(unsigned long long)arg2 filter:(CDUnknownBlockType)arg3;

@@ -14,6 +14,7 @@
 @interface PKPhysicalCard : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
+    NSString *_accountUserAltDSID;
     unsigned long long _state;
     NSString *_FPANSuffix;
     NSURL *_frontFaceImageURL;
@@ -23,12 +24,15 @@
     NSString *_shippingCompany;
     NSSet *_orderActivity;
     NSSet *_shippingActivity;
+    NSString *_activationCodeHash;
     PKImage *_frontFaceImage;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)physicalCard:(id)arg1 matchesActivationCode:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PKImage *frontFaceImage; // @synthesize frontFaceImage=_frontFaceImage;
+@property(copy, nonatomic) NSString *activationCodeHash; // @synthesize activationCodeHash=_activationCodeHash;
 @property(copy, nonatomic) NSSet *shippingActivity; // @synthesize shippingActivity=_shippingActivity;
 @property(copy, nonatomic) NSSet *orderActivity; // @synthesize orderActivity=_orderActivity;
 @property(copy, nonatomic) NSString *shippingCompany; // @synthesize shippingCompany=_shippingCompany;
@@ -38,6 +42,7 @@
 @property(copy, nonatomic) NSURL *frontFaceImageURL; // @synthesize frontFaceImageURL=_frontFaceImageURL;
 @property(copy, nonatomic) NSString *FPANSuffix; // @synthesize FPANSuffix=_FPANSuffix;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
+@property(copy, nonatomic) NSString *accountUserAltDSID; // @synthesize accountUserAltDSID=_accountUserAltDSID;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)shipmentTrackingURL;
 - (id)jsonDictionaryRepresentation;

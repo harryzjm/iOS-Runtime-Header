@@ -5,29 +5,31 @@
 //
 
 #import <HomeAI/HMFLogging-Protocol.h>
+#import <HomeAI/HMIVideoFrameSamplerDelegate-Protocol.h>
 
-@class MovingAverage, NSString, NSUUID;
-@protocol HMIVideoFrameAnalyzerDelegate;
+@class HMIVideoFrameSampler, MovingAverage, NSString;
+@protocol HMICameraVideoFrameAnalyzer, HMIVideoFrameAnalyzerDelegate;
 
-@interface HMIVideoFrameAnalyzer <HMFLogging>
+@interface HMIVideoFrameAnalyzer <HMIVideoFrameSamplerDelegate, HMFLogging>
 {
     MovingAverage *_analysisTime;
-    _Bool _recognizeFaces;
     id <HMIVideoFrameAnalyzerDelegate> _delegate;
-    NSUUID *_sessionIdentifier;
-    NSUUID *_homeUUID;
+    id <HMICameraVideoFrameAnalyzer> _cameraVideoFrameAnalyzer;
+    HMIVideoFrameSampler *_frameSampler;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(retain) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
-@property _Bool recognizeFaces; // @synthesize recognizeFaces=_recognizeFaces;
-@property(readonly) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property(retain) HMIVideoFrameSampler *frameSampler; // @synthesize frameSampler=_frameSampler;
+@property(readonly) id <HMICameraVideoFrameAnalyzer> cameraVideoFrameAnalyzer; // @synthesize cameraVideoFrameAnalyzer=_cameraVideoFrameAnalyzer;
 @property __weak id <HMIVideoFrameAnalyzerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)flush;
+- (void)frameSampler:(id)arg1 didSampleFrame:(struct opaqueCMSampleBuffer *)arg2;
 @property(readonly) double averageAnalysisTime;
+- (void)handleMotionDetection:(id)arg1 inFrame:(struct opaqueCMSampleBuffer *)arg2;
 - (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (_Bool)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 motionDetections:(id)arg2;
-- (id)init;
+- (_Bool)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 motionDetections:(id)arg2 motionScore:(double)arg3;
+- (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

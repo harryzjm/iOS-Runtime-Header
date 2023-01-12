@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, QLAppearance, QLKeyCommand, QLTransitionContext, UITraitCollection;
+@class NSDictionary, NSString, QLAppearance, QLKeyCommand, QLTransitionContext, UITraitCollection;
 @protocol QLPreviewControllerStateProtocol, QLPreviewItemProvider, QLTransitionControllerProtocol;
 
 @protocol QLPreviewCollectionProtocol
 - (void)saveCurrentPreviewEditsSynchronously:(_Bool)arg1 withCompletionHandler:(void (^)(unsigned long long, QLPreviewItemEditedCopy *))arg2;
 - (void)setIsContentManaged:(_Bool)arg1;
+- (void)actionSheetDidDismiss;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(void (^)(void))arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)invalidateService;
@@ -18,10 +19,14 @@
 - (void)setLoadingString:(NSString *)arg1;
 - (void)tearDownTransition:(_Bool)arg1;
 - (void)startTransitionWithSourceViewProvider:(QLTransitionContext *)arg1 transitionController:(id <QLTransitionControllerProtocol>)arg2 presenting:(_Bool)arg3 useInteractiveTransition:(_Bool)arg4 completionHandler:(void (^)(void))arg5;
+- (void)getCurrentPreviewActivityUserInfoWithCompletionHandler:(void (^)(NSDictionary *))arg1;
+- (void)notifyStateRestorationUserInfo:(NSDictionary *)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)setAppearance:(QLAppearance *)arg1 animated:(_Bool)arg2;
 - (void)keyCommandWasPerformed:(QLKeyCommand *)arg1;
 - (void)keyCommandsWithCompletionHandler:(void (^)(NSArray *))arg1;
+- (void)requestLockForCurrentItem;
+- (void)shouldDisplayLockActivityWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)toolbarButtonPressedWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)toolbarButtonsForTraitCollection:(UITraitCollection *)arg1 withCompletionHandler:(void (^)(NSArray *, NSArray *))arg2;
 - (void)hostApplicationDidBecomeActive;

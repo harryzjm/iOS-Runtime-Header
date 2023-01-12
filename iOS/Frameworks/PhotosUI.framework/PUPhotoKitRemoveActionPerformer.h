@@ -21,10 +21,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDictionary *fetchResultsByAssetCollection; // @synthesize fetchResultsByAssetCollection=_fetchResultsByAssetCollection;
 - (_Bool)assetActionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)assetActionPerformer:(id)arg1 presentViewController:(id)arg2;
-- (_Bool)shouldShowConfirmation;
 - (void)performBackgroundTask;
 - (void)_performTrashTask;
 - (void)performUserInteractionTask;
+@property(readonly, nonatomic) _Bool shouldShowConfirmation;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

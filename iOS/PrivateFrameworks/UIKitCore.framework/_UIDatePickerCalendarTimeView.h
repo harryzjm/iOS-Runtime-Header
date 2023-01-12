@@ -5,85 +5,61 @@
 //
 
 #import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <UIKitCore/_UIDatePickerCalendarTimeLabelDelegate-Protocol.h>
-#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UIDatePickerCompactTimeLabelDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSDateFormatter, NSLocale, NSString, UILabel, UISegmentedControl, _UIDatePickerCalendarTime, _UIDatePickerCalendarTimeFormat, _UIDatePickerCalendarTimeLabel, _UIDatePickerNumericKeyboardViewController, _UIPassthroughScrollInteraction;
+@class NSArray, NSCalendar, NSLocale, NSString, UILabel, _UIDatePickerCalendarTime, _UIDatePickerCompactTimeLabel, _UIDatePickerOverlayPresentation;
 @protocol _UIDatePickerCalendarTimeViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerCalendarTimeView <_UIDatePickerCalendarTimeLabelDelegate, UIPopoverPresentationControllerDelegate, _UIPassthroughScrollInteractionDelegate>
+@interface _UIDatePickerCalendarTimeView <_UIDatePickerCompactTimeLabelDelegate, UIPopoverPresentationControllerDelegate>
 {
     struct {
-        unsigned int isPendingManualKeyboardPresentation:1;
-        unsigned int isPresentingManualKeyboard:1;
-        unsigned int needsLabelUpdateOnResignFirstResponder:1;
         unsigned int showsTimeLabel:1;
     } _flags;
-    NSDateFormatter *_formatter;
-    long long _currentLayout;
     NSArray *_clockLayoutConstraints;
-    _UIPassthroughScrollInteraction *_passthroughInteraction;
+    _UIDatePickerOverlayPresentation *_presentation;
+    _Bool _roundsToMinuteInterval;
     _Bool _shouldShowTimeLabel;
     id <_UIDatePickerCalendarTimeViewDelegate> _delegate;
     NSCalendar *_calendar;
     NSLocale *_locale;
     NSString *_customFontDesign;
+    long long _minuteInterval;
     _UIDatePickerCalendarTime *_selectedTime;
     UILabel *_timeLabel;
-    _UIDatePickerCalendarTimeLabel *_timeTextField;
-    UISegmentedControl *_timeOfDaySelector;
-    _UIDatePickerNumericKeyboardViewController *_numericKeyboardViewController;
-    _UIDatePickerCalendarTimeFormat *_timeFormat;
+    _UIDatePickerCompactTimeLabel *_timeTextField;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) _UIDatePickerCalendarTimeFormat *timeFormat; // @synthesize timeFormat=_timeFormat;
-@property(retain, nonatomic) _UIDatePickerNumericKeyboardViewController *numericKeyboardViewController; // @synthesize numericKeyboardViewController=_numericKeyboardViewController;
-@property(readonly, nonatomic) UISegmentedControl *timeOfDaySelector; // @synthesize timeOfDaySelector=_timeOfDaySelector;
-@property(readonly, nonatomic) _UIDatePickerCalendarTimeLabel *timeTextField; // @synthesize timeTextField=_timeTextField;
+@property(readonly, nonatomic) _UIDatePickerCompactTimeLabel *timeTextField; // @synthesize timeTextField=_timeTextField;
 @property(readonly, nonatomic) UILabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property(nonatomic) _Bool shouldShowTimeLabel; // @synthesize shouldShowTimeLabel=_shouldShowTimeLabel;
-@property(retain, nonatomic) _UIDatePickerCalendarTime *selectedTime; // @synthesize selectedTime=_selectedTime;
+@property(readonly, nonatomic) _UIDatePickerCalendarTime *selectedTime; // @synthesize selectedTime=_selectedTime;
+@property(nonatomic) _Bool roundsToMinuteInterval; // @synthesize roundsToMinuteInterval=_roundsToMinuteInterval;
+@property(nonatomic) long long minuteInterval; // @synthesize minuteInterval=_minuteInterval;
 @property(retain, nonatomic) NSString *customFontDesign; // @synthesize customFontDesign=_customFontDesign;
 @property(readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property(readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(nonatomic) __weak id <_UIDatePickerCalendarTimeViewDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)passthroughScrollInteractionDidRecognize:(id)arg1;
-- (_Bool)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
-@property(nonatomic, getter=isPassthroughInteractionEnabled) _Bool passthroughInteractionEnabled;
-- (void)_updateTextFieldsFromSelectedDateComponents;
-- (void)_updateSelectedDateComponentsFromTextFields;
-- (void)_notifyDelegate;
-- (void)_dismissManualKeyboard;
-- (void)presentationControllerWillDismiss:(id)arg1;
-- (void)timeLabelDidEndEditing:(id)arg1;
-- (void)timeLabelDidBeginEditing:(id)arg1;
-- (void)timeLabelDidResignFirstResponder:(id)arg1;
-- (void)timeLabelDidFailToBecomeFirstResponder:(id)arg1;
-- (void)timeLabelDidBecomeFirstResponder:(id)arg1;
-- (void)timeLabelWillBecomeFirstResponder:(id)arg1;
-- (_Bool)timeLabelShouldSuppressSoftwareKeyboard:(id)arg1;
-- (long long)keyboardTypeForTimeLabel:(id)arg1;
-- (void)timeLabel:(id)arg1 didUpdateText:(id)arg2;
-- (_Bool)timeLabel:(id)arg1 didReceiveText:(id)arg2;
-- (void)didUpdateTimeOfDayValue:(id)arg1;
+- (id)createDatePickerForCompactTimeLabel:(id)arg1;
+- (_Bool)compactTimeLabel:(id)arg1 shouldDismissForInteractionAtLocation:(struct CGPoint)arg2;
+- (void)compactTimeLabelDidEndEditing:(id)arg1;
+- (void)compactTimeLabelDidBeginEditing:(id)arg1;
+- (void)compactTimeLabelWillBecomeFirstResponder:(id)arg1;
+- (void)compactTimeLabel:(id)arg1 didSelectTime:(id)arg2;
 - (void)_updateFonts;
 - (void)traitCollectionDidChange:(id)arg1;
-@property(nonatomic) long long minuteInterval;
-- (void)reloadWithCalendar:(id)arg1 locale:(id)arg2 selectedTime:(id)arg3;
+- (void)setSelectedDate:(id)arg1;
+- (void)_updateTextFieldsFromSelectedDateComponents;
+- (void)reloadWithCalendar:(id)arg1 locale:(id)arg2 selectedDate:(id)arg3;
 - (void)_reload;
-- (void)_reloadTimeOfDaySelector;
 - (void)_reloadDateFormatters;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)primaryFirstResponder;
 - (void)_updateClockLayout;
 - (void)_setupViewHierarchy;
-- (void)_setupDateFormatter;
-- (void)_disableCustomKeyboardIfNecessary;
-- (void)_enableCustomKeyboardIfNecessary;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImage;
+@class NSString, UIImage;
 @protocol TSProcessedImageRequestType;
 
 @protocol TSImageCacheType
+- (void)cancelAllRunningOperations;
+- (void)cacheImageToDiskWithCacheIdentifier:(NSString *)arg1;
 - (void)setImage:(UIImage *)arg1 forRequest:(id <TSProcessedImageRequestType>)arg2;
 - (UIImage *)fetchImageForRequest:(id <TSProcessedImageRequestType>)arg1;
+- (void)fetchImageForRequest:(id <TSProcessedImageRequestType>)arg1 expires:(_Bool)arg2 completion:(void (^)(UIImage *, NSError *))arg3;
 - (void)fetchImageForRequest:(id <TSProcessedImageRequestType>)arg1 completion:(void (^)(UIImage *, NSError *))arg2;
 @end
 

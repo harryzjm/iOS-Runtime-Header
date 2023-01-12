@@ -14,11 +14,7 @@
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (_Bool)_axShowsSourceViewDirectly;
 - (long long)accessibilityContainerType;
-- (void)_axSetCachedPlatterElements:(id)arg1;
-- (id)_axCachedPlatterElements;
-@property(nonatomic, setter=_accessibilitySetIsExpandedTransformView:) _Bool _accessibilityIsExpandedTransformView;
 
 @end
 

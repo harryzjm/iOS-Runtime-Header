@@ -12,22 +12,25 @@
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 
 // Remaining properties
-@property(copy, nonatomic) SearchAttributes *attributes; // @dynamic attributes;
-@property(copy, nonatomic) NSString *episodeNumber; // @dynamic episodeNumber;
+@property(nonatomic, retain) SearchAttributes *attributes; // @dynamic attributes;
+@property(nonatomic, copy) NSString *episodeNumber; // @dynamic episodeNumber;
 @property(nonatomic) long long episodeReference; // @dynamic episodeReference;
-@property(copy, nonatomic) NSString *genre; // @dynamic genre;
-@property(copy, nonatomic) NSNumber *itemLimit; // @dynamic itemLimit;
-@property(copy, nonatomic) NSString *name; // @dynamic name;
-@property(copy, nonatomic) NSNumber *recommendedAge; // @dynamic recommendedAge;
-@property(copy, nonatomic) INDateComponentsRange *releaseDateRange; // @dynamic releaseDateRange;
-@property(copy, nonatomic) NSArray *roles; // @dynamic roles;
-@property(copy, nonatomic) NSString *seasonNumber; // @dynamic seasonNumber;
+@property(nonatomic, copy) NSString *genre; // @dynamic genre;
+@property(nonatomic, retain) NSNumber *itemLimit; // @dynamic itemLimit;
+@property(nonatomic, copy) NSString *name; // @dynamic name;
+@property(nonatomic, retain) NSNumber *recommendedAge; // @dynamic recommendedAge;
+@property(nonatomic, retain) INDateComponentsRange *releaseDateRange; // @dynamic releaseDateRange;
+@property(nonatomic, copy) NSArray *roles; // @dynamic roles;
+@property(nonatomic, copy) NSString *seasonNumber; // @dynamic seasonNumber;
 @property(nonatomic) long long seasonReference; // @dynamic seasonReference;
 @property(nonatomic) long long sort; // @dynamic sort;
-@property(copy, nonatomic) NSString *studio; // @dynamic studio;
+@property(nonatomic, copy) NSString *studio; // @dynamic studio;
 @property(nonatomic) long long type; // @dynamic type;
-@property(copy, nonatomic) NSString *umcId; // @dynamic umcId;
+@property(nonatomic, copy) NSString *umcId; // @dynamic umcId;
+
 @end
 

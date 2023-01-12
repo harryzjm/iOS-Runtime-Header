@@ -7,6 +7,10 @@
 @class RemoteUIWebViewController;
 
 @protocol RemoteUIWebViewControllerDelegate
+
+@optional
+- (void)remoteUIWebViewControllerDidDismiss:(RemoteUIWebViewController *)arg1;
+- (void)remoteUIWebViewController:(RemoteUIWebViewController *)arg1 dismissWithPayload:(id)arg2;
 - (void)remoteUIWebViewControllerDonePressed:(RemoteUIWebViewController *)arg1;
 @end
 

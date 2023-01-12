@@ -8,21 +8,19 @@
 
 @protocol SASPresentationServerInterface
 - (oneway void)ping;
-- (oneway void)pocketStateFetchDeterminedShouldCancelWake:(NSNumber *)arg1;
+- (oneway void)activationDeterminedShouldDeferWake:(NSNumber *)arg1;
 - (oneway void)deviceWonMyriadElection;
 - (oneway void)bulletinManagerDidChangeBulletins;
-- (oneway void)updateActiveInterfaceOrientation:(NSNumber *)arg1 willAnimationWithDuration:(SASTimeIntervalTransport *)arg2;
 - (oneway void)updateCurrentLockState:(SiriUILockStateTransport *)arg1;
 - (oneway void)handleButtonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
 - (oneway void)handleButtonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
 - (oneway void)handleButtonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
 - (oneway void)handleButtonDownFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
 - (_Bool)handleTestingActivation:(SASActivationRequest *)arg1;
-- (oneway void)wakeScreenAfterActivation;
+- (oneway void)wakeScreenAfterActivationWithReason:(NSString *)arg1;
 - (oneway void)cancelPendingActivationEventWithReason:(SiriPresentationActivationCancelReasonTransport *)arg1;
 - (oneway void)cancelPreheat;
 - (oneway void)preheat;
-- (oneway void)cancelTTS;
 - (_Bool)presentationisIdleAndQuiet;
 - (oneway void)handleRequestWithOptions:(SASRequestOptions *)arg1;
 - (oneway void)presentationDismissalRequestedWithOptions:(SiriDismissalOptions *)arg1;

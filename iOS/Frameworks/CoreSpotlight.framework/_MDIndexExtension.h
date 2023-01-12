@@ -16,6 +16,7 @@
     NSString *_containerID;
     NSSet *_identifiers;
     NSSet *_supportedFileTypes;
+    NSString *_extensionLabel;
     NSExtension *_extension;
     NSString *_containerPath;
     NSString *_extensionID;
@@ -26,6 +27,7 @@
 @property(retain, nonatomic) NSString *extensionID; // @synthesize extensionID=_extensionID;
 @property(retain, nonatomic) NSString *containerPath; // @synthesize containerPath=_containerPath;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property(readonly) NSString *extensionLabel; // @synthesize extensionLabel=_extensionLabel;
 @property(copy) NSSet *supportedFileTypes; // @synthesize supportedFileTypes=_supportedFileTypes;
 @property(copy) NSSet *identifiers; // @synthesize identifiers=_identifiers;
 @property(retain, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
@@ -38,7 +40,7 @@
 @property(readonly) NSDictionary *infoDictionary;
 @property(readonly) _Bool isEnabled;
 - (id)description;
-- (id)initWithExtension:(id)arg1 queue:(id)arg2 containerPath:(id)arg3 containerID:(id)arg4 supportedFileTypes:(id)arg5;
+- (id)initWithExtension:(id)arg1 queue:(id)arg2 containerPath:(id)arg3 containerID:(id)arg4 supportedFileTypes:(id)arg5 extensionLabel:(id)arg6;
 - (id)initWithExtension:(id)arg1 queue:(id)arg2 containerPath:(id)arg3 containerID:(id)arg4;
 
 @end

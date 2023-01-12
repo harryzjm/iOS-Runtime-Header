@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDateComponents, NSLock, NSMutableDictionary, NSSet;
+@class NSDate, NSDateComponents, NSMutableDictionary, NSSet;
 
 @interface HKStatisticsCollection : NSObject
 {
@@ -14,7 +14,7 @@
     double _approximateStatisticsInterval;
     NSMutableDictionary *_statisticsByIndex;
     NSSet *_cachedSources;
-    NSLock *_statisticsLock;
+    struct os_unfair_lock_s _lock;
     NSDate *_anchorDate;
     NSDateComponents *_statisticsInterval;
 }
@@ -28,6 +28,7 @@
 - (void)_timePeriodForStatisticsAtIndex:(long long)arg1 startDate:(id *)arg2 endDate:(id *)arg3;
 - (id)_statisticsForIndex:(long long)arg1;
 - (id)_statisticsForLastIndex;
+- (void)enumeratePopulatedStatisticsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateTimePeriodsFromDate:(id)arg1 toDate:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)_resetStatistics:(id)arg1;
 - (_Bool)_insertStatistics:(id)arg1;
@@ -36,12 +37,15 @@
 - (id)_mostRecentQuantityStatistics;
 - (id)_minSumQuantityStatistics;
 - (id)_maxSumQuantityStatistics;
+@property(readonly, nonatomic) unsigned long long statisticsCount;
 - (id)sources;
 - (id)statistics;
 - (void)enumerateStatisticsFromDate:(id)arg1 toDate:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)statisticsForDate:(id)arg1;
 - (id)_initWithAnchorDate:(id)arg1 statisticsInterval:(id)arg2 emptyStatisticsConstructor:(CDUnknownBlockType)arg3;
+- (id)initWithAnchorDate:(id)arg1 statisticsInterval:(id)arg2 emptyStatisticsConstructor:(CDUnknownBlockType)arg3;
 - (id)_initWithAnchorDate:(id)arg1 statisticsInterval:(id)arg2;
+- (id)initWithAnchorDate:(id)arg1 statisticsInterval:(id)arg2;
 - (id)init;
 
 @end

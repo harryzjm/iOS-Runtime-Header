@@ -13,6 +13,5 @@
 - (id)plasticCardCachedImage:(CDUnknownBlockType)arg1;
 - (id)_getCardImageUrlFromMetadata:(id)arg1 forScale:(double)arg2;
 - (id)digitalCardCachedImage:(CDUnknownBlockType)arg1;
-- (void)_commonCachedImageFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

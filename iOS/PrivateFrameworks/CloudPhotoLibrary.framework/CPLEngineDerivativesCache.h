@@ -24,16 +24,16 @@
 - (void)generateDerivativesForChange:(id)arg1 derivativesFilter:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_checkGeneratedResources:(id)arg1 error:(id *)arg2;
 - (_Bool)_checkResource:(id)arg1 name:(id)arg2 error:(id *)arg3;
-- (void)_updateChange:(id *)arg1 fromOldChange:(id)arg2 withResources:(id)arg3 includeThumbnail:(_Bool)arg4;
+- (void)_updateChange:(id *)arg1 fromOldChange:(id)arg2 withResources:(id)arg3 excludeImages:(_Bool)arg4;
 - (_Bool)_isUnsupportedFormatError:(id)arg1;
-- (id)cachedResourcesForReferenceResource:(id)arg1 adjustment:(id)arg2;
-- (void)noteGeneratedResouces:(id)arg1 haveBeenGeneratedForReferenceResource:(id)arg2 adjustment:(id)arg3;
-- (id)tempFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2;
-- (id)_finalFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2;
-- (id)_tempFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2;
+- (id)cachedResourcesForReferenceResource:(id)arg1 adjustment:(id)arg2 includePosterFrame:(_Bool)arg3;
+- (void)noteGeneratedResouces:(id)arg1 haveBeenGeneratedForReferenceResource:(id)arg2 adjustment:(id)arg3 includePosterFrame:(_Bool)arg4;
+- (id)tempFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2 includePosterFrame:(_Bool)arg3;
+- (id)_finalFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2 includePosterFrame:(_Bool)arg3;
+- (id)_tempFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2 includePosterFrame:(_Bool)arg3;
 - (void)_createCacheFolderIfNecessary;
-- (id)_folderNameForReferenceResource:(id)arg1 adjustment:(id)arg2;
-- (id)_cacheKeyForReferenceResource:(id)arg1 adjustments:(id)arg2;
+- (id)_folderNameForReferenceResource:(id)arg1 adjustment:(id)arg2 includePosterFrame:(_Bool)arg3;
+- (id)_cacheKeyForReferenceResource:(id)arg1 adjustments:(id)arg2 includePosterFrame:(_Bool)arg3;
 - (void)discardCache;
 - (id)initWithCacheURL:(id)arg1;
 

@@ -18,10 +18,15 @@
     _Bool _hasCachedURL;
 }
 
++ (id)filterResults:(id)arg1 forTypes:(unsigned long long)arg2 referenceDate:(id)arg3 referenceTimeZone:(id)arg4;
++ (CDUnknownBlockType)shouldUrlifyBlockForTypes:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)resultsFromCoreResults:(struct __CFArray *)arg1;
 + (id)resultFromCoreResult:(struct __DDResult *)arg1;
 - (void).cxx_destruct;
+- (_Bool)getFlightNumber:(id *)arg1 airline:(id *)arg2;
+- (_Bool)getTrackingNumber:(id *)arg1 carrier:(id *)arg2;
+- (_Bool)getMoneyAmount:(double *)arg1 currency:(id *)arg2;
 @property(readonly, nonatomic) NSURL *url;
 - (void)offsetRangeBy:(long long)arg1;
 - (id)initWithCoder:(id)arg1;

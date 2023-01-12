@@ -23,6 +23,7 @@
     id <SBIconListLayout> _listLayout;
     SBHIconImageCache *_iconImageCache;
     CPMemoryPool *_pool;
+    CPMemoryPool *_miniGridImagePool;
 }
 
 + (_Bool)drawTreatmentForIcon:(id)arg1 inRect:(struct CGRect)arg2;
@@ -31,6 +32,7 @@
 + (id)gridCellImageOfSize:(struct CGSize)arg1 forIcon:(id)arg2 iconImageInfo:(struct SBIconImageInfo)arg3;
 + (id)imageForPageAtIndex:(unsigned long long)arg1 inFolderIcon:(id)arg2 listLayout:(id)arg3 gridCellImageProvider:(id)arg4 pool:(id)arg5;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CPMemoryPool *miniGridImagePool; // @synthesize miniGridImagePool=_miniGridImagePool;
 @property(readonly, nonatomic) CPMemoryPool *pool; // @synthesize pool=_pool;
 @property(retain, nonatomic) SBHIconImageCache *iconImageCache; // @synthesize iconImageCache=_iconImageCache;
 @property(readonly, nonatomic) id <SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
@@ -48,9 +50,10 @@
 @property(readonly, nonatomic) unsigned long long numberOfCacheMisses;
 @property(readonly, nonatomic) unsigned long long numberOfCacheHits;
 @property(readonly, nonatomic) unsigned long long numberOfCachedImages;
-- (void)updateCachedImagesForFolderIcon:(id)arg1 afterChangeToContainedImageForIcon:(id)arg2 treatmentsOnly:(_Bool)arg3;
+- (void)updateCachedImagesForFolderIcon:(id)arg1 afterChangeToContainedForIcon:(id)arg2 imageUpdated:(_Bool)arg3 treatmentsOnly:(_Bool)arg4;
 - (id)genericMiniGridImage;
 - (void)informObserversOfUpdateForFolderIcon:(id)arg1;
+- (void)cacheGridCellImagesForIcons:(id)arg1;
 - (void)rebuildImagesForFolderIcon:(id)arg1;
 - (id)gridCellImageForIcon:(id)arg1;
 - (id)imageForPageAtIndex:(unsigned long long)arg1 inFolderIcon:(id)arg2;

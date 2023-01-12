@@ -25,7 +25,6 @@
 - (id)description;
 - (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(_Bool)arg2 allowResizingBetweenModes:(_Bool)arg3 siriViewMode:(long long)arg4;
 - (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(_Bool)arg2;
-- (id)init;
 
 @end
 

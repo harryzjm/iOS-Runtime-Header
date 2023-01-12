@@ -29,6 +29,7 @@
 - (id)_iconForCacheKey:(id)arg1;
 - (void)_processNextRequest;
 - (id)snapshotForDisplayRegion:(CDStruct_2b0c6e0b)arg1 size:(struct CGSize)arg2 traitCollection:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)placeholderWithTraitCollection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

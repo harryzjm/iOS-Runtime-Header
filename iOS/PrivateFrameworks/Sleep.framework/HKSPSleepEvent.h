@@ -7,16 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <Sleep/BSDescriptionProviding-Protocol.h>
+#import <Sleep/HKSPDictionarySerializable-Protocol.h>
+#import <Sleep/HKSPXPCObject-Protocol.h>
 #import <Sleep/NAEquatable-Protocol.h>
 #import <Sleep/NAHashable-Protocol.h>
 #import <Sleep/NSCopying-Protocol.h>
 #import <Sleep/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
+@protocol HKSPSyncAnchor;
 
-@interface HKSPSleepEvent : NSObject <BSDescriptionProviding, NAEquatable, NAHashable, NSCopying, NSSecureCoding>
+@interface HKSPSleepEvent : NSObject <BSDescriptionProviding, NAEquatable, NAHashable, HKSPXPCObject, HKSPDictionarySerializable, NSCopying, NSSecureCoding>
 {
     _Bool _isUserVisible;
+    id <HKSPSyncAnchor> _syncAnchor;
     NSString *_identifier;
     NSDate *_dueDate;
     unsigned long long _type;
@@ -37,6 +41,7 @@
 @property(readonly, nonatomic) _Bool isUserVisible; // @synthesize isUserVisible=_isUserVisible;
 @property(readonly, nonatomic) NSDate *dueDate; // @synthesize dueDate=_dueDate;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) id <HKSPSyncAnchor> syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -47,6 +52,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (long long)compare:(id)arg1;
+- (id)objectWithSyncAnchor:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isExpired:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 dueDate:(id)arg2 type:(unsigned long long)arg3 expirationDate:(id)arg4 isUserVisible:(_Bool)arg5;

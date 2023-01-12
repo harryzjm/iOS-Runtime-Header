@@ -29,7 +29,6 @@
     UIGestureRecognizer *_singleTapGestureRecognizer;
     UIGestureRecognizer *_doubleTapGestureRecognizer;
     id <PLPhotoTileViewControllerDelegate> _tileDelegate;
-    int _imageOrientation;
     struct CGSize _imageSize;
     struct CGRect _tileFrame;
     _Bool _zoomToFillInsteadOfToFit;
@@ -72,6 +71,7 @@
     unsigned int _useZoomScaleForCropRect:1;
     unsigned int _avalancheBadgeShouldBeHidden:1;
     unsigned int _badgeShouldBeVisible:1;
+    int _imageOrientation;
     PLTileContainerView *_containerView;
     PHCachingImageManager *__cachingImageManager;
     int _fullSizeImageRequestID;

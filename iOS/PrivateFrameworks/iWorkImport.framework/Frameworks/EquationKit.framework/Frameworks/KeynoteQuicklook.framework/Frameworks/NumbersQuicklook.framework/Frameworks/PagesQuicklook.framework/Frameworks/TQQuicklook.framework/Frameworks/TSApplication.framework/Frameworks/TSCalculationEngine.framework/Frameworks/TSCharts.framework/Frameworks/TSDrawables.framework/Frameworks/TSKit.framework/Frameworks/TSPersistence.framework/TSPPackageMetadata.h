@@ -17,10 +17,11 @@
 - (long long)tsp_identifier;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)packageMetadataDataInfosWithDecryptionKey:(id)arg1;
 - (id)dataMetadataForDataIdentifier:(long long)arg1;
 - (void)setDataMetadata:(id)arg1 forDataIdentifier:(long long)arg2;
 - (id)packageLocator;
-- (struct PackageMetadata *)message;
+- (void *)message;
 - (id)initWithContext:(id)arg1;
 
 @end

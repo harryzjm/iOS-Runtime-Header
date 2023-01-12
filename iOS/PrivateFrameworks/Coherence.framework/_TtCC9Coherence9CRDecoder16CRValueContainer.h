@@ -10,8 +10,7 @@
 
 @interface _TtCC9Coherence9CRDecoder16CRValueContainer : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *value;
-    MISSING_TYPE *decodeContext;
+    MISSING_TYPE *decoder;
 }
 
 @end

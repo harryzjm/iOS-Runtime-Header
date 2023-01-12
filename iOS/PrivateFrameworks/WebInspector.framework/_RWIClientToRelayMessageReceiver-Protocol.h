@@ -20,6 +20,7 @@
 - (void)_rpc_forwardSocketSetup:(NSDictionary *)arg1;
 - (void)_rpc_forwardSocketData:(NSDictionary *)arg1;
 - (void)_rpc_forwardIndicateWebView:(NSDictionary *)arg1;
+- (void)_rpc_forwardWakeUpDebuggables:(NSDictionary *)arg1;
 - (void)_rpc_forwardGetListing:(NSDictionary *)arg1;
 - (void)_rpc_forwardDidClose:(NSDictionary *)arg1;
 - (void)_rpc_reportIdentifier:(NSDictionary *)arg1;

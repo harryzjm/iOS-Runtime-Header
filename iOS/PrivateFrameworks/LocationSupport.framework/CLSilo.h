@@ -8,11 +8,16 @@
 
 #import <LocationSupport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableSet, NSString;
 
 @interface CLSilo : NSObject <NSCopying>
 {
     NSString *_identifier;
+    _Bool _isIdle;
+    double _lastIdleCheck;
+    NSMutableSet *_idleHandlers;
+    struct os_unfair_lock_s _idleHandlersLock;
+    double _currentLatchedAbsoluteTimestamp;
 }
 
 + (id)globalConfiguration;
@@ -20,10 +25,17 @@
 + (id)main;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void)runResumeHandlers;
+- (void)runIdleHandlers;
+- (void)unregisterForIdleNotifications:(id)arg1;
+- (id)registerForIdleNotifications:(CDUnknownBlockType)arg1 onResume:(CDUnknownBlockType)arg2;
+- (_Bool)shouldBeIdled;
+- (void)heartBeat:(id)arg1;
 - (void)afterInterval:(double)arg1 async:(CDUnknownBlockType)arg2;
 - (void)sync:(CDUnknownBlockType)arg1;
 - (void)async:(CDUnknownBlockType)arg1;
 - (id)newTimer;
+- (void)prepareAndRunBlock:(CDUnknownBlockType)arg1;
 - (double)currentLatchedAbsoluteTimestamp;
 - (_Bool)isSuspended;
 - (void)resume;

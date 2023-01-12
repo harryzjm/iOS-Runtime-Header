@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface boringssl_concrete_boringssl_session_state : NSObject <OS_boringssl_session_state>
 {
+    unsigned char cached_content_type;
     unsigned char used_extended_master_secret;
     union sockaddr_in_4_6 remote_address;
     char *serialized_session;

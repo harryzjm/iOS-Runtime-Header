@@ -36,6 +36,7 @@
 - (id)initWithPredicate:(id)arg1;
 - (id)init;
 - (id)contactsFromDonationStore:(id)arg1;
+- (void)_cn_acceptVisitor:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

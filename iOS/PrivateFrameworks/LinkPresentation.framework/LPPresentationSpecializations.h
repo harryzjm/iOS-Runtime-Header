@@ -10,6 +10,8 @@
 {
 }
 
++ (id)URLToOpenForURL:(id)arg1;
++ (id)businessChatURLToOpenForURL:(id)arg1;
 + (id)articleTitleFromTitle:(id)arg1 withURL:(id)arg2;
 + (id)userAgentForURL:(id)arg1;
 + (_Bool)isKnownBlankImageURL:(id)arg1;
@@ -21,10 +23,13 @@
 + (id)youTubeVideoURLForEmbedURL:(id)arg1;
 + (id)nonMobileYouTubeURLForURL:(id)arg1;
 + (_Bool)isAppleMapsCollectionURL:(id)arg1;
++ (_Bool)isAppleFitnessURL:(id)arg1;
 + (_Bool)isAppleMapsURL:(id)arg1;
++ (_Bool)isiTunesStoreURLThatUsesWebMetadata:(id)arg1;
 + (_Bool)isAppStoreStoryURL:(id)arg1;
 + (_Bool)isiTunesStoreOrAdjacentURL:(id)arg1;
 + (_Bool)isiCloudURL:(id)arg1;
++ (_Bool)isiCloudSharingURL:(id)arg1;
 + (_Bool)isAppleNewsURL:(id)arg1;
 + (_Bool)isAppleTVURL:(id)arg1;
 + (_Bool)isYouTubeURL:(id)arg1;
@@ -38,6 +43,7 @@
 + (id)nonMobileTweetURLForTweetURL:(id)arg1;
 + (_Bool)isMuninURL:(id)arg1;
 + (_Bool)isGitHubURL:(id)arg1;
++ (_Bool)isInstagramURL:(id)arg1;
 + (_Bool)isTikTokURL:(id)arg1;
 + (_Bool)isTwitterShortenerURL:(id)arg1;
 + (_Bool)isRedditStaticImage:(id)arg1;

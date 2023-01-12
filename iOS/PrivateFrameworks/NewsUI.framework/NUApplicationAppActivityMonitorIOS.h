@@ -34,10 +34,12 @@
 - (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationDidEnterBackground:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationWillEnterForeground:(CDUnknownBlockType)arg1;
+- (void)sceneWillResignActiveWithSceneID:(id)arg1;
 - (void)sceneWillConnect;
 - (void)sceneWillEnterForeground;
 - (void)sceneDidBecomeActive;
-- (void)sceneDidBecomeActiveWithURL:(id)arg1 sourceApplication:(id)arg2;
+- (void)sceneDidBecomeActiveWithURL:(id)arg1 sourceApplication:(id)arg2 sceneID:(id)arg3;
+- (void)sceneDidEnterBackgroundWithSceneID:(id)arg1;
 - (void)sceneDidEnterBackground;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

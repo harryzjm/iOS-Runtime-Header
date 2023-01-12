@@ -25,7 +25,6 @@
 
 @optional
 - (void)promptDetailsForVirtualCard:(PKVirtualCard *)arg1 showNotification:(_Bool)arg2 handler:(void (^)(NSError *))arg3;
-- (void)noteAccountDeletedWithHandler:(void (^)(NSError *))arg1;
 - (void)sendPaymentStatus:(long long)arg1 forRemotePaymentRequest:(PKRemotePaymentRequest *)arg2 handler:(void (^)(NSError *))arg3;
 @end
 

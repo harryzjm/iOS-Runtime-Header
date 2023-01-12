@@ -24,6 +24,7 @@
 - (_Bool)_isExecutingInContext;
 - (void)_performBlock:(CDUnknownBlockType)arg1 withOptions:(unsigned long long)arg2;
 - (id)_initWithIdentifier:(id)arg1 queue:(id)arg2 options:(unsigned long long)arg3;
+- (void)performBlock:(CDUnknownBlockType)arg1 afterGroup:(id)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1 withOptions:(unsigned long long)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1 afterDelay:(double)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKConversation, CKSearchViewController, NSString;
+@class CKConversation, CKSearchController, CKSearchViewController, NSString, UISearchBar;
 
 @protocol CKContainerSearchControllerDelegate
+- (_Bool)shouldInsetResultsForSearchController:(CKSearchController *)arg1;
+- (UISearchBar *)searchBarForSearchViewController:(CKSearchViewController *)arg1;
 - (void)searchViewController:(CKSearchViewController *)arg1 requestsPushOfSearchController:(CKSearchViewController *)arg2;
 - (void)searchControllerDidBeginDragging:(CKSearchViewController *)arg1;
 - (void)searchController:(CKSearchViewController *)arg1 didSelectItem:(NSString *)arg2 inChat:(NSString *)arg3;

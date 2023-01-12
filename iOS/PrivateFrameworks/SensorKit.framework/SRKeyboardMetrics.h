@@ -10,7 +10,7 @@
 #import <SensorKit/SRSampleExporting-Protocol.h>
 #import <SensorKit/SRSampling-Protocol.h>
 
-@class NSDateInterval, NSDictionary, NSMeasurement, NSMutableDictionary, NSString;
+@class NSArray, NSDateInterval, NSDictionary, NSMeasurement, NSMutableDictionary, NSString;
 
 @interface SRKeyboardMetrics : NSObject <NSSecureCoding, SRSampleExporting, SRSampling>
 {
@@ -74,6 +74,24 @@
 - (id)spaceUpErrorDistance;
 - (id)downErrorDistance;
 - (id)upErrorDistance;
+- (long long)totalTypingEpisodes;
+- (long long)totalPauses;
+- (double)pathTypingSpeed;
+- (double)typingSpeed;
+- (long long)totalPathPauses;
+- (long long)totalConfusedEmojis;
+- (long long)totalLowEnergyEmojis;
+- (long long)totalHealthFeelingEmojis;
+- (long long)totalAngerEmojis;
+- (long long)totalAnxietyEmojis;
+- (long long)totalSadEmojis;
+- (long long)totalPositiveEmojis;
+- (long long)totalHealthFeelingWords;
+- (long long)totalAngerWords;
+- (long long)totalAnxietyWords;
+- (long long)totalDeathWords;
+- (long long)totalDownWords;
+- (long long)totalAbsolutistWords;
 - (double)totalTypingDuration;
 - (long long)totalHitTestCorrections;
 - (long long)totalSubstitutionCorrections;
@@ -97,12 +115,15 @@
 - (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (long long)emojiCountForSentimentCategory:(long long)arg1;
+- (long long)wordCountForSentimentCategory:(long long)arg1;
 - (id)probabilityMetrics;
 - (id)positionalMetrics;
 - (id)scalarMetrics;
 @property(readonly, copy) NSString *description;
 @property(readonly) NSMeasurement *height;
 @property(readonly) NSMeasurement *width;
+@property(readonly, copy) NSArray *inputModes;
 @property(readonly, copy) NSString *version;
 @property(readonly, copy) NSString *keyboardIdentifier;
 @property(readonly) double duration;

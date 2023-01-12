@@ -4,16 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol CalDAVAccountPropertyRefreshDelegate;
+@class NSObject;
+@protocol CalDAVAccountPropertyRefreshDelegate, OS_dispatch_group;
 
 @interface CalDAVAccountPropertyRefreshOperation
 {
+    NSObject<OS_dispatch_group> *_defaultAlarmGroup;
     _Bool _fetchPrincipalSearchProperties;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool fetchPrincipalSearchProperties; // @synthesize fetchPrincipalSearchProperties=_fetchPrincipalSearchProperties;
 - (void)getAccountPropertiesTask:(id)arg1 completedWithError:(id)arg2;
+- (void)_reallyRefreshProperties;
 - (void)refreshProperties;
+- (void)sendLocallyChangedPropertiesIfNeeded;
+- (id)propPatchForProperty:(id)arg1 value:(id)arg2;
+- (id)initWithPrincipal:(id)arg1;
 
 // Remaining properties
 @property(nonatomic) id <CalDAVAccountPropertyRefreshDelegate> delegate; // @dynamic delegate;

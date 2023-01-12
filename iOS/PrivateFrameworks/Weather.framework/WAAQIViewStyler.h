@@ -12,9 +12,8 @@
 
 + (id)shadowColor;
 + (id)textColorWithLightLabel:(_Bool)arg1;
-- (_Bool)attributionSupportsGlyphImage:(id)arg1;
 - (id)stringWithLogoImageFromText:(id)arg1 attribution:(id)arg2 attr:(id)arg3;
-- (id)styledAQIMetadataCitationText:(id)arg1 attribution:(id)arg2;
+- (id)styledAQIMetadataCitationText:(id)arg1 attribution:(id)arg2 shouldInsertGlyph:(_Bool)arg3;
 - (id)styledAQIMetadataRecommendationText:(id)arg1;
 - (id)styledAQIMetadataGradeText:(id)arg1;
 - (id)styledAQIMetadataSourceText:(id)arg1;

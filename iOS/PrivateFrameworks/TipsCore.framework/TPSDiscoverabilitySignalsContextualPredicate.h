@@ -14,6 +14,7 @@
 {
 }
 
++ (id)predicatesForUserInfoKeyPath:(id)arg1 key:(id)arg2 value:(id)arg3;
 + (id)contextualPredicateForDeliveryDuetEvent:(id)arg1;
 
 // Remaining properties

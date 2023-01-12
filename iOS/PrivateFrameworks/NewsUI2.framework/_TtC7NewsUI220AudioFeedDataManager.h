@@ -20,9 +20,9 @@
     MISSING_TYPE *paidBundleConfigurationManager;
     MISSING_TYPE *pluginManager;
     MISSING_TYPE *paywallModule;
+    MISSING_TYPE *paywallFactory;
+    MISSING_TYPE *featureAvailability;
 }
-
-- (void)plugin:(id)arg1 didResizePluginModel:(id)arg2;
 
 @end
 

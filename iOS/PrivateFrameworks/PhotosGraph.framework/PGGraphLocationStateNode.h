@@ -4,14 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PGGraphLocationStateNodeCollection;
+
 @interface PGGraphLocationStateNode
 {
 }
 
++ (id)countryOfState;
++ (id)momentOfState;
++ (id)addressOfState;
 + (id)filter;
+- (unsigned long long)featureType;
+- (Class)collectionClass;
+@property(readonly, nonatomic) PGGraphLocationStateNodeCollection *collection;
 - (id)label;
-- (id)initWithLabel:(id)arg1;
-- (id)init;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
 
 @end
 

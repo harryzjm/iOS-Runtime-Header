@@ -40,6 +40,7 @@
     double _lastYOffsetTime;
     _Bool _scrollingFast;
     _Bool _dragging;
+    _Bool _isForWatch;
     id <PKEditTableViewControllerCachingDelegate> _cachingDelegate;
     PKGroupsController *_existingGroupsController;
     long long _performanceTest;
@@ -104,7 +105,7 @@
 @property(retain, nonatomic) NSDictionary *placeholders;
 - (void)_placeholderImageForStyle:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidLoad;
-- (id)initWithStyle:(long long)arg1 placeholders:(id)arg2;
+- (id)initWithStyle:(long long)arg1 placeholders:(id)arg2 isForWatch:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

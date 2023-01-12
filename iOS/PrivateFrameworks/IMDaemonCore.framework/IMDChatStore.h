@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
-@protocol IMDMessagePTaskStore;
+@protocol IMDMessagePTaskStore, IMDRemoteDatabaseProtocol;
 
 @interface IMDChatStore : NSObject
 {
@@ -16,12 +16,12 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 @property(retain) id <IMDMessagePTaskStore> messagePTaskStore; // @synthesize messagePTaskStore=_messagePTaskStore;
 @property(retain) NSString *modificationStamp; // @synthesize modificationStamp=_lastModificationStamp;
 - (void)_broadcastToForceReloadChats;
 - (void)_broadcastUpdateForMergedChatWithPersonCentricIDIfNeeded:(id)arg1 updatedHandleID:(id)arg2;
-- (id)_allHandlesOnAllChats;
-- (_Bool)updateHandle:(id)arg1 forMessage:(id)arg2 WithPC:(id)arg3 onService:(id)arg4;
+- (_Bool)updateHandle:(id)arg1 sourceMessage:(id)arg2 personCentricID:(id)arg3 onService:(id)arg4;
 - (_Bool)updatePersonCentricIDForHandlesInChatWithMessage:(id)arg1 fromIdentifier:(id)arg2 personCentricID:(id)arg3 chat:(id)arg4;
 - (id)_chatRegistry;
 - (void)setChatIsFiltered:(long long)arg1 withChatGuid:(id)arg2;
@@ -32,20 +32,37 @@
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2;
 - (id)chatsGUIDsForMessageWithIdentifier:(long long)arg1;
 - (id)chatsGUIDsForMessageWithGUID:(id)arg1;
+- (void)enumerateBatchedChatsFilteredUsingPredicate:(id)arg1 batchSize:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
+- (void)enumerateBatchedChatsFilteredUsingPredicate:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)newestChatWithGroupID:(id)arg1 onService:(id)arg2;
 - (id)newestChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
 - (id)chatsWithRoomname:(id)arg1 onService:(id)arg2;
+- (id)chatsWithHandles:(id)arg1 onService:(id)arg2 displayName:(id)arg3 groupID:(id)arg4 style:(unsigned char)arg5;
 - (id)chatsWithHandle:(id)arg1 onService:(id)arg2;
+- (id)chatsWithGroupID:(id)arg1;
+- (id)chatsWithIdentifier:(id)arg1 onService:(id)arg2;
+- (id)chatsWithIdentifier:(id)arg1;
+- (id)chatsFilteredUsingPredicate:(id)arg1 sortedUsingLastMessageDateAscending:(_Bool)arg2 olderThan:(id)arg3 limit:(unsigned long long)arg4;
+- (id)chatsFilteredUsingPredicate:(id)arg1 sortedUsingDescriptors:(id)arg2 limit:(unsigned long long)arg3;
+- (id)chatsFilteredUsingPredicate:(id)arg1;
+- (id)chatWithGUID:(id)arg1;
+- (id)_incomingChatsWithChatRecords:(id)arg1;
+- (id)_incomingChatWithChatRecord:(id)arg1;
 - (unsigned long long)unreadCountForChat:(id)arg1;
-- (id)storeChat:(id)arg1;
+- (_Bool)storeChat:(id)arg1;
+- (id)_loadChatsIncludingAllChats:(_Bool)arg1;
+- (id)loadRecentChats;
 - (id)loadAllChats;
+- (void)_processIncomingChat:(id)arg1;
 - (void)_addGroupPhotoToTransferCenterForChat:(id)arg1;
 - (void)unblackholeChat:(id)arg1;
 - (void)blackholeChat:(id)arg1;
 - (void)unarchiveChat:(id)arg1;
 - (void)archiveChat:(id)arg1;
 - (void)_updateModificationDate;
-- (void)dealloc;
+@property(readonly, nonatomic) id <IMDRemoteDatabaseProtocol> database;
 - (id)init;
+- (_Bool)__im_ff_chatCacheEnabled;
 
 @end
 

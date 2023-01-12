@@ -6,22 +6,28 @@
 
 #import <objc/NSObject.h>
 
+#import <CallKit/LSApplicationWorkspaceObserverProtocol-Protocol.h>
+
+@class NSDictionary, NSString;
 @protocol CXCallDirectoryNSExtensionManagerDelegate, OS_dispatch_queue;
 
-@interface CXCallDirectoryNSExtensionManager : NSObject
+@interface CXCallDirectoryNSExtensionManager : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id <CXCallDirectoryNSExtensionManagerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     id _extensionMatchingContext;
+    NSDictionary *_extensions;
 }
 
 + (id)baseExtensionMatchingAttributes;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDictionary *extensions; // @synthesize extensions=_extensions;
 @property(retain, nonatomic) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(nonatomic) __weak id <CXCallDirectoryNSExtensionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (void)pluginsDidInstall:(id)arg1;
 - (void)_extensionForIdentifier:(id)arg1 containingAppBundleURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)extensionWithIdentifier:(id)arg1 inContainingAppWithProcessIdentifier:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)extensionsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -30,6 +36,12 @@
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

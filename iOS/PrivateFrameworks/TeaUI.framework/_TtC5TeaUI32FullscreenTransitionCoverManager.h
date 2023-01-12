@@ -13,9 +13,12 @@
     MISSING_TYPE *closure;
     MISSING_TYPE *coverView;
     MISSING_TYPE *transitioning;
+    MISSING_TYPE *dimmed;
 }
 
+- (void)didEndDimming;
 - (void)didEndTransition;
+- (void)didStartDimming;
 - (void)didStartTransition;
 - (void)willStartTransition;
 

@@ -14,16 +14,19 @@
     NSCache *_stickerConfigurationCache;
     AVTUIEnvironment *_environment;
     NSArray<AVTStickerPack> *_stickerPacks;
+    NSArray *_stickerConfigurationNames;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *stickerConfigurationNames; // @synthesize stickerConfigurationNames=_stickerConfigurationNames;
 @property(retain, nonatomic) NSArray<AVTStickerPack> *stickerPacks; // @synthesize stickerPacks=_stickerPacks;
 @property(retain, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) NSCache *stickerConfigurationCache; // @synthesize stickerConfigurationCache=_stickerConfigurationCache;
+- (id)filteredStickerConfigurations:(id)arg1;
 - (id)availableStickerNamesForAvatarRecord:(id)arg1;
 - (id)stickerConfigurationForAvatarRecord:(id)arg1 stickerName:(id)arg2;
 - (id)stickerConfigurationsForAvatarRecord:(id)arg1;
-- (id)initWithEnvironment:(id)arg1 forStickerPacks:(id)arg2;
+- (id)initWithEnvironment:(id)arg1 forStickerPacks:(id)arg2 stickerConfigurationNames:(id)arg3;
 
 @end
 

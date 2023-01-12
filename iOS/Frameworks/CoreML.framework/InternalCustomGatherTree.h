@@ -11,12 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface InternalCustomGatherTree : NSObject <MLCustomLayer>
 {
-    vector_12bd641b _shape;
+    vector_cd3186ef _shape;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) vector_12bd641b shape; // @synthesize shape=_shape;
+@property(readonly, nonatomic) vector_cd3186ef shape; // @synthesize shape=_shape;
 - (_Bool)setWeightData:(id)arg1 error:(id *)arg2;
 - (id)outputShapesForInputShapes:(id)arg1 error:(id *)arg2;
 - (id)initWithParameterDictionary:(id)arg1 error:(id *)arg2;

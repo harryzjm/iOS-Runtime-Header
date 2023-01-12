@@ -25,6 +25,7 @@
 - (void)intentExecutor:(id)arg1 receivingRideStatusDidReceiveError:(id)arg2;
 - (void)intentExecutor:(id)arg1 receivingRideStatusDidReceiveUpdate:(id)arg2;
 - (void)rideOptionsLoader:(id)arg1 errorFromListRideOptionsError:(id)arg2 updatedErrorHandler:(CDUnknownBlockType)arg3;
+- (id)iconImage;
 - (id)icon;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;

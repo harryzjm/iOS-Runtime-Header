@@ -8,11 +8,10 @@
 {
 }
 
-+ (id)fakeBackButtonItemForDelegate:(id)arg1 withAction:(SEL)arg2;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setIsSyncComplete:(_Bool)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -7,14 +7,14 @@
 #import <PhotosUICore/CPLStatusDelegate-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class CPLStatus, NSString, PLPhotoLibrary;
+@class CPLStatus, NSString, PHPhotoLibrary;
 
 @interface PXCMMEnabledStatusProvider <CPLStatusDelegate, PXSettingsKeyObserver>
 {
     _Bool _isFeatureEnabled;
     _Bool _isCPLEnabled;
     _Bool _hasExitDate;
-    PLPhotoLibrary *_pl_photoLibrary;
+    PHPhotoLibrary *_ph_photoLibrary;
     CPLStatus *_cplStatus;
     _Bool _enabled;
 }

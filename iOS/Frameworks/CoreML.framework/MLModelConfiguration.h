@@ -15,6 +15,7 @@
 @interface MLModelConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _allowBackgroundGPUComputeSetting;
+    _Bool _trainWithMLCompute;
     _Bool _useWatchSPIForScribble;
     _Bool _allowLowPrecisionAccumulationOnGPU;
     _Bool _enableTestVectorMode;
@@ -37,6 +38,7 @@
 @property(retain, nonatomic) id <MTLDevice> preferredMetalDevice; // @synthesize preferredMetalDevice=_preferredMetalDevice;
 @property _Bool allowLowPrecisionAccumulationOnGPU; // @synthesize allowLowPrecisionAccumulationOnGPU=_allowLowPrecisionAccumulationOnGPU;
 @property(nonatomic) _Bool useWatchSPIForScribble; // @synthesize useWatchSPIForScribble=_useWatchSPIForScribble;
+@property _Bool trainWithMLCompute; // @synthesize trainWithMLCompute=_trainWithMLCompute;
 @property _Bool allowBackgroundGPUComputeSetting; // @synthesize allowBackgroundGPUComputeSetting=_allowBackgroundGPUComputeSetting;
 @property long long computeUnits; // @synthesize computeUnits=_computeUnits;
 - (id)description;

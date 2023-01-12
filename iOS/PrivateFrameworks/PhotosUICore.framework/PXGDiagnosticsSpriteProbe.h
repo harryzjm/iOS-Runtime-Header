@@ -14,15 +14,15 @@
     CDUnknownBlockType _eventHandler;
 }
 
-+ (void)_recordEventIfNeededWithType:(long long)arg1 layout:(id)arg2 oldState:(const CDStruct_c691429e *)arg3 newState:(const CDStruct_c691429e *)arg4 userInfo:(id)arg5;
-+ (void)shouldUseDoubleSidedAnimationForSprites:(CDStruct_92550dd7)arg1 indexes:(id)arg2 animation:(id)arg3;
-+ (void)didAdjustSprites:(CDStruct_92550dd7)arg1 forAnimation:(id)arg2 appearing:(_Bool)arg3;
-+ (void)willAdjustSprites:(CDStruct_92550dd7)arg1 forAnimation:(id)arg2 appearing:(_Bool)arg3;
-+ (void)willRequestTextureForSpriteWithGeometry:(const CDStruct_3ab912e1 *)arg1 style:(const CDStruct_506f5052 *)arg2 info:(const CDStruct_9d1ebe49 *)arg3 inLayout:(id)arg4 textureInfo:(id)arg5;
-+ (void)layout:(id)arg1 didChangeSprites:(CDStruct_92550dd7)arg2;
-+ (void)layout:(id)arg1 willChangeSprites:(CDStruct_92550dd7)arg2;
-+ (void)layout:(id)arg1 didInsertSprites:(CDStruct_92550dd7)arg2;
-+ (void)layout:(id)arg1 willRemoveSprites:(CDStruct_92550dd7)arg2;
++ (void)_recordEventIfNeededWithType:(long long)arg1 layout:(id)arg2 oldState:(const CDStruct_a4810174 *)arg3 newState:(const CDStruct_a4810174 *)arg4 userInfo:(id)arg5;
++ (void)shouldUseDoubleSidedAnimationForSprites:(CDStruct_d5f63e8f)arg1 indexes:(id)arg2 animation:(id)arg3;
++ (void)didAdjustSprites:(CDStruct_d5f63e8f)arg1 forAnimation:(id)arg2 appearing:(_Bool)arg3;
++ (void)willAdjustSprites:(CDStruct_d5f63e8f)arg1 forAnimation:(id)arg2 appearing:(_Bool)arg3;
++ (void)willRequestTextureForSpriteWithGeometry:(const CDStruct_4f725fed *)arg1 style:(const CDStruct_76b550e2 *)arg2 info:(const CDStruct_9d1ebe49 *)arg3 inLayout:(id)arg4 textureInfo:(id)arg5;
++ (void)layout:(id)arg1 didChangeSprites:(CDStruct_d5f63e8f)arg2;
++ (void)layout:(id)arg1 willChangeSprites:(CDStruct_d5f63e8f)arg2;
++ (void)layout:(id)arg1 didInsertSprites:(CDStruct_d5f63e8f)arg2;
++ (void)layout:(id)arg1 willRemoveSprites:(CDStruct_d5f63e8f)arg2;
 + (id)spriteDataStore;
 + (id)activeSpriteProbes;
 - (void).cxx_destruct;
@@ -30,9 +30,9 @@
 @property(copy, nonatomic) CDUnknownBlockType tagDescriptor; // @synthesize tagDescriptor=_tagDescriptor;
 @property(copy, nonatomic) CDUnknownBlockType predicate; // @synthesize predicate=_predicate;
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
-- (void)_recordEventIfNeededWithType:(long long)arg1 layout:(id)arg2 oldState:(const CDStruct_c691429e *)arg3 newState:(const CDStruct_c691429e *)arg4 userInfo:(id)arg5;
-- (id)descriptionForSpriteState:(const CDStruct_c691429e *)arg1;
-- (void)_recordEventWithType:(long long)arg1 oldState:(const CDStruct_c691429e *)arg2 newState:(const CDStruct_c691429e *)arg3 userInfo:(id)arg4;
+- (void)_recordEventIfNeededWithType:(long long)arg1 layout:(id)arg2 oldState:(const CDStruct_a4810174 *)arg3 newState:(const CDStruct_a4810174 *)arg4 userInfo:(id)arg5;
+- (id)descriptionForSpriteState:(const CDStruct_a4810174 *)arg1;
+- (void)_recordEventWithType:(long long)arg1 oldState:(const CDStruct_a4810174 *)arg2 newState:(const CDStruct_a4810174 *)arg3 userInfo:(id)arg4;
 - (id)init;
 
 @end

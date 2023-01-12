@@ -10,7 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)allowShowTransition;
+- (_Bool)canBePresented;
 
 @end
 

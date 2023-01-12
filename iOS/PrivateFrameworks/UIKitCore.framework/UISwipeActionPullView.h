@@ -26,10 +26,12 @@
     id <UISwipeActionPullViewDelegate> _delegate;
     UIColor *_backgroundPullColor;
     unsigned long long _state;
+    double _roundedStyleCornerRadius;
     struct UIEdgeInsets _contentInsets;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=_roundedStyleCornerRadius, setter=_setRoundedStyleCornerRadius:) double roundedStyleCornerRadius; // @synthesize roundedStyleCornerRadius=_roundedStyleCornerRadius;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) _Bool autosizesButtons; // @synthesize autosizesButtons=_autosizesButtons;
 @property(nonatomic) _Bool buttonsUnderlapSwipedView; // @synthesize buttonsUnderlapSwipedView=_buttonsUnderlapSwipedView;

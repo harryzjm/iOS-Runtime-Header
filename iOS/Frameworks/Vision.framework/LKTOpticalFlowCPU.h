@@ -7,7 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface LKTOpticalFlowCPU
 {
-    struct unique_ptr<apple::vision::OpticalFlow::LKTCPU, std::__1::default_delete<apple::vision::OpticalFlow::LKTCPU>> _opticalFlow;
+    struct unique_ptr<apple::vision::OpticalFlow::LKTCPU, std::default_delete<apple::vision::OpticalFlow::LKTCPU>> _opticalFlow;
     struct __CVBuffer *_uv_user_ref;
 }
 

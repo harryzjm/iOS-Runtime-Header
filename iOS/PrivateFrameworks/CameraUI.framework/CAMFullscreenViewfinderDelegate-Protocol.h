@@ -6,11 +6,18 @@
 
 #import <CameraUI/NSObject-Protocol.h>
 
-@class CAMFullscreenViewfinder;
+@class CAMFullscreenViewfinder, CAMSemanticStyle, NSArray;
 
 @protocol CAMFullscreenViewfinderDelegate <NSObject>
+- (_Bool)fullscreenViewfinderCanUpdatePreviewSemanticStyles:(CAMFullscreenViewfinder *)arg1;
+- (void)fullscreenViewfinderDidGestureToDismissTextInteractionInsert:(CAMFullscreenViewfinder *)arg1;
 - (void)fullscreenViewfinder:(CAMFullscreenViewfinder *)arg1 didChangeExpanded:(_Bool)arg2 forDrawerControlOfType:(long long)arg3 animated:(_Bool)arg4;
 - (void)fullscreenViewfinder:(CAMFullscreenViewfinder *)arg1 didChangeControlDrawerVisibility:(_Bool)arg2;
+- (void)fullscreenViewfinder:(CAMFullscreenViewfinder *)arg1 didCreateInstructionLabel:(long long)arg2;
+- (void)fullscreenViewfinderDidChangeSemanticStyle:(CAMFullscreenViewfinder *)arg1;
+- (void)fullscreenViewfinderDidCreateSemanticStyleControls:(CAMFullscreenViewfinder *)arg1;
+- (CAMSemanticStyle *)fullscreenViewfinderSelectedSemanticStyle:(CAMFullscreenViewfinder *)arg1;
+- (NSArray *)fullscreenViewfinderSemanticStyleList:(CAMFullscreenViewfinder *)arg1;
 - (void)fullscreenViewfinderDidCreatePortraitControls:(CAMFullscreenViewfinder *)arg1;
 - (void)fullscreenViewfinderDidCreateControlDrawer:(CAMFullscreenViewfinder *)arg1;
 @end

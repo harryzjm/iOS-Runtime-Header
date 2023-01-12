@@ -6,18 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection, _PSSuggesterConfiguration;
+@class BMSource, CNContactStore, NSXPCConnection, _PSSuggesterConfiguration;
+@protocol OS_dispatch_queue;
 
 @interface _PSSuggester : NSObject
 {
     NSXPCConnection *_connection;
+    NSXPCConnection *_userConnection;
     struct os_unfair_lock_s _lock;
+    NSObject<OS_dispatch_queue> *_feedbackQueue;
+    BMSource *_feedbackSource;
+    CNContactStore *_contactStore;
     _PSSuggesterConfiguration *_configuration;
 }
 
 + (id)suggesterWithDaemon;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _PSSuggesterConfiguration *configuration; // @synthesize configuration=_configuration;
+- (void)writeFeedbackForContactsAutocompleteSuggestions:(id)arg1;
+- (void)provideFeedbackForContactsAutocompleteSuggestions:(id)arg1;
 - (void)provideFeedbackForMessagesZkwSuggestions:(id)arg1;
 - (void)provideSuggestLessFeedbackForShareSheetSuggestion:(id)arg1;
 - (void)provideFeedbackForSuggestions:(id)arg1;
@@ -26,7 +33,9 @@
 - (id)hourOfDayProbabilitiesToInteractWithContact:(id)arg1;
 - (id)rankedFamilySuggestions;
 - (id)rankedAutocompleteSuggestionsFromContext:(id)arg1 candidates:(id)arg2;
+- (id)autocompleteSearchResultsWithPredictionContext:(id)arg1;
 - (id)rankedZKWSuggestionsFromContext:(id)arg1;
+- (id)_getUserDaemonXPCConnection;
 - (id)rankedSiriNLContactSuggestionsFromContext:(id)arg1 maxSuggestions:(id)arg2 interactionId:(id)arg3;
 - (id)rankedGlobalSuggestionsFromContext:(id)arg1 contactsOnly:(_Bool)arg2;
 - (id)rankedNameSuggestionsFromContext:(id)arg1 name:(id)arg2;
@@ -34,7 +43,9 @@
 - (id)suggestInteractionsFromContext:(id)arg1;
 - (id)shareSheetInteractionsFromContext:(id)arg1 maximumNumberOfSuggestions:(long long)arg2;
 - (id)shareSheetInteractionsFromContext:(id)arg1;
+- (id)contactStore;
 - (void)dealloc;
+- (id)initWithConfiguration:(id)arg1 feedbackRecording:(_Bool)arg2;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithDaemonUsingConfiguration:(id)arg1;
 - (id)init;

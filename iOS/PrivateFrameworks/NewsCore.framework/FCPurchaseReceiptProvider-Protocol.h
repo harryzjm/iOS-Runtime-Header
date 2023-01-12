@@ -7,6 +7,6 @@
 @class NSString;
 
 @protocol FCPurchaseReceiptProvider
-- (NSString *)purchaseReceipt;
+- (NSString *)purchaseReceiptWithBundleID:(NSString *)arg1;
 @end
 

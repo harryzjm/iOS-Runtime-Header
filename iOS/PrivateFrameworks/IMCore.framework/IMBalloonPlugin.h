@@ -62,12 +62,12 @@
 - (id)existingDataSourceForMessageGUID:(id)arg1;
 - (_Bool)shouldShowForRecipients:(id)arg1;
 - (_Bool)supportsControllerReuse;
-- (void)removeController:(id)arg1 forChatItem:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
-- (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2 wantsOverlayLayout:(_Bool)arg3;
-- (id)balloonControllerForChatItem:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
-- (id)existingBalloonControllerWithMessageGUID:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
-- (id)balloonControllerKeyForMessageGUID:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
-- (id)_getControllerFromReusePoolForChatItem:(id)arg1 wantsOverlayLayout:(_Bool)arg2;
+- (void)removeController:(id)arg1 forChatItem:(id)arg2 contextIdentifier:(id)arg3;
+- (void)moveController:(id)arg1 toReusePoolFromChatItem:(id)arg2 contextIdentifier:(id)arg3;
+- (id)balloonControllerForChatItem:(id)arg1 contextIdentifier:(id)arg2;
+- (id)existingBalloonControllerWithMessageGUID:(id)arg1 contextIdentifier:(id)arg2;
+- (id)balloonControllerKeyForMessageGUID:(id)arg1 contextIdentifier:(id)arg2;
+- (id)_getControllerFromReusePoolForChatItem:(id)arg1 contextIdentifier:(id)arg2;
 - (void)unloadBundle;
 - (void)dealloc;
 - (id)initWithBundle:(id)arg1 app:(id)arg2;

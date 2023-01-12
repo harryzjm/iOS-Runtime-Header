@@ -83,7 +83,6 @@
 - (void)_deviceWillSleep;
 - (void)saveAndReleaseAgents;
 - (void)loadAgents;
-- (void)_ensureHolidaySubscribedCalendarExists;
 - (id)_accountInfoPath;
 - (id)_configFileForAgent:(id)arg1;
 - (id)accountWithAccountID:(id)arg1 andClassName:(id)arg2;

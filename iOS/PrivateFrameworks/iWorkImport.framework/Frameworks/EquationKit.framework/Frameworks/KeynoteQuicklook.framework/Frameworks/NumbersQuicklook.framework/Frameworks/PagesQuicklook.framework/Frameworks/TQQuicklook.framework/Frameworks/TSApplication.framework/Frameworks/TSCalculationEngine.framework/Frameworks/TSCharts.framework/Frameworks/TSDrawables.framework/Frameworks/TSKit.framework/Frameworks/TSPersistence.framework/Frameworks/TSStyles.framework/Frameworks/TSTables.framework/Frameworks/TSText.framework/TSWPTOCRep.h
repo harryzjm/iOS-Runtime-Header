@@ -13,7 +13,7 @@
 
 + (id)TOCReferenceNameWithParagraphIndex:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (unsigned long long)i_indexOfHitTOCEntryAtPoint:(struct CGPoint)arg1;
+- (unsigned long long)indexOfHitTOCEntryAtPoint:(struct CGPoint)arg1;
 - (id)i_paragraphStyleAtPoint:(struct CGPoint)arg1;
 - (id)hyperlinkRegions;
 - (_Bool)canMakePathEditable;

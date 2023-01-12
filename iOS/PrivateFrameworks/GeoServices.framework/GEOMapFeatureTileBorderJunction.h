@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)description;
 - (_Bool)isOnTileBorder;
 
 @end

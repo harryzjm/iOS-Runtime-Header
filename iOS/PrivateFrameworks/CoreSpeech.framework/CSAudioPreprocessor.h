@@ -15,6 +15,7 @@
 @interface CSAudioPreprocessor : NSObject <CSVoiceTriggerAwareZeroFilterDelegate, CSBeepCancellerDelegate>
 {
     float _sampleRate;
+    int _numChannels;
     id <CSAudioPreprocessorDelegate> _delegate;
     CSAudioSampleRateConverter *_upsampler;
     CSVoiceTriggerAwareZeroFilter *_zeroFilter;
@@ -23,6 +24,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int numChannels; // @synthesize numChannels=_numChannels;
 @property(retain, nonatomic) CSAudioZeroCounter *zeroCounter; // @synthesize zeroCounter=_zeroCounter;
 @property(retain, nonatomic) CSBeepCanceller *beepCanceller; // @synthesize beepCanceller=_beepCanceller;
 @property(retain, nonatomic) CSVoiceTriggerAwareZeroFilter *zeroFilter; // @synthesize zeroFilter=_zeroFilter;
@@ -32,13 +34,14 @@
 - (void)beepCancellerDidCancelSamples:(id)arg1 buffer:(id)arg2 timestamp:(unsigned long long)arg3;
 - (void)zeroFilter:(id)arg1 zeroFilteredBufferAvailable:(id)arg2 atHostTime:(unsigned long long)arg3;
 - (_Bool)_isNarrowBand:(float)arg1;
+- (id)_fetchCurrentMetrics;
 - (void)_reportMetrics;
-- (_Bool)_isHeadphoneDeviceWithRecordRoute:(id)arg1 playbackRoute:(id)arg2;
+- (void)reportMetricsForSiriRequestWithUUID:(id)arg1;
 - (void)willBeepWithRecordRoute:(id)arg1 playbackRoute:(id)arg2;
 - (void)flush;
-- (void)processBuffer:(id)arg1 atTime:(unsigned long long)arg2;
+- (void)processBuffer:(id)arg1 atTime:(unsigned long long)arg2 arrivalTimestampToAudioRecorder:(unsigned long long)arg3;
 - (void)resetWithSampleRate:(float)arg1 containsVoiceTrigger:(_Bool)arg2 voiceTriggerInfo:(id)arg3;
-- (id)initWithSampleRate:(float)arg1;
+- (id)initWithSampleRate:(float)arg1 withNumberOfChannels:(int)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

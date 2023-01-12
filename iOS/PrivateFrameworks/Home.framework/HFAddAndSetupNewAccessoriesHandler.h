@@ -8,9 +8,13 @@
 
 @interface HFAddAndSetupNewAccessoriesHandler : NSObject
 {
+    _Bool _isAccessorySetupActive;
 }
 
 + (id)addAndSetupNewAccessoriesForHome:(id)arg1 room:(id)arg2;
++ (id)sharedHandler;
+@property(nonatomic) _Bool isAccessorySetupActive; // @synthesize isAccessorySetupActive=_isAccessorySetupActive;
+- (id)init;
 
 @end
 

@@ -79,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)initialPlatterPositionForPreviewActionsController:(id)arg1;
 - (void)_handlePreviewActionsGesture:(id)arg1;
 - (void)_overrideSourceViewForBinaryCompatibilityIfNeeded:(id *)arg1 sourceRect:(struct CGRect *)arg2;
-- (void)_finalizeInteractivePreview;
 - (void)_resetCustomPresentationHooks;
 - (id)_previewPresentationControllerForViewController:(id)arg1;
 - (void)_preparePreviewPresentationControllerIfNeeded:(id)arg1;

@@ -10,7 +10,7 @@
 
 @interface _TtC15HealthRecordsUI28MedicalRecordChartableSeries : NSObject
 {
-    MISSING_TYPE *concept;
+    MISSING_TYPE *chartDefining;
     MISSING_TYPE *chartableQuantitySets;
     MISSING_TYPE *preferredColors;
 }

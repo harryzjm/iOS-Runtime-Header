@@ -14,9 +14,11 @@
     MISSING_TYPE *namespace;
     MISSING_TYPE *slotIdentifier;
     MISSING_TYPE *config;
+    MISSING_TYPE *layoutContext;
+    MISSING_TYPE *blocks;
+    MISSING_TYPE *debugData;
     MISSING_TYPE *options;
-    MISSING_TYPE *scale;
-    MISSING_TYPE *scaleFactor;
+    MISSING_TYPE *selectors;
     MISSING_TYPE *lazyContextLayoutOptions;
 }
 

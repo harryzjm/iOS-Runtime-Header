@@ -22,6 +22,7 @@
 // Remaining properties
 @property(nonatomic) _Bool allowGPUOptimizedContents; // @dynamic allowGPUOptimizedContents;
 @property(nonatomic) unsigned long long arrayLength; // @dynamic arrayLength;
+@property(nonatomic) long long compressionType; // @dynamic compressionType;
 @property(nonatomic) unsigned long long cpuCacheMode; // @dynamic cpuCacheMode;
 @property(nonatomic) unsigned long long depth; // @dynamic depth;
 @property(nonatomic) _Bool forceResourceIndex; // @dynamic forceResourceIndex;

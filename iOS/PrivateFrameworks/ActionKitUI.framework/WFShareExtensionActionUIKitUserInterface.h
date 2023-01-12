@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 __attribute__((visibility("hidden")))
-@interface WFShareExtensionActionUIKitUserInterface : WFActionUserInterface
+@interface WFShareExtensionActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

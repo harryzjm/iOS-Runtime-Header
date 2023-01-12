@@ -7,10 +7,10 @@
 @class CKDDecryptRecordsOperation, CKDRecordCache, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSSet;
 @protocol CKFetchRecordsOperationCallbacks, OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordsOperation
 {
     CKDDecryptRecordsOperation *_decryptOperation;
+    CKDRecordCache *_cache;
     _Bool _useCachedEtags;
     _Bool _useRecordCache;
     _Bool _forcePCSDecrypt;
@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
     NSSet *_assetFieldNamesToPublishURLs;
     unsigned long long _requestedTTL;
     unsigned long long _URLOptions;
-    CKDRecordCache *_cache;
     NSMutableArray *_recordIDsToRefetch;
     NSMutableDictionary *_keyOrErrorForHostname;
     NSMutableDictionary *_shareRecordsToUpdateByRecordID;
@@ -48,7 +47,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *shareRecordsToUpdateByRecordID; // @synthesize shareRecordsToUpdateByRecordID=_shareRecordsToUpdateByRecordID;
 @property(retain, nonatomic) NSMutableDictionary *keyOrErrorForHostname; // @synthesize keyOrErrorForHostname=_keyOrErrorForHostname;
 @property(retain, nonatomic) NSMutableArray *recordIDsToRefetch; // @synthesize recordIDsToRefetch=_recordIDsToRefetch;
-@property(retain, nonatomic) CKDRecordCache *cache; // @synthesize cache=_cache;
 @property(nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property(nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 @property(retain, nonatomic) NSSet *assetFieldNamesToPublishURLs; // @synthesize assetFieldNamesToPublishURLs=_assetFieldNamesToPublishURLs;
@@ -72,6 +70,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool forcePCSDecrypt; // @synthesize forcePCSDecrypt=_forcePCSDecrypt;
 @property(nonatomic) _Bool useRecordCache; // @synthesize useRecordCache=_useRecordCache;
 @property(nonatomic) _Bool useCachedEtags; // @synthesize useCachedEtags=_useCachedEtags;
+- (id)relevantZoneIDs;
 - (_Bool)supportsClearAssetEncryption;
 - (void)main;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
@@ -99,7 +98,8 @@ __attribute__((visibility("hidden")))
 - (id)nameForState:(unsigned long long)arg1;
 - (_Bool)makeStateTransition;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)cache:(id *)arg1;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

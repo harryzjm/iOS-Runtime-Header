@@ -11,7 +11,13 @@
     MISSING_TYPE *providedHealthToolbox;
     MISSING_TYPE *providedHealthStore;
     MISSING_TYPE *chartContext;
+    MISSING_TYPE *chartImageProvider;
+    MISSING_TYPE *chartOverlayVersionProvider;
+    MISSING_TYPE *cancellables;
+    MISSING_TYPE *restorationUserActivity;
+    MISSING_TYPE *mode;
     MISSING_TYPE *$__lazy_storage_$_personalizedFeedTrainer;
+    MISSING_TYPE *didSubmitAnalyticsForRoomEntry;
 }
 
 - (void).cxx_destruct;

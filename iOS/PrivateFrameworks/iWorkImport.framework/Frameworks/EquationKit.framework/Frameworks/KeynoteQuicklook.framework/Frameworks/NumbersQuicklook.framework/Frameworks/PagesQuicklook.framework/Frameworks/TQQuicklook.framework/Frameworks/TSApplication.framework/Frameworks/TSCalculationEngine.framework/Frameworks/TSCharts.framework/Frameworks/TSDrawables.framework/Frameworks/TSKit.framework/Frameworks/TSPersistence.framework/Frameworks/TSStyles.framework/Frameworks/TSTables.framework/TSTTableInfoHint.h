@@ -6,19 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, TSTCellUIDList;
+@class NSMutableIndexSet, TSTCellUIDList;
 
 @interface TSTTableInfoHint : NSObject
 {
-    NSMutableSet *_tableStyleSet;
-    TSTCellUIDList *_cellFillList;
+    TSTCellUIDList *_cellUIDs;
+    NSMutableIndexSet *_tableStyleIndexes;
+    struct CGSize _maximumSize;
+    vector_2056c7c2 _cellFlags;
 }
 
-@property(readonly, nonatomic) TSTCellUIDList *cellFillList; // @synthesize cellFillList=_cellFillList;
-@property(readonly, nonatomic) NSMutableSet *tableStyleSet; // @synthesize tableStyleSet=_tableStyleSet;
-- (void)setTableStyleImageForStyleArea:(unsigned long long)arg1;
-- (void)addCellUIDToFillList:(struct TSTCellUID)arg1;
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableIndexSet *tableStyleIndexes; // @synthesize tableStyleIndexes=_tableStyleIndexes;
+@property(readonly, nonatomic) TSTCellUIDList *cellUIDs; // @synthesize cellUIDs=_cellUIDs;
+@property(readonly, nonatomic) vector_2056c7c2 cellFlags; // @synthesize cellFlags=_cellFlags;
+@property(readonly, nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
+- (void)enumerateCellUIDsUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)hasStylesInCells;
+- (void)addCellUID:(const struct TSKUIDStructCoord *)arg1 flags:(unsigned long long)arg2 addingMaximumSize:(struct CGSize)arg3;
+- (void)enumerateTableStylesUsingBlock:(CDUnknownBlockType)arg1;
+- (_Bool)containsStyleNetworkIndex:(unsigned long long)arg1;
+- (_Bool)hasTableStyles;
+- (void)addTableStyleIndex:(unsigned long long)arg1;
 - (id)init;
 
 @end

@@ -22,6 +22,7 @@
     long long _state;
     HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
     HMSoftwareUpdateDocumentation *_documentation;
+    unsigned long long _updateType;
     id <HMSoftwareUpdateDelegate> _delegate;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
@@ -46,6 +47,8 @@
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)logIdentifier;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)setUpdateType:(unsigned long long)arg1;
+@property(readonly) unsigned long long updateType; // @synthesize updateType=_updateType;
 - (void)_handleUpdatedDocumentation:(id)arg1;
 - (void)requestDocumentation;
 - (void)setDocumentation:(id)arg1;
@@ -62,11 +65,13 @@
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void)_registerNotificationHandlers;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)configureWithContext:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)dealloc;
+- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5 releaseDate:(id)arg6;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 documentationMetadata:(id)arg4;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3;

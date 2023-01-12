@@ -15,6 +15,7 @@
 {
     _Bool _iconMode;
     _Bool _wantsBaseline;
+    _Bool _shouldUseRestrictedExtension;
     _Bool _cancelled;
     _Bool _finished;
     _Bool _downloadingAllowed;
@@ -68,6 +69,7 @@
 @property(retain, nonatomic) NSDate *beginDate; // @synthesize beginDate=_beginDate;
 @property(nonatomic, getter=isFinished) _Bool finished; // @synthesize finished=_finished;
 @property(nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(nonatomic) _Bool shouldUseRestrictedExtension; // @synthesize shouldUseRestrictedExtension=_shouldUseRestrictedExtension;
 @property(nonatomic) unsigned long long externalThumbnailGeneratorDataHash; // @synthesize externalThumbnailGeneratorDataHash=_externalThumbnailGeneratorDataHash;
 @property(retain, nonatomic) NSDictionary *externalThumbnailGeneratorData; // @synthesize externalThumbnailGeneratorData=_externalThumbnailGeneratorData;
 @property(retain, nonatomic) NSError *requestIsInvalidError; // @synthesize requestIsInvalidError=_requestIsInvalidError;

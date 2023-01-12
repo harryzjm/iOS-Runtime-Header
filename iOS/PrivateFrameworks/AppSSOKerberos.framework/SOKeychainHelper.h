@@ -10,10 +10,11 @@
 {
 }
 
-+ (int)removeCredentialsFromKeychainWithService:(id)arg1;
-+ (int)retrieveCredentialsFromKeychainWithService:(id)arg1 returnedUsername:(id *)arg2 returnedPassword:(id *)arg3;
-+ (int)addCredentialsToKeychainWithService:(id)arg1 withUsername:(id)arg2 withPassword:(id)arg3 requireUserPresence:(_Bool)arg4;
-+ (struct __SecIdentity *)identityForUUIDString:(id)arg1;
+- (int)removeCredentialsFromKeychainWithService:(id)arg1;
+- (int)retrieveCredentialsFromKeychainWithService:(id)arg1 returnedUsername:(id *)arg2 returnedPassword:(id *)arg3;
+- (int)addCredentialsToKeychainWithService:(id)arg1 withUsername:(id)arg2 withPassword:(id)arg3 requireUserPresence:(_Bool)arg4;
+- (struct __SecIdentity *)identityForUUIDString:(id)arg1;
+- (struct __SecIdentity *)identityForPersistientRef:(id)arg1;
 
 @end
 

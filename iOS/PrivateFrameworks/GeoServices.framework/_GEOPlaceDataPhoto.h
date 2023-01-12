@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapItemPhoto-Protocol.h>
 
-@class GEOPDCaptionedPhoto, GEOPDPhoto, NSString, NSURL;
+@class GEOMapItemPhotosAttribution, GEOPDCaptionedPhoto, GEOPDPhoto, NSDate, NSString, NSURL;
 @protocol GEOPhotoInfoSource;
 
 @interface _GEOPlaceDataPhoto : NSObject <GEOMapItemPhoto>
@@ -16,9 +16,12 @@
     GEOPDPhoto *_photo;
     GEOPDCaptionedPhoto *_captionedPhoto;
     id <GEOPhotoInfoSource> _photoInfoSource;
+    GEOMapItemPhotosAttribution *_attribution;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) GEOMapItemPhotosAttribution *attribution;
+@property(readonly, nonatomic) _Bool isBackgroundJoeColorCurated;
 @property(readonly, nonatomic) NSString *backgroundJoeColor;
 @property(readonly, nonatomic) _Bool businessProvided;
 @property(readonly, nonatomic) _Bool highQuality;
@@ -30,12 +33,15 @@
 @property(readonly, nonatomic) NSString *uid;
 @property(readonly, nonatomic) _Bool useGallery;
 @property(readonly, nonatomic) _Bool displayFullScreenPhotoGallery;
+@property(readonly, nonatomic) NSDate *dateCreated;
 @property(readonly, nonatomic) NSURL *licenseURL;
 @property(readonly, nonatomic) NSString *licenseDescription;
 @property(readonly, nonatomic) NSString *caption;
 @property(readonly, nonatomic) NSString *author;
 - (id)initWithPhoto:(id)arg1;
+- (id)initWithPhoto:(id)arg1 attribution:(id)arg2;
 - (id)initWithCaptionedPhoto:(id)arg1;
+- (id)initWithCaptionedPhoto:(id)arg1 attribution:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

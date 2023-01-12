@@ -27,6 +27,19 @@ struct CGSize {
     double height;
 };
 
+struct SCNVector3 {
+    float _field1;
+    float _field2;
+    float _field3;
+};
+
+struct SCNVector4 {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+};
+
 struct UIEdgeInsets {
     double _field1;
     double _field2;
@@ -48,8 +61,19 @@ typedef struct {
 } CDStruct_8932552d;
 
 typedef struct {
-    MISSING_TYPE *_field1[4];
-} CDStruct_f1db2b5e;
+    _Bool _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+} CDStruct_0c9855c6;
+
+typedef struct {
+    MISSING_TYPE *columns[3];
+} CDStruct_8e0628e6;
+
+typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
 
 typedef struct {
     double totalLatency;
@@ -79,8 +103,6 @@ typedef struct {
 
 typedef struct {
     _Bool mirroringEnabled;
-    struct {
-        MISSING_TYPE *columns[3];
-    } transform;
+    CDStruct_8e0628e6 transform;
 } CDStruct_10883d13;
 

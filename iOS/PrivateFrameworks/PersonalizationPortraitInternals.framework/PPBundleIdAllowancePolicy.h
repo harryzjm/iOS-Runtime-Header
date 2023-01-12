@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class _PASLock;
+@protocol TRINotificationToken;
 
 @interface PPBundleIdAllowancePolicy : NSObject
 {
     _PASLock *_allowancePolicyLock;
+    id <TRINotificationToken> _trialToken;
 }
 
 + (id)defaultPolicy;
@@ -23,6 +25,7 @@
 - (id)_readAssetData:(id)arg1;
 - (void)_loadAssetData;
 - (id)initWithNotificationBlocklist:(id)arg1 notificationAllowlist:(id)arg2 searchableItemBlocklist:(id)arg3 searchableItemAllowlist:(id)arg4;
+- (void)dealloc;
 - (id)init_;
 
 @end

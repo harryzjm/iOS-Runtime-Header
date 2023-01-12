@@ -4,18 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL, PKPaymentInstallmentConfiguration;
+@class NSString, NSURL, PKFeatureApplicationInvitationDetails, PKPaymentInstallmentConfiguration;
 
 @interface PKApplyWebServiceCreateRequest
 {
     NSURL *_applyServiceURL;
     unsigned long long _featureIdentifier;
+    unsigned long long _featureProduct;
     PKPaymentInstallmentConfiguration *_installmentConfiguration;
+    long long _applicationType;
+    NSString *_accountIdentifier;
+    NSString *_referenceIdentifier;
+    PKFeatureApplicationInvitationDetails *_invitationDetails;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKFeatureApplicationInvitationDetails *invitationDetails; // @synthesize invitationDetails=_invitationDetails;
+@property(copy, nonatomic) NSString *referenceIdentifier; // @synthesize referenceIdentifier=_referenceIdentifier;
+@property(copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+@property(nonatomic) long long applicationType; // @synthesize applicationType=_applicationType;
 @property(retain, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
+@property(nonatomic) unsigned long long featureProduct; // @synthesize featureProduct=_featureProduct;
 @property(nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
 @property(retain, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
 - (id)_urlRequestWithServiceURL:(id)arg1 appleAccountInformation:(id)arg2;

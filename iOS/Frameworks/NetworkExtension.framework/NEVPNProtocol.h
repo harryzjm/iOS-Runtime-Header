@@ -19,6 +19,7 @@
     _Bool _disconnectOnSleep;
     _Bool _includeAllNetworks;
     _Bool _excludeLocalNetworks;
+    _Bool _enforceRoutes;
     _Bool _disconnectOnWake;
     _Bool _identityDataImported;
     _Bool _disconnectOnIdle;
@@ -42,6 +43,7 @@
     NSData *_identityDataHash;
     NEKeychainItem *_identityDataPasswordKeychainItem;
     NEDNSSettings *_DNSSettings;
+    NSString *_extensibleSSOProvider;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -50,6 +52,7 @@
 @property _Bool disconnectOnUserSwitch; // @synthesize disconnectOnUserSwitch=_disconnectOnUserSwitch;
 @property int disconnectOnIdleTimeout; // @synthesize disconnectOnIdleTimeout=_disconnectOnIdleTimeout;
 @property _Bool disconnectOnIdle; // @synthesize disconnectOnIdle=_disconnectOnIdle;
+@property(copy) NSString *extensibleSSOProvider; // @synthesize extensibleSSOProvider=_extensibleSSOProvider;
 @property(copy) NEDNSSettings *DNSSettings; // @synthesize DNSSettings=_DNSSettings;
 @property(copy) NEKeychainItem *identityDataPasswordKeychainItem; // @synthesize identityDataPasswordKeychainItem=_identityDataPasswordKeychainItem;
 @property(copy) NSData *identityDataHash; // @synthesize identityDataHash=_identityDataHash;
@@ -64,6 +67,7 @@
 @property(retain) NEIdentityKeychainItem *identity; // @synthesize identity=_identity;
 @property(retain) NSString *keychainAccessGroup; // @synthesize keychainAccessGroup=_keychainAccessGroup;
 @property long long keychainDomain; // @synthesize keychainDomain=_keychainDomain;
+@property _Bool enforceRoutes; // @synthesize enforceRoutes=_enforceRoutes;
 @property _Bool excludeLocalNetworks; // @synthesize excludeLocalNetworks=_excludeLocalNetworks;
 @property _Bool includeAllNetworks; // @synthesize includeAllNetworks=_includeAllNetworks;
 @property(copy) NEProxySettings *proxySettings; // @synthesize proxySettings=_proxySettings;

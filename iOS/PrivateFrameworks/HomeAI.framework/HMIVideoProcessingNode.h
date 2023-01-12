@@ -10,6 +10,7 @@
 
 - (void)flushAsync;
 - (void)flush;
+- (void)finishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finish;
 - (void)handleAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)handleVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;

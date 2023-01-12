@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) double baselineOffsetFromBottom;
 @property(readonly, nonatomic) double baselineOffsetFromOrigin;
 - (double)interItemSpacing;
+- (struct UIEdgeInsets)subtitleLabelCharacterOverflowInsets;
 - (struct CGRect)subtitleLabelFrame;
 - (struct CGRect)accessoryViewFrame;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

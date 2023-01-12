@@ -6,6 +6,7 @@
 
 @class NSURL;
 
+__attribute__((visibility("hidden")))
 @interface BREvictItemOperation
 {
     unsigned long long _section;

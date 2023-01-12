@@ -11,12 +11,15 @@
 @interface EKCalendarTitleEditItem <UITextFieldDelegate>
 {
     UITableViewCell *_cell;
+    _Bool _showHeader;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool showHeader; // @synthesize showHeader=_showHeader;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (id)headerTitle;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (_Bool)becomeFirstResponder;
 - (_Bool)saveStateToCalendar:(id)arg1;

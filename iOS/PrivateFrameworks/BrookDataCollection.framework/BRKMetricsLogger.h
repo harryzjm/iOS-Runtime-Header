@@ -11,11 +11,8 @@
 }
 
 + (id)sharedInstance;
-- (id)_aggdKeyForMetricKey:(id)arg1;
-- (void)_enumerateMetrics:(id)arg1 distributionBlock:(CDUnknownBlockType)arg2 scalarBlock:(CDUnknownBlockType)arg3;
-- (void)clearMetrics:(id)arg1;
-- (void)appendMetrics:(id)arg1;
-- (void)logMetrics:(id)arg1;
+- (id)_coreAnalyticsKeyForMetricKey:(id)arg1;
+- (void)logEventName:(id)arg1 eventPayLoad:(id)arg2;
 - (id)_init;
 
 @end

@@ -29,8 +29,8 @@
 - (void)cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSUUID *homeUUID;
 @property(readonly, copy, nonatomic) NSString *homeName;
-- (void)dealloc;
 - (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 homeManager:(id)arg2;
 - (id)initWithInvitationData:(id)arg1 homeManager:(id)arg2;
 

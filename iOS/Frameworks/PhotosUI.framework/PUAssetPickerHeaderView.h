@@ -6,23 +6,15 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSLayoutConstraint, UILabel;
+@class UILabel;
 
 __attribute__((visibility("hidden")))
 @interface PUAssetPickerHeaderView : UICollectionReusableView
 {
     UILabel *_label;
-    double _sideMargins;
-    NSLayoutConstraint *_labelLeadingConstraint;
-    NSLayoutConstraint *_labelTrailingConstraint;
 }
 
-+ (id)kind;
-+ (id)identifier;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSLayoutConstraint *labelTrailingConstraint; // @synthesize labelTrailingConstraint=_labelTrailingConstraint;
-@property(readonly, nonatomic) NSLayoutConstraint *labelLeadingConstraint; // @synthesize labelLeadingConstraint=_labelLeadingConstraint;
-@property(nonatomic) double sideMargins; // @synthesize sideMargins=_sideMargins;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
 - (id)initWithFrame:(struct CGRect)arg1;
 

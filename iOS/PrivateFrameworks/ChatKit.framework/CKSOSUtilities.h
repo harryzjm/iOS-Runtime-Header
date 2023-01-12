@@ -22,6 +22,7 @@
 - (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3;
 @property(readonly, nonatomic, getter=isMMSEnabled) _Bool MMSEnabled;
 - (_Bool)isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
+- (_Bool)__im_ff_chatCacheEnabled;
 
 @end
 

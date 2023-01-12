@@ -6,13 +6,17 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKConversation, CKConversationList, CKConversationSearchResultsController, CKMessagesController, NSString;
+@class CKConversation, CKConversationList, CKConversationSearchResultsController, NSString;
+@protocol CKConversationListControllerDelegate;
 
 @protocol CKConversationListControllerProtocol <NSObject>
 @property(nonatomic) unsigned long long filterMode;
+@property(readonly, nonatomic) _Bool isSearchActive;
+@property(readonly, nonatomic) _Bool isSearchActiveAndDisplayingResultsForSearchText;
 @property(readonly, nonatomic) _Bool isVisible;
-@property(nonatomic) __weak CKMessagesController *messagesController;
+@property(nonatomic) __weak id <CKConversationListControllerDelegate> delegate;
 @property(retain, nonatomic) NSString *deferredSearchQuery;
+- (void)updateNavigationItems;
 - (void)reloadData;
 - (void)endHoldingConversationListUpdatesForPPTTests;
 - (void)beginHoldingConversationListUpdatesForPPTTests;
@@ -20,6 +24,7 @@
 - (void)batchDeleteButtonTapped:(id)arg1;
 - (void)updateConversationSelection;
 - (void)showMeCardViewController;
+- (void)updateSyncProgressIfNeeded;
 - (void)registerForCloudKitEventsImmediately;
 - (void)performSearch:(NSString *)arg1 completion:(void (^)(void))arg2;
 - (void)composeButtonClicked:(id)arg1;

@@ -8,11 +8,12 @@
 
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 
-@class NTKLayoutRule;
+@class NSNumber, NTKLayoutRule;
 
 @interface NTKDigitalTimeLabelStyle : CLKUITimeLabelStyle <NSCopying>
 {
     NTKLayoutRule *_layoutRule;
+    NSNumber *_tracking;
 }
 
 + (id)smallInUpperRightCornerStyleForBounds:(struct CGRect)arg1 withBaselineY:(double)arg2 withFont:(id)arg3 forDevice:(id)arg4;
@@ -20,11 +21,13 @@
 + (id)smallInUpperRightCornerStyleForBounds:(struct CGRect)arg1 forDevice:(id)arg2;
 + (id)smallInUpperRightCornerStyleForBounds:(struct CGRect)arg1 weight:(double)arg2 forDevice:(id)arg3;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 applyAdvanceFudge:(_Bool)arg3 withBaselineY:(double)arg4 withFont:(id)arg5 forDevice:(id)arg6;
++ (id)_fontForDesign:(id)arg1 withWeight:(double)arg2 onDevice:(id)arg3;
 + (id)defaultRoundedStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 applyAdvanceFudge:(_Bool)arg3 forDevice:(id)arg4;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 applyAdvanceFudge:(_Bool)arg3 withBaselineY:(double)arg4 forDevice:(id)arg5;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 applyAdvanceFudge:(_Bool)arg3 font:(id)arg4 forDevice:(id)arg5;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 applyAdvanceFudge:(_Bool)arg3 forDevice:(id)arg4;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *tracking; // @synthesize tracking=_tracking;
 @property(retain, nonatomic) NTKLayoutRule *layoutRule; // @synthesize layoutRule=_layoutRule;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

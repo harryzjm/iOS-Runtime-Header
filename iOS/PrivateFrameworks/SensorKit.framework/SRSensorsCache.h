@@ -6,29 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/NSCacheDelegate-Protocol.h>
-
-@class NSArray, NSCache, NSString;
+@class NSArray, NSCache;
 
 __attribute__((visibility("hidden")))
-@interface SRSensorsCache : NSObject <NSCacheDelegate>
+@interface SRSensorsCache : NSObject
 {
     NSCache *_sensorsCache;
     NSArray *_sensorDescriptionsDirs;
-    _Bool _shouldReloadAllSensors;
 }
 
++ (void)setDefaultCache:(id)arg1;
 + (void)initialize;
-- (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (void)dealloc;
 - (id)initWithDirectories:(id)arg1;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)constrained;
 - (_Bool)expensive;
 - (_Bool)cellular;
+@property(readonly) int _privacyStance; // @dynamic _privacyStance;
 @property(readonly, getter=isReusedConnection) _Bool reusedConnection; // @dynamic reusedConnection;
 @property(readonly, copy) NSString *networkProtocolName; // @dynamic networkProtocolName;
 @property(readonly, copy) NSDate *responseEndDate; // @dynamic responseEndDate;
@@ -31,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSDate *domainLookupEndDate; // @dynamic domainLookupEndDate;
 @property(readonly, copy) NSDate *domainLookupStartDate; // @dynamic domainLookupStartDate;
 @property(readonly, copy) NSDate *fetchStartDate; // @dynamic fetchStartDate;
-- (id)_initWithMetrics:(const struct NetworkLoadMetrics *)arg1;
+- (id)_initWithMetrics:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, getter=isCellular) _Bool cellular; // @dynamic cellular;

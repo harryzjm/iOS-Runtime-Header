@@ -22,10 +22,13 @@
     MISSING_TYPE *_resultProviderIdentifier;
 }
 
++ (void)fetchWithHistoryCuratedCollection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)fetchWithCuratedCollection:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)fetchWithHistoryCuratedCollections:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)fetchWithCuratedCollections:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)fetch:(long long)arg1:(long long)arg2:(id)arg3 sort:(long long)arg4 ascending:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
+@property(nonatomic, readonly) NSString *description;
 - (void)addEditWithBlock:(CDUnknownBlockType)arg1;
 - (Class)managedObjectClass;
 - (Class)mutableObjectClass;

@@ -9,10 +9,11 @@
 #import <KeynoteQuicklook/TSWPColumnMetrics-Protocol.h>
 #import <KeynoteQuicklook/TSWPLayoutParent-Protocol.h>
 #import <KeynoteQuicklook/TSWPStyleProvider-Protocol.h>
+#import <KeynoteQuicklook/TSWPStyleProviding-Protocol.h>
 
 @class NSMutableArray, NSString, TSWPLayout, TSWPPadding;
 
-@interface KNNoteLayout : TSDLayout <TSWPStyleProvider, TSWPLayoutParent, TSWPColumnMetrics>
+@interface KNNoteLayout : TSDLayout <TSWPLayoutParent, TSWPColumnMetrics, TSWPStyleProviding, TSWPStyleProvider>
 {
     TSWPPadding *_padding;
     NSMutableArray *_invertedParagraphsStyles;
@@ -37,7 +38,7 @@
 @property(readonly, nonatomic) double textScaleFactor;
 - (double)textScaleFactorForPrinting;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (id)p_adjustedPaddingForBodyWidth:(double)arg1;
 @property(readonly, nonatomic) TSWPPadding *padding;
 - (void)invalidatePadding;
@@ -51,7 +52,13 @@
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (_Bool)descendersCannotClip;
+- (id)textPropertiesForEquation:(id)arg1 basedOnProperties:(id)arg2;
+- (id)dropCapStyleAtParIndex:(unsigned long long)arg1;
+- (id)listStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)paragraphStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (_Bool)wantsToProvideStylesForTextLayout:(id)arg1;
+- (id)styleProviderForTextLayout:(id)arg1;
 - (id)styleProvider;
 - (_Bool)p_isForPrint;
 - (id)layoutGeometryFromInfo;

@@ -8,8 +8,10 @@
 
 @protocol HMDMediaBrowserDataSource
 @property(readonly) HMFSystemInfo *systemInfo;
+@property(readonly) _Bool requiresHomePodPairing;
 @property(readonly) _Bool isAppleMediaAccessory;
 @property(readonly) NSString *currentAccessoryMediaRouteIdentifier;
+- (HMDUnassociatedAppleMediaAccessory *)createUnassociatedHomePodAccessory:(NSString *)arg1 name:(NSString *)arg2 category:(HMAccessoryCategory *)arg3 messageDispatcher:(HMFMessageDispatcher *)arg4;
 - (HMDUnassociatedAppleMediaAccessory *)createUnassociatedAppleMediaAccessory:(NSString *)arg1 name:(NSString *)arg2 category:(HMAccessoryCategory *)arg3 messageDispatcher:(HMFMessageDispatcher *)arg4;
 @end
 

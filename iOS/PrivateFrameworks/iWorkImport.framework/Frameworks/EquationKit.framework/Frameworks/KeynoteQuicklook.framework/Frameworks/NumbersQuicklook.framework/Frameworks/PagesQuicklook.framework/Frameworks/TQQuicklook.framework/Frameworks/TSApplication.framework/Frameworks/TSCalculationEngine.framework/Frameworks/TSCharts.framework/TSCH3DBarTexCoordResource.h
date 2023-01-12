@@ -8,12 +8,12 @@
 
 @interface TSCH3DBarTexCoordResource
 {
-    TSCH3DBarExtrusionGeometry *mGeometry;
-    TSCH3DTexCoordGeneration *mGenerator;
+    TSCH3DBarExtrusionGeometry *_geometry;
+    TSCH3DTexCoordGeneration *_generator;
 }
 
+- (void).cxx_destruct;
 - (id)get;
-- (void)dealloc;
 - (id)initWithGeometry:(id)arg1 generator:(id)arg2;
 
 @end

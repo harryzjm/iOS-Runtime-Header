@@ -6,11 +6,11 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class WFDialogAttribution, WFDialogResponse;
+@class NSString, WFDialogAttribution, WFDialogResponse;
 @protocol WFParameterState;
 
 @protocol WFParameterDialogProvider <NSObject>
 - (id <WFParameterState>)parameterStateFromDialogResponse:(WFDialogResponse *)arg1;
-- (void)createDialogRequestWithAttribution:(WFDialogAttribution *)arg1 defaultState:(id <WFParameterState>)arg2 completionHandler:(void (^)(WFDialogRequest *))arg3;
+- (void)createDialogRequestWithAttribution:(WFDialogAttribution *)arg1 defaultState:(id <WFParameterState>)arg2 prompt:(NSString *)arg3 completionHandler:(void (^)(WFDialogRequest *))arg4;
 @end
 

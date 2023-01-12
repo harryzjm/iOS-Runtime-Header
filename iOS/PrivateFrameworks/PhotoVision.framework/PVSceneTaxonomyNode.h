@@ -6,31 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet, NSString, PVSceneTaxonomy;
+@class NSSet, NSString, PVSceneTaxonomy;
 
 @interface PVSceneTaxonomyNode : NSObject
 {
-    _Bool _indexed;
-    unsigned int _sceneClassId;
+    void *_nodeRef;
     PVSceneTaxonomy *_taxonomy;
-    NSString *_name;
-    double _threshold;
-    double _highRecallThreshold;
-    double _highPrecisionThreshold;
-    NSMutableSet *_parentNodes;
-    NSMutableSet *_childNodes;
 }
 
-+ (id)localizedStringForKey:(id)arg1 localizationBundle:(id)arg2 tableName:(id)arg3;
 - (void).cxx_destruct;
-@property(retain) NSMutableSet *childNodes; // @synthesize childNodes=_childNodes;
-@property(retain) NSMutableSet *parentNodes; // @synthesize parentNodes=_parentNodes;
-@property(readonly) double highPrecisionThreshold; // @synthesize highPrecisionThreshold=_highPrecisionThreshold;
-@property(readonly) double highRecallThreshold; // @synthesize highRecallThreshold=_highRecallThreshold;
-@property(readonly) double threshold; // @synthesize threshold=_threshold;
-@property(readonly, getter=isIndexed) _Bool indexed; // @synthesize indexed=_indexed;
-@property(readonly, copy) NSString *name; // @synthesize name=_name;
-@property(readonly) unsigned int sceneClassId; // @synthesize sceneClassId=_sceneClassId;
 @property(readonly) PVSceneTaxonomy *taxonomy; // @synthesize taxonomy=_taxonomy;
 @property(readonly) double graphHighRecallThreshold;
 @property(readonly) double graphHighPrecisionThreshold;
@@ -41,12 +25,17 @@
 - (id)localizedSynonyms;
 - (id)localizedLabel;
 - (void)traverse:(long long)arg1 visitor:(CDUnknownBlockType)arg2;
-- (void)recursivelyReleaseParents;
-- (void)addChildNode:(id)arg1;
+@property(readonly, copy) NSSet *detectors;
 @property(readonly, copy) NSSet *children;
 @property(readonly, copy) NSSet *parents;
+@property(readonly) double highPrecisionThreshold;
+@property(readonly) double highRecallThreshold;
+@property(readonly) double threshold;
+@property(readonly, getter=isIndexed) _Bool indexed;
+@property(readonly) unsigned int sceneClassId;
+@property(readonly, copy) NSString *name;
 @property(readonly, getter=isRoot) _Bool root;
-- (id)initWithSceneClassId:(unsigned int)arg1 name:(id)arg2 indexed:(_Bool)arg3 threshold:(double)arg4 highRecallThreshold:(double)arg5 highPrecisionThreshold:(double)arg6 taxonomy:(id)arg7;
+- (id)initWithNodeRef:(void *)arg1 taxonomy:(id)arg2;
 
 @end
 

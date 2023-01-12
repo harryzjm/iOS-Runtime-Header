@@ -11,8 +11,8 @@
 @class NSString;
 
 @interface NSOperation (FCOperationIdentifyingSupport) <FCOperationIdentifying>
-- (id)longOperationDescription;
-- (id)shortOperationDescription;
+@property(readonly, nonatomic) NSString *longOperationDescription;
+@property(readonly, nonatomic) NSString *shortOperationDescription;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

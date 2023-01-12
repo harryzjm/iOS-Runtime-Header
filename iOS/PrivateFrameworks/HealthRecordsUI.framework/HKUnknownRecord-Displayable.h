@@ -10,7 +10,6 @@
 - (void)fetchConceptRoomItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchDetailItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)titleDisplayStringForDetailViewController;
-- (long long)recordCategoryType;
 - (id)title;
 @end
 

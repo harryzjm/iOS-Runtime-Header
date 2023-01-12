@@ -64,7 +64,6 @@
 - (void)setModalShadowVisibility:(double)arg1 animated:(_Bool)arg2 withDelay:(double)arg3;
 - (void)setModalShadowVisibility:(double)arg1 animated:(_Bool)arg2;
 - (void)setDimmer:(double)arg1 animated:(_Bool)arg2;
-@property(nonatomic, getter=isReduceMotionEnabled) _Bool reduceMotionEnabled;
 @property(nonatomic, getter=isPaused) _Bool paused;
 @property(readonly, nonatomic) _Bool frontFaceBodyContentCreated;
 @property(readonly, nonatomic) NSString *uniqueID;

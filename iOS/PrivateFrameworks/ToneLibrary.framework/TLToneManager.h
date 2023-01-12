@@ -72,6 +72,7 @@
 - (id)_importPurchasedToneWithMetadata:(id)arg1 fileName:(id)arg2;
 - (void)removeImportedToneWithIdentifier:(id)arg1;
 - (void)importTone:(id)arg1 metadata:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (double)_unduckTimeForToneIdentifier:(id)arg1;
 - (_Bool)toneWithIdentifierIsValid:(id)arg1;
 - (_Bool)_toneWithIdentifierIsValid:(id)arg1;
 - (id)_toneIdentifierForFileAtPath:(id)arg1 isValid:(_Bool *)arg2;

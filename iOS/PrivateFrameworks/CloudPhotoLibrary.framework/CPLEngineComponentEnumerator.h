@@ -15,7 +15,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)nextComponent;
+- (void)handleNextComponent;
 - (id)initWithComponents:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end

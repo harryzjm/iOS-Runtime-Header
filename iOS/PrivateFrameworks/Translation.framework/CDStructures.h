@@ -38,8 +38,6 @@ struct Alignment {
     unsigned char _field1[1];
 };
 
-struct Allocator;
-
 struct AudioAnalytics {
     unsigned char _field1[1];
 };
@@ -85,6 +83,10 @@ struct BatchRecoverStreamingResponse {
 };
 
 struct BatchTranslationCacheContainer {
+    unsigned char _field1[1];
+};
+
+struct BatchTranslationFeedbackRequest {
     unsigned char _field1[1];
 };
 
@@ -198,18 +200,6 @@ struct FinalTextToSpeechStreamingResponse {
 
 struct FinishAudio {
     unsigned char _field1[1];
-};
-
-struct FlatBufferBuilder {
-    struct vector_downward _field1;
-    unsigned int _field2;
-    unsigned short _field3;
-    _Bool _field4;
-    _Bool _field5;
-    unsigned long long _field6;
-    _Bool _field7;
-    _Bool _field8;
-    struct set<flatbuffers::Offset<flatbuffers::String>, flatbuffers::FlatBufferBuilder::StringOffsetCompare, std::__1::allocator<flatbuffers::Offset<flatbuffers::String>>> *_field9;
 };
 
 struct GraphemeToPhonemeRequest {
@@ -453,6 +443,10 @@ struct Offset<siri::speech::schema_fb::BatchRecoverFinalResponse> {
 };
 
 struct Offset<siri::speech::schema_fb::BatchTranslationCacheContainer> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::BatchTranslationFeedbackRequest> {
     unsigned int _field1;
 };
 
@@ -853,6 +847,10 @@ struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest> {
 };
 
 struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest_::ContextInfoEntry> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TTSNeuralPhonemeSequence> {
     unsigned int _field1;
 };
 
@@ -1268,6 +1266,10 @@ struct StringTokenPair {
     unsigned char _field1[1];
 };
 
+struct TTSNeuralPhonemeSequence {
+    unsigned char _field1[1];
+};
+
 struct TTSNormalizedText {
     unsigned char _field1[1];
 };
@@ -1445,17 +1447,10 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct set<flatbuffers::Offset<flatbuffers::String>, flatbuffers::FlatBufferBuilder::StringOffsetCompare, std::__1::allocator<flatbuffers::Offset<flatbuffers::String>>>;
-
-struct vector_downward {
-    struct Allocator *_field1;
-    _Bool _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    char *_field6;
-    char *_field7;
-    char *_field8;
+struct atomic<bool> {
+    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
+        _Atomic _Bool __a_value;
+    } __a_;
 };
 
 #pragma mark Typedef'd Structures
@@ -1600,6 +1595,10 @@ typedef struct Offset<siri::speech::schema_fb::BatchRecoverFinalResponse> {
 typedef struct Offset<siri::speech::schema_fb::BatchTranslationCacheContainer> {
     unsigned int _field1;
 } Offset_17d7eaae;
+
+typedef struct Offset<siri::speech::schema_fb::BatchTranslationFeedbackRequest> {
+    unsigned int _field1;
+} Offset_94ef6cc9;
 
 typedef struct Offset<siri::speech::schema_fb::BatchTranslationRequest> {
     unsigned int _field1;
@@ -2000,6 +1999,10 @@ typedef struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest
 typedef struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest_::ContextInfoEntry> {
     unsigned int _field1;
 } Offset_0dc7c184;
+
+typedef struct Offset<siri::speech::schema_fb::TTSNeuralPhonemeSequence> {
+    unsigned int _field1;
+} Offset_350cea8b;
 
 typedef struct Offset<siri::speech::schema_fb::TTSNormalizedText> {
     unsigned int _field1;

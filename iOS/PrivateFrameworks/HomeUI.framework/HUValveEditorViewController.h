@@ -17,6 +17,7 @@
 @property(retain, nonatomic) NSMutableSet *moduleControllers; // @synthesize moduleControllers=_moduleControllers;
 @property(retain, nonatomic) HUNameItemModuleController *nameModuleController; // @synthesize nameModuleController=_nameModuleController;
 @property(retain, nonatomic) HUValveEditorItemManager *valveEditorItemManager; // @synthesize valveEditorItemManager=_valveEditorItemManager;
+- (void)diffableDataItemManager:(id)arg1 willUpdateItems:(id)arg2 addItems:(id)arg3 removeItems:(id)arg4 isInitialLoad:(_Bool)arg5;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
 - (_Bool)shouldManageTextFieldForItem:(id)arg1;

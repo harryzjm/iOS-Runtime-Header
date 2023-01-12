@@ -15,6 +15,8 @@
     PKDrawing *_latestDrawing;
     unsigned long long _numberOfChanges;
     NSManagedObjectContext *_workerContext;
+    NSManagedObjectContext *_mainContext;
+    NSManagedObjectContext *_handwritingRecognitionContext;
 }
 
 + (void)purgeHandwritingSummariesInContext:(id)arg1;
@@ -22,6 +24,8 @@
 + (id)missingOrOutdatedHandwritingSummaryAttachmentIDsInContext:(id)arg1;
 + (id)handwritingSummaryAttachmentsInContext:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSManagedObjectContext *handwritingRecognitionContext; // @synthesize handwritingRecognitionContext=_handwritingRecognitionContext;
+@property(retain, nonatomic) NSManagedObjectContext *mainContext; // @synthesize mainContext=_mainContext;
 @property(retain, nonatomic) NSManagedObjectContext *workerContext; // @synthesize workerContext=_workerContext;
 @property(nonatomic) unsigned long long numberOfChanges; // @synthesize numberOfChanges=_numberOfChanges;
 @property(retain, nonatomic) PKDrawing *latestDrawing; // @synthesize latestDrawing=_latestDrawing;

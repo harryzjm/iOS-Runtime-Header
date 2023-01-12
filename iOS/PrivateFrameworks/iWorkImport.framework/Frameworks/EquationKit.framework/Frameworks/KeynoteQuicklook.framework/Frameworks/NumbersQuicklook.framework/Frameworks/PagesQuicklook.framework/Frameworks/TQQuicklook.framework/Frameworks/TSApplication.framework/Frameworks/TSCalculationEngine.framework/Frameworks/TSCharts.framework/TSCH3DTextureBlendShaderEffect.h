@@ -20,10 +20,6 @@
 - (void)addVariables:(id)arg1;
 - (id)variableBlendTexture;
 - (id)variableBlendFactor;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

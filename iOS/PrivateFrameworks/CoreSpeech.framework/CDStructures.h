@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct AFTimeRange {
+    double _field1;
+    double _field2;
+};
+
 struct AudioBuffer {
     unsigned int mNumberChannels;
     unsigned int mDataByteSize;
@@ -33,59 +38,67 @@ struct AudioStreamBasicDescription {
     unsigned int mReserved;
 };
 
-struct BatchBeepCanceller;
-
-struct CSAudioCircularBufferImpl<unsigned char>;
-
-struct CSAudioCircularBufferImpl<unsigned short>;
-
-struct CSAudioZeroFilterImpl<unsigned short>;
-
 struct SmartSiriVolume;
 
-struct unique_ptr<BatchBeepCanceller, std::__1::default_delete<BatchBeepCanceller>> {
-    struct __compressed_pair<BatchBeepCanceller *, std::__1::default_delete<BatchBeepCanceller>> {
-        struct BatchBeepCanceller *__value_;
-    } __ptr_;
+struct __sFILE {
+    char *_field1;
+    int _field2;
+    int _field3;
+    short _field4;
+    short _field5;
+    struct __sbuf _field6;
+    int _field7;
+    void *_field8;
+    CDUnknownFunctionPointerType _field9;
+    CDUnknownFunctionPointerType _field10;
+    CDUnknownFunctionPointerType _field11;
+    CDUnknownFunctionPointerType _field12;
+    struct __sbuf _field13;
+    struct __sFILEX *_field14;
+    int _field15;
+    unsigned char _field16[3];
+    unsigned char _field17[1];
+    struct __sbuf _field18;
+    int _field19;
+    long long _field20;
 };
 
-struct unique_ptr<CSAudioZeroFilterImpl<unsigned short>, std::__1::default_delete<CSAudioZeroFilterImpl<unsigned short>>> {
-    struct __compressed_pair<CSAudioZeroFilterImpl<unsigned short>*, std::__1::default_delete<CSAudioZeroFilterImpl<unsigned short>>> {
-        struct CSAudioZeroFilterImpl<unsigned short> *__value_;
-    } __ptr_;
+struct __sbuf {
+    char *_field1;
+    int _field2;
 };
 
-struct unique_ptr<SmartSiriVolume, std::__1::default_delete<SmartSiriVolume>> {
-    struct __compressed_pair<SmartSiriVolume *, std::__1::default_delete<SmartSiriVolume>> {
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct unique_ptr<SmartSiriVolume, std::default_delete<SmartSiriVolume>> {
+    struct __compressed_pair<SmartSiriVolume *, std::default_delete<SmartSiriVolume>> {
         struct SmartSiriVolume *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<corespeech::CSAudioCircularBufferImpl<unsigned char>, std::__1::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned char>>> {
-    struct __compressed_pair<corespeech::CSAudioCircularBufferImpl<unsigned char>*, std::__1::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned char>>> {
-        struct CSAudioCircularBufferImpl<unsigned char> *__value_;
+struct unique_ptr<corespeech::CSAudioCircularBufferImpl<unsigned char>, std::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned char>>> {
+    struct __compressed_pair<corespeech::CSAudioCircularBufferImpl<unsigned char>*, std::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned char>>> {
+        void *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<corespeech::CSAudioCircularBufferImpl<unsigned short>, std::__1::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned short>>> {
-    struct __compressed_pair<corespeech::CSAudioCircularBufferImpl<unsigned short>*, std::__1::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned short>>> {
-        struct CSAudioCircularBufferImpl<unsigned short> *__value_;
-    } __ptr_;
-};
-
-struct vector<float, std::__1::allocator<float>> {
+struct vector<float, std::allocator<float>> {
     float *__begin_;
     float *__end_;
-    struct __compressed_pair<float *, std::__1::allocator<float>> {
+    struct __compressed_pair<float *, std::allocator<float>> {
         float *__value_;
     } __end_cap_;
 };
 
-struct vector<short, std::__1::allocator<short>> {
-    short *__begin_;
-    short *__end_;
-    struct __compressed_pair<short *, std::__1::allocator<short>> {
-        short *__value_;
-    } __end_cap_;
-};
+#pragma mark Typedef'd Unions
+
+typedef union {
+    struct {
+        unsigned short _field1;
+        unsigned short _field2;
+    } _field1;
+    unsigned int _field2;
+} CDUnion_e15ec660;
 

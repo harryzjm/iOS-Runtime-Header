@@ -10,5 +10,8 @@
 
 @protocol NanoResourceGrabberIDSXPC <NSObject>
 - (void)xpcGetIconForBundleID:(NSString *)arg1 iconVariant:(int)arg2 withTimeout:(double)arg3 reply:(void (^)(NSData *))arg4;
+
+@optional
+- (void)xpcGetAppViewListImage:(struct CGSize)arg1 scale:(double)arg2 reply:(void (^)(NSData *, NSError *))arg3;
 @end
 

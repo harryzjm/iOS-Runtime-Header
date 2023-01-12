@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void)protectFilesAgainstEviction;
 - (_Bool)shouldCancelInsteadOfWaiting;
 - (id)allURLs;
 - (_Bool)blocksClaim:(id)arg1;

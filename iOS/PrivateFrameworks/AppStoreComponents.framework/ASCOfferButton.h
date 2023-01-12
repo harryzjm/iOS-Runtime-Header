@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class ASCModalViewInteraction, ASCOfferMetadata, ASCOfferTheme, CAAnimation, UIImageView, UILabel, UIViewPropertyAnimator;
+@class ASCModalViewInteraction, ASCOfferButtonBackgroundImageView, ASCOfferMetadata, ASCOfferTheme, CAAnimation, UILabel, UIViewPropertyAnimator;
 @protocol ASCOfferButtonDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     ASCOfferTheme *_theme;
     ASCOfferMetadata *_metadata;
     id <ASCOfferButtonDelegate> _delegate;
-    UIImageView *_imageView;
+    ASCOfferButtonBackgroundImageView *_imageView;
     UILabel *_titleLabelIfLoaded;
     UILabel *_subtitleLabelIfLoaded;
     ASCModalViewInteraction *_modalInteraction;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) ASCModalViewInteraction *modalInteraction; // @synthesize modalInteraction=_modalInteraction;
 @property(readonly, nonatomic) UILabel *subtitleLabelIfLoaded; // @synthesize subtitleLabelIfLoaded=_subtitleLabelIfLoaded;
 @property(readonly, nonatomic) UILabel *titleLabelIfLoaded; // @synthesize titleLabelIfLoaded=_titleLabelIfLoaded;
-@property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property(readonly, nonatomic) ASCOfferButtonBackgroundImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) __weak id <ASCOfferButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) ASCOfferMetadata *metadata; // @synthesize metadata=_metadata;
 @property(retain, nonatomic) ASCOfferTheme *theme; // @synthesize theme=_theme;
@@ -52,6 +52,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CAAnimation *imageAnimation;
 - (void)endModalState;
 - (void)beginModalStateWithCancelBlock:(CDUnknownBlockType)arg1;
+- (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (id)focusEffect;
+- (_Bool)canBecomeFocused;
+- (void)updateFocusState;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;

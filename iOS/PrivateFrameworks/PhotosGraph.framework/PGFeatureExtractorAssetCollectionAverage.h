@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) NSArray *assetFetchOptionPropertySet; // @synthesize assetFetchOptionPropertySet=_assetFetchOptionPropertySet;
 @property(readonly, nonatomic) MAFeatureExtractor *assetFeatureExtractor; // @synthesize assetFeatureExtractor=_assetFeatureExtractor;
 - (_Bool)_generateError:(id *)arg1 code:(long long)arg2 message:(id)arg3 underlyingError:(id)arg4;
+- (id)floatMatrixWithEntities:(id)arg1 progressReporter:(id)arg2 error:(id *)arg3;
 - (id)floatVectorWithEntity:(id)arg1 error:(id *)arg2;
 - (long long)featureLength;
 - (id)featureNames;

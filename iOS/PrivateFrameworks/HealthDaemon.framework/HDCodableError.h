@@ -15,9 +15,7 @@
     long long _code;
     NSString *_domain;
     NSString *_localizedDescription;
-    struct {
-        unsigned int code:1;
-    } _has;
+    CDStruct_9ab06576 _has;
 }
 
 - (void).cxx_destruct;

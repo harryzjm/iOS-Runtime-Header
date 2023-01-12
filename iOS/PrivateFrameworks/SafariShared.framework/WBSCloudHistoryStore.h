@@ -27,6 +27,7 @@
 - (void)deleteHistoryZoneWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resetRecordZone;
 - (void)_prepareRecordZoneWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_prepareRecordZoneWithoutCachingWithError:(id *)arg1;
 - (id)_dictionaryForRecordData:(id)arg1;
 - (id)_recordDataForDictionary:(id)arg1;
 - (id)_recordWithType:(id)arg1 version:(unsigned long long)arg2 dataDictionary:(id)arg3;

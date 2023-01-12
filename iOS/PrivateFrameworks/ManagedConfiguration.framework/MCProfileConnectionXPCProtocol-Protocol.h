@@ -9,6 +9,7 @@
 @class NSArray, NSData, NSError, NSString;
 
 @protocol MCProfileConnectionXPCProtocol <NSObject>
+- (void)doMCICWaitForEnrollmentToFinishWithCompletion:(void (^)(void))arg1;
 - (void)doMCICDidRequestCurrentPasscodeWithCompletion:(void (^)(_Bool, NSString *, NSError *))arg1;
 - (void)doMCICDidRequestShowUserWarnings:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)doMCICDidFinishPreflightWithError:(NSError *)arg1 completion:(void (^)(NSArray *, _Bool, unsigned long long, NSError *))arg2;

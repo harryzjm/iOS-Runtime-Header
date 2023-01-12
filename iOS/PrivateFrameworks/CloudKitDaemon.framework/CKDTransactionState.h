@@ -8,15 +8,14 @@
 
 @class CKDAssetBatch, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDTransactionState : NSObject
 {
     CKDAssetBatch *_assetBatch;
-    NSMutableDictionary *_itemByAssetId;
+    NSMutableDictionary *_itemsByAssetId;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableDictionary *itemByAssetId; // @synthesize itemByAssetId=_itemByAssetId;
+@property(retain, nonatomic) NSMutableDictionary *itemsByAssetId; // @synthesize itemsByAssetId=_itemsByAssetId;
 @property(retain, nonatomic) CKDAssetBatch *assetBatch; // @synthesize assetBatch=_assetBatch;
 - (id)init;
 

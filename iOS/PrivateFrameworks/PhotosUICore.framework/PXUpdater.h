@@ -16,6 +16,7 @@
     NSMutableIndexSet *_updateSelectorsNeedingUpdate;
     NSMutableIndexSet *_updateSelectorsAlreadyUpdated;
     _Bool _isPerformingUpdates;
+    _Bool _hasUpdatedForCurrentPass;
     _Bool _updatePassScheduled;
     _Bool _extraChecksEnabled;
     id _target;

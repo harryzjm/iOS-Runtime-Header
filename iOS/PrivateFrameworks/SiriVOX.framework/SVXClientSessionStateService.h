@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long currentState; // @synthesize currentState=_currentState;
 - (void)_setCurrentState:(long long)arg1;
 - (void)fetchStateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id)arg1 performer:(id)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id)arg1 analytics:(id)arg2 performer:(id)arg3;
 - (void)handleDidChangeSessionStateFrom:(long long)arg1 to:(long long)arg2;
 - (void)handleWillChangeSessionStateFrom:(long long)arg1 to:(long long)arg2;
 

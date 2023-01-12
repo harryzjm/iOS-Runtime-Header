@@ -11,6 +11,7 @@
 @protocol CPUINowPlayingViewControllerDelegate <NSObject>
 
 @optional
+- (_Bool)nowPlayingViewControllerIsRightHandDrive:(CPUINowPlayingViewController *)arg1;
 - (void)nowPlayingViewController:(CPUINowPlayingViewController *)arg1 didSelectButton:(CPUIMediaButton *)arg2;
 - (NSArray *)customPlaybackControlButtonsForNowPlayingViewController:(CPUINowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerWillAppear:(CPUINowPlayingViewController *)arg1;

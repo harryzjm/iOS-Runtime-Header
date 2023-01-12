@@ -13,14 +13,17 @@
 #import <ActionKit/WFSetCellularDataIntentHandling-Protocol.h>
 #import <ActionKit/WFSetFlashlightIntentHandling-Protocol.h>
 #import <ActionKit/WFSetLowPowerModeIntentHandling-Protocol.h>
+#import <ActionKit/WFSetOrientationLockIntentHandling-Protocol.h>
 #import <ActionKit/WFSetWiFiIntentHandling-Protocol.h>
 
 @class NSString;
 
-@interface WFSettingsIntentHandler : NSObject <WFSetAirplaneModeIntentHandling, WFSetWiFiIntentHandling, WFSetBluetoothIntentHandling, WFSetCellularDataIntentHandling, WFSetLowPowerModeIntentHandling, WFSetBrightnessIntentHandling, WFSetFlashlightIntentHandling, WFSetAppearanceIntentHandling>
+@interface WFSettingsIntentHandler : NSObject <WFSetAirplaneModeIntentHandling, WFSetWiFiIntentHandling, WFSetBluetoothIntentHandling, WFSetCellularDataIntentHandling, WFSetLowPowerModeIntentHandling, WFSetBrightnessIntentHandling, WFSetFlashlightIntentHandling, WFSetAppearanceIntentHandling, WFSetOrientationLockIntentHandling>
 {
 }
 
+- (void)handleSetOrientationLock:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)resolveOperationForSetAppearance:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleSetAppearance:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resolveStyleForSetAppearance:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleSetFlashlight:(id)arg1 completion:(CDUnknownBlockType)arg2;

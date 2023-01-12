@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 
 - (id)webNodeHighlight;
 - (void)layoutSublayers:(id)arg1;
-- (void)_layoutForRectsHighlight:(struct Highlight *)arg1 parent:(id)arg2;
-- (void)_layoutForNodeHighlight:(struct Highlight *)arg1 parent:(id)arg2;
+- (void)_layoutForRectsHighlight:(void *)arg1 parent:(id)arg2;
+- (void)_layoutForNodeHighlight:(void *)arg1 parent:(id)arg2;
 - (void)_attach:(id)arg1 numLayers:(unsigned long long)arg2;
 - (_Bool)isFlipped;
 - (void)detachFromWebNodeHighlight;

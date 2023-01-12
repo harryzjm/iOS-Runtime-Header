@@ -10,7 +10,6 @@
 
 @class CNChangeHistoryAnchor, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CNChangeHistoryResult : NSObject <NSSecureCoding>
 {
     _Bool _changesTruncated;
@@ -19,10 +18,12 @@ __attribute__((visibility("hidden")))
     NSArray *_contactChanges;
     NSArray *_groupChanges;
     NSArray *_labeledValueChanges;
+    long long _changesCount;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) long long changesCount; // @synthesize changesCount=_changesCount;
 @property(nonatomic) _Bool unifyResults; // @synthesize unifyResults=_unifyResults;
 @property(retain, nonatomic) NSArray *labeledValueChanges; // @synthesize labeledValueChanges=_labeledValueChanges;
 @property(retain, nonatomic) NSArray *groupChanges; // @synthesize groupChanges=_groupChanges;

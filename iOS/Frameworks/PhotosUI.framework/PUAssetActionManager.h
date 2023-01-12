@@ -28,7 +28,9 @@
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetReferences:(id)arg2;
 - (id)_assetsByAssetCollectionForAssetReferences:(id)arg1;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;
+- (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1 allowsRemove:(_Bool)arg2;
 - (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1;
+- (id)barButtonItemForActionType:(unsigned long long)arg1;
 - (_Bool)shouldEnableActionType:(unsigned long long)arg1 onAsset:(id)arg2 inAssetCollection:(id)arg3;
 - (_Bool)canPerformActionType:(unsigned long long)arg1 onAsset:(id)arg2 inAssetCollection:(id)arg3;
 @property(readonly, nonatomic) PXSectionedSelectionManager *px_selectionManager;

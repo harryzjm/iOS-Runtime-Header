@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface SNForwardPassAudioStreamAnalyzer : NSObject <SNTimeConverting>
 {
     SNAudioProcessorCache *_processorCache;
-    struct list<SoundAnalysis::ProcessingContext, std::__1::allocator<SoundAnalysis::ProcessingContext>> _processingContexts;
+    struct list<SoundAnalysis::ProcessingContext, std::allocator<SoundAnalysis::ProcessingContext>> _processingContexts;
     struct ProcessingTree _processingTree;
     AVAudioFormat *_currentFormat;
     NSArray *_requests;
@@ -30,7 +30,8 @@ __attribute__((visibility("hidden")))
 - (id)detailedDescription;
 - (void)writeDSPGraphDotFilesToDirectory:(id)arg1;
 @property(readonly, nonatomic) double clientSampleRate;
-- (long long)clientSampleTimeFromSampleTime:(long long)arg1 fromBox:(struct Box *)arg2;
+- (long long)clientSampleTimeFromSampleTime:(long long)arg1 fromBox:(void *)arg2;
+- (void)handleAnalysisPrimingError;
 - (void)handleAnalyzeAudioBufferError;
 - (void)sendErrorToAllRequests:(id)arg1;
 - (void)analyzeAudioBuffer:(id)arg1 atAudioFramePosition:(long long)arg2;

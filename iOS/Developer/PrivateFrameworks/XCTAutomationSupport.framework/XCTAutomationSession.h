@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <XCTAutomationSupport/XCTAutomationTarget-Protocol.h>
 #import <XCTAutomationSupport/XCTConnectionAccepting-Protocol.h>
 #import <XCTAutomationSupport/XCTElementSnapshotAttributeDataSource-Protocol.h>
 #import <XCTAutomationSupport/XCTElementSnapshotProvider-Protocol.h>
 #import <XCTAutomationSupport/XCTMacCatalystStatusProviding-Protocol.h>
+#import <XCTAutomationSupport/XCTMessagingChannel_RunnerToUIProcess-Protocol.h>
 #import <XCTAutomationSupport/XCTRemoteApplicationAutomationTarget-Protocol.h>
 
 @class DTXConnection, DTXProxyChannel, NSMutableArray, NSString, XCTAnimationsIdleNotifier, XCTCapabilities, XCTElementQueryProcessor, XCTMainRunLoopIdleNotifier;
 @protocol OS_dispatch_queue, XCTAccessibilityFramework, XCTElementSnapshotProvider><XCTElementSnapshotAttributeDataSource;
 
-@interface XCTAutomationSession : NSObject <XCTRemoteApplicationAutomationTarget, XCTElementSnapshotProvider, XCTElementSnapshotAttributeDataSource, XCTMacCatalystStatusProviding, XCTConnectionAccepting, XCTAutomationTarget>
+@interface XCTAutomationSession : NSObject <XCTMessagingChannel_RunnerToUIProcess, XCTRemoteApplicationAutomationTarget, XCTElementSnapshotProvider, XCTElementSnapshotAttributeDataSource, XCTMacCatalystStatusProviding, XCTConnectionAccepting>
 {
     id <XCTAccessibilityFramework> _accessibilityFramework;
     id <XCTElementSnapshotProvider><XCTElementSnapshotAttributeDataSource> _dataSource;
@@ -50,12 +50,14 @@
 - (id)attributesForElement:(id)arg1 attributes:(id)arg2 error:(id *)arg3;
 @property(readonly) _Bool allowsRemoteAccess;
 - (id)snapshotForElement:(id)arg1 attributes:(id)arg2 parameters:(id)arg3 timeoutControls:(id)arg4 error:(id *)arg5;
+- (id)_XCT_setMallocStackLoggingWithMode:(id)arg1;
 - (id)_XCT_notifyWhenAnimationsAreIdle;
 - (id)_XCT_notifyWhenMainRunLoopIsIdle;
 - (id)_XCT_attributesForElement:(id)arg1 attributes:(id)arg2;
 - (id)_XCT_fetchMatchesForQuery:(id)arg1;
 - (id)_XCT_exchangeCapabilities:(id)arg1;
 - (void)listenForRemoteConnectionViaSerializedTransportWrapper:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setMallocStackLoggingWithMode:(int)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)notifyWhenAnimationsAreIdle:(CDUnknownBlockType)arg1;
 - (void)notifyWhenMainRunLoopIsIdle:(CDUnknownBlockType)arg1;
 - (id)valuesForPrivilegedAttributes:(id)arg1 forElement:(id)arg2 error:(id *)arg3;

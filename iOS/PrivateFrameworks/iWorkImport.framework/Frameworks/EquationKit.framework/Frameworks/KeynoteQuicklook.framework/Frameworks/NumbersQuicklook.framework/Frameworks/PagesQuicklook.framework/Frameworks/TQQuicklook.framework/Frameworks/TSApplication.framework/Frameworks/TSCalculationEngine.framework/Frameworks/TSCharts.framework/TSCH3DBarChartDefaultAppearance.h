@@ -7,24 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <TSCharts/TSCH3DBarChartAppearance-Protocol.h>
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
 
 @class TSCH3DChartBarElementProperties;
 
-@interface TSCH3DBarChartDefaultAppearance : NSObject <TSCHUnretainedParent, TSCH3DBarChartAppearance>
+@interface TSCH3DBarChartDefaultAppearance : NSObject <TSCH3DBarChartAppearance>
 {
-    TSCH3DChartBarElementProperties *mProperties;
+    TSCH3DChartBarElementProperties *_properties;
 }
 
 + (struct BarExtrusionDetails)defaultDetails;
 + (int)shapeType;
+- (void).cxx_destruct;
 - (_Bool)isCircular;
 - (float)depthForScene:(id)arg1;
 - (float)chartMinZForScene:(id)arg1;
-- (float)signedValueForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2;
+- (float)signedValueForSeries:(id)arg1 index:(const void *)arg2;
 - (float)maxValueForSeries:(long long)arg1;
-- (void)clearParent;
-- (void)dealloc;
 - (id)initWithProperties:(id)arg1;
 
 @end

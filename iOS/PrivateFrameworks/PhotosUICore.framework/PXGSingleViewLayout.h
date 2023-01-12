@@ -11,7 +11,7 @@
 
 @interface PXGSingleViewLayout <PXGViewSource>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     unsigned short _contentSpriteMediaVersion;
     NSIndexSet *_axSpriteIndexes;
     float _zPosition;

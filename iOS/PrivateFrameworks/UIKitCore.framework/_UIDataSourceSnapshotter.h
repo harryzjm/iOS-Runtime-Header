@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshotTranslating>
 {
-    struct vector<_NSRange, std::__1::allocator<_NSRange>> _sectionRanges;
+    struct vector<_NSRange, std::allocator<_NSRange>> _sectionRanges;
 }
 
 + (id)snapshotterForSnapshot:(id)arg1;
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)snapshotterForDataSourceBackedView:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_resetToStateOfSnapshotter:(id)arg1;
 - (void)_recomputeRangeLocations;
 - (_Bool)_insertSection:(long long)arg1 withInitialCount:(long long)arg2;
 - (_Bool)_incrementSectionCount:(long long)arg1 byCount:(long long)arg2;

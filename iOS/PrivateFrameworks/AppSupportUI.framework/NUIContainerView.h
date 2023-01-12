@@ -13,13 +13,13 @@
 {
     _Bool _isRTL;
     id <NUIContainerViewDelegate> _delegate;
-    struct map<UIView *, _NUIContainerViewArrangedSubview, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, _NUIContainerViewArrangedSubview>>> _arrangedSubviewInfo;
+    struct map<UIView *, _NUIContainerViewArrangedSubview, std::less<UIView *>, std::allocator<std::pair<UIView *const, _NUIContainerViewArrangedSubview>>> _arrangedSubviewInfo;
     NSMutableArray *_arrangedSubviews;
     NSArray *_visibleArrangedSubviews;
     struct UIEdgeInsets _effectiveLayoutMargins;
     UIView *_firstBaselineView;
     UIView *_lastBaselineView;
-    struct vector<CALayer *, std::__1::allocator<CALayer *>> _debugBoundingBoxLayers;
+    struct vector<CALayer *, std::allocator<CALayer *>> _debugBoundingBoxLayers;
     struct {
         unsigned int hiddenArrangedSubviewCount:16;
         unsigned int delaydInvalidation:8;
@@ -33,7 +33,6 @@
         unsigned int inEnsureArranged:1;
         unsigned int inEffectiveSize:1;
         unsigned int hasMargins:1;
-        unsigned int sizeIsInvalid:1;
         unsigned int debugBoundingBoxes:1;
         unsigned int baselineRelative:1;
         unsigned int layoutMarginsRelative:1;
@@ -53,6 +52,7 @@
 + (_Bool)requiresConstraintBasedLayout;
 + (void)setEnableAPIMisuseAssertions:(_Bool)arg1;
 + (_Bool)enableAPIMisuseAssertions;
++ (id)debugVersion;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (_Bool)shouldCancelMeasurementForCompressionInAxis:(long long)arg1;
@@ -66,9 +66,9 @@
 - (void)invalidateIntrinsicContentSize;
 - (void)layoutSubviews;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (struct CGSize)_layoutSizeThatFits:(struct CGSize)arg1 fixedAxes:(unsigned long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
-- (void)_setHasValidSize;
 - (void)setMinimumSpacing:(struct NSDirectionalEdgeInsets)arg1 adjacentToView:(id)arg2;
 - (struct NSDirectionalEdgeInsets)minimumSpacingAdjacentToView:(id)arg1;
 - (void)setPositionAdjustmentOffset:(struct CGPoint)arg1 forView:(id)arg2;
@@ -97,7 +97,7 @@
 - (id)initWithCoder:(id)arg1;
 - (_Bool)needsBaselineDebugBoundingBoxesForArrangedSubview:(id)arg1;
 - (_Bool)_isContainerView;
-- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
+- (CDStruct_6c92d79e)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (unsigned long long)_axesForDerivingIntrinsicContentSizeFromLayoutSize;
 - (_Bool)_layoutHeightDependsOnWidth;
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;

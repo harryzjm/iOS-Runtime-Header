@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, PGTitleTuple, PHAsset, PHAssetCollection;
+@class NSSet, PGTitleGenerationContext, PGTitleTuple, PHAsset, PHAssetCollection;
 @protocol PGEventEnrichment;
 
 @interface PGCollectionTitleGenerator : NSObject
 {
+    PGTitleGenerationContext *_titleGenerationContext;
     _Bool _forDiagnostics;
     id <PGEventEnrichment> _collection;
     PGTitleTuple *_titleTuple;
@@ -29,9 +30,9 @@
 - (id)_sortedMeaningLabels;
 - (id)_meaningLabelForTitle;
 - (void)_generateTitleTuples;
-- (id)initWithCollection:(id)arg1 keyAsset:(id)arg2 curatedAssetCollection:(id)arg3;
-- (id)initWithCollection:(id)arg1 whitelistedMeaningLabels:(id)arg2;
-- (id)initWithCollection:(id)arg1;
+- (id)initWithCollection:(id)arg1 keyAsset:(id)arg2 curatedAssetCollection:(id)arg3 titleGenerationContext:(id)arg4;
+- (id)initWithCollection:(id)arg1 whitelistedMeaningLabels:(id)arg2 titleGenerationContext:(id)arg3;
+- (id)initWithCollection:(id)arg1 titleGenerationContext:(id)arg2;
 
 @end
 

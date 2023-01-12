@@ -17,6 +17,7 @@
     id <FIUIBreathingPetalRingViewDrawable> _currentPetalRing;
     long long _numberOfVisiblePetals;
     _Bool _showBlurTrails;
+    long long _petalColor;
     UILabel *_congratulationsLabel;
     NSString *_congratulationsText;
     long long _state;
@@ -28,7 +29,6 @@
     NSMutableArray *_trailAlphaKeyFrames;
     NSMutableArray *_trailAlphaKeyValues;
     double _centerVerticalOffsetBeforeTransitionToConfiguration;
-    _Bool _useMetal;
 }
 
 - (void).cxx_destruct;
@@ -62,6 +62,7 @@
 - (id)_currentPetalRing;
 - (void)_setState:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 congratulationsText:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 petalColor:(long long)arg2 congratulationsText:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

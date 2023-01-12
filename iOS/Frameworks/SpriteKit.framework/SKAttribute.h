@@ -14,7 +14,7 @@
 {
     long long _type;
     NSString *_name;
-    basic_string_90719d97 _nameString;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _nameString;
 }
 
 + (id)attributeWithName:(id)arg1 type:(long long)arg2;
@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long type;
 @property(readonly, nonatomic) NSString *name;
-- (const basic_string_90719d97 *)getNameString;
+- (const void *)getNameString;
 - (id)initWithName:(id)arg1 type:(long long)arg2;
 - (_Bool)isEqualToAttribute:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

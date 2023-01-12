@@ -18,10 +18,12 @@
     NSNumber *_contentVersion;
     NSString *_masteredVersion;
     NSNumber *_downloadSize;
+    long long _storage;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) long long storage; // @synthesize storage=_storage;
 @property(nonatomic) _Bool isPurgeable; // @synthesize isPurgeable=_isPurgeable;
 @property(copy, nonatomic) NSNumber *downloadSize; // @synthesize downloadSize=_downloadSize;
 @property(copy, nonatomic) NSString *masteredVersion; // @synthesize masteredVersion=_masteredVersion;

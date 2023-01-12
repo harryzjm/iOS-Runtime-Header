@@ -8,6 +8,11 @@
 #import <Sleep/NSCopying-Protocol.h>
 #import <Sleep/NSObject-Protocol.h>
 
+@class NSSet;
+
 @protocol HKSPDictionarySerializable <NSObject, NSCoding, NSCopying>
+
+@optional
++ (NSSet *)innerClasses;
 @end
 

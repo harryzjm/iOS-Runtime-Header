@@ -8,21 +8,18 @@
 
 #import <CVNLP/NSCopying-Protocol.h>
 
-@class NSArray;
-
 @interface CVNLPLexiconCursors : NSObject <NSCopying>
 {
-    NSArray *_cursors;
-    NSArray *__sortedCursors;
+    struct vector<const _LXCursor *, std::allocator<const _LXCursor *>> _sortedCursors;
 }
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *_sortedCursors; // @synthesize _sortedCursors=__sortedCursors;
-@property(readonly, nonatomic) NSArray *cursors; // @synthesize cursors=_cursors;
+- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)count;
 - (void)enumerateLexiconCursorsSortedByPriorityWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithCursors:(id)arg1;
+- (id)initWithSortedCursors:(void *)arg1;
 
 @end
 

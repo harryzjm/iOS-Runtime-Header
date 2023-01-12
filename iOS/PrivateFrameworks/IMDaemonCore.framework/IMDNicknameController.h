@@ -22,8 +22,8 @@
     IDSKVStore *_handleSharingKVStore;
     NSMutableDictionary *_handledNicknames;
     NSMutableDictionary *_pendingNicknameUpdates;
-    NSMutableSet *_handleWhitelist;
-    NSMutableSet *_handleBlacklist;
+    NSMutableSet *_handleAllowList;
+    NSMutableSet *_handleDenyList;
     NSMutableArray *_chatsToSendNicknameInfoTo;
 }
 
@@ -31,8 +31,8 @@
 @property(nonatomic) _Bool nicknameIsUploadingToCK; // @synthesize nicknameIsUploadingToCK=_nicknameIsUploadingToCK;
 @property(retain, nonatomic) NSMutableArray *chatsToSendNicknameInfoTo; // @synthesize chatsToSendNicknameInfoTo=_chatsToSendNicknameInfoTo;
 @property(nonatomic) _Bool needToLoadMapsInfoFromDisk; // @synthesize needToLoadMapsInfoFromDisk=_needToLoadMapsInfoFromDisk;
-@property(retain, nonatomic) NSMutableSet *handleBlacklist; // @synthesize handleBlacklist=_handleBlacklist;
-@property(retain, nonatomic) NSMutableSet *handleWhitelist; // @synthesize handleWhitelist=_handleWhitelist;
+@property(retain, nonatomic) NSMutableSet *handleDenyList; // @synthesize handleDenyList=_handleDenyList;
+@property(retain, nonatomic) NSMutableSet *handleAllowList; // @synthesize handleAllowList=_handleAllowList;
 @property(retain, nonatomic) NSMutableDictionary *pendingNicknameUpdates; // @synthesize pendingNicknameUpdates=_pendingNicknameUpdates;
 @property(retain, nonatomic) NSMutableDictionary *handledNicknames; // @synthesize handledNicknames=_handledNicknames;
 @property(retain, nonatomic) IDSKVStore *handleSharingKVStore; // @synthesize handleSharingKVStore=_handleSharingKVStore;
@@ -60,11 +60,13 @@
 - (id)_getPendingNicknameForUpload;
 - (void)_storePendingNicknameForUpload:(id)arg1;
 - (void)_storePublicNickname:(id)arg1 nicknameLocation:(id)arg2 encryptionKey:(id)arg3;
+- (void)_makeAllNicknameContentsClassC;
 - (_Bool)_populateNicknameDictionary:(id)arg1 forKVStore:(id)arg2 limitToLoad:(unsigned long long)arg3;
 - (void)loadSharingHandlesPrefs;
 - (void)loadHandledNicknamesAndPendingUpdates;
 - (void)loadPersonalNicknameIfNeeded;
 - (void)_loadAllInfoFromDiskIfAble;
+- (void)_deleteDataUnderScrutiny;
 - (void)_setUnderScrutiny:(_Bool)arg1;
 - (_Bool)_isUnderScrutiny;
 - (_Bool)_deviceUnderFirstUnlock;
@@ -84,11 +86,11 @@
 - (void)saveNicknameForRecordID:(id)arg1 handleID:(id)arg2 userNickname:(id)arg3;
 - (void)_updatePendingNicknameVersion;
 - (void)_updateHandleList:(id)arg1 withHandles:(id)arg2 forKey:(id)arg3 broadcastUpdates:(_Bool)arg4;
-- (void)blacklistHandlesForSharing:(id)arg1;
-- (void)whitelistHandlesForSharing:(id)arg1 onChatGUIDs:(id)arg2;
+- (void)denyHandlesForSharing:(id)arg1;
+- (void)allowHandlesForSharing:(id)arg1 onChatGUIDs:(id)arg2;
 - (void)broadcastHandlesSharingNicknamesDidChange;
-@property(readonly, nonatomic) NSSet *blacklistedHandlesForSharing;
-@property(readonly, nonatomic) NSSet *whitelistedHandlesForSharing;
+@property(readonly, nonatomic) NSSet *denyListedHandlesForSharing;
+@property(readonly, nonatomic) NSSet *allowListedHandlesForSharing;
 - (void)sendPersonalNicknameToChat:(id)arg1;
 - (void)queueChatToSendNicknamePostUploadIfNeeded:(id)arg1;
 - (_Bool)_sendMessageDictionary:(id)arg1 toDevice:(id)arg2;
@@ -99,9 +101,9 @@
 - (void)sendPendingNicknameUpdatesDidChange;
 - (void)handleNicknameUpdatesFromPeerDevice:(id)arg1 fromPeerDevice:(id)arg2;
 - (_Bool)_requestingToSendLocalNicknameInfo:(id)arg1;
-- (void)_syncHandleWhitelistBlacklistToOtherDevices;
-- (void)_updateWhitelistBlacklistHandlesVersion;
-- (void)_updateHandleBlacklistWhitelistIfNeeded:(id)arg1;
+- (void)_syncHandleAllowDenyListToOtherDevices;
+- (void)_updateDenyAllowListHandlesVersion;
+- (void)_updateHandleDenyAllowListIfNeeded:(id)arg1;
 - (void)_updateCloudKitRecordIDAndDecryptionKeyIfNeededFromMadridMessage:(id)arg1;
 - (void)_showDebugAlertWithHeader:(id)arg1 message:(id)arg2;
 - (void)_updateHandledNicknamesIfNeeded:(id)arg1;

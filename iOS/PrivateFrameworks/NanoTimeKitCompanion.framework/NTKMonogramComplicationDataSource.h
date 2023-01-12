@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)_reloadMonogramText;
 - (void)_handleMonogramTextReload;
+- (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (id)_currentTimelineEntry;
 - (id)currentSwitcherTemplate;

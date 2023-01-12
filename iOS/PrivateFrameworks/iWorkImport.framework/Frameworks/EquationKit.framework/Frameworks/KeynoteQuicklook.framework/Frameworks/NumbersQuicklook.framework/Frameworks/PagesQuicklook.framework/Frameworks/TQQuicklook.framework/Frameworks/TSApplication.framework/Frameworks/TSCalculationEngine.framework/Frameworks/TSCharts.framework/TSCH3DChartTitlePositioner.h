@@ -6,28 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class TSCH3DScene, TSCHChartInfo, TSUWeakReference;
+@class TSCH3DScene, TSCHChartInfo;
 
 @interface TSCH3DChartTitlePositioner : NSObject
 {
-    TSUWeakReference *mWeakScene;
-    TSCHChartInfo *mInfo;
-    tvec2_84d5962d mCachedCategoryAxisLabelsSize;
-    tvec2_84d5962d mCachedValueAxisLabelsSize;
-    tvec2_84d5962d mCachedSeriesLabelsSize;
+    TSCH3DScene *_weakScene;
+    TSCHChartInfo *_info;
+    tvec2_84d5962d _cachedCategoryAxisLabelsSize;
+    tvec2_84d5962d _cachedValueAxisLabelsSize;
+    tvec2_84d5962d _cachedSeriesLabelsSize;
 }
 
 + (id)positionerWithInfo:(id)arg1 scene:(id)arg2;
 - (id).cxx_construct;
-@property(readonly, retain, nonatomic) TSCHChartInfo *info; // @synthesize info=mInfo;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCHChartInfo *info; // @synthesize info=_info;
 - (tvec2_84d5962d)sizeOfSeriesLabels;
 - (tvec2_84d5962d)sizeOfValueAxisLabels;
 - (tvec2_84d5962d)sizeOfCategoryAxisLabels;
-- (double)wrapWidthForSize:(struct CGSize)arg1 labelTransform:(const struct LabelTransform *)arg2;
-- (void)applyParagraphStyle:(id)arg1 onLabelTransform:(struct LabelTransform *)arg2 alignmentDimension:(int)arg3;
+- (double)wrapWidthForSize:(struct CGSize)arg1 labelTransform:(const void *)arg2;
+- (void)applyParagraphStyle:(id)arg1 onLabelTransform:(void *)arg2 alignmentDimension:(int)arg3;
 - (_Bool)hasScene:(id)arg1;
-@property(readonly, nonatomic) TSCH3DScene *scene;
-- (void)dealloc;
+@property(readonly, nonatomic) __weak TSCH3DScene *scene;
 - (id)initWithInfo:(id)arg1 scene:(id)arg2;
 
 @end

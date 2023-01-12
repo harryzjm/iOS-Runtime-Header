@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UICollectionViewListCell.h>
+@class NSLayoutConstraint, NSUUID, UIImageView, UILabel, UIStackView, UIView, _UIActivityActionCellBadgeView, _UIActivityActionCellTitleLabel, _UIHostActivityProxy;
 
-@class NSLayoutConstraint, UIImageView, UIView, UIVisualEffectView, _UIActivityActionCellTitleLabel, _UIHostActivityProxy;
-
-@interface UIActivityActionGroupCell : _UICollectionViewListCell
+@interface UIActivityActionGroupCell
 {
     NSLayoutConstraint *_titleLabelHeightAnchor;
+    NSUUID *_itemIdentifier;
     unsigned long long _sequence;
     _UIActivityActionCellTitleLabel *_titleLabel;
     UIImageView *_activityImageView;
@@ -18,13 +17,19 @@
     UIView *_titleSlotView;
     UIView *_platterView;
     _UIHostActivityProxy *_activityProxy;
-    UIVisualEffectView *_effectView;
-    UIView *_fillView;
+    UIStackView *_titleStackView;
+    UIStackView *_imageStackView;
+    _UIActivityActionCellTitleLabel *_subtitleLabelIfLoaded;
+    _UIActivityActionCellBadgeView *_badgeViewIfLoaded;
+    UIImageView *_statusImageViewIfLoaded;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *fillView; // @synthesize fillView=_fillView;
-@property(retain, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
+@property(retain, nonatomic) UIImageView *statusImageViewIfLoaded; // @synthesize statusImageViewIfLoaded=_statusImageViewIfLoaded;
+@property(retain, nonatomic) _UIActivityActionCellBadgeView *badgeViewIfLoaded; // @synthesize badgeViewIfLoaded=_badgeViewIfLoaded;
+@property(retain, nonatomic) _UIActivityActionCellTitleLabel *subtitleLabelIfLoaded; // @synthesize subtitleLabelIfLoaded=_subtitleLabelIfLoaded;
+@property(retain, nonatomic) UIStackView *imageStackView; // @synthesize imageStackView=_imageStackView;
+@property(retain, nonatomic) UIStackView *titleStackView; // @synthesize titleStackView=_titleStackView;
 @property(retain, nonatomic) _UIHostActivityProxy *activityProxy; // @synthesize activityProxy=_activityProxy;
 @property(retain, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
 @property(retain, nonatomic) UIView *titleSlotView; // @synthesize titleSlotView=_titleSlotView;
@@ -32,10 +37,14 @@
 @property(retain, nonatomic) UIImageView *activityImageView; // @synthesize activityImageView=_activityImageView;
 @property(retain, nonatomic) _UIActivityActionCellTitleLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) unsigned long long sequence; // @synthesize sequence=_sequence;
-- (void)traitCollectionDidChange:(id)arg1;
+@property(retain, nonatomic) NSUUID *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+- (void)setDisabled:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)prepareForReuse;
+@property(readonly, nonatomic) UIImageView *statusImageView;
+@property(readonly, nonatomic) _UIActivityActionCellBadgeView *badgeView;
+@property(readonly, nonatomic) UILabel *subtitleLabel;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

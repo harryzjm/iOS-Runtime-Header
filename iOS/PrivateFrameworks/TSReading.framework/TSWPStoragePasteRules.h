@@ -30,12 +30,12 @@
     } _paragraphs[4];
 }
 
-- (void)didPasteWithIOTransaction:(struct TSWPStorageTransaction *)arg1 atDestRange:(struct _NSRange)arg2;
+- (void)didPasteWithIOTransaction:(void *)arg1 atDestRange:(struct _NSRange)arg2;
 - (void)willPasteStorage:(id)arg1 intoDestStorage:(id)arg2 atDestRange:(struct _NSRange)arg3;
 - (void)setupFlagsForPastingSrcStorage:(id)arg1 intoDestStorage:(id)arg2 atDestRange:(struct _NSRange)arg3;
-- (void)mapCharacterStyles:(int)arg1 toRange:(struct _NSRange)arg2 ioTransaction:(struct TSWPStorageTransaction *)arg3;
-- (void)mapCharacterStyleProperties:(id)arg1 toRange:(struct _NSRange)arg2 ioTransaction:(struct TSWPStorageTransaction *)arg3;
-- (void)applyParagraph:(int)arg1 toCharIndex:(unsigned long long)arg2 ioTransaction:(struct TSWPStorageTransaction *)arg3;
+- (void)mapCharacterStyles:(int)arg1 toRange:(struct _NSRange)arg2 ioTransaction:(void *)arg3;
+- (void)mapCharacterStyleProperties:(id)arg1 toRange:(struct _NSRange)arg2 ioTransaction:(void *)arg3;
+- (void)applyParagraph:(int)arg1 toCharIndex:(unsigned long long)arg2 ioTransaction:(void *)arg3;
 - (void)addActionFlag:(int)arg1;
 - (void)dealloc;
 

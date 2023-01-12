@@ -6,11 +6,18 @@
 
 #import <UIKit/UITapGestureRecognizer.h>
 
+@class NSNumber;
+
 @interface PXUITapGestureRecognizer : UITapGestureRecognizer
 {
+    NSNumber *_initialEventType;
 }
 
+- (void).cxx_destruct;
+- (void)reset;
 - (struct CGPoint)locationInView:(id)arg1;
+- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 
 @end
 

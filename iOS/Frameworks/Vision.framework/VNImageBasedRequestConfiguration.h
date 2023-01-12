@@ -10,10 +10,12 @@ __attribute__((visibility("hidden")))
 @interface VNImageBasedRequestConfiguration
 {
     NSArray *_inputFaceObservations;
+    NSArray *_inputDetectedObjectObservations;
     struct CGRect _regionOfInterest;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *inputDetectedObjectObservations; // @synthesize inputDetectedObjectObservations=_inputDetectedObjectObservations;
 @property(copy, nonatomic) NSArray *inputFaceObservations; // @synthesize inputFaceObservations=_inputFaceObservations;
 @property(nonatomic) struct CGRect regionOfInterest; // @synthesize regionOfInterest=_regionOfInterest;
 - (id)copyWithZone:(struct _NSZone *)arg1;

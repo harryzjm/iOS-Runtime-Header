@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICPlayActivityEnqueuerProperties, ICPlayActivityEventContainerIDs, ICPlayActivityEventItemIDs, NSArray, NSData, NSDate, NSNumber, NSString, NSTimeZone;
+@class ICPlayActivityAudioQualityProperties, ICPlayActivityEnqueuerProperties, ICPlayActivityEventContainerIDs, ICPlayActivityEventItemIDs, NSArray, NSData, NSDate, NSNumber, NSString, NSTimeZone;
 
 @interface ICMutablePlayActivityEvent
 {
 }
 
-@property(nonatomic) long long version; // @dynamic version;
+@property(nonatomic) unsigned long long sharedActivityGroupSizeMax; // @dynamic sharedActivityGroupSizeMax;
+@property(nonatomic) unsigned long long sharedActivityGroupSizeCurrent; // @dynamic sharedActivityGroupSizeCurrent;
+@property(copy, nonatomic) ICPlayActivityAudioQualityProperties *providedAudioQuality; // @dynamic providedAudioQuality;
+@property(copy, nonatomic) ICPlayActivityAudioQualityProperties *targetedAudioQuality; // @dynamic targetedAudioQuality;
+@property(nonatomic) unsigned long long playbackFormatPreference; // @dynamic playbackFormatPreference;
+@property(nonatomic) unsigned long long audioQualityPreference; // @dynamic audioQualityPreference;
 @property(copy, nonatomic) NSData *trackInfo; // @dynamic trackInfo;
 @property(copy, nonatomic) NSData *timedMetadata; // @dynamic timedMetadata;
 @property(nonatomic) long long systemReleaseType; // @dynamic systemReleaseType;
@@ -26,6 +31,7 @@
 @property(nonatomic) unsigned long long repeatPlayMode; // @dynamic repeatPlayMode;
 @property(copy, nonatomic) NSData *recommendationData; // @dynamic recommendationData;
 @property(nonatomic) unsigned long long reasonHintType; // @dynamic reasonHintType;
+@property(copy, nonatomic) NSString *queueGroupingID; // @dynamic queueGroupingID;
 @property(copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled; // @dynamic privateListeningEnabled;
 @property(copy, nonatomic) NSString *personalizedContainerID; // @dynamic personalizedContainerID;
 @property(nonatomic) long long persistentID; // @dynamic persistentID;
@@ -57,6 +63,9 @@
 @property(nonatomic) unsigned long long autoPlayMode; // @dynamic autoPlayMode;
 - (Class)_mutableCopyClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+
+// Remaining properties
+@property(nonatomic) long long version; // @dynamic version;
 
 @end
 

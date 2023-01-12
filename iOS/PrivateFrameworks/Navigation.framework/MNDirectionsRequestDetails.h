@@ -8,10 +8,11 @@
 
 #import <Navigation/NSCopying-Protocol.h>
 
-@class GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOLocation, GEOMapRegion, GEORouteAttributes, NSString;
+@class GEOCommonOptions, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOLocation, GEOMapRegion, GEORouteAttributes, NSString;
 
 @interface MNDirectionsRequestDetails : PBCodable <NSCopying>
 {
+    GEOCommonOptions *_commonOptions;
     GEOMapRegion *_currentMapRegion;
     GEOLocation *_currentUserLocation;
     GEOComposedWaypoint *_destination;
@@ -27,6 +28,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *tracePath; // @synthesize tracePath=_tracePath;
+@property(retain, nonatomic) GEOCommonOptions *commonOptions; // @synthesize commonOptions=_commonOptions;
 @property(retain, nonatomic) GEODirectionsRequestFeedback *directionsRequestFeedback; // @synthesize directionsRequestFeedback=_directionsRequestFeedback;
 @property(retain, nonatomic) GEOMapRegion *currentMapRegion; // @synthesize currentMapRegion=_currentMapRegion;
 @property(retain, nonatomic) GEOLocation *currentUserLocation; // @synthesize currentUserLocation=_currentUserLocation;
@@ -43,6 +45,7 @@
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasTracePath;
+@property(readonly, nonatomic) _Bool hasCommonOptions;
 @property(readonly, nonatomic) _Bool hasDirectionsRequestFeedback;
 @property(readonly, nonatomic) _Bool hasCurrentMapRegion;
 @property(readonly, nonatomic) _Bool hasCurrentUserLocation;

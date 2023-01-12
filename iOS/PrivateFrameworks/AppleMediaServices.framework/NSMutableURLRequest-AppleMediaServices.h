@@ -7,8 +7,14 @@
 #import <CFNetwork/NSMutableURLRequest.h>
 
 @interface NSMutableURLRequest (AppleMediaServices)
+- (void)_syncAddHeadersFromPromise:(id)arg1 error:(id *)arg2;
+- (void)_addAbsintheHeadersFromPromise:(id)arg1;
+- (id)_ams_separateCookies:(id)arg1;
 - (void)_ams_addCookies:(id)arg1;
+- (void)_ams_replaceCookies:(id)arg1;
+- (void)ams_setBodyParameters:(id)arg1 encoding:(long long)arg2 compressBody:(_Bool)arg3 error:(id *)arg4;
 - (void)ams_removeAnisetteHeaders;
+- (void)ams_addXGroupDSIDsWithPrimaryAccount:(id)arg1 andGroupAccounts:(id)arg2;
 - (void)ams_addXTokenHeaderWithAccount:(id)arg1;
 - (void)ams_addUserAgentHeaderFromClient:(id)arg1;
 - (void)ams_addTimezoneOffsetHeader;
@@ -17,7 +23,6 @@
 - (void)ams_addRequestTimestampHeader;
 - (void)ams_addRequestingProcessWithClient:(id)arg1;
 - (void)ams_addPrimaryiCloudIdentifierHeader;
-- (void)ams_addParameters:(id)arg1 encoding:(long long)arg2 compressBody:(_Bool)arg3 error:(id *)arg4;
 - (void)ams_addMescalHeaderWithType:(long long)arg1 bag:(id)arg2 logKey:(id)arg3;
 - (void)ams_addIssuingProcessHeader;
 - (void)ams_addIdentifierHeadersForAccount:(id)arg1;
@@ -35,6 +40,7 @@
 - (void)ams_addAuthKitHeaders;
 - (void)ams_addAnisetteHeadersForAccount:(id)arg1 type:(long long)arg2 bag:(id)arg3;
 - (void)ams_addAcceptLanguageHeader;
+- (void)ams_addAbsintheHeaderRemotelyWithBuyParams:(id)arg1 bag:(id)arg2 signingService:(id)arg3;
 - (void)ams_addAbsintheHeadersWithBuyParams:(id)arg1 bag:(id)arg2;
 - (void)ams_addHeaders:(id)arg1;
 @end

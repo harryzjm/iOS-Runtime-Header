@@ -17,14 +17,14 @@
     unsigned long long _vertexComputeReportOffset;
     id <MTLBuffer> _fragmentReportBuffer;
     unsigned long long _fragmentReportOffset;
-    struct vector<MetalBuffer, std::__1::allocator<MetalBuffer>> _usedBuffers;
+    struct vector<MetalBuffer, std::allocator<MetalBuffer>> _usedBuffers;
     struct MetalBuffer _currentPooledBuffer;
     unsigned long long _currentPooledBufferOffset;
     unsigned int _currentEncoderID;
     unsigned int _currentReportID;
-    struct vector<id<MTLBuffer>, std::__1::allocator<id<MTLBuffer>>> _reportBufferList;
-    struct vector<ReportBufferEntry, std::__1::allocator<ReportBufferEntry>> _reportEntryList;
-    struct vector<NSString *, std::__1::allocator<NSString *>> _encoderLabels;
+    struct vector<id<MTLBuffer>, std::allocator<id<MTLBuffer>>> _reportBufferList;
+    struct vector<ReportBufferEntry, std::allocator<ReportBufferEntry>> _reportEntryList;
+    struct vector<NSString *, std::allocator<NSString *>> _encoderLabels;
     struct mutex _allocationLock;
     struct os_unfair_lock_s _tempBufLock;
     _Bool _supportsTileStage;
@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)preCompletionHandlers;
+- (id)accelerationStructureCommandEncoder;
 - (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (id)blitCommandEncoder;
 - (id)sampledComputeCommandEncoderWithProgramInfoBuffer:(CDUnion_c6e49ed4 *)arg1 capacity:(unsigned long long)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXPhotosViewModel;
+@class PXContentFilterState, PXPhotosViewModel;
 
 @interface PXPhotosGridActionPerformer
 {
@@ -15,6 +15,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PXPhotosViewModel *viewModel; // @synthesize viewModel=_viewModel;
 - (_Bool)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
+@property(readonly, nonatomic) PXContentFilterState *currentFilterState;
+@property(readonly, nonatomic) long long libraryType;
 - (id)initWithActionType:(id)arg1;
 - (id)initWithViewModel:(id)arg1 actionType:(id)arg2;
 

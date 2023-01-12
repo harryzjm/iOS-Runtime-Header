@@ -13,6 +13,7 @@
 @interface GEOLogMsgEventVLFUsage : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    struct GEOVLFPositionContextClassification _initialPositionContextClassification;
     GEOVLFEntryPoint *_entryPoint;
     NSMutableArray *_localizationDetails;
     GEOVLFCorrection *_postFusionCorrection;
@@ -23,6 +24,7 @@
     unsigned int _sessionTimeMs;
     unsigned int _timeRoundedToHour;
     struct {
+        unsigned int has_initialPositionContextClassification:1;
         unsigned int has_finalState:1;
         unsigned int has_sessionTimeMs:1;
         unsigned int has_timeRoundedToHour:1;
@@ -41,6 +43,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -49,6 +52,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasInitialPositionContextClassification;
+@property(nonatomic) struct GEOVLFPositionContextClassification initialPositionContextClassification;
 @property(nonatomic) _Bool hasTimeRoundedToHour;
 @property(nonatomic) unsigned int timeRoundedToHour;
 @property(retain, nonatomic) GEOVLFCorrection *postFusionCorrection;

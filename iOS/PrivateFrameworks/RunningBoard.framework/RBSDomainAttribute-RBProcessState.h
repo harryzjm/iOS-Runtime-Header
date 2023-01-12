@@ -8,6 +8,7 @@
 
 @interface RBSDomainAttribute (RBProcessState)
 - (_Bool)isValidForContext:(id)arg1 withError:(id *)arg2;
+- (void)applyToAcquisitionContext:(id)arg1;
 - (id)effectiveAttributesWithContext:(id)arg1;
 - (void)applyToSystemState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 - (void)applyToAssertionIntransientState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;

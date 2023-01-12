@@ -20,6 +20,7 @@
     BSServiceConnection *_launchingConnection;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSCountedSet *_persistentPointerHideReasons;
+    NSCountedSet *_persistentPointerShowReasons;
     NSMutableArray *_serviceKeepAliveAssertions;
     struct os_unfair_lock_s _invalidationAndConfigurationLock;
     _Bool _hasActivatedLaunchingConnection;
@@ -41,6 +42,7 @@
 - (id)_accessQueue_acquireServiceKeepAliveAssertion;
 - (oneway void)adjustedDecelerationTargetPointerPosition:(id)arg1 velocity:(id)arg2 inContextID:(id)arg3 cursorRegionLookupRadius:(id)arg4 cursorRegionLookupResolution:(id)arg5 lookupConeAngle:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (oneway void)clientInteractionStateDidChange:(id)arg1;
+- (id)persistentlyShowPointerAssertionForReason:(unsigned long long)arg1;
 - (id)persistentlyHidePointerAssertionForReason:(unsigned long long)arg1;
 - (void)autohidePointerForReason:(unsigned long long)arg1;
 @property(readonly, nonatomic, getter=isClientInteractionEnabled) _Bool clientInteractionEnabled;

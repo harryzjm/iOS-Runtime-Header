@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 #import <AppleMediaServicesUI/AMSBagConsumer-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebActionRunnerDelegate-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebPageViewControllerDelegate-Protocol.h>
@@ -13,10 +11,10 @@
 #import <AppleMediaServicesUI/AMSURLProtocolDelegate-Protocol.h>
 #import <AppleMediaServicesUI/NSURLSessionDelegate-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebContainerViewController, AMSUIWebPageViewController, NSDictionary, NSString, NSURL;
+@class ACAccount, AMSProcessInfo, AMSUIWebAppearance, AMSUIWebClientContext, AMSUIWebContainerViewController, AMSUIWebPageViewController, NSDictionary, NSString, NSURL, UIViewController;
 @protocol AMSBagProtocol, AMSUIWebDelegate;
 
-@interface AMSUIWebViewController : UIViewController <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSUIWebActionRunnerDelegate, AMSUIWebPageViewControllerDelegate, AMSUIWebProtocolDelegate, AMSBagConsumer>
+@interface AMSUIWebViewController <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSUIWebActionRunnerDelegate, AMSUIWebPageViewControllerDelegate, AMSUIWebProtocolDelegate, AMSBagConsumer>
 {
     _Bool _hasAppeared;
     _Bool _hasStarted;
@@ -29,6 +27,7 @@
     AMSUIWebPageViewController *_webPage;
 }
 
++ (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
 + (id)bagKeySet;
@@ -46,18 +45,21 @@
 - (void)_showErrorViewWithError:(id)arg1 request:(id)arg2 bagValue:(id)arg3;
 - (id)_rootNavigationController;
 - (id)_loadRequest:(id)arg1 bagValue:(id)arg2;
+- (id)_loadMescalSessionForRequestWithURL:(id)arg1;
 - (id)_parseWebPropertiesFromRequest:(id)arg1;
 - (id)_lazyPromiseForPageLoad;
 - (id)_lazyPromiseForLoadingSession;
 - (id)_lazyPromiseForBagSnapshot;
 - (id)_lazyPromiseForLoadingRequest:(id)arg1 bagValue:(id)arg2;
-- (void)_handleWillLayout;
-- (void)_handleWillAppear;
 - (void)_handleDidEncodeNetworkRequest:(id)arg1;
+- (id)_handleEngagementRequest:(id)arg1 pauseTimeouts:(_Bool)arg2;
 - (id)_handleDialogRequest:(id)arg1 pauseTimeouts:(_Bool)arg2;
+- (id)_handleAuthenticateCloudRequest:(id)arg1 pauseTimeouts:(_Bool)arg2;
 - (id)_handleAuthenticateRequest:(id)arg1 pauseTimeouts:(_Bool)arg2;
 - (void)_dismiss;
-- (void)_applyAppearance;
+- (id)_buildRequestWithRequest:(id)arg1 bagValue:(id)arg2;
+- (id)_applyMappingsToURL:(id)arg1;
+- (void)AMSURLSession:(id)arg1 task:(id)arg2 handleEngagementRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleAuthenticateRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)AMSURLSession:(id)arg1 task:(id)arg2 handleDialogRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)webPageViewController:(id)arg1 didEncodeNetworkRequest:(id)arg2;
@@ -65,10 +67,11 @@
 - (void)actionDidFinishPurchaseWithResult:(id)arg1 error:(id)arg2;
 - (void)action:(id)arg1 didEncodeNetworkRequest:(id)arg2;
 - (id)action:(id)arg1 pauseTimeouts:(_Bool)arg2 handleDialogRequest:(id)arg3;
+- (id)action:(id)arg1 pauseTimeouts:(_Bool)arg2 handleAuthenticateCloudRequest:(id)arg3;
 - (id)action:(id)arg1 pauseTimeouts:(_Bool)arg2 handleAuthenticateRequest:(id)arg3;
+- (id)action:(id)arg1 didResolveWithResult:(id)arg2 error:(id)arg3;
 - (id)action:(id)arg1 handleActionObject:(id)arg2;
 - (id)runJSRequest:(id)arg1;
-- (void)viewWillLayoutSubviews;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (id)loadURL:(id)arg1;
 - (id)loadRequest:(id)arg1;
@@ -81,6 +84,7 @@
 @property(retain, nonatomic) id <AMSBagProtocol> bag;
 @property(retain, nonatomic) AMSUIWebAppearance *appearance;
 @property(retain, nonatomic) ACAccount *account;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithBag:(id)arg1 account:(id)arg2 clientInfo:(id)arg3;

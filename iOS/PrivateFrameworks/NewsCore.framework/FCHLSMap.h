@@ -14,10 +14,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 - (id)description;
-- (void)setPropertiesFromAttributeList:(id)arg1;
-- (id)initWithURL:(id)arg1;
 
 @end
 

@@ -8,9 +8,7 @@
 {
 }
 
-+ (id)_predicateForSampleAgeWithMaximumObjectAgeByType:(id)arg1 defaultMaxAge:(id)arg2 sessionStartDate:(id)arg3;
 + (id)_predicateForSampleAgeInSyncSession:(id)arg1 sampleTypeClass:(Class)arg2;
-+ (id)_predicateForDateIntervalInSyncSession:(id)arg1;
 + (id)_predicateForSyncSession:(id)arg1;
 + (Class)_syncedSampleTypeClass;
 + (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;

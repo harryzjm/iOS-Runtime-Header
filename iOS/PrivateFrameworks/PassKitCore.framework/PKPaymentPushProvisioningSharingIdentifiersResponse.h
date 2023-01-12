@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSArray;
 
 @interface PKPaymentPushProvisioningSharingIdentifiersResponse
 {
-    NSDictionary *_sharingIdentifiersDictionary;
+    NSArray *_sharedCredentials;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSDictionary *sharingIdentifiersDictionary; // @synthesize sharingIdentifiersDictionary=_sharingIdentifiersDictionary;
+@property(readonly, nonatomic) NSArray *sharedCredentials; // @synthesize sharedCredentials=_sharedCredentials;
 - (id)initWithData:(id)arg1;
 
 @end

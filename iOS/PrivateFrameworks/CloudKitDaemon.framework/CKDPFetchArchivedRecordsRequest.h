@@ -10,7 +10,6 @@
 
 @class CKDPAssetsToDownload, CKDPRecordZoneIdentifier, NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPFetchArchivedRecordsRequest : PBRequest <NSCopying>
 {
     NSData *_archiveContinuationToken;

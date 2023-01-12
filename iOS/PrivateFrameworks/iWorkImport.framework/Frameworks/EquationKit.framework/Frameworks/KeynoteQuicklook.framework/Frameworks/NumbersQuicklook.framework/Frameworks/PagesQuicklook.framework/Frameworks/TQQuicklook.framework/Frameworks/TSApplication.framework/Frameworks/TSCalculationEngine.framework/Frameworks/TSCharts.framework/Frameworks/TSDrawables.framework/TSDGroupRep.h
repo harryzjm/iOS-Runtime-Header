@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)p_nonGroupedChildReps;
 - (id)p_groupedChildReps;
 - (void)updateChildrenFromLayout;
 @property(readonly, nonatomic) NSArray *allRepsContainedInGroup;

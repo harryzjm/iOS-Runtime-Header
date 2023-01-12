@@ -28,6 +28,8 @@
 + (id)IDSSession;
 + (id)continuity;
 + (id)Connection;
++ (id)IDSDirectMessagingConnection;
++ (id)IDSConnection_oversize;
 + (id)IDSConnection;
 + (id)IDSService;
 + (id)_IDSService;

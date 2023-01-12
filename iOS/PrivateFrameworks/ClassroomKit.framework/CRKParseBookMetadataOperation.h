@@ -16,6 +16,8 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) CRKBook *book; // @synthesize book=_book;
+- (void)updateAuthor:(id)arg1;
+- (void)updateTitle:(id)arg1;
 - (void)parseBookContentsOperationDidFinish:(id)arg1;
 - (void)parseContentsFilePathOperationDidFinish:(id)arg1;
 - (void)main;

@@ -10,6 +10,7 @@
 
 @class MPCPlaybackEngineMiddleware, MPCPlayerRequest, NSArray, NSError, NSMapTable, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackEngineMiddlewareOperation : MPAsyncOperation <MPMiddlewareAutomaticDependencyOperation>
 {
     NSMapTable *_inputOperations;

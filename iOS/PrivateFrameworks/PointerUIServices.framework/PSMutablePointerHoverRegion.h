@@ -8,18 +8,20 @@
 #import <PointerUIServices/NSMutableCopying-Protocol.h>
 #import <PointerUIServices/NSSecureCoding-Protocol.h>
 
-@class NSValue, PSMatchMoveSource, PSPointerPortalSourceCollection, PSPointerShape;
+@class NSArray, NSValue, PSMatchMoveSource, PSPointerPortalSourceCollection, PSPointerShape;
 
 @interface PSMutablePointerHoverRegion <NSCopying, NSMutableCopying, NSSecureCoding>
 {
 }
 
+@property(copy, nonatomic) NSArray *accessories; // @dynamic accessories;
 @property(nonatomic) _Bool shouldPointerSuppressMirroring; // @dynamic shouldPointerSuppressMirroring;
 @property(nonatomic) _Bool shouldPointerUnderlayContent; // @dynamic shouldPointerUnderlayContent;
 @property(nonatomic) unsigned long long preferredPointerMaterialLuminance; // @dynamic preferredPointerMaterialLuminance;
 @property(nonatomic) double pointerVisualIntensity; // @dynamic pointerVisualIntensity;
 @property(copy, nonatomic) NSValue *pointerSlipValue; // @dynamic pointerSlipValue;
 @property(copy, nonatomic) PSPointerShape *pointerShape; // @dynamic pointerShape;
+@property(nonatomic) unsigned long long pointerLatchingAxes; // @dynamic pointerLatchingAxes;
 @property(nonatomic) unsigned long long pointerRecenteringAxes; // @dynamic pointerRecenteringAxes;
 @property(copy, nonatomic) PSPointerPortalSourceCollection *pointerPortalSourceCollection; // @dynamic pointerPortalSourceCollection;
 @property(nonatomic) long long overlayEffectStyle; // @dynamic overlayEffectStyle;

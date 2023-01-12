@@ -9,7 +9,7 @@
 #import <TSPersistence/NSCopying-Protocol.h>
 #import <TSPersistence/TSPReferenceItem-Protocol.h>
 
-@class NSString, NSUUID, TSPComponent, TSPObject;
+@class NSString, NSUUID, Protocol, TSPComponent, TSPObject;
 @protocol TSPLazyReferenceDelegate;
 
 @interface TSPLazyReference : NSObject <TSPReferenceItem, NSCopying>
@@ -22,12 +22,14 @@
     id <TSPLazyReferenceDelegate> _delegate;
     TSPComponent *_component;
     Class _objectClass;
+    Protocol *_objectProtocol;
 }
 
 + (id)weakReferenceForObject:(id)arg1 retainedUntilArchived:(_Bool)arg2;
 + (id)weakReferenceForObject:(id)arg1;
 + (id)referenceForObject:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) Protocol *objectProtocol; // @synthesize objectProtocol=_objectProtocol;
 @property(nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
 @property(nonatomic) __weak TSPComponent *component; // @synthesize component=_component;
 @property(nonatomic) __weak id <TSPLazyReferenceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -51,6 +53,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool keepObjectInMemory;
+- (_Bool)validateObject:(id)arg1 expectedObjectClass:(Class)arg2 expectedObjectProtocol:(id)arg3 delegate:(id)arg4 shouldIgnoreFailure:(_Bool *)arg5 shouldUpdateObjectClass:(_Bool *)arg6 error:(id *)arg7;
 @property(readonly, nonatomic) id objectIfLoaded;
 - (id)objectAndReturnError:(id *)arg1;
 @property(readonly, nonatomic) _Bool tsp_isLazyReference;
@@ -58,7 +61,7 @@
 - (id)initWeakReferenceWithObject:(id)arg1 retainedUntilArchived:(_Bool)arg2;
 - (id)initWeakReferenceWithObject:(id)arg1;
 - (id)initWithObject:(id)arg1;
-- (id)initWithDelegate:(id)arg1 identifier:(long long)arg2 ownershipMode:(long long)arg3 allowUnknownObject:(_Bool)arg4;
+- (id)initWithDelegate:(id)arg1 identifier:(long long)arg2 ownershipMode:(long long)arg3 allowUnknownObject:(_Bool)arg4 objectClass:(Class)arg5 objectProtocol:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

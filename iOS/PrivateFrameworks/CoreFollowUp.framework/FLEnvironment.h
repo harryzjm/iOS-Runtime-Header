@@ -6,11 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSUserDefaults;
+
 @interface FLEnvironment : NSObject
 {
+    NSUserDefaults *_followupDefaults;
 }
 
 + (id)currentEnvironment;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSUserDefaults *followupDefaults; // @synthesize followupDefaults=_followupDefaults;
+- (id)supportedNotifyingAppIds;
+- (double)oneDayTimeInterval;
+- (_Bool)normalizeExpirationToMidnight;
 - (id)stressBundleIdentifiers;
 - (id)supportedBundleIdentifiers;
 - (_Bool)stressMode;
@@ -19,7 +27,9 @@
 @property(readonly, nonatomic) _Bool followUpExtensionSupportEnabled;
 - (_Bool)shouldHideAllFollowUps;
 - (_Bool)isUnlocked;
+- (_Bool)shouldShowUnapprovedItems;
 - (_Bool)isInternal;
+- (id)init;
 
 @end
 

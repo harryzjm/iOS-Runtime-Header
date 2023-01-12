@@ -10,8 +10,10 @@ __attribute__((visibility("hidden")))
 @interface VCMediaStreamMultiwayConfigAudio
 {
     VCAudioRuleCollection *_audioRules;
+    unsigned int _preferredMediaBitrate;
 }
 
+@property(nonatomic) unsigned int preferredMediaBitrate; // @synthesize preferredMediaBitrate=_preferredMediaBitrate;
 @property(retain, nonatomic) VCAudioRuleCollection *audioRules; // @synthesize audioRules=_audioRules;
 - (void)dealloc;
 

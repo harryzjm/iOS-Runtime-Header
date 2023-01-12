@@ -25,6 +25,7 @@
 - (id)description;
 - (void)cleanupExpiredItems;
 - (double)timeToUnderLimit:(id)arg1;
+- (void)clearAllItems;
 - (void)clearItem:(id)arg1;
 - (void)noteItem:(id)arg1;
 - (_Bool)underLimitForItem:(id)arg1;

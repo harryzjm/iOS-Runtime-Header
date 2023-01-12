@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsSuggestions/MapsSuggestionsJSONable-Protocol.h>
-#import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsTrigger-Protocol.h>
 
 @class NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@protocol MapsSuggestionsTimer <MapsSuggestionsObject, MapsSuggestionsJSONable>
+@protocol MapsSuggestionsTimer <MapsSuggestionsTrigger>
 - (void)unschedule;
 - (void)scheduleWithInterval:(struct Duration)arg1 leeway:(struct Duration)arg2;
 - (void)scheduleWithInterval:(struct Duration)arg1 repeatAfter:(struct Duration)arg2 leeway:(struct Duration)arg3;

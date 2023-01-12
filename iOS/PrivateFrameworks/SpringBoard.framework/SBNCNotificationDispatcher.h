@@ -9,8 +9,8 @@
 #import <SpringBoard/CSCoverSheetViewControllerObserver-Protocol.h>
 #import <SpringBoard/SBFNotificationExtensionVisibilityProviding-Protocol.h>
 
-@class BSServiceConnectionEndpoint, NCBulletinNotificationSource, NCNotificationDispatcher, NSString, SBCommunicationPolicyManager, SBLockScreenManager, SBLockStateAggregator, SBNCAlertingController, SBNCNotificationDispatcherDelegate, SBNotificationBannerDestination, SBNotificationCenterDestination, SBUserAlertNotificationSource, SBWalletNotificationSource;
-@protocol NCNotificationAlertDestination, SBNotificationDestination;
+@class BSServiceConnectionEndpoint, NCBulletinNotificationSource, NCNotificationDispatcher, NSString, SBCommunicationPolicyManager, SBLockScreenManager, SBLockStateAggregator, SBNCAlertingController, SBNCNotificationDispatcherDelegate, SBNotificationBannerDestination, SBNotificationCarPlayDestination, SBNotificationCenterDestination, SBUserAlertNotificationSource, SBWalletNotificationSource;
+@protocol SBNotificationDestination;
 
 @interface SBNCNotificationDispatcher : NSObject <CSCoverSheetViewControllerObserver, SBFNotificationExtensionVisibilityProviding>
 {
@@ -24,7 +24,7 @@
     SBUserAlertNotificationSource *_userNotificationAlertSource;
     SBLockScreenManager *_lockScreenManager;
     SBLockStateAggregator *_lockStateAggregator;
-    id <NCNotificationAlertDestination> _carDestination;
+    SBNotificationCarPlayDestination *_carDestination;
     SBCommunicationPolicyManager *_communicationPolicyManager;
     SBNCAlertingController *_alertingController;
 }
@@ -32,7 +32,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBNCAlertingController *alertingController; // @synthesize alertingController=_alertingController;
 @property(retain, nonatomic) SBCommunicationPolicyManager *communicationPolicyManager; // @synthesize communicationPolicyManager=_communicationPolicyManager;
-@property(retain, nonatomic) id <NCNotificationAlertDestination> carDestination; // @synthesize carDestination=_carDestination;
+@property(retain, nonatomic) SBNotificationCarPlayDestination *carDestination; // @synthesize carDestination=_carDestination;
 @property(retain, nonatomic) SBLockStateAggregator *lockStateAggregator; // @synthesize lockStateAggregator=_lockStateAggregator;
 @property(retain, nonatomic) SBLockScreenManager *lockScreenManager; // @synthesize lockScreenManager=_lockScreenManager;
 @property(retain, nonatomic) SBUserAlertNotificationSource *userNotificationAlertSource; // @synthesize userNotificationAlertSource=_userNotificationAlertSource;

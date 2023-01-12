@@ -10,14 +10,14 @@
 
 @interface MapsSuggestionsShortcutAtMapItemDeduper <MapsSuggestionsDeduper>
 {
-    vector_8215e319 _types;
+    struct vector<MapsSuggestionsEntryType, std::allocator<MapsSuggestionsEntryType>> _types;
 }
 
 + (_Bool)isEnabled;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (_Bool)dedupeByEnrichingEntry:(id)arg1 withEntry:(id)arg2;
-- (id)initWithSacrificedTypes:(const vector_8215e319 *)arg1;
+- (id)initWithSacrificedTypes:(const void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

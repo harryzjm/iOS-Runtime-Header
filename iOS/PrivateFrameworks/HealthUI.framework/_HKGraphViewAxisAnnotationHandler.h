@@ -21,8 +21,9 @@
 @property(nonatomic) _Bool clearedPreviousAnnotations; // @synthesize clearedPreviousAnnotations=_clearedPreviousAnnotations;
 @property(retain, nonatomic) NSMapTable *seriesToAnnotations; // @synthesize seriesToAnnotations=_seriesToAnnotations;
 @property(nonatomic) _Bool disableDuringTiling; // @synthesize disableDuringTiling=_disableDuringTiling;
+- (void)_forceClearAxisAnnotations;
 - (void)clearAxisAnnotations;
-- (long long)applyAnnotationForSeries:(id)arg1 commonAxes:(id)arg2;
+- (long long)applyAnnotationForSeries:(id)arg1;
 - (void)addAxisAnnotation:(id)arg1 forSeries:(id)arg2 modelCoordinate:(id)arg3;
 - (void)startAnnotationSequence;
 - (id)init;

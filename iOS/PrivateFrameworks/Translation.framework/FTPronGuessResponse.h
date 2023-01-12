@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_11d25f3c)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_11d25f3c)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSArray *human_readable_prons;
 @property(readonly, nonatomic) NSArray *tts_pronunciations;
 @property(readonly, nonatomic) FTVocToken *voc_token;

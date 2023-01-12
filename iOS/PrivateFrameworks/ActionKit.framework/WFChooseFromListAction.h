@@ -11,6 +11,7 @@
 }
 
 + (id)userInterfaceProtocol;
+- (id)contentDestinationWithError:(id *)arg1;
 - (_Bool)shouldBeSuggestedAfterAction:(id)arg1 inWorkflow:(id)arg2;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)roundedImageFromWFImage:(id)arg1 roundingStyle:(unsigned long long)arg2 desiredSize:(struct CGSize)arg3 desiredScale:(double)arg4;
@@ -20,7 +21,7 @@
 - (id)contentItemsFromSelectedItem:(id)arg1;
 - (id)itemsFromDictionaryItem:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (_Bool)shouldCreateIntentAvailableResource;
+- (id)appResource;
 
 @end
 

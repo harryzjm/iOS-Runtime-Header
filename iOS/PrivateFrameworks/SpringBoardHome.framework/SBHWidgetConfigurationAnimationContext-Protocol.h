@@ -17,7 +17,5 @@
 @property(readonly, nonatomic) UIView *homeScreenContentView;
 @property(readonly, nonatomic) struct CGRect contentBoundingRect;
 @property(readonly, nonatomic) UIView *containerView;
-@property(readonly, nonatomic) _Bool wantsAnimation;
-@property(readonly, nonatomic) long long operation;
 @end
 

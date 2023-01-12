@@ -6,40 +6,45 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEReferenceTrackerDelegate-Protocol.h>
+#import <TSTables/TSCEFormulaOwning-Protocol.h>
 
-@class NSMutableSet, NSString, TSCEReferenceTracker, TSTTableInfo;
+@class NSString, TSCECalculationEngine, TSCETrackedReferenceStore, TSTTableInfo;
 
-@interface TSTSortRuleReferenceTracker : NSObject <TSCEReferenceTrackerDelegate>
+@interface TSTSortRuleReferenceTracker : NSObject <TSCEFormulaOwning>
 {
+    struct TSKUIDStruct _ownerUID;
+    struct TSKUIDStruct _baseTableUID;
+    TSCECalculationEngine *_calcEngine;
+    TSCETrackedReferenceStore *_trackedRefsStore;
+    _Bool _isRegisteredWithCalculationEngine;
     TSTTableInfo *_tableInfo;
-    NSMutableSet *_references;
-    TSCEReferenceTracker *_referenceTracker;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) TSCEReferenceTracker *referenceTracker; // @synthesize referenceTracker=_referenceTracker;
-@property(retain, nonatomic) NSMutableSet *references; // @synthesize references=_references;
 @property(nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
-- (id)initFromArchive:(const struct SortRuleReferenceTrackerArchive *)arg1 unarchiver:(id)arg2;
-- (void)encodeToArchive:(struct SortRuleReferenceTrackerArchive *)arg1 archiver:(id)arg2;
-- (void)referencedCellWasModified:(id)arg1;
-- (id)cellRangeWasInserted:(const struct TSCERangeRef *)arg1;
-- (_Bool)shouldRewriteOnTableIDReassignment;
-- (_Bool)shouldRewriteOnTranspose;
-- (_Bool)shouldRewriteOnCellMerge;
-- (_Bool)shouldRewriteOnTectonicShift;
-- (_Bool)shouldRewriteOnRangeMove;
-- (_Bool)shouldRewriteOnSort;
-- (void)setOwnerUID:(const UUIDData_5fbc143e *)arg1;
-- (UUIDData_5fbc143e)ownerUID;
+@property(nonatomic) struct TSKUIDStruct baseTableUID; // @synthesize baseTableUID=_baseTableUID;
+- (void)invalidateForCalcEngine:(id)arg1;
+- (void)writeResultsForCalcEngine:(id)arg1;
+- (struct TSCERecalculationState)multiEvaluateFormulasAt:(const void *)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
+- (struct TSCERecalculationState)evaluateFormulaAt:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
+- (long long)evaluationMode;
+- (id)linkedResolver;
+- (unsigned short)ownerKind;
+- (id)initFromArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)setOwnerUID:(const struct TSKUIDStruct *)arg1;
+- (struct TSKUIDStruct)ownerUID;
 - (void)updateForSortRules:(id)arg1;
-- (id)p_ruleReferenceForTrackedReference:(id)arg1;
+- (id)beginTrackingReferenceWithSpanningRef:(const struct TSCESpanningRangeRef *)arg1;
+- (void)endTrackingReference:(id)arg1;
+- (void)beginTrackingReference:(id)arg1;
+- (_Bool)p_hasRuleReferenceForTrackedReference:(id)arg1;
 - (unsigned short)p_columnForTrackedReference:(id)arg1;
 - (struct TSCESpanningRangeRef)p_referenceForColumnIndex:(unsigned short)arg1;
 - (void)unregisterFromCalcEngine;
 - (void)registerWithCalcEngine:(id)arg1;
-- (id)initWithTableInfo:(id)arg1 context:(id)arg2;
+- (void)registerWithCalcEngine:(id)arg1 reregister:(_Bool)arg2;
+- (id)initWithTableInfo:(id)arg1 baseTableUID:(const struct TSKUIDStruct *)arg2 context:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

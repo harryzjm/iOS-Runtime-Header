@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
     _Bool mConnectToVerticalSide;
     int mExtraRowsBetweenParentAndSelf;
     float mXOffsetRelativeToParent;
-    struct ODIHRangeVector *mXRanges;
+    void *mXRanges;
 }
 
-- (struct ODIHRangeVector *)xRanges;
+- (void *)xRanges;
 - (void)addToXOffsetRelativeToParent:(float)arg1;
 - (void)setXOffsetRelativeToParent:(float)arg1;
 - (float)xOffsetRelativeToParent;

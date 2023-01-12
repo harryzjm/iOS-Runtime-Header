@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AuthKit/AKAuthenticationController-Protocol.h>
+
 @class AKAppleIDAuthenticationContextManager, NSLock, NSString, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol AKAppleIDAuthenticationDelegate;
 
-@interface AKAppleIDAuthenticationController : NSObject
+@interface AKAppleIDAuthenticationController : NSObject <AKAuthenticationController>
 {
     NSString *_serviceID;
     NSXPCListenerEndpoint *_daemonXPCEndpoint;
@@ -70,6 +72,12 @@
 - (id)initWithDaemonXPCEndpoint:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

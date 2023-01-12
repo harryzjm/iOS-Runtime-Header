@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <DoNotDisturb/DNDRemoteServiceClientGlobalConfigurationProtocol-Protocol.h>
+#import <DoNotDisturb/DNDRemoteServiceClientMeDeviceStateProtocol-Protocol.h>
 #import <DoNotDisturb/DNDRemoteServiceClientModeAssertionProtocol-Protocol.h>
+#import <DoNotDisturb/DNDRemoteServiceClientModeSelectionProtocol-Protocol.h>
 #import <DoNotDisturb/DNDRemoteServiceClientSettingsProtocol-Protocol.h>
 #import <DoNotDisturb/DNDRemoteServiceClientStateProtocol-Protocol.h>
 #import <DoNotDisturb/NSObject-Protocol.h>
 
-@protocol DNDRemoteServiceClientProtocol <NSObject, DNDRemoteServiceClientModeAssertionProtocol, DNDRemoteServiceClientStateProtocol, DNDRemoteServiceClientSettingsProtocol>
+@protocol DNDRemoteServiceClientProtocol <NSObject, DNDRemoteServiceClientModeAssertionProtocol, DNDRemoteServiceClientStateProtocol, DNDRemoteServiceClientSettingsProtocol, DNDRemoteServiceClientModeSelectionProtocol, DNDRemoteServiceClientGlobalConfigurationProtocol, DNDRemoteServiceClientMeDeviceStateProtocol>
 @end
 

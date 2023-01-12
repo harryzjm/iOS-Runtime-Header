@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <TRITaskAttributing> taskAttributing; // @synthesize taskAttributing=_taskAttributing;
 @property(readonly, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
+- (id)trialSystemTelemetry;
 - (id)dimensions;
 - (id)metrics;
 - (id)description;

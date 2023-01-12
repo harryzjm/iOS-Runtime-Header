@@ -11,16 +11,16 @@
 @interface PGGraphIngestRecipeParameters : NSObject
 {
     NSArray *_momentsToIngest;
-    NSArray *_highligthsToIngest;
+    NSArray *_highlightsToIngest;
     NSArray *_preProcessors;
     NSArray *_postProcessors;
 }
 
-+ (id)lighweightGraphIngestParameters;
++ (id)lightweightGraphIngestParameters;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *postProcessors; // @synthesize postProcessors=_postProcessors;
 @property(retain, nonatomic) NSArray *preProcessors; // @synthesize preProcessors=_preProcessors;
-@property(retain, nonatomic) NSArray *highligthsToIngest; // @synthesize highligthsToIngest=_highligthsToIngest;
+@property(retain, nonatomic) NSArray *highlightsToIngest; // @synthesize highlightsToIngest=_highlightsToIngest;
 @property(retain, nonatomic) NSArray *momentsToIngest; // @synthesize momentsToIngest=_momentsToIngest;
 
 @end

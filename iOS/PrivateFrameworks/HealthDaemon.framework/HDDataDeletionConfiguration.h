@@ -17,7 +17,8 @@
     _Bool _failIfNotFound;
     _Bool _notifyObservers;
     _Bool _secureDelete;
-    _Bool _preserveStartAndEndDates;
+    _Bool _preserveExactStartAndEndDates;
+    _Bool _userRequested;
     CDUnknownBlockType _recursiveDeleteAuthorizationBlock;
     NSString *_restrictedSourceBundleIdentifier;
     Class _entityClass;
@@ -28,7 +29,8 @@
 @property(copy, nonatomic) Class entityClass; // @synthesize entityClass=_entityClass;
 @property(copy, nonatomic) NSString *restrictedSourceBundleIdentifier; // @synthesize restrictedSourceBundleIdentifier=_restrictedSourceBundleIdentifier;
 @property(copy, nonatomic) CDUnknownBlockType recursiveDeleteAuthorizationBlock; // @synthesize recursiveDeleteAuthorizationBlock=_recursiveDeleteAuthorizationBlock;
-@property(nonatomic) _Bool preserveStartAndEndDates; // @synthesize preserveStartAndEndDates=_preserveStartAndEndDates;
+@property(nonatomic) _Bool userRequested; // @synthesize userRequested=_userRequested;
+@property(nonatomic) _Bool preserveExactStartAndEndDates; // @synthesize preserveExactStartAndEndDates=_preserveExactStartAndEndDates;
 @property(nonatomic) _Bool secureDelete; // @synthesize secureDelete=_secureDelete;
 @property(nonatomic) _Bool notifyObservers; // @synthesize notifyObservers=_notifyObservers;
 @property(nonatomic) _Bool failIfNotFound; // @synthesize failIfNotFound=_failIfNotFound;

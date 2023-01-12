@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSString, PHCachingImageManager, PHImageRequestOptions, PUAlbumListCellContentViewHelperConfiguration, PUFontManager, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXExtendedTraitCollection, PXFeatureSpec, PXFeatureSpecManager, PXPhotoKitCollectionsDataSourceManager, UIImage;
+@class NSString, PHImageRequestOptions, PUAlbumListCellContentViewHelperConfiguration, PUFontManager, PXAssetBadgeManager, PXCollectionTileLayoutTemplate, PXExtendedTraitCollection, PXFeatureSpec, PXFeatureSpecManager, PXPhotoKitCollectionsDataSourceManager, PXUIMediaProvider, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PUAlbumListCellContentViewHelper : NSObject <PXChangeObserver>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     PXExtendedTraitCollection *_traitCollection;
     PUAlbumListCellContentViewHelperConfiguration *_configuration;
     PXPhotoKitCollectionsDataSourceManager *_dataSourceManager;
+    PXUIMediaProvider *_mediaProvider;
     PUFontManager *_fontManager;
     UIImage *_emptyAlbumPlaceholderImage;
     UIImage *_emptySharedAlbumPlaceholderImage;
@@ -24,7 +25,6 @@ __attribute__((visibility("hidden")))
     UIImage *_hiddenAlbumPlaceholderImage;
     UIImage *_recentlyDeletedAlbumPlaceholderImage;
     PHImageRequestOptions *_imageRequestOptions;
-    PHCachingImageManager *_cachingImageManager;
     PXFeatureSpecManager *_featureSpecManager;
     PXFeatureSpec *_featureSpec;
     PXAssetBadgeManager *_badgeManager;
@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PXAssetBadgeManager *badgeManager; // @synthesize badgeManager=_badgeManager;
 @property(retain, nonatomic) PXFeatureSpec *featureSpec; // @synthesize featureSpec=_featureSpec;
 @property(retain, nonatomic) PXFeatureSpecManager *featureSpecManager; // @synthesize featureSpecManager=_featureSpecManager;
-@property(retain, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
 @property(retain, nonatomic) PHImageRequestOptions *imageRequestOptions; // @synthesize imageRequestOptions=_imageRequestOptions;
 @property(retain, nonatomic) UIImage *recentlyDeletedAlbumPlaceholderImage; // @synthesize recentlyDeletedAlbumPlaceholderImage=_recentlyDeletedAlbumPlaceholderImage;
 @property(retain, nonatomic) UIImage *hiddenAlbumPlaceholderImage; // @synthesize hiddenAlbumPlaceholderImage=_hiddenAlbumPlaceholderImage;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImage *emptyAlbumPlaceholderImage; // @synthesize emptyAlbumPlaceholderImage=_emptyAlbumPlaceholderImage;
 @property(nonatomic) struct CGSize albumCellSize; // @synthesize albumCellSize=_albumCellSize;
 @property(retain, nonatomic) PUFontManager *fontManager; // @synthesize fontManager=_fontManager;
+@property(readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) PXPhotoKitCollectionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) PUAlbumListCellContentViewHelperConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) PXExtendedTraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
@@ -71,7 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)reconfigureImageInAlbumListCellContentView:(id)arg1 withPlaceholderImage:(id)arg2;
 - (long long)estimatedIndexOfAssetForStackItemAtIndex:(long long)arg1 inCollection:(id)arg2 albumListCellContentView:(id)arg3;
 - (void)configureAlbumListCellContentView:(id)arg1 forCollection:(id)arg2 title:(id)arg3 animated:(_Bool)arg4 enabled:(_Bool)arg5 editing:(_Bool)arg6;
-- (id)initWithConfiguration:(id)arg1 dataSourceManager:(id)arg2 extendedTraitCollection:(id)arg3;
+- (id)initWithConfiguration:(id)arg1 dataSourceManager:(id)arg2 mediaProvider:(id)arg3 extendedTraitCollection:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

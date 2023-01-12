@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UIViewInProcessAnimationManagerDriver-Protocol.h>
 
-@class CADisplayLink, NSHashTable, NSMutableArray, NSRunLoop, NSString, NSThread, _UIAppCACommitFuture;
+@class CADisplayLink, NSCountedSet, NSHashTable, NSMutableArray, NSRunLoop, NSString, NSThread, _UIAppCACommitFuture, _UIViewInProcessAnimationReasonArray;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source, _UIViewInProcessAnimationManagerDriver;
 
 @interface UIViewInProcessAnimationManager : NSObject <_UIViewInProcessAnimationManagerDriver>
@@ -19,6 +19,13 @@
     NSMutableArray *_postTickBlocks;
     NSMutableArray *_preExitBlocks;
     NSMutableArray *_presentationModifierGroupRequestBlocks;
+    NSCountedSet *_minimumFrameRates;
+    NSCountedSet *_maximumFrameRates;
+    NSCountedSet *_preferredFrameRates;
+    NSCountedSet *_updateReasons;
+    unsigned long long _numberOfEntriesWithoutVelocityUsableForVFD;
+    struct CAFrameRateRange _preferredFrameRateRange;
+    _UIViewInProcessAnimationReasonArray *_updateReasonArray;
     id <_UIViewInProcessAnimationManagerDriver> _animatorAdvancer;
     double _time;
     double _deltaTime;
@@ -45,6 +52,10 @@
     NSHashTable *_presentationGroups;
     _Bool _appSuspended;
     NSMutableArray *_observedWindowScenes;
+    struct {
+        unsigned int preferredFrameRateRange:1;
+        unsigned int updateReasonsArray:1;
+    } _clean;
     _Bool _usesMainThreadExecution;
     _Bool _advancingOnCommitDisabled;
     unsigned long long _executionMode;
@@ -83,7 +94,7 @@
 - (void)_setAnimationExecutionParameters;
 - (void)_commitSynchronously;
 - (void)startAnimationAdvancerIfNeeded;
-- (void)addEntry:(CDUnknownBlockType)arg1;
+- (void)addEntry:(id)arg1;
 - (void)scheduleAnimatorAdvancerToStart;
 - (void)_performTick:(double)arg1 cancel:(_Bool)arg2 force:(_Bool)arg3 eventName:(id)arg4 entry:(CDUnknownBlockType)arg5 exit:(CDUnknownBlockType)arg6;
 - (void)_processTickExitRemovingEntries:(id)arg1;
@@ -98,10 +109,11 @@
 - (void)_updateAnimationSuspensionForAppStateChange;
 - (void)_applicationBecameActive;
 - (void)_applicationDidEnterBackground;
-- (void)_applicationResignedActive;
 - (void)_screenBasedSceneDidDisconnect:(id)arg1;
 - (void)_screenBasedSceneWillAttachWindow:(id)arg1;
 - (void)_cancelAllAnimationsImmediately;
+@property(readonly, nonatomic) _UIViewInProcessAnimationReasonArray *updateReasonArray;
+@property(readonly, nonatomic) struct CAFrameRateRange preferredFrameRateRange;
 - (void)dealloc;
 - (void)_registerBacklightChangedNotification;
 - (id)init;

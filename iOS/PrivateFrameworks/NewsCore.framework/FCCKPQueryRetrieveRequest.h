@@ -10,6 +10,7 @@
 
 @class FCCKPQuery, FCCKPRecordZoneIdentifier, FCCKPRequestedFields, NSData;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQueryRetrieveRequest : PBRequest <NSCopying>
 {
     NSData *_continuationMarker;
@@ -23,28 +24,16 @@
 }
 
 + (id)options;
-@property(retain, nonatomic) FCCKPRequestedFields *requestedFields; // @synthesize requestedFields=_requestedFields;
-@property(retain, nonatomic) FCCKPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
-@property(nonatomic) unsigned int limit; // @synthesize limit=_limit;
-@property(retain, nonatomic) NSData *continuationMarker; // @synthesize continuationMarker=_continuationMarker;
-@property(retain, nonatomic) FCCKPQuery *query; // @synthesize query=_query;
-- (void)mergeFrom:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (Class)responseClass;
 - (unsigned int)requestTypeCode;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasRequestedFields;
-@property(readonly, nonatomic) _Bool hasZoneIdentifier;
-@property(nonatomic) _Bool hasLimit;
-@property(readonly, nonatomic) _Bool hasContinuationMarker;
-@property(readonly, nonatomic) _Bool hasQuery;
-- (void)dealloc;
 
 @end
 

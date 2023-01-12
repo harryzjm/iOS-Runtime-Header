@@ -10,7 +10,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface CKDPPackageManifestHeader : PBCodable <NSCopying>
 {
     NSData *_signature;

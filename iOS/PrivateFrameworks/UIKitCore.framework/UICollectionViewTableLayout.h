@@ -129,8 +129,10 @@
 @property(readonly, nonatomic, getter=_heightForTableHeader) double heightForTableHeader;
 @property(readonly, nonatomic, getter=_isTableHeaderAutohiding) _Bool isTableHeaderAutohiding;
 @property(readonly, nonatomic, getter=_cellSafeAreaInsets) struct UIEdgeInsets cellSafeAreaInsets;
-@property(readonly, nonatomic, getter=_sectionFooterPadding) double sectionFooterPadding;
-@property(readonly, nonatomic, getter=_sectionHeaderPadding) double sectionHeaderPadding;
+@property(readonly, nonatomic, getter=_useChromelessSectionHeaderFooterPinningBehavior) _Bool useChromelessSectionHeaderFooterPinningBehavior;
+@property(readonly, nonatomic, getter=_sectionFooterToLastRowPadding) double sectionFooterToLastRowPadding;
+@property(readonly, nonatomic, getter=_sectionHeaderToFirstRowPadding) double sectionHeaderToFirstRowPadding;
+@property(readonly, nonatomic, getter=_paddingAboveSectionHeaders) double paddingAboveSectionHeaders;
 @property(readonly, nonatomic, getter=_tableContentInset) struct UIEdgeInsets tableContentInset;
 @property(readonly, nonatomic, getter=_contentInset) struct UIEdgeInsets _contentInset;
 @property(readonly, nonatomic, getter=_sidePadding) double sidePadding;
@@ -214,6 +216,7 @@
 - (id)invalidationContextForInteractivelyMovingItems:(id)arg1 withTargetPosition:(struct CGPoint)arg2 previousIndexPaths:(id)arg3 previousPosition:(struct CGPoint)arg4;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (_Bool)_supportsBandSelectionInSection:(long long)arg1;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (void)_invalidateIndexPathsBelowIndexPath:(id)arg1 withInvalidationContext:(id)arg2;
 - (id)_indexPathsBelowIndexPath:(id)arg1;

@@ -35,9 +35,9 @@
 - (void)processSelectedStoragesWithStatisticsController:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 @property(readonly, copy) NSString *debugDescription;
-- (void)pSaveToFlowInfoArchive:(struct FlowInfoArchive *)arg1 archiver:(id)arg2 textBoxes:(id)arg3;
+- (void)pSaveToFlowInfoArchive:(void *)arg1 archiver:(id)arg2 textBoxes:(id)arg3;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromFlowInfoArchive:(const struct FlowInfoArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromFlowInfoArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 @property(readonly, nonatomic) _Bool supportsDropCapsInChildStorages;
 @property(readonly, nonatomic) _Bool supportsMultipleColumns;

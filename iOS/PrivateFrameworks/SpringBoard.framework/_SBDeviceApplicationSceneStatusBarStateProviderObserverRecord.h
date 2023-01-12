@@ -15,6 +15,9 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct SBDeviceApplicationSceneStatusBarStateObserverFlags flags; // @synthesize flags=_flags;
+@property(readonly, nonatomic) __weak id <SBDeviceApplicationSceneStatusBarStateObserver> observer; // @synthesize observer=_observer;
+- (id)initWithObserver:(id)arg1 andFlags:(struct SBDeviceApplicationSceneStatusBarStateObserverFlags)arg2;
 
 @end
 

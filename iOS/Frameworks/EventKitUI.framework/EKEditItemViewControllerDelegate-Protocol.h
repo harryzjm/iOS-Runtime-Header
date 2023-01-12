@@ -15,6 +15,7 @@
 - (void)editItemViewController:(EKEditItemViewController *)arg1 didCompleteWithAction:(int)arg2;
 
 @optional
+- (void)editItemPendingVideoConferenceCompleted:(EKEditItemViewController *)arg1;
 - (void)editItemViewControllerWantsKeyboardPinned:(_Bool)arg1;
 - (_Bool)editItemViewControllerSave:(id <EKEditItemViewControllerProtocol>)arg1;
 @end

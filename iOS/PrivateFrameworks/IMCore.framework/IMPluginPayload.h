@@ -65,12 +65,14 @@
 - (id)initWithCoder:(id)arg1 additionalAllowedClasses:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)payloadDictionary;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqualToPluginPayload:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldHideAttachments;
 - (void)addAttachmentsFromFilePaths:(id)arg1;
 - (void)addAttachmentsFromFileTransferGUIDs:(id)arg1;
+- (id)initWithMessageItem:(id)arg1 chatContext:(id)arg2;
 - (id)initWithMessageItem:(id)arg1;
 - (id)initWithMessage:(id)arg1;
 

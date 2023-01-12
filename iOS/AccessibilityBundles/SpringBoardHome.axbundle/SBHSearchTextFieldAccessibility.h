@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)accessibilityPerformEscape;
+- (_Bool)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
 
 @end

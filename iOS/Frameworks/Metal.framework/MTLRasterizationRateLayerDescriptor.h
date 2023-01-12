@@ -23,7 +23,8 @@
 // Remaining properties
 @property(readonly, nonatomic) MTLRasterizationRateSampleArray *horizontal; // @dynamic horizontal;
 @property(readonly, nonatomic) float *horizontalSampleStorage; // @dynamic horizontalSampleStorage;
-@property(readonly, nonatomic) CDStruct_da2e99ad sampleCount; // @dynamic sampleCount;
+@property(readonly, nonatomic) CDStruct_da2e99ad maxSampleCount; // @dynamic maxSampleCount;
+@property(nonatomic) CDStruct_da2e99ad sampleCount; // @dynamic sampleCount;
 @property(readonly, nonatomic) MTLRasterizationRateSampleArray *vertical; // @dynamic vertical;
 @property(readonly, nonatomic) float *verticalSampleStorage; // @dynamic verticalSampleStorage;
 

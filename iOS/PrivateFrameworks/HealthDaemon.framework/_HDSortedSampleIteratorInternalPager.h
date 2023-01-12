@@ -10,8 +10,7 @@
 {
 }
 
-+ (void)getSamplesWithSampleQueryDescription:(id)arg1 sortDescriptors:(id)arg2 anchor:(id)arg3 limit:(unsigned long long)arg4 profile:(id)arg5 resultsHandler:(CDUnknownBlockType)arg6;
-+ (id)_enumeratorWithProfile:(id)arg1 sampleQueryDescription:(id)arg2 anchor:(id)arg3 limit:(long long)arg4 error:(id *)arg5;
++ (void)getSamplesWithQueryDescriptor:(id)arg1 sortDescriptors:(id)arg2 anchor:(id)arg3 limit:(unsigned long long)arg4 includeDeletedObjects:(_Bool)arg5 profile:(id)arg6 resultsHandler:(CDUnknownBlockType)arg7;
 - (id)init;
 
 @end

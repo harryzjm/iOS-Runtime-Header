@@ -11,12 +11,13 @@
 
 @interface NTKStopwatchRichComplicationBaseCircularView <CLKMonochromeComplicationView>
 {
-    UIImageView *_timerImageView;
+    UIImageView *_stopwatchImageView;
     NTKColoringLabel *_timeLabel;
     NTKRichComplicationDialView *_frontDial;
     NTKRichComplicationDialView *_backDial;
     NSNumber *_updateToken;
     struct {
+        double stopwatchImageConfigPointSize;
         double timeLabelFontSize;
         double timeLabelMaxWidth;
         double timeLabelBottom;

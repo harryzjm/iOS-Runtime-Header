@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNAutocompleteNameComponents, CNAutocompleteResultValue, NSArray, NSDictionary, NSNumber, NSString;
+@class CNAutocompleteNameComponents, CNAutocompleteResultValue, NSArray, NSDictionary, NSNumber, NSString, _PSSuggestion;
 
 @interface CNAutocompleteResult : NSObject
 {
@@ -25,6 +25,7 @@
     NSArray *_diagnosticLogs;
     CDUnknownBlockType _ignoreResultBlock;
     long long _resultType;
+    _PSSuggestion *_psSuggestion;
     NSNumber *_recentsIdentifier;
 }
 
@@ -43,6 +44,7 @@
 + (id)calDAVResultWithAddress:(id)arg1 displayName:(id)arg2 nameComponents:(id)arg3;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *recentsIdentifier; // @synthesize recentsIdentifier=_recentsIdentifier;
+@property(retain) _PSSuggestion *psSuggestion; // @synthesize psSuggestion=_psSuggestion;
 @property long long resultType; // @synthesize resultType=_resultType;
 @property(copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy) NSString *lastSendingAddress; // @synthesize lastSendingAddress=_lastSendingAddress;
@@ -60,7 +62,10 @@
 - (void)addDiagnosticLogFuture:(id)arg1;
 - (void)addDiagnosticLog:(CDUnknownBlockType)arg1;
 - (id)contactWithKeysToFetch:(id)arg1 error:(id *)arg2;
+- (id)expandMembers;
 - (id)members:(id *)arg1;
+- (_Bool)shouldUseGroupNamingForResult;
+- (_Bool)shouldUseGroupNamingForSource;
 - (void)updateUsingInformationFromRelatedResult:(id)arg1;
 - (id)stringForHashing;
 - (_Bool)isEqual:(id)arg1;

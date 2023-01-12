@@ -13,6 +13,7 @@
 + (id)_placeDisplayNameForPeopleAddressNodeLabel:(id)arg1 titleComponent:(id)arg2 containsMe:(_Bool)arg3;
 + (id)nameFromPersonNode:(id)arg1;
 + (id)peopleGroupNameForPersonNodes:(id)arg1 allowedGroupsFormat:(unsigned long long)arg2;
++ (id)peopleGroupNameForPersonNodes:(id)arg1 allowedGroupsFormat:(unsigned long long)arg2 fallbackToGeneric:(_Bool)arg3;
 + (id)_ageStringWithStartAge:(long long)arg1 endAge:(long long)arg2;
 + (id)ageStringForPersonNode:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (id)ageStringForPersonNode:(id)arg1 date:(id)arg2;

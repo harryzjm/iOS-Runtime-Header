@@ -8,28 +8,51 @@
 
 #import <SpotlightServices/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSDictionary, NSString, SFCommand;
 
 @interface SPSearchEntity : NSObject <NSSecureCoding>
 {
     _Bool _hasWords;
-    NSString *_bundleIdentifier;
+    _Bool _isSuggestion;
+    _Bool _includeSyndicatedPhotos;
+    NSArray *_spotlightFilterQueries;
+    NSArray *_preferredBundleIDs;
 }
 
-+ (id)searchEntityWithContactIdentifier:(id)arg1;
-+ (id)searchEntityWithBundleIdentifier:(id)arg1 appName:(id)arg2;
-+ (id)searchEntityWithQueryString:(id)arg1 tokenText:(id)arg2 preferredBundleIDs:(id)arg3;
++ (id)searchEntityWithCommand:(id)arg1 fromSuggestion:(_Bool)arg2;
++ (id)searchEntityWithPersonQueryIdentifier:(id)arg1 personName:(id)arg2 fromSuggestion:(_Bool)arg3;
++ (id)searchEntityWithContactIdentifier:(id)arg1 fromSuggestion:(_Bool)arg2;
++ (id)searchEntityWithBundleIdentifier:(id)arg1 appName:(id)arg2 fromSuggestion:(_Bool)arg3;
++ (id)searchEntityWithNLPSearchString:(id)arg1 spotlightQueryString:(id)arg2 rankCategories:(id)arg3 rankTerms:(id)arg4 fromSuggestion:(_Bool)arg5;
++ (id)searchEntityWithPhotosSearchString:(id)arg1 spotlightQueryString:(id)arg2 rankCategories:(id)arg3 rankTerms:(id)arg4 isNLQuery:(_Bool)arg5 includeSyndicatedPhotos:(_Bool)arg6 fromSuggestion:(_Bool)arg7;
++ (id)searchEntityWithSearchString:(id)arg1 spotlightQueryString:(id)arg2 preferredBundleIDs:(id)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSArray *preferredBundleIDs; // @synthesize preferredBundleIDs=_preferredBundleIDs;
+@property(copy, nonatomic) NSArray *spotlightFilterQueries; // @synthesize spotlightFilterQueries=_spotlightFilterQueries;
+@property _Bool includeSyndicatedPhotos; // @synthesize includeSyndicatedPhotos=_includeSyndicatedPhotos;
+@property _Bool isSuggestion; // @synthesize isSuggestion=_isSuggestion;
 @property _Bool hasWords; // @synthesize hasWords=_hasWords;
-@property(retain) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property(readonly) NSString *tokenText;
-@property(readonly) NSString *queryString;
+- (void)appendToQuery:(id)arg1 key:(id)arg2 value:(id)arg3 optionalValue:(id)arg4 additions:(id)arg5;
+- (void)appendToQuery:(id)arg1 key:(id)arg2 value:(id)arg3 additions:(id)arg4;
+- (void)updateSearchString:(id)arg1;
+@property(readonly, nonatomic) SFCommand *command;
+@property(readonly, nonatomic) NSDictionary *spotlightRankTerms;
+@property(readonly, nonatomic) NSDictionary *spotlightRankCategories;
+@property(readonly, nonatomic) NSString *spotlightQueryString;
+@property(readonly, nonatomic) NSString *symbolName;
+@property(readonly, nonatomic) NSString *tokenText;
+@property(readonly, nonatomic) NSString *queryString;
+@property(readonly, nonatomic) NSString *searchString;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-@property(readonly) _Bool isScopedAppSearch;
-@property(readonly) _Bool isPeopleSearch;
+@property(readonly) _Bool isCommandEntitySearch;
+@property(readonly) _Bool isNLPEntitySearch;
+@property(readonly) _Bool isAppEntitySearch;
+@property(readonly) _Bool isContactEntitySearch;
+@property(readonly) _Bool isPhotosEntitySearch;
+@property(readonly) _Bool isScopedSearch;
 
 @end
 

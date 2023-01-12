@@ -7,10 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (TSPArchiveUtilities)
-+ (id)tsp_stringWithProtobufString:(const basic_string_90719d97 *)arg1;
-- (void)tsp_saveToProtobufString:(basic_string_90719d97 *)arg1;
++ (id)tsp_stringWithProtobufString:(const void *)arg1;
+- (void)tsp_saveToProtobufString:(void *)arg1;
 - (const char *)tsp_protobufString;
-- (id)tsp_initWithProtobufString:(const basic_string_90719d97 *)arg1;
+- (id)tsp_initWithProtobufString:(const void *)arg1;
 - (id)tsp_stringByAppendingObjectPathComponent:(id)arg1;
 @property(readonly, nonatomic) _Bool tsp_isPasteboardStateType;
 @end

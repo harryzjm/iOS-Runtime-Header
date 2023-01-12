@@ -15,7 +15,8 @@
 + (CDStruct_0802cd3c)payloadWithStartChar:(const char *)arg1 andSize:(unsigned long long)arg2;
 + (CDStruct_0802cd3c)payloadForDomain:(id)arg1;
 + (void)setTrieFromPath:(id)arg1;
-+ (void)initialize;
++ (void)_setTrieFromPath:(id)arg1 guardedData:(id)arg2;
++ (id)lock;
 
 @end
 

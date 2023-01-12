@@ -38,6 +38,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *compatiblePlatforms; // @synthesize compatiblePlatforms=_compatiblePlatforms;
 @property(retain, nonatomic) GKStoreItemInternal *storeItem; // @synthesize storeItem=_storeItem;
 @property(nonatomic) unsigned short maxAchievementPoints; // @synthesize maxAchievementPoints=_maxAchievementPoints;
@@ -62,7 +63,6 @@
 @property(nonatomic, getter=isPrerendered) _Bool prerendered; // @dynamic prerendered;
 - (id)description;
 - (id)serverRepresentation;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)defaultCategory;

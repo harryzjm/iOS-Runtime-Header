@@ -4,33 +4,45 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSFetchedResultsController, NSManagedObjectID, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject;
+@class ICSystemPaperCoreDataIndexer, ICTagCoreDataIndexer, NSFetchedResultsController, NSManagedObjectID, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet;
 @protocol OS_dispatch_queue;
 
 @interface ICRDFolderCoreDataIndexer
 {
+    _Bool _shouldIncludeTags;
+    _Bool _shouldIncludeSystemPaper;
+    _Bool _shouldAutoExpandSingleSection;
     NSManagedObjectID *_ancestorNoteContainerObjectID;
     NSFetchedResultsController *_legacyFetchedResultsController;
     NSFetchedResultsController *_modernFetchedResultsController;
     NSObject<OS_dispatch_queue> *_indexAccessQueue;
-    NSMutableDictionary *_accountSectionIdentifiersToFolderItemIdentifiers;
+    NSMutableDictionary *_folderListSectionIdentifiersToFolderItemIdentifiers;
     NSMutableDictionary *_folderItemIdentifiersToParentFolderItemIdentifier;
     NSMutableDictionary *_folderItemIdentifiersToChildFolderItemIdentifiers;
-    NSMutableOrderedSet *_accountSectionIdentifiers;
+    NSMutableOrderedSet *_folderListSectionIdentifiers;
     NSMutableSet *_legacyAccountManagedObjectIDs;
     NSMutableSet *_modernAccountManagedObjectIDs;
+    NSMutableSet *_smartFolderManagedObjectIDs;
+    ICTagCoreDataIndexer *_tagIndexer;
+    ICSystemPaperCoreDataIndexer *_systemPaperIndexer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) ICSystemPaperCoreDataIndexer *systemPaperIndexer; // @synthesize systemPaperIndexer=_systemPaperIndexer;
+@property(retain, nonatomic) ICTagCoreDataIndexer *tagIndexer; // @synthesize tagIndexer=_tagIndexer;
+@property(retain, nonatomic) NSMutableSet *smartFolderManagedObjectIDs; // @synthesize smartFolderManagedObjectIDs=_smartFolderManagedObjectIDs;
 @property(retain, nonatomic) NSMutableSet *modernAccountManagedObjectIDs; // @synthesize modernAccountManagedObjectIDs=_modernAccountManagedObjectIDs;
 @property(retain, nonatomic) NSMutableSet *legacyAccountManagedObjectIDs; // @synthesize legacyAccountManagedObjectIDs=_legacyAccountManagedObjectIDs;
-@property(retain, nonatomic) NSMutableOrderedSet *accountSectionIdentifiers; // @synthesize accountSectionIdentifiers=_accountSectionIdentifiers;
+@property(retain, nonatomic) NSMutableOrderedSet *folderListSectionIdentifiers; // @synthesize folderListSectionIdentifiers=_folderListSectionIdentifiers;
 @property(retain, nonatomic) NSMutableDictionary *folderItemIdentifiersToChildFolderItemIdentifiers; // @synthesize folderItemIdentifiersToChildFolderItemIdentifiers=_folderItemIdentifiersToChildFolderItemIdentifiers;
 @property(retain, nonatomic) NSMutableDictionary *folderItemIdentifiersToParentFolderItemIdentifier; // @synthesize folderItemIdentifiersToParentFolderItemIdentifier=_folderItemIdentifiersToParentFolderItemIdentifier;
-@property(retain, nonatomic) NSMutableDictionary *accountSectionIdentifiersToFolderItemIdentifiers; // @synthesize accountSectionIdentifiersToFolderItemIdentifiers=_accountSectionIdentifiersToFolderItemIdentifiers;
+@property(retain, nonatomic) NSMutableDictionary *folderListSectionIdentifiersToFolderItemIdentifiers; // @synthesize folderListSectionIdentifiersToFolderItemIdentifiers=_folderListSectionIdentifiersToFolderItemIdentifiers;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *indexAccessQueue; // @synthesize indexAccessQueue=_indexAccessQueue;
 @property(retain, nonatomic) NSFetchedResultsController *modernFetchedResultsController; // @synthesize modernFetchedResultsController=_modernFetchedResultsController;
 @property(retain, nonatomic) NSFetchedResultsController *legacyFetchedResultsController; // @synthesize legacyFetchedResultsController=_legacyFetchedResultsController;
+@property(nonatomic) _Bool shouldAutoExpandSingleSection; // @synthesize shouldAutoExpandSingleSection=_shouldAutoExpandSingleSection;
+@property(nonatomic) _Bool shouldIncludeSystemPaper; // @synthesize shouldIncludeSystemPaper=_shouldIncludeSystemPaper;
+@property(nonatomic) _Bool shouldIncludeTags; // @synthesize shouldIncludeTags=_shouldIncludeTags;
 @property(retain, nonatomic) NSManagedObjectID *ancestorNoteContainerObjectID; // @synthesize ancestorNoteContainerObjectID=_ancestorNoteContainerObjectID;
 - (_Bool)isDefaultFolder:(id)arg1;
 - (_Bool)isCustomFolder:(id)arg1;
@@ -55,6 +67,7 @@
 - (id)activeFetchedResultsControllers;
 - (void)clearIndex;
 - (id)firstRelevantItemIdentifier;
+@property(readonly, nonatomic) NSSet *smartFolderObjectIDs;
 @property(readonly, nonatomic) unsigned long long totalFolderCount;
 @property(readonly, nonatomic) unsigned long long countOfModernAccounts;
 @property(readonly, nonatomic) unsigned long long countOfLegacyAccounts;

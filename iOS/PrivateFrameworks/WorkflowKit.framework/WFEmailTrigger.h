@@ -15,7 +15,11 @@
     NSArray *_selectedSenders;
 }
 
++ (id)mailBlue;
 + (_Bool)supportsSecureCoding;
++ (id)displayGlyphTintColor;
++ (long long)triggerBacking;
++ (id)displayGlyphName;
 + (id)localizedDisplayExplanation;
 + (id)localizedDisplayName;
 + (_Bool)isAllowedToRunAutomatically;

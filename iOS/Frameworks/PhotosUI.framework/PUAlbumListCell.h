@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)focusEffect;
 - (id)snapshotViewAfterScreenUpdates:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;

@@ -13,6 +13,7 @@
     MISSING_TYPE *browseButtonViewRenderer;
     MISSING_TYPE *settingsButtonViewRenderer;
     MISSING_TYPE *tagViewRenderer;
+    MISSING_TYPE *engagementViewRenderer;
     MISSING_TYPE *delegate;
 }
 

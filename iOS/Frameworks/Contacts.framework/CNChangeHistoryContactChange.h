@@ -20,6 +20,8 @@
     NSNumber *_changeID;
     NSString *_externalID;
     NSNumber *_imagesChanged;
+    NSString *_linkToPersonUUID;
+    NSString *_personLinkUUID;
     NSString *_externalURI;
     NSString *_externalModificationTag;
 }
@@ -28,6 +30,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag=_externalModificationTag;
 @property(retain, nonatomic) NSString *externalURI; // @synthesize externalURI=_externalURI;
+@property(retain, nonatomic) NSString *personLinkUUID; // @synthesize personLinkUUID=_personLinkUUID;
+@property(retain, nonatomic) NSString *linkToPersonUUID; // @synthesize linkToPersonUUID=_linkToPersonUUID;
 @property(retain, nonatomic) NSNumber *imagesChanged; // @synthesize imagesChanged=_imagesChanged;
 @property(retain, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property(retain, nonatomic) NSNumber *changeID; // @synthesize changeID=_changeID;
@@ -41,7 +45,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3 changeID:(id)arg4 externalID:(id)arg5 imagesChanged:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3 changeID:(id)arg4 externalID:(id)arg5 imagesChanged:(id)arg6 linkToPersonUUID:(id)arg7 personLinkUUID:(id)arg8;
 - (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3 changeID:(id)arg4;
 
 @end

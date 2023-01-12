@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     CEKEdgeGradientView *_gradientMask;
     _PUPhotoEditToolGradientView *_gradientView;
     _Bool _performingLiveInteraction;
+    _Bool _wantsScrubberKeyControl;
+    _Bool _wantsSliderKeyControl;
     long long _layoutOrientation;
     id <PUEditableAsset> _asset;
     PICompositionController *_compositionController;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
     NSString *_localizedName;
     UIImage *_toolbarIcon;
     UIImage *_selectedToolbarIcon;
+    NSString *_toolbarIconAccessibilityLabel;
     UIButton *_preferredAlternateToolbarButton;
     UIView *_leftToolbarView;
     NSMutableArray *_mutableEditActionActivites;
@@ -43,11 +46,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType ppt_didBecomeActiveToolBlock; // @synthesize ppt_didBecomeActiveToolBlock=_ppt_didBecomeActiveToolBlock;
+@property(readonly, nonatomic) _Bool wantsSliderKeyControl; // @synthesize wantsSliderKeyControl=_wantsSliderKeyControl;
+@property(readonly, nonatomic) _Bool wantsScrubberKeyControl; // @synthesize wantsScrubberKeyControl=_wantsScrubberKeyControl;
 @property(retain, nonatomic) PFSlowMotionTimeRangeMapper *slowMotionTimeMapper; // @synthesize slowMotionTimeMapper=_slowMotionTimeMapper;
 @property(retain, nonatomic) NSMutableArray *mutableEditActionActivites; // @synthesize mutableEditActionActivites=_mutableEditActionActivites;
 @property(readonly, nonatomic) UIView *leftToolbarView; // @synthesize leftToolbarView=_leftToolbarView;
 @property(retain, nonatomic) UIButton *preferredAlternateToolbarButton; // @synthesize preferredAlternateToolbarButton=_preferredAlternateToolbarButton;
 @property(nonatomic, getter=isPerformingLiveInteraction) _Bool performingLiveInteraction; // @synthesize performingLiveInteraction=_performingLiveInteraction;
+@property(readonly, nonatomic) NSString *toolbarIconAccessibilityLabel; // @synthesize toolbarIconAccessibilityLabel=_toolbarIconAccessibilityLabel;
 @property(readonly, nonatomic) UIImage *selectedToolbarIcon; // @synthesize selectedToolbarIcon=_selectedToolbarIcon;
 @property(readonly, nonatomic) UIImage *toolbarIcon; // @synthesize toolbarIcon=_toolbarIcon;
 @property(readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
@@ -75,6 +81,12 @@ __attribute__((visibility("hidden")))
 - (void)willBecomeActiveTool;
 - (_Bool)canBecomeActiveTool;
 - (void)specDidChange;
+- (void)decreaseSliderValue:(_Bool)arg1;
+- (void)increaseSliderValue:(_Bool)arg1;
+- (void)decreaseScrubberValue:(_Bool)arg1;
+- (void)increaseScrubberValue:(_Bool)arg1;
+@property(readonly, nonatomic) long long scrubberOrientation;
+@property(readonly, nonatomic) _Bool supportsPreviewingOriginal;
 - (_Bool)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
 - (_Bool)installTogglePreviewGestureRecognizer:(id)arg1;
 - (void)_updateTraitCollectionAndLayoutReferenceSize;
@@ -91,6 +103,8 @@ __attribute__((visibility("hidden")))
 - (void)basePhotoInvalidated;
 - (void)baseLivePhotoInvalidated;
 - (void)resetToDefaultValueAnimated:(_Bool)arg1;
+- (void)mediaViewDidScroll:(id)arg1;
+- (void)mediaView:(id)arg1 didZoom:(double)arg2;
 - (void)mediaViewDidEndZooming:(id)arg1;
 - (void)mediaViewWillBeginZooming:(id)arg1;
 - (void)mediaViewIsReady;
@@ -110,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 @property(readonly, copy, nonatomic) NURenderPipelineFilter *filter;
 @property(readonly, nonatomic) _Bool handlesMediaViewInsets;
+@property(readonly, nonatomic) _Bool handlesVideoPlaying;
 @property(readonly, nonatomic) _Bool suppressesEditUpdates;
 @property(readonly, nonatomic) _Bool wantsSecondaryToolbarVisible;
 @property(readonly, nonatomic) _Bool wantsZoomAndPanEnabled;
@@ -125,6 +140,8 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (_Bool)canBecomeFirstResponder;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)dealloc;

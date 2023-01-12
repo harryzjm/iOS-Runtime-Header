@@ -4,19 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString;
 
-@interface SISchemaServerEventMetadata : PBCodable
+@interface SISchemaServerEventMetadata
 {
     NSData *_turnID;
     long long _timestampNs;
     NSData *_siriDeviceID;
     NSString *_serverPod;
-    struct {
-        unsigned int timestampNs:1;
-    } _has;
+    CDStruct_8e7b2486 _has;
     _Bool _hasTurnID;
     _Bool _hasSiriDeviceID;
     _Bool _hasServerPod;

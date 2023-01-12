@@ -26,8 +26,8 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithOutOfSyncToken:(id)arg1 canClearOutOfSyncToken:(_Bool)arg2;
-- (void)saveToArchive:(struct RecordingSyncState *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct RecordingSyncState *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

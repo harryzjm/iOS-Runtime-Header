@@ -11,7 +11,7 @@
     SCNPhysicsBody *_chassisBody;
     NSArray *_wheels;
     SCNPhysicsWorld *_world;
-    struct btRaycastVehicle *_vehicle;
+    void *_vehicle;
     double _speedKmHour;
 }
 
@@ -32,9 +32,10 @@
 - (void)applyEngineForce:(double)arg1 forWheelAtIndex:(long long)arg2;
 - (void)setSteeringAngle:(double)arg1 forWheelAtIndex:(long long)arg2;
 - (void)_willRemoveFromPhysicsWorld:(id)arg1;
-- (void)_addToPhysicsWorld:(id)arg1;
+- (void)_addToPhysicsWorld:(id)arg1 definition:(CDStruct_0557a1bb)arg2;
+- (void)_copyDefinition:(CDStruct_0557a1bb *)arg1;
 - (id)physicsWorld;
-- (struct btRaycastVehicle *)btVehicle;
+- (void *)btVehicle;
 @property(readonly, nonatomic) NSArray *wheels;
 @property(readonly, nonatomic) SCNPhysicsBody *chassisBody;
 - (void)dealloc;

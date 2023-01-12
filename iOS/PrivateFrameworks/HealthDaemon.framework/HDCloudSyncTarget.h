@@ -8,23 +8,25 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class CKContainer, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZone;
+@class CKContainer, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZone, HDCloudSyncZoneIdentifier;
 
 @interface HDCloudSyncTarget : NSObject <NSCopying>
 {
     long long _purpose;
     CKContainer *_container;
-    HDCloudSyncZone *_zone;
+    HDCloudSyncZoneIdentifier *_zoneIdentifier;
     HDCloudSyncStoreRecord *_storeRecord;
     HDCloudSyncStore *_store;
     unsigned long long _options;
+    HDCloudSyncZone *_zone;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HDCloudSyncZone *zone; // @synthesize zone=_zone;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) HDCloudSyncStore *store; // @synthesize store=_store;
 @property(readonly, nonatomic) HDCloudSyncStoreRecord *storeRecord; // @synthesize storeRecord=_storeRecord;
-@property(readonly, nonatomic) HDCloudSyncZone *zone; // @synthesize zone=_zone;
+@property(readonly, nonatomic) HDCloudSyncZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 @property(readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property(readonly, nonatomic) long long purpose; // @synthesize purpose=_purpose;
 - (unsigned long long)hash;
@@ -32,7 +34,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)targetByAddingOptions:(unsigned long long)arg1;
-- (id)initWithPurpose:(long long)arg1 container:(id)arg2 zone:(id)arg3 storeRecord:(id)arg4 store:(id)arg5 options:(unsigned long long)arg6;
+- (id)initWithPurpose:(long long)arg1 container:(id)arg2 zoneIdentifier:(id)arg3 storeRecord:(id)arg4 store:(id)arg5 options:(unsigned long long)arg6;
 - (id)init;
 
 @end

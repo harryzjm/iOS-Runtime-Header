@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 - (id)renditionWithSize:(struct CGSize)arg1 scale:(double)arg2 applyingEffect:(id)arg3;
 - (struct CGSize)size;
 - (struct CGSize)sizeInPixels;
-- (_Bool)canProvideFullResCGImage;
-- (_Bool)canProvideCGImage;
+- (_Bool)canScaleImageToTargetResolution;
+- (_Bool)canDrawImage;
 
 @end
 

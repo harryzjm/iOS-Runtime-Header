@@ -7,11 +7,12 @@
 __attribute__((visibility("hidden")))
 @interface _LSTypeEnumerator
 {
-    vector_12da65de _typeIDs;
+    struct vector<unsigned int, std::allocator<unsigned int>> _typeIDs;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
 

@@ -8,12 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBDataReader, PBUnknownFields;
+@class NSString, PBDataReader;
 
 @interface GEORPFeedbackAddressFields : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    PBUnknownFields *_unknownFields;
     NSString *_addressBasic;
     NSString *_addressBuilding;
     NSString *_addressFloor;
@@ -22,7 +21,6 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     struct {
-        unsigned int read_unknownFields:1;
         unsigned int read_addressBasic:1;
         unsigned int read_addressBuilding:1;
         unsigned int read_addressFloor:1;
@@ -33,8 +31,6 @@
 
 + (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

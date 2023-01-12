@@ -8,7 +8,7 @@
 
 #import <SafariSharedUI/WBSSiteMetadataImageCacheSettingsEntry-Protocol.h>
 
-@class NSDate, NSString, UIColor;
+@class NSDate, NSString;
 
 @interface WBSTouchIconCacheSettingsEntry : NSObject <WBSSiteMetadataImageCacheSettingsEntry>
 {
@@ -21,30 +21,33 @@
     NSString *_UUIDString;
     NSDate *_lastRequestDate;
     long long _requestCount;
-    UIColor *_extractedColor;
     long long _transparencyAnalysisResult;
+    long long _lastResponseStatusCode;
 }
 
-+ (id)entryWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(_Bool)arg3 requestCount:(long long)arg4 iconInCache:(_Bool)arg5 requestDidSucceed:(_Bool)arg6 extractedColor:(id)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(_Bool)arg9 UUIDString:(id)arg10;
++ (id)entryWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(_Bool)arg3 requestCount:(long long)arg4 iconInCache:(_Bool)arg5 requestDidSucceed:(_Bool)arg6 lastResponseStatusCode:(long long)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(_Bool)arg9 UUIDString:(id)arg10;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool higherPriorityIconDownloadFailedDueToNetworkError; // @synthesize higherPriorityIconDownloadFailedDueToNetworkError=_higherPriorityIconDownloadFailedDueToNetworkError;
-@property(nonatomic) long long transparencyAnalysisResult; // @synthesize transparencyAnalysisResult=_transparencyAnalysisResult;
-@property(retain, nonatomic) UIColor *extractedColor; // @synthesize extractedColor=_extractedColor;
-@property(nonatomic) _Bool requestDidSucceed; // @synthesize requestDidSucceed=_requestDidSucceed;
-@property(nonatomic, getter=isIconInCache) _Bool iconInCache; // @synthesize iconInCache=_iconInCache;
-@property(nonatomic) long long requestCount; // @synthesize requestCount=_requestCount;
-@property(nonatomic) _Bool lastRequestWasInUserLoadedWebpage; // @synthesize lastRequestWasInUserLoadedWebpage=_lastRequestWasInUserLoadedWebpage;
-@property(retain, nonatomic) NSDate *lastRequestDate; // @synthesize lastRequestDate=_lastRequestDate;
-@property(copy, nonatomic) NSString *UUIDString; // @synthesize UUIDString=_UUIDString;
-@property(copy, nonatomic) NSString *host; // @synthesize host=_host;
-@property(nonatomic) long long databaseID; // @synthesize databaseID=_databaseID;
+@property(readonly, nonatomic) long long lastResponseStatusCode; // @synthesize lastResponseStatusCode=_lastResponseStatusCode;
+@property(readonly, nonatomic) _Bool higherPriorityIconDownloadFailedDueToNetworkError; // @synthesize higherPriorityIconDownloadFailedDueToNetworkError=_higherPriorityIconDownloadFailedDueToNetworkError;
+@property(readonly, nonatomic) long long transparencyAnalysisResult; // @synthesize transparencyAnalysisResult=_transparencyAnalysisResult;
+@property(readonly, nonatomic) _Bool requestDidSucceed; // @synthesize requestDidSucceed=_requestDidSucceed;
+@property(readonly, nonatomic, getter=isIconInCache) _Bool iconInCache; // @synthesize iconInCache=_iconInCache;
+@property(readonly, nonatomic) long long requestCount; // @synthesize requestCount=_requestCount;
+@property(readonly, nonatomic) _Bool lastRequestWasInUserLoadedWebpage; // @synthesize lastRequestWasInUserLoadedWebpage=_lastRequestWasInUserLoadedWebpage;
+@property(readonly, nonatomic) NSDate *lastRequestDate; // @synthesize lastRequestDate=_lastRequestDate;
+@property(readonly, copy, nonatomic) NSString *UUIDString; // @synthesize UUIDString=_UUIDString;
+@property(readonly, copy, nonatomic) NSString *host; // @synthesize host=_host;
+@property(readonly, nonatomic) long long databaseID; // @synthesize databaseID=_databaseID;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
+- (id)entryByAddingRequestInUserLoadedWebPage:(_Bool)arg1 isIconInCache:(_Bool)arg2 requestDidSucceed:(_Bool)arg3 lastResponseStatusCode:(long long)arg4 transparencyAnalysisResult:(long long)arg5 higherPriorityIconDownloadFailedDueToNetworkError:(_Bool)arg6 UUIDString:(id)arg7;
 @property(readonly, nonatomic) unsigned long long downloadStatusFlags;
-- (id)initWithHost:(id)arg1;
-- (id)initWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(_Bool)arg3 requestCount:(long long)arg4 iconInCache:(_Bool)arg5 requestDidSucceed:(_Bool)arg6 extractedColor:(id)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(_Bool)arg9 UUIDString:(id)arg10;
+- (id)entryWithDatabaseID:(long long)arg1;
+- (id)initWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(_Bool)arg3 requestCount:(long long)arg4 iconInCache:(_Bool)arg5 requestDidSucceed:(_Bool)arg6 lastResponseStatusCode:(long long)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(_Bool)arg9 UUIDString:(id)arg10;
 - (id)initWithSQLiteRow:(id)arg1;
+- (id)initWithHost:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

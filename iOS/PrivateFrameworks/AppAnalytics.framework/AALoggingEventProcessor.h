@@ -17,6 +17,7 @@
 - (id)init;
 - (void)processEvent:(id)arg1;
 - (id)initWithFormat:(long long)arg1;
+- (id)initWithFormat:(long long)arg1 subsystem:(id)arg2;
 
 @end
 

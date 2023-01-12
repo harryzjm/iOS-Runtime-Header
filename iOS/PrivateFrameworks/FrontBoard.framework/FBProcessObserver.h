@@ -17,6 +17,7 @@
     id <FBProcessObserver> _observer;
     unsigned long long _observerAddress;
     Class _observerClass;
+    _Bool _supportsWillExit;
     _Bool _supportsDidExit;
     _Bool _supportsStateDidChange;
     _Bool _supportsApplicationDidExit;
@@ -24,6 +25,7 @@
     _Bool _supportsApplicationDidLaunch;
     _Bool _supportsApplicationDebugState;
     int _invalidated;
+    int _calledWillExit;
     int _calledDidExit;
     int _calledWillLaunch;
     int _calledDidLaunch;
@@ -37,6 +39,7 @@
 - (void)applicationProcessWillLaunch:(id)arg1;
 - (void)process:(id)arg1 stateDidChangeFromState:(id)arg2 toState:(id)arg3;
 - (void)processDidExit:(id)arg1;
+- (void)processWillExit:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)invalidate;

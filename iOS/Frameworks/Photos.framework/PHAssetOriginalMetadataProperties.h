@@ -9,19 +9,19 @@
 @interface PHAssetOriginalMetadataProperties
 {
     short _originalExifOrientation;
+    int _timeZoneOffset;
     NSString *_originalAssetsUUID;
     long long _originalHeight;
     long long _originalWidth;
     NSString *_originalFilename;
     unsigned long long _originalFilesize;
     NSTimeZone *_timeZone;
-    long long _timeZoneOffset;
 }
 
 + (id)propertiesToFetch;
 + (id)propertySetName;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
+@property(readonly, nonatomic) int timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
 @property(readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(readonly, nonatomic) unsigned long long originalFilesize; // @synthesize originalFilesize=_originalFilesize;
 @property(readonly, nonatomic) short originalExifOrientation; // @synthesize originalExifOrientation=_originalExifOrientation;

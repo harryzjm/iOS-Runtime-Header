@@ -10,12 +10,14 @@
 
 @interface UNSNotificationActionRecord : NSObject
 {
+    _Bool _hasSystemIcon;
     _Bool _authenticationRequired;
     _Bool _destructive;
     _Bool _foreground;
     _Bool _shouldPreventNotificationDismiss;
     NSString *_actionType;
     NSString *_identifier;
+    NSString *_iconImageName;
     NSString *_textInputButtonTitle;
     NSArray *_textInputButtonTitleLocalizationArguments;
     NSString *_textInputButtonTitleLocalizationKey;
@@ -39,10 +41,12 @@
 @property(copy, nonatomic) NSString *textInputButtonTitleLocalizationKey; // @synthesize textInputButtonTitleLocalizationKey=_textInputButtonTitleLocalizationKey;
 @property(copy, nonatomic) NSArray *textInputButtonTitleLocalizationArguments; // @synthesize textInputButtonTitleLocalizationArguments=_textInputButtonTitleLocalizationArguments;
 @property(copy, nonatomic) NSString *textInputButtonTitle; // @synthesize textInputButtonTitle=_textInputButtonTitle;
+@property(copy, nonatomic) NSString *iconImageName; // @synthesize iconImageName=_iconImageName;
 @property(nonatomic) _Bool shouldPreventNotificationDismiss; // @synthesize shouldPreventNotificationDismiss=_shouldPreventNotificationDismiss;
 @property(nonatomic, getter=isForeground) _Bool foreground; // @synthesize foreground=_foreground;
 @property(nonatomic, getter=isDestructive) _Bool destructive; // @synthesize destructive=_destructive;
 @property(nonatomic, getter=isAuthenticationRequired) _Bool authenticationRequired; // @synthesize authenticationRequired=_authenticationRequired;
+@property(nonatomic) _Bool hasSystemIcon; // @synthesize hasSystemIcon=_hasSystemIcon;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
 - (unsigned long long)hash;

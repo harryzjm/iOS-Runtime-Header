@@ -8,11 +8,12 @@
 
 #import <FrontBoard/FBSceneClient-Protocol.h>
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
+#import <FrontBoard/FBSceneClientProviderInternal-Protocol.h>
 
-@class BSAuditToken, BSCompoundAssertion, BSServiceConnection, BSServiceConnectionEndpointInjector, FBProcess, FBSSerialQueue, FBSceneClientProviderInvalidationAction, FBWorkspaceEventDispatcherRegistration, NSMutableArray, NSMutableDictionary, NSString, RBSAssertion;
+@class BSAuditToken, BSCompoundAssertion, BSServiceConnection, FBProcess, FBSSerialQueue, FBSceneClientProviderInvalidationAction, FBWorkspaceEventDispatcherRegistration, NSMutableArray, NSMutableDictionary, NSString, RBSAssertion;
 @protocol BSServiceConnectionHost, FBWorkspaceDelegate, OS_dispatch_queue;
 
-@interface FBWorkspace : NSObject <FBSceneClient, FBSceneClientProvider>
+@interface FBWorkspace : NSObject <FBSceneClient, FBSceneClientProviderInternal, FBSceneClientProvider>
 {
     id <FBWorkspaceDelegate> _weak_delegate;
     FBProcess *_weak_process;
@@ -27,18 +28,20 @@
     FBSSerialQueue *_workspaceQueue;
     FBSceneClientProviderInvalidationAction *_lock_invalidationAction;
     RBSAssertion *_lock_lifeAssertion;
+    RBSAssertion *_lock_connectAssertion;
     RBSAssertion *_lock_afterlifeAssertion;
     long long _lock_activeInterruptionPolicy;
     unsigned char _lock_activeAssertionState;
     BSCompoundAssertion *_compoundAssertion;
-    BSServiceConnectionEndpointInjector *_workspaceServiceInjector;
+    RBSAssertion *_workspaceServiceInjector;
     _Bool _shouldInjectEndpoint;
     _Bool _lock_didReceiveHandshake;
     _Bool _lock_invalidated;
+    _Bool _test_rejectAllSceneClients;
 }
 
-+ (long long)_resolveInterruptionPolicy:(long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, setter=test_setRejectAllSceneClients:) _Bool test_rejectAllSceneClients; // @synthesize test_rejectAllSceneClients=_test_rejectAllSceneClients;
 - (oneway void)sceneID:(id)arg1 sendMessage:(id)arg2 withResponse:(CDUnknownBlockType)arg3;
 - (oneway void)sceneID:(id)arg1 didReceiveActions:(id)arg2;
 - (oneway void)sceneID:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 transitionContext:(id)arg3;
@@ -48,15 +51,17 @@
 - (void)host:(id)arg1 didInvalidateWithTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)host:(id)arg1 didUpdateSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)unregisterHost:(id)arg1;
-- (id)registerHost:(id)arg1 withSpecification:(id)arg2 settings:(id)arg3 initialClientSettings:(id)arg4 fromRemnant:(id)arg5;
+- (id)registerHost:(id)arg1 settings:(id)arg2 initialClientSettings:(id)arg3 fromRemnant:(id)arg4 error:(out id *)arg5;
 - (void)registerInvalidationAction:(id)arg1;
+- (id)_acquireAssertionForReason:(id)arg1 withState:(unsigned char)arg2;
 - (void)_lock_enqueueConnectBlock:(CDUnknownBlockType)arg1;
 - (void)_terminateWithReason:(id)arg1;
 - (void)_resolveSceneLifecycleStateAndInterruptionPolicy;
 - (void)_lock_fireInvalidationAction;
 - (void)_updateProcessAssertionState;
-- (id)_unregisterSceneForIdentifier:(id)arg1;
+- (id)_unregisterSceneForHost:(id)arg1;
 - (id)_sceneForIdentifier:(id)arg1;
+- (id)_sceneForHost:(id)arg1;
 - (void)sendActions:(id)arg1;
 @property(readonly, nonatomic) BSAuditToken *auditToken;
 @property(readonly, nonatomic) __weak FBProcess *process;

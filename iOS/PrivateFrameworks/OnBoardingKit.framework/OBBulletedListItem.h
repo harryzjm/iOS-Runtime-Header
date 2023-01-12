@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldLayoutVertically;
 - (double)imageSizeForImage:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)initWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3;
+- (id)initWithTitle:(id)arg1 description:(id)arg2 image:(id)arg3 tintColor:(id)arg4;
 
 @end
 

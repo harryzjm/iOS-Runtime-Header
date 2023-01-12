@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GKMultiplayerParticipant, _TtC12GameCenterUI31GKMultiplayerCollectionViewCell;
+@class GKMultiplayerParticipant, _TtC12GameCenterUI42GKMultiplayerParticipantCollectionViewCell;
 
 @protocol GKMultiplayerDataSourceDelegate
+- (_Bool)allowAutoMatch;
 - (_Bool)isCanceling;
 - (long long)automatchParticipantStatus;
 - (void)didTapRemoveParticipant:(GKMultiplayerParticipant *)arg1;
-- (void)didTapInviteOnCell:(_TtC12GameCenterUI31GKMultiplayerCollectionViewCell *)arg1;
+- (void)didTapInviteOnCell:(_TtC12GameCenterUI42GKMultiplayerParticipantCollectionViewCell *)arg1;
 - (long long)multiplayerCellLayoutMode;
+- (void)didUpdateAutoMatchPlayerCount;
 - (void)didUpdateParticipants;
 @end
 

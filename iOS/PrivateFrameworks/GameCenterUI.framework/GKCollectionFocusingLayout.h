@@ -18,6 +18,7 @@
     UICollectionViewLayoutAttributes *_topHeaderAttributes;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UICollectionViewLayoutAttributes *topHeaderAttributes; // @synthesize topHeaderAttributes=_topHeaderAttributes;
 @property(nonatomic) double headerToItemSpacing; // @synthesize headerToItemSpacing=_headerToItemSpacing;
 @property(nonatomic) double focusHeaderOffset; // @synthesize focusHeaderOffset=_focusHeaderOffset;
@@ -41,7 +42,6 @@
 - (_Bool)shouldUpdateVisibleCellLayoutAttributes;
 - (void)applyDefaults;
 - (void)awakeFromNib;
-- (void)dealloc;
 - (id)init;
 
 @end

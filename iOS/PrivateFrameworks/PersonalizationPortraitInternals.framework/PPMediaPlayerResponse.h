@@ -21,14 +21,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double duration; // @synthesize duration=_duration;
-@property(nonatomic) unsigned int state; // @synthesize state=_state;
-@property(retain, nonatomic) NSNumber *storeItemID; // @synthesize storeItemID=_storeItemID;
-@property(retain, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
-@property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property(retain, nonatomic) NSString *album; // @synthesize album=_album;
-@property(retain, nonatomic) NSString *artist; // @synthesize artist=_artist;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 - (_Bool)isEqualToResponse:(id)arg1;
 
 @end

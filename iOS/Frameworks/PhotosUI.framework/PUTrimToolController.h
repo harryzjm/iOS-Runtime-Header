@@ -7,16 +7,18 @@
 #import <UIKit/UIViewController.h>
 
 #import <PhotosUI/PULivePhotoKeyFrameSelectionViewControllerDelegate-Protocol.h>
+#import <PhotosUI/PXFocusTimelineController-Protocol.h>
+#import <PhotosUI/PXFocusTimelineViewDelegate-Protocol.h>
 #import <PhotosUI/PXLivePhotoTrimScrubberDelegate-Protocol.h>
 #import <PhotosUI/PXSlowMotionEditorDelegate-Protocol.h>
 #import <PhotosUI/PXTrimToolPlayerObserver-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AVPlayerItem, NSLayoutConstraint, NSNumber, NSString, PICompositionController, PLEditSource, PLPhotoEditRenderer, PULivePhotoKeyFrameSelectionViewController, PUTimeCodeOverlayView, PXLivePhotoTrimScrubber, PXLivePhotoTrimScrubberSnapStripController, PXLivePhotoTrimScrubberSpec, PXSlowMotionEditor, UIButton, UIImage, UILabel, UIView, UIVisualEffectView;
+@class AVPlayerItem, NSLayoutConstraint, NSNumber, NSString, PICompositionController, PLEditSource, PLPhotoEditRenderer, PULivePhotoKeyFrameSelectionViewController, PUTimeCodeOverlayView, PXFocusTimelineAction, PXFocusTimelineView, PXLivePhotoTrimScrubber, PXLivePhotoTrimScrubberSnapStripController, PXLivePhotoTrimScrubberSpec, PXSlowMotionEditor, UIButton, UIImage, UILabel, UIView, UIVisualEffectView;
 @protocol PUTrimToolControllerDelegate, PXTrimToolPlayerWrapper;
 
 __attribute__((visibility("hidden")))
-@interface PUTrimToolController : UIViewController <PXTrimToolPlayerObserver, PXLivePhotoTrimScrubberDelegate, UIPopoverPresentationControllerDelegate, PULivePhotoKeyFrameSelectionViewControllerDelegate, PXSlowMotionEditorDelegate>
+@interface PUTrimToolController : UIViewController <PXTrimToolPlayerObserver, PXLivePhotoTrimScrubberDelegate, UIPopoverPresentationControllerDelegate, PULivePhotoKeyFrameSelectionViewControllerDelegate, PXSlowMotionEditorDelegate, PXFocusTimelineViewDelegate, PXFocusTimelineController>
 {
     PXLivePhotoTrimScrubber *_trimScrubber;
     PXSlowMotionEditor *_slomoView;
@@ -26,8 +28,11 @@ __attribute__((visibility("hidden")))
     PXLivePhotoTrimScrubberSpec *_spec;
     _Bool _disabled;
     _Bool _slomoEnabled;
+    _Bool _isPortraitVideo;
     _Bool _slomoDraggingStartHandle;
     _Bool _playButtonEnabled;
+    _Bool _objectTrackingShouldStop;
+    _Bool _portraitVideoEnabled;
     UIButton *_playPauseButton;
     id <PUTrimToolControllerDelegate> _delegate;
     id <PXTrimToolPlayerWrapper> _playerWrapper;
@@ -41,6 +46,7 @@ __attribute__((visibility("hidden")))
     PULivePhotoKeyFrameSelectionViewController *_livePhotoKeyFramePicker;
     PLPhotoEditRenderer *__renderer;
     AVPlayerItem *_currentVideoPlayerItem;
+    double _cachedFrameRate;
     PXLivePhotoTrimScrubberSnapStripController *_snapStripController;
     unsigned long long _playheadStyle;
     unsigned long long _internalState;
@@ -54,6 +60,11 @@ __attribute__((visibility("hidden")))
     UIView *_debugEndRectView;
     UIView *_debugStartOffsetView;
     UIView *_debugEndOffsetView;
+    PXFocusTimelineView *_focusTimelineView;
+    NSLayoutConstraint *_auxilaryContainerViewHeightConstraint;
+    UIView *_trimScrubberTimelineOverlayView;
+    UIButton *_trimScrubberTimelineOverlayButton;
+    PXFocusTimelineAction *_focusTimelineAction;
     CDStruct_1b6d18a9 _unadjustedStillImageTime;
     CDStruct_1b6d18a9 _originalStartTime;
     CDStruct_1b6d18a9 _originalEndTime;
@@ -64,6 +75,13 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool portraitVideoEnabled; // @synthesize portraitVideoEnabled=_portraitVideoEnabled;
+@property(nonatomic) _Bool objectTrackingShouldStop; // @synthesize objectTrackingShouldStop=_objectTrackingShouldStop;
+@property(retain, nonatomic) PXFocusTimelineAction *focusTimelineAction; // @synthesize focusTimelineAction=_focusTimelineAction;
+@property(retain, nonatomic) UIButton *trimScrubberTimelineOverlayButton; // @synthesize trimScrubberTimelineOverlayButton=_trimScrubberTimelineOverlayButton;
+@property(retain, nonatomic) UIView *trimScrubberTimelineOverlayView; // @synthesize trimScrubberTimelineOverlayView=_trimScrubberTimelineOverlayView;
+@property(retain, nonatomic) NSLayoutConstraint *auxilaryContainerViewHeightConstraint; // @synthesize auxilaryContainerViewHeightConstraint=_auxilaryContainerViewHeightConstraint;
+@property(retain, nonatomic) PXFocusTimelineView *focusTimelineView; // @synthesize focusTimelineView=_focusTimelineView;
 @property(retain, nonatomic) UIView *debugEndOffsetView; // @synthesize debugEndOffsetView=_debugEndOffsetView;
 @property(retain, nonatomic) UIView *debugStartOffsetView; // @synthesize debugStartOffsetView=_debugStartOffsetView;
 @property(retain, nonatomic) UIView *debugEndRectView; // @synthesize debugEndRectView=_debugEndRectView;
@@ -81,6 +99,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long playheadStyle; // @synthesize playheadStyle=_playheadStyle;
 @property(nonatomic) CDStruct_1b6d18a9 unadjustedAssetDuration; // @synthesize unadjustedAssetDuration=_unadjustedAssetDuration;
 @property(retain, nonatomic) PXLivePhotoTrimScrubberSnapStripController *snapStripController; // @synthesize snapStripController=_snapStripController;
+@property(nonatomic) double cachedFrameRate; // @synthesize cachedFrameRate=_cachedFrameRate;
 @property(nonatomic) CDStruct_1b6d18a9 cachedFrameDuration; // @synthesize cachedFrameDuration=_cachedFrameDuration;
 @property(retain, nonatomic) AVPlayerItem *currentVideoPlayerItem; // @synthesize currentVideoPlayerItem=_currentVideoPlayerItem;
 @property(retain, nonatomic, setter=_setRenderer:) PLPhotoEditRenderer *_renderer; // @synthesize _renderer=__renderer;
@@ -90,6 +109,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIVisualEffectView *auxilaryContainerView; // @synthesize auxilaryContainerView=_auxilaryContainerView;
 @property(retain, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property(retain, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
+@property(readonly, nonatomic, getter=isPortraitVideo) _Bool isPortraitVideo; // @synthesize isPortraitVideo=_isPortraitVideo;
 @property(readonly, nonatomic, getter=isSlomoEnabled) _Bool slomoEnabled; // @synthesize slomoEnabled=_slomoEnabled;
 @property(readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(nonatomic) _Bool disabled; // @synthesize disabled=_disabled;
@@ -100,6 +120,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property(readonly, nonatomic) id <PXTrimToolPlayerWrapper> playerWrapper; // @synthesize playerWrapper=_playerWrapper;
 @property(nonatomic) __weak id <PUTrimToolControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)hideFocusTimelineActions:(id)arg1;
+- (void)focusTimeline:(id)arg1 updateTrackingProgressShouldStop:(_Bool *)arg2;
+- (void)focusTimeline:(id)arg1 presentAction:(id)arg2 locationInTimeline:(struct CGPoint)arg3;
+- (void)_hideScrubberTimelineOverlay;
+- (void)_updateScrubberTimelineOverlayButtonOffset;
+- (void)_handleScrubberTimelineOverlayButton:(id)arg1;
 - (void)slowMotionEditorRequestForceUnzoom:(id)arg1;
 - (_Bool)slowMotionEditorRequestForceZoom:(id)arg1;
 - (void)slowMotionEditorEndValueChanged:(id)arg1;
@@ -117,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (id)_slomoMapperForCurrentConfiguration;
 - (CDStruct_1b6d18a9)_originalTimeFromCurrentPlayerScaledTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)_currentPlayerScaledTimeFromOriginalTime:(CDStruct_1b6d18a9)arg1;
+- (void)stepByCount:(long long)arg1;
 - (void)pause;
 - (void)play;
 - (void)_handlePlayPauseButton:(id)arg1;
@@ -124,6 +151,7 @@ __attribute__((visibility("hidden")))
 - (void)_livePhotoKeyFramePickerDidDismiss:(id)arg1;
 - (struct CGRect)_presentationRectFromLoupeRect;
 - (void)_resetScrubberToStillPhotoFrame;
+- (double)_frameRate;
 - (CDStruct_1b6d18a9)_frameDuration;
 - (id)_currentVideoAsset;
 - (void)_updatePlayerItem;
@@ -147,6 +175,17 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) CDStruct_1b6d18a9 adjustedStillFrameTime;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 currentStillFrameTime;
 - (id)currentEditSource;
+- (void)objectTrackingFinishedWithSuccess:(_Bool)arg1;
+- (void)updateObjectTrackingProgressAtTime:(CDStruct_1b6d18a9)arg1 shouldStop:(_Bool *)arg2;
+- (void)objectTrackingStartedAtTime:(CDStruct_1b6d18a9)arg1;
+- (void)didUpdateFocusEventsWithTimes:(id)arg1;
+- (void)updateFocusTimelineWithEvent:(CDStruct_1b6d18a9)arg1 userInitiated:(_Bool)arg2 shouldAnimate:(_Bool)arg3;
+- (void)updateFocusTimelineWithTimeRange:(CDStruct_e83c9415)arg1;
+- (void)resetTimeline;
+- (void)updateFocusTimeline;
+- (void)showFocusTimeline:(_Bool)arg1;
+- (void)enableFocusTimeline:(_Bool)arg1;
+@property(readonly, nonatomic) long long currentlyInteractingElement;
 - (void)setEditSource:(id)arg1 overcaptureEditSource:(id)arg2;
 - (void)releaseAVObjects;
 @property(readonly, nonatomic) double scrubberHeight;
@@ -159,14 +198,18 @@ __attribute__((visibility("hidden")))
 - (void)trimScrubber:(id)arg1 didEndInteractivelyEditingElement:(long long)arg2 successful:(_Bool)arg3;
 - (void)trimScrubber:(id)arg1 didBeginInteractivelyEditingElement:(long long)arg2;
 - (_Bool)trimScrubber:(id)arg1 canBeginInteractivelyEditingElement:(long long)arg2;
+- (void)trimScrubber:(id)arg1 didTapTimelineAtTime:(CDStruct_1b6d18a9)arg2;
 - (void)trimScrubber:(id)arg1 didTapElement:(long long)arg2;
+- (void)_seekToTimeForElement:(long long)arg1 exact:(_Bool)arg2 forceSeek:(_Bool)arg3;
 - (void)_seekToTimeForElement:(long long)arg1 exact:(_Bool)arg2;
+- (void)setPlayheadTime:(CDStruct_1b6d18a9)arg1 forceSeek:(_Bool)arg2;
 @property(nonatomic) CDStruct_1b6d18a9 playheadTime;
 - (id)_playPauseButtonIfLoaded;
 @property(readonly, nonatomic) UIButton *playPauseButton; // @synthesize playPauseButton=_playPauseButton;
 - (void)_createRendererIfNeeded;
 @property(retain, nonatomic) UIImage *placeholderImage;
 - (void)livePhotoRenderDidChange:(_Bool)arg1;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateViewConstraints;
 - (void)viewDidLayoutSubviews;
@@ -175,6 +218,7 @@ __attribute__((visibility("hidden")))
 - (void)trimScrubber:(id)arg1 debugEndRect:(struct CGRect)arg2;
 - (void)trimScrubber:(id)arg1 debugStartRect:(struct CGRect)arg2;
 - (void)viewDidLoad;
+- (id)initWithPlayerWrapper:(id)arg1 playButtonEnabled:(_Bool)arg2 slomoEnabled:(_Bool)arg3 portraitVideoEnabled:(_Bool)arg4;
 - (id)initWithPlayerWrapper:(id)arg1 playButtonEnabled:(_Bool)arg2 slomoEnabled:(_Bool)arg3;
 - (id)initWithPlayerWrapper:(id)arg1;
 

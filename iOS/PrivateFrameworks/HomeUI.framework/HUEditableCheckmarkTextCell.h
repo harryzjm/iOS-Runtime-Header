@@ -17,13 +17,14 @@
 {
     _Bool _disabled;
     _Bool _disableCheckmark;
+    _Bool _removeCheckmark;
     _Bool _isChecked;
     _Bool _allowCheckmarkSelectionWhileDisabled;
     UIView *_accessoryView;
     UITextField *_textField;
     HFItem *_item;
-    HUCheckmarkAccessoryView *_checkmarkView;
     id <HUEditableCheckmarkDelegate> _delegate;
+    HUCheckmarkAccessoryView *_checkmarkView;
     NSArray *_staticConstraints;
     NSArray *_dynamicConstraints;
     UITapGestureRecognizer *_checkmarkTapRecognizer;
@@ -34,11 +35,12 @@
 @property(retain, nonatomic) UITapGestureRecognizer *checkmarkTapRecognizer; // @synthesize checkmarkTapRecognizer=_checkmarkTapRecognizer;
 @property(retain, nonatomic) NSArray *dynamicConstraints; // @synthesize dynamicConstraints=_dynamicConstraints;
 @property(retain, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
+@property(retain, nonatomic) HUCheckmarkAccessoryView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property(nonatomic) __weak id <HUEditableCheckmarkDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool allowCheckmarkSelectionWhileDisabled; // @synthesize allowCheckmarkSelectionWhileDisabled=_allowCheckmarkSelectionWhileDisabled;
 @property(nonatomic, setter=setChecked:) _Bool isChecked; // @synthesize isChecked=_isChecked;
+@property(nonatomic) _Bool removeCheckmark; // @synthesize removeCheckmark=_removeCheckmark;
 @property(nonatomic) _Bool disableCheckmark; // @synthesize disableCheckmark=_disableCheckmark;
-@property(retain, nonatomic) HUCheckmarkAccessoryView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(readonly, nonatomic) UITextField *textField; // @synthesize textField=_textField;

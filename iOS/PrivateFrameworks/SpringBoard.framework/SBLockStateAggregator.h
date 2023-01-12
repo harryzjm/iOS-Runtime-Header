@@ -6,18 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class SBFAnalyticsClient;
+
 @interface SBLockStateAggregator : NSObject
 {
     unsigned long long _lockState;
+    SBFAnalyticsClient *_analyticsClient;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+@property(nonatomic) __weak SBFAnalyticsClient *analyticsClient; // @synthesize analyticsClient=_analyticsClient;
 - (void)_updateLockState;
 - (_Bool)hasAnyLockState;
 - (unsigned long long)lockState;
 - (id)description;
 - (id)_descriptionForLockState:(unsigned long long)arg1;
 - (void)dealloc;
+- (id)_initWithAnalyticsClient:(id)arg1;
 - (id)init;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <FamilyCircleUI/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, PSSpecifier, UIViewController;
+@class NSArray, NSNumber, NSString, PSSpecifier, UIViewController;
 @protocol AAUISpecifierProvider;
 
 @protocol AAUISpecifierProviderDelegate <NSObject>
@@ -16,6 +16,7 @@
 - (void)specifierProvider:(id <AAUISpecifierProvider>)arg1 showViewController:(UIViewController *)arg2;
 
 @optional
+- (void)insertSpecifier:(PSSpecifier *)arg1 afterSpecifierNamed:(NSString *)arg2 animated:(_Bool)arg3;
 - (void)specifierProvider:(id <AAUISpecifierProvider>)arg1 dataclassSwitchStateDidChange:(NSNumber *)arg2 withSpecifier:(PSSpecifier *)arg3;
 @end
 

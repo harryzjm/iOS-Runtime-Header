@@ -14,6 +14,7 @@
 - (id)initWithVisualProvider:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)isAccessibilityElement;
+- (id)accessibilityLabel;
 
 @end
 

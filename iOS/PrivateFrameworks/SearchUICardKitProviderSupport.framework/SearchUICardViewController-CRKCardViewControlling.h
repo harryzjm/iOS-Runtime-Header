@@ -21,6 +21,7 @@
 - (void)cardViewDidDisappearForCard:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)cardViewDidAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
+- (void)cardSectionView:(id)arg1 willProcessEngagementFeedback:(id)arg2;
 - (void)presentViewControllerForCard:(id)arg1 animate:(_Bool)arg2;
 - (void)willDismissViewController:(id)arg1;
 - (void)presentViewController:(id)arg1;

@@ -26,32 +26,16 @@
 - (void)cloudSyncManager:(id)arg1 didUpdateDataUploadRequestStatus:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 - (void)cloudSyncManager:(id)arg1 didUpdateRestoreCompletionDate:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateErrorRequiringUserAction:(id)arg2;
+- (void)cloudSyncManager:(id)arg1 didUpdateLastPulledUpdateDate:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateLastPullDate:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateLastPushDate:(id)arg2;
 - (void)cloudSyncManager:(id)arg1 didUpdateSyncEnabled:(_Bool)arg2;
-- (id)_readErrorRequiringUserActionOnCloudSyncError:(id *)arg1;
-- (id)_readRestoreCompletionDateWithError:(id *)arg1;
-- (_Bool)_persistRestoreCompletionDate:(id)arg1;
-- (void)_queue_mergeCloudSyncJournalsForProfile:(id)arg1 progress:(id)arg2 taskTree:(id)arg3;
-- (void)_queue_mergeCloudSyncJournalsWithTaskTree:(id)arg1 progress:(id)arg2;
-- (long long)_queue_checkCloudSyncEarlyExitConditionsWithError:(id *)arg1;
-- (long long)_queue_checkCloudSyncOngoingExitConditionsWithError:(id *)arg1;
-- (long long)_completeCloudSyncRestoreForJournalMergeResult:(long long)arg1 error:(id)arg2;
-- (_Bool)_queue_verifyCloudSyncEnabledWithError:(id *)arg1;
-- (id)_queue_startSyncIfRestoreNotCompletedWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_queue_syncDidStart;
-- (void)_queue_didUpdateSyncStatus;
-- (void)_queue_didUpdateSyncStatusWithErrorRequiringUserAction:(id)arg1;
-- (void)_queue_didUpdateSyncStatusWithRestoreCompleteDate:(id)arg1;
-- (void)_queue_didUpdateSyncStatusWithLastPullDate:(id)arg1;
-- (void)_queue_didUpdateSyncStatusWithLastPushDate:(id)arg1;
-- (void)_queue_didUpdateSyncStatusWithSyncEnabled:(_Bool)arg1;
-- (void)_queue_startObservingSync;
+- (void)_cloudKitIdentityUpdated:(id)arg1;
 - (id)remote_startSyncIfRestoreNotCompletedWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_startObservingSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)exportedInterface;
 - (id)remoteInterface;
-- (void)dealloc;
+- (void)connectionInvalidated;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties

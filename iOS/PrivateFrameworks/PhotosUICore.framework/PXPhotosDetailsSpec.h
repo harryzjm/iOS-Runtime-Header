@@ -12,7 +12,6 @@
     PXWidgetCompositionSpec *_compositionSpec;
     PXWidgetSpec *_widgetSpec;
     PXPhotosDetailsBarSpec *_barSpec;
-    UIColor *_backgroundColor;
     UIColor *_dimmingColor;
     double _dimmingAlpha;
 }
@@ -20,11 +19,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double dimmingAlpha; // @synthesize dimmingAlpha=_dimmingAlpha;
 @property(readonly, nonatomic) UIColor *dimmingColor; // @synthesize dimmingColor=_dimmingColor;
-@property(readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(readonly, nonatomic) PXPhotosDetailsBarSpec *barSpec; // @synthesize barSpec=_barSpec;
 @property(readonly, nonatomic) PXWidgetSpec *widgetSpec; // @synthesize widgetSpec=_widgetSpec;
 @property(readonly, nonatomic) PXWidgetCompositionSpec *compositionSpec; // @synthesize compositionSpec=_compositionSpec;
 @property(readonly, nonatomic) unsigned long long detailsOptions; // @synthesize detailsOptions=_detailsOptions;
+@property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) _Bool enableActionsWidget;
 @property(readonly, nonatomic) _Bool shouldInitializeBarsController;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;

@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, AMSUIWebLoadingPageModel, AMSUIWebNavigationBarModel, NSDictionary, NSString;
+@class AMSUIWebLoadingPageModel, AMSUIWebNavigationBarModel, NSDictionary, NSString;
 @protocol AMSUIWebPageProvider;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebFlowAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebFlowAction <AMSUIWebActionRunnable>
 {
     _Bool _deferredPresentation;
     id _actionData;
@@ -21,24 +19,27 @@ __attribute__((visibility("hidden")))
     AMSUIWebLoadingPageModel *_loadingPage;
     NSDictionary *_metrics;
     AMSUIWebNavigationBarModel *_navigationBar;
+    long long _popToRelativeIndex;
     long long _presentationType;
     id <AMSUIWebPageProvider> _replacementPage;
     long long _replacementType;
-    AMSUIWebClientContext *_context;
+    struct CGSize _modalWindowSize;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(nonatomic) long long replacementType; // @synthesize replacementType=_replacementType;
 @property(retain, nonatomic) id <AMSUIWebPageProvider> replacementPage; // @synthesize replacementPage=_replacementPage;
 @property(nonatomic) long long presentationType; // @synthesize presentationType=_presentationType;
+@property(nonatomic) long long popToRelativeIndex; // @synthesize popToRelativeIndex=_popToRelativeIndex;
 @property(retain, nonatomic) AMSUIWebNavigationBarModel *navigationBar; // @synthesize navigationBar=_navigationBar;
+@property(nonatomic) struct CGSize modalWindowSize; // @synthesize modalWindowSize=_modalWindowSize;
 @property(retain, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) AMSUIWebLoadingPageModel *loadingPage; // @synthesize loadingPage=_loadingPage;
 @property(retain, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) _Bool deferredPresentation; // @synthesize deferredPresentation=_deferredPresentation;
 @property(nonatomic) long long animationType; // @synthesize animationType=_animationType;
 @property(retain, nonatomic) id actionData; // @synthesize actionData=_actionData;
+- (void)_runWithType:(long long)arg1 options:(id)arg2;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 - (id)initWithContext:(id)arg1;

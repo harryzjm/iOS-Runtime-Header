@@ -10,20 +10,37 @@
 
 @interface TSTColumnAggregate : TSKSosBase <NSCopying>
 {
-    UUIDData_5fbc143e _columnUid;
-    int _level;
+    struct UUIDData<TSP::UUIDData> _columnUid;
     unsigned char _aggregateType;
+    int _level;
+    unsigned char _showAsType;
+    struct UUIDData<TSP::UUIDData> _columnAggregateUid;
+    struct UUIDData<TSP::UUIDData> _runningTotalGroupingColumnUid;
+    _Bool _definedColumnAggregateUid;
+    _Bool _definedRunningTotalGroupingColumnUid;
 }
 
 - (id).cxx_construct;
+@property(readonly, nonatomic) unsigned char showAsType; // @synthesize showAsType=_showAsType;
 @property(nonatomic) unsigned char aggregateType; // @synthesize aggregateType=_aggregateType;
 @property(readonly, nonatomic) int level; // @synthesize level=_level;
-@property(readonly, nonatomic) const UUIDData_5fbc143e *columnUid; // @synthesize columnUid=_columnUid;
-- (void)encodeToArchive:(struct ColumnAggregateArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ColumnAggregateArchive *)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (void)getUUIDBytesForRunningTotalGroupingColumn:(unsigned char [16])arg1;
+- (void)getUUIDBytesForColumn:(unsigned char [16])arg1;
+- (void)getUUIDBytesForColumnAggregate:(unsigned char [16])arg1;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithColumnUid:(const UUIDData_5fbc143e *)arg1 level:(int)arg2 aggregateType:(unsigned char)arg3;
+@property(readonly, nonatomic) struct TSKUIDStruct runningTotalGroupingColumnUid;
+@property(readonly, nonatomic) struct TSKUIDStruct columnAggregateUid;
+@property(readonly, nonatomic) struct TSKUIDStruct columnUid;
+- (id)initAsEmptyAggregate;
+- (id)initForPivotWithColumnAggregateUid:(struct TSKUIDStruct)arg1 columnUid:(struct TSKUIDStruct)arg2 aggregateType:(unsigned char)arg3 showAsType:(unsigned char)arg4 runningTotalGroupingColumnUid:(struct TSKUIDStruct)arg5;
+- (id)initForPivotWithColumnUid:(struct TSKUIDStruct)arg1 aggregateType:(unsigned char)arg2 showAsType:(unsigned char)arg3 runningTotalGroupingColumnUid:(struct TSKUIDStruct)arg4;
+- (id)initForPivotWithColumnUid:(struct TSKUIDStruct)arg1 aggregateType:(unsigned char)arg2;
+- (id)initForCategoriesWithColumnUid:(struct TSKUIDStruct)arg1 aggregateType:(unsigned char)arg2 level:(int)arg3;
+- (id)initWithColumnAggregateUid:(struct TSKUIDStruct)arg1 columnUid:(struct TSKUIDStruct)arg2 aggregateType:(unsigned char)arg3 level:(int)arg4 showAsType:(unsigned char)arg5 runningTotalGroupingColumnUid:(struct TSKUIDStruct)arg6;
 
 @end
 

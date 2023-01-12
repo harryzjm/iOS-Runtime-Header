@@ -8,7 +8,6 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface PCCWrappedKey : NSObject
 {
     struct pcc_wrapped_invocation_key *_wrappedInvocationKey;

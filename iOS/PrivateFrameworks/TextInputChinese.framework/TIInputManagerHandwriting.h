@@ -85,7 +85,7 @@
 @property(readonly, nonatomic) RecognizerProvider *recognizerProvider; // @synthesize recognizerProvider=_recognizerProvider;
 @property(readonly) CHRecognizer *recognizer;
 - (void)dealloc;
-- (struct TIInputManager *)initImplementation;
+- (void *)initImplementation;
 - (id)initWithConfig:(id)arg1 keyboardState:(id)arg2;
 - (void)clearObservers;
 

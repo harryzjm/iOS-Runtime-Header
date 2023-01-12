@@ -22,6 +22,7 @@
     NSMutableDictionary *_filteredAchievementsByTemplateUniqueName;
     NSMutableDictionary *_achievementsByTemplateUniqueName;
     NSMutableDictionary *_achievementsByEarnedDateComponents;
+    NSMutableArray *_allAchievementsSortedByEarnedDate;
     NSArray *_orderedSections;
     NSArray *_orderedMainSectionHeaderStrings;
     NSArray *_orderedRecentAndRelevantHeaderStrings;
@@ -63,6 +64,7 @@
 @property(retain, nonatomic) NSArray *orderedRecentAndRelevantHeaderStrings; // @synthesize orderedRecentAndRelevantHeaderStrings=_orderedRecentAndRelevantHeaderStrings;
 @property(retain, nonatomic) NSArray *orderedMainSectionHeaderStrings; // @synthesize orderedMainSectionHeaderStrings=_orderedMainSectionHeaderStrings;
 @property(retain, nonatomic) NSArray *orderedSections; // @synthesize orderedSections=_orderedSections;
+@property(retain, nonatomic) NSMutableArray *allAchievementsSortedByEarnedDate; // @synthesize allAchievementsSortedByEarnedDate=_allAchievementsSortedByEarnedDate;
 @property(retain, nonatomic) NSMutableDictionary *achievementsByEarnedDateComponents; // @synthesize achievementsByEarnedDateComponents=_achievementsByEarnedDateComponents;
 @property(retain, nonatomic) NSMutableDictionary *achievementsByTemplateUniqueName; // @synthesize achievementsByTemplateUniqueName=_achievementsByTemplateUniqueName;
 @property(retain, nonatomic) NSMutableDictionary *filteredAchievementsByTemplateUniqueName; // @synthesize filteredAchievementsByTemplateUniqueName=_filteredAchievementsByTemplateUniqueName;
@@ -89,7 +91,6 @@
 - (void)_handleUpdatedAchievements:(id)arg1;
 - (id)_achievementsRespectingOverrideDisplayState:(id)arg1;
 - (void)_deepCopyClientFacingModel;
-- (id)allAchievementsSortedByEarnedDate;
 - (id)achievementsForDateComponents:(id)arg1;
 - (id)achievementForTemplateUniqueName:(id)arg1;
 - (id)trophyCaseAchievementForTemplateUniqueName:(id)arg1;

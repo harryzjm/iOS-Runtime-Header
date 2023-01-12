@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
 #import <ActionKitUI/UINavigationControllerDelegate-Protocol.h>
 #import <ActionKitUI/UIPopoverPresentationControllerDelegate-Protocol.h>
@@ -14,7 +14,7 @@
 @class NSString, WFFileRepresentation;
 
 __attribute__((visibility("hidden")))
-@interface WFTrimVideoActionUIKitUserInterface : WFActionUserInterface <UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate, WFTrimVideoActionUserInterface>
+@interface WFTrimVideoActionUIKitUserInterface : WFEmbeddableActionUserInterface <UIVideoEditorControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate, WFTrimVideoActionUserInterface>
 {
     _Bool _hasSaved;
     WFFileRepresentation *_copiedFile;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

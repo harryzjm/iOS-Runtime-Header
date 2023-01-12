@@ -40,8 +40,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)serialize;
-- (void)saveToArchive:(struct VectorTimestamp *)arg1;
-- (id)initWithArchive:(const struct VectorTimestamp *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initWithArchive:(const void *)arg1;
 - (id)initWithData:(id)arg1;
 
 // Remaining properties

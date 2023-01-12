@@ -10,7 +10,6 @@
 
 @class CKCDPErrorUserInfoValue, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPErrorUserInfoEntry : PBCodable <NSCopying>
 {
     NSString *_key;

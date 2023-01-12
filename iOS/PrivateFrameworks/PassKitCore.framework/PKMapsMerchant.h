@@ -9,7 +9,7 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
-@class CLLocation, CNPostalAddress, MKWalletMerchantStylingInfo, NSString, NSURL;
+@class CLLocation, CNPostalAddress, MKWalletMerchantStylingInfo, NSDate, NSString, NSURL;
 
 @interface PKMapsMerchant : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
@@ -27,12 +27,15 @@
     NSString *_detailedCategory;
     MKWalletMerchantStylingInfo *_stylingInfo;
     NSURL *_businessChatURL;
+    NSDate *_lastProcessedDate;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)recordNamePrefix;
-+ (void)deleteFromCloudStoreRecord:(id)arg1;
++ (void)_deleteDeviceDataFromCloudStoreRecord:(id)arg1;
++ (void)deleteFromCloudStoreRecord:(id)arg1 codingType:(unsigned long long)arg2;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSDate *lastProcessedDate; // @synthesize lastProcessedDate=_lastProcessedDate;
 @property(copy, nonatomic) NSURL *businessChatURL; // @synthesize businessChatURL=_businessChatURL;
 @property(retain, nonatomic) MKWalletMerchantStylingInfo *stylingInfo; // @synthesize stylingInfo=_stylingInfo;
 @property(copy, nonatomic) NSString *detailedCategory; // @synthesize detailedCategory=_detailedCategory;
@@ -56,9 +59,9 @@
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)itemType;
 - (id)primaryIdentifier;
-- (id)recordTypesAndNamesIncludingServerData:(_Bool)arg1;
-- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
-- (void)encodeWithCloudStoreCoder:(id)arg1;
+- (id)recordTypesAndNamesForCodingType:(unsigned long long)arg1;
+- (void)_encodeDeviceDataForCloudStoreCoder:(id)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1 codingType:(unsigned long long)arg2;
 - (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;

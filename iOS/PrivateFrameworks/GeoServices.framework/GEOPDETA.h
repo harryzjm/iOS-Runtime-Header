@@ -8,13 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORouteTrafficDetail, PBUnknownFields;
+@class GEORouteTrafficDetail, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDETA : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_etaRouteIncidents;
     GEORouteTrafficDetail *_routeTrafficDetail;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _distance;
     unsigned int _historicTravelTime;
     int _licensePlateRestrictionImpact;
@@ -26,42 +31,24 @@ __attribute__((visibility("hidden")))
         unsigned int has_licensePlateRestrictionImpact:1;
         unsigned int has_time:1;
         unsigned int has_transportType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_etaRouteIncidents:1;
+        unsigned int read_routeTrafficDetail:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsLicensePlateRestrictionImpact:(id)arg1;
-- (id)licensePlateRestrictionImpactAsString:(int)arg1;
-@property(nonatomic) _Bool hasLicensePlateRestrictionImpact;
-@property(nonatomic) int licensePlateRestrictionImpact;
-@property(retain, nonatomic) GEORouteTrafficDetail *routeTrafficDetail;
-@property(readonly, nonatomic) _Bool hasRouteTrafficDetail;
-@property(nonatomic) _Bool hasHistoricTravelTime;
-@property(nonatomic) unsigned int historicTravelTime;
-- (int)StringAsTransportType:(id)arg1;
-- (id)transportTypeAsString:(int)arg1;
-@property(nonatomic) _Bool hasTransportType;
-@property(nonatomic) int transportType;
-@property(nonatomic) _Bool hasDistance;
-@property(nonatomic) unsigned int distance;
-@property(nonatomic) _Bool hasTime;
-@property(nonatomic) unsigned int time;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

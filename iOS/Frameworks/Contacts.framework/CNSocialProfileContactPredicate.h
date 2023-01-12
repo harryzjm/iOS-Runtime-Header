@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNSocialProfile;
+#import <Contacts/CNSuggestedContactPredicate-Protocol.h>
+
+@class CNSocialProfile, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNSocialProfileContactPredicate
+@interface CNSocialProfileContactPredicate <CNSuggestedContactPredicate>
 {
     CNSocialProfile *_socialProfile;
 }
@@ -15,12 +17,17 @@ __attribute__((visibility("hidden")))
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CNSocialProfile *socialProfile; // @synthesize socialProfile=_socialProfile;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithSocialProfile:(id)arg1;
+- (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(_Bool)arg2 service:(id)arg3 error:(id *)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -16,7 +16,6 @@
     _Bool _allDay;
     _Bool _hasAttendees;
     _Bool _organizedByMe;
-    _Bool _isSelfOrganized;
     _Bool _hasRecurrenceRules;
     _Bool _isSuggestedAndAccepted;
     NSString *_title;
@@ -33,7 +32,6 @@
 @property(readonly) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property(readonly) _Bool isSuggestedAndAccepted; // @synthesize isSuggestedAndAccepted=_isSuggestedAndAccepted;
 @property(readonly) _Bool hasRecurrenceRules; // @synthesize hasRecurrenceRules=_hasRecurrenceRules;
-@property(readonly) _Bool isSelfOrganized; // @synthesize isSelfOrganized=_isSelfOrganized;
 @property(readonly) NSString *calendarItemIdentifier; // @synthesize calendarItemIdentifier=_calendarItemIdentifier;
 @property(readonly) CLSEKCalendar *calendar; // @synthesize calendar=_calendar;
 @property(readonly) CLSEKParticipant *selfAttendee; // @synthesize selfAttendee=_selfAttendee;

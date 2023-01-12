@@ -6,26 +6,32 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class WKScrollViewDelegateForwarder, WKWebView;
+@class WKWebView;
 @protocol UIScrollViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface WKScrollView : UIScrollView
 {
     struct WeakObjCPtr<id<UIScrollViewDelegate>> _externalDelegate;
-    WKScrollViewDelegateForwarder *_delegateForwarder;
+    struct RetainPtr<WKScrollViewDelegateForwarder> _delegateForwarder;
     _Bool _contentInsetAdjustmentBehaviorWasExternallyOverridden;
+    _Bool _contentInsetWasExternallyOverridden;
     double _keyboardBottomInsetAdjustment;
     _Bool _scrollEnabledByClient;
     _Bool _scrollEnabledInternal;
     _Bool _zoomEnabledByClient;
     _Bool _zoomEnabledInternal;
+    struct optional<UIEdgeInsets> _contentScrollInsetFromClient;
+    struct optional<UIEdgeInsets> _contentScrollInsetInternal;
     WKWebView<UIScrollViewDelegate> *_internalDelegate;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) WKWebView<UIScrollViewDelegate> *internalDelegate; // @synthesize internalDelegate=_internalDelegate;
+- (void)_updateContentScrollInset;
+- (_Bool)_setContentScrollInsetInternal:(struct UIEdgeInsets)arg1;
+- (void)_setContentScrollInset:(struct UIEdgeInsets)arg1;
 - (void)_updateZoomability;
 - (void)_setZoomEnabledInternal:(_Bool)arg1;
 - (void)setZoomEnabled:(_Bool)arg1;
@@ -42,7 +48,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool _contentInsetAdjustmentBehaviorWasExternallyOverridden;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (double)_rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4 outside:(_Bool *)arg5;
-- (void)dealloc;
 - (void)_updateDelegate;
 - (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;

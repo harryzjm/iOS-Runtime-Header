@@ -11,7 +11,7 @@
 #import <Email/EMMessageListItem-Protocol.h>
 #import <Email/EMMutableMessageListItem-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EFFuture, EMMailDropMetadata, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString, NSUUID;
+@class ECMessageFlags, ECSubject, EFFuture, EMMailDropMetadata, EMMessageObjectID, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString, NSUUID;
 @protocol ECEmailAddressConvertible, EMCollectionItemID;
 
 @interface EMMessage <EFLoggable, EMMessageBuilder, EMExtendedContentItem, EMMutableMessageListItem, EMMessageListItem, EMContentItem>
@@ -59,10 +59,6 @@
 + (id)predicateForMessageWithInternalID:(long long)arg1;
 + (id)predicateForMessageWithObjectID:(id)arg1;
 + (id)predicateForMessageWithItemID:(id)arg1 mailboxPredicate:(id)arg2 mailboxTypeResolver:(id)arg3;
-+ (id)internalIDFromInternalMessageURL:(id)arg1;
-+ (_Bool)isInternalMessageURL:(id)arg1;
-+ (id)messageIDHeaderFromMessageURL:(id)arg1;
-+ (_Bool)isMessageURL:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSUUID *documentID; // @synthesize documentID=_documentID;
 @property(copy, nonatomic) NSArray *bccList; // @synthesize bccList=_bccList;
@@ -117,14 +113,13 @@
 - (void)_commonInitWithBuilder:(CDUnknownBlockType)arg1;
 - (id)initWithObjectID:(id)arg1 builder:(CDUnknownBlockType)arg2;
 - (id)initWithObjectID:(id)arg1;
-@property(nonatomic) _Bool isSinglePagePDF; // @dynamic isSinglePagePDF;
 - (void)setRepository:(id)arg1;
 @property(readonly, nonatomic) EMMessageRepository *repository;
 - (_Bool)isInManagedAccountWithSourceMailboxScope:(id)arg1;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;
-@property(readonly, copy, nonatomic) EMObjectID *objectID;
+@property(readonly, copy, nonatomic) EMMessageObjectID *objectID; // @dynamic objectID;
 @property(readonly) Class superclass;
 
 @end

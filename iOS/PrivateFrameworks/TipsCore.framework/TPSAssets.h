@@ -24,7 +24,6 @@
 
 + (id)na_identity;
 + (id)assetsFromDictionary:(id)arg1;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *imageId; // @synthesize imageId=_imageId;

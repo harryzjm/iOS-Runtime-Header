@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLCircularRegion, HMHome, NSString;
+@class CLCircularRegion, CLLocation, HMHome, NSString;
 
 @interface HULocationTriggerRegion : NSObject
 {
@@ -25,6 +25,7 @@
 @property(readonly, nonatomic) unsigned long long regionType; // @synthesize regionType=_regionType;
 @property(readonly, nonatomic) CLCircularRegion *defaultCircularRegionForCoordinate;
 @property(readonly, copy, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 - (id)initWithRegionType:(unsigned long long)arg1 home:(id)arg2 circularRegion:(id)arg3 eventType:(unsigned long long)arg4;
 

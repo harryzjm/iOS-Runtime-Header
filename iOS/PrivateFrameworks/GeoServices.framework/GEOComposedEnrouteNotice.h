@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) GEOComposedTrafficSignal *trafficSignal;
 @property(readonly, nonatomic) GEOComposedTrafficCamera *trafficCamera;
 @property(readonly, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) int noticeType;
 - (id)description;
 - (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4 withPolylineCoordinate:(CDStruct_3f2a7a20)arg5;
 - (id)initWithEnrouteNotice:(id)arg1 enrouteNoticeIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3 onRoute:(id)arg4 withPosition:(id)arg5;

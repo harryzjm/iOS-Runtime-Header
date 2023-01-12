@@ -8,19 +8,20 @@
 
 #import <PhotosGraph/PGNamingAnalyzer-Protocol.h>
 
-@class NSString, PGGraphNamingProcessor;
+@class NSString, PGGraphNamingProcessor, PGManager;
 
 @interface PGNamingSharedAssetsAnalyzer : NSObject <PGNamingAnalyzer>
 {
     PGGraphNamingProcessor *_processor;
+    PGManager *_manager;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak PGGraphNamingProcessor *processor; // @synthesize processor=_processor;
 - (id)name;
 - (void)findSharedAssetMatchesFromSharingRecords:(id)arg1 personLocalIdentifiersByAssetUUID:(id)arg2 graph:(id)arg3 withProgressBlock:(CDUnknownBlockType)arg4;
 - (void)runAnalysisWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)initWithNamingProcessor:(id)arg1;
+- (id)initWithNamingProcessor:(id)arg1 manager:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

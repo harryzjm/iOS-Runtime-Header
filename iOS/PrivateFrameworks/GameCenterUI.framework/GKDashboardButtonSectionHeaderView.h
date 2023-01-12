@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSAttributedString, NSLayoutConstraint, NSString, UIButton, UIMenu, UIStackView, UIView;
+@class NSAttributedString, NSLayoutConstraint, NSString, UIButton, UIFocusGuide, UIMenu, UIStackView, UIView;
 
 @interface GKDashboardButtonSectionHeaderView
 {
@@ -16,13 +16,16 @@
     UIButton *_button;
     UIStackView *_stackView;
     NSLayoutConstraint *_rightMarginConstraint;
+    UIFocusGuide *_focusGuide;
 }
 
 + (struct CGSize)platformSizeForTitle:(id)arg1 buttonTitle:(id)arg2;
 + (double)widthForTitle:(id)arg1 buttonTitle:(id)arg2;
 + (struct CGSize)platformSizeForTitle:(id)arg1;
 + (double)widthForTitle:(id)arg1;
++ (double)defaultHeight;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIFocusGuide *focusGuide; // @synthesize focusGuide=_focusGuide;
 @property(nonatomic) NSLayoutConstraint *rightMarginConstraint; // @synthesize rightMarginConstraint=_rightMarginConstraint;
 @property(nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(nonatomic) UIButton *button; // @synthesize button=_button;

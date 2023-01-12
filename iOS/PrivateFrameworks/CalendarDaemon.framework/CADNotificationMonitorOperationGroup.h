@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
 + (_Bool)requiresEventOrReminderAccess;
 + (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
-- (void)CADEventSetInvitationStatus:(int)arg1 forEvent:(id)arg2 error:(CDUnknownBlockType)arg3;
+- (void)CADEventSetInvitationStatus:(int)arg1 forEvents:(id)arg2 error:(CDUnknownBlockType)arg3;
 - (void)CADInviteReplyNotification:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADResourceChange:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADCalendar:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADEvent:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(id)arg1 excludingDelegateSources:(_Bool)arg2 filteredByShowsNotificationsFlag:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(_Bool)arg1 calculateEarliestExpirationDate:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseGetEventNotificationItemsAfterDate:(id)arg1 filteredByShowsNotificationsFlag:(_Bool)arg2 calculateEarliestExpirationDate:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseGetInviteReplyNotifications:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetResourceChanges:(CDUnknownBlockType)arg1;
 - (void)CADCalendarSetClearedFromNotificationCenter:(id)arg1 error:(CDUnknownBlockType)arg2;

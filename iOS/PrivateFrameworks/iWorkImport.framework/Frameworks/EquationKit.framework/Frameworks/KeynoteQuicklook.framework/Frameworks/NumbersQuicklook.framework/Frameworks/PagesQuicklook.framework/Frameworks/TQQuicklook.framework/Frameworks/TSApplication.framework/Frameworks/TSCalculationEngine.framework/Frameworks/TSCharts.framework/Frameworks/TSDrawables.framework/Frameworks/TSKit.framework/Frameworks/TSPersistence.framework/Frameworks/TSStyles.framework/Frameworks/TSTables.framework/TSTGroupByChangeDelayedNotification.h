@@ -12,17 +12,16 @@
 {
     int _notifyType;
     TSTGroupNode *_groupNode;
-    UUIDData_5fbc143e _rowUID;
+    struct TSKUIDStruct _rowUID;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) UUIDData_5fbc143e rowUID; // @synthesize rowUID=_rowUID;
+@property(nonatomic) struct TSKUIDStruct rowUID; // @synthesize rowUID=_rowUID;
 @property(retain, nonatomic) TSTGroupNode *groupNode; // @synthesize groupNode=_groupNode;
 @property(nonatomic) int notifyType; // @synthesize notifyType=_notifyType;
 - (id)description;
 - (void)sendToDistributor:(id)arg1;
-- (id)initWithNotifyType:(int)arg1 group:(id)arg2 rowUid:(const UUIDData_5fbc143e *)arg3;
+- (id)initWithNotifyType:(int)arg1 group:(id)arg2 rowUid:(struct TSKUIDStruct)arg3;
 - (id)initWithNotifyType:(int)arg1 group:(id)arg2;
 
 @end

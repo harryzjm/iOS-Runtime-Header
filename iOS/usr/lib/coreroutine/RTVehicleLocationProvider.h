@@ -67,6 +67,11 @@
 @property(retain, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *finalizeLocationEstimateTimer; // @synthesize finalizeLocationEstimateTimer=_finalizeLocationEstimateTimer;
+- (id)_createMetricFromScoreBoard:(id)arg1;
+- (void)onDailyMetricNotification:(id)arg1;
+- (void)_onDailyMetricNotification:(id)arg1;
+- (id)_createMetricFromParkingEvent:(id)arg1;
+- (void)_submitFMCParkingEventMetric:(id)arg1;
 - (void)fetchFMCEnabledWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithHandler:(CDUnknownBlockType)arg1;
 - (void)onLearnedLocationManagerNotification:(id)arg1;
@@ -114,7 +119,7 @@
 - (void)_onLocation:(id)arg1;
 - (void)onLeechedLocation:(id)arg1;
 - (void)onLocationNotification:(id)arg1;
-- (void)_shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setup;
 - (id)initWithLocationManager:(id)arg1 motionActivityManager:(id)arg2 mapsSupportManager:(id)arg3 metricManager:(id)arg4 managedObjectContext:(id)arg5 persistenceManager:(id)arg6 vehicleLocationHistoryController:(id)arg7 learnedLocationManager:(id)arg8 managedConfiguration:(id)arg9 defaultsManager:(id)arg10 keychainManager:(id)arg11;

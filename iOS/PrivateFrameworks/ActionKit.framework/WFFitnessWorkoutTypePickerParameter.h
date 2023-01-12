@@ -6,19 +6,35 @@
 
 #import <WorkflowKit/WFEnumerationParameter.h>
 
-@class NSArray;
+#import <ActionKit/WFActionEventObserver-Protocol.h>
 
-@interface WFFitnessWorkoutTypePickerParameter : WFEnumerationParameter
+@class NSArray, NSString, WFAction;
+
+@interface WFFitnessWorkoutTypePickerParameter : WFEnumerationParameter <WFActionEventObserver>
 {
+    int _characteristicUpdateToken;
     NSArray *_possibleStates;
+    WFAction *_action;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak WFAction *action; // @synthesize action=_action;
+- (void)wf_reloadFromAttributesDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)localizedPlaceholder;
 - (id)defaultSerializedRepresentation;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (id)possibleStates;
 - (Class)singleStateClass;
+- (void)wasRemovedFromWorkflow;
+- (void)saveStateIfNeeded;
+- (void)defaultSerializedRepresentationDidChange;
+- (void)wasAddedToWorkflow;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

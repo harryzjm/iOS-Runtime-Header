@@ -13,6 +13,8 @@
 @interface HMHomeManager (HFDebugging) <HFStateDumpBuildable>
 + (id)hf_homeFutureForName:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_accessorySettingsController;
+- (id)hf_accessorySettingsDataSource;
 - (id)hf_updateApplicationDataFuture;
 @property(readonly, nonatomic) _Bool hf_hasDetectediCloudIssue;
 - (id)hf_setSeenNewFeaturesViewVersion:(long long)arg1;

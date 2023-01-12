@@ -12,5 +12,6 @@
 @property(readonly, nonatomic) WKFrameInfo *_frame;
 @property(readonly, nonatomic) _Bool _requestOnlyIfCached;
 - (void)_didPerformRedirection:(NSURLResponse *)arg1 newRequest:(NSURLRequest *)arg2;
+- (void)_willPerformRedirection:(NSURLResponse *)arg1 newRequest:(NSURLRequest *)arg2 completionHandler:(void (^)(NSURLRequest *))arg3;
 @end
 

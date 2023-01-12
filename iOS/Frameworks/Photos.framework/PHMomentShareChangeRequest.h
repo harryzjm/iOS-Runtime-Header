@@ -7,16 +7,18 @@
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSManagedObjectID, NSString, NSXPCConnection, PHMomentShare, PHObjectPlaceholder, PHShareRelationshipChangeRequestHelper;
+@class NSData, NSDate, NSDictionary, NSManagedObjectID, NSSet, NSString, NSXPCConnection, PHMomentShare, PHObjectPlaceholder, PHShareRelationshipChangeRequestHelper;
 
 @interface PHMomentShareChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
     PHMomentShare *_originalMomentShare;
     NSXPCConnection *_clientConnection;
+    _Bool _changedAssets;
     NSString *_keySourceAssetIdentifier;
-    NSArray *_sourceAssetIdentifiers;
-    NSDictionary *_sourceAssetIdentifiersToAdjustmentBakeInOptionsDictionary;
-    NSDictionary *_sourceAssetIdentifiersToMetadataCopyOptionsDictionary;
+    NSSet *_sourceAssetIdentifiersForBatchedCreation;
+    NSDictionary *_sourceAssetCMMAssetMapForCreationRequest;
+    NSDictionary *_sourceAssetIdentifiersToAdjustmentBakeInOptionsDictionaryForBatchedCreation;
+    NSDictionary *_sourceAssetIdentifiersToMetadataCopyOptionsDictionaryForBatchedCreation;
     PHShareRelationshipChangeRequestHelper *_participantsHelper;
 }
 
@@ -27,9 +29,9 @@
 + (id)changeRequestForMomentShare:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PHShareRelationshipChangeRequestHelper *participantsHelper; // @synthesize participantsHelper=_participantsHelper;
-- (_Bool)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (_Bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (_Bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
+- (_Bool)_addSourceAssetsToMomentShare:(id)arg1 error:(id *)arg2;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (_Bool)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)createMomentShareAssetsFromAssets:(id)arg1 withCreationOptionsPerAsset:(id)arg2 withPreview:(id)arg3;

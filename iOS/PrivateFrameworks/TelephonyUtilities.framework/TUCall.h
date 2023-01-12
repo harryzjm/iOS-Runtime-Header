@@ -8,7 +8,7 @@
 
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSSet, NSString, NSUUID, TUCallCenter, TUCallDisplayContext, TUCallModel, TUCallNotificationManager, TUCallProvider, TUCallServicesInterface, TUDialRequest, TUHandle, TUProxyCall, TUSenderIdentity, TUVideoCallAttributes;
+@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSUUID, TUCallCenter, TUCallDisplayContext, TUCallModel, TUCallNotificationManager, TUCallProvider, TUCallScreenShareAttributes, TUCallServicesInterface, TUDialRequest, TUHandle, TUProxyCall, TUSenderIdentity, TUVideoCallAttributes;
 @protocol OS_dispatch_queue;
 
 @interface TUCall : NSObject <NSSecureCoding>
@@ -21,8 +21,11 @@
     _Bool _hasUpdatedAudio;
     _Bool _video;
     _Bool _ringtoneSuppressedRemotely;
+    _Bool _sharingScreen;
     _Bool _wasPulledToCurrentDevice;
     _Bool _isKnownCaller;
+    _Bool _joinedFromLink;
+    _Bool _failureExpected;
     int _disconnectedReason;
     int _faceTimeIDStatus;
     int _filteredOutReason;
@@ -56,6 +59,8 @@
     NSString *_hardPauseDigits;
     long long _junkConfidence;
     long long _identificationCategory;
+    long long _bluetoothAudioFormat;
+    TUCallScreenShareAttributes *_screenShareAttributes;
     struct CGSize _remoteScreenAspectRatio;
 }
 
@@ -68,6 +73,10 @@
 + (long long)maxJunkConfidence;
 + (long long)acceptableJunkConfidence;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isFailureExpected) _Bool failureExpected; // @synthesize failureExpected=_failureExpected;
+@property(readonly, nonatomic) TUCallScreenShareAttributes *screenShareAttributes; // @synthesize screenShareAttributes=_screenShareAttributes;
+@property(nonatomic) long long bluetoothAudioFormat; // @synthesize bluetoothAudioFormat=_bluetoothAudioFormat;
+@property(nonatomic) _Bool joinedFromLink; // @synthesize joinedFromLink=_joinedFromLink;
 @property(readonly, nonatomic) _Bool isKnownCaller; // @synthesize isKnownCaller=_isKnownCaller;
 @property(readonly, nonatomic) long long identificationCategory; // @synthesize identificationCategory=_identificationCategory;
 @property(readonly, nonatomic) long long junkConfidence; // @synthesize junkConfidence=_junkConfidence;
@@ -79,6 +88,7 @@
 @property(nonatomic) double clientMessageReceiveTime; // @synthesize clientMessageReceiveTime=_clientMessageReceiveTime;
 @property(nonatomic) double hostMessageSendTime; // @synthesize hostMessageSendTime=_hostMessageSendTime;
 @property(nonatomic) double hostCreationTime; // @synthesize hostCreationTime=_hostCreationTime;
+@property(nonatomic, getter=isSharingScreen) _Bool sharingScreen; // @synthesize sharingScreen=_sharingScreen;
 @property(readonly, nonatomic) struct CGSize remoteScreenAspectRatio; // @synthesize remoteScreenAspectRatio=_remoteScreenAspectRatio;
 @property(readonly, nonatomic) NSDictionary *providerContext; // @synthesize providerContext=_providerContext;
 @property(nonatomic) _Bool ringtoneSuppressedRemotely; // @synthesize ringtoneSuppressedRemotely=_ringtoneSuppressedRemotely;
@@ -114,6 +124,8 @@
 @property(nonatomic) int disconnectedReason; // @synthesize disconnectedReason=_disconnectedReason;
 - (_Bool)isDialRequestVideoUpgrade:(id)arg1;
 - (_Bool)isVideoUpgradeFromCall:(id)arg1;
+- (void)setSharingScreen:(_Bool)arg1 attributes:(id)arg2;
+- (void)setScreenShareAttributes:(id)arg1;
 - (void)setRemoteVideoPresentationState:(int)arg1;
 - (void)setRemoteVideoPresentationSize:(struct CGSize)arg1;
 - (struct CGSize)localAspectRatioForOrientation:(long long)arg1;
@@ -144,6 +156,7 @@
 @property(readonly, copy, nonatomic) NSString *suggestedDisplayName;
 @property(readonly, copy, nonatomic) NSString *displayFirstName;
 @property(readonly, copy, nonatomic) NSString *displayName;
+@property(readonly, copy, nonatomic) NSArray *contactIdentifiers;
 @property(readonly, copy, nonatomic) NSString *contactIdentifier;
 @property(readonly, copy, nonatomic) TUCallDisplayContext *displayContext;
 @property(readonly, nonatomic) NSData *remoteFrequency;
@@ -181,7 +194,6 @@
 - (void)ungroup;
 - (void)groupWithOtherCall:(id)arg1;
 @property(readonly, copy, nonatomic) NSSet *remoteParticipantHandles;
-@property(readonly, nonatomic, getter=isConversation) _Bool conversation;
 @property(readonly, copy, nonatomic) TUDialRequest *dialRequestForRedial;
 @property(readonly, nonatomic) long long faceTimeTransportType;
 @property(readonly, nonatomic, getter=isTTY) _Bool tty;
@@ -223,6 +235,7 @@
 @property(readonly, nonatomic) long long videoStreamToken;
 @property(readonly, nonatomic) float localMeterLevel;
 @property(readonly, nonatomic) float remoteMeterLevel;
+@property(readonly, nonatomic, getter=isConversation) _Bool conversation;
 @property(readonly, nonatomic) _Bool wantsStagingArea;
 @property(readonly, nonatomic, getter=isMutuallyExclusiveCall) _Bool mutuallyExclusiveCall;
 @property(readonly, nonatomic) _Bool shouldSuppressInCallUI;

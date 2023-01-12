@@ -22,7 +22,7 @@
 - (void)_performScrollAction:(_Bool)arg1;
 - (void)performActionForSystemAction:(id)arg1 fromClient:(id)arg2;
 - (void)performActionForSystemAction:(id)arg1;
-- (void)_sendDeviceOrientationChange:(int)arg1;
+- (void)_sendDeviceOrientationChange:(long long)arg1;
 - (void)_sendButtonEvent:(unsigned int)arg1;
 - (void)_handleHomeButtonDispatch:(_Bool)arg1;
 - (void)warm;
@@ -42,15 +42,20 @@
 - (void)shake;
 - (void)activateTripleClick;
 - (void)_activateSpeakScreen;
+- (void)_toggleColorFilters;
+- (void)_openCamera;
+- (void)activatePeopleDetection;
 - (void)_toggleFullKeyboardAccess;
 - (void)_toggleAssistiveTouch;
 - (void)_toggleSwitchControl;
 - (_Bool)_hasScreenSwitch;
 - (void)_toggleMagnifier;
+- (void)_toggleZoomController;
 - (void)_toggleZoom;
 - (void)_toggleSmartInvert;
 - (void)_toggleVoiceOver;
 - (void)_toggleClassicInvertColors;
+- (void)toggleTorch;
 - (void)revealSpotlight;
 - (void)toggleSpotlight;
 - (void)liftVolumeUpButtonUp;
@@ -64,6 +69,8 @@
 - (void)liftLockButtonUp;
 - (void)pressLockButtonDown;
 - (void)activateLockButton;
+- (void)toggleQuickNote;
+- (void)toggleAppLibrary;
 - (void)toggleAppSwitcher;
 - (_Bool)isRingerSwitchOn;
 - (void)toggleDock;

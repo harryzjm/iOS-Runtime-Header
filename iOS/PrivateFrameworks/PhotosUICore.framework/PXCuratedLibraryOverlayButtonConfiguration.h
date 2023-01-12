@@ -17,11 +17,15 @@
     UIColor *_contentColor;
     UIColor *_highlightedContentColor;
     UIImage *_iconImage;
+    UIImage *_iconImageWithoutConfiguration;
     UIImage *_tintedIconImage;
     UIImage *_highlightedIconImage;
     PXCuratedLibrarySectionHeaderLayoutSpec *_spec;
     PXCuratedLibraryActionPerformer *_actionPerformer;
     CDUnknownBlockType _actionHandler;
+    CDUnknownBlockType _menuActionHandler;
+    CDUnknownBlockType _willDisplayMenuActionHandler;
+    CDUnknownBlockType _willDismissMenuActionHandler;
     long long _style;
     long long _segment;
     NSString *_iconImageName;
@@ -30,15 +34,21 @@
     NSString *_caption;
     UIColor *_tintColor;
     UIColor *_backgroundColor;
+    NSString *_accessibilityTitle;
+    long long _buttonType;
     struct UIEdgeInsets _imageEdgeInsets;
     struct UIEdgeInsets _hitTestOutsets;
 }
 
 + (id)tintedImageCache;
++ (id)configurationWithButtonType:(long long)arg1 title:(id)arg2 spec:(id)arg3;
++ (id)configurationWithButtonType:(long long)arg1 spec:(id)arg2;
 + (id)configurationWithIconImageName:(id)arg1 title:(id)arg2 spec:(id)arg3;
 + (id)configurationWithTitle:(id)arg1 spec:(id)arg2;
 + (id)configurationWithIconImageName:(id)arg1 spec:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long buttonType; // @synthesize buttonType=_buttonType;
+@property(readonly, nonatomic) NSString *accessibilityTitle; // @synthesize accessibilityTitle=_accessibilityTitle;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(nonatomic) _Bool forcePointerInteractionEnabled; // @synthesize forcePointerInteractionEnabled=_forcePointerInteractionEnabled;
@@ -51,12 +61,17 @@
 @property(nonatomic) struct UIEdgeInsets imageEdgeInsets; // @synthesize imageEdgeInsets=_imageEdgeInsets;
 @property(nonatomic) long long segment; // @synthesize segment=_segment;
 @property(nonatomic) long long style; // @synthesize style=_style;
+@property(copy, nonatomic) CDUnknownBlockType willDismissMenuActionHandler; // @synthesize willDismissMenuActionHandler=_willDismissMenuActionHandler;
+@property(copy, nonatomic) CDUnknownBlockType willDisplayMenuActionHandler; // @synthesize willDisplayMenuActionHandler=_willDisplayMenuActionHandler;
+@property(copy, nonatomic) CDUnknownBlockType menuActionHandler; // @synthesize menuActionHandler=_menuActionHandler;
 @property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property(retain, nonatomic) PXCuratedLibraryActionPerformer *actionPerformer; // @synthesize actionPerformer=_actionPerformer;
 @property(readonly, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *spec; // @synthesize spec=_spec;
 @property(readonly, nonatomic) UIImage *highlightedIconImage; // @synthesize highlightedIconImage=_highlightedIconImage;
 @property(readonly, nonatomic) UIImage *tintedIconImage; // @synthesize tintedIconImage=_tintedIconImage;
 - (id)_tintedImage:(id)arg1 name:(id)arg2 withColor:(id)arg3;
+- (id)largeContentViewerImage;
+@property(readonly, nonatomic) UIImage *iconImageWithoutConfiguration; // @synthesize iconImageWithoutConfiguration=_iconImageWithoutConfiguration;
 @property(readonly, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property(readonly, nonatomic) UIColor *highlightedContentColor; // @synthesize highlightedContentColor=_highlightedContentColor;
 @property(readonly, nonatomic) UIColor *contentColor; // @synthesize contentColor=_contentColor;
@@ -65,7 +80,7 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIconImageName:(id)arg1 title:(id)arg2 spec:(id)arg3;
+- (id)initWithIconImageName:(id)arg1 title:(id)arg2 spec:(id)arg3 buttonType:(long long)arg4;
 - (id)init;
 
 // Remaining properties

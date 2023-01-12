@@ -25,6 +25,7 @@
 @property(nonatomic) __weak PKPaymentAuthorizationCoordinator *controller; // @synthesize controller=_controller;
 @property(nonatomic) __weak id <PKPaymentAuthorizationCoordinatorPrivateDelegate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
 @property(nonatomic) __weak id <PKPaymentAuthorizationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)authorizationDidChangeCouponCode:(id)arg1;
 - (void)authorizationDidSelectPaymentMethod:(id)arg1;
 - (void)authorizationDidSelectShippingAddress:(id)arg1;
 - (void)authorizationDidSelectShippingMethod:(id)arg1;

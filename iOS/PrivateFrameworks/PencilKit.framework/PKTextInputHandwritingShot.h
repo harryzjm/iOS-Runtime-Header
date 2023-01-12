@@ -9,7 +9,7 @@
 #import <PencilKit/PKTextInputDebugStateReporting-Protocol.h>
 #import <PencilKit/PKTextInputRecognitionManagerDataSource-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, PKDrawing, PKStroke, PKTextInputCanvasController, PKTextInputElementsController, PKTextInputLanguageSpec, PKTextInputStrokeProvider;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSNumber, NSString, PKDrawing, PKStroke, PKTextInputCanvasController, PKTextInputElementsController, PKTextInputLanguageSpec, PKTextInputStrokeProvider;
 @protocol PKTextInputHandwritingShotDelegate;
 
 @interface PKTextInputHandwritingShot : NSObject <PKTextInputRecognitionManagerDataSource, PKTextInputDebugStateReporting>
@@ -31,6 +31,7 @@
     PKTextInputLanguageSpec *_languageSpec;
     NSDictionary *__inputElementsByRecognitionID;
     NSMutableDictionary *__inputElementsContentByRecognitionID;
+    NSMutableIndexSet *__potentiallyTargetedElementRecognitionIDs;
     NSArray *__submittedTextInputTargets;
     NSDictionary *__submittedTargetContentInfoByTargetID;
     double __lastDrawingUpdateTimestamp;
@@ -43,6 +44,7 @@
 @property(nonatomic) double _lastDrawingUpdateTimestamp; // @synthesize _lastDrawingUpdateTimestamp=__lastDrawingUpdateTimestamp;
 @property(copy, nonatomic) NSDictionary *_submittedTargetContentInfoByTargetID; // @synthesize _submittedTargetContentInfoByTargetID=__submittedTargetContentInfoByTargetID;
 @property(copy, nonatomic) NSArray *_submittedTextInputTargets; // @synthesize _submittedTextInputTargets=__submittedTextInputTargets;
+@property(retain, nonatomic) NSMutableIndexSet *_potentiallyTargetedElementRecognitionIDs; // @synthesize _potentiallyTargetedElementRecognitionIDs=__potentiallyTargetedElementRecognitionIDs;
 @property(readonly, nonatomic) NSMutableDictionary *_inputElementsContentByRecognitionID; // @synthesize _inputElementsContentByRecognitionID=__inputElementsContentByRecognitionID;
 @property(copy, nonatomic, setter=_setInputElementsByRecognitionID:) NSDictionary *_inputElementsByRecognitionID; // @synthesize _inputElementsByRecognitionID=__inputElementsByRecognitionID;
 @property(nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
@@ -64,6 +66,7 @@
 - (struct _NSRange)_correctableTextRangeIntersectingStrokesWithIdentifiers:(id)arg1 inInputTarget:(id)arg2 elementContent:(id)arg3;
 - (id)_protectedCharacterIndexesInRange:(struct _NSRange)arg1 forElementContent:(id)arg2;
 - (id)_textContentSubstringInRange:(struct _NSRange)arg1 forElementContent:(id)arg2;
+- (int)_autoCorrectionModeForTextInputTraits:(id)arg1;
 - (int)_autoCapitalizationModeForTextInputTraits:(id)arg1;
 - (int)_contentTypeForElementContent:(id)arg1;
 - (struct _NSRange)_substringReferenceRangeForStrokeCoveredRange:(struct _NSRange)arg1 contentLength:(long long)arg2 selectedRange:(struct _NSRange)arg3;
@@ -80,6 +83,7 @@
 - (void)_setupStrokeProvider;
 - (void)_loadAndSaveContentFocusingIfNeededForElement:(id)arg1 referenceCanvasPoint:(struct CGPoint)arg2 strokesBounds:(struct CGRect)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_closestInputElementForStrokeIdentifiers:(id)arg1;
+- (_Bool)isPotentiallyTargetingElement:(id)arg1;
 - (id)textInputElementContentForRecognitionIdentifier:(id)arg1;
 - (id)textInputElementForRecognitionIdentifier:(id)arg1;
 - (void)_evaluateSubmissionReadyness;

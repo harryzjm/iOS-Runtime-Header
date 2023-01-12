@@ -10,7 +10,7 @@
 
 @protocol CKTextKitTruncating <NSObject>
 @property(readonly, nonatomic) struct CGRect truncationStringRect;
-@property(readonly, nonatomic) vector_b5e32e34 visibleRanges;
+@property(readonly, nonatomic) vector_d2213b4e visibleRanges;
 - (id)initWithContext:(CKTextKitContext *)arg1 truncationAttributedString:(NSAttributedString *)arg2 avoidTailTruncationSet:(NSCharacterSet *)arg3 constrainedSize:(struct CGSize)arg4;
 @end
 

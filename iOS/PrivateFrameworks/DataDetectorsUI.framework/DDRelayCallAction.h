@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (long long)TTYType;
-- (id)icon;
+- (id)iconName;
 - (id)localizedName;
 
 @end

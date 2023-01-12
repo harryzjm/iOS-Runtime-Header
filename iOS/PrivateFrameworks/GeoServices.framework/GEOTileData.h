@@ -26,6 +26,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) unsigned long long length;
+- (id)readDataWithError:(id *)arg1;
 - (void)_replaceFileURL:(id)arg1;
 - (void)encodeToXPCDictionary:(id)arg1;
 - (void)dealloc;

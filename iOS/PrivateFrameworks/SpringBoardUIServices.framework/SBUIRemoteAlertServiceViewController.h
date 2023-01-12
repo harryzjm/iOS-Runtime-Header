@@ -27,6 +27,7 @@
 - (void)synchronizeAnimationsInActions:(CDUnknownBlockType)arg1;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setUserInfo:(id)arg1;
+- (void)didTransitionToAttachedToWindowedAccessory:(_Bool)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 - (void)handleButtonActions:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)prepareForActivationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

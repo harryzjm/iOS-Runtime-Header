@@ -6,18 +6,16 @@
 
 #import <CameraEditKit/CEKBadgeView.h>
 
-@class NSString, UIImage;
+@class UIImage;
 
 @interface CAMFlashBadge : CEKBadgeView
 {
     UIImage *__contentImage;
-    NSString *__contentSizeCategory;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *_contentSizeCategory; // @synthesize _contentSizeCategory=__contentSizeCategory;
 @property(retain, nonatomic) UIImage *_contentImage; // @synthesize _contentImage=__contentImage;
-- (void)updateToContentSize:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (id)_maskImage;
 - (struct UIEdgeInsets)_imageInsets;

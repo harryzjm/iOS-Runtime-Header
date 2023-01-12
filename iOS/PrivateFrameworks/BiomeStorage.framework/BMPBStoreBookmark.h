@@ -22,6 +22,7 @@
     } _has;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int offset; // @synthesize offset=_offset;
 @property(nonatomic) double iterationStartTime; // @synthesize iterationStartTime=_iterationStartTime;
 @property(retain, nonatomic) NSString *segmentName; // @synthesize segmentName=_segmentName;
@@ -39,7 +40,6 @@
 @property(nonatomic) _Bool hasIterationStartTime;
 @property(readonly, nonatomic) _Bool hasSegmentName;
 @property(readonly, nonatomic) _Bool hasStreamId;
-- (void)dealloc;
 
 @end
 

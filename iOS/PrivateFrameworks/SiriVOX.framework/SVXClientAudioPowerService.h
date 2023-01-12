@@ -37,11 +37,11 @@ __attribute__((visibility("hidden")))
 - (void)audioPowerUpdaterDidUpdate:(id)arg1 averagePower:(float)arg2 peakPower:(float)arg3;
 - (void)endUpdate;
 - (void)beginUpdateWithFrequency:(long long)arg1;
-- (void)clientServiceDidChange;
-- (id)initWithClientServiceProvider:(id)arg1 performer:(id)arg2;
+- (void)clientServiceDidChange:(_Bool)arg1;
+- (id)initWithClientServiceProvider:(id)arg1 analytics:(id)arg2 performer:(id)arg3;
 - (void)handleDidEndUpdateAudioPower;
 - (void)handleWillBeginUpdateAudioPowerWithProvider:(id)arg1;
-- (id)initWithType:(long long)arg1 clientServiceProvider:(id)arg2 performer:(id)arg3;
+- (id)initWithType:(long long)arg1 clientServiceProvider:(id)arg2 analytics:(id)arg3 performer:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

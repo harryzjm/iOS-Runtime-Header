@@ -9,16 +9,28 @@
 @interface TPSAnalyticsEventContentLinkTapped
 {
     NSString *_contentID;
+    NSString *_collectionID;
+    NSString *_correlationID;
+    NSString *_bundleID;
+    NSString *_context;
+    NSString *_displayType;
+    NSString *_url;
 }
 
-+ (id)eventWithContentID:(id)arg1;
++ (id)eventWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 url:(id)arg4;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *url; // @synthesize url=_url;
+@property(retain, nonatomic) NSString *displayType; // @synthesize displayType=_displayType;
+@property(readonly, nonatomic) NSString *context; // @synthesize context=_context;
+@property(readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(readonly, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
+@property(readonly, nonatomic) NSString *collectionID; // @synthesize collectionID=_collectionID;
 @property(readonly, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
 - (id)mutableAnalyticsEventRepresentation;
 - (id)eventName;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_initWithContentID:(id)arg1;
+- (id)_initWithContentID:(id)arg1 collectionID:(id)arg2 correlationID:(id)arg3 url:(id)arg4 bundleID:(id)arg5 context:(id)arg6 displayType:(id)arg7;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -20,10 +20,10 @@
 @property(retain) NSString *confirmationText; // @synthesize confirmationText=_confirmationText;
 @property _Bool mayCauseDataLoss; // @synthesize mayCauseDataLoss=_mayCauseDataLoss;
 @property __weak NSObject<STStorageOptionTipDelegate> *delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) long long eventualGain;
-@property(nonatomic) long long immediateGain;
-@property(retain, nonatomic) NSString *activatingString;
-@property(nonatomic) float activationPercent;
+@property long long eventualGain;
+@property long long immediateGain;
+@property(retain) NSString *activatingString;
+@property float activationPercent;
 @property(retain) NSString *enableButtonTitle;
 - (id)getValue:(id)arg1;
 - (void)setValue:(id)arg1 specifier:(id)arg2;

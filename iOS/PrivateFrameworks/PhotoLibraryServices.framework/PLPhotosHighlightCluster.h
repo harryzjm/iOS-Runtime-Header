@@ -11,7 +11,6 @@
 
 @interface PLPhotosHighlightCluster : NSObject
 {
-    _Bool _isCurated;
     unsigned short _type;
     unsigned short _category;
     unsigned short _kind;
@@ -35,7 +34,6 @@
 @property(nonatomic) unsigned short kind; // @synthesize kind=_kind;
 @property(nonatomic) unsigned short category; // @synthesize category=_category;
 @property(nonatomic) unsigned short type; // @synthesize type=_type;
-@property(nonatomic) _Bool isCurated; // @synthesize isCurated=_isCurated;
 @property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(retain, nonatomic) NSSet *assets; // @synthesize assets=_assets;

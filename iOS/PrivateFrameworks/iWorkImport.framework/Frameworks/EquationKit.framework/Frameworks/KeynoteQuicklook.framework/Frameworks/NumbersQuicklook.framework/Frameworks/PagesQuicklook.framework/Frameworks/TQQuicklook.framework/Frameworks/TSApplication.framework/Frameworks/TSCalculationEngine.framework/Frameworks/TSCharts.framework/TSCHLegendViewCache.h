@@ -6,27 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCHUnretainedParent-Protocol.h>
-
 @class TSCHLegendModelCache;
 
-@interface TSCHLegendViewCache : NSObject <TSCHUnretainedParent>
+@interface TSCHLegendViewCache : NSObject
 {
-    unsigned long long mCellCount;
-    unsigned long long mNumberOfRows;
-    unsigned long long mNumberOfColumns;
-    struct CGSize mFinalSize;
-    TSCHLegendModelCache *mModelCache;
-    struct CGPoint *mCellOrigins;
+    TSCHLegendModelCache *_modelCache;
+    unsigned long long _cellCount;
+    unsigned long long _numberOfRows;
+    unsigned long long _numberOfColumns;
+    struct CGSize _finalSize;
+    struct CGPoint *_cellOrigins;
 }
 
 - (void).cxx_destruct;
-@property(readonly) struct CGSize legendSize; // @synthesize legendSize=mFinalSize;
-@property(readonly) unsigned long long numberOfColumns; // @synthesize numberOfColumns=mNumberOfColumns;
-@property(readonly) unsigned long long numberOfRows; // @synthesize numberOfRows=mNumberOfRows;
+@property(readonly) struct CGSize legendSize; // @synthesize legendSize=_finalSize;
+@property(readonly) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
+@property(readonly) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 - (struct CGPoint)originForCell:(id)arg1;
 - (void)dealloc;
-- (void)clearParent;
 - (id)initWithLegendModelCache:(id)arg1 legendWidth:(double)arg2;
 
 @end

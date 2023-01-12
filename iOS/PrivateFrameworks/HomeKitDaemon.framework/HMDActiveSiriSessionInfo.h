@@ -24,17 +24,19 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <HMDDataStreamBulkSendSession> bulkSendSession; // @synthesize bulkSendSession=_bulkSendSession;
 @property(nonatomic) _Bool didSiriSessionStop; // @synthesize didSiriSessionStop=_didSiriSessionStop;
 @property(nonatomic) _Bool didSiriSessionStart; // @synthesize didSiriSessionStart=_didSiriSessionStart;
 @property(nonatomic) _Bool didBulkSendSessionComplete; // @synthesize didBulkSendSessionComplete=_didBulkSendSessionComplete;
 @property(nonatomic) _Bool didBulkSendSessionFail; // @synthesize didBulkSendSessionFail=_didBulkSendSessionFail;
-@property(retain, nonatomic) id <HMDDataStreamBulkSendSession> bulkSendSession; // @synthesize bulkSendSession=_bulkSendSession;
 @property(nonatomic) __weak id <HMDActiveSiriSessionInfoDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (_Bool)_handleFrame:(id)arg1;
 - (void)_bulkSendDidComplete;
 - (void)_bulkSendDidFail;
 - (void)_doReadAudioFrames;
+- (_Bool)_maybeHandleFrame:(id)arg1 error:(id)arg2;
+- (void)readFirstFrame;
 - (void)invalidate;
 - (void)setActiveBulkSendSession:(id)arg1;
 - (void)markSiriPluginStopped;

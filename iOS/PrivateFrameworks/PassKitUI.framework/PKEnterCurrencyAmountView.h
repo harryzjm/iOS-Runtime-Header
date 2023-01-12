@@ -14,11 +14,11 @@
 @interface PKEnterCurrencyAmountView : UIView <UITextFieldDelegate>
 {
     UIView *_internalInputAccessoryView;
+    UIColor *_keyboardColor;
     _Bool _showsDecimalPointButton;
     _Bool _enabled;
     _Bool _ignoreIntegralNumber;
     _Bool _clearAmountOnFirstKeyboardInput;
-    _Bool _showDecimalPointButton;
     _Bool _isFirstKeyboardInput;
     UITextField *_amountTextField;
     NSString *_currency;
@@ -42,7 +42,6 @@
 @property(nonatomic) double labelScaleFactor; // @synthesize labelScaleFactor=_labelScaleFactor;
 @property(nonatomic) struct CGSize lastLayoutBoundsSize; // @synthesize lastLayoutBoundsSize=_lastLayoutBoundsSize;
 @property(nonatomic) _Bool isFirstKeyboardInput; // @synthesize isFirstKeyboardInput=_isFirstKeyboardInput;
-@property(nonatomic) _Bool showDecimalPointButton; // @synthesize showDecimalPointButton=_showDecimalPointButton;
 @property(copy, nonatomic) NSString *amountString; // @synthesize amountString=_amountString;
 @property(retain, nonatomic) NSNumberFormatter *currencySymbolAmountFormatter; // @synthesize currencySymbolAmountFormatter=_currencySymbolAmountFormatter;
 @property(retain, nonatomic) NSNumberFormatter *amountFormatter; // @synthesize amountFormatter=_amountFormatter;
@@ -70,11 +69,13 @@
 - (void)_createAmountFormatter;
 - (unsigned long long)_numberOfDecimalPlacesInString:(id)arg1 decimalSeperator:(id)arg2;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)didMoveToWindow;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+@property(readonly, nonatomic) struct CGSize defaultKeyboardSize;
 @property(copy, nonatomic) UIColor *keyboardColor;
 - (void)showKeyboard;
 - (void)dismissKeyboard;

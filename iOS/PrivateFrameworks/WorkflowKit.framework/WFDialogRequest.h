@@ -18,10 +18,12 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property(readonly, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
 @property(readonly, nonatomic) WFDialogAttribution *attribution; // @synthesize attribution=_attribution;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldCenterPrompt;
+@property(readonly, nonatomic) NSString *promptForDisplay;
 - (id)initWithAttribution:(id)arg1 prompt:(id)arg2;
 - (id)initWithAppBundleIdentifier:(id)arg1 prompt:(id)arg2;
 

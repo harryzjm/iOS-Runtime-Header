@@ -12,22 +12,26 @@
     struct CGPoint _topRight;
 }
 
++ (_Bool)boundingBoxIsCalculatedProperty;
 + (_Bool)supportsSecureCoding;
 + (id)rectangleObservationWithRequestRevision:(unsigned long long)arg1 topLeft:(struct CGPoint)arg2 bottomLeft:(struct CGPoint)arg3 bottomRight:(struct CGPoint)arg4 topRight:(struct CGPoint)arg5;
 + (id)observationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 @property(readonly, nonatomic) struct CGPoint topRight; // @synthesize topRight=_topRight;
 @property(readonly, nonatomic) struct CGPoint bottomRight; // @synthesize bottomRight=_bottomRight;
 @property(readonly, nonatomic) struct CGPoint bottomLeft; // @synthesize bottomLeft=_bottomLeft;
 @property(readonly, nonatomic) struct CGPoint topLeft; // @synthesize topLeft=_topLeft;
 - (void)setBoundingBoxFromQuadrilateralPointsAtTopLeft:(struct CGPoint)arg1 topRight:(struct CGPoint)arg2 bottomRight:(struct CGPoint)arg3 bottomLeft:(struct CGPoint)arg4;
+- (void)setBoundingBox:(struct CGRect)arg1;
 - (id)initWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2;
 - (id)initWithBoundingBox:(struct CGRect)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (_Bool)excludesBoundingBoxFromCoding;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 topLeft:(struct CGPoint)arg2 bottomLeft:(struct CGPoint)arg3 bottomRight:(struct CGPoint)arg4 topRight:(struct CGPoint)arg5;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 boundingBox:(struct CGRect)arg2;
 - (id)initWithRequestRevision:(unsigned long long)arg1 topLeft:(struct CGPoint)arg2 bottomLeft:(struct CGPoint)arg3 bottomRight:(struct CGPoint)arg4 topRight:(struct CGPoint)arg5;
 - (id)initWithTopLeft:(struct CGPoint)arg1 bottomLeft:(struct CGPoint)arg2 bottomRight:(struct CGPoint)arg3 topRight:(struct CGPoint)arg4;
 

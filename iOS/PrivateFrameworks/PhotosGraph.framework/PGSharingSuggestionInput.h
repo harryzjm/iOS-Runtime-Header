@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, PGGraph, PHFetchResult;
+@class NSArray, PGGraph, PHFetchResult, PHPhotoLibrary;
 
 @interface PGSharingSuggestionInput : NSObject
 {
@@ -15,6 +15,7 @@
     NSArray *_momentNodes;
     PHFetchResult *_assets;
     PHFetchResult *_moments;
+    PHPhotoLibrary *_photoLibrary;
     PGGraph *_graph;
 }
 
@@ -25,7 +26,7 @@
 @property(readonly, nonatomic) PHFetchResult *assets;
 @property(readonly, nonatomic) NSArray *momentNodes;
 - (id)initWithMomentNodes:(id)arg1;
-- (id)initWithAssetLocalIdentifiers:(id)arg1 momentLocalIdentifiers:(id)arg2 andGraph:(id)arg3;
+- (id)initWithAssetLocalIdentifiers:(id)arg1 momentLocalIdentifiers:(id)arg2 graph:(id)arg3 photoLibrary:(id)arg4;
 
 @end
 

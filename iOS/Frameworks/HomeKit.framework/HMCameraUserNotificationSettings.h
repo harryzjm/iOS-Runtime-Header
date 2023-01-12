@@ -18,6 +18,7 @@
     _Bool _accessModeChangeNotificationEnabled;
     _Bool _reachabilityEventNotificationEnabled;
     _Bool _smartBulletinBoardNotificationEnabled;
+    long long _version;
     NSPredicate *_smartBulletinBoardNotificationCondition;
 }
 
@@ -28,6 +29,7 @@
 @property(getter=isSmartBulletinBoardNotificationEnabled) _Bool smartBulletinBoardNotificationEnabled; // @synthesize smartBulletinBoardNotificationEnabled=_smartBulletinBoardNotificationEnabled;
 @property(getter=isReachabilityEventNotificationEnabled) _Bool reachabilityEventNotificationEnabled; // @synthesize reachabilityEventNotificationEnabled=_reachabilityEventNotificationEnabled;
 @property(getter=isAccessModeChangeNotificationEnabled) _Bool accessModeChangeNotificationEnabled; // @synthesize accessModeChangeNotificationEnabled=_accessModeChangeNotificationEnabled;
+@property long long version; // @synthesize version=_version;
 @property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *privateDescription;
@@ -38,6 +40,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

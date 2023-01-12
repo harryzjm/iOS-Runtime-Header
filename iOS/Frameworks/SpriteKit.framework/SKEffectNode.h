@@ -10,7 +10,7 @@
 
 @interface SKEffectNode <SKWarpable>
 {
-    struct SKCEffectNode *_skcEffectNode;
+    void *_skcEffectNode;
 }
 
 + (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
@@ -31,7 +31,7 @@
 - (_Bool)isEqualToNode:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

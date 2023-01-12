@@ -18,19 +18,11 @@ __attribute__((visibility("hidden")))
     _UIStatusBarDisplayItemPlacement *_timePlacement;
 }
 
-+ (id)pillSmallFont;
-+ (id)pillFont;
-+ (id)expandedFont;
-+ (id)normalFont;
 + (double)regionCursorCornerRadius;
 + (_Bool)regionCursorIsPill;
 + (struct UIEdgeInsets)regionCursorInsets;
-+ (struct CGSize)smallPillSize;
-+ (struct CGSize)pillSize;
 + (double)baselineOffset;
-+ (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
 + (struct NSDirectionalEdgeInsets)edgeInsets;
-+ (double)regionSpacing;
 + (double)height;
 + (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
@@ -59,6 +51,14 @@ __attribute__((visibility("hidden")))
 - (id)setupInContainerView:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)pillSmallFont;
+- (id)pillFont;
+- (id)expandedFont;
+- (id)normalFont;
+- (struct CGSize)smallPillSize;
+- (struct CGSize)pillSize;
+@property(readonly, nonatomic) struct NSDirectionalEdgeInsets expandedEdgeInsets;
+- (double)regionSpacing;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;

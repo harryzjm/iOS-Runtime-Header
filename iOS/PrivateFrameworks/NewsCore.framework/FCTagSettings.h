@@ -18,9 +18,6 @@
 
 + (id)commandsToMergeLocalDataToCloud:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <FCTagSettingsDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
-@property(retain, nonatomic) NSMutableDictionary *tagSettingsEntriesByTagID; // @synthesize tagSettingsEntriesByTagID=_tagSettingsEntriesByTagID;
 - (id)allTagSettingsRecords;
 - (id)allTagSettingsRecordNames;
 - (void)handleSyncWithDeletedTagSettingsRecordName:(id)arg1;

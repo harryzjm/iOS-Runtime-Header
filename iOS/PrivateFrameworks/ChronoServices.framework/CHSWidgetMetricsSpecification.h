@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <ChronoServices/BSDescriptionProviding-Protocol.h>
 #import <ChronoServices/NSCopying-Protocol.h>
 #import <ChronoServices/NSMutableCopying-Protocol.h>
 #import <ChronoServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
-@interface CHSWidgetMetricsSpecification : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface CHSWidgetMetricsSpecification : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, BSDescriptionProviding>
 {
     NSDictionary *_metricsByFamily;
 }
@@ -24,6 +25,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)metricsForFamily:(long long)arg1;
 @property(readonly, nonatomic) unsigned long long families;
@@ -31,6 +37,11 @@
 - (id)initWithMetricsByFamily:(id)arg1;
 - (id)initWithMetricsSpecification:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -13,35 +13,37 @@
 #import <SleepDaemon/HDSPSleepScheduleModelObserver-Protocol.h>
 #import <SleepDaemon/HDSPTimeChangeObserver-Protocol.h>
 
-@class HDSPEnvironment, HDSPSleepEventList, HKSPObserverSet, NSDate, NSHashTable, NSString;
-@protocol HDSPEventScheduler, HKSPExecutor;
+@class HDSPEnvironment, HDSPSleepEventList, HKSPObserverSet, HKSPSleepEvent, HKSPThrottler, NSDate, NSHashTable, NSString;
+@protocol HDSPEventScheduler;
 
 @interface HDSPSleepEventScheduler : NSObject <HDSPEventScheduleDelegate, HDSPSleepScheduleModelObserver, HDSPTimeChangeObserver, HDSPSleepEventDelegate, HDSPDiagnosticsProvider, HDSPEnvironmentAware>
 {
     struct os_unfair_lock_s _scheduleLock;
     HDSPEnvironment *_environment;
+    HKSPSleepEvent *_lastStandardSleepEvent;
     HDSPSleepEventList *_sleepEvents;
     HKSPObserverSet *_eventHandlers;
     NSHashTable *_eventProviders;
     NSHashTable *_pendingEventProviders;
     id <HDSPEventScheduler> _scheduler;
-    id <HKSPExecutor> _executor;
+    HKSPThrottler *_throttler;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) id <HKSPExecutor> executor; // @synthesize executor=_executor;
+@property(readonly, nonatomic) HKSPThrottler *throttler; // @synthesize throttler=_throttler;
 @property(readonly, nonatomic) id <HDSPEventScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property(readonly, nonatomic) NSHashTable *pendingEventProviders; // @synthesize pendingEventProviders=_pendingEventProviders;
 @property(readonly, nonatomic) NSHashTable *eventProviders; // @synthesize eventProviders=_eventProviders;
 @property(readonly, nonatomic) HKSPObserverSet *eventHandlers; // @synthesize eventHandlers=_eventHandlers;
 @property(readonly, nonatomic) HDSPSleepEventList *sleepEvents; // @synthesize sleepEvents=_sleepEvents;
 @property(readonly, nonatomic) struct os_unfair_lock_s scheduleLock; // @synthesize scheduleLock=_scheduleLock;
+@property(retain, nonatomic) HKSPSleepEvent *lastStandardSleepEvent; // @synthesize lastStandardSleepEvent=_lastStandardSleepEvent;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 - (id)diagnosticInfo;
 - (id)diagnosticDescription;
 - (id)_allSleepEvents;
 - (void)significantTimeChangeDetected:(id)arg1;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 - (void)removeEventHandler:(id)arg1;
 - (void)addEventHandler:(id)arg1;
 - (void)removeEventProvider:(id)arg1;
@@ -53,13 +55,15 @@
 - (void)scheduledEventIsDue;
 @property(retain, nonatomic) NSDate *lastEventTriggerDate;
 - (void)_schedulePendingEvents;
+- (void)_lock_updateLastStandardSleepEvent:(id)arg1;
+- (void)_loadLastStandardSleepEvent;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (_Bool)_lock_shouldScheduleEvents;
 - (void)_lock_rescheduleEvents;
 - (void)rescheduleEvents;
 - (void)_withLock:(CDUnknownBlockType)arg1;
-- (id)initWithEnvironment:(id)arg1 schedulerProvider:(CDUnknownBlockType)arg2 executorProvider:(CDUnknownBlockType)arg3;
+- (id)initWithEnvironment:(id)arg1 schedulerProvider:(CDUnknownBlockType)arg2 throttlerProvider:(CDUnknownBlockType)arg3;
 - (id)initWithEnvironment:(id)arg1;
 
 // Remaining properties

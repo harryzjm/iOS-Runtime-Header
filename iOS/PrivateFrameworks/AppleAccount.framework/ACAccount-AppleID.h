@@ -18,6 +18,7 @@
 - (id)initWithAppleID:(id)arg1 password:(id)arg2;
 - (void)storeOriginalUsername;
 - (_Bool)aa_isDuplicateAccount:(id)arg1;
+- (_Bool)_aa_isExistingAccount:(id)arg1;
 - (_Bool)aa_hasDuplicateAccount;
 - (void)_aa_setDataclassProperties:(id)arg1;
 - (_Bool)aa_updateTokensWithProvisioningResponse:(id)arg1;
@@ -37,6 +38,8 @@
 @property(readonly, nonatomic) ACAccount *aa_cloudKitAccount;
 @property(readonly, nonatomic) ACAccount *aa_fmipAccount;
 @property(readonly, nonatomic) ACAccount *aa_fmfAccount;
+- (void)_aa_setBenefactorAccount:(_Bool)arg1;
+- (_Bool)_aa_benefactorAccount;
 - (void)_aa_setLastAgreedTermsInfo:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *aa_lastAgreedTermsInfo;
 @property(readonly, nonatomic) _Bool aa_isFamilyEligible;
@@ -47,12 +50,15 @@
 @property(readonly, nonatomic) _Bool aa_hasOptionalTerms;
 @property(readonly, nonatomic) _Bool aa_isAuthKitAccount;
 @property(readonly, nonatomic) _Bool aa_isSandboxAccount;
+@property(readonly, nonatomic) _Bool aa_isRemindersAutoMigratableToCK;
 @property(readonly, nonatomic) _Bool aa_isRemindersMigrated;
 @property(readonly, nonatomic) _Bool aa_isNotesMigrated;
 @property(readonly, nonatomic) _Bool aa_isManagedAppleID;
+@property(readonly, nonatomic) _Bool aa_isUnremovableRemotelyManagedAccount;
 @property(readonly, nonatomic) _Bool aa_isRemotelyManaged;
 @property(readonly, nonatomic) _Bool aa_isUsingiCloud;
 @property(nonatomic, setter=aa_setCloudDocsMigrationComplete:) _Bool aa_isCloudDocsMigrationComplete;
+@property(nonatomic, setter=aa_setIsCloudSubscriber:) _Bool aa_isCloudSubscriber;
 @property(nonatomic, setter=aa_setUsesCloudDocs:) _Bool aa_isUsingCloudDocs;
 @property(readonly, copy, nonatomic) AASuspensionInfo *aa_suspensionInfo;
 @property(readonly, nonatomic) _Bool aa_isSuspended;
@@ -62,6 +68,7 @@
 @property(copy, nonatomic, setter=aa_setAccountClass:) NSString *aa_accountClass;
 - (_Bool)aa_isAccountClass:(id)arg1;
 @property(nonatomic, setter=aa_setPrimaryAccount:) _Bool aa_isPrimaryAccount;
+@property(readonly, nonatomic) NSString *aa_normalizedPersonID;
 @property(readonly, copy, nonatomic) AARegionInfo *aa_regionInfo;
 @property(readonly, copy, nonatomic) NSString *aa_fullName;
 @property(copy, nonatomic, setter=aa_setLastName:) NSString *aa_lastName;
@@ -85,8 +92,7 @@
 @property(readonly, nonatomic) _Bool aa_needsRegistration;
 @property(nonatomic, setter=aa_setSyncedAccount:) _Bool aa_isSyncedAccount;
 - (void)_aa_clearRawPassword;
-- (void)_aa_setRawPassword:(id)arg1;
-- (id)_aa_rawPassword;
+@property(copy, nonatomic, setter=_aa_setRawPassword:) NSString *_aa_rawPassword;
 - (void)_aa_setPrimaryEmail:(id)arg1;
 - (void)_aa_setAltDSID:(id)arg1;
 - (void)_aa_setPersonID:(id)arg1;

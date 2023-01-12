@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     NSDictionary *_groupAcknowledgmentCounts;
     long long _selectedAcknowledgment;
     BOOL _balloonOrientation;
+    BOOL _anchorVerticalOrientation;
     NSArray *_acknowledgmentViews;
     struct CGPoint _anchorBubblePosition;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) BOOL anchorVerticalOrientation; // @synthesize anchorVerticalOrientation=_anchorVerticalOrientation;
 @property(nonatomic) struct CGPoint anchorBubblePosition; // @synthesize anchorBubblePosition=_anchorBubblePosition;
 @property(copy, nonatomic) NSArray *acknowledgmentViews; // @synthesize acknowledgmentViews=_acknowledgmentViews;
 - (void)traitCollectionDidChange:(id)arg1;

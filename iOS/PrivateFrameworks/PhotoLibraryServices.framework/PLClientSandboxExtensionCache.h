@@ -19,7 +19,6 @@
 @property(retain, nonatomic) NSMutableOrderedSet *sandboxExtensionURLs; // @synthesize sandboxExtensionURLs=_sandboxExtensionURLs;
 @property(readonly, nonatomic) unsigned long long cacheLimit; // @synthesize cacheLimit=_cacheLimit;
 - (_Bool)containsURL:(id)arg1;
-- (_Bool)containsPath:(id)arg1;
 - (void)insertSandboxedURL:(id)arg1;
 - (id)initWithCacheLimit:(unsigned long long)arg1;
 

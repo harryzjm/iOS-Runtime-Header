@@ -24,7 +24,7 @@
 @property(readonly, copy, nonatomic) NSNumber *size;
 @property(readonly, copy, nonatomic) NSString *mimeType;
 @property(readonly, copy, nonatomic) NSURL *url;
-- (id)_initWithLinkIcon:(const struct LinkIcon *)arg1;
+- (id)_initWithLinkIcon:(const void *)arg1;
 
 @end
 

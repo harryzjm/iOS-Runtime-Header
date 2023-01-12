@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <ChatKit/CKAudioControllerDelegate-Protocol.h>
 #import <ChatKit/CKSendAnimationManager-Protocol.h>
 
-@class CABackdropLayer, CKBalloonView, NSString, UIScrollView, UIWindow;
+@class CABackdropLayer, CKAudioController, CKBalloonView, NSString, UIScrollView, UIWindow;
 @protocol CKSendAnimationBalloonProvider, CKSendAnimationManagerDelegate;
 
-@interface CKImpactEffectManager : NSObject <CKSendAnimationManager>
+@interface CKImpactEffectManager : NSObject <CKAudioControllerDelegate, CKSendAnimationManager>
 {
     _Bool _isAnimating;
     _Bool _isDisabled;
@@ -24,6 +25,7 @@
     CKBalloonView *_originalBalloonView;
     UIScrollView *_expressiveSendScrollView;
     CABackdropLayer *_expressiveSendAnimationBackdrop;
+    CKAudioController *_audioController;
 }
 
 + (id)localizedEffectNameForEffectWithIdentifier:(id)arg1;
@@ -33,6 +35,7 @@
 + (id)maskingStringForID:(id)arg1;
 + (id)effectIdentifiers;
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKAudioController *audioController; // @synthesize audioController=_audioController;
 @property(retain, nonatomic) CABackdropLayer *expressiveSendAnimationBackdrop; // @synthesize expressiveSendAnimationBackdrop=_expressiveSendAnimationBackdrop;
 @property(retain, nonatomic) UIScrollView *expressiveSendScrollView; // @synthesize expressiveSendScrollView=_expressiveSendScrollView;
 @property(retain, nonatomic) CKBalloonView *originalBalloonView; // @synthesize originalBalloonView=_originalBalloonView;
@@ -44,16 +47,21 @@
 @property(nonatomic) __weak id <CKSendAnimationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <CKSendAnimationBalloonProvider> sendAnimationBalloonProvider; // @synthesize sendAnimationBalloonProvider;
 @property(nonatomic) __weak id <CKSendAnimationManagerDelegate> sendAnimationManagerDelegate; // @synthesize sendAnimationManagerDelegate;
+- (void)stopPlayingSound;
+- (void)_audioSessionOptionsWillChange:(id)arg1;
+- (void)dealloc;
 - (void)_cleanupExpressiveSendComponents;
 - (void)_visibleCells:(id *)arg1 aboveItem:(id)arg2;
 - (void)animationDidFinishWithContext:(id)arg1;
 - (void)animationWillBeginWithContext:(id)arg1;
 - (id)cloneBalloonForAnimationWithChatItem:(id)arg1;
-- (id)_sendAnimationContextForIdentifier:(id)arg1 message:(id)arg2 isSender:(_Bool)arg3;
+- (id)_sendAnimationContextForIdentifier:(id)arg1 message:(id)arg2 isSender:(_Bool)arg3 beginAnimationFromTranscriptPresentedState:(_Bool)arg4;
 - (void)_sizeAnimationWindow;
 - (void)stopAllEffects;
 - (void)matchScrollViewOffset:(id)arg1;
-- (void)_animateLastMessage:(id)arg1;
+- (void)_animateLastMessage:(id)arg1 withEffectIdentifier:(id)arg2 beginAnimationFromTranscriptPresentedState:(_Bool)arg3;
+- (void)setupAudioPlayerWithURL:(id)arg1;
+- (void)animateMessages:(id)arg1 withEffectIdentifier:(id)arg2 beginAnimationFromTranscriptPresentedState:(_Bool)arg3;
 - (void)animateMessages:(id)arg1;
 - (id)init;
 

@@ -8,12 +8,12 @@
 {
 }
 
-+ (id)_predicateWithSampleType:(id)arg1 sourceIdentifier:(id)arg2 predicate:(id)arg3;
-+ (id)_predicateWithSampleType:(id)arg1 predicate:(id)arg2;
 + (id)columnNamesForTimeOffset;
 + (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (CDUnknownBlockType)objectInsertionFilterForProfile:(id)arg1;
 + (long long)preferredEntityType;
++ (_Bool)_validateEntityWithEnumerator:(id)arg1 error:(id *)arg2 validationErrorHandler:(CDUnknownBlockType)arg3;
++ (_Bool)validateEntitiesOfTypes:(id)arg1 profile:(id)arg2 error:(id *)arg3 validationErrorHandler:(CDUnknownBlockType)arg4;
 + (id)minimumSampleStartDateForProfile:(id)arg1 error:(id *)arg2;
 + (id)anySampleOfType:(id)arg1 profile:(id)arg2 encodingOptions:(id)arg3 predicate:(id)arg4 error:(id *)arg5;
 + (id)sampleTypesForSamplesMatchingPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
@@ -39,7 +39,6 @@
 + (id)indices;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
-- (id)_sampleTypeInDatabase:(id)arg1;
 
 @end
 

@@ -16,6 +16,7 @@
 {
     NSKnownKeysDictionary *_dictionary;
     NSManagedObjectID *_objectID;
+    PHPhotoLibrary *_photoLibrary;
 }
 
 + (id)propertiesToFetch;
@@ -27,10 +28,10 @@
 + (long long)batchSize;
 + (id)entityName;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 - (id)pl_photoLibrary;
 - (unsigned long long)effectiveThumbnailIndex;
-@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary;
 @property(readonly, nonatomic) long long cloudPlaceholderKind;
 @property(readonly, nonatomic) _Bool complete;
 @property(readonly, nonatomic) unsigned long long thumbnailIndex;

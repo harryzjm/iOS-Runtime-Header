@@ -19,8 +19,8 @@
 + (id)backgroundJobName;
 + (_Bool)supportsBackgroundJob;
 - (void).cxx_destruct;
-- (void)_enrichYearHighlights:(id)arg1 monthsHighlights:(id)arg2 withManager:(id)arg3 enrichmentprogressBlock:(CDUnknownBlockType)arg4;
-- (void)enrichDataModelWithManager:(id)arg1 graphUpdateInventory:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (void)_enrichYearHighlights:(id)arg1 monthsHighlights:(id)arg2 withManager:(id)arg3 curationContext:(id)arg4 enrichmentprogressBlock:(CDUnknownBlockType)arg5;
+- (void)enrichDataModelWithManager:(id)arg1 curationContext:(id)arg2 graphUpdateInventory:(id)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (id)initWithOptions:(id)arg1;
 
 // Remaining properties

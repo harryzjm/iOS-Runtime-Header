@@ -16,6 +16,7 @@
     _UITextServiceSession *_learnSession;
     _UITextServiceSession *_shareSession;
     _UITextServiceSession *_lookupSession;
+    _UITextServiceSession *_translateSession;
     UITextChecker *_textChecker;
     unsigned long long _options;
     id <UITextCursorAssertion> _blinkAssertion;
@@ -32,6 +33,7 @@
 - (void)willChangeSelection;
 - (void)didEndScrollingOverflow;
 - (void)willStartScrollingOverflow;
+- (void)translate:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)lookup:(id)arg1 withRange:(struct _NSRange)arg2 fromRect:(struct CGRect)arg3;
 - (void)showShareSheetFor:(id)arg1 fromRect:(struct CGRect)arg2;
@@ -74,6 +76,7 @@
 - (_Bool)overrideGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (_Bool)usesAsynchronousSelectionController;
 - (Class)selectionInteractionClass;
+- (id)textChecker;
 - (void)dealloc;
 - (id)initWithView:(id)arg1;
 

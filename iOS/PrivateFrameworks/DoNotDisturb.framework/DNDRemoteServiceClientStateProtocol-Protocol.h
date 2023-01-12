@@ -9,6 +9,6 @@
 @class DNDStateUpdate;
 
 @protocol DNDRemoteServiceClientStateProtocol <NSObject>
-- (void)deliverStateUpdate:(DNDStateUpdate *)arg1;
+- (oneway void)deliverStateUpdate:(DNDStateUpdate *)arg1;
 @end
 

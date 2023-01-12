@@ -10,7 +10,7 @@
 
 + (id)_plistName;
 - (unsigned long long)_sourceInputCount;
-- (id)_plistMoodIdentifiers;
+- (id)_plistMoodIdentifiersWithGraph:(id)arg1;
 - (double)weight;
 
 @end

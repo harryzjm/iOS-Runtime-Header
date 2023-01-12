@@ -11,7 +11,9 @@
 @interface _PSBehaviorRuleFeatureExtraction : NSObject
 {
     _Bool _constantFeaturesReady;
+    _Bool _contextFeaturesReady;
     NSMutableDictionary *_constantFeatures;
+    NSMutableDictionary *_contextFeatures;
     NSDictionary *_metadata;
     BMBehaviorRetriever *_behaviorRetriever;
     _CDInteractionStore *_interactionStore;
@@ -21,11 +23,15 @@
 @property(readonly, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
 @property(readonly, nonatomic) BMBehaviorRetriever *behaviorRetriever; // @synthesize behaviorRetriever=_behaviorRetriever;
 @property(readonly) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property(retain, nonatomic) NSMutableDictionary *contextFeatures; // @synthesize contextFeatures=_contextFeatures;
 @property(retain, nonatomic) NSMutableDictionary *constantFeatures; // @synthesize constantFeatures=_constantFeatures;
+@property(nonatomic) _Bool contextFeaturesReady; // @synthesize contextFeaturesReady=_contextFeaturesReady;
 @property(nonatomic) _Bool constantFeaturesReady; // @synthesize constantFeaturesReady=_constantFeaturesReady;
 - (void)extractFeaturesGivenRule:(id)arg1 contextItems:(id)arg2 features:(id)arg3;
-- (void)transferConstantFeatures:(id)arg1 to:(id)arg2;
-- (void)extractConstantFeaturesForMLModelWithContext:(id)arg1 features:(id)arg2;
+- (void)precalculateConstantFeatures;
+- (void)transferFeaturesFrom:(id)arg1 toFeatures:(id)arg2;
+- (void)extractConstantFeaturesForMLModelIntoFeatures:(id)arg1;
+- (void)extractContextMatchFeatures:(id)arg1 features:(id)arg2;
 - (int)bucketedValue:(int)arg1;
 - (id)initWithMetadata:(id)arg1;
 

@@ -10,7 +10,8 @@
 
 @interface WDSourcesViewController <WDUserActivityResponder>
 {
-    HKSourceListDataSource *_dataSource;
+    HKSourceListDataSource *_appsDataSource;
+    HKSourceListDataSource *_devicesDataSource;
     NSString *_restorationSourceBundleIdentifier;
 }
 

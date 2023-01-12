@@ -9,7 +9,6 @@
 @class BRCSyncContext, BRCThrottle, CKOperationGroup, NSDate, NSError, NSMutableArray, NSObject, NSUUID;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, OS_os_activity, OS_os_transaction;
 
-__attribute__((visibility("hidden")))
 @interface _BRCOperation : NSOperation
 {
     BRCSyncContext *_syncContext;
@@ -23,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSError *_lastError;
     long long _throttleHash;
     NSObject<OS_dispatch_source> *_retryTimer;
+    NSObject<OS_dispatch_source> *_timeoutTimer;
     NSObject<OS_dispatch_group> *_group;
     NSObject<OS_os_activity> *_Activity;
     NSMutableArray *_associatedEventMetrics;
@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) BRCThrottle *operationThrottle; // @synthesize operationThrottle=_operationThrottle;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(nonatomic, getter=isFinished) _Bool finished; // @synthesize finished=_finished;
+- (void)cancelAfterDelay:(double)arg1;
 - (void)associateCKOperationsToEventMetric:(id)arg1;
 - (void)addSubOperation:(id)arg1;
 - (void)addSubOperation:(id)arg1 overrideContext:(id)arg2 allowsCellularAccess:(id)arg3;

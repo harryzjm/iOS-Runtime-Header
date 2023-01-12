@@ -12,14 +12,14 @@
 
 @interface FCFeedTransformationFeedThrottle : NSObject <FCFeedTransforming>
 {
-    NSString *_feedID;
+    CDUnknownBlockType _condition;
     unsigned long long _limit;
 }
 
-+ (id)transformationWithFeedID:(id)arg1 limit:(unsigned long long)arg2;
++ (id)transformationWithDailyLimit:(unsigned long long)arg1 timeInterval:(double)arg2 condition:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
-@property(copy, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
+@property(copy, nonatomic) CDUnknownBlockType condition; // @synthesize condition=_condition;
 - (id)transformFeedItems:(id)arg1;
 
 // Remaining properties

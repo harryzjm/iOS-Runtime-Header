@@ -10,6 +10,7 @@
 
 @class NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _ICMusicSubscriptionLeaseIdentityCacheKey : NSObject <NSCopying>
 {
     NSNumber *_delegatedDSID;

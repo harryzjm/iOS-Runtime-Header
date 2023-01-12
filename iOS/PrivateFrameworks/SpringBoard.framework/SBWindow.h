@@ -6,19 +6,21 @@
 
 #import <SpringBoardFoundation/SBFWindow.h>
 
+#import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBMainDisplayInterfaceOrientationSource-Protocol.h>
 #import <SpringBoard/SBRecycledViewsContainerProviding-Protocol.h>
 #import <SpringBoard/SBWindowLayoutStrategyObserving-Protocol.h>
 
-@class NSMutableSet, NSString, SBRecycledViewsContainer, SBUICoronaAnimationController, UIView;
+@class NSMutableSet, NSString, SBFTraitsParticipant, SBRecycledViewsContainer, SBUICoronaAnimationController, UIView;
 @protocol SBWindowLayoutStrategy;
 
-@interface SBWindow : SBFWindow <SBMainDisplayInterfaceOrientationSource, SBRecycledViewsContainerProviding, SBWindowLayoutStrategyObserving>
+@interface SBWindow : SBFWindow <PTSettingsKeyObserver, SBMainDisplayInterfaceOrientationSource, SBRecycledViewsContainerProviding, SBWindowLayoutStrategyObserving>
 {
     SBUICoronaAnimationController *_coronaAnimationController;
     SBRecycledViewsContainer *_recycledViewsContainerView;
     _Bool _requestedHiddenValue;
     NSMutableSet *_additionalHiddenReasons;
+    SBFTraitsParticipant *_traitsParticipant;
     id <SBWindowLayoutStrategy> _layoutStrategy;
 }
 
@@ -26,6 +28,7 @@
 + (_Bool)sb_disableStatusBarHeightChanges;
 + (id)defaultLayoutStrategy;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) SBFTraitsParticipant *traitsParticipant; // @synthesize traitsParticipant=_traitsParticipant;
 @property(readonly, nonatomic) id <SBWindowLayoutStrategy> layoutStrategy; // @synthesize layoutStrategy=_layoutStrategy;
 @property(readonly, copy, nonatomic) NSString *orientationSourceDescription;
 @property(readonly, nonatomic) double orientationSourceLevel;
@@ -39,6 +42,10 @@
 - (void)_addHiddenReason:(id)arg1;
 - (void)_updateRealIsHidden;
 @property(readonly, nonatomic) UIView *recycledViewsContainer;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)_listenForTraitsArbiterPreferenceChangesIfNeeded;
+- (void)_sb_updateAutorotatesFlagAndForceInterfaceOrientationUpdate:(_Bool)arg1;
+- (void)sb_updateAutorotatesFlag;
 - (void)setAutorotates:(_Bool)arg1 forceUpdateInterfaceOrientation:(_Bool)arg2;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
 - (id)sb_coronaAnimationController;
@@ -48,12 +55,15 @@
 - (_Bool)_shouldResizeWithScene;
 - (void)layoutStrategyFrameOnScreenDidChange:(id)arg1;
 - (void)dealloc;
-- (id)_initWithScreen:(id)arg1 layoutStrategy:(id)arg2 debugName:(id)arg3 rootViewController:(id)arg4 scene:(id)arg5;
+- (id)initWithScreen:(id)arg1 scene:(id)arg2 rootViewController:(id)arg3 layoutStrategy:(id)arg4 role:(id)arg5 debugName:(id)arg6;
+- (id)initWithScreen:(id)arg1 scene:(id)arg2 layoutStrategy:(id)arg3 role:(id)arg4 debugName:(id)arg5;
+- (id)initWithScreen:(id)arg1 rootViewController:(id)arg2 role:(id)arg3 debugName:(id)arg4;
+- (id)initWithScreen:(id)arg1 layoutStrategy:(id)arg2 role:(id)arg3 debugName:(id)arg4;
+- (id)initWithScreen:(id)arg1 role:(id)arg2 debugName:(id)arg3;
+- (id)initWithDebugName:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithScreen:(id)arg1 layoutStrategy:(id)arg2 debugName:(id)arg3 scene:(id)arg4;
-- (id)initWithScreen:(id)arg1 debugName:(id)arg2 rootViewController:(id)arg3;
-- (id)initWithScreen:(id)arg1 layoutStrategy:(id)arg2 debugName:(id)arg3;
-- (id)initWithScreen:(id)arg1 debugName:(id)arg2;
+- (void)_setTraitsParticipant:(id)arg1;
+- (id)_traitsParticipant;
 - (void)setAlphaAndObeyBecauseIAmTheWindowManager:(double)arg1;
 
 // Remaining properties

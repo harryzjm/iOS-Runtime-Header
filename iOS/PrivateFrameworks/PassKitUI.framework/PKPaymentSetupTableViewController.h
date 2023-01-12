@@ -50,6 +50,7 @@
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 context:(long long)arg2;
+- (id)initWithContext:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

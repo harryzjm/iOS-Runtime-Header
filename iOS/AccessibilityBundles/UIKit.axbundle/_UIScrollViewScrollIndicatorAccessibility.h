@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol AXScrollIndicatorDelegate;
-
 @interface _UIScrollViewScrollIndicatorAccessibility
 {
 }
@@ -17,6 +15,7 @@
 - (long long)_accessibilitySortPriority;
 - (void)accessibilityElementDidLoseFocus;
 - (void)accessibilityElementDidBecomeFocused;
+- (_Bool)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (struct CGPoint)accessibilityActivationPoint;
@@ -26,12 +25,8 @@
 - (id)accessibilityValue;
 - (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
-- (id)_axBasicDescription;
 - (_Bool)_accessibilityOverridesInvisibility;
 - (_Bool)isAccessibilityElement;
-@property(nonatomic) _Bool accessibilityScrollIndicatorIsFocused;
-@property(nonatomic) long long accessibilityScrollDirection;
-@property(nonatomic) __weak id <AXScrollIndicatorDelegate> accessibilityScrollIndicatorDelegate;
 
 @end
 

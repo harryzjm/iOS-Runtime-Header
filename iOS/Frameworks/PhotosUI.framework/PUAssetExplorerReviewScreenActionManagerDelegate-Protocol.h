@@ -13,7 +13,6 @@
 @protocol PUDisplayAsset, PUDisplayAssetCollection;
 
 @protocol PUAssetExplorerReviewScreenActionManagerDelegate <NSObject, PUPhotoEditViewControllerSessionDelegate, PUPhotoMarkupViewControllerObserver, PUFunEffectsViewControllerObserver>
-- (void)assetExplorerReviewScreenActionManagerDidPressFileSize:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressDeselectAll:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSelectAll:(PUAssetExplorerReviewScreenActionManager *)arg1;
 - (void)assetExplorerReviewScreenActionManagerDidPressSend:(PUAssetExplorerReviewScreenActionManager *)arg1;

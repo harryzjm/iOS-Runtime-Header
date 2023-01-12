@@ -9,6 +9,7 @@
 }
 
 - (id)initWithComposedRoute:(id)arg1 geoRouteLeg:(id)arg2 geoStep:(id)arg3 stepIndex:(unsigned long long)arg4 pointRange:(struct _NSRange)arg5 maneuverPointRange:(struct _NSRange)arg6;
+- (id)initWithComposedRoute:(id)arg1 geoRouteLeg:(id)arg2 geoStep:(id)arg3 stepIndex:(unsigned long long)arg4 startRouteCoordinate:(CDStruct_3f2a7a20)arg5 endRouteCoordinate:(CDStruct_3f2a7a20)arg6 maneuverStartRouteCoordinate:(CDStruct_3f2a7a20)arg7;
 
 @end
 

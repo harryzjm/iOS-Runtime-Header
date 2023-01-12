@@ -24,8 +24,6 @@
     NSMutableSet *_assetsWithCloudCommentChanges;
     PLContentChanges *_momentsContent;
     PLChangeList *_changedMoments;
-    PLContentChanges *_momentListsContent;
-    PLChangeList *_changedMomentLists;
     PLChangeList *_changedCloudFeedEntries;
     PLManagedObjectContext *_moc;
     NSMutableArray *_enqueuedNotifications;
@@ -69,7 +67,6 @@
 - (void)_splitContextDidChangeNotification:(id)arg1;
 - (void)_cleanupState;
 - (void)_enqueueAssetChangeNotification;
-- (void)_enqueueMomentListChangeNotifications;
 - (void)_enqueueMomentChangeNotifications;
 - (void)_enqueueCloudFeedEntriesChangeNotifications;
 - (void)_enqueueCloudCommentsNotifications;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MetalTools/MTLBlitCommandEncoder-Protocol.h>
+#import <MetalTools/MTLBlitCommandEncoderSPI-Protocol.h>
 
 @class NSString;
 @protocol MTLDevice;
 
-@interface MTLToolsBlitCommandEncoder <MTLBlitCommandEncoder>
+@interface MTLToolsBlitCommandEncoder <MTLBlitCommandEncoderSPI>
 {
 }
 
@@ -26,6 +26,12 @@
 - (void)getTextureAccessCounters:(id)arg1 region:(CDStruct_1e3be3a8)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4 resetCounters:(_Bool)arg5 countersBuffer:(id)arg6 countersBufferOffset:(unsigned long long)arg7;
 - (void)copyFromTexture:(id)arg1 toTexture:(id)arg2;
 - (void)copyFromTexture:(id)arg1 sourceSlice:(unsigned long long)arg2 sourceLevel:(unsigned long long)arg3 toTexture:(id)arg4 destinationSlice:(unsigned long long)arg5 destinationLevel:(unsigned long long)arg6 sliceCount:(unsigned long long)arg7 levelCount:(unsigned long long)arg8;
+- (void)invalidateCompressedTexture:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
+- (void)invalidateCompressedTexture:(id)arg1;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 color:(CDStruct_d2b197d1)arg5 pixelFormat:(unsigned long long)arg6;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 color:(CDStruct_d2b197d1)arg5;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_1e3be3a8)arg4 bytes:(const void *)arg5 length:(unsigned long long)arg6;
+- (void)fillBuffer:(id)arg1 range:(struct _NSRange)arg2 pattern4:(unsigned int)arg3;
 - (void)fillBuffer:(id)arg1 range:(struct _NSRange)arg2 value:(unsigned char)arg3;
 - (void)generateMipmapsForTexture:(id)arg1;
 - (void)copyFromBuffer:(id)arg1 sourceOffset:(unsigned long long)arg2 toBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4 size:(unsigned long long)arg5;

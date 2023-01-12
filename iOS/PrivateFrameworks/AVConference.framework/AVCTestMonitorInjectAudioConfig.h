@@ -8,14 +8,17 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface AVCTestMonitorInjectAudioConfig : NSObject
 {
     int _injectAudioConfigType;
     double _amplitude;
     NSString *_audioFileName;
+    double _startHostTime;
+    double _loopLength;
 }
 
+@property(nonatomic) double loopLength; // @synthesize loopLength=_loopLength;
+@property(nonatomic) double startHostTime; // @synthesize startHostTime=_startHostTime;
 @property(nonatomic) NSString *audioFileName; // @synthesize audioFileName=_audioFileName;
 @property(nonatomic) double amplitude; // @synthesize amplitude=_amplitude;
 @property(nonatomic) int injectAudioConfigType; // @synthesize injectAudioConfigType=_injectAudioConfigType;

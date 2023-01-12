@@ -15,6 +15,7 @@
     _Bool _enabled;
     unsigned long long _options;
     NSSet *_accessories;
+    _Bool _activityNotificationsEnabledForPersonalRequests;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -29,6 +30,7 @@
 @property(readonly, copy) NSArray *accessories;
 @property(readonly) _Bool allowUnauthenticatedRequests;
 - (unsigned long long)options;
+@property(readonly, getter=areActivityNotificationsEnabledForPersonalRequests) _Bool activityNotificationsEnabledForPersonalRequests;
 - (id)description;
 - (id)debugDescription;
 - (id)descriptionWithPointer:(_Bool)arg1;

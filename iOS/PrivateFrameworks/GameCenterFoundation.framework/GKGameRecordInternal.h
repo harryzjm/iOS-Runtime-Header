@@ -21,6 +21,7 @@
 
 + (id)secureCodedPropertyKeys;
 + (id)gameRecordForGame:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) unsigned int maxRank; // @synthesize maxRank=_maxRank;
 @property(nonatomic) unsigned int rank; // @synthesize rank=_rank;
 @property(nonatomic) unsigned short maxFriendRank; // @synthesize maxFriendRank=_maxFriendRank;
@@ -31,7 +32,6 @@
 @property(retain, nonatomic) NSDate *lastPlayedDate; // @synthesize lastPlayedDate=_lastPlayedDate;
 @property(retain, nonatomic) GKScoreInternal *score; // @synthesize score=_score;
 - (void)updateWithGame:(id)arg1;
-- (void)dealloc;
 
 @end
 

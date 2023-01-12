@@ -10,9 +10,6 @@
 
 @protocol CNFileServices <NSObject>
 - (NSString *)NSTemporaryDirectory;
-- (int)dlclose:(void *)arg1;
-- (void *)dlsym:(void *)arg1:(const char *)arg2;
-- (void *)dlopen:(const char *)arg1:(int)arg2;
 - (int)fcntl_flock:(int)arg1:(int)arg2:(struct flock *)arg3;
 - (int)flock:(int)arg1:(int)arg2;
 - (int)fstatfs:(int)arg1:(struct statfs *)arg2;

@@ -36,7 +36,7 @@
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithStateService:(id)arg1;
+- (id)initWithStateService:(id)arg1 initialObserver:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

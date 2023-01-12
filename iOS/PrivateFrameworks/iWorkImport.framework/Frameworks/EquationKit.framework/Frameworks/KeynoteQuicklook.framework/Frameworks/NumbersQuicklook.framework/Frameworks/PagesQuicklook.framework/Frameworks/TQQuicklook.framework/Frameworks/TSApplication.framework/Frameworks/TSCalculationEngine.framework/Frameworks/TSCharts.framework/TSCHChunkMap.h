@@ -8,13 +8,13 @@
 
 @interface TSCHChunkMap : NSObject
 {
-    unsigned long long mChunkStyle;
-    unsigned long long *mSeriesMap;
-    unsigned long long *mGroupsMap;
-    unsigned long long mChunkMapCount;
+    unsigned long long _chunkStyle;
+    unsigned long long *_seriesMap;
+    unsigned long long *_groupsMap;
+    unsigned long long _chunkMapCount;
 }
 
-@property(readonly, nonatomic) unsigned long long count; // @synthesize count=mChunkMapCount;
+@property(readonly, nonatomic) unsigned long long count; // @synthesize count=_chunkMapCount;
 - (unsigned long long)groupIndexAtMapIndex:(unsigned long long)arg1;
 - (unsigned long long)seriesIndexAtIndex:(unsigned long long)arg1;
 - (_Bool)p_canAddChunkForSeries:(id)arg1 groupIndex:(long long)arg2;

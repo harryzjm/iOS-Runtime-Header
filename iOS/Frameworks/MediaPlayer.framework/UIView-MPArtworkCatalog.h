@@ -11,5 +11,6 @@
 @interface UIView (MPArtworkCatalog)
 - (void)clearArtworkCatalogs;
 @property(readonly, nonatomic) MPArtworkCatalog *artworkCatalog;
+@property(readonly, nonatomic) MPArtworkCatalog *_lastArtworkCatalog;
 @end
 

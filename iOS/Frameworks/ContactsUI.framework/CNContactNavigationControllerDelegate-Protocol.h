@@ -11,6 +11,7 @@
 @protocol CNContactNavigationControllerDelegate <UINavigationControllerDelegate>
 
 @optional
+- (void)toggleGroupsPanel;
 - (void)contactNavigationControllerDidUpdateAccountsAndGroupsState:(CNContactNavigationController *)arg1;
 - (_Bool)contactNavigationController:(CNContactNavigationController *)arg1 presentViewController:(UIViewController *)arg2 animated:(_Bool)arg3;
 - (CNContactViewController *)contactNavigationController:(CNContactNavigationController *)arg1 contactViewControllerForContact:(CNContact *)arg2 preferredMode:(long long)arg3;

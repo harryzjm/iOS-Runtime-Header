@@ -6,23 +6,24 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDLogEventDispatcher, NSUUID;
+@class NSUUID;
+@protocol HMMLogEventSubmitting;
 
 @interface HMDMessageHandlerMetricsDispatcher : HMFObject
 {
     NSUUID *_identifier;
-    HMDLogEventDispatcher *_logEventDispatcher;
+    id <HMMLogEventSubmitting> _logEventSubmitter;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly) HMDLogEventDispatcher *logEventDispatcher; // @synthesize logEventDispatcher=_logEventDispatcher;
+@property(readonly) id <HMMLogEventSubmitting> logEventSubmitter; // @synthesize logEventSubmitter=_logEventSubmitter;
 @property(readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (id)attributeDescriptions;
 - (id)privateDescription;
 - (id)logIdentifier;
 - (void)submitFailureEventOfType:(unsigned long long)arg1 message:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 logEventDispatcher:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 logEventSubmitter:(id)arg2;
 
 @end
 

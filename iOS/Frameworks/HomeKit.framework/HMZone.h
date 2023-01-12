@@ -20,6 +20,7 @@
     NSString *_name;
     HMHome *_home;
     NSUUID *_uuid;
+    NSString *_assistantIdentifier;
     _HMContext *_context;
     HMMutableArray *_currentRooms;
 }
@@ -28,6 +29,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) HMMutableArray *currentRooms; // @synthesize currentRooms=_currentRooms;
 @property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property(copy, nonatomic) NSString *assistantIdentifier; // @synthesize assistantIdentifier=_assistantIdentifier;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -45,6 +47,8 @@
 - (void)addRoom:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)recomputeAssistantIdentifier;
+- (void)_recomputeAssistantIdentifier;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 - (void)setUuid:(id)arg1;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -53,7 +57,6 @@
 - (void)setName:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (id)initWithName:(id)arg1 uuid:(id)arg2;

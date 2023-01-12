@@ -11,7 +11,6 @@
 
 @class AMSPurchaseQueue, NSMutableSet, NSString, SSEventMonitor, VUIPurchaseRequest;
 
-__attribute__((visibility("hidden")))
 @interface VUIPurchaser : NSObject <AMSPurchaseResponseProtocol, SSEventMonitorDelegate>
 {
     VUIPurchaseRequest *_interruptedPurchaseRequest;
@@ -20,14 +19,15 @@ __attribute__((visibility("hidden")))
     SSEventMonitor *_eventMonitor;
 }
 
-+ (id)sharedPurchaser;
++ (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) SSEventMonitor *eventMonitor; // @synthesize eventMonitor=_eventMonitor;
 @property(retain, nonatomic) AMSPurchaseQueue *purchaseQueue; // @synthesize purchaseQueue=_purchaseQueue;
 @property(retain, nonatomic) NSMutableSet *purchasingParamsSet; // @synthesize purchasingParamsSet=_purchasingParamsSet;
-- (id)_getAdamIdFromBuyParams:(id)arg1;
 - (_Bool)_isInterruptedPurchaseFulfilledBySSPurchaseResponse:(id)arg1;
 - (void)eventMonitor:(id)arg1 receivedEventWithName:(id)arg2 userInfo:(id)arg3;
+- (id)_getAdamIdFromBuyParams:(id)arg1;
+- (void)didCompleteInterruptedBuyWithResponse:(id)arg1 error:(id)arg2;
 @property(retain, nonatomic) VUIPurchaseRequest *interruptedPurchaseRequest; // @synthesize interruptedPurchaseRequest=_interruptedPurchaseRequest;
 - (void)handleEngagementRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleDialogRequest:(id)arg1 purchase:(id)arg2 purchaseQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)forgetPurchasing:(id)arg1;
 - (void)rememberPurchasing:(id)arg1;
 - (_Bool)isPurchasing:(id)arg1;
+- (void)postCrossProcessNotificationWithBuyParams:(id)arg1 error:(id)arg2;
 - (void)enqueuePurchase:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 

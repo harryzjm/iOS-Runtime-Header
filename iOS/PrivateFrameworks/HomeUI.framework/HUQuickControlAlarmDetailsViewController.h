@@ -7,11 +7,11 @@
 #import <HomeUI/HFItemSectionAccessoryButtonHeaderDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlDetailsViewControllerVendor-Protocol.h>
 
-@class HUAlarmTableViewController, NSArray, NSLayoutConstraint, NSString;
+@class HUOLDAlarmTableViewController, NSArray, NSLayoutConstraint, NSString;
 
 @interface HUQuickControlAlarmDetailsViewController <HUQuickControlDetailsViewControllerVendor, HFItemSectionAccessoryButtonHeaderDelegate>
 {
-    HUAlarmTableViewController *_alarmTableViewController;
+    HUOLDAlarmTableViewController *_oldAlarmTableViewController;
     NSArray *_alarmTableViewConstraints;
     NSLayoutConstraint *_heightConstraint;
 }
@@ -20,7 +20,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 @property(retain, nonatomic) NSArray *alarmTableViewConstraints; // @synthesize alarmTableViewConstraints=_alarmTableViewConstraints;
-@property(retain, nonatomic) HUAlarmTableViewController *alarmTableViewController; // @synthesize alarmTableViewController=_alarmTableViewController;
+@property(retain, nonatomic) HUOLDAlarmTableViewController *oldAlarmTableViewController; // @synthesize oldAlarmTableViewController=_oldAlarmTableViewController;
+- (_Bool)_canShowWhileLocked;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)_updateConstraints;
@@ -33,7 +34,7 @@
 - (_Bool)isAccessoryControllable;
 - (id)createDetailsViewController;
 - (id)controlItem;
-- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
+- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3 controlOrientation:(unsigned long long)arg4 preferredControl:(unsigned long long)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

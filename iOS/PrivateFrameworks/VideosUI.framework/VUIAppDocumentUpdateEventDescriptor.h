@@ -14,6 +14,9 @@
     unsigned long long _type;
 }
 
++ (id)groupRecoUsersChanged;
++ (id)groupRecoCollectionVisiblityChanged;
++ (id)highlightsChanged;
 + (id)iamMessageReceived;
 + (id)locationRetrieved;
 + (id)locationAuthorizationChanged;

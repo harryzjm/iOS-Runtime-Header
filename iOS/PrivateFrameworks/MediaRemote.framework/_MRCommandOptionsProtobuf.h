@@ -12,25 +12,40 @@
 
 @interface _MRCommandOptionsProtobuf : PBCodable <NSCopying>
 {
+    double _assistantCommandSendTimestamp;
+    double _assistantTTSEndTimestamp;
+    double _commandTimeout;
     double _playbackPosition;
     long long _radioStationID;
     unsigned long long _trackID;
     NSString *_commandID;
     NSString *_contentItemID;
     NSString *_contextID;
+    NSString *_desiredSessionID;
     NSString *_destinationAppDisplayID;
+    NSData *_destinationDeviceUIDs;
+    NSString *_eventNoticeIdentifier;
+    NSString *_eventNoticeType;
     NSString *_homeKitUserIdentifier;
     NSString *_insertAfterContentItemID;
     NSString *_insertBeforeContentItemID;
     NSData *_languageOption;
     NSString *_mediaType;
     NSString *_nowPlayingContentItemID;
+    NSString *_originatingDeviceUID;
+    NSString *_playbackAuthorizationToken;
     NSData *_playbackQueueContext;
     int _playbackQueueDestinationOffset;
     int _playbackQueueInsertionPosition;
     int _playbackQueueOffset;
     float _playbackRate;
     NSData *_playbackSession;
+    NSString *_playbackSessionFilePath;
+    NSString *_playbackSessionIdentifier;
+    NSData *_playbackSessionMetadata;
+    int _playbackSessionPriority;
+    NSString *_playbackSessionRevision;
+    NSString *_playbackSessionType;
     int _queueEndAction;
     NSString *_radioStationHash;
     float _rating;
@@ -39,6 +54,7 @@
     int _replaceIntent;
     int _sendOptions;
     NSString *_senderID;
+    NSString *_sharedPlaybackSessionIdentifier;
     int _shuffleMode;
     float _skipInterval;
     NSString *_sourceID;
@@ -55,8 +71,12 @@
     _Bool _requestDefermentToPlaybackQueuePosition;
     _Bool _shouldBeginRadioPlayback;
     _Bool _shouldOverrideManuallyCuratedQueue;
+    _Bool _trueCompletion;
     _Bool _verifySupportedCommands;
     struct {
+        unsigned int assistantCommandSendTimestamp:1;
+        unsigned int assistantTTSEndTimestamp:1;
+        unsigned int commandTimeout:1;
         unsigned int playbackPosition:1;
         unsigned int radioStationID:1;
         unsigned int trackID:1;
@@ -64,6 +84,7 @@
         unsigned int playbackQueueInsertionPosition:1;
         unsigned int playbackQueueOffset:1;
         unsigned int playbackRate:1;
+        unsigned int playbackSessionPriority:1;
         unsigned int queueEndAction:1;
         unsigned int rating:1;
         unsigned int repeatMode:1;
@@ -81,11 +102,28 @@
         unsigned int requestDefermentToPlaybackQueuePosition:1;
         unsigned int shouldBeginRadioPlayback:1;
         unsigned int shouldOverrideManuallyCuratedQueue:1;
+        unsigned int trueCompletion:1;
         unsigned int verifySupportedCommands:1;
     } _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *desiredSessionID; // @synthesize desiredSessionID=_desiredSessionID;
+@property(retain, nonatomic) NSData *destinationDeviceUIDs; // @synthesize destinationDeviceUIDs=_destinationDeviceUIDs;
+@property(retain, nonatomic) NSString *originatingDeviceUID; // @synthesize originatingDeviceUID=_originatingDeviceUID;
+@property(nonatomic) double assistantCommandSendTimestamp; // @synthesize assistantCommandSendTimestamp=_assistantCommandSendTimestamp;
+@property(nonatomic) double assistantTTSEndTimestamp; // @synthesize assistantTTSEndTimestamp=_assistantTTSEndTimestamp;
+@property(nonatomic) double commandTimeout; // @synthesize commandTimeout=_commandTimeout;
+@property(retain, nonatomic) NSString *sharedPlaybackSessionIdentifier; // @synthesize sharedPlaybackSessionIdentifier=_sharedPlaybackSessionIdentifier;
+@property(retain, nonatomic) NSString *eventNoticeIdentifier; // @synthesize eventNoticeIdentifier=_eventNoticeIdentifier;
+@property(retain, nonatomic) NSString *eventNoticeType; // @synthesize eventNoticeType=_eventNoticeType;
+@property(retain, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
+@property(nonatomic) _Bool trueCompletion; // @synthesize trueCompletion=_trueCompletion;
+@property(retain, nonatomic) NSString *playbackSessionType; // @synthesize playbackSessionType=_playbackSessionType;
+@property(retain, nonatomic) NSData *playbackSessionMetadata; // @synthesize playbackSessionMetadata=_playbackSessionMetadata;
+@property(retain, nonatomic) NSString *playbackSessionRevision; // @synthesize playbackSessionRevision=_playbackSessionRevision;
+@property(retain, nonatomic) NSString *playbackSessionFilePath; // @synthesize playbackSessionFilePath=_playbackSessionFilePath;
+@property(retain, nonatomic) NSString *playbackSessionIdentifier; // @synthesize playbackSessionIdentifier=_playbackSessionIdentifier;
 @property(nonatomic) _Bool verifySupportedCommands; // @synthesize verifySupportedCommands=_verifySupportedCommands;
 @property(retain, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
 @property(nonatomic) _Bool preservesQueueEndAction; // @synthesize preservesQueueEndAction=_preservesQueueEndAction;
@@ -134,6 +172,26 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasDesiredSessionID;
+@property(readonly, nonatomic) _Bool hasDestinationDeviceUIDs;
+@property(readonly, nonatomic) _Bool hasOriginatingDeviceUID;
+@property(nonatomic) _Bool hasAssistantCommandSendTimestamp;
+@property(nonatomic) _Bool hasAssistantTTSEndTimestamp;
+@property(nonatomic) _Bool hasCommandTimeout;
+@property(readonly, nonatomic) _Bool hasSharedPlaybackSessionIdentifier;
+@property(readonly, nonatomic) _Bool hasEventNoticeIdentifier;
+@property(readonly, nonatomic) _Bool hasEventNoticeType;
+@property(readonly, nonatomic) _Bool hasPlaybackAuthorizationToken;
+@property(nonatomic) _Bool hasTrueCompletion;
+@property(readonly, nonatomic) _Bool hasPlaybackSessionType;
+@property(readonly, nonatomic) _Bool hasPlaybackSessionMetadata;
+@property(readonly, nonatomic) _Bool hasPlaybackSessionRevision;
+@property(readonly, nonatomic) _Bool hasPlaybackSessionFilePath;
+- (int)StringAsPlaybackSessionPriority:(id)arg1;
+- (id)playbackSessionPriorityAsString:(int)arg1;
+@property(nonatomic) _Bool hasPlaybackSessionPriority;
+@property(nonatomic) int playbackSessionPriority; // @synthesize playbackSessionPriority=_playbackSessionPriority;
+@property(readonly, nonatomic) _Bool hasPlaybackSessionIdentifier;
 @property(nonatomic) _Bool hasVerifySupportedCommands;
 @property(readonly, nonatomic) _Bool hasHomeKitUserIdentifier;
 @property(nonatomic) _Bool hasPreservesQueueEndAction;

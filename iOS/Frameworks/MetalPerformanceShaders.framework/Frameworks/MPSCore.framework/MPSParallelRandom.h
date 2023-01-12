@@ -11,7 +11,7 @@
     unsigned long long _distributionType;
 }
 
-+ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
++ (const struct MPSLibraryInfo *)libraryInfo:(void *)arg1;
 @property(nonatomic) unsigned long long distributionType; // @synthesize distributionType=_distributionType;
 @property(readonly, nonatomic) unsigned int destinationDataType; // @synthesize destinationDataType=_destinationDataType;
 - (void)encodeWithCoder:(id)arg1;

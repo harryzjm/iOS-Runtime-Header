@@ -8,8 +8,8 @@
 
 @interface _EARCustomLMBuilder : NSObject
 {
-    struct unique_ptr<quasar::CustomLMBuilder, std::__1::default_delete<quasar::CustomLMBuilder>> _customLMBuilder;
-    struct unique_ptr<sdapi::SdapiTokenizer, std::__1::default_delete<sdapi::SdapiTokenizer>> _tokenizer;
+    struct unique_ptr<quasar::CustomLMBuilder, std::default_delete<quasar::CustomLMBuilder>> _customLMBuilder;
+    struct unique_ptr<sdapi::SdapiTokenizer, std::default_delete<sdapi::SdapiTokenizer>> _tokenizer;
 }
 
 + (void)initialize;

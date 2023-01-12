@@ -7,6 +7,7 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (IBCocoaTouchToolIntegration)
+- (void)ibPopulateMarshallingIgnoredKeys:(id)arg1;
 - (void)ibWillCompileForObjectPackage:(id)arg1;
 - (_Bool)ibUsesExplicitPreferredMaxLayoutWidth;
 - (void)setIbUsesExplicitPreferredMaxLayoutWidth:(_Bool)arg1;
@@ -15,5 +16,6 @@
 - (_Bool)ibIsMultiline;
 - (struct CGRect)ibTextRect;
 - (_Bool)ibAllowsDefaultDesignTimeOrIntegralIntrinsicSizeCorrection;
+- (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

@@ -29,6 +29,7 @@
 - (unsigned long long)remoteSearchViewPresentationSourceForSpotlightViewController:(id)arg1;
 - (unsigned long long)spotlightMultiplexingLevelForSpotlightViewController:(id)arg1;
 - (_Bool)_shouldCancelInteractiveDismissGesture:(id)arg1;
+- (long long)zStackParticipantIdentifier;
 - (long long)homeGestureParticipantIdentifier;
 - (_Bool)shouldDismissForHomeGestureRecognizer:(id)arg1;
 - (_Bool)_initiallyTransitioningToSpotlight:(id)arg1;
@@ -49,6 +50,7 @@
 - (long long)presentationStyle;
 - (_Bool)presentationCancelsTouches;
 - (id)transitionContextToShowSpotlight:(_Bool)arg1 animated:(_Bool)arg2 interactive:(_Bool)arg3;
+- (void)invalidate;
 @property(nonatomic) __weak id <SPUIRemoteSearchViewDelegate> spotlightDelegate;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;

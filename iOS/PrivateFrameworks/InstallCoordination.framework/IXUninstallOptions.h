@@ -14,9 +14,11 @@
     _Bool _requestUserConfirmation;
     _Bool _waitForDeletion;
     _Bool _showArchiveOption;
+    _Bool _systemAppNotAllowed;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool systemAppNotAllowed; // @synthesize systemAppNotAllowed=_systemAppNotAllowed;
 @property(nonatomic) _Bool showArchiveOption; // @synthesize showArchiveOption=_showArchiveOption;
 @property(nonatomic) _Bool waitForDeletion; // @synthesize waitForDeletion=_waitForDeletion;
 @property(nonatomic) _Bool requestUserConfirmation; // @synthesize requestUserConfirmation=_requestUserConfirmation;
@@ -25,6 +27,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

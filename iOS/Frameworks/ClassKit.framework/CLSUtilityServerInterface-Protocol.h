@@ -6,20 +6,29 @@
 
 #import <ClassKit/NSObject-Protocol.h>
 
-@class CLSPerson, NSArray, NSPredicate, NSString;
+@class CLSAdminRequestor, CLSOrganization, NSArray, NSPredicate, NSString, NSURL;
 
 @protocol CLSUtilityServerInterface <NSObject>
+- (oneway void)remote_createShareIfNeededForURL:(NSURL *)arg1 completion:(void (^)(long long, NSString *, CKRecordID *, NSError *))arg2;
+- (oneway void)remote_deleteFileAtExpectedURL:(NSURL *)arg1 containerURL:(NSURL *)arg2 itemID:(NSString *)arg3 ownerName:(NSString *)arg4 zoneName:(NSString *)arg5 completion:(void (^)(_Bool, NSError *))arg6;
+- (oneway void)remote_urlSuitableForOpeningForExpectedURL:(NSURL *)arg1 containerURL:(NSURL *)arg2 itemID:(NSString *)arg3 ownerName:(NSString *)arg4 zoneName:(NSString *)arg5 completion:(void (^)(id, NSError *))arg6;
+- (oneway void)remote_renewCredentialsWithCompletion:(void (^)(_Bool, long long, NSError *))arg1;
+- (oneway void)remote_deleteOrganization:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (oneway void)remote_addOrganization:(CLSOrganization *)arg1 withLocations:(NSArray *)arg2 completion:(void (^)(id, NSError *))arg3;
+- (oneway void)remote_addAdminRequestor:(CLSAdminRequestor *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_setUserDefaultValue:(id)arg1 forDefaultNamed:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)remote_getUserDefaultForDefaultNamed:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_getUserDefaultsConfigurationDictionaryWithCompletion:(void (^)(id, NSError *))arg1;
 - (oneway void)remote_featureIsEnabled:(int)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (oneway void)remote_statusWithCompletion:(void (^)(id, NSError *))arg1;
-- (oneway void)remote_addDevModePerson:(CLSPerson *)arg1 role:(long long)arg2 completion:(void (^)(id, NSError *))arg3;
 - (oneway void)remote_getClassKitCatalogEnvironmentWithCompletion:(void (^)(long long, NSError *))arg1;
 - (oneway void)remote_setClassKitCatalogEnvironment:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)remote_getDevModeWithCompletion:(void (^)(int, NSError *))arg1;
 - (oneway void)remote_setDevMode:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)remote_recreateDevelopmentDatabaseWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (oneway void)remote_removeAuthorizationStatus:(unsigned long long)arg1 forHandoutAssignedItem:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (oneway void)remote_addAuthorizationStatus:(unsigned long long)arg1 forHandoutAssignedItem:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (oneway void)remote_authorizationStatusForHandoutAssignedItem:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_authorizationStatusForContextAtPath:(NSArray *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_removeAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(NSArray *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (oneway void)remote_addAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(NSArray *)arg2 completion:(void (^)(_Bool, NSError *))arg3;

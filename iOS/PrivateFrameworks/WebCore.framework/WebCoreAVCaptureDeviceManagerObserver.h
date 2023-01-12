@@ -9,13 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVCaptureDeviceManagerObserver : NSObject
 {
-    struct AVCaptureDeviceManager *m_callback;
+    void *m_callback;
 }
 
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)deviceConnectedDidChange:(id)arg1;
 - (void)disconnect;
-- (id)initWithCallback:(struct AVCaptureDeviceManager *)arg1;
+- (id)initWithCallback:(void *)arg1;
 
 @end
 

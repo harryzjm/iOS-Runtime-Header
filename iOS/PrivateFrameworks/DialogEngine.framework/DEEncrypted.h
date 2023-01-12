@@ -20,8 +20,8 @@
 + (id)decryptFrom:(id)arg1 name:(id)arg2 base:(id)arg3;
 + (id)encryptFrom:(id)arg1 name:(id)arg2 base:(id)arg3 keyId:(unsigned long long)arg4 privateKey:(id)arg5 multipart:(_Bool)arg6;
 + (id)encrypt:(id)arg1 keyId:(unsigned long long)arg2 privateKey:(id)arg3 multipart:(_Bool)arg4;
-+ (_Bool)wrapFrom:(id)arg1 to:(id)arg2 encryptedPb:(struct Encrypted *)arg3 multipart:(_Bool)arg4;
-+ (_Bool)encryptFrom:(id)arg1 to:(id)arg2 keyId:(unsigned long long)arg3 privateKey:(id)arg4 encryptedPb:(struct Encrypted *)arg5;
++ (_Bool)wrapFrom:(id)arg1 to:(id)arg2 encryptedPb:(void *)arg3 multipart:(_Bool)arg4;
++ (_Bool)encryptFrom:(id)arg1 to:(id)arg2 keyId:(unsigned long long)arg3 privateKey:(id)arg4 encryptedPb:(void *)arg5;
 + (id)decrypt:(id)arg1;
 + (id)decrypt:(id)arg1 keyVersion:(id *)arg2;
 + (id)decrypt:(id)arg1 allowAllKeys:(_Bool)arg2 keyVersion:(id *)arg3;

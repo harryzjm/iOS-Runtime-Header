@@ -8,7 +8,7 @@
 #import <Email/EMMailboxBuilder-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class EMMailboxCollection, EMMailboxObjectID, EMMailboxRepository, EMObjectID, EMReceivingAccount, NSString;
+@class EMMailboxCollection, EMMailboxObjectID, EMMailboxRepository, EMObjectID, EMReceivingAccount, NSString, NSURL;
 
 @interface EMMailbox <EMMailboxBuilder, NSSecureCoding, EFPubliclyDescribable>
 {
@@ -32,6 +32,7 @@
 + (_Bool)shouldArchiveByDefaultForMailboxes:(id)arg1;
 + (_Bool)supportsArchivingForMailboxes:(id)arg1;
 + (_Bool)deleteMovesToTrashForMailboxes:(id)arg1;
++ (id)sortDescriptorForDisplayOrder;
 + (id)sortDescriptorForNameAscending:(_Bool)arg1;
 + (id)_predicateForSmartMailboxes:(_Bool)arg1;
 + (id)predicateForRegularMailboxes;
@@ -58,8 +59,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *ef_publicDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSURL *externalURL;
 @property(nonatomic) _Bool descriptionUsesRealName;
 @property(readonly, nonatomic) _Bool supportsSelectAll;
 @property(readonly, nonatomic) _Bool isSentMailbox;
@@ -79,6 +81,7 @@
 
 // Remaining properties
 @property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) EMMailboxObjectID *objectID; // @dynamic objectID;
 @property(readonly) Class superclass;
 
 @end

@@ -66,7 +66,6 @@
 - (void)addObserver:(id)arg1;
 - (void)_addObserver:(id)arg1;
 @property(readonly, nonatomic, getter=isSuspended) _Bool suspended;
-- (id)_queryAddresses;
 - (id)description;
 - (void)_clear;
 - (id)initWithDescriptor:(id)arg1;

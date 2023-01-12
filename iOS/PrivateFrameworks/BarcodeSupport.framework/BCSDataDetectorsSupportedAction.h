@@ -6,12 +6,14 @@
 
 #import <BarcodeSupport/BCSActionDelegate-Protocol.h>
 
-@class CNContact, DDScannerResult, NSArray, NSString;
+@class CNContact, DDScannerResult, DDUIAction, NSArray, NSString, UIMenu;
 
 __attribute__((visibility("hidden")))
 @interface BCSDataDetectorsSupportedAction <BCSActionDelegate>
 {
     NSArray *_actions;
+    UIMenu *_ddUIMenu;
+    DDUIAction *_defaultDDAction;
     DDScannerResult *_scannerResult;
     CNContact *_contact;
     NSString *_icsString;
@@ -21,6 +23,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *icsString; // @synthesize icsString=_icsString;
 @property(readonly, copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(readonly, nonatomic) DDScannerResult *scannerResult; // @synthesize scannerResult=_scannerResult;
+- (id)contentPreviewString;
+- (unsigned long long)menuElementsCount;
+- (id)menuElements;
+- (void)_setUpActionMenuIfNeeded;
+- (id)_hostingViewForAction;
+- (id)shortDescription;
+- (id)actionIcon;
 - (id)_actionStringsArray;
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)debugDescriptionExtraInfoDictionary;

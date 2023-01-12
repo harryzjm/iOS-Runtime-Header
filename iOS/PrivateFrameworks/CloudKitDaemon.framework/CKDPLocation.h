@@ -10,7 +10,6 @@
 
 @class CKDPLocationBound, CKDPLocationCoordinate;
 
-__attribute__((visibility("hidden")))
 @interface CKDPLocation : PBCodable <NSCopying>
 {
     CKDPLocationBound *_bounds;

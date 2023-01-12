@@ -10,6 +10,7 @@
 
 @interface CKComposition : NSObject
 {
+    _Bool _shouldHideClearPluginButton;
     _Bool _isFromExternalSource;
     NSAttributedString *_text;
     NSAttributedString *_subject;
@@ -34,6 +35,7 @@
 + (id)finalCompositionFromAllCompositions:(id)arg1;
 + (void)compositionFromItemProviders:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)_pasteRTFDocumentWithItemProvider:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)_trimUnwantedAttributesFromAttributedString:(id)arg1;
 + (void)filenameFromURLTypeForType:(id)arg1 forItemProvider:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)filenameForType:(id)arg1 forItemProvider:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)dataForPasteboardType:(id)arg1 forItemProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -42,6 +44,7 @@
 + (void)pluginDisplayContainerForItemProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)_transcoderUserInfoFor:(id)arg1 filename:(id)arg2 type:(id)arg3;
 + (void)mediaObjectForItemProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)_mediaObjectClassToUTIsForTypes:(id)arg1;
 + (_Bool)_shouldCreateMediaObjectForUTIType:(id)arg1;
 + (id)compositionWithPluginDisplayContainer:(id)arg1 subject:(id)arg2;
 + (id)compositionWithMediaObjects:(id)arg1 subject:(id)arg2;
@@ -53,12 +56,13 @@
 + (id)photoPickerCompositionWithMediaObjects:(id)arg1;
 + (id)photoPickerCompositionWithMediaObject:(id)arg1;
 + (id)stickerCompositionWithMediaObjects:(id)arg1;
-+ (id)compositionForMessageParts:(id)arg1 preserveSubject:(_Bool)arg2;
++ (id)compositionForMessageParts:(id)arg1 preserveSubject:(_Bool)arg2 contextIdentifier:(id)arg3;
 + (id)_savedCompositionForGUID:(id)arg1 readUsingBlock:(CDUnknownBlockType)arg2;
 + (id)savedCompositionForGUID:(id)arg1;
 + (void)deleteCompositionWithGUID:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isFromExternalSource; // @synthesize isFromExternalSource=_isFromExternalSource;
+@property(nonatomic) _Bool shouldHideClearPluginButton; // @synthesize shouldHideClearPluginButton=_shouldHideClearPluginButton;
 @property(copy, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property(copy, nonatomic) NSString *expressiveSendStyleID; // @synthesize expressiveSendStyleID=_expressiveSendStyleID;
 @property(copy, nonatomic) IMPluginPayload *shelfPluginPayload; // @synthesize shelfPluginPayload=_shelfPluginPayload;
@@ -79,11 +83,12 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-@property(readonly, nonatomic) NSArray *pasteboardItems;
+@property(readonly, nonatomic) NSArray *pasteboardItemProviders;
 - (id)compositionByAppendingPluginDisplayContainer:(id)arg1;
 @property(readonly, nonatomic, getter=isTextOnly) _Bool textOnly;
 @property(readonly, nonatomic) NSArray *pluginDisplayContainers;
 @property(readonly, nonatomic) NSArray *mediaObjects;
+- (id)compositionByRemovingMediaObjects:(id)arg1;
 - (id)compositionByReplacingMediaObject:(id)arg1 withMediaObject:(id)arg2;
 - (id)compositionByAppendingMediaObjects:(id)arg1;
 - (id)compositionByAppendingMediaObject:(id)arg1;

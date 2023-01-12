@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) GKRemoteUIController *remoteUIController; // @synthesize remoteUIController=_remoteUIController;
+- (void)viewDidAppear:(_Bool)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)loadView;
 - (id)initWithRemoteUIController:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CIImage, NSData, NSString;
+@class CIImage, NSArray, NSData, NSString;
 
 @interface PLImageContainer : NSObject
 {
@@ -16,12 +16,15 @@
     struct CGImage *_CGImage;
     NSData *_data;
     NSString *_uniformTypeIdentifier;
+    NSArray *_auxiliaryImageRecords;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *auxiliaryImageRecords; // @synthesize auxiliaryImageRecords=_auxiliaryImageRecords;
 @property(readonly, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, nonatomic) struct CGImage *CGImage; // @synthesize CGImage=_CGImage;
+- (_Bool)hasAuxiliaryImages;
 @property(readonly, nonatomic) struct CGSize pixelSize;
 @property(readonly, nonatomic) void *ioSurface;
 - (id)description;
@@ -29,8 +32,8 @@
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithIOSurface:(struct __IOSurface *)arg1;
 - (id)initWithPLImage:(id)arg1;
-- (id)initWithPLImage:(id)arg1 backingData:(id)arg2 uniformTypeIdentifier:(id)arg3;
-- (id)initWithCGImage:(struct CGImage *)arg1 ioSurface:(void *)arg2 CIImage:(id)arg3 backingData:(id)arg4 uniformTypeIdentifier:(id)arg5 size:(struct CGSize)arg6;
+- (id)initWithPLImage:(id)arg1 backingData:(id)arg2 uniformTypeIdentifier:(id)arg3 auxiliaryImageRecords:(id)arg4;
+- (id)initWithCGImage:(struct CGImage *)arg1 ioSurface:(void *)arg2 CIImage:(id)arg3 backingData:(id)arg4 uniformTypeIdentifier:(id)arg5 size:(struct CGSize)arg6 auxiliaryImageRecords:(id)arg7;
 
 @end
 

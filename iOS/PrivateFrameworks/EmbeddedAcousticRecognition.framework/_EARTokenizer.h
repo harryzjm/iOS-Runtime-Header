@@ -9,10 +9,10 @@
 @interface _EARTokenizer : NSObject
 {
     struct BasicTextSanitizer _sanitizer;
-    struct shared_ptr<quasar::TextTokenizer> _tokenizer;
+    shared_ptr_dcd14800 _tokenizer;
 }
 
-+ (unique_ptr_3068360f)tokenizerWithNcsRoot:(id)arg1;
++ (unique_ptr_69213b6f)tokenizerWithNcsRoot:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)tokenize:(id)arg1;

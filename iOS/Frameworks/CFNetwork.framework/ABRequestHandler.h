@@ -10,7 +10,7 @@
 
 @interface ABRequestHandler : NSObject <AuthBrokerQuery>
 {
-    struct AuthBrokerAuthenticator *authenticator;
+    void *authenticator;
 }
 
 - (void)fetchProxyCredential:(id)arg1 reply:(CDUnknownBlockType)arg2;

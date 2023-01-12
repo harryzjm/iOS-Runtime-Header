@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSProgress, NSString, NSTimer, UIImageView, UITextView, WFWidgetFloatingViewConfiguration, WFWorkflowProgressView;
+@class NSProgress, NSString, NSTimer, UIImageView, UITextView, WFFloatingViewConfiguration, WFWorkflowDescriptor, WFWorkflowProgressView;
 @protocol WFWidgetCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 {
     _Bool _enabled;
     _Bool _completingSuccessfully;
-    _Bool _isRTL;
     id <WFWidgetCellDelegate> _delegate;
     NSString *_workflowIdentifier;
     NSProgress *_progress;
     long long _runningState;
-    WFWidgetFloatingViewConfiguration *_currentConfiguration;
+    long long _lastKnownWidgetFamily;
+    WFWorkflowDescriptor *_workflowDescriptor;
+    WFFloatingViewConfiguration *_currentConfiguration;
     UITextView *_nameView;
     UIImageView *_iconView;
     WFWorkflowProgressView *_progressView;
@@ -31,8 +32,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize iconViewSize; // @synthesize iconViewSize=_iconViewSize;
 @property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) UITextView *nameView; // @synthesize nameView=_nameView;
-@property(nonatomic) _Bool isRTL; // @synthesize isRTL=_isRTL;
-@property(retain, nonatomic) WFWidgetFloatingViewConfiguration *currentConfiguration; // @synthesize currentConfiguration=_currentConfiguration;
+@property(retain, nonatomic) WFFloatingViewConfiguration *currentConfiguration; // @synthesize currentConfiguration=_currentConfiguration;
+@property(readonly, nonatomic) WFWorkflowDescriptor *workflowDescriptor; // @synthesize workflowDescriptor=_workflowDescriptor;
+@property(nonatomic) long long lastKnownWidgetFamily; // @synthesize lastKnownWidgetFamily=_lastKnownWidgetFamily;
 @property(nonatomic) _Bool completingSuccessfully; // @synthesize completingSuccessfully=_completingSuccessfully;
 @property(nonatomic) long long runningState; // @synthesize runningState=_runningState;
 @property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
@@ -50,8 +52,10 @@ __attribute__((visibility("hidden")))
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (_Bool)touchesContainNonIndirectTouch:(id)arg1;
 - (_Bool)touchIsInView:(id)arg1 event:(id)arg2;
-- (void)configureWithWorkflow:(id)arg1 cornerRadius:(double)arg2 sizeClass:(unsigned long long)arg3;
+- (void)configureWithWorkflow:(id)arg1 cornerRadius:(double)arg2 family:(long long)arg3;
+- (id)description;
 - (_Bool)isMultiline;
+@property(readonly, nonatomic) _Bool isRTL;
 - (id)init;
 
 @end

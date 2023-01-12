@@ -37,6 +37,7 @@
 - (void)enableAccessibility;
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2;
 - (CDUnknownBlockType)attributedStringConversionBlock;
+- (id)processSupportsAttributes:(id)arg1;
 - (id)processSupportedActions:(id)arg1;
 - (id)processFrontMostApp:(id)arg1;
 - (id)processHitTest:(id)arg1;

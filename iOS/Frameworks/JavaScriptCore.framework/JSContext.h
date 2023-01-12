@@ -10,7 +10,7 @@
 
 @interface JSContext : NSObject
 {
-    JSVirtualMachine *m_virtualMachine;
+    struct RetainPtr<JSVirtualMachine> m_virtualMachine;
     struct OpaqueJSContext *m_context;
     struct Strong<JSC::JSObject, JSC::ShouldStrongDestructorGrabLock::No> m_exception;
     struct WeakObjCPtr<id<JSModuleLoaderDelegate>> m_moduleLoaderDelegate;
@@ -52,8 +52,8 @@
 - (id)wrapperForJSObject:(struct OpaqueJSValue *)arg1;
 - (id)wrapperMap;
 - (id)wrapperForObjCObject:(id)arg1;
-- (void)endCallbackWithData:(struct CallbackData *)arg1;
-- (void)beginCallbackWithData:(struct CallbackData *)arg1 calleeValue:(struct OpaqueJSValue *)arg2 thisValue:(struct OpaqueJSValue *)arg3 argumentCount:(unsigned long long)arg4 arguments:(const struct OpaqueJSValue **)arg5;
+- (void)endCallbackWithData:(void *)arg1;
+- (void)beginCallbackWithData:(void *)arg1 calleeValue:(struct OpaqueJSValue *)arg2 thisValue:(struct OpaqueJSValue *)arg3 argumentCount:(unsigned long long)arg4 arguments:(const struct OpaqueJSValue **)arg5;
 - (_Bool)boolFromNotifyException:(struct OpaqueJSValue *)arg1;
 - (id)valueFromNotifyException:(struct OpaqueJSValue *)arg1;
 - (void)notifyException:(struct OpaqueJSValue *)arg1;

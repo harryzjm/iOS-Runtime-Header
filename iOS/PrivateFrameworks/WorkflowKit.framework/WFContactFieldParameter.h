@@ -8,6 +8,7 @@
 
 @interface WFContactFieldParameter
 {
+    _Bool _allowsCustomHandles;
     _Bool _allowsTextEntry;
     _Bool _hidesLabel;
     long long _textAlignment;
@@ -23,6 +24,7 @@
 @property(readonly, nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType=_autocapitalizationType;
 @property(readonly, nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property(readonly, nonatomic) _Bool allowsTextEntry; // @synthesize allowsTextEntry=_allowsTextEntry;
+@property(readonly, nonatomic) _Bool allowsCustomHandles; // @synthesize allowsCustomHandles=_allowsCustomHandles;
 - (_Bool)displaysMultipleValueEditor;
 - (_Bool)shouldAlignLabels;
 @property(readonly, nonatomic) long long keyboardType;

@@ -6,6 +6,7 @@
 
 @class ICDelegationPlayInfoRequest, ICStoreRequestContext;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationPlayInfoRequestOperation
 {
     ICDelegationPlayInfoRequestOperation *_strongSelf;

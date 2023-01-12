@@ -11,14 +11,17 @@
 
 @interface CMMotionActivityManager : NSObject
 {
-    struct CLConnectionClient *fLocationConnection;
+    void *fLocationConnection;
     NSObject<OS_dispatch_queue> *fQueue;
     CDUnknownBlockType fHandler;
     NSOperationQueue *fHandlerQueue;
 }
 
++ (_Bool)isActivityLiteAvailable;
 + (long long)authorizationStatus;
 + (_Bool)isActivityAvailable;
+- (void)stopActivityLiteUpdates;
+- (void)startActivityLiteUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_handleQueryResponse:(shared_ptr_bdcc6d0f)arg1 onQueue:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)stopActivityUpdates;
 - (void)startActivityUpdatesToQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

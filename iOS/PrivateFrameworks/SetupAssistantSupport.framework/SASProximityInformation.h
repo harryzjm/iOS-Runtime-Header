@@ -32,6 +32,7 @@
     NSString *_deviceName;
     NSString *_backupUUID;
     NSDate *_dateOfLastBackup;
+    NSNumber *_supportsCellularBackup;
     NSData *_backupMetadata;
     NSData *_locationServicesData;
     NSNumber *_findMyDeviceOptIn;
@@ -47,10 +48,14 @@
     NSNumber *_storageCapacity;
     NSNumber *_preventSoftwareUpdateDeviceMigration;
     NSNumber *_hasTransferrableTelephonyPlan;
+    NSNumber *_hasInexpensiveCellularNetwork;
+    NSNumber *_allowMoreOn5G;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSNumber *allowMoreOn5G; // @synthesize allowMoreOn5G=_allowMoreOn5G;
+@property(retain) NSNumber *hasInexpensiveCellularNetwork; // @synthesize hasInexpensiveCellularNetwork=_hasInexpensiveCellularNetwork;
 @property NSNumber *hasTransferrableTelephonyPlan; // @synthesize hasTransferrableTelephonyPlan=_hasTransferrableTelephonyPlan;
 @property(retain) NSNumber *preventSoftwareUpdateDeviceMigration; // @synthesize preventSoftwareUpdateDeviceMigration=_preventSoftwareUpdateDeviceMigration;
 @property(retain) NSNumber *storageCapacity; // @synthesize storageCapacity=_storageCapacity;
@@ -67,6 +72,7 @@
 @property(retain) NSData *locationServicesData; // @synthesize locationServicesData=_locationServicesData;
 @property _Bool locationServicesOptIn; // @synthesize locationServicesOptIn=_locationServicesOptIn;
 @property(retain) NSData *backupMetadata; // @synthesize backupMetadata=_backupMetadata;
+@property(retain, nonatomic) NSNumber *supportsCellularBackup; // @synthesize supportsCellularBackup=_supportsCellularBackup;
 @property(copy) NSDate *dateOfLastBackup; // @synthesize dateOfLastBackup=_dateOfLastBackup;
 @property(nonatomic, getter=isBackupEnabled) _Bool backupEnabled; // @synthesize backupEnabled=_backupEnabled;
 @property(copy) NSString *backupUUID; // @synthesize backupUUID=_backupUUID;

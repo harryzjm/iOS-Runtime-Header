@@ -13,17 +13,33 @@
 
 @interface _CPUsageSinceLookback : PBCodable <_CPUsageSinceLookback, NSSecureCoding>
 {
+    _Bool _isDiagnosticsAndUsageEnabled;
     int _client;
     int _totalUsagesInCollectionPeriod;
     int _configuredLookbackTimeInDays;
     int _activeDaysInCollectionPeriod;
     int _totalEngagements;
+    int _invokedDays;
+    int _zkwEngagedDays;
+    int _searchedDays;
+    int _suggestionOrAppleResultEngagedDays;
+    int _webEngagedDays;
+    int _voiceSearchDays;
+    int _numSearchEngagements;
     long long _collectionStartTimestamp;
     long long _collectionEndTimestamp;
     _CPDeviceContext *_context;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int numSearchEngagements; // @synthesize numSearchEngagements=_numSearchEngagements;
+@property(nonatomic) int voiceSearchDays; // @synthesize voiceSearchDays=_voiceSearchDays;
+@property(nonatomic) int webEngagedDays; // @synthesize webEngagedDays=_webEngagedDays;
+@property(nonatomic) int suggestionOrAppleResultEngagedDays; // @synthesize suggestionOrAppleResultEngagedDays=_suggestionOrAppleResultEngagedDays;
+@property(nonatomic) int searchedDays; // @synthesize searchedDays=_searchedDays;
+@property(nonatomic) int zkwEngagedDays; // @synthesize zkwEngagedDays=_zkwEngagedDays;
+@property(nonatomic) int invokedDays; // @synthesize invokedDays=_invokedDays;
+@property(nonatomic) _Bool isDiagnosticsAndUsageEnabled; // @synthesize isDiagnosticsAndUsageEnabled=_isDiagnosticsAndUsageEnabled;
 @property(nonatomic) int totalEngagements; // @synthesize totalEngagements=_totalEngagements;
 @property(nonatomic) int activeDaysInCollectionPeriod; // @synthesize activeDaysInCollectionPeriod=_activeDaysInCollectionPeriod;
 @property(nonatomic) int configuredLookbackTimeInDays; // @synthesize configuredLookbackTimeInDays=_configuredLookbackTimeInDays;
@@ -32,10 +48,6 @@
 @property(nonatomic) int client; // @synthesize client=_client;
 @property(nonatomic) long long collectionEndTimestamp; // @synthesize collectionEndTimestamp=_collectionEndTimestamp;
 @property(nonatomic) long long collectionStartTimestamp; // @synthesize collectionStartTimestamp=_collectionStartTimestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -44,6 +56,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

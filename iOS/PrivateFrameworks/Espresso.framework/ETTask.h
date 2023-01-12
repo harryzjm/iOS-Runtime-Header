@@ -35,7 +35,7 @@
 - (float)fit:(id)arg1 numberOfEpochs:(int)arg2 withProgress:(CDUnknownBlockType)arg3;
 - (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 lossConfig:(id)arg3 extractor:(id)arg4;
 - (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 lossConfig:(id)arg3;
-- (vector_ebb6ef3e)reinitializeVariables;
+- (vector_bfe5b09a)reinitializeVariables;
 - (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 extractor:(id)arg3 needWeightsInitialization:(_Bool)arg4;
 - (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 extractor:(id)arg3;
 - (id)init;

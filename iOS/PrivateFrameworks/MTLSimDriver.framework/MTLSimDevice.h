@@ -8,7 +8,7 @@
 
 #import <MTLSimDriver/MTLDeviceSPI-Protocol.h>
 
-@class MTLGPUBVHBuilder, MTLResourceListPool, MTLSerializer, MTLTargetDeviceArchitecture, NSArray, NSObject, NSString;
+@class MTLGPUBVHBuilder, MTLResourceListPool, MTLSerializer, MTLTargetDeviceArchitecture, NSArray, NSDictionary, NSObject, NSString;
 @protocol MTLDeviceSPI, OS_dispatch_queue, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
@@ -20,15 +20,16 @@ __attribute__((visibility("hidden")))
     MTLSerializer *_serializer;
     unsigned long long _processRef;
     unsigned int _deserializerVersion;
+    unsigned long long _registryID;
     NSObject<OS_dispatch_queue> *_commandBufferQueue;
-    struct unordered_map<unsigned int, MTLSimCommandBuffer *, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, MTLSimCommandBuffer *>>> _commandBuffers;
+    struct unordered_map<unsigned int, MTLSimCommandBuffer *, std::hash<unsigned int>, std::equal_to<unsigned int>, std::allocator<std::pair<const unsigned int, MTLSimCommandBuffer *>>> _commandBuffers;
     MTLResourceListPool *_resourceListPool;
     id <MTLDeviceSPI> _deviceWrapper;
     struct _opaque_pthread_mutex_t {
         long long __sig;
         char __opaque[56];
     } _notificationMutex;
-    struct unordered_map<unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::unique_ptr<MTLSimSharedEventNotification, std::__1::default_delete<MTLSimSharedEventNotification>>>>> *_notifications;
+    void *_notifications;
     CDStruct_da2e99ad _maxThreadsPerThreadgroup;
     unsigned long long _maxThreadgroupMemoryLength;
     _Bool headless;
@@ -46,13 +47,11 @@ __attribute__((visibility("hidden")))
     unsigned long long doubleFPConfig;
     unsigned long long dedicatedMemorySize;
     unsigned long long recommendedMaxWorkingSetSize;
-    unsigned long long registryID;
 }
 
 + (void)registerDevices;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly) unsigned long long registryID; // @synthesize registryID;
 @property(readonly) unsigned long long recommendedMaxWorkingSetSize; // @synthesize recommendedMaxWorkingSetSize;
 @property(readonly) unsigned long long dedicatedMemorySize; // @synthesize dedicatedMemorySize;
 @property(readonly) unsigned long long doubleFPConfig; // @synthesize doubleFPConfig;
@@ -63,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool supportPriorityBand; // @synthesize supportPriorityBand;
 @property(readonly, getter=isDepth24Stencil8PixelFormatSupported) _Bool depth24Stencil8PixelFormatSupported; // @synthesize depth24Stencil8PixelFormatSupported;
 @property(readonly) unsigned long long currentAllocatedSize; // @synthesize currentAllocatedSize;
+@property(readonly) unsigned long long registryID; // @synthesize registryID=_registryID;
 @property(readonly) MTLResourceListPool *resourceListPool; // @synthesize resourceListPool=_resourceListPool;
 @property(readonly, getter=areProgrammableSamplePositionsSupported) _Bool programmableSamplePositionsSupported; // @synthesize programmableSamplePositionsSupported;
 @property(readonly, getter=isRemovable) _Bool removable; // @synthesize removable;
@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long featureProfile;
 @property(readonly) unsigned long long maxThreadgroupMemoryLength;
 @property(readonly) CDStruct_da2e99ad maxThreadsPerThreadgroup;
+- (id)newSharedEventWithMachPort:(unsigned int)arg1;
 - (id)newSharedEventWithHandle:(id)arg1;
 - (id)newSharedEvent;
 - (id)newEvent;
@@ -116,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void *)fragmentFunctionKeyWithRenderPipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 previousStateVariant:(id)arg3 fragmentKeySize:(unsigned long long *)arg4;
 - (id)wrapRenderState:(id)arg1 descriptor:(id)arg2;
 - (void)registerViewTexture:(id)arg1 baseTextureView:(id)arg2;
+@property(readonly) _Bool deserializerSupportsSharedTextures;
 - (id)newTextureWithDescriptor:(id)arg1 iosurface:(struct __IOSurface *)arg2 plane:(unsigned long long)arg3;
 - (id)newTextureWithDescriptor:(id)arg1;
 - (id)newSamplerStateWithDescriptor:(id)arg1;
@@ -149,7 +151,6 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, getter=isAnisoSampleFixSupported) _Bool AnisoSampleFixSupported;
 @property(readonly, getter=isBCTextureCompressionSupported) _Bool BCTextureCompressionSupported;
-@property(readonly, getter=isBinaryFunctionPointersSupported) _Bool BinaryFunctionPointersSupported;
 @property(readonly, getter=isClampToHalfBorderSupported) _Bool ClampToHalfBorderSupported;
 @property(readonly, getter=isCustomBorderColorSupported) _Bool CustomBorderColorSupported;
 @property(readonly, getter=isFixedLinePointFillDepthGradientSupported) _Bool FixedLinePointFillDepthGradientSupported;
@@ -173,7 +174,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property(readonly) unsigned long long iosurfaceTextureAlignmentBytes;
 @property(readonly, getter=isLargeMRTSupported) _Bool largeMRTSupported;
-@property(readonly) const CDStruct_4a42450c *limits;
+@property(readonly) const CDStruct_1825b841 *limits;
 @property(readonly) unsigned long long linearTextureAlignmentBytes;
 @property(readonly) unsigned long long linearTextureArrayAlignmentBytes;
 @property(readonly) unsigned long long linearTextureArrayAlignmentSlice;
@@ -204,6 +205,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long maxInterpolatedComponents;
 @property(readonly) float maxLineWidth;
 @property(readonly) float maxPointSize;
+@property(readonly) unsigned long long maxPredicatedNestingDepth;
 @property(readonly) unsigned long long maxTessellationFactor;
 @property(readonly) unsigned long long maxTextureBufferWidth;
 @property(readonly) unsigned long long maxTextureDepth3D;
@@ -234,6 +236,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, getter=isMsaa32bSupported) _Bool msaa32bSupported;
 @property(readonly) NSString *name;
 @property(readonly, getter=isPlacementHeapSupported) _Bool placementHeapSupported;
+@property(copy, nonatomic) NSDictionary *pluginData;
 @property(readonly, getter=isQuadDataSharingSupported) _Bool quadDataSharingSupported;
 @property(readonly, getter=areRasterOrderGroupsSupported) _Bool rasterOrderGroupsSupported;
 @property(readonly) unsigned long long readWriteTextureSupport;
@@ -255,10 +258,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsArgumentBuffersTier2;
 @property(readonly, nonatomic) _Bool supportsArrayOfSamplers;
 @property(readonly, nonatomic) _Bool supportsArrayOfTextures;
+@property(readonly, nonatomic) _Bool supportsAtomicUlongVoidMinMax;
 @property(readonly, nonatomic) _Bool supportsBCTextureCompression;
 @property(readonly, nonatomic) _Bool supportsBaseVertexInstanceDrawing;
+@property(readonly, nonatomic) _Bool supportsBfloat16Format;
 @property(readonly, nonatomic) _Bool supportsBinaryArchives;
-@property(readonly, nonatomic) _Bool supportsBinaryFunctionPointers;
 @property(readonly, nonatomic) _Bool supportsBinaryLibraries;
 @property(readonly, nonatomic) _Bool supportsBlackOrWhiteSamplerBorderColors;
 @property(readonly, nonatomic) _Bool supportsBufferBoundsChecking;
@@ -267,6 +271,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsBufferlessClientStorageTexture;
 @property(readonly, nonatomic) _Bool supportsCMPIndirectCommandBuffers;
 @property(readonly, nonatomic) _Bool supportsCombinedMSAAStoreAndResolveAction;
+@property(readonly, nonatomic) _Bool supportsCommandBufferJump;
 @property(readonly, nonatomic) _Bool supportsCompressedTextureViewSPI;
 @property(readonly, nonatomic) _Bool supportsComputeCompressedTextureWrite;
 @property(readonly, nonatomic) _Bool supportsComputeMemoryBarrier;
@@ -290,8 +295,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsFragmentBufferWrites;
 @property(readonly, nonatomic) _Bool supportsFragmentOnlyEncoders;
 @property(readonly, nonatomic) _Bool supportsFunctionPointers;
+@property(readonly, nonatomic) _Bool supportsFunctionPointersFromRender;
 @property(readonly, nonatomic) _Bool supportsGFXIndirectCommandBuffers;
 @property(readonly, nonatomic) _Bool supportsGPUStatistics;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocation;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationCompute;
+@property(readonly, nonatomic) _Bool supportsGlobalVariableRelocationRender;
 @property(readonly, nonatomic) _Bool supportsIABHashForTools;
 @property(readonly, nonatomic) _Bool supportsImageBlockSampleCoverageControl;
 @property(readonly, nonatomic) _Bool supportsImageBlocks;
@@ -304,10 +313,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsInterchangeTiled;
 @property(readonly, nonatomic) _Bool supportsInvariantVertexPosition;
 @property(readonly, nonatomic) _Bool supportsLargeFramebufferConfigs;
+@property(readonly, nonatomic) _Bool supportsLateEvalEvent;
 @property(readonly, nonatomic) _Bool supportsLayeredRendering;
 @property(readonly, nonatomic) _Bool supportsLimitedYUVFormats;
 @property(readonly, nonatomic) _Bool supportsLinearTexture2DArray;
 @property(readonly, nonatomic) _Bool supportsLinearTextureFromSharedBuffer;
+@property(readonly, nonatomic) _Bool supportsLossyCompression;
 @property(readonly, nonatomic) _Bool supportsMSAADepthResolve;
 @property(readonly, nonatomic) _Bool supportsMSAADepthResolveFilter;
 @property(readonly, nonatomic) _Bool supportsMSAAStencilResolve;
@@ -329,6 +340,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsPipelineLibraries;
 @property(readonly, nonatomic) _Bool supportsPlacementHeaps;
 @property(readonly, nonatomic) _Bool supportsPostDepthCoverage;
+@property(readonly, nonatomic) _Bool supportsPrimitiveMotionBlur;
 @property(readonly, nonatomic) _Bool supportsPrimitiveRestartOverride;
 @property(readonly, nonatomic) _Bool supportsProgrammableBlending;
 @property(readonly, nonatomic) _Bool supportsProgrammableSamplePositions;
@@ -337,16 +349,19 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsQuadGroup;
 @property(readonly, nonatomic) _Bool supportsQuadReduction;
 @property(readonly, nonatomic) _Bool supportsQuadShufflesAndBroadcast;
+@property(readonly, nonatomic) _Bool supportsQueryTextureLOD;
 @property(readonly, nonatomic) _Bool supportsRGBA10A2Gamma;
 @property(readonly, nonatomic) _Bool supportsRTZRounding;
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroups;
 @property(readonly, nonatomic) _Bool supportsRasterOrderGroupsColorAttachment;
 @property(readonly) _Bool supportsRaytracing;
+@property(readonly, nonatomic) _Bool supportsRaytracingFromRender;
 @property(readonly, nonatomic) _Bool supportsReadWriteBufferArguments;
 @property(readonly, nonatomic) _Bool supportsReadWriteTextureArguments;
 @property(readonly, nonatomic) _Bool supportsReadWriteTextureArgumentsTier2;
 @property(readonly, nonatomic) _Bool supportsReadWriteTextureCubeArguments;
 @property(readonly, nonatomic) _Bool supportsRelaxedTextureViewRequirements;
+@property(readonly, nonatomic) _Bool supportsRenderDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsRenderMemoryBarrier;
 @property(readonly, nonatomic) _Bool supportsRenderPassWithoutRenderTarget;
 @property(readonly, nonatomic) _Bool supportsRenderTargetTextureRotation;
@@ -355,6 +370,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsSIMDGroup;
 @property(readonly, nonatomic) _Bool supportsSIMDGroupMatrix;
 @property(readonly, nonatomic) _Bool supportsSIMDReduction;
+@property(readonly, nonatomic) _Bool supportsSIMDShuffleAndFill;
 @property(readonly, nonatomic) _Bool supportsSIMDShufflesAndBroadcast;
 @property(readonly, nonatomic) _Bool supportsSRGBwrites;
 @property(readonly, nonatomic) _Bool supportsSamplerAddressModeClampToHalfBorder;
@@ -364,13 +380,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsShaderBarycentricCoordinates;
 @property(readonly, nonatomic) _Bool supportsShaderLODAverage;
 @property(readonly, nonatomic) _Bool supportsShaderMinLODClamp;
+@property(readonly, nonatomic) _Bool supportsSharedFunctionTables;
 @property(readonly, nonatomic) _Bool supportsSharedStorageHeapResources;
 @property(readonly, nonatomic) _Bool supportsSharedStorageTextures;
 @property(readonly, nonatomic) _Bool supportsSharedTextureHandles;
+@property(readonly, nonatomic) _Bool supportsSparseDepthAttachments;
 @property(readonly, nonatomic) _Bool supportsSparseHeaps;
 @property(readonly, nonatomic) _Bool supportsSparseTextures;
+@property(readonly, nonatomic) _Bool supportsStackOverflowErrorCode;
 @property(readonly, nonatomic) _Bool supportsStatefulDynamicLibraries;
 @property(readonly, nonatomic) _Bool supportsStencilFeedback;
+@property(readonly, nonatomic) _Bool supportsStreamingCodecSignaling;
+@property(readonly, nonatomic) _Bool supportsTLS;
 @property(readonly, nonatomic) _Bool supportsTessellation;
 @property(readonly, nonatomic) _Bool supportsTexture2DMultisampleArray;
 @property(readonly, nonatomic) _Bool supportsTextureCubeArray;

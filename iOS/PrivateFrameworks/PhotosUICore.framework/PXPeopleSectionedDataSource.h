@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSArray, NSHashTable, NSString;
+@class NSArray, NSHashTable, NSIndexPath, NSString;
 @protocol OS_dispatch_queue;
 
 @interface PXPeopleSectionedDataSource : NSObject <PXPhotoLibraryUIChangeObserver>
@@ -34,12 +34,13 @@
 - (void)removeVisiblePerson:(id)arg1;
 - (void)addVisiblePerson:(id)arg1;
 - (void)cancelImageLoadingForItem:(id)arg1;
+- (void)imageAtIndexPath:(id)arg1 targetSize:(struct CGSize)arg2 displayScale:(double)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)imageAtIndexPath:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
 - (id)_generateChangeDetailsForChangeInstance:(id)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)resumeListeningForChanges;
-- (void)pauseListeningForChangesWithTimeout:(double)arg1;
+- (void)pauseListeningForChangesWithTimeout:(double)arg1 identifier:(id)arg2;
 - (void)stopListeningToLibraryNotifications;
 - (void)startListeningToLibraryNotifications;
 - (void)loadAndStartListeningToLibraryNotifications;
@@ -49,6 +50,8 @@
 - (void)changePersonsAtIndexPaths:(id)arg1 toPersonType:(long long)arg2;
 - (void)movePersonAtIndexPath:(id)arg1 toIndexPath:(id)arg2 shouldUpdateImmediately:(_Bool)arg3;
 - (id)indexPathOfPerson:(id)arg1;
+@property(readonly, nonatomic) NSIndexPath *trailingFavoritePersonIndexPath;
+@property(readonly, nonatomic) NSIndexPath *leadingFavoritePersonIndexPath;
 @property(readonly, copy, nonatomic) NSArray *allPersons;
 - (unsigned long long)numberOfPersonsWithStringName;
 - (unsigned long long)numberOfPersonsWithContactName;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_8e83f458)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_8e83f458)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool enable_server_side_endpoint;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFlatbuffData:(id)arg1 root:(const struct SetEndpointerState *)arg2 verify:(_Bool)arg3;

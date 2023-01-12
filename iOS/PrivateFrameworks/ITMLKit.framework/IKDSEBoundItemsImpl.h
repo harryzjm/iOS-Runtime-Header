@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) IKAppDataSet *dataSet; // @synthesize dataSet=_dataSet;
 @property(retain, nonatomic) IKChangeSet *itemsChangeSet; // @synthesize itemsChangeSet=_itemsChangeSet;
 @property(readonly, nonatomic) __weak IKDataSourceElement *dataSourceElement; // @synthesize dataSourceElement=_dataSourceElement;
+- (void)_initializePrototypeBundleIfNeeded;
 - (void)_appendVisibleIndexSetWithIndex:(long long)arg1;
 - (id)_elementForItemAtIndex:(long long)arg1;
 - (id)_prototypeMappingForItemAtIndex:(long long)arg1;

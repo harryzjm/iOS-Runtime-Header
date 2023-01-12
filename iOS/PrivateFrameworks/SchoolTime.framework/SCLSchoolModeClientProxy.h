@@ -42,7 +42,6 @@
 - (oneway void)addUnlockHistoryItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)setActive:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)applySchedule:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (oneway void)reconnectWithPairingID:(id)arg1 identifier:(id)arg2;
 - (oneway void)connectWithPairingID:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, copy) NSString *description;
 - (id)initWithConnection:(id)arg1;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSString;
 
-@protocol WFShowDefinitionActionUserInterface <WFRemoteUserInterface>
+@protocol WFShowDefinitionActionUserInterface <WFActionRemoteUserInterface>
 - (void)showWithString:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

@@ -16,12 +16,14 @@
 {
     CDStruct_fbf2c6cd _has;
     int _audioRoute;
+    NSString *_callIdentifier;
     _INPBIntentMetadata *_intentMetadata;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
+@property(copy, nonatomic) NSString *callIdentifier; // @synthesize callIdentifier=_callIdentifier;
 @property(nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
@@ -32,6 +34,7 @@
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasIntentMetadata;
+@property(readonly, nonatomic) _Bool hasCallIdentifier;
 - (int)StringAsAudioRoute:(id)arg1;
 - (id)audioRouteAsString:(int)arg1;
 @property(nonatomic) _Bool hasAudioRoute;

@@ -7,13 +7,18 @@
 __attribute__((visibility("hidden")))
 @interface UITextNonEditableInteraction
 {
+    long long _mode;
 }
 
+- (_Bool)interaction_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4 forTouchType:(long long)arg5;
 - (void)toggleSelectionCommands;
-- (void)doubleTapInUneditable:(id)arg1;
-- (void)_oneFingerTapInUneditableActionAtLocation:(struct CGPoint)arg1 textInput:(id)arg2 canReplaceText:(_Bool)arg3;
+- (void)doubleTapOrTripleTapInUneditable:(id)arg1;
+- (void)_oneFingerTapInUneditableAcceleratedActionAtLocation:(struct CGPoint)arg1 textInput:(id)arg2 canReplaceText:(_Bool)arg3;
+- (void)_oneFingerTapInUneditableActionAtLocation:(struct CGPoint)arg1 textInput:(id)arg2 canReplaceText:(_Bool)arg3 modifierFlags:(long long)arg4;
+- (void)oneFingerTapInUneditableAccelerated:(id)arg1;
 - (void)oneFingerTapInUneditable:(id)arg1;
+- (_Bool)_shouldAllowOneFingerTapInUneditable:(id)arg1;
 - (_Bool)_shouldAllowEnforcedTouchTypeForTouch:(id)arg1 forGestureRecognizer:(id)arg2;
 - (id)initWithMode:(long long)arg1;
 

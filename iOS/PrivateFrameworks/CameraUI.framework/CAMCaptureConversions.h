@@ -10,6 +10,10 @@
 {
 }
 
++ (unsigned long long)CAMMetadataObjectSyntheticFocusModeForAVCaptureMetadataObjectSyntheticFocusMode:(unsigned long long)arg1;
++ (unsigned long long)AVCaptureMetadataObjectSyntheticFocusModeForCAMMetadataObjectSyntheticFocusMode:(unsigned long long)arg1;
++ (id)CAMSemanticStyleForAVSemanticStyle:(id)arg1 presetType:(long long)arg2;
++ (id)AVSemanticStyleForCAMSemanticStyle:(id)arg1;
 + (long long)overCapturePreviewStatusForAVPreviewStatus:(long long)arg1;
 + (long long)lowLightStatusForCaptureStatus:(long long)arg1;
 + (long long)captureDigitalFlashModeForLowLightMode:(long long)arg1;

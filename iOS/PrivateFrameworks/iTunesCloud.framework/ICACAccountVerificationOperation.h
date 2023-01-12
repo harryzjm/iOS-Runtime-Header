@@ -4,12 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface ICACAccountVerificationOperation
+#import <iTunesCloud/AMSAuthenticateTaskDelegate-Protocol.h>
+
+@class NSString;
+
+@interface ICACAccountVerificationOperation <AMSAuthenticateTaskDelegate>
 {
 }
 
+- (void)authenticateTask:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)finishWithError:(id)arg1;
 - (void)execute;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

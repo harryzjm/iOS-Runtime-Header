@@ -40,48 +40,16 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)childItemType;
-+ (Class)childPlaceType;
 + (id)resultSnippetForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)childItemAtIndex:(unsigned long long)arg1;
-- (unsigned long long)childItemsCount;
-- (void)addChildItem:(id)arg1;
-- (void)clearChildItems;
-@property(retain, nonatomic) NSMutableArray *childItems;
-@property(retain, nonatomic) GEOPDPriceDescription *priceDescription;
-@property(readonly, nonatomic) _Bool hasPriceDescription;
-- (id)childPlaceAtIndex:(unsigned long long)arg1;
-- (unsigned long long)childPlacesCount;
-- (void)addChildPlace:(id)arg1;
-- (void)clearChildPlaces;
-@property(retain, nonatomic) NSMutableArray *childPlaces;
-@property(nonatomic) _Bool hasDistanceDisplayThreshold;
-@property(nonatomic) unsigned int distanceDisplayThreshold;
-@property(retain, nonatomic) NSString *locationString;
-@property(readonly, nonatomic) _Bool hasLocationString;
-@property(retain, nonatomic) GEOPDRating *priceRange;
-@property(readonly, nonatomic) _Bool hasPriceRange;
-@property(retain, nonatomic) NSString *category;
-@property(readonly, nonatomic) _Bool hasCategory;
-@property(retain, nonatomic) NSString *name;
-@property(readonly, nonatomic) _Bool hasName;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

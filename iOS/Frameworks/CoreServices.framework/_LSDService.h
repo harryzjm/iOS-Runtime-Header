@@ -17,11 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)replacementObjectForXPCConnection:(id)arg1 encoder:(id)arg2 object:(id)arg3;
-+ (id)synchronousXPCProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-+ (id)XPCProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 + (id)XPCConnectionToService;
-+ (void)beginListeningWithAllServices;
-+ (id)allServiceClasses;
 + (id)XPCInterface;
 + (Class)clientClass;
 + (unsigned short)connectionType;
@@ -29,7 +25,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)XPCConnectionIsAlwaysPrivileged;
 + (_Bool)isEnabled;
 - (void).cxx_destruct;
-@property(readonly) __weak NSXPCListener *XPCListener; // @synthesize XPCListener=_listener;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)initWithXPCListener:(id)arg1;
 

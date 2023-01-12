@@ -11,7 +11,7 @@
 #import <NanoPassKit/PKPaymentAuthorizationControllerDelegate-Protocol.h>
 #import <NanoPassKit/PKPaymentAuthorizationControllerPrivateDelegate-Protocol.h>
 
-@class NPKPaymentProvisioningFlowControllerRequestContext, NSData, NSDecimalNumber, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKContactlessCardIngester, PKPaymentAuthorizationController, PKPaymentCredential, PKPaymentPass, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentRequest, PKPaymentSetupFieldsModel, PKPaymentSetupProduct, PKPaymentWebService, PKServiceProviderPurchase;
+@class NPKFidoAuthCoordinator, NPKPaymentProvisioningFlowControllerRequestContext, NSData, NSDecimalNumber, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKContactlessCardIngester, PKPaymentAuthorizationController, PKPaymentCredential, PKPaymentPass, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentRequest, PKPaymentSetupFieldsModel, PKPaymentSetupProduct, PKPaymentWebService, PKServiceProviderPurchase;
 @protocol NPKPaymentProvisioningFlowControllerDelegate, NSObject, OS_dispatch_source;
 
 @interface NPKPaymentProvisioningFlowController : NSObject <PKPaymentAuthorizationControllerDelegate, PKPaymentAuthorizationControllerPrivateDelegate, PKContactlessCardIngesterDelegate, NPKPaymentProvisioningFlowControllerProtocol>
@@ -31,6 +31,7 @@
     NSData *_inAppProvisioningPublicKeyHash;
     NSData *_inAppProvisioningNonce;
     NSObject<OS_dispatch_source> *_inAppProvisioningGetRequestTimer;
+    NPKFidoAuthCoordinator *_fidoAuthCoordinator;
     PKPaymentWebService *_webService;
     NSString *_chooseCredentialsStepIdentifier;
     NSString *_immediatelyBeforeTermsStepIdentifier;
@@ -58,6 +59,7 @@
     NPKPaymentProvisioningFlowControllerRequestContext *_readerModeRequestContext;
 }
 
++ (id)_filterAssociatedCredentials:(id)arg1 forProduct:(id)arg2;
 + (_Bool)_localCredentials:(id)arg1 containProduct:(id)arg2;
 + (_Bool)_isHSA2Enabled;
 + (id)_authContext;
@@ -97,6 +99,7 @@
 @property(retain, nonatomic) NSString *chooseCredentialsStepIdentifier; // @synthesize chooseCredentialsStepIdentifier=_chooseCredentialsStepIdentifier;
 @property(nonatomic) int currentStep; // @synthesize currentStep=_currentStep;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
+@property(retain, nonatomic) NPKFidoAuthCoordinator *fidoAuthCoordinator; // @synthesize fidoAuthCoordinator=_fidoAuthCoordinator;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *inAppProvisioningGetRequestTimer; // @synthesize inAppProvisioningGetRequestTimer=_inAppProvisioningGetRequestTimer;
 @property(retain, nonatomic) NSData *inAppProvisioningNonce; // @synthesize inAppProvisioningNonce=_inAppProvisioningNonce;
 @property(retain, nonatomic) NSData *inAppProvisioningPublicKeyHash; // @synthesize inAppProvisioningPublicKeyHash=_inAppProvisioningPublicKeyHash;
@@ -131,9 +134,13 @@
 - (void)_transitionToMoreInformationWithItems:(id)arg1 pass:(id)arg2 requestContext:(id)arg3;
 - (void)_transitionToProductDisambiguationWithProducts:(id)arg1 requestContext:(id)arg2;
 - (void)_transitionToSecondaryManualEntryWithFields:(id)arg1 credential:(id)arg2 requestContext:(id)arg3;
+- (id)_secondaryFilteredFields:(id)arg1 forCredential:(id)arg2;
+- (id)_credentialReadonlyFieldIdentifiers;
 - (void)_transitionToManualEntry:(id)arg1;
-- (void)_transitionToChooseCredentials:(id)arg1 requestContext:(id)arg2;
+- (id)_curatedDefaultPaymentSetupProvisioningFields;
+- (void)_transitionToChooseCredentials:(id)arg1 product:(id)arg2 requestContext:(id)arg3;
 - (void)_transitionBasedOnCredentials:(id)arg1 product:(id)arg2 requestContext:(id)arg3;
+- (void)_transitionToProvisioningForCredential:(id)arg1 product:(id)arg2 requestContext:(id)arg3;
 - (void)_transitionToProvisioningProgressWithRequestContext:(id)arg1;
 - (void)_transitionToTermsForReason:(unsigned long long)arg1 URL:(id)arg2 requestContext:(id)arg3;
 - (void)_transitionToChooseProductWithProducts:(id)arg1 requestContext:(id)arg2;
@@ -149,9 +156,11 @@
 - (void)_performNextStepForProvisionedPass:(id)arg1 moreInfoAcknowledged:(_Bool)arg2 requestContext:(id)arg3;
 - (void)_performNextStepForProvisionedPass:(id)arg1 requestContext:(id)arg2;
 - (void)_handleFinished:(id)arg1;
+- (void)_performProvisionWithRequest:(id)arg1 requestContext:(id)arg2 assertion:(id)arg3;
 - (void)_performProvision:(id)arg1;
 - (void)_performTerms:(id)arg1;
 - (void)_performPasscodeUpgrade:(id)arg1;
+- (_Bool)_isPasscodeUpgradeRequired;
 - (void)_handlePasscodeUpgradeCompleteWithSuccess:(_Bool)arg1 error:(id)arg2 requestContext:(id)arg3;
 - (void)_performEligibility:(id)arg1;
 - (void)_requestRequirements:(id)arg1;
@@ -161,7 +170,7 @@
 - (void)_performNextActionForProvisioningState:(id)arg1;
 - (void)_startProvisioningForCredential:(id)arg1 requestContext:(id)arg2;
 - (void)_handleProceedWithCredentials:(id)arg1 chosenByUser:(_Bool)arg2 requestContext:(id)arg3;
-- (void)_handleProductChosen:(id)arg1 requestContext:(id)arg2;
+- (void)_handleProductChosen:(id)arg1 includeCardsOnFile:(_Bool)arg2 requestContext:(id)arg3;
 - (void)_handlePreconditionsVerified:(id)arg1;
 - (void)_handleProvisioningFlowStarted:(id)arg1;
 - (void)_fetchAddRequestWithCertificatesResponse:(id)arg1 requestContext:(id)arg2;
@@ -186,6 +195,15 @@
 - (void)chooseReaderMode:(id)arg1;
 - (void)handleDigitalIssuanceAmount:(id)arg1 requestContext:(id)arg2;
 - (void)chooseProduct:(id)arg1 requestContext:(id)arg2;
+- (void)chooseProduct:(id)arg1 includeCardsOnFile:(_Bool)arg2 requestContext:(id)arg3;
+- (void)chooseProductAndCredentialsFlowForProduct:(id)arg1 credentials:(id)arg2 requestContext:(id)arg3;
+- (void)prefetchCredentialsForProduct:(id)arg1 requestContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)chooseTransitProductFromFlowPickerSection:(id)arg1 requestContext:(id)arg2;
+- (void)chooseCardsOnFileFlowForProduct:(id)arg1 requestContext:(id)arg2 preloadMetadata:(_Bool)arg3;
+- (void)ensureMetadataForCredentials:(id)arg1 requestContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_cardsOnFileForProduct:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_ensureMetadataForCredentials:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)hasCredentialsAssociatedWithProduct:(id)arg1;
 - (void)chooseFlowForPickerItem:(id)arg1 requestContext:(id)arg2;
 - (void)acknowledgeWelcome:(id)arg1;
 - (void)startProvisioningFlow:(id)arg1;

@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+#import <HealthUI/HKInteractiveChartNumericDefaultAxisBoundsProvider-Protocol.h>
 
-@interface HKNumericMinimumRangeAxisScalingRule
+@class HKValueRange, NSNumber;
+
+@interface HKNumericMinimumRangeAxisScalingRule <HKInteractiveChartNumericDefaultAxisBoundsProvider>
 {
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
+    HKValueRange *_noDataAxisBounds;
 }
 
 + (id)ruleWithDefaultYAxisRange:(double)arg1 minimumValue:(id)arg2 maximumValue:(id)arg3 axisRangeOverrides:(id)arg4;
 + (id)ruleWithDefaultYAxisRange:(double)arg1 axisRangeOverrides:(id)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HKValueRange *noDataAxisBounds; // @synthesize noDataAxisBounds=_noDataAxisBounds;
+- (id)noDataStartingRange;
 
 @end
 

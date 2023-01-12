@@ -35,6 +35,12 @@ struct CAColorMatrix {
     float m45;
 };
 
+struct CAFrameRateRange {
+    float minimum;
+    float maximum;
+    float preferred;
+};
+
 struct CATransform3D {
     double m11;
     double m12;
@@ -147,8 +153,6 @@ struct _PDFHistoryItem {
     struct CGPoint contentOffset;
 };
 
-struct _UIAuxillarySolveResult;
-
 struct _UIBoundingPathBitmapData {
     unsigned long long width;
     unsigned long long height;
@@ -170,6 +174,18 @@ struct _UIBoundingPathBitmapDataCorner {
 struct _UIBoundingPathBitmapDataSkipRegion {
     unsigned long long y;
     unsigned long long height;
+};
+
+struct _UICollectionUpdateIndexPair {
+    long long section;
+    long long item;
+};
+
+struct _UIDatePickerOverlayPlatterLayout {
+    struct CGRect _field1;
+    struct CGPoint _field2;
+    struct CGPoint _field3;
+    struct CGAffineTransform _field4;
 };
 
 struct _UIDragInteractionDriverStateMachine {
@@ -199,12 +215,14 @@ struct _UIIntegralSize {
     long long _field2;
 };
 
-struct _UIItemSolveResult {
-    struct CGRect _field1;
-    struct CGRect _field2;
-    struct vector<_UIAuxillarySolveResult, std::__1::allocator<_UIAuxillarySolveResult>> _field3;
-    struct vector<_UIAuxillarySolveResult, std::__1::allocator<_UIAuxillarySolveResult>> _field4;
-    id _field5;
+struct _UIItemSolveResult;
+
+struct _UIMachTimer {
+    unsigned int machPort;
+    struct __CFMachPort *cfPort;
+    struct __CFRunLoopSource *runloopSource;
+    CDUnknownFunctionPointerType callback;
+    void *callbackContext;
 };
 
 struct _UIOrderedRangeIndexerImpl;
@@ -214,14 +232,16 @@ struct _UIOutlineNode {
     long long _field2;
 };
 
+struct _UIPressTrigger {
+    long long _field1;
+    long long _field2;
+    double _field3;
+    _Bool _field4;
+};
+
 struct _UIRTreeContainerNode;
 
-struct _UIRegionSolveResult {
-    struct _NSRange _field1;
-    double _field2;
-    double _field3;
-    struct _UIItemSolveResult _field4;
-};
+struct _UIRegionSolveResult;
 
 struct _UIRenderingSurface {
     struct CGRect _field1;
@@ -236,6 +256,13 @@ struct _UISEGestureFeatureSample {
     unsigned long long _field5;
     struct CGPoint _field6;
     double _field7;
+};
+
+struct _UIScrollViewVFDLookupState {
+    struct CAFrameRateRange *staticRateRangePrevious;
+    struct CAFrameRateRange *staticRateRangeCurrent;
+    unsigned short staticRateRangeFramesPrevious;
+    unsigned short staticRateRangeFramesCurrent;
 };
 
 struct _UIStateMachineDebugging;
@@ -260,20 +287,81 @@ struct _UITableConstantsBackgroundProperties {
     id _field3;
     _Bool _field4;
     long long _field5;
+    long long _field6;
+    double _field7;
+    double _field8;
+    _Bool _field9;
+    id _field10;
+    double _field11;
+    struct NSDirectionalEdgeInsets _field12;
+};
+
+struct _UITableViewVisibleCellsUpdateRanges {
+    struct _NSRange _field1;
+    struct _NSRange _field2;
+    struct _NSRange _field3;
+    struct _NSRange _field4;
+    struct _NSRange _field5;
+    _Bool _field6;
 };
 
 struct _UITraitCollectionChangeDescription {
     id _field1;
     id _field2;
     _Bool _field3;
+    struct _UITraitCollectionTraitChanges _field4;
+};
+
+struct _UITraitCollectionTraitChanges {
+    _Bool _field1;
+    _Bool _field2;
+    _Bool _field3;
     _Bool _field4;
     _Bool _field5;
     _Bool _field6;
     _Bool _field7;
     _Bool _field8;
-    _Bool _field9;
-    _Bool _field10;
 };
+
+struct _UIUpdateInputInternal {
+    struct _UIUpdateInputState _state;
+    unsigned int _flags;
+    struct {
+        struct _UIUpdateInputInternal *le_next;
+        struct _UIUpdateInputInternal **le_prev;
+    } _groupEntry;
+    CDUnknownFunctionPointerType _readyForModelTimeCallback;
+    void *_context;
+    char *_name;
+};
+
+struct _UIUpdateInputState {
+    int mode;
+    unsigned long long earliestModelTime;
+    unsigned long long latestModelTime;
+};
+
+struct _UIUpdateRequest {
+    unsigned int flags;
+    unsigned int minRate;
+    unsigned int preferredRate;
+    unsigned int maxRate;
+    unsigned long long phase;
+    unsigned long long load;
+};
+
+struct _UIUpdateRequestRecord {
+    struct _UIUpdateRequest *request;
+    unsigned int reason;
+};
+
+struct _UIUpdateTiming {
+    unsigned long long modelTime;
+    unsigned long long commitDeadlineTime;
+    unsigned long long presentationTime;
+};
+
+struct _UIVelocityIntegratorDataSample;
 
 struct _UIWebTouchEvent {
     int type;
@@ -305,14 +393,25 @@ struct __UISignedRange {
     unsigned long long _field2;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> *__next_;
-};
-
 struct __shared_weak_count;
 
 struct atomic_flag {
     _Atomic _Bool _Value;
+};
+
+struct deque<_UIVelocityIntegratorDataSample, std::allocator<_UIVelocityIntegratorDataSample>> {
+    struct __split_buffer<_UIVelocityIntegratorDataSample *, std::allocator<_UIVelocityIntegratorDataSample *>> {
+        struct _UIVelocityIntegratorDataSample **__first_;
+        struct _UIVelocityIntegratorDataSample **__begin_;
+        struct _UIVelocityIntegratorDataSample **__end_;
+        struct __compressed_pair<_UIVelocityIntegratorDataSample **, std::allocator<_UIVelocityIntegratorDataSample *>> {
+            struct _UIVelocityIntegratorDataSample **__value_;
+        } __end_cap_;
+    } __map_;
+    unsigned long long __start_;
+    struct __compressed_pair<unsigned long, std::allocator<_UIVelocityIntegratorDataSample>> {
+        unsigned long long __value_;
+    } __size_;
 };
 
 struct os_unfair_lock_s {
@@ -332,87 +431,73 @@ struct shared_ptr<_UIRTreeContainerNode> {
 struct ui_size_cache {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
-    struct __compressed_pair<ui_size_cache_value *, std::__1::allocator<ui_size_cache_value>> {
+    struct __compressed_pair<ui_size_cache_value *, std::allocator<ui_size_cache_value>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct unique_ptr<_UIItemSolveResult, std::__1::default_delete<_UIItemSolveResult>> {
-    struct __compressed_pair<_UIItemSolveResult *, std::__1::default_delete<_UIItemSolveResult>> {
+struct unique_ptr<_UIItemSolveResult, std::default_delete<_UIItemSolveResult>> {
+    struct __compressed_pair<_UIItemSolveResult *, std::default_delete<_UIItemSolveResult>> {
         struct _UIItemSolveResult *__value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>> {
+struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>*>>> {
+    struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>**, std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>*>>> {
+        void **__value_;
+        struct __bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unordered_map<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, void *>*> __value_;
+struct unordered_map<long, UICollectionViewLayoutAttributes *, std::hash<long>, std::equal_to<long>, std::allocator<std::pair<const long, UICollectionViewLayoutAttributes *>>> {
+    struct __hash_table<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, std::__unordered_map_hasher<long, std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, std::hash<long>, std::equal_to<long>, true>, std::__unordered_map_equal<long, std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, std::equal_to<long>, std::hash<long>, true>, std::allocator<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>>> {
+        struct unique_ptr<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>*[], std::__bucket_list_deallocator<std::allocator<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*>, std::allocator<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>>> {
+            struct __hash_node_base<std::__hash_node<std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, void *>*> {
+                void *__next_;
+            } __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__unordered_map_hasher<long, std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, std::hash<long>, std::equal_to<long>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, _UICollectionAuxillaryCustomization>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__unordered_map_equal<long, std::__hash_value_type<long, UICollectionViewLayoutAttributes *>, std::equal_to<long>, std::hash<long>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct vector<UICollectionViewLayoutAttributes *, std::__1::allocator<UICollectionViewLayoutAttributes *>> {
-    id *__begin_;
-    id *__end_;
-    struct __compressed_pair<UICollectionViewLayoutAttributes *__strong *, std::__1::allocator<UICollectionViewLayoutAttributes *>> {
-        id *__value_;
-    } __end_cap_;
-};
-
-struct vector<_NSRange, std::__1::allocator<_NSRange>> {
+struct vector<_NSRange, std::allocator<_NSRange>> {
     struct _NSRange *__begin_;
     struct _NSRange *__end_;
-    struct __compressed_pair<_NSRange *, std::__1::allocator<_NSRange>> {
+    struct __compressed_pair<_NSRange *, std::allocator<_NSRange>> {
         struct _NSRange *__value_;
     } __end_cap_;
 };
 
-struct vector<_UIAuxillarySolveResult, std::__1::allocator<_UIAuxillarySolveResult>> {
-    struct _UIAuxillarySolveResult *_field1;
-    struct _UIAuxillarySolveResult *_field2;
-    struct __compressed_pair<_UIAuxillarySolveResult *, std::__1::allocator<_UIAuxillarySolveResult>> {
-        struct _UIAuxillarySolveResult *_field1;
-    } _field3;
-};
-
-struct vector<_UIOutlineNode, std::__1::allocator<_UIOutlineNode>> {
+struct vector<_UIOutlineNode, std::allocator<_UIOutlineNode>> {
     struct _UIOutlineNode *__begin_;
     struct _UIOutlineNode *__end_;
-    struct __compressed_pair<_UIOutlineNode *, std::__1::allocator<_UIOutlineNode>> {
+    struct __compressed_pair<_UIOutlineNode *, std::allocator<_UIOutlineNode>> {
         struct _UIOutlineNode *__value_;
     } __end_cap_;
 };
 
-struct vector<_UIRegionSolveResult, std::__1::allocator<_UIRegionSolveResult>> {
+struct vector<_UIRegionSolveResult, std::allocator<_UIRegionSolveResult>> {
     struct _UIRegionSolveResult *__begin_;
     struct _UIRegionSolveResult *__end_;
-    struct __compressed_pair<_UIRegionSolveResult *, std::__1::allocator<_UIRegionSolveResult>> {
+    struct __compressed_pair<_UIRegionSolveResult *, std::allocator<_UIRegionSolveResult>> {
         struct _UIRegionSolveResult *__value_;
     } __end_cap_;
 };
 
-struct vector<long, std::__1::allocator<long>> {
+struct vector<long, std::allocator<long>> {
     long long *__begin_;
     long long *__end_;
-    struct __compressed_pair<long *, std::__1::allocator<long>> {
+    struct __compressed_pair<long *, std::allocator<long>> {
         long long *__value_;
     } __end_cap_;
 };
@@ -446,7 +531,8 @@ typedef struct {
     _Bool _field10;
     _Bool _field11;
     _Bool _field12;
-} CDStruct_a002d41c;
+    _Bool _field13;
+} CDStruct_98d137ef;
 
 typedef struct {
     id _field1;
@@ -485,7 +571,8 @@ typedef struct {
     unsigned long long alignment;
     double attachmentOffset;
     double alignmentOffset;
-} CDStruct_a36705e8;
+    long long gravity;
+} CDStruct_17a0fc55;
 
 typedef struct {
     unsigned long long senderID;
@@ -496,7 +583,7 @@ typedef struct {
 } CDStruct_a7a14e3b;
 
 typedef struct {
-    _Bool itemIsEnabled[43];
+    _Bool itemIsEnabled[44];
     char timeString[64];
     char shortTimeString[64];
     char dateString[256];
@@ -531,7 +618,7 @@ typedef struct {
     unsigned int bluetoothConnected:1;
     unsigned int displayRawGSMSignal:1;
     unsigned int displayRawWifiSignal:1;
-    unsigned int locationIconType:1;
+    unsigned int locationIconType:2;
     unsigned int voiceControlIconType:2;
     unsigned int quietModeInactive:1;
     unsigned int tetheringConnectionCount;
@@ -543,6 +630,7 @@ typedef struct {
     char personName[100];
     unsigned int electronicTollCollectionAvailable:1;
     unsigned int radarAvailable:1;
+    unsigned int announceNotificationsAvailable:1;
     unsigned int wifiLinkWarning:1;
     unsigned int wifiSearching:1;
     double backgroundActivityDisplayStartDate;
@@ -550,7 +638,9 @@ typedef struct {
     unsigned int secondaryCellularConfigured:1;
     char primaryServiceBadgeString[100];
     char secondaryServiceBadgeString[100];
-} CDStruct_3fd7985f;
+    char quietModeImage[256];
+    char quietModeName[256];
+} CDStruct_e9def42b;
 
 typedef struct {
     unsigned int val[8];
@@ -611,6 +701,25 @@ typedef struct {
 } CDStruct_d83abbfb;
 
 typedef struct {
+    double targetValue;
+    double tension;
+    double friction;
+    long long displacementFunction;
+} CDStruct_b7daa86d;
+
+typedef struct {
+    double minimum;
+    double preferred;
+    double maximum;
+} CDStruct_cf303044;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    long long _field3;
+} CDStruct_99fbabfb;
+
+typedef struct {
     double amount;
     int unit;
 } CDStruct_73524d89;
@@ -620,6 +729,11 @@ typedef struct {
     int lastRowHorizontalAlignment;
     int rowVerticalAlignment;
 } CDStruct_2f5e8405;
+
+typedef struct {
+    int policy;
+    long long receiveDeadline;
+} CDStruct_1d7448cc;
 
 typedef struct CDStruct_183601bc;
 
@@ -634,13 +748,13 @@ typedef struct {
 
 typedef struct {
     unsigned long long _field1;
-    CDStruct_a36705e8 _field2;
+    CDStruct_17a0fc55 _field2;
     struct CGPoint _field3;
     unsigned long long _field4;
-} CDStruct_d394d979;
+} CDStruct_182fafba;
 
 typedef struct {
-    _Bool overrideItemIsEnabled[43];
+    _Bool overrideItemIsEnabled[44];
     unsigned int overrideTimeString:1;
     unsigned int overrideDateString:1;
     unsigned int overrideGsmSignalStrengthRaw:1;
@@ -675,8 +789,9 @@ typedef struct {
     unsigned int overrideSecondaryCellularConfigured:1;
     unsigned int overridePrimaryServiceBadgeString:1;
     unsigned int overrideSecondaryServiceBadgeString:1;
-    CDStruct_3fd7985f values;
-} CDStruct_e922dd9d;
+    unsigned int overrideQuietModeImage:1;
+    CDStruct_e9def42b values;
+} CDStruct_0caf55ee;
 
 typedef struct {
     CDStruct_73524d89 _field1[4];
@@ -727,13 +842,13 @@ typedef struct {
 } CDStruct_10115da1;
 
 typedef struct {
-    CDStruct_57d825b2 dampingRatioParameters;
-    CDStruct_57d825b2 responseParameters;
-    CDStruct_57d825b2 targetParameters;
+    CDStruct_b7daa86d dampingRatioParameters;
+    CDStruct_b7daa86d responseParameters;
+    CDStruct_b7daa86d targetParameters;
     _Bool dampingRatioSmoothingDisabled;
     _Bool responseSmoothingDisabled;
     _Bool targetSmoothingDisabled;
-} CDStruct_9e265dec;
+} CDStruct_500c0369;
 
 typedef struct {
     CDStruct_f2a5f274 dampingRatioState;
@@ -756,6 +871,13 @@ typedef struct {
     struct UIEdgeInsets _field1;
     struct UIEdgeInsets _field2;
 } CDStruct_77fbeba1;
+
+typedef struct {
+    struct _NSRange _field1;
+    struct _NSRange _field2;
+    struct _NSRange _field3;
+    struct _NSRange _field4;
+} CDStruct_a33ff3ce;
 
 typedef struct {
     id _field1;
@@ -785,7 +907,8 @@ typedef struct {
     double lastBaseline;
     struct CGRect referenceBounds;
     long long measuredNumberOfLines;
-} CDStruct_25ed71ea;
+    struct CGRect bounds;
+} CDStruct_a0add0ba;
 
 typedef struct {
     struct {
@@ -811,6 +934,32 @@ typedef struct {
 } CDStruct_b7523c42;
 
 typedef struct {
+    struct CGRect _field1;
+    struct CGSize _field2;
+    double _field3;
+    double _field4;
+} CDStruct_6024001e;
+
+typedef struct {
+    struct CGRect buttonBounds;
+    struct CGSize idealSize;
+    struct CGRect imageFrame;
+    struct CGRect titleFrame;
+    struct CGRect subtitleFrame;
+    struct {
+        double firstFromTop;
+        double lastFromBottom;
+    } baselineOffsets;
+    struct {
+        unsigned int isValid:1;
+        unsigned int hasImage:1;
+        unsigned int hasProgressIndicator:1;
+        unsigned int hasTitle:1;
+        unsigned int hasSubtitle:1;
+    } flags;
+} CDStruct_add6c04a;
+
+typedef struct {
     CDStruct_6b60c6e5 _field1;
     CDStruct_6b60c6e5 _field2;
     CDStruct_6b60c6e5 _field3;
@@ -820,7 +969,9 @@ typedef struct {
 typedef struct {
     _Bool _field1;
     _Bool _field2;
-} CDStruct_3d581f42;
+    _Bool _field3;
+    _Bool _field4;
+} CDStruct_8024420c;
 
 typedef struct {
     unsigned int visible:1;
@@ -831,7 +982,8 @@ typedef struct {
 typedef struct {
     unsigned int :1;
     unsigned int :1;
-} CDStruct_d7010776;
+    unsigned int :1;
+} CDStruct_8a1bf2a3;
 
 typedef struct {
     unsigned int :1;
@@ -843,18 +995,6 @@ typedef struct {
     double _field3;
     double _field4;
 } CDStruct_d2b197d1;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-} CDStruct_39925896;
-
-typedef struct {
-    double targetValue;
-    double tension;
-    double friction;
-} CDStruct_57d825b2;
 
 typedef struct {
     double _field1;
@@ -896,13 +1036,13 @@ typedef struct {
     double force;
 } CDStruct_23d8ee2f;
 
-typedef struct vector<_UIOutlineNode, std::__1::allocator<_UIOutlineNode>> {
+typedef struct vector<_UIOutlineNode, std::allocator<_UIOutlineNode>> {
     struct _UIOutlineNode *__begin_;
     struct _UIOutlineNode *__end_;
-    struct __compressed_pair<_UIOutlineNode *, std::__1::allocator<_UIOutlineNode>> {
+    struct __compressed_pair<_UIOutlineNode *, std::allocator<_UIOutlineNode>> {
         struct _UIOutlineNode *__value_;
     } __end_cap_;
-} vector_8b07facb;
+} vector_a91a301d;
 
 #pragma mark Named Unions
 

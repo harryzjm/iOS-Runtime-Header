@@ -15,11 +15,13 @@
 
 + (_Bool)areStatsAvailable;
 @property(readonly, nonatomic) CMKappaInternal *_internal; // @synthesize _internal;
+- (void)sendStatsDataToUrl:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
+- (id)sendStatsDataToUrl:(id)arg1;
 - (int)getState;
 - (void)sendAPCmd:(int)arg1;
 - (void)sendCmd:(int)arg1;
-- (void)sendAPConfigNumFastAccel:(int)arg1 andNumAccel:(int)arg2 andNumPressure:(int)arg3 andNumDeviceMotion:(int)arg4 andTimeout:(int)arg5;
-- (void)sendConfigNumFastAccel:(int)arg1 andNumAccel:(int)arg2 andNumPressure:(int)arg3 andNumDeviceMotion:(int)arg4 andTimeout:(int)arg5;
+- (void)sendAPConfigNumFastAccel:(int)arg1 numAccel:(int)arg2 numPressure:(int)arg3 numDM:(int)arg4 numMag:(int)arg5 numAudio:(int)arg6 timeout:(int)arg7;
+- (void)sendConfigNumFastAccel:(int)arg1 numAccel:(int)arg2 numPressure:(int)arg3 numDM:(int)arg4 numMag:(int)arg5 numAudio:(int)arg6 timeout:(int)arg7;
 - (void)stopKappaUpdates;
 - (void)startKappaUpdatesForItem:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

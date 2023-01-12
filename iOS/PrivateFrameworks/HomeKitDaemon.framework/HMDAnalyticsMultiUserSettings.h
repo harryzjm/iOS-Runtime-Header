@@ -15,6 +15,8 @@
 }
 
 - (void).cxx_destruct;
+@property _Bool isOwner; // @synthesize isOwner=_isOwner;
+@property(copy) NSArray *multiUserSettingsValuesByKeyPaths; // @synthesize multiUserSettingsValuesByKeyPaths=_multiUserSettingsValuesByKeyPaths;
 
 @end
 

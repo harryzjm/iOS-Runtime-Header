@@ -19,6 +19,7 @@
     _Bool _loading;
     _Bool _confirmed;
     _Bool _cancelled;
+    _Bool _userConfirmationEnabled;
     _Bool _virgin;
     _Bool _navigating;
     _Bool _willAnimateConfirmation;
@@ -51,6 +52,7 @@
 @property(nonatomic, getter=isNavigating) _Bool navigating; // @synthesize navigating=_navigating;
 @property(readonly, nonatomic, getter=isVirgin) _Bool virgin; // @synthesize virgin=_virgin;
 @property(nonatomic) __weak UIView *containingView; // @synthesize containingView=_containingView;
+@property(nonatomic, getter=isUserConfirmationEnabled) _Bool userConfirmationEnabled; // @synthesize userConfirmationEnabled=_userConfirmationEnabled;
 @property(nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(nonatomic, getter=isConfirmed) _Bool confirmed; // @synthesize confirmed=_confirmed;
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
@@ -66,6 +68,7 @@
 @property(copy, nonatomic) UIColor *titleBackgroundColor; // @synthesize titleBackgroundColor=_titleBackgroundColor;
 @property(copy, nonatomic) UIColor *titleTextColor; // @synthesize titleTextColor=_titleTextColor;
 @property(retain, nonatomic) NSUUID *instrumentationTurnIdentifier; // @synthesize instrumentationTurnIdentifier=_instrumentationTurnIdentifier;
+- (_Bool)hasGeneratedNewInstrumentationTurnForPunchOutAceCommand:(id)arg1 url:(id)arg2;
 - (id)_instrumentationManager;
 - (void)_instrumentConfirmationOptionInteractionWithPreviousTurn:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

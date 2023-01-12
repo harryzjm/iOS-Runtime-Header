@@ -6,7 +6,6 @@
 
 @class NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDArchiveRecordsURLRequest
 {
     CDUnknownBlockType _recordArchivedBlock;

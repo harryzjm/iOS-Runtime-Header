@@ -11,11 +11,11 @@
     UILabel *_statusLabel;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UILabel *statusLabel; // @synthesize statusLabel=_statusLabel;
 - (void)prepareForReuse;
 - (_Bool)canRemoveItem;
 - (void)setStatus:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

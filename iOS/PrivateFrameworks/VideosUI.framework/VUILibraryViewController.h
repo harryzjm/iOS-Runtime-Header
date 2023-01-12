@@ -19,10 +19,15 @@ __attribute__((visibility("hidden")))
 @interface VUILibraryViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, UIGestureRecognizerDelegate, VUIShelvesDataSourceDelegate, VUILibraryDataSourceDelegate, VUIMenuCollectionViewControllerDelegate, VUIFamilyMembersViewControllerDelegate, VUIFamilySharingContentProtocol>
 {
     _Bool _ppt_isLoaded;
+    _Bool _viewHasAppearedAtLeastOnce;
+    _Bool _currentLibraryCategoryIsFromShelf;
+    _Bool _currentLibraryCategoryIsValid;
+    _Bool _isPresentingDownloads;
     _Bool _hasMenuItemFetchCompleted;
     _Bool _hasMediaEntitiesFetchCompleted;
     _Bool _doesDeviceSupportHDR;
     VUIFamilyMember *_familyMember;
+    long long _currentLibraryCategory;
     UIBarButtonItem *_libraryBarButton;
     VUIViewControllerContentPresenter *_contentPresenter;
     VUILibraryMenuDataSource *_menuDataSource;
@@ -59,6 +64,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUILibraryMenuDataSource *menuDataSource; // @synthesize menuDataSource=_menuDataSource;
 @property(retain, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property(retain, nonatomic) UIBarButtonItem *libraryBarButton; // @synthesize libraryBarButton=_libraryBarButton;
+@property(nonatomic) _Bool isPresentingDownloads; // @synthesize isPresentingDownloads=_isPresentingDownloads;
+@property(nonatomic) _Bool currentLibraryCategoryIsValid; // @synthesize currentLibraryCategoryIsValid=_currentLibraryCategoryIsValid;
+@property(nonatomic) _Bool currentLibraryCategoryIsFromShelf; // @synthesize currentLibraryCategoryIsFromShelf=_currentLibraryCategoryIsFromShelf;
+@property(nonatomic) _Bool viewHasAppearedAtLeastOnce; // @synthesize viewHasAppearedAtLeastOnce=_viewHasAppearedAtLeastOnce;
+@property(nonatomic) long long currentLibraryCategory; // @synthesize currentLibraryCategory=_currentLibraryCategory;
 @property(retain, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 - (void)_updateVisibleCellSeparators;
 - (_Bool)vui_ppt_isLoading;
@@ -69,6 +79,8 @@ __attribute__((visibility("hidden")))
 - (void)_removeDownloadViewController;
 - (void)_presentDownloadViewController;
 - (void)_accountsChanged:(id)arg1;
+- (long long)_categoryForShelfType:(long long)arg1;
+- (long long *)_categoryForCellType:(long long)arg1;
 - (id)_localizedTitleForCellType:(long long)arg1;
 - (void)_constructShelves;
 - (void)_configureShelfViewController:(id)arg1 withShelfType:(long long)arg2;
@@ -86,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
 - (id)_viewControllerWithCellType:(long long)arg1;
 - (void)_selectLibraryCellType:(long long)arg1;
+- (void)_resetNavigationBar;
 - (void)_updateNavigationTitle;
 - (void)_showContentOrNoContentView;
 - (_Bool)_shouldShowContentView;

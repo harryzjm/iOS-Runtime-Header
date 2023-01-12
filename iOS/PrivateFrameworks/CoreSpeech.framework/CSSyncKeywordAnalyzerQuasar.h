@@ -15,6 +15,8 @@
     NSArray *_triggerTokenList;
     _EARSyncSpeechRecognizer *_syncRecognizer;
     _Bool _useKeywordSpotting;
+    _Bool _requireReset;
+    _Bool _preventDuplicatedReset;
     double _triggerConfidence;
     unsigned long long _activeChannel;
     NSDictionary *_ctcKwdToPhraseIdMap;
@@ -31,7 +33,7 @@
 - (void)processAudioChunk:(id)arg1;
 - (void)flushAudio;
 - (void)resetWithLanguage:(id)arg1 withFarField:(unsigned char)arg2 withAudioSource:(id)arg3;
-- (id)initWithConfigPath:(id)arg1 triggerTokens:(id)arg2 useKeywordSpotting:(_Bool)arg3;
+- (id)initWithConfigPath:(id)arg1 triggerTokens:(id)arg2 useKeywordSpotting:(_Bool)arg3 preventDuplicatedReset:(_Bool)arg4;
 
 @end
 

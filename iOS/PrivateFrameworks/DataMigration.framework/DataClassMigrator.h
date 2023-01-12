@@ -15,6 +15,7 @@
     unsigned int _userDataDisposition;
     NSString *_restoredBackupBuildVersion;
     NSString *_restoredBackupProductType;
+    NSString *_restoredBackupDeviceName;
     NSString *_dmBundleIdentifier;
 }
 
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *dmBundleIdentifier; // @synthesize dmBundleIdentifier=_dmBundleIdentifier;
 @property(nonatomic) _Bool didUpgrade; // @synthesize didUpgrade=_didUpgrade;
+@property(retain, nonatomic) NSString *restoredBackupDeviceName; // @synthesize restoredBackupDeviceName=_restoredBackupDeviceName;
 @property(retain, nonatomic) NSString *restoredBackupProductType; // @synthesize restoredBackupProductType=_restoredBackupProductType;
 @property(retain, nonatomic) NSString *restoredBackupBuildVersion; // @synthesize restoredBackupBuildVersion=_restoredBackupBuildVersion;
 @property(nonatomic) unsigned int userDataDisposition; // @synthesize userDataDisposition=_userDataDisposition;

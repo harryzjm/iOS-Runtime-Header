@@ -16,13 +16,13 @@
 
 + (id)secureCodedPropertyKeys;
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 @property(nonatomic) _Bool verified; // @synthesize verified=_verified;
 @property(retain, nonatomic) NSString *addressPrefix; // @synthesize addressPrefix=_addressPrefix;
 @property(retain, nonatomic) NSString *addressSHA1; // @synthesize addressSHA1=_addressSHA1;
 @property(retain, nonatomic) NSString *address; // @synthesize address=_address;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 
 @end
 

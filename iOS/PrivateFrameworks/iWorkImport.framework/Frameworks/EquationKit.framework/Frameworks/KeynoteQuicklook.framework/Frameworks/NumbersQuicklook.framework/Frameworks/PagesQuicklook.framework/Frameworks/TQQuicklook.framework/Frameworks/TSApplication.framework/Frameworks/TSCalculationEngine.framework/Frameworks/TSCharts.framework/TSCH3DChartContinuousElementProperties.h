@@ -6,20 +6,20 @@
 
 @interface TSCH3DChartContinuousElementProperties
 {
-    float mDepthGapFactor;
-    float mDepthLimitFactor;
-    float mShadowCameraDepthLimitAdjustmentFactor;
-    unsigned long long mMaxLimitingSeries;
+    float _depthGapFactor;
+    float _depthLimitFactor;
+    float _shadowCameraDepthLimitAdjustmentFactor;
+    unsigned long long _maxLimitingSeries;
 }
 
-@property(readonly, nonatomic) float shadowCameraDepthLimitAdjustmentFactor; // @synthesize shadowCameraDepthLimitAdjustmentFactor=mShadowCameraDepthLimitAdjustmentFactor;
-@property(readonly, nonatomic) float depthLimitFactor; // @synthesize depthLimitFactor=mDepthLimitFactor;
-@property(readonly, nonatomic) float p_sageInterSetDepthGapProperty; // @synthesize p_sageInterSetDepthGapProperty=mDepthGapFactor;
-- (_Bool)applyElementTransform:(struct ObjectTransforms *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
+@property(readonly, nonatomic) float shadowCameraDepthLimitAdjustmentFactor; // @synthesize shadowCameraDepthLimitAdjustmentFactor=_shadowCameraDepthLimitAdjustmentFactor;
+@property(readonly, nonatomic) float depthLimitFactor; // @synthesize depthLimitFactor=_depthLimitFactor;
+@property(readonly, nonatomic) float p_sageInterSetDepthGapProperty; // @synthesize p_sageInterSetDepthGapProperty=_depthGapFactor;
+- (_Bool)applyElementTransform:(void *)arg1 series:(id)arg2 index:(tvec2_3b141483)arg3 propertyAccessor:(id)arg4;
 - (float)depthForScene:(id)arg1;
 - (float)chartMinZForScene:(id)arg1;
 - (void)reset;
-- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
+- (void)resetWithEnumerator:(id)arg1 layoutSettings:(CDStruct_c48db077)arg2;
 - (void)updateLabels;
 - (tvec2_3b141483)seriesSize;
 @property(readonly, nonatomic) long long seriesCount;

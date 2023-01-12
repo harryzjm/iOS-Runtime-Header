@@ -8,20 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOSubactionMetaData : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_95bda58d _subactions;
     NSString *_displayedString;
+    NSMutableArray *_displayedTexts;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _selectedSubactionIndex;
     int _subactionType;
     struct {
         unsigned int has_selectedSubactionIndex:1;
         unsigned int has_subactionType:1;
+        unsigned int read_subactions:1;
+        unsigned int read_displayedString:1;
+        unsigned int read_displayedTexts:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 + (_Bool)isValid:(id)arg1;
++ (Class)displayedTextType;
 - (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -36,6 +47,19 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)displayedTextAtIndex:(unsigned long long)arg1;
+- (unsigned long long)displayedTextsCount;
+- (void)addDisplayedText:(id)arg1;
+- (void)clearDisplayedTexts;
+@property(retain, nonatomic) NSMutableArray *displayedTexts;
+- (int)StringAsSubactions:(id)arg1;
+- (id)subactionsAsString:(int)arg1;
+- (void)setSubactions:(int *)arg1 count:(unsigned long long)arg2;
+- (int)subactionAtIndex:(unsigned long long)arg1;
+- (void)addSubaction:(int)arg1;
+- (void)clearSubactions;
+@property(readonly, nonatomic) int *subactions;
+@property(readonly, nonatomic) unsigned long long subactionsCount;
 @property(retain, nonatomic) NSString *displayedString;
 @property(readonly, nonatomic) _Bool hasDisplayedString;
 - (int)StringAsSubactionType:(id)arg1;
@@ -44,6 +68,9 @@
 @property(nonatomic) int subactionType;
 @property(nonatomic) _Bool hasSelectedSubactionIndex;
 @property(nonatomic) int selectedSubactionIndex;
+- (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

@@ -8,19 +8,16 @@
 
 #import <RunningBoard/RBBundleProperties-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, RBBundlePropertiesBSXPCProvider, RBBundlePropertiesBackgroundRefreshProvider, RBBundlePropertiesLSProvider, RBLSBundleProperties, RBSProcessIdentifier, RBSProcessIdentity, RBXPCBundleProperties;
+@class NSDictionary, NSString, NSURL, RBBundlePropertiesBSXPCProvider, RBBundlePropertiesLSProvider, RBLSBundleProperties, RBSProcessIdentifier, RBSProcessIdentity, RBXPCBundleProperties;
 
 @interface RBBundleProperties : NSObject <RBBundleProperties>
 {
     RBBundlePropertiesLSProvider *_lsProvider;
     RBBundlePropertiesBSXPCProvider *_xpcProvider;
-    RBBundlePropertiesBackgroundRefreshProvider *_bgRefreshProvider;
     RBSProcessIdentifier *_processIdentifier;
     RBSProcessIdentity *_processIdentity;
     RBLSBundleProperties *_lsBundleProperties;
     RBXPCBundleProperties *_xpcBundleProperties;
-    _Bool _hasFetchedBackgroundRefreshEnabled;
-    _Bool _backgroundRefreshEnabled;
 }
 
 - (void).cxx_destruct;
@@ -32,7 +29,7 @@
 @property(readonly, nonatomic) int platform;
 @property(readonly, nonatomic) _Bool isExtension;
 @property(readonly, nonatomic) _Bool hasPreferredJetsamBand;
-@property(readonly, nonatomic, getter=isBackgroundRefreshEnabled) _Bool backgroundRefreshEnabled;
+@property(readonly, nonatomic) _Bool continuousBackgroundMode;
 @property(readonly, nonatomic) _Bool usesSocketMonitoring;
 @property(readonly, nonatomic) _Bool supportsUnboundedTaskCompletion;
 @property(readonly, nonatomic) _Bool supportsBackgroundAudio;
@@ -42,7 +39,7 @@
 @property(readonly, copy, nonatomic) NSString *executablePath;
 @property(readonly, copy, nonatomic) NSString *bundlePath;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier;
-- (id)initWithLSProvider:(id)arg1 xpcProvider:(id)arg2 backgroundRefreshProvider:(id)arg3 processIdentity:(id)arg4 processIdentifier:(id)arg5;
+- (id)initWithLSProvider:(id)arg1 xpcProvider:(id)arg2 processIdentity:(id)arg3 processIdentifier:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *description;

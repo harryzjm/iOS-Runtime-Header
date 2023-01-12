@@ -4,28 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <TrialServer/TRIMetricsProviding-Protocol.h>
 #import <TrialServer/TRITask-Protocol.h>
 
-@class NSArray, NSDate, NSString;
-@protocol TRITaskQueueStateProviding;
+@class NSArray, NSDate, NSObject, NSString, _PASLock;
+@protocol OS_dispatch_queue, TRITaskQueueStateProviding;
 
-@interface TRIMaintenanceTask <TRITask>
+@interface TRIMaintenanceTask <TRITask, TRIMetricsProviding>
 {
+    NSObject<OS_dispatch_queue> *_channelCleanupQueue;
+    _PASLock *_lock;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)parseFromData:(id)arg1;
 + (id)task;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)serialize;
 - (id)_asPersistedTask;
+- (id)trialSystemTelemetry;
+- (id)dimensions;
+- (id)metrics;
+- (void)mergeTelemetry:(id)arg1;
+- (void)addDimension:(id)arg1;
+- (void)addMetric:(id)arg1;
 - (id)runUsingContext:(id)arg1 withTaskQueue:(id)arg2;
+- (void)_reportStorageUsageUsingContext:(id)arg1;
+- (id)_getPurgeableDiskSpace;
+- (id)_getFreeDiskSpace;
+- (void)_synchronizePushService:(id)arg1 usingRolloutDatabase:(id)arg2 experimentDatabase:(id)arg3;
+- (_Bool)_cleanupLocalTempStorageWithPaths:(id)arg1;
 - (void)_handleOrphanedNamespacesWithNamespaceDatabase:(id)arg1 nextTasks:(id)arg2;
 - (_Bool)_cleanupUnusedContentWithContext:(id)arg1;
-- (_Bool)_cleanupExperimentWithDeployment:(id)arg1 paths:(id)arg2;
 - (_Bool)_cleanupTreatmentWithTreatmentId:(id)arg1 paths:(id)arg2;
 - (void)_handleExpiredExperimentsWithExperimentDatabase:(id)arg1 nextTasks:(id)arg2;
+- (id)init;
 @property(readonly, nonatomic) int taskType;
 
 // Remaining properties

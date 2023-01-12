@@ -21,7 +21,6 @@
 @property(retain, nonatomic) TLTimelineNode *leftNode; // @synthesize leftNode=_leftNode;
 - (_Bool)isEqualToObject:(id)arg1 includingLeftNodes:(_Bool)arg2 includingRightNodes:(_Bool)arg3;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hashIncludingLeftNodes:(_Bool)arg1 includeRightNodes:(_Bool)arg2;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1 copyLeftNodes:(_Bool)arg2 copyRightNodes:(_Bool)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;

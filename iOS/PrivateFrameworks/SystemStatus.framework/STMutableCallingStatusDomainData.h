@@ -7,13 +7,13 @@
 #import <SystemStatus/STMutableStatusDomainData-Protocol.h>
 #import <SystemStatus/STMutableStatusDomainDataDifferencing-Protocol.h>
 
-@class NSSet, NSString, STMutableActivityAttributionCatalog;
+@class NSArray, NSSet, NSString, STMutableListData;
 
 @interface STMutableCallingStatusDomainData <STMutableStatusDomainDataDifferencing, STMutableStatusDomainData>
 {
 }
 
-@property(readonly, copy, nonatomic) STMutableActivityAttributionCatalog *attributionCatalog;
+@property(readonly, copy, nonatomic) STMutableListData *callDescriptorListData;
 - (_Bool)applyDiff:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)removeRingingVideoConferenceAttribution:(id)arg1;
@@ -28,7 +28,10 @@
 - (void)removeActiveCallAttribution:(id)arg1;
 - (void)addActiveCallAttribution:(id)arg1;
 @property(copy, nonatomic) NSSet *activeCallAttributions; // @dynamic activeCallAttributions;
-- (id)initWithAttributionCatalog:(id)arg1;
+- (void)removeCallDescriptor:(id)arg1;
+- (void)addCallDescriptor:(id)arg1;
+@property(copy, nonatomic) NSArray *callDescriptors; // @dynamic callDescriptors;
+- (id)initWithCallDescriptorListData:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,6 +11,8 @@
 }
 
 + (void)performPresentationWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)notePresentationEndForRequestWithIdentifier:(id)arg1;
++ (id)identifiersForRequestedPresentations;
 
 @end
 

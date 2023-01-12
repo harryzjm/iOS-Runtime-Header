@@ -6,43 +6,49 @@
 
 #import <objc/NSObject.h>
 
+#import <ChronoServices/BSDescriptionProviding-Protocol.h>
 #import <ChronoServices/CHSWidgetPersonality-Protocol.h>
 #import <ChronoServices/NSCopying-Protocol.h>
+#import <ChronoServices/NSMutableCopying-Protocol.h>
 #import <ChronoServices/NSSecureCoding-Protocol.h>
 
-@class CHSLocalizableString, INCWidgetIntentProvider, INIntent, NSMutableArray, NSString;
+@class INCWidgetIntentProvider, INIntent, NSData, NSMutableArray, NSString;
 
-@interface CHSAvocadoDescriptor : NSObject <CHSWidgetPersonality, NSCopying, NSSecureCoding>
+@interface CHSAvocadoDescriptor : NSObject <NSMutableCopying, CHSWidgetPersonality, NSCopying, NSSecureCoding, BSDescriptionProviding>
 {
     NSString *_extensionBundleIdentifier;
     NSString *_containerBundleIdentifier;
     NSString *_kind;
-    CHSLocalizableString *_localizableDisplayName;
+    NSString *_displayName;
+    NSString *_widgetDescription;
     NSString *_intentType;
-    NSString *_userActivityType;
-    unsigned long long _supportedSizeClasses;
-    CHSLocalizableString *_localizableWidgetDescription;
+    NSString *_eventMachServiceName;
+    NSData *_localeToken;
+    unsigned long long _supportedFamilies;
+    long long _widgetVisibility;
+    _Bool _transparent;
+    NSMutableArray *_fetchDefaultIntentCompletions;
     INCWidgetIntentProvider *_defaultIntentProvider;
     INIntent *_defaultIntent;
-    NSMutableArray *_fetchDefaultIntentCompletions;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableArray *fetchDefaultIntentCompletions; // @synthesize fetchDefaultIntentCompletions=_fetchDefaultIntentCompletions;
-@property(copy, nonatomic) INIntent *defaultIntent; // @synthesize defaultIntent=_defaultIntent;
-@property(retain, nonatomic) INCWidgetIntentProvider *defaultIntentProvider; // @synthesize defaultIntentProvider=_defaultIntentProvider;
-@property(readonly, copy, nonatomic) CHSLocalizableString *localizableWidgetDescription; // @synthesize localizableWidgetDescription=_localizableWidgetDescription;
-@property(readonly, nonatomic) unsigned long long supportedSizeClasses; // @synthesize supportedSizeClasses=_supportedSizeClasses;
-@property(readonly, copy, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
+@property(readonly, nonatomic, getter=isTransparent) _Bool transparent; // @synthesize transparent=_transparent;
+@property(readonly, copy, nonatomic) NSString *eventMachServiceName; // @synthesize eventMachServiceName=_eventMachServiceName;
+@property(readonly, copy, nonatomic) NSData *localeToken; // @synthesize localeToken=_localeToken;
+@property(readonly, nonatomic) long long widgetVisibility; // @synthesize widgetVisibility=_widgetVisibility;
+@property(readonly, copy, nonatomic) NSString *widgetDescription; // @synthesize widgetDescription=_widgetDescription;
+@property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(readonly, copy, nonatomic) NSString *intentType; // @synthesize intentType=_intentType;
-@property(readonly, copy, nonatomic) CHSLocalizableString *localizableDisplayName; // @synthesize localizableDisplayName=_localizableDisplayName;
 @property(readonly, copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
+@property(readonly, nonatomic) unsigned long long supportedFamilies; // @synthesize supportedFamilies=_supportedFamilies;
 @property(readonly, copy, nonatomic) NSString *containerBundleIdentifier; // @synthesize containerBundleIdentifier=_containerBundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *extensionBundleIdentifier; // @synthesize extensionBundleIdentifier=_extensionBundleIdentifier;
-- (_Bool)_isValidSizeClass:(long long)arg1;
+- (id)_intentDescription;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -52,11 +58,15 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)matchesPersonality:(id)arg1;
+@property(readonly, nonatomic, getter=isInternal) _Bool internal;
 - (void)loadDefaultIntent:(CDUnknownBlockType)arg1;
+- (id)cachedDefaultIntent;
 - (id)widgetForFamily:(long long)arg1 intent:(id)arg2;
-- (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 localizableDisplayName:(id)arg4 intentType:(id)arg5 supportedSizeClasses:(unsigned long long)arg6 localizableWidgetDescription:(id)arg7;
-- (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 displayName:(id)arg4 intentType:(id)arg5 userActivityType:(id)arg6 supportedSizeClasses:(unsigned long long)arg7 widgetDescription:(id)arg8;
-- (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 displayName:(id)arg4 supportedSizeClasses:(unsigned long long)arg5 widgetDescription:(id)arg6;
+- (id)_initWithDescriptor:(id)arg1;
+- (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 supportedFamilies:(unsigned long long)arg4 intentType:(id)arg5;
+- (id)initWithExtensionBundleIdentifier:(id)arg1 kind:(id)arg2 supportedFamilies:(unsigned long long)arg3 intentType:(id)arg4;
+@property(readonly, nonatomic) unsigned long long supportedSizeClasses;
+- (id)initWithExtensionBundleIdentifier:(id)arg1 containerBundleIdentifier:(id)arg2 kind:(id)arg3 displayName:(id)arg4 intentType:(id)arg5 supportedSizeClasses:(unsigned long long)arg6 widgetDescription:(id)arg7 widgetVisibility:(long long)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

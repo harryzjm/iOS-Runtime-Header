@@ -6,12 +6,15 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class UIViewController;
+@class UIPresentationController, UIViewController;
 
 @protocol CNPresenterDelegate <NSObject>
 @property(readonly) _Bool isPresentingModalViewController;
 - (void)sender:(id)arg1 dismissViewController:(UIViewController *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)sender:(id)arg1 dismissViewController:(UIViewController *)arg2;
 - (void)sender:(id)arg1 presentViewController:(UIViewController *)arg2;
+
+@optional
+- (void)viewController:(UIViewController *)arg1 presentationControllerWillDismiss:(UIPresentationController *)arg2;
 @end
 

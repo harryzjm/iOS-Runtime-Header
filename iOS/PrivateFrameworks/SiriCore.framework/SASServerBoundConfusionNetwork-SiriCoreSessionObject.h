@@ -7,6 +7,7 @@
 #import <SAObjects/SASServerBoundConfusionNetwork.h>
 
 @interface SASServerBoundConfusionNetwork (SiriCoreSessionObject)
+- (_Bool)siriCore_supportedByRemoteLimitedSession;
 - (_Bool)siriCore_supportedByLocalSession;
 @end
 

@@ -34,6 +34,7 @@
     NSString *_phoneticOrganizationName;
     NSString *_pronunciationGivenName;
     NSString *_pronunciationFamilyName;
+    NSString *_explicitDisplayName;
     NSString *_sortingGivenName;
     NSString *_sortingFamilyName;
     NSString *_sectionForSortingByGivenName;
@@ -90,6 +91,7 @@
     NSString *_downtimeWhitelist;
     NSString *_imageType;
     NSData *_imageHash;
+    NSData *_memojiMetadata;
     NSString *_cropRectID;
     NSData *_cropRectHash;
 }
@@ -114,6 +116,7 @@
 + (id)contactWithDisplayName:(id)arg1 handleStrings:(id)arg2;
 + (id)contactWithDisplayName:(id)arg1 emailOrPhoneNumber:(id)arg2;
 + (id)contact;
++ (id)contactWithIdentifierOnly:(id)arg1;
 + (id)contactWithIdentifier:(id)arg1;
 + (id)makeIdentifier;
 + (id)makeIdentifierString;
@@ -168,6 +171,8 @@
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)contactWithVCardData:(id)arg1 error:(id *)arg2;
 + (id)contactWithArchivedData:(id)arg1 error:(id *)arg2;
++ (_Bool)isVCardDataUTIType:(id)arg1;
++ (_Bool)isContactUTIType:(id)arg1;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)suggestionIDFromContactIdentifier:(id)arg1;
@@ -218,6 +223,8 @@
 - (void)assertKeyIsAvailable:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)selfOrMutableCopy;
+- (id)copyWithCachedExternalData;
 - (id)copyWithSelfAsSnapshot;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -228,6 +235,7 @@
 - (id)init;
 @property(readonly, copy, nonatomic) NSDictionary *activityAlerts;
 @property(readonly, copy, nonatomic) NSString *cardDAVUID;
+@property(readonly, copy, nonatomic) NSData *memojiMetadata;
 @property(readonly, copy, nonatomic) NSData *imageHash;
 @property(readonly, copy, nonatomic) NSString *imageType;
 @property(readonly, copy, nonatomic) NSString *downtimeWhitelist;
@@ -275,6 +283,7 @@
 @property(readonly, copy, nonatomic) NSString *organizationName;
 @property(readonly, copy, nonatomic) NSString *sectionForSortingByGivenName;
 @property(readonly, copy, nonatomic) NSString *sectionForSortingByFamilyName;
+- (id)explicitDisplayName;
 @property(readonly, copy, nonatomic) NSString *pronunciationFamilyName;
 @property(readonly, copy, nonatomic) NSString *pronunciationGivenName;
 @property(readonly, copy, nonatomic) NSString *phoneticOrganizationName;
@@ -312,7 +321,7 @@
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 @property(readonly, nonatomic) _Bool hasSuggestedProperties;
-- (id)copyWithNoSuggestion;
+- (id)copyWithCuratingAllSuggestions;
 @property(readonly, nonatomic) NSString *suggestionFoundInBundleId;
 @property(readonly, nonatomic) SGRecordId *suggestionRecordId;
 @property(readonly, nonatomic, getter=isSuggestedMe) _Bool suggestedMe;

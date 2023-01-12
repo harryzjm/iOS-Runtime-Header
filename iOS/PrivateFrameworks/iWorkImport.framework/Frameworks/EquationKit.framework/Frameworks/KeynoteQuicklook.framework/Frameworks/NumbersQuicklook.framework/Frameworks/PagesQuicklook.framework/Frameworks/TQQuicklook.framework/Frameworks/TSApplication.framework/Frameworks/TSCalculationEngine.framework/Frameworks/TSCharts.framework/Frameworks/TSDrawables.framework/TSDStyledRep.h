@@ -16,7 +16,7 @@
 }
 
 - (id)textureForDescription:(id)arg1;
-- (struct CGImage *)newFrameMaskForViewScale:(double)arg1 frameRect:(struct CGRect *)arg2;
+- (struct CGImage *)newTextureMaskImageForViewScale:(double)arg1 includeFrameMask:(_Bool)arg2 maskRect:(struct CGRect *)arg3;
 - (void)calculateTextureClipBounds:(struct CGRect *)arg1 andOffset:(struct CGPoint *)arg2 withTransform:(struct CGAffineTransform *)arg3 andRectOnCanvas:(struct CGRect *)arg4 textureDescription:(id)arg5 isUsingImageTexture:(_Bool)arg6;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;
 - (struct CGRect)strokeBoundsWithOptions:(unsigned long long)arg1 fallbackBounds:(struct CGRect)arg2;

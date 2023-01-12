@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
-
 __attribute__((visibility("hidden")))
 @interface GEODataURLSessionDownloadTask
 {
-    NSURL *_downloadedFileURL;
 }
 
-- (void).cxx_destruct;
-- (void)didFinishDownloadingToURL:(id)arg1;
-- (id)downloadedFileURL;
 - (id)_createBackingTaskWithRequest:(id)arg1 session:(id)arg2;
 
 @end

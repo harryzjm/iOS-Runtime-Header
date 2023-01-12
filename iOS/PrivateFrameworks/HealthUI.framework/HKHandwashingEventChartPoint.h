@@ -25,9 +25,9 @@
 @property(retain, nonatomic) id <HKGraphSeriesBlockCoordinateInfo> userInfo; // @synthesize userInfo=_userInfo;
 @property(retain, nonatomic) NSDate *midDate; // @synthesize midDate=_midDate;
 @property(nonatomic) _Bool meetsGoal; // @synthesize meetsGoal=_meetsGoal;
-@property(retain, nonatomic) NSNumber *averageDuration; // @synthesize averageDuration=_averageDuration;
-@property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(copy, nonatomic) NSNumber *averageDuration; // @synthesize averageDuration=_averageDuration;
+@property(copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 - (id)maxYValue;
 - (id)minYValue;
 - (id)allYValues;

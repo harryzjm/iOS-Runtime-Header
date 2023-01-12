@@ -24,6 +24,7 @@
     id <_CLKUITimeLabelManager> _fromLabelManager;
     double _fadeStart;
     double _fadeEnd;
+    _Bool _ignoresWindowPauseReason;
     NSString *_timeText;
     _Bool _showsDesignator;
     _Bool _paused;

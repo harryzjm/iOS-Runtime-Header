@@ -14,6 +14,7 @@
 {
 }
 
++ (void)addLoggable:(id)arg1 toDictionary:(id)arg2;
 + (id)stateDictionaryFromLoggables:(id)arg1;
 + (id)modernDatabaseState;
 + (id)miscState;

@@ -34,6 +34,7 @@
 + (void)encapsulateData:(id)arg1 to:(id)arg2 withSupplementalDataTag:(const char *)arg3 dataGeneratorBlock:(CDUnknownBlockType)arg4;
 + (id)directedGraphWithData:(id)arg1 error:(id *)arg2;
 + (id)_unarchivedObject:(id)arg1 ofClass:(Class)arg2 options:(unsigned long long)arg3;
++ (void)setupUnarchivingClaimsForClass:(Class)arg1;
 + (id)_archivedObject:(id)arg1 options:(unsigned long long)arg2;
 + (void *)_copyUnarchived:(id)arg1 length:(unsigned long long *)arg2 options:(unsigned long long)arg3;
 + (id)_archivedBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;

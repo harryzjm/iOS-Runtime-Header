@@ -18,6 +18,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *overrideForAllBoolValues; // @synthesize overrideForAllBoolValues=_overrideForAllBoolValues;
 @property(retain, nonatomic) NSMutableDictionary *overrides; // @synthesize overrides=_overrides;
+- (id)supportPSPhotoFormatProRAWCapability;
+- (id)supportPSRecordHDRVideoCapability;
 - (id)supportsPSDeveloperSettingsCapability;
 - (id)supportsPSTTYCapability;
 - (id)applicationDisplayIdentifiers;

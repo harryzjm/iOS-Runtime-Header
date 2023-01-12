@@ -6,12 +6,14 @@
 
 #import <UIKitCore/_UIClickPresentationInteractionDelegate-Protocol.h>
 
-@class NSArray, UIDragItem, UITargetedDragPreview, UITargetedPreview, _UICPILiveDragPreview, _UIClickPresentation, _UIClickPresentationInteraction;
+@class NSArray, UIDragItem, UIGestureRecognizer, UITargetedDragPreview, UITargetedPreview, _UICPILiveDragPreview, _UIClickPresentation, _UIClickPresentationInteraction;
 @protocol UIDragAnimating, _UIClickHighlightEffect;
 
 @protocol _UIClickPresentationInteractionDelegateInternal <_UIClickPresentationInteractionDelegate>
 
 @optional
+- (_Bool)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 shouldBeDelayedByGestureRecognizer:(UIGestureRecognizer *)arg2;
+- (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 shouldPresentWithCompletion:(void (^)(_Bool))arg2;
 - (_Bool)_clickPresentationInteractionShouldPlayFeedback:(_UIClickPresentationInteraction *)arg1;
 - (void)_clickPresentationInteractionEnded:(_UIClickPresentationInteraction *)arg1 forPresentation:(_UIClickPresentation *)arg2 reason:(unsigned long long)arg3;
 - (void)_clickPresentationInteraction:(_UIClickPresentationInteraction *)arg1 dragSessionDidEndForItems:(NSArray *)arg2;

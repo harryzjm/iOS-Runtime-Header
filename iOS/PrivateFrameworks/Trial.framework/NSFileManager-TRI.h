@@ -7,10 +7,11 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (TRI)
-- (_Bool)triForceRemoveItemAtPath:(id)arg1 error:(id *)arg2;
-- (_Bool)triRemoveDirectoryForPath:(id)arg1 isDirectory:(_Bool)arg2 error:(id *)arg3;
++ (id)triArbitraryFileInDirWithPath:(id)arg1;
++ (_Bool)triIdempotentCreateDirectoryOrFaultWithPath:(id)arg1;
+- (_Bool)triRemoveItemAtPath:(id)arg1 error:(id *)arg2;
 - (id)triCreateDirectoryForPath:(id)arg1 isDirectory:(_Bool)arg2 error:(id *)arg3;
 - (id)triPath:(id)arg1 relativeToParentPath:(id)arg2;
-- (id)_triResolveSymLinks:(id)arg1;
+- (_Bool)triSafeCopyItemAtPath:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
 @end
 

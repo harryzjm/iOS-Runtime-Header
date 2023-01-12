@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (_Bool)removeDeveloperAppAtURL:(id)arg1 error:(id *)arg2;
+- (id)installMacDeveloperAppAtURL:(id)arg1 toURL:(id)arg2 targetURLType:(unsigned long long)arg3 error:(id *)arg4;
 - (_Bool)removeWrappedAppWithBundleID:(id)arg1 atURL:(id)arg2 error:(id *)arg3;
 - (id)updateWrappedAppAt:(id)arg1 forInstalledBundleIdentifier:(id)arg2 installationInfo:(id)arg3 onBehalfOf:(CDStruct_6ad76789)arg4 error:(id *)arg5;
 - (id)createWrappedAppForInstalledBundleIdentifier:(id)arg1 inTargetDirectory:(id)arg2 installationInfo:(id)arg3 onBehalfOf:(CDStruct_6ad76789)arg4 error:(id *)arg5;

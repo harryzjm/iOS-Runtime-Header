@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NanoWeatherComplicationsCompanion/NWColorIndexable-Protocol.h>
+#import <NanoWeatherKitUICompanion/NWKUIColorIndex.h>
+
+#import <NanoWeatherComplicationsCompanion/NWKUIColorIndexable-Protocol.h>
 
 @class NSString, WFTemperature;
 
 __attribute__((visibility("hidden")))
-@interface NWMTemperatureColorIndex <NWColorIndexable>
+@interface NWMTemperatureColorIndex : NWKUIColorIndex <NWKUIColorIndexable>
 {
     WFTemperature *_temperature;
 }

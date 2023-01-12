@@ -4,32 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSMutableDictionary;
 
-#import <HomeRecommendationEngine/NSCopying-Protocol.h>
-
-@class NSMutableArray, NSMutableDictionary, NSPredicate;
-
-@interface HRECharacteristicActionMap : NSObject <NSCopying>
+@interface HRECharacteristicActionMap
 {
-    _Bool _visitedByFlatten;
     NSMutableDictionary *_characteristicTypeValues;
-    NSMutableArray *_childMaps;
-    NSPredicate *_condition;
 }
 
 + (id)conditonalCharacteristicActionMap:(id)arg1 condition:(id)arg2;
 + (id)characteristicActionMap:(id)arg1;
 + (id)emptyMap;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool visitedByFlatten; // @synthesize visitedByFlatten=_visitedByFlatten;
-@property(retain, nonatomic) NSPredicate *condition; // @synthesize condition=_condition;
-@property(retain, nonatomic) NSMutableArray *childMaps; // @synthesize childMaps=_childMaps;
 @property(retain, nonatomic) NSMutableDictionary *characteristicTypeValues; // @synthesize characteristicTypeValues=_characteristicTypeValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)mergeWithActionMaps:(id)arg1;
 - (id)flattenedMapEvaluatedForObject:(id)arg1;
-- (_Bool)conditionSatisfiedByObject:(id)arg1;
+- (id)mergeWithActionMaps:(id)arg1;
 - (id)initWithMap:(id)arg1 condition:(id)arg2;
 
 @end

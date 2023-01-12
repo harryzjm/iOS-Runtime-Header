@@ -6,21 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class ATXHomeScreenCachedSuggestions, ATXInformationStore, NSDictionary, NSHashTable, NSMutableArray, NSString;
+@class ATXHomeScreenCachedSuggestions, ATXHomeScreenEventLogger, ATXInformationStore, ATXWidgetSuggestionDismissManager, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_source;
 
 @interface ATXHomeScreenSuggestionClientGuardedData : NSObject
 {
     NSHashTable *observers;
     NSObject<OS_dispatch_source> *rotationSuppressionTimer;
+    NSObject<OS_dispatch_source> *layoutUpdateSuppressionTimer;
+    _Bool isUserInteractingWithProactiveWidget;
+    NSSet *knownHomeScreenProactiveWidgetUniqueIdsAtTimeOfBlending;
+    _Bool shouldUpdateKnownHomeScreenWidgetUniqueIdsAtTimeOfBlending;
+    NSSet *knownTodayPageProactiveWidgetUniqueIdsAtTimeOfBlending;
+    _Bool shouldUpdateKnownTodayPageWidgetUniqueIdsAtTimeOfBlending;
     ATXHomeScreenCachedSuggestions *suppressedSuggestions;
+    NSDictionary *previousSuggestedSuggestionWidgetLayouts;
     NSDictionary *currentSuggestionWidgetLayouts;
     NSDictionary *currentAppPredictionPanelLayouts;
     NSDictionary *currentStackSuggestions;
     NSMutableArray *currentFallbacks;
+    NSMutableDictionary *pagesToUsedFallbackAppSuggestions;
     NSString *currentBlendingCacheId;
     NSMutableArray *stacksAffectedByDebugRotation;
     ATXInformationStore *store;
+    ATXHomeScreenEventLogger *logger;
+    ATXWidgetSuggestionDismissManager *widgetDismissManager;
 }
 
 - (void).cxx_destruct;

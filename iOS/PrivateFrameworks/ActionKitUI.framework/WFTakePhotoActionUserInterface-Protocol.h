@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKitUI/WFRemoteUserInterface-Protocol.h>
+#import <ActionKitUI/WFActionRemoteUserInterface-Protocol.h>
 
 @class NSString;
 
-@protocol WFTakePhotoActionUserInterface <WFRemoteUserInterface>
-- (void)showWithPhotoCount:(unsigned long long)arg1 device:(NSString *)arg2 completionHandler:(void (^)(NSData *, NSError *))arg3;
+@protocol WFTakePhotoActionUserInterface <WFActionRemoteUserInterface>
+- (void)showWithCameraPreview:(_Bool)arg1 photoCount:(unsigned long long)arg2 device:(NSString *)arg3 shortcutAttribution:(NSString *)arg4 completionHandler:(void (^)(NSData *, NSError *))arg5;
 @end
 

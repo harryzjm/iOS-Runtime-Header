@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, PLBackgroundJobWorkerPriorityTuple;
+@class NSArray, NSMutableArray, PLBackgroundJobStatusCenter, PLBackgroundJobWorkerPriorityTuple;
 @protocol PLBackgroundJobWorkerCoordinatorDelegate;
 
 @interface PLBackgroundJobWorkerCoordinator : NSObject
 {
+    PLBackgroundJobStatusCenter *_statusCenter;
+    short _workerMode;
     NSArray *_workerClassesAsStrings;
     NSMutableArray *_pendingWorkers;
     PLBackgroundJobWorkerPriorityTuple *_currentWorker;
@@ -21,15 +23,16 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <PLBackgroundJobWorkerCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_handleAllWorkersCompleted;
-- (void)_processNextWorker;
+- (void)_processNextWorkerInLibraryBundle:(id)arg1;
 - (void)stopAllBackgorundJobs;
-- (void)_submitBundleForProcessing:(id)arg1 priority:(unsigned long long)arg2 ignorePriority:(_Bool)arg3;
-- (void)submitBundleForProcessing:(id)arg1 priority:(unsigned long long)arg2;
+- (void)_submitBundleForProcessing:(id)arg1 priority:(long long)arg2 ignorePriority:(_Bool)arg3;
+- (void)submitBundleForProcessing:(id)arg1 priority:(long long)arg2;
 - (void)submitBundleForProcessingOnAllWorkerPriorities:(id)arg1;
-- (_Bool)hasPendingJobsForBundle:(id)arg1 priority:(unsigned long long)arg2;
+- (_Bool)hasPendingJobsForBundle:(id)arg1 priority:(long long)arg2;
 - (id)_workersForBundle:(id)arg1;
+- (id)initWithWorkerClassesAsStrings:(id)arg1 workerMode:(short)arg2 statusCenter:(id)arg3;
 - (id)initWithWorkerClassesAsStrings:(id)arg1;
-- (id)init;
+- (id)initWithWorkerCoordinatorWorkerMode:(short)arg1 statusCenter:(id)arg2;
 
 @end
 

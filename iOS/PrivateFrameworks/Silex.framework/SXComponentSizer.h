@@ -31,6 +31,7 @@
 @property(readonly, nonatomic) id <SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
 @property(readonly, nonatomic) id <SXComponent> component; // @synthesize component=_component;
 - (void)saveInfo:(id)arg1 forRenderingPhaseWithIdentifier:(id)arg2;
+- (_Bool)requiresSizeChangeForStateChange:(id)arg1 fromState:(id)arg2;
 - (struct UIEdgeInsets)bordersInsetsWithUnitConverter:(id)arg1;
 - (struct UIEdgeInsets)layoutMarginsWithUnitConverter:(id)arg1;
 - (struct UIEdgeInsets)contentInsetsWithUnitConverter:(id)arg1;

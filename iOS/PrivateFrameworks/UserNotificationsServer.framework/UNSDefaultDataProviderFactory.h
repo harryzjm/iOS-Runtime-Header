@@ -43,8 +43,8 @@
 - (void)_queue_removeDataProviderWithBundleIdentifier:(id)arg1;
 - (void)_queue_createDataProviderWithNotificationSourceDescription:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_queue_setCriticalAlertAuthorization:(_Bool)arg1 forNotificationSourceDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_queue_updateSettingsWithAuthorizationStatus:(long long)arg1 options:(unsigned long long)arg2 expirationDate:(id)arg3 lastUserGrantDate:(id)arg4 forNotificationSourceDescription:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)_queue_updateSettingsWithAuthorizationStatus:(long long)arg1 options:(unsigned long long)arg2 forNotificationSourceDescription:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_queue_updateSettingsWithAuthorizationStatus:(long long)arg1 options:(unsigned long long)arg2 scheduledDeliveryEnabled:(_Bool)arg3 expirationDate:(id)arg4 lastUserGrantDate:(id)arg5 forNotificationSourceDescription:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_queue_updateSettingsWithAuthorizationStatus:(long long)arg1 options:(unsigned long long)arg2 scheduledDeliveryEnabled:(_Bool)arg3 forNotificationSourceDescription:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_queue_sectionInfoForBundleIdentifier:(id)arg1;
 - (id)_queue_effectiveSectionInfoForBundleIdentifier:(id)arg1;
 - (void)_queue_setSectionInfo:(id)arg1 forBundleIdentifier:(id)arg2;
@@ -56,10 +56,10 @@
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)setCriticalAlertAuthorization:(_Bool)arg1 forNotificationSourceDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateAuthorizationWithOptions:(unsigned long long)arg1 forNotificationSourceDescription:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateAuthorizationWithOptions:(unsigned long long)arg1 scheduledDeliveryEnabled:(_Bool)arg2 forNotificationSourceDescription:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestRemoveAuthorizationforNotificationSourceDescription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)requestAuthorizationStatus:(long long)arg1 withOptions:(unsigned long long)arg2 expirationDate:(id)arg3 lastUserGrantDate:(id)arg4 forNotificationSourceDescription:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)requestAuthorizationStatus:(long long)arg1 withOptions:(unsigned long long)arg2 forNotificationSourceDescription:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)requestAuthorizationStatus:(long long)arg1 withOptions:(unsigned long long)arg2 scheduledDeliveryEnabled:(_Bool)arg3 expirationDate:(id)arg4 lastUserGrantDate:(id)arg5 forNotificationSourceDescription:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)requestAuthorizationStatus:(long long)arg1 withOptions:(unsigned long long)arg2 scheduledDeliveryEnabled:(_Bool)arg3 forNotificationSourceDescription:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)notificationSettingsForTopicsWithBundleIdentifier:(id)arg1;
 - (id)notificationSettingsForBundleIdentifier:(id)arg1;
 - (void)dealloc;

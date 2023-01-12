@@ -22,12 +22,12 @@
 @property(readonly, copy, nonatomic) NSSet *gainedInheritances; // @synthesize gainedInheritances=_gainedInheritances;
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithGainedInheritances:(id)arg1 lostInheritances:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

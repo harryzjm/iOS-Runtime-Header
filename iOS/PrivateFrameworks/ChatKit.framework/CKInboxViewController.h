@@ -6,23 +6,25 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/UITableViewDelegate-Protocol.h>
+#import <ChatKit/UICollectionViewDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UITableView, UITableViewDiffableDataSource, UITextView;
+@class NSMutableArray, NSString, UICollectionView, UICollectionViewDiffableDataSource, UITextView;
 @protocol CKConversationListControllerProtocol;
 
-@interface CKInboxViewController : UIViewController <UITextViewDelegate, UITableViewDelegate>
+@interface CKInboxViewController : UIViewController <UITextViewDelegate, UICollectionViewDelegate>
 {
     _Bool _isVisible;
     UIViewController<CKConversationListControllerProtocol> *_conversationListController;
-    UITableViewDiffableDataSource *_tableViewDataSource;
-    UITableView *_tableView;
+    UICollectionViewDiffableDataSource *_collectionViewDataSource;
+    UICollectionView *_collectionView;
     NSMutableArray *_tableCellDataArray;
     NSMutableArray *_categoriesCellDataArray;
     NSMutableArray *_junkCellDataArray;
     NSMutableArray *_footerCellDataArray;
     UITextView *_stickyFooterTextView;
+    UITextView *_scrollingFooterTextView;
+    long long _primaryIndexSection;
     long long _categoriesIndexSection;
     long long _junkIndexSection;
     long long _footerIndexSection;
@@ -32,14 +34,18 @@
 @property(nonatomic) long long footerIndexSection; // @synthesize footerIndexSection=_footerIndexSection;
 @property(nonatomic) long long junkIndexSection; // @synthesize junkIndexSection=_junkIndexSection;
 @property(nonatomic) long long categoriesIndexSection; // @synthesize categoriesIndexSection=_categoriesIndexSection;
+@property(nonatomic) long long primaryIndexSection; // @synthesize primaryIndexSection=_primaryIndexSection;
+@property(retain, nonatomic) UITextView *scrollingFooterTextView; // @synthesize scrollingFooterTextView=_scrollingFooterTextView;
 @property(retain, nonatomic) UITextView *stickyFooterTextView; // @synthesize stickyFooterTextView=_stickyFooterTextView;
 @property(retain, nonatomic) NSMutableArray *footerCellDataArray; // @synthesize footerCellDataArray=_footerCellDataArray;
 @property(retain, nonatomic) NSMutableArray *junkCellDataArray; // @synthesize junkCellDataArray=_junkCellDataArray;
 @property(retain, nonatomic) NSMutableArray *categoriesCellDataArray; // @synthesize categoriesCellDataArray=_categoriesCellDataArray;
 @property(retain, nonatomic) NSMutableArray *tableCellDataArray; // @synthesize tableCellDataArray=_tableCellDataArray;
-@property(retain, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-@property(retain, nonatomic) UITableViewDiffableDataSource *tableViewDataSource; // @synthesize tableViewDataSource=_tableViewDataSource;
+@property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+@property(retain, nonatomic) UICollectionViewDiffableDataSource *collectionViewDataSource; // @synthesize collectionViewDataSource=_collectionViewDataSource;
 @property(retain, nonatomic) UIViewController<CKConversationListControllerProtocol> *conversationListController; // @synthesize conversationListController=_conversationListController;
+- (id)_getHeaderStringForExtension:(id)arg1;
+- (id)_setHeaderAttributedString;
 - (id)_getSpamExtensionName;
 - (_Bool)_spamFilteringEnabled;
 - (void)_contentSizeCategoryChanged;
@@ -47,17 +53,16 @@
 - (void)_chatUnreadCountDidChange:(id)arg1;
 - (id)_conversationList;
 - (void)updateBackButton;
-- (void)reloadTableViewDataWithConversationListUpdate:(_Bool)arg1;
-- (void)reloadTableViewData;
+- (void)reloadCollectionViewDataWithConversationListUpdate:(_Bool)arg1;
+- (void)reloadCollectionViewData;
 - (id)footerTextView;
 - (_Bool)shouldHideInboxFooterTextView;
 - (unsigned long long)_filterModeForIndexPath:(id)arg1;
+- (id)_indexPathForFilterMode:(unsigned long long)arg1;
 - (id)_unreadCountStringForIndexPath:(id)arg1;
-- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)_highlightCurrentfilterMode;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

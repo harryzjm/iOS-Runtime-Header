@@ -9,18 +9,22 @@
 #import <VoiceServices/NSCopying-Protocol.h>
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, NSString, NSURL;
+@class NSArray, NSAttributedString, NSDictionary, NSString, NSURL, NSUUID;
 
 @interface VSSpeechRequest : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _shouldWaitCurrentSpeaking;
     _Bool _shouldCache;
+    _Bool _shouldWhisper;
     _Bool _disableCompactVoiceFallback;
     _Bool _forceServerTTS;
     _Bool _canUseServerTTS;
     _Bool _retryDeviceOnNetworkStall;
+    _Bool _shouldStreamAudioData;
     unsigned int _audioSessionID;
     NSString *_text;
     NSString *_languageCode;
+    NSString *_voiceName;
     long long _footprint;
     long long _voiceType;
     long long _gender;
@@ -32,26 +36,29 @@
     NSURL *_resourceListURL;
     NSURL *_resourceSearchPathURL;
     NSArray *_customResourceURLs;
+    NSUUID *_siriRequestId;
     NSAttributedString *_attributedText;
     NSString *_utterance;
     NSString *_clientBundleIdentifier;
+    NSUUID *_accessoryID;
     unsigned long long _requestCreatedTimestamp;
     CDUnknownBlockType _stopHandler;
     CDUnknownBlockType _pauseHandler;
     long long _pointer;
-    NSString *_voiceName;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
 @property(nonatomic) long long pointer; // @synthesize pointer=_pointer;
 @property(copy, nonatomic) CDUnknownBlockType pauseHandler; // @synthesize pauseHandler=_pauseHandler;
 @property(copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property(nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
+@property(copy, nonatomic) NSUUID *accessoryID; // @synthesize accessoryID=_accessoryID;
 @property(copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property(copy, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
+@property(nonatomic) _Bool shouldStreamAudioData; // @synthesize shouldStreamAudioData=_shouldStreamAudioData;
 @property(copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
+@property(retain, nonatomic) NSUUID *siriRequestId; // @synthesize siriRequestId=_siriRequestId;
 @property(retain, nonatomic) NSArray *customResourceURLs; // @synthesize customResourceURLs=_customResourceURLs;
 @property(copy, nonatomic) NSURL *resourceSearchPathURL; // @synthesize resourceSearchPathURL=_resourceSearchPathURL;
 @property(copy, nonatomic) NSURL *resourceListURL; // @synthesize resourceListURL=_resourceListURL;
@@ -61,14 +68,17 @@
 @property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(nonatomic) _Bool disableCompactVoiceFallback; // @synthesize disableCompactVoiceFallback=_disableCompactVoiceFallback;
 @property(copy, nonatomic) NSDictionary *contextInfo; // @synthesize contextInfo=_contextInfo;
+@property(nonatomic) _Bool shouldWhisper; // @synthesize shouldWhisper=_shouldWhisper;
 @property(nonatomic) double volume; // @synthesize volume=_volume;
 @property(nonatomic) double pitch; // @synthesize pitch=_pitch;
 @property(nonatomic) double rate; // @synthesize rate=_rate;
 @property(nonatomic) _Bool shouldCache; // @synthesize shouldCache=_shouldCache;
+@property(nonatomic) _Bool shouldWaitCurrentSpeaking; // @synthesize shouldWaitCurrentSpeaking=_shouldWaitCurrentSpeaking;
 @property(copy, nonatomic) NSURL *outputPath; // @synthesize outputPath=_outputPath;
 @property(nonatomic) long long gender; // @synthesize gender=_gender;
 @property(nonatomic) long long voiceType; // @synthesize voiceType=_voiceType;
 @property(nonatomic) long long footprint; // @synthesize footprint=_footprint;
+@property(copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
 @property(copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 - (_Bool)canLogRequestText;

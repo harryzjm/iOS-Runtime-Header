@@ -12,10 +12,13 @@
 {
     MISSING_TYPE *deviceState;
     MISSING_TYPE *metricsState;
+    MISSING_TYPE *requestData;
     MISSING_TYPE *aceServiceInvoker;
     MISSING_TYPE *sharedContextService;
-    MISSING_TYPE *featureFlags;
-    MISSING_TYPE *storedContext;
+    MISSING_TYPE *flowOutputPublisher;
+    MISSING_TYPE *storedInvocationState;
+    MISSING_TYPE *clientTaskState;
+    MISSING_TYPE *$__lazy_storage_$_eventBus;
 }
 
 @end

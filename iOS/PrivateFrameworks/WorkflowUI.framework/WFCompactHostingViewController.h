@@ -6,16 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <WorkflowUI/WFActionUserInterfaceListenerDelegate-Protocol.h>
+#import <WorkflowUI/WFActionUserInterfaceDelegate-Protocol.h>
 #import <WorkflowUI/WFCompactDialogViewControllerDelegate-Protocol.h>
 
-@class MTMaterialView, NSProgress, NSString, NSTimer, UIView, WFActionUserInterfaceListener, WFCompactStatusViewController, WFCompactUnlockService, WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
+@class MTMaterialView, NSProgress, NSString, NSTimer, UIView, WFActionUserInterfaceListener, WFCompactStatusViewController, WFCompactUnlockService, WFDebouncer, WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
 
-@interface WFCompactHostingViewController : UIViewController <WFActionUserInterfaceListenerDelegate, WFCompactDialogViewControllerDelegate>
+@interface WFCompactHostingViewController : UIViewController <WFActionUserInterfaceDelegate, WFCompactDialogViewControllerDelegate>
 {
     _Bool _screenIsLocked;
     _Bool _hasViewAppeared;
     _Bool _handlingRequest;
+    _Bool _preparingToPresentDialog;
     WFActionUserInterfaceListener *_actionInterfaceListener;
     WFWorkflowRunningContext *_runningContext;
     WFDialogAttribution *_runningAttribution;
@@ -25,16 +26,21 @@
     MTMaterialView *_materialView;
     WFCompactStatusViewController *_statusViewController;
     NSTimer *_statusViewTimer;
+    unsigned long long _allowedInterfaceOrientations;
     WFDialogRequest *_pendingRequest;
     CDUnknownBlockType _requestCompletionHandler;
     WFCompactUnlockService *_unlockService;
+    WFDebouncer *_singleStepShortcutCompletionDialogDebouncer;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) WFDebouncer *singleStepShortcutCompletionDialogDebouncer; // @synthesize singleStepShortcutCompletionDialogDebouncer=_singleStepShortcutCompletionDialogDebouncer;
 @property(readonly, nonatomic) WFCompactUnlockService *unlockService; // @synthesize unlockService=_unlockService;
 @property(copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
+@property(nonatomic) _Bool preparingToPresentDialog; // @synthesize preparingToPresentDialog=_preparingToPresentDialog;
 @property(nonatomic) _Bool handlingRequest; // @synthesize handlingRequest=_handlingRequest;
 @property(retain, nonatomic) WFDialogRequest *pendingRequest; // @synthesize pendingRequest=_pendingRequest;
+@property(nonatomic) unsigned long long allowedInterfaceOrientations; // @synthesize allowedInterfaceOrientations=_allowedInterfaceOrientations;
 @property(retain, nonatomic) NSTimer *statusViewTimer; // @synthesize statusViewTimer=_statusViewTimer;
 @property(retain, nonatomic) WFCompactStatusViewController *statusViewController; // @synthesize statusViewController=_statusViewController;
 @property(retain, nonatomic) MTMaterialView *materialView; // @synthesize materialView=_materialView;
@@ -47,21 +53,27 @@
 @property(readonly, nonatomic) _Bool screenIsLocked; // @synthesize screenIsLocked=_screenIsLocked;
 @property(retain, nonatomic) WFActionUserInterfaceListener *actionInterfaceListener; // @synthesize actionInterfaceListener=_actionInterfaceListener;
 - (_Bool)_canShowWhileLocked;
-- (void)actionUserInterfaceListener:(id)arg1 showViewInPlatter:(id)arg2 attribution:(id)arg3;
-- (void)dismissPersistentChromeWithSuccess:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dismissPlatterForActionUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)actionUserInterface:(id)arg1 setSupportedInterfaceOrientations:(unsigned long long)arg2;
+- (void)actionUserInterface:(id)arg1 showViewControllerInPlatter:(id)arg2;
+- (id)viewControllerForPresentingActionUserInterface:(id)arg1;
+- (void)dismissPersistentChromeWithSuccess:(_Bool)arg1 customAttributions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dismissPlatterViewControllerAndUpdateChromeAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dismissPlatterViewControllerIfNecessaryAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dialogViewController:(id)arg1 didFinishWithResponse:(id)arg2 waitForFollowUpRequest:(_Bool)arg3;
 - (void)handlePendingRequest;
 - (void)handleRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setTouchPassthrough:(_Bool)arg1;
 - (void)clearStatusViewTimer;
 - (void)scheduleStatusViewToAppear;
 - (void)presentStatusViewController;
 - (void)updateChromeVisibilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)presentChromeIfPossible;
-- (void)preparePersistentChromeWithContext:(id)arg1 attribution:(id)arg2;
+- (void)preparePersistentChromeWithContext:(id)arg1 attributions:(id)arg2;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)keyboardWillChange;
 - (void)cancelAndDismiss;
 - (void)handleTapGesture:(id)arg1;

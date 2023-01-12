@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoard/SBChainableModifierQuery-Protocol.h>
+#import <SpringBoard/SBSwitcherQueryDefaultImplementationProviding-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, SBAppLayout, SBSwitcherAnimationAttributes, SBSwitcherKeyboardSuppressionMode, SBSwitcherLiveContentRasterizationAttributes;
+@class NSArray, NSDictionary, NSSet, NSString, SBAppLayout, SBSwitcherAnimationAttributes, SBSwitcherKeyboardSuppressionMode, SBSwitcherShelf;
 @protocol SBSwitcherLayoutElementProviding;
 
-@protocol SBSwitcherQueryProviding <SBChainableModifierQuery>
+@protocol SBSwitcherQueryProviding <SBSwitcherQueryDefaultImplementationProviding>
+- (SBAppLayout *)appLayoutToAttachSlideOverTongue;
+- (unsigned long long)slideOverTongueDirection;
+- (unsigned long long)slideOverTongueState;
+- (_Bool)wantsSlideOverTongue;
 - (SBAppLayout *)appLayoutForReceivingHardwareButtonEvents;
 - (_Bool)wantsAsynchronousSurfaceRetentionAssertion;
-- (SBSwitcherLiveContentRasterizationAttributes *)liveContentRasterizationAttributesForAppLayout:(SBAppLayout *)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(SBAppLayout *)arg1;
 - (SBSwitcherKeyboardSuppressionMode *)keyboardSuppressionMode;
 - (NSDictionary *)appLayoutsToResignActive;
 - (double)dockWindowLevel;
@@ -25,9 +29,11 @@
 - (unsigned long long)indexToScrollToAfterInsertingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
 - (_Bool)shouldBringCardToFrontDuringInsertionOrRemoval;
-- (_Bool)shouldAnimateInsertionOrRemovalAtIndex:(unsigned long long)arg1;
-- (_Bool)isIndexKillable:(unsigned long long)arg1;
-- (_Bool)isIndexSelectable:(unsigned long long)arg1;
+- (_Bool)shouldAnimateInsertionOrRemovalOfAppLayout:(SBAppLayout *)arg1 atIndex:(unsigned long long)arg2;
+- (_Bool)isIndexRubberbandableForSwipeToKill:(unsigned long long)arg1;
+- (_Bool)isLayoutRoleKillable:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 atIndex:(unsigned long long)arg3;
+- (_Bool)isLayoutRoleDraggable:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
+- (_Bool)isLayoutRoleSelectable:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldPerformCrossfadeForReduceMotion;
 - (_Bool)shouldPerformRotationAnimationForOrientationChange;
 - (_Bool)shouldFireTransitionCompletionInDefaultRunLoopMode;
@@ -35,7 +41,6 @@
 - (unsigned long long)transactionCompletionOptions;
 - (SBAppLayout *)appLayoutToScrollToBeforeReopeningClosedWindows;
 - (SBAppLayout *)appLayoutToScrollToBeforeTransitioning;
-- (NSArray *)topMostLayoutElements;
 - (long long)preferredSnapshotOrientationForAppLayout:(SBAppLayout *)arg1;
 - (NSArray *)appLayoutsToCacheFullsizeSnapshots;
 - (NSArray *)appLayoutsToCacheSnapshots;
@@ -55,8 +60,11 @@
 - (double)containerStatusBarAnimationDuration;
 - (_Bool)isContainerStatusBarVisible;
 - (_Bool)shouldRubberbandFullScreenHomeGrabberView;
-- (_Bool)isHomeGrabberVisibleForIndex:(unsigned long long)arg1;
+- (_Bool)canPerformKeyboardShortcutAction:(long long)arg1 forBundleIdentifier:(NSString *)arg2;
+- (NSSet *)neighboringAppLayoutsForFocusedAppLayout:(SBAppLayout *)arg1;
+- (_Bool)isFocusEnabledForAppLayout:(SBAppLayout *)arg1;
 - (_Bool)isItemContainerPointerInteractionEnabled;
+- (_Bool)shouldScrollViewBlockTouches;
 - (_Bool)isScrollEnabled;
 - (double)switcherBackdropBlurProgress;
 - (long long)switcherBackdropBlurType;
@@ -70,24 +78,35 @@
 - (double)homeScreenScale;
 - (double)homeScreenAlpha;
 - (double)wallpaperScale;
-- (long long)shadowStyleForAppLayout:(SBAppLayout *)arg1;
-- (_Bool)shouldAllowContentViewTouchesForIndex:(unsigned long long)arg1;
+- (long long)shadowStyleForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
+- (_Bool)shouldAllowContentViewTouchesForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldUseBackgroundWallpaperTreatmentForIndex:(unsigned long long)arg1;
 - (_Bool)shouldUseBrightMaterialForIndex:(unsigned long long)arg1;
 - (_Bool)shouldScaleOverlayToFillBoundsAtIndex:(unsigned long long)arg1;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
+- (double)blurViewIconScaleForIndex:(unsigned long long)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
 - (double)shadowOffsetForIndex:(unsigned long long)arg1;
-- (double)shadowOpacityForIndex:(unsigned long long)arg1;
+- (double)shadowOpacityForLayoutRole:(long long)arg1 atIndex:(unsigned long long)arg2;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
 - (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
+- (long long)headerStyleForIndex:(unsigned long long)arg1;
 - (double)lighteningAlphaForIndex:(unsigned long long)arg1;
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
-- (double)darkeningAlphaForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 atIndex:(unsigned long long)arg3;
+- (NSArray *)topMostLayoutElements;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
 - (_Bool)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
+- (_Bool)isResizeGrabberVisibleForAppLayout:(SBAppLayout *)arg1;
+- (_Bool)shouldAccessoryDrawShadowForAppLayout:(SBAppLayout *)arg1;
+- (struct CGRect)shelfBackgroundBlurFrame;
+- (double)shelfBackgroundBlurOpacity;
+- (struct CGRect)frameForShelf:(SBSwitcherShelf *)arg1;
+- (SBAppLayout *)containerLeafAppLayoutForShelf:(SBSwitcherShelf *)arg1;
+- (NSSet *)visibleShelves;
+- (NSSet *)visibleHomeAffordanceLayoutElements;
+- (_Bool)isHomeAffordanceSupportedForAppLayout:(SBAppLayout *)arg1;
+- (double)backgroundOpacityForIndex:(unsigned long long)arg1;
 - (SBSwitcherAnimationAttributes *)animationAttributesForLayoutElement:(id <SBSwitcherLayoutElementProviding>)arg1;
-- (struct CGRect)fullyPresentedFrameForAppLayout:(SBAppLayout *)arg1;
 - (double)contentViewScale;
 - (NSSet *)visibleAppLayouts;
 - (double)rotationAngleForIndex:(unsigned long long)arg1;

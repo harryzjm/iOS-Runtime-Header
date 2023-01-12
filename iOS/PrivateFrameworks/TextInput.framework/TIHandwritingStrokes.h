@@ -11,7 +11,7 @@
 
 @interface TIHandwritingStrokes : NSObject <NSCopying, NSSecureCoding>
 {
-    struct vector<std::__1::vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>, std::__1::allocator<std::__1::vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>>> _strokes;
+    struct vector<std::vector<TIHandwritingPoint>, std::allocator<std::vector<TIHandwritingPoint>>> _strokes;
     _Bool _continuePreviousStroke;
 }
 

@@ -21,6 +21,7 @@
 
 + (id)gradientStopWithColor:(id)arg1 fraction:(double)arg2 inflection:(double)arg3;
 + (id)gradientStopWithColor:(id)arg1 fraction:(double)arg2;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) double inflection; // @synthesize inflection=mInflection;
 @property(readonly, nonatomic) double fraction; // @synthesize fraction=mFraction;
 @property(readonly, copy, nonatomic) TSUColor *color; // @synthesize color=mColor;
@@ -36,12 +37,11 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (void)dealloc;
 - (id)initWithGradientStop:(id)arg1;
 - (id)initWithColor:(id)arg1 fraction:(double)arg2 inflection:(double)arg3;
 - (id)initWithColor:(id)arg1 fraction:(double)arg2;
-- (void)saveToArchive:(struct GradientArchive_GradientStop *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct GradientArchive_GradientStop *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

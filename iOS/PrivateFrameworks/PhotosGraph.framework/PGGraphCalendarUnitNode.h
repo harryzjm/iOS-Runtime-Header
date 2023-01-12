@@ -4,23 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PGGraphCalendarUnitNode
+#import <PhotosGraph/MAUniquelyIdentifiableNode-Protocol.h>
+#import <PhotosGraph/PGAssetCollectionFeature-Protocol.h>
+
+@class MANodeFilter, NSString;
+
+@interface PGGraphCalendarUnitNode <PGAssetCollectionFeature, MAUniquelyIdentifiableNode>
 {
     unsigned int _calendarUnitValue:16;
     unsigned int _calendarUnit:8;
 }
 
-+ (id)dateOfYear;
-@property(nonatomic) long long calendarUnitValue; // @synthesize calendarUnitValue=_calendarUnitValue;
++ (id)weekOfYearFilter;
++ (id)weekOfMonthFilter;
++ (id)yearFilter;
++ (id)monthDayFilter;
++ (id)monthFilter;
++ (id)dayFilter;
++ (long long)encodedMonthDayForMonth:(long long)arg1 day:(long long)arg2;
++ (struct PGCalendarUnitMonthDayValue)monthDayValueForMonthDayNode:(id)arg1;
++ (struct PGCalendarUnitMonthDayValue)monthDayValueForMonthDayNodeCalendarUnitValue:(long long)arg1;
++ (id)propertiesWithCalendarUnitValue:(long long)arg1;
++ (id)propertiesForMonth:(long long)arg1 day:(long long)arg2;
+@property(readonly, nonatomic) long long calendarUnitValue; // @synthesize calendarUnitValue=_calendarUnitValue;
+- (id)collection;
+@property(readonly, nonatomic) NSString *featureIdentifier;
+@property(readonly, nonatomic) unsigned long long featureType;
 - (id)name;
+@property(readonly, nonatomic) MANodeFilter *uniquelyIdentifyingFilter;
 - (unsigned short)domain;
 - (id)label;
-- (id)description;
+@property(readonly, copy) NSString *description;
+- (id)propertyForKey:(id)arg1;
 - (id)propertyDictionary;
 - (_Bool)hasProperties:(id)arg1;
-- (void)setLocalProperties:(id)arg1;
-- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
-- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithCalendarUnit:(unsigned long long)arg1 value:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

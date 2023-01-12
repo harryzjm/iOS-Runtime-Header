@@ -21,9 +21,13 @@
     unsigned long long _sourceResourceType;
 }
 
++ (_Bool)usesFakeDerivatives;
++ (id)predicateMatchingDynamicFingerprintForKey:(id)arg1;
++ (_Bool)isDynamicFingerprint:(id)arg1;
 + (unsigned long long)countOfResourceTypes;
 + (void)getAllResourceTypesToDownloadPrioritizeNonDerivatives:(const unsigned long long **)arg1;
 + (void)getAllResourceTypesToDownload:(const unsigned long long **)arg1;
++ (_Bool)isAdjustedResourceType:(unsigned long long)arg1;
 + (_Bool)isNonDerivativeResourceType:(unsigned long long)arg1;
 + (_Bool)isDerivativeResourceType:(unsigned long long)arg1;
 + (void)enumerateResourceTypesWithBlock:(CDUnknownBlockType)arg1;

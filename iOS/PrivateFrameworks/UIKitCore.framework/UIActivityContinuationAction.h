@@ -4,24 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISActivityContinuationAction.h>
 
-@class NSData, NSDate, NSString;
-
-@interface UIActivityContinuationAction : BSAction
+@interface UIActivityContinuationAction : UISActivityContinuationAction
 {
 }
-
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
-- (long long)UIActionType;
-@property(readonly, nonatomic) NSData *userActivityData;
-@property(readonly, nonatomic) NSDate *lastUpdateTime;
-@property(readonly, nonatomic) NSString *activityType;
-@property(readonly, nonatomic) NSString *originatingDeviceName;
-@property(readonly, nonatomic) NSString *originatingDeviceType;
-@property(readonly, nonatomic) NSString *activityTypeIdentifier;
-@property(readonly, nonatomic) NSString *identifier;
-- (id)initWithSettings:(id)arg1;
 
 @end
 

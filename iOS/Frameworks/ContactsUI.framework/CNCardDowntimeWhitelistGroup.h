@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)isMultiValue;
 - (id)policyForItem:(id)arg1;
+- (_Bool)modified;
 - (id)editingItems;
 - (id)displayItems;
 

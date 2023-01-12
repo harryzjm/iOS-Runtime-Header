@@ -10,7 +10,7 @@
 
 @interface ADHistory : NSObject
 {
-    struct Database *_database;
+    void *_database;
     NSString *_path;
 }
 

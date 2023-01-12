@@ -37,32 +37,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *taskName; // @synthesize taskName=_taskName;
-@property(readonly, nonatomic) long long waitingToRun; // @synthesize waitingToRun=_waitingToRun;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
-- (_Bool)doForced;
-- (_Bool)_runBlockWithAccessibilityAssertion:(id)arg1 error:(id *)arg2;
-- (_Bool)doIfWaitingWithError:(id *)arg1;
-- (void)doIfWaitingOnMaintenanceQueueWithCompletion:(CDUnknownBlockType)arg1;
-- (void)stop;
-- (void)start;
-- (void)_queue_registerActivity;
-- (_Bool)_queue_shouldAttemptToSubmit;
-@property(readonly, nonatomic) long long intervalCounter;
-@property(readonly, nonatomic) NSDate *lastSubmissionAttemptDate;
-@property(readonly, nonatomic) NSDate *lastProcessedDate;
-- (void)reset;
-- (void)setLastProcessedDate:(id)arg1;
-- (void)_queue_prepareAccessibilityAssertionIfNeeded;
-- (void)_queue_setLastProcessedDate:(id)arg1;
-- (void)_queue_setIntervalCounter:(long long)arg1;
-- (void)_queue_setLastSubmissionAttemptDate:(id)arg1;
-- (void)_queue_setWaitingToRun:(long long)arg1;
-- (void)_beginWaitingToRun;
-- (void)_loadState;
 - (void)dealloc;
-- (id)initWithTaskName:(id)arg1 keyPrefix:(id)arg2 xpcInterval:(long long)arg3 xpcGraceInterval:(long long)arg4 requiresClassB:(_Bool)arg5 intervalMultiple:(long long)arg6 maximumAttemptCount:(long long)arg7 minimumDelayBetweenAttempts:(double)arg8 profile:(id)arg9 block:(CDUnknownBlockType)arg10;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -30,22 +30,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double lastUpdateTimestamp; // @synthesize lastUpdateTimestamp=_lastUpdateTimestamp;
-@property(nonatomic) double inProgressGestureStartTimestamp; // @synthesize inProgressGestureStartTimestamp=_inProgressGestureStartTimestamp;
-@property(retain, nonatomic) NSUUID *inProgressGestureStrokeUUID; // @synthesize inProgressGestureStrokeUUID=_inProgressGestureStrokeUUID;
-@property(nonatomic) struct _NSRange inProgressGestureRangeToDelete; // @synthesize inProgressGestureRangeToDelete=_inProgressGestureRangeToDelete;
-@property(nonatomic) struct _NSRange inProgressGestureSelectionRange; // @synthesize inProgressGestureSelectionRange=_inProgressGestureSelectionRange;
-@property(nonatomic) struct _NSRange inProgressGestureInitialSelectedRange; // @synthesize inProgressGestureInitialSelectedRange=_inProgressGestureInitialSelectedRange;
-@property(nonatomic) long long lastCommittedCharacterLevelPosition; // @synthesize lastCommittedCharacterLevelPosition=_lastCommittedCharacterLevelPosition;
-@property(nonatomic) long long sessionCommitLength; // @synthesize sessionCommitLength=_sessionCommitLength;
-@property(copy, nonatomic) NSString *activePreviewText; // @synthesize activePreviewText=_activePreviewText;
-@property(copy, nonatomic) NSString *uncommittedPendingText; // @synthesize uncommittedPendingText=_uncommittedPendingText;
-@property(copy, nonatomic) NSNumber *writingSessionIdentifier; // @synthesize writingSessionIdentifier=_writingSessionIdentifier;
-@property(retain, nonatomic) PKTextInputHandwritingShot *handwritingShot; // @synthesize handwritingShot=_handwritingShot;
-@property(retain, nonatomic) CHTextInputQueryItem *lastQueryItem; // @synthesize lastQueryItem=_lastQueryItem;
-@property(copy, nonatomic) NSNumber *elementRecognitionIdentifier; // @synthesize elementRecognitionIdentifier=_elementRecognitionIdentifier;
 - (void)reportDebugStateDescription:(CDUnknownBlockType)arg1;
-- (void)clear;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

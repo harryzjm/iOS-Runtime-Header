@@ -13,7 +13,8 @@
 
 @interface PXPeopleBootstrapFinalViewController : UIViewController <PXPeopleFlowViewController>
 {
-    id _context;
+    _Bool _wantsCancelButton;
+    PXPeopleBootstrapContext *_bootstrapContext;
     UILabel *_promptLabel;
     UILabel *_descriptionLabel;
 }
@@ -21,13 +22,13 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property(readonly, nonatomic) __weak UILabel *promptLabel; // @synthesize promptLabel=_promptLabel;
-@property(retain, nonatomic) id context; // @synthesize context=_context;
+@property(readonly, nonatomic) PXPeopleBootstrapContext *bootstrapContext; // @synthesize bootstrapContext=_bootstrapContext;
+@property(readonly, nonatomic) _Bool wantsCancelButton; // @synthesize wantsCancelButton=_wantsCancelButton;
 @property(readonly, nonatomic) struct CGSize preferredSize;
 - (id)_localizedTitleString;
 - (id)_localizedDescriptionString;
 - (id)_localizedPromptString;
 - (void)_updateNavigationBarForCurrentTraitCollection;
-@property(readonly, nonatomic) PXPeopleBootstrapContext *bootstrapContext;
 - (void)updateUI;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -36,6 +37,7 @@
 
 // Remaining properties
 @property(nonatomic) __weak id <PXPeopleFlowViewControllerActionDelegate> actionDelegate;
+@property(readonly, nonatomic) _Bool controlsAdvancementInternally;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

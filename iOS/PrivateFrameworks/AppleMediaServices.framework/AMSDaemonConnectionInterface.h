@@ -10,12 +10,16 @@
 {
 }
 
-+ (void)_setUpSecurityInterfaceHandleResponseSelector:(id)arg1;
++ (void)_setUpSecurityInterfaceSilentEnrollmentSelector:(id)arg1;
 + (void)_setUpSecurityInterfaceSignedHeadersSelector:(id)arg1;
-+ (void)_setUpSecurityInterfaceBiometricProxy:(id)arg1;
++ (void)_setUpSecurityInterfaceHandleResponseSelector:(id)arg1;
++ (void)_setUpSecurityInterfaceFraudScoreSelectors:(id)arg1;
++ (void)_setUpSecurityInterfaceBiometricSelectors:(id)arg1;
++ (void)_setUpSecurityInterfaceApplePayClassic:(id)arg1;
 + (id)_securityServiceInterface;
 + (id)_securityClientInterface;
 + (void)_configureURLPresentationDelegateClasses:(id)arg1;
++ (id)_fraudReportServiceInterface;
 + (id)_deviceMessengerServiceInterface;
 + (id)_deviceMessengerClientInterface;
 + (id)interface;

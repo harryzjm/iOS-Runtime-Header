@@ -13,6 +13,7 @@
 @interface _TtC17_StoreKit_SwiftUIP33_7A1CD05574219937BB53A614E2FE018426AppStoreOverlayCoordinator : NSObject <SKOverlayDelegate>
 {
     MISSING_TYPE *isPresented;
+    MISSING_TYPE *overlayState;
     MISSING_TYPE *overlay;
     MISSING_TYPE *scene;
 }

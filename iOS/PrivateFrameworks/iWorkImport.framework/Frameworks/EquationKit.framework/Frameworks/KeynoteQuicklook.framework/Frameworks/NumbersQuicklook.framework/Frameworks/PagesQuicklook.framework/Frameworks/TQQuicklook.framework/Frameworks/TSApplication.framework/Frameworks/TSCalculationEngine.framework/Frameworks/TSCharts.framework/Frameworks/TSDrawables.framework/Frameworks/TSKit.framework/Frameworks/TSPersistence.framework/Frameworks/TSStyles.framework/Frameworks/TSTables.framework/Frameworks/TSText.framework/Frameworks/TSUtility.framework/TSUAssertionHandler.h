@@ -13,6 +13,7 @@
 + (int)_atomicIncrementAssertCount;
 + (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(long long)arg3 isFatal:(_Bool)arg4 description:(const char *)arg5;
 + (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(long long)arg3 isFatal:(_Bool)arg4 format:(id)arg5 args:(char *)arg6;
++ (void)setDelegate:(id)arg1;
 + (void)simulateCrashWithMessage:(id)arg1;
 + (id)packedBacktraceStringWithReturnAddresses:(id)arg1;
 + (id)packedBacktraceString;
@@ -20,8 +21,10 @@
 + (void)logFullBacktrace;
 + (void)logBacktraceThrottled;
 + (id)p_performBlockIgnoringAssertions:(CDUnknownBlockType)arg1 onlyFatal:(_Bool)arg2;
++ (_Bool)isQAFatalAssertionsEnabled;
 + (id)performBlockIgnoringQAFatalAssertions:(CDUnknownBlockType)arg1;
 + (id)performBlockIgnoringFatalAssertions:(CDUnknownBlockType)arg1;
++ (id)performBlockIgnoringAssertionsAndReturnList:(CDUnknownBlockType)arg1;
 + (id)performBlockIgnoringAssertions:(CDUnknownBlockType)arg1;
 + (void)initialize;
 

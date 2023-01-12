@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)pinConversation:(id)arg1;
-- (void)unpinConversation:(id)arg1;
+- (void)pinConversation:(id)arg1 withReason:(id)arg2;
+- (void)unpinConversation:(id)arg1 withReason:(id)arg2;
 - (void)_updateToolbarItems;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;

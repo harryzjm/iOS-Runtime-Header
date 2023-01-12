@@ -6,7 +6,7 @@
 
 #import <FrontBoardServices/FBSSceneSnapshotRequestDelegate-Protocol.h>
 
-@class BSSettings, FBSSceneSnapshotRequestHandle, NSMutableArray, NSString;
+@class BSActionResponder, BSSettings, FBSSceneSnapshotRequestHandle, NSMutableArray, NSString;
 
 @interface FBSSceneSnapshotAction <FBSSceneSnapshotRequestDelegate>
 {
@@ -15,6 +15,7 @@
     CDUnknownBlockType _completionHandler;
     FBSSceneSnapshotRequestHandle *_outgoingRequestHandle;
     int _expired;
+    BSActionResponder *_responder;
     BSSettings *_clientExtendedData;
 }
 
@@ -30,6 +31,8 @@
 - (void)_executeNextRequest;
 - (void)_finishAllRequests;
 - (_Bool)_remainsActionable;
+- (void)invalidate;
+- (void)setNullificationHandler:(CDUnknownBlockType)arg1;
 - (void)setInvalidationHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) double expirationInterval; // @dynamic expirationInterval;
 - (void)executeRequestsWithHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 expirationHandler:(CDUnknownBlockType)arg3;

@@ -24,10 +24,6 @@
 @property(copy, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property(copy, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property(copy, nonatomic) NSString *country; // @synthesize country=_country;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-- (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -36,6 +32,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_writeQueue;
     void *_editionMap;
     long long _evictionRowsThreshold;
-    CDStruct_e4886f83 *_expirationRecords;
+    CDStruct_61711f31 *_expirationRecords;
     unsigned long long _expirationRecordCount;
     _Bool _preloading;
     double _lastCheckedGeneralExpiration;
@@ -62,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)endPreloadSession;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1;
-- (void)setExpirationRecords:(CDStruct_e4886f83 *)arg1 count:(unsigned long long)arg2;
+- (void)setExpirationRecords:(CDStruct_61711f31 *)arg1 count:(unsigned long long)arg2;
 - (void)evaluateDevicePostureAgainstCurrentManifest:(id)arg1;
 - (void)deleteData:(const struct _GEOTileKey *)arg1;
 - (void)_deleteKey:(struct _GEOTileKey)arg1;

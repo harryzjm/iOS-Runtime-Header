@@ -9,6 +9,7 @@
 @class NSDictionary, NSString, NSURL, WBSReaderConfigurationManager, WBSReaderFont, WBSReaderFontManager;
 
 @protocol SFReaderContext <NSObject>
+@property(readonly, nonatomic) long long currentAppearance;
 - (void)activateFont:(NSString *)arg1;
 - (void)checkReaderAvailability;
 - (void)resetReaderTextSize;

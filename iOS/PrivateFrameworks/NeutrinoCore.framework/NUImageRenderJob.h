@@ -31,6 +31,7 @@
 - (_Bool)render:(out id *)arg1;
 @property(readonly, nonatomic) NUImageAccumulationNode *imageAccumulationNode;
 - (_Bool)prepare:(out id *)arg1;
+- (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
 - (_Bool)wantsOutputImage;
 - (_Bool)wantsOutputGeometry;
 - (id)extentPolicy;

@@ -14,11 +14,14 @@
 @interface HMIVideoFragment : HMFObject <HMFLogging, NSSecureCoding>
 {
     _Bool _attributesLoaded;
+    _Bool _frameReorderingRequired;
     const struct opaqueCMFormatDescription *_videoFormatDescription;
     const struct opaqueCMFormatDescription *_audioFormatDescription;
     NSData *_initializationSegment;
     NSData *_separableSegment;
     NSArray *_sequenceNumbers;
+    struct _NSRange _firstVideoSampleByteRange;
+    CDStruct_1b6d18a9 _baseDecodeTimeStamp;
     CDStruct_e83c9415 _videoTrackTimeRange;
     CDStruct_e83c9415 _audioTrackTimeRange;
     CDStruct_e83c9415 _timeRange;
@@ -30,6 +33,7 @@
 + (void)fragmentData:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (_Bool)isInitializationSegment:(id)arg1 combinableWithInitializationSegment:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly) struct _NSRange firstVideoSampleByteRange; // @synthesize firstVideoSampleByteRange=_firstVideoSampleByteRange;
 @property(readonly) NSArray *sequenceNumbers; // @synthesize sequenceNumbers=_sequenceNumbers;
 @property(readonly) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 @property(readonly) NSData *separableSegment; // @synthesize separableSegment=_separableSegment;
@@ -40,17 +44,27 @@
 - (void)dealloc;
 @property(readonly) unsigned long long sequenceNumber;
 @property(readonly) CDStruct_1b6d18a9 duration;
+@property(readonly, copy) NSData *sanitizedSeperableSegment;
+@property(readonly, copy) NSData *sanitizedData;
 @property(readonly, copy) NSData *data;
 - (_Bool)isCombinableWithFragment:(id)arg1;
+@property(readonly) _Bool frameReorderingRequired; // @synthesize frameReorderingRequired=_frameReorderingRequired;
+@property(readonly) CDStruct_1b6d18a9 baseDecodeTimeStamp; // @synthesize baseDecodeTimeStamp=_baseDecodeTimeStamp;
 @property(readonly) const struct opaqueCMFormatDescription *audioFormatDescription; // @synthesize audioFormatDescription=_audioFormatDescription;
 @property(readonly) const struct opaqueCMFormatDescription *videoFormatDescription; // @synthesize videoFormatDescription=_videoFormatDescription;
 @property(readonly) CDStruct_e83c9415 audioTrackTimeRange; // @synthesize audioTrackTimeRange=_audioTrackTimeRange;
 @property(readonly) CDStruct_e83c9415 videoTrackTimeRange; // @synthesize videoTrackTimeRange=_videoTrackTimeRange;
 - (void)_ensureAttributes;
+- (id)initWithInitializationSegment:(id)arg1 separableSegment:(id)arg2 timeRange:(CDStruct_e83c9415)arg3 sequenceNumbers:(id)arg4 firstVideoSampleByteRange:(struct _NSRange)arg5;
 - (id)initWithInitializationSegment:(id)arg1 separableSegment:(id)arg2 timeRange:(CDStruct_e83c9415)arg3 sequenceNumbers:(id)arg4;
+- (id)initWithInitializationSegment:(id)arg1 separableSegment:(id)arg2 timeRange:(CDStruct_e83c9415)arg3 firstVideoSampleByteRange:(struct _NSRange)arg4;
 - (id)initWithInitializationSegment:(id)arg1 separableSegment:(id)arg2 timeRange:(CDStruct_e83c9415)arg3;
 - (id)initWithInitializationSegment:(id)arg1 separableSegment:(id)arg2 sequenceNumbers:(id)arg3;
 - (id)initWithInitializationSegment:(id)arg1 separableSegment:(id)arg2;
+- (id)redactedCopyWithMetadata;
+- (id)placeholderCopy;
+- (id)redactedCopy;
+- (id)initWithFragments:(id)arg1;
 - (id)initWithData:(id)arg1 timeRange:(CDStruct_e83c9415)arg2;
 - (id)initWithData:(id)arg1;
 

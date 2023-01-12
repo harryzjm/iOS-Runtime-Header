@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableOrderedSet.h>
 
 @interface NSMutableOrderedSet (SafariCoreExtras)
+- (_Bool)safari_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (_Bool)safari_isSortedInAscendingOrDescendingOrderUsingComparator:(CDUnknownBlockType)arg1;
 - (void)safari_insertObject:(id)arg1 inSortedOrderUsingComparator:(CDUnknownBlockType)arg2;
 @end

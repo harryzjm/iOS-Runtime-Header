@@ -7,6 +7,7 @@
 #import <UIKit/UICollectionView.h>
 
 @interface UICollectionView (TeaUIBridge)
+- (void)tu_reloadSectionIndexTitles;
 @property(nonatomic) _Bool tu_deriveVisibleBoundsFromContainingScrollView;
 @end
 

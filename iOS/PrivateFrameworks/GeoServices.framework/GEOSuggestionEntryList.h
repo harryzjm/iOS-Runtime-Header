@@ -20,7 +20,11 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    int _contentType;
+    _Bool _showSectionHeader;
     struct {
+        unsigned int has_contentType:1;
+        unsigned int has_showSectionHeader:1;
         unsigned int read_unknownFields:1;
         unsigned int read_localizedSectionHeader:1;
         unsigned int read_suggestionEntries:1;
@@ -28,31 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)suggestionEntriesType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSString *localizedSectionHeader;
-@property(readonly, nonatomic) _Bool hasLocalizedSectionHeader;
-- (id)suggestionEntriesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)suggestionEntriesCount;
-- (void)addSuggestionEntries:(id)arg1;
-- (void)clearSuggestionEntries;
-@property(retain, nonatomic) NSMutableArray *suggestionEntries;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

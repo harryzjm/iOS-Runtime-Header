@@ -6,12 +6,12 @@
 
 #import <HMFoundation/HMFMessageTransport.h>
 
-#import <HomeKit/HMXPCMessageTransport-Protocol.h>
+#import <HomeKit/HMXPCClientMessageHandling-Protocol.h>
 
 @class HMXPCClient, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HMXPCClientConnectionProxy : HMFMessageTransport <HMXPCMessageTransport>
+@interface HMXPCClientConnectionProxy : HMFMessageTransport <HMXPCClientMessageHandling>
 {
     HMXPCClient *_client;
     CDUnknownBlockType _refreshHandler;

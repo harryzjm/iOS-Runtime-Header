@@ -13,9 +13,9 @@
 
 @interface HFLocationManagerDispatcher : NSObject <CLLocationManagerDelegate>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     _Bool _hasInitializedAuthorizationStatus;
     int _cachedAuthorizationStatus;
+    NSObject<OS_dispatch_queue> *_queue;
     CLLocationManager *_locationManager;
     NSHashTable *_locationObservers;
     NSMutableArray *_pendingAuthorizationStatusFutures;
@@ -27,14 +27,15 @@
 @property(nonatomic) int cachedAuthorizationStatus; // @synthesize cachedAuthorizationStatus=_cachedAuthorizationStatus;
 @property(readonly, nonatomic) NSMutableArray *pendingAuthorizationStatusFutures; // @synthesize pendingAuthorizationStatusFutures=_pendingAuthorizationStatusFutures;
 @property(retain, nonatomic) NSHashTable *locationObservers; // @synthesize locationObservers=_locationObservers;
-@property(readonly, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property(retain, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)_updateMacAuthorizationStatus:(int)arg1;
 - (void)_authorizeHomeKitLocationServices;
 - (void)locationManager:(id)arg1 didFinishDeferredUpdatesWithError:(id)arg2;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
 - (void)locationManager:(id)arg1 didStartMonitoringForRegion:(id)arg2;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didExitRegion:(id)arg2;

@@ -13,13 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface REResourceFetchServer : NSObject <NSXPCListenerDelegate>
 {
-    struct ResourceFetchManager *_resourceFetchManager;
+    void *_resourceFetchManager;
 }
 
-@property(readonly, nonatomic) struct ResourceFetchManager *resourceFetchManager; // @synthesize resourceFetchManager=_resourceFetchManager;
+@property(readonly, nonatomic) void *resourceFetchManager; // @synthesize resourceFetchManager=_resourceFetchManager;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)invalidate;
-- (id)initWithResourceFetchManager:(struct ResourceFetchManager *)arg1;
+- (id)initWithResourceFetchManager:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

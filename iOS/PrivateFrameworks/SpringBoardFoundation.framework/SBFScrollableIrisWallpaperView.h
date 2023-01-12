@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpringBoardFoundation/ISPlayerViewDelegate-Protocol.h>
 #import <SpringBoardFoundation/SBFIrisWallpaperView-Protocol.h>
+#import <SpringBoardFoundation/SBFLivePhotoPlayerViewDelegate-Protocol.h>
 #import <SpringBoardFoundation/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVAsset, ISPlayerView, NSString, NSURL;
-@protocol SBFIrisWallpaperViewDelegate;
+@class AVAsset, NSString, NSURL, SBFLivePhotoPlayerView;
+@protocol SBFIrisWallpaperPlayerDelegate;
 
-@interface SBFScrollableIrisWallpaperView <UIGestureRecognizerDelegate, ISPlayerViewDelegate, SBFIrisWallpaperView>
+@interface SBFScrollableIrisWallpaperView <UIGestureRecognizerDelegate, SBFLivePhotoPlayerViewDelegate, SBFIrisWallpaperView>
 {
     AVAsset *_video;
-    ISPlayerView *_playerView;
+    SBFLivePhotoPlayerView *_playerView;
     long long _playbackState;
-    id <SBFIrisWallpaperViewDelegate> _irisDelegate;
+    id <SBFIrisWallpaperPlayerDelegate> _irisDelegate;
     double _stillTimeInVideo;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
-@property(nonatomic) __weak id <SBFIrisWallpaperViewDelegate> irisDelegate; // @synthesize irisDelegate=_irisDelegate;
+@property(nonatomic) __weak id <SBFIrisWallpaperPlayerDelegate> irisDelegate; // @synthesize irisDelegate=_irisDelegate;
 - (void)playerViewIsInteractingDidChange:(id)arg1;
 - (void)playerViewPlaybackStateDidChange:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)deliverTask:(id)arg1 taskName:(id)arg2 onQueue:(id)arg3;
-- (id)initWithTaskHandler:(CDUnknownBlockType)arg1;
 
 @end
 

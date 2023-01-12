@@ -9,6 +9,7 @@
 @class AFUISiriSession, NSArray;
 
 @protocol AFUISiriSessionLocalDataSource <NSObject>
+- (long long)carPlayEnhancedVoiceTriggerModeForSiriSession:(AFUISiriSession *)arg1;
 - (unsigned long long)lockStateForSiriSession:(AFUISiriSession *)arg1;
 - (NSArray *)starkAppBundleIdentifierContextForSiriSession:(AFUISiriSession *)arg1;
 - (NSArray *)currentCarPlaySupportedOEMAppIDListForSiriSession:(AFUISiriSession *)arg1;

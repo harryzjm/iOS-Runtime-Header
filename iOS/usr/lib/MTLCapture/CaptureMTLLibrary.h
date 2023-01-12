@@ -9,7 +9,7 @@
 #import <MTLCapture/CaptureMTLObject-Protocol.h>
 #import <MTLCapture/MTLLibrarySPI-Protocol.h>
 
-@class CaptureMTLDevice, NSArray, NSString;
+@class CaptureMTLDevice, MTLCompileOptions, NSArray, NSData, NSString, NSUUID;
 @protocol MTLDevice, MTLLibrary, MTLLibrarySPI;
 
 @interface CaptureMTLLibrary : NSObject <MTLLibrarySPI, CaptureMTLObject>
@@ -18,18 +18,24 @@
     CaptureMTLDevice *_captureDevice;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
+    MTLCompileOptions *_options;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) MTLCompileOptions *options; // @synthesize options=_options;
+- (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 pipelineLibrary:(id)arg3 error:(id *)arg4;
-- (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 destinationArchive:(id)arg2 error:(id *)arg3;
 @property(readonly) long long type;
+@property(nonatomic) _Bool shaderValidationEnabled;
 @property(copy) NSString *overrideTriple;
+@property(readonly, copy) NSUUID *libraryIdentifier;
 @property(copy) NSString *label;
 @property(readonly) NSString *installName;
 @property(readonly) NSArray *functionNames;
 @property(readonly) NSArray *externFunctionNames;
 @property(readonly) id <MTLDevice> device;
+@property(readonly) NSData *bitcodeData;
 - (_Bool)conformsToProtocol:(id)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 @property(readonly, copy) NSString *description;
@@ -39,8 +45,10 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
-- (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)newIntersectionFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newIntersectionFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
+- (void)newFunctionWithDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)newFunctionWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newFunctionWithName:(id)arg1 constantValues:(id)arg2 error:(id *)arg3;
 - (void)newFunctionWithName:(id)arg1 constantValues:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newFunctionWithName:(id)arg1;

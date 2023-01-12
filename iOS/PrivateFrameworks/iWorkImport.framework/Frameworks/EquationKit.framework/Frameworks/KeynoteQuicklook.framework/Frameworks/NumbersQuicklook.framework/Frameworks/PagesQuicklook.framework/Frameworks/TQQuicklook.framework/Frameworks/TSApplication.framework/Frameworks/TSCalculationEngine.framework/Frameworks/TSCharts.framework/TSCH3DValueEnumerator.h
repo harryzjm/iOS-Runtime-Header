@@ -8,7 +8,7 @@
 
 @interface TSCH3DValueEnumerator : NSObject
 {
-    struct ValueEnumerator mImp;
+    struct ValueEnumerator _imp;
 }
 
 - (id).cxx_construct;

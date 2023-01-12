@@ -6,23 +6,57 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE;
+#import <WorkflowEditor/WFWorkflowEditingDelegate-Protocol.h>
 
-@interface WFEditorHostingViewController : UIViewController
+@class MISSING_TYPE, NSProgress, WFAction, WFWorkflow;
+@protocol WFEditorAuxiliaryViewPresenter, WFEditorHostingViewControllerDelegate;
+
+@interface WFEditorHostingViewController : UIViewController <WFWorkflowEditingDelegate>
 {
     MISSING_TYPE *workflow;
     MISSING_TYPE *hostingViewController;
+    MISSING_TYPE *editorOptions;
     MISSING_TYPE *actionList;
-    MISSING_TYPE *isEditable;
+    MISSING_TYPE *observers;
+    MISSING_TYPE *runner;
+    MISSING_TYPE *coordinateSpaceName;
+    MISSING_TYPE *delegate;
+    MISSING_TYPE *auxiliaryViewPresenter;
 }
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-@property(nonatomic) _Bool isEditable; // @synthesize isEditable;
-- (void)viewDidLoad;
+- (void)moveActionsFrom:(id)arg1 to:(id)arg2;
+- (void)removeActions:(id)arg1;
+- (void)insertActions:(id)arg1 at:(long long)arg2;
+- (void)insertAction:(id)arg1 at:(long long)arg2;
+- (void)appendAction:(id)arg1;
+- (void)workflow:(id)arg1 actionForSuggestionsDrawerDidUpdateOutputContentClasses:(id)arg2;
+- (void)workflow:(id)arg1 reloadActions:(id)arg2;
+- (void)workflow:(id)arg1 insertActions:(id)arg2 atIndexes:(id)arg3;
+- (void)workflow:(id)arg1 moveActionsAtIndexes:(id)arg2 toIndexes:(id)arg3;
+- (void)workflow:(WFWorkflow *)arg1 removeAction:(WFAction *)arg2 completionHandler:(void (^)(_Bool))arg3;
+- (id)contentScrollViewForEdge:(unsigned long long)arg1;
+- (void)performScrollingTest:(id)arg1;
+- (void)scrollToAction:(id)arg1;
+- (void)startPickingParametersForImportQuestionsWithExcluding:(id)arg1 onSelect:(CDUnknownBlockType)arg2;
+- (void)stopPickingVariables;
+- (void)stop;
+- (void)runWithSource:(id)arg1;
+@property(nonatomic, readonly) NSProgress *workflowRunningProgress;
+@property(nonatomic) _Bool isHomeWorkflow;
+@property(nonatomic) _Bool canShowInputAction;
+@property(nonatomic) _Bool canShowEmptyState;
+@property(nonatomic) _Bool isEditable;
+@property(nonatomic, readonly) WFAction *currentlyRunningAction;
+@property(nonatomic, readonly) _Bool isWaiting;
+@property(nonatomic, readonly) _Bool isRunning;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithWorkflow:(id)arg1;
+@property(nonatomic) __weak id <WFEditorAuxiliaryViewPresenter> auxiliaryViewPresenter; // @synthesize auxiliaryViewPresenter;
+@property(nonatomic) __weak id <WFEditorHostingViewControllerDelegate> delegate; // @synthesize delegate;
 
 @end
 

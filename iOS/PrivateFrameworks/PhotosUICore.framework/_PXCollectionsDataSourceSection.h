@@ -10,9 +10,11 @@
 {
     long long _count;
     PXCollectionsDataSource *_collectionsDataSource;
+    unsigned long long _section;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long section; // @synthesize section=_section;
 @property(readonly, nonatomic) PXCollectionsDataSource *collectionsDataSource; // @synthesize collectionsDataSource=_collectionsDataSource;
 - (id)objectAtIndex:(long long)arg1;
 - (long long)count;

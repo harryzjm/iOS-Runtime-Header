@@ -22,7 +22,6 @@
 @property(readonly, nonatomic) NSMutableArray *adds; // @synthesize adds=_adds;
 @property(readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 - (unsigned long long)hash;
-- (id)initWithFilename:(id)arg1;
 
 @end
 

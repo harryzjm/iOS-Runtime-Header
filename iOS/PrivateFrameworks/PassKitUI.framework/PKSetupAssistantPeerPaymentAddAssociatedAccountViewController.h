@@ -19,7 +19,6 @@
 + (_Bool)setupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
 + (_Bool)bridgeSetupAssistantNeedsToRunWithContext:(id)arg1 returningRequirements:(unsigned long long *)arg2;
 + (_Bool)bridgeSetupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
-+ (_Bool)setupAssistantNeedsToRun;
 - (void).cxx_destruct;
 - (void)addPeerPaymentAssociatedAccountDidSkipSetupForFamilyMember:(id)arg1;
 - (void)addPeerPaymentAssociatedAccountSetupCompletedWithSucess:(_Bool)arg1 updatedAccount:(id)arg2 forFamilyMember:(id)arg3;

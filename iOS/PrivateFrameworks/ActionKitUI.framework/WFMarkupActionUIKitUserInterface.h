@@ -4,25 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFActionUserInterface.h>
 
 #import <ActionKitUI/QLPreviewControllerDataSource-Protocol.h>
 #import <ActionKitUI/QLPreviewControllerDelegate-Protocol.h>
 #import <ActionKitUI/WFMarkupActionUserInterface-Protocol.h>
 
-@class NSArray, NSMapTable, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface WFMarkupActionUIKitUserInterface : WFActionUserInterface <QLPreviewControllerDataSource, QLPreviewControllerDelegate, WFMarkupActionUserInterface>
 {
     NSArray *_previewItems;
-    NSMapTable *_editedPreviewItems;
+    NSMutableDictionary *_editedPreviewItems;
     CDUnknownBlockType _completionHandler;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(retain, nonatomic) NSMapTable *editedPreviewItems; // @synthesize editedPreviewItems=_editedPreviewItems;
+@property(retain, nonatomic) NSMutableDictionary *editedPreviewItems; // @synthesize editedPreviewItems=_editedPreviewItems;
 @property(retain, nonatomic) NSArray *previewItems; // @synthesize previewItems=_previewItems;
 - (id)editedItems;
 - (void)previewControllerDidDismiss:(id)arg1;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

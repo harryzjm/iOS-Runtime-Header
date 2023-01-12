@@ -10,6 +10,11 @@
 + (id)notificationSectionSettingsForBBSectionInfo:(id)arg1;
 - (unsigned long long)_groupingSettingFromBBGroupingSetting:(long long)arg1;
 - (unsigned long long)_contentPreviewSettingFromBBContentPreviewSetting:(long long)arg1;
+@property(readonly, nonatomic, getter=hasUserConfiguredDirectMessagesSetting) _Bool userConfiguredDirectMessagesSetting;
+@property(readonly, nonatomic, getter=isDirectMessagesEnabled) _Bool directMessagesEnabled;
+@property(readonly, nonatomic, getter=isScheduledDeliveryEnabled) _Bool scheduledDeliveryEnabled;
+@property(readonly, nonatomic, getter=hasUserConfiguredTimeSensitiveSetting) _Bool userConfiguredTimeSensitiveSetting;
+@property(readonly, nonatomic, getter=isTimeSensitiveEnabled) _Bool timeSensitiveEnabled;
 - (unsigned long long)contentPreviewSettingForRequestWithSubSectionIdentifiers:(id)arg1;
 - (id)_notificationSectionSettingsForSubSectionWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) unsigned long long groupingSetting;

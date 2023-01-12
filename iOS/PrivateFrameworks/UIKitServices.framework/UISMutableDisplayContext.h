@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FBSDisplayConfiguration, UISApplicationSupportDisplayEdgeInfo;
+@class FBSDisplayConfiguration, UISApplicationSupportDisplayEdgeInfo, UISDisplayShape;
 
 @interface UISMutableDisplayContext
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(retain, nonatomic) UISDisplayShape *exclusionArea; // @dynamic exclusionArea;
 @property(nonatomic) unsigned long long userInterfaceStyle; // @dynamic userInterfaceStyle;
 @property(nonatomic) unsigned long long artworkSubtype; // @dynamic artworkSubtype;
 @property(retain, nonatomic) UISApplicationSupportDisplayEdgeInfo *displayEdgeInfo; // @dynamic displayEdgeInfo;

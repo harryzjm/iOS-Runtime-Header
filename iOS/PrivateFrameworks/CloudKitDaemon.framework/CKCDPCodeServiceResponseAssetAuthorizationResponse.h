@@ -10,7 +10,6 @@
 
 @class NSData, NSMutableArray, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceResponseAssetAuthorizationResponse : PBCodable <NSCopying>
 {
     NSData *_authGetResponseBody;

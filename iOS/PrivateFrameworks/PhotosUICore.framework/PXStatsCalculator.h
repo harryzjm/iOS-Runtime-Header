@@ -13,14 +13,17 @@
     long long _count;
     double _min;
     double _max;
+    double _first;
 }
 
+@property(readonly, nonatomic) double first; // @synthesize first=_first;
 @property(readonly, nonatomic) double max; // @synthesize max=_max;
 @property(readonly, nonatomic) double min; // @synthesize min=_min;
 @property(readonly, nonatomic) long long count; // @synthesize count=_count;
 @property(readonly, nonatomic) double standardDeviation;
 @property(readonly, nonatomic) double mean;
 - (void)addValue:(double)arg1;
+- (id)init;
 
 @end
 

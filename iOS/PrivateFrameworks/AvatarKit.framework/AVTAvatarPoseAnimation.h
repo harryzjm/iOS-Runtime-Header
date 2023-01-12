@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarPose, NSDictionary, NSMutableArray, NSString;
+@class AVTAvatarPose, NSDictionary, NSString;
 
 @interface AVTAvatarPoseAnimation : NSObject
 {
@@ -14,28 +14,35 @@
     NSDictionary *_staticPhysicsStates;
     NSDictionary *_blendshapeAnimations;
     NSDictionary *_perNodeAnimations;
-    NSMutableArray *_animationKeys;
     NSString *_animationBaseKey;
 }
 
++ (void)removeAllAnimationsFromAvatar:(id)arg1;
 + (id)optimizeAnimation:(id)arg1 target:(id)arg2;
-+ (void)enumerateRepresentationsForAnimation:(id)arg1 block:(CDUnknownBlockType)arg2;
-+ (id)animationFromRepresentation:(id)arg1 keyPath:(id)arg2;
++ (void)dictionaryRepresentationForAnimation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)animationFromDictionaryRepresentation:(id)arg1 keyPath:(id)arg2;
++ (void)dataRepresentationForAnimation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)animationFromDataRepresentation:(id)arg1 keyPath:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVTAvatarPose *staticPose; // @synthesize staticPose=_staticPose;
 - (id)physicalizedPose;
-- (void)removeFromAvatar:(id)arg1 transitionDuration:(double)arg2;
-- (void)addToAvatar:(id)arg1 options:(unsigned long long)arg2 transitionDuration:(double)arg3;
-- (void)addToAvatar:(id)arg1 options:(unsigned long long)arg2;
-- (void)addToAvatar:(id)arg1 useStaticPhysicsState:(_Bool)arg2 transitionDuration:(double)arg3;
-- (void)addToAvatar:(id)arg1 useStaticPhysicsState:(_Bool)arg2;
+- (id)_addAnimationToAvatar:(id)arg1 options:(unsigned long long)arg2 transitionInDuration:(double)arg3 transitionOutDuration:(double)arg4 isTransient:(_Bool)arg5 completionQueue:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)playOnceOnAvatar:(id)arg1 options:(unsigned long long)arg2 transitionInDuration:(double)arg3 transitionOutDuration:(double)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)addToAvatar:(id)arg1 options:(unsigned long long)arg2 transitionDuration:(double)arg3;
+- (id)addToAvatar:(id)arg1 options:(unsigned long long)arg2;
+- (id)addToAvatar:(id)arg1 useStaticPhysicsState:(_Bool)arg2 transitionDuration:(double)arg3;
+- (id)addToAvatar:(id)arg1 useStaticPhysicsState:(_Bool)arg2;
 @property(readonly, nonatomic) double duration;
 - (id)animationsForAvatar:(id)arg1;
-- (id)animatedPoseRepresentation;
+- (id)animatedPoseRepresentationWithDictionaryAnimationRepresentation;
+- (id)animatedPoseRepresentationWithDataAnimationRepresentation;
+- (id)animatedPoseRepresentationWithAnimationRepresentationBuilder:(CDUnknownBlockType)arg1;
 - (id)staticPoseRepresentation;
 - (id)initWithStaticPoseRepresentation:(id)arg1 animatedPoseRepresentation:(id)arg2 staticPhysicsStatesRepresentation:(id)arg3;
 - (id)initWithStaticPose:(id)arg1 staticPhysicsStates:(id)arg2;
+- (id)initWithScene:(id)arg1 usdaMetadata:(CDStruct_0c9855c6)arg2;
 - (id)initWithScene:(id)arg1;
+- (id)initWithSceneAtURL:(id)arg1 usdaMetadata:(CDStruct_0c9855c6)arg2;
 - (id)initWithSceneAtURL:(id)arg1;
 - (void)commonInit;
 

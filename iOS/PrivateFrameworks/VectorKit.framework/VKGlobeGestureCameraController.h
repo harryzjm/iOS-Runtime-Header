@@ -7,8 +7,8 @@
 __attribute__((visibility("hidden")))
 @interface VKGlobeGestureCameraController
 {
-    struct GlobeView *_globeView;
-    struct CameraManager *_cameraManager;
+    void *_globeView;
+    void *_cameraManager;
     double _beganDoublePanPitch;
     double _currentDoublePanPitch;
     _Bool _isPitchIncreasing;
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)endZoom:(struct CGPoint)arg1;
 - (void)updateZoom:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
 - (void)beginZoom:(struct CGPoint)arg1;
-- (void)setCameraManager:(struct CameraManager *)arg1;
-- (void)setGlobeView:(struct GlobeView *)arg1;
+- (void)setCameraManager:(void *)arg1;
+- (void)setGlobeView:(void *)arg1;
 
 @end
 

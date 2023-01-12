@@ -29,7 +29,9 @@
 @property(readonly, nonatomic) UIColor *contentColor;
 - (void)setTextColor:(id)arg1;
 @property(retain, nonatomic) UIColor *color;
-- (id)_labelColorFromFaceColor:(unsigned long long)arg1 device:(id)arg2;
+- (id)_labelColorFromFaceColorPalette:(id)arg1 device:(id)arg2;
+- (void)applyFaceFromColorPalette:(id)arg1 toColorPalette:(id)arg2 fraction:(float)arg3 device:(id)arg4;
+- (void)applyFaceColorPalette:(id)arg1 device:(id)arg2;
 - (void)applyFaceFromColor:(unsigned long long)arg1 toColor:(unsigned long long)arg2 fraction:(float)arg3 device:(id)arg4;
 - (void)applyFaceColor:(unsigned long long)arg1 device:(id)arg2;
 - (void)setShadowColor:(id)arg1;

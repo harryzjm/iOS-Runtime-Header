@@ -9,12 +9,14 @@
 @class CAMControlDrawer;
 
 @protocol CAMControlDrawerDelegate <NSObject>
+- (void)controlDrawerDidCreateSemanticStyleControl:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateExposureSlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateLowLightSlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateIntensitySlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateApertureSlider:(CAMControlDrawer *)arg1;
 - (void)controlDrawerDidCreateFilterScrubber:(CAMControlDrawer *)arg1;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didCreateControlForType:(long long)arg2;
+- (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeRAWMode:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 wantsFilterScrubberVisible:(_Bool)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeTimerDuration:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeLivePhotoMode:(long long)arg2;

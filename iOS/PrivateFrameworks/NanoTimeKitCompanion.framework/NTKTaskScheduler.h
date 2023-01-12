@@ -8,11 +8,14 @@
 
 @interface NTKTaskScheduler : NSObject
 {
+    double _waitingPeriod;
 }
 
+@property double waitingPeriod; // @synthesize waitingPeriod=_waitingPeriod;
 - (void)cancelAllTasks;
 - (void)cancelTaskForToken:(id)arg1;
 - (id)scheduleTask:(CDUnknownBlockType)arg1 identifier:(id)arg2;
+- (id)initWithQueue:(id)arg1;
 
 @end
 

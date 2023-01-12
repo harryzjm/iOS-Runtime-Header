@@ -15,6 +15,11 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
+struct PGCalendarUnitMonthDayValue {
+    long long _field1;
+    long long _field2;
+};
+
 struct PGRoutineInfoStruct {
     _Bool routineAvailable;
     unsigned long long numberOfLocationsOfInterest;
@@ -68,4 +73,11 @@ typedef struct {
     unsigned long long _field7;
     unsigned long long _field8;
 } CDStruct_e4f06a70;
+
+typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 

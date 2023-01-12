@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSData, NSDate, NSNumber, NSString;
 
 @interface _PXMomentShareMockDisplayAsset : NSObject <PXDisplayAsset>
 {
@@ -38,6 +38,9 @@
 @property(readonly, nonatomic) unsigned long long thumbnailIndex;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)isContentEqualTo:(id)arg1;
+@property(readonly, nonatomic) struct CGRect faceAreaRect;
+@property(readonly, nonatomic) struct CGRect acceptableCropRect;
+@property(readonly, nonatomic) struct CGRect preferredCropRect;
 @property(readonly, nonatomic) Class defaultImageProviderClass;
 
 // Remaining properties
@@ -46,10 +49,12 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) double duration;
+@property(readonly, nonatomic) NSData *fetchColorNormalizationData;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) NSNumber *hdrGain;
 @property(readonly, nonatomic) NSDate *importDate;
 @property(readonly, nonatomic) _Bool isAutoPlaybackEligibilityEstimated;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 livePhotoVideoDuration;
 @property(readonly, nonatomic) NSString *localizedGeoDescription;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) long long playbackVariation;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PXSearchActiveSearch;
+@class PXSearchActiveSearch, PXSearchQuery;
 
 @interface PXSearchAnalyticsSession : NSObject
 {
@@ -24,23 +24,36 @@
     unsigned long long _numberOfSearchesUntilFirstAssetAction;
     unsigned long long _numberOfSearchesUntilFirstOneUpInTopAssets;
     unsigned long long _numberOfSearchesUntilFirstEnteredCollection;
+    unsigned long long _numberOfSearchesWithNoResults;
+    unsigned long long _numberOfSearchesWithWordEmbeddings;
+    unsigned long long _numberOfWordEmbeddingSelections;
+    unsigned long long _numberOfNextTokenSelections;
+    unsigned long long _numberOfCompletionSelections;
     unsigned long long _firstAssetActionType;
     unsigned long long _firstAssetActionResultType;
     unsigned long long _firstEnteredCollectionResultType;
-    PXSearchActiveSearch *_lastSearch;
+    PXSearchQuery *_lastSearch;
+    PXSearchActiveSearch *_lastActiveSearch;
 }
 
-+ (id)cappedSearchCount:(unsigned long long)arg1;
-+ (id)bucketedTimeInterval:(double)arg1;
++ (id)_cappedSearchCount:(unsigned long long)arg1;
++ (id)_bucketedTimeInterval:(double)arg1;
 + (id)_stringForResultType:(unsigned long long)arg1;
 + (id)_stringForActionType:(unsigned long long)arg1;
 + (id)_stringForSessionBeginType:(unsigned long long)arg1;
++ (void)logNoSearchResultsFoundSiriSearch;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PXSearchActiveSearch *lastActiveSearch; // @synthesize lastActiveSearch=_lastActiveSearch;
+@property(retain, nonatomic) PXSearchQuery *lastSearch; // @synthesize lastSearch=_lastSearch;
 @property(nonatomic) _Bool successful; // @synthesize successful=_successful;
-@property(retain, nonatomic) PXSearchActiveSearch *lastSearch; // @synthesize lastSearch=_lastSearch;
 @property(nonatomic) unsigned long long firstEnteredCollectionResultType; // @synthesize firstEnteredCollectionResultType=_firstEnteredCollectionResultType;
 @property(nonatomic) unsigned long long firstAssetActionResultType; // @synthesize firstAssetActionResultType=_firstAssetActionResultType;
 @property(nonatomic) unsigned long long firstAssetActionType; // @synthesize firstAssetActionType=_firstAssetActionType;
+@property(nonatomic) unsigned long long numberOfCompletionSelections; // @synthesize numberOfCompletionSelections=_numberOfCompletionSelections;
+@property(nonatomic) unsigned long long numberOfNextTokenSelections; // @synthesize numberOfNextTokenSelections=_numberOfNextTokenSelections;
+@property(nonatomic) unsigned long long numberOfWordEmbeddingSelections; // @synthesize numberOfWordEmbeddingSelections=_numberOfWordEmbeddingSelections;
+@property(nonatomic) unsigned long long numberOfSearchesWithWordEmbeddings; // @synthesize numberOfSearchesWithWordEmbeddings=_numberOfSearchesWithWordEmbeddings;
+@property(nonatomic) unsigned long long numberOfSearchesWithNoResults; // @synthesize numberOfSearchesWithNoResults=_numberOfSearchesWithNoResults;
 @property(nonatomic) unsigned long long numberOfSearchesUntilFirstEnteredCollection; // @synthesize numberOfSearchesUntilFirstEnteredCollection=_numberOfSearchesUntilFirstEnteredCollection;
 @property(nonatomic) unsigned long long numberOfSearchesUntilFirstOneUpInTopAssets; // @synthesize numberOfSearchesUntilFirstOneUpInTopAssets=_numberOfSearchesUntilFirstOneUpInTopAssets;
 @property(nonatomic) unsigned long long numberOfSearchesUntilFirstAssetAction; // @synthesize numberOfSearchesUntilFirstAssetAction=_numberOfSearchesUntilFirstAssetAction;
@@ -55,9 +68,15 @@
 @property(nonatomic) _Bool userInteractedWithCurrentSearch; // @synthesize userInteractedWithCurrentSearch=_userInteractedWithCurrentSearch;
 @property(nonatomic) _Bool isValid; // @synthesize isValid=_isValid;
 - (void)_logSuccess;
+- (void)logSearchWordCompletionTapped;
+- (void)logSearchNextTokenSuggestionTapped;
+- (void)logSearchWordEmbeddingSelected;
+- (void)logSearchWordEmbeddingsPresented;
+- (void)logNoSearchResultsFound;
 - (void)logEnteredCollectionResult:(unsigned long long)arg1;
 - (void)logOneUpInTopAssets;
 - (void)logAssetAction:(unsigned long long)arg1 inResult:(unsigned long long)arg2;
+- (void)logActiveSearch:(id)arg1;
 - (void)logSearch:(id)arg1;
 - (void)endAndInvalidateSession;
 - (id)initWithBeginType:(unsigned long long)arg1;

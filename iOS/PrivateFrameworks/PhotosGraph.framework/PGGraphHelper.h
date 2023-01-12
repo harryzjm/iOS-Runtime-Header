@@ -14,9 +14,9 @@
 + (id)socialGroupsOverTheYearsWithPersonClusterManager:(id)arg1 forPersons:(id)arg2 updateBlock:(CDUnknownBlockType)arg3;
 + (id)multiLevelSocialGroupsWithPersonClusterManager:(id)arg1 forPersons:(id)arg2 updateBlock:(CDUnknownBlockType)arg3;
 + (id)suggestedMeIdentifierWithPersonClusterManager:(id)arg1 forPersons:(id)arg2 updateBlock:(CDUnknownBlockType)arg3;
-+ (double)_confidenceForMePersonIdentifier:(id)arg1 withPersonClusters:(id)arg2 inPhotoLibrary:(id)arg3;
-+ (id)_socialGroupsIdentifiersInGraph:(id)arg1 includeMeNode:(_Bool)arg2 includeCouples:(_Bool)arg3 includeInvalid:(_Bool)arg4;
-+ (id)_createSocialGraphWithPersonClusterManager:(id)arg1 persons:(id)arg2 moments:(id)arg3 inferredMePersonIdentifier:(id *)arg4 updateBlock:(CDUnknownBlockType)arg5;
++ (double)_confidenceForMePersonLocalIdentifier:(id)arg1 withPersonClusters:(id)arg2 inPhotoLibrary:(id)arg3;
++ (id)_socialGroupsLocalIdentifiersInGraph:(id)arg1 includeMeNode:(_Bool)arg2 includeCouples:(_Bool)arg3 includeInvalid:(_Bool)arg4;
++ (id)_createSocialGraphWithPersonClusterManager:(id)arg1 persons:(id)arg2 moments:(id)arg3 inferredMePersonLocalIdentifier:(id *)arg4 updateBlock:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @interface NSURL (HUAdditions)
 + (id)hu_appStoreURLForBundleIdentifier:(id)arg1;
++ (id)hu_systemSoftwareUpdate;
 + (id)hu_faceRecognitionPrivacyURL;
 + (id)hu_photosLibraryPeopleAlbumURL;
 + (id)hu_learnAboutNetworkProtectionURL;

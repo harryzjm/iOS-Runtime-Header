@@ -7,18 +7,24 @@
 #import <UIKit/UIViewController.h>
 
 #import <ContactsUI/CNContactChangesObserver-Protocol.h>
+#import <ContactsUI/CNVisualIdentityAvatarContainerViewDelegate-Protocol.h>
 
-@class CAShapeLayer, CNUIAvatarLayoutLayerItem, CNVisualIdentity, CNVisualIdentityAvatarLayoutManager, CNVisualIdentityContactAvatarProvider, NSString, UIView;
+@class CAShapeLayer, CNAvatarAccessoryView, CNBadgingAvatarBadgeStyleSettings, CNUIAvatarLayoutLayerItem, CNVisualIdentity, CNVisualIdentityAvatarLayoutManager, CNVisualIdentityContactAvatarProvider, NSString, UIImage, UIImageView, UITapGestureRecognizer, UIView;
 @protocol CNScheduler, CNVisualIdentityPrimaryAvatarProvider;
 
-@interface CNVisualIdentityAvatarViewController : UIViewController <CNContactChangesObserver>
+@interface CNVisualIdentityAvatarViewController : UIViewController <CNContactChangesObserver, CNVisualIdentityAvatarContainerViewDelegate>
 {
     _Bool _usingDropAppearance;
+    CNBadgingAvatarBadgeStyleSettings *_badgeStyleSettings;
+    CNAvatarAccessoryView *_mediaContextBadge;
     UIView *_contentView;
     id <CNVisualIdentityPrimaryAvatarProvider> _primaryAvatarProvider;
     id <CNScheduler> _renderingQueue;
     id <CNScheduler> _callbackQueue;
     CNVisualIdentityContactAvatarProvider *_avatarProvider;
+    UIImageView *_mediaContextBadgeView;
+    UIImageView *_badgeImageView;
+    UITapGestureRecognizer *_badgeTapGestureRecognizer;
     CNVisualIdentityAvatarLayoutManager *_avatarLayoutManager;
     CNUIAvatarLayoutLayerItem *_avatarLayerItem;
     CAShapeLayer *_avatarClippingLayer;
@@ -36,11 +42,17 @@
 @property(retain, nonatomic) CAShapeLayer *avatarClippingLayer; // @synthesize avatarClippingLayer=_avatarClippingLayer;
 @property(retain, nonatomic) CNUIAvatarLayoutLayerItem *avatarLayerItem; // @synthesize avatarLayerItem=_avatarLayerItem;
 @property(retain, nonatomic) CNVisualIdentityAvatarLayoutManager *avatarLayoutManager; // @synthesize avatarLayoutManager=_avatarLayoutManager;
+@property(retain, nonatomic) UITapGestureRecognizer *badgeTapGestureRecognizer; // @synthesize badgeTapGestureRecognizer=_badgeTapGestureRecognizer;
+@property(retain, nonatomic) UIImageView *badgeImageView; // @synthesize badgeImageView=_badgeImageView;
+@property(retain, nonatomic) UIImageView *mediaContextBadgeView; // @synthesize mediaContextBadgeView=_mediaContextBadgeView;
 @property(retain, nonatomic) CNVisualIdentityContactAvatarProvider *avatarProvider; // @synthesize avatarProvider=_avatarProvider;
 @property(readonly, nonatomic) id <CNScheduler> callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(readonly, nonatomic) id <CNScheduler> renderingQueue; // @synthesize renderingQueue=_renderingQueue;
 @property(retain, nonatomic) id <CNVisualIdentityPrimaryAvatarProvider> primaryAvatarProvider; // @synthesize primaryAvatarProvider=_primaryAvatarProvider;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property(retain, nonatomic) CNAvatarAccessoryView *mediaContextBadge; // @synthesize mediaContextBadge=_mediaContextBadge;
+@property(retain, nonatomic) CNBadgingAvatarBadgeStyleSettings *badgeStyleSettings; // @synthesize badgeStyleSettings=_badgeStyleSettings;
+- (struct CGSize)estimatedSizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)avatarFrameForFocusedAvatarInView:(id)arg1;
 - (void)visualIdentityDidUpdate:(id)arg1;
 - (_Bool)shouldDisplayPrimaryAvatarImage;
@@ -60,9 +72,24 @@
 - (id)containingCellView;
 - (void)contactDidChange:(id)arg1;
 - (void)updateContactChangesNotifierRegistration;
+- (void)updateMediaContextBadgeFrame;
+- (void)updateMediaContextBadgeImage;
+@property(retain, nonatomic) UIImage *badgeImage;
+- (void)updateBadgeViewFrame;
+- (void)removeBadgeTapGestureRecognizer;
+- (void)setBadgeTarget:(id)arg1 action:(SEL)arg2;
+- (void)setBadgeViewImage:(id)arg1;
+- (void)updateBadgeImageViewPosition;
+- (void)updateBadgeImageViewContentMode;
+- (void)updateBadgeImageViewBackgroundColor;
+- (void)updateBadgeCropStyle;
+- (void)updateBadgeTintColor;
+- (void)updateBadgeStyling;
+- (_Bool)_canShowWhileLocked;
 - (void)removeAllSublayers;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)loadView;
 - (void)dealloc;
 - (id)initWithVisualIdentity:(id)arg1 primaryAvatarProvider:(id)arg2 avatarImageRendererSettings:(id)arg3;
 - (id)initWithVisualIdentity:(id)arg1 primaryAvatarProvider:(id)arg2;

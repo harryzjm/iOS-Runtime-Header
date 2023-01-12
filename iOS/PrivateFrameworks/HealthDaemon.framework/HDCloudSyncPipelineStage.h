@@ -18,6 +18,7 @@
 @property(nonatomic) long long expectedSendSize; // @synthesize expectedSendSize=_expectedSendSize;
 @property(nonatomic) _Bool criticalFailureOnError; // @synthesize criticalFailureOnError=_criticalFailureOnError;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
+- (id)pipelineStageIgnoringErrors;
 
 @end
 

@@ -19,7 +19,8 @@
     unsigned int _groupItemVerticalDisplayOrder;
     unsigned int _groupItemHorizontalDisplayOrder;
     double _routeOffsetInMeters;
-    CDStruct_2c43369c _position;
+    double _facingAzimuth;
+    CDStruct_071ac149 _position;
     struct PolylineCoordinate _approachingRouteOffset;
     struct PolylineCoordinate _routeOffset;
     double _approachingDistanceInMeters;
@@ -36,6 +37,7 @@
 + (id)newTrafficFeatureForEnrouteNotice:(id)arg1 onRoute:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double facingAzimuth; // @synthesize facingAzimuth=_facingAzimuth;
 @property(nonatomic) optional_f92fc060 routeLegWhen; // @synthesize routeLegWhen=_routeLegWhen;
 @property(readonly, nonatomic) double routeOffsetInMeters; // @synthesize routeOffsetInMeters=_routeOffsetInMeters;
 @property(nonatomic) _Bool shouldUpdateStyle; // @synthesize shouldUpdateStyle=_shouldUpdateStyle;
@@ -47,29 +49,30 @@
 @property(nonatomic) long long navigationState; // @synthesize navigationState=_state;
 @property(readonly, nonatomic) long long trafficFeatureType; // @synthesize trafficFeatureType=_trafficFeatureType;
 @property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property(readonly, nonatomic) CDStruct_c3b9c2ee position; // @synthesize position=_position;
+@property(readonly, nonatomic) CDStruct_071ac149 position; // @synthesize position=_position;
 @property(readonly, nonatomic) float maxZoom; // @synthesize maxZoom=_maxZoom;
 @property(readonly, nonatomic) float minZoom; // @synthesize minZoom=_minZoom;
 @property(readonly, nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
-- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
+- (void)populateDebugNode:(void *)arg1;
 - (void)updateNavigationStateForRouteUserOffset:(const struct PolylineCoordinate *)arg1;
-@property(readonly, nonatomic) vector_44b9b83b attributes;
+@property(readonly, nonatomic) vector_20f0823a attributes;
 - (_Bool)isGrouped;
 - (_Bool)isBehind;
 - (_Bool)isApproaching;
 - (_Bool)isAheadButNotApproaching;
+- (_Bool)isUserReportedIncident;
 - (_Bool)isRouteAnnotation;
 - (_Bool)isIncident;
 - (_Bool)isCamera;
 - (_Bool)isSignal;
 @property(readonly, nonatomic) GEOFeatureStyleAttributes *styleAttributes;
-@property(readonly, nonatomic) Mercator2_57ec32b6 mercatorPoint;
+@property(readonly, nonatomic) Mercator3_d8bb135c mercatorPoint;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_c3b9c2ee)arg3 routeOffset:(struct PolylineCoordinate)arg4 routeOffsetInMeters:(double)arg5;
+- (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_071ac149)arg3 direction:(double)arg4 routeOffset:(struct PolylineCoordinate)arg5 routeOffsetInMeters:(double)arg6;
 - (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 routeOffset:(struct PolylineCoordinate)arg3 onRoute:(id)arg4;
-- (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_c3b9c2ee)arg3 onRoute:(id)arg4;
+- (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_071ac149)arg3 onRoute:(id)arg4;
 - (id)initWithEnrouteNotice:(id)arg1 onRoute:(id)arg2;
 
 @end

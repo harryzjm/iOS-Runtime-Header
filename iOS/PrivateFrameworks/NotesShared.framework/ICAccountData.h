@@ -22,8 +22,8 @@
 - (void)saveMergeableDataIfNeeded;
 - (_Bool)isDeletable;
 - (id)newlyCreatedRecord;
-- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
-- (_Bool)needsToBeDeletedFromCloud;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2 force:(_Bool)arg3;
+@property(readonly, nonatomic) _Bool needsToBeDeletedFromCloud;
 - (id)recordType;
 - (id)recordName;
 - (id)recordZoneName;
@@ -35,6 +35,8 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSData *mergeableData; // @dynamic mergeableData;
+@property(readonly, nonatomic) _Bool needsToBeFetchedFromCloud;
+@property(readonly, nonatomic) _Bool needsToBePushedToCloud;
 @property(readonly) Class superclass;
 
 @end

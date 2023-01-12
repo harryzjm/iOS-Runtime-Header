@@ -19,6 +19,7 @@
 }
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *fetchHandlers; // @synthesize fetchHandlers=_fetchHandlers;
 @property(nonatomic) long long queryDisableCount; // @synthesize queryDisableCount=_queryDisableCount;
 @property(retain, nonatomic) NSMutableDictionary *documents; // @synthesize documents=_documents;

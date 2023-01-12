@@ -64,6 +64,7 @@
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_tapGestureRecognized:(id)arg1;
 - (void)_share:(id)arg1;
+- (void)_translate:(id)arg1;
 - (void)_define:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)_selection;

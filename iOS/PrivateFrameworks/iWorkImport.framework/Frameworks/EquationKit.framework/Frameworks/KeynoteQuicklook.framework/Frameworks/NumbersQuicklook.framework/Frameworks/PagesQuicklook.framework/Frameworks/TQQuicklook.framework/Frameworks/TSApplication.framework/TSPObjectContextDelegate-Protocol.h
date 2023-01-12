@@ -6,7 +6,7 @@
 
 #import <TSApplication/TSPSupportDirectoryDelegate-Protocol.h>
 
-@class NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID, TSPData, TSPObjectContext, TSPObjectReferenceMap;
+@class NSArray, NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPData, TSPDocumentLoadValidationPolicy, TSPDocumentSaveValidationPolicy, TSPObjectContext, TSPObjectReferenceMap;
 @protocol NSFilePresenter, TSPPassphraseConsumer;
 
 @protocol TSPObjectContextDelegate <TSPSupportDirectoryDelegate>
@@ -18,11 +18,13 @@
 @property(readonly, nonatomic) NSDictionary *additionalDocumentPropertiesForWrite;
 @property(readonly, nonatomic) _Bool isDocumentSupportTemporary;
 @property(readonly, nonatomic) _Bool ignoreDocumentSupport;
-@property(readonly, nonatomic) long long archiveValidationMode;
+@property(readonly, nonatomic) TSPDocumentSaveValidationPolicy *documentSaveValidationPolicy;
+@property(readonly, nonatomic) TSPDocumentLoadValidationPolicy *documentLoadValidationPolicy;
+@property(readonly) SFUCryptoKey *encryptionKey;
 @property(readonly, nonatomic) id <NSFilePresenter> filePresenter;
 - (id)documentProviderInternal;
-- (void)gilligan_data:(TSPData *)arg1 didMoveFromPackageIdentifier:(unsigned char)arg2 packageLocator:(NSString *)arg3 toPackageIdentifier:(unsigned char)arg4 packageLocator:(NSString *)arg5;
-- (_Bool)gilligan_isRemoteData:(TSPData *)arg1;
+- (_Bool)shouldDisableCloneModeWithContext:(TSPObjectContext *)arg1;
+- (_Bool)isDataUnmaterializedDueToPartiallyDownloadedDocument:(TSPData *)arg1;
 - (_Bool)shouldAttemptRecoveryAfterWritingWithWastefulComponents:(TSPObjectContext *)arg1;
 - (_Bool)shouldAttemptRecoveryAfterOriginalDocumentURLMismatchForContext:(TSPObjectContext *)arg1;
 - (void)contextDidUpdateDocumentRevision:(TSPObjectContext *)arg1;
@@ -39,6 +41,7 @@
 - (_Bool)contextCanPerformUserActions:(TSPObjectContext *)arg1;
 - (_Bool)isInReadOnlyMode;
 - (_Bool)isInCollaborationMode;
+- (void)context:(TSPObjectContext *)arg1 didReplaceContentsOfData:(NSArray *)arg2;
 - (void)context:(TSPObjectContext *)arg1 didDownloadRemoteData:(TSPData *)arg2 error:(NSError *)arg3;
 - (void)context:(TSPObjectContext *)arg1 didDownloadDocumentResources:(NSSet *)arg2;
 - (NSSet *)persistenceWarningsForData:(TSPData *)arg1 flags:(unsigned long long)arg2;
@@ -51,6 +54,7 @@
 - (_Bool)retrievePassphraseWithConsumer:(id <TSPPassphraseConsumer>)arg1 error:(id *)arg2;
 - (void)didLoadDocumentWrittenByPreviousVersion;
 - (void)addPersistenceWarnings:(NSSet *)arg1;
+- (void)didEncounterValidationError:(NSError *)arg1 forData:(TSPData *)arg2 timing:(long long)arg3;
 - (void)presentPersistenceError:(NSError *)arg1;
 @end
 

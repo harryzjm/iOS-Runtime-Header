@@ -6,35 +6,51 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class NSString;
-@protocol HMIVideoEncoderDelegate;
+@class NSObject, NSString;
+@protocol HMIVideoEncoderDelegate, OS_dispatch_queue;
 
 @interface HMIVideoEncoder <HMFLogging>
 {
-    struct OpaqueVTCompressionSession *_session;
     _Bool _forceKeyFrameOnNextEncodedFrame;
-    CDStruct_79c71658 _dimensions;
-    unsigned int _codecType;
-    _Bool _realTime;
-    long long _maxKeyFrameIntervalDuration;
-    long long _averageBitRate;
-    id <HMIVideoEncoderDelegate> _delegate;
+    NSString *_logIdentifier;
     unsigned long long _numberOfDroppedFrames;
+    struct OpaqueVTCompressionSession *_session;
+    id <HMIVideoEncoderDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly) unsigned long long numberOfDroppedFrames; // @synthesize numberOfDroppedFrames=_numberOfDroppedFrames;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(readonly) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property __weak id <HMIVideoEncoderDelegate> delegate; // @synthesize delegate=_delegate;
-@property long long maxKeyFrameIntervalDuration;
-@property long long averageBitRate;
-- (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+@property _Bool forceKeyFrameOnNextEncodedFrame; // @synthesize forceKeyFrameOnNextEncodedFrame=_forceKeyFrameOnNextEncodedFrame;
+@property struct OpaqueVTCompressionSession *session; // @synthesize session=_session;
+@property(readonly) unsigned long long numberOfDroppedFrames; // @synthesize numberOfDroppedFrames=_numberOfDroppedFrames;
+@property(retain) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property(nonatomic) struct HMIVideoEncoderDataRate dataRateLimit;
+@property(nonatomic) double expectedDuration;
+@property(nonatomic) long long expectedFrameRate;
+@property(nonatomic) long long maxKeyFrameIntervalDuration;
+@property(nonatomic) double quality;
+@property(nonatomic) long long averageBitRate;
+@property(nonatomic) long long maxFrameDelayCount;
+- (int)_getFloat64Property:(const struct __CFString *)arg1 propertyValueOut:(double *)arg2;
+- (int)_setFloat64Property:(const struct __CFString *)arg1 propertyValue:(double)arg2;
+- (int)_getSInt32Property:(const struct __CFString *)arg1 propertyValueOut:(int *)arg2;
+- (int)_setSInt32Property:(const struct __CFString *)arg1 propertyValue:(int)arg2;
+- (int)_getProperty:(const struct __CFString *)arg1 propertyValue:(const void **)arg2;
+- (int)_setProperty:(const struct __CFString *)arg1 propertyValue:(const void *)arg2;
+- (_Bool)prepare;
 - (void)flush;
-- (_Bool)_encodeSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 attemptRecovery:(_Bool)arg2;
-- (void)_invalidateSession;
+- (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)_invalidateWithErr:(int)arg1;
+- (void)_invalidate;
+- (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
-- (_Bool)_initSessionWithError:(id *)arg1;
-- (id)initWithDimensions:(CDStruct_79c71658)arg1 codecType:(unsigned int)arg2 realTime:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)_initSessionWithDimensions:(CDStruct_1ef3fb1f)arg1 codecType:(unsigned int)arg2 useHardwareAcceleration:(_Bool)arg3 error:(id *)arg4;
+- (id)initWithDimensions:(CDStruct_1ef3fb1f)arg1 codecType:(unsigned int)arg2 useHardwareAcceleration:(_Bool)arg3 error:(id *)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,6 +7,7 @@
 #import <HealthAlgorithms/HAMenstrualAlgorithmsHistoricalAnalyzer.h>
 
 @interface HAMenstrualAlgorithmsHistoricalAnalyzer (HKMenstrualCycles)
+- (void)hkmc_appendCycleFactorsFromDaySummary:(id)arg1;
 - (void)hkmc_appendEmptyDayAtIndex:(long long)arg1;
 @end
 

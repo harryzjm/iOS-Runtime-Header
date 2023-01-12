@@ -11,7 +11,7 @@
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXCollectionsDataSourceManagerObserver-Protocol.h>
 
-@class NSString, PUAlbumListCellContentViewHelper, PXExtendedTraitCollection, PXPhotoKitCollectionsDataSourceManager;
+@class NSString, PUAlbumListCellContentViewHelper, PXExtendedTraitCollection, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitUIMediaProvider;
 
 @interface PUAlbumsGadgetProvider : PXGadgetProvider <PXCollectionsDataSourceManagerObserver, PXChangeObserver, PUAlbumGadgetDelegate, PUHorizontalAlbumListGadgetLayoutDelegate>
 {
@@ -20,12 +20,14 @@
     PUAlbumListCellContentViewHelper *_contentViewHelper;
     unsigned long long _albumListType;
     PXExtendedTraitCollection *_extendedTraitCollection;
-    unsigned long long _currentDataSourceIdentifier;
+    long long _currentDataSourceIdentifier;
+    PXPhotoKitUIMediaProvider *_mediaProvider;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasGeneratedGadgets; // @synthesize hasGeneratedGadgets=_hasGeneratedGadgets;
-@property(nonatomic) unsigned long long currentDataSourceIdentifier; // @synthesize currentDataSourceIdentifier=_currentDataSourceIdentifier;
+@property(retain, nonatomic) PXPhotoKitUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property(nonatomic) long long currentDataSourceIdentifier; // @synthesize currentDataSourceIdentifier=_currentDataSourceIdentifier;
 @property(readonly, nonatomic) PXExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
 @property(readonly, nonatomic) unsigned long long albumListType; // @synthesize albumListType=_albumListType;
 @property(retain, nonatomic) PUAlbumListCellContentViewHelper *contentViewHelper; // @synthesize contentViewHelper=_contentViewHelper;

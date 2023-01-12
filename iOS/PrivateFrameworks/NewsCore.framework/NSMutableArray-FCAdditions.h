@@ -22,6 +22,8 @@
 - (void)fc_insertObject:(id)arg1 inOrderRelativeToContents:(unsigned long long)arg2;
 - (void)fc_removeObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_popLastObject;
+- (id)fc_popLeadingObjectsOfCount:(unsigned long long)arg1;
+- (id)fc_safelyPopFirstObject;
 - (id)fc_popFirstObject;
 - (void)fc_removeFirstObject;
 - (void)fc_removeObject:(id)arg1 sortedUsingSelector:(SEL)arg2;
@@ -41,6 +43,8 @@
 - (void)fc_insertObject:(id)arg1 inOrderRelativeToContents:(unsigned long long)arg2;
 - (void)fc_removeObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_popLastObject;
+- (id)fc_popLeadingObjectsOfCount:(unsigned long long)arg1;
+- (id)fc_safelyPopFirstObject;
 - (id)fc_popFirstObject;
 - (void)fc_removeFirstObject;
 - (void)fc_removeObject:(id)arg1 sortedUsingSelector:(SEL)arg2;

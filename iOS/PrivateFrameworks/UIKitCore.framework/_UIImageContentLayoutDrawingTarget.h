@@ -9,7 +9,7 @@
 #import <UIKitCore/_UIImageContentEffect-Protocol.h>
 #import <UIKitCore/_UIImageContentLayoutTarget-Protocol.h>
 
-@class NSString;
+@class NSString, UITraitCollection;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContentLayoutDrawingTarget : NSObject <_UIImageContentEffect, _UIImageContentLayoutTarget>
@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) double preferredContentScaleFactor; // @synthesize preferredContentScaleFactor=_preferredContentScaleFactor;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
-- (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(_Bool)arg4;
+@property(readonly, nonatomic) UITraitCollection *traitCollection;
+- (id)_symbolConfigurationForSource:(id)arg1;
+- (long long)_effectiveRenderingModeForSource:(id)arg1 symbolConfiguration:(id)arg2;
+- (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 symbolConfiguration:(id)arg3 withCGImageProvider:(CDUnknownBlockType)arg4 lazy:(_Bool)arg5;
 - (id)_effectForRenderingSource:(id)arg1;
 @property(readonly, nonatomic) _Bool _hasContentGravity;
 @property(readonly, nonatomic) long long contentMode;

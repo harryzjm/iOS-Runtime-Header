@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)initWithPersona:(id)arg1;
 @property(readonly, nonatomic) NSArray *syncedRootURLs;
 
 // Remaining properties

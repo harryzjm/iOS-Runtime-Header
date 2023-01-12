@@ -10,20 +10,16 @@
 
 @interface TSCH3DBarResourceCache : NSObject
 {
-    TSUNoCopyDictionary *mCache;
+    TSUNoCopyDictionary *_cache;
 }
 
 + (id)barWithExtrusionSetting:(const struct BarExtrusionSetting *)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)instance;
 + (id)_singletonAlloc;
+- (void).cxx_destruct;
 - (id)p_barWithExtrusionSetting:(const struct BarExtrusionSetting *)arg1;
-- (void)dealloc;
 - (id)init;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

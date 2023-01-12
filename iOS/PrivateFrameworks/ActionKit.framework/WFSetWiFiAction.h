@@ -14,7 +14,7 @@
 - (id)localizedAttribution;
 - (id)localizedDescriptionSummary;
 - (id)localizedName;
-- (_Bool)shouldCreateIntentAvailableResource;
+- (id)appResource;
 
 @end
 

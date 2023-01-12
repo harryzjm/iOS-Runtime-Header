@@ -12,6 +12,10 @@
 
 @optional
 @property(readonly, nonatomic) UIBarButtonItem *barButtonItem;
+@property(nonatomic) unsigned long long permittedArrowDirections;
+@property(nonatomic) _Bool shouldHideArrow;
+@property(nonatomic) _Bool shouldPassthroughSuperview;
+@property(readonly, nonatomic) _Bool shouldDismissIfSourceRemovedAfterRepositioning;
 @property(readonly, nonatomic) UIView *popoverSourceView;
 @property(readonly, nonatomic) struct CGRect popoverSourceRect;
 @end

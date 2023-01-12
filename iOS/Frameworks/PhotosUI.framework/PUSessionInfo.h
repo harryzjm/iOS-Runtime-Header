@@ -15,9 +15,11 @@
 {
     NSPointerArray *_observers;
     _Bool _selectingTargetAlbum;
+    _Bool _wantsNumberedSelectionStyle;
     _Bool _allowsMultipleSelection;
     _Bool _enforcesSelectionLimitByDelesectingOtherAssets;
     _Bool _showsFileSizePicker;
+    _Bool _allowsSwipeToSelect;
     _Bool _isForAssetPicker;
     _Bool _isLimitedLibraryPicker;
     long long _status;
@@ -32,6 +34,7 @@
     long long _promptLocation;
     CDUnknownBlockType _bannerGenerator;
     unsigned long long _selectionLimit;
+    long long _noContentPlaceholderType;
     id <PXPhotosViewDelegate> _photosViewDelegate;
     PXLoadingStatusManager *_loadingStatusManager;
     PXSelectionCoordinator *_selectionCoordinator;
@@ -43,9 +46,12 @@
 @property(nonatomic) __weak id <PXPhotosViewDelegate> photosViewDelegate; // @synthesize photosViewDelegate=_photosViewDelegate;
 @property(readonly, nonatomic) _Bool isLimitedLibraryPicker; // @synthesize isLimitedLibraryPicker=_isLimitedLibraryPicker;
 @property(readonly, nonatomic) _Bool isForAssetPicker; // @synthesize isForAssetPicker=_isForAssetPicker;
+@property(nonatomic) _Bool allowsSwipeToSelect; // @synthesize allowsSwipeToSelect=_allowsSwipeToSelect;
 @property(nonatomic) _Bool showsFileSizePicker; // @synthesize showsFileSizePicker=_showsFileSizePicker;
 @property(nonatomic) _Bool enforcesSelectionLimitByDelesectingOtherAssets; // @synthesize enforcesSelectionLimitByDelesectingOtherAssets=_enforcesSelectionLimitByDelesectingOtherAssets;
 @property(nonatomic) _Bool allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
+@property(nonatomic) long long noContentPlaceholderType; // @synthesize noContentPlaceholderType=_noContentPlaceholderType;
+@property(nonatomic) _Bool wantsNumberedSelectionStyle; // @synthesize wantsNumberedSelectionStyle=_wantsNumberedSelectionStyle;
 @property(nonatomic) unsigned long long selectionLimit; // @synthesize selectionLimit=_selectionLimit;
 @property(copy, nonatomic) CDUnknownBlockType bannerGenerator; // @synthesize bannerGenerator=_bannerGenerator;
 @property(nonatomic) long long promptLocation; // @synthesize promptLocation=_promptLocation;

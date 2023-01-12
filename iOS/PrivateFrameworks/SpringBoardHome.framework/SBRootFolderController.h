@@ -7,35 +7,37 @@
 #import <SpringBoardHome/SBFramewiseInteractiveTransitionAnimatorDelegate-Protocol.h>
 #import <SpringBoardHome/SBHAddWidgetSheetViewControllerDelegate-Protocol.h>
 #import <SpringBoardHome/SBHIconRootViewProviding-Protocol.h>
+#import <SpringBoardHome/SBHStackConfigurationInteractionDelegate-Protocol.h>
 #import <SpringBoardHome/SBHStackConfigurationViewControllerAppearanceDelegate-Protocol.h>
 #import <SpringBoardHome/SBHWidgetDragHandling-Protocol.h>
 #import <SpringBoardHome/SBHWidgetSheetViewControllerPresenter-Protocol.h>
+#import <SpringBoardHome/SBIconWidgetIntroductionDelegate-Protocol.h>
 #import <SpringBoardHome/SBRootFolderPageStateTransitioning-Protocol.h>
 #import <SpringBoardHome/SBRootFolderViewDelegate-Protocol.h>
 #import <SpringBoardHome/SBSearchGestureObserver-Protocol.h>
 #import <SpringBoardHome/SBViewControllerTransitionContextDelegate-Protocol.h>
 #import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CHSAvocadoDescriptorProvider, NSArray, NSHashTable, NSSet, NSString, SBFParallaxSettings, SBFolderIconImageCache, SBFramewiseInteractiveTransitionAnimator, SBHAddWidgetSheetViewController, SBHIconImageCache, SBHRecentsDocumentExtensionProvider, SBPercentPassthroughInteractiveTransition, SBRootFolder, SBRootFolderView, SBSearchGesture, SBViewControllerTransitionContext, UIView, UIViewController, _SBRootFolderPageTransitionHandle, _UILegibilitySettings;
-@protocol BSInvalidatable, SBHLegibility, SBHLibraryProvider, SBHSidebarProvider, SBHWidgetDragHandling, SBRootFolderControllerAccessoryViewControllerDelegate, SBRootFolderControllerDelegate, SBRootFolderPageTransition;
+@class CHSAvocadoDescriptorProvider, NSArray, NSHashTable, NSMapTable, NSSet, NSString, SBFParallaxSettings, SBFolderIconImageCache, SBFramewiseInteractiveTransitionAnimator, SBHIconImageCache, SBHRecentsDocumentExtensionProvider, SBHStackConfigurationViewController, SBHomeScreenDefaults, SBPercentPassthroughInteractiveTransition, SBRootFolder, SBRootFolderView, SBSearchGesture, SBViewControllerTransitionContext, UIView, UIViewController, _SBRootFolderPageTransitionHandle, _UILegibilitySettings;
+@protocol BSInvalidatable, SBHLegibility, SBHMainAddSheetViewControlling, SBHRootFolderCustomViewPresenting, SBHSidebarProvider, SBHWidgetDragHandling, SBRootFolderControllerAccessoryViewControllerDelegate, SBRootFolderControllerDelegate, SBRootFolderPageTransition;
 
-@interface SBRootFolderController <SBFramewiseInteractiveTransitionAnimatorDelegate, SBViewControllerTransitionContextDelegate, SBRootFolderViewDelegate, SBSearchGestureObserver, SBHAddWidgetSheetViewControllerDelegate, UIGestureRecognizerDelegate, SBHWidgetSheetViewControllerPresenter, SBHStackConfigurationViewControllerAppearanceDelegate, SBHWidgetDragHandling, SBRootFolderPageStateTransitioning, SBHIconRootViewProviding>
+@interface SBRootFolderController <SBFramewiseInteractiveTransitionAnimatorDelegate, SBViewControllerTransitionContextDelegate, SBRootFolderViewDelegate, SBSearchGestureObserver, SBHAddWidgetSheetViewControllerDelegate, UIGestureRecognizerDelegate, SBIconWidgetIntroductionDelegate, SBHWidgetSheetViewControllerPresenter, SBHStackConfigurationInteractionDelegate, SBHStackConfigurationViewControllerAppearanceDelegate, SBHWidgetDragHandling, SBRootFolderPageStateTransitioning, SBHIconRootViewProviding>
 {
     SBViewControllerTransitionContext *_currentTransitionContext;
     SBFramewiseInteractiveTransitionAnimator *_currentTransitionAnimator;
     SBPercentPassthroughInteractiveTransition *_currentTransitionInteractor;
     NSHashTable *_pageStateObservers;
-    NSArray *_editingSuggestedWidgetItems;
-    SBHAddWidgetSheetViewController *_addSheetViewController;
+    NSMapTable *_widgetAddSheetObservers;
     _Bool _showsDoneButtonWhileEditing;
-    _Bool _showsAddWidgetButtonWhileEditing;
     _Bool _suppressesExtraEditingButtons;
-    _Bool _favoriteTodayViewVisible;
+    _Bool _todayViewPageHidden;
     _Bool _managesStatusBarWidth;
+    _Bool _widgetIntroductionPreferenceShown;
     long long _pageState;
+    unsigned long long _showsAddWidgetButtonWhileEditingAllowedOrientations;
     UIViewController *_pullDownSearchViewController;
-    UIViewController<SBHLegibility> *_todayViewController;
-    UIViewController<SBHLibraryProvider> *_trailingCustomViewController;
+    UIViewController<SBHRootFolderCustomViewPresenting> *_leadingCustomViewController;
+    UIViewController<SBHRootFolderCustomViewPresenting> *_trailingCustomViewController;
     UIViewController<SBHSidebarProvider> *_sidebarViewController;
     SBSearchGesture *_searchGesture;
     id <SBRootFolderControllerAccessoryViewControllerDelegate> _accessoryViewControllerDelegate;
@@ -46,8 +48,11 @@
     id <SBRootFolderPageTransition> _searchGestureTransition;
     id <SBRootFolderPageTransition> _implicitScrollTransition;
     SBHRecentsDocumentExtensionProvider *_recentsDocumentExtensionProvider;
-    id <BSInvalidatable> _iconImageViewControllerKeepStaticForPageManagementVisibleAssertion;
-    id <BSInvalidatable> _iconImageViewControllerKeepStaticForPageManagementDismissalAssertion;
+    SBHomeScreenDefaults *_homeScreenDefaults;
+    UIViewController<SBHMainAddSheetViewControlling> *_addSheetViewController;
+    SBHStackConfigurationViewController *_stackConfigurationViewController;
+    NSArray *_editingSuggestedWidgetItems;
+    NSArray *_stackConfigurationSuggestedWidgetItems;
     CHSAvocadoDescriptorProvider *_avocadoDescriptorProvider;
 }
 
@@ -58,26 +63,30 @@
 + (_Bool)_shouldForwardViewWillTransitionToSize;
 + (Class)configurationClass;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isWidgetIntroductionPreferenceShown) _Bool widgetIntroductionPreferenceShown; // @synthesize widgetIntroductionPreferenceShown=_widgetIntroductionPreferenceShown;
 @property(readonly, nonatomic) CHSAvocadoDescriptorProvider *avocadoDescriptorProvider; // @synthesize avocadoDescriptorProvider=_avocadoDescriptorProvider;
-@property(retain, nonatomic) id <BSInvalidatable> iconImageViewControllerKeepStaticForPageManagementDismissalAssertion; // @synthesize iconImageViewControllerKeepStaticForPageManagementDismissalAssertion=_iconImageViewControllerKeepStaticForPageManagementDismissalAssertion;
-@property(retain, nonatomic) id <BSInvalidatable> iconImageViewControllerKeepStaticForPageManagementVisibleAssertion; // @synthesize iconImageViewControllerKeepStaticForPageManagementVisibleAssertion=_iconImageViewControllerKeepStaticForPageManagementVisibleAssertion;
+@property(copy, nonatomic) NSArray *stackConfigurationSuggestedWidgetItems; // @synthesize stackConfigurationSuggestedWidgetItems=_stackConfigurationSuggestedWidgetItems;
+@property(copy, nonatomic) NSArray *editingSuggestedWidgetItems; // @synthesize editingSuggestedWidgetItems=_editingSuggestedWidgetItems;
+@property(nonatomic) __weak SBHStackConfigurationViewController *stackConfigurationViewController; // @synthesize stackConfigurationViewController=_stackConfigurationViewController;
+@property(retain, nonatomic) UIViewController<SBHMainAddSheetViewControlling> *addSheetViewController; // @synthesize addSheetViewController=_addSheetViewController;
+@property(readonly, nonatomic) SBHomeScreenDefaults *homeScreenDefaults; // @synthesize homeScreenDefaults=_homeScreenDefaults;
 @property(retain, nonatomic) SBHRecentsDocumentExtensionProvider *recentsDocumentExtensionProvider; // @synthesize recentsDocumentExtensionProvider=_recentsDocumentExtensionProvider;
 @property(retain, nonatomic) id <SBRootFolderPageTransition> implicitScrollTransition; // @synthesize implicitScrollTransition=_implicitScrollTransition;
 @property(retain, nonatomic) id <SBRootFolderPageTransition> searchGestureTransition; // @synthesize searchGestureTransition=_searchGestureTransition;
 @property(retain, nonatomic) _SBRootFolderPageTransitionHandle *currentTransitionHandle; // @synthesize currentTransitionHandle=_currentTransitionHandle;
 @property(retain, nonatomic) id <BSInvalidatable> searchGestureIconViewTouchCancellationAssertion; // @synthesize searchGestureIconViewTouchCancellationAssertion=_searchGestureIconViewTouchCancellationAssertion;
 @property(nonatomic) _Bool managesStatusBarWidth; // @synthesize managesStatusBarWidth=_managesStatusBarWidth;
+@property(nonatomic, getter=isTodayViewPageHidden) _Bool todayViewPageHidden; // @synthesize todayViewPageHidden=_todayViewPageHidden;
 @property(nonatomic) double effectiveSidebarVisibilityProgress; // @synthesize effectiveSidebarVisibilityProgress=_effectiveSidebarVisibilityProgress;
-@property(readonly, nonatomic, getter=isFavoriteTodayViewVisible) _Bool favoriteTodayViewVisible; // @synthesize favoriteTodayViewVisible=_favoriteTodayViewVisible;
 @property(nonatomic) unsigned long long presentationSource; // @synthesize presentationSource=_presentationSource;
 @property(nonatomic) __weak id <SBRootFolderControllerAccessoryViewControllerDelegate> accessoryViewControllerDelegate; // @synthesize accessoryViewControllerDelegate=_accessoryViewControllerDelegate;
 @property(retain, nonatomic) SBSearchGesture *searchGesture; // @synthesize searchGesture=_searchGesture;
 @property(readonly, nonatomic) UIViewController<SBHSidebarProvider> *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
-@property(readonly, nonatomic) UIViewController<SBHLibraryProvider> *trailingCustomViewController; // @synthesize trailingCustomViewController=_trailingCustomViewController;
-@property(readonly, nonatomic) UIViewController<SBHLegibility> *todayViewController; // @synthesize todayViewController=_todayViewController;
+@property(readonly, nonatomic) UIViewController<SBHRootFolderCustomViewPresenting> *trailingCustomViewController; // @synthesize trailingCustomViewController=_trailingCustomViewController;
+@property(readonly, nonatomic) UIViewController<SBHRootFolderCustomViewPresenting> *leadingCustomViewController; // @synthesize leadingCustomViewController=_leadingCustomViewController;
 @property(readonly, nonatomic) UIViewController *pullDownSearchViewController; // @synthesize pullDownSearchViewController=_pullDownSearchViewController;
 @property(nonatomic) _Bool suppressesExtraEditingButtons; // @synthesize suppressesExtraEditingButtons=_suppressesExtraEditingButtons;
-@property(readonly, nonatomic) _Bool showsAddWidgetButtonWhileEditing; // @synthesize showsAddWidgetButtonWhileEditing=_showsAddWidgetButtonWhileEditing;
+@property(readonly, nonatomic) unsigned long long showsAddWidgetButtonWhileEditingAllowedOrientations; // @synthesize showsAddWidgetButtonWhileEditingAllowedOrientations=_showsAddWidgetButtonWhileEditingAllowedOrientations;
 @property(readonly, nonatomic) _Bool showsDoneButtonWhileEditing; // @synthesize showsDoneButtonWhileEditing=_showsDoneButtonWhileEditing;
 @property(nonatomic) long long pageState; // @synthesize pageState=_pageState;
 - (void)_doPageManagementEducation;
@@ -88,6 +97,7 @@
 - (_Bool)isDisplayingIcon:(id)arg1 inLocation:(id)arg2 options:(unsigned long long)arg3;
 @property(nonatomic) double titledButtonsAlpha;
 - (void)setSuppressesEditingStateForListView:(_Bool)arg1;
+- (_Bool)isDisplayingEditingButtons;
 - (unsigned long long)presenterType;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (_Bool)shouldAnimateFirstTwoViewsAsOne;
@@ -124,24 +134,24 @@
 - (double)pageTransitionProgress;
 @property(readonly, nonatomic) long long destinationPageState;
 @property(readonly, nonatomic, getter=isTransitioningPageState) _Bool transitioningPageState;
-- (_Bool)isTransitiongBetweenPageStateVerticalGroups;
+- (_Bool)isTransitioningBetweenPageStateVerticalGroups;
 - (_Bool)isTransitioningBetweenHorizontalPageStates;
 - (_Bool)isTransitioningBetweenIconPageAndTrailingCustomPage;
 - (_Bool)isTransitioningBetweenIconAndTrailingCustomView;
 - (double)_trailingCustomViewVisibilityProgress;
-- (double)_todayViewVisibilityProgress;
-- (_Bool)isTransitioningBetweenIconPageAndTodayPage;
-- (_Bool)isTransitioningBetweenIconAndTodayView;
-@property(readonly, nonatomic, getter=isTodayViewTransitioning) _Bool todayViewTransitioning;
-@property(readonly, nonatomic, getter=isTodayViewVisibleOrTransitionDestination) _Bool todayViewVisibleOrTransitionDestination;
-@property(nonatomic, getter=isTodayViewPageHidden) _Bool todayViewPageHidden; // @dynamic todayViewPageHidden;
-- (_Bool)isTodayViewOrTodayViewSearchVisible;
-@property(readonly, nonatomic, getter=isTodayViewVisible) _Bool todayViewVisible;
-@property(readonly, nonatomic, getter=isOnTodayPage) _Bool todayPage;
+- (double)_leadingCustomViewVisibilityProgress;
+- (_Bool)isTransitioningBetweenIconPageAndLeadingCustomPage;
+- (_Bool)isTransitioningBetweenIconAndLeadingCustomView;
+@property(readonly, nonatomic, getter=isLeadingCustomViewTransitioning) _Bool leadingCustomViewTransitioning;
+@property(readonly, nonatomic, getter=isLeadingCustomViewVisibleOrTransitionDestination) _Bool leadingCustomViewVisibleOrTransitionDestination;
+@property(nonatomic, getter=isLeadingCustomViewPageHidden) _Bool leadingCustomViewPageHidden; // @dynamic leadingCustomViewPageHidden;
+- (_Bool)isLeadingCustomViewOrLeadingCustomViewSearchVisible;
+@property(readonly, nonatomic, getter=isLeadingCustomViewVisible) _Bool leadingCustomViewVisible;
+@property(readonly, nonatomic, getter=isOnLeadingCustomPage) _Bool leadingCustomPage;
 - (double)_anySearchVisibilityProgress;
-@property(readonly, nonatomic, getter=isTodayViewSearchVisibleOrTransitioning) _Bool todayViewSearchVisibleOrTransitioning;
-@property(readonly, nonatomic, getter=isTodayViewSearchTransitioning) _Bool todayViewSearchTransitioning;
-@property(readonly, nonatomic, getter=isTodayViewSearchVisible) _Bool todayViewSearchVisible;
+@property(readonly, nonatomic, getter=isLeadingCustomViewSearchVisibleOrTransitioning) _Bool leadingCustomViewSearchVisibleOrTransitioning;
+@property(readonly, nonatomic, getter=isLeadingCustomViewSearchTransitioning) _Bool leadingCustomViewSearchTransitioning;
+@property(readonly, nonatomic, getter=isLeadingCustomViewSearchVisible) _Bool leadingCustomViewSearchVisible;
 @property(readonly, nonatomic, getter=isPullDownSearchVisibleOrTransitioning) _Bool pullDownSearchVisibleOrTransitioning;
 @property(readonly, nonatomic, getter=isPullDownSearchTransitioning) _Bool pullDownSearchTransitioning;
 @property(readonly, nonatomic, getter=isPullDownSearchVisibleOrTransitioningToVisible) _Bool pullDownSearchVisibleOrTransitioningToVisible;
@@ -157,10 +167,14 @@
 - (void)presentSpotlightAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performDefaultPageStateTransitionToState:(long long)arg1 reason:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)performPageStateTransitionToState:(long long)arg1 reason:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_reduceTransparencyChanged;
-- (void)rootFolderViewDidDismissPageManagement:(id)arg1;
-- (void)rootFolderView:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2;
-- (void)rootFolderView:(id)arg1 willPresentPageManagementUsingAnimator:(id)arg2;
+- (void)_dismissPageManagementIfPresented:(CDUnknownBlockType)arg1;
+- (void)_presentPageManagement:(CDUnknownBlockType)arg1;
+- (id)iconLocationForListsWithNonDefaultSizedIconsForRootFolderView:(id)arg1;
+- (void)rootFolderView:(id)arg1 didDismissPageManagementWithLayoutManager:(id)arg2 context:(id)arg3;
+- (void)rootFolderView:(id)arg1 willDismissPageManagementUsingAnimator:(id)arg2 context:(id)arg3;
+- (void)rootFolderView:(id)arg1 willPresentPageManagementWithLayoutManager:(id)arg2 animator:(id)arg3 context:(id)arg4;
 - (void)rootFolderViewWantsToEndEditing:(id)arg1;
 - (void)rootFolderView:(id)arg1 didEndOverscrollOnLastPageWithVelocity:(double)arg2 translation:(double)arg3;
 - (void)rootFolderView:(id)arg1 didOverscrollOnLastPageByAmount:(double)arg2;
@@ -175,7 +189,7 @@
 - (double)externalDockHeightForRootFolderView:(id)arg1;
 - (double)maxExternalDockHeightForRootFolderView:(id)arg1;
 - (double)distanceToTopOfSpotlightIconsForRootFolderView:(id)arg1;
-- (void)rootFolderView:(id)arg1 wantsToAdjustTodayContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
+- (void)rootFolderView:(id)arg1 wantsToAdjustLeadingCustomContentForEdgeBounceForScrollOffset:(struct CGPoint)arg2;
 - (void)folderView:(id)arg1 currentPageIndexDidChange:(long long)arg2;
 - (void)folderView:(id)arg1 currentPageIndexWillChange:(long long)arg2;
 - (void)folderView:(id)arg1 didEndEditingTitle:(id)arg2;
@@ -188,7 +202,7 @@
 - (void)folderViewWillBeginScrolling:(id)arg1;
 - (void)folderViewWillUpdatePageDuringScrolling:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (_Bool)_todayViewPageIsVisibleForOrientation:(long long)arg1;
+- (_Bool)_leadingCustomViewPageIsVisibleForOrientation:(long long)arg1;
 - (void)_configureTodayViewPageForOrientation:(long long)arg1;
 - (void)updateViewsAfterOrientationChange;
 - (struct UIEdgeInsets)statusBarInsetsForOrientation:(long long)arg1;
@@ -197,54 +211,71 @@
 - (void)_configureAppStatusBarInsetsAnimated:(_Bool)arg1;
 - (void)_configureViewForOrientationWithoutAnimation:(long long)arg1;
 - (void)_configureDockViewForOrientationWithoutAnimation:(long long)arg1;
-- (void)_configureDockViewForOrientationDuringAnimation:(long long)arg1 dockAnimationWindow:(id)arg2;
+- (void)_configureDockViewForOrientationDuringAnimation:(long long)arg1 dockAnimationWindow:(id)arg2 dockBorrowedAssertion:(id)arg3;
 - (_Bool)_dockLayoutReversedForInterfaceOrientation:(long long)arg1;
 - (unsigned long long)_dockEdgeForInterfaceOrientation:(long long)arg1;
 - (_Bool)_shouldUseDockAnimationWindowForRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (_Bool)_shouldSlideDockOutDuringRotationFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (_Bool)_isDockSwitchedForOrientation:(long long)arg1;
 @property(nonatomic, getter=isOccludedByOverlay) _Bool occludedByOverlay;
-- (void)togglePageManagementUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)exitPageManagementUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enterPageManagementUIWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic, getter=isPageManagementUIVisible) _Bool pageManagementUIVisible;
 @property(readonly, nonatomic, getter=isSidebarVisibilityGestureActive) _Bool sidebarVisibilityGestureActive;
 @property(nonatomic, getter=isSidebarPinned) _Bool sidebarPinned;
+@property(readonly, nonatomic, getter=isSidebarEffectivelyAtLeastHalfVisible) _Bool sidebarEffectivelyAtLeastHalfVisible;
 @property(readonly, nonatomic, getter=isSidebarEffectivelyVisible) _Bool sidebarEffectivelyVisible;
 @property(readonly, nonatomic, getter=isSidebarVisible) _Bool sidebarVisible;
 @property(nonatomic) double sidebarVisibilityProgress;
 @property(readonly, nonatomic) long long trailingCustomViewPageIndex;
 @property(readonly, nonatomic) long long sidebarPageIndex;
-@property(readonly, nonatomic) long long favoriteTodayViewPageIndex;
-@property(readonly, nonatomic) long long todayViewPageIndex;
+@property(readonly, nonatomic) long long leadingCustomViewPageIndex;
 - (void)setParallaxDisabled:(_Bool)arg1 forReason:(id)arg2;
 @property(readonly, nonatomic) SBFParallaxSettings *parallaxSettings;
 @property(readonly, nonatomic) UIView *searchBackdropView;
-@property(readonly, nonatomic) UIView *searchableTodayWrapperView;
-@property(nonatomic) _Bool allowsAutoscrollToTodayView;
+@property(readonly, nonatomic) UIView *searchableLeadingCustomWrapperView;
+@property(nonatomic) _Bool allowsAutoscrollToLeadingCustomView;
 @property(readonly, copy, nonatomic) NSSet *presentedIconLocations;
 - (_Bool)isPresentingIconLocation:(id)arg1;
 - (id)viewControllersForPageIndex:(long long)arg1;
+- (void)enumerateWidgetAddSheetObserversUsingBlock:(CDUnknownBlockType)arg1;
+- (void)removeWidgetAddSheetObserverForHandle:(id)arg1;
+- (id)addWidgetAddSheetObserver:(CDUnknownBlockType)arg1;
 - (void)enumeratePageStateObserversUsingBlock:(CDUnknownBlockType)arg1;
 - (void)removePageStateObserver:(id)arg1;
 - (void)addPageStateObserver:(id)arg1;
 - (id)viewControllerForTransitioningFromPageState:(long long)arg1 toPageState:(long long)arg2;
 - (id)viewControllerForPageState:(long long)arg1;
+- (void)rejectWidgetIntroduction;
+- (void)acceptWidgetIntroduction;
+- (void)bringWidgetIntroductionPopoverToFront;
+- (void)updatePronouncedContainerViewVisibilityIfPossible:(_Bool)arg1 vertical:(_Bool)arg2;
+- (_Bool)isDisplayingWidgetIntroductionOnPage:(long long)arg1;
+- (_Bool)iconListViewContainsWidget:(unsigned long long)arg1;
+- (_Bool)iconListViewsContainWidget;
+- (_Bool)canShowWidgetIntroduction;
+- (void)_updateStatusBarHiddenForWidgetSheetViewController:(id)arg1 visible:(_Bool)arg2;
 - (void)_handleWidgetSheetViewControllerDidDisappear:(id)arg1;
 - (void)_handleWidgetSheetViewControllerWillDisappear:(id)arg1;
 - (void)_handleWidgetSheetViewControllerDidAppear:(id)arg1;
 - (void)_handleWidgetSheetViewControllerWillAppear:(id)arg1;
-- (id)addWidgetSheetViewController:(id)arg1 widgetIconForDescriptor:(id)arg2 sizeClass:(long long)arg3;
 - (void)addWidgetSheetViewControllerDidDisappear:(id)arg1;
 - (void)addWidgetSheetViewControllerWillDisappear:(id)arg1;
 - (void)addWidgetSheetViewControllerDidAppear:(id)arg1;
 - (void)addWidgetSheetViewControllerWillAppear:(id)arg1;
 - (void)addWidgetSheetViewControllerDidCancel:(id)arg1;
 - (void)addWidgetSheetViewController:(id)arg1 didSelectWidgetIconView:(id)arg2;
-- (void)stackConfigurationViewControllerViewDidDisappear:(id)arg1;
-- (void)stackConfigurationViewControllerViewWillDisappear:(id)arg1;
-- (void)stackConfigurationViewControllerViewDidAppear:(id)arg1;
-- (void)stackConfigurationViewControllerViewWillAppear:(id)arg1;
+- (id)stackConfigurationInteraction:(id)arg1 dragPreviewForIconView:(id)arg2;
+- (void)stackConfigurationInteractionWillAnimateWidgetInsertion:(id)arg1;
+- (void)stackConfigurationInteraction:(id)arg1 noteDidRemoveSuggestedWidgetIcon:(id)arg2;
+- (void)stackConfigurationInteraction:(id)arg1 isConsumingDropSession:(id)arg2;
+- (id)stackConfigurationInteraction:(id)arg1 draggedIconForIdentifier:(id)arg2;
+- (void)stackConfigurationInteraction:(id)arg1 requestsPresentAddWidgetSheetFromPresenter:(id)arg2;
+- (void)stackConfigurationViewControllerDidDisappear:(id)arg1;
+- (void)stackConfigurationViewControllerWillDisappear:(id)arg1;
+- (void)stackConfigurationViewControllerDidAppear:(id)arg1;
+- (void)stackConfigurationViewControllerWillAppear:(id)arg1;
+- (void)didEndDraggingWidgetIcon:(id)arg1;
 - (void)didBeginDraggingWidgetIcon:(id)arg1;
 - (id)_widgetIconForDescriptors:(id)arg1 sizeClass:(long long)arg2;
 - (id)widgetIconForDescriptor:(id)arg1 sizeClass:(long long)arg2;
@@ -258,6 +289,14 @@
 - (void)_addSiriSuggestionsSpecialAvocadosToApplicationWidgetCollections:(id)arg1;
 - (void)_addShortcutsSpecialAvocadoToApplicationWidgetCollections:(id)arg1;
 - (_Bool)_shouldAddSpecialAvocadoOfType:(unsigned long long)arg1;
+@property(readonly, nonatomic) UIViewController<SBHLegibility> *todayViewController;
+- (_Bool)_isDescriptorVisibleByDefault:(id)arg1;
+- (_Bool)_isVisibilityWidgetDefined:(long long)arg1;
+- (_Bool)_isDescriptorAllowed:(id)arg1;
+- (_Bool)_isDescriptorSupported:(id)arg1;
+- (void)dismissWidgetAddSheetIfPresented:(_Bool)arg1;
+- (void)presentWidgetEditingViewControllerFromViewController:(id)arg1 withAllowedSizeClasses:(unsigned long long)arg2 allowingNonStackableItems:(_Bool)arg3;
+- (id)applicationWidgetCollectionsForEditingViewController:(id)arg1 withAllowedSizeClasses:(unsigned long long *)arg2 allowingNonStackableItems:(_Bool)arg3;
 - (void)presentWidgetEditingViewControllerFromViewController:(id)arg1;
 - (void)rootFolderViewWantsWidgetEditingViewControllerPresented:(id)arg1;
 - (_Bool)suspendsWallpaperAnimationWhileOpen;
@@ -274,26 +313,36 @@
 - (id)beginModifyingDockOffscreenFractionForReason:(id)arg1;
 - (id)dockListView;
 - (id)iconViewForIcon:(id)arg1 location:(id)arg2;
+- (id)iconViewForIcon:(id)arg1 location:(id)arg2 options:(unsigned long long)arg3;
 - (_Bool)isDisplayingIconView:(id)arg1 inLocation:(id)arg2;
 - (_Bool)isDisplayingIcon:(id)arg1 inLocation:(id)arg2;
 - (_Bool)isDisplayingIcon:(id)arg1;
 - (void)setIdleText:(id)arg1;
-- (_Bool)setCurrentPageIndex:(long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)setCurrentPageIndex:(long long)arg1 animated:(_Bool)arg2;
 @property(readonly, nonatomic) double spotlightFirstIconRowOffset;
 - (void)setSidebarViewController:(id)arg1;
-- (void)setTodayViewController:(id)arg1;
+- (void)setLeadingCustomViewController:(id)arg1;
 - (void)setPullDownSearchViewController:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *folderControllers;
+- (void)_updateAddWidgetSheetIconCache;
 @property(nonatomic) __weak id <SBRootFolderControllerDelegate> folderDelegate; // @dynamic folderDelegate;
 - (unsigned long long)_depth;
 - (id)rootFolderViewIfLoaded;
 @property(readonly, nonatomic) SBRootFolderView *rootFolderView;
 - (void)orientationDidChange:(long long)arg1;
 - (void)enumerateDisplayedIconViewsForIcon:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateDisplayedIconViewsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateDisplayedIconViewsUsingBlock:(CDUnknownBlockType)arg1;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 - (void)updateExtraButtonVisibilityAnimated:(_Bool)arg1;
+- (unsigned long long)_stackConfigurationGridSize;
+- (unsigned long long)_currentHomeScreenEditingGridSize;
+- (unsigned long long)_defaultEditingSuggestedWidgetItemsFamilyMask;
+- (void)_refreshGalleryContentForHomeScreenEditingIfNecessary;
+- (void)_fetchGalleryContentForStackConfiguration;
+- (void)_fetchGalleryContentForHomeScreenEditing;
+- (void)_fetchGalleryContentForGridSize:(unsigned long long)arg1 withFamilyMask:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_updateFolderRequiredTrailingEmptyListCount;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)disablesScrollingWhileIconDragIsDropping;
 - (_Bool)canAcceptFolderIconDrags;
@@ -306,6 +355,7 @@
 - (void)viewDidLoad;
 - (void)folderController:(id)arg1 didEndEditingTitle:(id)arg2;
 - (void)folderController:(id)arg1 didBeginEditingTitle:(id)arg2;
+- (void)dealloc;
 - (id)initWithConfiguration:(id)arg1;
 
 // Remaining properties

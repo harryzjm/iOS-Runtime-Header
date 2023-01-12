@@ -10,7 +10,7 @@
 #import <CloudDocsDaemon/BRCNotificationPipeDelegate-Protocol.h>
 #import <CloudDocsDaemon/BRCProcessMonitorDelegate-Protocol.h>
 
-@class BRCAccountSession, BRCClientPrivilegesDescriptor, BRMangledID, NSCountedSet, NSOperationQueue, NSSet, NSString, NSXPCConnection, brc_task_tracker;
+@class BRCAccountSession, BRCClientPrivilegesDescriptor, BRMangledID, NSCountedSet, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSXPCConnection, brc_task_tracker;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -21,19 +21,20 @@ __attribute__((visibility("hidden")))
     brc_task_tracker *_tracker;
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_operationQueue;
-    BRCAccountSession *_session;
+    BRCAccountSession *__session;
     int _clientPid;
     CDStruct_4c969caf auditToken;
     _Bool _dieOnInvalidate;
     unsigned int _isForeground:1;
     unsigned int _invalidated:1;
+    NSMutableDictionary *_personaMonitorCounts;
     _Bool _isUsingUbiquity;
     NSXPCConnection *_connection;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isUsingUbiquity; // @synthesize isUsingUbiquity=_isUsingUbiquity;
-@property(retain, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
+@property(retain, nonatomic) BRCAccountSession *session; // @synthesize session=__session;
 @property(readonly, nonatomic) _Bool dieOnInvalidate; // @synthesize dieOnInvalidate=_dieOnInvalidate;
 @property(readonly, nonatomic) __weak NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) BRCClientPrivilegesDescriptor *clientPriviledgesDescriptor; // @synthesize clientPriviledgesDescriptor=_clientPriviledgesDescriptor;
@@ -43,12 +44,18 @@ __attribute__((visibility("hidden")))
 - (void)_setupAppLibraryAndZoneWithID:(id)arg1 recreateDocumentsIfNeeded:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)_startDownloadItemsAtURLs:(id)arg1 pos:(unsigned long long)arg2 options:(unsigned long long)arg3 error:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_addExternalDocumentReferenceTo:(id)arg1 underParent:(id)arg2 forceReparent:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)_addExternalDocumentReferenceTo:(id)arg1 session:(id)arg2 underParent:(id)arg3 forceReparent:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
 - (id)_createBookmarkWithTarget:(id)arg1 targetPath:(id)arg2 parentPath:(id)arg3 aliasName:(id)arg4 error:(id *)arg5;
 - (id)_setupAppLibrary:(id)arg1 error:(id *)arg2;
 - (id)issueContainerExtensionForURL:(id)arg1 error:(id *)arg2;
 - (_Bool)canAccessPhysicalURL:(id)arg1;
-- (void)accessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2 dbAccessKind:(long long)arg3 asynchronously:(_Bool)arg4 handler:(CDUnknownBlockType)arg5;
-- (_Bool)canAccessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2;
+- (void)accessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2 dbAccessKind:(long long)arg3 synchronouslyIfPossible:(_Bool)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)_finishedXPCClientOfSession:(id)arg1;
+- (void)_becameXPCCLientOfSession:(id)arg1;
+- (_Bool)canAccessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2 session:(id)arg3;
+- (void)performBlockWithAnySession:(CDUnknownBlockType)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1 withSessionFromURL:(id)arg2;
+- (id)_overrideSessionForURL:(id)arg1;
 - (_Bool)canAccessPath:(const char *)arg1 accessKind:(long long)arg2;
 - (id)_auditedURLFromPath:(id)arg1;
 - (void)_auditURL:(id)arg1;
@@ -73,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)addAppLibrary:(id)arg1;
 - (void)_startMonitoringProcessIfNeeded;
 - (void)process:(int)arg1 didBecomeForeground:(_Bool)arg2;
+- (void)_process:(int)arg1 didBecomeForeground:(_Bool)arg2;
 @property(readonly, nonatomic) NSString *identifier;
 - (void)addOperation:(id)arg1;
 - (void)dumpToContext:(id)arg1;

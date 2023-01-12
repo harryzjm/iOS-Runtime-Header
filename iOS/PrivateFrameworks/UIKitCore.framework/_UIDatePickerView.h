@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIGestureRecognizerDelegateInternal-Protocol.h>
 #import <UIKitCore/UIPickerViewDataSource-Protocol.h>
 #import <UIKitCore/UIPickerViewDelegate-Protocol.h>
+#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIControlEventsGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIDatePickerCalendarTimeLabelDelegate-Protocol.h>
 #import <UIKitCore/_UIDatePickerViewComponent-Protocol.h>
+#import <UIKitCore/_UIDatePickerWheelsTimeLabelDelegate-Protocol.h>
+#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
 
-@class NSCalendar, NSLocale, NSString, UIColor, UIDatePicker, UIFont, UILabel, _UIDatePickerDataModel, _UIDatePickerMode;
+@class NSCalendar, NSLocale, NSString, UIColor, UIDatePicker, UIFont, UILabel, _UIControlEventsGestureRecognizer, _UIDatePickerDataModel, _UIDatePickerMode, _UIDatePickerNumericKeyboardViewController, _UIDatePickerWheelsTimeLabel, _UIPassthroughScrollInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerView <UIPickerViewDelegate, UIPickerViewDataSource, _UIDatePickerViewComponent>
+@interface _UIDatePickerView <_UIDatePickerCalendarTimeLabelDelegate, _UIDatePickerWheelsTimeLabelDelegate, UIGestureRecognizerDelegateInternal, UIPopoverPresentationControllerDelegate, _UIPassthroughScrollInteractionDelegate, _UIControlEventsGestureRecognizerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, _UIDatePickerViewComponent>
 {
     long long _loadingDate;
     _Bool _allowsZeroTimeInterval;
@@ -24,12 +30,24 @@ __attribute__((visibility("hidden")))
         unsigned int loadingDateOrTime:1;
         unsigned int highlightsToday:1;
         unsigned int usesBlackChrome:1;
+        unsigned int updatingWithKeyInput:1;
+        unsigned int isPendingManualKeyboardPresentation:1;
+        unsigned int isPresentingManualKeyboard:1;
+        unsigned int selectionBarTableHidden:1;
+        unsigned int receivedTextInputUpdate:1;
     } _datePickerFlags;
+    _UIPassthroughScrollInteraction *_passthroughInteraction;
     UIDatePicker *_datePicker;
     _UIDatePickerDataModel *_data;
+    _UIDatePickerNumericKeyboardViewController *_numericKeyboardViewController;
+    _UIDatePickerWheelsTimeLabel *_timeInputLabel;
+    _UIControlEventsGestureRecognizer *_controlEventsGestureRecognizer;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _UIControlEventsGestureRecognizer *controlEventsGestureRecognizer; // @synthesize controlEventsGestureRecognizer=_controlEventsGestureRecognizer;
+@property(readonly, nonatomic) _UIDatePickerWheelsTimeLabel *timeInputLabel; // @synthesize timeInputLabel=_timeInputLabel;
+@property(readonly, nonatomic) _UIDatePickerNumericKeyboardViewController *numericKeyboardViewController; // @synthesize numericKeyboardViewController=_numericKeyboardViewController;
 @property(retain, nonatomic) _UIDatePickerDataModel *data; // @synthesize data=_data;
 @property(nonatomic) __weak UIDatePicker *datePicker; // @synthesize datePicker=_datePicker;
 - (long long)datePickerMode;
@@ -37,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)_hoursStringForHour:(long long)arg1;
 - (id)_minutesStringForHour:(long long)arg1 minutes:(long long)arg2;
 - (long long)_selectionBarRowInComponent:(long long)arg1;
+- (struct UIEdgeInsets)_appliedInsetsToEdgeOfContent;
 - (_Bool)hasDefaultSize;
 - (_Bool)_updateDateOrTime;
 @property(readonly, nonatomic, getter=_amPmValue) long long amPmValue; // @dynamic amPmValue;
@@ -45,6 +64,43 @@ __attribute__((visibility("hidden")))
 - (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
 @property(nonatomic) _Bool highlightsToday; // @dynamic highlightsToday;
 - (_Bool)staggerTimeIntervals;
+- (void)presentationControllerWillDismiss:(id)arg1;
+- (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
+- (void)_dismissManualKeyboard;
+- (void)_hardwareKeyboardAvailabilityChanged:(id)arg1;
+- (_Bool)passthroughScrollInteractionDidRecognize:(id)arg1;
+- (_Bool)passthroughScrollInteraction:(id)arg1 shouldInteractAtLocation:(struct CGPoint)arg2 withEvent:(id)arg3;
+@property(nonatomic) _Bool passthroughInteractionEnabled;
+- (void)wheelsTimeLabel:(id)arg1 didChangeVisibility:(_Bool)arg2;
+- (_Bool)wheelsTimeLabelShouldReceiveInteraction:(id)arg1;
+- (void)_updateWheelsLabelForCurrentDateComponents;
+- (void)timeLabelDidEndEditing:(id)arg1;
+- (void)timeLabelDidBeginEditing:(id)arg1;
+- (void)timeLabelDidResignFirstResponder:(id)arg1;
+- (void)timeLabelDidFailToBecomeFirstResponder:(id)arg1;
+- (void)timeLabelDidBecomeFirstResponder:(id)arg1;
+- (id)primaryFirstResponder;
+- (unsigned long long)_permittedArrowDirectionForKeyboardPopover;
+- (void)timeLabelWillBecomeFirstResponder:(id)arg1;
+- (_Bool)timeLabelShouldSuppressSoftwareKeyboard:(id)arg1;
+- (long long)keyboardTypeForTimeLabel:(id)arg1;
+- (void)timeLabel:(id)arg1 didUpdateText:(id)arg2;
+- (_Bool)timeLabel:(id)arg1 didReceiveText:(id)arg2;
+- (void)_updateWheelsForUpdatedTextInputWithForcedUpdate:(_Bool)arg1;
+- (void)_gestureRecognizerFailed:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)controlEventsGestureRecognizer:(id)arg1 recognizedControlEvent:(unsigned long long)arg2 withEvent:(id)arg3;
+- (void)_uninstallTimeInputLabelIfNeeded;
+- (void)_installTimeInputLabelIfNeeded;
+- (struct CGRect)_currentTimeInputLabelFrame;
+- (id)_currentTimeFormat;
+- (_Bool)_shouldInstallTimeInputLabelForDatePickerMode:(long long)arg1;
+- (void)_updateTimeInputLabelConfiguration;
+- (void)_hidePickerViewSelectionBarForTimeInputLabel:(_Bool)arg1;
+- (void)_updateTimeInputLabelPosition;
 - (id)_viewForSelectedRowInComponent:(long long)arg1;
 @property(nonatomic, getter=_allowsZeroTimeInterval, setter=_setAllowsZeroTimeInterval:) _Bool allowsZeroTimeInterval;
 @property(nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) _Bool allowsZeroCountDownDuration;
@@ -81,14 +137,17 @@ __attribute__((visibility("hidden")))
 - (void)_loadDateAnimated:(_Bool)arg1;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (void)pickerTableView:(id)arg1 didChangeSelectionBarRowFrom:(long long)arg2 to:(long long)arg3;
+- (void)didChangeRoundsToMinuteInterval;
 - (void)didChangeMinuteInterval;
 - (void)didChangeMode;
 - (void)_setMode:(id)arg1;
 @property(readonly, nonatomic, getter=_isTimeIntervalMode) _Bool isTimeIntervalMode; // @dynamic isTimeIntervalMode;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
+- (void)_updateDateForNewDateRange;
 - (void)didChangeMaximumDate;
 - (void)didChangeMinimumDate;
 - (void)didChangeDateFrom:(id)arg1 animated:(_Bool)arg2;
+- (void)_updateLocaleTimeZoneOrCalendar;
 - (void)didChangeCalendar;
 - (void)didChangeTimeZone;
 - (void)didChangeLocale;
@@ -102,6 +161,10 @@ __attribute__((visibility("hidden")))
 - (double)_tableRowHeight;
 - (void)didReset;
 - (void)didChangeToday;
+- (void)_disableCustomKeyboardIfNecessary;
+- (void)_enableCustomKeyboardIfNecessary;
+- (void)willMoveToSuperview:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

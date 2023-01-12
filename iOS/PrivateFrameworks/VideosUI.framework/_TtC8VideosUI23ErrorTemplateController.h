@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI23ErrorTemplateController : UIViewController
+@interface _TtC8VideosUI23ErrorTemplateController
 {
 }
 
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)loadView;
+- (void)vui_loadView;
 
 @end
 

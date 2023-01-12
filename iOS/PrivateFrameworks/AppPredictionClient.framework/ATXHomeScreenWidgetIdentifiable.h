@@ -17,6 +17,8 @@
     NSData *_intentProtoData;
     INIntent *_intent;
     ATXMemoryPressureMonitor *_memoryPressureMonitor;
+    _Bool _suggestedWidget;
+    _Bool _onboardingWidget;
     NSString *_extensionBundleId;
     NSString *_widgetKind;
     unsigned long long _size;
@@ -26,6 +28,8 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic, getter=isOnboardingWidget) _Bool onboardingWidget; // @synthesize onboardingWidget=_onboardingWidget;
+@property(nonatomic, getter=isSuggestedWidget) _Bool suggestedWidget; // @synthesize suggestedWidget=_suggestedWidget;
 @property(copy, nonatomic) NSString *widgetUniqueId; // @synthesize widgetUniqueId=_widgetUniqueId;
 @property(copy, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
 @property(nonatomic) unsigned long long size; // @synthesize size=_size;
@@ -33,6 +37,7 @@
 @property(copy, nonatomic) NSString *extensionBundleId; // @synthesize extensionBundleId=_extensionBundleId;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (_Bool)isSameWidgetAsWidgetBundleId:(id)arg1 widgetKind:(id)arg2;
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;
 - (id)proto;

@@ -6,14 +6,13 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSNumberFormatter, NSString, PXRoundedCornerOverlayView, UIImage, UIImageView, UILabel, UIView;
+@class NSNumberFormatter, NSString, UIImage, UIImageView, UILabel, UIView;
 
 @interface PXPeopleDetailSettingsCollectionViewCell : UICollectionViewCell
 {
     NSNumberFormatter *_quantityNumberFormatter;
     struct CGRect _unitRect;
     _Bool _isFavorite;
-    _Bool _isReordering;
     UIImageView *_avatarView;
     NSString *_name;
     unsigned long long _photoQuantity;
@@ -22,16 +21,13 @@
     UILabel *_nameLabel;
     UIView *_actionIndicatorView;
     UIView *_selectionView;
-    PXRoundedCornerOverlayView *_roundCornerOverlay;
 }
 
 + (double)preferredHeightForWidth:(double)arg1 forAvatarPercentage:(double)arg2 withSizeClass:(long long)arg3 isFavorite:(_Bool)arg4;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PXRoundedCornerOverlayView *roundCornerOverlay; // @synthesize roundCornerOverlay=_roundCornerOverlay;
 @property(retain, nonatomic) UIView *selectionView; // @synthesize selectionView=_selectionView;
 @property(retain, nonatomic) UIView *actionIndicatorView; // @synthesize actionIndicatorView=_actionIndicatorView;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
-@property(nonatomic, setter=setReordering:) _Bool isReordering; // @synthesize isReordering=_isReordering;
 @property(retain, nonatomic) UILabel *quantityLabel; // @synthesize quantityLabel=_quantityLabel;
 @property(nonatomic) _Bool isFavorite; // @synthesize isFavorite=_isFavorite;
 @property(nonatomic) double textAlpha; // @synthesize textAlpha=_textAlpha;

@@ -6,31 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, NSNumber, NSOperationQueue, NSString, NSURL;
-@protocol OS_dispatch_queue;
+@class CKCodeServiceImplementation, CKContainer, NSString, NSURL;
 
 @interface CKCodeService : NSObject
 {
-    NSString *_serviceName;
-    NSURL *_serviceInstanceURL;
     CKContainer *_container;
-    NSNumber *_boxedDatabaseScope;
-    NSOperationQueue *_operationQueue;
-    NSObject<OS_dispatch_queue> *_underlyingDispatchQueue;
+    CKCodeServiceImplementation *_implementation;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *underlyingDispatchQueue; // @synthesize underlyingDispatchQueue=_underlyingDispatchQueue;
-@property(readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property(copy, nonatomic) NSNumber *boxedDatabaseScope; // @synthesize boxedDatabaseScope=_boxedDatabaseScope;
-@property(nonatomic) __weak CKContainer *container; // @synthesize container=_container;
-@property(readonly, copy, nonatomic) NSURL *serviceInstanceURL; // @synthesize serviceInstanceURL=_serviceInstanceURL;
-@property(readonly, copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
-- (id)CKStatusReportArray;
+@property(readonly, nonatomic) CKCodeServiceImplementation *implementation; // @synthesize implementation=_implementation;
+@property(readonly, nonatomic) __weak CKContainer *container; // @synthesize container=_container;
 - (void)addOperation:(id)arg1;
+- (id)boxedDatabaseScope;
+@property(readonly, copy, nonatomic) NSURL *serviceInstanceURL;
+@property(readonly, copy, nonatomic) NSString *serviceName;
 - (id)description;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
-- (id)_initWithContainer:(id)arg1 serviceName:(id)arg2 boxedDatabaseScope:(id)arg3 serviceInstanceURL:(id)arg4;
+- (id)_initWithImplementation:(id)arg1 container:(id)arg2;
 - (id)init;
 
 @end

@@ -4,46 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
+#import <NanoTimeKitCompanion/NTKCaliforniaColorPalette-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCircularAnalogDialColorPalette-Protocol.h>
 
-@class CLKDevice, NSString, UIColor;
+@class NSString, UIColor;
 
-@interface NTKCaliforniaColorPalette : NSObject <NTKCircularAnalogDialColorPalette>
+@interface NTKCaliforniaColorPalette <NTKCaliforniaColorPalette, NTKCircularAnalogDialColorPalette>
 {
-    unsigned long long _color;
-    UIColor *_backgroundColor;
-    UIColor *_circularBackgroundColor;
-    UIColor *_swatchBackgroundColor;
-    UIColor *_hourMarkerColor;
-    UIColor *_smallTickColor;
-    UIColor *_largeTickColor;
-    UIColor *_hourHandInlayColor;
-    UIColor *_hourHandStrokeColor;
-    UIColor *_secondHandColor;
-    UIColor *_cornerComplicationOuterTextColor;
-    UIColor *_cornerComplicationInnerTextColor;
-    UIColor *_simpleTextComplicationColor;
-    UIColor *_circularComplicationColorA;
-    UIColor *_circularComplicationColorB;
-    UIColor *_bezelComplicationColor;
-    UIColor *_circularDialSubtickColor;
-    CLKDevice *_device;
 }
 
-+ (id)paletteForColor:(unsigned long long)arg1;
-- (void).cxx_destruct;
-- (id)swatchImage;
-@property(readonly, nonatomic) UIColor *worldClockNighttimeHandsDotColors;
-@property(readonly, nonatomic) UIColor *worldClockNighttimeHandsColors;
-@property(readonly, nonatomic) UIColor *worldClockNighttimeBackgrounColor;
-@property(readonly, nonatomic) UIColor *worldClockDaytimeHandsDotColors;
-@property(readonly, nonatomic) UIColor *worldClockDaytimeHandsColors;
-@property(readonly, nonatomic) UIColor *worldClockDaytimeBackgrounColor;
+- (id)tritium_largeTick;
+- (id)tritium_smallTick;
+- (id)tritium_simpleTextComplication;
+- (id)tritium_digit;
+- (id)_worldClockNighttimeHandsDot;
+- (id)_worldClockNighttimeHands;
+- (id)_worldClockNighttimeBackground;
+- (id)_worldClockDaytimeHandsDot;
+- (id)_worldClockDaytimeHands;
+- (id)_worldClockDaytimeBackground;
 - (_Bool)isLightColor;
-- (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) _Bool isBlackBackground;
+@property(readonly, nonatomic) long long richComplicationViewTheme;
+- (id)_circularComplication;
+- (id)_simpleTextComplication;
+- (id)_cornerComplication;
+- (id)_bezelComplication;
+- (id)_clockHandsInlay;
+- (id)_clockHands;
+- (id)_largeTick;
+- (id)_smallTick;
+- (id)_smallTickCircular;
+- (id)_digit;
+- (id)_circularBackground;
+- (id)_background;
 - (id)circularDialFillColor;
 - (id)circularDialSubtickColor;
 - (id)circularDialTickColor;
@@ -51,33 +45,42 @@
 - (id)colorForCircularTicksForHour:(unsigned long long)arg1;
 - (id)colorForCircularTicksForMinute:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool isMulticolorPalette;
-@property(readonly, nonatomic) UIColor *platterTextColor;
-@property(readonly, nonatomic) long long richComplicationViewTheme;
-@property(readonly, nonatomic) UIColor *bezelComplicationColor;
-@property(readonly, nonatomic) UIColor *circularComplicationColorB;
-@property(readonly, nonatomic) UIColor *circularComplicationColorA;
-@property(readonly, nonatomic) UIColor *simpleTextComplicationColor;
-@property(readonly, nonatomic) UIColor *cornerComplicationInnerTextColor;
-@property(readonly, nonatomic) UIColor *cornerComplicationOuterTextColor;
-@property(readonly, nonatomic) UIColor *secondHandColor;
-@property(readonly, nonatomic) UIColor *hourHandStrokeColor;
-@property(readonly, nonatomic) UIColor *hourHandInlayColor;
-@property(readonly, nonatomic) UIColor *largeTickColor;
-@property(readonly, nonatomic) UIColor *smallTickColor;
+- (id)digitColorAtIndex:(unsigned long long)arg1;
 - (id)colorForHourMarker:(unsigned long long)arg1;
-@property(readonly, nonatomic) UIColor *hourMarkerColor;
-@property(readonly, nonatomic) UIColor *circularBackgroundColor;
-- (id)swatchBackgroundColor;
-@property(readonly, nonatomic) UIColor *backgroundColor;
-@property(readonly, nonatomic) unsigned long long color;
-- (_Bool)_shouldHideColor:(unsigned long long)arg1;
-- (id)initWithColor:(unsigned long long)arg1;
+- (id)init;
 
 // Remaining properties
+@property(readonly, nonatomic) UIColor *background; // @dynamic background;
+@property(readonly, nonatomic) UIColor *bezelComplication; // @dynamic bezelComplication;
+@property(readonly, nonatomic) UIColor *circularBackground; // @dynamic circularBackground;
+@property(readonly, nonatomic) UIColor *circularComplication; // @dynamic circularComplication;
+@property(readonly, nonatomic) UIColor *circularComplicationSecondary; // @dynamic circularComplicationSecondary;
+@property(readonly, nonatomic) UIColor *clockHands; // @dynamic clockHands;
+@property(readonly, nonatomic) UIColor *clockHandsInlay; // @dynamic clockHandsInlay;
+@property(readonly, nonatomic) UIColor *cornerComplication; // @dynamic cornerComplication;
+@property(readonly, nonatomic) UIColor *cornerComplicationSecondary; // @dynamic cornerComplicationSecondary;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) UIColor *digit; // @dynamic digit;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UIColor *largeTick; // @dynamic largeTick;
+@property(readonly, nonatomic) UIColor *primaryColor;
+@property(readonly, nonatomic) UIColor *primaryShiftedColor;
+@property(readonly, nonatomic) UIColor *secondHand; // @dynamic secondHand;
+@property(readonly, nonatomic) UIColor *secondaryColor;
+@property(readonly, nonatomic) UIColor *secondaryShiftedColor;
+@property(readonly, nonatomic) UIColor *simpleTextComplication; // @dynamic simpleTextComplication;
+@property(retain, nonatomic) UIColor *simpleTextComplicationColorValue; // @dynamic simpleTextComplicationColorValue;
+@property(readonly, nonatomic) UIColor *smallTick; // @dynamic smallTick;
+@property(readonly, nonatomic) UIColor *smallTickCircular; // @dynamic smallTickCircular;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) UIColor *swatch;
+@property(readonly, nonatomic) UIColor *worldClockDaytimeBackground; // @dynamic worldClockDaytimeBackground;
+@property(readonly, nonatomic) UIColor *worldClockDaytimeHands; // @dynamic worldClockDaytimeHands;
+@property(readonly, nonatomic) UIColor *worldClockDaytimeHandsDot; // @dynamic worldClockDaytimeHandsDot;
+@property(readonly, nonatomic) UIColor *worldClockNighttimeBackground; // @dynamic worldClockNighttimeBackground;
+@property(readonly, nonatomic) UIColor *worldClockNighttimeHands; // @dynamic worldClockNighttimeHands;
+@property(readonly, nonatomic) UIColor *worldClockNighttimeHandsDot; // @dynamic worldClockNighttimeHandsDot;
 
 @end
 

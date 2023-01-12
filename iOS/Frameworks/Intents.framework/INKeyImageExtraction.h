@@ -31,7 +31,7 @@
 - (id)storeImageSynchronously:(id)arg1 error:(id *)arg2;
 - (void)purgeImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)retrieveImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)storeImage:(id)arg1 scaled:(_Bool)arg2 qualityOfService:(unsigned int)arg3 storeType:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)storeImage:(id)arg1 scaled:(_Bool)arg2 qualityOfService:(unsigned int)arg3 storeType:(unsigned long long)arg4 error:(id *)arg5;
 - (_Bool)canStoreImage:(id)arg1;
 @property(copy, nonatomic) INImage *keyImage;
 - (id)init;

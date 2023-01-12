@@ -26,10 +26,13 @@
 - (id)contactsWithDuplicateNamesAmongContacts:(id)arg1;
 - (id)resolvedRecipientsFromChat:(id)arg1;
 - (_Bool)recipientHandleResolutionResultsAllowedByScreentime:(id)arg1 error:(id *)arg2;
-- (void)resolveRecipients:(id)arg1 forIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resolveRecipientsWithoutCRR:(id)arg1 forIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resolveRecipientsWithCRR:(id)arg1 forIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)resolveRecipientsWithGroupNameOrConversationIdentifier:(id)arg1 forIntent:(id)arg2;
 - (id)recipientDisambiguationResultsFromMultipleRelevantChats:(id)arg1;
 - (id)resolveMessageContentWithString:(id)arg1;
-- (id)sendMessageWithText:(id)arg1 currentLocation:(_Bool)arg2 audioMessageAttachment:(id)arg3 expressiveSendStyleID:(id)arg4 idsIdentifier:(id)arg5 executionContext:(long long)arg6 toChat:(id)arg7;
+- (void)sendMessagesWithText:(id)arg1 currentLocation:(_Bool)arg2 sharedLinkURL:(id)arg3 audioMessageAttachment:(id)arg4 photoLibraryAttachment:(id)arg5 fileAttachments:(id)arg6 expressiveSendStyleID:(id)arg7 idsIdentifier:(id)arg8 executionContext:(long long)arg9 toChat:(id)arg10 completion:(CDUnknownBlockType)arg11;
+- (_Bool)sendMessageWithDraft:(id)arg1 expressiveSendStyleID:(id)arg2 idsIdentifier:(id)arg3 executionContext:(long long)arg4 sourceApplicationID:(id)arg5 toChat:(id)arg6;
 - (_Bool)canSendLocationMessageWithLocationManager:(id)arg1 withError:(long long *)arg2;
 - (_Bool)isMemberOfChat:(id)arg1;
 - (void)resolveSpeakableGroupNameForSendMessage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

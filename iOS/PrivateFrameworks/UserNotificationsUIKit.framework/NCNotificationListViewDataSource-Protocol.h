@@ -16,6 +16,7 @@
 
 @optional
 - (void)recycleView:(UIView *)arg1;
+- (double)insetHorizontalMarginForNotificationListView:(NCNotificationListView *)arg1;
 - (double)footerViewHeightForNotificationList:(NCNotificationListView *)arg1;
 - (double)headerViewHeightForNotificationList:(NCNotificationListView *)arg1;
 - (UIView *)footerViewForNotificationList:(NCNotificationListView *)arg1;

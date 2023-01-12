@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMHome, NSMutableSet;
+#import <Home/HFMediaAccessoryCommonSettingsDelegate-Protocol.h>
+
+@class HMHome, NSMutableSet, NSString;
 @protocol HFCharacteristicValueSource;
 
-@interface HFMediaAccessoryItemProvider
+@interface HFMediaAccessoryItemProvider <HFMediaAccessoryCommonSettingsDelegate>
 {
     _Bool _includeMediaSystems;
+    _Bool _includeSiriEndPointProfiles;
     CDUnknownBlockType _filter;
     HMHome *_home;
     NSMutableSet *_mediaAccessoryItems;
@@ -17,11 +20,14 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool includeSiriEndPointProfiles; // @synthesize includeSiriEndPointProfiles=_includeSiriEndPointProfiles;
 @property(retain, nonatomic) id <HFCharacteristicValueSource> overrideValueSource; // @synthesize overrideValueSource=_overrideValueSource;
 @property(retain, nonatomic) NSMutableSet *mediaAccessoryItems; // @synthesize mediaAccessoryItems=_mediaAccessoryItems;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property(readonly, nonatomic) _Bool includeMediaSystems; // @synthesize includeMediaSystems=_includeMediaSystems;
 @property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
+- (id)_siriEndpoints;
+- (void)mediaProfileContainer:(id)arg1 didUpdateSettingKeypath:(id)arg2 value:(id)arg3;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;
@@ -29,7 +35,14 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithHome:(id)arg1 includeMediaSystems:(_Bool)arg2;
 - (id)initWithHome:(id)arg1;
+- (id)initWithHome:(id)arg1 includeSiriEndPointProfiles:(_Bool)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

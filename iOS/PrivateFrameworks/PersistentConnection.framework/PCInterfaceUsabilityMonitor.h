@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) unsigned long long interface5GMode;
 @property(readonly, nonatomic) _Bool isLTEWithCDRX;
 @property(readonly, nonatomic) NSString *networkCode;
 @property(readonly) Class superclass;

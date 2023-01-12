@@ -6,8 +6,13 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC14SiriKitRuntime14SiriKitRuntime : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *flowRuntime;
+    MISSING_TYPE *flowLoader;
+    MISSING_TYPE *contextService;
 }
 
 @end

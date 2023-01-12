@@ -20,6 +20,7 @@
     UIColor *_sectionHeaderTextColor;
     UIColor *_taglineTextColor;
     UIColor *_disabledTextColor;
+    UIColor *_blueSelectionSecondaryTextColor;
     UIColor *_placeholderTextColor;
     UIColor *_highlightedTextColor;
     UIColor *_highlightedTextLightColor;
@@ -108,6 +109,7 @@
 @property(retain, nonatomic) UIColor *highlightedTextLightColor; // @synthesize highlightedTextLightColor=_highlightedTextLightColor;
 @property(retain, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
 @property(retain, nonatomic) UIColor *placeholderTextColor; // @synthesize placeholderTextColor=_placeholderTextColor;
+@property(retain, nonatomic) UIColor *blueSelectionSecondaryTextColor; // @synthesize blueSelectionSecondaryTextColor=_blueSelectionSecondaryTextColor;
 @property(retain, nonatomic) UIColor *disabledTextColor; // @synthesize disabledTextColor=_disabledTextColor;
 @property(retain, nonatomic) UIColor *taglineTextColor; // @synthesize taglineTextColor=_taglineTextColor;
 @property(retain, nonatomic) UIColor *sectionHeaderTextColor; // @synthesize sectionHeaderTextColor=_sectionHeaderTextColor;

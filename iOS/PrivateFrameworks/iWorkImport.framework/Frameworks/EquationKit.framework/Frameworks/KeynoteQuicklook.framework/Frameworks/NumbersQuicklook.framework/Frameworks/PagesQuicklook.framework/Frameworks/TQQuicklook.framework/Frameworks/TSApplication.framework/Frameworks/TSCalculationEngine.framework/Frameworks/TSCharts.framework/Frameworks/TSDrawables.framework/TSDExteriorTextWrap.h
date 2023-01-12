@@ -35,8 +35,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithIsHTMLWrap:(_Bool)arg1 type:(int)arg2 direction:(int)arg3 fitType:(int)arg4 margin:(double)arg5 alphaThreshold:(double)arg6;
 - (id)init;
-- (void)saveToArchive:(struct ExteriorTextWrapArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ExteriorTextWrapArchive *)arg1;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1;
 
 @end
 

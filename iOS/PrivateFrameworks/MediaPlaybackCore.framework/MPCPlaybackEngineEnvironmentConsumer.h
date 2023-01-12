@@ -13,8 +13,11 @@
 @class MPCPlaybackEngine, NSString;
 @protocol MPCPlaybackEngineEventStreamSubscription;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackEngineEnvironmentConsumer : NSObject <MPCPlaybackEngineEventObserving, ICEnvironmentMonitorObserver, MPCPlaybackEngineEventConsumer>
 {
+    struct os_unfair_lock_s _lock;
+    long long _reachability;
     MPCPlaybackEngine *_playbackEngine;
     id <MPCPlaybackEngineEventStreamSubscription> _subscription;
 }
@@ -25,14 +28,17 @@
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 - (void)_snapshotNetworkTypeAtTime:(CDStruct_aeb9a598)arg1;
 - (void)_snapshotNetworkTypeWithEvent:(id)arg1 nudge:(int)arg2;
-- (void)_snapshotNetworkReachabilityAtTime:(CDStruct_aeb9a598)arg1;
+- (void)_snapshotNetworkReachabilityAtTime:(CDStruct_aeb9a598)arg1 force:(_Bool)arg2;
 - (void)_snapshotNetworkReachabilityWithEvent:(id)arg1 nudge:(int)arg2;
 - (void)_snapshotDeviceAtTime:(CDStruct_aeb9a598)arg1;
 - (void)_snapshotDeviceWithEvent:(id)arg1 nudge:(int)arg2;
 - (void)_snapshotAccount:(id)arg1 eventType:(id)arg2 atTime:(CDStruct_aeb9a598)arg3;
 - (void)_snapshotAccount:(id)arg1 eventType:(id)arg2 event:(id)arg3 nudge:(int)arg4;
+- (void)_addEventForAccountIdentifier:(id)arg1 cursor:(id)arg2 event:(id)arg3 nudge:(int)arg4;
 - (void)_devicePrivateListeningDidChange:(id)arg1;
 - (void)_applicationWillTerminate:(id)arg1;
+- (void)_applicationDidEnterBackground:(id)arg1;
+- (void)_applicationWillEnterForeground:(id)arg1;
 - (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)unsubscribeFromEventStream:(id)arg1;

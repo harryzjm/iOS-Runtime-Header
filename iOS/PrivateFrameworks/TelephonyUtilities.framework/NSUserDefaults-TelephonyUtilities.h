@@ -8,5 +8,6 @@
 
 @interface NSUserDefaults (TelephonyUtilities)
 + (id)tu_defaults;
+- (_Bool)boolForKey:(id)arg1 withDefault:(_Bool)arg2;
 @end
 

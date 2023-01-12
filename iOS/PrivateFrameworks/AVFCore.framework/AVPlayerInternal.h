@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString;
+@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVPlayerPlaybackCoordinator, AVQueuePlayer, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString;
 @protocol AVBlockScheduler, AVLoggingIdentifier, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerInternal : NSObject
 {
+    _Bool fullyInitializedAndNotDeallocating;
     AVWeakReference *weakReference;
     AVPixelBufferAttributeMediator *pixelBufferAttributeMediator;
     NSObject<OS_dispatch_queue> *stateDispatchQueue;
@@ -42,7 +43,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *vibrationPattern;
     AVOutputContext *outputContext;
     _Bool IOwnTheFigPlayer;
-    _Bool pausesAudioVisualPlaybackInBackground;
+    long long audiovisualBackgroundPlaybackPolicy;
     NSMutableArray *handlersToCallWhenReadyToPlay;
     _Bool shouldReduceResourceUsage;
     long long resourceConservationLevelWhilePaused;
@@ -85,6 +86,7 @@ __attribute__((visibility("hidden")))
     long long externalProtectionStatus;
     NSString *ancillaryPerformanceInformationForDisplay;
     float rate;
+    int rateChangeIdentifier;
     _Bool automaticallyWaitsToMinimizeStalling;
     _Bool usesLegacyAutomaticWaitingBehavior;
     long long timeControlStatus;
@@ -99,9 +101,16 @@ __attribute__((visibility("hidden")))
     _Bool silencesOtherPlaybackDuringPIP;
     _Bool prefersPlayingSilentlyWhenConflictingWithOtherPlayback;
     _Bool suppressesAudioRendering;
+    _Bool isInterstitialPlayer;
     _Bool isSilencedDueToConflictWithOtherPlayback;
     NSNumber *mxSessionID;
     NSArray *videoTargets;
+    AVPlayerPlaybackCoordinator *playbackCoordinator;
+    _Bool clientRequestedPlaybackCoordinator;
+    NSString *backgroundPIPAuthorizationToken;
+    _Bool rateDidChangeNotificationIncludesExtendedDiagnosticPayload;
+    AVQueuePlayer *interstitialPlayer;
+    struct OpaqueFigPlayerInterstitialCoordinator *interstitialEventCoordinator;
     NSMutableArray *videoLayers;
     NSMutableArray *subtitleLayers;
     NSMutableArray *closedCaptionLayers;
@@ -120,6 +129,7 @@ __attribute__((visibility("hidden")))
     _Bool reevaluateBackgroundPlayback;
     _Bool hadAssociatedOnscreenPlayerLayerWhenSuspended;
     _Bool suspensionExpected;
+    _Bool rateUpdateDuringTransitionDecided;
     _Bool videoLayersAreAttached;
     struct OpaqueCMClock *figMasterClock;
     NSString *captionRenderingStrategy;

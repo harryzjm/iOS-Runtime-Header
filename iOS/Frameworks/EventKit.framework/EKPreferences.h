@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CalPreferences, NSArray;
+@class CalPreferences, NSArray, NSDictionary;
 
 @interface EKPreferences : NSObject
 {
@@ -15,6 +15,7 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *conferenceRoomTypeIdentifiersByMRU;
 @property(nonatomic) _Bool alertInviteeDeclines;
 @property(nonatomic) _Bool showDeclinedEvents;
 @property(retain, nonatomic) NSArray *selectedCalendarIdentifiers;
@@ -22,6 +23,7 @@
 @property(readonly, nonatomic) NSArray *deselectedCalendarSyncIdentifiers;
 - (void)_setDeselectedCalendarSyncHashes:(id)arg1;
 @property(readonly, nonatomic) NSArray *deselectedCalendarSyncHashes;
+- (_Bool)_array:(id)arg1 hasSameElementAsArray:(id)arg2;
 - (void)_setDeselectedCalendarIdentifiers:(id)arg1;
 @property(readonly, nonatomic) NSArray *deselectedCalendarIdentifiers;
 - (void)_setDeselectedCalendars_iOS:(id)arg1;

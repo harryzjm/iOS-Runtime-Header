@@ -10,11 +10,13 @@
 
 @interface _TtC7NewsUI220TagViewLayoutOptions : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *tagViewLayoutMargins;
     MISSING_TYPE *minimumHeight;
     MISSING_TYPE *accessoryOptions;
     MISSING_TYPE *layoutOptions;
     MISSING_TYPE *width;
     MISSING_TYPE *allowSuggestedDescription;
+    MISSING_TYPE *context;
 }
 
 @end

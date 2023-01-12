@@ -9,7 +9,7 @@
 #import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoardHome/SBIconAccessoryView-Protocol.h>
 
-@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBHIconAccessoryCountedMapImageTuple, UIImageView;
+@class NSString, SBDarkeningImageView, SBFParallaxSettings, SBHIconAccessoryCountedMapImageTuple, UIImageView, UITapGestureRecognizer;
 @protocol SBIconListLayout;
 
 @interface SBIconBadgeView : UIView <PTSettingsKeyObserver, SBIconAccessoryView>
@@ -30,6 +30,7 @@
 + (id)backgroundImageCache;
 + (double)_textPadding;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(retain, nonatomic) id <SBIconListLayout> listLayout; // @synthesize listLayout=_listLayout;
 @property(retain, nonatomic) SBFParallaxSettings *parallaxSettings; // @synthesize parallaxSettings=_parallaxSettings;
 - (void)_applyParallaxSettings;
@@ -60,6 +61,7 @@
 - (id)init;
 
 // Remaining properties
+@property(retain, nonatomic) UITapGestureRecognizer *actionTapGestureRecognizer;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

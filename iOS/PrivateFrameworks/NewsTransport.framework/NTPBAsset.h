@@ -12,11 +12,16 @@
 
 @interface NTPBAsset : PBCodable <NSCopying>
 {
-    int _type;
+    int _error;
+    unsigned int _size;
     NSData *_wrappingKeyID;
-    CDStruct_f953fb60 _has;
+    struct {
+        unsigned int error:1;
+        unsigned int size:1;
+    } _has;
 }
 
+@property(nonatomic) unsigned int size; // @synthesize size=_size;
 @property(retain, nonatomic) NSData *wrappingKeyID; // @synthesize wrappingKeyID=_wrappingKeyID;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -26,9 +31,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSize;
+@property(nonatomic) _Bool hasError;
+@property(nonatomic) int error; // @synthesize error=_error;
 @property(readonly, nonatomic) _Bool hasWrappingKeyID;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type; // @synthesize type=_type;
 - (void)dealloc;
 
 @end

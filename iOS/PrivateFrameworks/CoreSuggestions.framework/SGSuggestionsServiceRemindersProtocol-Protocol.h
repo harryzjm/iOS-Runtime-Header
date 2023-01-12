@@ -10,6 +10,7 @@
 @class NSString, SGRecordId, SGReminder;
 
 @protocol SGSuggestionsServiceRemindersProtocol <_SGSuggestionsServiceBaseProtocol, _SGSuggestionsServiceFoundInAppsProtocol>
+- (void)logUserCreatedReminderTitle:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)reminderTitleForContent:(NSString *)arg1 withCompletion:(void (^)(NSString *, NSError *))arg2;
 - (void)allRemindersLimitedTo:(unsigned long long)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (void)reminderAlarmTriggeredForRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;

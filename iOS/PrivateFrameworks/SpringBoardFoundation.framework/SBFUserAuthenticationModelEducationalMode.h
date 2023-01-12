@@ -29,6 +29,7 @@
 - (void)notePasscodeEntryCancelled;
 - (void)notePasscodeEntryBegan;
 - (void)synchronize;
+@property(readonly, nonatomic, getter=isUserRequestedEraseEnabled) _Bool userRequestedEraseEnabled;
 @property(readonly, nonatomic) double timeUntilUnblockedSinceReferenceDate;
 @property(readonly, nonatomic, getter=isPermanentlyBlocked) _Bool permanentlyBlocked;
 @property(readonly, nonatomic, getter=isTemporarilyBlocked) _Bool temporarilyBlocked;

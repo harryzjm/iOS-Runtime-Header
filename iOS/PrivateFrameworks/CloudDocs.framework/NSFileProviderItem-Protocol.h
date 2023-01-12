@@ -6,7 +6,7 @@
 
 #import <CloudDocs/NSObject-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSError, NSNumber, NSPersonNameComponents, NSString, UTType;
+@class NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSString, UTType;
 
 @protocol NSFileProviderItem <NSObject>
 @property(readonly, copy, nonatomic) NSString *filename;
@@ -15,6 +15,8 @@
 
 @optional
 @property(readonly, nonatomic) NSDictionary *userInfo;
+@property(readonly, copy, nonatomic) NSString *symlinkTargetPath;
+@property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property(readonly, nonatomic) NSData *versionIdentifier;
 @property(readonly, nonatomic) NSPersonNameComponents *mostRecentEditorNameComponents;
 @property(readonly, nonatomic) NSPersonNameComponents *ownerNameComponents;
@@ -31,11 +33,14 @@
 @property(readonly, copy, nonatomic) NSNumber *favoriteRank;
 @property(readonly, copy, nonatomic) NSData *tagData;
 @property(readonly, copy, nonatomic) NSDate *lastUsedDate;
+@property(readonly, nonatomic) NSDictionary *extendedAttributes;
 @property(readonly, copy, nonatomic) NSDate *contentModificationDate;
 @property(readonly, copy, nonatomic) NSDate *creationDate;
 @property(readonly, copy, nonatomic) NSNumber *childItemCount;
 @property(readonly, copy, nonatomic) NSNumber *documentSize;
+@property(readonly, nonatomic) unsigned long long fileSystemFlags;
 @property(readonly, nonatomic) unsigned long long capabilities;
+@property(readonly, nonatomic) struct NSFileProviderTypeAndCreator typeAndCreator;
 @property(readonly, copy, nonatomic) NSString *typeIdentifier;
 @property(readonly, copy, nonatomic) UTType *contentType;
 @end

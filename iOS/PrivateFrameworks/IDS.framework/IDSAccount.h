@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, _IDSAccount;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, _IDSAccount;
 
 @interface IDSAccount : NSObject
 {
@@ -16,9 +16,6 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
-- (void)deactivateAlias:(id)arg1;
-- (void)activateAlias:(id)arg1;
-@property(readonly, nonatomic) NSSet *activeAliases;
 - (void)_reloadCachedDevices;
 - (void)_callNearbyDevicesChanged;
 - (void)deactivateAndPurgeIdentify;
@@ -63,12 +60,15 @@
 @property(readonly, nonatomic) _Bool isEnabled;
 - (void)setAuthToken:(id)arg1;
 - (void)setPassword:(id)arg1;
+@property(readonly, nonatomic) NSArray *pseudonyms;
+@property(readonly, nonatomic) NSDictionary *pseudonymURIMap;
 @property(readonly, nonatomic) NSArray *handles;
 @property(readonly, nonatomic) NSArray *aliasesToRegister;
 @property(readonly, nonatomic) NSArray *vettedAliases;
 @property(readonly, nonatomic) NSArray *aliasStrings;
 @property(readonly, nonatomic) NSArray *aliases;
 @property(readonly, nonatomic) NSDictionary *profileInfo;
+@property(readonly, nonatomic) NSArray *connectedDevices;
 @property(readonly, nonatomic) NSArray *nearbyDevices;
 @property(readonly, nonatomic) NSArray *devices;
 @property(readonly, nonatomic) _Bool canSend;

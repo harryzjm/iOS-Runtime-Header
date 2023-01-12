@@ -8,30 +8,44 @@
 
 #import <AnnotationKit/UINavigationBarDelegate-Protocol.h>
 
-@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UILabel, UINavigationBar, UIResponder;
+@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UIButton, UILabel, UINavigationBar, UIResponder;
 @protocol AKSignatureCreationControllerDelegate;
 
 @interface AKSignatureCreationViewController_iOS : UIViewController <UINavigationBarDelegate>
 {
     id <AKSignatureCreationControllerDelegate> _delegate;
     UINavigationBar *_navBar;
+    UILabel *_titleLabel;
+    UIButton *_downArrowButton;
+    UIButton *_clearButton;
     AKSmoothPathView *_pathView;
     AKInkSignatureView *_signatureView;
     AKSignatureBaselineView *_baselineView;
     UILabel *_label;
     AKController *_controller;
     UIResponder *_responderToRestore;
+    long long _descriptionTag;
+    NSString *_customDescription;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *customDescription; // @synthesize customDescription=_customDescription;
+@property long long descriptionTag; // @synthesize descriptionTag=_descriptionTag;
 @property(nonatomic) __weak UIResponder *responderToRestore; // @synthesize responderToRestore=_responderToRestore;
 @property(nonatomic) __weak AKController *controller; // @synthesize controller=_controller;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(retain, nonatomic) AKSignatureBaselineView *baselineView; // @synthesize baselineView=_baselineView;
 @property(retain, nonatomic) AKInkSignatureView *signatureView; // @synthesize signatureView=_signatureView;
 @property(retain, nonatomic) AKSmoothPathView *pathView; // @synthesize pathView=_pathView;
+@property(retain, nonatomic) UIButton *clearButton; // @synthesize clearButton=_clearButton;
+@property(retain, nonatomic) UIButton *downArrowButton; // @synthesize downArrowButton=_downArrowButton;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property __weak id <AKSignatureCreationControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_updateSignatureDescriptionWithStringValue:(id)arg1;
+- (void)_removeSignatureDescription;
+- (void)showEditCustomDescriptionAlert;
+- (void)_showSignatureDescriptionSelectionAlert;
 - (long long)positionForBar:(id)arg1;
 - (void)_notifyDidDismiss;
 - (void)_done:(id)arg1;

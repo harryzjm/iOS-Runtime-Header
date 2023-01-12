@@ -12,6 +12,7 @@
 {
     NSString *_persistenceUUID;
     long long _flashMode;
+    long long _torchMode;
     long long _hdrMode;
     _Bool _autoOriginalPhotoDeliveryEnabled;
     long long _lowLightMode;
@@ -19,9 +20,11 @@
     long long _photoQualityPrioritization;
     _Bool _shouldDisableCameraSwitchingDuringVideoRecording;
     _Bool _autoSpatialOverCaptureEnabled;
+    long long _photoEncodingBehavior;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long photoEncodingBehavior; // @synthesize photoEncodingBehavior=_photoEncodingBehavior;
 @property(readonly, nonatomic) _Bool autoSpatialOverCaptureEnabled; // @synthesize autoSpatialOverCaptureEnabled=_autoSpatialOverCaptureEnabled;
 @property(readonly, nonatomic) _Bool shouldDisableCameraSwitchingDuringVideoRecording; // @synthesize shouldDisableCameraSwitchingDuringVideoRecording=_shouldDisableCameraSwitchingDuringVideoRecording;
 @property(readonly, nonatomic) long long photoQualityPrioritization; // @synthesize photoQualityPrioritization=_photoQualityPrioritization;
@@ -29,6 +32,7 @@
 @property(readonly, nonatomic) long long lowLightMode; // @synthesize lowLightMode=_lowLightMode;
 @property(readonly, nonatomic) _Bool autoOriginalPhotoDeliveryEnabled; // @synthesize autoOriginalPhotoDeliveryEnabled=_autoOriginalPhotoDeliveryEnabled;
 @property(readonly, nonatomic) long long hdrMode; // @synthesize hdrMode=_hdrMode;
+@property(readonly, nonatomic) long long torchMode; // @synthesize torchMode=_torchMode;
 @property(readonly, nonatomic) long long flashMode; // @synthesize flashMode=_flashMode;
 @property(readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

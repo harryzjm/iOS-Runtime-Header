@@ -13,16 +13,16 @@
 @interface MLTreeEnsembleRegressor <MLModelSpecificationLoader, MLCompiledModelLoader, MLSpecificationCompiler>
 {
     shared_ptr_0841df90 _mmapped_model;
-    vector_aab22ae2 _cached_model;
+    vector_ce5fcef0 _cached_model;
     unsigned long long num_dimensions;
     NSArray *output_classes;
 }
 
-+ (id)loadModelFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
-+ (id)compiledVersionForSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
-+ (id)compileSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 options:(id)arg3 error:(id *)arg4;
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
-+ (id)loadModelFromSpecificationWithCompilationOptions:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromCompiledArchive:(void *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
++ (id)compiledVersionForSpecification:(void *)arg1 options:(id)arg2 error:(id *)arg3;
++ (id)compileSpecification:(void *)arg1 toArchive:(void *)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecificationWithCompilationOptions:(void *)arg1 options:(id)arg2 error:(id *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)vectorRegress:(double *)arg1 dest:(double *)arg2;

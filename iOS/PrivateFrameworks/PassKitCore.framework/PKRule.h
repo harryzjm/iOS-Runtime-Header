@@ -32,7 +32,6 @@
 - (void)parsePredicateFormat;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 predicateFormat:(id)arg2 osVersionRequirementRange:(id)arg3;
-- (id)init;
 
 @end
 

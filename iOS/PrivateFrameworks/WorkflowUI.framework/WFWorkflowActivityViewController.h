@@ -6,16 +6,39 @@
 
 #import <UIKit/UIActivityViewController.h>
 
-@class WFFileRepresentation;
+#import <WorkflowUI/UIActivityViewControllerObjectManipulationDelegate-Protocol.h>
 
-@interface WFWorkflowActivityViewController : UIActivityViewController
+@class NSString, WFFileRepresentation, WFSignedShortcutFileProvider, WFWorkflow, WFWorkflowLinkProvider;
+
+@interface WFWorkflowActivityViewController : UIActivityViewController <UIActivityViewControllerObjectManipulationDelegate>
 {
     WFFileRepresentation *_workflowFile;
+    long long _selectedMode;
+    long long _selectedDestination;
+    WFWorkflow *_workflow;
+    WFWorkflowLinkProvider *_linkProvider;
+    WFSignedShortcutFileProvider *_signedShortcutFileProvider;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) WFSignedShortcutFileProvider *signedShortcutFileProvider; // @synthesize signedShortcutFileProvider=_signedShortcutFileProvider;
+@property(retain, nonatomic) WFWorkflowLinkProvider *linkProvider; // @synthesize linkProvider=_linkProvider;
+@property(retain, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
+@property(nonatomic) long long selectedDestination; // @synthesize selectedDestination=_selectedDestination;
+@property(nonatomic) long long selectedMode; // @synthesize selectedMode=_selectedMode;
 @property(retain, nonatomic) WFFileRepresentation *workflowFile; // @synthesize workflowFile=_workflowFile;
+- (_Bool)_customizationAvailableForActivityViewController:(id)arg1;
+- (id)_customizationGroupsForActivityViewController:(id)arg1;
+- (id)generateSharingDestinationGroup;
+- (id)generateSharingModeGroup;
+- (void)_customizationsDidChange;
 - (id)initWithWorkflow:(id)arg1 applicationActivities:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

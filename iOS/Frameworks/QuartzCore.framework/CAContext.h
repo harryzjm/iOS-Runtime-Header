@@ -10,38 +10,7 @@
 
 @interface CAContext : NSObject
 {
-    struct Context {
-        unsigned int;
-        unsigned int;
-        unsigned int;
-        unsigned int;
-        struct Mutex;
-        struct Weak<const void *>;
-        id;
-        struct Context *;
-        struct CGColorSpace *;
-        struct __CFDictionary *;
-        unsigned int;
-        unsigned int;
-        unsigned int;
-        unsigned int;
-        unsigned int;
-        unsigned int;
-        struct ObjectCache *;
-        id;
-        id;
-        unsigned int;
-        float;
-        struct Commit *;
-        struct Generic;
-        struct __CFString *;
-        unsigned char;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-    } *_impl;
+    void *_impl;
 }
 
 + (id)objectForSlot:(unsigned int)arg1;
@@ -52,11 +21,14 @@
 + (id)localContext;
 + (id)currentContext;
 + (id)allContexts;
+- (void)requestServerGlitch:(double)arg1;
+- (void)requestClientGlitch:(double)arg1;
 - (void *)contextImpl;
-- (struct Context *)retainRenderContext;
-- (struct Context *)renderContext;
+- (void *)retainRenderContext;
+- (void *)renderContext;
 @property(copy) NSString *annotation;
 - (unsigned int)hitTestContext:(struct CGPoint)arg1;
+- (void)transferSlot:(unsigned int)arg1 toContextWithId:(unsigned int)arg2;
 - (void)setObject:(id)arg1 forSlot:(unsigned int)arg2;
 - (void)deleteSlot:(unsigned int)arg1;
 - (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(_Bool)arg2 extendedColors:(_Bool)arg3;
@@ -69,6 +41,7 @@
 - (unsigned int)createFencePort;
 - (_Bool)addFence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)addFence:(id)arg1;
+- (_Bool)waitForRenderingWithTimeout:(double)arg1;
 @property(readonly) _Bool valid;
 @property(readonly) NSDictionary *options;
 @property float desiredDynamicRange;
@@ -77,6 +50,7 @@
 @property float level;
 - (void)orderBelow:(unsigned int)arg1;
 - (void)orderAbove:(unsigned int)arg1;
+@property(copy) NSDictionary *payload;
 @property(retain) CALayer *layer;
 @property(copy) NSString *contentsFormat;
 @property _Bool colorMatchUntaggedContent;

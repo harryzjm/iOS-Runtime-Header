@@ -6,10 +6,13 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBActionItem, _SFPBButton, _SFPBColor, _SFPBFormattedText, _SFPBImage, _SFPBPunchout, _SFPBRichText;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBActionItem, _SFPBButton, _SFPBButtonItem, _SFPBColor, _SFPBFormattedText, _SFPBImage, _SFPBPunchout, _SFPBRichText;
 
 @protocol _SFPBDetailedRowCardSection <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(nonatomic) _Bool buttonItemsAreTrailing;
+@property(retain, nonatomic) _SFPBImage *trailingThumbnail;
+@property(copy, nonatomic) NSArray *buttonItems;
 @property(nonatomic) _Bool shouldUseCompactDisplay;
 @property(retain, nonatomic) _SFPBButton *button;
 @property(retain, nonatomic) _SFPBActionItem *action;
@@ -35,6 +38,10 @@
 @property(copy, nonatomic) NSArray *punchoutOptions;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_SFPBButtonItem *)buttonItemsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)buttonItemsCount;
+- (void)addButtonItems:(_SFPBButtonItem *)arg1;
+- (void)clearButtonItems;
 - (_SFPBRichText *)descriptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)descriptionsCount;
 - (void)addDescriptions:(_SFPBRichText *)arg1;

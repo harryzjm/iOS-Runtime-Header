@@ -10,13 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)stateName;
-- (_Bool)isUserRequested;
-- (void)userDisengagedCurrentMode;
-- (void)sleepScheduleStateChangedToBedtimeFromState:(unsigned long long)arg1;
-- (void)sleepScheduleStateChangedToWindDownFromState:(unsigned long long)arg1;
-- (id)determineExpirationDateForCurrentDate:(id)arg1;
-- (void)updateState;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (unsigned long long)defaultChangeReason;
 
 @end
 

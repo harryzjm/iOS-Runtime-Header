@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_completeBulletRenderingForTextContainer:(id)arg1;
 - (struct CGRect)_boundingBoxForBulletAtCharIndex:(long long)arg1 inUnobscuredRange:(struct _NSRange)arg2;
-- (long long)_generateBulletGlyphs:(const unsigned short *)arg1 properties:(const long long *)arg2 characterIndexes:(const unsigned long long *)arg3 font:(id)arg4 forGlyphRange:(struct _NSRange)arg5 unobscuredRange:(struct _NSRange)arg6 obscuredLength:(long long)arg7 obscureExistingText:(_Bool)arg8;
+- (long long)_generateBulletGlyphs:(const unsigned short *)arg1 properties:(const long long *)arg2 characterIndexes:(const unsigned long long *)arg3 font:(id)arg4 forGlyphRange:(struct _NSRange)arg5 unobscuredRange:(struct _NSRange)arg6;
 - (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
 - (void)resetFontForExtraBulletRendering;
 - (void)useFontForExtraBulletRendering:(id)arg1;

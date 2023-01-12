@@ -12,7 +12,7 @@
 - (id)valueLabelPositioner;
 - (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
 - (unsigned long long)styleIndexForAxisID:(id)arg1;
-- (void)p_initializeAxisIDs;
+- (id)initWithChartType:(id)arg1;
 
 @end
 

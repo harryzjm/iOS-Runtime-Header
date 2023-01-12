@@ -9,9 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface WKRemoteObjectEncoder : NSCoder
 {
-    struct RefPtr<API::Dictionary, WTF::DumbPtrTraits<API::Dictionary>> _rootDictionary;
-    struct Array *_objectStream;
-    struct Dictionary *_currentDictionary;
+    struct RefPtr<API::Dictionary, WTF::RawPtrTraits<API::Dictionary>, WTF::DefaultRefDerefTraits<API::Dictionary>> _rootDictionary;
+    void *_objectStream;
+    void *_currentDictionary;
+    struct HashSet<NSObject *, WTF::DefaultHash<NSObject *>, WTF::HashTraits<NSObject *>, WTF::HashTableTraits> _objectsBeingEncoded;
 }
 
 - (id).cxx_construct;
@@ -28,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (_Bool)allowsKeyedCoding;
 - (void)encodeValueOfObjCType:(const char *)arg1 at:(const void *)arg2;
-- (struct Dictionary *)rootObjectDictionary;
+- (void *)rootObjectDictionary;
 - (id)init;
 
 @end

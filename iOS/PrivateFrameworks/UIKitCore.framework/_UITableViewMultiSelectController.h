@@ -39,6 +39,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldBeginInteractionAtPoint:(struct CGPoint)arg1;
 - (void)automaticallyTransitionToMultiSelectModeKeepingCurrentSelection:(_Bool)arg1;
 - (_Bool)isInMultiSelectMode;
+- (void)multiSelectInteraction:(id)arg1 extendSelectionInDirection:(unsigned long long)arg2;
+- (_Bool)supportsKeyboardSelectionExtension;
+- (id)targetForKeyCommands;
+- (id)keyCommandsForSelectionExtension;
+- (void)clearSelectionState;
 - (id)_tableViewDelegate;
 - (_Bool)_isPointInsideEditControl:(struct CGPoint)arg1;
 - (void)_adjustSelectionRangeToIndexPath:(id)arg1 isDeselecting:(_Bool)arg2;

@@ -29,6 +29,7 @@
 @property(nonatomic, getter=isJITEnabled) _Bool JITEnabled;
 @property(nonatomic) _Bool usesSingleWebProcess;
 @property(nonatomic) _Bool pageCacheEnabled;
+@property(nonatomic) _Bool processSwapsOnNavigationWithinSameNonHTTPFamilyProtocol;
 @property(nonatomic) _Bool processSwapsOnWindowOpenWithOpener;
 @property(nonatomic) _Bool alwaysKeepAndReuseSwappedProcesses;
 @property(nonatomic) _Bool usesWebProcessCache;
@@ -40,6 +41,7 @@
 @property(copy, nonatomic) NSArray *alwaysRevalidatedURLSchemes;
 @property(copy, nonatomic) NSArray *cachePartitionedURLSchemes;
 @property(copy, nonatomic) NSArray *additionalReadAccessAllowedURLs;
+@property(nonatomic) _Bool shouldThrowExceptionForGlobalConstantRedeclaration;
 @property(nonatomic) _Bool attrStyleEnabled;
 @property(nonatomic) _Bool ignoreSynchronousMessagingTimeoutsForTesting;
 @property(nonatomic) _Bool diskCacheSpeculativeValidationEnabled;

@@ -8,9 +8,6 @@
 {
 }
 
-- (double)additionalSpacing;
-- (double)_additionalSpacingForContentSize:(id)arg1;
-- (id)_currentContentSize;
 - (double)maxInfoTextWidthForNarrowWidth:(_Bool)arg1 isLandscape:(_Bool)arg2 usingFontSizeMultiplier:(double)arg3;
 - (double)maxDescriptionTextWidthForNarrowWidth:(_Bool)arg1 isLandscape:(_Bool)arg2 usingFontSizeMultiplier:(double)arg3;
 - (id)infoTextUsingNarrowWidth:(_Bool)arg1;

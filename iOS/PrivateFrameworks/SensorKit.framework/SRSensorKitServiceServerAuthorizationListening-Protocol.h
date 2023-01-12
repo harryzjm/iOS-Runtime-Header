@@ -10,11 +10,9 @@
 - (void)onboardingAirGapEnabled:(void (^)(_Bool))arg1;
 - (void)legacyResearchStudyEntitlement:(void (^)(NSString *))arg1;
 - (void)legacyResearchStudyBundleIDs:(void (^)(NSArray *))arg1;
-- (void)studyBundleIdentifierForPartnerApp:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
-- (void)partnerAppIdentifiersWithReply:(void (^)(NSArray *))arg1;
 - (void)setFirstRunOnboardingCompleted:(_Bool)arg1;
 - (void)setDataCollectionEnabled:(_Bool)arg1;
-- (void)retrieveCurrentAuthorizedServicesWithReply:(void (^)(NSSet *, NSSet *, long long))arg1;
+- (void)retrieveCurrentAuthorizedServicesWithReply:(void (^)(NSDictionary *, NSDictionary *, NSDictionary *, long long))arg1;
 - (void)registerForAuthorizationChangeNotificationsWithEffectiveBundleId:(NSString *)arg1;
 @end
 

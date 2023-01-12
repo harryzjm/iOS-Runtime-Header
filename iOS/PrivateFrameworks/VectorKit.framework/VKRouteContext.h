@@ -31,7 +31,7 @@
     _Bool _hasContextChangedForAlternateRouteLines;
     NSHashTable *_alternateRouteLineObservers;
     NSArray *_alternateRoutes;
-    struct multimap<unsigned int, std::__1::vector<RouteSection, std::__1::allocator<RouteSection>>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::vector<RouteSection, std::__1::allocator<RouteSection>>>>> _shareSections;
+    struct multimap<unsigned int, std::vector<RouteSection>, std::less<unsigned int>, std::allocator<std::pair<const unsigned int, std::vector<RouteSection>>>> _shareSections;
 }
 
 - (id).cxx_construct;

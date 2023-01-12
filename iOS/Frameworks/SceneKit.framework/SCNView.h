@@ -58,6 +58,7 @@
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)_kvoKeysForwardedToRenderer;
++ (_Bool)usesSeparateWorkGroup;
 + (_Bool)lowLatency;
 + (_Bool)_isMetalSupported;
 + (id)deviceForOptions:(id)arg1;
@@ -89,6 +90,9 @@
 - (void)setContentScaleFactor:(double)arg1;
 @property(retain, nonatomic) EAGLContext *eaglContext;
 - (void)setNeedsDisplay;
+- (void)_addGPUFramePresentedHandler:(CDUnknownBlockType)arg1;
+- (void)_addGPUFrameCompletedHandler:(CDUnknownBlockType)arg1;
+- (void)_addGPUFrameScheduledHandler:(CDUnknownBlockType)arg1;
 - (double)_runFPSTestWithDuration:(double)arg1;
 @property(readonly, nonatomic) unsigned long long renderingAPI;
 - (void)setIbWantsMultisampling:(_Bool)arg1;
@@ -136,6 +140,10 @@
 - (double)_renderThreadPriority;
 - (void)setDisplayLink:(id)arg1;
 - (id)displayLink;
+- (void)set_commandBufferStatusMonitor:(id)arg1;
+- (id)_commandBufferStatusMonitor;
+- (void)set_resourceManagerMonitor:(id)arg1;
+- (id)_resourceManagerMonitor;
 - (void)set_wantsSceneRendererDelegationMessages:(_Bool)arg1;
 - (_Bool)_wantsSceneRendererDelegationMessages;
 @property(retain, nonatomic) SKScene *overlaySKScene;

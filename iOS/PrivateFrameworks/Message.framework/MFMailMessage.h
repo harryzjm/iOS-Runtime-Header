@@ -50,6 +50,7 @@
 @property(readonly, nonatomic) ECMessageFlags *flags;
 @property(readonly, copy, nonatomic) NSArray *listUnsubscribe;
 @property(readonly, copy, nonatomic) NSArray *from;
+- (id)storageLocationForAttachment:(id)arg1;
 - (_Bool)isSearchResultWithBogusRemoteId;
 - (id)bestAlternativePart:(_Bool *)arg1;
 - (id)bestAlternativePart;

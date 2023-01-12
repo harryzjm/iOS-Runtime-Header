@@ -10,15 +10,19 @@
 {
 }
 
++ (_Bool)currentProcessHasTestingEntitlement;
 + (_Bool)currentProcessHasBirthdayModificationEntitlement;
 + (_Bool)currentProcessHasSyncClientEntitlement;
 + (_Bool)currentProcessHasContactsUIEntitlement;
 + (_Bool)currentProcessHasLocationdEffectiveBundleEntitlement;
 + (_Bool)currentProcessHasWatchOSMutableDatabaseEntitlement;
 + (_Bool)currentProcessHasAllowSuggestionsEntitlement;
++ (_Bool)currentProcessIsPreferences;
 + (_Bool)currentProcessIsDataAccess;
 + (_Bool)currentProcessIsCalendarDaemon;
 + (_Bool)currentProcessIsFirstPartyCalendarApp;
++ (id)_currentProcessValueForEntitlement:(id)arg1 expectedType:(unsigned long long)arg2;
++ (id)currentProcessGetStringEntitlement:(id)arg1;
 + (_Bool)currentProcessHasBooleanEntitlement:(id)arg1;
 
 @end

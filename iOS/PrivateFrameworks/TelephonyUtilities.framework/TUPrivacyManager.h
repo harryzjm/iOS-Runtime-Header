@@ -15,6 +15,7 @@
 + (id)sharedPrivacyManager;
 @property(readonly, copy, nonatomic) NSArray *privacyRules;
 - (id)allBlacklistRules;
+- (_Bool)isIncomingCommunicationBlockedForHandle:(id)arg1;
 - (_Bool)isIncomingCommunicationBlockedForBusinessID:(id)arg1;
 - (_Bool)isIncomingCommunicationBlockedForEmailAddress:(id)arg1;
 - (_Bool)isIncomingCommunicationBlockedForPhoneNumber:(id)arg1;

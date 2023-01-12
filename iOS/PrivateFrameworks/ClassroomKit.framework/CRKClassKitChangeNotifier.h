@@ -6,22 +6,31 @@
 
 #import <objc/NSObject.h>
 
+@class NSSet;
 @protocol CRKClassKitChangeNotifierDelegate, CRKClassKitRosterRequirements;
 
 @interface CRKClassKitChangeNotifier : NSObject
 {
     id <CRKClassKitChangeNotifierDelegate> _delegate;
     NSObject<CRKClassKitRosterRequirements> *_requirements;
-    id _observerToken;
+    id _generalObserverToken;
+    id _trustedPersonObserverToken;
+    NSSet *_observedTrustedPersonIDs;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id observerToken; // @synthesize observerToken=_observerToken;
+@property(copy, nonatomic) NSSet *observedTrustedPersonIDs; // @synthesize observedTrustedPersonIDs=_observedTrustedPersonIDs;
+@property(retain, nonatomic) id trustedPersonObserverToken; // @synthesize trustedPersonObserverToken=_trustedPersonObserverToken;
+@property(retain, nonatomic) id generalObserverToken; // @synthesize generalObserverToken=_generalObserverToken;
 @property(readonly, nonatomic) NSObject<CRKClassKitRosterRequirements> *requirements; // @synthesize requirements=_requirements;
 @property(nonatomic) __weak id <CRKClassKitChangeNotifierDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)trustedPersonIDsInRoster:(id)arg1;
 - (void)dataChanged;
-- (void)stopObservingRequirements;
-- (void)startObservingRequirements;
+- (CDUnknownBlockType)makeObserverBlock;
+- (void)stopObservingTrustedPersons;
+- (void)stopObservingGeneralChanges;
+- (void)startObservingGeneralChanges;
+- (_Bool)updateObservedTrustedPersonIDsWithRoster:(id)arg1;
 - (id)initWithRequirements:(id)arg1;
 - (void)dealloc;
 

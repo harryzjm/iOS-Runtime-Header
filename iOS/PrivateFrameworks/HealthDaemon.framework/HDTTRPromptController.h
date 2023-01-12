@@ -25,9 +25,7 @@
     CDUnknownBlockType _unitTest_willPresentTTRAlertHandler;
 }
 
-+ (id)_persistedValueKeys;
 + (id)formattedPersistedValuesForDomainName:(id)arg1 database:(id)arg2 error:(id *)arg3;
-+ (id)nameForDomainName:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType unitTest_willPresentTTRAlertHandler; // @synthesize unitTest_willPresentTTRAlertHandler=_unitTest_willPresentTTRAlertHandler;
 @property(copy, nonatomic) NSString *radarDescription; // @synthesize radarDescription=_radarDescription;
@@ -40,10 +38,6 @@
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (_Bool)unitTest_setLastPromptBuild:(id)arg1 error:(id *)arg2;
 - (_Bool)unitTest_setLastPromptDate:(id)arg1 error:(id *)arg2;
-- (id)_keyValueDomain;
-- (id)_errorUserInfoKeyReason;
-- (id)_errorUserInfoKeyErrorDate;
-- (void)_presentTTRPromptForErrors:(id)arg1 lastPromptBuild:(id)arg2 lastPromptDate:(id)arg3 currentBuild:(id)arg4;
 - (void)promptIfRequiredForReason:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
 - (id)description;
 - (id)init;

@@ -26,11 +26,13 @@
     PKPaymentProvisioningTracker *_provisioningTracker;
     PKPasscodeUpgradeFlowController *_passcodeUpgradeFlowController;
     _Bool _hideSetupLaterButton;
+    _Bool _provisioningHomeKey;
     PKPaymentProvisioningController *_paymentProvisioningController;
     CDUnknownBlockType _continueActionHandler;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isProvisioningHomeKey) _Bool provisioningHomeKey; // @synthesize provisioningHomeKey=_provisioningHomeKey;
 @property(copy, nonatomic) CDUnknownBlockType continueActionHandler; // @synthesize continueActionHandler=_continueActionHandler;
 @property(nonatomic) _Bool hideSetupLaterButton; // @synthesize hideSetupLaterButton=_hideSetupLaterButton;
 @property(retain, nonatomic) PKPaymentProvisioningController *paymentProvisioningController; // @synthesize paymentProvisioningController=_paymentProvisioningController;
@@ -76,7 +78,7 @@
 - (id)newPaymentRequirementsRequest;
 - (void)setupLater:(id)arg1;
 - (void)addDifferentCard:(id)arg1;
-- (void)_showVerifiedUI;
+- (void)_showVerifiedUIForPass:(id)arg1;
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleNextActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleNextActionError:(id)arg1 shouldContinue:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;

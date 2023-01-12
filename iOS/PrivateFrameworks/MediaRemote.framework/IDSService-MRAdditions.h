@@ -9,11 +9,5 @@
 @interface IDSService (MRAdditions)
 + (id)mediaRemoteServiceName;
 + (id)sharedIDSService;
-+ (id)mediaRemoteServiceName;
-+ (id)sharedIDSService;
-+ (id)mediaRemoteServiceName;
-+ (id)sharedIDSService;
-+ (id)mediaRemoteServiceName;
-+ (id)sharedIDSService;
 @end
 

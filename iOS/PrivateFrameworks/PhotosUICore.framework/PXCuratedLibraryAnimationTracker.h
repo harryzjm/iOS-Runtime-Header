@@ -13,9 +13,9 @@
     NSMutableSet *_inFlightAnimations;
 }
 
-+ (void)_scrollAnimationOccurredWithContext:(CDStruct_0c606d9b)arg1 isBegin:(_Bool)arg2;
-+ (void)scrollAnimationDidEndWithScrollContext:(CDStruct_0c606d9b)arg1;
-+ (void)scrollAnimationDidBeginWithScrollContext:(CDStruct_0c606d9b)arg1;
++ (void)_scrollAnimationOccurredWithContext:(CDStruct_912cb5d2)arg1 isBegin:(_Bool)arg2;
++ (void)scrollAnimationDidEndWithScrollContext:(CDStruct_912cb5d2)arg1;
++ (void)scrollAnimationDidBeginWithScrollContext:(CDStruct_912cb5d2)arg1;
 + (id)sharedTracker;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableSet *inFlightAnimations; // @synthesize inFlightAnimations=_inFlightAnimations;

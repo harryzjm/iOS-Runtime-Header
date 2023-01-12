@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC8MapsSync25MapsSyncCuratedCollection
 {
@@ -12,6 +12,7 @@
     MISSING_TYPE *_resultProviderIdentifier;
 }
 
+@property(nonatomic, readonly) NSString *description;
 - (void)deleteWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addEditWithBlock:(CDUnknownBlockType)arg1;
 - (Class)managedObjectClass;

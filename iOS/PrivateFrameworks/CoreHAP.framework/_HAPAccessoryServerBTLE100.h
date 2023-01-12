@@ -91,6 +91,7 @@
 @property(retain, nonatomic) NSMapTable *btleServiceToHAPServiceMap; // @synthesize btleServiceToHAPServiceMap=_btleServiceToHAPServiceMap;
 @property(nonatomic) unsigned long long connectionRetryCount; // @synthesize connectionRetryCount=_connectionRetryCount;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
+- (void)disconnect;
 - (void)_dequeueAndContinueOperation;
 - (void)_enqueueOperation:(long long)arg1 identifier:(id)arg2 publicKey:(id)arg3 admin:(_Bool)arg4 queue:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -103,6 +104,7 @@
 - (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleConnectionLifetimeTimeout;
+- (void)_disconnect;
 - (void)_cancelConnectionLifetimeTimer;
 - (void)_updateConnectionLifetimeTimer;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;
@@ -146,7 +148,6 @@
 - (id)securitySession:(id)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
 - (id)_decryptData:(id)arg1 error:(id *)arg2;
 - (id)_encryptDataAndGenerateAuthTag:(id)arg1 error:(id *)arg2;
-- (id)getLocalPairingIdentityAndAllowCreation:(_Bool)arg1 error:(id *)arg2;
 - (void)_handleReceivedSecuritySessionSetupExchangeData:(id)arg1;
 - (void)_reallyEstablishSecureSession;
 - (void)_establishSecureSession;
@@ -190,7 +191,7 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (void)_resetState;
-- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
+- (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(_Bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13 whbStableIdentifier:(id)arg14;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

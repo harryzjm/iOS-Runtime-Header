@@ -43,37 +43,35 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>;
-
-struct vector<Page, std::__1::allocator<Page>> {
+struct vector<Page, std::allocator<Page>> {
     struct Page *__begin_;
     struct Page *__end_;
-    struct __compressed_pair<Page *, std::__1::allocator<Page>> {
+    struct __compressed_pair<Page *, std::allocator<Page>> {
         struct Page *__value_;
     } __end_cap_;
 };
 
-struct vector<Vertex, std::__1::allocator<Vertex>> {
+struct vector<Vertex, std::allocator<Vertex>> {
     struct Vertex *__begin_;
     struct Vertex *__end_;
-    struct __compressed_pair<Vertex *, std::__1::allocator<Vertex>> {
+    struct __compressed_pair<Vertex *, std::allocator<Vertex>> {
         struct Vertex *__value_;
     } __end_cap_;
 };
 
-struct vector<VertexGroup, std::__1::allocator<VertexGroup>> {
+struct vector<VertexGroup, std::allocator<VertexGroup>> {
     struct VertexGroup *__begin_;
     struct VertexGroup *__end_;
-    struct __compressed_pair<VertexGroup *, std::__1::allocator<VertexGroup>> {
+    struct __compressed_pair<VertexGroup *, std::allocator<VertexGroup>> {
         struct VertexGroup *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>, std::__1::allocator<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>>> {
-    struct pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))> *__begin_;
-    struct pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))> *__end_;
-    struct __compressed_pair<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>*, std::__1::allocator<std::__1::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>>> {
-        struct pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))> *__value_;
+struct vector<std::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>, std::allocator<std::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>*, std::allocator<std::pair<float __attribute__((ext_vector_type(2))), float __attribute__((ext_vector_type(2)))>>> {
+        void *__value_;
     } __end_cap_;
 };
 
@@ -91,11 +89,11 @@ typedef struct {
 } CDStruct_09aaf5d3;
 
 // Template types
-typedef struct vector<Vertex, std::__1::allocator<Vertex>> {
+typedef struct vector<Vertex, std::allocator<Vertex>> {
     struct Vertex *__begin_;
     struct Vertex *__end_;
-    struct __compressed_pair<Vertex *, std::__1::allocator<Vertex>> {
+    struct __compressed_pair<Vertex *, std::allocator<Vertex>> {
         struct Vertex *__value_;
     } __end_cap_;
-} vector_b8c3c0c5;
+} vector_f3c59865;
 

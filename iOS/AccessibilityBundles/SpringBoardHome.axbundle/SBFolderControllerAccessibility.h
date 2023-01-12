@@ -11,13 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)folderViewDidEndScrolling:(id)arg1;
 - (void)_accessibilityScheduleSBAXClosingFolderTimer;
 - (void)_accessibilityCancelSBAXClosingFolderTimer;
 - (void)_accessibilitySBAXClosingFolderTimerFired:(id)arg1;
 - (void)_cancelCloseFolderTimer;
 - (void)_setCloseFolderTimerIfNecessary;
 - (void)_closeFolderTimerFired;
-- (void)animateScrollToDefaultPageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)scrollUsingDecelerationAnimationToDefaultPageWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

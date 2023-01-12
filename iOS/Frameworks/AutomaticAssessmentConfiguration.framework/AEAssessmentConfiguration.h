@@ -8,6 +8,8 @@
 
 #import <AutomaticAssessmentConfiguration/NSCopying-Protocol.h>
 
+@class AEAssessmentParticipantConfiguration, NSDictionary;
+
 @interface AEAssessmentConfiguration : NSObject <NSCopying>
 {
     _Bool _allowsSpellCheck;
@@ -19,8 +21,14 @@
     _Bool _allowsPasswordAutoFill;
     _Bool _allowsContinuousPathKeyboard;
     unsigned long long _autocorrectMode;
+    AEAssessmentParticipantConfiguration *_mainParticipantConfiguration;
+    NSDictionary *_configurationsByApplication;
 }
 
++ (id)instanceFromBackingConfiguration:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDictionary *configurationsByApplication; // @synthesize configurationsByApplication=_configurationsByApplication;
+@property(readonly, nonatomic) AEAssessmentParticipantConfiguration *mainParticipantConfiguration; // @synthesize mainParticipantConfiguration=_mainParticipantConfiguration;
 @property(nonatomic) _Bool allowsContinuousPathKeyboard; // @synthesize allowsContinuousPathKeyboard=_allowsContinuousPathKeyboard;
 @property(nonatomic) _Bool allowsPasswordAutoFill; // @synthesize allowsPasswordAutoFill=_allowsPasswordAutoFill;
 @property(nonatomic) _Bool allowsAccessibilitySpeech; // @synthesize allowsAccessibilitySpeech=_allowsAccessibilitySpeech;
@@ -30,7 +38,10 @@
 @property(nonatomic) _Bool allowsPredictiveKeyboard; // @synthesize allowsPredictiveKeyboard=_allowsPredictiveKeyboard;
 @property(nonatomic) _Bool allowsSpellCheck; // @synthesize allowsSpellCheck=_allowsSpellCheck;
 @property(nonatomic) unsigned long long autocorrectMode; // @synthesize autocorrectMode=_autocorrectMode;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)backingValue;
 
 @end
 

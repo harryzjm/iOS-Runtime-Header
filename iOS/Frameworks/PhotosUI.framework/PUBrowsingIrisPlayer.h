@@ -24,6 +24,7 @@
     _Bool _isLivePhotoPlaybackAllowed;
     _Bool _activated;
     _Bool _playing;
+    _Bool _allowLargeVitalityInset;
     _Bool _appIsInBackground;
     int _livePhotoRequestID;
     ISLivePhotoPlayer *_player;
@@ -55,7 +56,8 @@
 @property(nonatomic) long long _currentUnloadRequestId; // @synthesize _currentUnloadRequestId=__currentUnloadRequestId;
 @property(readonly, nonatomic) NSMutableSet *livePhotoPlaybackDisablingReasons; // @synthesize livePhotoPlaybackDisablingReasons=_livePhotoPlaybackDisablingReasons;
 @property(readonly, nonatomic) NSMutableSet *livePhotoLoadingDisablingReasons; // @synthesize livePhotoLoadingDisablingReasons=_livePhotoLoadingDisablingReasons;
-@property(nonatomic) CDStruct_8e0628e6 vitalityTransform; // @synthesize vitalityTransform=_vitalityTransform;
+@property(readonly, nonatomic) _Bool allowLargeVitalityInset; // @synthesize allowLargeVitalityInset=_allowLargeVitalityInset;
+@property(readonly, nonatomic) CDStruct_8e0628e6 vitalityTransform; // @synthesize vitalityTransform=_vitalityTransform;
 @property(nonatomic, getter=isPlaying) _Bool playing; // @synthesize playing=_playing;
 @property(copy, nonatomic) NSArray *currentlyDisplayedTimes; // @synthesize currentlyDisplayedTimes=_currentlyDisplayedTimes;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 scrubbingPhotoTime; // @synthesize scrubbingPhotoTime=_scrubbingPhotoTime;
@@ -88,7 +90,8 @@
 - (void)_invalidatePlayerItemScrubbingPhotoTime;
 - (void)_updatePlayerItemLoadingTargetIfNeeded;
 - (void)_invalidatePlayerItemLoadingTarget;
-- (void)_handleLoadedVitalityTransform:(CDStruct_8e0628e6)arg1 forAsset:(id)arg2;
+- (void)setVitalityTransform:(CDStruct_8e0628e6)arg1 limitingAllowed:(_Bool)arg2;
+- (void)_handleLoadedVitalityTransform:(CDStruct_8e0628e6)arg1 limitingAllowed:(_Bool)arg2 forAsset:(id)arg3;
 - (void)_updateVitalityTransform;
 - (void)_updatePlayerContentIfNeeded;
 - (void)_invalidatePlayerContent;

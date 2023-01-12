@@ -30,39 +30,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)spatialEventLookupResultType;
-+ (Class)spatialPlaceLookupResultType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)spatialEventLookupResultAtIndex:(unsigned long long)arg1;
-- (unsigned long long)spatialEventLookupResultsCount;
-- (void)addSpatialEventLookupResult:(id)arg1;
-- (void)clearSpatialEventLookupResults;
-@property(retain, nonatomic) NSMutableArray *spatialEventLookupResults;
-- (id)spatialPlaceLookupResultAtIndex:(unsigned long long)arg1;
-- (unsigned long long)spatialPlaceLookupResultsCount;
-- (void)addSpatialPlaceLookupResult:(id)arg1;
-- (void)clearSpatialPlaceLookupResults;
-@property(retain, nonatomic) NSMutableArray *spatialPlaceLookupResults;
-- (int)StringAsStatusCode:(id)arg1;
-- (id)statusCodeAsString:(int)arg1;
-@property(nonatomic) _Bool hasStatusCode;
-@property(nonatomic) int statusCode;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

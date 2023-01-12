@@ -10,7 +10,6 @@
 
 @class CKDPShare, CKDPShareIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface CKDPRecordRetrieveChangesResponseShareChange : PBCodable <NSCopying>
 {
     int _changeType;

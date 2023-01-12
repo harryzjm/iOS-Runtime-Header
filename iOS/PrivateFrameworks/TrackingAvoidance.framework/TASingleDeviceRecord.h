@@ -37,6 +37,7 @@
 - (id)description;
 - (id)descriptionDictionary;
 - (_Bool)isEqual:(id)arg1;
+- (void)forceStagedDetectionsToSurfaceImmediately;
 - (void)mergeWithAnotherSingleDeviceRecord:(id)arg1;
 - (void)updateLatestAdvertisement:(id)arg1;
 - (id)getDetectionsReadyToPush;

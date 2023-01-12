@@ -4,23 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PGGraphHighlightNode;
+@class NSString;
 
 @interface PGGraphHighlightChange
 {
-    NSString *_highlightLocalIdentifier;
-    PGGraphHighlightNode *_highlightNode;
+    NSString *_highlightUUID;
     unsigned long long _updateTypes;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long updateTypes; // @synthesize updateTypes=_updateTypes;
-@property(retain, nonatomic) PGGraphHighlightNode *highlightNode; // @synthesize highlightNode=_highlightNode;
-@property(readonly, nonatomic) NSString *highlightLocalIdentifier; // @synthesize highlightLocalIdentifier=_highlightLocalIdentifier;
+@property(readonly, nonatomic) NSString *highlightUUID; // @synthesize highlightUUID=_highlightUUID;
 - (id)description;
 - (void)mergeChange:(id)arg1;
 - (unsigned long long)type;
-- (id)initWithHighlightLocalIdentifier:(id)arg1 updateTypes:(unsigned long long)arg2;
+- (id)initWithHighlightUUID:(id)arg1 updateTypes:(unsigned long long)arg2;
 
 @end
 

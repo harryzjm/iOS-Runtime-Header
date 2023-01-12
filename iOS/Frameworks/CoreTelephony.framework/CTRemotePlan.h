@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTPlanTransferAttributes, CTRemotePlanIdentifier;
+@class CTPlanSignUpDetails, CTPlanTransferAttributes, CTRemotePlanIdentifier;
 
 @interface CTRemotePlan
 {
     CTRemotePlanIdentifier *_planID;
     CTPlanTransferAttributes *_transferAttributes;
+    CTPlanSignUpDetails *_signUpDetails;
+    unsigned long long _addOnCarrierFlowType;
+    unsigned long long _addOnPurchaseType;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long addOnPurchaseType; // @synthesize addOnPurchaseType=_addOnPurchaseType;
+@property(nonatomic) unsigned long long addOnCarrierFlowType; // @synthesize addOnCarrierFlowType=_addOnCarrierFlowType;
+@property(retain, nonatomic) CTPlanSignUpDetails *signUpDetails; // @synthesize signUpDetails=_signUpDetails;
 @property(retain, nonatomic) CTPlanTransferAttributes *transferAttributes; // @synthesize transferAttributes=_transferAttributes;
 @property(retain, nonatomic) CTRemotePlanIdentifier *planID; // @synthesize planID=_planID;
 - (void)encodeWithCoder:(id)arg1;

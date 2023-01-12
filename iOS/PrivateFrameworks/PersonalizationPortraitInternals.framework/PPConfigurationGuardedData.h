@@ -19,10 +19,13 @@
     int musicDataCollectionMaximumRecordsPerType;
     _Bool musicDataCollectionCollectNonAMPNowPlaying;
     NSArray *musicDataCollectionAMPBundleIds;
+    int sportsMetricsNumberOfTeamsLogged;
+    int sportsMetricsNumberOfLeaguesLogged;
+    NSString *sportsMetricsEventName;
+    double sportsMetricsSamplingRate;
     NSString *variantName;
     NSString *naturalVariantName;
     NSArray *availableVariantNames;
-    NSDictionary *dynamicEntityCategories;
     NSDictionary *differentiallyPrivateEntityLogLevels;
     NSDictionary *topicsSourceMultiplier;
     NSDictionary *topicsAlgorithmMultiplier;
@@ -30,7 +33,6 @@
     NSDictionary *topicAlgorithmConfiguration;
     NSDictionary *locationAlgorithmConfiguration;
     _PASCFBurstTrie *topicCalibration;
-    _Bool highLevelTopicExtractionEnabled;
     _Bool safariDonationTitleExtractionEnabled;
     _Bool safariDataDetectorsEnabledForHighMemoryDevices;
     float scoreThresholdForNamedEntity;
@@ -40,9 +42,7 @@
     NSDictionary *feedbackSessionLogsSamplingRateOverrides;
     float feedbackSessionLogsExtractionsSamplingRate;
     int feedbackSessionLogsGeohashLength;
-    double analyticsTopicsSamplingRate;
     int analyticsMaximumNumberOfRecords;
-    int analyticsGeohashLength;
     double topicDecayHalfLifeSeconds;
     double namedEntityDecayHalfLifeSeconds;
     double locationDecayHalfLifeSeconds;
@@ -85,6 +85,23 @@
     int queryTimeNextEventFromMinutes;
     unsigned int queryTimeNextEventToMinutes;
     unsigned int queryTimeOtherEventToMinutes;
+    unsigned long long sentenceEmbeddingVersion;
+    unsigned int maxRelevantHighlightContacts;
+    unsigned int maxNEExtractions;
+    double scoreThreshold;
+    _Bool storeNewExtractions;
+    _Bool useRawNEExtractionScores;
+    _Bool useCachedPortraitScores;
+    unsigned int maxItemsInFeatureDictionary;
+    double socialHighlightDecayInterval;
+    double socialHighlightRankedStorageMaxAge;
+    double socialHighlightCacheTimeoutInterval;
+    double socialHighlightFeedbackDeletionInterval;
+    double socialHighlightMetricReportingInterval;
+    unsigned int socialHighlightMaxNumHighlights;
+    unsigned int socialHighlightTopKCount;
+    _Bool skipInsignificantEmailExtractions;
+    double maxEmailHarvestingEligiblityInterval;
 }
 
 - (void).cxx_destruct;

@@ -21,7 +21,10 @@
 + (void)setPreferredLanguage:(id)arg1 forBundleID:(id)arg2 andRelaunchWithCompletion:(CDUnknownBlockType)arg3;
 + (void)setPreferredLanguage:(id)arg1 forBundleID:(id)arg2;
 + (void)_setPreferredLanguage:(id)arg1 forBundleID:(id)arg2;
++ (id)preferredLanguagesForBundleIDs:(id)arg1;
++ (void)preferredLanguagesForBundleIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)preferredLanguagesForBundleID:(id)arg1 reply:(CDUnknownBlockType)arg2;
++ (id)_preferredLanguagesForBundleID:(id)arg1 withAppProxy:(id)arg2;
 + (id)_preferredLanguagesForBundleID:(id)arg1;
 + (id)_proposedOverrideLanguageFromLanguage:(id)arg1 forLocalizations:(id)arg2 preferredLanguages:(id)arg3 regionCode:(id)arg4;
 + (id)preferredLanguageForBundleID:(id)arg1;

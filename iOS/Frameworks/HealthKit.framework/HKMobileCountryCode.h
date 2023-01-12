@@ -10,14 +10,18 @@
 
 @interface HKMobileCountryCode : NSObject
 {
+    _Bool _overridden;
     NSString *_code;
     NSString *_ISOCode;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isOverridden) _Bool overridden; // @synthesize overridden=_overridden;
 @property(readonly, copy, nonatomic) NSString *ISOCode; // @synthesize ISOCode=_ISOCode;
 @property(readonly, copy, nonatomic) NSString *code; // @synthesize code=_code;
-- (id)initWithMobileCountryCode:(id)arg1 ISOCode:(id)arg2;
+- (id)description;
+@property(readonly, nonatomic) long long provenance;
+- (id)initWithMobileCountryCode:(id)arg1 ISOCode:(id)arg2 isOverridden:(_Bool)arg3;
 
 @end
 

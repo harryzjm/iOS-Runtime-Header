@@ -40,6 +40,7 @@
     CKDPLocale *_locale;
     NSString *_mmcsProtocolVersion;
     NSString *_operationGroupName;
+    int _requestOriginator;
     NSMutableArray *_serviceIdentityKeyIDs;
     int _targetDatabase;
     NSString *_userIDContainerID;
@@ -56,6 +57,7 @@
         unsigned int applicationContainerEnvironment:1;
         unsigned int deviceFlowControlRegeneration:1;
         unsigned int isolationLevel:1;
+        unsigned int requestOriginator:1;
         unsigned int targetDatabase:1;
         unsigned int deviceSoftwareIsAppleInternal:1;
         unsigned int entitlementsValidated:1;
@@ -105,6 +107,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsRequestOriginator:(id)arg1;
+- (id)requestOriginatorAsString:(int)arg1;
+@property(nonatomic) _Bool hasRequestOriginator;
+@property(nonatomic) int requestOriginator; // @synthesize requestOriginator=_requestOriginator;
 @property(nonatomic) _Bool hasEntitlementsValidated;
 @property(readonly, nonatomic) _Bool hasDeviceSerialNumber;
 @property(readonly, nonatomic) _Bool hasDeviceUDID;

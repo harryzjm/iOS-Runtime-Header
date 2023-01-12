@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCharacteristic, NSString;
+@class HMDCharacteristic, HMDHAPAccessory, HMDService, NSString;
 
 @interface HMDCharacteristicRequest : HMFObject <HMFLogging>
 {
@@ -21,6 +21,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id previousValue; // @synthesize previousValue=_previousValue;
 @property(readonly, nonatomic) HMDCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
+@property(readonly, nonatomic) HMDHAPAccessory *accessory;
+@property(readonly, nonatomic) HMDService *service;
 - (_Bool)isEqual:(id)arg1;
 - (id)attributeDescriptions;
 - (id)initWithCharacteristic:(id)arg1;

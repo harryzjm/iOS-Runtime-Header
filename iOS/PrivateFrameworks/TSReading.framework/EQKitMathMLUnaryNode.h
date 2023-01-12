@@ -15,7 +15,7 @@
 
 - (void)dealloc;
 - (_Bool)isBaseFontNameUsed;
-- (const set_25e6ba53 *)mathMLAttributes;
+- (const void *)mathMLAttributes;
 - (id)initFromXMLNode:(struct _xmlNode *)arg1 parser:(id)arg2;
 - (id)initWithChildren:(id)arg1;
 - (id)initWithChild:(id)arg1;

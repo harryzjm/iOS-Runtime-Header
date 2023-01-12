@@ -4,30 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIBarcodeDescriptor, NSDictionary, NSString;
+#import <Vision/VNDataDetectorSupporting-Protocol.h>
 
-@interface VNBarcodeObservation
+@class CIBarcodeDescriptor, NSData, NSDictionary, NSNumber, NSString;
+
+@interface VNBarcodeObservation <VNDataDetectorSupporting>
 {
     NSString *_cachedPayloadStringValue;
+    NSData *_cachedPayloadDataValue;
+    NSNumber *_cachedAppClipCodeMetadataValue;
     NSString *_symbology;
     CIBarcodeDescriptor *_barcodeDescriptor;
     NSDictionary *_acbsBarcodeInfo;
+    const struct __MRCDescriptor *_mrcDescriptor;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)defaultOriginatingRequestClassNameForRequestRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
+@property(nonatomic, setter=setMRCDescriptor:) const struct __MRCDescriptor *mrcDescriptor; // @synthesize mrcDescriptor=_mrcDescriptor;
 @property(copy, nonatomic, setter=setACBSBarcodeInfo:) NSDictionary *acbsBarcodeInfo; // @synthesize acbsBarcodeInfo=_acbsBarcodeInfo;
 @property(readonly, nonatomic) CIBarcodeDescriptor *barcodeDescriptor; // @synthesize barcodeDescriptor=_barcodeDescriptor;
 @property(readonly, copy, nonatomic) NSString *symbology; // @synthesize symbology=_symbology;
+- (id)getDataDetectorResults:(id *)arg1;
+@property(readonly, copy, nonatomic) NSNumber *appClipCodeMetadataValue;
+@property(readonly, copy, nonatomic) NSData *payloadDataValue;
 @property(readonly, copy, nonatomic) NSString *payloadStringValue;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 symbology:(id)arg2 descriptor:(id)arg3 boundingBox:(struct CGRect)arg4;
-- (id)initWithRequestRevision:(unsigned long long)arg1 symbology:(id)arg2 descriptor:(id)arg3 topLeft:(struct CGPoint)arg4 bottomLeft:(struct CGPoint)arg5 bottomRight:(struct CGPoint)arg6 topRight:(struct CGPoint)arg7;
+- (void)setMrcDescriptor:(struct __MRCDescriptor *)arg1;
+- (void)dealloc;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 symbology:(id)arg2 descriptor:(id)arg3 boundingBox:(struct CGRect)arg4;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 symbology:(id)arg2 descriptor:(id)arg3 topLeft:(struct CGPoint)arg4 bottomLeft:(struct CGPoint)arg5 bottomRight:(struct CGPoint)arg6 topRight:(struct CGPoint)arg7;
 
 @end
 

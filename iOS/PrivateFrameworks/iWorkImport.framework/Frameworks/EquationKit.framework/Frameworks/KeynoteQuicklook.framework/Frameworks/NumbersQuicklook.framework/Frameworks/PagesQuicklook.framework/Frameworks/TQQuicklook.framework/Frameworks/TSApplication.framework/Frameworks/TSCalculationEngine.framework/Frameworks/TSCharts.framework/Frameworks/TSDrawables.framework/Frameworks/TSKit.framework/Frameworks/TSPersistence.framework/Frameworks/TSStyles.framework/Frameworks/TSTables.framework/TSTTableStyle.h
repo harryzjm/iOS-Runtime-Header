@@ -15,7 +15,7 @@
 {
 }
 
-+ (void)initDefaultPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
++ (void)initDefaultPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(unsigned long long)arg4;
 + (void)initDefaultStrokePresetListInPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3;
 + (int)defaultIntValueForProperty:(int)arg1;
 + (id)styleIDForPreset:(unsigned long long)arg1;
@@ -25,6 +25,17 @@
 + (id)properties;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+@property(readonly, nonatomic) TSDStroke *footerRowPivotGroupVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *headerRowPivotTitleStroke;
+@property(readonly, nonatomic) TSDStroke *headerRowPivotGroupDeEmphasisStroke;
+@property(readonly, nonatomic) TSDStroke *headerRowPivotGroupVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *headerColumnPivotSeparatorStroke;
+@property(readonly, nonatomic) TSDStroke *headerColumnPivotGroupDeEmphasisStroke;
+@property(readonly, nonatomic) TSDStroke *headerColumnPivotGroupHorizontalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotEmphasisVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotDeEmphasisHorizontalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotGroupVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotGroupHorizontalStroke;
 @property(readonly, nonatomic) TSDStroke *categoryLevel5InteriorStroke;
 @property(readonly, nonatomic) TSDStroke *categoryLevel4InteriorStroke;
 @property(readonly, nonatomic) TSDStroke *categoryLevel3InteriorStroke;
@@ -67,9 +78,9 @@
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (void)validate;
 - (void)saveToArchiver:(id)arg1;
-- (void)loadFromUnarchiver:(id)arg1;
-- (void)saveTableStylePropertiesToArchive:(struct TableStylePropertiesArchive *)arg1 archiver:(id)arg2;
-- (void)loadTableStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct TableStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
+- (_Bool)validatedLoadFromUnarchiver:(id)arg1;
+- (void)saveTableStylePropertiesToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadTableStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const void *)arg2 unarchiver:(id)arg3;
 - (unsigned int)maskForStrokePresets:(id)arg1;
 - (unsigned int)maskForStrokePreset:(unsigned long long)arg1;
 - (id)exteriorStrokeForStrokePreset:(unsigned long long)arg1;

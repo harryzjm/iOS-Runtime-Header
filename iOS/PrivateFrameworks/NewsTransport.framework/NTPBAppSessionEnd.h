@@ -117,6 +117,8 @@
 - (unsigned long long)lastVisibleViewsCount;
 - (void)addLastVisibleViews:(id)arg1;
 - (void)clearLastVisibleViews;
+- (int)StringAsSessionEndReason:(id)arg1;
+- (id)sessionEndReasonAsString:(int)arg1;
 @property(nonatomic) _Bool hasSessionEndReason;
 @property(nonatomic) int sessionEndReason; // @synthesize sessionEndReason=_sessionEndReason;
 

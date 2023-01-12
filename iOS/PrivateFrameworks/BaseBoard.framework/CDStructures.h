@@ -10,6 +10,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CAFrameRateRange {
+    float minimum;
+    float maximum;
+    float preferred;
+};
+
 struct CGAffineTransform {
     double _field1;
     double _field2;

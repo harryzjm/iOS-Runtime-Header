@@ -21,7 +21,7 @@
 - (void)sceneWithIdentifier:(id)arg1 didChangeSceneInterfaceOrientationTo:(long long)arg2;
 - (void)didInvalidateStatusBarDescriptionForSceneWithIdentifier:(id)arg1;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAvoidanceFrameTo:(struct CGRect)arg2;
-- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(int)arg2;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(unsigned long long)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarOrientationTo:(long long)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarHiddenTo:(_Bool)arg2 withAnimation:(long long)arg3;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAlphaTo:(double)arg2;
@@ -37,7 +37,7 @@
 - (id)overlayStatusBarData;
 - (_Bool)sceneWantsDeviceOrientationEventsEnabled;
 - (struct CGRect)statusBarAvoidanceFrame;
-- (int)statusBarStyleOverridesToSuppress;
+- (unsigned long long)statusBarStyleOverridesToSuppress;
 - (long long)_statusBarOrientationGivenFallbackOrientation:(long long)arg1;
 - (_Bool)_statusBarHiddenGivenFallbackOrientation:(long long)arg1;
 - (double)_statusBarAlpha;

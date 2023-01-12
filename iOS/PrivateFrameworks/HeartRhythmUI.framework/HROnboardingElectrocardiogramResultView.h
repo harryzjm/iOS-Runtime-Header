@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class HKSeparatorLineView, HRVideoPlayerView, NSLayoutConstraint, NSString, UIButton, UILabel;
+@class HKSeparatorLineView, HRPaddingLabel, HRVideoPlayerView, NSLayoutConstraint, NSString, UIButton, UILabel;
 
 @interface HROnboardingElectrocardiogramResultView : UIView
 {
@@ -15,10 +15,12 @@
     _Bool _shouldHideSeparatorLine;
     _Bool _expanded;
     NSString *_title;
-    UILabel *_numberedTitleLabel;
     HRVideoPlayerView *_playerView;
+    NSString *_badge;
     NSString *_numberedTitle;
     NSString *_visibleBody;
+    HRPaddingLabel *_badgeLabel;
+    UILabel *_numberedTitleLabel;
     UILabel *_visibleBodyLabel;
     UIButton *_learnMoreButton;
     UIView *_expandedView;
@@ -36,13 +38,15 @@
 @property(retain, nonatomic) UIView *expandedView; // @synthesize expandedView=_expandedView;
 @property(retain, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property(retain, nonatomic) UILabel *visibleBodyLabel; // @synthesize visibleBodyLabel=_visibleBodyLabel;
+@property(retain, nonatomic) UILabel *numberedTitleLabel; // @synthesize numberedTitleLabel=_numberedTitleLabel;
+@property(retain, nonatomic) HRPaddingLabel *badgeLabel; // @synthesize badgeLabel=_badgeLabel;
 @property(copy, nonatomic) NSString *visibleBody; // @synthesize visibleBody=_visibleBody;
 @property(copy, nonatomic) NSString *numberedTitle; // @synthesize numberedTitle=_numberedTitle;
+@property(copy, nonatomic) NSString *badge; // @synthesize badge=_badge;
 @property(nonatomic) _Bool shouldHideSeparatorLine; // @synthesize shouldHideSeparatorLine=_shouldHideSeparatorLine;
 @property(nonatomic, getter=isAlwaysExpanded) _Bool alwaysExpanded; // @synthesize alwaysExpanded=_alwaysExpanded;
 @property(nonatomic, getter=isHidingNumberedTitle) _Bool hideNumberedTitle; // @synthesize hideNumberedTitle=_hideNumberedTitle;
 @property(retain, nonatomic) HRVideoPlayerView *playerView; // @synthesize playerView=_playerView;
-@property(retain, nonatomic) UILabel *numberedTitleLabel; // @synthesize numberedTitleLabel=_numberedTitleLabel;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (double)_learnMoreButtonLastBaselineToBottom;
 - (double)_visibleBodyLastBaselineToLearnMoreButtonFirstBaseline;
@@ -50,8 +54,11 @@
 - (id)_visibleBodyFont;
 - (id)_visibleBodyFontTextStyle;
 - (double)_numberedTitleLastBaseLineToVideoTop;
+- (double)_numberedTitleToBadgeLastBaseline;
 - (double)_numberedTitleTopToFirstBaseline;
 - (id)_numberedTitleFont;
+- (double)_badgeTopToFirstBaseline;
+- (id)_badgeFont;
 - (void)_updateExpandedViewState;
 - (void)_updateNumberedTitleViewState;
 - (double)_playerViewOrVisibleBodyLabelTopConstant;
@@ -62,7 +69,7 @@
 - (void)_setUpConstraints;
 - (void)_setUpUI;
 - (void)learnMoreButtonTapped:(id)arg1;
-- (id)initWithTitle:(id)arg1 numberedTitle:(id)arg2 visibleBodyText:(id)arg3 video:(id)arg4 expandedView:(id)arg5;
+- (id)initWithBadge:(id)arg1 title:(id)arg2 numberedTitle:(id)arg3 visibleBodyText:(id)arg4 video:(id)arg5 expandedView:(id)arg6;
 
 @end
 

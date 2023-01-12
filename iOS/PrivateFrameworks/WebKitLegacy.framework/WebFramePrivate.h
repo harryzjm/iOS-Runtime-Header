@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class WebFrameView;
-
 __attribute__((visibility("hidden")))
 @interface WebFramePrivate : NSObject
 {
     NakedPtr_4ac97545 coreFrame;
-    WebFrameView *webFrameView;
-    struct unique_ptr<WebScriptDebugger, std::__1::default_delete<WebScriptDebugger>> scriptDebugger;
+    struct RetainPtr<WebFrameView> webFrameView;
+    struct unique_ptr<WebScriptDebugger, std::default_delete<WebScriptDebugger>> scriptDebugger;
     id internalLoadDelegate;
     _Bool shouldCreateRenderers;
     _Bool includedInWebKitStatistics;
@@ -25,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)setWebFrameView:(id)arg1;
-- (void)dealloc;
 
 @end
 

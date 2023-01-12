@@ -6,27 +6,25 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <Intents/INIntentDelivererDataSource-Protocol.h>
-#import <Intents/INIntentDelivererDelegate-Protocol.h>
+#import <Intents/INIntentDeliveringDelegate-Protocol.h>
 #import <Intents/_INExtensionContextVending-Protocol.h>
 
-@class INIntentDeliverer, NSObject, NSString;
-@protocol INIntentHandlerProvidingPrivate, OS_dispatch_queue;
+@class NSObject, NSString;
+@protocol INIntentDelivering, INIntentHandlerProvidingPrivate, OS_dispatch_queue;
 
-@interface _INExtensionContext : NSExtensionContext <INIntentDelivererDelegate, INIntentDelivererDataSource, _INExtensionContextVending>
+@interface _INExtensionContext : NSExtensionContext <INIntentDeliveringDelegate, _INExtensionContextVending>
 {
     _Bool _isPrivateExtension;
     id _handlerForIntent;
     NSObject<OS_dispatch_queue> *_queue;
+    id <INIntentDelivering> _intentDeliverer;
     id <INIntentHandlerProvidingPrivate> _extensionHandler;
-    INIntentDeliverer *_intentDeliverer;
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) INIntentDeliverer *_intentDeliverer; // @synthesize _intentDeliverer;
 - (oneway void)getIntentParameterOptions:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (oneway void)cancelTransactionDueToTimeout;
 - (oneway void)completeTransaction;
@@ -40,7 +38,6 @@
 - (oneway void)cancelTransactionDueToTimeoutWithIntentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)completeTransactionWithIntentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)beginTransactionWithIntentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (CDStruct_4c969caf)auditTokenForIntentDeliverer:(id)arg1;
 - (void)intentDeliverer:(id)arg1 deliverIntent:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (oneway void)stopSendingUpdatesForIntent:(id)arg1;
 - (oneway void)startSendingUpdatesForIntent:(id)arg1 toObserver:(id)arg2;
@@ -50,6 +47,7 @@
 - (oneway void)resolveIntentSlots:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (oneway void)getIntentParameterDefaultValue:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (oneway void)getIntentParameterOptions:(id)arg1 forIntent:(id)arg2 searchTerm:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (id)_intentDelivererForIntent:(id)arg1;
 @property(readonly, nonatomic) id <INIntentHandlerProvidingPrivate> _extensionHandler; // @synthesize _extensionHandler;
 - (void)_commonInit;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;

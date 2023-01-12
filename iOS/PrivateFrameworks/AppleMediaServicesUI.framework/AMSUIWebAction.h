@@ -6,12 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
+
+@class AMSMetricsEvent, AMSUIWebClientContext, NSArray, NSString;
+
 __attribute__((visibility("hidden")))
-@interface AMSUIWebAction : NSObject
+@interface AMSUIWebAction : NSObject <AMSUIWebActionRunnable>
 {
+    NSArray *_acceptedResponseVersions;
+    AMSUIWebClientContext *_context;
+    AMSMetricsEvent *_actionEvent;
 }
 
-+ (id)actionFromJSObject:(id)arg1 context:(id)arg2;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) AMSMetricsEvent *actionEvent; // @synthesize actionEvent=_actionEvent;
+@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property(retain, nonatomic) NSArray *acceptedResponseVersions; // @synthesize acceptedResponseVersions=_acceptedResponseVersions;
+- (id)runAction;
+- (id)initWithJSObject:(id)arg1 context:(id)arg2;
+- (id)initWithContext:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

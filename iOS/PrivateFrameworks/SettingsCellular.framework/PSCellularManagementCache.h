@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString;
+@class Logger, NSSet, NSString;
 
 @interface PSCellularManagementCache : NSObject
 {
+    Logger *_logger;
     NSSet *_managedCellDataAppCache;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(retain) NSSet *managedCellDataAppCache; // @synthesize managedCellDataAppCache=_managedCellDataAppCache;
+- (id)getLogger;
 - (_Bool)isManaged:(id)arg1;
 @property(readonly, nonatomic) _Bool hasManagedCellularData;
 - (id)managedCellDataAppBundleIDs;

@@ -59,7 +59,7 @@
 @property(copy, nonatomic) NSDictionary *userInfo;
 @property(retain, nonatomic) NSUserActivity *stateRestorationActivity;
 @property(readonly, copy, nonatomic) UISceneConfiguration *configuration;
-- (id)_initWithIdentifier:(id)arg1 sessionRole:(id)arg2 configurationName:(id)arg3;
+- (id)_initWithPersistentIdentifier:(id)arg1 sessionRole:(id)arg2 configurationName:(id)arg3;
 - (id)_init;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

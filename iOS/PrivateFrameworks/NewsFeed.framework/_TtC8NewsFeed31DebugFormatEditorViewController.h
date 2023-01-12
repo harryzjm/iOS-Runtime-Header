@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *contentView;
     MISSING_TYPE *statusView;
     MISSING_TYPE *zoomLabel;
+    MISSING_TYPE *styler;
+    MISSING_TYPE *lastLayoutBounds;
 }
 
 - (void).cxx_destruct;

@@ -17,7 +17,7 @@
 - (void)passFooterContentViewRequestsSessionSuppression:(PKPassFooterContentView *)arg1;
 - (void)passFooterContentViewDidInvalidateAuthorizedBarcode:(PKPassFooterContentView *)arg1;
 - (void)passFooterContentView:(PKPassFooterContentView *)arg1 didAuthorizeAndRetrieveDecryptedBarcode:(NSData *)arg2;
-- (void)passFooterContentViewDidAuthorizeTransaction:(PKPassFooterContentView *)arg1;
+- (void)passFooterContentViewDidTransact:(PKPassFooterContentView *)arg1;
 - (void)passFooterContentViewDidAuthenticate:(PKPassFooterContentView *)arg1;
 @end
 

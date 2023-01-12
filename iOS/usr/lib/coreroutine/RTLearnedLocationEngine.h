@@ -8,7 +8,7 @@
 
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSString, RTAccountManager, RTContactsManager, RTDefaultsManager, RTDiagnostics, RTDistanceCalculator, RTEventManager, RTFingerprintManager, RTLearnedLocationAlgorithmMetricCalculator, RTLearnedLocationEngineTrainingMetrics, RTLearnedLocationReconcilerPerDevice, RTLearnedLocationReconcilerPerVisit, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMapsSupportManager, RTMetricManager, RTMotionActivityManager, RTPersonalizationPortraitManager, RTPlatform, RTSettledStateTransitionStore, RTVisitManager, RTXPCActivityManager;
+@class NSString, RTAccountManager, RTContactsManager, RTDefaultsManager, RTDiagnostics, RTDistanceCalculator, RTEventManager, RTFingerprintManager, RTLearnedLocationEngineTrainingMetrics, RTLearnedLocationReconcilerPerDevice, RTLearnedLocationReconcilerPerVisit, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMapsSupportManager, RTMetricManager, RTMotionActivityManager, RTPersonalizationPortraitManager, RTPlatform, RTSettledStateTransitionStore, RTTransitMetricManager, RTVisitManager, RTXPCActivityManager;
 @protocol OS_dispatch_queue, RTLearnedLocationEngineProtocol;
 
 @interface RTLearnedLocationEngine : NSObject <RTPurgable>
@@ -17,7 +17,6 @@
     id <RTLearnedLocationEngineProtocol> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     RTAccountManager *_accountManager;
-    RTLearnedLocationAlgorithmMetricCalculator *_algorithmMetricCalculator;
     RTContactsManager *_contactsManager;
     RTDefaultsManager *_defaultsManager;
     RTDiagnostics *_diagnostics;
@@ -37,6 +36,7 @@
     RTLearnedLocationReconcilerPerVisit *_reconcilerPerVisit;
     RTLearnedLocationReconcilerPerDevice *_reconcilerPerDevice;
     RTSettledStateTransitionStore *_settledStateTransitionStore;
+    RTTransitMetricManager *_transitMetricManager;
     RTVisitManager *_visitManager;
     RTXPCActivityManager *_xpcActivityManager;
 }
@@ -45,6 +45,7 @@
 @property(nonatomic) _Bool monitorFingerprints; // @synthesize monitorFingerprints=_monitorFingerprints;
 @property(readonly, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 @property(readonly, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
+@property(readonly, nonatomic) RTTransitMetricManager *transitMetricManager; // @synthesize transitMetricManager=_transitMetricManager;
 @property(readonly, nonatomic) RTSettledStateTransitionStore *settledStateTransitionStore; // @synthesize settledStateTransitionStore=_settledStateTransitionStore;
 @property(readonly, nonatomic) RTLearnedLocationReconcilerPerDevice *reconcilerPerDevice; // @synthesize reconcilerPerDevice=_reconcilerPerDevice;
 @property(readonly, nonatomic) RTLearnedLocationReconcilerPerVisit *reconcilerPerVisit; // @synthesize reconcilerPerVisit=_reconcilerPerVisit;
@@ -64,10 +65,10 @@
 @property(readonly, nonatomic) RTDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property(readonly, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property(readonly, nonatomic) RTContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
-@property(readonly, nonatomic) RTLearnedLocationAlgorithmMetricCalculator *algorithmMetricCalculator; // @synthesize algorithmMetricCalculator=_algorithmMetricCalculator;
 @property(readonly, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <RTLearnedLocationEngineProtocol> delegate; // @synthesize delegate=_delegate;
+- (void)performTransitAnalyticsWithHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_removeUnusedMapItems:(id *)arg1;
 - (_Bool)_retrainVisitsWithoutPlaces:(id *)arg1;
 - (void)_logDatabasesWithReason:(id)arg1;
@@ -81,6 +82,10 @@
 - (void)_onVisitManagerNotification:(id)arg1;
 - (void)onFingerprintManagerNotification:(id)arg1;
 - (void)_onFingerprintManagerNotification:(id)arg1;
+- (void)onDailyMetricsNotification:(id)arg1;
+- (void)_onDailyMetricsNotification:(id)arg1;
+- (void)_submitDailyVisitMetrics;
+- (id)_getDailyVisitMetrics;
 - (void)onMapsSupportManagerNotification:(id)arg1;
 - (void)_onMapsSupportManagerNotification:(id)arg1;
 - (void)onContactsManagerNotification:(id)arg1;
@@ -115,6 +120,8 @@
 - (void)trainWithHandler:(CDUnknownBlockType)arg1;
 - (void)_trainWithFromDate:(id)arg1 ToDate:(id)arg2 forLastLearnedVisit:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_trainWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_isAuthorized;
+- (_Bool)_deferSubmittingLoiMetricsDueToNoTrainingSinceLastSubmission;
 - (_Bool)_deferTrainingLOIsDueToCloudStoreNotChangeSinceLastTrainingDate:(id)arg1;
 - (_Bool)_deferTrainingDueToAvailability;
 - (_Bool)_deferTrainingDueToRecentResetSync;
@@ -123,6 +130,7 @@
 - (void)_updateUnlabeledVisitsWithPlaceInformation:(id)arg1;
 - (id)_updateLearnedPlaceWithISO3166CountryCodeAndSubdivisionCode:(id)arg1;
 - (_Bool)_isUpdateLearnedPlaceWithISO3166CountryCodeAndSubdivisionCodeRequired:(id)arg1;
+- (void)_harvestFeedbackData;
 - (void)_harvestVisits:(id)arg1 places:(id)arg2;
 - (id)_transitionsForVisits:(id)arg1 lastLearnedVisit:(id)arg2 creationDate:(id)arg3;
 - (void)submitVisitSettledStateMetricsForVisits:(id)arg1 transitions:(id)arg2;
@@ -148,7 +156,7 @@
 - (void)_setupXpcActivityTrain;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
-- (id)initWithAccountManager:(id)arg1 algorithmMetricCalculator:(id)arg2 contactsManager:(id)arg3 defaultsManager:(id)arg4 diagnostics:(id)arg5 distanceCalculator:(id)arg6 eventManager:(id)arg7 fingerprintManager:(id)arg8 learnedLocationStore:(id)arg9 locationManager:(id)arg10 locationStore:(id)arg11 mapServiceManager:(id)arg12 mapsSupportManager:(id)arg13 metricManager:(id)arg14 motionActivityManager:(id)arg15 platform:(id)arg16 portraitManager:(id)arg17 reconcilerPerVisit:(id)arg18 reconcilerPerDevice:(id)arg19 settledStateTransitionStore:(id)arg20 visitManager:(id)arg21 xpcActivityManager:(id)arg22;
+- (id)initWithAccountManager:(id)arg1 contactsManager:(id)arg2 defaultsManager:(id)arg3 diagnostics:(id)arg4 distanceCalculator:(id)arg5 eventManager:(id)arg6 fingerprintManager:(id)arg7 learnedLocationStore:(id)arg8 locationManager:(id)arg9 locationStore:(id)arg10 mapServiceManager:(id)arg11 mapsSupportManager:(id)arg12 metricManager:(id)arg13 motionActivityManager:(id)arg14 platform:(id)arg15 portraitManager:(id)arg16 reconcilerPerVisit:(id)arg17 reconcilerPerDevice:(id)arg18 settledStateTransitionStore:(id)arg19 transitMetricManager:(id)arg20 visitManager:(id)arg21 xpcActivityManager:(id)arg22;
 - (id)init;
 
 // Remaining properties

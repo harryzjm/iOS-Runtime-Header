@@ -6,13 +6,14 @@
 
 #import <PhotoLibraryServices/PLPTPTransferableAdditionalAssetAttributes-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSNumber, NSSet, NSString, PLAssetDescription, PLCloudMasterMediaMetadata, PLEditedIPTCAttributes, PLManagedAsset, PLSceneprint, PLSpatialOverCaptureInformation, PLUnmanagedAdjustment;
+@class CLLocation, CPLScopedIdentifier, NSData, NSDate, NSNumber, NSSet, NSString, PLAssetDescription, PLCloudMasterMediaMetadata, PLEditedIPTCAttributes, PLManagedAsset, PLSceneprint, PLSpatialOverCaptureInformation, PLUnmanagedAdjustment;
 
 @interface PLAdditionalAssetAttributes <PLPTPTransferableAdditionalAssetAttributes>
 {
     CLLocation *__cachedShiftedLocation;
 }
 
++ (_Bool)shouldPersistImportedByDisplayName:(id)arg1;
 + (id)entityName;
 + (id)listOfSyncedProperties;
 + (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_198678f7 *)arg2 videoDuration:(CDStruct_198678f7 *)arg3;
@@ -38,6 +39,7 @@
 - (_Bool)hasConsistentCloudState;
 @property(retain, nonatomic) NSString *longDescription;
 @property(retain, nonatomic) NSData *mediaMetadataData;
+@property(retain, nonatomic) CPLScopedIdentifier *sourceAssetForDuplicationCPLScopedIdentifier; // @dynamic sourceAssetForDuplicationCPLScopedIdentifier;
 - (void)setSceneprintWithData:(id)arg1;
 @property(readonly) PLSpatialOverCaptureInformation *spatialOverCaptureInformation;
 
@@ -53,7 +55,7 @@
 @property(nonatomic) short cloudKindSubtype; // @dynamic cloudKindSubtype;
 @property(nonatomic) unsigned long long cloudRecoveryState; // @dynamic cloudRecoveryState;
 @property(nonatomic) short cloudStateRecoveryAttemptsCount; // @dynamic cloudStateRecoveryAttemptsCount;
-@property(retain, nonatomic) NSString *creatorBundleID; // @dynamic creatorBundleID;
+@property(nonatomic) short dateCreatedSource; // @dynamic dateCreatedSource;
 @property(readonly, copy) NSString *debugDescription;
 @property(copy, nonatomic) NSString *deferredPhotoIdentifier; // @dynamic deferredPhotoIdentifier;
 @property(nonatomic) unsigned short deferredProcessingCandidateOptions; // @dynamic deferredProcessingCandidateOptions;
@@ -67,10 +69,13 @@
 @property(retain, nonatomic) NSNumber *embeddedThumbnailOffset; // @dynamic embeddedThumbnailOffset;
 @property(retain, nonatomic) NSNumber *embeddedThumbnailWidth; // @dynamic embeddedThumbnailWidth;
 @property(retain, nonatomic) NSString *exifTimestampString; // @dynamic exifTimestampString;
+@property(nonatomic) short faceAnalysisVersion; // @dynamic faceAnalysisVersion;
 @property(retain, nonatomic) NSData *faceRegions; // @dynamic faceRegions;
 @property(nonatomic) double gpsHorizontalAccuracy; // @dynamic gpsHorizontalAccuracy;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) short importedBy; // @dynamic importedBy;
+@property(retain, nonatomic) NSString *importedByBundleIdentifier; // @dynamic importedByBundleIdentifier;
+@property(retain, nonatomic) NSString *importedByDisplayName; // @dynamic importedByDisplayName;
 @property(retain, nonatomic) NSNumber *inferredTimeZoneOffset; // @dynamic inferredTimeZoneOffset;
 @property(retain, nonatomic) NSSet *keywords; // @dynamic keywords;
 @property(retain, nonatomic) NSDate *lastUploadAttemptDate; // @dynamic lastUploadAttemptDate;
@@ -100,6 +105,7 @@
 @property(retain, nonatomic) NSString *publicGlobalUUID; // @dynamic publicGlobalUUID;
 @property(retain, nonatomic) NSData *reverseLocationData; // @dynamic reverseLocationData;
 @property(retain, nonatomic) NSNumber *reverseLocationDataIsValid; // @dynamic reverseLocationDataIsValid;
+@property(nonatomic) _Bool sceneAnalysisIsFromPreview; // @dynamic sceneAnalysisIsFromPreview;
 @property(retain, nonatomic) NSDate *sceneAnalysisTimestamp; // @dynamic sceneAnalysisTimestamp;
 @property(nonatomic) short sceneAnalysisVersion; // @dynamic sceneAnalysisVersion;
 @property(retain, nonatomic) NSSet *sceneClassifications; // @dynamic sceneClassifications;
@@ -109,8 +115,12 @@
 @property(nonatomic) short shareType; // @dynamic shareType;
 @property(retain, nonatomic) NSData *shiftedLocationData; // @dynamic shiftedLocationData;
 @property(copy, nonatomic) NSString *snowdaySnowplowIdentifier; // @dynamic snowdaySnowplowIdentifier;
+@property(retain, nonatomic) NSString *sourceAssetForDuplicationIdentifier; // @dynamic sourceAssetForDuplicationIdentifier;
+@property(retain, nonatomic) NSString *sourceAssetForDuplicationScopeIdentifier; // @dynamic sourceAssetForDuplicationScopeIdentifier;
 @property(copy, nonatomic) NSString *spatialOverCaptureGroupIdentifier; // @dynamic spatialOverCaptureGroupIdentifier;
 @property(readonly) Class superclass;
+@property(nonatomic) unsigned short syndicationHistory; // @dynamic syndicationHistory;
+@property(retain, nonatomic) NSString *syndicationIdentifier; // @dynamic syndicationIdentifier;
 @property(retain, nonatomic) NSString *timeZoneName; // @dynamic timeZoneName;
 @property(retain, nonatomic) NSNumber *timeZoneOffset; // @dynamic timeZoneOffset;
 @property(retain, nonatomic) NSString *title; // @dynamic title;

@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, nonatomic) HKElectrocardiogram *sample; // @synthesize sample=_sample;
 - (void)_fetchDemographicInformation;
-- (id)initWithSample:(id)arg1 healthStore:(id)arg2;
+- (id)initWithSample:(id)arg1 healthStore:(id)arg2 activeAlgorithmVersion:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,12 +11,13 @@
 
 @interface PRXFeatureListViewController <UITableViewDelegate, UITableViewDataSource>
 {
-    NSMutableArray *_features;
     UITableView *_tableView;
     UIImage *_featureImage;
+    NSMutableArray *_mutableFeatures;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *mutableFeatures; // @synthesize mutableFeatures=_mutableFeatures;
 @property(retain, nonatomic) UIImage *featureImage; // @synthesize featureImage=_featureImage;
 @property(readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
@@ -24,8 +25,8 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)addFeature:(id)arg1;
 @property(readonly, nonatomic) NSArray *features;
-- (void)_updateSeparatorInsets;
 - (void)_updateHeaderView;
+- (void)viewLayoutMarginsDidChange;
 - (void)viewDidLoad;
 - (id)initWithContentView:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

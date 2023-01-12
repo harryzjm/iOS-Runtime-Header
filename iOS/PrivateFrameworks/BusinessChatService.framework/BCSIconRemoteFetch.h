@@ -4,12 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
+@protocol BCSCoalesceHelperProtocol;
+
 __attribute__((visibility("hidden")))
-@interface BCSIconRemoteFetch
+@interface BCSIconRemoteFetch : NSObject
 {
+    id <BCSCoalesceHelperProtocol> _coalesceHelper;
 }
 
-- (void)fetchSquareIconDataForURL:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+@property(readonly, retain, nonatomic) id <BCSCoalesceHelperProtocol> coalesceHelper; // @synthesize coalesceHelper=_coalesceHelper;
 
 @end
 

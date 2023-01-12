@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *timeInMilliseconds;
     MISSING_TYPE *totalTimeInMilliseconds;
     MISSING_TYPE *titleLabel;
-    MISSING_TYPE *timeLabel;
     MISSING_TYPE *barView;
 }
 

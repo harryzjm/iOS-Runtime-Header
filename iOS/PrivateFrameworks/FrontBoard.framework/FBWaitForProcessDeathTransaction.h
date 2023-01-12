@@ -6,13 +6,13 @@
 
 #import <FrontBoard/FBProcessManagerObserver-Protocol.h>
 
-@class BSWatchdog, FBProcess, NSString;
+@class BSAbsoluteMachTimer, FBProcess, NSString;
 
 @interface FBWaitForProcessDeathTransaction <FBProcessManagerObserver>
 {
     FBProcess *_process;
     double _timeout;
-    BSWatchdog *_watchdog;
+    BSAbsoluteMachTimer *_timer;
 }
 
 - (void).cxx_destruct;

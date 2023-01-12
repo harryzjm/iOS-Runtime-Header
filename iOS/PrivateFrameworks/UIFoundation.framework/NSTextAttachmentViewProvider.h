@@ -6,34 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSLayoutManager, NSTextAttachment, NSTextContainer, UIView;
+@class NSLayoutManager, NSTextAttachment, NSTextLayoutManager, UIView;
 @protocol NSTextLocation;
 
 @interface NSTextAttachmentViewProvider : NSObject
 {
     UIView *_view;
-    unsigned long long _characterIndex;
-    id <NSTextLocation> _location;
-    NSTextContainer *_textContainer;
     _Bool _tracksTextAttachmentViewBounds;
     NSTextAttachment *_textAttachment;
+    NSTextLayoutManager *_textLayoutManager;
+    id <NSTextLocation> _location;
+    unsigned long long _characterIndex;
     NSLayoutManager *_layoutManager;
 }
 
 - (void).cxx_destruct;
-@property(readonly) id <NSTextLocation> location; // @synthesize location=_location;
-@property(readonly) unsigned long long characterIndex; // @synthesize characterIndex=_characterIndex;
-@property _Bool tracksTextAttachmentViewBounds; // @synthesize tracksTextAttachmentViewBounds=_tracksTextAttachmentViewBounds;
 @property __weak NSLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
+@property(readonly) unsigned long long characterIndex; // @synthesize characterIndex=_characterIndex;
+@property(retain) id <NSTextLocation> location; // @synthesize location=_location;
+@property _Bool tracksTextAttachmentViewBounds; // @synthesize tracksTextAttachmentViewBounds=_tracksTextAttachmentViewBounds;
+@property __weak NSTextLayoutManager *textLayoutManager; // @synthesize textLayoutManager=_textLayoutManager;
 @property __weak NSTextAttachment *textAttachment; // @synthesize textAttachment=_textAttachment;
-- (struct CGRect)attachmentBoundsForAttributes:(id)arg1 location:(id)arg2 textContainer:(id)arg3 proposedLineFragment:(struct CGRect)arg4 position:(struct CGPoint)arg5;
 - (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
+- (id)initWithTextAttachment:(id)arg1 parentView:(id)arg2 characterIndex:(unsigned long long)arg3 layoutManager:(id)arg4;
+- (struct CGRect)attachmentBoundsForAttributes:(id)arg1 location:(id)arg2 textContainer:(id)arg3 proposedLineFragment:(struct CGRect)arg4 position:(struct CGPoint)arg5;
 - (void)dealloc;
 - (void)removeView;
 - (void)loadView;
 @property(retain) UIView *view; // @dynamic view;
-- (id)initWithTextAttachment:(id)arg1 parentView:(id)arg2 location:(id)arg3;
-- (id)initWithTextAttachment:(id)arg1 parentView:(id)arg2 characterIndex:(unsigned long long)arg3 layoutManager:(id)arg4;
+- (id)initWithTextAttachment:(id)arg1 parentView:(id)arg2 textLayoutManager:(id)arg3 location:(id)arg4;
 
 @end
 

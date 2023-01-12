@@ -4,20 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <GeoServices/NSCopying-Protocol.h>
 
-@interface GEOMapFeatureTransitLink
+@class GEOTransitLink, NSString;
+
+@interface GEOMapFeatureTransitLink <NSCopying>
 {
-    CDStruct_32d7d945 *_transitLink;
+    GEOTransitLink *_transitLink;
     unsigned long long _lineIndex;
 }
 
-- (CDStruct_6e3f967a *)_tilePointsForSection:(unsigned long long)arg1 withCount:(out unsigned long long *)arg2;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (float *)_elevationsForSection:(unsigned long long)arg1 outCount:(out unsigned long long *)arg2;
+- (struct GeoCodecsVectorTilePoint *)_tilePointsForSection:(unsigned long long)arg1 outCount:(out unsigned long long *)arg2;
 - (id)_containingTile;
 @property(readonly, nonatomic) NSString *internalLineName;
 - (void)dealloc;
-- (id)initWithTransitLink:(CDStruct_32d7d945 *)arg1 lineIndex:(unsigned long long)arg2;
-@property(readonly, nonatomic) CDStruct_32d7d945 *transitLink;
+- (id)initWithTransitLink:(id)arg1 lineIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) GEOTransitLink *transitLink;
 @property(readonly, nonatomic) struct _GEOTileKey tileKey;
 
 @end

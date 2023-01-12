@@ -10,7 +10,7 @@
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 #import <UIKitCore/_UIBackgroundConfigurationInternal-Protocol.h>
 
-@class NSString, UIColor, UIView, UIVisualEffect;
+@class NSString, UIColor, UIImage, UIView, UIVisualEffect;
 
 @interface _UIBackgroundViewConfiguration : NSObject <_UIBackgroundConfigurationInternal, NSCopying, NSSecureCoding>
 {
@@ -45,11 +45,15 @@
 + (id)defaultOutlineCellConfigurationForState:(unsigned long long)arg1;
 + (id)defaultOutlineParentCellConfigurationForState:(unsigned long long)arg1;
 + (id)defaultGroupedListHeaderFooterConfigurationForState:(unsigned long long)arg1;
++ (id)defaultInsetGroupedListHeaderFooterConfigurationForState:(unsigned long long)arg1;
++ (id)defaultInsetGroupedListCellConfigurationForState:(unsigned long long)arg1;
 + (id)defaultGroupedListCellConfigurationForState:(unsigned long long)arg1;
 + (id)defaultPlainListHeaderFooterConfigurationForState:(unsigned long long)arg1;
 + (id)defaultPlainListCellConfigurationForState:(unsigned long long)arg1;
 + (id)outlineCellConfiguration;
 + (id)outlineRootParentCellConfiguration;
++ (id)insetGroupedListHeaderFooterConfiguration;
++ (id)insetGroupedListCellConfiguration;
 + (id)groupedListHeaderFooterConfiguration;
 + (id)groupedListCellConfiguration;
 + (id)plainListHeaderFooterConfiguration;
@@ -58,7 +62,11 @@
 @property(nonatomic, setter=_setShadowType:) long long _shadowType; // @synthesize _shadowType;
 @property(nonatomic, getter=_maskedCorners, setter=_setMaskedCorners:) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property(nonatomic, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
+@property(nonatomic) long long imageContentMode;
+@property(retain, nonatomic) UIImage *image;
+- (_Bool)_isEqualToInternalConfigurationQuick:(id)arg1;
 - (id)resolvedStrokeColorForTintColor:(id)arg1;
+@property(readonly, nonatomic) _Bool isTintBackgroundColor;
 - (id)resolvedBackgroundColorForTintColor:(id)arg1;
 - (id)_updatedConfigurationForState:(id)arg1;
 @property(nonatomic) double strokeOutset;

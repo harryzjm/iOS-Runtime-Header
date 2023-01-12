@@ -26,6 +26,7 @@
 - (id)getTokenKeys;
 - (void)setToken:(id)arg1 forKey:(id)arg2;
 - (id)getTokenForKey:(id)arg1;
+- (void)forceMergeFromMap:(id)arg1 forKey:(id)arg2;
 - (_Bool)mergeWithMap:(id)arg1 forKey:(id)arg2;
 - (long long)compareAndMergeWithMap:(id)arg1 forKey:(id)arg2;
 - (long long)compare:(id)arg1 forKey:(id)arg2;

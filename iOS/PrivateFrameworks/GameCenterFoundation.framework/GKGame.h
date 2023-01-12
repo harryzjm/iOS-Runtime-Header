@@ -26,9 +26,11 @@
 + (void)setCurrentGameFromInternal:(id)arg1 serverEnvironment:(long long)arg2;
 + (id)currentGameIncludingGameCenter:(_Bool)arg1;
 + (id)currentGame;
++ (_Bool)isRemoteAlert;
 + (_Bool)isGameCenter;
 + (_Bool)isFirstParty;
 + (_Bool)isPreferences;
+- (void).cxx_destruct;
 @property long long environment; // @synthesize environment=_environment;
 @property(retain) GKGameInternal *internal; // @synthesize internal=_internal;
 @property(readonly, nonatomic, getter=isInstalled) _Bool installedGame;
@@ -45,12 +47,12 @@
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithInternalRepresentation:(id)arg1;
+- (_Bool)isInternalTestApp;
 - (_Bool)isGameCenter;
 - (void)loadTellAFriendMessageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getFriendPlayersForAchievement:(id)arg1 handler:(CDUnknownBlockType)arg2;

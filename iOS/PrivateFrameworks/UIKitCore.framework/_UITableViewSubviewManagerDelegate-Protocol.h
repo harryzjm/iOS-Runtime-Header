@@ -9,6 +9,7 @@
 @class NSIndexPath, UITableViewCell;
 
 @protocol _UITableViewSubviewManagerDelegate <NSObject>
+- (void)_reusePrefetchedCell:(UITableViewCell *)arg1 withIndexPath:(NSIndexPath *)arg2;
 - (void)_reuseTableViewCell:(UITableViewCell *)arg1 withIndexPath:(NSIndexPath *)arg2 didEndDisplaying:(_Bool)arg3;
 @end
 

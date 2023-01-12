@@ -20,11 +20,8 @@
 - (void).cxx_destruct;
 @property(readonly) _Bool indeterminate; // @synthesize indeterminate;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler;
-- (_Bool)hasCancellationHook;
+- (id)supportedRecognitionLanguagesAndReturnError:(id *)arg1;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (void)applyConfigurationOfRequest:(id)arg1;
-- (_Bool)_detectTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
-- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)sequencedRequestPreviousObservationsKey;
 @property(nonatomic) float minimumTextHeight;
 @property(nonatomic) _Bool usesLanguageCorrection;
@@ -32,11 +29,16 @@
 @property(copy, nonatomic) NSArray *customWords;
 @property(copy, nonatomic) NSArray *recognitionLanguages;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1 session:(id)arg2;
+- (_Bool)hasCancellationHook;
+- (void)applyConfigurationOfRequest:(id)arg1;
+- (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSArray *results; // @dynamic results;
 @property(readonly) Class superclass;
 
 @end

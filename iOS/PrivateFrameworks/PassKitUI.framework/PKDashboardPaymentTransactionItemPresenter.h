@@ -8,13 +8,13 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSString, PKPaymentDefaultDataProvider, PKPaymentTransactionCollectionViewCell, PKPaymentTransactionDetailsFactory, PKPaymentTransactionIconGenerator, PKPeerPaymentContactResolver, UIFont, UIImage;
+@class NSString, PKContactResolver, PKPaymentDefaultDataProvider, PKPaymentTransactionCollectionViewCell, PKPaymentTransactionDetailsFactory, PKPaymentTransactionIconGenerator, UIFont, UIImage;
 @protocol CNAvatarViewDelegate;
 
 @interface PKDashboardPaymentTransactionItemPresenter : NSObject <PKDashboardItemPresenter>
 {
     unsigned long long _context;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     PKPaymentDefaultDataProvider *_dataProvider;
     PKPaymentTransactionIconGenerator *_iconGenerator;
     UIFont *_transactionCellPrimaryLabelFont;
@@ -33,15 +33,15 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
+@property(retain, nonatomic) PKContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 - (id)appleCardImage;
 - (id)cashbackImage;
 - (struct CGSize)_imageSize;
 - (void)_updatePrimaryLabelOnTransactionCell:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 contact:(id)arg3;
 - (void)_updateAvatarOnTransactionCell:(id)arg1 withTransaction:(id)arg2 contact:(id)arg3;
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
-- (_Bool)_shouldShowIconForTransactionSource:(id)arg1 context:(unsigned long long)arg2;
-- (void)viewControllerForTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 forcePreventHistory:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+- (_Bool)_shouldShowIconForTransactionSource:(id)arg1 transaction:(id)arg2 context:(unsigned long long)arg3;
+- (void)viewControllerForTransaction:(id)arg1 transactionSourceCollection:(id)arg2 familyCollection:(id)arg3 account:(id)arg4 accountUserCollection:(id)arg5 forcePreventHistory:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (_Bool)hideSeparatorForItem:(id)arg1 inCollectionView:(id)arg2;
 - (void)prefetchForItem:(id)arg1 inCollectionView:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;

@@ -59,6 +59,7 @@
     NSMutableArray *_publisherSpecifiedArticleIds;
     NTPBDate *_publisherSpecifiedArticleIdsModifiedDate;
     NSMutableArray *_purchaseOfferableConfigurations;
+    NSMutableArray *_recentIssueIDs;
     NSString *_replacementID;
     NSString *_stocksFeedConfigurationJson;
     NSString *_subtitle;
@@ -95,6 +96,7 @@
     } _has;
 }
 
++ (Class)recentIssueIDsType;
 + (Class)latestIssueIDsType;
 + (Class)publisherSpecifiedArticleIdsType;
 + (Class)iAdKeywordsType;
@@ -106,6 +108,7 @@
 + (Class)allowedStorefrontIDsType;
 + (Class)blockedStorefrontIDsType;
 + (Class)iAdCategoriesType;
+@property(retain, nonatomic) NSMutableArray *recentIssueIDs; // @synthesize recentIssueIDs=_recentIssueIDs;
 @property(nonatomic) long long propertyFlags; // @synthesize propertyFlags=_propertyFlags;
 @property(retain, nonatomic) NSString *supergroupKnobsJson; // @synthesize supergroupKnobsJson=_supergroupKnobsJson;
 @property(retain, nonatomic) NSString *supergroupConfigJson; // @synthesize supergroupConfigJson=_supergroupConfigJson;
@@ -174,6 +177,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)recentIssueIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)recentIssueIDsCount;
+- (void)addRecentIssueIDs:(id)arg1;
+- (void)clearRecentIssueIDs;
 @property(nonatomic) _Bool hasPropertyFlags;
 @property(readonly, nonatomic) _Bool hasSupergroupKnobsJson;
 @property(readonly, nonatomic) _Bool hasSupergroupConfigJson;

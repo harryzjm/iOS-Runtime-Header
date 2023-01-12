@@ -12,6 +12,7 @@
 
 @optional
 @property(retain, nonatomic) UIWindow *window;
+- (_Bool)applicationShouldAutomaticallyLocalizeKeyCommands:(UIApplication *)arg1;
 - (void)application:(UIApplication *)arg1 didDiscardSceneSessions:(NSSet *)arg2;
 - (UISceneConfiguration *)application:(UIApplication *)arg1 configurationForConnectingSceneSession:(UISceneSession *)arg2 options:(UISceneConnectionOptions *)arg3;
 - (void)application:(UIApplication *)arg1 userDidAcceptCloudKitShareWithMetadata:(CKShareMetadata *)arg2;

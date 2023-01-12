@@ -8,15 +8,24 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class PKProtobufCloudStoreZoneInvitation;
+@class NSString, PKProtobufCloudStoreZoneInvitation;
 
 @interface PKProtobufCloudStoreZoneInvitationRequest : PBRequest <NSCopying>
 {
+    unsigned int _errorCode;
+    NSString *_errorDescription;
+    NSString *_errorDomain;
     PKProtobufCloudStoreZoneInvitation *_invitation;
     unsigned int _version;
+    struct {
+        unsigned int errorCode:1;
+    } _has;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *errorDescription; // @synthesize errorDescription=_errorDescription;
+@property(retain, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
+@property(nonatomic) unsigned int errorCode; // @synthesize errorCode=_errorCode;
 @property(retain, nonatomic) PKProtobufCloudStoreZoneInvitation *invitation; // @synthesize invitation=_invitation;
 @property(nonatomic) unsigned int version; // @synthesize version=_version;
 - (void)mergeFrom:(id)arg1;
@@ -28,6 +37,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasErrorDescription;
+@property(readonly, nonatomic) _Bool hasErrorDomain;
+@property(nonatomic) _Bool hasErrorCode;
 @property(readonly, nonatomic) _Bool hasInvitation;
 
 @end

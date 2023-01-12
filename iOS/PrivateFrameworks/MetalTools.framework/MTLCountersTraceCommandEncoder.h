@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface MTLCountersTraceCommandEncoder : NSObject
 {
+    unsigned long long _timer;
     struct BinaryBuffer *_stream;
     unsigned long long _flags;
     struct _NSRange _segment;

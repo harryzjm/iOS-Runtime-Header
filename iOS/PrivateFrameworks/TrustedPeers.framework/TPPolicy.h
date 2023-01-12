@@ -20,12 +20,16 @@
     NSArray *_keyViewMapping;
     NSSet *_userControllableViewList;
     NSSet *_piggybackViews;
+    NSSet *_priorityViews;
+    NSSet *_inheritedExcludedViews;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)policyWithModelToCategory:(id)arg1 categoriesByView:(id)arg2 introducersByCategory:(id)arg3 keyViewMapping:(id)arg4 unknownRedactions:(_Bool)arg5 userControllableViewList:(id)arg6 piggybackViews:(id)arg7 version:(id)arg8;
++ (id)policyWithModelToCategory:(id)arg1 categoriesByView:(id)arg2 introducersByCategory:(id)arg3 keyViewMapping:(id)arg4 unknownRedactions:(_Bool)arg5 userControllableViewList:(id)arg6 piggybackViews:(id)arg7 priorityViews:(id)arg8 inheritedExcludedViews:(id)arg9 version:(id)arg10;
 - (void).cxx_destruct;
 @property _Bool unknownRedactions; // @synthesize unknownRedactions=_unknownRedactions;
+@property(retain, nonatomic) NSSet *inheritedExcludedViews; // @synthesize inheritedExcludedViews=_inheritedExcludedViews;
+@property(retain, nonatomic) NSSet *priorityViews; // @synthesize priorityViews=_priorityViews;
 @property(retain, nonatomic) NSSet *piggybackViews; // @synthesize piggybackViews=_piggybackViews;
 @property(retain, nonatomic) NSSet *userControllableViewList; // @synthesize userControllableViewList=_userControllableViewList;
 @property(retain, nonatomic) NSArray *keyViewMapping; // @synthesize keyViewMapping=_keyViewMapping;
@@ -38,7 +42,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)viewsForModel:(id)arg1 error:(id *)arg2;
-- (id)syncingPolicyForModel:(id)arg1 syncUserControllableViews:(int)arg2 error:(id *)arg3;
+- (id)syncingPolicyForModel:(id)arg1 syncUserControllableViews:(int)arg2 isInheritedAccount:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)peerInCategory:(id)arg1 canAccessView:(id)arg2;
 - (_Bool)trustedPeerInCategory:(id)arg1 canIntroduceCategory:(id)arg2;
 - (id)categoryForModel:(id)arg1;

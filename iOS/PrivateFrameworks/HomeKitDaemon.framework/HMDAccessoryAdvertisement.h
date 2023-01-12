@@ -22,6 +22,7 @@
 @property(readonly) long long associationOptions;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (void)setCategory:(id)arg1;
 - (id)description;
 - (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3;
 

@@ -13,7 +13,8 @@
     NSArray *_tilings;
 }
 
-+ (id)instanceWithArchive:(const struct Chart3DTexturesMaterialArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
+- (void).cxx_destruct;
 - (void)didInitFromSOS;
 - (id)firstTiling;
 - (id)firstTexture;
@@ -28,10 +29,9 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
-- (void)saveToArchive:(struct Chart3DTexturesMaterialArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct Chart3DTexturesMaterialArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 
 @end
 

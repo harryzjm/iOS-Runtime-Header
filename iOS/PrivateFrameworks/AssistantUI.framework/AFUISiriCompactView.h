@@ -30,12 +30,14 @@
     struct CGRect _dockFrame;
     struct CGRect _orbViewContainerFrame;
     SiriUIContentButton *_reportBugButton;
+    UIView *_siriXIndicator;
     AFUISiriEyesFreeView *_eyesFreeView;
     UIView *_blurringAndLockContainer;
     SiriUIBackgroundBlurViewController *_fullScreenBlurViewController;
     UIView *_lockContainerView;
     _Bool _remoteContentViewHidden;
     _Bool _lockViewHidden;
+    _Bool _auxiliaryViewsHidden;
     _Bool _inShowUnlockViewAnimation;
     _Bool _inHideUnlockViewAnimation;
     _Bool _inFluidDismissal;
@@ -69,6 +71,8 @@
 - (struct CGRect)_lockViewFrame;
 - (struct CGRect)_remoteContentViewFrame;
 - (void)animateOrbViewDismissalWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setRequestHandlingStatus:(unsigned long long)arg1;
+- (void)_constructAndAddSiriXIndicator;
 - (_Bool)_shouldShowBugReportButton;
 - (void)_reportBugButtonLongPressed;
 - (void)_reportBugButtonTapped;

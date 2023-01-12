@@ -31,6 +31,7 @@
 @property(copy) NSString *domainName; // @synthesize domainName=_domainName;
 @property(copy) NSArray *searchDomains; // @synthesize searchDomains=_searchDomains;
 @property(readonly) NSArray *servers; // @synthesize servers=_servers;
+@property(readonly, nonatomic) _Bool useForAllDomains;
 - (_Bool)overlapsWithSettings:(id)arg1;
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)copyLegacyDictionary;

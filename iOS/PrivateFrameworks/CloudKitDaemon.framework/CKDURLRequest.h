@@ -10,14 +10,12 @@
 #import <CloudKitDaemon/CKDFlowControllable-Protocol.h>
 #import <CloudKitDaemon/CKDZoneGatekeeperWaiter-Protocol.h>
 
-@class C2RequestOptions, CKDFlowControlManager, CKDOperation, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTapToRadarRequest, CKDTrafficLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, NSURLRequest, NSURLSession, NSURLSessionDataTask;
-@protocol CKDAccountAccessInfoProvider, CKDAccountInfoProvider, CKDContextInfoProvider, CKDURLRequestAuthRetryDelegate, CKDURLRequestMetricsDelegate, OS_dispatch_queue, OS_os_activity, OS_voucher;
+@class C2RequestOptions, CKDContainer, CKDFlowControlManager, CKDOperation, CKDOperationMetrics, CKDProtobufStreamWriter, CKDProtocolTranslator, CKDResponseBodyParser, CKDTapToRadarRequest, CKDTrafficLogger, NSArray, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSInputStream, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, NSURLRequest, NSURLSession, NSURLSessionDataTask;
+@protocol OS_dispatch_queue, OS_os_activity, OS_voucher;
 
 @interface CKDURLRequest : NSObject <C2RequestDelegate, CKDZoneGatekeeperWaiter, CKDFlowControllable>
 {
-    id <CKDAccountInfoProvider> _accountInfoProvider;
-    id <CKDContextInfoProvider> _contextInfoProvider;
-    id <CKDAccountAccessInfoProvider> _accountAccessInfoProvider;
+    CKDContainer *_container;
     CKDFlowControlManager *_cachedFlowControlManager;
     long long _responseStatusCode;
     NSString *_requestUUID;
@@ -44,11 +42,10 @@
     _Bool _haveCachedPartitionType;
     _Bool _didReceiveResponseBodyData;
     _Bool _didFetchNilAuthToken;
+    int _requestOriginator;
     NSDictionary *_requestProperties;
     NSArray *_requestOperations;
     CKDOperation *_operation;
-    id <CKDURLRequestMetricsDelegate> _metricsDelegate;
-    id <CKDURLRequestAuthRetryDelegate> _authRetryDelegate;
     CKDProtocolTranslator *_translator;
     NSString *_automatedDeviceGroup;
     NSDictionary *_unitTestOverrides;
@@ -65,6 +62,7 @@
     CKDTrafficLogger *_trafficLogger;
     NSString *_deviceID;
     unsigned long long _numDownloadedElements;
+    NSError *_lastRetryAuthError;
     long long _cachedServerType;
     long long _cachedPartitionType;
     NSDate *_dateRequestWentOut;
@@ -101,6 +99,7 @@
 @property(nonatomic) _Bool haveCachedPartitionType; // @synthesize haveCachedPartitionType=_haveCachedPartitionType;
 @property(nonatomic) _Bool haveCachedServerType; // @synthesize haveCachedServerType=_haveCachedServerType;
 @property(getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
+@property(retain, nonatomic) NSError *lastRetryAuthError; // @synthesize lastRetryAuthError=_lastRetryAuthError;
 @property(nonatomic) _Bool didRetryAuth; // @synthesize didRetryAuth=_didRetryAuth;
 @property(nonatomic) unsigned long long numDownloadedElements; // @synthesize numDownloadedElements=_numDownloadedElements;
 @property(copy, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
@@ -117,12 +116,11 @@
 @property _Bool needsAuthRetry; // @synthesize needsAuthRetry=_needsAuthRetry;
 @property(retain) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSDictionary *fakeResponseOperationResultByItemID; // @synthesize fakeResponseOperationResultByItemID=_fakeResponseOperationResultByItemID;
+@property(readonly, nonatomic) int requestOriginator; // @synthesize requestOriginator=_requestOriginator;
 @property(retain, nonatomic) NSDictionary *clientProvidedAdditionalHeaderValues; // @synthesize clientProvidedAdditionalHeaderValues=_clientProvidedAdditionalHeaderValues;
 @property(retain, nonatomic) NSDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
 @property(retain, nonatomic) NSString *automatedDeviceGroup; // @synthesize automatedDeviceGroup=_automatedDeviceGroup;
 @property(retain, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
-@property(nonatomic) __weak id <CKDURLRequestAuthRetryDelegate> authRetryDelegate; // @synthesize authRetryDelegate=_authRetryDelegate;
-@property(nonatomic) __weak id <CKDURLRequestMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
 @property(nonatomic) __weak CKDOperation *operation; // @synthesize operation=_operation;
 @property(readonly, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
 @property(retain, nonatomic) NSDictionary *requestProperties; // @synthesize requestProperties=_requestProperties;
@@ -132,14 +130,11 @@
 @property(copy, nonatomic) CDUnknownBlockType requestProgressBlock; // @synthesize requestProgressBlock=_requestProgressBlock;
 @property(readonly, nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property(retain, nonatomic) CKDResponseBodyParser *responseBodyParser; // @synthesize responseBodyParser=_responseBodyParser;
-@property(retain, nonatomic) id <CKDContextInfoProvider> contextInfoProvider; // @synthesize contextInfoProvider=_contextInfoProvider;
-@property(retain, nonatomic) CKDFlowControlManager *cachedFlowControlManager; // @synthesize cachedFlowControlManager=_cachedFlowControlManager;
-@property(retain, nonatomic) id <CKDAccountAccessInfoProvider> accountAccessInfoProvider; // @synthesize accountAccessInfoProvider=_accountAccessInfoProvider;
-@property(retain, nonatomic) id <CKDAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
+@property(readonly, nonatomic) CKDFlowControlManager *cachedFlowControlManager; // @synthesize cachedFlowControlManager=_cachedFlowControlManager;
+@property(readonly, nonatomic) CKDContainer *container; // @synthesize container=_container;
 - (id)createAssetAuthorizeGetRequestOptionsHeaderInfoWithKey:(id)arg1 value:(id)arg2;
 - (id)statusReportWithIndent:(unsigned long long)arg1;
 - (id)_CFNetworkTaskIdentifierString;
-@property(readonly, nonatomic) NSString *sectionID;
 @property(readonly, nonatomic) int isolationLevel;
 @property(readonly, nonatomic) NSURL *lastRedirectURL;
 @property(readonly, nonatomic) NSDictionary *responseHeaders;
@@ -186,7 +181,7 @@
 - (_Bool)usesiCloudAuthToken;
 - (_Bool)usesCloudKitAuthToken;
 - (_Bool)allowsAuthedAccount;
-- (_Bool)includeContainerInfo;
+- (_Bool)includeContainerServerInfo;
 - (_Bool)requiresTokenRegistration;
 - (_Bool)requiresDeviceID;
 - (_Bool)requiresConfiguration;
@@ -197,11 +192,13 @@
 - (double)timeoutIntervalForRequest;
 @property(readonly, nonatomic) long long databaseScope;
 @property(readonly, nonatomic) NSString *operationIDForProtobuf;
+@property(readonly, nonatomic) _Bool requiresCKAnonymousUserIDs;
+@property(readonly, nonatomic) _Bool handlesAnonymousCKUserIDPropagation;
+- (void)validateAnonymousUserIDPropagation;
 @property(readonly, nonatomic) NSString *flowControlKey;
 @property(readonly, nonatomic) _Bool allowsPowerNapScheduling;
 @property(readonly, nonatomic) unsigned long long networkServiceType;
 @property(readonly, nonatomic) NSString *operationID;
-- (id)deviceIdentifier;
 @property(readonly, nonatomic) NSNumber *operationGroupQuantity;
 @property(readonly, nonatomic) NSString *operationGroupName;
 @property(readonly, nonatomic) NSString *operationGroupID;
@@ -216,6 +213,7 @@
 @property(readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property(readonly, nonatomic) NSString *applicationBundleIdentifierForNetworkAttribution;
 @property(readonly, nonatomic) NSString *applicationBundleIdentifierForContainerAccess;
+@property(readonly, nonatomic) _Bool allowsExpensiveNetworkAccess;
 @property(readonly, nonatomic) _Bool allowsCellularAccess;
 @property(readonly, nonatomic) long long qualityOfService;
 @property(readonly, nonatomic) _Bool requestGETPreAuth;
@@ -261,6 +259,7 @@
 - (id)requestOperationCountsByOperationType;
 @property(readonly, nonatomic) NSInputStream *requestBodyStream;
 @property(readonly, nonatomic) NSArray *requestOperations; // @synthesize requestOperations=_requestOperations;
+- (void)addSignatureForRequestOperation:(id)arg1;
 - (id)generateRequestOperations;
 @property(readonly, nonatomic) NSString *httpMethod;
 @property(readonly, copy) NSString *description;

@@ -10,7 +10,7 @@
 
 @interface _TtC16NewsSubscription23InAppMessageCoordinator : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *messageCoordinator;
+    MISSING_TYPE *$__lazy_storage_$_messageCoordinator;
     MISSING_TYPE *applicationContextProvider;
     MISSING_TYPE *applicationDidBecomeActiveEventName;
 }

@@ -22,6 +22,7 @@
 @property(nonatomic, getter=isRoaming) _Bool roaming; // @synthesize roaming=_roaming;
 @property(readonly, nonatomic) NSString *defaultsKey; // @synthesize defaultsKey=_defaultsKey;
 - (id)description;
+- (id)redactedDescription;
 - (id)initWithSIMIdentity:(id)arg1 roaming:(_Bool)arg2;
 
 @end

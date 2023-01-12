@@ -8,6 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MRVideoThumbnailRequestProtobuf : PBCodable <NSCopying>
 {
     CDStruct_82f37d05 _timeIntervals;
@@ -19,25 +20,13 @@
     } _has;
 }
 
-@property(nonatomic) float thumbnailsHeight; // @synthesize thumbnailsHeight=_thumbnailsHeight;
-@property(nonatomic) float thumbnailsWidth; // @synthesize thumbnailsWidth=_thumbnailsWidth;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasThumbnailsHeight;
-@property(nonatomic) _Bool hasThumbnailsWidth;
-- (void)setTimeIntervals:(double *)arg1 count:(unsigned long long)arg2;
-- (double)timeIntervalsAtIndex:(unsigned long long)arg1;
-- (void)addTimeIntervals:(double)arg1;
-- (void)clearTimeIntervals;
-@property(readonly, nonatomic) double *timeIntervals;
-@property(readonly, nonatomic) unsigned long long timeIntervalsCount;
 - (void)dealloc;
 
 @end

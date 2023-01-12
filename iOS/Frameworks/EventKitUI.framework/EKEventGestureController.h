@@ -12,7 +12,7 @@
 #import <EventKitUI/UIDropInteractionDelegate-Protocol.h>
 #import <EventKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class EKCalendarDate, EKDayOccurrenceView, EKEvent, EKICSPreviewController, EKUIInviteesViewMessageSendingManager, EKUIRecurrenceAlertController, NSString, NSTimer, UIDragInteraction, UIDropInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, _UIDragSnappingFeedbackGenerator;
+@class EKCalendarDate, EKDayOccurrenceView, EKEvent, EKICSPreviewController, EKUIEmailCompositionManager, EKUIRecurrenceAlertController, NSString, NSTimer, UIDragInteraction, UIDropInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, _UIDragSnappingFeedbackGenerator;
 @protocol EKEventGestureControllerDelegate, EKEventGestureControllerUntimedDelegate;
 
 @interface EKEventGestureController : NSObject <UIDropInteractionDelegate, UIDragInteractionDelegate, EKICSPreviewControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate>
@@ -67,12 +67,12 @@
     id <EKEventGestureControllerDelegate> _delegate;
     NSString *_sessionIdentifierForDebug;
     EKDayOccurrenceView *_draggingViewSource;
-    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
+    EKUIEmailCompositionManager *_messageSendingManager;
 }
 
 + (id)_captureImageOfOccurrenceView:(id)arg1 withFrameOfOpaqueContent:(struct CGRect)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
+@property(retain, nonatomic) EKUIEmailCompositionManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property(retain, nonatomic) EKDayOccurrenceView *draggingViewSource; // @synthesize draggingViewSource=_draggingViewSource;
 @property(retain, nonatomic) NSString *sessionIdentifierForDebug; // @synthesize sessionIdentifierForDebug=_sessionIdentifierForDebug;
 @property(readonly, nonatomic) EKDayOccurrenceView *draggingView; // @synthesize draggingView=_draggingView;

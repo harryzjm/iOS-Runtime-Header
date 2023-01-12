@@ -20,7 +20,7 @@
 + (id)businessItemsForRegion:(id)arg1;
 + (id)createPlaceForBusinessItem:(id)arg1;
 + (id)_categoriesDescriptionFromCategories:(id)arg1;
-+ (id)filterBusinessItems:(id)arg1 forCategories:(id)arg2 subCategories:(id)arg3 blacklistCategories:(id)arg4;
++ (id)filterBusinessItems:(id)arg1 forCategories:(id)arg2 subCategories:(id)arg3 blocklistCategories:(id)arg4;
 + (id)searchBusinessItemsAtCoordinate:(struct CLLocationCoordinate2D)arg1 forCategories:(id)arg2 precision:(double)arg3 inCache:(id)arg4;
 + (id)pointOfInterestCategories;
 + (id)informantDependenciesIdentifiers;

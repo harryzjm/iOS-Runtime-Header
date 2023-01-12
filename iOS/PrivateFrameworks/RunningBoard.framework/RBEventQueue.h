@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, RBEventQueueEvent;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, RBTimeProviding;
 
 @interface RBEventQueue : NSObject
 {
     NSMutableArray *_eventQueue;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_source> *_eventTimer;
+    id <RBTimeProviding> _timeProvider;
+    double _nextFireTime;
+    _Bool _isTimerRunning;
     _Bool _isProcessingEvents;
     _Bool _inModifyBlock;
     _Bool _dirtyDuringModify;
@@ -29,7 +31,7 @@
 - (void)batchModify:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) RBEventQueueEvent *nextEvent;
 @property(readonly, nonatomic) unsigned long long count;
-- (id)initWithQueue:(id)arg1;
+- (id)initWithQueue:(id)arg1 timeProvider:(id)arg2;
 
 @end
 

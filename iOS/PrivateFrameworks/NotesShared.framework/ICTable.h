@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CRTTCompatibleDocument, ICTableCellChangeNotifier, NSMutableDictionary;
+@class CRTTCompatibleDocument, ICTableCellChangeNotifier, NSMutableDictionary, NSObject;
+@protocol ICTableDelegate;
 
 @interface ICTable
 {
@@ -15,6 +16,8 @@
 + (void)registerWithCRCoder;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *columnTextStorages; // @synthesize columnTextStorages=_columnTextStorages;
+- (void)undoablyInsertContents:(id)arg1 atColumn:(id)arg2;
+- (void)undoablyRemoveContentsOfColumn:(id)arg1;
 - (id)subtableWithDocument:(id)arg1 forSelectionContainingColumnIndices:(id)arg2 rowIndices:(id)arg3;
 - (_Bool)isEmptyAtColumnIdentifiers:(id)arg1 rowIdentifiers:(id)arg2;
 - (_Bool)isEmptyAtColumnIndexes:(id)arg1 rowIndexes:(id)arg2;
@@ -28,6 +31,9 @@
 - (id)stringForColumnIndex:(unsigned long long)arg1 rowIndex:(unsigned long long)arg2;
 - (void)setAttributedString:(id)arg1 columnIndex:(unsigned long long)arg2 rowIndex:(unsigned long long)arg3;
 @property(readonly, nonatomic) ICTableCellChangeNotifier *cellChangeNotifier; // @synthesize cellChangeNotifier=_cellChangeNotifier;
+
+// Remaining properties
+@property(nonatomic) __weak NSObject<ICTableDelegate> *delegate; // @dynamic delegate;
 
 @end
 

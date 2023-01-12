@@ -21,6 +21,8 @@
 + (id)initWithAppName:(id)arg1 requireSetup:(_Bool)arg2;
 + (id)initActivationCodeRequireSetup:(_Bool)arg1;
 + (id)initWithSetupFlowWithIccid:(id)arg1 showAddPlan:(_Bool)arg2;
++ (id)flowWithOptions:(id)arg1;
++ (id)createTSRemotePlanWebsheetContext:(id)arg1;
 + (id)initWithOptions:(id)arg1;
 + (void)needsToRunUsingMessageSession:(id)arg1 transferablePlanOnSource:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)needsToRunUsingMessageSession:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -9,16 +9,18 @@
 #import <CalendarNotification/CALNCalendarResourceChangedNotificationDataSource-Protocol.h>
 
 @class NSString;
-@protocol CALNEKCalendarNotificationReferenceProvider, CALNInboxNotificationProvider, EKEventStoreProvider;
+@protocol CALNEKCalendarNotificationReferenceProvider, CALNInboxNotificationProvider, EKEventStoreProvider, EKNotificationPreferences;
 
 @interface CALNCalendarResourceChangedNotificationEKDataSource : NSObject <CALNCalendarResourceChangedNotificationDataSource>
 {
     id <EKEventStoreProvider> _eventStoreProvider;
     id <CALNInboxNotificationProvider> _inboxNotificationProvider;
     id <CALNEKCalendarNotificationReferenceProvider> _notificationReferenceProvider;
+    id <EKNotificationPreferences> _preferences;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <EKNotificationPreferences> preferences; // @synthesize preferences=_preferences;
 @property(readonly, nonatomic) id <CALNEKCalendarNotificationReferenceProvider> notificationReferenceProvider; // @synthesize notificationReferenceProvider=_notificationReferenceProvider;
 @property(readonly, nonatomic) id <CALNInboxNotificationProvider> inboxNotificationProvider; // @synthesize inboxNotificationProvider=_inboxNotificationProvider;
 @property(readonly, nonatomic) id <EKEventStoreProvider> eventStoreProvider; // @synthesize eventStoreProvider=_eventStoreProvider;
@@ -28,7 +30,7 @@
 - (id)fetchCalendarResourceChangedNotificationWithSourceClientIdentifier:(id)arg1;
 - (id)fetchCalendarResourceChangedNotificationSourceClientIdentifiers:(id)arg1;
 - (id)fetchCalendarResourceChangedNotifications;
-- (id)initWithEventStoreProvider:(id)arg1 inboxNotificationProvider:(id)arg2 notificationReferenceProvider:(id)arg3;
+- (id)initWithEventStoreProvider:(id)arg1 inboxNotificationProvider:(id)arg2 notificationReferenceProvider:(id)arg3 preferences:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

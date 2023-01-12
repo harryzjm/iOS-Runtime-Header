@@ -40,6 +40,7 @@
 @property(readonly) unsigned long long version; // @synthesize version=_version;
 - (id)transitionPointsWithmillisecondsElapsedSinceStartOfDay:(unsigned long long)arg1;
 - (id)colorTemperatureForBrightness:(long long)arg1 millisecondsElapsedSinceStartOfDay:(unsigned long long)arg2;
+@property(readonly) unsigned long long checksum;
 - (id)attributeDescriptions;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

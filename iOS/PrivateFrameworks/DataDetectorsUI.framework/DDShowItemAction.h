@@ -8,7 +8,7 @@
 {
 }
 
-- (id)icon;
+- (id)iconName;
 - (id)localizedName;
 
 @end

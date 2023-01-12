@@ -39,8 +39,49 @@ struct AvailabilityState {
     unsigned int isAvailable:1;
 };
 
+struct MyriadMetricsDataV1 {
+    unsigned char _field1;
+    unsigned long long _field2;
+    unsigned char _field3;
+    unsigned long long _field4;
+    unsigned char _field5;
+    double _field6;
+    double _field7;
+    unsigned char _field8;
+    unsigned char _field9;
+    unsigned char _field10;
+    unsigned char _field11;
+    unsigned char _field12;
+    unsigned char _field13;
+    double _field14;
+    unsigned char _field15;
+    unsigned char _field16;
+    unsigned char _field17;
+    unsigned char _field18[50];
+    unsigned char _field19[50];
+    unsigned char _field20[50];
+    unsigned char _field21;
+};
+
 struct atomic_flag {
     _Atomic _Bool _Value;
+};
+
+struct myrAccessoryMessage {
+    unsigned char version;
+    unsigned long long requestType;
+    unsigned long long session;
+    double voiceTriggerEndTime;
+    unsigned short audioHash;
+    unsigned char goodnessScore;
+    unsigned char userConfidenceScore;
+    unsigned char tieBreaker;
+    unsigned char deviceClass;
+    unsigned char deviceGroup;
+    unsigned char productType;
+    unsigned char electionDecision;
+    unsigned char emergencyHandled;
+    unsigned char ack;
 };
 
 struct os_unfair_lock_s {
@@ -48,6 +89,13 @@ struct os_unfair_lock_s {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    id _field1;
+    id _field2;
+    id _field3;
+    id _field4;
+} CDStruct_89ddc8e1;
 
 typedef struct {
     unsigned long long _field1;

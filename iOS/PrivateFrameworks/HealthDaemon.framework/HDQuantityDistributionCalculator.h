@@ -13,9 +13,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_initializeWideBucketDatesFromStartDate:(id)arg1 endDate:(id)arg2 anchorDate:(id)arg3 intervalComponents:(id)arg4;
-- (double)_dateComponentsToInterval:(id)arg1;
-- (_Bool)_isWideIntervalComponents:(id)arg1;
 - (_Bool)validateDateSequenceForTesting:(id)arg1;
 - (id)quantityDistributionsWithUnit:(id)arg1;
 - (void)addDataPoint:(double)arg1 startTime:(double)arg2 endTime:(double)arg3;

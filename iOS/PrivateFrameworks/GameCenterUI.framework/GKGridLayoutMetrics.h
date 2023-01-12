@@ -18,6 +18,7 @@
 }
 
 + (id)metrics;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *layoutKey; // @synthesize layoutKey=_layoutKey;
 @property(retain, nonatomic) NSMutableDictionary *locationToKeyList; // @synthesize locationToKeyList=_locationToKeyList;
 @property(retain, nonatomic) NSMutableDictionary *keyToMetrics; // @synthesize keyToMetrics=_keyToMetrics;
@@ -36,7 +37,6 @@
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
 - (id)localDescription;
-- (void)dealloc;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)prepareLayout:(id)arg1 startingAtSection:(long long)arg2;

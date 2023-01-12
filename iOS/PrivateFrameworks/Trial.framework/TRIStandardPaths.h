@@ -8,7 +8,7 @@
 
 #import <Trial/TRIPaths-Protocol.h>
 
-@class TRIAppContainer;
+@class NSString, TRIAppContainer;
 
 @interface TRIStandardPaths : NSObject <TRIPaths>
 {
@@ -16,6 +16,7 @@
     TRIAppContainer *_container;
     _Bool _isClient;
     struct atomic_flag _loggedRootDir;
+    NSString *_containerPath;
 }
 
 + (id)resolveHardCodedPath:(id)arg1;
@@ -26,7 +27,9 @@
 + (unsigned int)currentSchemaVersion;
 + (id)_simRoot;
 - (void).cxx_destruct;
+- (id)decryptionKeyDirForAppleInternal:(_Bool)arg1;
 - (id)assetStore;
+- (id)localTempDir;
 - (id)experimentsDir;
 - (id)treatmentsDir;
 - (id)deviceIdentifierFile;
@@ -42,10 +45,12 @@
 - (id)_versionSpecificStorageDir;
 - (id)_versionSpecificSystemStorageDir;
 - (id)initWithCurrentSchemaVersion;
+- (id)initWithSchemaVersion:(unsigned int)arg1;
 - (id)initWithSchemaVersion:(unsigned int)arg1 container:(id)arg2 asClientProcess:(_Bool)arg3;
 - (id)pathsForContainer:(id)arg1 asClientProcess:(_Bool)arg2;
 - (id)containerDir;
 - (id)container;
+- (id)trialRootVolume;
 - (id)trialRootDir;
 - (id)trialRootDirWithError:(id *)arg1;
 - (_Bool)validateWithError:(id *)arg1;

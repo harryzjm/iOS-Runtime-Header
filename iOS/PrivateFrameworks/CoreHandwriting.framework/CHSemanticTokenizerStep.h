@@ -14,6 +14,7 @@
 
 @property(nonatomic) void *languageModel; // @synthesize languageModel=_languageModel;
 @property(nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
+- (void)dealloc;
 - (id)process:(id)arg1;
 - (void)_updateTokenInappropriateFlag:(id)arg1;
 - (id)initWithRecognizer:(id)arg1 languageModel:(void *)arg2;

@@ -14,9 +14,10 @@
 - (void)shutdownAccountsD:(void (^)(_Bool, NSError *))arg1;
 - (void)scheduleBackupIfNonexistent:(void (^)(_Bool, NSError *))arg1;
 - (void)triggerKeychainMigrationIfNecessary:(void (^)(_Bool, NSError *))arg1;
-- (void)removeAccountsFromPairedDeviceWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)removeAccountFromPairedDevice:(ACAccount *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)removeAccountsFromPairedDeviceWithOptions:(NSDictionary *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)saveAccount:(ACAccount *)arg1 toPairedDeviceWithOptions:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)notifyRemoteDevicesOfModifiedAccount:(ACAccount *)arg1 withChangeType:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)notifyRemoteDevicesOfModifiedAccount:(ACAccount *)arg1 withChangeType:(NSString *)arg2 options:(NSDictionary *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)notifyRemoteDevicesOfModifiedAccount:(ACAccount *)arg1 withChangeType:(NSString *)arg2;
 - (void)openAuthenticationURLForAccount:(ACAccount *)arg1 withDelegateClassName:(NSString *)arg2 fromBundleAtPath:(NSString *)arg3 shouldConfirm:(_Bool)arg4 completion:(void (^)(_Bool, NSDictionary *, NSError *))arg5;
 - (void)openAuthenticationURL:(NSURL *)arg1 forAccount:(ACAccount *)arg2 shouldConfirm:(_Bool)arg3 completion:(void (^)(_Bool, NSError *))arg4;
@@ -32,7 +33,6 @@
 - (void)renewCredentialsForAccount:(ACAccount *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSNumber *, NSError *))arg3;
 - (void)verifyCredentialsForAccount:(ACAccount *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(ACAccount *, NSError *))arg3;
 - (void)clearAllPermissionsGrantedForAccountType:(ACAccountType *)arg1 withHandler:(void (^)(id, NSError *))arg2;
-- (void)typeIdentifierForDomain:(NSString *)arg1 withHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)clearGrantedPermissionsForAccountType:(ACAccountType *)arg1 withHandler:(void (^)(NSError *))arg2;
 - (void)grantedPermissionsForAccountType:(ACAccountType *)arg1 withHandler:(void (^)(NSSet *, NSError *))arg2;
 - (void)permissionForAccountType:(ACAccountType *)arg1 withHandler:(void (^)(NSNumber *, NSError *))arg2;
@@ -67,7 +67,7 @@
 - (void)accountTypeWithIdentifier:(NSString *)arg1 handler:(void (^)(ACAccountType *, NSError *))arg2;
 - (void)displayAccountTypeForAccountWithIdentifier:(NSString *)arg1 handler:(void (^)(ACAccountType *, NSError *))arg2;
 - (void)childAccountsWithAccountTypeIdentifier:(NSString *)arg1 parentAccountIdentifier:(NSString *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
-- (void)accountsOnPairedDeviceWithAccountType:(ACAccountType *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (void)accountsOnPairedDeviceWithAccountTypes:(NSSet *)arg1 withOptions:(NSDictionary *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 - (void)accountsWithAccountTypeIdentifiers:(NSArray *)arg1 preloadedProperties:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)visibleTopLevelAccountsWithAccountTypeIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)kerberosAccountsForDomainFromURL:(NSURL *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     VUITextLayout *_textLayout;
     VUIScoreboardRowLayout *_topRowLayout;
     VUIScoreboardRowLayout *_bottomRowLayout;
-    struct TVCornerRadii _borderRadii;
+    struct _VUICornerRadii _borderRadii;
 }
 
 + (int)_textBlendMode;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUIScoreboardRowLayout *topRowLayout; // @synthesize topRowLayout=_topRowLayout;
 @property(retain, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 @property(nonatomic) double padding; // @synthesize padding=_padding;
-@property(nonatomic) struct TVCornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
+@property(nonatomic) struct _VUICornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
 
 @end
 

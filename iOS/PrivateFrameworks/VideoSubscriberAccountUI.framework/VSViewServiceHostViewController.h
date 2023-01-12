@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)viewServiceRemoteViewController:(id)arg1 request:(id)arg2 didFinishWithResponse:(id)arg3;
 - (void)dismissViewServiceRemoteViewController:(id)arg1;
 - (void)presentViewServiceRemoteViewController:(id)arg1;
+- (_Bool)isModalInPresentation;
 - (long long)modalPresentationStyle;
 - (void)_cancelButtonPressed:(id)arg1;
 - (_Bool)_shouldAuthenticateAccountProviderWithIdentifier:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKAccount, PKAccountService, PKPaymentPass, PKPhysicalCard, PKVirtualCard, PKVirtualCardCredentials;
+@class PKAccount, PKAccountService, PKPaymentPass, PKPhysicalCard, PKSettingTableCell, PKVirtualCard, PKVirtualCardCredentials;
 
 @interface PKAccountCardNumbersViewController
 {
@@ -17,28 +17,39 @@
     long long _context;
     _Bool _loadingReplacementCard;
     PKPhysicalCard *_physicalCard;
+    PKSettingTableCell *_dynamicSecurityCodeCell;
     _Bool _redactSensitiveDetails;
 }
 
 - (void).cxx_destruct;
+- (id)_otherCardNumbersHeaderWithTableView:(id)arg1;
+- (void)_toggleDynamicSecurityCodeSetting;
 - (id)_replaceCardAlertFromIndexPath:(id)arg1;
 - (id)_virtualCardStateFooter;
+- (id)_reuseIdentifierForSection:(unsigned long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)reuseIdentifierForSection:(unsigned long long)arg1;
 - (id)_buttonCellForRowIndex:(long long)arg1 text:(id)arg2 cellStyle:(long long)arg3 forTableView:(id)arg4;
+- (id)_credentialsCellWithPrimaryText:(id)arg1 detailText:(id)arg2 detailImage:(id)arg3 forTableView:(id)arg4;
 - (id)_credentialsCellWithPrimaryText:(id)arg1 detailText:(id)arg2 forTableView:(id)arg3;
 - (id)_dpanCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (id)_physicalCardCellForRowIndex:(long long)arg1 tableView:(id)arg2;
+- (id)_dynamicSecurityCodeCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (id)_cardCredentialsCellForRowIndex:(long long)arg1 tableView:(id)arg2;
+- (void)_copyCardDetails;
+- (void)_willHideUIMenuController:(id)arg1;
+- (_Bool)canBecomeFirstResponder;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (unsigned long long)_virtualCardCredentialDetailsRowForRowIndex:(long long)arg1;
 - (_Bool)_virtualCardCredentialDetailsRowIsEnabled:(unsigned long long)arg1;
 - (long long)_numberOfVirtualCardCredentialDetailsRowsEnabled;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (_Bool)shouldMapSection:(unsigned long long)arg1;

@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)write:(id)arg1 to:(struct WrdTableProperties *)arg2;
-+ (void)readFrom:(struct WrdTableProperties *)arg1 properties:(id)arg2;
++ (void)write:(id)arg1 to:(void *)arg2;
++ (void)readFrom:(void *)arg1 properties:(id)arg2;
 
 @end
 

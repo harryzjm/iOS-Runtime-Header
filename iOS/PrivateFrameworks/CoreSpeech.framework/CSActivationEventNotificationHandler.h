@@ -23,7 +23,6 @@
 @property(retain, nonatomic) CSActivationEvent *pendingActivationEvent; // @synthesize pendingActivationEvent=_pendingActivationEvent;
 @property(retain, nonatomic) NSMapTable *delegates; // @synthesize delegates=_delegates;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void)_didReceiveAOPFirstPassTrigger:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_hasPendingActivationForType:(unsigned long long)arg1;
 - (void)_stopMonitoring;
 - (void)_startMonitoring;

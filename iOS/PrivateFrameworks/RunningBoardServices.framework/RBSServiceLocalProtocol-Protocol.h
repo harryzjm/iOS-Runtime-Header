@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSMachPortTaskNameRight, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSTerminateRequest;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString, RBSAssertion, RBSAssertionIdentifier, RBSLaunchRequest, RBSMachPortTaskNameRight, RBSProcessExitContext, RBSProcessExitStatus, RBSProcessHandle, RBSProcessIdentifier, RBSProcessInstance, RBSProcessLimitations, RBSProcessMonitor, RBSProcessMonitorConfiguration, RBSProcessPredicate, RBSProcessStateDescriptor, RBSSavedEndowment, RBSTerminateRequest;
 
 @protocol RBSServiceLocalProtocol
 - (void)reset;
@@ -12,6 +12,7 @@
 - (NSSet *)busyExtensionInstancesFromSet:(NSSet *)arg1 error:(out id *)arg2;
 - (NSSet *)identifiersForStateCaptureSubsystems:(out id *)arg1;
 - (NSString *)captureStateForSubsystem:(NSString *)arg1 error:(out id *)arg2;
+- (_Bool)saveEndowment:(RBSSavedEndowment *)arg1 withError:(out id *)arg2;
 - (NSDictionary *)infoPlistResultForInstance:(RBSProcessInstance *)arg1 forKeys:(NSArray *)arg2 error:(out id *)arg3;
 - (RBSProcessHandle *)hostProcessForInstance:(RBSProcessInstance *)arg1 error:(out id *)arg2;
 - (RBSProcessLimitations *)limitationsForInstance:(RBSProcessInstance *)arg1 error:(out id *)arg2;

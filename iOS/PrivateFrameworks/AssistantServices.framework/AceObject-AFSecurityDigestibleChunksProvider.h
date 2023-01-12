@@ -16,7 +16,6 @@
 - (id)af_dialogIdentifiersForAnalyticsContext;
 - (void)af_addEntriesToAnalyticsContext:(id)arg1;
 - (id)af_analyticsContext;
-- (_Bool)_af_isKindOfDictationRequest;
 - (id)af_speakableText;
 - (id)af_text;
 - (id)af_dialogIdentifier;

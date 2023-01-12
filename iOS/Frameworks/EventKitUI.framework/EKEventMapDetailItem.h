@@ -26,7 +26,7 @@
 - (CDStruct_c3b9c2ee)_makeSpanWithCoordinate:(struct CLLocationCoordinate2D)arg1 radius:(double)arg2 minRadius:(double)arg3;
 - (id)_mapRelatedViewConstraintsForMapRelatedView:(id)arg1 inCell:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
+- (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2 forceUpdate:(_Bool)arg3;
 - (_Bool)configureWithCalendar:(id)arg1 preview:(_Bool)arg2;
 - (void)reset;
 - (void)eventViewController:(id)arg1 tableViewDidScroll:(id)arg2;

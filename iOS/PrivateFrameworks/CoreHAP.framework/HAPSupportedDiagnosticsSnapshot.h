@@ -9,16 +9,20 @@
 #import <CoreHAP/HAPTLVProtocol-Protocol.h>
 #import <CoreHAP/NSCopying-Protocol.h>
 
-@class HAPDiagnosticsSnapshotFormatWrapper, HAPDiagnosticsSnapshotTypeWrapper, NSString;
+@class HAPDiagnosticsSnapshotAudioWrapper, HAPDiagnosticsSnapshotFormatWrapper, HAPDiagnosticsSnapshotOptionsWrapper, HAPDiagnosticsSnapshotTypeWrapper, NSString;
 
 @interface HAPSupportedDiagnosticsSnapshot : NSObject <NSCopying, HAPTLVProtocol>
 {
     HAPDiagnosticsSnapshotFormatWrapper *_format;
     HAPDiagnosticsSnapshotTypeWrapper *_type;
+    HAPDiagnosticsSnapshotOptionsWrapper *_options;
+    HAPDiagnosticsSnapshotAudioWrapper *_audioDiagnostics;
 }
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(retain, nonatomic) HAPDiagnosticsSnapshotAudioWrapper *audioDiagnostics; // @synthesize audioDiagnostics=_audioDiagnostics;
+@property(retain, nonatomic) HAPDiagnosticsSnapshotOptionsWrapper *options; // @synthesize options=_options;
 @property(retain, nonatomic) HAPDiagnosticsSnapshotTypeWrapper *type; // @synthesize type=_type;
 @property(retain, nonatomic) HAPDiagnosticsSnapshotFormatWrapper *format; // @synthesize format=_format;
 @property(readonly, copy) NSString *description;
@@ -26,7 +30,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serializeWithError:(id *)arg1;
 - (_Bool)parseFromData:(id)arg1 error:(id *)arg2;
-- (id)initWithFormat:(id)arg1 type:(id)arg2;
+- (id)initWithFormat:(id)arg1 type:(id)arg2 options:(id)arg3;
 - (id)init;
 
 // Remaining properties

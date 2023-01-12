@@ -8,8 +8,10 @@
 
 @interface TPSAnalyticsEventDesiredOutcomePerformed
 {
+    NSString *_tipID;
     double _timeToDesiredOutcome;
-    NSString *_contentID;
+    long long _displayCount;
+    NSString *_correlationID;
     NSString *_bundleID;
     NSString *_context;
     NSString *_experimentID;
@@ -17,7 +19,7 @@
     NSString *_displayType;
 }
 
-+ (id)eventWithContentID:(id)arg1 displayType:(id)arg2 lastDisplayedContext:(id)arg3 lastHintDisplayedDate:(id)arg4 desiredOutcomePerformedDate:(id)arg5;
++ (id)eventWithTipID:(id)arg1 correlationID:(id)arg2 displayType:(id)arg3 overrideHoldout:(_Bool)arg4 lastDisplayedContext:(id)arg5 lastHintDisplayedDate:(id)arg6 desiredOutcomePerformedDate:(id)arg7;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *displayType; // @synthesize displayType=_displayType;
@@ -25,14 +27,16 @@
 @property(retain, nonatomic) NSString *experimentID; // @synthesize experimentID=_experimentID;
 @property(retain, nonatomic) NSString *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property(retain, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
+@property(retain, nonatomic) NSString *correlationID; // @synthesize correlationID=_correlationID;
+@property(nonatomic) long long displayCount; // @synthesize displayCount=_displayCount;
 @property(nonatomic) double timeToDesiredOutcome; // @synthesize timeToDesiredOutcome=_timeToDesiredOutcome;
+@property(retain, nonatomic) NSString *tipID; // @synthesize tipID=_tipID;
 - (id)mutableAnalyticsEventRepresentation;
 - (id)eventName;
 - (void)setDataProvider:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)_initWithContentID:(id)arg1 context:(id)arg2 displayType:(id)arg3 lastHintDisplayedDate:(id)arg4 desiredOutcomePerformedDate:(id)arg5;
+- (id)_initWithTipID:(id)arg1 correlationID:(id)arg2 displayType:(id)arg3 overrideHoldout:(_Bool)arg4 context:(id)arg5 lastHintDisplayedDate:(id)arg6 desiredOutcomePerformedDate:(id)arg7;
 
 @end
 

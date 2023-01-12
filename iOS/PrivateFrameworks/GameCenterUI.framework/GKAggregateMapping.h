@@ -20,6 +20,7 @@
     NSMutableDictionary *_globalSectionsToTags;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *globalSectionsToTags; // @synthesize globalSectionsToTags=_globalSectionsToTags;
 @property(retain, nonatomic) NSMutableDictionary *localToGlobalSections; // @synthesize localToGlobalSections=_localToGlobalSections;
 @property(retain, nonatomic) NSMutableDictionary *globalToLocalSections; // @synthesize globalToLocalSections=_globalToLocalSections;
@@ -37,7 +38,6 @@
 - (unsigned long long)localSectionForGlobalSection:(unsigned long long)arg1;
 - (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

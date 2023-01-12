@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NEAppProxyFlow, NSError, NWEndpoint;
-@protocol OS_dispatch_queue, OS_nw_connection;
+@protocol OS_dispatch_queue, OS_nw_connection, OS_os_transaction;
 
 @interface NPAppProxyFlowBridge : NSObject
 {
@@ -17,9 +17,11 @@
     NSObject<OS_nw_connection> *_connection;
     NSError *_connectionError;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_os_transaction> *_networkTransaction;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_os_transaction> *networkTransaction; // @synthesize networkTransaction=_networkTransaction;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property int currentState; // @synthesize currentState=_currentState;
 @property(retain) NSError *connectionError; // @synthesize connectionError=_connectionError;
@@ -33,6 +35,7 @@
 - (void)readMultipleFromConnection;
 - (void)writeDataToConnection:(id)arg1;
 - (void)writeMultipleToConnection:(id *)arg1 count:(unsigned int)arg2;
+- (void)startSendReceiveLoop;
 - (id)initWithAppProxyFlow:(id)arg1;
 
 @end

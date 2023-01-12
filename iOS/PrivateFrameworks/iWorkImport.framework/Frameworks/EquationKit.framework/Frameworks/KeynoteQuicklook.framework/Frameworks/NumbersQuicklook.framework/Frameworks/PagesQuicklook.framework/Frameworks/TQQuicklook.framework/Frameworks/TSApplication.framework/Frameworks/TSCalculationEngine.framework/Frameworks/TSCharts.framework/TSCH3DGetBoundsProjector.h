@@ -10,18 +10,19 @@
 
 @interface TSCH3DGetBoundsProjector : NSObject
 {
-    tmat4x4_3074befe mModelView;
-    tmat4x4_3074befe mConstantDepthModelView;
-    tmat4x4_3074befe mProjection;
-    tmat4x4_3074befe mMVP;
-    TSCH3DCamera *mCamera;
-    TSCH3DChartScenePropertyAccessor *mAccessor;
-    _Bool mUseAggressiveBackProjection;
+    tmat4x4_3074befe _modelView;
+    tmat4x4_3074befe _constantDepthModelView;
+    tmat4x4_3074befe _projection;
+    tmat4x4_3074befe _MVP;
+    TSCH3DCamera *_camera;
+    TSCH3DChartScenePropertyAccessor *_accessor;
+    _Bool _useAggressiveBackProjection;
 }
 
 - (id).cxx_construct;
-- (box_a3bd9649)projectBounds:(const box_a3bd9649 *)arg1 type:(int)arg2;
-- (tvec3_17f03ce0)backProjectModelViewPoint:(const tvec3_17f03ce0 *)arg1;
+- (void).cxx_destruct;
+- (box_c9ef104e)projectBounds:(const void *)arg1 type:(int)arg2;
+- (tvec3_17f03ce0)backProjectModelViewPoint:(const void *)arg1;
 - (void)resetTransformsForRenderBounds;
 - (void)resetTransformsForLayoutBounds;
 - (void)setCamera:(id)arg1 accessor:(id)arg2;

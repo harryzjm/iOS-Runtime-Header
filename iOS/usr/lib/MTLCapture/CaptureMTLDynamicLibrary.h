@@ -9,8 +9,8 @@
 #import <MTLCapture/CaptureMTLObject-Protocol.h>
 #import <MTLCapture/MTLDynamicLibrarySPI-Protocol.h>
 
-@class CaptureMTLDevice, NSArray, NSString;
-@protocol MTLDevice, MTLDynamicLibrary, MTLDynamicLibrarySPI, OS_dispatch_data;
+@class CaptureMTLDevice, MTLDebugInstrumentationData, NSArray, NSString;
+@protocol MTLDevice, MTLDynamicLibrary, MTLDynamicLibrarySPI, MTLLibrary, OS_dispatch_data;
 
 @interface CaptureMTLDynamicLibrary : NSObject <MTLDynamicLibrarySPI, CaptureMTLObject>
 {
@@ -18,13 +18,16 @@
     CaptureMTLDevice *_captureDevice;
     struct GTTraceContext *_traceContext;
     struct GTTraceStream *_traceStream;
+    id <MTLLibrary> _parentLibrary;
 }
 
 - (void).cxx_destruct;
+@property(retain) id <MTLLibrary> parentLibrary; // @synthesize parentLibrary=_parentLibrary;
 - (_Bool)serializeToURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
-- (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
+@property(readonly, nonatomic) _Bool shaderValidationEnabled;
+@property(copy, nonatomic) NSArray *relocations;
 @property(readonly) NSString *libraryPath;
 @property(copy) NSString *label;
 @property(readonly) id <MTLDevice> device;
@@ -38,11 +41,13 @@
 @property(readonly) struct GTTraceContext *traceContext;
 - (void)touch;
 - (id)originalObject;
+- (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
 @property(readonly) id <MTLDynamicLibrary> baseObject;
 - (id)initWithBaseObject:(id)arg1 captureDevice:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
 @property(readonly) NSArray *exportedFunctions;
 @property(readonly) NSArray *exportedVariables;
 @property(readonly) unsigned long long hash;

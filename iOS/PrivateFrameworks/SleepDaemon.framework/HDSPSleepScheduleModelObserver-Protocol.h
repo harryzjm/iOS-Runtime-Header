@@ -7,14 +7,13 @@
 #import <SleepDaemon/NSObject-Protocol.h>
 
 @class HDSPSleepScheduleModelManager, HKSPSleepEventRecord, HKSPSleepSchedule, HKSPSleepScheduleModel, HKSPSleepSettings;
-@protocol HDSPSource;
 
 @protocol HDSPSleepScheduleModelObserver <NSObject>
 
 @optional
-- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 source:(id <HDSPSource>)arg2 didUpdateSleepScheduleModel:(HKSPSleepScheduleModel *)arg3;
-- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 source:(id <HDSPSource>)arg2 didUpdateSleepEventRecord:(HKSPSleepEventRecord *)arg3;
-- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 source:(id <HDSPSource>)arg2 didUpdateSleepSettings:(HKSPSleepSettings *)arg3;
-- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 source:(id <HDSPSource>)arg2 didUpdateSleepSchedule:(HKSPSleepSchedule *)arg3;
+- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 didUpdateSleepScheduleModel:(HKSPSleepScheduleModel *)arg2;
+- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 didUpdateSleepEventRecord:(HKSPSleepEventRecord *)arg2;
+- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 didUpdateSleepSettings:(HKSPSleepSettings *)arg2;
+- (void)sleepScheduleModelManager:(HDSPSleepScheduleModelManager *)arg1 didUpdateSleepSchedule:(HKSPSleepSchedule *)arg2;
 @end
 

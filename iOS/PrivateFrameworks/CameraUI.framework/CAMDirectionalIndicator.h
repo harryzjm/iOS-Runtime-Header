@@ -6,33 +6,39 @@
 
 #import <UIKit/UIControl.h>
 
-@class CAShapeLayer;
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 
-@interface CAMDirectionalIndicator : UIControl
+@class CAShapeLayer, NSString;
+
+@interface CAMDirectionalIndicator : UIControl <CAMAccessibilityHUDItemProvider>
 {
-    long long _style;
     long long _direction;
     CAShapeLayer *__arrowLayer;
-    CAShapeLayer *__compactBackgroundLayer;
 }
 
-+ (Class)layerClass;
-+ (struct CGSize)_compactBackgroundSize;
++ (id)_createCircleImage;
++ (struct CGSize)_circleSize;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) CAShapeLayer *_compactBackgroundLayer; // @synthesize _compactBackgroundLayer=__compactBackgroundLayer;
 @property(readonly, nonatomic) CAShapeLayer *_arrowLayer; // @synthesize _arrowLayer=__arrowLayer;
 @property(nonatomic) long long direction; // @synthesize direction=_direction;
-@property(readonly, nonatomic) long long style; // @synthesize style=_style;
-- (void)_updateCompactCirclePath;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (void)_updateArrowColorAnimated:(_Bool)arg1;
+- (void)_updateArrowLineWidth;
 - (void)_updateArrowShapeAnimated:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setSelected:(_Bool)arg1;
 - (void)setDirection:(long long)arg1 animated:(_Bool)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (id)initWithStyle:(long long)arg1;
-@property(readonly, nonatomic) CAShapeLayer *_backingShapeLayer;
+- (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

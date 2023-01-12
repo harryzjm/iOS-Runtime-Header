@@ -10,7 +10,7 @@
 #import <TSTables/TSSPreset-Protocol.h>
 #import <TSTables/TSSStyleClient-Protocol.h>
 
-@class NSString, TSTTableStyleNetwork;
+@class NSSet, NSString, TSTTableStyleNetwork;
 
 @interface TSTTableStylePreset : TSPObject <TSSPreset, TSSStyleClient, TSKModel>
 {
@@ -24,9 +24,9 @@
 @property(nonatomic) unsigned long long tempUpgradePresetID; // @synthesize tempUpgradePresetID=_tempUpgradePresetID;
 @property(nonatomic) _Bool tableHasStrongOwnership; // @synthesize tableHasStrongOwnership=_tableHasStrongOwnership;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct TableStylePresetArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (id)swatchImage;

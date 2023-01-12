@@ -23,11 +23,13 @@
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 + (id)itemWithQuantitySamples:(id)arg1 unit:(id)arg2;
 + (id)itemWithQuantitySamples:(id)arg1;
 + (id)itemWithQuantitySample:(id)arg1 unit:(id)arg2;
 + (id)itemWithQuantitySample:(id)arg1;
+- (id)defaultSourceForRepresentation:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (_Bool)getListAltText:(CDUnknownBlockType)arg1;
 - (id)sourceName;

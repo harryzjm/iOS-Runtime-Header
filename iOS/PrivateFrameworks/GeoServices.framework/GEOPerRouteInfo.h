@@ -21,26 +21,14 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasRouteUuid;
-@property(nonatomic) struct GEOSessionID routeUuid;
-@property(nonatomic) _Bool hasEtaServiceTravelTime;
-@property(nonatomic) unsigned long long etaServiceTravelTime;
-@property(nonatomic) _Bool hasOriginalTravelTime;
-@property(nonatomic) unsigned long long originalTravelTime;
 
 @end
 

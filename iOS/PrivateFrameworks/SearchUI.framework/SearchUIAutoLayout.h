@@ -10,6 +10,8 @@
 {
 }
 
++ (_Bool)view:(id)arg1 isVisibleInBounds:(struct CGRect)arg2 ofView:(id)arg3;
++ (_Bool)frame:(struct CGRect)arg1 isVisibleInBounds:(struct CGRect)arg2;
 + (struct UIEdgeInsets)customUnscaledBaselineInsets:(struct UIEdgeInsets)arg1 font:(id)arg2;
 + (struct UIEdgeInsets)customBaselineInsets:(struct UIEdgeInsets)arg1 font:(id)arg2;
 + (double)deviceScaledRoundedValue:(double)arg1;

@@ -8,13 +8,20 @@
 
 #import <IconServices/ISCompositorRecipe-Protocol.h>
 
-__attribute__((visibility("hidden")))
+@class NSString;
+
 @interface ISLeadingStatusBadgeRecipe : NSObject <ISCompositorRecipe>
 {
 }
 
 - (id)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)leadingBottomBadgeRect;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

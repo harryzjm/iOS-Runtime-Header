@@ -34,6 +34,7 @@
 @property(retain, nonatomic) UIImage *unfocusedShadowImage; // @synthesize unfocusedShadowImage=_unfocusedShadowImage;
 @property(nonatomic) double focusedShadowAlpha; // @synthesize focusedShadowAlpha=_focusedShadowAlpha;
 @property(nonatomic) double unfocusedShadowAlpha; // @synthesize unfocusedShadowAlpha=_unfocusedShadowAlpha;
+- (void)layoutSubviews;
 - (struct UIEdgeInsets)selectionMarginsForSize:(struct CGSize)arg1;
 - (void)floatingContentView:(id)arg1 didFinishTransitioningToState:(unsigned long long)arg2;
 - (void)floatingContentView:(id)arg1 isTransitioningFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;

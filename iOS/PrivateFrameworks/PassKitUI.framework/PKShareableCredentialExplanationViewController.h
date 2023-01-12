@@ -6,14 +6,19 @@
 
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKShareableCredentialsMessageComposeViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PKAddShareablePassConfiguration, PKAssertion, PKHeroCardExplainationHeaderView, PKShareableCredentialsMessageComposeViewController, UIImage;
-@protocol PKPaymentSetupViewControllerDelegate;
+@class NSArray, NSMutableDictionary, NSObject, NSString, PKAddShareablePassConfiguration, PKAssertion, PKHeroCardExplainationHeaderView, PKSecureElement, PKShareableCredentialsMessageComposeViewController, UIImage;
+@protocol OS_dispatch_source, PKPaymentSetupViewControllerDelegate;
 
-@interface PKShareableCredentialExplanationViewController <PKExplanationViewDelegate, PKExplanationViewControllerDelegate, PKShareableCredentialsMessageComposeViewControllerDelegate, PKPaymentSetupViewControllerDelegate>
+@interface PKShareableCredentialExplanationViewController <PKExplanationViewDelegate, PKExplanationViewControllerDelegate, PKShareableCredentialsMessageComposeViewControllerDelegate, PKPaymentSetupViewControllerDelegate, PKPaymentServiceDelegate>
 {
+    _Bool _isUnifiedAccessPass;
+    NSObject<OS_dispatch_source> *_lostModeTimeout;
+    PKSecureElement *_secureElement;
+    _Bool _isRunningInForeground;
     UIImage *_passThumbnailImage;
     NSArray *_credentials;
     PKAddShareablePassConfiguration *_configuration;
@@ -35,6 +40,7 @@
 @property(retain, nonatomic) PKAddShareablePassConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) NSArray *credentials; // @synthesize credentials=_credentials;
 @property(retain, nonatomic) UIImage *passThumbnailImage; // @synthesize passThumbnailImage=_passThumbnailImage;
+@property(nonatomic) _Bool isRunningInForeground; // @synthesize isRunningInForeground=_isRunningInForeground;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)messageComposeViewControllerDidFinishWithResult:(_Bool)arg1;
 - (void)_terminateSetupFlowWithPasses:(id)arg1 error:(id)arg2;
@@ -43,10 +49,15 @@
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)_invalidateAssertions;
 - (void)_acquireAssertions;
+- (void)_showLoadingUI;
+- (void)_showExitingLostModeUI;
+- (void)_showAddUI;
 - (void)_showProvisioningErrorWithNumberOfPassesFailed:(long long)arg1;
 - (void)_finishProvisioningFlowWithAddedPasses:(id)arg1 moreInfoItems:(id)arg2;
-- (void)_showProvisioningFlowWithCredentials:(id)arg1;
-- (void)_handleNextStep;
+- (void)_provisionCredentials:(id)arg1;
+- (void)_startProvisioning;
+- (void)_confirmUserIsNotInLostMode;
+- (void)_confirmHSA2Enabled;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;

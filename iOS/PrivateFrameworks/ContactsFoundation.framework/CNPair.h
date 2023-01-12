@@ -6,9 +6,10 @@
 
 #import <objc/NSObject.h>
 
+#import <ContactsFoundation/NSCopying-Protocol.h>
 #import <ContactsFoundation/NSSecureCoding-Protocol.h>
 
-@interface CNPair : NSObject <NSSecureCoding>
+@interface CNPair : NSObject <NSCopying, NSSecureCoding>
 {
     id _first;
     id _second;
@@ -19,12 +20,13 @@
 - (void).cxx_destruct;
 @property(readonly) id second; // @synthesize second=_second;
 @property(readonly) id first; // @synthesize first=_first;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

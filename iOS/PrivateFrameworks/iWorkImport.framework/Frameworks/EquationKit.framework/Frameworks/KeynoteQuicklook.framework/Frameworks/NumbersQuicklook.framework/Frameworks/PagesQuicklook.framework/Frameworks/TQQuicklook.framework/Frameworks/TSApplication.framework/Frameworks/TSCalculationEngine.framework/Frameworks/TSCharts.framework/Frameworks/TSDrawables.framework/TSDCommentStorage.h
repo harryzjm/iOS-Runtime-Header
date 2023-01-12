@@ -31,7 +31,7 @@
 - (_Bool)p_canModifyCommentStorageWithAuthor:(id)arg1 docIsReadOnly:(_Bool)arg2;
 - (_Bool)isShared;
 - (_Bool)isOwner;
-- (void)saveToArchive:(struct CommentStorageArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -44,7 +44,7 @@
 - (id)copyWithInsertedReply:(id)arg1;
 - (id)copyWithText:(id)arg1;
 - (id)copyWithReplies:(id)arg1;
-- (void)loadFromArchive:(const struct CommentStorageArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)commentWillBeAddedToDocumentRoot;
 - (id)creationDateStringShort;
 - (id)creationDateString;

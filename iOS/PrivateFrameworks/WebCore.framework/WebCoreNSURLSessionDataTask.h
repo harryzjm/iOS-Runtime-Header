@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreNSURLSessionDataTask : NSObject
 {
-    WebCoreNSURLSession *_session;
-    struct RefPtr<WebCore::PlatformMediaResource, WTF::DumbPtrTraits<WebCore::PlatformMediaResource>> _resource;
+    struct WeakObjCPtr<WebCoreNSURLSession> _session;
+    struct RefPtr<WebCore::PlatformMediaResource, WTF::RawPtrTraits<WebCore::PlatformMediaResource>, WTF::DefaultRefDerefTraits<WebCore::PlatformMediaResource>> _resource;
     struct RetainPtr<NSURLResponse> _response;
     unsigned long long _taskIdentifier;
     NSURLRequest *_originalRequest;
@@ -40,28 +40,26 @@ __attribute__((visibility("hidden")))
 @property(copy) NSURLRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property(copy) NSURLRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property unsigned long long taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
-@property WebCoreNSURLSession *session; // @synthesize session=_session;
-- (void)resourceFinished:(struct PlatformMediaResource *)arg1 metrics:(const struct NetworkLoadMetrics *)arg2;
-- (void)resource:(struct PlatformMediaResource *)arg1 loadFailedWithError:(const struct ResourceError *)arg2;
-- (void)resource:(struct PlatformMediaResource *)arg1 accessControlCheckFailedWithError:(const struct ResourceError *)arg2;
-- (void)_resource:(struct PlatformMediaResource *)arg1 loadFinishedWithError:(id)arg2 metrics:(const struct NetworkLoadMetrics *)arg3;
-- (void)resource:(struct PlatformMediaResource *)arg1 receivedRedirect:(const struct ResourceResponse *)arg2 request:(struct ResourceRequest *)arg3 completionHandler:(CompletionHandler_7162061b *)arg4;
-- (void)resource:(struct PlatformMediaResource *)arg1 receivedData:(const char *)arg2 length:(int)arg3;
-- (_Bool)resource:(struct PlatformMediaResource *)arg1 shouldCacheResponse:(const struct ResourceResponse *)arg2;
-- (void)resource:(struct PlatformMediaResource *)arg1 receivedResponse:(const struct ResourceResponse *)arg2 completionHandler:(CompletionHandler_be2c0021 *)arg3;
-- (void)resource:(struct PlatformMediaResource *)arg1 sentBytes:(unsigned long long)arg2 totalBytesToBeSent:(unsigned long long)arg3;
+- (void)resourceFinished:(void *)arg1 metrics:(const void *)arg2;
+- (void)resource:(void *)arg1 loadFailedWithError:(const void *)arg2;
+- (void)resource:(void *)arg1 accessControlCheckFailedWithError:(const void *)arg2;
+- (void)_resource:(void *)arg1 loadFinishedWithError:(id)arg2 metrics:(const void *)arg3;
+- (void)resource:(void *)arg1 receivedRedirect:(const void *)arg2 request:(void *)arg3 completionHandler:(void *)arg4;
+- (void)resource:(void *)arg1 receivedData:(const char *)arg2 length:(int)arg3;
+- (_Bool)resource:(void *)arg1 shouldCacheResponse:(const void *)arg2;
+- (void)resource:(void *)arg1 receivedResponse:(const void *)arg2 completionHandler:(void *)arg3;
+- (void)resource:(void *)arg1 sentBytes:(unsigned long long)arg2 totalBytesToBeSent:(unsigned long long)arg3;
 - (id)_timingData;
 - (void)dealloc;
 - (void)resume;
 - (void)suspend;
 - (void)cancel;
 @property(readonly, copy) NSURLResponse *response;
-- (void)_finish;
+@property WebCoreNSURLSession *session;
 - (void)_cancel;
 - (void)_restart;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSession:(id)arg1 identifier:(unsigned long long)arg2 request:(id)arg3;
-- (id)initWithSession:(id)arg1 identifier:(unsigned long long)arg2 URL:(id)arg3;
 
 @end
 

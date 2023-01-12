@@ -15,6 +15,7 @@
     _Bool _isDoubleSided;
     _Bool _supportsPresentationAdjustment;
     float _dampingRatio;
+    unsigned int _highFrameRateReason;
     float _springAnimationInitialProgress;
     float _springAnimationProgressMultiplier;
     double _duration;
@@ -35,6 +36,7 @@
 @property(retain, nonatomic) CASpringAnimation *springAnimation; // @synthesize springAnimation=_springAnimation;
 @property(nonatomic) __weak PXGTransition *transition; // @synthesize transition=_transition;
 @property(readonly, nonatomic) __weak PXGLayout *layout; // @synthesize layout=_layout;
+@property(nonatomic) unsigned int highFrameRateReason; // @synthesize highFrameRateReason=_highFrameRateReason;
 @property(retain, nonatomic) NSDictionary *userData; // @synthesize userData=_userData;
 @property(retain, nonatomic) id <PXGAnimationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long scope; // @synthesize scope=_scope;

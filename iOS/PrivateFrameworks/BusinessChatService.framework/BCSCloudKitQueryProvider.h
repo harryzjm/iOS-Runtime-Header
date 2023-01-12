@@ -10,13 +10,16 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface BCSCloudKitQueryProvider : NSObject <BCSCloudKitQueryProviding>
 {
 }
 
+- (id)_shardRecordTypeForType:(long long)arg1;
+- (id)_shardRecordNameForType:(long long)arg1 index:(long long)arg2 count:(long long)arg3;
 - (id)queryForFetchItemsWithStartIndex:(long long)arg1 endIndex:(long long)arg2 type:(long long)arg3;
 - (id)queryForFetchShardIdentifier:(id)arg1;
-- (id)queryForFetchBloomFilterAndConfigItemWithType:(long long)arg1;
+- (id)queryForFetchConfigItemWithType:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

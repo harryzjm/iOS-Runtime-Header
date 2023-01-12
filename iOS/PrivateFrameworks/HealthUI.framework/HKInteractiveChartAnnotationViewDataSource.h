@@ -8,15 +8,15 @@
 
 #import <HealthUI/HKInteractiveChartAnnotationViewDataSource-Protocol.h>
 
-@class HKSelectedRangeFormatter, HKUIMetricColors, HKValueRange, NSArray, NSString, UIFont, UILabel;
+@class HKSelectedRangeFormatter, HKValueRange, NSArray, NSString, UIFont, UILabel;
 @protocol HKCurrentValueViewDataSourceDelegate;
 
 @interface HKInteractiveChartAnnotationViewDataSource : NSObject <HKInteractiveChartAnnotationViewDataSource>
 {
     HKSelectedRangeFormatter *_selectedRangeFormatter;
-    HKUIMetricColors *_metricColors;
     NSArray *_annotationLabels;
     long long _timeScope;
+    long long _firstWeekday;
     HKValueRange *_lastDateRange;
     UILabel *_mainDateLabel;
     NSString *_lastUpperDateString;
@@ -36,10 +36,12 @@
 @property(retain, nonatomic) NSString *lastUpperDateString; // @synthesize lastUpperDateString=_lastUpperDateString;
 @property(retain, nonatomic) UILabel *mainDateLabel; // @synthesize mainDateLabel=_mainDateLabel;
 @property(retain) HKValueRange *lastDateRange; // @synthesize lastDateRange=_lastDateRange;
+@property(nonatomic) long long firstWeekday; // @synthesize firstWeekday=_firstWeekday;
 @property(nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
 @property(retain, nonatomic) NSArray *annotationLabels; // @synthesize annotationLabels=_annotationLabels;
-@property(retain, nonatomic) HKUIMetricColors *metricColors; // @synthesize metricColors=_metricColors;
 @property(readonly, nonatomic) HKSelectedRangeFormatter *selectedRangeFormatter; // @synthesize selectedRangeFormatter=_selectedRangeFormatter;
+- (id)_weeksContainingDateRange:(id)arg1;
+- (id)_dateRangeFromSelectionContext:(id)arg1 timeScope:(long long)arg2;
 - (void)updateWithSelectionContext:(id)arg1 displayType:(id)arg2 timeScope:(long long)arg3;
 - (_Bool)showSeparators;
 - (id)valueViewForColumnAtIndex:(long long)arg1 orientation:(long long)arg2;
@@ -49,7 +51,7 @@
 - (id)leftMarginViewWithOrientation:(long long)arg1;
 - (id)dateViewWithOrientation:(long long)arg1;
 - (void)_buildDateLabels;
-- (id)initWithSelectedRangeFormatter:(id)arg1 metricColors:(id)arg2 currentValueViewDataSourceDelegate:(id)arg3;
+- (id)initWithSelectedRangeFormatter:(id)arg1 firstWeekday:(long long)arg2 currentValueViewDataSourceDelegate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

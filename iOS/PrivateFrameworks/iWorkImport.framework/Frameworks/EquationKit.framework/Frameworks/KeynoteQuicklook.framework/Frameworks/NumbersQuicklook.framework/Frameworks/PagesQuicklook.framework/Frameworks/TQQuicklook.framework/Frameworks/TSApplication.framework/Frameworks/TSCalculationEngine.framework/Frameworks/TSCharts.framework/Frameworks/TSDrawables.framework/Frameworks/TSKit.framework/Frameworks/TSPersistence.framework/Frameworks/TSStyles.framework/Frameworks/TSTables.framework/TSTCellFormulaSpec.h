@@ -17,14 +17,14 @@
     TSTStockDetails *_stockDetails;
 }
 
-+ (id)instanceWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
++ (id)instanceWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) TSTStockDetails *stockDetails; // @synthesize stockDetails=_stockDetails;
 @property(readonly, nonatomic) unsigned char categoryAggregateType; // @synthesize categoryAggregateType=_categoryAggregateType;
 - (unsigned int)interactionType;
 @property(readonly, nonatomic) TSCEFormulaObject *formulaObject; // @synthesize formulaObject=_formulaObject;
-- (void)saveToArchive:(struct CellSpecArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct CellSpecArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (_Bool)isEquivalent:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)p_mightBeEqual:(id)arg1;
@@ -33,7 +33,7 @@
 - (id)asFormulaSpec;
 - (_Bool)hasTSCEFormula;
 - (id)cellSpecReplacingFormulaObject:(id)arg1 locale:(id)arg2;
-- (id)initWithFormulaObject:(id)arg1 fromTableModel:(id)arg2 fromCellID:(struct TSUCellCoord)arg3;
+- (id)initWithFormulaObject:(id)arg1 fromTableInfo:(id)arg2 fromCellID:(struct TSUCellCoord)arg3;
 - (id)initWithFormulaObject:(id)arg1 locale:(id)arg2;
 - (void)p_computeinteractionType:(id)arg1;
 

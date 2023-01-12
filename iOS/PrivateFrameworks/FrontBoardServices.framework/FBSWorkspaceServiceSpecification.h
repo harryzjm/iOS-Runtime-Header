@@ -12,7 +12,6 @@
 
 + (id)interface;
 + (id)serviceQuality;
-+ (id)environment;
 + (id)identifier;
 - (id)init;
 

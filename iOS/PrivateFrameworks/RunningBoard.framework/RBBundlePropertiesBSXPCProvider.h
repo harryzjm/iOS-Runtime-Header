@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMapTable;
 
 @interface RBBundlePropertiesBSXPCProvider : NSObject
 {
-    NSMutableDictionary *_propertiesByIdentifier;
+    NSMapTable *_propertiesByIdentifier;
     struct os_unfair_lock_s _lock;
 }
 

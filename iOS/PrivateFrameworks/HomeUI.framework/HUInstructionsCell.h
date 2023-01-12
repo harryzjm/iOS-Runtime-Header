@@ -14,6 +14,7 @@
 
 @interface HUInstructionsCell : UITableViewCell <UITextViewDelegate, HUCellProtocol>
 {
+    _Bool _hidesTopSpacing;
     HFItem *_item;
     double _contentBottomMargin;
     UILabel *_titleLabel;
@@ -26,6 +27,7 @@
 @property(retain, nonatomic) UITextView *descriptionView; // @synthesize descriptionView=_descriptionView;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) double contentBottomMargin; // @synthesize contentBottomMargin=_contentBottomMargin;
+@property(nonatomic) _Bool hidesTopSpacing; // @synthesize hidesTopSpacing=_hidesTopSpacing;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateConstraints;

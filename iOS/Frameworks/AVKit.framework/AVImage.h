@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)imageWithConfiguration:(id)arg1;
 - (_Bool)_suppressesAccessibilityHairlineThickening;
 
 @end

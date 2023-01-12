@@ -37,9 +37,9 @@
 + (id)poiNightlife;
 + (id)poiRestaurant;
 + (id)poiUnknown;
-+ (_Bool)isBlacklistedNode:(id)arg1;
-+ (id)blacklistedNames;
-+ (id)blacklistedNamesToTraverse;
++ (_Bool)isBlockedTaxonomyNodeWithName:(id)arg1;
++ (id)blockedNames;
++ (id)blockedNamesToTraverse;
 + (id)supportedMeaningClueKeys;
 + (id)profileDependenciesIdentifiers;
 + (id)informantDependenciesIdentifiers;

@@ -6,12 +6,11 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDBehaviorSettings, DNDBypassSettings, DNDSScheduleSettings, DNDSSettingsManager, DNDSSyncSettings;
+@class DNDBehaviorSettings, DNDSScheduleSettings, DNDSSettingsManager, DNDSSyncSettings;
 
 @protocol DNDSSettingsManagerDelegate <NSObject>
 - (void)settingsManager:(DNDSSettingsManager *)arg1 didReceiveUpdatedSyncSettings:(DNDSSyncSettings *)arg2;
 - (void)settingsManager:(DNDSSettingsManager *)arg1 didReceiveUpdatedScheduleSettings:(DNDSScheduleSettings *)arg2;
-- (void)settingsManager:(DNDSSettingsManager *)arg1 didReceiveUpdatedPhoneCallBypassSettings:(DNDBypassSettings *)arg2;
 - (void)settingsManager:(DNDSSettingsManager *)arg1 didReceiveUpdatedBehaviorSettings:(DNDBehaviorSettings *)arg2;
 @end
 

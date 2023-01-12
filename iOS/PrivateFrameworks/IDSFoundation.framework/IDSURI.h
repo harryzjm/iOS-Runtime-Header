@@ -6,30 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <IDSFoundation/IDSDestinationProtocol-Protocol.h>
 #import <IDSFoundation/NSCopying-Protocol.h>
 #import <IDSFoundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface IDSURI : NSObject <NSCopying, NSSecureCoding>
+@interface IDSURI : NSObject <NSCopying, NSSecureCoding, IDSDestinationProtocol>
 {
     NSString *_prefixedURI;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)URIWithUnprefixedURI:(id)arg1;
 + (id)URIWithPrefixedURI:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *prefixedURI; // @synthesize prefixedURI=_prefixedURI;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
+- (id)destinationURIs;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToURI:(id)arg1;
+@property(readonly, nonatomic) long long FZIDType;
+@property(readonly, nonatomic) long long IDSIDType;
 @property(readonly, nonatomic) NSString *unprefixedURI;
 - (id)initWithUnprefixedURI:(id)arg1;
 - (id)initWithPrefixedURI:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

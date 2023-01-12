@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface CKDSaveUserPrivacySettingsOperation
 {
     long long _discoverable;
@@ -16,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (_Bool)shouldCheckAppVersion;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 @end
 

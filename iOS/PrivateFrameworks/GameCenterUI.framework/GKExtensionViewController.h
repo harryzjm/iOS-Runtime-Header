@@ -41,6 +41,7 @@
 - (void)setToDarkBackground;
 - (void)setToLightBackground;
 - (void)finish;
+- (void)logOnceGameControllerUsedInGameLayer;
 - (void)messageFromClient:(id)arg1;
 - (void)extensionIsFinishing;
 - (void)extensionIsCanceling;
@@ -65,6 +66,9 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)addVisualEffectViewForView:(id)arg1;
+- (_Bool)canBecomeFirstResponder;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)setupVisualEffects;
 - (void)viewDidLoad;

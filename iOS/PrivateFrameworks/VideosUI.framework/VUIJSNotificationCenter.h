@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ITMLKit/IKJSObject.h>
-
 #import <VideosUI/VUIJSNotificationCenter-Protocol.h>
 #import <VideosUI/WLKNotificationCenterDelegate-Protocol.h>
 
 @class NSString, WLKNotificationCenter;
 
-@interface VUIJSNotificationCenter : IKJSObject <WLKNotificationCenterDelegate, VUIJSNotificationCenter>
+@interface VUIJSNotificationCenter <WLKNotificationCenterDelegate, VUIJSNotificationCenter>
 {
     WLKNotificationCenter *_center;
 }
@@ -20,6 +18,8 @@
 + (void)showSignupAlertPushNotificationWithAppContext:(id)arg1;
 - (void).cxx_destruct;
 - (void)handleAction:(id)arg1;
+- (void)clearBadgeData;
+- (id)badgeData;
 - (void)setBadgeString:(id)arg1;
 - (void)setBadgeNumber:(id)arg1;
 - (void)post:(id)arg1:(id)arg2:(id)arg3:(id)arg4;

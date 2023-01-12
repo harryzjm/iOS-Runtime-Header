@@ -10,7 +10,6 @@
 
 @class NSDate, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKOperationStateTimeRange : NSObject <MMCSOperationStateTimeRange>
 {
     unsigned long long _operationState;

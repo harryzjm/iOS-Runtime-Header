@@ -10,27 +10,23 @@
 #import <SleepDaemon/HDSPSleepScheduleModelObserver-Protocol.h>
 #import <SleepDaemon/HDSPSource-Protocol.h>
 
-@class HDSPEnvironment, HKSPObserverSet, NSString;
+@class HDSPEnvironment, NSString;
 @protocol HDSPSleepAlarmProvider, HDSPSource;
 
 @interface HDSPSleepAlarmManager : NSObject <HDSPSource, HDSPEnvironmentAware, HDSPSleepScheduleModelObserver>
 {
     HDSPEnvironment *_environment;
-    HKSPObserverSet *_sleepAlarmObservers;
     id <HDSPSleepAlarmProvider> _sleepAlarmProvider;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <HDSPSleepAlarmProvider> sleepAlarmProvider; // @synthesize sleepAlarmProvider=_sleepAlarmProvider;
-@property(readonly, nonatomic) HKSPObserverSet *sleepAlarmObservers; // @synthesize sleepAlarmObservers=_sleepAlarmObservers;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) NSString *sourceIdentifier;
-- (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
+- (void)sleepScheduleModelManager:(id)arg1 didUpdateSleepScheduleModel:(id)arg2;
 - (void)resetSleepAlarmSnoozeState;
 - (id)currentSleepAlarmWithIdentifier:(id)arg1;
 - (id)currentSleepAlarms;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 sleepAlarmProvider:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;

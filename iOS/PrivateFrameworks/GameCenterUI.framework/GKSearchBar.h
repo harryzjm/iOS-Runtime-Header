@@ -14,9 +14,9 @@
     long long _sectionIndex;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) long long sectionIndex; // @synthesize sectionIndex=_sectionIndex;
 @property(retain, nonatomic) GKCollectionViewDataSource *dataSource; // @synthesize dataSource=_dataSource;
-- (void)dealloc;
 
 @end
 

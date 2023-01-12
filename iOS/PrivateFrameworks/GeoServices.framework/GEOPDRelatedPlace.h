@@ -8,45 +8,41 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDRelatedPlace : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    CDStruct_9f2792e4 _areaHighlightIndexs;
     NSMutableArray *_mapsIds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _type;
-    CDStruct_3af5a977 _flags;
+    struct {
+        unsigned int has_type:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_areaHighlightIndexs:1;
+        unsigned int read_mapsIds:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)mapsIdType;
 + (id)relatedPlacesForPlaceData:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsType:(id)arg1;
-- (id)typeAsString:(int)arg1;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type;
-- (id)mapsIdAtIndex:(unsigned long long)arg1;
-- (unsigned long long)mapsIdsCount;
-- (void)addMapsId:(id)arg1;
-- (void)clearMapsIds;
-@property(retain, nonatomic) NSMutableArray *mapsIds;
+- (void)dealloc;
+- (id)initWithData:(id)arg1;
+- (id)init;
 
 @end
 

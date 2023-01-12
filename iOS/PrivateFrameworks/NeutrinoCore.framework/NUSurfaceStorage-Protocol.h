@@ -7,10 +7,11 @@
 #import <NeutrinoCore/NUImageStorage-Protocol.h>
 
 @class NURegion;
+@protocol NUDevice;
 
 @protocol NUSurfaceStorage <NUImageStorage>
-- (long long)writeTextureInRegion:(NURegion *)arg1 block:(_Bool (^)(NUGLTexture *))arg2;
-- (long long)readTextureInRegion:(NURegion *)arg1 block:(_Bool (^)(NUGLTexture *))arg2;
+- (long long)writeTextureInRegion:(NURegion *)arg1 device:(id <NUDevice>)arg2 block:(_Bool (^)(id <MTLTexture>))arg3;
+- (long long)readTextureInRegion:(NURegion *)arg1 device:(id <NUDevice>)arg2 block:(_Bool (^)(id <MTLTexture>))arg3;
 - (long long)writeSurfaceInRegion:(NURegion *)arg1 block:(_Bool (^)(NUIOSurface *))arg2;
 - (long long)readSurfaceInRegion:(NURegion *)arg1 block:(_Bool (^)(NUIOSurface *))arg2;
 @end

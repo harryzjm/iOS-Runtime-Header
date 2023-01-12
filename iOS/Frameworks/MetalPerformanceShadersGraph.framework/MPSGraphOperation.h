@@ -8,7 +8,7 @@
 
 #import <MetalPerformanceShadersGraph/NSCopying-Protocol.h>
 
-@class MPSGraph, NSArray, NSMutableArray, NSString;
+@class MPSGraph, MPSGraphBlock, MPSGraphRegion, NSArray, NSMutableArray, NSString;
 
 @interface MPSGraphOperation : NSObject <NSCopying>
 {
@@ -16,7 +16,10 @@
     NSArray *_inputTensors;
     NSArray *_outputTensors;
     NSMutableArray *_controlDependencies;
+    MPSGraphRegion *_region;
+    MPSGraphBlock *_parentBlock;
     NSString *_name;
+    void *_mlirOperation;
     _Bool _stopGradient;
 }
 
@@ -26,9 +29,14 @@
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) NSArray *outputTensors; // @synthesize outputTensors=_outputTensors;
 @property(readonly, nonatomic) NSArray *inputTensors; // @synthesize inputTensors=_inputTensors;
+- (_Bool)recurseOutFromBlockInput:(id)arg1 withAutodiff:(struct Autodiff *)arg2;
+- (_Bool)recurseOnBlocksFromOutput:(id)arg1 withAutodiff:(struct Autodiff *)arg2;
+- (_Bool)recurseFromBlock:(id)arg1 onEscaped:(id)arg2 withAutodiff:(struct Autodiff *)arg3;
+- (void)partialDerivateForCFOpWithAutodiff:(struct Autodiff *)arg1;
 - (id)partialDerivativeForInputTensor:(id)arg1 incomingGradient:(id)arg2 inputIndex:(unsigned long long)arg3 name:(id)arg4;
-- (struct Value)makeMLIROpWithBuilder:(struct OpBuilder *)arg1 symbolTable:(struct MPSSymbolTable *)arg2 inputValues:(vector_c90d9c45 *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
+- (void *)makeMLIROpWithBuilder:(void *)arg1 symbolTable:(void *)arg2 inputValues:(void *)arg3 opInitialization:(_Bool)arg4 name:(id)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 region:(id)arg4 name:(id)arg5;
 - (id)initWithGraph:(id)arg1 inputTensors:(id)arg2 controlDependencies:(id)arg3 name:(id)arg4;
 - (id)initInternal;
 - (id)init;

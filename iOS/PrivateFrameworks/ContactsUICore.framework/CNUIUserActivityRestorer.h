@@ -6,19 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore;
+@class CNContactStore, NSSet, NSString;
 @protocol CNUIUserActivityRestorerDelegate;
 
 @interface CNUIUserActivityRestorer : NSObject
 {
     id <CNUIUserActivityRestorerDelegate> _delegate;
+    NSSet *_restorableActivityTypes;
     CNContactStore *_contactStore;
+    NSString *_activityTypeCreateContactIntent;
+    NSString *_activityTypeSpotlightQueryContinuation;
+    NSString *_activityTypeSpotlightSearchableItem;
 }
 
 + (id)log;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *activityTypeSpotlightSearchableItem; // @synthesize activityTypeSpotlightSearchableItem=_activityTypeSpotlightSearchableItem;
+@property(readonly, nonatomic) NSString *activityTypeSpotlightQueryContinuation; // @synthesize activityTypeSpotlightQueryContinuation=_activityTypeSpotlightQueryContinuation;
+@property(readonly, nonatomic) NSString *activityTypeCreateContactIntent; // @synthesize activityTypeCreateContactIntent=_activityTypeCreateContactIntent;
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property(readonly, nonatomic) NSSet *restorableActivityTypes; // @synthesize restorableActivityTypes=_restorableActivityTypes;
 @property(nonatomic) __weak id <CNUIUserActivityRestorerDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)restoreCreateContactIntent:(id)arg1;
+- (_Bool)restoreSpotlightSearchableItem:(id)arg1;
+- (_Bool)restoreSpotlightQueryContinuation:(id)arg1;
+- (_Bool)restoreViewingList:(id)arg1;
+- (_Bool)restoreEditingContact:(id)arg1;
+- (_Bool)restoreViewingContact:(id)arg1;
 - (_Bool)restoreUserActivity:(id)arg1;
 - (_Bool)shouldEnableActivityIndicatorWhenRestoringUserActivityWithType:(id)arg1;
 - (id)initWithContactStore:(id)arg1;

@@ -13,7 +13,7 @@
 
 @interface TSTCellIterator : NSObject <TSTCellIterating>
 {
-    struct unordered_map<unsigned short, TSUCellRect, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, TSUCellRect>>> _columnIndexToMergeRangeMap;
+    struct unordered_map<unsigned short, TSUCellRect, std::hash<unsigned short>, std::equal_to<unsigned short>, std::allocator<std::pair<const unsigned short, TSUCellRect>>> _columnIndexToMergeRangeMap;
     _Bool _returnCellContents;
     _Bool _returnEmptyCells;
     _Bool _returnOneEmptyCell;
@@ -57,6 +57,7 @@
 - (_Bool)getNextCellData:(id *)arg1;
 - (id)nextCellData;
 - (void)iterateCellsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)initWithTableModel:(id)arg1 baseRegion:(id)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4 baseClampingRange:(struct TSUCellRect)arg5;
 - (id)initWithTableInfo:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 - (id)initWithTableInfo:(id)arg1 range:(struct TSUCellRect)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 - (id)initWithTableInfo:(id)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3;

@@ -6,19 +6,14 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <WorkflowUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <WorkflowUI/WFDraggableActionView-Protocol.h>
-
-@class NSArray, NSString, UILabel, UIViewController, WFActionDrawerImage, WFActionDrawerImageLoadTask, WFCircularImageView, WFDragController, WFDragGestureRecognizer;
+@class NSArray, NSString, UILabel, UIViewController, WFActionDrawerImage, WFActionDrawerImageLoadTask, WFCircularImageView;
 @protocol VCActionDonation;
 
-@interface WFActionDrawerSiriSuggestionsCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate, WFDraggableActionView>
+@interface WFActionDrawerSiriSuggestionsCollectionViewCell : UICollectionViewCell
 {
     NSString *_title;
     long long _cellType;
     id <VCActionDonation> _donation;
-    WFDragGestureRecognizer *_dragRecognizer;
-    WFDragController *_dragController;
     UIViewController *_containingViewController;
     WFCircularImageView *_imageView;
     WFActionDrawerImage *_image;
@@ -40,14 +35,9 @@
 @property(retain, nonatomic) WFActionDrawerImage *image; // @synthesize image=_image;
 @property(nonatomic) __weak WFCircularImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) __weak UIViewController *containingViewController; // @synthesize containingViewController=_containingViewController;
-@property(readonly, nonatomic) WFDragController *dragController; // @synthesize dragController=_dragController;
-@property(nonatomic) __weak WFDragGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
 @property(readonly, nonatomic) id <VCActionDonation> donation; // @synthesize donation=_donation;
 @property(readonly, nonatomic) long long cellType; // @synthesize cellType=_cellType;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
-- (struct CGSize)initialSizeForBeginningDragController:(id)arg1;
-- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (_Bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (_Bool)shouldStackVerticallyForTraitCollection:(id)arg1;
 - (void)prepareForReuse;
 - (void)setImage:(id)arg1 animated:(_Bool)arg2;
@@ -57,12 +47,6 @@
 - (void)adjustStackingStyle;
 - (void)setUpLayoutConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -17,6 +17,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -19,6 +19,7 @@
     unsigned long long _fileSize;
     ICStoreFinanceItemMetadata *_metadata;
     NSData *_md5;
+    NSString *_playbackAuthorizationToken;
     long long _expectedProtectionType;
 }
 
@@ -33,6 +34,7 @@
 @property(copy, nonatomic) NSString *downloadKey; // @synthesize downloadKey=_downloadKey;
 @property(copy, nonatomic) NSURL *assetURL; // @synthesize assetURL=_assetURL;
 - (id)_metadataDictionary;
+@property(readonly, copy, nonatomic) NSString *playbackAuthorizationToken; // @synthesize playbackAuthorizationToken=_playbackAuthorizationToken;
 @property(readonly, nonatomic) long long protectionType;
 @property(readonly, copy, nonatomic) NSDictionary *responseDictionary;
 - (id)initWithFileAssetResponseDictionary:(id)arg1;

@@ -20,6 +20,7 @@
 }
 
 + (id)_cameraTopic;
++ (id)_announceTopic;
 + (id)na_identity;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;

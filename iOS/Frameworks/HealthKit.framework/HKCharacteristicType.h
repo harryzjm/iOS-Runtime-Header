@@ -8,6 +8,7 @@
 {
 }
 
+- (id)initWithIdentifier:(id)arg1;
 - (id)_relatedSampleForInsertionWithCharacteristicValue:(id)arg1;
 - (id)_relatedCategoryType;
 - (id)_relatedQuantityType;

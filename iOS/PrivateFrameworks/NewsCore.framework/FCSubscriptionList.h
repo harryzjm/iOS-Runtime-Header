@@ -9,13 +9,13 @@
 
 @interface FCSubscriptionList
 {
-    NSOrderedSet *_orderedSubscribedTagIDs;
-    NSSet *_subscribedTagIDs;
-    NSSet *_mutedTagIDs;
-    NSSet *_autoFavoriteTagIDs;
-    NSSet *_groupableTagIDs;
-    NSSet *_ignoredTagIDs;
     id <FCTagRanking> _subscribedTagRanker;
+    NSOrderedSet *_orderedSubscribedTagIDsInternal;
+    NSSet *_subscribedTagIDsInternal;
+    NSSet *_mutedTagIDsInternal;
+    NSSet *_autoFavoriteTagIDsInternal;
+    NSSet *_groupableTagIDsInternal;
+    NSSet *_ignoredTagIDsInternal;
     NSMutableDictionary *_mutableSubscriptionsBySubscriptionID;
     FCMTWriterLock *_itemsLock;
 }
@@ -34,28 +34,8 @@
 + (_Bool)requiresPushNotificationSupport;
 + (id)desiredKeys;
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
-@property(retain, nonatomic) NSMutableDictionary *mutableSubscriptionsBySubscriptionID; // @synthesize mutableSubscriptionsBySubscriptionID=_mutableSubscriptionsBySubscriptionID;
 @property(retain, nonatomic) id <FCTagRanking> subscribedTagRanker; // @synthesize subscribedTagRanker=_subscribedTagRanker;
-@property(copy, nonatomic) NSSet *ignoredTagIDs; // @synthesize ignoredTagIDs=_ignoredTagIDs;
-@property(copy, nonatomic) NSSet *groupableTagIDs; // @synthesize groupableTagIDs=_groupableTagIDs;
-@property(copy, nonatomic) NSSet *autoFavoriteTagIDs; // @synthesize autoFavoriteTagIDs=_autoFavoriteTagIDs;
-@property(copy, nonatomic) NSSet *mutedTagIDs; // @synthesize mutedTagIDs=_mutedTagIDs;
-@property(copy, nonatomic) NSSet *subscribedTagIDs; // @synthesize subscribedTagIDs=_subscribedTagIDs;
-@property(copy, nonatomic) NSOrderedSet *orderedSubscribedTagIDs; // @synthesize orderedSubscribedTagIDs=_orderedSubscribedTagIDs;
-- (unsigned long long)_preferredZoneForSubscriptionType:(unsigned long long)arg1;
 - (id)t_reconcileSubscriptions:(id)arg1;
-- (id)_reconcileSubscriptions:(id)arg1;
-- (void)_regenerateSortedSubscriptions;
-- (void)_localAddSubscriptions:(id)arg1 changeSubscriptions:(id)arg2 removeSubscriptions:(id)arg3 eventInitiationLevel:(long long)arg4;
-- (id)_subscriptionFromRecord:(id)arg1;
-- (long long)_orderOfHighestRankedTagSubscription;
-- (id)_newSubscriptionOrder;
-- (void)_assignOrderToTagSubscriptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_removeRemoteSubscription:(id)arg1;
-- (void)_removeRemoteSubscriptions:(id)arg1;
-- (void)_modifyRemoteSubscriptions:(id)arg1;
-- (void)_addRemoteSubscriptions:(id)arg1;
 - (_Bool)moveSubscriptionForTagID:(id)arg1 toIndex:(unsigned long long)arg2;
 - (_Bool)hasAutoFavoriteSubscriptionForTagID:(id)arg1;
 - (_Bool)hasIgnoredSubscriptionForTagID:(id)arg1;
@@ -69,6 +49,12 @@
 - (_Bool)hasSubscriptionForTagID:(id)arg1;
 - (_Bool)canAddSubscription;
 - (id)subscriptionsForType:(unsigned long long)arg1;
+@property(readonly, copy, nonatomic) NSSet *ignoredTagIDs;
+@property(readonly, copy, nonatomic) NSSet *groupableTagIDs;
+@property(readonly, copy, nonatomic) NSSet *autoFavoriteTagIDs;
+@property(readonly, copy, nonatomic) NSSet *mutedTagIDs;
+@property(readonly, copy, nonatomic) NSSet *subscribedTagIDs;
+@property(readonly, copy, nonatomic) NSOrderedSet *orderedSubscribedTagIDs;
 - (void)removeSubscriptionForTagID:(id)arg1 type:(unsigned long long)arg2 eventInitiationLevel:(long long)arg3;
 - (void)removeSubscriptionsForTagIDs:(id)arg1 typeProvider:(CDUnknownBlockType)arg2 eventInitiationLevel:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)addSubscriptionForTagID:(id)arg1 type:(unsigned long long)arg2 eventInitiationLevel:(long long)arg3;
@@ -76,7 +62,6 @@
 - (void)addSubscriptionsForTagIDs:(id)arg1 typeProvider:(CDUnknownBlockType)arg2 originProvider:(CDUnknownBlockType)arg3 eventInitiationLevelProvider:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)addSubscriptionForTagID:(id)arg1 type:(unsigned long long)arg2 origin:(unsigned long long)arg3 groupID:(id)arg4 eventInitiationLevel:(long long)arg5;
 - (_Bool)addSubscriptionForTagID:(id)arg1 type:(unsigned long long)arg2 origin:(unsigned long long)arg3 groupID:(id)arg4 notificationsEnabled:(_Bool)arg5 eventInitiationLevel:(long long)arg6;
-- (void)addSubscriptionsForTagIDs:(id)arg1 typeProvider:(CDUnknownBlockType)arg2 originProvider:(CDUnknownBlockType)arg3 groupID:(id)arg4 notificationsEnabled:(_Bool)arg5 eventInitiationLevelProvider:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
 - (void)handleSyncDidResetLocalDataForRecordZoneWithID:(id)arg1;

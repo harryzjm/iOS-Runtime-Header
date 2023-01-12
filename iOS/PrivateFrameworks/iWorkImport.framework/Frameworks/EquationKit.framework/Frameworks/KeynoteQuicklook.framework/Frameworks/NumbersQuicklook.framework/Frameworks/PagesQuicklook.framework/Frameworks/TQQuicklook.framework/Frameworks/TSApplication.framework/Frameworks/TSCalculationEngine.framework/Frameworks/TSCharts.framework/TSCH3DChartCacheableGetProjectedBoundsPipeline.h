@@ -8,19 +8,20 @@
 
 @interface TSCH3DChartCacheableGetProjectedBoundsPipeline
 {
-    _Bool mUseIndividualBounds;
-    _Bool mLayoutBoundsValid;
-    box_a3bd9649 mShadowsLayout3DBounds;
-    box_a3bd9649 mLayout3DBounds;
-    box_a3bd9649 mBodyLayout3DBounds;
-    box_a3bd9649 mConstantDepthBodyLayout3DBounds;
-    TSCH3DGetBoundsProjector *mProjector;
+    _Bool _useIndividualBounds;
+    _Bool _layoutBoundsValid;
+    box_c9ef104e _shadowsLayout3DBounds;
+    box_c9ef104e _layout3DBounds;
+    box_c9ef104e _bodyLayout3DBounds;
+    box_c9ef104e _constantDepthBodyLayout3DBounds;
+    TSCH3DGetBoundsProjector *_projector;
 }
 
 + (_Bool)includesDepthForUnitScaleForScene:(id)arg1;
 + (void)setIncludesDepthForUnitScale:(_Bool)arg1 forScene:(id)arg2;
 - (id).cxx_construct;
-@property(nonatomic) _Bool useIndividualBounds; // @synthesize useIndividualBounds=mUseIndividualBounds;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool useIndividualBounds; // @synthesize useIndividualBounds=_useIndividualBounds;
 - (void)updateBounds;
 - (void)updateRenderBounds;
 - (void)calculateBounds;
@@ -28,9 +29,8 @@
 - (void)calculateLayoutLabelsBounds;
 - (void)calculateLayoutBounds;
 - (id)updatedConstantDepthSceneFromScene:(id)arg1;
-- (box_a3bd9649)boundsFromObjectBoundsOfType:(int)arg1;
+- (box_c9ef104e)boundsFromObjectBoundsOfType:(int)arg1;
 - (void)invalidateCachedBounds;
-- (void)dealloc;
 - (id)initWithScene:(id)arg1;
 - (Class)labelsMeshRendererClassForLabelsRenderer:(id)arg1;
 

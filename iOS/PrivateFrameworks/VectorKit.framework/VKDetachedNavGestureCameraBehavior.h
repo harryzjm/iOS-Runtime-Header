@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VectorKit/VKNavGestureCameraBehavior-Protocol.h>
-
-@class NSString, VKNavCameraController, VKTimedAnimation;
+@class VKNavCameraController, VKTimedAnimation;
 
 __attribute__((visibility("hidden")))
-@interface VKDetachedNavGestureCameraBehavior <VKNavGestureCameraBehavior>
+@interface VKDetachedNavGestureCameraBehavior
 {
     VKNavCameraController *_navCameraController;
     double _startZoomScale;
@@ -27,12 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)tapZoom:(struct CGPoint)arg1 levels:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)initWithNavCameraController:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

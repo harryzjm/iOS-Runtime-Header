@@ -26,8 +26,8 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithStartTime:(double)arg1 movieInfo:(id)arg2 movieSlideNodeUUID:(id)arg3 didPlayAcrossSlides:(_Bool)arg4 movieEventType:(long long)arg5 movieEventValue:(double)arg6;
-- (void)saveToMessage:(struct RecordingEventArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromMessage:(const struct RecordingEventArchive *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromMessage:(const void *)arg1 unarchiver:(id)arg2 parentEventTrack:(id)arg3;
 
 @end
 

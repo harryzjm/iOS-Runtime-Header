@@ -8,7 +8,6 @@
 
 @interface WLKStoreOffer (VideosUI)
 - (id)_localize:(id)arg1 token:(id)arg2 value:(id)arg3;
-- (id)_locKeyForPeriod:(id)arg1;
 - (id)vui_subscriptionOfferDisclaimerText;
 - (id)vui_subscriptionOfferButtonText;
 @end

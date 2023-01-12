@@ -26,8 +26,8 @@
 @property(copy, nonatomic) NSString *packageLocator; // @synthesize packageLocator=_packageLocator;
 @property(nonatomic) _Bool shouldDelayArchiving; // @synthesize shouldDelayArchiving=_shouldDelayArchiving;
 @property(nonatomic) _Bool storeOutsideObjectArchive; // @synthesize storeOutsideObjectArchive=_storeOutsideObjectArchive;
-- (void)loadFromLargeArraySegmentMessage:(const struct LargeArraySegment *)arg1 unarchiver:(id)arg2;
-- (void)saveToLargeArraySegmentMessage:(struct LargeArraySegment *)arg1 archiver:(id)arg2;
+- (void)loadFromLargeArraySegmentMessage:(const void *)arg1 unarchiver:(id)arg2;
+- (void)saveToLargeArraySegmentMessage:(void *)arg1 archiver:(id)arg2;
 - (void)loadStoreOutsideObjectArchiveFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;

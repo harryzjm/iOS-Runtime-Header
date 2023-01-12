@@ -22,6 +22,10 @@
     PMLSessionDescriptor *_sessionDescriptor;
 }
 
++ (id)configWithLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
++ (void)_addModelAssetUpdateHandler;
++ (id)_sharedCache;
++ (id)_cacheKeyForLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PMLSessionDescriptor *sessionDescriptor; // @synthesize sessionDescriptor=_sessionDescriptor;
 @property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;

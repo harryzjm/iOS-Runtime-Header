@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_20dc0a9a)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_20dc0a9a)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) _Bool low_confidence;
 @property(readonly, nonatomic) NSString *meta_info;
 @property(readonly, nonatomic) NSString *translation_phrase;

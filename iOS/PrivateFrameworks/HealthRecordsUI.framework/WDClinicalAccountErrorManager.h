@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class SFSafariViewController;
+@class HKClinicalAccountStore, SFSafariViewController;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalAccountErrorManager : NSObject
 {
+    HKClinicalAccountStore *_clinicalAccountStore;
     SFSafariViewController *_activeLoginViewController;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 @property(nonatomic) __weak SFSafariViewController *activeLoginViewController; // @synthesize activeLoginViewController=_activeLoginViewController;
-- (void)_handleMultipleAccountsNeedReloginFromPresenter:(id)arg1;
-- (void)_handleSingleAccountNeedsRelogin:(id)arg1 fromPresenter:(id)arg2 profile:(id)arg3;
 - (void)_dismissReloginViewController:(id)arg1;
 - (void)reloginAccount:(id)arg1 fromPresenter:(id)arg2 profile:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)presentErrorsIfNecessaryForAccounts:(id)arg1 fromPresenter:(id)arg2 profile:(id)arg3;
+- (id)init;
+- (id)initWithProfile:(id)arg1;
 
 @end
 

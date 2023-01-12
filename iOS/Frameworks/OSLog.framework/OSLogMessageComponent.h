@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <OSLog/NSSecureCoding-Protocol.h>
+
 @class NSData, NSNumber, NSString;
 
-@interface OSLogMessageComponent : NSObject
+@interface OSLogMessageComponent : NSObject <NSSecureCoding>
 {
     NSString *_formatSubstring;
     NSString *_placeholder;
@@ -21,6 +23,7 @@
     unsigned long long _argumentUInt64Value;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long argumentUInt64Value; // @synthesize argumentUInt64Value=_argumentUInt64Value;
 @property(copy, nonatomic) NSString *argumentStringValue; // @synthesize argumentStringValue=_argumentStringValue;
@@ -31,6 +34,8 @@
 @property(readonly, nonatomic) long long argumentCategory; // @synthesize argumentCategory=_argumentCategory;
 @property(copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property(copy, nonatomic) NSString *formatSubstring; // @synthesize formatSubstring=_formatSubstring;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)fillWithData:(id)arg1;
 - (void)fillWithString:(id)arg1;
 - (void)fillWithScalar:(id)arg1;

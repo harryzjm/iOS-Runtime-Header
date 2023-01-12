@@ -20,18 +20,17 @@
     NSString *_pairedDeviceGUID;
     NSString *_pairedDeviceMediaGUID;
     PSYInitialSyncStateObserver *_initialSyncStateObserver;
-    _Bool _isInitialSyncComplete;
 }
 
 + (id)sharedMonitor;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isInitialSyncComplete; // @synthesize isInitialSyncComplete=_isInitialSyncComplete;
 - (void)initialSyncStateObserver:(id)arg1 initialSyncDidCompleteForPairingIdentifier:(id)arg2;
 - (void)deviceBecameActive:(id)arg1;
 - (void)_handlePairedDeviceChangedNotification;
 - (id)_activePairedDevice;
 - (id)_allObservers;
 @property(readonly, nonatomic, getter=isMediaSyncingSupported) _Bool mediaSyncingSupported;
+@property(readonly, nonatomic) _Bool isInitialSyncComplete;
 @property(readonly, copy, nonatomic) NSString *pairedDeviceMediaGUID;
 @property(readonly, copy, nonatomic) NSString *pairedDeviceGUID;
 @property(readonly, copy, nonatomic) NSArray *allPairedDevicePairingIDs;

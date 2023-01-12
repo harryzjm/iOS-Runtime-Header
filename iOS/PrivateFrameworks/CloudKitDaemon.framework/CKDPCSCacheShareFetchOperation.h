@@ -6,7 +6,6 @@
 
 @class CKDSharePCSData, CKRecordID;
 
-__attribute__((visibility("hidden")))
 @interface CKDPCSCacheShareFetchOperation
 {
 }

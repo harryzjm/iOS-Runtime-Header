@@ -9,7 +9,7 @@
 #import <SpringBoardUIServices/SBUIPowerDownViewInterface-Protocol.h>
 #import <SpringBoardUIServices/_UIActionSliderDelegate-Protocol.h>
 
-@class NSString, NSTimer, SBUIShapeView, UIButton, UILabel, _UIActionSlider;
+@class NSString, NSTimer, SBUIShapeView, SPBeaconManager, UIButton, UILabel, _UIActionSlider, _UIVibrantSettings;
 @protocol SBUIPowerDownViewDelegate;
 
 @interface SBUIPowerDownView : UIView <_UIActionSliderDelegate, SBUIPowerDownViewInterface>
@@ -21,16 +21,31 @@
     _UIActionSlider *_actionSlider;
     UIButton *_cancelButton;
     UILabel *_cancelLabel;
+    UIButton *_findMyButton;
+    _UIVibrantSettings *_vibrantSettings;
+    _Bool _deviceSupportsFindMy;
+    _Bool _shouldPowerDownViewShowFindMyAlert;
     id <SBUIPowerDownViewDelegate> _delegate;
+    SPBeaconManager *_beaconManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SPBeaconManager *beaconManager; // @synthesize beaconManager=_beaconManager;
+@property(nonatomic) _Bool shouldPowerDownViewShowFindMyAlert; // @synthesize shouldPowerDownViewShowFindMyAlert=_shouldPowerDownViewShowFindMyAlert;
+@property(nonatomic) _Bool deviceSupportsFindMy; // @synthesize deviceSupportsFindMy=_deviceSupportsFindMy;
 @property(nonatomic) __weak id <SBUIPowerDownViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_readShouldPowerDownViewShowFindMyAlert;
+- (void)_readIODeviceSupportsFindMy;
+- (void)_prepareViewsForAlert;
+- (id)_createActionSlider;
 - (void)_animatePowerDown;
+- (void)didSuppressFindMy;
+- (void)didAcknowledgeFindMyInfo;
 - (void)_notifyDelegateCancelled;
 - (void)_notifyDelegatePowerDown;
 - (void)_idleTimerFired;
 - (void)_cancelButtonTapped;
+- (void)_didTapFindMy;
 - (void)_updateSliderExclusionPath;
 - (void)_resetAutoDismissTimer;
 - (void)_cancelAutoDismissTimer;
@@ -48,6 +63,7 @@
 - (void)layoutSubviews;
 - (void)hideAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)showAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_createFindMyUI;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 vibrantSettings:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -19,8 +19,8 @@ struct Handle {
 };
 
 struct SdfAssetPath {
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _assetPath;
-    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _resolvedPath;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _assetPath;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> _resolvedPath;
 };
 
 struct SdfLayerOffset {
@@ -55,21 +55,12 @@ struct TfPointerAndBits<const pxrInternal_v0_20__pxrReserved__usdkit__::VtValue:
 
 struct TfRefBase;
 
-struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::Tf_Remnant> {
-    struct TfRefBase *_field1;
-};
-
 struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
     struct TfRefBase *_refBase;
 };
 
 struct TfToken {
     struct TfPointerAndBits<const pxrInternal_v0_20__pxrReserved__usdkit__::TfToken::_Rep> _rep;
-};
-
-struct TfWeakPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
-    struct UsdStage *_field1;
-    struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::Tf_Remnant> _field2;
 };
 
 struct UsdPrim {
@@ -101,8 +92,6 @@ struct UsdProperty {
     struct TfToken _propName;
 };
 
-struct UsdStage;
-
 struct Usd_PrimData;
 
 struct Usd_PrimDataHandle {
@@ -126,8 +115,8 @@ struct _TypeInfo;
 
 struct __shared_weak_count;
 
-struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
-    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
+    struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
             union {
                 struct __long {
@@ -185,10 +174,10 @@ struct type {
     unsigned char __lx[8];
 };
 
-struct vector<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
+struct vector<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty, std::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
     struct UsdProperty *__begin_;
     struct UsdProperty *__end_;
-    struct __compressed_pair<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty *, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
+    struct __compressed_pair<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty *, std::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
         struct UsdProperty *__value_;
     } __end_cap_;
 };
@@ -203,22 +192,4 @@ typedef struct {
 typedef struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
     struct TfRefBase *_refBase;
 } TfRefPtr_8a332644;
-
-typedef struct TfWeakPtr<pxrInternal_v0_20__pxrReserved__usdkit__::UsdStage> {
-    struct UsdStage *_field1;
-    struct TfRefPtr<pxrInternal_v0_20__pxrReserved__usdkit__::Tf_Remnant> _field2;
-} TfWeakPtr_163a6a2f;
-
-typedef struct iterator_range<pxrInternal_v0_20__pxrReserved__usdkit__::UsdPrimSiblingIterator> {
-    struct UsdPrimSiblingIterator m_Begin;
-    struct UsdPrimSiblingIterator m_End;
-} iterator_range_68be7782;
-
-typedef struct vector<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
-    struct UsdProperty *__begin_;
-    struct UsdProperty *__end_;
-    struct __compressed_pair<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty *, std::__1::allocator<pxrInternal_v0_20__pxrReserved__usdkit__::UsdProperty>> {
-        struct UsdProperty *__value_;
-    } __end_cap_;
-} vector_6f2ba469;
 

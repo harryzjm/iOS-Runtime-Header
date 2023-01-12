@@ -6,33 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNRequestRevisionProviding-Protocol.h>
+#import <Vision/VNOriginatingRequestSpecifierProviding-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSString, NSUUID, VNRequestSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface VNTracker : NSObject <VNRequestRevisionProviding>
+@interface VNTracker : NSObject <VNOriginatingRequestSpecifierProviding>
 {
     struct shared_ptr<vision::mod::ObjectTrackerAbstract> mTrackerImpl;
-    unsigned long long _requestRevision;
+    VNRequestSpecifier *_originatingRequestSpecifier;
     unsigned int _trackedFrameCVPixelBufferFormat;
+    NSString *_level;
     long long _trackedFrameNumber;
     NSUUID *_key;
-    NSString *_level;
     struct CGRect _lastTrackedBBox;
 }
 
 + (long long)VNTrackerOptionToTrackerType:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly) NSString *level; // @synthesize level=_level;
 @property(readonly) NSUUID *key; // @synthesize key=_key;
 @property struct CGRect lastTrackedBBox; // @synthesize lastTrackedBBox=_lastTrackedBBox;
 @property long long trackedFrameNumber; // @synthesize trackedFrameNumber=_trackedFrameNumber;
+@property(readonly) NSString *level; // @synthesize level=_level;
 @property unsigned int trackedFrameCVPixelBufferFormat; // @synthesize trackedFrameCVPixelBufferFormat=_trackedFrameCVPixelBufferFormat;
-@property(readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
+@property(readonly) VNRequestSpecifier *originatingRequestSpecifier;
 - (_Bool)_updateTrackerWithModifiedBBoxForImageBuffer:(id)arg1 error:(id *)arg2;
-- (_Bool)_visionBBoxToTrackerBBox:(id)arg1 trackedObjects:(vector_41a7cb1a *)arg2 imageSize:(struct CGSize)arg3 results:(id)arg4 error:(id *)arg5;
+- (_Bool)_visionBBoxToTrackerBBox:(id)arg1 trackedObjects:(void *)arg2 imageSize:(struct CGSize)arg3 results:(id)arg4 error:(id *)arg5;
 - (id)_postProcessTrackingResults:(id)arg1 trackerResults:(id)arg2 error:(id *)arg3;
 - (id)_parseInputObservations:(id)arg1 imageBuffer:(id)arg2 error:(id *)arg3;
 @property(readonly) _Bool isResettable;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)reset:(id *)arg1;
 - (id)trackInFrame:(id)arg1 error:(id *)arg2;
 - (id)setTrackedObjects:(id)arg1 inFrame:(id)arg2 error:(id *)arg3;
-- (struct ObjectTrackerAbstract *)_createTrackerWithLevel:(id)arg1 options:(struct ObjectTrackerOptions *)arg2 error:(id *)arg3;
+- (void *)_createTrackerWithLevel:(id)arg1 options:(struct ObjectTrackerOptions *)arg2 error:(id *)arg3;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 
 @end

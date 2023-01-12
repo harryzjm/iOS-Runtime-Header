@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)userDefaults;
 + (id)instance;
++ (_Bool)enableVerboseLogging;
 + (unsigned int)builtInMicrophoneAnalysisChannelNumberOrDefault:(unsigned int)arg1;
 + (id)builtInMicrophoneAnalysisChannelNumber;
 + (id)fileServerRootDirectory;

@@ -49,9 +49,9 @@ struct _NUIBoxArrangement {
     long long horzDist;
     long long vertDist;
     _Bool hasValidMeasurement;
-    vector_eb457d57 cells;
+    struct vector<_NUIBoxArrangementCell, std::allocator<_NUIBoxArrangementCell>> cells;
     struct CGSize measureSize;
-    struct vector<CGRect, std::__1::allocator<CGRect>> viewFrames;
+    struct vector<CGRect, std::allocator<CGRect>> viewFrames;
     CDStruct_6c92d79e maxBaseLinePair;
 };
 
@@ -63,10 +63,10 @@ struct _NUIFlowArrangement {
     double rowSpacing;
     double columnSpacing;
     _Bool hasValidMeasurement;
-    vector_702fc599 cells;
+    struct vector<_NUIFlowArrangementCell, std::allocator<_NUIFlowArrangementCell>> cells;
     struct CGSize measureSize;
     struct CGSize maxSize;
-    struct vector<CGRect, std::__1::allocator<CGRect>> viewFrames;
+    struct vector<CGRect, std::allocator<CGRect>> viewFrames;
     CDStruct_6c92d79e maxBaseLinePair;
 };
 
@@ -78,110 +78,108 @@ struct _NUIGridArrangement {
     unsigned int vertDist:8;
     _Bool baselineRelative;
     _Bool hasValidMeasurement;
-    vector_f8404f95 cells;
-    vector_b8a5df6e columns;
-    vector_b8a5df6e rows;
-    struct vector<CGRect, std::__1::allocator<CGRect>> viewFrames;
+    struct vector<_NUIGridArrangementCell, std::allocator<_NUIGridArrangementCell>> cells;
+    struct vector<_NUIGridArrangementDimension, std::allocator<_NUIGridArrangementDimension>> columns;
+    struct vector<_NUIGridArrangementDimension, std::allocator<_NUIGridArrangementDimension>> rows;
+    struct vector<CGRect, std::allocator<CGRect>> viewFrames;
 };
 
 struct _NUIGridArrangementCell;
 
 struct _NUIGridArrangementDimension;
 
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
+struct __tree_end_node<std::__tree_node_base<void *>*> {
+    void *__left_;
 };
 
-struct map<UIView *, _NUIContainerViewArrangedSubview, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, _NUIContainerViewArrangedSubview>>> {
-    struct __tree<std::__1::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::__1::less<UIView *>, true>, std::__1::allocator<std::__1::__value_type<UIView *, _NUIContainerViewArrangedSubview>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<UIView *, _NUIContainerViewArrangedSubview>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<UIView *, _NUIContainerViewArrangedSubview, std::less<UIView *>, std::allocator<std::pair<UIView *const, _NUIContainerViewArrangedSubview>>> {
+    struct __tree<std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::__map_value_compare<UIView *, std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::less<UIView *>, true>, std::allocator<std::__value_type<UIView *, _NUIContainerViewArrangedSubview>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::__1::less<UIView *>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<UIView *, std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::less<UIView *>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<UIView *, const std::__1::pair<_NSRange, _NSRange>, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, const std::__1::pair<_NSRange, _NSRange>>>> {
-    struct __tree<std::__1::__value_type<UIView *, const std::__1::pair<_NSRange, _NSRange>>, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, const std::__1::pair<_NSRange, _NSRange>>, std::__1::less<UIView *>, true>, std::__1::allocator<std::__1::__value_type<UIView *, const std::__1::pair<_NSRange, _NSRange>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<UIView *, const std::__1::pair<_NSRange, _NSRange>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<UIView *, const std::pair<_NSRange, _NSRange>, std::less<UIView *>, std::allocator<std::pair<UIView *const, const std::pair<_NSRange, _NSRange>>>> {
+    struct __tree<std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, std::__map_value_compare<UIView *, std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, std::less<UIView *>, true>, std::allocator<std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, const std::__1::pair<_NSRange, _NSRange>>, std::__1::less<UIView *>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<UIView *, std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, std::less<UIView *>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
-struct map<UIView *, double, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, double>>> {
-    struct __tree<std::__1::__value_type<UIView *, double>, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, double>, std::__1::less<UIView *>, true>, std::__1::allocator<std::__1::__value_type<UIView *, double>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<UIView *, double>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+struct map<UIView *, double, std::less<UIView *>, std::allocator<std::pair<UIView *const, double>>> {
+    struct __tree<std::__value_type<UIView *, double>, std::__map_value_compare<UIView *, std::__value_type<UIView *, double>, std::less<UIView *>, true>, std::allocator<std::__value_type<UIView *, double>>> {
+        void *__begin_node_;
+        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<UIView *, double>, void *>>> {
+            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
         } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, double>, std::__1::less<UIView *>, true>> {
+        struct __compressed_pair<unsigned long, std::__map_value_compare<UIView *, std::__value_type<UIView *, double>, std::less<UIView *>, true>> {
             unsigned long long __value_;
         } __pair3_;
     } __tree_;
 };
 
 struct nui_size_cache {
-    struct pair<CGSize, CGSize> *__begin_;
-    struct pair<CGSize, CGSize> *__end_;
-    struct __compressed_pair<std::__1::pair<CGSize, CGSize>*, std::__1::allocator<std::__1::pair<CGSize, CGSize>>> {
-        struct pair<CGSize, CGSize> *__value_;
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::pair<CGSize, CGSize>*, std::allocator<std::pair<CGSize, CGSize>>> {
+        void *__value_;
     } __end_cap_;
 };
 
-struct pair<CGSize, CGSize>;
-
-struct vector<CALayer *, std::__1::allocator<CALayer *>> {
+struct vector<CALayer *, std::allocator<CALayer *>> {
     id *__begin_;
     id *__end_;
-    struct __compressed_pair<CALayer **, std::__1::allocator<CALayer *>> {
+    struct __compressed_pair<CALayer **, std::allocator<CALayer *>> {
         id *__value_;
     } __end_cap_;
 };
 
-struct vector<CGRect, std::__1::allocator<CGRect>> {
+struct vector<CGRect, std::allocator<CGRect>> {
     struct CGRect *__begin_;
     struct CGRect *__end_;
-    struct __compressed_pair<CGRect *, std::__1::allocator<CGRect>> {
+    struct __compressed_pair<CGRect *, std::allocator<CGRect>> {
         struct CGRect *__value_;
     } __end_cap_;
 };
 
-struct vector<_NUIBoxArrangementCell, std::__1::allocator<_NUIBoxArrangementCell>> {
+struct vector<_NUIBoxArrangementCell, std::allocator<_NUIBoxArrangementCell>> {
     struct _NUIBoxArrangementCell *__begin_;
     struct _NUIBoxArrangementCell *__end_;
-    struct __compressed_pair<_NUIBoxArrangementCell *, std::__1::allocator<_NUIBoxArrangementCell>> {
+    struct __compressed_pair<_NUIBoxArrangementCell *, std::allocator<_NUIBoxArrangementCell>> {
         struct _NUIBoxArrangementCell *__value_;
     } __end_cap_;
 };
 
-struct vector<_NUIFlowArrangementCell, std::__1::allocator<_NUIFlowArrangementCell>> {
+struct vector<_NUIFlowArrangementCell, std::allocator<_NUIFlowArrangementCell>> {
     struct _NUIFlowArrangementCell *__begin_;
     struct _NUIFlowArrangementCell *__end_;
-    struct __compressed_pair<_NUIFlowArrangementCell *, std::__1::allocator<_NUIFlowArrangementCell>> {
+    struct __compressed_pair<_NUIFlowArrangementCell *, std::allocator<_NUIFlowArrangementCell>> {
         struct _NUIFlowArrangementCell *__value_;
     } __end_cap_;
 };
 
-struct vector<_NUIGridArrangementCell, std::__1::allocator<_NUIGridArrangementCell>> {
+struct vector<_NUIGridArrangementCell, std::allocator<_NUIGridArrangementCell>> {
     struct _NUIGridArrangementCell *__begin_;
     struct _NUIGridArrangementCell *__end_;
-    struct __compressed_pair<_NUIGridArrangementCell *, std::__1::allocator<_NUIGridArrangementCell>> {
+    struct __compressed_pair<_NUIGridArrangementCell *, std::allocator<_NUIGridArrangementCell>> {
         struct _NUIGridArrangementCell *__value_;
     } __end_cap_;
 };
 
-struct vector<_NUIGridArrangementDimension, std::__1::allocator<_NUIGridArrangementDimension>> {
+struct vector<_NUIGridArrangementDimension, std::allocator<_NUIGridArrangementDimension>> {
     struct _NUIGridArrangementDimension *__begin_;
     struct _NUIGridArrangementDimension *__end_;
-    struct __compressed_pair<_NUIGridArrangementDimension *, std::__1::allocator<_NUIGridArrangementDimension>> {
+    struct __compressed_pair<_NUIGridArrangementDimension *, std::allocator<_NUIGridArrangementDimension>> {
         struct _NUIGridArrangementDimension *__value_;
     } __end_cap_;
 };
@@ -198,46 +196,8 @@ typedef struct {
     unsigned int vertAlign:8;
 } CDStruct_e0b918f9;
 
-// Ambiguous groups
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
-
 typedef struct {
     double baseLineFromTop;
     double baseLineFromBottom;
 } CDStruct_6c92d79e;
-
-typedef struct vector<_NUIBoxArrangementCell, std::__1::allocator<_NUIBoxArrangementCell>> {
-    struct _NUIBoxArrangementCell *__begin_;
-    struct _NUIBoxArrangementCell *__end_;
-    struct __compressed_pair<_NUIBoxArrangementCell *, std::__1::allocator<_NUIBoxArrangementCell>> {
-        struct _NUIBoxArrangementCell *__value_;
-    } __end_cap_;
-} vector_eb457d57;
-
-typedef struct vector<_NUIFlowArrangementCell, std::__1::allocator<_NUIFlowArrangementCell>> {
-    struct _NUIFlowArrangementCell *__begin_;
-    struct _NUIFlowArrangementCell *__end_;
-    struct __compressed_pair<_NUIFlowArrangementCell *, std::__1::allocator<_NUIFlowArrangementCell>> {
-        struct _NUIFlowArrangementCell *__value_;
-    } __end_cap_;
-} vector_702fc599;
-
-typedef struct vector<_NUIGridArrangementCell, std::__1::allocator<_NUIGridArrangementCell>> {
-    struct _NUIGridArrangementCell *__begin_;
-    struct _NUIGridArrangementCell *__end_;
-    struct __compressed_pair<_NUIGridArrangementCell *, std::__1::allocator<_NUIGridArrangementCell>> {
-        struct _NUIGridArrangementCell *__value_;
-    } __end_cap_;
-} vector_f8404f95;
-
-typedef struct vector<_NUIGridArrangementDimension, std::__1::allocator<_NUIGridArrangementDimension>> {
-    struct _NUIGridArrangementDimension *__begin_;
-    struct _NUIGridArrangementDimension *__end_;
-    struct __compressed_pair<_NUIGridArrangementDimension *, std::__1::allocator<_NUIGridArrangementDimension>> {
-        struct _NUIGridArrangementDimension *__value_;
-    } __end_cap_;
-} vector_b8a5df6e;
 

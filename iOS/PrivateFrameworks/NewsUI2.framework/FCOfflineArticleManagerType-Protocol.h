@@ -5,13 +5,8 @@
 //
 
 @class NSSet;
-@protocol FCOfflineArticleContributing;
 
 @protocol FCOfflineArticleManagerType
-- (void)notifyWhenFinishedDownloadingWithBlock:(void (^)(unsigned long long))arg1;
-- (void)expressInterestInArticlesWithCompletionHandler:(void (^)(void))arg1;
-- (void)enableDownloading;
-- (void)addContributor:(id <FCOfflineArticleContributing>)arg1;
 @property(nonatomic, readonly) NSSet *downloadedArticleIDs;
 @end
 

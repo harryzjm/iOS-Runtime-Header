@@ -69,6 +69,7 @@
 @property(readonly, copy, nonatomic) NSString *burstIdentifier;
 @property(readonly, nonatomic, getter=isLivePhotoPlaceholder) _Bool livePhotoPlaceholder;
 @property(readonly, nonatomic, getter=isLivePhoto) _Bool livePhoto;
+@property(readonly, nonatomic) _Bool isGuestAsset;
 @property(readonly, nonatomic) _Bool isAnimatedImage;
 @property(readonly, nonatomic) CLLocation *location;
 @property(readonly, nonatomic) double duration;
@@ -106,6 +107,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic) unsigned short deferredProcessingNeeded;
+@property(readonly, nonatomic) _Bool hasSyndicationInformation;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool needsDeferredProcessing;
 @property(readonly) Class superclass;

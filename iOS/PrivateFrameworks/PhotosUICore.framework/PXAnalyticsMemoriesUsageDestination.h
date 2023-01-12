@@ -18,6 +18,7 @@
     long long _sessionInitialNavigationKind;
     id <PXDisplayAssetCollection> _lastAppearedAssetCollection;
     long long _lastAppearedAssetCollectionNavigationKind;
+    _Bool _isPXStoryEnabled;
 }
 
 + (id)payloadSessionStartTypeKey;
@@ -30,6 +31,8 @@
 + (id)memoryOpenedEventName;
 - (void).cxx_destruct;
 - (void)processEvent:(id)arg1;
+- (void)_userDidPlayMovieOfAssetCollection:(id)arg1;
+- (void)_userDidViewContentsOfAssetCollection:(id)arg1;
 - (id)init;
 
 // Remaining properties

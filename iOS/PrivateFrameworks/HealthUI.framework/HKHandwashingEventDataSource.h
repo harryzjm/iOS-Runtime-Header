@@ -14,10 +14,13 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
 @property(copy, nonatomic) CDUnknownBlockType userInfoCreationBlock; // @synthesize userInfoCreationBlock=_userInfoCreationBlock;
-- (id)_dailyAverageChartPointForObjects:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 averageInterval:(unsigned long long)arg4;
-- (id)_averageDurationChartPointForObjects:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (id)chartPointsFromQueryData:(id)arg1 dataIsFromRemoteSource:(_Bool)arg2;
+- (CDUnknownBlockType)queryDataForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 healthStore:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)supportsChartQueryDataGeneration;
+- (id)_dailyAverageChartModelForObjects:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (id)_averageDurationChartModelForObjects:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (id)chartModelsForSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 statisticsInterval:(id)arg4;
 - (id)chartPointsForSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 statisticsInterval:(id)arg4;
-- (void)_handleSamples:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 statisticsInterval:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)queriesForStartDate:(id)arg1 endDate:(id)arg2 statisticsInterval:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryDescription;
 - (_Bool)doesDurationMeetGoal:(double)arg1;

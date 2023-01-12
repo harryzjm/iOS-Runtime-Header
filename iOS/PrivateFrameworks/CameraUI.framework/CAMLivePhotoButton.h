@@ -6,26 +6,21 @@
 
 #import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
 
-@class CAMLivePhotoAnimationCache, NSString, UIImageView;
+@class CAMLivePhotoBloomView, NSString;
 
 @interface CAMLivePhotoButton <CAMAccessibilityHUDImageProvider>
 {
     _Bool _allowsAutomaticMode;
-    UIImageView *__imageView;
-    CAMLivePhotoAnimationCache *__animationCache;
+    CAMLivePhotoBloomView *__bloomView;
 }
 
 + (double)enablingAnimationDuration;
 - (void).cxx_destruct;
-@property(retain, nonatomic) CAMLivePhotoAnimationCache *_animationCache; // @synthesize _animationCache=__animationCache;
-@property(readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property(readonly, nonatomic) CAMLivePhotoBloomView *_bloomView; // @synthesize _bloomView=__bloomView;
 @property(nonatomic) _Bool allowsAutomaticMode; // @synthesize allowsAutomaticMode=_allowsAutomaticMode;
 - (id)imageForAccessibilityHUD;
 - (void)interruptEnablingAnimation;
 - (void)performEnablingAnimation;
-- (void)_updateAnimationImages;
-- (void)preloadEnablingAnimation;
-- (void)_loadAnimationCacheIfNeeded;
 - (void)finishExpansionAnimated:(_Bool)arg1;
 - (void)reloadData;
 - (void)prepareHeaderViewForExpanding:(_Bool)arg1;

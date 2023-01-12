@@ -13,12 +13,10 @@
 __attribute__((visibility("hidden")))
 @interface GEOSimpleRoutePreloadCamera : NSObject <GEORoutePreloadCamera>
 {
-    unsigned long long _zoomLevel;
 }
 
-- (unsigned long long)zoomLevel;
+- (id)implicateAssetMetadataTilesForCoordinate:(CDStruct_c3b9c2ee)arg1 size:(double)arg2;
 - (void)implicateTilesForCoordinate:(CDStruct_c3b9c2ee)arg1 route:(id)arg2 nearestRoutePointIdx:(double)arg3 stepNearManeuever:(_Bool)arg4 into:(id)arg5 stepSize:(double)arg6 maneuverSize:(double)arg7 tileSetStyles:(id)arg8;
-- (id)initWithZoomLevel:(unsigned long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

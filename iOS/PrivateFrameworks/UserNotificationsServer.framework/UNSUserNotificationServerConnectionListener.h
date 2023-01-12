@@ -9,7 +9,7 @@
 #import <UserNotificationsServer/NSXPCListenerDelegate-Protocol.h>
 #import <UserNotificationsServer/UNUserNotificationServerProtocol-Protocol.h>
 
-@class NSMapTable, NSMutableDictionary, NSString, NSXPCListener, UNSApplicationLauncher, UNSAttachmentsService, UNSLocalizationService, UNSLocationMonitor, UNSNotificationAuthorizationService, UNSNotificationCategoryRepository, UNSNotificationRepository, UNSNotificationSchedulingService, UNSNotificationSettingsService, UNSNotificationTopicRepository, UNSRemoteNotificationServer, UNSUserNotificationServerRemoteNotificationConnectionListener;
+@class NSMapTable, NSMutableDictionary, NSString, NSXPCListener, UNSApplicationLauncher, UNSAttachmentsService, UNSLocalizationService, UNSLocationMonitor, UNSNotificationAuthorizationService, UNSNotificationCategoryRepository, UNSNotificationRepository, UNSNotificationSchedulingService, UNSNotificationSettingsService, UNSNotificationTopicRepository, UNSRemoteNotificationServer, UNSUserNotificationServerRemoteNotificationConnectionListener, _UNNotificationCommunicationContextService;
 @protocol OS_dispatch_queue;
 
 @interface UNSUserNotificationServerConnectionListener : NSObject <NSXPCListenerDelegate, UNUserNotificationServerProtocol>
@@ -30,6 +30,7 @@
     UNSRemoteNotificationServer *_remoteNotificationService;
     UNSAttachmentsService *_attachmentsService;
     UNSLocationMonitor *_locationMonitor;
+    _UNNotificationCommunicationContextService *_communicationContextService;
 }
 
 - (void).cxx_destruct;
@@ -72,7 +73,7 @@
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)resume;
 - (void)dealloc;
-- (id)initWithCategoryRepository:(id)arg1 notificationSchedulingService:(id)arg2 notificationAuthorizationService:(id)arg3 notificationSettingsService:(id)arg4 notificationRepository:(id)arg5 remoteNotificationConnectionListener:(id)arg6 remoteNotificationService:(id)arg7 applicationLauncher:(id)arg8 attachmentsService:(id)arg9 locationMonitor:(id)arg10 topicRepository:(id)arg11 localizationService:(id)arg12;
+- (id)initWithCategoryRepository:(id)arg1 notificationSchedulingService:(id)arg2 notificationAuthorizationService:(id)arg3 notificationSettingsService:(id)arg4 notificationRepository:(id)arg5 remoteNotificationConnectionListener:(id)arg6 remoteNotificationService:(id)arg7 applicationLauncher:(id)arg8 attachmentsService:(id)arg9 locationMonitor:(id)arg10 topicRepository:(id)arg11 localizationService:(id)arg12 communicationContextService:(id)arg13;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

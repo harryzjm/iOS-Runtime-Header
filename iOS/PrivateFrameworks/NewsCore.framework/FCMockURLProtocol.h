@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSURLProtocol.h>
+#import <CFNetwork/NSURLProtocol.h>
 
 @interface FCMockURLProtocol : NSURLProtocol
 {
@@ -15,6 +15,7 @@
 + (_Bool)canInitWithRequest:(id)arg1;
 + (id)URLForError:(id)arg1;
 + (id)URLForData:(id)arg1 mimeType:(id)arg2;
++ (id)URLForData:(id)arg1 mimeType:(id)arg2 statusCode:(unsigned long long)arg3;
 - (void)stopLoading;
 - (void)startLoading;
 

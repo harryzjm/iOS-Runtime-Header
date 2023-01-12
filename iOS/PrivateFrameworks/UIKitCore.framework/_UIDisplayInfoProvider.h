@@ -9,6 +9,7 @@
 #import <UIKitCore/_UIDisplayInfoProviding-Protocol.h>
 
 @class FBSDisplayConfiguration, NSString;
+@protocol _UIDisplayInfoShape;
 
 __attribute__((visibility("hidden")))
 @interface _UIDisplayInfoProvider : NSObject <_UIDisplayInfoProviding>
@@ -17,6 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned long long artworkSubtype;
     double homeAffordanceOverlayAllowance;
     double systemMinimumMargin;
+    id <_UIDisplayInfoShape> exclusionArea;
     struct UIEdgeInsets peripheryInsets;
     struct UIEdgeInsets safeAreaInsetsPortrait;
     struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown; // @synthesize safeAreaInsetsPortraitUpsideDown;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight; // @synthesize safeAreaInsetsLandscapeRight;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft; // @synthesize safeAreaInsetsLandscapeLeft;
+@property(readonly, nonatomic) id <_UIDisplayInfoShape> exclusionArea; // @synthesize exclusionArea;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait; // @synthesize safeAreaInsetsPortrait;
 @property(readonly, nonatomic) struct UIEdgeInsets peripheryInsets; // @synthesize peripheryInsets;
 @property(readonly, nonatomic) double systemMinimumMargin; // @synthesize systemMinimumMargin;

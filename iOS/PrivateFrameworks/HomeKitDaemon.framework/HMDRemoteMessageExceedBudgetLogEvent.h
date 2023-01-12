@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDDiagnosticReportLogging-Protocol.h>
 
 @class NSString;
 
-@interface HMDRemoteMessageExceedBudgetLogEvent <HMDDiagnosticReportLogging>
+@interface HMDRemoteMessageExceedBudgetLogEvent : HMMLogEvent <HMDDiagnosticReportLogging>
 {
     struct _HMFRate _budgetRate;
 }
 
 + (id)eventWithBudgetRate:(struct _HMFRate)arg1;
-+ (id)identifier;
 @property(readonly, nonatomic) struct _HMFRate budgetRate; // @synthesize budgetRate=_budgetRate;
 - (id)initWithBudgetRate:(struct _HMFRate)arg1;
 - (void)updateDiagnosticReportSignature:(id)arg1;

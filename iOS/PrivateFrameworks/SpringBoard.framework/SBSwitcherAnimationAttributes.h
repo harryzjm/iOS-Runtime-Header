@@ -19,9 +19,25 @@
     SBFFluidBehaviorSettings *_scaleSettings;
     SBFFluidBehaviorSettings *_opacitySettings;
     SBFFluidBehaviorSettings *_cornerRadiusSettings;
+    SBFFluidBehaviorSettings *_clippingSettings;
+    long long _layoutUpdateMode;
+    long long _positionUpdateMode;
+    long long _scaleUpdateMode;
+    long long _opacityUpdateMode;
+    long long _cornerRadiusUpdateMode;
+    long long _clippingUpdateMode;
+    long long _titleAndIconOpacityUpdateMode;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long titleAndIconOpacityUpdateMode; // @synthesize titleAndIconOpacityUpdateMode=_titleAndIconOpacityUpdateMode;
+@property(nonatomic) long long clippingUpdateMode; // @synthesize clippingUpdateMode=_clippingUpdateMode;
+@property(nonatomic) long long cornerRadiusUpdateMode; // @synthesize cornerRadiusUpdateMode=_cornerRadiusUpdateMode;
+@property(nonatomic) long long opacityUpdateMode; // @synthesize opacityUpdateMode=_opacityUpdateMode;
+@property(nonatomic) long long scaleUpdateMode; // @synthesize scaleUpdateMode=_scaleUpdateMode;
+@property(nonatomic) long long positionUpdateMode; // @synthesize positionUpdateMode=_positionUpdateMode;
+@property(nonatomic) long long layoutUpdateMode; // @synthesize layoutUpdateMode=_layoutUpdateMode;
+@property(retain, nonatomic) SBFFluidBehaviorSettings *clippingSettings; // @synthesize clippingSettings=_clippingSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *cornerRadiusSettings; // @synthesize cornerRadiusSettings=_cornerRadiusSettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *opacitySettings; // @synthesize opacitySettings=_opacitySettings;
 @property(retain, nonatomic) SBFFluidBehaviorSettings *scaleSettings; // @synthesize scaleSettings=_scaleSettings;

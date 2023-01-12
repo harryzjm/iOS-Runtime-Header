@@ -4,21 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@protocol OS_dispatch_queue;
-
-@interface RTPersonalizationPortraitManager : NSObject
+@interface RTPersonalizationPortraitManager
 {
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
-- (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)feedbackUsedNamedEntities:(id)arg1;
 - (void)fetchLocationNamesStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchRecentLocationDonationsSince:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchRecentLocationDonationsSince:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

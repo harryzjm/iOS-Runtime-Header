@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface PUPhotoPickerScaledFileSizeEstimator : NSObject
 {
-    struct FigPhotoDecompressionContainer *_figContainer;
+    struct CMPhotoDecompressionContainer *_figContainer;
     PHAsset *_asset;
 }
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 - (unsigned long long)_estimatedSizeForResizeDescriptor:(id)arg1;
-- (struct FigPhotoDecompressionContainer *)_figContainer;
+- (struct CMPhotoDecompressionContainer *)_figContainer;
 - (struct CGSize)_targetSizeForResizeDescriptor:(id)arg1;
 - (id)_assetURL;
 - (unsigned long long)_assetOriginalSize;

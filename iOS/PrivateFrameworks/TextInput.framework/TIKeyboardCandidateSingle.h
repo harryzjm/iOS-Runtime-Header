@@ -11,7 +11,7 @@
     _Bool _extensionCandidate;
     NSString *_candidate;
     NSString *_input;
-    long long *_cursorMovement;
+    long long _cursorMovement;
 }
 
 + (int)type;
@@ -24,7 +24,7 @@
 + (id)candidateWithCandidate:(id)arg1 forInput:(id)arg2 extensionCandidate:(_Bool)arg3;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(nonatomic) long long *cursorMovement; // @synthesize cursorMovement=_cursorMovement;
+@property(nonatomic) long long cursorMovement; // @synthesize cursorMovement=_cursorMovement;
 @property(nonatomic, getter=isExtensionCandidate) _Bool extensionCandidate; // @synthesize extensionCandidate=_extensionCandidate;
 @property(copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property(copy, nonatomic) NSString *candidate; // @synthesize candidate=_candidate;
@@ -35,6 +35,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isAutocorrectionIgnoringCaseAndDiacriticsAndSupplementalItemPrefix;
+- (_Bool)isAutocorrectionIgnoringCaseAndSupplementalItemPrefix;
 - (id)initWithResponseCandidate:(id)arg1;
 - (id)initWithUnchangedInput:(id)arg1;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 extensionCandidate:(_Bool)arg3;

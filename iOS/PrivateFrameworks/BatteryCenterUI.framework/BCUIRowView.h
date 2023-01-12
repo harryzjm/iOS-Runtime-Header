@@ -57,6 +57,7 @@
 - (void)layoutSubviews;
 - (void)didMoveToWindow;
 - (void)didMoveToSuperview;
+@property(nonatomic) double scaleFactor;
 @property(nonatomic, getter=isSeparatorVisible) _Bool separatorVisible;
 
 // Remaining properties

@@ -8,11 +8,13 @@
 
 @class ICPlayActivityController, ICRadioGetTracksRequest, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCModelRadioGetTracksOperation : MPAsyncOperation
 {
     ICPlayActivityController *_playActivityController;
     ICRadioGetTracksRequest *_request;
     NSString *_siriAssetInfo;
+    void *_radioQueueFeederPointerForLogging;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -21,7 +23,7 @@
 - (void)_runStep:(id)arg1 withFinishHandler:(CDUnknownBlockType)arg2;
 - (id)_cacheTracksForStep:(id)arg1;
 - (void)execute;
-- (id)initWithGetTracksRequest:(id)arg1 siriAssetInfo:(id)arg2 playActivityController:(id)arg3;
+- (id)initWithGetTracksRequest:(id)arg1 siriAssetInfo:(id)arg2 playActivityController:(id)arg3 radioQueueFeeder:(id)arg4;
 
 @end
 

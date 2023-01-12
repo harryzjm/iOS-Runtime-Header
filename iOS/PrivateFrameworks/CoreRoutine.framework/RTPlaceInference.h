@@ -18,6 +18,7 @@
     unsigned long long _userTypeSource;
     unsigned long long _placeType;
     double _confidence;
+    NSString *_preferredName;
     NSUUID *_loiIdentifier;
 }
 
@@ -27,6 +28,7 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *loiIdentifier; // @synthesize loiIdentifier=_loiIdentifier;
+@property(readonly, nonatomic) NSString *preferredName; // @synthesize preferredName=_preferredName;
 @property(readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property(readonly, nonatomic) unsigned long long placeType; // @synthesize placeType=_placeType;
 @property(readonly, nonatomic) unsigned long long userTypeSource; // @synthesize userTypeSource=_userTypeSource;
@@ -35,9 +37,9 @@
 @property(readonly, nonatomic) RTLocation *referenceLocation; // @synthesize referenceLocation=_referenceLocation;
 - (id)description;
 - (id)nameFromUserType:(unsigned long long)arg1;
-@property(readonly, nonatomic) NSString *preferredName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithMapItem:(id)arg1 userType:(unsigned long long)arg2 userTypeSource:(unsigned long long)arg3 placeType:(unsigned long long)arg4 referenceLocation:(id)arg5 confidence:(double)arg6 loiIdentifier:(id)arg7 preferredName:(id)arg8;
 - (id)initWithMapItem:(id)arg1 userType:(unsigned long long)arg2 userTypeSource:(unsigned long long)arg3 placeType:(unsigned long long)arg4 referenceLocation:(id)arg5 confidence:(double)arg6 loiIdentifier:(id)arg7;
 - (id)init;
 

@@ -14,5 +14,6 @@
 - (void)alarmEditController:(HUAlarmEditViewController *)arg1 didEditAlarm:(MTAlarm *)arg2 forMediaProfile:(HMMediaProfile *)arg3;
 - (void)alarmEditController:(HUAlarmEditViewController *)arg1 didAddAlarm:(MTAlarm *)arg2 forMediaProfile:(HMMediaProfile *)arg3;
 - (void)alarmEditControllerDidCancel:(HUAlarmEditViewController *)arg1;
+- (void)alarmEditControllerGettingDismissed:(HUAlarmEditViewController *)arg1;
 @end
 

@@ -10,6 +10,7 @@
 
 @protocol VMUStackLogReader <NSObject>
 @property(retain, nonatomic) NSSet *excludedFrames;
+@property(readonly) struct _CSTypeRef symbolicator;
 @property(readonly) VMUVMRegionTracker *regionTracker;
 @property(readonly) _Bool coldestFrameIsNotThreadId;
 @property(readonly) _Bool usesLiteMode;

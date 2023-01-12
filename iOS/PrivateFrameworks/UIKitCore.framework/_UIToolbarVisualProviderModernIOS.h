@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     _UIToolbarContentView *_contentView;
     long long _itemDistribution;
     _Bool _useModernAppearance;
+    double _backgroundTransitionProgress;
 }
 
 - (void).cxx_destruct;
+- (double)backgroundTransitionProgress;
 - (_Bool)toolbarIsSmall;
 - (struct CGSize)defaultSizeForOrientation:(long long)arg1;
 - (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)setCustomBackgroundView:(id)arg1;
 - (void)updateBarBackgroundSize;
 - (struct CGRect)_backgroundFrame;
+- (void)setBackgroundTransitionProgress:(double)arg1;
 - (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (void)_itemDidChangeWidth:(id)arg1;
 - (void)_itemDidChangeEnabledState:(id)arg1;

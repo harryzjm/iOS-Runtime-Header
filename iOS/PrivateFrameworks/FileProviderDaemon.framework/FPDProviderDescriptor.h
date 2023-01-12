@@ -8,7 +8,7 @@
 
 #import <FileProviderDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSNumber, NSString, NSURL, NSUUID;
 
 @interface FPDProviderDescriptor : NSObject <NSSecureCoding>
 {
@@ -23,27 +23,47 @@
     _Bool _supportsUnzippedPackages;
     _Bool _hasExplicitExtensionStorageURLs;
     _Bool _supportsPickingFolders;
+    _Bool _wantsFlattenedPackages;
+    _Bool _allowsUserControlledEviction;
+    _Bool _allowsSystemDeleteAlerts;
+    _Bool _appliesChangesAtomically;
     NSString *_identifier;
     NSString *_localizedName;
     NSString *_topLevelBundleIdentifier;
     NSString *_bundleVersion;
     NSString *_extensionPointVersion;
+    NSNumber *_downloadPipelineDepth;
+    NSNumber *_uploadPipelineDepth;
     NSString *_purposeIdentifier;
     NSURL *_extensionBundleURL;
+    NSUUID *_pluginUUID;
     NSArray *_supportedFileTypes;
     NSArray *_supportedSearchFilters;
     NSArray *_extensionStorageURLs;
+    NSString *_documentGroupName;
     NSArray *_requestedExtendedAttributes;
+    NSString *_personaIdentifier;
 }
 
++ (id)personaFromExtensionRecord:(id)arg1;
++ (id)uncachedContainerURLForSecurityApplicationGroupIdentifier:(id)arg1;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
 @property(retain, nonatomic) NSArray *requestedExtendedAttributes; // @synthesize requestedExtendedAttributes=_requestedExtendedAttributes;
+@property(retain, nonatomic) NSString *documentGroupName; // @synthesize documentGroupName=_documentGroupName;
 @property(retain, nonatomic) NSArray *extensionStorageURLs; // @synthesize extensionStorageURLs=_extensionStorageURLs;
 @property(retain, nonatomic) NSArray *supportedSearchFilters; // @synthesize supportedSearchFilters=_supportedSearchFilters;
 @property(retain, nonatomic) NSArray *supportedFileTypes; // @synthesize supportedFileTypes=_supportedFileTypes;
+@property(retain, nonatomic) NSUUID *pluginUUID; // @synthesize pluginUUID=_pluginUUID;
 @property(retain, nonatomic) NSURL *extensionBundleURL; // @synthesize extensionBundleURL=_extensionBundleURL;
 @property(retain, nonatomic) NSString *purposeIdentifier; // @synthesize purposeIdentifier=_purposeIdentifier;
+@property(retain, nonatomic) NSNumber *uploadPipelineDepth; // @synthesize uploadPipelineDepth=_uploadPipelineDepth;
+@property(retain, nonatomic) NSNumber *downloadPipelineDepth; // @synthesize downloadPipelineDepth=_downloadPipelineDepth;
+@property(nonatomic) _Bool appliesChangesAtomically; // @synthesize appliesChangesAtomically=_appliesChangesAtomically;
+@property(nonatomic) _Bool allowsSystemDeleteAlerts; // @synthesize allowsSystemDeleteAlerts=_allowsSystemDeleteAlerts;
+@property(nonatomic) _Bool allowsUserControlledEviction; // @synthesize allowsUserControlledEviction=_allowsUserControlledEviction;
+@property(nonatomic) _Bool wantsFlattenedPackages; // @synthesize wantsFlattenedPackages=_wantsFlattenedPackages;
 @property(nonatomic) _Bool supportsPickingFolders; // @synthesize supportsPickingFolders=_supportsPickingFolders;
 @property(nonatomic) _Bool hasExplicitExtensionStorageURLs; // @synthesize hasExplicitExtensionStorageURLs=_hasExplicitExtensionStorageURLs;
 @property(nonatomic) _Bool supportsUnzippedPackages; // @synthesize supportsUnzippedPackages=_supportsUnzippedPackages;
@@ -60,6 +80,7 @@
 @property(retain, nonatomic) NSString *topLevelBundleIdentifier; // @synthesize topLevelBundleIdentifier=_topLevelBundleIdentifier;
 @property(retain, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (id)localizedStringForInfoPlistValue:(id)arg1;
 - (id)initWithExtension:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

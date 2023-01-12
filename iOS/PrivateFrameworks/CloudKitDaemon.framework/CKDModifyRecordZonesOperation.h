@@ -7,7 +7,6 @@
 @class CKDPCSKeySyncCoreAnalytics, NSArray, NSMutableArray, NSMutableDictionary;
 @protocol CKModifyRecordZonesOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDModifyRecordZonesOperation
 {
     _Bool _allowDefaultZoneSave;
@@ -48,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_fetchPCSDataForZonesFromServer:(_Bool)arg1;
 - (void)_fetchPCSDataForZone:(id)arg1 fromServer:(_Bool)arg2;
 - (void)_createNewPCSForZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)isOperationType:(int)arg1;
 - (int)operationType;
 - (_Bool)_saveZonesToServer;
 - (void)_handleRecordZoneDeleted:(id)arg1 responseCode:(id)arg2;
@@ -55,11 +55,12 @@ __attribute__((visibility("hidden")))
 - (void)_sendErrorForFailedZones;
 - (void)_sendCoreAnalyticsEventForKeySync;
 - (void)_sychronizeUserKeyRegistryIfNeeded;
+- (_Bool)supportsClearAssetEncryption;
 - (id)relevantZoneIDs;
 - (id)nameForState:(unsigned long long)arg1;
 - (id)activityCreate;
 - (_Bool)makeStateTransition;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKModifyRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

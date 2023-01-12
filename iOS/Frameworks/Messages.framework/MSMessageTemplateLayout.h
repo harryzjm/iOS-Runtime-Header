@@ -32,6 +32,7 @@
 @property(copy, nonatomic) NSString *trailingCaption; // @synthesize trailingCaption=_trailingCaption;
 @property(copy, nonatomic) NSString *subcaption; // @synthesize subcaption=_subcaption;
 @property(copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
+- (id)_sanitizedCopy;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSURL *mediaFileURL; // @synthesize mediaFileURL=_mediaFileURL;
 - (unsigned long long)hash;

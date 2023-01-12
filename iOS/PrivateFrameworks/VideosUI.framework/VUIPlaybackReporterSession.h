@@ -20,9 +20,9 @@ __attribute__((visibility("hidden")))
     id _context;
 }
 
-+ (id)transitionReasonForMediaControllerStopReason:(id)arg1 autoStart:(id)arg2;
++ (id)transitionReasonForMediaControllerStopReason:(id)arg1 autoStop:(id)arg2;
 + (id)transitionReasonForMediaControllerStartReason:(id)arg1 autoStart:(id)arg2;
-+ (id)transitionTypeForMediaControllerAutoStart:(id)arg1;
++ (id)transitionTypeForMediaControllerAutoTransition:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool reportingEnabled; // @synthesize reportingEnabled=_reportingEnabled;
 @property(retain, nonatomic) id context; // @synthesize context=_context;

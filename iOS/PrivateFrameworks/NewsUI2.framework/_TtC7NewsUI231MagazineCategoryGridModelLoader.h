@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *identifier;
     MISSING_TYPE *title;
+    MISSING_TYPE *activity;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *configService;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *categoryService;
@@ -19,7 +21,7 @@
     MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *tagService;
     MISSING_TYPE *assetHandleFactory;
-    MISSING_TYPE *delegate;
+    MISSING_TYPE *_sort;
 }
 
 @end

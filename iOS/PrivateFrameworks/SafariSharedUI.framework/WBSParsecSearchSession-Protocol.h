@@ -14,7 +14,7 @@
 @property(readonly, nonatomic) WBSParsecABGroupManager *abGroupManager;
 @property(readonly, nonatomic) id <WBSParsecFeedbackDispatcher> feedbackDispatcher;
 @property(nonatomic, setter=setUIScale:) double uiScale;
-@property(retain, nonatomic) WBSCompletionQuery *currentQuery;
-@property(nonatomic) __weak id <WBSParsecSearchSessionDelegate> delegate;
+- (void)setDelegate:(id <WBSParsecSearchSessionDelegate>)arg1;
+- (void)setCurrentQuery:(WBSCompletionQuery *)arg1;
 @end
 

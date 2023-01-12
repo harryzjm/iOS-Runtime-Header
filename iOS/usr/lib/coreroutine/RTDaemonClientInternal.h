@@ -14,7 +14,10 @@
 
 @interface RTDaemonClientInternal : NSObject <RTDaemonInternalProtocol, NSXPCConnectionDelegate>
 {
+    int _processIdentifier;
     NSXPCConnection *_xpcConnection;
+    NSString *_executablePath;
+    NSString *_signingIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     RTEntitlementProvider *_entitlementProvider;
     RTAccountManager *_accountManager;
@@ -58,9 +61,14 @@
 @property(retain, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property(retain, nonatomic) RTEntitlementProvider *entitlementProvider; // @synthesize entitlementProvider=_entitlementProvider;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(copy, nonatomic) NSString *signingIdentifier; // @synthesize signingIdentifier=_signingIdentifier;
+@property(nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
+@property(copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (void)fetchSnapshotWithOptions:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(id)arg1 toExpireOn:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)expireLifetimeOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)submitTransitMetricsWithReply:(CDUnknownBlockType)arg1;
 - (void)submitMetrics:(id)arg1 metricName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchMotionActivitiesFromStartDate:(id)arg1 endDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchFMCEnabledWithReply:(CDUnknownBlockType)arg1;
@@ -92,6 +100,7 @@
 - (void)updateAssetServerURL:(id)arg1 assetType:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)forceUpdateAssetMetadataWithReply:(CDUnknownBlockType)arg1;
 - (void)simulateScenarioTrigger:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)forcePlaceTypeClassificationWithReply:(CDUnknownBlockType)arg1;
 - (void)forceRelabeling:(CDUnknownBlockType)arg1;
 - (void)fetchVisitsWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchLocationsOfInterestWithVisitsWithinDistance:(id)arg1 location:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -103,12 +112,12 @@
 - (void)fetchPathToBackupWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchDataVaultPath:(CDUnknownBlockType)arg1;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
+@property(readonly, copy) NSString *description;
 - (id)initWithQueue:(id)arg1 accountManager:(id)arg2 assetManager:(id)arg3 authorizationManager:(id)arg4 deviceLocationPredictor:(id)arg5 diagnostics:(id)arg6 eventModelProvider:(id)arg7 fingerprintManager:(id)arg8 hintManager:(id)arg9 learnedLocationManager:(id)arg10 learnedLocationStore:(id)arg11 locationManager:(id)arg12 locationStore:(id)arg13 motionActivityManager:(id)arg14 persistenceManager:(id)arg15 purgeManager:(id)arg16 scenarioTriggerManager:(id)arg17 vehicleLocationProvider:(id)arg18 visitManager:(id)arg19;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

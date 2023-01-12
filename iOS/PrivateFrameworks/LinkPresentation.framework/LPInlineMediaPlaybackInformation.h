@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPAudio, NSArray, NSString, NSURL;
+@class LPAudio, LPLyricExcerptMetadata, NSArray, NSString, NSURL;
 
 @interface LPInlineMediaPlaybackInformation : NSObject
 {
@@ -15,6 +15,7 @@
     NSString *_storefrontIdentifier;
     NSArray *_offers;
     NSURL *_previewURL;
+    LPLyricExcerptMetadata *_lyricExcerpt;
     NSString *_persistentIdentifier;
     LPAudio *_audio;
 }
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPAudio *audio; // @synthesize audio=_audio;
 @property(copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
+@property(retain, nonatomic) LPLyricExcerptMetadata *lyricExcerpt; // @synthesize lyricExcerpt=_lyricExcerpt;
 @property(copy, nonatomic) NSURL *previewURL; // @synthesize previewURL=_previewURL;
 @property(copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property(copy, nonatomic) NSString *storefrontIdentifier; // @synthesize storefrontIdentifier=_storefrontIdentifier;

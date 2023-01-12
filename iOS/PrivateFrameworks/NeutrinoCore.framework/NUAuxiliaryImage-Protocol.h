@@ -10,8 +10,10 @@
 
 @protocol NUAuxiliaryImage <NSObject>
 @property(readonly) long long auxiliaryImageType;
+- (struct CGImage *)cgImageRef;
 - (struct __CVBuffer *)cvPixelBufferRef;
 - (unsigned int)pixelFormatType;
+- (NSDictionary *)dictionaryRepresentation;
 - (NSDictionary *)dictionaryRepresentationForAuxiliaryDataType:(id *)arg1;
 - (id)auxiliaryImageByReplacingAuxiliaryImageWithPixelBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)auxiliaryImageByApplyingExifOrientation:(unsigned int)arg1;

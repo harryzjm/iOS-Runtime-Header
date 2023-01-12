@@ -18,12 +18,37 @@
     CDStruct_4c969caf _auditToken;
 }
 
++ (void)_promoteFactorPackId:(id)arg1 usingEntitlementWitness:(id)arg2 serverContext:(id)arg3 forNamespaceName:(id)arg4 rolloutDeployment:(id)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)_rejectFactorPackId:(id)arg1 usingEntitlementWitness:(id)arg2 serverContext:(id)arg3 forNamespaceName:(id)arg4 rolloutDeployment:(id)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)_setProvisionalFactorPackId:(id)arg1 usingEntitlementWitness:(id)arg2 serverContext:(id)arg3 forNamespaceName:(id)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_removeAssetFactors:(id)arg1 usingEntitlementWitness:(id)arg2 serverContext:(id)arg3 taskQueue:(id)arg4 namespace:(id)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)_resumeTaskQueueForDiscretionaryCellularWithQueue:(id)arg1;
++ (void)_resumeTaskQueueForDiscretionaryWifiWithQueue:(id)arg1;
++ (void)_reregisterOneShotXPCActivityWithDescriptor:(id)arg1 resumingTaskQueue:(id)arg2;
 + (void)resumeTaskQueue:(id)arg1 forNetworkOptions:(id)arg2;
-+ (void)_usingEntitlementWitness:(id)arg1 serverContext:(id)arg2 taskQueue:(id)arg3 startDownloadAssetIndexesByTreatment:(id)arg4 namespace:(id)arg5 taskAttribution:(id)arg6 notificationKey:(id)arg7;
++ (void)_immediateDownloadForNamespaceNames:(id)arg1 usingEntitlementWitness:(id)arg2 serverContext:(id)arg3 taskQueue:(id)arg4 allowExpensiveNetworking:(_Bool)arg5 taskAttribution:(id)arg6 completion:(CDUnknownBlockType)arg7;
++ (void)_startDownloadAssetIndexesByTreatment:(id)arg1 usingEntitlementWitness:(id)arg2 serverContext:(id)arg3 taskQueue:(id)arg4 experimentIds:(id)arg5 assetIdsByFactorPack:(id)arg6 rolloutFactorNames:(id)arg7 rolloutDeployments:(id)arg8 namespace:(id)arg9 taskAttribution:(id)arg10 notificationKey:(id)arg11;
 + (void)usingServerContext:(id)arg1 taskQueue:(id)arg2 startDownloadNamespaceWithName:(id)arg3 attribution:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)usingServerContext:(id)arg1 deregisterNamespaceWithName:(id)arg2 teamId:(id)arg3 taskQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)usingServerContext:(id)arg1 registerNamespaceWithNamespaceName:(id)arg2 compatibilityVersion:(unsigned int)arg3 defaultsFileURL:(id)arg4 teamId:(id)arg5 appContainerId:(id)arg6 appContainerType:(long long)arg7 cloudKitContainerId:(int)arg8 bundleId:(id)arg9 completion:(CDUnknownBlockType)arg10;
++ (id)_deploymentsWithUnexpectedExperimentDataInContainer:(id)arg1 dynamicNamespaceName:(id)arg2 serverContext:(id)arg3;
++ (void)_purgeMismatchedDataForDynamicNamespaceName:(id)arg1 appContainer:(id)arg2 serverContext:(id)arg3;
++ (id)_notificationKeyWithNamespace:(id)arg1 assetIndexesByTreatment:(id)arg2 assetIdsByFactorPack:(id)arg3;
 - (void).cxx_destruct;
+- (_Bool)_validateNamespaceName:(id)arg1 error:(id *)arg2;
+- (id)_factorProviderChainForNamespace:(id)arg1;
+- (void)_loadNamespaceMetadataForNamespace:(id)arg1 usingEntitlementWitness:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (int)_namespacePurgeabilityLevelForNamespaceName:(id)arg1;
+- (_Bool)_validateSetPurgeabilityLevelRequestUsingFactorProviderChain:(id)arg1 purgeabilityLevelsForFactors:(id)arg2 error:(id *)arg3;
+- (void)_setPurgeabilityLevelsForFactors:(id)arg1 usingEntitlementWitness:(id)arg2 namespace:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)statusOfDownloadForFactors:(id)arg1 withNamespace:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)promoteFactorPackId:(id)arg1 forNamespaceName:(id)arg2 rolloutDeployment:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)rejectFactorPackId:(id)arg1 forNamespaceName:(id)arg2 rolloutDeployment:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setProvisionalFactorPackId:(id)arg1 forNamespaceName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)loadNamespaceMetadataForNamespaceName:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setPurgeabilityLevelsForFactors:(id)arg1 forNamespaceName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeLevelsForFactors:(id)arg1 withNamespace:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)immediateDownloadForNamespaceNames:(id)arg1 allowExpensiveNetworking:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startDownloadLevelsForFactors:(id)arg1 withNamespace:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)startDownloadNamespaceWithName:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deregisterNamespaceWithNamespaceName:(id)arg1 completion:(CDUnknownBlockType)arg2;

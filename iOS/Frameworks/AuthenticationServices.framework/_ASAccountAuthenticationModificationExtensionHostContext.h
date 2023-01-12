@@ -12,6 +12,7 @@
 @class NSString;
 @protocol _ASAccountAuthenticationModificationExtensionHostContextDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _ASAccountAuthenticationModificationExtensionHostContext : NSExtensionContext <_ASAccountAuthenticationModificationExtensionHostContextProtocol, _ASExtensionHostContext>
 {
     id <_ASAccountAuthenticationModificationExtensionHostContextDelegate> _delegate;

@@ -6,7 +6,7 @@
 
 #import <SpringBoardHome/SBHWidgetDragHandlerPassing-Protocol.h>
 
-@class CHSAvocadoDescriptor, SBIconView, SBWidgetIcon, UIViewController;
+@class SBIconView, UIView, UIViewController;
 @protocol SBHWidgetSheetViewControlling;
 
 @protocol SBHAddWidgetSheetViewControllerDelegate <SBHWidgetDragHandlerPassing>
@@ -14,10 +14,11 @@
 - (void)addWidgetSheetViewControllerWillDisappear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
 - (void)addWidgetSheetViewControllerDidAppear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
 - (void)addWidgetSheetViewControllerWillAppear:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
-- (void)addWidgetSheetViewControllerDidCancel:(UIViewController *)arg1;
-- (void)addWidgetSheetViewController:(UIViewController *)arg1 didSelectWidgetIconView:(SBIconView *)arg2;
+- (void)addWidgetSheetViewControllerDidCancel:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
+- (void)addWidgetSheetViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg1 didSelectWidgetIconView:(SBIconView *)arg2;
 
 @optional
-- (SBWidgetIcon *)addWidgetSheetViewController:(UIViewController *)arg1 widgetIconForDescriptor:(CHSAvocadoDescriptor *)arg2 sizeClass:(long long)arg3;
+- (void)configureBackgroundView:(UIView *)arg1 matchingMaterialBeneathAddWidgetSheetViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg2;
+- (UIView *)backgroundViewMatchingMaterialBeneathAddWidgetSheetViewController:(UIViewController<SBHWidgetSheetViewControlling> *)arg1;
 @end
 

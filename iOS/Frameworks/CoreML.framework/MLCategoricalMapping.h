@@ -14,7 +14,7 @@
     MLFeatureValue *_valueOnUnknown;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
++ (id)loadModelFromSpecification:(void *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MLFeatureValue *valueOnUnknown; // @synthesize valueOnUnknown=_valueOnUnknown;
 @property(readonly, nonatomic) NSDictionary *mapping; // @synthesize mapping=_mapping;

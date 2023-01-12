@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVEndpoint, MRAVRoutingDiscoverySession, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class MRAVEndpoint, MRAVRoutingDiscoverySession, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface MRAVReconnaissanceSession : NSObject
@@ -14,8 +14,10 @@
     double _timeoutTimerTimeout;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableDictionary *_localMatchingDevicesFound;
+    NSMutableSet *_knownIncompleteClusterMembers;
     _Bool _useWeakMatching;
     _Bool _returnPartialResults;
+    _Bool _waitForCompleteClusters;
     _Bool _searchInProgress;
     _Bool _shouldWaitForUnanimousEndpoints;
     MRAVRoutingDiscoverySession *_discoverySession;
@@ -39,6 +41,7 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *matchingLogicalDeviceIDs; // @synthesize matchingLogicalDeviceIDs=_matchingLogicalDeviceIDs;
+@property(nonatomic) _Bool waitForCompleteClusters; // @synthesize waitForCompleteClusters=_waitForCompleteClusters;
 @property(nonatomic) _Bool returnPartialResults; // @synthesize returnPartialResults=_returnPartialResults;
 @property(nonatomic) _Bool useWeakMatching; // @synthesize useWeakMatching=_useWeakMatching;
 @property(readonly, nonatomic) MRAVRoutingDiscoverySession *discoverySession;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *pageBlueprintProvider;
     MISSING_TYPE *toolbarCoverFactory;
     MISSING_TYPE *paywallFactory;
+    MISSING_TYPE *paywall;
     MISSING_TYPE *navigationItemStyle;
     MISSING_TYPE *titleView;
     MISSING_TYPE *paywallViewController;

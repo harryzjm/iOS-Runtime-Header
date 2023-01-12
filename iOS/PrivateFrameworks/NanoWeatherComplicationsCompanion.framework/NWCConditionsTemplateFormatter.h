@@ -16,10 +16,12 @@
     CLKTextProvider *_noDataTextProvider;
 }
 
++ (unsigned long long)_codeForConditions:(id)arg1;
 + (id)sharedFormatter;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CLKTextProvider *noDataTextProvider; // @synthesize noDataTextProvider=_noDataTextProvider;
 @property(retain, nonatomic) NWMTemperatureFormatter *temperatureFormatter; // @synthesize temperatureFormatter=_temperatureFormatter;
+- (id)_nonRichSymbolProviderForModel:(id)arg1;
 - (id)_graphicRectangularTemplateWithTextProvider:(id)arg1 hourlyForecastEntryModels:(id)arg2 timeZone:(id)arg3;
 - (id)switcherTemplateWithFamily:(long long)arg1;
 - (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;

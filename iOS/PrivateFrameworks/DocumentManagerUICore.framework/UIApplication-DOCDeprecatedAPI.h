@@ -10,6 +10,7 @@
 
 @interface UIApplication (DOCDeprecatedAPI)
 @property(readonly) long long doc_statusBarWindowOrientation;
+@property(readonly) UIWindow *doc_anyWindow;
 @property(readonly) UIWindow *doc_keyWindow;
 @end
 

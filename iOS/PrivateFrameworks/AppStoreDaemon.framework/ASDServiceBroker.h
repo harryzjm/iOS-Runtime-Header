@@ -25,13 +25,16 @@
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)getUpdatesServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getRestoreServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getRepairServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getRepairServiceWithError:(id *)arg1;
 - (id)getUpdatesServiceWithError:(id *)arg1;
 - (id)getTestFlightFeedbackServiceWithError:(id *)arg1;
 - (void)getTestFlightFeedbackServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPurchaseServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getArcadeServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getAppStoreServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getAppMetricsServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getPurchaseServiceWithError:(id *)arg1;
 - (void)getPurchaseHistoryServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getPurchaseHistoryServiceWithError:(id *)arg1;

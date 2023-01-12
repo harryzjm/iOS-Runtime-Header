@@ -11,7 +11,8 @@
 }
 
 + (id)attributedStringForFormattedText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5 isButton:(_Bool)arg6;
-+ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 coloredRanges:(id)arg5 nonColoredRanges:(id)arg6 rangesForNonTemplateImageAttachments:(id)arg7 font:(id)arg8 isButton:(_Bool)arg9;
++ (_Bool)formattedTextItemIsColoredImage:(id)arg1;
++ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 coloredRanges:(id)arg5 nonColoredRanges:(id)arg6 rangesForNonTemplateImageAttachments:(id)arg7 rangesForTemplateImageAttachments:(id)arg8 font:(id)arg9 isButton:(_Bool)arg10;
 + (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5 isButton:(_Bool)arg6;
 + (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
 + (id)preferredFontWithTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3 useCustomWeight:(_Bool)arg4 customFontWeight:(double)arg5;
@@ -34,6 +35,7 @@
 + (id)cachedFontForTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3 useCustomWeight:(_Bool)arg4 customFontWeight:(double)arg5;
 + (id)cachedFontForTextStyle:(id)arg1 isShort:(_Bool)arg2 fontWeight:(double)arg3;
 + (id)cachedFontForTextStyle:(id)arg1 isShort:(_Bool)arg2 isBold:(_Bool)arg3;
++ (id)cachedFontForTextStyle:(id)arg1;
 + (id)cachedFontForKey:(id)arg1 creatorBlock:(CDUnknownBlockType)arg2;
 
 @end

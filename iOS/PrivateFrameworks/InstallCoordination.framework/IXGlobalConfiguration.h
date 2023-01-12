@@ -27,7 +27,10 @@
 @property(readonly, nonatomic) NSURL *dataStorageHome; // @synthesize dataStorageHome=_dataStorageHome;
 @property(readonly, nonatomic) NSURL *userVolumeURL;
 @property(readonly, nonatomic) NSURL *frameworkURL;
+- (id)removabilityDirectoryAbortingOnError;
+- (id)removabilityDirectoryWithError:(id *)arg1;
 - (id)promiseStagingRootDirectoryAbortingOnError;
+- (id)remoteInstallationStagingDirectory:(id *)arg1;
 - (id)promiseStagingRootDirectoryWithError:(id *)arg1;
 - (id)dataDirectoryAbortingOnError;
 - (id)dataDirectoryWithError:(id *)arg1;

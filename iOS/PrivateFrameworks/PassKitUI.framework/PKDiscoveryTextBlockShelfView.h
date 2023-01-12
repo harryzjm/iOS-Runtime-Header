@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSAttributedString, PKDiscoveryTextBlockShelf, UILabel;
+#import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@interface PKDiscoveryTextBlockShelfView
+@class NSAttributedString, NSString, PKDiscoveryTextBlockShelf, UITextView;
+
+@interface PKDiscoveryTextBlockShelfView <UITextViewDelegate>
 {
-    UILabel *_bodyLabel;
+    UITextView *_textView;
     PKDiscoveryTextBlockShelf *_shelf;
     NSAttributedString *_attributedText;
 }
@@ -21,7 +23,14 @@
 - (id)_attributedStringForBody:(id)arg1 lede:(id)arg2 headerline:(id)arg3;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (id)initWithShelf:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

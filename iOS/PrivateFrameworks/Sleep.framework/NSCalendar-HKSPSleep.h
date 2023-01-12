@@ -21,6 +21,7 @@
 - (id)_hksp_nextDateAfterDate:(id)arg1 matchingComponents:(id)arg2 backwards:(_Bool)arg3;
 - (id)hksp_previousDateBeforeDate:(id)arg1 matchingComponents:(id)arg2;
 - (id)hksp_nextDateAfterDate:(id)arg1 matchingComponents:(id)arg2;
+- (unsigned long long)hksp_dayPeriodForDate:(id)arg1 locale:(id)arg2 options:(unsigned long long)arg3;
 - (unsigned long long)hksp_dayPeriodForDate:(id)arg1 locale:(id)arg2;
 - (id)hksp_localizedGroupingStringForWeekdays:(unsigned long long)arg1;
 - (id)hksp_orderedSleepWeekdaysForWeekdays:(unsigned long long)arg1;

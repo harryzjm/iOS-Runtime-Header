@@ -8,8 +8,12 @@ __attribute__((visibility("hidden")))
 @interface MTLRenderPipelineDescriptorInternal
 {
     struct MTLRenderPipelineDescriptorPrivate _private;
+    struct FlatBufferBuilder _builder;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (const void *)getPipelineScript;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (id)serializeFragmentData;
@@ -37,10 +41,29 @@ __attribute__((visibility("hidden")))
 - (void)setVertexFunction:(id)arg1;
 - (void)setLabel:(id)arg1;
 - (id)label;
-- (id)fastBlendDescriptorAtIndex:(unsigned long long)arg1;
 - (void)reset;
 - (id)fragmentBuffers;
 - (id)vertexBuffers;
+- (void)setMaxFragmentCallStackDepth:(unsigned long long)arg1;
+- (unsigned long long)maxFragmentCallStackDepth;
+- (void)setMaxVertexCallStackDepth:(unsigned long long)arg1;
+- (unsigned long long)maxVertexCallStackDepth;
+- (void)setSupportAddingFragmentBinaryFunctions:(_Bool)arg1;
+- (_Bool)supportAddingFragmentBinaryFunctions;
+- (void)setSupportAddingVertexBinaryFunctions:(_Bool)arg1;
+- (_Bool)supportAddingVertexBinaryFunctions;
+- (void)setInsertFragmentLibraries:(id)arg1;
+- (id)insertFragmentLibraries;
+- (void)setInsertVertexLibraries:(id)arg1;
+- (id)insertVertexLibraries;
+- (void)setFragmentPreloadedLibraries:(id)arg1;
+- (id)fragmentPreloadedLibraries;
+- (void)setVertexPreloadedLibraries:(id)arg1;
+- (id)vertexPreloadedLibraries;
+- (void)setFragmentLinkedFunctions:(id)arg1;
+- (id)fragmentLinkedFunctions;
+- (void)setVertexLinkedFunctions:(id)arg1;
+- (id)vertexLinkedFunctions;
 - (id)binaryArchives;
 - (void)setBinaryArchives:(id)arg1;
 - (void)setInputPrimitiveTopology:(unsigned long long)arg1;
@@ -102,8 +125,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)resourceIndex;
 - (void)setForceResourceIndex:(_Bool)arg1;
 - (_Bool)forceResourceIndex;
-- (long long)textureWriteFPRoundingMode;
-- (void)setTextureWriteFPRoundingMode:(long long)arg1;
 - (long long)textureWriteRoundingMode;
 - (void)setTextureWriteRoundingMode:(long long)arg1;
 - (void)setSupportIndirectCommandBuffers:(_Bool)arg1;

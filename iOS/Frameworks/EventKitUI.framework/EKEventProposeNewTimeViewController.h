@@ -14,7 +14,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKEvent, EKEventDateEditItem, EKInviteeAlternativeTimeSearcher, EKUIEventStatusButtonsView, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewMessageSendingManager, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSString, SingleToolbarItemContainerView;
+@class EKEvent, EKEventDateEditItem, EKInviteeAlternativeTimeSearcher, EKUIEmailCompositionManager, EKUIEventStatusButtonsView, EKUIInviteesViewAllInviteesCanAttendSection, EKUIInviteesViewOriginalConflictSection, EKUIInviteesViewSomeInviteesCanAttendSection, NSArray, NSDate, NSString, NSTimer, SingleToolbarItemContainerView, UIActivityIndicatorView;
 @protocol EKEditItemViewControllerDelegate;
 
 @interface EKEventProposeNewTimeViewController : UITableViewController <EKEditItemViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, EKCalendarItemEditItemDelegate, EKEventDateEditItemDelegate, EKUIEventStatusButtonsViewDelegate, EKEditItemViewControllerProtocol>
@@ -29,24 +29,28 @@
     SingleToolbarItemContainerView *_statusButtonsContainerView;
     double _statusButtonsViewCachedFontSize;
     NSDate *_proposedStartDate;
+    UIActivityIndicatorView *_availabilitySearcherRunningSpinner;
+    NSTimer *_availabilitySearcherRunningSpinnerTimer;
     NSArray *_sections;
     EKEventDateEditItem *_proposeTimeItem;
     EKUIInviteesViewOriginalConflictSection *_originalConflictSection;
     EKUIInviteesViewSomeInviteesCanAttendSection *_someInviteesCanAttendSection;
     EKUIInviteesViewAllInviteesCanAttendSection *_allInviteesCanAttendSection;
     EKInviteeAlternativeTimeSearcher *_availabilitySearcher;
-    EKUIInviteesViewMessageSendingManager *_messageSendingManager;
+    EKUIEmailCompositionManager *_messageSendingManager;
 }
 
 + (id)_participantsInArray:(id)arg1 thatAreNotInArray:(id)arg2;
 - (void).cxx_destruct;
-@property(retain, nonatomic) EKUIInviteesViewMessageSendingManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
+@property(retain, nonatomic) EKUIEmailCompositionManager *messageSendingManager; // @synthesize messageSendingManager=_messageSendingManager;
 @property(retain, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
 @property(retain, nonatomic) EKUIInviteesViewAllInviteesCanAttendSection *allInviteesCanAttendSection; // @synthesize allInviteesCanAttendSection=_allInviteesCanAttendSection;
 @property(retain, nonatomic) EKUIInviteesViewSomeInviteesCanAttendSection *someInviteesCanAttendSection; // @synthesize someInviteesCanAttendSection=_someInviteesCanAttendSection;
 @property(retain, nonatomic) EKUIInviteesViewOriginalConflictSection *originalConflictSection; // @synthesize originalConflictSection=_originalConflictSection;
 @property(retain, nonatomic) EKEventDateEditItem *proposeTimeItem; // @synthesize proposeTimeItem=_proposeTimeItem;
 @property(retain, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property(retain, nonatomic) NSTimer *availabilitySearcherRunningSpinnerTimer; // @synthesize availabilitySearcherRunningSpinnerTimer=_availabilitySearcherRunningSpinnerTimer;
+@property(retain, nonatomic) UIActivityIndicatorView *availabilitySearcherRunningSpinner; // @synthesize availabilitySearcherRunningSpinner=_availabilitySearcherRunningSpinner;
 @property(retain, nonatomic) NSDate *proposedStartDate; // @synthesize proposedStartDate=_proposedStartDate;
 @property(nonatomic) double statusButtonsViewCachedFontSize; // @synthesize statusButtonsViewCachedFontSize=_statusButtonsViewCachedFontSize;
 @property(retain, nonatomic) SingleToolbarItemContainerView *statusButtonsContainerView; // @synthesize statusButtonsContainerView=_statusButtonsContainerView;
@@ -59,12 +63,15 @@
 @property(readonly, nonatomic) NSDate *selectedStartDate; // @synthesize selectedStartDate=_selectedStartDate;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)defaultAlertTitleForEditItem:(id)arg1;
+- (void)editItemRequiresHeightChange:(id)arg1;
 - (void)editItem:(id)arg1 wantsRowsScrolledToVisible:(id)arg2;
 - (void)editItem:(id)arg1 wantsRowReload:(id)arg2;
 - (void)editItem:(id)arg1 wantsRowInsertions:(id)arg2 rowDeletions:(id)arg3 rowReloads:(id)arg4;
 - (void)editItem:(id)arg1 wantsRowInsertions:(id)arg2 rowDeletions:(id)arg3;
 - (void)editItem:(id)arg1 wantsDoneButtonDisabled:(_Bool)arg2;
 - (void)updateCheckmark;
+- (void)_cancelAvailabilitySpinnerTimer;
+- (void)_scheduleAvailabilitySpinnerTimer;
 - (void)_searcherStateChanged:(long long)arg1;
 - (void)_refreshIfNeeded;
 - (id)_sectionForIndex:(unsigned long long)arg1;
@@ -90,6 +97,7 @@
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -101,6 +109,7 @@
 - (_Bool)proposedTimeChanged;
 - (void)viewDidLoad;
 - (void)dateChangedTo:(id)arg1;
+- (void)resetBackgroundColor;
 - (void)loadView;
 - (void)viewWillLayoutSubviews;
 - (void)_updateStatusButtons;

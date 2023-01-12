@@ -7,6 +7,5 @@
 #import <IntentsUI/NSObject-Protocol.h>
 
 @protocol _INUIRemoteViewControllerHosting <NSObject>
-- (void)serviceViewControllerDesiresConstrainedSize:(struct CGSize)arg1;
 @end
 

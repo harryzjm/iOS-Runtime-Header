@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSValue;
+@class NSString, NSValue, WFFileType;
 
 @interface WFCloudKitItemProperty : NSObject
 {
@@ -15,23 +15,26 @@
     NSString *_name;
     Class _itemClass;
     NSValue *_nilValue;
+    WFFileType *_fileType;
 }
 
 + (id)itemPropertyWithName:(id)arg1 itemClass:(Class)arg2;
 + (id)itemReferencePropertyWithName:(id)arg1 itemClass:(Class)arg2;
-+ (id)assetPropertyWithName:(id)arg1 ignoredByDefault:(_Bool)arg2;
++ (id)assetPropertyWithName:(id)arg1 fileType:(id)arg2 ignoredByDefault:(_Bool)arg3;
++ (id)assetPropertyWithName:(id)arg1 fileType:(id)arg2;
 + (id)assetPropertyWithName:(id)arg1;
 + (id)objectPropertyWithName:(id)arg1 ignoredByDefault:(_Bool)arg2;
 + (id)objectPropertyWithName:(id)arg1;
 + (id)scalarPropertyWithName:(id)arg1 nilValue:(id)arg2 ignoredByDefault:(_Bool)arg3;
 + (id)scalarPropertyWithName:(id)arg1 nilValue:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WFFileType *fileType; // @synthesize fileType=_fileType;
 @property(readonly, nonatomic) NSValue *nilValue; // @synthesize nilValue=_nilValue;
 @property(readonly, nonatomic, getter=isIgnoredByDefault) _Bool ignoredByDefault; // @synthesize ignoredByDefault=_ignoredByDefault;
 @property(readonly, nonatomic) Class itemClass; // @synthesize itemClass=_itemClass;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-- (id)initWithType:(unsigned long long)arg1 name:(id)arg2 itemClass:(Class)arg3 ignoredByDefault:(_Bool)arg4 nilValue:(id)arg5;
+- (id)initWithType:(unsigned long long)arg1 name:(id)arg2 itemClass:(Class)arg3 ignoredByDefault:(_Bool)arg4 nilValue:(id)arg5 fileType:(id)arg6;
 
 @end
 

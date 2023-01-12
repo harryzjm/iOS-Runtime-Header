@@ -6,30 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class ATXHomeScreenWidgetIdentifiable, ATXProactiveSuggestion, NSString;
+@class ATXHomeScreenWidgetIdentifiable, ATXInfoSuggestion, ATXProactiveSuggestion, NSArray, NSSet, NSString;
 
 @interface ATXHomeScreenStackSuggestion : NSObject
 {
-    _Bool _isAlreadyInStack;
+    NSArray *_topWidgetSuggestions;
     _Bool _isLowConfidenceStackRotationForStaleStack;
     NSString *_stackId;
-    ATXHomeScreenWidgetIdentifiable *_widget;
-    NSString *_suggestionIdentifier;
-    ATXProactiveSuggestion *_proactiveSuggestion;
+    ATXHomeScreenWidgetIdentifiable *_topWidget;
+    NSSet *_suggestedWidgets;
 }
 
++ (unsigned long long)_stackLayoutSizeFromUILayoutType:(long long)arg1;
++ (id)_widgetsFromSuggestionLayouts:(id)arg1;
++ (id)_widgetProactiveSuggestionFromLayout:(id)arg1;
++ (id)_widgetAndSuggestionsFromSuggestionLayout:(id)arg1;
++ (id)widgetFromSuggestionLayout:(id)arg1;
++ (id)stackSuggestionsFromCachedSuggestions:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isLowConfidenceStackRotationForStaleStack; // @synthesize isLowConfidenceStackRotationForStaleStack=_isLowConfidenceStackRotationForStaleStack;
-@property(retain, nonatomic) ATXProactiveSuggestion *proactiveSuggestion; // @synthesize proactiveSuggestion=_proactiveSuggestion;
-@property(copy, nonatomic) NSString *suggestionIdentifier; // @synthesize suggestionIdentifier=_suggestionIdentifier;
-@property(nonatomic) _Bool isAlreadyInStack; // @synthesize isAlreadyInStack=_isAlreadyInStack;
-@property(retain, nonatomic) ATXHomeScreenWidgetIdentifiable *widget; // @synthesize widget=_widget;
-@property(copy, nonatomic) NSString *stackId; // @synthesize stackId=_stackId;
+@property(readonly, nonatomic) _Bool isLowConfidenceStackRotationForStaleStack; // @synthesize isLowConfidenceStackRotationForStaleStack=_isLowConfidenceStackRotationForStaleStack;
+@property(readonly, nonatomic) NSSet *suggestedWidgets; // @synthesize suggestedWidgets=_suggestedWidgets;
+@property(readonly, nonatomic) ATXHomeScreenWidgetIdentifiable *topWidget; // @synthesize topWidget=_topWidget;
+@property(readonly, nonatomic) NSString *stackId; // @synthesize stackId=_stackId;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool isSuggestionWidget;
+@property(readonly, nonatomic) ATXProactiveSuggestion *topWidgetProactiveSuggestion;
+@property(readonly, nonatomic) ATXInfoSuggestion *topWidgetInfoSuggestion;
+@property(readonly, nonatomic) _Bool isTopWidgetSuggestionsWidget;
+- (id)initForDebuggingWithStackIdentifier:(id)arg1 topWidget:(id)arg2 suggestedWidgets:(id)arg3;
+- (id)initWithStackIdentifier:(id)arg1 layoutOfTopWidget:(id)arg2 layoutOfSuggestedWidgets:(id)arg3;
 
 @end
 

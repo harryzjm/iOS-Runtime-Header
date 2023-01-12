@@ -12,11 +12,11 @@
 {
     MISSING_TYPE *fileManager;
     MISSING_TYPE *fileURL;
+    MISSING_TYPE *directoryURL;
     MISSING_TYPE *cacheCapacity;
     MISSING_TYPE *identifierTable;
     MISSING_TYPE *headNode;
     MISSING_TYPE *tailNode;
-    MISSING_TYPE *delegate;
 }
 
 @end

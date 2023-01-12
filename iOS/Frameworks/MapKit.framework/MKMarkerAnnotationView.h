@@ -47,6 +47,7 @@
 - (id)_effectiveSubtitlesIsCollidable:(_Bool *)arg1;
 - (_Bool)isProvidingCustomFeature;
 - (_Bool)_shouldDeselectWhenDragged;
+- (void)_swayAnimation;
 - (void)dealloc;
 - (_Bool)updateCalloutViewIfNeededAnimated:(_Bool)arg1;
 - (void)_setSelected:(_Bool)arg1 animated:(_Bool)arg2;
@@ -59,6 +60,8 @@
 - (void)_setShadowAlpha:(double)arg1 transform:(struct CGAffineTransform)arg2 duration:(double)arg3;
 - (void)_configureViewsForState:(long long)arg1 usesCallout:(_Bool)arg2 animated:(_Bool)arg3;
 - (CDStruct_45683352)_metricsForState:(long long)arg1;
+- (void)_updateStyle;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)prepareForSnapshotting;
 - (void)_unhideForDisplay;
 - (void)prepareForDisplay;

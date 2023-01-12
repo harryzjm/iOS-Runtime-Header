@@ -12,6 +12,7 @@
 {
     _Bool _preHintRangeOutOfBounds;
     _Bool _postHintRangeOutOfBounds;
+    _Bool _overrideHoldout;
     NSString *_identifier;
     NSDate *_firstShownDate;
     TPSExperiment *_experiment;
@@ -22,6 +23,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool overrideHoldout; // @synthesize overrideHoldout=_overrideHoldout;
 @property(readonly, nonatomic) _Bool postHintRangeOutOfBounds; // @synthesize postHintRangeOutOfBounds=_postHintRangeOutOfBounds;
 @property(readonly, nonatomic) _Bool preHintRangeOutOfBounds; // @synthesize preHintRangeOutOfBounds=_preHintRangeOutOfBounds;
 @property(readonly, nonatomic) unsigned long long postHintUsageCount; // @synthesize postHintUsageCount=_postHintUsageCount;

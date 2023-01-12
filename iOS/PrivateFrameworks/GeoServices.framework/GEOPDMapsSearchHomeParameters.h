@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDCollectionSuggestionParameters, GEOPDPublisherSuggestionParameters, GEOPDSearchBrowseCategorySuggestionParameters, PBDataReader, PBUnknownFields;
+@class GEOPDCollectionSuggestionParameters, GEOPDGuidesLocationsSuggestionParameters, GEOPDPlaceSuggestionParameters, GEOPDPublisherSuggestionParameters, GEOPDSearchBrowseCategorySuggestionParameters, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDMapsSearchHomeParameters : PBCodable <NSCopying>
@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _supportedSectionTypes;
     GEOPDCollectionSuggestionParameters *_collectionSuggestionParameters;
+    GEOPDGuidesLocationsSuggestionParameters *_guidesLocationsSuggestionParameters;
+    GEOPDPlaceSuggestionParameters *_placeSuggestionParameters;
     GEOPDPublisherSuggestionParameters *_publisherSuggestionParameters;
     GEOPDSearchBrowseCategorySuggestionParameters *_searchBrowseCategorySuggestionParameters;
     unsigned int _readerMarkPos;
@@ -26,43 +28,23 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_supportedSectionTypes:1;
         unsigned int read_collectionSuggestionParameters:1;
+        unsigned int read_guidesLocationsSuggestionParameters:1;
+        unsigned int read_placeSuggestionParameters:1;
         unsigned int read_publisherSuggestionParameters:1;
         unsigned int read_searchBrowseCategorySuggestionParameters:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) GEOPDPublisherSuggestionParameters *publisherSuggestionParameters;
-@property(readonly, nonatomic) _Bool hasPublisherSuggestionParameters;
-@property(retain, nonatomic) GEOPDCollectionSuggestionParameters *collectionSuggestionParameters;
-@property(readonly, nonatomic) _Bool hasCollectionSuggestionParameters;
-@property(retain, nonatomic) GEOPDSearchBrowseCategorySuggestionParameters *searchBrowseCategorySuggestionParameters;
-@property(readonly, nonatomic) _Bool hasSearchBrowseCategorySuggestionParameters;
-- (int)StringAsSupportedSectionTypes:(id)arg1;
-- (id)supportedSectionTypesAsString:(int)arg1;
-- (void)setSupportedSectionTypes:(int *)arg1 count:(unsigned long long)arg2;
-- (int)supportedSectionTypeAtIndex:(unsigned long long)arg1;
-- (void)addSupportedSectionType:(int)arg1;
-- (void)clearSupportedSectionTypes;
-@property(readonly, nonatomic) int *supportedSectionTypes;
-@property(readonly, nonatomic) unsigned long long supportedSectionTypesCount;
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;

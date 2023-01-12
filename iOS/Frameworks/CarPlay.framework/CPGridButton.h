@@ -35,12 +35,14 @@
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqualToGridButton:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)_init;
 - (id)initWithTitleVariants:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

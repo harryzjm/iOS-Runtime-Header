@@ -16,7 +16,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)sysdiagnoseInformationWithError:(id *)arg1;
-- (_Bool)resetTrialMLModelsForNamespaceName:(id)arg1 error:(id *)arg2;
 - (_Bool)setTrialUseDefaultFiles:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)trialOverridePath:(id)arg1 namespaceName:(id)arg2 factorName:(id)arg3 error:(id *)arg4;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface HIDConnection (HIDFramework)
+- (void)getAuditToken:(CDStruct_6ad76789 *)arg1;
 @property(readonly) NSString *uuid;
 @end
 

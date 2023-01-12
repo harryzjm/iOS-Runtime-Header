@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/HDDataCollector-Protocol.h>
+#import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
 @class HDDataCollectorMultiplexer, HDDataCollectorState, HDProfile, NSMutableDictionary, NSSet, NSString;
 @protocol HDCoreMotionDataSource, OS_dispatch_queue;
 
-@interface HDCoreMotionDataCollector : NSObject <HDDataCollector>
+@interface HDCoreMotionDataCollector : NSObject <HDDiagnosticObject, HDDataCollector>
 {
     NSSet *_quantityTypes;
     HDDataCollectorMultiplexer *_multiplexer;
@@ -26,7 +27,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (id)_migrateDataCollectionContextForType:(id)arg1 error:(id *)arg2;
+- (id)diagnosticDescription;
 - (Class)sensorDatumClassForAggregator:(id)arg1;
 - (id)identifierForDataAggregator:(id)arg1;
 - (id)sourceForDataAggregator:(id)arg1;
@@ -39,15 +40,6 @@
 - (id)collectedTypes;
 - (Class)coreMotionDatumClass;
 - (void)_accessToFitnessDataDidChange:(id)arg1;
-- (void)_queue_beginUpdatesWithTargetCollectionType:(unsigned long long)arg1;
-- (void)_queue_populateLastDatumDictionary;
-- (id)_queue_lastPersistedSensorDatumForType:(id)arg1;
-- (void)_queue_updateCollectionType:(unsigned long long)arg1;
-- (void)didReceiveCoreMotionData:(id)arg1 startingDatum:(id)arg2 error:(id)arg3;
-- (id)_queue_diagnosticDescription;
-- (void)_queue_forwardCoreMotionData:(id)arg1;
-- (void)_queue_forwardCoreMotionData:(id)arg1 forType:(id)arg2;
-- (id)coreMotionDatumFromSensorDatum:(id)arg1;
 - (void)queue_recomputeCurrentState;
 - (void)registerWithAggregators;
 - (void)dealloc;

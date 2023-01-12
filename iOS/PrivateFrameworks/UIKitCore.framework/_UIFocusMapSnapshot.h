@@ -16,14 +16,18 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_mutableUnoccludedRegions;
     NSHashTable *_filteredOriginalRegions;
-    _Bool _didCaptureSnapshot;
     NSMutableArray *_containersBeingAdded;
     NSMutableArray *_containersBeingAddedFocusSystems;
+    NSMutableArray *_clippingRectsBeingAdded;
     NSHashTable *_eligibleEnvironments;
     NSHashTable *_ineligibleEnvironments;
-    _Bool _isSearchingRegionsOfInterestContainer;
-    _Bool _clipToSnapshotRect;
     NSArray *_regions;
+    struct {
+        unsigned int didCaptureSnapshot:1;
+        unsigned int isSearchingRegionsOfInterestContainer:1;
+        unsigned int clipToSnapshotRect:1;
+        unsigned int ignoresRootContainerClippingRect:1;
+    } _flags;
     UIFocusSystem *_focusSystem;
     id <_UIFocusRegionContainer> _rootContainer;
     id <_UIFocusMapArea> _mapArea;
@@ -53,7 +57,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSArray *originalRegions;
 @property(readonly, copy, nonatomic) NSArray *regions;
 - (id)_initWithSnapshotter:(id)arg1 mapArea:(id)arg2 searchArea:(id)arg3;
-- (id)_initWithSnapshotter:(id)arg1 mapArea:(id)arg2;
 - (id)init;
 - (id)_debugInfoWithFocusMapSearchInfo:(id)arg1;
 @property(readonly, nonatomic, getter=_debugInfo) _UIFocusMapSnapshotDebugInfo *debugInfo;

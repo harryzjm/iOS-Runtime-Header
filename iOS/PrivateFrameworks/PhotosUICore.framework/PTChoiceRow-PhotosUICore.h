@@ -7,6 +7,7 @@
 #import <PrototypeTools/PTChoiceRow.h>
 
 @interface PTChoiceRow (PhotosUICore)
+- (id)px_possibleValues:(id)arg1 formatter:(CDUnknownBlockType)arg2;
 - (id)px_possibleValues:(id)arg1;
 @end
 

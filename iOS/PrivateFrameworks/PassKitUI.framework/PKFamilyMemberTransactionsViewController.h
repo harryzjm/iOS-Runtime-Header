@@ -8,24 +8,26 @@
 #import <PassKitUI/PKDashboardTransactionFetcherDelegate-Protocol.h>
 #import <PassKitUI/_UIContextMenuInteractionDelegate-Protocol.h>
 
-@class NSArray, NSDateFormatter, NSString, PKDashboardTransactionFetcher, PKFamilyMember, PKPaymentTransactionCellController, PKPaymentTransactionDetailsFactory, PKPeerPaymentAccount, PKPeerPaymentContactResolver, PKPeerPaymentWebService, PKTransactionSource;
+@class NSArray, NSDateFormatter, NSString, PKAccount, PKContactResolver, PKDashboardTransactionFetcher, PKFamilyMember, PKFamilyMemberCollection, PKPaymentTransactionCellController, PKPaymentTransactionDetailsFactory, PKPeerPaymentAccount, PKPeerPaymentWebService, PKTransactionSourceCollection;
 @protocol PKPaymentDataProvider;
 
 @interface PKFamilyMemberTransactionsViewController <CNAvatarViewDelegate, _UIContextMenuInteractionDelegate, PKDashboardTransactionFetcherDelegate>
 {
     PKFamilyMember *_familyMember;
-    PKFamilyMember *_viewer;
+    PKFamilyMemberCollection *_familyCollection;
     PKPeerPaymentAccount *_peerPaymentAccount;
     PKPeerPaymentWebService *_peerPaymentWebService;
-    PKTransactionSource *_transactionSource;
+    PKTransactionSourceCollection *_transactionSourceCollection;
     PKDashboardTransactionFetcher *_transactionFetcher;
     PKPaymentTransactionDetailsFactory *_transactionDetailsFactory;
     long long _detailViewStyle;
-    PKPeerPaymentContactResolver *_contactResolver;
+    PKContactResolver *_contactResolver;
     id <PKPaymentDataProvider> _paymentServiceDataProvider;
     PKPaymentTransactionCellController *_transactionCellController;
     NSDateFormatter *_formatterYear;
     NSString *_viewerFamilyMemberTypeAnalyticsKey;
+    unsigned long long _mode;
+    PKAccount *_account;
     NSArray *_transactionGroups;
     NSArray *_transactions;
     _Bool _allContentIsLoaded;
@@ -59,7 +61,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)transactionViewControllerForTransaction:(id)arg1;
-- (id)initWithFamilyMember:(id)arg1 viewer:(id)arg2 transactionSource:(id)arg3 peerPaymentAccount:(id)arg4 peerPaymentWebService:(id)arg5 detailViewStyle:(long long)arg6 paymentServiceDataProvider:(id)arg7;
+- (id)initWithFamilyMember:(id)arg1 familyCollection:(id)arg2 transactionSource:(id)arg3 account:(id)arg4 peerPaymentAccount:(id)arg5 peerPaymentWebService:(id)arg6 detailViewStyle:(long long)arg7 paymentServiceDataProvider:(id)arg8 mode:(unsigned long long)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -30,8 +30,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithBuild:(id)arg1 chunkID:(int)arg2;
 - (id)initEmptyIdentifier;
-- (void)saveToMessage:(struct BuildChunkIdentifierArchive *)arg1;
-- (id)initWithMessage:(const struct BuildChunkIdentifierArchive *)arg1;
+- (void)saveToMessage:(void *)arg1;
+- (id)initWithMessage:(const void *)arg1;
 
 @end
 

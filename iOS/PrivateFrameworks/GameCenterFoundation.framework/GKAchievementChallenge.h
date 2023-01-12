@@ -12,6 +12,7 @@
 }
 
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKAchievement *achievement; // @synthesize achievement=_achievement;
 - (void)loadDetailsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)detailsLoaded;
@@ -19,7 +20,6 @@
 - (id)titleText;
 - (void)setInternal:(id)arg1;
 - (id)initWithInternalRepresentation:(id)arg1;
-- (void)dealloc;
 - (id)description;
 
 @end

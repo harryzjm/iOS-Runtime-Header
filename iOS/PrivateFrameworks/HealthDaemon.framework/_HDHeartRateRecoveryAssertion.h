@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemonFoundation/HDAssertion.h>
+
 @protocol HDWorkoutSessionStateController;
 
 __attribute__((visibility("hidden")))
-@interface _HDHeartRateRecoveryAssertion
+@interface _HDHeartRateRecoveryAssertion : HDAssertion
 {
     id <HDWorkoutSessionStateController> _sessionStateController;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) __weak id <HDWorkoutSessionStateController> sessionStateController; // @synthesize sessionStateController=_sessionStateController;
-- (id)initWithOwnerIdentifier:(id)arg1 sessionStateController:(id)arg2;
 
 @end
 

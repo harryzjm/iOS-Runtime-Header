@@ -12,6 +12,7 @@
 
 @class MPAVRoutingController, MPCMediaFoundationTranslator, MPCPlaybackEngine, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCExternalPlaybackControllerImplementation : NSObject <MPAVRoutingControllerDelegate, MFExternalPlaybackController, MPCExternalPlaybackRouter>
 {
     MPAVRoutingController *_routingController;
@@ -22,6 +23,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MPCMediaFoundationTranslator *translator; // @synthesize translator=_translator;
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+- (long long)exernalPlaybackRouteRestrictionForItem:(id)arg1 route:(id)arg2 isScreenMirroringActive:(_Bool)arg3;
+- (_Bool)playerShouldUseAudiOnlyMode:(id)arg1 item:(id)arg2 externalScreenType:(long long)arg3;
+- (_Bool)isExternalPlaybackAllowedForItem:(id)arg1;
 - (void)routingControllerExternalScreenTypeDidChange:(id)arg1;
 - (void)pickBestDeviceRoute;
 - (void)configureExternalPlaybackForPlayer:(id)arg1 queueItem:(id)arg2;

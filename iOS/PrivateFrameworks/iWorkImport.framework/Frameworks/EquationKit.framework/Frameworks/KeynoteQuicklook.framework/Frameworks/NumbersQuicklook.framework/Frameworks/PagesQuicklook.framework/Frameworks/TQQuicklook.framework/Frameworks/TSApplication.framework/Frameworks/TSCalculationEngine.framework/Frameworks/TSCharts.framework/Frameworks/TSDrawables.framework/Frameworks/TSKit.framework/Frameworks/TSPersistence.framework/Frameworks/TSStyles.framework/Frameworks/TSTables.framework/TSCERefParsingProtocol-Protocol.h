@@ -6,17 +6,17 @@
 
 #import <TSTables/NSObject-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSCECellTractRef, TSCEReferenceParsingContext, TSCEWrappedRangeRef;
+@class NSString, TSCECalculationEngine, TSCECategoryRef, TSCECellTractRef, TSCEReferenceParsingContext, TSCEWrappedRangeRef;
 
 @protocol TSCERefParsingProtocol <NSObject>
 - (TSCECellTractRef *)parseAsTractRefWithParsingContext:(TSCEReferenceParsingContext *)arg1;
 - (TSCEWrappedRangeRef *)parseAsChromeRefWithParsingContext:(TSCEReferenceParsingContext *)arg1;
-- (struct TSCECategoryRef)parseAsCategoryRefWithParsingContext:(TSCEReferenceParsingContext *)arg1;
-- (struct TSCECategoryRef)parseStringAsCategoryRef:(NSString *)arg1 withParsingContext:(TSCEReferenceParsingContext *)arg2;
+- (TSCECategoryRef *)parseAsCategoryRefWithParsingContext:(TSCEReferenceParsingContext *)arg1;
+- (TSCECategoryRef *)parseStringAsCategoryRef:(NSString *)arg1 withParsingContext:(TSCEReferenceParsingContext *)arg2;
 - (struct TSUCellCoord)parseR1C1Coord:(NSString *)arg1 containingCell:(const struct TSCECellRef *)arg2 preserveFlagsOut:(struct TSUPreserveFlags *)arg3;
 - (struct TSCERangeRef)parseR1C1Reference:(NSString *)arg1 containingCell:(const struct TSCECellRef *)arg2 preserveFlagsOut:(struct TSUPreserveFlags *)arg3;
-- (RefTypeHolder_1140c985)parseStringAsBaseReference:(NSString *)arg1 withParsingContext:(TSCEReferenceParsingContext *)arg2;
-- (RefTypeHolder_8c6da553)parseStringAsChromeReference:(NSString *)arg1 withParsingContext:(TSCEReferenceParsingContext *)arg2;
+- (RefTypeHolder_41ae741d)parseStringAsBaseReference:(NSString *)arg1 withParsingContext:(TSCEReferenceParsingContext *)arg2;
+- (RefTypeHolder_b26a20d2)parseStringAsChromeReference:(NSString *)arg1 withParsingContext:(TSCEReferenceParsingContext *)arg2;
 - (id)initWithCalcEngine:(TSCECalculationEngine *)arg1;
 @end
 

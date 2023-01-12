@@ -17,6 +17,7 @@
     NSString *_cachedAppBundleID;
 }
 
++ (void)setCurrentAttributionStringWithFormat:(id)arg1 auditToken:(CDStruct_4c969caf)arg2;
 + (void)setCurrentAttributionKey:(id)arg1 andApp:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -24,10 +25,12 @@
 @property(retain, nonatomic) NSString *cachedLocalizedPlistKey; // @synthesize cachedLocalizedPlistKey=_cachedLocalizedPlistKey;
 @property(retain, nonatomic) NSXPCConnection *serverXPCConnection; // @synthesize serverXPCConnection=_serverXPCConnection;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+- (void)_internalQueue_sendAttributionStringWithFormat:(id)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2;
 - (void)_internalQueue_sendAttributionKey:(id)arg1 andApp:(id)arg2;
 - (void)_tearDownXPCConnection;
 - (void)_resendAttributionData;
 - (void)_internalQueue_setupXPCConnectionIfNecessary;
+- (void)setCurrentAttributionStringWithFormat:(id)arg1 maskingClientAuditToken:(CDStruct_4c969caf)arg2;
 - (void)setCurrentAttributionKey:(id)arg1 application:(id)arg2;
 - (id)init;
 

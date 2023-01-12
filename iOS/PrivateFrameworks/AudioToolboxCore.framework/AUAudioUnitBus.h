@@ -22,12 +22,12 @@
     AUAudioUnit *_ownerAudioUnit;
     NSArray *_supportedChannelLayoutTags;
     double _contextPresentationLatency;
-    vector_e102d759 _observers;
+    vector_a9037590 _observers;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) vector_e102d759 observers; // @synthesize observers=_observers;
+@property(nonatomic) vector_a9037590 observers; // @synthesize observers=_observers;
 @property(nonatomic) double contextPresentationLatency; // @synthesize contextPresentationLatency=_contextPresentationLatency;
 @property(readonly, copy, nonatomic) NSArray *supportedChannelLayoutTags; // @synthesize supportedChannelLayoutTags=_supportedChannelLayoutTags;
 @property(readonly, nonatomic) AUAudioUnit *ownerAudioUnit; // @synthesize ownerAudioUnit=_ownerAudioUnit;

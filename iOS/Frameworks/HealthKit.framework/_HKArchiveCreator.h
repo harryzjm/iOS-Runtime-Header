@@ -8,18 +8,22 @@
 
 #import <HealthKit/_HKArchiveWriter-Protocol.h>
 
-@class NSFileHandle, NSURL;
+@class NSError, NSFileHandle, NSURL;
 
 @interface _HKArchiveCreator : NSObject <_HKArchiveWriter>
 {
     struct archive *_archive;
     NSURL *_archiveURL;
     NSFileHandle *_fileHandle;
+    NSError *_error;
 }
 
++ (_Bool)archiveContentsOfDirectoryAtURL:(id)arg1 archiveURL:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
 @property(readonly, copy, nonatomic) NSURL *archiveURL; // @synthesize archiveURL=_archiveURL;
+- (void)_closeArchiveWithError:(id)arg1;
 - (void)closeArchive;
 - (void)_addDataOfSize:(long long)arg1 toPathInArchive:(id)arg2 fromByteProvider:(CDUnknownBlockType)arg3;
 - (void)addDataToArchive:(id)arg1 pathInArchive:(id)arg2;

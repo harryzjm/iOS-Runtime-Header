@@ -15,8 +15,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
-- (unsigned long long)hash;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
+- (unsigned long long)hash;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -24,6 +24,7 @@
 - (id)initWithCoder:(id)arg1;
 - (double)getDistanceFrom:(struct CLLocationCoordinate2D)arg1;
 - (void)dealloc;
+- (id)initWithClientCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1;
 
 @end

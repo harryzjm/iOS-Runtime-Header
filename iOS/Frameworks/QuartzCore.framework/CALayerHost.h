@@ -4,19 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface CALayerHost
 {
+    float _asynchronousRenderMaxAPL;
+    float _asynchronousRenderMaxAPLStrength;
 }
 
 + (_Bool)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (_Bool)_hasRenderLayerSubclass;
+@property float asynchronousRenderMaxAPLStrength; // @synthesize asynchronousRenderMaxAPLStrength=_asynchronousRenderMaxAPLStrength;
+@property float asynchronousRenderMaxAPL; // @synthesize asynchronousRenderMaxAPL=_asynchronousRenderMaxAPL;
 @property _Bool preservesFlip;
+@property(copy) NSArray *asynchronousRenderTimes;
+@property double asynchronousRenderPeriod;
 @property _Bool rendersAsynchronously;
 @property _Bool inheritsSecurity;
 @property unsigned int contextId;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 - (_Bool)_renderLayerDefinesProperty:(unsigned int)arg1;
-- (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
+- (void *)_copyRenderLayer:(void *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
 - (void)didChangeValueForKey:(id)arg1;
 
 @end

@@ -13,6 +13,8 @@
     _TtC17KnowledgeGraphKit20MAFloatMatrixWrapper *_wrapper;
 }
 
++ (id)onesWithRows:(long long)arg1 columns:(long long)arg2;
++ (id)zerosWithRows:(long long)arg1 columns:(long long)arg2;
 + (Class)wrapperClass;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _TtC17KnowledgeGraphKit20MAFloatMatrixWrapper *wrapper; // @synthesize wrapper=_wrapper;
@@ -25,6 +27,8 @@
 - (_Bool)isApproximatelyEqualTo:(id)arg1;
 - (id)meanAlongAxis:(unsigned long long)arg1;
 - (id)sumAlongAxis:(unsigned long long)arg1;
+- (id)matrixByAppendingColumnsOfMatrix:(id)arg1;
+- (id)matrixByAppendingColumn:(id)arg1;
 - (id)matrixByAppendingRow:(id)arg1;
 - (id)matrixByAddingScalar:(float)arg1;
 - (id)matrixBySubtractingScalar:(float)arg1;

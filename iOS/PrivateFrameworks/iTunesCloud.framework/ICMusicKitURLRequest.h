@@ -9,6 +9,7 @@
 @interface ICMusicKitURLRequest
 {
     ICStoreURLRequest *_pendingEquivalentStoreURLRequest;
+    NSString *_cachedDescription;
     NSString *_developerToken;
     NSDictionary *_additionalHTTPCookies;
 }
@@ -26,6 +27,7 @@
 @property(readonly, copy, nonatomic) ICMusicKitRequestContext *requestContext;
 - (void)buildURLRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)description;
+- (id)_description;
 @property(readonly, nonatomic) ICStoreURLRequest *_pendingEquivalentStoreURLRequest;
 - (void)_setDeveloperToken:(id)arg1;
 - (id)initWithURLRequest:(id)arg1 requestContext:(id)arg2 resumeData:(id)arg3;

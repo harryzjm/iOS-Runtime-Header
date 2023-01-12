@@ -57,6 +57,7 @@
 - (_Bool)_performOnDemandReconciliationForConnection:(id)arg1 withSchema:(id)arg2;
 - (long long)_maxRowIDForColumn:(id)arg1 withConnection:(id)arg2;
 - (_Bool)_updateSqliteSequenceForDatabase:(id)arg1 schema:(id)arg2 withConnection:(id)arg3 error:(id *)arg4;
+- (_Bool)_upgradeJournalWithConnection:(id)arg1 schema:(id)arg2 error:(id *)arg3;
 - (_Bool)_initializeDatabase:(id)arg1 withConnection:(id)arg2 schema:(id)arg3 error:(id *)arg4;
 - (void)_detachJournalDatabaseFromConnection:(id)arg1;
 - (void)_attachJournalDatabaseToConnection:(id)arg1 withSchema:(id)arg2;

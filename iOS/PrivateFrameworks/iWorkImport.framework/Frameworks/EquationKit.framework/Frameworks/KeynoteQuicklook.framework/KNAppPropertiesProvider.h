@@ -12,6 +12,8 @@
 {
 }
 
+- (id)appChartPropertyOverrides;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (unsigned long long)webVideoRequiredDocumentWriteVersion;
 - (id)bladerunnerContainerIdentifier;
 - (id)cloudKitSyncContainerIdentifier;
@@ -23,6 +25,7 @@
 - (id)templateSFFDocumentType;
 - (id)templateDocumentType;
 - (id)nativeDocumentType;
+- (Class)documentRootClass;
 - (id)templateTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
 - (id)documentTypeDisplayName;

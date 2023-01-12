@@ -10,7 +10,6 @@
 @protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @protocol SBUIPasscodeLockView <NSObject>
-@property(nonatomic) double backgroundAlpha;
 @property(copy, nonatomic) NSString *unlockDestination;
 @property(nonatomic, getter=isScreenOn) _Bool screenOn;
 @property(retain, nonatomic) id <SBFLegibilitySettingsProvider> backgroundLegibilitySettingsProvider;
@@ -30,6 +29,7 @@
 @property(readonly, nonatomic) NSString *passcode;
 @property(readonly, nonatomic) int style;
 @property(nonatomic) __weak id <SBUIPasscodeLockViewDelegate> delegate;
+- (_Bool)supportsPoseidonCoaching;
 - (void)becomeActiveWithAnimationSettings:(BSAnimationSettings *)arg1;
 - (void)setAllowsStatusTextUpdatingOnResignFirstResponder:(_Bool)arg1;
 - (void)updateStatusText:(NSString *)arg1 subtitle:(NSString *)arg2 animated:(_Bool)arg3;
@@ -39,7 +39,12 @@
 - (void)setKeypadVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)reset;
 - (void)resetForScreenOff;
-- (void)resetForSuccessViaPasscode:(_Bool)arg1;
+- (void)resetForSuccess;
 - (void)resetForFailedPasscode;
+
+@optional
+@property(nonatomic) double backgroundAlpha;
+- (void)noteBottomFaceHasBeenOccluded;
+- (void)noteFaceHasBeenOccluded;
 @end
 

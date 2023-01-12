@@ -33,7 +33,6 @@
 - (id)_specificEncodingBehaviorCommandForGraphConfiguration:(id)arg1;
 - (id)_specificFramerateCommandForGraphConfiguration:(id)arg1 withContext:(id)arg2;
 - (id)_existingOutputsWithContext:(id)arg1 without:(id)arg2;
-- (id)_desiredOutputsWithContext:(id)arg1 shouldUseThumbnailOutputForFilters:(_Bool)arg2;
 - (id)_existingInputsWithContext:(id)arg1 without:(id)arg2;
 - (id)_desiredInputsWithContext:(id)arg1;
 - (id)userInfo;

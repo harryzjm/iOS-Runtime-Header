@@ -11,11 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)prepareForReuse;
+- (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (void)_axSetImageDescription:(id)arg1;
-- (id)_axImageDescription;
+- (void)_axSetImageURL:(id)arg1;
+- (id)_axImageURL;
+- (void)_axSetDescription:(id)arg1;
+- (id)_axDescription;
 - (void)_axSetContact:(id)arg1;
 - (id)_axContact;
 

@@ -14,6 +14,7 @@
     AFClientPluginManager *_pluginManager;
     NSDictionary *_snippetExtensionsCache;
     NSObject<OS_dispatch_queue> *_snippetExtensionsQueue;
+    NSObject<OS_dispatch_queue> *_pluginBundlesQueue;
 }
 
 + (id)sharedInstance;

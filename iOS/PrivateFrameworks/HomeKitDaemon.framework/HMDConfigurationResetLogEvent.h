@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
 @class NSString;
 
-@interface HMDConfigurationResetLogEvent <HMDAWDLogEvent>
+@interface HMDConfigurationResetLogEvent : HMMLogEvent <HMDAWDLogEvent>
 {
 }
 
-+ (id)uuid;
 + (id)configurationReset;
 - (id)metricForAWD;
 - (unsigned int)AWDMessageType;

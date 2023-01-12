@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)imageDescriptionFromSourceContent:(id)arg1;
 + (id)_privateImageMetadataDescriptors;
 + (id)cleanImageMetadataFromData:(id)arg1;
 + (_Bool)hasPrivateImageMetadata:(id)arg1;

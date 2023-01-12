@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUTriggerLikeItem-Protocol.h>
 
-@class HFTriggerItem, HFTriggerNaturalLanguageOptions, HMHome, HMTrigger, HURecommendationItem, NSArray, NSDictionary, NSNumber, NSString;
+@class HFTriggerItem, HFTriggerNaturalLanguageOptions, HMHome, HMTrigger, HRERecommendationItem, NSArray, NSDictionary, NSNumber, NSString;
 @protocol HFServiceLikeItem, HUTriggerLikeItem;
 
 @interface HUAvailableTriggerItem : HFItem <HUTriggerLikeItem>
@@ -29,12 +29,10 @@
 @property(readonly, nonatomic) HFItem<HUTriggerLikeItem> *sourceItem; // @synthesize sourceItem=_sourceItem;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 - (void)_updateNaturalLanguageOptions;
-- (id)recommendationNaturalLanguageTitleWithOptions:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (id)matchingTrigger;
 @property(readonly, nonatomic) HMTrigger *trigger;
 @property(readonly, nonatomic) NSString *identifier;
-@property(readonly, nonatomic) HURecommendationItem *recommendationItem;
+@property(readonly, nonatomic) HRERecommendationItem *recommendationItem;
 @property(readonly, nonatomic) HFTriggerItem *triggerItem;
 @property(nonatomic, getter=isActive) _Bool active;
 - (id)removalTriggerBuildersForTriggers:(id)arg1 home:(id)arg2 context:(id)arg3 relatedItems:(id)arg4;

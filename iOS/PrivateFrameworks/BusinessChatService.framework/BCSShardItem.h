@@ -10,38 +10,31 @@
 #import <BusinessChatService/NSCopying-Protocol.h>
 #import <BusinessChatService/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, _PASBloomFilter;
+@class NSDate, NSString;
 
+__attribute__((visibility("hidden")))
 @interface BCSShardItem : NSObject <BCSShardItemProtocol, NSCopying, NSSecureCoding>
 {
-    _PASBloomFilter *_bloomFilter;
-    NSString *_bloomFilterString;
+    NSString *_base64EncodedString;
+    long long _type;
     long long _startIndex;
     long long _shardCount;
     NSDate *_expirationDate;
-    long long _type;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *bloomFilterString; // @synthesize bloomFilterString=_bloomFilterString;
-@property(readonly, nonatomic) _PASBloomFilter *bloomFilter; // @synthesize bloomFilter=_bloomFilter;
-@property(readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property(readonly, nonatomic) long long shardCount; // @synthesize shardCount=_shardCount;
-@property(readonly, nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
-@property(readonly, nonatomic) long long type; // @synthesize type=_type;
-- (_Bool)containsItemMatching:(id)arg1;
+@property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property(nonatomic) long long shardCount; // @synthesize shardCount=_shardCount;
+@property(nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
+@property(nonatomic) long long type; // @synthesize type=_type;
+@property(retain, nonatomic) NSString *base64EncodedString; // @synthesize base64EncodedString=_base64EncodedString;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic, getter=isExpired) _Bool expired;
 @property(readonly, copy) NSString *description;
-- (id)initWithBloomFilter:(id)arg1 bloomFilterString:(id)arg2 startIndex:(long long)arg3 shardCount:(long long)arg4 type:(long long)arg5 expirationDate:(id)arg6;
-- (id)initWithBloomFilterString:(id)arg1 startIndex:(long long)arg2 shardCount:(long long)arg3 type:(long long)arg4 expirationDate:(id)arg5;
-- (id)initWithBusinessLinkShardItem:(id)arg1;
-- (id)initWithURL:(id)arg1;
-- (id)initWithRecord:(id)arg1 type:(long long)arg2;
-- (id)initWithJSONObj:(id)arg1 type:(long long)arg2;
+- (id)initWithBase64EncodedString:(id)arg1 shardType:(long long)arg2 startIndex:(long long)arg3 shardCount:(long long)arg4 expirationDate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

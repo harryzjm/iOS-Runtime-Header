@@ -23,6 +23,7 @@
     REUpNextScheduler *_updateScheduler;
     REUpNextScheduler *_reloadScheduler;
     _Bool _wantsReloadWhilePaused;
+    NSArray *_sectionsToReloadWhilePaused;
     _Bool _hasDataAvailable;
     unsigned long long _contentMode;
     _Bool _isPerformingReload;
@@ -35,6 +36,7 @@
     _Bool _supportsContentRelevance;
     NSArray *_contentAttributes;
     int _boostCount;
+    _Bool _disableAutomaticContentManagement;
     Class _dataSourceClass;
     REElementDataSource *_dataSource;
     unsigned long long _state;
@@ -61,6 +63,11 @@
 - (void)_queue_performUpdates;
 - (void)_queue_scheduleUpdate:(id)arg1;
 - (id)_groupElements:(id)arg1 bySections:(id)arg2;
+- (void)_queue_performContentInvalidateWithElement:(id)arg1 expectation:(id)arg2 sections:(id)arg3;
+- (void)_queue_reloadWithQOS:(unsigned int)arg1 qosOffset:(int)arg2 forceReload:(_Bool)arg3 operations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_queue_purgeContentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queue_invalidateSections:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_reloadWithQOS:(unsigned int)arg1 qosOffset:(int)arg2 forceReload:(_Bool)arg3 sections:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_queue_reloadWithQOS:(unsigned int)arg1 qosOffset:(int)arg2 forceReload:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_performOrEnqueueUpdateBlock:(CDUnknownBlockType)arg1;
 - (void)removeElementsWithIds:(id)arg1;
@@ -69,8 +76,10 @@
 - (void)reloadElement:(id)arg1;
 - (void)addElements:(id)arg1 toSectionWithIdentifier:(id)arg2;
 - (void)addElements:(id)arg1 toSection:(unsigned long long)arg2;
+- (void)invalidateElementsInSection:(id)arg1;
 - (void)invalidateElements;
 - (id)elementOperationQueue;
+- (void)invalidateElementsInSections:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)invalidateAndReloadWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool hasLoadedData;
 - (void)prepareToUnload;
@@ -79,6 +88,8 @@
 - (void)_queue_pause;
 - (void)pauseIfNeeded;
 - (void)pause;
+- (void)_queue_processPendingUpdatesWhilePause:(CDUnknownBlockType)arg1;
+- (void)processPendingUpdatesWhilePause:(CDUnknownBlockType)arg1;
 - (void)_queue_resume;
 - (void)resume;
 - (_Bool)_isWhitelisted;
@@ -101,6 +112,7 @@
 - (void)_handleDeviceLockStateChange:(id)arg1;
 - (void)_handleSignifiantTimeChange:(id)arg1;
 - (void)dealloc;
+- (unsigned int)_defaultDataSourceQOS;
 - (id)_initWithRelevanceEngine:(id)arg1 dataSourceClass:(Class)arg2 dataSource:(id)arg3;
 - (id)initWithRelevanceEngine:(id)arg1 dataSourceClass:(Class)arg2;
 - (id)initWithRelevanceEngine:(id)arg1 dataSource:(id)arg2;

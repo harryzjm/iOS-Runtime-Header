@@ -17,16 +17,16 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) PSSpecifier *infoSpecifier; // @synthesize infoSpecifier=_infoSpecifier;
+@property(readonly) PSSpecifier *infoSpecifier; // @synthesize infoSpecifier=_infoSpecifier;
 @property(retain) PSSpecifier *specifier; // @synthesize specifier=_specifier;
 @property(retain) NSString *identifier; // @synthesize identifier=_identifier;
 - (void)reload;
 - (void)_reload:(id)arg1;
-@property(retain, nonatomic) NSString *representedApp;
-@property(retain, nonatomic) UIImage *icon;
-@property(nonatomic) long long size;
-@property(retain, nonatomic) NSString *infoText;
-@property(retain, nonatomic) NSString *title;
+@property(retain) NSString *representedApp;
+@property(retain) UIImage *icon;
+@property long long size;
+@property(retain) NSString *infoText;
+@property(retain) NSString *title;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
 - (id)propertyForKey:(id)arg1;
 - (id)init;

@@ -8,13 +8,27 @@
 
 #import <IconServices/ISCompositorRecipe-Protocol.h>
 
+@class NSString;
+
 @interface ISGenericRecipe : NSObject <ISCompositorRecipe>
 {
-    unsigned long long _options;
+    _Bool _templateVariant;
+    _Bool _selectedVariant;
+    unsigned long long _backgroundStyle;
+    unsigned long long _borderWidth;
 }
 
-@property(nonatomic) unsigned long long options; // @synthesize options=_options;
+@property(nonatomic) unsigned long long borderWidth; // @synthesize borderWidth=_borderWidth;
+@property(nonatomic) _Bool selectedVariant; // @synthesize selectedVariant=_selectedVariant;
+@property(nonatomic) _Bool templateVariant; // @synthesize templateVariant=_templateVariant;
+@property(nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 - (id)layerTreeForSize:(struct CGSize)arg1 scale:(double)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -23,12 +23,16 @@
     NSString *_name;
     MSPTransitStorageSystem *_system;
     CDStruct_e99c65f7 _has;
+    _Bool _hasheaderArtwork;
+    MSPTransitStorageArtwork *_headerArtwork;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasheaderArtwork; // @synthesize hasheaderArtwork=_hasheaderArtwork;
 @property(retain, nonatomic) GEOLatLng *locationHint; // @synthesize locationHint=_locationHint;
 @property(retain, nonatomic) MSPTransitStorageArtwork *alternateArtwork; // @synthesize alternateArtwork=_alternateArtwork;
 @property(retain, nonatomic) MSPTransitStorageSystem *system; // @synthesize system=_system;
+@property(retain, nonatomic) MSPTransitStorageArtwork *headerArtwork; // @synthesize headerArtwork=_headerArtwork;
 @property(retain, nonatomic) MSPTransitStorageArtwork *modeArtwork; // @synthesize modeArtwork=_modeArtwork;
 @property(retain, nonatomic) MSPTransitStorageArtwork *artwork; // @synthesize artwork=_artwork;
 @property(retain, nonatomic) NSString *lineColorString; // @synthesize lineColorString=_lineColorString;
@@ -47,6 +51,7 @@
 @property(readonly, nonatomic) _Bool hasLocationHint;
 @property(readonly, nonatomic) _Bool hasAlternateArtwork;
 @property(readonly, nonatomic) _Bool hasSystem;
+- (_Bool)hasHeaderArtwork;
 @property(readonly, nonatomic) _Bool hasModeArtwork;
 @property(readonly, nonatomic) _Bool hasArtwork;
 @property(readonly, nonatomic) _Bool hasLineColorString;

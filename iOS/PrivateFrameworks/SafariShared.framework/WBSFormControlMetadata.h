@@ -25,6 +25,7 @@
     NSString *_placeholder;
     NSString *_value;
     NSString *_passwordRules;
+    NSString *_requiredFormatForDateTimeInput;
     NSDictionary *_radioButtonInfo;
     NSDictionary *_annotations;
     NSArray *_selectElementInfo;
@@ -34,7 +35,7 @@
     double _rectTop;
     double _rectWidth;
     double _rectHeight;
-    CDUnion_a3b3b741 _flags;
+    CDUnion_4ebc605d _flags;
     int _size;
     int _maxLength;
     int _minLength;
@@ -54,6 +55,7 @@
 @property(readonly, copy, nonatomic) NSArray *selectElementInfo; // @synthesize selectElementInfo=_selectElementInfo;
 @property(readonly, copy, nonatomic) NSDictionary *radioButtonInfo; // @synthesize radioButtonInfo=_radioButtonInfo;
 @property(readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
+@property(readonly, copy, nonatomic) NSString *requiredFormatForDateTimeInput; // @synthesize requiredFormatForDateTimeInput=_requiredFormatForDateTimeInput;
 @property(readonly, copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property(readonly, copy, nonatomic) NSString *nextControlUniqueID; // @synthesize nextControlUniqueID=_nextControlUniqueID;
 @property(readonly, copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
@@ -66,6 +68,7 @@
 @property(readonly, copy, nonatomic) NSArray *autocompleteTokens; // @synthesize autocompleteTokens=_autocompleteTokens;
 @property(readonly, copy, nonatomic) NSDictionary *annotations; // @synthesize annotations=_annotations;
 @property(readonly, copy, nonatomic) NSString *addressBookLabel; // @synthesize addressBookLabel=_addressBookLabel;
+@property(readonly, nonatomic) long long oneTimeCodeFieldClassification;
 @property(readonly, nonatomic) long long lastAutoFillButtonType;
 @property(readonly, nonatomic) long long autoFillButtonType;
 @property(readonly, nonatomic) unsigned long long selectionLength;
@@ -82,6 +85,7 @@
 @property(readonly, nonatomic, getter=isDisabled) _Bool disabled;
 @property(readonly, nonatomic, getter=isActive) _Bool active;
 @property(readonly, nonatomic, getter=isVisible) _Bool visible;
+@property(readonly, nonatomic) _Bool oneTimeCodeIsEligibleForAutomaticLogin;
 @property(readonly, nonatomic) _Bool looksLikeOneTimeCodeField;
 @property(readonly, nonatomic) _Bool looksLikePasswordCredentialField;
 @property(readonly, nonatomic) _Bool looksLikeIgnoredDataTypeField;

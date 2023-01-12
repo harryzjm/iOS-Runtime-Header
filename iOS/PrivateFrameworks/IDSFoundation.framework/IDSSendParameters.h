@@ -8,18 +8,20 @@
 
 #import <IDSFoundation/NSCopying-Protocol.h>
 
-@class IDSDestination, IDSOutgoingMessageCheckpointTrace, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString;
+@class IDSDestination, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString;
+@protocol IDSPrioritizedTokenList;
 
 @interface IDSSendParameters : NSObject <NSCopying>
 {
     NSMutableDictionary *_params;
-    IDSOutgoingMessageCheckpointTrace *_checkpointTrace;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *expirationDate;
 @property(nonatomic) _Bool ignoreMaxRetryCount;
 @property(nonatomic) _Bool sessionForceInternetInvitation;
+@property(nonatomic) _Bool isInitiator;
+@property(nonatomic) _Bool isUPlusOne;
 @property(nonatomic) _Bool liveMessageDelivery;
 @property(nonatomic) _Bool disallowRefresh;
 @property(nonatomic) _Bool alwaysSkipSelf;
@@ -53,6 +55,7 @@
 @property(nonatomic) _Bool useDictAsTopLevel;
 @property(nonatomic) _Bool compressed;
 @property(nonatomic) _Bool expectsPeerResponse;
+@property(retain, nonatomic) id <IDSPrioritizedTokenList> prioritizedTokenList;
 @property(retain, nonatomic) NSNumber *pushPriority;
 @property(retain, nonatomic) NSNumber *originalTimestamp;
 @property(retain, nonatomic) NSNumber *dropMessageIndicatorCommand;
@@ -60,6 +63,7 @@
 @property(retain, nonatomic) NSData *groupData;
 @property(retain, nonatomic) NSString *sessionID;
 @property(retain, nonatomic) NSNumber *messageType;
+@property(retain, nonatomic) NSString *destinationCorrelationIdentifier;
 @property(retain, nonatomic) NSString *localDestinationDeviceUUID;
 @property(retain, nonatomic) NSString *originalfromID;
 @property(retain, nonatomic) NSString *mainAccountUUID;
@@ -79,6 +83,7 @@
 @property(retain, nonatomic) NSString *identifier;
 @property(retain, nonatomic) NSNumber *commandContext;
 @property(retain, nonatomic) NSNumber *command;
+@property(retain, nonatomic) NSDictionary *encryptionAttributes;
 @property(retain, nonatomic) NSData *dataToEncrypt;
 @property(retain, nonatomic) NSString *accountUUID;
 @property(retain, nonatomic) NSArray *finalDestinations;
@@ -89,9 +94,7 @@
 @property(retain, nonatomic) NSDictionary *protobuf;
 @property(retain, nonatomic) NSDictionary *message;
 @property(retain, nonatomic) NSData *data;
-@property(retain, nonatomic) IDSOutgoingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
-- (id)dictionaryRepresentationIncludingTrace:(_Bool)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (id)objectForKey:(id)arg1;

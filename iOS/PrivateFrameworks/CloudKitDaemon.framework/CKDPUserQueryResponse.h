@@ -10,7 +10,6 @@
 
 @class CKDPUser;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUserQueryResponse : PBCodable <NSCopying>
 {
     CKDPUser *_user;

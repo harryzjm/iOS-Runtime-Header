@@ -22,6 +22,7 @@
 - (void)triggerFired:(id)arg1;
 - (void)didAddFirstObserver;
 - (void)didRemoveLastObserver;
+- (void)dealloc;
 - (id)initFireOnConnect:(_Bool)arg1 disconnect:(_Bool)arg2 exit:(_Bool)arg3;
 
 // Remaining properties

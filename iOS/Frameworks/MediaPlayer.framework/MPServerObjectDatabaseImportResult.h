@@ -6,14 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface MPServerObjectDatabaseImportResult : NSObject
 {
     id _annotatedPayload;
+    NSArray *_playableAssetIdentifiers;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *playableAssetIdentifiers; // @synthesize playableAssetIdentifiers=_playableAssetIdentifiers;
 @property(readonly, nonatomic) id annotatedPayload; // @synthesize annotatedPayload=_annotatedPayload;
-- (id)initWithAnnotatedPayload:(id)arg1;
+- (id)initWithAnnotatedPayload:(id)arg1 playableAssetIdentifiers:(id)arg2;
 
 @end
 

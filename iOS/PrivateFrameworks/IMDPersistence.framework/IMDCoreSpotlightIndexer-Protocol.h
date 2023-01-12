@@ -6,11 +6,14 @@
 
 #import <IMDPersistence/NSObject-Protocol.h>
 
-@class CSSearchableItemAttributeSet, NSArray, NSDictionary;
+@class CSSearchableItemAttributeSet, IMDSpotlightIndexerTimingProfiler, NSArray, NSDictionary, NSString;
 
 @protocol IMDCoreSpotlightIndexer <NSObject>
-+ (NSArray *)auxiliaryItemsForPrimaryAttributes:(CSSearchableItemAttributeSet *)arg1 withItem:(NSDictionary *)arg2 chat:(NSDictionary *)arg3 isReindexing:(_Bool)arg4;
-+ (void)indexItem:(NSDictionary *)arg1 withChat:(NSDictionary *)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(CSSearchableItemAttributeSet *)arg4;
++ (NSString *)timingProfileKey;
++ (void)stopTimingWithProfiler:(IMDSpotlightIndexerTimingProfiler *)arg1;
++ (void)startTimingWithProfiler:(IMDSpotlightIndexerTimingProfiler *)arg1;
++ (NSArray *)auxiliaryItemsForPrimaryAttributes:(CSSearchableItemAttributeSet *)arg1 withItem:(NSDictionary *)arg2 chat:(NSDictionary *)arg3 isReindexing:(_Bool)arg4 timingProfiler:(IMDSpotlightIndexerTimingProfiler *)arg5;
++ (void)indexItem:(NSDictionary *)arg1 withChat:(NSDictionary *)arg2 isReindexing:(_Bool)arg3 metadataToUpdate:(CSSearchableItemAttributeSet *)arg4 timingProfiler:(IMDSpotlightIndexerTimingProfiler *)arg5;
 + (_Bool)cancelIndexingForItem:(NSDictionary *)arg1;
 @end
 

@@ -15,7 +15,7 @@
 
 @interface PXGBasicAXGroup : NSObject <PXUIScrollViewControllerFocusItemProvider, UIFocusEnvironment, PXGAXGroup>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     long long _version;
     NSMutableDictionary *_mutableIndexesToSubgroups;
     NSMutableDictionary *_mutableSpritesToLeafs;
@@ -87,6 +87,7 @@
 - (void)loadSubgroup:(id)arg1 atIndex:(long long)arg2;
 - (id)loadedSubgroupAtIndex:(long long)arg1;
 @property(readonly, nonatomic) NSIndexSet *loadedSubgroupIndexes;
+@property(readonly, nonatomic) __weak PXGBasicAXGroup *axScrollParent;
 @property(readonly, nonatomic) __weak PXGBasicAXGroup *axRootParent;
 - (void)_updateLayoutIfNeeded;
 - (void)_updateLeafsIfNeeded;

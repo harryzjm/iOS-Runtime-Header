@@ -12,7 +12,7 @@
 {
     struct _NUIGridArrangement _arrangement;
     CDStruct_0d6b4eb6 _visibleCount;
-    struct map<UIView *, double, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, double>>> _customSpacings;
+    struct map<UIView *, double, std::less<UIView *>, std::allocator<std::pair<UIView *const, double>>> _customSpacings;
     struct {
         unsigned int alignment:8;
         unsigned int distribution:8;
@@ -31,8 +31,8 @@
 - (id)arrangedDescription;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
-- (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
-- (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
+- (void)populateGridArrangementDimension:(void *)arg1 withCells:(const void *)arg2 axis:(long long)arg3;
+- (void)populateGridArrangementCells:(void *)arg1;
 - (_Bool)setNeedsInvalidation:(long long)arg1;
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)setSpacing:(double)arg1 afterArrangedSubviewAtIndex:(long long)arg2;

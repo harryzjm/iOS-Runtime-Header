@@ -29,22 +29,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool pairingAttempted; // @synthesize pairingAttempted=_pairingAttempted;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *timeoutTimer; // @synthesize timeoutTimer=_timeoutTimer;
-@property(readonly, nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
-@property(nonatomic) long long pairingState; // @synthesize pairingState=_pairingState;
-@property(nonatomic) long long connectionState; // @synthesize connectionState=_connectionState;
-@property(readonly, nonatomic) NSUUID *peripheralUUID; // @synthesize peripheralUUID=_peripheralUUID;
-@property(readonly, nonatomic) NSData *autoPairData; // @synthesize autoPairData=_autoPairData;
-@property(readonly, nonatomic) long long mfaStatus; // @synthesize mfaStatus=_mfaStatus;
-@property(readonly, nonatomic) unsigned long long connectionOptions; // @synthesize connectionOptions=_connectionOptions;
-@property(readonly, nonatomic) CDUnknownBlockType mfaSuccessHandler; // @synthesize mfaSuccessHandler=_mfaSuccessHandler;
-@property(readonly, nonatomic) CDUnknownBlockType characteristicsHandler; // @synthesize characteristicsHandler=_characteristicsHandler;
-@property(readonly, nonatomic) CDUnknownBlockType dataHandler; // @synthesize dataHandler=_dataHandler;
-@property(readonly, nonatomic) CDUnknownBlockType sessionHandler; // @synthesize sessionHandler=_sessionHandler;
-@property(nonatomic) unsigned long long sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
-- (void)markMFAStatusComplete;
-- (id)initWithSessionHandler:(CDUnknownBlockType)arg1 dataHandler:(CDUnknownBlockType)arg2 characteristicsHandler:(CDUnknownBlockType)arg3 mfaSuccessHandler:(CDUnknownBlockType)arg4 autoPairData:(id)arg5 connectionOptions:(unsigned long long)arg6 timeoutInterval:(double)arg7 peripheralUUID:(id)arg8;
 
 @end
 

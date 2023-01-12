@@ -29,8 +29,8 @@
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=mActive;
 @property(retain, nonatomic) TSTExpressionNode *expressionNode; // @synthesize expressionNode=mExpressionNode;
 - (id)description;
-- (void)saveToArchive:(struct TokenAttachmentArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct TokenAttachmentArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)invalidate;

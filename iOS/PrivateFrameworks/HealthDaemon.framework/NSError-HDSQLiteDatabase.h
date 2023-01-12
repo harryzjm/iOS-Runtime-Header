@@ -10,17 +10,23 @@
 
 @interface NSError (HDSQLiteDatabase)
 + (id)hk_errorWithCodableError:(id)arg1;
+- (id)hd_failingSQLStatement;
 - (_Bool)hd_isConstraintViolation;
 - (_Bool)hd_isNotADatabaseError;
 - (_Bool)hd_isDatabaseCorruptionError;
-- (id)hd_underlyingSQLiteError;
+- (int)hd_sqliteExtendedErrorCode;
 - (id)hk_codableError;
 - (id)hd_persistentMessage;
+- (double)hd_cloudKitRetryDelay;
+- (void)hd_enumerateCloudKitPartialErrorsWithHandler:(CDUnknownBlockType)arg1;
+- (id)hd_errorForAnalytics;
+- (id)hd_errorSurfacingFatalCloudKitPartialFailureForAnalytics;
+- (id)hd_errorSurfacingFatalCloudKitPartialFailure;
 - (_Bool)hd_isCorruptionError;
 - (id)hd_errorStrippingCloudKitPartialFailuresWithShouldIgnoreBlock:(CDUnknownBlockType)arg1;
 - (id)hd_errorStrippingExpectedCloudKitPartialFailures;
+- (_Bool)hd_shouldPreventCloudKitCacheUpdate;
 - (_Bool)hd_isManateeIdentityLossError;
-- (id)hd_cloudKitErrorRequiringUserActionFromCKErrorDomain;
 - (id)hd_cloudKitErrorRequiringUserAction;
 - (_Bool)hd_isResponseTimeout;
 @property(readonly, nonatomic, getter=hd_isFromRequest) _Bool hd_fromRequest;

@@ -25,7 +25,7 @@
 - (id)multiplyByVector:(id)arg1;
 - (id)multiplyByScalar:(double)arg1;
 - (id)addVector:(id)arg1;
-- (void)integrateWithVelocity:(id)arg1 target:(id)arg2 intermediateTarget:(id)arg3 intermediateTargetVelocity:(id)arg4 parameters:(CDStruct_9e265dec)arg5 state:(CDStruct_289c5ec3)arg6 delta:(double)arg7;
+- (void)integrateWithVelocity:(id)arg1 target:(id)arg2 intermediateTarget:(id)arg3 intermediateTargetVelocity:(id)arg4 parameters:(CDStruct_500c0369)arg5 state:(CDStruct_289c5ec3)arg6 delta:(double)arg7;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isUndefined;
 - (_Bool)isApproximatelyEqualTo:(id)arg1 withinEpsilon:(id)arg2;

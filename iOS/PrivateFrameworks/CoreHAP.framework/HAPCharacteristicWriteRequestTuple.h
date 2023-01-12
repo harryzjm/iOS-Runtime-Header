@@ -6,11 +6,12 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <CoreHAP/HAP2CharacteristicTupleValue-Protocol.h>
 #import <CoreHAP/NSCopying-Protocol.h>
 
-@class HAPCharacteristic, NSData, NSNumber;
+@class HAPCharacteristic, NSData, NSNumber, NSString;
 
-@interface HAPCharacteristicWriteRequestTuple : HMFObject <NSCopying>
+@interface HAPCharacteristicWriteRequestTuple : HMFObject <HAP2CharacteristicTupleValue, NSCopying>
 {
     _Bool _timedWrite;
     _Bool _includeResponseValue;
@@ -19,10 +20,13 @@
     NSData *_authorizationData;
     unsigned long long _writeType;
     NSNumber *_enableEvents;
+    NSData *_contextData;
 }
 
++ (id)writeRequestTupleForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 timedWrite:(_Bool)arg4 responseValue:(_Bool)arg5 type:(unsigned long long)arg6 contextData:(id)arg7;
 + (id)writeRequestTupleForCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 timedWrite:(_Bool)arg4 responseValue:(_Bool)arg5 type:(unsigned long long)arg6;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSData *contextData; // @synthesize contextData=_contextData;
 @property(retain, nonatomic) NSNumber *enableEvents; // @synthesize enableEvents=_enableEvents;
 @property(nonatomic) _Bool includeResponseValue; // @synthesize includeResponseValue=_includeResponseValue;
 @property(nonatomic) unsigned long long writeType; // @synthesize writeType=_writeType;
@@ -31,6 +35,12 @@
 @property(retain, nonatomic) id value; // @synthesize value=_value;
 @property(retain, nonatomic) HAPCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -18,11 +18,12 @@
 @property(readonly, nonatomic) SBMainWorkspace *_mainWorkspace;
 @property(readonly, nonatomic) SBPlatformController *_platformController;
 - (id)_layoutStateForApplicationTransitionContext:(id)arg1;
+- (id)_mostRecentAppLayoutForBundleIdentifier:(id)arg1 ignoringUniqueIdentifiers:(id)arg2;
 - (id)_mostRecentAppLayoutMatchingWorkspaceUniqueIdentifiers:(id)arg1;
-- (id)_sceneIDIfAppLayoutContainsPrimarySceneIDForBundleIdentifier:(id)arg1 bundleIdentifier:(id)arg2;
-- (_Bool)_doesSceneIDSpecifyPrimaryScene:(id)arg1 forApplicationIdentifier:(id)arg2;
-- (id)primarySceneIdentifierForBundleIdentifier:(id)arg1;
-- (id)defaultSceneIdentifierForBundleIdentifier:(id)arg1 targetContentIdentifier:(id)arg2 allowCanMatches:(_Bool)arg3 preferNewScene:(_Bool)arg4 visibleSceneIdentifiers:(id)arg5 excludingSceneIdentifiers:(id)arg6;
+- (id)_sceneIDIfAppLayoutContainsPrimarySceneIDForBundleIdentifier:(id)arg1 bundleIdentifier:(id)arg2 sceneSessionRole:(id)arg3;
+- (_Bool)_doesSceneIDSpecifyPrimaryScene:(id)arg1 forApplicationIdentifier:(id)arg2 sceneSessionRole:(id)arg3;
+- (id)primarySceneIdentifierForBundleIdentifier:(id)arg1 sceneSessionRole:(id)arg2;
+- (id)defaultSceneIdentifierForBundleIdentifier:(id)arg1 targetContentIdentifier:(id)arg2 allowCanMatches:(_Bool)arg3 preferNewScene:(_Bool)arg4 visibleSceneIdentifiers:(id)arg5 excludingSceneIdentifiers:(id)arg6 sceneSessionRole:(id)arg7;
 - (id)layoutStateForApplicationTransitionContext:(id)arg1;
 
 @end

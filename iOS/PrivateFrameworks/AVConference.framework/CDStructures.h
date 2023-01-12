@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCRateController, NSArray, NSObject, VCAudioPowerSpectrumSource, VCAudioStream, VCRateControlMediaController, VCRedundancyControllerAudio, VCRedundancyControllerVideo, VCSessionParticipantMediaStreamInfo, VCSessionParticipantRemote, VCSwitchManager, VideoAttributes;
+@class AVCRateController, AVCStatisticsCollector, NSArray, NSObject, NSString, VCAudioPowerSpectrumSource, VCAudioRelayIO, VCAudioStream, VCRateControlMediaController, VCRedundancyControllerAudio, VCRedundancyControllerVideo, VCSessionParticipantMediaStreamInfo, VCSessionParticipantRemote, VCStreamOutput, VCSwitchManager, VideoAttributes;
 
 #pragma mark Function Pointers and Blocks
 
@@ -21,6 +21,7 @@ struct AVCRateControlConfig {
     unsigned int maxBitrate;
     unsigned int minBitrate;
     unsigned int initialBitrate;
+    _Bool isTrafficBursty;
     unsigned int featureFlags;
 };
 
@@ -31,17 +32,13 @@ struct AVCRateControlParams_t {
     id _field4;
     id _field5;
     _Bool _field6;
+    id _field7;
+    _Bool _field8;
 };
 
 struct AudioBufferList;
 
-struct AudioComponentDescription {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-};
+struct AudioQueueBuffer;
 
 struct AudioStreamBasicDescription {
     double mSampleRate;
@@ -105,6 +102,8 @@ struct OWRDList {
 
 struct OpaqueAudioConverter;
 
+struct OpaqueAudioQueue;
+
 struct OpaqueCMBlockBuffer;
 
 struct OpaqueFigThread;
@@ -140,6 +139,10 @@ struct VCAudioClientSettings {
     int deviceRole;
 };
 
+struct VCAudioStreamGroupSyncDestinationList {
+    struct tagVCAudioStreamGroupSyncDestination *slh_first;
+};
+
 struct VCBlockBuffer_t {
     struct OpaqueCMBlockBuffer *_field1;
     unsigned long long _field2;
@@ -150,6 +153,34 @@ struct VCCSVideoTransmitterVideoRules_t {
     id _field1;
     id _field2;
     id _field3;
+};
+
+struct VCInfoDetails {
+    _Bool isLocalVideo;
+    float averageFrameRate;
+    float currentFrameRate;
+    struct CGSize currentDimensions;
+    struct __CFDictionary *storedAttributes;
+    long long streamToken;
+    VCStreamOutput *streamOutput;
+    struct VCOverlayAudioInfo audioInfo;
+    struct VCOverlayVideoInfo videoInfo;
+};
+
+struct VCOverlayAudioInfo {
+    int bitrateTotal;
+    int birateMedia;
+    int codec;
+    int streamID;
+};
+
+struct VCOverlayVideoInfo {
+    int fps;
+    int bitrateTotal;
+    int birateMedia;
+    int currentFECLevel;
+    int codec;
+    int streamID;
 };
 
 struct VCRCMediaPLPFromRemoteInfo {
@@ -193,8 +224,10 @@ struct VCRateControlAlgorithmConfig {
     double rampUpNOWRDThreshold;
     double rampUpNOWRDAccThreshold;
     double rampUpOverBandwidthCalmDuration;
+    double rampUpBlockedTimeout;
     int rampUpOverBandwidthTierNumber;
     int rampDownLossEventThreshold;
+    double rampDownLossEventNOWRDThreshold;
     double rampUpFrozenPLRThreshold;
     double rampUpRateLimitedRatio;
     double unstableRateLimitedDuration;
@@ -215,7 +248,14 @@ struct VCRateControlAlgorithmConfig {
     _Bool oscillationAvoidanceEnabled;
     _Bool fastRampUpEnabled;
     _Bool blockRampUpInSaturatedNetworkEnabled;
+    _Bool blockRampUpInBluetoothCoexEnabled;
     _Bool wifiEmergencyTiersEnabled;
+    _Bool burstyTrafficEnabled;
+    _Bool rampDownToActualSendBitrate;
+    int rampDownToActualSendBitrateMinTier;
+    _Bool rampDownSuppressionEnabled;
+    double rampDownSuppressionMinRTT;
+    double rampDownSuppressionFactor;
     int fastRampUpHighestTier;
     double fastRampUpRTTRatio;
     int fastRampUpTierGap;
@@ -240,12 +280,20 @@ struct VCRateControlAlgorithmConfig {
     double rampUpQueuingDelayThreshold;
     double rampUpNBDCDCoolDownTime;
     double rampUpAudioFractionCoolDownTime;
+    double basebandRATSwitchCoolDownTime;
+    double basebandAdaptationCrossTrafficRatio;
+    double rampUpNetworkUnstableCoolDownTime;
     double autoResumeDurationAfterPaused;
+    double pauseOffChannelHighRatio;
+    double unpauseOffChannelLowRatio;
     _Bool oscillationDetectionEnabled;
     double oscillationCoolDownTime;
     int oscillationDeviationTierNumber;
     int oscillationDeviationCountThreshold;
     _Bool preventBasebandRampDownCloseToKeyFrame;
+    int basebandRampDownSlowDownFactor;
+    double networkUnstableRTTThreshold;
+    double networkUnstablePLRThreshold;
 };
 
 struct VCRateControlMediaSuggestion {
@@ -256,6 +304,11 @@ struct VCRateControlMediaSuggestion {
     _Bool _field5;
     _Bool _field6;
     _Bool _field7;
+};
+
+struct VCRedundancyControllerVideoParameters_t {
+    id _field1;
+    unsigned int _field2;
 };
 
 struct VCStatisticsSendHistoryElement {
@@ -326,9 +379,11 @@ struct _RTCPPacketList {
     unsigned long long _field6;
     unsigned int _field7;
     unsigned char _field8[1472];
+    unsigned short _field9[12];
+    unsigned char _field10;
     struct {
         struct _RTCPPacketList *_field1;
-    } _field9;
+    } _field11;
 };
 
 struct _RTCP_RECEPTION_REPORT {
@@ -357,38 +412,49 @@ struct _RTCP_SEND_CONTROL_PARAMETERS {
     struct _RTCP_RECEPTION_REPORT *_field11;
     unsigned char _field12;
     struct tagRTCP_CUSTOM_RATE_CONTROL_INFO *_field13;
+    unsigned short _field14[12];
+    unsigned char _field15;
+    _Bool _field16;
+    unsigned long long _field17;
 };
 
 struct _RTPMediaPacket {
     int _field1;
     int _field2;
-    unsigned short _field3;
-    unsigned int _field4;
+    int _field3;
+    unsigned short _field4;
     unsigned int _field5;
-    unsigned short _field6;
-    _Bool _field7;
-    double _field8;
-    _Bool _field9;
+    unsigned int _field6;
+    unsigned short _field7;
+    _Bool _field8;
+    double _field9;
     _Bool _field10;
-    unsigned short _field11[12];
-    unsigned char _field12;
+    _Bool _field11;
+    unsigned short _field12[12];
     unsigned char _field13;
+    unsigned char _field14;
     struct {
         int _field1;
         int _field2;
         _Bool _field3;
         unsigned long long _field4;
-    } _field14;
-    unsigned long long _field15;
-    struct VCBlockBuffer_t _field16;
+    } _field15;
+    unsigned long long _field16;
     struct VCBlockBuffer_t _field17;
     struct VCBlockBuffer_t _field18;
+    struct VCBlockBuffer_t _field19;
+    _Bool _field20;
+    _Bool _field21;
 };
 
 struct _VCAudioEndpointData {
     struct SoundDec_t *converter;
     _Bool isConverterNeeded;
-    struct opaqueVCAudioBufferList *converterBuffer;
+    _Bool isAccumulatorNeeded;
+    unsigned int samplesPerFrame;
+    struct opaqueVCAudioBufferList *sampleBuffer;
+    struct opaqueVCAudioBufferList *clientBuffer;
+    struct opaqueVCAudioBufferList *controllerBuffer;
     _Bool isLastHostTimeValid;
     double lastHostTime;
     unsigned int lastTimestamp;
@@ -405,6 +471,10 @@ struct _VCAudioIOControllerClientIO {
     void *processSamplesContext;
     CDUnknownFunctionPointerType processSamples;
     NSObject *runLock;
+    unsigned int audioSessionId;
+    unsigned int channelIndex;
+    unsigned int channelCount;
+    struct opaqueVCAudioBufferList *controllerAudioBuffer;
 };
 
 struct _VCAudioIOControllerIOState {
@@ -418,21 +488,30 @@ struct _VCAudioIOControllerIOState {
     struct opaqueCMSimpleQueue *eventQueue;
     struct opaqueVCAudioLimiter *audioLimiter;
     struct opaqueVCAudioBufferList *secondarySampleBuffer;
+    unsigned int audioSessionId;
 };
 
 struct _VCAudioIOInitConfiguration {
-    int _field1;
-    int _field2;
-    unsigned char _field3;
-    _Bool _field4;
-    id _field5;
-    int _field6;
-    id _field7;
-    CDUnknownFunctionPointerType _field8;
-    void *_field9;
+    unsigned int _field1;
+    unsigned int _field2;
+    int _field3;
+    int _field4;
+    unsigned int _field5;
+    unsigned char _field6;
+    _Bool _field7;
+    id _field8;
+    int _field9;
     id _field10;
     CDUnknownFunctionPointerType _field11;
     void *_field12;
+    id _field13;
+    CDUnknownFunctionPointerType _field14;
+    void *_field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    _Bool _field18;
+    unsigned long long _field19;
+    unsigned int _field20;
 };
 
 struct _VCAudioPowerSpectrumChannel;
@@ -448,6 +527,7 @@ struct _VCAudioPowerSpectrumMeterRealtimeContext {
     double nextDeliveryTime;
     double audioSpectrumRefreshRate;
     struct atomic_flag isProcessingOutput;
+    double nextHeatlhPrintTime;
     struct __CFDictionary *outputPowerSpectrums;
     id powerSpectrumMeterDelegate;
     void *powerSpectrumMeterDelegateContext;
@@ -465,6 +545,8 @@ struct _VCAudioPowerSpectrumRealtimeContext {
     unsigned int outputBinCount;
     float *lerpIdxs;
     float fftNormFactor;
+    long long streamToken;
+    float averageLevel;
     struct opaqueVCAudioBufferList *sampleBuffer;
     struct _VCAudioPowerSpectrumChannel *channels;
     void *sinkContext;
@@ -494,11 +576,16 @@ struct _VCAudioStreamSourceContext {
     int packetsSinceStallCount;
     double remoteMediaStallTimeout;
     unsigned int awdTime;
+    unsigned char stallReportCount;
     struct _VCSingleLinkedList transports;
+    unsigned short oneToOneStreamID;
+    AVCStatisticsCollector *oneToOneStatisticsCollector;
     id delegate;
     VCAudioStream *self;
     id syncSourceDelegate;
     id momentsCollectorDelegate;
+    struct tagWRMMetricsInfo *wrmInfo;
+    struct tagHANDLE *defaultRtpHandle;
 };
 
 struct _VCAudioStreamTransportRealtimeContext {
@@ -526,13 +613,16 @@ struct _VCHardwareConfiguration {
 
 struct _VCMediaStreamConfigurationProviderAudio {
     unsigned int _field1;
-    struct _VCMediaStreamConfigurationProviderAudioBitrateInfo _field2;
-    unsigned int _field3;
-    struct _VCMediaStreamConfigurationProviderAudioPayload _field4[4];
-    unsigned int _field5;
-    unsigned int _field6[4];
-    int _field7;
-    _Bool _field8;
+    unsigned int _field2;
+    struct _VCMediaStreamConfigurationProviderAudioBitrateInfo _field3;
+    unsigned int _field4;
+    struct _VCMediaStreamConfigurationProviderAudioPayload _field5[4];
+    unsigned int _field6;
+    unsigned int _field7[4];
+    int _field8;
+    _Bool _field9;
+    unsigned int _field10;
+    unsigned int _field11;
 };
 
 struct _VCMediaStreamConfigurationProviderAudioBitrateInfo {
@@ -557,6 +647,7 @@ struct _VCMediaStreamConfigurationProviderVideo {
     int _field7;
     unsigned int _field8;
     _Bool _field9;
+    unsigned int _field10;
 };
 
 struct _VCMediaStreamTransportSetupInfo {
@@ -583,7 +674,7 @@ struct _VCMockIDSDatagramChannelPacket {
     unsigned char _field2[1500];
     unsigned long long _field3;
     _Bool _field4;
-    CDStruct_c3727dd2 _field5;
+    CDStruct_c6a5d548 _field5;
     unsigned long long _field6;
 };
 
@@ -604,6 +695,15 @@ struct _VCSessionOneToOneSettings {
     void *videoMediaControlInfoGenerator;
     struct tagHANDLE *mediaQueue;
     _Bool negotiatedVideoEnabled;
+    _Bool negotiatedScreenEnabled;
+    _Bool receivedFirstConnection;
+    _Bool startedOneToOne;
+};
+
+struct _VCSessionParticipantCapabilities {
+    _Bool isPeace;
+    _Bool isWebRTC;
+    int controlChannelVersion;
 };
 
 struct _VCSessionParticipantLocalOneToOneSettings {
@@ -612,25 +712,16 @@ struct _VCSessionParticipantLocalOneToOneSettings {
     VCRedundancyControllerVideo *videoRedundancyController;
     VCSessionParticipantMediaStreamInfo *audioStreamInfo;
     VCSessionParticipantMediaStreamInfo *videoStreamInfo;
+    VCSessionParticipantMediaStreamInfo *screenStreamInfo;
     VCSwitchManager *switchManager;
     unsigned int targetBitrate;
     unsigned int rateChangeCounter;
-};
-
-struct _VCSessionParticipantMediaPriorityInfo {
-    _Bool isAudioActive;
-    unsigned int audioActiveProbabilityThreshold;
-    unsigned int audioInactiveProbabilityThreshold;
-    unsigned int audioActiveAccumulationThreshold;
-    unsigned int audioInactiveAccumulationThreshold;
-    unsigned int audioActiveCount;
-    unsigned int lastAudioPriority;
-    unsigned int refreshCounter;
+    _Bool endToEndConnectionReceived;
 };
 
 struct _VCSessionParticipantSourceIO {
     struct opaqueVCAudioBufferList *sourceBuffer;
-    struct _VCSessionParticipantMediaPriorityInfo mediaPriorityInfo;
+    struct tagVCAudioStreamGroupPriorityInfo mediaPriorityInfo;
     unsigned int processedAudioFramesCount;
     _Bool sharedIsAudioSpectrumActive;
     VCAudioPowerSpectrumSource *audioPowerSpectrumSource;
@@ -692,6 +783,12 @@ struct _VTPPacket {
     struct VCBlockBuffer_t _field6;
 };
 
+struct __CFAllocator;
+
+struct __CFArray;
+
+struct __CFData;
+
 struct __CFDictionary;
 
 struct __CFString;
@@ -731,6 +828,14 @@ struct ifnet_interface_advisory {
     unsigned int _field9;
     unsigned int _field10;
     unsigned int _field11;
+    unsigned char _field12;
+    unsigned char _field13;
+    unsigned short _field14;
+    unsigned short _field15;
+    unsigned char _field16;
+    unsigned char _field17;
+    unsigned char _field18;
+    unsigned char _field19;
 };
 
 struct imageTag {
@@ -811,6 +916,21 @@ struct tagAFRCFB {
     unsigned int _field12;
 };
 
+struct tagAVCPositionalInfo {
+    unsigned int _field1;
+    struct CGSize _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+};
+
+struct tagAVCSessionPresentationInfo {
+    struct CGRect _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned char _field4;
+};
+
 struct tagAccessUnitHeaderInfo {
     unsigned short accessUnitCount;
     unsigned short accessUnitSize[3];
@@ -831,15 +951,16 @@ struct tagAudioFrame {
     int _field12;
     double _field13;
     int _field14;
-    CDUnknownFunctionPointerType _field15;
-    void *_field16;
-    struct tagDecoderSettings *_field17;
-    _Bool _field18;
-    unsigned int _field19;
-    unsigned char _field20;
-    unsigned short _field21;
-    struct tagAudioFrame *_field22;
+    int _field15;
+    CDUnknownFunctionPointerType _field16;
+    void *_field17;
+    struct tagDecoderSettings *_field18;
+    _Bool _field19;
+    unsigned int _field20;
+    unsigned char _field21;
+    unsigned short _field22;
     struct tagAudioFrame *_field23;
+    struct tagAudioFrame *_field24;
 };
 
 struct tagAudioHeaderData {
@@ -862,21 +983,22 @@ struct tagAudioPacket {
     unsigned short _field5;
     unsigned int _field6;
     int _field7;
-    double _field8;
-    int _field9;
-    unsigned char _field10[1472];
-    int _field11;
-    unsigned char _field12[256];
-    unsigned char _field13;
-    struct tagAudioFrame *_field14[4];
-    int _field15;
-    double _field16;
-    int _field17;
-    struct tagDecoderSettings *_field18;
-    _Bool _field19;
-    unsigned int _field20;
-    unsigned char _field21;
-    unsigned short _field22;
+    int _field8;
+    double _field9;
+    int _field10;
+    unsigned char _field11[1472];
+    int _field12;
+    unsigned char _field13[256];
+    unsigned char _field14;
+    struct tagAudioFrame *_field15[4];
+    int _field16;
+    double _field17;
+    int _field18;
+    struct tagDecoderSettings *_field19;
+    _Bool _field20;
+    unsigned int _field21;
+    unsigned char _field22;
+    unsigned short _field23;
 };
 
 struct tagAudioPacketArray {
@@ -969,6 +1091,7 @@ struct tagCONNRESULT {
     int bIfPrimary;
     int bIfReplaceOnly;
     struct tagCONNRESULT *next;
+    int channelID;
 };
 
 struct tagCommNATInfo {
@@ -1194,27 +1317,28 @@ struct tagSRTPINFO {
     unsigned int dwFirstRTCPSeq;
     unsigned int dwHighestRTCPSeq;
     unsigned long long SRTPIndex;
-    int masterKeyLength;
+    int mediaKeyLength;
     int sessionKeyLength;
-    unsigned char MasterKey[32];
+    unsigned char MediaKey[32];
     unsigned char MasterSalt[14];
     unsigned char SessionKey[32];
     unsigned char SessionSalt[14];
     unsigned char SessionAuthenticationKey[20];
     struct _opaque_pthread_mutex_t MKIAccess;
-    void *masterKeyIndex;
-    void *masterKeyIndexInPacket;
+    void *mediaKeyIndex;
+    void *mediaKeyIndexInPacket;
     unsigned int SRTCPIndex;
     unsigned int dwDerivationRate;
     struct os_unfair_lock_s cryptContextLock;
     struct tagSRTPCryptContext cryptContext;
     struct tagSRTPTransformPolicy policy;
     unsigned int operatingMode;
+    _Bool enableEncryptionDebug;
 };
 
 struct tagSRTPTransformPolicy {
     int cipherMode;
-    int masterKeyLength;
+    int mediaKeyLength;
     int sessionKeyLength;
     int sessionSaltLength;
     int authenticationMode;
@@ -1232,9 +1356,45 @@ struct tagSR_RTCP {
     struct tagRTCP_RRB _field7[1];
 };
 
+struct tagStreamGroupPayload {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+    unsigned char _field5;
+    union {
+        CDStruct_5c52f79b _field1;
+        struct {
+            unsigned int _field1;
+        } _field2;
+    } _field6;
+};
+
+struct tagStreamGroupStreamOptionalPackedPayload {
+    unsigned short _field1;
+    unsigned short _field2;
+    unsigned char _field3;
+};
+
+struct tagVCAudioClientControllerTimeInfo {
+    unsigned int clientSampleRate;
+    unsigned int controllerSampleRate;
+    _Bool didHostTimeReferenceChange;
+    _Bool isLastHostTimeValid;
+    double lastHostTime;
+    unsigned int lastClientTimestamp;
+    unsigned int timestampOffset;
+    unsigned long long controllerTimestamp;
+};
+
 struct tagVCAudioDecoderList {
     struct tagDecoderSettings *_field1;
     unsigned int _field2;
+};
+
+struct tagVCAudioFrameFormat {
+    struct AudioStreamBasicDescription format;
+    unsigned int samplesPerFrame;
 };
 
 struct tagVCAudioReceiver {
@@ -1242,43 +1402,61 @@ struct tagVCAudioReceiver {
     void *_field2;
     struct opaqueVCJitterBuffer *_field3;
     _Bool _field4;
-    struct AudioStreamBasicDescription *_field5;
-    int _field6;
-    double _field7;
-    CDStruct_1b6d18a9 _field8;
-    struct tagVCRealTimeThread *_field9;
-    struct tagVCAudioReceiverReportingTask _field10;
+    struct tagVCAudioFrameFormat _field5;
+    double _field6;
+    CDStruct_1b6d18a9 _field7;
+    struct tagVCRealTimeThread *_field8;
+    struct tagVCAudioReceiverReportingTask _field9;
+    _Bool _field10;
     _Bool _field11;
-    _Bool _field12;
+    struct _opaque_pthread_mutex_t _field12;
     struct _opaque_pthread_mutex_t _field13;
-    struct _opaque_pthread_mutex_t _field14;
-    struct tagVCAudioDecoderList _field15;
-    unsigned int _field16;
-    struct tagVCAudioReceiverStatistics _field17;
-    struct tagWRMMetricsInfo *_field18;
-    CDUnknownFunctionPointerType _field19;
-    struct tagVCAudioReceiverCallbackContext _field20;
-    CDUnknownFunctionPointerType _field21;
-    struct tagVCAudioReceiverCallbackContext _field22;
-    unsigned int _field23;
-    struct _RTCPPacketList _field24[2];
-    double _field25;
-    unsigned int _field26;
-    struct tagPacketHistoryInfo _field27[300];
+    struct tagVCAudioDecoderList _field14;
+    unsigned int _field15;
+    struct tagVCAudioReceiverStatistics _field16;
+    struct tagWRMMetricsInfo *_field17;
+    CDUnknownFunctionPointerType _field18;
+    struct tagVCAudioReceiverCallbackContext _field19;
+    CDUnknownFunctionPointerType _field20;
+    struct tagVCAudioReceiverCallbackContext _field21;
+    unsigned int _field22;
+    struct _RTCPPacketList _field23[2];
+    double _field24;
+    unsigned int _field25;
+    struct tagPacketHistoryInfo _field26[300];
+    unsigned short _field27;
     unsigned short _field28;
-    unsigned short _field29;
+    struct _opaque_pthread_mutex_t _field29;
     struct tagVCAudioReceiverStream *_field30;
     unsigned short _field31;
     unsigned short _field32;
-    _Bool _field33;
-    unsigned short _field34;
+    double _field33;
+    _Bool _field34;
     unsigned short _field35;
     unsigned short _field36;
-    unsigned short _field37;
-    unsigned int _field38;
-    _Bool _field39;
-    _Bool _field40;
-    unsigned long long _field41;
+    _Bool _field37;
+    unsigned short _field38;
+    unsigned short _field39;
+    unsigned short _field40;
+    unsigned int _field41;
+    _Bool _field42;
+    _Bool _field43;
+    unsigned long long _field44;
+    _Bool _field45;
+    void *_field46;
+    CDUnknownFunctionPointerType _field47;
+    CDUnknownFunctionPointerType _field48;
+    CDUnknownFunctionPointerType _field49;
+    struct tagVCJBTargetEstimatorSynchronizer *_field50;
+    struct tagVCJitterBufferWRMReportingMetrics _field51;
+    void *_field52;
+    _Bool _field53;
+    double _field54;
+    int _field55;
+    double _field56;
+    double _field57;
+    unsigned int _field58;
+    double _field59;
 };
 
 struct tagVCAudioReceiverCallbackContext {
@@ -1289,20 +1467,31 @@ struct tagVCAudioReceiverCallbackContext {
 
 struct tagVCAudioReceiverConfig {
     unsigned int _field1;
-    struct tagVCAudioReceiverStream _field2[3];
+    struct tagVCAudioReceiverStream _field2[4];
     void *_field3;
     unsigned int _field4;
     int _field5;
     int _field6;
-    _Bool _field7;
-    struct opaqueRTCReporting *_field8;
-    int _field9;
-    _Bool _field10;
-    struct __CFString *_field11;
+    int _field7;
+    _Bool _field8;
+    struct opaqueRTCReporting *_field9;
+    int _field10;
+    _Bool _field11;
     struct __CFString *_field12;
-    unsigned short _field13;
-    _Bool _field14;
+    struct __CFString *_field13;
+    unsigned short _field14;
     _Bool _field15;
+    _Bool _field16;
+    _Bool _field17;
+    _Bool _field18;
+    int _field19;
+    void *_field20;
+    CDUnknownFunctionPointerType _field21;
+    CDUnknownFunctionPointerType _field22;
+    CDUnknownFunctionPointerType _field23;
+    struct tagVCJBTargetEstimatorSynchronizer *_field24;
+    void *_field25;
+    unsigned int _field26;
 };
 
 struct tagVCAudioReceiverReportingTask {
@@ -1320,7 +1509,11 @@ struct tagVCAudioReceiverStream {
     unsigned short _field2;
     _Bool _field3;
     _Bool _field4;
-    struct tagVCAudioReceiver *_field5;
+    struct tagVCCryptor *_field5;
+    int _field6;
+    _Bool _field7;
+    struct tagVCAudioReceiver *_field8;
+    void *_field9;
 };
 
 struct tagVCAudioRedPayload {
@@ -1332,6 +1525,83 @@ struct tagVCAudioRedPayload {
     unsigned char redCount;
     unsigned char sequenceOffset;
     unsigned char priority;
+};
+
+struct tagVCAudioRelayIOContext {
+    struct tagVCAudioFrameFormat *clientFormat;
+    struct tagVCAudioFrameFormat *relayFormat;
+    CDUnknownFunctionPointerType callback;
+    void *callbackContext;
+    struct opaqueVCAudioBufferList *sampleBuffer;
+    float powerRMS;
+    struct tagVCAudioClientControllerTimeInfo timeInfo;
+};
+
+struct tagVCAudioRelayIOInfo {
+    VCAudioRelayIO *relayIO;
+    struct _opaque_pthread_mutex_t lock;
+    NSString *ioFriendlyName;
+    NSString *audioRecordingFileName;
+};
+
+struct tagVCAudioStreamGroupPriorityInfo {
+    _Bool isAudioActive;
+    unsigned int audioActiveProbabilityThreshold;
+    unsigned int audioInactiveProbabilityThreshold;
+    unsigned int audioActiveAccumulationThreshold;
+    unsigned int audioInactiveAccumulationThreshold;
+    unsigned int audioActiveCount;
+    unsigned int lastAudioPriority;
+    unsigned int refreshCounter;
+};
+
+struct tagVCAudioStreamGroupStream {
+    struct tagVCAudioStreamGroupStream *_field1;
+    _Bool _field2;
+    _Bool _field3;
+    void *_field4;
+    CDUnknownFunctionPointerType _field5;
+    unsigned short _field6;
+    id _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+};
+
+struct tagVCAudioStreamGroupSyncDestination;
+
+struct tagVCCryptor;
+
+struct tagVCIDSChannelDataFormat {
+    unsigned short streamIDs[12];
+    unsigned char numOfStreamIDs;
+    _Bool probingGroupIDIsSet;
+    unsigned short probingGroupID;
+    unsigned char priority;
+    _Bool pktCountingFlag;
+    _Bool participantIDIsSet;
+    unsigned long long participantID;
+    _Bool participantGenerationCounterIsSet;
+    _Bool ignorePriority;
+    _Bool statsIDIsSet;
+    unsigned short statsID;
+    CDStruct_696d2ec8 statsPayload;
+    _Bool isTransitionPacket;
+    _Bool isHopByHopEncrypted;
+    _Bool encryptionSequenceNumberIDIsSet;
+    unsigned long long encryptionSequenceNumber;
+};
+
+struct tagVCJBTargetEstimatorSynchronizer;
+
+struct tagVCJitterBufferWRMReportingMetrics {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned int _field7;
+    unsigned int _field8;
 };
 
 struct tagVCMediaStreamSyncTime {
@@ -1346,6 +1616,12 @@ struct tagVCMemoryPool {
         long long _field2;
     } _field1;
     unsigned long long _field2;
+};
+
+struct tagVCNetworkStreamIdentifiers {
+    unsigned int _field1;
+    unsigned short _field2;
+    unsigned short _field3;
 };
 
 struct tagVCRealTimeThread {
@@ -1366,6 +1642,8 @@ struct tagVCRealTimeThreadParameters {
     int _field1;
 };
 
+struct tagVCSecurityKeyHolder;
+
 struct tagVCSourceDestinationInfo {
     int _field1;
     union {
@@ -1381,10 +1659,11 @@ struct tagVCSourceDestinationInfo {
             int _field1;
             int _field2;
             struct tagIPPORT _field3;
+            int _field4;
         } _field2;
         struct {
             unsigned int _field1;
-            CDStruct_54fea20c _field2;
+            CDStruct_4aae7d13 _field2;
         } _field3;
         CDStruct_cc9cf49a _field4;
     } _field2;
@@ -1392,14 +1671,35 @@ struct tagVCSourceDestinationInfo {
     void *_field4;
 };
 
+struct tagVCSpatialAudioMetadataGlobalInfo {
+    unsigned int displayID;
+    float displayWidth;
+    float displayHeight;
+    float appWindowWidth;
+    float appWindowHeight;
+    float appWindowPositionX;
+    float appWindowPositionY;
+    unsigned int uiLayout;
+    unsigned int uiState;
+};
+
+struct tagVCSpatialAudioMetadataPositionalInfo {
+    float positionX;
+    float positionY;
+    float positionZ;
+    unsigned int prominence;
+    unsigned int isVisible;
+    unsigned int isInCanvas;
+};
+
 struct tagVCStatisticsCollection {
-    CDStruct_de0ff4c0 _field1;
+    CDStruct_fdc6b4b3 _field1;
     CDStruct_425c46ae _field2;
     CDStruct_38c55c66 _field3;
     CDStruct_8239d338 _field4;
     CDStruct_cbf42801 _field5;
     CDStruct_cbf42801 _field6;
-    CDStruct_6c8fb11a _field7;
+    CDStruct_6125c778 _field7;
 };
 
 struct tagVCTextJitterBufferConfiguration {
@@ -1420,11 +1720,31 @@ struct tagVCVideoDecodingArgs {
     int _field10;
     unsigned short _field11;
     _Bool _field12;
-    unsigned short _field13;
-    double _field14;
-    _Bool _field15;
-    int _field16;
-    double _field17;
+    _Bool _field13;
+    unsigned short _field14;
+    double _field15;
+    _Bool _field16;
+    int _field17;
+    double _field18;
+    _Bool _field19;
+    _Bool _field20;
+    _Bool _field21;
+};
+
+struct tagVCVideoPacketBufferConfig {
+    unsigned short _field1;
+    unsigned int _field2;
+    int _field3;
+    int _field4;
+    unsigned int _field5;
+    int _field6;
+    _Bool _field7;
+    _Bool _field8;
+    struct __CFAllocator *_field9;
+    _Bool _field10;
+    _Bool _field11;
+    void *_field12;
+    CDUnknownFunctionPointerType _field13;
 };
 
 struct tagVCVideoReceiverConfig {
@@ -1439,16 +1759,21 @@ struct tagVCVideoReceiverConfig {
     unsigned int dumpID;
     int enableControlByte;
     int enableBitstreamCapture;
-    int enable2vuyCapture;
+    int enableRxDecodeYUVDump;
     int enableUEP;
     int enableRecvBitstreamDump;
     int reportingParentID;
     _Bool shouldEnableFaceZoom;
+    _Bool shouldEnableMLEnhance;
     _Bool useDisplayLink;
     void *callbackContext;
     CDUnknownFunctionPointerType remoteFrameCallback;
+    CDUnknownFunctionPointerType sampleBufferCallback;
     CDUnknownFunctionPointerType streamSwitchCallback;
     CDUnknownFunctionPointerType keyFrameGenerationCallback;
+    CDUnknownFunctionPointerType sendLTRAckCallback;
+    CDUnknownFunctionPointerType ackLTRFrameCallback;
+    CDUnknownFunctionPointerType modeSwitchCallback;
     unsigned long long idsParticipantID;
     _Bool triggerSoundAlarmOnRTPReceive;
     unsigned short decoderNumOfTiles;
@@ -1462,31 +1787,71 @@ struct tagVCVideoReceiverConfig {
     _Bool isRTCPForLTRPAckEnabled;
     _Bool isAsyncDecodingEnabled;
     _Bool isReceiverSideVCRCFeedbackEnabled;
-    _Bool isVCRCStatsCollectionEnabled;
+    _Bool isVCRCStatsOnlyVideoBased;
     _Bool fecHeaderV1Enabled;
     _Bool enableQueueAlarmForDisplay;
     _Bool useRTCPForFIR;
+    _Bool sendRTCP_PSFB_FIR;
     _Bool enableJBDynamicModeSwitch;
-    unsigned char mediaControlInfoVersion;
+    _Bool useInternalClockForPresentation;
     void *mediaControlInfoGenerator;
+    _Bool isVariableSliceModeEnabled;
+    _Bool streamSwitchEnabled;
+    unsigned int cvoExtensionID;
+    _Bool videoJBEnabled;
+    _Bool enableAVLooseSync;
+    unsigned short targetDisplayAlarmCount;
+    struct tagVCJBTargetEstimatorSynchronizer *jbTargetEstimatorSynchronizer;
+    struct __CFString *participantId;
+    struct __CFString *sessionId;
+    unsigned int streamGroupID;
+    _Bool isReferenceFrameEnabled;
+    _Bool isLateFrameRecoveryEnabled;
 };
 
 struct tagVCVideoReceiverStreamConfig {
+    struct tagVCVideoReceiverStreamIDInfo streamInfo;
     struct tagHANDLE *rtpHandle;
     struct __CFDictionary *featureListStrings;
-    unsigned short streamID;
-    unsigned short repairStreamID;
     _Bool onDemandIDR;
-    unsigned int subStreamCount;
-    unsigned short subStreamIDs[9];
-    unsigned short subStreamRepairIDs[9];
     unsigned short framerate;
     unsigned char tileIndex;
     _Bool isOneToOne;
+    _Bool isTemporalScalingEnabled;
+    struct tagVCCryptor *sframeCryptor;
+    void *mediaControlInfoGenerator;
+    void *statisticsCollector;
+    int mode;
+    _Bool isLTRPEnabled;
+};
+
+struct tagVCVideoReceiverStreamIDInfo {
+    unsigned short streamID;
+    unsigned short repairStreamID;
+    unsigned short baseStreamID;
+    unsigned int subStreamCount;
+    unsigned short subStreamIDs[9];
+    unsigned short subStreamRepairIDs[9];
+};
+
+struct tagVCVideoStreamReceiverConfig {
+    struct tagHANDLE *_field1;
+    id _field2;
+    struct opaqueRTCReporting *_field3;
+    unsigned int _field4;
+    int _field5;
+    id _field6;
+    _Bool _field7;
+    void *_field8;
+    CDUnknownFunctionPointerType _field9;
 };
 
 struct tagVCVideoTransmitterStreamConfig {
     struct tagHANDLE *_field1;
+    unsigned short _field2;
+    int _field3;
+    unsigned int _field4;
+    struct tagVCCryptor *_field5;
 };
 
 struct tagVPKTFLAG {
@@ -1508,7 +1873,7 @@ struct tagVPKTFLAG {
     _Bool _field16;
     _Bool _field17;
     _Bool _field18;
-    CDStruct_94aa5fb4 _field19;
+    struct tagVCIDSChannelDataFormat _field19;
     struct tagPKT_TAG _field20;
     unsigned int _field21;
     unsigned char _field22[16];
@@ -1535,11 +1900,7 @@ struct tagWRMMetricsInfo {
     unsigned long long targetJitterQueueSize;
     int nFraction;
     CDUnknownFunctionPointerType reportWRMMetricsCallback;
-    struct {
-        void *info;
-        CDUnknownFunctionPointerType retain;
-        CDUnknownFunctionPointerType release;
-    } wrmMetricsReportingContext;
+    CDStruct_7f1d3621 wrmMetricsReportingContext;
     struct _opaque_pthread_mutex_t wrmMetricsReportingLock;
     unsigned int dwInternalTSRate;
     unsigned int dwPacketSent;
@@ -1550,6 +1911,7 @@ struct tagWRMMetricsInfo {
     unsigned int adaptationPacketLossPercentage;
     unsigned int isLocalCellular;
     unsigned int isVideoPaused;
+    unsigned long long linkType;
     unsigned int primaryVideoPacketReceived;
     unsigned int primaryAudioPacketReceived;
     unsigned int totalVideoPacketReceived;
@@ -1566,8 +1928,27 @@ struct timespec {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    id primaryConnection;
+    id secondaryConnection;
+} CDStruct_f24b774a;
+
+typedef struct {
     VideoAttributes *videoAttributes;
 } CDStruct_cc9cf49a;
+
+typedef struct {
+    _Bool preferRelayOverP2P;
+    _Bool preferIPv6OverIPv4;
+    _Bool preferNonVPN;
+    _Bool e2eCriteriaEnabled;
+    _Bool preferE2E;
+} CDStruct_155bd25f;
+
+typedef struct {
+    _Bool reportImmediateMetricsEnabled;
+    _Bool reportRtpErasureMetricsEnabled;
+    _Bool allowPreWarmCellEnabled;
+} CDStruct_21a0265e;
 
 typedef struct {
     _Bool _field1;
@@ -1607,6 +1988,35 @@ typedef struct {
 } CDStruct_9629e118;
 
 typedef struct {
+    unsigned char version;
+    unsigned char direction;
+    unsigned long long timestamp;
+    unsigned long long maxThroughputBps;
+    unsigned long long totalByteCount;
+    unsigned int flushableQueueSize;
+    unsigned int nonFlushableQueueSize;
+    unsigned int averageDelayMillisecond;
+    unsigned long long averageThroughputBps;
+    int rateTrendSuggestion;
+    unsigned int packetLossPerFrame;
+    unsigned char frequencyBand;
+    unsigned char intermittentState;
+    unsigned short estimatedIntermittentPeriod;
+    unsigned short singleOutagePeriod;
+    unsigned char btCoex;
+    unsigned char qualityScoreDelay;
+    unsigned char qualityScoreLoss;
+    unsigned char qualityScoreChannel;
+    float offChannelTimeRatio;
+    _Bool detectedFrequentOffChannelActivity;
+} CDStruct_f284354a;
+
+typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+} CDStruct_5c52f79b;
+
+typedef struct {
     unsigned char linkID;
     unsigned int sendTimestamp;
     unsigned int receiveTimestamp;
@@ -1635,17 +2045,6 @@ typedef struct {
 } CDStruct_7421bd8e;
 
 typedef struct {
-    unsigned int mediaEventType;
-    unsigned int additionalFlushCount;
-    unsigned int transactionID;
-    unsigned int audioStallBitrate;
-    _Bool isKeyFrame;
-    unsigned int refreshFrameTimestamp;
-    unsigned int refreshFramePayloadType;
-    unsigned int refreshFramePacketCount;
-} CDStruct_6c8fb11a;
-
-typedef struct {
     unsigned int _field1;
     unsigned int _field2;
     unsigned int _field3;
@@ -1658,6 +2057,38 @@ typedef struct {
 } CDStruct_4b4d87a1;
 
 typedef struct {
+    unsigned int queueDepth1;
+    unsigned int queueDepth2;
+    unsigned int txBitrate;
+    unsigned int averageBitrate;
+    unsigned int averageBitrateShort;
+    unsigned int averageBitrateLong;
+    double averageQueueDepth;
+    double expectedQueuingDelay;
+    double bdcd;
+    double normalizedBDCD;
+    double normalizedDelay;
+    char bbString[64];
+    int radioTechnology;
+} CDStruct_f0a7dbac;
+
+typedef struct {
+    unsigned int mediaEventType;
+    unsigned int additionalFlushCount;
+    unsigned int transactionID;
+    unsigned int audioStallBitrate;
+    float audioErasure;
+    _Bool isKeyFrame;
+    _Bool isTransitionToFEC;
+    double videoStallTimeDelta;
+    double videoStallTimeTotal;
+    unsigned int refreshFrameTimestamp;
+    unsigned int refreshFramePayloadType;
+    unsigned int refreshFramePacketCount;
+    unsigned long long idsParticipantID;
+} CDStruct_6125c778;
+
+typedef struct {
     unsigned int packetId;
     unsigned int totalPacketsSent;
     unsigned int totalBytesSent;
@@ -1666,9 +2097,10 @@ typedef struct {
 
 typedef struct {
     unsigned int averageNetworkBitrate;
+    unsigned int networkBitrate[5];
     unsigned int averageMediaBitrate;
     double averageFramerate;
-} CDStruct_3ab08b48;
+} CDStruct_a4f8a7cd;
 
 typedef struct {
     unsigned long long _field1;
@@ -1759,17 +2191,36 @@ typedef struct {
 } CDStruct_5b6da142;
 
 typedef struct {
+    char *_field1;
+    unsigned long long _field2;
+} CDStruct_b9c9288f;
+
+typedef struct {
     void *context;
     CDUnknownFunctionPointerType creationCallback;
     _Bool isReceiveExternallyScheduled;
 } CDStruct_cd00b3f0;
 
 typedef struct {
+    void *info;
+    CDUnknownFunctionPointerType retain;
+    CDUnknownFunctionPointerType release;
+} CDStruct_7f1d3621;
+
+typedef struct {
     char _field1;
     unsigned short _field2;
-    unsigned short _field3;
-    unsigned char _field4;
-} CDStruct_54fea20c;
+    unsigned char _field3;
+    unsigned short _field4;
+    unsigned char _field5;
+} CDStruct_4aae7d13;
+
+typedef struct {
+    double _field1;
+    _Bool _field2;
+    double _field3;
+    double _field4;
+} CDStruct_6724876c;
 
 typedef struct {
     double requestTime;
@@ -1830,7 +2281,10 @@ typedef struct {
     unsigned int _field5;
     unsigned int _field6;
     unsigned int _field7;
-} CDStruct_39aa150d;
+    unsigned short _field8;
+    _Bool _field9;
+    _Bool _field10;
+} CDStruct_d3f1d543;
 
 typedef struct {
     int packetType;
@@ -1850,13 +2304,13 @@ typedef struct {
 } CDStruct_c3d3b44c;
 
 typedef struct {
-    int _field1;
-    int _field2;
-    unsigned long long _field3;
-    char _field4[128];
-    unsigned long long _field5;
-    unsigned long long _field6;
-} CDStruct_b018697d;
+    int applicationType;
+    int linkTypeSuggestion;
+    unsigned long long linkTypeChangeReasonCode;
+    char linkTypeChangeReasonString[128];
+    unsigned long long linkBandwidthMin;
+    unsigned long long linkBandwidthMax;
+} CDStruct_cd8cfafa;
 
 typedef struct {
     int _field1;
@@ -1897,6 +2351,7 @@ typedef struct {
     unsigned int videoReceivedPackets;
     unsigned int totalSentPackets;
     unsigned int echoedSendTimestamp;
+    unsigned int mediaTimestamp;
     double owrd;
     double packetLossRate;
     unsigned int actualBitrate;
@@ -1905,7 +2360,13 @@ typedef struct {
     unsigned int receiveQueueTarget;
     _Bool isPacketReceivedValid;
     CDStruct_cbf42801 packetReceived;
-} CDStruct_de0ff4c0;
+    struct {
+        unsigned short sequenceNumber;
+        _Bool isDuplicatePacket;
+        _Bool isReceivedOnPrimary;
+        unsigned int connectionStatsBuffer;
+    } connectionStats;
+} CDStruct_fdc6b4b3;
 
 typedef struct {
     unsigned int _field1;
@@ -1919,32 +2380,37 @@ typedef struct {
     CDStruct_696d2ec8 _field9;
     double _field10;
     unsigned long long _field11;
-} CDStruct_c3727dd2;
+    _Bool _field12;
+    unsigned long long _field13;
+} CDStruct_c6a5d548;
 
 typedef struct {
     unsigned short _field1;
-    struct {
-        unsigned char _field1;
-        unsigned char _field2;
-    } _field2[16];
-} CDStruct_cd7ddd1c;
+    CDStruct_5c52f79b _field2[32];
+} CDStruct_d7e2e0ee;
 
 typedef struct {
-    unsigned short streamIDs[12];
-    unsigned char numOfStreamIDs;
-    _Bool probingGroupIDIsSet;
-    unsigned short probingGroupID;
-    unsigned char priority;
-    _Bool pktCountingFlag;
-    _Bool participantIDIsSet;
-    unsigned long long participantID;
-    _Bool participantGenerationCounterIsSet;
-    _Bool ignorePriority;
-    _Bool statsIDIsSet;
-    unsigned short statsID;
-    CDStruct_696d2ec8 statsPayload;
-    _Bool isTransitionPacket;
-} CDStruct_94aa5fb4;
+    int mode;
+    struct __CFArray *supportedAudioPayloadConfigs;
+    struct __CFArray *supportedPacketsPerBundle;
+    struct __CFArray *supportedRedNumPayloads;
+    unsigned int headerSize;
+    _Bool usingCellular;
+    _Bool isUseCaseWatchContinuity;
+    unsigned int defaultMaxCap;
+    _Bool alwaysOnAudioRedundancyEnabled;
+    _Bool cellularAllowRedLowBitratesEnabled;
+    _Bool wifiAllowRedLowBitratesEnabled;
+} CDStruct_898ba246;
+
+typedef struct {
+    int _field1;
+    struct tagVCSecurityKeyHolder *_field2;
+    struct tagVCSecurityKeyHolder *_field3;
+    struct __CFData *_field4;
+    struct __CFData *_field5;
+    _Bool _field6;
+} CDStruct_c24deb19;
 
 typedef struct {
     struct tagSRTPExchangeInfo _field1;
@@ -1961,8 +2427,20 @@ typedef struct {
     unsigned char _field3[1472];
     int _field4;
     int _field5;
-    CDStruct_94aa5fb4 _field6;
-} CDStruct_88f6cd69;
+    struct tagVCIDSChannelDataFormat _field6;
+} CDStruct_63867230;
+
+typedef struct {
+    int _field1;
+    struct tagVCAudioFrameFormat _field2;
+    void *_field3;
+    CDUnknownFunctionPointerType _field4;
+} CDStruct_29090a4b;
+
+typedef struct {
+    int _field1;
+    struct tagVCAudioFrameFormat _field2;
+} CDStruct_0a4efd25;
 
 typedef struct {
     int type;
@@ -2001,22 +2479,12 @@ typedef struct {
     int type;
     double arrivalTime;
     _Bool isVCRCInternal;
+    _Bool shouldFlushAndProcess;
     _Bool shouldDrainAndProcess;
     _Bool statisticsUpdateOnly;
     union {
-        struct {
-            unsigned int queueDepth1;
-            unsigned int queueDepth2;
-            unsigned int txBitrate;
-            unsigned int averageBitrate;
-            unsigned int averageBitrateLong;
-            double expectedQueuingDelay;
-            double bdcd;
-            double normalizedBDCD;
-            double normalizedDelay;
-            char bbString[64];
-        } baseband;
-        CDStruct_de0ff4c0 feedback;
+        CDStruct_f0a7dbac baseband;
+        CDStruct_fdc6b4b3 feedback;
         CDStruct_425c46ae network;
         CDStruct_d30cff71 probing;
         CDStruct_38c55c66 serverStats;
@@ -2035,37 +2503,13 @@ typedef struct {
             unsigned int maxBitrate;
             unsigned int minBitrate;
             unsigned int initialBitrate;
+            _Bool isTrafficBursty;
             unsigned int featureFlags;
         } config;
-        CDStruct_6c8fb11a mediaEvent;
-        struct {
-            unsigned char version;
-            unsigned char direction;
-            unsigned long long timestamp;
-            unsigned long long maxThroughputBps;
-            unsigned long long totalByteCount;
-            unsigned int flushableQueueSize;
-            unsigned int nonFlushableQueueSize;
-            unsigned int averageDelayMillisecond;
-            unsigned long long averageThroughputBps;
-            int rateTrendSuggestion;
-            unsigned int packetLossPerFrame;
-        } nwConnection;
+        CDStruct_6125c778 mediaEvent;
+        CDStruct_f284354a nwConnection;
     } ;
-} CDStruct_56e8fa21;
-
-// Ambiguous groups
-typedef struct {
-    _Bool _field1;
-    _Bool _field2;
-    _Bool _field3;
-} CDStruct_2a4d9400;
-
-typedef struct {
-    _Bool preferRelayOverP2P;
-    _Bool preferIPv6OverIPv4;
-    _Bool preferNonVPN;
-} CDStruct_e8d5fb5c;
+} CDStruct_c0785916;
 
 #pragma mark Named Unions
 

@@ -10,7 +10,7 @@
 
 - (id)possibleContentClassesWithContext:(id)arg1;
 - (_Bool)isAvailable;
-- (id)icon;
+- (id)iconImage;
 - (id)name;
 - (void)retrieveContentCollectionWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithAggrandizements:(id)arg1;

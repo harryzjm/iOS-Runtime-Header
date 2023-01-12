@@ -10,7 +10,7 @@
 #import <ProxCardKit/PRXPullDismissalProvider-Protocol.h>
 #import <ProxCardKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSString, PRXAction, PRXCardContentView, PRXCardContentWrapperView, PRXPullDismissalInteractionDriver, PRXTransitioningController;
+@class NSArray, NSString, PRXAction, PRXButton, PRXCardContentView, PRXCardContentWrapperView, PRXPullDismissalInteractionDriver, PRXTransitioningController, UIImageView;
 
 @interface PRXCardContentViewController : UIViewController <UIScrollViewDelegate, PRXPullDismissalProvider, PRXCardContentProviding>
 {
@@ -35,8 +35,13 @@
 @property(copy, nonatomic) NSString *bottomTrayTitle; // @synthesize bottomTrayTitle=_bottomTrayTitle;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) PRXPullDismissalInteractionDriver *pullDismissalInteractionDriver; // @synthesize pullDismissalInteractionDriver=_pullDismissalInteractionDriver;
+- (void)setTransitioningSize:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool allowsPullToDismiss;
 @property(readonly, nonatomic) long long cardStyle;
+- (void)removeBottomTray;
+- (id)bottomTray;
+@property(readonly, nonatomic) PRXButton *infoButton;
+@property(retain, nonatomic) PRXAction *infoButtonAction;
 - (void)hideActivityIndicator;
 - (void)showActivityIndicatorWithStatus:(id)arg1;
 - (void)_updateActionButtons;
@@ -45,6 +50,7 @@
 - (void)_updateDismisalControls;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)scrollToBottom;
+@property(retain, nonatomic) UIImageView *bottomTrayImageView;
 - (void)_updateSubtitleLabel;
 - (void)_updateTitleLabel;
 - (void)setTitle:(id)arg1;

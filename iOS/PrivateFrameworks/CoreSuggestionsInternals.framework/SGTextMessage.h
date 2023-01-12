@@ -26,7 +26,7 @@
 @property(readonly) _Bool senderIsBusinessChat; // @synthesize senderIsBusinessChat=_senderIsBusinessChat;
 @property(retain) NSString *photoPath; // @synthesize photoPath=_photoPath;
 @property(retain) NSString *nickname; // @synthesize nickname=_nickname;
-@property(readonly) _Bool senderIsAccountOwner; // @synthesize senderIsAccountOwner=_senderIsAccountOwner;
+@property _Bool senderIsAccountOwner; // @synthesize senderIsAccountOwner=_senderIsAccountOwner;
 @property(retain) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property(retain) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(retain) CSPerson *sender; // @synthesize sender=_sender;
@@ -34,7 +34,8 @@
 - (id)spotlightDomainIdentifier;
 - (id)spotlightBundleIdentifier;
 - (id)author;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithMessageDictionary:(id)arg1;
+- (id)initWithMessagesContentEvent:(id)arg1 contentProtection:(id)arg2;
 - (id)initWithSearchableItem:(id)arg1;
 
 @end

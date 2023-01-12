@@ -6,26 +6,16 @@
 
 #import <DataDetectorsUI/EKEventEditViewDelegate-Protocol.h>
 
-@class DDRemoteActionViewController, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface DDCreateEventAction <EKEventEditViewDelegate>
 {
-    DDRemoteActionViewController *viewController;
 }
 
-+ (_Bool)actionAvailableForEvent:(id)arg1;
-- (void).cxx_destruct;
-@property(retain, nonatomic) DDRemoteActionViewController *viewController; // @synthesize viewController;
-- (id)notificationURL;
-- (id)notificationIconBundleIdentifier;
-- (id)notificationTitle;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
-- (int)interactionType;
-- (id)icon;
 - (id)localizedName;
-- (void)invalidate;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

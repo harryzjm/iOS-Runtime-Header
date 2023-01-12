@@ -8,29 +8,37 @@
 
 #import <ProactiveInputPredictionsInternals/PSGResponseSuggestionsExpConfigProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, TRIClient, TRIExperimentIdentifiers, TRIRolloutIdentifiers;
 
 @interface PSGResponseSuggestionsExpConfig : NSObject <PSGResponseSuggestionsExpConfigProtocol>
 {
+    TRIClient *_trialClient;
+    NSString *_namespaceName;
     _Bool _isMLModelEnabled;
+    _Bool _isMLModelDownloading;
     NSString *_treatmentName;
-    NSString *_experimentId;
-    NSString *_treatmentId;
+    NSString *_inferenceModelDescription;
+    TRIRolloutIdentifiers *_rolloutIdentifiers;
+    TRIExperimentIdentifiers *_experimentIdentifiers;
     NSString *_inferenceModelFilePath;
     NSString *_inferenceModelConfigPath;
     NSString *_espressoBinFilePath;
+    NSString *_language;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property(readonly, nonatomic) NSString *espressoBinFilePath; // @synthesize espressoBinFilePath=_espressoBinFilePath;
 @property(readonly, nonatomic) NSString *inferenceModelConfigPath; // @synthesize inferenceModelConfigPath=_inferenceModelConfigPath;
 @property(readonly, nonatomic) NSString *inferenceModelFilePath; // @synthesize inferenceModelFilePath=_inferenceModelFilePath;
+@property(readonly, nonatomic) _Bool isMLModelDownloading; // @synthesize isMLModelDownloading=_isMLModelDownloading;
 @property(readonly, nonatomic) _Bool isMLModelEnabled; // @synthesize isMLModelEnabled=_isMLModelEnabled;
-@property(readonly, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
-@property(readonly, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+@property(readonly, nonatomic) TRIExperimentIdentifiers *experimentIdentifiers; // @synthesize experimentIdentifiers=_experimentIdentifiers;
+@property(readonly, nonatomic) TRIRolloutIdentifiers *rolloutIdentifiers; // @synthesize rolloutIdentifiers=_rolloutIdentifiers;
+@property(readonly, nonatomic) NSString *inferenceModelDescription; // @synthesize inferenceModelDescription=_inferenceModelDescription;
 @property(readonly, nonatomic) NSString *treatmentName; // @synthesize treatmentName=_treatmentName;
 - (void)_setDefaultValuesForFactors;
-- (id)initWithNamespaceName:(id)arg1;
+- (id)initWithNamespaceName:(id)arg1 withLanguage:(id)arg2 withTrialClient:(id)arg3 shouldDownloadAssets:(_Bool)arg4;
 - (id)init;
 
 // Remaining properties

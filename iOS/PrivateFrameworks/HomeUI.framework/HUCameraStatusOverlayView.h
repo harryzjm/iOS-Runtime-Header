@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class HUCircleView, HULegibilityLabel, NSString, UIColor, UIImageView;
+@class HULegibilityLabel, NSString, UIColor, UIImageView;
 
 @interface HUCameraStatusOverlayView : UIView
 {
@@ -14,17 +14,19 @@
     _Bool _didUpdateConstraints;
     NSString *_statusString;
     UIColor *_statusColor;
+    NSString *_statusImageName;
     HULegibilityLabel *_statusLabel;
-    HUCircleView *_statusIndicator;
+    UIImageView *_statusIndicatorImageView;
     UIImageView *_alertBadge;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImageView *alertBadge; // @synthesize alertBadge=_alertBadge;
 @property(nonatomic) _Bool didUpdateConstraints; // @synthesize didUpdateConstraints=_didUpdateConstraints;
-@property(retain, nonatomic) HUCircleView *statusIndicator; // @synthesize statusIndicator=_statusIndicator;
+@property(retain, nonatomic) UIImageView *statusIndicatorImageView; // @synthesize statusIndicatorImageView=_statusIndicatorImageView;
 @property(retain, nonatomic) HULegibilityLabel *statusLabel; // @synthesize statusLabel=_statusLabel;
 @property(nonatomic) _Bool isDisplayingForSingleCamera; // @synthesize isDisplayingForSingleCamera=_isDisplayingForSingleCamera;
+@property(retain, nonatomic) NSString *statusImageName; // @synthesize statusImageName=_statusImageName;
 @property(retain, nonatomic) UIColor *statusColor; // @synthesize statusColor=_statusColor;
 @property(copy, nonatomic) NSString *statusString; // @synthesize statusString=_statusString;
 - (id)_chevronImage;

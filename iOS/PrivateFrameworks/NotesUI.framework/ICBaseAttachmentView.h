@@ -6,23 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class ICAttachment, ICTextAttachment, NSRegularExpression;
+@class ICAttachment, ICTextAttachment, NSRegularExpression, UIColor;
 
 @interface ICBaseAttachmentView : UIView
 {
     _Bool _selected;
     ICAttachment *_attachment;
     ICTextAttachment *_textAttachment;
+    double _foregroundAlpha;
+    UIColor *_highlightColor;
     NSRegularExpression *_highlightPatternRegex;
     struct CGSize _attachmentContentSize;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSRegularExpression *highlightPatternRegex; // @synthesize highlightPatternRegex=_highlightPatternRegex;
+@property(copy, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property(nonatomic) double foregroundAlpha; // @synthesize foregroundAlpha=_foregroundAlpha;
 @property(nonatomic) struct CGSize attachmentContentSize; // @synthesize attachmentContentSize=_attachmentContentSize;
 @property(nonatomic) _Bool selected; // @synthesize selected=_selected;
 @property(nonatomic) __weak ICTextAttachment *textAttachment; // @synthesize textAttachment=_textAttachment;
-@property(nonatomic) __weak ICAttachment *attachment; // @synthesize attachment=_attachment;
+@property(retain, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
 - (void)attachmentWillBeDeleted:(id)arg1;
 - (void)attachmentPreviewImagesDidUpdate:(id)arg1;
 - (void)mediaDidLoad:(id)arg1;
@@ -33,7 +37,7 @@
 - (void)didScrollOutOfVisibleRange;
 - (void)didChangeSize;
 - (void)contentSizeCategoryDidChange;
-- (void)didSetSelected:(_Bool)arg1;
+- (void)updateHighlights;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeKVOObserversForAttachment:(id)arg1;
 - (void)addKVObserversForAttachment:(id)arg1;

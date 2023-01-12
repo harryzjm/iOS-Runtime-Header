@@ -16,25 +16,36 @@
 #import <PencilKit/_UIScrollViewLayoutObserver-Protocol.h>
 #import <PencilKit/_UIScrollViewScrollObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSObject, NSString, NSUUID, PKAttachmentView, PKController, PKDrawing, PKInk, PKLinedPaper, PKRulerController, PKSelectionController, PKSelectionInteraction, PKTileController, PKTiledCanvasView, PKVectorTimestamp, UIDropInteraction, UIImage, UIScrollView, UITouch;
-@protocol PKDrawingPaletteStatistics, PKRulerHostingDelegate, PKTiledViewDelegate;
+@class NSArray, NSMutableArray, NSObject, NSString, NSUUID, PKAttachmentView, PKController, PKDrawing, PKInk, PKLinedPaper, PKRulerController, PKSelectionController, PKSelectionInteraction, PKTileController, PKTiledCanvasView, UIDropInteraction, UIImage, UIScrollView, UITouch;
+@protocol PKDrawingPaletteStatistics, PKDrawingVersion, PKRulerHostingDelegate, PKTiledViewDelegate;
 
 @interface PKTiledView : UIView <UIScrollViewDelegate, _UIScrollViewScrollObserver, _UIScrollViewLayoutObserver, UIDropInteractionDelegate_Private, UIGestureRecognizerDelegate, PKRulerDelegate, PKRulerHostingDelegate, PKDrawableView, PKTiledCanvasViewDelegate>
 {
     UIDropInteraction *_dropInteraction;
     PKDrawing *_dirtyDrawing;
     _Bool _rulerEnabled;
+    CDUnknownBlockType _updateVisibleTilesAfterZoomOutBlock;
+    struct {
+        unsigned int delegateAttachmentViews:1;
+    } _tiledViewFlags;
+    _Bool _cropDrawingAttachmentsWhenViewIsSmaller;
     _Bool _showDebugOutlines;
+    _Bool _canvasViewShouldBeLastSubview;
+    _Bool _sixChannelBlending;
     _Bool _supportsCopyAsText;
+    _Bool _shouldAdjustStrokeTransformAtEndOfStroke;
     _Bool _isLayingOut;
     _Bool _shouldHideCanvasAfterScroll;
+    _Bool _isDoingInteractiveResize;
     _Bool _aggd_didMergeWithCollaborator;
+    Class _defaultDrawingClass;
     PKLinedPaper *_linedPaper;
     UIScrollView *_scrollView;
     UIView *_attachmentContainerView;
     PKTiledCanvasView *_canvasView;
     unsigned long long _drawingPolicy;
     NSObject<PKTiledViewDelegate> *_delegate;
+    UIView *_contentSnapshottingView;
     id _drawingUndoTarget;
     SEL _drawingUndoSelector;
     PKSelectionController *_selectionController;
@@ -53,7 +64,7 @@
     NSArray *_cachedAdditionalStrokes;
     NSArray *_cachedVisibleStrokesWithAdditionalStrokesForDirtyDrawing;
     NSUUID *_cachedDrawingUUIDForAdditionalStrokes;
-    PKVectorTimestamp *_cachedDrawingVersionForAdditionalStrokes;
+    id <PKDrawingVersion> _cachedDrawingVersionForAdditionalStrokes;
     CDUnknownBlockType _didScrollBlock;
     CDUnknownBlockType _updateAttachmentBoundsBlock;
     long long _aggd_cachedVisibleStrokeCount;
@@ -61,52 +72,38 @@
     id <PKDrawingPaletteStatistics> _drawingPaletteStatistics;
     long long __maxFileFormatVersion;
     struct CGPoint _lastContentOffset;
-    struct CGPoint _liveStrokeContentOffset;
+    struct CGAffineTransform _strokeTransformAtStartOfStroke;
+    struct CGAffineTransform _strokeTransformAdjustment;
 }
 
-+ (id)newInlineDrawing;
++ (id)newInlineDrawingOfClass:(Class)arg1;
 + (_Bool)showDebugOutlines;
 - (void).cxx_destruct;
 @property(nonatomic) long long _maxFileFormatVersion; // @synthesize _maxFileFormatVersion=__maxFileFormatVersion;
 @property(nonatomic) _Bool aggd_didMergeWithCollaborator; // @synthesize aggd_didMergeWithCollaborator=_aggd_didMergeWithCollaborator;
-@property(retain, nonatomic) id <PKDrawingPaletteStatistics> drawingPaletteStatistics; // @synthesize drawingPaletteStatistics=_drawingPaletteStatistics;
-@property(retain, nonatomic) NSMutableArray *undoManagersRegisteredWith; // @synthesize undoManagersRegisteredWith=_undoManagersRegisteredWith;
-@property(nonatomic) long long aggd_cachedVisibleStrokeCount; // @synthesize aggd_cachedVisibleStrokeCount=_aggd_cachedVisibleStrokeCount;
-@property(copy, nonatomic) CDUnknownBlockType updateAttachmentBoundsBlock; // @synthesize updateAttachmentBoundsBlock=_updateAttachmentBoundsBlock;
-@property(copy, nonatomic) CDUnknownBlockType didScrollBlock; // @synthesize didScrollBlock=_didScrollBlock;
-@property(copy, nonatomic) PKVectorTimestamp *cachedDrawingVersionForAdditionalStrokes; // @synthesize cachedDrawingVersionForAdditionalStrokes=_cachedDrawingVersionForAdditionalStrokes;
-@property(copy, nonatomic) NSUUID *cachedDrawingUUIDForAdditionalStrokes; // @synthesize cachedDrawingUUIDForAdditionalStrokes=_cachedDrawingUUIDForAdditionalStrokes;
-@property(copy, nonatomic) NSArray *cachedVisibleStrokesWithAdditionalStrokesForDirtyDrawing; // @synthesize cachedVisibleStrokesWithAdditionalStrokesForDirtyDrawing=_cachedVisibleStrokesWithAdditionalStrokesForDirtyDrawing;
-@property(copy, nonatomic) NSArray *cachedAdditionalStrokes; // @synthesize cachedAdditionalStrokes=_cachedAdditionalStrokes;
-@property(readonly, nonatomic) PKRulerController *rulerController; // @synthesize rulerController=_rulerController;
-@property(nonatomic) struct CGPoint liveStrokeContentOffset; // @synthesize liveStrokeContentOffset=_liveStrokeContentOffset;
-@property(nonatomic) _Bool shouldHideCanvasAfterScroll; // @synthesize shouldHideCanvasAfterScroll=_shouldHideCanvasAfterScroll;
-@property(nonatomic) _Bool isLayingOut; // @synthesize isLayingOut=_isLayingOut;
-@property(retain, nonatomic) PKDrawing *createdDrawingForTouchThatHitNothing; // @synthesize createdDrawingForTouchThatHitNothing=_createdDrawingForTouchThatHitNothing;
-@property(nonatomic) double lastZoomScale; // @synthesize lastZoomScale=_lastZoomScale;
-@property(nonatomic) struct CGPoint lastContentOffset; // @synthesize lastContentOffset=_lastContentOffset;
-@property(nonatomic) __weak PKDrawing *currentDrawingBeingCopiedToCanvas; // @synthesize currentDrawingBeingCopiedToCanvas=_currentDrawingBeingCopiedToCanvas;
-@property(retain, nonatomic) PKAttachmentView *liveAttachment; // @synthesize liveAttachment=_liveAttachment;
-@property(retain, nonatomic) UIView *gestureView; // @synthesize gestureView=_gestureView;
-@property(nonatomic) long long tileLevel; // @synthesize tileLevel=_tileLevel;
-@property(nonatomic) double tileScale; // @synthesize tileScale=_tileScale;
-@property(nonatomic) double tileSize; // @synthesize tileSize=_tileSize;
+- (id)liveAttachment;
 @property(nonatomic) _Bool supportsCopyAsText; // @synthesize supportsCopyAsText=_supportsCopyAsText;
 @property(nonatomic) __weak id <PKRulerHostingDelegate> rulerHostingDelegate; // @synthesize rulerHostingDelegate=_rulerHostingDelegate;
-@property(retain, nonatomic) UITouch *drawingTouchThatHitNothing; // @synthesize drawingTouchThatHitNothing=_drawingTouchThatHitNothing;
+@property(readonly, nonatomic) UITouch *drawingTouchThatHitNothing;
 @property(retain, nonatomic) PKTileController *tileController; // @synthesize tileController=_tileController;
 @property(readonly, nonatomic) PKSelectionController *selectionController; // @synthesize selectionController=_selectionController;
 @property(nonatomic) SEL drawingUndoSelector; // @synthesize drawingUndoSelector=_drawingUndoSelector;
 @property(nonatomic) __weak id drawingUndoTarget; // @synthesize drawingUndoTarget=_drawingUndoTarget;
+@property(nonatomic) __weak UIView *contentSnapshottingView; // @synthesize contentSnapshottingView=_contentSnapshottingView;
+@property(readonly, nonatomic) _Bool sixChannelBlending; // @synthesize sixChannelBlending=_sixChannelBlending;
+@property(nonatomic) _Bool canvasViewShouldBeLastSubview; // @synthesize canvasViewShouldBeLastSubview=_canvasViewShouldBeLastSubview;
 @property(nonatomic) __weak NSObject<PKTiledViewDelegate> *delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool showDebugOutlines; // @synthesize showDebugOutlines=_showDebugOutlines;
 @property(nonatomic) unsigned long long drawingPolicy; // @synthesize drawingPolicy=_drawingPolicy;
 @property(retain, nonatomic) PKTiledCanvasView *canvasView; // @synthesize canvasView=_canvasView;
 @property(nonatomic) __weak UIView *attachmentContainerView; // @synthesize attachmentContainerView=_attachmentContainerView;
-@property(nonatomic) __weak UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(readonly, nonatomic) __weak UIScrollView *scrollView;
+@property(nonatomic) _Bool cropDrawingAttachmentsWhenViewIsSmaller; // @synthesize cropDrawingAttachmentsWhenViewIsSmaller=_cropDrawingAttachmentsWhenViewIsSmaller;
 @property(copy, nonatomic) PKLinedPaper *linedPaper; // @synthesize linedPaper=_linedPaper;
+@property(retain, nonatomic) Class defaultDrawingClass; // @synthesize defaultDrawingClass=_defaultDrawingClass;
 - (id)_accessibilityUserTestingChildren;
 - (void)_findSelectionTranscriptionWithCompletion:(CDUnknownBlockType)arg1;
+- (id)viewForAttachmentAtBlankSpace;
 - (double)_latestLatency;
 - (_Bool)invertColors;
 - (void)_toggleDebugPane:(id)arg1;
@@ -131,18 +128,23 @@
 - (struct CGRect)visibleOnscreenBoundsForDrawing:(id)arg1 slack:(struct CGSize)arg2;
 - (struct CGRect)visibleOnscreenBoundsForDrawing:(id)arg1;
 - (struct CGRect)boundsForDrawing:(id)arg1;
-- (struct CGRect)selectedStrokesViewClipRectForDrawing:(id)arg1;
+- (struct CGRect)attachmentBoundsForDrawing:(id)arg1;
 - (struct CGAffineTransform)transformFromStrokeSpaceToViewInDrawing:(id)arg1;
 - (struct CGAffineTransform)transformFromViewToStrokeSpaceInDrawing:(id)arg1;
 - (struct CGPoint)pointInStrokeSpace:(struct CGPoint)arg1 inDrawing:(id)arg2;
+- (void)commitSelectionIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateAttachmentHeightIfNecessaryForDrawing:(id)arg1;
 - (void)_selectionRefreshWithChangeToDrawings:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (double)drawingScale;
 @property(readonly, nonatomic) _Bool _hasSelection;
+- (void)_didEndInteractiveResize;
+- (void)_willBeginInteractiveResize;
+- (id)_adornmentViewsToHitTest;
 - (id)generateTile:(struct CGPoint)arg1 inAttachment:(id)arg2 rendering:(_Bool)arg3 offscreen:(_Bool)arg4;
 - (id)tileForOffset:(struct CGPoint)arg1 inAttachment:(id)arg2 offscreen:(_Bool)arg3;
-- (void)blitOldTilesIntoNewTiles;
+- (void)blitOldTilesIntoNewTiles:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateTilesForVisibleRectRendering:(_Bool)arg1 offscreen:(_Bool)arg2;
+- (void)updateExistingTiles:(_Bool)arg1;
+- (vector_168079bb)getVisibleTiles:(id)arg1;
 - (_Bool)tileIsVisibleForOffset:(struct CGPoint)arg1 inAttachment:(id)arg2 distanceToMiddle:(double *)arg3;
 - (void)updateTilesForVisibleRectOffscreenWithCallback:(CDUnknownBlockType)arg1;
 - (void)swapOffscreenCallback:(CDUnknownBlockType)arg1;
@@ -152,15 +154,19 @@
 - (void)_transientlyUpdateHeightOfAttachment:(id)arg1 delta:(double)arg2;
 - (_Bool)_updateHeightOfAttachmentIfNecessary:(id)arg1;
 - (_Bool)_shouldUpdateHeightOfAttachments;
-- (void)resizeTiles;
+- (void)resizeTiles:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_copyFromCanvas:(id)arg1 intoAttachment:(id)arg2 hideCanvas:(_Bool)arg3 strokes:(id)arg4;
 - (void)renderAttachment:(id)arg1 intoCanvas:(id)arg2 showing:(_Bool)arg3;
 - (id)_tilesForAttachment:(id)arg1 bounds:(struct CGRect)arg2 invert:(_Bool)arg3;
 - (id)_visibleTilesForAttachment:(id)arg1;
 - (_Bool)isDrawing;
 - (void)_recordDrawingStatisticsForHitPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)_shouldForwardSelectionAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)_shouldSelectionBeginAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (_Bool)_scrollViewIsScrollingOrZooming;
+- (_Bool)_isZoomingOrResizing;
+- (_Bool)_scrollViewIsScrollingOrZoomingOrResizing;
+@property(readonly, nonatomic) _Bool isReadOnlyView;
 - (_Bool)canAddStroke;
 - (_Bool)insertAttachmentIfInBlankSpace:(struct CGPoint)arg1;
 - (id)hitAttachment:(struct CGPoint)arg1 includeStandinAttachment:(_Bool)arg2 expandBottomAttachment:(_Bool)arg3;
@@ -169,6 +175,8 @@
 - (void)getAttachment:(id)arg1 tileTransform:(struct CGAffineTransform *)arg2 strokeTransform:(struct CGAffineTransform *)arg3 paperTransform:(struct CGAffineTransform *)arg4 scrollViewContentOffset:(struct CGPoint)arg5;
 - (void)getAttachment:(id)arg1 tileTransform:(struct CGAffineTransform *)arg2 strokeTransform:(struct CGAffineTransform *)arg3 paperTransform:(struct CGAffineTransform *)arg4;
 - (void)_layoutSubviewsUpdateTilesForRendering:(_Bool)arg1;
+- (double)_layerContentsScale;
+- (void)updateEndAttachment;
 - (void)_layoutSubviews;
 - (void)_updateAttachmentOnscreenBounds;
 - (void)_didAddDrawingAttachmentView;
@@ -178,13 +186,15 @@
 - (void)performUndo:(id)arg1;
 - (void)_dismissInsertSpaceHandlesIfNecessary;
 - (void)canvasView:(id)arg1 registerUndoCommands:(id)arg2;
+- (void)canvasView:(id)arg1 registerMultiStepUndoCommands:(id)arg2;
 - (void)registerUndoCommand:(id)arg1;
-- (void)applyCommand:(id)arg1 toDrawing:(id)arg2;
+- (void)didChangeDrawing:(id)arg1;
 - (void)_showEditMenuFromLocation:(struct CGPoint)arg1 forAttachment:(id)arg2;
+- (struct CGAffineTransform)canvasView:(id)arg1 transformForStroke:(id)arg2;
 - (void)canvasViewInvalidateTiles:(id)arg1;
 - (_Bool)canvasView:(id)arg1 shouldBeginDrawingWithTouch:(id)arg2;
 - (void)canvasView:(id)arg1 drawingDidChange:(id)arg2;
-- (void)_canvasView:(id)arg1 didFinishRenderingStrokesOnRenderQueue:(id)arg2 inDrawing:(id)arg3;
+- (void)_canvasView:(id)arg1 didFinishRenderingNewStrokes:(id)arg2 inDrawing:(id)arg3;
 - (void)_canvasViewDidEraseStrokes:(id)arg1;
 - (void)canvasView:(id)arg1 cancelledStroke:(id)arg2;
 - (void)canvasView:(id)arg1 endedStroke:(id)arg2;
@@ -202,6 +212,9 @@
 - (void)_observeScrollViewDidScroll:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
+- (_Bool)_shouldExpandBottomAttachmentForDragAndDrop;
+- (_Bool)_sixChannelBlendingIsActive;
+- (id)_liveDrawing;
 - (id)_currentStroke;
 - (_Bool)needToUpdateViewFrame;
 - (void)duplicate:(id)arg1;
@@ -230,6 +243,9 @@
 - (void)_flushCaches;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)dealloc;
+- (id)initInScrollView:(id)arg1 sixChannelBlending:(_Bool)arg2 defaultDrawingClass:(Class)arg3 readOnly:(_Bool)arg4;
+- (id)initInScrollView:(id)arg1 sixChannelBlending:(_Bool)arg2 defaultDrawingClass:(Class)arg3;
+- (id)initInScrollView:(id)arg1 defaultDrawingClass:(Class)arg2;
 - (id)initInScrollView:(id)arg1;
 
 // Remaining properties

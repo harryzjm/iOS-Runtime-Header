@@ -10,7 +10,6 @@
 @interface FCFetchOperation
 {
     FCFetchOperationResult *_result;
-    _Bool _wifiOnly;
     _Bool _shouldFailOnMissingObjects;
     _Bool _canSendFetchCompletionSynchronously;
     unsigned long long _cachePolicy;
@@ -27,7 +26,6 @@
 @property _Bool shouldFailOnMissingObjects; // @synthesize shouldFailOnMissingObjects=_shouldFailOnMissingObjects;
 @property double maximumCachedAge; // @synthesize maximumCachedAge=_maximumCachedAge;
 @property unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
-@property _Bool wifiOnly; // @synthesize wifiOnly=_wifiOnly;
 - (void)finishFromEarlyCancellation;
 - (void)operationDidFinishWithError:(id)arg1;
 - (void)takeInputsFromFetchOperation:(id)arg1;

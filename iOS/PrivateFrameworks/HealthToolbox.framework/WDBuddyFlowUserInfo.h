@@ -9,11 +9,12 @@
 #import <HealthToolbox/HKSimpleDataEntryItemDelegate-Protocol.h>
 
 @class NSDateComponents, NSMutableDictionary, NSNumber, NSString;
-@protocol WDBuddyFlowUserInfoDelegate;
+@protocol OS_dispatch_queue, WDBuddyFlowUserInfoDelegate;
 
 @interface WDBuddyFlowUserInfo : NSObject <HKSimpleDataEntryItemDelegate>
 {
     NSMutableDictionary *_dataEntryItems;
+    NSObject<OS_dispatch_queue> *_queue;
     id <WDBuddyFlowUserInfoDelegate> _delegate;
     NSString *_firstName;
     NSString *_lastName;
@@ -41,7 +42,7 @@
 - (id)_createSexEntryItem;
 - (id)_createDateOfBirthEntryItem;
 - (id)_dataEntryItemForRegistrantField:(unsigned long long)arg1;
-- (void)saveChangesToHealthStore:(id)arg1 withMedicalIDTemplate:(id)arg2;
+- (void)saveChangesToHealthStore:(id)arg1 withMedicalIDTemplate:(id)arg2 withMedicalIDCompletion:(CDUnknownBlockType)arg3 andSaveNameCompletion:(CDUnknownBlockType)arg4;
 - (id)_medicalIDName;
 - (id)medicalIDRepresentation;
 - (id)defaultDataEntryItems;

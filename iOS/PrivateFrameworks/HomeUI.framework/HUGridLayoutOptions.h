@@ -9,7 +9,7 @@
 #import <HomeUI/HUGridDisplayOptions-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HUDashboardButtonCellLayoutOptions, HUGridBannerCellLayoutOptions, HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridPlaceholderServiceCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridScenePlaceholderLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUGridStatusCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
+@class HUGridBannerCellLayoutOptions, HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridPlaceholderServiceCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridScenePlaceholderLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUGridStatusCellLayoutOptions, HUGridWelcomeUIBannerCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
 
 @interface HUGridLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
@@ -21,16 +21,7 @@
     NSString *_contentSizeCategory;
     unsigned long long _columnStyle;
     UIFont *_headlineFont;
-    UIFont *_statusItemFont;
-    UIFont *_statusDetailsFont;
     UIFont *_sectionHeaderFont;
-    double _headlineBaselineToFirstStatusItemBaselineDistance;
-    double _topOfViewToFirstStatusItemBaselineDistance;
-    unsigned long long _maxStatusItemCount;
-    unsigned long long _maxStatusItemNumberOfLines;
-    double _statusItemBaselineToNextStatusItemBaselineDistance;
-    double _lastStatusItemBaselineToStatusDetailsBaselineDistance;
-    double _statusDetailsBaselineToFirstSectionTitleBaselineDistance;
     double _headlineBaselineToSceneHeaderBaselineDistance;
     double _sectionTopMargin;
     double _sectionBottomMargin;
@@ -38,7 +29,6 @@
     double _sectionTrailingMargin;
     double _sectionBottomToNextSectionTitleBaselineDistance;
     double _minimumMarginBelowHeadline;
-    double _minimumMarginBelowStatus;
     double _rowSpacing;
     double _columnSpacing;
     NSNumber *_overrideNumberOfColumns;
@@ -50,9 +40,9 @@
     HUGridServiceCellLayoutOptions *_serviceCellOptions;
     HUGridPlaceholderServiceCellLayoutOptions *_placeholderServiceCellOptions;
     HUNavigationBarLayoutOptions *_navigationBarOptions;
-    HUDashboardButtonCellLayoutOptions *_dashboardButtonCellOptions;
     HUGridBannerCellLayoutOptions *_bannerCellOptions;
     HUGridStatusBannerCellLayoutOptions *_statusBannerCellOptions;
+    HUGridWelcomeUIBannerCellLayoutOptions *_welcomeUIBannerCellOptions;
     long long _numberOfCameraCellsPerRow;
     NSNumber *_overrideViewSizeSubclass;
     struct CGSize _viewSize;
@@ -67,9 +57,9 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *overrideViewSizeSubclass; // @synthesize overrideViewSizeSubclass=_overrideViewSizeSubclass;
 @property(readonly, nonatomic) long long numberOfCameraCellsPerRow; // @synthesize numberOfCameraCellsPerRow=_numberOfCameraCellsPerRow;
+@property(copy, nonatomic) HUGridWelcomeUIBannerCellLayoutOptions *welcomeUIBannerCellOptions; // @synthesize welcomeUIBannerCellOptions=_welcomeUIBannerCellOptions;
 @property(copy, nonatomic) HUGridStatusBannerCellLayoutOptions *statusBannerCellOptions; // @synthesize statusBannerCellOptions=_statusBannerCellOptions;
 @property(copy, nonatomic) HUGridBannerCellLayoutOptions *bannerCellOptions; // @synthesize bannerCellOptions=_bannerCellOptions;
-@property(copy, nonatomic) HUDashboardButtonCellLayoutOptions *dashboardButtonCellOptions; // @synthesize dashboardButtonCellOptions=_dashboardButtonCellOptions;
 @property(copy, nonatomic) HUNavigationBarLayoutOptions *navigationBarOptions; // @synthesize navigationBarOptions=_navigationBarOptions;
 @property(copy, nonatomic) HUGridPlaceholderServiceCellLayoutOptions *placeholderServiceCellOptions; // @synthesize placeholderServiceCellOptions=_placeholderServiceCellOptions;
 @property(copy, nonatomic) HUGridServiceCellLayoutOptions *serviceCellOptions; // @synthesize serviceCellOptions=_serviceCellOptions;
@@ -81,7 +71,6 @@
 @property(retain, nonatomic) NSNumber *overrideNumberOfColumns; // @synthesize overrideNumberOfColumns=_overrideNumberOfColumns;
 @property(nonatomic) double columnSpacing; // @synthesize columnSpacing=_columnSpacing;
 @property(nonatomic) double rowSpacing; // @synthesize rowSpacing=_rowSpacing;
-@property(nonatomic) double minimumMarginBelowStatus; // @synthesize minimumMarginBelowStatus=_minimumMarginBelowStatus;
 @property(nonatomic) double minimumMarginBelowHeadline; // @synthesize minimumMarginBelowHeadline=_minimumMarginBelowHeadline;
 @property(nonatomic) struct UIEdgeInsets sectionTitleMargin; // @synthesize sectionTitleMargin=_sectionTitleMargin;
 @property(nonatomic) double sectionBottomToNextSectionTitleBaselineDistance; // @synthesize sectionBottomToNextSectionTitleBaselineDistance=_sectionBottomToNextSectionTitleBaselineDistance;
@@ -90,16 +79,7 @@
 @property(nonatomic) double sectionBottomMargin; // @synthesize sectionBottomMargin=_sectionBottomMargin;
 @property(nonatomic) double sectionTopMargin; // @synthesize sectionTopMargin=_sectionTopMargin;
 @property(nonatomic) double headlineBaselineToSceneHeaderBaselineDistance; // @synthesize headlineBaselineToSceneHeaderBaselineDistance=_headlineBaselineToSceneHeaderBaselineDistance;
-@property(nonatomic) double statusDetailsBaselineToFirstSectionTitleBaselineDistance; // @synthesize statusDetailsBaselineToFirstSectionTitleBaselineDistance=_statusDetailsBaselineToFirstSectionTitleBaselineDistance;
-@property(nonatomic) double lastStatusItemBaselineToStatusDetailsBaselineDistance; // @synthesize lastStatusItemBaselineToStatusDetailsBaselineDistance=_lastStatusItemBaselineToStatusDetailsBaselineDistance;
-@property(nonatomic) double statusItemBaselineToNextStatusItemBaselineDistance; // @synthesize statusItemBaselineToNextStatusItemBaselineDistance=_statusItemBaselineToNextStatusItemBaselineDistance;
-@property(nonatomic) unsigned long long maxStatusItemNumberOfLines; // @synthesize maxStatusItemNumberOfLines=_maxStatusItemNumberOfLines;
-@property(nonatomic) unsigned long long maxStatusItemCount; // @synthesize maxStatusItemCount=_maxStatusItemCount;
-@property(nonatomic) double topOfViewToFirstStatusItemBaselineDistance; // @synthesize topOfViewToFirstStatusItemBaselineDistance=_topOfViewToFirstStatusItemBaselineDistance;
-@property(nonatomic) double headlineBaselineToFirstStatusItemBaselineDistance; // @synthesize headlineBaselineToFirstStatusItemBaselineDistance=_headlineBaselineToFirstStatusItemBaselineDistance;
 @property(retain, nonatomic) UIFont *sectionHeaderFont; // @synthesize sectionHeaderFont=_sectionHeaderFont;
-@property(retain, nonatomic) UIFont *statusDetailsFont; // @synthesize statusDetailsFont=_statusDetailsFont;
-@property(retain, nonatomic) UIFont *statusItemFont; // @synthesize statusItemFont=_statusItemFont;
 @property(retain, nonatomic) UIFont *headlineFont; // @synthesize headlineFont=_headlineFont;
 @property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
 @property(nonatomic) _Bool statusHidden; // @synthesize statusHidden=_statusHidden;

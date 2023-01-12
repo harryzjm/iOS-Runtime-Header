@@ -6,19 +6,20 @@
 
 #import <IMCore/NSObject-Protocol.h>
 
-@class IMItem, IMMessageItem, IMNickname, NSArray, NSData, NSDate, NSDictionary, NSIndexSet, NSNumber, NSSet, NSString, NSURL;
+@class IMItem, IMMessageItem, IMNickname, IMSyndicationAction, NSArray, NSData, NSDate, NSDictionary, NSIndexSet, NSNumber, NSPredicate, NSSet, NSString, NSURL;
 
 @protocol IMRemoteDaemonProtocol <NSObject>
 - (void)requestScreenTimeAvailability;
 - (void)preWarm;
+- (void)simulateMessageReceive:(NSString *)arg1 serviceName:(NSString *)arg2 groupID:(NSString *)arg3 handles:(NSArray *)arg4 sender:(NSString *)arg5 date:(NSDate *)arg6 associatedMessageType:(long long)arg7 associatedMessageGuid:(NSString *)arg8;
 - (void)simulateMessageReceive:(NSString *)arg1 serviceName:(NSString *)arg2 groupID:(NSString *)arg3 handles:(NSArray *)arg4 sender:(NSString *)arg5;
 - (void)markAllNicknamesAsPending;
 - (void)userNicknameForRecordID:(NSString *)arg1 decryptionKey:(NSData *)arg2 requestID:(NSString *)arg3;
 - (void)setNewPersonalNickname:(IMNickname *)arg1;
 - (void)fetchPersonalNickname;
 - (void)nicknamePreferencesDidChange;
-- (void)blacklistHandleIDsForNicknameSharing:(NSSet *)arg1;
-- (void)whitelistHandleIDsForNicknameSharing:(NSSet *)arg1 onChatGUIDs:(NSArray *)arg2;
+- (void)denyHandleIDsForNicknameSharing:(NSSet *)arg1;
+- (void)allowHandleIDsForNicknameSharing:(NSSet *)arg1 onChatGUIDs:(NSArray *)arg2;
 - (void)ignorePendingNicknameUpdatesForHandleIDs:(NSArray *)arg1;
 - (void)clearPendingNicknameUpdatesForHandleIDs:(NSArray *)arg1;
 - (void)fetchHandleSharingState;
@@ -113,6 +114,7 @@
 - (void)setProperties:(NSDictionary *)arg1 ofParticipant:(NSString *)arg2 inChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5 account:(NSString *)arg6;
 - (void)updateBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 forMessageGUID:(NSString *)arg3;
 - (void)sendBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 withMessageGUID:(NSString *)arg3 bundleID:(NSString *)arg4;
+- (void)sendSyndicationAction:(IMSyndicationAction *)arg1 toChatsWithIdentifiers:(NSArray *)arg2;
 - (void)sendSavedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendPlayedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendReadReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
@@ -156,9 +158,17 @@
 - (void)loginAccount:(NSString *)arg1;
 - (void)autoReconnectAccount:(NSString *)arg1;
 - (void)autoLoginAccount:(NSString *)arg1;
+- (void)purgeAttachmentsForChatGUID:(NSString *)arg1;
 - (void)debugUpdateGroupParticipantversion:(unsigned long long)arg1 chatIdentifier:(NSString *)arg2;
 - (void)unblackholeAndLoadChatWithHandleIDs:(NSArray *)arg1;
 - (void)loadChatWithChatIdentifier:(NSString *)arg1;
+- (void)loadChatsWithHandleIDs:(NSArray *)arg1 groupID:(NSString *)arg2 displayName:(NSString *)arg3 style:(unsigned char)arg4 queryID:(NSString *)arg5;
+- (void)loadChatsWithGroupID:(NSString *)arg1 queryID:(NSString *)arg2;
+- (void)loadChatsWithIdentifier:(NSString *)arg1 queryID:(NSString *)arg2;
+- (void)loadChatsFilteredUsingPredicate:(NSPredicate *)arg1 lastMessageOlderThan:(NSDate *)arg2 limit:(unsigned long long)arg3 queryID:(NSString *)arg4;
+- (void)loadChatsFilteredUsingPredicate:(NSPredicate *)arg1 queryID:(NSString *)arg2;
+- (void)loadChatWithGUID:(NSString *)arg1 queryID:(NSString *)arg2;
+- (void)loadAllChats;
 - (void)removeChat:(NSString *)arg1;
 - (void)silenceChat:(NSString *)arg1 untilDate:(NSDate *)arg2;
 - (void)chat:(NSString *)arg1 updateLastAddressedSIMID:(NSString *)arg2;
@@ -168,8 +178,6 @@
 - (void)chat:(NSString *)arg1 updateDisplayName:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateProperties:(NSDictionary *)arg2;
 - (void)cleanupAttachments;
-- (void)loadInternalPhishingBlacklist;
-- (void)fetchInternalPhishingBlacklist;
 - (void)initiateQuickSwitch;
 - (void)requestLastMessagesForChats;
 - (void)loadIsDownloadingPurgedAttachmentsForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5;
@@ -180,6 +188,7 @@
 - (void)loadFrequentRepliesForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 chatID:(NSString *)arg5 queryID:(NSString *)arg6;
 - (void)updateUnformattedID:(NSString *)arg1 forBuddyID:(NSString *)arg2 onService:(NSString *)arg3;
 - (void)markHasHadSuccessfulQueryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3;
+- (void)sendNotifyRecipientCommandForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 message:(IMMessageItem *)arg4;
 - (void)markSavedForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 message:(IMMessageItem *)arg4;
 - (void)markSavedForMessageGUID:(NSString *)arg1;
 - (void)markPlayedExpressiveSendForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 message:(IMMessageItem *)arg4;
@@ -190,8 +199,8 @@
 - (void)markReadForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 messages:(NSArray *)arg4 clientUnreadCount:(unsigned long long)arg5 setUnreadCountToZero:(_Bool)arg6;
 - (void)markReadForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 messages:(NSArray *)arg4 clientUnreadCount:(unsigned long long)arg5;
 - (void)_automation_markMessagesAsRead:(_Bool)arg1 messageGUID:(NSString *)arg2 forChatGUID:(NSString *)arg3 fromMe:(_Bool)arg4 queryID:(NSString *)arg5;
-- (void)markReadForMessageGUID:(NSString *)arg1 callerOrigin:(long long)arg2;
-- (void)markReadForMessageGUID:(NSString *)arg1;
+- (void)forceReloadChatRegistryWithQueryID:(NSString *)arg1;
+- (void)markReadForMessageGUID:(NSString *)arg1 callerOrigin:(long long)arg2 queryID:(NSString *)arg3;
 - (void)markMessageAsCorrupt:(NSString *)arg1 setCorrupt:(_Bool)arg2;
 - (void)updateMessage:(IMMessageItem *)arg1 withIndexesOfDeletedItems:(NSIndexSet *)arg2 withIndexToRangeMapOfDeletedItems:(NSDictionary *)arg3;
 - (void)updateMessage:(IMMessageItem *)arg1;
@@ -203,15 +212,16 @@
 - (void)loadHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 beforeGUID:(NSString *)arg5 afterGUID:(NSString *)arg6 threadIdentifier:(NSString *)arg7 chatID:(NSString *)arg8 queryID:(NSString *)arg9;
 - (void)loadMessageItemWithGUID:(NSString *)arg1 queryID:(NSString *)arg2;
 - (void)loadMessageWithGUID:(NSString *)arg1 queryID:(NSString *)arg2;
-- (void)loadChatsWithChatID:(NSString *)arg1;
 - (void)setListenerCapabilities:(unsigned int)arg1;
 - (void)askHandleIDToShareTheirScreen:(NSString *)arg1 isContact:(_Bool)arg2;
 - (void)inviteHandleIDToShareMyScreen:(NSString *)arg1 isContact:(_Bool)arg2;
 - (void)account:(NSString *)arg1 avAction:(unsigned int)arg2 withArguments:(NSDictionary *)arg3 toAVChat:(NSString *)arg4 isVideo:(_Bool)arg5;
+- (void)createItemForPHAssetWithUUID:(NSString *)arg1 parentChatItemGUID:(NSString *)arg2 chatGUID:(NSString *)arg3;
+- (void)retrieveLocalFileURLForFileTransferWithGUID:(NSString *)arg1 options:(long long)arg2;
 - (_Bool)markAttachment:(NSString *)arg1 sender:(NSString *)arg2 recipients:(NSArray *)arg3 isIncoming:(_Bool)arg4;
 - (void)fileTransferRemoved:(NSString *)arg1;
 - (void)fileTransferStopped:(NSString *)arg1;
-- (void)fileTransfer:(NSString *)arg1 acceptedWithPath:(NSString *)arg2 autoRename:(_Bool)arg3 overwrite:(_Bool)arg4;
+- (void)fileTransfer:(NSString *)arg1 acceptedWithPath:(NSString *)arg2 autoRename:(_Bool)arg3 overwrite:(_Bool)arg4 options:(long long)arg5;
 - (void)fileTransfer:(NSString *)arg1 updatedWithProperties:(NSDictionary *)arg2;
 - (void)fileTransfer:(NSString *)arg1 createdWithProperties:(NSDictionary *)arg2;
 - (void)downloadHighQualityVariantOfFileTransferWithGUID:(NSString *)arg1;

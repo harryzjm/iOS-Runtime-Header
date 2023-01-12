@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSArray, NSString, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMPosterBannerView, PXCMMViewModel, PXMomentShareStatusPresentation, UIView;
+@class NSArray, NSString, PXCMMPosterBannerView, PXCMMViewModel, PXMomentShareStatusPresentation, PXPeopleSuggestionsDataSourceManager, UIView;
 @protocol PXAssetImportStatusManager, PXCMMBannerTileControllerDelegate;
 
 @interface PXCMMBannerTileController : NSObject <PXChangeObserver, PXSectionedDataSourceManagerObserver, PXReusableObject, PXUIViewBasicTile>
@@ -22,18 +22,16 @@
     id <PXAssetImportStatusManager> _importStatusManager;
     NSArray *_localizedNames;
     PXMomentShareStatusPresentation *_momentShareStatusPresentation;
+    PXPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
     id <PXCMMBannerTileControllerDelegate> _delegate;
     PXCMMPosterBannerView *_bannerView;
-    PXCMMPeopleSuggestionsMediaProvider *_peopleSuggestionsMediaProvider;
-    PXCMMPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
 }
 
 + (id)new;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager; // @synthesize peopleSuggestionsDataSourceManager=_peopleSuggestionsDataSourceManager;
-@property(retain, nonatomic) PXCMMPeopleSuggestionsMediaProvider *peopleSuggestionsMediaProvider; // @synthesize peopleSuggestionsMediaProvider=_peopleSuggestionsMediaProvider;
 @property(retain, nonatomic) PXCMMPosterBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property(nonatomic) __weak id <PXCMMBannerTileControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) PXPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager; // @synthesize peopleSuggestionsDataSourceManager=_peopleSuggestionsDataSourceManager;
 - (void)_updateLocalizedNamesByViewModel;
 - (void)_updatePeopleSuggestionNames;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
@@ -46,7 +44,6 @@
 - (void)_updateLoadingPeopleSuggestions;
 - (void)_updateBannerActionButton;
 - (void)_updateCounts;
-- (void)setPeopleSuggestionDataSourceManager:(id)arg1 mediaProvider:(id)arg2;
 - (id)initWithActivityType:(unsigned long long)arg1 sourceType:(unsigned long long)arg2 viewModel:(id)arg3 momentShareStatusPresentation:(id)arg4 importStatusManager:(id)arg5;
 - (id)init;
 

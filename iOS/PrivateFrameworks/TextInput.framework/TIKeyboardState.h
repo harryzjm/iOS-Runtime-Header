@@ -38,6 +38,7 @@
             unsigned int omitEmojiCandidates:1;
             unsigned int emojiSearchMode:1;
             unsigned int emojiPopoverMode:1;
+            unsigned int canSuggestSupplementalItemsForCurrentSelection:1;
         } fields;
     } _mask;
     union {
@@ -48,6 +49,7 @@
         } fields;
     } _autocorrectionListUIState;
     int _shiftState;
+    unsigned long long _supplementalLexiconIdentifier;
     NSUUID *_documentIdentifier;
     NSString *_clientIdentifier;
     NSString *_inputMode;
@@ -93,6 +95,7 @@
 @property(copy, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(retain, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
+@property(nonatomic) unsigned long long supplementalLexiconIdentifier; // @synthesize supplementalLexiconIdentifier=_supplementalLexiconIdentifier;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -128,6 +131,8 @@
 @property(nonatomic) _Bool suppressingCandidateSelection;
 @property(nonatomic) _Bool shouldSkipCandidateSelection;
 @property(nonatomic) _Bool userSelectedCurrentCandidate;
+@property(nonatomic) _Bool canSuggestSupplementalItemsForCurrentSelection;
+- (id)init;
 
 @end
 

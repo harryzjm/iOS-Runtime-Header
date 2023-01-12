@@ -8,7 +8,7 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKInspectableValue, HKInspectableValueCollection, NSDate, NSString;
+@class HKInspectableValue, HKInspectableValueCollection, NSDate, NSNumber, NSString;
 
 @interface HKInspectableValueInRange : NSObject <NSSecureCoding>
 {
@@ -31,12 +31,13 @@
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 - (void)_setUnitString:(id)arg1;
-- (double)_doubleForValue:(id)arg1;
-- (double)_doubleForValueCollection:(id)arg1;
+- (id)_numberForValue:(id)arg1;
+- (id)_numberForValueCollection:(id)arg1;
 @property(readonly, nonatomic) _Bool hasRenderableContent;
 @property(readonly, nonatomic) long long currentValueRelation;
-@property(readonly, nonatomic) double highValueDoubleRepresentation;
-@property(readonly, nonatomic) double lowValueDoubleRepresentation;
+- (id)_currentValueDoubleRepresentation;
+@property(readonly, nonatomic) NSNumber *highValueNumberRepresentation;
+@property(readonly, nonatomic) NSNumber *lowValueNumberRepresentation;
 - (void)_assertValidRange;
 - (id)_initValueInRangeWithLow:(id)arg1 high:(id)arg2 currentValue:(id)arg3 unit:(id)arg4;
 

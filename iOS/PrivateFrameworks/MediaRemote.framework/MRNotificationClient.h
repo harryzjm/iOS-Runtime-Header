@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSOrderedSet;
+#import <MediaRemote/MRNowPlayingClientState-Protocol.h>
+
+@class NSMutableArray, NSOrderedSet;
 @protocol OS_dispatch_queue;
 
-@interface MRNotificationClient : NSObject
+@interface MRNotificationClient : NSObject <MRNowPlayingClientState>
 {
     unsigned long long _registeredNowPlayingObservers;
     NSObject<OS_dispatch_queue> *_customNotificationsQueue;
@@ -23,6 +25,7 @@
     NSOrderedSet *_supportedCommandsNotifications;
     NSOrderedSet *_voiceInputNotifications;
     NSOrderedSet *_errorNotifications;
+    NSMutableArray *_subscribedWakingPlayerPaths;
     _Bool _receivesExternalScreenTypeChangedNotifications;
     _Bool _receivesSupportedCommandsNotifications;
     _Bool _receivesRoutesChangedNotifications;
@@ -45,11 +48,16 @@
 - (_Bool)postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
 - (void)dispatchNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue;
+- (void)restoreNowPlayingClientState;
+- (void)_syncWakingPlayerPathsWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unregisterForWakingNowPlayingNotificationsForPlayerPath:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)registerForWakingNowPlayingNotificationsForPlayerPath:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_processAlwaysNeedsNowPlayingNotifications;
 @property(readonly, nonatomic, getter=isRegisteredForNowPlayingNotifications) _Bool registeredForNowPlayingNotifications;
 - (void)unregisterForNowPlayingNotifications;
 - (void)registerForNowPlayingNotificationsWithQueue:(id)arg1 force:(_Bool)arg2;
 - (void)registerForNowPlayingNotificationsWithQueue:(id)arg1;
+- (id)debugDescription;
 - (id)init;
 
 @end

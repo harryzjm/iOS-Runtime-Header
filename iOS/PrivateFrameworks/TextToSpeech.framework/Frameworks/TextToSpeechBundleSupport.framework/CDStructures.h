@@ -30,13 +30,11 @@ struct __CFString;
 
 struct __TTSPlayback;
 
-struct basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>>;
-
-struct vector<boost::basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>>, std::__1::allocator<boost::basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>>>> {
-    struct basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>> *__begin_;
-    struct basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>> *__end_;
-    struct __compressed_pair<boost::basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>>*, std::__1::allocator<boost::basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>>>> {
-        struct basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>>> *__value_;
+struct vector<boost::basic_regex<char>, std::allocator<boost::basic_regex<char>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<boost::basic_regex<char>*, std::allocator<boost::basic_regex<char>>> {
+        void *__value_;
     } __end_cap_;
 };
 

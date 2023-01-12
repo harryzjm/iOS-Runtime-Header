@@ -9,5 +9,6 @@
 @interface CSSearchableItem (SGCloning)
 + (id)sg_clonableItemAtIndex:(unsigned long long)arg1 inCodedArray:(id)arg2;
 - (id)sg_clone;
+- (void)standardizeCSPersons;
 @end
 

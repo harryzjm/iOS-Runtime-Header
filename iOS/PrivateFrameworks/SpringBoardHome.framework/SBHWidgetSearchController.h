@@ -6,11 +6,12 @@
 
 #import <UIKit/UISearchController.h>
 
-@class UIView;
+@class NSMapTable, UIView;
 @protocol SBIconListLayoutProvider;
 
 @interface SBHWidgetSearchController : UISearchController
 {
+    NSMapTable *_scrollProgressByClient;
     id <SBIconListLayoutProvider> _listLayoutProvider;
     UIView *_searchBarTextFieldBackgroundView;
     UIView *_searchBarBackgroundView;
@@ -20,12 +21,17 @@
 @property(retain, nonatomic) UIView *searchBarBackgroundView; // @synthesize searchBarBackgroundView=_searchBarBackgroundView;
 @property(readonly, nonatomic) UIView *searchBarTextFieldBackgroundView; // @synthesize searchBarTextFieldBackgroundView=_searchBarTextFieldBackgroundView;
 @property(readonly, nonatomic) id <SBIconListLayoutProvider> listLayoutProvider; // @synthesize listLayoutProvider=_listLayoutProvider;
-- (void)updateSearchBarBackgroundForScrollDistance:(double)arg1;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (id)_textFieldFont;
+- (double)grabberTopSpacing;
+- (void)updateSearchBarContentInsetsWithWidth:(double)arg1;
+- (void)updateSearchBarBackgroundForScrollDistance:(double)arg1 forClient:(id)arg2;
 - (void)_setupBarBackground;
 - (void)_setupTextFieldBackground;
 - (void)_setupTextField;
 - (void)_setupSearchBar;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)dealloc;
 - (id)initWithListLayoutProvider:(id)arg1;
 
 @end

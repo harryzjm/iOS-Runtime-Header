@@ -22,17 +22,24 @@
         _Bool respondsToShouldShowPlayButtonForItemAtIndexPath;
         _Bool respondsToShouldShowProgressIndicatorForItemAtIndexPath;
         _Bool respondsToShouldMoveProgressIndicatorForItemAtIndexPath;
+        _Bool respondsToShouldShowPeopleRowForItemAtIndexPath;
+        _Bool respondsToShouldMovePeopleRowForItemAtIndexPath;
         _Bool respondsToShouldShowBufferingIndicatorForItemAtIndexPath;
         _Bool respondsToLoadingIndicatorSizeForItemAtIndexPath;
         _Bool respondsToModelTileTransformForItemAtIndexPath;
         _Bool respondsToContentOffsetForItemAtIndexPath;
         _Bool respondsToShouldShowAccessoryForItemAtIndexPath;
+        _Bool respondsToIsShowingInfoPanelForItemAtIndexPath;
         _Bool respondsToMinimumVisibleContentHeightForItemAtIndexPath;
         _Bool respondsToMinimumVisibleAccessoryHeightForItemAtIndexPath;
         _Bool respondsToShouldShowVideoPlaceholderForItemAtIndexPath;
         _Bool respondsToDisableInitialZoomToFillForItemAtIndexPath;
         _Bool respondsToShouldShowReviewScreenScrubberBar;
         _Bool respondsToAlphaForReviewScreenBarsInLayout;
+        _Bool respondsToBestSquareRectForItemAtIndexPath;
+        _Bool respondsToMinimumItemHeightNeededInAccessoryForItemAtIndexPath;
+        _Bool respondsToShouldUseSquareImageInAccessoryForItemAtIndexPath;
+        _Bool respondsToShouldShowAttributionViewForItemAtIndexPath;
     } _delegateFlags;
     NSMutableDictionary *_layoutInfosByIndexPathByTileKind;
     _Bool _useBackgroundTile;
@@ -46,6 +53,7 @@
     _Bool _useUserTransformTiles;
     _Bool _shouldPinContentToTop;
     _Bool _shouldHideMainContent;
+    _Bool _useSyndicationAttributionTile;
     id <PUOneUpTilingLayoutDelegate> _delegate;
     long long _windowInterfaceOrientation;
     long long _tileInitialContentMode;
@@ -54,6 +62,7 @@
     struct CGSize _interpageSpacing;
     struct CGSize _playButtonSize;
     struct CGSize _progressIndicatorSize;
+    struct CGSize _peopleRowSize;
     struct CGSize _renderIndicatorSize;
     struct CGSize _assetExplorerReviewScreenProgressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
@@ -67,6 +76,7 @@
 + (id)centerTileKinds;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useSyndicationAttributionTile; // @synthesize useSyndicationAttributionTile=_useSyndicationAttributionTile;
 @property(nonatomic) _Bool shouldHideMainContent; // @synthesize shouldHideMainContent=_shouldHideMainContent;
 @property(retain, nonatomic) PUParallaxComputer *parallaxComputer; // @synthesize parallaxComputer=_parallaxComputer;
 @property(nonatomic) _Bool shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
@@ -79,6 +89,7 @@
 @property(nonatomic) struct CGSize assetExplorerReviewScreenProgressIndicatorSize; // @synthesize assetExplorerReviewScreenProgressIndicatorSize=_assetExplorerReviewScreenProgressIndicatorSize;
 @property(nonatomic) struct CGSize renderIndicatorSize; // @synthesize renderIndicatorSize=_renderIndicatorSize;
 @property(nonatomic) struct UIEdgeInsets progressIndicatorContentInsets; // @synthesize progressIndicatorContentInsets=_progressIndicatorContentInsets;
+@property(nonatomic) struct CGSize peopleRowSize; // @synthesize peopleRowSize=_peopleRowSize;
 @property(nonatomic) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
 @property(nonatomic) struct CGSize playButtonSize; // @synthesize playButtonSize=_playButtonSize;
 @property(nonatomic) _Bool useVerticalReviewScreenControlBarLayout; // @synthesize useVerticalReviewScreenControlBarLayout=_useVerticalReviewScreenControlBarLayout;
@@ -96,6 +107,8 @@
 @property(nonatomic) __weak id <PUOneUpTilingLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 - (double)_normalizedTransitionProgressFrom:(id)arg1 withAbscissa:(double)arg2 outNeighbor:(out id *)arg3;
 - (id)_indexPathOfItemClosestToAbscissa:(double)arg1;
+- (struct CGRect)_rectForFittingToTargetPixelSize:(struct CGSize)arg1 imagePixelSize:(struct CGSize)arg2 bestSquareUnitRect:(struct CGRect)arg3;
+- (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 parallaxOffset:(out struct CGPoint *)arg3 contentsRect:(out struct CGRect *)arg4 alpha:(out double *)arg5 forContentOfItemAtIndexPath:(id)arg6 options:(unsigned long long)arg7;
 - (void)_getLayoutRect:(out struct CGRect *)arg1 transform:(out struct CGAffineTransform *)arg2 parallaxOffset:(out struct CGPoint *)arg3 forContentOfItemAtIndexPath:(id)arg4 options:(unsigned long long)arg5;
 - (id)_displayTileTransformForItemAtIndexPath:(id)arg1 pageSize:(struct CGSize)arg2 secondaryDisplayTransform:(id)arg3 options:(unsigned long long)arg4;
 - (id)_displayTileTransformForItemAtIndexPath:(id)arg1 options:(unsigned long long)arg2;
@@ -104,7 +117,9 @@
 - (struct CGRect)_frameForTileWithSize:(struct CGSize)arg1 centeredOnItemAtIndexPath:(id)arg2;
 - (struct CGRect)_pageRectForItemAtIndexPath:(id)arg1;
 - (struct CGSize)_itemSize;
+- (_Bool)_shouldShowRenderIndicatorForIndexPath:(id)arg1 size:(struct CGSize)arg2;
 - (_Bool)_isVideoPlacholderVisibleForItemAtIndexPath:(id)arg1;
+- (_Bool)_isShowingInfoPanelForItemAtIndexPath:(id)arg1;
 - (_Bool)_accessoryViewVisibilityForItemAtIndexPath:(id)arg1;
 - (struct CGPoint)_contentOffsetForItemAtIndexPath:(id)arg1;
 - (double)_minimumBottomContentInsetsForItemAtIndexPath:(id)arg1;

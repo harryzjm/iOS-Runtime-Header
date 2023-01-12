@@ -16,11 +16,9 @@
     NSArray *_featuredPhotoTimelineEntries;
     NSArray *_bestContent;
     NSArray *_timelineCandidates;
-    unsigned long long _currentTimelineCandidateIndex;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long currentTimelineCandidateIndex; // @synthesize currentTimelineCandidateIndex=_currentTimelineCandidateIndex;
 @property(retain, nonatomic) NSArray *timelineCandidates; // @synthesize timelineCandidates=_timelineCandidates;
 @property(retain, nonatomic) NSArray *bestContent; // @synthesize bestContent=_bestContent;
 @property(retain, nonatomic) NSArray *featuredPhotoTimelineEntries; // @synthesize featuredPhotoTimelineEntries=_featuredPhotoTimelineEntries;
@@ -29,13 +27,14 @@
 @property(nonatomic) double duration; // @synthesize duration=_duration;
 - (id)_coalesceRepeatedTimelineEntries:(id)arg1;
 - (id)_timelineAtDate:(id)arg1 startOfDayCandidatesIndex:(long long)arg2 timelineEntryByBestContentInterval:(id)arg3 options:(id)arg4;
-- (long long)_startOfDayIndexWithOffsetDay:(long long)arg1 entriesCount:(long long)arg2 perDayLimit:(long long)arg3;
+- (long long)_startOfDayIndexWithOffsetDay:(long long)arg1 entriesCount:(long long)arg2 perDayLimit:(long long)arg3 options:(id)arg4;
 - (id)_timelineEntryByBestContentIntervalAtDate:(id)arg1 numberOfDays:(long long)arg2 options:(id)arg3;
 - (id)_timelineEntriesFromAssetCollections:(id)arg1;
 - (id)_sortedTimelineEntriesForMemoriesAtDate:(id)arg1;
-- (id)_findBestContentAndRemoveFromSourceAtDate:(id)arg1;
+- (id)_findBestFeaturedPhotoAndRemoveFromSource;
+- (id)_findBestContentAndRemoveFromSourceAtDate:(id)arg1 options:(id)arg2;
 - (id)_scheduledTimelineEntriesWithOptions:(id)arg1 atDate:(id)arg2;
-- (void)_initTimelineEntriesAtDate:(id)arg1;
+- (void)_initTimelineEntriesAtDate:(id)arg1 options:(id)arg2;
 - (id)scheduledTimelineEntriesWithOptions:(id)arg1;
 - (id)initWithTimelineDataSource:(id)arg1;
 - (id)init;

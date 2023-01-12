@@ -10,7 +10,6 @@
 
 @interface _TtCV9Coherence14Proto_RegisterP33_8F93C82C9C5F20EAB9E21F7119431FBB13_StorageClass : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_uuid;
     MISSING_TYPE *_timestamp;
     MISSING_TYPE *_value;
 }

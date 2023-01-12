@@ -23,14 +23,8 @@
 }
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
-+ (double)bluetoothPaddingInset;
-+ (double)regionSpacing;
-+ (double)expandedItemSpacing;
-+ (double)itemSpacing;
 + (double)cornerRadius;
 + (double)height;
-+ (_Bool)wantsExpandedLeadingPlacements;
-+ (_Bool)hasCellularCapability;
 + (Class)visualProviderSubclassForScreen:(id)arg1 visualProviderInfo:(id)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacementGroup *secondaryWifiGroup; // @synthesize secondaryWifiGroup=_secondaryWifiGroup;
@@ -42,6 +36,7 @@
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) __weak _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 - (id)defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
+@property(readonly, nonatomic) _UIStatusBarAnimation *animationForProminentLocation;
 @property(readonly, nonatomic) _UIStatusBarAnimation *animationForAirplaneMode;
 @property(readonly, nonatomic) double airplaneObstacleFadeInDuration;
 @property(readonly, nonatomic) double airplaneObstacleFadeOutDuration;
@@ -63,6 +58,12 @@
 - (id)styleAttributesForStyle:(long long)arg1;
 @property(readonly, nonatomic) _Bool supportsIndirectPointerTouchActions;
 - (id)init;
+@property(readonly) double bluetoothPaddingInset;
+@property(readonly) double regionSpacing;
+@property(readonly) double expandedItemSpacing;
+@property(readonly) double itemSpacing;
+@property(readonly) _Bool wantsExpandedLeadingPlacements;
+@property(readonly) _Bool hasCellularCapability;
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool canFixupDisplayItemAttributes;

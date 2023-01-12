@@ -9,7 +9,7 @@
 
 @protocol FCPaymentTransactionManager
 @property(nonatomic) __weak id <FCPaymentTransactionManagerDelegate> delegate;
-- (void)startPurchaseWithTagID:(NSString *)arg1 productID:(NSString *)arg2 purchaseID:(NSString *)arg3 appAdamID:(NSNumber *)arg4 storeExternalVersion:(NSNumber *)arg5 price:(NSNumber *)arg6 webAccessOptIn:(_Bool)arg7 payment:(SKMutablePayment *)arg8;
+- (void)startPurchaseWithTagID:(NSString *)arg1 productID:(NSString *)arg2 purchaseID:(NSString *)arg3 bundleID:(NSString *)arg4 appAdamID:(NSNumber *)arg5 storeExternalVersion:(NSNumber *)arg6 price:(NSNumber *)arg7 webAccessOptIn:(_Bool)arg8 payment:(SKMutablePayment *)arg9;
 - (void)registerOngoingPurchaseTransactionsWithEntry:(FCOngoingPurchaseEntry *)arg1;
 - (_Bool)canMakePayments;
 @end

@@ -15,9 +15,9 @@
 {
     CDStruct_42e984b2 _delegateFlags;
     CDStruct_e83c9415 _trimRange;
+    _Bool _showsUntrimmed;
     _Bool _didPlayBeforeSeek;
     _Bool _didLoopVideoBeforeSeek;
-    _Bool _showsUntrimmed;
     id <PXTrimToolPlayerObserver> _playerObserver;
     id <PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource> _playerItemSource;
     NSArray *_fullVideoPipelineFilters;
@@ -31,7 +31,6 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool showsUntrimmed; // @synthesize showsUntrimmed=_showsUntrimmed;
 @property(copy, nonatomic) NSArray *pipelineFiltersBeforeSeek; // @synthesize pipelineFiltersBeforeSeek=_pipelineFiltersBeforeSeek;
 @property(nonatomic) _Bool didLoopVideoBeforeSeek; // @synthesize didLoopVideoBeforeSeek=_didLoopVideoBeforeSeek;
 @property(nonatomic) _Bool didPlayBeforeSeek; // @synthesize didPlayBeforeSeek=_didPlayBeforeSeek;
@@ -41,12 +40,15 @@
 @property(retain, nonatomic) NSMutableArray *mediaViewObservers; // @synthesize mediaViewObservers=_mediaViewObservers;
 @property(retain, nonatomic) id <NUMediaPlayer> mediaPlayer; // @synthesize mediaPlayer=_mediaPlayer;
 @property(readonly, nonatomic) NUMediaView *mediaView; // @synthesize mediaView=_mediaView;
+@property(nonatomic) _Bool showsUntrimmed; // @synthesize showsUntrimmed=_showsUntrimmed;
 @property(copy, nonatomic) NSArray *fullVideoPipelineFilters; // @synthesize fullVideoPipelineFilters=_fullVideoPipelineFilters;
 @property(nonatomic) __weak id <PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource> playerItemSource; // @synthesize playerItemSource=_playerItemSource;
 @property(nonatomic) __weak id <PXTrimToolPlayerObserver> playerObserver; // @synthesize playerObserver=_playerObserver;
 - (void)setShowsUntrimmed:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopPeriodicTimeObserver;
 - (void)startPeriodicTimeObserver;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
+- (void)stepByCount:(long long)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
 - (void)pause;
 - (void)play;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing;
@@ -56,6 +58,8 @@
 - (void)applyTrimTimeRange:(CDStruct_e83c9415)arg1;
 @property(readonly, nonatomic) CDStruct_e83c9415 trimRange;
 - (void)setPosterFrame:(CDStruct_1b6d18a9)arg1;
+- (void)finishSeeking;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3 forceSeek:(_Bool)arg4;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
 - (void)_handleMediaPlayerObserverStatusChanged:(long long)arg1;

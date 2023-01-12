@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSUserDefaults, RMAudioListenerPoseManager, RMDummyData, RMDummyDataManager;
+@class NSDictionary, NSUserDefaults, RMAudioListenerPoseManager, RMDummyData, RMDummyDataManager;
 @protocol OS_dispatch_queue;
 
 @interface RMRelativeMotionManager : NSObject
@@ -30,6 +30,7 @@
     _Bool _shouldReceiveAudioListenerPose;
     _Bool _verboseLatencyAnalysisLogging;
     int _currentAudioListenerPoseBufferIndex;
+    NSDictionary *_audioListenerPoseOptions;
     NSObject<OS_dispatch_queue> *_queue;
     RMDummyDataManager *_dummyDataManager;
     NSUserDefaults *_defaults;
@@ -38,16 +39,17 @@
 
 + (_Bool)isAudioListenerPoseAvailable;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *audioListenerPoseOptions; // @synthesize audioListenerPoseOptions=_audioListenerPoseOptions;
 - (void)dealloc;
 - (id)getCurrentAudioListenerPoseWithError:(long long *)arg1;
 - (long long)getCurrentAudioListenerPose:(CDStruct_91d2e2b9 *)arg1 timestamp:(double *)arg2;
 - (void)resetAudioListenerPoseTrackingForAllClients;
 - (void)stopReceivingAudioListenerPose;
-- (void)startReceivingAudioListenerPose;
+- (void)startReceivingAudioListenerPoseWithStatusCallback:(CDUnknownBlockType)arg1;
 - (id)getCurrentDummyData;
 - (void)stopReceivingDummyData;
 - (void)startReceivingDummyData;
-- (id)initWithQueue:(id)arg1 options:(id)arg2;
+- (id)initWithQueue:(id)arg1;
 
 @end
 

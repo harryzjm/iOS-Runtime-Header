@@ -23,18 +23,25 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <DNDSEventBehaviorResolverDataSource> dataSource; // @synthesize dataSource=_dataSource;
+- (id)_queue_firstContactForPredicate:(id)arg1;
+- (_Bool)_queue_isBreakthroughAllowedForSender:(id)arg1 eventType:(unsigned long long)arg2 clientDetails:(id)arg3 date:(id)arg4 reason:(out unsigned long long *)arg5;
+- (_Bool)_queue_isBreakthroughAllowedForConfiguration:(id)arg1 application:(id)arg2 sender:(id)arg3 urgency:(unsigned long long)arg4 eventType:(unsigned long long)arg5 threadIdentifier:(id)arg6 notifyAnyway:(_Bool)arg7 reason:(out unsigned long long *)arg8;
 - (_Bool)_queue_eventSourceIsEmergencyContact:(id)arg1;
 - (_Bool)_queue_eventSourceIsRepeat:(id)arg1 clientDetails:(id)arg2 date:(id)arg3;
 - (_Bool)_queue_eventSourceIsContact:(id)arg1 inGroupWithIdentifier:(id)arg2;
 - (_Bool)_queue_eventSourceIsContact:(id)arg1;
 - (_Bool)_queue_eventSourceIsFavorite:(id)arg1;
-- (unsigned long long)_queue_resolveOutcomeForEventSource:(id)arg1 clientDetails:(id)arg2 date:(id)arg3 reason:(out unsigned long long *)arg4;
+- (unsigned long long)_queue_resolveOutcomeForEventSender:(id)arg1 clientDetails:(id)arg2 date:(id)arg3 reason:(out unsigned long long *)arg4;
+- (id)_queue_resolutionForModeWithConfiguration:(id)arg1 eventDetails:(id)arg2 clientDetails:(id)arg3 activeModeUUID:(id)arg4 date:(id)arg5 error:(id *)arg6;
+- (id)_legacyModeConfigurationForModeConfiguration:(id)arg1;
+- (id)_activeModeConfigurationForBehavior:(unsigned long long)arg1;
 - (id)_queue_resolveBehaviorForEventDetails:(id)arg1 clientDetails:(id)arg2 date:(id)arg3 error:(id *)arg4;
-- (id)sysdiagnoseDataForDate:(id)arg1;
+- (id)sysdiagnoseDataForDate:(id)arg1 redacted:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
 - (id)resolveBehaviorForEventDetails:(id)arg1 clientDetails:(id)arg2 date:(id)arg3 error:(id *)arg4;
 - (void)dealloc;
 - (id)initWithModeRepository:(id)arg1 contactStore:(id)arg2;
+- (id)resolutionForConfiguration:(id)arg1 eventDetails:(id)arg2 clientDetails:(id)arg3 date:(id)arg4 error:(id *)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

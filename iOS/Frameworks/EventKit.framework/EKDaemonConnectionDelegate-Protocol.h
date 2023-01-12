@@ -7,6 +7,7 @@
 #import <EventKit/NSObject-Protocol.h>
 
 @protocol EKDaemonConnectionDelegate <NSObject>
+- (void)databaseRestoreGenerationChangedExternally:(int)arg1;
 - (void)daemonRestarted;
 @end
 

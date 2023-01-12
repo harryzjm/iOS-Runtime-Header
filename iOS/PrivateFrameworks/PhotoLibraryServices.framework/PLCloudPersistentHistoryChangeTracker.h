@@ -6,34 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLCloudChangeTracker-Protocol.h>
+@class NSPersistentHistoryToken, NSPersistentStoreCoordinator, NSString, PLChangeHandlingNotificationObserver;
+@protocol PLCloudPersistentHistoryChangeTrackerDelegate;
 
-@class NSManagedObjectContext, NSPersistentHistoryToken, NSString, PLChangeHandlingNotificationObserver;
-@protocol OS_dispatch_queue, PLCloudChangeTrackerDelegate;
-
-@interface PLCloudPersistentHistoryChangeTracker : NSObject <PLCloudChangeTracker>
+@interface PLCloudPersistentHistoryChangeTracker : NSObject
 {
     NSPersistentHistoryToken *_lastKnownToken;
-    NSPersistentHistoryToken *_lastKnownDeletionToken;
-    NSManagedObjectContext *_context;
+    NSPersistentStoreCoordinator *_coordinator;
     PLChangeHandlingNotificationObserver *_notificationObserver;
-    NSObject<OS_dispatch_queue> *_isolationQueue;
-    id <PLCloudChangeTrackerDelegate> _delegate;
+    id <PLCloudPersistentHistoryChangeTrackerDelegate> _delegate;
 }
 
-+ (id)unarchiveTokentWithData:(id)arg1;
-+ (id)archivedDataWithToken:(id)arg1;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PLCloudChangeTrackerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_updateLastKnownDeletionTokenToToken:(id)arg1;
-- (void)updateLastKnownDeletionTokenToResult:(id)arg1;
+@property(nonatomic) __weak id <PLCloudPersistentHistoryChangeTrackerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateLastKnownTokensToToken:(id)arg1;
 - (void)updateLastKnownTokenToResult:(id)arg1;
 - (void)forceTokenToCurrent;
 - (id)currentToken;
-- (id)eventsResultFromPersistentHistoryToken:(id)arg1;
-- (id)fetchDeletionEvents;
-- (id)fetchAllEvents;
+- (id)fetchAllEventsInContext:(id)arg1;
+- (id)_eventsResultFromPersistentHistoryToken:(id)arg1 inContext:(id)arg2;
 - (void)_unregisterForChangeHandlingNotifications;
 - (void)_registerForChangeHandlingNotifications;
 - (void)changeTrackerDidReceiveChangesWithTransaction:(id)arg1;
@@ -43,17 +34,10 @@
 - (id)lastKnownTokenFromDisk;
 - (_Bool)connect;
 - (void)clearToken;
-@property(readonly, copy) NSString *lastKnownDeletionTokenDescription;
 @property(readonly, copy) NSString *lastKnownTokenDescription;
 @property(readonly) _Bool hasChangeTrackerToken;
 @property(readonly, copy) NSString *name;
-- (id)initWithManagedObjectContext:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithPersistentStoreCoordinator:(id)arg1;
 
 @end
 

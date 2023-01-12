@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXMediaTypeAggregating-Protocol.h>
 
 @class NSDate, NSString, PHFetchResult, PHMomentShare, PXAssetCollectionActionManager;
-@protocol PXCMMInvitationParticipant, PXDisplayAsset, PXUIImageProvider;
+@protocol PXCMMInvitationParticipant, PXDisplayAsset, PXDisplayAssetCollection, PXUIImageProvider;
 
 @interface PXCMMMomentShareInvitation : NSObject <PXMediaTypeAggregating, PXCMMInvitation, NSCopying>
 {
@@ -42,6 +42,7 @@
 - (id)momentShareStatus;
 - (void)acceptWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)contextForActivityType:(unsigned long long)arg1;
+@property(readonly, nonatomic) id <PXDisplayAssetCollection> assetCollection;
 @property(readonly, nonatomic) PXAssetCollectionActionManager *assetCollectionActionManager;
 @property(readonly, nonatomic) unsigned long long count;
 @property(readonly, nonatomic) NSDate *expiryDate;

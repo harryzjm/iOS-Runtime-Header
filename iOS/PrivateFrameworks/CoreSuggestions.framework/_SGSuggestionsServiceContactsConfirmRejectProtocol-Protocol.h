@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SGRealtimeContact, SGRecordId;
+@class NSArray, NSData, NSString, SGMailHeaders, SGMailIntelligenceSaliency, SGRealtimeContact, SGRecordId;
 
 @protocol _SGSuggestionsServiceContactsConfirmRejectProtocol
+- (SGMailIntelligenceSaliency *)saliencyFromEmailHeaders:(SGMailHeaders *)arg1 error:(id *)arg2;
+- (void)saliencyFromEmailHeaders:(SGMailHeaders *)arg1 withCompletion:(void (^)(SGMailIntelligenceSaliency *, NSError *))arg2;
+- (NSArray *)topSalienciesForMailboxId:(NSString *)arg1 limit:(long long)arg2 error:(id *)arg3;
+- (SGMailIntelligenceSaliency *)saliencyFromRFC822Data:(NSData *)arg1 error:(id *)arg2;
+- (void)saliencyFromRFC822Data:(NSData *)arg1 withCompletion:(void (^)(SGMailIntelligenceSaliency *, NSError *))arg2;
 - (_Bool)rejectContactDetailRecord:(SGRecordId *)arg1 error:(id *)arg2;
 - (_Bool)rejectContactDetailRecord:(SGRecordId *)arg1 rejectionUI:(int)arg2 error:(id *)arg3;
 - (void)rejectContactDetailRecord:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)rejectContactDetailRecord:(SGRecordId *)arg1 rejectionUI:(int)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (_Bool)confirmContactDetailRecord:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)confirmContactDetailRecord:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (_Bool)confirmContactDetailRecord:(SGRecordId *)arg1 confirmationUI:(int)arg2 error:(id *)arg3;
+- (void)confirmContactDetailRecord:(SGRecordId *)arg1 confirmationUI:(int)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (_Bool)rejectRecord:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)rejectRecord:(SGRecordId *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (_Bool)rejectRecord:(SGRecordId *)arg1 rejectionUI:(int)arg2 error:(id *)arg3;

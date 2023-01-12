@@ -6,7 +6,7 @@
 
 #import <IMCore/IMChatTranscriptItem-Protocol.h>
 
-@class IMHandle, IMServiceImpl, NSAttributedString, NSDate, NSString;
+@class IMChatContext, IMHandle, IMServiceImpl, NSAttributedString, NSDate, NSString;
 
 @interface IMTranscriptChatItem <IMChatTranscriptItem>
 {
@@ -14,9 +14,11 @@
     unsigned char _contiguousType;
     unsigned char _attachmentContiguousType;
     unsigned int _contiguousLoaded:1;
+    IMChatContext *_chatContext;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) IMChatContext *chatContext; // @synthesize chatContext=_chatContext;
 @property(copy, nonatomic, setter=_setGUID:) NSString *guid; // @synthesize guid=_guid;
 - (void)_setAttachmentContiguousType:(unsigned char)arg1;
 - (void)_setContiguousType:(unsigned char)arg1;
@@ -37,6 +39,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
+@property(readonly, copy, nonatomic) NSString *layoutGroupIdentifier;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

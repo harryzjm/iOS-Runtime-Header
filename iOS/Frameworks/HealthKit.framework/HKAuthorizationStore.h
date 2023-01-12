@@ -24,9 +24,12 @@
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
+- (void)recalibrateEstimatesForSampleType:(id)arg1 effectiveDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)validateRecalibrateEstimatesRequestRecord:(id)arg1 error:(id *)arg2;
 - (void)resetAllObjectAuthorizationStatusForBundleIdentifier:(id)arg1 objectType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetAuthorizationStatusesForObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setObjectAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setObjectAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 sessionIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)fetchAuthorizationContextForPromptSession:(id)arg1 error:(id *)arg2;
 - (void)fetchAuthorizationStatusesForSample:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAuthorizationStatusesForDocumentType:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetAuthorizationStatusForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -37,6 +40,7 @@
 - (void)fetchAuthorizationRecordsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchResetProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchWriteProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)_fetchSynchronousReadProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchReadProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)initWithHealthStore:(id)arg1;
 

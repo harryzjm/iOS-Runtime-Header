@@ -15,11 +15,15 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CLCircularRegion *region; // @synthesize region=_region;
+- (id)comparisonKey;
+- (id)naturalLanguageNameWithOptions:(id)arg1;
+- (id)eventType;
 @property(readonly, copy) NSString *description;
 - (_Bool)isRegionAtHome:(id)arg1;
-- (id)buildNewEventFromCurrentState;
-@property(readonly, nonatomic) unsigned long long eventType;
+- (id)buildNewEventsFromCurrentState;
+@property(readonly, nonatomic) unsigned long long locationEventType;
 - (id)initWithEvent:(id)arg1;
+- (id)compareToObject:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

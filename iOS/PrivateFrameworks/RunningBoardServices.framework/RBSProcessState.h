@@ -31,6 +31,8 @@
 
 + (_Bool)supportsRBSXPCSecureCoding;
 + (void)setActiveStateDescriptor:(id)arg1;
++ (id)statesForPredicate:(id)arg1 withDescriptor:(id)arg2 error:(out id *)arg3;
++ (id)untrackedRunningStateforProcess:(id)arg1;
 + (id)stateWithProcess:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isPreventedFromLaunching) _Bool preventedFromLaunching; // @synthesize preventedFromLaunching=_preventedFromLaunching;

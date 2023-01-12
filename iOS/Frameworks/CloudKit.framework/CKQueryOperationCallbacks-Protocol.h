@@ -6,11 +6,11 @@
 
 #import <CloudKit/CKOperationCallbacks-Protocol.h>
 
-@class CKOperationMetrics, CKQueryCursor, CKRecord, NSError;
+@class CKOperationMetrics, CKQueryCursor, CKRecord, CKRecordID, NSError;
 
 @protocol CKQueryOperationCallbacks <CKOperationCallbacks>
 - (void)handleOperationDidCompleteWithCursor:(CKQueryCursor *)arg1 metrics:(CKOperationMetrics *)arg2 error:(NSError *)arg3;
 - (void)handleQueryDidFetchCursor:(CKQueryCursor *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)handleQueryDidFetchRecord:(CKRecord *)arg1;
+- (void)handleQueryDidFetchForRecordID:(CKRecordID *)arg1 record:(CKRecord *)arg2 error:(NSError *)arg3;
 @end
 

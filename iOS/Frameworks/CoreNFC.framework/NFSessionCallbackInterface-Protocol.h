@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError;
+@class NSData, NSError;
 
 @protocol NFSessionCallbackInterface
+- (void)handleSessionResumed;
+- (void)handleSessionSuspended:(NSData *)arg1;
 - (void)didStartSession:(NSError *)arg1;
 @end
 

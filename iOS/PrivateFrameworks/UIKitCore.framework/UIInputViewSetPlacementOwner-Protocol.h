@@ -6,14 +6,18 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIInputViewSet, UIInputViewSetPlacement, UIView;
+@class TUIInputAssistantHostView, UIInputViewSet, UIInputViewSetPlacement, UIView;
 @protocol UIInputViewSetPlacementApplicator;
 
 @protocol UIInputViewSetPlacementOwner <NSObject>
+@property(readonly) TUIInputAssistantHostView *inputAssistantHostView;
+@property _Bool hideInputView;
+@property _Bool hideInputAssistantBackdrop;
 @property(readonly) long long inputViewBackdropStyle;
 @property _Bool hideInputViewBackdrops;
 @property(readonly, retain) UIView *containerView;
 @property(readonly, retain) UIView *hostView;
+@property(readonly) struct UIEdgeInsets inputViewPadding;
 @property(readonly, retain) UIInputViewSet *inputViewSet;
 @property(readonly, retain, nonatomic) id <UIInputViewSetPlacementApplicator> applicator;
 @property(readonly, retain) UIInputViewSetPlacement *placement;

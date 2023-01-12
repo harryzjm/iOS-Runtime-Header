@@ -40,7 +40,7 @@
 @property(readonly) long long numberOfResults;
 @property(readonly) long long numberOfSections;
 - (id)description;
-- (id)initWithSearchTerm:(id)arg1;
+- (id)initWithSearchTerm:(id)arg1 shouldAddAdhocResults:(_Bool)arg2;
 
 @end
 

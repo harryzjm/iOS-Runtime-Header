@@ -10,7 +10,7 @@
 #import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
 #import <AppleMediaServices/AMSRequestEncoding-Protocol.h>
 
-@class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSSigningSecurityService, NSDictionary, NSString, NSURLSessionTask;
+@class ACAccount, AMSKeychainOptions, AMSProcessInfo, AMSSigningSecurityService, NSArray, NSDictionary, NSString, NSURLSessionTask;
 @protocol AMSBagProtocol, AMSResponseDecoding, AMSURLBagContract, OS_dispatch_queue;
 
 @interface AMSURLRequestEncoder : NSObject <AMSBagConsumer_Project, AMSBagConsumer, AMSRequestEncoding>
@@ -24,17 +24,19 @@
     _Bool _urlKnownToBeTrusted;
     ACAccount *_account;
     NSDictionary *_additionalMetrics;
-    long long _anisetteType;
     id <AMSBagProtocol> _bag;
     AMSProcessInfo *_clientInfo;
-    long long _dialogOptions;
+    NSArray *_groupRequestAccounts;
     AMSKeychainOptions *_keychainOptions;
     NSString *_logUUID;
+    id <AMSResponseDecoding> _responseDecoder;
+    long long _anisetteType;
+    long long _dialogOptions;
     long long _mescalType;
     long long _requestEncoding;
-    id <AMSResponseDecoding> _responseDecoder;
     id <AMSURLBagContract> _bagContract;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    struct os_unfair_recursive_lock_s _propertiesLock;
     long long _encodeCount;
     AMSSigningSecurityService *_signingService;
     NSURLSessionTask *_parentTask;
@@ -49,26 +51,20 @@
 @property(retain, nonatomic) NSURLSessionTask *parentTask; // @synthesize parentTask=_parentTask;
 @property(readonly, nonatomic) AMSSigningSecurityService *signingService; // @synthesize signingService=_signingService;
 @property(nonatomic) long long encodeCount; // @synthesize encodeCount=_encodeCount;
+@property(readonly, nonatomic) struct os_unfair_recursive_lock_s propertiesLock; // @synthesize propertiesLock=_propertiesLock;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) id <AMSURLBagContract> bagContract; // @synthesize bagContract=_bagContract;
-@property(nonatomic) _Bool urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
-@property(nonatomic) _Bool shouldSetStorefrontFromResponse; // @synthesize shouldSetStorefrontFromResponse=_shouldSetStorefrontFromResponse;
-@property(nonatomic) _Bool shouldSetCookiesFromResponse; // @synthesize shouldSetCookiesFromResponse=_shouldSetCookiesFromResponse;
-@property(retain, nonatomic) id <AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
-@property(nonatomic) long long requestEncoding; // @synthesize requestEncoding=_requestEncoding;
-@property(nonatomic) long long mescalType; // @synthesize mescalType=_mescalType;
-@property(retain, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
-@property(retain, nonatomic) AMSKeychainOptions *keychainOptions; // @synthesize keychainOptions=_keychainOptions;
-@property(nonatomic) _Bool includeClientVersions; // @synthesize includeClientVersions=_includeClientVersions;
-@property(nonatomic) _Bool enableRemoteSecuritySigning; // @synthesize enableRemoteSecuritySigning=_enableRemoteSecuritySigning;
-@property(nonatomic) long long dialogOptions; // @synthesize dialogOptions=_dialogOptions;
-@property(nonatomic) _Bool disableResponseDecoding; // @synthesize disableResponseDecoding=_disableResponseDecoding;
-@property(nonatomic) _Bool compressRequestBody; // @synthesize compressRequestBody=_compressRequestBody;
-@property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
-@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
-@property(nonatomic) long long anisetteType; // @synthesize anisetteType=_anisetteType;
-@property(retain, nonatomic) NSDictionary *additionalMetrics; // @synthesize additionalMetrics=_additionalMetrics;
-@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property _Bool urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
+@property _Bool shouldSetStorefrontFromResponse; // @synthesize shouldSetStorefrontFromResponse=_shouldSetStorefrontFromResponse;
+@property _Bool shouldSetCookiesFromResponse; // @synthesize shouldSetCookiesFromResponse=_shouldSetCookiesFromResponse;
+@property long long requestEncoding; // @synthesize requestEncoding=_requestEncoding;
+@property long long mescalType; // @synthesize mescalType=_mescalType;
+@property _Bool includeClientVersions; // @synthesize includeClientVersions=_includeClientVersions;
+@property _Bool enableRemoteSecuritySigning; // @synthesize enableRemoteSecuritySigning=_enableRemoteSecuritySigning;
+@property long long dialogOptions; // @synthesize dialogOptions=_dialogOptions;
+@property _Bool disableResponseDecoding; // @synthesize disableResponseDecoding=_disableResponseDecoding;
+@property _Bool compressRequestBody; // @synthesize compressRequestBody=_compressRequestBody;
+@property long long anisetteType; // @synthesize anisetteType=_anisetteType;
 - (id)requestWithMethod:(long long)arg1 URLString:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 - (id)requestWithMethod:(long long)arg1 URLString:(id)arg2 error:(id *)arg3;
 - (id)requestWithMethod:(long long)arg1 URL:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
@@ -80,9 +76,19 @@
 - (id)_methodStringFromMethod:(long long)arg1;
 - (void)_addSecuritySigningHeadersToRequest:(id)arg1 buyParams:(id)arg2 bag:(id)arg3;
 - (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2;
+- (id)requestWithMethod:(long long)arg1 URL:(id)arg2 headers:(id)arg3 parameters:(id)arg4;
 - (id)requestWithMethod:(long long)arg1 URL:(id)arg2 parameters:(id)arg3;
+- (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 headers:(id)arg3 parameters:(id)arg4;
 - (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 parameters:(id)arg3;
 @property(nonatomic) long long dataEncoding;
+@property(retain, nonatomic) id <AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
+@property(retain, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
+@property(retain, nonatomic) AMSKeychainOptions *keychainOptions; // @synthesize keychainOptions=_keychainOptions;
+@property(retain, nonatomic) NSArray *groupRequestAccounts; // @synthesize groupRequestAccounts=_groupRequestAccounts;
+@property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
+@property(retain, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property(retain, nonatomic) NSDictionary *additionalMetrics; // @synthesize additionalMetrics=_additionalMetrics;
+@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)initWithBag:(id)arg1;
 - (id)init;
 

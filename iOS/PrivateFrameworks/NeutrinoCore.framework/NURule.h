@@ -14,7 +14,6 @@
 }
 
 + (id)ruleWithBlockPredicate:(CDUnknownBlockType)arg1 action:(CDUnknownBlockType)arg2;
-+ (id)ruleWithTarget:(id)arg1 predicate:(SEL)arg2 action:(SEL)arg3;
 + (id)ruleWithPredicate:(id)arg1 action:(CDUnknownBlockType)arg2;
 + (id)ruleWithPredicate:(id)arg1 retractingFact:(id)arg2 grade:(double)arg3;
 + (id)ruleWithPredicate:(id)arg1 assertingFact:(id)arg2 grade:(double)arg3;

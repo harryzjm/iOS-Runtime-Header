@@ -12,9 +12,9 @@
     struct CGSize _imageSize;
     struct os_unfair_lock_s _pathLock;
     struct CGPath *_normalizedPath;
-    struct EPolygonList _polygonList;
-    vector_12da65de _topLevelContoursIndices;
-    struct vector<std::__1::vector<unsigned int, std::__1::allocator<unsigned int>>, std::__1::allocator<std::__1::vector<unsigned int, std::__1::allocator<unsigned int>>>> _contourChildrenIndices;
+    struct shared_ptr<apple::vision::libraries::autotrace::EPolygonList> _polygonList;
+    struct vector<unsigned int, std::allocator<unsigned int>> _topLevelContoursIndices;
+    struct vector<std::vector<unsigned int>, std::allocator<std::vector<unsigned int>>> _contourChildrenIndices;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -22,9 +22,9 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (_Bool)isEqual:(id)arg1;
-- (const vector_12da65de *)childContourIndicesAtIndex:(long long)arg1;
+- (const void *)childContourIndicesAtIndex:(long long)arg1;
 - (const struct EPolygonList *)polygonList;
 @property(readonly) const struct CGPath *normalizedPath;
 - (id)contourAtIndexPath:(id)arg1 error:(id *)arg2;
@@ -34,7 +34,7 @@
 @property(readonly) long long contourCount;
 - (_Bool)_initializePolygonContainers;
 - (void)dealloc;
-- (id)initWithRequestRevision:(unsigned long long)arg1 compressedPoints:(id)arg2 imageSize:(struct CGSize)arg3;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 compressedPoints:(id)arg2 imageSize:(struct CGSize)arg3;
 
 @end
 

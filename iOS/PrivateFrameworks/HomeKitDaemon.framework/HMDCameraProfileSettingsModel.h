@@ -17,10 +17,10 @@
 + (id)hmbProperties;
 @property _Bool cameraManuallyDisabled; // @synthesize cameraManuallyDisabled=_cameraManuallyDisabled;
 @property unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
-@property(readonly) _Bool reachabilityEventNotificationEnabled;
 @property _Bool activityZonesIncludedForSignificantEventDetection;
 @property(retain) NSSet *activityZones;
 @property(readonly) HMDBulletinBoardNotification *smartBulletinBoardNotification;
+@property(readonly) _Bool reachabilityEventNotificationEnabled;
 @property(readonly) _Bool accessModeChangeNotificationEnabled;
 @property _Bool recordingAudioEnabled;
 @property _Bool periodicSnapshotsAllowed;
@@ -30,6 +30,9 @@
 @property unsigned long long recordingEventTriggers;
 @property unsigned long long accessModeNotAtHome;
 @property unsigned long long accessModeAtHome;
+@property long long version;
+@property(readonly) unsigned long long mostPrivateAccessMode;
+@property(readonly) _Bool hasAnyNotificationFieldsSet;
 
 // Remaining properties
 @property(copy) NSNumber *accessModeAtHomeField; // @dynamic accessModeAtHomeField;
@@ -45,6 +48,7 @@
 @property(copy) NSNumber *recordingEventTriggersField; // @dynamic recordingEventTriggersField;
 @property(copy) NSData *smartBulletinBoardNotificationDataField; // @dynamic smartBulletinBoardNotificationDataField;
 @property(copy) NSNumber *snapshotsAllowedField; // @dynamic snapshotsAllowedField;
+@property(copy) NSNumber *versionField; // @dynamic versionField;
 
 @end
 

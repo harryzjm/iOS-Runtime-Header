@@ -8,15 +8,15 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadValueJSONConvertible-Protocol.h>
 
-@class NSString;
+@class MPRemoteCommandStatus, NSString;
 
 @interface NSError (ICErrorProcessing) <MPCPlaybackEngineEventPayloadValueJSONConvertible>
 + (_Bool)_isAgeVerificationError:(id)arg1;
 + (id)errorForICError:(id)arg1 response:(id)arg2;
-+ (id)_MPCErrorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescriptionFormat:(id)arg4 arguments:(char *)arg5;
-+ (id)MPCErrorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 debugDescription:(id)arg4;
-+ (id)MPCErrorWithDomain:(id)arg1 code:(long long)arg2 debugDescription:(id)arg3;
 + (id)payloadValueFromJSONValue:(id)arg1;
+- (id)mpc_remoteCommandDialog;
+@property(readonly, nonatomic) MPRemoteCommandStatus *mpc_remoteCommandStatus;
+- (_Bool)mpc_isSubscriptionRequiredError;
 @property(readonly, nonatomic) _Bool mpc_isUnrecoverableAssetLoadingError;
 @property(readonly, nonatomic) _Bool mpc_isAssetUnavailableFailure;
 @property(readonly, nonatomic) _Bool mpc_isQueueLoadingFailure;

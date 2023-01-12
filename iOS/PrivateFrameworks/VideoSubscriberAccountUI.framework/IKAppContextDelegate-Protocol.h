@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccountUI/NSObject-Protocol.h>
 
-@class IKAppContext, IKAppMediaItemBridge, IKAppPlayerBridge, IKAppPlaylistBridge, IKAppTabBar, IKDOMDocument, JSContext, NSData, NSDictionary, NSError, NSString, NSURLSessionConfiguration;
+@class IKAppContext, IKAppMediaItemBridge, IKAppPlayerBridge, IKAppPlaylistBridge, IKAppTabBar, IKDOMDocument, JSContext, NSData, NSDictionary, NSError, NSMutableURLRequest, NSString, NSURLSessionConfiguration;
 @protocol IKAppDeviceConfig, IKAppMediaItem, IKAppNavigationController, IKAppPlayer, IKAppPlaylist;
 
 @protocol IKAppContextDelegate <NSObject>
@@ -15,6 +15,7 @@
 @optional
 - (NSData *)sourceApplicationAuditTokenDataForContext:(IKAppContext *)arg1;
 - (NSString *)sourceApplicationBundleIdentifierForContext:(IKAppContext *)arg1;
+- (void)appContext:(IKAppContext *)arg1 willPerformXhrRequest:(NSMutableURLRequest *)arg2;
 - (NSURLSessionConfiguration *)xhrSessionConfigurationForContext:(IKAppContext *)arg1;
 - (void)appContext:(IKAppContext *)arg1 needsReloadWithUrgency:(unsigned long long)arg2 options:(NSDictionary *)arg3;
 - (void)appContext:(IKAppContext *)arg1 needsReloadWithUrgency:(unsigned long long)arg2;

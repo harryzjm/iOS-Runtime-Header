@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <SBUIPowerDownViewControllerDelegate> powerDownDelegate; // @synthesize powerDownDelegate;
 - (id)_powerDownView;
+- (void)showPowerDownFindMyAlert;
+- (void)showPowerDownFindMyAlertWithProceed:(CDUnknownBlockType)arg1 cancelCompletion:(CDUnknownBlockType)arg2;
 - (void)powerDownViewWillAnimateOut:(id)arg1;
 - (void)powerDownViewWillAnimateIn:(id)arg1;
 - (void)powerDownViewAnimateOutCompleted:(id)arg1;

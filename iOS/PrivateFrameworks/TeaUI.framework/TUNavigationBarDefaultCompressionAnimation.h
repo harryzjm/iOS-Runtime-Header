@@ -43,6 +43,7 @@
 - (double)minimumBarHeightForTraitCollection:(id)arg1;
 - (double)maximumBarHeightForTraitCollection:(id)arg1;
 - (void)updateWithPercentage:(double)arg1;
+- (void)prepareForUpdates;
 - (id)initWithNavigationBar:(id)arg1;
 
 @end

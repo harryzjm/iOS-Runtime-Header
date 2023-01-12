@@ -8,7 +8,7 @@
 {
 }
 
-- (id)resourceAtIndex:(const tvec2_3b141483 *)arg1 string:(id)arg2;
+- (id)resourceAtIndex:(const void *)arg1 string:(id)arg2;
 
 @end
 

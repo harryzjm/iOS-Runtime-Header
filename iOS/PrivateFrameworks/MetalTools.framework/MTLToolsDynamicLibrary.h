@@ -6,13 +6,18 @@
 
 #import <MetalTools/MTLDynamicLibrarySPI-Protocol.h>
 
-@class NSArray, NSObject, NSString;
+@class MTLDebugInstrumentationData, NSArray, NSObject, NSString;
 @protocol MTLDevice, OS_dispatch_data;
 
 @interface MTLToolsDynamicLibrary <MTLDynamicLibrarySPI>
 {
+    NSArray *_relocations;
 }
 
+- (void)dealloc;
+@property(retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData;
+@property(readonly, nonatomic) _Bool shaderValidationEnabled;
+@property(copy, nonatomic) NSArray *relocations;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (_Bool)serializeToURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;

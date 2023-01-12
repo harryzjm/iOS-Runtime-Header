@@ -8,7 +8,7 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class MapsSuggestionsTimer, NSString;
+@class MapsSuggestionsGCDTimer, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MapsSuggestionsCanKicker : NSObject <MapsSuggestionsObject>
@@ -18,7 +18,7 @@
     CDUnknownBlockType _block;
     double _time;
     double _leeway;
-    MapsSuggestionsTimer *_timer;
+    MapsSuggestionsGCDTimer *_timer;
     unsigned long long _count;
 }
 

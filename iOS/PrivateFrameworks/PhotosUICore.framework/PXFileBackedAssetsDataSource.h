@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, _PXFileBackedAssetCollection;
+@class NSDictionary;
 
 @interface PXFileBackedAssetsDataSource
 {
-    _PXFileBackedAssetCollection *_assetCollection;
     NSDictionary *_assetCollectionBySection;
     NSDictionary *_assetDescriptionsBySection;
 }
@@ -16,6 +15,7 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *assetDescriptionsBySection; // @synthesize assetDescriptionsBySection=_assetDescriptionsBySection;
 - (id)inputForItem:(id)arg1;
+- (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
 - (id)assetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;

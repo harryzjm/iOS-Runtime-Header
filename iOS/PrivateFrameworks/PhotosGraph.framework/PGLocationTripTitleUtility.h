@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet, NSString, PGIncompleteLocationResolver;
+@class NSArray, NSSet, NSString, PGGraphLocationHelper, PGIncompleteLocationResolver;
 
 @interface PGLocationTripTitleUtility : NSObject
 {
+    PGGraphLocationHelper *_locationHelper;
     _Bool _filterMomentsAndCities;
     _Bool _allowLongAOI;
     NSString *_title;
@@ -18,14 +19,17 @@
     PGIncompleteLocationResolver *_incompleteLocationResolver;
     NSArray *_usedTitleComponents;
     unsigned long long _tripTitleType;
+    unsigned long long _tripTitleLocationType;
+    NSSet *_filteredLocationNodes;
 }
 
 + (void)_cityStateAndCountryNodesForLocationNodes:(id)arg1 result:(CDUnknownBlockType)arg2;
 + (_Bool)_visitedLocationNodeMoreThanOnce:(id)arg1 withReferenceMomentNodes:(id)arg2;
-+ (id)_locationTitleWithLocationNode:(id)arg1 addressNode:(id)arg2 countryNode:(id)arg3 allowSecondPart:(_Bool)arg4;
-+ (void)_aoiTitleWithLocationNodes:(id)arg1 momentNodes:(id)arg2 allowLongAOI:(_Bool)arg3 result:(CDUnknownBlockType)arg4;
++ (void)_aoiTitleWithLocationNodes:(id)arg1 momentNodes:(id)arg2 allowLongAOI:(_Bool)arg3 graph:(id)arg4 result:(CDUnknownBlockType)arg5;
 + (id)_filteredCityNodesByNameForCityNodes:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSSet *filteredLocationNodes; // @synthesize filteredLocationNodes=_filteredLocationNodes;
+@property(readonly, nonatomic) unsigned long long tripTitleLocationType; // @synthesize tripTitleLocationType=_tripTitleLocationType;
 @property(readonly, nonatomic) unsigned long long tripTitleType; // @synthesize tripTitleType=_tripTitleType;
 @property(retain, nonatomic) NSArray *usedTitleComponents; // @synthesize usedTitleComponents=_usedTitleComponents;
 @property(retain, nonatomic) PGIncompleteLocationResolver *incompleteLocationResolver; // @synthesize incompleteLocationResolver=_incompleteLocationResolver;
@@ -34,14 +38,15 @@
 @property(retain, nonatomic) NSSet *momentNodes; // @synthesize momentNodes=_momentNodes;
 @property(retain, nonatomic) NSSet *usedLocationNodes; // @synthesize usedLocationNodes=_usedLocationNodes;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+- (id)_locationTitleWithLocationNode:(id)arg1 addressNode:(id)arg2 countryNode:(id)arg3 allowSecondPart:(_Bool)arg4;
 - (id)_bestAddressNodeForCityNodes:(id)arg1 inMomentNodes:(id)arg2;
 - (void)_cityTitleWithCityNode:(id)arg1 countryNode:(id)arg2 visitedCountryOnlyOnce:(_Bool)arg3 momentNodes:(id)arg4 result:(CDUnknownBlockType)arg5;
 - (id)_cityNodesFromMomentNodes:(id)arg1;
 - (void)_resolveMomentNodes:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)_generateTitleForMomentNodes:(id)arg1 resolvedMomentNodes:(id)arg2 resolvedLocations:(id)arg3;
 - (void)_generateLocationTitle;
-- (id)initWithMomentNodes:(id)arg1 filterMomentsAndCities:(_Bool)arg2 allowLongAOI:(_Bool)arg3;
-- (id)initWithMomentNodes:(id)arg1 filterMomentsAndCities:(_Bool)arg2;
+- (id)initWithMomentNodes:(id)arg1 filterMomentsAndCities:(_Bool)arg2 allowLongAOI:(_Bool)arg3 locationHelper:(id)arg4;
+- (id)initWithMomentNodes:(id)arg1 filterMomentsAndCities:(_Bool)arg2 locationHelper:(id)arg3;
 
 @end
 

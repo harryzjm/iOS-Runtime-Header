@@ -56,7 +56,7 @@
 - (void)_handleHIDLatency:(id)arg1 isLong:(_Bool)arg2 isConcise:(_Bool)arg3;
 - (void)_handleTransactionLifetimeInterval:(id)arg1 isLong:(_Bool)arg2 isConcise:(_Bool)arg3;
 - (void)_handleCommitInterval:(id)arg1 isLong:(_Bool)arg2 isConcise:(_Bool)arg3;
-- (id)initWithAnimationBeginEvent:(id)arg1 shouldTrackComposites:(_Bool)arg2 shouldTrackInMemoryEvents:(_Bool)arg3;
+- (id)initWithAnimationBeginEvent:(id)arg1 shouldTrackComposites:(_Bool)arg2;
 
 @end
 

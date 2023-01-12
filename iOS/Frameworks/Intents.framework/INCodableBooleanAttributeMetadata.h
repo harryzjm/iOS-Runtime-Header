@@ -34,19 +34,19 @@
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 - (id)__INCodableDescriptionDefaultValueKey;
-- (id)__INTypeCodableDescriptionDefaultValueKey;
-- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
 - (id)__INCodableDescriptionFalseDisplayNameKey;
-- (id)__INIntentResponseCodableDescriptionFalseDisplayNameKey;
-- (id)__INTypeCodableDescriptionFalseDisplayNameKey;
 - (id)__INCodableDescriptionFalseDisplayNameIDKey;
-- (id)__INIntentResponseCodableDescriptionFalseDisplayNameIDKey;
-- (id)__INTypeCodableDescriptionFalseDisplayNameIDKey;
 - (id)__INCodableDescriptionTrueDisplayNameKey;
-- (id)__INIntentResponseCodableDescriptionTrueDisplayNameKey;
-- (id)__INTypeCodableDescriptionTrueDisplayNameKey;
 - (id)__INCodableDescriptionTrueDisplayNameIDKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionFalseDisplayNameKey;
+- (id)__INIntentResponseCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INIntentResponseCodableDescriptionTrueDisplayNameKey;
 - (id)__INIntentResponseCodableDescriptionTrueDisplayNameIDKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionFalseDisplayNameKey;
+- (id)__INTypeCodableDescriptionFalseDisplayNameIDKey;
+- (id)__INTypeCodableDescriptionTrueDisplayNameKey;
 - (id)__INTypeCodableDescriptionTrueDisplayNameIDKey;
 
 // Remaining properties

@@ -8,20 +8,25 @@
 
 #import <UIKitCore/UIInteraction-Protocol.h>
 #import <UIKitCore/UIPanGestureRecognizerDelegateInternal-Protocol.h>
+#import <UIKitCore/_UIHyperInteractorDelegate-Protocol.h>
+#import <UIKitCore/_UIHyperOutOfProcessViewAnimatorDelegate-Protocol.h>
 #import <UIKitCore/_UIScrollViewScrollableAncestor-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, UIPanGestureRecognizer, UIView, UIViewPropertyAnimator, _UIHyperAsymmetricExtender, _UIHyperInteractor, _UIHyperrectangle, _UIHyperregionUnion;
-@protocol UITimingCurveProvider, _UISheetInteractionDelegate;
+@class NSMutableArray, NSString, UIPanGestureRecognizer, UIView, _UIHyperAsymmetricExtender, _UIHyperInteractor, _UIHyperOutOfProcessViewAnimator, _UIHyperrectangle, _UIHyperregionUnion;
+@protocol NSObject, _UISheetInteractionDelegate;
 
-@interface _UISheetInteraction : NSObject <_UIScrollViewScrollableAncestor, UIPanGestureRecognizerDelegateInternal, UIInteraction>
+@interface _UISheetInteraction : NSObject <_UIScrollViewScrollableAncestor, UIPanGestureRecognizerDelegateInternal, _UIHyperInteractorDelegate, _UIHyperOutOfProcessViewAnimatorDelegate, UIInteraction>
 {
     _Bool _scrollingExpandsToLargerDetentWhenScrolledToEdge;
     _Bool _enabled;
-    NSArray *_detents;
+    _Bool _scrollInteractionEnabled;
+    _Bool _generatingAnimations;
+    CDUnknownBlockType _detentsGetter;
     long long _indexOfCurrentDetent;
-    double _rubberBandExtentBeyondMinimumOffset;
-    double _rubberBandExtentBeyondMaximumOffset;
-    id <UITimingCurveProvider> _timingCurve;
+    CDUnknownBlockType _indexOfCurrentDetentGetter;
+    CDUnknownBlockType _currentOffsetWasInvalidated;
+    CDUnknownBlockType _rubberBandExtentBeyondMinimumOffsetGetter;
+    CDUnknownBlockType _rubberBandExtentBeyondMaximumOffsetGetter;
     id <_UISheetInteractionDelegate> _delegate;
     UIView *_view;
     NSMutableArray *_registeredPanGestureRecognizers;
@@ -31,13 +36,13 @@
     _UIHyperregionUnion *_detentUnion;
     _UIHyperrectangle *_detentContinuum;
     _UIHyperAsymmetricExtender *_extender;
-    id _dragSource;
-    UIViewPropertyAnimator *_propertyAnimator;
+    _UIHyperOutOfProcessViewAnimator *_animator;
+    id <NSObject> _dragSource;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIViewPropertyAnimator *propertyAnimator; // @synthesize propertyAnimator=_propertyAnimator;
-@property(retain, nonatomic) id dragSource; // @synthesize dragSource=_dragSource;
+@property(retain, nonatomic) id <NSObject> dragSource; // @synthesize dragSource=_dragSource;
+@property(readonly, nonatomic) _UIHyperOutOfProcessViewAnimator *animator; // @synthesize animator=_animator;
 @property(readonly, nonatomic) _UIHyperAsymmetricExtender *extender; // @synthesize extender=_extender;
 @property(readonly, nonatomic) _UIHyperrectangle *detentContinuum; // @synthesize detentContinuum=_detentContinuum;
 @property(readonly, nonatomic) _UIHyperregionUnion *detentUnion; // @synthesize detentUnion=_detentUnion;
@@ -47,19 +52,24 @@
 @property(readonly, nonatomic) NSMutableArray *registeredPanGestureRecognizers; // @synthesize registeredPanGestureRecognizers=_registeredPanGestureRecognizers;
 @property(nonatomic) __weak UIView *view; // @synthesize view=_view;
 @property(nonatomic) __weak id <_UISheetInteractionDelegate> delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) id <UITimingCurveProvider> timingCurve; // @synthesize timingCurve=_timingCurve;
-@property(nonatomic) double rubberBandExtentBeyondMaximumOffset; // @synthesize rubberBandExtentBeyondMaximumOffset=_rubberBandExtentBeyondMaximumOffset;
-@property(nonatomic) double rubberBandExtentBeyondMinimumOffset; // @synthesize rubberBandExtentBeyondMinimumOffset=_rubberBandExtentBeyondMinimumOffset;
+@property(copy, nonatomic) CDUnknownBlockType rubberBandExtentBeyondMaximumOffsetGetter; // @synthesize rubberBandExtentBeyondMaximumOffsetGetter=_rubberBandExtentBeyondMaximumOffsetGetter;
+@property(copy, nonatomic) CDUnknownBlockType rubberBandExtentBeyondMinimumOffsetGetter; // @synthesize rubberBandExtentBeyondMinimumOffsetGetter=_rubberBandExtentBeyondMinimumOffsetGetter;
+@property(copy, nonatomic) CDUnknownBlockType currentOffsetWasInvalidated; // @synthesize currentOffsetWasInvalidated=_currentOffsetWasInvalidated;
+@property(nonatomic, getter=isGeneratingAnimations) _Bool generatingAnimations; // @synthesize generatingAnimations=_generatingAnimations;
+@property(nonatomic, getter=isScrollInteractionEnabled) _Bool scrollInteractionEnabled; // @synthesize scrollInteractionEnabled=_scrollInteractionEnabled;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(nonatomic) _Bool scrollingExpandsToLargerDetentWhenScrolledToEdge; // @synthesize scrollingExpandsToLargerDetentWhenScrolledToEdge=_scrollingExpandsToLargerDetentWhenScrolledToEdge;
+@property(copy, nonatomic) CDUnknownBlockType indexOfCurrentDetentGetter; // @synthesize indexOfCurrentDetentGetter=_indexOfCurrentDetentGetter;
 @property(nonatomic) long long indexOfCurrentDetent; // @synthesize indexOfCurrentDetent=_indexOfCurrentDetent;
-@property(copy, nonatomic) NSArray *detents; // @synthesize detents=_detents;
-- (double)_currentRubberBandCoefficient;
+@property(copy, nonatomic) CDUnknownBlockType detentsGetter; // @synthesize detentsGetter=_detentsGetter;
+- (void)_animateWithParameters:(id)arg1 animations:(CDUnknownBlockType)arg2;
+- (void)_hyperOutOfProcessViewAnimator:(id)arg1 getPresentationPointForInterruptedAnimation:(double *)arg2;
+- (void)_hyperInteractorApplyPresentationPoint:(id)arg1;
 - (id)_currentDragPanGesture;
 - (void)draggingCancelledInSource:(id)arg1;
-- (void)draggingEndedInSource:(id)arg1 withVelocity:(struct CGPoint)arg2;
-- (void)draggingChangedInSource:(id)arg1 withTranslation:(struct CGPoint)arg2 animateChange:(_Bool)arg3;
-- (void)draggingBeganFromSource:(id)arg1;
+- (void)draggingEndedInSource:(id)arg1;
+- (void)draggingChangedInSource:(id)arg1 withTranslation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3 animateChange:(_Bool)arg4;
+- (void)draggingBeganFromSource:(id)arg1 withRubberBandCoefficient:(double)arg2;
 - (_Bool)_shouldInteractWithDescendentScrollView:(id)arg1 startOffset:(struct CGPoint)arg2 maxTopOffset:(double)arg3;
 - (void)_descendentScrollViewDidCancelDragging:(id)arg1;
 - (void)_descendentScrollViewDidEndDragging:(id)arg1;
@@ -71,17 +81,20 @@
 - (_Bool)_panGestureRecognizer:(id)arg1 shouldTryToBeginVerticallyWithEvent:(id)arg2;
 - (_Bool)_panGestureRecognizer:(id)arg1 shouldTryToBeginHorizontallyWithEvent:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)updateRegisteredPanGestureRecognizerEnabled:(id)arg1;
 - (void)unregisterPanGestureRecognizer:(id)arg1;
 - (void)registerPanGestureRecognizer:(id)arg1;
 @property(readonly, nonatomic) struct CGPoint attachmentPoint;
-@property(readonly, nonatomic, getter=isUnconstrainedOffsetBeyondSideOrTopExtent) _Bool unconstrainedOffsetBeyondSideOrTopExtent;
+- (_Bool)isUnconstrainedOffsetBeyondSideOrTopExtentInverted:(_Bool)arg1;
+- (void)invalidateRubberBandExtentBeyondMaximumOffset;
+- (void)invalidateRubberBandExtentBeyondMinimumOffset;
 - (void)sendCurrentOffsetDidChange;
 @property(readonly, nonatomic) struct CGPoint currentOffset;
-@property(readonly, nonatomic, getter=isAnimating) _Bool animating;
 @property(readonly, nonatomic, getter=isDragging) _Bool dragging;
 - (void)cancelDraggingIfNeeded;
-- (void)updateCurrentOffsetToCurrentDetent;
+- (void)invalidateIndexOfCurrentDetent;
+- (void)invalidateDetents;
 - (id)init;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;

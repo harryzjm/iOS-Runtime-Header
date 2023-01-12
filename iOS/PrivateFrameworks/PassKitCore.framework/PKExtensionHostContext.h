@@ -23,6 +23,7 @@
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)didEncounterAuthorizationEvent:(unsigned long long)arg1;
 - (void)authorizationDidPresent;
+- (void)authorizationDidChangeCouponCode:(id)arg1;
 - (void)authorizationDidSelectPaymentMethod:(id)arg1;
 - (void)authorizationDidSelectShippingAddress:(id)arg1;
 - (void)authorizationDidSelectShippingMethod:(id)arg1;

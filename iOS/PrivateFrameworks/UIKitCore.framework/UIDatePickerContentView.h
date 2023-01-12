@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     struct {
         unsigned int isAmPm:1;
+        unsigned int useDigitFont:1;
     } _datePickerContentViewFlags;
     UILabel *_titleLabel;
     double _titleLabelMaxX;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double titleLabelMaxX; // @synthesize titleLabelMaxX=_titleLabelMaxX;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (void)layoutSubviews;
+@property(nonatomic) _Bool useDigitFont;
 @property(nonatomic) _Bool isAmPm;
 - (_Bool)_canBeReusedInPickerView;
 - (id)initWithFrame:(struct CGRect)arg1;

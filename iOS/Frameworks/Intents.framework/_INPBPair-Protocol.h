@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBContactValue, _INPBCurrencyAmountValue, _INPBCustomObject, _INPBDataString, _INPBDistanceValue, _INPBDoubleValue, _INPBImageValue, _INPBIntegerValue, _INPBLocationValue, _INPBPaymentMethodValue, _INPBStringValue, _INPBTemperatureValue, _INPBURLValue;
+@class NSArray, NSString, _INPBContactValue, _INPBCurrencyAmountValue, _INPBCustomObject, _INPBDataString, _INPBDataValue, _INPBDistanceValue, _INPBDoubleValue, _INPBImageValue, _INPBIntegerValue, _INPBLocationValue, _INPBPaymentMethodValue, _INPBStringValue, _INPBTemperatureValue, _INPBURLValue;
 
 @protocol _INPBPair <NSObject>
 + (Class)pairUrlValueType;
@@ -19,6 +19,7 @@
 + (Class)pairImageValueType;
 + (Class)pairDoubleValueType;
 + (Class)pairDistanceValueType;
++ (Class)pairDataValueType;
 + (Class)pairDataStringType;
 + (Class)pairCustomObjectType;
 + (Class)pairCurrencyAmountValueType;
@@ -44,6 +45,8 @@
 @property(copy, nonatomic) NSArray *pairDoubleValues;
 @property(readonly, nonatomic) unsigned long long pairDistanceValuesCount;
 @property(copy, nonatomic) NSArray *pairDistanceValues;
+@property(readonly, nonatomic) unsigned long long pairDataValuesCount;
+@property(copy, nonatomic) NSArray *pairDataValues;
 @property(readonly, nonatomic) unsigned long long pairDataStringsCount;
 @property(copy, nonatomic) NSArray *pairDataStrings;
 @property(readonly, nonatomic) unsigned long long pairCustomObjectsCount;
@@ -82,6 +85,9 @@
 - (_INPBDistanceValue *)pairDistanceValueAtIndex:(unsigned long long)arg1;
 - (void)addPairDistanceValue:(_INPBDistanceValue *)arg1;
 - (void)clearPairDistanceValues;
+- (_INPBDataValue *)pairDataValueAtIndex:(unsigned long long)arg1;
+- (void)addPairDataValue:(_INPBDataValue *)arg1;
+- (void)clearPairDataValues;
 - (_INPBDataString *)pairDataStringAtIndex:(unsigned long long)arg1;
 - (void)addPairDataString:(_INPBDataString *)arg1;
 - (void)clearPairDataStrings;

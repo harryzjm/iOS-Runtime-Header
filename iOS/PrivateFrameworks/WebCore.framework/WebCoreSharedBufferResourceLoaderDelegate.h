@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreSharedBufferResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
 {
-    struct ImageDecoderAVFObjC *_parent;
+    void *_parent;
     long long _expectedContentSize;
     struct RetainPtr<NSData> _data;
     _Bool _complete;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)updateData:(id)arg1 complete:(_Bool)arg2;
 - (void)setExpectedContentSize:(long long)arg1;
 @property(readonly) NSData *data;
-- (id)initWithParent:(struct ImageDecoderAVFObjC *)arg1;
+- (id)initWithParent:(void *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

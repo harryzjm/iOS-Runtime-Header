@@ -10,6 +10,7 @@
 
 @interface CPUINowPlayingSnapshot : NSObject
 {
+    _Bool _isRadioPlayback;
     NSString *_bundleIdentifier;
     NSString *_title;
     NSString *_artist;
@@ -27,6 +28,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MPCPlayerResponseItem *responseItem; // @synthesize responseItem=_responseItem;
 @property(readonly, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
+@property(readonly, nonatomic) _Bool isRadioPlayback; // @synthesize isRadioPlayback=_isRadioPlayback;
 @property(readonly, nonatomic) MPModelSong *song; // @synthesize song=_song;
 @property(readonly, nonatomic) MPCPlayerResponseTracklist *tracklist; // @synthesize tracklist=_tracklist;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;

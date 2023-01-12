@@ -6,7 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@interface VUINetworkReachabilityMonitor : NSObject
+#import <VideosUICore/ICEnvironmentMonitorObserver-Protocol.h>
+
+@class NSString;
+
+@interface VUINetworkReachabilityMonitor : NSObject <ICEnvironmentMonitorObserver>
 {
     _Bool _networkReachable;
     id _networkTypeChangedNotificationToken;
@@ -18,10 +22,18 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id networkReachabilityChangedNotificationToken; // @synthesize networkReachabilityChangedNotificationToken=_networkReachabilityChangedNotificationToken;
 @property(retain, nonatomic) id networkTypeChangedNotificationToken; // @synthesize networkTypeChangedNotificationToken=_networkTypeChangedNotificationToken;
+- (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 @property(getter=isNetworkReachable) _Bool networkReachable; // @synthesize networkReachable=_networkReachable;
 - (void)_updateNetworkReachability;
 - (id)_init;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

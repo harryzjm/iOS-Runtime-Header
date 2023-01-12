@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MessageUI/NSObject-Protocol.h>
+
 @class NSString;
 
-@protocol MFMailCompositionShareSheetRecipients
+@protocol MFMailCompositionShareSheetRecipients <NSObject>
 @property(copy, nonatomic) NSString *shareSheetSessionID;
 @end
 

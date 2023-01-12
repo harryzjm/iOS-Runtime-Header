@@ -8,22 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, PBDataReader, PBUnknownFields;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEORPFeedbackQueryResult : PBCodable <NSCopying>
 {
-    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_feedbackInfos;
-    NSData *_nextPageToken;
-    unsigned int _readerMarkPos;
-    unsigned int _readerMarkLength;
-    struct os_unfair_lock_s _readerLock;
+    unsigned int _maxResults;
+    _Bool _isResultTruncated;
     struct {
-        unsigned int read_unknownFields:1;
-        unsigned int read_feedbackInfos:1;
-        unsigned int read_nextPageToken:1;
-        unsigned int wrote_anyField:1;
+        unsigned int has_maxResults:1;
+        unsigned int has_isResultTruncated:1;
     } _flags;
 }
 
@@ -45,15 +40,15 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(retain, nonatomic) NSData *nextPageToken;
-@property(readonly, nonatomic) _Bool hasNextPageToken;
+@property(nonatomic) _Bool hasIsResultTruncated;
+@property(nonatomic) _Bool isResultTruncated;
+@property(nonatomic) _Bool hasMaxResults;
+@property(nonatomic) unsigned int maxResults;
 - (id)feedbackInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)feedbackInfosCount;
 - (void)addFeedbackInfo:(id)arg1;
 - (void)clearFeedbackInfos;
 @property(retain, nonatomic) NSMutableArray *feedbackInfos;
-- (id)initWithData:(id)arg1;
-- (id)init;
 
 @end
 

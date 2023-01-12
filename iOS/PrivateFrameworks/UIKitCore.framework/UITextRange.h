@@ -15,6 +15,8 @@
 @property(readonly, nonatomic) UITextPosition *end;
 @property(readonly, nonatomic) UITextPosition *start;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+- (struct _NSRange)_asNSRangeRelativeToDocument:(id)arg1 relativeToCurrentLine:(_Bool)arg2;
+- (struct _NSRange)_asNSRangeRelativeToDocument:(id)arg1;
 @property(readonly, nonatomic, getter=_isImpl) UITextRangeImpl *isImpl;
 @property(readonly, nonatomic, getter=_isRanged) _Bool isRanged;
 @property(readonly, nonatomic, getter=_isCaret) _Bool isCaret;

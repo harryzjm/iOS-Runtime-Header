@@ -8,7 +8,7 @@
 
 @interface SKLabelNode
 {
-    struct SKCLabelNode *_skcLabelNode;
+    void *_skcLabelNode;
 }
 
 + (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
@@ -44,7 +44,7 @@
 - (void)_initialize;
 - (id)init;
 - (void)_didMakeBackingNode;
-- (struct SKCNode *)_makeBackingNode;
+- (void *)_makeBackingNode;
 - (void)setUIFont:(id)arg1;
 - (void)setFont:(struct __CTFont *)arg1;
 - (id)_getTextSprites;

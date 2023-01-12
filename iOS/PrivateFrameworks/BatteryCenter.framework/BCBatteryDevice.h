@@ -18,7 +18,7 @@
     long long _percentCharge;
     _Bool _charging;
     _Bool _connected;
-    _Bool _batterySaverModeActive;
+    _Bool _lowPowerModeActive;
     _Bool _lowBattery;
     _Bool _internal;
     _Bool _powerSource;
@@ -51,7 +51,7 @@
 @property(nonatomic, getter=isPowerSource) _Bool powerSource; // @synthesize powerSource=_powerSource;
 @property(nonatomic, getter=isInternal) _Bool internal; // @synthesize internal=_internal;
 @property(nonatomic, getter=isLowBattery) _Bool lowBattery; // @synthesize lowBattery=_lowBattery;
-@property(nonatomic, getter=isBatterySaverModeActive) _Bool batterySaverModeActive; // @synthesize batterySaverModeActive=_batterySaverModeActive;
+@property(nonatomic, getter=isLowPowerModeActive) _Bool lowPowerModeActive; // @synthesize lowPowerModeActive=_lowPowerModeActive;
 @property(nonatomic, getter=isCharging) _Bool charging; // @synthesize charging=_charging;
 @property(nonatomic, getter=isConnected) _Bool connected; // @synthesize connected=_connected;
 @property(nonatomic) long long percentCharge; // @synthesize percentCharge=_percentCharge;
@@ -63,6 +63,7 @@
 @property(readonly, nonatomic) long long vendor; // @synthesize vendor=_vendor;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
+- (_Bool)isBatterySaverModeActive;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

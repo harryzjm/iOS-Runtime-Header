@@ -6,15 +6,17 @@
 
 @interface PXPhotosDetailsActionsTilingLayout
 {
-    unsigned long long _dataSourceIdentifier;
+    long long _dataSourceIdentifier;
     _Bool _shouldShowSeparators;
     _Bool _shouldInsetAllSeparators;
     long long _numberOfItems;
     double _rowHeight;
     double _separatorHeight;
     long long __numberOfSeparators;
+    double _interItemSpacing;
 }
 
+@property(readonly, nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property(readonly, nonatomic) long long _numberOfSeparators; // @synthesize _numberOfSeparators=__numberOfSeparators;
 @property(nonatomic) _Bool shouldInsetAllSeparators; // @synthesize shouldInsetAllSeparators=_shouldInsetAllSeparators;
 @property(nonatomic) _Bool shouldShowSeparators; // @synthesize shouldShowSeparators=_shouldShowSeparators;

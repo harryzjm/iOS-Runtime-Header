@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (HeartRhythmUI)
++ (id)hrui_watchIconImage;
 + (id)hrui_heartRateIconImage;
 + (id)hrui_atrialFibrillationDetectionIllustrationImage;
 + (id)hrui_waveformImage;

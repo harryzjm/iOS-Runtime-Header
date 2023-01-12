@@ -15,6 +15,11 @@ struct CGSize {
     double height;
 };
 
+struct NSFileProviderTypeAndCreator {
+    unsigned int type;
+    unsigned int creator;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;

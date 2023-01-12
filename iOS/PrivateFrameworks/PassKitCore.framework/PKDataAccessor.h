@@ -7,14 +7,11 @@
 #import <objc/NSObject.h>
 
 @class NSBundle, NSData, PKRemoteAssetManager;
-@protocol OS_dispatch_queue;
 
 @interface PKDataAccessor : NSObject
 {
-    NSObject<OS_dispatch_queue> *_processingQueue;
 }
 
-- (void).cxx_destruct;
 - (id)passLocalizedStringForKey:(id)arg1;
 - (id)displayProfileOfType:(long long)arg1;
 @property(readonly, nonatomic) PKRemoteAssetManager *remoteAssetManager;
@@ -22,8 +19,8 @@
 - (_Bool)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;
 - (_Bool)remoteAssetsDownloadedForSEIDs:(id)arg1;
 @property(readonly, nonatomic) _Bool remoteAssetsDownloaded;
-- (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 seids:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 seids:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)dataForBundleResources:(id)arg1;
 - (id)dataForBundleResource:(id)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
@@ -45,6 +42,8 @@
 - (id)cachedImageSetForType:(long long)arg1 withDisplayProfile:(id)arg2 displayTraits:(id)arg3;
 - (id)dictionary;
 - (id)content;
+- (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDAccessorySettingsController, HMDBackingStore, HMFActivity, NSArray, NSUUID;
+@class HMDAccessorySettingsController, HMDAccessorySetupMetricDispatcher, HMDBackingStore, HMFActivity, NSArray, NSUUID;
 
 @protocol HMDAccessorySettingsControllerDataSource
-@property double homepodSettingsCreationTimestamp;
-@property double homepodSetupLatency;
+@property(readonly) HMDAccessorySetupMetricDispatcher *accessorySetupMetricDispatcher;
 @property double setupStartTimestamp;
 @property(retain) HMFActivity *setupActivity;
 @property(readonly) HMDBackingStore *backingStore;

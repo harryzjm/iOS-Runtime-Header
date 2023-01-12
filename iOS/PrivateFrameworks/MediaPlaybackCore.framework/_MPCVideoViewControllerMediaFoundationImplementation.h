@@ -4,41 +4,62 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <UIKit/UIViewController.h>
 
 #import <MediaPlaybackCore/AVPlayerViewControllerDelegate-Protocol.h>
+#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 #import <MediaPlaybackCore/MPCVideoOutput-Protocol.h>
 
-@class AVPlayerViewController, NSString, UIViewController;
+@class AVPlayerViewController, MPCPlaybackEngine, NSString;
 @protocol MPCVideoOutputDelegate;
 
-@interface _MPCVideoViewControllerMediaFoundationImplementation : NSObject <MPCVideoOutput, AVPlayerViewControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface _MPCVideoViewControllerMediaFoundationImplementation : UIViewController <AVPlayerViewControllerDelegate, MPCPlaybackEngineEventObserving, MPCVideoOutput>
 {
+    int _videoDebugToken;
+    unsigned long long _stateHandle;
     id <MPCVideoOutputDelegate> _videoOutputDelegate;
+    MPCPlaybackEngine *_playbackEngine;
     AVPlayerViewController *_internalController;
 }
 
++ (id)keyPathsForValuesAffectingAllowsPictureInPicturePlayback;
++ (id)keyPathsForValuesAffectingIsPictureInPictureActive;
++ (id)keyPathsForValuesAffectingIsReadyForDisplay;
 + (id)keyPathsForValuesAffectingVideoBounds;
-+ (id)keyPathsForValuesAffectingReadyForDisplay;
++ (id)keyPathsForValuesAffectingVideoGravity;
++ (id)keyPathsForValuesAffectingPresentationSize;
++ (id)keyPathsForValuesAffectingShowsPlaybackControls;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) AVPlayerViewController *internalController; // @synthesize internalController=_internalController;
+@property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(nonatomic) __weak id <MPCVideoOutputDelegate> videoOutputDelegate; // @synthesize videoOutputDelegate=_videoOutputDelegate;
-@property(readonly, copy) NSString *debugDescription;
-- (void)playerViewController:(id)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id)arg2;
-- (void)playerViewController:(id)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (void)_updateViewControllerHierarchyForPlaybackEngine:(id)arg1;
+- (id)_stateDictionary;
+@property(nonatomic) _Bool allowsPictureInPicturePlayback;
+- (void)stopPictureInPicture;
 - (void)exitFullScreenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enterFullScreenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)showFullScreenPresentationFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic, getter=isPictureInPictureActive) _Bool pictureInPictureActive;
 @property(readonly, nonatomic, getter=isReadyForDisplay) _Bool readyForDisplay;
 @property(readonly, nonatomic) struct CGRect videoBounds;
 @property(copy, nonatomic) NSString *videoGravity;
+@property(readonly, nonatomic) struct CGSize presentationSize;
 @property(nonatomic) _Bool showsPlaybackControls;
 @property(readonly, nonatomic) UIViewController *playerViewController;
-@property(readonly, nonatomic) AVPlayerViewController *avPlayerViewController;
+- (void)engineDidResetMediaServices:(id)arg1;
+- (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
+- (void)forwardInvocation:(id)arg1;
+- (_Bool)respondsToSelector:(SEL)arg1;
+@property(readonly, copy) NSString *description;
+- (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

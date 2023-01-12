@@ -11,6 +11,7 @@
 - (id)scrubberPlaceholderColor;
 - (id)photoBrowserChromeVisibleBackgroundColor;
 - (id)photoBrowserTitleViewTappableTextColor;
+- (id)photoBrowserSpotlightThemeColor;
 - (id)photoBrowserTitleViewTextColor;
 - (long long)photoBrowserBarStyle;
 - (id)playheadBackgroundColor;

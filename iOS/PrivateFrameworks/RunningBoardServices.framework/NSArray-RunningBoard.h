@@ -7,6 +7,5 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (RunningBoard)
-- (id)elementsToString:(int)arg1 debug:(_Bool)arg2;
 @end
 

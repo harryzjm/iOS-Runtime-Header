@@ -9,6 +9,7 @@
 @protocol _UIKeyboardArbitration
 - (void)signalEventSourceChanged:(long long)arg1 completionHandler:(void (^)(void))arg2;
 - (void)setKeyboardTotalDisable:(_Bool)arg1 withFence:(BKSAnimationFenceHandle *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneIdentity:(FBSSceneIdentityToken *)arg2 stealingKeyboard:(_Bool)arg3 onCompletion:(void (^)(_Bool))arg4;
 - (void)focusApplicationWithProcessIdentifier:(int)arg1 sceneIdentity:(FBSSceneIdentityToken *)arg2 onCompletion:(void (^)(_Bool))arg3;
 - (void)applicationShouldFocusWithBundle:(NSString *)arg1 onCompletion:(void (^)(_Bool))arg2;
 - (void)transition:(NSString *)arg1 eventStage:(unsigned long long)arg2 withInfo:(NSDictionary *)arg3;

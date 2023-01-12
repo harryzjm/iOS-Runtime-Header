@@ -24,7 +24,6 @@
 @property(retain, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(copy, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (id)_handleAskPermissionRequestWithURL:(id)arg1 account:(id)arg2;
 - (id)perform;
 @property(readonly, nonatomic) AMSDialogRequest *request;
 - (id)initWithResult:(id)arg1 bag:(id)arg2;

@@ -6,9 +6,10 @@
 
 #import <BulletinDistributorCompanion/NSObject-Protocol.h>
 
-@class BLTPBSectionIcon, BLTPBSectionInfo, NSString;
+@class BLTPBSectionIcon, BLTPBSectionInfo, BLTPBSetRemoteGlobalSettingsRequest, NSString;
 
 @protocol BLTSettingSyncing <NSObject>
+- (void)updateGlobalSettings:(BLTPBSetRemoteGlobalSettingsRequest *)arg1;
 - (void)setNotificationsCriticalAlertEnabled:(int)arg1 sectionID:(NSString *)arg2;
 - (void)setNotificationsSoundEnabled:(int)arg1 sectionID:(NSString *)arg2;
 - (void)setNotificationsGrouping:(int)arg1 sectionID:(NSString *)arg2;

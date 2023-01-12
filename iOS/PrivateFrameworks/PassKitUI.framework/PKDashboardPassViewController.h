@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitUI/BKOperationDelegate-Protocol.h>
+#import <PassKitUI/PKDashboardPassTilesItemPresenterDelegate-Protocol.h>
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class BKPresenceDetectOperation, NSObject, NSString, PKDashboardPassFlowLayout, PKDashboardPaymentTransactionItemPresenter, PKPass, PKPaymentPass, UIButton, _PKUIKVisibilityBackdropView;
-@protocol OS_dispatch_source, PKDashboardPassViewControllerDelegate><PKDashboardDelegate;
+@class NSMutableArray, NSObject, NSString, PKDashboardPassFlowLayout, PKDashboardPaymentTransactionItemPresenter, PKPass, PKPaymentPass, UIButton, _PKUIKVisibilityBackdropView;
+@protocol OS_dispatch_queue, PKDashboardPassViewControllerDelegate><PKDashboardDelegate;
 
-@interface PKDashboardPassViewController <PKForegroundActiveArbiterObserver, _PKUIKVisibilityBackdropViewDelegate, BKOperationDelegate>
+@interface PKDashboardPassViewController <PKForegroundActiveArbiterObserver, _PKUIKVisibilityBackdropViewDelegate, PKDashboardPassTilesItemPresenterDelegate>
 {
-    _Bool _fingerPresent;
-    BKPresenceDetectOperation *_fingerDetectionOperation;
-    NSObject<OS_dispatch_source> *_fingerTimer;
-    _Bool _invalidated;
+    struct os_unfair_lock_s _lock;
+    NSObject<OS_dispatch_queue> *_queue;
+    _Atomic _Bool _invalidated;
+    NSMutableArray *_sessionHandles;
     CDStruct_973bafd3 _foregroundActiveState;
+    unsigned int _deactivationReasons;
     unsigned char _visibility;
     _Bool _footerVisible;
     PKPaymentPass *_frontmostPaymentPass;
@@ -29,21 +30,28 @@
     PKDashboardPaymentTransactionItemPresenter *_transactionPresenter;
 }
 
-+ (void)dataSource:(id *)arg1 presenters:(id *)arg2 forGroupView:(id)arg3 context:(id)arg4 presentingViewController:(id)arg5;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PKDashboardPaymentTransactionItemPresenter *transactionPresenter; // @synthesize transactionPresenter=_transactionPresenter;
 @property(readonly, nonatomic) PKDashboardPassFlowLayout *passFlowLayout; // @synthesize passFlowLayout=_passFlowLayout;
 @property(retain, nonatomic) PKPass *frontmostPass; // @synthesize frontmostPass=_frontmostPass;
+- (void)passTilesItemPresenter:(id)arg1 executeSEActionForPass:(id)arg2 tile:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
+- (_Bool)_isForegroundActive;
+- (_Bool)_isBackgrounded;
+- (_Bool)_isDeactivated;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateDeactivationReasons:(unsigned int)arg2;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
-- (void)operation:(id)arg1 presenceStateChanged:(_Bool)arg2;
+- (void)_performActivationStateUpdate:(CDUnknownBlockType)arg1;
 - (void)_passcodeTapped:(id)arg1;
+- (void)_updateDefaultPasscodeButtonSize;
+- (id)_passcodeButtonTitle;
 - (void)_updatePasscodeButtonTitle;
 - (void)_createFooter;
 - (void)_updateFooterAnimated:(_Bool)arg1;
 - (void)_updateFingerDetection;
 - (void)_visibilityDidChange;
 - (void)viewWillLayoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
@@ -52,8 +60,9 @@
 - (void)loadView;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithDataSource:(id)arg1 presenters:(id)arg2 layout:(id)arg3;
+- (id)initWithPassGroupView:(id)arg1 context:(id)arg2 presentingViewController:(id)arg3;
 - (id)initWithPass:(id)arg1;
+- (id)initWithDataSource:(id)arg1 presenters:(id)arg2 layout:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

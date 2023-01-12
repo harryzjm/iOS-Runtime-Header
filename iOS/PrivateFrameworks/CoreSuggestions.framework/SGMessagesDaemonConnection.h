@@ -6,23 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class SGFuture;
 @protocol SGDSuggestManagerMessagesProtocol;
 
 @interface SGMessagesDaemonConnection : NSObject
 {
-    NSMutableDictionary *_contextSent;
-    id <SGDSuggestManagerMessagesProtocol> _remoteSuggestionManager;
+    SGFuture *_daemonConnectionFuture;
+    id <SGDSuggestManagerMessagesProtocol> _remoteSuggestionManagerForTesting;
 }
 
 - (void).cxx_destruct;
 - (void)setManagerForTesting:(id)arg1;
-- (id)remoteSuggestionManager;
-- (void)didSendContextForConversation:(id)arg1;
-- (_Bool)hasContextBeenSentForConversation:(id)arg1;
-- (void)connectionInterrupted;
-- (void)dealloc;
-- (id)initWithDaemonConnection:(id)arg1;
+- (id)remoteSuggestionManagerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)initWithDaemonConnectionFuture:(id)arg1;
 
 @end
 

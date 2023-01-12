@@ -29,6 +29,8 @@
 - (_Bool)_isValidReturningExceptionReason:(id *)arg1;
 - (id)instructionForFigInstruction:(void *)arg1;
 - (id)_serializableInstructions;
+- (void)setSourceSampleDataTrackIDs:(id)arg1;
+@property(readonly, nonatomic) NSArray *sourceSampleDataTrackIDs;
 - (void)setAnimationTool:(id)arg1;
 @property(readonly, retain, nonatomic) AVVideoCompositionCoreAnimationTool *animationTool;
 - (id)_postProcessingRootLayer;

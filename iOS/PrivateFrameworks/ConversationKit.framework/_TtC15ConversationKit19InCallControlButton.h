@@ -10,7 +10,9 @@
 
 @interface _TtC15ConversationKit19InCallControlButton : UIControl
 {
+    MISSING_TYPE *callbackCancellable;
     MISSING_TYPE *discBackgroundEffectView;
+    MISSING_TYPE *discBackgroundVibrancyView;
     MISSING_TYPE *discBackgroundFlatView;
     MISSING_TYPE *imageView;
     MISSING_TYPE *paragraphStyle;
@@ -26,7 +28,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic) _Bool highlighted;

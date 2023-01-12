@@ -21,7 +21,7 @@
 + (id)IDSServiceForService:(long long)arg1;
 + (_Bool)isDestinationAvailable:(id)arg1 givenStatusesByDestination:(id)arg2;
 + (id)resultsForIDSControllerResult:(id)arg1 handlesByDestination:(id)arg2;
-+ (_Bool)isStatusOfEveryDestinationUnknown:(id)arg1;
++ (_Bool)isStatusOfAnyDestinationUnknown:(id)arg1;
 
 @end
 

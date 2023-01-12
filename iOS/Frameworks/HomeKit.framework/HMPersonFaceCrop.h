@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKit/NSMutableCopying-Protocol.h>
+
 @class NSUUID;
 
-@interface HMPersonFaceCrop
+@interface HMPersonFaceCrop <NSMutableCopying>
 {
     NSUUID *_personUUID;
+    NSUUID *_unassociatedFaceCropUUID;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy) NSUUID *unassociatedFaceCropUUID; // @synthesize unassociatedFaceCropUUID=_unassociatedFaceCropUUID;
 @property(readonly, copy) NSUUID *personUUID; // @synthesize personUUID=_personUUID;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class INExecutionCounterpartMapper, NSDictionary;
+@class INExecutionCounterpartMapper, INExecutionFrameworkMapper, NSDictionary;
 
 @interface INExecutionInfoResolver : NSObject
 {
     INExecutionCounterpartMapper *_counterpartMapper;
+    INExecutionFrameworkMapper *_frameworkMapper;
     NSDictionary *__counterpartMapping;
 }
 
@@ -18,6 +19,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSDictionary *_counterpartMapping; // @synthesize _counterpartMapping=__counterpartMapping;
+@property(readonly, nonatomic) INExecutionFrameworkMapper *_frameworkMapper; // @synthesize _frameworkMapper;
 @property(readonly, nonatomic) INExecutionCounterpartMapper *_counterpartMapper; // @synthesize _counterpartMapper;
 - (id)_resolveUserActivityExecutionInfoUsingCounterparts:(id)arg1;
 - (id)_resolveUserActivityExecutionInfoByLinkingFileProvidersToFilesApp:(id)arg1;

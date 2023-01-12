@@ -6,11 +6,13 @@
 
 #import <PhotosGraph/PGGraphEvent-Protocol.h>
 
-@class NSSet;
+@class NSSet, PGGraphMeaningNodeCollection;
 
 @protocol PGGraphMeaningfulEvent <PGGraphEvent>
-- (void)enumerateMeaningNodesUsingBlock:(void (^)(PGGraphMeaningEdge *, PGGraphMeaningNode *, _Bool *))arg1;
-- (NSSet *)meaningNodes;
+- (void)enumerateReliableMeaningNodesUsingBlock:(void (^)(PGGraphMeaningNode *, _Bool *))arg1;
+- (void)enumerateMeaningNodesUsingBlock:(void (^)(PGGraphMeaningNode *, _Bool *))arg1;
+- (void)enumerateMeaningEdgesAndNodesUsingBlock:(void (^)(PGGraphMeaningEdge *, PGGraphMeaningNode *, _Bool *))arg1;
+- (PGGraphMeaningNodeCollection *)meaningNodes;
 - (NSSet *)meaningLabels;
 - (double)meaningScore;
 @end

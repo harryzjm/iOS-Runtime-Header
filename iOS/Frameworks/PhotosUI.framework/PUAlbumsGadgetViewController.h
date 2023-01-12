@@ -8,22 +8,20 @@
 
 #import <PhotosUI/PXNavigableCollectionContainer-Protocol.h>
 
-@class NSString, PUSessionInfo, PXProgrammaticNavigationDestination, UIBarButtonItem;
+@class NSString, PUSessionInfo, PXProgrammaticNavigationDestination;
 
 @interface PUAlbumsGadgetViewController : PXGadgetUIViewController <PXNavigableCollectionContainer>
 {
     PXProgrammaticNavigationDestination *_px_navigationDestination;
     PUSessionInfo *_sessionInfo;
-    UIBarButtonItem *_plusButtonItem;
 }
 
-+ (id)_supportedActionsByKeyCommands;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIBarButtonItem *plusButtonItem; // @synthesize plusButtonItem=_plusButtonItem;
 @property(retain, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property(retain, nonatomic) PXProgrammaticNavigationDestination *px_navigationDestination; // @synthesize px_navigationDestination=_px_navigationDestination;
 - (void)_handleDoneButton:(id)arg1;
 - (void)_updateNavigationBar;
+- (id)_createPlusButton;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (_Bool)navigationHelperCanCurrentlyNavigate:(id)arg1;
 - (void)provideViewControllersForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -37,24 +35,15 @@
 - (_Bool)allowsBarManagement;
 - (long long)scrollAnimationIdentifier;
 - (void)configureSectionHeader:(id)arg1;
+- (void)newSmartAlbum:(id)arg1;
+- (void)newFolder:(id)arg1;
+- (void)newSharedAlbum:(id)arg1;
+- (void)newAlbum:(id)arg1;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)canBecomeFirstResponder;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
 - (id)initWithLayout:(id)arg1 dataSourceManager:(id)arg2;
-- (void)_performKeyCommand:(id)arg1;
-- (id)keyCommands;
-- (id)_newSharedAlbumActionWithSpec:(id)arg1;
-- (id)_newFolderActionWithSpec:(id)arg1;
-- (id)_newSmartAlbumActionWithSpec:(id)arg1;
-- (id)_newAlbumActionWithSpec:(id)arg1;
-- (id)createPlusButton;
-- (void)_performCreateNewSmartAlbum;
-- (void)_performCreateNewFolder;
-- (void)_performCreateNewSharedAlbum;
-- (void)_performCreateNewAlbum;
-- (void)_performActionOfActionType:(long long)arg1;
-- (_Bool)_canPerformActionOfActionType:(long long)arg1;
 - (id)px_gridPresentation;
 
 // Remaining properties

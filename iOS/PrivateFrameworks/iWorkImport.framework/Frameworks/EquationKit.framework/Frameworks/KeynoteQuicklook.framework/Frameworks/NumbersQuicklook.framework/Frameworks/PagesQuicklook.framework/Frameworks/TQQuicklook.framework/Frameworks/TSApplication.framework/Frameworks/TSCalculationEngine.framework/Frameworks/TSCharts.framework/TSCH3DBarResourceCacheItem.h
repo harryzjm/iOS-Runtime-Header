@@ -10,17 +10,17 @@
 
 @interface TSCH3DBarResourceCacheItem : NSObject
 {
-    TSCH3DBarExtrusionGeometry *mBarGeometry;
-    TSCH3DBarVertexResource *mVertexResource;
-    TSCH3DBarNormalResource *mNormalResource;
-    TSCH3DBarTexCoordResource *mTexCoordResource;
+    TSCH3DBarExtrusionGeometry *_barGeometry;
+    TSCH3DBarVertexResource *_vertexResource;
+    TSCH3DBarNormalResource *_normalResource;
+    TSCH3DBarTexCoordResource *_texCoordResource;
 }
 
 + (id)itemWithExtrusionSetting:(const struct BarExtrusionSetting *)arg1;
-@property(readonly, nonatomic) TSCH3DBarTexCoordResource *texCoordResource; // @synthesize texCoordResource=mTexCoordResource;
-@property(readonly, nonatomic) TSCH3DBarNormalResource *normalResource; // @synthesize normalResource=mNormalResource;
-@property(readonly, nonatomic) TSCH3DBarVertexResource *vertexResource; // @synthesize vertexResource=mVertexResource;
-- (void)dealloc;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSCH3DBarTexCoordResource *texCoordResource; // @synthesize texCoordResource=_texCoordResource;
+@property(readonly, nonatomic) TSCH3DBarNormalResource *normalResource; // @synthesize normalResource=_normalResource;
+@property(readonly, nonatomic) TSCH3DBarVertexResource *vertexResource; // @synthesize vertexResource=_vertexResource;
 - (id)initWithExtrusionSetting:(const struct BarExtrusionSetting *)arg1;
 
 @end

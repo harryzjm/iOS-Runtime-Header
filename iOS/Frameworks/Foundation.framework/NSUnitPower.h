@@ -22,6 +22,7 @@
 + (id)megawatts;
 + (id)gigawatts;
 + (id)terawatts;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

@@ -19,7 +19,6 @@
 @property(copy, nonatomic) NSString *sourceEnvironment; // @synthesize sourceEnvironment=_sourceEnvironment;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (id)_initWithDomain:(id)arg1 name:(id)arg2 sourceEnvironment:(id)arg3;
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)description;

@@ -8,12 +8,14 @@
 
 @interface CNChangeHistoryUpdateContactEvent
 {
+    _Bool _imagesChanged;
     CNContact *_contact;
 }
 
 + (unsigned long long)instanceSortOrder;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool imagesChanged; // @synthesize imagesChanged=_imagesChanged;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (long long)comparisonResultWithinSameClass:(id)arg1;
 - (void)acceptEventVisitor:(id)arg1;
@@ -22,7 +24,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithContact:(id)arg1;
+- (id)initWithContact:(id)arg1 imagesChanged:(_Bool)arg2;
 - (id)init;
 
 @end

@@ -14,7 +14,7 @@
 
 @interface PXDisplayAssetUIView : UIView <PXReusableObject, PXChangeObserver>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     _Bool _displayLoadingIndicator;
     _Bool _isDisplayingFullQualityContent;
     _Bool _animatedContentEnabled;
@@ -84,6 +84,7 @@
 - (void)becomeReusable;
 - (void)setContentMode:(long long)arg1;
 - (void)layoutSubviews;
+- (void)setNeedsLayout;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
-
-@class MISSING_TYPE;
-
-@interface _TtC18HealthExperienceUI33TitleEmptyStateCollectionViewCell : UICollectionViewCell
+@interface _TtC18HealthExperienceUI33TitleEmptyStateCollectionViewCell
 {
-    MISSING_TYPE *item;
-    MISSING_TYPE *$__lazy_storage_$_label;
 }
 
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)prepareForReuse;
 
 @end
 

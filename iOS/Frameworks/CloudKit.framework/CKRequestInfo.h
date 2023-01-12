@@ -8,17 +8,19 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface CKRequestInfo : NSObject <NSSecureCoding>
 {
     NSString *_requestUUID;
     NSDictionary *_responseHTTPHeaders;
     NSDictionary *_w3cNavigationTiming;
+    NSArray *_requestOperations;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *requestOperations; // @synthesize requestOperations=_requestOperations;
 @property(readonly, copy, nonatomic) NSDictionary *w3cNavigationTiming; // @synthesize w3cNavigationTiming=_w3cNavigationTiming;
 @property(readonly, copy, nonatomic) NSDictionary *responseHTTPHeaders; // @synthesize responseHTTPHeaders=_responseHTTPHeaders;
 @property(readonly, copy, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;

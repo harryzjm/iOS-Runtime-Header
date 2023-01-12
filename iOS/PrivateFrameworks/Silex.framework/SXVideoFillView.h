@@ -23,6 +23,7 @@
 @property(retain, nonatomic) SXVideoFillPlayerView *playerView; // @synthesize playerView=_playerView;
 @property(retain, nonatomic) SXClippingView *clippingView; // @synthesize clippingView=_clippingView;
 @property(readonly, nonatomic) SXVideoFill *videoFill; // @synthesize videoFill=_videoFill;
+- (_Bool)accessibilityIgnoresInvertColors;
 - (void)setContentFrame:(struct CGRect)arg1;
 - (struct CGRect)contentFrame;
 - (void)reset;

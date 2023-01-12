@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
+
 @class NSData, NSString;
 
-@interface AMSHTTPArchive : NSObject
+@interface AMSHTTPArchive : NSObject <NSSecureCoding>
 {
     _Bool _compressed;
     NSData *_backingJSONData;
@@ -29,16 +31,20 @@
 + (id)merge:(id)arg1 withEstimatedFileSizeLimit:(unsigned long long)arg2;
 + (id)merge:(id)arg1;
 + (id)directory;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property(readonly, nonatomic) NSData *JSONData; // @synthesize JSONData=_JSONData;
 @property(nonatomic, getter=isCompressed) _Bool compressed; // @synthesize compressed=_compressed;
 @property(retain, nonatomic) NSData *backingJSONData; // @synthesize backingJSONData=_backingJSONData;
+- (_Bool)writeToDiskWithError:(id *)arg1 compressed:(_Bool)arg2 appendCombined:(_Bool)arg3;
 - (_Bool)writeToDiskWithError:(id *)arg1 compressed:(_Bool)arg2;
 - (void)logHARData;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithJSONObject:(id)arg1;
 - (id)initWithMetrics:(id)arg1 requestData:(id)arg2 responseData:(id)arg3;
-- (id)initWithURLTaskInfo:(id)arg1;
+- (id)initWithHTTPArchiveTaskInfo:(id)arg1;
 
 @end
 

@@ -11,6 +11,7 @@
 @protocol PXPhotosDetailsUIViewControllerDelegate <NSObject>
 
 @optional
+- (void)photosDetailsUIViewControllerCompositionDidChange:(PXPhotosDetailsUIViewController *)arg1;
 - (_Bool)photosDetailsUIViewControllerRequestDismissal:(PXPhotosDetailsUIViewController *)arg1;
 @end
 

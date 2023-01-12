@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
-- (const struct LabelExternalIconElement *)element;
+- (const void *)element;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIconElement:(const struct LabelExternalIconElement *)arg1;
+- (id)initWithIconElement:(const void *)arg1;
 
 @end
 

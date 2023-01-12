@@ -6,16 +6,28 @@
 
 #import <Foundation/NSMeasurementFormatter.h>
 
-@interface HFMeasurementFormatter : NSMeasurementFormatter
+#import <Home/HFUnitFormatter-Protocol.h>
+
+@class NSString;
+
+@interface HFMeasurementFormatter : NSMeasurementFormatter <HFUnitFormatter>
 {
     CDUnknownBlockType _measurementBlock;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType measurementBlock; // @synthesize measurementBlock=_measurementBlock;
+- (id)stringForObjectValue:(id)arg1 withUnit:(_Bool)arg2;
+@property(readonly, nonatomic) NSString *unitDescription;
 - (id)stringForObjectValue:(id)arg1;
 - (id)init;
 - (id)initWithMeasurementBlock:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

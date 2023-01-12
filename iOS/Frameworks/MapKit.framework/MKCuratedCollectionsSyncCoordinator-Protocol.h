@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEOPlaceCollection;
+@class GEOMapItemIdentifier, GEOPlaceCollection;
 
 @protocol MKCuratedCollectionsSyncCoordinator
+- (_Bool)collectionIsSavedWithIdentifier:(GEOMapItemIdentifier *)arg1;
 - (_Bool)collectionIsSaved:(GEOPlaceCollection *)arg1;
 @end
 

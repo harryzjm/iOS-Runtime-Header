@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     id <_PUPickerRemoteUIViewControllerHostInterface> __delegate;
 }
 
++ (id)serviceViewControllerInterface;
 + (id)exportedInterface;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_PUPickerRemoteUIViewControllerHostInterface> _delegate; // @synthesize _delegate=__delegate;

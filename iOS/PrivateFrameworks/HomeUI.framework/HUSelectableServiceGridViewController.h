@@ -27,7 +27,7 @@
 - (void)_deleteItemFromSelection:(id)arg1;
 - (void)_addItemToSelection:(id)arg1;
 - (_Bool)_wantsToggleButtonForSection:(unsigned long long)arg1;
-- (void)_updateToggleStateForSection:(long long)arg1 headerView:(id)arg2;
+- (void)_updateToggleStateForSection:(long long)arg1 headerViewCell:(id)arg2;
 - (void)_setSelected:(_Bool)arg1 forItemsInSection:(long long)arg2;
 - (void)_updateSelectionState:(_Bool)arg1 forCell:(id)arg2;
 - (_Bool)serviceGridItemManager:(id)arg1 shouldHideItem:(id)arg2;
@@ -42,7 +42,8 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (double)headerViewHeightForSectionIndex:(unsigned long long)arg1;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)_removeAllServicesInSectionFromButton:(id)arg1;
 - (void)_addAllServicesInSectionFromButton:(id)arg1;

@@ -4,28 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class ACAccount, AMSUIWebClientContext, NSDictionary, NSString;
+@class ACAccount, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebMarketingItemAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebMarketingItemAction <AMSUIWebActionRunnable>
 {
     ACAccount *_account;
     NSString *_clientIdentifier;
     NSDictionary *_contextInfo;
     NSString *_clientVersion;
+    NSString *_offerHints;
     NSString *_placement;
     NSString *_serviceType;
-    AMSUIWebClientContext *_context;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(readonly, nonatomic) NSString *placement; // @synthesize placement=_placement;
+@property(readonly, nonatomic) NSString *offerHints; // @synthesize offerHints=_offerHints;
 @property(readonly, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property(readonly, nonatomic) NSDictionary *contextInfo; // @synthesize contextInfo=_contextInfo;
 @property(readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;

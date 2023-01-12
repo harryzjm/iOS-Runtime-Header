@@ -12,16 +12,19 @@
 {
 }
 
++ (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (id)supportedTypes;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
+- (void)generateObjectRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (void)generateFileRepresentation:(CDUnknownBlockType)arg1 forType:(id)arg2 metadata:(id)arg3 options:(id)arg4;
 - (void)generateFileRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forType:(id)arg3;
 - (id)metadataItemForCommonKey:(id)arg1;

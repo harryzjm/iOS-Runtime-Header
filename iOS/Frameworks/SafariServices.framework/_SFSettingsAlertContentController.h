@@ -25,11 +25,13 @@ __attribute__((visibility("hidden")))
     UIControl *_controlHighlightedForPan;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     _Bool _updatePreferredContentSizeAfterLayout;
+    _Bool _usesReverseOrder;
     _SFSettingsAlertItem *_focusedItem;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) _SFSettingsAlertItem *focusedItem; // @synthesize focusedItem=_focusedItem;
+@property(nonatomic) _Bool usesReverseOrder; // @synthesize usesReverseOrder=_usesReverseOrder;
 - (void)alertItemViewContentSizeDidChange:(id)arg1;
 - (void)_panRecognized:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)addItem:(id)arg1;
 - (void)_updateFocusedItemConstraints;
 @property(readonly, nonatomic) NSArray *items;
+- (_Bool)canBecomeFirstResponder;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;

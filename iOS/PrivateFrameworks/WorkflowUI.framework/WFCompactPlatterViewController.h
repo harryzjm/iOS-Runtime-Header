@@ -6,14 +6,15 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <WorkflowUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <WorkflowUI/UIScrollViewDelegate-Protocol.h>
 #import <WorkflowUI/WFCompactPlatterPresentation-Protocol.h>
 #import <WorkflowUI/WFCompactPlatterSizingDelegate-Protocol.h>
 
-@class NSString, UIScrollView, WFCompactPlatterTransitioningDelegate, WFCompactPlatterView;
+@class NSString, UIPanGestureRecognizer, UIScrollView, WFCompactPlatterTransitioningDelegate, WFCompactPlatterView;
 @protocol WFCompactPlatterContentContainer;
 
-@interface WFCompactPlatterViewController : UIViewController <WFCompactPlatterSizingDelegate, UIScrollViewDelegate, WFCompactPlatterPresentation>
+@interface WFCompactPlatterViewController : UIViewController <WFCompactPlatterSizingDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate, WFCompactPlatterPresentation>
 {
     _Bool _platterHeightAnimationsDisabled;
     WFCompactPlatterView *_platterView;
@@ -21,16 +22,30 @@
     UIViewController *_contentViewController;
     WFCompactPlatterTransitioningDelegate *_wf_transitioningDelegate;
     UIScrollView *_scrollView;
+    UIPanGestureRecognizer *_panGesture;
     struct CGSize _minimumPlatterSize;
+    struct CGPoint _gestureTranslation;
+    struct CGRect _gestureOriginFrame;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct CGPoint gestureTranslation; // @synthesize gestureTranslation=_gestureTranslation;
+@property(nonatomic) struct CGRect gestureOriginFrame; // @synthesize gestureOriginFrame=_gestureOriginFrame;
+@property(retain, nonatomic) UIPanGestureRecognizer *panGesture; // @synthesize panGesture=_panGesture;
 @property(nonatomic) struct CGSize minimumPlatterSize; // @synthesize minimumPlatterSize=_minimumPlatterSize;
 @property(nonatomic) __weak UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) WFCompactPlatterTransitioningDelegate *wf_transitioningDelegate; // @synthesize wf_transitioningDelegate=_wf_transitioningDelegate;
 @property(retain, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(nonatomic) _Bool platterHeightAnimationsDisabled; // @synthesize platterHeightAnimationsDisabled=_platterHeightAnimationsDisabled;
 @property(nonatomic) __weak id <WFCompactPlatterContentContainer> platterContentContainer; // @synthesize platterContentContainer=_platterContentContainer;
+- (void)animateInteractive:(_Bool)arg1 animationBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)handlePan:(id)arg1;
+@property(readonly, nonatomic) _Bool isInteractingWithPlatter;
+- (_Bool)allowsInteractiveDismissal;
+- (void)platterInteractionRequestedDismissal;
+- (void)platterInteractionDidFinish;
+- (void)platterInteractionDidBegin;
 - (void)platterViewDidInvalidateSize:(id)arg1;
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)invalidateContentSize;
@@ -44,6 +59,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)scrollToTopAnimated:(_Bool)arg1;
 @property(readonly, nonatomic) __weak WFCompactPlatterView *platterView; // @synthesize platterView=_platterView;
+- (void)viewDidLoad;
 - (void)loadView;
 - (void)setTransitioningDelegate:(id)arg1;
 - (id)init;

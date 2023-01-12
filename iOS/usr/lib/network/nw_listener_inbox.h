@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_endpoint> *_local_endpoint;
     NSObject<OS_nw_interface> *_interface;
     NSObject<OS_nw_parameters> *_parameters;
+    int _level;
     unsigned int _suspended:1;
     _Bool _multicast;
 }

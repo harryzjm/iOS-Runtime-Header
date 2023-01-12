@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) long long index; // @synthesize index=_index;
 @property(retain, nonatomic) _BPSAbstractZip *zip; // @synthesize zip=_zip;
+- (void)cancel;
 - (void)receiveCompletion:(id)arg1;
 - (long long)receiveInput:(id)arg1;
 - (void)receiveSubscription:(id)arg1;

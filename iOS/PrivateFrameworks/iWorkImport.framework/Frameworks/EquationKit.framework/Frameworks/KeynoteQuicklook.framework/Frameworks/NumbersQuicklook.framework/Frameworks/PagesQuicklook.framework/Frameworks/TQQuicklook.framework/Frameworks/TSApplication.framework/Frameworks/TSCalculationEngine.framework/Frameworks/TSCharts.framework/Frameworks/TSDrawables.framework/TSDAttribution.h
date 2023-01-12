@@ -28,8 +28,8 @@
 @property(readonly, nonatomic) NSString *authorName; // @synthesize authorName=_authorName;
 @property(readonly, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
-- (void)saveToMessage:(struct Attribution *)arg1 archiver:(id)arg2;
-- (id)initFromMessage:(const struct Attribution *)arg1 unarchiver:(id)arg2;
+- (void)saveToMessage:(void *)arg1 archiver:(id)arg2;
+- (id)initFromMessage:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) NSURL *externalURL;
 @property(readonly, nonatomic) NSURL *authorURL;
 - (id)copyWithZone:(struct _NSZone *)arg1;

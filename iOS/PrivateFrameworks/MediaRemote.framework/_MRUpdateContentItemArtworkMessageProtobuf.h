@@ -10,30 +10,21 @@
 
 @class NSMutableArray, _MRNowPlayingPlayerPathProtobuf;
 
+__attribute__((visibility("hidden")))
 @interface _MRUpdateContentItemArtworkMessageProtobuf : PBCodable <NSCopying>
 {
     NSMutableArray *_contentItems;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
 }
 
-+ (Class)contentItemsType;
 - (void).cxx_destruct;
-@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property(retain, nonatomic) NSMutableArray *contentItems; // @synthesize contentItems=_contentItems;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasPlayerPath;
-- (id)contentItemsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)contentItemsCount;
-- (void)addContentItems:(id)arg1;
-- (void)clearContentItems;
 
 @end
 

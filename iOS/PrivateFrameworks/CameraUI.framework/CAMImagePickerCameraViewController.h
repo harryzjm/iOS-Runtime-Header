@@ -96,6 +96,7 @@
 @property(nonatomic) double maximumVideoRecordingDuration;
 @property(nonatomic) long long imagePickerVideoQuality;
 @property(nonatomic, getter=isShowingStandardControls) _Bool showingStandardControls;
+- (void)_setStatusBarHidden:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;

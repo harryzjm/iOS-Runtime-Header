@@ -10,6 +10,7 @@
 
 @class MPCPlaybackEngine, MPModelPlayEvent, NSOperationQueue, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackHistoryController : NSObject <MPCPlaybackEngineEventObserving>
 {
     MPCPlaybackEngine *_playbackEngine;

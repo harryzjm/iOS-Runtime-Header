@@ -13,14 +13,15 @@
 
 @interface TSCHCustomDataFormatter : NSObject <TSCHDataFormatter, TSCHDataFormatterPersistableStyleObject>
 {
-    TSUCustomFormat *mCustomFormat;
-    NSUUID *mCustomFormatListKey;
-    unsigned int mFormatType;
+    TSUCustomFormat *_customFormat;
+    NSUUID *_customFormatListKey;
+    unsigned int _formatType;
 }
 
 + (id)dataFormatterWithCustomFormat:(id)arg1 customFormatListKey:(id)arg2 formatType:(unsigned int)arg3;
-@property(readonly, nonatomic) TSUCustomFormat *customFormat; // @synthesize customFormat=mCustomFormat;
-- (long long)numberOfDecimalPlaces;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) TSUCustomFormat *customFormat; // @synthesize customFormat=_customFormat;
+@property(readonly, nonatomic) long long numberOfDecimalPlaces;
 - (unsigned int)formatType;
 - (id)convertToSupportedClientFormatObjectWithLocale:(id)arg1;
 - (id)convertToPersistableStyleObject;
@@ -28,7 +29,6 @@
 - (id)chartFormattedInspectorStringForValue:(id)arg1 locale:(id)arg2;
 - (id)chartFormattedStringForValue:(id)arg1 locale:(id)arg2;
 - (id)p_stringForValue:(id)arg1 locale:(id)arg2;
-- (void)dealloc;
 - (id)initWithCustomFormat:(id)arg1 customFormatListKey:(id)arg2 formatType:(unsigned int)arg3;
 
 // Remaining properties

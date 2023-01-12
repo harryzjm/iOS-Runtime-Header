@@ -6,10 +6,12 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <WorkflowEditor/NSItemProviderWriting-Protocol.h>
+#import <WorkflowEditor/NSItemProviderReading-Protocol.h>
 
-@interface WFAction (WorkflowEditor) <NSItemProviderWriting>
+@interface WFAction (WorkflowEditor) <NSItemProviderReading>
 + (id)writableTypeIdentifiersForItemProvider;
++ (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
++ (id)readableTypeIdentifiersForItemProvider;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 @end
 

@@ -8,6 +8,8 @@
 
 @interface UIImage (ClipUIServicesExtras)
 + (id)cps_imageNamed:(id)arg1;
+- (id)cps_imageWithNormalizedOrientation;
 - (id)cps_averageColorImage;
+- (id)cps_resizedImageWithSize:(struct CGSize)arg1;
 @end
 

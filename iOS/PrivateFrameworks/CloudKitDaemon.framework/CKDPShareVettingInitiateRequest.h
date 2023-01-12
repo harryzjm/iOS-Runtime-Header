@@ -10,7 +10,6 @@
 
 @class CKDPShareIdentifier, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPShareVettingInitiateRequest : PBRequest <NSCopying>
 {
     NSString *_baseToken;

@@ -25,7 +25,6 @@
 - (void)registerEventListener:(_Bool)arg1;
 - (void)setDisableSystemGestureRecognitionInEvents:(_Bool)arg1;
 - (void)userEventOccurred;
-- (void)enableEventTap:(_Bool)arg1 forApplication:(int)arg2;
 - (void)postEvent:(AXEventRepresentation *)arg1 systemEvent:(_Bool)arg2 afterNamedTap:(NSString *)arg3 namedTaps:(NSArray *)arg4;
 - (unsigned int)contextIdForDisplayPoint:(struct CGPoint)arg1;
 - (unsigned int)contextIdHosterForContextId:(unsigned int)arg1;

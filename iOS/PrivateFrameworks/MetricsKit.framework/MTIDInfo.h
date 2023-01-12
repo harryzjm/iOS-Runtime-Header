@@ -8,7 +8,7 @@
 
 #import <MetricsKit/MTID-Protocol.h>
 
-@class MTIDScheme, MTIDSecret, NSDate, NSDictionary, NSString;
+@class MTIDScheme, MTIDSecret, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface MTIDInfo : NSObject <MTID>
 {
@@ -16,6 +16,7 @@
     MTIDScheme *_scheme;
     MTIDSecret *_secret;
     NSString *_idString;
+    NSNumber *_dsId;
     NSDate *_effectiveDate;
     NSDate *_expirationDate;
     NSDate *_computedDate;
@@ -26,6 +27,7 @@
 @property(nonatomic) _Bool isSynchronized; // @synthesize isSynchronized=_isSynchronized;
 @property(copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(copy, nonatomic) NSDate *effectiveDate; // @synthesize effectiveDate=_effectiveDate;
+@property(copy, nonatomic) NSNumber *dsId; // @synthesize dsId=_dsId;
 @property(copy, nonatomic) NSString *idString; // @synthesize idString=_idString;
 @property(retain, nonatomic) MTIDSecret *secret; // @synthesize secret=_secret;
 @property(retain, nonatomic) MTIDScheme *scheme; // @synthesize scheme=_scheme;
@@ -37,7 +39,7 @@
 @property(readonly, nonatomic) double lifespan;
 @property(readonly, nonatomic) long long idType;
 @property(readonly, copy, nonatomic) NSString *idNamespace;
-- (id)initWithScheme:(id)arg1 secret:(id)arg2 idString:(id)arg3 effectiveDate:(id)arg4 expirationDate:(id)arg5;
+- (id)initWithScheme:(id)arg1 secret:(id)arg2 idString:(id)arg3 dsId:(id)arg4 effectiveDate:(id)arg5 expirationDate:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

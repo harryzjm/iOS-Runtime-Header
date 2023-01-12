@@ -25,8 +25,10 @@
     unsigned long long _readerResetTicks;
     float _readerLastProgress;
     _Bool _scanning;
+    _Bool _isProxCardType;
     CAShapeLayer *_viewfinderBorderLayer;
     CAShapeLayer *_viewfinderRevealLayer;
+    _Bool _fillLayerBoundsWithVideo;
     long long _autoFocusRangeRestriction;
     long long _focusMode;
     CDUnknownBlockType _scannedCodeHandler;
@@ -45,6 +47,7 @@
 @property(retain) NSDate *firstCapturedFrameDate; // @synthesize firstCapturedFrameDate=_firstCapturedFrameDate;
 @property(retain) NSDate *firstScannedCodeDate; // @synthesize firstScannedCodeDate=_firstScannedCodeDate;
 @property(retain) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(nonatomic) _Bool fillLayerBoundsWithVideo; // @synthesize fillLayerBoundsWithVideo=_fillLayerBoundsWithVideo;
 @property(copy, nonatomic) CDUnknownBlockType scannedCodeHandler; // @synthesize scannedCodeHandler=_scannedCodeHandler;
 @property(nonatomic) long long focusMode; // @synthesize focusMode=_focusMode;
 @property(nonatomic) long long autoFocusRangeRestriction; // @synthesize autoFocusRangeRestriction=_autoFocusRangeRestriction;
@@ -57,10 +60,12 @@
 - (void)_handleCaptureSessionStarted:(id)arg1;
 - (id)_setupDevice:(id)arg1;
 - (id)_setupCapture;
+@property(readonly, nonatomic) double viewFinderDiameter;
 - (void)stop;
 - (void)start;
 - (void)layoutSubviews;
 - (void)_initCommon;
+- (id)initAsProxCard;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

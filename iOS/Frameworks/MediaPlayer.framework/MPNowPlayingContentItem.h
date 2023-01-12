@@ -6,20 +6,31 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 
-@class MPMediaItemArtwork, MPNowPlayingInfoLyricsItem, NSArray, NSDate, NSDictionary, NSString;
+@class MPMediaItemArtwork, MPNowPlayingInfoAudioFormat, MPNowPlayingInfoAudioRoute, MPNowPlayingInfoLyricsItem, NSArray, NSDate, NSDictionary, NSString;
 @protocol MPNowPlayingContentItemArtworkDataSource;
 
 @interface MPNowPlayingContentItem <NSCopying>
 {
     NSDictionary *_nowPlayingInfo;
+    _Bool _sharableItem;
     id <MPNowPlayingContentItemArtworkDataSource> _artworkDataSource;
 }
 
 + (_Bool)shouldPushArtworkData;
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <MPNowPlayingContentItemArtworkDataSource> artworkDataSource; // @synthesize artworkDataSource=_artworkDataSource;
+@property(nonatomic, getter=isSharableItem) _Bool sharableItem; // @synthesize sharableItem=_sharableItem;
 @property(nonatomic, getter=isExplicitItem) _Bool explicitItem;
 - (void)_mergeContentItem:(id)arg1;
+@property(copy, nonatomic) NSArray *alternativeFormats;
+@property(copy, nonatomic) MPNowPlayingInfoAudioRoute *audioRoute;
+@property(nonatomic) unsigned long long formatTierPreference;
+@property(nonatomic) long long activeFormatJustification;
+@property(copy, nonatomic) MPNowPlayingInfoAudioFormat *activeFormat;
+@property(copy, nonatomic) MPNowPlayingInfoAudioFormat *preferredFormat;
+@property(nonatomic) unsigned long long playlistTraits;
+@property(nonatomic) unsigned long long albumTraits;
+@property(nonatomic) unsigned long long songTraits;
 - (void)invalidateArtwork;
 @property(retain, nonatomic) MPMediaItemArtwork *artwork; // @dynamic artwork;
 @property(nonatomic) _Bool hasArtwork;
@@ -54,8 +65,9 @@
 @property(nonatomic) long long numberOfChildren;
 @property(nonatomic, getter=isLoading) _Bool loading;
 @property(nonatomic, getter=isSteerable) _Bool steerable;
-@property(nonatomic, getter=isSharableItem) _Bool sharableItem;
+@property(nonatomic, getter=isAdvertisement) _Bool advertisement;
 @property(nonatomic, getter=isAlwaysLiveItem) _Bool alwaysLiveItem;
+@property(copy, nonatomic) NSString *serviceIdentifier;
 @property(copy, nonatomic) NSString *externalContentIdentifier;
 @property(copy, nonatomic) NSString *radioStationStringIdentifier;
 @property(copy, nonatomic) NSString *genreName;

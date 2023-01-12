@@ -20,10 +20,13 @@
     NSMutableArray *_deletedMemoryCloudGUIDs;
     NSMutableArray *_deletedPersonCloudGUIDs;
     NSMutableArray *_deletedFaceCropCloudGUIDs;
-    NSMutableArray *_deletedOwnedShareCloudGUIDs;
-    NSMutableArray *_deletedSubscribedShareCloudGUIDs;
+    NSMutableArray *_deletedOwnedMomentShareCloudGUIDs;
+    NSMutableArray *_deletedSubscribedMomentShareCloudGUIDs;
     NSMutableArray *_deletedSuggestionCloudGUIDs;
+    NSMutableArray *_deletedUserFeedbackCloudGUIDs;
     NSMutableArray *_deletedInternalResourceUUIDToResourceTypeMappings;
+    NSMutableArray *_deletedOwnedLibraryScopeCloudGUIDs;
+    NSMutableArray *_deletedSubscribedLibraryScopeCloudGUIDs;
     _Bool _coalescedEvent;
     _Bool _syncChange;
     _Bool _unknownMergeEvent;

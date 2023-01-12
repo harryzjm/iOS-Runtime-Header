@@ -6,31 +6,30 @@
 
 #import <Home/HFItemModule.h>
 
-@class HFItem, HFStaticItem, HMHome, HUSoftwareUpdateActionAndProgressItem, HUSoftwareUpdateInfoItemProvider, NSSet;
+@class HFItem, HMHome, HUSoftwareUpdateInfoItemProvider, NSSet;
 @protocol HFSoftwareUpdatableItemProtocol;
 
 @interface HUSoftwareUpdateItemModule : HFItemModule
 {
-    _Bool _unifyDownloadAndDescriptionSections;
+    _Bool _hideAppleUpdates;
+    _Bool _hideThirdPartyUpdates;
     NSSet *_itemProviders;
     HMHome *_home;
     HFItem<HFSoftwareUpdatableItemProtocol> *_sourceItem;
     NSSet *_accessories;
-    HUSoftwareUpdateActionAndProgressItem *_actionAndProgressItem;
-    HFStaticItem *_learnMoreItem;
     HUSoftwareUpdateInfoItemProvider *_softwareUpdateInfoItemProvider;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) HUSoftwareUpdateInfoItemProvider *softwareUpdateInfoItemProvider; // @synthesize softwareUpdateInfoItemProvider=_softwareUpdateInfoItemProvider;
-@property(retain, nonatomic) HFStaticItem *learnMoreItem; // @synthesize learnMoreItem=_learnMoreItem;
-@property(retain, nonatomic) HUSoftwareUpdateActionAndProgressItem *actionAndProgressItem; // @synthesize actionAndProgressItem=_actionAndProgressItem;
-@property(nonatomic) _Bool unifyDownloadAndDescriptionSections; // @synthesize unifyDownloadAndDescriptionSections=_unifyDownloadAndDescriptionSections;
+@property(nonatomic) _Bool hideThirdPartyUpdates; // @synthesize hideThirdPartyUpdates=_hideThirdPartyUpdates;
+@property(nonatomic) _Bool hideAppleUpdates; // @synthesize hideAppleUpdates=_hideAppleUpdates;
 @property(readonly, nonatomic) NSSet *accessories; // @synthesize accessories=_accessories;
 @property(readonly, nonatomic) HFItem<HFSoftwareUpdatableItemProtocol> *sourceItem; // @synthesize sourceItem=_sourceItem;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)itemProviders;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)_reloadItemProviders;
 - (id)initWithItemUpdater:(id)arg1 home:(id)arg2 sourceItem:(id)arg3;
 - (id)initWithItemUpdater:(id)arg1;

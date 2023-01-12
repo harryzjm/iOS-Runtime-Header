@@ -12,10 +12,10 @@
 {
     MISSING_TYPE *resolver;
     MISSING_TYPE *purchaseProvider;
-    MISSING_TYPE *articlePaywallTypeProvider;
-    MISSING_TYPE *feedPaywallTypeProvider;
+    MISSING_TYPE *paywallTypeProvider;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *configurationManager;
+    MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *tracker;
     MISSING_TYPE *bundlePaywallViewModelFactory;

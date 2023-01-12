@@ -27,6 +27,7 @@
     NSString *_clientProcessBundleId;
     NSString *_container;
     NSString *_environment;
+    NSString *_databaseScope;
     NSString *_containerScopedUserIdentifier;
     NSString *_containerScopedDeviceIdentifier;
     NSString *_applicationBundleIdentifierOverrideForContainerAccess;
@@ -50,6 +51,7 @@
 @property(copy, nonatomic) NSString *containerScopedDeviceIdentifier; // @synthesize containerScopedDeviceIdentifier=_containerScopedDeviceIdentifier;
 @property(copy, nonatomic) NSString *containerScopedUserIdentifier; // @synthesize containerScopedUserIdentifier=_containerScopedUserIdentifier;
 @property(nonatomic) _Bool anonymous; // @synthesize anonymous=_anonymous;
+@property(copy, nonatomic) NSString *databaseScope; // @synthesize databaseScope=_databaseScope;
 @property(copy, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property(copy, nonatomic) NSString *container; // @synthesize container=_container;
 @property(copy, nonatomic) NSString *clientProcessBundleId; // @synthesize clientProcessBundleId=_clientProcessBundleId;

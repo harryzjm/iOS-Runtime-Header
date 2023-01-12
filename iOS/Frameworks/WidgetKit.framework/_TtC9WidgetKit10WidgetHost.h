@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC9WidgetKit10WidgetHost : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *localeToken;
 }
 
 @end

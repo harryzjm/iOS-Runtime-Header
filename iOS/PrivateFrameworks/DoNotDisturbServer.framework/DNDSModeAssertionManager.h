@@ -12,7 +12,7 @@
 #import <DoNotDisturbServer/DNDSSysdiagnoseDataProvider-Protocol.h>
 
 @class DNDSClientDetailsProvider, DNDSModeAssertionStore, NSString;
-@protocol DNDSBackingStore;
+@protocol DNDSBackingStore, OS_os_transaction;
 
 @interface DNDSModeAssertionManager : NSObject <DNDSBackingStoreDelegate, DNDSSysdiagnoseDataProvider, DNDSModeAssertionQuerying, DNDSModeAssertionUpdating>
 {
@@ -20,13 +20,15 @@
     DNDSModeAssertionStore *_store;
     DNDSClientDetailsProvider *_clientDetailsProvider;
     struct os_unfair_lock_s _storeLock;
+    NSObject<OS_os_transaction> *_nonPersistentAssertionTransaction;
 }
 
 - (void).cxx_destruct;
 - (_Bool)_saveDataToBackingStoreWithError:(id *)arg1;
+- (void)_resolveTransactionForModeAssertionStore;
 - (void)_loadDataFromBackingStore;
 - (id)clientDetailsForClientIdentifier:(id)arg1;
-- (id)sysdiagnoseDataForDate:(id)arg1;
+- (id)sysdiagnoseDataForDate:(id)arg1 redacted:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
 - (id)backingStore:(id)arg1 migrateDictionaryRepresentation:(id)arg2 fromVersionNumber:(unsigned long long)arg3 toVersionNumber:(unsigned long long)arg4;
 - (id)updateModeAssertionsWithContextHandler:(CDUnknownBlockType)arg1 error:(id *)arg2;

@@ -12,6 +12,7 @@
 
 + (_Bool)isProtectedDataAvailable;
 + (_Bool)deviceIsPhone;
++ (long long)systemBootTime;
 + (_Bool)supportsLEA2;
 + (_Bool)watchSupportsPairingHearingAids;
 + (_Bool)deviceHasHomeButton;
@@ -21,8 +22,10 @@
 + (_Bool)deviceIsBigPhone;
 + (_Bool)deviceIsSmallPhone;
 + (_Bool)deviceIsMultiUser;
++ (_Bool)currentProcessIsAXUIServer;
 + (_Bool)currentProcessIsPreferences;
 + (_Bool)currentProcessIsHeard;
++ (id)bluetoothManagerQueue;
 + (_Bool)isInternalInstall;
 + (id)messagePayloadFromDictionary:(id)arg1 andIdentifier:(unsigned long long)arg2;
 

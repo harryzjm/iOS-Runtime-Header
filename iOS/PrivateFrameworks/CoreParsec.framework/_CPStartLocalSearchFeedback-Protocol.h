@@ -6,10 +6,13 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, _CPPerformEntityQueryCommandForFeedback;
 
 @protocol _CPStartLocalSearchFeedback <NSObject>
 @property(readonly, nonatomic) NSData *jsonData;
+@property(retain, nonatomic) _CPPerformEntityQueryCommandForFeedback *entityQueryCommand;
+@property(copy, nonatomic) NSString *originatingApp;
+@property(nonatomic) int searchType;
 @property(nonatomic) int indexType;
 @property(nonatomic) unsigned long long queryId;
 @property(nonatomic) int triggerEvent;

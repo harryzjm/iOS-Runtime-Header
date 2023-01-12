@@ -13,6 +13,7 @@
     MISSING_TYPE *config;
     MISSING_TYPE *knobs;
     MISSING_TYPE *magazineFeedService;
+    MISSING_TYPE *todayFeedEngagementEventHandler;
 }
 
 @end

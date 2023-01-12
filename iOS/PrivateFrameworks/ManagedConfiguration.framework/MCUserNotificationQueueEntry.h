@@ -18,6 +18,7 @@
     NSString *_defaultButtonText;
     NSString *_alternateButtonText;
     NSString *_otherButtonText;
+    NSString *_textfieldPlaceholder;
     double _dismissAfterTimeInterval;
     CDUnknownBlockType _completionBlock;
     id _notification;
@@ -32,6 +33,7 @@
 @property(nonatomic) _Bool displayInAppWhitelistModes; // @synthesize displayInAppWhitelistModes=_displayInAppWhitelistModes;
 @property(nonatomic) _Bool dismissOnLock; // @synthesize dismissOnLock=_dismissOnLock;
 @property(nonatomic) _Bool displayOnLockScreen; // @synthesize displayOnLockScreen=_displayOnLockScreen;
+@property(retain, nonatomic) NSString *textfieldPlaceholder; // @synthesize textfieldPlaceholder=_textfieldPlaceholder;
 @property(retain, nonatomic) NSString *otherButtonText; // @synthesize otherButtonText=_otherButtonText;
 @property(retain, nonatomic) NSString *alternateButtonText; // @synthesize alternateButtonText=_alternateButtonText;
 @property(retain, nonatomic) NSString *defaultButtonText; // @synthesize defaultButtonText=_defaultButtonText;

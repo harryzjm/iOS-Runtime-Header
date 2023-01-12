@@ -16,6 +16,9 @@
     NSString *_listenerEndpointDescription;
     NSDictionary *_identifierToService;
     NSMutableArray *_lock_incomingConnections;
+    unsigned long long _lock_activations;
+    _Bool _lock_deactivating;
+    _Bool _lock_invalidated;
 }
 
 - (void).cxx_destruct;

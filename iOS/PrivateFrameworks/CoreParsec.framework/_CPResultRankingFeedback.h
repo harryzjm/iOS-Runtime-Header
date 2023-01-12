@@ -10,7 +10,7 @@
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 #import <CoreParsec/_CPResultRankingFeedback-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _CPSearchResultForFeedback;
+@class NSArray, NSData, NSString, _CPSearchResultForFeedback;
 
 @interface _CPResultRankingFeedback : PBCodable <_CPProcessableFeedback, _CPResultRankingFeedback, NSSecureCoding>
 {
@@ -29,10 +29,6 @@
 @property(copy, nonatomic) NSArray *hiddenResults; // @synthesize hiddenResults=_hiddenResults;
 @property(retain, nonatomic) _CPSearchResultForFeedback *result; // @synthesize result=_result;
 @property(nonatomic) unsigned long long timestamp;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-@property(readonly, nonatomic) NSData *jsonData;
-@property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
@@ -47,11 +43,11 @@
 - (void)clearHiddenResults;
 - (id)init;
 - (id)initWithFacade:(id)arg1;
-@property(readonly, nonatomic) id feedbackJSON;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSData *jsonData; // @dynamic jsonData;
 @property(readonly) Class superclass;
 
 @end

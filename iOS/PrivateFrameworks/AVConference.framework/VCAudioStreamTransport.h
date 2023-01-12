@@ -17,18 +17,17 @@ __attribute__((visibility("hidden")))
 
 - (void)setPreWarmState:(_Bool)arg1;
 - (void)setWRMCoexMetrics:(id)arg1;
-- (void)setWRMNotification:(CDStruct_b018697d *)arg1;
+- (void)setWRMNotification:(CDStruct_cd8cfafa *)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
 - (void)stopWRM;
 - (void)startWRM;
 - (void)setWRMCallId:(unsigned int)arg1;
 - (void)onStop;
 - (int)onStart;
-- (void)onRTCPPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
 @property(readonly, nonatomic) void *realtimeContext;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 handle:(struct tagHANDLE *)arg2 callId:(unsigned int)arg3 localSSRC:(unsigned int)arg4 enableNetworkMonitor:(_Bool)arg5;
-- (id)initWithDelegate:(id)arg1 handle:(struct tagHANDLE *)arg2 callId:(unsigned int)arg3 localSSRC:(unsigned int)arg4;
+- (id)initWithHandle:(struct tagHANDLE *)arg1 callId:(unsigned int)arg2 localSSRC:(unsigned int)arg3 enableNetworkMonitor:(_Bool)arg4;
+- (id)initWithHandle:(struct tagHANDLE *)arg1 callId:(unsigned int)arg2 localSSRC:(unsigned int)arg3;
 - (void)reportWRMMetrics:(const CDStruct_dea828ac *)arg1;
 
 @end

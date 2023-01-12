@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class BKSProcessAssertion;
+@class RBSAssertion;
 
 @interface PFLBackgroundRunner : NSObject
 {
-    BKSProcessAssertion *_assertion;
+    RBSAssertion *_assertion;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) BKSProcessAssertion *assertion; // @synthesize assertion=_assertion;
+@property(retain, nonatomic) RBSAssertion *assertion; // @synthesize assertion=_assertion;
 
 @end
 

@@ -14,11 +14,11 @@
     UIView *_footerView;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *footerView; // @synthesize footerView=_footerView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (void)centerContentViewIfDesirable;
 - (void)layoutSubviews;
-- (void)dealloc;
 
 @end
 

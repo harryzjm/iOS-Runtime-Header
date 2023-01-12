@@ -10,6 +10,10 @@
 {
 }
 
++ (_Bool)isLiveTextEnabled;
++ (_Bool)isTabDatabaseEnabled;
++ (_Bool)isTabGroupSyncEnabled;
++ (_Bool)isCustomizationSyncEnabled;
 + (_Bool)wantsAggressiveKeychainCredentialCaching;
 + (_Bool)supportsURLCredentialStorageAccessControlGroups;
 + (_Bool)isSearchProviderEnabled:(unsigned long long)arg1;

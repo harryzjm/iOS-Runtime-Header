@@ -13,5 +13,8 @@
 - (_UIFocusRegion *)_regionForFocusedItem:(id <UIFocusItem>)arg1 inCoordinateSpace:(id <UICoordinateSpace>)arg2;
 - (void)_searchForFocusRegionsInContext:(id <_UIFocusRegionSearchContext>)arg1;
 - (id <UICoordinateSpace>)_preferredFocusRegionCoordinateSpace;
+
+@optional
+- (struct CGRect)_clippingRectInCoordinateSpace:(id <UICoordinateSpace>)arg1;
 @end
 

@@ -18,9 +18,12 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *modificationInProgress; // @synthesize modificationInProgress=_modificationInProgress;
-- (void)_setOutputDevices:(id)arg1 onEndpoint:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)shouldSearchForLogicalDevices;
+- (void)_modifyOutputDevices:(id)arg1 onEndpoint:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_discoverLocalEndpointFromStereoPairUsingDeviceInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_discoverLocalEndpointFromDeviceInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateDiscoverableDeviceList:(id)arg1 deviceInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)modifySystemMusicContextForEndpointDestination:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)modifySystemMusicContextForDestination:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 

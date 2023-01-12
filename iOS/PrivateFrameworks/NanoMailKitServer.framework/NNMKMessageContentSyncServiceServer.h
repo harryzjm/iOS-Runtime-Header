@@ -17,7 +17,7 @@
 - (void)failedSendingProtobufWithIDSIdentifier:(id)arg1 errorCode:(long long)arg2;
 - (void)successfullySentProtobufWithIDSIdentifier:(id)arg1;
 - (id)notifyInitialContentSyncCompleted:(id)arg1;
-- (id)syncImageAttachment:(id)arg1 notificationPriority:(_Bool)arg2 userRequested:(_Bool)arg3;
+- (id)syncAttachment:(id)arg1 notificationPriority:(_Bool)arg2 userRequested:(_Bool)arg3;
 - (id)syncMessageContent:(id)arg1 notificationPriority:(_Bool)arg2 userRequested:(_Bool)arg3;
 - (id)initWithQueue:(id)arg1;
 

@@ -10,7 +10,9 @@
 
 @interface _TtC8NewsFeed21FormatNodeContextData : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *debugData;
     MISSING_TYPE *data;
+    MISSING_TYPE *animations;
 }
 
 @end

@@ -11,6 +11,7 @@
 @class ML3DatabaseConnection, ML3DatabaseModule, ML3DatabaseTable, NSString;
 @protocol ML3VirtualTableDelegate;
 
+__attribute__((visibility("hidden")))
 @interface ML3VirtualTable : NSObject <ML3DatabaseModuleContext>
 {
     NSString *_virtualTableName;

@@ -16,28 +16,18 @@
 }
 
 - (void).cxx_destruct;
-- (void)enumerateDeepNeighborsWithLabel:(id)arg1 domain:(unsigned short)arg2 edgeType:(unsigned long long)arg3 excluding:(id)arg4 shouldStop:(_Bool *)arg5 block:(CDUnknownBlockType)arg6;
+- (void)enumerateNeighborNodesMatchingFilter:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateNodesRelatedWithRelation:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateNeighborEdgesAndNodesMatchingFilter:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)edgeIdentifiersOfType:(unsigned long long)arg1 matchingFilter:(id)arg2;
+- (void)enumerateEdgesOfType:(unsigned long long)arg1 matchingFilter:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (unsigned long long)memoryFootprint:(id)arg1;
-- (void)removeEdge:(id)arg1;
-- (void)addEdge:(id)arg1;
-- (void)enumerateSiblingNodesThroughEdgesInDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateSiblingNodesThroughEdgesWithLabel:(id)arg1 inDomain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (id)siblingNodesThroughEdgesWithLabel:(id)arg1 inDomain:(unsigned short)arg2;
-- (void)enumerateNeighborNodesThroughEdgesInDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateNeighborNodesThroughEdgesOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (id)neighborNodesThroughEdgesOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3;
-- (id)anyNeighborNodeThroughEdgesOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3;
-- (void)enumerateNeighborNodesWithLabel:(id)arg1 inDomain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (id)neighborNodesWithLabel:(id)arg1 inDomain:(unsigned short)arg2;
-- (void)enumerateEdgesInDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)edgesOfType:(unsigned long long)arg1 withNode:(id)arg2;
-- (id)anyEdgeOfType:(unsigned long long)arg1 withNode:(id)arg2;
+- (void)enumerateNeighborNodesThroughEdgesOfType:(unsigned long long)arg1 matchingFilter:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateNeighborEdgesAndNodesThroughEdgesOfType:(unsigned long long)arg1 matchingFilter:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (_Bool)hasEdgeOfType:(unsigned long long)arg1 withNode:(id)arg2;
-- (void)enumerateEdgesOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (id)edgesOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3;
-- (id)anyEdgeOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3;
-- (_Bool)hasEdgeOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3;
-- (unsigned long long)countOfEdgesOfType:(unsigned long long)arg1 withLabel:(id)arg2 inDomain:(unsigned short)arg3;
+- (void)enumerateEdgesOfType:(unsigned long long)arg1 withNode:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (_Bool)hasEdgeOfType:(unsigned long long)arg1 matchingFilter:(id)arg2;
+- (unsigned long long)countOfEdgesOfType:(unsigned long long)arg1 matchingFilter:(id)arg2;
 - (id)initWithNode:(id)arg1;
 
 // Remaining properties

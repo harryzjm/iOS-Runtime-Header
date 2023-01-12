@@ -8,7 +8,7 @@
 
 #import <PeopleSuggester/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface _PSSuggestionProxy : NSObject <NSSecureCoding>
 {
@@ -16,6 +16,7 @@
     NSString *_bundleID;
     NSString *_interactionRecipients;
     NSString *_contactID;
+    NSArray *_handles;
     NSString *_handle;
     NSString *_reason;
     NSString *_reasonType;
@@ -27,6 +28,7 @@
 @property(readonly, copy, nonatomic) NSString *reasonType; // @synthesize reasonType=_reasonType;
 @property(readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property(readonly, copy, nonatomic) NSString *handle; // @synthesize handle=_handle;
+@property(readonly, copy, nonatomic) NSArray *handles; // @synthesize handles=_handles;
 @property(readonly, copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property(readonly, copy, nonatomic) NSString *interactionRecipients; // @synthesize interactionRecipients=_interactionRecipients;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -36,7 +38,9 @@
 - (unsigned long long)hash;
 - (id)description;
 @property(readonly, copy, nonatomic) NSString *suggestionKey;
+- (id)initWithBundleID:(id)arg1 interactionRecipients:(id)arg2 contactID:(id)arg3 handles:(id)arg4 reason:(id)arg5 reasonType:(id)arg6 useGroupsWhenFindingRecipient:(_Bool)arg7;
 - (id)initWithBundleID:(id)arg1 interactionRecipients:(id)arg2 contactID:(id)arg3 handle:(id)arg4 reason:(id)arg5 reasonType:(id)arg6 useGroupsWhenFindingRecipient:(_Bool)arg7;
+- (id)initWithBundleID:(id)arg1 interactionRecipients:(id)arg2 handles:(id)arg3 reason:(id)arg4 reasonType:(id)arg5;
 - (id)initWithBundleID:(id)arg1 interactionRecipients:(id)arg2 contactID:(id)arg3 handle:(id)arg4 reason:(id)arg5 reasonType:(id)arg6;
 - (id)initWithBundleID:(id)arg1 interactionRecipients:(id)arg2 contactID:(id)arg3 reason:(id)arg4 reasonType:(id)arg5;
 

@@ -8,34 +8,44 @@
 
 #import <Speech/NSCopying-Protocol.h>
 #import <Speech/NSSecureCoding-Protocol.h>
+#import <Speech/SRSampling-Protocol.h>
 
-@class NSArray, SFTranscription;
+@class NSArray, NSString, SFSpeechRecognitionMetadata, SFTranscription;
 
-@interface SFSpeechRecognitionResult : NSObject <NSCopying, NSSecureCoding>
+@interface SFSpeechRecognitionResult : NSObject <SRSampling, NSCopying, NSSecureCoding>
 {
     NSArray *_transcriptions;
     NSArray *_rawTranscriptions;
     _Bool _final;
     SFTranscription *_bestTranscription;
+    SFSpeechRecognitionMetadata *_speechRecognitionMetadata;
     SFTranscription *_rawTranscription;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) SFTranscription *rawTranscription; // @synthesize rawTranscription=_rawTranscription;
+@property(readonly, nonatomic) SFSpeechRecognitionMetadata *speechRecognitionMetadata; // @synthesize speechRecognitionMetadata=_speechRecognitionMetadata;
 @property(readonly, nonatomic, getter=isFinal) _Bool final; // @synthesize final=_final;
 @property(readonly, copy, nonatomic) SFTranscription *bestTranscription; // @synthesize bestTranscription=_bestTranscription;
+- (id)binarySampleRepresentation;
+- (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 @property(readonly, copy, nonatomic) NSArray *rawTranscriptions;
 @property(readonly, copy, nonatomic) NSArray *transcriptions;
 - (id)expandTranscription:(id)arg1;
+- (id)_initWithBestTranscription:(id)arg1 rawTranscription:(id)arg2 final:(_Bool)arg3 speechRecognitionMetadata:(id)arg4;
 - (id)_initWithBestTranscription:(id)arg1 rawTranscription:(id)arg2 final:(_Bool)arg3;
 - (id)_initWithBestTranscription:(id)arg1 final:(_Bool)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

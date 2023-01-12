@@ -33,7 +33,7 @@
 - (void)_enableCells;
 - (void)_disableCells;
 - (_Bool)_canExecuteAccountAction;
-- (void)_logout;
+- (void)logout;
 - (id)_companionLoginWithAccount:(id)arg1 cell:(id)arg2;
 - (id)_proxyLoginWithAccount:(id)arg1 cell:(id)arg2;
 - (void)_setupCompanionAuthenticationForAccount:(id)arg1 cell:(id)arg2;

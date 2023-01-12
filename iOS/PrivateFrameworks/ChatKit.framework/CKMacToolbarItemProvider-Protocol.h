@@ -14,6 +14,7 @@
 - (void)configureWithToolbarController:(CKMacToolbarController *)arg1;
 
 @optional
+- (void)toolbarSizeMetricsDidChange;
 - (_Bool)itemProviderDisablesTouches;
 - (_Bool)reparentToolbarItem:(CKMacToolbarItem *)arg1;
 - (void)toolbarDidRemoveItem:(CKMacToolbarItem *)arg1;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)callChangesHandlersWithProviderDomains:(id)arg1 error:(id)arg2;
 - (void)updateProviderDomainsWithAttemptCount:(unsigned long long)arg1;
 - (void)signalChange;
+- (void)_t_discardCache;
 - (void)removeChangesHandlerToken:(id)arg1;
 - (id)addChangesHandler:(CDUnknownBlockType)arg1;
 - (id)_init;

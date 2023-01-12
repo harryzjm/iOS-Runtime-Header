@@ -8,6 +8,7 @@
 
 @interface TRSetupProxyAuthenticationRequest
 {
+    _Bool _shouldUseAIDA;
     ACAccount *_account;
     NSString *_rawPassword;
     NSSet *_targetedAccountServices;
@@ -15,6 +16,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldUseAIDA; // @synthesize shouldUseAIDA=_shouldUseAIDA;
 @property(retain, nonatomic) NSSet *targetedAccountServices; // @synthesize targetedAccountServices=_targetedAccountServices;
 @property(retain, nonatomic) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;

@@ -45,6 +45,7 @@
 - (void)_startShimmer;
 - (void)_cancelRestToOpenProgress;
 - (void)_contentSizeCategoryDidChange;
+- (struct CGRect)_physicalButtonNormalizedFrame;
 - (double)_fontSize;
 - (void)layoutSubviews;
 - (void)resetRestToOpen;

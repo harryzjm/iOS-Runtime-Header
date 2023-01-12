@@ -32,6 +32,7 @@
 @property(copy, nonatomic) NSNumber *locationOfInterestConfidence; // @dynamic locationOfInterestConfidence;
 @property(copy, nonatomic) NSNumber *locationOfInterestSource; // @dynamic locationOfInterestSource;
 @property(copy, nonatomic) NSNumber *locationReferenceFrame; // @dynamic locationReferenceFrame;
+@property(copy, nonatomic) NSNumber *locationSourceAccuracy; // @dynamic locationSourceAccuracy;
 @property(copy, nonatomic) NSNumber *locationVerticalUncertainty; // @dynamic locationVerticalUncertainty;
 
 @end

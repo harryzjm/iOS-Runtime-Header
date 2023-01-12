@@ -62,6 +62,9 @@
 @property long long decodingFailurePolicy;
 - (void)__setError:(id)arg1;
 - (id)error;
+- (_Bool)_willEnforceExplicitPlistTypes;
+- (void)_enforceExplicitPlistTypes;
+- (void)_enforceSubclassesMustBeExplicitlyMentionedWhenDecoded;
 - (_Bool)_strictSecureDecodingEnabled;
 - (void)_enableStrictSecureDecodingMode;
 @property _Bool requiresSecureCoding;

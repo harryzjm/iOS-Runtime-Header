@@ -13,18 +13,18 @@
     long long _availableBytes;
     long long _usedBytes;
     long long _cameraRollBackupBytes;
-    long long _photosMediaUsageBytes;
+    long long _iCloudPhotosBytes;
 }
 
-+ (id)storageInfoWithTotal:(long long)arg1 available:(long long)arg2 used:(long long)arg3 cameraRollBackupBytes:(long long)arg4 photosMediaUsage:(long long)arg5 hasMaxQuotaTier:(_Bool)arg6;
++ (id)storageInfoWithTotal:(long long)arg1 available:(long long)arg2 used:(long long)arg3 cameraRollBackupBytes:(long long)arg4 iCloudPhotosSize:(long long)arg5 hasMaxQuotaTier:(_Bool)arg6;
 @property(readonly, nonatomic) _Bool hasMaxQuotaTier; // @synthesize hasMaxQuotaTier=_hasMaxQuotaTier;
-@property(readonly, nonatomic) long long photosMediaUsageBytes; // @synthesize photosMediaUsageBytes=_photosMediaUsageBytes;
+@property(readonly, nonatomic) long long iCloudPhotosBytes; // @synthesize iCloudPhotosBytes=_iCloudPhotosBytes;
 @property(readonly, nonatomic) long long cameraRollBackupBytes; // @synthesize cameraRollBackupBytes=_cameraRollBackupBytes;
 @property(readonly, nonatomic) long long usedBytes; // @synthesize usedBytes=_usedBytes;
 @property(readonly, nonatomic) long long availableBytes; // @synthesize availableBytes=_availableBytes;
 @property(readonly, nonatomic) long long totalBytes; // @synthesize totalBytes=_totalBytes;
 - (id)description;
-- (id)initWithTotalQuotaBytes:(long long)arg1 totalAvailableBytes:(long long)arg2 totalUsedBytes:(long long)arg3 cameraRollBackupBytes:(long long)arg4 photosMediaUsage:(long long)arg5 hasMaxQuotaTier:(_Bool)arg6;
+- (id)initWithTotalQuotaBytes:(long long)arg1 totalAvailableBytes:(long long)arg2 totalUsedBytes:(long long)arg3 cameraRollBackupBytes:(long long)arg4 iCloudPhotosSize:(long long)arg5 hasMaxQuotaTier:(_Bool)arg6;
 
 @end
 

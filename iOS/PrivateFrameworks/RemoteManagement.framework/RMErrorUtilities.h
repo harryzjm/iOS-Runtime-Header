@@ -34,7 +34,10 @@
 + (id)createMissingReferralURLError;
 + (id)createMissingMandatoryPropertyErrorWithPropertyNamed:(id)arg1 onObject:(id)arg2;
 + (id)createMismatchedValuesErrorForPropertyNamed:(id)arg1 onObject:(id)arg2 expected:(id)arg3 actual:(id)arg4;
++ (id)createMDMRequestInvalid:(id)arg1;
++ (id)createMDMRequestFailed:(id)arg1;
 + (id)createManagementSourceAlreadyExistsErrorWithURI:(id)arg1;
++ (id)createManagementSourceAlreadyExistsErrorWithAccountIdentifier:(id)arg1;
 + (id)createManagementSourceNotFoundErrorWithIdentifier:(id)arg1;
 + (id)createManagementSourceNotFoundErrorWithAccountIdentifier:(id)arg1;
 + (id)createLicenseNotFound;
@@ -46,6 +49,7 @@
 + (id)createFeatureDisabledError:(id)arg1;
 + (id)createDisallowedStatusValueErrorWithKeyPath:(id)arg1;
 + (id)createDeviceIdentityNotFoundError;
++ (id)createDeclarationNotFoundErrorWithIdentifier:(id)arg1;
 + (id)createCouldNotParseURLErrorWithString:(id)arg1;
 + (id)createCouldNotInstallAppWithUnderlyingError:(id)arg1;
 + (id)createCouldNotInstallApp;
@@ -53,7 +57,15 @@
 + (id)createCMSDecodeErrorWithStatusCode:(int)arg1 reason:(id)arg2;
 + (id)createCannotChangeValueErrorForPropertyNamed:(id)arg1 onObject:(id)arg2;
 + (id)createBootstrapURINotFound;
++ (id)createAssetInvalidURLError:(id)arg1;
++ (id)createAssetInvalidError:(id)arg1;
++ (id)createAssetCannotProcessFileErrorWithUnderlyingError:(id)arg1;
++ (id)createAssetHashCannotBeVerifiedError;
++ (id)createAssetSizeCannotBeVerifiedError;
++ (id)createAssetContentTypeCannotBeVerifiedError;
++ (id)createAssetCannotBeDownloadedErrorWithUnderlyingError:(id)arg1;
 + (id)createAlreadyEnrolledInMDMv1Error;
++ (id)createAccountMissingErrorWithIdentifier:(id)arg1;
 + (id)createAccountAlreadyExistsErrorWithIdentifier:(id)arg1;
 + (id)_loadEnglishStringsByKey;
 + (id)_englishDescriptionFormatWithKey:(id)arg1;

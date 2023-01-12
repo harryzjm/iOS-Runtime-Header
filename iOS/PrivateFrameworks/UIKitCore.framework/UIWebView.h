@@ -22,6 +22,7 @@
 + (void)initialize;
 - (void)_addShortcut:(id)arg1;
 - (void)_share:(id)arg1;
+- (void)_translate:(id)arg1;
 - (void)_define:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)select:(id)arg1;
@@ -52,6 +53,7 @@
 - (void)_setPaginationMode:(long long)arg1;
 - (long long)_paginationMode;
 - (void)_setDrawInWebThread:(_Bool)arg1;
+- (void)_setSelectionEnabled:(_Bool)arg1;
 - (void)_setWebSelectionEnabled:(_Bool)arg1;
 - (void)_setDrawsCheckeredPattern:(_Bool)arg1;
 - (void)_setOverridesOrientationChangeEventHandling:(_Bool)arg1;
@@ -160,6 +162,7 @@
 @property(nonatomic) unsigned long long dataDetectorTypes;
 @property(nonatomic) _Bool detectsPhoneNumbers;
 - (id)stringByEvaluatingJavaScriptFromString:(id)arg1;
+- (_Bool)_shouldUseViewForSceneDraggingBehavior;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;

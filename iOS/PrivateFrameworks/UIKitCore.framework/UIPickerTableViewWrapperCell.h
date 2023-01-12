@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
     UIView *_wrappedView;
     UIView *_wrappedViewContainer;
     struct CGSize _wrappedViewSize;
+    struct UIEdgeInsets _wrappedViewInsets;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) struct UIEdgeInsets wrappedViewInsets; // @synthesize wrappedViewInsets=_wrappedViewInsets;
 - (id)_anyDateLabel;
 - (void)prepareForReuse;
 - (void)resizeSubviewsWithOldSize:(struct CGSize)arg1;

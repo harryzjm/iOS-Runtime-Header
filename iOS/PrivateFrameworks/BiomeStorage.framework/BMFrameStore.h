@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BMMemoryMapping, NSFileHandle, NSString;
+@class BMMemoryMapping, NSFileHandle, NSMutableOrderedSet, NSString;
 
 @interface BMFrameStore : NSObject
 {
@@ -16,22 +16,44 @@
     unsigned long long _permission;
     double _lastAbsoluteTimestamp;
     unsigned int _usedBytes;
+    unsigned long long _frameStoreSize;
+    NSMutableOrderedSet *_framePointers;
+    _Bool _filterByAgeOnRead;
+    _Bool _pruneOnAccess;
     NSString *_segmentName;
+    NSString *_segmentPath;
+    double _maxAge;
     NSFileHandle *_backingFile;
 }
 
-+ (CDStruct_26848fb4)segmentHeaderFromFile:(id)arg1 withVersion:(unsigned int)arg2;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSFileHandle *backingFile; // @synthesize backingFile=_backingFile;
+@property(readonly, nonatomic) unsigned long long frameStoreSize; // @synthesize frameStoreSize=_frameStoreSize;
+@property(readonly, nonatomic) double maxAge; // @synthesize maxAge=_maxAge;
+@property(readonly, nonatomic) _Bool pruneOnAccess; // @synthesize pruneOnAccess=_pruneOnAccess;
+@property(readonly, nonatomic) _Bool filterByAgeOnRead; // @synthesize filterByAgeOnRead=_filterByAgeOnRead;
+@property(readonly, nonatomic) NSString *segmentPath; // @synthesize segmentPath=_segmentPath;
 @property(copy, nonatomic) NSString *segmentName; // @synthesize segmentName=_segmentName;
 - (void)sync;
 - (void)markFrameAsRemoved:(id)arg1;
+- (unsigned char)writeFrameForBytes:(const void *)arg1 length:(unsigned long long)arg2 dataVersion:(unsigned int)arg3 timestamp:(double)arg4 outOffset:(unsigned long long *)arg5;
 - (unsigned char)writeFrameForBytes:(const void *)arg1 length:(unsigned long long)arg2 dataVersion:(unsigned int)arg3 timestamp:(double)arg4;
 - (unsigned char)appendFrameHeader:(CDStruct_73a58082 *)arg1 offset:(unsigned long long *)arg2;
 - (void)updateHeader;
+- (void)enumerateWithOptions:(unsigned long long)arg1 fromOffset:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (long long)getReverseOffsetIndex:(unsigned long long)arg1;
+- (void)updateFrameStoreIndex;
+- (id)frameWithOffset:(unsigned long long)arg1 expectedState:(unsigned int)arg2;
 - (void)enumerateFromOffset:(unsigned long long)arg1 withCallback:(CDUnknownBlockType)arg2;
+- (_Bool)isValidFrame:(void *)arg1 expectedState:(unsigned int)arg2 copyOfData:(id *)arg3 frameStatus:(CDStruct_2942c33b)arg4 validations:(_Bool)arg5;
 - (_Bool)resizeBackingFileTo:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)initWithFileHandle:(id)arg1 maxSize:(unsigned long long)arg2 permission:(unsigned long long)arg3 datastoreVersion:(unsigned long long)arg4;
+- (id)initWithFileHandle:(id)arg1 streamPath:(id)arg2 filename:(id)arg3 maxSize:(unsigned long long)arg4 permission:(unsigned long long)arg5 datastoreVersion:(unsigned long long)arg6;
+- (_Bool)expectedTimestamp:(double)arg1;
+- (CDStruct_26848fb4)segmentHeaderFromFile:(id)arg1 withVersion:(unsigned int)arg2 fileSize:(unsigned long long *)arg3;
+- (void)setMaxAge:(double)arg1;
+- (void)setPruneOnAccess:(_Bool)arg1;
+- (void)setFilterByAgeOnRead:(_Bool)arg1;
 - (id)init;
 @property(readonly) unsigned int usedBytes;
 

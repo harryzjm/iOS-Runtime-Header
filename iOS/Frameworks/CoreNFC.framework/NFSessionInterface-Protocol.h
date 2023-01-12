@@ -4,8 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSData;
+
 @protocol NFSessionInterface
-- (oneway void)prioritizeSession:(void (^)(void))arg1;
+- (oneway void)activateWithToken:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)createHandoffTokenWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (oneway void)prioritizeSessionWithCompletion:(void (^)(void))arg1;
 - (oneway void)endSession:(void (^)(void))arg1;
 @end
 

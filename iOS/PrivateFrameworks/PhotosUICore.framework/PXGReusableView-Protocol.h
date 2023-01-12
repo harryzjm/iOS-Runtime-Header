@@ -11,5 +11,9 @@
 @protocol PXGReusableView <PXReusableObject>
 @property(nonatomic) struct CGRect clippingRect;
 @property(copy, nonatomic) id <NSCopying> userData;
+
+@optional
+@property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
+- (_Bool)shouldReloadForUserData:(id <NSCopying>)arg1;
 @end
 

@@ -14,7 +14,7 @@
 - (_Bool)_suppressInheritedPartStyles;
 - (NSString *)statusBarSceneIdentifier;
 - (struct CGRect)statusBarAvoidanceFrame;
-- (int)statusBarStyleOverridesToSuppress;
+- (unsigned long long)statusBarStyleOverridesToSuppress;
 - (long long)_statusBarOrientationGivenFallbackOrientation:(long long)arg1;
 - (_Bool)_statusBarHiddenGivenFallbackOrientation:(long long)arg1;
 - (double)_statusBarAlpha;

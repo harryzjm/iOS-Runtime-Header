@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <KeynoteQuicklook/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface KNAnimationPluginMenu : NSObject
+@interface KNAnimationPluginMenu : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_localizedStringToDirectionMap;
     NSMutableDictionary *_directionToLocalizedStringMap;
@@ -17,10 +19,14 @@
     unsigned long long _defaultDirection;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)localizedStringForDirection:(unsigned long long)arg1 shortVersion:(_Bool)arg2;
 + (id)animationPluginMenu;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long defaultDirection; // @synthesize defaultDirection=_defaultDirection;
+- (void)copyToInstance:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) unsigned long long count;
 - (unsigned long long)directionForIndex:(unsigned long long)arg1;
 - (unsigned long long)indexForDirection:(unsigned long long)arg1;

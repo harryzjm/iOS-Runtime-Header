@@ -10,14 +10,17 @@
 
 @interface PDXPCApplicationInfo : NSObject
 {
-    unsigned int _applicationState;
+    _Bool _visible;
+    _Bool _running;
     NSString *_displayID;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
+@property(readonly, nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(readonly, nonatomic) NSString *displayID; // @synthesize displayID=_displayID;
-@property(readonly, nonatomic) unsigned int applicationState; // @synthesize applicationState=_applicationState;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithPID:(int)arg1;
+- (id)init;
 
 @end
 

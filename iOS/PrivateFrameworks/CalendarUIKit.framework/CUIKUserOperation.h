@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class EKEventStore, NSArray, NSString;
 
 @interface CUIKUserOperation : NSObject
 {
     _Bool _inverseOperationPrecomputed;
     NSArray *_objects;
+    EKEventStore *_eventStore;
     long long _span;
     NSArray *_originalObjects;
     NSArray *_originalSliceDescriptions;
@@ -20,13 +21,14 @@
 }
 
 - (void).cxx_destruct;
-@property _Bool inverseOperationPrecomputed; // @synthesize inverseOperationPrecomputed=_inverseOperationPrecomputed;
-@property(retain) CUIKUserOperation *precomputedInverseOperation; // @synthesize precomputedInverseOperation=_precomputedInverseOperation;
-@property(retain) NSString *precomputedActionName; // @synthesize precomputedActionName=_precomputedActionName;
-@property(retain) NSArray *originalSliceDescriptions; // @synthesize originalSliceDescriptions=_originalSliceDescriptions;
-@property(retain) NSArray *originalObjects; // @synthesize originalObjects=_originalObjects;
-@property long long span; // @synthesize span=_span;
-@property(retain) NSArray *objects; // @synthesize objects=_objects;
+@property(nonatomic) _Bool inverseOperationPrecomputed; // @synthesize inverseOperationPrecomputed=_inverseOperationPrecomputed;
+@property(retain, nonatomic) CUIKUserOperation *precomputedInverseOperation; // @synthesize precomputedInverseOperation=_precomputedInverseOperation;
+@property(retain, nonatomic) NSString *precomputedActionName; // @synthesize precomputedActionName=_precomputedActionName;
+@property(retain, nonatomic) NSArray *originalSliceDescriptions; // @synthesize originalSliceDescriptions=_originalSliceDescriptions;
+@property(retain, nonatomic) NSArray *originalObjects; // @synthesize originalObjects=_originalObjects;
+@property(readonly, nonatomic) long long span; // @synthesize span=_span;
+@property(nonatomic) __weak EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
+@property(readonly, nonatomic) NSArray *objects; // @synthesize objects=_objects;
 
 @end
 

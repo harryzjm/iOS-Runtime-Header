@@ -14,14 +14,16 @@ __attribute__((visibility("hidden")))
 @interface WK_RTCDefaultVideoEncoderFactory : NSObject <RTCVideoEncoderFactory>
 {
     _Bool _supportsH265;
-    _Bool _supportsVP9;
+    _Bool _supportsVP9Profile0;
+    _Bool _supportsVP9Profile2;
+    _Bool _useLowLatencyH264;
 }
 
-+ (id)supportedCodecsWithH265:(_Bool)arg1 vp9:(_Bool)arg2;
++ (id)supportedCodecsWithH265:(_Bool)arg1 vp9Profile0:(_Bool)arg2 vp9Profile2:(_Bool)arg3;
 + (id)supportedCodecs;
 - (id)supportedCodecs;
 - (id)createEncoder:(id)arg1;
-- (id)initWithH265:(_Bool)arg1 vp9:(_Bool)arg2;
+- (id)initWithH265:(_Bool)arg1 vp9Profile0:(_Bool)arg2 vp9Profile2:(_Bool)arg3 lowLatencyH264:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class HFCameraClipVideoAssetOperationMarker, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface HFCameraClipVideoAssetOperationCache : NSObject
 {
@@ -15,10 +16,12 @@
     HFCameraClipVideoAssetOperationMarker *_head;
     HFCameraClipVideoAssetOperationMarker *_tail;
     NSMutableDictionary *_markerInfo;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 + (double)defaultFrameSize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(retain, nonatomic) NSMutableDictionary *markerInfo; // @synthesize markerInfo=_markerInfo;
 @property(retain, nonatomic) HFCameraClipVideoAssetOperationMarker *tail; // @synthesize tail=_tail;
 @property(retain, nonatomic) HFCameraClipVideoAssetOperationMarker *head; // @synthesize head=_head;
@@ -28,6 +31,7 @@
 - (void)resetSentinels;
 - (void)removeMarker:(id)arg1;
 - (void)removeOperationForKey:(id)arg1;
+- (void)_removeOperationForKey:(id)arg1;
 - (void)addOperation:(id)arg1 forClip:(id)arg2 usingKey:(id)arg3;
 - (id)operationForKey:(id)arg1;
 - (void)pointHeadAtMarker:(id)arg1;

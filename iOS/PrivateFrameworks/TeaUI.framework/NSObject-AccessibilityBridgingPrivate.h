@@ -12,6 +12,7 @@
 - (_Bool)ts_axHasValueForKey:(id)arg1;
 - (_Bool)ts_axBoolValueForKey:(id)arg1;
 - (void)ts_axSetBoolValue:(_Bool)arg1 forKey:(id)arg2;
+- (_Bool)_accessibilityUsesFixFor72070946;
 @property(readonly, nonatomic) NSArray *ts_accessibilityLeafDescendants;
 @property(copy, nonatomic) NSString *ts_accessibilityElementHelp;
 @end

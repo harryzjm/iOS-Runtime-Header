@@ -11,7 +11,7 @@
 
 @interface CMMotionAlarmManagerInternal : NSObject
 {
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSMutableDictionary *fAlarms;
     _Bool fListening;

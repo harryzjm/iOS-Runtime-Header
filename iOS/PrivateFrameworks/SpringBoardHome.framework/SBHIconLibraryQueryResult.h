@@ -8,7 +8,7 @@
 
 #import <SpringBoardHome/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSDiffableDataSourceSnapshot, NSSet, SBHIconLibraryQuery, SBHLocalizedIndexedCollation;
+@class NSArray, NSDictionary, NSDiffableDataSourceSnapshot, NSSet, SBHIconLibraryQuery, SBHLocalizedIndexedCollationStrategy;
 
 @interface SBHIconLibraryQueryResult : NSObject <NSCopying>
 {
@@ -17,17 +17,17 @@
     unsigned long long _queryResultIdx;
     SBHIconLibraryQuery *_query;
     NSSet *_icons;
-    SBHLocalizedIndexedCollation *_collation;
     NSDiffableDataSourceSnapshot *_snapshot;
     unsigned long long _sortMethodology;
+    SBHLocalizedIndexedCollationStrategy *_collationStrategy;
 }
 
-+ (void)_hydrateSnapshot:(id)arg1 fromIcons:(id)arg2 query:(id)arg3 outCollation:(id *)arg4 outIconForItemIdentifier:(id *)arg5 outSortMethodology:(unsigned long long *)arg6 sortComparator:(CDUnknownBlockType)arg7;
++ (void)_hydrateSnapshot:(id)arg1 fromIcons:(id)arg2 query:(id)arg3 outCollationStrategy:(id *)arg4 outIconForItemIdentifier:(id *)arg5 outSortMethodology:(unsigned long long *)arg6 sortComparator:(CDUnknownBlockType)arg7;
 + (id)nullQueryResults;
 - (void).cxx_destruct;
+@property(retain, nonatomic) SBHLocalizedIndexedCollationStrategy *collationStrategy; // @synthesize collationStrategy=_collationStrategy;
 @property(readonly, nonatomic) unsigned long long sortMethodology; // @synthesize sortMethodology=_sortMethodology;
 @property(copy, nonatomic) NSDiffableDataSourceSnapshot *snapshot; // @synthesize snapshot=_snapshot;
-@property(retain, nonatomic) SBHLocalizedIndexedCollation *collation; // @synthesize collation=_collation;
 @property(readonly, copy, nonatomic) NSSet *icons; // @synthesize icons=_icons;
 @property(readonly, nonatomic) SBHIconLibraryQuery *query; // @synthesize query=_query;
 - (id)iconsForSectionAtIndex:(unsigned long long)arg1;
@@ -50,7 +50,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToQueryResult:(id)arg1;
 - (id)initWithQuery:(id)arg1 icons:(id)arg2 sortComparator:(CDUnknownBlockType)arg3;
-- (id)initWithQuery:(id)arg1 icons:(id)arg2 snapshot:(id)arg3 collation:(id)arg4 iconForitemIdentifier:(id)arg5 sortMethodology:(unsigned long long)arg6;
+- (id)initWithQuery:(id)arg1 icons:(id)arg2 snapshot:(id)arg3 collationStrategy:(id)arg4 iconForitemIdentifier:(id)arg5 sortMethodology:(unsigned long long)arg6;
 
 @end
 

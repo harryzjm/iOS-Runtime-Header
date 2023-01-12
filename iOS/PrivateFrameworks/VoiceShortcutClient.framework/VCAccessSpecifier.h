@@ -15,9 +15,10 @@
     NSString *_associatedAppBundleIdentifier;
     NSString *_bundleIdentifier;
     long long _entitlements;
+    long long _sandboxCapabilities;
 }
 
-+ (id)accessSpecifierForTask:(struct __SecTask *)arg1;
++ (id)accessSpecifierForTask:(struct __SecTask *)arg1 sandboxCapabilities:(long long)arg2;
 + (id)accessSpecifierForAuditToken:(CDStruct_6ad76789)arg1;
 + (id)accessSpecifierForXPCConnection:(id)arg1;
 + (id)accessSpecifierForCurrentConnection;
@@ -29,11 +30,15 @@
 + (id)accessSpecifierUnrestricted;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long sandboxCapabilities; // @synthesize sandboxCapabilities=_sandboxCapabilities;
 @property(readonly, nonatomic) long long entitlements; // @synthesize entitlements=_entitlements;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
+- (_Bool)allowRootlessShortcutStorageAccess;
+- (_Bool)allowReadAccessForContextualActions;
 - (_Bool)allowIntentsExtensionDiscovery;
 - (_Bool)isRemovalService;
+- (_Bool)isSpringBoard;
 - (_Bool)isSettingsApp;
 - (_Bool)allowReadAccessForDonations;
 - (_Bool)allowReadAccessForSleepWorkflows;
@@ -47,13 +52,15 @@
 - (_Bool)allowReadAccessToSuggestionsWithBundleIdentifier:(id)arg1;
 - (_Bool)allowWriteAccessToSuggestionsWithBundleIdentifier:(id)arg1;
 - (_Bool)allowReadAccessToSingleStepShortcutsWithBundleIdentifier:(id)arg1;
+- (_Bool)allowShortcutImport;
 - (_Bool)allowWriteAccessToVoiceShortcuts;
 - (_Bool)allowUnrestrictedAccess;
 - (_Bool)allowConnection;
+- (_Bool)hasSandboxCapabilities:(long long)arg1;
 - (_Bool)hasEntitlements:(long long)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithBundleIdentifier:(id)arg1 associatedAppBundleIdentifier:(id)arg2 entitlements:(long long)arg3;
+- (id)initWithBundleIdentifier:(id)arg1 associatedAppBundleIdentifier:(id)arg2 entitlements:(long long)arg3 sandboxCapabilities:(long long)arg4;
 - (id)init;
 
 @end

@@ -19,6 +19,7 @@
     NSData *_data;
     NSString *_filename;
     NSURL *_fileURL;
+    NSData *_bookmarkData;
     NSString *_typeIdentifier;
 }
 
@@ -29,9 +30,10 @@
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
+@property(readonly, copy, nonatomic) NSData *_bookmarkData; // @synthesize _bookmarkData;
 @property(nonatomic, setter=_setDeletesFileOnDeallocationIfNeeded:) _Bool _deletesFileOnDeallocationIfNeeded; // @synthesize _deletesFileOnDeallocationIfNeeded;
 @property(copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
-- (void)_setAssociatedAuditToken:(CDStruct_4c969caf)arg1;
+@property(nonatomic, setter=_setAssociatedAuditToken:) CDStruct_4c969caf _associatedAuditToken;
 - (_Bool)_associatedAuditTokenIsEqualToAuditToken:(CDStruct_4c969caf)arg1;
 @property(nonatomic, getter=_isMarkedForDeletionOnDeallocation, setter=_setMarkedForDeletionOnDeallocation:) _Bool _markedForDeletionOnDeallocation;
 @property(readonly, nonatomic) _Bool _hasAssociatedAuditToken;
@@ -43,6 +45,7 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool _isFileURLBased;
 - (void)dealloc;
+- (id)_initWithBookmarkData:(id)arg1 filename:(id)arg2 typeIdentifier:(id)arg3;
 - (id)_initWithData:(id)arg1 filename:(id)arg2 fileURL:(id)arg3 typeIdentifier:(id)arg4;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;

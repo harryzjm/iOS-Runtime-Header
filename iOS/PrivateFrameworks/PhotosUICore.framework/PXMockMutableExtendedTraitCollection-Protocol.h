@@ -9,6 +9,7 @@
 @property(nonatomic) long long formFactor;
 @property(nonatomic) struct UIEdgeInsets safeAreaInsets;
 @property(nonatomic) double displayScale;
+@property(nonatomic) long long windowOrientation;
 @property(nonatomic) struct CGSize layoutReferenceSize;
 @property(nonatomic) long long layoutOrientation;
 @property(nonatomic) long long layoutSizeClass;

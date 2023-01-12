@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUAudioPlayer, HMDeviceSetupOperationHandler, NSDate, NSString, RPCompanionLinkClient, SFClient, SFDeviceOperationHandlerCDPSetup, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient, SFSiriDeviceSetupGreetingDetails;
+@class CUAudioPlayer, HMDeviceSetupOperationHandler, NSDate, NSString, RPCompanionLinkClient, SFClient, SFDeviceOperationHandlerCDPSetup, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient, SFSiriDeviceSetupGreetingDetails, SUICDefaultVoicePreviewer;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceSetupB238Service : NSObject
@@ -35,10 +35,12 @@
     SFSiriDeviceSetupGreetingDetails *_siriGreetingDetails;
     _Bool _siriHeardWhatCanYouDo;
     _Bool _wifiSetupEnabled;
+    _Bool _identifyB238AsB520;
     SFDeviceOperationHandlerCDPSetup *_cdpSetupHandler;
     HMDeviceSetupOperationHandler *_homeKitSetupHandler;
     SFDeviceOperationHandlerWiFiSetup *_wifiSetupHandler;
     CUAudioPlayer *_audioPlayer;
+    _Bool _shouldSetupAgentPlayBootTone;
     _Bool _prefCDPEnabled;
     NSString *_languageCode;
     NSString *_localeIdentifier;
@@ -48,11 +50,13 @@
     NSString *_siriListenLanguage;
     long long _siriVoiceGender;
     NSString *_siriVoiceLanguage;
+    NSString *_siriVoiceName;
     NSDate *_timeObj;
     int _timeAuto;
     long long _timeCycle;
     NSString *_timeZone;
     int _timeZoneAuto;
+    SUICDefaultVoicePreviewer *_voicePreviewer;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _progressHandler;
 }
@@ -75,7 +79,9 @@
 - (void)_handleSiriDialogIdentifier:(id)arg1;
 - (void)_handleRawRequest:(id)arg1 flags:(unsigned int)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)_handlePreAuthRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleDeviceActivationRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handlePlaySoundRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleVoicePreviewRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_handleFinishDone2Ready;
 - (void)_handleFinishDone2:(unsigned int)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handleFinishDone:(unsigned int)arg1 responseHandler:(CDUnknownBlockType)arg2;
@@ -84,7 +90,7 @@
 - (void)_handleBasicConfigResponse:(id)arg1;
 - (int)_handleBasicConfigRequest:(id)arg1;
 - (void)_handleAuthActionSiriStart:(id)arg1 response:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
-- (void)_handleAuthActionSiriInit;
+- (void)_handleAuthActionSiriInit:(id)arg1;
 - (void)_handleAuthActionRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handleSessionEnded:(id)arg1;
 - (void)_handleSessionStarted:(id)arg1;

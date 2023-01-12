@@ -18,21 +18,21 @@
     _Bool _hideSubtitle;
     NSString *_title;
     NSString *_identifier;
+    WFContentItem *_contentItem;
     id <WFPropertyListObject> _serializedPossibleState;
     NSString *_subtitle;
     WFImage *_image;
-    WFContentItem *_contentItem;
     NSData *_archivedContentItem;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSData *archivedContentItem; // @synthesize archivedContentItem=_archivedContentItem;
-@property(retain, nonatomic) WFContentItem *contentItem; // @synthesize contentItem=_contentItem;
 @property(nonatomic) _Bool hideSubtitle; // @synthesize hideSubtitle=_hideSubtitle;
 @property(retain, nonatomic) WFImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) id <WFPropertyListObject> serializedPossibleState; // @synthesize serializedPossibleState=_serializedPossibleState;
+@property(retain, nonatomic) WFContentItem *contentItem; // @synthesize contentItem=_contentItem;
 @property(readonly, nonatomic) _Bool selected; // @synthesize selected=_selected;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -51,7 +51,7 @@
 - (unsigned long long)hash;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 image:(id)arg3 selected:(_Bool)arg4 contentItem:(id)arg5 hideSubtitle:(_Bool)arg6 serializedPossibleState:(id)arg7;
 - (id)initWithContentItem:(id)arg1 selected:(_Bool)arg2 hideSubtitle:(_Bool)arg3;
-- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 image:(id)arg3 selected:(_Bool)arg4 serializedPossibleState:(id)arg5;
+- (id)initWithContentItem:(id)arg1 selected:(_Bool)arg2 serializedPossibleState:(id)arg3;
 
 @end
 

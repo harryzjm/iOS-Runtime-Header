@@ -8,7 +8,7 @@
 
 #import <NotesShared/NSSecureCoding-Protocol.h>
 
-@class NSData, NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString;
 
 @interface ICDataCryptor : NSObject <NSSecureCoding>
 {
@@ -26,7 +26,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)decryptEncryptedData:(id)arg1 identifier:(id)arg2;
 - (id)encryptData:(id)arg1 identifier:(id)arg2;
-@property(readonly, nonatomic) NSData *unwrappedKey;
 - (id)initWithCloudSyncingObjectIdentifier:(id)arg1;
 - (id)init;
 

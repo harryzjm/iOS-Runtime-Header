@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDictionary;
+
 @interface SBLockScreenDefaults
 {
 }
@@ -20,6 +22,7 @@
 @property(nonatomic) _Bool prelaunchCameraOnSwipe; // @dynamic prelaunchCameraOnSwipe;
 @property(nonatomic) _Bool prewarmCameraOnButtonTouch; // @dynamic prewarmCameraOnButtonTouch;
 @property(nonatomic) _Bool prewarmCameraOnSwipe; // @dynamic prewarmCameraOnSwipe;
+@property(nonatomic) NSDictionary *sessionTestWidgetInfo; // @dynamic sessionTestWidgetInfo;
 @property(nonatomic) _Bool showAuthenticationEngineeringUI; // @dynamic showAuthenticationEngineeringUI;
 @property(readonly, nonatomic) _Bool showLegalText; // @dynamic showLegalText;
 @property(nonatomic) _Bool showQuickNoteFingerGestureRecognizer; // @dynamic showQuickNoteFingerGestureRecognizer;

@@ -8,7 +8,6 @@
 {
 }
 
-- (id)fr_description;
 - (_Bool)shouldBeBoosted;
 - (id)initWithPersonalizationIdentifier:(id)arg1;
 - (id)initWithTagID:(id)arg1;

@@ -12,7 +12,6 @@
 + (_Bool)fetchStatus:(long long *)arg1 profile:(id)arg2 bundleIdentifier:(id)arg3 error:(id *)arg4;
 + (_Bool)setStatus:(long long)arg1 profile:(id)arg2 bundleIdentifier:(id)arg3 dateModified:(id)arg4 error:(id *)arg5;
 + (_Bool)setStatusIfNeeded:(long long)arg1 profile:(id)arg2 bundleIdentifier:(id)arg3 error:(id *)arg4;
-+ (id)allProperties;
 + (long long)protectionClass;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;

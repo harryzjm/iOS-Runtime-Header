@@ -16,6 +16,7 @@
 }
 
 - (void)accountStoreDidChange:(id)arg1;
+- (void)accountCookiesDidChange:(id)arg1;
 
 @end
 

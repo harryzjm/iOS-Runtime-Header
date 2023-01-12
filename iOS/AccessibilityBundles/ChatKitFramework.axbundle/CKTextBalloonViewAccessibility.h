@@ -15,7 +15,6 @@
 - (id)accessibilityUserInputLabels;
 - (id)_accessibilitySpeakThisString;
 - (id)_accessibilityElementHelp;
-- (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
@@ -24,6 +23,7 @@
 - (id)_axReplyDescription;
 - (_Bool)_axIsInvisibleInk;
 - (void)invisibleInkEffectViewWasUncovered;
+- (id)accessibilityVisibleText;
 - (void)_setAXInvisibleInkDescription:(id)arg1;
 - (id)_axInvisibleInkDescription;
 - (id)_axMainContentStringForSpeakThis:(_Bool)arg1;

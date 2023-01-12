@@ -8,17 +8,21 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRouteTraffic, NSMutableDictionary;
+@class GEOComposedRouteTraffic, NSArray, NSMutableDictionary;
 
 @interface GEOComposedRouteMutableData : NSObject <NSSecureCoding>
 {
     GEOComposedRouteTraffic *_traffic;
+    NSArray *_trafficDelayInfos;
+    NSArray *_updateableCameraInfos;
     NSMutableDictionary *_stepsIDToEVInfos;
     NSMutableDictionary *_legIndexToChargingStationInfos;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *updateableCameraInfos; // @synthesize updateableCameraInfos=_updateableCameraInfos;
+@property(retain, nonatomic) NSArray *trafficDelayInfos; // @synthesize trafficDelayInfos=_trafficDelayInfos;
 @property(retain, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

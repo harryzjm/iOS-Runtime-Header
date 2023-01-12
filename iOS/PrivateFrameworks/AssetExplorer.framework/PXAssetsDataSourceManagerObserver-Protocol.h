@@ -11,6 +11,7 @@
 @protocol PXAssetsDataSourceManagerObserver <PXSectionedDataSourceManagerObserver>
 
 @optional
+- (void)assetsDataSourceManagerDidFinishLoadingInitialDataSource:(PXAssetsDataSourceManager *)arg1;
 - (void)assetsDataSourceManagerDidFinishBackgroundFetching:(PXAssetsDataSourceManager *)arg1;
 @end
 

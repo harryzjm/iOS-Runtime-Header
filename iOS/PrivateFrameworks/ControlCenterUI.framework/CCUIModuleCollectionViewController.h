@@ -32,6 +32,7 @@
     NSArray *_portraitDoubleMarginIndices;
     NSArray *_landscapeDoubleMarginIndices;
     _Bool _pendingModulePopulation;
+    _Bool _pendingModulePositionProviderRefresh;
     _Bool _homeGestureDismissalAllowed;
     id <CCUIModuleCollectionViewControllerDelegate> _delegate;
 }
@@ -39,6 +40,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isHomeGestureDismissalAllowed) _Bool homeGestureDismissalAllowed; // @synthesize homeGestureDismissalAllowed=_homeGestureDismissalAllowed;
 @property(nonatomic) __weak id <CCUIModuleCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_refreshPositionProvidersIfNecessary;
 - (void)_populateModulesIfNecessary;
 - (void)_updateHomeGestureDismissalAllowed;
 - (void)_beginAppearanceTransition:(_Bool)arg1 affectedModule:(id)arg2;
@@ -53,6 +55,7 @@
 - (id)_setupAndAddModuleViewControllerToHierarchy:(id)arg1;
 - (void)_populateModuleViewControllers;
 - (id)_moduleInstances;
+- (void)_updatePositionProviders;
 - (void)_updateModuleControllers;
 - (void)_updateEnabledModuleIdentifiers;
 - (void)contentModuleContainerViewControllerDismissPresentedContent:(id)arg1;
@@ -71,10 +74,12 @@
 - (struct CCUILayoutRect)layoutView:(id)arg1 layoutRectForSubview:(id)arg2;
 - (struct CCUILayoutSize)layoutSizeForLayoutView:(id)arg1;
 - (void)orderedEnabledModuleIdentifiersChangedForSettingsManager:(id)arg1;
+- (void)moduleInstancesLayoutChangedForModuleInstanceManager:(id)arg1;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 @property(readonly, nonatomic) NSArray *childViewControllersForAppearancePropagation; // @dynamic childViewControllersForAppearancePropagation;
 - (id)queryAllTopLevelBlockingGestureRecognizers;
+- (id)moduleViewForIdentifier:(id)arg1;
 - (id)topmostModuleView;
 - (id)relevantSnapHeightsForOrientation:(long long)arg1;
 - (_Bool)isAtMaxHeight;
@@ -83,11 +88,11 @@
 - (struct CGSize)preferredContentSize;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
+- (struct CCUILayoutSize)layoutSizeForModuleIdentifier:(id)arg1 forOrientation:(long long)arg2;
 - (_Bool)isModuleExpandedForIdentifier:(id)arg1;
 - (void)dismissPresentedContentAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissExpandedModuleAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;

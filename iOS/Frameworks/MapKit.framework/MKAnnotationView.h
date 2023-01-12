@@ -35,6 +35,7 @@
     _MKAnnotationViewCustomFeatureAnnotation *_customFeatureAnnotation;
     _Bool _subclassImplementsAlignmentRectInsets;
     unsigned long long _allowedCalloutEdges;
+    _Bool _wantsViewBasedPositioning;
     _Bool _shouldKeepCalloutVisible;
     id <MKAnnotation> _annotation;
     float _displayPriority;
@@ -79,6 +80,7 @@
     _Bool _animatingToCoordinate;
     _Bool _tracking;
     _Bool _pendingSelectionAnimated;
+    _Bool _skipDrawingForSnapshots;
     float _zPriority;
     float _selectedZPriority;
     double _direction;
@@ -97,6 +99,7 @@
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (Class)calloutViewClass;
 + (Class)_mapkitLeafClass;
++ (_Bool)_wantsViewBasedPositioning;
 - (void).cxx_destruct;
 @property(nonatomic, getter=_annotationTrackingInsets) struct UIEdgeInsets annotationTrackingInsets; // @synthesize annotationTrackingInsets=_annotationTrackingInsets;
 @property(nonatomic, getter=_usageCounter, setter=_setUsageCounter:) __weak MKUsageCounter *usageCounter; // @synthesize usageCounter=_usageCounter;
@@ -106,6 +109,7 @@
 @property(readonly, nonatomic) __weak MKAnnotationView *clusterAnnotationView; // @synthesize clusterAnnotationView=_clusterAnnotationView;
 @property(copy, nonatomic) NSString *clusteringIdentifier; // @synthesize clusteringIdentifier=_clusteringIdentifier;
 @property(nonatomic) float displayPriority; // @synthesize displayPriority=_displayPriority;
+@property(nonatomic, getter=_skipDrawingForSnapshots, setter=_setSkipDrawingForSnapshots:) _Bool skipDrawingForSnapshots; // @synthesize skipDrawingForSnapshots=_skipDrawingForSnapshots;
 @property(nonatomic, getter=_calloutStyle, setter=_setCalloutStyle:) long long calloutStyle; // @synthesize calloutStyle=_calloutStyle;
 @property(nonatomic) long long subtitleVisibility; // @synthesize subtitleVisibility=_subtitleVisibility;
 @property(nonatomic) long long titleVisibility; // @synthesize titleVisibility=_titleVisibility;
@@ -237,6 +241,8 @@
 - (void)setClusterAnnotationView:(id)arg1;
 - (void)_mapVisibleCenteringRectChanged;
 - (void)_updateAnchorPosition:(struct CGPoint)arg1 alignToPixels:(_Bool)arg2;
+- (void)_metricsDidChange;
+- (void)setBounds:(struct CGRect)arg1;
 @property(readonly, nonatomic, getter=_isSelectable) _Bool selectable;
 - (_Bool)shouldShowCallout;
 - (void)configureCustomFeature:(id)arg1;

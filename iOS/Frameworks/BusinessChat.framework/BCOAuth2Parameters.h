@@ -24,16 +24,10 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSURL *accessTokenURL; // @synthesize accessTokenURL=_accessTokenURL;
-@property(retain, nonatomic) NSURL *authorizationURL; // @synthesize authorizationURL=_authorizationURL;
-@property(retain, nonatomic) NSString *responseEncryptionKey; // @synthesize responseEncryptionKey=_responseEncryptionKey;
-@property(retain, nonatomic) NSString *responseType; // @synthesize responseType=_responseType;
-@property(retain, nonatomic) NSString *state; // @synthesize state=_state;
-@property(retain, nonatomic) NSArray *scope; // @synthesize scope=_scope;
-@property(retain, nonatomic) NSString *clientSecret; // @synthesize clientSecret=_clientSecret;
-@property(retain, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+- (id)responseEncryptionKey;
 - (id)debugDescription;
-- (id)tokenExchangeURLWith:(id)arg1;
+- (id)tokenExchangeBodyWithCode:(id)arg1;
+- (id)tokenExchangeURL;
 - (id)authenticationSessionURL;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

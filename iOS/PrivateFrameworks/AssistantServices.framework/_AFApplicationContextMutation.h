@@ -8,7 +8,7 @@
 
 #import <AssistantServices/AFApplicationContextMutating-Protocol.h>
 
-@class AFApplicationContext, AFBulletin, AceObject, NSDictionary, NSString;
+@class AFApplicationContext, AFBulletin, AceObject, NSArray, NSDictionary, NSString;
 
 @interface _AFApplicationContextMutation : NSObject <AFApplicationContextMutating>
 {
@@ -17,17 +17,20 @@
     AFBulletin *_bulletin;
     AceObject *_aceContext;
     NSDictionary *_contextDictionary;
+    NSArray *_aceContexts;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasAssociatedBundleIdentifier:1;
         unsigned int hasBulletin:1;
         unsigned int hasAceContext:1;
         unsigned int hasContextDictionary:1;
+        unsigned int hasAceContexts:1;
     } _mutationFlags;
 }
 
 - (void).cxx_destruct;
 - (id)generate;
+- (void)setAceContexts:(id)arg1;
 - (void)setContextDictionary:(id)arg1;
 - (void)setAceContext:(id)arg1;
 - (void)setBulletin:(id)arg1;

@@ -4,24 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <SpringBoardFoundation/SBFTouchPassThroughView.h>
 
 #import <SpringBoard/SBDeviceApplicationSceneHandleObserver-Protocol.h>
 
-@class NSString, SBDeviceApplicationSceneHandle, UIApplicationSceneClientSettingsDiffInspector;
+@class NSString, SBDeviceApplicationSceneHandle, UIApplicationSceneClientSettingsDiffInspector, UIView;
 
-@interface SBNubView : UIView <SBDeviceApplicationSceneHandleObserver>
+@interface SBNubView : SBFTouchPassThroughView <SBDeviceApplicationSceneHandleObserver>
 {
     UIApplicationSceneClientSettingsDiffInspector *_applicationSceneClientSettingsDiffInspector;
+    UIView *_nubView;
     _Bool _highlighted;
     SBDeviceApplicationSceneHandle *_deviceApplicationSceneHandle;
-    UIView *_nubView;
 }
 
++ (double)contentHeight;
 + (double)height;
 + (double)hitTestWidth;
++ (double)hitTestPadding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIView *nubView; // @synthesize nubView=_nubView;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(readonly, nonatomic) SBDeviceApplicationSceneHandle *deviceApplicationSceneHandle; // @synthesize deviceApplicationSceneHandle=_deviceApplicationSceneHandle;
 - (void)_updateNubViewOverrideUserInterfaceStyleAndBackgroundColor;
@@ -31,6 +32,7 @@
 - (id)initWithCoder:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)traitCollectionDidChange:(id)arg1;
+@property(readonly, nonatomic) UIView *contentView;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithDeviceApplicationSceneHandle:(id)arg1;

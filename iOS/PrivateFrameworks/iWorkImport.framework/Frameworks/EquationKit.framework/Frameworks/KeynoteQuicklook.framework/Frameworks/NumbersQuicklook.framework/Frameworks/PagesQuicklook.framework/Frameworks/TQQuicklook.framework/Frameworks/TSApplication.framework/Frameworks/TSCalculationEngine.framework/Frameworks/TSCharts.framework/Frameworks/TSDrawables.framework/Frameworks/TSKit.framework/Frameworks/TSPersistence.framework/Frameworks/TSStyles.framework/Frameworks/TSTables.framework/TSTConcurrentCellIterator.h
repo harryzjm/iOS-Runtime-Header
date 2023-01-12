@@ -6,32 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSPointerArray, TSTCellRegion, TSTTableInfo;
+@class NSPointerArray, TSTCellRegion, TSTTableInfo, TSTTableModel;
 
 @interface TSTConcurrentCellIterator : NSObject
 {
     unsigned long long _cellsPerSubRegion;
     TSTTableInfo *_tableInfo;
+    TSTTableModel *_tableModel;
     TSTCellRegion *_region;
     TSTCellRegion *_forcingRegion;
     NSPointerArray *_arrayOfChunkRocks;
     unsigned long long _flags;
     unsigned long long _searchFlags;
-    struct TSUViewCellRect _clampingViewRect;
+    struct TSUCellRect _clampingRect;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct TSUViewCellRect clampingViewRect; // @synthesize clampingViewRect=_clampingViewRect;
+@property(nonatomic) struct TSUCellRect clampingRect; // @synthesize clampingRect=_clampingRect;
 @property(nonatomic) unsigned long long searchFlags; // @synthesize searchFlags=_searchFlags;
 @property(nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property(retain, nonatomic) NSPointerArray *arrayOfChunkRocks; // @synthesize arrayOfChunkRocks=_arrayOfChunkRocks;
 @property(retain, nonatomic) TSTCellRegion *forcingRegion; // @synthesize forcingRegion=_forcingRegion;
 @property(retain, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
+@property(retain, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property(retain, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property(nonatomic) unsigned long long cellsPerSubRegion; // @synthesize cellsPerSubRegion=_cellsPerSubRegion;
+- (void)p_enumerateConcurrentlyUsingChunkBeginBlock:(CDUnknownBlockType)arg1 perDispatchThreadBlock:(CDUnknownBlockType)arg2 concurrentBlock:(CDUnknownBlockType)arg3 finalBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateConcurrentlyUsingChunkBeginBlock:(CDUnknownBlockType)arg1 perDispatchThreadBlock:(CDUnknownBlockType)arg2 concurrentBlock:(CDUnknownBlockType)arg3 finalBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateModelConcurrentlyUsingChunkBeginBlock:(CDUnknownBlockType)arg1 concurrentBlock:(CDUnknownBlockType)arg2 finalBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateConcurrentlyUsingChunkBeginBlock:(CDUnknownBlockType)arg1 concurrentBlock:(CDUnknownBlockType)arg2 finalBlock:(CDUnknownBlockType)arg3;
-- (id)initWithTableInfo:(id)arg1 region:(id)arg2 forcingRegion:(id)arg3 clampingViewRect:(struct TSUViewCellRect)arg4 flags:(unsigned long long)arg5 searchFlags:(unsigned long long)arg6;
+- (id)initWithTableInfo:(id)arg1 tableModel:(id)arg2 region:(id)arg3 forcingRegion:(id)arg4 clampingRect:(struct TSUCellRect)arg5 flags:(unsigned long long)arg6 searchFlags:(unsigned long long)arg7;
+- (id)initWithTableModel:(id)arg1 baseRegion:(id)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;
 - (id)initWithTableInfo:(id)arg1 region:(id)arg2 forcingRegion:(id)arg3 flags:(unsigned long long)arg4 searchFlags:(unsigned long long)arg5;
 - (id)initWithTableInfo:(id)arg1 region:(id)arg2 clampingViewRect:(struct TSUViewCellRect)arg3 flags:(unsigned long long)arg4 searchFlags:(unsigned long long)arg5;
 - (id)initWithTableInfo:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchFlags:(unsigned long long)arg4;

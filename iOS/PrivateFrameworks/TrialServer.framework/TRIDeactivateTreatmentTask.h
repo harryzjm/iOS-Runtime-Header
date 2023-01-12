@@ -11,17 +11,21 @@
 
 @interface TRIDeactivateTreatmentTask <TRIRetryableTask>
 {
+    _Bool wasDeferred;
     _Bool _failOnUnrecognizedExperiment;
     int retryCount;
     NSDate *_startTime;
+    unsigned long long _triggerEvent;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)parseFromData:(id)arg1;
 + (id)taskWithExperimentId:(id)arg1 failOnUnrecognizedExperiment:(_Bool)arg2;
-+ (id)taskWithExperimentId:(id)arg1 startTime:(id)arg2 failOnUnrecognizedExperiment:(_Bool)arg3;
++ (id)taskWithExperimentId:(id)arg1 startTime:(id)arg2 failOnUnrecognizedExperiment:(_Bool)arg3 triggerEvent:(unsigned long long)arg4;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(nonatomic) _Bool failOnUnrecognizedExperiment; // @synthesize failOnUnrecognizedExperiment=_failOnUnrecognizedExperiment;
+@property(nonatomic) _Bool wasDeferred; // @synthesize wasDeferred;
 @property(nonatomic) int retryCount; // @synthesize retryCount;
 @property(copy, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 - (void)encodeWithCoder:(id)arg1;
@@ -31,6 +35,8 @@
 - (id)serialize;
 - (id)_asPersistedTask;
 - (_Bool)_purgeRolloutLayerIfNecessaryWithRecord:(id)arg1 fromAppContainer:(id)arg2 paths:(id)arg3;
+- (_Bool)_notifyUpdatedShadowEvaluationWithExperimentRecord:(id)arg1 context:(id)arg2;
+- (id)_categoricalValueForTriggerEvent:(unsigned long long)arg1;
 - (id)runUsingContext:(id)arg1 withTaskQueue:(id)arg2;
 @property(readonly, nonatomic) int taskType;
 

@@ -43,7 +43,7 @@
 - (_Bool)saveToFile:(id)arg1;
 - (id)serializedData;
 - (id)description;
-- (id)initWithImages:(id)arg1 format:(unsigned short)arg2 orientation:(int *)arg3 options:(id)arg4 delegate:(id)arg5;
+- (id)initWithImages:(id)arg1 format:(unsigned short)arg2 options:(id)arg3 delegate:(id)arg4;
 - (id)initWithContentsOfFile:(id)arg1 format:(unsigned short)arg2 readOnly:(_Bool)arg3;
 - (id)initWithData:(id)arg1 format:(unsigned short)arg2 readOnly:(_Bool)arg3;
 

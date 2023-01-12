@@ -33,7 +33,9 @@
 }
 
 + (id)currentContextIdentifier;
++ (id)personaAttributesForPersonaType:(unsigned long long)arg1 withError:(id *)arg2;
 + (id)personaAttributesForPersonaType:(unsigned long long)arg1;
++ (id)personaAttributesForPersonaUniqueString:(id)arg1 withError:(id *)arg2;
 + (id)personaAttributesForPersonaUniqueString:(id)arg1;
 + (id)personaAttributesForIdentifier:(id)arg1;
 + (id)setUpPersonaAttributesWithDictionary:(id)arg1;
@@ -57,6 +59,7 @@
 @property(nonatomic) unsigned int userPersona_id; // @synthesize userPersona_id=_userPersona_id;
 @property(nonatomic) unsigned long long userPersonaType; // @synthesize userPersonaType=_userPersonaType;
 @property(copy, nonatomic) NSString *userPersonaUniqueString; // @synthesize userPersonaUniqueString=_userPersonaUniqueString;
+- (id)sandboxExtensionForPersonaLayoutPath;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)setPropertiesFromUserPersona:(id)arg1;

@@ -20,8 +20,9 @@ __attribute__((visibility("hidden")))
 @interface WKFileUploadPanel : UIViewController <UIPopoverControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UIAdaptivePresentationControllerDelegate, UIContextMenuInteractionDelegate>
 {
     struct WeakObjCPtr<WKContentView> _view;
-    struct RefPtr<WebKit::WebOpenPanelResultListenerProxy, WTF::DumbPtrTraits<WebKit::WebOpenPanelResultListenerProxy>> _listener;
-    RetainPtr_f649c0c3 _mimeTypes;
+    struct RefPtr<WebKit::WebOpenPanelResultListenerProxy, WTF::RawPtrTraits<WebKit::WebOpenPanelResultListenerProxy>, WTF::DefaultRefDerefTraits<WebKit::WebOpenPanelResultListenerProxy>> _listener;
+    struct RetainPtr<NSSet<NSString *>> _acceptedUTIs;
+    struct OptionSet<WKFileUploadPanelImagePickerType> _allowedImagePickerTypes;
     struct CGPoint _interactionPoint;
     _Bool _allowMultipleFiles;
     _Bool _usingCamera;
@@ -55,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (void)_presentFullscreenViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)_presentPopoverWithContentViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)_presentMenuOptionForCurrentInterfaceIdiom:(id)arg1;
-- (void)_configureImagePicker:(id)arg1;
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (_Bool)_shouldMediaCaptureOpenMediaDevice;
 - (void)_adjustMediaCaptureType;
@@ -67,14 +67,15 @@ __attribute__((visibility("hidden")))
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
-- (id)_cameraButtonLabelAllowingPhoto:(_Bool)arg1 allowingVideo:(_Bool)arg2;
+- (id)_cameraButtonLabel;
 - (id)_photoLibraryButtonLabel;
-- (id)_browseFilesButtonLabel;
+- (id)_chooseFilesButtonLabel;
 - (id)_mediaTypesForPickerSourceType:(long long)arg1;
+- (id)acceptedTypeIdentifiers;
 - (id)currentAvailableActionTitles;
 - (void)_dismissDisplayAnimated:(_Bool)arg1;
 - (void)dismiss;
-- (void)presentWithParameters:(struct OpenPanelParameters *)arg1 resultListener:(struct WebOpenPanelResultListenerProxy *)arg2;
+- (void)presentWithParameters:(void *)arg1 resultListener:(void *)arg2;
 - (void)_chooseFiles:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
 - (void)_cancel;
 - (void)_dispatchDidDismiss;

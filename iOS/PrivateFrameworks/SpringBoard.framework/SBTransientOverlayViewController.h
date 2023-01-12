@@ -42,16 +42,19 @@
     _Bool _shouldDisableSiri;
     _Bool _shouldPendAlertItems;
     _Bool _shouldUseSceneBasedKeyboardFocus;
+    _Bool _shouldPreventDragAndDrop;
     _Bool _shouldDisableOrientationUpdates;
     _Bool _prefersWindowHitTestingDisabled;
+    _Bool _attachedToWindowedAccessory;
+    _Bool _canBecomeLocalFirstResponder;
     _Bool _presentationAllowsHomeGrabberAutoHide;
     _Bool _presentationDimmingViewHidden;
     _Bool _presentationPrefersStatusBarHidden;
     _Bool _dismissesForCoverSheetPresentation;
-    int _preferredStatusBarStyleOverridesToCancel;
     int _pictureInPictureProcessIdentifier;
     UIView *_contentView;
     UIView *_backgroundView;
+    unsigned long long _preferredStatusBarStyleOverridesToCancel;
     id <SBIdleTimerCoordinating> _idleTimerCoordinator;
     long long _containerOrientation;
     long long _preferredLockedGestureDismissalStyle;
@@ -64,6 +67,7 @@
     double _presentationContentCornerRadius;
     double _presentationHomeGrabberAlpha;
     double _presentationHomeGrabberAdditionalEdgeSpacing;
+    struct CGRect _windowedAccessoryCutoutFrameInScreen;
     struct CGAffineTransform _presentationContentTransform;
     struct CGAffineTransform _presentationHomeGrabberTransform;
 }
@@ -81,6 +85,9 @@
 @property(retain, nonatomic) SBHomeGrabberView *grabberView; // @synthesize grabberView=_grabberView;
 @property(readonly, copy, nonatomic) UIStatusBarStyleRequest *currentStatusBarStyleRequest; // @synthesize currentStatusBarStyleRequest=_currentStatusBarStyleRequest;
 @property(nonatomic) __weak id <SBTransientOverlayViewControllerDelegate> transientOverlayDelegate; // @synthesize transientOverlayDelegate=_transientOverlayDelegate;
+@property(readonly, nonatomic) _Bool canBecomeLocalFirstResponder; // @synthesize canBecomeLocalFirstResponder=_canBecomeLocalFirstResponder;
+@property(readonly, nonatomic) struct CGRect windowedAccessoryCutoutFrameInScreen; // @synthesize windowedAccessoryCutoutFrameInScreen=_windowedAccessoryCutoutFrameInScreen;
+@property(readonly, nonatomic, getter=isAttachedToWindowedAccessory) _Bool attachedToWindowedAccessory; // @synthesize attachedToWindowedAccessory=_attachedToWindowedAccessory;
 @property(readonly, nonatomic) _Bool prefersWindowHitTestingDisabled; // @synthesize prefersWindowHitTestingDisabled=_prefersWindowHitTestingDisabled;
 @property(readonly, nonatomic) int pictureInPictureProcessIdentifier; // @synthesize pictureInPictureProcessIdentifier=_pictureInPictureProcessIdentifier;
 @property(retain, nonatomic) FBDisplayLayoutElement *displayLayoutElement; // @synthesize displayLayoutElement=_displayLayoutElement;
@@ -90,6 +97,7 @@
 @property(readonly, nonatomic) _Bool shouldDisableOrientationUpdates; // @synthesize shouldDisableOrientationUpdates=_shouldDisableOrientationUpdates;
 @property(nonatomic) long long containerOrientation; // @synthesize containerOrientation=_containerOrientation;
 @property(nonatomic) __weak id <SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
+@property(readonly, nonatomic) _Bool shouldPreventDragAndDrop; // @synthesize shouldPreventDragAndDrop=_shouldPreventDragAndDrop;
 @property(readonly, nonatomic) _Bool shouldUseSceneBasedKeyboardFocus; // @synthesize shouldUseSceneBasedKeyboardFocus=_shouldUseSceneBasedKeyboardFocus;
 @property(readonly, nonatomic) _Bool shouldPendAlertItems; // @synthesize shouldPendAlertItems=_shouldPendAlertItems;
 @property(readonly, nonatomic) _Bool shouldDisableSiri; // @synthesize shouldDisableSiri=_shouldDisableSiri;
@@ -98,7 +106,7 @@
 @property(readonly, nonatomic) _Bool shouldDisableControlCenter; // @synthesize shouldDisableControlCenter=_shouldDisableControlCenter;
 @property(readonly, nonatomic) _Bool shouldDisableBanners; // @synthesize shouldDisableBanners=_shouldDisableBanners;
 @property(readonly, nonatomic) _Bool prefersStatusBarActivityItemVisible; // @synthesize prefersStatusBarActivityItemVisible=_prefersStatusBarActivityItemVisible;
-@property(readonly, nonatomic) int preferredStatusBarStyleOverridesToCancel; // @synthesize preferredStatusBarStyleOverridesToCancel=_preferredStatusBarStyleOverridesToCancel;
+@property(readonly, nonatomic) unsigned long long preferredStatusBarStyleOverridesToCancel; // @synthesize preferredStatusBarStyleOverridesToCancel=_preferredStatusBarStyleOverridesToCancel;
 @property(readonly, nonatomic) _Bool prefersProximityDetectionEnabled; // @synthesize prefersProximityDetectionEnabled=_prefersProximityDetectionEnabled;
 @property(readonly, nonatomic, getter=isContentOpaque) _Bool contentOpaque; // @synthesize contentOpaque=_contentOpaque;
 @property(readonly, nonatomic) _Bool allowsStackingOverlayContentAbove; // @synthesize allowsStackingOverlayContentAbove=_allowsStackingOverlayContentAbove;
@@ -115,6 +123,8 @@
 - (void)_keyboardWillHideNotification:(id)arg1;
 - (void)removePresentationBackgroundView:(id)arg1;
 - (void)addPresentationBackgroundView:(id)arg1;
+- (void)handleWillShowKeyboard:(_Bool)arg1;
+- (void)didTransitionToAttachedToWindowedAccessory:(_Bool)arg1 windowedAccessoryCutoutFrameInScreen:(struct CGRect)arg2;
 @property(readonly, nonatomic) _Bool dismissesSiriForPresentation;
 - (void)setNeedsWindowHitTestingUpdate;
 - (void)setPresentationPrefersStatusBarHidden:(_Bool)arg1 initialStatusBarSettings:(id)arg2;
@@ -139,6 +149,8 @@
 - (void)beginIgnoringContentOverlayInsetUpdates;
 - (void)endIgnoringAppearanceUpdates;
 - (void)beginIgnoringAppearanceUpdates;
+- (_Bool)isPresentedByProcess:(id)arg1;
+@property(readonly, nonatomic) _Bool preventsClippingToBounds;
 @property(readonly, nonatomic) UIColor *presentationDimmingViewColor;
 @property(readonly, nonatomic) _Bool preservesAppSwitcherDuringPresentationAndDismissal;
 @property(readonly, nonatomic) long long homeAffordanceSuppression;
@@ -173,6 +185,7 @@
 - (double)additionalEdgeSpacingForHomeGrabberView:(id)arg1;
 - (_Bool)handleVolumeDownButtonPress;
 - (_Bool)handleVolumeUpButtonPress;
+- (_Bool)handleVoiceCommandButtonPress;
 - (_Bool)handleLockButtonPress;
 - (_Bool)handleHomeButtonLongPress;
 - (_Bool)handleHomeButtonDoublePress;

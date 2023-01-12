@@ -10,6 +10,7 @@
 {
 }
 
++ (void)registerAllServicesInErrorMode;
 + (void)registerAllServicesWithServerContext:(id)arg1 taskQueue:(id)arg2;
 
 @end

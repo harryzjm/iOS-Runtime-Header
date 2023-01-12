@@ -16,28 +16,35 @@ __attribute__((visibility("hidden")))
 {
     NSMutableDictionary *_sessions;
     NSObject<OS_dispatch_queue> *_xpcCommandQueue;
+    _Bool _sharingEnabled;
 }
 
 + (void)addNSError:(id)arg1 toXPCArgumentDictionary:(id)arg2;
 + (id)sharedInstance;
+@property(nonatomic) _Bool sharingEnabled; // @synthesize sharingEnabled=_sharingEnabled;
 @property(readonly, nonatomic) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
 - (id)participantConfigFromXPCDictionary:(id)arg1;
 - (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
-- (void)vcSession:(id)arg1 participantID:(id)arg2 spatialAudioSourceIDDidChange:(unsigned long long)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 didDetectError:(id)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 didChangeMediaPriority:(unsigned char)arg3 description:(id)arg4;
+- (void)vcSessionShouldReconnect:(id)arg1;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoPausedDidChange:(_Bool)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteAudioPausedDidChange:(_Bool)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 videoPaused:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 audioPaused:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteScreenEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoEnabledDidChange:(_Bool)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteAudioEnabledDidChange:(_Bool)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 screenEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 videoEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 audioEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 oneToOneModeEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 updateConfiguration:(id)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 removeParticipantWithID:(id)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 addParticipantWithID:(id)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
+- (void)vcSession:(id)arg1 downlinkRateAdaptationDidChangeWithInfo:(id)arg2;
+- (void)vcSession:(id)arg1 uplinkRateAdaptationDidChangeWithInfo:(id)arg2;
 - (void)vcSession:(id)arg1 didStopWithError:(id)arg2;
 - (void)vcSession:(id)arg1 didStart:(_Bool)arg2 error:(id)arg3;
 - (id)sessionForStreamToken:(unsigned int)arg1;

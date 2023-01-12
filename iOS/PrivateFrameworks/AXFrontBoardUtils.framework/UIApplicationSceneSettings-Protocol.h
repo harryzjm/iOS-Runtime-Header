@@ -6,9 +6,12 @@
 
 #import <AXFrontBoardUtils/NSObject-Protocol.h>
 
-@class BSCornerRadiusConfiguration, NSNumber, NSString;
+@class BSCornerRadiusConfiguration, NSNumber, NSSet, NSString;
 
 @protocol UIApplicationSceneSettings <NSObject>
+@property(readonly, nonatomic) _Bool _debugValidationOrientationMaskEnabled;
+@property(readonly, nonatomic) NSSet *targetOfEventDeferringEnvironments;
+@property(readonly, nonatomic) long long interfaceOrientationMode;
 @property(readonly, nonatomic) long long pointerLockStatus;
 @property(readonly, nonatomic) long long accessibilityContrast;
 @property(readonly, nonatomic) unsigned long long scenePresenterRenderIdentifierForSnapshotting;
@@ -34,7 +37,7 @@
 @property(readonly, nonatomic) NSNumber *forcedStatusBarStyle;
 @property(readonly, nonatomic) long long userInterfaceStyle;
 @property(readonly, nonatomic) unsigned long long deactivationReasons;
-@property(readonly, nonatomic) int statusBarStyleOverridesToSuppress;
+@property(readonly, nonatomic) unsigned long long statusBarStyleOverridesToSuppress;
 @property(readonly, nonatomic) _Bool underLock;
 @property(readonly, nonatomic) NSString *persistenceIdentifier;
 - (double)defaultStatusBarHeightForOrientation:(long long)arg1;

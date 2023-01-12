@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSString *currentLockKey; // @synthesize currentLockKey=_currentLockKey;
 @property(readonly, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
-- (void)willStartBatchingWithLogKey:(id)arg1 error:(id *)arg2;
-- (void)skipEvents:(id)arg1 error:(id *)arg2;
-- (void)removeEvents:(id)arg1 error:(id *)arg2;
+- (_Bool)willStartBatchingWithLogKey:(id)arg1 error:(id *)arg2;
+- (_Bool)skipEvents:(id)arg1 error:(id *)arg2;
+- (_Bool)removeEvents:(id)arg1 error:(id *)arg2;
 - (void)enumerateSortedEventsForTopic:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)didFinishBatching;
 - (void)removeAllEvents;

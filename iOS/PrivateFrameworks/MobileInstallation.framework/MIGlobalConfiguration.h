@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, NSURL;
+@class NSDictionary, NSSet, NSString, NSURL;
 
 @interface MIGlobalConfiguration : NSObject
 {
@@ -24,21 +24,22 @@
     NSSet *_systemAppPlaceholderPluginBundleIDs;
     NSSet *_systemAppPlaceholderXPCServiceBundleIDs;
     NSURL *_rootPath;
-    NSDictionary *_diskImageAppBundleIDToInfoMap;
     NSURL *_installdPath;
+    NSDictionary *_diskImageAppBundleIDToInfoMap;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSURL *installdPath; // @synthesize installdPath=_installdPath;
 @property(readonly, nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property(readonly, nonatomic) unsigned int uid; // @synthesize uid=_uid;
 @property(readonly, copy, nonatomic) NSDictionary *diskImageAppBundleIDToInfoMap; // @synthesize diskImageAppBundleIDToInfoMap=_diskImageAppBundleIDToInfoMap;
+@property(readonly, nonatomic) NSURL *installdPath; // @synthesize installdPath=_installdPath;
 @property(readonly, nonatomic) NSURL *rootPath; // @synthesize rootPath=_rootPath;
 - (_Bool)clearIsRunningInTestMode:(id *)arg1;
 - (_Bool)setIsRunningInTestMode:(id *)arg1;
 - (_Bool)isRunningInTestMode:(_Bool *)arg1 outError:(id *)arg2;
-- (_Bool)_useInternalDiagnostics;
+@property(readonly, nonatomic) _Bool hasInternalContent;
+@property(readonly, nonatomic) _Bool allowsInternalSecurityPolicy;
 - (id)_testModeSentinelURL;
 @property(readonly, nonatomic) NSURL *lastBuildInfoFileURL;
 @property(readonly, nonatomic) NSURL *migrationPlistURL;
@@ -51,6 +52,7 @@
 @property(readonly, copy, nonatomic) NSSet *systemAppPlaceholderBundleIDs; // @synthesize systemAppPlaceholderBundleIDs=_systemAppPlaceholderBundleIDs;
 @property(readonly, copy, nonatomic) NSSet *builtInFrameworkBundleIDs; // @synthesize builtInFrameworkBundleIDs=_builtInFrameworkBundleIDs;
 @property(readonly, copy, nonatomic) NSDictionary *internalAppBundleIDToInfoMap; // @synthesize internalAppBundleIDToInfoMap=_internalAppBundleIDToInfoMap;
+- (void)setSystemAppPlaceholderBundleIDToInfoMap:(id)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *systemAppPlaceholderBundleIDToInfoMap; // @synthesize systemAppPlaceholderBundleIDToInfoMap=_systemAppPlaceholderBundleIDToInfoMap;
 @property(readonly, copy, nonatomic) NSDictionary *stagedSystemAppBundleIDToInfoMap; // @synthesize stagedSystemAppBundleIDToInfoMap=_stagedSystemAppBundleIDToInfoMap;
 @property(readonly, copy, nonatomic) NSDictionary *systemAppBundleIDToInfoMap; // @synthesize systemAppBundleIDToInfoMap=_systemAppBundleIDToInfoMap;
@@ -61,11 +63,12 @@
 - (id)_bundleIDMapForBundlesInDirectory:(id)arg1 withExtension:(id)arg2;
 - (id)_bundleIDMapForBundlesInDirectory:(id)arg1 withExtension:(id)arg2 loadingAdditionalKeys:(id)arg3;
 @property(readonly, copy, nonatomic) NSSet *installationBlacklist;
-@property(readonly, copy, nonatomic) NSArray *appUserDataItemNames;
-@property(readonly, copy, nonatomic) NSArray *appBundleMetadataItemNames;
+@property(readonly, copy, nonatomic) NSSet *dataContainerRootItemNames;
+@property(readonly, copy, nonatomic) NSSet *appBundleMetadataItemNames;
 @property(readonly, nonatomic) NSURL *backedUpStateDirectory;
 @property(readonly, nonatomic) NSURL *cachesDirectory;
 @property(readonly, nonatomic) NSURL *dataDirectory;
+@property(readonly, nonatomic) NSURL *installdLibraryPath;
 @property(readonly, copy, nonatomic) NSSet *allFrameworksDirectories; // @synthesize allFrameworksDirectories=_allFrameworksDirectories;
 @property(readonly, nonatomic) NSURL *developerFrameworksRootDirectory;
 @property(readonly, nonatomic) NSURL *internalFrameworksRootDirectory;

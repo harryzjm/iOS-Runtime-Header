@@ -15,7 +15,7 @@
     NSDataDetector *_detector;
 }
 
-+ (_Bool)detectedDataInString:(id)arg1 scanRange:(struct _NSRange)arg2;
++ (_Bool)detectedDataInString:(id)arg1 scanRange:(struct _NSRange)arg2 withTextCheckingTypes:(unsigned long long)arg3;
 + (id)p_rangesSplitByNewLineOfString:(id)arg1 scanRange:(struct _NSRange)arg2;
 + (id)newURLFromString:(id)arg1;
 + (id)p_newArrayByScanningString:(id)arg1 scanRange:(struct _NSRange)arg2 returnAllResults:(_Bool)arg3 dataDetector:(id)arg4;
@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDataDetector *detector; // @synthesize detector=_detector;
 - (id)scanString:(id)arg1;
+- (id)initWithTextCheckingType:(unsigned long long)arg1;
 - (id)init;
 
 // Remaining properties

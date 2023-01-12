@@ -8,7 +8,7 @@
 
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
-@class EDActivityPersistence, EDConversationPersistence, EDGmailLabelPersistence, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDPersistenceHookRegistry, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, EDVIPManager, EMBlockedSenderManager, NSString;
+@class EDActivityPersistence, EDAttachmentPersistenceManager, EDContentRuleListManager, EDConversationPersistence, EDGmailLabelPersistence, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDPersistenceHookRegistry, EDRemoteContentCacheConfiguration, EDRemoteContentManager, EDRemoteContentPersistence, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, EDVIPManager, EMBlockedSenderManager, EMRemoteContentURLCache, EMRemoteContentURLSession, NSString;
 @protocol EDAccountsProvider, EDRemoteSearchProvider, EMUserProfileProvider;
 
 @interface EDPersistence : NSObject <EFLoggable>
@@ -23,10 +23,18 @@
     EDVIPManager *_vipManager;
     EMBlockedSenderManager *_blockedSenderManager;
     EDActivityPersistence *_activityPersistence;
+    EDRemoteContentCacheConfiguration *_remoteContentCacheConfiguration;
+    EMRemoteContentURLCache *_remoteContentURLCache;
+    EMRemoteContentURLSession *_remoteContentURLSession;
+    EDContentRuleListManager *_contentRuleListManager;
 }
 
 + (id)log;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) EDContentRuleListManager *contentRuleListManager; // @synthesize contentRuleListManager=_contentRuleListManager;
+@property(retain, nonatomic) EMRemoteContentURLSession *remoteContentURLSession; // @synthesize remoteContentURLSession=_remoteContentURLSession;
+@property(retain, nonatomic) EMRemoteContentURLCache *remoteContentURLCache; // @synthesize remoteContentURLCache=_remoteContentURLCache;
+@property(readonly, nonatomic) EDRemoteContentCacheConfiguration *remoteContentCacheConfiguration; // @synthesize remoteContentCacheConfiguration=_remoteContentCacheConfiguration;
 @property(readonly) EDActivityPersistence *activityPersistence; // @synthesize activityPersistence=_activityPersistence;
 @property(readonly, nonatomic) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
 @property(readonly) EDVIPManager *vipManager; // @synthesize vipManager=_vipManager;
@@ -37,6 +45,10 @@
 @property(readonly) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property(readonly, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
 @property(readonly) EDGmailLabelPersistence *gmailLabelPersistence; // @synthesize gmailLabelPersistence=_gmailLabelPersistence;
+- (id)diagnosticStringForIndexStatus;
+@property(readonly) EDAttachmentPersistenceManager *attachmentPersistenceManager;
+@property(readonly) EDRemoteContentPersistence *remoteContentPersistence;
+@property(readonly) EDRemoteContentManager *remoteContentManager;
 @property(readonly) EDThreadPersistence *threadPersistence;
 @property(readonly) EDSearchableIndexManager *searchableIndexManager;
 @property(readonly) EDMessageChangeManager *messageChangeManager;
@@ -46,6 +58,7 @@
 @property(readonly) EDPersistenceDatabase *database;
 - (void)scheduleRecurringActivity;
 - (void)test_tearDown;
+- (void)dealloc;
 - (void)_commonInitWithVIPManager:(id)arg1;
 - (id)initWithVIPManager:(id)arg1;
 - (id)init;

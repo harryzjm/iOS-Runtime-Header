@@ -29,6 +29,8 @@
 @property(nonatomic, getter=isSpecificUseOnly) _Bool specificUseOnly;
 - (void)closeNexusWithOptions:(NSDictionary *)arg1;
 - (_Bool)requestNexusWithOptions:(NSDictionary *)arg1;
+- (void)tokenLowWaterMarkReached;
+- (_Bool)reportError:(int)arg1 withOptions:(NSDictionary *)arg2;
 - (void)unassertAgentWithOptions:(NSDictionary *)arg1;
 - (_Bool)assertAgentWithOptions:(NSDictionary *)arg1;
 - (_Bool)startAgentWithOptions:(NSDictionary *)arg1;

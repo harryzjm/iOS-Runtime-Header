@@ -8,16 +8,20 @@
 
 @interface MCTVRemotePayload
 {
-    NSArray *_allowedTVs;
+    NSArray *_allowedTVIDs;
+    NSArray *_allowedTVNames;
     NSArray *_allowedRemotes;
+    NSArray *_allowedTVs;
 }
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *allowedRemotes; // @synthesize allowedRemotes=_allowedRemotes;
 @property(retain, nonatomic) NSArray *allowedTVs; // @synthesize allowedTVs=_allowedTVs;
+@property(retain, nonatomic) NSArray *allowedRemotes; // @synthesize allowedRemotes=_allowedRemotes;
+@property(readonly, nonatomic) NSArray *allowedTVNames; // @synthesize allowedTVNames=_allowedTVNames;
+@property(readonly, nonatomic) NSArray *allowedTVIDs; // @synthesize allowedTVIDs=_allowedTVIDs;
 - (id)restrictions;
 - (id)payloadDescriptionKeyValueSections;
 - (id)verboseDescription;

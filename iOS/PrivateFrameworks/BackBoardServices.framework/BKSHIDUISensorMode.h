@@ -8,7 +8,7 @@
 
 #import <BackBoardServices/BSDescriptionStreamable-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface BKSHIDUISensorMode : NSObject <BSDescriptionStreamable>
 {
@@ -16,11 +16,9 @@
     long long _versionedPID;
     unsigned long long _changeSource;
     int _proximityDetectionMode;
+    NSSet *_multitouchHostStateKeys;
     _Bool _digitizerEnabled;
     _Bool _pocketTouchesExpected;
-    _Bool _tapToWakeEnabled;
-    _Bool _coverGestureEnabled;
-    _Bool _alwaysOnGesturesEnabled;
     _Bool _estimatedProximityMode;
     _Bool _postEventWithCurrentDetectionMask;
 }
@@ -30,7 +28,9 @@
 + (id)buildModeForReason:(id)arg1 builder:(CDUnknownBlockType)arg2;
 + (id)new;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSSet *multitouchHostStateKeys; // @synthesize multitouchHostStateKeys=_multitouchHostStateKeys;
 - (long long)_comparisonScore;
+- (_Bool)_settingKeysAllowed:(id)arg1;
 @property(readonly, nonatomic, getter=isRestrictedToSystemShell) _Bool restrictedToSystemShell;
 @property(readonly, nonatomic) _Bool estimatedProximityMode;
 @property(readonly, nonatomic) long long versionedPID;
@@ -43,6 +43,7 @@
 @property(readonly, nonatomic) int proximityDetectionMode;
 @property(readonly, nonatomic) unsigned long long changeSource;
 @property(readonly, nonatomic) NSString *reason;
+- (id)didFinishProtobufDecodingWithError:(out id *)arg1;
 - (id)initForProtobufDecoding;
 - (void)appendDescriptionToFormatter:(id)arg1;
 @property(readonly, copy) NSString *description;

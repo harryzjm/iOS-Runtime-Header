@@ -77,6 +77,12 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)didResignActiveTool;
 - (void)willBecomeActiveTool;
+- (void)decreaseSliderValue:(_Bool)arg1;
+- (void)increaseSliderValue:(_Bool)arg1;
+- (_Bool)wantsSliderKeyControl;
+- (void)decreaseScrubberValue:(_Bool)arg1;
+- (void)increaseScrubberValue:(_Bool)arg1;
+- (_Bool)wantsScrubberKeyControl;
 - (void)viewDidLoad;
 - (void)_setupSlider;
 - (void)_setupFilters;

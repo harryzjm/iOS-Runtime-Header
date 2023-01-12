@@ -9,14 +9,14 @@
 @class NSUUID, TSPComponent, TSPData, TSPLazyReference, TSPUnarchiver;
 
 @protocol TSPUnarchiverDelegate <NSObject>
-@property(readonly, nonatomic) _Bool canRetainObjectReferencedByWeakLazyReference;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) _Bool didFinishResolvingReferences;
 @property(readonly, nonatomic) unsigned long long readVersion;
 @property(readonly, nonatomic) unsigned long long fileFormatVersion;
+@property(readonly, nonatomic) unsigned char packageIdentifier;
 @property(readonly, nonatomic) long long componentIdentifier;
-- (TSPData *)dataForIdentifier:(long long)arg1;
+- (TSPData *)dataForIdentifier:(long long)arg1 referencedByObjectIdentifier:(long long)arg2 objectClass:(Class)arg3;
 - (NSUUID *)UUIDForObjectIdentifier:(long long)arg1;
 - (long long)objectIdentifierForUUID:(NSUUID *)arg1;
 - (void)unarchiver:(TSPUnarchiver *)arg1 didReadLazyReference:(TSPLazyReference *)arg2 isExternal:(_Bool *)arg3;

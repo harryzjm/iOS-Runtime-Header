@@ -9,23 +9,29 @@
 #import <Home/HFHomeKitObject-Protocol.h>
 #import <Home/HFMediaProfileContainer-Protocol.h>
 #import <Home/HFServiceNameComponentsProviding-Protocol.h>
+#import <Home/HFUIRepresentableHomeObject-Protocol.h>
 
 @class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HFServiceNameComponents, HMAccessory, HMAccessorySettings, HMHome, HMMediaSession, HMRoom, HMSymptomsHandler, NSDate, NSSet, NSString, NSUUID;
-@protocol HFHomeKitObject, HFMediaValueSource, HMMediaObjectDelegate;
+@protocol HFHomeKitObject, HFMediaValueSource, HFUIRepresentableHomeObject, HMMediaObjectDelegate;
 
-@interface HMMediaSystem (HFAdditions) <HFHomeKitObject, HFMediaProfileContainer, HFServiceNameComponentsProviding>
+@interface HMMediaSystem (HFAdditions) <HFUIRepresentableHomeObject, HFHomeKitObject, HFMediaProfileContainer, HFServiceNameComponentsProviding>
 @property(readonly, nonatomic) NSSet *hf_fakeDebugSymptoms; // @dynamic hf_fakeDebugSymptoms;
 - (_Bool)hf_fake8021xNetworkSymptom;
 @property(readonly, nonatomic) _Bool hf_fakeStereoPairVersionMismatchSymptom;
 @property(readonly, nonatomic) _Bool hf_fakeStereoPairGeneralSymptom;
 @property(readonly, nonatomic) _Bool hf_fakeStereoPairNotFoundSymptom;
-- (id)hf_topLevelAccessoryLikeHomeObject;
-- (id)hf_accessories;
-- (id)hf_profiles;
-- (id)hf_services;
+@property(readonly, nonatomic) id <HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
+@property(readonly, nonatomic) NSSet *hf_accessories;
+@property(readonly, nonatomic) NSSet *hf_profiles;
+@property(readonly, nonatomic) NSSet *hf_services;
 - (id)hf_roleForAccessory:(id)arg1;
 - (id)hf_accessoryForRole:(id)arg1;
 - (_Bool)hf_isValidObject;
+- (unsigned long long)hf_preferredUserSelectionType;
+- (id)hf_preferredMediaUser;
+@property(readonly, nonatomic) _Bool hf_supportsPreferredMediaUser;
+@property(readonly, nonatomic) _Bool hf_supportsHomeTheater;
+- (id)hf_destination;
 - (id)hf_updateDateAdded:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *hf_dateAdded;
 @property(readonly, copy, nonatomic) NSString *hf_displayName;
@@ -38,6 +44,7 @@
 - (id)hf_fetchLog:(id)arg1 timeout:(double)arg2;
 - (id)hf_fetchLogListWithTimeout:(double)arg1;
 @property(readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
+- (id)hf_isEitherHomePodMediaAccountOrHomeMediaAccountPresent;
 - (id)hf_homePodMediaAccountIsMismatchedWithHomeMediaAccount;
 - (id)hf_homePodSupportsMultiUserLanguage;
 - (id)hf_appleMusicCurrentLoggedInAccount;
@@ -45,20 +52,24 @@
 @property(readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property(readonly, nonatomic) _Bool isContainedWithinItemGroup;
 @property(readonly, nonatomic) _Bool isItemGroup;
+@property(readonly, nonatomic) NSSet *homekitObjectIdentifiers;
 @property(readonly, nonatomic) _Bool hasValidSettings;
 @property(readonly, copy, nonatomic) NSString *hf_mediaRouteIdentifier;
 @property(readonly, copy, nonatomic) NSSet *hf_deviceIdentifiers;
 @property(readonly, nonatomic) _Bool hf_homePodIsCapableOfShowingSplitAccountError;
 @property(readonly, nonatomic) _Bool hf_homePodSupportsMultiUser;
+@property(readonly, nonatomic) _Bool hf_supportsMultiUser;
 @property(readonly, nonatomic) HMAccessory *hf_backingAccessory;
 @property(readonly, nonatomic) NSSet *hf_dependentHomeKitObjectsForDownstreamItems;
-@property(readonly, copy, nonatomic) NSString *hf_categoryLocalizedDescription;
+@property(readonly, copy, nonatomic) NSString *hf_categoryLowercaseLocalizedDescription;
+@property(readonly, copy, nonatomic) NSString *hf_categoryCapitalizedLocalizedDescription;
 @property(readonly, nonatomic) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
 @property(readonly, nonatomic) id <HFMediaValueSource> hf_mediaValueSource;
 @property(readonly, nonatomic) _Bool hf_isAccessorySettingsReachable;
 @property(readonly, nonatomic) _Bool hf_isAppleMusicReachable;
 @property(readonly, nonatomic) _Bool hf_supportsSoftwareUpdate;
 @property(readonly, nonatomic) _Bool hf_showsAudioSettings;
+@property(readonly, nonatomic) _Bool hf_supportsMusicAlarm;
 @property(readonly, nonatomic) _Bool hf_supportsStereoPairing;
 @property(readonly, nonatomic) _Bool hf_isReachable;
 @property(readonly, nonatomic) _Bool hf_isCurrentAccessory;

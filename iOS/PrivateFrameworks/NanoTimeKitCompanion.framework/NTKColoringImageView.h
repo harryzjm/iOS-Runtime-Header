@@ -14,14 +14,17 @@
 {
     UIColor *_overrideColor;
     CLKImageProvider *_imageProvider;
+    long long _symbolImageType;
     struct CGSize _maxSize;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long symbolImageType; // @synthesize symbolImageType=_symbolImageType;
 @property(retain, nonatomic) CLKImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
 @property(nonatomic) struct CGSize maxSize; // @synthesize maxSize=_maxSize;
 @property(retain, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 @property(nonatomic) _Bool usesLegibility; // @dynamic usesLegibility;
+- (void)_updateSymbolImageIfNeeded;
 - (void)sizeToFit;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setImage:(id)arg1;

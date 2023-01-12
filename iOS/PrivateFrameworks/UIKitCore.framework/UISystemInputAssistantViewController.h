@@ -9,7 +9,7 @@
 #import <UIKitCore/UIKeyboardAutocorrectionObserver-Protocol.h>
 #import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, TUIEmojiSearchInputViewController, TUISystemInputAssistantLayoutSplit, TUISystemInputAssistantLayoutStandard, TUISystemInputAssistantView, UITextInputAssistantItem, UIView, UIViewController;
+@class NSMutableDictionary, NSString, NSTimer, NSValue, TUIEmojiSearchInputViewController, TUISystemInputAssistantLayout, TUISystemInputAssistantLayoutSplit, TUISystemInputAssistantLayoutStandard, TUISystemInputAssistantStyleCompact, TUISystemInputAssistantStyleFloat, TUISystemInputAssistantStyleStandard, TUISystemInputAssistantView, UITextInputAssistantItem, UIView, UIViewController;
 @protocol UIKeyInput, UIPredictiveViewController;
 
 __attribute__((visibility("hidden")))
@@ -23,19 +23,27 @@ __attribute__((visibility("hidden")))
     _Bool _hasCheckedPreferences;
     _Bool _currentlyCheckingPreferences;
     UIViewController<UIPredictiveViewController> *_centerViewController;
+    long long _assistantBarStyle;
     UIView *_popoverSourceView;
     UITextInputAssistantItem *_observedInputAssistantItem;
     NSMutableDictionary *_cachedPredictiveViewControllers;
     TUISystemInputAssistantLayoutStandard *_standardAssistantViewLayout;
     TUISystemInputAssistantLayoutSplit *_splitAssistantViewLayout;
+    TUISystemInputAssistantLayout *_floatAssistantViewLayout;
+    TUISystemInputAssistantLayout *_compactAssistantViewLayout;
+    TUISystemInputAssistantStyleStandard *_standardStyle;
+    TUISystemInputAssistantStyleFloat *_floatStyle;
+    TUISystemInputAssistantStyleCompact *_compactStyle;
     TUIEmojiSearchInputViewController *_emojiSearchViewController;
     UIViewController<UIPredictiveViewController> *_predictiveViewController;
     UIViewController *_expandedItemsController;
+    NSValue *_currentInputDelegatePointerValue;
 }
 
 + (double)_defaultPreferredHeightForTraitCollection:(id)arg1;
 + (_Bool)_requiresProxyInterface;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSValue *currentInputDelegatePointerValue; // @synthesize currentInputDelegatePointerValue=_currentInputDelegatePointerValue;
 @property _Bool currentlyCheckingPreferences; // @synthesize currentlyCheckingPreferences=_currentlyCheckingPreferences;
 @property _Bool hasCheckedPreferences; // @synthesize hasCheckedPreferences=_hasCheckedPreferences;
 @property _Bool assistantOniPhonePreference; // @synthesize assistantOniPhonePreference=_assistantOniPhonePreference;
@@ -43,14 +51,28 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak UIViewController *expandedItemsController; // @synthesize expandedItemsController=_expandedItemsController;
 @property(retain, nonatomic) UIViewController<UIPredictiveViewController> *predictiveViewController; // @synthesize predictiveViewController=_predictiveViewController;
 @property(retain, nonatomic) TUIEmojiSearchInputViewController *emojiSearchViewController; // @synthesize emojiSearchViewController=_emojiSearchViewController;
+@property(retain, nonatomic) TUISystemInputAssistantStyleCompact *compactStyle; // @synthesize compactStyle=_compactStyle;
+@property(retain, nonatomic) TUISystemInputAssistantStyleFloat *floatStyle; // @synthesize floatStyle=_floatStyle;
+@property(retain, nonatomic) TUISystemInputAssistantStyleStandard *standardStyle; // @synthesize standardStyle=_standardStyle;
+@property(retain, nonatomic) TUISystemInputAssistantLayout *compactAssistantViewLayout; // @synthesize compactAssistantViewLayout=_compactAssistantViewLayout;
+@property(retain, nonatomic) TUISystemInputAssistantLayout *floatAssistantViewLayout; // @synthesize floatAssistantViewLayout=_floatAssistantViewLayout;
 @property(retain, nonatomic) TUISystemInputAssistantLayoutSplit *splitAssistantViewLayout; // @synthesize splitAssistantViewLayout=_splitAssistantViewLayout;
 @property(retain, nonatomic) TUISystemInputAssistantLayoutStandard *standardAssistantViewLayout; // @synthesize standardAssistantViewLayout=_standardAssistantViewLayout;
 @property(retain, nonatomic) NSMutableDictionary *cachedPredictiveViewControllers; // @synthesize cachedPredictiveViewControllers=_cachedPredictiveViewControllers;
 @property(nonatomic) __weak UITextInputAssistantItem *observedInputAssistantItem; // @synthesize observedInputAssistantItem=_observedInputAssistantItem;
 @property(nonatomic) __weak UIView *popoverSourceView; // @synthesize popoverSourceView=_popoverSourceView;
+@property(nonatomic) long long assistantBarStyle; // @synthesize assistantBarStyle=_assistantBarStyle;
 @property(retain, nonatomic) UIViewController<UIPredictiveViewController> *centerViewController; // @synthesize centerViewController=_centerViewController;
+- (id)inputWindowController;
+- (id)compatibilityViewController;
 - (id)candidateViewController;
 - (id)predictionViewController;
+- (id)_customCenterBarButtonItem:(id)arg1;
+- (_Bool)_usesCustomBackground;
+- (_Bool)shouldUseCustomBackground:(id)arg1;
+- (void)updateAssistantBarStyle:(long long)arg1;
+- (id)styleFromAssistantBarStyle:(long long)arg1;
+- (id)layoutFromAssistantBarStyle:(long long)arg1;
 - (void)autocorrectionControllerDidClearAutocorrections:(id)arg1;
 - (void)autocorrectionController:(id)arg1 didUpdateAutocorrectionList:(id)arg2;
 - (void)emojiSearchWillInsertEmoji:(id)arg1 forSearchQuery:(id)arg2;
@@ -69,11 +91,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateCenterViewWidthForInterfaceOrientation:(long long)arg1;
 - (double)_centerViewWidthForTraitCollection:(id)arg1 interfaceOrientation:(long long)arg2;
 - (double)_buttonBarWidthForTraitCollection:(id)arg1 interfaceOrientation:(long long)arg2;
+- (void)_keyboardDictationAvailabilityDidChangeNotification:(id)arg1;
+- (void)_updateLanguageIndicatorPointerInteraction;
 - (void)_didChangePlacementOrInputSourceNotification:(id)arg1;
 - (void)_willChangePlacementNotification:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_beginObservingInputAssistantItemForRelevantItemChanges:(id)arg1;
-- (void)_didReceiveTextEffectsRotationNotification:(id)arg1;
+- (void)_didChangeTextEffectsRotationNotification:(id)arg1;
+- (void)_willChangeTextEffectsRotationNotification:(id)arg1;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_registerForAssistantViewNotifications;
@@ -81,13 +106,21 @@ __attribute__((visibility("hidden")))
 - (_Bool)_allowedToShowBarButtonItemsInline:(id)arg1;
 - (void)_updateSystemInputAssistantViewStylingForInputAssistantItem:(id)arg1;
 - (id)_defaultTintColor;
+- (void)_dismissEmojiSearch;
+- (void)dismissDictationMenuIfNeeded;
+- (void)dismissLanguageIndicatorMenuIfNeeded;
+- (void)dismissKeyboardItemIfNeeded;
+- (void)setNeedsValidation;
 - (void)setInputAssistantButtonItemsForResponder:(id)arg1;
 @property(readonly, nonatomic) TUISystemInputAssistantView *systemInputAssistantView;
 - (void)updateCenterViewVisibilityStateForInputDelegate:(id)arg1;
+- (void)prepareTransition:(id)arg1 animated:(_Bool)arg2;
 - (void)automaticallySetCenterViewControllerBasedOnInputDelegate:(id)arg1;
 - (_Bool)_canShowCenterBarButtonItem;
 - (void)_collapseBarItems;
 - (void)_expandBarItems;
+- (void)_textDidChange;
+- (void)_willShowKeyboardSwitcher;
 - (void)_inputModeChanged:(id)arg1;
 - (void)_candidatesChanged;
 - (void)_showCandidates;
@@ -106,10 +139,16 @@ __attribute__((visibility("hidden")))
 - (id)_inputDelegateAsResponder:(id)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
+- (struct CGRect)barFrame;
+- (_Bool)isInputAssistantItemEmpty;
 - (_Bool)_canShowWhileLocked;
 - (void)dealloc;
 - (id)init;
+- (void)dismissEmojiSearch;
+- (void)prepareForFloating:(_Bool)arg1;
+- (void)showEmojiSearch:(_Bool)arg1;
 - (_Bool)isEmojiSearchResultsVisible;
+- (id)_emojiSearchField;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

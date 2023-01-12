@@ -11,7 +11,6 @@
 @interface VMUProcInfo : NSObject
 {
     unsigned int _task;
-    _Bool _needTaskPortDealloc;
     NSString *_name;
     NSArray *_arguments;
     NSArray *_envVars;
@@ -35,6 +34,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)signal:(int)arg1;
 - (_Bool)terminate;
+@property(readonly, nonatomic) _Bool shouldAnalyzeWithCorpse;
 - (_Bool)isRunning;
 - (id)platformName;
 - (unsigned int)platform;
@@ -62,7 +62,6 @@
 - (void)dealloc;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithPid:(int)arg1;
-- (id)init;
 
 @end
 

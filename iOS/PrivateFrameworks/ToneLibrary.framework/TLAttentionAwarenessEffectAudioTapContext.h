@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) TLAttentionAwarenessEffectProcessor *effectProcessor; // @synthesize effectProcessor=_effectProcessor;
-@property(nonatomic) __weak TLAttentionAwarenessEffectCoordinator *effectCoordinator; // @synthesize effectCoordinator=_effectCoordinator;
+@property(retain, nonatomic) TLAttentionAwarenessEffectCoordinator *effectCoordinator; // @synthesize effectCoordinator=_effectCoordinator;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSMutableArray, NSMutableDictionary, NSNumber;
+@class NSArray, NSData, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
 
 @interface BFFSettingsManager : NSObject
 {
     NSMutableArray *_stashedPaths;
     NSMutableDictionary *_stashedPreferences;
     NSMutableDictionary *_stashedManagedConfigurationSettings;
-    NSMutableArray *_stashedButtonHaptics;
     NSNumber *_stashedAssistantEnabled;
     NSNumber *_stashedAssistantVoiceTriggerEnabled;
     NSNumber *_stashedSiriDataSharingOptInStatus;
@@ -26,7 +25,11 @@
     NSNumber *_stashedAutoDownloadEnabled;
     NSData *_stashedAccessibilityData;
     NSNumber *_stashedUserInterfaceStyleMode;
+    NSString *_stashedSeedEnrollmentProgramName;
+    NSString *_stashedSeedEnrollmentAssetAudience;
     NSMutableArray *_stashedAnalytics;
+    NSData *_stashedSiriOutputVoice;
+    NSString *_stashedSiriLanguage;
 }
 
 + (id)sharedManager;
@@ -35,6 +38,7 @@
 - (id)_shovePath:(id)arg1 toPath:(id)arg2;
 - (id)_preferencesForDomain:(id)arg1;
 - (void)_restoreAnalyticsData;
+- (void)_applySeedEnrollmentData;
 - (void)_applyUserInterfaceStyleMode;
 - (void)_restoreAccessibilityData;
 - (void)_restoreWatchData;
@@ -45,7 +49,6 @@
 - (void)_applyLocationServicesSettings;
 - (void)_applyLocationServices;
 - (void)_applyAssistantPreferences;
-- (void)_applyStashedButtonHaptics;
 - (void)_applyStashedManagedConfiguration;
 - (void)_applyStashedPreferences;
 - (unsigned long long)_restoreConfiguration;
@@ -59,6 +62,7 @@
 - (_Bool)hideStashInSafeHavenAsProvisional:(_Bool)arg1;
 - (_Bool)hideStashInSafeHaven;
 - (void)stashAnalyticEvent:(id)arg1 payload:(id)arg2;
+- (void)setSeedEnrollmentProgramName:(id)arg1 assetAudience:(id)arg2;
 - (void)setUserInterfaceStyleMode:(long long)arg1;
 - (void)stashAccessibilityData:(id)arg1;
 - (void)setAutoDownloadEnabled:(_Bool)arg1;
@@ -67,11 +71,10 @@
 - (void)stashFlowSkipIdentifiers:(id)arg1;
 - (void)setAssistantVoiceTriggerEnabled:(_Bool)arg1;
 - (void)setAssistantEnabled:(_Bool)arg1;
+- (id)watchData;
 - (void)stashWatchData:(id)arg1;
 - (void)stashLocationServicesSettings:(id)arg1;
 - (void)stashLocationServicesChoice:(_Bool)arg1;
-- (void)clearHapticTypeForButtonKind:(long long)arg1;
-- (void)stashHapticType:(long long)arg1 forButtonKind:(long long)arg2;
 - (void)stashPath:(id)arg1;
 - (void)populatePathsToStash;
 - (void)setObject:(id)arg1 forDomain:(id)arg2 key:(id)arg3;

@@ -4,34 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <AVConference/VCRateControlAlgorithm-Protocol.h>
-
-@class NSString, VCRateControlMediaController;
-
 __attribute__((visibility("hidden")))
-@interface VCRateControlAlgorithmStabilizedNOWRD : NSObject <VCRateControlAlgorithm>
+@interface VCRateControlAlgorithmStabilizedNOWRD
 {
-    struct VCRateControlAlgorithmConfig _config;
-    VCRateControlMediaController *_mediaController;
-    int _state;
-    int _rampUpStatus;
-    int _rampDownStatus;
-    _Bool _paused;
     unsigned short _echoedTimestamp;
     unsigned short _previousTimestamp;
     unsigned short _queuingDelayTimestamp;
     unsigned int _receiveTimestamp;
     unsigned int _timestampWrapAroundCounter;
-    double _rateControlTime;
-    unsigned int _rateControlCounter;
-    unsigned int _rateChangeCounter;
     unsigned int _lastRateChangeCounter;
     unsigned int _newOWRDSampleCollected;
     _Bool _isRemoteBandwidthEstimationStable;
-    unsigned int _remoteBandwidthEstimation;
-    unsigned int _localBandwidthEstimation;
     struct {
         double owrd;
         double roundTripTime;
@@ -41,19 +24,9 @@ __attribute__((visibility("hidden")))
     } _history[500];
     int _currentHistorySize;
     int _currentHistoryIndex;
-    double _owrd;
-    CDStruct_55dce769 _owrdList;
-    _Bool _isOWRDListReady;
-    _Bool _isOWRDConstant;
-    double _nowrd;
-    double _nowrdShort;
-    double _nowrdAcc;
     double _previousNOWRD;
     double _firstOWRDFrozenTime;
-    double _lastNoOvershootBWEstimationTime;
-    double _firstBelowNoRampUpBandwidthTime;
     double _sendBitrateLimitedStartTime;
-    double _rampUpFrozenTime;
     double _rampUpFrozenDuration;
     double _extendedRampUpFrozenExitTime;
     double _stabilizationTime;
@@ -61,15 +34,10 @@ __attribute__((visibility("hidden")))
     double _lastRampDownTimeDueToFeedback;
     double _lastRampDownTimeDueToBaseband;
     double _lastPositiveOWRDTime;
-    _Bool _isCongested;
+    double _lastAllowRampUpTime;
     _Bool _isRampUpSettling;
     _Bool _isStable;
-    _Bool _isSendBitrateLimited;
-    _Bool _isOvershoot;
-    _Bool _belowNoRampUpBandwidth;
     _Bool _isFirstTimestampArrived;
-    _Bool _isNewRateSentOut;
-    _Bool _isFirstInitialRampUpDone;
     double _inVideoBitrate;
     double _outVideoBitrate;
     double _inAudioBitrate;
@@ -78,77 +46,45 @@ __attribute__((visibility("hidden")))
     unsigned int _consecutiveRampDown;
     double _lastTimeStartRampingDown;
     double _rampUpSettleDuration;
+    _Bool _shouldSuppressRampDown;
+    unsigned int _rampDownSuppressionBitrateThreshold;
     double _basebandNotificationArrivalTime;
     unsigned int _basebandAverageBitrate;
     unsigned int _basebandTotalQueueDepth;
     double _basebandExpectedQueuingDelay;
     double _basebandNormalizedBDCD;
     double _basebandNormalizedQueuingDelay;
+    double _basebandLTEOrGreaterRATSwitchTime;
+    int _basebandRadioTechnology;
     _Bool _isWaitingForBasebandRampDown;
     double _lastBasebandRampDownTime;
     double _lastHighNBDCDTime;
     int _basebandAdditionalTiersForRampUp;
-    unsigned int _totalPacketReceived;
+    _Bool _basebandAdaptationEnabled;
     unsigned int _packetReceivedVideo;
-    unsigned int _mostBurstLoss;
     unsigned int _packetBurstLoss;
     unsigned int _roundTripTimeTick;
-    double _roundTripTime;
     double _roundTripTimeMinEnvelope;
     double _previousRoundTripTime;
-    double _worstRecentRoundTripTime;
-    double _packetLossRate;
-    double _packetLossRateAudio;
-    double _packetLossRateVideo;
     double _lastNetworkUnstableTime;
-    unsigned int _worstRecentBurstLoss;
-    int _currentTierIndex;
-    int _previousTierIndex;
-    unsigned int _targetBitrate;
-    unsigned int _actualBitrate;
-    void *_logDump;
-    void *_logBasebandDump;
-    _Bool _isPeriodicLoggingEnabled;
-    _Bool _didMBLRampDown;
+    _Bool _withBTCoex;
 }
 
-@property(readonly, nonatomic) _Bool isFirstInitialRampUpDone; // @synthesize isFirstInitialRampUpDone=_isFirstInitialRampUpDone;
-@property(readonly, nonatomic) _Bool isSendBitrateLimited; // @synthesize isSendBitrateLimited=_isSendBitrateLimited;
-@property(nonatomic) _Bool didMBLRampDown; // @synthesize didMBLRampDown=_didMBLRampDown;
-@property(readonly, nonatomic) unsigned int actualBitrate; // @synthesize actualBitrate=_actualBitrate;
-@property(nonatomic, getter=isPaused) _Bool paused; // @synthesize paused=_paused;
-@property(readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
-@property(nonatomic) unsigned int localBandwidthEstimation; // @synthesize localBandwidthEstimation=_localBandwidthEstimation;
-@property(readonly, nonatomic) _Bool isNewRateSentOut; // @synthesize isNewRateSentOut=_isNewRateSentOut;
-@property(readonly, nonatomic) double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
-@property(readonly, nonatomic) unsigned int totalPacketReceived; // @synthesize totalPacketReceived=_totalPacketReceived;
-@property(readonly, nonatomic) double packetLossRateVideo; // @synthesize packetLossRateVideo=_packetLossRateVideo;
-@property(readonly, nonatomic) double packetLossRateAudio; // @synthesize packetLossRateAudio=_packetLossRateAudio;
-@property(readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
-@property(readonly, nonatomic) unsigned int mostBurstLoss; // @synthesize mostBurstLoss=_mostBurstLoss;
-@property(retain, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
-@property(readonly, nonatomic) unsigned int rateChangeCounter; // @synthesize rateChangeCounter=_rateChangeCounter;
-@property(readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
-@property(readonly, nonatomic) _Bool isCongested; // @synthesize isCongested=_isCongested;
-- (id)className;
 - (void)printRateControlInfoToLogDump;
-- (void)logToDumpFilesWithString:(id)arg1;
 - (void)checkStabilizationWithEchoedTimestamp:(unsigned short)arg1 queuingDelay:(unsigned short)arg2;
 - (void)checkMediaQueueBitrates;
-- (_Bool)recentlyGoAboveRampUpBandwidth;
-- (_Bool)keepOvershootingRampDownBandwidth;
-- (void)checkBandwidthOvershoot;
+- (unsigned int)getRampDownSuppressionBitrateThresholdWithRTT;
+- (_Bool)updateParametersForRampDownSuppression;
 - (void)checkCongestionStatus;
 - (void)updateCongestionStatusWhenRampDown:(double)arg1;
 - (void)updateCongestionStatusWhenRampUp;
 - (void)calculatePacketLossWithReceivedPacketCount:(unsigned int)arg1 receivedPacketCountVideo:(unsigned int)arg2 packetBurstLoss:(unsigned short)arg3 packetLossSample:(double)arg4;
 - (void)calculateRoundTripTimeWithSample:(double)arg1;
 - (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
-- (unsigned short)getTimestampFromMicroTime:(double)arg1;
-- (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;
 - (int)basebandAdditionalTiersForRampUp;
 - (_Bool)isBasebandNotificationOutOfKeyFrameCoolDownTime;
 - (_Bool)shouldRampUpDueToBaseband;
+- (_Bool)shouldUnblockRampUpAfterTimeOut;
 - (_Bool)shouldRampDownDueToBaseband;
 - (_Bool)shouldRampDownDueToNOWRDAcc;
 - (_Bool)shouldRampDownDueToNOWRD;
@@ -164,31 +100,25 @@ __attribute__((visibility("hidden")))
 - (int)rampUpTier;
 - (void)stateEnter;
 - (void)stateExit;
-- (void)stateChangeTo:(int)arg1;
 - (_Bool)shouldFastRampUp;
 - (double)getRampUpFrozenDuration;
 - (double)getRampUpSettleDuration;
 - (void)resetRampingStatus;
 - (void)updateVCRateControlHistory;
 - (void)updateInternalStatus;
-- (_Bool)updateInternalStatistics:(CDStruct_56e8fa21)arg1;
+- (_Bool)updateInternalStatistics:(CDStruct_c0785916)arg1;
 - (void)runRateControlStateTransition;
-@property(readonly, nonatomic) unsigned int worstRecentBurstLoss; // @synthesize worstRecentBurstLoss=_worstRecentBurstLoss;
-@property(readonly, nonatomic) double worstRecentRoundTripTime; // @synthesize worstRecentRoundTripTime=_worstRecentRoundTripTime;
-- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_56e8fa21)arg1;
-- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_56e8fa21)arg1;
-- (_Bool)doRateControlWithStatistics:(CDStruct_56e8fa21)arg1;
-- (void)enableBasebandDump:(void *)arg1;
-- (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(_Bool)arg2;
+- (unsigned int)worstRecentBurstLoss;
+- (double)worstRecentRoundTripTime;
+- (void)setLocalBandwidthEstimation:(unsigned int)arg1;
+- (_Bool)shouldEnableBasebandAdaptationWithBasebandStatistics:(CDStruct_f0a7dbac)arg1 previousBasebandRAT:(int)arg2;
+- (_Bool)isBasebandRATGreaterOrSameAsLTE:(int)arg1;
+- (_Bool)doRateControlWithBasebandStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithNWStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithVCRCStatistics:(CDStruct_c0785916)arg1;
+- (_Bool)doRateControlWithStatistics:(CDStruct_c0785916)arg1;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(_Bool)arg2;
-- (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

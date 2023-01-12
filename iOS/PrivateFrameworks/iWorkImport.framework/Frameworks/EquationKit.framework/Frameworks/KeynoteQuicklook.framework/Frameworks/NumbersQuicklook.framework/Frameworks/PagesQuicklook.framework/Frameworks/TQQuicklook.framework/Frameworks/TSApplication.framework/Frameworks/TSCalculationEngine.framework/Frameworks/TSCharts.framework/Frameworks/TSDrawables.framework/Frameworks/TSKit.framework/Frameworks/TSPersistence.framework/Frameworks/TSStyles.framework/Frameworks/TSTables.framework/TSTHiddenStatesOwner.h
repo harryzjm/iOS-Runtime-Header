@@ -6,39 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, TSCECalculationEngine, TSTTableInfo;
+@class NSMutableDictionary, TSCECalculationEngine, TSTTableModel;
 
 @interface TSTHiddenStatesOwner : NSObject
 {
-    TSTTableInfo *_tableInfo;
+    TSTTableModel *_tableModel;
     TSCECalculationEngine *_calcEngine;
-    UUIDData_5fbc143e _baseTableUID;
-    UUIDData_5fbc143e _ownerUID;
-    NSMutableDictionary *_hiddenStatesByUuid;
-    NSMutableDictionary *_hiddenStatesByExtentUuid;
+    struct TSKUIDStruct _baseTableUID;
+    NSMutableDictionary *_hiddenStatesByRowExtentUuid;
+    NSMutableDictionary *_hiddenStatesByColumnExtentUuid;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
-@property(nonatomic) UUIDData_5fbc143e baseTableUID; // @synthesize baseTableUID=_baseTableUID;
-- (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_71b9b5e2 *)arg1 calcEngine:(id)arg2;
-- (void)saveToArchive:(struct HiddenStatesOwnerArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct HiddenStatesOwnerArchive *)arg1 unarchiver:(id)arg2 forBaseTableUID:(const UUIDData_5fbc143e *)arg3;
+@property(nonatomic) struct TSKUIDStruct baseTableUID; // @synthesize baseTableUID=_baseTableUID;
+@property(nonatomic) __weak TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
+- (void)remapTableUIDsInFormulasWithMap:(const void *)arg1 calcEngine:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2 forBaseTable:(id)arg3;
 - (void)didChangeExtentUids:(id)arg1;
 - (void)willChangeExtentUids:(id)arg1;
 - (void)unregisterHiddenStates:(id)arg1;
-- (id)hiddenStatesByExtentUid:(const UUIDData_5fbc143e *)arg1;
-- (id)hiddenStatesByUid:(const UUIDData_5fbc143e *)arg1;
-- (void)registerHiddenStates:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
+- (id)hiddenStatesByExtentUid:(const struct TSKUIDStruct *)arg1;
+- (void)registerHiddenStates:(id)arg1 baseOwnerUID:(const struct TSKUIDStruct *)arg2;
 - (id)calcEngine;
 - (void)unregisterFromCalcEngine;
-- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
-@property(nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
-- (id)tableModel;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const struct TSKUIDStruct *)arg2;
 - (id)description;
-- (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1;
-- (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;
+- (id)hiddenStates;
+- (id)initWithBaseTable:(id)arg1;
 
 @end
 

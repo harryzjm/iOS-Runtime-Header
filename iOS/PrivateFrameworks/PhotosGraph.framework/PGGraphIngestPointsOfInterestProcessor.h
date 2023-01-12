@@ -8,10 +8,11 @@
 
 #import <PhotosGraph/PGGraphIngestProcessor-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, PGGraphBuilder;
 
 @interface PGGraphIngestPointsOfInterestProcessor : NSObject <PGGraphIngestProcessor>
 {
+    PGGraphBuilder *_graphBuilder;
     NSDictionary *_momentNodesToResolvePOIByRegion;
     NSDictionary *_momentNodesToResolvePOIAndEnrichByBusinessItemMuid;
 }
@@ -19,13 +20,14 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *momentNodesToResolvePOIAndEnrichByBusinessItemMuid; // @synthesize momentNodesToResolvePOIAndEnrichByBusinessItemMuid=_momentNodesToResolvePOIAndEnrichByBusinessItemMuid;
 @property(readonly, nonatomic) NSDictionary *momentNodesToResolvePOIByRegion; // @synthesize momentNodesToResolvePOIByRegion=_momentNodesToResolvePOIByRegion;
-- (_Bool)_fetchPointsOfInterestForRegions:(id)arg1 graph:(id)arg2 progress:(CDUnknownBlockType)arg3;
+- (_Bool)_fetchPointsOfInterestForRegions:(id)arg1 loggingConnection:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (void)_collectPOIsToResolveWithMomentNodes:(id)arg1 graphUpdate:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (id)_pointOfInterestTypeStringsFromBusinessItems:(id)arg1 withOriginalCoordinate:(struct CLLocationCoordinate2D)arg2;
-- (void)_insertPointOfInterestTypeStrings:(id)arg1 graph:(id)arg2 withMomentNodes:(id)arg3;
+- (void)_insertPointOfInterestTypeStrings:(id)arg1 graph:(id)arg2 withMomentNodes:(id)arg3 loggingConnection:(id)arg4;
 - (void)disambiguatePointsOfInterestWithMomentNodes:(id)arg1 graphUpdate:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)shouldRunWithGraphUpdate:(id)arg1;
+- (void)setGraphBuilder:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

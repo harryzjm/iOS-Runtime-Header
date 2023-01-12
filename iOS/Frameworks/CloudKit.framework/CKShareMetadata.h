@@ -16,7 +16,7 @@
 {
     _Bool _acceptedInProcess;
     CKShare *_share;
-    CKRecordID *_rootRecordID;
+    CKRecordID *_hierarchicalRootRecordID;
     long long _participantRole;
     long long _participantStatus;
     long long _participantPermission;
@@ -54,13 +54,15 @@
 @property(nonatomic) long long participantPermission; // @synthesize participantPermission=_participantPermission;
 @property(nonatomic) long long participantStatus; // @synthesize participantStatus=_participantStatus;
 @property(nonatomic) long long participantRole; // @synthesize participantRole=_participantRole;
-@property(copy, nonatomic) CKRecordID *rootRecordID; // @synthesize rootRecordID=_rootRecordID;
+@property(copy, nonatomic) CKRecordID *hierarchicalRootRecordID; // @synthesize hierarchicalRootRecordID=_hierarchicalRootRecordID;
 @property(copy, nonatomic) CKShare *share; // @synthesize share=_share;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)fillAnonymousCKUserID:(id)arg1;
+@property(readonly, copy, nonatomic) CKRecordID *rootRecordID;
 - (long long)environment;
 @property(readonly, copy, nonatomic) NSString *containerIdentifier;
 @property(readonly, nonatomic) long long participantType;

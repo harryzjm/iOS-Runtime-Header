@@ -10,6 +10,7 @@
 {
 }
 
++ (void)setCurrentTextGraphicsContext:(id)arg1 duringBlock:(CDUnknownBlockType)arg2;
 + (void)setTextGraphicsContextClass:(Class)arg1;
 + (Class)textGraphicsContextClass;
 + (Class)__defaultColorClass;

@@ -14,11 +14,13 @@
     PHPerson *_modelObject;
     CDUnknownBlockType _faceImageLoadingCompletionBlock;
     CDUnknownBlockType _fastDisplayBlock;
+    CDUnknownBlockType _resultHandler;
     UIImage *_faceImage;
 }
 
 - (void).cxx_destruct;
 @property __weak UIImage *faceImage; // @synthesize faceImage=_faceImage;
+@property(copy) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 @property(copy) CDUnknownBlockType fastDisplayBlock; // @synthesize fastDisplayBlock=_fastDisplayBlock;
 @property(copy) CDUnknownBlockType faceImageLoadingCompletionBlock; // @synthesize faceImageLoadingCompletionBlock=_faceImageLoadingCompletionBlock;
 @property int faceImageRequestID; // @synthesize faceImageRequestID=_faceImageRequestID;

@@ -9,5 +9,10 @@
 @interface CUICatalog (IconServicesAdditions)
 + (id)_IS_assetCatalogURLWithBundleURL:(id)arg1;
 + (id)_IS_coreGlyphsBundleURL;
+- (long long)_CUIdiomFromISIdiom:(unsigned long long)arg1;
+- (_Bool)_IS_multiSizeImageExistsWithName:(id)arg1;
+- (id)_IS_multisizedImageWithName:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 layoutDirection:(long long)arg4;
+- (id)_IS_multisizedImageWithName:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
+- (long long)_layoutDirection;
 @end
 

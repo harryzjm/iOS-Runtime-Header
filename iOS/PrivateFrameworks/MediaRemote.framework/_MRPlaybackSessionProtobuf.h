@@ -10,29 +10,24 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _MRPlaybackSessionProtobuf : PBCodable <NSCopying>
 {
     NSString *_identifier;
+    NSData *_metadata;
     NSData *_playbackSessionData;
+    NSString *_revision;
     NSString *_type;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *type; // @synthesize type=_type;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) NSData *playbackSessionData; // @synthesize playbackSessionData=_playbackSessionData;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasType;
-@property(readonly, nonatomic) _Bool hasIdentifier;
-@property(readonly, nonatomic) _Bool hasPlaybackSessionData;
 
 @end
 

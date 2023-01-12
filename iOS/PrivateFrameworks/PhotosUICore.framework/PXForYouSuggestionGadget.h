@@ -17,6 +17,7 @@
     _Bool _contentHidden;
     _Bool _blursDegradedContent;
     _Bool _shouldSuppressSelectionAnimation;
+    _Bool _shouldShowSyndicationAttributionView;
     _Bool _contentViewVisible;
     unsigned short _suggestionType;
     PXGadgetSpec *_gadgetSpec;
@@ -43,6 +44,7 @@
 @property(nonatomic) struct CGSize cachedHeightForWidth; // @synthesize cachedHeightForWidth=_cachedHeightForWidth;
 @property(retain, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(retain, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property(nonatomic) _Bool shouldShowSyndicationAttributionView; // @synthesize shouldShowSyndicationAttributionView=_shouldShowSyndicationAttributionView;
 @property(nonatomic) _Bool shouldSuppressSelectionAnimation; // @synthesize shouldSuppressSelectionAnimation=_shouldSuppressSelectionAnimation;
 @property(nonatomic) _Bool blursDegradedContent; // @synthesize blursDegradedContent=_blursDegradedContent;
 @property(nonatomic, getter=isContentHidden) _Bool contentHidden; // @synthesize contentHidden=_contentHidden;
@@ -52,10 +54,12 @@
 @property(nonatomic) long long priority; // @synthesize priority=_priority;
 @property(retain, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (void)_updateSyndicationHighlightForContentView:(id)arg1;
 - (void)_updateKeyAsset;
 - (void)_markSuggestionAsDeclined;
 - (void)_markSuggestionAsActive;
 - (void)_handleDismiss;
+- (id)syndicationReplyAction;
 - (void)userDidSelectGadget;
 - (id)_contentViewIfLoaded;
 - (void)_updateTitleAndSubtitle;

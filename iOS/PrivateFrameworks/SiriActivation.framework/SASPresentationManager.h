@@ -31,8 +31,8 @@
 - (void)_teardownPingTimerForPresentationIdentifier:(long long)arg1;
 - (void)_waitForPongFromPresentationWithPresentationIdentifier:(long long)arg1;
 - (void)_setupPingTimerForPresentationIdentifier:(long long)arg1;
-- (void)presentationWithPresentationIdentifierWakeScreenAfterActivation:(long long)arg1;
-- (void)presentationWithPresentationIdentifier:(long long)arg1 pocketStateFetchDeterminedShouldCancelWake:(_Bool)arg2;
+- (void)presentationWithPresentationIdentifierWakeScreenAfterActivation:(long long)arg1 reason:(id)arg2;
+- (void)presentationWithPresentationIdentifier:(long long)arg1 activationDeterminedShouldDeferWake:(_Bool)arg2;
 - (void)presentationRequestedWithPresentationIdentifier:(long long)arg1 presentationOptions:(id)arg2 requestOptions:(id)arg3;
 - (long long)_presentationsLock_nextPresentationToActivate;
 - (long long)nextPresentationToActivate;
@@ -42,13 +42,11 @@
 - (void)presentationWithPresentationIdentifierBeganStopping:(long long)arg1;
 - (void)presentationWithPresentationIdentifierBeganStarting:(long long)arg1;
 - (_Bool)activePresentationsAreIdleAndQuiet;
-- (void)activeSpringBoardPresentation_updateActiveInterfaceOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2;
 - (void)activePresentations_bulletinManagerDidChangeBulletins;
-- (void)activeAndStoppingPresentations_presentationDismissalRequestedWithOptions:(id)arg1;
+- (void)startingAndActiveAndStoppingPresentations_presentationDismissalRequestedWithOptions:(id)arg1;
 - (void)activeAndStartingPresentations_updateCurrentLockState:(unsigned long long)arg1;
 - (void)activePresentations_deviceWonMyriadElection;
 - (void)startingPresentations_cancelPendingActivationWithReason:(unsigned long long)arg1;
-- (void)activePresentations_cancelTTS;
 - (void)activePresentations_handleRequestWithOptions:(id)arg1;
 - (void)sendButtonEventCompletionToPresentations:(CDUnknownBlockType)arg1;
 - (void)_sendBlockToStoppingPresentations:(CDUnknownBlockType)arg1;

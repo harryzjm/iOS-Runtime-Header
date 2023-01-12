@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)_canUseRealloc;
 - (_Bool)_allowsDirectEncoding;

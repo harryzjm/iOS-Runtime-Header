@@ -12,6 +12,7 @@
     NSArray *_zones;
 }
 
++ (_Bool)shouldLogAtOperationStart;
 - (void).cxx_destruct;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 zones:(id)arg3 container:(id)arg4;

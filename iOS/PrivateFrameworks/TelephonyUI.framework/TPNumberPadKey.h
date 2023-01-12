@@ -30,7 +30,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *digit; // @synthesize digit=_digit;
 - (void)doLayoutNow;
 - (void)setDigit:(id)arg1 primaryLetters:(id)arg2 secondaryLetters:(id)arg3;
-- (void)setFontStylesForHighlightState:(_Bool)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(_Bool)arg3 shouldCenterDigit:(_Bool)arg4 fontColor:(_Bool)arg5 circleDiameter:(double)arg6 largeFont:(_Bool)arg7 isCarPlay:(_Bool)arg8;
+- (void)setFontStylesForHighlightState:(_Bool)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(_Bool)arg3 shouldCenterDigit:(_Bool)arg4 fontColor:(_Bool)arg5 circleDiameter:(double)arg6 isCarPlay:(_Bool)arg7 screenSizeCategory:(unsigned long long)arg8;
+- (void)updateBaselineConstraintConstantsFor:(unsigned long long)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(_Bool)arg3;
+- (double)secondaryLetterFontSizeForScreenSizeCategory:(unsigned long long)arg1;
+- (double)letterFontSizeForScreenSizeCategory:(unsigned long long)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(_Bool)arg3;
+- (double)digitFontSizeForScreenSizeCategory:(unsigned long long)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(_Bool)arg3;
 @property(readonly, nonatomic, getter=isPound) _Bool pound;
 @property(readonly, nonatomic, getter=isAsterisk) _Bool asterisk;
 - (id)initWithFrame:(struct CGRect)arg1;

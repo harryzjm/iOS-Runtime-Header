@@ -8,13 +8,14 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, PKColor, PKDiscoveryMedia;
+@class NSArray, NSDictionary, NSNumber, NSSet, NSString, PKColor, PKDiscoveryItem, PKDiscoveryMedia;
 
 @interface PKDiscoveryCallToAction : NSObject <NSSecureCoding>
 {
     NSArray *_paymentNetworks;
     NSSet *_allowedFeatureIdentifiers;
     NSSet *_transitNetworkIdentifiers;
+    NSNumber *_appStoreAppIdentifier;
     NSString *_referrerIdentifier;
     _Bool _foregroundContentModeIsSet;
     _Bool _roundIcon;
@@ -29,10 +30,14 @@
     NSString *_localizedTitle;
     NSString *_localizedSubtitle;
     NSString *_localizedButtonText;
+    NSString *_itemIdentifier;
+    PKDiscoveryItem *_item;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) __weak PKDiscoveryItem *item; // @synthesize item=_item;
+@property(readonly, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property(retain, nonatomic) NSString *localizedButtonText; // @synthesize localizedButtonText=_localizedButtonText;
 @property(retain, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property(retain, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
@@ -50,6 +55,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic) NSNumber *appStoreAppIdentifier;
 @property(readonly, nonatomic) NSSet *transitNetworkIdentifiers;
 @property(readonly, nonatomic) NSSet *allowedFeatureIdentifiers;
 @property(readonly, nonatomic) NSArray *paymentNetworks;

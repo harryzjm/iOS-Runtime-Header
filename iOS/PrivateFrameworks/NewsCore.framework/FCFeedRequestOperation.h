@@ -23,24 +23,17 @@
     NSMutableArray *_mutableNetworkEvents;
     NSDictionary *_feedRequestsByFeedID;
     NSDictionary *_databaseLookupsByFeedID;
+    unsigned long long _queryBudget;
     NSMutableDictionary *_resultFeedResponses;
     FCHeldRecords *_resultHeldArticleRecords;
     FCHeldRecords *_resultHeldTagRecords;
     FCHeldRecords *_resultHeldIssueRecords;
 }
 
-+ (_Bool)_orderFeedTopKEnabled;
 + (id)feedRequestContentEnvironmentTokenWithContext:(id)arg1;
 + (void)prewarm;
 + (void)initialize;
 - (void).cxx_destruct;
-@property(retain, nonatomic) FCHeldRecords *resultHeldIssueRecords; // @synthesize resultHeldIssueRecords=_resultHeldIssueRecords;
-@property(retain, nonatomic) FCHeldRecords *resultHeldTagRecords; // @synthesize resultHeldTagRecords=_resultHeldTagRecords;
-@property(retain, nonatomic) FCHeldRecords *resultHeldArticleRecords; // @synthesize resultHeldArticleRecords=_resultHeldArticleRecords;
-@property(retain, nonatomic) NSMutableDictionary *resultFeedResponses; // @synthesize resultFeedResponses=_resultFeedResponses;
-@property(retain, nonatomic) NSDictionary *databaseLookupsByFeedID; // @synthesize databaseLookupsByFeedID=_databaseLookupsByFeedID;
-@property(retain, nonatomic) NSDictionary *feedRequestsByFeedID; // @synthesize feedRequestsByFeedID=_feedRequestsByFeedID;
-@property(retain, nonatomic) NSMutableArray *mutableNetworkEvents; // @synthesize mutableNetworkEvents=_mutableNetworkEvents;
 @property(copy, nonatomic) CDUnknownBlockType requestCompletionHandlerWithHeldRecords; // @synthesize requestCompletionHandlerWithHeldRecords=_requestCompletionHandlerWithHeldRecords;
 @property(copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
 @property(nonatomic) unsigned long long expectedNetworkEventCount; // @synthesize expectedNetworkEventCount=_expectedNetworkEventCount;
@@ -52,17 +45,6 @@
 @property(retain, nonatomic) FCFeedDatabase *feedDatabase; // @synthesize feedDatabase=_feedDatabase;
 @property(retain, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
-- (id)_additionalHTTPHeadersForOrderFeedRequest;
-- (_Bool)_countOfDroppedFeeds;
-- (unsigned long long)_orderFeedTopKFromBin:(long long)arg1 timeInterval:(double)arg2;
-- (id)_orderFeedIDFromFeedID:(id)arg1;
-- (_Bool)_shouldReturnItemsFromDroppedFeedResponse:(id)arg1;
-- (id)_failureResponseForRequest:(id)arg1 error:(id)arg2;
-- (id)_normalizedFeedRange:(id)arg1;
-- (void)_gatherEdgeCachedFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_gatherAllOrderFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_gatherAllFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (unsigned long long)_networkEventCount;
 @property(readonly, nonatomic) NSArray *networkEvents;
 - (void)resetForRetry;
 - (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;

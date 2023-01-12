@@ -15,7 +15,7 @@
     id <CLLocationManagerDelegate> fDelegate;
     CLLocationManager *fManager;
     CLLocationManagerStateTracker *fState;
-    CDStruct_0f4838e9 fLocation;
+    CDStruct_2fb123db fLocation;
     NSString *fLocationEventType;
     CLTimer *fLocationRequestTimer;
     double fLocationRequestTimeout;

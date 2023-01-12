@@ -16,6 +16,10 @@
 }
 
 + (id)auxiliarySession;
++ (id)sharedPhotosOneUpInstance;
++ (void)sharedPhotosOneUpInstanceWithLoadHandler:(CDUnknownBlockType)arg1;
++ (void)sharedPlaybackInstanceWithLoadHandler:(CDUnknownBlockType)arg1;
++ (id)sharedPlaybackInstance;
 + (void)sharedAmbientInstanceWithLoadHandler:(CDUnknownBlockType)arg1;
 + (id)sharedAmbientInstance;
 - (void).cxx_destruct;
@@ -31,7 +35,8 @@
 @property(readonly, nonatomic) float outputVolume;
 @property(readonly, nonatomic) NSString *category;
 - (void)dealloc;
-- (id)_init;
+- (id)description;
+- (id)initWithAudioSession:(id)arg1;
 
 @end
 

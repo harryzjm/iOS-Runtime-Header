@@ -17,17 +17,17 @@
 #import <TSCharts/TSSPresetSource-Protocol.h>
 #import <TSCharts/TSSStyleClient-Protocol.h>
 
-@class NSString, TSCHChartInfo, TSCHChunkManager, TSPObject;
+@class NSSet, NSString, TSCHChartInfo, TSCHChunkManager, TSPObject;
 @protocol TSCHMediatorProvider;
 
 @interface TSCHChartDrawableInfo : TSDDrawableInfo <TSDReducibleImageContainer, TSKCustomFormatContainingInfo, TSPCopying, TSKSearchable, TSKModel, TSSPresetSource, TSCHStyleSwapSupporting, TSDMixing, TSSStyleClient, TSDCompatibilityAwareMediaContainer>
 {
-    TSCHChartInfo *mChart;
-    TSPObject<TSCHMediatorProvider> *mMediatorPersistentObject;
-    TSCHChunkManager *mChunkManager;
+    TSCHChartInfo *_chart;
+    TSPObject<TSCHMediatorProvider> *_mediatorPersistentObject;
+    TSCHChunkManager *_chunkManager;
 }
 
-+ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(unsigned long long)arg3;
 + (id)presetKinds;
 + (_Bool)needsObjectUUID;
 - (void).cxx_destruct;
@@ -58,11 +58,12 @@
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (id)referencedStyles;
+@property(readonly, nonatomic) NSSet *referencedStyles;
 - (id)childInfos;
 - (void)acceptVisitor:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (id)typeName;
 - (_Bool)allowsTitle;
 - (_Bool)allowsCaption;
 - (_Bool)isVisibleAtBeginningOfMagicChartBuildForDeliveryStyle:(unsigned long long)arg1;
@@ -81,6 +82,7 @@
 - (id)infoGeometryForVisiblePositioningInfoGeometry:(id)arg1;
 - (struct CGRect)visibleBoundsForPositioning;
 - (void)hideAllTitles;
+@property(readonly, nonatomic) unsigned long long numberOfMultiDataSets;
 @property(readonly, nonatomic) unsigned long long multiDataSetIndex; // @dynamic multiDataSetIndex;
 - (void)setGeometry:(id)arg1;
 - (void)setGeometry:(id)arg1 omitLegendResize:(_Bool)arg2;
@@ -88,10 +90,9 @@
 - (id)p_drawableGeometry;
 - (void)p_setDrawableGeometry:(id)arg1 clearObjectPlaceholderFlag:(_Bool)arg2;
 - (void)setPersistentMediator:(id)arg1;
-@property(readonly, nonatomic) TSCHChartInfo *chart; // @synthesize chart=mChart;
+@property(readonly, nonatomic) TSCHChartInfo *chart; // @synthesize chart=_chart;
 - (void)willModify;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 chartType:(id)arg2 chartAreaFrame:(id)arg3 legendFrame:(id)arg4 stylePreset:(id)arg5 privateSeriesStyles:(id)arg6;
 - (id)initWithContext:(id)arg1 chartType:(id)arg2 legendShowing:(id)arg3 chartAreaFrame:(id)arg4 legendFrame:(id)arg5 stylePreset:(id)arg6 privateSeriesStyles:(id)arg7 chartNonStyle:(id)arg8 legendNonStyle:(id)arg9 valueAxisNonStyles:(id)arg10 categoryAxisNonStyles:(id)arg11 seriesNonStyles:(id)arg12 refLineNonStylesMap:(id)arg13 refLineStylesMap:(id)arg14;
 - (id)initWithContext:(id)arg1 chartType:(id)arg2 circumscribingFrame:(id)arg3 stylePreset:(id)arg4 privateSeriesStyles:(id)arg5;

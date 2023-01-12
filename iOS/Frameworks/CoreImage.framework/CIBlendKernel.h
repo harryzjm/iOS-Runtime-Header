@@ -9,6 +9,7 @@
 }
 
 + (id)kernelWithString:(id)arg1 extentType:(int)arg2;
++ (id)cachedKernelWithString:(id)arg1 extentType:(int)arg2;
 + (id)kernelWithString:(id)arg1;
 + (id)plusLighter;
 + (id)plusDarker;

@@ -8,11 +8,11 @@
 {
 }
 
-+ (void)setBackgroundClipboardRetriever:(CDUnknownBlockType)arg1;
+- (id)requiredAccessResources;
 - (id)possibleContentClassesWithContext:(id)arg1;
 - (_Bool)requiresModernVariableSupport;
 - (_Bool)isAvailable;
-- (id)icon;
+- (id)iconImage;
 - (id)name;
 - (void)retrieveContentCollectionWithVariableSource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithAggrandizements:(id)arg1;

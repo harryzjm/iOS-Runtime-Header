@@ -6,12 +6,12 @@
 
 #import <BulletinBoard/NSObject-Protocol.h>
 
-@class BBDataProvider, NSString;
+@class BBDataProvider, NSSet, NSString;
 
 @protocol BBDataProviderStore <NSObject>
 - (void)performBlockOnDataProviders:(void (^)(BBDataProvider *))arg1;
 - (void)removeDataProvider:(BBDataProvider *)arg1;
-- (BBDataProvider *)dataProviderForUniversalSectionID:(NSString *)arg1;
+- (NSSet *)dataProvidersForUniversalSectionID:(NSString *)arg1;
 - (BBDataProvider *)dataProviderForSectionID:(NSString *)arg1;
 @end
 

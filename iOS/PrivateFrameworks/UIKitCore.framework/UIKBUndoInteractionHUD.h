@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIKBUndoControl, UIKBUndoStyling, UILabel, UIView, UIVisualEffectView;
+@class NSDate, UIKBUndoControl, UIKBUndoStyling, UILabel, UIView, UIVisualEffectView;
 @protocol UIInteractiveUndoHUDActionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,9 +22,11 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     UIKBUndoStyling *_style;
     UILabel *_instructionalLabel;
+    NSDate *_appearanceDate;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDate *appearanceDate; // @synthesize appearanceDate=_appearanceDate;
 @property(retain, nonatomic) UILabel *instructionalLabel; // @synthesize instructionalLabel=_instructionalLabel;
 @property(retain, nonatomic) UIKBUndoStyling *style; // @synthesize style=_style;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
@@ -39,12 +41,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <UIInteractiveUndoHUDActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 - (void)updateControlWithDirection:(long long)arg1 travelProgress:(double)arg2 isRTL:(_Bool)arg3;
 - (void)controlActionUpOutside:(id)arg1;
-- (void)controlActionUpInside:(id)arg1;
+- (void)controlActionUpInside:(id)arg1 forEvent:(id)arg2;
 - (void)controlActionDown:(id)arg1;
 - (void)performDelegateRedoAndUpdateHUDIfNeeded;
 - (void)performDelegateUndoAndUpdateHUDIfNeeded;
 - (void)updateHUDControlState;
+- (void)willMoveToWindow:(id)arg1;
 - (_Bool)availableOfControl:(id)arg1;
+- (id)controlForType:(long long)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)createSeparatorView;

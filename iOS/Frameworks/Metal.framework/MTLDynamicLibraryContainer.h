@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MTLLoadedFile, NSArray, NSData, NSString;
+@class MTLDebugInstrumentationData, MTLLoadedFile, NSArray, NSData, NSString;
 @protocol MTLDevice, OS_dispatch_data;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _airSize;
     int _airVersion;
     CDStruct_41a22ec7 _libraryUUID;
+    MTLDebugInstrumentationData *_debugInstrumentationData;
 }
 
 - (_Bool)serializeToURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;

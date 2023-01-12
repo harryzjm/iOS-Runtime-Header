@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AMSDialogRequest;
+@class AMSDialogRequest, AMSDialogResult;
 
 @interface AMSSystemAlertDialogTask
 {
@@ -14,12 +14,17 @@
     _Bool _shouldDisplayAsTopMost;
     _Bool _shouldPendInSetupIfNotAllowed;
     _Bool _displaysOnLockscreen;
+    _Bool _isDialogDismissalEnabled;
     AMSDialogRequest *_request;
+    AMSDialogResult *_autoDismissResult;
     long long _defaultButtonIndex;
     long long _unlockActionButtonIndex;
+    struct __CFUserNotification *_userNotification;
 }
 
 - (void).cxx_destruct;
+@property _Bool isDialogDismissalEnabled; // @synthesize isDialogDismissalEnabled=_isDialogDismissalEnabled;
+@property struct __CFUserNotification *userNotification; // @synthesize userNotification=_userNotification;
 @property long long unlockActionButtonIndex; // @synthesize unlockActionButtonIndex=_unlockActionButtonIndex;
 @property _Bool displaysOnLockscreen; // @synthesize displaysOnLockscreen=_displaysOnLockscreen;
 @property _Bool shouldPendInSetupIfNotAllowed; // @synthesize shouldPendInSetupIfNotAllowed=_shouldPendInSetupIfNotAllowed;
@@ -28,6 +33,7 @@
 @property _Bool dismissOnLock; // @synthesize dismissOnLock=_dismissOnLock;
 @property _Bool dismissOnHomeButton; // @synthesize dismissOnHomeButton=_dismissOnHomeButton;
 @property long long defaultButtonIndex; // @synthesize defaultButtonIndex=_defaultButtonIndex;
+@property(retain, nonatomic) AMSDialogResult *autoDismissResult; // @synthesize autoDismissResult=_autoDismissResult;
 @property(readonly, nonatomic) AMSDialogRequest *request; // @synthesize request=_request;
 - (id)_reorderButtonActions;
 - (long long)_keyboardTypeFor:(long long)arg1;
@@ -35,6 +41,7 @@
 - (long long)_defaultButtonIndexForActions:(id)arg1;
 - (struct __CFUserNotification *)_showNotificationFromDictionary:(struct __CFDictionary *)arg1 options:(unsigned long long)arg2;
 - (struct __CFDictionary *)_createNoteDictionaryWithKeys:(struct ButtonKey *)arg1 buttonActions:(id)arg2 outOptions:(unsigned long long *)arg3;
+- (void)_dismiss;
 - (id)present;
 - (id)initWithRequest:(id)arg1;
 

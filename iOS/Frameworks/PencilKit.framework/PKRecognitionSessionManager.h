@@ -9,11 +9,13 @@
 #import <PencilKit/CHRecognitionSessionDataSource-Protocol.h>
 #import <PencilKit/CHRecognitionSessionObserver-Protocol.h>
 #import <PencilKit/PKDataDetectorQueryDelegate-Protocol.h>
+#import <PencilKit/PKHashtagQueryDelegate-Protocol.h>
+#import <PencilKit/PKMentionQueryDelegate-Protocol.h>
 
-@class CHRecognitionSession, NSArray, NSDate, NSHashTable, NSString, PKDrawing, PKRecognitionQueryController;
+@class CHRecognitionSession, NSArray, NSDate, NSHashTable, NSSet, NSString, PKDrawing, PKRecognitionQueryController;
 @protocol OS_dispatch_queue, PKRecognitionSessionManagerDelegate;
 
-@interface PKRecognitionSessionManager : NSObject <CHRecognitionSessionDataSource, CHRecognitionSessionObserver, PKDataDetectorQueryDelegate>
+@interface PKRecognitionSessionManager : NSObject <CHRecognitionSessionDataSource, CHRecognitionSessionObserver, PKDataDetectorQueryDelegate, PKHashtagQueryDelegate, PKMentionQueryDelegate>
 {
     _Atomic long long _stateAtomic;
     NSObject<OS_dispatch_queue> *_recognitionSessionQueue;
@@ -24,50 +26,25 @@
     NSArray *q_visibleOnscreenStrokes;
     _Bool q_wantsGrouping;
     _Bool q_wantsDataDetection;
+    _Bool q_wantsHashtagDetection;
+    _Bool q_wantsMentionDetection;
     _Bool q_wantsTranscription;
     PKRecognitionQueryController *q_queryController;
     NSHashTable *q_listeners;
     id <PKRecognitionSessionManagerDelegate> _delegate;
+    NSSet *_mentionSuffixes;
 }
 
 + (id)enabledLocales;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PKRecognitionSessionManagerDelegate> delegate; // @synthesize delegate=_delegate;
-- (id)fetchTranscriptionForStrokes:(id)arg1 cancelBlock:(CDUnknownBlockType)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (id)transcriptionQuery;
+- (void)mentionQuery:(id)arg1 foundItems:(id)arg2;
+- (void)hashtagQuery:(id)arg1 foundItems:(id)arg2;
 - (void)dataDetectorQuery:(id)arg1 foundItems:(id)arg2;
-- (long long)contentTypeForIntersectedStrokes:(id)arg1;
-- (void)fetchStrokesAmbiguouslyBelowAndAboveInsertSpaceHandleWithStrokes:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_lastStrokesInSelectedStrokes:(id)arg1 isRTL:(_Bool)arg2;
-- (id)_firstStrokesInSelectedStrokes:(id)arg1 isRTL:(_Bool)arg2;
-- (void)fetchIntersectedStrokesBetweenTopPoint:(struct CGPoint)arg1 bottomPoint:(struct CGPoint)arg2 liveScrollOffset:(struct CGPoint)arg3 isRTL:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)fetchIntersectedStrokesAtPoint:(struct CGPoint)arg1 selectionType:(long long)arg2 inputType:(long long)arg3 visibleOnscreenStrokes:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)q_groupQuery;
-- (id)groupQuery;
 - (void)recognitionSessionDidUpdateRecognitionResult:(id)arg1;
 - (void)textInputDidChange:(id)arg1;
-- (void)q_setupDrawingQueriesAndClearVisibleQueries;
-- (void)q_updateRecognitionStateWithFinishedResult:(_Bool)arg1;
-- (long long)q_nextRecognitionStateForRecognitionUpdate:(_Bool)arg1;
 - (id)strokeProviderSnapshot;
-- (void)q_flushQueries;
-- (void)q_teardownSession;
-- (void)_teardownSession;
-- (void)q_createRecognitionSessionIfNecessary;
-- (void)q_needRecognitionUpdateWithCancel:(_Bool)arg1;
-- (void)setWantsDataDetection:(_Bool)arg1;
-- (void)setWantsTranscription:(_Bool)arg1;
-- (void)setWantsGrouping:(_Bool)arg1;
-- (void)setVisibleOnscreenStrokes:(id)arg1;
-- (void)setDrawing:(id)arg1 withVisibleOnscreenStrokes:(id)arg2;
-@property(copy, nonatomic) PKDrawing *drawing;
 @property(nonatomic) long long state;
-@property(readonly, nonatomic) CHRecognitionSession *session;
-- (void)_dispatchSyncToRecognitionThreadIfNecessary:(CDUnknownBlockType)arg1;
-- (void)cleanupSessionIfNecessary;
 - (id)listeners;
-- (void)removeListener:(id)arg1;
-- (void)addListener:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

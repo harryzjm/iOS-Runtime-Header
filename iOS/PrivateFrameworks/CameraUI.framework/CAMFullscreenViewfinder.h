@@ -11,13 +11,15 @@
 #import <CameraUI/CAMBarsAccessibilityHUDManagerGestureProvider-Protocol.h>
 #import <CameraUI/CAMControlDrawerPresentationDelegate-Protocol.h>
 #import <CameraUI/CAMInstructionLabelDelegate-Protocol.h>
+#import <CameraUI/CAMSemanticStylePickerDelegate-Protocol.h>
 #import <CameraUI/CAMViewfinderTransitionable-Protocol.h>
 #import <CameraUI/CEKBadgeViewDelegate-Protocol.h>
+#import <CameraUI/VKTextLiftingViewDelegate-Protocol.h>
 
-@class AVSpatialOverCaptureVideoPreviewLayer, CAMAdditiveAnimator, CAMBadgeTray, CAMCTMDescriptionOverlayView, CAMControlDrawer, CAMControlStatusBar, CAMCreativeCameraButton, CAMDynamicShutterControl, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlipButton, CAMFullscreenModeSelector, CAMFullscreenViewfinderLayout, CAMImageWell, CAMInterfaceModulationView, CAMLowLightInstructionLabel, CAMModeDial, CAMModeIndicatorView, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewAlignmentGuide, CAMPreviewView, CAMQRCodeInstructionLabel, CAMTimerIndicatorView, CAMViewfinderReticleView, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, NSString, UILongPressGestureRecognizer;
+@class AVSpatialOverCaptureVideoPreviewLayer, CAMAdditiveAnimator, CAMBadgeTray, CAMControlDrawer, CAMControlStatusBar, CAMCreativeCameraButton, CAMDynamicShutterControl, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlashCompromisedInstructionLabel, CAMFlipButton, CAMFullscreenModeSelector, CAMFullscreenViewfinderLayout, CAMImageAnalysisButton, CAMImageAnalysisInstructionLabel, CAMImageWell, CAMInterfaceModulationView, CAMLowLightInstructionLabel, CAMModeDial, CAMModeIndicatorView, CAMPanoramaView, CAMPortraitModeInstructionLabel, CAMPreviewAlignmentGuide, CAMPreviewView, CAMQRCodeInstructionLabel, CAMSemanticStylePicker, CAMTimerIndicatorView, CAMViewfinderReticleView, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, NSMutableArray, NSMutableDictionary, NSString, UILongPressGestureRecognizer, VKTextLiftingView;
 @protocol CAMFullscreenViewfinderDelegate;
 
-@interface CAMFullscreenViewfinder : UIView <CAMAdditiveAnimatorDelegate, CAMControlDrawerPresentationDelegate, CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMViewfinderTransitionable, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
+@interface CAMFullscreenViewfinder : UIView <CAMAdditiveAnimatorDelegate, CAMControlDrawerPresentationDelegate, CEKBadgeViewDelegate, CAMInstructionLabelDelegate, VKTextLiftingViewDelegate, CAMSemanticStylePickerDelegate, CAMViewfinderTransitionable, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
 {
     _Bool _controlDrawerAllowed;
     _Bool _modeUIAllowed;
@@ -26,20 +28,26 @@
     _Bool _zoomControlVisible;
     _Bool _elapsedTimeViewVisible;
     _Bool _timerIndicatorVisible;
-    _Bool _qrCodeLabelVisible;
-    _Bool _lowLightInstructionLabelVisible;
     _Bool _previewAlignmentGuideVisible;
     _Bool _legibilityBackgroundsVisible;
     _Bool _portraitControlsAllowed;
+    _Bool _imageAnalysisButtonVisible;
     _Bool __usingCreativeCameraControls;
     _Bool __controlDrawerPresentedModally;
     id <CAMFullscreenViewfinderDelegate> _delegate;
-    NSString *_contentSize;
     unsigned long long _zoomStyle;
+    long long _visibleInstructionLabel;
+    long long _visibleSecondaryInstructionLabel;
+    CAMPortraitModeInstructionLabel *_portraitInstructionLabel;
+    CAMQRCodeInstructionLabel *_qrCodeInstructionLabel;
+    CAMFlashCompromisedInstructionLabel *_flashCompromisedInstructionLabel;
+    CAMImageAnalysisInstructionLabel *_imageAnalysisInstructionLabel;
     CAMPreviewView *_previewView;
     long long _previewViewOrientation;
     long long _orientation;
+    long long _material;
     CAMPreviewAlignmentGuide *_previewAlignmentGuide;
+    CAMSemanticStylePicker *_semanticStylePicker;
     CAMControlDrawer *_controlDrawer;
     CAMDynamicShutterControl *_shutterControl;
     CAMControlStatusBar *_controlStatusBar;
@@ -59,27 +67,32 @@
     long long _shallowDepthOfFieldStatus;
     CEKLightingControl *_lightingControl;
     CEKLightingNameBadge *_lightingNameBadge;
-    CAMPortraitModeInstructionLabel *_portraitInstructionLabel;
     long long _viewportAspectRatio;
     UILongPressGestureRecognizer *_modeSelectorGestureRecognizer;
-    CAMQRCodeInstructionLabel *_qrCodeInstructionLabel;
-    CAMPortraitModeDescriptionOverlayView *_portraitModeOverlayView;
-    CAMCTMDescriptionOverlayView *_ctmOverlayView;
+    CAMImageAnalysisButton *_imageAnalysisButton;
+    VKTextLiftingView *_textInteractionInsert;
     UIView *__previewContainerView;
     UIView *__modeClippingView;
     CAMViewfinderReticleView *__reticleView;
+    UIView *__textInteractionBackground;
     CAMLowLightInstructionLabel *__lowLightInstructionLabel;
     UIView *__bottomLegibilityBackground;
     CAMFullscreenViewfinderLayout *__layout;
     AVSpatialOverCaptureVideoPreviewLayer *__overCapturePreviewLayer;
     CAMAdditiveAnimator *__viewportAnimator;
     CAMInterfaceModulationView *__contentView;
+    NSMutableDictionary *__descriptionOverlayViewByKey;
+    UIView *__contentClippingContainer;
+    NSMutableArray *__semanticStyleBadges;
 }
 
 + (id)darkControlBackgroundColor;
 + (id)lightControlBackgroundColor;
 + (Class)layerClass;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableArray *_semanticStyleBadges; // @synthesize _semanticStyleBadges=__semanticStyleBadges;
+@property(readonly, nonatomic) UIView *_contentClippingContainer; // @synthesize _contentClippingContainer=__contentClippingContainer;
+@property(readonly, nonatomic) NSMutableDictionary *_descriptionOverlayViewByKey; // @synthesize _descriptionOverlayViewByKey=__descriptionOverlayViewByKey;
 @property(readonly, nonatomic) CAMInterfaceModulationView *_contentView; // @synthesize _contentView=__contentView;
 @property(readonly, nonatomic) CAMAdditiveAnimator *_viewportAnimator; // @synthesize _viewportAnimator=__viewportAnimator;
 @property(retain, nonatomic, setter=_setOverCapturePreviewLayer:) AVSpatialOverCaptureVideoPreviewLayer *_overCapturePreviewLayer; // @synthesize _overCapturePreviewLayer=__overCapturePreviewLayer;
@@ -88,15 +101,15 @@
 @property(readonly, nonatomic) CAMFullscreenViewfinderLayout *_layout; // @synthesize _layout=__layout;
 @property(retain, nonatomic, setter=_setBottomLegibilityBackground:) UIView *_bottomLegibilityBackground; // @synthesize _bottomLegibilityBackground=__bottomLegibilityBackground;
 @property(retain, nonatomic, setter=_setLowLightInstructionLabel:) CAMLowLightInstructionLabel *_lowLightInstructionLabel; // @synthesize _lowLightInstructionLabel=__lowLightInstructionLabel;
+@property(retain, nonatomic, setter=_setTextInteractionBackground:) UIView *_textInteractionBackground; // @synthesize _textInteractionBackground=__textInteractionBackground;
 @property(readonly, nonatomic) CAMViewfinderReticleView *_reticleView; // @synthesize _reticleView=__reticleView;
 @property(readonly, nonatomic) UIView *_modeClippingView; // @synthesize _modeClippingView=__modeClippingView;
 @property(readonly, nonatomic) UIView *_previewContainerView; // @synthesize _previewContainerView=__previewContainerView;
-@property(retain, nonatomic, setter=setCTMOverlayView:) CAMCTMDescriptionOverlayView *ctmOverlayView; // @synthesize ctmOverlayView=_ctmOverlayView;
-@property(retain, nonatomic) CAMPortraitModeDescriptionOverlayView *portraitModeOverlayView; // @synthesize portraitModeOverlayView=_portraitModeOverlayView;
-@property(readonly, nonatomic) CAMQRCodeInstructionLabel *qrCodeInstructionLabel; // @synthesize qrCodeInstructionLabel=_qrCodeInstructionLabel;
+@property(nonatomic) VKTextLiftingView *textInteractionInsert; // @synthesize textInteractionInsert=_textInteractionInsert;
+@property(nonatomic, getter=isImageAnalysisButtonVisible) _Bool imageAnalysisButtonVisible; // @synthesize imageAnalysisButtonVisible=_imageAnalysisButtonVisible;
+@property(retain, nonatomic) CAMImageAnalysisButton *imageAnalysisButton; // @synthesize imageAnalysisButton=_imageAnalysisButton;
 @property(readonly, nonatomic) UILongPressGestureRecognizer *modeSelectorGestureRecognizer; // @synthesize modeSelectorGestureRecognizer=_modeSelectorGestureRecognizer;
 @property(nonatomic) long long viewportAspectRatio; // @synthesize viewportAspectRatio=_viewportAspectRatio;
-@property(readonly, nonatomic) CAMPortraitModeInstructionLabel *portraitInstructionLabel; // @synthesize portraitInstructionLabel=_portraitInstructionLabel;
 @property(readonly, nonatomic) CEKLightingNameBadge *lightingNameBadge; // @synthesize lightingNameBadge=_lightingNameBadge;
 @property(readonly, nonatomic) CEKLightingControl *lightingControl; // @synthesize lightingControl=_lightingControl;
 @property(nonatomic) long long shallowDepthOfFieldStatus; // @synthesize shallowDepthOfFieldStatus=_shallowDepthOfFieldStatus;
@@ -117,14 +130,20 @@
 @property(readonly, nonatomic) CAMControlStatusBar *controlStatusBar; // @synthesize controlStatusBar=_controlStatusBar;
 @property(readonly, nonatomic) CAMDynamicShutterControl *shutterControl; // @synthesize shutterControl=_shutterControl;
 @property(retain, nonatomic, setter=_setControlDrawer:) CAMControlDrawer *controlDrawer; // @synthesize controlDrawer=_controlDrawer;
+@property(readonly, nonatomic) CAMSemanticStylePicker *semanticStylePicker; // @synthesize semanticStylePicker=_semanticStylePicker;
 @property(retain, nonatomic, setter=_setPreviewAlignmentGuide:) CAMPreviewAlignmentGuide *previewAlignmentGuide; // @synthesize previewAlignmentGuide=_previewAlignmentGuide;
+@property(nonatomic) long long material; // @synthesize material=_material;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) long long previewViewOrientation; // @synthesize previewViewOrientation=_previewViewOrientation;
 @property(retain, nonatomic) CAMPreviewView *previewView; // @synthesize previewView=_previewView;
+@property(retain, nonatomic, setter=_setImageAnalysisInstructionLabel:) CAMImageAnalysisInstructionLabel *imageAnalysisInstructionLabel; // @synthesize imageAnalysisInstructionLabel=_imageAnalysisInstructionLabel;
+@property(retain, nonatomic, setter=_setFlashCompromisedInstructionLabel:) CAMFlashCompromisedInstructionLabel *flashCompromisedInstructionLabel; // @synthesize flashCompromisedInstructionLabel=_flashCompromisedInstructionLabel;
+@property(retain, nonatomic, setter=_setQRCodeInstructionLabel:) CAMQRCodeInstructionLabel *qrCodeInstructionLabel; // @synthesize qrCodeInstructionLabel=_qrCodeInstructionLabel;
+@property(retain, nonatomic, setter=_setPortraitInstructionLabel:) CAMPortraitModeInstructionLabel *portraitInstructionLabel; // @synthesize portraitInstructionLabel=_portraitInstructionLabel;
+@property(nonatomic) long long visibleSecondaryInstructionLabel; // @synthesize visibleSecondaryInstructionLabel=_visibleSecondaryInstructionLabel;
+@property(nonatomic) long long visibleInstructionLabel; // @synthesize visibleInstructionLabel=_visibleInstructionLabel;
 @property(nonatomic, getter=isLegibilityBackgroundsVisible) _Bool legibilityBackgroundsVisible; // @synthesize legibilityBackgroundsVisible=_legibilityBackgroundsVisible;
 @property(nonatomic, getter=isPreviewAlignmentGuideVisible) _Bool previewAlignmentGuideVisible; // @synthesize previewAlignmentGuideVisible=_previewAlignmentGuideVisible;
-@property(nonatomic, getter=isLowLightInstructionLabelVisible) _Bool lowLightInstructionLabelVisible; // @synthesize lowLightInstructionLabelVisible=_lowLightInstructionLabelVisible;
-@property(readonly, nonatomic, getter=isQRCodeLabelVisible) _Bool qrCodeLabelVisible; // @synthesize qrCodeLabelVisible=_qrCodeLabelVisible;
 @property(nonatomic, getter=isTimerIndicatorVisible) _Bool timerIndicatorVisible; // @synthesize timerIndicatorVisible=_timerIndicatorVisible;
 @property(nonatomic, getter=isElapsedTimeViewVisible) _Bool elapsedTimeViewVisible; // @synthesize elapsedTimeViewVisible=_elapsedTimeViewVisible;
 @property(nonatomic) unsigned long long zoomStyle; // @synthesize zoomStyle=_zoomStyle;
@@ -133,7 +152,6 @@
 @property(nonatomic, getter=isControlDrawerExpanded) _Bool controlDrawerExpanded; // @synthesize controlDrawerExpanded=_controlDrawerExpanded;
 @property(readonly, nonatomic, getter=isModeUIAllowed) _Bool modeUIAllowed; // @synthesize modeUIAllowed=_modeUIAllowed;
 @property(readonly, nonatomic, getter=isControlDrawerAllowed) _Bool controlDrawerAllowed; // @synthesize controlDrawerAllowed=_controlDrawerAllowed;
-@property(retain, nonatomic) NSString *contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) __weak id <CAMFullscreenViewfinderDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)shouldAccessibilityGestureBeginForHUDManager:(id)arg1;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
@@ -142,28 +160,41 @@
 - (id)touchingRecognizersToCancel;
 - (void)prepareForResumingUsingCrossfade;
 - (void)removeInflightBlurAnimations;
+- (void)fadeOutAnimationDidEndForView:(id)arg1;
+- (void)animateAlongsideFadeOutForTextLiftingView:(id)arg1;
+- (void)textLiftingAnimationDidEndForView:(id)arg1;
+- (void)animateAlongsideTextLiftingForView:(id)arg1;
+- (void)_handleDismissTextGestureRecognizer:(id)arg1;
+- (void)setTextInteractionInsert:(id)arg1 animated:(_Bool)arg2;
+- (void)setImageAnalysisButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setInterfaceModulation:(unsigned long long)arg1 animated:(_Bool)arg2;
 @property(nonatomic) unsigned long long interfaceModulation;
-- (void)setReticleMaskingStyle:(long long)arg1 withDuration:(double)arg2;
+- (void)setMaterial:(long long)arg1 withDuration:(double)arg2;
+- (id)descriptionOverlayViewForKey:(id)arg1;
+- (void)setDescriptionOverlayView:(id)arg1 forKey:(id)arg2;
 @property(nonatomic) struct CGSize panoramaCaptureSize;
 - (void)setLegibilityBackgroundsVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setPreviewAlignmentGuideVisible:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)setLowLightInstructionLabelVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setTimerIndicatorVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setElapsedTimeViewVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setZoomControlVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setFlipButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
-- (void)_updateControlsForContentSize;
 - (void)setControlDrawerAllowed:(_Bool)arg1 modeUIAllowed:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)_transitionView:(id)arg1 fromOrientation:(long long)arg2 toOrientation:(long long)arg3;
 - (unsigned long long)_badgeFontStyle;
+- (void)setVisibleInstructionLabel:(long long)arg1 visibleSecondaryInstructionLabel:(long long)arg2 animated:(_Bool)arg3;
+- (id)_createdSecondaryInstructionLabels;
+- (id)_createdInstructionLabels;
+- (id)_visibleInstructionLabelForInstructionLabelValue:(long long)arg1;
+- (void)_createViewIfNeededForInstructionLabel:(long long)arg1;
+- (void)setVisibleInstructionLabel:(long long)arg1 animated:(_Bool)arg2;
 - (void)_updateTintColors;
-- (id)_visibleInstructionLabel;
+- (void)_updateSubviewsVisibilityAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateSubviewsVisibilityAnimated:(_Bool)arg1;
+- (_Bool)_showSemanticStylePicker;
 - (_Bool)_showFilterNameBadge;
 - (_Bool)_showLandscapeLightingBadge;
-- (_Bool)_showPortraitInstructions;
 - (_Bool)_showPortraitControls;
 - (_Bool)_showModeView;
 - (_Bool)_showControlDrawer;
@@ -173,22 +204,28 @@
 - (void)presentControlDrawerModally:(_Bool)arg1 withControlType:(long long)arg2;
 - (void)setControlDrawerExpanded:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_handleDirectionIndicatorTapped;
-- (void)setQRCodeLabelVisible:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)setQrCodeLabelVisible:(_Bool)arg1;
-- (_Bool)loadQRCodeInstructionLabelIfNeeded;
 @property(readonly, nonatomic) long long desiredAspectRatio;
 - (void)setViewportAspectRatio:(long long)arg1 animated:(_Bool)arg2;
 - (void)instructionLabelDidChangeIntrinsicContentSize:(id)arg1;
 - (void)badgeViewDidChangeIntrinsicContentSize:(id)arg1;
+- (void)_layoutSemanticStyleMaskedBadges;
+- (void)semanticStylePickerDidScroll:(id)arg1;
+- (void)semanticStylePickerDidChangeSelectedStyle:(id)arg1;
+- (void)reloadSemanticStyleBadgesDelayIfNeeded:(_Bool)arg1;
+- (void)_loadSemanticStyleControlsIfNeeded;
 - (void)_loadFilterControlsIfNeeded;
 - (void)_updatePortraitControlsHighlightAnimated:(_Bool)arg1;
 - (void)_loadPortraitControlsIfNeeded;
 - (void)setShallowDepthOfFieldStatus:(long long)arg1 animated:(_Bool)arg2;
 - (void)setPortraitControlsAllowed:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_layoutPanoramaView;
+- (CDStruct_d54ccef3)_geometryForTextInteractionInsertWithViewport:(struct CGRect)arg1;
+- (CDStruct_d54ccef3)_geometryForBottomCenteredView:(id)arg1 margin:(double)arg2;
 - (CDStruct_d54ccef3)_geometryForBottomCenteredView:(id)arg1;
 - (CDStruct_d54ccef3)_geometryForLandscapeLightingBadge;
-- (CDStruct_d54ccef3)_geometryForInstructionLabel:(id)arg1;
+- (CDStruct_d54ccef3)_geometryForInstructionLabel:(id)arg1 belowInstructionLabelGeometry:(CDStruct_d54ccef3)arg2 elapsedTimeViewGeometry:(CDStruct_d54ccef3)arg3;
+- (struct CGRect)_imageAnalysisButtonFrameForCenterY:(double)arg1;
+- (struct CGRect)_imageAnalysisButtonFrameForZoomControl:(id)arg1 zoomSlider:(id)arg2;
 - (struct CGRect)_frameForLightingControl;
 - (struct CGRect)_frameForModeView;
 - (struct CGRect)_frameForImageWell;
@@ -197,14 +234,17 @@
 - (struct CGRect)_frameForControlDrawer;
 - (CDStruct_d54ccef3)_geometryForBadgeTray;
 - (void)_layoutZoomControls;
+- (struct CGRect)_frameForContentClippingContainer;
 - (struct CGRect)_frameForReticleViewport;
+- (void)_updateSemanticStylePickerForViewportFrame:(struct CGRect)arg1;
 - (void)_updatePreviewAlignmentGuideForViewportFrame:(struct CGRect)arg1;
 - (void)_updateModeDialClippingForViewportFrame:(struct CGRect)arg1;
 - (void)_updateReticleForViewportFrame:(struct CGRect)arg1;
+- (_Bool)requestPreviewUpdateForSemanticStyleAnimated:(_Bool)arg1;
+- (_Bool)_canUpdatePreviewSemanticStyle;
 - (void)_updatePreviewLayerForPreviewFrame:(struct CGRect)arg1 viewportFrame:(struct CGRect)arg2;
 - (struct CGRect)_frameForPreviewOverlaysInViewport:(struct CGRect)arg1;
 - (struct CGRect)_frameForPreviewView;
-- (void)_applyAnimationSensitiveGeometry:(CDStruct_d54ccef3)arg1 toView:(id)arg2;
 - (struct CGRect)_currentFourThreeViewportFrame;
 - (void)_setNeedsLayoutAnimated:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isReticleAnimating) _Bool reticleAnimating;
@@ -212,6 +252,8 @@
 - (void)_setViewportAnimatorFrame:(struct CGRect)arg1 withDuration:(double)arg2 timingCurve:(id)arg3;
 - (void)_setViewportAnimatorFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)_updateGeometryForElapsedTimeAndInstructionLabels;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_insertBackgroundSubview:(id)arg1;
 - (id)initWithMetalContext:(id)arg1 useCreativeCameraControls:(_Bool)arg2;
 

@@ -8,13 +8,15 @@
 @protocol QLIncrementalThumbnailGenerationHandler;
 
 @protocol QLThumbnailsInterface
+- (void)fetchAllDataSeparatedVolumesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)getAllThumbnailsForFPItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)getAllThumbnailsForIno:(NSNumber *)arg1 fsid:(NSArray *)arg2 completionHandler:(void (^)(NSArray *))arg3;
-- (void)getCacheInfo:(void (^)(NSDictionary *))arg1;
-- (void)getAllThumbnailsInfo:(void (^)(NSArray *))arg1;
+- (void)getInfoForCacheAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSDictionary *))arg2;
+- (void)getAllThumbnailsInfoForCacheAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)getCanGenerateThumbnailsForContentType:(NSString *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (void)reset;
 - (void)setLastHitDateOfAllCachedThumbnailsToDate:(NSDate *)arg1 withCompletionHandler:(void (^)(void))arg2;
+- (void)removeCachedThumbnailsFromUninstalledFileProvidersWithIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)removeCachedThumbnailsFromUninstalledFileProvidersWithRemainingFileProviderIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)cancelThumbnailRequests:(NSArray *)arg1;
 - (void)generateSuccessiveThumbnailRepresentationsForRequests:(NSArray *)arg1 generationHandler:(id <QLIncrementalThumbnailGenerationHandler>)arg2 completionHandler:(void (^)(void))arg3;

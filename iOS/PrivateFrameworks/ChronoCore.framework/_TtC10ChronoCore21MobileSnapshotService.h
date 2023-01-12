@@ -13,6 +13,7 @@
     MISSING_TYPE *cacheManager;
     MISSING_TYPE *environmentProvidingFactory;
     MISSING_TYPE *configurationService;
+    MISSING_TYPE *descriptorProvider;
     MISSING_TYPE *locationService;
     MISSING_TYPE *persistentSubscriptions;
     MISSING_TYPE *environmentSubscriptions;

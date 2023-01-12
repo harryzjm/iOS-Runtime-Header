@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC8FMIPCore22FMAPSConnectionHandler : NSObject
 {
     MISSING_TYPE *delegate;

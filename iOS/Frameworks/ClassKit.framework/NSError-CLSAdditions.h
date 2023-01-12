@@ -12,11 +12,13 @@
 + (_Bool)cls_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3;
 + (_Bool)cls_assignError:(id *)arg1 code:(long long)arg2 errorObject:(id)arg3 format:(id)arg4;
 + (_Bool)cls_assignError:(id *)arg1 code:(long long)arg2 errorObject:(id)arg3 description:(id)arg4;
++ (id)cls_createErrorWithCode:(long long)arg1 successfulObjects:(id)arg2 underlyingErrors:(id)arg3 description:(id)arg4;
 + (id)cls_createErrorWithCode:(long long)arg1 format:(id)arg2;
 + (id)cls_createErrorWithCode:(long long)arg1 description:(id)arg2;
 + (id)cls_createErrorWithCode:(long long)arg1 errorObject:(id)arg2 format:(id)arg3;
 + (id)cls_createErrorWithCode:(long long)arg1 underlyingError:(id)arg2 description:(id)arg3;
 + (id)cls_createErrorWithCode:(long long)arg1 errorObject:(id)arg2 description:(id)arg3;
+- (void)cls_notice:(id)arg1;
 - (void)cls_debug:(id)arg1;
 - (void)cls_info:(id)arg1;
 - (void)cls_warn:(id)arg1;

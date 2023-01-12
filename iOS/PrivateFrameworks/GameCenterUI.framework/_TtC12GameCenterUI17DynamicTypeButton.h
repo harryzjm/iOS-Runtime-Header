@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC12GameCenterUI17DynamicTypeButton : UIButton
+@interface _TtC12GameCenterUI17DynamicTypeButton
 {
     MISSING_TYPE *fontUseCaseContentSizeCategory;
     MISSING_TYPE *fontUseCase;
     MISSING_TYPE *titleColorFollowsTintColor;
     MISSING_TYPE *imageAlignment;
+    MISSING_TYPE *imageSpacing;
     MISSING_TYPE *imageWantsBaselineAlignment;
     MISSING_TYPE *touchOutsideMargin;
 }
@@ -22,6 +21,7 @@
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)tintColorDidChange;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;

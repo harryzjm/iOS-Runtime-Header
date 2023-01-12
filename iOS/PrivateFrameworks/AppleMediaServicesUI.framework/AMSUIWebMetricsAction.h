@@ -4,24 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSArray, NSString;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebMetricsAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebMetricsAction <AMSUIWebActionRunnable>
 {
     _Bool _shouldFlush;
-    AMSUIWebClientContext *_context;
     NSArray *_events;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldFlush; // @synthesize shouldFlush=_shouldFlush;
 @property(retain, nonatomic) NSArray *events; // @synthesize events=_events;
-@property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 - (id)runAction;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
 

@@ -18,12 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _l_end;
 }
 
-- (struct edge **)isAcyclic;
-- (unsigned long long)numOfEdges;
-- (_Bool)isEmpty;
-- (_Bool)addEdgeWithH1:(unsigned long long)arg1 withH2:(unsigned long long)arg2;
 - (void)dealloc;
-- (id)initWithNumberOfVertices:(unsigned long long)arg1 numberOfEdges:(unsigned long long)arg2;
 
 @end
 

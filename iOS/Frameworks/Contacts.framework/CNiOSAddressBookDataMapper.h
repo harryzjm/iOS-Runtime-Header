@@ -20,7 +20,7 @@
     CNManagedAccountsCache *_managedAccountsCache;
 }
 
-+ (id)encodedPeopleFetcherForForFetchRequest:(id)arg1 addressBook:(void *)arg2 managedConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 environment:(id)arg5;
++ (id)encodedPeopleFetcherForForFetchRequest:(id)arg1 addressBook:(void *)arg2 managedConfiguration:(id)arg3 addressBookCompletionHandler:(CDUnknownBlockType)arg4 cursorCompletionHandler:(CDUnknownBlockType)arg5 environment:(id)arg6;
 + (id)contactBuffersDecoderForFetchRequest:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;

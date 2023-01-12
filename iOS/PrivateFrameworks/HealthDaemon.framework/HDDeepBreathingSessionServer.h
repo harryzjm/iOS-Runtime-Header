@@ -22,18 +22,6 @@
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
 - (void).cxx_destruct;
-@property(nonatomic) long long serverState; // @synthesize serverState=_serverState;
-@property(readonly, copy, nonatomic) _HKDeepBreathingSessionConfiguration *sessionConfiguration; // @synthesize sessionConfiguration=_sessionConfiguration;
-@property(retain, nonatomic) HDDaemonTransaction *daemonTransaction; // @synthesize daemonTransaction=_daemonTransaction;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-- (void)_queue_endSessionTransaction;
-- (void)_queue_beginSessionTransaction;
-- (void)_queue_alertClientSessionDidReceiveError:(id)arg1;
-- (void)_queue_alertClientSessionDidReceiveHeartRate:(double)arg1;
-- (id)clientWithErrorHandler:(CDUnknownBlockType)arg1;
-- (_Bool)_shouldUseHealthLiteSession;
-- (void)_queue_deactivate;
-- (void)_queue_endSessionWithReason:(long long)arg1;
 - (void)remote_endSessionWithEndReason:(long long)arg1;
 - (void)remote_startGuiding;
 - (void)remote_startSessionWithStartDate:(id)arg1 completion:(CDUnknownBlockType)arg2;

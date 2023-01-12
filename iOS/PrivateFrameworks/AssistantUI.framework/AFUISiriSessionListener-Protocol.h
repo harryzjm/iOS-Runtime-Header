@@ -6,13 +6,13 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFUISiriSessionInfo, NSError;
+@class NSError, SRUIFSiriSessionInfo;
 
 @protocol AFUISiriSessionListener <NSObject>
 
 @optional
 - (void)siriSessionDidFinishRequestWithError:(NSError *)arg1;
-- (void)siriSessionDidUpdateSessionInfo:(AFUISiriSessionInfo *)arg1;
-- (void)siriSessionDidInitializeSessionInfo:(AFUISiriSessionInfo *)arg1;
+- (void)siriSessionDidUpdateSessionInfo:(SRUIFSiriSessionInfo *)arg1;
+- (void)siriSessionDidInitializeSessionInfo:(SRUIFSiriSessionInfo *)arg1;
 @end
 

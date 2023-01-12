@@ -6,11 +6,12 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class NSArray, PSListController, PSSimStatusCache, PSUICellularDataListItemsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
+@class Logger, NSArray, PSListController, PSSimStatusCache, PSUICellularDataListItemsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyDataCache, PSUIDeviceWiFiState;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularDataSpecifier : PSSpecifier
 {
+    Logger *_logger;
     PSUICellularDataListItemsController *_detailController;
     PSListController *_hostController;
     PSSimStatusCache *_simStatusCache;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSSimStatusCache *simStatusCache; // @synthesize simStatusCache=_simStatusCache;
 @property(nonatomic) __weak PSListController *hostController; // @synthesize hostController=_hostController;
 @property(nonatomic) __weak PSUICellularDataListItemsController *detailController; // @synthesize detailController=_detailController;
+- (id)getLogger;
 - (void)canceledDataSwitch:(id)arg1;
 - (id)callEndConfirmationSpecifier;
 - (id)subscriptionContextForListItem:(id)arg1;

@@ -7,7 +7,6 @@
 @class CKDDecryptRecordsOperation, NSArray, NSObject, NSString;
 @protocol CKFetchRecordVersionsOperationCallbacks, OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchRecordVersionsOperation
 {
     CKDDecryptRecordsOperation *_decryptOperation;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(retain, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property(copy, nonatomic) CDUnknownBlockType recordVersionFetchedBlock; // @synthesize recordVersionFetchedBlock=_recordVersionFetchedBlock;
+- (id)relevantZoneIDs;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)main;
 - (int)operationType;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasDecryptOperation;
 @property(readonly, nonatomic) CKDDecryptRecordsOperation *recordDecryptOperation;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchRecordVersionsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

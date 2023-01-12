@@ -21,6 +21,18 @@ struct AudioBufferList {
     struct AudioBuffer _field2[1];
 };
 
+struct AudioStreamBasicDescription {
+    double _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+};
+
 struct CGPoint {
     double _field1;
     double _field2;
@@ -129,11 +141,6 @@ typedef struct {
     long long reverseCount;
     long long forwardCount;
 } CDStruct_339ad95e;
-
-typedef struct {
-    CDStruct_198678f7 _field1;
-    CDStruct_198678f7 _field2;
-} CDStruct_3c1748cc;
 
 // Ambiguous groups
 typedef struct {

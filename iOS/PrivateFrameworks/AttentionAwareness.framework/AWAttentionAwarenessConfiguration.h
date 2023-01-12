@@ -21,6 +21,7 @@
     unsigned long long _tagIndex;
     NSSet *_allowedHIDEventsForRemoteEvent;
     _Bool _sampleWhileAbsent;
+    _Bool _retroactiveTimeoutMode;
     NSString *_identifier;
     id <NSCopying> _tag;
     unsigned long long _notificationMask;
@@ -37,6 +38,7 @@
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool retroactiveTimeoutMode; // @synthesize retroactiveTimeoutMode=_retroactiveTimeoutMode;
 @property(nonatomic) _Bool sampleWhileAbsent; // @synthesize sampleWhileAbsent=_sampleWhileAbsent;
 @property(nonatomic) double samplingDelay; // @synthesize samplingDelay=_samplingDelay;
 @property(nonatomic) double samplingInterval; // @synthesize samplingInterval=_samplingInterval;

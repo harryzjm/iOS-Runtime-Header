@@ -29,11 +29,13 @@
 @property(retain, nonatomic) NSString *locationUUID; // @dynamic locationUUID;
 @property(nonatomic) _Bool mailShareSheetDeletionCandidate; // @dynamic mailShareSheetDeletionCandidate;
 @property(nonatomic) long long mechanism; // @dynamic mechanism;
+@property(retain, nonatomic) NSString *nsUserName; // @dynamic nsUserName;
 @property(nonatomic) long long recipientCount; // @dynamic recipientCount;
 @property(retain, nonatomic) NSSet *recipients; // @dynamic recipients;
 @property(retain, nonatomic) _CDContactRecord *sender; // @dynamic sender;
 @property(nonatomic) double startDate; // @dynamic startDate;
 @property(retain, nonatomic) NSString *targetBundleId; // @dynamic targetBundleId;
+@property(nonatomic) double updateDate; // @dynamic updateDate;
 @property(retain, nonatomic) NSString *uuid; // @dynamic uuid;
 @end
 

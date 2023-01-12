@@ -33,12 +33,14 @@
     NSString *_contentType;
     NSString *_keyColor;
     NSString *_identifier;
+    NSString *_accessibilityLabel;
     struct CGSize _size;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)imageWithData:(id)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property(nonatomic) int cornerRoundingStyle; // @synthesize cornerRoundingStyle=_cornerRoundingStyle;
 @property(nonatomic) int source; // @synthesize source=_source;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -50,6 +52,8 @@
 @property(nonatomic) _Bool shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
 @property(nonatomic) _Bool isTemplate; // @synthesize isTemplate=_isTemplate;
 @property(copy) NSData *imageData; // @synthesize imageData=_imageData;
+@property(readonly) unsigned long long hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -62,11 +66,10 @@
 - (_Bool)hasCornerRadius;
 - (_Bool)hasShouldCropToCircle;
 - (_Bool)hasIsTemplate;
+- (void)loadImageDataWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadImageDataWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
 - (void)loadImageDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithProtobuf:(id)arg1;
-@property(readonly) unsigned long long hash;
-- (_Bool)isEqual:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

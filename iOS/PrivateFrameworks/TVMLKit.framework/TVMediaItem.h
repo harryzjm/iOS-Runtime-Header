@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSURL, _TVSecureKeyLoader;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL;
+@protocol _TVSecureKeyLoading;
 
 @interface TVMediaItem : NSObject
 {
     _Bool _containsExplicitContent;
-    _TVSecureKeyLoader *secureKeyLoader;
     NSString *_type;
     NSURL *_url;
     NSString *_title;
@@ -27,17 +27,21 @@
     NSString *_contentRating;
     double _contentProposalPresentationTime;
     double _contentProposalAutomaticAcceptanceInterval;
-    double _playbackProgress;
     NSString *_externalIdentifier;
+    NSString *_externalContentIdentifier;
     NSString *_externalProfileIdentifier;
     NSString *_externalServiceIdentifier;
+    NSNumber *_playbackProgress;
+    id <_TVSecureKeyLoading> _secureKeyLoader;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <_TVSecureKeyLoading> secureKeyLoader; // @synthesize secureKeyLoader=_secureKeyLoader;
+@property(copy, nonatomic) NSNumber *playbackProgress; // @synthesize playbackProgress=_playbackProgress;
 @property(copy, nonatomic) NSString *externalServiceIdentifier; // @synthesize externalServiceIdentifier=_externalServiceIdentifier;
 @property(copy, nonatomic) NSString *externalProfileIdentifier; // @synthesize externalProfileIdentifier=_externalProfileIdentifier;
+@property(copy, nonatomic) NSString *externalContentIdentifier; // @synthesize externalContentIdentifier=_externalContentIdentifier;
 @property(copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
-@property(nonatomic) double playbackProgress; // @synthesize playbackProgress=_playbackProgress;
 @property(nonatomic) double contentProposalAutomaticAcceptanceInterval; // @synthesize contentProposalAutomaticAcceptanceInterval=_contentProposalAutomaticAcceptanceInterval;
 @property(nonatomic) double contentProposalPresentationTime; // @synthesize contentProposalPresentationTime=_contentProposalPresentationTime;
 @property(copy, nonatomic) NSString *contentRating; // @synthesize contentRating=_contentRating;
@@ -54,7 +58,6 @@
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(retain, nonatomic) NSString *type; // @synthesize type=_type;
-@property(retain, nonatomic) _TVSecureKeyLoader *secureKeyLoader; // @synthesize secureKeyLoader;
 
 @end
 

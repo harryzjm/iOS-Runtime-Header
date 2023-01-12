@@ -14,13 +14,11 @@
 + (unsigned int)minimumSupportedVersion;
 + (unsigned int)serializationVersion;
 - (void).cxx_destruct;
-@property(retain, nonatomic) TTMergeableAttributedString *mergeableString; // @synthesize mergeableString=_mergeableString;
 - (id)serializeCurrentVersion:(unsigned int *)arg1;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 - (unsigned long long)mergeWithStringVersionedDocument:(id)arg1;
-- (id)initWithArchive:(const Document_22a49c75 *)arg1 andReplicaID:(id)arg2;
+@property(readonly, nonatomic) TTMergeableAttributedString *mergeableString; // @synthesize mergeableString=_mergeableString;
 - (id)initWithMergeableString:(id)arg1;
-- (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
 
 @end
 

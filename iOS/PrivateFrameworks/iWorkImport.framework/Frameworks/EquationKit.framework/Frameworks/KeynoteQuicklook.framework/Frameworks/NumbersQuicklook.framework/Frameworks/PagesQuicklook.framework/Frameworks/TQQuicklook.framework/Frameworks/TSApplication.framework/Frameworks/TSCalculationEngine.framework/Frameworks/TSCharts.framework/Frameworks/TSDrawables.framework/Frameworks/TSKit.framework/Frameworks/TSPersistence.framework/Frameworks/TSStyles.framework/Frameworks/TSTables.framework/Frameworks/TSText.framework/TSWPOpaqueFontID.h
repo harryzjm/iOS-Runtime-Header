@@ -10,13 +10,14 @@
 
 @interface TSWPOpaqueFontID : NSObject
 {
-    NSString *_postScriptName;
+    NSString *_desiredPostScriptName;
     NSString *_familyName;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
-@property(retain, nonatomic) NSString *postScriptName; // @synthesize postScriptName=_postScriptName;
+@property(retain, nonatomic) NSString *desiredPostScriptName; // @synthesize desiredPostScriptName=_desiredPostScriptName;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithFont:(id)arg1;

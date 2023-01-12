@@ -10,7 +10,9 @@
 {
 }
 
++ (_Bool)isHiddenView:(id)arg1;
 + (_Bool)isMacOS;
++ (void)performWithoutAnimations:(CDUnknownBlockType)arg1;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(_Bool)arg2;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1;
@@ -23,6 +25,7 @@
 + (double)onePixelForCurrentScreenResolution;
 + (_Bool)deviceSupportsRotation;
 + (double)standardTableCellContentInset;
++ (void)executeBlock:(CDUnknownBlockType)arg1 async:(_Bool)arg2;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
 + (void)dispatchAsyncIfNecessary:(CDUnknownBlockType)arg1;
 

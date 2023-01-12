@@ -5,12 +5,16 @@
 //
 
 #import <QuickLook/NSObject-Protocol.h>
+#import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSDictionary, NSError, NSString, NSURL, QLItemViewController, QLPreviewItemEditedCopy;
 @protocol QLRemotePopoverTracker;
 
-@protocol QLPreviewItemViewControllerDelegate <NSObject>
+@protocol QLPreviewItemViewControllerDelegate <NSObject, UIGestureRecognizerDelegate>
+- (void)previewItemViewController:(QLItemViewController *)arg1 wantsToUpdateStateRestorationWithUserInfo:(NSDictionary *)arg2;
 - (long long)dragDataOwnerForPreviewItemViewController:(QLItemViewController *)arg1;
+- (void)previewItemViewControllerDidHandOverLock:(QLItemViewController *)arg1;
+- (void)previewItemViewControllerDidAcquireLock:(QLItemViewController *)arg1;
 - (void)previewItemViewController:(QLItemViewController *)arg1 hasUnsavedEdits:(_Bool)arg2;
 - (void)previewItemViewControllerDidEditCopyOfPreviewItem:(QLItemViewController *)arg1 editedCopy:(QLPreviewItemEditedCopy *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)previewItemViewController:(QLItemViewController *)arg1 didEnableEditMode:(_Bool)arg2;

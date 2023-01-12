@@ -17,7 +17,7 @@
 - (void)setIdentityToCurrent;
 - (int)addAndNotifyOnSync:(struct _PCSIdentityData *)arg1 attributes:(struct __CFDictionary *)arg2 returnAttributes:(const struct __CFDictionary **)arg3 complete:(CDUnknownBlockType)arg4;
 - (void)storePCSIdentity:(struct _PCSIdentityData *)arg1;
-- (void)createManateePCSIdentity;
+- (void)createPCSIdentity;
 - (void)start;
 - (id)initWithItemModifyContext:(id)arg1;
 

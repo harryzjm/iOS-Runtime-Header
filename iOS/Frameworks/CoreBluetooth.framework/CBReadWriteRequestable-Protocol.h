@@ -7,7 +7,7 @@
 @class CBReadRequest, CBWriteRequest;
 
 @protocol CBReadWriteRequestable
-- (void)writeWithRequest:(CBWriteRequest *)arg1;
-- (void)readWithRequest:(CBReadRequest *)arg1;
+- (void)writeWithCBWriteRequest:(CBWriteRequest *)arg1;
+- (void)readWithCBReadRequest:(CBReadRequest *)arg1;
 @end
 

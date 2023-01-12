@@ -6,13 +6,16 @@
 
 #import <Home/HFItemManager.h>
 
+#import <HomeUI/HFHomeKitAccessorySettingsDataSourceDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlCollectionItemManaging-Protocol.h>
 
-@class HFAccessoryControlItem, HFItem, HFItemProvider, HFServiceItemProvider, NSMapTable, NSSet, NSString;
+@class HFAccessoryControlItem, HFItem, HFItemProvider, HFServiceItemProvider, NSArray, NSMapTable, NSNumber, NSSet, NSString;
 @protocol HFServiceLikeItem;
 
-@interface HUQuickControlGridCollectionItemManager : HFItemManager <HUQuickControlCollectionItemManaging>
+@interface HUQuickControlGridCollectionItemManager : HFItemManager <HFHomeKitAccessorySettingsDataSourceDelegate, HUQuickControlCollectionItemManaging>
 {
+    _Bool _isRTL;
+    _Bool _isSpeakerAccessory;
     HFItemProvider *_supplementaryItemProvider;
     HFItemProvider *_overflowItemProvider;
     HFAccessoryControlItem *_accessoryControlItem;
@@ -20,15 +23,21 @@
     NSSet *_controlItems;
     HFServiceItemProvider *_serviceItemProvider;
     HFItemProvider *_controlItemProvider;
-    NSMapTable *_controlItemToViewControllerTable;
+    NSMapTable *_controlItemToQuickControlContextTable;
+    NSArray *_mediaControlItems;
+    NSNumber *_airPlayEnabledSettingNumberValue;
 }
 
 + (CDUnknownBlockType)serviceItemComparator;
-+ (unsigned long long)specialCaseSectionSortingForControlItem:(id)arg1 viewController:(id)arg2 fromControlItems:(id)arg3 primaryServiceType:(id)arg4;
++ (unsigned long long)specialCaseSectionSortingForControlItem:(id)arg1 quickControlContext:(id)arg2 fromControlItems:(id)arg3 primaryServiceType:(id)arg4;
 + (_Bool)isPrimaryOrBinaryStateControlItem:(id)arg1;
 + (unsigned long long)preferredControlForControlItem:(id)arg1 allControlItems:(id)arg2 isSupplementary:(_Bool)arg3;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMapTable *controlItemToViewControllerTable; // @synthesize controlItemToViewControllerTable=_controlItemToViewControllerTable;
+@property(nonatomic) _Bool isSpeakerAccessory; // @synthesize isSpeakerAccessory=_isSpeakerAccessory;
+@property(retain, nonatomic) NSNumber *airPlayEnabledSettingNumberValue; // @synthesize airPlayEnabledSettingNumberValue=_airPlayEnabledSettingNumberValue;
+@property(retain, nonatomic) NSArray *mediaControlItems; // @synthesize mediaControlItems=_mediaControlItems;
+@property(nonatomic) _Bool isRTL; // @synthesize isRTL=_isRTL;
+@property(retain, nonatomic) NSMapTable *controlItemToQuickControlContextTable; // @synthesize controlItemToQuickControlContextTable=_controlItemToQuickControlContextTable;
 @property(retain, nonatomic) HFItemProvider *controlItemProvider; // @synthesize controlItemProvider=_controlItemProvider;
 @property(retain, nonatomic) HFServiceItemProvider *serviceItemProvider; // @synthesize serviceItemProvider=_serviceItemProvider;
 @property(retain, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
@@ -36,18 +45,25 @@
 @property(copy, nonatomic) HFAccessoryControlItem *accessoryControlItem; // @synthesize accessoryControlItem=_accessoryControlItem;
 @property(readonly, nonatomic) HFItemProvider *overflowItemProvider; // @synthesize overflowItemProvider=_overflowItemProvider;
 @property(readonly, nonatomic) HFItemProvider *supplementaryItemProvider; // @synthesize supplementaryItemProvider=_supplementaryItemProvider;
+- (void)updateSettingValue:(id)arg1 forKeyPath:(id)arg2;
 - (id)_composeIdentifierForService:(id)arg1 section:(unsigned long long)arg2;
 - (_Bool)_catchAllLayoutForGridViewProfiles:(id)arg1 supplementaryViewProfiles:(id)arg2;
 - (id)headerAccessoryButtonTargetForSection:(unsigned long long)arg1;
 - (id)headerAccessoryButtonTitleForSection:(unsigned long long)arg1;
 - (id)titleForItem:(id)arg1;
 - (id)gridItemProvider;
-- (id)viewControllerForItem:(id)arg1;
-- (id)_generateViewControllersForControlItems:(id)arg1;
+- (id)quickControlContextForItem:(id)arg1;
+- (id)_findAndRemoveMediaAlarmsAndTimerItemsFromSection:(id)arg1;
+- (id)_findAndRemoveMediaControlItemsFromSection:(id)arg1;
+- (id)_mediaAlarmsAndTimerItemsFromControlItems:(id)arg1;
+- (void)_addMediaAlarmsAndTimers:(id)arg1 toSections:(id)arg2;
+- (id)_generateQuickControlGroupContextForControlItems:(id)arg1;
+- (id)_itemsToHideInSet:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)configuration;
 - (id)sourceItem;
+- (void)tearDown;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithDelegate:(id)arg1 controlItems:(id)arg2;
 

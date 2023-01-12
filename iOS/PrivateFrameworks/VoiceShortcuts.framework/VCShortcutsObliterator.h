@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, VCCoreDuetListener;
+@class NSSet, WFTriggerRegistrar;
 
 @interface VCShortcutsObliterator : NSObject
 {
-    VCCoreDuetListener *_listener;
+    WFTriggerRegistrar *_triggerRegistrar;
     NSSet *_syncDataHandlers;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSSet *syncDataHandlers; // @synthesize syncDataHandlers=_syncDataHandlers;
-@property(readonly, nonatomic) VCCoreDuetListener *listener; // @synthesize listener=_listener;
+@property(readonly, nonatomic) WFTriggerRegistrar *triggerRegistrar; // @synthesize triggerRegistrar=_triggerRegistrar;
 - (void)resetWatchSync;
 - (_Bool)terminateProcessWithIdentifier:(id)arg1 assertion:(out id *)arg2 error:(out id *)arg3;
 - (_Bool)deleteDataVaultWithError:(id *)arg1;
 - (_Bool)deleteAppGroupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)deleteKeychainItemsWithError:(id *)arg1;
 - (void)obliterate:(id *)arg1;
-- (id)initWithCoreDuetListener:(id)arg1 syncDataHandlers:(id)arg2;
+- (id)initWithTriggerRegistrar:(id)arg1 syncDataHandlers:(id)arg2;
 
 @end
 

@@ -6,23 +6,24 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <BannerKit/_UISceneBSActionHandler-Protocol.h>
-#import <BannerKit/_UISceneSettingsDiffAction-Protocol.h>
+#import <BannerKit/BNBannerClientContainer-Protocol.h>
+#import <BannerKit/BNPresentableContext-Protocol.h>
 
-@class NSMutableArray, NSString, UIScene;
-@protocol BNBannerClientContainerViewControllerDelegate, BNPresentable, BSInvalidatable;
+@class NSMutableArray, NSString, UIScene, _BNPanGestureServiceProxy;
+@protocol BNBannerClientContainerDelegate, BNPresentable, BSInvalidatable;
 
-@interface BNBannerClientContainerViewController : UIViewController <_UISceneSettingsDiffAction, _UISceneBSActionHandler>
+@interface BNBannerClientContainerViewController : UIViewController <BNBannerClientContainer, BNPresentableContext>
 {
     id <BSInvalidatable> _deferringRule;
     NSMutableArray *_transitionContextStack;
+    _BNPanGestureServiceProxy *_panGestureProxy;
     UIScene *_scene;
     id <BNPresentable> _presentable;
-    id <BNBannerClientContainerViewControllerDelegate> _delegate;
+    id <BNBannerClientContainerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <BNBannerClientContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <BNBannerClientContainerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <BNPresentable> presentable; // @synthesize presentable=_presentable;
 @property(readonly, nonatomic) __weak UIScene *scene; // @synthesize scene=_scene;
 - (void)_setPresentableUserInteractionInProgress:(_Bool)arg1;
@@ -31,17 +32,19 @@
 - (void)_acquireDeferringRuleIfNecessary;
 - (void)_setPresentableViewControllerAppearState:(int)arg1;
 - (id)_respondToActions:(id)arg1 forFBSScene:(id)arg2 inUIScene:(id)arg3 fromTransitionContext:(id)arg4;
-- (void)_handleSizeTransitionCompleteAction:(id)arg1;
-- (void)_handleViewWillTransitionToSizeAction:(id)arg1 shouldFence:(_Bool)arg2;
+- (void)_handleRejectionAction:(id)arg1;
+- (void)_handlePanGestureProxyAction:(id)arg1;
 - (void)_performActionsForUIScene:(id)arg1 withUpdatedFBSScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5 lifecycleActionType:(unsigned int)arg6;
 - (void)bs_traitCollectionDidChange:(id)arg1 forManagedTraitEnvironment:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (void)_setPreferredContentSize:(struct CGSize)arg1 shouldFence:(_Bool)arg2;
+@property(readonly, copy) NSString *description;
 - (_Bool)_canShowWhileLocked;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (void)setHostNeedsUpdate;
 - (id)keyWindowForScreen:(id)arg1;
 @property(readonly, nonatomic, getter=isDeferringFocus) _Bool deferringFocus;
 - (void)dealloc;
@@ -49,7 +52,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

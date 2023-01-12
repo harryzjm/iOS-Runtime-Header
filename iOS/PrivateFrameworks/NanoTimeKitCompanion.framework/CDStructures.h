@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -70,27 +68,6 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
-struct CharacterPoseSpecs {
-    float bodyOffsetX;
-    float footOffsetX;
-    float headOffsetX;
-};
-
-struct CharacterStateSpecs {
-    unsigned int bodyTexIdx;
-    unsigned int minuteTexIdx;
-    unsigned int hourArmOnLeftShoulder;
-    float xFlipBody;
-    float xFlipFoot;
-    float xFlipFace;
-    float xFlipMinuteHand;
-    float xFlipHourHand;
-    float leftShoulderX;
-    float rightShoulderX;
-    float minuteElbowBend;
-    float hourElbowBend;
-};
-
 struct NTKAstronomyFaceViewAnimationPose {
     float _field1;
     float _field2;
@@ -110,20 +87,6 @@ struct NTKAstronomyInteractionSettings {
 
 struct NTKKaleidoscopePathfinderPoint {
     double _field1[4];
-};
-
-struct NTKLabelPosition {
-    struct CGPoint _field1;
-    long long _field2;
-    long long _field3;
-};
-
-struct RingLayout {
-    double bottomEdgeInset;
-    double leftEdgeInset;
-    double diameter;
-    double thickness;
-    double interspacing;
 };
 
 struct UIEdgeInsets {
@@ -190,10 +153,6 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    MISSING_TYPE *columns[4];
-} CDStruct_14d5dc5e;
-
-typedef struct {
     double *_field1;
     float *_field2;
     int _field3;
@@ -215,21 +174,23 @@ typedef struct {
     double _field9;
     double _field10;
     double _field11;
-    double _field12;
-    double _field13;
-    double _field14;
-} CDStruct_05cddbcc;
+} CDStruct_a6477b43;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+} CDStruct_7660b417;
 
 typedef struct {
     double _field1;
     double _field2;
 } CDStruct_c3b9c2ee;
-
-typedef struct {
-    float _field1;
-    float _field2;
-    float _field3;
-} CDStruct_869f9c67;
 
 typedef struct {
     long long majorVersion;
@@ -258,5 +219,19 @@ typedef struct {
     double _field11;
     double _field12;
     struct UIEdgeInsets _field13;
-} CDStruct_69ceb9b6;
+    double _field14;
+    double _field15;
+    double _field16;
+} CDStruct_51515351;
+
+typedef struct {
+    double cityNameFontSize;
+    double cityNameBaselineOffsetNorthSide;
+    double cityNameBaselineOffsetSouthSide;
+    double hourFontSize;
+    double hourInset;
+    double dialDiameter;
+    struct CGSize majorTickSize;
+    struct CGSize minorTickSize;
+} CDStruct_b09e2ca5;
 

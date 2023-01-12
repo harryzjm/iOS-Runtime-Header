@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
+- (id)description;
 - (id)initWithState:(long long)arg1 error:(id)arg2;
 - (id)init;
 

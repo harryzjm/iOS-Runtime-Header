@@ -17,6 +17,9 @@
 + (id)sharedPreferences;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool drawDebugViewColors; // @synthesize drawDebugViewColors=_drawDebugViewColors;
+@property(retain, nonatomic) NSDate *lastViewedOccurrenceDate;
+@property(retain, nonatomic) NSString *lastViewedOccurrenceUID;
+@property(nonatomic) _Bool overrideLocaleWeekends;
 @property(retain, nonatomic) NSNumber *dayViewFirstVisibleSecond;
 @property(nonatomic) _Bool highColorCarplayEnabled;
 @property(readonly, nonatomic) NSArray *deselectedCalendarSyncHashes;

@@ -9,13 +9,10 @@
 @class NSURL;
 
 @protocol APPCPromotableVideoRepresentation <APPCPromotableContentRepresentation>
-@property(nonatomic, readonly) long long connectionType;
-@property(nonatomic, readonly) unsigned long long signalStrength;
 @property(nonatomic, readonly) double bitrate;
 @property(nonatomic, readonly) _Bool unbranded;
 @property(nonatomic, readonly) _Bool skipEnabled;
 @property(nonatomic, readonly) double skipThreshold;
-@property(nonatomic, readonly) long long fileSize;
 @property(nonatomic, readonly) NSURL *videoURL;
 @end
 

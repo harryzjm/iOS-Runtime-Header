@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (void)protectFilesAgainstEviction;
 - (id)allURLs;
 - (_Bool)blocksClaim:(id)arg1;
 - (void)itemAtLocation:(id)arg1 wasReplacedByItemAtLocation:(id)arg2;

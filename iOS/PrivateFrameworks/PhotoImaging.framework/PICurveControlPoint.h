@@ -20,6 +20,7 @@
 @property(readonly, nonatomic) double x; // @synthesize x=_x;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDictionary:(id)arg1;

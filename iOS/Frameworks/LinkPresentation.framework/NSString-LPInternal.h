@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (LPInternal)
+- (_Bool)_lp_isLTRText;
 @property(nonatomic, setter=_lp_setStringType:) unsigned long long _lp_stringType;
 - (float)_lp_similarityToString:(id)arg1;
 - (id)_lp_directionallyIsolatedString;

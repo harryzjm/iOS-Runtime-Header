@@ -10,7 +10,7 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, SBMedusaSettings, SBOrientationTransformWrapperView, UIColor, UIStatusBar, _UIStatusBar;
+@class NSMutableDictionary, NSMutableSet, NSString, SBMedusaSettings, SBOrientationTransformWrapperView, UIColor, UIStatusBar, UITapGestureRecognizer, _UIStatusBar;
 @protocol SBMainDisplaySceneLayoutStatusBarViewDataSource, UIStatusBarStyleDelegate_SpringBoardOnly;
 
 @interface SBMainDisplaySceneLayoutStatusBarView : UIView <PTSettingsKeyObserver, UIStatusBarStyleDelegate_SpringBoardOnly, SBDeviceApplicationSceneStatusBarStateObserver>
@@ -26,6 +26,8 @@
     NSString *_statusBarBreadcrumbSceneIdentifier;
     _Bool _statusBarLaidOutForClassic;
     _Bool _lastHiddenValueForAnimation;
+    UITapGestureRecognizer *_scrollToTopGestureRecognizer;
+    UITapGestureRecognizer *_showDebugGestureRecognizer;
     SBMedusaSettings *_medusaSettings;
     _Bool _debugBackgroundColorEnabled;
     _Bool _debugOffsetEnabled;
@@ -54,13 +56,13 @@
 @property(nonatomic) __weak id <UIStatusBarStyleDelegate_SpringBoardOnly> realStyleDelegate; // @synthesize realStyleDelegate=_realStyleDelegate;
 @property(nonatomic) __weak id <SBMainDisplaySceneLayoutStatusBarViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (long long)overriddenRequestedStyleFromStyle:(long long)arg1;
-- (int)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(int)arg3;
+- (unsigned long long)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(unsigned long long)arg3;
 - (void)statusBar:(id)arg1 didTriggerButtonType:(long long)arg2 withAction:(long long)arg3 context:(id)arg4;
 - (void)statusBar:(id)arg1 didTriggerButtonType:(long long)arg2 withAction:(long long)arg3;
 - (id)statusBarSystemNavigationAction:(id)arg1;
 - (void)statusBar:(id)arg1 didAnimateFromHeight:(double)arg2 toHeight:(double)arg3 animation:(int)arg4;
 - (void)statusBar:(id)arg1 willAnimateFromHeight:(double)arg2 toHeight:(double)arg3 duration:(double)arg4 animation:(int)arg5;
-- (long long)statusBar:(id)arg1 styleForRequestedStyle:(long long)arg2 overrides:(int)arg3;
+- (long long)statusBar:(id)arg1 styleForRequestedStyle:(long long)arg2 overrides:(unsigned long long)arg3;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_updateDebugOffset;
 - (void)_updateDebugBackgroundColor;
@@ -71,7 +73,7 @@
 - (double)_hiddenAlphaForAnimation:(long long)arg1;
 - (struct CGAffineTransform)_hiddenTransformForAnimation:(long long)arg1;
 - (void)_animateHidden:(_Bool)arg1 withAnimation:(long long)arg2 transitionHandler:(CDUnknownBlockType)arg3 applyHandler:(CDUnknownBlockType)arg4;
-- (int)_effectiveStatusBarStyleOverridesToSuppress;
+- (unsigned long long)_effectiveStatusBarStyleOverridesToSuppress;
 - (void)_enumerateValidStatusBarPartIdentifiersForSceneWithIdentifier:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_defaultStatusBarStyleRequest;
 - (long long)_effectiveStyleForPartIdentifier:(id)arg1;
@@ -81,13 +83,13 @@
 - (void)didInvalidateStatusBarDescriptionForSceneWithIdentifier:(id)arg1;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarOrientationTo:(long long)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAvoidanceFrameTo:(struct CGRect)arg2;
-- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(int)arg2;
+- (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleOverridesToSuppressTo:(unsigned long long)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarAlphaTo:(double)arg2;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarHiddenTo:(_Bool)arg2 withAnimation:(long long)arg3;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2 forPartWithIdentifier:(id)arg3;
 - (void)sceneWithIdentifier:(id)arg1 didChangeStatusBarStyleTo:(long long)arg2;
 - (void)_applyStatusBarAvoidanceFrame:(struct CGRect)arg1 toSceneWithIdentifier:(id)arg2;
-- (void)_applyStatusBarStyleOverridesToSuppress:(int)arg1 toSceneWithIdentifier:(id)arg2;
+- (void)_applyStatusBarStyleOverridesToSuppress:(unsigned long long)arg1 toSceneWithIdentifier:(id)arg2;
 - (void)_applyStatusBarAlpha:(double)arg1 toSceneWithIdentifier:(id)arg2;
 - (void)_applyStatusBarHidden:(_Bool)arg1 withAnimation:(long long)arg2 toSceneWithIdentifier:(id)arg3;
 - (void)_applyStatusBarStyle:(long long)arg1 toPartIdentifier:(id)arg2 ofSceneWithIdentifier:(id)arg3;
@@ -117,6 +119,7 @@
 - (id)createStatusBarWithFrame:(struct CGRect)arg1 interfaceOrientation:(long long)arg2 reason:(id)arg3;
 - (void)endRequiringStatusBarForReason:(id)arg1;
 - (void)beginRequiringStatusBarForReason:(id)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

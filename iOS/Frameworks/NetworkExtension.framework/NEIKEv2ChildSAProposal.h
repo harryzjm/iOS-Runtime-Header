@@ -26,6 +26,7 @@
     NEIKEv2DHProtocol *_chosenDHProtocol;
 }
 
++ (id)chooseChildSAProposalFromLocalProposals:(id)arg1 remoteProposals:(id)arg2 preferRemoteProposals:(_Bool)arg3 checkDHGroup:(_Bool)arg4;
 - (void).cxx_destruct;
 @property(retain) NEIKEv2DHProtocol *chosenDHProtocol; // @synthesize chosenDHProtocol=_chosenDHProtocol;
 @property(retain) NEIKEv2IntegrityProtocol *chosenIntegrityProtocol; // @synthesize chosenIntegrityProtocol=_chosenIntegrityProtocol;
@@ -43,7 +44,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)matchesProposal:(id)arg1 checkDHGroup:(_Bool)arg2;
 - (id)copyForRekey;
-- (id)copyFromRemote:(id)arg1 checkDHGroup:(_Bool)arg2;
+- (id)copyFromRemote:(id)arg1 checkDHGroup:(_Bool)arg2 preferRemoteProposal:(_Bool)arg3;
 @property(readonly) NEIKEv2DHProtocol *dhProtocol;
 @property(readonly) NEIKEv2IntegrityProtocol *integrityProtocol;
 @property(readonly) NEIKEv2EncryptionProtocol *encryptionProtocol;

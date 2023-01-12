@@ -25,8 +25,8 @@
 - (id)host;
 - (id)protocol;
 - (id)initWithURL:(id)arg1;
-- (struct SecurityOrigin *)_core;
-- (id)_initWithWebCoreSecurityOrigin:(struct SecurityOrigin *)arg1;
+- (void *)_core;
+- (id)_initWithWebCoreSecurityOrigin:(void *)arg1;
 - (id)databaseQuotaManager;
 - (id)applicationCacheQuotaManager;
 - (void)setQuota:(unsigned long long)arg1;

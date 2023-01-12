@@ -11,6 +11,7 @@
     _Bool _touchesPassThroughToSpringBoard;
 }
 
++ (id)_traitsArbiterOrientationActuationRole;
 + (_Bool)_isSecure;
 + (_Bool)sb_autorotates;
 + (id)defaultLayoutStrategy;
@@ -21,7 +22,7 @@
 - (_Bool)isOpaque;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 @property(readonly, nonatomic) SBAssistantRootViewController *assistantRootViewController; // @dynamic assistantRootViewController;
-- (id)initWithDebugName:(id)arg1;
+- (id)initWithRole:(id)arg1 debugName:(id)arg2;
 
 @end
 

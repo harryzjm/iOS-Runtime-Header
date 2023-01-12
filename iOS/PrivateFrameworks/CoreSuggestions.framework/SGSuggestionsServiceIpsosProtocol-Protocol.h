@@ -7,7 +7,7 @@
 @class NSArray;
 
 @protocol SGSuggestionsServiceIpsosProtocol
-- (NSArray *)ipsosMessagesWithSearchableItems:(NSArray *)arg1 error:(id *)arg2;
-- (void)ipsosMessagesWithSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
+- (NSArray *)ipsosMessagesFromSearchableItems:(NSArray *)arg1 error:(id *)arg2;
+- (void)ipsosMessagesFromSearchableItems:(NSArray *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 @end
 

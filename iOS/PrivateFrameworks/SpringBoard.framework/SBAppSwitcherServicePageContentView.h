@@ -22,6 +22,7 @@
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) _Bool contentRequiresGroupOpacity;
+@property(nonatomic) unsigned long long maskedCorners;
 @property(nonatomic) double cornerRadius;
 - (void)invalidate;
 - (id)initWithFrame:(struct CGRect)arg1;

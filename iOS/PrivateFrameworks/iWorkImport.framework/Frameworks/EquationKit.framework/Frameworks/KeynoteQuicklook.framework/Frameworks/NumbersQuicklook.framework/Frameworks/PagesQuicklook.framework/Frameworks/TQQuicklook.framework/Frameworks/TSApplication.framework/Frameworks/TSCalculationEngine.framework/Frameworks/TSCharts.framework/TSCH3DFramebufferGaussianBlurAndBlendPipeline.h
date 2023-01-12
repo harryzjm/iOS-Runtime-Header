@@ -8,15 +8,15 @@
 
 @interface TSCH3DFramebufferGaussianBlurAndBlendPipeline
 {
-    float mBlendFactor;
-    TSCH3DFramebuffer *mBlendTexture;
+    float _blendFactor;
+    TSCH3DFramebuffer *_blendTexture;
 }
 
 + (id)effectsArray;
-@property(retain, nonatomic) TSCH3DFramebuffer *blendTexture; // @synthesize blendTexture=mBlendTexture;
-@property(nonatomic) float blendFactor; // @synthesize blendFactor=mBlendFactor;
+- (void).cxx_destruct;
+@property(retain, nonatomic) TSCH3DFramebuffer *blendTexture; // @synthesize blendTexture=_blendTexture;
+@property(nonatomic) float blendFactor; // @synthesize blendFactor=_blendFactor;
 - (void)updateShaderEffectsStates;
-- (void)dealloc;
 
 @end
 

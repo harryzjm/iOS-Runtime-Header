@@ -23,11 +23,14 @@
 - (void)remoteService:(id)arg1 didEstablishConnection:(id)arg2;
 - (CDUnknownBlockType)_errorHandlerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxySynchronous:(_Bool)arg1 withFailureHandler:(CDUnknownBlockType)arg2;
+- (void)identityPassPrearmStatusSynchronous:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)noteWillDeleteAccountsSynchronous:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)statusForReceivedInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)statusForSentInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startSubcredentialProvisioningOnLocalDeviceMatchingInvitation:(id)arg1 shouldFetchAnonymizationSaltFromRemoteDevice:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startSubcredentialProvisioningOnRemoteDeviceForInvitation:(id)arg1;
+- (void)canAcceptInvitationOnRemoteDeviceForInvitation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleApplicationRedirectRequestOnPairedDeviceForPaymentPass:(id)arg1 transaction:(id)arg2;
 - (void)handleMetadataRequestOnPairedDevice:(id)arg1 withAssociatedApplicationIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 

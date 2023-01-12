@@ -10,7 +10,6 @@
 
 @class CKDPIdentifier, CKDPProtectionInfo, CKDPUserAlias, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPUser : PBCodable <NSCopying>
 {
     CKDPUserAlias *_alias;

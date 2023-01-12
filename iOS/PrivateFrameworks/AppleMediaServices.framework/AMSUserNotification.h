@@ -13,6 +13,7 @@
 @interface AMSUserNotification : NSObject <AMSBagConsumer>
 {
     _Bool _explicitContent;
+    _Bool _anonymizeMetrics;
     _Bool _shouldSuppressDefaultAction;
     ACAccount *_account;
     NSURL *_artworkUrl;
@@ -29,6 +30,7 @@
     NSString *_subtitle;
     NSString *_title;
     NSMutableDictionary *_userInfo;
+    unsigned long long _interruptionLevel;
     long long _intent;
     NSString *_categoryIdentifier;
     NSString *_threadIdentifier;
@@ -36,9 +38,9 @@
 
 + (id)handleNotificationResponse:(id)arg1 bagContract:(id)arg2;
 + (id)_serverFriendlyFormatter;
++ (id)_downloadAssetAtUrl:(id)arg1 withIdentifier:(id)arg2 logKey:(id)arg3 bag:(id)arg4;
 + (id)_identifierFromPayload:(id)arg1;
 + (id)_cachedImagePathForIdentifier:(id)arg1 assetURL:(id)arg2;
-+ (id)_downloadAssetAtUrl:(id)arg1 withIdentifier:(id)arg2 logKey:(id)arg3 bag:(id)arg4;
 + (_Bool)_canParseNotificationWithIdentifier:(id)arg1 userInfo:(id)arg2;
 + (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
@@ -60,6 +62,8 @@
 @property(nonatomic) _Bool shouldSuppressDefaultAction; // @synthesize shouldSuppressDefaultAction=_shouldSuppressDefaultAction;
 @property(retain, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property(nonatomic) long long intent; // @synthesize intent=_intent;
+@property(nonatomic) _Bool anonymizeMetrics; // @synthesize anonymizeMetrics=_anonymizeMetrics;
+@property(nonatomic) unsigned long long interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(retain, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
@@ -77,6 +81,7 @@
 @property(retain, nonatomic) NSURL *artworkUrl; // @synthesize artworkUrl=_artworkUrl;
 @property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)handleSelectedButton:(id)arg1 bagContract:(id)arg2;
+- (id)_generatePayloadWithBase:(id)arg1;
 - (id)handleSelectedButton:(id)arg1 bag:(id)arg2;
 - (id)determineSelectedActionFromResponse:(id)arg1 error:(id *)arg2;
 - (void)addButtonAction:(id)arg1;
@@ -86,10 +91,10 @@
 - (id)createNSUserNotification;
 - (id)initWithUNNotification:(id)arg1;
 - (id)initWithPayload:(id)arg1 andConfig:(id)arg2;
-- (id)_generatePayload;
 - (id)initWithNSUserNotification:(id)arg1;
 - (id)initWithTitle:(id)arg1 intent:(long long)arg2;
 - (id)initWithTitle:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

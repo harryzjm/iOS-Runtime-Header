@@ -11,16 +11,16 @@
 @interface TSPAlternateArchiverKey : NSObject <NSCopying>
 {
     unsigned long long _version;
-    const struct FieldPath *_fieldPath;
+    const void *_fieldPath;
 }
 
-@property(readonly, nonatomic) const struct FieldPath *fieldPath; // @synthesize fieldPath=_fieldPath;
+@property(readonly, nonatomic) const void *fieldPath; // @synthesize fieldPath=_fieldPath;
 @property(readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
-- (id)initWithVersion:(unsigned long long)arg1 fieldPath:(const struct FieldPath *)arg2;
+- (id)initWithVersion:(unsigned long long)arg1 fieldPath:(const void *)arg2;
 - (id)init;
 
 @end

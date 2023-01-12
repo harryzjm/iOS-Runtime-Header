@@ -32,39 +32,15 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)siblingPlaceType;
-+ (Class)childPlaceType;
 - (void).cxx_destruct;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (void)readAll:(_Bool)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (id)siblingPlaceAtIndex:(unsigned long long)arg1;
-- (unsigned long long)siblingPlacesCount;
-- (void)addSiblingPlace:(id)arg1;
-- (void)clearSiblingPlaces;
-@property(retain, nonatomic) NSMutableArray *siblingPlaces;
-@property(nonatomic) _Bool hasFeatureId;
-@property(nonatomic) unsigned long long featureId;
-- (id)childPlaceAtIndex:(unsigned long long)arg1;
-- (unsigned long long)childPlacesCount;
-- (void)addChildPlace:(id)arg1;
-- (void)clearChildPlaces;
-@property(retain, nonatomic) NSMutableArray *childPlaces;
-@property(retain, nonatomic) GEOPDLinkedPlace *parentPlace;
-@property(readonly, nonatomic) _Bool hasParentPlace;
 - (id)initWithData:(id)arg1;
 - (id)init;
 

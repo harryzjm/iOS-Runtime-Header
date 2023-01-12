@@ -14,5 +14,6 @@
 @property(readonly, copy, nonatomic) NSArray *labels;
 @property(readonly, nonatomic) float weight;
 @property(readonly, nonatomic) unsigned long long identifier;
+- (void)resolveIdentifier:(unsigned long long)arg1;
 @end
 

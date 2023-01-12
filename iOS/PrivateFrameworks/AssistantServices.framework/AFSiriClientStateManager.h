@@ -50,7 +50,7 @@
 - (void)endSessionForClient:(void *)arg1;
 - (void)beginSessionForClient:(void *)arg1;
 - (void)invalidateClient:(void *)arg1;
-- (id)init;
+- (id)initWithInstanceContext:(id)arg1;
 
 @end
 

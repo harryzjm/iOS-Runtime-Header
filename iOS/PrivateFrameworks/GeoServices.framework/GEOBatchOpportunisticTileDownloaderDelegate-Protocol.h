@@ -11,6 +11,6 @@
 @protocol GEOBatchOpportunisticTileDownloaderDelegate <NSObject>
 - (void)batchOpportunisticTileDownloaderDidFinish:(GEOBatchOpportunisticTileDownloader *)arg1;
 - (void)batchOpportunisticTileDownloader:(GEOBatchOpportunisticTileDownloader *)arg1 failedToLoadKey:(struct _GEOTileKey)arg2 error:(NSError *)arg3;
-- (void)batchOpportunisticTileDownloader:(GEOBatchOpportunisticTileDownloader *)arg1 receivedData:(GEOTileData *)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(NSString *)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(NSDictionary *)arg7;
+- (void)batchOpportunisticTileDownloader:(GEOBatchOpportunisticTileDownloader *)arg1 receivedData:(GEOTileData *)arg2 tileEdition:(unsigned int)arg3 tileSet:(CDUnion_23a7df3d)arg4 etag:(NSString *)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(NSDictionary *)arg7;
 @end
 

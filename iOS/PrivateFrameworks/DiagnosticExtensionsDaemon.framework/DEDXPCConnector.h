@@ -8,30 +8,40 @@
 
 #import <DiagnosticExtensionsDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class DEDXPCInbound, NSString, NSXPCConnection, NSXPCListener;
-@protocol DEDXPCConnectorDaemonDelegate, OS_os_log;
+@class NSArray, NSMutableDictionary, NSString, NSXPCConnection, NSXPCListener;
+@protocol DEDXPCConnectorDelegate, DEDXPCProtocol, OS_os_log;
 
 @interface DEDXPCConnector : NSObject <NSXPCListenerDelegate>
 {
     _Bool _isDaemon;
     _Bool _started;
-    NSXPCConnection *_connection;
-    id <DEDXPCConnectorDaemonDelegate> _daemonDelegate;
     NSObject<OS_os_log> *_log;
-    DEDXPCInbound *_inbound;
+    NSXPCConnection *_diagnosticextensionsdConnection;
+    NSMutableDictionary *_appConnections;
     NSXPCListener *_listener;
     unsigned long long _connType;
+    id <DEDXPCConnectorDelegate> _xpcConnectorDelegate;
+    unsigned long long _connectionRestartCount;
 }
 
 - (void).cxx_destruct;
+@property unsigned long long connectionRestartCount; // @synthesize connectionRestartCount=_connectionRestartCount;
+@property __weak id <DEDXPCConnectorDelegate> xpcConnectorDelegate; // @synthesize xpcConnectorDelegate=_xpcConnectorDelegate;
 @property _Bool started; // @synthesize started=_started;
 @property _Bool isDaemon; // @synthesize isDaemon=_isDaemon;
 @property unsigned long long connType; // @synthesize connType=_connType;
 @property(retain) NSXPCListener *listener; // @synthesize listener=_listener;
-@property(retain) DEDXPCInbound *inbound; // @synthesize inbound=_inbound;
+@property(retain) NSMutableDictionary *appConnections; // @synthesize appConnections=_appConnections;
+@property(retain) NSXPCConnection *diagnosticextensionsdConnection; // @synthesize diagnosticextensionsdConnection=_diagnosticextensionsdConnection;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
-@property __weak id <DEDXPCConnectorDaemonDelegate> daemonDelegate; // @synthesize daemonDelegate=_daemonDelegate;
-@property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(readonly) NSArray *clientConnections;
+- (void)_initializeDiagnosticextensionsdConnection;
+- (id)clientXPCInterfaceFromInbound:(id)arg1;
+- (id)_connectionForPid:(id)arg1;
+- (void)_releaseAppConnectionWithPid:(int)arg1;
+- (void)_storeAppConnection:(id)arg1;
+@property(readonly) id <DEDXPCProtocol> diagnosticextensionsdXPCInterface;
+- (id)remoteXPCObjectForApplicationPid:(id)arg1;
 - (id)_whitelistedXPCInterface;
 - (id)connectionWithEndpoint:(id)arg1 forMachService:(id)arg2;
 - (void)startForApp;
@@ -39,10 +49,9 @@
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)startForDaemon;
 - (void)start;
-- (void)configureXPCInbound:(id)arg1;
-- (void)configureDaemonModeWithDelegate:(id)arg1;
+- (void)configureDaemonMode;
 - (void)configureConnectionType:(unsigned long long)arg1;
-- (id)init;
+- (id)initWithDelegate:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

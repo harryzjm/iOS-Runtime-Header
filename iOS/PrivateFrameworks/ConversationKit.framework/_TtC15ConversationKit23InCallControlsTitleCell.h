@@ -4,34 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKit/UICollectionViewListCell.h>
 
-@class MISSING_TYPE, _TtC15ConversationKit19InCallControlButton;
+@class MISSING_TYPE;
 
-@interface _TtC15ConversationKit23InCallControlsTitleCell : UITableViewCell
+@interface _TtC15ConversationKit23InCallControlsTitleCell : UICollectionViewListCell
 {
-    MISSING_TYPE *subtitleLabel;
-    MISSING_TYPE *titleLabel;
-    MISSING_TYPE *messagesButton;
-    MISSING_TYPE *isAccessiblityConstraintsEnabled;
-    MISSING_TYPE *singleLabelTopConstraint;
-    MISSING_TYPE *singleLabelBottomConstraint;
-    MISSING_TYPE *dualLabelTopConstraint;
-    MISSING_TYPE *dualLabelBottomConstraint;
-    MISSING_TYPE *interLabelConstraint;
-    MISSING_TYPE *trailingTextLayoutGuide;
-    MISSING_TYPE *trailingTextShowingButtonLayoutConstraint;
-    MISSING_TYPE *trailingTextHidingButtonLayoutConstraint;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *avatarHeaderViewController;
 }
 
 - (void).cxx_destruct;
-- (void)didTapMessagesButton:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (id)init;
-@property(nonatomic, readonly) _TtC15ConversationKit19InCallControlButton *messagesButton; // @synthesize messagesButton;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

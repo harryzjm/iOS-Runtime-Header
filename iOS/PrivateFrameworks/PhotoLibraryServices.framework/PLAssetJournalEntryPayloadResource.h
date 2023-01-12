@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, PLJournalEntryPayload;
 
 @interface PLAssetJournalEntryPayloadResource : NSObject
 {
     NSDictionary *_payloadAttributes;
+    PLJournalEntryPayload *_payload;
 }
 
++ (_Bool)isValidForPersistenceWithRecipeID:(unsigned int)arg1;
 + (void)_applyLargeVideoRecipeRefactorFixToExternalResource:(id)arg1 withAsset:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDictionary *payloadAttributes; // @synthesize payloadAttributes=_payloadAttributes;
 - (id)description;
+- (_Bool)isValidForPersistence;
 - (_Bool)isReferenceResource;
 - (_Bool)isAdjusted;
 - (_Bool)isOriginalResource;
@@ -29,11 +32,14 @@
 @property(readonly, nonatomic) unsigned int recipeID;
 @property(readonly, nonatomic) unsigned int version;
 @property(readonly, nonatomic) unsigned int resourceType;
-@property(readonly, nonatomic) unsigned int dataStoreClassID;
+@property(readonly, nonatomic) unsigned short dataStoreClassID;
 @property(readonly, nonatomic) unsigned long long cplType;
+- (void)mergePayloadResource:(id)arg1 nilAttributes:(id)arg2;
+- (_Bool)isEqualToPayloadResource:(id)arg1;
+- (void)appendToDescriptionBuilder:(id)arg1;
 - (void)updateStoredResource:(id)arg1;
 - (id)validatedExternalResourceWithAsset:(id)arg1 isCPLEnabled:(_Bool)arg2;
-- (id)initWithPayloadAttributes:(id)arg1;
+- (id)initWithPayloadAttributes:(id)arg1 payload:(id)arg2;
 
 @end
 

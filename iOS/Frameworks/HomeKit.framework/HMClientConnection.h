@@ -15,13 +15,14 @@
 {
     NSObject<OS_dispatch_queue> *_clientQueue;
     HMXPCClient *_xpcClient;
-    HMFMessageDispatcher *_msgDispatcher;
     NSUUID *_uuid;
+    HMFMessageDispatcher *_msgDispatcher;
 }
 
 + (_Bool)areAnyAppleTVAccessoriesConfigured;
 + (_Bool)areAnyTelevisionAccessoriesConfigured;
 + (_Bool)areAnyHomePodsConfigured;
++ (_Bool)areAnySmallHomePodsConfigured;
 + (_Bool)areAnySpeakersConfigured;
 + (_Bool)areAnyAccessoriesConfigured;
 + (id)siriHomeIdentifier;
@@ -29,10 +30,15 @@
 + (_Bool)areHomesConfigured;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(retain, nonatomic) HMXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+- (void)_primaryAccountWasDeletedWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_IDMSAccountUsernameModifiedWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_primaryAccountDidChange:(id)arg1 modified:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_invokeCompletionHandler:(CDUnknownBlockType)arg1 withError:(id)arg2;
+- (void)notifyAccountStatusUpdate:(unsigned long long)arg1 accountIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_reportIntentResultTohandler:(CDUnknownBlockType)arg1;
 - (void)_reportResultsTohandler:(CDUnknownBlockType)arg1;
 - (void)requestSiriSyncDataWithValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -42,7 +48,6 @@
 - (void)_start;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
-- (void)dealloc;
 - (id)initWithNoValidation;
 - (id)init;
 

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSArray *_validators; // @synthesize _validators=__validators;
+- (id)valueForKeyPath:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (_Bool)isCompleteWithContext:(id)arg1 error:(id *)arg2;
 - (_Bool)isValidWithContext:(id)arg1 error:(id *)arg2;

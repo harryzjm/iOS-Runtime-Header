@@ -100,7 +100,10 @@
 - (void)deleteRecording:(id)arg1;
 - (void)eraseRecordings:(id)arg1;
 - (void)eraseRecording:(id)arg1;
+- (void)_deleteFolderAndRecordings:(id)arg1 shouldPermanentlyErase:(_Bool)arg2;
+- (void)deleteFolderAndPermanentlyEraseAllPlayableRecordings:(id)arg1;
 - (void)erasePlayableRecordingsInFolder:(id)arg1;
+- (void)deleteFolderAndAllPlayableRecordings:(id)arg1;
 - (void)deletePlayableRecordingsInFolder:(id)arg1;
 - (void)removeRecording:(id)arg1 fromFolder:(id)arg2;
 - (void)addRecording:(id)arg1 toFolder:(id)arg2;
@@ -133,9 +136,9 @@
 - (id)transactionForToken:(id)arg1;
 - (id)enumerateChangeHistorySinceToken:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_transactionHistorySinceToken:(id)arg1;
+- (void)resetPersistedTransientState;
 - (void)_enumerateFetchedRecordingTitles:(CDUnknownBlockType)arg1;
 - (id)_allTitles;
-- (id)enumerateExistingRecordingsSinceChangeToken:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateExistingRecordingsWithProperties:(id)arg1 sortDescriptors:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)enumerateExistingRecordingsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateRecordingsWithEntityDescription:(id)arg1 propertiesToFetch:(id)arg2 sortDescriptors:(id)arg3 withBlock:(CDUnknownBlockType)arg4;
@@ -164,6 +167,7 @@
 @property(readonly, nonatomic) NSSet *audioProperties;
 @property(readonly, nonatomic) NSArray *allRecordings;
 - (id)mirroringRequestOptions;
+- (id)mirroringDelegate;
 - (id)mirroringOptions;
 - (id)folderEntity;
 - (id)cloudRecordingEntity;

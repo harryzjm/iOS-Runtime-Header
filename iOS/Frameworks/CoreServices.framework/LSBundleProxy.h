@@ -6,7 +6,7 @@
 
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, NSUUID, _LSBundleIDValidationToken, _LSLazyPropertyList;
+@class NSArray, NSDictionary, NSString, NSURL, NSUUID, _LSLazyPropertyList;
 
 @interface LSBundleProxy <NSSecureCoding>
 {
@@ -19,8 +19,6 @@
     NSURL *_bundleContainerURL;
     NSString *_bundleVersion;
     NSString *_sdkVersion;
-    NSString *_signerIdentity;
-    NSString *_signerOrganization;
     NSUUID *_cacheGUID;
     unsigned long long _sequenceNumber;
     NSArray *_machOUUIDs;
@@ -28,7 +26,6 @@
     _LSLazyPropertyList *__infoDictionary;
     _LSLazyPropertyList *__entitlements;
     _LSLazyPropertyList *__environmentVariables;
-    _LSBundleIDValidationToken *__validationToken;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -40,7 +37,6 @@
 + (id)bundleProxyForURL:(id)arg1;
 + (id)bundleProxyForIdentifier:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic, setter=_setValidationToken:) _LSBundleIDValidationToken *_validationToken; // @synthesize _validationToken=__validationToken;
 @property(copy, nonatomic, setter=_setEnvironmentVariables:) _LSLazyPropertyList *_environmentVariables; // @synthesize _environmentVariables=__environmentVariables;
 @property(copy, nonatomic, setter=_setEntitlements:) _LSLazyPropertyList *_entitlements; // @synthesize _entitlements=__entitlements;
 @property(copy, nonatomic, setter=_setInfoDictionary:) _LSLazyPropertyList *_infoDictionary; // @synthesize _infoDictionary=__infoDictionary;
@@ -48,10 +44,8 @@
 @property(copy, nonatomic) NSArray *machOUUIDs; // @synthesize machOUUIDs=_machOUUIDs;
 @property(readonly, nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property(readonly, nonatomic) NSUUID *cacheGUID; // @synthesize cacheGUID=_cacheGUID;
-@property(readonly, nonatomic) NSString *signerOrganization; // @synthesize signerOrganization=_signerOrganization;
 @property(readonly, nonatomic, getter=isContainerized) _Bool containerized; // @synthesize containerized=_containerized;
 @property(readonly, nonatomic) _Bool foundBackingBundle; // @synthesize foundBackingBundle=_foundBackingBundle;
-@property(readonly, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
 @property(copy, nonatomic, setter=setSDKVersion:) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property(readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property(readonly, nonatomic) NSURL *bundleContainerURL; // @synthesize bundleContainerURL=_bundleContainerURL;
@@ -70,6 +64,8 @@
 - (id)entitlementValueForKey:(id)arg1 ofClass:(Class)arg2;
 - (id)entitlementValuesForKeys:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *entitlements;
+@property(readonly, nonatomic) NSString *signerOrganization; // @dynamic signerOrganization;
+@property(readonly, nonatomic) NSString *signerIdentity; // @dynamic signerIdentity;
 @property(readonly, nonatomic) NSDictionary *environmentVariables; // @dynamic environmentVariables;
 @property(readonly, nonatomic) NSURL *appStoreReceiptURL; // @dynamic appStoreReceiptURL;
 - (id)appStoreReceiptName;

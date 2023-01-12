@@ -8,10 +8,11 @@
 
 #import <ActionKit/WFDynamicEnumerationDataSource-Protocol.h>
 #import <ActionKit/WFMediaRoutePickerObserver-Protocol.h>
+#import <ActionKit/WFParameterValuePickable-Protocol.h>
 
 @class NSString, WFMediaRoutePicker;
 
-@interface WFMediaRoutePickerParameter : WFDynamicEnumerationParameter <WFDynamicEnumerationDataSource, WFMediaRoutePickerObserver>
+@interface WFMediaRoutePickerParameter : WFDynamicEnumerationParameter <WFParameterValuePickable, WFDynamicEnumerationDataSource, WFMediaRoutePickerObserver>
 {
     WFMediaRoutePicker *_routePicker;
 }
@@ -23,7 +24,7 @@
 - (void)startLiveUpdatingPossibleStates;
 - (_Bool)liveUpdatesPossibleStatesInEditor;
 - (_Bool)hidesAccessoryIconInEditor;
-- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)accessoryImageForPossibleState:(id)arg1;
 - (_Bool)parameterStateIsValid:(id)arg1;
 - (id)sortedStatesForAvailableRoutes:(id)arg1;
 - (id)enumeration:(id)arg1 localizedLabelForPossibleState:(id)arg2;
@@ -37,12 +38,19 @@
 @property(readonly, nonatomic) long long routeType;
 - (id)initWithDefinition:(id)arg1;
 - (Class)singleStateClass;
+@property(readonly, nonatomic) _Bool wf_alwaysScaleIconImage;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool wf_allowsMultipleSelection;
+@property(readonly, nonatomic) NSString *wf_displayLocalizedPrompt;
+@property(readonly, nonatomic) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
+@property(readonly, nonatomic) _Bool wf_supportsSearch;
+@property(readonly, nonatomic) _Bool wf_usesGroupTableViewStyle;
+@property(readonly, nonatomic) _Bool wf_usesTogglesForSelection;
 
 @end
 

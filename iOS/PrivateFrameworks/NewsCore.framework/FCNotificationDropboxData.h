@@ -19,6 +19,7 @@
 @property(readonly, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) int deviceDigestMode;
 @property(readonly, copy, nonatomic) NSString *storefrontID;
 @property(readonly, copy, nonatomic) NSString *deviceToken;
 @property(readonly, copy, nonatomic) NSString *notificationUserID;

@@ -11,14 +11,12 @@
 }
 
 + (id)demoAppCategoriesForRealAppCategories:(id)arg1;
-+ (id)_categoryForIndex:(long long)arg1 inDefaults:(id)arg2 realCategories:(id)arg3;
-+ (void)_registerDefaultsForAppCategories:(id)arg1;
-+ (_Bool)isAppCategoryDemoModeEnabled;
++ (id)_parseCategory:(id)arg1 realCategories:(id)arg2;
 + (id)demoSuggestionsAndRecents;
-+ (void)_registerDefaultsForSuggestionsAndRecents:(id)arg1;
-+ (id)_getBundleIdsForPrefix:(id)arg1 inDefaults:(id)arg2;
-+ (_Bool)isSuggestionsAndRecentsDemoModeEnabled;
-+ (id)_defaults;
++ (id)bundleIdsForCategoryWithName:(id)arg1 in:(id)arg2;
++ (id)loadCategoriesFromDisk;
++ (_Bool)isAppLibraryDemoModeEnabled;
++ (id)demoAppLibraryPath;
 
 @end
 

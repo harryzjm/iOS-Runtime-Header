@@ -6,18 +6,18 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSArray, VSOptional, VSStoreURLBag;
+@class NSArray, NSOperationQueue, VSOptional;
 
 __attribute__((visibility("hidden")))
 @interface VSFeaturedIdentityProviderLimitingOperation : VSAsyncOperation
 {
     NSArray *_unlimitedIdentityProviders;
     VSOptional *_result;
-    VSStoreURLBag *_bag;
+    NSOperationQueue *_privateQueue;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
+@property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(retain, nonatomic) VSOptional *result; // @synthesize result=_result;
 @property(copy, nonatomic) NSArray *unlimitedIdentityProviders; // @synthesize unlimitedIdentityProviders=_unlimitedIdentityProviders;
 - (void)executionDidBegin;

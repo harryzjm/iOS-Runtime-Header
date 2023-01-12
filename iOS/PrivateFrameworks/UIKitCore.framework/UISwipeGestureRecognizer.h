@@ -13,6 +13,7 @@
     double _maximumPrimaryMovement;
     double _minimumSecondaryMovement;
     double _maximumSecondaryMovement;
+    double _minimumPrimaryMovementRate;
     double _rateOfMinimumMovementDecay;
     double _rateOfMaximumMovementDecay;
     unsigned long long _numberOfTouchesRequired;
@@ -21,6 +22,8 @@
     struct CGPoint _startLocation;
     struct CGPoint *_startLocations;
     double _startTime;
+    struct CGPoint *_previousLocations;
+    double _previousTime;
     _Bool _failed;
 }
 

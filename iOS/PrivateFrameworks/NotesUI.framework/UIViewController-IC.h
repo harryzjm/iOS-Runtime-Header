@@ -10,8 +10,10 @@
 
 @interface UIViewController (IC)
 + (void)ic_enableUIViewAnimations:(_Bool)arg1 forBlock:(CDUnknownBlockType)arg2;
+- (void)ic_performBlockAfterActiveTransition:(CDUnknownBlockType)arg1;
 - (void)ic_dismissViewControllerOfClass:(Class)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool ic_isBeingRevealedFromPoppingViewController;
+@property(readonly, nonatomic) _Bool ic_hasFullScreenModalPresentationStyle;
 @property(readonly, nonatomic) UIWindowScene *ic_windowScene;
 @property(readonly, nonatomic) UINavigationController *ic_rootNavigationController;
 - (id)ic_embedInNavigationControllerForModalPresentation;

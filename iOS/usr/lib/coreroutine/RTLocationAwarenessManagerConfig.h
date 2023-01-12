@@ -17,8 +17,10 @@
     double _activeDuration;
     double _minMetricSubmissionAge;
     double _maxHorizontalAccuracyForCoarseLocation;
+    double _highAccuracyLocationRequestDuration;
 }
 
+@property(readonly, nonatomic) double highAccuracyLocationRequestDuration; // @synthesize highAccuracyLocationRequestDuration=_highAccuracyLocationRequestDuration;
 @property(readonly, nonatomic) double maxHorizontalAccuracyForCoarseLocation; // @synthesize maxHorizontalAccuracyForCoarseLocation=_maxHorizontalAccuracyForCoarseLocation;
 @property(readonly, nonatomic) double minMetricSubmissionAge; // @synthesize minMetricSubmissionAge=_minMetricSubmissionAge;
 @property(readonly, nonatomic) double activeDuration; // @synthesize activeDuration=_activeDuration;
@@ -28,7 +30,7 @@
 @property(readonly, nonatomic) double heartbeatIntervalResolution; // @synthesize heartbeatIntervalResolution=_heartbeatIntervalResolution;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithHeartbeatIntervalResolution:(double)arg1 maxHeartbeatInterval:(double)arg2 dispatchTimerLeeway:(double)arg3 requiredHorizontalAccuracy:(double)arg4 activeDuration:(double)arg5 minMetricSubmissionAge:(double)arg6 maxHorizontalAccuracyForCoarseLocation:(double)arg7;
+- (id)initWithHeartbeatIntervalResolution:(double)arg1 maxHeartbeatInterval:(double)arg2 dispatchTimerLeeway:(double)arg3 requiredHorizontalAccuracy:(double)arg4 activeDuration:(double)arg5 minMetricSubmissionAge:(double)arg6 maxHorizontalAccuracyForCoarseLocation:(double)arg7 highAccuracyLocationRequestDuration:(double)arg8;
 
 @end
 

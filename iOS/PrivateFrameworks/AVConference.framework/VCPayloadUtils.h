@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)canBundleExternallyForPayload:(int)arg1 forBundlingScheme:(int)arg2 operatingMode:(int)arg3;
 + (_Bool)shouldUseCookieForPayload:(int)arg1;
 + (_Bool)canSetBitrateForPayload:(int)arg1;
-+ (unsigned int)blockSizeForPayload:(int)arg1;
++ (unsigned int)codecSamplesPerFrameForPayload:(int)arg1 blockSize:(double)arg2;
 + (unsigned int)sampleRateForPayload:(int)arg1;
 + (_Bool)isPayloadSupportedInFaceTime:(int)arg1;
 + (_Bool)isUseCaseWatchContinuity:(int)arg1 primaryPayload:(int)arg2;

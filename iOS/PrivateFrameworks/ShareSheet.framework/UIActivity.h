@@ -9,14 +9,17 @@
 #import <ShareSheet/UIActivityExtensionItemDataProviding-Protocol.h>
 #import <ShareSheet/UIActivityExtensionItemDataReceiving-Protocol.h>
 
-@class NSArray, NSExtension, NSString, NSUUID, UIImage, UIViewController, _UIActivityResourceLoader;
+@class NSArray, NSExtension, NSString, NSURL, NSUUID, UIColor, UIImage, UIViewController, _UIActivityResourceLoader;
 
 @interface UIActivity : NSObject <UIActivityExtensionItemDataProviding, UIActivityExtensionItemDataReceiving>
 {
     long long _defaultPriority;
     _UIActivityResourceLoader *_activityImageLoader;
     _UIActivityResourceLoader *_activitySettingsImageLoader;
+    _Bool _isInsideDescription;
+    NSURL *_representationCacheURL;
     CDUnknownBlockType _activityCompletionWithItemsHandler;
+    NSString *_activitySectionIdentifier;
     CDUnknownBlockType _didFinishPerformingActivityHandler;
     long long _maxPreviews;
     NSString *_contentSizeCategory;
@@ -28,9 +31,10 @@
 + (Class)classForPreparingExtensionItemData;
 + (id)preparedActivityExtensionItemDataForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
 + (id)_activityExtensionItemsForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
++ (id)_actionImageForActionRepresentationImage:(id)arg1 contentSizeCategory:(id)arg2 monochrome:(_Bool)arg3;
 + (id)_actionImageForActionRepresentationImage:(id)arg1 contentSizeCategory:(id)arg2;
 + (id)_stringFromActivityCategory:(long long)arg1;
-+ (void)_loadItemProvidersFromActivityItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)_loadItemProvidersFromActivityItems:(id)arg1 withCacheURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (double)imageWidthForContentSizeCategory:(id)arg1;
 + (void)_performAfterActivityImageLoadingCompletes:(CDUnknownBlockType)arg1;
 + (id)_defaultFallbackActivityType;
@@ -53,6 +57,7 @@
 @property(retain, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(nonatomic) long long maxPreviews; // @synthesize maxPreviews=_maxPreviews;
 @property(copy, nonatomic) CDUnknownBlockType didFinishPerformingActivityHandler; // @synthesize didFinishPerformingActivityHandler=_didFinishPerformingActivityHandler;
+@property(copy, nonatomic) NSString *activitySectionIdentifier; // @synthesize activitySectionIdentifier=_activitySectionIdentifier;
 @property(copy, nonatomic) CDUnknownBlockType activityCompletionWithItemsHandler; // @synthesize activityCompletionWithItemsHandler=_activityCompletionWithItemsHandler;
 - (void)prepareWithActivityExtensionItemData:(id)arg1;
 - (id)_actionBundleImageConfiguration;
@@ -61,6 +66,7 @@
 @property(readonly, nonatomic) CDUnknownBlockType _backgroundPreheatBlock;
 @property(readonly, nonatomic) _UIActivityResourceLoader *_activitySettingsImageLoader;
 @property(readonly, nonatomic) _UIActivityResourceLoader *_activityImageLoader;
+- (void)_loadItemProvidersFromActivityItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_wantsInitialSocialText;
 - (_Bool)_wantsAttachmentURLItemData;
 - (_Bool)_wantsThumbnailItemData;
@@ -86,6 +92,7 @@
 @property(readonly, nonatomic) UIImage *activityImage;
 @property(readonly, nonatomic) NSString *activityTitle;
 @property(readonly, nonatomic) NSString *activityType;
+@property(readonly, copy) NSString *description;
 - (id)init;
 - (struct CGSize)_thumbnailSize;
 - (void)_prepareWithActivityItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -95,7 +102,16 @@
 - (_Bool)_presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_cleanup;
 - (id)_embeddedActivityViewController;
+@property(readonly, nonatomic) NSString *_heroActionTitle;
+@property(readonly, nonatomic) UIColor *_activityStatusTintColor;
+@property(readonly, nonatomic) UIImage *_activityStatusImage;
+@property(readonly, nonatomic) UIColor *_activityBadgeTextColor;
+@property(readonly, nonatomic) UIColor *_activityBadgeColor;
+@property(readonly, nonatomic) NSString *_activityBadgeText;
+@property(readonly, nonatomic) _Bool _isDisabled;
+@property(readonly, nonatomic) NSString *_activitySubtitle;
 - (id)_beforeActivity;
+- (_Bool)_wantsOriginalImageColor;
 - (id)_activitySettingsImage;
 - (id)_activityImage;
 - (id)_systemImageName;
@@ -112,7 +128,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

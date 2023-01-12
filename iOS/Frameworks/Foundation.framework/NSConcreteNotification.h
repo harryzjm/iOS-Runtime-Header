@@ -12,11 +12,8 @@ __attribute__((visibility("hidden")))
     NSString *name;
     id object;
     NSDictionary *userInfo;
-    _Bool dyingObject;
 }
 
-+ (id)newTempNotificationWithName:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
-- (void)recycle;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
 - (id)userInfo;

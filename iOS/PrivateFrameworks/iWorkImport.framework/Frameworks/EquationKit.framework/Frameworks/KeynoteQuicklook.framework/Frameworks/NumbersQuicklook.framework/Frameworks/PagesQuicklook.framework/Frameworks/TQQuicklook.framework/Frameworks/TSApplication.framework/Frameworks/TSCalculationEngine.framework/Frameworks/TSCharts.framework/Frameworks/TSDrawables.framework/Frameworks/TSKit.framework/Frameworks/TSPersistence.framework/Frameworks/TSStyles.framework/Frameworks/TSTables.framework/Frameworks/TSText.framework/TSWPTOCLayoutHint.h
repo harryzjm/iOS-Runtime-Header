@@ -18,8 +18,8 @@
 
 + (Class)archivedHintClass;
 @property(readonly, nonatomic) struct _NSRange charRange; // @synthesize charRange=_charRange;
-- (void)saveToArchive:(struct TOCLayoutHintArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct TOCLayoutHintArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) _Bool isFirstHint;
 @property(readonly, nonatomic) id <TSDHint> lastChildHint;
 @property(readonly, nonatomic) id <TSDHint> firstChildHint;

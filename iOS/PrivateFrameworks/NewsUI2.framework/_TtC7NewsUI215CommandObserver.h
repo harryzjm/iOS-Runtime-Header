@@ -13,6 +13,8 @@
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
+    MISSING_TYPE *tagService;
+    MISSING_TYPE *navigator;
 }
 
 @end

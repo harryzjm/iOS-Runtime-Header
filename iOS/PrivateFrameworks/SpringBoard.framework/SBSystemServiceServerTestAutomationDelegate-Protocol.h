@@ -6,10 +6,11 @@
 
 #import <SpringBoard/SBSystemServiceServerDelegate-Protocol.h>
 
-@class BSMachPortSendRight, NSString, SBSystemServiceServer;
+@class BSMachPortSendRight, NSArray, NSString, SBSystemServiceServer;
 @protocol FBSServiceFacilityClientHandle;
 
 @protocol SBSystemServiceServerTestAutomationDelegate <SBSystemServiceServerDelegate>
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 addWidgetStackWithIdentifiers:(NSArray *)arg3 toPage:(long long)arg4 withSizing:(long long)arg5;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 addWidgetWithIdentifier:(NSString *)arg3 toPage:(long long)arg4 withSizing:(long long)arg5;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 addWidgetsToEachPageForClient:(id <FBSServiceFacilityClientHandle>)arg2;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 loadStashedSwitcherModelFromPath:(NSString *)arg3;
@@ -18,12 +19,16 @@
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setTestRunnerRecoveryApplicationBundleIdentifier:(NSString *)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setApplicationBundleIdentifier:(NSString *)arg3 blockedForScreenTime:(_Bool)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 port:(BSMachPortSendRight *)arg3 acquireHUDHiddenAssertionForIdentifier:(NSString *)arg4;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setAccessoryType:(long long)arg3 attached:(_Bool)arg4;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 resetToHomeScreenAnimated:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 port:(BSMachPortSendRight *)arg3 acquireAssertionForReachabilityEnabled:(_Bool)arg4;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setReachabilityActive:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setHiddenFeaturesEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setMallocStackLoggingEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setOrientationLockEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setIdleTimerEnabled:(_Bool)arg3;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 client:(id <FBSServiceFacilityClientHandle>)arg2 setAlertsEnabled:(_Bool)arg3;
+- (void)systemServiceServer:(SBSystemServiceServer *)arg1 clearAllUserNotificationsForClient:(id <FBSServiceFacilityClientHandle>)arg2;
 - (void)systemServiceServer:(SBSystemServiceServer *)arg1 suspendAllDisplaysForClient:(id <FBSServiceFacilityClientHandle>)arg2;
 @end
 

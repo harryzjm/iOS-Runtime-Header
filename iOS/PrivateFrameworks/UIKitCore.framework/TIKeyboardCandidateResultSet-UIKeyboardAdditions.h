@@ -6,7 +6,11 @@
 
 #import <TextInput/TIKeyboardCandidateResultSet.h>
 
+@class NSArray;
+
 @interface TIKeyboardCandidateResultSet (UIKeyboardAdditions)
+@property(readonly, nonatomic) NSArray *ui_uniqueSupplementalCandidates;
+@property(readonly, nonatomic) _Bool hasAutofillCandidates;
 @property(readonly, nonatomic) unsigned long long slottedCandidatesCount;
 @property(readonly, nonatomic) _Bool hasOnlyCompletionCandidates;
 @property(readonly, nonatomic) _Bool hasOnlySlottedCandidates;

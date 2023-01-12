@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NAAudioButton, NSArray, UIMenu;
 @protocol FCHeadlineProviding;
 
 @protocol NAAudioActionHandlerType
 - (NSArray *)accessibilityActionsForSheetFor:(id <FCHeadlineProviding>)arg1 willPerform:(void (^)(long long))arg2;
 - (void)performActionsFor:(id <FCHeadlineProviding>)arg1 willPerform:(void (^)(long long))arg2;
+- (UIMenu *)buttonActionsFor:(id <FCHeadlineProviding>)arg1 willPerform:(void (^)(long long))arg2;
+- (void)setAudioButtonMenuOn:(NAAudioButton *)arg1;
 @end
 

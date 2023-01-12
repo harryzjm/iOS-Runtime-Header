@@ -6,7 +6,7 @@
 
 #import <TipsCore/TPSSerializableObject.h>
 
-@class NSArray, NSString, TPSContextualCondition;
+@class NSArray, NSString, TPSContextualCondition, TPSMonitoringEvents;
 
 @interface TPSContextualInfo : TPSSerializableObject
 {
@@ -17,6 +17,7 @@
     NSString *_identifier;
     NSArray *_displayBundleIDs;
     NSArray *_eligibleContext;
+    TPSMonitoringEvents *_monitoringEvents;
     NSArray *_usageEvents;
     TPSContextualCondition *_triggerCondition;
     TPSContextualCondition *_desiredOutcomeCondition;
@@ -25,12 +26,12 @@
 + (void)eventsInfoArrayForContextualInfoDictionary:(id)arg1 triggerEvents:(id *)arg2 desiredOutcomeEvents:(id *)arg3;
 + (id)identifierFromDictionary:(id)arg1;
 + (id)contentDictionaryWithTipDeliveryInfoId:(id)arg1 deliveryInfoMap:(id)arg2;
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) TPSContextualCondition *desiredOutcomeCondition; // @synthesize desiredOutcomeCondition=_desiredOutcomeCondition;
 @property(copy, nonatomic) TPSContextualCondition *triggerCondition; // @synthesize triggerCondition=_triggerCondition;
 @property(copy, nonatomic) NSArray *usageEvents; // @synthesize usageEvents=_usageEvents;
+@property(copy, nonatomic) TPSMonitoringEvents *monitoringEvents; // @synthesize monitoringEvents=_monitoringEvents;
 @property(copy, nonatomic) NSArray *eligibleContext; // @synthesize eligibleContext=_eligibleContext;
 @property(copy, nonatomic) NSArray *displayBundleIDs; // @synthesize displayBundleIDs=_displayBundleIDs;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -39,7 +40,6 @@
 @property(nonatomic) long long customizationID; // @synthesize customizationID=_customizationID;
 @property(readonly, nonatomic) int priority; // @synthesize priority=_priority;
 - (id)debugDescription;
-- (id)dismissalEventIdentifiers;
 - (void)restartDesiredOutcomeTracking;
 - (void)restartTriggerTracking;
 - (id)conditionForType:(unsigned long long)arg1;

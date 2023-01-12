@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface CASlotProxy : NSObject
 {
-    struct Proxy *_proxy;
+    void *_proxy;
 }
 
 - (struct Object *)CA_copyRenderValue;

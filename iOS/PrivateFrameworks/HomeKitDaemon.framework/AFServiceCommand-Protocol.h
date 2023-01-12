@@ -6,13 +6,14 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class AFCommandExecutionInfo, NSDictionary;
 @protocol AFServiceHelper;
 
 @protocol AFServiceCommand <NSObject>
 
 @optional
 - (id)initWithDictionary:(NSDictionary *)arg1;
+- (void)performWithCompletion:(void (^)(NSDictionary *))arg1 serviceHelper:(id <AFServiceHelper>)arg2 executionInfo:(AFCommandExecutionInfo *)arg3;
 - (void)performWithCompletion:(void (^)(NSDictionary *))arg1 serviceHelper:(id <AFServiceHelper>)arg2;
 - (void)performWithCompletion:(void (^)(NSDictionary *))arg1;
 @end

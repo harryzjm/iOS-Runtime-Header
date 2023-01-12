@@ -15,7 +15,6 @@
     NSMutableDictionary *_blocksForLoadingContainerPIDs;
     NSObject<OS_dispatch_queue> *_containerFillQueue;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    unsigned int _databaseID;
     id <MPArtworkDataSource> _artworkDataSource;
 }
 
@@ -25,7 +24,6 @@
 + (void)beginScanningForLibraries;
 + (_Bool)isScanningForLibraries;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned int databaseID; // @synthesize databaseID=_databaseID;
 @property(readonly, nonatomic) HSHomeSharingLibrary *homeSharingLibrary; // @synthesize homeSharingLibrary=_homeSharingLibrary;
 - (id)artworkDataSource;
 - (void)_fillContainerForQueryCriteria:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -56,6 +54,7 @@
 - (void)dealloc;
 - (id)initWithHomeSharingLibrary:(id)arg1;
 - (id)URLForItemDataRequest:(id)arg1;
+@property(readonly, nonatomic) unsigned int databaseID;
 
 @end
 

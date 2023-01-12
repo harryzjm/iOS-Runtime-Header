@@ -6,15 +6,20 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDBackgroundTaskScheduler, HDPluginManager, HDPrimaryProfile, NSArray, NSObject, NSString, Protocol, _HKBehavior;
-@protocol HDHealthDaemonActivatedObserver, HDHealthDaemonReadyObserver, HDNanoAlertSuppressionService, OS_dispatch_queue;
+@class HDBackgroundTaskScheduler, HDCacheDeleteCoordinator, HDPluginManager, HDPostInstallUpdateManager, HDPrimaryProfile, NSArray, NSObject, NSString, Protocol, _HKBehavior;
+@protocol HDHealthDaemonActivatedObserver, HDHealthDaemonReadyObserver, HDNanoAlertSuppressionService, HDProtectedResourceStoreProvider, OS_dispatch_queue;
 
 @protocol HDHealthDaemon <NSObject>
 @property(readonly, nonatomic) _HKBehavior *behavior;
+@property(readonly, nonatomic) HDPostInstallUpdateManager *postInstallUpdateManager;
+@property(readonly, nonatomic) HDCacheDeleteCoordinator *cacheDeleteCoordinator;
 @property(retain, nonatomic) id <HDNanoAlertSuppressionService> alertSuppressionService;
 @property(readonly, nonatomic) HDPrimaryProfile *primaryProfile;
 @property(readonly) HDPluginManager *pluginManager;
 @property(readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler;
+- (NSArray *)protectedResourceStoreProviders;
+- (void)unregisterProtectedResourceStoreProvider:(id <HDProtectedResourceStoreProvider>)arg1;
+- (void)registerProtectedResourceStoreProvider:(id <HDProtectedResourceStoreProvider>)arg1;
 - (NSArray *)daemonExtensionsConformingToProtocol:(Protocol *)arg1;
 - (id)daemonExtensionWithIdentifier:(NSString *)arg1;
 - (void)unregisterForLaunchNotification:(const char *)arg1;

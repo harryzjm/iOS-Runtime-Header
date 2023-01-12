@@ -6,11 +6,11 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class MKPlaceActionManager, MKPlaceCardActionsViewController, UIView, UIViewController;
+@class MKPlaceActionManager, MKPlaceCardActionsViewController, NSArray, UIView, UIViewController;
 @protocol MKActivityObserving;
 
 @protocol MKPlaceCardActionControllerDelegate <NSObject>
-- (void)placeCardActionControllerDidSelectReportAProblem:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
+- (void)placeCardActionControllerDidSelectReportAProblem:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2 isQuickAction:(_Bool)arg3;
 - (void)placeActionManager:(MKPlaceActionManager *)arg1 didSelectShareFromView:(UIView *)arg2;
 
 @optional
@@ -18,9 +18,10 @@
 - (void)placeCardActionControllerDidSelectionOpenInPinpoint:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectOpenInSkyline:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectSimulateLocation:(MKPlaceCardActionsViewController *)arg1;
+- (NSArray *)placeCardActionControllerRequestsExtraActions:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectDirections:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidRequestCopy:(MKPlaceCardActionsViewController *)arg1;
-- (void)placeCardActionControllerDidSelectRequestInformedConsentForAddingContributions:(MKPlaceCardActionsViewController *)arg1;
-- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(MKPlaceCardActionsViewController *)arg1 isQuickAction:(_Bool)arg2;
 - (void)placeCardActionControllerDidSelectRemoveMarker:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectAddToExistingContact:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
 - (void)placeCardActionControllerDidSelectAddToCollection:(MKPlaceCardActionsViewController *)arg1;

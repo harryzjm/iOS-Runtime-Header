@@ -9,9 +9,13 @@
 @class CALayer;
 
 @protocol PXMutableImageLayerModulator <NSObject>
+@property(nonatomic) _Bool revealsGainMapImage;
+@property(nonatomic) float gainMapValue;
+@property(nonatomic) struct CGImage *gainMapImage;
 @property(nonatomic) _Bool displayingVideoComplement;
 @property(retain, nonatomic) CALayer *layer;
 - (void)removeFilterFromUnownedLayer:(CALayer *)arg1;
 - (void)animateChangesWithDuration:(double)arg1;
+- (void)setGainMapImage:(struct CGImage *)arg1 animated:(_Bool)arg2;
 @end
 

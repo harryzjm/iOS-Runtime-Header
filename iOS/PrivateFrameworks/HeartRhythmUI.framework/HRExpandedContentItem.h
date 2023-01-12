@@ -15,11 +15,17 @@
     HRExpandedContentItemLearnMore *_learnMore;
 }
 
-+ (id)inconclusiveItemsWithActiveAlgorithmVersion:(long long)arg1 learnMoreDelegate:(id)arg2;
-+ (id)highOrLowAbove120Below50HeartRateItemsWithActiveAlgorithmVersion:(long long)arg1;
-+ (id)atrialFibrillationItemsWithActiveAlgorithmVersion:(long long)arg1;
-+ (id)sinusRhythmItemsWithActiveAlgorithmVersion:(long long)arg1;
++ (id)poorRecordingItemsForAlgorithmVersion:(long long)arg1 learnMoreDelegate:(id)arg2;
++ (id)highOrLowAbove150Below50HeartRateItemsForAlgorithmVersion:(long long)arg1 upgradingFromAlgorithmVersion:(long long)arg2;
++ (id)inconclusiveItemsForAlgorithmVersion:(long long)arg1 upgradingFromAlgorithmVersion:(long long)arg2 learnMoreDelegate:(id)arg3;
++ (id)highOrLowAbove120Below50HeartRateItemsForAlgorithmVersion:(long long)arg1;
++ (id)atrialFibrillationItemsForAlgorithmVersion:(long long)arg1;
++ (id)sinusRhythmItemsForAlgorithmVersion:(long long)arg1;
 + (id)itemWithType:(long long)arg1 title:(id)arg2;
++ (id)_poorRecordingExpandedContentItemsForAlgorithmVersionTwoWithLearnMoreDelegate:(id)arg1;
++ (id)_highOrLowAbove150Below50HeartRateExpandedContentItemsAlgorithmVersionTwoUpgradingFromAlgorithmVersion:(long long)arg1;
++ (id)_inconclusiveExpandedContentItemsAlgorithmVersionTwoUpgradingFromAlgorithmVersion:(long long)arg1 withLearnMoreDelegate:(id)arg2;
++ (id)_atrialFibrillationExpandedContentItemsAlgorithmVersionTwo;
 + (id)_inconclusiveExpandedContentItemsAlgVersionOneWithLearnMoreDelegate:(id)arg1;
 + (id)_highOrLowAbove120Below50HeartRateExpandedContentItemsAlgVersionOne;
 + (id)_atrialFibrillationExpandedContentItemsAlgVersionOne;

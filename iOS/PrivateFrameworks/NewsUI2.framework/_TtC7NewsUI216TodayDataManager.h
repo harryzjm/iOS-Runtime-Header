@@ -8,26 +8,29 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI216TodayDataManager : NSObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *feedService;
+    MISSING_TYPE *feedManager;
     MISSING_TYPE *feedServiceConfigFetcher;
-    MISSING_TYPE *paidBundleConfiguration;
+    MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *accessQueue;
     MISSING_TYPE *pluginManager;
     MISSING_TYPE *pluginFactory;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *readingList;
+    MISSING_TYPE *sharedItemManager;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *subscriptionList;
-    MISSING_TYPE *prewarmer;
     MISSING_TYPE *nativeAdService;
-    MISSING_TYPE *_subscribedTagIDsSinceLastRefresh;
+    MISSING_TYPE *_lastRefreshContext;
+    MISSING_TYPE *sharedItemAdditions;
+    MISSING_TYPE *subscriptionService;
+    MISSING_TYPE *cachePreFlushTask;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)dealloc;
 
 @end
 

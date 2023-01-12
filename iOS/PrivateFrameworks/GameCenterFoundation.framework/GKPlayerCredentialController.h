@@ -19,6 +19,7 @@
 + (void)migrateOldAccountInformation;
 + (id)sharedController;
 + (id)accessQueue;
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKThreadsafeDictionary *allCredentialsCache; // @synthesize allCredentialsCache=_allCredentialsCache;
 @property(retain, nonatomic) GKThreadsafeDictionary *primaryCredentialCache; // @synthesize primaryCredentialCache=_primaryCredentialCache;
 @property(retain, nonatomic) ACAccountStore *store; // @synthesize store=_store;

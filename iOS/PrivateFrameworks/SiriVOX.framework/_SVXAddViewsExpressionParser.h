@@ -11,7 +11,7 @@
 
 @property(nonatomic) _Bool ignoresLocallyParseableExpressions; // @synthesize ignoresLocallyParseableExpressions=_ignoresLocallyParseableExpressions;
 - (void)parseAddViews:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)initWithParsingService:(id)arg1;
+- (id)initWithParsingService:(id)arg1 preferences:(id)arg2;
 
 @end
 

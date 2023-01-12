@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitMetrics/HMMLogEvent.h>
+
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
-@class NSError, NSString;
+@class NSString;
 
-@interface HMDDatabaseCKOperationCompletionEvent <HMDAWDLogEvent>
+@interface HMDDatabaseCKOperationCompletionEvent : HMMLogEvent <HMDAWDLogEvent>
 {
     NSString *_containerIdentifier;
-    NSError *_error;
 }
 
-+ (id)uuid;
 - (void).cxx_destruct;
-@property(readonly, copy) NSError *error; // @synthesize error=_error;
 @property(readonly, copy) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
-- (id)initWithContainerIdentifier:(id)arg1 error:(id)arg2;
+- (id)initWithContainerIdentifier:(id)arg1;
 - (id)metricForAWD;
 - (unsigned int)AWDMessageType;
 

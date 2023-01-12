@@ -8,12 +8,12 @@
 
 #import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 
-@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularDataOptionsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUIDataModeSubgroup, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
+@class CTCellularPlanManager, NSString, PSListController, PSSimStatusCache, PSSpecifier, PSUICallingSubgroup, PSUICarrierSpaceGroup, PSUICellularDataOptionsController, PSUICellularPlanManagerCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyDataCache, PSUIDataModeSubgroup, PSUIDevicePasscodeState, PSUIMyNumberSubgroup, PSUINetworkSelectionSubgroup, PSUINetworkSettingsSubgroup, PSUISIMSubgroup;
 
 __attribute__((visibility("hidden")))
 @interface PSUISubscriptionContextMenusGroup : NSObject <PSSpecifierGroup>
 {
-    _Bool _popViewControllerOnPlanDeletion;
+    _Bool _popViewControllerOnFinished;
     PSSpecifier *_parentSpecifier;
     PSSpecifier *_groupSpecifier;
     PSListController *_listController;
@@ -31,9 +31,11 @@ __attribute__((visibility("hidden")))
     PSUICellularPlanManagerCache *_planManagerCache;
     CTCellularPlanManager *_cellularPlanManager;
     PSUICellularDataOptionsController *_roamingSpecifiersSubgroup;
+    PSUIDevicePasscodeState *_passcodeStatusCache;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) PSUIDevicePasscodeState *passcodeStatusCache; // @synthesize passcodeStatusCache=_passcodeStatusCache;
 @property(retain, nonatomic) PSUICellularDataOptionsController *roamingSpecifiersSubgroup; // @synthesize roamingSpecifiersSubgroup=_roamingSpecifiersSubgroup;
 @property(retain, nonatomic) CTCellularPlanManager *cellularPlanManager; // @synthesize cellularPlanManager=_cellularPlanManager;
 @property(retain, nonatomic) PSUICellularPlanManagerCache *planManagerCache; // @synthesize planManagerCache=_planManagerCache;
@@ -48,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSUINetworkSelectionSubgroup *networkSelectionSubgroup; // @synthesize networkSelectionSubgroup=_networkSelectionSubgroup;
 @property(retain, nonatomic) PSUICarrierSpaceGroup *carrierSpaceSubgroup; // @synthesize carrierSpaceSubgroup=_carrierSpaceSubgroup;
 @property(retain, nonatomic) PSUICallingSubgroup *callingSubgroup; // @synthesize callingSubgroup=_callingSubgroup;
-@property(nonatomic) _Bool popViewControllerOnPlanDeletion; // @synthesize popViewControllerOnPlanDeletion=_popViewControllerOnPlanDeletion;
+@property(nonatomic) _Bool popViewControllerOnFinished; // @synthesize popViewControllerOnFinished=_popViewControllerOnFinished;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 @property(nonatomic) __weak PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property(retain, nonatomic) PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;

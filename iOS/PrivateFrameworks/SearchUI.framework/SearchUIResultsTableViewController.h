@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SearchUI/SearchUIShowMoreSectionsDelegate-Protocol.h>
+#import <SearchUI/SearchUIResultsTableBridgingProtocol-Protocol.h>
 #import <SearchUI/SearchUITableHeaderViewDelegate-Protocol.h>
 #import <SearchUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableOrderedSet, NSMutableSet, NSString;
+@class NSArray, NSMutableOrderedSet, NSMutableSet, NSString, SearchUITableModel, UIControl, UIView;
+@protocol SFFeedbackListener, SearchUICommandDelegate, SearchUIKeyboardableTableViewDelegate, SearchUIResultsViewDelegate, SearchUISizingDelegate, UITextInput;
 
-@interface SearchUIResultsTableViewController <SearchUITableHeaderViewDelegate, UIGestureRecognizerDelegate, SearchUIShowMoreSectionsDelegate>
+@interface SearchUIResultsTableViewController <SearchUITableHeaderViewDelegate, UIGestureRecognizerDelegate, SearchUIResultsTableBridgingProtocol>
 {
     _Bool _shortenTopFloatingHeader;
+    _Bool _isVisibleFeedbackEnabled;
     NSString *_queryString;
     NSMutableSet *_expandedSections;
     NSMutableSet *_sectionsThatHaveBeenExpanded;
@@ -25,12 +27,12 @@
     double _cachedHeaderHeight;
 }
 
-+ (void)fetchContactsIfNeededForTableModel:(id)arg1;
 + (id)hiddenSectionsFromSections:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) double cachedHeaderHeight; // @synthesize cachedHeaderHeight=_cachedHeaderHeight;
 @property(retain, nonatomic) NSArray *latestVisibleHeadersAccountedForInFeedback; // @synthesize latestVisibleHeadersAccountedForInFeedback=_latestVisibleHeadersAccountedForInFeedback;
 @property(retain, nonatomic) NSMutableOrderedSet *potentiallyVisibleHeaders; // @synthesize potentiallyVisibleHeaders=_potentiallyVisibleHeaders;
+@property(nonatomic) _Bool isVisibleFeedbackEnabled; // @synthesize isVisibleFeedbackEnabled=_isVisibleFeedbackEnabled;
 @property(nonatomic) unsigned long long lastVisibleResultsFeedbackEvent; // @synthesize lastVisibleResultsFeedbackEvent=_lastVisibleResultsFeedbackEvent;
 @property(retain, nonatomic) NSMutableOrderedSet *latestVisibleResultsAccountedForInFeedback; // @synthesize latestVisibleResultsAccountedForInFeedback=_latestVisibleResultsAccountedForInFeedback;
 @property(retain, nonatomic) NSMutableSet *potentiallyVisibleCells; // @synthesize potentiallyVisibleCells=_potentiallyVisibleCells;
@@ -39,14 +41,16 @@
 @property(retain, nonatomic) NSMutableSet *expandedSections; // @synthesize expandedSections=_expandedSections;
 @property(nonatomic) _Bool shortenTopFloatingHeader; // @synthesize shortenTopFloatingHeader=_shortenTopFloatingHeader;
 @property(retain, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
+@property(retain, nonatomic) UIView *footerView;
+- (id)majorScrollView;
+- (void)willDismiss;
+- (void)didPresentToResumeSearch:(_Bool)arg1;
 - (void)toggleShowMoreForSection:(unsigned long long)arg1;
-- (_Bool)view:(id)arg1 isVisibleInBounds:(struct CGRect)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (void)sendVisibleFeedbackIfNecessary;
 - (id)visibleResultsWithinRegion:(struct CGRect)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
-- (id)indexPathToSelectForKeyboardOnQuickReturn;
 - (void)tableView:(id)arg1 didEndDisplayingHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -54,7 +58,7 @@
 - (void)modalViewControllerClosed;
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)viewDidLayoutSubviews;
-- (void)setShouldUseInsetRoundedSections:(_Bool)arg1;
+@property(nonatomic) _Bool shouldUseInsetRoundedSections;
 - (void)showMoreSectionsWithShowMoreButtonRowModel:(id)arg1;
 - (void)performExpansion:(_Bool)arg1 withSectionIndex:(unsigned long long)arg2;
 - (void)expandCellsIfNeeded;
@@ -81,10 +85,24 @@
 - (id)init;
 
 // Remaining properties
+@property(copy, nonatomic) CDUnknownBlockType cellWillDisplayHandler;
+@property(nonatomic) __weak id <SearchUICommandDelegate> commandDelegate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool dragInteractionEnabled;
+@property(nonatomic) __weak id <SFFeedbackListener> feedbackListener;
 @property(readonly) unsigned long long hash;
+@property __weak id <SearchUIKeyboardableTableViewDelegate> interactionDelegate;
+@property __weak id <SearchUIResultsViewDelegate> resultsViewDelegate;
+@property(nonatomic) _Bool shouldHideTableCellsUnderKeyboard;
+@property(nonatomic) _Bool shouldUseStandardSectionInsets;
+@property __weak id <SearchUISizingDelegate> sizingDelegate;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SearchUITableModel *tableModel;
+@property(copy, nonatomic) CDUnknownBlockType tableViewDidUpdateHandler;
+@property(copy, nonatomic) CDUnknownBlockType tableViewWillUpdateHandler;
+@property __weak UIControl<UITextInput> *textField;
+@property(nonatomic) _Bool threeDTouchEnabled;
 
 @end
 

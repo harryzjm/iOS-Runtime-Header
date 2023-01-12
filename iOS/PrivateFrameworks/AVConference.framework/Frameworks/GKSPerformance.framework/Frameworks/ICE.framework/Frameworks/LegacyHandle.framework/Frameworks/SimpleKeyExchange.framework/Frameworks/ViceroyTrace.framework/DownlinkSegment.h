@@ -4,29 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableDictionary;
+
 __attribute__((visibility("hidden")))
 @interface DownlinkSegment
 {
-    double _videoDegradedStartTime;
-    _Bool _isVideoDegraded;
-    unsigned int _videoDegradedTotalCounter;
-    double _videoDegradedTotalTime;
-    double _videoDegradedMaxLength;
+    NSMutableDictionary *_downlinkParticipantStats;
     unsigned long long _totalCellRxDataBytes;
     unsigned long long _totalCellDupRxDataBytes;
 }
 
 @property unsigned long long totalCellDupRxDataBytes; // @synthesize totalCellDupRxDataBytes=_totalCellDupRxDataBytes;
 @property unsigned long long totalCellRxDataBytes; // @synthesize totalCellRxDataBytes=_totalCellRxDataBytes;
-@property unsigned int videoDegradedTotalCounter; // @synthesize videoDegradedTotalCounter=_videoDegradedTotalCounter;
-@property double videoDegradedStartTime; // @synthesize videoDegradedStartTime=_videoDegradedStartTime;
-@property double videoDegradedTotalTime; // @synthesize videoDegradedTotalTime=_videoDegradedTotalTime;
-@property _Bool isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
+@property(readonly) NSMutableDictionary *downlinkParticipantStats; // @synthesize downlinkParticipantStats=_downlinkParticipantStats;
 - (id)segmentReport;
+- (void)addPerStreamGroupStats:(id)arg1;
+- (void)reportAudioPerStreamGroupStats:(id)arg1 streamGroup:(id)arg2 accumulatedStreamGroupStats:(id)arg3;
+- (void)reportVideoPerStreamGroupStats:(id)arg1 streamGroup:(id)arg2 accumulatedStreamGroupStats:(id)arg3;
+- (void)accumulateAudioPerStreamGroupStats:(id)arg1 streamGroupStats:(id)arg2;
+- (void)accumulateVideoPerStreamGroupStats:(id)arg1 streamGroupStats:(id)arg2;
+- (void)finalizeVideoStreamGroupStats:(id)arg1;
 - (void)addCellByteCountStats:(id)arg1;
-- (void)processVideoDegraded:(_Bool)arg1;
+- (void)processStreamData:(id)arg1 forParticipant:(id)arg2 streamGroup:(id)arg3;
+- (void)processAudioStreamData:(id)arg1 streamGroupStats:(id)arg2;
+- (void)processVideoStreamData:(id)arg1 streamGroupStats:(id)arg2;
+- (void)updateMinimumAndMaximumAVSyncOffset:(id)arg1 streamGroupStats:(id)arg2;
+- (void)processVideoDegraded:(_Bool)arg1 forParticipant:(id)arg2 streamGroup:(id)arg3;
+- (void)resetVideoDegradedForAllParticipants;
+- (id)callStatsForParticipant:(id)arg1;
 - (void)dealloc;
-- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 delegate:(id)arg3;
+- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 segmentStreamGroups:(unsigned int)arg3 previousSegmentStreamGroups:(unsigned int)arg4 nwActivity:(id)arg5 localSwitches:(unsigned int)arg6 conversationTimeBase:(id)arg7 delegate:(id)arg8;
 
 @end
 

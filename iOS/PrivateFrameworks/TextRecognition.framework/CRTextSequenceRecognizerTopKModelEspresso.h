@@ -8,7 +8,7 @@
 {
 }
 
-- (id)outputFromOutputBuffers:(vector_b7fe23f3)arg1 featureInfo:(id)arg2;
+- (id)outputFromOutputBuffers:(vector_93d217ea)arg1 featureInfo:(id)arg2;
 - (id)outputNames;
 
 @end

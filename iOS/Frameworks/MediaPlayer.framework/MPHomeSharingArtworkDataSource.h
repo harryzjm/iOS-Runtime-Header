@@ -4,22 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HSHomeSharingLibrary;
+#import <MediaPlayer/MPArtworkDataSourceIdentifiable-Protocol.h>
+
+@class HSHomeSharingLibrary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPHomeSharingArtworkDataSource
+@interface MPHomeSharingArtworkDataSource <MPArtworkDataSourceIdentifiable>
 {
     HSHomeSharingLibrary *_library;
 }
 
++ (id)artworkDataSourceWithIdentifier:(id)arg1;
++ (id)artworkDataSourceShortDescription;
 - (void).cxx_destruct;
 @property(retain, nonatomic) HSHomeSharingLibrary *library; // @synthesize library=_library;
+@property(readonly, nonatomic) NSString *artworkDataSourceIdentifier;
 - (void)loadRepresentationForArtworkCatalog:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)requestForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (id)supportedSizesForCatalog:(id)arg1;
 - (_Bool)shouldLookForLargerImageRepresentationsWhenBestRepresentationIsUnavailable;
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (_Bool)areRepresentationsAvailableForCatalog:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

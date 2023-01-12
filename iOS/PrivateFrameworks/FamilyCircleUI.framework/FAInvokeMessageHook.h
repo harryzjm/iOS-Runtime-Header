@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString, RUIObjectModel;
+@class AAUIServerHookResponse, FACircleRemoteUIDelegate, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface FAInvokeMessageHook : NSObject <AAUIServerHook>
@@ -17,12 +17,15 @@
     RUIObjectModel *_objectModel;
     id <AAUIServerHookDelegate> _delegate;
     AAUIServerHookResponse *_serverHookResponse;
+    FACircleRemoteUIDelegate *_remoteUIDelegate;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) __weak FACircleRemoteUIDelegate *remoteUIDelegate; // @synthesize remoteUIDelegate=_remoteUIDelegate;
 @property(retain, nonatomic) AAUIServerHookResponse *serverHookResponse; // @synthesize serverHookResponse=_serverHookResponse;
 @property(nonatomic) __weak id <AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
+- (void)dismissWithUserInfo:(id)arg1;
 - (void)inviteControllerDidEndAsyncLoading:(id)arg1;
 - (void)inviteControllerDidStartAsyncLoading:(id)arg1;
 - (id)_stringForCompletionStatus:(unsigned long long)arg1;

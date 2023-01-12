@@ -4,16 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PARCategory;
+#import <ParsecModel/NSFetchRequestResult-Protocol.h>
 
-@interface PARUsageEvent
+@interface PARUsageEvent <NSFetchRequestResult>
 {
-    PARCategory *usageCategory;
 }
 
-+ (id)fetchRequest;
 - (void).cxx_destruct;
-@property(retain, nonatomic) PARCategory *usageCategory; // @synthesize usageCategory;
+- (void).cxx_construct;
+- (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
+
+// Remaining properties
+@property(nonatomic) int clientIntVal; // @dynamic clientIntVal;
+@property(nonatomic) _Bool invokedDays; // @dynamic invokedDays;
+@property(nonatomic) int numSearchEngagements; // @dynamic numSearchEngagements;
+@property(nonatomic) _Bool searchedDays; // @dynamic searchedDays;
+@property(nonatomic) _Bool suggestionOrAppleResultEngagedDays; // @dynamic suggestionOrAppleResultEngagedDays;
+@property(nonatomic) _Bool voiceSearchDays; // @dynamic voiceSearchDays;
+@property(nonatomic) _Bool webEngagedDays; // @dynamic webEngagedDays;
+@property(nonatomic) _Bool zkwEngagedDays; // @dynamic zkwEngagedDays;
 
 @end
 

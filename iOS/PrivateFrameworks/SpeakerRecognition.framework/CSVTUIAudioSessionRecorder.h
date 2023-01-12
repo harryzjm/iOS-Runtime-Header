@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <SpeakerRecognition/CSAudioRecorderDelegate-Protocol.h>
+#import <SpeakerRecognition/CSVTUIAudioRecorderDelegate-Protocol.h>
 #import <SpeakerRecognition/CSVTUIAudioSession-Protocol.h>
 
-@class CSAudioPowerMeter, CSAudioRecorder, NSString;
+@class CSAudioPowerMeter, CSVTUIAudioRecorder, NSString;
 @protocol CSVTUIAudioSessionDelegate, OS_dispatch_queue;
 
-@interface CSVTUIAudioSessionRecorder : NSObject <CSAudioRecorderDelegate, CSVTUIAudioSession>
+@interface CSVTUIAudioSessionRecorder : NSObject <CSVTUIAudioRecorderDelegate, CSVTUIAudioSession>
 {
-    CSAudioRecorder *_audioRecorder;
+    CSVTUIAudioRecorder *_audioRecorder;
     NSObject<OS_dispatch_queue> *_queue;
     id <CSVTUIAudioSessionDelegate> _delegate;
     CSAudioPowerMeter *_powerMeter;
@@ -29,8 +29,7 @@
 - (void)audioRecorderDisconnected:(id)arg1;
 - (void)audioRecorderDidStopRecord:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 reason:(long long)arg3;
 - (void)audioRecorderDidStartRecord:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 successfully:(_Bool)arg3 error:(id)arg4;
-- (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3;
-- (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 atTime:(unsigned long long)arg5;
+- (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 atTime:(unsigned long long)arg5 arrivalTimestampToAudioRecorder:(unsigned long long)arg6 numberOfChannels:(int)arg7;
 - (void)_handleDidStopWithReason:(long long)arg1;
 - (unsigned long long)audioSource;
 - (long long)convertStopReason:(long long)arg1;

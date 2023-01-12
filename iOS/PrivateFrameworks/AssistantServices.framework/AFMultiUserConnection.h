@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection;
+@class AFInstanceContext, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface AFMultiUserConnection : NSObject
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_targetQueue;
+    AFInstanceContext *_instanceContext;
 }
 
 - (void).cxx_destruct;
+- (void)getPreferredMediaUserHomeUserIDWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getHomeUserIdOfRecognizedUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getMultiUserSettingsForSharedUserID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getConformingSharedUserIds:(CDUnknownBlockType)arg1;
 - (void)getConformingSharedUserIdForHomeUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -26,8 +29,8 @@
 - (id)_multiUserServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_connection;
 - (void)_clearConnection;
-- (void)dealloc;
 - (id)init;
+- (id)initWithConnectionFactory:(id)arg1;
 
 @end
 

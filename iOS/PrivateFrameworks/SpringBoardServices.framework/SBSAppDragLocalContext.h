@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, NSURL, NSUserActivity, UIView;
+@class NSArray, NSSet, NSString, NSURL, NSUserActivity, UIView;
 
 @interface SBSAppDragLocalContext : NSObject
 {
@@ -15,19 +15,29 @@
     NSString *_applicationBundleIdentifier;
     NSSet *_launchActions;
     long long _startLocation;
+    NSSet *_containedIconIdentifiers;
+    NSString *_activeCustomIconDataSourceUniqueIdentifier;
+    NSArray *_customIconDataSourceConfigurations;
+    unsigned long long _gridSizeClass;
     NSString *_draggedSceneIdentifier;
     NSURL *_launchURL;
     NSUserActivity *_userActivity;
     UIView *_portaledPreview;
+    NSString *_droppedIconIdentifier;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *droppedIconIdentifier; // @synthesize droppedIconIdentifier=_droppedIconIdentifier;
 @property(nonatomic, getter=isSourceLocal) _Bool sourceLocal; // @synthesize sourceLocal=_sourceLocal;
 @property(nonatomic) _Bool cancelsViaScaleAndFade; // @synthesize cancelsViaScaleAndFade=_cancelsViaScaleAndFade;
 @property(retain, nonatomic) UIView *portaledPreview; // @synthesize portaledPreview=_portaledPreview;
 @property(retain, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 @property(copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(copy, nonatomic) NSString *draggedSceneIdentifier; // @synthesize draggedSceneIdentifier=_draggedSceneIdentifier;
+@property(nonatomic) unsigned long long gridSizeClass; // @synthesize gridSizeClass=_gridSizeClass;
+@property(copy, nonatomic) NSArray *customIconDataSourceConfigurations; // @synthesize customIconDataSourceConfigurations=_customIconDataSourceConfigurations;
+@property(copy, nonatomic) NSString *activeCustomIconDataSourceUniqueIdentifier; // @synthesize activeCustomIconDataSourceUniqueIdentifier=_activeCustomIconDataSourceUniqueIdentifier;
+@property(copy, nonatomic) NSSet *containedIconIdentifiers; // @synthesize containedIconIdentifiers=_containedIconIdentifiers;
 @property(readonly, nonatomic) long long startLocation; // @synthesize startLocation=_startLocation;
 @property(readonly, copy, nonatomic) NSSet *launchActions; // @synthesize launchActions=_launchActions;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;

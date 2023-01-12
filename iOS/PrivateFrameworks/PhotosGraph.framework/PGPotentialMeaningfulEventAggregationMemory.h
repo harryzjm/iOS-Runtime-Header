@@ -10,6 +10,7 @@
 {
     NSMutableSet *_meaningfulEvents;
     NSMutableSet *_mutableMomentNodes;
+    long long _year;
     unsigned long long _meaning;
     NSString *_key;
     NSArray *_relevantAssetLocalIdentifiers;
@@ -20,10 +21,14 @@
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
 @property(retain, nonatomic) NSSet *meaningfulEvents; // @synthesize meaningfulEvents=_meaningfulEvents;
 @property(readonly) unsigned long long meaning; // @synthesize meaning=_meaning;
+@property(readonly, nonatomic) long long year; // @synthesize year=_year;
+- (id)supportedFeatureTypesForMeaning:(unsigned long long)arg1;
+- (id)memoryFeatureNodesInGraph:(id)arg1;
+- (unsigned long long)memoryCategory;
 - (double)score;
 - (id)peopleUUIDs;
 - (void)addMeaningfulEvent:(id)arg1 controller:(id)arg2;
-- (id)initWithMeaning:(unsigned long long)arg1 features:(id)arg2;
+- (id)initWithMeaning:(unsigned long long)arg1 features:(id)arg2 year:(long long)arg3;
 
 @end
 

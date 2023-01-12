@@ -21,19 +21,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSMutableSet *resultMissingRecordIDs; // @synthesize resultMissingRecordIDs=_resultMissingRecordIDs;
-@property(retain, nonatomic) NSMutableArray *resultFetchedRecords; // @synthesize resultFetchedRecords=_resultFetchedRecords;
-@property(retain, nonatomic) NSDictionary *recordSpecsByType; // @synthesize recordSpecsByType=_recordSpecsByType;
-@property(copy, nonatomic) CDUnknownBlockType queryCompletionHandler; // @synthesize queryCompletionHandler=_queryCompletionHandler;
-@property(copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
-@property(copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
-@property(retain, nonatomic) NSDictionary *knownRecordIDsToEtags; // @synthesize knownRecordIDsToEtags=_knownRecordIDsToEtags;
-@property(retain, nonatomic) NSArray *recordSpecs; // @synthesize recordSpecs=_recordSpecs;
-@property(retain, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
-@property(retain, nonatomic) FCCKContentDatabase *database; // @synthesize database=_database;
-- (unsigned long long)_queryPriority;
-- (id)_desiredKeys;
-- (id)_constructQuery;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (void)prepareOperation;

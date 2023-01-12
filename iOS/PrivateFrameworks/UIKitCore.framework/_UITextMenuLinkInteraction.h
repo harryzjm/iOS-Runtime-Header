@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;
+- (id)_contextMenuInteraction;
 - (id)init;
 
 // Remaining properties

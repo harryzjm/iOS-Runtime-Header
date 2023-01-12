@@ -23,10 +23,13 @@
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) CSAudioRecordContext *audioRecordContext; // @synthesize audioRecordContext=_audioRecordContext;
+- (void)notifyReleaseAudioSession;
 - (void)notifyDidStopStream:(id)arg1 withEventUUID:(id)arg2;
-- (void)notifyWillStopStream:(id)arg1;
+- (void)notifyWillStopStream:(id)arg1 reason:(unsigned long long)arg2;
 - (void)notifyDidStartStreamWithContext:(id)arg1 successfully:(_Bool)arg2 option:(id)arg3 withEventUUID:(id)arg4;
 - (void)notifyWillStartStreamWithContext:(id)arg1 option:(id)arg2;
+- (void)notifyPreparedAudioStreamWithRequest:(id)arg1 audioProviderUUID:(id)arg2 successfully:(_Bool)arg3;
+- (void)notifyFetchedAudioStreamWithRequest:(id)arg1 audioProviderUUID:(id)arg2 successfully:(_Bool)arg3;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;
 - (id)init;

@@ -27,6 +27,7 @@
 @property(nonatomic) __weak RUIPage *page; // @synthesize page=_page;
 @property(nonatomic) __weak RUIObjectModel *objectModel; // @synthesize objectModel=_objectModel;
 - (id)sourceURL;
+- (void)performAction:(int)arg1 forElement:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)choiceViewTappedHelpLink:(id)arg1;
 - (void)choiceView:(id)arg1 tappedChoiceAtIndex:(unsigned long long)arg2;
 @property(readonly, nonatomic) NSArray *choices;
@@ -42,6 +43,7 @@
 - (void)populatePostbackDictionary:(id)arg1;
 - (id)viewForElementIdentifier:(id)arg1;
 - (id)view;
+- (void)viewDidAppear:(_Bool)arg1;
 - (id)initWithAttributes:(id)arg1 parent:(id)arg2;
 
 // Remaining properties

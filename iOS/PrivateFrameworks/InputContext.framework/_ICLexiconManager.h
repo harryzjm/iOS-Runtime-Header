@@ -14,20 +14,22 @@
 
 @interface _ICLexiconManager : NSObject <_ICLexiconManaging, _ICFeedbackAccepting>
 {
-    NSObject<OS_dispatch_queue> *_serialQueue;
     struct _opaque_pthread_mutex_t _contactsCallbackLock;
     struct _opaque_pthread_mutex_t _namedEntityCallbackLock;
     NSArray *_sources;
     NSMutableDictionary *_contacts;
     NSMutableArray *_contactObservers;
     int _contactChangeCount;
-    _ICNamedEntityStore *_namedEntityStore;
     int _contactLoadState;
     int _namedEntityLoadState;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    _ICNamedEntityStore *_namedEntityStore;
 }
 
 + (unsigned long long)countWords:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _ICNamedEntityStore *namedEntityStore; // @synthesize namedEntityStore=_namedEntityStore;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property int namedEntityLoadState; // @synthesize namedEntityLoadState=_namedEntityLoadState;
 @property int contactLoadState; // @synthesize contactLoadState=_contactLoadState;
 - (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
@@ -54,9 +56,10 @@
 - (void)removeContactObserver:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)addContactObserver:(CDUnknownBlockType)arg1;
 - (void)unloadLexicons;
+- (id)loadLexicons;
 - (id)loadLexiconsUsingFilter:(CDUnknownBlockType)arg1;
 - (id)loadLexicons:(CDUnknownBlockType)arg1;
-- (void)backgroundLoadLexiconsUsingFilter:(CDUnknownBlockType)arg1;
+- (void)_actuallyLoadLexicons;
 - (void)changeNamedEntityLoadingState:(int)arg1;
 - (void)changeContactLoadingState:(int)arg1;
 - (id)stateName:(int)arg1;

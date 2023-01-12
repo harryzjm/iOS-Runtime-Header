@@ -6,9 +6,23 @@
 
 #pragma mark Named Structures
 
+struct ccrsa_full_ctx {
+    unsigned long long pb_n;
+    unsigned long long pb_bitlen;
+    struct cczp_funcs *pb_funcs;
+    unsigned long long pb_ccn[0];
+};
+
+struct ccrsa_pub_ctx {
+    unsigned long long pb_n;
+    unsigned long long pb_bitlen;
+    struct cczp_funcs *pb_funcs;
+    unsigned long long pb_ccn[0];
+};
+
 struct ccss_shamir_parameters {
-    struct cczp *_field1;
-    unsigned int _field2;
+    unsigned int _field1;
+    struct cczp _field2;
 };
 
 struct ccss_shamir_share {

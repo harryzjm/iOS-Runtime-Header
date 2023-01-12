@@ -6,11 +6,10 @@
 
 #import <SleepDaemon/NSObject-Protocol.h>
 
-@class NSDictionary, NSObject, NSSet;
-@protocol IDSServiceDelegate, OS_dispatch_queue;
+@protocol HDSPIDSMessage, HDSPIDSServiceDelegate;
 
 @protocol HDSPIDSService <NSObject>
-- (_Bool)sendMessage:(NSDictionary *)arg1 toDestinations:(NSSet *)arg2 priority:(long long)arg3 options:(NSDictionary *)arg4 identifier:(id *)arg5 error:(id *)arg6;
-- (void)addDelegate:(id <IDSServiceDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
+@property(nonatomic) __weak id <HDSPIDSServiceDelegate> delegate;
+- (void)sendMessage:(id <HDSPIDSMessage>)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 @end
 

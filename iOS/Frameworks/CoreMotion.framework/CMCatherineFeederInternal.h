@@ -11,7 +11,7 @@
 @interface CMCatherineFeederInternal : NSObject
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
 }
 
 - (void)_feedCatherine:(double)arg1 confidence:(double)arg2 timestamp:(double)arg3;

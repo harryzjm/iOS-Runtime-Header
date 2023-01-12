@@ -19,6 +19,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputUCR; // @synthesize inputUCR;
+@property(retain, nonatomic) NSNumber *inputGCR; // @synthesize inputGCR;
+@property(retain, nonatomic) NSNumber *inputSharpness; // @synthesize inputSharpness;
+@property(retain, nonatomic) NSNumber *inputAngle; // @synthesize inputAngle;
+@property(retain, nonatomic) NSNumber *inputWidth; // @synthesize inputWidth;
+@property(retain, nonatomic) CIVector *inputCenter; // @synthesize inputCenter;
+@property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (id)_CICMYK_black;
 - (id)_CICMYK_yellow;

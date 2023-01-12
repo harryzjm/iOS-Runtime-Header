@@ -6,7 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-@interface UIView (NTKGeometryUtilities)
+#import <NanoTimeKitCompanion/NTKDialMarkerView-Protocol.h>
+
+@class NSString;
+
+@interface UIView (NTKGeometryUtilities) <NTKDialMarkerView>
 - (void)ntk_setBoundsAndPositionFromFrame:(struct CGRect)arg1;
+- (void)removeFromParent;
+- (void)setAffineTransform:(struct CGAffineTransform)arg1;
+@property(nonatomic) struct CGPoint position;
+- (void)addToParentView:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

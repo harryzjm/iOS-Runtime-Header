@@ -6,7 +6,7 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class UIColor, UIImage, UIView;
+@class UIBlurEffect, UIColor, UIImage, UIView;
 
 @protocol _MKBalloonCalloutViewConfiguring <NSObject>
 @property(readonly, nonatomic, getter=_balloonImage) UIImage *balloonImage;
@@ -15,6 +15,7 @@
 @property(readonly, nonatomic, getter=_balloonCalloutStyle) long long balloonCalloutStyle;
 
 @optional
+@property(readonly, nonatomic, getter=_balloonMaterial) UIBlurEffect *balloonMaterial;
 @property(readonly, nonatomic, getter=_balloonCalloutShouldCenterWhenOffscreen) _Bool balloonCalloutShouldCenterWhenOffscreen;
 @property(readonly, nonatomic, getter=_balloonCalloutShouldShowArrow) _Bool balloonCalloutShouldShowArrow;
 @property(readonly, nonatomic, getter=_balloonImageTintColor) UIColor *balloonImageTintColor;

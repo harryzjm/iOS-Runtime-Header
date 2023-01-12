@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSUUID, UISUIActivityExtensionItemDataRequest;
+@class NSString, NSURL, NSUUID, UISUIActivityExtensionItemDataRequest;
 
 @interface _UIShareServiceActivityProxy : NSObject
 {
@@ -16,6 +16,7 @@
     UISUIActivityExtensionItemDataRequest *_underlyingActivityItemDataRequest;
     Class _remoteClass;
     struct CGSize _thumbnailSize;
+    NSURL *_representationCacheURL;
     CDUnknownBlockType _didFinishPreparingForExecution;
     CDUnknownBlockType _didFinishPerformingActivityHandler;
 }
@@ -25,6 +26,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType didFinishPerformingActivityHandler; // @synthesize didFinishPerformingActivityHandler=_didFinishPerformingActivityHandler;
 @property(copy, nonatomic) CDUnknownBlockType didFinishPreparingForExecution; // @synthesize didFinishPreparingForExecution=_didFinishPreparingForExecution;
+- (void)_loadItemProvidersFromActivityItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_willBePerformedOrPresented;
 - (struct CGSize)_thumbnailSize;
 - (_Bool)_activitySupportsPromiseURLs;

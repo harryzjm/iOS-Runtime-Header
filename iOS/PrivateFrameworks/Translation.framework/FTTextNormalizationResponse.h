@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_2174ecfb)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_2174ecfb)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *error_str;
 @property(readonly, nonatomic) int error_code;
 @property(readonly, nonatomic) NSArray *tokens;

@@ -10,9 +10,19 @@
 {
 }
 
++ (id)preferencesValueforKey:(struct __CFString *)arg1;
++ (void)setPreferencesValue:(id)arg1 forKey:(struct __CFString *)arg2;
 + (void)setPreferencesValueForKey:(struct __CFString *)arg1 value:(const struct __CFString *)arg2;
 + (id)preferencesValueforKey:(struct __CFString *)arg1 domain:(struct __CFString *)arg2;
 + (float)sceneIBLARIntensity;
++ (_Bool)shouldRevertToOldHapticsBehavior;
++ (_Bool)forceDisableArKitVerticalRejection;
++ (_Bool)forceDisableShadowMaps;
++ (_Bool)forceUseSceneReconstructionMeshForOrientation;
++ (_Bool)forceUseLegacyHitTestAPI;
++ (_Bool)forceDisableRealWorldPhysics;
++ (_Bool)forceDisableRealWorldOcclusion;
++ (_Bool)wantsDebugSceneUnderstandingEnabled;
 + (id)overrideCameraStateSerializedString;
 + (_Bool)forceShowAnimationScrubber;
 + (_Bool)triggerAffordanceShouldReshowAfterArReset;

@@ -6,17 +6,22 @@
 
 #import <Intents/INIntent.h>
 
-@class Device, DeviceQuery, LanguageOption, NSArray;
+@class Device, LanguageOption, NSArray;
 
 @interface SetAudioLanguageIntent : INIntent
 {
 }
 
+- (id)initWithDomain:(id)arg1 verb:(id)arg2 parametersByName:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 backingStore:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 // Remaining properties
-@property(copy, nonatomic) Device *device; // @dynamic device;
-@property(copy, nonatomic) NSArray *deviceContext; // @dynamic deviceContext;
-@property(copy, nonatomic) DeviceQuery *deviceQuery; // @dynamic deviceQuery;
-@property(copy, nonatomic) LanguageOption *language; // @dynamic language;
+@property(nonatomic, retain) Device *device; // @dynamic device;
+@property(nonatomic, copy) NSArray *deviceContext; // @dynamic deviceContext;
+@property(nonatomic, copy) NSArray *deviceQueries; // @dynamic deviceQueries;
+@property(nonatomic, retain) LanguageOption *language; // @dynamic language;
+
 @end
 

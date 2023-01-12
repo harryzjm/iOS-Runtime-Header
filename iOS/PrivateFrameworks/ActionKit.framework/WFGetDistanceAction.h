@@ -11,6 +11,8 @@
 }
 
 + (unsigned long long)transportTypeFromString:(id)arg1;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (id)noLocationError;
 - (_Bool)locationParameterIsCurrentLocation:(id)arg1;
 - (_Bool)destinationIsCurrentLocation;

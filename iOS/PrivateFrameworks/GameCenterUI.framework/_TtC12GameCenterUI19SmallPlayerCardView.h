@@ -22,6 +22,7 @@
     MISSING_TYPE *shouldAnimateOnCloseButtonPress;
     MISSING_TYPE *disabled;
     MISSING_TYPE *currentImageFetch;
+    MISSING_TYPE *image;
 }
 
 - (void).cxx_destruct;
@@ -35,7 +36,6 @@
 - (void)layoutSubviews;
 - (struct JUMeasurements)measurementsWithFitting:(struct CGSize)arg1 in:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-@property(nonatomic) struct CGRect frame;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

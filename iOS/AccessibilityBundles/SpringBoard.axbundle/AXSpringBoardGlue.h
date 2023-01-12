@@ -21,6 +21,8 @@
 + (void)removeVoiceOverInfoPanel:(double)arg1;
 + (void)resetCanShowAXInfoPanel;
 + (_Bool)canShowAXInfoPanel;
+- (_Bool)_axIsCoverSheetTodayViewControllerPresent;
+- (_Bool)_axIsAppLibraryOrTodayViewPresent;
 @property(readonly, nonatomic) int lastLockSource;
 - (_Bool)_accessibilityAllowShowNotificationGestureOverride;
 - (void)_accessibilitySetAllowShowNotificationGestureOverride:(_Bool)arg1;

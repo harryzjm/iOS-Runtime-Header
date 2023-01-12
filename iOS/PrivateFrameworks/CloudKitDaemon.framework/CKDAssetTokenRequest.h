@@ -8,7 +8,6 @@
 
 @class NSMutableArray, NSMutableSet;
 
-__attribute__((visibility("hidden")))
 @interface CKDAssetTokenRequest : NSObject
 {
     unsigned int _size;

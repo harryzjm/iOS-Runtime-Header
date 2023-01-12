@@ -10,6 +10,7 @@
 
 @class NSLocale;
 
+__attribute__((visibility("hidden")))
 @interface BCSLocaleHelper : NSObject <BCSLocaleHelperProtocol>
 {
 }

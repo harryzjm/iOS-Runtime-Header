@@ -12,7 +12,7 @@
 {
     unsigned int _startPointIndex;
     unsigned int _pointCount;
-    CDStruct_869f9c67 *_points;
+    struct GeoCodecsVectorTilePoint3D *_points;
     int _transportType;
     GEOComposedRouteSegment *_composedRouteSegment;
     GEOComposedRouteStep *_composedRouteStep;
@@ -33,7 +33,7 @@
 @property(readonly, nonatomic) __weak GEOComposedRouteStep *composedRouteStep; // @synthesize composedRouteStep=_composedRouteStep;
 @property(readonly, nonatomic) __weak GEOComposedRouteSegment *composedRouteSegment; // @synthesize composedRouteSegment=_composedRouteSegment;
 @property(readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
-@property(readonly, nonatomic) CDStruct_869f9c67 *points; // @synthesize points=_points;
+@property(readonly, nonatomic) struct GeoCodecsVectorTilePoint3D *points; // @synthesize points=_points;
 @property(readonly, nonatomic) unsigned int pointCount; // @synthesize pointCount=_pointCount;
 @property(readonly, nonatomic) unsigned int startPointIndex; // @synthesize startPointIndex=_startPointIndex;
 - (id)stringForCoordinates;

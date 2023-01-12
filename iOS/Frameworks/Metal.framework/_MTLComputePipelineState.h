@@ -8,14 +8,13 @@
 
 #import <Metal/MTLComputePipelineState-Protocol.h>
 
-@class MTLDebugInstrumentationData, MTLIndirectArgumentBufferEmulationData, NSString;
+@class MTLDebugInstrumentationData, NSString;
 @protocol MTLDevice;
 
 @interface _MTLComputePipelineState : NSObject <MTLComputePipelineState>
 {
     NSString *_label;
     id <MTLDevice> _device;
-    MTLIndirectArgumentBufferEmulationData *_iabEmulationData;
     MTLDebugInstrumentationData *_debugInstrumentationData;
     _Bool _supportIndirectCommandBuffers;
     long long _textureWriteRoundingMode;
@@ -26,9 +25,9 @@
 @property(readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
 @property(readonly, nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
 @property(retain, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData; // @synthesize debugInstrumentationData=_debugInstrumentationData;
-@property(retain, nonatomic) MTLIndirectArgumentBufferEmulationData *IABEmulationData; // @synthesize IABEmulationData=_iabEmulationData;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
 @property(readonly) NSString *label; // @synthesize label=_label;
+@property(readonly, nonatomic) unsigned long long allocatedSize;
 - (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
 - (id)newComputePipelineStateWithAdditionalBinaryFunctions:(id)arg1 error:(id *)arg2;
 - (id)newVisibleFunctionTableWithDescriptor:(id)arg1;

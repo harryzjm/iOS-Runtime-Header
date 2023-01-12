@@ -47,8 +47,8 @@ __attribute__((visibility("hidden")))
 - (void)updateInterfaceSelectedAction:(unsigned long long)arg1;
 - (void)updateSeparatorsForOrder:(unsigned long long)arg1;
 - (void)configureWithNicknameUpdate:(id)arg1 order:(unsigned long long)arg2;
-- (void)remakeUpdateButton;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)__im_ff_uiConsistencyEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

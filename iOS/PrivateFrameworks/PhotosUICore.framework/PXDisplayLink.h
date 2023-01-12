@@ -6,32 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink;
+#import <PhotosUICore/PXDisplayLinkProtocol-Protocol.h>
 
-@interface PXDisplayLink : NSObject
+@class CADisplayLink, NSString;
+
+@interface PXDisplayLink : NSObject <PXDisplayLinkProtocol>
 {
     CADisplayLink *_displayLink;
+    double _updateCycleTimestamp;
+    double _updateCycleTargetTimestamp;
+    _Bool _isHighFrameRateActive;
     id _target;
     SEL _selector;
+    NSString *_runloopModes;
+    unsigned long long _frameRateRangeType;
 }
 
++ (_Bool)highFramerateRequiresReasonAndRange;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isHighFrameRateActive; // @synthesize isHighFrameRateActive=_isHighFrameRateActive;
+@property(nonatomic) unsigned long long frameRateRangeType; // @synthesize frameRateRangeType=_frameRateRangeType;
+@property(readonly, nonatomic) NSString *runloopModes; // @synthesize runloopModes=_runloopModes;
 @property(readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
 @property(readonly, nonatomic) __weak id target; // @synthesize target=_target;
+- (void)_updateIsHighFrameRateActive;
+@property(nonatomic) unsigned int highFrameRateReason;
 @property(readonly, nonatomic) long long preferredFramesPerSecond;
 @property(readonly, nonatomic) double currentMediaTime;
 @property(readonly, nonatomic) double targetTimestamp;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) double timestamp;
 @property(nonatomic) _Bool paused;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)_tick:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
 - (id)init;
 - (void)_addToRunLoop;
+- (id)initWithWeakTarget:(id)arg1 selector:(SEL)arg2 deferredStart:(_Bool)arg3 runloopModes:(id)arg4 preferredFramesPerSecond:(long long)arg5;
 - (id)initWithWeakTarget:(id)arg1 selector:(SEL)arg2 deferredStart:(_Bool)arg3;
 - (id)initWithWeakTarget:(id)arg1 selector:(SEL)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

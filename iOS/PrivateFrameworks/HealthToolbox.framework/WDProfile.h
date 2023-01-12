@@ -13,14 +13,15 @@
 
 @interface WDProfile : NSObject <UIStateRestoring>
 {
+    struct os_unfair_lock_s _lock;
     WDNotificationManager *_notificationManager;
+    HKSampleTypeDateRangeController *_sampleTypeDateRangeController;
     HKDateCache *_dateCache;
     HKDisplayCategoryController *_displayCategoryController;
     HKDisplayTypeController *_displayTypeController;
     HKHealthStore *_healthStore;
     HKHealthRecordsStore *_healthRecordsStore;
     HKManualEntryValidationController *_manualEntryValidationController;
-    HKSampleTypeDateRangeController *_sampleTypeDateRangeController;
     HKUnitPreferenceController *_unitController;
     HKUCUMUnitDisplayConverter *_ucumDisplayConverter;
     HKChartDataCacheController *_dataCacheController;
@@ -44,13 +45,13 @@
 @property(readonly, nonatomic) HKChartDataCacheController *dataCacheController; // @synthesize dataCacheController=_dataCacheController;
 @property(readonly, nonatomic) HKUCUMUnitDisplayConverter *ucumDisplayConverter; // @synthesize ucumDisplayConverter=_ucumDisplayConverter;
 @property(readonly, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
-@property(readonly, nonatomic) HKSampleTypeDateRangeController *sampleTypeDateRangeController; // @synthesize sampleTypeDateRangeController=_sampleTypeDateRangeController;
 @property(readonly, nonatomic) HKManualEntryValidationController *manualEntryValidationController; // @synthesize manualEntryValidationController=_manualEntryValidationController;
 @property(readonly, nonatomic) HKHealthRecordsStore *healthRecordsStore; // @synthesize healthRecordsStore=_healthRecordsStore;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(readonly, nonatomic) HKDisplayTypeController *displayTypeController; // @synthesize displayTypeController=_displayTypeController;
 @property(readonly, nonatomic) HKDisplayCategoryController *displayCategoryController; // @synthesize displayCategoryController=_displayCategoryController;
 @property(readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
+@property(readonly, nonatomic) HKSampleTypeDateRangeController *sampleTypeDateRangeController; // @synthesize sampleTypeDateRangeController=_sampleTypeDateRangeController;
 @property(readonly, nonatomic) NSString *presentationContext;
 - (id)_createHealthStore;
 @property(readonly, nonatomic) WDNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;

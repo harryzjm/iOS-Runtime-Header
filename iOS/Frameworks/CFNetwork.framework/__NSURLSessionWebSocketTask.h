@@ -35,6 +35,7 @@
 - (void)dealloc;
 - (void)cancel;
 - (void)cancelWithCloseCode:(long long)arg1 reason:(id)arg2;
+- (void)_sendCloseCode:(long long)arg1 reason:(id)arg2;
 - (void)sendPingWithPongReceiveHandler:(CDUnknownBlockType)arg1;
 - (void)receiveMessageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

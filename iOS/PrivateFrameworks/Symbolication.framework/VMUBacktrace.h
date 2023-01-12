@@ -7,8 +7,9 @@
 #import <objc/NSObject.h>
 
 #import <Symbolication/NSCopying-Protocol.h>
+#import <Symbolication/NSSecureCoding-Protocol.h>
 
-@interface VMUBacktrace : NSObject <NSCopying>
+@interface VMUBacktrace : NSObject <NSCopying, NSSecureCoding>
 {
     int _flavor;
     struct {
@@ -26,6 +27,8 @@
     } _callstack;
 }
 
++ (_Bool)supportsSecureCoding;
++ (void)initialize;
 - (unsigned long long)dispatchQueueSerialNumber;
 - (int)threadState;
 - (void)setThreadState:(int)arg1;
@@ -40,9 +43,10 @@
 - (id)description;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithTask:(unsigned int)arg1 thread:(unsigned int)arg2 is64Bit:(_Bool)arg3;
 - (id)initWithSamplingContext:(struct sampling_context_t *)arg1 thread:(unsigned int)arg2 recordFramePointers:(_Bool)arg3;
 - (struct _CSTypeRef)_symbolicator;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

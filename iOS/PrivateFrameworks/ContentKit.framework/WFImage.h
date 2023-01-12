@@ -9,7 +9,7 @@
 #import <ContentKit/NSCopying-Protocol.h>
 #import <ContentKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSImage, NSURL, UIImage;
+@class NSBundle, NSData, NSImage, NSString, NSURL, UIImage, WFImageSymbolConfiguration;
 
 @interface WFImage : NSObject <NSCopying, NSSecureCoding>
 {
@@ -25,13 +25,19 @@
     long long _representationType;
     NSURL *_URL;
     NSData *_data;
+    NSString *_name;
+    NSBundle *_bundle;
+    NSString *_symbolName;
+    WFImageSymbolConfiguration *_symbolConfiguration;
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2 scaleFactor:(double)arg3 rightToLeft:(_Bool)arg4 appearanceName:(id)arg5 inCatalogs:(id)arg6;
-+ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2 inCatalogs:(id)arg3;
-+ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2 scaleFactor:(double)arg3 rightToLeft:(_Bool)arg4 appearanceName:(id)arg5;
-+ (id)systemImageNamed:(id)arg1 pointSize:(double)arg2;
++ (id)glyphNamed:(id)arg1 pointSize:(double)arg2 symbolSize:(unsigned long long)arg3 scaleFactor:(double)arg4 rightToLeft:(_Bool)arg5 appearanceName:(id)arg6 inCatalogs:(id)arg7;
++ (id)glyphNamed:(id)arg1 pointSize:(double)arg2 symbolSize:(unsigned long long)arg3 scaleFactor:(double)arg4 rightToLeft:(_Bool)arg5 appearanceName:(id)arg6;
++ (id)glyphNamed:(id)arg1 pointSize:(double)arg2 inCatalogs:(id)arg3;
++ (id)glyphNamed:(id)arg1 pointSize:(double)arg2 symbolSize:(unsigned long long)arg3;
++ (id)glyphNamed:(id)arg1 pointSize:(double)arg2;
++ (id)systemImageNamed:(id)arg1 configuration:(id)arg2 renderingMode:(unsigned long long)arg3;
 + (id)imageNamed:(id)arg1 inBundle:(id)arg2 scale:(double)arg3;
 + (id)imageNamed:(id)arg1 inBundle:(id)arg2;
 + (_Bool)imageSizeIndicatesScreenshot:(struct CGSize)arg1;
@@ -49,6 +55,10 @@
 + (id)imageWithData:(id)arg1 scale:(double)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool allowsAnimated; // @synthesize allowsAnimated=_allowsAnimated;
+@property(readonly, nonatomic) WFImageSymbolConfiguration *symbolConfiguration; // @synthesize symbolConfiguration=_symbolConfiguration;
+@property(readonly, copy, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
+@property(readonly, copy, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property(readonly, copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(readonly, nonatomic) long long representationType; // @synthesize representationType=_representationType;
@@ -75,9 +85,11 @@
 @property(readonly, nonatomic) struct CGSize sizeInPixels;
 @property(readonly, nonatomic) struct CGSize CGImageSize;
 - (id)initWithPlatformImage:(id)arg1;
+- (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 name:(id)arg3 bundle:(id)arg4;
 - (id)initWithData:(id)arg1 scale:(double)arg2 allowAnimated:(_Bool)arg3;
 - (id)initWithContentsOfURL:(id)arg1;
 - (id)init;
+- (id)initWithSymbolName:(id)arg1 configuration:(id)arg2 renderingMode:(unsigned long long)arg3;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(unsigned int)arg3 renderingMode:(unsigned long long)arg4;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(unsigned int)arg3;
 - (void)dealloc;

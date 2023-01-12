@@ -6,7 +6,6 @@
 
 #import <CloudDocsDaemon/BRCFSRooted-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface BRCZoneRootItem <BRCFSRooted>
 {
 }

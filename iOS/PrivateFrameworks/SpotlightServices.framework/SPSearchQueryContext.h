@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, SFSearchSuggestion;
+@class NSArray, NSString, SPSearchSuggestionResult;
 
 @interface SPSearchQueryContext : NSObject
 {
@@ -15,10 +15,12 @@
     _Bool _noTokenize;
     _Bool _internalDebug;
     _Bool _internalValidation;
+    _Bool _disableOCR;
     _Bool _isPasscodeLocked;
     _Bool _promoteLocalResults;
     _Bool _promoteParsecResults;
     NSString *_searchString;
+    NSString *_normalizedSearchString;
     NSArray *_markedTextArray;
     NSString *_keyboardLanguage;
     NSString *_keyboardPrimaryLanguage;
@@ -31,7 +33,7 @@
     unsigned long long _queryIdent;
     double _currentTime;
     double _scaleFactor;
-    SFSearchSuggestion *_engagedSuggestion;
+    SPSearchSuggestionResult *_engagedSuggestion;
     NSArray *_disabledApps;
     NSArray *_searchEntities;
 }
@@ -43,7 +45,8 @@
 @property(retain, nonatomic) NSArray *searchEntities; // @synthesize searchEntities=_searchEntities;
 @property(retain, nonatomic) NSArray *disabledApps; // @synthesize disabledApps=_disabledApps;
 @property(nonatomic) _Bool isPasscodeLocked; // @synthesize isPasscodeLocked=_isPasscodeLocked;
-@property(retain, nonatomic) SFSearchSuggestion *engagedSuggestion; // @synthesize engagedSuggestion=_engagedSuggestion;
+@property(retain, nonatomic) SPSearchSuggestionResult *engagedSuggestion; // @synthesize engagedSuggestion=_engagedSuggestion;
+@property(nonatomic) _Bool disableOCR; // @synthesize disableOCR=_disableOCR;
 @property(nonatomic) _Bool internalValidation; // @synthesize internalValidation=_internalValidation;
 @property(nonatomic) _Bool internalDebug; // @synthesize internalDebug=_internalDebug;
 @property(nonatomic) _Bool noTokenize; // @synthesize noTokenize=_noTokenize;
@@ -61,6 +64,7 @@
 @property(retain, nonatomic) NSString *keyboardPrimaryLanguage; // @synthesize keyboardPrimaryLanguage=_keyboardPrimaryLanguage;
 @property(retain, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property(retain, nonatomic) NSArray *markedTextArray; // @synthesize markedTextArray=_markedTextArray;
+@property(readonly, nonatomic) NSString *normalizedSearchString; // @synthesize normalizedSearchString=_normalizedSearchString;
 @property(retain, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property(readonly, nonatomic) NSString *displayedText;
 @property(readonly, nonatomic) _Bool hasMarkedText;

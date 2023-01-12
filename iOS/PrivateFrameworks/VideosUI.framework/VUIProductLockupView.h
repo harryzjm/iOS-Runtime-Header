@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class NSArray, NSNumber, NSString, TVFocusableTextView, TVImageProxy, UIImage, VUILabel, VUIMediaTagsView, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView, _TVImageView;
+@class NSArray, NSNumber, NSString, TVFocusableTextView, UIImage, VUIImageProxy, VUIImageView, VUILabel, VUIMediaTagsView, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView;
 @protocol VUILibraryProductLockupViewLayout, VUIProductLockupViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     _Bool _contentDescriptionExpanded;
     _Bool _didSetUpViews;
     id <VUILibraryProductLockupViewLayout> _layout;
-    TVImageProxy *_coverArtImageProxy;
+    VUIImageProxy *_coverArtImageProxy;
     UIImage *_coverArtPlaceholderImage;
     VUIRoundButton *_leftButton;
     UIView *_downloadView;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
     id <VUIProductLockupViewDelegate> _delegate;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
-    _TVImageView *_coverArtImageView;
+    VUIImageView *_coverArtImageView;
     VUILabel *_subtitleLabel;
     TVFocusableTextView *_descriptionTextView;
     VUIRentalExpirationLabel *_expirationLabel;
@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool contentDescriptionExpanded; // @synthesize contentDescriptionExpanded=_contentDescriptionExpanded;
 @property(retain, nonatomic) TVFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property(retain, nonatomic) VUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain, nonatomic) _TVImageView *coverArtImageView; // @synthesize coverArtImageView=_coverArtImageView;
+@property(retain, nonatomic) VUIImageView *coverArtImageView; // @synthesize coverArtImageView=_coverArtImageView;
 @property(retain, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property(retain, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 @property(nonatomic) __weak id <VUIProductLockupViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -64,8 +64,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *downloadView; // @synthesize downloadView=_downloadView;
 @property(retain, nonatomic) VUIRoundButton *leftButton; // @synthesize leftButton=_leftButton;
 @property(readonly, nonatomic) UIImage *coverArtPlaceholderImage; // @synthesize coverArtPlaceholderImage=_coverArtPlaceholderImage;
-@property(readonly, nonatomic) TVImageProxy *coverArtImageProxy; // @synthesize coverArtImageProxy=_coverArtImageProxy;
+@property(readonly, nonatomic) VUIImageProxy *coverArtImageProxy; // @synthesize coverArtImageProxy=_coverArtImageProxy;
 @property(retain, nonatomic) id <VUILibraryProductLockupViewLayout> layout; // @synthesize layout=_layout;
+- (id)_contentDescriptionFont;
 - (struct CGSize)_layoutForStacked:(struct CGSize)arg1 metricsOnly:(_Bool)arg2;
 - (struct CGSize)_layoutForCompact:(struct CGSize)arg1 metricsOnly:(_Bool)arg2;
 - (struct CGSize)_layoutForCategoryAccessibility:(struct CGSize)arg1 metricsOnly:(_Bool)arg2;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (double)_descriptionTopMarginWithBaselineMargin:(double)arg1 otherFont:(id)arg2;
 - (struct CGSize)_sizeOfDescriptionLabel:(double)arg1;
 - (id)_contentDescriptionAttributedString;
+- (void)_updateSubtitleLabelForWindowWidth:(double)arg1;
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

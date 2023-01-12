@@ -32,6 +32,7 @@
 - (id)appendName:(id)arg1 timeInterval:(double)arg2;
 - (id)appendName:(id)arg1 doubleValue:(double)arg2;
 - (id)appendName:(id)arg1 intValue:(int)arg2;
+- (id)appendName:(id)arg1 u_int64_t:(unsigned long long)arg2;
 - (id)appendName:(id)arg1 unsignedInteger:(unsigned long long)arg2;
 - (id)appendName:(id)arg1 integerValue:(long long)arg2;
 - (id)appendName:(id)arg1 boolValue:(_Bool)arg2;

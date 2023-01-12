@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class DNDState;
+@class DNDSModeConfigurationManager, DNDSStateProviderSystemSnapshot, DNDState;
 
 @interface DNDSStateProvider : NSObject
 {
+    DNDSModeConfigurationManager *_modeConfigurationManager;
+    DNDSStateProviderSystemSnapshot *_lastSystemSnapshot;
     DNDState *_lastCalculatedState;
 }
 
 - (void).cxx_destruct;
 @property(copy) DNDState *lastCalculatedState; // @synthesize lastCalculatedState=_lastCalculatedState;
+@property(copy) DNDSStateProviderSystemSnapshot *lastSystemSnapshot; // @synthesize lastSystemSnapshot=_lastSystemSnapshot;
 - (id)recalculateStateForSnapshot:(id)arg1;
+- (id)initWithModeConfigurationManager:(id)arg1;
 
 @end
 

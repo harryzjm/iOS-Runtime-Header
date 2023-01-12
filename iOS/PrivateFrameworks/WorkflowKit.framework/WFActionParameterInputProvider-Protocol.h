@@ -10,6 +10,6 @@
 
 @protocol WFActionParameterInputProvider <NSObject>
 - (_Bool)action:(WFAction *)arg1 canProvideInputForParameter:(WFParameter *)arg2;
-- (void)action:(WFAction *)arg1 provideInputForParameters:(NSOrderedSet *)arg2 withDefaultStates:(NSDictionary *)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)action:(WFAction *)arg1 provideInputForParameters:(NSOrderedSet *)arg2 withDefaultStates:(NSDictionary *)arg3 prompts:(NSDictionary *)arg4 completionHandler:(void (^)(NSDictionary *, NSError *))arg5;
 @end
 

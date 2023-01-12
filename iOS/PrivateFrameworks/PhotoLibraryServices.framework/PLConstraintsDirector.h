@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotoLibraryServices/PFCameraViewfinderSessionWatcherDelegate-Protocol.h>
 #import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class NSString, NSURL, PLForegroundMonitor, PLPhotoAnalysisServiceClient;
+@class NSString, NSURL, PFCameraViewfinderSessionWatcher, PLForegroundMonitor, PLPhotoAnalysisServiceClient;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface PLConstraintsDirector : NSObject <PLForegroundMonitorDelegate>
+@interface PLConstraintsDirector : NSObject <PLForegroundMonitorDelegate, PFCameraViewfinderSessionWatcherDelegate>
 {
     _Bool _didTransitionToOpportunisticDisallowed;
     _Bool _photosAppInForeground;
@@ -19,6 +20,7 @@
     NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_source> *_bonusTimer;
     PLForegroundMonitor *_foregroundMonitor;
+    PFCameraViewfinderSessionWatcher *_cameraWatcher;
     PLPhotoAnalysisServiceClient *_photoAnalysisServiceClient;
     long long _faceQuickClassificationRequestID;
     NSURL *_photoLibraryURL;
@@ -27,6 +29,7 @@
 + (_Bool)_photoanalysisdIsRunning;
 + (_Bool)constraintsAllowSchedulingUserInitiatedAnalysisForAssets;
 - (void).cxx_destruct;
+- (void)cameraWatcherDidChangeState:(id)arg1;
 - (void)foregroundMonitor:(id)arg1 changedStateToForeground:(_Bool)arg2 forBundleIdentifier:(id)arg3;
 - (_Bool)shouldScheduleUserInitiatedAnalysisForAssets;
 - (void)informCameraAppForegroundState:(_Bool)arg1;

@@ -10,8 +10,10 @@
 
 @interface _TtC7FMFCore10FMFManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *fmfManagerSerialQueue;
+    MISSING_TYPE *configuration;
     MISSING_TYPE *dataManager;
     MISSING_TYPE *garbageCollector;
     MISSING_TYPE *systemStateController;
@@ -20,6 +22,12 @@
     MISSING_TYPE *interactionController;
     MISSING_TYPE *actionsController;
     MISSING_TYPE *myLocationController;
+    MISSING_TYPE *proactiveLocationController;
+    MISSING_TYPE *secureLocationRefreshController;
+    MISSING_TYPE *reverseGeocoder;
+    MISSING_TYPE *isRefreshing;
+    MISSING_TYPE *isSnapshotMode;
+    MISSING_TYPE *snapshotResponseReceived;
     MISSING_TYPE *selectedFriend;
     MISSING_TYPE *isInitialized;
 }

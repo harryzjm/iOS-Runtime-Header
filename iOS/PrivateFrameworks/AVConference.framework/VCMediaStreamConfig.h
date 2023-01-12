@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCMediaStreamRateControlConfig, VCNetworkAddress;
+@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCMediaStreamRateControlConfig, VCNetworkAddress, VCNetworkFeedbackController;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaStreamConfig : NSObject
@@ -18,16 +18,20 @@ __attribute__((visibility("hidden")))
     VCNetworkAddress *_remoteAddress;
     unsigned int _remoteSSRC;
     unsigned long long _recommendedMTU;
-    NSData *_sendMasterKey;
+    NSData *_sendMediaKey;
     NSMutableDictionary *_txPayloadMap;
-    NSData *_receiveMasterKey;
+    NSData *_receiveMediaKey;
     NSMutableDictionary *_rxPayloadMap;
     _Bool _latencySensitiveModeEnabled;
     long long _SRTPCipherSuite;
     _Bool _rtpTimeOutEnabled;
     double _rtpTimeOutInterval;
     _Bool _decryptionTimeOutEnabled;
+    double _decryptionMKMRecoveryInterval;
     double _decryptionTimeOutInterval;
+    unsigned int _rtpTimestampRate;
+    struct tagVCSecurityKeyHolder *_securityKeyHolder;
+    int _sframeCipherSuite;
     unsigned int _cellularUniqueTag;
     _Bool _rtcpEnabled;
     double _rtcpSendInterval;
@@ -39,8 +43,13 @@ __attribute__((visibility("hidden")))
     _Bool _rateAdaptationEnabled;
     VCMediaStreamMultiwayConfig *_multiwayConfig;
     VCMediaStreamRateControlConfig *_rateControlConfig;
+    struct tagVCJBTargetEstimatorSynchronizer *_jbTargetEstimatorSynchronizer;
+    VCNetworkFeedbackController *_networkFeedbackController;
+    int _captureSource;
 }
 
+@property(retain, nonatomic) VCNetworkFeedbackController *networkFeedbackController; // @synthesize networkFeedbackController=_networkFeedbackController;
+@property(nonatomic) int captureSource; // @synthesize captureSource=_captureSource;
 @property(retain, nonatomic) VCMediaStreamRateControlConfig *rateControlConfig; // @synthesize rateControlConfig=_rateControlConfig;
 @property(nonatomic, getter=isLatencySensitiveModeEnabled) _Bool latencySensitiveModeEnabled; // @synthesize latencySensitiveModeEnabled=_latencySensitiveModeEnabled;
 @property(nonatomic, getter=isRTCPReceiveCallbackEnabled) _Bool rtcpReceiveCallbackEnabled; // @synthesize rtcpReceiveCallbackEnabled=_rtcpReceiveCallbackEnabled;
@@ -48,16 +57,20 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isRateAdaptationEnabled) _Bool rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
 @property(readonly, nonatomic) NSDictionary *txPayloadMap; // @synthesize txPayloadMap=_txPayloadMap;
 @property(readonly, nonatomic) NSDictionary *rxPayloadMap; // @synthesize rxPayloadMap=_rxPayloadMap;
+@property(nonatomic) int sframeCipherSuite; // @synthesize sframeCipherSuite=_sframeCipherSuite;
+@property(nonatomic) struct tagVCSecurityKeyHolder *securityKeyHolder; // @synthesize securityKeyHolder=_securityKeyHolder;
 @property(nonatomic) long long SRTCPCipherSuite; // @synthesize SRTCPCipherSuite=_SRTCPCipherSuite;
 @property(nonatomic) long long SRTPCipherSuite; // @synthesize SRTPCipherSuite=_SRTPCipherSuite;
-@property(retain, nonatomic) NSData *receiveMasterKey; // @synthesize receiveMasterKey=_receiveMasterKey;
-@property(retain, nonatomic) NSData *sendMasterKey; // @synthesize sendMasterKey=_sendMasterKey;
+@property(retain, nonatomic) NSData *receiveMediaKey; // @synthesize receiveMediaKey=_receiveMediaKey;
+@property(retain, nonatomic) NSData *sendMediaKey; // @synthesize sendMediaKey=_sendMediaKey;
 @property(nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;
 @property(nonatomic) unsigned int cellularUniqueTag; // @synthesize cellularUniqueTag=_cellularUniqueTag;
+@property(nonatomic) double decryptionMKMRecoveryInterval; // @synthesize decryptionMKMRecoveryInterval=_decryptionMKMRecoveryInterval;
 @property(nonatomic) double decryptionTimeOutInterval; // @synthesize decryptionTimeOutInterval=_decryptionTimeOutInterval;
 @property(nonatomic) double rtcpTimeOutInterval; // @synthesize rtcpTimeOutInterval=_rtcpTimeOutInterval;
 @property(nonatomic) double rtpTimeOutInterval; // @synthesize rtpTimeOutInterval=_rtpTimeOutInterval;
 @property(nonatomic, getter=isDecryptionTimeOutEnabled) _Bool decryptionTimeOutEnabled; // @synthesize decryptionTimeOutEnabled=_decryptionTimeOutEnabled;
+@property(nonatomic) unsigned int rtpTimestampRate; // @synthesize rtpTimestampRate=_rtpTimestampRate;
 @property(nonatomic, getter=isRTCPTimeOutEnabled) _Bool rtcpTimeOutEnabled; // @synthesize rtcpTimeOutEnabled=_rtcpTimeOutEnabled;
 @property(nonatomic, getter=isRTPTimeOutEnabled) _Bool rtpTimeOutEnabled; // @synthesize rtpTimeOutEnabled=_rtpTimeOutEnabled;
 @property(nonatomic) double rtcpSendInterval; // @synthesize rtcpSendInterval=_rtcpSendInterval;
@@ -69,6 +82,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *cName; // @synthesize cName=_cName;
 @property(retain, nonatomic) VCNetworkAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property(retain, nonatomic) VCNetworkAddress *localAddress; // @synthesize localAddress=_localAddress;
+@property(nonatomic) struct tagVCJBTargetEstimatorSynchronizer *jbTargetEstimatorSynchronizer;
 - (void)applyMediaStreamClientDictionary:(id)arg1;
 - (void)setupMediaStreamConfig;
 @property(readonly, nonatomic) long long primaryTxCodecType;

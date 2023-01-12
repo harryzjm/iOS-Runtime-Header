@@ -10,7 +10,7 @@
 
 @interface TSTCellList : TSPObject <NSCopying>
 {
-    vector_73284f0b _cells;
+    vector_cdf5f6a1 _cells;
     unsigned long long _trailingEmptyCellCount;
 }
 

@@ -11,6 +11,7 @@
 @protocol SFMapPlaceCardSection <SFCardSection>
 @property(readonly, nonatomic) NSData *jsonData;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property(nonatomic) _Bool shouldSearchDirectionsAlongCurrentRoute;
 @property(copy, nonatomic) NSData *mapsData;
 @property(retain, nonatomic) SFColor *backgroundColor;
 @property(nonatomic) int separatorStyle;

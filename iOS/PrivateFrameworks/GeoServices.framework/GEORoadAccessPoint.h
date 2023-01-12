@@ -17,6 +17,7 @@
     int _cyclingDirection;
     int _drivingDirection;
     unsigned int _significance;
+    int _source;
     int _transitDirection;
     int _walkingDirection;
     _Bool _isApproximate;
@@ -24,6 +25,7 @@
         unsigned int has_cyclingDirection:1;
         unsigned int has_drivingDirection:1;
         unsigned int has_significance:1;
+        unsigned int has_source:1;
         unsigned int has_transitDirection:1;
         unsigned int has_walkingDirection:1;
         unsigned int has_isApproximate:1;
@@ -39,6 +41,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -47,6 +50,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsSource:(id)arg1;
+- (id)sourceAsString:(int)arg1;
+@property(nonatomic) _Bool hasSource;
+@property(nonatomic) int source;
 @property(nonatomic) _Bool hasSignificance;
 @property(nonatomic) unsigned int significance;
 - (int)StringAsWalkingDirection:(id)arg1;

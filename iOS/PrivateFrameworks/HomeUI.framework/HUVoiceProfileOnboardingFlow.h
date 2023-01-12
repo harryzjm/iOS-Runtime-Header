@@ -22,6 +22,7 @@
     NSString *_initialCheckedLanguage;
 }
 
++ (id)needsOnboardingForHome:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool initialCheckedResult; // @synthesize initialCheckedResult=_initialCheckedResult;
 @property(retain, nonatomic) NSString *initialCheckedLanguage; // @synthesize initialCheckedLanguage=_initialCheckedLanguage;

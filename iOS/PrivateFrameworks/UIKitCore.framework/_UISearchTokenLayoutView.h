@@ -10,20 +10,23 @@
 __attribute__((visibility("hidden")))
 @interface _UISearchTokenLayoutView
 {
+    double _verticalDelegateViewOrigin;
+    _Bool _isLastSearchToken;
     UIView<_UIAtomTextViewAtomLayout> *_delegateView;
 }
 
-+ (id)layoutViewWithDelegateView:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isLastSearchToken; // @synthesize isLastSearchToken=_isLastSearchToken;
 @property(retain, nonatomic) UIView<_UIAtomTextViewAtomLayout> *delegateView; // @synthesize delegateView=_delegateView;
-- (struct CGRect)boundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
+- (void)updateMaskLayerForAttachmentRect:(struct CGRect)arg1 lineFragment:(struct CGRect)arg2;
+- (struct CGRect)boundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3;
 - (struct CGRect)selectionBounds;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (_Bool)isEnabled;
 - (id)viewForLastBaselineLayout;
-@property(readonly, nonatomic) struct UIEdgeInsets atomInsets;
+- (struct UIEdgeInsets)atomInsets;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;

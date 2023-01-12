@@ -11,10 +11,12 @@
     CKPublicKey *_transcodeServerPublicKey;
     NSString *_transcodeServerHostname;
     NSURL *_transcodeServerPublicKeyURL;
+    long long _type;
 }
 
 + (struct __SecPolicy *)createTranscodeServerTrustPolicy;
 - (void).cxx_destruct;
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) NSURL *transcodeServerPublicKeyURL; // @synthesize transcodeServerPublicKeyURL=_transcodeServerPublicKeyURL;
 @property(readonly, nonatomic) NSString *transcodeServerHostname; // @synthesize transcodeServerHostname=_transcodeServerHostname;
 @property(retain) CKPublicKey *transcodeServerPublicKey; // @synthesize transcodeServerPublicKey=_transcodeServerPublicKey;
@@ -24,7 +26,8 @@
 - (void)fetchCachedTranscodePublicKey;
 - (void)determineTranscodeServerPublicKeyURL;
 - (void)main;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (_Bool)operationShouldBeFlowControlled;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(nonatomic) unsigned long long state; // @dynamic state;

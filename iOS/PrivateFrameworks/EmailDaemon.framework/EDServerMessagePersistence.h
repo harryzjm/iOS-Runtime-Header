@@ -32,6 +32,7 @@
 - (id)_remoteIDStringForRemoteIDArray:(id)arg1;
 - (_Bool)_addLabels:(id)arg1 removeLabels:(id)arg2 forUID:(unsigned int)arg3 connection:(id)arg4;
 - (_Bool)addLabels:(id)arg1 removeLabels:(id)arg2 toMessagesWithRemoteIDs:(id)arg3;
+- (_Bool)applySortedFlags:(id)arg1;
 - (_Bool)applyFlagChange:(id)arg1 toMessagesWithRemoteIDs:(id)arg2;
 - (_Bool)deleteAllServerMessagesInMailbox;
 - (_Bool)deleteServerMessagesWithRemoteIDs:(id)arg1;
@@ -39,6 +40,10 @@
 - (_Bool)addServerMessage:(id)arg1 invalidMessage:(_Bool *)arg2 duplicateRemoteID:(_Bool *)arg3;
 - (id)_serverMessageForRow:(id)arg1 connection:(id)arg2;
 - (id)_serverMessagesWithWhereClause:(id)arg1 limitClause:(id)arg2 returnLastEntries:(_Bool)arg3;
+- (void)assignUIDsToServerMessages:(id)arg1;
+- (id)serverMessagesForMessageIDHeaders:(id)arg1;
+- (id)deleteAllClearedUIDMessages;
+- (_Bool)clearRemoteIDsForAllMessages;
 - (id)serverMessagesForIMAPUIDs:(id)arg1 limit:(unsigned long long)arg2 returnLastEntries:(_Bool)arg3;
 - (id)serverMessagesForRemoteIDs:(id)arg1;
 @property(readonly, nonatomic) unsigned int minimumIMAPUID;

@@ -5,14 +5,21 @@
 //
 
 #import <TSText/TSWPStyleProvider-Protocol.h>
+#import <TSText/TSWPStyleProviding-Protocol.h>
 
 @class NSString;
 
-@interface TSWPFloatingCommentLayout <TSWPStyleProvider>
+@interface TSWPFloatingCommentLayout <TSWPStyleProviding, TSWPStyleProvider>
 {
 }
 
+- (id)textPropertiesForEquation:(id)arg1 basedOnProperties:(id)arg2;
+- (id)dropCapStyleAtParIndex:(unsigned long long)arg1;
+- (id)listStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)paragraphStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (_Bool)wantsToProvideStylesForTextLayout:(id)arg1;
+- (id)styleProviderForTextLayout:(id)arg1;
 - (id)styleProvider;
 - (_Bool)shouldDisplayGuides;
 - (struct CGSize)minimumSize;

@@ -6,58 +6,66 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSNumber;
+@class MPPlaybackEQSetting, NSNumber, NSUserDefaults;
 @protocol OS_dispatch_queue;
 
 @interface MPPlaybackUserDefaults : NSObject
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    _Bool _allowsHighQualityMusicStreamingOnCellular;
-    NSObject<OS_dispatch_queue> *_calloutQueue;
-    int _musicEQPreset;
-    long long _musicRepeatType;
-    long long _musicShuffleType;
-    _Bool _soundCheckEnabled;
-    _Bool _speakerRouteEnabled;
-    _Bool _includeContentItemDebugFields;
-    NSMutableDictionary *_lastSiriPlaybackContextIDs;
-    struct vector<int, std::__1::allocator<int>> _notifyTokens;
-    NSObject<OS_dispatch_queue> *_userDefaultsMutationQueue;
-    NSNumber *_currentPrivateListeningEnabledValue;
-    NSObject<OS_dispatch_queue> *_loadValuesQueue;
-    NSNumber *_devicePrivateListeningEnabled;
+    NSUserDefaults *_iPodUserDefaults;
+    NSUserDefaults *_videoUserDefaults;
+    NSUserDefaults *_mediaPlaybackCoreUserDefaults;
+    NSUserDefaults *_airplayUserDefaults;
+    NSObject<OS_dispatch_queue> *_accountsQueue;
+    CDStruct_c0841ed3 _notifyTokens;
+    long long _preferredVideoDownloadResolution;
 }
 
 + (id)standardUserDefaults;
-- (id).cxx_construct;
 - (void).cxx_destruct;
-@property(copy, nonatomic, getter=isDevicePrivateListeningEnabled) NSNumber *devicePrivateListeningEnabled; // @synthesize devicePrivateListeningEnabled=_devicePrivateListeningEnabled;
-@property(readonly, nonatomic) int musicEQPreset; // @synthesize musicEQPreset=_musicEQPreset;
+@property(readonly, nonatomic) long long preferredVideoDownloadResolution; // @synthesize preferredVideoDownloadResolution=_preferredVideoDownloadResolution;
 - (void)_accountStoreChangedNotification:(id)arg1;
 - (void)_loadAccountProperties;
-- (void)_mobileiPodPrefsDidChange;
-- (void)_postRepeatShuffleTypeGlobalNotification;
-- (long long)_calculateCurrentMusicShuffleType;
-- (long long)_calculateCurrentMusicRepeatType;
-- (int)_calculateCurrentMusicEQPreset;
-- (void)_addNotificationObserver:(CDUnknownBlockType)arg1 forUserDefaultKey:(struct __CFString *)arg2;
-- (void)setAutoPlayEnabled:(_Bool)arg1 forUserIdentity:(id)arg2;
-- (_Bool)autoPlayEnabledForUserIdentity:(id)arg1;
+- (void)_migrateUserDefaults;
+- (void)resetAllInternalSettings;
+@property(readonly, nonatomic) double activationDelay;
+@property(readonly, nonatomic) double playbackAuthorizationTokenHalfLifeDuration;
+@property(readonly, nonatomic) double assetURLExpirationDuration;
+@property(readonly, nonatomic) _Bool speakerRouteEnabled;
+@property(readonly, nonatomic) long long maximumQueueHandOffSize;
+@property(readonly, nonatomic) _Bool showDebugUI;
+@property(readonly, nonatomic) _Bool includeContentItemDebugFields;
+@property(readonly, nonatomic) _Bool forceLibrarySupplementalContexts;
+@property(readonly, nonatomic) _Bool forceMusicStreaming;
+@property(readonly, nonatomic) long long forcedMusicResolution;
+@property(readonly, nonatomic) _Bool forceMusicResolution;
+@property(readonly, nonatomic) _Bool disableQHO;
+@property(readonly, nonatomic) _Bool disablePeriodicStateRestore;
+@property(readonly, nonatomic) _Bool disableMiniSINF;
+@property(readonly, nonatomic) _Bool disableAudioAnalysis;
+@property(readonly, nonatomic) float progressiveDownloadAssetRatio;
+@property(readonly, nonatomic) _Bool disableAssetCaching;
+@property(readonly, nonatomic) _Bool allowsHighQualityMusicStreamingOnCellular;
+@property(readonly, nonatomic) long long preferredVideoHighBandwidthResolution;
+@property(readonly, nonatomic) long long preferredVideoLowBandwidthResolution;
+@property(nonatomic) _Bool showLosslessAudio;
+@property(nonatomic) _Bool prefersSpatialDownloads;
+@property(nonatomic) _Bool prefersSpatialAudio;
+@property(nonatomic) long long spatialAudioPreference;
+@property(nonatomic) long long preferredMusicDownloadResolution;
+@property(nonatomic) long long preferredMusicHighBandwidthResolution;
+@property(nonatomic) long long preferredMusicLowBandwidthResolution;
 - (void)setPrivateListeningEnabled:(_Bool)arg1 forHomeUserIdentifier:(id)arg2 error:(id *)arg3;
 - (_Bool)privateListeningEnabledForHomeUserIdentifier:(id)arg1 error:(id *)arg2;
-- (void)setLastSiriPlaybackContextID:(id)arg1 forPlayerID:(id)arg2;
-- (id)lastSiriPlaybackContextIDForPlayerID:(id)arg1;
+@property(readonly, copy, nonatomic, getter=isDevicePrivateListeningEnabled) NSNumber *devicePrivateListeningEnabled;
 @property(copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled;
-@property(readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnWifi;
-@property(readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnCellular;
-@property(readonly, nonatomic) _Bool includeContentItemDebugFields;
-@property(readonly, nonatomic) _Bool speakerRouteEnabled;
 @property(readonly, nonatomic) _Bool soundCheckEnabled;
 @property(nonatomic) long long musicShuffleType;
 @property(nonatomic) long long musicRepeatType;
-@property(readonly, nonatomic) _Bool allowsHighQualityMusicStreamingOnCellular;
+@property(readonly, nonatomic) MPPlaybackEQSetting *musicEQSetting;
+- (void)setAutoPlayEnabled:(_Bool)arg1 forUserIdentity:(id)arg2;
+- (_Bool)autoPlayEnabledForUserIdentity:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)_init;
 
 @end
 

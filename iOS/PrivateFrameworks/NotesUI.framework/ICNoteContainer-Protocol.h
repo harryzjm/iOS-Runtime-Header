@@ -12,6 +12,7 @@
 @protocol ICNoteContainer <ICNoteVisibilityTesting>
 @property(retain, nonatomic) NSData *subFolderOrderMergeableData;
 @property(readonly, nonatomic) NSArray *visibleSubFolders;
+@property(readonly, nonatomic) NSArray *visibleNotes;
 @property(readonly, nonatomic) NSString *containerIdentifier;
 @property(readonly, nonatomic) _Bool isTrashFolder;
 @property(readonly, nonatomic) _Bool supportsEditingNotes;
@@ -34,7 +35,6 @@
 - (NSString *)titleForTableViewCell;
 - (NSString *)titleForNavigationBar;
 - (unsigned long long)visibleNotesCount;
-- (NSArray *)visibleNotes;
 - (_Bool)noteIsVisible:(ICNote *)arg1;
 @end
 

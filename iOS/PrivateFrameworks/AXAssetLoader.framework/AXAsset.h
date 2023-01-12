@@ -45,6 +45,7 @@
 @property(readonly, nonatomic) _Bool isDownloading; // @synthesize isDownloading=_isDownloading;
 @property(readonly, nonatomic) _Bool isInstalled; // @synthesize isInstalled=_isInstalled;
 - (void)copyLocally;
+- (id)assetInfoDictionary;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSNumber *unarchivedFileSize;
@@ -59,6 +60,7 @@
 - (id)initWithMAAsset:(id)arg1;
 @property(readonly, nonatomic) NSString *characterVoiceName;
 @property(readonly, nonatomic) NSString *characterVoiceLanguage;
+@property(readonly, nonatomic) NSString *ultronModelName;
 - (id)assertionForVersionLockedImageCaptionModelAsset:(id)arg1;
 @property(readonly, nonatomic) AXImageCaptionModel *imageCaptionModel;
 

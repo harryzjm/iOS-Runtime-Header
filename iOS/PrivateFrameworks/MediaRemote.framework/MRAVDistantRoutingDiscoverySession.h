@@ -34,7 +34,6 @@
 - (void)_reloadAvailableDistantOutputDevicesWithOutputDevices:(id)arg1;
 - (void)_reloadAvailableDistantEndpoints;
 - (void)_reloadAvailableDistantEndpointsWithEndpoints:(id)arg1;
-- (void)_reloadHostedRoutingServiceEndpointFeatures;
 - (void)_reloadHostedRoutingServiceDiscoveryMode;
 - (id)_hostedRoutingConnection;
 - (void)_initializeHostedRoutingConnectionWithCompletion:(CDUnknownBlockType)arg1;
@@ -48,7 +47,6 @@
 - (id)availableOutputDevices;
 - (id)availableEndpoints;
 - (_Bool)devicePresenceDetected;
-- (void)setEndpointFeatures:(unsigned int)arg1;
 - (void)setDiscoveryMode:(unsigned int)arg1;
 - (unsigned int)discoveryMode;
 - (unsigned int)endpointFeatures;

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, UIImage;
 
 @protocol MKPublisherIconProvider
+- (UIImage *)iconForPublisherNamed:(NSString *)arg1 usingId:(unsigned int)arg2 usingContentScale:(double)arg3 usingSizeGroup:(unsigned long long)arg4 isNightMode:(_Bool)arg5;
 - (void)iconForPublisherNamed:(NSString *)arg1 usingId:(unsigned int)arg2 contentScale:(double)arg3 onCompletion:(void (^)(UIImage *))arg4;
 @end
 

@@ -27,21 +27,10 @@ struct CGSize {
     double _field2;
 };
 
-struct ObjcSharedPtr<NSString> {
-    id _field1;
-};
-
 struct SFUZipEndOfCentralDirectory {
     unsigned long long _field1;
     long long _field2;
     long long _field3;
-};
-
-struct TSUCustomFormat {
-    struct ObjcSharedPtr<NSString> _field1;
-    int _field2;
-    CDStruct_8acff13f _field3;
-    struct vector<TSUCustomFormatCondition, std::__1::allocator<TSUCustomFormatCondition>> _field4;
 };
 
 struct TSUFlushableObjectInfo {
@@ -57,17 +46,9 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> {
-    struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-};
-
 struct __sbuf {
     char *_field1;
     int _field2;
-};
-
-struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
 };
 
 struct _xmlDoc {
@@ -113,28 +94,6 @@ struct in_addr {
 
 struct internal_state;
 
-struct set<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerFlushingOrderLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-    struct __tree<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerFlushingOrderLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> _field2;
-        struct __compressed_pair<unsigned long, TSUFlushableObjectInfoPointerFlushingOrderLess> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct set<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerTimeStampLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-    struct __tree<TSUFlushableObjectInfo *, TSUFlushableObjectInfoPointerTimeStampLess, std::__1::allocator<TSUFlushableObjectInfo *>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<TSUFlushableObjectInfo *, void *>>> _field2;
-        struct __compressed_pair<unsigned long, TSUFlushableObjectInfoPointerTimeStampLess> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct shared_ptr<TSUStringChunk>;
-
 struct sockaddr_in {
     unsigned char _field1;
     unsigned char _field2;
@@ -143,19 +102,11 @@ struct sockaddr_in {
     char _field5[8];
 };
 
-struct vector<TSUCustomFormatCondition, std::__1::allocator<TSUCustomFormatCondition>> {
-    CDStruct_183601bc *_field1;
-    CDStruct_183601bc *_field2;
-    struct __compressed_pair<TSUCustomFormatCondition *, std::__1::allocator<TSUCustomFormatCondition>> {
-        CDStruct_183601bc *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::shared_ptr<TSUStringChunk>, std::__1::allocator<std::__1::shared_ptr<TSUStringChunk>>> {
-    struct shared_ptr<TSUStringChunk> *__begin_;
-    struct shared_ptr<TSUStringChunk> *__end_;
-    struct __compressed_pair<std::__1::shared_ptr<TSUStringChunk>*, std::__1::allocator<std::__1::shared_ptr<TSUStringChunk>>> {
-        struct shared_ptr<TSUStringChunk> *__value_;
+struct vector<std::shared_ptr<TSUStringChunk>, std::allocator<std::shared_ptr<TSUStringChunk>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::shared_ptr<TSUStringChunk>*, std::allocator<std::shared_ptr<TSUStringChunk>>> {
+        void *__value_;
     } __end_cap_;
 };
 
@@ -225,8 +176,6 @@ typedef struct {
     CDUnknownFunctionPointerType _field5;
 } CDStruct_70d275a4;
 
-typedef struct CDStruct_183601bc;
-
 typedef struct {
     int mFormatType;
     union {
@@ -258,7 +207,7 @@ typedef struct {
         } mDurationFormatStruct;
         struct {
             unsigned int mCustomFormatID;
-            CDStruct_183601bc *mData;
+            struct *mData;
         } mCustomFormatStruct;
         struct {
             double mMinimum;

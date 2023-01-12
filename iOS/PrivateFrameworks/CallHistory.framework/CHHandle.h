@@ -27,6 +27,7 @@
 @property(readonly, copy, nonatomic) NSString *normalizedValue; // @synthesize normalizedValue=_normalizedValue;
 @property(readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+- (_Bool)isTemporary;
 - (_Bool)isEqualToHandle:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

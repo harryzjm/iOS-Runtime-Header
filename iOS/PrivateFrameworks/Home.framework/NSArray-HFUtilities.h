@@ -7,12 +7,14 @@
 #import <Foundation/NSArray.h>
 
 #import <Home/HFPropertyListConvertible-Protocol.h>
+#import <Home/InnerContentHash-Protocol.h>
 
 @class NSString;
 
-@interface NSArray (HFUtilities) <HFPropertyListConvertible>
+@interface NSArray (HFUtilities) <HFPropertyListConvertible, InnerContentHash>
 + (id)hf_arrayWithNumbersInRange:(struct _NSRange)arg1 stride:(unsigned long long)arg2;
 - (id)hf_prettyDescription;
+- (unsigned long long)computeHashFromContents;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

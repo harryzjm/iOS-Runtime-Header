@@ -49,7 +49,7 @@
 @property(nonatomic) _Bool shouldShowCircularProgress; // @synthesize shouldShowCircularProgress=_shouldShowCircularProgress;
 @property(retain, nonatomic) UIViewController *viewControllerToPresentFrom; // @synthesize viewControllerToPresentFrom=_viewControllerToPresentFrom;
 @property(copy, nonatomic) NSString *progressFormatString; // @synthesize progressFormatString=_progressFormatString;
-@property(retain, nonatomic) NSString *customCancelButtonTitle; // @synthesize customCancelButtonTitle=_customCancelButtonTitle;
+@property(copy, nonatomic) NSString *customCancelButtonTitle; // @synthesize customCancelButtonTitle=_customCancelButtonTitle;
 @property(nonatomic) _Bool shouldShowCancelButton; // @synthesize shouldShowCancelButton=_shouldShowCancelButton;
 @property(nonatomic) _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 - (void)willDismissProgressViewController:(id)arg1;

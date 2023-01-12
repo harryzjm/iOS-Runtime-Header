@@ -10,27 +10,27 @@
 
 @interface TSCH3DChartModelEnumerator : NSObject
 {
-    struct vector<double, std::__1::allocator<double>> mSeriesValues;
-    struct vector<double, std::__1::allocator<double>> mCoordinateValues;
-    TSCHChartModel *mModel;
-    NSArray *mSeriesList;
-    unsigned long long mNumberOfValues;
-    TSCH3DChartType *mChartType;
-    TSCHChartSeriesType *mSeriesType;
-    TSCHChartAxis *mCoordinateAxis;
-    TSCHChartAxis *mValueAxis;
-    double mIntercept;
-    double mUnitSpaceIntercept;
-    struct ValueEnumerator mSeriesEnumerator;
-    struct ValueEnumerator mCoordinateEnumerator;
+    struct vector<double, std::allocator<double>> _seriesValues;
+    struct vector<double, std::allocator<double>> _coordinateValues;
+    TSCHChartModel *_model;
+    NSArray *_seriesList;
+    unsigned long long _numberOfValues;
+    TSCH3DChartType *_chartType;
+    TSCHChartSeriesType *_seriesType;
+    TSCHChartAxis *_coordinateAxis;
+    TSCHChartAxis *_valueAxis;
+    double _intercept;
+    double _unitSpaceIntercept;
+    struct ValueEnumerator _seriesEnumerator;
+    struct ValueEnumerator _coordinateEnumerator;
 }
 
 + (id)enumeratorWithModel:(id)arg1 chartType:(id)arg2 seriesType:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=mSeriesType;
-@property(readonly, nonatomic) TSCH3DChartType *chartType; // @synthesize chartType=mChartType;
-@property(readonly, nonatomic) TSCHChartModel *model; // @synthesize model=mModel;
+@property(readonly, nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=_seriesType;
+@property(readonly, nonatomic) TSCH3DChartType *chartType; // @synthesize chartType=_chartType;
+@property(readonly, nonatomic) TSCHChartModel *model; // @synthesize model=_model;
 - (unsigned int)valueLabelPositionForAxisValue:(double)arg1;
 - (_Bool)skipZeroValues;
 - (id)seriesFillOrStrokeColor;
@@ -68,7 +68,6 @@
 - (void)resetForReverseSeriesEnumeration:(_Bool)arg1;
 - (id)p_resetCoordinateEnumeration;
 - (void)updateAxes;
-- (void)dealloc;
 - (id)initWithModel:(id)arg1 chartType:(id)arg2 seriesType:(id)arg3;
 
 @end

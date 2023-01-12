@@ -9,13 +9,14 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFParameterState-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 @protocol WFParameterState;
 
 @interface WFPropertyListParameterValue : NSObject <NSCopying, WFParameterState>
 {
     long long _valueType;
     id <WFParameterState> _state;
+    NSUUID *_identity;
 }
 
 + (Class)processedClassForValueType:(long long)arg1;
@@ -23,6 +24,7 @@
 + (id)defaultStateForValueType:(long long)arg1;
 + (id)localizedTitleForValueType:(long long)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSUUID *identity; // @synthesize identity=_identity;
 @property(readonly, nonatomic) id <WFParameterState> state; // @synthesize state=_state;
 @property(readonly, nonatomic) long long valueType; // @synthesize valueType=_valueType;
 @property(readonly) unsigned long long hash;
@@ -31,14 +33,19 @@
 - (id)containedVariables;
 - (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 - (id)serializedRepresentation;
+- (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3 valueType:(long long)arg4 variableStringStateClass:(Class)arg5;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
+- (id)initWithType:(long long)arg1 state:(id)arg2 identity:(id)arg3;
 - (id)initWithType:(long long)arg1 state:(id)arg2;
 - (id)initWithObject:(id)arg1;
+- (id)initWithSynonymString:(id)arg1;
 - (id)initWithBoolean:(id)arg1;
 - (id)initWithNumber:(id)arg1;
 - (id)initWithArray:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithChooseFromMenuString:(id)arg1;
 - (id)initWithString:(id)arg1;
+- (id)initWithChooseFromMenuItemState:(id)arg1;
 - (id)initWithBooleanState:(id)arg1;
 - (id)initWithNumberState:(id)arg1;
 - (id)initWithArrayState:(id)arg1;

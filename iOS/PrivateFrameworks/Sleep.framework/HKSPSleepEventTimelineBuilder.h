@@ -26,12 +26,8 @@
 @property(readonly, nonatomic) HKSPSleepEventTimelineResults *results; // @synthesize results=_results;
 - (void)_validateSessionAdjustmentForSnoozedWakeUpAlarm;
 - (void)_validateSessionAdjustments;
-- (void)_adjustSessionForDismissedWakeUpAlarm;
 - (void)_adjustSessionForConfirmedWakeUp;
 - (void)_adjustSessionForSnoozedWakeUpAlarm;
-- (void)_adjustSessionForSkippedBedtime;
-- (void)_adjustSessionForDelayedBedtime;
-- (void)_adjustSessionForSkippedWindDown;
 - (void)_adjustSessions;
 - (id)_windDownDateForBedtimeDate:(id)arg1;
 - (void)_addSessionToTimelineWithWakeUpDate:(id)arg1 bedtimeDate:(id)arg2 windDownDate:(id)arg3 occurrence:(id)arg4;

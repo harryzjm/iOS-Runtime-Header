@@ -6,7 +6,7 @@
 
 #import <FrontBoardServices/FBSSceneTransitionContext.h>
 
-@class NSDictionary;
+@class NSDictionary, UISClickAttribution;
 
 @interface UIApplicationSceneTransitionContext : FBSSceneTransitionContext
 {
@@ -16,6 +16,7 @@
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 @property(nonatomic, getter=_lifecycleActionType, setter=_setLifecycleActionType:) unsigned long long lifecycleActionType;
+@property(retain, nonatomic) UISClickAttribution *clickAttribution;
 @property(nonatomic) _Bool disableTouchCancellationOnRotation;
 @property(nonatomic) long long statusBarAnimation;
 @property(nonatomic) _Bool waitForBackgroundTaskCompletion;

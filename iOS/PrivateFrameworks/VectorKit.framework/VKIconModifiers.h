@@ -34,8 +34,8 @@
 - (void)setGlyphOnly:(_Bool)arg1;
 - (void)setTransitLineColor:(CDStruct_83984b6f)arg1;
 - (void)setText:(id)arg1;
-- (struct IconModifiers *)cppModifiers;
-- (id)initWithModifiers:(const struct IconModifiers *)arg1;
+- (void *)cppModifiers;
+- (id)initWithModifiers:(const void *)arg1;
 - (id)init;
 
 @end

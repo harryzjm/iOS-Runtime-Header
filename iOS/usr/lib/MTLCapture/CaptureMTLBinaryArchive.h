@@ -21,18 +21,28 @@
 }
 
 - (void).cxx_destruct;
+- (_Bool)storeTileRenderPipelineDescriptor:(id)arg1;
+- (_Bool)storeRenderPipelineDescriptor:(id)arg1;
+- (_Bool)storeComputePipelineDescriptor:(id)arg1;
 - (_Bool)serializeToURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)serializeToURL:(id)arg1 error:(id *)arg2;
+- (struct MTLPipelineCollection *)pipelineCollection;
 - (id)getBinaryDataForKey:(id)arg1;
+- (id)getArchiveDataForKey:(const CDStruct_5af0f983 *)arg1;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (_Bool)enumerateArchivesFromPipelineCollection:(CDUnknownBlockType)arg1;
+- (_Bool)enumerateArchivesFromBackingFile:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (_Bool)addTileRenderPipelineFunctionsWithDescriptor:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)addTileRenderPipelineFunctionsWithDescriptor:(id)arg1 error:(id *)arg2;
 - (_Bool)addRenderPipelineFunctionsWithDescriptor:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)addRenderPipelineFunctionsWithDescriptor:(id)arg1 error:(id *)arg2;
+- (_Bool)addLibraryWithDescriptor:(id)arg1 error:(id *)arg2;
+- (_Bool)addFunctionWithDescriptor:(id)arg1 library:(id)arg2 error:(id *)arg3;
 - (_Bool)addComputePipelineFunctionsWithDescriptor:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)addComputePipelineFunctionsWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)addBinaryEntry:(id)arg1 forKey:(id)arg2;
+- (void)addArchiveEntry:(id)arg1 forKey:(const CDStruct_5af0f983 *)arg2;
 @property(readonly) unsigned long long options;
 @property(copy) NSString *label;
 @property(readonly) NSArray *keys;

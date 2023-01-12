@@ -16,6 +16,8 @@
 + (_Bool)isVoIPAllowed;
 + (id)defaultVoiceChatService;
 + (void)initialize;
+- (void).cxx_destruct;
+@property(retain, nonatomic) id voiceChatService; // @synthesize voiceChatService=_voiceChatService;
 @property(readonly) float inputMeterLevel;
 @property(readonly) float outputMeterLevel;
 @property(nonatomic, getter=isInputMeteringEnabled) _Bool inputMeteringEnabled;
@@ -29,7 +31,6 @@
 - (void)stopVoiceChatWithParticipantID:(id)arg1;
 - (_Bool)startVoiceChatWithParticipantID:(id)arg1 error:(id *)arg2;
 @property id <GKVoiceChatClient> client;
-- (void)dealloc;
 
 @end
 

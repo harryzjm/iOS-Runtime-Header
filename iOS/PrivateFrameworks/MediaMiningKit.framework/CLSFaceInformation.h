@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface CLSFaceInformation : NSObject
 {
     unsigned int _faceSizeIsGood:1;
@@ -15,8 +17,12 @@
     _Bool _isHiddenPerson;
     double _faceSize;
     double _faceQuality;
+    NSArray *_traits;
 }
 
++ (id)_traitsFromTraitsPropertyListRepresentation:(id)arg1;
+- (void).cxx_destruct;
+@property(readonly) NSArray *traits; // @synthesize traits=_traits;
 @property(readonly) _Bool faceIsOk; // @synthesize faceIsOk=_faceIsOk;
 @property(readonly) _Bool faceIsGood; // @synthesize faceIsGood=_faceIsGood;
 @property(readonly) _Bool faceSizeIsGood; // @synthesize faceSizeIsGood=_faceSizeIsGood;
@@ -24,10 +30,14 @@
 @property(readonly) _Bool isKnownPerson; // @synthesize isKnownPerson=_isKnownPerson;
 @property(readonly) double faceQuality; // @synthesize faceQuality=_faceQuality;
 @property(readonly) double faceSize; // @synthesize faceSize=_faceSize;
+- (id)_propertyListRepresentationOfTraits;
+- (id)dictionaryRepresentation;
 - (id)description;
-- (id)initForUnknownPersonWithFaceSize:(double)arg1 faceQuality:(double)arg2 faceSizeIsGood:(_Bool)arg3 faceIsGood:(_Bool)arg4 faceIsOk:(_Bool)arg5;
-- (id)initForHiddenPersonWithFaceSize:(double)arg1 faceQuality:(double)arg2 faceSizeIsGood:(_Bool)arg3 faceIsGood:(_Bool)arg4 faceIsOk:(_Bool)arg5;
-- (id)initForKnownPersonWithFaceSize:(double)arg1 faceQuality:(double)arg2 faceSizeIsGood:(_Bool)arg3 faceIsGood:(_Bool)arg4 faceIsOk:(_Bool)arg5;
+- (id)_initWithFaceSize:(double)arg1 faceQuality:(double)arg2 isKnownPerson:(_Bool)arg3 isHiddenPerson:(_Bool)arg4 faceSizeIsGood:(_Bool)arg5 faceIsGood:(_Bool)arg6 faceIsOk:(_Bool)arg7 traits:(id)arg8;
+- (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initForUnknownPersonWithFaceSize:(double)arg1 faceQuality:(double)arg2 faceSizeIsGood:(_Bool)arg3 faceIsGood:(_Bool)arg4 faceIsOk:(_Bool)arg5 traits:(id)arg6;
+- (id)initForHiddenPersonWithFaceSize:(double)arg1 faceQuality:(double)arg2 faceSizeIsGood:(_Bool)arg3 faceIsGood:(_Bool)arg4 faceIsOk:(_Bool)arg5 traits:(id)arg6;
+- (id)initForKnownPersonWithFaceSize:(double)arg1 faceQuality:(double)arg2 faceSizeIsGood:(_Bool)arg3 faceIsGood:(_Bool)arg4 faceIsOk:(_Bool)arg5 traits:(id)arg6;
 
 @end
 

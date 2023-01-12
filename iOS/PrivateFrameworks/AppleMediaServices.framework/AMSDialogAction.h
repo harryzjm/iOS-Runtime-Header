@@ -22,6 +22,7 @@
     long long _style;
     AMSDialogRequest *_dialogRequest;
     NSString *_title;
+    NSURL *_iconURL;
     NSMutableDictionary *_userInfo;
 }
 
@@ -32,6 +33,7 @@
 - (void).cxx_destruct;
 @property(nonatomic) _Bool shouldRetry; // @synthesize shouldRetry=_shouldRetry;
 @property(copy, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property(copy, nonatomic) NSURL *iconURL; // @synthesize iconURL=_iconURL;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(copy, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
 @property(nonatomic) long long style; // @synthesize style=_style;
@@ -46,9 +48,12 @@
 - (id)description;
 - (id)init;
 @property(nonatomic, setter=ams_setURLType:) long long ams_URLType;
-@property(retain, nonatomic, setter=ams_setRawURL:) NSURL *ams_rawURL;
+@property(nonatomic, setter=ams_setTidContinue:) _Bool ams_tidContinue;
 @property(retain, nonatomic, setter=ams_setSubtarget:) NSString *ams_subtarget;
+@property(nonatomic, setter=ams_setShouldRetry:) _Bool ams_shouldRetry;
 @property(nonatomic, setter=ams_setResolvedInterruption:) _Bool ams_resolvedInterruption;
+@property(retain, nonatomic, setter=ams_setRawURL:) NSURL *ams_rawURL;
+@property(retain, nonatomic, setter=ams_setMetricsDictionary:) NSDictionary *ams_metricsDictionary;
 @property(nonatomic, setter=ams_setCommerceUIURL:) _Bool ams_commerceUIURL;
 @property(retain, nonatomic, setter=ams_setButtonDictionary:) NSDictionary *ams_buttonDictionary;
 @property(retain, nonatomic, setter=ams_setBuyParams:) NSString *ams_buyParams;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, _PASLock;
 @protocol NSObject;
 
 @interface SGFoundInSuggestionPresenter
@@ -14,17 +14,24 @@
     unsigned long long _contentOptions;
     id <NSObject> _contactStoreObserverToken;
     _Bool _loadScheduled;
+    NSArray *_existingSuggestions;
+    _PASLock *_lock;
 }
 
 - (void).cxx_destruct;
 - (id)formatMixedCategoriesTitle:(id)arg1;
-- (void)_loadedRealtimeSuggestions:(id)arg1;
+- (void)_loadedRealtimeSuggestions:(id)arg1 fromHostApp:(long long)arg2;
 - (void)_loadSuggestions;
 - (void)_setNeedsToReloadSuggestionsAfter:(double)arg1;
 - (void)reloadSuggestionsFromSearchableItems;
+- (void)addSuggestionsFromSearchableItems:(id)arg1 existingSuggestions:(id)arg2 mailService:(id)arg3 messageService:(id)arg4 options:(unsigned long long)arg5 filter:(CDUnknownBlockType)arg6;
+- (void)addSuggestionsFromSearchableItems:(id)arg1 existingSuggestions:(id)arg2 options:(unsigned long long)arg3 filter:(CDUnknownBlockType)arg4;
 - (void)addSuggestionsFromSearchableItems:(id)arg1 options:(unsigned long long)arg2 filter:(CDUnknownBlockType)arg3;
 @property(copy) NSArray *realtimeSuggestions;
+- (void)setRealtimeSuggestions:(id)arg1 fromHostApp:(long long)arg2;
+- (void)setMailService:(id)arg1 messageService:(id)arg2;
 - (void)dealloc;
+- (id)init;
 
 @end
 

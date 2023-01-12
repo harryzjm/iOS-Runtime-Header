@@ -22,7 +22,6 @@
 + (_Bool)supportsSecureCoding;
 + (id)imageWithName:(id)arg1 inBundlePath:(id)arg2;
 + (id)imageWithName:(id)arg1 inBundle:(id)arg2;
-+ (id)imageWithPath:(id)arg1;
 + (id)imageWithData:(id)arg1;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;

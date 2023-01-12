@@ -41,6 +41,7 @@
     _Bool _fatalErrorOccured;
     int _curXPCMessagePriority;
     NSMutableSet *_notificationServices;
+    NSObject<OS_dispatch_queue> *_connectingQueue;
 }
 
 + (void)_setApplicationWillTerminate;
@@ -48,6 +49,7 @@
 + (_Bool)_applicationWillTerminate;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *connectingQueue; // @synthesize connectingQueue=_connectingQueue;
 @property(retain, nonatomic) IMRemoteObject<IDSDaemonProtocol> *remoteObject; // @synthesize remoteObject=_remoteObject;
 @property(setter=_setAutoReconnect:) _Bool _autoReconnect; // @synthesize _autoReconnect;
 @property(nonatomic) __weak id delegate; // @synthesize delegate=_delegate;
@@ -59,6 +61,10 @@
 - (void)systemApplicationDidSuspend;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)forwarderWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)consumeQueryContext:(id)arg1;
+- (void)unsetQueryContext:(id)arg1;
+- (void)setQueryContext:(id)arg1;
+- (void)sendQueryWithReply:(_Bool)arg1 query:(CDUnknownBlockType)arg2;
 - (void)sendXPCObject:(id)arg1 objectContext:(id)arg2;
 - (void)remoteObjectDiedNotification:(id)arg1;
 - (void)localObjectDiedNotification:(id)arg1;

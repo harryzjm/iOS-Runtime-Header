@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_enqueueContext:(id)arg1;
 - (unsigned long long)_numberOfContexts;
 - (void)_handleDidFinishSynthesizingForSpeechRequest:(id)arg1 instrumentMetrics:(id)arg2 error:(id)arg3;
+- (void)_handleDidGenerateAudioChunkData:(id)arg1 forSpeechRequest:(id)arg2;
 - (void)_handleDidReceiveSpeechWordTimingInfoArray:(id)arg1 forSpeechRequest:(id)arg2;
 - (void)_handleDidFinishPresynthesizedAudioRequest:(id)arg1 instrumentMetrics:(id)arg2 error:(id)arg3;
 - (void)_handleDidStopPresynthesizedAudioRequest:(id)arg1 success:(_Bool)arg2 error:(id)arg3;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)_prewarm;
 - (id)_configuredSpeechRequestForContext:(id)arg1;
 - (void)speechSynthesizer:(id)arg1 didFinishSynthesisRequest:(id)arg2 withInstrumentMetrics:(id)arg3 error:(id)arg4;
+- (void)speechSynthesizer:(id)arg1 withSynthesisRequest:(id)arg2 didGenerateAudioChunk:(id)arg3;
 - (void)speechSynthesizer:(id)arg1 withRequest:(id)arg2 didReceiveTimingInfo:(id)arg3;
 - (void)speechSynthesizer:(id)arg1 didFinishPresynthesizedAudioRequest:(id)arg2 withInstrumentMetrics:(id)arg3 error:(id)arg4;
 - (void)speechSynthesizer:(id)arg1 didStopPresynthesizedAudioRequest:(id)arg2 atEnd:(_Bool)arg3 error:(id)arg4;
@@ -80,8 +82,8 @@ __attribute__((visibility("hidden")))
 - (void)cancelPendingRequests;
 - (void)stopRequest:(id)arg1 withInterruptionBehavior:(long long)arg2;
 - (void)cancelRequest:(id)arg1;
-- (void)enqueueRequest:(id)arg1 languageCode:(id)arg2 gender:(long long)arg3 audioSessionID:(unsigned int)arg4 preparation:(CDUnknownBlockType)arg5 finalization:(CDUnknownBlockType)arg6 taskTracker:(id)arg7 analyticsContext:(id)arg8;
-- (void)synthesizeRequest:(id)arg1 taskTracker:(id)arg2 analyticsContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)enqueueRequest:(id)arg1 languageCode:(id)arg2 voiceName:(id)arg3 gender:(long long)arg4 audioSessionID:(unsigned int)arg5 preparation:(CDUnknownBlockType)arg6 finalization:(CDUnknownBlockType)arg7 taskTracker:(id)arg8 analyticsContext:(id)arg9;
+- (void)synthesizeRequest:(id)arg1 audioChunkHandler:(CDUnknownBlockType)arg2 taskTracker:(id)arg3 analyticsContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)prewarmRequest:(id)arg1;
 - (void)dealloc;
 

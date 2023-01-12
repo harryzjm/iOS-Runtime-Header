@@ -10,35 +10,35 @@
 {
 }
 
++ (id)dataFromHexString:(id)arg1;
 + (void)rewrapAndDivergeKeyForObject:(id)arg1 usingPassphrase:(id)arg2;
-+ (void)removePassphraseForNotesInAccount:(id)arg1;
-+ (void)removePassphraseForAccount:(id)arg1;
 + (void)cachedKeyClearingTimerDidFire;
 + (void)startOrExtendCachedKeyClearingTimerForModes:(id)arg1;
 + (void)startOrExtendCachedKeyClearingTimer;
 + (double)timeIntervalBeforeClearingCachedKeys;
-+ (void)rewrapKeyForObject:(id)arg1 newMasterKey:(id)arg2 salt:(id)arg3 iterationCount:(unsigned int)arg4 hint:(id)arg5;
++ (void)rewrapKeyForObject:(id)arg1 newMainKey:(id)arg2 salt:(id)arg3 iterationCount:(unsigned int)arg4 hint:(id)arg5;
 + (void)transferSharedPassphraseFromAccount:(id)arg1 toAccount:(id)arg2;
-+ (void)rewrapNote:(id)arg1 newMasterKey:(id)arg2 salt:(id)arg3 iterationCount:(unsigned int)arg4 hint:(id)arg5;
++ (void)rewrapNote:(id)arg1 newMainKey:(id)arg2 salt:(id)arg3 iterationCount:(unsigned int)arg4 hint:(id)arg5;
 + (_Bool)updateAllNotesWithOldPassphrase:(id)arg1 toAccountPassphrase:(id)arg2 fromAccount:(id)arg3 progress:(id)arg4;
 + (_Bool)setPassphrase:(id)arg1 hint:(id)arg2 forAccount:(id)arg3;
 + (_Bool)setPassphrase:(id)arg1 hint:(id)arg2 oldPassphrase:(id)arg3 forAccount:(id)arg4;
-+ (_Bool)hasAnyCachedMasterKeys;
++ (_Bool)hasAnyCachedMainKeys;
 + (void)refaultAllPasswordProtectedObjects;
-+ (void)clearAllCachedMasterKeys;
-+ (id)cachedMasterKeyForObject:(id)arg1;
++ (void)clearAllCachedMainKeys;
++ (id)cachedMainKeyForObject:(id)arg1;
 + (id)allCachedKeys;
-+ (id)cachedMasterKeyForIdentifier:(id)arg1;
-+ (void)setCachedMasterKey:(id)arg1 forObject:(id)arg2;
-+ (void)setCachedMasterKey:(id)arg1 forIdentifier:(id)arg2 bioAuthAccountID:(id)arg3;
-+ (id)masterKeysByAccountIdentifier;
-+ (void)cacheMasterKeyWithPassphrase:(id)arg1 forNote:(id)arg2;
-+ (void)cacheMasterKeyWithPassphrase:(id)arg1 forAccount:(id)arg2;
-+ (void)cacheMasterKeyWithPassphrase:(id)arg1 forObject:(id)arg2;
-+ (void)cacheMasterKeyWithPassphrase:(id)arg1;
++ (id)cachedMainKeyForIdentifier:(id)arg1;
++ (void)setCachedMainKey:(id)arg1 forObject:(id)arg2;
++ (void)setCachedMainKey:(id)arg1 forIdentifier:(id)arg2 bioAuthAccountID:(id)arg3;
++ (id)mainKeysByAccountIdentifier;
++ (void)cacheMainKeyWithPassphrase:(id)arg1 forNote:(id)arg2;
++ (void)cacheMainKeyWithPassphrase:(id)arg1 forAccount:(id)arg2;
++ (void)cacheMainKeyWithPassphrase:(id)arg1 forObject:(id)arg2;
++ (void)cacheMainKeyWithPassphrase:(id)arg1;
 + (_Bool)key:(id)arg1 decryptsObject:(id)arg2;
 + (_Bool)isPassphrase:(id)arg1 correctForNote:(id)arg2;
 + (_Bool)isPassphrase:(id)arg1 correctForAccount:(id)arg2;
++ (_Bool)isPassphrase:(id)arg1 correctForObject:(id)arg2 usingKeysFromObject:(id)arg3;
 + (_Bool)isPassphrase:(id)arg1 correctForObject:(id)arg2;
 + (void)fixDivergedAttachmentsForNote:(id)arg1 usingPassphrase:(id)arg2;
 + (_Bool)unauthenticatedAttachmentsUsingSamePassphraseExistForNote:(id)arg1 passphrase:(id)arg2;
@@ -54,14 +54,15 @@
 + (_Bool)userHasPassphraseSetForNote:(id)arg1;
 + (_Bool)userHasPassphraseSetForAccount:(id)arg1;
 + (_Bool)userHasPassphraseSetForObject:(id)arg1;
-+ (id)encryptData:(id)arg1 forObject:(id)arg2 tag:(id *)arg3 initializationVector:(id *)arg4;
++ (void)encryptWithMainKeyOfObject:(id)arg1 dataPreparationBlock:(CDUnknownBlockType)arg2 failureHandler:(CDUnknownBlockType)arg3 successHandler:(CDUnknownBlockType)arg4;
++ (void)encryptWithMainKeyOfObject:(id)arg1 dataToEncrypt:(id)arg2 failureHandler:(CDUnknownBlockType)arg3 successHandler:(CDUnknownBlockType)arg4;
 + (_Bool)encryptFileFromURL:(id)arg1 toURL:(id)arg2 forObject:(id)arg3;
-+ (_Bool)decryptFileFromURL:(id)arg1 toURL:(id)arg2 forObject:(id)arg3;
 + (id)decryptedDataFromFileURL:(id)arg1 forObject:(id)arg2;
-+ (id)decryptData:(id)arg1 forObject:(id)arg2 withTag:(id)arg3 initializationVector:(id)arg4;
++ (id)decryptWithMainKeyOfObject:(id)arg1 decryptablePreparationBlock:(CDUnknownBlockType)arg2 fallbackAttemptSuccessCleanupHandler:(CDUnknownBlockType)arg3;
++ (id)decryptWithMainKeyOfObject:(id)arg1 decryptable:(id)arg2 fallbackAttemptSuccessCleanupHandler:(CDUnknownBlockType)arg3;
 + (id)decryptData:(id)arg1 forObject:(id)arg2;
 + (id)newWrappedKeyForObject:(id)arg1;
-+ (id)wrapKey:(id)arg1 withMasterKey:(id)arg2;
++ (id)wrapKey:(id)arg1 withMainKey:(id)arg2;
 + (id)unwrappedKeyForObject:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <NewsFeed/NSObject-Protocol.h>
 
-@class ACAccount, NFPromise, NSString;
+@class ACAccount, NFPromise, NSArray, NSString;
 @protocol FCAppleAccountObserver;
 
 @protocol FCAppleAccount <NSObject>
@@ -24,6 +24,9 @@
 - (NSString *)iTunesAccountDSID;
 - (NSString *)iTunesAccountName;
 - (_Bool)isUserSignedIntoiTunes;
+@property(nonatomic, readonly) NSArray *allEmailAddresses;
+@property(nonatomic, readonly) NSString *appStoreEmailAddress;
+@property(nonatomic, readonly) NSString *primaryEmailAddress;
 @property(nonatomic, readonly) ACAccount *activeiTunesAccount;
 @property(nonatomic, readonly) NSString *endpointConnectionClientID;
 - (_Bool)isUserSignedInToiCloud;

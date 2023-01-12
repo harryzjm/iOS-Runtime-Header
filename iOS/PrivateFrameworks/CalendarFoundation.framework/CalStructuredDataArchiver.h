@@ -10,11 +10,11 @@
 {
 }
 
-+ (id)archiveDictionary:(id)arg1 whitelistedClasses:(id)arg2 error:(id *)arg3;
++ (id)archiveDictionary:(id)arg1 permittedClasses:(id)arg2 error:(id *)arg3;
 + (id)archiveDictionary:(id)arg1 error:(id *)arg2;
-+ (id)unarchiveDictionaryFromData:(id)arg1 whitelistedClasses:(id)arg2 error:(id *)arg3;
++ (id)unarchiveDictionaryFromData:(id)arg1 permittedClasses:(id)arg2 error:(id *)arg3;
 + (id)unarchiveDictionaryFromData:(id)arg1 error:(id *)arg2;
-+ (id)defaultWhitelistedClasses;
++ (id)defaultPermittedClasses;
 
 @end
 

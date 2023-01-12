@@ -8,14 +8,15 @@
 
 #import <MapKit/MKTransitDeparturesCellDelegate-Protocol.h>
 #import <MapKit/MKTransitDeparturesDataProviderDelegate-Protocol.h>
+#import <MapKit/MKTransitSystemFilterViewDelegate-Protocol.h>
 #import <MapKit/UITableViewDataSource-Protocol.h>
 #import <MapKit/UITableViewDelegate-Protocol.h>
 #import <MapKit/_MKTransitConnectionCellDelegate-Protocol.h>
 
-@class MKArtworkDataSourceCache, MKMapItem, MKTransitDeparturesDataProvider, NSMapTable, NSMutableDictionary, NSString, UITableView;
+@class MKArtworkDataSourceCache, MKMapItem, MKTransitDeparturesDataProvider, MKTransitSystemFilterHeaderFooterView, NSMapTable, NSMutableDictionary, NSString, UITableView;
 @protocol MKTransitDeparturesDataSourceHosting, _MKInfoCardAnalyticsDelegate;
 
-@interface MKTransitDeparturesDataSource : NSObject <_MKTransitConnectionCellDelegate, MKTransitDeparturesCellDelegate, MKTransitDeparturesDataProviderDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MKTransitDeparturesDataSource : NSObject <_MKTransitConnectionCellDelegate, MKTransitDeparturesCellDelegate, MKTransitDeparturesDataProviderDelegate, UITableViewDelegate, UITableViewDataSource, MKTransitSystemFilterViewDelegate>
 {
     UITableView *_tableView;
     NSMapTable *_cachedSectionHeaders;
@@ -27,6 +28,7 @@
     struct CGSize _transitioningSize;
     struct CGRect _lastMaxWidthBounds;
     _Bool _showingIncidents;
+    MKTransitSystemFilterHeaderFooterView *_filterView;
     _Bool _limitInteraction;
     _Bool _allowTransitLineSelection;
     _Bool _supportSystemSectionCollapsing;
@@ -45,6 +47,8 @@
 @property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property(nonatomic) __weak id <MKTransitDeparturesDataSourceHosting> host; // @synthesize host=_host;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
+- (void)filterView:(id)arg1 didChangeSystemSelection:(id)arg2;
+- (_Bool)_newStationCardUIEnabled;
 - (long long)_departureSequenceFrequencyTypeForAllDeparturesSections;
 - (int)_transitCategoryForSequence:(id)arg1;
 - (int)transitCategoryForFrequencyType:(long long)arg1;
@@ -52,6 +56,8 @@
 - (int)currentTransitCategory;
 - (id)possibleActions;
 - (void)recordIncidentsShowing:(_Bool)arg1;
+- (void)_didSelectRowAtIndexPath:(id)arg1;
+- (_Bool)_shouldHighlightRowAtIndexPath:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -62,16 +68,14 @@
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForFooterInSection:(long long)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForHeaderInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (void)_sectionHeaderButtonPressed:(id)arg1;
 - (double)_heightForFooterInSection:(long long)arg1;
-- (id)_viewForFooterInSection:(long long)arg1;
+- (id)_viewForFooterInRow:(long long)arg1 inSection:(long long)arg2;
 - (id)_headerTextForSection:(long long)arg1;
-- (id)_viewForHeaderInSection:(long long)arg1;
+- (id)_viewForHeaderInRow:(long long)arg1 inSection:(long long)arg2;
 - (_Bool)sectionHasFooter:(long long)arg1;
 - (_Bool)sectionHasHeader:(long long)arg1;
 - (id)_departureSequenceForIndexPath:(id)arg1 outIsNewLine:(_Bool *)arg2 outNextLineIsSame:(_Bool *)arg3;
@@ -81,13 +85,15 @@
 - (void)_showIncidentDetails;
 - (id)_incidentCellForRow:(long long)arg1 inSection:(long long)arg2;
 - (void)infoButtonSelectedInConnectionCell:(id)arg1;
+- (id)_attributionCellForRow:(long long)arg1;
 - (id)_connectionCellForRow:(long long)arg1;
-- (id)_messageCellForSection:(long long)arg1;
+- (id)_messageCellForRow:(long long)arg1 inSection:(long long)arg2;
 - (void)_setDisclosureArrowExpanded:(_Bool)arg1 inSystemCellAtIndexPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_toggleHiddenSystemInSection:(long long)arg1 animated:(_Bool)arg2;
-- (id)_systemCellForSection:(long long)arg1;
+- (id)_systemCellForRow:(long long)arg1 inSection:(long long)arg2;
 - (void)incidentButtonSelectedInDeparturesCell:(id)arg1;
 - (void)_configureDeparturesCell:(id)arg1 forIndexPath:(id)arg2;
+- (void)_configureTransitHeaderCell:(id)arg1 forIndexPath:(id)arg2 withSectionType:(long long)arg3;
 - (id)_departuresCellWithReuseIdentifier:(id)arg1 forIndexPath:(id)arg2;
 - (id)_existingCellAtIndexPath:(id)arg1;
 - (id)_cellForRowAtIndexPath:(id)arg1;
@@ -98,11 +104,13 @@
 - (long long)_lineImageSizeForSystem:(id)arg1;
 - (double)_availableWidth;
 - (id)_imageWithArtworkDataSource:(id)arg1 size:(long long)arg2;
+- (id)_cellHostingView;
 - (id)_imageWithArtworkDataSource:(id)arg1;
 - (id)_smallerImageWithArtworkDataSource:(id)arg1;
 - (id)_smallestImageWithArtworkDataSource:(id)arg1;
 @property(readonly, nonatomic) MKArtworkDataSourceCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 - (id)imageForTransitLine:(id)arg1;
+- (id)imageForDepartureSequence:(id)arg1;
 - (id)_imageOptionSizeArraysForEnumeration;
 - (id)_pagingPromptForSection:(long long)arg1;
 - (_Bool)_shouldPageSection:(long long)arg1;

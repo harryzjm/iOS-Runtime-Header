@@ -7,6 +7,9 @@
 #import <Foundation/NSFileHandle.h>
 
 @interface NSFileHandle (DVTNSFileHandleAdditions)
++ (id)dvt_writeOnlyFileHandleWithNullDevice:(id *)arg1;
++ (id)dvt_readOnlyFileHandleWithNullDevice:(id *)arg1;
++ (id)dvt_fileHandleWithNullDeviceInMode:(int)arg1 error:(id *)arg2;
 - (void)dvt_writeData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dvt_readToEndOfFileWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)dvt_writeFormat:(id)arg1;

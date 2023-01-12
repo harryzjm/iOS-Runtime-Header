@@ -15,6 +15,7 @@
 @interface _INPBFile : PBCodable <_INPBFile, NSSecureCoding, NSCopying>
 {
     struct _has;
+    NSData *_bookmarkData;
     NSData *_data;
     _INPBURLValue *_fileURL;
     NSString *_filename;
@@ -27,6 +28,7 @@
 @property(copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property(retain, nonatomic) _INPBURLValue *fileURL; // @synthesize fileURL=_fileURL;
 @property(copy, nonatomic) NSData *data; // @synthesize data=_data;
+@property(copy, nonatomic) NSData *bookmarkData; // @synthesize bookmarkData=_bookmarkData;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
@@ -39,6 +41,7 @@
 @property(readonly, nonatomic) _Bool hasFilename;
 @property(readonly, nonatomic) _Bool hasFileURL;
 @property(readonly, nonatomic) _Bool hasData;
+@property(readonly, nonatomic) _Bool hasBookmarkData;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

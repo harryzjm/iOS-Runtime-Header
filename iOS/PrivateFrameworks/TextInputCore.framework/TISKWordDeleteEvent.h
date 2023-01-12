@@ -10,7 +10,7 @@
 
 - (id)description;
 - (void)reportToSession:(id)arg1;
-- (id)init:(long long)arg1;
+- (id)initWithEmojiSearchMode:(_Bool)arg1 order:(long long)arg2;
 
 @end
 

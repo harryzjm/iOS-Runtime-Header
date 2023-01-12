@@ -10,38 +10,45 @@
 #import <VoiceShortcuts/WFDialogAlertPresenterDelegate-Protocol.h>
 #import <VoiceShortcuts/WFDialogXPCHostProtocol-Protocol.h>
 #import <VoiceShortcuts/WFScreenOnObserverDelegate-Protocol.h>
+#import <VoiceShortcuts/WFUIPresenterInterface-Protocol.h>
 
-@class NSMutableArray, NSString, NSXPCConnection, NSXPCListener, WFDialogAttribution, WFDialogNotificationManager, WFPresentedDialog, WFScreenOnObserver, WFUserNotificationManager, WFWorkflowRunningContext;
-@protocol WFDialogAlertPresenter, WFDialogPresentationManagerDelegate;
+@class NSMutableArray, NSString, NSXPCListener, WFDialogAttributions, WFDialogNotificationManager, WFPresentedDialog, WFScreenOnObserver, WFWorkflowRunningContext;
+@protocol OS_dispatch_queue, WFDialogAlertPresenter, WFDialogPresentationManagerDelegate, WFDialogXPCProtocol;
 
-@interface WFDialogPresentationManager : NSObject <NSXPCListenerDelegate, WFDialogXPCHostProtocol, WFScreenOnObserverDelegate, WFDialogAlertPresenterDelegate>
+@interface WFDialogPresentationManager : NSObject <NSXPCListenerDelegate, WFDialogXPCHostProtocol, WFScreenOnObserverDelegate, WFDialogAlertPresenterDelegate, WFUIPresenterInterface>
 {
+    _Bool _completePersistentModeAwaitingRemoteAlertReactivationSuccess;
     id <WFDialogPresentationManagerDelegate> _delegate;
     id <WFDialogAlertPresenter> _remoteAlertPresenter;
     NSXPCListener *_listener;
-    NSXPCConnection *_activeConnection;
+    id <WFDialogXPCProtocol> _connectedDialog;
     WFPresentedDialog *_presentedDialog;
     CDUnknownBlockType _contentDismissalCompletionHandler;
+    NSObject<OS_dispatch_queue> *_queue;
     WFWorkflowRunningContext *_persistentRunningContext;
-    WFDialogAttribution *_persistentRunningAttribution;
+    WFDialogAttributions *_persistentRunningAttributions;
     NSMutableArray *_persistentPresentationQueue;
     NSMutableArray *_otherPresentationQueue;
     WFDialogNotificationManager *_notificationManager;
     WFScreenOnObserver *_screenOnObserver;
+    CDUnknownBlockType _completePersistentModeBlockAwaitingRemoteAlertReactivation;
     NSString *_dismissalReason;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *dismissalReason; // @synthesize dismissalReason=_dismissalReason;
+@property(copy, nonatomic) CDUnknownBlockType completePersistentModeBlockAwaitingRemoteAlertReactivation; // @synthesize completePersistentModeBlockAwaitingRemoteAlertReactivation=_completePersistentModeBlockAwaitingRemoteAlertReactivation;
+@property(nonatomic) _Bool completePersistentModeAwaitingRemoteAlertReactivationSuccess; // @synthesize completePersistentModeAwaitingRemoteAlertReactivationSuccess=_completePersistentModeAwaitingRemoteAlertReactivationSuccess;
 @property(readonly, nonatomic) WFScreenOnObserver *screenOnObserver; // @synthesize screenOnObserver=_screenOnObserver;
 @property(readonly, nonatomic) WFDialogNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
 @property(readonly, nonatomic) NSMutableArray *otherPresentationQueue; // @synthesize otherPresentationQueue=_otherPresentationQueue;
 @property(readonly, nonatomic) NSMutableArray *persistentPresentationQueue; // @synthesize persistentPresentationQueue=_persistentPresentationQueue;
-@property(retain, nonatomic) WFDialogAttribution *persistentRunningAttribution; // @synthesize persistentRunningAttribution=_persistentRunningAttribution;
+@property(retain, nonatomic) WFDialogAttributions *persistentRunningAttributions; // @synthesize persistentRunningAttributions=_persistentRunningAttributions;
 @property(retain, nonatomic) WFWorkflowRunningContext *persistentRunningContext; // @synthesize persistentRunningContext=_persistentRunningContext;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) CDUnknownBlockType contentDismissalCompletionHandler; // @synthesize contentDismissalCompletionHandler=_contentDismissalCompletionHandler;
 @property(retain, nonatomic) WFPresentedDialog *presentedDialog; // @synthesize presentedDialog=_presentedDialog;
-@property(retain, nonatomic) NSXPCConnection *activeConnection; // @synthesize activeConnection=_activeConnection;
+@property(retain, nonatomic) id <WFDialogXPCProtocol> connectedDialog; // @synthesize connectedDialog=_connectedDialog;
 @property(readonly, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property(readonly, nonatomic) id <WFDialogAlertPresenter> remoteAlertPresenter; // @synthesize remoteAlertPresenter=_remoteAlertPresenter;
 @property(nonatomic) __weak id <WFDialogPresentationManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -50,27 +57,31 @@
 - (void)logFinishDialogPresentationWithPresentedDialog:(id)arg1;
 - (void)logStartDialogPresentationWithRequest:(id)arg1 presentationMode:(unsigned long long)arg2;
 - (void)trackSuspendShortcutWithPresentedDialog:(id)arg1;
-@property(readonly, nonatomic) WFUserNotificationManager *userNotificationManager;
 - (void)screenOnStateDidChange:(id)arg1;
-- (void)completePersistentModeWithSuccess:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)beginPersistentModeWithRunningContext:(id)arg1 attribution:(id)arg2;
+- (void)dismissPersistentChromeInDialog:(id)arg1 success:(_Bool)arg2 customAttributions:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)completePersistentModeWithSuccess:(_Bool)arg1 runningContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)beginPersistentModeWithRunningContext:(id)arg1 attributions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dialogAlertPresenterDidInvalidateAlert:(id)arg1;
 - (void)dialogAlertPresenterDidDeactivateAlert:(id)arg1;
-- (id)xpcListenerEndpointForDialogAlertPresenter:(id)arg1;
+- (void)dialogAlertPresenterDidDisconnectFromAlert:(id)arg1;
+- (void)dialogAlertPresenter:(id)arg1 didConnectToAlert:(id)arg2;
 - (void)requestDismissalWithReason:(id)arg1;
 - (void)beginConnection;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)postNotificationWithRequest:(id)arg1 presentationMode:(unsigned long long)arg2 context:(id)arg3;
-- (void)deactivateRemoteAlertAndInvalidateConnection;
-- (void)presentNextDialog;
-- (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)showDialogRequest:(id)arg1 fromWorkflowWithPresentationMode:(unsigned long long)arg2 runningContext:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (_Bool)hasMoreDialogsToPresent;
-- (void)connectedDialogDidDisconnect;
-- (id)connectedDialog;
+- (void)activateRemoteAlertTiedToBundleIdentifier:(id)arg1;
+- (void)activateRemoteAlert;
+- (void)queue_clearPersistentModeStateIfNecessary;
+- (void)queue_deactivateRemoteAlertAndInvalidateConnection;
+- (void)queue_presentNextDialog;
+- (void)dismissPresentedContentForRunningContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showDialogRequest:(id)arg1 runningContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)hasPersistentState;
+- (_Bool)queue_hasMoreDialogsToPresent;
+- (void)queue_connectedDialogDidDisconnect;
 - (void)removeStaleNotifications;
 - (void)dealloc;
-- (id)initWithNotificationManager:(id)arg1 dialogAlertPresenter:(id)arg2 screenOnObserver:(id)arg3;
+- (id)initWithListener:(id)arg1 notificationManager:(id)arg2 dialogAlertPresenter:(id)arg3 screenOnObserver:(id)arg4;
 - (id)initWithUserNotificationManager:(id)arg1;
 
 // Remaining properties

@@ -10,7 +10,7 @@
 #import <CoverSheet/CSScrollViewDelegate-Protocol.h>
 #import <CoverSheet/CSScrollableView-Protocol.h>
 
-@class CSFixedFooterView, CSLayoutStrategy, CSQuickActionsView, CSRegionsDebugView, CSScrollModifier, CSTeachableMomentsContainerView, NSArray, NSString, SBFLockScreenDateView, SBFPagedScrollView, SBFStatusBarLegibilityView, SBUIBackgroundView, UIColor, UIGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
+@class CSFixedFooterView, CSLayoutStrategy, CSQuickActionsView, CSRegionsDebugView, CSScrollModifier, CSTeachableMomentsContainerView, NSArray, NSNumber, NSString, SBFLockScreenDateView, SBFPagedScrollView, SBFStatusBarLegibilityView, SBLockScreenDefaults, SBSearchGesture, SBUIBackgroundView, UIColor, UIGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
 @protocol CSCoverSheetViewDelegate, CSWallpaperView;
 
 @interface CSCoverSheetView : UIView <CSScrollViewDelegate, CSCoverSheetViewTransitionSource, CSScrollableView>
@@ -21,14 +21,17 @@
     UIView *_authIndicator;
     UIView *_slideableContentView;
     UIView *_higherSlideableContentView;
+    UIView *_pullDownView;
     UIVisualEffectView *_dateEffectView;
     SBFStatusBarLegibilityView *_statusBarLegibilityView;
     _Bool _viewControllerAppearingOrAppeared;
+    _Bool _hasSubviewModifyingView;
     CDStruct_7238a68f _transitionContext;
     double _scrollViewStartingXOffset;
     CSScrollModifier *_scrollModifier;
     unsigned long long _initialPageIndex;
     _Bool _shouldModifyPageScrolling;
+    SBLockScreenDefaults *_cachedLockScreenDefaults;
     _Bool _ignoresOverscrollOnMainPage;
     _Bool _forceDateViewCentered;
     _Bool _dateViewIsVibrant;
@@ -45,13 +48,15 @@
     UIView *_poseidonContainerView;
     CSTeachableMomentsContainerView *_teachableMomentsContainerView;
     CSQuickActionsView *_quickActionsView;
+    NSNumber *_proudLockIconViewValue;
     long long _dateViewPageAlignment;
     UIView *_fakeStatusBar;
     unsigned long long _fakeStatusBarLevel;
-    UIVisualEffectView *_statusBarBackgroundView;
+    UIView *_statusBarBackgroundView;
     long long _statusBarBackgroundPageAlignment;
     UIGestureRecognizer *_wallpaperGestureRecognizer;
     UITapGestureRecognizer *_quickNoteGestureRecognizer;
+    SBSearchGesture *_searchGesture;
     UIView *_scalableContentView;
     UIView *_modalPresentationView;
     UIView *_wakeEffectView;
@@ -85,15 +90,17 @@
 @property(retain, nonatomic) UIView *modalPresentationView; // @synthesize modalPresentationView=_modalPresentationView;
 @property(readonly, nonatomic) UIView *slideableContentView; // @synthesize slideableContentView=_slideableContentView;
 @property(retain, nonatomic) UIView *scalableContentView; // @synthesize scalableContentView=_scalableContentView;
+@property(retain, nonatomic) SBSearchGesture *searchGesture; // @synthesize searchGesture=_searchGesture;
 @property(retain, nonatomic) UITapGestureRecognizer *quickNoteGestureRecognizer; // @synthesize quickNoteGestureRecognizer=_quickNoteGestureRecognizer;
 @property(retain, nonatomic) UIGestureRecognizer *wallpaperGestureRecognizer; // @synthesize wallpaperGestureRecognizer=_wallpaperGestureRecognizer;
 @property(nonatomic) long long statusBarBackgroundPageAlignment; // @synthesize statusBarBackgroundPageAlignment=_statusBarBackgroundPageAlignment;
-@property(retain, nonatomic) UIVisualEffectView *statusBarBackgroundView; // @synthesize statusBarBackgroundView=_statusBarBackgroundView;
+@property(retain, nonatomic) UIView *statusBarBackgroundView; // @synthesize statusBarBackgroundView=_statusBarBackgroundView;
 @property(nonatomic) unsigned long long fakeStatusBarLevel; // @synthesize fakeStatusBarLevel=_fakeStatusBarLevel;
 @property(retain, nonatomic) UIView *fakeStatusBar; // @synthesize fakeStatusBar=_fakeStatusBar;
 @property(nonatomic) _Bool dateViewIsVibrant; // @synthesize dateViewIsVibrant=_dateViewIsVibrant;
 @property(nonatomic) _Bool forceDateViewCentered; // @synthesize forceDateViewCentered=_forceDateViewCentered;
 @property(nonatomic) long long dateViewPageAlignment; // @synthesize dateViewPageAlignment=_dateViewPageAlignment;
+@property(nonatomic) NSNumber *proudLockIconViewValue; // @synthesize proudLockIconViewValue=_proudLockIconViewValue;
 @property(nonatomic) struct CGPoint proudLockIconViewOffset; // @synthesize proudLockIconViewOffset=_proudLockIconViewOffset;
 @property(nonatomic) struct CGPoint dateViewOffset; // @synthesize dateViewOffset=_dateViewOffset;
 @property(retain, nonatomic) CSQuickActionsView *quickActionsView; // @synthesize quickActionsView=_quickActionsView;
@@ -165,6 +172,10 @@
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
 - (void)layoutSubviews;
 - (void)didAddSubview:(id)arg1;
+- (id)_lockScreenDefaults;
+- (void)_setLockScreenDefaults:(id)arg1;
+- (void)removePullDownContentViewAnimated:(_Bool)arg1;
+- (void)addPullDownContentView;
 - (void)updateScalableContentTransformWithScale:(double)arg1;
 - (void)removeScalableContentView;
 - (void)addScalableContentViewWithCustomContentView:(id)arg1;

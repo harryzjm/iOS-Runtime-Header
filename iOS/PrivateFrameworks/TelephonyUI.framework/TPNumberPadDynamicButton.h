@@ -17,7 +17,7 @@
 - (void)updateCurrentStyleIfNecessaryFromStyle:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)buttonColor;
-- (id)initForCharacter:(long long)arg1;
+- (id)initForCharacter:(long long)arg1 style:(long long)arg2;
 
 @end
 

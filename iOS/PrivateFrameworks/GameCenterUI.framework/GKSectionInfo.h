@@ -17,13 +17,13 @@
     NSString *_title;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(retain, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property(nonatomic) long long section; // @synthesize section=_section;
 - (id)description;
-- (void)dealloc;
 
 @end
 

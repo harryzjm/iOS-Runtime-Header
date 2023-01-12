@@ -12,17 +12,18 @@
 
 @interface FCAVEphemeralAssetKeyCache : NSObject <FCAVAssetKeyCacheType>
 {
-    FCThreadSafeMutableDictionary *_dictionary;
     NSData *_keyServerCertificate;
+    FCThreadSafeMutableDictionary *_dictionary;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSData *keyServerCertificate; // @synthesize keyServerCertificate=_keyServerCertificate;
-@property(readonly, nonatomic) FCThreadSafeMutableDictionary *dictionary; // @synthesize dictionary=_dictionary;
+@property(readonly, copy, nonatomic) NSData *keyServerCertificate; // @synthesize keyServerCertificate=_keyServerCertificate;
 - (void)clearKeyServerCertificate;
 - (void)saveKeyServerCertificate:(id)arg1;
 - (void)removeAllAssetKeys;
+- (void)importAVAssetKey:(id)arg1;
 - (void)saveAssetKeyData:(id)arg1 creationDate:(id)arg2 expirationDate:(id)arg3 forURI:(id)arg4;
+- (id)interestTokenForKeyURIs:(id)arg1;
 - (id)assetKeyForURI:(id)arg1;
 - (id)init;
 

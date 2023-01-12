@@ -10,12 +10,16 @@
 
 @interface EKUITableViewCell : UITableViewCell
 {
-    UIVisualEffectView *_rowSeparatorParentView;
-    RowSeparatorView *_separatorViewForNonOpaqueTables;
+    UIVisualEffectView *_bottomRowSeparatorParentView;
+    RowSeparatorView *_bottomSeparatorViewForNonOpaqueTables;
+    UIVisualEffectView *_topRowSeparatorParentView;
+    RowSeparatorView *_topSeparatorViewForNonOpaqueTables;
     _Bool _drawsOwnRowSeparators;
+    _Bool _disableSelectedBackground;
     _Bool _usesInsetMargin;
     UIColor *_rowSeparatorColor;
     UIVisualEffect *_rowSeparatorVisualEffect;
+    unsigned long long _separatorEdges;
 }
 
 + (_Bool)vibrant;
@@ -23,12 +27,19 @@
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool usesInsetMargin; // @synthesize usesInsetMargin=_usesInsetMargin;
+@property(nonatomic) unsigned long long separatorEdges; // @synthesize separatorEdges=_separatorEdges;
 @property(retain, nonatomic) UIVisualEffect *rowSeparatorVisualEffect; // @synthesize rowSeparatorVisualEffect=_rowSeparatorVisualEffect;
 @property(retain, nonatomic) UIColor *rowSeparatorColor; // @synthesize rowSeparatorColor=_rowSeparatorColor;
+@property(nonatomic) _Bool disableSelectedBackground; // @synthesize disableSelectedBackground=_disableSelectedBackground;
 @property(nonatomic) _Bool drawsOwnRowSeparators; // @synthesize drawsOwnRowSeparators=_drawsOwnRowSeparators;
 - (void)_setMarginExtendsToFullWidth:(_Bool)arg1;
+- (void)updateConfigurationUsingState:(id)arg1;
+- (void)updateRowSeparators;
+- (id)separatorView;
+- (id)separatorParentView;
 - (void)_layoutSeparator;
 - (void)layoutSubviews;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

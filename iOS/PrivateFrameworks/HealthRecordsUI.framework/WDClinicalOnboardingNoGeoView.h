@@ -6,28 +6,28 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, UIButton, UILabel, UILayoutGuide;
+@class NSLayoutConstraint, UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface WDClinicalOnboardingNoGeoView : UIView
 {
+    UIView *_containerView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UIButton *_locationServicesButton;
     NSLayoutConstraint *_subtitleBaselineConstraint;
     NSLayoutConstraint *_locationServicesButtonBaselineConstraint;
     NSLayoutConstraint *_containerCenterYConstraint;
-    UILayoutGuide *_containerLayoutGuide;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) UILayoutGuide *containerLayoutGuide; // @synthesize containerLayoutGuide=_containerLayoutGuide;
 @property(retain, nonatomic) NSLayoutConstraint *containerCenterYConstraint; // @synthesize containerCenterYConstraint=_containerCenterYConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *locationServicesButtonBaselineConstraint; // @synthesize locationServicesButtonBaselineConstraint=_locationServicesButtonBaselineConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *subtitleBaselineConstraint; // @synthesize subtitleBaselineConstraint=_subtitleBaselineConstraint;
 @property(retain, nonatomic) UIButton *locationServicesButton; // @synthesize locationServicesButton=_locationServicesButton;
 @property(retain, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 - (void)_updateForCurrentSizeCategory;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_tappedLocationServices:(id)arg1;

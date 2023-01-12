@@ -40,7 +40,6 @@
 @property(readonly, nonatomic) float constantDepthFactor;
 - (tmat4x4_3074befe)sceneTransform;
 @property(nonatomic) tvec2_84d5962d sageChartInfoSize;
-- (void)dealloc;
 
 @end
 

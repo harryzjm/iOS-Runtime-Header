@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <TipsCore/NSCopying-Protocol.h>
 #import <TipsCore/NSSecureCoding-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface TPSURLAction : NSObject <NSCopying, NSSecureCoding>
+@interface TPSURLAction <NSCopying, NSSecureCoding>
 {
     NSString *_text;
     NSURL *_URL;
 }
 
-+ (id)classSet;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;

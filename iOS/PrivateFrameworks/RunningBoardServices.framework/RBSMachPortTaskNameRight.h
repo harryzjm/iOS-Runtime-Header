@@ -33,7 +33,6 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithPID:(int)arg1;
 - (_Bool)isUsable;
 - (unsigned int)port;
 - (id)init;

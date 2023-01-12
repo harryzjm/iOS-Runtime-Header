@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <AVConference/VCCaptionsTranscription-Protocol.h>
+
 @class NSArray, NSMutableArray, NSString;
 
-@interface AVCCaptionsResult : NSObject
+@interface AVCCaptionsResult : NSObject <VCCaptionsTranscription>
 {
     _Bool _utteranceComplete;
     NSMutableArray *_tokens;
@@ -21,9 +23,10 @@
 @property(readonly, nonatomic) NSArray *tokens; // @synthesize tokens=_tokens;
 @property(readonly, nonatomic) _Bool utteranceComplete; // @synthesize utteranceComplete=_utteranceComplete;
 @property(readonly, nonatomic) NSString *text;
+@property(readonly, nonatomic) NSArray *segments;
 - (id)description;
 - (void)dealloc;
-- (_Bool)addTokenWithString:(id)arg1 confidence:(double)arg2 spaceAfter:(_Bool)arg3;
+- (_Bool)addTokenWithString:(id)arg1 confidence:(double)arg2 range:(struct _NSRange)arg3;
 - (id)initWithCapacity:(long long)arg1 utteranceComplete:(_Bool)arg2 utteranceNumber:(unsigned int)arg3 updateNumber:(unsigned int)arg4;
 
 @end

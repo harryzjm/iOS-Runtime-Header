@@ -14,18 +14,20 @@
 {
     ICQOffer *_offer;
     NSData *_flowOptionsData;
+    NSData *_preloadedRemoteUIData;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)ICQContextFromRemoteAlertContext:(id)arg1;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSData *preloadedRemoteUIData; // @synthesize preloadedRemoteUIData=_preloadedRemoteUIData;
 @property(readonly, nonatomic) NSData *flowOptionsData; // @synthesize flowOptionsData=_flowOptionsData;
 @property(readonly, nonatomic) ICQOffer *offer; // @synthesize offer=_offer;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)toDictionary;
 - (id)_serializedData;
-- (id)initWithOffer:(id)arg1 flowOptionsData:(id)arg2;
+- (id)initWithOffer:(id)arg1 flowOptionsData:(id)arg2 preloadedRemoteUIData:(id)arg3;
 
 @end
 

@@ -8,7 +8,10 @@
 {
 }
 
-- (id)outputContentClasses;
+- (id)minimumSupportedClientVersion;
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
+- (void)updatePathPrefix;
 - (id)filenamePlaceholderText;
 - (void)runAsynchronouslyWithInput:(id)arg1 storageService:(id)arg2;
 

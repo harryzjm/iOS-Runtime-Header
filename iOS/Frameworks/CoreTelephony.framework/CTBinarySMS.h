@@ -13,6 +13,7 @@
     int _portAddressingScheme;
     int _srcPort;
     int _dstPort;
+    int _smsType;
     NSData *_payload;
     NSString *_destinationAddress;
     NSString *_smscAddress;
@@ -20,6 +21,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int smsType; // @synthesize smsType=_smsType;
 @property(copy, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property(copy, nonatomic) NSString *smscAddress; // @synthesize smscAddress=_smscAddress;
 @property(copy, nonatomic) NSString *destinationAddress; // @synthesize destinationAddress=_destinationAddress;

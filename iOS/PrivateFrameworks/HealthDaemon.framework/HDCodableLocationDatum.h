@@ -12,24 +12,33 @@
 {
     double _altitude;
     double _course;
+    double _courseAccuracy;
     double _horizontalAccuracy;
     double _latitude;
     double _longitude;
     double _speed;
+    double _speedAccuracy;
     double _timestamp;
     double _verticalAccuracy;
+    int _signalEnvironmentType;
     struct {
         unsigned int altitude:1;
         unsigned int course:1;
+        unsigned int courseAccuracy:1;
         unsigned int horizontalAccuracy:1;
         unsigned int latitude:1;
         unsigned int longitude:1;
         unsigned int speed:1;
+        unsigned int speedAccuracy:1;
         unsigned int timestamp:1;
         unsigned int verticalAccuracy:1;
+        unsigned int signalEnvironmentType:1;
     } _has;
 }
 
+@property(nonatomic) int signalEnvironmentType; // @synthesize signalEnvironmentType=_signalEnvironmentType;
+@property(nonatomic) double courseAccuracy; // @synthesize courseAccuracy=_courseAccuracy;
+@property(nonatomic) double speedAccuracy; // @synthesize speedAccuracy=_speedAccuracy;
 @property(nonatomic) double verticalAccuracy; // @synthesize verticalAccuracy=_verticalAccuracy;
 @property(nonatomic) double horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property(nonatomic) double course; // @synthesize course=_course;
@@ -47,6 +56,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasSignalEnvironmentType;
+@property(nonatomic) _Bool hasCourseAccuracy;
+@property(nonatomic) _Bool hasSpeedAccuracy;
 @property(nonatomic) _Bool hasVerticalAccuracy;
 @property(nonatomic) _Bool hasHorizontalAccuracy;
 @property(nonatomic) _Bool hasCourse;

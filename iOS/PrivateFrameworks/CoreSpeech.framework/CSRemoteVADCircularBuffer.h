@@ -8,7 +8,7 @@
 
 @interface CSRemoteVADCircularBuffer : NSObject
 {
-    struct unique_ptr<corespeech::CSAudioCircularBufferImpl<unsigned char>, std::__1::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned char>>> _remoteVADCircularBufferImpl;
+    struct unique_ptr<corespeech::CSAudioCircularBufferImpl<unsigned char>, std::default_delete<corespeech::CSAudioCircularBufferImpl<unsigned char>>> _remoteVADCircularBufferImpl;
     int _audioSamplesPerRemoteVAD;
     unsigned long long _capacity;
     unsigned long long _size;

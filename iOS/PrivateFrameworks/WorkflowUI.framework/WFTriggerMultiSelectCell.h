@@ -11,8 +11,6 @@
 
 @interface WFTriggerMultiSelectCell : UITableViewCell
 {
-    _Bool _leftViewSelected;
-    _Bool _rightViewSelected;
     id <WFTriggerMultiSelectCellDelegate> _delegate;
     UIStackView *_stackView;
     WFTriggerOptionSelectionView *_leftView;
@@ -26,12 +24,10 @@
 @property(readonly, nonatomic) WFTriggerOptionSelectionView *leftView; // @synthesize leftView=_leftView;
 @property(readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(nonatomic) __weak id <WFTriggerMultiSelectCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic, getter=isRightViewSelected) _Bool rightViewSelected; // @synthesize rightViewSelected=_rightViewSelected;
-@property(nonatomic, getter=isLeftViewSelected) _Bool leftViewSelected; // @synthesize leftViewSelected=_leftViewSelected;
-- (void)configureWithLeftGlyph:(id)arg1 leftTitle:(id)arg2 rightGlyph:(id)arg3 rightTitle:(id)arg4;
+- (void)configureWithLeftGlyph:(id)arg1 leftTitle:(id)arg2 leftTintColor:(id)arg3 rightGlyph:(id)arg4 rightTitle:(id)arg5 rightTintColor:(id)arg6;
 - (void)prepareForReuse;
-- (_Bool)rightViewSelected;
-- (_Bool)leftViewSelected;
+@property(nonatomic, getter=isRightViewSelected) _Bool rightViewSelected;
+@property(nonatomic, getter=isLeftViewSelected) _Bool leftViewSelected;
 - (void)handleMultiSelectViewPressWithRecognizer:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

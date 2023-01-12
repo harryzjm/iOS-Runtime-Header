@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <TPSEventsProviderDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)deregisterAllEventsForCallback;
 - (void)deregisterEventsForCallback:(id)arg1;
 - (void)registerEventsForWakingCallback:(id)arg1 clientIdentifier:(id)arg2;
 - (void)registerEventsForCallback:(id)arg1;

@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     _Bool _hasBorder;
     _Bool _enabled;
     _Bool _hasImage;
+    _Bool _hasBadgeImage;
     _Bool _hasTitle;
     _Bool _indeterminate;
     UIImage *_image;
+    UIImage *_badgeImage;
     NSString *_title;
     double _progress;
     unsigned long long _downloadState;
@@ -28,6 +30,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isInderminate) _Bool indeterminate; // @synthesize indeterminate=_indeterminate;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(nonatomic) _Bool hasTitle; // @synthesize hasTitle=_hasTitle;
+@property(retain, nonatomic) UIImage *badgeImage; // @synthesize badgeImage=_badgeImage;
+@property(nonatomic) _Bool hasBadgeImage; // @synthesize hasBadgeImage=_hasBadgeImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(nonatomic) _Bool hasImage; // @synthesize hasImage=_hasImage;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;

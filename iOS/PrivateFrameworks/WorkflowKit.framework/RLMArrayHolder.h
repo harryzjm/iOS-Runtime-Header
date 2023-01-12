@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface RLMArrayHolder : NSObject
 {
-    struct unique_ptr<id [], std::__1::default_delete<id []>> items;
+    struct unique_ptr<id [], std::default_delete<id []>> items;
 }
 
 - (id).cxx_construct;

@@ -17,12 +17,14 @@
     CDUnknownBlockType _incomingMessageHandler;
     NSObject<OS_xpc_object> *_connection;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
     NSDictionary *_additionalProperties;
 }
 
 - (void).cxx_destruct;
 @property(readonly, retain, nonatomic) NSDictionary *additionalProperties; // @synthesize additionalProperties=_additionalProperties;
 @property(readonly, nonatomic) int classID; // @synthesize classID=_classID;
+@property(readonly, retain) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
 @property(readonly, retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
 @property(nonatomic) _Bool isSynchronous; // @synthesize isSynchronous=_isSynchronous;

@@ -15,7 +15,6 @@
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
 - (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)hash;

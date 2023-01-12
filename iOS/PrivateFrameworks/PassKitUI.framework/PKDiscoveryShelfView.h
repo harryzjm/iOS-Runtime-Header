@@ -6,12 +6,18 @@
 
 #import <UIKit/UIView.h>
 
+@class NSString;
+
 @interface PKDiscoveryShelfView : UIView
 {
+    NSString *_itemIdentifier;
     struct UIEdgeInsets _contentInsets;
 }
 
 + (id)viewForShelf:(id)arg1 discoveryCardViewDelegate:(id)arg2;
++ (id)viewForShelf:(id)arg1 discoveryCardViewDelegate:(id)arg2 itemIdentifier:(id)arg3;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property(nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 - (id)initWithFrame:(struct CGRect)arg1;
 

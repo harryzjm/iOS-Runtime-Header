@@ -7,42 +7,62 @@
 #import <HomeAI/AVAssetWriterDelegate-Protocol.h>
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class AVAssetWriter, NSObject, NSString;
-@protocol HMIVideoAssetWriterDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
+@class AVAssetWriter, AVAssetWriterInput, NSObject, NSString;
+@protocol HMIVideoAssetWriterDelegate, OS_dispatch_queue;
 
 @interface HMIVideoAssetWriter <AVAssetWriterDelegate, HMFLogging>
 {
-    AVAssetWriter *_assetWriter;
-    _Bool _skipInitializationSegment;
     _Bool _dropSamplesUntilSync;
     _Bool _dropTrimDurationAttachments;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_outputQueue;
-    NSObject<OS_dispatch_semaphore> *_semaphore;
-    struct opaqueCMFormatDescription *_videoFormat;
-    struct opaqueCMFormatDescription *_audioFormat;
-    _Bool _allowRecovery;
     _Bool _allowRecoveryFromInsufficientAudioTrim;
-    unsigned long long _nextSequenceNumber;
     id <HMIVideoAssetWriterDelegate> _delegate;
+    NSString *_logIdentifier;
+    AVAssetWriter *_assetWriter;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    const struct opaqueCMFormatDescription *_videoFormat;
+    const struct opaqueCMFormatDescription *_audioFormat;
+    CDUnknownBlockType _assetWriterDidOutputSeparableSegment;
+    AVAssetWriterInput *_videoInput;
+    AVAssetWriterInput *_audioInput;
+    CDStruct_1b6d18a9 _preferredOutputSegmentInterval;
+    CDStruct_1b6d18a9 _currentFragmentStartTime;
+    CDStruct_1b6d18a9 _lastVideoPresentationTimeStamp;
+    CDStruct_1b6d18a9 _lastAudioPresentationTimeStamp;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property _Bool allowRecoveryFromInsufficientAudioTrim; // @synthesize allowRecoveryFromInsufficientAudioTrim=_allowRecoveryFromInsufficientAudioTrim;
-@property _Bool allowRecovery; // @synthesize allowRecovery=_allowRecovery;
+@property CDStruct_1b6d18a9 lastAudioPresentationTimeStamp; // @synthesize lastAudioPresentationTimeStamp=_lastAudioPresentationTimeStamp;
+@property CDStruct_1b6d18a9 lastVideoPresentationTimeStamp; // @synthesize lastVideoPresentationTimeStamp=_lastVideoPresentationTimeStamp;
+@property(readonly) AVAssetWriterInput *audioInput; // @synthesize audioInput=_audioInput;
+@property(readonly) AVAssetWriterInput *videoInput; // @synthesize videoInput=_videoInput;
+@property(copy) CDUnknownBlockType assetWriterDidOutputSeparableSegment; // @synthesize assetWriterDidOutputSeparableSegment=_assetWriterDidOutputSeparableSegment;
+@property CDStruct_1b6d18a9 currentFragmentStartTime; // @synthesize currentFragmentStartTime=_currentFragmentStartTime;
+@property CDStruct_1b6d18a9 preferredOutputSegmentInterval; // @synthesize preferredOutputSegmentInterval=_preferredOutputSegmentInterval;
+@property(readonly) _Bool allowRecoveryFromInsufficientAudioTrim; // @synthesize allowRecoveryFromInsufficientAudioTrim=_allowRecoveryFromInsufficientAudioTrim;
+@property _Bool dropTrimDurationAttachments; // @synthesize dropTrimDurationAttachments=_dropTrimDurationAttachments;
+@property _Bool dropSamplesUntilSync; // @synthesize dropSamplesUntilSync=_dropSamplesUntilSync;
+@property(readonly) const struct opaqueCMFormatDescription *audioFormat; // @synthesize audioFormat=_audioFormat;
+@property(readonly) const struct opaqueCMFormatDescription *videoFormat; // @synthesize videoFormat=_videoFormat;
+@property(readonly) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property(readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property(retain) AVAssetWriter *assetWriter; // @synthesize assetWriter=_assetWriter;
+@property(retain) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property __weak id <HMIVideoAssetWriterDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_failWithDescription:(id)arg1;
+- (void)finishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)flush;
+- (void)flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_appendSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)_ensureAudioSampleBufferHasSufficientPrimingTrim:(struct opaqueCMSampleBuffer *)arg1;
+- (void)_ensureFirstAudioSampleBufferHasSufficientPrimingTrim:(struct opaqueCMSampleBuffer *)arg1;
 - (void)_removeTrimDurationAttachmentsFromAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)handleSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
+- (void)_flushAutomatically:(struct opaqueCMSampleBuffer *)arg1;
 - (void)assetWriter:(id)arg1 didOutputSegmentData:(id)arg2 segmentType:(long long)arg3 segmentReport:(id)arg4;
-- (id)_createAssetWriterWithInitialSegmentStartTime:(CDStruct_1b6d18a9)arg1;
+- (void)_startWritingAtStartTime:(CDStruct_1b6d18a9)arg1;
 - (void)dealloc;
-@property unsigned long long nextSequenceNumber; // @synthesize nextSequenceNumber=_nextSequenceNumber;
-- (void)_checkNotStarted;
+- (id)initWithVideoFormat:(const struct opaqueCMFormatDescription *)arg1 audioFormat:(const struct opaqueCMFormatDescription *)arg2 initialFragmentSequenceNumber:(unsigned long long)arg3 preferredOutputSegmentInterval:(CDStruct_1b6d18a9)arg4;
 - (id)initWithVideoFormat:(const struct opaqueCMFormatDescription *)arg1 audioFormat:(const struct opaqueCMFormatDescription *)arg2;
 
 // Remaining properties

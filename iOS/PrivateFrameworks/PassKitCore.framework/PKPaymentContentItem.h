@@ -20,6 +20,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)itemWithProtobuf:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic, getter=isCentered) _Bool centered; // @synthesize centered=_centered;
 @property(copy, nonatomic) NSAttributedString *label; // @synthesize label=_label;
@@ -33,6 +34,7 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)protobuf;
 
 @end
 

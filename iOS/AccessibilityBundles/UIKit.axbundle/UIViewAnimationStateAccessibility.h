@@ -14,9 +14,6 @@
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)animationDidStart:(id)arg1;
 - (void)dealloc;
-- (void)_accessibilityMarkAnimationNotInProgress:(id)arg1;
-- (void)_accessibilitySetAnimationTracker:(id)arg1;
-- (id)_accessibilityAnimationTracker;
 
 @end
 

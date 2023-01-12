@@ -36,7 +36,9 @@
 - (id)_snapshotsMap;
 - (id)_extantMutableSnapshotForItem:(id)arg1;
 - (id)_extantMutableSnapshotForSection:(id)arg1;
-- (void)disclosureButtonWasTappedForItem:(id)arg1;
+- (id)_parentFocusItemForItem:(id)arg1;
+- (_Bool)_performDisclosureAction:(unsigned long long)arg1 forItem:(id)arg2;
+- (id)_sectionIdentifierForItem:(id)arg1;
 - (void)_configureForItemRenderersIfNeeded:(id)arg1;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureForDataSource:(id)arg1;

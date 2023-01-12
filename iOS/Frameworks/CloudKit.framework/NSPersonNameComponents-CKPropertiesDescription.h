@@ -6,7 +6,19 @@
 
 #import <Foundation/NSPersonNameComponents.h>
 
-@interface NSPersonNameComponents (CKPropertiesDescription)
+#import <CloudKit/CKPropertiesDescription-Protocol.h>
+
+@class NSString;
+
+@interface NSPersonNameComponents (CKPropertiesDescription) <CKPropertiesDescription>
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
+- (void)CKDescribePropertiesUsing:(id)arg1;
+- (id)CKShortDescriptionRedact:(_Bool)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

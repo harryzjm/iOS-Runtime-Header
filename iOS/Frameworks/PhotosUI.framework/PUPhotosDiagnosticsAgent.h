@@ -24,11 +24,15 @@
 - (id)_currentAssetDetailedDescription;
 - (id)_currentAssetMetadata;
 - (id)_currentAssetViewModelDescription;
+- (id)_selectedAssetUUIDsDescription;
+- (id)_selectedAssetIdentifiersDescription;
+- (id)_currentAssetIdentifierUUID;
 - (id)_currentAssetIdentifierDescription;
+- (id)_selectedAssets;
 - (id)_currentAsset;
 - (id)_descriptionOfUIState:(long long)arg1;
 - (id)_descriptionForAllUIState;
-- (void)timelineForWidgetSize:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void)timelineForWidgetSize:(id)arg1 jsonFormat:(_Bool)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)dumpState:(long long)arg1 toDirectoryURL:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)captureDescriptionOfUIState:(long long)arg1 resultHandler:(CDUnknownBlockType)arg2;
 

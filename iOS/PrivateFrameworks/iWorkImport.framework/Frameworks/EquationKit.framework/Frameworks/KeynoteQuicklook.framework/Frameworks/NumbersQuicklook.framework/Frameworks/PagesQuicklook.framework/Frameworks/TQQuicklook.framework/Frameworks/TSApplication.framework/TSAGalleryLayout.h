@@ -9,7 +9,7 @@
 #import <TSApplication/TSWPColumnMetrics-Protocol.h>
 #import <TSApplication/TSWPLayoutParent-Protocol.h>
 
-@class NSArray, NSMapTable, TSAGalleryItem, TSDLayoutGeometry, TSUBezierPath, TSWPLayout, TSWPPadding;
+@class NSArray, NSMapTable, NSString, TSAGalleryItem, TSDLayoutGeometry, TSUBezierPath, TSWPLayout, TSWPPadding;
 
 @interface TSAGalleryLayout : TSDDrawableLayout <TSWPLayoutParent, TSWPColumnMetrics>
 {
@@ -17,6 +17,7 @@
     TSWPLayout *_galleryCaptionLayout;
     NSMapTable *_captionLayoutsForItems;
     NSArray *_captionLayouts;
+    _Bool _shouldSuppressCaptions;
     _Bool _isInvalidatingSize;
     TSUBezierPath *_cachedPathForClippingConnectionLines;
     TSAGalleryItem *_currentItem;
@@ -36,7 +37,7 @@
 @property(readonly, nonatomic) _Bool alwaysStartsNewTarget;
 @property(readonly, nonatomic) unsigned long long columnCount;
 @property(readonly, nonatomic) TSWPPadding *layoutMargins;
-- (struct CGSize)adjustedInsetsForTarget:(id)arg1;
+- (struct UIEdgeInsets)adjustedInsetsForTarget:(id)arg1;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
@@ -77,6 +78,10 @@
 - (id)initWithInfo:(id)arg1;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @property(readonly, nonatomic) double textScaleFactor;
 
 @end

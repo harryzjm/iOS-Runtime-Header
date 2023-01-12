@@ -4,9 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNGroupIdentityHeaderViewController;
+#import <ChatKit/NSObject-Protocol.h>
 
-@protocol CNGroupIdentityHeaderViewControllerDelegate
+@class CNGroupIdentityHeaderViewController, NSString;
+
+@protocol CNGroupIdentityHeaderViewControllerDelegate <NSObject>
+
+@optional
+- (void)groupIdentityHeaderViewController:(CNGroupIdentityHeaderViewController *)arg1 willPresentDisambiguationUIForActionType:(NSString *)arg2;
+- (void)groupIdentityHeaderViewController:(CNGroupIdentityHeaderViewController *)arg1 didPerformActionOfType:(NSString *)arg2 fromDisambiguation:(_Bool)arg3;
 - (void)headerViewControllerDidTapActionButton:(CNGroupIdentityHeaderViewController *)arg1;
 @end
 

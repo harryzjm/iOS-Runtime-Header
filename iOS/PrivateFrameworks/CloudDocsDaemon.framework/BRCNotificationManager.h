@@ -11,7 +11,6 @@
 @class BRCAccountSession, BRCClientRanksPersistedState, BRCXPCClient, BRNotificationQueue, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface BRCNotificationManager : NSObject <BRCModule>
 {
     BRCAccountSession *_session;

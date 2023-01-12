@@ -10,11 +10,11 @@
 #import <VoiceShortcuts/VCUserNotificationManagerDelegate-Protocol.h>
 
 @class NSString, VCTriggerEventRunner, VCUserNotificationManager;
-@protocol OS_dispatch_queue, VCDatabaseProvider;
+@protocol OS_dispatch_queue, WFDatabaseProvider;
 
 @interface VCTriggerEventQueue : NSObject <VCUserNotificationManagerDelegate, VCTriggerEventRunnerDelegate>
 {
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
     VCUserNotificationManager *_notificationManager;
     VCTriggerEventRunner *_triggerEventRunner;
     NSObject<OS_dispatch_queue> *_queue;
@@ -26,7 +26,7 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) VCTriggerEventRunner *triggerEventRunner; // @synthesize triggerEventRunner=_triggerEventRunner;
 @property(readonly, nonatomic) VCUserNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 - (void)logMetricForTrigger:(id)arg1;
 - (void)didFinishRunningWithError:(id)arg1 cancelled:(_Bool)arg2 trigger:(id)arg3 runEvent:(id)arg4;
 - (void)notificationManager:(id)arg1 didFailToPostNotificationPromptWithTriggerIdentifier:(id)arg2 pendingTriggerEventIDs:(id)arg3;

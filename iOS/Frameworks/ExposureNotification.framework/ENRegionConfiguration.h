@@ -9,7 +9,7 @@
 #import <ExposureNotification/NSCopying-Protocol.h>
 #import <ExposureNotification/NSSecureCoding-Protocol.h>
 
-@class ENRegion, ENRegionUserConsent;
+@class ENRegion, ENRegionUserConsent, ENUserAuthorization;
 
 @interface ENRegionConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,8 +17,11 @@
     unsigned long long _enVersion;
     ENRegion *_region;
     ENRegionUserConsent *_userConsent;
+    ENUserAuthorization *_diagnosisKeysPreAuthorization;
     long long _travelerModeEnabled;
+    double _creationDateTimeInterval;
     double _lastConfigurationUpdateTimeInterval;
+    unsigned long long _enRampMode;
     long long _differentialPrivacyConsent;
     double _differentialPrivacyConsentTimestamp;
     long long _consent;
@@ -31,8 +34,11 @@
 @property(readonly, nonatomic) long long consent; // @synthesize consent=_consent;
 @property(readonly, nonatomic) double differentialPrivacyConsentTimestamp; // @synthesize differentialPrivacyConsentTimestamp=_differentialPrivacyConsentTimestamp;
 @property(readonly, nonatomic) long long differentialPrivacyConsent; // @synthesize differentialPrivacyConsent=_differentialPrivacyConsent;
+@property(nonatomic) unsigned long long enRampMode; // @synthesize enRampMode=_enRampMode;
 @property(nonatomic) double lastConfigurationUpdateTimeInterval; // @synthesize lastConfigurationUpdateTimeInterval=_lastConfigurationUpdateTimeInterval;
+@property(nonatomic) double creationDateTimeInterval; // @synthesize creationDateTimeInterval=_creationDateTimeInterval;
 @property(nonatomic) long long travelerModeEnabled; // @synthesize travelerModeEnabled=_travelerModeEnabled;
+@property(retain, nonatomic) ENUserAuthorization *diagnosisKeysPreAuthorization; // @synthesize diagnosisKeysPreAuthorization=_diagnosisKeysPreAuthorization;
 @property(nonatomic) _Bool everStartedOnboarding; // @synthesize everStartedOnboarding=_everStartedOnboarding;
 @property(retain, nonatomic) ENRegionUserConsent *userConsent; // @synthesize userConsent=_userConsent;
 @property(retain, nonatomic) ENRegion *region; // @synthesize region=_region;

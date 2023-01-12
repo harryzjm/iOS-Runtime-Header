@@ -22,6 +22,7 @@
     NSArray *_pairCurrencyAmountValues;
     NSArray *_pairCustomObjects;
     NSArray *_pairDataStrings;
+    NSArray *_pairDataValues;
     NSArray *_pairDistanceValues;
     NSArray *_pairDoubleValues;
     NSArray *_pairImageValues;
@@ -45,6 +46,7 @@
 + (Class)pairImageValueType;
 + (Class)pairDoubleValueType;
 + (Class)pairDistanceValueType;
++ (Class)pairDataValueType;
 + (Class)pairDataStringType;
 + (Class)pairCustomObjectType;
 + (Class)pairCurrencyAmountValueType;
@@ -60,6 +62,7 @@
 @property(copy, nonatomic) NSArray *pairImageValues; // @synthesize pairImageValues=_pairImageValues;
 @property(copy, nonatomic) NSArray *pairDoubleValues; // @synthesize pairDoubleValues=_pairDoubleValues;
 @property(copy, nonatomic) NSArray *pairDistanceValues; // @synthesize pairDistanceValues=_pairDistanceValues;
+@property(copy, nonatomic) NSArray *pairDataValues; // @synthesize pairDataValues=_pairDataValues;
 @property(copy, nonatomic) NSArray *pairDataStrings; // @synthesize pairDataStrings=_pairDataStrings;
 @property(copy, nonatomic) NSArray *pairCustomObjects; // @synthesize pairCustomObjects=_pairCustomObjects;
 @property(copy, nonatomic) NSArray *pairCurrencyAmountValues; // @synthesize pairCurrencyAmountValues=_pairCurrencyAmountValues;
@@ -113,6 +116,10 @@
 @property(readonly, nonatomic) unsigned long long pairDistanceValuesCount;
 - (void)addPairDistanceValue:(id)arg1;
 - (void)clearPairDistanceValues;
+- (id)pairDataValueAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long pairDataValuesCount;
+- (void)addPairDataValue:(id)arg1;
+- (void)clearPairDataValues;
 - (id)pairDataStringAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long pairDataStringsCount;
 - (void)addPairDataString:(id)arg1;

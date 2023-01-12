@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class AVCaptureVideoPreviewLayer, CAMFocusIndicatorView, CAMGridView, CAMInterfaceModulationView, CAMLevelIndicatorView, CAMStageLightOverlayView, CAMSubjectIndicatorView, CAMVideoPreviewView, UILabel;
+@class AVCaptureVideoPreviewLayer, CAMFocusIndicatorView, CAMGridView, CAMInterfaceModulationView, CAMLevelIndicatorView, CAMStageLightOverlayView, CAMVideoPreviewView, CEKSubjectIndicatorView, UILabel;
 
 @interface CAMPreviewView : UIView
 {
@@ -19,7 +19,7 @@
     CAMFocusIndicatorView *_pointIndicator;
     CAMGridView *_gridView;
     CAMLevelIndicatorView *_levelView;
-    CAMSubjectIndicatorView *_centeredSubjectIndicatorView;
+    CEKSubjectIndicatorView *_centeredSubjectIndicatorView;
     CAMStageLightOverlayView *_stageLightOverlayView;
     double _bottomContentInset;
     UILabel *__simulatorLabel;
@@ -33,7 +33,7 @@
 @property(readonly, nonatomic) UILabel *_simulatorLabel; // @synthesize _simulatorLabel=__simulatorLabel;
 @property(nonatomic) double bottomContentInset; // @synthesize bottomContentInset=_bottomContentInset;
 @property(retain, nonatomic) CAMStageLightOverlayView *stageLightOverlayView; // @synthesize stageLightOverlayView=_stageLightOverlayView;
-@property(retain, nonatomic) CAMSubjectIndicatorView *centeredSubjectIndicatorView; // @synthesize centeredSubjectIndicatorView=_centeredSubjectIndicatorView;
+@property(retain, nonatomic) CEKSubjectIndicatorView *centeredSubjectIndicatorView; // @synthesize centeredSubjectIndicatorView=_centeredSubjectIndicatorView;
 @property(nonatomic) CAMLevelIndicatorView *levelView; // @synthesize levelView=_levelView;
 @property(nonatomic) CAMGridView *gridView; // @synthesize gridView=_gridView;
 @property(retain, nonatomic) CAMFocusIndicatorView *pointIndicator; // @synthesize pointIndicator=_pointIndicator;
@@ -46,11 +46,15 @@
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 - (struct CGRect)_aspectFaceRectFromSquareFaceRect:(struct CGRect)arg1 angle:(double)arg2;
 - (int)_faceOrientationForRollAngle:(double)arg1;
-- (struct CGRect)bodyIndicatorFrameForResult:(id)arg1;
+- (struct CGRect)frameForSubjectGroupResult:(id)arg1 minimumSize:(struct CGSize)arg2;
 - (struct CGRect)faceIndicatorFrameForFaceResult:(id)arg1;
 - (struct CGPoint)pointForCaptureDevicePointOfInterest:(struct CGPoint)arg1;
 - (struct CGPoint)captureDevicePointOfInterestForPoint:(struct CGPoint)arg1;
-- (struct CGRect)mrcIndicatorFrameForMRCResult:(id)arg1;
+- (struct CGRect)frameForTextRegionResult:(id)arg1;
+- (struct CGRect)_frameClampedToBounds:(struct CGRect)arg1;
+- (struct CGRect)_frameForAVMetadataObject:(id)arg1;
+- (struct CGRect)frameForMetadataObjectResult:(id)arg1 fixedSize:(struct CGSize)arg2;
+- (struct CGRect)frameForMetadataObjectResult:(id)arg1;
 - (struct CGRect)fixedSizeSubjectIndicatorFrameForBodyResult:(id)arg1;
 - (struct CGRect)fixedSizeSubjectIndicatorFrameForFaceResult:(id)arg1;
 - (void)indicatePointOfInterest:(struct CGPoint)arg1;

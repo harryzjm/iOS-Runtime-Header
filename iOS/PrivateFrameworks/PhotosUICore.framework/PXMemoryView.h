@@ -14,7 +14,7 @@
 
 @interface PXMemoryView : UIView <PXChangeObserver, PXUIViewControllerTransitionEndPoint>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     PXTitleSubtitleUILabel *_titleSubtitleLabel;
     UIView *_overlayView;
     UIView *_highlightView;

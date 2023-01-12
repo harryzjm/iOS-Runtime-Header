@@ -25,8 +25,8 @@
 @property __weak CALayer *sourceLayer;
 - (_Bool)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
-- (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
-- (_Bool)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;
+- (void *)_copyRenderAnimationForLayer:(id)arg1;
+- (_Bool)_setCARenderAnimation:(void *)arg1 layer:(id)arg2;
 - (void)applyForTime:(double)arg1 presentationObject:(id)arg2 modelObject:(id)arg3;
 
 @end

@@ -13,12 +13,14 @@
     MISSING_TYPE *entityManager;
     MISSING_TYPE *lock;
     MISSING_TYPE *currentJobID;
+    MISSING_TYPE *currentJobName;
     MISSING_TYPE *recurrentJobs;
     MISSING_TYPE *orderedRecurrentJobs;
     MISSING_TYPE *remainingJobsForThisFrame;
     MISSING_TYPE *pendingJobsToEnqueueForThisFrame;
     MISSING_TYPE *pendingJobsToEnqueueForThisFrameOnly;
     MISSING_TYPE *groupsToUnregister;
+    MISSING_TYPE *liveQueryCountByJobID;
     MISSING_TYPE *needsRescheduling;
     MISSING_TYPE *needsReschedulingForThisFrame;
     MISSING_TYPE *dependenciesByJob;

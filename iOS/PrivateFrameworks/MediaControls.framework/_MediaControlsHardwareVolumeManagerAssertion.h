@@ -22,10 +22,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak MediaControlsHardwareVolumeManager *volumeManager; // @synthesize volumeManager=_volumeManager;
 - (void)dealloc;
 - (void)invalidate;
+@property(readonly, copy) NSString *description;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -18,7 +18,6 @@
 + (id)createEntityForBuilderConfiguration:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)workoutBuilderEntitiesExcludingSessions:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)workoutBuilderEntitiesForSource:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)_workoutBuilderEntitiesForPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)workoutBuilderEntityWithIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (_Bool)enumerateDataSourcesForProfile:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)removeDataSourceWithIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3;
@@ -28,13 +27,7 @@
 - (_Bool)deleteStatisticsForType:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)workoutEventsInTransaction:(id)arg1 error:(id *)arg2;
 - (_Bool)insertWorkoutEvent:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
-- (id)_queryForAssociatedSamplePropertyEnumerationInTransaction:(id)arg1 predicate:(id)arg2;
-- (_Bool)_enumerateAssociatedSamplePropertiesInTransaction:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (_Bool)pruneAssociatedSamplesToDateInterval:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
-- (_Bool)_setupForEnumerationOfType:(id)arg1 interval:(id)arg2 profile:(id)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
-- (_Bool)_setupForEnumerationOfType:(id)arg1 interval:(id)arg2 transaction:(id)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
-- (id)_predicateForAssociatedSamplesOfType:(id)arg1 interval:(id)arg2 associatedSampleTableName:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
-- (id)_createTemporaryProtectedAssociatedSampleListInTransaction:(id)arg1 error:(id *)arg2;
 - (_Bool)enumerateAssociatedSamplesOfType:(id)arg1 interval:(id)arg2 profile:(id)arg3 error:(id *)arg4 sampleHandler:(CDUnknownBlockType)arg5;
 - (_Bool)enumerateAssociatedSampleValuesOfType:(id)arg1 interval:(id)arg2 profile:(id)arg3 error:(id *)arg4 sampleHandler:(CDUnknownBlockType)arg5;
 - (_Bool)enumerateAssociatedUUIDsWithTransaction:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;

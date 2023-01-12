@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, SISchemaLocaleIdentifier;
 
-@interface SISchemaDictationAlternativesViewed : PBCodable
+@interface SISchemaDictationAlternativesViewed
 {
     int _countOfWordsUnderlined;
     int _countOfAlternativesAvailable;

@@ -8,15 +8,15 @@
 #import <SpringBoardHome/SBIconIndexNodeObserver-Protocol.h>
 #import <SpringBoardHome/SBIconObserver-Protocol.h>
 
-@class NSHashTable, NSMutableSet, NSString, SBFolder;
+@class NSHashTable, NSString, SBFolder;
 
 @interface SBFolderIcon <SBFolderObserver, SBIconObserver, SBIconIndexNodeObserver>
 {
     NSHashTable *_nodeObservers;
-    NSMutableSet *_finishedDownloadIdentifiers;
     long long _progressState;
     double _progressPercent;
     struct __CFRunLoopObserver *_updateIconRunLoopObserver;
+    _Bool _delayedIconUpdates;
     SBFolder *_folder;
 }
 
@@ -57,12 +57,13 @@
 - (void)noteContainedIconsAdded:(id)arg1 removed:(id)arg2;
 - (void)_adjustForIconsAdded:(id)arg1 removed:(id)arg2;
 - (double)progressPercent;
-- (_Bool)shouldAnimateProgress;
 - (_Bool)isProgressPaused;
 - (long long)progressState;
 - (void)_updateProgress;
 - (void)_updateBadgeValue;
 - (void)_performDelayedIconUpdates;
+- (void)invalidateUpdateIconRunLoopObserver;
+- (void)scheduleUpdateIconRunLoopObserver;
 - (id)badgeNumberOrString;
 - (void)updateLabel;
 @property(readonly, copy) NSString *description;
@@ -72,7 +73,6 @@
 - (id)generateIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)rootFolder;
 - (void)dealloc;
-- (void)invalidateUpdateIconRunLoopObserver;
 - (id)initWithFolder:(id)arg1;
 - (Class)iconImageViewClassForLocation:(id)arg1;
 

@@ -46,13 +46,11 @@ struct _img {
     unsigned char _field6[4];
 };
 
-struct vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>;
-
-struct vector<std::__1::vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>, std::__1::allocator<std::__1::vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>>> {
-    struct vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>> *__begin_;
-    struct vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>> *__end_;
-    struct __compressed_pair<std::__1::vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>*, std::__1::allocator<std::__1::vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>>>> {
-        struct vector<TIHandwritingPoint, std::__1::allocator<TIHandwritingPoint>> *__value_;
+struct vector<std::vector<TIHandwritingPoint>, std::allocator<std::vector<TIHandwritingPoint>>> {
+    void *__begin_;
+    void *__end_;
+    struct __compressed_pair<std::vector<TIHandwritingPoint>*, std::allocator<std::vector<TIHandwritingPoint>>> {
+        void *__value_;
     } __end_cap_;
 };
 

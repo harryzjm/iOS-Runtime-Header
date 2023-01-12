@@ -11,7 +11,6 @@
 
 + (id)grantWithRole:(unsigned char)arg1;
 @property(readonly, nonatomic) unsigned char role; // @synthesize role=_role;
-- (id)_initWithRole:(unsigned char)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

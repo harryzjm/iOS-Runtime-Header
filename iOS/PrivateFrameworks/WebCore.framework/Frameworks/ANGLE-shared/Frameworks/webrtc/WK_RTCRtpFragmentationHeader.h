@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *fragmentationTimeDiff; // @synthesize fragmentationTimeDiff=_fragmentationTimeDiff;
 @property(retain, nonatomic) NSArray *fragmentationLength; // @synthesize fragmentationLength=_fragmentationLength;
 @property(retain, nonatomic) NSArray *fragmentationOffset; // @synthesize fragmentationOffset=_fragmentationOffset;
-- (unique_ptr_91070b9b)createNativeFragmentationHeader;
-- (id)initWithNativeFragmentationHeader:(const struct RTPFragmentationHeader *)arg1;
 
 @end
 

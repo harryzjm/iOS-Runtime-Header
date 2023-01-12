@@ -19,9 +19,11 @@
 - (void).cxx_destruct;
 @property(readonly) AVSemanticSegmentationMatte *avSemanticSegmentationMatte; // @synthesize avSemanticSegmentationMatte=_avSemanticSegmentationMatte;
 @property(readonly) long long auxiliaryImageType; // @synthesize auxiliaryImageType=_auxiliaryImageType;
+- (struct CGImage *)cgImageRef;
 - (struct __CVBuffer *)cvPixelBufferRef;
 - (unsigned int)pixelFormatType;
 - (id)dictionaryRepresentationForAuxiliaryDataType:(id *)arg1;
+- (id)dictionaryRepresentation;
 - (id)auxiliaryImageByReplacingAuxiliaryImageWithPixelBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)auxiliaryImageByApplyingExifOrientation:(unsigned int)arg1;
 - (id)underlyingAVSemanticSegmentationMatte;

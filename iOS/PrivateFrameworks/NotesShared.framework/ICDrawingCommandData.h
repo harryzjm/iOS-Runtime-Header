@@ -9,7 +9,7 @@
 @interface ICDrawingCommandData : NSObject
 {
     struct CGRect _cachedBounds;
-    vector_352d2fdf _points;
+    struct vector<ICDrawingOutputPoint, std::allocator<ICDrawingOutputPoint>> _points;
     _Bool _isClipped;
     unsigned int _type;
     struct CGColor *_color;
@@ -30,7 +30,7 @@
 @property(nonatomic) CDStruct_4a3d0796 baseValues; // @synthesize baseValues=_baseValues;
 @property(retain, nonatomic) struct CGColor *color; // @synthesize color=_color;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
-@property(readonly, nonatomic) vector_352d2fdf *points; // @synthesize points=_points;
+@property(readonly, nonatomic) void *points; // @synthesize points=_points;
 - (id)description;
 @property(readonly, nonatomic) struct CGRect bounds;
 - (double)renderCost;
@@ -41,11 +41,11 @@
 - (_Bool)isEqualDrawingCommandData:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (unsigned int)saveToArchive:(struct Command *)arg1 sortedUUIDs:(id)arg2 withPathData:(_Bool)arg3 isHidden:(_Bool)arg4;
-- (unsigned int)savePoint:(const CDStruct_4a3d0796 *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2 toArchive:(struct Point *)arg3;
-- (CDStruct_4a3d0796)readPointFromArchive:(const struct Point *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2;
+- (unsigned int)saveToArchive:(void *)arg1 sortedUUIDs:(id)arg2 withPathData:(_Bool)arg3 isHidden:(_Bool)arg4;
+- (unsigned int)savePoint:(const CDStruct_4a3d0796 *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2 toArchive:(void *)arg3;
+- (CDStruct_4a3d0796)readPointFromArchive:(const void *)arg1 deltaFrom:(const CDStruct_4a3d0796 *)arg2;
 - (CDStruct_30364a2d)version1Parameters;
-- (id)initWithArchive:(const struct Command *)arg1 version:(unsigned int)arg2 sortedUUIDs:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 version:(unsigned int)arg2 sortedUUIDs:(id)arg3;
 
 @end
 

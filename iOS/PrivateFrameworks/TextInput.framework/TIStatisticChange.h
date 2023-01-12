@@ -19,6 +19,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)_isSpringBoard;
 + (id)statisticChangeWithName:(id)arg1 andValue:(int)arg2 andInputMode:(id)arg3;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;

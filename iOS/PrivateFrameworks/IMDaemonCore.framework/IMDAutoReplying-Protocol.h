@@ -6,11 +6,11 @@
 
 #import <IMDaemonCore/NSObject-Protocol.h>
 
-@class IMDChat, NSArray;
+@class IMDChat, NSArray, NSString;
 @protocol IMDAutoReplyDelegate;
 
 @protocol IMDAutoReplying <NSObject>
 @property(nonatomic) __weak id <IMDAutoReplyDelegate> replyDelegate;
-- (void)processMessages:(NSArray *)arg1 inChat:(IMDChat *)arg2;
+- (void)processMessages:(NSArray *)arg1 inChat:(IMDChat *)arg2 fromIDSID:(NSString *)arg3;
 @end
 

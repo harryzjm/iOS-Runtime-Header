@@ -6,7 +6,7 @@
 
 #import <TSPersistence/TSPReadCoordinator-Protocol.h>
 
-@class NSMapTable, NSObject, NSString, TSPComponent, TSPFinalizeHandlerQueue, TSPObjectContext;
+@class NSMapTable, NSObject, NSString, TSPComponent, TSPDocumentLoadValidationPolicy, TSPFinalizeHandlerQueue, TSPObjectContext;
 @protocol OS_dispatch_queue, TSPDecoder, TSPDecoderReadCoordinatorDelegate;
 
 @interface TSPDecoderReadCoordinator <TSPReadCoordinator>
@@ -25,13 +25,12 @@
 - (id)objectForIdentifier:(long long)arg1;
 - (_Bool)isCrossAppPaste;
 - (_Bool)isCrossDocumentPaste;
-- (_Bool)canRetainObjectReferencedByWeakLazyReference;
-- (long long)sourceType;
+- (unsigned int)sourceType;
 - (_Bool)hasDocumentVersionUUID;
 - (void)reader:(id)arg1 didReadLazyReference:(id)arg2;
 - (void)reader:(id)arg1 didUnarchiveObject:(id)arg2;
-- (void)reader:(id)arg1 didFindExternalRepeatedReference:(id)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 fromParentObject:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)reader:(id)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 fromParentObject:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)reader:(id)arg1 didFindExternalRepeatedReference:(id)arg2 isWeak:(_Bool)arg3 allowUnknownObject:(_Bool)arg4 objectClass:(Class)arg5 objectProtocol:(id)arg6 fromParentObject:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)reader:(id)arg1 didFindExternalReferenceToObjectIdentifier:(long long)arg2 componentIdentifier:(long long)arg3 isWeak:(_Bool)arg4 allowUnknownObject:(_Bool)arg5 objectClass:(Class)arg6 objectProtocol:(id)arg7 fromParentObject:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (id)reader:(id)arg1 wantsDataForIdentifier:(long long)arg2;
 - (long long)reader:(id)arg1 wantsObjectIdentifierForUUID:(id)arg2;
 - (void)didReferenceExternalObject:(id)arg1 withIdentifier:(long long)arg2;
@@ -52,9 +51,9 @@
 - (id)init;
 
 // Remaining properties
-@property(readonly, nonatomic) long long archiveValidationMode;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) TSPDocumentLoadValidationPolicy *documentLoadValidationPolicy;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

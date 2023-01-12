@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class PPTrialWrapper, _PASCFBurstTrie;
+@protocol TRINotificationToken;
 
 @interface PPTopicBlocklist : NSObject
 {
     _PASCFBurstTrie *_blocklistTrie;
     PPTrialWrapper *_trialWrapper;
+    id <TRINotificationToken> _trialToken;
 }
 
 + (id)sharedInstance;
@@ -19,7 +21,7 @@
 - (id)indicesOfBlockedTopicsInScoredTopicArray:(id)arg1;
 - (id)indicesOfBlockedTopicsInRecordArray:(id)arg1;
 - (_Bool)shouldBlock:(id)arg1;
-- (void)_loadAssetData;
+- (void)dealloc;
 - (id)initWithTrialWrapper:(id)arg1;
 
 @end

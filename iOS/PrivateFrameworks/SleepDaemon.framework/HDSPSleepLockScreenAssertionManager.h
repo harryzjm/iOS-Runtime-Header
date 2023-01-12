@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
+#import <SleepDaemon/HDSPSleepLockScreenAssertionManager-Protocol.h>
 #import <SleepDaemon/HKSPSleepLockScreenServer-Protocol.h>
 #import <SleepDaemon/NSXPCListenerDelegate-Protocol.h>
 
@@ -14,10 +15,11 @@
 @protocol HDSPSleepLockScreenAssertionManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepLockScreenAssertionManager : NSObject <HKSPSleepLockScreenServer, NSXPCListenerDelegate, HDSPEnvironmentAware>
+@interface HDSPSleepLockScreenAssertionManager : NSObject <HKSPSleepLockScreenServer, NSXPCListenerDelegate, HDSPEnvironmentAware, HDSPSleepLockScreenAssertionManager>
 {
     NSXPCListener *_listener;
     NSXPCConnection *_connection;
+    struct os_unfair_lock_s _connectionLock;
     HDSPEnvironment *_environment;
     id <HDSPSleepLockScreenAssertionManagerDelegate> _delegate;
     SBSLockScreenRemoteContentAssertion *_lockScreenAssertion;
@@ -27,12 +29,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) SBSLockScreenRemoteContentAssertion *lockScreenAssertion; // @synthesize lockScreenAssertion=_lockScreenAssertion;
 @property(nonatomic) __weak id <HDSPSleepLockScreenAssertionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak HDSPEnvironment *environment; // @synthesize environment=_environment;
+@property(readonly, nonatomic) _Bool hasLockScreenConnection;
+@property(retain, nonatomic) NSXPCConnection *connection;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)didDismissWithReason:(long long)arg1;
 - (void)connect;
 - (void)invalidateAssertion;
 - (void)sendLockScreenState:(long long)arg1 userInfo:(id)arg2;
 - (void)takeAssertionIfNeeded;
+- (void)_withLock:(CDUnknownBlockType)arg1;
 - (id)initWithEnvironment:(id)arg1;
 
 // Remaining properties

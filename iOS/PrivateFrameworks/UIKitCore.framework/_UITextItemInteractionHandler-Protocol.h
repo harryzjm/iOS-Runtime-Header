@@ -6,11 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIAction, UIContextMenuConfiguration;
+@class UIAction, UIContextMenuConfiguration, UIContextMenuInteraction;
 
 @protocol _UITextItemInteractionHandler <NSObject>
 - (UIContextMenuConfiguration *)contextMenuConfiguration;
-- (UIAction *)defaultAction;
+- (UIAction *)defaultActionWithContextMenuInteraction:(UIContextMenuInteraction *)arg1;
 
 @optional
 - (unsigned long long)preferredContextMenuLayout;

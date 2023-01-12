@@ -16,6 +16,7 @@
     UIAlertController *_alertController;
     id _target;
     SEL _action;
+    _Bool _useBundleImage;
     _Bool _useInternalSymbolImage;
     _Bool _forceToNavBar;
     _Bool _selected;
@@ -40,6 +41,7 @@
 @property _Bool selected; // @synthesize selected=_selected;
 @property _Bool forceToNavBar; // @synthesize forceToNavBar=_forceToNavBar;
 @property _Bool useInternalSymbolImage; // @synthesize useInternalSymbolImage=_useInternalSymbolImage;
+@property _Bool useBundleImage; // @synthesize useBundleImage=_useBundleImage;
 @property unsigned long long placement; // @synthesize placement=_placement;
 @property(copy) NSArray *options; // @synthesize options=_options;
 @property(copy) NSString *accessibilityIdentifier; // @synthesize accessibilityIdentifier=_accessibilityIdentifier;

@@ -4,28 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NUCGAuxiliaryImageProperties, NUCGImageSourceNode;
-
 @interface NUCGImageDepthSourceNode
 {
-    NUCGAuxiliaryImageProperties *_auxiliaryImageProperties;
-    NUCGImageSourceNode *_sourceNode;
     _Bool _needsAspectRatioCorrection;
     struct CGAffineTransform _aspectTransform;
     CDStruct_d58201db _aspectMatchedPixelSize;
 }
 
-- (void).cxx_destruct;
-@property(retain) NUCGImageSourceNode *sourceNode; // @synthesize sourceNode=_sourceNode;
-- (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;
-- (_Bool)canPropagateOriginalAuxiliaryData;
-- (long long)sourceOrientation;
-- (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
-- (id)pipelineOptionsForPipelineState:(id)arg1 error:(out id *)arg2;
-- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (id)initWithSourceNode:(id)arg1 auxiliaryImageProperties:(id)arg2;
-- (id)initWithSettings:(id)arg1;
 
 @end
 

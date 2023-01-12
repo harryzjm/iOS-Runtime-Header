@@ -20,7 +20,6 @@
 - (_Bool)disableFieldDiagnosticsWithError:(id *)arg1;
 - (_Bool)enableFieldDiagnosticsWithTatsuManifest:(id)arg1 error:(id *)arg2;
 - (id)generateFieldDiagnosticsNonceWithError:(id *)arg1;
-- (id)eligibleForAugmentation:(id)arg1 error:(id *)arg2;
 - (_Bool)setTemplate:(id)arg1 forIdentity:(id)arg2 error:(id *)arg3;
 
 // Remaining properties

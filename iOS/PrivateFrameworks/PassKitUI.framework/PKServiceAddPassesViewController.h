@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 - (void)resetBrightness;
 - (void)evaluateBrightness;
-- (void)ingestPassesWithData:(id)arg1 fromPresentationSource:(unsigned long long)arg2;
+- (void)ingestPasses:(id)arg1 orPassesContainer:(id)arg2 fromPresentationSource:(unsigned long long)arg3;
 - (void)setDisplayPropertiesWithScreenSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void)addPassesCardStackViewController:(id)arg1 didCancelAddingPasses:(id)arg2;
 - (void)addPassesCardStackViewController:(id)arg1 didFinishAddingPasses:(id)arg2;

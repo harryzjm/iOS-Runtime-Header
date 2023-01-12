@@ -8,29 +8,41 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIColor;
+@class UIColor, UIListSeparatorConfiguration;
 
 @interface UICollectionLayoutListConfiguration : NSObject <NSCopying>
 {
     _Bool _showsSeparators;
+    UIListSeparatorConfiguration *_separatorConfiguration;
+    double _cornerRadius;
+    CDUnknownBlockType _willBeginSwipingHandler;
+    CDUnknownBlockType _didEndSwipingHandler;
     long long _appearance;
+    CDUnknownBlockType _itemSeparatorHandler;
     UIColor *_backgroundColor;
     CDUnknownBlockType _leadingSwipeActionsConfigurationProvider;
     CDUnknownBlockType _trailingSwipeActionsConfigurationProvider;
     long long _headerMode;
     long long _footerMode;
+    double _headerTopPadding;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double headerTopPadding; // @synthesize headerTopPadding=_headerTopPadding;
 @property(nonatomic) long long footerMode; // @synthesize footerMode=_footerMode;
 @property(nonatomic) long long headerMode; // @synthesize headerMode=_headerMode;
 @property(copy, nonatomic) CDUnknownBlockType trailingSwipeActionsConfigurationProvider; // @synthesize trailingSwipeActionsConfigurationProvider=_trailingSwipeActionsConfigurationProvider;
 @property(copy, nonatomic) CDUnknownBlockType leadingSwipeActionsConfigurationProvider; // @synthesize leadingSwipeActionsConfigurationProvider=_leadingSwipeActionsConfigurationProvider;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property(copy, nonatomic) CDUnknownBlockType itemSeparatorHandler; // @synthesize itemSeparatorHandler=_itemSeparatorHandler;
 @property(nonatomic) _Bool showsSeparators; // @synthesize showsSeparators=_showsSeparators;
 @property(readonly, nonatomic) long long appearance; // @synthesize appearance=_appearance;
+@property(copy, nonatomic, getter=_didEndSwipingHandler, setter=_setDidEndSwipingHandler:) CDUnknownBlockType _didEndSwipingHandler; // @synthesize _didEndSwipingHandler;
+@property(copy, nonatomic, getter=_willBeginSwipingHandler, setter=_setWillBeginSwipingHandler:) CDUnknownBlockType _willBeginSwipingHandler; // @synthesize _willBeginSwipingHandler;
+@property(nonatomic, getter=_cornerRadius, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
 - (id)_spiConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(copy, nonatomic) UIListSeparatorConfiguration *separatorConfiguration; // @synthesize separatorConfiguration=_separatorConfiguration;
 - (id)initWithAppearance:(long long)arg1;
 - (id)init;
 

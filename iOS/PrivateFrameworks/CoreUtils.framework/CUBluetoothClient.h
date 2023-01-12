@@ -54,8 +54,6 @@
     NSMutableArray *_findDeviceRequests;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
-    NSMutableArray *_relayMessages;
-    NSMutableArray *_updateDevicesRequests;
     struct LogCategory *_ucat;
     int _bluetoothState;
     unsigned int _flags;
@@ -72,13 +70,9 @@
     CDUnknownBlockType _deviceUnpairedHandler;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
-    CDUnknownBlockType _relayMessageReceivedHandler;
-    CDUnknownBlockType _updateTipiHandler;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType updateTipiHandler; // @synthesize updateTipiHandler=_updateTipiHandler;
-@property(copy, nonatomic) CDUnknownBlockType relayMessageReceivedHandler; // @synthesize relayMessageReceivedHandler=_relayMessageReceivedHandler;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(copy, nonatomic) CDUnknownBlockType deviceUnpairedHandler; // @synthesize deviceUnpairedHandler=_deviceUnpairedHandler;
@@ -109,29 +103,11 @@
 - (struct BTDeviceImpl *)_btDeviceWithID:(id)arg1 error:(id *)arg2;
 - (void)_btAccessoryPlacementChanged:(struct BTAccessoryManagerImpl *)arg1 device:(struct BTDeviceImpl *)arg2;
 - (void)_btAccessoryStreamStateChanged:(int)arg1 device:(struct BTDeviceImpl *)arg2;
+- (void)_btAccessoryNameChanged:(struct BTDeviceImpl *)arg1;
 - (void)_btEnsureStopped;
 - (void)_btEnsureStarted;
-- (void)_processUpdateAccessoryDevicesRequest:(id)arg1;
-- (void)_processRequestSetHijackState:(id)arg1;
-- (void)_processRequestSetHighPriorityState:(id)arg1;
-- (void)_processUpdateAccessoryDevicesRequests;
-- (void)_completeUpdateAccessoryDevicesRequest:(id)arg1 error:(id)arg2;
-- (void)_updateAccessoryID:(id)arg1 connectionDeviceAddresses:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)updateAccessoryID:(id)arg1 connectionDeviceAddresses:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_setHijackState:(_Bool)arg1 deviceID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setHijackState:(_Bool)arg1 deviceID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_setHighPriority:(_Bool)arg1 deviceID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setHighPriority:(_Bool)arg1 deviceID:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_processRequestSetDeviceState:(id)arg1;
-- (void)_setDeviceState:(unsigned int)arg1 deviceID:(id)arg2 peerAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setDeviceState:(unsigned int)arg1 deviceID:(id)arg2 peerAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setDeviceFlags:(unsigned int)arg1 mask:(unsigned int)arg2 deviceID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setDeviceFlags:(unsigned int)arg1 mask:(unsigned int)arg2 deviceID:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_processRelayMessage:(id)arg1;
-- (void)_processRelayMessages;
-- (void)_completeRelayMessage:(id)arg1 error:(id)arg2;
-- (void)_sendRelayMessage:(id)arg1;
-- (void)sendRelayMessage:(id)arg1;
 - (void)_processFindDeviceRequests;
 - (void)_findDeviceByAddress:(CDStruct_83abfce7)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)findDeviceByAddress:(CDStruct_83abfce7)arg1 completion:(CDUnknownBlockType)arg2;

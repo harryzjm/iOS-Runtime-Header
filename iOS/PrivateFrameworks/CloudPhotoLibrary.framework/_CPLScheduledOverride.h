@@ -12,25 +12,35 @@
 @interface _CPLScheduledOverride : NSObject
 {
     NSObject<OS_dispatch_source> *_timer;
-    NSString *_storageKey;
+    NSString *_expirationDateStorageKey;
+    NSString *_overrideReasonKey;
     unsigned long long _budget;
     NSObject<OS_dispatch_queue> *_queue;
+    unsigned long long _reason;
     NSDate *_endDate;
     id <_CPLScheduledOverrideDelegate> _delegate;
 }
 
++ (double)nextTimeIntervalForOverridingBudget:(unsigned long long)arg1 withReason:(unsigned long long)arg2;
++ (id)_expirationDateStorageKeyForBudget:(unsigned long long)arg1;
++ (id)budgetOverrideReasonStorageKeyForBudget:(unsigned long long)arg1;
++ (id)currentBudgetOverrideTimeIntervalStorageKeyForBudget:(unsigned long long)arg1;
++ (_Bool)isBudgetTypeSupportedForProgressiveOverriding:(unsigned long long)arg1 withReason:(unsigned long long)arg2;
 + (unsigned long long)_systemBudgetForBudgetKey:(id)arg1;
++ (double)nextTimeIntervalToUseGivenCurrent:(double)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_CPLScheduledOverrideDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(readonly, nonatomic) unsigned long long reason; // @synthesize reason=_reason;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) unsigned long long budget; // @synthesize budget=_budget;
 @property(readonly, nonatomic) NSString *status;
 - (void)cancel;
+- (void)resetHeuristics;
 - (_Bool)scheduleEndOfOverride;
 - (_Bool)scheduleEndFromPersistedOverride;
 - (void)_scheduleEndWithTimeInterval:(double)arg1;
-- (id)initWithBudget:(unsigned long long)arg1 queue:(id)arg2;
+- (id)initWithBudget:(unsigned long long)arg1 withReason:(unsigned long long)arg2 queue:(id)arg3;
 
 @end
 

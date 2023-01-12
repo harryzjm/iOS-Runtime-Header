@@ -8,14 +8,14 @@
 
 @interface TSTImportWarningSetByCellRef : NSObject
 {
-    struct unordered_map<TSCECellRef, TSTImportWarningSet *, std::__1::hash<TSCECellRef>, std::__1::equal_to<TSCECellRef>, std::__1::allocator<std::__1::pair<const TSCECellRef, TSTImportWarningSet *>>> _warningSetForCoordinate;
-    vector_4115f7f8 _coordinates;
+    struct unordered_map<TSCECellRef, TSTImportWarningSet *, std::hash<TSCECellRef>, std::equal_to<TSCECellRef>, std::allocator<std::pair<const TSCECellRef, TSTImportWarningSet *>>> _warningSetForCoordinate;
+    vector_522b9630 _coordinates;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)saveToArchive:(struct ImportWarningSetByCellRefArchive *)arg1;
-- (id)initFromArchive:(const struct ImportWarningSetByCellRefArchive *)arg1;
+- (void)saveToArchive:(void *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 - (id)warningSetAtCellRef:(const struct TSCECellRef *)arg1;
 - (struct TSCECellRef)cellRefForIndex:(unsigned long long)arg1;
 - (void)addWarning:(id)arg1 atCellRef:(const struct TSCECellRef *)arg2;

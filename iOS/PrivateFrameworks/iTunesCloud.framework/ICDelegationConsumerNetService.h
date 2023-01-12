@@ -11,6 +11,7 @@
 @class ICDelegationServiceSecuritySettings, NSDictionary, NSNetService, NSString;
 @protocol ICDelegationConsumerNetServiceDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface ICDelegationConsumerNetService : NSObject <NSNetServiceDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;

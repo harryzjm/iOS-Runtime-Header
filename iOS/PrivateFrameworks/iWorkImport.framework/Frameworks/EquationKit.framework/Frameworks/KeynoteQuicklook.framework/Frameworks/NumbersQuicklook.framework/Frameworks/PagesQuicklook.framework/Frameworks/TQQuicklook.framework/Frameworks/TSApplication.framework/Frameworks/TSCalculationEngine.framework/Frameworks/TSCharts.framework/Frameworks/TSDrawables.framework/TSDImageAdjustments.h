@@ -12,20 +12,20 @@
 
 @interface TSDImageAdjustments : NSObject <NSCopying, NSMutableCopying, TSDMixing>
 {
-    double mExposure;
-    double mSaturation;
-    double mContrast;
-    double mHighlights;
-    double mShadows;
-    double mSharpness;
-    double mDenoise;
-    double mTemperature;
-    double mTint;
-    double mBottomLevel;
-    double mTopLevel;
-    double mGamma;
-    _Bool mEnhance;
-    _Bool mRepresentsSageAdjustments;
+    double _exposure;
+    double _saturation;
+    double _contrast;
+    double _highlights;
+    double _shadows;
+    double _sharpness;
+    double _denoise;
+    double _temperature;
+    double _tint;
+    double _bottomLevel;
+    double _topLevel;
+    double _gamma;
+    _Bool _enhance;
+    _Bool _representsSageAdjustments;
 }
 
 + (_Bool)canMixWithNilObjects;
@@ -52,8 +52,8 @@
 @property(readonly, nonatomic) double saturation;
 @property(readonly, nonatomic) double exposure;
 - (id)init;
-- (void)saveToArchive:(struct ImageAdjustmentsArchive *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct ImageAdjustmentsArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)i_initFromDefaultArchive;
 
 @end

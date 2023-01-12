@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)isOtpauthResourceDictionary:(id)arg1;
 + (_Bool)isPasswordManagerSecurityRecommendationsResourceDictionary:(id)arg1;
 + (id)passwordManagerSecurityRecommendationsURL;
 + (_Bool)boolForPasswordManagerResourceDictionary:(id)arg1 key:(id)arg2 defaultValue:(_Bool)arg3;

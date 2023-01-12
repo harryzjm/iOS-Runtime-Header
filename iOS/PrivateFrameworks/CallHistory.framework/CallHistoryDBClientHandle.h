@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CallHistoryDBHandle;
+@class CHNotifyObserver, CallHistoryDBHandle;
 
 @interface CallHistoryDBClientHandle
 {
     CallHistoryDBHandle *dbStoreHandle;
-    id _observerCallRecordRef;
     id _observerCallTimersRef;
+    CHNotifyObserver *_callsDidChangeNotifyObserver;
 }
 
 + (id)createForServer;
 + (id)createForClient;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) CHNotifyObserver *callsDidChangeNotifyObserver; // @synthesize callsDidChangeNotifyObserver=_callsDidChangeNotifyObserver;
 @property(readonly, nonatomic) CallHistoryDBHandle *dbStoreHandle; // @synthesize dbStoreHandle;
 - (_Bool)moveCallRecordsFromDatabaseAtURL:(id)arg1;
 - (_Bool)saveDatabase:(id *)arg1;
@@ -25,7 +26,7 @@
 - (id)updateCallRecords_sync:(id)arg1 error:(id *)arg2 save:(_Bool)arg3;
 - (_Bool)willHandleNotification_sync:(id)arg1;
 - (void)handleCallTimersSave_sync:(id)arg1;
-- (void)handleCallRecordSave_sync:(id)arg1;
+- (void)handleCallRecordSave_sync;
 - (id)manager;
 - (_Bool)resetAllTimers;
 - (void)resetTimers;
@@ -72,7 +73,6 @@
 - (void)setStoreObject_sync:(id)arg1 withClientObject:(id)arg2;
 - (unsigned int)getCallStatus_sync:(id)arg1 isOriginated:(id)arg2 isAnswered:(id)arg3;
 - (void)parseCallStatus_sync:(unsigned int)arg1 isAnswered:(_Bool *)arg2 isOriginated:(_Bool *)arg3;
-- (id)init;
 
 @end
 

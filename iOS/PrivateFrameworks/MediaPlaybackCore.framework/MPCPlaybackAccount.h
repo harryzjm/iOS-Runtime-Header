@@ -8,8 +8,9 @@
 
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 
-@class ICMusicSubscriptionStatus, ICUserIdentity, NSString;
+@class ICMusicSubscriptionStatus, ICURLBag, ICUserIdentity, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPCPlaybackAccount : NSObject <NSCopying>
 {
     _Bool _hasCloudLibraryEnabled;
@@ -20,9 +21,11 @@
     ICMusicSubscriptionStatus *_subscriptionStatus;
     NSString *_hashedDSID;
     NSString *_storeFrontIdentifier;
+    ICURLBag *_bag;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) ICURLBag *bag; // @synthesize bag=_bag;
 @property(nonatomic, getter=isPrivateListeningEnabled) _Bool privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
 @property(nonatomic, getter=isActiveAccount) _Bool activeAccount; // @synthesize activeAccount=_activeAccount;
 @property(readonly, nonatomic, getter=isDelegated) _Bool delegated; // @synthesize delegated=_delegated;

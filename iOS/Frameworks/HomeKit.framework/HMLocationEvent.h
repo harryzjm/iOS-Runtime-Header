@@ -12,15 +12,15 @@
 
 @interface HMLocationEvent <NSSecureCoding, NSCopying, NSMutableCopying>
 {
-    int _locationAuthorization;
     CLRegion *_region;
     HMFLocationAuthorization *_authorization;
+    long long _locationAuthorization;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)createWithDictionary:(id)arg1 home:(id)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
+@property(nonatomic) long long locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property(readonly) HMFLocationAuthorization *authorization; // @synthesize authorization=_authorization;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -35,7 +35,7 @@
 - (void)updateRegion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) CLRegion *region; // @synthesize region=_region;
 - (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
-- (void)dealloc;
+- (void)_unconfigure;
 - (id)initWithRegion:(id)arg1;
 - (id)initWithDict:(id)arg1 region:(id)arg2;
 

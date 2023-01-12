@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetsLibraryServices/PLThumbnailManagerCore.h>
+#import <PhotoLibraryServicesCore/PLThumbnailManagerCore.h>
 
-@class NSArray, NSLock, NSMutableArray, NSMutableSet;
+@class NSArray, NSLock, NSMutableArray, NSMutableSet, NSPersistentStore;
 
 @interface PLThumbnailManager : PLThumbnailManagerCore
 {
@@ -18,11 +18,12 @@
     _Bool _didCheckShouldRebuildThumbnails;
     _Bool _hasExceededThumbnailRebuildRequestLimit;
     _Bool _isRebuildingThumbnails;
+    NSPersistentStore *_migrationStore;
     id _observerToken;
     NSArray *_slowPersistenceManagers;
 }
 
-+ (id)supportedThumbnailFormats;
++ (id)thumbnailIdentifierWithAssetUUID:(id)arg1 directory:(id)arg2 filename:(id)arg3 bundleScope:(unsigned short)arg4 pathManager:(id)arg5;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *slowPersistenceManagers; // @synthesize slowPersistenceManagers=_slowPersistenceManagers;
 @property(retain, nonatomic) id observerToken; // @synthesize observerToken=_observerToken;
@@ -30,6 +31,7 @@
 - (unsigned short)_supportedThumbnailFormatIDFromGeneralFormatID:(unsigned short)arg1;
 - (id)_dataForAsset:(id)arg1 format:(unsigned short)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8 imageDataFormat:(unsigned short *)arg9;
 - (id)thumbnailJPEGPathForPhoto:(id)arg1;
+- (id)indexStatisticsForLibrary:(id)arg1;
 - (long long)_diskFootprintOfTableThumbnailTables;
 - (id)_tableDescriptions;
 - (id)placeholderDataForFormat:(unsigned short)arg1 photoImageSize:(struct CGSize)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
@@ -39,16 +41,16 @@
 - (_Bool)setThumbnailsForThumbIdentifier:(id)arg1 thumbnailIndex:(unsigned long long)arg2 assetUUID:(id)arg3 kind:(short)arg4 extension:(id)arg5 withImage:(id)arg6;
 - (void)setThumbnailsForAsset:(id)arg1 withImage:(id)arg2;
 - (_Bool)_downscaleAndWriteTableAndFileBackedThumbnailsWithIdentifier:(id)arg1 thumbnailIndex:(unsigned long long)arg2 image:(id)arg3 assetUUID:(id)arg4;
-- (_Bool)_performDownscaleIntoDatas:(id)arg1 image:(id)arg2 assetUUID:(id)arg3;
+- (_Bool)_performUncompressedTableDownscaleIntoDatas:(id)arg1 image:(id)arg2 assetUUID:(id)arg3;
 - (void)discardCachedThumbnailDownscalerContexts;
 - (void)endThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(id)arg1 withToken:(id)arg2;
 - (id)beginThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(id)arg1;
 - (struct CGImage *)newImageForAsset:(id)arg1 format:(id)arg2;
-- (id)_allPossibleThumbnailFormatIDs;
 - (void)handleRebuildThumbnailRequestPersistentFailureInPhotoLibrary:(id)arg1;
 - (_Bool)hasExceededRebuildThumbnailRequestLimit;
 - (_Bool)isRebuildingThumbnails;
 - (void)rebuildAllMissingThumbnailsInLibrary:(id)arg1;
+- (void)continueRebuildingTableThumbsInLibrary:(id)arg1;
 - (id)_rebuildThumbnailsQueue;
 - (_Bool)hasMissingThumbnailsInLibrary:(id)arg1;
 - (long long)_rebuildAssetThumbnailsWithLimit:(int)arg1 library:(id)arg2 error:(id *)arg3;
@@ -58,21 +60,17 @@
 - (void)removeRebuildThumbnailsRequest:(const char *)arg1;
 - (_Bool)hasRebuildThumbnailsRequest;
 - (void)addRebuildThumbnailsRequest;
-- (_Bool)resetThumbnailsWithModelMigrator:(id)arg1 forced:(_Bool)arg2;
-- (_Bool)resetThumbnailsWithModelMigrator:(id)arg1;
+- (_Bool)resetThumbnailsForced:(_Bool)arg1 isMissingTables:(_Bool)arg2 inContext:(id)arg3;
+- (_Bool)resetThumbnailsWithResetType:(long long)arg1 deferHintChanges:(_Bool)arg2 inContext:(id)arg3;
 - (void)_removeMasterThumbDirectories;
-- (void)removeThumbnailTablesUnsupportedOnly:(_Bool)arg1;
-- (_Bool)isMissingThumbnailTables;
-- (_Bool)hasThumbnailVersionMismatch;
-- (_Bool)hasDeprecationsOnly;
-- (unsigned short)_configurationThumbnailFormat;
-- (int)_configurationThumbnailVersion;
-- (_Bool)_thumbnailChangeContainsOnlyTableDeprecationsFromVersion:(int)arg1 toVersion:(int)arg2 fromFormat:(int)arg3 toFormat:(int)arg4;
+- (void)reStampConfigAsNeedingTableThumbMigration;
+- (_Bool)wantsTableOnlyRebuild;
 - (void)removeObsoleteMetadata;
 - (id)thumbnailRebuildIndicatorPath;
 - (id)imageTableForFormat:(unsigned short)arg1;
 - (void)dealloc;
-- (id)initWithPhotoLibraryPathManager:(id)arg1 modelMigrator:(id)arg2;
+- (id)initWithPhotoLibraryPathManager:(id)arg1 storeFromMigration:(id)arg2;
+- (id)_contextForConfigurationChanges;
 
 @end
 

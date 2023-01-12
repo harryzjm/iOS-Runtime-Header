@@ -9,11 +9,14 @@
 #import <UserNotifications/NSCopying-Protocol.h>
 #import <UserNotifications/NSMutableCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
+#import <UserNotifications/UNNotificationSecurityScopeProviding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, UNNotificationIcon, UNNotificationSound;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, UNNotificationIcon, UNNotificationSound, _UNNotificationCommunicationContext;
 
-@interface UNNotificationContent : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@interface UNNotificationContent : NSObject <UNNotificationSecurityScopeProviding, NSCopying, NSMutableCopying, NSSecureCoding>
 {
+    NSString *_contentType;
+    _UNNotificationCommunicationContext *_communicationContext;
     NSArray *_attachments;
     NSNumber *_badge;
     NSString *_body;
@@ -23,6 +26,7 @@
     NSURL *_defaultActionURL;
     NSDate *_expirationDate;
     NSString *_header;
+    NSString *_footer;
     NSString *_launchImageName;
     NSArray *_peopleIdentifiers;
     _Bool _shouldHideDate;
@@ -37,6 +41,8 @@
     _Bool _shouldSuppressSyncDismissalWhenRemoved;
     _Bool _shouldUseRequestIdentifierForDismissalSync;
     _Bool _shouldPreemptPresentedNotification;
+    _Bool _shouldShowSubordinateIcon;
+    _Bool _shouldDisplayActionsInline;
     UNNotificationSound *_sound;
     NSString *_accessoryImageName;
     NSString *_subtitle;
@@ -49,10 +55,14 @@
     NSString *_targetContentIdentifier;
     NSDictionary *_userInfo;
     UNNotificationIcon *_icon;
+    unsigned long long _interruptionLevel;
+    double _relevanceScore;
+    NSString *_markedMutableCopyMessage;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *markedMutableCopyMessage; // @synthesize markedMutableCopyMessage=_markedMutableCopyMessage;
 @property(readonly, copy, nonatomic) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property(readonly, nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property(readonly, copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
@@ -65,23 +75,32 @@
 @property(readonly, copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property(readonly, copy, nonatomic) NSNumber *badge; // @synthesize badge=_badge;
 @property(readonly, copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+- (void)leaveSecurityScope;
+- (void)enterSecurityScope;
+- (void)removeSecurityScope;
+- (void)addSecurityScope:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)markedMutableCopyWithMessage:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_safeStringForString:(id)arg1 debug:(_Bool)arg2;
 - (id)_descriptionForDebug:(_Bool)arg1;
-- (id)debugDescription;
-- (id)description;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double relevanceScore; // @synthesize relevanceScore=_relevanceScore;
+@property(readonly, nonatomic) unsigned long long interruptionLevel; // @synthesize interruptionLevel=_interruptionLevel;
 @property(readonly, nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property(readonly, copy, nonatomic) NSSet *topicIdentifiers; // @synthesize topicIdentifiers=_topicIdentifiers;
 @property(readonly, copy, nonatomic) NSString *subtitle;
+@property(readonly, nonatomic) _Bool shouldDisplayActionsInline; // @synthesize shouldDisplayActionsInline=_shouldDisplayActionsInline;
 @property(readonly, nonatomic) _Bool shouldPreemptPresentedNotification; // @synthesize shouldPreemptPresentedNotification=_shouldPreemptPresentedNotification;
 @property(readonly, nonatomic) _Bool shouldUseRequestIdentifierForDismissalSync; // @synthesize shouldUseRequestIdentifierForDismissalSync=_shouldUseRequestIdentifierForDismissalSync;
 @property(readonly, nonatomic) _Bool shouldSuppressSyncDismissalWhenRemoved; // @synthesize shouldSuppressSyncDismissalWhenRemoved=_shouldSuppressSyncDismissalWhenRemoved;
 @property(readonly, nonatomic) _Bool shouldSuppressScreenLightUp; // @synthesize shouldSuppressScreenLightUp=_shouldSuppressScreenLightUp;
 @property(readonly, nonatomic) _Bool shouldSuppressDefaultAction; // @synthesize shouldSuppressDefaultAction=_shouldSuppressDefaultAction;
+@property(readonly, nonatomic) _Bool shouldShowSubordinateIcon; // @synthesize shouldShowSubordinateIcon=_shouldShowSubordinateIcon;
 @property(readonly, nonatomic) _Bool shouldPreventNotificationDismissalAfterDefaultAction; // @synthesize shouldPreventNotificationDismissalAfterDefaultAction=_shouldPreventNotificationDismissalAfterDefaultAction;
 @property(readonly, nonatomic) _Bool shouldBackgroundDefaultAction; // @synthesize shouldBackgroundDefaultAction=_shouldBackgroundDefaultAction;
 @property(readonly, nonatomic) _Bool shouldAuthenticateDefaultAction; // @synthesize shouldAuthenticateDefaultAction=_shouldAuthenticateDefaultAction;
@@ -93,14 +112,24 @@
 @property(readonly, copy, nonatomic) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;
 @property(readonly, copy, nonatomic) UNNotificationIcon *icon; // @synthesize icon=_icon;
 @property(readonly, nonatomic) NSString *accessoryImageName; // @synthesize accessoryImageName=_accessoryImageName;
+@property(readonly, copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property(readonly, copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property(readonly, nonatomic) _Bool hasDefaultAction;
 @property(readonly, copy, nonatomic) NSURL *defaultActionURL; // @synthesize defaultActionURL=_defaultActionURL;
 @property(readonly, copy, nonatomic) NSString *defaultActionTitle; // @synthesize defaultActionTitle=_defaultActionTitle;
 @property(readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property(readonly, copy, nonatomic) _UNNotificationCommunicationContext *communicationContext; // @synthesize communicationContext=_communicationContext;
+@property(readonly, copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)_initWithAccessoryImageName:(id)arg1 attachments:(id)arg2 badge:(id)arg3 body:(id)arg4 categoryIdentifier:(id)arg5 date:(id)arg6 icon:(id)arg7 defaultActionTitle:(id)arg8 defaultActionURL:(id)arg9 expirationDate:(id)arg10 header:(id)arg11 launchImageName:(id)arg12 peopleIdentifiers:(id)arg13 shouldHideDate:(_Bool)arg14 shouldHideTime:(_Bool)arg15 shouldIgnoreDoNotDisturb:(_Bool)arg16 shouldIgnoreDowntime:(_Bool)arg17 shouldSuppressScreenLightUp:(_Bool)arg18 shouldAuthenticateDefaultAction:(_Bool)arg19 shouldBackgroundDefaultAction:(_Bool)arg20 shouldPreventNotificationDismissalAfterDefaultAction:(_Bool)arg21 shouldSuppressDefaultAction:(_Bool)arg22 shouldSuppressSyncDismissalWhenRemoved:(_Bool)arg23 shouldUseRequestIdentifierForDismissalSync:(_Bool)arg24 shouldPreemptPresentedNotification:(_Bool)arg25 sound:(id)arg26 subtitle:(id)arg27 threadIdentifier:(id)arg28 title:(id)arg29 topicIdentifiers:(id)arg30 realertCount:(unsigned long long)arg31 summaryArgument:(id)arg32 summaryArgumentCount:(unsigned long long)arg33 targetContentIdentifier:(id)arg34 userInfo:(id)arg35;
+@property(readonly) unsigned long long hash;
+- (id)_initWithContentType:(id)arg1 communicationContext:(id)arg2 accessoryImageName:(id)arg3 attachments:(id)arg4 badge:(id)arg5 body:(id)arg6 categoryIdentifier:(id)arg7 date:(id)arg8 icon:(id)arg9 defaultActionTitle:(id)arg10 defaultActionURL:(id)arg11 expirationDate:(id)arg12 header:(id)arg13 footer:(id)arg14 launchImageName:(id)arg15 peopleIdentifiers:(id)arg16 shouldHideDate:(_Bool)arg17 shouldHideTime:(_Bool)arg18 shouldIgnoreDoNotDisturb:(_Bool)arg19 shouldIgnoreDowntime:(_Bool)arg20 shouldSuppressScreenLightUp:(_Bool)arg21 shouldAuthenticateDefaultAction:(_Bool)arg22 shouldBackgroundDefaultAction:(_Bool)arg23 shouldPreventNotificationDismissalAfterDefaultAction:(_Bool)arg24 shouldShowSubordinateIcon:(_Bool)arg25 shouldSuppressDefaultAction:(_Bool)arg26 shouldSuppressSyncDismissalWhenRemoved:(_Bool)arg27 shouldUseRequestIdentifierForDismissalSync:(_Bool)arg28 shouldPreemptPresentedNotification:(_Bool)arg29 shouldDisplayActionsInline:(_Bool)arg30 sound:(id)arg31 subtitle:(id)arg32 threadIdentifier:(id)arg33 title:(id)arg34 topicIdentifiers:(id)arg35 realertCount:(unsigned long long)arg36 summaryArgument:(id)arg37 summaryArgumentCount:(unsigned long long)arg38 targetContentIdentifier:(id)arg39 interruptionLevel:(unsigned long long)arg40 relevanceScore:(double)arg41 userInfo:(id)arg42;
+- (id)contentByUpdatingWithProvider:(id)arg1 error:(out id *)arg2;
+- (id)contentByUpdatingWithSendMessageIntent:(id)arg1 error:(out id *)arg2;
+- (id)contentByUpdatingWithStartCallIntent:(id)arg1 error:(out id *)arg2;
+- (id)contentByUpdatingWithReadAnnouncementIntent:(id)arg1 error:(out id *)arg2;
+
+// Remaining properties
+@property(readonly) Class superclass;
 
 @end
 

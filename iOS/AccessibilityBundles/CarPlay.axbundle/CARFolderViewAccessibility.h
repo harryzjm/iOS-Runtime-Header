@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityUserTestingChildren;
+- (id)_accessibilityUserTestingChildrenFromSBRootFolderView;
 
 @end
 

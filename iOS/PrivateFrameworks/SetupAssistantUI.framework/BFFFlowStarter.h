@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <BFFFlowDiverter> diverter; // @synthesize diverter=_diverter;
+- (_Bool)controllerNeedsToRunForFlowItem:(id)arg1;
 - (_Bool)controllerNeedsToRunForClass:(Class)arg1;
 - (id)initWithFlowDiverter:(id)arg1;
 

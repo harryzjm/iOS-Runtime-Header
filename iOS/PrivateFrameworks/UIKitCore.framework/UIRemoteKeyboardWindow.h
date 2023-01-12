@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)remoteKeyboardWindowForScreen:(id)arg1 create:(_Bool)arg2;
++ (_Bool)_isHostedInAnotherProcess;
 - (void)dealloc;
 - (long long)_orientationForClassicPresentation;
 - (void)endDisablingInterfaceAutorotation;
@@ -33,6 +34,8 @@ __attribute__((visibility("hidden")))
 - (id)_layerForCoordinateSpaceConversion;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (_Bool)_isTextEffectsWindowNotificationOwner;
+- (_Bool)_isRemoteKeyboardWindow;
+- (_Bool)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)_setRotatableClient:(id)arg1 toOrientation:(long long)arg2 updateStatusBar:(_Bool)arg3 duration:(double)arg4 force:(_Bool)arg5 isRotating:(_Bool)arg6;
 - (void)setWindowLevel:(double)arg1;
 - (_Bool)_isFullscreen;
@@ -52,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)_initBasicWithScreen:(id)arg1 options:(id)arg2;
 
 // Remaining properties
-@property(readonly, nonatomic) CDStruct_a002d41c _bindingDescription;
+@property(readonly, nonatomic) CDStruct_98d137ef _bindingDescription;
 @property(nonatomic, setter=_setBoundContext:) __weak CAContext *_boundContext;
 @property(nonatomic, setter=_setContextBinder:) __weak _UIContextBinder *_contextBinder;
 @property(readonly, copy) NSString *debugDescription;

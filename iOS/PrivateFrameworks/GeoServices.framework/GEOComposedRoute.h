@@ -10,8 +10,8 @@
 #import <GeoServices/NSSecureCoding-Protocol.h>
 #import <GeoServices/_GEORouteHypothesisMonitorETAProvider-Protocol.h>
 
-@class GEOComposedRouteAdvisory, GEOComposedRouteCoordinateArray, GEOComposedRouteMutableData, GEOComposedRouteTraffic, GEOComposedWaypoint, GEOElevationProfile, GEOMapRegion, GEORoute, GEORouteAttributes, GEORouteDisplayHints, GEORouteInitializerData, GEORouteRestrictionZoneInfo, GEOStyleAttributes, GEOTransitDecoderData, GEOTransitRouteUpdateRequest, GEOTransitSuggestedRoute, GEOWaypointRoute, GEOZilchDecoder, NSArray, NSData, NSDate, NSHashTable, NSMutableArray, NSString, NSUUID, geo_reentrant_isolater;
-@protocol GEOComposedRouteTransitDisplayStrings, GEOServerFormattedString, GEOTransitRoutingIncidentMessage;
+@class GEOComposedRouteAdvisory, GEOComposedRouteCellularCoverage, GEOComposedRouteCoordinateArray, GEOComposedRouteMutableData, GEOComposedRouteTraffic, GEOComposedWaypoint, GEOElevationProfile, GEOMapRegion, GEORoute, GEORouteAttributes, GEORouteDisplayHints, GEORouteInitializerData, GEORouteRestrictionZoneInfo, GEOStyleAttributes, GEOTransitDecoderData, GEOTransitRouteUpdateRequest, GEOTransitSuggestedRoute, GEOWaypointRoute, GEOZilchDecoder, NSArray, NSData, NSDate, NSHashTable, NSMutableArray, NSString, NSUUID, geo_isolater, geo_reentrant_isolater;
+@protocol GEOComposedRouteTransitDisplayStrings, GEOServerFormattedString, GEOTransitArtworkDataSource, GEOTransitRoutingIncidentMessage;
 
 @interface GEOComposedRoute : NSObject <_GEORouteHypothesisMonitorETAProvider, NSSecureCoding, GEOMapAccessRestrictions>
 {
@@ -33,6 +33,7 @@
     NSString *_trafficDescription;
     NSString *_longTrafficDescription;
     id <GEOServerFormattedString> _routeLabelDescription;
+    id <GEOTransitArtworkDataSource> _routeLabelArtwork;
     id <GEOServerFormattedString> _infrastructureDescription;
     id <GEOServerFormattedString> _launchAndGoCardTitle;
     id <GEOServerFormattedString> _launchAndGoRouteTitle;
@@ -45,9 +46,9 @@
     id <GEOServerFormattedString> _transitDescriptionFormatString;
     _Bool _isNavigable;
     int _transportType;
+    double _distance;
     unsigned int _expectedTime;
     unsigned int _historicTravelTime;
-    unsigned int _distance;
     double _freeflowTravelTime;
     double _travelTimeAggressiveEstimate;
     double _travelTimeConservativeEstimate;
@@ -72,8 +73,13 @@
     GEOComposedRouteAdvisory *_evAdvisory;
     GEOComposedRouteAdvisory *_tollAdvisory;
     NSArray *_noticesAdvisories;
+    NSArray *_genericAdvisories;
     GEORouteRestrictionZoneInfo *_restrictionZoneInfo;
     GEOElevationProfile *_elevationProfile;
+    GEOComposedRouteCellularCoverage *_cellularCoverage;
+    NSArray *_visualInfos;
+    NSArray *_cameraInfos;
+    long long _initialPromptTypes;
     NSArray *_transitAdvisories;
     NSArray *_routePlanningArtworks;
     id <GEOTransitRoutingIncidentMessage> _transitRoutingIncidentMessage;
@@ -91,6 +97,7 @@
     NSMutableArray *_snappedPaths;
     GEOZilchDecoder *_zilchDecoder;
     geo_reentrant_isolater *_snappedRoutesIsolater;
+    geo_isolater *_mutableDataLock;
     GEOComposedRouteMutableData *_mutableData;
     unsigned int _firstVisiblePoint;
     NSArray *_maneuverDisplaySteps;
@@ -98,13 +105,13 @@
     unsigned long long _currentDisplayStep;
     unsigned long long _selectedSegmentIndex;
     NSHashTable *_observers;
+    NSArray *_roadComplexities;
     GEOTransitRouteUpdateRequest *_transitRouteUpdateRequest;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *etauPositions; // @synthesize etauPositions=_etauPositions;
-@property(retain, nonatomic) GEOComposedRouteMutableData *mutableData; // @synthesize mutableData=_mutableData;
 @property(retain, nonatomic) NSUUID *revisionIdentifier; // @synthesize revisionIdentifier=_revisionIdentifier;
 @property(readonly, nonatomic) GEOTransitRouteUpdateRequest *transitRouteUpdateRequest; // @synthesize transitRouteUpdateRequest=_transitRouteUpdateRequest;
 @property(readonly, nonatomic) NSArray *halls; // @synthesize halls=_halls;
@@ -120,6 +127,7 @@
 @property(readonly, nonatomic) NSData *directionsResponseID; // @synthesize directionsResponseID=_directionsResponseID;
 @property(nonatomic) double transitUpdateInitialDelay; // @synthesize transitUpdateInitialDelay=_transitUpdateInitialDelay;
 @property(readonly, nonatomic) _Bool isWalkingOnlyTransitRoute; // @synthesize isWalkingOnlyTransitRoute=_isWalkingOnlyTransitRoute;
+@property(readonly, nonatomic) NSArray *genericAdvisories; // @synthesize genericAdvisories=_genericAdvisories;
 @property(readonly, nonatomic) NSArray *noticesAdvisories; // @synthesize noticesAdvisories=_noticesAdvisories;
 @property(readonly, nonatomic) GEOComposedRouteAdvisory *tollAdvisory; // @synthesize tollAdvisory=_tollAdvisory;
 @property(readonly, nonatomic) GEOComposedRouteAdvisory *evAdvisory; // @synthesize evAdvisory=_evAdvisory;
@@ -141,19 +149,23 @@
 @property(readonly, nonatomic) _Bool avoidsTraffic; // @synthesize avoidsTraffic=_avoidsTraffic;
 @property(readonly, nonatomic) _Bool avoidsHighways; // @synthesize avoidsHighways=_avoidsHighways;
 @property(readonly, nonatomic) _Bool avoidsTolls; // @synthesize avoidsTolls=_avoidsTolls;
-@property(readonly, nonatomic) unsigned int distance; // @synthesize distance=_distance;
 @property(readonly, nonatomic) id <GEOServerFormattedString> infrastructureDescription; // @synthesize infrastructureDescription=_infrastructureDescription;
 @property(readonly, nonatomic) GEORouteRestrictionZoneInfo *restrictionZoneInfo; // @synthesize restrictionZoneInfo=_restrictionZoneInfo;
 @property(readonly, nonatomic) NSString *longTrafficDescription; // @synthesize longTrafficDescription=_longTrafficDescription;
 @property(readonly, nonatomic) NSString *trafficDescription; // @synthesize trafficDescription=_trafficDescription;
+@property(readonly, nonatomic) id <GEOTransitArtworkDataSource> routeLabelArtwork; // @synthesize routeLabelArtwork=_routeLabelArtwork;
 @property(readonly, nonatomic) id <GEOServerFormattedString> routeLabelDescription; // @synthesize routeLabelDescription=_routeLabelDescription;
 @property(readonly, nonatomic) double travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
 @property(readonly, nonatomic) double travelTimeAggressiveEstimate; // @synthesize travelTimeAggressiveEstimate=_travelTimeAggressiveEstimate;
 @property(readonly, nonatomic) double freeflowTravelTime; // @synthesize freeflowTravelTime=_freeflowTravelTime;
 @property(readonly, nonatomic) unsigned int historicTravelTime; // @synthesize historicTravelTime=_historicTravelTime;
 @property(readonly, nonatomic) unsigned int expectedTime; // @synthesize expectedTime=_expectedTime;
+@property(readonly, nonatomic) double distance; // @synthesize distance=_distance;
 @property(retain, nonatomic) NSData *serverRouteID; // @synthesize serverRouteID=_serverRouteID;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) NSArray *roadComplexities; // @synthesize roadComplexities=_roadComplexities;
+@property(readonly, nonatomic) NSArray *cameraInfos; // @synthesize cameraInfos=_cameraInfos;
+@property(readonly, nonatomic) NSArray *visualInfos; // @synthesize visualInfos=_visualInfos;
 @property(readonly, nonatomic) NSArray *enrouteNotices; // @synthesize enrouteNotices=_enrouteNotices;
 @property(readonly, nonatomic) NSArray *composedGuidanceEvents; // @synthesize composedGuidanceEvents=_composedGuidanceEvents;
 @property(readonly, nonatomic) NSArray *legs; // @synthesize legs=_legs;
@@ -168,6 +180,9 @@
 @property(retain, nonatomic) NSUUID *uniqueRouteID; // @synthesize uniqueRouteID=_uniqueRouteID;
 @property(readonly, nonatomic) unsigned long long serverIdentifier; // @synthesize serverIdentifier=_serverIdentifier;
 @property(readonly, nonatomic) GEOWaypointRoute *geoWaypointRoute; // @synthesize geoWaypointRoute=_geoWaypointRoute;
+- (unsigned int)laneCountAtRouteCoordinate:(struct PolylineCoordinate)arg1;
+- (id)roadComplexitiesForRouteCoordinate:(struct PolylineCoordinate)arg1;
+- (unsigned int)roadComplexityAtDistance:(double)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) _Bool allowsNetworkTileLoad;
@@ -203,6 +218,7 @@
 - (void)clearPoints;
 - (id)getSnappedPathsForLocation:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 observer:(id)arg3;
 - (id)getSnappedPathsForVisibleRect:(CDStruct_90e2a262)arg1 rectsToSnap:(CDStruct_90e2a262 *)arg2 rectsToSnapCount:(unsigned long long)arg3 observer:(id)arg4;
+- (id)getSnappedPathsForVisibleRect:(CDStruct_90e2a262)arg1 rectsToSnap:(CDStruct_90e2a262 *)arg2 rectsToSnapCount:(unsigned long long)arg3 observer:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)supportsSnapping;
 - (void)_addPaths:(id)arg1 forObserver:(id)arg2;
 - (void)_snapPaths:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -210,7 +226,7 @@
 - (_Bool)_meetsMinimumPathLengthBetweenStart:(unsigned int)arg1 end:(unsigned int)arg2;
 - (id)geoTrafficBannerText;
 - (void)roadFeaturesForRouteCoordinate:(struct PolylineCoordinate)arg1 distanceAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
-- (struct PolylineCoordinate)_findRouteCoordinateWithOffset:(float)arg1 aPos:(const Matrix_8746f91e *)arg2 aCoord:(const struct PolylineCoordinate *)arg3 bCoord:(const struct PolylineCoordinate *)arg4 pointOnSegment:(const Matrix_8746f91e *)arg5 bounds:(const CDStruct_90e2a262 *)arg6;
+- (struct PolylineCoordinate)_findRouteCoordinateWithOffset:(float)arg1 aPos:(const void *)arg2 aCoord:(const struct PolylineCoordinate *)arg3 bCoord:(const struct PolylineCoordinate *)arg4 pointOnSegment:(const void *)arg5 bounds:(const CDStruct_90e2a262 *)arg6;
 - (id)routeMatchAtDistance:(double)arg1 from:(id)arg2 stopAtEndOfTunnel:(_Bool)arg3 stopAtEndOfManeuver:(_Bool)arg4 date:(id)arg5;
 - (CDStruct_39925896)locationAtDistance:(double)arg1 from:(id)arg2;
 - (double)courseAtRouteCoordinateIndex:(unsigned int)arg1;
@@ -223,10 +239,11 @@
 - (double)distanceBetweenLocation:(CDStruct_c3b9c2ee)arg1 nextPointIndex:(unsigned int)arg2 toPointIndex:(unsigned int)arg3;
 - (double)distanceBetweenRoutePointIndex:(unsigned int)arg1 toPointIndex:(unsigned int)arg2;
 @property(readonly, nonatomic) int routeType;
+- (id)routingPathDataFromStart:(struct PolylineCoordinate)arg1;
 - (id)zilchDataArrayToEndOfRouteFromStepIndex:(unsigned long long)arg1;
 - (id)zilchDataFromStepIndex:(unsigned long long)arg1;
 - (int)transportTypeForStep:(id)arg1;
-- (CDStruct_4da79865 *)roadFeatureAtPointIndex:(unsigned int)arg1;
+- (id)roadFeatureAtPointIndex:(unsigned int)arg1;
 - (double)approximateRoadWidthAtPointIndex:(unsigned int)arg1;
 - (int)formOfWayAt:(unsigned int)arg1;
 - (void)getFormOfWay:(int *)arg1 roadClass:(int *)arg2 at:(unsigned int)arg3;
@@ -240,6 +257,8 @@
 - (id)segmentForPointIndex:(unsigned int)arg1;
 - (id)segmentForStepIndex:(unsigned long long)arg1;
 - (unsigned long long)segmentIndexForStepIndex:(unsigned long long)arg1;
+- (void)enumerateCellularCoverageRangesWithBlock:(CDUnknownBlockType)arg1;
+- (int)estimatedCellularCoverageForOffset:(double)arg1;
 - (unsigned long long)segmentIndexForPointIndex:(unsigned long long)arg1;
 - (unsigned long long)stepIndexForPointIndex:(unsigned long long)arg1;
 - (id)stepForPointIndex:(unsigned int)arg1;
@@ -255,8 +274,11 @@
 - (CDStruct_39925896)pointAtRouteCoordinate:(struct PolylineCoordinate)arg1;
 - (struct PolylineCoordinate)coordinateAtOffset:(double)arg1;
 - (CDStruct_39925896)pointAt:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool usesRoutingPathPoints;
 @property(readonly, nonatomic) unsigned int pointCount;
 - (void)_initializeManeuverDisplaySteps;
+@property(retain, nonatomic) GEOComposedRouteMutableData *mutableData;
+- (_Bool)hasInitialPromptType:(int)arg1;
 @property(readonly, nonatomic) NSArray *baseTransitFares;
 @property(readonly, nonatomic) unsigned long long numberOfTransitStops;
 @property(readonly, nonatomic) NSArray *routeDescriptions;
@@ -279,14 +301,16 @@
 @property(readonly, nonatomic) unsigned long long indexOfSuggestedRoute;
 @property(readonly, nonatomic) GEORouteAttributes *routeAttributes;
 @property(readonly, nonatomic) GEORouteInitializerData *routeInitializerData;
-- (void)removeObserver:(id)arg1;
-- (void)addObserver:(id)arg1;
+- (void)unregisterObserver:(id)arg1;
+- (void)registerObserver:(id)arg1;
 - (_Bool)_MapsCarPlay_isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (void)_enumerateAllStepsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_populateArtworkForSuggestedRoute:(id)arg1 decoderData:(id)arg2;
 - (void)_ingestRouteBuilderOutput:(id)arg1;
+- (void)_initExplicitAdvisoriesForRoute:(id)arg1 initializerData:(id)arg2;
+- (void)_initAdvisoriesForRoute:(id)arg1 initializerData:(id)arg2;
 - (void)_initOtherRouteFeatures:(id)arg1 initializerData:(id)arg2;
 - (id)initWithSuggestedRoute:(id)arg1 initializerData:(id)arg2 uniqueRouteID:(id)arg3;
 - (id)initWithSuggestedRoute:(id)arg1 initializerData:(id)arg2 updateRequest:(id)arg3;
@@ -295,12 +319,25 @@
 - (id)initWithRoute:(id)arg1 initializerData:(id)arg2;
 - (id)initWithGeoWaypointRoute:(id)arg1 initializerData:(id)arg2;
 - (id)init;
+- (unsigned long long)stepIndexForRouteCoordinate:(CDStruct_3f2a7a20)arg1;
+- (CDStruct_3f2a7a20)routeCoordinateForDistance:(double)arg1 beforeRouteCoordinate:(CDStruct_3f2a7a20)arg2;
+- (CDStruct_3f2a7a20)routeCoordinateForDistance:(double)arg1 afterRouteCoordinate:(CDStruct_3f2a7a20)arg2;
+- (CDStruct_3f2a7a20)routeCoordinateForDistanceBeforeEnd:(double)arg1;
+- (CDStruct_3f2a7a20)routeCoordinateForDistanceAfterStart:(double)arg1;
+- (double)distanceBetweenRouteCoordinate:(CDStruct_3f2a7a20)arg1 andRouteCoordinate:(CDStruct_3f2a7a20)arg2;
+- (double)distanceToEndFromRouteCoordinate:(CDStruct_3f2a7a20)arg1;
+- (double)distanceFromStartToRouteCoordinate:(CDStruct_3f2a7a20)arg1;
+- (double)distanceBetweenIndex:(unsigned long long)arg1 andIndex:(unsigned long long)arg2;
+- (double)distanceToEndFromIndex:(unsigned long long)arg1;
+- (double)distanceFromStartToIndex:(unsigned long long)arg1;
 - (void)applyCompanionUpdates:(id)arg1;
 - (id)initWithCompanionRoute:(id)arg1;
 - (double)_hypothesis_travelDurationFromStep:(id)arg1 stepRemainingDistance:(double)arg2;
 @property(readonly, nonatomic) double _hypothesis_travelDurationConservativeEstimate;
 @property(readonly, nonatomic) double _hypothesis_travelDurationAggressiveEstimate;
 @property(readonly, nonatomic) double _hypothesis_travelDuration;
+- (id)_geoETAWaypointRouteWithZilchFromRouteCoordinate:(struct PolylineCoordinate)arg1;
+- (id)truncatedTrafficFromRouteCoordinate:(struct PolylineCoordinate)arg1;
 - (id)etaRouteFromRouteCoordinate:(struct PolylineCoordinate)arg1;
 - (id)etaRoute;
 - (id)geoETAWaypointRouteFromRouteCoordinate:(struct PolylineCoordinate)arg1;

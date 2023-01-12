@@ -14,7 +14,7 @@
 
 - (_Bool)isPaired;
 - (void)_handleSetStateMessage:(id)arg1;
-- (id)_onWorkerQueue_createClientConnectionWithInputStream:(id)arg1 outputStream:(id)arg2;
+- (id)_onWorkerQueue_createClientConnectionWithTransport:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

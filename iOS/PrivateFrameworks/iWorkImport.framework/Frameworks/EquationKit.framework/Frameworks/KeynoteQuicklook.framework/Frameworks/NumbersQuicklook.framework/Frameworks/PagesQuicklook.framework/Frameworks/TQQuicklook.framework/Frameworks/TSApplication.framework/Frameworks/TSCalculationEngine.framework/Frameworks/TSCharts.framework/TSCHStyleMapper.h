@@ -13,8 +13,8 @@
 
 @interface TSCHStyleMapper : NSObject <TSKStyleMapper>
 {
-    id <TSKStyleMapper> mUnderlyingMapper;
-    _Bool mForceMatchStyle;
+    id <TSKStyleMapper> _underlyingMapper;
+    _Bool _forceMatchStyle;
 }
 
 + (id)mapperWithMapper:(id)arg1;
@@ -22,8 +22,8 @@
 + (id)mappedStyleWithMapper:(id)arg1 forStyle:(id)arg2 bakeComputable:(_Bool)arg3;
 + (void)replaceReferencedStylesInMap:(id)arg1 withMapper:(id)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool forceMatchStyle; // @synthesize forceMatchStyle=mForceMatchStyle;
-@property(readonly) id <TSKStyleMapper> underlyingMapper; // @synthesize underlyingMapper=mUnderlyingMapper;
+@property(nonatomic) _Bool forceMatchStyle; // @synthesize forceMatchStyle=_forceMatchStyle;
+@property(readonly) id <TSKStyleMapper> underlyingMapper; // @synthesize underlyingMapper=_underlyingMapper;
 @property(readonly, nonatomic) _Bool clientsMustRemap;
 - (id)mappedStyleForStyle:(id)arg1;
 - (id)mappedStyleForStyle:(id)arg1 bakeComputable:(_Bool)arg2;
@@ -31,7 +31,6 @@
 - (void)pushMappingContext:(id)arg1;
 - (id)targetStylesheet;
 - (void)replaceReferencedStylesInMap:(id)arg1;
-- (void)dealloc;
 - (id)initWithMapper:(id)arg1;
 
 // Remaining properties

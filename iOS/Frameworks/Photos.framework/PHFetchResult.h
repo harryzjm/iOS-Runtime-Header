@@ -14,12 +14,6 @@
 
 @interface PHFetchResult : NSObject <NSCopying, NSFastEnumeration>
 {
-    PHBatchFetchingArray *_fetchedObjects;
-    NSArray *_thumbnailAssets;
-    NSDictionary *_fetchedPropertySetsCache;
-    NSArray *_seedOIDs;
-    NSObject<OS_dispatch_queue> *_isolationQueue;
-    _Bool _registeredForChangeNotificationDeltas;
     NSString *_fetchType;
     NSSet *_fetchPropertySets;
     unsigned long long _albumsCount;
@@ -31,6 +25,12 @@
     NSNumber *_prefetchCount;
     _PHFetchRequestWrapper *_fetchRequestWrapper;
     NSError *_fetchError;
+    PHBatchFetchingArray *_fetchedObjects;
+    NSArray *_thumbnailAssets;
+    NSDictionary *_fetchedPropertySetsCache;
+    NSArray *_seedOIDs;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
+    _Bool _registeredForChangeNotificationDeltas;
     _Bool _preventsClearingOIDCache;
     PHQuery *_query;
     long long _chunkSizeForFetch;
@@ -38,6 +38,7 @@
 
 + (id)_typesToCountForListCollections;
 + (id)_typesToCountForAssetCollections;
++ (id)pointerComparableIdentifiersFromIdentifiers:(id)arg1;
 + (id)_batchFetchingArrayForObjectIDs:(id)arg1 fetchResult:(id)arg2;
 + (id)filteredOIDsFrom:(id)arg1 usingEntityName:(id)arg2 withPhotoLibrary:(id)arg3;
 + (id)cleanedAndSortedOIDsFrom:(id)arg1 usingFetchOptions:(id)arg2;
@@ -81,8 +82,7 @@
 - (id)fetchResultWithChangeHandlingValue:(id)arg1;
 - (unsigned long long)possibleChangesForChange:(id)arg1;
 - (unsigned long long)_possibleChangesFromDetectionCriteriaForChange:(id)arg1;
-- (void)setRegisteredForChangeNotificationDeltas:(_Bool)arg1;
-- (_Bool)isRegisteredForChangeNotificationDeltas;
+@property(nonatomic, getter=isRegisteredForChangeNotificationDeltas) _Bool registeredForChangeNotificationDeltas;
 - (void)updateRegistrationForChangeNotificationDeltas;
 - (id)_createFetchedPropertyObjectsWithClass:(Class)arg1 fetchedObjectIDs:(id)arg2;
 - (_Bool)_canCreateFetchedPropertyObjectsWithClass:(Class)arg1;
@@ -101,6 +101,7 @@
 @property(readonly) NSError *fetchError;
 @property(readonly) NSArray *fetchSortDescriptors;
 @property(readonly) NSFetchRequest *fetchRequest;
+- (id)additionalChangedIdentifiersFromPreviousIdentifiers:(id)arg1 currentIdentifiers:(id)arg2 inFetchResultBeforeChanges:(id)arg3;
 - (id)changeHandlingValueUsingSeedOids:(id)arg1 withChange:(id)arg2 usingManagedObjectContext:(id)arg3;
 - (id)changeHandlingKey;
 - (void)prefetchThumbnailAssetsAtIndexes:(id)arg1;

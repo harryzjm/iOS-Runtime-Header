@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class TSCECalculationEngine, TSCEFormulaRewriteSpec;
+@class TSCECalculationEngine, TSTFormulaRewriteSpec;
 
 @interface TSTConvertFormulasForCategoriesByRewritingWrapper : NSObject
 {
-    TSCEFormulaRewriteSpec *_rewriteSpecBaseToChrome;
-    TSCEFormulaRewriteSpec *_rewriteSpecChromeToBase;
+    TSTFormulaRewriteSpec *_rewriteSpecBaseToChrome;
+    TSTFormulaRewriteSpec *_rewriteSpecChromeToBase;
     TSCECalculationEngine *_calcEngine;
-    TSCEFormulaRewriteSpec *_rewriteSpec;
+    TSTFormulaRewriteSpec *_rewriteSpec;
 }
 
-+ (_Bool)isMoveRewriteType:(int)arg1;
++ (_Bool)isMoveRewriteType:(unsigned int)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCEFormulaRewriteSpec *rewriteSpec; // @synthesize rewriteSpec=_rewriteSpec;
+@property(readonly, nonatomic) TSTFormulaRewriteSpec *rewriteSpec; // @synthesize rewriteSpec=_rewriteSpec;
 @property(readonly, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 - (id)convertFromChromeToBaseForCategorizedTableMove:(id)arg1 containingCell:(const struct TSCEFormulaContainingCell *)arg2;
 - (id)convertFromBaseToChromeForCategorizedTableMove:(id)arg1 containingCell:(const struct TSCEFormulaContainingCell *)arg2;

@@ -8,9 +8,12 @@
 #import <CoreSuggestionsInternals/_SGDSuggestManagerContactsConfirmRejectProtocol-Protocol.h>
 #import <CoreSuggestionsInternals/_SGDSuggestManagerEventsConfirmRejectProtocol-Protocol.h>
 
-@class CSSearchableItem, NSArray;
+@class CSSearchableItem, NSArray, NSData, NSString, SGMailHeaders;
 
 @protocol SGDSuggestManagerMailProtocol <_SGDSuggestManagerBaseProtocol, _SGDSuggestManagerEventsConfirmRejectProtocol, _SGDSuggestManagerContactsConfirmRejectProtocol>
+- (void)topSalienciesForMailboxId:(NSString *)arg1 limit:(long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
+- (void)saliencyFromEmailHeaders:(SGMailHeaders *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
+- (void)saliencyFromRFC822Data:(NSData *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)resolveFullDownloadRequests:(NSArray *)arg1 withCompletion:(void (^)(SGXPCResponse *))arg2;
 - (void)fullDownloadRequestBatch:(unsigned long long)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
 - (void)reportMessagesFound:(NSArray *)arg1 lost:(NSArray *)arg2 withCompletion:(void (^)(SGXPCResponse *))arg3;

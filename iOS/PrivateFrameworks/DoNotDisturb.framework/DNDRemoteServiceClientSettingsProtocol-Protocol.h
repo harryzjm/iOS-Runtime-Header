@@ -6,11 +6,10 @@
 
 #import <DoNotDisturb/NSObject-Protocol.h>
 
-@class DNDBehaviorSettings, DNDBypassSettings, DNDScheduleSettings;
+@class DNDBehaviorSettings, DNDScheduleSettings;
 
 @protocol DNDRemoteServiceClientSettingsProtocol <NSObject>
-- (void)deliverUpdatedScheduleSettings:(DNDScheduleSettings *)arg1;
-- (void)deliverUpdatedPhoneCallBypassSettings:(DNDBypassSettings *)arg1;
-- (void)deliverUpdatedBehaviorSettings:(DNDBehaviorSettings *)arg1;
+- (oneway void)deliverUpdatedScheduleSettings:(DNDScheduleSettings *)arg1;
+- (oneway void)deliverUpdatedBehaviorSettings:(DNDBehaviorSettings *)arg1;
 @end
 

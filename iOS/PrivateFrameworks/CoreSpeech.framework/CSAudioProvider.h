@@ -16,8 +16,8 @@
 #import <CoreSpeech/CSAudioStreamProviding-Protocol.h>
 #import <CoreSpeech/CSTriggerInfoProviding-Protocol.h>
 
-@class CSAudioCircularBuffer, CSAudioPreprocessor, CSAudioRecordContext, CSAudioRecorder, CSOSTransaction, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
-@protocol CSAudioAlertProvidingDelegate, CSAudioProviderDelegate, CSAudioSessionProvidingDelegate, OS_dispatch_group, OS_dispatch_queue;
+@class CSAudioCircularBuffer, CSAudioPreprocessor, CSAudioRecordContext, CSAudioRecordDeviceIndicator, CSAudioRecorder, CSAudioTimeConverter, CSMicUsageReporter, CSOSTransaction, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
+@protocol CSAudioAlertProvidingDelegate, CSAudioProviderDelegate, CSAudioSessionProvidingDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface CSAudioProvider : NSObject <CSAudioRecorderDelegate, CSAudioServerCrashMonitorDelegate, CSAudioPreprocessorDelegate, CSAudioStreamProviding, CSAudioSessionProviding, CSAudioMetricProviding, CSAudioAlertProviding, CSAudioMeterProviding, CSTriggerInfoProviding>
 {
@@ -51,13 +51,27 @@
     NSUUID *_alertPlaybackFinishTimeoutToken;
     NSUUID *_startRecordingWatchDogToken;
     NSUUID *_stopRecordingWatchDogToken;
+    NSObject<OS_dispatch_source> *_audioPacketWatchdog;
     unsigned long long _circularBufferStartHostTime;
     unsigned long long _circularBufferStartSampleCount;
+    CSAudioTimeConverter *_audioTimeConverter;
+    unsigned long long _estimatedStartHostTime;
+    long long _audioStreamType;
+    CSAudioRecordDeviceIndicator *_recordDeviceIndicator;
+    CSMicUsageReporter *_micUsageReporter;
+    unsigned long long _audioPacketDeliveryCount;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long audioPacketDeliveryCount; // @synthesize audioPacketDeliveryCount=_audioPacketDeliveryCount;
+@property(retain, nonatomic) CSMicUsageReporter *micUsageReporter; // @synthesize micUsageReporter=_micUsageReporter;
+@property(retain, nonatomic) CSAudioRecordDeviceIndicator *recordDeviceIndicator; // @synthesize recordDeviceIndicator=_recordDeviceIndicator;
+@property(nonatomic) long long audioStreamType; // @synthesize audioStreamType=_audioStreamType;
+@property(nonatomic) unsigned long long estimatedStartHostTime; // @synthesize estimatedStartHostTime=_estimatedStartHostTime;
+@property(retain, nonatomic) CSAudioTimeConverter *audioTimeConverter; // @synthesize audioTimeConverter=_audioTimeConverter;
 @property(nonatomic) unsigned long long circularBufferStartSampleCount; // @synthesize circularBufferStartSampleCount=_circularBufferStartSampleCount;
 @property(nonatomic) unsigned long long circularBufferStartHostTime; // @synthesize circularBufferStartHostTime=_circularBufferStartHostTime;
+@property(retain, nonatomic) NSObject<OS_dispatch_source> *audioPacketWatchdog; // @synthesize audioPacketWatchdog=_audioPacketWatchdog;
 @property(retain, nonatomic) NSUUID *stopRecordingWatchDogToken; // @synthesize stopRecordingWatchDogToken=_stopRecordingWatchDogToken;
 @property(retain, nonatomic) NSUUID *startRecordingWatchDogToken; // @synthesize startRecordingWatchDogToken=_startRecordingWatchDogToken;
 @property(retain, nonatomic) NSUUID *alertPlaybackFinishTimeoutToken; // @synthesize alertPlaybackFinishTimeoutToken=_alertPlaybackFinishTimeoutToken;
@@ -88,6 +102,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *loggingQueue; // @synthesize loggingQueue=_loggingQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *recordQueue; // @synthesize recordQueue=_recordQueue;
 @property(readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
+- (void)_updateRemoteDeviceIdFromAVVCIfNeeded;
 - (_Bool)_shouldHandleStartPendingOnStopping:(unsigned long long)arg1 withStopReason:(long long)arg2;
 - (void)_clearDidStopRecordingDelegateWatchDog;
 - (void)_scheduleDidStopRecordingDelegateWatchDog:(id)arg1;
@@ -95,6 +110,9 @@
 - (void)_clearDidStartRecordingDelegateWatchDog;
 - (void)_schduleDidStartRecordingDelegateWatchDogWithToken:(id)arg1;
 - (void)_scheduleDidStartRecordingDelegateWatchDog;
+- (void)_onAudioPacketWatchdogFire;
+- (void)_cancelAudioPacketWatchDog;
+- (void)_scheduleAudioPacketWatchDog;
 - (void)_holdRecordingExceptionIfNeeded:(_Bool)arg1;
 - (void)_releaseRecordingTransactionIfNeeded;
 - (void)_holdRecordingTransactionIfNeeded;
@@ -117,15 +135,16 @@
 - (_Bool)isNarrowBand;
 - (_Bool)isRecording;
 - (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3;
-- (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 atTime:(unsigned long long)arg5;
-- (void)_processAudioBuffer:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3;
+- (void)audioRecorderBufferAvailable:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 buffer:(id)arg3 remoteVAD:(id)arg4 atTime:(unsigned long long)arg5 arrivalTimestampToAudioRecorder:(unsigned long long)arg6 numberOfChannels:(int)arg7;
+- (void)_processAudioBuffer:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3 arrivalTimestampToAudioRecorder:(unsigned long long)arg4 numberOfChannels:(int)arg5;
 - (void)_fetchHistoricalAudioAndForwardToStream:(id)arg1 remoteVAD:(id)arg2;
 - (void)audioRecorderWillBeDestroyed:(id)arg1;
 - (void)audioRecorderStreamHandleIdInvalidated:(unsigned long long)arg1;
 - (void)audioRecorderDidStopRecord:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 reason:(long long)arg3;
 - (void)audioRecorderDidStartRecord:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 successfully:(_Bool)arg3 error:(id)arg4;
-- (void)audioPreprocessor:(id)arg1 hasAvailableBuffer:(id)arg2 atTime:(unsigned long long)arg3;
+- (void)audioPreprocessor:(id)arg1 hasAvailableBuffer:(id)arg2 atTime:(unsigned long long)arg3 arrivalTimestampToAudioRecorder:(unsigned long long)arg4 numberOfChannels:(int)arg5;
 - (_Bool)_shouldStopRecording;
+- (_Bool)_hasMultipleVoiceTriggerInfoAvailable:(id)arg1;
 - (_Bool)_isVoiceTriggerInfoAvailableLocally:(id)arg1;
 - (void)triggerInfoForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
@@ -140,6 +159,7 @@
 - (_Bool)playAlertSoundForType:(long long)arg1;
 - (_Bool)setAlertSoundFromURL:(id)arg1 forType:(long long)arg2;
 - (void)setAudioAlertDelegate:(id)arg1;
+- (void)setAnnounceCallsEnabled:(_Bool)arg1 withStreamHandleID:(unsigned long long)arg2;
 - (void)enableMiniDucking:(_Bool)arg1;
 - (void)setDuckOthersOption:(_Bool)arg1;
 - (_Bool)duckOthersOption;
@@ -148,10 +168,12 @@
 - (_Bool)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)_activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)activateAudioSessionWithReason:(unsigned long long)arg1 dynamicAttribute:(unsigned long long)arg2 bundleID:(id)arg3 error:(id *)arg4;
+- (void)reportsDynamicActivityAttribute:(unsigned long long)arg1 bundleId:(id)arg2;
 - (_Bool)prewarmAudioSessionWithError:(id *)arg1;
 - (void)setAudioSessionDelegate:(id)arg1;
 - (id)playbackRoute;
 - (id)recordSettings;
+- (id)audioDeviceInfo;
 - (id)recordDeviceInfo;
 - (id)recordRoute;
 - (void)cancelAudioStreamHold:(id)arg1;
@@ -159,8 +181,11 @@
 - (void)_saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(id)arg3;
 - (void)saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(id)arg3;
 - (void)saveRecordingBufferToEndFrom:(unsigned long long)arg1 toURL:(id)arg2;
+- (id)_audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 channelIdx:(unsigned long long)arg3;
 - (id)_audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
+- (id)audioChunkToEndFrom:(unsigned long long)arg1 channelIdx:(unsigned long long)arg2;
 - (id)audioChunkToEndFrom:(unsigned long long)arg1;
+- (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 channelIdx:(unsigned long long)arg3;
 - (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
 - (void)_stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -183,10 +208,12 @@
 - (id)audioStreamWithRequest:(id)arg1 streamName:(id)arg2 error:(id *)arg3;
 - (id)_audioStreamWithRequest:(id)arg1 streamName:(id)arg2 error:(id *)arg3;
 - (_Bool)setCurrentContext:(id)arg1 error:(id *)arg2;
+- (void)_setLatestRecordContext:(id)arg1;
+- (void)setLatestRecordContext:(id)arg1;
 - (void)setAudioProviderDelegate:(id)arg1;
 - (void)start;
 - (void)dealloc;
-- (id)initWithAudioStreamHandleId:(unsigned long long)arg1 audioRecorder:(id)arg2;
+- (id)initWithAudioStreamHandleId:(unsigned long long)arg1 audioStreamType:(long long)arg2 audioRecordContext:(id)arg3 audioRecorder:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

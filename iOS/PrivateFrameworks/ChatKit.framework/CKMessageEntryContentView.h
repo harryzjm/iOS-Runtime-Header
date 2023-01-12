@@ -9,14 +9,18 @@
 #import <ChatKit/CKMessageEntryRichTextViewDelegate-Protocol.h>
 #import <ChatKit/CKMessageEntryViewStyleProtocol-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <ChatKit/UITextDragDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSDictionary, NSString, UIButton, UIView, UIViewController;
+@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSDictionary, NSString, UIButton, UIFont, UIView, UIViewController;
 @protocol CKPluginEntryViewController;
 
-@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate>
+@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, UITextDragDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate>
 {
     _Bool _shouldShowSubject;
+    _Bool _shouldHideClearPluginButton;
+    _Bool _shouldStripEmojis;
+    _Bool _forceEnsureTextViewVisble;
     _Bool _needsTextLayout;
     _Bool _needsEnsureSelectionVisible;
     _Bool _needsEnsureTextViewVisible;
@@ -42,12 +46,14 @@
     NSString *_requestedPlaceholderText;
     NSString *_overridePlaceholderText;
     NSDictionary *_bizIntent;
+    UIFont *_originalFont;
 }
 
 + (id)_createSubjectView;
-+ (id)_createTextView;
++ (id)_createTextView:(_Bool)arg1;
 + (void)prewarmTextView;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIFont *originalFont; // @synthesize originalFont=_originalFont;
 @property(copy, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property(nonatomic) _Bool pendingShelfPayloadWillAnimateIn; // @synthesize pendingShelfPayloadWillAnimateIn=_pendingShelfPayloadWillAnimateIn;
 @property(retain, nonatomic) NSString *overridePlaceholderText; // @synthesize overridePlaceholderText=_overridePlaceholderText;
@@ -68,9 +74,12 @@
 @property(nonatomic) double containerViewLineWidth; // @synthesize containerViewLineWidth=_containerViewLineWidth;
 @property(nonatomic) double maxPreviewContentWidthWhenExpanded; // @synthesize maxPreviewContentWidthWhenExpanded=_maxPreviewContentWidthWhenExpanded;
 @property(nonatomic) double maxContentWidthWhenExpanded; // @synthesize maxContentWidthWhenExpanded=_maxContentWidthWhenExpanded;
+@property(nonatomic) _Bool forceEnsureTextViewVisble; // @synthesize forceEnsureTextViewVisble=_forceEnsureTextViewVisble;
+@property(nonatomic) _Bool shouldStripEmojis; // @synthesize shouldStripEmojis=_shouldStripEmojis;
 @property(nonatomic) double placeHolderWidth; // @synthesize placeHolderWidth=_placeHolderWidth;
 @property(retain, nonatomic) CKMessageEntryRichTextView *textView; // @synthesize textView=_textView;
 @property(retain, nonatomic) CKMessageEntryTextView *subjectView; // @synthesize subjectView=_subjectView;
+@property(nonatomic) _Bool shouldHideClearPluginButton; // @synthesize shouldHideClearPluginButton=_shouldHideClearPluginButton;
 @property(nonatomic) _Bool shouldShowSubject; // @synthesize shouldShowSubject=_shouldShowSubject;
 @property(nonatomic) long long style; // @synthesize style=_style;
 - (void)clearPluginButtonTapped:(id)arg1;
@@ -83,8 +92,16 @@
 - (void)ensureTextViewVisibleIfNeeded;
 - (void)ensureSelectionVisibleIfNeeded;
 - (double)_calcuateIdealMaxPluginHeight:(_Bool)arg1;
+- (id)textDraggableView:(id)arg1 itemsForDrag:(id)arg2;
 - (void)plugingPayloadDidLoad:(id)arg1;
 - (void)pluginPayloadWantsResize:(id)arg1;
+- (void)messageEntryRichTextViewCancelShowMentionSuggestions:(id)arg1;
+- (void)messageEntryRichTextView:(id)arg1 showMentionSuggestionsForEntities:(id)arg2 replacementRange:(struct _NSRange)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)messageEntryRichTextView:(id)arg1 insertMention:(id)arg2 entity:(id)arg3 replacementRange:(struct _NSRange)arg4;
+- (_Bool)messageEntryRichTextViewCanSuggestMentionForCurrentSelection:(id)arg1;
+- (void)messageEntryRichTextViewInsertionPointExitedRangeWithMention:(id)arg1;
+- (void)messageEntryRichTextView:(id)arg1 insertionPointEnteredRange:(struct _NSRange)arg2 forMention:(id)arg3 withEntities:(id)arg4;
+- (void)messageEntryRichTextView:(id)arg1 didTapCharacterAtIndex:(unsigned long long)arg2 isLongPress:(_Bool)arg3;
 - (void)messageEntryRichTextViewDidTapMention:(id)arg1 characterIndex:(double)arg2;
 - (_Bool)messageEntryRichTextView:(id)arg1 shouldRecognizeGesture:(id)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(id)arg1;
@@ -94,6 +111,7 @@
 - (_Bool)messageEntryRichTextView:(id)arg1 shouldPasteMediaObjects:(id)arg2;
 - (double)_maxWidthForTextView;
 - (double)maxWidthForPreviewImagesInMessageEntryRichTextView:(id)arg1;
+- (_Bool)textView:(id)arg1 shouldInteractWithTextAttachment:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)textViewDidChangeSelection:(id)arg1;
 - (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
@@ -117,7 +135,7 @@
 - (void)configureShelfForPluginPayload:(id)arg1;
 @property(retain, nonatomic) CKComposition *composition; // @synthesize composition=_composition;
 @property(readonly, nonatomic) _Bool shouldShowPlugin;
-- (id)initWithFrame:(struct CGRect)arg1 shouldShowSubject:(_Bool)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 shouldShowSubject:(_Bool)arg2 shouldDisableAttachments:(_Bool)arg3;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -61,6 +61,7 @@
 - (void)markAsSpamAlbumWithGUID:(NSString *)arg1 info:(NSDictionary *)arg2;
 - (void)rejectInvitationWithGUID:(NSString *)arg1 info:(NSDictionary *)arg2;
 - (void)acceptInvitationWithGUID:(NSString *)arg1 info:(NSDictionary *)arg2;
+- (void)validateInvitationToken:(NSString *)arg1 albumName:(NSString *)arg2 completionBlock:(void (^)(_Bool, NSError *))arg3;
 - (void)acceptInvitationWithToken:(NSString *)arg1 info:(NSDictionary *)arg2 completionBlock:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)unsubscribeFromAlbumWithGUID:(NSString *)arg1 info:(NSDictionary *)arg2;
 - (void)subscribeToAlbumWithGUID:(NSString *)arg1 info:(NSDictionary *)arg2;

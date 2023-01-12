@@ -11,8 +11,8 @@
 }
 
 + (id)createSessionWithDelegate:(id)arg1;
-- (id)trackSubcredential:(id)arg1 withReceipt:(id)arg2;
-- (id)startPairingWithKeyDisplayName:(id)arg1 pairingPassword:(id)arg2;
+- (id)trackSubcredential:(id)arg1 slotIdentifier:(id)arg2 confidentialMailboxData:(id)arg3 ephemeralPublicKey:(id)arg4 withReceipt:(id)arg5;
+- (id)startPairingWithKeyDisplayName:(id)arg1 pairingPassword:(id)arg2 radioTechnologies:(unsigned long long)arg3;
 - (id)probeTerminalForPairingStatus;
 - (id)prewarmWithIssuerName:(id)arg1;
 

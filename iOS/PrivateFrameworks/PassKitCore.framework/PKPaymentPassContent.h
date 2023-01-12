@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, PKDynamicLayerConfiguration, PKPassAuxiliaryRegistrationRequirements;
+@class NSArray, NSDictionary, NSString, NSURL, PKDynamicLayerConfiguration, PKFidoProfile, PKPassAuxiliaryRegistrationRequirements;
 
 @interface PKPaymentPassContent <NSSecureCoding>
 {
@@ -28,10 +28,18 @@
     NSArray *_upgradeRequests;
     PKPassAuxiliaryRegistrationRequirements *_auxiliaryRegistrationRequirements;
     PKDynamicLayerConfiguration *_dynamicLayerConfiguration;
+    long long _identityType;
+    long long _accessType;
+    long long _paymentType;
+    PKFidoProfile *_fidoProfile;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKFidoProfile *fidoProfile; // @synthesize fidoProfile=_fidoProfile;
+@property(nonatomic) long long paymentType; // @synthesize paymentType=_paymentType;
+@property(nonatomic) long long accessType; // @synthesize accessType=_accessType;
+@property(nonatomic) long long identityType; // @synthesize identityType=_identityType;
 @property(retain, nonatomic) PKDynamicLayerConfiguration *dynamicLayerConfiguration; // @synthesize dynamicLayerConfiguration=_dynamicLayerConfiguration;
 @property(retain, nonatomic) PKPassAuxiliaryRegistrationRequirements *auxiliaryRegistrationRequirements; // @synthesize auxiliaryRegistrationRequirements=_auxiliaryRegistrationRequirements;
 @property(copy, nonatomic) NSArray *upgradeRequests; // @synthesize upgradeRequests=_upgradeRequests;

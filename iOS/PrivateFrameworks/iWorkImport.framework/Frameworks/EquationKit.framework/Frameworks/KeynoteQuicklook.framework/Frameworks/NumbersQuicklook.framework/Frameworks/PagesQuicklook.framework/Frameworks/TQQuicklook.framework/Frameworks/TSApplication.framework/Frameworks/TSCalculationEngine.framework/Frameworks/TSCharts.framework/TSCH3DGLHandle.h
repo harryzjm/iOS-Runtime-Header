@@ -6,11 +6,11 @@
 
 @interface TSCH3DGLHandle
 {
-    unsigned int mValue;
+    unsigned int _value;
 }
 
 + (id)handleWithGLHandle:(unsigned int)arg1;
-@property(readonly, nonatomic) unsigned int value; // @synthesize value=mValue;
+@property(readonly, nonatomic) unsigned int value; // @synthesize value=_value;
 - (void)setValue:(unsigned int)arg1;
 - (id)description;
 - (void)dealloc;

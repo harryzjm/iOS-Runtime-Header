@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+#import <PhotosUICore/PXMutableExtendedTraitCollection-Protocol.h>
+
+@class NSObject, PXExtendedTraitCollectionSnapshot;
 @protocol PXAnonymousTraitCollection, PXAnonymousViewController;
 
-@interface PXExtendedTraitCollection
+@interface PXExtendedTraitCollection <PXMutableExtendedTraitCollection>
 {
     struct {
         _Bool viewSize;
@@ -19,6 +21,7 @@
         _Bool contentSizeCategory;
         _Bool displayScale;
         _Bool safeAreaInsets;
+        _Bool peripheryInsets;
         _Bool layoutMargins;
         _Bool userInterfaceIdiom;
         _Bool userInterfaceFeature;
@@ -46,6 +49,7 @@
     struct CGSize __viewSize;
     struct CGSize __pendingViewTransitionSize;
     struct UIEdgeInsets _safeAreaInsets;
+    struct UIEdgeInsets _peripheryInsets;
     struct UIEdgeInsets _layoutMargins;
 }
 
@@ -59,9 +63,10 @@
 @property(nonatomic, setter=_setUserInterfaceLevel:) long long userInterfaceLevel; // @synthesize userInterfaceLevel=_userInterfaceLevel;
 @property(nonatomic, setter=_setUserInterfaceStyle:) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
+@property(nonatomic) struct UIEdgeInsets peripheryInsets; // @synthesize peripheryInsets=_peripheryInsets;
 @property(nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
-@property(nonatomic, setter=_setDisplayScale:) double displayScale; // @synthesize displayScale=_displayScale;
-@property(nonatomic, setter=_setLayoutReferenceSize:) struct CGSize layoutReferenceSize; // @synthesize layoutReferenceSize=_layoutReferenceSize;
+@property(readonly, nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
+@property(nonatomic) struct CGSize layoutReferenceSize; // @synthesize layoutReferenceSize=_layoutReferenceSize;
 @property(nonatomic, setter=_setUserInterfaceFeature:) long long userInterfaceFeature; // @synthesize userInterfaceFeature=_userInterfaceFeature;
 @property(nonatomic, setter=_setUserInterfaceIdiom:) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
 @property(nonatomic) long long contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
@@ -70,12 +75,15 @@
 @property(nonatomic, setter=_setLayoutSizeSubclass:) long long layoutSizeSubclass; // @synthesize layoutSizeSubclass=_layoutSizeSubclass;
 @property(nonatomic, setter=_setLayoutSizeClass:) long long layoutSizeClass; // @synthesize layoutSizeClass=_layoutSizeClass;
 @property(retain, nonatomic, setter=_setTraitCollection:) NSObject<PXAnonymousTraitCollection> *traitCollection; // @synthesize traitCollection=_traitCollection;
+@property(readonly, nonatomic) struct CGRect fullScreenReferenceRect;
 - (void)_updateWindowOrientationIfNeeded;
 - (void)_invalidateWindowOrientation;
 - (void)_updateWindowReferenceSizeIfNeeded;
 - (void)_invalidateWindowReferenceSize;
 - (void)_updateLayoutMarginsIfNeeded;
 - (void)invalidateLayoutMargins;
+- (void)_updatePeripheryInsetsIfNeeded;
+- (void)invalidatePeripheryInsets;
 - (void)_updateSafeAreaInsetsIfNeeded;
 - (void)invalidateSafeAreaInsets;
 - (void)_updateDisplayScaleIfNeeded;
@@ -110,8 +118,11 @@
 - (id)mutableChangeObject;
 - (void)_setWindowOrientation:(long long)arg1;
 - (void)_setWindowReferenceSize:(struct CGSize)arg1;
+- (void)setDisplayScale:(double)arg1;
+@property(readonly, nonatomic) PXExtendedTraitCollection *rootExtendedTraitCollection;
 - (void)viewControllerDidMoveToParentViewController:(id)arg1;
 - (void)viewControllerViewLayoutMarginsDidChange;
+- (void)peripheryInsetsNeedsUpdate;
 - (void)viewControllerViewSafeAreaInsetsDidChange;
 - (void)viewControllerLayoutOrientationDidChange;
 - (void)viewControllerTraitCollectionDidChange;
@@ -124,10 +135,13 @@
 - (void)dealloc;
 - (id)initWithViewController:(id)arg1;
 - (id)init;
+@property(readonly, nonatomic) PXExtendedTraitCollectionSnapshot *snapshot;
+@property(readonly, nonatomic) struct CGRect platformSpecificFullScreenReferenceRect;
 - (void)unregisterObservations;
 - (void)registerObservations;
 - (double)displayScaleFromTraitCollection:(id)arg1;
 - (void)getContentSizeCategory:(out long long *)arg1;
+@property(readonly, nonatomic) struct UIEdgeInsets platformSpecificPeripheryInsets;
 - (void)getSizeClass:(out long long *)arg1 sizeSubclass:(out long long *)arg2;
 - (void)getUserInterfaceLevel:(out long long *)arg1;
 - (void)getUserInterfaceStyle:(out long long *)arg1;

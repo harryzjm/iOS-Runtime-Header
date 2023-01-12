@@ -25,8 +25,11 @@ __attribute__((visibility("hidden")))
 - (void)_stopObservingPreviewControllerAttributeChanges;
 - (void)_startObservingPreviewControllerAttributeChanges;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)generatePreviewForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setHostViewControllerProxy:(id)arg1;
+- (void)getARQLInlineProxy2WithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getARQLInlineProxyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPrinterProxyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
 - (void)previewDidDisappear:(_Bool)arg1;
@@ -36,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)previewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewControllerDidUpdateTitle:(id)arg1;
 - (void)previewControllerWantsFullScreen:(_Bool)arg1;
+- (id)previewingController;
 - (id)previewViewController;
 - (id)protocolHost;
 

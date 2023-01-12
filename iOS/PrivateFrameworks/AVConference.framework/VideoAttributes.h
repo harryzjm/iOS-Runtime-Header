@@ -18,11 +18,15 @@
     struct CGRect contentsRect;
     _Bool videoSourceScreen;
     _Bool videoMirrored;
+    CDStruct_1b6d18a9 framePresentationTime;
+    float scaleFactor;
 }
 
 + (id)cameraUIDForVideoAttributeCamera:(int)arg1;
 + (int)videoAttributeCameraForCameraUID:(id)arg1;
 + (id)videoAttributesWithVideoAttributes:(id)arg1;
+@property(nonatomic) float scaleFactor; // @synthesize scaleFactor;
+@property(nonatomic) CDStruct_1b6d18a9 framePresentationTime; // @synthesize framePresentationTime;
 @property(nonatomic) _Bool videoMirrored; // @synthesize videoMirrored;
 @property(nonatomic) _Bool videoSourceScreen; // @synthesize videoSourceScreen;
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect;
@@ -30,7 +34,9 @@
 @property(nonatomic) int camera; // @synthesize camera;
 @property(nonatomic) int orientation; // @synthesize orientation;
 @property(nonatomic) struct CGSize ratio; // @synthesize ratio;
+- (void)updateCameraStatusBits:(unsigned char)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (struct __CFDictionary *)newEncodedCFDictionary;
 - (void)decodeFromNSDictionary:(id)arg1;
 - (id)copyEncodedDictionary;
 - (id)initWithCoder:(id)arg1;
@@ -38,7 +44,7 @@
 - (id)description;
 - (_Bool)isEqualToVideoAttributes:(id)arg1;
 - (id)initWithEncodedDictionary:(id)arg1;
-- (id)initWithCameraStatusBits:(unsigned char)arg1 aspectRatio:(struct CGSize)arg2 contentsRect:(struct CGRect)arg3;
+- (id)initWithCameraStatusBits:(unsigned char)arg1 aspectRatio:(struct CGSize)arg2 contentsRect:(struct CGRect)arg3 scaleFactor:(float)arg4;
 - (id)init;
 
 @end

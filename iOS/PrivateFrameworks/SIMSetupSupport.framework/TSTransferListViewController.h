@@ -16,7 +16,9 @@
 
 @interface TSTransferListViewController : OBTableWelcomeController <UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
 {
-    _Bool _isInEligiblePlanPresent;
+    _Bool _inBuddy;
+    _Bool _isActivationPolicyMismatch;
+    _Bool _isDualeSIMCapabilityLoss;
     _Bool _receivedPendingInstallItems;
     _Bool _receivedTransferItems;
     _Bool _transferCompleted;
@@ -24,7 +26,10 @@
     _Bool _continueButtonTappedOnce;
     NSLayoutConstraint *_tableHeightAnchor;
     OBBoldTrayButton *_continueButton;
+    OBBoldTrayButton *_scanButton;
     CTDisplayPlanList *_pendingInstallItems;
+    _Bool _isScanButtonTapped;
+    _Bool _showSIMSetup;
     id <TSSIMSetupFlowDelegate> _delegate;
     NSArray *_transferItems;
     NSLayoutConstraint *_heightAnchor;
@@ -37,15 +42,21 @@
 @property(retain) UIView *tableFooter; // @synthesize tableFooter=_tableFooter;
 @property(retain, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property(retain) NSArray *transferItems; // @synthesize transferItems=_transferItems;
+@property _Bool showSIMSetup; // @synthesize showSIMSetup=_showSIMSetup;
+@property _Bool isScanButtonTapped; // @synthesize isScanButtonTapped=_isScanButtonTapped;
 @property __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)canBeShownFromSuspendedState;
 - (void)_viewMaybeCompleted;
 - (void)_maybeUpdateTableView;
 - (void)_startPendingInstall:(id)arg1;
 - (void)_startPlanTransfer:(id)arg1 withDeviceID:(id)arg2;
+- (void)_maybeDisplayPhysicalPlanConversionAlert:(_Bool)arg1 phoneNumber:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_preparePlanPendingInstall:(id)arg1 withDeviceID:(id)arg2;
 - (void)_preparePlanTransfer:(id)arg1 withDeviceID:(id)arg2;
+- (void)_installSelectedPlans;
 - (void)_continueButtonTapped;
+- (id)_calculatePlanSelection;
+- (void)_scanButtonTapped;
 - (void)_skipButtonTapped;
 - (double)_heightAnchorConstant;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
@@ -56,9 +67,11 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)updateFooterView;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithTransferItems:(id)arg1 isInEligiblePlanPresent:(_Bool)arg2 pendingInstallItems:(id)arg3;
+- (id)initWithTransferItems:(id)arg1 inBuddy:(_Bool)arg2 isActivationPolicyMismatch:(_Bool)arg3 pendingInstallItems:(id)arg4;
+- (id)initWithTransferItems:(id)arg1 inBuddy:(_Bool)arg2 isActivationPolicyMismatch:(_Bool)arg3 isDualeSIMCapabilityLoss:(_Bool)arg4 pendingInstallItems:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

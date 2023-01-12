@@ -7,7 +7,7 @@
 #import <Weather/CLLocationManagerDelegate-Protocol.h>
 #import <Weather/SynchronizedDefaultsDelegate-Protocol.h>
 
-@class NSString, WFGeocodeRequest, WeatherLocationManager, WeatherPreferences;
+@class NSDate, NSString, WFGeocodeRequest, WeatherLocationManager, WeatherPreferences;
 
 @interface WATodayAutoupdatingLocationModel <CLLocationManagerDelegate, SynchronizedDefaultsDelegate>
 {
@@ -15,9 +15,12 @@
     _Bool _locationServicesActive;
     _Bool _stopUpdateIfNeeded;
     WeatherLocationManager *_locationManager;
+    double _minTimeBetweenUpdates;
+    double _minDistanceChangeInMeters;
     WFGeocodeRequest *_geocodeRequest;
     unsigned long long _citySource;
     unsigned long long _fallbackCitySource;
+    NSDate *_lastLocationUpdateDate;
     WeatherPreferences *_preferences;
     CDUnknownBlockType _WeatherLocationManagerGenerator;
 }
@@ -25,6 +28,7 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType WeatherLocationManagerGenerator; // @synthesize WeatherLocationManagerGenerator=_WeatherLocationManagerGenerator;
 @property(retain, nonatomic) WeatherPreferences *preferences; // @synthesize preferences=_preferences;
+@property(retain, nonatomic) NSDate *lastLocationUpdateDate; // @synthesize lastLocationUpdateDate=_lastLocationUpdateDate;
 @property(nonatomic) _Bool stopUpdateIfNeeded; // @synthesize stopUpdateIfNeeded=_stopUpdateIfNeeded;
 @property(nonatomic) unsigned long long fallbackCitySource; // @synthesize fallbackCitySource=_fallbackCitySource;
 @property(nonatomic) unsigned long long citySource; // @synthesize citySource=_citySource;
@@ -37,6 +41,7 @@
 - (void)ubiquitousDefaultsDidChange:(id)arg1;
 - (void)_executeLocationUpdateForFirstWeatherCityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_executeLocationUpdateForLocalWeatherCityWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)shouldUseNewLocation:(id)arg1 oldLocation:(id)arg2;
 - (_Bool)shouldNotUseUpdatedLocation;
 - (void)_willDeliverForecastModel:(id)arg1;
 - (void)_executeLocationUpdateWithCompletion:(CDUnknownBlockType)arg1;
@@ -54,6 +59,8 @@
 - (void)dealloc;
 - (void)configureWithInitialCitySource:(unsigned long long)arg1 locationServicesActive:(_Bool)arg2;
 - (void)configureWithLocationServicesActive:(_Bool)arg1;
+@property(readonly, nonatomic) double minDistanceChangeInMeters; // @synthesize minDistanceChangeInMeters=_minDistanceChangeInMeters;
+@property(readonly, nonatomic) double minTimeBetweenUpdates; // @synthesize minTimeBetweenUpdates=_minTimeBetweenUpdates;
 - (id)init;
 - (id)initWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;
 

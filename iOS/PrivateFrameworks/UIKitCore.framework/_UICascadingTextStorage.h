@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_restoreOriginalFontAttribute;
 - (_Bool)_shouldSetOriginalFontAttribute;
 - (id)_defaultAttributes;
+@property(nonatomic) long long defaultBaseWritingDirection;
 @property(copy, nonatomic) NSDictionary *defaultAttributes;
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 longestEffectiveRange:(struct _NSRange *)arg3 inRange:(struct _NSRange)arg4;
 - (id)attribute:(id)arg1 atIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;

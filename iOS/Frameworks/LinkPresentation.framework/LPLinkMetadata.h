@@ -9,7 +9,7 @@
 #import <LinkPresentation/NSCopying-Protocol.h>
 #import <LinkPresentation/NSSecureCoding-Protocol.h>
 
-@class LPAssociatedApplicationMetadata, LPAudio, LPAudioMetadata, LPIconMetadata, LPImage, LPImageMetadata, LPSpecializationMetadata, LPVideo, LPVideoMetadata, NSArray, NSItemProvider, NSMutableArray, NSString, NSURL;
+@class LPARAsset, LPARAssetMetadata, LPAssociatedApplicationMetadata, LPAudio, LPAudioMetadata, LPIconMetadata, LPImage, LPImageMetadata, LPSourceApplicationMetadata, LPSpecializationMetadata, LPVideo, LPVideoMetadata, NSArray, NSItemProvider, NSMutableArray, NSString, NSURL, SYContentItem;
 @protocol OS_dispatch_group;
 
 @interface LPLinkMetadata : NSObject <NSCopying, NSSecureCoding>
@@ -32,6 +32,8 @@
     NSString *_creatorTwitterUsername;
     NSString *_appleContentID;
     NSString *_appleSummary;
+    LPARAsset *_arAsset;
+    LPARAssetMetadata *_arAssetMetadata;
     LPImage *_icon;
     LPIconMetadata *_iconMetadata;
     LPImage *_image;
@@ -41,12 +43,15 @@
     LPVideoMetadata *_videoMetadata;
     LPAudio *_audio;
     LPAudioMetadata *_audioMetadata;
+    NSArray *_arAssets;
     NSArray *_icons;
     NSArray *_images;
     NSArray *_videos;
     NSArray *_streamingVideos;
     NSArray *_audios;
     LPAssociatedApplicationMetadata *_associatedApplication;
+    SYContentItem *_originatingSynapseContentItem;
+    LPSourceApplicationMetadata *_sourceApplication;
     LPSpecializationMetadata *_specialization;
 }
 
@@ -55,12 +60,15 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(copy, nonatomic) LPSpecializationMetadata *specialization; // @synthesize specialization=_specialization;
+@property(copy, nonatomic) LPSourceApplicationMetadata *sourceApplication; // @synthesize sourceApplication=_sourceApplication;
+@property(copy, nonatomic) SYContentItem *originatingSynapseContentItem; // @synthesize originatingSynapseContentItem=_originatingSynapseContentItem;
 @property(copy, nonatomic) LPAssociatedApplicationMetadata *associatedApplication; // @synthesize associatedApplication=_associatedApplication;
 @property(copy, nonatomic) NSArray *audios; // @synthesize audios=_audios;
 @property(copy, nonatomic) NSArray *streamingVideos; // @synthesize streamingVideos=_streamingVideos;
 @property(copy, nonatomic) NSArray *videos; // @synthesize videos=_videos;
 @property(copy, nonatomic) NSArray *images; // @synthesize images=_images;
 @property(copy, nonatomic) NSArray *icons; // @synthesize icons=_icons;
+@property(copy, nonatomic) NSArray *arAssets; // @synthesize arAssets=_arAssets;
 @property(retain, nonatomic) LPAudioMetadata *audioMetadata; // @synthesize audioMetadata=_audioMetadata;
 @property(retain, nonatomic) LPAudio *audio; // @synthesize audio=_audio;
 @property(retain, nonatomic) LPVideoMetadata *videoMetadata; // @synthesize videoMetadata=_videoMetadata;
@@ -70,6 +78,8 @@
 @property(retain, nonatomic) LPImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) LPIconMetadata *iconMetadata; // @synthesize iconMetadata=_iconMetadata;
 @property(retain, nonatomic) LPImage *icon; // @synthesize icon=_icon;
+@property(retain, nonatomic) LPARAssetMetadata *arAssetMetadata; // @synthesize arAssetMetadata=_arAssetMetadata;
+@property(retain, nonatomic) LPARAsset *arAsset; // @synthesize arAsset=_arAsset;
 @property(copy, nonatomic) NSString *appleSummary; // @synthesize appleSummary=_appleSummary;
 @property(copy, nonatomic) NSString *appleContentID; // @synthesize appleContentID=_appleContentID;
 @property(copy, nonatomic) NSString *creatorTwitterUsername; // @synthesize creatorTwitterUsername=_creatorTwitterUsername;
@@ -84,9 +94,11 @@
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property(retain, nonatomic) NSURL *originalURL; // @synthesize originalURL=_originalURL;
+- (id)_initWithSynapseContentItem:(id)arg1;
 - (void)_decodeAllImagesWithMaximumSize:(struct CGSize)arg1;
 - (void)_populateMetadataForBackwardCompatibility;
 - (void)_enumerateAsynchronousFields:(CDUnknownBlockType)arg1;
+- (void)_enumerateSubstitutableFields:(CDUnknownBlockType)arg1;
 - (_Bool)_loadAsynchronousFieldsWithLoadGroup:(id)arg1;
 - (void)_invokePendingAsynchronousLoadUpdateHandlers;
 - (CDUnknownBlockType)_createAsynchronousLoadDeferralToken;

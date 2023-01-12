@@ -17,6 +17,7 @@
 @property(copy, nonatomic) WFLocation *location; // @synthesize location=_location;
 - (void)cleanup;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)initWithLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

@@ -10,8 +10,11 @@
 {
 }
 
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (void)getContentDestinationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)addRSSFeedItemsFromHTML:(id)arg1 baseURL:(id)arg2 encoding:(id)arg3;
 - (void)configureRuntimeResourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getURLsFromInputWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

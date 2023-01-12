@@ -13,22 +13,23 @@
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewLayoutSwipeActionsModule : NSObject <UISwipeActionHost_Internal>
 {
-    _Bool _layoutUpdatePending;
+    _Bool _layoutUpdateOrRefreshPending;
     UICollectionViewLayout *_host;
     UISwipeActionController *_swipeActionController;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool layoutUpdatePending; // @synthesize layoutUpdatePending=_layoutUpdatePending;
+@property(nonatomic) _Bool layoutUpdateOrRefreshPending; // @synthesize layoutUpdateOrRefreshPending=_layoutUpdateOrRefreshPending;
 @property(retain, nonatomic) UISwipeActionController *swipeActionController; // @synthesize swipeActionController=_swipeActionController;
 @property(nonatomic) __weak UICollectionViewLayout *host; // @synthesize host=_host;
 - (id)swipeViewManipulatorForSwipeActionController:(id)arg1;
 - (id)propertyAnimatorForCollectionViewUpdates:(id)arg1 withCustomAnimator:(id)arg2;
+- (void)_transformLayoutAttributes:(id)arg1 ofSeparatorAtBottom:(_Bool)arg2 forSwipeOccurrence:(id)arg3 isDisappearing:(_Bool)arg4;
 - (void)transformDecorationLayoutAttributes:(id)arg1 isDisappearing:(_Bool)arg2;
 - (void)transformCellLayoutAttributes:(id)arg1 isDisappearing:(_Bool)arg2;
 - (void)updateWithUpdateItems:(id)arg1;
-- (void)_invalidateSwipeActionsLayout;
-- (void)processLayoutInvalidationWithContext:(id)arg1;
+- (void)_invalidateSwipeActionsLayoutRefreshingActiveConfigurations:(_Bool)arg1;
+- (void)processLayoutInvalidationWithContext:(id)arg1 updateConfigurations:(_Bool)arg2;
 - (void)editingStateDidChange;
 - (_Bool)hasActiveSwipe;
 - (void)swipeActionController:(id)arg1 swipeOccurrence:(id)arg2 didChangeStateFrom:(long long)arg3 to:(long long)arg4;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)revealTrailingSwipeActionsForIndexPath:(id)arg1;
 - (void)swipeItemAtIndexPath:(id)arg1 direction:(unsigned long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_canSwipeItemAtIndexPath:(id)arg1;
+- (void)teardown;
 - (id)initWithHost:(id)arg1;
 
 // Remaining properties

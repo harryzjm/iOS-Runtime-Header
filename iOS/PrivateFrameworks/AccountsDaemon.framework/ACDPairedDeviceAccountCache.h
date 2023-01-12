@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)invalidate;
 - (void)_didFetchAccounts:(id)arg1 error:(id)arg2;
-- (void)accountsFromRemoteDeviceProxy:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)accountsFromRemoteDeviceProxy:(id)arg1 ignoreCache:(_Bool)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 
 @end

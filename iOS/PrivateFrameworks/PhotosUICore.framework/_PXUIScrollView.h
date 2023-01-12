@@ -12,12 +12,14 @@
 {
     _Bool _deferContentOffsetUpdates;
     _Bool _respectsContentZOrder;
+    _Bool _ignoresSafeAreaInsets;
     id <PXUIScrollViewDelegate> _px_delegate;
     id <_PXUIScrollViewFocusItemProvider> _focusItemProvider;
     struct CGPoint _pagingOriginOffset;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool ignoresSafeAreaInsets; // @synthesize ignoresSafeAreaInsets=_ignoresSafeAreaInsets;
 @property(nonatomic) _Bool respectsContentZOrder; // @synthesize respectsContentZOrder=_respectsContentZOrder;
 @property(nonatomic) _Bool deferContentOffsetUpdates; // @synthesize deferContentOffsetUpdates=_deferContentOffsetUpdates;
 @property(nonatomic) struct CGPoint pagingOriginOffset; // @synthesize pagingOriginOffset=_pagingOriginOffset;
@@ -28,6 +30,7 @@
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)_updatePagingOrigin;
 - (void)scrollRectToVisible:(struct CGRect)arg1 animated:(_Bool)arg2;
+- (struct UIEdgeInsets)safeAreaInsets;
 - (void)layoutSubviews;
 - (void)px_addSubview:(id)arg1;
 

@@ -18,6 +18,8 @@
     void *_lockStateRefcon;
     CDUnknownFunctionPointerType _masterChangeCallback;
     void *_masterChangeRefcon;
+    CDUnknownFunctionPointerType _timeSyncTimeChangeCallback;
+    void *_timeSyncTimeChangeRefcon;
     CDUnknownFunctionPointerType _gptpGrandmasterCallback;
     void *_gptpGrandmasterRefcon;
     CDUnknownFunctionPointerType _gptpGrandmasterPortCallback;
@@ -37,6 +39,7 @@
 - (void)setgPTPLocalPortNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setgPTPGrandmasterIDAndPortNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setgPTPGrandmasterNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
+- (void)setTimeSyncTimeChangeNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setMasterChangeNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setLockStateNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (id)initWithClockIdentifier:(unsigned long long)arg1;

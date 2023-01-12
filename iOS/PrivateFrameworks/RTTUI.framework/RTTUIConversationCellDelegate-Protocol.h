@@ -9,6 +9,7 @@
 @class TUCall;
 
 @protocol RTTUIConversationCellDelegate <NSObject>
+- (_Bool)isCurrentCallConnected;
 - (TUCall *)currentCall;
 @end
 

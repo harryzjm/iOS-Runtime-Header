@@ -10,11 +10,13 @@
 
 @interface GEOLogMsgStateMapUIShown : PBCodable <NSCopying>
 {
+    int _activeNavMode;
     _Bool _isAirQualityShown;
     _Bool _isLookAroundEntryIconShown;
     _Bool _isVenueExperienceShown;
     _Bool _isWeatherShown;
     struct {
+        unsigned int has_activeNavMode:1;
         unsigned int has_isAirQualityShown:1;
         unsigned int has_isLookAroundEntryIconShown:1;
         unsigned int has_isVenueExperienceShown:1;
@@ -36,6 +38,10 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsActiveNavMode:(id)arg1;
+- (id)activeNavModeAsString:(int)arg1;
+@property(nonatomic) _Bool hasActiveNavMode;
+@property(nonatomic) int activeNavMode;
 @property(nonatomic) _Bool hasIsLookAroundEntryIconShown;
 @property(nonatomic) _Bool isLookAroundEntryIconShown;
 @property(nonatomic) _Bool hasIsVenueExperienceShown;

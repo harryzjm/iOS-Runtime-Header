@@ -9,7 +9,7 @@
 #import <IDS/NSCopying-Protocol.h>
 #import <IDS/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 @protocol OS_nw_endpoint, OS_nw_parameters;
 
 @interface IDSGroupSessionUnicastParameter : NSObject <NSSecureCoding, NSCopying>
@@ -18,6 +18,7 @@
     NSString *_groupSessionID;
     unsigned long long _localParticipantID;
     unsigned long long _remoteParticipantID;
+    NSData *_salt;
     unsigned long long _connectionIndex;
     long long _dataMode;
     NSObject<OS_nw_parameters> *_parameters;
@@ -32,6 +33,7 @@
 @property(readonly, nonatomic) NSObject<OS_nw_parameters> *parameters; // @synthesize parameters=_parameters;
 @property(readonly, nonatomic) long long dataMode; // @synthesize dataMode=_dataMode;
 @property(readonly, nonatomic) unsigned long long connectionIndex; // @synthesize connectionIndex=_connectionIndex;
+@property(readonly, nonatomic) NSData *salt; // @synthesize salt=_salt;
 @property(readonly, nonatomic) unsigned long long remoteParticipantID; // @synthesize remoteParticipantID=_remoteParticipantID;
 @property(readonly, nonatomic) unsigned long long localParticipantID; // @synthesize localParticipantID=_localParticipantID;
 @property(readonly, nonatomic) NSString *groupSessionID; // @synthesize groupSessionID=_groupSessionID;
@@ -44,6 +46,7 @@
 - (void)_requestNWConnectionforIDSGroupSessionUnicastParameter:(CDUnknownBlockType)arg1;
 - (void)requestNWConnectionforIDSGroupSessionUnicastParameter:(CDUnknownBlockType)arg1;
 - (id)initWithConnectedSocket:(int)arg1 dataMode:(long long)arg2 connectionIndex:(unsigned long long)arg3;
+- (id)initWithGroupSessionID:(id)arg1 localParticipantID:(unsigned long long)arg2 remoteParticipantID:(unsigned long long)arg3 salt:(id)arg4 dataMode:(long long)arg5 connectionIndex:(unsigned long long)arg6;
 - (id)initWithGroupSessionID:(id)arg1 localParticipantID:(unsigned long long)arg2 remoteParticipantID:(unsigned long long)arg3 dataMode:(long long)arg4 connectionIndex:(unsigned long long)arg5;
 
 @end

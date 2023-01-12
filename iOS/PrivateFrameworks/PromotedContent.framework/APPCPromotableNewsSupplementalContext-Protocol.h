@@ -69,6 +69,8 @@
 @property(nonatomic, readonly) NSString *nextArticleArticleId;
 @property(nonatomic, readonly) NSString *currentArticleArticleId;
 @property(nonatomic, readonly) NSString *creativeType;
+@property(nonatomic, readonly) long long requestedAdType;
+@property(nonatomic, readonly) NSDictionary *anfComponentMetadata;
 @property(nonatomic, readonly) NSString *advertisementType;
 @end
 

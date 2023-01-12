@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_b1e182a8)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_b1e182a8)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) float frame_duration;
 @property(readonly, nonatomic) NSArray *acoustic_feature_per_frame;
 - (id)copyWithZone:(struct _NSZone *)arg1;

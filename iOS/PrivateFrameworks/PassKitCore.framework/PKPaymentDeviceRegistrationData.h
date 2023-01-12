@@ -13,6 +13,7 @@
 @interface PKPaymentDeviceRegistrationData : NSObject <NSSecureCoding>
 {
     _Bool _devSigned;
+    NSString *_authorizationHeader;
     NSString *_signedAuthToken;
     NSDictionary *_secureElementStateInformation;
     NSString *_secureElementIdentifier;
@@ -38,6 +39,7 @@
 @property(copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 @property(copy, nonatomic) NSDictionary *secureElementStateInformation; // @synthesize secureElementStateInformation=_secureElementStateInformation;
 @property(copy, nonatomic) NSString *signedAuthToken; // @synthesize signedAuthToken=_signedAuthToken;
+@property(copy, nonatomic) NSString *authorizationHeader; // @synthesize authorizationHeader=_authorizationHeader;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

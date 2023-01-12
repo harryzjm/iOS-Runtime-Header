@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, WFContentCollection, WFWorkflow, WFWorkflowRunningContext;
+@class NSDate, NSDictionary, NSString, WFContentAttributionTracker, WFContentCollection, WFContentItemCache, WFControlFlowAttributionTracker, WFWorkflow, WFWorkflowRunningContext;
 
 @interface WFWorkflowControllerState : NSObject <NSSecureCoding>
 {
@@ -18,15 +18,25 @@
     NSDictionary *_variables;
     unsigned long long _currentActionIndex;
     WFWorkflowRunningContext *_runningContext;
+    NSDate *_startDate;
     long long _numberOfDialogsPresented;
     NSString *_currentRunSource;
+    unsigned long long _outputBehavior;
+    WFContentAttributionTracker *_currentActionContentAttributionTracker;
+    WFContentItemCache *_contentItemCache;
+    WFControlFlowAttributionTracker *_flowTracker;
 }
 
 + (void)getStateFromURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) WFControlFlowAttributionTracker *flowTracker; // @synthesize flowTracker=_flowTracker;
+@property(readonly, nonatomic) WFContentItemCache *contentItemCache; // @synthesize contentItemCache=_contentItemCache;
+@property(readonly, nonatomic) WFContentAttributionTracker *currentActionContentAttributionTracker; // @synthesize currentActionContentAttributionTracker=_currentActionContentAttributionTracker;
+@property(readonly, nonatomic) unsigned long long outputBehavior; // @synthesize outputBehavior=_outputBehavior;
 @property(readonly, nonatomic) NSString *currentRunSource; // @synthesize currentRunSource=_currentRunSource;
 @property(readonly, nonatomic) long long numberOfDialogsPresented; // @synthesize numberOfDialogsPresented=_numberOfDialogsPresented;
+@property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, nonatomic) WFWorkflowRunningContext *runningContext; // @synthesize runningContext=_runningContext;
 @property(readonly, nonatomic) unsigned long long currentActionIndex; // @synthesize currentActionIndex=_currentActionIndex;
 @property(readonly, nonatomic) NSDictionary *variables; // @synthesize variables=_variables;
@@ -36,7 +46,7 @@
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithWorkflow:(id)arg1 variables:(id)arg2 currentActionIndex:(unsigned long long)arg3 runningContext:(id)arg4 currentInput:(id)arg5 currentProcessedParameters:(id)arg6 currentRunSource:(id)arg7 numberOfDialogsPresented:(long long)arg8;
+- (id)initWithWorkflow:(id)arg1 variables:(id)arg2 currentActionIndex:(unsigned long long)arg3 runningContext:(id)arg4 currentInput:(id)arg5 currentProcessedParameters:(id)arg6 startDate:(id)arg7 currentRunSource:(id)arg8 numberOfDialogsPresented:(long long)arg9 outputBehavior:(unsigned long long)arg10 contentAttributionTracker:(id)arg11 contentItemCache:(id)arg12 flowTracker:(id)arg13;
 
 @end
 

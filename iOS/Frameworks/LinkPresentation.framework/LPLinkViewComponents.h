@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarView, LPComponentView, LPDomainNameIndicator, LPTextView, UIView;
+@class LPCaptionBarView, LPComponentView, LPContactsBadgeView, LPDomainNameIndicator, LPImageView, LPQuoteView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface LPLinkViewComponents : NSObject
@@ -16,18 +16,23 @@ __attribute__((visibility("hidden")))
     UIView *_mediaBackground;
     LPCaptionBarView *_mediaTopCaptionBar;
     LPCaptionBarView *_mediaBottomCaptionBar;
-    LPTextView *_quote;
+    LPQuoteView *_quote;
+    LPImageView *_backgroundImage;
+    LPContactsBadgeView *_contactsBadge;
     LPDomainNameIndicator *_domainNameIndicator;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) LPDomainNameIndicator *domainNameIndicator; // @synthesize domainNameIndicator=_domainNameIndicator;
-@property(retain, nonatomic) LPTextView *quote; // @synthesize quote=_quote;
+@property(retain, nonatomic) LPContactsBadgeView *contactsBadge; // @synthesize contactsBadge=_contactsBadge;
+@property(retain, nonatomic) LPImageView *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
+@property(retain, nonatomic) LPQuoteView *quote; // @synthesize quote=_quote;
 @property(retain, nonatomic) LPCaptionBarView *mediaBottomCaptionBar; // @synthesize mediaBottomCaptionBar=_mediaBottomCaptionBar;
 @property(retain, nonatomic) LPCaptionBarView *mediaTopCaptionBar; // @synthesize mediaTopCaptionBar=_mediaTopCaptionBar;
 @property(retain, nonatomic) UIView *mediaBackground; // @synthesize mediaBackground=_mediaBackground;
 @property(retain, nonatomic) LPComponentView *media; // @synthesize media=_media;
 @property(retain, nonatomic) LPCaptionBarView *captionBar; // @synthesize captionBar=_captionBar;
+- (void)applyToAllViews:(CDUnknownBlockType)arg1;
 
 @end
 

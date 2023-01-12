@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     PUAssetHidingHelper *_assetHidingHelper;
 }
 
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 actionManager:(id)arg2;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool isHiding; // @synthesize isHiding=_isHiding;

@@ -6,9 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NCNotificationManagementViewPresenter, NCNotificationRequest, NCNotificationSectionSettings, NSString;
+@class NCNotificationManagementViewPresenter, NCNotificationRequest, NCNotificationSectionSettings, NSDate, NSString;
 
 @protocol NCNotificationManagementViewPresenterDelegate <NSObject>
+- (void)notificationManagementViewPresenter:(NCNotificationManagementViewPresenter *)arg1 setAllowsTimeSensitive:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (void)notificationManagementViewPresenter:(NCNotificationManagementViewPresenter *)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (void)notificationManagementViewPresenter:(NCNotificationManagementViewPresenter *)arg1 setDeliverQuietly:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
 - (void)notificationManagementViewPresenter:(NCNotificationManagementViewPresenter *)arg1 setAllowsNotifications:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
@@ -17,5 +18,7 @@
 @optional
 - (void)notificationManagementViewPresenterDidDismissManagementView:(NCNotificationManagementViewPresenter *)arg1;
 - (void)notificationManagementViewPresenterWillPresentManagementView:(NCNotificationManagementViewPresenter *)arg1;
+- (void)notificationManagementViewPresenter:(NCNotificationManagementViewPresenter *)arg1 setScheduledDelivery:(_Bool)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withSectionIdentifier:(NSString *)arg4;
+- (void)notificationManagementViewPresenter:(NCNotificationManagementViewPresenter *)arg1 setMuted:(_Bool)arg2 untilDate:(NSDate *)arg3 forNotificationRequest:(NCNotificationRequest *)arg4 withSectionIdentifier:(NSString *)arg5 threadIdentifier:(NSString *)arg6;
 @end
 

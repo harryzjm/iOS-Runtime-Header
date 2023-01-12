@@ -26,6 +26,9 @@
 - (void)_invokeSaveCompletionBlock;
 - (void)_noteDidCompleteSavingItem:(id)arg1 error:(id)arg2;
 - (void)_didCompleteSavingItem:(id)arg1 error:(id)arg2 contextInfo:(void *)arg3;
+- (void)_saveVideoAtPath:(id)arg1;
+- (void)_saveImageData:(id)arg1;
+- (void)_saveImage:(id)arg1;
 - (void)beginSavingItem:(id)arg1;
 - (void)beginSaving;
 - (id)initWithItems:(id)arg1 saveCompletionBlock:(CDUnknownBlockType)arg2;

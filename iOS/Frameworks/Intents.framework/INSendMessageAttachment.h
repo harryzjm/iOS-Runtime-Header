@@ -9,7 +9,7 @@
 #import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INJSONSerializable-Protocol.h>
 
-@class INFile, NSString, NSURL;
+@class INFile, NSString, NSURL, PHAsset;
 
 @interface INSendMessageAttachment : NSObject <INJSONSerializable, INEnumerable>
 {
@@ -17,15 +17,22 @@
     INFile *_audioMessageFile;
     INFile *_file;
     NSURL *_speechDataURL;
+    NSURL *_sharedLink;
+    NSString *_phAssetId;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)attachmentWithPHAssetId:(id)arg1;
++ (id)attachmentWithPHAsset:(id)arg1;
++ (id)attachmentWithSharedLink:(id)arg1;
 + (id)attachmentWithAudioMessageFile:(id)arg1;
 + (id)attachmentWithSpeechDataURL:(id)arg1;
 + (id)attachmentWithFile:(id)arg1;
 + (id)attachmentWithCurrentLocation;
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *phAssetId; // @synthesize phAssetId=_phAssetId;
+@property(readonly, copy, nonatomic) NSURL *sharedLink; // @synthesize sharedLink=_sharedLink;
 @property(readonly, copy, nonatomic) NSURL *speechDataURL; // @synthesize speechDataURL=_speechDataURL;
 @property(readonly, copy, nonatomic) INFile *file; // @synthesize file=_file;
 @property(readonly, nonatomic) _Bool currentLocation; // @synthesize currentLocation=_currentLocation;
@@ -36,7 +43,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)_initWithCurrentLocation:(_Bool)arg1 file:(id)arg2 speechDataURL:(id)arg3 audioMessageFile:(id)arg4;
+@property(readonly, nonatomic) PHAsset *phAsset;
+- (id)_initWithCurrentLocation:(_Bool)arg1 file:(id)arg2 speechDataURL:(id)arg3 audioMessageFile:(id)arg4 sharedLink:(id)arg5 phAssetId:(id)arg6;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (_Bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 

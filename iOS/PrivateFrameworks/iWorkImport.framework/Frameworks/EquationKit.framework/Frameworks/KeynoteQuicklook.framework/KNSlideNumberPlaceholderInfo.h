@@ -8,8 +8,12 @@
 {
 }
 
++ (_Bool)wantsTitleAndCaptionUUIDs;
 - (void)acceptVisitor:(id)arg1;
+- (id)typeName;
 - (id)textureDeliveryStylesLocalized:(_Bool)arg1 animationFilter:(id)arg2;
+- (_Bool)allowsTitle;
+- (_Bool)allowsCaption;
 - (id)copyToInstantiateMasterPlaceholder;
 - (id)instructionalText;
 - (_Bool)isSelectable;

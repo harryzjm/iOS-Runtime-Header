@@ -6,25 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class AFInstanceContext, NSString;
 @protocol OS_dispatch_queue;
 
 @interface AFMediaRemoteDeviceInfo : NSObject
 {
-    NSString *_groupIdentifier;
-    _Bool _lastFetchSucceeded;
     NSString *_routeIdentifier;
+    NSString *_groupIdentifier;
+    AFInstanceContext *_instanceContext;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
++ (id)localDeviceInfo;
 + (id)currentDevice;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool lastFetchSucceeded; // @synthesize lastFetchSucceeded=_lastFetchSucceeded;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
-@property(copy, nonatomic) NSString *routeIdentifier; // @synthesize routeIdentifier=_routeIdentifier;
 - (void)getGroupIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRouteIdentifierWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_updateDeviceInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getMRDeviceInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_updateWithRouteIdentifier:(id)arg1 groupIdentifier:(id)arg2;
 - (void)_activeDeviceInfoChanged:(id)arg1;
 - (id)init;
 

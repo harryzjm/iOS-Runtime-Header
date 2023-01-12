@@ -15,7 +15,8 @@
     NSExtensionContext *_context;
 }
 
-@property NSExtensionContext *context; // @synthesize context=_context;
+- (void).cxx_destruct;
+@property(retain) NSExtensionContext *context; // @synthesize context=_context;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 
 // Remaining properties

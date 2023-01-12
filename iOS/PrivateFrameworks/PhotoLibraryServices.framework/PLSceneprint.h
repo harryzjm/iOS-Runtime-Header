@@ -13,7 +13,7 @@
 + (id)entityName;
 
 // Remaining properties
-@property(retain, nonatomic) PLAdditionalAssetAttributes *additionalAttributes; // @dynamic additionalAttributes;
+@property(retain, nonatomic) PLAdditionalAssetAttributes *additionalAssetAttributes; // @dynamic additionalAssetAttributes;
 @property(retain, nonatomic) NSData *data; // @dynamic data;
 
 @end

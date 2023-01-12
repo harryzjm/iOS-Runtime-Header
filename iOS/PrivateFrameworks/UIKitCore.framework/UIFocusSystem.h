@@ -10,15 +10,22 @@
 #import <UIKitCore/_UIFocusEnvironmentInternal-Protocol.h>
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 
-@class NSArray, NSString, UIFocusAnimationCoordinator, UIFocusMovementAction, UIResponder, UIView, _UIFocusAnimationCoordinatorManager, _UIFocusCastingController, _UIFocusGroupHistory, _UIFocusItemFrameReporter, _UIFocusSoundGenerator, _UIFocusUpdateRequest;
-@protocol UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIFocusHapticFeedbackGenerator, _UIFocusRegionContainer, _UIFocusSystemDelegate;
+@class NSArray, NSString, UIFocusAnimationCoordinator, UIFocusMovementAction, UIResponder, UIView, _UIFocusAnimationCoordinatorManager, _UIFocusCastingController, _UIFocusEffectManager, _UIFocusEventDelivery, _UIFocusGroupHistory, _UIFocusItemFrameReporter, _UIFocusSoundGenerator, _UIFocusSystemSceneComponent, _UIFocusUpdateRequest, _UIFocusUpdateThrottle;
+@protocol UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, _UIFocusBehavior, _UIFocusHapticFeedbackGenerator, _UIFocusRegionContainer, _UIFocusSystemDelegate;
 
 @interface UIFocusSystem : NSObject <_UIFocusEnvironmentInternal, _UIFocusCastingControllerDelegate, _UIFocusEnvironmentPrivate>
 {
+    _UIFocusSystemSceneComponent *_sceneComponent;
     _UIFocusUpdateRequest *_pendingFocusUpdateRequest;
+    id <UIFocusItem> _deferredFocusUpdateTarget;
+    id <UIFocusEnvironment> _appearingFocusEnvironment;
+    id <UIFocusEnvironment> _disappearingFocusEnvironment;
     struct {
         unsigned int shouldIgnoreFocusUpdateIfNeeded:1;
         unsigned int isPendingFocusRestoration:1;
+        unsigned int isPostponingUpdates:1;
+        unsigned int hasSeenFocusedItem:1;
+        unsigned int wantsModernRing:1;
         unsigned int delegateRespondsToPreferredFocusEnvironments:1;
         unsigned int delegateRespondsToPrefersDeferralForFocusUpdateInContext:1;
         unsigned int delegateRespondsToShouldRestoreFocusInContext:1;
@@ -28,10 +35,14 @@
     } _flags;
     _Bool _waitingForFocusMovementAction;
     _Bool _enabled;
+    _UIFocusEventDelivery *_eventDelivery;
     id <UIFocusItem> _focusedItem;
     _UIFocusGroupHistory *_focusGroupHistory;
+    _UIFocusEffectManager *_focusEffectManager;
+    id <UIFocusEnvironment> _deepestPreferredFocusEnvironment;
     _UIFocusAnimationCoordinatorManager *_focusAnimationCoordinatorManager;
     UIFocusMovementAction *_pendingFocusMovementAction;
+    _UIFocusUpdateThrottle *_updateThrottle;
     id <_UIFocusSystemDelegate> _delegate;
     id <UIFocusItem> _previousFocusedItem;
     _UIFocusSoundGenerator *_focusSoundGenerator;
@@ -52,13 +63,20 @@
 @property(retain, nonatomic, getter=_focusSoundGenerator, setter=_setFocusSoundGenerator:) _UIFocusSoundGenerator *focusSoundGenerator; // @synthesize focusSoundGenerator=_focusSoundGenerator;
 @property(readonly, nonatomic, getter=_previousFocusedItem) __weak id <UIFocusItem> previousFocusedItem; // @synthesize previousFocusedItem=_previousFocusedItem;
 @property(nonatomic, getter=_delegate, setter=_setDelegate:) __weak id <_UIFocusSystemDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) _UIFocusUpdateThrottle *updateThrottle; // @synthesize updateThrottle=_updateThrottle;
 @property(retain, nonatomic) UIFocusMovementAction *pendingFocusMovementAction; // @synthesize pendingFocusMovementAction=_pendingFocusMovementAction;
 @property(nonatomic) _Bool waitingForFocusMovementAction; // @synthesize waitingForFocusMovementAction=_waitingForFocusMovementAction;
 @property(retain, nonatomic, getter=_focusAnimationCoordinatorManager, setter=_setFocusAnimationCoordinatorManager:) _UIFocusAnimationCoordinatorManager *focusAnimationCoordinatorManager; // @synthesize focusAnimationCoordinatorManager=_focusAnimationCoordinatorManager;
+@property(readonly, nonatomic) _UIFocusEventDelivery *_eventDelivery; // @synthesize _eventDelivery;
 @property(readonly, copy) NSString *description;
+- (void)_updateFocusEffectForItem:(id)arg1;
+- (void)_requestFocusEffectUpdateToEnvironment:(id)arg1;
+- (void)_updateWantsModernRing;
+- (void)_updateFocusUpdateThrottle;
+- (void)_focusBehaviorDidChange:(id)arg1;
 - (void)_didFinishUpdatingFocusInContext:(id)arg1;
 - (_Bool)_shouldRestoreFocusInContext:(id)arg1;
-- (_Bool)_prefersDeferralForFocusUpdateInContext:(id)arg1;
+- (void)_uiktest_disableThrottle;
 - (void)_uiktest_disableFocusDeferral;
 - (void)_uiktest_setPreviousFocusedItem:(id)arg1;
 - (_Bool)_uiktest_updateFocusToItem:(id)arg1;
@@ -69,43 +87,69 @@
 @property(readonly, nonatomic, getter=_hostFocusSystem) __weak UIFocusSystem *hostFocusSystem;
 - (_Bool)_postsFocusUpdateNotifications;
 - (_Bool)_requiresFocusedItemToHaveContainingView;
+@property(readonly, nonatomic) __weak id <UIFocusEnvironment> _deepestPreferredFocusEnvironment; // @synthesize _deepestPreferredFocusEnvironment;
+- (void)_firstResponderDidUpdateFromResponder:(id)arg1;
+- (void)_syncResponderWithFocusUpdateContext:(id)arg1;
 - (void)_handleFocusMovementAction:(id)arg1;
 - (void)_cancelPendingFocusRestoration;
 - (void)_setNeedsFocusRestoration;
+- (void)_reevaluateLockedEnvironments;
 - (id)_contextForUpdateToEnvironment:(id)arg1 withAnimationCoordinator:(id)arg2 allowsFocusRestoration:(_Bool)arg3;
 - (id)_contextForUpdateToEnvironment:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)_simulatedProgrammaticFocusUpdateToEnvironment:(id)arg1;
+- (void)_dropFocusAndStartDeferring:(_Bool)arg1 suppressUpdate:(_Bool)arg2;
 - (_Bool)_updateFocusImmediatelyToEnvironment:(id)arg1;
+- (_Bool)_updateFocusImmediatelyToEnvironment:(id)arg1 startDeferringOnLostFocus:(_Bool)arg2 suppressLostFocusUpdate:(_Bool)arg3;
 - (_Bool)_updateFocusImmediatelyWithContext:(id)arg1;
 - (void)_performWithoutFocusUpdates:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic, getter=_disappearingFocusEnvironment) id <UIFocusEnvironment> disappearingFocusEnvironment;
 - (void)_sendNotificationsForFocusUpdateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_sendDidUpdateFocusNotificationsInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_sendWillUpdateFocusNotificationsInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)_updateFocusWithContext:(id)arg1 report:(id)arg2;
 - (void)updateFocusIfNeeded;
-- (_Bool)_isEnvironmentEligibleForFocusUpdate:(id)arg1 shouldResetFocus:(_Bool *)arg2 debugReport:(id)arg3;
+- (_Bool)_isEnvironmentEligibleForFocusUpdate:(id)arg1 fallbackToEnvironment:(id *)arg2 debugReport:(id)arg3;
 - (_Bool)_debug_isEnvironmentEligibleForFocusUpdate:(id)arg1 debugReport:(id)arg2;
+- (id)_topEnvironment;
 - (id)_validatedPendingFocusUpdateRequest;
+- (id)_validatedAppearingFocusEnvironmentRequest;
+- (void)_focusEnvironmentDidAppear:(id)arg1;
 - (void)_focusEnvironmentWillDisappear:(id)arg1;
 - (void)_requestFocusUpdate:(id)arg1;
 - (void)requestFocusUpdateToEnvironment:(id)arg1;
+- (_Bool)_prefersFocusContainment;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 - (void)setNeedsFocusUpdate;
 @property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly, nonatomic, getter=_focusMapContainer) __weak id <_UIFocusRegionContainer> focusMapContainer;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
+- (void)_hasSeenFocusedItemDidExpire;
+- (void)_startDeferringFocusIfSupported;
+- (void)_resetFocusDeferral;
+- (void)_tickHasSeenFocusedItemTimer:(_Bool)arg1;
+- (_Bool)_performDeferredFocusUpdateIfAvailable;
+- (id)_configureFocusDeferralIfNecessaryForContext:(id)arg1;
+- (_Bool)_prefersDeferralForFocusUpdateInContext:(id)arg1;
+@property(readonly, nonatomic, getter=_focusEffectManager) _UIFocusEffectManager *focusEffectManager; // @synthesize focusEffectManager=_focusEffectManager;
 @property(readonly, nonatomic, getter=_focusGroupHistory) _UIFocusGroupHistory *focusGroupHistory; // @synthesize focusGroupHistory=_focusGroupHistory;
 @property(readonly, nonatomic, getter=_currentFocusAnimationCoordinator) UIFocusAnimationCoordinator *currentFocusAnimationCoordinator;
 @property(readonly, nonatomic, getter=_focusedView) __weak UIView *focusedView;
+- (_Bool)_hasValidItemForCurrentDeferralState;
+- (id)_focusedItemOrDeferralTarget;
 @property(readonly, nonatomic) __weak id <UIFocusItem> focusedItem; // @synthesize focusedItem=_focusedItem;
 - (void)_enableWithoutFocusRestoration;
 - (void)_setEnabled:(_Bool)arg1 withAnimationCoordinator:(id)arg2;
-- (id)_initWithFocusEnabled:(_Bool)arg1;
+@property(readonly, nonatomic, getter=_focusBehavior) id <_UIFocusBehavior> focusBehavior;
+- (id)_sceneComponent;
+- (id)_initWithFocusEnabled:(_Bool)arg1 sceneComponent:(id)arg2;
 - (id)_init;
 - (id)init;
+- (_Bool)_safari_moveFocusToPreviousGroup;
+- (_Bool)_safari_moveFocusToNextGroup;
 
 // Remaining properties
 @property(nonatomic) _Bool areChildrenFocused;

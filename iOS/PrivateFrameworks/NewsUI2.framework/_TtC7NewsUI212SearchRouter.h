@@ -16,6 +16,7 @@
     MISSING_TYPE *contextBuilder;
     MISSING_TYPE *navigator;
     MISSING_TYPE *router;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

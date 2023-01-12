@@ -14,15 +14,15 @@
 @interface HUSceneActionGridViewController <HFActionSetValueSourceDelegate, HUServiceActionControlsViewControllerDelegate, HUServiceGridItemManagerDelegate, HUContainedServiceGridViewControllerDelegate>
 {
     HFActionSetBuilder *_actionSetBuilder;
-    NSSet *_blacklistedServices;
-    NSSet *_whitelistedServices;
+    NSSet *_denylistedServices;
+    NSSet *_allowlistedServices;
     HUContainedServicesGridViewController *_presentedServiceGroupDetailsViewController;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak HUContainedServicesGridViewController *presentedServiceGroupDetailsViewController; // @synthesize presentedServiceGroupDetailsViewController=_presentedServiceGroupDetailsViewController;
-@property(copy, nonatomic) NSSet *whitelistedServices; // @synthesize whitelistedServices=_whitelistedServices;
-@property(copy, nonatomic) NSSet *blacklistedServices; // @synthesize blacklistedServices=_blacklistedServices;
+@property(copy, nonatomic) NSSet *allowlistedServices; // @synthesize allowlistedServices=_allowlistedServices;
+@property(copy, nonatomic) NSSet *denylistedServices; // @synthesize denylistedServices=_denylistedServices;
 @property(readonly, nonatomic) HFActionSetBuilder *actionSetBuilder; // @synthesize actionSetBuilder=_actionSetBuilder;
 - (void)_removeActionsInServiceActionItem:(id)arg1;
 - (id)detailsViewControllerForContainedServiceGridViewController:(id)arg1 item:(id)arg2;

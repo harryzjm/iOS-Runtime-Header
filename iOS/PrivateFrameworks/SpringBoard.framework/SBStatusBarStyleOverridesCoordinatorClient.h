@@ -11,17 +11,17 @@
 
 @interface SBStatusBarStyleOverridesCoordinatorClient : NSObject
 {
-    int _registeredOverrides;
     NSXPCConnection *_connection;
+    unsigned long long _registeredOverrides;
     NSObject<OS_dispatch_queue> *_registeredOverridesQueue;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *registeredOverridesQueue; // @synthesize registeredOverridesQueue=_registeredOverridesQueue;
-@property(nonatomic) int registeredOverrides; // @synthesize registeredOverrides=_registeredOverrides;
+@property(nonatomic) unsigned long long registeredOverrides; // @synthesize registeredOverrides=_registeredOverrides;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void)acquireAssertionAndDeliverTapContextToClient:(id)arg1;
-- (id)initWithConnection:(id)arg1 andStyleOverrides:(int)arg2;
+- (id)initWithConnection:(id)arg1 andStyleOverrides:(unsigned long long)arg2;
 
 @end
 

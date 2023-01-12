@@ -4,40 +4,50 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowKit/WFActionUserInterface.h>
+#import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
+#import <ActionKitUI/AVCapturePhotoCaptureDelegate-Protocol.h>
 #import <ActionKitUI/UIImagePickerControllerDelegate-Protocol.h>
 #import <ActionKitUI/UINavigationControllerDelegate-Protocol.h>
 #import <ActionKitUI/WFTakePhotoActionUserInterface-Protocol.h>
 
-@class NSMutableArray, NSString, WFContentCollection;
+@class AVCaptureSession, NSMutableArray, NSString, WFContentCollection;
 
 __attribute__((visibility("hidden")))
-@interface WFTakePhotoActionUIKitUserInterface : WFActionUserInterface <UIImagePickerControllerDelegate, UINavigationControllerDelegate, WFTakePhotoActionUserInterface>
+@interface WFTakePhotoActionUIKitUserInterface : WFEmbeddableActionUserInterface <UIImagePickerControllerDelegate, UINavigationControllerDelegate, WFTakePhotoActionUserInterface, AVCapturePhotoCaptureDelegate>
 {
+    _Bool _showCameraPreview;
     CDUnknownBlockType _completionHandler;
     WFContentCollection *_outputCollection;
     unsigned long long _remainingPhotos;
     NSMutableArray *_outputImages;
+    AVCaptureSession *_session;
 }
 
 + (long long)cameraDeviceFromString:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) AVCaptureSession *session; // @synthesize session=_session;
 @property(retain, nonatomic) NSMutableArray *outputImages; // @synthesize outputImages=_outputImages;
 @property(nonatomic) unsigned long long remainingPhotos; // @synthesize remainingPhotos=_remainingPhotos;
 @property(retain, nonatomic) WFContentCollection *outputCollection; // @synthesize outputCollection=_outputCollection;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(nonatomic) _Bool showCameraPreview; // @synthesize showCameraPreview=_showCameraPreview;
+- (void)captureOutput:(id)arg1 didFinishProcessingPhoto:(id)arg2 error:(id)arg3;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
+- (void)takePhotoOnDevice:(id)arg1 shortcutAttribution:(id)arg2;
+- (_Bool)prefersModalPresentation;
 - (void)finishWithError:(id)arg1;
 - (void)cancelPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)showWithPhotoCount:(unsigned long long)arg1 device:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)showWithCameraPreview:(_Bool)arg1 photoCount:(unsigned long long)arg2 device:(id)arg3 shortcutAttribution:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)initWithUserInterfaceType:(id)arg1 attribution:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) NSString *userInterfaceType;
 
 @end
 

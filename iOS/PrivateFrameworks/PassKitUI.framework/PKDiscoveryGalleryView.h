@@ -11,7 +11,7 @@
 #import <PassKitUI/PKPGSVSectionSubheaderView-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PKDiscoveryCardView, PKDiscoveryDataSource, UIImage, UIPageControl, UIScrollView;
+@class NSArray, NSMutableArray, NSString, PKDiscoveryCardView, PKDiscoveryCardViewTemplateInformation, PKDiscoveryDataSource, UIImage, UIPageControl, UIScrollView;
 @protocol PKPGSVSectionSubheaderDelegate;
 
 @interface PKDiscoveryGalleryView : UIView <PKDiscoveryCardViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPGSVSectionSubheaderView>
@@ -33,11 +33,14 @@
         unsigned int barcodePassWelcomeCardIsDismissable:1;
         unsigned int hasDiscoveryCards:1;
     } _layoutState;
-    _Bool _welcomeCardStateIsDirty;
+    _Bool _cardSizeStateIsDirty;
     NSString *_lastReportedDiscoveryItemIdentifier;
     CDStruct_973bafd3 _foregroundState;
     double _lastTimeForegroundActive;
     _Bool _articleLayoutsUpdatedAfterEnteringForegroundActive;
+    PKDiscoveryCardViewTemplateInformation *_cardTemplateInformation;
+    PKDiscoveryCardViewTemplateInformation *_welcomeCardTemplateInformation;
+    unsigned char _visibilityState;
     _Bool _animatingCard;
     PKDiscoveryCardView *_pressedDiscoveryCardView;
     PKDiscoveryDataSource *_dataSource;
@@ -56,13 +59,14 @@
 - (id)_createPaymentWelcomeCardView;
 - (void)setSubheaderDelegate:(id)arg1;
 - (_Bool)needsUpdate;
-- (void)discoveryCardViewCTATapped:(id)arg1 callToAction:(id)arg2;
+- (void)discoveryCardViewCTATapped:(id)arg1 callToAction:(id)arg2 itemIdentifier:(id)arg3;
 - (void)discoveryCardViewRemoveTapped:(id)arg1;
 - (void)discoveryCardViewTapped:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+@property(readonly, nonatomic) NSString *frontmostItemIdentifier;
 - (unsigned long long)displayIndex;
 - (void)_reportCurrentDiscoveryCardToDiscoveryService;
 - (void)_updatePageControlVisibilityWithDelay:(double)arg1;
@@ -79,6 +83,7 @@
 - (void)_updateCardViewsAnimated:(_Bool)arg1 overrideFrontmostCardToIdentifier:(id)arg2;
 - (void)_updateCardViewsAnimated:(_Bool)arg1;
 - (void)_updateDiscoveryCardViewsForUpdatedArticleLayouts:(id)arg1 overrideFrontmostCardToIdentifier:(id)arg2 animated:(_Bool)arg3;
+- (void)_updateCardSizeIfNecessary;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (void)updateForPKPGSVLayoutState:(CDStruct_d8808cea)arg1;
 - (id)cardViewForCardWithItemIdentifier:(id)arg1;
@@ -86,7 +91,7 @@
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 cardTemplateInformation:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

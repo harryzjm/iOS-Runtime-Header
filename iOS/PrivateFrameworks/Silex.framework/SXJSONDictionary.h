@@ -27,6 +27,7 @@
 @property(readonly, nonatomic) CDUnknownBlockType objectValueClassBlock; // @synthesize objectValueClassBlock=_objectValueClassBlock;
 - (id)description;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (id)JSONRepresentation;
 - (id)jsonDictionary;
 - (id)NSDictionary;
 - (id)allObjects;

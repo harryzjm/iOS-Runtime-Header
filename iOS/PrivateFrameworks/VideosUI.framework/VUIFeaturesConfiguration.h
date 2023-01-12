@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VUIAutoPlayConfig, VUIDownloadConfig, VUIInAppMessagesConfig, VUINowPlayingConfig, VUIPostPlayConfig;
+@class VUIAutoPlayConfig, VUIDownloadConfig, VUIInAppMessagesConfig, VUILiveLinkConfig, VUINowPlayingConfig, VUIPostPlayConfig, VUISyndicationConfig;
 
 __attribute__((visibility("hidden")))
 @interface VUIFeaturesConfiguration : NSObject
@@ -14,14 +14,18 @@ __attribute__((visibility("hidden")))
     VUIPostPlayConfig *_postPlayConfig;
     VUINowPlayingConfig *_nowPlayingConfig;
     VUIAutoPlayConfig *_autoPlayConfig;
+    VUILiveLinkConfig *_liveLinkConfig;
     VUIInAppMessagesConfig *_inAppMessagesConfig;
     VUIDownloadConfig *_downloadConfig;
+    VUISyndicationConfig *_syndicationConfig;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) VUISyndicationConfig *syndicationConfig; // @synthesize syndicationConfig=_syndicationConfig;
 @property(readonly, nonatomic) VUIDownloadConfig *downloadConfig; // @synthesize downloadConfig=_downloadConfig;
 @property(readonly, nonatomic) VUIInAppMessagesConfig *inAppMessagesConfig; // @synthesize inAppMessagesConfig=_inAppMessagesConfig;
+@property(readonly, nonatomic) VUILiveLinkConfig *liveLinkConfig; // @synthesize liveLinkConfig=_liveLinkConfig;
 @property(readonly, nonatomic) VUIAutoPlayConfig *autoPlayConfig; // @synthesize autoPlayConfig=_autoPlayConfig;
 @property(readonly, nonatomic) VUINowPlayingConfig *nowPlayingConfig; // @synthesize nowPlayingConfig=_nowPlayingConfig;
 @property(readonly, nonatomic) VUIPostPlayConfig *postPlayConfig; // @synthesize postPlayConfig=_postPlayConfig;

@@ -27,15 +27,12 @@
 - (void)performOperationAfterReconcile:(CDUnknownBlockType)arg1;
 - (void)performOperationWhenNotReconciling:(CDUnknownBlockType)arg1;
 - (id)saveAndNotifyIfNecessary;
-- (void)updateUsageVectors:(id)arg1;
-- (id)storableUsageVectors;
 - (id)save;
 - (void)incrementMonthlyResetCount;
 - (void)notifyActiveRecordChanged;
 - (void)deleteRecords:(CDUnknownBlockType)arg1;
 - (void)prepareForPushNotification;
 - (void)setDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setDSID:(id)arg1 withoutRestrictions:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 
 // Remaining properties

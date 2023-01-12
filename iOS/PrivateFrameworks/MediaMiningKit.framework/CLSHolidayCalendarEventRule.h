@@ -6,41 +6,68 @@
 
 #import <objc/NSObject.h>
 
-@class CLSHolidayCalendarEventRuleRequiredTraits, NSArray, NSString;
+@class CLSHolidayCalendarEventRuleRequiredTraits, NSArray, NSDictionary, NSString;
 @protocol CLSHolidayCalendarEventDateRuleDelegate;
 
 @interface CLSHolidayCalendarEventRule : NSObject
 {
-    _Bool _checkWeekends;
-    NSString *_uuid;
+    _Bool _skipSceneCriteriaIfInteresting;
+    _Bool _triggerMemoryForAllLocales;
+    _Bool _triggerMemoryForCommonCelebratedCountryCodes;
+    _Bool _backfillForAllCountryCodes;
+    _Bool _backfillForCommonCelebratedCountryCodes;
+    _Bool _backfillForCommonCelebratedLanguages;
     NSString *_name;
-    NSArray *_dateRules;
+    NSArray *_defaultDateRules;
     CLSHolidayCalendarEventRuleRequiredTraits *_requiredTraits;
     id <CLSHolidayCalendarEventDateRuleDelegate> _dateRuleDelegate;
     NSString *_localizedName;
     unsigned long long _category;
+    NSDictionary *_commonCelebratedCountryCodes;
+    NSDictionary *_commonCelebratedLanguages;
+    double _defaultLocationScore;
 }
 
 + (id)localizedNameForName:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool checkWeekends; // @synthesize checkWeekends=_checkWeekends;
+@property(readonly, nonatomic) _Bool backfillForCommonCelebratedLanguages; // @synthesize backfillForCommonCelebratedLanguages=_backfillForCommonCelebratedLanguages;
+@property(readonly, nonatomic) _Bool backfillForCommonCelebratedCountryCodes; // @synthesize backfillForCommonCelebratedCountryCodes=_backfillForCommonCelebratedCountryCodes;
+@property(readonly, nonatomic) _Bool backfillForAllCountryCodes; // @synthesize backfillForAllCountryCodes=_backfillForAllCountryCodes;
+@property(readonly, nonatomic) _Bool triggerMemoryForCommonCelebratedCountryCodes; // @synthesize triggerMemoryForCommonCelebratedCountryCodes=_triggerMemoryForCommonCelebratedCountryCodes;
+@property(readonly, nonatomic) _Bool triggerMemoryForAllLocales; // @synthesize triggerMemoryForAllLocales=_triggerMemoryForAllLocales;
+@property(readonly, nonatomic) _Bool skipSceneCriteriaIfInteresting; // @synthesize skipSceneCriteriaIfInteresting=_skipSceneCriteriaIfInteresting;
+@property(readonly, nonatomic) double defaultLocationScore; // @synthesize defaultLocationScore=_defaultLocationScore;
+@property(readonly, nonatomic) NSDictionary *commonCelebratedLanguages; // @synthesize commonCelebratedLanguages=_commonCelebratedLanguages;
+@property(readonly, nonatomic) NSDictionary *commonCelebratedCountryCodes; // @synthesize commonCelebratedCountryCodes=_commonCelebratedCountryCodes;
 @property(readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(nonatomic) __weak id <CLSHolidayCalendarEventDateRuleDelegate> dateRuleDelegate; // @synthesize dateRuleDelegate=_dateRuleDelegate;
 @property(readonly, nonatomic) CLSHolidayCalendarEventRuleRequiredTraits *requiredTraits; // @synthesize requiredTraits=_requiredTraits;
-@property(readonly, nonatomic) NSArray *dateRules; // @synthesize dateRules=_dateRules;
+@property(readonly, nonatomic) NSArray *defaultDateRules; // @synthesize defaultDateRules=_defaultDateRules;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)_isMatchingOnlyLocalDate:(id)arg1;
-@property(readonly, nonatomic) _Bool allowSceneClassificationBasedEvaluation;
+- (_Bool)_isMatchingOnlyLocalDate:(id)arg1 countryCode:(id)arg2;
+- (_Bool)backfillForLanguageCodes:(id)arg1;
+- (_Bool)backfillForCountryCode:(id)arg1;
+- (_Bool)triggerMemoryForCountryCode:(id)arg1;
+- (unsigned long long)peopleTrait;
+- (id)allSceneNames;
+- (id)_scoreForEventOverride:(id)arg1 sceneNames:(id)arg2;
+- (id)scoreForLanguageCode:(id)arg1 sceneNames:(id)arg2;
+- (id)scoreForCountryCode:(id)arg1 sceneNames:(id)arg2;
+- (double)languageScoreForLanguageCode:(id)arg1;
+- (double)locationScoreForCountryCode:(id)arg1;
+- (id)explicitlySupportedCountryCodes;
 @property(readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
 @property(readonly, nonatomic) _Bool isCelebration;
-- (_Bool)evaluateOnlyTraits:(id)arg1;
-- (id)_dateRuleForYear:(long long)arg1;
-- (id)_datesFromWeekendWithStartDate:(id)arg1 withDuration:(double)arg2;
-- (id)localDatesByEvaluatingRuleForYear:(long long)arg1;
-- (_Bool)evaluateWithLocalDate:(id)arg1 traits:(id)arg2;
+- (_Bool)evaluateOnlyTraits:(id)arg1 evaluateLocationTraits:(_Bool)arg2;
+- (id)_dateRuleForYear:(long long)arg1 supportedLocale:(id)arg2;
+- (id)_dateRuleForYear:(long long)arg1 countryCode:(id)arg2;
+- (id)localDateByEvaluatingRuleForYear:(long long)arg1 languageCode:(id)arg2;
+- (id)localDateByEvaluatingRuleForYear:(long long)arg1 countryCode:(id)arg2;
+- (_Bool)evaluateWithLocalDate:(id)arg1 traits:(id)arg2 countryCode:(id)arg3;
+- (id)description;
+- (id)_localeOverrideForDescription:(id)arg1 uppercaseLocaleCode:(_Bool)arg2;
 - (id)initWithEventDescription:(id)arg1;
 
 @end

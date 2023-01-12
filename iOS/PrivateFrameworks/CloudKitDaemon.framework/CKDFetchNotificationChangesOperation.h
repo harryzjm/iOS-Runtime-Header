@@ -7,7 +7,6 @@
 @class CKServerChangeToken;
 @protocol CKFetchNotificationChangesOperationCallbacks;
 
-__attribute__((visibility("hidden")))
 @interface CKDFetchNotificationChangesOperation
 {
     _Bool _moreComing;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (int)operationType;
 - (void)_handleFetchChangesRequestFinished:(id)arg1;
 - (id)activityCreate;
-- (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (id)initWithOperationInfo:(id)arg1 container:(id)arg2;
 
 // Remaining properties
 @property(retain, nonatomic) id <CKFetchNotificationChangesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;

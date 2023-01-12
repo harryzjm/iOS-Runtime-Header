@@ -9,9 +9,11 @@
 @class NSString;
 
 @interface NSBundle (SafariCoreExtras)
++ (id)safari_safariInjectedBundleURL;
 + (id)safari_safariApplicationPlatformBundleIdentifier;
 + (id)safari_safariCoreBundle;
 @property(readonly, nonatomic) _Bool safari_isSafariFamilyApplicationBundle;
 @property(readonly, copy, nonatomic) NSString *safari_normalizedVersion;
+@property(readonly, nonatomic) _Bool safari_primaryLocalizationIsEnglish;
 @end
 

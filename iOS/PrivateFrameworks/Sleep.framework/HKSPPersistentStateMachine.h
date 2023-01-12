@@ -4,27 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKSPPersistentStateMachineState, NSString;
+@class HKSPPersistentStateMachineState, NSSet, NSString;
 @protocol HKSPStatePersistence;
 
 @interface HKSPPersistentStateMachine
 {
     CDUnknownBlockType _currentDateProvider;
     NSString *_identifier;
+    NSSet *_allowedStates;
     id <HKSPStatePersistence> _persistence;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) id <HKSPStatePersistence> persistence; // @synthesize persistence=_persistence;
+@property(readonly, nonatomic) NSSet *allowedStates; // @synthesize allowedStates=_allowedStates;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
 - (_Bool)enterState:(id)arg1 context:(id)arg2;
 - (id)_persistedStateShouldIgnoreExpiration:(_Bool)arg1;
 - (id)persistedStateIgnoringExpiration;
 - (id)persistedState;
+- (id)initWithIdentifier:(id)arg1 allowedStates:(id)arg2 persistence:(id)arg3 delegate:(id)arg4 infoProvider:(id)arg5 currentDateProvider:(CDUnknownBlockType)arg6;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
-- (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4;
-- (id)initWithDelegate:(id)arg1 infoProvider:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 allowedStates:(id)arg2 persistence:(id)arg3 delegate:(id)arg4 infoProvider:(id)arg5;
+- (id)initWithAllowedStates:(id)arg1 delegate:(id)arg2 infoProvider:(id)arg3;
 
 // Remaining properties
 @property(readonly, nonatomic) HKSPPersistentStateMachineState *currentState; // @dynamic currentState;

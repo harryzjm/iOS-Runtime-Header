@@ -27,6 +27,7 @@
 + (id)reminderHash:(id)arg1;
 + (id)eventHash:(id)arg1;
 + (id)domain:(id)arg1;
++ (id)fieldReverseMapped:(id)arg1;
 + (id)extractedFromTemplateWithName:(id)arg1;
 + (id)extractedFromTemplateWithShortName:(id)arg1;
 + (id)messageWithEmailKey:(id)arg1;
@@ -120,6 +121,7 @@
 - (_Bool)isReminderHash;
 - (_Bool)isEventHash;
 - (_Bool)isDomain;
+- (_Bool)isFieldReverseMapped;
 - (_Bool)isTemplateName;
 - (_Bool)isTemplateShortName;
 - (id)eventMetadata;

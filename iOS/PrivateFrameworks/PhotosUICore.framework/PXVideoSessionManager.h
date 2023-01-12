@@ -4,28 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSCountedSet, NSMutableDictionary, NSObject;
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
+
+@class NSArray, NSCountedSet, NSMutableDictionary, NSObject, NSString, PXReusableObjectPool;
 @protocol OS_dispatch_queue;
 
-@interface PXVideoSessionManager
+@interface PXVideoSessionManager <PXChangeObserver>
 {
-    NSMutableDictionary *_ivarQueue_sessionsByIdentifier;
-    NSCountedSet *_ivarQueue_sessionCounts;
     NSObject<OS_dispatch_queue> *_ivarQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
+    PXReusableObjectPool *_ivarQueue_playerPool;
+    NSMutableDictionary *_ivarQueue_sessionsByIdentifier;
+    NSCountedSet *_ivarQueue_sessionCounts;
+    _Bool _ivarQueue_canStoreReusablePlayers;
 }
 
 + (id)sharedInstance;
++ (CDStruct_1b6d18a9)livePhotoCrossfadeDuration;
++ (_Bool)isLivePhotoStabilizationEnabled;
 - (void).cxx_destruct;
+- (void)_ivarQueue_flushReusablePlayerPool;
+- (void)_handleMediaServicesWereResetNotification:(id)arg1;
+- (void)_updateCanStoreReusablePlayers;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)mutableChangeObject;
 @property(readonly, nonatomic) NSArray *activeSessions;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)checkInVideoSession:(id)arg1;
 - (id)checkOutSessionWithContentProvider:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)videoSessionForAsset:(id)arg1 mediaProvider:(id)arg2 livePhotosLoopCrossfadeDuration:(double)arg3 loopTimeRange:(CDStruct_e83c9415)arg4;
+- (id)contentProviderForAsset:(id)arg1 withOptions:(id)arg2 mediaProvider:(id)arg3 requestURLOnly:(_Bool)arg4;
+- (id)videoSessionForAsset:(id)arg1 withOptions:(id)arg2 mediaProvider:(id)arg3;
 - (id)videoSessionForAsset:(id)arg1 mediaProvider:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

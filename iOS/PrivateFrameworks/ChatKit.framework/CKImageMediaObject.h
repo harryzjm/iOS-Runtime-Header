@@ -32,10 +32,12 @@
 - (id)previewItemTitle;
 - (id)previewItemURL;
 - (_Bool)canShareItem;
-- (id)pasteboardItem;
+- (_Bool)isPhotosCompatible;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
+- (id)pasteboardItemProvider;
 - (id)calculateIrisVideoPath;
 - (id)getIrisVideoPath;
-- (void)export:(id)arg1;
+- (void)legacyExport;
 @property(readonly, nonatomic) _Bool isIrisAsset;
 - (_Bool)canExport;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
@@ -43,11 +45,12 @@
 - (_Bool)validatePreviewFormat;
 - (struct CGSize)bbSize;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
+- (_Bool)supportsUnknownSenderPreview;
 - (id)location;
 - (int)mediaType;
 - (id)attachmentSummary:(unsigned long long)arg1;
 - (id)metricsCollectorMediaType;
-- (id)initWithTransfer:(id)arg1 isFromMe:(_Bool)arg2 suppressPreview:(_Bool)arg3 forceInlinePreview:(_Bool)arg4;
+- (id)initWithTransfer:(id)arg1 context:(id)arg2 forceInlinePreview:(_Bool)arg3;
 
 @end
 

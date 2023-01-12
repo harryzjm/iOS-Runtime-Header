@@ -9,7 +9,10 @@
 @class GEOTileLoader, NSError;
 
 @protocol GEOTileLoaderObserver <NSObject>
+
+@optional
 - (void)tileLoader:(GEOTileLoader *)arg1 failedTileKey:(const struct _GEOTileKey *)arg2 error:(NSError *)arg3 withOptions:(unsigned long long)arg4;
+- (void)tileLoader:(GEOTileLoader *)arg1 loadedTileKey:(const struct _GEOTileKey *)arg2 sizeInBytes:(unsigned long long)arg3 fromSource:(long long)arg4 withOptions:(unsigned long long)arg5;
 - (void)tileLoader:(GEOTileLoader *)arg1 loadedTileKey:(const struct _GEOTileKey *)arg2 fromSource:(long long)arg3 withOptions:(unsigned long long)arg4;
 @end
 

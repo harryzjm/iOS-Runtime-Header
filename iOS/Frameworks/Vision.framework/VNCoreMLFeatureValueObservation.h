@@ -17,10 +17,10 @@
 @property(readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property(readonly, copy, nonatomic) MLFeatureValue *featureValue; // @synthesize featureValue=_featureValue;
 - (id)description;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)vn_cloneObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 featureName:(id)arg2 featureValue:(id)arg3;
+- (id)initWithOriginatingRequestSpecifier:(id)arg1 featureName:(id)arg2 featureValue:(id)arg3;
 
 @end
 

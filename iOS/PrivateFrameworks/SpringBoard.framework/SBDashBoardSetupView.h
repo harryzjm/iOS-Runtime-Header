@@ -8,15 +8,24 @@
 
 #import <SpringBoard/CAAnimationDelegate-Protocol.h>
 
-@class CSHomeAffordanceView, NSArray, NSObject, NSString, SBFTouchPassThroughView, SBUICallToActionLabel, SBUILegibilityLabel, UIButton, UILabel, _UILegibilitySettings;
+@class CADisplayLink, CSHomeAffordanceView, NSArray, NSObject, NSString, SBCursiveTextView, SBFTouchPassThroughView, SBUICallToActionLabel, SBUILegibilityLabel, UIButton, UIImageView, UILabel, UIStackView, _UILegibilitySettings;
 @protocol OS_dispatch_source;
 
 @interface SBDashBoardSetupView : UIView <CAAnimationDelegate>
 {
     UILabel *_titleLabel;
-    UILabel *_storeRestrictedLabel;
+    UIStackView *_activationLockStackView;
+    UIImageView *_activationLockImage;
+    UILabel *_activationLockWarningLabel;
+    UILabel *_activationLockDetailLabel;
+    UILabel *_storeRestrictedTitleLabel;
+    UILabel *_storeRestrictedBodyLabel;
+    UILabel *_storeRestrictedLinkLabel;
+    UIView *_storeRestrictedContainer;
     UILabel *_securityResearchDeviceTitleLabel;
     UIView *_securityResearchDeviceContainer;
+    UIImageView *_securityResearchHeaderIcon;
+    UILabel *_securityResearchSubtitleLabel;
     SBFTouchPassThroughView *_homeAffordanceContainer;
     CSHomeAffordanceView *_homeAffordanceView;
     UIView *_homeAffordanceCallToActionContainer;
@@ -24,6 +33,14 @@
     SBUICallToActionLabel *_homeButtonCallToActionLabel;
     NSObject<OS_dispatch_source> *_homeButtonCallToActionTimer;
     NSArray *_activationInfoViewConstraints;
+    NSString *_currentLanguage;
+    SBCursiveTextView *_cursiveTextView;
+    double _startTime;
+    double _customDelayDuration;
+    CADisplayLink *_displayLink;
+    _Bool _isStoreRestricted;
+    _Bool _isSecurityResearchDevice;
+    _Bool _activationLocked;
     UIView *_activationInfoView;
     UIView *_regulatoryInfoView;
     _UILegibilitySettings *_legibilitySettings;
@@ -31,13 +48,20 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, getter=isActivationLocked) _Bool activationLocked; // @synthesize activationLocked=_activationLocked;
 @property(readonly, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property(retain, nonatomic) UIView *regulatoryInfoView; // @synthesize regulatoryInfoView=_regulatoryInfoView;
 @property(retain, nonatomic) UIView *activationInfoView; // @synthesize activationInfoView=_activationInfoView;
 @property(retain, nonatomic) CSHomeAffordanceView *homeAffordanceView; // @synthesize homeAffordanceView=_homeAffordanceView;
+- (_Bool)_actsLikeStoreRestricted;
 - (void)_updateLegibilitySettings;
 - (void)_adjustTitleVisibilityForInfoViews;
+- (_Bool)_isShowingModalTakeoverUI;
+- (void)_animateCursiveForTimePassed;
+- (void)_onDisplayLink:(id)arg1;
+- (void)_removeDisplayLink;
+- (void)_createDisplayLink;
 - (void)_removeNormalAnimationForKeyPath:(id)arg1 onLayer:(id)arg2;
 - (void)_removeResetAnimationForKeyPath:(id)arg1 onLayer:(id)arg2;
 - (void)_addResetAnimationForKeyPath:(id)arg1 onLayer:(id)arg2 dispatchGroup:(id)arg3;
@@ -56,7 +80,8 @@
 - (void)_addHomeAffordance;
 - (void)_addHomeButtonCallToAction;
 - (void)_addSecurityResearchLabels;
-- (void)_addStoreRestrictedLabel;
+- (void)_addActivationLockLabels;
+- (void)_addStoreRestrictedLabels;
 - (void)_addTitleLabel;
 - (void)_addInfoButton;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
@@ -64,8 +89,9 @@
 - (void)animateComponents:(unsigned long long)arg1 toActive:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setInfoButtonVisible:(_Bool)arg1 animated:(_Bool)arg2 withDelay:(double)arg3;
 - (void)setCallToActionString:(id)arg1 forLanguage:(id)arg2;
-- (void)setStoreRestrictedString:(id)arg1 forLanguage:(id)arg2;
-- (void)setTitleString:(id)arg1 forLanguage:(id)arg2;
+- (void)setActivationLockWarningString:(id)arg1 detailString:(id)arg2 forLanguage:(id)arg3;
+- (void)setStoreRestrictedStrings:(id)arg1 bodyString:(id)arg2 linkString:(id)arg3 forLanguage:(id)arg4;
+- (double)setTitleString:(id)arg1 forLanguage:(id)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 usingHomeAffordance:(_Bool)arg2 isStoreRestricted:(_Bool)arg3 isSecurityResearchDevice:(_Bool)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;

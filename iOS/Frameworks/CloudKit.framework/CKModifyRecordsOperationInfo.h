@@ -16,6 +16,8 @@
     _Bool _originatingFromDaemon;
     _Bool _markAsParticipantNeedsNewInvitationToken;
     _Bool _shouldSkipPCSRetryBehavior;
+    _Bool _shouldModifyRecordsInDatabase;
+    _Bool _alwaysFetchPCSFromServer;
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     NSData *_clientChangeTokenData;
@@ -29,6 +31,8 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool alwaysFetchPCSFromServer; // @synthesize alwaysFetchPCSFromServer=_alwaysFetchPCSFromServer;
+@property(nonatomic) _Bool shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property(nonatomic) _Bool shouldSkipPCSRetryBehavior; // @synthesize shouldSkipPCSRetryBehavior=_shouldSkipPCSRetryBehavior;
 @property(nonatomic) _Bool markAsParticipantNeedsNewInvitationToken; // @synthesize markAsParticipantNeedsNewInvitationToken=_markAsParticipantNeedsNewInvitationToken;
 @property(nonatomic) _Bool originatingFromDaemon; // @synthesize originatingFromDaemon=_originatingFromDaemon;
@@ -46,6 +50,7 @@
 @property(retain, nonatomic) NSArray *recordsToSave; // @synthesize recordsToSave=_recordsToSave;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)_commonInit;
 - (id)init;
 
 @end

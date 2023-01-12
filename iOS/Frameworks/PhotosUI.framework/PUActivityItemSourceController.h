@@ -11,7 +11,7 @@
 #import <PhotosUI/PXCMMActionPerformerDelegate-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableOrderedSet, NSObject, NSOrderedSet, NSString, NSURL, PUActivityViewController, PUCMMActivityItemSource;
+@class NSArray, NSMutableArray, NSMutableOrderedSet, NSObject, NSOrderedSet, NSString, NSURL, PHPerson, PUActivityViewController, PUCMMActivityItemSource;
 @protocol OS_dispatch_queue, PUActivityItemSourceControllerDelegate;
 
 @interface PUActivityItemSourceController : PXObservable <PUCMMActivityItemSourceDelegate, PXCMMActionPerformerDelegate, PXChangeObserver, PXActivityItemSourceController>
@@ -22,6 +22,8 @@
     _Atomic int _taskId;
     unsigned long long _cloudSharedAssetCount;
     long long _momentShareAssetCount;
+    long long _unsavedSyndicatedAssetCount;
+    long long _externalLibraryAssetCount;
     _Bool _shouldUseMomentShareLinkInMessagesIfThresholdMet;
     _Bool _shouldExcludeLivenessInAllItemSources;
     _Bool _shouldExcludeLocationInAllItemSources;
@@ -34,6 +36,7 @@
     id <PUActivityItemSourceControllerDelegate> _delegate;
     unsigned long long _state;
     PUActivityViewController *_activityViewController;
+    PHPerson *_person;
     CDUnknownBlockType _progressHandler;
     NSURL *_publishedURL;
     PUCMMActivityItemSource *_cmmActivityItemSource;
@@ -53,6 +56,7 @@
 @property(retain, nonatomic, setter=_setPublishedURL:) NSURL *publishedURL; // @synthesize publishedURL=_publishedURL;
 @property(readonly, nonatomic) _Bool momentSharePublishAttempted; // @synthesize momentSharePublishAttempted=_momentSharePublishAttempted;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property(retain, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property(nonatomic) _Bool shouldShareAsOriginals; // @synthesize shouldShareAsOriginals=_shouldShareAsOriginals;
 @property(nonatomic) _Bool shouldExcludeAccessibilityDescriptionInAllItemSources; // @synthesize shouldExcludeAccessibilityDescriptionInAllItemSources=_shouldExcludeAccessibilityDescriptionInAllItemSources;
 @property(nonatomic) _Bool shouldExcludeCaptionInAllItemSources; // @synthesize shouldExcludeCaptionInAllItemSources=_shouldExcludeCaptionInAllItemSources;
@@ -80,6 +84,7 @@
 - (void)_prepareMomentShareLinkFromIndividualItemSourcesForActivity:(id)arg1;
 - (void)_prepareIndividualItemSourcesForActivity:(id)arg1;
 - (void)configureItemSourcesForActivityIfNeeded:(id)arg1 forcePreparationAsMomentShareLink:(_Bool)arg2;
+@property(readonly, nonatomic) unsigned long long unsavedSyndicatedAssetCount;
 @property(readonly, nonatomic) _Bool isPreparingIndividualItems;
 - (struct PXAssetMediaTypeCount)requestAssetsMediaTypeCount;
 @property(readonly, copy, nonatomic) NSOrderedSet *assets;

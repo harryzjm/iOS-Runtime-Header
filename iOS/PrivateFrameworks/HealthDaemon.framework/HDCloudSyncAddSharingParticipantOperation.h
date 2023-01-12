@@ -6,13 +6,14 @@
 
 #import <HealthDaemon/HDSynchronousTaskGroupDelegate-Protocol.h>
 
-@class CKShareParticipant, HDSynchronousTaskGroup, NSArray, NSDictionary, NSString;
+@class CKShareParticipant, HDSynchronousTaskGroup, NSArray, NSDictionary, NSMutableArray, NSString;
 
 @interface HDCloudSyncAddSharingParticipantOperation <HDSynchronousTaskGroupDelegate>
 {
     struct os_unfair_lock_s _lock;
     CKShareParticipant *_participant;
-    NSArray *_zones;
+    NSMutableArray *_clonedParticipants;
+    NSArray *_zoneIdentifiers;
     _Bool _requireExistingRelationship;
     HDSynchronousTaskGroup *_taskGroup;
     NSArray *_shareURLs;
@@ -25,16 +26,9 @@
 @property(readonly, copy, nonatomic) NSDictionary *invitationTokensByShareURL; // @synthesize invitationTokensByShareURL=_invitationTokensByShareURL;
 @property(readonly, copy, nonatomic) NSArray *shareURLs; // @synthesize shareURLs=_shareURLs;
 - (void)synchronousTaskGroup:(id)arg1 didFinishWithSuccess:(_Bool)arg2 errors:(id)arg3;
-- (_Bool)_isSharingWithParticipant:(id)arg1;
-- (void)_didSaveSharesInZones:(id)arg1;
-- (id)_updateShareRecordsWithParticipant:(id)arg1 container:(id)arg2;
-- (void)_foundOwnerParticipant:(id)arg1;
-- (id)_addParticipantIfNeeded:(id)arg1 zone:(id)arg2 share:(id)arg3;
-- (_Bool)_isValidParticipant:(id)arg1 withPermissions:(long long)arg2;
-- (id)_updatedRegistryRecordIfNeededForContainer:(id)arg1;
 - (void)main;
 @property _Bool requireExistingRelationship;
-@property(copy) NSArray *zones;
+@property(copy) NSArray *zoneIdentifiers;
 @property(retain) CKShareParticipant *participant;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;
 

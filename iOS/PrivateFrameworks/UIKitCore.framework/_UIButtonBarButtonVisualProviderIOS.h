@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)_handlePressGesture:(id)arg1;
 - (id)buttonSpringLoadedInteractionEffect;
 - (void)updateMenu;
 - (_Bool)canUpdateMenuInPlace;
@@ -90,12 +91,9 @@ __attribute__((visibility("hidden")))
 - (void)activateWidthMinimizer;
 - (void)addActiveConstraint:(id)arg1 named:(id)arg2;
 - (void)updateActiveConstraints:(CDUnknownBlockType)arg1;
-- (void)pointerWillExit:(id)arg1;
-- (void)pointerWillEnter:(id)arg1;
 - (_Bool)shouldLift;
 - (id)matchingPointerShapeForView:(id)arg1 rect:(struct CGRect)arg2 inContainer:(id)arg3;
 - (id)pointerShapeInContainer:(id)arg1;
-- (id)contentCursorInContainer:(id)arg1;
 - (id)pointerPreviewParameters;
 - (_Bool)useLocalPointerInteraction;
 - (void)resetButtonHasHighlighted;

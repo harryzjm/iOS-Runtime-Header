@@ -8,7 +8,7 @@
 #import <RemoteUI/UIPickerViewDelegate-Protocol.h>
 #import <RemoteUI/UITextFieldDelegate-Protocol.h>
 
-@class NSData, NSDate, NSDateFormatter, NSDictionary, NSMutableArray, NSString, RUIDetailButtonElement, RUIPage, RemoteUITableViewCell, UIControl, UISwitch, UIView;
+@class NSData, NSDate, NSDateFormatter, NSDictionary, NSMutableArray, NSString, RUIDetailButtonElement, RUIPage, RUITableView, RUITableViewSection, RemoteUITableViewCell, UIControl, UISwitch, UIView;
 @protocol RUITableViewRowDelegate, RUITextFieldChangeObserver;
 
 @interface RUITableViewRow <RUIWebContainerViewDelegate, UIPickerViewDelegate, UITextFieldDelegate>
@@ -38,6 +38,8 @@
     RUIPage *_linkedPage;
     RUIDetailButtonElement *_detailButton;
     long long _alignment;
+    RUITableViewSection *_section;
+    RUITableView *_tableView;
 }
 
 + (void)resetLocale;
@@ -48,6 +50,8 @@
 + (id)_timeZoneAdjustedDateFromDate:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(nonatomic) __weak RUITableView *tableView; // @synthesize tableView=_tableView;
+@property(nonatomic) __weak RUITableViewSection *section; // @synthesize section=_section;
 @property(nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property(retain, nonatomic) RUIDetailButtonElement *detailButton; // @synthesize detailButton=_detailButton;
 @property(nonatomic) __weak RUIPage *linkedPage; // @synthesize linkedPage=_linkedPage;
@@ -67,10 +71,11 @@
 @property(retain, nonatomic) NSDictionary *deleteAction; // @synthesize deleteAction=_deleteAction;
 @property(nonatomic) _Bool rowInvalid; // @synthesize rowInvalid=_rowInvalid;
 @property(nonatomic) __weak id <RUITableViewRowDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_setBackgroundColor;
+- (void)_drawCustomImage:(_Bool)arg1;
 - (id)_checkmarkAccessoryViewWithSelected:(_Bool)arg1;
 - (void)webContainerView:(id)arg1 didClickLinkWithURL:(id)arg2;
 - (void)detailLabelActivatedLinkFromCell:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)sourceURL;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)setEditableTextFieldValue:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
@@ -85,6 +90,8 @@
 - (void)clearCachedHeight;
 - (float)rowHeightWithMax:(float)arg1 peggedHeight:(float)arg2 tableView:(id)arg3 indexPath:(id)arg4;
 - (void)_datePickerChanged:(id)arg1;
+- (void)stopActivityIndicator;
+- (void)startActivityIndicator;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 @property(readonly, nonatomic) NSString *copyText;
@@ -106,11 +113,13 @@
 - (void)setImage:(id)arg1;
 - (long long)tableCellStyle;
 - (Class)tableCellClass;
+- (_Bool)wantsInlineActivityIndicator;
 - (void)setEnabled:(_Bool)arg1;
 - (void)_updateContentForDisabledState;
 - (void)_updateTextColors;
 - (id)radioGroupSelectedColor;
 - (id)textColorForAttributeName:(id)arg1;
+- (id)textColorForAttributeName:(id)arg1 defaultColorString:(id)arg2;
 - (id)dateFormatterCalendarIdentifier;
 - (void)setAttributes:(id)arg1;
 - (id)_datePickerFormatter;

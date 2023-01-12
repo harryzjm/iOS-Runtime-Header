@@ -9,6 +9,9 @@
 @interface IMItem (IMItem_CKRecord)
 + (void)resetSyncStateForMessage:(id)arg1 toState:(long long)arg2;
 + (id)createItemWithCKRecord:(id)arg1;
++ (id)createUpdateT1Info:(id)arg1;
++ (id)createCKRecordForUpdateT2:(id)arg1 zoneID:(id)arg2 salt:(id)arg3;
++ (id)createCKRecordForUpdateT1:(id)arg1 zoneID:(id)arg2 salt:(id)arg3;
 + (id)populateIMMessageActionItem:(id)arg1 withProtobufData:(id)arg2;
 + (id)messageActionChangeProtobufForCompressedData:(id)arg1;
 + (id)populateIMGroupActionItem:(id)arg1 withProtobufData:(id)arg2;
@@ -19,17 +22,24 @@
 + (id)participantChangeProtobufForCompressedData:(id)arg1;
 + (id)populateIMGroupTitleChangeItem:(id)arg1 withProtobufData:(id)arg2;
 + (id)groupTitleChangeProtobufForCompressedData:(id)arg1;
++ (id)populateIMMessageItemWithProtobufFields:(id)arg1 withProtobufDataP3:(id)arg2;
 + (id)populateIMMessageItemWithProtobufFields:(id)arg1 withProtobufDataP2:(id)arg2;
 + (id)populateIMMessageItemWithProtobufFields:(id)arg1 withProtobufData:(id)arg2;
++ (id)protobufForUpdateT2:(id)arg1;
++ (id)protobufForUpdateT1:(id)arg1;
++ (id)protobufForCompressedDataP3:(id)arg1;
 + (id)protobufForCompressedDataP2:(id)arg1;
 + (id)protobufForCompressedData:(id)arg1;
++ (id)compressedProtobufDataForUpdateT2:(id)arg1;
++ (id)compressedProtobufDataForUpdateT1:(id)arg1;
++ (id)compressedProtobufDataWithPadding:(id)arg1;
++ (id)_updateV1RecordType;
 - (_Bool)isCompatibleWithMiC;
 - (_Bool)shouldStoreMessage;
-- (_Bool)callerIDShouldBeCheckedForRegistration:(id)arg1;
 - (_Bool)_shouldDownloadIfPhoneNumberAndNoSIM:(id)arg1;
 - (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
-- (_Bool)_usingStingRay;
 - (id)_recordFromServerChangeToken;
+- (_Bool)callerIDShouldBeCheckedForRegistration:(id)arg1;
 - (void)_populateCKRecordWithIMMessageActionItemFields:(id)arg1;
 - (id)compressedProtobufDataForMessageActionItem;
 - (void)_populateCKRecordWithIMGroupActionItemFields:(id)arg1;
@@ -42,9 +52,9 @@
 - (id)compressedProtobufDataForGroupTitleChangeItem;
 - (void)_populateCKRecordWithIMMessageItemFields:(id)arg1;
 - (void)_populateCKRecordWithIMItemFields:(id)arg1;
+- (id)compressedProtobufDataForMessageP3;
 - (id)compressedProtobufDataForMessageP2;
 - (id)compressedProtobufDataForMessage;
-- (id)compressedProtobufDataWithPadding:(id)arg1;
 - (id)_accountControllerSharedInstance;
 - (id)_recordType;
 @end

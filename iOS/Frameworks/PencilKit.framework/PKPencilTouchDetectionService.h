@@ -35,6 +35,7 @@
 @property(retain, nonatomic) FBSDisplayLayoutMonitor *displayLayoutMonitor; // @synthesize displayLayoutMonitor=_displayLayoutMonitor;
 @property(nonatomic) _Bool isListening; // @synthesize isListening=_isListening;
 @property(retain, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
+- (id)stringForTouchDetectionPencilType:(long long)arg1;
 - (void)updateTimestampForType:(long long)arg1;
 - (void)_nop:(id)arg1;
 - (void)pencilType:(long long)arg1 hasRecentlyBeenUsedWithCompletionHandler:(CDUnknownBlockType)arg2;

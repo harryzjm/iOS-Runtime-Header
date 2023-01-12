@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, UIFocusGuide, UIImage, UIView, _UIDebugIssueReport, _UIDebugLogReport, _UIFocusItemInfo, _UIFocusMapSearchInfo, _UIFocusMovementInfo;
-@protocol UIFocusEnvironment, UIFocusItem, UIFocusItemScrollableContainer, _UIFocusUpdateRequesting;
+@class NSArray, NSString, UIFocusGuide, UIImage, UIView, _UIDebugIssueReport, _UIDebugLogReport, _UIDynamicFocusGroupMap, _UIFocusItemInfo, _UIFocusMapSearchInfo, _UIFocusMovementInfo;
+@protocol UIFocusEnvironment, UIFocusItem, UIFocusItemScrollableContainer, _UIFocusBehavior, _UIFocusUpdateRequesting;
 
 @interface UIFocusUpdateContext : NSObject
 {
@@ -18,9 +18,14 @@
         unsigned int sourceItemMayRemainFocused:1;
         unsigned int didResolveCommonAncestorEnvironment:1;
     } _flags;
+    _Bool _deferredUpdate;
     _UIFocusItemInfo *_destinationItemInfo;
     id <UIFocusEnvironment> _commonAncestorEnvironment;
+    NSString *_previouslyFocusedGroupIdentifier;
+    NSString *_nextFocusedGroupIdentifier;
     UIImage *_regionMapSnapshotsVisualRepresentation;
+    _UIDynamicFocusGroupMap *_focusGroupMap;
+    id <_UIFocusBehavior> _focusBehavior;
     id <_UIFocusUpdateRequesting> _request;
     _UIFocusItemInfo *_sourceItemInfo;
     _UIFocusMovementInfo *_focusMovement;
@@ -40,6 +45,7 @@
 @property(retain, nonatomic, getter=_validationReport, setter=_setValidationReport:) _UIDebugIssueReport *validationReport; // @synthesize validationReport=_validationReport;
 @property(retain, nonatomic, getter=_preferredFocusReport, setter=_setPreferredFocusReport:) _UIDebugLogReport *preferredFocusReport; // @synthesize preferredFocusReport=_preferredFocusReport;
 @property(retain, nonatomic, getter=_regionMapSnapshots, setter=_setRegionMapSnapshots:) NSArray *regionMapSnapshots; // @synthesize regionMapSnapshots=_regionMapSnapshots;
+@property(nonatomic, getter=_isDeferredUpdate, setter=_setDeferredUpdate:) _Bool deferredUpdate; // @synthesize deferredUpdate=_deferredUpdate;
 @property(nonatomic, getter=_destinationViewDistanceOffscreen, setter=_setDestinationViewDistanceOffscreen:) double destinationViewDistanceOffscreen; // @synthesize destinationViewDistanceOffscreen=_destinationViewDistanceOffscreen;
 @property(retain, nonatomic, getter=_commonScrollableContainer, setter=_setCommonScrollableContainer:) id <UIFocusItemScrollableContainer> commonScrollableContainer; // @synthesize commonScrollableContainer=_commonScrollableContainer;
 @property(readonly, nonatomic, getter=_initialDestinationEnvironment) __weak id <UIFocusEnvironment> initialDestinationEnvironment; // @synthesize initialDestinationEnvironment=_initialDestinationEnvironment;
@@ -47,11 +53,17 @@
 @property(readonly, nonatomic, getter=_focusMovement) _UIFocusMovementInfo *focusMovement; // @synthesize focusMovement=_focusMovement;
 @property(readonly, copy, nonatomic, getter=_sourceItemInfo) _UIFocusItemInfo *sourceItemInfo; // @synthesize sourceItemInfo=_sourceItemInfo;
 @property(readonly, nonatomic, getter=_request) id <_UIFocusUpdateRequesting> request; // @synthesize request=_request;
+@property(readonly, nonatomic) id <_UIFocusBehavior> focusBehavior; // @synthesize focusBehavior=_focusBehavior;
+@property(retain, nonatomic, getter=_focusGroupMap, setter=_setFocusGroupMap:) _UIDynamicFocusGroupMap *focusGroupMap; // @synthesize focusGroupMap=_focusGroupMap;
 - (id)description;
 - (id)debugQuickLookObject;
 @property(readonly, nonatomic, getter=_regionMapSnapshotsVisualRepresentation) UIImage *regionMapSnapshotsVisualRepresentation; // @synthesize regionMapSnapshotsVisualRepresentation=_regionMapSnapshotsVisualRepresentation;
 - (id)_focusMapSnapshotDebugInfoArray;
 - (id)_publicRegionMapSnapshots;
+@property(readonly, nonatomic, getter=_groupFilter) long long groupFilter;
+@property(readonly, nonatomic, getter=_nextFocusedGroupIdentifier) NSString *nextFocusedGroupIdentifier; // @synthesize nextFocusedGroupIdentifier=_nextFocusedGroupIdentifier;
+@property(readonly, nonatomic, getter=_previouslyFocusedGroupIdentifier) NSString *previouslyFocusedGroupIdentifier; // @synthesize previouslyFocusedGroupIdentifier=_previouslyFocusedGroupIdentifier;
+- (void)_updateWithFocusGroupMap:(id)arg1;
 - (void)_restoreRestrictedFocusMovementWithMovement:(id)arg1;
 - (void)_didUpdateFocus;
 - (void)_willUpdateFocusFromFocusedItem:(id)arg1;
@@ -69,6 +81,7 @@
 @property(readonly, nonatomic) __weak id <UIFocusItem> previouslyFocusedItem;
 - (_Bool)_validate;
 - (_Bool)_isValidInFocusSystem:(id)arg1;
+- (void)_cacheFocusBehavior;
 - (id)_initWithContext:(id)arg1;
 - (id)_initWithFocusMovementRequest:(id)arg1 nextFocusedItem:(id)arg2;
 - (id)_initWithFocusUpdateRequest:(id)arg1;

@@ -6,17 +6,19 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSLayoutConstraint, NSString, UIImage, UIImageView, UILabel, UISwitch;
+@class NSLayoutConstraint, NSString, UILabel, UISwitch, UIView;
 
 @interface PRXFeatureTableViewCell : UITableViewCell
 {
+    _Bool _hidingSeparator;
     NSString *_title;
     NSString *_subtitle;
-    UIImage *_image;
+    UIView *_featureImageView;
     UISwitch *_switchControl;
+    double _featureImageSize;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
-    UIImageView *_featureImageView;
+    NSLayoutConstraint *_layoutGuideHeightConstraint;
     NSLayoutConstraint *_titleLabelLeadingAnchor;
     NSLayoutConstraint *_titleLabelTrailingAnchor;
     NSLayoutConstraint *_imageViewLeadingAnchor;
@@ -28,18 +30,20 @@
 @property(retain, nonatomic) NSLayoutConstraint *imageViewLeadingAnchor; // @synthesize imageViewLeadingAnchor=_imageViewLeadingAnchor;
 @property(retain, nonatomic) NSLayoutConstraint *titleLabelTrailingAnchor; // @synthesize titleLabelTrailingAnchor=_titleLabelTrailingAnchor;
 @property(retain, nonatomic) NSLayoutConstraint *titleLabelLeadingAnchor; // @synthesize titleLabelLeadingAnchor=_titleLabelLeadingAnchor;
-@property(retain, nonatomic) UIImageView *featureImageView; // @synthesize featureImageView=_featureImageView;
+@property(readonly, nonatomic) NSLayoutConstraint *layoutGuideHeightConstraint; // @synthesize layoutGuideHeightConstraint=_layoutGuideHeightConstraint;
 @property(readonly, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(nonatomic) double featureImageSize; // @synthesize featureImageSize=_featureImageSize;
+@property(nonatomic, getter=isHidingSeparator) _Bool hidingSeparator; // @synthesize hidingSeparator=_hidingSeparator;
 @property(retain, nonatomic) UISwitch *switchControl; // @synthesize switchControl=_switchControl;
-@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) UIView *featureImageView; // @synthesize featureImageView=_featureImageView;
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (void)_updateTitleIndent;
 - (void)_updateTitleLeadingAnchor;
 - (void)_updateImageViewAnchors;
 - (void)_updateLabelHyphenationFactor;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (void)layoutMarginsDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

@@ -13,7 +13,7 @@
     PKDrawing *_inputDrawing;
     _Bool _inputContainsInProgressStroke;
     NSDate *_entryDate;
-    NSString *_recognitionLocaleIdentifier;
+    NSArray *_recognitionLocaleIdentifiers;
     NSArray *_inputTargets;
     CHTextInputTargetContentInfo *_inputTargetContentInfo;
     NSString *_inputTargetElementType;
@@ -46,13 +46,13 @@
 @property(copy, nonatomic) NSArray *inputTargets; // @synthesize inputTargets=_inputTargets;
 @property(nonatomic) _Bool inputContainsInProgressStroke; // @synthesize inputContainsInProgressStroke=_inputContainsInProgressStroke;
 @property(retain, nonatomic) PKDrawing *inputDrawing; // @synthesize inputDrawing=_inputDrawing;
-@property(copy, nonatomic) NSString *recognitionLocaleIdentifier; // @synthesize recognitionLocaleIdentifier=_recognitionLocaleIdentifier;
+@property(copy, nonatomic) NSArray *recognitionLocaleIdentifiers; // @synthesize recognitionLocaleIdentifiers=_recognitionLocaleIdentifiers;
 @property(retain, nonatomic) NSDate *entryDate; // @synthesize entryDate=_entryDate;
 - (id)dictionaryRepresentationWithDetailLevel:(long long)arg1 targetContentLevel:(long long)arg2;
 - (id)dictionaryRepresentationWithTargetContentLevel:(long long)arg1;
 - (id)referenceSubstringWithTargetContentLevel:(long long)arg1;
 - (id)mediumDescription;
-- (_Bool)_isResultTypeText;
+@property(readonly, nonatomic) long long resultType;
 - (id)minimalDescription;
 - (id)description;
 

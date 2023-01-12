@@ -6,12 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel;
+@class UILabel;
 
 @interface CAMBurstIndicatorView : UIView
 {
     long long _layoutStyle;
-    NSString *_contentSizeCategory;
     UIView *__backgroundView;
     UILabel *__countLabel;
     long long __numberOfPhotos;
@@ -21,7 +20,6 @@
 @property(readonly, nonatomic) long long _numberOfPhotos; // @synthesize _numberOfPhotos=__numberOfPhotos;
 @property(readonly, nonatomic) UILabel *_countLabel; // @synthesize _countLabel=__countLabel;
 @property(readonly, nonatomic) UIView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
-@property(copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 - (void)_updateAttributes;
 - (void)_updateCountLabelWithNumberOfPhotos;
@@ -29,6 +27,7 @@
 - (void)reset;
 - (long long)incrementWithCaptureAnimation:(_Bool)arg1;
 - (void)finishIncrementingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (id)initWithCoder:(id)arg1;

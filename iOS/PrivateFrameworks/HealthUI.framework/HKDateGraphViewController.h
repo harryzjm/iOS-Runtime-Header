@@ -6,16 +6,19 @@
 
 #import <HealthUI/HKGraphViewDelegate-Protocol.h>
 
-@class NSString;
+@class NSCalendar, NSString;
 
 @interface HKDateGraphViewController <HKGraphViewDelegate>
 {
     _Bool _hasSetVisibleDateRange;
     _Bool _disableXAxis;
     long long _dayScopeType;
+    NSCalendar *_currentCalendar;
     struct CGSize _minimumSize;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSCalendar *currentCalendar; // @synthesize currentCalendar=_currentCalendar;
 @property(nonatomic) long long dayScopeType; // @synthesize dayScopeType=_dayScopeType;
 @property(nonatomic) _Bool disableXAxis; // @synthesize disableXAxis=_disableXAxis;
 @property(nonatomic) struct CGSize minimumSize; // @synthesize minimumSize=_minimumSize;
@@ -26,13 +29,13 @@
 - (id)_dateAxisStyle;
 - (id)_xAxisLabelFont;
 - (void)_setupGraphViewSelectionStyle;
-- (id)_createGraphViewWithDateZoom:(long long)arg1 previousDateZoom:(long long)arg2 previousXAxisSpace:(double)arg3;
+- (id)_createGraphViewWithDateZoom:(long long)arg1 previousDateZoom:(long long)arg2 previousXAxisSpace:(double)arg3 currentCalendar:(id)arg4;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDateZoom:(long long)arg1 previousDateZoom:(long long)arg2 previousXAxisSpace:(double)arg3;
+- (id)initWithDateZoom:(long long)arg1 previousDateZoom:(long long)arg2 previousXAxisSpace:(double)arg3 currentCalendar:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

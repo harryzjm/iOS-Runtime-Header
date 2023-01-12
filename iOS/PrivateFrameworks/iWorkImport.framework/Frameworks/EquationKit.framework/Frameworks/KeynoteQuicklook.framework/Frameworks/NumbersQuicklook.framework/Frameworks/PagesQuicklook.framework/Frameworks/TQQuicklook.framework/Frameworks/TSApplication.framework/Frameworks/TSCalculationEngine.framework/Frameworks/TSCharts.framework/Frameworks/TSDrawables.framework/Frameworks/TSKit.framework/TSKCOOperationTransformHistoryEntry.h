@@ -17,8 +17,8 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (_Bool)applyResult:(const shared_ptr_f167ad79 *)arg1;
-- (id)initWithOriginalOperation:(const shared_ptr_f167ad79 *)arg1 transformingOperation:(const shared_ptr_f167ad79 *)arg2;
+- (_Bool)applyResult:(const void *)arg1;
+- (id)initWithOriginalOperation:(const void *)arg1 transformingOperation:(const void *)arg2;
 
 @end
 

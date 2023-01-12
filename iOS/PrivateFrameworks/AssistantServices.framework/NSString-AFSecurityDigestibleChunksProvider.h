@@ -16,6 +16,7 @@
 - (_Bool)_afpreferences_isLanguageCodePrefix;
 - (id)_af_stringByRemovingSuffix:(id)arg1;
 - (id)_af_stringByRemovingPrefixWithLength:(unsigned long long)arg1;
+- (id)ad_shortDescription;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

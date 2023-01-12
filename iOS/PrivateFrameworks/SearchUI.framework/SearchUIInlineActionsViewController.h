@@ -9,23 +9,22 @@
 #import <SearchUI/CNUIObjectViewControllerDelegate-Protocol.h>
 #import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class CNContactInlineActionsViewController, NSString, UIView;
+@class CNActionView, CNContactInlineActionsViewController, NSString;
 
 @interface SearchUIInlineActionsViewController <CNContactInlineActionsViewControllerDelegate, CNUIObjectViewControllerDelegate, CNActionViewDelegate, NUIContainerViewDelegate>
 {
+    CNActionView *_messageButton;
     CNContactInlineActionsViewController *_inlineActionsViewController;
-    UIView *_messageButton;
-    UIView *_directionsButton;
+    CNActionView *_directionsButton;
 }
 
-+ (id)directionsButtonImage;
 + (_Bool)supportsRowModel:(id)arg1;
 + (void)clearInlineActionsCache;
 + (id)inlineActionsCache;
 - (void).cxx_destruct;
-@property(retain, nonatomic) UIView *directionsButton; // @synthesize directionsButton=_directionsButton;
-@property(retain, nonatomic) UIView *messageButton; // @synthesize messageButton=_messageButton;
+@property(retain, nonatomic) CNActionView *directionsButton; // @synthesize directionsButton=_directionsButton;
 @property(retain, nonatomic) CNContactInlineActionsViewController *inlineActionsViewController; // @synthesize inlineActionsViewController=_inlineActionsViewController;
+@property(retain, nonatomic) CNActionView *messageButton; // @synthesize messageButton=_messageButton;
 - (unsigned long long)type;
 - (void)contactInlineActionsViewController:(id)arg1 willPerformActionOfType:(id)arg2;
 - (id)hostingViewControllerForController:(id)arg1;
@@ -33,6 +32,7 @@
 - (void)updateWithRowModel:(id)arg1;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)didPressActionView:(id)arg1 longPress:(_Bool)arg2;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (id)setupView;
 
 // Remaining properties

@@ -12,7 +12,7 @@
 {
     struct AugmentableInspectorController *_inspectorController;
     struct RetainPtr<RWIProtocolConfiguration> _configuration;
-    struct unique_ptr<RWIAugmentableInspectorControllerClient, std::__1::default_delete<RWIAugmentableInspectorControllerClient>> _inspectorControllerClient;
+    struct unique_ptr<RWIAugmentableInspectorControllerClient, std::default_delete<RWIAugmentableInspectorControllerClient>> _inspectorControllerClient;
 }
 
 - (id).cxx_construct;

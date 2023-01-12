@@ -10,9 +10,14 @@
 {
 }
 
++ (_Bool)isANECompilationPlatform;
++ (_Bool)isNeuralTTSPlatform;
 + (void)compileANEModel:(id)arg1;
 + (_Bool)isANEModelCompiled:(id)arg1;
++ (_Bool)hasOTAANEModel:(id)arg1;
 + (_Bool)isNeuralVoiceReady:(id)arg1;
++ (_Bool)hasANE;
++ (_Bool)hasAMX;
 
 @end
 

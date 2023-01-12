@@ -9,6 +9,7 @@
 @class MPCMediaFoundationTranslator;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface MPCItemBookmarker : NSObject
 {
     MPCMediaFoundationTranslator *_translator;
@@ -28,6 +29,7 @@
 - (void)itemDidPlayToEnd:(id)arg1 time:(double)arg2;
 - (void)itemDidResignCurrent:(id)arg1 time:(double)arg2;
 - (void)itemDidBecomeCurrent:(id)arg1 time:(double)arg2;
+- (void)currentItemWillChangeFromItem:(id)arg1 toItem:(id)arg2 time:(double)arg3;
 - (void)userDidSkipDuringPlaybackFromItem:(id)arg1 direction:(long long)arg2;
 - (id)initWithTranslator:(id)arg1;
 

@@ -7,6 +7,7 @@
 #import <CoverSheet/NSObject-Protocol.h>
 
 @protocol SBUIPoseidonContainerViewControllerLockStatusProvider <NSObject>
+@property(readonly, nonatomic) _Bool hasBiometricAuthenticationCapabilityEnabled;
 @property(readonly, nonatomic) _Bool isBiometricLockedOut;
 @end
 

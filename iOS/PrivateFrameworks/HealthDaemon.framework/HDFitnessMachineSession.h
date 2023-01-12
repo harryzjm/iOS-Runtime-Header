@@ -36,7 +36,6 @@
 
 + (id)serviceFromRecoveryConfiguration:(id)arg1;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *oobDataArray; // @synthesize oobDataArray=_oobDataArray;
 @property(readonly, nonatomic) _Bool waitingOnActivityType; // @synthesize waitingOnActivityType=_waitingOnActivityType;
 @property(readonly, nonatomic) _Bool waitingOnBluetoothConnection; // @synthesize waitingOnBluetoothConnection=_waitingOnBluetoothConnection;
 @property(readonly, nonatomic) _Bool waitingOnMFA; // @synthesize waitingOnMFA=_waitingOnMFA;
@@ -58,7 +57,6 @@
 @property(nonatomic) unsigned long long healthServiceSessionIdentifier; // @synthesize healthServiceSessionIdentifier=_healthServiceSessionIdentifier;
 @property(readonly, nonatomic) NSData *nfcSessionIDData; // @synthesize nfcSessionIDData=_nfcSessionIDData;
 @property(readonly, nonatomic) NSUUID *fitnessMachineSessionUUID; // @synthesize fitnessMachineSessionUUID=_fitnessMachineSessionUUID;
-- (id)_oobDataArrayWithRandomValue:(id)arg1 confirmationValue:(id)arg2 sessionID:(id)arg3 btAddress:(id)arg4;
 @property(readonly, nonatomic) NSArray *nfcConnectionHandoverData;
 - (void)markActivityTypeProvided;
 - (void)markMFAAuthenticated;
@@ -71,7 +69,6 @@
 - (id)initWithRecoveryConfiguration:(id)arg1;
 - (id)init;
 - (id)initWithNFCSessionIDData:(id)arg1;
-- (id)_initWithFitnessMachineSessionUUID:(id)arg1;
 
 @end
 

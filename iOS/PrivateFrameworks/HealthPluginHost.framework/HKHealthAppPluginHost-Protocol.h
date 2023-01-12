@@ -7,8 +7,14 @@
 @class NSArray, NSDateInterval, NSProgress, NSString;
 
 @protocol HKHealthAppPluginHost
-- (void)populateFeedsWithCompletion:(void (^)(void))arg1;
-- (NSProgress *)runBackgroundGenerationFor:(NSDateInterval *)arg1 pluginIdentifiers:(NSArray *)arg2 completion:(void (^)(_Bool))arg3;
-- (NSProgress *)runBackgroundGenerationFor:(NSDateInterval *)arg1 pluginIdentifier:(NSString *)arg2 completion:(void (^)(_Bool))arg3;
+- (void)invalidateStoreCache;
+- (void)cancelAllGenerationAndRunBackgroundGenerationForGenerationType:(unsigned long long)arg1 commitUrgentTransaction:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
+- (void)requestBackgroundGenerationForAllModelsAfterUnlockWithCompletion:(void (^)(void))arg1;
+- (void)requestBackgroundGenerationForFeedItemsAfterUnlockWithCompletion:(void (^)(void))arg1;
+- (void)handleJournaledSharingEntries:(NSArray *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)cancelAllGenerationWithCompletion:(void (^)(void))arg1;
+- (NSProgress *)runBackgroundGenerationFor:(NSDateInterval *)arg1 pluginIdentifiers:(NSArray *)arg2 commitUrgentTransaction:(_Bool)arg3 generationType:(unsigned long long)arg4 completion:(void (^)(_Bool))arg5;
+- (NSProgress *)runBackgroundGenerationFor:(NSDateInterval *)arg1 pluginIdentifiers:(NSArray *)arg2 commitUrgentTransaction:(_Bool)arg3 feedItemsOnly:(_Bool)arg4 completion:(void (^)(_Bool))arg5;
+- (NSProgress *)runBackgroundGenerationFor:(NSDateInterval *)arg1 pluginIdentifier:(NSString *)arg2 commitUrgentTransaction:(_Bool)arg3 feedItemsOnly:(_Bool)arg4 completion:(void (^)(_Bool))arg5;
 @end
 

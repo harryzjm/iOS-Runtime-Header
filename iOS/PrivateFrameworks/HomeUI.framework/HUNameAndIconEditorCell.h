@@ -17,6 +17,7 @@
 {
     _Bool _disabled;
     _Bool _fullWidth;
+    _Bool _hideIconButton;
     HFItem *_item;
     id <HUNameAndIconEditorCellDelegate> _delegate;
     HUIconButton *_iconButton;
@@ -24,22 +25,27 @@
     UITextField *_textField;
     NSLayoutConstraint *_leftConstraint;
     NSLayoutConstraint *_rightConstraint;
+    NSLayoutConstraint *_textFieldLeadingConstraint;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSLayoutConstraint *textFieldLeadingConstraint; // @synthesize textFieldLeadingConstraint=_textFieldLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *rightConstraint; // @synthesize rightConstraint=_rightConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *leftConstraint; // @synthesize leftConstraint=_leftConstraint;
 @property(retain, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property(nonatomic) _Bool hideIconButton; // @synthesize hideIconButton=_hideIconButton;
 @property(nonatomic) _Bool fullWidth; // @synthesize fullWidth=_fullWidth;
 @property(retain, nonatomic) HUIconButton *iconButton; // @synthesize iconButton=_iconButton;
 @property(nonatomic) __weak id <HUNameAndIconEditorCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
+- (void)_updateDisabled;
 - (void)updateUIWithAnimation:(_Bool)arg1;
 - (void)_handleIconButtonTap:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateFullWidthAppearance;
+- (void)_updateTextFieldInset;
 @property(retain, nonatomic) UIFont *textFieldFont;
 - (void)_setupConstraints;
 - (void)prepareForReuse;

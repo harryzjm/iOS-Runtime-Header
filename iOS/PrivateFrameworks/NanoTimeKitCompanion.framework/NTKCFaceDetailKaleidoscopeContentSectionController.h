@@ -6,13 +6,13 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailKaleidoscopeEditOptionCellDelegate-Protocol.h>
 
-@class NSString, NTKCompanionKaleidoscopeEditor, UIImagePickerController, UIViewController;
+@class NSString, NTKCompanionKaleidoscopeEditor, UIViewController;
 @protocol NTKCFaceDetailEditOptionSectionDelegate;
 
 @interface NTKCFaceDetailKaleidoscopeContentSectionController <NTKCFaceDetailKaleidoscopeEditOptionCellDelegate>
 {
     NTKCompanionKaleidoscopeEditor *_editor;
-    UIImagePickerController *_presentedPicker;
+    UIViewController *_presentedPicker;
     unsigned long long _currentAsset;
     _Bool _externalAssetSet;
     id <NTKCFaceDetailEditOptionSectionDelegate> delegate;
@@ -36,6 +36,7 @@
 - (_Bool)_canDisplayActionRowForCustomEditMode:(long long)arg1 andOption:(id)arg2;
 - (void)kaleidoscopeEditOptionCellDidSelectUserOption:(id)arg1;
 - (void)setSelectedOptions:(id)arg1;
+- (Class)actionRowCellClass;
 - (Class)editCellClass;
 - (_Bool)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;
 - (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(_Bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;

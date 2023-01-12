@@ -17,6 +17,7 @@
 @property(readonly, copy) NSString *description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 @property(readonly, nonatomic) long long mapStyle;
+@property(readonly, nonatomic) unsigned long long showsETA;
 @property(readonly, nonatomic) unsigned long long showsSpeedLimit;
 @property(readonly, nonatomic) unsigned long long showsCompass;
 @property(readonly, nonatomic) unsigned long long itemType;

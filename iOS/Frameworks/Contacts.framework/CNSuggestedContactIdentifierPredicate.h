@@ -15,8 +15,8 @@
 
 + (_Bool)supportsSecureCoding;
 @property(readonly) unsigned long long suggestionIdentifier; // @synthesize suggestionIdentifier=_suggestionIdentifier;
-@property(readonly, copy) NSString *description;
 - (id)sgContactMatchesWithSortOrder:(long long)arg1 mutableObjects:(_Bool)arg2 service:(id)arg3 error:(id *)arg4;
+@property(readonly, copy) NSString *description;
 - (_Bool)cn_supportsNativeSorting;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

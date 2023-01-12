@@ -8,9 +8,5 @@
 #import <WorkflowEditor/WFTextTokenField-Protocol.h>
 
 @protocol WFTextTokenFieldImpl <WFTextTokenField, UITextInput>
-- (void)deleteBackward;
-- (void)defaultPaste:(id)arg1;
-- (void)defaultCopy:(id)arg1;
-- (void)defaultCut:(id)arg1;
 @end
 

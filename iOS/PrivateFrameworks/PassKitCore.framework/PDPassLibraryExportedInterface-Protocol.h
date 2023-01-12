@@ -6,11 +6,12 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSData, NSSet, NSString, PKAddSecureElementPassConfiguration, PKCatalog, PKDisplayProfile, PKMapsTransitRouteInfo, PKPaymentMarket;
+@class NSArray, NSData, NSSet, NSString, PKAddSecureElementPassConfiguration, PKCatalog, PKDisplayProfile, PKGroupsControllerSnapshotFetchOptions, PKMapsTransitRouteInfo, PKPaymentMarket;
 
 @protocol PDPassLibraryExportedInterface <PDXPCServiceExportedInterface>
 - (void)signData:(NSData *)arg1 forPassUniqueID:(NSString *)arg2 completion:(void (^)(NSData *, NSData *, NSError *))arg3;
-- (void)canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)usingSynchronousProxy:(_Bool)arg1 canAddSecureElementPassWithConfiguration:(PKAddSecureElementPassConfiguration *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 getPassForProvisioningCredentialHash:(NSString *)arg2 handler:(void (^)(PKPass *))arg3;
 - (void)usingSynchronousProxy:(_Bool)arg1 passLocalizedStringForKey:(NSString *)arg2 uniqueID:(NSString *)arg3 completion:(void (^)(NSString *))arg4;
 - (void)postUpgradedPassNotificationForMarket:(PKPaymentMarket *)arg1 passUniqueID:(NSString *)arg2;
 - (void)checkForTransitNotification;
@@ -33,6 +34,7 @@
 - (void)hasPassesOfType:(unsigned long long)arg1 handler:(void (^)(_Bool))arg2;
 - (void)submitVerificationCode:(NSString *)arg1 verificationData:(NSData *)arg2 forPassWithUniqueID:(NSString *)arg3 handler:(void (^)(_Bool, NSError *))arg4;
 - (void)isPaymentPassActivationAvailableWithHandler:(void (^)(_Bool))arg1;
+- (void)usingSynchronousProxy:(_Bool)arg1 getServiceProviderDataForUniqueID:(NSString *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (void)getArchivedObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
 - (void)getDataForBundleResourceNamed:(NSString *)arg1 withExtension:(NSString *)arg2 objectUniqueIdentifier:(NSString *)arg3 handler:(void (^)(NSData *))arg4;
 - (void)getImageSetForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 suffix:(NSString *)arg4 handler:(void (^)(PKImageSet *))arg5;
@@ -43,6 +45,7 @@
 - (void)getPassesOfType:(unsigned long long)arg1 handler:(void (^)(NSSet *))arg2;
 - (void)getPassesWithHandler:(void (^)(NSSet *))arg1;
 - (void)sendUserEditedCatalog:(PKCatalog *)arg1;
+- (void)getGroupsControllerSnapshotWithOptions:(PKGroupsControllerSnapshotFetchOptions *)arg1 handler:(void (^)(PKGroupsControllerSnapshot *))arg2;
 - (void)getPassesAndCatalogOfPassTypes:(unsigned long long)arg1 limitResults:(_Bool)arg2 withHandler:(void (^)(NSSet *, PKCatalog *))arg3;
 - (void)removePassesWithUniqueIDs:(NSArray *)arg1 diagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)removePassWithUniqueID:(NSString *)arg1 diagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;

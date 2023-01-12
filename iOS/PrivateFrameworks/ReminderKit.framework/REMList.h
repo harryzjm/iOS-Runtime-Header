@@ -10,12 +10,12 @@
 #import <ReminderKit/REMDAChangedModelObjectResult-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
-#import <ReminderKit/REMSortingStyleReadonlyProtocol-Protocol.h>
+#import <ReminderKit/REMSupportedVersionProviding-Protocol.h>
 #import <ReminderKit/_REMDAChangeTrackableModel-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSOrderedSet, NSSet, NSString, REMAccount, REMColor, REMListAppearanceContext, REMListCalDAVNotificationContext, REMListShareeContext, REMListStorage, REMListSublistContext, REMObjectID, REMResolutionTokenMap, REMStore;
 
-@interface REMList : NSObject <REMDAChangeTrackableFetchableModel, REMDAChangedModelObjectResult, _REMDAChangeTrackableModel, REMObjectIDProviding, REMExternalSyncMetadataProviding, REMSortingStyleReadonlyProtocol>
+@interface REMList : NSObject <REMDAChangeTrackableFetchableModel, REMDAChangedModelObjectResult, _REMDAChangeTrackableModel, REMObjectIDProviding, REMExternalSyncMetadataProviding, REMSupportedVersionProviding>
 {
     REMStore *_store;
     REMListStorage *_storage;
@@ -26,18 +26,19 @@
 + (id)cdEntityName;
 + (id)objectIDWithUUID:(id)arg1;
 + (id)newObjectID;
++ (_Bool)isOwnedByMeWithSharingStatus:(long long)arg1;
 + (_Bool)isSharedWithShareeCount:(unsigned long long)arg1 sharingStatus:(long long)arg2;
 + (id)localAccountDefaultListID;
 + (id)siriFoundInAppsListID;
 + (id)fetchRequestWithPredicateDescriptor:(id)arg1 sortDescriptors:(id)arg2;
 + (_Bool)isChangeTrackableFetchableModel;
 + (_Bool)isChangeTrackableModel;
-+ (CDUnknownBlockType)rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
++ (CDUnknownBlockType)rem_DA_deletedKeyFromConcealedModelObjectBlock;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromTombstoneBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDsBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDBlock;
-+ (id)rem_DA_lazyDeleteProperties;
-+ (_Bool)rem_DA_supportsLazyDelete;
++ (id)rem_DA_propertiesAffectingIsConcealed;
++ (_Bool)rem_DA_supportsConcealedObjects;
 + (_Bool)rem_DA_supportsFetching;
 - (void).cxx_destruct;
 @property(retain, nonatomic) REMList *parentList; // @synthesize parentList=_parentList;
@@ -45,12 +46,15 @@
 @property(copy, nonatomic) REMListStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) REMStore *store; // @synthesize store=_store;
 - (void)hack_overrideReminderIDsOrderingWithOrderedObjectIDs:(id)arg1;
+- (_Bool)shouldUseExternalIdentifierAsDeletionKey;
 @property(readonly, nonatomic) NSString *externalIdentifierForMarkedForDeletionObject;
+- (_Bool)isUnsupported;
 @property(readonly, nonatomic) REMObjectID *remObjectID;
 - (id)fetchRemindersWithExternalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)fetchReminderWithExternalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)sharingStatusText;
 - (id)formattedSharedOwnerName;
+- (id)fetchRemindersCountWithError:(id *)arg1;
 - (id)fetchRemindersAndSubtasksWithError:(id *)arg1;
 - (id)fetchRemindersWithError:(id *)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -72,12 +76,15 @@
 @property(readonly, nonatomic) REMListCalDAVNotificationContext *calDAVNotificationContext;
 @property(readonly, nonatomic) REMListSublistContext *sublistContext;
 @property(readonly, nonatomic) REMListAppearanceContext *appearanceContext;
+- (id)optionalObjectID;
 - (id)initWithStore:(id)arg1 account:(id)arg2 storage:(id)arg3;
 
 // Remaining properties
 @property(readonly, nonatomic) REMObjectID *accountID; // @dynamic accountID;
 @property(readonly, nonatomic) NSString *badgeEmblem; // @dynamic badgeEmblem;
 @property(readonly, nonatomic) NSArray *calDAVNotifications; // @dynamic calDAVNotifications;
+@property(readonly, nonatomic) NSSet *childListIDsToUndelete; // @dynamic childListIDsToUndelete;
+@property(readonly, nonatomic) NSSet *childSmartListIDsToUndelete; // @dynamic childSmartListIDsToUndelete;
 @property(readonly, nonatomic) REMColor *color; // @dynamic color;
 @property(readonly, nonatomic) NSString *currentUserShareParticipantID; // @dynamic currentUserShareParticipantID;
 @property(readonly, nonatomic) NSDictionary *daBulkRequests; // @dynamic daBulkRequests;
@@ -90,11 +97,13 @@
 @property(readonly, nonatomic) NSString *daPushKey; // @dynamic daPushKey;
 @property(readonly, nonatomic) NSString *daSyncToken; // @dynamic daSyncToken;
 @property(readonly, nonatomic) NSString *displayName; // @dynamic displayName;
+@property(readonly, nonatomic) long long effectiveMinimumSupportedVersion; // @dynamic effectiveMinimumSupportedVersion;
 @property(readonly, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
 @property(readonly, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property(readonly, nonatomic) _Bool isGroup; // @dynamic isGroup;
 @property(nonatomic) _Bool isPlaceholder; // @dynamic isPlaceholder;
 @property(readonly, copy, nonatomic) NSDate *lastUserAccessDate; // @dynamic lastUserAccessDate;
+@property(readonly, nonatomic) long long minimumSupportedVersion; // @dynamic minimumSupportedVersion;
 @property(readonly, nonatomic) NSString *name; // @dynamic name;
 @property(readonly, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property(readonly, nonatomic) REMObjectID *parentAccountID; // @dynamic parentAccountID;
@@ -112,7 +121,6 @@
 @property(readonly, nonatomic) NSArray *sharees; // @dynamic sharees;
 @property(readonly, nonatomic) long long sharingStatus; // @dynamic sharingStatus;
 @property(readonly, nonatomic) _Bool showingLargeAttachments; // @dynamic showingLargeAttachments;
-@property(readonly, nonatomic) long long sortingDirection; // @dynamic sortingDirection;
 @property(readonly, nonatomic) NSString *sortingStyle; // @dynamic sortingStyle;
 @property(readonly) Class superclass;
 

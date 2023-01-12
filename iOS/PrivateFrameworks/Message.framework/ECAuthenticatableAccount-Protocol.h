@@ -12,8 +12,8 @@
 @property(readonly, nonatomic) NSString *oauth2Token;
 @property(readonly, nonatomic) NSString *domain;
 @property(readonly, copy, nonatomic) NSString *hostname;
-@property(readonly, copy) NSString *password;
-@property(readonly) NSString *username;
+@property(readonly, copy, nonatomic) NSString *password;
+@property(readonly, copy, nonatomic) NSString *username;
 - (void)setMissingPasswordError;
 @end
 

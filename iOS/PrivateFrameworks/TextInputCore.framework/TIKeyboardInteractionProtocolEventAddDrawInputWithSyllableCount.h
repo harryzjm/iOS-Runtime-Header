@@ -15,6 +15,7 @@
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSNumber *syllableCount; // @synthesize syllableCount=_syllableCount;
 @property(readonly, copy) NSString *description;
 - (void)sendTo:(id)arg1;
 - (id)initWithCoder:(id)arg1;

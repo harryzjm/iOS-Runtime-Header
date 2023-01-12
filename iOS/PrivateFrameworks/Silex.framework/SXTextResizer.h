@@ -16,14 +16,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool fontScalingEnabled; // @synthesize fontScalingEnabled=_fontScalingEnabled;
-@property(readonly, nonatomic) SXComponentTextStyle *defaultTextStyle; // @synthesize defaultTextStyle=_defaultTextStyle;
-@property(readonly, nonatomic) SXColumnLayout *columnLayout; // @synthesize columnLayout=_columnLayout;
-- (double)normalizedFontSizeForSize:(double)arg1;
-- (unsigned long long)resizeDropCapNumberOfLines:(long long)arg1;
-- (double)preferredFontSizeForUsage:(id)arg1 contentSizeCategoryName:(id)arg2 fontSize:(long long)arg3;
-- (long long)resizeTextSize:(long long)arg1 fontResizingThreshold:(double)arg2 fontSizeConstant:(double)arg3 contentSizeCategory:(id)arg4 fontTextStyle:(id)arg5;
-- (id)initWithColumnLayout:(id)arg1 defaultTextStyle:(id)arg2 fontScalingEnabled:(_Bool)arg3;
 
 @end
 

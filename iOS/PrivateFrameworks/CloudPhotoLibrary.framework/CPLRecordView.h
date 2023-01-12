@@ -6,15 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class CPLRecordChange, CPLScopedIdentifier;
+@class CPLPlaceholderRecord, CPLRecordChange, CPLScopedIdentifier, NSData;
 
 @interface CPLRecordView : NSObject
 {
 }
 
+@property(readonly, nonatomic) NSData *recordChangeData;
+- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3;
+- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 diffTracker:(id)arg4;
+- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 changeType:(unsigned long long)arg4 diffTracker:(id)arg5;
 - (id)redactedDescription;
 - (id)description;
 - (id)changeForType:(unsigned long long)arg1;
+@property(readonly, nonatomic) CPLPlaceholderRecord *placeholderRecord;
 @property(readonly, nonatomic) CPLRecordChange *synthesizedRecord;
 @property(readonly, nonatomic) CPLScopedIdentifier *scopedIdentifier;
 - (_Bool)supportsResources;

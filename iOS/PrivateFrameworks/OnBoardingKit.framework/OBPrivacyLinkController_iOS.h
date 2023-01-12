@@ -15,6 +15,8 @@
 
 - (void).cxx_destruct;
 - (_Bool)_canShowWhileLocked;
+- (void)setUnderlineLinks:(_Bool)arg1;
+- (void)setCustomTintColor:(id)arg1;
 @property(readonly) UITextView *textView;
 @property(readonly) UIImageView *iconView;
 - (void)setLinkEnabled:(_Bool)arg1;

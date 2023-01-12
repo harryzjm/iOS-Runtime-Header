@@ -50,7 +50,7 @@
 - (void)sliderDidChange:(id)arg1;
 @property(nonatomic) unsigned long long numberOfSteps; // @synthesize numberOfSteps=_numberOfSteps;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1 andStyle:(long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 andModule:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

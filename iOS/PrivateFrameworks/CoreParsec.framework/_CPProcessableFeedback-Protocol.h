@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreParsec/_CPFeedbackJSONObject-Protocol.h>
+#import <CoreParsec/NSObject-Protocol.h>
 
-@protocol _CPProcessableFeedback <_CPFeedbackJSONObject>
+@protocol _CPProcessableFeedback <NSObject>
 @property(nonatomic) unsigned long long timestamp;
 @end
 

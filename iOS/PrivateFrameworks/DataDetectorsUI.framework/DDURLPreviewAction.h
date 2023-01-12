@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)previewActionsWithURL:(id)arg1 validatedURL:(id)arg2 result:(struct __DDResult *)arg3 context:(id)arg4;
 + (_Bool)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
 + (id)validatedURLWithURL:(id)arg1 result:(struct __DDResult *)arg2;
 - (id)commitURL;

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class RBProcess, RBSAssertionDescriptor;
+@protocol RBDaemonContextProviding;
 
 @interface RBAssertionAcquisitionContext : NSObject
 {
@@ -16,11 +17,13 @@
     RBSAssertionDescriptor *_descriptor;
     unsigned long long _acquisitionPolicy;
     id _holdToken;
+    id <RBDaemonContextProviding> _daemonContext;
 }
 
-+ (id)contextForProcess:(id)arg1 withDescriptor:(id)arg2;
++ (id)contextForProcess:(id)arg1 withDescriptor:(id)arg2 daemonContext:(id)arg3;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool unitTesting; // @synthesize unitTesting=_unitTesting;
+@property(readonly, nonatomic) id <RBDaemonContextProviding> daemonContext; // @synthesize daemonContext=_daemonContext;
 @property(retain, nonatomic) id holdToken; // @synthesize holdToken=_holdToken;
 @property(nonatomic) unsigned long long acquisitionPolicy; // @synthesize acquisitionPolicy=_acquisitionPolicy;
 @property(nonatomic) _Bool allowAbstractTarget; // @synthesize allowAbstractTarget=_allowAbstractTarget;

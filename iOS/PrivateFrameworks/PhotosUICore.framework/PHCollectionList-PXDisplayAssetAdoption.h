@@ -13,6 +13,8 @@
 @interface PHCollectionList (PXDisplayAssetAdoption) <PXDisplayCollectionList>
 + (id)px_otherAlbumsWithoutDeletedCollectionList;
 + (id)px_otherAlbumsCollectionList;
++ (id)px_otherAlbumsSidebarCollectionList;
++ (id)_otherAlbumAssetCollectionsIncludingRecentlyDeleted:(_Bool)arg1 includingDebugAlbums:(_Bool)arg2;
 + (id)px_mediaTypesCollectionList;
 + (id)px_sharedAlbumsAndActivityCollectionList;
 + (id)px_sharedAlbumsCollectionList;
@@ -28,6 +30,7 @@
 @property(readonly, nonatomic) _Bool px_isFolder;
 - (_Bool)px_isTransientCollectionWithIdentifier:(id)arg1;
 - (_Bool)px_isContainedInCollectionList:(id)arg1;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationFolder;
 @property(readonly, nonatomic) _Bool px_isProjectsFolder;
 @property(readonly, nonatomic) _Bool px_isMediaTypesFolder;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsAndActivityFolder;
@@ -45,10 +48,21 @@
 @property(readonly, nonatomic) NSString *localizedTitle;
 @property(readonly, nonatomic) _Bool px_allowsImplicitSelectionForProjectOrSharingAction;
 @property(readonly, nonatomic) _Bool px_canAddContent;
+@property(readonly, nonatomic) _Bool px_canCreateContent;
+@property(readonly, nonatomic) _Bool px_canDeleteContent;
 @property(readonly, nonatomic) _Bool px_canRearrangeContent;
+@property(readonly, nonatomic) _Bool px_canRemoveContent;
 @property(readonly, nonatomic) id px_cheapLogIdentifier;
 @property(readonly, nonatomic) _Bool px_isAllPhotosSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isAnimatedSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isBurstsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isCinematicSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isCloudMultipleContributorsEnabled;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationAlbum;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationAllPhotosAlbum;
+@property(readonly, nonatomic) _Bool px_isContentSyndicationVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isDeletable;
+@property(readonly, nonatomic) _Bool px_isDepthEffectSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isFavoritesSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isForYouVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isHiddenSmartAlbum;
@@ -57,10 +71,15 @@
 @property(readonly, nonatomic) _Bool px_isImportSessionCollection;
 @property(readonly, nonatomic) _Bool px_isImportedAlbum;
 @property(readonly, nonatomic) _Bool px_isInReadWriteCloudLibrary;
+@property(readonly, nonatomic) _Bool px_isLivePhotosSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isLongExposuresSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isMacSyncedAlbum;
+@property(readonly, nonatomic) _Bool px_isMacSyncedFacesAlbum;
+@property(readonly, nonatomic) _Bool px_isMacSyncedRegularAlbum;
 @property(readonly, nonatomic) _Bool px_isMediaTypeSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isMemoriesVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMoment;
+@property(readonly, nonatomic) _Bool px_isMomentShare;
 @property(readonly, nonatomic) _Bool px_isMomentsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMyAlbumsVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isMyPhotoStreamAlbum;
@@ -70,21 +89,29 @@
 @property(readonly, nonatomic) _Bool px_isPhotosVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isPlacesSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isProject;
+@property(readonly, nonatomic) _Bool px_isRAWSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentlyAddedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentlyDeletedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentlyEditedSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRecentsSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isRegularAlbum;
+@property(readonly, nonatomic) _Bool px_isRenamable;
 @property(readonly, nonatomic) _Bool px_isRootSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isScreenRecordingsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isScreenshotsSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isSelfPortraitsSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSharedActivityVirtualCollection;
 @property(readonly, nonatomic) _Bool px_isSharedAlbum;
 @property(readonly, nonatomic) _Bool px_isSharedAlbumsVirtualCollection;
+@property(readonly, nonatomic) _Bool px_isSlomoVideosSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isStandInAlbum;
 @property(readonly, nonatomic) _Bool px_isSuggestion;
+@property(readonly, nonatomic) _Bool px_isTimelapsesSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isUnableToUploadSmartAlbum;
 @property(readonly, nonatomic) _Bool px_isUserCreated;
 @property(readonly, nonatomic) _Bool px_isUserSmartAlbum;
+@property(readonly, nonatomic) _Bool px_isVideosSmartAlbum;
 @property(readonly) Class superclass;
 @end
 

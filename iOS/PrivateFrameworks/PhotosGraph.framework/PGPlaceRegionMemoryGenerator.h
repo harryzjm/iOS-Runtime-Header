@@ -4,21 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class PGFeaturedTimePeriodMemoryConfiguration, PGMemoryMomentRequirements, PGOverTheYearsMemoryConfiguration;
 
 @interface PGPlaceRegionMemoryGenerator
 {
-    NSString *_region;
-    long long _year;
+    _Bool _requireSceneProcessingMeetsThresholdOverTime;
+    PGMemoryMomentRequirements *_momentRequirements;
+    PGOverTheYearsMemoryConfiguration *_overTheYearsConfiguration;
+    PGFeaturedTimePeriodMemoryConfiguration *_featuredYearConfiguration;
 }
 
-@property(nonatomic) long long year; // @synthesize year=_year;
-@property(nonatomic) NSString *region; // @synthesize region=_region;
-- (_Bool)canFallbackToDejunkAndDedupeForShowMore;
-- (id)_potentialMemoriesForDryTesting;
-- (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)_potentialMemoriesWithRegionNode:(id)arg1 inYear:(long long)arg2 result:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
+- (id)featuredYearConfiguration;
+- (id)overTheYearsConfiguration;
+- (id)momentRequirements;
+- (_Bool)requireSceneProcessingMeetsThresholdOverTime;
+- (id)titleGeneratorForTriggeredMemory:(id)arg1 withKeyAsset:(id)arg2 curatedAssets:(id)arg3 extendedCuratedAssets:(id)arg4 titleGenerationContext:(id)arg5 inGraph:(id)arg6;
+- (id)relevantCurationFeederForTriggeredMemory:(id)arg1 relevantFeeder:(id)arg2 inGraph:(id)arg3 allowGuestAsset:(_Bool)arg4 progressReporter:(id)arg5;
+- (id)relevantFeederForTriggeredMemory:(id)arg1 inGraph:(id)arg2 allowGuestAsset:(_Bool)arg3 progressReporter:(id)arg4;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 eligibleAssetUUIDs:(id)arg2 triggeredMemory:(id)arg3;
+- (id)curationOptionsWithRequiredAssetUUIDs:(id)arg1 potentialMemory:(id)arg2;
+- (id)relevantFeederWithScenedAssetLocalIdentifiers:(id)arg1 assetFetchResult:(id)arg2 graph:(id)arg3 allowGuestAsset:(_Bool)arg4;
+- (unsigned long long)durationForCuration;
+- (void)enumerateMomentNodesAndFeatureNodesInGraph:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (unsigned long long)memoryCategorySubcategoryForOverTimeType:(unsigned long long)arg1;
+- (unsigned long long)memoryCategory;
+- (id)initWithMemoryGenerationContext:(id)arg1;
 
 @end
 

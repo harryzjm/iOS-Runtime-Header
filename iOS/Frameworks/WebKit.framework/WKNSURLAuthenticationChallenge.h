@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct AuthenticationChallengeProxy *)_web_authenticationChallengeProxy;
+- (void *)_web_authenticationChallengeProxy;
 - (id)_web_createTarget;
 
 @end

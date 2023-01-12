@@ -6,30 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class PGGraph, PGManager;
+@class PHPhotoLibrary;
+@protocol OS_os_log;
 
 @interface PGSharingFeatureExtractor : NSObject
 {
-    PGManager *_manager;
-    PGGraph *_graph;
+    PHPhotoLibrary *_photoLibrary;
+    NSObject<OS_os_log> *_loggingConnection;
 }
 
 + (id)extractFeatureNodesFromAsset:(id)arg1 andPersonLocalIdentifiers:(id)arg2 inGraph:(id)arg3;
 + (id)personLocalIdentifiersByAssetUUIDFromSharingRecords:(id)arg1;
-+ (void)invalideCacheForManager:(id)arg1;
++ (void)invalidateCacheForPhotoLibrary:(id)arg1;
 + (id)recordsFilename;
 + (id)featuresFilename;
 - (void).cxx_destruct;
-- (id)extractFeaturesFromSharingRecords:(id)arg1 withProgressBlock:(CDUnknownBlockType)arg2;
+- (id)extractFeaturesFromSharingRecords:(id)arg1 withGraph:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (_Bool)persistFeatures:(id)arg1;
 - (id)persistedFeatures;
-- (id)extractSharingRecordsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (id)extractSharingRecordsWithGraph:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (_Bool)persistSharingRecords:(id)arg1;
 - (id)persistedSharingRecordsForType:(unsigned long long)arg1;
 - (id)persistedSharingRecords;
-- (void)prefetchMomentNodeAndAssetInSharingRecords:(id)arg1;
+- (void)prefetchAssetInSharingRecords:(id)arg1;
 - (id)_loadAllPersistedSharingRecordsFromDisk;
-- (id)initWithManager:(id)arg1 graph:(id)arg2;
+- (id)initWithPhotoLibrary:(id)arg1 loggingConnection:(id)arg2;
 
 @end
 

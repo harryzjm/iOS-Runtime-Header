@@ -17,7 +17,6 @@
 - (id)storeData:(id)arg1 inMessage:(id)arg2 isComplete:(_Bool)arg3;
 - (void)configureFileWrapper:(id)arg1;
 - (id)fileWrapperForDecodedObject:(id)arg1 withFileData:(id *)arg2;
-- (id)fileWrapperForcingDownload:(_Bool)arg1;
 - (id)decodeMultipartAppledouble;
 - (id)decodeTextCalendar;
 - (id)decodeTextPlain;

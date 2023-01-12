@@ -18,9 +18,13 @@
     _Bool _modalAlertStyle;
     _Bool _alwaysShowPreviews;
     _Bool _providesAppNotificationSettings;
+    _Bool _supportsTimeSensitive;
+    _Bool _supportsCriticalAlerts;
 }
 
 + (id)notificationSourceSettingsDescriptionFromDictionary:(id)arg1;
+@property(nonatomic) _Bool supportsCriticalAlerts; // @synthesize supportsCriticalAlerts=_supportsCriticalAlerts;
+@property(nonatomic) _Bool supportsTimeSensitive; // @synthesize supportsTimeSensitive=_supportsTimeSensitive;
 @property(nonatomic) _Bool providesAppNotificationSettings; // @synthesize providesAppNotificationSettings=_providesAppNotificationSettings;
 @property(nonatomic) _Bool alwaysShowPreviews; // @synthesize alwaysShowPreviews=_alwaysShowPreviews;
 @property(nonatomic) _Bool modalAlertStyle; // @synthesize modalAlertStyle=_modalAlertStyle;

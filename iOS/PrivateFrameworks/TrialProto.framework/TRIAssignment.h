@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TRICoreMLAssignmentLanguage, TRINSExpressionAssignmentLanguage, TRIPlanOutAssignmentLanguage, TRIUIAssignmentLanguage;
+@class TRICoreMLAssignmentLanguage, TRINSExpressionAssignmentLanguage, TRIPlanOutAssignmentLanguage, TRIRolloutAssignmentLanguage, TRIUIAssignmentLanguage;
 
 @interface TRIAssignment
 {
@@ -17,6 +17,7 @@
 @property(readonly, nonatomic) int languageOneOfCase; // @dynamic languageOneOfCase;
 @property(retain, nonatomic) TRINSExpressionAssignmentLanguage *nsexpressionLanguage; // @dynamic nsexpressionLanguage;
 @property(retain, nonatomic) TRIPlanOutAssignmentLanguage *planoutLanguage; // @dynamic planoutLanguage;
+@property(retain, nonatomic) TRIRolloutAssignmentLanguage *rolloutLanguage; // @dynamic rolloutLanguage;
 @property(retain, nonatomic) TRIUIAssignmentLanguage *uiLanguage; // @dynamic uiLanguage;
 
 @end

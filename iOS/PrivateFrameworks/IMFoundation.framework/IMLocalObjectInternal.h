@@ -6,22 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class IMMessageContext, NSArray, NSMutableArray, NSProtocolChecker, NSRecursiveLock, NSString;
+@class IMMessageContext, NSArray, NSMutableArray, NSProtocolChecker, NSString;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface IMLocalObjectInternal : NSObject
 {
     IMMessageContext *_currentMessageContext;
-    NSRecursiveLock *_lock;
+    struct os_unfair_recursive_lock_s _lock;
     id _target;
     NSObject<OS_xpc_object> *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_portName;
     NSString *_processName;
     NSProtocolChecker *_protocolChecker;
-    NSArray *_whitelistedClasses;
+    NSArray *_allowlistedClasses;
     struct __CFRunLoopSource *_runloopSource;
-    NSRecursiveLock *_componentQueueProcessingLock;
     NSMutableArray *_componentQueue;
     struct os_unfair_lock_s _componentQueueLock;
     _Bool _pendingComponentQueueProcessing;

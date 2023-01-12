@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)configureEpisodeDetailView:(id)arg1 withMedia:(id)arg2 viewSize:(struct CGSize)arg3;
-+ (struct CGSize)_episodeFrameImageSizeWithViewSize:(struct CGSize)arg1;
++ (struct CGSize)_episodeFrameImageSizeForDetailView:(id)arg1 withViewSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) VUIMediaTagsView *mediaBadgeTagsView; // @synthesize mediaBadgeTagsView=_mediaBadgeTagsView;
 @property(retain, nonatomic) VUIMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VUILabel *episodeTitleLabel; // @synthesize episodeTitleLabel=_episodeTitleLabel;
 @property(retain, nonatomic) VUILibraryEpisodeFrameView *imageFrameView; // @synthesize imageFrameView=_imageFrameView;
 @property(nonatomic) __weak id <VUIEpisodeDetailViewDelegate> episodeViewDelegate; // @synthesize episodeViewDelegate=_episodeViewDelegate;
+- (double)_seasonMargin;
 - (void)_configureViewElementsForAX;
 - (void)didTapButtonForEpisodeFrameView:(id)arg1;
 - (double)_descriptionBottomMarginWithBaselineMargin:(double)arg1;

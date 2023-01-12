@@ -6,28 +6,36 @@
 
 #import <Intents/INObject.h>
 
-@class ContentImage, NSDate, NSNumber, NSString, NSURL;
+@class NSArray, NSDate, NSNumber, NSString, NSURL;
 
 @interface Content : INObject
 {
 }
 
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 
 // Remaining properties
-@property(copy, nonatomic) NSURL *detailsUrl; // @dynamic detailsUrl;
-@property(copy, nonatomic) NSNumber *episodeNumber; // @dynamic episodeNumber;
-@property(copy, nonatomic) NSString *genre; // @dynamic genre;
-@property(copy, nonatomic) NSNumber *hasMoreResults; // @dynamic hasMoreResults;
-@property(copy, nonatomic) ContentImage *image; // @dynamic image;
-@property(copy, nonatomic) NSNumber *isInWatchList; // @dynamic isInWatchList;
-@property(copy, nonatomic) NSString *name; // @dynamic name;
-@property(copy, nonatomic) NSURL *punchoutUrl; // @dynamic punchoutUrl;
-@property(copy, nonatomic) NSDate *releaseDate; // @dynamic releaseDate;
-@property(copy, nonatomic) NSNumber *seasonNumber; // @dynamic seasonNumber;
-@property(copy, nonatomic) NSString *showName; // @dynamic showName;
-@property(copy, nonatomic) NSNumber *type; // @dynamic type;
-@property(copy, nonatomic) NSString *umcId; // @dynamic umcId;
-@property(copy, nonatomic) NSString *utsSearchUrl; // @dynamic utsSearchUrl;
-@property(copy, nonatomic) ContentImage *wideImage; // @dynamic wideImage;
+@property(nonatomic, copy) NSString *appBundleIdentifier; // @dynamic appBundleIdentifier;
+@property(nonatomic, retain) NSNumber *appDisambiguation; // @dynamic appDisambiguation;
+@property(nonatomic, copy) NSURL *detailsUrl; // @dynamic detailsUrl;
+@property(nonatomic, copy) NSString *episodeNumber; // @dynamic episodeNumber;
+@property(nonatomic, copy) NSDate *finaleDate; // @dynamic finaleDate;
+@property(nonatomic, copy) NSString *genre; // @dynamic genre;
+@property(nonatomic, retain) NSNumber *hasMoreResults; // @dynamic hasMoreResults;
+@property(nonatomic, copy) NSArray *images; // @dynamic images;
+@property(nonatomic, retain) NSNumber *isInWatchList; // @dynamic isInWatchList;
+@property(nonatomic, copy) NSString *name; // @dynamic name;
+@property(nonatomic, copy) NSURL *punchoutUrl; // @dynamic punchoutUrl;
+@property(nonatomic, copy) NSDate *releaseDate; // @dynamic releaseDate;
+@property(nonatomic, copy) NSString *searchTerm; // @dynamic searchTerm;
+@property(nonatomic, retain) Content *season; // @dynamic season;
+@property(nonatomic, retain) NSNumber *seasonCount; // @dynamic seasonCount;
+@property(nonatomic, copy) NSString *seasonNumber; // @dynamic seasonNumber;
+@property(nonatomic, retain) Content *show; // @dynamic show;
+@property(nonatomic) long long type; // @dynamic type;
+@property(nonatomic, copy) NSString *umcId; // @dynamic umcId;
+@property(nonatomic, copy) NSString *utsSearchUrl; // @dynamic utsSearchUrl;
+
 @end
 

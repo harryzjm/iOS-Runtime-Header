@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 @property(readonly) CKShareParticipant *participant; // @synthesize participant=_participant;
+- (void)_unitTest_setParticipant:(id)arg1;
 - (void)main;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2 identityLookupInfo:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 cloudState:(id)arg2;

@@ -16,14 +16,14 @@
 
 @interface PXCuratedLibrarySectionedLayout <PXAssetsDataSourceManagerObserver, PXChangeObserver, PXGSublayoutProvider, PXGSublayoutFaultingDelegate, PXMonthsSublayoutProvider, PXCuratedLibraryViewModelPresenter, PXCuratedLibraryBodyLayout>
 {
-    CDStruct_d97c9657 _updateFlags;
+    CDStruct_af00bf4e _updateFlags;
     PXAssetsDataSource *_currentDataSource;
     long long _currentZoomLevel;
     NSMutableIndexSet *_zoomLevelsPreferringDominantHeros;
     long long *_accumulatedSectionItems;
     long long _accumulatedSectionItemsCount;
     _Bool _isUpdatingSublayouts;
-    unsigned long long _dataSourceIdentifierOfCachedSectionsWithSelectedItems;
+    long long _dataSourceIdentifierOfCachedSectionsWithSelectedItems;
     NSIndexSet *_cachedSectionsWithSelectedItems;
     _Bool _isInitialLoad;
     _Bool _performedInitialLoad;
@@ -75,6 +75,9 @@
 - (void)setPrefersDominantHero:(_Bool)arg1 forZoomLevel:(long long)arg2;
 - (_Bool)prefersDominantHeroForZoomLevel:(long long)arg1;
 - (void)setSafeAreaInsets:(struct UIEdgeInsets)arg1;
+- (_Bool)allowsSublayoutUpdateCycleAssertions;
+- (_Bool)allowsDanglingUpdatesAssertions;
+- (long long)scrollableAxis;
 - (long long)sublayoutIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
 - (void)clearLastVisibleAreaAnchoringInformation;
 - (void)enumerateVisibleAnchoringLayoutsUsingBlock:(CDUnknownBlockType)arg1;

@@ -16,6 +16,7 @@
 - (_Bool)shouldUseSlash;
 - (_Bool)isExpandable;
 - (_Bool)shouldUseActiveTintForCurrentState;
+- (id)imageNameForAXHUD;
 - (id)imageNameForCurrentState;
 - (void)didSelectMenuItem:(id)arg1;
 - (id)loadMenuItems;

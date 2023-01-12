@@ -7,20 +7,20 @@
 #import <NewsCore/FCOperation.h>
 
 @class NSArray;
-@protocol FCContentContext, NTReadablePrivateDataStorage;
+@protocol FCContentContext, FCReadablePrivateDataStorage;
 
 @interface NTTodayModuleDescriptorsOperation : FCOperation
 {
     _Bool _requireRefreshedAppConfig;
     NSArray *_contentRequests;
     id <FCContentContext> _contentContext;
-    id <NTReadablePrivateDataStorage> _privateDataStorage;
+    id <FCReadablePrivateDataStorage> _privateDataStorage;
     CDUnknownBlockType _descriptorsCompletion;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType descriptorsCompletion; // @synthesize descriptorsCompletion=_descriptorsCompletion;
-@property(retain, nonatomic) id <NTReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
+@property(retain, nonatomic) id <FCReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
 @property(nonatomic) _Bool requireRefreshedAppConfig; // @synthesize requireRefreshedAppConfig=_requireRefreshedAppConfig;
 @property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property(copy, nonatomic) NSArray *contentRequests; // @synthesize contentRequests=_contentRequests;

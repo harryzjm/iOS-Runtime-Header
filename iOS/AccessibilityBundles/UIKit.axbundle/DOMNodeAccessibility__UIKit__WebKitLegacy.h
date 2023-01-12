@@ -12,7 +12,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)_moveRight:(_Bool)arg1 withHistory:(id)arg2;
 - (id)_moveLeft:(_Bool)arg1 withHistory:(id)arg2;
-- (void)_accessibilityCheckBorderHit:(_Bool)arg1 left:(_Bool)arg2;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(_Bool)arg2;
 
 @end

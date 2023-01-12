@@ -15,6 +15,7 @@
     Class _archiverClass;
     BOOL _archiverFlags;
     NSMapTable *_archivers;
+    NSMapTable *_metadataArchivers;
     NSObject<OS_dispatch_queue> *_archiversHighQueue;
     NSObject<OS_dispatch_queue> *_archiversLowQueue;
     NSObject<OS_dispatch_queue> *_archiveHighQueue;

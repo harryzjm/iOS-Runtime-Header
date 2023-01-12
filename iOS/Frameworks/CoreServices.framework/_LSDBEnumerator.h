@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreServices/NSCopying-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface _LSDBEnumerator
+@interface _LSDBEnumerator <NSCopying>
 {
     struct Context _context;
     unsigned long long _index;
@@ -17,11 +19,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)nextObject;
+- (id)swift_firstWhere:(CDUnknownBlockType)arg1;
+- (void)swift_forEach:(CDUnknownBlockType)arg1;
 - (_Bool)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
 - (_Bool)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
-- (_Bool)prepareIfNeeded;
 - (id)_initWithContext:(struct LSContext *)arg1;
 
 @end

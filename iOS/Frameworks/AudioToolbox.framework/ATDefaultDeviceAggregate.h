@@ -10,7 +10,7 @@
 
 @interface ATDefaultDeviceAggregate : NSObject
 {
-    shared_ptr_57118bb5 _impl;
+    shared_ptr_68c1e1c6 _impl;
 }
 
 + (id)sharedDefaultDeviceAggregateNoInit;
@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 - (void)primarySessionIsDeactivating;
 - (void)primarySessionIsActivatingWithInputCategory:(_Bool)arg1;
-- (shared_ptr_57118bb5)impl;
+- (shared_ptr_68c1e1c6)impl;
 - (id)outputStreamsToUse;
 - (id)inputStreamsToUse;
 - (double)sampleRate;

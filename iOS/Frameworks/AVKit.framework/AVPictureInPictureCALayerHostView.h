@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)layerClass;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) CALayerHost *layer; // @dynamic layer;

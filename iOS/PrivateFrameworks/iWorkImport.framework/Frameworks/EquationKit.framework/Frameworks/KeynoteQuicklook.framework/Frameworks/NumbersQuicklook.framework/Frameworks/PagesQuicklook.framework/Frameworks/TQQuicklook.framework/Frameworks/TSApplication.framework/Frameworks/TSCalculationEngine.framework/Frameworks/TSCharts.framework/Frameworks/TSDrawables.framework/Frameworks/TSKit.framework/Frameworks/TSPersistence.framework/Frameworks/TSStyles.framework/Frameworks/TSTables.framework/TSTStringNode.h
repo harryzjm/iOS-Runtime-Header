@@ -13,12 +13,12 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *value; // @synthesize value=_value;
-- (void)saveToArchive:(struct StringNodeArchive *)arg1 archiver:(id)arg2;
-- (void)loadFromArchive:(const struct StringNodeArchive *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)exportString;
-- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
+- (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(void *)arg3;
 - (void)fixStorageLanguage:(id)arg1;
 - (id)formulaPlainText;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;

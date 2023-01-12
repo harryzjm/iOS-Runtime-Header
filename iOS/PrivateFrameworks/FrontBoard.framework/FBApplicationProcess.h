@@ -22,10 +22,8 @@
 @property(nonatomic, getter=isConnectedToExternalAccessory) _Bool connectedToExternalAccessory; // @synthesize connectedToExternalAccessory=_connectedToExternalAccessory;
 @property(nonatomic, getter=isNowPlayingWithAudio) _Bool nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
 @property(nonatomic, getter=isRecordingAudio) _Bool recordingAudio; // @synthesize recordingAudio=_recordingAudio;
-- (void)_noteLaunchDidComplete;
 - (void)_bootstrapDidComplete;
 - (id)_createBootstrapContext;
-- (_Bool)_wantsStateUpdates;
 - (void)_noteProcessDidExit:(id)arg1;
 - (id)_queue_createLegacyAssertionForReason:(unsigned int)arg1 withName:(id)arg2;
 @property(readonly, nonatomic) double elapsedCPUTime;

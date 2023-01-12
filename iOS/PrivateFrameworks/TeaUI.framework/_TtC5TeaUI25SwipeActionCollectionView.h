@@ -15,15 +15,20 @@
     MISSING_TYPE *coordinatingResetBlocks;
     MISSING_TYPE *coordinatingCancelBlocks;
     MISSING_TYPE *updateGroup;
+    MISSING_TYPE *swipeActionRestoreState;
+    MISSING_TYPE *isBottomRubberBanding;
 }
 
 - (void).cxx_destruct;
 - (void)handleFromCoordinatingGestureWithGestureRecognizer:(id)arg1;
 - (void)handlePanGestureWithGestureRecognizer:(id)arg1;
+- (void)layoutSubviews;
 - (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
+@property(nonatomic) struct CGPoint contentOffset;
+@property(nonatomic) _Bool allowsSelection;
 
 @end
 

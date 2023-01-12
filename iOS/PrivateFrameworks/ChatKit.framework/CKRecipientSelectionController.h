@@ -10,11 +10,12 @@
 #import <ChatKit/CNAutocompleteGroupDetailViewControllerDelegate-Protocol.h>
 #import <ChatKit/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <ChatKit/CNContactPickerDelegate-Protocol.h>
+#import <ChatKit/CoreTelephonyClientDelegate-Protocol.h>
 
-@class CKComposeRecipientView, CKDetailsContactsManager, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, NSMutableDictionary, NSString, STConversationContext, UILabel, UIScrollView, UIView;
+@class CKAlertController, CKComposeRecipientView, CKDetailsContactsManager, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, CoreTelephonyClient, NSMutableDictionary, NSString, STConversationContext, UILabel, UIScrollView, UIView;
 @protocol CKRecipientSelectionControllerDelegate;
 
-@interface CKRecipientSelectionController <CNComposeRecipientTextViewDelegate, CKComposeRecipientViewDelegate, CKRecipientSearchListControllerDelegate, CNAutocompleteGroupDetailViewControllerDelegate, CNContactPickerDelegate, CKDetailsContactsManagerDelegate>
+@interface CKRecipientSelectionController <CNComposeRecipientTextViewDelegate, CKComposeRecipientViewDelegate, CKRecipientSearchListControllerDelegate, CNAutocompleteGroupDetailViewControllerDelegate, CNContactPickerDelegate, CKDetailsContactsManagerDelegate, CoreTelephonyClientDelegate>
 {
     double _keyboardHeightWithAccessoryView;
     CNContactStore *_contactStore;
@@ -22,6 +23,7 @@
     _Bool _editable;
     _Bool _allowedByScreenTime;
     _Bool _forceMMS;
+    _Bool _forceDisplayPillView;
     _Bool _isDisambiguating;
     _Bool _preventAtomization;
     _Bool _didShowOneTimeErrorAlert;
@@ -36,17 +38,22 @@
     CDUnknownBlockType _gameCenterPickerBlock;
     UIScrollView *_toFieldScrollingView;
     UILabel *_toFieldPlaceholderLabel;
+    UIView *_separator;
     CNContactPickerViewController *_contactPickerViewController;
     CNComposeRecipient *_recentContactForPresentedCNCard;
     CKManualUpdater *_addressBookNotificationUpdater;
     NSMutableDictionary *_recipientAvailibityTimers;
     NSMutableDictionary *_recipientAvailabilities;
     unsigned long long _numberOfRowsInToField;
+    CoreTelephonyClient *_coreTelephonyClient;
     CKDetailsContactsManager *_contactsManager;
+    CKAlertController *_alternateAddressesAlertController;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) CKAlertController *alternateAddressesAlertController; // @synthesize alternateAddressesAlertController=_alternateAddressesAlertController;
 @property(retain, nonatomic) CKDetailsContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
+@property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property(nonatomic) unsigned long long numberOfRowsInToField; // @synthesize numberOfRowsInToField=_numberOfRowsInToField;
 @property(retain, nonatomic) NSMutableDictionary *recipientAvailabilities; // @synthesize recipientAvailabilities=_recipientAvailabilities;
 @property(retain, nonatomic) NSMutableDictionary *recipientAvailibityTimers; // @synthesize recipientAvailibityTimers=_recipientAvailibityTimers;
@@ -58,9 +65,11 @@
 @property(nonatomic) _Bool isDisambiguating; // @synthesize isDisambiguating=_isDisambiguating;
 @property(retain, nonatomic) CNComposeRecipient *recentContactForPresentedCNCard; // @synthesize recentContactForPresentedCNCard=_recentContactForPresentedCNCard;
 @property(retain, nonatomic) CNContactPickerViewController *contactPickerViewController; // @synthesize contactPickerViewController=_contactPickerViewController;
+@property(retain, nonatomic) UIView *separator; // @synthesize separator=_separator;
 @property(retain, nonatomic) UILabel *toFieldPlaceholderLabel; // @synthesize toFieldPlaceholderLabel=_toFieldPlaceholderLabel;
 @property(retain, nonatomic) UIScrollView *toFieldScrollingView; // @synthesize toFieldScrollingView=_toFieldScrollingView;
 @property(copy, nonatomic) CDUnknownBlockType gameCenterPickerBlock; // @synthesize gameCenterPickerBlock=_gameCenterPickerBlock;
+@property(nonatomic) _Bool forceDisplayPillView; // @synthesize forceDisplayPillView=_forceDisplayPillView;
 @property(nonatomic) _Bool forceMMS; // @synthesize forceMMS=_forceMMS;
 @property(nonatomic) _Bool allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
 @property(retain, nonatomic) STConversationContext *currentConversationContext; // @synthesize currentConversationContext=_currentConversationContext;
@@ -83,7 +92,7 @@
 - (struct UIEdgeInsets)_navigationBarInsets;
 - (void)_keyboardWillShowOrHide:(id)arg1;
 - (void)_updateSearchListControllerPopOverSizing;
-- (void)_configureSearchListControllerAsAPopover;
+- (_Bool)_configureSearchListControllerAsAPopover;
 - (void)_hideSearchField;
 - (void)_showSearchField;
 - (void)_updateShowingSearch;
@@ -112,6 +121,7 @@
 - (void)_handleAddressBookChangedNotification:(id)arg1;
 - (id)_toFieldCollapsedTextColor;
 - (unsigned long long)_atomPresentationOptionsForRecipient:(id)arg1;
+- (void)_updateYOriginSearchListController;
 - (void)_updateToFieldRecipientsData;
 - (void)_updateToField;
 - (id)_canonicalRecipientAddresses;
@@ -171,7 +181,7 @@
 - (struct UIEdgeInsets)layoutMarginsForComposeRecipientView:(id)arg1;
 - (_Bool)collapseSelectedSearchResultForComposeRecipientView:(id)arg1;
 - (_Bool)expandSelectedSearchResultForComposeRecipientView:(id)arg1;
-- (_Bool)chooseSelectedSearchResultForComposeRecipientView:(id)arg1;
+- (_Bool)chooseSelectedSearchResultForComposeRecipientView:(id)arg1 context:(unsigned long long)arg2;
 - (void)selectPreviousSearchResultForComposeRecipientView:(id)arg1;
 - (void)selectNextSearchResultForComposeRecipientView:(id)arg1;
 - (void)dismissSearchResultsForComposeRecipientView:(id)arg1;
@@ -223,6 +233,7 @@
 - (id)initWithConversation:(id)arg1;
 - (id)init;
 - (void)dealloc;
+- (_Bool)isMAIDGroupsEnabled;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _shouldFadeOutSnapshotAfterCompletionGroup;
     _Bool _synchronizedWithTransition;
+    unsigned int _highFrameRateReason;
     long long _kind;
     double _delay;
     double _duration;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(nonatomic, getter=isSynchronizedWithTransition) _Bool synchronizedWithTransition; // @synthesize synchronizedWithTransition=_synchronizedWithTransition;
+@property(nonatomic) unsigned int highFrameRateReason; // @synthesize highFrameRateReason=_highFrameRateReason;
 @property(nonatomic) _Bool shouldFadeOutSnapshotAfterCompletionGroup; // @synthesize shouldFadeOutSnapshotAfterCompletionGroup=_shouldFadeOutSnapshotAfterCompletionGroup;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *completionGroup; // @synthesize completionGroup=_completionGroup;
 @property(copy, nonatomic) CDUnknownBlockType customViewAnimatorBlock; // @synthesize customViewAnimatorBlock=_customViewAnimatorBlock;

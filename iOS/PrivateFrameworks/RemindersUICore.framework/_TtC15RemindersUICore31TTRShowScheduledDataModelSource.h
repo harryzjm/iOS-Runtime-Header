@@ -12,6 +12,7 @@
     MISSING_TYPE *store;
     MISSING_TYPE *countCompleted;
     MISSING_TYPE *showCompletedContextInstance;
+    MISSING_TYPE *tipKitContextInstance;
     MISSING_TYPE *dataViewMonitor;
 }
 

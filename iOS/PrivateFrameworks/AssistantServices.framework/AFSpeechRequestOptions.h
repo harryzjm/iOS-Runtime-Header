@@ -8,12 +8,14 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFLanguageDetectionUserContext, AFMyriadContext, AFSpeechRecordingAlertPolicy, AFSpeechSynthesisRecord, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
+@class AFLanguageDetectionUserContext, AFMyriadContext, AFSpeechRecordingAlertPolicy, AFSpeechSynthesisRecord, AFSpeechTestRequestOptions, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSUUID, NSXPCListenerEndpoint;
 
 @interface AFSpeechRequestOptions : NSObject <NSSecureCoding>
 {
     _Bool _isEyesFree;
     _Bool _useAutomaticEndpointing;
+    _Bool _disableInputAudioPowerUpdate;
+    _Bool _disableOutputAudioPowerUpdate;
     _Bool _useStreamingDictation;
     _Bool _isInitialBringUp;
     _Bool _acousticIdEnabled;
@@ -28,6 +30,7 @@
     _Bool _hasPlayedStartAlert;
     _Bool _isOnPhoneCall;
     _Bool _isMediaPlaying;
+    _Bool _isTest;
     float _mediaPlaybackVolume;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
@@ -62,14 +65,19 @@
     long long _presentationMode;
     NSString *_preheatTestLanguage;
     NSURL *_preheatTestModelPath;
+    unsigned long long _dictationVoiceTriggerAbsStartSampleId;
     NSString *_applicationDisplayName;
     NSString *_applicationBundleIdentifier;
+    AFSpeechTestRequestOptions *_testRequestOptions;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(copy, nonatomic) AFSpeechTestRequestOptions *testRequestOptions; // @synthesize testRequestOptions=_testRequestOptions;
+@property(nonatomic) _Bool isTest; // @synthesize isTest=_isTest;
 @property(copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property(copy, nonatomic) NSString *applicationDisplayName; // @synthesize applicationDisplayName=_applicationDisplayName;
+@property(nonatomic) unsigned long long dictationVoiceTriggerAbsStartSampleId; // @synthesize dictationVoiceTriggerAbsStartSampleId=_dictationVoiceTriggerAbsStartSampleId;
 @property(copy, nonatomic) NSURL *preheatTestModelPath; // @synthesize preheatTestModelPath=_preheatTestModelPath;
 @property(copy, nonatomic) NSString *preheatTestLanguage; // @synthesize preheatTestLanguage=_preheatTestLanguage;
 @property(nonatomic) long long presentationMode; // @synthesize presentationMode=_presentationMode;
@@ -113,6 +121,8 @@
 @property(nonatomic) unsigned long long homeButtonDownEventMachAbsoluteTime; // @synthesize homeButtonDownEventMachAbsoluteTime=_homeButtonDownEventMachAbsoluteTime;
 @property(nonatomic) double homeButtonDownEventTime; // @synthesize homeButtonDownEventTime=_homeButtonDownEventTime;
 @property(nonatomic) _Bool useStreamingDictation; // @synthesize useStreamingDictation=_useStreamingDictation;
+@property(nonatomic) _Bool disableOutputAudioPowerUpdate; // @synthesize disableOutputAudioPowerUpdate=_disableOutputAudioPowerUpdate;
+@property(nonatomic) _Bool disableInputAudioPowerUpdate; // @synthesize disableInputAudioPowerUpdate=_disableInputAudioPowerUpdate;
 @property(copy, nonatomic) AFSpeechRecordingAlertPolicy *recordingAlertPolicy; // @synthesize recordingAlertPolicy=_recordingAlertPolicy;
 @property(nonatomic) long long endpointerOperationMode; // @synthesize endpointerOperationMode=_endpointerOperationMode;
 @property(nonatomic) _Bool useAutomaticEndpointing; // @synthesize useAutomaticEndpointing=_useAutomaticEndpointing;
@@ -127,6 +137,7 @@
 - (id)description;
 - (_Bool)isRaiseToSpeak;
 - (_Bool)isVoiceTrigger;
+- (id)initForTestWithTestRequestOptions:(id)arg1;
 - (id)initWithActivationEvent:(long long)arg1;
 
 @end

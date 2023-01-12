@@ -22,6 +22,7 @@
 @property(nonatomic) __weak id <AVTStickerDisclosureValidationDelegate> disclosureValidationDelegate; // @synthesize disclosureValidationDelegate=_disclosureValidationDelegate;
 @property(nonatomic) __weak id <AVTMSStickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) _Bool allowsPeel; // @synthesize allowsPeel=_allowsPeel;
+- (void)_prepareForReuse;
 - (void)handleLongPress:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -19,6 +19,7 @@
 @property(readonly) NSString *rankingDebugLog;
 - (void)clear;
 - (void)updateWithQueryContext:(id)arg1;
+- (_Bool)shouldEnableOCR;
 - (long long)maxUISuggestions;
 - (void)setMaxUISuggestions:(long long)arg1;
 - (void)deactivate;

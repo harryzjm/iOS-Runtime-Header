@@ -8,7 +8,7 @@
 {
 }
 
-- (void)p_drawShadowedContentIntoContext:(struct CGContext *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 preset:(id)arg4 shouldCache:(_Bool *)arg5;
+- (void)p_drawShadowedContentIntoContext:(struct CGContext *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 preset:(id)arg4 target:(int)arg5 shouldCache:(_Bool *)arg6;
 - (id)p_chartType;
 
 @end

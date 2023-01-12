@@ -9,7 +9,7 @@
 #import <CalendarNotification/CALNSharedCalendarInvitationNotificationDataSource-Protocol.h>
 
 @class NSString;
-@protocol CALNDataAccessExpressConnection, CALNEKCalendarNotificationReferenceProvider, CALNInboxNotificationProvider, EKEventStoreProvider;
+@protocol CALNDataAccessExpressConnection, CALNEKCalendarNotificationReferenceProvider, CALNInboxNotificationProvider, EKEventStoreProvider, EKNotificationPreferences;
 
 @interface CALNSharedCalendarInvitationNotificationEKDataSource : NSObject <CALNSharedCalendarInvitationNotificationDataSource>
 {
@@ -17,9 +17,11 @@
     id <CALNInboxNotificationProvider> _inboxNotificationProvider;
     id <CALNEKCalendarNotificationReferenceProvider> _notificationReferenceProvider;
     id <CALNDataAccessExpressConnection> _dataAccessExpressConnection;
+    id <EKNotificationPreferences> _preferences;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <EKNotificationPreferences> preferences; // @synthesize preferences=_preferences;
 @property(readonly, nonatomic) id <CALNDataAccessExpressConnection> dataAccessExpressConnection; // @synthesize dataAccessExpressConnection=_dataAccessExpressConnection;
 @property(readonly, nonatomic) id <CALNEKCalendarNotificationReferenceProvider> notificationReferenceProvider; // @synthesize notificationReferenceProvider=_notificationReferenceProvider;
 @property(readonly, nonatomic) id <CALNInboxNotificationProvider> inboxNotificationProvider; // @synthesize inboxNotificationProvider=_inboxNotificationProvider;
@@ -33,7 +35,7 @@
 - (id)fetchSharedCalendarInvitationNotificationWithSourceClientIdentifier:(id)arg1;
 - (id)fetchSharedCalendarInvitationNotificationSourceClientIdentifiers:(id)arg1;
 - (id)fetchSharedCalendarInvitationNotifications;
-- (id)initWithEventStoreProvider:(id)arg1 inboxNotificationProvider:(id)arg2 notificationReferenceProvider:(id)arg3 dataAccessExpressConnection:(id)arg4;
+- (id)initWithEventStoreProvider:(id)arg1 inboxNotificationProvider:(id)arg2 notificationReferenceProvider:(id)arg3 dataAccessExpressConnection:(id)arg4 preferences:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -23,6 +23,7 @@
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *familySharingStatusManager;
+    MISSING_TYPE *engagementInlineViewManager;
 }
 
 @end

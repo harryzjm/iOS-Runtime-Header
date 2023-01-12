@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UICollectionViewListCell.h>
+#import <UIKit/UICollectionViewListCell.h>
 
 @class NSLayoutConstraint, UIImageView, UILabel, UILayoutGuide, UIStackView;
 
-@interface PXSearchSuggestionCell : _UICollectionViewListCell
+@interface PXSearchSuggestionCell : UICollectionViewListCell
 {
     UIImageView *_imageView;
     UILabel *_titleLabel;
@@ -26,6 +26,8 @@
 @property(readonly, nonatomic) UILabel *countLabel; // @synthesize countLabel=_countLabel;
 @property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (void)updateContentColors;
 - (void)setSearchSuggestion:(id)arg1;
 - (double)imageViewLayoutGuideWidth;
 - (void)traitCollectionDidChange:(id)arg1;

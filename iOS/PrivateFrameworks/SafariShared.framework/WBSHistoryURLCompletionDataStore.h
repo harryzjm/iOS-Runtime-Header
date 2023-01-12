@@ -19,9 +19,9 @@
 
 - (void).cxx_destruct;
 - (void)_loadFromDatabaseIfNecessary;
-- (RefPtr_ed2a6bdb)_completionItemFromDatabase:(id)arg1 withVisitDatabaseID:(long long)arg2;
+- (RefPtr_4f332d87)_completionItemFromDatabase:(id)arg1 withVisitDatabaseID:(long long)arg2;
 - (void)_enumerateCompletionItemsForMostRecentVisitsFromDatabase:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (Ref_acc025bb)_completionItemFromRow:(id)arg1;
+- (Ref_2d03f7f4)_completionItemFromRow:(id)arg1;
 - (void)getSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithHistoryService:(id)arg1;
 

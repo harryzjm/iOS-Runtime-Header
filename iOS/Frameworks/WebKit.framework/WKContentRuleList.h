@@ -15,6 +15,7 @@
     struct ObjectStorage<API::ContentRuleList> _contentRuleList;
 }
 
++ (_Bool)_supportsRegularExpression:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *identifier;
 @property(readonly) struct Object *_apiObject;
 - (void)dealloc;

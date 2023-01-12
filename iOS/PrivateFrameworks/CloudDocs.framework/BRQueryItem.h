@@ -12,7 +12,6 @@
 #import <CloudDocs/NSSecureCoding-Protocol.h>
 
 @class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL, UTType;
-@protocol NSFileProviderItemFlags;
 
 @interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating, NSSecureCoding, NSCopying>
 {
@@ -47,7 +46,7 @@
             unsigned int isDownloadActive:1;
             unsigned int isDownloadRequested:1;
             unsigned int shareOptions:3;
-            unsigned int isHiddenExt:1;
+            unsigned int isHiddenExtension:1;
             unsigned int isBRAlias:1;
             unsigned int isTrashed:1;
             unsigned int itemMode:3;
@@ -56,6 +55,9 @@
             unsigned int isSharedToMeOrContainsSharedToMeItem:1;
             unsigned int isSharedByMeOrContainsSharedByMeItem:1;
             unsigned int editedSinceShared:1;
+            unsigned int isNetworkOffline:1;
+            unsigned int isHiddenItem:1;
+            unsigned int isTopLevel:1;
             unsigned char BRQueryItemKind;
             unsigned char kind;
         } ;
@@ -65,7 +67,6 @@
     long long _physicalHandle;
     unsigned long long _parentFileID;
     unsigned short _diffs;
-    _Bool _isNetworkOffline;
 }
 
 + (id)containerItemForContainer:(id)arg1 forceScan:(_Bool)arg2;
@@ -133,6 +134,7 @@
 @property(readonly, nonatomic) NSNumber *btime;
 @property(readonly, nonatomic) NSNumber *mtime;
 @property(readonly, nonatomic) NSNumber *size;
+- (_Bool)isTopLevel;
 @property(readonly, nonatomic) NSString *appLibraryID;
 @property(readonly, nonatomic) NSString *physicalName;
 @property(readonly, nonatomic) NSString *logicalName;
@@ -188,7 +190,7 @@
 @property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
 @property(readonly, nonatomic) NSDictionary *extendedAttributes;
 @property(readonly, copy) NSString *fileSystemFilename;
-@property(readonly, nonatomic) id <NSFileProviderItemFlags> flags;
+@property(readonly, nonatomic) unsigned long long fileSystemFlags;
 @property(readonly, nonatomic, getter=fp_isAddedByCurrentUser) _Bool fp_addedByCurrentUser;
 @property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
 @property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
@@ -202,7 +204,11 @@
 @property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property(readonly, nonatomic) NSString *preformattedOwnerName;
 @property(readonly, copy) NSString *providerIdentifier;
+@property(readonly, copy, nonatomic) NSData *quarantineBlob;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) NSString *symlinkTargetPath;
+@property(getter=isSyncRoot) _Bool syncRoot;
+@property(readonly, nonatomic) struct NSFileProviderTypeAndCreator typeAndCreator;
 
 @end
 

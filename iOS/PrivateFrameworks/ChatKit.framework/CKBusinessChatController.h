@@ -13,6 +13,7 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) CKNavbarCanvasViewController *navbarCanvasViewController; // @synthesize navbarCanvasViewController=_navbarCanvasViewController;
+- (_Bool)canShowBusinessOnboarding;
 - (_Bool)shouldListParticipantsInTitle;
 - (void)cleanUpBizNavBarIfNecessary;
 - (void)_updateNavigationUI;

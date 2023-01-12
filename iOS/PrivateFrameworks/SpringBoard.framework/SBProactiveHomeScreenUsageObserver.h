@@ -22,9 +22,17 @@
 @property(readonly, nonatomic) SBHIconManager *iconManager; // @synthesize iconManager=_iconManager;
 @property(nonatomic) __weak id <SBProactiveHomeScreenUsageObserverDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) ATXHomeScreenPrediction *currentPrediction; // @synthesize currentPrediction=_currentPrediction;
+- (void)homeScreenUsageAggregatorWidgetDiscoverabilityDidEnterEditingMode:(id)arg1;
+- (void)homeScreenUsageAggregator:(id)arg1 widgetDiscoverabilityDidRejectSuggestion:(id)arg2;
+- (void)homeScreenUsageAggregator:(id)arg1 widgetDiscoverabilityDidAcceptSuggestion:(id)arg2;
+- (void)homeScreenUsageAggregatorDidStartDiscoveringWidgets:(id)arg1;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteTodayViewAtLocation:(long long)arg2 scrolledWithIconVisibility:(id)arg3;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteDataSourceDidDisappear:(id)arg2 forWidgetIcon:(id)arg3;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteDataSourceDidAppear:(id)arg2 forWidgetIcon:(id)arg3;
-- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserTappedWidgetIcon:(id)arg2;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserTappedWidgetIcon:(id)arg2 withURL:(id)arg3;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserDislikedSiriSuggestionOnWidgetIconStackSuggestion:(id)arg2;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserDislikedWidgetIconStackSuggestion:(id)arg2;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserAddedWidgetIconStackSuggestion:(id)arg2;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteWidgetIconStackChangedActiveWidget:(id)arg2;
 - (void)homeScreenUsageAggregatorDidNoteHomeScreenLayoutChanged:(id)arg1;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteCurrentPageIndexChanged:(unsigned long long)arg2;

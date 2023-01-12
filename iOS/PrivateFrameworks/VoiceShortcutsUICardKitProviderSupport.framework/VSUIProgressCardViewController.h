@@ -16,6 +16,7 @@
 {
     NSProgress *_progress;
     _Bool _animatesStateTransitions;
+    _Bool _hasAsynchronousCard;
     NSLayoutConstraint *_statusViewSuccessHeightConstraint;
     NSLayoutConstraint *_statusViewFailureHeightConstraint;
     VSUIActionStatusView *_statusView;
@@ -37,8 +38,10 @@
 - (id)stateMachineForProgressIndicatorViewController:(id)arg1;
 - (void)handleCardCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (double)contentHeightForWidth:(double)arg1;
+- (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (id)_initWithCard:(id)arg1 delegate:(id)arg2 loadProvidersImmediately:(_Bool)arg3;
+- (_Bool)_canShowWhileLocked;
 - (struct CGSize)preferredContentSize;
 - (void)progressStateMachine:(id)arg1 ignoredEvent:(unsigned long long)arg2;
 - (void)progressStateMachine:(id)arg1 didTransitionToState:(unsigned long long)arg2 fromState:(unsigned long long)arg3 forEvent:(unsigned long long)arg4;

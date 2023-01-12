@@ -45,6 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)_volumeDidChangeForEndpointWithID:(struct __CFString *)arg1;
 @property(readonly) float volume;
 @property(readonly, nonatomic, getter=isHeadTrackedSpatialAudioActive) _Bool headTrackedSpatialAudioActive;
+- (_Bool)setHeadTrackedSpatialAudioMode:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) NSString *headTrackedSpatialAudioMode;
+- (_Bool)setAllowsHeadTrackedSpatialAudio:(_Bool)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) _Bool allowsHeadTrackedSpatialAudio;
 @property(readonly, nonatomic) _Bool supportsHeadTrackedSpatialAudio;
 @property(readonly, nonatomic) long long HAPConformance;
 - (void)setSecondDisplayMode:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -74,6 +78,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property(readonly, nonatomic) NSNumber *batteryLevel;
 @property(readonly, nonatomic) NSString *clusterID;
+@property(readonly, nonatomic) _Bool producesLowFidelityAudio;
 @property(readonly, nonatomic) _Bool isClusterLeader;
 @property(readonly, nonatomic) NSArray *clusteredDeviceDescriptions;
 @property(readonly, copy, nonatomic) NSData *identifyingMACAddress;

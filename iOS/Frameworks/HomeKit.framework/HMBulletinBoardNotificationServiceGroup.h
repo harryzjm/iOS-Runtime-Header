@@ -52,7 +52,6 @@
 - (void)handleConfigureNotification:(id)arg1;
 - (void)_handleBulletinBoardNotificationServiceGroupUpdateNotification:(id)arg1;
 - (void)_registerNotificationHandlers;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1;

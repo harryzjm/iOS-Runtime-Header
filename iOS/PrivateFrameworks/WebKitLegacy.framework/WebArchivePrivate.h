@@ -6,24 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, WebResource;
-
 __attribute__((visibility("hidden")))
 @interface WebArchivePrivate : NSObject
 {
-    WebResource *cachedMainResource;
-    NSArray *cachedSubresources;
-    NSArray *cachedSubframeArchives;
-    RefPtr_a4a1529f coreArchive;
+    struct RetainPtr<WebResource> cachedMainResource;
+    struct RetainPtr<NSArray> cachedSubresources;
+    struct RetainPtr<NSArray> cachedSubframeArchives;
+    struct RefPtr<WebCore::LegacyWebArchive, WTF::RawPtrTraits<WebCore::LegacyWebArchive>, WTF::DefaultRefDerefTraits<WebCore::LegacyWebArchive>> coreArchive;
 }
 
 + (void)initialize;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)setCoreArchive:(Ref_f33f0404 *)arg1;
-- (struct LegacyWebArchive *)coreArchive;
-- (id)initWithCoreArchive:(RefPtr_a4a1529f *)arg1;
+- (void)setCoreArchive:(void *)arg1;
+- (void *)coreArchive;
+- (id)initWithCoreArchive:(void *)arg1;
 - (id)init;
 
 @end

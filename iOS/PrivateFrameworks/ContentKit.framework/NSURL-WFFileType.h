@@ -28,11 +28,16 @@
 - (id)dc_queryDictionary;
 - (_Bool)wf_proposedFileIsContainedByDirectoryAtURL:(id)arg1;
 - (_Bool)isContainedByDirectoryAtURL:(id)arg1;
+- (id)wf_relativePathFromURL:(id)arg1;
 - (long long)wf_relationshipToDirectoryAtURL:(id)arg1;
 - (id)volumeName;
 - (id)fileSize;
+- (_Bool)wf_fileHasExtendedAttribute:(id)arg1;
+- (_Bool)wf_sandboxAllowsWritingFileWithAuditToken:(CDStruct_6ad76789)arg1;
+- (_Bool)wf_sandboxAllowsReadingFileWithAuditToken:(CDStruct_6ad76789)arg1;
 - (_Bool)wf_sandboxAllowsWritingFile;
 - (_Bool)wf_sandboxAllowsReadingFile;
+- (_Bool)wf_sandboxAllowsOperation:(const char *)arg1 withAuditToken:(CDStruct_6ad76789)arg2;
 - (_Bool)wf_sandboxAllowsOperation:(const char *)arg1;
 - (_Bool)fileIsDirectory;
 - (_Bool)fileIsWritable;

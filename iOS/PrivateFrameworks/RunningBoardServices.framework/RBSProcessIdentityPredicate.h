@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 
 + (_Bool)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 - (id)initWithRBSXPCCoder:(id)arg1;
 - (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)description;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)processPredicate;
 - (_Bool)matchesProcess:(id)arg1;
-- (id)initWithIdentity:(id)arg1;
 
 @end
 

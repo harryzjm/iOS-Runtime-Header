@@ -12,6 +12,7 @@
 
 @optional
 + (NSArray *)diagnosticFiles;
+- (void)fetchDiagnosticLogsWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)sendDiagnosticsToURL:(NSURL *)arg1 handler:(void (^)(NSError *))arg2;
 @end
 

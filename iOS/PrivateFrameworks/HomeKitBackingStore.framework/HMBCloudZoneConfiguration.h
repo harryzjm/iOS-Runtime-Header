@@ -9,10 +9,8 @@
 @interface HMBCloudZoneConfiguration : HMFObject
 {
     _Bool _shouldRebuildOnManateeKeyLoss;
-    _Bool _shouldSuppressDelegateCallbacksOnInitialFetch;
 }
 
-@property _Bool shouldSuppressDelegateCallbacksOnInitialFetch; // @synthesize shouldSuppressDelegateCallbacksOnInitialFetch=_shouldSuppressDelegateCallbacksOnInitialFetch;
 @property _Bool shouldRebuildOnManateeKeyLoss; // @synthesize shouldRebuildOnManateeKeyLoss=_shouldRebuildOnManateeKeyLoss;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

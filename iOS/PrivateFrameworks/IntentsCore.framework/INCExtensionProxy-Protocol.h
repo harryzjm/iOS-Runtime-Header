@@ -14,7 +14,6 @@
 - (void)confirmIntentWithCompletionHandler:(void (^)(INIntentResponse *, INCExtensionError *))arg1;
 
 @optional
-@property(copy, nonatomic) CDUnknownBlockType backgroundAppHandler;
 - (void)getOptionsForParameterNamed:(NSString *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)getDefaultValueForParameterNamed:(NSString *)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (void)getOptionsForParameterNamed:(NSString *)arg1 searchTerm:(NSString *)arg2 completionHandler:(void (^)(INObjectCollection *, NSError *))arg3;

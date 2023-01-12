@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class _LTLoggingRequestHandler, _LTServerSpeakSession, _LTServerSpeechSession, _LTTextToSpeechCache;
+@class _LTActivityLogging, _LTLoggingRequestHandler, _LTServerSpeakSession, _LTServerSpeechSession, _LTTextToSpeechCache;
 @protocol OS_dispatch_queue, _LTTranslationEngine;
 
 __attribute__((visibility("hidden")))
@@ -18,10 +18,13 @@ __attribute__((visibility("hidden")))
     _LTServerSpeechSession *_speechSession;
     _LTServerSpeakSession *_speakSession;
     _LTLoggingRequestHandler *_logger;
+    _LTActivityLogging *_activityLogger;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;
+- (void)_deleteHotfix:(CDUnknownBlockType)arg1;
+- (void)_updateHotfix:(CDUnknownBlockType)arg1;
 - (void)task:(long long)arg1 isSupportedInCountry:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)configInfoForLocale:(id)arg1 otherLocale:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)additionalLikelyPreferredLocalesForLocale:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -34,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_purgeAssetForLanguagePair:(id)arg1 userInitiated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_downloadAssetForLanguagePair:(id)arg1 userInitiated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_offlineLanguageStatus:(CDUnknownBlockType)arg1;
+- (void)languagesForText:(id)arg1 usingModel:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)languagesForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)languageForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cleanup;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)notifyOfMemoryPressure;
 - (void)clearCaches;
 - (void)startLoggingRequest:(id)arg1;
+- (void)registerActivity:(long long)arg1;
 - (void)endAudio;
 - (void)addSpeechAudioData:(id)arg1;
 - (void)_speechSessionCompleted;

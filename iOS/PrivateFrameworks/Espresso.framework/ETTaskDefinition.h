@@ -12,25 +12,22 @@
 
 @interface ETTaskDefinition : NSObject <ETTaskContext>
 {
-    struct unordered_map<std::__1::basic_string<char>, unsigned long, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, unsigned long>>> inference_layer_index;
+    struct unordered_map<std::string, unsigned long, std::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<const std::string, unsigned long>>> inference_layer_index;
     ETVariablesDefinition *varsDef;
     unsigned long long runtimePlatform;
     int precision;
     unsigned long long batchSize;
-    basic_string_90719d97 training_control_name;
-    basic_string_90719d97 training_control_end_name;
-    basic_string_90719d97 gradient_control_name;
-    basic_string_90719d97 gradient_control_end_name;
-    basic_string_90719d97 optimizer_control_name;
-    basic_string_90719d97 optimizer_control_end_name;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> training_control_name;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> gradient_control_name;
+    struct basic_string<char, std::char_traits<char>, std::allocator<char>> optimizer_control_name;
     NSArray *infInputNames;
     NSArray *infOutputNames;
     NSArray *trainInputNames;
     NSArray *trainOutputNames;
-    unordered_map_1de83e55 infInputBlobShapes;
-    unordered_map_1de83e55 trainInputBlobShapes;
-    unordered_map_1de83e55 infOutputBlobShapes;
-    unordered_map_1de83e55 trainOutputBlobShapes;
+    unordered_map_19365264 infInputBlobShapes;
+    unordered_map_19365264 trainInputBlobShapes;
+    unordered_map_19365264 infOutputBlobShapes;
+    unordered_map_19365264 trainOutputBlobShapes;
     ETModelDefinition *_inferenceModel;
     ETOptimizerDefinition *_optimizer;
     unsigned long long _platform;
@@ -49,6 +46,7 @@
 @property(retain, nonatomic) ETModelDefinition *inferenceModel; // @synthesize inferenceModel=_inferenceModel;
 - (unsigned long long)platformForLayerNamed:(id)arg1 error:(id *)arg2;
 - (id)getTensorNamed:(id)arg1;
+- (id)getTensorNamed:(id)arg1 directBind:(_Bool)arg2;
 - (_Bool)setTensorNamed:(id)arg1 withValue:(id)arg2 error:(id *)arg3;
 - (_Bool)setParameterOfType:(unsigned long long)arg1 forLayerNamed:(id)arg2 withValue:(id)arg3 error:(id *)arg4;
 - (id)getParameterOfType:(unsigned long long)arg1 forLayerNamed:(id)arg2 error:(id *)arg3;
@@ -60,13 +58,13 @@
 - (_Bool)doTrainingOnData:(id)arg1 forNumberOfEpochs:(unsigned long long)arg2 withCallback:(id)arg3 error:(id *)arg4;
 - (_Bool)privateDoTrainingOnData:(id)arg1 forNumberOfEpochs:(unsigned long long)arg2 withCallback:(id)arg3 error:(id *)arg4;
 - (id)doInferenceOnData:(id)arg1 error:(id *)arg2;
-- (id)namesVectorToFoundationArray:(vector_ebb6ef3e)arg1;
+- (id)namesVectorToFoundationArray:(vector_bfe5b09a)arg1;
 - (id)initWithTrainingModelDefinition:(id)arg1 forPlatform:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithModelDefinition:(id)arg1 lossDefinition:(id)arg2 variablesDefinition:(id)arg3 optimizerDefinition:(id)arg4 forPlatform:(unsigned long long)arg5 error:(id *)arg6;
 - (id)description;
-- (void)checkShapes:(const unordered_map_1de83e55 *)arg1 withSample:(const unordered_map_74b681bc *)arg2 withError:(id *)arg3;
+- (void)checkShapes:(const void *)arg1 withSample:(const void *)arg2 withError:(id *)arg3;
 - (void)setupInputOutputShapes:(id *)arg1;
-- (void)setupShapes:(unordered_map_1de83e55 *)arg1 forBlobs:(id)arg2 withError:(id *)arg3;
+- (void)setupShapes:(void *)arg1 forBlobs:(id)arg2 withError:(id *)arg3;
 - (void)shareWeights;
 - (void)reloadOnRuntimePlatform:(id *)arg1;
 - (shared_ptr_ae8b808b)context_for_runtime_platform:(id *)arg1;

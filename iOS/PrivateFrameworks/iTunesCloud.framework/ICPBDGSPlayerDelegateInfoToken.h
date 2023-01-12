@@ -10,6 +10,7 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICPBDGSPlayerDelegateInfoToken : PBCodable <NSCopying>
 {
     double _expirationTimeInterval;
@@ -23,11 +24,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *storefrontIdentifier; // @synthesize storefrontIdentifier=_storefrontIdentifier;
-@property(nonatomic) double expirationTimeInterval; // @synthesize expirationTimeInterval=_expirationTimeInterval;
-@property(nonatomic) unsigned long long sessionID; // @synthesize sessionID=_sessionID;
-@property(retain, nonatomic) NSData *token; // @synthesize token=_token;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -35,10 +31,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasStorefrontIdentifier;
-@property(nonatomic) _Bool hasExpirationTimeInterval;
-@property(nonatomic) _Bool hasSessionID;
-@property(readonly, nonatomic) _Bool hasToken;
 
 @end
 

@@ -82,7 +82,6 @@
 + (double)barToBarGapWidth;
 + (double)enoughHeightForOneLineForEvent:(id)arg1 usingSmallText:(_Bool)arg2 sizeClass:(long long)arg3;
 + (double)minNaturalTextHeightForEvent:(id)arg1 usingSmallText:(_Bool)arg2 sizeClass:(long long)arg3;
-+ (id)_color:(id)arg1 darkenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
 + (id)_color:(id)arg1 lightenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
 + (id)imageForExternalDragOperationFromEvent:(id)arg1 style:(long long)arg2;
 + (id)framePathForExternalDragOperationWithSize:(struct CGSize)arg1;
@@ -193,7 +192,6 @@
 - (void)_addTravelTimeSubviews;
 - (void)forceUpdateColors;
 - (void)_invalidateCurrentRequest;
-- (void)_clearContent;
 - (void)prepareForReuse;
 - (void)setUserInteractionEnabled:(_Bool)arg1;
 @property(readonly, copy) NSString *description;

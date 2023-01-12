@@ -6,35 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class PXGSpriteMetadataStore;
+@class PXGEntityManager, PXGKernel, PXGShader;
+@protocol OS_dispatch_queue;
 
 @interface PXGEffect : NSObject
 {
-    PXGSpriteMetadataStore *_metadataStore;
-    unsigned short _effectId;
+    unsigned int _effectId;
+    _Bool _didNotifyOfUse;
+    PXGEntityManager *_entityManager;
+    unsigned long long _numberOfSiblingSprites;
+    NSObject<OS_dispatch_queue> *_queue;
+    double _scale;
+    double _drawingScale;
 }
 
-+ (id)createEffectForLayout:(id)arg1;
-+ (void)configureSiblingSprites:(CDStruct_92550dd7)arg1 siblingsSpriteIndexRange:(struct _PXGSpriteIndexRange)arg2 siblingsTexture:(id)arg3 forMainRenderSpriteRef:(CDStruct_a6175b54)arg4 mainPresentationSpriteRef:(CDStruct_a6175b54)arg5 mainSpriteIndex:(unsigned int)arg6 mainSpriteTexture:(id)arg7 effectData:(const CDStruct_8a1a641f *)arg8 screenScale:(double)arg9;
-+ (id)createSiblingsTextureForMainSpriteTexture:(id)arg1;
-+ (Class)effectClassForType:(unsigned short)arg1;
-+ (unsigned short)type;
++ (id)shaderSourceForFilename:(id)arg1;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned short effectId; // @synthesize effectId=_effectId;
-@property(nonatomic) float value8;
-@property(nonatomic) float value7;
-@property(nonatomic) float value6;
-@property(nonatomic) float value5;
-@property(nonatomic) float value4;
-@property(nonatomic) float value3;
-@property(nonatomic) float value2;
-@property(nonatomic) float value1;
-@property(nonatomic) unsigned long long numberOfSiblingSprites;
-@property(readonly, nonatomic) int shaderFlags;
-@property(readonly, nonatomic) unsigned short type;
+@property(nonatomic) double drawingScale; // @synthesize drawingScale=_drawingScale;
+@property(nonatomic) double scale; // @synthesize scale=_scale;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(nonatomic) unsigned long long numberOfSiblingSprites; // @synthesize numberOfSiblingSprites=_numberOfSiblingSprites;
+@property(readonly, nonatomic) __weak PXGEntityManager *entityManager; // @synthesize entityManager=_entityManager;
+- (void)configureSiblingSprites:(CDStruct_d5f63e8f)arg1 siblingsSpriteIndexRange:(struct _PXGSpriteIndexRange)arg2 siblingsTexture:(id)arg3 forMainRenderSpriteRef:(CDStruct_d23a385d)arg4 mainPresentationSpriteRef:(CDStruct_d23a385d)arg5 mainSpriteIndex:(unsigned int)arg6 mainSpriteTexture:(id)arg7 screenScale:(double)arg8;
+- (id)createSiblingsTextureForMainSpriteTexture:(id)arg1;
+@property(readonly, nonatomic) PXGKernel *kernel;
+@property(readonly, nonatomic) PXGShader *shader;
 - (id)description;
+@property(readonly, nonatomic) unsigned int effectId;
 - (void)dealloc;
-- (id)initWithMetadataStore:(id)arg1;
+- (id)initWithEntityManager:(id)arg1;
 - (id)init;
 
 @end

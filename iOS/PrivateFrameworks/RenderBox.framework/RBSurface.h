@@ -11,7 +11,7 @@
 @interface RBSurface : NSObject
 {
     struct objc_ptr<RBDisplayList *> _displayList;
-    struct unique_ptr<RB::Drawable, std::__1::default_delete<RB::Drawable>> _drawable;
+    struct refcounted_ptr<RB::Drawable> _drawable;
     struct objc_ptr<id<MTLDevice>> _device;
     struct refcounted_ptr<RB::Texture> _texture;
     void *_lastItem;
@@ -32,13 +32,12 @@
 @property(nonatomic) int colorMode; // @synthesize colorMode=_colorMode;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
-- (_Bool)_updateWithDevice:(struct Device *)arg1 frame:(struct RenderFrame *)arg2 synchronized:(_Bool)arg3;
-- (void)invalidateInRect:(struct Rect)arg1;
 - (void)invalidate;
 - (void)updateUsingDevice:(id)arg1;
 - (struct CGImage *)copyCGImageUsingDevice:(id)arg1;
 - (void)setDisplayList:(id)arg1 dirtyRect:(struct CGRect)arg2;
 @property(retain, nonatomic) RBDisplayList *displayList;
+- (void)dealloc;
 - (id)init;
 
 @end

@@ -6,32 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSIndexPath, NSMutableArray;
-@protocol WFTreeObserver;
+@class NSArray, NSMutableArray, NSString;
 
 @interface WFTreeNode : NSObject
 {
     id _representedObject;
     WFTreeNode *_parentNode;
-    id <WFTreeObserver> _observer;
-    NSArray *_flattenedDescendents;
     NSMutableArray *_mutableChildNodes;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSMutableArray *mutableChildNodes; // @synthesize mutableChildNodes=_mutableChildNodes;
-@property(readonly, nonatomic) NSArray *flattenedDescendents; // @synthesize flattenedDescendents=_flattenedDescendents;
-@property(nonatomic) __weak id <WFTreeObserver> observer; // @synthesize observer=_observer;
 @property(readonly, nonatomic) __weak WFTreeNode *parentNode; // @synthesize parentNode=_parentNode;
 @property(retain, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
 - (id)paddedStringAtDepth:(unsigned long long)arg1;
 - (id)debugDescriptionAtDepth:(unsigned long long)arg1;
 - (id)debugDescription;
+@property(readonly, nonatomic) NSString *nodeDescription;
 - (id)descendentNodeAtRelativeIndexPath:(id)arg1;
 @property(readonly, nonatomic, getter=isLeaf) _Bool leaf;
-@property(readonly, nonatomic) NSIndexPath *indexPath;
-- (void)setFlattenedDescendents:(id)arg1 changeSource:(id)arg2;
-- (void)childDescendentsDidChange:(id)arg1 oldValue:(id)arg2 changeSource:(id)arg3;
 - (void)moveNodeFromIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)removeNodeAtIndex:(unsigned long long)arg1;
 - (void)removeNode:(id)arg1;

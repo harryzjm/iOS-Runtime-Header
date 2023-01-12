@@ -8,6 +8,7 @@
 {
 }
 
+@property(nonatomic) _Bool allowsCustomHandles; // @dynamic allowsCustomHandles;
 - (id)supportedContactProperties;
 - (Class)singleStateClass;
 - (Class)multipleStateClass;

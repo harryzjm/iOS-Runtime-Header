@@ -19,6 +19,7 @@
     CDUnknownBlockType _remoteViewReadyHandler;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool gkIsDisappearing; // @synthesize gkIsDisappearing=_gkIsDisappearing;
 @property(nonatomic) _Bool isRequestingRemoteViewController; // @synthesize isRequestingRemoteViewController=_isRequestingRemoteViewController;
 @property(copy, nonatomic) CDUnknownBlockType remoteViewReadyHandler; // @synthesize remoteViewReadyHandler=_remoteViewReadyHandler;
@@ -45,7 +46,6 @@
 - (void)didGetRemoteViewController;
 - (void)donePressed:(id)arg1;
 - (void)didReceiveMemoryWarning;
-- (void)dealloc;
 - (id)init;
 - (id)hostSideViewControllerClassName;
 - (id)serviceSideViewControllerClassName;

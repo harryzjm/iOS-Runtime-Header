@@ -14,16 +14,19 @@
     int _offset;
     _Bool _dateIsCorrect;
     _Bool _didRegexTrigger;
+    _Bool _didResponseKitTrigger;
     _Bool _isFromCongratulation;
     struct {
         unsigned int modelVersion:1;
         unsigned int offset:1;
         unsigned int dateIsCorrect:1;
         unsigned int didRegexTrigger:1;
+        unsigned int didResponseKitTrigger:1;
         unsigned int isFromCongratulation:1;
     } _has;
 }
 
+@property(nonatomic) _Bool didResponseKitTrigger; // @synthesize didResponseKitTrigger=_didResponseKitTrigger;
 @property(nonatomic) _Bool didRegexTrigger; // @synthesize didRegexTrigger=_didRegexTrigger;
 @property(nonatomic) unsigned int modelVersion; // @synthesize modelVersion=_modelVersion;
 @property(nonatomic) _Bool isFromCongratulation; // @synthesize isFromCongratulation=_isFromCongratulation;
@@ -37,6 +40,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasDidResponseKitTrigger;
 - (int)StringAsOffset:(id)arg1;
 - (id)offsetAsString:(int)arg1;
 @property(nonatomic) _Bool hasOffset;

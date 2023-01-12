@@ -12,6 +12,7 @@
 
 @interface PKPaymentSummaryItemValidator : NSObject <PKPaymentValidating>
 {
+    NSString *_currencyCode;
     PKPaymentSummaryItem *_item;
 }
 
@@ -19,6 +20,7 @@
 + (id)validatorWithObject:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) PKPaymentSummaryItem *item; // @synthesize item=_item;
+@property(copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 - (_Bool)isValidWithAPIType:(unsigned long long)arg1 withError:(id *)arg2;
 - (_Bool)isValidWithError:(id *)arg1;
 - (id)initWithPaymentSummaryItem:(id)arg1;

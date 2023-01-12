@@ -18,12 +18,8 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double score; // @synthesize score=_score;
-@property(retain, nonatomic) NSSet *topics; // @synthesize topics=_topics;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithIdentifier:(id)arg1 topics:(id)arg2 score:(double)arg3;
 
 @end
 

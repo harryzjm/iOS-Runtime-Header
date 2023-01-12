@@ -21,6 +21,8 @@
 @property(retain, nonatomic) id v3; // @synthesize v3=_v3;
 @property(retain, nonatomic) id v2; // @synthesize v2=_v2;
 @property(retain, nonatomic) id v1; // @synthesize v1=_v1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)initWithObject1:(id)arg1 object2:(id)arg2 object3:(id)arg3 object4:(id)arg4 object5:(id)arg5;
 

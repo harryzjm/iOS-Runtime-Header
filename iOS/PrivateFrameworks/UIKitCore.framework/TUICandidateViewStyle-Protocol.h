@@ -30,6 +30,7 @@
 @property(readonly, nonatomic) struct UIEdgeInsets arrowButtonPadding;
 @property(readonly, nonatomic) struct UIEdgeInsets extraCellPadding;
 @property(readonly, nonatomic) double singleSlottedCellMargin;
+@property(readonly, nonatomic) double maximumIconWidth;
 @property(readonly, nonatomic) double minimumCellWidth;
 @property(readonly, nonatomic) double minimumCellPadding;
 @property(readonly, nonatomic) unsigned long long maxNumberOfProactiveCells;
@@ -46,6 +47,8 @@
 @property(readonly, nonatomic) UIImage *transliterationCandidateBackgroundImage;
 @property(readonly, nonatomic) UIImage *highlightedCellBackgroundImage;
 @property(readonly, nonatomic) UIImage *cellBackgroundImage;
+@property(readonly, nonatomic) UIImage *rightEdgeMaskImage;
+@property(readonly, nonatomic) UIImage *leftEdgeMaskImage;
 @property(readonly, nonatomic) UIImage *arrowButtonSeparatorImage;
 @property(readonly, nonatomic) UIImage *rightEdgeSeparatorImage;
 @property(readonly, nonatomic) UIImage *leftEdgeSeparatorImage;
@@ -73,6 +76,7 @@
 @property(readonly, nonatomic) UIFont *candidateNumberFont;
 @property(readonly, nonatomic) UIFont *alternativeTextFont;
 @property(readonly, nonatomic) UIFont *annotationTextFont;
+@property(readonly, nonatomic) UIFont *supplementalLexiconCandidateFont;
 @property(readonly, nonatomic) UIFont *candidateFont;
 @end
 

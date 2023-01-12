@@ -30,6 +30,8 @@
     PLInterfaceActionGroupView *_actionsView;
     _Bool _actionsHidden;
     _Bool _clipsVisibleContentToBounds;
+    _Bool _dismissControlEnabled;
+    _Bool _headerEnabled;
     UIScrollView *_scrollView;
     UIControl *_dismissControl;
     double _contentBottomInset;
@@ -42,9 +44,12 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic, getter=_mainContentView) UIView *mainContentView; // @synthesize mainContentView=_mainContentView;
 @property(nonatomic) __weak id <PLExpandedPlatterViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=isHeaderEnabled) _Bool headerEnabled; // @synthesize headerEnabled=_headerEnabled;
+@property(nonatomic, getter=isDismissControlEnabled) _Bool dismissControlEnabled; // @synthesize dismissControlEnabled=_dismissControlEnabled;
 @property(nonatomic) long long dismissControlPosition; // @synthesize dismissControlPosition=_dismissControlPosition;
 @property(nonatomic) double contentBottomInset; // @synthesize contentBottomInset=_contentBottomInset;
 @property(nonatomic) _Bool clipsVisibleContentToBounds; // @synthesize clipsVisibleContentToBounds=_clipsVisibleContentToBounds;
+@property(nonatomic, getter=isActionsHidden) _Bool actionsHidden; // @synthesize actionsHidden=_actionsHidden;
 @property(nonatomic) struct CGSize customContentSize; // @synthesize customContentSize=_customContentSize;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
@@ -95,7 +100,6 @@
 - (struct CGSize)actionsSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)contentSizeExcludingActions;
 - (struct CGSize)sizeExcludingActions;
-@property(nonatomic, getter=isActionsHidden) _Bool actionsHidden;
 @property(readonly, nonatomic) struct UIEdgeInsets dismissControlInsets;
 @property(readonly, nonatomic) UIControl *dismissControl; // @synthesize dismissControl=_dismissControl;
 @property(readonly, nonatomic) UIButton *utilityButton;

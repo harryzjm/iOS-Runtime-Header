@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GKDiscovery, GKDispatchGroup, GKMatch, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class GKDiscovery, GKDispatchGroup, GKMatch, GKMatchRequest, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface GKMatchmaker : NSObject
@@ -16,6 +16,7 @@
     _Bool _nearbyBrowsing;
     _Bool _generatingCompatiblityHashes;
     _Bool _serverHosted;
+    _Bool _nearbyDiscoverySetup;
     int _matching;
     CDUnknownBlockType _inviteHandler;
     GKMatch *_match;
@@ -42,18 +43,23 @@
     NSMutableSet *_invitedNearbyPlayers;
     NSString *_inviterPlayerID;
     unsigned long long _inviteApproach;
+    NSMutableSet *_siblingInvitees;
+    GKMatchRequest *_currentMatchRequest;
 }
 
 + (id)sharedMatchmaker;
 + (id)descriptionForNearbyDictionary:(id)arg1;
 + (id)syncQueue;
 - (void).cxx_destruct;
+@property(retain, nonatomic) GKMatchRequest *currentMatchRequest; // @synthesize currentMatchRequest=_currentMatchRequest;
+@property(retain, nonatomic) NSMutableSet *siblingInvitees; // @synthesize siblingInvitees=_siblingInvitees;
 @property(nonatomic) unsigned long long inviteApproach; // @synthesize inviteApproach=_inviteApproach;
 @property(retain, nonatomic) NSString *inviterPlayerID; // @synthesize inviterPlayerID=_inviterPlayerID;
 @property(retain, nonatomic) NSMutableSet *invitedNearbyPlayers; // @synthesize invitedNearbyPlayers=_invitedNearbyPlayers;
 @property(retain, nonatomic) NSMutableSet *invitedShareInvitees; // @synthesize invitedShareInvitees=_invitedShareInvitees;
 @property(retain, nonatomic) NSMutableSet *invitedInvitees; // @synthesize invitedInvitees=_invitedInvitees;
 @property(retain, nonatomic) NSMutableSet *autoMatchedPlayers; // @synthesize autoMatchedPlayers=_autoMatchedPlayers;
+@property(nonatomic) _Bool nearbyDiscoverySetup; // @synthesize nearbyDiscoverySetup=_nearbyDiscoverySetup;
 @property(nonatomic) _Bool serverHosted; // @synthesize serverHosted=_serverHosted;
 @property(retain, nonatomic) NSMutableArray *acceptedInviteesTokens; // @synthesize acceptedInviteesTokens=_acceptedInviteesTokens;
 @property(retain, nonatomic) NSMutableArray *shareInvitees; // @synthesize shareInvitees=_shareInvitees;
@@ -79,6 +85,9 @@
 @property(copy, nonatomic) CDUnknownBlockType inviteeResponseHandler; // @synthesize inviteeResponseHandler=_inviteeResponseHandler;
 @property(retain, nonatomic) GKMatch *match; // @synthesize match=_match;
 @property(copy, nonatomic) CDUnknownBlockType inviteHandler; // @synthesize inviteHandler=_inviteHandler;
+- (void)nearbyDataReceived:(id)arg1;
+- (void)nearbyPlayerLost:(id)arg1;
+- (void)nearbyPlayerFound:(id)arg1;
 - (void)setNearbyPlayerFailed:(id)arg1;
 - (void)setNearbyPlayerDeclined:(id)arg1 reason:(long long)arg2;
 - (void)setNearbyPlayerAccepted:(id)arg1 connectionData:(id)arg2;
@@ -118,7 +127,9 @@
 - (void)matchForNearbyInvite:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)respondToHostedInvite:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)lookForInvite;
-- (void)reportPlayerConnectedWithPlayerID:(id)arg1;
+- (void)userCancelledMatching;
+- (void)reportPlayerConnectedWithPlayerID:(id)arg1 forMatch:(id)arg2;
+- (id)allInvitedInvitees;
 - (_Bool)removeInvitee:(id)arg1;
 - (_Bool)canPlayMultiplayerGameWithPlayers:(id)arg1;
 @property(readonly, nonatomic) _Bool hasInviteListener;

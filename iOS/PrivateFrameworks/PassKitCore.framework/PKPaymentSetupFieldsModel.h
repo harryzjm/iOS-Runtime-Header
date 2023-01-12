@@ -6,22 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, PKPaymentSetupFieldFooter;
+@class NSDictionary, NSMutableArray, PKPaymentSetupFieldFooter;
 
 @interface PKPaymentSetupFieldsModel : NSObject
 {
     NSMutableArray *_paymentSetupFields;
     PKPaymentSetupFieldFooter *_footerField;
+    NSDictionary *_footerFields;
 }
 
 + (id)fakePaymentSetupProvisioningFields;
 + (id)defaultPaymentSetupProvisioningFields;
 - (void).cxx_destruct;
+- (id)setupFieldAnalytics;
 - (void)prefillDefaultValues;
 - (void)resetAllPaymentSetupFieldValues;
 - (id)secureSubmissionValuesForDestination:(id)arg1;
 - (_Bool)hasFooterPaymentSetupField;
 - (id)footerPaymentSetupField;
+- (id)footerFieldForIdentifier:(id)arg1;
 - (id)submissionValuesForDestination:(id)arg1;
 - (_Bool)hasIncompletePaymentSetupFields;
 - (id)incompletePaymentSetupFields;
@@ -30,10 +33,14 @@
 - (id)paymentSetupFieldAtIndex:(unsigned long long)arg1;
 - (id)paymentSetupFieldIdentifiers;
 - (id)paymentSetupFields;
+- (void)updateWithPaymentSetupFields:(id)arg1 footerFields:(id)arg2;
 - (void)updateWithPaymentSetupFields:(id)arg1;
 - (void)replaceAllPaymentSetupFieldsPreservingCurrentValues:(id)arg1;
+- (void)replaceAllPaymentSetupFields:(id)arg1 footerFields:(id)arg2;
 - (void)replaceAllPaymentSetupFields:(id)arg1;
+- (id)initWithPaymentSetupFields:(id)arg1 footerFields:(id)arg2;
 - (id)initWithPaymentSetupFields:(id)arg1;
+- (id)init;
 
 @end
 

@@ -8,13 +8,14 @@
 #import <UIKitCore/_UICollectionViewListCellReorderControlDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSLayoutConstraint, NSString, UICellAccessoryManager, UILayoutGuide, UIView, _UICollectionViewListCellVisualProvider;
-@protocol UITableConstants;
+@protocol UIFocusItem, UITableConstants;
 
 @interface UICollectionViewListCell <_UICollectionViewListCellReorderControlDelegate, UITableConstantsCellProviding>
 {
     struct {
         unsigned int style:3;
-        unsigned int isStyledAsHeader:1;
+        unsigned int isStyledAsHeaderOrFooter:1;
+        unsigned int isFooter:1;
         unsigned int forceHeaderStylingDueToSPIOutlineDisclosureAccessory:1;
         unsigned int selectionStyle:1;
         unsigned int expanded:1;
@@ -24,6 +25,7 @@
         unsigned int cellSelectionTogglesExpansionState:1;
         unsigned int indentsAccessories:1;
         unsigned int separatorLayoutGuideLeadingReferencesPrimaryText:1;
+        unsigned int subclassOverridesSeparatorInsetsSPI:1;
     } _listCellFlags;
     _UICollectionViewListCellVisualProvider *_visualProvider;
     NSDictionary *_accessoriesByIdentifier;
@@ -33,6 +35,7 @@
     NSLayoutConstraint *_separatorLayoutGuideLeadingConstraint;
     NSLayoutConstraint *_separatorLayoutGuideTrailingConstraint;
     UILayoutGuide *_separatorLayoutGuide;
+    struct NSDirectionalEdgeInsets _sectionSeparatorInsets;
     NSArray *_accessories;
     NSArray *_leadingAccessoryConfigurations;
     NSArray *_trailingAccessoryConfigurations;
@@ -41,25 +44,28 @@
     long long _indentationLevel;
     double _indentationWidth;
     id <UITableConstants> _constants;
+    CDUnknownBlockType __disclosureActionHandler;
+    id <UIFocusItem> __parentFocusItem;
     UICellAccessoryManager *_accessoryManager;
     long long _defaultIndentationLevel;
     id _itemIdentifier;
-    CDUnknownBlockType _disclosureWasTappedHandler;
 }
 
 + (id)_createDefaultContentViewWithFrame:(struct CGRect)arg1;
 + (id)_createVisualProviderForCell:(id)arg1;
 - (void).cxx_destruct;
-@property(copy, nonatomic) CDUnknownBlockType disclosureWasTappedHandler; // @synthesize disclosureWasTappedHandler=_disclosureWasTappedHandler;
 @property(retain, nonatomic, getter=_itemIdentifier, setter=_setItemIdentifier:) id itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property(nonatomic, getter=_defaultIndentationLevel, setter=_setDefaultIndentationLevel:) long long defaultIndentationLevel; // @synthesize defaultIndentationLevel=_defaultIndentationLevel;
 @property(readonly, nonatomic, getter=_accessoryManager) UICellAccessoryManager *accessoryManager; // @synthesize accessoryManager=_accessoryManager;
+@property(nonatomic, setter=_setParentFocusItem:) __weak id <UIFocusItem> _parentFocusItem; // @synthesize _parentFocusItem=__parentFocusItem;
+@property(copy, nonatomic, setter=_setDisclosureActionHandler:) CDUnknownBlockType _disclosureActionHandler; // @synthesize _disclosureActionHandler=__disclosureActionHandler;
 @property(readonly, nonatomic, getter=_constants) id <UITableConstants> constants; // @synthesize constants=_constants;
 @property(nonatomic) double indentationWidth; // @synthesize indentationWidth=_indentationWidth;
 @property(nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
+- (struct NSDirectionalEdgeInsets)_preferredSeparatorInsetsForProposedInsets:(struct NSDirectionalEdgeInsets)arg1;
+- (struct NSDirectionalEdgeInsets)_separatorInsetsFromPrimaryTextLayoutFrame;
 - (struct NSDirectionalEdgeInsets)_separatorInsetsFromLayoutGuide;
 - (void)_updateSeparatorLayoutGuideHeight;
-- (struct NSDirectionalEdgeInsets)_sectionSeparatorInsetsFromLayoutAttributes:(id)arg1;
 - (void)_updateSeparatorLayoutGuideForSectionSeparatorInsets:(struct NSDirectionalEdgeInsets)arg1;
 @property(readonly, nonatomic) UILayoutGuide *separatorLayoutGuide;
 @property(readonly, nonatomic, getter=_owningViewForSeparatorLayoutGuide) UIView *owningViewForSeparatorLayoutGuide;
@@ -86,6 +92,9 @@
 - (void)_setIndentationLevel:(long long)arg1;
 @property(nonatomic) _Bool indentsAccessories;
 - (void)_toggleExpansionState;
+- (_Bool)_performActionForKey:(id)arg1;
+- (_Bool)_canPerformActionForKey:(id)arg1;
+- (unsigned long long)_validatedDisclosureActionForKey:(id)arg1;
 - (_Bool)_performCustomSelectionAction;
 - (_Bool)_hasCustomSelectionAction;
 @property(nonatomic, getter=_expanded, setter=_setExpanded:) _Bool _expanded;
@@ -107,6 +116,7 @@
 - (void)_updateAccessoriesIfNeeded;
 - (void)_updateCellSelectionTogglesExpansionState;
 - (void)_setNeedsUpdateAccessories;
+- (id)_focusRingPath;
 - (void)_configureFocusedFloatingContentView:(id)arg1;
 - (_Bool)_canFocusProgrammatically;
 - (long long)_defaultFocusStyle;
@@ -121,7 +131,6 @@
 - (long long)selectionStyle;
 - (void)setSelectionStyle:(long long)arg1;
 - (id)_preferredLayoutAttributesFittingAttributes:(id)arg1;
-- (long long)_styleFromLayoutAttributes:(id)arg1;
 - (void)_setLayoutAttributes:(id)arg1;
 - (void)setEditing:(_Bool)arg1;
 - (_Bool)canBeEdited;

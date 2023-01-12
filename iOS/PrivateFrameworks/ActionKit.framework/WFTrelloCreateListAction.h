@@ -10,6 +10,8 @@
 {
 }
 
+- (id)smartPromptWithContentDescription:(id)arg1 contentDestination:(id)arg2 workflowName:(id)arg3;
+- (id)contentDestinationWithError:(id *)arg1;
 - (void)updateListCacheForBoard:(id)arg1 onAccount:(id)arg2;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_e54babbe)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_e54babbe)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) NSString *speech_id;
 @property(readonly, nonatomic) _Bool endpoint_extra_delay;
 @property(readonly, nonatomic) float endpoint_threshold;

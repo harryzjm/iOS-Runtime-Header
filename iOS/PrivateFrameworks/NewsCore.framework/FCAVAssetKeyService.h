@@ -18,14 +18,8 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NFPromise *fairPlayBaseURLPromise; // @synthesize fairPlayBaseURLPromise=_fairPlayBaseURLPromise;
-@property(readonly, nonatomic) NFLazy *requestEncoder; // @synthesize requestEncoder=_requestEncoder;
-@property(readonly, nonatomic) NFLazy *session; // @synthesize session=_session;
-- (id)_errorForBadRequestWithResponseData:(id)arg1 URL:(id)arg2;
-- (void)_performHTTPRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchContentKeyWithURI:(id)arg1 spcData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchAppCertificateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithConfigurationManager:(id)arg1;
 - (id)init;
 
 @end

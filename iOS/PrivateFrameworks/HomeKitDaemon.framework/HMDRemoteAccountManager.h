@@ -55,9 +55,9 @@
 @property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
 - (id)initWithIDSService:(id)arg1;
 - (id)init;
+- (void)__handleSendMessageFailureWithError:(id)arg1 destination:(id)arg2;
 - (id)deviceForSenderContext:(id)arg1;
 - (id)accountForSenderContext:(id)arg1;
-- (void)__handleSendMessageFailureWithError:(id)arg1 destination:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

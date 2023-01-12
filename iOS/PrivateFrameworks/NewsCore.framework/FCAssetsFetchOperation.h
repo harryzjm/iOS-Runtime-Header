@@ -4,18 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSObject;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface FCAssetsFetchOperation
 {
+    unsigned long long _maxConcurrentFetchCount;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
     NSArray *_assetHandles;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_semaphore> *_semaphore;
 }
 
 - (void).cxx_destruct;
-@property(copy, nonatomic) NSArray *assetHandles; // @synthesize assetHandles=_assetHandles;
+@property(copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler=_archiveHandler;
+@property(copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
 @property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-- (void)_finish;
+@property(nonatomic) unsigned long long maxConcurrentFetchCount; // @synthesize maxConcurrentFetchCount=_maxConcurrentFetchCount;
 - (void)performOperation;
 - (id)initWithAssetHandle:(id)arg1;
 - (id)initWithAssetHandles:(id)arg1;

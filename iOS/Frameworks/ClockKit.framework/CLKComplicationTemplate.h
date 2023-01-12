@@ -20,18 +20,32 @@
     _Bool _linkedOnOrAfterGrace;
     _Bool _renderForPreviews;
     UIColor *_tintColor;
+    long long _sdkVersion;
     long long _uiSensitivity;
     NSDate *_creationDate;
 }
 
++ (id)_secureCodingRepresentationOfValue:(id)arg1 bundlePath:(id)arg2;
++ (id)_secureCodingRepresentationOfEmbeddedObjectsArray:(id)arg1 bundlePath:(id)arg2;
++ (id)_secureCodingRepresentationOfEmbeddedObjectsDictionary:(id)arg1 bundlePath:(id)arg2;
 + (id)complicationTemplateWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2 purpose:(unsigned long long)arg3;
-+ (id)validMetadataClasses;
 + (_Bool)supportsSecureCoding;
 + (id)new;
++ (Class)_superClassFromCompatibleJSONSerializationClass:(Class)arg1;
++ (id)_jsonRepresentationFromValue:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (id)_jsonObjectRepresentationFromObject:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (id)_createJSONRepresentationFromArray:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (_Bool)_arrayIsCompatibleWithJSONSerialization:(id)arg1;
++ (_Bool)dictionaryIsCompatibleWithJSONSerialization:(id)arg1;
++ (_Bool)classIsCompatibleWithJSONSerialization:(Class)arg1;
++ (id)objectFromJSON:(id)arg1 bundle:(id)arg2;
++ (id)createJSONRepresentationFromDictionary:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (id)classesCompatibleWithJSONSerialization;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(nonatomic, setter=setUISensitivity:) long long uiSensitivity; // @synthesize uiSensitivity=_uiSensitivity;
 @property(readonly, nonatomic) _Bool finalized; // @synthesize finalized=_finalized;
+@property(nonatomic) long long sdkVersion; // @synthesize sdkVersion=_sdkVersion;
 @property(nonatomic) _Bool renderForPreviews; // @synthesize renderForPreviews=_renderForPreviews;
 @property(readonly, nonatomic, getter=isLinkedOnOrAfterGrace) _Bool linkedOnOrAfterGrace; // @synthesize linkedOnOrAfterGrace=_linkedOnOrAfterGrace;
 @property(copy, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
@@ -52,7 +66,6 @@
 - (void)_enumerateIntegerKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateTextProviderKeysWithBlock:(CDUnknownBlockType)arg1;
-- (id)_createEncodableComplicationJsonDictionary:(id)arg1 bundlePath:(id)arg2;
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1 purpose:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -65,7 +78,7 @@
 - (void)enumerateProgressProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTextProviderKeysWithBlock:(CDUnknownBlockType)arg1;
-- (struct CGSize)maxSizeForImageProviderKey:(id)arg1;
+- (void)maxSDKSize:(struct CGSize *)arg1 deviceSize:(struct CGSize *)arg2 forImageProviderKey:(id)arg3;
 - (void)_finalizeSwiftUIViewForKey:(id)arg1 withMaxSize:(struct CGSize)arg2 cornerRadius:(double)arg3 safeAreaInsets:(struct UIEdgeInsets)arg4;
 - (void)finalize;
 - (id)serializableCopyWithImageProviders:(id)arg1;
@@ -80,6 +93,7 @@
 - (void)setMetadata:(id)arg1;
 - (id)metadata;
 @property(readonly, nonatomic) long long timeTravelUpdateFrequency;
+- (void)setSDKVersionFromLS:(id)arg1;
 @property(readonly, nonatomic) long long compatibleFamily;
 - (_Bool)isCompatibleWithFamily:(long long)arg1;
 @property(readonly, nonatomic) _Bool hasSubMinuteUpdateRate;

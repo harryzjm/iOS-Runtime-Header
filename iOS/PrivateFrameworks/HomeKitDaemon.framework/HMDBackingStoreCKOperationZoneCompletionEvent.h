@@ -6,17 +6,12 @@
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
-@class NSError, NSString;
+@class NSString;
 
 @interface HMDBackingStoreCKOperationZoneCompletionEvent <HMDAWDLogEvent>
 {
-    NSError *_error;
 }
 
-+ (id)uuid;
-- (void).cxx_destruct;
-@property(readonly, copy) NSError *error; // @synthesize error=_error;
-- (id)initWithCloudZoneID:(id)arg1 error:(id)arg2;
 - (id)metricForAWD;
 - (unsigned int)AWDMessageType;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CSAsset, NSArray, NSDictionary, NSString, NSURL, SSRLoggingAggregator;
+@class CSAsset, NSArray, NSDictionary, NSString, NSURL, NSUUID, SSRLoggingAggregator;
 
 @interface SSRSpeakerRecognitionContext : NSObject
 {
@@ -17,6 +17,7 @@
     unsigned long long _spIdType;
     CSAsset *_asset;
     NSString *_locale;
+    NSUUID *_endpointUUID;
     unsigned long long _activeChannel;
     unsigned long long _scoreType;
     unsigned long long _recognitionStyle;
@@ -48,6 +49,7 @@
 @property(readonly, nonatomic) unsigned long long recognitionStyle; // @synthesize recognitionStyle=_recognitionStyle;
 @property(readonly, nonatomic) unsigned long long scoreType; // @synthesize scoreType=_scoreType;
 @property(readonly, nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
+@property(retain, nonatomic) NSUUID *endpointUUID; // @synthesize endpointUUID=_endpointUUID;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) CSAsset *asset; // @synthesize asset=_asset;
 @property(nonatomic) unsigned long long spIdType; // @synthesize spIdType=_spIdType;

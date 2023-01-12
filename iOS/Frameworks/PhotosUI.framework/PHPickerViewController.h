@@ -20,9 +20,11 @@
     NSExtension *__extension;
     id <NSCopying> __extensionRequestIdentifier;
     PUPickerRemoteUIViewController *__remoteUIViewController;
+    id __overlayStorage;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic, setter=_setOverlayStorage:) id _overlayStorage; // @synthesize _overlayStorage=__overlayStorage;
 @property(retain, nonatomic, setter=_setRemoteUIViewController:) PUPickerRemoteUIViewController *_remoteUIViewController; // @synthesize _remoteUIViewController=__remoteUIViewController;
 @property(copy, nonatomic, setter=_setExtensionRequestIdentifier:) id <NSCopying> _extensionRequestIdentifier; // @synthesize _extensionRequestIdentifier=__extensionRequestIdentifier;
 @property(retain, nonatomic, setter=_setExtension:) NSExtension *_extension; // @synthesize _extension=__extension;
@@ -30,12 +32,16 @@
 @property(readonly, copy, nonatomic) PHPickerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 - (void)_pickerDidFinishPicking:(id)arg1;
-- (void)_pickerUnavailableUIViewController:(id)arg1 cancelButtonTapped:(id)arg2;
-- (void)_addOrReplaceChildUnavailableUIViewControllerForError:(id)arg1;
-- (void)_handleRemoteViewControllerConnection:(id)arg1 extension:(id)arg2 extensionRequestIdentifier:(id)arg3 error:(id)arg4;
-- (void)_setupRemoteViewControllerForExtension:(id)arg1 withExtensionItem:(id)arg2;
-- (void)_setupExtension:(id)arg1 error:(id)arg2;
-- (void)_setup;
+- (void)_pickerUnavailableUIViewControllerRetryButtonTapped:(id)arg1;
+- (void)_pickerUnavailableUIViewControllerCancelButtonTapped:(id)arg1;
+- (void)_addOrReplaceChildUnavailableUIViewController:(unsigned long long)arg1 error:(id)arg2;
+- (void)_cancelExistingExtensionRequestIfPossible;
+- (void)_handleRemoteViewControllerConnection:(id)arg1 extension:(id)arg2 extensionRequestIdentifier:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_setupRemoteViewControllerForExtension:(id)arg1 withExtensionItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setupExtension:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setup:(CDUnknownBlockType)arg1;
+- (void)_moveAssetWithIdentifier:(id)arg1 afterIdentifier:(id)arg2;
+- (void)_deselectAssetsWithIdentifiers:(id)arg1;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

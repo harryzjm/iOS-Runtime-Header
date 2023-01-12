@@ -10,7 +10,7 @@
 #import <IMSharedUtilities/NSCopying-Protocol.h>
 #import <IMSharedUtilities/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @interface IMItem : NSObject <NSSecureCoding, NSCopying, IMRemoteObjectCoding>
 {
@@ -38,18 +38,14 @@
     NSData *_cloudKitServerChangeTokenBlob;
     NSString *_cloudKitRecordChangeTag;
     NSString *_parentChatID;
-    long long _srCloudKitSyncState;
-    NSString *_srCloudKitRecordID;
-    NSString *_srCloudKitRecordChangeTag;
+    NSArray *_fileTransferGUIDs;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)stringGUID;
 + (Class)classForMessageItemDictionary:(id)arg1;
 + (Class)classForIMItemType:(long long)arg1;
-@property(copy, nonatomic) NSString *srCloudKitRecordChangeTag; // @synthesize srCloudKitRecordChangeTag=_srCloudKitRecordChangeTag;
-@property(copy, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
-@property(nonatomic) long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
+@property(retain, nonatomic) NSArray *fileTransferGUIDs; // @synthesize fileTransferGUIDs=_fileTransferGUIDs;
 @property(copy, nonatomic) NSString *parentChatID; // @synthesize parentChatID=_parentChatID;
 @property(copy, nonatomic) NSString *cloudKitRecordChangeTag; // @synthesize cloudKitRecordChangeTag=_cloudKitRecordChangeTag;
 @property(copy, nonatomic) NSData *cloudKitServerChangeTokenBlob; // @synthesize cloudKitServerChangeTokenBlob=_cloudKitServerChangeTokenBlob;

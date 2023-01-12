@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *frameLabel;
     MISSING_TYPE *zIndexLabel;
     MISSING_TYPE *borderLayers;
+    MISSING_TYPE *hiddenButton;
     MISSING_TYPE *leftBorderButton;
     MISSING_TYPE *rightBorderButton;
     MISSING_TYPE *topBorderButton;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)didTapHiddenButtonWithSender:(id)arg1;
 - (void)didTapBorderButtonWithSender:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;

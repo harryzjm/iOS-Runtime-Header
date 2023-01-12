@@ -15,6 +15,9 @@
 @interface MRNowPlayingPlayerClient : NSObject <MRNowPlayingClientState, MRTransactionSourceDelegate>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_replayQueue;
+    _Bool _canBeNowPlayingPlayer;
+    double _canBeNowPlayingPlayerTimestamp;
     MRPlaybackQueue *_playbackQueue;
     NSArray *_supportedCommands;
     NSDictionary *_nowPlayingInfo;
@@ -32,6 +35,7 @@
     NSMutableDictionary *_pendingPlaybackSessionMigrateEvents;
     NSMutableDictionary *_cachedContentItemChangedForPendingPlaybackQueueRequest;
     NSMutableArray *_enqueuedContentItemChangesForPendingPlaybackQueueInvalidation;
+    NSMutableArray *_commandQueue;
     MRPlayerPath *_playerPath;
     MRPlaybackQueueSubscriptionController *_subscriptionController;
     MRNowPlayingPlayerClientCallbacks *_clientCallbacks;
@@ -40,9 +44,11 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MRNowPlayingPlayerClientCallbacks *clientCallbacks; // @synthesize clientCallbacks=_clientCallbacks;
 @property(readonly, nonatomic) MRPlaybackQueueSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
+@property(nonatomic) _Bool canBeNowPlayingPlayer; // @synthesize canBeNowPlayingPlayer=_canBeNowPlayingPlayer;
 @property(retain, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 - (id)debugDescription;
 - (id)description;
+- (void)enqueueCommand:(unsigned int)arg1 options:(id)arg2 commandCompletion:(CDUnknownBlockType)arg3;
 - (void)sendContentItemChanges:(id)arg1;
 - (void)invalidatePlaybackQueueWithPlaybackQueue:(id)arg1;
 - (void)invalidatePlaybackQueue;

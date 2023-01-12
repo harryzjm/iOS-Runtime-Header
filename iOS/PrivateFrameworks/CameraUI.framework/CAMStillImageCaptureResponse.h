@@ -17,13 +17,17 @@
     NSString *_burstIdentifier;
     unsigned long long _burstRepresentedCount;
     UIImage *_imageWellImage;
+    UIImage *_textAnalysisImage;
     long long _captureID;
+    long long _semanticEnhanceScene;
     struct CGSize _finalExpectedPixelSize;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long semanticEnhanceScene; // @synthesize semanticEnhanceScene=_semanticEnhanceScene;
 @property(readonly, nonatomic) long long captureID; // @synthesize captureID=_captureID;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
+@property(readonly, nonatomic) UIImage *textAnalysisImage; // @synthesize textAnalysisImage=_textAnalysisImage;
 @property(readonly, nonatomic) UIImage *imageWellImage; // @synthesize imageWellImage=_imageWellImage;
 @property(readonly, nonatomic) unsigned long long burstRepresentedCount; // @synthesize burstRepresentedCount=_burstRepresentedCount;
 @property(readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
@@ -31,6 +35,7 @@
 @property(readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property(readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
 @property(readonly, nonatomic) _Bool flashFired;
+@property(readonly, nonatomic, getter=isTransientAssetTemporaryPlaceholder) _Bool transientAssetTemporaryPlaceholder;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property(readonly, nonatomic) NSURL *irisVideoPersistenceURL;
 @property(readonly, nonatomic) NSString *irisStillImageUUID;
@@ -44,7 +49,7 @@
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) unsigned long long mediaType;
 @property(readonly, copy) NSString *description;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(_Bool)arg10 captureID:(long long)arg11;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 textAnalysisImage:(id)arg8 coordinationInfo:(id)arg9 finalExpectedPixelSize:(struct CGSize)arg10 expectingPairedVideo:(_Bool)arg11 captureID:(long long)arg12 semanticEnhanceScene:(long long)arg13;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

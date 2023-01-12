@@ -12,9 +12,11 @@
 {
     PXGAnimator *_animator;
     PXGLayout *_inputLayout;
+    PXGCameraConfiguration_f6f8b209 _cameraConfiguration;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) PXGCameraConfiguration_474424ad cameraConfiguration; // @synthesize cameraConfiguration=_cameraConfiguration;
 @property(retain, nonatomic) PXGLayout *inputLayout; // @synthesize inputLayout=_inputLayout;
 @property(readonly, nonatomic) __weak PXGAnimator *animator; // @synthesize animator=_animator;
 - (id)rootLayout;

@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CDUnknownBlockType bloomFilterAndConfigCompletionBlock; // @synthesize bloomFilterAndConfigCompletionBlock=_bloomFilterAndConfigCompletionBlock;
 @property(readonly, nonatomic) NSString *coalesceKey; // @synthesize coalesceKey=_coalesceKey;
-- (CDUnknownBlockType)completionBlock;
 - (id)initWithCompletionBlock:(CDUnknownBlockType)arg1 coalesceKey:(id)arg2;
 
 // Remaining properties

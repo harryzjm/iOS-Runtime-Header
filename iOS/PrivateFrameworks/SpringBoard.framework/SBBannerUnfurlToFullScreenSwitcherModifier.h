@@ -17,9 +17,10 @@
 
 - (void).cxx_destruct;
 - (_Bool)_isAppLayout:(id)arg1 atIndex:(unsigned long long)arg2;
-- (long long)transitionLiveContentRasterizationStyle;
-- (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
-- (double)opacityForIndex:(unsigned long long)arg1;
+- (struct SBSwitcherAsyncRenderingAttributes)asyncRenderingAttributesForAppLayout:(id)arg1;
+- (_Bool)shouldAsyncRenderUntilDelay:(inout double *)arg1;
+- (struct UIRectCornerRadii)cornerRadiiForIndex:(unsigned long long)arg1;
+- (double)opacityForLayoutRole:(long long)arg1 inAppLayout:(id)arg2 atIndex:(unsigned long long)arg3;
 - (_Bool)shouldScaleOverlayToFillBoundsAtIndex:(unsigned long long)arg1;
 - (id)visibleAppLayouts;
 - (_Bool)isSwitcherWindowVisible;

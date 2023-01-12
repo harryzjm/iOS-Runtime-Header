@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HealthDaemonFoundation/HDAssertion.h>
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HDCarouselSessionAssertion
+@interface _HDCarouselSessionAssertion : HDAssertion
 {
     _Bool _supportsAOT;
     NSString *_applicationBundleIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool supportsAOT; // @synthesize supportsAOT=_supportsAOT;
-@property(readonly, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
-- (id)initWithOwnerIdentifier:(id)arg1;
 
 @end
 

@@ -8,17 +8,19 @@
 
 #import <HealthMenstrualCyclesDaemon/HDMCAnalysisManagerObserver-Protocol.h>
 
-@class HDMCProfileExtension, HKMCAnalysis, NSString;
+@class HDMCProfileExtension, HKMCAnalysis, HKMCAnalysisQueryConfiguration, NSString;
 
 @interface HDMCAnalysisQueryServer : HDQueryServer <HDMCAnalysisManagerObserver>
 {
     HDMCProfileExtension *_profileExtension;
+    HKMCAnalysisQueryConfiguration *_configuration;
     HKMCAnalysis *_analysis;
 }
 
 + (_Bool)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 + (id)requiredEntitlements;
 + (Class)queryClass;
++ (id)createTaskServerWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
 - (void)_handleAnalysis:(id)arg1;
 - (void)analysisManager:(id)arg1 didUpdateAnalysis:(id)arg2;
@@ -27,7 +29,7 @@
 - (_Bool)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (id)objectTypes;
 - (id)_analysisQueryClientProxy;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4 profileExtension:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

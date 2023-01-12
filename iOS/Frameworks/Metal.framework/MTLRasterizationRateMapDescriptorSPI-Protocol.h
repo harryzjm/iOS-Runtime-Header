@@ -7,6 +7,7 @@
 @class NSString;
 
 @protocol MTLRasterizationRateMapDescriptorSPI
+@property(nonatomic) _Bool skipSampleValidationAndInterpolation;
 - (NSString *)formattedDescription:(unsigned long long)arg1;
 - (const id *)layerPointer:(unsigned long long *)arg1;
 - (id)initWithScreenSize:(CDStruct_da2e99ad)arg1;

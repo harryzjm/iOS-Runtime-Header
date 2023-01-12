@@ -59,11 +59,10 @@
 - (void)submitHintFromSource:(long long)arg1 location:(id)arg2;
 - (void)_storeHints:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeHints:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_submitHintFromSource:(long long)arg1 fallbackLocation:(id)arg2;
-- (void)submitHintFromSource:(long long)arg1 fallbackLocation:(id)arg2;
+- (void)_submitHintFromSource:(long long)arg1;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
-- (void)shutdown;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithBatteryManager:(id)arg1 bluetoothManager:(id)arg2 cameraManager:(id)arg3 hintStore:(id)arg4 learnedLocationManager:(id)arg5 locationManager:(id)arg6 metricManager:(id)arg7 navigationManager:(id)arg8 reachabilityManager:(id)arg9 walletManager:(id)arg10;
 - (id)init;
 

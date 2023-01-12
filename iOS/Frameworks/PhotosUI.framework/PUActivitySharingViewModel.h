@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXObservable.h>
 
-@class NSString, PHFetchResult, PUPhotoSelectionManager, PXPhotosDataSource;
+@class NSString, PHFetchResult, PHPerson, PUPhotoSelectionManager, PXPhotosDataSource;
 @protocol PXDisplayAsset;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_localizedTitle;
     NSString *_localizedSubtitle;
     id <PXDisplayAsset> _keyAsset;
+    PHPerson *_person;
     long long _sourceOrigin;
     PUPhotoSelectionManager *_selectionManager;
 }
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) PUPhotoSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property(readonly, nonatomic) long long sourceOrigin; // @synthesize sourceOrigin=_sourceOrigin;
+@property(readonly, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property(readonly, nonatomic) id <PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
 @property(readonly, copy, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property(readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;

@@ -15,7 +15,7 @@
     long long _identifier;
     NSString *_fileStateIdentifier;
     SFUDataRepresentation *_objectData;
-    set_713dd2e1 *_ownedIds;
+    void *_ownedIds;
     int _classType;
     unsigned int _version;
     NSString *_relativeDataPath;
@@ -27,8 +27,8 @@
 @property(nonatomic) int classType; // @synthesize classType=_classType;
 - (_Bool)isLoaded;
 - (id)dataRepresentation;
-- (void)setOwnedIds:(const set_713dd2e1 *)arg1;
-- (const set_713dd2e1 *)ownedIds;
+- (void)setOwnedIds:(const void *)arg1;
+- (const void *)ownedIds;
 - (_Bool)setDataRepresentation:(id)arg1 shouldCopy:(_Bool)arg2 error:(id *)arg3;
 - (void)setFileStateIdentifier:(id)arg1;
 - (id)fileStateIdentifier;

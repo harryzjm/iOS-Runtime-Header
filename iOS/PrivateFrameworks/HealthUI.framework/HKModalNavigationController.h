@@ -8,8 +8,11 @@
 
 @interface HKModalNavigationController : UINavigationController
 {
+    CDUnknownBlockType _completion;
 }
 
+- (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 - (void)dismissWithAnimation:(id)arg1;
 - (id)initWithRootViewController:(id)arg1;
 

@@ -10,7 +10,6 @@
 
 @class NSString, PBDataReader, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOABDebugPanelExperimentBranch : PBCodable <NSCopying>
 {
     PBDataReader *_reader;

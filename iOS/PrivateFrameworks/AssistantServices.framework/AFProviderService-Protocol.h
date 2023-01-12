@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFSyncInfo, NSDictionary, NSString, NSUUID;
+@class AFCommandExecutionInfo, AFSyncInfo, NSDictionary, NSString, NSUUID;
 
 @protocol AFProviderService <NSObject>
 - (oneway void)reloadServiceBundleAtPath:(NSString *)arg1;
@@ -15,6 +15,6 @@
 - (oneway void)clearDomainObjectsForServicePath:(NSString *)arg1 className:(NSString *)arg2;
 - (oneway void)fetchCurrentSyncSnapshotForServicePath:(NSString *)arg1 className:(NSString *)arg2 key:(NSString *)arg3 completion:(void (^)(AFSyncSnapshot *))arg4;
 - (oneway void)beginSyncForServicePath:(NSString *)arg1 className:(NSString *)arg2 requestUUID:(NSUUID *)arg3 info:(AFSyncInfo *)arg4 reply:(void (^)(void))arg5;
-- (oneway void)doCommandForServicePath:(NSString *)arg1 className:(NSString *)arg2 infoDictionary:(NSDictionary *)arg3 reply:(void (^)(NSDictionary *, NSArray *, NSError *))arg4;
+- (oneway void)doCommandForServicePath:(NSString *)arg1 className:(NSString *)arg2 infoDictionary:(NSDictionary *)arg3 executionInfo:(AFCommandExecutionInfo *)arg4 reply:(void (^)(NSDictionary *, NSArray *, NSError *))arg5;
 @end
 

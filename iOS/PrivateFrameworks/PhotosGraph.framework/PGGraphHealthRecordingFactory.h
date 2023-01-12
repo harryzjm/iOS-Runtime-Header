@@ -10,8 +10,7 @@
 {
 }
 
-+ (id)graphUpdateHealthRecorderForChangeConsumer:(_Bool)arg1;
-+ (id)graphHealthRecording;
++ (id)graphUpdateHealthRecorderForChangeConsumer:(_Bool)arg1 analytics:(id)arg2;
 
 @end
 

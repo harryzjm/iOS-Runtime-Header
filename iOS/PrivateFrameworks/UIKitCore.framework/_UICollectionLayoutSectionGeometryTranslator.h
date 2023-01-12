@@ -18,16 +18,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _effectiveFrame;
 }
 
-- (void)_computeFrames;
-@property(readonly, nonatomic) struct CGRect effectiveFrame;
-@property(readonly, nonatomic) struct CGSize effectiveContentSize;
-@property(readonly, nonatomic) struct CGSize auxillaryHostContentSize;
-@property(readonly, nonatomic) struct CGSize contentSize;
 - (id)description;
-- (struct CGRect)contentRectForSectionRect:(struct CGRect)arg1;
-@property(readonly, nonatomic) struct CGRect contentFrame;
-@property(readonly, nonatomic) struct CGPoint contentOffset;
-- (id)initWithContentSize:(struct CGSize)arg1 layoutAxis:(unsigned long long)arg2 layoutRTL:(_Bool)arg3 sectionInsets:(struct NSDirectionalEdgeInsets)arg4 supplementaryInsets:(struct NSDirectionalEdgeInsets)arg5;
 
 @end
 

@@ -4,33 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFStaticItem, HFStatusItemProvider, HMRoom, NSTimer;
+@class HFStatusItemProvider, HMRoom, NSTimer;
 
 @interface HFHomeStatusItemManager
 {
-    HFStaticItem *_showDetailsItem;
     HMRoom *_room;
-    unsigned long long _maxStatusItemCount;
     HFStatusItemProvider *_statusItemProvider;
-    long long _latestOverallPriority;
-    unsigned long long _latestOverallLoadingState;
     NSTimer *_invalidationTimer;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSTimer *invalidationTimer; // @synthesize invalidationTimer=_invalidationTimer;
-@property(nonatomic) unsigned long long latestOverallLoadingState; // @synthesize latestOverallLoadingState=_latestOverallLoadingState;
-@property(nonatomic) long long latestOverallPriority; // @synthesize latestOverallPriority=_latestOverallPriority;
 @property(retain, nonatomic) HFStatusItemProvider *statusItemProvider; // @synthesize statusItemProvider=_statusItemProvider;
-@property(nonatomic) unsigned long long maxStatusItemCount; // @synthesize maxStatusItemCount=_maxStatusItemCount;
 @property(retain, nonatomic) HMRoom *room; // @synthesize room=_room;
-@property(retain, nonatomic) HFStaticItem *showDetailsItem; // @synthesize showDetailsItem=_showDetailsItem;
-- (id)_showDetailsItemTitle;
-- (unsigned long long)_overflowStatusItemCount;
-- (long long)_overallPriority;
 - (void)_invalidateItemsIfNecessary;
 - (void)_updateInvalidationTimer;
 - (id)statusItems;
+- (_Bool)shouldPerformInitialLoadOnMainThread;
 - (id)matchingItemForHomeKitObject:(id)arg1;
 - (_Bool)_requiresNotificationsForCharacteristic:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
@@ -39,7 +29,7 @@
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (void)updateNeedsInvalidation:(_Bool)arg1 forStatusItem:(id)arg2;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
-- (id)initWithRoom:(id)arg1 maxStatusItems:(unsigned long long)arg2 delegate:(id)arg3;
+- (id)initWithRoom:(id)arg1 delegate:(id)arg2;
 
 @end
 

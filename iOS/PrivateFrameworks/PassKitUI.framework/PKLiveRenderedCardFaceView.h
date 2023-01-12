@@ -6,25 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-#import <PassKitUI/PK3DLiveCardViewDelegate-Protocol.h>
+@class PKPass, PKTexturedCardView, UIImageView;
 
-@class PK3DCardView, PKPass, UIImageView;
-
-@interface PKLiveRenderedCardFaceView : UIView <PK3DLiveCardViewDelegate>
+@interface PKLiveRenderedCardFaceView : UIView
 {
     PKPass *_pass;
-    PK3DCardView *_cardView;
+    PKTexturedCardView *_cardView;
     UIImageView *_logoImageView;
     _Bool _invalidated;
 }
 
 - (void).cxx_destruct;
-- (void)sceneDidRenderAtTime:(double)arg1;
 - (void)layoutSubviews;
 - (void)setMotionEnabled:(_Bool)arg1;
 - (void)invalidate;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)init;
 
 @end
 

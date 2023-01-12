@@ -41,7 +41,6 @@
 + (_Bool)approximateTimeForDataDetectorResult:(struct __DDResult *)arg1;
 + (_Bool)partialDateForDataDetectorResult:(struct __DDResult *)arg1;
 + (_Bool)inferredDateForDataDetectorResult:(struct __DDResult *)arg1;
-+ (void)initialize;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SGPostalAddressComponents *postalAddressComponents; // @synthesize postalAddressComponents=_postalAddressComponents;

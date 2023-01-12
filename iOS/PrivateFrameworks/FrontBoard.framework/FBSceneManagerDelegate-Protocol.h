@@ -13,7 +13,7 @@
 @optional
 - (void)sceneManager:(FBSceneManager *)arg1 scene:(FBScene *)arg2 didReceiveActions:(NSSet *)arg3;
 - (void)sceneManager:(FBSceneManager *)arg1 scene:(FBScene *)arg2 didUpdateClientSettingsWithDiff:(FBSSceneClientSettingsDiff *)arg3 oldClientSettings:(FBSSceneClientSettings *)arg4 transitionContext:(FBSSceneTransitionContext *)arg5;
-- (void)sceneManager:(FBSceneManager *)arg1 clientDidConnectWithHandshake:(FBSceneClientHandshake *)arg2;
 - (FBSSceneTransitionContext *)sceneManager:(FBSceneManager *)arg1 createDefaultTransitionContextForScene:(FBScene *)arg2;
+- (void)sceneManager:(FBSceneManager *)arg1 clientDidConnectWithHandshake:(FBSceneClientHandshake *)arg2;
 @end
 

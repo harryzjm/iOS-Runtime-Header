@@ -39,6 +39,7 @@
 - (void)cancel;
 - (_Bool)isNetworkAccessAllowed;
 - (long long)type;
+- (void)start;
 - (id)_resourceRequestForAssetResource:(id)arg1 wantsURLOnly:(_Bool)arg2 progress:(id)arg3;
 - (_Bool)_hasAnyPenultimateResource;
 - (id)_largestUnadjustedDerivativeImageResource;

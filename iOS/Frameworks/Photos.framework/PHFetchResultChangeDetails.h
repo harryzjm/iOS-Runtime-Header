@@ -18,7 +18,7 @@
     NSIndexSet *_insertedIndexes;
     NSIndexSet *_movedIndexes;
     struct __CFArray *_movedFromIndexes;
-    NSArray *_changedOIDs;
+    NSArray *_changedIdentifiers;
     NSIndexSet *_changedIndexes;
     _Bool _skipIncrementalChanges;
 }
@@ -30,6 +30,7 @@
 - (_Bool)hasDiffs;
 - (void)calculateDiffs;
 - (void)calculateDiffsAndAccumulateInsertedCount:(unsigned long long *)arg1 updatedCount:(unsigned long long *)arg2 deletedCount:(unsigned long long *)arg3;
+- (id)_addAdditionalIndexesToChanges:(id)arg1 withPreviousIdentifiers:(id)arg2 currentIdentifiers:(id)arg3;
 - (unsigned long long)snapshotIndexForContainedObject:(id)arg1;
 @property(readonly) _Bool hasMoves;
 - (void)enumerateMovesWithBlock:(CDUnknownBlockType)arg1;
@@ -48,7 +49,7 @@
 - (_Bool)shouldReload;
 - (void)dealloc;
 - (id)initWithManualFetchResultAfterChanges:(id)arg1;
-- (id)initWithFetchResult:(id)arg1 currentFetchResult:(id)arg2 changedOIDs:(id)arg3 unknownMergeEvent:(_Bool)arg4;
+- (id)initWithFetchResult:(id)arg1 currentFetchResult:(id)arg2 changedIdentifiers:(id)arg3 unknownMergeEvent:(_Bool)arg4;
 
 @end
 

@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, TFImageFetcher, TFLaunchScreen;
+@class NSURL, TFImageFetcher, TFLaunchScreen;
 @protocol TFBetaAppLaunchDataProvider, TFBetaAppLaunchPresenterView;
 
 __attribute__((visibility("hidden")))
 @interface TFBetaAppLaunchPresenter : NSObject
 {
     id <TFBetaAppLaunchPresenterView> _presenterView;
-    NSString *_bundleIdentifier;
+    NSURL *_bundleURL;
     id <TFBetaAppLaunchDataProvider> _launchDataProvider;
     TFImageFetcher *_imageFetcher;
     TFLaunchScreen *_launchScreen;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TFLaunchScreen *launchScreen; // @synthesize launchScreen=_launchScreen;
 @property(readonly, nonatomic) TFImageFetcher *imageFetcher; // @synthesize imageFetcher=_imageFetcher;
 @property(readonly, nonatomic) id <TFBetaAppLaunchDataProvider> launchDataProvider; // @synthesize launchDataProvider=_launchDataProvider;
-@property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(readonly, copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property(nonatomic) __weak id <TFBetaAppLaunchPresenterView> presenterView; // @synthesize presenterView=_presenterView;
 - (void)_abortLaunchScreenLoadWithError:(id)arg1;
 - (void)_showHowToViewWithLaunchScreen:(id)arg1;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)openHowToSupportLink;
 - (void)showHowToScreen;
 - (void)update;
-- (id)initForIdentifier:(id)arg1 launchDataProvider:(id)arg2 launchScreenSidepack:(id)arg3;
+- (id)initWithBundleURL:(id)arg1 launchDataProvider:(id)arg2 launchScreenSidepack:(id)arg3;
 
 @end
 

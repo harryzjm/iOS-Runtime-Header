@@ -11,7 +11,7 @@
 }
 
 + (id)mode;
-- (_Bool)hasObjectBoundsForScene:(id)arg1 pipeline:(id)arg2 returningObjectBounds:(struct ObjectBounds *)arg3;
+- (_Bool)hasObjectBoundsForScene:(id)arg1 pipeline:(id)arg2 returningObjectBounds:(void *)arg3;
 - (id)elementsSceneFromScene:(id)arg1;
 
 @end

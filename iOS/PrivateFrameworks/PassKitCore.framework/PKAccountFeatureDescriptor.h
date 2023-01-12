@@ -9,7 +9,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDecimalNumber, NSString;
+@class NSArray, NSDecimalNumber, NSString, PKOSVersionRequirementRange;
 
 @interface PKAccountFeatureDescriptor : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,10 +19,12 @@
     NSString *_merchantIdentifier;
     NSArray *_supportedNetworks;
     unsigned long long _merchantCapabilities;
+    PKOSVersionRequirementRange *_osVersionRange;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) PKOSVersionRequirementRange *osVersionRange; // @synthesize osVersionRange=_osVersionRange;
 @property(nonatomic) unsigned long long merchantCapabilities; // @synthesize merchantCapabilities=_merchantCapabilities;
 @property(copy, nonatomic) NSArray *supportedNetworks; // @synthesize supportedNetworks=_supportedNetworks;
 @property(copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;

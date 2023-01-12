@@ -6,9 +6,10 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class _SFDialog;
+@class WBSPermissionDialogThrottler, _SFDialog;
 
 @protocol _SFDialogPresenting <NSObject>
+- (WBSPermissionDialogThrottler *)permissionDialogThrottler;
 - (void)presentDialog:(_SFDialog *)arg1 sender:(id)arg2;
 @end
 

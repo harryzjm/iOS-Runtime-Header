@@ -9,16 +9,18 @@
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNMeCardSharingSettingsViewControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
+#import <CommunicationsSetupUI/PSSystemPolicyForAppDelegate-Protocol.h>
 
-@class CKBlackholeConversationListViewController, CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString;
+@class CKBlackholeConversationListViewController, CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, CKOnboardingController, IMCTXPCServiceSubscriptionInfo, NSString, PSSystemPolicyForApp;
 
 __attribute__((visibility("hidden")))
-@interface CKSettingsMessagesController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate>
+@interface CKSettingsMessagesController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate, PSSystemPolicyForAppDelegate>
 {
     _Bool _showingChildViewController;
     int _profileToken;
     CKFilteringListController *_filteringController;
     id _beginMappingID;
+    PSSystemPolicyForApp *_systemPolicy;
     CKMultipleCTSubscriptionsController *_mmsMessagingController;
     CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
     IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
 @property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsMessagingController; // @synthesize mmsMessagingController=_mmsMessagingController;
+@property(retain, nonatomic) PSSystemPolicyForApp *systemPolicy; // @synthesize systemPolicy=_systemPolicy;
 @property(retain) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 @property(retain, nonatomic) CKFilteringListController *filteringController; // @synthesize filteringController=_filteringController;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -81,12 +84,18 @@ __attribute__((visibility("hidden")))
 - (id)mentionsSettingsSpecifierIdentifiers;
 - (_Bool)shouldShowMentionsSettings;
 - (id)smsRelaySettingsSpecifierIdentifiers;
+- (_Bool)hasPhoneNumber;
 - (_Bool)shouldShowSMSRelaySettings;
 - (void)_setUpBusinessChatGroupSpecifiers:(id)arg1;
 - (void)sharingSettingsViewController:(id)arg1 didUpdateWithSharingResult:(id)arg2;
 - (void)sharingSettingsViewController:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
 - (void)sharingSettingsViewController:(id)arg1 didUpdateSharingState:(_Bool)arg2;
 - (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
+- (id)_sharedWithYouViewController;
+- (_Bool)_sharedWithYouEnabled;
+- (id)getSharedWithYouForSpecifier:(id)arg1;
+- (_Bool)shouldShowSharedWithYouSettings;
+- (id)sharedWithYouSettingsSpecifierIdentifiers;
 - (_Bool)_imageForkedFromMeCard;
 - (unsigned long long)_meCardSharingAudience;
 - (_Bool)_meCardSharingEnabled;
@@ -151,6 +160,7 @@ __attribute__((visibility("hidden")))
 - (id)willSendGroupMMS:(id)arg1;
 - (void)setMMSEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isMMSEnabled:(id)arg1;
+- (id)getMMSDictionary;
 - (void)setDeliveryReportsEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isDeliveryReportsEnabled:(id)arg1;
 - (id)deliveryReceiptSpecifierIdentifiers;
@@ -159,6 +169,9 @@ __attribute__((visibility("hidden")))
 - (void)_setupMultipleSubscriptionsMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(_Bool)arg2;
 - (void)_setupMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(_Bool)arg2;
 - (id)specifiers;
+- (id)newDNDGlobalConfigurationService;
+- (void)notifyDNDFocusStatusAuthorizationChanged;
+- (void)systemPolicyForApp:(id)arg1 didUpdateForSystemPolicyOptions:(unsigned long long)arg2 withValue:(id)arg3;
 - (void)_showPrivacySheetForBusinessChat:(id)arg1;
 - (void)_showPrivacySheetForiMessageFaceTime:(id)arg1;
 - (void)newCarrierNotification;

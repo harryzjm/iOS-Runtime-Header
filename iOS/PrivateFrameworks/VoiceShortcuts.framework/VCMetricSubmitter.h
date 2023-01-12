@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 @class VCMetricCheckIn, WFMetricStatusEvent;
-@protocol VCDatabaseProvider;
+@protocol WFDatabaseProvider;
 
 @interface VCMetricSubmitter : NSObject
 {
     WFMetricStatusEvent *_event;
     VCMetricCheckIn *_checkIn;
-    id <VCDatabaseProvider> _databaseProvider;
+    id <WFDatabaseProvider> _databaseProvider;
 }
 
 + (void)performWithDatabaseProvider:(id)arg1;
@@ -21,17 +21,23 @@
 + (void)scheduleWithDatabaseProvider:(id)arg1;
 + (id)activityIdentifier;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) id <VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property(readonly, nonatomic) id <WFDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property(readonly, nonatomic) VCMetricCheckIn *checkIn; // @synthesize checkIn=_checkIn;
 @property(readonly, nonatomic) WFMetricStatusEvent *event; // @synthesize event=_event;
-- (unsigned int)numberOfPersonalAutomationsFromSuggestionsEnabled:(id *)arg1;
-- (unsigned int)numberOfPersonalAutomationsEnabled:(id *)arg1;
+- (_Bool)addWidgetMetricsToEvent:(id)arg1 error:(id *)arg2;
+- (unsigned int)sleepShortcutCount:(id)arg1;
+- (unsigned int)numberOfAppSessions:(id *)arg1;
+- (unsigned int)numberOfShortcutRuns:(id)arg1;
+- (_Bool)addAutomationSuggestionMetricsToEvent:(id)arg1 database:(id)arg2 error:(id *)arg3;
+- (unsigned int)numberOfPersonalAutomationsEnabled:(id)arg1;
 - (unsigned int)folderCount:(id)arg1;
+- (unsigned int)watchShortcutCount:(id)arg1;
 - (unsigned int)uncategorizedShortcutCount:(id)arg1;
 - (unsigned int)shortcutsCount:(id)arg1;
 - (unsigned int)averageShortcutCountPerFolder:(id)arg1;
 - (_Bool)homeAutomationsPresent:(id *)arg1;
-- (_Bool)personalAutomationsPresent:(id *)arg1;
+- (_Bool)personalAutomationsPresent:(id)arg1;
+- (_Bool)isSleepEnabled;
 - (_Bool)isSharingEnabled;
 - (_Bool)isAppInstalled;
 - (void)perform;

@@ -10,15 +10,13 @@
 {
 }
 
++ (_Bool)isH12Platform;
 + (_Bool)isInternalBuild;
 + (_Bool)isSeedBuild;
-+ (_Bool)isNeuralTTSPlatform;
 + (_Bool)hasAMX;
 + (_Bool)hasANE;
 + (_Bool)isWatch;
 + (_Bool)isHomePod;
-+ (id)hardwarePlatform;
-+ (id)legacyPlatforms;
 
 @end
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)logSettingsSettingMeContact;
 - (void)logSettingsErrorSavingContactWithDescription:(id)arg1;
 - (void)logSettingsSavingContact:(id)arg1;
+- (void)logOnboardingReturningNonAnimojiItem;
 - (void)logOnboardingReturningEmptyImage;
 - (void)logOnboardingReturningDefaultMonogram;
 - (void)logOnboardingReturningSharingResultWithDescription:(id)arg1;

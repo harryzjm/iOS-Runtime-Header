@@ -9,5 +9,7 @@
 @interface SFButtonCardSection (SearchUIViewClass)
 - (Class)_searchUIViewClass;
 - (Class)_searchUIHorizontallyScrollingButtonControllerClass;
+- (_Bool)searchUIHorizontallyScrollingSectionModel_useBackground;
+- (id)searchUIHorizontallyScrollingSectionModel_widthDimension;
 @end
 

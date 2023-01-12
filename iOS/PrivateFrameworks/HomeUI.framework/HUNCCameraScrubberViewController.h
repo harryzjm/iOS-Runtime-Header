@@ -15,31 +15,29 @@
 {
     _Bool _isScrubbing;
     _Bool _isVisible;
+    UIButton *_liveButton;
     UIButton *_playPauseButton;
     HFCameraPlaybackEngine *_playbackEngine;
     HMCameraClip *_currentClip;
-    UIButton *_liveButton;
     CADisplayLink *_displayLink;
     NSDate *_clipStartDate;
     UIProgressView *_progressSlider;
     UIView *_panTrackingView;
-    UIView *_liveBackgroundView;
     UIView *_playPauseBackgroundView;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *playPauseBackgroundView; // @synthesize playPauseBackgroundView=_playPauseBackgroundView;
-@property(retain, nonatomic) UIView *liveBackgroundView; // @synthesize liveBackgroundView=_liveBackgroundView;
 @property(retain, nonatomic) UIView *panTrackingView; // @synthesize panTrackingView=_panTrackingView;
 @property(retain, nonatomic) UIProgressView *progressSlider; // @synthesize progressSlider=_progressSlider;
 @property(retain, nonatomic) NSDate *clipStartDate; // @synthesize clipStartDate=_clipStartDate;
 @property(nonatomic) _Bool isVisible; // @synthesize isVisible=_isVisible;
 @property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
-@property(retain, nonatomic) UIButton *liveButton; // @synthesize liveButton=_liveButton;
 @property(retain, nonatomic) HMCameraClip *currentClip; // @synthesize currentClip=_currentClip;
 @property(nonatomic) __weak HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property(retain, nonatomic) UIButton *playPauseButton; // @synthesize playPauseButton=_playPauseButton;
 @property(nonatomic) _Bool isScrubbing; // @synthesize isScrubbing=_isScrubbing;
+@property(readonly, nonatomic) UIButton *liveButton; // @synthesize liveButton=_liveButton;
 - (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)showClipScrubber;
@@ -53,9 +51,11 @@
 - (void)_loopPlaybackIfNeeded;
 - (void)_updateSliderPosition;
 - (void)_seekToCurrentScrubberValue;
-- (void)toggleLive:(id)arg1;
+- (void)toggleLive;
 - (void)userDidPan:(id)arg1;
 - (void)playPauseButtonPressed:(id)arg1;
+- (void)_removeDisplayLink;
+- (void)_createAndStartDisplayLink;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

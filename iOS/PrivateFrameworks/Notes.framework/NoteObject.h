@@ -8,7 +8,7 @@
 
 #import <Notes/ICSearchIndexableNote-Protocol.h>
 
-@class NSData, NSDate, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
+@class CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSManagedObjectContext, NSManagedObjectID, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
 
 @interface NoteObject : NSManagedObject <ICSearchIndexableNote>
 {
@@ -33,37 +33,38 @@
 @property(retain, nonatomic) NSString *title; // @dynamic title;
 - (id)defaultTitleForEmptyNote;
 - (id)dataForTypeIdentifier:(id)arg1;
-- (id)searchableItemAttributeSet;
-- (id)userActivityContentAttributeSet;
-- (id)searchDomainIdentifier;
+@property(readonly, nonatomic) CSSearchableItemAttributeSet *searchableItemAttributeSet;
+@property(readonly, nonatomic) CSSearchableItemAttributeSet *userActivityContentAttributeSet;
+@property(readonly, copy, nonatomic) NSString *searchDomainIdentifier;
 @property(readonly, nonatomic) _Bool isPinned;
 @property(readonly, nonatomic) _Bool isDeletedOrInTrash;
 @property(readonly, nonatomic) _Bool hasUnreadChanges;
 @property(readonly, nonatomic) long long currentStatus;
-- (id)contentIdentifier;
-- (id)searchIndexingIdentifier;
-- (id)contentInfoText;
-- (id)noteAsPlainTextWithoutTitle;
+@property(readonly, copy, nonatomic) NSString *contentIdentifier;
+@property(readonly, copy, nonatomic) NSString *searchIndexingIdentifier;
+@property(readonly, copy, nonatomic) NSString *contentInfoText;
+@property(readonly, copy, nonatomic) NSString *noteAsPlainTextWithoutTitle;
 @property(readonly, nonatomic) NSSet *noteCellKeyPaths;
-- (id)authorsExcludingCurrentUser;
-- (_Bool)isHiddenFromSearch;
-- (_Bool)searchResultCanBeDeletedFromNoteContext;
-- (unsigned long long)searchResultType;
-- (unsigned long long)searchResultsSection;
-- (id)dataSourceIdentifier;
-- (long long)visibilityTestingType;
-- (id)identifier;
-- (id)accountName;
-- (id)folderNameForNoteList;
-- (id)folderName;
-- (id)trimmedTitle;
-- (_Bool)isDeletable;
-- (_Bool)isMovable;
-- (_Bool)isSharedReadOnly;
-- (_Bool)isSharedViaICloudFolder;
-- (_Bool)isSharedViaICloud;
+@property(readonly, nonatomic) NSArray *authorsExcludingCurrentUser;
+@property(readonly, nonatomic) _Bool isHiddenFromSearch;
+@property(readonly, nonatomic) _Bool searchResultCanBeDeletedFromNoteContext;
+@property(readonly, nonatomic) unsigned long long searchResultType;
+@property(readonly, nonatomic) unsigned long long searchResultsSection;
+@property(readonly, copy, nonatomic) NSString *dataSourceIdentifier;
+@property(readonly, nonatomic) long long visibilityTestingType;
+@property(readonly, copy, nonatomic) NSString *identifier;
+@property(readonly, copy, nonatomic) NSString *accountName;
+@property(readonly, copy, nonatomic) NSString *folderNameForNoteList;
+@property(readonly, copy, nonatomic) NSString *folderName;
+@property(readonly, copy, nonatomic) NSString *trimmedTitle;
+@property(readonly, nonatomic) _Bool isDeletable;
+@property(readonly, nonatomic) _Bool isMovable;
+@property(readonly, nonatomic) _Bool isUnsupported;
+@property(readonly, nonatomic) _Bool isSharedReadOnly;
+@property(readonly, nonatomic) _Bool isSharedViaICloudFolder;
+@property(readonly, nonatomic) _Bool isSharedViaICloud;
 @property(readonly, nonatomic) _Bool isModernNote;
-- (_Bool)isPasswordProtected;
+@property(readonly, nonatomic) _Bool isPasswordProtected;
 
 // Remaining properties
 @property(retain, nonatomic) NSSet *attachments; // @dynamic attachments;
@@ -82,7 +83,9 @@
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) NSNumber *integerId; // @dynamic integerId;
 @property(retain, nonatomic) NSNumber *isBookkeepingEntry; // @dynamic isBookkeepingEntry;
+@property(readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property(retain, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
+@property(readonly, nonatomic) NSManagedObjectID *objectID;
 @property(retain, nonatomic) NSString *serverId; // @dynamic serverId;
 @property(retain, nonatomic) NoteStoreObject *store; // @dynamic store;
 @property(retain, nonatomic) NSString *summary; // @dynamic summary;

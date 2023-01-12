@@ -49,7 +49,10 @@
 - (void)setPreference:(id)arg1 toValue:(id)arg2;
 - (void)setPreference:(id)arg1 toBool:(_Bool)arg2;
 - (void)reload;
-@property(readonly, nonatomic) _Bool useSUCore;
+@property(readonly, nonatomic) _Bool queryCustomerBuilds;
+@property(readonly, nonatomic) NSNumber *analyticsSubmissionIntervalOverride;
+@property(readonly, nonatomic) _Bool allowLiveAssetServerFallback;
+@property(readonly, nonatomic) NSNumber *MDMSoftwareUpdatePath;
 @property(readonly, nonatomic) _Bool autoDownloadDeletedBuild;
 @property(readonly, nonatomic) NSNumber *bannerDelay;
 @property(readonly, nonatomic) _Bool autoUpdateForceOff;

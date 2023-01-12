@@ -6,8 +6,14 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
+@class NSArray, NSString;
+
 @protocol CHPKRemoteSettingsProtocol <NSObject>
 - (void)openPencilSettings;
 - (void)setGlobalPrefersPencilOnlyDrawing:(_Bool)arg1;
+
+@optional
+- (void)setCurrentScribbleLanguageIdentifiers:(NSArray *)arg1;
+- (void)setCurrentScribbleLanguageIdentifier:(NSString *)arg1;
 @end
 

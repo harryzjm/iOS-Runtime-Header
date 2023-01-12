@@ -8,7 +8,7 @@
 
 @interface _EARResultCombiner : NSObject
 {
-    struct unique_ptr<quasar::ResultCombiner, std::__1::default_delete<quasar::ResultCombiner>> _combiner;
+    struct unique_ptr<quasar::ResultCombiner, std::default_delete<quasar::ResultCombiner>> _combiner;
 }
 
 + (void)initialize;

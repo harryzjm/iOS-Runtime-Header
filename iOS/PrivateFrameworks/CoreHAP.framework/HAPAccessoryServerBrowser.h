@@ -8,7 +8,7 @@
 
 #import <CoreHAP/HAPAccessoryServerNotification-Protocol.h>
 
-@class HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSString;
+@class HAPMetricsDispatcher, HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HAPKeyStore, OS_dispatch_queue;
 
 @interface HAPAccessoryServerBrowser : HMFObject <HAPAccessoryServerNotification>
@@ -18,9 +18,11 @@
     long long _linkType;
     NSMutableSet *_pairedAccessoryIdentifiers;
     id <HAPKeyStore> _keyStore;
+    HAPMetricsDispatcher *_logEvent;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) HAPMetricsDispatcher *logEvent; // @synthesize logEvent=_logEvent;
 @property(retain, nonatomic) id <HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
 @property(retain, nonatomic) NSMutableSet *pairedAccessoryIdentifiers; // @synthesize pairedAccessoryIdentifiers=_pairedAccessoryIdentifiers;
 @property(readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;

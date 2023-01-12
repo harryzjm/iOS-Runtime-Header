@@ -7,11 +7,12 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (AEAdditions)
+- (id)ae_firstMatching:(CDUnknownBlockType)arg1;
+- (void)ae_forEach:(CDUnknownBlockType)arg1;
 - (id)ae_split:(id *)arg1 includeBlock:(CDUnknownBlockType)arg2;
 - (id)ae_addingItems:(id)arg1;
 - (id)ae_poppingFirstItem:(id *)arg1;
 - (id)ae_adding:(id)arg1;
-- (id)ae_reduceInto:(CDUnknownBlockType)arg1;
 - (id)ae_filter:(CDUnknownBlockType)arg1;
 - (id)ae_map:(CDUnknownBlockType)arg1;
 @end

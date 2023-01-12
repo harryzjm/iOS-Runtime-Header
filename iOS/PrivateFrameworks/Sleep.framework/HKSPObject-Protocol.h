@@ -9,7 +9,7 @@
 #import <Sleep/NSObject-Protocol.h>
 #import <Sleep/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSSet;
+@class NSDate, NSDictionary, NSSet;
 @protocol HKSPMutableObject, HKSPObject;
 
 @protocol HKSPObject <NSObject, NSSecureCoding, NSCopying, NSMutableCopying>
@@ -20,6 +20,7 @@
 - (id)initFromObject:(id <HKSPObject>)arg1;
 
 @optional
+@property(readonly, nonatomic) NSDictionary *relationshipChanges;
 @property(readonly, nonatomic) NSSet *significantChanges;
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate;
 @end

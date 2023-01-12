@@ -7,9 +7,10 @@
 #import <UIKitCore/NSTextContainerView-Protocol.h>
 #import <UIKitCore/NSTextLayoutOrientationProvider-Protocol.h>
 
-@class NSDictionary, NSTextContainer;
+@class NSDictionary, NSLayoutManager, NSTextContainer;
 
 @protocol NSUITextViewCommonMethods <NSTextLayoutOrientationProvider, NSTextContainerView>
+@property(readonly, nonatomic) NSLayoutManager *layoutManager;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1 avoidAdditionalLayout:(_Bool)arg2;
 - (_Bool)isHorizontallyResizable;
 - (struct CGSize)minSize;

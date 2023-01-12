@@ -13,12 +13,15 @@
 {
     MISSING_TYPE *selectedIndex;
     MISSING_TYPE *children;
+    MISSING_TYPE *lastIDs;
+    MISSING_TYPE *pendingSeenIndex;
     MISSING_TYPE *lastSeenIndex;
-    MISSING_TYPE *updateCount;
+    MISSING_TYPE *pendingSelectedIndex;
 }
 
 - (void).cxx_destruct;
 - (id)init;
+- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

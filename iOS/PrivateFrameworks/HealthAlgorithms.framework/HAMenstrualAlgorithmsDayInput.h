@@ -6,18 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+@class HAMenstrualAlgorithmsHeartRateStatistics, NSNumber;
 
 @interface HAMenstrualAlgorithmsDayInput : NSObject
 {
     unsigned char _flow;
     _Bool _spotting;
     unsigned char _ovulationTestResult;
+    unsigned char _cervicalMucusQuality;
     unsigned int _julianDay;
     NSNumber *_flowUpdatedJulianDay;
+    HAMenstrualAlgorithmsHeartRateStatistics *_sedentaryHeartRateStatistics;
+    HAMenstrualAlgorithmsHeartRateStatistics *_sleepHeartRateStatistics;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) HAMenstrualAlgorithmsHeartRateStatistics *sleepHeartRateStatistics; // @synthesize sleepHeartRateStatistics=_sleepHeartRateStatistics;
+@property(retain, nonatomic) HAMenstrualAlgorithmsHeartRateStatistics *sedentaryHeartRateStatistics; // @synthesize sedentaryHeartRateStatistics=_sedentaryHeartRateStatistics;
+@property(nonatomic) unsigned char cervicalMucusQuality; // @synthesize cervicalMucusQuality=_cervicalMucusQuality;
 @property(nonatomic) unsigned char ovulationTestResult; // @synthesize ovulationTestResult=_ovulationTestResult;
 @property(retain, nonatomic) NSNumber *flowUpdatedJulianDay; // @synthesize flowUpdatedJulianDay=_flowUpdatedJulianDay;
 @property(nonatomic) _Bool spotting; // @synthesize spotting=_spotting;

@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ML3AccountInformationProviding-Protocol.h>
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
+#import <iTunesCloud/_MSVAccountInformationProviding-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface ICUserIdentity : NSObject <ML3AccountInformationProviding, NSCopying, NSSecureCoding>
+@interface ICUserIdentity : NSObject <_MSVAccountInformationProviding, NSCopying, NSSecureCoding>
 {
     NSString *_deviceIdentifier;
+    _Bool _isEncodingUsingSpecificIdentityStore;
     _Bool _allowsDelegation;
     _Bool _allowsAccountEstablishment;
     long long _type;
@@ -38,11 +39,12 @@
 @property(readonly, nonatomic) _Bool allowsDelegation; // @synthesize allowsDelegation=_allowsDelegation;
 - (id)_resolvedDSIDUsingSpecificIdentityStore:(id)arg1;
 - (_Bool)_isComparableUsingResolvedDSID;
+- (void)_performEncodingTaskUsingSpecificIdentityStore:(id)arg1 encodingHandler:(CDUnknownBlockType)arg2;
 - (void)_ensureResolvedDSIDUsingSpecificIdentityStore:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-@property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) unsigned long long hash;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hashInStore:(id)arg1;

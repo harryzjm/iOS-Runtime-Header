@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface MTLLoadedFile : NSObject
 {
     NSData *_fileData;
-    struct LoaderGlobalState *_parent;
+    void *_parent;
     long long _modifiedTimeWhenCached;
     struct FileIdentifier _identity;
     _Bool _isCached;
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 @property(readonly) NSData *contents; // @synthesize contents=_fileData;
 - (void)dealloc;
-- (id)initWithData:(id)arg1 parent:(struct LoaderGlobalState *)arg2;
+- (id)initWithData:(id)arg1 parent:(void *)arg2;
 
 @end
 

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AVTClippableImageStore, AVTUIEnvironment, AVTUILogger, AVTUIStickerGeneratorPool;
-@protocol AVTAvatarRecord, AVTCacheableResource, AVTResourceCache, AVTTaskScheduler, OS_dispatch_queue;
+@class AVTClippableImageStore, AVTMemoji, AVTUIEnvironment, AVTUILogger, AVTUIStickerGeneratorPool;
+@protocol AVTAvatarRecord, AVTCacheableResource, AVTResourceCache, AVTStickerTaskScheduler, OS_dispatch_queue;
 
 @interface AVTUIStickerRenderer : NSObject
 {
@@ -16,11 +16,12 @@
     AVTClippableImageStore *_imageStore;
     AVTUIEnvironment *_environment;
     AVTUILogger *_logger;
-    id <AVTTaskScheduler> _renderingScheduler;
+    id <AVTStickerTaskScheduler> _renderingScheduler;
     NSObject<OS_dispatch_queue> *_renderingQueue;
     NSObject<OS_dispatch_queue> *_encodingQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     id <AVTAvatarRecord> _avatarRecord;
+    AVTMemoji *_avatar;
     id <AVTCacheableResource> _cacheableResourceItem;
     AVTUIStickerGeneratorPool *_stickerGeneratorPool;
 }
@@ -33,23 +34,32 @@
 @property(nonatomic) _Bool parallelizeEncoding; // @synthesize parallelizeEncoding=_parallelizeEncoding;
 @property(readonly, nonatomic) AVTUIStickerGeneratorPool *stickerGeneratorPool; // @synthesize stickerGeneratorPool=_stickerGeneratorPool;
 @property(readonly, nonatomic) id <AVTCacheableResource> cacheableResourceItem; // @synthesize cacheableResourceItem=_cacheableResourceItem;
+@property(readonly, nonatomic) AVTMemoji *avatar; // @synthesize avatar=_avatar;
 @property(readonly, nonatomic) id <AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *encodingQueue; // @synthesize encodingQueue=_encodingQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *renderingQueue; // @synthesize renderingQueue=_renderingQueue;
-@property(readonly, nonatomic) id <AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property(readonly, nonatomic) id <AVTStickerTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property(readonly, nonatomic) AVTUILogger *logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) AVTClippableImageStore *imageStore; // @synthesize imageStore=_imageStore;
 @property(readonly, nonatomic) id <AVTResourceCache> cache; // @synthesize cache=_cache;
 - (void)stopUsingResources;
+- (CDUnknownBlockType)scheduledStickerResourceProviderForThumbnailForModelPreset:(id)arg1 presetOverrides:(id)arg2 avatarConfiguration:(id)arg3 stickerConfiguration:(id)arg4;
+- (CDUnknownBlockType)scheduledStickerResourceProviderForStickerConfiguration:(id)arg1 correctClipping:(_Bool)arg2;
 - (CDUnknownBlockType)scheduledStickerResourceProviderForStickerConfiguration:(id)arg1;
-- (id)renderStickerResourceForItem:(id)arg1 scope:(id)arg2 configuration:(id)arg3;
+- (id)renderStickerResourceForItem:(id)arg1 scope:(id)arg2 stickerConfiguration:(id)arg3 avatarConfiguration:(id)arg4 correctClipping:(_Bool)arg5;
+- (id)renderStickerResourceForItem:(id)arg1 scope:(id)arg2 configuration:(id)arg3 correctClipping:(_Bool)arg4;
 - (void)saveImageForResource:(id)arg1 forScope:(id)arg2 synchronous:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (CDUnknownBlockType)providerForResource:(id)arg1 forScope:(id)arg2 queue:(id)arg3 renderingHandler:(CDUnknownBlockType)arg4;
+- (CDUnknownBlockType)providerForResourceWithAvatarConfiguration:(id)arg1 forScope:(id)arg2 queue:(id)arg3 renderingHandler:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)providerForResourceForScope:(id)arg1 queue:(id)arg2 renderingHandler:(CDUnknownBlockType)arg3;
 - (CDUnknownBlockType)scheduledTaskForItem:(id)arg1 scope:(id)arg2 queue:(id)arg3 renderingHandler:(CDUnknownBlockType)arg4 resourceHandler:(CDUnknownBlockType)arg5 synchronous:(_Bool)arg6;
+- (id)initWithAvatarRecord:(id)arg1 avatar:(id)arg2 cache:(id)arg3 imageStore:(id)arg4 stickerGeneratorPool:(id)arg5 environment:(id)arg6 renderingScheduler:(id)arg7 renderingQueue:(id)arg8 encodingQueue:(id)arg9 callbackQueue:(id)arg10;
 - (id)initWithAvatarRecord:(id)arg1 cache:(id)arg2 imageStore:(id)arg3 stickerGeneratorPool:(id)arg4 environment:(id)arg5 renderingScheduler:(id)arg6 renderingQueue:(id)arg7 encodingQueue:(id)arg8 callbackQueue:(id)arg9;
 - (id)initWithAvatarRecord:(id)arg1 cache:(id)arg2 renderingScheduler:(id)arg3 renderingQueue:(id)arg4 encodingQueue:(id)arg5 stickerGeneratorPool:(id)arg6 environment:(id)arg7;
+- (id)initWithAvatarRecord:(id)arg1 avatar:(id)arg2 stickerGeneratorPool:(id)arg3 scheduler:(id)arg4 imageStore:(id)arg5 environment:(id)arg6;
+- (id)initWithAvatarRecord:(id)arg1 stickerGeneratorPool:(id)arg2 scheduler:(id)arg3 imageStore:(id)arg4;
 - (id)initWithAvatarRecord:(id)arg1 stickerGeneratorPool:(id)arg2 scheduler:(id)arg3;
 
 @end

@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     _Bool _socialEngineeringThreatTypeOff;
     _Bool _malwareThreatTypeOff;
     _Bool _unwantedSoftwareThreatTypeOff;
+    _Bool _proxyOff;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool proxyOff; // @synthesize proxyOff=_proxyOff;
 @property(readonly, nonatomic) _Bool unwantedSoftwareThreatTypeOff; // @synthesize unwantedSoftwareThreatTypeOff=_unwantedSoftwareThreatTypeOff;
 @property(readonly, nonatomic) _Bool malwareThreatTypeOff; // @synthesize malwareThreatTypeOff=_malwareThreatTypeOff;
 @property(readonly, nonatomic) _Bool socialEngineeringThreatTypeOff; // @synthesize socialEngineeringThreatTypeOff=_socialEngineeringThreatTypeOff;

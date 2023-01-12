@@ -10,7 +10,7 @@
 
 @interface CMHealthTrackerInternal : NSObject
 {
-    struct CLConnectionClient *fLocationdConnection;
+    void *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSObject<OS_dispatch_queue> *fAppQueue;
 }

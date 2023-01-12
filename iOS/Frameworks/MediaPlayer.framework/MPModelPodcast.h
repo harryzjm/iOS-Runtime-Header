@@ -17,6 +17,7 @@
 + (id)__feedURL_KEY;
 + (id)__title_KEY;
 + (id)kindWithEpisodeKind:(id)arg1;
++ (long long)genericObjectType;
 - (id)artworkCatalog;
 - (id)humanDescription;
 

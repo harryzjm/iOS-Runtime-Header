@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)checkVietnameseCharactersInText:(id)arg1;
++ (id)languageForText:(id)arg1 checkVietnamese:(_Bool)arg2;
 + (id)languageForText:(id)arg1;
 + (unsigned long long)sourceForEvent:(id)arg1;
 + (id)messageContentForEvent:(id)arg1 andLanguage:(id)arg2;

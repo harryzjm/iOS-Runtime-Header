@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class BRDSIDString, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncHealthReport : NSObject
 {
-    NSMutableDictionary *_syncUpErrorsByZone;
-    NSMutableDictionary *_syncDownErrorsByZone;
-    NSString *_dsid;
+    NSMutableDictionary *_syncUpErrorsByMangledID;
+    NSMutableDictionary *_syncDownErrorsByMangledID;
+    BRDSIDString *_dsid;
     NSString *_rampNumber;
+    NSMutableSet *_syncUpFailures;
     NSMutableSet *_uploadFailures;
     NSMutableSet *_downloadFailures;
     unsigned long long _totalZoneCount;
@@ -27,13 +28,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property(readonly, nonatomic) NSSet *downloadFailures; // @synthesize downloadFailures=_downloadFailures;
 @property(readonly, nonatomic) NSSet *uploadFailures; // @synthesize uploadFailures=_uploadFailures;
-@property(readonly, nonatomic) NSDictionary *syncDownErrorsByZone; // @synthesize syncDownErrorsByZone=_syncDownErrorsByZone;
-@property(readonly, nonatomic) NSDictionary *syncUpErrorsByZone; // @synthesize syncUpErrorsByZone=_syncUpErrorsByZone;
+@property(readonly, nonatomic) NSSet *syncUpFailures; // @synthesize syncUpFailures=_syncUpFailures;
+@property(readonly, nonatomic) NSDictionary *syncDownErrorsByMangledID; // @synthesize syncDownErrorsByMangledID=_syncDownErrorsByMangledID;
+@property(readonly, nonatomic) NSDictionary *syncUpErrorsByMangledID; // @synthesize syncUpErrorsByMangledID=_syncUpErrorsByMangledID;
 @property(readonly, nonatomic) unsigned long long totalItemsCount; // @synthesize totalItemsCount=_totalItemsCount;
 @property(readonly, nonatomic) unsigned long long blockedZonesCount; // @synthesize blockedZonesCount=_blockedZonesCount;
 @property(readonly, nonatomic) unsigned long long totalZoneCount; // @synthesize totalZoneCount=_totalZoneCount;
+@property(readonly, nonatomic) NSArray *telemetryErrorEvents;
 - (void)syncErrors:(CDUnknownBlockType)arg1;
 - (void)generateReportWithSession:(id)arg1;
+- (id)_injectionForAnalyticsServiceCode:(int)arg1;
 - (void)_fillTransferFailure:(id)arg1 withRowID:(unsigned long long)arg2 atDate:(id)arg3 session:(id)arg4;
 - (id)getRampNumberForSession:(id)arg1;
 - (id)init;

@@ -16,14 +16,15 @@
     NSDictionary *_eventPayload;
 }
 
++ (id)_payloadWithApplication:(id)arg1 isSleepTrackingEnabled:(_Bool)arg2 activeWatchProductType:(id)arg3 provenanceSource:(id)arg4;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *eventPayload; // @synthesize eventPayload=_eventPayload;
 @property(retain, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
-- (id)initWithContext:(unsigned long long)arg1 watchSleepTrackingEnabled:(_Bool)arg2;
+@property(readonly, copy) NSString *description;
+- (id)initWithScheduleChangeInfo:(id)arg1 provenanceInfo:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

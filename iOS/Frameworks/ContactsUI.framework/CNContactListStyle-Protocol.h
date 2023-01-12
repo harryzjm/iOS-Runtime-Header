@@ -35,6 +35,7 @@
 @property(readonly, nonatomic) UIFont *cellNameTextEmphasisedFont;
 @property(readonly, nonatomic) UIFont *cellNameTextFont;
 @property(readonly, nonatomic) UIColor *cellSearchBackgroundColor;
+@property(readonly, nonatomic) UIColor *cellBlueSelectionSecondaryTextColor;
 @property(readonly, nonatomic) UIColor *cellSearchResultTextDisabledColor;
 @property(readonly, nonatomic) UIColor *cellSearchResultTextColor;
 @property(readonly, nonatomic) UIColor *cellNameTextHighlightedLightColor;

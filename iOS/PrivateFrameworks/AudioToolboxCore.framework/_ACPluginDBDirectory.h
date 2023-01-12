@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)scanBundle:(id)arg1 loadable:(_Bool)arg2;
 - (void)scanDirectory;
-- (void)loadAllComponents:(struct AudioComponentVector *)arg1;
+- (void)loadAllComponents:(void *)arg1;
 - (void)monitorDirectory;
 - (void)eventStreamCallback:(id)arg1 flags:(const unsigned int *)arg2;
 - (void)bundlesChanged:(id)arg1 shouldRescan:(_Bool)arg2;

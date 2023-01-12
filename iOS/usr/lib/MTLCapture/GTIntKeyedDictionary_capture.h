@@ -10,7 +10,7 @@
 
 @interface GTIntKeyedDictionary_capture : NSObject <NSSecureCoding>
 {
-    struct _IntKeyedDictionaryPrivate *_private;
+    void *_private;
 }
 
 + (_Bool)supportsSecureCoding;

@@ -26,6 +26,7 @@
 @property(readonly) _Atomic _Bool done; // @synthesize done=_done;
 - (void)addWorkItemToQueue:(id)arg1 withWorkItem:(CDUnknownBlockType)arg2 andContext:(id)arg3;
 - (void)addWorkItem:(CDUnknownBlockType)arg1 withContext:(id)arg2;
+- (void)addWorkItem:(CDUnknownBlockType)arg1 toQueue:(id)arg2;
 - (void)addWorkItem:(CDUnknownBlockType)arg1;
 - (void)markReadyAndAwaitCompletion;
 - (void)markReady;

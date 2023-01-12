@@ -31,7 +31,7 @@
 - (void)_didChangeLocale:(id)arg1;
 - (void)_didUnregisterApps:(id)arg1;
 - (void)_didRegisterApps:(id)arg1;
-- (int)_registerForNotification:(const char *)arg1 handler:(CDUnknownBlockType)arg2;
+- (int)_registerForNotification:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)_appMetadataIfMonitoringIsNeeded:(id)arg1;
 - (void)_populateListOfMonitoredApps;
 - (void)dumpStateTo:(id)arg1;

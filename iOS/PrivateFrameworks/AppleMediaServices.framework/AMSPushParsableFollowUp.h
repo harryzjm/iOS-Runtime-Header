@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 #import <AppleMediaServices/AMSPushParsable-Protocol.h>
 #import <AppleMediaServices/AMSUserNotificationIntentDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSPushParsableFollowUp : NSObject <AMSPushParsable, AMSUserNotificationIntentDelegate>
+@interface AMSPushParsableFollowUp : NSObject <AMSPushParsable, AMSUserNotificationIntentDelegate, AMSBagConsumer>
 {
 }
 
@@ -20,9 +21,14 @@ __attribute__((visibility("hidden")))
 + (id)_createFollowUpItemFromNotification:(id)arg1;
 + (id)_createFollowUpItemFromPayload:(id)arg1;
 + (_Bool)_shouldClearFollowUpFromPayload:(id)arg1;
-+ (_Bool)_shouldAllowFollowUp:(id)arg1;
++ (_Bool)_shouldAllowFollowUp:(id)arg1 bag:(id)arg2;
 + (void)_performPostWithPayload:(id)arg1 bag:(id)arg2;
 + (void)_performClearWithPayload:(id)arg1;
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)createBagForSubProfile;
++ (id)bagSubProfileVersion;
++ (id)bagSubProfile;
++ (id)bagKeySet;
 + (void)userNotification:(id)arg1 selectedButtonAction:(id)arg2 bag:(id)arg3;
 + (_Bool)shouldSkipAccountCheck;
 + (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bag:(id)arg3;

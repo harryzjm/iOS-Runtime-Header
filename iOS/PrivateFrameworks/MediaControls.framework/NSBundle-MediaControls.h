@@ -8,6 +8,16 @@
 
 @interface NSBundle (MediaControls)
 + (id)mediaControlsBundle;
++ (_Bool)mru_isSoundScapesIdentifier:(id)arg1;
++ (_Bool)mru_isSiriBundleIdentifier:(id)arg1;
++ (_Bool)mru_isProximityControlBundleIdentifier:(id)arg1;
++ (_Bool)mru_isSpringBoardBundleIdentifier:(id)arg1;
++ (_Bool)mru_isHomeBundleIdentifier:(id)arg1;
++ (_Bool)mru_isSiri;
++ (_Bool)mru_isProximityControl;
++ (_Bool)mru_isSpringBoard;
++ (_Bool)mru_isHome;
++ (id)mediaRemoteUIBundle;
 - (id)mediaControls_localizedStringForKey:(id)arg1 inTable:(id)arg2;
 @end
 

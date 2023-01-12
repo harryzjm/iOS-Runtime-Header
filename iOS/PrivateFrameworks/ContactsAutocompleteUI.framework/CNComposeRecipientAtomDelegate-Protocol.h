@@ -4,15 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ContactsAutocompleteUI/NSObject-Protocol.h>
+
 @class CNComposeRecipientAtom, UIContextMenuConfiguration;
 
-@protocol CNComposeRecipientAtomDelegate
+@protocol CNComposeRecipientAtomDelegate <NSObject>
 - (UIContextMenuConfiguration *)menuConfigurationForAtomView:(CNComposeRecipientAtom *)arg1;
 - (void)composeRecipientAtomSelectNext:(CNComposeRecipientAtom *)arg1;
 - (void)composeRecipientAtomSelectPrevious:(CNComposeRecipientAtom *)arg1;
 - (void)composeRecipientAtomShowPersonCard:(CNComposeRecipientAtom *)arg1;
 - (void)composeRecipientAtomDisambiguate:(CNComposeRecipientAtom *)arg1;
 - (void)deselectComposeRecipientAtom:(CNComposeRecipientAtom *)arg1;
+- (void)shiftSelectComposeRecipientAtom:(CNComposeRecipientAtom *)arg1;
 - (void)selectComposeRecipientAtom:(CNComposeRecipientAtom *)arg1;
+
+@optional
+- (void)composeRecipientAtomStopDisambiguating;
 @end
 

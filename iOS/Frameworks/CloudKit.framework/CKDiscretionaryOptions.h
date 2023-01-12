@@ -13,9 +13,10 @@
 
 @interface CKDiscretionaryOptions : NSObject <NSSecureCoding, NSCoding>
 {
-    _Bool _allowsExpensiveAccess;
+    _Bool _allowsCellularAccess;
+    _Bool _allowsExpensiveNetworkAccess;
     NSString *_applicationBundleIdentifierOverride;
-    NSString *_secondarySourceAppplicationBundleId;
+    NSString *_secondarySourceApplicationBundleId;
     double _timeoutIntervalForResource;
     unsigned long long _discretionaryNetworkBehavior;
 }
@@ -23,9 +24,10 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
-@property(nonatomic) _Bool allowsExpensiveAccess; // @synthesize allowsExpensiveAccess=_allowsExpensiveAccess;
+@property(nonatomic) _Bool allowsExpensiveNetworkAccess; // @synthesize allowsExpensiveNetworkAccess=_allowsExpensiveNetworkAccess;
+@property(nonatomic) _Bool allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property(nonatomic) double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
-@property(retain, nonatomic) NSString *secondarySourceAppplicationBundleId; // @synthesize secondarySourceAppplicationBundleId=_secondarySourceAppplicationBundleId;
+@property(retain, nonatomic) NSString *secondarySourceApplicationBundleId; // @synthesize secondarySourceApplicationBundleId=_secondarySourceApplicationBundleId;
 @property(retain, nonatomic) NSString *applicationBundleIdentifierOverride; // @synthesize applicationBundleIdentifierOverride=_applicationBundleIdentifierOverride;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

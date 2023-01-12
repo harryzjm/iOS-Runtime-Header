@@ -10,7 +10,7 @@
 #import <ReplayKit/UINavigationControllerDelegate-Protocol.h>
 #import <ReplayKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSString, NSURL, RPBroadcastController, RPPipViewController, UIView, UIWindow;
+@class NSString, NSURL, RPBroadcastController, RPPGPipViewController, RPPipViewController, UIView, UIWindow;
 @protocol RPScreenRecorderDelegate, RPScreenRecorderPrivateDelegate;
 
 @interface RPScreenRecorder : NSObject <RPPreviewViewControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate>
@@ -18,7 +18,6 @@
     _Bool _recording;
     _Bool _microphoneEnabled;
     _Bool _cameraEnabled;
-    _Bool _broadcasting;
     _Bool _available;
     _Bool _hasUserConsentForCamera;
     _Bool _hasUserConsentForMicrophone;
@@ -32,6 +31,7 @@
     NSString *_previousAudioCategory;
     UIWindow *_windowToRecord;
     RPPipViewController *_pipViewController;
+    RPPGPipViewController *_pgPipViewController;
     CDUnknownBlockType _saveVideoToCameraRollCompletionBlock;
     CDUnknownBlockType _captureHandler;
     RPBroadcastController *_activeBroadcastController;
@@ -53,10 +53,10 @@
 @property(nonatomic) _Bool hasUserConsentForMicrophone; // @synthesize hasUserConsentForMicrophone=_hasUserConsentForMicrophone;
 @property(nonatomic) _Bool hasUserConsentForCamera; // @synthesize hasUserConsentForCamera=_hasUserConsentForCamera;
 @property(copy, nonatomic) CDUnknownBlockType saveVideoToCameraRollCompletionBlock; // @synthesize saveVideoToCameraRollCompletionBlock=_saveVideoToCameraRollCompletionBlock;
+@property(retain, nonatomic) RPPGPipViewController *pgPipViewController; // @synthesize pgPipViewController=_pgPipViewController;
 @property(retain, nonatomic) RPPipViewController *pipViewController; // @synthesize pipViewController=_pipViewController;
 @property(retain, nonatomic) UIWindow *windowToRecord; // @synthesize windowToRecord=_windowToRecord;
 @property(nonatomic, getter=isAvailable) _Bool available; // @synthesize available=_available;
-@property(nonatomic) _Bool broadcasting; // @synthesize broadcasting=_broadcasting;
 @property(retain, nonatomic) NSString *previousAudioCategory; // @synthesize previousAudioCategory=_previousAudioCategory;
 @property(nonatomic) unsigned long long previousAudioSessionOptions; // @synthesize previousAudioSessionOptions=_previousAudioSessionOptions;
 @property(retain, nonatomic) UIView *cameraPreviewView; // @synthesize cameraPreviewView=_cameraPreviewView;
@@ -91,10 +91,12 @@
 - (void)instantiatePipView;
 - (void)removePipView;
 - (void)saveVideo:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)saveClipToCameraRoll:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)saveVideoToCameraRoll:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)generateClipWithSeconds:(double)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)stopClipBufferingWithHandler:(CDUnknownBlockType)arg1;
-- (void)startClipBufferingWithMicrophoneEnabled:(_Bool)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)resumeInAppClip;
+- (void)exportClipToURL:(id)arg1 duration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)stopClipBufferingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)startClipBufferingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resumeSystemBroadcast;
 - (void)stopSystemBroadcastWithHandler:(CDUnknownBlockType)arg1;
 - (void)startSystemBroadcastWithHandler:(CDUnknownBlockType)arg1;

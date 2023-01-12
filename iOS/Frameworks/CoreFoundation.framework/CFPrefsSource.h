@@ -45,23 +45,18 @@ __attribute__((visibility("hidden")))
 - (id)createRequestNewContentMessageForDaemon:(int)arg1;
 - (void)fullCloudSynchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)mergeIntoDictionary:(struct __CFDictionary *)arg1 sourceDictionary:(struct __CFDictionary *)arg2 cloudKeyEvaluator:(CDUnknownBlockType)arg3;
-- (struct __CFDictionary *)copyDictionary;
 - (struct __CFDictionary *)alreadylocked_copyDictionary;
-- (struct __CFArray *)copyKeyList;
 - (struct __CFArray *)alreadylocked_copyKeyList;
+- (void)setEnabled:(_Bool)arg1;
+- (void)setStoreName:(struct __CFString *)arg1;
 - (void)setConfigurationPath:(struct __CFString *)arg1;
 - (_Bool)synchronize;
 - (void *)copyValueForKey:(struct __CFString *)arg1;
 - (void *)alreadylocked_copyValueForKey:(struct __CFString *)arg1;
 - (void)_notifyObserversOfChangeFromValuesForKeys:(id)arg1 toValuesForKeys:(id)arg2;
-- (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 from:(id)arg3;
-- (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 copyValues:(_Bool)arg4 from:(id)arg5;
-- (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 copyValues:(_Bool)arg4 removeValuesForKeys:(const struct __CFString **)arg5 count:(long long)arg6 from:(id)arg7;
 - (void)alreadylocked_setPrecopiedValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (id)alreadylocked_createObserverUpdateMessageWithOperation:(int)arg1 forRole:(int *)arg2;
 - (int)alreadylocked_updateObservingRemoteChanges;
-- (int)alreadylocked_removePreferencesObserver:(id)arg1;
-- (int)alreadylocked_addPreferencesObserver:(id)arg1;
 - (id)initWithContainingPreferences:(id)arg1;
 
 @end

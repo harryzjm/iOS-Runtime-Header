@@ -14,15 +14,19 @@
     PKTransitAppletState *_transitAppletState;
     NSArray *_balanceFields;
     NSArray *_commutePlanFields;
+    NSArray *_tiles;
+    unsigned long long _rangingSuspensionReason;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long rangingSuspensionReason; // @synthesize rangingSuspensionReason=_rangingSuspensionReason;
+@property(readonly, nonatomic) NSArray *tiles; // @synthesize tiles=_tiles;
 @property(readonly, nonatomic) NSArray *commutePlanFields; // @synthesize commutePlanFields=_commutePlanFields;
 @property(readonly, nonatomic) NSArray *balanceFields; // @synthesize balanceFields=_balanceFields;
 @property(readonly, nonatomic) PKTransitAppletState *transitAppletState; // @synthesize transitAppletState=_transitAppletState;
 @property(readonly, nonatomic) PKTransitPassProperties *transitProperties; // @synthesize transitProperties=_transitProperties;
 - (id)description;
-- (id)initWithTransitProperties:(id)arg1 appletState:(id)arg2 balanceFields:(id)arg3 commutePlanFields:(id)arg4;
+- (id)initWithTransitProperties:(id)arg1 appletState:(id)arg2 balanceFields:(id)arg3 commutePlanFields:(id)arg4 tiles:(id)arg5 rangingSuspensionReason:(unsigned long long)arg6;
 
 @end
 

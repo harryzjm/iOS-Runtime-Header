@@ -28,6 +28,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (id)_descriptionWithCharacteristicOptions:(_Bool)arg1 includeResults:(_Bool)arg2;
+- (unsigned long long)_accessorySuspendedState;
 - (id)normalizedCharacteristicValuesForValues:(id)arg1;
 - (id)normalizedValueForCharacteristicValue:(id)arg1 ofType:(id)arg2;
 - (_Bool)supportsItemRepresentingServices:(id)arg1;

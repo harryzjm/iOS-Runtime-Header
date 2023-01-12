@@ -20,7 +20,7 @@
     unsigned long long _cellCount;
 }
 
-+ (id)rowInfoFromArchive:(const struct TileRowInfo *)arg1;
++ (id)rowInfoFromArchive:(const void *)arg1;
 + (id)rowInfoWithTileRowIndex:(unsigned int)arg1 wideOffsets:(_Bool)arg2;
 @property(readonly, nonatomic) unsigned long long cellCount; // @synthesize cellCount=_cellCount;
 @property(nonatomic) unsigned int tileRowIndex; // @synthesize tileRowIndex=_tileRowIndex;
@@ -32,7 +32,7 @@
 - (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 getPreBNC:(_Bool)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)moveColumnsFromIndex:(unsigned short)arg1 toIndex:(unsigned short)arg2 count:(unsigned int)arg3;
-- (void)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
+- (unsigned long long)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
 - (void)insertColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
 - (long long)setCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
 - (void)_removeCellAtIndex:(unsigned short)arg1;
@@ -45,15 +45,15 @@
 - (void)convertToWideOffsets;
 @property(readonly, nonatomic) _Bool usesWideOffsets;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
-- (void)encodeToArchive:(struct TileRowInfo *)arg1 archiver:(id)arg2;
+- (void)encodeToArchive:(void *)arg1 archiver:(id)arg2;
 - (unsigned short)_archivedColumnCount;
-- (id)initFromArchive:(const struct TileRowInfo *)arg1;
+- (id)initFromArchive:(const void *)arg1;
 - (void)dealloc;
 - (id)initWithTileRowIndex:(unsigned int)arg1 wideOffsets:(_Bool)arg2;
 @property(readonly, nonatomic) unsigned short maxColumnIndex;
 - (void)unlockForConcurrentAccess;
 - (void)lockForConcurrentAccess;
-- (vector_73284f0b)accumulateCurrentCellsConcurrentlyAtColumns:(vector_5e7df3d8 *)arg1 usingCellCreationBlock:(CDUnknownBlockType)arg2;
+- (vector_cdf5f6a1)accumulateCurrentCellsConcurrentlyAtColumns:(void *)arg1 usingCellCreationBlock:(CDUnknownBlockType)arg2;
 
 @end
 

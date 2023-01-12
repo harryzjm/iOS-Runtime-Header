@@ -10,7 +10,7 @@
 {
 }
 
-- (void)getCapacitiesForDescriptor:(id)arg1 fragmentCapacity:(unsigned long long *)arg2 nodeCapacity:(unsigned long long *)arg3;
+- (void)getCapacitiesForDescriptor:(id)arg1 fragmentCapacity:(unsigned long long *)arg2 innerNodeCapacity:(unsigned long long *)arg3 leafNodeCapacity:(unsigned long long *)arg4;
 - (id)init;
 
 @end

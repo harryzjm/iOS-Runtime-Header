@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned int isLoading:1;
     unsigned int hasOverriddenOrientationChangeEventHandling:1;
     unsigned int drawsCheckeredPattern:1;
-    unsigned int webSelectionEnabled:1;
+    unsigned int selectionEnabled:1;
     unsigned int drawInWebThread:1;
     unsigned int inRotation:1;
     unsigned int didRotateEnclosingScrollView:1;

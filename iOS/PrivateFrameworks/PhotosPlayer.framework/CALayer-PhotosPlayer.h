@@ -8,6 +8,8 @@
 
 @interface CALayer (PhotosPlayer)
 - (void)_is_removeBlurFilterIfNeeded;
+- (void)is_removeFilter:(id)arg1;
+- (void)is_addFilter:(id)arg1;
 - (void)is_addBlurFilterIfNeeded;
 - (id)_is_blurFilter;
 - (void)_is_setBlurFilter:(id)arg1;

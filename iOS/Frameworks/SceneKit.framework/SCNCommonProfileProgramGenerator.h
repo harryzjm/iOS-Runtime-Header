@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)deferredGeneratorWithProfile:(int)arg1;
-+ (id)generatorWithProfile:(int)arg1;
++ (id)generatorWithProfile:(int)arg1 allowingHotReload:(_Bool)arg2;
 - (void)releaseProgramForResource:(id)arg1;
 - (struct __C3DFXProgram *)programWithHashCode:(struct __C3DProgramHashCode *)arg1 engineContext:(struct __C3DEngineContext *)arg2 trackedResource:(id)arg3 introspectionDataPtr:(void *)arg4;
 - (void)emptyShaderCache;

@@ -88,7 +88,8 @@
 @property(nonatomic) _Bool motionToggleHidden;
 - (void)_updateWallpaperBottomBarSettingButtons;
 - (void)_updateMotionToggle;
-- (void)_tappedBottomBarFileResizingButton;
+- (id)_bottomBarFileSizeMenuActions;
+- (id)_bottomBarFileSizeMenu;
 - (void)_tappedBottomBarMotionToggle;
 - (void)_tappedBottomBarSetBothButton;
 - (void)_tappedBottomBarSetLockButton;

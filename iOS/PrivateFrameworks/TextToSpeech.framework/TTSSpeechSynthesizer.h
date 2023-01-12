@@ -56,6 +56,7 @@
 + (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2 footprint:(long long)arg3 useFallbackDefault:(_Bool)arg4;
 + (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2 footprint:(long long)arg3;
 + (id)audioFileSettingsForVoice:(id)arg1;
++ (id)remapVoiceIdentifier:(id)arg1;
 + (void)setSpeechJobStartedUnitTestBlock:(CDUnknownBlockType)arg1;
 + (void)setSpeechJobFinishedUnitTestBlock:(CDUnknownBlockType)arg1;
 + (id)availableLanguageCodes;
@@ -72,6 +73,7 @@
 + (id)speechMarkupStringForType:(long long)arg1 forIdentifier:(id)arg2 string:(id)arg3;
 + (_Bool)employSpeechMarkupForType:(long long)arg1 identifier:(id)arg2 withLanguage:(id)arg3;
 + (id)voiceForIdentifier:(id)arg1;
++ (_Bool)isSystemVoice:(id)arg1;
 + (id)availableVoices;
 + (void)_initializeServers;
 + (void)initialize;

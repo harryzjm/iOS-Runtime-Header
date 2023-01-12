@@ -17,13 +17,9 @@
 + (id)newTimingMeasurement:(long long)arg1 withHandlers:(id)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long timingMeasurementType; // @synthesize timingMeasurementType=_timingMeasurementType;
-@property(readonly, nonatomic) NSArray *realTimeMeasurementHandlers; // @synthesize realTimeMeasurementHandlers=_realTimeMeasurementHandlers;
-@property(retain) NSDate *endDate; // @synthesize endDate=_endDate;
-@property(retain) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, nonatomic) double duration;
 - (void)end;
 - (void)begin;
-- (id)_initWithType:(long long)arg1 handlers:(id)arg2;
 
 @end
 

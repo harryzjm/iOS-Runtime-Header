@@ -19,8 +19,8 @@
     NSMutableDictionary *_carrierBundleVersionDict;
     NSMutableDictionary *_volteCustomerCarePhoneNumberDict;
     NSMutableDictionary *_volteCustomerCareWebsiteDict;
-    NSMutableDictionary *_show3GSwitchWithVolteDict;
     NSMutableDictionary *_showVolteWarningUnsupportedCarrierDict;
+    NSMutableDictionary *_show5GWarningUnsupportedCarrierDict;
     NSMutableDictionary *_carrierServicesDict;
     NSMutableDictionary *_showServiceCodes;
     NSMutableDictionary *_carrierServicesAccountUrlDict;
@@ -33,8 +33,8 @@
 @property(retain) NSMutableDictionary *carrierServicesAccountUrlDict; // @synthesize carrierServicesAccountUrlDict=_carrierServicesAccountUrlDict;
 @property(retain) NSMutableDictionary *showServiceCodes; // @synthesize showServiceCodes=_showServiceCodes;
 @property(retain) NSMutableDictionary *carrierServicesDict; // @synthesize carrierServicesDict=_carrierServicesDict;
+@property(retain) NSMutableDictionary *show5GWarningUnsupportedCarrierDict; // @synthesize show5GWarningUnsupportedCarrierDict=_show5GWarningUnsupportedCarrierDict;
 @property(retain) NSMutableDictionary *showVolteWarningUnsupportedCarrierDict; // @synthesize showVolteWarningUnsupportedCarrierDict=_showVolteWarningUnsupportedCarrierDict;
-@property(retain) NSMutableDictionary *show3GSwitchWithVolteDict; // @synthesize show3GSwitchWithVolteDict=_show3GSwitchWithVolteDict;
 @property(retain) NSMutableDictionary *volteCustomerCareWebsiteDict; // @synthesize volteCustomerCareWebsiteDict=_volteCustomerCareWebsiteDict;
 @property(retain) NSMutableDictionary *volteCustomerCarePhoneNumberDict; // @synthesize volteCustomerCarePhoneNumberDict=_volteCustomerCarePhoneNumberDict;
 @property(retain) NSMutableDictionary *carrierBundleVersionDict; // @synthesize carrierBundleVersionDict=_carrierBundleVersionDict;
@@ -51,10 +51,10 @@
 - (void)fetchShowServiceCodes;
 - (id)carrierServices:(id)arg1;
 - (void)fetchCarrierServices;
+- (_Bool)show5GWarningUnsupportedCarrier:(id)arg1;
+- (void)fetchShow5GWarningUnsupportedCarrier;
 - (_Bool)showVolteWarningUnsupportedCarrier:(id)arg1;
 - (void)fetchShowVolteWarningUnsupportedCarrier;
-- (_Bool)show3GSwitchWithVolte:(id)arg1;
-- (void)fetchShow3GSwitchWithVolte;
 - (id)volteCustomerCareWebsite:(id)arg1;
 - (void)fetchVolteCustomerCareWebsite;
 - (id)volteCustomerCarePhoneNumber:(id)arg1;
@@ -64,9 +64,10 @@
 - (id)activeDataCarrierName;
 - (id)carrierName:(id)arg1;
 - (void)fetchCarrierName;
+- (id)fetchCarrierBundleValueForDefaultVoicePlan:(id)arg1;
+- (id)fetchCarrierBundleValueForActiveDataPlan:(id)arg1;
 - (id)fetchCarrierBundleValueAsString:(id)arg1;
 - (id)fetchCarrierBundleValue:(id)arg1;
-- (id)carrierBundleValue:(id)arg1 context:(id)arg2;
 - (id)fetchCarrierBundleValue:(id)arg1 context:(id)arg2;
 - (void)willEnterForeground;
 - (void)_clearCache;

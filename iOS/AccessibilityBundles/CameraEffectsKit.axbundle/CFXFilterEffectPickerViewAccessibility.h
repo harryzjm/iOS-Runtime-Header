@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)subviewsDidLoad;
+- (void)layoutSubviews;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_setAXFunCamFilterCarousel:(id)arg1;
 - (id)_axFunCamFilterCarousel;

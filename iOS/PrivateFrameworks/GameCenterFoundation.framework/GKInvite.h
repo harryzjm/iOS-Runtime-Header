@@ -17,6 +17,7 @@
 
 + (_Bool)instancesRespondToSelector:(SEL)arg1;
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
+- (void).cxx_destruct;
 @property(nonatomic, getter=isCancelled) _Bool cancelled; // @synthesize cancelled=_cancelled;
 @property(readonly, retain, nonatomic) GKPlayer *sender; // @synthesize sender=_sender;
 @property(retain) GKInviteInternal *internal; // @synthesize internal=_internal;
@@ -28,7 +29,6 @@
 - (id)description;
 @property(readonly, nonatomic, getter=isHosted) _Bool hosted; // @dynamic hosted;
 @property(readonly, retain, nonatomic) NSString *inviter; // @dynamic inviter;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithInternalRepresentation:(id)arg1;

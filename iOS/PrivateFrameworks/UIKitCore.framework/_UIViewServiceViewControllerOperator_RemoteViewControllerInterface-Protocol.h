@@ -15,6 +15,7 @@
 - (void)__undoActionWithToken:(long long)arg1;
 - (void)__restoreStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2;
 - (void)__saveStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)__setHostCanDynamicallySpecifySupportedInterfaceOrientations:(_Bool)arg1;
 - (void)__setMediaOverridePID:(int)arg1;
 - (void)__exchangeAccessibilityPortInformation:(BSMachPortSendRight *)arg1 replyHandler:(void (^)(BSMachPortSendRight *, NSError *))arg2;
 - (void)__dimmingViewWasTapped;
@@ -32,7 +33,7 @@
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(_Bool)arg2;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 boundingPath:(_UIBoundingPath *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(BKSAnimationFenceHandle *)arg6 whenDone:(void (^)(struct CGSize, double))arg7;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 boundingPath:(_UIBoundingPath *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(_Bool)arg5 fence:(BKSAnimationFenceHandle *)arg6 hostPresentationTime:(unsigned long long)arg7 whenDone:(void (^)(struct CGSize, double))arg8;
 - (void)__hostDidChangeStatusBarHeight:(double)arg1;
 - (void)__hostDidChangeStatusBarOrientationToInterfaceOrientation:(long long)arg1;
 - (void)__hostDidBecomeActive;

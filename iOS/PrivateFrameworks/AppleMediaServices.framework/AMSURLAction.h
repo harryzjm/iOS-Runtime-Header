@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
-@class AMSAuthenticateResult, AMSDialogResult, NSDictionary, NSError, NSString, NSURL;
+@class AMSAuthenticateResult, AMSDialogResult, NSData, NSDictionary, NSError, NSString, NSURL;
 
 @interface AMSURLAction : NSObject <NSSecureCoding>
 {
@@ -20,6 +20,8 @@
     AMSAuthenticateResult *_authenticateResult;
     AMSDialogResult *_dialogResult;
     NSDictionary *_updatedHeaders;
+    NSData *_updatedBody;
+    NSString *_updatedMethod;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -28,6 +30,8 @@
 + (id)proceedAction;
 + (id)actionWithError:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *updatedMethod; // @synthesize updatedMethod=_updatedMethod;
+@property(retain, nonatomic) NSData *updatedBody; // @synthesize updatedBody=_updatedBody;
 @property(retain, nonatomic) NSDictionary *updatedHeaders; // @synthesize updatedHeaders=_updatedHeaders;
 @property(retain, nonatomic) AMSDialogResult *dialogResult; // @synthesize dialogResult=_dialogResult;
 @property(retain, nonatomic) AMSAuthenticateResult *authenticateResult; // @synthesize authenticateResult=_authenticateResult;

@@ -8,26 +8,31 @@
 
 #import <ContentKit/NSCopying-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSSet, NSString;
 @protocol WFPropertyListObject;
 
 @interface WFContentProperty : NSObject <NSCopying>
 {
+    _Bool _canLowercaseName;
     _Bool _multipleValues;
     _Bool _filterable;
     _Bool _sortable;
     _Bool _gettable;
+    _Bool _settable;
+    _Bool _appendable;
+    _Bool _removable;
     _Bool _primary;
     _Bool _caseInsensitive;
     _Bool _irrational;
     NSString *_keyPath;
     CDUnknownBlockType _block;
+    CDUnknownBlockType _setterBlock;
     NSString *_name;
+    NSString *_singularItemName;
     Class _propertyClass;
     NSArray *_allowedOperators;
     id <WFPropertyListObject> _userInfo;
     NSString *_negativeName;
-    NSString *_singularItemName;
     unsigned long long _tense;
     unsigned long long _timeUnits;
     unsigned long long _comparableUnits;
@@ -37,6 +42,7 @@
     CDUnknownBlockType _possibleValuesGetter;
 }
 
++ (id)possibleLabelsForClass:(Class)arg1 localized:(_Bool)arg2;
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType possibleValuesGetter; // @synthesize possibleValuesGetter=_possibleValuesGetter;
 @property(copy, nonatomic) NSArray *possibleValues; // @synthesize possibleValues=_possibleValues;
@@ -46,32 +52,44 @@
 @property(readonly, nonatomic) unsigned long long timeUnits; // @synthesize timeUnits=_timeUnits;
 @property(readonly, nonatomic) unsigned long long tense; // @synthesize tense=_tense;
 @property(readonly, nonatomic, getter=isIrrational) _Bool irrational; // @synthesize irrational=_irrational;
-@property(readonly, copy, nonatomic) NSString *singularItemName; // @synthesize singularItemName=_singularItemName;
 @property(readonly, copy, nonatomic) NSString *negativeName; // @synthesize negativeName=_negativeName;
 @property(readonly, nonatomic) _Bool caseInsensitive; // @synthesize caseInsensitive=_caseInsensitive;
 @property(readonly, copy, nonatomic) id <WFPropertyListObject> userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, copy, nonatomic) NSArray *allowedOperators; // @synthesize allowedOperators=_allowedOperators;
 @property(readonly, nonatomic, getter=isPrimary) _Bool primary; // @synthesize primary=_primary;
+@property(readonly, nonatomic, getter=isRemovable) _Bool removable; // @synthesize removable=_removable;
+@property(readonly, nonatomic, getter=isAppendable) _Bool appendable; // @synthesize appendable=_appendable;
+@property(readonly, nonatomic, getter=isSettable) _Bool settable; // @synthesize settable=_settable;
 @property(readonly, nonatomic, getter=isGettable) _Bool gettable; // @synthesize gettable=_gettable;
 @property(readonly, nonatomic, getter=isSortable) _Bool sortable; // @synthesize sortable=_sortable;
 @property(readonly, nonatomic, getter=isFilterable) _Bool filterable; // @synthesize filterable=_filterable;
 @property(readonly, nonatomic) _Bool multipleValues; // @synthesize multipleValues=_multipleValues;
 @property(readonly, nonatomic) Class propertyClass; // @synthesize propertyClass=_propertyClass;
+@property(readonly, nonatomic) _Bool canLowercaseName; // @synthesize canLowercaseName=_canLowercaseName;
+@property(readonly, copy, nonatomic) NSString *singularItemName; // @synthesize singularItemName=_singularItemName;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, copy, nonatomic) CDUnknownBlockType setterBlock; // @synthesize setterBlock=_setterBlock;
 @property(readonly, copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property(readonly, copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 - (unsigned long long)equivalentHash;
 - (_Bool)isEquivalentToProperty:(id)arg1;
+- (void)updateWithValue:(id)arg1 withTransaction:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getValuesForObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getValueForObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic, getter=isLabeledValue) _Bool labeledValue;
 - (void)getPossibleValues:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool hasPossibleValues;
+@property(readonly, copy, nonatomic) NSString *localizedSingularItemName;
 @property(readonly, copy, nonatomic) NSString *localizedNegativeName;
+@property(readonly, nonatomic) _Bool hasNegative;
 @property(readonly, copy, nonatomic) NSString *localizedName;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithKeyPath:(id)arg1 block:(CDUnknownBlockType)arg2 name:(id)arg3 propertyClass:(Class)arg4 multipleValues:(_Bool)arg5 filterable:(_Bool)arg6 sortable:(_Bool)arg7 gettable:(_Bool)arg8 primary:(_Bool)arg9 allowedOperators:(id)arg10 userInfo:(id)arg11 possibleValues:(id)arg12 possibleValuesGetter:(CDUnknownBlockType)arg13 caseInsensitive:(_Bool)arg14 negativeName:(id)arg15 singularItemName:(id)arg16 irrational:(_Bool)arg17 tense:(unsigned long long)arg18 timeUnits:(unsigned long long)arg19 comparableUnits:(unsigned long long)arg20 measurementUnitType:(id)arg21 displayName:(id)arg22;
+- (id)initWithKeyPath:(id)arg1 block:(CDUnknownBlockType)arg2 setterBlock:(CDUnknownBlockType)arg3 name:(id)arg4 propertyClass:(Class)arg5 multipleValues:(_Bool)arg6 filterable:(_Bool)arg7 sortable:(_Bool)arg8 gettable:(_Bool)arg9 settable:(_Bool)arg10 appendable:(_Bool)arg11 removable:(_Bool)arg12 primary:(_Bool)arg13 allowedOperators:(id)arg14 userInfo:(id)arg15 possibleValues:(id)arg16 possibleValuesGetter:(CDUnknownBlockType)arg17 caseInsensitive:(_Bool)arg18 negativeName:(id)arg19 singularItemName:(id)arg20 irrational:(_Bool)arg21 tense:(unsigned long long)arg22 timeUnits:(unsigned long long)arg23 comparableUnits:(unsigned long long)arg24 measurementUnitType:(id)arg25 displayName:(id)arg26 canLowercaseName:(_Bool)arg27;
+@property(readonly, copy, nonatomic) NSArray *possibleLabels;
 @property(readonly, nonatomic) Class valueItemClass;
+- (id)preferredTransactionModeWithCurrentMode:(id)arg1;
+@property(readonly, copy, nonatomic) NSSet *allowedTransactionModes;
 
 @end
 

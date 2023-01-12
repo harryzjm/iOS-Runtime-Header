@@ -7,7 +7,7 @@
 #import <PhotoVision/NSObject-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSSet, NSURL;
-@protocol PVFaceGroupProtocol, PVFetchResultProtocol, PVMomentProtocol, PVPersonProtocol;
+@protocol NSFastEnumeration, PVFaceGroupProtocol, PVFetchResultProtocol, PVMomentProtocol, PVPersonProtocol;
 
 @protocol PVPhotoLibraryProtocol <NSObject>
 - (NSSet *)pv_fetchInvalidAssetIdentifiersForCommonComparison;
@@ -15,6 +15,7 @@
 - (float)pv_faceProcessingProgress;
 - (id <PVFetchResultProtocol>)pv_fetchFaceGroupsForPerson:(id <PVPersonProtocol>)arg1;
 - (id <PVFetchResultProtocol>)pv_fetchFaceGroups;
+- (id <PVFetchResultProtocol>)pv_fetchAssetsForFaceLocalIdentifiers:(id <NSFastEnumeration>)arg1;
 - (id <PVFetchResultProtocol>)pv_fetchAssetsForFaceGroup:(id <PVFaceGroupProtocol>)arg1;
 - (id <PVFetchResultProtocol>)pv_fetchAssetsForPerson:(id <PVPersonProtocol>)arg1;
 - (id <PVFetchResultProtocol>)pv_fetchAssetsInMoment:(id <PVMomentProtocol>)arg1;

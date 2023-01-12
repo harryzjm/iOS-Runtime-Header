@@ -6,23 +6,9 @@
 
 #import <SpringBoardHome/SBHClockApplicationIconImageView.h>
 
-#import <SpringBoard/SBDateTimeOverrideObserver-Protocol.h>
-
-@class NSString;
-
-@interface SBClockApplicationIconImageView : SBHClockApplicationIconImageView <SBDateTimeOverrideObserver>
+@interface SBClockApplicationIconImageView : SBHClockApplicationIconImageView
 {
 }
-
-+ (void)initialize;
-- (void)controller:(id)arg1 didChangeOverrideDateFromDate:(id)arg2;
-- (void)setIcon:(id)arg1 location:(id)arg2 animated:(_Bool)arg3;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

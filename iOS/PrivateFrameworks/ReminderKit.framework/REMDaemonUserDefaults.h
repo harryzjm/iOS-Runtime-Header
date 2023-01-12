@@ -10,6 +10,7 @@
 {
 }
 
++ (id)removeAcceptedSuggestionRecordsExpireBy:(id)arg1 lifetime:(double)arg2 from:(id)arg3;
 + (id)storageNumberForTodayNotificationTime:(id)arg1;
 + (id)todayNotificationFireTimeFromStorageNumber:(id)arg1;
 + (id)defaultValues;
@@ -19,6 +20,13 @@
 - (void)updateAcceptedAttributesForReminderWithID:(id)arg1 attributeType:(id)arg2;
 - (id)_reminderIDAttributeKey:(id)arg1 attributeType:(id)arg2;
 - (id)_pptPreferredDefaultListIDKey;
+@property(nonatomic) _Bool forceEligibleForAutoCloudKitMigration;
+@property(retain, nonatomic) NSNumber *remCurrentRuntimeVersionDebuggingOverride;
+@property(retain, nonatomic) NSNumber *tipKitCachedCountOfHashtags;
+@property(retain, nonatomic) NSNumber *tipKitCachedCountOfCustomSmartLists;
+@property(retain, nonatomic) NSNumber *tipKitCachedCountOfListsWithCustomBadge;
+@property(retain, nonatomic) NSNumber *tipKitCachedCountOfLists;
+@property(retain, nonatomic) NSNumber *tipKitCachedCountOfUncompletedReminders;
 @property(nonatomic) _Bool debugSimulateSqliteFull;
 @property(copy, nonatomic) NSData *accountsListCategorizedCountsCache;
 @property(copy, nonatomic) NSDictionary *suggestedAttributesAccepted;
@@ -28,13 +36,19 @@
 @property(nonatomic) _Bool disableAlarmEngineDataSourcePrefetching;
 - (id)streamTodayNotificationFireTime:(CDUnknownBlockType)arg1;
 @property(retain, nonatomic) NSDateComponents *todayNotificationFireTime;
+@property(nonatomic) _Bool enableHashingUserIdentifiablesWithPersonIDSalt;
+@property(readonly, nonatomic) _Bool enableAutoGenerateCKPersonIDSalt;
 @property(nonatomic) _Bool enableInAppDebugMenu;
+@property(nonatomic) _Bool forceShowWhatsNewScreen;
 @property(nonatomic) _Bool forceShowWelcomeScreen;
 @property(nonatomic) _Bool enableWelcomeScreen;
 - (id)observeShowRemindersAsOverdueWithBlock:(CDUnknownBlockType)arg1;
 @property(nonatomic) _Bool showRemindersAsOverdue;
 @property(nonatomic) _Bool simulateMAIDAccount;
 @property(copy, nonatomic) NSData *userInteractionsData;
+@property(nonatomic) _Bool useExtraneousAlarmBackOffThrottleInterval;
+@property(copy, nonatomic) NSDate *lastExtraneousAlarmsProcessedDate;
+@property(copy, nonatomic) NSDate *lastCloudConfigurationDownload;
 @property(copy, nonatomic) NSDate *lastSyncPoll;
 - (void)setCoreBehaviorTrainingParameters:(id)arg1;
 - (void)setBestKForKNN:(id)arg1;
@@ -42,6 +56,9 @@
 @property(copy, nonatomic) NSDate *lastPresentAlarmDate;
 @property(copy, nonatomic) NSDate *nextScheduledAlarmDate;
 @property(copy, nonatomic) NSNumber *spotlightIndexVersion;
+@property(retain, nonatomic) NSNumber *cloudKitMaxNumAlarmIDsInReminderCKRecordDebugOverride;
+@property(retain, nonatomic) NSString *cloudKitSchemaCatchUpSyncLastSuccessBuildVersion;
+@property(retain, nonatomic) NSDate *cloudKitSchemaCatchUpSyncLastSuccessDate;
 @property(retain, nonatomic) NSString *cloudKitMergeLocalLastBuildVersionMaxRetryReached;
 @property(retain, nonatomic) NSDate *cloudKitMergeLocalLastDateMaxRetryReached;
 @property(retain, nonatomic) NSString *acAccountIdentifierToMigrateInactivatedCalDavData;

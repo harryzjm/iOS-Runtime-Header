@@ -25,7 +25,7 @@
 @property(nonatomic) _Bool shouldUseWideRows; // @synthesize shouldUseWideRows=_shouldUseWideRows;
 @property(readonly, nonatomic) _Bool upgradeRepairedTiles; // @synthesize upgradeRepairedTiles=_upgradeRepairedTiles;
 - (void)prepareToApplyConcurrentCellMap:(id)arg1;
-- (multimap_0345fd13)makeStorageMap;
+- (multimap_6050363c)makeStorageMap;
 - (void)widenTilesForUpgrade;
 - (void)reset;
 - (_Bool)auditTilesForRowOverlapAndExtensionPastTableBounds:(struct TSUCellCoord)arg1 withDataStore:(id)arg2 result:(id *)arg3;
@@ -37,7 +37,7 @@
 @property(readonly, nonatomic) NSIndexSet *populatedRows;
 @property(readonly, nonatomic) NSIndexSet *populatedTiles;
 - (void)moveColumnIndexRange:(struct _NSRange)arg1 toIndex:(unsigned short)arg2;
-- (void)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
+- (id)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
 - (void)insertColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
 - (id)columnCellCountsOfRowsInRange:(struct _NSRange)arg1;
 - (void)moveRowIndexRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
@@ -70,9 +70,9 @@
 @property(readonly, nonatomic) unsigned long long nextTileID;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion; // @synthesize archivingCompatibilityVersion=_archivingCompatibilityVersion;
 @property(readonly, nonatomic) _Bool isEmbiggened; // @dynamic isEmbiggened;
-- (void)saveToStorageArchive:(struct TileStorage *)arg1 treeArchive:(struct TableRBTree *)arg2 archiver:(id)arg3;
-- (void)_upgradeFromTileIDMap:(vector_ceceab0b *)arg1 referenceMap:(unordered_map_52392278 *)arg2;
-- (id)initWithStorageArchive:(const struct TileStorage *)arg1 treeArchive:(const struct TableRBTree *)arg2 nextTileID:(unsigned long long)arg3 unarchiver:(id)arg4 owner:(id)arg5;
+- (void)saveToStorageArchive:(void *)arg1 treeArchive:(void *)arg2 archiver:(id)arg3;
+- (void)_upgradeFromTileIDMap:(void *)arg1 referenceMap:(void *)arg2;
+- (id)initWithStorageArchive:(const void *)arg1 treeArchive:(const void *)arg2 nextTileID:(unsigned long long)arg3 unarchiver:(id)arg4 owner:(id)arg5;
 - (id)initWithOwner:(id)arg1;
 
 @end

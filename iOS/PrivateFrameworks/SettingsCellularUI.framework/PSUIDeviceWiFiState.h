@@ -6,13 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class Logger;
+
 __attribute__((visibility("hidden")))
 @interface PSUIDeviceWiFiState : NSObject
 {
+    Logger *_logger;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)getLogger;
 - (_Bool)isConnectedOverWiFi;
+- (void)dealloc;
 - (id)init;
 - (id)initPrivate;
 

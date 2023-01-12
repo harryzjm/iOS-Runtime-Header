@@ -6,6 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMBModelObjectCoder-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreModelBackedObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDRemoteAddressable-Protocol.h>
@@ -15,7 +16,7 @@
 
 @class CKUserIdentityLookupInfo, CNContact, IDSURI, NSString, NSUUID;
 
-@interface HMDAccountHandle : HMFObject <HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, NSCopying, NSSecureCoding>
+@interface HMDAccountHandle : HMFObject <HMBModelObjectCoder, HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, NSCopying, NSSecureCoding>
 {
     _Bool _local;
     _Bool _locallyTracked;
@@ -28,6 +29,7 @@
 + (id)logCategory;
 + (_Bool)supportsSecureCoding;
 + (id)accountHandleForDestination:(id)arg1;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 @property(getter=isLocallyTracked) _Bool locallyTracked; // @synthesize locallyTracked=_locallyTracked;
 @property(readonly, copy) IDSURI *URI; // @synthesize URI=_URI;
@@ -59,6 +61,7 @@
 - (id)initWithURI:(id)arg1 local:(_Bool)arg2;
 - (id)initWithURI:(id)arg1;
 - (id)init;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

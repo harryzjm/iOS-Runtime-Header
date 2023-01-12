@@ -11,10 +11,13 @@
 @interface _SFSettingsAlertController : UIViewController
 {
     UINavigationController *_navigationController;
+    _Bool _usesReverseOrder;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool usesReverseOrder; // @synthesize usesReverseOrder=_usesReverseOrder;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
+- (void)pushViewController:(id)arg1;
 - (void)_pushSubItemsForGroup:(id)arg1;
 @property(readonly, nonatomic) NSArray *items;
 @property(retain, nonatomic) _SFSettingsAlertItem *focusedItem;

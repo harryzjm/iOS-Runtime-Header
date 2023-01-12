@@ -4,6 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotoAnalysis/PLPhotoAnalysisGraphServiceClientProtocol-Protocol.h>
+#import <PhotoAnalysis/PLPhotoAnalysisGraphServiceMusicProtocol-Protocol.h>
+#import <PhotoAnalysis/PLPhotoAnalysisGraphServiceOnDiskProtocol-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisGraphServiceProtocol-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisJobServiceProtocol-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisPresentationServiceProtocol-Protocol.h>
@@ -12,7 +15,7 @@
 
 @class NSArray, NSDictionary, NSString, NSURL;
 
-@protocol PLPhotoAnalysisServiceProtocol <PLPhotoAnalysisJobServiceProtocol, PLPhotoAnalysisGraphServiceProtocol, PLPhotoAnalysisVisionServiceTaxonomyProtocol, PLPhotoAnalysisVisionServiceFaceProcessingProtocol, PLPhotoAnalysisPresentationServiceProtocol>
+@protocol PLPhotoAnalysisServiceProtocol <PLPhotoAnalysisJobServiceProtocol, PLPhotoAnalysisGraphServiceProtocol, PLPhotoAnalysisGraphServiceMusicProtocol, PLPhotoAnalysisGraphServiceClientProtocol, PLPhotoAnalysisGraphServiceOnDiskProtocol, PLPhotoAnalysisVisionServiceTaxonomyProtocol, PLPhotoAnalysisVisionServiceFaceProcessingProtocol, PLPhotoAnalysisPresentationServiceProtocol>
 - (void)writeQALog:(NSString *)arg1;
 - (void)notifyLibraryAvailableAtURL:(NSURL *)arg1;
 - (void)cancelOperationsWithIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *))arg3;

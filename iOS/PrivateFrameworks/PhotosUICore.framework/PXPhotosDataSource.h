@@ -49,13 +49,17 @@
     PHFetchResult *_emptyAssetsFetchResult;
     NSNumber *_cachedIsEmpty;
     long long _nestedChanges;
+    PXPhotosDataSource *_parentDataSource;
+    _Bool _canIncludeUnsavedSyndicatedAssets;
     _Bool _reverseSortOrder;
     _Bool _wantsCurationByDefault;
     _Bool _isBackgroundFetching;
     _Bool _allowNextChangeDeliveryOnAllRunLoopModes;
+    _Bool _allowSlowFetchesOnClientQueue;
     PHCollection *_containerCollection;
     unsigned long long _options;
-    unsigned long long _versionIdentifier;
+    PHPhotoLibrary *_photoLibrary;
+    long long _versionIdentifier;
     PHFetchResult *_collectionListFetchResult;
     PHAsset *_referenceAsset;
     long long _backgroundFetchOriginSection;
@@ -66,7 +70,7 @@
     unsigned long long _fetchLimit;
     NSArray *_sortDescriptors;
     unsigned long long __previousCollectionsCount;
-    PHPhotoLibrary *_photoLibrary;
+    NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
 + (void)waitForAllBackgroundFetchingToFinish;
@@ -74,8 +78,9 @@
 + (id)_sharedPrefetchQueue;
 + (id)_curationSharedBackgroundQueue;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool allowSlowFetchesOnClientQueue; // @synthesize allowSlowFetchesOnClientQueue=_allowSlowFetchesOnClientQueue;
 @property(nonatomic) _Bool allowNextChangeDeliveryOnAllRunLoopModes; // @synthesize allowNextChangeDeliveryOnAllRunLoopModes=_allowNextChangeDeliveryOnAllRunLoopModes;
-@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(nonatomic, setter=_setPreviousCollectionsCount:) unsigned long long _previousCollectionsCount; // @synthesize _previousCollectionsCount=__previousCollectionsCount;
 @property(nonatomic) _Bool isBackgroundFetching; // @synthesize isBackgroundFetching=_isBackgroundFetching;
 @property(nonatomic) _Bool wantsCurationByDefault; // @synthesize wantsCurationByDefault=_wantsCurationByDefault;
@@ -84,17 +89,21 @@
 @property(nonatomic) unsigned long long fetchLimit; // @synthesize fetchLimit=_fetchLimit;
 @property(copy, nonatomic) NSSet *allowedOIDs; // @synthesize allowedOIDs=_allowedOIDs;
 @property(copy, nonatomic) NSSet *allowedUUIDs; // @synthesize allowedUUIDs=_allowedUUIDs;
+@property(nonatomic) _Bool canIncludeUnsavedSyndicatedAssets; // @synthesize canIncludeUnsavedSyndicatedAssets=_canIncludeUnsavedSyndicatedAssets;
 @property(retain, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property(readonly, nonatomic) NSPredicate *basePredicate; // @synthesize basePredicate=_basePredicate;
 @property(nonatomic) long long backgroundFetchOriginSection; // @synthesize backgroundFetchOriginSection=_backgroundFetchOriginSection;
 @property(readonly, nonatomic) PHAsset *referenceAsset; // @synthesize referenceAsset=_referenceAsset;
 @property(retain, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
-@property(readonly, nonatomic) unsigned long long versionIdentifier; // @synthesize versionIdentifier=_versionIdentifier;
+@property(readonly, nonatomic) long long versionIdentifier; // @synthesize versionIdentifier=_versionIdentifier;
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
+- (void)_bringFetchResultsUpToDateWithFetcherCacheForAssetCollection:(id)arg1;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
 - (_Bool)_areSecondaryFetchesEnabled;
 - (void)_didFinishBackgroundFetchingForId:(long long)arg1;
+- (void)_childDataSourceDidUpdateFetchesForAssetCollection:(id)arg1;
 - (_Bool)_addResultTuple:(id)arg1 forAssetCollection:(id)arg2 toMutableResultRecord:(id)arg3;
 - (void)_processAndPublishPendingCollectionFetchResults;
 - (void)_performProcessAndPublishSelectorInDefaultRunLoopMode;
@@ -156,7 +165,8 @@
 - (id)assetReferenceAtIndexPath:(id)arg1;
 - (id)assetReferenceForAsset:(id)arg1 containedInAssetCollectionWithType:(long long)arg2;
 - (id)indexPathForAssetReference:(id)arg1;
-- (id)indexPathForAssetWithUUID:(id)arg1 orBurstIdentifier:(id)arg2 hintIndexPath:(id)arg3 hintCollections:(id)arg4;
+- (id)_indexPathForAssetWithUUID:(id)arg1 orBurstIdentifier:(id)arg2 orSyndicationIdentifier:(id)arg3 hintIndexPath:(id)arg4 hintCollections:(id)arg5;
+- (id)indexPathForAssetWithUUID:(id)arg1 orSyndicationIdentifier:(id)arg2 hintIndexPath:(id)arg3 hintCollection:(id)arg4;
 - (id)indexPathForAssetWithUUID:(id)arg1 orBurstIdentifier:(id)arg2 hintIndexPath:(id)arg3 hintCollection:(id)arg4;
 - (long long)indexForAsset:(id)arg1 inCollection:(id)arg2 hintIndex:(long long)arg3;
 - (id)indexPathForAsset:(id)arg1 hintIndexPath:(id)arg2 hintCollections:(id)arg3;
@@ -187,8 +197,8 @@
 - (void)_incrementVersionIdentifier;
 @property(readonly, nonatomic) _Bool isImmutable;
 - (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
-- (id)pauseChangeDeliveryAndBackgroundLoadingWithTimeout:(double)arg1;
-- (void)pauseChangeDeliveryFor:(double)arg1;
+- (id)pauseChangeDeliveryAndBackgroundLoadingWithTimeout:(double)arg1 identifier:(id)arg2;
+- (void)pauseChangeDeliveryFor:(double)arg1 identifier:(id)arg2;
 - (void)unregisterChangeObserver:(id)arg1;
 - (void)registerChangeObserver:(id)arg1;
 - (id)_sectionCache;
@@ -206,7 +216,7 @@
 - (void)_publishChange:(id)arg1;
 - (void)_publishWillChange;
 - (void)_publishReloadChange;
-- (id)_fetchTupleForAssetCollection:(id)arg1 calledOnMainQueue:(_Bool)arg2 isLimitedInitialFetch:(_Bool)arg3;
+- (id)_fetchTupleForAssetCollection:(id)arg1 calledOnClientQueue:(_Bool)arg2 isLimitedInitialFetch:(_Bool)arg3;
 - (void)_getFetchLimit:(unsigned long long *)arg1 fetchWithReverseSortOrder:(_Bool *)arg2 forAssetCollection:(id)arg3 isLimitedInitialFetch:(_Bool)arg4;
 - (void)_performManualReloadWithChangeBlock:(CDUnknownBlockType)arg1;
 - (void)_performManualChangesForAssetCollections:(id)arg1 collectionsToDiff:(id)arg2 collectionsToChange:(id)arg3 changeBlock:(CDUnknownBlockType)arg4;

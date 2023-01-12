@@ -8,9 +8,9 @@
 
 @interface TSCH3DGPUSharegroup
 {
-    TSCH3DContext *mGPUContext;
-    long long mLockLevel;
-    NSRecursiveLock *mLock;
+    TSCH3DContext *_GPUContext;
+    long long _lockLevel;
+    NSRecursiveLock *_lock;
 }
 
 + (void)deleteSharegroupForToken:(id)arg1;

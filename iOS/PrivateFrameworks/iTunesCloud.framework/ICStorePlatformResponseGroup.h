@@ -10,6 +10,7 @@
 
 @class NSArray, NSDate, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICStorePlatformResponseGroup : NSObject <ICStorePlatformResponse>
 {
     NSArray *_childResponses;

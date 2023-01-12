@@ -14,8 +14,7 @@
 
 + (_Bool)warmUpSession:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (_Bool)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (_Bool)getReferenceImageBuffer:(id *)arg1 registrationSignature:(id *)arg2 forRequestPerformingContext:(id)arg3 options:(id)arg4 error:(id *)arg5;
+- (_Bool)getReferenceImageBuffer:(id *)arg1 registrationSignature:(id *)arg2 forRequestPerformingContext:(id)arg3 error:(id *)arg4;
 - (id)cachedFloatingImageRegistrationSignatureReturningError:(id *)arg1;
 - (id)cachedFloatingImageBufferReturningError:(id *)arg1;
 - (_Bool)wantsSequencedRequestObservationsRecording;

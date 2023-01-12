@@ -6,15 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class MKMapItem, MKMuninContainerBadgeView, UIActivityIndicatorView, UIColor;
+@class MKMapItem, MKMuninContainerBadgeView, NSArray, UIActivityIndicatorView, UIColor;
 @protocol MKMuninContainerViewDelegate, NSObject;
 
 @interface MKMuninContainerView : UIView
 {
+    UIColor *_dimmingViewBackgroundColorGreyOpaque;
     UIColor *_dimmingViewBackgroundColorBlackOpaque;
     UIColor *_dimmingViewBackgroundColorBlackTranslucent;
     UIColor *_dimmingViewBackgroundColorClear;
     UIColor *_dimmingViewBackgroundColorPhotosOpaque;
+    NSArray *_badgeConstraints;
+    _Bool _badgeOnLeadingEdge;
+    _Bool _floatingDimmingStyle;
     _Bool _photosDimmingStyle;
     _Bool _pipDimmingStyle;
     id <MKMuninContainerViewDelegate> _delegate;
@@ -24,16 +28,20 @@
     UIActivityIndicatorView *_activityIndicator;
     UIView *_dimmingView;
     id <NSObject> _muninViewDidBecomeAdequatelyDrawnObserver;
+    id <NSObject> _muninViewDidBecomeFullyDrawnObserver;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <NSObject> muninViewDidBecomeFullyDrawnObserver; // @synthesize muninViewDidBecomeFullyDrawnObserver=_muninViewDidBecomeFullyDrawnObserver;
 @property(retain, nonatomic) id <NSObject> muninViewDidBecomeAdequatelyDrawnObserver; // @synthesize muninViewDidBecomeAdequatelyDrawnObserver=_muninViewDidBecomeAdequatelyDrawnObserver;
 @property(retain, nonatomic) UIView *dimmingView; // @synthesize dimmingView=_dimmingView;
 @property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) MKMuninContainerBadgeView *badgeView; // @synthesize badgeView=_badgeView;
 @property(nonatomic) _Bool pipDimmingStyle; // @synthesize pipDimmingStyle=_pipDimmingStyle;
 @property(nonatomic) _Bool photosDimmingStyle; // @synthesize photosDimmingStyle=_photosDimmingStyle;
+@property(nonatomic) _Bool floatingDimmingStyle; // @synthesize floatingDimmingStyle=_floatingDimmingStyle;
 @property(nonatomic) unsigned long long dimmingState; // @synthesize dimmingState=_dimmingState;
+@property(nonatomic, getter=isBadgeOnLeadingEdge) _Bool badgeOnLeadingEdge; // @synthesize badgeOnLeadingEdge=_badgeOnLeadingEdge;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property(nonatomic) __weak id <MKMuninContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_updateDimmingViewBackgroundColor;
@@ -45,11 +53,13 @@
 - (void)setDimmingState:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)setBadgeHidden:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic, getter=isBadgeHidden) _Bool badgeHidden;
+- (void)_updateBadgeConstraints;
 - (void)layoutSubviews;
 - (void)didAddSubview:(id)arg1;
 - (id)muninViewIfPresent;
 - (void)setMapItem:(id)arg1 wantsCloseUpView:(_Bool)arg2;
 - (void)dealloc;
+- (id)initWithFloatingDimmingStyle:(_Bool)arg1;
 - (id)initWithPhotosDimmingStyle:(_Bool)arg1;
 - (id)initWithMuninView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -59,6 +69,7 @@
 @property(readonly, nonatomic) UIColor *dimmingViewBackgroundColorClear;
 @property(readonly, nonatomic) UIColor *dimmingViewBackgroundColorBlackTranslucent;
 @property(readonly, nonatomic) UIColor *dimmingViewBackgroundColorBlackOpaque;
+@property(readonly, nonatomic) UIColor *dimmingViewBackgroundColorGreyOpaque;
 
 @end
 

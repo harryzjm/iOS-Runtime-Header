@@ -17,9 +17,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *specPools; // @synthesize specPools=_specPools;
 - (id)description;
-- (id)_allPossibleTitlesWithMomentNodes:(id)arg1 forHighlight:(_Bool)arg2;
-- (id)allPossibleTitlesWithHighlightMomentNodes:(id)arg1;
-- (id)allPossibleTitlesWithMomentNodes:(id)arg1;
+- (id)_allPossibleTitlesWithMomentNodes:(id)arg1 forHighlight:(_Bool)arg2 argumentEvaluationContext:(id)arg3;
+- (id)allPossibleTitlesWithHighlightMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
+- (id)allPossibleTitlesWithMomentNodes:(id)arg1 argumentEvaluationContext:(id)arg2;
 - (id)initWithSpecPools:(id)arg1;
 
 @end

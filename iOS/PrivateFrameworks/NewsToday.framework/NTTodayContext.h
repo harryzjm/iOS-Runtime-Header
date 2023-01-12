@@ -10,14 +10,14 @@
 #import <NewsToday/NTTodayContext-Protocol.h>
 
 @class FCAsyncSerialQueue, NSString, NTSourceAvailabilityManager;
-@protocol FCContentContext, NTReadablePrivateDataStorage, NTTodayResultsSource, NTWritablePrivateDataStorage, OS_dispatch_queue;
+@protocol FCContentContext, FCReadablePrivateDataStorage, FCWritablePrivateDataStorage, NTTodayResultsSource, OS_dispatch_queue;
 
 @interface NTTodayContext : NSObject <FCNetworkReachabilityObserving, NTTodayContext>
 {
     CDUnknownBlockType _newResultsHandler;
     id <FCContentContext> _contentContext;
-    id <NTReadablePrivateDataStorage> _readablePrivateDataStorage;
-    id <NTWritablePrivateDataStorage> _writablePrivateDataStorage;
+    id <FCReadablePrivateDataStorage> _readablePrivateDataStorage;
+    id <FCWritablePrivateDataStorage> _writablePrivateDataStorage;
     NTSourceAvailabilityManager *_sourceAvailabilityManager;
     id <NTTodayResultsSource> _todayResultsSource;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -29,13 +29,13 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property(retain, nonatomic) id <NTTodayResultsSource> todayResultsSource; // @synthesize todayResultsSource=_todayResultsSource;
 @property(retain, nonatomic) NTSourceAvailabilityManager *sourceAvailabilityManager; // @synthesize sourceAvailabilityManager=_sourceAvailabilityManager;
-@property(retain, nonatomic) id <NTWritablePrivateDataStorage> writablePrivateDataStorage; // @synthesize writablePrivateDataStorage=_writablePrivateDataStorage;
-@property(retain, nonatomic) id <NTReadablePrivateDataStorage> readablePrivateDataStorage; // @synthesize readablePrivateDataStorage=_readablePrivateDataStorage;
+@property(retain, nonatomic) id <FCWritablePrivateDataStorage> writablePrivateDataStorage; // @synthesize writablePrivateDataStorage=_writablePrivateDataStorage;
+@property(retain, nonatomic) id <FCReadablePrivateDataStorage> readablePrivateDataStorage; // @synthesize readablePrivateDataStorage=_readablePrivateDataStorage;
 @property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property(copy, nonatomic) CDUnknownBlockType newResultsHandler; // @synthesize newResultsHandler=_newResultsHandler;
 - (void)_setupTodayResultsSource;
-- (void)userDidReadHeadlineWithAnalyticsElement:(id)arg1 atDate:(id)arg2;
-- (void)userDidSeeHeadlinesWithAnalyticsElements:(id)arg1 atDate:(id)arg2;
+- (void)writeUserDidReadHeadlineWithAnalyticsElement:(id)arg1 atDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)writeUserDidSeeHeadlinesWithAnalyticsElements:(id)arg1 atDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)placeholderResultsWithOperationInfo:(id)arg1;
 - (void)fetchLatestResultsWithOperationInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchModuleDescriptorsWithCompletion:(CDUnknownBlockType)arg1;

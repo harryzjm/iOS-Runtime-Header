@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSError, NSString, NSURL, NSUUID;
-@protocol APPCDiagnosticMetricsHelping, APPCJourneyMetricsHelping, APPCMediaMetricsHelping, APPCPromotableContentRepresentation, APPCPromotableContext;
+@class APInstallAttribution, NSArray, NSDate, NSDictionary, NSError, NSString, NSURL, NSUUID;
+@protocol APPCCarouselMetricsHelping><APPCJourneyMetricsHelping, APPCDiagnosticMetricsHelping, APPCMediaMetricsHelping, APPCPromotableContentRepresentation, APPCPromotableContext;
 
 @protocol APPCPromotableContent
+- (void)replaceMetricsHelperWithNewMetricsHelper:(id <APPCCarouselMetricsHelping><APPCJourneyMetricsHelping>)arg1;
 @property(nonatomic, readonly) _Bool discarded;
 @property(nonatomic, retain) id <APPCPromotableContentRepresentation> bestRepresentation;
+@property(nonatomic, readonly) APInstallAttribution *installAttribution;
 @property(nonatomic, readonly) _Bool isMRAID;
 @property(nonatomic, readonly) _Bool isOutstreamVideoAd;
 @property(nonatomic, readonly) long long serverUnfilledReason;
@@ -18,9 +20,10 @@
 @property(nonatomic, readonly) NSDictionary *transparencyDetailsDictionary;
 @property(nonatomic, readonly) id <APPCMediaMetricsHelping> mediaMetricHelper;
 @property(nonatomic, readonly) id <APPCDiagnosticMetricsHelping> diagnosticMetricHelper;
-@property(nonatomic, readonly) id <APPCJourneyMetricsHelping> metricsHelper;
+@property(nonatomic, readonly) id <APPCCarouselMetricsHelping><APPCJourneyMetricsHelping> metricsHelper;
 @property(nonatomic, readonly) long long adType;
 @property(nonatomic) _Bool consumed;
+@property(nonatomic) _Bool vended;
 @property(nonatomic) _Bool attachedToView;
 @property(nonatomic, readonly) _Bool placeholder;
 @property(nonatomic, retain) NSError *error;

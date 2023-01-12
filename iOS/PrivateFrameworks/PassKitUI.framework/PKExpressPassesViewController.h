@@ -23,15 +23,21 @@
     NSMutableDictionary *_passUniqueIDToTransitBalanceModels;
     long long _selectedPaymentPassIndex;
     _Bool _selectedPaymentPassIsInPendingState;
+    _Bool _supressHandlingPassUpdates;
+    unsigned int _supressHandlingPassUpdateCounter;
     _Bool _isUserInteractionsEnabled;
     _Bool _userAutomaticExpressModeText;
     _Bool _useOldAppearance;
     PKPassSnapshotter *_passSnapshotter;
+    NSArray *_passes;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *passes; // @synthesize passes=_passes;
+- (void)_endPassUpdateSuppressionWithToken:(unsigned int)arg1 delay:(double)arg2;
+- (unsigned int)_beginPassUpdateSuppression;
 - (void)_updateExpressState:(id)arg1;
-- (void)_updatePasses:(id)arg1;
+- (void)_reloadLocalPassStores;
 - (_Bool)_isTransitExpressRowEnabledForIndex:(unsigned long long)arg1;
 - (long long)_sectionForPass:(id)arg1;
 - (id)_transitPassForIndex:(unsigned long long)arg1;
@@ -75,7 +81,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (id)_passWithUniqueIdentifier:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (id)initWithPasses:(id)arg1 paymentDataProvider:(id)arg2 controller:(id)arg3 style:(long long)arg4;
+- (id)initWithPaymentDataProvider:(id)arg1 controller:(id)arg2 style:(long long)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

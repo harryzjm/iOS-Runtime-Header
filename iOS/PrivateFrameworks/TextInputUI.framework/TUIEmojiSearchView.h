@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class TUIEmojiSearchTextField, UICollectionView, UILabel;
+@class NSArray, NSLayoutConstraint, TUIEmojiSearchTextField, UICollectionView, UILayoutGuide;
 
 @interface TUIEmojiSearchView : UIView
 {
@@ -14,17 +14,29 @@
     UIView *_bottomHalfContainerView;
     UIView *_predictionViewWrapperView;
     UIView *_resultsCollectionContainerView;
-    UILabel *_noResultsLabelView;
+    NSArray *_sideBySideViewConstraints;
+    NSArray *_textFieldOnTopConstraints;
+    NSArray *_resultsCollectionWrapperConstraints;
+    NSArray *_predictionWrapperConstraints;
+    NSLayoutConstraint *_searchFieldToTop;
+    NSLayoutConstraint *_searchFieldLeading;
+    NSLayoutConstraint *_topToBottomPadding;
+    UILayoutGuide *_predictionViewGuide;
+    NSLayoutConstraint *_predictionWrapperLeading;
+    NSLayoutConstraint *_predictionWrapperTop;
+    NSLayoutConstraint *_predictionWrapperBottom;
+    _Bool _useHorizontalLayout;
+    double _previousInsets;
     _Bool _predictionViewVisible;
     _Bool _collapsed;
-    _Bool _noResultsLabelVisible;
+    _Bool _resultsViewVisible;
     TUIEmojiSearchTextField *_searchTextField;
     UICollectionView *_resultsCollectionView;
     UIView *_predictionView;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) _Bool noResultsLabelVisible; // @synthesize noResultsLabelVisible=_noResultsLabelVisible;
+@property(nonatomic) _Bool resultsViewVisible; // @synthesize resultsViewVisible=_resultsViewVisible;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 @property(nonatomic) _Bool predictionViewVisible; // @synthesize predictionViewVisible=_predictionViewVisible;
 @property(retain, nonatomic) UIView *predictionView; // @synthesize predictionView=_predictionView;
@@ -32,9 +44,14 @@
 @property(readonly, nonatomic) TUIEmojiSearchTextField *searchTextField; // @synthesize searchTextField=_searchTextField;
 - (void)_didChangeHandBiasNotification:(id)arg1;
 - (struct UIEdgeInsets)_handBiasedEdgeInsets;
-- (void)setNoResultsLabelVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (id)_constraintsFromView:(id)arg1 toContainerView:(id)arg2 insets:(struct UIEdgeInsets)arg3 identifier:(id)arg4;
+- (void)_createPredictionViewConstraints;
+- (void)_createResultsViewConstraints;
+- (void)updateInsetsIfNeeded:(struct UIEdgeInsets)arg1;
+- (void)createConstraintsIfNeeded;
 - (void)setPredictionViewVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)layoutSubviews;
+- (void)transitionToCompactLayout:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -6,14 +6,21 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBHHomeScreenUsageMonitor, SBWidgetIcon;
+@class NSArray, NSMapTable, NSURL, SBHHomeScreenUsageMonitor, SBWidgetIcon;
 @protocol SBLeafIconDataSource;
 
 @protocol SBHHomeScreenUsageMonitorObserver <NSObject>
 
 @optional
-- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserTappedWidgetIcon:(SBWidgetIcon *)arg2;
+- (void)homeScreenUsageAggregatorWidgetDiscoverabilityDidEnterEditingMode:(SBHHomeScreenUsageMonitor *)arg1;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 widgetDiscoverabilityDidRejectSuggestion:(NSArray *)arg2;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 widgetDiscoverabilityDidAcceptSuggestion:(NSArray *)arg2;
+- (void)homeScreenUsageAggregatorDidStartDiscoveringWidgets:(SBHHomeScreenUsageMonitor *)arg1;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteTodayViewAtLocation:(long long)arg2 scrolledWithIconVisibility:(NSMapTable *)arg3;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserTappedWidgetIcon:(SBWidgetIcon *)arg2 withURL:(NSURL *)arg3;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserDislikedSiriSuggestionOnWidgetIconStackSuggestion:(SBWidgetIcon *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserDislikedWidgetIconStackSuggestion:(SBWidgetIcon *)arg2;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserAddedWidgetIconStackSuggestion:(SBWidgetIcon *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteDataSourceDidDisappear:(id <SBLeafIconDataSource>)arg2 forWidgetIcon:(SBWidgetIcon *)arg3;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteDataSourceDidAppear:(id <SBLeafIconDataSource>)arg2 forWidgetIcon:(SBWidgetIcon *)arg3;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteWidgetIconStackChangedActiveWidget:(SBWidgetIcon *)arg2;

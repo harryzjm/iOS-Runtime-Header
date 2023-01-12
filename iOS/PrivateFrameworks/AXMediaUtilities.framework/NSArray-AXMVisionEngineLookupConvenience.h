@@ -9,6 +9,7 @@
 @class AXMVisionFeature;
 
 @interface NSArray (AXMVisionEngineLookupConvenience)
++ (id)axmArrayByIgnoringNilElementsWithCount:(unsigned long long)arg1;
 @property(readonly, nonatomic) AXMVisionFeature *axm_featureWithHighestConfidence;
 @property(readonly, nonatomic) NSArray *axm_featuresSortedByConfidence;
 @end

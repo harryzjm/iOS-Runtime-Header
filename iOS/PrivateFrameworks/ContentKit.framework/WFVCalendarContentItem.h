@@ -16,6 +16,7 @@
 + (id)contentCategories;
 + (id)outputTypes;
 + (id)ownedTypes;
++ (id)stringConversionBehavior;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 - (_Bool)canGenerateRepresentationForType:(id)arg1;
 - (id)generateObjectRepresentationsForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;

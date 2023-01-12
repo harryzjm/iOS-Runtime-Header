@@ -13,6 +13,7 @@
 @interface CPLEngineStorage : NSObject <CPLAbstractObject>
 {
     _Bool _superWasCalled;
+    _Bool _shouldBeCreatedDynamically;
     CPLPlatformObject *_platformObject;
     CPLEngineStore *_engineStore;
     NSString *_name;
@@ -22,10 +23,14 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) CPLEngineStore *engineStore; // @synthesize engineStore=_engineStore;
+@property(readonly, nonatomic) _Bool shouldBeCreatedDynamically; // @synthesize shouldBeCreatedDynamically=_shouldBeCreatedDynamically;
 @property(readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+- (_Bool)testKey:(id)arg1 value:(id)arg2 didHandle:(_Bool *)arg3 result:(id *)arg4 error:(id *)arg5;
 - (_Bool)_checkSuperWasCalled;
 - (id)statusDictionary;
 - (id)status;
+@property(readonly, nonatomic) _Bool shouldIncludeInStatus;
+@property(readonly, nonatomic) _Bool isAlive;
 @property(readonly, nonatomic) _Bool isEmpty;
 - (void)transactionDidFinish;
 - (void)writeTransactionDidSucceed;

@@ -10,7 +10,6 @@
 
 @class APSConnection, CKAPSMachServiceConnectionKey, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKAPSMachServiceConnectionDelegate : NSObject <APSConnectionDelegate>
 {
     APSConnection *_connection;

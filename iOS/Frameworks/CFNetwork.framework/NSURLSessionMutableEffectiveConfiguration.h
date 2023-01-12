@@ -4,9 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NSURLSessionMutableEffectiveConfiguration
+#import <CFNetwork/NSSecureCoding-Protocol.h>
+
+@interface NSURLSessionMutableEffectiveConfiguration <NSSecureCoding>
 {
 }
+
++ (_Bool)supportsSecureCoding;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)_initWithConfiguration:(id)arg1;
 
 @end
 

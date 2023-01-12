@@ -29,6 +29,7 @@
 @property(readonly, nonatomic) NSData *data; // @synthesize data=_data;
 - (id)initWithData:(id)arg1;
 - (id)initWithXPCValue:(id)arg1;
+- (id)initWithXPCValue:(id)arg1 allowWritableSharedMemory:(_Bool)arg2;
 
 @end
 

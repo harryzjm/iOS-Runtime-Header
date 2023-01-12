@@ -10,9 +10,13 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)performAction;
+- (void)performActionWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performDefaultAction;
 - (id)defaultActionTargetApplicationBundleIdentifier;
 - (id)actionPickerItems;
+- (id)actionIcon;
+- (id)contentPreviewString;
+- (id)shortDescription;
 - (id)localizedDefaultActionDescription;
 - (id)initWithData:(id)arg1 codePayload:(id)arg2;
 

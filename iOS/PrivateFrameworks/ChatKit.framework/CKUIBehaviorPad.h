@@ -32,6 +32,7 @@
 - (struct UIEdgeInsets)minTranscriptMarginInsets;
 - (struct UIEdgeInsets)contactPhotoTranscriptInsets;
 - (double)transcriptContactImageDiameter;
+- (double)previewMaxWidth;
 - (double)conversationListMinimumWidthForHiddenContactImage;
 - (_Bool)showsConversationListCellChevronImage;
 - (_Bool)canShowContactPhotosInConversationList;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIImageView, UIKBUndoStyling, UILabel, UIView;
+@class NSLayoutConstraint, UIImageView, UIKBUndoStyling, UILabel, UIView, _UISlotView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBUndoControl
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UIView *_springCoverView;
     UILabel *_label;
     UIImageView *_icon;
+    _UISlotView *_securePasteButtonSlotView;
     NSLayoutConstraint *_coverConstraintLeftAnchor;
     NSLayoutConstraint *_coverConstraintRightAnchor;
     NSLayoutConstraint *_coverConstraintTopAnchor;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *coverConstraintTopAnchor; // @synthesize coverConstraintTopAnchor=_coverConstraintTopAnchor;
 @property(retain, nonatomic) NSLayoutConstraint *coverConstraintRightAnchor; // @synthesize coverConstraintRightAnchor=_coverConstraintRightAnchor;
 @property(retain, nonatomic) NSLayoutConstraint *coverConstraintLeftAnchor; // @synthesize coverConstraintLeftAnchor=_coverConstraintLeftAnchor;
+@property(nonatomic) __weak _UISlotView *securePasteButtonSlotView; // @synthesize securePasteButtonSlotView=_securePasteButtonSlotView;
 @property(retain, nonatomic) UIImageView *icon; // @synthesize icon=_icon;
 @property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(retain, nonatomic) UIView *springCoverView; // @synthesize springCoverView=_springCoverView;
@@ -39,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)imageSymbolConfiguration;
 - (id)controlLabelImageNameByType:(long long)arg1 isRTL:(_Bool)arg2;
 - (void)updateCoverWithTavelProcess:(double)arg1 isRTL:(_Bool)arg2;
-- (void)updateUndoControlStyleForState:(unsigned long long)arg1;
+- (void)updateUndoControlStyle;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithType:(long long)arg1 andStyling:(id)arg2;
 

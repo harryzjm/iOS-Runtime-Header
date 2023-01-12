@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidInvalidateIntrinsicContentSize;
 - (struct CGSize)intrinsicContentSizeForServiceSize:(struct CGSize)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 
 @end
 

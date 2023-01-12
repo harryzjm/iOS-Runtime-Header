@@ -17,6 +17,7 @@
 + (id)kiloampereHours;
 + (id)megaampereHours;
 + (id)coulombs;
++ (id)icuType;
 + (id)baseUnit;
 + (void)initialize;
 

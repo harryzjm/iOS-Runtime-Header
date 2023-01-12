@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)applyWithSettingsClient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(retain, nonatomic) NSNumber *state;
+@property(retain, nonatomic) NSNumber *state; // @dynamic state;
 @property(readonly, nonatomic) Class settingsClientClass;
 
 // Remaining properties

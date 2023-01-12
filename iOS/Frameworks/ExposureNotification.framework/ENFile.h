@@ -18,7 +18,6 @@
     NSMutableDictionary *_mutableMetadata;
     NSMutableData *_outputData;
     ENProtobufCoder *_protobufCoder;
-    long long _sandboxHandle;
     ENProtobufCoder *_tekProtobufCoder;
     NSDictionary *_metadata;
     NSData *_sha256Data;
@@ -40,16 +39,14 @@
 - (_Bool)_readHashFromFile:(struct __sFILE *)arg1 error:(id *)arg2;
 - (_Bool)_readHashFromArchive:(id)arg1 error:(id *)arg2;
 - (_Bool)_readHeaderFromFile:(struct __sFILE *)arg1 error:(id *)arg2;
-- (_Bool)_readHeaderFromArchive:(id)arg1 error:(id *)arg2;
+- (_Bool)_resetAndReadHeaderFromArchive:(id)arg1 error:(id *)arg2;
 - (_Bool)_readPrepareAndReturnError:(id *)arg1;
 - (_Bool)closeAndReturnError:(id *)arg1;
 - (_Bool)openForWritingToData:(id)arg1 error:(id *)arg2;
 - (_Bool)openWithFileSystemRepresentation:(const char *)arg1 reading:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)openCloneWithFD:(int)arg1 sandboxToken:(const char *)arg2 reading:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)openWithFD:(int)arg1 reading:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)openWithArchive:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
-- (id)init;
 
 @end
 

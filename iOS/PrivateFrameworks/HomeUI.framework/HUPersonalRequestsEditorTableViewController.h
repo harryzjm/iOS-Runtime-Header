@@ -5,10 +5,11 @@
 //
 
 #import <HomeUI/HUAccessorySettingsDetailsViewControllerProtocol-Protocol.h>
+#import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 
 @class HUPersonalRequestsDevicesModuleController, HUPersonalRequestsEditorItemManager, NSString;
 
-@interface HUPersonalRequestsEditorTableViewController <HUAccessorySettingsDetailsViewControllerProtocol>
+@interface HUPersonalRequestsEditorTableViewController <HUAccessorySettingsDetailsViewControllerProtocol, HUSwitchCellDelegate>
 {
     _Bool _onlyShowDeviceSwitches;
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
@@ -19,6 +20,7 @@
 @property(nonatomic) _Bool onlyShowDeviceSwitches; // @synthesize onlyShowDeviceSwitches=_onlyShowDeviceSwitches;
 @property(readonly, nonatomic) HUPersonalRequestsDevicesModuleController *prDevicesModuleController; // @synthesize prDevicesModuleController=_prDevicesModuleController;
 @property(retain, nonatomic) HUPersonalRequestsEditorItemManager *prEditorItemManager; // @synthesize prEditorItemManager=_prEditorItemManager;
+- (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
@@ -27,6 +29,7 @@
 - (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
 - (id)itemModuleControllers;
 - (_Bool)automaticallyUpdatesViewControllerTitle;
+- (id)initWithAccessorySettingItem:(id)arg1 module:(id)arg2;
 - (id)initWithUserItem:(id)arg1 sourceMediaProfileContainer:(id)arg2 onlyShowDeviceSwitches:(_Bool)arg3;
 - (id)initWithUserItem:(id)arg1 onlyShowDeviceSwitches:(_Bool)arg2;
 - (id)initWithAccessoryGroupItem:(id)arg1;

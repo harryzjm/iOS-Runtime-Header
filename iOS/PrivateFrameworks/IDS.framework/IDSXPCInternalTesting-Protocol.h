@@ -9,8 +9,12 @@
 @class IDSURI, NSData, NSDictionary, NSString;
 
 @protocol IDSXPCInternalTesting <NSObject>
+- (void)sendFakePushFromFile:(NSString *)arg1 completion:(void (^)(NSMutableArray *))arg2;
+- (void)forceAccountRenewalOnService:(NSString *)arg1;
 - (void)assertTransportThreadRealTimeMode:(_Bool)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchStoredUserDescriptions:(void (^)(NSString *))arg1;
+- (void)fetchPrivateDeviceDataDescription:(void (^)(NSString *))arg1;
+- (void)fetchPrivateClientDataDescriptionForService:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)deviceChangedForDeviceID:(NSString *)arg1 isNearby:(_Bool)arg2 isConnected:(_Bool)arg3 isCloudConnected:(_Bool)arg4 completionHandler:(void (^)(NSError *))arg5;
 - (void)removeConnectionWithConnectionName:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)nukeTransparencyStateWithCompletion:(void (^)(NSError *))arg1;

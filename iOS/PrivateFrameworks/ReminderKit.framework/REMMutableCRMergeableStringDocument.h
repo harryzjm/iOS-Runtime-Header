@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ReminderKit/REMReplicaIDHelperOwner-Protocol.h>
+#import <ReminderKit/REMTTHashtagHosting-Protocol.h>
 
 @class NSString, REMReplicaIDHelper, REMReplicaIDSource, TTMergeableAttributedString, TTMergeableStringVersionedDocument;
 @protocol REMReplicaManagerProviding;
 
-@interface REMMutableCRMergeableStringDocument : NSObject <REMReplicaIDHelperOwner>
+@interface REMMutableCRMergeableStringDocument : NSObject <REMTTHashtagHosting, REMReplicaIDHelperOwner>
 {
     id <REMReplicaManagerProviding> _replicaManagerProvider;
     REMReplicaIDSource *_replicaIDSource;
@@ -31,6 +32,10 @@
 @property(readonly, nonatomic) TTMergeableAttributedString *mergeableString;
 - (id)initWithReplicaIDSource:(id)arg1 immutableDocumentToEdit:(id)arg2;
 - (id)initWithReplicaIDSource:(id)arg1;
+- (void)removeHashtagInRange:(struct _NSRange)arg1;
+- (void)addHashtag:(id)arg1 range:(struct _NSRange)arg2;
+- (void)enumerateHashtagInRange:(struct _NSRange)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)hashtagAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

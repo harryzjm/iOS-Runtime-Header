@@ -10,8 +10,8 @@
 
 @interface TSCHChunkManager : NSObject
 {
-    TSCHChartInfo *mWeakChart;
-    TSCHChunkMap *mCachedChunkMap;
+    TSCHChartInfo *_weakChart;
+    TSCHChunkMap *_cachedChunkMap;
 }
 
 - (void).cxx_destruct;

@@ -7,7 +7,7 @@
 #import <IconServices/ISIcon.h>
 
 @interface ISIcon (CUIKIcon)
-- (id)initWithDateComponents:(id)arg1 calendar:(id)arg2 format:(long long)arg3;
+- (id)initWithDateComponents:(id)arg1 calendar:(id)arg2 format:(long long)arg3 forceNoTextEffects:(_Bool)arg4;
 - (id)initWithDate:(id)arg1 calendar:(id)arg2 format:(long long)arg3;
 @end
 

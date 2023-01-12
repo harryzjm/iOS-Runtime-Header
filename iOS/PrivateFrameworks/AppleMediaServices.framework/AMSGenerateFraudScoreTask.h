@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount;
+@class ACAccount, NSString;
 @protocol AMSBagProtocol;
 
 __attribute__((visibility("hidden")))
@@ -13,21 +13,19 @@ __attribute__((visibility("hidden")))
     ACAccount *_account;
     unsigned long long _action;
     id <AMSBagProtocol> _bag;
+    NSString *_logKey;
 }
 
-+ (id)_serverEndpointIdentifierForFraudScoreAction:(unsigned long long)arg1;
-+ (id)_fraudScoreCacheAccessQueue;
-+ (id)_fraudScoreCache;
-+ (void)cacheFraudScore:(id)arg1 forPurchaseInfo:(id)arg2;
-+ (id)cachedFraudScoreForPurchaseInfo:(id)arg1;
++ (_Bool)deviceSupportsFraudScoresV2WithBag:(id)arg1 logKey:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property(readonly, nonatomic) id <AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property(readonly, nonatomic) unsigned long long action; // @synthesize action=_action;
 @property(readonly, nonatomic) ACAccount *account; // @synthesize account=_account;
-- (id)_generateFraudScore;
-- (_Bool)_deviceSupportsFraudScores;
 - (id)runTask;
-- (id)initWithAction:(unsigned long long)arg1 account:(id)arg2 bag:(id)arg3;
+@property(readonly, nonatomic) _Bool deviceSupportsFraudScoresV2;
+@property(readonly, nonatomic) _Bool deviceSupportsFraudScores;
+- (id)initWithAction:(unsigned long long)arg1 account:(id)arg2 bag:(id)arg3 logKey:(id)arg4;
 - (id)initWithPurchaseInfo:(id)arg1 bag:(id)arg2;
 
 @end

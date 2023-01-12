@@ -27,6 +27,7 @@
     NSTimer *_actionsDelayedUntilReaderWebViewIsReadyTimer;
     _Bool _readerAvailable;
     _Bool _contentIsReady;
+    _Bool _doesPageUseSearchEngineOptimizationMetadata;
     WKWebView *_webView;
     WKWebView *_readerWebView;
     id <_SFReaderControllerDelegate> _delegate;
@@ -34,7 +35,10 @@
     NSString *_articleText;
 }
 
++ (void)configureWithProcessPool:(id)arg1;
++ (void)updateReaderOrTranslationLastActivated:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool doesPageUseSearchEngineOptimizationMetadata; // @synthesize doesPageUseSearchEngineOptimizationMetadata=_doesPageUseSearchEngineOptimizationMetadata;
 @property(readonly, nonatomic) NSString *articleText; // @synthesize articleText=_articleText;
 @property(nonatomic) __weak id <WKUIDelegatePrivate> webViewUIDelegate; // @synthesize webViewUIDelegate=_webViewUIDelegate;
 @property(nonatomic) _Bool contentIsReady; // @synthesize contentIsReady=_contentIsReady;
@@ -62,6 +66,7 @@
 - (void)readerTextWasExtracted:(id)arg1 withMetadata:(id)arg2 wasDeterminingAvailabilility:(_Bool)arg3;
 - (void)contentDidBecomeReadyWithDetectedLanguage:(id)arg1;
 - (void)didPrepareReaderContentForPrinting:(id)arg1;
+- (void)didDetermineAdditionalTextSamples:(id)arg1;
 - (void)didCollectArticleContent:(id)arg1;
 - (void)collectArticleContent;
 - (void)didCollectReaderContentForMail:(id)arg1;
@@ -100,6 +105,7 @@
 - (void)clearReaderWebView;
 - (void)stopLoadingNextPage;
 - (_Bool)isLoadingNextPage;
+@property(readonly, nonatomic) long long currentAppearance;
 - (void)setUpReaderWebViewIfNeededAndPerformBlock:(CDUnknownBlockType)arg1;
 - (void)_performActionsDelayedUntilReaderWebViewIsReadyDidTimeout:(id)arg1;
 - (void)_performActionsDelayedUntilReaderWebViewIsReady;

@@ -4,21 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI21ContextMenuInteractor : _TtCs12_SwiftObject
+__attribute__((visibility("hidden")))
+@interface _TtC8VideosUI21ContextMenuInteractor : NSObject
 {
     MISSING_TYPE *collectionViewModel;
     MISSING_TYPE *originatorViewModel;
+    MISSING_TYPE *indexPath;
+    MISSING_TYPE *selectedViewModel;
     MISSING_TYPE *documentController;
     MISSING_TYPE *shareActionDataSourceKey;
-    MISSING_TYPE *completionHandler;
     MISSING_TYPE *presentingView;
+    MISSING_TYPE *completionHandler;
     MISSING_TYPE *previewController;
     MISSING_TYPE *actions;
+    MISSING_TYPE *dynamicActions;
+    MISSING_TYPE *currentContextMenuConfiguration;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

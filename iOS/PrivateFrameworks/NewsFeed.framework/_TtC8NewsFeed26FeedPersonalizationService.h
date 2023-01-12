@@ -11,6 +11,7 @@
 @interface _TtC8NewsFeed26FeedPersonalizationService : _TtCs12_SwiftObject
 {
     MISSING_TYPE *feedPersonalizingEngine;
+    MISSING_TYPE *groupingPersonalizer;
 }
 
 @end

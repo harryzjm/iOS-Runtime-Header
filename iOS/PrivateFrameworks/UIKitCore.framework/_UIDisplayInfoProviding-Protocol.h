@@ -7,11 +7,13 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class FBSDisplayConfiguration;
+@protocol _UIDisplayInfoShape;
 
 @protocol _UIDisplayInfoProviding <NSObject>
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
+@property(readonly, nonatomic) id <_UIDisplayInfoShape> exclusionArea;
 @property(readonly, nonatomic) double homeAffordanceOverlayAllowance;
 @property(readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;
 @property(readonly, nonatomic) double systemMinimumMargin;

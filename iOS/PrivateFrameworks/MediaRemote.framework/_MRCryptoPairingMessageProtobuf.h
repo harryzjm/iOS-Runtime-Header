@@ -10,6 +10,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface _MRCryptoPairingMessageProtobuf : PBCodable <NSCopying>
 {
     NSData *_pairingData;
@@ -26,25 +27,13 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) int state; // @synthesize state=_state;
-@property(nonatomic) _Bool isUsingSystemPairing; // @synthesize isUsingSystemPairing=_isUsingSystemPairing;
-@property(nonatomic) _Bool isRetrying; // @synthesize isRetrying=_isRetrying;
-@property(nonatomic) int status; // @synthesize status=_status;
-@property(retain, nonatomic) NSData *pairingData; // @synthesize pairingData=_pairingData;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasState;
-@property(nonatomic) _Bool hasIsUsingSystemPairing;
-@property(nonatomic) _Bool hasIsRetrying;
-@property(nonatomic) _Bool hasStatus;
-@property(readonly, nonatomic) _Bool hasPairingData;
 
 @end
 

@@ -9,6 +9,7 @@
 @class NSData;
 
 @interface NSString (ClipServicesExtras)
+@property(readonly, nonatomic) _Bool cps_isAMSPlaceholderBundleIdentifier;
 @property(readonly, nonatomic) _Bool cps_looksLikeUUIDOrWebClipIdentifier;
 @property(readonly, nonatomic) _Bool cps_isAlphaNumeric;
 - (id)cps_stringByRemovingPrefix:(id)arg1;

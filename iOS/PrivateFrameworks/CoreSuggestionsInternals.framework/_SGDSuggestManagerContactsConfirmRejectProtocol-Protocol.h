@@ -7,11 +7,11 @@
 @class SGRealtimeContact, SGRecordId;
 
 @protocol _SGDSuggestManagerContactsConfirmRejectProtocol
-- (void)rejectContactDetailRecord:(SGRecordId *)arg1 completion:(void (^)(SGXPCResponse *))arg2 rejectionUI:(int)arg3;
-- (void)confirmContactDetailRecord:(SGRecordId *)arg1 completion:(void (^)(SGXPCResponse *))arg2;
-- (void)rejectRecord:(SGRecordId *)arg1 completion:(void (^)(SGXPCResponse *))arg2 rejectionUI:(int)arg3;
-- (void)confirmRecord:(SGRecordId *)arg1 completion:(void (^)(SGXPCResponse *))arg2;
-- (void)rejectContact:(SGRealtimeContact *)arg1 completion:(void (^)(SGXPCResponse *))arg2 rejectionUI:(int)arg3;
-- (void)confirmContact:(SGRealtimeContact *)arg1 completion:(void (^)(SGXPCResponse *))arg2;
+- (void)rejectContactDetailRecord:(SGRecordId *)arg1 confirmRejectUI:(int)arg2 completion:(void (^)(SGXPCResponse *))arg3;
+- (void)confirmContactDetailRecord:(SGRecordId *)arg1 confirmRejectUI:(int)arg2 completion:(void (^)(SGXPCResponse *))arg3;
+- (void)rejectRecord:(SGRecordId *)arg1 confirmRejectUI:(int)arg2 completion:(void (^)(SGXPCResponse *))arg3;
+- (void)confirmRecord:(SGRecordId *)arg1 confirmRejectUI:(int)arg2 completion:(void (^)(SGXPCResponse *))arg3;
+- (void)rejectContact:(SGRealtimeContact *)arg1 confirmRejectUI:(int)arg2 completion:(void (^)(SGXPCResponse *))arg3;
+- (void)confirmContact:(SGRealtimeContact *)arg1 confirmRejectUI:(int)arg2 completion:(void (^)(SGXPCResponse *))arg3;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Message/ECLocalActionReplayerDelegate-Protocol.h>
 
-@class DAAccount, MFDAMailbox, MFMailboxUid, NSArray, NSCountedSet, NSLock, NSMutableDictionary, NSObject, NSSet, NSString;
+@class DAAccount, MFDAMailbox, MFMailboxUid, NSArray, NSLock, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol ASAccountActorMessages;
 
 @interface DAMailAccount <ECLocalActionReplayerDelegate>
@@ -53,8 +53,8 @@
     NSMutableDictionary *_requestQueuesByFolderID;
     NSLock *_watchedFolderIdsLock;
     NSSet *_watchedFolderIds;
-    NSCountedSet *_userFocusMailboxIds;
     NSString *_folderTag;
+    struct os_unfair_lock_s _supportsUniqueServerIdLock;
     MFMailboxUid *_virtualAllSearchMailbox;
 }
 
@@ -91,8 +91,6 @@
 - (id)signingIdentityPersistentReferenceForAddress:(id)arg1;
 - (void)_reachabilityChanged:(id)arg1;
 - (_Bool)canGoOffline;
-- (void)removeUserFocusMailbox:(id)arg1;
-- (void)addUserFocusMailbox:(id)arg1;
 - (id)_watchedFolderIds;
 - (void)changePushedMailboxUidsAdded:(id)arg1 deleted:(id)arg2;
 - (id)_folderIdsForMailboxUids:(id)arg1;
@@ -121,7 +119,6 @@
 - (id)accountPropertyForKey:(id)arg1;
 - (_Bool)isActive;
 - (id)uniqueServerIdForMessage:(id)arg1;
-- (_Bool)needsRemoteSearchResultsVerification;
 - (_Bool)shouldFetchAgainWithError:(id)arg1 foregroundRequest:(_Bool)arg2;
 - (_Bool)_isUnitTesting;
 - (_Bool)sourceIsManaged;
@@ -150,7 +147,6 @@
 - (void)setDAAccount:(id)arg1;
 - (id)mailboxPathExtension;
 - (id)_URLScheme;
-- (_Bool)shouldAppearInMailSettings;
 - (_Bool)newMailboxNameIsAcceptable:(id)arg1 reasonForFailure:(id *)arg2;
 - (void)_performFolderChange:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_deleteMailbox:(id)arg1;

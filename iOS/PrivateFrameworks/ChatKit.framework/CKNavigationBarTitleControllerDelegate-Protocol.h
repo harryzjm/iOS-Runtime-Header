@@ -9,7 +9,6 @@
 @class CKNavigationBarTitleController;
 
 @protocol CKNavigationBarTitleControllerDelegate <NSObject>
-- (void)deleteAllBarButtonItemPressed:(CKNavigationBarTitleController *)arg1;
 - (void)cancelBarButtonItemPressed:(CKNavigationBarTitleController *)arg1;
 - (void)avatarViewPressed:(CKNavigationBarTitleController *)arg1;
 @end

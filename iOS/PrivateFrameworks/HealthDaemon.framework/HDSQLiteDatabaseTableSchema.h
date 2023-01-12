@@ -13,9 +13,13 @@
     NSString *_name;
     NSDictionary *_columns;
     NSSet *_indices;
+    NSSet *_triggers;
+    NSString *_createTableSchema;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *createTableSchema; // @synthesize createTableSchema=_createTableSchema;
+@property(retain, nonatomic) NSSet *triggers; // @synthesize triggers=_triggers;
 @property(retain, nonatomic) NSSet *indices; // @synthesize indices=_indices;
 @property(retain, nonatomic) NSDictionary *columns; // @synthesize columns=_columns;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;

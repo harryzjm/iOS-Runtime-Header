@@ -9,7 +9,7 @@
 
 @interface PXRelatedTilingLayout
 {
-    unsigned long long _dataSourceIdentifier;
+    long long _dataSourceIdentifier;
     long long _numberOfEntries;
     long long _numberOfColumns;
     long long _numberOfRows;

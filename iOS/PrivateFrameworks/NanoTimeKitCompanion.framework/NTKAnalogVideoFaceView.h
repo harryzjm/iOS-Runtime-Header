@@ -37,11 +37,8 @@
 - (void)videoDidBeginPlayingQueuedVideo;
 - (void)videoDidFinishPlayingToEnd;
 - (_Bool)_supportsUnadornedSnapshot;
-- (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (id)_keylineViewForComplicationSlot:(id)arg1;
-- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (_Bool)shouldFadeIncomingView;
 - (id)imageForEditOption:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
@@ -64,7 +61,6 @@
 - (id)_complicationsPlatterColor;
 - (void)_faceLibraryDismissed;
 - (struct CGPoint)_contentCenterOffset;
-- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
 - (_Bool)_slotSupportsCurvedText:(id)arg1;
 - (_Bool)slotUsesCurvedText:(id)arg1;
@@ -72,7 +68,7 @@
 - (id)_tapHighlightImage;
 - (void)_faceViewWasTapped;
 - (void)faceViewWasTapped:(id)arg1;
-- (void)handleScreenBlanked;
+- (void)screenDidTurnOffAnimated:(_Bool)arg1;
 - (void)_handleEitherScreenWake;
 - (void)_handleOrdinaryScreenWake;
 - (void)_handleWristRaiseScreenWake;
@@ -88,7 +84,6 @@
 - (void)setDataMode:(long long)arg1;
 - (double)_minimumBreathingScaleForComplicationSlot:(id)arg1;
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
-- (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (double)keylineStyleForComplicationSlot:(id)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (void)_loadLayoutRules;

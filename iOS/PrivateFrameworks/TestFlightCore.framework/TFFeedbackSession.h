@@ -8,7 +8,7 @@
 
 #import <TestFlightCore/TFDataAggregatorDelegate-Protocol.h>
 
-@class NSString, TFDataAggregator, TFFeedbackDataContainer, TFFeedbackFormViewController;
+@class ASDBetaAppLaunchInfo, NSString, NSURL, TFDataAggregator, TFFeedbackDataContainer, TFFeedbackFormViewController;
 @protocol TFFeedbackSessionDelegate, TFFeedbackSubmissionService;
 
 @interface TFFeedbackSession : NSObject <TFDataAggregatorDelegate>
@@ -18,6 +18,8 @@
     _Bool _waitingOnAggregatorForSubmission;
     unsigned long long _context;
     NSString *_bundleIdentifier;
+    NSURL *_bundleURL;
+    ASDBetaAppLaunchInfo *_launchInfo;
     id <TFFeedbackSessionDelegate> _delegate;
     NSString *_logKey;
     unsigned long long _currentPhase;
@@ -38,21 +40,32 @@
 @property(readonly, copy, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
 @property(nonatomic) _Bool forcePrefilledEmailViewVariant; // @synthesize forcePrefilledEmailViewVariant=_forcePrefilledEmailViewVariant;
 @property(nonatomic) __weak id <TFFeedbackSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, copy, nonatomic) ASDBetaAppLaunchInfo *launchInfo; // @synthesize launchInfo=_launchInfo;
+@property(readonly, copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, nonatomic) unsigned long long context; // @synthesize context=_context;
+- (id)initForContext:(unsigned long long)arg1 betaApplicationBundleURL:(id)arg2;
 - (id)initWithBetaApplicationIdentifier:(id)arg1;
+- (id)_currentContextStringDescription;
 - (id)_displayableErrorMessageFromService:(id)arg1 submissionError:(id)arg2;
 - (void)dataAggregator:(id)arg1 didCompleteTasks:(id)arg2;
 - (void)_finishFeedbackSubmissionForViewController:(id)arg1;
 - (void)_abortFeedbackSubmissionForViewController:(id)arg1 withError:(id)arg2;
 - (void)_beginFeedbackSubmisionForViewController:(id)arg1;
 - (id)_generateFormForCurrentState;
+- (id)_associatePrefilledEmailIfNeeded;
+- (void)cancelFeedbackForActiveFormViewController;
 - (void)submitFeedbackForActiveFormViewController;
+- (void)submitCrashFeedback;
 - (id)createFeedbackViewControllerForCurrentState;
-- (void)_associateEmail:(id)arg1;
+- (void)associateEmail:(id)arg1;
+- (void)associateComments:(id)arg1;
 - (void)associateScreenshotImages:(id)arg1;
 - (void)associateIncidentId:(id)arg1;
 - (void)initiateFeedbackSnapshot;
+- (void)commonInitWithContext:(unsigned long long)arg1;
+- (id)initForContext:(unsigned long long)arg1 withTestingWithLaunchInfo:(id)arg2;
+- (id)initForContext:(unsigned long long)arg1 betaApplicationLoadableBundleURL:(id)arg2;
 - (id)initForContext:(unsigned long long)arg1 betaApplicationIdentifier:(id)arg2;
 
 // Remaining properties

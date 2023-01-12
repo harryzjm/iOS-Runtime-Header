@@ -6,7 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
+@class UINavigationItem;
+
 @interface UIViewController (AuthenticationServicesExtras)
+@property(retain, nonatomic) UINavigationItem *as_navigationItem;
 - (id)_as_viewControllerToPresentFrom;
 @property(copy, nonatomic, setter=_as_setApplicationBackgroundBlock:) CDUnknownBlockType _as_applicationBackgroundBlock;
 @end

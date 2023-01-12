@@ -18,11 +18,11 @@
 @property(readonly, nonatomic) GCControllerDirectionPad *touchpadSecondary; // @synthesize touchpadSecondary=_touchpadSecondary;
 @property(readonly, nonatomic) GCControllerDirectionPad *touchpadPrimary; // @synthesize touchpadPrimary=_touchpadPrimary;
 @property(readonly, nonatomic) GCControllerButtonInput *touchpadButton; // @synthesize touchpadButton=_touchpadButton;
-- (_Bool)isBluetoothAndUSBMirrored;
 - (void)initializeExtraControllerElements;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
+- (void)_activateExtendedSupport;
 
 @end
 

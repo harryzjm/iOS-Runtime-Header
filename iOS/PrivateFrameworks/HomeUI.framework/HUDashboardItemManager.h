@@ -11,17 +11,16 @@
 
 @interface HUDashboardItemManager : HFItemManager
 {
-    _Bool _editing;
     _Bool _forceHideMultiUserTokenFixBannerItem;
     HUDashboardContext *_context;
     HFItem *_headlineItem;
     HFItem *_statusBannerItem;
     HFItem *_multiUserTokenFixBannerItem;
+    HFItem *_welcomeUIBannerItem;
     HFItem *_statusListItem;
     HFActionSetListItem *_sceneListItem;
     HFStaticItem *_placeholderSceneListItem;
     HFCameraListItem *_cameraListItem;
-    HFItem *_editItem;
     HFItem *_placeholderServicesListItem;
     id _homeMediaAccount;
     id <HUDashboardItemManagerDelegate> _dashboardDelegate;
@@ -51,20 +50,17 @@
 @property(readonly, nonatomic) __weak id <HUDashboardItemManagerDelegate> dashboardDelegate; // @synthesize dashboardDelegate=_dashboardDelegate;
 @property(retain, nonatomic) id homeMediaAccount; // @synthesize homeMediaAccount=_homeMediaAccount;
 @property(retain, nonatomic) HFItem *placeholderServicesListItem; // @synthesize placeholderServicesListItem=_placeholderServicesListItem;
-@property(retain, nonatomic) HFItem *editItem; // @synthesize editItem=_editItem;
 @property(retain, nonatomic) HFCameraListItem *cameraListItem; // @synthesize cameraListItem=_cameraListItem;
 @property(retain, nonatomic) HFStaticItem *placeholderSceneListItem; // @synthesize placeholderSceneListItem=_placeholderSceneListItem;
 @property(retain, nonatomic) HFActionSetListItem *sceneListItem; // @synthesize sceneListItem=_sceneListItem;
 @property(retain, nonatomic) HFItem *statusListItem; // @synthesize statusListItem=_statusListItem;
+@property(retain, nonatomic) HFItem *welcomeUIBannerItem; // @synthesize welcomeUIBannerItem=_welcomeUIBannerItem;
 @property(nonatomic) _Bool forceHideMultiUserTokenFixBannerItem; // @synthesize forceHideMultiUserTokenFixBannerItem=_forceHideMultiUserTokenFixBannerItem;
 @property(retain, nonatomic) HFItem *multiUserTokenFixBannerItem; // @synthesize multiUserTokenFixBannerItem=_multiUserTokenFixBannerItem;
 @property(retain, nonatomic) HFItem *statusBannerItem; // @synthesize statusBannerItem=_statusBannerItem;
 @property(retain, nonatomic) HFItem *headlineItem; // @synthesize headlineItem=_headlineItem;
-@property(nonatomic, getter=isEditing) _Bool editing; // @synthesize editing=_editing;
 @property(retain, nonatomic) HUDashboardContext *context; // @synthesize context=_context;
-- (void)settings:(id)arg1 didUpdateSetting:(id)arg2;
-- (void)settings:(id)arg1 didWriteValueForSettings:(id)arg2 failedSettings:(id)arg3;
-- (void)settingsDidUpdate:(id)arg1;
+- (id)_buildStatusBannerItemsIfNecessaryForHome:(id)arg1;
 - (_Bool)isServiceLikeItemsAndCamerasEmpty;
 - (_Bool)hasVisibleServiceLikeItems;
 - (_Bool)isStatusListVisible;
@@ -77,6 +73,9 @@
 - (void)home:(id)arg1 didUpdateWallpaperForRoom:(id)arg2;
 - (void)homeDidUpdateWallpaper:(id)arg1;
 - (void)homeKitDispatcher:(id)arg1 manager:(id)arg2 didChangeHome:(id)arg3;
+- (id)_itemsToUpdateWhenApplicationDidBecomeActive;
+- (id)currentSectionIdentifiersSnapshot;
+- (_Bool)shouldPerformInitialLoadOnMainThread;
 - (void)_willUpdateSections;
 - (_Bool)_requiresNotificationsForCharacteristic:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
@@ -90,6 +89,8 @@
 - (id)_buildItemProvidersForHome:(id)arg1;
 @property(retain, nonatomic) HFReorderableHomeKitItemList *reorderableCameraList;
 @property(retain, nonatomic) HFReorderableHomeKitItemList *reorderableServiceList;
+- (id)_descriptionBuilder;
+- (id)description;
 - (id)initWithContext:(id)arg1 delegate:(id)arg2;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 

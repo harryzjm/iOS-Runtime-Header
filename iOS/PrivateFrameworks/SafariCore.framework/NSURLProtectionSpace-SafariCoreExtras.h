@@ -6,15 +6,17 @@
 
 #import <CFNetwork/NSURLProtectionSpace.h>
 
+@class NSString, NSURL;
+
 @interface NSURLProtectionSpace (SafariCoreExtras)
 + (id)safari_HTMLFormProtectionSpaceForURL:(id)arg1;
-- (_Bool)safari_allowsCredentialSaving;
+@property(readonly, nonatomic) _Bool safari_allowsCredentialSaving;
 - (id)safari_creationDateOfCredentialWithUser:(id)arg1;
-- (id)safari_URL;
-- (id)safari_addressString;
+@property(readonly, nonatomic) NSURL *safari_URL;
+@property(readonly, nonatomic) NSString *safari_addressString;
 - (long long)safari_compareToHighLevelDomainFromProtectionSpace:(id)arg1;
 - (long long)safari_compareToHighLevelDomainFromProtectionSpaceOrderingDecimalCharactersLast:(id)arg1;
-- (id)safari_protectionSpaceByReplacingHostWithHighlevelDomain;
-@property(readonly, nonatomic) struct __CFString *safari_protocolAsSecAttrProtocolValue;
+@property(readonly, nonatomic) NSURLProtectionSpace *safari_protectionSpaceByReplacingHostWithHighlevelDomain;
+@property(readonly, nonatomic) const struct __CFString *safari_protocolAsSecAttrProtocolValue;
 @end
 

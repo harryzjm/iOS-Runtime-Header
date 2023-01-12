@@ -15,7 +15,7 @@
 {
     TSUZipFileWriter *_archiveWriter;
     NSObject<OS_dispatch_queue> *_writerQueue;
-    _Bool _isClosed;
+    _Atomic _Bool _isClosed;
 }
 
 - (void).cxx_destruct;

@@ -27,7 +27,7 @@
     SEL _setterSel;
 }
 
-+ (id)propertyForObjectStoreProperty:(const struct Property *)arg1;
++ (id)propertyForObjectStoreProperty:(const void *)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) SEL setterSel; // @synthesize setterSel=_setterSel;
 @property(nonatomic) SEL getterSel; // @synthesize getterSel=_getterSel;

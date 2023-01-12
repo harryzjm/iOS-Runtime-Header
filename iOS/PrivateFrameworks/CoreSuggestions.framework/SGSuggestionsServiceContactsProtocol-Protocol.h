@@ -8,7 +8,7 @@
 #import <CoreSuggestions/_SGSuggestionsServiceContactsConfirmRejectProtocol-Protocol.h>
 #import <CoreSuggestions/_SGSuggestionsServiceContactsObserverProtocol-Protocol.h>
 
-@class CNContact, NSArray, NSString, SGContact, SGOrigin, SGRecordId;
+@class CNContact, NSArray, NSString, SGContact, SGOrigin, SGRecordId, SGSocialProfile;
 
 @protocol SGSuggestionsServiceContactsProtocol <_SGSuggestionsServiceBaseProtocol, _SGSuggestionsServiceContactsConfirmRejectProtocol, _SGSuggestionsServiceContactsObserverProtocol>
 - (void)allContactsWithSnippets:(_Bool)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
@@ -25,10 +25,14 @@
 - (void)contactMatchesWithContact:(CNContact *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
 - (SGContact *)contactFromRecordID:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)contactFromRecordID:(SGRecordId *)arg1 withCompletion:(void (^)(SGContact *, NSError *))arg2;
+- (NSArray *)namesForDetailCaches;
 - (NSArray *)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 error:(id *)arg4;
 - (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
 - (NSArray *)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 onlySignificant:(_Bool)arg4 error:(id *)arg5;
 - (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(_Bool)arg3 onlySignificant:(_Bool)arg4 withCompletion:(void (^)(NSArray *, NSError *))arg5;
+- (void)contactMatchesBySocialProfile:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
+- (NSArray *)contactMatchesBySocialProfile:(SGSocialProfile *)arg1 error:(id *)arg2;
+- (void)contactMatchesBySocialProfile:(SGSocialProfile *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (NSArray *)contactMatchesByEmailAddress:(NSString *)arg1 error:(id *)arg2;
 - (void)contactMatchesByEmailAddress:(NSString *)arg1 withCompletion:(void (^)(NSArray *, NSError *))arg2;
 - (NSArray *)contactMatchesByPhoneNumber:(NSString *)arg1 error:(id *)arg2;

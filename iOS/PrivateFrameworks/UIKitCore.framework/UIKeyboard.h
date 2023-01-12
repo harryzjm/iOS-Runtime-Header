@@ -7,7 +7,7 @@
 #import <UIKitCore/UIKBFocusGuideDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardImplGeometryDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, UITextCursorAssertionController, UITextInputTraits, UIView, _UIKeyboardPasscodeObscuringInteraction;
+@class NSMutableDictionary, NSString, UITapGestureRecognizer, UITextCursorAssertionController, UITextInputTraits, UIView, _UIKeyboardPasscodeObscuringInteraction;
 
 @interface UIKeyboard <UIKBFocusGuideDelegate, UIKeyboardImplGeometryDelegate>
 {
@@ -26,6 +26,8 @@
     struct UIEdgeInsets m_unfocusedFocusGuideOutsets;
     _UIKeyboardPasscodeObscuringInteraction *_passcodeObscuringInteraction;
     struct CGRect _forcedFrame;
+    UITapGestureRecognizer *_variantsMenuGesture;
+    _Bool _shouldUpdateLayoutAutomatically;
     _Bool _hasImpendingCursorLocation;
     unsigned long long _impendingCursorLocation;
     unsigned long long _requestedInteractionModel;
@@ -33,6 +35,7 @@
 
 + (_Bool)splitKeyboardEnabled;
 + (_Bool)isInHardwareKeyboardMode;
++ (_Bool)isSpotlight;
 + (struct CGSize)keyboardSizeForInterfaceOrientation:(long long)arg1;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(_Bool)arg2;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1;
@@ -54,6 +57,9 @@
 + (id)activeKeyboardForScreen:(id)arg1;
 + (void)_clearActiveKeyboard;
 + (id)activeKeyboard;
++ (void)setServiceRole:(unsigned long long)arg1;
++ (unsigned long long)serviceRole;
++ (_Bool)platformSupportsKeyboardServiceRole:(unsigned long long)arg1;
 + (id)homeGestureExclusionZones;
 + (_Bool)candidateDisplayIsExtended;
 + (void)setPredictionViewPrewarmsPredictiveCandidates:(_Bool)arg1;
@@ -64,6 +70,7 @@
 @property(nonatomic) unsigned long long requestedInteractionModel; // @synthesize requestedInteractionModel=_requestedInteractionModel;
 @property(nonatomic) unsigned long long impendingCursorLocation; // @synthesize impendingCursorLocation=_impendingCursorLocation;
 @property(nonatomic) _Bool hasImpendingCursorLocation; // @synthesize hasImpendingCursorLocation=_hasImpendingCursorLocation;
+@property(nonatomic) _Bool shouldUpdateLayoutAutomatically; // @synthesize shouldUpdateLayoutAutomatically=_shouldUpdateLayoutAutomatically;
 @property(nonatomic) long long keyboardIdiom; // @synthesize keyboardIdiom=m_idiom;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (void)_didChangeCandidateList;
@@ -90,11 +97,13 @@
 - (struct UIPeripheralAnimationGeometry)geometryForMinimize:(_Bool)arg1;
 - (void)syncMinimizedStateToHardwareKeyboardAttachedState;
 - (_Bool)shouldSaveMinimizationState;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_showAutofillExtras;
 - (_Bool)showPredictionBar;
 - (void)_setPreferredHeight:(double)arg1;
 - (void)setDisableInteraction:(_Bool)arg1;
 - (_Bool)disableInteraction;
+- (void)_toggleVariantsMenuGesture:(_Bool)arg1;
 - (void)updateFocusMarginsUpToView:(id)arg1;
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1 fromView:(id)arg2;
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1;
@@ -111,6 +120,7 @@
 - (struct CGRect)_globalFocusCastingFrameForHeading:(unsigned long long)arg1;
 - (long long)_focusedSound;
 - (long long)_focusTouchSensitivityStyle;
+- (id)_systemDefaultFocusGroupIdentifier;
 - (_Bool)_mayRemainFocused;
 - (_Bool)canBecomeFocused;
 - (void)_wheelChangedWithEvent:(id)arg1;
@@ -174,6 +184,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 lazily:(_Bool)arg2;
 - (void)autoAdjustOrientation;
+- (id)createPathEffectViewIfNecessary;
 - (void)manualKeyboardWasOrderedOut;
 - (void)manualKeyboardWillBeOrderedOut;
 - (void)manualKeyboardWasOrderedIn;

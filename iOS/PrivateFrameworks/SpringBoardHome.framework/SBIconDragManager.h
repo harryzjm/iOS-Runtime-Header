@@ -9,7 +9,8 @@
 #import <SpringBoardHome/SBHIconDragAutoScrollAssistantDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconListViewDragObserver-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSMutableDictionary, NSString, SBHIconDragAutoScrollAssistant, SBHIconManager, SBIconDraggingEditContext;
+@class NSHashTable, NSMapTable, NSMutableDictionary, NSString, SBHIconDragAutoScrollAssistant, SBIconDraggingEditContext;
+@protocol SBIconDragManagerDelegate;
 
 @interface SBIconDragManager : NSObject <SBIconListViewDragObserver, SBHIconDragAutoScrollAssistantDelegate>
 {
@@ -19,7 +20,7 @@
     NSMutableDictionary *_revertingReplacementIndexPaths;
     NSHashTable *_platterViews;
     SBHIconDragAutoScrollAssistant *_autoScrollAssistant;
-    SBHIconManager *_iconManager;
+    id <SBIconDragManagerDelegate> _delegate;
     SBIconDraggingEditContext *_draggingEditContext;
 }
 
@@ -28,7 +29,7 @@
 + (void)cancelAllDrags;
 - (void).cxx_destruct;
 @property(retain, nonatomic) SBIconDraggingEditContext *draggingEditContext; // @synthesize draggingEditContext=_draggingEditContext;
-@property(nonatomic) __weak SBHIconManager *iconManager; // @synthesize iconManager=_iconManager;
+@property(nonatomic) __weak id <SBIconDragManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -46,6 +47,7 @@
 - (void)iconListView:(id)arg1 iconDragItem:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (id)iconListView:(id)arg1 previewForDroppingIconDragItem:(id)arg2 proposedPreview:(id)arg3;
 - (void)iconListView:(id)arg1 willUseIconView:(id)arg2 forDroppingIconDragItem:(id)arg3;
+- (id)iconListView:(id)arg1 iconViewForDroppingIconDragItem:(id)arg2 proposedIconView:(id)arg3;
 - (void)iconDropSessionDidEnd:(id)arg1 identifier:(id)arg2 draggedIconIdentifiers:(id)arg3;
 - (void)iconDropSessionDidEnd:(id)arg1;
 - (void)concludeIconDrop:(id)arg1;
@@ -54,6 +56,8 @@
 - (void)iconDropSessionDidExitWithIdentifier:(id)arg1 fromIconListView:(id)arg2;
 - (void)iconDropSessionDidExit:(id)arg1 fromIconListView:(id)arg2;
 - (void)replaceAllBouncedIconsInContext:(id)arg1;
+- (void)revertLocationsForIconsInAllListsForDragWithIdentifier:(id)arg1;
+- (void)revertLocationsForIconsInList:(id)arg1 dragIdentifier:(id)arg2;
 - (void)iconDropSessionWithIdentifier:(id)arg1 draggedIconIdentifiers:(id)arg2 didPauseAtLocation:(struct CGPoint)arg3 inIconListView:(id)arg4;
 - (void)iconDropSession:(id)arg1 didPauseAtLocation:(struct CGPoint)arg2 inIconListView:(id)arg3;
 - (id)iconDropSessionDidUpdate:(id)arg1 inIconListView:(id)arg2;
@@ -96,6 +100,7 @@
 - (_Bool)doesIconViewRepresentRealIconPosition:(id)arg1;
 - (_Bool)shouldUseGhostIconForIconView:(id)arg1;
 - (void)watchdogDragWithIdentifier:(id)arg1;
+- (void)noteDragItemWasConsumedExternallyForDropSession:(id)arg1;
 - (void)cancelAllDrags;
 - (void)cancelEditingAndAllDrags;
 - (void)noteFolderControllerWillClose:(id)arg1;
@@ -108,6 +113,7 @@
 - (_Bool)swapTrackedIconWithIdentifier:(id)arg1 withIcon:(id)arg2;
 - (void)revertLocationsForUnplacedIconsInDragWithIdentifier:(id)arg1;
 - (_Bool)revertLocationsForIcons:(id)arg1 dragIdentifier:(id)arg2;
+- (_Bool)revertLocationForIcon:(id)arg1 toGridPath:(id)arg2;
 - (_Bool)revertLocationForIcon:(id)arg1 toPath:(id)arg2;
 - (id)fullIndexPathForRevertingIcon:(id)arg1 context:(id)arg2;
 - (void)revertActiveDragChanges;
@@ -131,13 +137,14 @@
 - (id)draggedIconForIdentifier:(id)arg1;
 - (id)iconIdentifierForDragItem:(id)arg1;
 - (id)appDragLocalContextForDragItem:(id)arg1;
+- (void)createIconsFromDragItemsIfNecessary:(id)arg1 withDragIdentifier:(id)arg2;
 - (void)addAppLocalContextsFromDragItems:(id)arg1 session:(id)arg2 toDragWithIdentifier:(id)arg3;
 - (void)watchdogTimerDidFire:(id)arg1;
 - (void)resetWatchdogTimerForDragWithIdentifier:(id)arg1 timeout:(double)arg2;
 - (void)changeStateOfDragWithIdentifier:(id)arg1 toState:(long long)arg2;
 - (void)_stopTrackingDragIfPossibleWithIdentifier:(id)arg1;
 - (void)_stopTrackingDragWithIdentifier:(id)arg1;
-- (void)_startTrackingDragWithIdentifier:(id)arg1;
+- (void)_startTrackingDragWithIdentifier:(id)arg1 session:(id)arg2;
 - (_Bool)_isTrackingDragWithIdentifier:(id)arg1;
 - (_Bool)_isTrackingDrag:(id)arg1;
 - (id)iconDragContextForDragItem:(id)arg1;
@@ -166,6 +173,13 @@
 @property(readonly, nonatomic, getter=isTrackingMultipleIconDrags) _Bool trackingMultipleIconDrags;
 @property(readonly, nonatomic, getter=isIconDragging) _Bool iconDragging;
 - (void)_cleanUpAllDraggingState;
+- (unsigned long long)listGridCellInfoOptions;
+- (void)layoutIconListsWithAnimationType:(long long)arg1 forceRelayout:(_Bool)arg2;
+- (id)iconListViewForIndexPath:(id)arg1;
+- (_Bool)isRootFolderContentVisible;
+- (_Bool)isEditing;
+- (double)defaultIconLayoutAnimationDuration;
+- (id)leafIconForIdentifier:(id)arg1;
 - (id)rootFolder;
 - (id)model;
 - (id)init;

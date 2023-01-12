@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSDate *wakeUpConfirmedDate;
-- (id)initWithWakeUpConfirmedDate:(id)arg1 wakeUpConfirmedUntilDate:(id)arg2 timeout:(double)arg3;
+- (id)initWithWakeUpConfirmedDate:(id)arg1 wakeUpConfirmedUntilDate:(id)arg2;
 
 @end
 

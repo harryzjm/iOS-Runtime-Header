@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
 - (void)copyFromTexture:(id)arg1 toTexture:(id)arg2;
 - (void)copyFromTexture:(id)arg1 sourceSlice:(unsigned long long)arg2 sourceLevel:(unsigned long long)arg3 toTexture:(id)arg4 destinationSlice:(unsigned long long)arg5 destinationLevel:(unsigned long long)arg6 sliceCount:(unsigned long long)arg7 levelCount:(unsigned long long)arg8;
 - (unsigned long long)getType;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_caaed6bc)arg4 color:(CDStruct_d2b197d1)arg5 pixelFormat:(unsigned long long)arg6;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_caaed6bc)arg4 color:(CDStruct_d2b197d1)arg5;
+- (void)fillTexture:(id)arg1 level:(unsigned long long)arg2 slice:(unsigned long long)arg3 region:(CDStruct_caaed6bc)arg4 bytes:(const void *)arg5 length:(unsigned long long)arg6;
+- (void)fillBuffer:(id)arg1 range:(struct _NSRange)arg2 pattern4:(unsigned int)arg3;
 - (void)waitForFence:(id)arg1;
 - (void)updateFence:(id)arg1;
 - (void)synchronizeTexture:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;

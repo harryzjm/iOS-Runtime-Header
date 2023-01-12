@@ -15,6 +15,7 @@
     _Bool _shouldCancel;
     _Bool _didReceiveTranscription;
     _Bool _didShowHUD;
+    int _transcriptionType;
     PKAttachmentView *_attachment;
     PKStrokeSelection *_strokeSelection;
     PKRecognitionSessionManager *_recognitionManager;
@@ -24,6 +25,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) int transcriptionType; // @synthesize transcriptionType=_transcriptionType;
 @property(copy, nonatomic) NSString *textTranscription; // @synthesize textTranscription=_textTranscription;
 @property(nonatomic) _Bool didShowHUD; // @synthesize didShowHUD=_didShowHUD;
 @property(nonatomic) _Bool didReceiveTranscription; // @synthesize didReceiveTranscription=_didReceiveTranscription;
@@ -42,7 +44,7 @@
 - (void)_showHUDWithProgress:(id)arg1;
 - (id)_fetchTranscriptionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancelAndTeardown;
-- (void)findTranscriptionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)findTranscriptionForType:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)initWithRecognitionManager:(id)arg1 strokeSelection:(id)arg2 attachment:(id)arg3;
 - (void)dealloc;
 

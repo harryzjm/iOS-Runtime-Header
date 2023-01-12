@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetsLibraryServices/PLPhotoLibraryPathManager.h>
+#import <PhotoLibraryServicesCore/PLPhotoLibraryPathManager.h>
 
 @interface PLPhotoLibraryPathManager (SQLError)
-+ (id)defaultRenderFileFormatTypeIdentifier;
++ (id)defaultDeferredRenderFileFormatTypeIdentifier;
 - (id)recordRebuildReason;
 - (long long)lastRebuildReason;
 - (void)setSqliteErrorForReason:(long long)arg1 allowsExit:(_Bool)arg2;
+- (void)_abortWithRebuildReasonPLRebuildReasonBackgroundMigration;
 - (void)_abortWithRebuildReasonPLRebuildReasonExcessivePersistentHistorySize;
 - (void)_abortWithRebuildReasonPLRebuildReasonSharedAlbumUUIDCorruption;
 - (void)_abortWithRebuildReasonPLRebuildReasonMPSUUIDCorruption;
@@ -34,11 +35,16 @@
 - (_Bool)sqliteErrorIndicatorFileExists;
 - (id)pathToiPhotoLibraryMediaDir;
 - (id)temporaryRenderContentURLForInternalRendersWithExtension:(id)arg1;
+- (_Bool)removePartialVideoDirectory;
+- (id)URLForPartialVideoDirectoryWithAssetUUID:(id)arg1;
+- (id)URLForPartialVideoWithResourceFingerprint:(id)arg1 assetUUID:(id)arg2 timeRange:(CDStruct_3c1748cc)arg3;
 - (id)cloudSharingArchiveDirectory;
 - (id)directoryPathForInFlightComments:(_Bool)arg1;
 - (id)cloudServiceEnableLogFileURL;
+- (_Bool)removeCPLDataDirectory;
 - (id)cplDownloadFinishedMarkerFilePath;
 - (id)cplEnableMarkerFilePath;
+- (id)wipeCPLOnOpenPath;
 - (id)forceSoftResetSyncPath;
 - (id)disableICloudPhotosFilePath;
 - (id)pauseICloudPhotosFilePath;
@@ -52,5 +58,6 @@
 - (id)photoStreamsDataDirectory;
 - (id)URLForMetadataWithExtension:(id)arg1 forMediaInMainDirectory:(id)arg2 withFilename:(id)arg3;
 - (id)assetPathForMutationsDirectoryWithDirectory:(id)arg1 filename:(id)arg2;
+- (_Bool)isSystemPhotoLibraryPathManager;
 @end
 

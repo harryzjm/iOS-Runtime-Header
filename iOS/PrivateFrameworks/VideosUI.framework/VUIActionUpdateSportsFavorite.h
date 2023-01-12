@@ -4,23 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKViewElement, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionUpdateSportsFavorite
 {
-    IKViewElement *_viewElement;
     NSString *_sportsLeagueID;
     NSString *_sportsTeamName;
 }
 
++ (void)performFavoritesOperation:(_Bool)arg1 teamId:(id)arg2 teamName:(id)arg3 requestExecutionHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *sportsTeamName; // @synthesize sportsTeamName=_sportsTeamName;
 @property(copy, nonatomic) NSString *sportsLeagueID; // @synthesize sportsLeagueID=_sportsLeagueID;
-@property(nonatomic) __weak IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 - (_Bool)isAccountRequired;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithContextData:(id)arg1 viewElement:(id)arg2;
+- (id)initWithContextData:(id)arg1;
 
 @end
 

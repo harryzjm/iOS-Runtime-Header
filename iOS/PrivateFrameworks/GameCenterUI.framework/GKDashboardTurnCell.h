@@ -21,6 +21,8 @@
 }
 
 + (struct CGSize)defaultSizeForTurnDetail;
++ (struct CGSize)defaultSize;
+- (void).cxx_destruct;
 @property(nonatomic) double turnToNameConstant; // @synthesize turnToNameConstant=_turnToNameConstant;
 @property(nonatomic) double dateToNameConstant; // @synthesize dateToNameConstant=_dateToNameConstant;
 @property(retain, nonatomic) UIColor *turnColor; // @synthesize turnColor=_turnColor;
@@ -35,7 +37,6 @@
 - (void)configureForParticipant:(id)arg1 inMatch:(id)arg2;
 - (void)configureForMatch:(id)arg1;
 - (_Bool)wantsLocalPlayerAction:(id)arg1;
-- (void)dealloc;
 - (void)awakeFromNib;
 
 @end

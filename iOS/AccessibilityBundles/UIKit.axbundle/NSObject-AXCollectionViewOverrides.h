@@ -10,7 +10,5 @@
 - (void)accessibilityClearInternalData;
 - (long long)_emojiCompare:(id)arg1;
 - (long long)_accessibilityScrollPositionForCellOverride:(long long)arg1;
-- (void)_accessibilitySetTextSelection:(struct _NSRange)arg1;
-- (_Bool)__accessibilityRespondsToTextInput;
 @end
 

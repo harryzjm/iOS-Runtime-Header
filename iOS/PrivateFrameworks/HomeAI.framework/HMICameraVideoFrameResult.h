@@ -35,7 +35,6 @@
 @property(readonly) NSDictionary *annotationScores; // @synthesize annotationScores=_annotationScores;
 @property(readonly) HMICameraVideoFrame *frame; // @synthesize frame=_frame;
 - (id)maxConfidenceEventForEventClass:(Class)arg1;
-- (long long)confidenceThatEventOccurred:(long long)arg1;
 - (id)initWithFrame:(id)arg1 regionOfInterest:(struct CGRect)arg2 analyzerEvents:(id)arg3;
 - (id)initWithFrame:(id)arg1 events:(long long)arg2 annotationScores:(id)arg3 detections:(id)arg4 regionOfInterest:(struct CGRect)arg5 faceClassifications:(id)arg6;
 - (unsigned long long)hash;

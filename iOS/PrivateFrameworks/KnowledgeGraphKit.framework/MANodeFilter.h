@@ -10,6 +10,7 @@
 {
 }
 
++ (id)nodeFilterWithVisualString:(id)arg1;
 + (_Bool)scanInstance:(out id *)arg1 withScanner:(id)arg2;
 @property(readonly, nonatomic) MARelation *relation;
 - (void)appendVisualStringToString:(id)arg1;

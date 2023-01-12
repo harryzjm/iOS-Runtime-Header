@@ -9,7 +9,6 @@
 }
 
 + (id)filter;
-- (void)updateLocalIdentifier:(id)arg1 isFavorite:(_Bool)arg2 isUserCreated:(_Bool)arg3;
 - (id)relationshipEdgesToPersonNode:(id)arg1 matchingQuery:(unsigned long long)arg2;
 - (void)enumeratePersonNodesWithRelationship:(unsigned long long)arg1 matchingQuery:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)_relationshipLabelForRelationship:(unsigned long long)arg1;

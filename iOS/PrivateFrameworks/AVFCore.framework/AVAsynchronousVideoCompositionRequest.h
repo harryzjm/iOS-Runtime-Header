@@ -19,8 +19,11 @@
 - (void)finishCancelledRequest;
 - (void)finishWithError:(id)arg1;
 - (void)finishWithComposedVideoFrame:(struct __CVBuffer *)arg1;
+- (id)sourceTimedMetadataByTrackID:(int)arg1;
+- (struct opaqueCMSampleBuffer *)sourceSampleBufferByTrackID:(int)arg1;
 - (struct __CVBuffer *)sourceFrameByTrackID:(int)arg1;
 @property(readonly, nonatomic) id <AVVideoCompositionInstruction> videoCompositionInstruction;
+@property(readonly, nonatomic) NSArray *sourceSampleDataTrackIDs;
 @property(readonly, nonatomic) NSArray *sourceTrackIDs;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 compositionTime;
 @property(readonly, nonatomic) AVVideoCompositionRenderContext *renderContext;
@@ -28,7 +31,7 @@
 - (void)dealloc;
 - (void)_willDeallocOrFinalize;
 - (struct OpaqueFigVideoCompositorFrame *)compositionFrame;
-- (id)initUsingSession:(id)arg1 withRenderContext:(id)arg2 compositionFrame:(struct OpaqueFigVideoCompositorFrame *)arg3 atTime:(CDStruct_1b6d18a9)arg4 usingSources:(id)arg5 instruction:(id)arg6;
+- (id)initUsingSession:(id)arg1 withRenderContext:(id)arg2 compositionFrame:(struct OpaqueFigVideoCompositorFrame *)arg3 atTime:(CDStruct_1b6d18a9)arg4 usingSources:(id)arg5 instruction:(id)arg6 withSampleBuffers:(id)arg7;
 
 @end
 

@@ -23,15 +23,16 @@ __attribute__((visibility("hidden")))
 + (id)sharedConnection;
 - (void).cxx_destruct;
 @property(retain, nonatomic) CPSSessionProxy *sessionProxy; // @synthesize sessionProxy=_sessionProxy;
+- (void)performValidationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)confirmLocationWithURL:(id)arg1 inRegion:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)checkAndConsumeShowsAppAttributionBannerForBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getLastLaunchOptionsWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)notifyWebClipActivationWithBundleID:(id)arg1;
+- (void)notifyWebClipActivationWithBundleID:(id)arg1 referrerBundleID:(id)arg2;
 - (void)getUserNotificationConsentForBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)openClipWithURL:(id)arg1 launchOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stopStallingCurrentInstallationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)openClipWithInvocationUIIfNeededWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchClipMetadataWithURLHash:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchClipURLWithURLHash:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchClipMetadataWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)uninstallClipsWithBundleIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)uninstallClipWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

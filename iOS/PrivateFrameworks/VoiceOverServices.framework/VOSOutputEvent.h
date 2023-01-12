@@ -66,6 +66,9 @@
 + (id)DidSelectPreviousRotor;
 + (id)DidBeginPassthrough;
 + (id)DidSelectAutofill;
++ (id)InteractOut;
++ (id)InteractIn;
++ (id)IsInteractable;
 + (id)NoItemExists;
 + (id)BoundaryEncountered;
 + (id)DidScrollByPage;

@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <VideosUI/ICEnvironmentMonitorObserver-Protocol.h>
+
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlaybackSettings : NSObject
+@interface VUIPlaybackSettings : NSObject <ICEnvironmentMonitorObserver>
 {
     int _preferencesNotifyToken;
     _Bool _preferencesNotifyTokenIsValid;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long preferredCellularPlaybackQuality; // @synthesize preferredCellularPlaybackQuality=_preferredCellularPlaybackQuality;
 @property(nonatomic) long long preferredWifiPlaybackQuality; // @synthesize preferredWifiPlaybackQuality=_preferredWifiPlaybackQuality;
 @property long long networkStatus; // @synthesize networkStatus=_networkStatus;
+- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (id)_descriptionForExternalScreenType:(unsigned int)arg1;
 - (long long)_downloadQualityForString:(id)arg1;
 - (long long)_playbackQualityForString:(id)arg1 forCellular:(_Bool)arg2;
@@ -45,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)_sceneWillConnect:(id)arg1;
 - (void)_externalScreenTypeDidChange:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
-- (void)_networkTypeDidChange:(id)arg1;
 - (void)_updateNetworkStatus;
 @property(nonatomic) _Bool preferAVAdapterCompatibility; // @synthesize preferAVAdapterCompatibility=_preferAVAdapterCompatibility;
 @property(retain, nonatomic) NSString *preferredAudioLanguageCode; // @synthesize preferredAudioLanguageCode=_preferredAudioLanguageCode;
@@ -55,6 +57,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long preferredPlaybackQualityForCurrentNetworkStatus;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

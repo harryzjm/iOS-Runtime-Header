@@ -6,26 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, UIMenu, _UIMenuBuilder;
+@class _UIMenuBuilder;
 
 @interface UIMenuSystem : NSObject
 {
     _UIMenuBuilder *_defaultBuilder;
-    _UIMenuBuilder *_automaticallyRebuildingBuilder;
-    _Bool _shouldAutomaticallyRebuild;
 }
 
 + (id)contextSystem;
 + (id)mainSystem;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool shouldAutomaticallyRebuild; // @synthesize shouldAutomaticallyRebuild=_shouldAutomaticallyRebuild;
 - (void)setNeedsRevalidate;
 - (void)setNeedsRebuild;
-- (void)_automaticallyRebuildIfNeeded;
-- (id)_newBuilderFromResponderChain:(id)arg1;
-@property(readonly, nonatomic) UIMenu *_rootMenu;
-@property(readonly, nonatomic) NSArray *_keyCommands;
-- (id)initWithDefaultBuilder:(id)arg1 shouldAutomaticallyRebuild:(_Bool)arg2;
+- (_Bool)_buildMenuWithBuilder:(id)arg1 fromResponderChain:(id)arg2 atLocation:(struct CGPoint)arg3 inCoordinateSpace:(id)arg4;
+- (id)_newBuilderFromResponderChain:(id)arg1 atLocation:(struct CGPoint)arg2 inCoordinateSpace:(id)arg3;
+- (id)initWithRootMenuChildren:(id)arg1;
 
 @end
 

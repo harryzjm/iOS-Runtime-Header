@@ -17,6 +17,7 @@
 @property(readonly, nonatomic) NSArray *localizedLocationNames;
 @property(readonly, nonatomic) NSString *localizedDebugDescription;
 @property(readonly, nonatomic) NSString *localizedSubtitle;
+@property(readonly, nonatomic) NSString *uuid;
 @property(readonly, nonatomic) long long px_highlightKind;
 @property(readonly, nonatomic) unsigned short px_highlightEnrichmentState;
 @property(readonly, nonatomic) _Bool isRecent;

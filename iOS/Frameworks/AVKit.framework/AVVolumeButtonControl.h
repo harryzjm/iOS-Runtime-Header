@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_imageView;
     UIView *_micaPackageContainerView;
     NSTimer *_longPressTimer;
+    long long _volumeControllerType;
     struct CGSize _extrinsicContentSize;
     struct CGPoint _translationOfPanFromPreviousTouch;
     struct CGPoint _cumulativeTranslationSincePanningBegan;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) long long volumeControllerType; // @synthesize volumeControllerType=_volumeControllerType;
 @property(nonatomic) _Bool showsHighlightedAppearance; // @synthesize showsHighlightedAppearance=_showsHighlightedAppearance;
 @property(nonatomic) long long trackingState; // @synthesize trackingState=_trackingState;
 @property(nonatomic) __weak NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
@@ -69,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)hitRect;
 - (void)setBounds:(struct CGRect)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (id)accessibilityLabel;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

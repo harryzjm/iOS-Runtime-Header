@@ -7,10 +7,13 @@
 #import <GeoServices/NSCoding-Protocol.h>
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol GEOServerConditionalString;
 
 @protocol GEOServerFormattedString <NSObject, NSCoding>
+@property(readonly, nonatomic) _Bool isPrivate;
+@property(readonly, nonatomic) NSString *basicString;
+@property(readonly, nonatomic) NSString *stringWithDefaultValues;
 @property(readonly, nonatomic) id <GEOServerConditionalString> alternativeString;
 @property(readonly, nonatomic) NSArray *formatStyles;
 @property(readonly, nonatomic) NSArray *separators;

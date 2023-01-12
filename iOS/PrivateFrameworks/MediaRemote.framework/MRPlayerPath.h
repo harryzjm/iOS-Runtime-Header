@@ -19,19 +19,24 @@
 }
 
 + (id)localResolvedPlayerPathFromPlayerPath:(id)arg1;
++ (id)anyPlayerPath;
 + (_Bool)supportsSecureCoding;
 + (id)localPlayerPath;
 - (void).cxx_destruct;
 @property(copy, nonatomic) MRPlayer *player; // @synthesize player=_player;
 @property(copy, nonatomic) MRClient *client; // @synthesize client=_client;
 @property(copy, nonatomic) MROrigin *origin; // @synthesize origin=_origin;
+- (id)playerPathByLocalizingWithOrigin:(id)arg1;
 - (id)playerPathByRedirectingToOrigin:(id)arg1;
 @property(readonly, nonatomic) MRPlayerPath *localResolvedPlayerPath;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, nonatomic, getter=isSystemBooksApplication) _Bool systemBooksApplication;
+@property(readonly, nonatomic, getter=isSystemPodcastsApplication) _Bool systemPodcastsApplication;
 @property(readonly, nonatomic, getter=isSystemMediaApplication) _Bool systemMediaApplication;
 @property(readonly, nonatomic, getter=isLocal) _Bool local;
 @property(readonly, nonatomic, getter=isResolved) _Bool resolved;

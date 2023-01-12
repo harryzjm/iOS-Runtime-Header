@@ -18,9 +18,11 @@
     NSArray *_collectionHierarchy;
     long long _type;
     long long _revealMode;
+    NSString *_source;
     NSString *_assetUUID;
     NSString *_assetLocalIdentifier;
     NSString *_assetCollectionUUID;
+    NSString *_assetCollectionLocalIdentifier;
     long long _assetCollectionType;
     long long _assetCollectionSubtype;
     NSString *_collectionListUUID;
@@ -28,11 +30,9 @@
     long long _collectionListSubtype;
     NSString *_importSourceUUID;
     PXProgrammaticNavigationDestination *_sidebarBackNavigationRootDestination;
-    NSString *_keyboardInput;
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSString *keyboardInput; // @synthesize keyboardInput=_keyboardInput;
 @property(readonly, copy, nonatomic) PXProgrammaticNavigationDestination *sidebarBackNavigationRootDestination; // @synthesize sidebarBackNavigationRootDestination=_sidebarBackNavigationRootDestination;
 @property(readonly, copy, nonatomic) NSString *importSourceUUID; // @synthesize importSourceUUID=_importSourceUUID;
 @property(readonly, nonatomic) long long collectionListSubtype; // @synthesize collectionListSubtype=_collectionListSubtype;
@@ -40,12 +40,18 @@
 @property(readonly, copy, nonatomic) NSString *collectionListUUID; // @synthesize collectionListUUID=_collectionListUUID;
 @property(readonly, nonatomic) long long assetCollectionSubtype; // @synthesize assetCollectionSubtype=_assetCollectionSubtype;
 @property(readonly, nonatomic) long long assetCollectionType; // @synthesize assetCollectionType=_assetCollectionType;
+@property(readonly, copy, nonatomic) NSString *assetCollectionLocalIdentifier; // @synthesize assetCollectionLocalIdentifier=_assetCollectionLocalIdentifier;
 @property(readonly, copy, nonatomic) NSString *assetCollectionUUID; // @synthesize assetCollectionUUID=_assetCollectionUUID;
 @property(readonly, copy, nonatomic) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
 @property(readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
+@property(readonly, nonatomic) NSString *source; // @synthesize source=_source;
 @property(readonly, nonatomic) long long revealMode; // @synthesize revealMode=_revealMode;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSString *publicDescription;
 - (id)description;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToNavigationDestination:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *collectionHierarchy; // @synthesize collectionHierarchy=_collectionHierarchy;
 @property(readonly, nonatomic) id <PXDisplayCollection> collection; // @synthesize collection=_collection;
 @property(readonly, nonatomic) id <PXDisplayCollectionList> collectionList; // @synthesize collectionList=_collectionList;
@@ -55,7 +61,6 @@
 - (id)initWithType:(long long)arg1 revealMode:(long long)arg2 asset:(id)arg3 assetCollection:(id)arg4;
 - (id)initWithType:(long long)arg1 revealMode:(long long)arg2 assetUUID:(id)arg3 assetCollectionUUID:(id)arg4;
 - (id)initWithType:(long long)arg1 revealMode:(long long)arg2;
-- (id)initWithType:(long long)arg1 revealMode:(long long)arg2 keyboardInput:(id)arg3;
 - (id)initWithObject:(id)arg1 revealMode:(long long)arg2 sidebarNavigationBackButtonRootDestination:(id)arg3;
 - (id)initWithObject:(id)arg1 revealMode:(long long)arg2;
 - (id)initWithURL:(id)arg1;

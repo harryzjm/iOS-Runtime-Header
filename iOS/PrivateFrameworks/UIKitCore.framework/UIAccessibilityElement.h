@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 
-@class NSArray, NSString, UIView;
+@class NSArray, NSString, UIFocusEffect, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
 @interface UIAccessibilityElement <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer, UIAccessibilityIdentification>
@@ -54,8 +54,12 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
 @property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;

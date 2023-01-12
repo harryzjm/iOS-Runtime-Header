@@ -41,11 +41,14 @@
 - (void)_setSpotlightAlpha:(double)arg1 scale:(double)arg2 blurProgress:(double)arg3 translation:(struct CGPoint)arg4 withAnimationMode:(long long)arg5 alongsideAnimationBlock:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_setSpotlightPresented:(_Bool)arg1 withAnimationMode:(long long)arg2 alongsideAnimationBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_configureBlurFilterOnView:(id)arg1;
+- (_Bool)_isReduceMotionOrTransparency;
 - (_Bool)_isSpotlightVisible;
 - (void)endInteractivePresentation:(_Bool)arg1;
 - (void)updateInteractivePresentationWithProgress:(double)arg1 translation:(double)arg2;
 - (void)beginInteractivePresentation;
+- (_Bool)preventsClippingToBounds;
 - (_Bool)allowsStackingOverlayContentAbove;
+- (_Bool)shouldPreventDragAndDrop;
 - (_Bool)dismissesSiriForPresentation;
 - (id)presentationDimmingViewColor;
 - (_Bool)preservesAppSwitcherDuringPresentationAndDismissal;
@@ -62,6 +65,7 @@
 - (void)handleGestureDismissal;
 - (_Bool)handleHomeButtonPress;
 - (_Bool)_canShowWhileLocked;
+- (long long)preferredStatusBarStyle;
 - (int)_preferredStatusBarVisibility;
 - (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;

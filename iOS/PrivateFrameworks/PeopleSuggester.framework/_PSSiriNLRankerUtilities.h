@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)knowledgeEventWithSuggestions:(id)arg1 interactionId:(id)arg2;
++ (id)knowledgeEventWithContactPriors:(id)arg1 interactionId:(id)arg2;
 
 @end
 

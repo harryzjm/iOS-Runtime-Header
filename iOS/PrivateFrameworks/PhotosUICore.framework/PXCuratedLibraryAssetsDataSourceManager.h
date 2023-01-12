@@ -22,6 +22,7 @@
     } _delegateRespondsTo;
     NSDictionary *_dataSourceManagerByZoomLevel;
     _Bool _isForcingSections;
+    _Bool _canIncludeUnsavedSyndicatedAssets;
     _Bool _canLoadData;
     _Bool _wantsCuration;
     id <PXCuratedLibraryAssetsDataSourceManagerDelegate> _delegate;
@@ -34,13 +35,13 @@
     long long _currentDataSourceZoomLevel;
     PXVisualPositionsChangeDetails *_lastVisualPositionsChangeDetails;
     long long _lastTransitionType;
-    unsigned long long _lastVisualPositionsChangeFromDataSourceIdentifier;
-    unsigned long long _lastVisualPositionsChangeToDataSourceIdentifier;
+    long long _lastVisualPositionsChangeFromDataSourceIdentifier;
+    long long _lastVisualPositionsChangeToDataSourceIdentifier;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long lastVisualPositionsChangeToDataSourceIdentifier; // @synthesize lastVisualPositionsChangeToDataSourceIdentifier=_lastVisualPositionsChangeToDataSourceIdentifier;
-@property(nonatomic) unsigned long long lastVisualPositionsChangeFromDataSourceIdentifier; // @synthesize lastVisualPositionsChangeFromDataSourceIdentifier=_lastVisualPositionsChangeFromDataSourceIdentifier;
+@property(nonatomic) long long lastVisualPositionsChangeToDataSourceIdentifier; // @synthesize lastVisualPositionsChangeToDataSourceIdentifier=_lastVisualPositionsChangeToDataSourceIdentifier;
+@property(nonatomic) long long lastVisualPositionsChangeFromDataSourceIdentifier; // @synthesize lastVisualPositionsChangeFromDataSourceIdentifier=_lastVisualPositionsChangeFromDataSourceIdentifier;
 @property(nonatomic) long long lastTransitionType; // @synthesize lastTransitionType=_lastTransitionType;
 @property(retain, nonatomic) PXVisualPositionsChangeDetails *lastVisualPositionsChangeDetails; // @synthesize lastVisualPositionsChangeDetails=_lastVisualPositionsChangeDetails;
 @property(nonatomic) long long currentDataSourceZoomLevel; // @synthesize currentDataSourceZoomLevel=_currentDataSourceZoomLevel;
@@ -50,6 +51,7 @@
 @property(readonly, nonatomic) PXCuratedLibraryAssetsDataSourceManagerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property(nonatomic) _Bool canLoadData; // @synthesize canLoadData=_canLoadData;
+@property(readonly, nonatomic) _Bool canIncludeUnsavedSyndicatedAssets; // @synthesize canIncludeUnsavedSyndicatedAssets=_canIncludeUnsavedSyndicatedAssets;
 @property(readonly, nonatomic) NSPredicate *allPhotosFilterPredicate; // @synthesize allPhotosFilterPredicate=_allPhotosFilterPredicate;
 @property(readonly, nonatomic) long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 @property(nonatomic) __weak id <PXCuratedLibraryAssetsDataSourceManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -65,7 +67,7 @@
 - (void)setNeedsUpdate;
 - (void)didPerformChanges;
 - (void)resumeChangeDelivery:(id)arg1;
-- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1 identifier:(id)arg2;
 - (_Bool)forceAccurateSectionsIfNeeded:(id)arg1 inZoomLevel:(long long)arg2;
 - (_Bool)forceAccurateAllSectionsIfNeeded;
 - (_Bool)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
@@ -82,10 +84,11 @@
 - (unsigned long long)libraryStateForZoomLevel:(long long)arg1;
 - (id)dataSourceForZoomLevel:(long long)arg1;
 - (id)dataSourceManagerForZoomLevel:(long long)arg1;
+- (void)setCanIncludeUnsavedSyndicatedAssets:(_Bool)arg1;
 - (void)setAllPhotosFilterPredicate:(id)arg1;
 - (void)setZoomLevel:(long long)arg1;
-- (long long)transitionTypeFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
-- (id)visualPositionsChangeDetailsFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
+- (long long)transitionTypeFromDataSourceIdentifier:(long long)arg1 toDataSourceIdentifier:(long long)arg2;
+- (id)visualPositionsChangeDetailsFromDataSourceIdentifier:(long long)arg1 toDataSourceIdentifier:(long long)arg2;
 - (id)assetsInAssetCollection:(id)arg1;
 - (void)setCurationEnabled:(_Bool)arg1 forAssetCollection:(id)arg2;
 - (id)createInitialDataSource;

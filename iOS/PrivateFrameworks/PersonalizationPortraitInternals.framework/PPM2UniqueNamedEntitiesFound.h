@@ -15,6 +15,7 @@
     NSString *_activeTreatments;
 }
 
++ (id)options;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSString *activeTreatments; // @synthesize activeTreatments=_activeTreatments;
 - (void)mergeFrom:(id)arg1;

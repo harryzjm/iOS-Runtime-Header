@@ -16,10 +16,14 @@
 + (_Bool)synchronizeInputs;
 + (_Bool)allowPartialOutputRegion;
 + (_Bool)outputIsOpaque;
++ (_Bool)canOutputLossyCompressed;
++ (_Bool)allowCompressedInputsAndOutputs;
 + (_Bool)canReduceOutputChannels;
 + (_Bool)allowSRGBTranferFuntionOnOutput;
++ (int)outputFormatWithArguments:(id)arg1;
 + (int)outputFormat;
 + (_Bool)allowSRGBTranferFuntionOnInputAtIndex:(int)arg1;
++ (int)formatForInputAtIndex:(int)arg1 arguments:(id)arg2;
 + (int)formatForInputAtIndex:(int)arg1;
 + (struct CGRect)roiForInput:(int)arg1 arguments:(id)arg2 outputRect:(struct CGRect)arg3;
 + (_Bool)processWithInputs:(id)arg1 arguments:(id)arg2 output:(id)arg3 error:(id *)arg4;

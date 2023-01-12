@@ -6,7 +6,7 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HFItem, HMHome, NSMutableSet;
+@class HFCharacteristicEventBuilderItem, HFItem, HMHome, NSMutableSet;
 @protocol HFCharacteristicValueSource, HFServiceVendor;
 
 @interface HUCharacteristicEventOptionProvider : HFItemProvider
@@ -14,6 +14,7 @@
     HMHome *_home;
     CDUnknownBlockType _filter;
     HFItem<HFServiceVendor> *_serviceVendingItem;
+    HFCharacteristicEventBuilderItem *_eventBuilderItem;
     NSMutableSet *_optionItems;
     id <HFCharacteristicValueSource> _overrideValueSource;
 }
@@ -27,6 +28,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id <HFCharacteristicValueSource> overrideValueSource; // @synthesize overrideValueSource=_overrideValueSource;
 @property(retain, nonatomic) NSMutableSet *optionItems; // @synthesize optionItems=_optionItems;
+@property(retain, nonatomic) HFCharacteristicEventBuilderItem *eventBuilderItem; // @synthesize eventBuilderItem=_eventBuilderItem;
 @property(retain, nonatomic) HFItem<HFServiceVendor> *serviceVendingItem; // @synthesize serviceVendingItem=_serviceVendingItem;
 @property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property(readonly, nonatomic) HMHome *home; // @synthesize home=_home;

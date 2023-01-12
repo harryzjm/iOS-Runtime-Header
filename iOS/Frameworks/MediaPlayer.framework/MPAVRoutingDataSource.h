@@ -6,22 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/NSObject-Protocol.h>
+
+@class NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPAVRoutingDataSource : NSObject
+@interface MPAVRoutingDataSource : NSObject <NSObject>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_workerQueue;
+    NSString *_activeAudioCategory;
     _Bool _devicePresenceDetected;
+    _Bool _didFinishLoading;
+    unsigned int _targetSessionID;
     long long _discoveryMode;
     long long _filterMode;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool didFinishLoading; // @synthesize didFinishLoading=_didFinishLoading;
+@property(nonatomic) unsigned int targetSessionID; // @synthesize targetSessionID=_targetSessionID;
 @property(nonatomic) long long filterMode; // @synthesize filterMode=_filterMode;
 @property(readonly, nonatomic) _Bool devicePresenceDetected; // @synthesize devicePresenceDetected=_devicePresenceDetected;
 @property(nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
+- (id)_stateDumpObject;
 - (void)_superclassUnregisterNotifications;
 - (void)_superclassRegisterNotifications;
+@property(readonly, copy, nonatomic) NSString *activeAudioCategory;
+- (void)_reloadActiveAudioCategoryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_activeAudioRouteDidChangeNotification:(id)arg1;
 - (void)_externalScreenTypeDidChangeNotification:(id)arg1;
 - (void)_volumeControlAvailabilityDidChangeNotification:(id)arg1;
@@ -34,6 +46,12 @@
 - (void)getExternalScreenTypeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

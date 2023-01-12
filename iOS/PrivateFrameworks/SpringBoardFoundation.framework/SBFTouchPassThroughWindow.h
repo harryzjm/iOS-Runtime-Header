@@ -14,7 +14,7 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)description;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithScreen:(id)arg1 debugName:(id)arg2;
+- (id)initWithScreen:(id)arg1 role:(id)arg2 debugName:(id)arg3;
 
 @end
 

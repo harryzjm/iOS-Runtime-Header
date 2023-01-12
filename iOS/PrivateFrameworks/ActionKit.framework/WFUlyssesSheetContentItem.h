@@ -17,6 +17,7 @@
 + (id)countDescription;
 + (id)pluralTypeDescription;
 + (id)typeDescription;
++ (id)stringConversionBehavior;
 + (id)propertyBuilders;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)sheet;

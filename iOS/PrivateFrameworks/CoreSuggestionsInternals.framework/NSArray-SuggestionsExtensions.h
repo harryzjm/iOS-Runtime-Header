@@ -6,12 +6,12 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CoreSuggestionsInternals/SGHeaderCollection-Protocol.h>
+#import <CoreSuggestionsInternals/HVHeaderCollection-Protocol.h>
 
 @class NSString;
 
-@interface NSArray (SuggestionsExtensions) <SGHeaderCollection>
-- (id)sg_firstHeaderForKey:(id)arg1;
+@interface NSArray (SuggestionsExtensions) <HVHeaderCollection>
+- (id)hv_firstHeaderForKey:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

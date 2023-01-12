@@ -27,10 +27,12 @@
 @property(readonly, copy, nonatomic) id <NSCopying> triggerValue; // @synthesize triggerValue=_triggerValue;
 @property(readonly, nonatomic) NSSet *characteristics; // @synthesize characteristics=_characteristics;
 @property(readonly, nonatomic) id representativeTriggerValue;
+- (id)localizedListDescriptionForThresholdValue:(id)arg1;
 - (id)localizedDescriptionForThresholdValue:(id)arg1;
 - (_Bool)isValidThresholdValue:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 @property(readonly, copy, nonatomic) HMNumberRange *triggerValueRangeByApplyingThreshold;
+@property(readonly, copy, nonatomic) NSArray *visibleTriggerValues;
 @property(readonly, copy, nonatomic) NSArray *validTriggerValues;
 @property(readonly, copy, nonatomic) HMCharacteristic *mainCharacteristic;
 - (id)init;

@@ -14,9 +14,7 @@
 {
     NSString *_featureId;
     float _value;
-    struct {
-        unsigned int value:1;
-    } _has;
+    CDStruct_01ef6375 _has;
 }
 
 - (void).cxx_destruct;

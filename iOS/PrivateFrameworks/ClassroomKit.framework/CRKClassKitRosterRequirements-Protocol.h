@@ -30,8 +30,9 @@
 - (void)currentUserWithCompletion:(void (^)(id <CRKClassKitCurrentUser>, NSError *))arg1;
 - (NSSet *)objectIDsOfTrustedPersonsInClass:(id <CRKClassKitClass>)arg1;
 - (NSSet *)objectIDsOfPersonsInClass:(id <CRKClassKitClass>)arg1;
-- (_Bool)ownsError:(NSError *)arg1;
 - (void)removeObserver:(id)arg1;
-- (id)addObserver:(void (^)(void))arg1;
+- (id)addObserverForPersonIDs:(NSSet *)arg1 observerBlock:(void (^)(void))arg2;
+- (id)addGeneralObserver:(void (^)(void))arg1;
+- (_Bool)ownsError:(NSError *)arg1;
 @end
 

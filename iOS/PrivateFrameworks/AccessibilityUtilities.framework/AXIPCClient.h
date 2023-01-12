@@ -13,6 +13,7 @@
     struct __CFMachPort *_serverPort;
     NSLock *_serverPortLock;
     unsigned int _assignedServerMachPort;
+    struct os_unfair_lock_s _clientIdentifierLock;
     CDUnknownBlockType _portDeathHandler;
     float _timeout;
     NSString *_clientIdentifier;
@@ -40,7 +41,6 @@
 @property(nonatomic) _Bool shouldRegisterCallbackSourceOnMainRunloop; // @synthesize shouldRegisterCallbackSourceOnMainRunloop;
 @property(retain, nonatomic) AXAccessQueue *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
 @property(retain, nonatomic) NSMutableArray *postConnectionTasks; // @synthesize postConnectionTasks=_postConnectionTasks;
-@property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(nonatomic) float timeout; // @synthesize timeout=_timeout;
 @property(nonatomic) struct __CFMachPort *serverPort; // @synthesize serverPort=_serverPort;
 @property(copy, nonatomic) CDUnknownBlockType portDeathHandler; // @synthesize portDeathHandler=_portDeathHandler;
@@ -68,6 +68,7 @@
 - (void)_registerWithServer;
 @property(readonly, nonatomic) unsigned int clientCallbackPort; // @synthesize clientCallbackPort;
 @property(readonly, nonatomic) struct __CFRunLoopSource *clientCallbackSource; // @synthesize clientCallbackSource;
+@property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, nonatomic) unsigned int serviceMachPort;
 - (id)description;
 - (void)dealloc;

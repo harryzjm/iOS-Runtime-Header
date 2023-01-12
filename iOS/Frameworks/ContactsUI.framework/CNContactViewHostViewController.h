@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <NSCopying> currentRequestIdentifier; // @synthesize currentRequestIdentifier=_currentRequestIdentifier;
 @property(nonatomic) __weak id <CNContactViewControllerPPTDelegate> pptDelegate; // @synthesize pptDelegate=_pptDelegate;
 @property(nonatomic) __weak id <CNContactViewHostProtocol> delegate; // @synthesize delegate=_delegate;
+- (void)viewServiceDidTerminate;
 - (void)presentCancelConfirmationAlert;
 - (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)didExecuteClearRecentsDataAction;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)didChangeToShowTitle:(_Bool)arg1;
 - (void)didChangeToEditMode:(_Bool)arg1;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 - (id)protocolContext;
 - (void)invalidate;
 

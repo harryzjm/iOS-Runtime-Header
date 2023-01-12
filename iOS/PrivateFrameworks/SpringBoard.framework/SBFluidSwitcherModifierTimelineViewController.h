@@ -13,18 +13,22 @@
 @interface SBFluidSwitcherModifierTimelineViewController : UIViewController <_SBFluidSwitcherModifierTimelineEntryViewDelegate>
 {
     NSMutableArray *_entryViews;
+    _Bool _ignoreNoise;
     UIScrollView *_scrollView;
     UIButton *_clearButton;
+    UIButton *_noiseLevelButton;
     UINavigationController *_navigationController;
     _SBModifierTimelineDetailViewController *_detailViewController;
 }
 
 - (void).cxx_destruct;
+- (_Bool)_isNoisyEntry:(id)arg1;
+- (void)_toggleNoiseLevel:(id)arg1;
 - (void)_reset:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)didSelectEntryView:(id)arg1;
 - (void)addEntry:(id)arg1;
-- (void)viewDidLoad;
+- (void)loadView;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

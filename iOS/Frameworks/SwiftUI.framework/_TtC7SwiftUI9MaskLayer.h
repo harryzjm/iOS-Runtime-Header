@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *clipTransform;
 }
 
-+ (id)defaultValueForKey:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLayer:(id)arg1;

@@ -8,23 +8,35 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class HMIDESMutableFloatArray, NSArray, NSMutableArray, NSMutableSet, NSSet, NSString;
+@class HMIDESMutableFloatArray, HMIFaceRecognition, NSMutableArray, NSMutableSet, NSString;
 
 @interface HMIMutableCluster : HMFObject <HMFLogging>
 {
+    HMIDESMutableFloatArray *_faceCentroid;
+    HMIDESMutableFloatArray *_torsoCentroid;
+    HMIFaceRecognition *_faceRecognition;
+    NSMutableArray *_torsoprints;
     NSMutableArray *_faceprintUUIDs;
+    NSMutableArray *_torsoprintUUIDs;
     NSMutableSet *_linkedEntityUUIDs;
-    HMIDESMutableFloatArray *_centroid;
 }
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(readonly) HMIDESMutableFloatArray *centroid; // @synthesize centroid=_centroid;
+@property(retain, nonatomic) NSMutableSet *linkedEntityUUIDs; // @synthesize linkedEntityUUIDs=_linkedEntityUUIDs;
+@property(retain, nonatomic) NSMutableArray *torsoprintUUIDs; // @synthesize torsoprintUUIDs=_torsoprintUUIDs;
+@property(retain, nonatomic) NSMutableArray *faceprintUUIDs; // @synthesize faceprintUUIDs=_faceprintUUIDs;
+@property(retain) NSMutableArray *torsoprints; // @synthesize torsoprints=_torsoprints;
+@property(retain) HMIFaceRecognition *faceRecognition; // @synthesize faceRecognition=_faceRecognition;
+@property(readonly) HMIDESMutableFloatArray *torsoCentroid; // @synthesize torsoCentroid=_torsoCentroid;
+@property(readonly) HMIDESMutableFloatArray *faceCentroid; // @synthesize faceCentroid=_faceCentroid;
+- (void)flushTorsoprints;
+- (void)addTorsoprints:(id)arg1;
 - (void)addFaceprints:(id)arg1;
-@property(readonly) NSSet *linkedEntityUUIDs;
 - (void)addLinkedEntityUUIDs:(id)arg1;
-@property(readonly) NSArray *faceprintUUIDs;
-@property(readonly, nonatomic) unsigned long long count;
+@property(readonly) unsigned long long torsoCount;
+@property(readonly) unsigned long long faceCount;
+- (id)initWithTorsoprint:(id)arg1;
 - (id)initWithFaceprint:(id)arg1;
 
 // Remaining properties

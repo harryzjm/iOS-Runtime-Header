@@ -14,11 +14,15 @@
     id <CSPowerStatusProviding> _statusProvider;
     _Bool _connectedToPower;
     _Bool _isConnectedToQiPower;
+    _Bool _isConnectedToWirelessInternalCharger;
+    _Bool _isConnectedToWirelessInternalChargingAccessory;
     CDUnknownBlockType _block;
 }
 
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
+@property(nonatomic) _Bool isConnectedToWirelessInternalChargingAccessory; // @synthesize isConnectedToWirelessInternalChargingAccessory=_isConnectedToWirelessInternalChargingAccessory;
+@property(nonatomic) _Bool isConnectedToWirelessInternalCharger; // @synthesize isConnectedToWirelessInternalCharger=_isConnectedToWirelessInternalCharger;
 @property(nonatomic) _Bool isConnectedToQiPower; // @synthesize isConnectedToQiPower=_isConnectedToQiPower;
 @property(nonatomic, getter=isConnectedToPower) _Bool connectedToPower; // @synthesize connectedToPower=_connectedToPower;
 - (void)setIsConnectedToPower:(_Bool)arg1;

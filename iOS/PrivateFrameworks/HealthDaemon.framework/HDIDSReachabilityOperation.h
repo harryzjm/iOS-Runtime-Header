@@ -15,30 +15,27 @@
 {
     _Bool _finished;
     _Bool _executing;
+    struct os_unfair_lock_s _lock;
     IDSBatchIDQueryController *_queryController;
     NSArray *_destinationIdentifiers;
     NSString *_serviceIdentifier;
-    CDUnknownBlockType _completionHandler;
+    CDUnknownBlockType _updateHandler;
     NSObject<OS_dispatch_source> *_timer;
+    unsigned long long _queryTimeout;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
-@property(copy, nonatomic) NSArray *destinationIdentifiers; // @synthesize destinationIdentifiers=_destinationIdentifiers;
 @property(retain, nonatomic) IDSBatchIDQueryController *queryController; // @synthesize queryController=_queryController;
+- (void)unitTest_updateOperationTimeout:(unsigned long long)arg1;
 - (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (_Bool)isReady;
 - (_Bool)isExecuting;
 - (_Bool)isFinished;
 - (_Bool)isAsynchronous;
-- (void)_queryDidTimeout;
-- (void)_startTimer;
-- (void)finish;
 - (void)cancel;
+- (void)updateDestinations:(id)arg1;
 - (void)start;
-- (id)initWithIdentifers:(id)arg1 serviceIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithIdentifers:(id)arg1 serviceIdentifier:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

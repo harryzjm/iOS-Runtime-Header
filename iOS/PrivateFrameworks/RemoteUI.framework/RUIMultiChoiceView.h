@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class NSMutableArray, UIActivityIndicatorView, UIColor, UIStackView, UIVisualEffectView;
+#import <RemoteUI/RUIHeaderDelegate-Protocol.h>
+
+@class NSMutableArray, RUIHTMLHeaderElement, RUIHTMLHeaderView, UIActivityIndicatorView, UIColor, UIStackView, UIVisualEffectView;
 @protocol RUIMultiChoiceActionHandler;
 
-@interface RUIMultiChoiceView : UIView
+@interface RUIMultiChoiceView : UIView <RUIHeaderDelegate>
 {
     UIStackView *_stackView;
     NSMutableArray *_choices;
@@ -17,21 +19,36 @@
     NSMutableArray *_buttonsWidthConstraint;
     UIActivityIndicatorView *_activityIndicatorView;
     UIVisualEffectView *_trayBackdrop;
+    double _headerHeight;
+    _Bool _removeBlurEffect;
+    _Bool _useNonObKitStyleButtons;
     id <RUIMultiChoiceActionHandler> _target;
     UIColor *_backgroundColor;
+    RUIHTMLHeaderElement *_header;
+    RUIHTMLHeaderView *_HTMLHeaderView;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool useNonObKitStyleButtons; // @synthesize useNonObKitStyleButtons=_useNonObKitStyleButtons;
+@property(nonatomic) _Bool removeBlurEffect; // @synthesize removeBlurEffect=_removeBlurEffect;
+@property(retain, nonatomic) RUIHTMLHeaderView *HTMLHeaderView; // @synthesize HTMLHeaderView=_HTMLHeaderView;
+@property(retain, nonatomic) RUIHTMLHeaderElement *header; // @synthesize header=_header;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) __weak id <RUIMultiChoiceActionHandler> target; // @synthesize target=_target;
+- (id)getAllChoices;
+- (void)headerView:(id)arg1 activatedLinkWithURL:(id)arg2;
 - (void)didTapChoice:(id)arg1;
 - (void)setChoiceHidden:(_Bool)arg1 atIndex:(unsigned long long)arg2;
 - (void)stopActivityIndicatorForChoice:(id)arg1;
 - (void)startActivityIndicatorForChoice:(id)arg1;
 - (void)addChoice:(id)arg1;
 - (id)viewForElementIdentifier:(id)arg1;
+- (void)_configureHTMLHeaderView;
 - (void)layoutSubviews;
+- (void)setStackViewTopAndBottomMarginSpacing:(double)arg1;
+- (void)setStackViewElementSpacing:(double)arg1;
 - (void)setupTrayBackdrop;
+- (id)_createActivityIndicatorView;
 - (void)setupStackView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

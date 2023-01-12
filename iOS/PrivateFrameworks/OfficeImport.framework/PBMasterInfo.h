@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned int mMainPbRef;
     unsigned int mTitlePbRef;
     NSDictionary *mLayoutMap;
-    ChVector_7fbb5a88 *mSrcTextStyling;
+    void *mSrcTextStyling;
     unsigned int mXmlMainMasterId;
     NSMutableDictionary *mXmlLayoutMap;
     _Bool mUseXmlBlobs;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)uniqueXmlSlideLayout;
 - (id)slideLayoutForXmlLayoutId:(unsigned short)arg1;
 - (void)setSlideLayout:(id)arg1 forXmlLayoutId:(unsigned short)arg2;
-- (ChVector_7fbb5a88 *)sourceTextStyling;
+- (void *)sourceTextStyling;
 - (id)slideLayoutForSlideHolder:(id)arg1;
 - (void)cacheSlideLayouts;
 - (id)allTargetLayoutTypes;

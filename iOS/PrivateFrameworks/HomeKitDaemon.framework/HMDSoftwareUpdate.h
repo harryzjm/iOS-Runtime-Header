@@ -19,8 +19,10 @@
 {
     id <HMFLocking> _lock;
     NSObject<OS_dispatch_queue> *_queue;
+    _Bool _allowExtraUpdate;
     long long _state;
     HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
+    unsigned long long _updateType;
     NSUUID *_identifier;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
@@ -35,6 +37,7 @@
 + (id)modelNamespace;
 - (void).cxx_destruct;
 @property __weak HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property _Bool allowExtraUpdate; // @synthesize allowExtraUpdate=_allowExtraUpdate;
 @property(retain, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property(readonly) double installDuration; // @synthesize installDuration=_installDuration;
 @property(readonly) unsigned long long downloadSize; // @synthesize downloadSize=_downloadSize;
@@ -48,8 +51,11 @@
 - (id)logIdentifier;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)transactionWithObjectChangeType:(unsigned long long)arg1 forAccessoryUUID:(id)arg2;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
 @property(readonly, copy) HMDSoftwareUpdateModel *model;
+- (void)setUpdateType:(unsigned long long)arg1;
+@property(readonly) unsigned long long updateType; // @synthesize updateType=_updateType;
 - (void)_handleDocumentationStateNotification:(id)arg1;
 - (void)_handleDocumentationRequest:(id)arg1;
 - (void)_handleUpdateDocumentationMetadata:(id)arg1;
@@ -67,7 +73,7 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (void)dealloc;
-- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5;
+- (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2 state:(long long)arg3 installDuration:(double)arg4 documentationMetadata:(id)arg5 releaseDate:(id)arg6;
 - (id)initWithModel:(id)arg1;
 
 // Remaining properties

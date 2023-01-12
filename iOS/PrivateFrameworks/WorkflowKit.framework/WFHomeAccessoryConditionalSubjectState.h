@@ -39,6 +39,7 @@
 @property(readonly, nonatomic) HMCharacteristic *characteristic;
 @property(readonly, nonatomic) HMService *service;
 @property(readonly, nonatomic) HMHome *home;
+- (id)unitType;
 - (id)serializedRepresentation;
 - (id)initWithService:(id)arg1 characteristic:(id)arg2 homeIdentifier:(id)arg3 negatesValue:(_Bool)arg4;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;

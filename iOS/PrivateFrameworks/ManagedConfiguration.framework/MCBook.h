@@ -44,6 +44,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithManifestDictionary:(id)arg1;
 - (id)init;
+- (id)initWithMDMBook:(id)arg1;
 
 @end
 

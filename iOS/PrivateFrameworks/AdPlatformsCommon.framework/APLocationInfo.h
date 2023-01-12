@@ -30,6 +30,7 @@
 - (_Bool)isEmpty;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)jsonRepresentationWithOptions:(unsigned long long)arg1;
 
 @end
 

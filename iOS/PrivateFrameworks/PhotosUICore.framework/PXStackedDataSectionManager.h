@@ -6,18 +6,18 @@
 
 #import <PhotosUICore/PXDataSectionManagerEnabling-Protocol.h>
 
-@class NSString;
+@class NSString, PXDataSectionEnablementForwarder;
 
 @interface PXStackedDataSectionManager <PXDataSectionManagerEnabling>
 {
     _Bool _enabled;
     _Bool _alwaysContainsObjects;
-    id _additionalStorage;
+    PXDataSectionEnablementForwarder *_enablementForwarder;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) id additionalStorage; // @synthesize additionalStorage=_additionalStorage;
 @property(nonatomic) _Bool alwaysContainsObjects; // @synthesize alwaysContainsObjects=_alwaysContainsObjects;
+@property(retain, nonatomic) PXDataSectionEnablementForwarder *enablementForwarder; // @synthesize enablementForwarder=_enablementForwarder;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (id)auxiliaryObjectForKey:(id)arg1 dataSectionObject:(id)arg2 hintIndex:(long long)arg3;
 - (id)changeDetailsForChangedChildDataSectionManager:(id)arg1 childChangeDetails:(id)arg2;

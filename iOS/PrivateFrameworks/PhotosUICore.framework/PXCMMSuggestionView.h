@@ -36,12 +36,12 @@
 - (id)test_title;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_updateFonts;
-- (void)_tapGesture:(id)arg1;
 - (void)_updateOpaqueAncestorBackgroundColor;
 - (_Bool)_updateCombinedFaceTileImage;
 - (_Bool)_updateSubtitle;
 - (void)_updateHeaderView;
 - (struct CGSize)_performLayoutInWidth:(double)arg1 updateSubviewFrames:(_Bool)arg2;
+- (id)focusEffect;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

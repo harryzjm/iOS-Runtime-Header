@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double identityValue;
 @property(nonatomic) double defaultValue;
 @property(nonatomic) double value;
+- (id)focusEffect;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)_setupContainerButton;

@@ -14,13 +14,16 @@
 {
     NSString *_deviceClass;
     NSString *_osBuild;
+    int _targetedPopulation;
     NSMutableArray *_userKeyboardEnabledInputModeIdentifiers;
+    NSString *_userSettingsBcp47DeviceLocale;
     NSString *_userSettingsLanguageCode;
     NSString *_userSettingsRegionCode;
     NSString *_versionTag;
     _Bool _isBetaUser;
     _Bool _isInternalBuild;
     struct {
+        unsigned int targetedPopulation:1;
         unsigned int isBetaUser:1;
         unsigned int isInternalBuild:1;
     } _has;
@@ -28,6 +31,7 @@
 
 + (Class)userKeyboardEnabledInputModeIdentifiersType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *userSettingsBcp47DeviceLocale; // @synthesize userSettingsBcp47DeviceLocale=_userSettingsBcp47DeviceLocale;
 @property(retain, nonatomic) NSMutableArray *userKeyboardEnabledInputModeIdentifiers; // @synthesize userKeyboardEnabledInputModeIdentifiers=_userKeyboardEnabledInputModeIdentifiers;
 @property(retain, nonatomic) NSString *userSettingsRegionCode; // @synthesize userSettingsRegionCode=_userSettingsRegionCode;
 @property(retain, nonatomic) NSString *userSettingsLanguageCode; // @synthesize userSettingsLanguageCode=_userSettingsLanguageCode;
@@ -45,6 +49,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (int)StringAsTargetedPopulation:(id)arg1;
+- (id)targetedPopulationAsString:(int)arg1;
+@property(nonatomic) _Bool hasTargetedPopulation;
+@property(nonatomic) int targetedPopulation; // @synthesize targetedPopulation=_targetedPopulation;
+@property(readonly, nonatomic) _Bool hasUserSettingsBcp47DeviceLocale;
 - (id)userKeyboardEnabledInputModeIdentifiersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)userKeyboardEnabledInputModeIdentifiersCount;
 - (void)addUserKeyboardEnabledInputModeIdentifiers:(id)arg1;

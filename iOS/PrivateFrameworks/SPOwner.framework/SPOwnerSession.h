@@ -6,19 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <SPOwner/SPMaintenanceConnectionProtocol-Protocol.h>
 #import <SPOwner/SPOwnerSessionPrivateProtocol-Protocol.h>
+#import <SPOwner/SPPersistentConnectionProtocol-Protocol.h>
+#import <SPOwner/SPSeparationMonitoringProtocol-Protocol.h>
+#import <SPOwner/SPTagSeparationProtocol-Protocol.h>
 #import <SPOwner/SPTrackingAvoidanceServiceProtocol-Protocol.h>
 
-@class FMXPCServiceDescription, FMXPCSession, NSDate, NSDictionary, NSMutableDictionary, NSOperationQueue, NSSet, NSString;
+@class FMXPCServiceDescription, FMXPCSession, NSDate, NSDictionary, NSMutableDictionary, NSOperationQueue, NSSet, NSString, SPOwnerSessionLocationFetch, SPOwnerSessionState;
 @protocol OS_dispatch_queue, OS_dispatch_source, SPOwnerSessionXPCProtocol;
 
-@interface SPOwnerSession : NSObject <SPTrackingAvoidanceServiceProtocol, SPOwnerSessionPrivateProtocol>
+@interface SPOwnerSession : NSObject <SPSeparationMonitoringProtocol, SPMaintenanceConnectionProtocol, SPPersistentConnectionProtocol, SPTrackingAvoidanceServiceProtocol, SPTagSeparationProtocol, SPOwnerSessionPrivateProtocol>
 {
     CDUnknownBlockType beaconAddedBlock;
     CDUnknownBlockType beaconRemovedBlock;
     CDUnknownBlockType beaconsChangedBlock;
     CDUnknownBlockType latestLocationsUpdatedBlock;
+    CDUnknownBlockType ownerSessionStateUpdatedBlock;
     NSSet *_locationSources;
+    CDUnknownBlockType maintainedBeaconsChangedBlock;
+    CDUnknownBlockType maintainedUnknownBeaconsChangedBlock;
     FMXPCServiceDescription *_serviceDescription;
     FMXPCSession *_session;
     id <SPOwnerSessionXPCProtocol> _proxy;
@@ -27,27 +34,27 @@
     NSSet *_clientObservedBeacons;
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_notificationQueue;
-    id _beaconsChangedNotificationToken;
-    id _tagSeparationBeaconsChangedNotificationToken;
-    id _persistentConnectionBeaconsChangedNotificationToken;
-    id _beaconEstimatedLocationChangedNotificationToken;
+    CDUnknownBlockType _tagSeparationBeaconsChangedBlock;
     NSDictionary *_locationCache;
-    NSObject<OS_dispatch_source> *_locationFetchDispatchTimer;
     NSObject<OS_dispatch_source> *_connectionExpiryDispatchTimer;
     NSDate *_fetchLimit;
     NSMutableDictionary *_batteryStatusCache;
+    NSObject<OS_dispatch_source> *_registerIntentDispatchTimer;
+    SPOwnerSessionState *__ownerSessionState;
+    NSMutableDictionary *_darwinHandlers;
+    SPOwnerSessionLocationFetch *_locationFetch;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SPOwnerSessionLocationFetch *locationFetch; // @synthesize locationFetch=_locationFetch;
+@property(retain, nonatomic) NSMutableDictionary *darwinHandlers; // @synthesize darwinHandlers=_darwinHandlers;
+@property(retain, nonatomic) SPOwnerSessionState *_ownerSessionState; // @synthesize _ownerSessionState=__ownerSessionState;
+@property(retain, nonatomic) NSObject<OS_dispatch_source> *registerIntentDispatchTimer; // @synthesize registerIntentDispatchTimer=_registerIntentDispatchTimer;
 @property(retain, nonatomic) NSMutableDictionary *batteryStatusCache; // @synthesize batteryStatusCache=_batteryStatusCache;
 @property(copy, nonatomic) NSDate *fetchLimit; // @synthesize fetchLimit=_fetchLimit;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *connectionExpiryDispatchTimer; // @synthesize connectionExpiryDispatchTimer=_connectionExpiryDispatchTimer;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *locationFetchDispatchTimer; // @synthesize locationFetchDispatchTimer=_locationFetchDispatchTimer;
 @property(retain, nonatomic) NSDictionary *locationCache; // @synthesize locationCache=_locationCache;
-@property(nonatomic) __weak id beaconEstimatedLocationChangedNotificationToken; // @synthesize beaconEstimatedLocationChangedNotificationToken=_beaconEstimatedLocationChangedNotificationToken;
-@property(nonatomic) __weak id persistentConnectionBeaconsChangedNotificationToken; // @synthesize persistentConnectionBeaconsChangedNotificationToken=_persistentConnectionBeaconsChangedNotificationToken;
-@property(nonatomic) __weak id tagSeparationBeaconsChangedNotificationToken; // @synthesize tagSeparationBeaconsChangedNotificationToken=_tagSeparationBeaconsChangedNotificationToken;
-@property(nonatomic) __weak id beaconsChangedNotificationToken; // @synthesize beaconsChangedNotificationToken=_beaconsChangedNotificationToken;
+@property(copy, nonatomic) CDUnknownBlockType tagSeparationBeaconsChangedBlock; // @synthesize tagSeparationBeaconsChangedBlock=_tagSeparationBeaconsChangedBlock;
 @property(retain, nonatomic) NSOperationQueue *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSSet *clientObservedBeacons; // @synthesize clientObservedBeacons=_clientObservedBeacons;
@@ -56,26 +63,60 @@
 @property(retain, nonatomic) id <SPOwnerSessionXPCProtocol> proxy; // @synthesize proxy=_proxy;
 @property(retain, nonatomic) FMXPCSession *session; // @synthesize session=_session;
 @property(retain, nonatomic) FMXPCServiceDescription *serviceDescription; // @synthesize serviceDescription=_serviceDescription;
+@property(copy, nonatomic) CDUnknownBlockType maintainedUnknownBeaconsChangedBlock; // @synthesize maintainedUnknownBeaconsChangedBlock;
+@property(copy, nonatomic) CDUnknownBlockType maintainedBeaconsChangedBlock; // @synthesize maintainedBeaconsChangedBlock;
 @property(copy, nonatomic) NSSet *locationSources; // @synthesize locationSources=_locationSources;
+@property(copy, nonatomic) CDUnknownBlockType ownerSessionStateUpdatedBlock; // @synthesize ownerSessionStateUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType latestLocationsUpdatedBlock; // @synthesize latestLocationsUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType beaconsChangedBlock; // @synthesize beaconsChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType beaconRemovedBlock; // @synthesize beaconRemovedBlock;
 @property(copy, nonatomic) CDUnknownBlockType beaconAddedBlock; // @synthesize beaconAddedBlock;
+- (void)_unregisterDarwinNotificationName:(id)arg1;
+- (void)unregisterDarwinNotificationName:(id)arg1;
+- (void)registerDarwinNotificationName:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)requestLiveLocationForFriend:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestLiveLocationForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchUnauthorizedEncryptedPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shareBeacon:(id)arg1 handles:(id)arg2 expiration:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)isUTAppAlertDisabled:(CDUnknownBlockType)arg1;
+- (void)disableUTAppAlert:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateOwnerSessionState;
+@property(readonly, copy, nonatomic) SPOwnerSessionState *ownerSessionState;
+- (void)_cacheBatteryStatus:(unsigned char)arg1 beaconUUID:(id)arg2;
+- (void)_updateBatteryStatus:(unsigned char)arg1 beaconUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateBatteryStatus:(unsigned char)arg1 beaconUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)unknownBeaconsForUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)executeUTPlaySoundCommand:(id)arg1;
+- (void)updateBeaconObservations:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendUnregisterIntentWithCompletion:(CDUnknownBlockType)arg1;
+- (void)sendRegisterIntentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)waitForBeaconStoreAvailableWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beaconStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unacceptedBeaconsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)allBeaconsWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSSet *allBeacons;
-- (void)updateAllBeaconLocations;
 - (void)updateAllBeacons;
 - (void)stopRefreshing;
 - (void)startRefreshingBeacons:(id)arg1;
+- (void)registerIntentTimerFired;
+- (void)invalidateRegisterIntentDispatchTimer;
+- (void)setRegisterIntentDispatchTimerWithInterval:(double)arg1;
 - (void)startRefreshing;
 - (void)executeCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addBeaconChangedListener:(id)arg1 beaconUUID:(id)arg2 taskName:(id)arg3 commandIdentifier:(id)arg4 commandIssueDate:(id)arg5;
 - (void)finishBeaconFuture:(id)arg1 beaconUUID:(id)arg2;
+- (void)finishBeaconGroupFuture:(id)arg1 command:(id)arg2 commandIssueDate:(id)arg3;
 - (id)executeCommand:(id)arg1;
+- (oneway void)fakeClassicPairingWithMACAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)forceKeySyncForBeaconUUID:(id)arg1 lastObservationDate:(id)arg2 lastObservationIndex:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)simulateAccessoryPairing:(id)arg1 name:(id)arg2 isAirPods:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setFindMyNetworkStatusForMACAddress:(id)arg1 status:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchFindMyNetworkStatusForMACAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beaconingIdentifierForMACAddress:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beaconGroupsForUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beaconGroupForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beaconForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)forceUpdateKeyAlignmentRecordForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)forceUpdateKeyMapsForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)forceDistributeKeysWithCompletion:(CDUnknownBlockType)arg1;
@@ -84,13 +125,61 @@
 - (void)updateConnectionExpiryDispatchTimerWithBeacons:(id)arg1;
 - (void)connectionExpiryTimerFired;
 - (void)setConnectionExpiryDispatchTimerWithInterval:(double)arg1;
-- (void)locationFetchTimerFired;
-- (void)setLocationFetchDispatchTimerWithInterval:(double)arg1;
+- (void)setInvalidationBlock:(CDUnknownBlockType)arg1;
+- (void)setLocationUpdateBlock:(CDUnknownBlockType)arg1;
+- (void)unsubscribeLocationUpdatesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)subscribeAndFetchLocationForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)locationForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)locationsForBeacons:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteInterface;
 - (void)_invalidate;
 - (void)dealloc;
 - (id)init;
+- (void)forceLOIBasedSafeLocationRefresh:(CDUnknownBlockType)arg1;
+- (void)stopRefreshingSeparationMonitoringState;
+- (void)startRefreshingSeparationMonitoringState:(CDUnknownBlockType)arg1;
+- (void)fetchSeparationMonitoringStatus:(CDUnknownBlockType)arg1;
+- (void)activeCompanionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)publishSeparationEventForBeacons:(id)arg1 eventType:(long long)arg2 region:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)unassignSafeLocation:(id)arg1 beaconUUIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)assignSafeLocation:(id)arg1 beaconUUIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)unassignSafeLocation:(id)arg1 beaconUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)assignSafeLocation:(id)arg1 to:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateSafeLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeSafeLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addSafeLocation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stopRefreshingSafeLocations;
+- (void)startRefreshingSafeLocationWithBlock:(CDUnknownBlockType)arg1;
+- (void)safeLocationsForSeparationMonitoring:(CDUnknownBlockType)arg1;
+- (void)disableSeparationMonitoringForBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)enableSeparationMonitoringForBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)disableSeparationMonitoringForBeacons:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)enableSeparationMonitoringForBeacons:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stopRefreshingBeaconsForSeparationMonitoringWithBlock;
+- (void)startRefreshingBeaconsForSeparationMonitoringWithBlock:(CDUnknownBlockType)arg1;
+- (void)beaconsToMonitorForSeparation:(CDUnknownBlockType)arg1;
+- (void)startUpdatingMaintenanceConnection;
+- (CDUnknownBlockType)maintenanceConnectionUpdateBlock;
+- (void)maintainedUnknownBeaconsChangedWithBlock:(CDUnknownBlockType)arg1;
+- (void)maintainedBeaconsChangedWithBlock:(CDUnknownBlockType)arg1;
+- (void)stopRefreshingPersistentConnection;
+- (void)beaconsToMaintainPersistentConnection:(CDUnknownBlockType)arg1;
+- (void)startRefreshingPersistentConnectionWithBlock:(CDUnknownBlockType)arg1;
+- (void)acceptUTForBeaconUUID:(id)arg1;
+- (void)ignoreBeaconByAdvertisement:(id)arg1 until:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)ignoreBeaconByUUID:(id)arg1 untilDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)ignoreBeaconByUUID:(id)arg1 until:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)ignoreBeaconByUUID:(id)arg1 until:(unsigned long long)arg2;
+- (void)playUnauthorizedSoundOnBeaconByUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unauthorizedTrackingTypeWithCompletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)ignoringUnauthorizedTrackingWithCompletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)didWithdrawUnauthorizedTrackingWithCompletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)didUpdateUnauthorizedTrackingWithCompletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)didDetectUnauthorizedTrackingWithCompletion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)tagSeparationStateChanged:(id)arg1 beaconUUID:(id)arg2 location:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)tagSeparationStateChanged:(id)arg1 beaconUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)stopRefreshingTagSeparation;
+- (void)startRefreshingTagSeparationWithBlock:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

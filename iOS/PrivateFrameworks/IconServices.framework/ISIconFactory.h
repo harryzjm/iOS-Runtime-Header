@@ -9,14 +9,21 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_initGenericApp;
-- (id)_initWithIcon:(id)arg1 decorations:(id)arg2;
++ (id)_iconForURL:(id)arg1 options:(unsigned long long)arg2;
++ (id)_iconForURL:(id)arg1;
+- (id)initWithMIMEType:(id)arg1;
+- (id)initWithModelCode:(id)arg1;
+- (id)initWithFileExtension:(id)arg1;
 - (id)initWithImages:(id)arg1;
-- (id)_initTransparent;
 - (id)initWithResourceProxy:(id)arg1;
 - (id)initWithType:(id)arg1;
+- (id)initWithBundleURL:(id)arg1 fileExtension:(id)arg2;
+- (id)initWithBundleURL:(id)arg1 type:(id)arg2;
+- (id)initWithApplicationExtensionBundleIdentifier:(id)arg1;
+- (id)initWithApplicationBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)_init;
 
 @end

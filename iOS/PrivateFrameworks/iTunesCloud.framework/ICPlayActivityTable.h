@@ -8,6 +8,7 @@
 
 @class ICSQLiteConnection, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICPlayActivityTable : NSObject
 {
     ICSQLiteConnection *_databaseConnection;
@@ -18,12 +19,12 @@
 + (id)_propertiesDatabaseTableName;
 + (id)_eventsDatabaseTableName;
 + (id)_defaultDatabasePath;
++ (void)_migrateDatabaseFiles;
 - (void).cxx_destruct;
 - (id)_valueForDatabasePropertyKey:(id)arg1;
 - (_Bool)_setValue:(id)arg1 forDatabasePropertyKey:(id)arg2;
 - (id)_revisionsIndexSetUsingPersisentIDGenerationBlock:(CDUnknownBlockType)arg1 count:(unsigned long long)arg2;
 - (_Bool)_getPlayActivityEvents:(id *)arg1 relevantRevisionsIndexSet:(id *)arg2 withStartRevision:(unsigned long long)arg3 endRevision:(unsigned long long)arg4 storeAccountID:(unsigned long long)arg5 shouldFilterStoreAccountID:(_Bool)arg6 additionalRevisionsIndexSet:(id)arg7 ignoredRevisionsIndexSet:(id)arg8 error:(id *)arg9;
-- (void)_migrateDatabaseFiles;
 - (id)revisionsIndexSetForPlayActivityEventPersistentIDs:(id)arg1;
 - (id)revisionsIndexSetForPlayActivityEvents:(id)arg1;
 - (_Bool)removePlayActivityEventsUpToRevision:(unsigned long long)arg1 returningError:(id *)arg2;

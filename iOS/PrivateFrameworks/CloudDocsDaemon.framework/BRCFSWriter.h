@@ -40,10 +40,13 @@
 - (_Bool)applyLocalEditIfNecessaryToURL:(id)arg1 forItem:(id)arg2 serverItem:(id)arg3 forDelete:(_Bool)arg4 error:(id *)arg5;
 - (void)_stageCreationOfSymlink:(id)arg1;
 - (void)_stageCreationOfDirectory:(id)arg1;
+- (unsigned long long)computeSourceBounceNumberIfNecessaryWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3;
+- (_Bool)_shouldBounceSourceItemWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 urlMatch:(CDStruct_177058d5 *)arg5;
+- (int)_computeURLMatchWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5 urlMatch:(CDStruct_177058d5 *)arg6;
 - (id)bouncePath:(id)arg1 forItemConflictingWithAnFSRoot:(id)arg2;
 - (_Bool)bouncePathMatch:(const CDStruct_177058d5 *)arg1 toApplyServerItem:(id)arg2 clientZone:(id)arg3;
 - (_Bool)bouncePathMatchesForLookup:(id)arg1 toApplyServerItem:(id)arg2 clientZone:(id)arg3;
-- (id)_generateGentlePhysicalBounceNameForPathMatch:(const CDStruct_177058d5 *)arg1 dirfd:(int)arg2 lastBounceNo:(unsigned long long *)arg3;
+- (id)_generateGentlePhysicalBounceNameForPathMatch:(const CDStruct_177058d5 *)arg1 dirfd:(int)arg2 existingSourceLogicalName:(id)arg3 lastBounceNo:(unsigned long long *)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

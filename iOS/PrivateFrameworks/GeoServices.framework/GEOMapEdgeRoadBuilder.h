@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class GEOVectorTile;
+
 __attribute__((visibility("hidden")))
 @interface GEOMapEdgeRoadBuilder
 {
-    struct deque<GEORoadEdge, std::__1::allocator<GEORoadEdge>> _edges;
+    struct deque<GEORoadEdge *, std::allocator<GEORoadEdge *>> _edges;
+    GEOVectorTile *_retainedTile;
 }
 
 - (id).cxx_construct;
@@ -17,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_firstTile;
 - (Matrix_8746f91e)_lastPoint;
 - (Matrix_8746f91e)_firstPoint;
-- (unsigned long long)_connectionTypeForEdge:(CDStruct_91f75a7f *)arg1 points:(CDStruct_6e3f967a *)arg2 connectingTilePoint:(Matrix_8746f91e)arg3;
+- (unsigned long long)_connectionTypeForEdge:(id)arg1 points:(struct GeoCodecsVectorTilePoint *)arg2 connectingTilePoint:(Matrix_8746f91e)arg3;
 - (_Bool)_shouldFindEdgeBehind;
 - (_Bool)_shouldFindEdgeAhead;
 - (_Bool)_findEdgeBehindInTile:(id)arg1;
@@ -25,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_buildCompleteEdge;
 - (unsigned long long)_maxTileCount;
 - (void)dealloc;
-- (id)initWithMap:(id)arg1 roadFeature:(CDStruct_4da79865 *)arg2 shouldFlip:(_Bool)arg3;
+- (id)initWithMap:(id)arg1 roadFeature:(id)arg2 shouldFlip:(_Bool)arg3;
 
 @end
 

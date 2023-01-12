@@ -9,9 +9,8 @@
 @protocol TSTabBarSplitViewAutoObserver
 
 @optional
-- (void)tabBarSplitViewDidUnobsureView;
-- (void)tabBarSplitViewWillObsureView;
 - (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
+- (void)tabBarSplitViewDidChangeCollapseStateToCollapseState:(_Bool)arg1;
 - (void)tabBarSplitViewWillChangeDisplayModeToDisplayMode:(long long)arg1;
 - (void)tabBarSplitViewDidChangeTraitCollectionToTraitCollection:(UITraitCollection *)arg1;
 @end

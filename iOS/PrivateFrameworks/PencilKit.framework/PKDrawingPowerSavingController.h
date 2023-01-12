@@ -8,7 +8,7 @@
 
 @interface PKDrawingPowerSavingController : NSObject
 {
-    vector_b67dfe3a _movementDistanceHistoryBuffer;
+    vector_0e047154 _movementDistanceHistoryBuffer;
     struct CGPoint _previousDrawingLocation;
     double _currentMovement;
     double _accumulatedMovement;
@@ -23,16 +23,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool isDrawingWithMarkerOrEraser; // @synthesize isDrawingWithMarkerOrEraser=_isDrawingWithMarkerOrEraser;
-@property(nonatomic) _Bool isDrawingWithPencil; // @synthesize isDrawingWithPencil=_isDrawingWithPencil;
-- (double)averageMovementDistance;
-- (void)accumulateMovementForCurrentFrame;
-- (void)registerFrameStartTimestamp:(double)arg1;
-- (void)invalidate;
-- (_Bool)isValid;
-- (_Bool)shouldSkipFrameWithFrameStartTimestamp:(double)arg1 framesAfterStart:(unsigned long long)arg2;
-- (void)drawingMovedToLocation:(struct CGPoint)arg1;
-- (void)drawingBeganAtLocation:(struct CGPoint)arg1;
 - (id)init;
 
 @end

@@ -6,15 +6,18 @@
 
 #import <SiriVOX/NSObject-Protocol.h>
 
-@class NSDictionary, SVXButtonEvent, SVXSystemEvent;
+@class NSDictionary, NSString, SVXButtonEvent, SVXDeactivationOptions, SVXSystemEvent;
 @protocol SVXClientActivationServiceDelegate;
 
 @protocol SVXClientActivationServicing <NSObject>
 @property(nonatomic) __weak id <SVXClientActivationServiceDelegate> delegate;
+- (void)deactivateWithButtonEvent:(SVXButtonEvent *)arg1 userInfo:(NSDictionary *)arg2 options:(SVXDeactivationOptions *)arg3 completion:(void (^)(void))arg4;
+- (void)deactivateWithUserInfo:(NSDictionary *)arg1 options:(SVXDeactivationOptions *)arg2 completion:(void (^)(void))arg3;
 - (void)deactivateWithUserInfo:(NSDictionary *)arg1 completion:(void (^)(void))arg2;
 - (void)activateWithSystemEvent:(SVXSystemEvent *)arg1 userInfo:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)prewarmForSystemEvent:(SVXSystemEvent *)arg1 completion:(void (^)(void))arg2;
 - (void)activateWithButtonEvent:(SVXButtonEvent *)arg1 userInfo:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)activateWithText:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)activateWithUserInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)enqueueButtonEvent:(SVXButtonEvent *)arg1;
 - (void)handleButtonEvent:(SVXButtonEvent *)arg1;

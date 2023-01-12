@@ -19,7 +19,6 @@
 @property(nonatomic) _Bool EOFill; // @synthesize EOFill=_eoFill;
 @property(nonatomic, getter=isAntialiased) _Bool antialiased; // @synthesize antialiased=_antialiased;
 - (void)setStroke:(id)arg1;
-- (void)setStrokedGlyph:(unsigned short)arg1 font:(struct CGFont *)arg2 transform:(struct CGAffineTransform)arg3 lineWidth:(double)arg4 lineCap:(int)arg5 lineJoin:(int)arg6 miterLimit:(double)arg7 dashPhase:(double)arg8 dashPattern:(const double *)arg9 dashCount:(long long)arg10;
 - (void)setGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(unsigned long long)arg3 font:(struct CGFont *)arg4 renderingStyle:(unsigned int)arg5;
 - (void)setStrokedPath:(struct CGPath *)arg1 transform:(struct CGAffineTransform)arg2 lineWidth:(double)arg3 lineCap:(int)arg4 lineJoin:(int)arg5 miterLimit:(double)arg6;
 - (void)setStrokedPath:(struct CGPath *)arg1 transform:(struct CGAffineTransform)arg2 lineWidth:(double)arg3 lineCap:(int)arg4 lineJoin:(int)arg5 miterLimit:(double)arg6 dashPhase:(double)arg7 dashPattern:(const double *)arg8 dashCount:(long long)arg9;
@@ -37,8 +36,7 @@
 - (void)setRect:(struct CGRect)arg1;
 - (void)setEmpty;
 - (void)setInfinite;
-@property(readonly, nonatomic) struct RBShapeData *shapeData;
-- (void)dealloc;
+@property(readonly, nonatomic) struct CGRect boundingRect;
 - (id)init;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface WKDOMNode : NSObject
 {
-    struct RefPtr<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node>> _impl;
+    struct RefPtr<WebCore::Node, WTF::RawPtrTraits<WebCore::Node>, WTF::DefaultRefDerefTraits<WebCore::Node>> _impl;
 }
 
 - (id).cxx_construct;
@@ -26,7 +26,7 @@
 - (void)appendChild:(id)arg1;
 - (void)insertNode:(id)arg1 before:(id)arg2;
 - (void)dealloc;
-- (id)_initWithImpl:(struct Node *)arg1;
+- (id)_initWithImpl:(void *)arg1;
 - (struct OpaqueWKBundleNodeHandle *)_copyBundleNodeHandleRef;
 
 @end

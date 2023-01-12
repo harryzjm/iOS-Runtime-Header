@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActionKit/WFRemoteUserInterface-Protocol.h>
+#import <ActionKit/WFActionRemoteUserInterface-Protocol.h>
 
-@class WFContentCollection;
+@class NSData, NSString;
 
-@protocol WFShareActionUserInterface <WFRemoteUserInterface>
-- (void)showWithItems:(WFContentCollection *)arg1 usesExtensionItems:(_Bool)arg2 isContentManaged:(_Bool)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
+@protocol WFShareActionUserInterface <WFActionRemoteUserInterface>
+- (void)showWithArchivedItems:(NSData *)arg1 isContentManaged:(_Bool)arg2 extensionBundleIdentifier:(NSString *)arg3 extensionPointIdentifier:(NSString *)arg4 completionHandler:(void (^)(NSArray *, NSError *))arg5;
 @end
 

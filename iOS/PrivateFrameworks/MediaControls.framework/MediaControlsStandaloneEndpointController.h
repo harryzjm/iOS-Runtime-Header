@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithRouteUID:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
+- (id)initWithRouteUID:(id)arg1 client:(id)arg2 player:(id)arg3;
+- (id)initWithEndpoint:(id)arg1 client:(id)arg2 player:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -15,9 +15,18 @@
     MISSING_TYPE *showWindowShortcutKeycode;
     MISSING_TYPE *builderSystem;
     MISSING_TYPE *hasBegunWindow;
+    MISSING_TYPE *showParams;
+    MISSING_TYPE *showCode;
     MISSING_TYPE *showGeneratedCode;
+    MISSING_TYPE *showEmbeddedHeader;
+    MISSING_TYPE *showSwiftCode;
+    MISSING_TYPE *showCCode;
+    MISSING_TYPE *showMetalCode;
     MISSING_TYPE *substitutingPercents;
     MISSING_TYPE *showAll;
+    MISSING_TYPE *hasCompileError;
+    MISSING_TYPE *filter;
+    MISSING_TYPE *filterCode;
     MISSING_TYPE *buildDylibsError;
     MISSING_TYPE *loadDylibsError;
 }

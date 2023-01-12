@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
+@class VCPixelTransferSession;
+
 __attribute__((visibility("hidden")))
 @interface VideoScaler : NSObject
 {
-    char *_tempBuffer1;
-    char *_tempBuffer2;
-    unsigned long long _tempBufferWidth;
-    unsigned long long _tempBufferHeight;
+    VCPixelTransferSession *_pixelTransferSession;
 }
 
 - (int)convertAndScalePixelBuffer:(struct __CVBuffer *)arg1 toWidth:(int)arg2 toHeight:(int)arg3 withPixelFormat:(unsigned int)arg4 usingPixelBufferPool:(struct __CVPixelBufferPool *)arg5 andStoreTo:(struct __CVBuffer **)arg6;

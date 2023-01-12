@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityShouldAttemptToAddDismissalElement;
 - (void)_setDockVisible:(_Bool)arg1;
 - (id)_axDismissDraftElement;
 - (struct CGRect)_axFrameForDismissDraftsElement;

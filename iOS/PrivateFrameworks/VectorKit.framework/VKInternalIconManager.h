@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
     shared_ptr_6d521cf7 _iconManager;
     shared_ptr_dd2d1f5e _stylesheetVendor;
     struct read_write_lock _nameToStyleManagerLock;
-    struct map<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>, NSStringMapComparison, geo::StdAllocator<std::__1::pair<const geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, mdm::Allocator>> _nameToStyleManager;
+    struct map<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::shared_ptr<gss::StylesheetManager<gss::PropertyID>>, NSStringMapComparison, geo::StdAllocator<std::pair<const geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, mdm::Allocator>> _nameToStyleManager;
+    struct _retain_ptr<VKManifestTileGroupObserverProxy *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _manifestTileGroupObserverProxy;
     struct _retain_ptr<VKResourceManager *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _resourceManager;
     struct shared_ptr<md::GeoResourceProvider> _resourceProvider;
-    shared_ptr_76a6df1b _fontManager;
+    struct shared_ptr<grl::FontManager> _fontManager;
+    _Bool _isSharedIconManager;
 }
 
 + (unsigned int)convertCalloutShape:(unsigned char)arg1;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (unsigned char)convertSizeGroup:(long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)purgeNonsharedResources;
 - (void)purge;
 - (void)dealloc;
 - (void)setIsCachingAtlases:(_Bool)arg1;
@@ -36,8 +39,10 @@ __attribute__((visibility("hidden")))
 - (id)imageForKey:(unsigned int)arg1 value:(unsigned int)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
 - (id)imageForDataID:(unsigned int)arg1 text:(id)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
 - (id)imageForStyleAttributes:(id)arg1 withStylesheetName:(id)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
-- (id)imageForStyleAttributes:(id)arg1 styleManager:(shared_ptr_a3c46825)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
+- (id)imageForStyleAttributes:(id)arg1 styleManager:(shared_ptr_3e3c7f86)arg2 contentScale:(float)arg3 sizeGroup:(long long)arg4 modifiers:(id)arg5;
 - (id)imageForImageSourceKey:(id)arg1;
+- (void)_purgeStyleManagers;
+- (void)_startTileGroupObserver;
 - (id)init:(shared_ptr_6d521cf7)arg1 stylesheetVendor:(shared_ptr_dd2d1f5e)arg2;
 - (id)init;
 

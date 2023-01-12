@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@protocol TRIAssetExtracting, TRIPaths;
+@protocol TRIAssetExtracting, TRIAssetPatching, TRIPaths;
 
 @interface TRIAssetStore : NSObject
 {
     id <TRIPaths> _paths;
     id <TRIAssetExtracting> _extractor;
+    id <TRIAssetPatching> _patcher;
 }
 
 + (id)shortHashForAssetIdentifier:(id)arg1;
++ (unsigned long long)_fileSizeInBytesForPath:(id)arg1;
 - (void).cxx_destruct;
-- (void)_forceRemoveItemAtPath:(id)arg1;
+- (_Bool)_forceRemoveItemAtPath:(id)arg1;
 - (_Bool)_nonAtomicOverwriteWithSrc:(id)arg1 dest:(id)arg2 finalPermissionBits:(const unsigned short *)arg3;
 - (void)_fixupPermissionsOnPath:(id)arg1 permissionBits:(const unsigned short *)arg2;
 - (_Bool)_overwriteRenameAsAtomicallyAsPossibleWithSrc:(id)arg1 dest:(id)arg2;
@@ -26,32 +28,43 @@
 - (id)_pathForRefsToAssetWithIdentifier:(id)arg1;
 - (id)_pathForAssetContentWithIdentifier:(id)arg1;
 - (id)_pathForAssetDirWithIdentifier:(id)arg1;
-- (_Bool)_validateAssetIdentifier:(id)arg1;
 - (_Bool)_acquireLockfileAndRunBlock:(CDUnknownBlockType)arg1;
+- (void)fixFileProtectionForAssetStoreFiles;
+- (void)_fixFileProtectionForFileURL:(id)arg1;
 - (void)enumerateSavedAssetsUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)hasAssetWithIdentifier:(id)arg1 type:(unsigned char *)arg2;
 - (_Bool)_isDirectoryAtPath:(id)arg1 matchingAssetContentAtPath:(id)arg2;
 - (_Bool)_isFileAtPath:(id)arg1 matchingAssetContentAtPath:(id)arg2;
 - (_Bool)_isValidTargetForSymlink:(id)arg1 assetIdentifier:(id)arg2;
-- (_Bool)_removePathsInFd:(int)arg1 numRemoved:(unsigned int *)arg2;
-- (_Bool)_enumerateZeroTerminatedStringsInFd:(int)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (_Bool)_removeUnreferencedAssetsWithFlockWitness:(const struct TRIFlockWitness_ *)arg1 olderThanAge:(unsigned int)arg2 numRemoved:(unsigned int *)arg3;
-- (int)_collectUnreferencedAssets;
+- (_Bool)_removePaths:(id)arg1 numRemoved:(unsigned int *)arg2;
+- (_Bool)_removeUnreferencedAssetsWithFlockWitness:(const struct TRIFlockWitness_ *)arg1 olderThanAge:(unsigned int)arg2 numRemoved:(unsigned int *)arg3 deletedAssetsSize:(unsigned long long *)arg4 dryRun:(_Bool)arg5 linkTargetsToIgnoreByAssetId:(id)arg6 deletedAssetIds:(id *)arg7;
+- (id)_collectUnreferencedAssetsIgnoringlinkTargetsByAssetId:(id)arg1 dryRun:(_Bool)arg2;
 - (_Bool)_removeDeadSymlinksWithFlockWitness:(const struct TRIFlockWitness_ *)arg1 numRemoved:(unsigned int *)arg2;
-- (int)_collectDeadSymlinks;
+- (unsigned short)_hardLinkCountForFileWithPath:(id)arg1;
+- (unsigned short)_hardLinkCountForAssetWithIdentifier:(id)arg1;
+- (id)_collectDeadSymlinks;
 - (_Bool)_clearUnrefAgeForAssetWithIdentifier:(id)arg1;
-- (_Bool)_incrementUnrefAgeForAssetWithIdentifier:(id)arg1 newValue:(unsigned int *)arg2;
-- (_Bool)collectGarbageOlderThanNumScans:(unsigned int)arg1;
-- (_Bool)_linkDirectoryAssetWithIdentifier:(id)arg1 toPath:(id)arg2;
-- (_Bool)_linkFileAssetWithIdentifier:(id)arg1 toPath:(id)arg2;
+- (_Bool)_incrementUnrefAgeForAssetWithIdentifier:(id)arg1 newValue:(unsigned int *)arg2 dryRun:(_Bool)arg3;
+- (_Bool)_collectGarbageOlderThanNumScans:(unsigned int)arg1 deletedAssetSize:(unsigned long long *)arg2 dryRun:(_Bool)arg3 linkTargetsToIgnoreByAssetId:(id)arg4 deletedAssetIds:(id *)arg5;
+- (_Bool)collectGarbageOlderThanNumScans:(unsigned int)arg1 deletedAssetSize:(unsigned long long *)arg2 deletedAssetIds:(id *)arg3;
+- (_Bool)collectGarbageOlderThanNumScans:(unsigned int)arg1 deletedAssetSize:(unsigned long long *)arg2;
+- (unsigned long long)removableAssetsSizeOlderThanNumScans:(unsigned int)arg1 linkTargetsToIgnoreByAssetId:(id)arg2;
+- (unsigned long long)removableAssetsSizeOlderThanNumScans:(unsigned int)arg1 linkTargetsToIgnoreByAssetId:(id)arg2 deleteableAssetIds:(id *)arg3;
+- (_Bool)_linkDirectoryAssetWithIdentifier:(id)arg1 toCurrentPath:(id)arg2 futurePath:(id)arg3;
+- (_Bool)_linkFileAssetWithIdentifier:(id)arg1 toCurrentPath:(id)arg2 futurePath:(id)arg3;
 - (_Bool)_addSymlinkFromAssetWithIdentifier:(id)arg1 toPath:(id)arg2;
+- (_Bool)linkAssetWithIdentifier:(id)arg1 toCurrentPath:(id)arg2 futurePath:(id)arg3;
 - (_Bool)linkAssetWithIdentifier:(id)arg1 toPath:(id)arg2;
-- (_Bool)_removeAssetWithIdentifier:(id)arg1 flockWitness:(const struct TRIFlockWitness_ *)arg2;
+- (_Bool)_removeAssetWithIdentifier:(id)arg1 flockWitness:(const struct TRIFlockWitness_ *)arg2 deletedAssetSize:(unsigned long long *)arg3 dryRun:(_Bool)arg4;
 - (_Bool)removeAssetWithIdentifier:(id)arg1;
-- (_Bool)_saveDirectoryAssetWithIdentifier:(id)arg1 assetData:(id)arg2;
-- (_Bool)_saveFileAssetWithIdentifier:(id)arg1 assetData:(id)arg2;
+- (_Bool)_moveDirectoryAssetFromDirectory:(id)arg1 toLocationForAssetIdentifier:(id)arg2;
+- (_Bool)_saveDirectoryAssetWithIdentifier:(id)arg1 assetFilename:(id)arg2 metadata:(id)arg3 error:(id *)arg4;
+- (_Bool)_saveFileAssetWithIdentifier:(id)arg1 assetFilename:(id)arg2 workingTempDirectory:(id)arg3;
+- (_Bool)_saveFileAssetWithIdentifier:(id)arg1 assetFilename:(id)arg2;
+- (_Bool)saveAssetWithIdentifier:(id)arg1 builtFromAssetWithIdentifier:(id)arg2 patchFilename:(id)arg3 metadata:(id)arg4;
+- (_Bool)saveAssetWithIdentifier:(id)arg1 assetURL:(id)arg2 metadata:(id)arg3 error:(id *)arg4;
 - (_Bool)saveAssetWithIdentifier:(id)arg1 assetData:(id)arg2 type:(unsigned char)arg3;
-- (id)initWithPaths:(id)arg1 extractor:(id)arg2;
+- (id)initWithPaths:(id)arg1 extractor:(id)arg2 patcher:(id)arg3;
 - (id)initWithPaths:(id)arg1;
 - (id)init;
 

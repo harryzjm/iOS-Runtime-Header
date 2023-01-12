@@ -35,6 +35,7 @@
     NSPointerArray *_actionsWithInvokedHandlers;
     UIAlertControllerStackManager *_alertControllerStackManager;
     UIImage *_image;
+    _Bool dismissedFromShim;
     _Bool _hidden;
     _Bool _springLoaded;
     _Bool __shouldFlipFrameForShimDismissal;
@@ -89,6 +90,7 @@
 @property(nonatomic, getter=_isHidden, setter=_setHidden:) _Bool _hidden; // @synthesize _hidden;
 @property(nonatomic, getter=_styleProvider, setter=_setStyleProvider:) __weak NSObject<UIAlertControllerVisualStyleProviding> *styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(readonly) long long _resolvedStyle; // @synthesize _resolvedStyle;
+@property(nonatomic, getter=_dismissedFromShim, setter=_setDismissedFromShim:) _Bool dismissedFromShim; // @synthesize dismissedFromShim;
 @property(retain, nonatomic, setter=_setSeparatedHeaderContentViewController:) UIViewController *_separatedHeaderContentViewController; // @synthesize _separatedHeaderContentViewController;
 @property(retain, nonatomic, setter=_setHeaderContentViewController:) UIViewController *_headerContentViewController; // @synthesize _headerContentViewController;
 @property(readonly) UIAlertAction *_cancelAction; // @synthesize _cancelAction;

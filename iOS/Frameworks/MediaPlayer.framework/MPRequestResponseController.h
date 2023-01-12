@@ -34,6 +34,7 @@
 @property(nonatomic) __weak id <MPRequestResponseControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_onQueue_reloadIfNeeded;
 - (void)_onQueue_scheduleRetryAfterInterval:(double)arg1;
+- (id)_onQueue_stateDictionary;
 - (void)_responseDidInvalidate:(id)arg1;
 - (void)reloadIfNeeded;
 - (void)setNeedsReloadForSignificantRequestChange;

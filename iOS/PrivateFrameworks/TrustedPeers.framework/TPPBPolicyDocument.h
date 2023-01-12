@@ -14,15 +14,19 @@
 {
     unsigned long long _policyVersion;
     NSMutableArray *_categoriesByViews;
+    NSMutableArray *_inheritedExcludedViews;
     NSMutableArray *_introducersByCategorys;
     NSMutableArray *_keyViewMappings;
     NSMutableArray *_modelToCategorys;
     NSMutableArray *_piggybackViews;
+    NSMutableArray *_priorityViews;
     NSMutableArray *_redactions;
     NSMutableArray *_userControllableViews;
     CDStruct_0e29c504 _has;
 }
 
++ (Class)inheritedExcludedViewsType;
++ (Class)priorityViewsType;
 + (Class)piggybackViewsType;
 + (Class)userControllableViewsType;
 + (Class)keyViewMappingType;
@@ -31,6 +35,8 @@
 + (Class)categoriesByViewType;
 + (Class)modelToCategoryType;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableArray *inheritedExcludedViews; // @synthesize inheritedExcludedViews=_inheritedExcludedViews;
+@property(retain, nonatomic) NSMutableArray *priorityViews; // @synthesize priorityViews=_priorityViews;
 @property(retain, nonatomic) NSMutableArray *piggybackViews; // @synthesize piggybackViews=_piggybackViews;
 @property(retain, nonatomic) NSMutableArray *userControllableViews; // @synthesize userControllableViews=_userControllableViews;
 @property(retain, nonatomic) NSMutableArray *keyViewMappings; // @synthesize keyViewMappings=_keyViewMappings;
@@ -48,6 +54,14 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)inheritedExcludedViewsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)inheritedExcludedViewsCount;
+- (void)addInheritedExcludedViews:(id)arg1;
+- (void)clearInheritedExcludedViews;
+- (id)priorityViewsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)priorityViewsCount;
+- (void)addPriorityViews:(id)arg1;
+- (void)clearPriorityViews;
 - (id)piggybackViewsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)piggybackViewsCount;
 - (void)addPiggybackViews:(id)arg1;

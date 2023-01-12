@@ -11,7 +11,6 @@
 @class CKDCancelTokenGroup, CKDMMCSItem, CKDMMCSRequestOptions, CKDProgressTracker, CKPackage, NSArray, NSError, NSString;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKPackageUploadTask : NSObject <CKDCancelling>
 {
     NSError *_error;

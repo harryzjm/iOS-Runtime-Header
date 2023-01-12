@@ -18,7 +18,7 @@
     struct sqlite3_stmt *_selectPassDataStatement;
     struct sqlite3_stmt *_selectPassAndImageSetsDataStatement;
     struct sqlite3_stmt *_selectPassDiffStatement;
-    struct sqlite3_stmt *_updateDeletePendingStatment;
+    struct sqlite3_stmt *_updateDeletePendingStatement;
     struct sqlite3_stmt *_selectDeletePendingStatement;
     struct sqlite3_stmt *_updatePreferredAIDStatement;
     struct sqlite3_stmt *_selectPreferredAIDStatement;
@@ -75,6 +75,8 @@
 - (void)_attemptDatabaseOpen;
 - (void)_handleHasMigrationDataSource;
 - (void)_handleFirstUnlock;
+- (void)_inQueue_teardownDB;
+- (void)teardownDB;
 - (void)_handleDatabaseChangedExternally;
 - (_Bool)_preconditionsMetForDatabaseOpen;
 - (void)_updateDatabaseVersionRow:(long long)arg1;

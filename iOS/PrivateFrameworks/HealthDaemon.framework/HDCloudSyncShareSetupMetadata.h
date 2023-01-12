@@ -17,7 +17,6 @@
     HKProfileIdentifier *_profileIdentifier;
     NSArray *_shareURLs;
     NSDictionary *_invitationTokensByShareURL;
-    CKShareParticipant *_ownerParticipant;
     NSString *_ownerCloudKitEmailAddress;
     CKShareParticipant *_shareParticipant;
 }
@@ -27,7 +26,6 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) CKShareParticipant *shareParticipant; // @synthesize shareParticipant=_shareParticipant;
 @property(readonly, copy, nonatomic) NSString *ownerCloudKitEmailAddress; // @synthesize ownerCloudKitEmailAddress=_ownerCloudKitEmailAddress;
-@property(readonly, copy, nonatomic) CKShareParticipant *ownerParticipant; // @synthesize ownerParticipant=_ownerParticipant;
 @property(readonly, copy, nonatomic) NSDictionary *invitationTokensByShareURL; // @synthesize invitationTokensByShareURL=_invitationTokensByShareURL;
 @property(readonly, copy, nonatomic) NSArray *shareURLs; // @synthesize shareURLs=_shareURLs;
 @property(readonly, copy, nonatomic) HKProfileIdentifier *profileIdentifier; // @synthesize profileIdentifier=_profileIdentifier;
@@ -38,7 +36,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithSyncCircleIdentifier:(id)arg1 profileIdentifier:(id)arg2 shareURLs:(id)arg3 ownerParticipant:(id)arg4 ownerCloudKitEmailAddress:(id)arg5 shareParticipant:(id)arg6 invitationTokensByShareURL:(id)arg7;
+- (id)initWithSyncCircleIdentifier:(id)arg1 profileIdentifier:(id)arg2 shareURLs:(id)arg3 ownerCloudKitEmailAddress:(id)arg4 shareParticipant:(id)arg5 invitationTokensByShareURL:(id)arg6;
 - (id)init;
 
 @end

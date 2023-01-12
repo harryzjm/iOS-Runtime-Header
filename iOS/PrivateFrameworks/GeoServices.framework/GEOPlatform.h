@@ -18,13 +18,15 @@
 - (long long)deviceScreenWidthInPixels;
 - (id)clientCapabilities;
 - (_Bool)isCellDataPossible;
+- (_Bool)supportsASTC;
+- (_Bool)supportsAdvancedMap;
 - (_Bool)supportsForceTouch;
 - (_Bool)supportsNavigation;
 - (_Bool)supportsRealisticTiles;
 - (_Bool)mapsFeatureFreedomEnabled;
-- (_Bool)_deviceSupportsNavigation;
 - (id)deviceCountrySKUForServiceRequests;
 - (id)deviceCountrySKU;
+- (id)hardwareClass;
 - (id)hardwareModel;
 - (id)hardwareIdentifier;
 - (id)osAndBuildVersion;

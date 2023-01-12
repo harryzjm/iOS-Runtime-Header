@@ -9,6 +9,7 @@
 @class NSCalendar, NSDate;
 
 @protocol FISleepDataProviderDelegate <NSObject>
+- (void)sleepDataProviderLastAlarmWakeUpDateDidChange;
 - (void)sleepDataProviderLastGoodMorningDismissedDateDidChange;
 - (void)sleepDataProviderUserDayDidUpdate;
 - (NSCalendar *)currentCalendar;

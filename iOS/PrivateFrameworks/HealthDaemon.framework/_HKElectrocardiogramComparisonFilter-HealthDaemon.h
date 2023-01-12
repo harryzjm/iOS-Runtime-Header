@@ -7,10 +7,6 @@
 #import <HealthKit/_HKElectrocardiogramComparisonFilter.h>
 
 @interface _HKElectrocardiogramComparisonFilter (HealthDaemon)
-- (id)_predicateForSymptomsStatus;
-- (id)_predicateForPublicECGClassification;
-- (id)_predicateForPrivateECGClassification;
-- (id)_predicateForAverageHeartRate;
 - (id)predicateWithProfile:(id)arg1;
 @end
 

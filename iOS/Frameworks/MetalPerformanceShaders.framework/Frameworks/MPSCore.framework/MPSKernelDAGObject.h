@@ -10,9 +10,9 @@
 
 @interface MPSKernelDAGObject : NSObject
 {
-    struct MPSKernelDAG *_kernelDAG;
-    shared_ptr_d547ef79 _kernelDAGSharedPtr;
-    struct MPSDAGKernelOp *_finalOp;
+    void *_kernelDAG;
+    struct shared_ptr<MPSKernelDAG> _kernelDAGSharedPtr;
+    void *_finalOp;
     NSArray *_stitchedFunctions;
     NSMutableDictionary *_functions;
     NSMutableArray *_functionNames;
@@ -23,15 +23,16 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MISSING_TYPE *hash; // @synthesize hash=_sha256;
-@property(readonly, nonatomic) struct MPSKernelDAG *graph; // @synthesize graph=_kernelDAG;
-@property(readonly, nonatomic) struct MPSDAGKernelOp *finalOp; // @synthesize finalOp=_finalOp;
+@property(readonly, nonatomic) void *graph; // @synthesize graph=_kernelDAG;
+@property(readonly, nonatomic) void *finalOp; // @synthesize finalOp=_finalOp;
 - (void)dealloc;
 - (_Bool)hasPostfixFunction;
 - (id)getStitchedFunctions:(id)arg1;
-- (id)initKernelDAGWithObject:(id)arg1 keepPrimaryPrefix:(_Bool)arg2 keepSecondaryPrefix:(_Bool)arg3 keepTertiaryPrefix:(_Bool)arg4 keepQuaternaryPrefix:(_Bool)arg5 keepPrimaryPostfix:(_Bool)arg6;
-- (id)initWithKernelDAG:(shared_ptr_d547ef79 *)arg1 finalOp:(struct MPSDAGKernelOp *)arg2;
-- (const struct BaseTensor *)outputTensorAtIndex:(unsigned long long)arg1;
-- (const struct BaseTensor *)inputTensorAtIndex:(unsigned long long)arg1;
+- (id)initWithKernelDAG:(void *)arg1 finalOp:(void *)arg2;
+- (unsigned long long)numberOfOutputTensors;
+- (unsigned long long)numberOfInputTensors;
+- (const void *)outputTensorAtIndex:(unsigned long long)arg1;
+- (const void *)inputTensorAtIndex:(unsigned long long)arg1;
 - (id)debugDescription;
 
 @end

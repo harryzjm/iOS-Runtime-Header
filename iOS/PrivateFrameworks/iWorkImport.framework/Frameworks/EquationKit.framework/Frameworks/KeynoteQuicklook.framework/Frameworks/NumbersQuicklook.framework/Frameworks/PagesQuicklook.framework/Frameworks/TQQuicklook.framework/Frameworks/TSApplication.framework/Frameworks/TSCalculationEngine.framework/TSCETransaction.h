@@ -8,15 +8,14 @@
 
 @interface TSCETransaction : NSObject
 {
-    struct TSCEReferenceSet *_cellRefsToCheck;
-    UUIDData_5fbc143e _skipRepairBadRefsOwnerUID;
+    void *_cellRefsToCheck;
+    struct TSKUIDStruct _skipRepairBadRefsOwnerUID;
 }
 
-- (id).cxx_construct;
-- (_Bool)isSkippingRepairBadRefsForOwnerUID:(const UUIDData_5fbc143e *)arg1;
-- (void)skipRepairBadRefsForOwnerUID:(const UUIDData_5fbc143e *)arg1;
+- (_Bool)isSkippingRepairBadRefsForOwnerUID:(const struct TSKUIDStruct *)arg1;
+- (void)skipRepairBadRefsForOwnerUID:(const struct TSKUIDStruct *)arg1;
 - (id)description;
-- (const struct TSCEReferenceSet *)cellRefsToCheck;
+- (const void *)cellRefsToCheck;
 - (void)addCellRefToCheck:(const struct TSCECellRef *)arg1;
 - (void)dealloc;
 - (id)initWithCalcEngine:(id)arg1;

@@ -10,25 +10,29 @@
 #import <ChronoServices/NSCopying-Protocol.h>
 #import <ChronoServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class CHSConfiguredWidgetDescriptor, NSArray, NSString;
 
 @interface CHSConfiguredWidgetContainerDescriptor : NSObject <BSDescriptionProviding, NSCopying, NSSecureCoding>
 {
+    NSString *_activeWidgetUniqueIdentifier;
+    long long _activeWidgetIndex;
     _Bool _stack;
+    NSString *_uniqueIdentifier;
+    NSArray *_widgets;
+    long long _family;
     long long _location;
     unsigned long long _page;
-    long long _widgetFamily;
-    NSArray *_widgets;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)new;
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSArray *widgets; // @synthesize widgets=_widgets;
 @property(readonly, nonatomic, getter=isStack) _Bool stack; // @synthesize stack=_stack;
-@property(readonly, nonatomic) long long widgetFamily; // @synthesize widgetFamily=_widgetFamily;
 @property(readonly, nonatomic) unsigned long long page; // @synthesize page=_page;
 @property(readonly, nonatomic) long long location; // @synthesize location=_location;
+@property(readonly, nonatomic) long long family; // @synthesize family=_family;
+@property(readonly, copy, nonatomic) NSArray *widgets; // @synthesize widgets=_widgets;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -39,7 +43,9 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithLocation:(long long)arg1 page:(unsigned long long)arg2 widgetFamily:(long long)arg3 widgets:(id)arg4;
+@property(readonly, nonatomic) CHSConfiguredWidgetDescriptor *activeWidget;
+@property(readonly, nonatomic) _Bool isSystemConfigured;
+- (id)initWithUniqueIdentifier:(id)arg1 location:(long long)arg2 page:(unsigned long long)arg3 family:(long long)arg4 widgets:(id)arg5 activeWidget:(id)arg6;
 - (id)init;
 
 // Remaining properties

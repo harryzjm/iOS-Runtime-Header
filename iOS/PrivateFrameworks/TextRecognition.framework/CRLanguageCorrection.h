@@ -32,7 +32,7 @@
 - (_Bool)preferAllLowercase:(id)arg1;
 - (_Bool)preferAllUppercase:(id)arg1;
 @property(readonly) NSCharacterSet *confusableCharacters;
-- (id)correctTextFeature:(id)arg1 inImage:(id)arg2 withTextPieces:(id)arg3 withMaxWidthPerRegion:(double)arg4 withMedianCharSpacing:(double)arg5 withBreakpoints:(const vector_e5f6796a *)arg6 segmenter:(struct Segmenter *)arg7 options:(id)arg8 numCharCandidates:(int)arg9 downscaleSpaceRatio:(_Bool)arg10 latticePresetIdx:(int)arg11 latticeResults:(id)arg12;
+- (id)correctTextFeature:(id)arg1 inImage:(id)arg2 withTextPieces:(id)arg3 withMaxWidthPerRegion:(double)arg4 withMedianCharSpacing:(double)arg5 withBreakpoints:(const void *)arg6 segmenter:(void *)arg7 options:(id)arg8 numCharCandidates:(int)arg9 downscaleSpaceRatio:(_Bool)arg10 latticePresetIdx:(int)arg11 latticeResults:(id)arg12;
 - (void)dealloc;
 - (_Bool)isLanguageCorrectionSupportedForLanguage:(id)arg1 revision:(unsigned long long)arg2;
 - (void)loadCharacterNgramModel:(id)arg1;

@@ -20,6 +20,7 @@
     MISSING_TYPE *accessorySeparator;
     MISSING_TYPE *$__lazy_storage_$_accessoryImage;
     MISSING_TYPE *title;
+    MISSING_TYPE *accessoryColor;
     MISSING_TYPE *minimumViewHeight;
     MISSING_TYPE *titleToTop;
     MISSING_TYPE *titleToBottom;

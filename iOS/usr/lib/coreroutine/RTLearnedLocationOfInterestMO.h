@@ -32,6 +32,7 @@
 @property(copy, nonatomic) NSNumber *locationLatitude; // @dynamic locationLatitude;
 @property(copy, nonatomic) NSNumber *locationLongitude; // @dynamic locationLongitude;
 @property(copy, nonatomic) NSNumber *locationReferenceFrame; // @dynamic locationReferenceFrame;
+@property(copy, nonatomic) NSNumber *locationSourceAccuracy; // @dynamic locationSourceAccuracy;
 @property(copy, nonatomic) NSNumber *locationVerticalUncertainty; // @dynamic locationVerticalUncertainty;
 @property(copy, nonatomic) NSDate *placeCreationDate; // @dynamic placeCreationDate;
 @property(copy, nonatomic) NSString *placeCustomLabel; // @dynamic placeCustomLabel;

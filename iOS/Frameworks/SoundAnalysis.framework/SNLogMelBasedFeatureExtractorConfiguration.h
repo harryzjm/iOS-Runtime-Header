@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
     unsigned int _windowLengthFrames;
     unsigned int _stepSizeFrames;
     unsigned int _logMelStepSize;
-    int _outputFeatureSize;
+    unsigned int _outputFeatureSize;
     double _sampleRate;
 }
 
 - (void).cxx_destruct;
-@property(readonly) int outputFeatureSize; // @synthesize outputFeatureSize=_outputFeatureSize;
+@property(readonly) unsigned int outputFeatureSize; // @synthesize outputFeatureSize=_outputFeatureSize;
 @property(readonly) unsigned int logMelStepSize; // @synthesize logMelStepSize=_logMelStepSize;
 @property(readonly) unsigned int stepSizeFrames; // @synthesize stepSizeFrames=_stepSizeFrames;
 @property(readonly) unsigned int windowLengthFrames; // @synthesize windowLengthFrames=_windowLengthFrames;

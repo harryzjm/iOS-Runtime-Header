@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)flatbuffData;
-- (Offset_88bcc1c1)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
+- (Offset_88bcc1c1)addObjectToBuffer:(void *)arg1;
 @property(readonly, nonatomic) FTRecognitionResult *recognition_result;
 @property(readonly, nonatomic) NSString *recognition_text;
 @property(readonly, nonatomic) NSString *source_locale;

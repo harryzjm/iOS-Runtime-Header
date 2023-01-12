@@ -4,35 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <RemoteUI/UIWebViewDelegate-Protocol.h>
+#import <RemoteUI/WKNavigationDelegate-Protocol.h>
+#import <RemoteUI/WKScriptMessageHandler-Protocol.h>
 
-@class NSString, UIToolbar, UIWebView, _UIBackdropView;
+@class NSString, RUIStyle, UINavigationBar, UINavigationItem, UIToolbar, WKWebView;
 @protocol RemoteUIWebViewControllerDelegate;
 
-@interface RemoteUIWebViewController : UIViewController <UIWebViewDelegate>
+@interface RemoteUIWebViewController : UIViewController <WKScriptMessageHandler, WKNavigationDelegate>
 {
-    UIWebView *_webView;
+    WKWebView *_webView;
     UIToolbar *_toolbar;
     CDUnknownBlockType _loadCompletion;
-    _UIBackdropView *_statusBarBackdrop;
+    UINavigationBar *_navigationBar;
+    UINavigationItem *_navigationItem;
     _Bool _scalesPageToFit;
     id <RemoteUIWebViewControllerDelegate> _delegate;
+    RUIStyle *_style;
+    NSString *_dismissButtonAlignment;
+    NSString *_dismissButtonLabel;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSString *dismissButtonLabel; // @synthesize dismissButtonLabel=_dismissButtonLabel;
+@property(copy, nonatomic) NSString *dismissButtonAlignment; // @synthesize dismissButtonAlignment=_dismissButtonAlignment;
+@property(retain, nonatomic) RUIStyle *style; // @synthesize style=_style;
 @property(nonatomic) _Bool scalesPageToFit; // @synthesize scalesPageToFit=_scalesPageToFit;
+@property(readonly, nonatomic) UIToolbar *toolbar; // @synthesize toolbar=_toolbar;
 @property(nonatomic) __weak id <RemoteUIWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)webView:(id)arg1 didFailLoadWithError:(id)arg2;
-- (void)webViewDidFinishLoad:(id)arg1;
+- (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2;
+- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)loadURL:(id)arg1;
 - (void)loadURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)donePressed:(id)arg1;
+- (void)_dismissWithPayload:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)dealloc;
-@property(readonly, nonatomic) UIWebView *webView;
-@property(readonly, nonatomic) UIToolbar *toolbar;
+@property(readonly, nonatomic) WKWebView *webView;
+- (id)navigationBar;
+- (id)scriptForScalesPageToFit;
+- (id)scriptForJSBridge;
+- (id)_spinnerManagerIdentifier;
+- (void)_stopActivityIndicator;
+- (void)_startActivityIndicator;
+- (id)navigationItem;
 - (void)viewDidLoad;
 
 // Remaining properties

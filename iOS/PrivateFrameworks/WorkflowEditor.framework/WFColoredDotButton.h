@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
-
 @class UIColor, UIView;
 
-@interface WFColoredDotButton : UIButton
+@interface WFColoredDotButton
 {
     UIColor *_dotColor;
     UIView *_dotView;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak UIView *dotView; // @synthesize dotView=_dotView;
+@property(retain, nonatomic) UIView *dotView; // @synthesize dotView=_dotView;
 @property(copy, nonatomic) UIColor *dotColor; // @synthesize dotColor=_dotColor;
 - (void)layoutSubviews;
 - (struct UIEdgeInsets)contentEdgeInsets;

@@ -8,7 +8,6 @@
 
 @class BRFieldCKInfo, NSData;
 
-__attribute__((visibility("hidden")))
 @interface BRCSideCarInfo : NSObject
 {
     BRFieldCKInfo *_ckInfo;

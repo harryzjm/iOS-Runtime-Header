@@ -6,16 +6,16 @@
 
 #import <EventKitUI/NSObject-Protocol.h>
 
-@class EKEvent, NSDate;
+@class NSDate, NSString;
 
 @protocol CUIKSingleDayTimelineViewItem <NSObject>
 + (double)barToBarHorizontalDistanceIncludingBarWidth;
 @property(readonly) _Bool visibleHeightLocked;
 @property struct CGRect unPinnedViewFrame;
-@property(readonly, nonatomic) EKEvent *event;
 @property(readonly, nonatomic) double viewMaxNaturalTextHeight;
 @property(readonly, nonatomic) double enoughHeightForOneLine;
 @property(readonly, nonatomic) _Bool hideTravelTime;
+@property(readonly, nonatomic) NSString *eventIdentifier;
 @property(readonly, nonatomic) NSDate *end;
 @property(readonly, nonatomic) NSDate *start;
 @property(readonly, nonatomic) NSDate *startWithTravelTime;

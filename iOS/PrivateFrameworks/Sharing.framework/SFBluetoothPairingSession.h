@@ -34,6 +34,7 @@
     _Bool _connectOnly;
     _Bool _disconnectOnly;
     _Bool _guestMode;
+    _Bool _inEarDetection;
     _Bool _softwareVolume;
     _Bool _userNotInContacts;
     unsigned int _deviceVersion;
@@ -49,6 +50,7 @@
 @property(nonatomic) _Bool userNotInContacts; // @synthesize userNotInContacts=_userNotInContacts;
 @property(readonly, nonatomic) _Bool softwareVolume; // @synthesize softwareVolume=_softwareVolume;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(readonly, nonatomic) _Bool inEarDetection; // @synthesize inEarDetection=_inEarDetection;
 @property(nonatomic) _Bool guestMode; // @synthesize guestMode=_guestMode;
 @property(copy, nonatomic) NSData *guestKey; // @synthesize guestKey=_guestKey;
 @property(copy, nonatomic) NSString *guestAddress; // @synthesize guestAddress=_guestAddress;

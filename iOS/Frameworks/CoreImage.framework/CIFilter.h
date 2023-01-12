@@ -28,6 +28,7 @@
 + (id)_propertyArrayFromFilters:(id)arg1 inputImageExtent:(struct CGRect)arg2;
 + (id)filterWithString:(id)arg1;
 + (id)customAttributes;
++ (void)clearCache;
 + (id)filterName:(id)arg1 replacement:(id)arg2;
 + (id)filterName:(id)arg1 replacement:(id)arg2 arguments:(id)arg3;
 + (void)addFilterToSkip:(id)arg1;
@@ -87,6 +88,7 @@
 + (id)saliencyMapFilter;
 + (id)pointillizeFilter;
 + (id)pixellateFilter;
++ (id)personSegmentationFilter;
 + (id)mixFilter;
 + (id)lineOverlayFilter;
 + (id)highlightShadowAdjustFilter;
@@ -99,6 +101,11 @@
 + (id)depthOfFieldFilter;
 + (id)crystallizeFilter;
 + (id)coreMLModelFilter;
++ (id)convolutionRGB9VerticalFilter;
++ (id)convolutionRGB9HorizontalFilter;
++ (id)convolutionRGB7X7Filter;
++ (id)convolutionRGB5X5Filter;
++ (id)convolutionRGB3X3Filter;
 + (id)convolution9VerticalFilter;
 + (id)convolution9HorizontalFilter;
 + (id)convolution7X7Filter;
@@ -207,6 +214,7 @@
 + (id)colorControlsFilter;
 + (id)colorClampFilter;
 + (id)colorAbsoluteDifferenceFilter;
++ (id)vividLightBlendModeFilter;
 + (id)subtractBlendModeFilter;
 + (id)sourceOverCompositingFilter;
 + (id)sourceOutCompositingFilter;
@@ -222,6 +230,7 @@
 + (id)minimumCompositingFilter;
 + (id)maximumCompositingFilter;
 + (id)luminosityBlendModeFilter;
++ (id)linearLightBlendModeFilter;
 + (id)linearDodgeBlendModeFilter;
 + (id)linearBurnBlendModeFilter;
 + (id)lightenBlendModeFilter;
@@ -272,6 +281,8 @@
 + (id)metalFilterWithName:(id)arg1;
 + (id)metalFilterWithName:(id)arg1 withInputParameters:(id)arg2;
 + (int)getMinMaxSimulatedApertureFrom:(struct __CFData *)arg1 minValue:(float *)arg2 maxValue:(float *)arg3 version:(int *)arg4;
++ (int)maxSDOFRenderingVersionSupported;
++ (id)prewarmedFilterFromString:(id)arg1;
 @property(getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(copy, nonatomic) NSString *name;
 - (id)apply:(id)arg1;
@@ -400,6 +411,8 @@
 - (int)compatibilityVersion;
 - (id)apply:(id)arg1 image:(id)arg2 arguments:(id)arg3 inSpace:(struct CGColorSpace *)arg4;
 - (id)apply:(id)arg1 image:(id)arg2 arguments:(id)arg3 inoutSpace:(struct CGColorSpace *)arg4;
+- (_Bool)verifyPrewarmedFilter:(id)arg1;
+- (id)prewarmingString;
 
 @end
 

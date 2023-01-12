@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class NSArray, UIContextMenuConfiguration, UIContextMenuInteraction, _UIContextMenuStyle;
+@class NSArray, UIContextMenuConfiguration, UIContextMenuInteraction, UIGestureRecognizer, _UIContextMenuStyle;
 @protocol UIContextMenuInteractionCommitAnimating;
 
 @protocol UIContextMenuInteractionDelegate_Private <UIContextMenuInteractionDelegate>
@@ -15,6 +15,7 @@
 - (void)contextMenuInteractionDidEnd:(UIContextMenuInteraction *)arg1;
 - (void)contextMenuInteractionWillPresent:(UIContextMenuInteraction *)arg1;
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 willCommitWithAnimator:(id <UIContextMenuInteractionCommitAnimating>)arg2;
+- (_Bool)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 shouldBeDelayedByGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (_Bool)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 failedToBeginForSecondaryClickAtLocation:(struct CGPoint)arg2;
 - (NSArray *)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 accessoriesForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (_UIContextMenuStyle *)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 styleForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;

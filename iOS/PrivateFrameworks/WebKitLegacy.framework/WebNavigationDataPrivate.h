@@ -6,20 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURLRequest, NSURLResponse;
-
 __attribute__((visibility("hidden")))
 @interface WebNavigationDataPrivate : NSObject
 {
-    NSString *url;
-    NSString *title;
-    NSURLRequest *originalRequest;
-    NSURLResponse *response;
+    struct RetainPtr<NSString> url;
+    struct RetainPtr<NSString> title;
+    struct RetainPtr<NSURLRequest> originalRequest;
+    struct RetainPtr<NSURLResponse> response;
     _Bool hasSubstituteData;
-    NSString *clientRedirectSource;
+    struct RetainPtr<NSString> clientRedirectSource;
 }
 
-- (void)dealloc;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

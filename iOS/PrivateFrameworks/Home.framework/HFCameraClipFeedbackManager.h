@@ -11,6 +11,8 @@
 }
 
 + (void)donateAllCameraClipsForCameraProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)donateCameraClip:(id)arg1 forCameraProfile:(id)arg2 processName:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)donateNotificationCenterCameraClip:(id)arg1 forCameraProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)donateCameraClip:(id)arg1 forCameraProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

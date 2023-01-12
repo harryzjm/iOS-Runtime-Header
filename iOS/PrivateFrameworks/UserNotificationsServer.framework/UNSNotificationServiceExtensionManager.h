@@ -6,21 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
-
 @interface UNSNotificationServiceExtensionManager : NSObject
 {
-    id _matchingContext;
-    NSDictionary *_extensionIdentifierByContainingAppIdentifier;
 }
 
-- (void).cxx_destruct;
-@property(copy) NSDictionary *extensionIdentifierByContainingAppIdentifier; // @synthesize extensionIdentifierByContainingAppIdentifier=_extensionIdentifierByContainingAppIdentifier;
-- (void)_stopMonitoringExtensions;
-- (void)_startMonitoringExtensions;
+- (id)_extensionForAppBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)extensionForBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
-- (id)init;
 
 @end
 

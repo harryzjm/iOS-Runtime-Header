@@ -8,6 +8,7 @@
 {
 }
 
+- (id)name;
 - (long long)userInterfaceTag;
 - (_Bool)supportsSeriesFill;
 - (_Bool)supportsCategoryAxisPlotToEdgesOption;

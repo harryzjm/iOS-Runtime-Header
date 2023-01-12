@@ -11,7 +11,6 @@
 @class NSArray, NSString, UIInputWindowController, UIKBVisualEffectView, UIKeyboardFloatingPinchGestureRecognizer, UIKeyboardFloatingTransitionState, UIPanGestureRecognizer, UIView, UIViewSpringAnimationBehavior, _UIPopoverStandardChromeView;
 @protocol UIKeyboardFloatingTransitionControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface UIKeyboardFloatingTransitionController : NSObject <UIGestureRecognizerDelegate>
 {
     _Bool _isTransitioning;
@@ -56,7 +55,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool startedFromFloating; // @synthesize startedFromFloating=_startedFromFloating;
 @property(retain, nonatomic) UIKeyboardFloatingTransitionState *endState; // @synthesize endState=_endState;
 @property(retain, nonatomic) UIKeyboardFloatingTransitionState *startState; // @synthesize startState=_startState;
-@property(retain, nonatomic) UIInputWindowController *inputWindowController; // @synthesize inputWindowController=_inputWindowController;
+@property(nonatomic) __weak UIInputWindowController *inputWindowController; // @synthesize inputWindowController=_inputWindowController;
 @property(retain, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property(retain, nonatomic) UIKeyboardFloatingPinchGestureRecognizer *pinchGestureRecognizer; // @synthesize pinchGestureRecognizer=_pinchGestureRecognizer;
 @property(nonatomic) __weak id <UIKeyboardFloatingTransitionControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -65,6 +64,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)captureStateForStart:(_Bool)arg1;
 - (void)inputViewSnapshot:(id *)arg1 withPlatterInsets:(struct UIEdgeInsets *)arg2;
+- (void)updateLayoutGuideFromFrame:(struct CGRect)arg1;
+- (void)updateLayoutGuideForTransitionStart:(_Bool)arg1;
 - (void)updateAnimationAtScale:(double)arg1;
 - (void)finalizeTransition;
 - (void)restoreAccessoryViewConstraints;

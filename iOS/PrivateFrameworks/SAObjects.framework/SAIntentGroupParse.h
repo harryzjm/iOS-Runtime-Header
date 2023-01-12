@@ -16,6 +16,7 @@
 + (id)parse;
 @property(copy, nonatomic) NSString *type;
 @property(retain, nonatomic) SAIntentGroupProtobufMessage *siriKitIntent;
+@property(retain, nonatomic) SAIntentGroupProtobufMessage *pegasusResults;
 @property(retain, nonatomic) SAIntentGroupProtobufMessage *nlv3Parse;
 @property(copy, nonatomic) NSString *jsonIntentTypeName;
 @property(copy, nonatomic) NSString *jsonIntent;

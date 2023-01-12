@@ -7,18 +7,20 @@
 #import <CloudPhotoLibrary/CPLEngineSyncTaskDelegate-Protocol.h>
 
 @class CPLEngineLibrary, CPLEngineSyncTask, CPLScopeFilter, CPLSyncSession, NSDate, NSEnumerator, NSObject, NSString;
-@protocol CPLEngineForceSyncTaskDelegate, OS_dispatch_queue, OS_xpc_object;
+@protocol CPLEngineForceSyncTaskDelegate, CPLEngineStoreUserIdentifier, OS_dispatch_queue, OS_xpc_object;
 
 @interface CPLEngineForceSyncTask <CPLEngineSyncTaskDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     struct os_unfair_lock_s _currentTaskLock;
+    _Bool _reallyLaunched;
     _Bool _reallyCancelled;
     CPLEngineSyncTask *_currentTask;
     CPLSyncSession *_fakeSession;
     NSEnumerator *_syncTaskEnumerator;
     _Bool _shouldUpdateScopeList;
     _Bool _bypassForceSyncLimitations;
+    id <CPLEngineStoreUserIdentifier> _transportUserIdentifier;
     NSDate *_creationDate;
     CPLScopeFilter *_filter;
     CPLEngineLibrary *_engineLibrary;
@@ -34,6 +36,7 @@
 @property(retain, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 @property(retain, nonatomic) CPLScopeFilter *filter; // @synthesize filter=_filter;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(retain, nonatomic) id <CPLEngineStoreUserIdentifier> transportUserIdentifier; // @synthesize transportUserIdentifier=_transportUserIdentifier;
 @property(readonly, copy) NSString *description;
 - (id)_phaseDescription;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;
@@ -49,6 +52,7 @@
 - (void)cancelTask;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *taskActivity;
 @property(readonly, nonatomic) _Bool forBackup;
+- (void)dealloc;
 - (id)initWithScopeIdentifiers:(id)arg1 engineLibrary:(id)arg2 filter:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties

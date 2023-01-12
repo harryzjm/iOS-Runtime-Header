@@ -18,7 +18,6 @@
 - (_Bool)_accessibilityEnumerateSiblingsWithParent:(id *)arg1 options:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_axSetIsHitTesting:(_Bool)arg1;
-- (_Bool)_axGetIsHitTesting;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

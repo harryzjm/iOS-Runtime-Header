@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSMutableArray, NSMutableDictionary, _UIFlowLayoutInfo, _UIUpdateVisibleCellsContext;
+@class NSDictionary, NSMutableDictionary, _UIFlowLayoutInfo, _UIUpdateVisibleCellsContext;
+@protocol _UICollectionViewUpdateTranslating;
 
 @interface UICollectionViewFlowLayout
 {
@@ -46,10 +47,10 @@
     NSDictionary *_rowAlignmentsOptionsDictionary;
     struct CGPoint _contentOffsetAdjustment;
     struct CGSize _contentSizeAdjustment;
-    NSMutableArray *_indexPathsToValidate;
     NSMutableDictionary *_cachedItemAttributes;
     NSMutableDictionary *_cachedItemFrames;
     _UIUpdateVisibleCellsContext *_updateVisibleCellsContext;
+    id <_UICollectionViewUpdateTranslating> _currentUpdateTranslator;
     long long _sectionInsetReference;
 }
 
@@ -92,7 +93,8 @@
 - (id)initialLayoutAttributesForFooterInInsertedSection:(long long)arg1;
 - (id)initialLayoutAttributesForHeaderInInsertedSection:(long long)arg1;
 - (id)initialLayoutAttributesForInsertedItemAtIndexPath:(id)arg1;
-- (void)finalizeCollectionViewUpdates;
+- (void)_finalizeCollectionViewUpdates;
+- (void)_prepareForCollectionViewUpdates:(id)arg1 withDataSourceTranslator:(id)arg2;
 - (void)_setNeedsLayoutComputationWithoutInvalidation;
 - (struct CGRect)_frameForFooterInSection:(long long)arg1 usingData:(id)arg2;
 - (struct CGRect)_frameForHeaderInSection:(long long)arg1 usingData:(id)arg2;

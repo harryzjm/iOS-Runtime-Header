@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIContentSizeCategoryAdjusting-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMapTable, NSString, UIColor, UIFont, UILabel, UILayoutGuide, _UIDatePickerLinkedLabelStorage;
+@class NSArray, NSDictionary, NSLayoutConstraint, NSMapTable, NSString, UIColor, UIFont, UILabel, UILayoutGuide, _UIDatePickerLinkedLabelStorage;
 
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerLinkedLabel <UIContentSizeCategoryAdjusting>
@@ -23,18 +23,23 @@ __attribute__((visibility("hidden")))
     UILayoutGuide *_contentLayoutGuide;
     NSArray *_titles;
     NSArray *_possibleTitles;
+    NSDictionary *_overrideAttributes;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *overrideAttributes; // @synthesize overrideAttributes=_overrideAttributes;
 @property(retain, nonatomic) NSArray *possibleTitles; // @synthesize possibleTitles=_possibleTitles;
 @property(retain, nonatomic) NSArray *titles; // @synthesize titles=_titles;
 @property(readonly, nonatomic) UILayoutGuide *contentLayoutGuide; // @synthesize contentLayoutGuide=_contentLayoutGuide;
 @property(retain, nonatomic) _UIDatePickerLinkedLabelStorage *storage; // @synthesize storage=_storage;
 - (void)setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;
 - (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
+@property(nonatomic) _Bool textColorFollowsTintColor;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory;
 @property(nonatomic) long long textAlignment;
 @property(retain, nonatomic) UIColor *textColor;
+@property(nonatomic) double minimumScaleFactor;
+@property(nonatomic) _Bool adjustsFontSizeToFitWidth;
 @property(retain, nonatomic) UIFont *font;
 - (id)_longestPossibleTitleForPriority:(unsigned long long)arg1 width:(double *)arg2;
 - (void)_invalidatePossibleTitleCaches;

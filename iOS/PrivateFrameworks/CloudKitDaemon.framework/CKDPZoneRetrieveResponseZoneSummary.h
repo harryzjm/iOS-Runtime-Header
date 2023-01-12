@@ -10,7 +10,6 @@
 
 @class CKDPDate, CKDPZone, CKDPZoneCapabilities, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveResponseZoneSummary : PBCodable <NSCopying>
 {
     long long _assetQuotaUsage;

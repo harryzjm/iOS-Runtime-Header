@@ -11,6 +11,7 @@
 @interface _TtC17PromotedContentUI20SafariViewController : SFSafariViewController
 {
     MISSING_TYPE *notificationObserver;
+    MISSING_TYPE *notificationCloseObserver;
     MISSING_TYPE *actionDelegate;
 }
 
@@ -19,6 +20,7 @@
 - (id)initWithURL:(id)arg1 configuration:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+@property(nonatomic, readonly) long long preferredStatusBarStyle;
 
 @end
 

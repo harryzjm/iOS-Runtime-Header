@@ -8,17 +8,19 @@
 
 #import <UserNotificationsUIKit/BNPresentable-Protocol.h>
 #import <UserNotificationsUIKit/BNPresentableObservable-Protocol.h>
+#import <UserNotificationsUIKit/BNPresentableUniquelyIdentifying-Protocol.h>
 #import <UserNotificationsUIKit/NCCarPlayBannerContentViewDelegate-Protocol.h>
 
-@class NCCarPlayBannerContentView, NCNotificationRequest, NSHashTable, NSString, UITapGestureRecognizer;
-@protocol NCCarPlayBannerPresentableViewControllerDelegate;
+@class NCCarPlayBannerContentView, NCNotificationRequest, NSHashTable, NSString, NSUUID, UITapGestureRecognizer;
+@protocol BNPresentableContext, NCCarPlayBannerPresentableViewControllerDelegate;
 
-@interface NCCarPlayBannerPresentableViewController : UIViewController <NCCarPlayBannerContentViewDelegate, BNPresentable, BNPresentableObservable>
+@interface NCCarPlayBannerPresentableViewController : UIViewController <NCCarPlayBannerContentViewDelegate, BNPresentable, BNPresentableObservable, BNPresentableUniquelyIdentifying>
 {
     NCCarPlayBannerContentView *_bannerContentView;
     NSHashTable *_observers;
     UITapGestureRecognizer *_contentSelectPressGesture;
     _Bool _fillsContainer;
+    NSUUID *_uniqueIdentifier;
     NCNotificationRequest *_notificationRequest;
     id <NCCarPlayBannerPresentableViewControllerDelegate> _delegate;
 }
@@ -43,11 +45,13 @@
 - (void)presentableWillDisappearAsBanner:(id)arg1 withReason:(id)arg2;
 - (void)presentableDidAppearAsBanner:(id)arg1;
 - (void)presentableWillAppearAsBanner:(id)arg1;
+@property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 - (id)presentableDescription;
 @property(readonly, nonatomic) UIViewController *viewController;
 @property(readonly, copy, nonatomic) NSString *requestIdentifier;
 @property(readonly, copy, nonatomic) NSString *requesterIdentifier;
 @property(readonly, copy) NSString *description;
+- (_Bool)bn_shouldAnimateViewTransitionToSize:(struct CGSize)arg1;
 - (struct CGSize)preferredContentSizeWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
 - (struct UIEdgeInsets)bannerContentOutsets;
 - (void)viewWillDisappear:(_Bool)arg1;
@@ -63,6 +67,7 @@
 @property(readonly, nonatomic, getter=isDraggingDismissalEnabled) _Bool draggingDismissalEnabled;
 @property(readonly, nonatomic, getter=isDraggingInteractionEnabled) _Bool draggingInteractionEnabled;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <BNPresentableContext> presentableContext;
 @property(readonly, nonatomic) long long presentableType;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic, getter=isTouchOutsideDismissalEnabled) _Bool touchOutsideDismissalEnabled;

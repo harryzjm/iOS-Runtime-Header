@@ -9,7 +9,7 @@
 #import <CarPlaySupport/CPListDataSource-Protocol.h>
 #import <CarPlaySupport/UITableViewDataSource-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UITableView;
+@class NSIndexPath, NSString, UITableView;
 
 @interface CPSDataSource : NSObject <CPListDataSource, UITableViewDataSource>
 {
@@ -37,7 +37,6 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-@property(readonly, nonatomic) NSArray *items;
 - (long long)numberOfItemsInSection:(long long)arg1;
 @property(readonly, nonatomic) NSIndexPath *firstItemIndexPath;
 @property(readonly, nonatomic) long long numberOfItems;

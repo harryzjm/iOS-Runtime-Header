@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary, NSSet;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionCompositionalLayoutDynamicAnimator
@@ -14,15 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (void)updateAllItemsFromCurrentState;
-- (void)removeItemBehaviorForIdentifier:(id)arg1;
-- (void)addItemBehavior:(id)arg1;
-@property(readonly, nonatomic) NSSet *visibleItemIdentifiers;
-@property(readonly, nonatomic) NSArray *visibleItems;
-@property(readonly, nonatomic) NSArray *visibleItemBehaviors;
-- (id)behaviorForIdentifier:(id)arg1;
 - (_Bool)_animatorStep:(double)arg1;
-- (id)initWithReferenceSystem:(id)arg1 invalidationHandler:(CDUnknownBlockType)arg2;
 
 @end
 

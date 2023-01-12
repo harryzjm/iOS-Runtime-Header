@@ -14,6 +14,7 @@
 - (void)clickDriver:(id <_UIClickInteractionDriving>)arg1 shouldBegin:(void (^)(unsigned long long))arg2;
 
 @optional
+- (_Bool)clickDriver:(id <_UIClickInteractionDriving>)arg1 shouldBeDelayedByGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (_Bool)clickDriver:(id <_UIClickInteractionDriving>)arg1 shouldDelayGestureRecognizer:(UIGestureRecognizer *)arg2;
 - (void)clickDriver:(id <_UIClickInteractionDriving>)arg1 didUpdateHighlightProgress:(double)arg2;
 @end

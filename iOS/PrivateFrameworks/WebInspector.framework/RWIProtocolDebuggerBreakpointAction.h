@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic) _Bool emulateUserGesture;
 @property(nonatomic) int identifier;
 @property(copy, nonatomic) NSString *data;
 @property(nonatomic) long long type;

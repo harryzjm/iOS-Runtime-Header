@@ -16,14 +16,10 @@
 }
 
 - (void).cxx_destruct;
-- (void)_lock_unregisterObserver:(id)arg1 featureIdentifier:(id)arg2;
 - (void)unregisterObserver:(id)arg1;
 - (void)unregisterObserver:(id)arg1 featureIdentifier:(id)arg2;
 - (void)registerObserver:(id)arg1 featureIdentifier:(id)arg2 queue:(id)arg3;
-- (_Bool)_insertCodableOnboardingCompletions:(id)arg1 syncProvenance:(long long)arg2 error:(id *)arg3 inaccessabilityHandler:(CDUnknownBlockType)arg4;
 - (_Bool)insertCodableOnboardingCompletions:(id)arg1 syncProvenance:(long long)arg2 error:(id *)arg3;
-- (void)_notifyObserversOfFeatureIdentifiers:(id)arg1;
-- (_Bool)_performWriteTransactionAndNotifyObserversWithError:(id *)arg1 block:(CDUnknownBlockType)arg2 inaccessibilityHandler:(CDUnknownBlockType)arg3;
 - (_Bool)resetOnboardingCompletionsForFeature:(id)arg1 error:(id *)arg2;
 - (_Bool)insertOnboardingCompletion:(id)arg1 error:(id *)arg2;
 - (id)onboardingCompletionsForLowestVersionOfFeatureIdentifier:(id)arg1 error:(id *)arg2;

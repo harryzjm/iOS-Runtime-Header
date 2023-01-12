@@ -11,6 +11,9 @@
 }
 
 + (id)INMessageForOutgoingIMMessage:(id)arg1 toChat:(id)arg2 personProvider:(id)arg3;
++ (id)GroupAttachments:(id)arg1;
++ (id)INMessagesForSPIMessage:(id)arg1 personProvider:(id)arg2;
++ (id)makeINMessage:(long long)arg1 message:(id)arg2 numberOfAttachments:(id)arg3 personProvider:(id)arg4 referencedINMessage:(id)arg5 content:(id)arg6;
 + (id)INMessageForSPIMessage:(id)arg1 personProvider:(id)arg2;
 + (id)INPersonsForSPIHandles:(id)arg1 personProvider:(id)arg2;
 + (id)spiHandleForIMHandle:(id)arg1 isMe:(_Bool)arg2;

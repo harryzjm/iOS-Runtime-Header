@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSNumber, NSString;
+@class HKChartSummaryTrendModel, NSMutableArray, NSNumber, NSString;
 
 @interface HKOverlayRoomWalkingViewController
 {
@@ -12,6 +12,7 @@
     NSString *_quantityTypeIdentifier;
     NSMutableArray *_contextDelegates;
     long long _preferredOverlay;
+    HKChartSummaryTrendModel *_trendModel;
 }
 
 - (void).cxx_destruct;
@@ -20,12 +21,13 @@
 - (id)_buildWalkingAverageDataSourceWithUnitController:(id)arg1 displayType:(id)arg2 healthStore:(id)arg3;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
 - (id)initialSelectedContextForMode:(long long)arg1;
+- (id)createChartOverlayViewController;
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
 - (id)showAllFiltersButtonTitle;
 - (id)controllerTitleWithApplicationItems:(id)arg1;
 - (void)viewDidLoad;
-- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5;
+- (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3 identifier:(id)arg4 preferredOverlay:(long long)arg5 trendModel:(id)arg6;
 
 @end
 

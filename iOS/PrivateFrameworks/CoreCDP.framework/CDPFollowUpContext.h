@@ -19,6 +19,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)contextForConfirmExistingSecret;
++ (id)contextForSecureTerms;
 + (id)contextForSettingUpBiometrics;
 + (id)contextForRecoveryKeyRepair;
 + (id)contextForOfflinePasscodeChange;

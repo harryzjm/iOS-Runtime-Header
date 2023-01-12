@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     double _yawAngle;
     long long _orientation;
     struct CGSize _imageSize;
-    CDStruct_0b004a15 _imageModulationOptions;
+    CDStruct_910f5d27 _imageModulationOptions;
     struct CGRect _cropRect;
     struct CGRect _canvasFrame;
 }
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double pitchAngle; // @synthesize pitchAngle=_pitchAngle;
 @property(nonatomic) double straightenAngle; // @synthesize straightenAngle=_straightenAngle;
 @property(nonatomic) __weak id <PUCropTransformedImageViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) CDStruct_0b004a15 imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
+@property(nonatomic) CDStruct_910f5d27 imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
 @property(readonly, nonatomic) NUComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
 @property(retain, nonatomic) NUComposition *autoloopComposition; // @synthesize autoloopComposition=_autoloopComposition;
 @property(retain, nonatomic) NUMediaView *videoMediaView; // @synthesize videoMediaView=_videoMediaView;

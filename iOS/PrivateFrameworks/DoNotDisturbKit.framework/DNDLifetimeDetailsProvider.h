@@ -8,7 +8,7 @@
 
 #import <DoNotDisturbKit/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, EKCalendarVisibilityManager, EKEvent, EKEventStore, NSArray, NSString, _CLPlaceInference;
+@class CLLocationManager, EKCalendarVisibilityManager, EKEvent, EKEventStore, NSArray, NSString, NSTimer, _CLPlaceInference;
 @protocol DNDLifetimeDetailsProviderDelegate, OS_dispatch_queue;
 
 @interface DNDLifetimeDetailsProvider : NSObject <CLLocationManagerDelegate>
@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_queue> *_eventStoreQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
     _Bool _monitoringLifetimes;
+    NSTimer *_refreshTimer;
     CLLocationManager *_locationManager;
     _CLPlaceInference *_currentPlaceInference;
     EKEventStore *_eventStore;
@@ -29,6 +30,11 @@
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <DNDLifetimeDetailsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSArray *availableLifetimeDetails; // @synthesize availableLifetimeDetails=_availableLifetimeDetails;
+- (void)_systemTimeChanged;
+- (id)_nextRefreshTimerFireDate;
+- (void)_queue_scheduleRefreshTimerIfNeeded;
+- (void)_scheduleRefreshTimerIfNeeded;
+- (id)_eventStoreQueue_eventForCalendarEventLifetime:(id)arg1;
 - (void)_eventStoreQueue_requestRelevantEvent;
 - (void)_queue_requestLifetimeDetails;
 - (void)_queue_resetLifetimeDetails;
@@ -45,6 +51,7 @@
 - (void)startUpdatingLifetimeDetails;
 - (void)resetLifetimeDetails;
 - (void)requestLifetimeDetails;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

@@ -29,7 +29,7 @@
     double _lastReportedCallTime;
 }
 
-+ (void)_checkIfNecessaryVoIPFrameworksAreLinked;
++ (void)_assertIfCallKitNotLinked;
 + (id)_pushTypeToMachServiceName;
 - (void).cxx_destruct;
 @property(nonatomic) double lastReportedCallTime; // @synthesize lastReportedCallTime=_lastReportedCallTime;
@@ -61,7 +61,6 @@
 - (void)complicationRegistrationSucceededWithDeviceToken:(id)arg1;
 - (void)voipRegistrationFailed;
 - (void)voipPayloadReceived:(id)arg1 mustPostCall:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)voipPayloadReceived:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)voipRegistrationSucceededWithDeviceToken:(id)arg1;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;

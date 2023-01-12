@@ -18,6 +18,7 @@
 + (_Bool)shouldUseTranscoderGeneratedPreviewSize;
 + (id)fallbackFilenamePrefix;
 + (id)UTITypes;
++ (_Bool)isPreviewable;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIImage *vCardImage; // @synthesize vCardImage=_vCardImage;
 @property(nonatomic) _Bool vCardParsingFailed; // @synthesize vCardParsingFailed=_vCardParsingFailed;
@@ -32,14 +33,16 @@
 - (id)contactCardPayloadFileURL:(id)arg1;
 - (id)previewItemTitle;
 - (id)previewItemURL;
+- (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
 - (struct CGSize)bbSize;
 - (id)subtitle;
 - (id)icon;
 - (id)title;
 - (_Bool)supportsBlastDoor;
-- (Class)coloredBalloonViewClass;
+- (Class)placeholderBalloonViewClass;
 - (Class)previewBalloonViewClass;
+- (Class)balloonViewClass;
 - (int)mediaType;
 - (_Bool)generatePreviewOutOfProcess;
 - (id)attachmentSummary:(unsigned long long)arg1;

@@ -11,6 +11,7 @@
 @protocol SVXClientSessionServicing <NSObject>
 @property(nonatomic) __weak id <SVXClientSessionServiceDelegate> delegate;
 @property(readonly, nonatomic) long long currentState;
+- (void)fetchAlarmAndTimerFiringContextWithCompletion:(void (^)(SVXAlarmAndTimerFiringContext *))arg1;
 - (void)fetchStateWithCompletion:(void (^)(long long))arg1;
 @end
 

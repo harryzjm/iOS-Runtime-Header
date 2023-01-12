@@ -6,33 +6,63 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSString;
+#import <SpringBoardHome/SBHMultiplexingViewControllerObserver-Protocol.h>
 
-@interface SBHWidgetContainerViewController : UIViewController
+@class NSString, UIView;
+@protocol SBHWidgetContainerViewControllerDelegate;
+
+@interface SBHWidgetContainerViewController : UIViewController <SBHMultiplexingViewControllerObserver>
 {
+    _Bool _requiresClippingToBounds;
+    _Bool _showsSnapshotWhenDeactivated;
     UIViewController *_widgetViewController;
     unsigned long long _gridSizeClass;
     NSString *_applicationName;
+    id <SBHWidgetContainerViewControllerDelegate> _delegate;
+    unsigned long long _userVisibilityStatus;
+    UIView *_deactivationSnapshotView;
+    struct SBIconApproximateLayoutPosition _approximateLayoutPosition;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIView *deactivationSnapshotView; // @synthesize deactivationSnapshotView=_deactivationSnapshotView;
+@property(nonatomic) struct SBIconApproximateLayoutPosition approximateLayoutPosition; // @synthesize approximateLayoutPosition=_approximateLayoutPosition;
+@property(nonatomic) _Bool showsSnapshotWhenDeactivated; // @synthesize showsSnapshotWhenDeactivated=_showsSnapshotWhenDeactivated;
+@property(nonatomic) _Bool requiresClippingToBounds; // @synthesize requiresClippingToBounds=_requiresClippingToBounds;
+@property(nonatomic) unsigned long long userVisibilityStatus; // @synthesize userVisibilityStatus=_userVisibilityStatus;
+@property(nonatomic) __weak id <SBHWidgetContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property(readonly, nonatomic) unsigned long long gridSizeClass; // @synthesize gridSizeClass=_gridSizeClass;
 @property(readonly, nonatomic) UIViewController *widgetViewController; // @synthesize widgetViewController=_widgetViewController;
+- (void)_updateWidgetVisibility;
+- (id)_widgetExtensionBundleIdentifier;
+- (id)_avocadoWidget;
 - (id)_avocadoViewController;
 - (_Bool)_canShowWhileLocked;
+- (void)_clearDeactivationSnapshotView;
+- (void)multiplexingViewControllerWillDeactivate:(id)arg1;
+- (void)multiplexingViewControllerDidActivate:(id)arg1;
 @property(nonatomic) unsigned long long presentationMode;
-@property(nonatomic, getter=isVisiblySettled) _Bool visiblySettled;
 @property(nonatomic) _Bool allowsEdgeAntialiasing;
 @property(nonatomic, getter=isBlockedForScreenTimeExpiration) _Bool blockedForScreenTimeExpiration;
 @property(nonatomic, getter=isPaused) _Bool paused;
-@property(nonatomic, getter=isPrivateModeEnabled) _Bool privateModeEnabled;
 - (id)widgetContextMenuController;
 - (id)cancelTouchesForCurrentEventInHostedContent;
 - (id)snapshotView;
+@property(readonly, nonatomic) _Bool wantsSystemMaterialBackground;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (id)widgetContainerView;
 - (void)loadView;
 - (id)initWithWidgetViewController:(id)arg1 gridSizeClass:(unsigned long long)arg2 applicationName:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

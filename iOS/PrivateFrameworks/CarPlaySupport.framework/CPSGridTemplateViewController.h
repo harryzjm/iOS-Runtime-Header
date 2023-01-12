@@ -7,17 +7,19 @@
 #import <CarPlaySupport/CPGridTemplateProviding-Protocol.h>
 #import <CarPlaySupport/CPSButtonDelegate-Protocol.h>
 
-@class CPGridTemplate, NSArray, NSString;
+@class CPGridTemplate, CPSGridTemplateCollectionView, NSString;
 
 @interface CPSGridTemplateViewController <CPSButtonDelegate, CPGridTemplateProviding>
 {
-    NSArray *_gridButtons;
+    CPSGridTemplateCollectionView *_gridView;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *gridButtons; // @synthesize gridButtons=_gridButtons;
+@property(nonatomic) __weak CPSGridTemplateCollectionView *gridView; // @synthesize gridView=_gridView;
 - (void)didSelectButton:(id)arg1;
+- (void)reloadTemplate:(id)arg1;
 - (void)setControl:(id)arg1 enabled:(_Bool)arg2;
+- (id)_prepareCPSGridButtonsForButtons:(id)arg1;
 - (id)_buttonForIdentifier:(id)arg1;
 - (void)_viewDidLoad;
 - (_Bool)_wantsNowPlayingButton;

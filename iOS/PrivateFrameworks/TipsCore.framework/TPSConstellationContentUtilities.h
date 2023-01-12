@@ -10,6 +10,7 @@
 {
 }
 
++ (id)contentClasses;
 + (id)hrefForLinkMark:(id)arg1;
 + (id)textForContentNode:(id)arg1;
 + (long long)markTypeForMarkDictionary:(id)arg1;

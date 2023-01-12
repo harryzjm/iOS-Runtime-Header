@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEORouteRoadMatcher;
+@class GEOComposedRoute, GEOPathMatcher;
 
 @interface GEORouteMatcher : NSObject
 {
     GEOComposedRoute *_route;
     _Bool _useStrictInitialOnRouteCriteria;
-    GEORouteRoadMatcher *_routeRoadMatcher;
     _Bool _shouldSnapRouteMatchToRoute;
     _Bool _useMatchedCoordinateForMatching;
+    GEOPathMatcher *_pathMatcher;
 }
 
 - (void).cxx_destruct;

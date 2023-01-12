@@ -20,12 +20,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)HMACWithPayload:(id)arg1 nonce:(id)arg2;
 - (void).cxx_destruct;
-@property(nonatomic) __weak id owner; // @synthesize owner=_owner;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (_Bool)isCorrectForPayload:(id)arg1;
 - (id)initWithPayload:(id)arg1;
 
 @end

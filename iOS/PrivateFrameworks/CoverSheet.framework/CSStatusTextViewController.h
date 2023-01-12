@@ -6,7 +6,7 @@
 
 #import <CoverSheet/SBFRemoteBasebandLoggingObserver-Protocol.h>
 
-@class CSStatusTextView, MCProfileConnection, NSString, SBFRemoteBasebandLoggingManager;
+@class CSStatusTextView, MCProfileConnection, NSString, SBFRemoteBasebandLoggingManager, SBLockScreenDefaults;
 @protocol CSStatusTextViewControllerDelegate;
 
 @interface CSStatusTextViewController <SBFRemoteBasebandLoggingObserver>
@@ -15,6 +15,7 @@
     NSString *_overrideFooterText;
     MCProfileConnection *_profileConnection;
     SBFRemoteBasebandLoggingManager *_basebandLoggingManager;
+    SBLockScreenDefaults *_lockScreenDefaults;
     id <CSStatusTextViewControllerDelegate> _delegate;
 }
 

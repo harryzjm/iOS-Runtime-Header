@@ -9,17 +9,24 @@
 #import <IDS/NSCopying-Protocol.h>
 #import <IDS/NSSecureCoding-Protocol.h>
 
+@class NSString;
+
 @interface IDSPhoneSubscription : NSObject <NSSecureCoding, NSCopying>
 {
     long long _subscriptionSlot;
+    NSString *_labelID;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)phoneSubscriptionWithLabelID:(id)arg1;
 + (id)phoneSubscriptionWithSubscriptionSlot:(long long)arg1;
++ (id)phoneSubscriptionWithSubscriptionSlot:(long long)arg1 andLabelID:(id)arg2;
 + (id)phoneSubscriptionWithSIM:(id)arg1;
 + (id)phoneSubscriptionsFromCTSIMs:(id)arg1;
 + (id)CTSIMSFromPhoneSubscriptions:(id)arg1;
-@property(readonly, nonatomic) long long subscriptionSlot; // @synthesize subscriptionSlot=_subscriptionSlot;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *labelID; // @synthesize labelID=_labelID;
+@property(nonatomic) long long subscriptionSlot; // @synthesize subscriptionSlot=_subscriptionSlot;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -27,7 +34,7 @@
 - (_Bool)isEqualToPhoneSubscription:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (id)initWithSubscriptionSlot:(long long)arg1;
+- (id)initWithSubscriptionSlot:(long long)arg1 labelID:(id)arg2;
 - (id)matchingSim;
 
 @end

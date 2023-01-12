@@ -10,7 +10,7 @@
 #import <SpringBoardHome/SBViewControllerTransitionCoordinator-Protocol.h>
 
 @class BSUIAnimationFactory, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIView;
-@protocol SBHWidgetConfigurationAnimationContext, SBViewControllerTransitionContextDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
+@protocol SBHViewControllerTransitionAnimationContext, SBViewControllerTransitionContextDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
 @interface SBViewControllerTransitionContext : NSObject <SBViewControllerContextTransitioning, SBViewControllerTransitionCoordinator>
 {
@@ -117,7 +117,7 @@
 @property(retain, nonatomic) id <UIViewControllerAnimatedTransitioning> animator;
 - (void)dealloc;
 - (id)init;
-@property(readonly, nonatomic) id <SBHWidgetConfigurationAnimationContext> widgetConfigurationAnimationContext;
+@property(retain, nonatomic) id <SBHViewControllerTransitionAnimationContext> animationContext;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

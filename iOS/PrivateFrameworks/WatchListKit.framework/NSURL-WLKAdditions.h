@@ -9,5 +9,6 @@
 @interface NSURL (WLKAdditions)
 + (id)wlk_sortedQueryItemsFromDictionary:(id)arg1;
 + (id)wlk_URLWithServerConfig:(id)arg1 endpoint:(id)arg2 relativeToBaseURL:(_Bool)arg3 queryParameters:(id)arg4 suppressParameterEncoding:(_Bool)arg5;
++ (id)wlk_URLWithServerConfig:(id)arg1 routeName:(id)arg2 queryParameters:(id)arg3 suppressParameterEncoding:(_Bool)arg4;
 @end
 

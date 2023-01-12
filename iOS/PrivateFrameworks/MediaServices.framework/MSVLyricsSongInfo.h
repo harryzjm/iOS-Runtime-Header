@@ -12,6 +12,7 @@
 {
     long long _type;
     double _songDuration;
+    double _leadingSilence;
     NSArray *_songwriters;
     NSString *_lyricGenId;
     NSString *_language;
@@ -29,6 +30,7 @@
 @property(copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property(copy, nonatomic) NSString *lyricGenId; // @synthesize lyricGenId=_lyricGenId;
 @property(retain, nonatomic) NSArray *songwriters; // @synthesize songwriters=_songwriters;
+@property(nonatomic) double leadingSilence; // @synthesize leadingSilence=_leadingSilence;
 @property(nonatomic) double songDuration; // @synthesize songDuration=_songDuration;
 @property(nonatomic) long long type; // @synthesize type=_type;
 - (id)_sortLyricsLinesByStartTime:(id)arg1;

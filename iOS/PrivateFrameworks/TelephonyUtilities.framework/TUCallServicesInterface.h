@@ -13,13 +13,14 @@
 #import <TelephonyUtilities/TUCallServicesXPCClient-Protocol.h>
 #import <TelephonyUtilities/TURouteControllerActions-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, NSXPCConnection, TUCallCenter, TUCallNotificationManager, TUCallServicesClientCapabilities, TURouteController;
+@class NSArray, NSDate, NSMapTable, NSString, NSXPCConnection, TUCallCenter, TUCallNotificationManager, TUCallServicesClientCapabilities, TURouteController;
 @protocol OS_dispatch_queue, TUCallContainerPrivate, TUCallServicesXPCServer;
 
 @interface TUCallServicesInterface : NSObject <TUCallServicesXPCClient, TUCallServicesProxyCallActions, TUCallServicesClientCapabilitiesActions, TUAudioDeviceControllerActions, TURouteControllerActions, TUCallFilterControllerActions>
 {
     _Bool _hasRequestedInitialState;
     _Bool _hasReceivedInitialState;
+    _Bool _shouldHandleServerDisconnect;
     _Bool _hasServerLaunched;
     int _connectionRequestNotificationToken;
     id <TUCallServicesXPCServer> _server;
@@ -27,6 +28,7 @@
     TUCallCenter *_callCenter;
     TURouteController *_localRouteController;
     TURouteController *_pairedHostDeviceRouteController;
+    NSDate *_lastDaemonConnectTime;
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
     NSArray *_currentCalls;
@@ -41,11 +43,13 @@
 @property(readonly, nonatomic) TUCallNotificationManager *callNotificationManager; // @synthesize callNotificationManager=_callNotificationManager;
 @property(readonly, nonatomic) NSMapTable *uniqueProxyIdentifierToProxyCall; // @synthesize uniqueProxyIdentifierToProxyCall=_uniqueProxyIdentifierToProxyCall;
 @property(copy, nonatomic) NSArray *currentCalls; // @synthesize currentCalls=_currentCalls;
+@property(nonatomic) _Bool shouldHandleServerDisconnect; // @synthesize shouldHandleServerDisconnect=_shouldHandleServerDisconnect;
 @property(nonatomic) _Bool hasReceivedInitialState; // @synthesize hasReceivedInitialState=_hasReceivedInitialState;
 @property(nonatomic) _Bool hasRequestedInitialState; // @synthesize hasRequestedInitialState=_hasRequestedInitialState;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property(readonly, nonatomic) int connectionRequestNotificationToken; // @synthesize connectionRequestNotificationToken=_connectionRequestNotificationToken;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(nonatomic) NSDate *lastDaemonConnectTime; // @synthesize lastDaemonConnectTime=_lastDaemonConnectTime;
 @property(retain, nonatomic) TURouteController *pairedHostDeviceRouteController; // @synthesize pairedHostDeviceRouteController=_pairedHostDeviceRouteController;
 @property(retain, nonatomic) TURouteController *localRouteController; // @synthesize localRouteController=_localRouteController;
 @property(nonatomic) __weak TUCallCenter *callCenter; // @synthesize callCenter=_callCenter;
@@ -70,13 +74,18 @@
 - (id)routesByUniqueIdentifierForRouteController:(id)arg1;
 - (oneway void)setCurrentAudioOutputDeviceToDeviceWithUID:(id)arg1;
 - (oneway void)setCurrentAudioInputDeviceToDeviceWithUID:(id)arg1;
+- (oneway void)sendUserScoreToRTCReporting:(id)arg1 withScore:(int)arg2;
 - (oneway void)activateInCallUIWithActivityContinuationIdentifier:(id)arg1;
 - (oneway void)shouldAllowRingingCallStatusIndicator:(_Bool)arg1;
 - (oneway void)shouldSuppressInCallStatusBar:(_Bool)arg1;
+- (oneway void)setSharingScreen:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setIsSendingVideo:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setDownlinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setUplinkMuted:(_Bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)sendMMIOrUSSDCodeWithRequest:(id)arg1;
+- (oneway void)setBluetoothAudioFormatForCallWithUniqueProxyIdentifier:(id)arg1 bluetoothAudioFormat:(long long)arg2;
+- (oneway void)setSharingScreen:(_Bool)arg1 attributes:(id)arg2 forCallWithUniqueProxyIdentifier:(id)arg3;
+- (oneway void)setScreenShareAttributesForCallWithUniqueProxyIdentifier:(id)arg1 attributes:(id)arg2;
 - (oneway void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(id)arg1 presentationState:(int)arg2;
 - (oneway void)setRemoteVideoPresentationSizeForCallWithUniqueProxyIdentifier:(id)arg1 size:(struct CGSize)arg2;
 - (oneway void)enteredBackgroundForAllCalls;
@@ -97,6 +106,7 @@
 - (oneway void)ungroupCallWithUniqueProxyIdentifier:(id)arg1;
 - (oneway void)groupCallWithUniqueProxyIdentifier:(id)arg1 withOtherCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)disconnectCallWithUniqueProxyIdentifier:(id)arg1;
+- (oneway void)requestVideoUpgradeForCallWithUniqueProxyIdentifier:(id)arg1;
 - (oneway void)unholdCallWithUniqueProxyIdentifier:(id)arg1;
 - (oneway void)holdCallWithUniqueProxyIdentifier:(id)arg1;
 - (oneway void)answerCallWithRequest:(id)arg1;
@@ -105,6 +115,7 @@
 - (id)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) id <TUCallContainerPrivate> callContainer;
 - (void)handleServerDisconnect;
+- (void)handleServerDisconnectIfNecessary;
 - (void)handleServerReconnect;
 - (void)waitForInitialStateIfNecessary;
 - (void)fetchCurrentCalls;
@@ -121,6 +132,7 @@
 - (void)_updateCurrentCallsWithoutNotifications:(id)arg1;
 - (void)_updateCurrentCalls:(id)arg1;
 - (void)_registerCall:(id)arg1;
+- (void)_ignorePendingServerDisconnectionHandlers;
 - (void)_tearDownXPCConnection;
 - (void)_setUpXPCConnection;
 - (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;

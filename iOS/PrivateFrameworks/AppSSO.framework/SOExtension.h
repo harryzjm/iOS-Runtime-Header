@@ -41,14 +41,19 @@
 - (void)_connectContextToSessionWithRequestIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setupSessionHelperForIOSWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setupSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_setupNonUISessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_finishedSettingUpSession:(id)arg1;
 - (void)_setupSessionIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_setupNonUISessionIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)finishAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)authorizationDidCompleteWithCredential:(id)arg1 error:(id)arg2;
 - (void)presentAuthorizationViewControllerWithHints:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginAuthorizationWithServiceXPCEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestAuthorizationViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setupNonUISessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setupExtension;
 - (id)initWithExtension:(id)arg1;
 

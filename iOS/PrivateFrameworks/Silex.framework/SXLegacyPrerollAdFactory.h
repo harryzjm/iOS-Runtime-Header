@@ -8,24 +8,22 @@
 
 #import <Silex/SXVideoAdProviderFactory-Protocol.h>
 
-@class NSString, SXAdController, SXViewport;
-@protocol SVVolumeProviding, SXScrollObserverManager;
+@class NSString, SXViewport;
+@protocol SXScrollObserverManager, SXVolumeProviding;
 
 @interface SXLegacyPrerollAdFactory : NSObject <SXVideoAdProviderFactory>
 {
     SXViewport *_viewport;
     id <SXScrollObserverManager> _scrollObserverManager;
-    id <SVVolumeProviding> _volumeProvider;
-    SXAdController *_adController;
+    id <SXVolumeProviding> _volumeProvider;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) SXAdController *adController; // @synthesize adController=_adController;
-@property(readonly, nonatomic) id <SVVolumeProviding> volumeProvider; // @synthesize volumeProvider=_volumeProvider;
+@property(readonly, nonatomic) id <SXVolumeProviding> volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 @property(readonly, nonatomic) id <SXScrollObserverManager> scrollObserverManager; // @synthesize scrollObserverManager=_scrollObserverManager;
 @property(readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 - (id)createVideoAdProviderForComponentView:(id)arg1 videoPlayerViewController:(id)arg2 analyticsReporter:(id)arg3;
-- (id)initWithViewport:(id)arg1 adController:(id)arg2 scrollObserverManager:(id)arg3 volumeProvider:(id)arg4;
+- (id)initWithViewport:(id)arg1 scrollObserverManager:(id)arg2 volumeProvider:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,11 +9,11 @@
 __attribute__((visibility("hidden")))
 @interface WebCookieObserverAdapter : NSObject
 {
-    struct CookieStorageObserver *observer;
+    void *observer;
 }
 
 - (void)cookiesChangedNotificationHandler:(id)arg1;
-- (id)initWithObserver:(struct CookieStorageObserver *)arg1;
+- (id)initWithObserver:(void *)arg1;
 
 @end
 

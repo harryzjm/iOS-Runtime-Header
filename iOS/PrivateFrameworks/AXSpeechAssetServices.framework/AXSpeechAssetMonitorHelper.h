@@ -23,6 +23,7 @@
 - (void)_registerForReachabilityNotifications;
 - (_Bool)_areMobileAssetsPresent;
 - (void)_checkClientForUpdates:(_Bool)arg1;
+- (_Bool)_platformSupportsMobileAssetVoices;
 - (id)_assetUpdaterClient;
 - (id)speechAssetUpdaterClient;
 - (id)init;

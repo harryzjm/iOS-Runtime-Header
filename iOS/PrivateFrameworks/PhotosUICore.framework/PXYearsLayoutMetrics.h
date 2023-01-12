@@ -10,10 +10,12 @@
     long long _orientation;
     double _interitemSpacing;
     double _defaultItemAspectRatio;
+    double _multiColumnAspectRatio;
     struct UIEdgeInsets _padding;
 }
 
 @property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property(nonatomic) double multiColumnAspectRatio; // @synthesize multiColumnAspectRatio=_multiColumnAspectRatio;
 @property(nonatomic) double defaultItemAspectRatio; // @synthesize defaultItemAspectRatio=_defaultItemAspectRatio;
 @property(nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;

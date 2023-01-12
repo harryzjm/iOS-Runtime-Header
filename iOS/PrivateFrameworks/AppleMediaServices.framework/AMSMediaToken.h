@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSCopying-Protocol.h>
 #import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface AMSMediaToken : NSObject <NSSecureCoding>
+@interface AMSMediaToken : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _valid;
     NSDate *_expirationDate;
@@ -21,11 +22,12 @@
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isValid) _Bool valid; // @synthesize valid=_valid;
-@property(readonly, nonatomic) NSString *tokenString; // @synthesize tokenString=_tokenString;
+@property(readonly, copy, nonatomic) NSString *tokenString; // @synthesize tokenString=_tokenString;
 @property(readonly, nonatomic) double lifetime; // @synthesize lifetime=_lifetime;
 @property(readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (_Bool)willExpireWithin:(double)arg1;

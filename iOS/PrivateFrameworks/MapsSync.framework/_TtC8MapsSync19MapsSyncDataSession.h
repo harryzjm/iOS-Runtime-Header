@@ -17,8 +17,10 @@
     MISSING_TYPE *_backgroundReadContext;
     MISSING_TYPE *_writeContext;
     MISSING_TYPE *_localOnly;
-    MISSING_TYPE *_loadSemaphore;
+    MISSING_TYPE *_loadLock;
     MISSING_TYPE *_hasLoadedStores;
+    MISSING_TYPE *_historyAnalyzer;
+    MISSING_TYPE *_loadHandlers;
     MISSING_TYPE *_pendingReadContextFetches;
     MISSING_TYPE *_pendingBackgroundReadContextFetches;
     MISSING_TYPE *_pendingWriteContextFetches;
@@ -27,6 +29,8 @@
 
 + (_Bool)shouldMoveStoreAsideWithError:(id)arg1;
 + (_Bool)shouldRetryStoreLoadAfterErrorWithError:(id)arg1;
++ (void)whenReadyWithCompletion:(CDUnknownBlockType)arg1;
++ (void)resetWithCompletion:(CDUnknownBlockType)arg1;
 + (void)reset;
 + (void)startXPCServer;
 + (_Bool)isInMemoryOnly;
@@ -46,6 +50,9 @@
 @property(nonatomic, readonly) NSString *typeString;
 - (_Bool)hasLoadedStore;
 - (void)resetInMemoryStore;
+- (void)whenReadyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)checkStoreLoadedWithCompletion:(CDUnknownBlockType)arg1;
+- (void)resetInMemoryStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteAll;
 - (id)unsafeGetWriteContextAndReturnError:(id *)arg1;
 - (void)getWriteContextWithCompletion:(CDUnknownBlockType)arg1;

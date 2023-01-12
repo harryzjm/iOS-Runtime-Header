@@ -21,6 +21,7 @@
     NSArray *_keysToFetch;
     long long _sortOrder;
     unsigned long long _batchSize;
+    unsigned long long _decoderBatchSize;
     unsigned long long _serialNumber;
 }
 
@@ -31,6 +32,7 @@
 @property(nonatomic) _Bool allowsBatching; // @synthesize allowsBatching=_allowsBatching;
 @property(nonatomic) _Bool onlyMainStore; // @synthesize onlyMainStore=_onlyMainStore;
 @property(readonly) unsigned long long serialNumber; // @synthesize serialNumber=_serialNumber;
+@property(nonatomic) unsigned long long decoderBatchSize; // @synthesize decoderBatchSize=_decoderBatchSize;
 @property(nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property(nonatomic) _Bool disallowsEncodedFetch; // @synthesize disallowsEncodedFetch=_disallowsEncodedFetch;
 @property(nonatomic) long long sortOrder; // @synthesize sortOrder=_sortOrder;
@@ -41,6 +43,7 @@
 @property(nonatomic) _Bool rankSort; // @synthesize rankSort=_rankSort;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)acceptVisitor:(id)arg1;
 - (_Bool)requiresMeContactAuthorization;
 - (id)effectiveKeysToFetch;
 - (id)effectivePredicate;

@@ -7,7 +7,7 @@
 #import <MTLCapture/MTLCommandBuffer-Protocol.h>
 
 @class MTLComputePassDescriptor, MTLRenderPassDescriptor, NSDictionary, NSMutableDictionary;
-@protocol MTLComputeCommandEncoder, MTLDebugCommandEncoder, MTLEvent, MTLHeap, MTLRenderCommandEncoder, MTLResource;
+@protocol MTLComputeCommandEncoder, MTLDebugCommandEncoder, MTLEvent, MTLHeap, MTLRenderCommandEncoder, MTLResource, MTLResourceGroupSPI;
 
 @protocol MTLCommandBufferSPI <MTLCommandBuffer>
 @property(readonly, nonatomic) NSMutableDictionary *userDictionary;
@@ -15,6 +15,9 @@
 @property(getter=isProfilingEnabled) _Bool profilingEnabled;
 - (void)addPurgedHeap:(id <MTLHeap>)arg1;
 - (void)addPurgedResource:(id <MTLResource>)arg1;
+- (void)encodeDashboardFinalizeForResourceGroup:(id <MTLResourceGroupSPI>)arg1 dashboard:(unsigned long long)arg2 values:(const unsigned long long *)arg3 indices:(const unsigned long long *)arg4 count:(unsigned long long)arg5;
+- (void)encodeDashboardFinalizeForResourceGroup:(id <MTLResourceGroupSPI>)arg1 dashboard:(unsigned long long)arg2 value:(unsigned long long)arg3 forIndex:(unsigned long long)arg4;
+- (void)encodeDashboardTagForResourceGroup:(id <MTLResourceGroupSPI>)arg1;
 
 @optional
 @property(readonly) unsigned long long globalTraceObjectID;

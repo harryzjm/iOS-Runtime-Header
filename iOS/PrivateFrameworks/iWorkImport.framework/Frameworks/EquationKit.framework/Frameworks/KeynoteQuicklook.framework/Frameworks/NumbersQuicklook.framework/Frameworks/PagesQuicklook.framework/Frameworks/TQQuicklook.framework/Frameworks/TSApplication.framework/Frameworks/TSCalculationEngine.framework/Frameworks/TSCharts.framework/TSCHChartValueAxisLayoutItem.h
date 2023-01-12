@@ -8,11 +8,11 @@
 
 @interface TSCHChartValueAxisLayoutItem
 {
-    TSCHChartValueAxisLabelsLayoutItem *mValueLabels;
+    TSCHChartValueAxisLabelsLayoutItem *_axisValueLabelsLayoutItem;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) TSCHChartValueAxisLabelsLayoutItem *axisValueLabelsLayoutItem; // @synthesize axisValueLabelsLayoutItem=mValueLabels;
+@property(retain, nonatomic) TSCHChartValueAxisLabelsLayoutItem *axisValueLabelsLayoutItem; // @synthesize axisValueLabelsLayoutItem=_axisValueLabelsLayoutItem;
 - (struct CGRect)protected_layoutSpaceRectForAllLabels;
 - (id)renderersWithRep:(id)arg1;
 - (void)p_layoutLabelsNow;

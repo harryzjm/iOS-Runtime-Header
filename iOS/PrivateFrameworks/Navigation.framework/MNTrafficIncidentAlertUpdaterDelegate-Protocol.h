@@ -12,7 +12,6 @@
 - (_Bool)trafficIncidentAlertUpdaterIsCurrentlySpeaking:(MNTrafficIncidentAlertUpdater *)arg1;
 - (double)trafficIncidentAlertUpdaterTimeUntilNextAnnouncement:(MNTrafficIncidentAlertUpdater *)arg1;
 - (double)trafficIncidentAlertUpdaterTimeSinceLastAnnouncement:(MNTrafficIncidentAlertUpdater *)arg1;
-- (double)trafficIncidentAlertUpdaterRemainingTimeOnRoute:(MNTrafficIncidentAlertUpdater *)arg1;
 - (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 didSwitchToNewRoute:(GEOComposedRoute *)arg2 forAlert:(MNTrafficIncidentAlert *)arg3;
 - (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 updatedAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)trafficIncidentAlertUpdater:(MNTrafficIncidentAlertUpdater *)arg1 didDismissAlert:(MNTrafficIncidentAlert *)arg2 withReroute:(_Bool)arg3;

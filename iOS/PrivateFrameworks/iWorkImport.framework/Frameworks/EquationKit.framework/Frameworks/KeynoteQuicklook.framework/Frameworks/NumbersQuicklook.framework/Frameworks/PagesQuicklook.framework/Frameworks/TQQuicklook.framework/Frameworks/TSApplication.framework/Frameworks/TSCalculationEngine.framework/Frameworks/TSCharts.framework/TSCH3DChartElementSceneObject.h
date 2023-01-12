@@ -12,7 +12,7 @@
 + (_Bool)shouldCreateMeshSeriesStorage;
 + (void)setLowDetailedGeometriesForScene:(id)arg1;
 + (id)scenePropertiesKey;
-+ (id)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
++ (id)partWithEnumerator:(id)arg1 layoutSettings:(CDStruct_c48db077)arg2;
 + (_Bool)isHorizontalChart;
 - (_Bool)transparencyDepthMask;
 - (void)p_processItems:(id)arg1 processItemsClass:(Class)arg2;
@@ -21,7 +21,7 @@
 - (_Bool)shouldDelayForChartOpacity:(float)arg1;
 - (float)chartOpacityForScene:(id)arg1;
 - (_Bool)p_isRenderPassDelayedForDelegate:(id)arg1;
-- (_Bool)applyEffectsForProperties:(id)arg1 series:(id)arg2 index:(const tvec2_3b141483 *)arg3 pipeline:(id)arg4 injectEffectsUsingBlock:(CDUnknownBlockType)arg5;
+- (_Bool)applyEffectsForProperties:(id)arg1 series:(id)arg2 index:(const void *)arg3 pipeline:(id)arg4 injectEffectsUsingBlock:(CDUnknownBlockType)arg5;
 - (struct ElementRenderPass)render:(id)arg1 pushMatrix:(_Bool)arg2 delayedPass:(_Bool)arg3;
 - (void)postrenderElement:(id)arg1;
 - (void)renderElement:(id)arg1;
@@ -35,13 +35,13 @@
 - (void)render:(id)arg1;
 - (_Bool)shouldRenderEachValue;
 - (_Bool)shouldRenderSeries:(id)arg1;
-- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const tvec3_17f03ce0 *)arg1 scene:(id)arg2;
+- (tvec3_17f03ce0)adjustedScaleForInfoChartScale:(const void *)arg1 scene:(id)arg2;
 - (float)depthForScene:(id)arg1;
 - (void)renderLabelsSceneObject:(id)arg1 pipeline:(id)arg2;
-- (tvec2_84d5962d)labelOffset:(unsigned int)arg1 labelSize:(const tvec2_84d5962d *)arg2 textureSize:(const tvec2_84d5962d *)arg3 dataSpaceValue:(float)arg4;
+- (tvec2_84d5962d)labelOffset:(unsigned int)arg1 labelSize:(const void *)arg2 textureSize:(const void *)arg3 dataSpaceValue:(float)arg4;
 - (tvec2_84d5962d)labelObjectSpacePosition:(unsigned int)arg1 axisValue:(double)arg2 intercept:(double)arg3;
 - (void)updateLightingEffectsState:(id)arg1 scene:(id)arg2;
-- (id)geometryForSeries:(id)arg1 index:(const tvec2_3b141483 *)arg2 scene:(id)arg3;
+- (id)geometryForSeries:(id)arg1 index:(const void *)arg2 scene:(id)arg3;
 - (id)modelEnumeratorFromScene:(id)arg1;
 - (id)elementPropertiesFromScene:(id)arg1;
 - (id)scenePartForScene:(id)arg1;

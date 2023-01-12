@@ -18,14 +18,7 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long imageType; // @synthesize imageType=_imageType;
-@property(readonly, nonatomic) unsigned long long index; // @synthesize index=_index;
-@property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
-@property(readonly, nonatomic) struct CGImageSource *imageSource; // @synthesize imageSource=_imageSource;
 - (void)dealloc;
-- (id)image;
-- (void)captureFrameProperties;
-- (id)initWithImageSource:(struct CGImageSource *)arg1 index:(unsigned long long)arg2 cache:(id)arg3 type:(long long)arg4;
 
 @end
 

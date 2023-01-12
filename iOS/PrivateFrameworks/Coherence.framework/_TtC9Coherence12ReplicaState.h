@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *identity;
     MISSING_TYPE *localCounter;
+    MISSING_TYPE *localAlternateCounter;
     MISSING_TYPE *_replica;
 }
 

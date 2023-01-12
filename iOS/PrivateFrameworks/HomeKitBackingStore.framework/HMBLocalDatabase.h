@@ -13,11 +13,11 @@
 
 @interface HMBLocalDatabase : HMFObject <HMFLogging>
 {
+    HMFUnfairLock *_lock;
     HMBModelContainer *_modelContainer;
     id <HMBLocalDatabaseDelegate> _delegate;
     NSOperationQueue *_queue;
     HMBLocalSQLContext *_local;
-    HMFUnfairLock *_lock;
     NSMapTable *_openZonesByZoneID;
     CDUnknownBlockType _localZoneFactory;
 }
@@ -26,7 +26,6 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) CDUnknownBlockType localZoneFactory; // @synthesize localZoneFactory=_localZoneFactory;
 @property(readonly, nonatomic) NSMapTable *openZonesByZoneID; // @synthesize openZonesByZoneID=_openZonesByZoneID;
-@property(readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property(retain, nonatomic) HMBLocalSQLContext *local; // @synthesize local=_local;
 @property(retain, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property(nonatomic) __weak id <HMBLocalDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
@@ -36,15 +35,13 @@
 - (_Bool)removeLocalDataForZone:(id)arg1 error:(id *)arg2;
 - (id)removeZone:(id)arg1;
 - (id)openedZoneWithMirror:(id)arg1;
-- (id)openExistingZoneWithMirror:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
-- (id)openOrCreateZoneWithMirror:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
+- (id)openZoneWithMirror:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)openedZoneWithZoneID:(id)arg1;
-- (id)openExistingZoneWithZoneID:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
-- (id)openOrCreateZoneWithZoneID:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
+- (id)openZoneWithZoneID:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)fetchZonesWithError:(id *)arg1;
 - (void)dealloc;
-- (id)initWithLocalSQLContext:(id)arg1 modelContainer:(id)arg2;
-- (id)initWithDatastorePath:(id)arg1 readOnly:(_Bool)arg2 modelContainer:(id)arg3;
+- (id)initWithLocalSQLContext:(id)arg1 configuration:(id)arg2;
+- (id)initWithDatastorePath:(id)arg1 configuration:(id)arg2;
 - (void)detectedLocalCorruptionWithInfo:(id)arg1;
 - (_Bool)shouldLogPrivateInformation;
 

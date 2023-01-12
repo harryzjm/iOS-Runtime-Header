@@ -12,8 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface MLNearestNeighborsLinearIndex : NSObject <MLNearestNeighborsIndex, NSSecureCoding>
 {
-    vector_7584168e vData;
-    vector_7584168e vDataL2Squared;
+    vector_8ca568ff vData;
+    vector_8ca568ff vDataL2Squared;
     unsigned long long _numDataPoints;
     unsigned long long _numDimensions;
 }
@@ -26,9 +26,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)dataPointCount;
-- (_Bool)updateWithData:(const vector_7584168e *)arg1 error:(id *)arg2;
-- (vector_392775c5)findNearestNeighbors:(unsigned long long)arg1 toQueryPoint:(const vector_7584168e *)arg2;
-- (id)initWithDataset:(vector_7584168e)arg1 numberOfDimensions:(unsigned long long)arg2;
+- (_Bool)updateWithData:(const void *)arg1 error:(id *)arg2;
+- (vector_7105b4ee)findNearestNeighbors:(unsigned long long)arg1 toQueryPoint:(const void *)arg2;
+- (id)initWithDataset:(vector_8ca568ff)arg1 numberOfDimensions:(unsigned long long)arg2;
 
 @end
 

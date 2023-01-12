@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet, _IDSService;
+@class NSArray, NSDictionary, NSSet, NSString, _IDSService;
 
 @interface IDSService : NSObject
 {
@@ -19,6 +19,21 @@
 + (_Bool)checkMessageSize:(unsigned long long)arg1 priority:(long long)arg2;
 - (void).cxx_destruct;
 - (void)scheduleTransactionLogTask:(id)arg1;
+- (void)reportAction:(long long)arg1 ofTempURI:(id)arg2 fromURI:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (id)pseudonymPropertiesWithFeatureID:(id)arg1 scopeID:(id)arg2 expiryDurationInSeconds:(double)arg3;
+- (void)revokePseudonym:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)renewPseudonym:(id)arg1 forUpdatedExpiryEpoch:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)renewPseudonym:(id)arg1 forUpdatedDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)provisionPseudonymForURI:(id)arg1 withProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)provisionPseudonymForURI:(id)arg1 withProperties:(id)arg2 requestProperties:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)provisionPseudonymWithProperties:(id)arg1 requestProperties:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)provisionPseudonymWithProperties:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)pseudonymsForMaskedURI:(id)arg1 matchingProperties:(id)arg2;
+- (id)pseudonymsForMaskedURI:(id)arg1;
+- (id)pseudonymForPseudonymURI:(id)arg1;
+@property(readonly, nonatomic) NSDictionary *pseudonymURIMap;
+@property(readonly, nonatomic) NSArray *URIs;
+- (long long)maxEffectivePayloadSize;
 - (id)_accountWithAlias:(id)arg1;
 - (void)deactivateAliases:(id)arg1;
 - (void)deactivateAlias:(id)arg1;
@@ -48,6 +63,7 @@
 - (id)firstRoutableInternetDestinationForSelf;
 - (id)linkedDeviceForFromID:(id)arg1 withRelationship:(long long)arg2;
 - (id)deviceForFromID:(id)arg1;
+@property(readonly, copy, nonatomic) NSString *serviceIdentifier;
 @property(readonly, copy, nonatomic) NSArray *devices;
 @property(readonly, copy, nonatomic) NSSet *internalAccounts;
 @property(readonly, copy, nonatomic) NSSet *accounts;
@@ -62,6 +78,8 @@
 - (_Bool)getProgressUpdateForIdentifier:(id)arg1 error:(id *)arg2;
 - (_Bool)sendResourceAtURL:(id)arg1 metadata:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;
 - (_Bool)sendData:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id *)arg4 error:(id *)arg5;
+- (_Bool)sendInvitationUpdate:(id)arg1 toDestination:(id)arg2 options:(id)arg3 identifier:(id *)arg4 error:(id *)arg5;
+- (_Bool)sendInvitation:(id)arg1 toDestination:(id)arg2 options:(id)arg3 identifier:(id *)arg4 error:(id *)arg5;
 - (_Bool)sendAccessoryData:(id)arg1 toAccessoryID:(id)arg2 accessToken:(id)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (_Bool)sendData:(id)arg1 toDestinations:(id)arg2 priority:(long long)arg3 options:(id)arg4 identifier:(id *)arg5 error:(id *)arg6;
 - (_Bool)sendData:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id *)arg6 error:(id *)arg7;

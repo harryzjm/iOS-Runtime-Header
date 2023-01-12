@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long token; // @synthesize token=_token;
 @property(retain, nonatomic) NSMutableArray *params; // @synthesize params=_params;
-- (id)initWithHapticCommand:(const struct HapticCommand *)arg1;
+- (id)initWithHapticCommand:(const void *)arg1;
 
 @end
 

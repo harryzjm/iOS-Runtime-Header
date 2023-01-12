@@ -10,7 +10,7 @@
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
-@class CAMAnalyticsCaptureEvent, CLHeading, CLLocation, NSArray, NSString, NSURL;
+@class CAMAnalyticsCaptureEvent, CAMSemanticStyle, CAMTextRegionResult, CLHeading, CLLocation, NSArray, NSString, NSURL;
 @protocol CAMStillImageCaptureRequestDelegate;
 
 @interface CAMMutableStillImageCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin, CAMMutableCaptureRequestEncodingBehavior>
@@ -55,11 +55,15 @@
 @property(copy, nonatomic) NSURL *localCTMVideoDestinationURL; // @dynamic localCTMVideoDestinationURL;
 @property(copy, nonatomic) NSString *irisIdentifier; // @dynamic irisIdentifier;
 @property(nonatomic) struct CGSize desiredPreviewSize; // @dynamic desiredPreviewSize;
+@property(copy, nonatomic) CAMTextRegionResult *textAnalysisRegion; // @dynamic textAnalysisRegion;
+@property(copy, nonatomic) NSString *textAnalysisIdentifier; // @dynamic textAnalysisIdentifier;
 @property(nonatomic) _Bool stillDuringVideo; // @dynamic stillDuringVideo;
 @property(nonatomic) _Bool wantsHighResolutionStills; // @dynamic wantsHighResolutionStills;
 - (void)setAspectRatio:(long long)arg1;
 @property(nonatomic) _Bool wantsSquareCrop; // @dynamic wantsSquareCrop;
 @property(nonatomic) _Bool wantsAudioForCapture; // @dynamic wantsAudioForCapture;
+@property(retain, nonatomic) CAMSemanticStyle *semanticStyle; // @dynamic semanticStyle;
+@property(nonatomic) _Bool wantsSemanticSceneFilter; // @dynamic wantsSemanticSceneFilter;
 @property(nonatomic) _Bool wantsAutoDualCameraFusion; // @dynamic wantsAutoDualCameraFusion;
 @property(nonatomic) long long photoQualityPrioritization; // @dynamic photoQualityPrioritization;
 @property(retain, nonatomic) NSArray *originalFilters; // @dynamic originalFilters;

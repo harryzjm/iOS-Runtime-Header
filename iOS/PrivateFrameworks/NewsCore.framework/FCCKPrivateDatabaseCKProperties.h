@@ -17,11 +17,6 @@
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSArray *containers; // @synthesize containers=_containers;
-@property(readonly, nonatomic) CKDatabase *secureDatabase; // @synthesize secureDatabase=_secureDatabase;
-@property(readonly, nonatomic) CKDatabase *databaseWithZoneWidePCS; // @synthesize databaseWithZoneWidePCS=_databaseWithZoneWidePCS;
-@property(readonly, nonatomic) CKDatabase *database; // @synthesize database=_database;
-- (id)initWithContainers:(id)arg1 database:(id)arg2 databaseWithZoneWidePCS:(id)arg3 secureDatabase:(id)arg4;
 
 @end
 

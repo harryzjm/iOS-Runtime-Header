@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LSAppClipMetadata, LSApplicationProxy, LSiTunesMetadata, NSArray, NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID, _LSApplicationState, _LSDiskUsage, _LSLazyPropertyList;
+@class LSAppClipMetadata, LSApplicationProxy, LSStashedAppMetadata, LSiTunesMetadata, NSArray, NSData, NSDictionary, NSSet, NSString, NSURL, NSUUID, _LSApplicationState, _LSDiskUsage, _LSLazyPropertyList;
 
 @interface LSApplicationRecord
 {
@@ -12,12 +12,13 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)_propertyClasses;
-+ (id)systemPlaceholderEnumerator;
-+ (id)enumeratorOnVolumeAtURL:(id)arg1 options:(unsigned long long)arg2;
-+ (id)enumeratorWithOptions:(unsigned long long)arg1;
++ (void)setUpdateAvailabilityForApplicationsWithBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)_alternateIconQueue;
 + (id)applicationRecordsForUserActivityDomainName:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
 + (id)applicationRecordsForUserActivityType:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
++ (id)systemPlaceholderEnumerator;
++ (id)enumeratorOnVolumeAtURL:(id)arg1 options:(unsigned long long)arg2;
++ (id)enumeratorWithOptions:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)_detachFromContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const void *)arg4;
 - (id)_initWithContext:(struct LSContext *)arg1 persistentIdentifierData:(const struct LSPersistentIdentifierData *)arg2 length:(unsigned long long)arg3;
@@ -64,7 +65,16 @@
 - (id)managedPersonasWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)bundleVersionWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)_initWithNode:(id)arg1 bundleIdentifier:(id)arg2 placeholderBehavior:(long long)arg3 systemPlaceholder:(_Bool)arg4 itemID:(unsigned long long)arg5 forceInBundleContainer:(_Bool)arg6 context:(struct LSContext *)arg7 error:(id *)arg8;
+@property(readonly) LSApplicationRecord *linkedParentApplication;
+- (void)_LSRecord_resolve__linkedParentApplicationBundleID;
+@property(readonly) NSString *_linkedParentApplicationBundleID;
+- (id)_linkedParentApplicationBundleIDWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
+- (void)_LSRecord_resolve_managementDomain;
+@property(readonly) NSString *managementDomain;
+- (id)managementDomainWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
+@property(readonly, getter=isSwiftPlaygroundsApp) _Bool swiftPlaygroundsApp;
 @property(readonly) _Bool requiresNativeExecution;
+@property(readonly) NSArray *spotlightActions;
 @property(readonly) _Bool supportsSpotlightQueryContinuation;
 @property(readonly, getter=isMailClient) _Bool mailClient;
 @property(readonly, getter=isWebBrowser) _Bool webBrowser;
@@ -116,6 +126,8 @@
 @property(readonly, getter=isSystemPlaceholder) _Bool systemPlaceholder;
 - (_Bool)isSystemPlaceholderWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 @property(readonly, getter=isPlaceholder) _Bool placeholder;
+- (void)setUpdateAvailability:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly) unsigned long long updateAvailability;
 @property(readonly, getter=isUpdate) _Bool update;
 @property(readonly, getter=isBeta) _Bool beta;
 - (void)_LSRecord_resolve_shortVersionString;
@@ -133,9 +145,6 @@
 - (void)_LSRecord_resolve_counterpartIdentifiers;
 @property(readonly) NSArray *counterpartIdentifiers;
 - (id)counterpartIdentifiersWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
-- (void)_LSRecord_resolve_teamIdentifier;
-@property(readonly) NSString *teamIdentifier;
-- (id)teamIdentifierWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)initWithStoreItemIdentifier:(unsigned long long)arg1 error:(id *)arg2;
 - (id)initWithBundleIdentifierOfSystemPlaceholder:(id)arg1 error:(id *)arg2;
 - (id)initWithBundleIdentifier:(id)arg1 allowPlaceholder:(_Bool)arg2 error:(id *)arg3;
@@ -200,6 +209,9 @@
 - (_Bool)getGenericTranslocationTargetURL:(id *)arg1 error:(id *)arg2;
 @property(readonly, getter=isWrapped) _Bool wrapped;
 @property(readonly, getter=isWrapper) _Bool wrapper;
+- (void)_LSRecord_resolve_stashedAppMetadata;
+@property(readonly) LSStashedAppMetadata *stashedAppMetadata;
+- (id)stashedAppMetadataWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (void)_LSRecord_resolve_installSessionIdentifier;
 @property(readonly) NSData *installSessionIdentifier;
 - (id)installSessionIdentifierWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
@@ -247,9 +259,14 @@
 - (id)typeForInstallMachineryWithContext:(struct LSContext *)arg1 tableID:(unsigned int)arg2 unitID:(unsigned int)arg3 unitBytes:(const struct LSBundleData *)arg4;
 - (id)initForInstallMachineryWithBundleIdentifier:(id)arg1 placeholder:(_Bool)arg2 error:(id *)arg3;
 - (id)initForInstallMachineryWithBundleIdentifier:(id)arg1 error:(id *)arg2;
+@property(readonly) NSArray *identities;
+- (id)getApplicationExtensionDiagnosticDescriptionWithError:(id *)arg1;
+- (id)linkedChildApplicationRecordEnumeratorWithOptions:(unsigned long long)arg1;
 
 // Remaining properties
+@property(readonly) unsigned int codeSignatureVersion;
 @property(readonly, nonatomic) LSApplicationProxy *compatibilityObject; // @dynamic compatibilityObject;
+@property(readonly) NSString *teamIdentifier; // @dynamic teamIdentifier;
 
 @end
 

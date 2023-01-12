@@ -10,17 +10,18 @@
 
 @interface TSCH3DLabelResource <TSCH3DStringIndexableResource>
 {
-    _Bool mSizeAndOffsetCalculated;
-    tvec2_84d5962d mTightSize;
-    tvec2_84d5962d mSize;
-    tvec2_84d5962d mLabelRenderOffset;
-    tvec2_84d5962d mBitmapLabelRenderOffset;
-    TSCH3DLabelResourceAttributes *mAttributes;
+    _Bool _sizeAndOffsetCalculated;
+    tvec2_84d5962d _tightSize;
+    tvec2_84d5962d _size;
+    tvec2_84d5962d _labelRenderOffset;
+    tvec2_84d5962d _bitmapLabelRenderOffset;
+    TSCH3DLabelResourceAttributes *_attributes;
 }
 
 + (id)resourceWithLabelAttributes:(id)arg1;
 - (id).cxx_construct;
-@property(copy, nonatomic) TSCH3DLabelResourceAttributes *attributes; // @synthesize attributes=mAttributes;
+- (void).cxx_destruct;
+@property(copy, nonatomic) TSCH3DLabelResourceAttributes *attributes; // @synthesize attributes=_attributes;
 - (tvec2_3b141483)labelSizeWithSamples:(double)arg1;
 - (tvec2_3b141483)p_clampedLabelSampledSizeReturningClampedRatio:(float *)arg1;
 @property(readonly, nonatomic) tvec2_3b141483 clampedLabelSampledSize;
@@ -32,9 +33,8 @@
 - (void)p_calculateSizeAndOffset;
 - (id)get;
 - (void)setString:(id)arg1;
-- (void)dealloc;
-- (id)initWithLabelAttributes:(id)arg1;
 - (id)init;
+- (id)initWithLabelAttributes:(id)arg1;
 
 @end
 

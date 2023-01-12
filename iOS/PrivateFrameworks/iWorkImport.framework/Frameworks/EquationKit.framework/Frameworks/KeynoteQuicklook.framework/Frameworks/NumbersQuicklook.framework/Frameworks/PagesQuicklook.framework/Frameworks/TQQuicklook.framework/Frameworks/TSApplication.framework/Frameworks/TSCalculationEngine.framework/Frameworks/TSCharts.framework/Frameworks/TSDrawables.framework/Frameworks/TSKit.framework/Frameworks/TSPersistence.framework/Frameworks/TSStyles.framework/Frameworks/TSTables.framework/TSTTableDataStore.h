@@ -14,7 +14,7 @@
 @interface TSTTableDataStore : TSPContainedObject <TSTCompatibilityVersionProviding>
 {
     _Atomic int _iteratorRunningCount;
-    vector_e87daf7b _mergedRects;
+    vector_fad096c6 _mergedRects;
     TSTTableDataList *_styleDataList;
     TSTTableDataList *_conditionalStyleSetDataList;
     TSTTableDataList *_stringDataList;
@@ -79,11 +79,14 @@
 @property(retain, nonatomic) TSTTableTileStorage *tileStorage; // @synthesize tileStorage=_tileStorage;
 @property(nonatomic) _Bool upgrading; // @synthesize upgrading=_upgrading;
 @property(retain, nonatomic) TSKCustomFormatList *pasteboardCustomFormatList; // @synthesize pasteboardCustomFormatList=_pasteboardCustomFormatList;
-- (vector_73284f0b)accumulateCurrentCellsConcurrentlyInRow:(struct TSUModelRowIndex)arg1 rowInfo:(id)arg2 atColumns:(vector_5e7df3d8 *)arg3 usingCellCreationBlock:(CDUnknownBlockType)arg4;
+- (void)tsceValueForCellStorageRef:(struct TSTCellStorage *)arg1 cellCoord:(const struct TSUCellCoord *)arg2 hostTableUID:(const struct TSKUIDStruct *)arg3 outValue:(struct TSCEValue *)arg4;
+- (struct TSCEValue)tsceValueFromCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
+- (vector_cdf5f6a1)accumulateCurrentCellsConcurrentlyInRow:(struct TSUModelRowIndex)arg1 rowInfo:(id)arg2 atColumns:(void *)arg3 usingCellCreationBlock:(CDUnknownBlockType)arg4;
 - (void)didApplyConcurrentCellMap:(id)arg1;
 - (void)prepareToApplyConcurrentCellMap:(id)arg1;
-- (void)setCellsConcurrently:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormula:(_Bool)arg5 clearImportWarnings:(_Bool)arg6;
+- (void)setCellsConcurrently:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormula:(_Bool)arg5 clearImportWarnings:(_Bool)arg6;
 - (void)updateDataListsConcurrentlyWithConcurrentCellMap:(id)arg1 clearImportWarnings:(_Bool)arg2;
+- (_Bool)auditColumnRowCellCountsReturningResult:(id *)arg1 hasUndercounts:(_Bool *)arg2;
 - (_Bool)auditRowInfoCellCountsReturningResult:(id *)arg1;
 - (_Bool)auditDatalistDuplicationReturningResult:(id *)arg1;
 - (_Bool)confirmRefCountsReturningResult:(id *)arg1;
@@ -94,13 +97,13 @@
 - (void)beginIteration;
 @property(nonatomic) _Bool shouldUseWideRows;
 @property(readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
-- (void)saveToArchive:(struct DataStore *)arg1 archiver:(id)arg2 isInTheDocument:(_Bool)arg3;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2 isInTheDocument:(_Bool)arg3;
 - (void)embiggenTableForUpgrade;
 - (id)p_cellMapForUpgradingToBraveNewCell;
-- (void)upgradeDataStoreCellStorageIfNeededWithTableUID:(const UUIDData_5fbc143e *)arg1 conditionalStyleOwner:(id)arg2;
+- (void)upgradeDataStoreCellStorageIfNeededWithTableUID:(const struct TSKUIDStruct *)arg1 conditionalStyleOwner:(id)arg2;
 - (_Bool)_needToUpgradeCellStorage;
 - (void)setStorageParentToInfo:(id)arg1;
-- (id)initWithArchive:(const struct DataStore *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
 - (id)initWithOwner:(id)arg1;
 - (void)replaceConditionalStyleSetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceFormulasUsingBlock:(CDUnknownBlockType)arg1;
@@ -115,6 +118,7 @@
 - (id)addPasteboardCustomFormat:(id)arg1 toDocument:(id)arg2 updatingPasteboardFormat:(_Bool)arg3;
 - (void)addPasteboardCustomFormatFromCell:(id)arg1;
 - (void)resetAlmostEverything;
+- (void)resetAllColumnRowSizes;
 - (id)p_makeALazyDatalistOfType:(int)arg1 isNewForBNC:(_Bool)arg2;
 - (id)p_makeALazyDatalistOfType:(int)arg1;
 - (_Bool)auditTilesForRowOverlapAndExtensionPastTableBounds:(struct TSUCellCoord)arg1 result:(id *)arg2;
@@ -132,7 +136,7 @@
 - (id)conditionalStyleSetDataList;
 - (void)p_loadDatalist:(id *)arg1 forLazyReference:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)p_loadDatalist:(id *)arg1 forLazyReference:(id)arg2;
-- (vector_e87daf7b)mergedRects;
+- (vector_fad096c6)mergedRects;
 - (id)formulaSpecForStorageRef:(struct TSTCellStorage *)arg1;
 - (id)formulaSpecAtCellID:(struct TSUCellCoord)arg1;
 - (id)formulaAtCellID:(struct TSUCellCoord)arg1;
@@ -155,10 +159,10 @@
 - (void)upgradeCellFormatsU2_0;
 - (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 oldPreBNCStorageRef:(CDStruct_106f10ff *)arg2 callWillModify:(_Bool)arg3;
 - (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
-- (void)setCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormulas:(_Bool)arg5 skipDirtyingNonFormulaCells:(_Bool)arg6 doRichTextDOLC:(_Bool)arg7;
-- (void)_setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(_Bool)arg6 clearImportWarnings:(_Bool)arg7 richTextDOLCHint:(_Bool *)arg8;
-- (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(_Bool)arg6 clearImportWarnings:(_Bool)arg7;
-- (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(_Bool)arg6 clearImportWarnings:(_Bool)arg7 doRichTextDOLC:(_Bool)arg8;
+- (void)setCellMap:(id)arg1 tableUID:(const struct TSKUIDStruct *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormulas:(_Bool)arg5 skipDirtyingNonFormulaCells:(_Bool)arg6 doRichTextDOLC:(_Bool)arg7;
+- (void)_setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(_Bool)arg6 clearImportWarnings:(_Bool)arg7 richTextDOLCHint:(_Bool *)arg8;
+- (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(_Bool)arg6 clearImportWarnings:(_Bool)arg7;
+- (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const struct TSKUIDStruct *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(_Bool)arg6 clearImportWarnings:(_Bool)arg7 doRichTextDOLC:(_Bool)arg8;
 - (CDStruct_c8ca99d5)p_updatePreBNCDataListsForCurrentFormat:(id)arg1 numberFormat:(id)arg2 currencyFormat:(id)arg3 dateFormat:(id)arg4 durationFormat:(id)arg5 baseFormat:(id)arg6 customFormat:(id)arg7 stepperSliderFormat:(id)arg8 mcListFormat:(id)arg9 oldPreBNCStorageRef:(CDStruct_106f10ff *)arg10 callWillModify:(_Bool)arg11;
 - (id)allRichTextStorages;
 - (_Bool)containsControlCellSpecs;
@@ -166,7 +170,7 @@
 - (_Bool)containsFormulas;
 - (_Bool)hasFormulaAtCellID:(struct TSUCellCoord)arg1;
 - (_Bool)hasFormulaSyntaxErrorAtCellID:(struct TSUCellCoord)arg1;
-- (int)valueTypeAtCellID:(struct TSUCellCoord)arg1;
+- (unsigned char)valueTypeAtCellID:(struct TSUCellCoord)arg1;
 - (id)richTextStorageForCalcEngineAtCellID:(struct TSUCellCoord)arg1 refIfAvailable:(struct TSTCellStorage *)arg2;
 - (id)stringForCalcEngineAtCellID:(struct TSUCellCoord)arg1 refIfAvailable:(struct TSTCellStorage *)arg2;
 - (id)formatForCalcEngineAtCellID:(struct TSUCellCoord)arg1 formatIsExplicitOut:(_Bool *)arg2 refIfAvailable:(struct TSTCellStorage *)arg3;
@@ -179,9 +183,10 @@
 - (_Bool)cellExistsAtCellID:(struct TSUCellCoord)arg1;
 - (_Bool)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (struct TSTCellStorage *)cellStorageRefAtCellID:(struct TSUCellCoord)arg1;
+- (id)i_rowInfoAtIndex:(unsigned int)arg1;
 - (id)i_tileStartingAtOrAfterRowIndex:(unsigned int)arg1 outTileRange:(struct _NSRange *)arg2;
 - (id)i_tileStartingAtOrBeforeRowIndex:(unsigned int)arg1 outTileRange:(struct _NSRange *)arg2;
-- (void)upgradeConditionalStylesToLinkedRefWithTableUID:(const UUIDData_5fbc143e *)arg1;
+- (void)upgradeConditionalStylesToLinkedRefWithTableUID:(const struct TSKUIDStruct *)arg1;
 - (id)commentStorageAtCellID:(struct TSUCellCoord)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfComments;
 @property(readonly, nonatomic) unsigned int numberOfConditionalStyles;
@@ -213,8 +218,8 @@
 - (void)forceLoadHeaderStorages;
 - (void)updateColumnHeaderAtIndex:(unsigned short)arg1 fromMetadata:(id)arg2;
 - (void)updateRowHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
-- (id)metadataForColumnIndex:(unsigned short)arg1 hidingAction:(unsigned char)arg2 uuid:(UUIDData_5fbc143e)arg3 defaultColumnWidth:(double)arg4;
-- (id)metadataForRowIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 uuid:(UUIDData_5fbc143e)arg3;
+- (id)metadataForColumnIndex:(unsigned short)arg1 hidingAction:(unsigned char)arg2 uuid:(struct TSKUIDStruct)arg3 defaultColumnWidth:(double)arg4;
+- (id)metadataForRowIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 uuid:(struct TSKUIDStruct)arg3;
 
 @end
 

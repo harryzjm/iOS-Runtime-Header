@@ -10,24 +10,19 @@
 
 @class NSString, _MPCProtoDelegateInfo, _MPCProtoRadioContentReference;
 
+__attribute__((visibility("hidden")))
 @interface _MPCProtoRadioCreationProperties : PBCodable <NSCopying>
 {
     _MPCProtoDelegateInfo *_accountInfo;
     _MPCProtoRadioContentReference *_nowPlayingContentReference;
     NSString *_playActivityFeatureName;
+    NSString *_playActivityQueueGroupingID;
     NSString *_radioStationID;
     NSString *_radioStationURLString;
     _MPCProtoRadioContentReference *_seedContentReference;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
-@property(retain, nonatomic) _MPCProtoDelegateInfo *accountInfo; // @synthesize accountInfo=_accountInfo;
-@property(retain, nonatomic) _MPCProtoRadioContentReference *nowPlayingContentReference; // @synthesize nowPlayingContentReference=_nowPlayingContentReference;
-@property(retain, nonatomic) _MPCProtoRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;
-@property(retain, nonatomic) NSString *radioStationURLString; // @synthesize radioStationURLString=_radioStationURLString;
-@property(retain, nonatomic) NSString *radioStationID; // @synthesize radioStationID=_radioStationID;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -35,12 +30,6 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(readonly, nonatomic) _Bool hasPlayActivityFeatureName;
-@property(readonly, nonatomic) _Bool hasAccountInfo;
-@property(readonly, nonatomic) _Bool hasNowPlayingContentReference;
-@property(readonly, nonatomic) _Bool hasSeedContentReference;
-@property(readonly, nonatomic) _Bool hasRadioStationURLString;
-@property(readonly, nonatomic) _Bool hasRadioStationID;
 
 @end
 

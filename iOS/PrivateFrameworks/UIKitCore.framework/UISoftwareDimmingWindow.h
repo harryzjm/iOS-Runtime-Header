@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) float overlayLevel; // @synthesize overlayLevel=_overlayLevel;
+- (id)_roleHint;
 - (void)updateOverlayColor;
 - (_Bool)_ignoresHitTest;
 - (id)initWithFrame:(struct CGRect)arg1;

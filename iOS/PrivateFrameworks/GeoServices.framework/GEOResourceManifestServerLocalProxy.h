@@ -11,11 +11,12 @@
 #import <GeoServices/GEOKeyBagProtectedDataDidBecomeAvailableObserver-Protocol.h>
 #import <GeoServices/GEOResourceFiltersManagerDelegate-Protocol.h>
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
+#import <GeoServices/GEOTileGroupActivationSessionDelegate-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceManifestConfiguration, GEOResourceManifestDownload, GEOResourceManifestDownloadTask, NSArray, NSError, NSMutableArray, NSOperationQueue, NSProgress, NSString, _GEOResourceManifestServerLocalProxyMigrationState;
-@protocol GEOResourceManifestServerProxyDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
+@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceManifestConfiguration, GEOResourceManifestDownload, GEOResourceManifestDownloadTask, GEOTileGroupActivationSession, NSArray, NSError, NSMutableArray, NSOperationQueue, NSProgress, NSString, geo_isolater;
+@protocol GEOResourceManifestServerProxyDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface GEOResourceManifestServerLocalProxy : NSObject <GEOResourceFiltersManagerDelegate, GEODataStateCapturing, GEOKeyBagProtectedDataDidBecomeAvailableObserver, GEOConfigChangeListenerDelegate, GEOResourceManifestServerProxy>
+@interface GEOResourceManifestServerLocalProxy : NSObject <GEOResourceFiltersManagerDelegate, GEODataStateCapturing, GEOKeyBagProtectedDataDidBecomeAvailableObserver, GEOConfigChangeListenerDelegate, GEOTileGroupActivationSessionDelegate, GEOResourceManifestServerProxy>
 {
     id <GEOResourceManifestServerProxyDelegate> _delegate;
     GEOResourceManifestDownloadTask *_manifestDownloadTask;
@@ -28,7 +29,6 @@
     NSObject<OS_dispatch_source> *_tileGroupUpdateTimer;
     GEOResourceManifestDownload *_resourceManifest;
     GEOActiveTileGroup *_activeTileGroup;
-    id <NSObject> _newActiveTileGroupTransaction;
     _Bool _started;
     unsigned long long _manifestRetryCount;
     double _lastManifestRetryTimestamp;
@@ -43,13 +43,18 @@
     GEOResourceFiltersManager *_filtersManager;
     NSArray *_tileGroupMigrators;
     unsigned long long _stateCaptureHandle;
-    _GEOResourceManifestServerLocalProxyMigrationState *_tileGroupMigrationState;
     NSProgress *_updateProgress;
     NSProgress *_currentUpdateProgress;
+    GEOTileGroupActivationSession *_tileGroupActivationSession;
+    _Bool _tileGroupActivationSessionHasFinishedFirstTileGroupChange;
+    _Bool _tileGroupActivationShouldFlushTileCache;
+    geo_isolater *_activeTileGroupIsolater;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <GEOResourceManifestServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)activationSession:(id)arg1 didCompleteWithErrors:(id)arg2;
+- (void)activationSession:(id)arg1 didChangeActiveTileGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_notifyOpportunisticManifestUpdateCompletionHandlers:(id)arg1;
 - (void)_addOpportunisticManifestUpdateCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_notifyManifestUpdateCompletionHandlers:(id)arg1;
@@ -65,7 +70,7 @@
 - (void)setManifestToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateTimerFired;
 - (void)_scheduleUpdateTimerWithTimeInterval:(double)arg1;
-- (unsigned long long)maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2;
+- (unsigned long long)maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2 outSize:(int *)arg3;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (void)deactivateResourceScale:(int)arg1;
@@ -76,7 +81,6 @@
 - (void)forceUpdate:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setCurrentUpdateType:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)updateIfNecessary:(CDUnknownBlockType)arg1;
-- (void)_updateManifest;
 - (void)_updateManifest:(CDUnknownBlockType)arg1;
 - (_Bool)_updateManifestIfNecessary:(CDUnknownBlockType)arg1;
 - (id)_manifestURL;
@@ -94,14 +98,12 @@
 - (void)_cancelManifestUpdate;
 - (void)_cancelMigrationTasks;
 - (id)migrationTaskOptions;
-- (void)_startOpportunisticMigrationToTileGroup:(id)arg1 inResourceManifest:(id)arg2 activeScales:(id)arg3 activeScenarios:(id)arg4 dataSet:(id)arg5;
 - (void)_forceChangeActiveTileGroup:(id)arg1 flushTileCache:(_Bool)arg2;
 - (void)performOpportunisticResourceLoading;
 - (void)_tileGroupTimerFired;
 - (void)_scheduleTileGroupUpdateTimerWithTimeInterval:(double)arg1;
 - (void)_considerChangingActiveTileGroup;
 - (id)_idealTileGroupToUse;
-- (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 dataSet:(id)arg4 migrationTasks:(id)arg5 flushTileCache:(_Bool)arg6 completionHandler:(CDUnknownBlockType)arg7;
 @property(retain, nonatomic) GEOActiveTileGroup *activeTileGroup;
 - (void)_loadFromDisk;
 - (void)valueChangedForGEOConfigKey:(CDStruct_065526f1)arg1;

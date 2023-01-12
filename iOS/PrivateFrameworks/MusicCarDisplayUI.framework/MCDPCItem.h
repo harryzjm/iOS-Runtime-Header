@@ -10,28 +10,34 @@
 
 @interface MCDPCItem : NSObject
 {
-    void *_contentItem;
+    _Bool _isPlayable;
+    _Bool _isContainer;
+    _Bool _isCloudItem;
     _Bool _currentlyPlaying;
+    _Bool _isExplicitItem;
+    float _playbackProgress;
+    NSString *_identifier;
+    NSString *_title;
+    NSString *_subtitle;
+    NSData *_artworkData;
     UIImage *_artworkImage;
     MCDPCModel *_model;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) void *contentItem; // @synthesize contentItem=_contentItem;
 @property(readonly, nonatomic) __weak MCDPCModel *model; // @synthesize model=_model;
 @property(retain, nonatomic) UIImage *artworkImage; // @synthesize artworkImage=_artworkImage;
+@property(readonly, nonatomic) _Bool isExplicitItem; // @synthesize isExplicitItem=_isExplicitItem;
 @property(nonatomic) _Bool currentlyPlaying; // @synthesize currentlyPlaying=_currentlyPlaying;
+@property(readonly, nonatomic) _Bool isCloudItem; // @synthesize isCloudItem=_isCloudItem;
+@property(readonly, nonatomic) _Bool isContainer; // @synthesize isContainer=_isContainer;
+@property(readonly, nonatomic) _Bool isPlayable; // @synthesize isPlayable=_isPlayable;
+@property(readonly, nonatomic) float playbackProgress; // @synthesize playbackProgress=_playbackProgress;
+@property(readonly, nonatomic) NSData *artworkData; // @synthesize artworkData=_artworkData;
+@property(readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (id)description;
-@property(readonly, nonatomic) _Bool isExplicitItem;
-@property(readonly, nonatomic) _Bool isCloudItem;
-@property(readonly, nonatomic) _Bool isPlayable;
-@property(readonly, nonatomic) _Bool isContainer;
-@property(readonly, nonatomic) float playbackProgress;
-@property(readonly, nonatomic) NSData *artworkData;
-@property(readonly, nonatomic) NSString *subtitle;
-@property(readonly, nonatomic) NSString *title;
-@property(readonly, nonatomic) NSString *identifier;
-- (void)dealloc;
 - (id)_initWithModel:(id)arg1 MRContentItem:(void *)arg2;
 
 @end

@@ -41,7 +41,7 @@
 - (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (_Bool)shouldHideFooterBelowSection:(long long)arg1;
 - (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
-- (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidUpdate:(id)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)_cancel:(id)arg1;

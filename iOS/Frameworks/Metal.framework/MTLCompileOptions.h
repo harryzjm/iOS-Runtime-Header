@@ -19,7 +19,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
-@property(nonatomic) NSString *additionalCompilerArguments; // @dynamic additionalCompilerArguments;
+@property(copy, nonatomic) NSString *additionalCompilerArguments; // @dynamic additionalCompilerArguments;
 @property(nonatomic) _Bool compileTimeStatisticsEnabled; // @dynamic compileTimeStatisticsEnabled;
 @property(nonatomic) _Bool debuggingEnabled; // @dynamic debuggingEnabled;
 @property(nonatomic) _Bool fastMathEnabled; // @dynamic fastMathEnabled;

@@ -34,10 +34,17 @@
 @property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 - (void)_clearNotificationRequestsFromIncomingSection:(id)arg1;
 - (void)stopAllRealerts;
+- (id)notificationSystemSettingsForDestination:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1;
 - (id)destination:(id)arg1 settingsForSectionIdentifier:(id)arg2;
+- (id)destination:(id)arg1 notificationRequestForUUID:(id)arg2;
 - (id)alertingControllerForDestination:(id)arg1;
+- (void)destination:(id)arg1 setSystemScheduledDeliveryEnabled:(_Bool)arg2 scheduledDeliveryTimes:(id)arg3;
+- (void)destination:(id)arg1 setScheduledDelivery:(_Bool)arg2 forSectionIdentifier:(id)arg3;
+- (void)destination:(id)arg1 setAllowsDirectMessages:(_Bool)arg2 forSectionIdentifier:(id)arg3;
+- (void)destination:(id)arg1 setAllowsTimeSensitive:(_Bool)arg2 forSectionIdentifier:(id)arg3;
 - (void)destination:(id)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forSectionIdentifier:(id)arg3;
+- (void)destination:(id)arg1 setMuted:(_Bool)arg2 untilDate:(id)arg3 forSectionIdentifier:(id)arg4 threadIdentifier:(id)arg5;
 - (void)destination:(id)arg1 setDeliverQuietly:(_Bool)arg2 forSectionIdentifier:(id)arg3;
 - (void)destination:(id)arg1 setAllowsNotifications:(_Bool)arg2 forSectionIdentifier:(id)arg3;
 - (void)destination:(id)arg1 clearNotificationRequestsFromDate:(id)arg2 toDate:(id)arg3 inSections:(id)arg4;
@@ -49,6 +56,7 @@
 @property(readonly, nonatomic) long long participantState;
 @property(readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 - (void)notificationsLoadedForSectionIdentifier:(id)arg1;
+- (void)updateNotificationSystemSettings:(id)arg1 previousSystemSettings:(id)arg2;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)withdrawNotificationRequest:(id)arg1;
 - (void)modifyNotificationRequest:(id)arg1;

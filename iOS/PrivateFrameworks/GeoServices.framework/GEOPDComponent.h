@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_values;
     NSMutableArray *_versionDomains;
     int _cacheControl;
+    int _componentId;
     int _startIndex;
     int _status;
     unsigned int _ttl;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int has_timestampFirstSeen:1;
         unsigned int has_cacheControl:1;
+        unsigned int has_componentId:1;
         unsigned int has_startIndex:1;
         unsigned int has_status:1;
         unsigned int has_ttl:1;
@@ -38,60 +40,17 @@ __attribute__((visibility("hidden")))
     } _flags;
 }
 
-+ (_Bool)isValid:(id)arg1;
-+ (Class)versionDomainType;
-+ (Class)valueType;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasTimestampFirstSeen;
 @property(nonatomic) double timestampFirstSeen;
-- (void)clearUnknownFields:(_Bool)arg1;
-@property(readonly, nonatomic) PBUnknownFields *unknownFields;
-- (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)copyTo:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-- (id)initWithJSON:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
-- (int)StringAsCacheControl:(id)arg1;
-- (id)cacheControlAsString:(int)arg1;
-@property(nonatomic) _Bool hasCacheControl;
-@property(nonatomic) int cacheControl;
-@property(retain, nonatomic) GEOPDSource *source;
-@property(readonly, nonatomic) _Bool hasSource;
-@property(nonatomic) _Bool hasVersion;
-@property(nonatomic) unsigned int version;
-- (id)versionDomainAtIndex:(unsigned long long)arg1;
-- (unsigned long long)versionDomainsCount;
-- (void)addVersionDomain:(id)arg1;
-- (void)clearVersionDomains;
-@property(retain, nonatomic) NSMutableArray *versionDomains;
-- (id)valueAtIndex:(unsigned long long)arg1;
-- (unsigned long long)valuesCount;
-- (void)addValue:(id)arg1;
-- (void)clearValues;
-@property(retain, nonatomic) NSMutableArray *values;
-@property(retain, nonatomic) GEOPDAttribution *attribution;
-@property(readonly, nonatomic) _Bool hasAttribution;
-@property(nonatomic) _Bool hasValuesAvailable;
-@property(nonatomic) int valuesAvailable;
-@property(nonatomic) _Bool hasStartIndex;
-@property(nonatomic) int startIndex;
-@property(nonatomic) _Bool hasTtl;
-@property(nonatomic) unsigned int ttl;
-- (int)StringAsStatus:(id)arg1;
-- (id)statusAsString:(int)arg1;
-@property(nonatomic) _Bool hasStatus;
-@property(nonatomic) int status;
-- (int)StringAsType:(id)arg1;
-- (id)typeAsString:(int)arg1;
-@property(nonatomic) _Bool hasType;
-@property(nonatomic) int type;
 - (_Bool)statusCodeIsValid;
 
 @end

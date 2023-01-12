@@ -19,6 +19,8 @@
 + (_Bool)isValidBRF:(id)arg1;
 + (id)brfToUnicode:(id)arg1;
 + (id)brfTable;
++ (id)unicodeToDin:(id)arg1;
++ (id)dinToUnicode:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long length;
 - (_Bool)isEqual:(id)arg1;

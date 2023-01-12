@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)fillBlipName;
 - (struct EshBlip *)fillBlipDataReference;
 - (unsigned int)fillBlipID;
-- (const struct EshTablePropVal<EshGradientStop> *)fillGradientColors;
+- (const void *)fillGradientColors;
 - (int)fillFocusBottom;
 - (int)fillFocusRight;
 - (int)fillFocusTop;

@@ -121,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (double)tableViewSpacingForExtraSeparators:(id)arg1;
 - (_Bool)tableView:(id)arg1 wantsHeaderForSection:(long long)arg2;
 - (id)indexPathForPreferredFocusedViewInTableView:(id)arg1;
+- (_Bool)tableView:(id)arg1 selectionFollowsFocusForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didUpdateFocusInContext:(id)arg2 withAnimationCoordinator:(id)arg3;
 - (_Bool)tableView:(id)arg1 shouldUpdateFocusInContext:(id)arg2;
 - (_Bool)tableView:(id)arg1 canFocusRowAtIndexPath:(id)arg2;

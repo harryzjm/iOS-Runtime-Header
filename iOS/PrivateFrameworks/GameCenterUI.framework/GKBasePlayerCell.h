@@ -20,6 +20,7 @@
 + (id)itemHeightList;
 + (_Bool)requiresConstraintBasedLayout;
 + (void)initialize;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSDictionary *metricsOverrides; // @synthesize metricsOverrides=_metricsOverrides;
 @property(retain, nonatomic) GKDashboardPlayerPhotoView *iconView; // @synthesize iconView=_iconView;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
@@ -29,7 +30,6 @@
 - (void)didUpdateModel;
 - (void)setRepresentedItem:(id)arg1;
 @property(retain, nonatomic) GKPlayer *player;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGRect)alignmentRectForText;
 

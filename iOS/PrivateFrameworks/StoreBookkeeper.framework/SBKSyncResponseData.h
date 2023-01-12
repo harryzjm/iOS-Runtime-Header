@@ -23,14 +23,14 @@ __attribute__((visibility("hidden")))
 
 + (id)deserializedResponseBodyWithTransaction:(id)arg1 responseDictionary:(id)arg2 response:(id)arg3;
 - (void).cxx_destruct;
-@property(retain) NSMutableDictionary *responseOpEntiesByKey; // @synthesize responseOpEntiesByKey=_responseOpEntiesByKey;
-@property(readonly) NSArray *successfullyDeletedKeys; // @synthesize successfullyDeletedKeys=_successfullyDeletedKeys;
-@property(readonly) NSArray *successfullyUpdatedKeys; // @synthesize successfullyUpdatedKeys=_successfullyUpdatedKeys;
-@property(readonly) NSArray *deletedKeys; // @synthesize deletedKeys=_deletedKeys;
-@property(readonly) NSArray *conflictedKeys; // @synthesize conflictedKeys=_conflictedKeys;
-@property(readonly) NSArray *updatedKeys; // @synthesize updatedKeys=_updatedKeys;
-@property(readonly, copy) NSString *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
-@property(readonly) SBKSyncTransaction *transaction; // @synthesize transaction=_transaction;
+@property(retain, nonatomic) NSMutableDictionary *responseOpEntiesByKey; // @synthesize responseOpEntiesByKey=_responseOpEntiesByKey;
+@property(readonly, nonatomic) NSArray *successfullyDeletedKeys; // @synthesize successfullyDeletedKeys=_successfullyDeletedKeys;
+@property(readonly, nonatomic) NSArray *successfullyUpdatedKeys; // @synthesize successfullyUpdatedKeys=_successfullyUpdatedKeys;
+@property(readonly, nonatomic) NSArray *deletedKeys; // @synthesize deletedKeys=_deletedKeys;
+@property(readonly, nonatomic) NSArray *conflictedKeys; // @synthesize conflictedKeys=_conflictedKeys;
+@property(readonly, nonatomic) NSArray *updatedKeys; // @synthesize updatedKeys=_updatedKeys;
+@property(readonly, copy, nonatomic) NSString *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
+@property(readonly, nonatomic) SBKSyncTransaction *transaction; // @synthesize transaction=_transaction;
 - (void)_deserializeResponseDictionary:(id)arg1 response:(id)arg2;
 - (id)payloadDataForUpdateResponseKey:(id)arg1;
 - (id)description;

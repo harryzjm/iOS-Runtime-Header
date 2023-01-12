@@ -16,6 +16,7 @@
     GKLoadableContentStateMachine *_loadingMachine;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) GKLoadableContentStateMachine *loadingMachine; // @synthesize loadingMachine=_loadingMachine;
 @property(nonatomic) double loadingIndicatorDelay; // @synthesize loadingIndicatorDelay=_loadingIndicatorDelay;
 @property(retain, nonatomic) NSArray *viewsToHideWhileLoading; // @synthesize viewsToHideWhileLoading=_viewsToHideWhileLoading;
@@ -25,7 +26,6 @@
 - (void)didExitLoadingState;
 - (void)didEnterLoadingState;
 @property(retain, nonatomic) NSString *loadingState;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

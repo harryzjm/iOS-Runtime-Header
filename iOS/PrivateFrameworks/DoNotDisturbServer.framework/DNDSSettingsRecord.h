@@ -10,30 +10,32 @@
 #import <DoNotDisturbServer/NSCopying-Protocol.h>
 #import <DoNotDisturbServer/NSMutableCopying-Protocol.h>
 
-@class DNDSBehaviorSettingsRecord, DNDSBypassSettingsRecord, DNDSScheduleSettingsRecord, NSString;
+@class DNDSBehaviorSettingsRecord, DNDSBypassSettingsRecord, DNDSConfigurationsRecord, DNDSScheduleSettingsRecord, NSString;
 
 @interface DNDSSettingsRecord : NSObject <NSCopying, NSMutableCopying, DNDSBackingStoreRecord>
 {
     DNDSBehaviorSettingsRecord *_behaviorSettings;
     DNDSBypassSettingsRecord *_phoneCallBypassSettings;
     DNDSScheduleSettingsRecord *_scheduleSettings;
+    DNDSConfigurationsRecord *_configurations;
 }
 
-+ (id)newWithDictionaryRepresentation:(id)arg1;
++ (id)newWithDictionaryRepresentation:(id)arg1 context:(id)arg2;
 + (id)migrateDictionaryRepresentation:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
 + (id)backingStoreWithFileURL:(id)arg1;
 + (id)recordWithEncodedInfo:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) DNDSConfigurationsRecord *configurations; // @synthesize configurations=_configurations;
 @property(readonly, copy, nonatomic) DNDSScheduleSettingsRecord *scheduleSettings; // @synthesize scheduleSettings=_scheduleSettings;
 @property(readonly, copy, nonatomic) DNDSBypassSettingsRecord *phoneCallBypassSettings; // @synthesize phoneCallBypassSettings=_phoneCallBypassSettings;
 @property(readonly, copy, nonatomic) DNDSBehaviorSettingsRecord *behaviorSettings; // @synthesize behaviorSettings=_behaviorSettings;
-- (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationWithContext:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)_initWithBehaviorSettings:(id)arg1 phoneCallBypassSettings:(id)arg2 scheduleSettings:(id)arg3;
+- (id)_initWithBehaviorSettings:(id)arg1 phoneCallBypassSettings:(id)arg2 scheduleSettings:(id)arg3 configurations:(id)arg4;
 - (id)_initWithRecord:(id)arg1;
 - (id)init;
 

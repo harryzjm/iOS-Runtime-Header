@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
 + (id)ProxToString:(long long)arg1;
 + (int)ProxToCoarseRange:(long long)arg1;
 + (id)reverseNSData:(id)arg1;
-+ (id)convertMacStringToNSData:(const basic_string_7c0a1c0b *)arg1;
++ (id)convertMacStringToNSData:(const void *)arg1;
 + (unsigned long long)NSDataToUInt64:(id)arg1;
-+ (basic_string_7c0a1c0b)UIntToHexString:(unsigned long long)arg1 len:(unsigned long long)arg2;
-+ (id)HexStringToNSDataMac:(const basic_string_7c0a1c0b *)arg1;
-+ (id)UUIDStringToNSDataMac:(const basic_string_7c0a1c0b *)arg1 len:(unsigned long long)arg2;
++ (basic_string_05660eb3)UIntToHexString:(unsigned long long)arg1 len:(unsigned long long)arg2;
++ (id)HexStringToNSDataMac:(const void *)arg1;
++ (id)UUIDStringToNSDataMac:(const void *)arg1 len:(unsigned long long)arg2;
 + (id)UUIDToNSDataMac:(id)arg1 len:(unsigned long long)arg2;
 + (id)NSDataMacToUUID:(id)arg1;
 

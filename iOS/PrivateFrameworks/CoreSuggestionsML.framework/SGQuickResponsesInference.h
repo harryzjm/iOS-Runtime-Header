@@ -26,12 +26,12 @@
 + (id)dynamicIndicesAndTopIsDynamic:(id)arg1 config:(id)arg2;
 + (id)normalizeStringForDeduping:(id)arg1;
 + (id)quickResponsesForMessage:(id)arg1 conversationTurns:(id)arg2 maxResponses:(unsigned long long)arg3 localeIdentifier:(id)arg4 recipientHandles:(id)arg5 chunkPath:(id)arg6 plistPath:(id)arg7 espressoBinFilePath:(id)arg8 useContactNames:(_Bool)arg9;
-+ (id)quickResponsesForMessage:(id)arg1 context:(id)arg2 time:(id)arg3 maxResponses:(unsigned long long)arg4 locale:(id)arg5 recipientHandles:(id)arg6 chunkPath:(id)arg7 plistPath:(id)arg8 espressoBinFilePath:(id)arg9 lexiconFilePath:(id)arg10;
++ (id)quickResponsesForMessage:(id)arg1 context:(id)arg2 time:(id)arg3 maxResponses:(unsigned long long)arg4 locale:(id)arg5 recipientHandles:(id)arg6 chunkPath:(id)arg7 plistPath:(id)arg8 espressoBinFilePath:(id)arg9;
 + (id)stringsForQuickResponses:(id)arg1;
 + (id)languageForLocale:(id)arg1 withLanguageDetectionForMessage:(id)arg2;
 - (void).cxx_destruct;
 - (id)addCustomResponsesToCommonResponses:(id)arg1 language:(id)arg2 locale:(id)arg3 recipient:(id)arg4 modelScores:(id)arg5 maxResponses:(unsigned long long)arg6 customResponsesParams:(id)arg7;
-- (id)quickResponsesFromReplyTextIds:(id)arg1 config:(id)arg2;
+- (id)quickResponsesFromReplyTextIds:(id)arg1 isConfident:(_Bool)arg2 config:(id)arg3;
 - (id)randomizedReplyTextIdsForSemanticClass:(unsigned long long)arg1 responseCount:(unsigned long long)arg2 config:(id)arg3;
 - (id)replyTextIdsForSemanticClass:(unsigned long long)arg1 responseCount:(unsigned long long)arg2 config:(id)arg3;
 - (id)replyTextsFromSemanticClasses:(id)arg1 config:(id)arg2;

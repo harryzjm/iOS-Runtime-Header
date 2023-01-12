@@ -11,7 +11,8 @@ __attribute__((visibility("hidden")))
 {
     struct WeakPtr<WebKit::MediaPlayerPrivateRemote, WTF::EmptyCounter> _mediaPlayerPrivateRemote;
     struct RetainPtr<CAContext> _context;
-    struct unique_ptr<WebCore::Timer, std::__1::default_delete<WebCore::Timer>> _resolveBoundsTimer;
+    unsigned char _videoGravity;
+    struct unique_ptr<WebCore::Timer, std::default_delete<WebCore::Timer>> _resolveBoundsTimer;
     _Bool _shouldRestartWhenTimerFires;
     struct Seconds _delay;
     struct CGRect _videoLayerFrame;
@@ -22,7 +23,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect videoLayerFrame; // @synthesize videoLayerFrame=_videoLayerFrame;
 - (void)resolveBounds;
 - (void)layoutSublayers;
-@property(nonatomic) struct MediaPlayerPrivateRemote *mediaPlayerPrivateRemote;
+- (_Bool)resizePreservingGravity;
+@property(nonatomic) unsigned char videoGravity;
+@property(nonatomic) void *mediaPlayerPrivateRemote;
 - (id)init;
 
 @end

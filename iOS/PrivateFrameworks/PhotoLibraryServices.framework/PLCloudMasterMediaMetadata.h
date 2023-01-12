@@ -13,6 +13,7 @@
 + (id)entityName;
 - (id)payloadsForChangedKeys:(id)arg1;
 - (void)_addPayloadIfValidForAsset:(id)arg1 changedKeys:(id)arg2 toPayloads:(id)arg3 modelProperties:(id)arg4;
+- (id)payloadID;
 
 // Remaining properties
 @property(retain, nonatomic) PLAdditionalAssetAttributes *additionalAssetAttributes; // @dynamic additionalAssetAttributes;

@@ -8,26 +8,23 @@
 
 #import <ProactiveContextClient/ATXModeFeaturizer-Protocol.h>
 
-@class MTAlarm, MTAlarmManager, NSString, NSTimer;
-@protocol ATXModeFeaturizerDelegate;
+@class BMBiomeScheduler, BPSSink, NSString;
+@protocol ATXModeFeaturizerDelegate, OS_dispatch_queue;
 
 @interface ATXModeBedtimeFeaturizer : NSObject <ATXModeFeaturizer>
 {
-    MTAlarmManager *_alarmManager;
-    MTAlarm *_sleepAlarm;
-    NSTimer *_timer;
-    int _significantTimeToken;
+    NSObject<OS_dispatch_queue> *_queue;
+    BMBiomeScheduler *_scheduler;
+    BPSSink *_sink;
     id <ATXModeFeaturizerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <ATXModeFeaturizerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void)_updateFeatures;
-- (void)_scheduleTimerForAlarm:(id)arg1;
 - (void)stopListening;
 - (void)beginListening;
-- (void)_fetchSleepAlarmIfNecessary;
-- (void)_alarmsDidChange:(id)arg1;
+- (void)_processNewSleepEvent:(id)arg1;
+- (id)_provideFeaturesWithSleepEvent:(id)arg1;
 - (id)provideFeatures;
 
 // Remaining properties

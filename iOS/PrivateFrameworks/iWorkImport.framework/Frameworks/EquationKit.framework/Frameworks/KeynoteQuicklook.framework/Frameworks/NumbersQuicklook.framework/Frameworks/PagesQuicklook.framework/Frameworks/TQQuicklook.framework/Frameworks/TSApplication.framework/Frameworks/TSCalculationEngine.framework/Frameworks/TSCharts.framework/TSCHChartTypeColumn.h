@@ -8,6 +8,7 @@
 {
 }
 
+- (id)name;
 - (long long)userInterfaceTag;
 - (id)defaultSeriesType:(unsigned long long)arg1;
 - (id)userInterfaceName;

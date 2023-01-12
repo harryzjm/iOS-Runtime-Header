@@ -16,8 +16,12 @@
     _Bool _interactive;
     double _tension;
     double _friction;
+    struct CAFrameRateRange _frameRateRange;
+    unsigned int _highFrameRateReason;
 }
 
+@property(readonly, nonatomic) unsigned int highFrameRateReason; // @synthesize highFrameRateReason=_highFrameRateReason;
+@property(readonly, nonatomic) struct CAFrameRateRange frameRateRange; // @synthesize frameRateRange=_frameRateRange;
 @property(readonly, nonatomic) double friction; // @synthesize friction=_friction;
 @property(readonly, nonatomic) double tension; // @synthesize tension=_tension;
 @property(readonly, nonatomic, getter=isInteractive) _Bool interactive; // @synthesize interactive=_interactive;

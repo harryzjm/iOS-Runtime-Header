@@ -4,9 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <RecapPerformanceTesting/RPTScrollTestParameters-Protocol.h>
+#import <RecapPerformanceTesting/RPTTestParameters-Protocol.h>
 
-@protocol RPTBlockBasedScrollTestParameters <RPTScrollTestParameters>
-- (void (^)(id <RCPEventStreamComposer>))composerBlock;
+@protocol RPTBlockBasedScrollTestParameters <RPTTestParameters>
 @end
 

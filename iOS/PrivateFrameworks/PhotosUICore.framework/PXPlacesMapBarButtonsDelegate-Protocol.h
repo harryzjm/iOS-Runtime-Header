@@ -9,6 +9,7 @@
 @class NSArray;
 
 @protocol PXPlacesMapBarButtonsDelegate <NSObject>
-- (void)setBarButtonItems:(NSArray *)arg1;
+- (void)setToolbarButtons:(NSArray *)arg1;
+- (void)setNavigationBarButtons:(NSArray *)arg1;
 @end
 

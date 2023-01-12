@@ -40,6 +40,7 @@
     GEOWiFiPasspointInfo *_passpointInfo;
     unsigned long long _reTxBytes;
     unsigned long long _receivedDupes;
+    double _responsivenessScore;
     NSMutableArray *_roamStates;
     unsigned long long _rxOutOfOrderBytes;
     NSMutableArray *_speedTests;
@@ -98,6 +99,7 @@
         unsigned int has_packetsOut:1;
         unsigned int has_reTxBytes:1;
         unsigned int has_receivedDupes:1;
+        unsigned int has_responsivenessScore:1;
         unsigned int has_rxOutOfOrderBytes:1;
         unsigned int has_successfulConnections:1;
         unsigned int has_timeOfDay:1;
@@ -166,6 +168,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -174,6 +178,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasResponsivenessScore;
+@property(nonatomic) double responsivenessScore;
 @property(retain, nonatomic) GEOWiFiBeaconInfo *beaconInfo;
 @property(readonly, nonatomic) _Bool hasBeaconInfo;
 - (int)StringAsDohAvailability:(id)arg1;

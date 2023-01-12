@@ -11,7 +11,6 @@
 + (id)wf_libraryCellSelectionColor;
 + (id)wf_tableCellDefaultSelectionTintColor;
 + (id)wf_homeTintColor;
-+ (id)wf_drawerSuggestionCellImageBackgroundColor;
 + (id)wf_gallerySearchSectionHeaderButtonColor;
 + (id)wf_gallerySearchSectionHeaderColor;
 + (id)wf_gallerySearchCollectionHighlightedColor;
@@ -23,8 +22,6 @@
 + (id)settingsCellDetailTextColor;
 + (id)wf_settingsCellColor;
 + (id)wf_settingsBackgroundColor;
-+ (id)wf_actionDrawerGrabberColor;
-+ (id)wf_actionDrawerNonBlurBackgroundColor;
 + (id)wf_actionDescriptionColor;
 @end
 

@@ -16,9 +16,12 @@
 - (_Bool)_axIsInNotification;
 - (id)_axAcknowledgmentDescription;
 - (id)_axStickerDescription;
+- (id)_axHighlightedDescription;
 - (id)_axMessageSender;
 - (_Bool)_axIsBalloonOfType:(id)arg1;
 - (id)_axMessageTime;
+- (id)_axDigitalTouchDescription;
+- (_Bool)_axIsDigitalTouch;
 - (_Bool)_axIsTextMessage;
 - (_Bool)_axIsImessage;
 - (_Bool)_axIsMessageFromMe;

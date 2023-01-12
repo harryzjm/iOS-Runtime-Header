@@ -19,8 +19,6 @@
 - (id)cangjieSet;
 - (unsigned long long)cangjieInputType:(id)arg1 fromPopupVariant:(_Bool)arg2;
 - (id)nonstopPunctuationCharacters;
-- (id)defaultCandidate;
-- (unsigned long long)initialSelectedIndex;
 - (_Bool)updateCandidatesWithTIWordSearch:(id)arg1 predictionEnabled:(_Bool)arg2;
 - (void)notifyUpdateCandidates:(id)arg1 forOperation:(id)arg2;
 - (_Bool)selectedCandidateIsEnglish;

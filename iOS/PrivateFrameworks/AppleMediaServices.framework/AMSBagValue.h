@@ -16,6 +16,7 @@
     NSString *_key;
     NSArray *_transformBlocks;
     unsigned long long _valueType;
+    shared_ptr_f2d2fb1b _bag;
 }
 
 + (_Bool)_value:(id)arg1 isKindOfValueType:(unsigned long long)arg2;
@@ -24,7 +25,9 @@
 + (id)frozenBagValueWithKey:(id)arg1 value:(id)arg2 valueType:(unsigned long long)arg3;
 + (id)failingBagValueWithKey:(id)arg1 valueType:(unsigned long long)arg2 error:(id)arg3;
 + (id)bagValueWithKey:(id)arg1 valueType:(unsigned long long)arg2 valuePromise:(id)arg3;
+- (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) shared_ptr_f2d2fb1b bag; // @synthesize bag=_bag;
 @property(nonatomic) unsigned long long valueType; // @synthesize valueType=_valueType;
 @property(retain, nonatomic) NSArray *transformBlocks; // @synthesize transformBlocks=_transformBlocks;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
@@ -35,10 +38,12 @@
 - (id)valuePromise;
 - (id)valueWithError:(id *)arg1;
 - (void)valueWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_bagKeyInfo;
 @property(readonly, nonatomic, getter=isLoaded) _Bool loaded;
 - (id)transformWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3 account:(id)arg4;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3;
+- (id)initWithBag:(shared_ptr_f2d2fb1b)arg1 key:(id)arg2 valueType:(unsigned long long)arg3 account:(id)arg4;
 
 @end
 

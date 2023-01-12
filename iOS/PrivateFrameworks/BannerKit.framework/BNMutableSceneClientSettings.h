@@ -6,16 +6,29 @@
 
 #import <UIKit/UIMutableApplicationSceneClientSettings.h>
 
-@interface BNMutableSceneClientSettings : UIMutableApplicationSceneClientSettings
+#import <BannerKit/BSSettingDescriptionProvider-Protocol.h>
+
+@class NSString;
+
+@interface BNMutableSceneClientSettings : UIMutableApplicationSceneClientSettings <BSSettingDescriptionProvider>
 {
 }
 
+- (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
+- (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic, getter=isPanGestureProxySupported) _Bool panGestureProxySupported;
 @property(nonatomic, getter=isTouchOutsideDismissalEnabled) _Bool touchOutsideDismissalEnabled;
 @property(nonatomic, getter=isDraggingInteractionEnabled) _Bool draggingInteractionEnabled;
 @property(nonatomic, getter=isDraggingDismissalEnabled) _Bool draggingDismissalEnabled;
 @property(nonatomic) struct UIEdgeInsets bannerContentOutsets;
 @property(nonatomic) struct CGSize preferredContentSize;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

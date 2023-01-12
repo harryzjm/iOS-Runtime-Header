@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSPredicate, NSString;
+@class NSDate, NSPredicate, NSString, TPSContextualDuetEvent;
 
 @interface TPSAnalyticsUsageInfo : NSObject
 {
+    _Bool _overrideHoldout;
     NSDate *_firstShownDate;
     NSPredicate *_usagePredicate;
-    NSString *_usageStream;
+    TPSContextualDuetEvent *_usageEvent;
     NSString *_identifier;
     unsigned long long _desiredOutcomeCount;
 }
@@ -20,9 +21,10 @@
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long desiredOutcomeCount; // @synthesize desiredOutcomeCount=_desiredOutcomeCount;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(copy, nonatomic) NSString *usageStream; // @synthesize usageStream=_usageStream;
+@property(copy, nonatomic) TPSContextualDuetEvent *usageEvent; // @synthesize usageEvent=_usageEvent;
 @property(retain, nonatomic) NSPredicate *usagePredicate; // @synthesize usagePredicate=_usagePredicate;
 @property(retain, nonatomic) NSDate *firstShownDate; // @synthesize firstShownDate=_firstShownDate;
+@property(nonatomic) _Bool overrideHoldout; // @synthesize overrideHoldout=_overrideHoldout;
 
 @end
 

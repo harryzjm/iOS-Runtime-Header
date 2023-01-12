@@ -11,6 +11,7 @@
 @optional
 @property(readonly, nonatomic) _Bool allowsPullToDismiss;
 @property(readonly, nonatomic) long long cardStyle;
+- (void)setTransitioningSize:(_Bool)arg1;
 - (void)updatePreferredContentSizeForCardWidth:(double)arg1;
 @end
 

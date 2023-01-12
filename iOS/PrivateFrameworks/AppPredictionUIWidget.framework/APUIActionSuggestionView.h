@@ -16,7 +16,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)workflowRunnerClient:(id)arg1 didFinishRunningWorkflowWithError:(id)arg2 cancelled:(_Bool)arg3;
+- (void)workflowRunnerClient:(id)arg1 didFinishRunningWorkflowWithOutput:(id)arg2 error:(id)arg3 cancelled:(_Bool)arg4;
 - (void)workflowRunnerClient:(id)arg1 didStartRunningWorkflowWithProgress:(id)arg2;
 - (void)_tapRecognized:(id)arg1;
 - (void)_setAppImageViewWithBundleIdentifier:(id)arg1;

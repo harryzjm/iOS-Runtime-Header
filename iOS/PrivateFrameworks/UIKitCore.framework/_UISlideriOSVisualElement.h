@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UISliderVisualElement-Protocol.h>
 
-@class NSArray, NSString, UIImageView, UISlider, UIView, _UISliderDataModel;
+@class NSArray, NSString, UIImageView, UISlider, UISliderDataModel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UISlideriOSVisualElement <_UICursorInteractionDelegate, _UISliderVisualElement>
+@interface _UISlideriOSVisualElement <UIPointerInteractionDelegate, _UISliderVisualElement>
 {
     UIImageView *_innerThumbView;
     UIImageView *_minValueImageView;
@@ -30,20 +30,22 @@ __attribute__((visibility("hidden")))
     _Bool _trackIsArtworkBased;
     _Bool _thumbIsArtworkBased;
     _Bool _maxColorIsValid;
-    _UISliderDataModel *_data;
+    UISliderDataModel *_data;
     UISlider *_slider;
 }
 
++ (CDStruct_6024001e)drawingMetricsForPlatform;
 + (id)_modernThumbImageWithTraitCollection:(id)arg1 tintColor:(id)arg2;
 - (void).cxx_destruct;
 @property(nonatomic) __weak UISlider *slider; // @synthesize slider=_slider;
-@property(retain, nonatomic) _UISliderDataModel *data; // @synthesize data=_data;
+@property(retain, nonatomic) UISliderDataModel *data; // @synthesize data=_data;
 - (id)thumbViewNeue;
 - (id)thumbView;
 - (id)minValueImageView;
 - (id)maxValueImageView;
 - (void)didSetValues;
 - (void)didSetShowValue;
+- (void)didSetContinuous;
 - (void)didSetSelected;
 - (void)didSetHighlighted;
 - (void)didSetEnabled;
@@ -114,8 +116,8 @@ __attribute__((visibility("hidden")))
 - (void)_initSubviews;
 - (void)_initImages;
 - (id)createThumbViewNeue;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_setupFeedback;
 - (void)_contentSizeCategoryChanged:(id)arg1;
 - (void)_listenForContentSizeCategoryChangesIfNecessary;

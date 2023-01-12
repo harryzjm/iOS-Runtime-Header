@@ -9,7 +9,7 @@
 #import <Navigation/MNTimeProvider-Protocol.h>
 #import <Navigation/MNTracePlayerSchedulerDelegate-Protocol.h>
 
-@class MNLocation, MNSessionUpdateManager, MNTrace, MNTracePlayerETAUpdater, MNTracePlayerScheduler, MNTracePlayerTimelineStream, NSData, NSDate, NSHashTable, NSString;
+@class MNLocation, MNSessionUpdateManager, MNTrace, MNTracePlayerETAUpdater, MNTracePlayerScheduler, MNTracePlayerTimelineStream, NSHashTable, NSString;
 
 @interface MNTracePlayer : NSObject <MNTracePlayerSchedulerDelegate, MNTimeProvider>
 {
@@ -43,9 +43,6 @@
 @property(readonly, nonatomic) MNSessionUpdateManager *sessionUpdater;
 - (void)_createTimelineStreams;
 - (void)tracePlayerScheduler:(id)arg1 didUpdatePosition:(double)arg2;
-@property(readonly, nonatomic) unsigned long long selectedRouteIndex;
-@property(readonly, nonatomic) NSData *selectedRouteID;
-@property(readonly, nonatomic) NSDate *currentLocationDate;
 @property(readonly, nonatomic) double currentTime;
 @property(readonly, nonatomic) double position;
 - (void)jumpToBookmarkAtIndex:(unsigned long long)arg1;
@@ -61,7 +58,6 @@
 - (void)start;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-@property(readonly, nonatomic) int mainTransportType;
 - (void)dealloc;
 - (id)initWithTrace:(id)arg1;
 - (id)initWithPath:(id)arg1 outError:(id *)arg2;

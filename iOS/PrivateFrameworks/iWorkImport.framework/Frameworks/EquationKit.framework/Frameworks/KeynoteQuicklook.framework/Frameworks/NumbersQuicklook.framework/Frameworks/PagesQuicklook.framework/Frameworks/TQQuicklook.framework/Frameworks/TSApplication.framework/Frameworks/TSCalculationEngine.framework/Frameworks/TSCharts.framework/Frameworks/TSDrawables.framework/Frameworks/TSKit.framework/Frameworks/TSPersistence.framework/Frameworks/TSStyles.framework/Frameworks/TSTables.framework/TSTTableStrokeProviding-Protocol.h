@@ -9,6 +9,17 @@
 @class TSDStroke;
 
 @protocol TSTTableStrokeProviding <NSObject>
+@property(readonly, nonatomic) TSDStroke *footerRowPivotGroupVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *headerRowPivotTitleStroke;
+@property(readonly, nonatomic) TSDStroke *headerRowPivotGroupDeEmphasisStroke;
+@property(readonly, nonatomic) TSDStroke *headerRowPivotGroupVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *headerColumnPivotSeparatorStroke;
+@property(readonly, nonatomic) TSDStroke *headerColumnPivotGroupDeEmphasisStroke;
+@property(readonly, nonatomic) TSDStroke *headerColumnPivotGroupHorizontalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotEmphasisVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotDeEmphasisHorizontalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotGroupVerticalStroke;
+@property(readonly, nonatomic) TSDStroke *bodyPivotGroupHorizontalStroke;
 @property(readonly, nonatomic) TSDStroke *categoryLevel5InteriorStroke;
 @property(readonly, nonatomic) TSDStroke *categoryLevel4InteriorStroke;
 @property(readonly, nonatomic) TSDStroke *categoryLevel3InteriorStroke;

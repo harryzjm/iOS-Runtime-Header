@@ -10,6 +10,9 @@
 {
 }
 
++ (id)forPlayerSpatializationFormat:(long long)arg1;
++ (id)forReloadingReason:(long long)arg1;
++ (id)forItemChangeSource:(long long)arg1;
 + (id)forPlaybackTimeChangeReason:(long long)arg1;
 + (id)forUserActionSource:(long long)arg1;
 + (id)forUserActionType:(long long)arg1;

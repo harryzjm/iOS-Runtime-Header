@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct XlLinkTable *)createXlLinkTableFromLinksCollection:(id)arg1 workbook:(id)arg2 state:(id)arg3;
++ (void *)createXlLinkTableFromLinksCollection:(id)arg1 workbook:(id)arg2 state:(id)arg3;
 + (void)readFromState:(id)arg1;
 + (int)mapEDLinkTypeToXl:(int)arg1;
 + (int)mapXlLinkTypeToED:(int)arg1;

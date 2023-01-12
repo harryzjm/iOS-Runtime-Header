@@ -9,7 +9,7 @@
 #import "_UIFocusEnvironmentPrivate-Protocol.h"
 #import "_UIFocusRegionContainer-Protocol.h"
 
-@class NSArray, NSString, UIView;
+@class NSArray, NSString, UIFocusEffect, UIView;
 @protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
 @interface AccessibilityNodeAccessibility <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, _UIFocusRegionContainer>
@@ -20,10 +20,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityScrollToVisible;
 - (void)dealloc;
 - (id)accessibilityLanguage;
+- (_Bool)_accessibilityPrefersNonAttributedAttributeWithOverrideSelector:(SEL)arg1 nonAttributedSelector:(SEL)arg2 attributedSelector:(SEL)arg3;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (_Bool)_accessibilityUserTestingIsElementClassAcceptable;
 - (_Bool)conformsToProtocol:(id)arg1;
 @property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
 - (id)focusItemsInRect:(struct CGRect)arg1;
@@ -38,7 +39,7 @@
 - (void)updateFocusIfNeeded;
 - (void)setNeedsFocusUpdate;
 @property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
-- (id)_focusGroupDescriptor;
+@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 @property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property(nonatomic) _Bool areChildrenFocused;
@@ -50,8 +51,11 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
-@property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;

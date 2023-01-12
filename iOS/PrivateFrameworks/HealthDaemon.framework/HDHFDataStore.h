@@ -13,30 +13,37 @@
 {
     shared_ptr_c7cae3aa _fileSystem;
     struct os_unfair_lock_s _lock;
-    shared_ptr_88ae0538 _highFrequencyDataStore;
+    struct shared_ptr<health::DataStore> _highFrequencyDataStore;
     _Atomic _Bool _invalidated;
     _Atomic _Bool _hasOpenStore;
     NSObject<OS_dispatch_queue> *_openQueue;
+    long long _openAttempt;
+    _Bool _isOpen;
     id <HDHFDataStoreDelegate> _delegate;
     NSString *_fileSystemPath;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool isOpen; // @synthesize isOpen=_isOpen;
 @property(readonly, copy, nonatomic) NSString *fileSystemPath; // @synthesize fileSystemPath=_fileSystemPath;
 @property(nonatomic) __weak id <HDHFDataStoreDelegate> delegate; // @synthesize delegate=_delegate;
-- (_Bool)_convertExceptionsToError:(id *)arg1 inBlock:(CDUnknownBlockType)arg2;
+- (void)unitTest_requestMigrationToSQLite;
+- (void)unitTest_requestRebuild;
+- (void)unitTest_resetRebuildState;
+- (id)fileManager;
+@property(readonly, nonatomic) long long rebuildState;
 - (_Bool)accessStoreWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
-- (shared_ptr_88ae0538)_highFrequencyDataStoreWithError:(id *)arg1;
-- (shared_ptr_88ae0538)_lock_highFrequencyDataStoreWithError:(id *)arg1;
-- (_Bool)_lock_openHighFrequencyDataStoreWithError:(id *)arg1;
-- (shared_ptr_88ae0538)_lock_primitiveOpenHighFrequencyDataStoreWithError:(id *)arg1;
 - (_Bool)discardStoreWithError:(id *)arg1;
-- (CDUnknownBlockType)flushHandlerForInvalidation:(_Bool)arg1;
+- (void)flushForInvalidation:(_Bool)arg1;
+- (id)diagnosticDescription;
 - (id)description;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1 fileSystem:(shared_ptr_c7cae3aa)arg2;
 - (id)initWithPath:(id)arg1;
+- (_Bool)deleteHFDAt:(id)arg1 error:(id *)arg2;
+- (_Bool)moveHFDAsideWithoutOverwritingFrom:(id)arg1 to:(id)arg2 error:(id *)arg3;
+- (unique_ptr_9a02d391)dataStoreAtURL:(id)arg1 filesystem:(const void *)arg2 allowCheckpoint:(_Bool)arg3 error:(id *)arg4;
 
 @end
 

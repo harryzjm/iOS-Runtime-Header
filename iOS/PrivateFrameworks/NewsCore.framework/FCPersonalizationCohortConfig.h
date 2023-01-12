@@ -11,27 +11,41 @@
 
 @interface FCPersonalizationCohortConfig : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _considerPublisherTopicAggregates;
+    _Bool _enableUndampening;
+    _Bool _undampenOnlyAboveBaselineMembership;
+    _Bool _useRelativePersonalizationValue;
+    double _democratizationFactor;
+    double _dilutionFactor;
     double _favoritedBoost;
     double _globalWeight;
-    double _userBaseline;
+    double _globalWeightHalfLife;
+    double _globalWeightInitialMultiplier;
+    double _paddingFactor;
     double _preBaselineCurvature;
     double _postBaselineCurvature;
-    double _dilutionFactor;
-    double _paddingFactor;
+    double _userBaseline;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double paddingFactor; // @synthesize paddingFactor=_paddingFactor;
-@property(nonatomic) double dilutionFactor; // @synthesize dilutionFactor=_dilutionFactor;
+@property(nonatomic) _Bool useRelativePersonalizationValue; // @synthesize useRelativePersonalizationValue=_useRelativePersonalizationValue;
+@property(nonatomic) double userBaseline; // @synthesize userBaseline=_userBaseline;
+@property(nonatomic) _Bool undampenOnlyAboveBaselineMembership; // @synthesize undampenOnlyAboveBaselineMembership=_undampenOnlyAboveBaselineMembership;
 @property(nonatomic) double postBaselineCurvature; // @synthesize postBaselineCurvature=_postBaselineCurvature;
 @property(nonatomic) double preBaselineCurvature; // @synthesize preBaselineCurvature=_preBaselineCurvature;
-@property(nonatomic) double userBaseline; // @synthesize userBaseline=_userBaseline;
+@property(nonatomic) double paddingFactor; // @synthesize paddingFactor=_paddingFactor;
+@property(nonatomic) double globalWeightInitialMultiplier; // @synthesize globalWeightInitialMultiplier=_globalWeightInitialMultiplier;
+@property(nonatomic) double globalWeightHalfLife; // @synthesize globalWeightHalfLife=_globalWeightHalfLife;
 @property(nonatomic) double globalWeight; // @synthesize globalWeight=_globalWeight;
 @property(nonatomic) double favoritedBoost; // @synthesize favoritedBoost=_favoritedBoost;
+@property(nonatomic) _Bool enableUndampening; // @synthesize enableUndampening=_enableUndampening;
+@property(nonatomic) double dilutionFactor; // @synthesize dilutionFactor=_dilutionFactor;
+@property(nonatomic) double democratizationFactor; // @synthesize democratizationFactor=_democratizationFactor;
+@property(nonatomic) _Bool considerPublisherTopicAggregates; // @synthesize considerPublisherTopicAggregates=_considerPublisherTopicAggregates;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithFavoritedBoost:(double)arg1 globalWeight:(double)arg2 userBaseline:(double)arg3 preBaselineCurvature:(double)arg4 postBaselineCurvature:(double)arg5 dilutionFactor:(double)arg6 paddingFactor:(double)arg7;
+- (id)initWithConsiderPublisherTopicAggregates:(_Bool)arg1 democratizationFactor:(double)arg2 dilutionFactor:(double)arg3 enableUndampening:(_Bool)arg4 favoritedBoost:(double)arg5 globalWeight:(double)arg6 globalWeightHalfLife:(double)arg7 globalWeightInitialMultiplier:(double)arg8 paddingFactor:(double)arg9 preBaselineCurvature:(double)arg10 postBaselineCurvature:(double)arg11 undampenOnlyAboveBaselineMembership:(_Bool)arg12 userBaseline:(double)arg13 useRelativePersonalizationValue:(_Bool)arg14;
 - (id)initWithConfigDictionary:(id)arg1;
 - (id)init;
 

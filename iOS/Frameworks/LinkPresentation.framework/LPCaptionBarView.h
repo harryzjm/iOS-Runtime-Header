@@ -5,12 +5,13 @@
 //
 
 #import <LinkPresentation/CAAnimationDelegate-Protocol.h>
+#import <LinkPresentation/LPComponentMediaPlayable-Protocol.h>
 
-@class LPCaptionBarAccessoryView, LPCaptionBarButtonView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPComponentView, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSString;
+@class LPCaptionBarAccessoryView, LPCaptionBarButtonView, LPCaptionBarPresentationProperties, LPCaptionBarStyle, LPComponentView, LPInlineMediaPlaybackInformation, LPPlayButtonView, LPVerticalTextStackView, NSRegularExpression, NSString;
 @protocol LPTextStyleable;
 
 __attribute__((visibility("hidden")))
-@interface LPCaptionBarView <CAAnimationDelegate>
+@interface LPCaptionBarView <CAAnimationDelegate, LPComponentMediaPlayable>
 {
     LPCaptionBarStyle *_style;
     LPCaptionBarPresentationProperties *_presentationProperties;
@@ -20,6 +21,8 @@ __attribute__((visibility("hidden")))
     LPCaptionBarAccessoryView *_leftAccessoryView;
     LPCaptionBarAccessoryView *_rightAccessoryView;
     LPCaptionBarButtonView *_buttonView;
+    LPComponentView *_leftIconBadgeView;
+    LPComponentView *_rightIconBadgeView;
     LPComponentView<LPTextStyleable> *_aboveTopCaptionView;
     LPComponentView<LPTextStyleable> *_topCaptionView;
     LPComponentView<LPTextStyleable> *_bottomCaptionView;
@@ -28,12 +31,16 @@ __attribute__((visibility("hidden")))
     LPInlineMediaPlaybackInformation *_inlinePlaybackInformation;
     _Bool _hasEverBuilt;
     _Bool _useProgressSpinner;
+    NSRegularExpression *_emphasizedTextExpression;
     struct UIEdgeInsets _textSafeAreaInset;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) NSRegularExpression *emphasizedTextExpression; // @synthesize emphasizedTextExpression=_emphasizedTextExpression;
 @property(nonatomic) struct UIEdgeInsets textSafeAreaInset; // @synthesize textSafeAreaInset=_textSafeAreaInset;
 @property(nonatomic) _Bool useProgressSpinner; // @synthesize useProgressSpinner=_useProgressSpinner;
+- (id)primaryIconView;
+- (id)playable;
 - (id)button;
 - (void)_buildViewsForCaptionBarIfNeeded;
 - (struct CGSize)_layoutCaptionBarForSize:(struct CGSize)arg1 applyingLayout:(_Bool)arg2;
@@ -43,8 +50,8 @@ __attribute__((visibility("hidden")))
 - (void)animateInWithBaseAnimation:(id)arg1 currentTime:(double)arg2;
 - (void)animateOut;
 - (void)setPlaybackInformation:(id)arg1;
-- (id)initWithStyle:(id)arg1 presentationProperties:(id)arg2;
-- (id)init;
+- (id)initWithHost:(id)arg1 style:(id)arg2 presentationProperties:(id)arg3;
+- (id)initWithHost:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

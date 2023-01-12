@@ -6,28 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _IDSGroupSession;
+@class NSSet, NSString, _IDSGroupSession;
 
 @interface IDSGroupSession : NSObject
 {
     _IDSGroupSession *_internal;
 }
 
++ (void)requestNWConnectionforIDSGroupSessionBroadcastParameter:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (id)augmentNetworkParametersForSessionAlias:(id)arg1 participantIDAlias:(unsigned long long)arg2 salt:(id)arg3 parameters:(id)arg4;
++ (id)augmentNetworkParametersForSession:(id)arg1 participantID:(unsigned long long)arg2 parameters:(id)arg3;
++ (void)requestNWConnectionWithDataBlob:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)requestNWConnectionforIDSGroupSessionUnicastParameter:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (id)broadcastParameterForService:(id)arg1;
+- (void)requestEncryptionKeyForParticipants:(id)arg1;
+- (void)requestDataCryptorForTopic:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)unicastConnectorWithDataMode:(long long)arg1;
+- (id)unicastParameterForParticipantIDAlias:(unsigned long long)arg1 salt:(id)arg2 dataMode:(long long)arg3 connectionIndex:(unsigned long long)arg4;
 - (id)unicastParameterForParticipantID:(unsigned long long)arg1 dataMode:(long long)arg2 connectionIndex:(unsigned long long)arg3;
+- (void)unregisterPluginWithOptions:(id)arg1;
+- (void)registerPluginWithOptions:(id)arg1;
 - (void)requestActiveParticipants;
+- (void)setRequiredCapabilities:(id)arg1 requiredLackOfCapabilities:(id)arg2;
 - (void)setPreferences:(id)arg1;
+- (void)reconnectUPlusOneSession;
 - (void)leaveGroupSession;
 - (void)joinWithOptions:(id)arg1;
 - (void)setParticipantInfo:(id)arg1;
 - (void)updateParticipantData:(id)arg1 withContext:(id)arg2;
+- (void)removeParticipants:(id)arg1;
+- (void)manageDesignatedMembers:(id)arg1 withType:(unsigned short)arg2;
+- (void)updateMembers:(id)arg1 withContext:(id)arg2 messagingCapabilities:(id)arg3 triggeredLocally:(_Bool)arg4;
 - (void)updateMembers:(id)arg1 withContext:(id)arg2 triggeredLocally:(_Bool)arg3;
 - (id)_internal;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
+@property(readonly, nonatomic) NSSet *requiredLackOfCapabilities;
+@property(readonly, nonatomic) NSSet *requiredCapabilities;
 @property(readonly, nonatomic) unsigned int sessionEndedReason;
 - (unsigned int)state;
 @property(readonly, nonatomic) NSString *destination;
+- (unsigned long long)participantIDForAlias:(unsigned long long)arg1 salt:(id)arg2;
+- (unsigned long long)createAliasForLocalParticipantIDWithSalt:(id)arg1;
+- (unsigned long long)createAliasForParticipantID:(unsigned long long)arg1 salt:(id)arg2;
+- (id)sessionIDAliasWithSalt:(id)arg1;
 @property(readonly, nonatomic) NSString *sessionID;
 - (id)_internal_sessionWithValidityCheck;
 - (void)invalidate;

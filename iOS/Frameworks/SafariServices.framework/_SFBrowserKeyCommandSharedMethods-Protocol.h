@@ -7,8 +7,9 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @protocol _SFBrowserKeyCommandSharedMethods <NSObject>
+- (void)autoFillFormKeyPressed;
 - (void)saveWebpageAlternativeKeyPressed;
-- (void)saveWebpageKeyPressed;
+- (void)saveKeyPressed;
 - (void)resetPageZoomLevelAndFontSize;
 - (void)emailCurrentPage;
 - (void)cancelKeyPressed;

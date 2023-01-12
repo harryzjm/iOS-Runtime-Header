@@ -56,7 +56,7 @@
 @property(readonly, nonatomic) SSPlistDataReader *cannedCEPValues;
 - (void)shrinkCaches;
 @property(readonly, nonatomic) SSPlistDataReader *cepDictionary;
-@property(readonly, nonatomic) NSSet *appBlacklist;
+@property(readonly, nonatomic) NSSet *appBlocklist;
 - (void)getCachedQueries:(id *)arg1 results:(id *)arg2 webSearch:(_Bool)arg3;
 - (void)queryCompleted:(id)arg1;
 @property(readonly, nonatomic) double suggestionsRenderTimeout;

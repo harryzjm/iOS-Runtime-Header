@@ -10,6 +10,7 @@
 
 @interface PXNewSearchToken : NSObject
 {
+    unsigned long long _type;
     NSString *_identifier;
     UIImage *_icon;
     NSAttributedString *_attributedTitle;
@@ -20,6 +21,7 @@
 
 + (id)socialGroupDisplayText;
 + (id)unnamedPersonDisplayText;
++ (unsigned long long)_searchUserCategoryForSearchTokenCategory:(unsigned long long)arg1;
 + (id)px_searchTokenForHashtag:(id)arg1;
 + (id)px_oneYearAgoSearchToken;
 + (id)px_searchTokensFromSiriSearchRequest:(id)arg1;
@@ -30,6 +32,7 @@
 @property(readonly, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
 @property(readonly, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 - (id)description;
 - (id)_imagewithSymbolName:(id)arg1;
 - (id)_iconForSearchUserCategory:(unsigned long long)arg1;
@@ -42,8 +45,9 @@
 @property(readonly, nonatomic) _Bool isPersistable;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithTitle:(id)arg1 queryToken:(id)arg2 priorityAssetUUID:(id)arg3;
-- (id)initWithAttributedTitle:(id)arg1 queryToken:(id)arg2 priorityAssetUUID:(id)arg3;
+- (id)initWithSearchText:(id)arg1 searchCategory:(unsigned long long)arg2;
+- (id)initWithTitle:(id)arg1 queryToken:(id)arg2 type:(unsigned long long)arg3 priorityAssetUUID:(id)arg4;
+- (id)initWithAttributedTitle:(id)arg1 queryToken:(id)arg2 type:(unsigned long long)arg3 priorityAssetUUID:(id)arg4;
 - (id)init;
 
 @end

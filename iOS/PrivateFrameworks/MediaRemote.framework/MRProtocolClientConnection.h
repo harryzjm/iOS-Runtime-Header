@@ -6,54 +6,47 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/MRProtocolMessageQueueDataSource-Protocol.h>
-#import <MediaRemote/MRProtocolMessageQueueDelegate-Protocol.h>
+#import <MediaRemote/MRExternalDeviceTransportConnectionDelegate-Protocol.h>
 #import <MediaRemote/MSVMessageParserDelegate-Protocol.h>
-#import <MediaRemote/NSStreamDelegate-Protocol.h>
 
-@class MRDeviceInfo, MRProtocolMessageQueue, MRSupportedProtocolMessages, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString;
+@class MRDeviceInfo, MRExternalDeviceTransportConnection, MRSupportedProtocolMessages, MSVMessageParser, NSMutableDictionary, NSString;
 @protocol MRProtocolClientConnectionDelegate;
 
-@interface MRProtocolClientConnection : NSObject <NSStreamDelegate, MSVMessageParserDelegate, MRProtocolMessageQueueDelegate, MRProtocolMessageQueueDataSource>
+@interface MRProtocolClientConnection : NSObject <MSVMessageParserDelegate, MRExternalDeviceTransportConnectionDelegate>
 {
+    MRExternalDeviceTransportConnection *_connection;
     MSVMessageParser *_parser;
-    NSRunLoop *_runLoop;
-    MRProtocolMessageQueue *_messageQueue;
     unsigned long long _firstClientNanoseconds;
     unsigned long long _firstDeviceTicks;
-    _Bool _disconnected;
-    NSInputStream *_inputStream;
-    NSOutputStream *_outputStream;
-    MRDeviceInfo *_deviceInfo;
     MRSupportedProtocolMessages *_supportedMessages;
+    NSMutableDictionary *_pendingReplyQueue;
+    _Bool _disconnected;
+    MRDeviceInfo *_deviceInfo;
     NSString *_label;
     id <MRProtocolClientConnectionDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MRProtocolClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) MRExternalDeviceTransportConnection *connection; // @synthesize connection=_connection;
 @property(readonly, nonatomic) _Bool disconnected; // @synthesize disconnected=_disconnected;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
-@property(retain, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @synthesize supportedMessages=_supportedMessages;
 @property(retain, nonatomic) MRDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
-@property(readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
-@property(readonly, nonatomic) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
-- (void)closeAllStreams;
-- (id)messageQueue:(id)arg1 dataForMessage:(id)arg2;
-- (void)messageQueue:(id)arg1 didPurgeMessage:(id)arg2;
-- (void)messageQueue:(id)arg1 didSendMessage:(id)arg2;
-- (unsigned long long)messageQueue:(id)arg1 processData:(id)arg2 atReadPosition:(long long)arg3;
 - (void)parser:(id)arg1 didParseMessage:(id)arg2;
-- (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
+- (void)transport:(id)arg1 didReceiveData:(id)arg2;
+- (void)transportDidClose:(id)arg1 error:(id)arg2;
+- (id)dataForMessage:(id)arg1;
 - (id)decryptData:(id)arg1 error:(id *)arg2;
 - (id)encryptDataForMessage:(id)arg1;
+- (void)disconnectWithError:(id)arg1;
 - (void)sendMessage:(id)arg1 expectedMessage:(unsigned long long)arg2 timeout:(double)arg3 queue:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)sendMessage:(id)arg1 timeout:(double)arg2 queue:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)sendMessage:(id)arg1;
-@property(readonly, nonatomic) _Bool streamsAreValid;
+@property(retain, nonatomic) MRSupportedProtocolMessages *supportedMessages;
+@property(readonly, nonatomic) _Bool isValid;
 - (void)dealloc;
-- (id)initWithInputStream:(id)arg1 outputStream:(id)arg2 runLoop:(id)arg3;
+- (id)initWithConnection:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

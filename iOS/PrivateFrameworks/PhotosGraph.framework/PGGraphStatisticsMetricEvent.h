@@ -4,22 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class PGManager;
 
-#import <PhotosGraph/PLMetricEvent-Protocol.h>
-
-@class NSDictionary, NSString, PGGraph, PGManager;
-
-@interface PGGraphStatisticsMetricEvent : NSObject <PLMetricEvent>
+@interface PGGraphStatisticsMetricEvent
 {
     _Bool _hasMeNode;
     _Bool _hasNamedMeNode;
     _Bool _hasMusicData;
     _Bool _hasMeHomeNode;
     _Bool _hasMeWorkNode;
-    PGGraph *_graph;
     PGManager *_manager;
-    NSString *_identifier;
     unsigned long long _librarySize;
     long long _librarySizeRange;
     unsigned long long _numberOfMoments;
@@ -108,9 +102,13 @@
     double _ratioOfMomentsInTrip;
     unsigned long long _numberOfMomentsWithAtLeastOneGemAsset;
     double _ratioOfMomentsWithAtLeastOneGemAsset;
+    unsigned long long _numberOfSelfies;
+    double _ratioOfSelfies;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) double ratioOfSelfies; // @synthesize ratioOfSelfies=_ratioOfSelfies;
+@property(nonatomic) unsigned long long numberOfSelfies; // @synthesize numberOfSelfies=_numberOfSelfies;
 @property(nonatomic) double ratioOfMomentsWithAtLeastOneGemAsset; // @synthesize ratioOfMomentsWithAtLeastOneGemAsset=_ratioOfMomentsWithAtLeastOneGemAsset;
 @property(nonatomic) unsigned long long numberOfMomentsWithAtLeastOneGemAsset; // @synthesize numberOfMomentsWithAtLeastOneGemAsset=_numberOfMomentsWithAtLeastOneGemAsset;
 @property(nonatomic) double ratioOfMomentsInTrip; // @synthesize ratioOfMomentsInTrip=_ratioOfMomentsInTrip;
@@ -204,15 +202,12 @@
 @property(nonatomic) unsigned long long numberOfMoments; // @synthesize numberOfMoments=_numberOfMoments;
 @property(nonatomic) long long librarySizeRange; // @synthesize librarySizeRange=_librarySizeRange;
 @property(nonatomic) unsigned long long librarySize; // @synthesize librarySize=_librarySize;
-@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) PGManager *manager; // @synthesize manager=_manager;
-@property(retain, nonatomic) PGGraph *graph; // @synthesize graph=_graph;
 - (void)_saveKey:(id)arg1 stringValue:(id)arg2 payload:(id)arg3;
 - (void)_saveKey:(id)arg1 integerValue:(unsigned long long)arg2 payload:(id)arg3;
 - (void)_saveKey:(id)arg1 boolValue:(_Bool)arg2 payload:(id)arg3;
 - (void)_saveKey:(id)arg1 doubleValue:(double)arg2 payload:(id)arg3;
-@property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) NSDictionary *payload;
+- (id)payload;
 - (void)_fillTripStatisticsWithGraph:(id)arg1;
 - (void)_fillFrequentLocationsStatisticsWithGraph:(id)arg1;
 - (void)_fillHomeWorkStatisticsWithGraph:(id)arg1;
@@ -226,12 +221,8 @@
 - (void)_fillMomentStatisticsWithGraph:(id)arg1;
 - (void)_fillGenericStatisticsWithGraph:(id)arg1;
 - (void)gatherMetricsWithProgressBlock:(CDUnknownBlockType)arg1;
+- (id)identifier;
 - (id)initWithGraphManager:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

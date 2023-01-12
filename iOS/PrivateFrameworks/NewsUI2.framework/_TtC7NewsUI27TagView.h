@@ -14,15 +14,26 @@
 {
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *imageView;
+    MISSING_TYPE *imageBorder;
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *badgeView;
+    MISSING_TYPE *countLabel;
     MISSING_TYPE *accessoryView;
+    MISSING_TYPE *isSelectable;
+    MISSING_TYPE *isHighlightable;
+    MISSING_TYPE *isEditing;
+    MISSING_TYPE *titleFrame;
+    MISSING_TYPE *editingTitleFrame;
+    MISSING_TYPE *subtitleFrame;
+    MISSING_TYPE *editingSubtitleFrame;
+    MISSING_TYPE *contentAccessibilityElement;
     MISSING_TYPE *_notificationSwitch;
     MISSING_TYPE *_likeButton;
     MISSING_TYPE *_dislikeButton;
-    MISSING_TYPE *isEditing;
     MISSING_TYPE *keyCommandBlocks;
     MISSING_TYPE *tsaxAccessibilityLabelForReordering;
+    MISSING_TYPE *isSelected;
+    MISSING_TYPE *isHighlighted;
 }
 
 - (void).cxx_destruct;

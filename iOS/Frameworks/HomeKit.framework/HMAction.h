@@ -41,7 +41,6 @@
 @property(copy) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(readonly) unsigned long long type;
 - (void)__configureWithContext:(id)arg1 actionSet:(id)arg2;
-- (void)dealloc;
 - (void)_unconfigure;
 - (void)_unconfigureContext;
 - (id)init;

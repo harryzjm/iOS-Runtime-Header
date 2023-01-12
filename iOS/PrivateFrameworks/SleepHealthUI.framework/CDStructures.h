@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -35,5 +31,10 @@ struct UIEdgeInsets {
 struct UIOffset {
     double _field1;
     double _field2;
+};
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 

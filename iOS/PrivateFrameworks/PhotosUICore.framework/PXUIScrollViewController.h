@@ -14,18 +14,23 @@
 @interface PXUIScrollViewController <PXUIScrollViewDelegate, _PXUIScrollViewFocusItemProvider, UIScrollViewDelegate>
 {
     _PXUIScrollView *_scrollView;
+    _Bool _isScrollViewDecelerating;
+    _Bool _ignoresSafeAreaInsets;
     _Bool _isScrollingToTop;
     id <PXUIScrollViewControllerFocusItemProvider> _focusItemProvider;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic, setter=setScrollingToTop:) _Bool isScrollingToTop; // @synthesize isScrollingToTop=_isScrollingToTop;
+@property(nonatomic) _Bool ignoresSafeAreaInsets; // @synthesize ignoresSafeAreaInsets=_ignoresSafeAreaInsets;
 @property(nonatomic) __weak id <PXUIScrollViewControllerFocusItemProvider> focusItemProvider; // @synthesize focusItemProvider=_focusItemProvider;
 - (id)focusItemsForScrollView:(id)arg1 inRect:(struct CGRect)arg2;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (_Bool)scrollViewShouldScrollToTop:(id)arg1;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)_checkScrollViewDeceleration;
+- (void)_scheduleScrollViewDecelerationCheck;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -35,6 +40,10 @@
 - (void)scrollViewWillLayoutSubviews:(id)arg1;
 - (id)contentCoordinateSpace;
 - (void)applyScrollInfo:(id)arg1;
+- (void)setShowsHorizontalScrollIndicator:(_Bool)arg1;
+- (void)setShowsVerticalScrollIndicator:(_Bool)arg1;
+- (_Bool)showsHorizontalScrollIndicator;
+- (_Bool)showsVerticalScrollIndicator;
 - (_Bool)isDecelerating;
 - (_Bool)isDragging;
 - (_Bool)isTracking;
@@ -46,10 +55,12 @@
 - (struct CGSize)scrollViewContentSize;
 - (struct CGRect)scrollViewContentBounds;
 - (struct CGRect)scrollViewTargetRect;
+- (struct CGRect)scrollViewVisibleRectOutsideBounds;
 - (struct CGRect)scrollViewConstrainedVisibleRect;
 - (struct CGRect)scrollViewVisibleRect;
 - (struct CGRect)scrollViewActiveRect;
 - (struct CGSize)scrollViewReferenceSize;
+- (void)decelerationRateDidChange;
 - (void)scrollViewLayoutIfNeeded;
 - (void)setScrollViewNeedsLayout;
 - (void)stopScrollingAndZoomingAnimations;
@@ -60,6 +71,7 @@
 - (void)setVisibleOrigin:(struct CGPoint)arg1;
 - (void)removeGestureRecognizer:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1;
+- (void)addFloatingSublayer:(id)arg1 forAxis:(long long)arg2;
 - (void)addSubviewToScrollView:(id)arg1;
 - (void)addSubview:(id)arg1;
 - (_Bool)hasWindow;

@@ -6,7 +6,10 @@
 
 #import <Foundation/NSString.h>
 
+@class NSURL;
+
 @interface NSString (WebBookmarksExtras)
+@property(readonly, nonatomic) NSURL *wb_bestURLForUserTypedString;
 - (id)wb_stringByRedactingBookmarkDAVServerID;
 - (id)_wb_stringByDeletingTrailingSlash;
 - (id)_wb_stringByStandardizingDAVServerID;

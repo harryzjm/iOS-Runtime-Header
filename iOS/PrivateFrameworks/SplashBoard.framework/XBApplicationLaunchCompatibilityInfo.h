@@ -20,6 +20,7 @@
     NSString *_bundleIdentifier;
     NSString *_bundlePath;
     NSString *_sandboxPath;
+    long long _badLaunchImageCandidateCount;
     NSString *_bundleContainerPath;
     NSString *_defaultGroupIdentifier;
 }
@@ -29,12 +30,14 @@
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSString *defaultGroupIdentifier; // @synthesize defaultGroupIdentifier=_defaultGroupIdentifier;
 @property(copy, nonatomic) NSString *bundleContainerPath; // @synthesize bundleContainerPath=_bundleContainerPath;
+@property(nonatomic) long long badLaunchImageCandidateCount; // @synthesize badLaunchImageCandidateCount=_badLaunchImageCandidateCount;
 @property(nonatomic) _Bool hasKnownBadLaunchImage; // @synthesize hasKnownBadLaunchImage=_hasKnownBadLaunchImage;
 @property(nonatomic) _Bool launchesOpaque; // @synthesize launchesOpaque=_launchesOpaque;
 @property(copy, nonatomic) NSString *sandboxPath; // @synthesize sandboxPath=_sandboxPath;
 @property(copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(readonly, copy, nonatomic) NSArray *launchInterfaces; // @synthesize launchInterfaces=_launchInterfaces;
+- (_Bool)launchInterfaceExistsForScheme:(id)arg1;
 - (id)launchInterfaceIdentifierForRequest:(id)arg1;
 - (id)launchInterfaceWithIdentifier:(id)arg1;
 @property(readonly, copy, nonatomic) XBLaunchInterface *defaultLaunchInterface;

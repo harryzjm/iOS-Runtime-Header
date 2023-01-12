@@ -8,10 +8,13 @@
 
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface AWDHomeKitSiriCommand : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
     int _actionType;
+    NSString *_clientMetricIdentifier;
     unsigned int _currentConfigurationVersion;
     unsigned int _duration;
     unsigned int _lastSyncedConfigurationVersion;
@@ -34,6 +37,8 @@
     } _has;
 }
 
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSString *clientMetricIdentifier; // @synthesize clientMetricIdentifier=_clientMetricIdentifier;
 @property(nonatomic) unsigned int serverConfigurationVersion; // @synthesize serverConfigurationVersion=_serverConfigurationVersion;
 @property(nonatomic) unsigned int lastSyncedConfigurationVersion; // @synthesize lastSyncedConfigurationVersion=_lastSyncedConfigurationVersion;
 @property(nonatomic) unsigned int currentConfigurationVersion; // @synthesize currentConfigurationVersion=_currentConfigurationVersion;
@@ -51,6 +56,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasClientMetricIdentifier;
 @property(nonatomic) _Bool hasServerConfigurationVersion;
 @property(nonatomic) _Bool hasLastSyncedConfigurationVersion;
 @property(nonatomic) _Bool hasCurrentConfigurationVersion;

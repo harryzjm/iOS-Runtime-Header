@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString;
+@protocol OS_dispatch_queue;
 
 @interface PHAssetExportRequestOptions : NSObject
 {
@@ -27,6 +28,7 @@
     NSString *_videoExportPreset;
     NSString *_videoExportFileType;
     NSString *_customFilenameBase;
+    NSObject<OS_dispatch_queue> *_resultHandlerQueue;
     long long _locationComparisonStrategy;
 }
 
@@ -36,6 +38,7 @@
 @property(nonatomic) _Bool forceLocationMetadataBaking; // @synthesize forceLocationMetadataBaking=_forceLocationMetadataBaking;
 @property(nonatomic) _Bool forceDateTimeMetadataBaking; // @synthesize forceDateTimeMetadataBaking=_forceDateTimeMetadataBaking;
 @property(nonatomic) long long locationComparisonStrategy; // @synthesize locationComparisonStrategy=_locationComparisonStrategy;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
 @property(copy, nonatomic) NSString *customFilenameBase; // @synthesize customFilenameBase=_customFilenameBase;
 @property(nonatomic) _Bool shouldBundleComplexAssetResources; // @synthesize shouldBundleComplexAssetResources=_shouldBundleComplexAssetResources;
 @property(nonatomic) _Bool disableMetadataCorrections; // @synthesize disableMetadataCorrections=_disableMetadataCorrections;

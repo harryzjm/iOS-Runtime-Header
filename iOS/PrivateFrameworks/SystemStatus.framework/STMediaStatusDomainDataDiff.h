@@ -23,6 +23,7 @@
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)diffByApplyingDiff:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 - (void)applyToMutableData:(id)arg1;
 - (id)dataByApplyingToData:(id)arg1;

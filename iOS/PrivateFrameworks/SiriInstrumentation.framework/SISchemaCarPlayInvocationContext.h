@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ProtocolBuffer/PBCodable.h>
-
 @class NSData, NSString;
 
-@interface SISchemaCarPlayInvocationContext : PBCodable
+@interface SISchemaCarPlayInvocationContext
 {
     NSString *_bundleID;
     int _directAction;
+    int _enhancedVoiceTriggerMode;
     struct {
         unsigned int directAction:1;
+        unsigned int enhancedVoiceTriggerMode:1;
     } _has;
     _Bool _hasBundleID;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool hasBundleID; // @synthesize hasBundleID=_hasBundleID;
+@property(nonatomic) int enhancedVoiceTriggerMode; // @synthesize enhancedVoiceTriggerMode=_enhancedVoiceTriggerMode;
 @property(nonatomic) int directAction; // @synthesize directAction=_directAction;
 @property(copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (id)initWithDictionary:(id)arg1;
@@ -30,6 +31,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+@property(nonatomic) _Bool hasEnhancedVoiceTriggerMode;
 @property(nonatomic) _Bool hasDirectAction;
 
 @end

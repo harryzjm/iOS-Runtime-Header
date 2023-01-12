@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *glowView;
     MISSING_TYPE *audioVisualizer;
+    MISSING_TYPE *bellIcon;
+    MISSING_TYPE *ringButton;
     MISSING_TYPE *contactView;
     MISSING_TYPE *titleView;
     MISSING_TYPE *subtitleView;

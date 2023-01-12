@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/ML3AccountInformationProviding-Protocol.h>
 #import <MusicLibrary/ML3DatabaseConnectionDelegate-Protocol.h>
 #import <MusicLibrary/ML3DatabaseConnectionPoolDelegate-Protocol.h>
 #import <MusicLibrary/NSSecureCoding-Protocol.h>
+#import <MusicLibrary/_MSVAccountInformationProviding-Protocol.h>
 
-@class ML3AccountCacheDatabase, ML3Container, ML3DatabaseConnectionPool, ML3DatabaseMetadata, ML3LibraryNotificationManager, ML3MusicLibraryResourcesManager, NSArray, NSDate, NSLock, NSMutableDictionary, NSNumber, NSString;
+@class ML3AccountCacheDatabase, ML3Container, ML3DatabaseConnectionPool, ML3DatabaseMetadata, ML3DatabasePrivacyContext, ML3LibraryNotificationManager, ML3MusicLibraryResourcesManager, NSArray, NSDate, NSLock, NSMutableDictionary, NSNumber, NSString;
 @protocol ML3MusicLibraryDelegate, OS_dispatch_queue;
 
-@interface ML3MusicLibrary : NSObject <ML3DatabaseConnectionDelegate, ML3DatabaseConnectionPoolDelegate, NSSecureCoding, ML3AccountInformationProviding>
+@interface ML3MusicLibrary : NSObject <ML3DatabaseConnectionDelegate, ML3DatabaseConnectionPoolDelegate, NSSecureCoding, _MSVAccountInformationProviding>
 {
     NSString *_libraryUID;
     NSLock *_libraryUIDLock;
@@ -35,6 +35,7 @@
     ML3LibraryNotificationManager *_notificationManager;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSString *_accountDSID;
+    ML3DatabasePrivacyContext *_privacyContext;
     id <ML3MusicLibraryDelegate> _delegate;
     NSArray *_libraryEntityFilterPredicates;
     NSArray *_libraryContainerFilterPredicates;
@@ -67,6 +68,7 @@
 + (id)allLibraries;
 + (id)registeredLibraries;
 + (id)musicLibraryForUserAccount:(id)arg1;
++ (id)_onGlobalQueue_shareableMusicLibraryWithResourcesManager:(id)arg1;
 + (id)globalSerialQueue;
 + (long long)artworkSourceTypeForTrackSource:(int)arg1;
 + (id)artworkTokenForChapterWithItemPID:(long long)arg1 retrievalTime:(double)arg2;
@@ -110,6 +112,7 @@
 @property(retain, nonatomic) NSArray *libraryContainerFilterPredicates; // @synthesize libraryContainerFilterPredicates=_libraryContainerFilterPredicates;
 @property(retain, nonatomic) NSArray *libraryEntityFilterPredicates; // @synthesize libraryEntityFilterPredicates=_libraryEntityFilterPredicates;
 @property(nonatomic) __weak id <ML3MusicLibraryDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) ML3DatabasePrivacyContext *privacyContext; // @synthesize privacyContext=_privacyContext;
 @property(readonly, copy, nonatomic) NSString *accountDSID; // @synthesize accountDSID=_accountDSID;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(retain, nonatomic) ML3LibraryNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
@@ -144,6 +147,7 @@
 - (_Bool)_updateBestArtworkTokensForArtworkToken:(id)arg1 artworkType:(long long)arg2 sourceType:(long long)arg3 preserveExistingAvailableToken:(_Bool)arg4 usingConnection:(id)arg5;
 - (_Bool)_insertArtworkRowWithArtworkToken:(id)arg1 artworkType:(long long)arg2 sourceType:(long long)arg3 relativePath:(id)arg4 usingConnection:(id)arg5;
 - (_Bool)_insertArtworkRowWithArtworkToken:(id)arg1 artworkType:(long long)arg2 sourceType:(long long)arg3 relativePath:(id)arg4;
+- (void)_logDatabaseAccess;
 - (void)updateTrackIntegrity;
 - (void)deletePresignedValidity;
 - (_Bool)verifyPresignedValidity;
@@ -234,6 +238,7 @@
 - (id)checkoutWriterConnection;
 - (id)checkoutReaderConnection;
 - (void)connectionPool:(id)arg1 createdNewConnection:(id)arg2;
+- (void)connectionDidAccessDatabase:(id)arg1;
 - (void)connection:(id)arg1 didEndDatabaseTransactionAndCommit:(_Bool)arg2;
 - (void)connectionDidBeginDatabaseTransaction:(id)arg1;
 - (void)connectionWillCloseDatabase:(id)arg1;
@@ -246,6 +251,7 @@
 @property(readonly, nonatomic) NSArray *preferredAudioTracks;
 @property(readonly, nonatomic) NSArray *localizedSectionIndexTitles;
 @property(readonly, nonatomic) ML3DatabaseMetadata *databaseInfo;
+@property(readonly, nonatomic) ML3Container *currentDevicePhotosMemoriesPlaylist;
 @property(readonly, nonatomic) ML3Container *currentDevicePlaybackHistoryPlaylist;
 @property(readonly, nonatomic) ML3Container *currentDevicePurchasesPlaylist;
 @property(readonly, nonatomic, getter=isLibraryEmpty) _Bool libraryEmpty;
@@ -264,9 +270,12 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithClientIdentity:(id)arg1 path:(id)arg2 readOnly:(_Bool)arg3 populateUnitTestTablesBlock:(CDUnknownBlockType)arg4;
+- (id)initWithClientIdentity:(id)arg1 path:(id)arg2;
 - (id)initWithPath:(id)arg1 readOnly:(_Bool)arg2 populateUnitTestTablesBlock:(CDUnknownBlockType)arg3;
 - (id)initWithPath:(id)arg1;
 - (id)initWithResourcesManager:(id)arg1;
+- (id)initWithClientIdentity:(id)arg1 forUserAccount:(id)arg2;
 - (id)artistForArtistName:(id)arg1 seriesName:(id)arg2;
 - (id)artistGroupingKeyForArtistName:(id)arg1 seriesName:(id)arg2;
 - (_Bool)repairAlbumArtistRelationshipsWithConnection:(id)arg1;

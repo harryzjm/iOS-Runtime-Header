@@ -10,12 +10,14 @@ __attribute__((visibility("hidden")))
 @interface _GEOIdentifiersTicket
 {
     NSArray *_identifiers;
+    id _requestToken;
     int _resultProviderID;
     NSString *_contentProvider;
     unsigned long long _options;
 }
 
 - (void).cxx_destruct;
+- (void)cancel;
 - (CDStruct_d1a7ebee)dataRequestKind;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;
 - (id)description;

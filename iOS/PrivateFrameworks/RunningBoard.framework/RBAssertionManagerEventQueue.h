@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class RBEventQueue, RBProcessMap;
-@protocol OS_dispatch_queue, RBAssertionManagerQueueDelegate;
+@protocol OS_dispatch_queue, RBAssertionManagerQueueDelegate, RBTimeProviding;
 
 @interface RBAssertionManagerEventQueue : NSObject
 {
@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     RBEventQueue *_eventQueue;
     RBProcessMap *_expirationWarningEvents;
+    id <RBTimeProviding> _timeProvider;
     id <RBAssertionManagerQueueDelegate> _delegate;
 }
 
@@ -23,7 +24,7 @@
 - (id)description;
 @property(readonly) unsigned long long count;
 - (void)updateEventsForAssertions:(id)arg1;
-- (id)init;
+- (id)initWithTimeProvider:(id)arg1;
 
 @end
 

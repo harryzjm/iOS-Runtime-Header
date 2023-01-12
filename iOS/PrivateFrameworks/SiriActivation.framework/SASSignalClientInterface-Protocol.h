@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString, SASButtonIdentifierTransport, SASDirectActionEventTransport, SASTimeIntervalTransport, SiriContext, SiriContinuityContext, SiriDirectActionContext, SiriDismissalOptions, SiriLongPressButtonContext, SiriSpotlightContext, SiriTestingContext;
+@class NSNumber, NSString, SASButtonIdentifierTransport, SASTimeIntervalTransport, SiriContext, SiriContinuityContext, SiriDirectActionContext, SiriDismissalOptions, SiriLongPressButtonContext, SiriRemotePresentationBringUpContext, SiriSpotlightContext, SiriTestingContext;
 
 @protocol SASSignalClientInterface
+- (oneway void)unregisterButtonEventListenerWithIdentifier:(NSString *)arg1;
+- (oneway void)registerButtonEventListenerWithIdentifier:(NSString *)arg1;
+- (oneway void)unregisterAssertionWithIdentifier:(NSString *)arg1;
+- (oneway void)registerAssertionWithIdentifier:(NSString *)arg1 reason:(NSNumber *)arg2;
 - (oneway void)deactivationRequestFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 context:(SiriContext *)arg2 options:(SiriDismissalOptions *)arg3;
 - (oneway void)buttonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 context:(SiriLongPressButtonContext *)arg2;
 - (oneway void)buttonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
@@ -18,10 +22,12 @@
 - (oneway void)activationRequestFromTestingWithContext:(SiriTestingContext *)arg1;
 - (oneway void)activationRequestFromSpotlightWithContext:(SiriSpotlightContext *)arg1;
 - (oneway void)activationRequestFromSimpleActivation:(NSNumber *)arg1;
+- (oneway void)activationRequestFromBluetoothKeyboardActivation:(NSNumber *)arg1;
 - (oneway void)activationRequestFromBreadcrumb;
+- (oneway void)activationRequestFromRemotePresentationBringUpWithContext:(SiriRemotePresentationBringUpContext *)arg1;
 - (oneway void)activationRequestFromContinuityWithContext:(SiriContinuityContext *)arg1;
-- (oneway void)activationRequestFromDirectActionEvent:(SASDirectActionEventTransport *)arg1 context:(SiriDirectActionContext *)arg2 completion:(void (^)(NSNumber *, NSError *))arg3;
-- (oneway void)activationRequestFromDirectActionEvent:(SASDirectActionEventTransport *)arg1 context:(SiriDirectActionContext *)arg2;
+- (oneway void)activationRequestFromDirectActionEventWithContext:(SiriDirectActionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (oneway void)activationRequestFromDirectActionEventWithContext:(SiriDirectActionContext *)arg1;
 - (oneway void)activationRequestFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 context:(SiriContext *)arg2;
 - (oneway void)unregisterNonButtonSourceWithType:(NSNumber *)arg1 withUUID:(NSString *)arg2;
 - (oneway void)registerNonButtonSourceWithType:(NSNumber *)arg1 withUUID:(NSString *)arg2;

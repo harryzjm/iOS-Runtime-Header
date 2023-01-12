@@ -21,6 +21,9 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) CDUnknownBlockType tintColorMatrixProvider;
+@property(readonly, nonatomic) _Bool usesPointerArbiter;
+@property(readonly, nonatomic) _Bool allowsSanitization;
 @property(readonly, nonatomic) _Bool useSoftShadow;
 @property(readonly, nonatomic) double dampedAnimationDampingRatio;
 @property(readonly, nonatomic) double dampedAnimationResponse;

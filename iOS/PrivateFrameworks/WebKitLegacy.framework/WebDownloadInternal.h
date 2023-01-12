@@ -13,9 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface WebDownloadInternal : NSObject <NSURLDownloadDelegate>
 {
-    id realDelegate;
+    struct RetainPtr<id> realDelegate;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)download:(id)arg1 didFailWithError:(id)arg2;
 - (void)downloadDidFinish:(id)arg1;
 - (void)download:(id)arg1 didCreateDestination:(id)arg2;

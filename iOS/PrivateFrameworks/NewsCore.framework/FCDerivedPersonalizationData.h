@@ -10,24 +10,20 @@
 #import <NewsCore/NSCopying-Protocol.h>
 #import <NewsCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, NTPBPersonalizationProfile;
+@class NSDictionary, NSString;
 
 @interface FCDerivedPersonalizationData : NSObject <FCDerivedPersonalizationData, NSSecureCoding, NSCopying>
 {
-    NTPBPersonalizationProfile *_profile;
     NSDictionary *_aggregatesByFeatureKey;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSDictionary *aggregatesByFeatureKey; // @synthesize aggregatesByFeatureKey=_aggregatesByFeatureKey;
-@property(copy, nonatomic) NTPBPersonalizationProfile *profile; // @synthesize profile=_profile;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)aggregateForFeatureKey:(id)arg1;
 - (id)aggregatesForFeatureKeys:(id)arg1;
-- (id)initWithPersonalizationProfile:(id)arg1;
 - (id)init;
 
 // Remaining properties

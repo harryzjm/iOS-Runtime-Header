@@ -18,7 +18,7 @@
 
 + (id)tableImageFromRed:(const float *)arg1 green:(const float *)arg2 blue:(const float *)arg3 luminance:(const float *)arg4;
 + (id)curvePointsFromDictionaries:(id)arg1;
-+ (vector_f9ed6fc8)calculateCurveTable:(id)arg1;
++ (vector_fef9a72d)calculateCurveTable:(id)arg1;
 - (void).cxx_destruct;
 @property(retain) NSArray *inputPointsL; // @synthesize inputPointsL=_inputPointsL;
 @property(retain) NSArray *inputPointsB; // @synthesize inputPointsB=_inputPointsB;

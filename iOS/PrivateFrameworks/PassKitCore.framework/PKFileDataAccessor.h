@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSURL, PKDirectoryCoordinator, PKRemoteAssetManager;
+@class NSArray, NSString, NSURL, PKDirectoryCoordinator, PKRemoteAssetManager;
 
 @interface PKFileDataAccessor
 {
@@ -13,17 +13,19 @@
     PKRemoteAssetManager *_remoteAssetManager;
     NSArray *_seids;
     _Bool _ownsFileURL;
+    NSString *_explicitDataTypeIdentifier;
     NSURL *_fileURL;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(copy, nonatomic) NSString *explicitDataTypeIdentifier; // @synthesize explicitDataTypeIdentifier=_explicitDataTypeIdentifier;
 @property(nonatomic) _Bool ownsFileURL; // @synthesize ownsFileURL=_ownsFileURL;
 - (id)passLocalizedStringForKey:(id)arg1;
 - (id)displayProfileOfType:(long long)arg1;
 - (id)remoteAssetManager;
 - (id)remoteAssetManagerForSEIDs:(id)arg1;
-- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 seids:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)remoteAssetsDownloadedForScreenScale:(double)arg1 seids:(id)arg2 suffix:(id)arg3;
 - (_Bool)remoteAssetsDownloadedForSEIDs:(id)arg1;
 - (id)bundle;

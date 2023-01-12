@@ -11,6 +11,7 @@
 @interface _TtCC9Coherence9CREncoder18CRDTKeyedContainer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *container;
+    MISSING_TYPE *encoder;
 }
 
 @end

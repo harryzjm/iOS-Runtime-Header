@@ -6,13 +6,16 @@
 
 #import <UIKitCore/UIFocusEnvironment-Protocol.h>
 
-@class UIFocusMovementHint;
+@class UIFocusEffect, UIFocusMovementHint;
 
 @protocol UIFocusItem <UIFocusEnvironment>
 @property(readonly, nonatomic) struct CGRect frame;
 @property(readonly, nonatomic) _Bool canBecomeFocused;
 
 @optional
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
+@property(readonly, nonatomic) long long focusGroupPriority;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
 - (void)didHintFocusMovement:(UIFocusMovementHint *)arg1;
 @end
 

@@ -16,6 +16,7 @@
 }
 
 + (id)secureCodedPropertyKeys;
+- (void).cxx_destruct;
 @property(retain, nonatomic) NSSet *shortVersions; // @synthesize shortVersions=_shortVersions;
 @property(retain, nonatomic) NSSet *versions; // @synthesize versions=_versions;
 @property(nonatomic) long long platform; // @synthesize platform=_platform;
@@ -23,7 +24,6 @@
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 
 @end
 

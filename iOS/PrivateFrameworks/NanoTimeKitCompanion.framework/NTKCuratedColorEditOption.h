@@ -8,10 +8,6 @@
 {
 }
 
-+ (id)localizedStringForKey:(id)arg1;
-+ (id)curatedColorLocalizationKeyPrefix;
-+ (id)curatedColorLocalizationKey:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_curatedColorValuesForDevice:(id)arg1;
 + (id)curatedColorValuesForDevice:(id)arg1;

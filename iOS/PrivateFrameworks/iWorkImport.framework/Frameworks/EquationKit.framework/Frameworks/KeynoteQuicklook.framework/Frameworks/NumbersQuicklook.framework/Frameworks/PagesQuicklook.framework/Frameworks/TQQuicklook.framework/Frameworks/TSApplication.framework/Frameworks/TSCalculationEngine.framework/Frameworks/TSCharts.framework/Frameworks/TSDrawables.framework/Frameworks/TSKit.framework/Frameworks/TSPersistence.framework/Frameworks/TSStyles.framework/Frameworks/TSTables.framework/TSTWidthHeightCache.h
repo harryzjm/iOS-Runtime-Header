@@ -9,20 +9,20 @@
 @interface TSTWidthHeightCache : NSObject
 {
     struct _opaque_pthread_rwlock_t _lock;
-    struct vector<TSTWidthHeightCacheEntry<4>, std::__1::allocator<TSTWidthHeightCacheEntry<4>>> _rowHeights;
-    vector_b67dfe3a _columnModelWidths;
+    struct vector<TSTWidthHeightCacheEntry<4>, std::allocator<TSTWidthHeightCacheEntry<4>>> _rowHeights;
+    struct vector<double, std::allocator<double>> _columnModelWidths;
     _Bool _needsToBeArchived;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool needsToBeArchived; // @synthesize needsToBeArchived=_needsToBeArchived;
-- (void)saveToArchive:(struct WidthHeightCache *)arg1 archiver:(id)arg2;
-- (id)initWithArchive:(const struct WidthHeightCache *)arg1 unarchiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
+- (id)initWithArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)willModifyIfPossible:(id)arg1;
 - (void)willModifyIfNeeded:(id)arg1;
 - (void)finalizeLayoutPassWithRowsNeedingFittingInfo:(id)arg1;
-- (id)validateRowsNeedingFittingInfo:(id)arg1 validationRegion:(id)arg2 masterLayout:(id)arg3;
+- (id)validateRowsNeedingFittingInfo:(id)arg1 validationRegion:(id)arg2 layoutEngine:(id)arg3;
 - (id)validateChangeDescriptors:(id)arg1 tableInfo:(id)arg2 numberOfRows:(unsigned int)arg3 numberOfColumns:(unsigned short)arg4;
 - (id)p_resetFittingHeightsForRange:(struct TSUCellRect)arg1;
 - (void)resetFittingRowHeightsStartingWith:(unsigned int)arg1 upToRow:(unsigned int)arg2;

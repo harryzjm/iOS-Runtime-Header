@@ -5,10 +5,12 @@
 //
 
 #import <WorkflowKit/WFCodableAttributeBackedParameter-Protocol.h>
+#import <WorkflowKit/WFParameterValuePickable-Protocol.h>
 
-@class INCodableAttribute, INObjectCollection, INStringLocalizer, NSString;
+@class INCodableAttribute, INStringLocalizer, NSString;
+@protocol WFCustomIntentDynamicEnumerationDataSource;
 
-@interface WFCustomIntentDynamicEnumerationParameter <WFCodableAttributeBackedParameter>
+@interface WFCustomIntentDynamicEnumerationParameter <WFParameterValuePickable, WFCodableAttributeBackedParameter>
 {
     INCodableAttribute *_codableAttribute;
     INStringLocalizer *_stringLocalizer;
@@ -18,20 +20,33 @@
 @property(retain, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 @property(retain, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
 - (void)getStatesWithSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)preferParameterValuePicker;
 - (_Bool)displaysMultipleValueEditor;
 - (_Bool)parameterStateIsValid:(id)arg1;
 - (_Bool)hidesSubtitleInEditor;
 - (id)localizedSubtitleLabelForPossibleState:(id)arg1;
-- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)accessoryImageForPossibleState:(id)arg1;
 - (Class)singleStateClass;
 @property(readonly, nonatomic) NSString *localizedConfigurationPromptDialog;
+- (id)wf_pickerLocalizedImageForState:(id)arg1;
+- (id)wf_pickerLocalizedSubtitleForState:(id)arg1;
+- (id)wf_pickerLocalizedTitleForState:(id)arg1;
+- (void)wf_reloadFromAttributesDidChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)wf_loadStatesWithSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly, nonatomic) _Bool wf_shouldValidateCurrentStateOnCollectionChanged;
+@property(readonly, nonatomic) _Bool wf_allowsMultipleSelection;
+@property(readonly, nonatomic) NSString *wf_displayLocalizedPrompt;
+@property(readonly, nonatomic) _Bool wf_supportsSearch;
 
 // Remaining properties
+@property(nonatomic) __weak id <WFCustomIntentDynamicEnumerationDataSource> dataSource; // @dynamic dataSource;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(retain, nonatomic) INObjectCollection *possibleStatesCollection;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool wf_alwaysScaleIconImage;
+@property(readonly, nonatomic) _Bool wf_usesGroupTableViewStyle;
+@property(readonly, nonatomic) _Bool wf_usesTogglesForSelection;
 
 @end
 

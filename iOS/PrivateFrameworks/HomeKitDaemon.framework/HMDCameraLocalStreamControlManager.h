@@ -20,9 +20,9 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-@property(retain, nonatomic) HMDCameraSupportedConfigurationCache *supportedConfigCache; // @synthesize supportedConfigCache=_supportedConfigCache;
-@property(retain, nonatomic) HMDCameraMediaConfigGenerator *configGenerator; // @synthesize configGenerator=_configGenerator;
-@property(retain, nonatomic) HMDCameraLocalStreamSession *streamSession; // @synthesize streamSession=_streamSession;
+@property(readonly) HMDCameraSupportedConfigurationCache *supportedConfigCache; // @synthesize supportedConfigCache=_supportedConfigCache;
+@property(readonly) HMDCameraMediaConfigGenerator *configGenerator; // @synthesize configGenerator=_configGenerator;
+@property(retain) HMDCameraLocalStreamSession *streamSession; // @synthesize streamSession=_streamSession;
 - (void)_sendUpdatedConfiguration;
 - (void)_reconfigureStreams;
 - (void)streamingManagerDidUpdateConfiguration:(id)arg1;
@@ -32,24 +32,26 @@
 - (void)streamingManagerDidStartRelay:(id)arg1;
 - (void)streamingManagerDidReceiveFirstFrame:(id)arg1 audioStreamSetting:(unsigned long long)arg2 aspectRatio:(id)arg3 slotIdentifier:(id)arg4;
 - (void)streamingManager:(id)arg1 didStartStream:(id)arg2 slotIdentifier:(id)arg3;
-- (void)deviceConnectionSender:(id)arg1 didEndSession:(id)arg2;
-- (void)deviceConnectionSender:(id)arg1 didSetup:(id)arg2;
-- (void)sessionInitiator:(id)arg1 didEndSession:(id)arg2;
-- (void)sessionInitiator:(id)arg1 didSetup:(id)arg2;
+- (void)deviceConnectionSender:(id)arg1 didEndSessionWithError:(id)arg2;
+- (void)deviceConnectionSender:(id)arg1 didSetUpWithError:(id)arg2;
+- (void)sessionInitiator:(id)arg1 didEndSessionWithError:(id)arg2;
+- (void)sessionInitiator:(id)arg1 didSetUpWithError:(id)arg2;
 - (void)_streamStarted;
-- (void)_cleanUpStreamSession:(id)arg1;
+- (void)_cleanUpStreamSessionWithError:(id)arg1;
 - (void)_writeStopConfig:(id)arg1;
 - (void)_writeSelectConfig:(id)arg1 reconfigure:(_Bool)arg2;
 - (void)_writeReselectConfig;
 - (void)_writeStartConfig;
-- (void)_stopCurrentStreamSession:(id)arg1;
-- (void)stopStream:(id)arg1;
+- (void)_stopCurrentStreamSessionWithError:(id)arg1;
+- (void)stopStreamWithError:(id)arg1;
 - (void)_reconfigureStream:(id)arg1;
 - (void)reconfigureStream:(id)arg1;
 - (void)_startStreamingManager;
 - (id)_calculateMTU;
-- (void)_startStream:(id)arg1;
-- (void)startStream:(id)arg1;
+- (void)_startStreamWithRemoteSettings:(id)arg1;
+- (void)_removeServerStreamSession;
+- (void)_addServerStreamSession;
+- (void)startStreamWithRemoteSettings:(id)arg1;
 - (_Bool)_validateSetupEndPointReadWithWrite;
 - (void)_handleSetupEndPointRead:(id)arg1;
 - (void)_sendSetupEndPointRead;
@@ -60,8 +62,10 @@
 - (void)negotiateStream;
 - (void)updateAudioVolume:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)updateAudioSetting:(unsigned long long)arg1;
-- (void)remoteSetup:(id)arg1;
+- (void)setUpRemoteConnectionWithDevice:(id)arg1;
+@property(readonly, getter=isSendingStream) _Bool sendingStream;
 - (void)dealloc;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5 accessory:(id)arg6 streamManagementService:(id)arg7 supportedConfigCache:(id)arg8 streamSession:(id)arg9;
 - (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 reachabilityPath:(unsigned long long)arg4 device:(id)arg5 delegate:(id)arg6 delegateQueue:(id)arg7 accessory:(id)arg8 streamManagementService:(id)arg9 remoteCapabilities:(id)arg10 supportedConfigCache:(id)arg11 streamPreference:(id)arg12;
 
 // Remaining properties

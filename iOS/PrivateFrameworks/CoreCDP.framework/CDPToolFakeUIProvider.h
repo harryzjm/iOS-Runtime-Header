@@ -8,7 +8,7 @@
 
 #import <CoreCDP/CDPStateUIProvider-Protocol.h>
 
-@class NSString;
+@class AKInheritanceAccessKey, NSString;
 
 @interface CDPToolFakeUIProvider : NSObject <CDPStateUIProvider>
 {
@@ -16,13 +16,16 @@
     NSString *_remoteSecret;
     NSString *_icsc;
     NSString *_recoveryKey;
+    AKInheritanceAccessKey *_accessKey;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) AKInheritanceAccessKey *accessKey; // @synthesize accessKey=_accessKey;
 @property(copy, nonatomic) NSString *recoveryKey; // @synthesize recoveryKey=_recoveryKey;
 @property(copy, nonatomic) NSString *icsc; // @synthesize icsc=_icsc;
 @property(copy, nonatomic) NSString *remoteSecret; // @synthesize remoteSecret=_remoteSecret;
 @property(copy, nonatomic) NSString *localSecret; // @synthesize localSecret=_localSecret;
+- (void)cdpContext:(id)arg1 promptForBeneficiaryAccessKeyWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForInteractiveAuthenticationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForAdoptionOfMultipleICSC:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForRecoveryKeyWithValidator:(id)arg2 completion:(CDUnknownBlockType)arg3;

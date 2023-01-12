@@ -6,11 +6,12 @@
 
 #import <UIKit/UISearchTextField.h>
 
-@class NSHashTable, UIImage, UIView;
+#import <SpringBoardHome/UIPointerInteractionDelegate-Protocol.h>
 
-@interface SBHSearchTextField : UISearchTextField
+@class NSHashTable, NSString, UIImage, UIView;
+
+@interface SBHSearchTextField : UISearchTextField <UIPointerInteractionDelegate>
 {
-    struct CGRect _placeholderBoundingRect;
     UIView *_backgroundView;
     NSHashTable *_styledViews;
     UIImage *_magnifyingGlassImage;
@@ -32,6 +33,8 @@
 - (struct CGRect)_calculateEditingRectForBounds:(struct CGRect)arg1 alignment:(long long)arg2 isRTL:(_Bool)arg3;
 - (struct CGRect)_frameForRightViewWithinBounds:(struct CGRect)arg1 alignment:(long long)arg2;
 - (struct CGRect)_frameForLeftViewWithinBounds:(struct CGRect)arg1 alignment:(long long)arg2;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)updateStyleForClearButton;
 - (void)updateStyleForRightView;
@@ -43,6 +46,7 @@
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;
+- (void)setReturnKeyType:(long long)arg1;
 - (void)setFont:(id)arg1;
 - (void)updateVisualStyling;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -60,6 +64,12 @@
 - (struct CGSize)intrinsicContentSize;
 - (double)_calculateHeightWithFont;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

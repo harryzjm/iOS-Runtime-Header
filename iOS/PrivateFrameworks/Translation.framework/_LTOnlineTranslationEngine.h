@@ -8,7 +8,7 @@
 
 #import <Translation/_LTTranslationEngine-Protocol.h>
 
-@class AFSettingsConnection, FTBlazarService, FTMtService, NSOperationQueue, NSString, _LTBatchTranslationResponseHandler, _LTOspreySpeechTranslationSession, _LTTextToSpeechCache;
+@class AFSettingsConnection, FTBlazarService, FTMtService, NSDate, NSOperationQueue, NSString, _LTBatchTranslationResponseHandler, _LTOspreySpeechTranslationSession, _LTTextToSpeechCache;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -17,20 +17,24 @@ __attribute__((visibility("hidden")))
     NSOperationQueue *_sendQueue;
     FTMtService *_service;
     FTBlazarService *_blazarService;
+    FTBlazarService *_systemService;
     FTBlazarService *_webTaskService;
     NSObject<OS_dispatch_queue> *_translationQueue;
     _LTOspreySpeechTranslationSession *_speechSession;
     _LTBatchTranslationResponseHandler *batchTranslationResponseHandler;
     NSObject<OS_dispatch_queue> *_timerQueue;
     NSObject<OS_dispatch_source> *_serverTimer;
+    NSDate *_startTime;
     AFSettingsConnection *_assistantSettingsConnection;
     long long _dataSharingOptInStatus;
     _LTTextToSpeechCache *_ttsCache;
+    NSObject<OS_dispatch_queue> *_serverQueue;
 }
 
 + (id)blazarServiceWithBundleID:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serverQueue; // @synthesize serverQueue=_serverQueue;
 @property(retain, nonatomic) _LTTextToSpeechCache *ttsCache; // @synthesize ttsCache=_ttsCache;
 - (void)cancelSpeechTranslation;
 - (void)_speechSessionCompletedWithError:(id)arg1;
@@ -45,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)translateSentence:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendBatchTranslationRequestWithDelegate:(id)arg1;
 - (void)_translateParagraph:(id)arg1 index:(long long)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_translate:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)speak:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_tokenizeString:(id)arg1 inLocale:(id)arg2;
 - (void)serverTimeoutFired;
@@ -56,8 +59,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)translatesPair:(id)arg1;
 - (id)_serviceForTask:(long long)arg1;
 - (id)_webTaskService;
+- (id)_systemService;
 - (id)_blazarService;
-- (id)_service;
 - (id)init;
 
 // Remaining properties

@@ -13,18 +13,27 @@
 @interface _SFUIViewPopoverSourceInfo : NSObject <_SFPopoverSourceInfo>
 {
     UIView *_view;
+    struct UIEdgeInsets _insets;
+    _Bool _shouldPassthroughSuperview;
+    _Bool _shouldHideArrow;
+    unsigned long long _permittedArrowDirections;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldHideArrow; // @synthesize shouldHideArrow=_shouldHideArrow;
+@property(nonatomic) _Bool shouldPassthroughSuperview; // @synthesize shouldPassthroughSuperview=_shouldPassthroughSuperview;
+@property(nonatomic) unsigned long long permittedArrowDirections; // @synthesize permittedArrowDirections=_permittedArrowDirections;
 @property(readonly, nonatomic) UIView *popoverSourceView;
 @property(readonly, nonatomic) struct CGRect popoverSourceRect;
+@property(readonly, copy) NSString *description;
+- (id)initWithView:(id)arg1 insets:(struct UIEdgeInsets)arg2;
 - (id)initWithView:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) UIBarButtonItem *barButtonItem;
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool shouldDismissIfSourceRemovedAfterRepositioning;
 @property(readonly) Class superclass;
 
 @end

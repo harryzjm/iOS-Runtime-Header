@@ -10,28 +10,40 @@
 
 @interface _TtC8FMIPCore11FMIPManager : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *identifier;
     MISSING_TYPE *delegate;
     MISSING_TYPE *siriDelegate;
     MISSING_TYPE *refreshingController;
     MISSING_TYPE *beaconRefreshingController;
-    MISSING_TYPE *dataManager;
+    MISSING_TYPE *safeLocationRefreshingController;
+    MISSING_TYPE *isDevicesSnapshotMode;
+    MISSING_TYPE *isItemsSnapshotMode;
+    MISSING_TYPE *configuration;
     MISSING_TYPE *garbageCollector;
     MISSING_TYPE *locationController;
-    MISSING_TYPE *interactionController;
-    MISSING_TYPE *actionsController;
     MISSING_TYPE *authenticationUIProvider;
     MISSING_TYPE *ownerSession;
-    MISSING_TYPE *ownerInterface;
     MISSING_TYPE *urlHandler;
-    MISSING_TYPE *isUpdatingSingleDevices;
     MISSING_TYPE *locationShifter;
     MISSING_TYPE *dataQueue;
     MISSING_TYPE *unknownItemQueue;
     MISSING_TYPE *delegateQueue;
+    MISSING_TYPE *dataManager;
+    MISSING_TYPE *interactionController;
+    MISSING_TYPE *actionsController;
+    MISSING_TYPE *snapshotDevicesResponseReceived;
+    MISSING_TYPE *itemActionsController;
+    MISSING_TYPE *snapshotItemsResponseReceived;
+    MISSING_TYPE *snapshotItemsLocatedResponseReceived;
     MISSING_TYPE *stopRefreshTimestamp;
-    MISSING_TYPE *isRefreshing;
+    MISSING_TYPE *isUpdatingSingleDevices;
+    MISSING_TYPE *isRefreshingItems;
+    MISSING_TYPE *isRefreshingDevices;
+    MISSING_TYPE *isUTAppAlertDisabled;
+    MISSING_TYPE *useRealtimeForItems;
+    MISSING_TYPE *connectionStateProvider;
     MISSING_TYPE *selectedDevice;
-    MISSING_TYPE *isInitialized;
+    MISSING_TYPE *initializedSubsystems;
 }
 
 @end

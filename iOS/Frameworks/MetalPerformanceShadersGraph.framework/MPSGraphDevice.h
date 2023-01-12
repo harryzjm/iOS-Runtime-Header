@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
 @protocol MTLDevice;
 
 @interface MPSGraphDevice : NSObject
 {
     id <MTLDevice> _mtlDevice;
     unsigned int _type;
-    unsigned int _deviceType;
     id <MTLDevice> _metalDevice;
+    NSString *_metalDeviceName;
 }
 
++ (id)CPUDevice;
++ (id)ANEDevice;
 + (id)deviceWithMTLDevice:(id)arg1;
-+ (void)load;
++ (void)initialize;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) unsigned int type; // @synthesize type=_deviceType;
+@property(readonly, nonatomic) NSString *metalDeviceName; // @synthesize metalDeviceName=_metalDeviceName;
+@property(readonly, nonatomic) unsigned int type; // @synthesize type=_type;
 @property(readonly, nonatomic) id <MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
-- (id)initWithDevice:(id)arg1;
+- (id)initWithDeviceType:(unsigned int)arg1 metalDevice:(id)arg2;
 
 @end
 

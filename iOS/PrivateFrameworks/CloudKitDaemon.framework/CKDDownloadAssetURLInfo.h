@@ -8,7 +8,6 @@
 
 @class CKAsset;
 
-__attribute__((visibility("hidden")))
 @interface CKDDownloadAssetURLInfo : NSObject
 {
     CKAsset *_asset;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKAsset *asset; // @synthesize asset=_asset;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (void)dealloc;
 
 @end
 

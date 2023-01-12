@@ -107,9 +107,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)createTCPTunnelForParticipantID:(id)arg1 relayDictionary:(id)arg2 didOriginateRequest:(_Bool)arg3 relayType:(unsigned char)arg4 error:(id *)arg5;
 - (void)handleRATChanged:(id)arg1;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;
+- (void)didUpdatePreferredInterfaceForDuplication:(unsigned char)arg1 notifyPeer:(_Bool)arg2 enableDuplication:(_Bool)arg3 isMediaUnrecoverableSignal:(_Bool)arg4;
 - (void)didEnableDuplication:(_Bool)arg1 activeConnection:(id)arg2;
 - (void)connectionCallback:(id)arg1 isInitialConnection:(_Bool)arg2;
-- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
+- (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2 activeConnection:(id)arg3;
 - (_Bool)handleExchangedKey:(id)arg1 result:(int)arg2;
 - (void)connectionResultCallback:(struct tagCONNRESULT *)arg1 didReceiveICEPacket:(_Bool)arg2 didUseRelay:(_Bool)arg3 secretKey:(id)arg4 skeResult:(int)arg5;
 - (void)processRemoteIPChange:(id)arg1;

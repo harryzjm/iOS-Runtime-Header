@@ -9,11 +9,12 @@
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBCoverSheetSystemGestureDelegatePositionProviding-Protocol.h>
 
-@class CSCoverSheetTransitionSettings, CSLockScreenSettings, NSObject, NSString, SBCoverSheetPositionView, SBCoverSheetSystemGesturesDelegate, SBFluidScrunchGestureRecognizer, SBHomeGestureSettings, SBIndirectPanGestureRecognizer, SBScreenEdgePanGestureRecognizer, UIViewFloatAnimatableProperty;
+@class CSCoverSheetTransitionSettings, CSLockScreenSettings, NSObject, NSString, SBCoverSheetPositionView, SBCoverSheetSystemGesturesDelegate, SBFFrameRateAssertion, SBFluidScrunchGestureRecognizer, SBHomeGestureSettings, SBIndirectPanGestureRecognizer, SBScreenEdgePanGestureRecognizer, UIViewFloatAnimatableProperty;
 @protocol OS_dispatch_group, SBCoverSheetSlidingViewControllerContentViewController, SBCoverSheetSlidingViewControllerDelegate;
 
 @interface SBCoverSheetSlidingViewController : UIViewController <SBCoverSheetSystemGestureDelegatePositionProviding, PTSettingsKeyObserver>
 {
+    SBFFrameRateAssertion *_frameRateAssertion;
     long long _dismissGestureState;
     _Bool _roundsCorners;
     _Bool _indirectPresentGestureCalledBegin;
@@ -136,6 +137,7 @@
 - (_Bool)_isTransitioning;
 - (_Bool)isDismissGestureActive;
 - (_Bool)isPresentGestureActive;
+- (_Bool)canTransitionToPresented:(_Bool)arg1;
 - (void)setPresented:(_Bool)arg1 forUserGesture:(_Bool)arg2 animated:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 - (void)dealloc;

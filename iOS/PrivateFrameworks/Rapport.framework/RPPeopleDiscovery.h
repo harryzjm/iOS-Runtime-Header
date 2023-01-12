@@ -9,7 +9,7 @@
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPPeopleXPCClientInterface-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSSet, NSXPCConnection;
+@class NSArray, NSMutableDictionary, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPPeopleDiscovery : NSObject <NSSecureCoding, RPPeopleXPCClientInterface>
@@ -18,7 +18,6 @@
     NSMutableDictionary *_discoveredPeople;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
-    NSMutableSet *_rangingPersonIDs;
     NSObject<OS_dispatch_source> *_retryTimer;
     NSXPCConnection *_xpcCnx;
     _Bool _targetUserSession;
@@ -34,7 +33,6 @@
     CDUnknownBlockType _personFoundHandler;
     CDUnknownBlockType _personLostHandler;
     CDUnknownBlockType _personChangedHandler;
-    NSSet *_rangingPeople;
     CDUnknownBlockType _statusChangedHandler;
 }
 
@@ -42,7 +40,6 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned int statusFlags; // @synthesize statusFlags=_statusFlags;
 @property(copy, nonatomic) CDUnknownBlockType statusChangedHandler; // @synthesize statusChangedHandler=_statusChangedHandler;
-@property(copy, nonatomic) NSSet *rangingPeople; // @synthesize rangingPeople=_rangingPeople;
 @property(copy, nonatomic) CDUnknownBlockType personChangedHandler; // @synthesize personChangedHandler=_personChangedHandler;
 @property(copy, nonatomic) CDUnknownBlockType personLostHandler; // @synthesize personLostHandler=_personLostHandler;
 @property(copy, nonatomic) CDUnknownBlockType personFoundHandler; // @synthesize personFoundHandler=_personFoundHandler;
@@ -57,7 +54,6 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (void)removeAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)xpcPersonID:(id)arg1 deviceID:(id)arg2 updatedMeasurement:(id)arg3;
 - (void)xpcPersonChanged:(id)arg1 changes:(unsigned int)arg2;
 - (void)xpcPersonLost:(id)arg1;
 - (void)xpcPersonFound:(id)arg1;

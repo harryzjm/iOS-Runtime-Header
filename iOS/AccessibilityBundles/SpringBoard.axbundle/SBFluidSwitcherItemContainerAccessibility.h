@@ -11,8 +11,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_viewToAddFocusLayer;
+- (_Bool)_accessibilityIsSlideOver;
 - (void)_axHandlePageViewTap:(id)arg1;
+- (id)_axFluidSwitcher;
+- (id)_axMainSwitcher;
 - (id)_axAppLayout;
+- (_Bool)_accessibilityIsNewWindowContainer;
+- (_Bool)_accessibilityIsShelfItemContainer;
+- (id)_axParentAppLayout;
+- (id)_accessibilityTitleItem;
+- (id)_accessibilityItemContainerFooterView;
+- (id)_accessibilityItemContainerHeaderView;
 - (id)_accessibilityPreferredScrollActions;
 - (_Bool)_accessibilityCanPerformAction:(int)arg1;
 - (_Bool)_accessibilityElementVisibilityAffectsLayout;
@@ -20,14 +30,20 @@
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (struct CGRect)_accessibilityVisibleFrame;
 - (_Bool)_accessibilityScrollToVisible;
-- (_Bool)_accessibilityCloseApp:(id)arg1;
+- (void)_accessibilityCloseApp:(id)arg1;
+- (unsigned long long)accessibilityTraits;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (id)accessibilityCustomActions;
 - (_Bool)_accessibilityCanCloseApp;
 - (_Bool)_accessibilityIsNotFirstElement;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
+- (_Bool)_accessibilityIsInAppSwitcher;
+- (id)_accessibilityBundleIdentifier;
+- (id)_axBundleIdentifier;
 
 @end
 

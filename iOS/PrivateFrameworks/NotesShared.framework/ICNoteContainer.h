@@ -6,12 +6,12 @@
 
 #import <NotesShared/ICNoteContainer-Protocol.h>
 
-@class CROrderedSet, ICAccount, ICCRDTIdentifierOrderedSetVersionedDocument, ICFolderCustomNoteSortType, NSArray, NSData, NSManagedObjectContext, NSNumber, NSString;
+@class CROrderedSet, ICAccount, ICFolderCustomNoteSortType, NSArray, NSData, NSManagedObjectContext, NSNumber, NSString, TTOrderedSetVersionedDocument;
 
 @interface ICNoteContainer <ICNoteContainer>
 {
     _Bool _subFolderOrderMergeableDataDirty;
-    ICCRDTIdentifierOrderedSetVersionedDocument *_subFolderIdentifiersOrderedSetDocument;
+    TTOrderedSetVersionedDocument *_subFolderIdentifiersOrderedSetDocument;
     NSNumber *transientNoteCount;
 }
 
@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSNumber *transientNoteCount; // @synthesize transientNoteCount;
 @property(nonatomic, getter=isSubFolderOrderMergeableDataDirty) _Bool subFolderOrderMergeableDataDirty; // @synthesize subFolderOrderMergeableDataDirty=_subFolderOrderMergeableDataDirty;
-@property(retain, nonatomic) ICCRDTIdentifierOrderedSetVersionedDocument *subFolderIdentifiersOrderedSetDocument; // @synthesize subFolderIdentifiersOrderedSetDocument=_subFolderIdentifiersOrderedSetDocument;
+@property(retain, nonatomic) TTOrderedSetVersionedDocument *subFolderIdentifiersOrderedSetDocument; // @synthesize subFolderIdentifiersOrderedSetDocument=_subFolderIdentifiersOrderedSetDocument;
 - (void)updateSubFolderMergeableDataChangeCount;
 - (void)writeSubFolderMergeableData;
 - (_Bool)mergeWithSubFolderMergeableData:(id)arg1;
@@ -42,7 +42,7 @@
 - (id)titleForNavigationBar;
 - (_Bool)noteIsVisible:(id)arg1;
 - (unsigned long long)visibleNotesCount;
-- (id)visibleNotes;
+@property(readonly, nonatomic) NSArray *visibleNotes;
 @property(readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 @property(readonly, nonatomic) _Bool isAllNotesContainer;
 @property(readonly, nonatomic) _Bool canBeSharedViaICloud;

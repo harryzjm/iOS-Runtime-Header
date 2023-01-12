@@ -9,7 +9,7 @@
 #import <PhotosPlayer/ISBasePlayerOutput-Protocol.h>
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 
-@class CAMeshTransform, ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, ISWrappedAVAudioSession, NSObject, NSString, UIImage, UIImageView;
+@class CAFilter, CAMeshTransform, ISBasePlayer, ISPlayerOutputContent, ISVideoPlayerUIView, ISWrappedAVAudioSession, NSObject, NSString, UIImage, UIImageView;
 @protocol ISBasePlayerUIViewChangeObserver, OS_dispatch_queue;
 
 @interface ISBasePlayerUIView : UIView <ISChangeObserver, ISBasePlayerOutput>
@@ -24,6 +24,7 @@
     UIImage *_overrideImage;
     CDUnknownBlockType _videoLayerReadyForDisplayChangeHandler;
     CAMeshTransform *_videoTransform;
+    CAFilter *_videoFilter;
     UIView *_containerView;
     UIView *_videoContainerView;
     ISWrappedAVAudioSession *_wrappedAudioSession;
@@ -44,6 +45,7 @@
 @property(retain, nonatomic, setter=_setWrappedAudioSession:) ISWrappedAVAudioSession *wrappedAudioSession; // @synthesize wrappedAudioSession=_wrappedAudioSession;
 @property(readonly, nonatomic) UIView *videoContainerView; // @synthesize videoContainerView=_videoContainerView;
 @property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property(retain, nonatomic) CAFilter *videoFilter; // @synthesize videoFilter=_videoFilter;
 @property(copy, nonatomic) CAMeshTransform *videoTransform; // @synthesize videoTransform=_videoTransform;
 @property(copy, nonatomic) CDUnknownBlockType videoLayerReadyForDisplayChangeHandler; // @synthesize videoLayerReadyForDisplayChangeHandler=_videoLayerReadyForDisplayChangeHandler;
 @property(nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
@@ -59,6 +61,7 @@
 - (void)setContent:(id)arg1;
 - (void)applyOutputInfo:(id)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyScale:(double)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_updateVideoViewsFrameWithContainerBounds:(struct CGRect)arg1;
 - (void)_signalChange:(unsigned long long)arg1 withAnimationDuration:(double)arg2;
 - (void)_updatePlayerAudioSession;
 - (void)playerDidChange;

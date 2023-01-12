@@ -17,13 +17,11 @@ __attribute__((visibility("hidden")))
     VNClusteringLogger *_clusteringLogger;
     VNSuggestionsLogger *_suggestionsLogger;
     NSString *_cacheFolderPath;
-    float _thresholdN;
-    float _thresholdSL;
-    float _thresholdTorso;
-    NSString *_type;
+    NSString *_algorithmType;
     NSData *_state;
     _Bool _vectorMapReadOnlyFlag;
     unsigned long long _faceprintRevision;
+    unsigned long long _torsoprintRevision;
     NSString *_ageClassifierFilePath;
     float _ageClassifierBabyThreshold;
     float _ageClassifierKidThreshold;
@@ -32,8 +30,9 @@ __attribute__((visibility("hidden")))
 
 + (id)clustererModelFileNamesFromState:(id)arg1 storedInPath:(id)arg2 error:(id *)arg3;
 + (id)getRepresentativenessForFaces:(id)arg1 error:(id *)arg2;
-+ (void)addFaceObservations:(id)arg1 withGroupingIdentifiers:(id)arg2 toFaceDescriptorBuffer:(struct ImageDescriptorBufferJoint *)arg3;
-+ (void)addFaceObservations:(id)arg1 toFaceDescriptorBuffer:(struct ImageDescriptorBufferFloat32 *)arg2;
++ (void)addPersonData:(id)arg1 withGroupingIdentifiers:(id)arg2 toFaceDescriptorBuffer:(void *)arg3;
++ (void)addFaceObservations:(id)arg1 withGroupingIdentifiers:(id)arg2 toFaceDescriptorBuffer:(void *)arg3;
++ (void)addFaceObservations:(id)arg1 toFaceDescriptorBuffer:(void *)arg2;
 + (id)nonGroupedGroupID;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -49,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)getClusteredIds:(id *)arg1;
 - (id)getClusterState:(id *)arg1;
 - (id)suggestionsForClusterIdsWithFlags:(id)arg1 affinityThreshold:(float)arg2 error:(id *)arg3;
-- (id)convertUpdatePairsToClusters:(vector_22dfb71c *)arg1;
+- (id)convertUpdatePairsToClusters:(void *)arg1;
 - (void)setGreedyClustererFaces_const:(shared_ptr_8fc713d1)arg1;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 - (void)initializeLogging;

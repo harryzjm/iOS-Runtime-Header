@@ -33,6 +33,7 @@
 - (_Bool)hasPrivateAccessEntitlementWithIdentifer:(id)arg1;
 - (_Bool)hasAccessEntitlementWithIdentifer:(id)arg1;
 - (_Bool)arrayEntitlement:(id)arg1 containsString:(id)arg2;
+- (_Bool)hasBackgroundDeliveryAPIAccess;
 - (_Bool)hasPrivateMetadataAccess;
 - (_Bool)hasEntitlement:(id)arg1;
 - (id)applicationIdentifier;

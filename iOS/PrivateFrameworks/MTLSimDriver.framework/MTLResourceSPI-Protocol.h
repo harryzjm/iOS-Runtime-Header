@@ -19,5 +19,8 @@
 - (void)waitUntilComplete;
 - (_Bool)isComplete;
 - (_Bool)isPurgeable;
+
+@optional
+- (int)setOwnerWithIdentity:(unsigned int)arg1;
 @end
 

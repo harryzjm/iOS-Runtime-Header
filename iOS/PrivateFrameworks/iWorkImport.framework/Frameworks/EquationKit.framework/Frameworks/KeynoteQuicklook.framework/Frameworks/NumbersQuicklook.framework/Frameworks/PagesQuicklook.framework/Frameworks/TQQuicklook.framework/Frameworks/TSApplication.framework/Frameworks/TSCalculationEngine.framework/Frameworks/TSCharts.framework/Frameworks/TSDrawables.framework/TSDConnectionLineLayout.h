@@ -6,8 +6,8 @@
 
 @interface TSDConnectionLineLayout
 {
-    double mStartClipT;
-    double mEndClipT;
+    double _startClipT;
+    double _endClipT;
 }
 
 - (struct CGPoint)getControlKnobPosition:(unsigned long long)arg1;

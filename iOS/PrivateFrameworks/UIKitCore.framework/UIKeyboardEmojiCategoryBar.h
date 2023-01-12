@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)categorySelectedCircleRect:(long long)arg1;
 - (void)animateScrubberToRect:(struct CGRect)arg1;
 - (struct CGRect)frameForDivider:(int)arg1;
+- (unsigned long long)flippedIndexForIndex:(unsigned long long)arg1;
 - (void)updateCategory;
 - (void)updateCategoryOnBar:(unsigned long long)arg1;
 - (void)updateToCategory:(long long)arg1;

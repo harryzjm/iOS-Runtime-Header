@@ -31,7 +31,8 @@
             char *image_path;
             struct timeval tv_gmt;
             struct timezone tz;
-            unsigned int offset;
+            unsigned long long offset;
+            unsigned long long format_offset;
             unsigned int opaque_flags;
             char *message;
             unsigned long long sz;
@@ -60,7 +61,7 @@
                 unsigned char signpost_scope;
                 unsigned char signpost_type;
                 unsigned long long signpost_id;
-                unsigned int signpost_name_offset;
+                unsigned long long signpost_name_offset;
                 char *signpost_name;
                 _Bool has_context_data;
             } log_message;
@@ -140,7 +141,7 @@
 @property(readonly, nonatomic) unsigned long long transitionActivityIdentifier;
 @property(readonly, nonatomic) unsigned long long parentActivityIdentifier;
 @property(readonly, nonatomic) unsigned long long activityIdentifier;
-- (unsigned int)processIdentifierVersion;
+@property(readonly, nonatomic) unsigned int processIdentifierVersion;
 @property(readonly, nonatomic) int processIdentifier;
 @property(readonly, nonatomic) struct timezone *unixTimeZone;
 @property(readonly, nonatomic) struct timeval *unixDate;

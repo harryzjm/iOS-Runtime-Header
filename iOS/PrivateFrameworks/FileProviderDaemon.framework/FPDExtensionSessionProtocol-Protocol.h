@@ -10,15 +10,17 @@
 @protocol FPDLifetimeExtender, FPXPCAutomaticErrorProxy><FPXVendor;
 
 @protocol FPDExtensionSessionProtocol <NSObject>
+@property(readonly, nonatomic) _Bool hasFileProviderAttributionMDMAccess;
 @property(nonatomic) _Bool hasFileProviderPresenceTCCAccess;
 - (void)dumpStateTo:(FPCTLTermDumper *)arg1;
 - (void)invalidate;
+- (void)cancel;
 - (void)start;
 - (void)asyncUnregisterLifetimeExtensionForObject:(id <FPDLifetimeExtender>)arg1;
 - (void)unregisterLifetimeExtensionForObject:(id <FPDLifetimeExtender>)arg1;
 - (void)registerLifetimeExtensionForObject:(id <FPDLifetimeExtender>)arg1;
-- (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
-- (id <FPXPCAutomaticErrorProxy><FPXVendor>)existingFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;
+- (void)updatePresenceTCCWithAuditToken:(CDStruct_4c969caf)arg1;
+- (id <FPXPCAutomaticErrorProxy><FPXVendor>)existingFileProviderProxyWithTimeout:(_Bool)arg1 onlyAlreadyLifetimeExtended:(_Bool)arg2 pid:(int)arg3;
 - (id <FPXPCAutomaticErrorProxy><FPXVendor>)newFileProviderProxyWithoutPIDWithTimeout:(_Bool)arg1;
 - (id <FPXPCAutomaticErrorProxy><FPXVendor>)newFileProviderProxyWithoutPID;
 - (id <FPXPCAutomaticErrorProxy><FPXVendor>)newFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;

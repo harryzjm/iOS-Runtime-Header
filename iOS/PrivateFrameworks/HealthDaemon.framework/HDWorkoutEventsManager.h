@@ -21,7 +21,6 @@
 
 - (void).cxx_destruct;
 - (void)unitTest_setCMWorkoutManager:(id)arg1;
-- (id)_queue_eventCollectorsForType:(unsigned long long)arg1 delegate:(id)arg2;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (void)requestPendingEventsThroughDate:(id)arg1 sessionIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)takeSessionAssertionWithOwnerIdentifier:(id)arg1 activityType:(unsigned long long)arg2 sessionIdentifier:(id)arg3 eventsDelegate:(id)arg4;

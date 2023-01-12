@@ -6,7 +6,6 @@
 
 @class CKRecordID, NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDInitiateParticipantVettingURLRequest
 {
     CDUnknownBlockType _vettingInitiationRequestCompletionBlock;

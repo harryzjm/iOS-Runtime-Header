@@ -6,7 +6,7 @@
 
 #import <UIKitCore/PKPrinterBrowserDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PKPrinter, PKPrinterBrowser, UIPrinterSearchingView;
+@class NSArray, NSMutableArray, NSString, PKPrinter, PKPrinterBrowser, UIPrintInfo, UIPrinterSearchingView;
 @protocol UIPrinterBrowserOwner;
 
 __attribute__((visibility("hidden")))
@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
     _Bool _searchingViewConstraintsSet;
     _Bool _shouldFilterPrinters;
     double _rowHeight;
+    UIPrintInfo *_printInfoForBrowser;
     double _maximumPopoverHeight;
 }
 
 - (void).cxx_destruct;
 @property double maximumPopoverHeight; // @synthesize maximumPopoverHeight=_maximumPopoverHeight;
+- (void)retriveLastUsedPrintersArray;
 - (void)showCancelButton;
 - (void)removePrinter:(id)arg1 moreGoing:(_Bool)arg2;
 - (void)addPrinter:(id)arg1 moreComing:(_Bool)arg2;
@@ -36,14 +38,14 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)printerAtIndexPath:(id)arg1;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
-- (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)willEnterForeground;
 - (void)updateSearching;
 - (void)didChangePreferredContentSize;
@@ -55,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)printerInfoButtonTapped:(id)arg1;
 - (void)selectPrinter:(id)arg1;
 - (void)dealloc;
-- (id)initWithOwnerViewController:(id)arg1;
+- (id)initWithOwnerViewController:(id)arg1 printInfo:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -12,10 +12,11 @@
 @protocol TSPDecoderReadCoordinatorDelegate <NSObject>
 @property(readonly, nonatomic) _Bool isCrossAppPaste;
 @property(readonly, nonatomic) _Bool isCrossDocumentPaste;
-@property(readonly, nonatomic) long long sourceType;
+@property(readonly, nonatomic) unsigned int sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) unsigned long long readVersion;
 @property(readonly, nonatomic) unsigned long long fileFormatVersion;
+- (_Bool)isDecodingTransientObject;
 - (_Bool)shouldDecodeMissingDataAsRemote;
 - (id <TSPDecoderDataInfo>)dataInfoForIdentifier:(long long)arg1;
 - (TSPData *)cachedDataForIdentifier:(long long)arg1;

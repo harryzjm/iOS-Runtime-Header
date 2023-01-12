@@ -8,7 +8,7 @@
 
 @interface MLProbabilityDictionary : NSMutableDictionary
 {
-    struct vector<double, std::__1::allocator<double>> _values;
+    struct vector<double, std::allocator<double>> _values;
 }
 
 + (id)probabilityDictionaryForLabels:(id)arg1;
@@ -16,7 +16,7 @@
 - (void).cxx_destruct;
 - (id)initWithObjects:(const id *)arg1 forKeys:(const id *)arg2 count:(unsigned long long)arg3;
 - (id)classLabelOfMaxProbability:(id)arg1;
-- (void)replaceDoubleVectorWith:(double *)arg1;
+- (void)replaceDoubleVectorWith:(const double *)arg1;
 
 @end
 

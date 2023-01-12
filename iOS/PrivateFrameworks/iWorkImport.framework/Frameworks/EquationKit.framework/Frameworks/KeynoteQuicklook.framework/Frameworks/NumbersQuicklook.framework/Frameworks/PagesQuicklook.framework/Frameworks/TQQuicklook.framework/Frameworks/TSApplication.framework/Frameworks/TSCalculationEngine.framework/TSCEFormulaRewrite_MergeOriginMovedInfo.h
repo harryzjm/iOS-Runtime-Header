@@ -8,18 +8,18 @@
 
 @interface TSCEFormulaRewrite_MergeOriginMovedInfo : NSObject
 {
-    unordered_map_ddbde191 _mergeOriginsMap;
-    unordered_map_ddbde191 _reverseOriginsMap;
+    struct unordered_map<TSUCellCoord, TSUCellCoord, std::hash<TSUCellCoord>, std::equal_to<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSUCellCoord>>> _mergeOriginsMap;
+    struct unordered_map<TSUCellCoord, TSUCellCoord, std::hash<TSUCellCoord>, std::equal_to<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSUCellCoord>>> _reverseOriginsMap;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) const unordered_map_ddbde191 *reverseOriginsMap; // @synthesize reverseOriginsMap=_reverseOriginsMap;
-@property(readonly, nonatomic) const unordered_map_ddbde191 *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;
+@property(readonly, nonatomic) const void *reverseOriginsMap; // @synthesize reverseOriginsMap=_reverseOriginsMap;
+@property(readonly, nonatomic) const void *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;
 - (id)description;
-- (void)saveToMessage:(struct MergeOriginMovedArchive *)arg1;
-- (id)initFromMessage:(const struct MergeOriginMovedArchive *)arg1;
-- (id)initWithMergeOriginsMap:(const unordered_map_ddbde191 *)arg1 reverseMap:(const unordered_map_ddbde191 *)arg2;
+- (void)saveToMessage:(void *)arg1;
+- (id)initFromMessage:(const void *)arg1;
+- (id)initWithMergeOriginsMap:(const void *)arg1 reverseMap:(const void *)arg2;
 
 @end
 

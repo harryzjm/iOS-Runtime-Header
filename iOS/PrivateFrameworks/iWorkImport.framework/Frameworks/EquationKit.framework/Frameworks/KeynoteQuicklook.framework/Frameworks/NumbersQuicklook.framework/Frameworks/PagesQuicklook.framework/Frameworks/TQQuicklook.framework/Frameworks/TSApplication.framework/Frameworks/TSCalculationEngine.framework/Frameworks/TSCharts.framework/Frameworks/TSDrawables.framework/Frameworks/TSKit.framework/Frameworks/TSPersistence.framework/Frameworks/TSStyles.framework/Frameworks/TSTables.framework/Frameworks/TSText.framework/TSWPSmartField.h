@@ -26,9 +26,9 @@
 @property(readonly, nonatomic) NSString *textAttributeUUIDString;
 - (_Bool)isEquivalentToObject:(id)arg1;
 - (void)resetTextAttributeUUIDString;
-- (void)loadFromArchive:(const struct SmartFieldArchive *)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToArchive:(struct SmartFieldArchive *)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

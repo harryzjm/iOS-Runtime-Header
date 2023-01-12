@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, TSWPStorage;
+@class NSArray, TSWPSelection, TSWPStorage;
 
 @interface TSAPdfTaggerTextColumnOwnerContext
 {
     NSArray *_columns;
     TSWPStorage *_storage;
-    struct _NSRange _range;
+    TSWPSelection *_limitSelection;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) struct _NSRange range; // @synthesize range=_range;
+@property(readonly, nonatomic) __weak TSWPSelection *limitSelection; // @synthesize limitSelection=_limitSelection;
 @property(readonly, nonatomic) __weak TSWPStorage *storage; // @synthesize storage=_storage;
 @property(readonly, copy, nonatomic) NSArray *columns; // @synthesize columns=_columns;
-- (id)initWithStateOfTagger:(id)arg1 columns:(id)arg2 storage:(id)arg3 range:(struct _NSRange)arg4;
+- (id)initWithStateOfTagger:(id)arg1 columns:(id)arg2 storage:(id)arg3 limitSelection:(id)arg4;
 
 @end
 

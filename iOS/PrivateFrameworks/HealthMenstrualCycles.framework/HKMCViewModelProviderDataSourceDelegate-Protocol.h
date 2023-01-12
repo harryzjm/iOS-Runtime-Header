@@ -6,10 +6,13 @@
 
 #import <HealthMenstrualCycles/NSObject-Protocol.h>
 
-@class HKMCViewModelProviderDataSource, NSArray, NSNumber;
+@class NSArray, NSNumber;
+@protocol HKMCViewModelProviderDataSource;
 
 @protocol HKMCViewModelProviderDataSourceDelegate <NSObject>
-- (void)viewModelProviderDataSourceDidUpdateDaySummaries:(HKMCViewModelProviderDataSource *)arg1;
-- (void)viewModelProviderDataSource:(HKMCViewModelProviderDataSource *)arg1 didFetchDaySummaries:(NSArray *)arg2 forDayIndexRange:(CDStruct_ef5fcbe6)arg3 analysisAnchor:(NSNumber *)arg4;
+- (void)viewModelProviderDataSourceDidUpdateCycleFactors:(id <HKMCViewModelProviderDataSource>)arg1;
+- (void)viewModelProviderDataSourceDidUpdateDaySummaries:(id <HKMCViewModelProviderDataSource>)arg1;
+- (void)viewModelProviderDataSource:(id <HKMCViewModelProviderDataSource>)arg1 didFetchCycleFactors:(NSArray *)arg2 forDayIndexRange:(CDStruct_ef5fcbe6)arg3;
+- (void)viewModelProviderDataSource:(id <HKMCViewModelProviderDataSource>)arg1 didFetchDaySummaries:(NSArray *)arg2 forDayIndexRange:(CDStruct_ef5fcbe6)arg3 analysisAnchor:(NSNumber *)arg4;
 @end
 

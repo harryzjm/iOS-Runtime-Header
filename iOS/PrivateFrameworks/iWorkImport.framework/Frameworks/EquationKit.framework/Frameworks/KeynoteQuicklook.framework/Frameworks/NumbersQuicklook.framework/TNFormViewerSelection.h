@@ -21,6 +21,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRecordIndex:(unsigned int)arg1 fieldIndex:(unsigned short)arg2;
+- (id)initWithRecordIndex:(unsigned int)arg1;
+- (id)init;
 
 @end
 

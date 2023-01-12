@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface ML3SpotlightNameCache : NSObject
 {
-    struct unordered_map<long long, NSString *, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, NSString *>>> _map;
+    struct unordered_map<long long, NSString *, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, NSString *>>> _map;
     _Bool _idle;
     ML3MusicLibrary *_library;
 }

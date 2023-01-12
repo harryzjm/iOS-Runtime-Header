@@ -12,6 +12,8 @@
 {
     NSUUID *_uuid;
     NSUUID *_windowUUID;
+    NSUUID *_tabGroupUUID;
+    NSString *_tabGroupTitle;
     unsigned long long _tabIndex;
     NSURL *_url;
     NSString *_title;
@@ -21,8 +23,11 @@
 @property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(readonly, nonatomic) unsigned long long tabIndex; // @synthesize tabIndex=_tabIndex;
+@property(readonly, copy, nonatomic) NSString *tabGroupTitle; // @synthesize tabGroupTitle=_tabGroupTitle;
+@property(readonly, nonatomic) NSUUID *tabGroupUUID; // @synthesize tabGroupUUID=_tabGroupUUID;
 @property(readonly, nonatomic) NSUUID *windowUUID; // @synthesize windowUUID=_windowUUID;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+- (id)initWithUUID:(id)arg1 windowUUID:(id)arg2 tabGroupUUID:(id)arg3 tabGroupTitle:(id)arg4 tabIndex:(unsigned long long)arg5 url:(id)arg6 title:(id)arg7;
 - (id)initWithUUID:(id)arg1 windowUUID:(id)arg2 tabIndex:(unsigned long long)arg3 url:(id)arg4 title:(id)arg5;
 
 @end

@@ -9,6 +9,7 @@
 @interface PUAssetViewModelChange
 {
     _Bool _assetChanged;
+    _Bool _assetContentChanged;
     _Bool _modelTileTransformChanged;
     _Bool _isUserTransformingTileDidChange;
     _Bool _focusValueChanged;
@@ -20,22 +21,30 @@
     _Bool _badgeInfoChanged;
     _Bool _isUpdatingDisplayedContentChanged;
     _Bool _isFavoriteChanged;
+    _Bool _isAssetSyndicationStateChanged;
     _Bool _accessoryViewVisibilityChanged;
+    _Bool _isAccessoryViewDoneAnimatingInChanged;
     _Bool _contentOffsetChanged;
     _Bool _isInEditModeChanged;
     _Bool _toggleCTMChanged;
     _Bool _flippingFullSizeRenderStateChanged;
+    _Bool _revealsGainMapImageChanged;
+    _Bool _isPresentedForPreviewChanged;
     PUBrowsingVideoPlayerChange *_videoPlayerChange;
     PUBrowsingIrisPlayerChange *_irisPlayerChange;
     PUBrowsingAnimatedImagePlayerChange *_animatedImageChange;
 }
 
 - (void).cxx_destruct;
+@property(nonatomic, setter=_setIsPresentedForPreviewChanged:) _Bool isPresentedForPreviewChanged; // @synthesize isPresentedForPreviewChanged=_isPresentedForPreviewChanged;
+@property(nonatomic) _Bool revealsGainMapImageChanged; // @synthesize revealsGainMapImageChanged=_revealsGainMapImageChanged;
 @property(nonatomic, setter=_setFlippingFullSizeRenderStateChanged:) _Bool flippingFullSizeRenderStateChanged; // @synthesize flippingFullSizeRenderStateChanged=_flippingFullSizeRenderStateChanged;
 @property(nonatomic, setter=_setToggleCTMChanged:) _Bool toggleCTMChanged; // @synthesize toggleCTMChanged=_toggleCTMChanged;
 @property(nonatomic, setter=_setIsInEditModeChanged:) _Bool isInEditModeChanged; // @synthesize isInEditModeChanged=_isInEditModeChanged;
 @property(nonatomic, setter=_setContentOffsetChanged:) _Bool contentOffsetChanged; // @synthesize contentOffsetChanged=_contentOffsetChanged;
+@property(nonatomic, setter=_setIsAccessoryViewDoneAnimatingInChangedChanged:) _Bool isAccessoryViewDoneAnimatingInChanged; // @synthesize isAccessoryViewDoneAnimatingInChanged=_isAccessoryViewDoneAnimatingInChanged;
 @property(nonatomic, setter=_setAccessoryViewVisibilityChanged:) _Bool accessoryViewVisibilityChanged; // @synthesize accessoryViewVisibilityChanged=_accessoryViewVisibilityChanged;
+@property(nonatomic, setter=_setIsAssetSyndicationStateChanged:) _Bool isAssetSyndicationStateChanged; // @synthesize isAssetSyndicationStateChanged=_isAssetSyndicationStateChanged;
 @property(nonatomic, setter=_setIsFavoriteChanged:) _Bool isFavoriteChanged; // @synthesize isFavoriteChanged=_isFavoriteChanged;
 @property(nonatomic, setter=_setIsUpdatingDisplayedContentChanged:) _Bool isUpdatingDisplayedContentChanged; // @synthesize isUpdatingDisplayedContentChanged=_isUpdatingDisplayedContentChanged;
 @property(retain, nonatomic, setter=_setAnimatedImageChange:) PUBrowsingAnimatedImagePlayerChange *animatedImageChange; // @synthesize animatedImageChange=_animatedImageChange;
@@ -50,6 +59,7 @@
 @property(nonatomic, setter=_setFocusValueChanged:) _Bool focusValueChanged; // @synthesize focusValueChanged=_focusValueChanged;
 @property(nonatomic, setter=_setUserTransformingTileDidChange:) _Bool isUserTransformingTileDidChange; // @synthesize isUserTransformingTileDidChange=_isUserTransformingTileDidChange;
 @property(nonatomic, setter=_setModelTileTransformChanged:) _Bool modelTileTransformChanged; // @synthesize modelTileTransformChanged=_modelTileTransformChanged;
+@property(nonatomic, setter=_setAssetContentChanged:) _Bool assetContentChanged; // @synthesize assetContentChanged=_assetContentChanged;
 @property(nonatomic, setter=_setAssetChanged:) _Bool assetChanged; // @synthesize assetChanged=_assetChanged;
 - (_Bool)hasChanges;
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapItemInitialRequestData, GEOPDMapsIdentifier, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOMapItemInitialRequestData, GEOPDMapsIdentifier, GEOPDPlacecardLayoutData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPDPlace : PBCodable <NSCopying>
 {
@@ -19,6 +19,7 @@
     GEOPDMapsIdentifier *_mapsId;
     unsigned long long _muid;
     NSString *_placeCacheKey;
+    GEOPDPlacecardLayoutData *_placeLayoutData;
     unsigned long long _preferredMuid;
     GEOMapItemInitialRequestData *_requestData;
     unsigned long long _updateVersion;
@@ -40,6 +41,7 @@
         unsigned int read_components:1;
         unsigned int read_mapsId:1;
         unsigned int read_placeCacheKey:1;
+        unsigned int read_placeLayoutData:1;
         unsigned int read_requestData:1;
         unsigned int wrote_anyField:1;
     } _flags;
@@ -67,7 +69,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
-- (void)clearSensitiveFields;
+- (_Bool)hasGreenTeaWithValue:(_Bool)arg1;
+- (void)clearSensitiveFields:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (void)readAll:(_Bool)arg1;
@@ -76,6 +79,8 @@
 - (id)jsonRepresentation;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(retain, nonatomic) GEOPDPlacecardLayoutData *placeLayoutData;
+@property(readonly, nonatomic) _Bool hasPlaceLayoutData;
 @property(nonatomic) _Bool hasCreatedTime;
 @property(nonatomic) unsigned long long createdTime;
 @property(retain, nonatomic) GEOPDMapsIdentifier *mapsId;

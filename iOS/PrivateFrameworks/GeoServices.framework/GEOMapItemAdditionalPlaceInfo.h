@@ -16,6 +16,7 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <GEOMapItem> mapItem; // @synthesize mapItem=_mapItem;
 @property(readonly, nonatomic) GEOMapRegion *mapRegion;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property(readonly, nonatomic) double areaInMeters;

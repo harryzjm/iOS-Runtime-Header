@@ -24,12 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)indexesForInvalidatedAuxillariesOfKind:(id)arg1;
 @property(readonly, nonatomic) NSIndexSet *invalidatedIndexes;
 @property(readonly, nonatomic) NSSet *invalidatedAuxillaryKinds;
-- (void)addInvalidatedSupplementariesWithOffsets:(id)arg1;
-- (void)addInvalidatedAuxillaryOfKind:(id)arg1 indexes:(id)arg2;
-- (void)addInvalidatedAuxillaryOfKind:(id)arg1 index:(long long)arg2;
-- (void)addInvalidatedItemIndex:(long long)arg1;
-- (void)addInvalidatedItemIndexesInRange:(struct _NSRange)arg1;
-- (void)addInvalidatedItemIndexes:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -25,9 +25,11 @@
 - (void)_onQueueReloadLocalizedFormatStrings;
 - (id)_onQueuePositionalFormatStringForStyle:(long long)arg1;
 - (id)_onQueueStringFromDuration:(double)arg1 style:(long long)arg2;
-- (id)_onQueueStringFromDuration:(double)arg1 byReplacingDigitsWithDigit:(long long)arg2 style:(long long)arg3;
+- (id)_hiddenComponentStringWithString:(id)arg1;
+- (id)_onQueueStringFromDuration:(double)arg1 byReplacingDigitsWithDigit:(long long)arg2 hideComponentOptions:(long long)arg3 style:(long long)arg4;
 - (void)reloadLocalizedFormatStrings;
 - (id)stringFromDuration:(double)arg1 style:(long long)arg2;
+- (id)stringFromDuration:(double)arg1 hideComponentOptions:(long long)arg2 style:(long long)arg3;
 - (id)stringFromDuration:(double)arg1 replacingDigitsWithDigit:(unsigned long long)arg2 style:(long long)arg3;
 - (id)init;
 

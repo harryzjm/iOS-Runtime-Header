@@ -18,7 +18,6 @@
 - (void).cxx_destruct;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_asynchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)sendDetailsCommand:(long long)arg1 timeout:(id)arg2 withError:(id *)arg3;
 - (id)sendDetailsCommand:(long long)arg1 withError:(id *)arg2;
 - (_Bool)sendCommand:(long long)arg1 withError:(id *)arg2;

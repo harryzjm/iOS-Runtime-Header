@@ -7,7 +7,7 @@
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSSecureCoding-Protocol.h>
 
-@class BSAtomicSignal, BSTimer, NSFileManager, NSMutableArray, NSMutableDictionary, NSString, XBSnapshotContainerIdentity, XBSnapshotManifestIdentity;
+@class BSAtomicSignal, BSContinuousMachTimer, NSFileManager, NSMutableArray, NSMutableDictionary, NSString, XBSnapshotContainerIdentity, XBSnapshotManifestIdentity;
 
 @interface XBApplicationSnapshotManifestImpl <NSSecureCoding, BSDescriptionProviding>
 {
@@ -15,7 +15,7 @@
     XBSnapshotManifestIdentity *_identity;
     NSMutableDictionary *_snapshotGroupsByID;
     NSFileManager *_imageAccessFileManger;
-    BSTimer *_reapingTimer;
+    BSContinuousMachTimer *_reapingTimer;
     BSAtomicSignal *_invalidatedSignal;
     unsigned long long _clientCount;
     unsigned long long _pendingOperations;
@@ -57,6 +57,8 @@
 - (id)_access_snapshotsForGroupIDs:(id)arg1 matchingPredicate:(id)arg2;
 - (id)_access_snapshotsForGroupIDs:(id)arg1;
 - (void)_access_gatherPaths:(id)arg1 forSnapshot:(id)arg2;
+- (_Bool)_access_snapshotsConsideredUnpurgableByAPFS;
+- (void)_access_updateSnapshotsAPFSPurgability:(_Bool)arg1;
 - (void)_access_purgeSnapshotsWithProtectedContent;
 - (void)_access_deleteSnapshots:(id)arg1;
 - (void)_access_deletePaths:(id)arg1;
@@ -67,7 +69,9 @@
 - (_Bool)_validateWithContainerIdentity:(id)arg1;
 - (void)_access_doArchiveWithCompletions:(id)arg1;
 - (void)_handleMemoryPressure;
+- (void)_scheduleArchivingIfNecessaryWithDelay:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_scheduleArchivingIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)archive;
 - (void)_synchronizeDataStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_noteDirtied;
 - (id)_access_allSnapshotGroups;
@@ -80,6 +84,8 @@
 - (id)_snapshotGroupsByID;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteAllSnapshots;
+- (_Bool)snapshotsConsideredUnpurgableByAPFS;
+- (void)updateSnapshotsAPFSPurgability:(_Bool)arg1;
 - (void)purgeSnapshotsWithProtectedContent;
 - (void)deleteSnapshotsForGroupID:(id)arg1;
 - (void)deleteSnapshotsForGroupID:(id)arg1 matchingPredicate:(id)arg2;
@@ -90,6 +96,8 @@
 - (void)deleteSnapshot:(id)arg1;
 - (void)saveSnapshot:(id)arg1 atPath:(id)arg2 withContext:(id)arg3;
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 options:(unsigned long long)arg3 imageGeneratedHandler:(CDUnknownBlockType)arg4 imageDataSavedHandler:(CDUnknownBlockType)arg5;
+- (void)_didGenerateImageData:(id)arg1 forSnapshot:(id)arg2 imageWasGenerated:(_Bool)arg3 imageDataGenerationSignal:(id)arg4 logIdentifier:(id)arg5 didSaveHandler:(CDUnknownBlockType)arg6 qos:(unsigned int)arg7 writeToFileIfSupported:(_Bool)arg8;
+- (void)_didGenerateImage:(_Bool)arg1 imageGenerationSignal:(id)arg2 logIdentifier:(id)arg3 imageGeneratedHandler:(CDUnknownBlockType)arg4 qos:(unsigned int)arg5;
 - (id)createVariantForSnapshot:(id)arg1 withIdentifier:(id)arg2;
 - (id)createSnapshotWithGroupID:(id)arg1;
 - (id)snapshotsForGroupIDs:(id)arg1 fetchRequest:(id)arg2;
@@ -101,6 +109,8 @@
 - (id)defaultGroupIdentifier;
 - (id)containerPath;
 - (id)bundleIdentifier;
+- (void)endTrackingImageDeletions;
+- (void)beginTrackingImageDeletions;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)_initWithContainerIdentity:(id)arg1;

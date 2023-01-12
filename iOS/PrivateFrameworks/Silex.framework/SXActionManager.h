@@ -9,26 +9,28 @@
 #import <Silex/SXActionManager-Protocol.h>
 
 @class NSString, SXActionManagerPreview;
-@protocol SXActionActivityManager, SXActionViewManager;
+@protocol SXActionActivityManager, SXActionViewManager, SXPostActionHandlerManager;
 
 @interface SXActionManager : NSObject <SXActionManager>
 {
     id <SXActionActivityManager> _activityManager;
     id <SXActionViewManager> _viewManager;
     SXActionManagerPreview *_currentPreview;
+    id <SXPostActionHandlerManager> _postActionHandlerManager;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <SXPostActionHandlerManager> postActionHandlerManager; // @synthesize postActionHandlerManager=_postActionHandlerManager;
 @property(retain, nonatomic) SXActionManagerPreview *currentPreview; // @synthesize currentPreview=_currentPreview;
 @property(readonly, nonatomic) id <SXActionViewManager> viewManager; // @synthesize viewManager=_viewManager;
 @property(readonly, nonatomic) id <SXActionActivityManager> activityManager; // @synthesize activityManager=_activityManager;
 - (void)notifyPostActionHandlers:(id)arg1 action:(id)arg2 state:(unsigned long long)arg3;
 - (void)commitPreviewViewController:(id)arg1;
 - (id)previewViewControllerForAction:(id)arg1;
-- (id)contextMenuConfigurationForAction:(id)arg1;
+- (id)contextMenuConfigurationForAction:(id)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (void)performAction:(id)arg1 postActionHandlers:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4 mode:(unsigned long long)arg5;
 - (void)performAction:(id)arg1 postActionHandlers:(id)arg2;
-- (id)initWithActionActivityManager:(id)arg1 viewManager:(id)arg2;
+- (id)initWithActionActivityManager:(id)arg1 viewManager:(id)arg2 postActionHandlerManager:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

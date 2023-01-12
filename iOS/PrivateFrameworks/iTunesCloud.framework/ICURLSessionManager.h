@@ -15,17 +15,19 @@
     NSMutableDictionary *_cachedSessions;
 }
 
++ (id)unlimitedHighPrioritySession;
 + (id)highPrioritySession;
 + (id)defaultSession;
 + (id)sharedSessionManager;
 - (void).cxx_destruct;
-- (id)_sessionIdentifierWithQualityOfService:(long long)arg1;
-- (id)_newSessionWithQualityOfService:(long long)arg1;
-- (void)removeSessionWithIdentifier:(id)arg1;
+- (id)_defaultSessionIdentifierWithQualityOfService:(long long)arg1 maxConcurrentRequests:(unsigned long long)arg2;
+- (id)_defaultSessionWithQualityOfService:(long long)arg1 maxConcurrentRequests:(unsigned long long)arg2;
 - (void)addSession:(id)arg1 withIdentifier:(id)arg2;
 - (id)sessionWithIdentifier:(id)arg1 configuration:(id)arg2;
-- (id)sessionWithQualityOfService:(long long)arg1;
 - (id)sessionWithIdentifier:(id)arg1;
+- (void)removeSessionWithIdentifier:(id)arg1;
+- (id)sessionWithIdentifier:(id)arg1 creationBlock:(CDUnknownBlockType)arg2;
+- (id)sessionWithQualityOfService:(long long)arg1;
 - (id)init;
 
 @end

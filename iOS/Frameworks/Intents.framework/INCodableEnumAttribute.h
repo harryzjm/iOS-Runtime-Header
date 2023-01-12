@@ -31,11 +31,11 @@
 - (Class)resolutionResultClass;
 - (long long)valueType;
 - (id)__INCodableDescriptionEnumTypeKey;
-- (id)__INIntentResponseCodableDescriptionEnumTypeKey;
-- (id)__INTypeCodableDescriptionEnumTypeKey;
 - (id)__INCodableDescriptionEnumTypeNamespaceKey;
-- (id)__INTypeCodableDescriptionEnumTypeNamespaceKey;
+- (id)__INIntentResponseCodableDescriptionEnumTypeKey;
 - (id)__INIntentResponseCodableDescriptionEnumTypeNamespaceKey;
+- (id)__INTypeCodableDescriptionEnumTypeKey;
+- (id)__INTypeCodableDescriptionEnumTypeNamespaceKey;
 
 @end
 

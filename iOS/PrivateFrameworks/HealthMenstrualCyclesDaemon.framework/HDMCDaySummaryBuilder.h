@@ -16,8 +16,12 @@
     NSMutableArray *_symptomsSamples;
     NSMutableArray *_sexualActivitySamples;
     NSMutableArray *_ovulationTestResultSamples;
+    NSMutableArray *_pregnancyTestResultSamples;
+    NSMutableArray *_progesteroneTestResultSamples;
     NSMutableArray *_cervicalMucusQualitySamples;
     NSMutableArray *_basalBodyTemperatureSamples;
+    NSMutableArray *_startedCycleFactors;
+    NSMutableArray *_endedCycleFactors;
     NSMutableDictionary *_sampleCountByType;
     long long _dayIndex;
 }
@@ -25,8 +29,12 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) long long dayIndex; // @synthesize dayIndex=_dayIndex;
 - (id)createDaySummaryWithDevice:(id)arg1;
+- (id)_endedCycleFactors;
+- (id)_startedCycleFactors;
 - (id)_basalBodyTemperature;
 - (long long)_cervicalMucusQuality;
+- (long long)_progesteroneTestResult;
+- (long long)_pregnancyTestResult;
 - (long long)_ovulationTestResult;
 - (long long)_sexualActivity;
 - (unsigned long long)_symptoms;

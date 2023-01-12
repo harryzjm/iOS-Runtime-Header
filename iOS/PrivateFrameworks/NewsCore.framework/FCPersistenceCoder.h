@@ -14,11 +14,6 @@
 }
 
 - (void).cxx_destruct;
-@property(readonly, copy, nonatomic) NSData *key; // @synthesize key=_key;
-- (id)_codeData:(id)arg1;
-- (id)decodeData:(id)arg1;
-- (id)encodeData:(id)arg1;
-- (id)initWithKey:(id)arg1;
 
 @end
 

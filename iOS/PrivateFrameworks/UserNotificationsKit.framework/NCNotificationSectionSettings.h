@@ -11,6 +11,7 @@
 #import <UserNotificationsKit/NSMutableCopying-Protocol.h>
 
 @class NSDictionary, NSSet, NSString, UIImage;
+@protocol NCNotificationMuteAssertion;
 
 @interface NCNotificationSectionSettings : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
@@ -25,9 +26,11 @@
     _Bool _isDeliveredQuietly;
     _Bool _hasProvisialAuthorization;
     _Bool _isAppClip;
+    id <NCNotificationMuteAssertion> _muteAssertion;
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <NCNotificationMuteAssertion> muteAssertion; // @synthesize muteAssertion=_muteAssertion;
 @property(readonly, nonatomic) _Bool isAppClip; // @synthesize isAppClip=_isAppClip;
 @property(readonly, nonatomic) _Bool hasProvisionalAuthorization; // @synthesize hasProvisionalAuthorization=_hasProvisialAuthorization;
 @property(readonly, nonatomic) _Bool isDeliveredQuietly; // @synthesize isDeliveredQuietly=_isDeliveredQuietly;

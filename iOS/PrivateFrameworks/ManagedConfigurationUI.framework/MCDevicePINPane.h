@@ -6,7 +6,6 @@
 
 #import <Preferences/DevicePINPane.h>
 
-__attribute__((visibility("hidden")))
 @interface MCDevicePINPane : DevicePINPane
 {
     unsigned long long _style;

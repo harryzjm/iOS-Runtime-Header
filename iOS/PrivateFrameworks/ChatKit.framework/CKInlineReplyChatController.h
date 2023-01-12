@@ -4,24 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKInlineReplyCollectionViewController, CKInlineReplyTransitionContext, IMMessageItem, NSString, UINavigationBarAppearance, UIVisualEffectView;
+@class CKInlineReplyCollectionViewController, CKInlineReplyTransitionContext, IMMessageItem, NSDictionary, NSString, UINavigationBarAppearance, UIVisualEffectView;
 @protocol CKInlineReplyInteractionDelegate;
 
 @interface CKInlineReplyChatController
 {
     _Bool _animatingIn;
     _Bool _animatingOut;
+    _Bool _shouldReloadInsetsForFloatingKeyboard;
     _Bool _isInitialLoad;
     _Bool _isInitialSizing;
     _Bool _showNavbarKeyline;
     NSString *_threadIdentifier;
     IMMessageItem *_threadOriginator;
     CKInlineReplyTransitionContext *_transitionContext;
+    NSDictionary *_originatorMessageSummaryInfo;
     id <CKInlineReplyInteractionDelegate> _interactionDelegate;
     UIVisualEffectView *_blurView;
     UINavigationBarAppearance *_navBarAppearance;
 }
 
++ (id)stringForContentType:(unsigned char)arg1;
 + (Class)_gradientReferenceViewClass;
 + (Class)transcriptControllerClass;
 - (void).cxx_destruct;
@@ -31,6 +34,8 @@
 @property(nonatomic) _Bool isInitialSizing; // @synthesize isInitialSizing=_isInitialSizing;
 @property(nonatomic) _Bool isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
 @property(nonatomic) __weak id <CKInlineReplyInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
+@property(readonly, nonatomic) NSDictionary *originatorMessageSummaryInfo; // @synthesize originatorMessageSummaryInfo=_originatorMessageSummaryInfo;
+@property(nonatomic) _Bool shouldReloadInsetsForFloatingKeyboard; // @synthesize shouldReloadInsetsForFloatingKeyboard=_shouldReloadInsetsForFloatingKeyboard;
 @property(nonatomic) _Bool animatingOut; // @synthesize animatingOut=_animatingOut;
 @property(nonatomic) _Bool animatingIn; // @synthesize animatingIn=_animatingIn;
 @property(retain, nonatomic) CKInlineReplyTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
@@ -42,12 +47,13 @@
 - (void)_requestDismissal;
 - (void)_setInitialScrollPositionIfNecessary;
 - (void)_animateOut;
-- (void)_animateIn;
+- (void)_animateIn:(_Bool)arg1;
 - (double)transcriptCollectionViewController:(id)arg1 targetAlphaForChatItem:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didScroll:(struct CGPoint)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 collectionViewContentSizeDidChange:(struct CGSize)arg2;
 - (void)transcriptCollectionViewControllerRestingStateDidChange:(id)arg1;
 - (void)transcriptCollectionViewControllerChatItemsDidChange:(id)arg1;
+- (_Bool)transcriptCollectionViewControllerIsPresentedInModalInlineReply:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (struct CGRect)_initialFrameForCollectionView;
 - (void)viewDidLayoutSubviews;
@@ -55,6 +61,7 @@
 - (id)_navigationBarAppearanceWithKeyline:(_Bool)arg1;
 - (id)_defaultTranscriptNavBarAppearance;
 - (void)tapGestureRecognized:(id)arg1;
+- (void)collectMetricsForSending:(id)arg1;
 - (void)_didSendCompositionInConversation:(id)arg1;
 - (void)sendMessage:(id)arg1 forConversation:(id)arg2 newComposition:(_Bool)arg3;
 - (void)sendMessage:(id)arg1 forConversation:(id)arg2 onService:(id)arg3 newComposition:(_Bool)arg4;
@@ -66,10 +73,10 @@
 - (void)_updateNavigationUI;
 - (void)_saveDraftState;
 - (void)_restoreDraftState;
-- (void)messageEntryViewDidBeginEditing:(id)arg1;
+- (void)messageEntryViewDidBeginEditingNotAlreadyActive:(id)arg1;
 @property(readonly, nonatomic) CKInlineReplyCollectionViewController *inlineCollectionViewController;
 - (void)setIsShowingPreview:(_Bool)arg1;
-- (_Bool)getContainerWidth:(double *)arg1 offset:(double *)arg2;
+- (_Bool)messageEntryViewWidth:(double *)arg1 andOffset:(double *)arg2;
 - (long long)targetFirstResponder;
 - (void)setTargetFirstResponder:(long long)arg1;
 - (_Bool)becomeFirstResponder;
@@ -84,9 +91,13 @@
 - (void)updateScrollGeometry;
 - (double)accessoryViewHeight;
 - (void)dismissController;
+- (void)_doneButtonPressed;
+- (_Bool)shouldShowDoneButton;
 - (_Bool)shouldListParticipantsInTitle;
 - (_Bool)isInline;
-- (id)initWithConversation:(id)arg1 threadIdentifier:(id)arg2 threadOriginator:(id)arg3 transitionContext:(id)arg4;
+- (_Bool)isUnanimated;
+@property(readonly, nonatomic, getter=isModal) _Bool modal;
+- (id)initWithConversation:(id)arg1 threadIdentifier:(id)arg2 threadOriginator:(id)arg3 transitionContext:(id)arg4 originatorMessageSummaryInfo:(id)arg5;
 
 @end
 

@@ -19,6 +19,7 @@
     IDSXPCConnection *_rootConnection;
     id <NSXPCProxyCreating> _remoteObject;
     CDUnknownBlockType _invalidationHandler;
+    _Bool _syncOntoMain;
     _Bool _forSyncMessaging;
 }
 
@@ -30,6 +31,7 @@
 @property(retain, nonatomic) IDSXPCConnection *rootConnection; // @synthesize rootConnection=_rootConnection;
 @property(retain, nonatomic) NSMutableDictionary *pendingTransactions; // @synthesize pendingTransactions=_pendingTransactions;
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(nonatomic) _Bool syncOntoMain; // @synthesize syncOntoMain=_syncOntoMain;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void)_cleanupAllPendingTransactions;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
@@ -40,7 +42,8 @@
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithRemoteObject:(id)arg1 rootConnection:(id)arg2;
-- (id)_initWithQueue:(id)arg1 takingOverAndResumingConnection:(id)arg2 forSyncMessaging:(_Bool)arg3;
+- (id)_initWithQueue:(id)arg1 syncOntoMain:(_Bool)arg2 takingOverAndResumingConnection:(id)arg3 forSyncMessaging:(_Bool)arg4;
+- (id)initWithQueue:(id)arg1 syncOntoMain:(_Bool)arg2 takingOverAndResumingConnection:(id)arg3;
 - (id)initWithQueue:(id)arg1 takingOverAndResumingConnection:(id)arg2;
 - (id)initForSyncMessagingWithQueue:(id)arg1 takingOverAndResumingConnection:(id)arg2;
 - (id)initWithQueue:(id)arg1 remoteObject:(id)arg2;

@@ -8,7 +8,7 @@
 
 @interface ASVControlPointContainer : NSObject
 {
-    struct vector<ASVControlPoint, std::__1::allocator<ASVControlPoint>> _controlPoints;
+    struct vector<ASVControlPoint, std::allocator<ASVControlPoint>> _controlPoints;
 }
 
 - (id).cxx_construct;

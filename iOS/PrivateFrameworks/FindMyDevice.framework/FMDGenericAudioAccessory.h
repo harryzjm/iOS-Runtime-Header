@@ -10,18 +10,22 @@
 #import <FindMyDevice/FMDAudioAccessory-Protocol.h>
 #import <FindMyDevice/NSSecureCoding-Protocol.h>
 
-@class FMDAccessoryIdentifier, NSString, NSURL;
+@class FMDAccessoryIdentifier, FMDAudioAccessoryInfo, NSString, NSURL;
 
 @interface FMDGenericAudioAccessory : NSObject <NSSecureCoding, FMDAudioAccessory, FMDAccessory>
 {
+    _Bool _supportsChangingListeningMode;
     FMDAccessoryIdentifier *_accessoryIdentifier;
     NSString *_audioRoutingIdentifier;
     NSURL *_audioURL;
+    FMDAudioAccessoryInfo *_audioAccessoryInfo;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)copyAccessory:(id)arg1;
 - (void).cxx_destruct;
+@property(nonatomic) _Bool supportsChangingListeningMode; // @synthesize supportsChangingListeningMode=_supportsChangingListeningMode;
+@property(retain, nonatomic) FMDAudioAccessoryInfo *audioAccessoryInfo; // @synthesize audioAccessoryInfo=_audioAccessoryInfo;
 @property(retain, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;
 @property(retain, nonatomic) NSString *audioRoutingIdentifier; // @synthesize audioRoutingIdentifier=_audioRoutingIdentifier;
 @property(retain, nonatomic) FMDAccessoryIdentifier *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
@@ -31,6 +35,7 @@
 @property(readonly, nonatomic) _Bool playingSound;
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;
+- (id)initWithAccessoryId:(id)arg1 audioRoutingIdentifier:(id)arg2 audioURL:(id)arg3 audioAccessoryInfo:(id)arg4 supportsChangingListeningMode:(_Bool)arg5;
 - (id)initWithCoder:(id)arg1;
 
 // Remaining properties

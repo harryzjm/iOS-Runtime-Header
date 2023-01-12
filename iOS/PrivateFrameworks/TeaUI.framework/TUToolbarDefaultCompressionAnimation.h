@@ -27,6 +27,7 @@
 - (void)scrollViewIsAtTop:(_Bool)arg1;
 - (_Bool)animationShouldBeginForScrollView:(id)arg1 currentlyFullyCompressed:(_Bool)arg2;
 - (void)updateWithPercentage:(double)arg1;
+- (void)prepareForUpdates;
 - (id)initWithToolbar:(id)arg1;
 
 @end

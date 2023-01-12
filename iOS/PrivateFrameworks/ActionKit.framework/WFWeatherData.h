@@ -28,7 +28,7 @@
     NSMeasurement *_precipitationAmount;
     NSNumber *_precipitationChance;
     NSMeasurement *_windSpeed;
-    NSString *_windDirection;
+    NSNumber *_windDirection;
     NSNumber *_uvIndex;
     NSDate *_sunriseTime;
     NSDate *_sunsetTime;
@@ -51,7 +51,7 @@
 @property(readonly, copy, nonatomic) NSDate *sunsetTime; // @synthesize sunsetTime=_sunsetTime;
 @property(readonly, copy, nonatomic) NSDate *sunriseTime; // @synthesize sunriseTime=_sunriseTime;
 @property(readonly, copy, nonatomic) NSNumber *uvIndex; // @synthesize uvIndex=_uvIndex;
-@property(readonly, copy, nonatomic) NSString *windDirection; // @synthesize windDirection=_windDirection;
+@property(readonly, copy, nonatomic) NSNumber *windDirection; // @synthesize windDirection=_windDirection;
 @property(readonly, nonatomic) NSMeasurement *windSpeed; // @synthesize windSpeed=_windSpeed;
 @property(readonly, copy, nonatomic) NSNumber *precipitationChance; // @synthesize precipitationChance=_precipitationChance;
 @property(readonly, nonatomic) NSMeasurement *precipitationAmount; // @synthesize precipitationAmount=_precipitationAmount;

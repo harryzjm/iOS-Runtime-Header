@@ -57,9 +57,9 @@
 - (id)initWithTTArray:(id)arg1 contents:(id)arg2 document:(id)arg3;
 - (id)initWithDocument:(id)arg1;
 - (id)init;
-- (id)initWithCRCoder:(id)arg1 array:(const struct Array *)arg2;
+- (id)initWithCRCoder:(id)arg1 array:(const void *)arg2;
 - (id)initWithCRCoder:(id)arg1;
-- (void)encodeWithCRCoder:(id)arg1 array:(struct Array *)arg2;
+- (void)encodeWithCRCoder:(id)arg1 array:(void *)arg2;
 - (void)encodeWithCRCoder:(id)arg1;
 
 // Remaining properties

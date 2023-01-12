@@ -7,7 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface CAMeshInterpolator
 {
-    struct Interpolator *_interp;
+    void *_interp;
 }
 
 - (id)meshTransformForLayer:(id)arg1;

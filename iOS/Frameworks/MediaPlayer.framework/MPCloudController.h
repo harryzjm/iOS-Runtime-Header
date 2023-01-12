@@ -85,8 +85,8 @@
 - (void)setLikedState:(long long)arg1 forPlaylistWithGlobalID:(id)arg2;
 - (void)setLikedState:(long long)arg1 forAlbumWithStoreID:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setLikedState:(long long)arg1 forAlbumWithStoreID:(long long)arg2;
-- (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3;
+- (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3 timeStamp:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setLikedState:(long long)arg1 forEntityWithStoreID:(long long)arg2 withMediaType:(unsigned long long)arg3 timeStamp:(id)arg4;
 - (void)fetchRecommendedContentWithSeedTrackID:(long long)arg1 seedTrackIDType:(long long)arg2 count:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 @property(readonly, nonatomic) _Bool enablingJaliscoGeniusRequiresTerms;
 - (void)updateJaliscoMediaLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -124,6 +124,7 @@
 - (void)setCollectionProperties:(id)arg1 forCollectionWithPersistentID:(long long)arg2 groupingType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)uploadCloudItemProperties;
 - (void)setItemProperties:(id)arg1 forSagaID:(unsigned long long)arg2;
+- (_Bool)canSetItemProperty:(id)arg1;
 - (void)uploadArtworkForPlaylist:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishPlaylistWithSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removePlaylistsWithSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -133,10 +134,12 @@
 - (void)addStoreItemWithAdamID:(long long)arg1 referralObject:(id)arg2 toPlaylistWithPersistentID:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addStoreItemWithAdamID:(long long)arg1 toPlaylistWithPersistentID:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPlaylistProperties:(id)arg1 trackList:(id)arg2 forPlaylistWithPersistentID:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (_Bool)canSetPlaylistProperty:(id)arg1;
 - (void)addGeniusPlaylistWithPersistentID:(unsigned long long)arg1 name:(id)arg2 seedItemSagaIDs:(id)arg3 itemSagaIDs:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)sdk_createPlaylistWithPersistenID:(unsigned long long)arg1 properties:(id)arg2 tracklist:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createPlaylistWithPersistentID:(unsigned long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)updateSubscribedPlaylistWithSagaID:(unsigned long long)arg1 ignoreMinRefreshInterval:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic, getter=isEnhancedAudioAvailable) _Bool enhancedAudioAvailable;
 - (_Bool)shouldProhibitActionsForCurrentNetworkConditions;
 - (_Bool)isCellularDataRestricted;
 - (_Bool)shouldProhibitStoreAppsActionForCurrentNetworkConditions;

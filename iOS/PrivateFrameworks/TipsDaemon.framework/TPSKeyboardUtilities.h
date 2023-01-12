@@ -15,6 +15,9 @@
 + (_Bool)isInputModeInstalledForLanguage:(id)arg1;
 + (_Bool)isHandwritingEnabledForInputMode:(id)arg1;
 + (id)installedInputModes;
++ (_Bool)isDictationSelectedForLanguage:(id)arg1;
++ (_Bool)isDictationEnabled;
++ (id)enabledDictationLanguages;
 
 @end
 

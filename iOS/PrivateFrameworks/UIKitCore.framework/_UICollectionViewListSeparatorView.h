@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIVisualEffectView;
+
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewListSeparatorView
 {
+    UIVisualEffectView *_effectView;
 }
 
+- (void).cxx_destruct;
+- (void)_tearDownEffectView;
+- (void)_setUpEffectViewWithEffect:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

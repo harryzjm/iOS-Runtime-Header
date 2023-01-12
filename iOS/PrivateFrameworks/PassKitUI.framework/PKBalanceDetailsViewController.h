@@ -38,6 +38,7 @@
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (_Bool)_shouldDisplayAction;
 - (long long)_numberOfBalanceDetailsRowsEnabledForRowType:(unsigned long long)arg1;
 - (long long)_numberOfBalanceDetailsRowsEnabled;
 - (unsigned long long)_balanceDetailsRowTypeForRowIndex:(long long)arg1;

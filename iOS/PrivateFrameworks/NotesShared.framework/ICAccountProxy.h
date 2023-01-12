@@ -40,7 +40,7 @@
 - (id)titleForNavigationBar;
 - (_Bool)noteIsVisible:(id)arg1;
 - (unsigned long long)visibleNotesCount;
-- (id)visibleNotes;
+@property(readonly, nonatomic) NSArray *visibleNotes;
 @property(readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;

@@ -13,30 +13,53 @@
 #import <PhotosUICore/UISearchBarDelegate-Protocol.h>
 #import <PhotosUICore/UISearchResultsUpdating-Protocol.h>
 
-@class NSString, PXSearchComposableDataSource, PXSearchIndexManager, PXSearchQuery, PXSearchQueryController, PXSearchResultsOneUpViewModel, UICollectionView, UIScrollView, UISearchController;
+@class NSString, PXSearchAnalyticsSession, PXSearchComposableDataSource, PXSearchIndexManager, PXSearchQuery, PXSearchQueryController, PXSearchResultsOneUpViewModel, UICollectionView, UIScrollView, UISearchController;
 
 @interface PXUISearchResultsViewController : UIViewController <PXOneUpPresentationDelegate, PXSearchTapToRadarSectionProviderDelegate, UICollectionViewDelegate, UIScrollViewDelegate, UISearchBarDelegate, UISearchResultsUpdating>
 {
+    _Bool _searchBarWantsFirstResponder;
     UICollectionView *_collectionView;
     PXSearchComposableDataSource *_dataSource;
+    unsigned long long _nextAnalyticsSessionBeginType;
     PXSearchQueryController *_queryController;
     PXSearchIndexManager *_searchIndexManager;
     PXSearchQuery *_currentSearchQuery;
+    PXSearchAnalyticsSession *_analyticsSession;
     PXSearchResultsOneUpViewModel *_oneUpViewModel;
 }
 
++ (unsigned long long)_analyticsSessionResultTypeForCollectionType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) PXSearchResultsOneUpViewModel *oneUpViewModel; // @synthesize oneUpViewModel=_oneUpViewModel;
+@property(retain, nonatomic) PXSearchAnalyticsSession *analyticsSession; // @synthesize analyticsSession=_analyticsSession;
 @property(copy, nonatomic) PXSearchQuery *currentSearchQuery; // @synthesize currentSearchQuery=_currentSearchQuery;
 @property(retain, nonatomic) PXSearchIndexManager *searchIndexManager; // @synthesize searchIndexManager=_searchIndexManager;
 @property(retain, nonatomic) PXSearchQueryController *queryController; // @synthesize queryController=_queryController;
+@property(nonatomic) unsigned long long nextAnalyticsSessionBeginType; // @synthesize nextAnalyticsSessionBeginType=_nextAnalyticsSessionBeginType;
+@property(nonatomic) _Bool searchBarWantsFirstResponder; // @synthesize searchBarWantsFirstResponder=_searchBarWantsFirstResponder;
 @property(retain, nonatomic) PXSearchComposableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+- (unsigned long long)_searchAnalyticsSessionResultTypeForSearchResultType:(unsigned long long)arg1 subtype:(unsigned long long)arg2;
+- (unsigned long long)_searchAnalyticsSessionResultTypeForSearchResult:(id)arg1;
+- (void)_shouldEndAnalyticsSession:(id)arg1;
+- (void)_endAnalyticsSession;
+- (void)_notifyAnalyticsSearchResultSelected:(id)arg1;
+- (void)_notifyAnalyticsSeeAllSelectedWithResultType:(unsigned long long)arg1;
+- (void)_notifyAnalyticsNoResultsForSearch;
+- (void)_notifyAnalyticsWordEmbeddingPresented;
+- (void)_notifyAnalyticsSuggestionSelectedWithType:(unsigned long long)arg1;
+- (void)_notifyAnalyticsOneUpTopAssets;
+- (void)_notifyAnalyticsInteractedWithCurrentSearch;
+- (void)_notifyAnalyticsSearchChanged;
+- (void)_unregisterNotificationsForAnalytics;
+- (void)_registerNotificationsForAnalytics;
 - (void)didSelectTapToRadar;
 - (void)_didSelectItemIdentifier:(id)arg1 inResultsSectionProvider:(id)arg2;
 - (unsigned long long)_searchSuggestionLimit;
 - (void)_didSelectItemIdentifier:(id)arg1 inSuggestionsSectionProvider:(id)arg2;
+- (_Bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)_didSelectCollectionsSeeAllButtonForSection:(id)arg1 sectionProvider:(id)arg2 searchResultsHeaderView:(id)arg3;
@@ -49,7 +72,7 @@
 - (id)_collectionViewLayoutWithProviders:(id)arg1;
 - (void)_configureDataSourceForCollectionView:(id)arg1 sectionProviders:(id)arg2;
 - (void)_configureCollectionViewWithSectionProviders:(id)arg1;
-- (void)_configureQueryControllerWithResultsSectionProvider:(id)arg1 suggestionsSectionProvider:(id)arg2 queryStatusSectionProvider:(id)arg3;
+- (void)_configureQueryControllerWithResultsSectionProvider:(id)arg1 suggestionsSectionProvider:(id)arg2 queryStatusSectionProvider:(id)arg3 tapToRadarSectionProvider:(id)arg4;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
@@ -59,6 +82,7 @@
 @property(readonly, nonatomic) UIScrollView *ppt_scrollView;
 - (id)_emptyPhotosViewControllerForSearchResult:(id)arg1;
 - (void)didSelectPersonSearchResult:(id)arg1;
+- (void)_didSelectMemoryCollectionSearchResult:(id)arg1;
 - (void)_didSelectDetailCollectionSearchResult:(id)arg1;
 - (void)_didSelectAlbumSearchResult:(id)arg1;
 - (void)didSelectCollectionSearchResult:(id)arg1;
@@ -75,7 +99,13 @@
 - (long long)oneUpPresentationOrigin:(id)arg1;
 - (id)_searchResultsSectionProvider;
 - (void)showOneUpForAssetSearchResult:(id)arg1;
-- (void)_didSelectTapToRadar;
+- (id)_radarInfoForRadarRoute:(id)arg1 searchQuery:(id)arg2;
+- (id)_templateForRadarRoute:(id)arg1;
+- (id)_keywordForRadarRoute:(id)arg1;
+- (id)_titleForRadarRoute:(id)arg1 searchQuery:(id)arg2;
+- (id)_radarRoutesDescription;
+- (id)_radarRoutes;
+- (void)_didSelectTapToRadar:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

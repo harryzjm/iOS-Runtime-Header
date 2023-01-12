@@ -11,6 +11,8 @@
 + (id)buttonWithCPAlertAction:(id)arg1;
 - (id)_externalUnfocusedBorderColor;
 - (id)_buttonFont;
+- (void)setHighlighted:(_Bool)arg1;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

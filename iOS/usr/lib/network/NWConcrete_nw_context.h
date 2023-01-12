@@ -24,14 +24,21 @@ __attribute__((visibility("hidden")))
     unsigned int max_cache_entries;
     unsigned int target_cache_entries;
     unsigned int max_idle_cache_entries;
+    long long association_dormant_delay;
+    long long context_purge_delay;
+    _Atomic unsigned long long inline_tid;
     int scheduling_mode;
     int privacy_level;
     unsigned int isolate_protocol_stack:1;
     unsigned int isolate_protocol_cache:1;
     unsigned int is_implicit:1;
+    unsigned int is_inline:1;
+    unsigned int is_inline_and_cancelled:1;
     unsigned int is_isolated_context:1;
     unsigned int activated:1;
     unsigned int required_encrypted_resolution:1;
+    unsigned int do_not_log_trackers:1;
+    unsigned int _pad_bits:7;
 }
 
 - (void).cxx_destruct;

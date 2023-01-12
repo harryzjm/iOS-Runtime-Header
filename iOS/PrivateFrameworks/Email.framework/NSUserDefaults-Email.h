@@ -10,5 +10,8 @@
 + (_Bool)em_defaultExistsForKey:(id)arg1;
 + (void)em_migrateDefault:(id)arg1;
 + (id)em_userDefaults;
+- (void)enableMailTrackingProtection:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool shouldPresentRemoteContentAlert;
+@property(readonly, nonatomic) _Bool shouldPresentRemoteContentOptionsSheet;
 @end
 

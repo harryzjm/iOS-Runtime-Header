@@ -25,6 +25,7 @@
 - (_Bool)isContainedInAParent;
 - (_Bool)isAccessoryDisplayedAsIndividualTiles;
 - (_Bool)isVisibleAsBridge;
+- (_Bool)isBridged;
 - (_Bool)isBridge;
 - (_Bool)isNotificationSupportedCamera;
 - (_Bool)isCamera;

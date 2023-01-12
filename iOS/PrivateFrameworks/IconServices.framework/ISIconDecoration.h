@@ -10,29 +10,37 @@
 #import <IconServices/ISIconDecorationInternal-Protocol.h>
 #import <IconServices/NSCopying-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSString, NSURL, NSUUID;
+@protocol ISScalableCompositorResource;
 
 @interface ISIconDecoration : NSObject <ISIconDecorationInternal, ISIconDecoration, NSCopying>
 {
     long long _position;
     long long _mode;
+    NSURL *_resourceURL;
     NSString *_identifier;
     unsigned long long _identifierKind;
+    NSUUID *_resourceToken;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(readonly) NSUUID *resourceToken; // @synthesize resourceToken=_resourceToken;
 @property(readonly) unsigned long long identifierKind; // @synthesize identifierKind=_identifierKind;
 @property(readonly) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly) NSURL *resourceURL; // @synthesize resourceURL=_resourceURL;
 @property long long mode; // @synthesize mode=_mode;
 @property long long position; // @synthesize position=_position;
-@property(readonly) NSUUID *resourceFingerprint;
+@property(readonly) id <ISScalableCompositorResource> compositorResource;
+- (id)resourceFingerprint;
 @property(readonly, copy) NSString *description;
 @property(readonly) NSUUID *uuid;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithResourceURL:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithKind:(unsigned long long)arg1 identifier:(id)arg2;
 - (id)initWithType:(id)arg1;
 - (id)init;
 - (id)imageForDescriptor:(id)arg1;

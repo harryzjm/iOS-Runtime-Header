@@ -6,6 +6,7 @@
 
 @class ICStoreRequestContext, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICInAppReportEventRequest
 {
     ICStoreRequestContext *_storeRequestContext;

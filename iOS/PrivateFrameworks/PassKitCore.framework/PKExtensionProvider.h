@@ -37,7 +37,6 @@
 - (void)_finishedMatchingExtensions:(id)arg1 withError:(id)arg2;
 - (void)beginExtensionRequestWithExtension:(id)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)extensionsWithContainingApplicationIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)extensionsWithContainingAppBundleIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)extensionWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithExtensionPoint:(id)arg1;

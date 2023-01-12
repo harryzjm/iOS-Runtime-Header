@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)initWithFrame:(struct CGRect)arg1 tintColor:(id)arg2 language:(id)arg3;
+- (id)_accessibilityFocusRingTintColor;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

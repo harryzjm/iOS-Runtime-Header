@@ -18,11 +18,13 @@
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 favoritedActivity:(_Bool)arg2 withIdentifier:(NSUUID *)arg3 activityCategory:(long long)arg4;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 toggledActivityWithIdentifier:(NSUUID *)arg2 activityCategory:(long long)arg3;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 didLongPressShareActivityWithIdentifier:(NSUUID *)arg2;
+- (void)activityViewControllerWithSessionID:(NSString *)arg1 provideFeedbackForPeopleSuggestionWithIdentifier:(NSString *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 removedPersonWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 selectedPersonWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 selectedActionWithIdentifier:(NSUUID *)arg2;
 - (void)activityViewControllerWithSessionID:(NSString *)arg1 selectedActivityWithIdentifier:(NSUUID *)arg2;
 - (void)sendConfiguration:(UISUIActivityViewControllerConfiguration *)arg1 completion:(void (^)(UISDShareSheetSessionConfiguration *))arg2;
+- (void)connectToDaemonWithContext:(NSDictionary *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)connectToDaemonWithSessionID:(NSString *)arg1 discoveryContext:(_UIActivityDiscoveryContext *)arg2 assetIdentifiers:(NSArray *)arg3 urlsBeingShared:(NSArray *)arg4 shouldSuggestFamilyMembers:(NSNumber *)arg5 completionHandler:(void (^)(void))arg6;
 @end
 

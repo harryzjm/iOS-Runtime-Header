@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)stickerSheetController:(id)arg1 didInteractWithStickerAtIndex:(long long)arg2 byPeeling:(_Bool)arg3;
+- (void)stickerSheetController:(id)arg1 didInteractWithStickerItem:(id)arg2 atIndex:(long long)arg3 byPeeling:(_Bool)arg4;
 - (void)loadView;
 - (void)_accessibilityLoadAccessibilityInformation;
 

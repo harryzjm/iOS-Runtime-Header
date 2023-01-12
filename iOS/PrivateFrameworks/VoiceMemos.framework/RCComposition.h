@@ -95,8 +95,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_initWithSavedRecording:(id)arg1 decomposedFragments:(id)arg2 composedFragments:(id)arg3;
 - (id)_initWithComposedAVURL:(id)arg1 savedRecordingUUID:(id)arg2 creationDate:(id)arg3 title:(id)arg4 musicMemoMetadata:(id)arg5 decomposedFragments:(id)arg6 composedFragments:(id)arg7;
-- (id)compositionAsset;
-- (id)playableAsset;
+- (_Bool)_enumerateFragmentsForInsertion:(CDUnknownBlockType)arg1;
+- (id)_compositionAsset:(_Bool)arg1 error:(id *)arg2;
+- (id)compositionAssetForExport:(id *)arg1;
+- (id)playableAsset:(id *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

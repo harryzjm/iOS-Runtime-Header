@@ -20,8 +20,8 @@
 - (void)_axSetAutomaticallyMarkReadTimer:(id)arg1;
 - (id)_axAutomaticallyMarkReadTimer;
 - (void)messageViewController:(id)arg1 didTapRevealActionsButton:(id)arg2;
-- (void)_navigateMessageDownKeyCommandInvoked:(id)arg1;
-- (void)_navigateMessageUpKeyCommandInvoked:(id)arg1;
+- (void)_selectPreviousMessageCommandInvoked:(id)arg1;
+- (void)_selectNextMessageCommandInvoked:(id)arg1;
 - (void)arrowControlsView:(id)arg1 didTapButtonWithDirection:(int)arg2;
 - (id)arrowControlsView;
 - (void)_shrinkMessagesToBarButton:(id)arg1 withInteraction:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

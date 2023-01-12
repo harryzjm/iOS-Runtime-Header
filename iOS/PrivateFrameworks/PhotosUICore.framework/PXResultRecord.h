@@ -15,6 +15,7 @@
 - (id)description;
 - (id)inclusionPredicate;
 - (id)filteredFetchResult;
+- (_Bool)ensureKeyAssetAtBeginning;
 - (_Bool)reverseSortOrder;
 - (_Bool)isCurated;
 - (_Bool)wantsCuration;
@@ -22,6 +23,7 @@
 - (id)keyAssetsFetchResult;
 - (id)curatedFetchResult;
 - (id)fetchResult;
+- (CDUnknownBlockType)curatedRefetchCondition;
 - (id)exposedFetchResult;
 - (id)curatedOids;
 - (id)excludedOids;

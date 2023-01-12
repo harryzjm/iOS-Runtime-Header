@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, UITextGestureTuning, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
+@class UITextGestureTuning, UITextModernLoupeSession, UITextSelectionGrabberSuppressionAssertion, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
 @interface UITextSelectionInteraction
@@ -13,11 +13,13 @@ __attribute__((visibility("hidden")))
     struct CGPoint _lastTapLocation;
     UITextGestureTuning *_gestureTuning;
     _Bool _indirectSelectionType;
+    _Bool _viewConformsToTextInput;
     struct CGRect _originalCaretRect;
     _Bool _wasOriginallyFirstResponder;
-    NSNumber *_granularityToHandOff;
+    long long _granularityToHandOff;
     _UIKeyboardTextSelectionController *_activeSelectionController;
     UITextSelectionGrabberSuppressionAssertion *_grabberSuppressionAssertion;
+    UITextModernLoupeSession *_activeLoupeSession;
 }
 
 - (void).cxx_destruct;
@@ -41,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)tappedToUpdateSelectionWithGesture:(id)arg1 atPoint:(struct CGPoint)arg2 granularity:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_checkForRepeatedTap:(id)arg1 gestureLocationOut:(struct CGPoint *)arg2;
 - (long long)_textGranularityForNumberOfTaps:(unsigned long long)arg1;
-- (id)handOffGranularity;
+- (long long)handOffGranularity;
 - (long long)_textGranularityForRepeatedTap:(long long)arg1;
 - (_Bool)_isRepeatedTap:(id)arg1 gestureLocationOut:(struct CGPoint *)arg2;
 - (_Bool)_isWithinRepeatedTapTimeForTouch:(id)arg1;

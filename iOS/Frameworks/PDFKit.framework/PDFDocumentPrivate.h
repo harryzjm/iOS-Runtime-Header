@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, NSURL, PDFAKDocumentAdaptor, PDFForm, PDFOutline, PDFRenderingProperties, PDFSelection;
-@protocol OS_dispatch_queue, PDFAKControllerDelegateProtocol, PDFDocumentAsyncFindDelegate, PDFDocumentPageChangeDelegate;
+@protocol OS_dispatch_queue, PDFAKControllerDelegateProtocol, PDFDocumentPageChangeDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PDFDocumentPrivate : NSObject
 {
     struct CGPDFDocument *document;
     NSURL *documentURL;
+    _Bool createdWithHighLatencyDataProvider;
     NSMutableArray *pages;
     NSMutableDictionary *pageIndices;
     NSMutableDictionary *pageDictionaryIndices;
@@ -36,7 +37,7 @@ __attribute__((visibility("hidden")))
     int minorVersion;
     _Bool isEncrypted;
     _Bool isUnlocked;
-    int accessPermissions;
+    unsigned int accessPermissions;
     _Bool allowsPrinting;
     _Bool allowsCopying;
     _Bool allowsDocumentChanges;
@@ -73,9 +74,11 @@ __attribute__((visibility("hidden")))
     unsigned long long documentRedactionCount;
     struct {
         _Bool pagesAdded;
+        _Bool blankPagesAdded;
         _Bool pagesRemoved;
         _Bool pagesExchanged;
     } pagesChanged;
+    NSDictionary *appendedAttributes;
     NSIndexSet *initialBookmarkedPageIndices;
     NSMutableIndexSet *bookmarkedPages;
     PDFAKDocumentAdaptor *akDocumentAdaptor;
@@ -84,9 +87,6 @@ __attribute__((visibility("hidden")))
     _Bool useTaggedPDF;
     _Bool limitedSearch;
     NSObject<OS_dispatch_queue> *asyncSearchQueue;
-    struct os_unfair_lock_s asyncSearchLock;
-    id <PDFDocumentAsyncFindDelegate> asyncSearchDelegate;
-    NSMutableArray *asyncSearchResults;
 }
 
 - (void).cxx_destruct;

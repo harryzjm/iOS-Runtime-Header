@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     unsigned int setup_protocols:1;
     unsigned int started_protocols:1;
     unsigned int is_viable:1;
+    unsigned int is_connected:1;
     unsigned int has_connected:1;
     unsigned int initial_payload_sent:1;
     unsigned int assigned_initial_writes:1;
@@ -33,6 +34,9 @@ __attribute__((visibility("hidden")))
     unsigned int multilayer_packet_logging:1;
     unsigned int has_progress_target:1;
     unsigned int path_is_direct:1;
+    unsigned int should_ignore_path_result:1;
+    unsigned int reported_do_not_reuse:1;
+    unsigned int in_setup_protocols:1;
     NWConcrete_nw_endpoint_flow *clone_from_flow;
     struct nw_protocol_identifier protocol_identifier;
     struct nw_protocol_callbacks protocol_callbacks;
@@ -41,6 +45,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_read_request> *new_flow_read_requests;
     struct nw_protocol *transport_protocol;
     struct nw_protocol *tls_protocol;
+    struct nw_protocol *joined_protocol;
     struct nw_protocol_identifier *ip_protocol_identifier;
     NSObject<OS_nw_protocol_definition> *multiplexed_message_definition;
     struct nw_protocol *multiplexed_message_protocol;
@@ -64,6 +69,7 @@ __attribute__((visibility("hidden")))
     struct _DNSServiceRef_t *sleep_proxy_ref;
     NSObject<OS_xpc_object> *flow_divert_token;
     NSObject<OS_nw_endpoint> *flow_divert_endpoint;
+    NSObject<OS_nw_endpoint> *proxy_original_endpoint;
     unsigned short protocol_log_id_num;
     unsigned int keepalive_event_enabled:1;
     unsigned long long first_keepalive_time;
@@ -75,6 +81,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType keepalive_event_handler;
     CDUnknownBlockType metadata_changed_event_handler;
     NSObject<OS_nw_array> *connected_metadata;
+    NSObject<OS_nw_array> *connection_wide_metadata;
     unsigned long long sent_application_byte_count;
     unsigned long long received_application_byte_count;
     unsigned char connection_uuid[16];

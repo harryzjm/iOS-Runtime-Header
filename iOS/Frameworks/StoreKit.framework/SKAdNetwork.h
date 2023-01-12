@@ -12,6 +12,8 @@
 
 + (void)updateConversionValue:(long long)arg1;
 + (void)registerAppForAdNetworkAttribution;
++ (void)endImpression:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)startImpression:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

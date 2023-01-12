@@ -21,8 +21,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_serverDidChangeIdentifier:(id)arg1;
-- (void)_serverWillInvalidate;
 - (void)_serverInvalidateWithError:(id)arg1;
 - (id)_initWithDescriptor:(id)arg1 service:(id)arg2;
 - (id)_initWithServerValidatedDescriptor:(id)arg1;

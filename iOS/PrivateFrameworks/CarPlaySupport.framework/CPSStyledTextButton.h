@@ -14,6 +14,7 @@
 + (id)buttonWithTextButton:(id)arg1;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIFont *fontOverride; // @synthesize fontOverride=_fontOverride;
+- (_Bool)canBecomeFocused;
 - (id)_externalUnfocusedBorderColor;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)_buttonFont;

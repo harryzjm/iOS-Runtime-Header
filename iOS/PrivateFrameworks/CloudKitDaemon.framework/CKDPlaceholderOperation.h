@@ -6,15 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKDClientContext, CKDClientProxy, CKDOperation, NSDate, NSObject, NSOperationQueue, NSString;
+@class CKDContainer, CKDOperation, NSDate, NSObject, NSOperationQueue, NSString;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDPlaceholderOperation : NSOperation
 {
     NSObject<OS_dispatch_group> *_group;
-    _Bool _isFinished;
-    _Bool _isExecuting;
+    int _executionState;
     NSDate *_startDate;
     CKDOperation *_realOperation;
     NSOperationQueue *_targetOperationQueue;
@@ -24,8 +22,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSOperationQueue *targetOperationQueue; // @synthesize targetOperationQueue=_targetOperationQueue;
 @property(readonly, nonatomic) CKDOperation *realOperation; // @synthesize realOperation=_realOperation;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property(nonatomic) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
-@property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
 - (id)statusReportWithIndent:(unsigned long long)arg1;
 - (id)_startDateString;
 - (id)_runDurationString;
@@ -33,14 +29,15 @@ __attribute__((visibility("hidden")))
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)ckShortDescription;
 - (void)cancel;
-- (void)_setIsExecuting:(_Bool)arg1;
-- (void)_setIsFinished:(_Bool)arg1;
+- (void)transitionToFinished;
+- (void)transitionToExecuting;
+- (_Bool)isExecuting;
+- (_Bool)isFinished;
 - (_Bool)isConcurrent;
 - (void)main;
 - (void)start;
 @property(readonly, nonatomic) NSString *operationID;
-@property(readonly, nonatomic) CKDClientContext *context;
-@property(readonly, nonatomic) __weak CKDClientProxy *proxy;
+@property(readonly, nonatomic) __weak CKDContainer *container;
 - (id)initWithOperation:(id)arg1 targetOperationQueue:(id)arg2;
 
 @end

@@ -43,6 +43,7 @@
 @property(readonly, copy, nonatomic) NSArray *firstNames;
 - (id)memberForAltDSID:(id)arg1;
 - (id)initWithServerResponse:(id)arg1;
+- (id)init;
 
 @end
 

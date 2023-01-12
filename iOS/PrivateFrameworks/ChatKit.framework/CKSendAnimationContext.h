@@ -14,6 +14,7 @@
 {
     _Bool _shouldRepeat;
     _Bool _isSender;
+    _Bool _beginAnimationFromTranscriptPresentedState;
     NSArray *_animatableViews;
     NSArray *_animatableTextViews;
     NSString *_impactIdentifier;
@@ -26,6 +27,7 @@
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool beginAnimationFromTranscriptPresentedState; // @synthesize beginAnimationFromTranscriptPresentedState=_beginAnimationFromTranscriptPresentedState;
 @property(copy, nonatomic) NSArray *throwBalloonViewAttributesCollection; // @synthesize throwBalloonViewAttributesCollection=_throwBalloonViewAttributesCollection;
 @property(retain, nonatomic) NSArray *messages; // @synthesize messages=_messages;
 @property(retain, nonatomic) CABackdropLayer *backdropLayer; // @synthesize backdropLayer=_backdropLayer;

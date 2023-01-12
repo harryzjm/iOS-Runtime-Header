@@ -24,8 +24,8 @@
 - (void)_cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *accessoryInvitations;
-- (void)dealloc;
 - (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (id)initWithInvitationData:(id)arg1 home:(id)arg2;
 

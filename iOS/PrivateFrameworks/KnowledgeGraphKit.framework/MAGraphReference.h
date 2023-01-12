@@ -7,18 +7,18 @@
 #import <objc/NSObject.h>
 
 @class MABaseGraph;
+@protocol MAGraphProxy;
 
 @interface MAGraphReference : NSObject
 {
     unsigned long long _hash;
-    MABaseGraph *_graph;
     MABaseGraph *_concreteGraph;
 }
 
 - (void).cxx_destruct;
-@property __weak MABaseGraph *concreteGraph; // @synthesize concreteGraph=_concreteGraph;
-@property(readonly) __weak MABaseGraph *graph; // @synthesize graph=_graph;
+@property(readonly) __weak MABaseGraph *concreteGraph; // @synthesize concreteGraph=_concreteGraph;
 - (unsigned long long)hash;
+@property(readonly) __weak id <MAGraphProxy> graph;
 - (id)initWithGraph:(id)arg1;
 
 @end

@@ -10,6 +10,14 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CSDBSqliteConnection;
+
+struct CSDBSqliteStatement {
+    struct CSDBSqliteConnection *_field1;
+    struct sqlite3_stmt *_field2;
+    int _field3;
+};
+
 struct IMDSqlOperation {
     void *_field1;
     void *_field2;
@@ -48,13 +56,30 @@ struct IMPerfMeasurement_t {
     double _field7;
 };
 
-struct _IMDHandleRecordStruct;
+struct _IMDAttachmentRecordStruct {
+    struct __CFRuntimeBase _field1;
+    long long _field2;
+    struct __CFArray *_field3;
+};
+
+struct _IMDChatRecordStruct {
+    struct __CFRuntimeBase _field1;
+    long long _field2;
+    struct __CFArray *_field3;
+    struct __CFArray *_field4;
+    long long _field5;
+    struct _IMDMessageRecordStruct *_field6;
+    long long _field7;
+};
+
+struct _IMDHandleRecordStruct {
+    struct __CFRuntimeBase _field1;
+    long long _field2;
+    struct __CFArray *_field3;
+};
 
 struct _IMDMessageRecordStruct {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
+    struct __CFRuntimeBase _field1;
     long long _field2;
     struct __CFArray *_field3;
     struct _IMDHandleRecordStruct *_field4;
@@ -63,9 +88,38 @@ struct _IMDMessageRecordStruct {
     struct __CFDictionary *_field7;
 };
 
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 struct __CFArray;
+
+struct __CFRuntimeBase {
+    unsigned long long _field1;
+    _Atomic unsigned long long _field2;
+};
 
 struct __CFString;
 
 struct sqlite3;
+
+struct sqlite3_stmt;
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
+
+typedef struct {
+    char *_field1;
+    long long _field2;
+    struct *_field3;
+    unsigned int _field4;
+    void *_field5;
+} CDStruct_7ef4fb35;
 

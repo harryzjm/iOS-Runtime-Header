@@ -7,6 +7,8 @@
 @class NSArray;
 
 @protocol MKCollectionCarouselUpdater
+- (void)dismissedCollections;
+- (void)resetCollectionsLayout;
 - (void)refreshCollections;
 - (void)updateCollections:(NSArray *)arg1;
 @end

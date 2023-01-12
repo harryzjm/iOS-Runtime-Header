@@ -11,6 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityFocusRingTintColor;
+- (long long)_accessibilityFocusRingStyle;
+- (id)accessibilityPath;
 - (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;

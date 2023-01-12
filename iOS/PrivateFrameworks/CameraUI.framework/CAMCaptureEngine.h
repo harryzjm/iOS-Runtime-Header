@@ -9,14 +9,13 @@
 #import <CameraUI/AVCaptureVideoThumbnailContentsDelegate-Protocol.h>
 #import <CameraUI/CAMPanoramaProcessorDelegate-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, AVSpatialOverCaptureVideoPreviewLayer, CAMCaptureMovieFileOutput, CAMMemoizationCache, CAMPanoramaConfiguration, CAMPanoramaOutput, CAMPanoramaProcessor, CAMPowerController, CIContext, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
+@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, AVSpatialOverCaptureVideoPreviewLayer, CAMCaptureMovieFileOutput, CAMMemoizationCache, CAMPanoramaOutput, CAMPanoramaProcessor, CAMPowerController, CIContext, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface CAMCaptureEngine : NSObject <CAMPanoramaProcessorDelegate, AVCaptureVideoThumbnailContentsDelegate>
 {
     AVCaptureDevice *_audioCameraDevice;
     AVCaptureDeviceInput *_audioCaptureDeviceInput;
-    CAMPanoramaConfiguration *_panoramaConfiguration;
     AVCapturePhotoOutput *_stillImageOutput;
     CAMCaptureMovieFileOutput *_movieFileOutput;
     CAMPanoramaOutput *_panoramaVideoDataOutput;
@@ -59,11 +58,15 @@
     NSHashTable *__videoThumbnailContentsDelegates;
     NSObject<OS_dispatch_queue> *__recoveryMutexQueue;
     unsigned long long __numberOfRecoveryAttempts;
+    NSObject<OS_dispatch_queue> *__signpostMutexQueue;
+    NSMutableSet *__didEmitCaptureIntervalStartedSignpostsForUniqueID;
 }
 
 + (id)_cacheKeyForDeviceType:(id)arg1 position:(long long)arg2;
 + (void)preheatCaptureResources;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSMutableSet *_didEmitCaptureIntervalStartedSignpostsForUniqueID; // @synthesize _didEmitCaptureIntervalStartedSignpostsForUniqueID=__didEmitCaptureIntervalStartedSignpostsForUniqueID;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_signpostMutexQueue; // @synthesize _signpostMutexQueue=__signpostMutexQueue;
 @property(nonatomic, setter=_setNumberOfRecoveryAttempts:) unsigned long long _numberOfRecoveryAttempts; // @synthesize _numberOfRecoveryAttempts=__numberOfRecoveryAttempts;
 @property(nonatomic, getter=_isPerformingRecovery, setter=_setPerformingRecovery:) _Bool _performingRecovery; // @synthesize _performingRecovery=__performingRecovery;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *_recoveryMutexQueue; // @synthesize _recoveryMutexQueue=__recoveryMutexQueue;
@@ -115,6 +118,7 @@
 - (id)backDualCameraDevice;
 - (id)backTelephotoCameraDevice;
 - (id)backCameraDevice;
+- (id)frontSuperWideCameraDevice;
 - (id)frontPearlCameraDevice;
 - (id)frontCameraDevice;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 forMetadataObjectTypes:(id)arg3 fromConnection:(id)arg4;
@@ -147,9 +151,9 @@
 - (void)stopRecording;
 - (void)registerVideoEndZoomFactor:(double)arg1;
 - (void)registerVideoCaptureRequest:(id)arg1;
-- (id)_previewFiltersForFilterSet:(CDStruct_7270c63f)arg1;
-- (CDStruct_7270c63f)_previewFilterSetForRequest:(id)arg1 previewSize:(struct CGSize)arg2;
-- (CDStruct_7270c63f)_previewFilterSetForRequest:(id)arg1 photo:(id)arg2;
+- (id)_previewFiltersForFilterSet:(CDStruct_c1e2adca)arg1;
+- (CDStruct_c1e2adca)_previewFilterSetForRequest:(id)arg1 previewSize:(struct CGSize)arg2;
+- (CDStruct_c1e2adca)_previewFilterSetForRequest:(id)arg1 photo:(id)arg2;
 - (void)captureOutput:(id)arg1 didFinishMovieCaptureForResolvedSettings:(id)arg2 error:(id)arg3;
 - (void)captureOutput:(id)arg1 didFinishWritingMovie:(id)arg2 error:(id)arg3;
 - (void)captureOutput:(id)arg1 didFinishRecordingMovie:(id)arg2;
@@ -212,6 +216,7 @@
 - (void)_handleSessionRuntimeError:(id)arg1;
 - (void)_handleSessionDidStopRunning:(id)arg1;
 - (void)_handleSessionDidStartRunning:(id)arg1;
+- (void)cancelAutoResumeAfterDate:(id)arg1;
 - (void)stopWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_sessionQueue_startWithRetryCount:(unsigned long long)arg1 retryInterval:(double)arg2 logReason:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)startWithRetryCount:(unsigned long long)arg1 retryInterval:(double)arg2 logReason:(id)arg3 completion:(CDUnknownBlockType)arg4;

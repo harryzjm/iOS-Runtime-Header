@@ -16,7 +16,7 @@
     NSMutableDictionary *_identifiersConnectionsMap;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSUUID *_poolStorageKey;
-    int _connectionsProfilingLevel;
+    long long _connectionsProfilingLevel;
     _Bool _useDistantWriterConnections;
     struct _opaque_pthread_cond_t {
         long long __sig;
@@ -55,11 +55,11 @@
 - (void)closeAllConnections;
 - (void)checkInConnection:(id)arg1;
 - (id)_connectionForWriting:(_Bool)arg1 useThreadConnection:(_Bool)arg2 storeThreadLocalConnection:(_Bool)arg3;
-@property(readonly) _Bool isCurrentThreadConnectionInTransaction;
+@property(readonly, nonatomic) _Bool isCurrentThreadConnectionInTransaction;
 - (id)writerConnection;
 - (id)readerConnection;
 @property(nonatomic) _Bool useDistantWriterConnections;
-@property(nonatomic) int connectionsProfilingLevel;
+@property(nonatomic) long long connectionsProfilingLevel;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDatabasePath:(id)arg1 maxReaders:(unsigned long long)arg2 maxWriters:(unsigned long long)arg3;

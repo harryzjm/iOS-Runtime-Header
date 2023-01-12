@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDMediaAccessoryAdvertisement, HMDMediaProfile, NSString;
+@class HMDMediaAccessoryAdvertisement, HMDMediaProfile, NSDictionary, NSString;
 
 @interface HMDMediaAccessory <HMFLogging>
 {
@@ -33,6 +33,7 @@
 @property(readonly, copy) HMDMediaAccessoryAdvertisement *advertisement; // @synthesize advertisement=_advertisement;
 - (void)handleRoomChanged:(id)arg1;
 - (void)handleRoomNameChanged:(id)arg1;
+- (id)transportReports;
 - (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3 initialConfiguration:(_Bool)arg4;
 - (id)name;
 - (_Bool)providesHashRouteID;
@@ -44,8 +45,8 @@
 - (unsigned long long)supportedTransports;
 - (id)init;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
-- (id)assistantObject;
-- (id)urlString;
+@property(readonly, copy) NSDictionary *assistantObject;
+@property(readonly, copy) NSString *urlString;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ITMLKit/IKJSObject.h>
-
 #import <VideosUI/_TtP8VideosUI27JSPromiseOperationInterface_-Protocol.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI18JSPromiseOperation : IKJSObject <_TtP8VideosUI27JSPromiseOperationInterface_>
+@interface _TtC8VideosUI18JSPromiseOperation <_TtP8VideosUI27JSPromiseOperationInterface_>
 {
     MISSING_TYPE *loadImmediately;
 }

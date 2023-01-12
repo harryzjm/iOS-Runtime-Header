@@ -6,14 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@interface CKDPowerLogger : NSObject
+#import <CloudKitDaemon/CKDSystemAvailabilityWatcher-Protocol.h>
+
+@class NSString;
+
+@interface CKDPowerLogger : NSObject <CKDSystemAvailabilityWatcher>
 {
 }
 
 + (id)sharedLogger;
++ (_Bool)isEnabled;
+- (_Bool)systemAvailabilityChanged:(unsigned long long)arg1;
 - (void)registerPowerLoggingXPCActivity;
 - (void)cacheOperationCombinedMetrics:(id)arg1 forOperationID:(id)arg2 operationType:(long long)arg3 operationGroupID:(id)arg4 operationGroupName:(id)arg5 operationGroupQuantity:(unsigned long long)arg6 operationQualityOfService:(long long)arg7 appContainerTuple:(id)arg8;
 - (void)logOperationCombinedMetrics:(id)arg1 forOperationID:(id)arg2 operationType:(long long)arg3 operationGroupID:(id)arg4 operationGroupName:(id)arg5 operationGroupQuantity:(unsigned long long)arg6 operationQualityOfService:(long long)arg7 appContainerTuple:(id)arg8;
+- (void)dealloc;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

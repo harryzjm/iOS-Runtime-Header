@@ -6,77 +6,57 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <PhotosUICore/PXUIAssetBadgeViewDelegate-Protocol.h>
-
-@class NSString, PXRoundedCornerOverlayView, UIButton, UIImage, UIImageView, UILabel, UIView, UIVisualEffectView;
+@class NSString, UIButton, UIImage, UIImageView, UILabel, UIView;
 @protocol PXPeopleCollectionViewCellDelegate;
 
-@interface PXPeopleCollectionViewCell : UICollectionViewCell <PXUIAssetBadgeViewDelegate>
+@interface PXPeopleCollectionViewCell : UICollectionViewCell
 {
     struct CGRect _unitRect;
-    _Bool _titleUsesAllCaps;
     _Bool _favorite;
-    _Bool _isReordering;
     _Bool _ppt_fullImageLoaded;
-    _Bool _blurApplied;
     UIImageView *_avatarView;
     NSString *_name;
     double _textAlpha;
     unsigned long long _selectionStyle;
-    id <PXPeopleCollectionViewCellDelegate> _delegate;
+    id <PXPeopleCollectionViewCellDelegate> _peopleCellDelegate;
     UILabel *_nameLabel;
-    UIView *_selectionView;
-    PXRoundedCornerOverlayView *_roundCornerOverlay;
-    UIButton *_favoriteBadge;
+    UIImageView *_checkmarkView;
+    UIView *_checkmarkBackgroundView;
     UIView *_highlightOverlayView;
-    UIView *_checkmarkView;
-    UIView *_gradientView;
-    UIImageView *_mirrorView;
-    UIVisualEffectView *_blurView;
-    struct CGSize _avatarSize;
+    UIButton *_favoriteButton;
+    UIView *_favoriteBackgroundView;
+    UIButton *_unfavoriteButton;
+    UIView *_unfavoriteBackgroundView;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGSize avatarSize; // @synthesize avatarSize=_avatarSize;
-@property(nonatomic) _Bool blurApplied; // @synthesize blurApplied=_blurApplied;
-@property(retain, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
-@property(retain, nonatomic) UIImageView *mirrorView; // @synthesize mirrorView=_mirrorView;
-@property(retain, nonatomic) UIView *gradientView; // @synthesize gradientView=_gradientView;
-@property(retain, nonatomic) UIView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
+@property(retain, nonatomic) UIView *unfavoriteBackgroundView; // @synthesize unfavoriteBackgroundView=_unfavoriteBackgroundView;
+@property(retain, nonatomic) UIButton *unfavoriteButton; // @synthesize unfavoriteButton=_unfavoriteButton;
+@property(retain, nonatomic) UIView *favoriteBackgroundView; // @synthesize favoriteBackgroundView=_favoriteBackgroundView;
+@property(retain, nonatomic) UIButton *favoriteButton; // @synthesize favoriteButton=_favoriteButton;
 @property(retain, nonatomic) UIView *highlightOverlayView; // @synthesize highlightOverlayView=_highlightOverlayView;
-@property(retain, nonatomic) UIButton *favoriteBadge; // @synthesize favoriteBadge=_favoriteBadge;
-@property(retain, nonatomic) PXRoundedCornerOverlayView *roundCornerOverlay; // @synthesize roundCornerOverlay=_roundCornerOverlay;
-@property(retain, nonatomic) UIView *selectionView; // @synthesize selectionView=_selectionView;
+@property(retain, nonatomic) UIView *checkmarkBackgroundView; // @synthesize checkmarkBackgroundView=_checkmarkBackgroundView;
+@property(retain, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(nonatomic) _Bool ppt_fullImageLoaded; // @synthesize ppt_fullImageLoaded=_ppt_fullImageLoaded;
-@property(nonatomic) __weak id <PXPeopleCollectionViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <PXPeopleCollectionViewCellDelegate> peopleCellDelegate; // @synthesize peopleCellDelegate=_peopleCellDelegate;
 @property(nonatomic) unsigned long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
-@property(nonatomic, setter=setReordering:) _Bool isReordering; // @synthesize isReordering=_isReordering;
 @property(nonatomic, getter=isFavorite) _Bool favorite; // @synthesize favorite=_favorite;
-@property(nonatomic) _Bool titleUsesAllCaps; // @synthesize titleUsesAllCaps=_titleUsesAllCaps;
 @property(nonatomic) double textAlpha; // @synthesize textAlpha=_textAlpha;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) UIImageView *avatarView; // @synthesize avatarView=_avatarView;
-- (id)_stretchableGradientImageWithSize:(struct CGSize)arg1 scale:(double)arg2 gradientColor:(id)arg3;
+- (void)_updateFocusRingForced:(_Bool)arg1;
 - (void)_updateTitleAndFavoriteBadgeForLayoutChange;
-- (void)_updateType;
-- (long long)_preferredSizeClass;
 - (void)_updateSelection;
-- (void)_favoriteBadgePressed:(id)arg1;
-- (struct CGSize)_avatarSizeForImageSize:(struct CGSize)arg1;
 - (void)setSelected:(_Bool)arg1;
 @property(retain, nonatomic) UIImage *image;
 - (void)setImage:(id)arg1 normalizedFaceRect:(struct CGRect)arg2;
+- (id)focusEffect;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)prepareForReuse;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
+- (void)toggleFavorite:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 
